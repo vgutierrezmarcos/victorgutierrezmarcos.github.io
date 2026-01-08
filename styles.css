@@ -108,17 +108,17 @@ body {
 }
 
 .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
-.nav-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem; padding: 0.75rem 0; }
+.nav-list { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem; padding: 0.5rem 0; }
 
 .nav-list li a {
     display: block;
-    padding: 0.6rem 1.25rem;
+    padding: 0.5rem 1rem;
     color: var(--color-text);
     text-decoration: none;
     font-family: var(--font-ui);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     border-radius: 4px;
     transition: all var(--transition-fast);
@@ -539,25 +539,65 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .site-header { padding: 2rem 1.5rem; }
-    .site-title { font-size: 1.75rem; }
-    .site-description { font-size: 1rem; }
-    .nav-list { flex-direction: column; align-items: center; gap: 0.25rem; }
-    .nav-list li a { padding: 0.75rem 1.5rem; }
-    .page-content { padding: 1.5rem; border-radius: 0; }
+    .site-header { padding: 1.5rem 1rem; }
+    .site-title { font-size: 1.5rem; }
+    .site-description { font-size: 0.9rem; }
+    
+    .main-nav { position: sticky; top: 0; }
+    .nav-list { 
+        gap: 0.15rem; 
+        padding: 0.4rem 0;
+        flex-wrap: wrap;
+    }
+    .nav-list li a { 
+        padding: 0.4rem 0.6rem; 
+        font-size: 0.7rem;
+        letter-spacing: 0.03em;
+    }
+    
+    .main-content { padding: 1.5rem 1rem; }
+    .page-content { padding: 1.5rem; border-radius: 6px; }
     .page-content::before { display: none; }
     .cards-grid { grid-template-columns: 1fr; }
     .links-list { grid-template-columns: 1fr; }
     .section-title { font-size: 1.4rem; }
+    
+    .tema-card a { padding: 1.25rem; }
+    .tema-card-title { font-size: 1.15rem; }
 }
 
 @media (max-width: 480px) {
     body { font-size: 16px; }
-    .site-header { padding: 1.5rem 1rem; }
-    .main-content { padding: 1.5rem 0.75rem; }
-    .page-content { padding: 1.25rem; }
-    .tema-group-title { font-size: 1rem; padding: 0.75rem 1rem; }
-    .tema-item { padding: 0.75rem; font-size: 0.95rem; }
+    .site-header { padding: 1.25rem 0.75rem; }
+    .site-title { font-size: 1.3rem; }
+    .site-description { font-size: 0.85rem; }
+    
+    .nav-container { padding: 0 0.5rem; }
+    .nav-list { 
+        gap: 0.1rem;
+        padding: 0.3rem 0;
+    }
+    .nav-list li a { 
+        padding: 0.35rem 0.5rem; 
+        font-size: 0.65rem;
+        letter-spacing: 0.02em;
+    }
+    
+    .main-content { padding: 1rem 0.5rem; }
+    .page-content { padding: 1rem; border-radius: 4px; }
+    .section-title { font-size: 1.2rem; margin-bottom: 1.5rem; }
+    .section-title::after { display: none; }
+    
+    .content-text { font-size: 0.95rem; }
+    .content-text h3 { font-size: 1.05rem; }
+    
+    .tema-group-title { font-size: 0.9rem; padding: 0.7rem 0.9rem; }
+    .tema-item { padding: 0.6rem 0.5rem; font-size: 0.9rem; }
+    
+    .highlight-box { padding: 1rem 1.25rem; }
+    
+    .about-info h3 { font-size: 1.4rem; }
+    .linkedin-badge { margin-top: 1.5rem; }
 }
 
 @keyframes fadeInUp {
