@@ -7,675 +7,72 @@
     <meta name="description" content="Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #FAFAF8;
-            --color-text: #1a1a1a;
-            --color-text-muted: #5a5a5a;
-            --color-accent: #8B4513;
-            --color-accent-light: #D2691E;
-            --color-border: #e5e5e5;
-            --color-card: #ffffff;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Source Sans 3', -apple-system, sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.7;
-            font-size: 17px;
-            font-weight: 400;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 4rem 2rem 3rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-        }
-
-        header h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.85;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--color-card);
-            border-bottom: 1px solid var(--color-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        nav a:hover,
-        nav a.active {
-            background: var(--color-accent);
-            color: white;
-        }
-
-        /* Main Content */
-        main {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 3rem 2rem 5rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        section h2 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--color-text);
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--color-accent);
-            display: inline-block;
-        }
-
-        section p {
-            margin-bottom: 1.25rem;
-            color: var(--color-text-muted);
-        }
-
-        section p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Card Grid for Temario */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--color-card);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.75rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-accent);
-            transform: scaleY(0);
-            transition: transform 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            border-color: var(--color-accent-light);
-        }
-
-        .card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .card h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        .card .ejercicio-num {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-accent);
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-
-        /* Links List */
-        .links-section {
-            margin-top: 1.5rem;
-        }
-
-        .links-section h3 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .links-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .links-list li a {
-            display: block;
-            padding: 0.75rem 1rem;
-            background: var(--color-card);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--color-text);
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .links-list li a:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            transform: translateX(4px);
-        }
-
-        /* Resources */
-        .resource-item {
-            background: var(--color-card);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .resource-item h4 {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .resource-item p {
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .resource-item a.download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--color-accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background 0.2s ease;
-        }
-
-        .resource-item a.download-btn:hover {
-            background: var(--color-accent-light);
-        }
-
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, #f5f0eb 0%, #faf8f5 100%);
-            border-left: 4px solid var(--color-accent);
-            padding: 1.5rem 2rem;
-            border-radius: 0 8px 8px 0;
-            margin: 2rem 0;
-        }
-
-        .highlight-box p {
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .highlight-box a {
-            color: var(--color-accent);
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid currentColor;
-            transition: opacity 0.2s;
-        }
-
-        .highlight-box a:hover {
-            opacity: 0.7;
-        }
-
-        /* Other Resources */
-        .other-resources {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .other-resources h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .other-resources ul {
-            list-style: none;
-        }
-
-        .other-resources li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .other-resources li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-        }
-
-        .other-resources a {
-            color: var(--color-accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
-        }
-
-        .other-resources a:hover {
-            border-bottom-color: currentColor;
-        }
-
-        .other-resources em {
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            background: var(--color-card);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-
-        .about-text h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .about-text p {
-            margin-bottom: 0.5rem;
-        }
-
-        .about-text .title {
-            color: var(--color-accent);
-            font-weight: 500;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .contact-link:hover {
-            opacity: 0.7;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: var(--color-accent-light);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            header {
-                padding: 3rem 1.5rem 2rem;
-            }
-
-            nav ul {
-                gap: 0.25rem;
-                padding: 0.75rem 1rem;
-            }
-
-            nav a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-            }
-
-            main {
-                padding: 2rem 1.5rem 3rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Víctor Gutiérrez Marcos</h1>
-        <p>Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title">
+                <a href="index.html">Víctor Gutiérrez Marcos</a>
+            </h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#introduccion" class="active">Introducción</a></li>
-            <li><a href="#temario">Temario</a></li>
-            <li><a href="#organizacion">Organización</a></li>
-            <li><a href="#enlaces">Enlaces</a></li>
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-        </ul>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="index.html" class="active">INTRODUCCIÓN</a></li>
+                <li><a href="temario/index.html">TEMARIO</a></li>
+                <li><a href="organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="enlaces.html">ENLACES</a></li>
+                <li><a href="sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <section id="introduccion">
-            <h2>Introducción</h2>
-            <p>En esta página web encontrarás el <a href="#temario">temario</a> que he utilizado y elaborado durante mi preparación de la oposición, una serie de documentos útiles para la <a href="#organizacion">organización</a> del opositor, y algunos <a href="#enlaces">enlaces</a> de utilidad para preparar la oposición.</p>
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <h2 class="section-title">INTRODUCCIÓN</h2>
+                
+                <div class="content-text">
+                    <p>En esta página web encontrarás:</p>
+                    <ul>
+                        <li>El <a href="temario/index.html">temario</a> que he utilizado y elaborado durante mi preparación de la oposición.</li>
+                        <li>Una serie de documentos que considero útiles para la <a href="organizacion.html">organización</a> del opositor.</li>
+                        <li>Algunos <a href="enlaces.html">enlaces</a> de utilidad para preparar la oposición.</li>
+                    </ul>
 
-            <div class="highlight-box">
-                <p>Todos los contenidos están disponibles en una única carpeta (que se puede descargar en formato .zip):</p>
-                <a href="https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_?usp=drive_link" target="_blank">📁 Descargar todos los materiales</a>
-            </div>
+                    <p>Todos los contenidos están disponibles en una única carpeta (que se puede descargar en formato .zip) <a href="https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_?usp=drive_link" target="_blank" class="highlight-link">aquí</a>.</p>
 
-            <p>Confío en que todos estos materiales permitan hacer que esta oposición sea más accesible y faciliten la siempre complicada tarea del opositor.</p>
+                    <p>Confío que todos estos materiales permitan hacer que esta oposición sea más accesible y faciliten la siempre complicada tarea del opositor.</p>
 
-            <div class="other-resources">
-                <h3>Otras excelentes webs de recopilación de temas</h3>
-                <ul>
-                    <li><a href="https://www.alfonsosahuquillo.com/" target="_blank">Alfonso Sahuquillo</a> <em>(TCEE promoción 2016)</em></li>
-                    <li><a href="http://fabiansalazar.es/oposicion/" target="_blank">Miguel Fabián Salazar</a> <em>(TCEE promoción 2019)</em></li>
-                    <li><a href="https://atcee.es/la-oposicion-tcee/recursos_para_preparar_la_oposicion/" target="_blank">Recursos ATCEE</a> incluyendo un <a href="https://sites.google.com/view/apuntes-tcee/" target="_blank">repositorio de apuntes</a></li>
-                </ul>
+                    <h3>Otras excelentes webs de recopilación de temas:</h3>
+                    <ul>
+                        <li><a href="https://www.alfonsosahuquillo.com/" target="_blank">Alfonso Sahuquillo</a> <em>(Técnico Comercial y Economista del Estado de la promoción de 2016)</em>.</li>
+                        <li><a href="http://fabiansalazar.es/oposicion/" target="_blank">Miguel Fabián Salazar</a> <em>(Técnico Comercial y Economista del Estado de la promoción de 2019)</em>.</li>
+                        <li>La página web de la ATCEE contiene <a href="https://atcee.es/la-oposicion-tcee/recursos_para_preparar_la_oposicion/" target="_blank">recursos para preparar la oposición</a> incluyendo un <a href="https://sites.google.com/view/apuntes-tcee/" target="_blank">repositorio de apuntes</a>.</li>
+                    </ul>
 
-                <h3 style="margin-top: 1.5rem;">También es interesante conocer</h3>
-                <ul>
-                    <li>La <a href="https://atcee.es/la-oposicion-tcee/" target="_blank">web de la Asociación de TCEE</a> con información sobre el proceso y funciones del cuerpo</li>
-                    <li>En <a href="https://www.icex-ceco.es/empleados-publicos" target="_blank">ICEX-CECO</a> se organizan grupos de preparación</li>
-                    <li>La <a href="https://www.ecap.es/hazte-alumna" target="_blank">Escuela Ciudadana de Administración Pública (ECAP)</a> organiza formación presencial gratuita</li>
-                </ul>
-            </div>
-        </section>
+                    <h3>También es interesante conocer:</h3>
+                    <ul>
+                        <li>La <a href="https://atcee.es/la-oposicion-tcee/" target="_blank">web de la Asociación de Técnicos Comerciales y Economistas del Estado</a> incluye toda la información relevante sobre el proceso y las funciones del cuerpo.</li>
+                        <li>En <a href="https://www.icex-ceco.es/empleados-publicos" target="_blank">ICEX-CECO</a> se organizan grupos de preparación de la oposición.</li>
+                        <li>La Escuela Ciudadana de Administración Pública (<a href="https://www.ecap.es/hazte-alumna" target="_blank">ECAP</a>) organiza un programa de formación presencial, gratuito, y que tiene un carácter teórico y práctico, impartido por funcionarios y funcionarias públicas.</li>
+                    </ul>
 
-        <section id="temario">
-            <h2>Temario</h2>
-            <p>La recopilación de materiales es el principal objetivo de esta web. Están agrupados por ejercicios, adoptando para cada ejercicio el enfoque y el formato que he considerado más adecuado.</p>
-            
-            <p>Mi objetivo es compartir los temas que elaboré durante mi período como opositor, incluyendo contenidos de diversos manuales, artículos y temas de otros opositores. En especial, me basé en los temas y comentarios de mi preparador, Juan Luis Cordero Tarifa, y en los temas de ICEX-CECO.</p>
-            
-            <p>Los materiales están actualizados hasta finales de 2023 con la numeración del nuevo temario. Cada tema incluye al principio un breve comentario sobre los cambios necesarios para adaptarse al nuevo título.</p>
-
-            <div class="card-grid">
-                <a href="https://victorgutierrezmarcos.blogspot.com/p/primer-ejercicio.html" class="card" target="_blank">
-                    <span class="ejercicio-num">Ejercicio I</span>
-                    <h3>Primer ejercicio</h3>
-                    <p>Temas de Economía y Comercio Internacional</p>
-                </a>
-                <a href="https://victorgutierrezmarcos.blogspot.com/p/segundo-ejercicio.html" class="card" target="_blank">
-                    <span class="ejercicio-num">Ejercicio II</span>
-                    <h3>Segundo ejercicio</h3>
-                    <p>Temas de Economía Española y de la UE</p>
-                </a>
-                <a href="https://victorgutierrezmarcos.blogspot.com/p/tercer-ejercicio.html" class="card" target="_blank">
-                    <span class="ejercicio-num">Ejercicio III</span>
-                    <h3>Tercer ejercicio</h3>
-                    <p>Temas de Derecho</p>
-                </a>
-                <a href="https://victorgutierrezmarcos.blogspot.com/p/cuarto-ejercicio.html" class="card" target="_blank">
-                    <span class="ejercicio-num">Ejercicio IV</span>
-                    <h3>Cuarto ejercicio</h3>
-                    <p>Temas de Hacienda Pública</p>
-                </a>
-                <a href="https://victorgutierrezmarcos.blogspot.com/p/quinto-ejercicio.html" class="card" target="_blank">
-                    <span class="ejercicio-num">Ejercicio V</span>
-                    <h3>Quinto ejercicio</h3>
-                    <p>Idiomas: Inglés y Francés</p>
-                </a>
-            </div>
-
-            <div class="highlight-box" style="margin-top: 2rem;">
-                <p><strong>Nota importante:</strong> Los materiales aquí compartidos no son infalibles: (i) ni incluyen toda la información que se puede requerir al opositor; (ii) ni toda la información aquí contenida es necesaria para aprobar.</p>
-                <p style="margin-bottom: 0;">Si detectas cualquier error o tienes sugerencias, escríbeme a <a href="mailto:victorgutierrezmarcos@gmail.com">victorgutierrezmarcos@gmail.com</a></p>
-            </div>
-        </section>
-
-        <section id="organizacion">
-            <h2>Organización</h2>
-            <p>En este apartado, comparto archivos útiles para la preparación, en relación a la organización y la planificación del estudio:</p>
-
-            <div class="resource-item">
-                <h4>📊 Estrategia y organización</h4>
-                <p>Archivo de Excel que incluye: probabilidades de que caiga al menos un tema según los temas estudiados, simulador de sorteos de temas, y base para elaborar cronogramas y horarios semanales.</p>
-                <a href="https://drive.google.com/uc?export=download&id=1e21NwS2fS8so-AyDaPdOxUFrPENk0vAa" class="download-btn" target="_blank">Descargar Excel</a>
-            </div>
-
-            <div class="resource-item">
-                <h4>📑 Estructura del temario</h4>
-                <p>Presentación de PowerPoint que propone una manera de estructurar el temario con los temas del tercer y cuarto ejercicio (útil para tener una visión global).</p>
-                <a href="https://drive.google.com/uc?export=download&id=1L2ey8ixCpb2wNx_1jQWzGd-gOLq-6EyU" class="download-btn" target="_blank">Descargar PowerPoint</a>
-            </div>
-
-            <div class="resource-item">
-                <h4>🎤 Cómo cantar un tema</h4>
-                <p>Documento PDF pensado para echar un vistazo antes de comenzar a estudiar los temas. Sirve como introducción al formato y organización de los conceptos, con consejos sobre aspectos formales.</p>
-                <a href="https://drive.google.com/file/d/1DyKvef1rSRSsDEXfHT9YJHUv6X5h588c/view?usp=drive_link" class="download-btn" target="_blank">Ver PDF</a>
-            </div>
-
-            <div class="resource-item">
-                <h4>📝 Plantillas para elaborar temas</h4>
-                <p>Plantillas de Word que he utilizado para elaborar mis temas: una para temas largos y otra para temas más esquemáticos. Fácilmente modificables según preferencias personales.</p>
-                <a href="https://drive.google.com/uc?export=download&id=1ep2Ga5EzHOedioCNj2kazTRYgf07Bytv" class="download-btn" target="_blank">Descargar plantillas</a>
-            </div>
-        </section>
-
-        <section id="enlaces">
-            <h2>Enlaces</h2>
-            <p>Recursos útiles para mantenerse actualizado durante la preparación:</p>
-
-            <div class="links-section">
-                <h3>🇪🇸 Enlaces en español</h3>
-                <ul class="links-list">
-                    <li><a href="https://www.revistasice.com/" target="_blank">Revistas ICE</a></li>
-                    <li><a href="https://blognewdeal.com/" target="_blank">Blog New Deal</a></li>
-                    <li><a href="https://nadaesgratis.es/" target="_blank">Nada es Gratis</a></li>
-                    <li><a href="https://www.realinstitutoelcano.org/" target="_blank">Real Instituto Elcano</a></li>
-                    <li><a href="https://www.bde.es/wbe/es/noticias-eventos/blog/" target="_blank">Blog del Banco de España</a></li>
-                    <li><a href="https://www.imf.org/es/Blogs" target="_blank">Blog del FMI</a></li>
-                    <li><a href="https://www.wto.org/spanish/blogs_s/blogs_s.htm" target="_blank">Blog de la OMC</a></li>
-                </ul>
-            </div>
-
-            <div class="links-section">
-                <h3>🇬🇧 Enlaces en inglés</h3>
-                <ul class="links-list">
-                    <li><a href="https://www.piie.com/" target="_blank">Peterson Institute (PIIE)</a></li>
-                    <li><a href="https://www.ceps.eu/" target="_blank">Centre for European Policy Studies</a></li>
-                    <li><a href="https://www.bruegel.org/" target="_blank">Bruegel</a></li>
-                    <li><a href="https://www.economist.com/finance-and-economics" target="_blank">The Economist</a></li>
-                    <li><a href="https://www.ft.com/" target="_blank">Financial Times</a></li>
-                    <li><a href="https://www.project-syndicate.org/section/economics" target="_blank">Project Syndicate</a></li>
-                    <li><a href="https://www.hetwebsite.net/het/" target="_blank">History of Economic Thought</a></li>
-                    <li><a href="https://www.imf.org/en/Blogs" target="_blank">IMF Blogs</a></li>
-                    <li><a href="https://www.wto.org/english/blogs_e/blogs_e.htm" target="_blank">WTO Blogs</a></li>
-                    <li><a href="https://blogs.worldbank.org/en/home" target="_blank">World Bank Blogs</a></li>
-                </ul>
-            </div>
-
-            <div class="links-section">
-                <h3>🇫🇷 Enlaces en francés</h3>
-                <ul class="links-list">
-                    <li><a href="https://perspective.usherbrooke.ca/" target="_blank">Perspective Monde</a></li>
-                    <li><a href="https://www.latribune.fr/" target="_blank">La Tribune</a></li>
-                    <li><a href="https://www.lexpress.fr/" target="_blank">L'Express</a></li>
-                    <li><a href="https://www.lemonde.fr/" target="_blank">Le Monde</a></li>
-                    <li><a href="https://www.imf.org/fr/Blogs" target="_blank">Blog du FMI</a></li>
-                    <li><a href="https://www.wto.org/french/blogs_f/blogs_f.htm" target="_blank">Blog de l'OMC</a></li>
-                    <li><a href="https://blogs.worldbank.org/fr/home" target="_blank">Blogs Banque mondiale</a></li>
-                </ul>
-            </div>
-
-            <div class="links-section">
-                <h3>🎮 Algo más ameno</h3>
-                <ul class="links-list">
-                    <li><a href="https://oec.world/es/games/pick-5" target="_blank">OEC - Pick 5</a></li>
-                    <li><a href="https://oec.world/es/games/tradle" target="_blank">OEC - Tradle</a></li>
-                    <li><a href="https://oec.world/es/games/trivia" target="_blank">OEC - Trivia</a></li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Víctor Gutiérrez Marcos</h3>
-                    <p class="title">Técnico Comercial y Economista del Estado</p>
-                    <p>Promoción LXXIII</p>
-                    <a href="mailto:victorgutierrezmarcos@gmail.com" class="contact-link">
-                        ✉️ victorgutierrezmarcos@gmail.com
-                    </a>
+                    <p>Puedes escribirme a <a href="mailto:victorgutierrezmarcos@gmail.com">victorgutierrezmarcos@gmail.com</a>.</p>
                 </div>
-            </div>
-        </section>
+            </article>
+        </div>
     </main>
 
-    <footer>
-        <p>© 2024 Víctor Gutiérrez Marcos · <a href="mailto:victorgutierrezmarcos@gmail.com">Contacto</a></p>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Víctor Gutiérrez Marcos</p>
+        </div>
     </footer>
-
-    <script>
-        // Smooth scroll and active nav highlighting
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Update active nav on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
