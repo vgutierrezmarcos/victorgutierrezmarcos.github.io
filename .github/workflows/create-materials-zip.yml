@@ -1,0 +1,76 @@
+name: Create Materials ZIP
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  create-zip:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Create materials directory
+      run: |
+        mkdir -p materiales-tcee
+        
+    - name: Copy educational materials only
+      run: |
+        # Copiar todo excepto archivos web
+        rsync -av --progress . materiales-tcee/ \
+          --exclude='*.html' \
+          --exclude='*.css' \
+          --exclude='*.svg' \
+          --exclude='*.png' \
+          --exclude='*.jpg' \
+          --exclude='*.jpeg' \
+          --exclude='*.gif' \
+          --exclude='*.webp' \
+          --exclude='*.xml' \
+          --exclude='*.txt' \
+          --exclude='.gitignore' \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='CNAME' \
+          --exclude='materiales-tcee'
+        
+    - name: Create ZIP file
+      run: |
+        cd materiales-tcee
+        zip -r ../materiales-tcee.zip . -x "*.git*"
+        cd ..
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: materiales-tcee
+        path: materiales-tcee.zip
+        
+    - name: Get current date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+        
+    - name: Create or update release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: materiales-latest
+        name: Materiales TCEE (Actualizado ${{ steps.date.outputs.date }})
+        body: |
+          # Materiales para la Oposición TCEE
+          
+          Este archivo ZIP contiene todos los materiales educativos del repositorio:
+          - Temarios completos
+          - Recursos de organización
+          - Documentos de estudio
+          
+          **Excluye:** archivos del sitio web (HTML, CSS, imágenes, etc.)
+          
+          📅 Última actualización: ${{ steps.date.outputs.date }}
+        files: materiales-tcee.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
