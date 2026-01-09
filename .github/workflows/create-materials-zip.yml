@@ -65,41 +65,41 @@ jobs:
         
         # Contar archivos
         FILE_COUNT=$(find . -type f 2>/dev/null | wc -l)
-        echo "📊 Archivos encontrados: $FILE_COUNT"
+        echo "Archivos encontrados: $FILE_COUNT"
         
         if [ "$FILE_COUNT" -eq 0 ]; then
-          echo "⚠️ No hay archivos educativos en el repositorio"
-          echo "📝 Creando README explicativo..."
+          echo "No hay archivos educativos en el repositorio"
+          echo "Creando README explicativo..."
           
-          cat > README.md << 'EOF'
-# Materiales TCEE - Víctor Gutiérrez Marcos
-
-## 📚 Acceso a los materiales
-
-Los materiales educativos (PDFs, documentos, plantillas) están alojados en **Google Drive**.
-
-### 🔗 Enlaces directos:
-
-- **Todos los materiales**: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_
-- **Sitio web completo**: https://victorgutierrezmarcos.es
-
-### 📖 Contenido disponible:
-
-- Temario completo (5 ejercicios)
-- Recursos de organización
-- Plantillas de estudio
-- Enlaces útiles
-
----
-
-*Técnico Comercial y Economista del Estado - Promoción LXXIII*
-EOF
+          cat > README.md << 'ENDOFFILE'
+        # Materiales TCEE - Victor Gutierrez Marcos
+        
+        ## Acceso a los materiales
+        
+        Los materiales educativos (PDFs, documentos, plantillas) estan alojados en Google Drive.
+        
+        ### Enlaces directos:
+        
+        - Todos los materiales: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_
+        - Sitio web completo: https://victorgutierrezmarcos.es
+        
+        ### Contenido disponible:
+        
+        - Temario completo (5 ejercicios)
+        - Recursos de organizacion
+        - Plantillas de estudio
+        - Enlaces utiles
+        
+        ---
+        
+        Tecnico Comercial y Economista del Estado - Promocion LXXIII
+        ENDOFFILE
           
-          echo "✅ README creado"
+          echo "README creado"
         else
-          echo "✅ Se incluirán $FILE_COUNT archivos en el ZIP"
+          echo "Se incluiran $FILE_COUNT archivos en el ZIP"
           echo ""
-          echo "📄 Lista de archivos:"
+          echo "Lista de archivos:"
           find . -type f | sort
         fi
         
@@ -109,10 +109,10 @@ EOF
       run: |
         zip -r materiales-tcee.zip materiales-tcee/
         echo ""
-        echo "📦 Información del ZIP:"
+        echo "Informacion del ZIP:"
         ls -lh materiales-tcee.zip
         echo ""
-        echo "📋 Contenido del ZIP (primeros 30 elementos):"
+        echo "Contenido del ZIP (primeros 30 elementos):"
         unzip -l materiales-tcee.zip | head -35
         
     - name: Get current date
@@ -122,11 +122,11 @@ EOF
     - name: Delete existing release and tag
       continue-on-error: true
       run: |
-        echo "🗑️ Limpiando release anterior..."
+        echo "Limpiando release anterior..."
         gh release delete materiales-latest --yes 2>/dev/null || echo "No hay release previo"
         git tag -d materiales-latest 2>/dev/null || echo "No hay tag local"
         git push origin --delete materiales-latest 2>/dev/null || echo "No hay tag remoto"
-        echo "✅ Limpieza completada"
+        echo "Limpieza completada"
       env:
         GH_TOKEN: ${{ github.token }}
         
@@ -135,37 +135,8 @@ EOF
         
     - name: Create new release
       run: |
-        echo "📤 Creando nuevo release..."
-        gh release create materiales-latest \
-          materiales-tcee.zip \
-          --title "Materiales TCEE - ${{ steps.date.outputs.date }}" \
-          --notes "## 📚 Materiales para la Oposición TCEE
-          
-          **Víctor Gutiérrez Marcos** - Promoción LXXIII
-          
-          ### ℹ️ Información importante
-          
-          Los materiales principales (PDFs, documentos de estudio) están alojados en **Google Drive** 
-          y se acceden mediante los enlaces en el sitio web.
-          
-          Este ZIP contiene archivos del repositorio de GitHub (si los hay).
-          
-          ### 🔗 Acceso completo a los materiales:
-          
-          - 🌐 **Sitio web**: [victorgutierrezmarcos.es](https://victorgutierrezmarcos.es)
-          - 📁 **Google Drive**: [Ver todos los materiales](https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_)
-          
-          ### 📖 Contenido disponible:
-          
-          - Temario completo (Ejercicios I-V)
-          - Recursos de organización y planificación
-          - Plantillas para elaborar temas
-          - Enlaces útiles para la preparación
-          
-          ---
-          
-          📅 Actualizado: ${{ steps.date.outputs.date }}"
-        
-        echo "✅ Release creado exitosamente"
+        echo "Creando nuevo release..."
+        gh release create materiales-latest materiales-tcee.zip --title "Materiales TCEE - ${{ steps.date.outputs.date }}" --notes "Materiales para la Oposicion TCEE - Victor Gutierrez Marcos (Promocion LXXIII). Los materiales principales estan en Google Drive: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_. Sitio web: https://victorgutierrezmarcos.es. Actualizado: ${{ steps.date.outputs.date }}"
+        echo "Release creado exitosamente"
       env:
         GH_TOKEN: ${{ github.token }}
