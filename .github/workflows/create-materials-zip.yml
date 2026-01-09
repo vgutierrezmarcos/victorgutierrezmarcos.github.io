@@ -1,4 +1,4 @@
-name: Create Materials ZIP
+name: Zip desde GitHub
 
 on:
   push:
@@ -8,69 +8,88 @@ on:
 jobs:
   create-zip:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Create materials directory
       run: |
         mkdir -p materiales-tcee
         
-    - name: Copy educational materials only
+    - name: Copy all files
       run: |
-        # Copiar todo excepto archivos web
-        rsync -av --progress . materiales-tcee/ \
-          --exclude='*.html' \
-          --exclude='*.css' \
-          --exclude='*.svg' \
-          --exclude='*.png' \
-          --exclude='*.jpg' \
-          --exclude='*.jpeg' \
-          --exclude='*.gif' \
-          --exclude='*.webp' \
-          --exclude='*.xml' \
-          --exclude='*.txt' \
-          --exclude='.gitignore' \
-          --exclude='.git' \
-          --exclude='.github' \
-          --exclude='CNAME' \
-          --exclude='materiales-tcee'
+        # Copiar todo el repositorio
+        cp -r . materiales-tcee/
+        
+        # Eliminar archivos web del ZIP
+        cd materiales-tcee
+        find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.svg" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.webp" -o -name "*.xml" -o -name ".gitignore" -o -name "CNAME" -o -name "*.txt" \) -delete
+        
+        # Eliminar carpetas git
+        rm -rf .git .github
+        cd ..
+        
+    - name: List contents
+      run: |
+        echo "=== Contenido del directorio materiales-tcee ==="
+        ls -la materiales-tcee/
+        echo ""
+        echo "=== Archivos que se incluirán en el ZIP ==="
+        find materiales-tcee -type f
         
     - name: Create ZIP file
       run: |
         cd materiales-tcee
-        zip -r ../materiales-tcee.zip . -x "*.git*"
+        if [ "$(find . -type f | wc -l)" -eq 0 ]; then
+          echo "⚠️ AVISO: No hay archivos para incluir en el ZIP"
+          echo "Todos los materiales están en Google Drive"
+          # Crear un README explicativo
+          echo "# Materiales TCEE" > README.md
+          echo "" >> README.md
+          echo "Los materiales están disponibles en:" >> README.md
+          echo "https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_" >> README.md
+          echo "" >> README.md
+          echo "O visita: https://victorgutierrezmarcos.es" >> README.md
+        fi
         cd ..
-        
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: materiales-tcee
-        path: materiales-tcee.zip
+        zip -r materiales-tcee.zip materiales-tcee/
+        ls -lh materiales-tcee.zip
         
     - name: Get current date
       id: date
       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         
-    - name: Create or update release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: materiales-latest
-        name: Materiales TCEE (Actualizado ${{ steps.date.outputs.date }})
-        body: |
-          # Materiales para la Oposición TCEE
-          
-          Este archivo ZIP contiene todos los materiales educativos del repositorio:
-          - Temarios completos
-          - Recursos de organización
-          - Documentos de estudio
-          
-          **Excluye:** archivos del sitio web (HTML, CSS, imágenes, etc.)
-          
-          📅 Última actualización: ${{ steps.date.outputs.date }}
-        files: materiales-tcee.zip
-        draft: false
-        prerelease: false
+    - name: Delete old release if exists
+      continue-on-error: true
+      run: |
+        gh release delete materiales-latest --yes
+        git push origin :refs/tags/materiales-latest
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create new release
+      run: |
+        gh release create materiales-latest \
+          --title "Materiales TCEE (Actualizado ${{ steps.date.outputs.date }})" \
+          --notes "## 📚 Materiales para la Oposición TCEE
+          
+          ### ℹ️ Información importante
+          
+          Los materiales principales (PDFs, documentos) están alojados en **Google Drive** y se acceden mediante los enlaces en la web.
+          
+          Este ZIP contiene la estructura del sitio web sin archivos de diseño.
+          
+          ### 🔗 Enlaces útiles
+          
+          - 🌐 **Web completa**: [victorgutierrezmarcos.es](https://victorgutierrezmarcos.es)
+          - 📁 **Google Drive**: [Ver materiales](https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_)
+          
+          ---
+          
+          📅 Última actualización: ${{ steps.date.outputs.date }}" \
+          materiales-tcee.zip
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
