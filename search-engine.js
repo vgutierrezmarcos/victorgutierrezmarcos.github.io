@@ -94,14 +94,14 @@ class SearchEngine {
     /**
      * Calcula la relevancia de un item para una query
      */
-    calculateRelevance(item, queryTerms, queryNormalized) {
+    calculateRelevance(item, queryTerms, queryNormalized, isThemeNumber = false) {
         let score = 0;
         const itemText = this.normalize(
             `${item.title} ${item.description || ''} ${item.content || ''} ${(item.keywords || []).join(' ')}`
         );
 
         // Búsqueda específica por número de tema (prioridad máxima)
-        if (item.numero) {
+        if (item.numero && (isThemeNumber || queryNormalized.match(/\d+[a-z]\d+/))) {
             const themeVariations = this.normalizeThemeNumber(item.numero);
             const queryVariations = this.normalizeThemeNumber(queryNormalized);
             
@@ -131,6 +131,17 @@ class SearchEngine {
             }
             if (querySinPuntos.includes(numeroSinPuntos) || numeroSinPuntos.includes(querySinPuntos)) {
                 score += 150;
+            }
+            
+            // También buscar en keywords
+            if (item.keywords) {
+                const queryClean = queryNormalized.replace(/\s+/g, '').toLowerCase();
+                item.keywords.forEach(keyword => {
+                    const keywordClean = keyword.replace(/\./g, '').replace(/\s+/g, '').toLowerCase();
+                    if (keywordClean === queryClean) {
+                        score += 450;
+                    }
+                });
             }
         }
 
@@ -217,9 +228,13 @@ class SearchEngine {
         }
 
         const queryNormalized = this.normalize(query);
+        
+        // Detectar si es una búsqueda por número de tema
+        const isThemeNumber = /^\d+[\.\s\-]?[a-z][\.\s\-]?\d+$/i.test(query.trim());
+        
         const queryTerms = queryNormalized.split(' ').filter(t => t.length >= 2);
 
-        if (queryTerms.length === 0) {
+        if (queryTerms.length === 0 && !isThemeNumber) {
             return [];
         }
 
@@ -233,7 +248,7 @@ class SearchEngine {
         const results = allItems
             .map(item => ({
                 ...item,
-                relevance: this.calculateRelevance(item, queryTerms, queryNormalized)
+                relevance: this.calculateRelevance(item, queryTerms, queryNormalized, isThemeNumber)
             }))
             .filter(item => item.relevance > 0)
             .sort((a, b) => b.relevance - a.relevance)
