@@ -30,9 +30,24 @@ class SearchEngine {
             .toLowerCase()
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '') // Quitar acentos
-            .replace(/[^\w\s]/g, ' ') // Reemplazar puntuación por espacios
+            .replace(/[^\w\s.]/g, ' ') // Reemplazar puntuación por espacios (excepto puntos)
             .replace(/\s+/g, ' ') // Normalizar espacios
             .trim();
+    }
+    
+    /**
+     * Normaliza números de tema para comparación
+     * Genera variaciones: "3.A.8" → ["3.a.8", "3a8", "3 a 8"]
+     */
+    normalizeThemeNumber(numero) {
+        if (!numero) return [];
+        const normalized = this.normalize(numero);
+        return [
+            normalized,                           // "3.a.8"
+            normalized.replace(/\./g, ''),       // "3a8"
+            normalized.replace(/\./g, ' '),      // "3 a 8"
+            normalized.replace(/\./g, '-'),      // "3-a-8"
+        ];
     }
 
     /**
@@ -85,6 +100,40 @@ class SearchEngine {
             `${item.title} ${item.description || ''} ${item.content || ''} ${(item.keywords || []).join(' ')}`
         );
 
+        // Búsqueda específica por número de tema (prioridad máxima)
+        if (item.numero) {
+            const themeVariations = this.normalizeThemeNumber(item.numero);
+            const queryVariations = this.normalizeThemeNumber(queryNormalized);
+            
+            // Coincidencia exacta de número de tema
+            for (const themeVar of themeVariations) {
+                for (const queryVar of queryVariations) {
+                    if (themeVar === queryVar) {
+                        score += 500; // Peso muy alto para coincidencia exacta de número
+                    }
+                    if (themeVar.includes(queryVar) || queryVar.includes(themeVar)) {
+                        score += 200; // Peso alto para coincidencia parcial
+                    }
+                }
+            }
+            
+            // Búsqueda del número en el query normalizado
+            const numeroNormalized = this.normalize(item.numero);
+            if (queryNormalized.includes(numeroNormalized)) {
+                score += 300;
+            }
+            
+            // Variantes sin puntos (ej: "3a8", "3b15")
+            const numeroSinPuntos = numeroNormalized.replace(/\./g, '');
+            const querySinPuntos = queryNormalized.replace(/\./g, '').replace(/\s+/g, '');
+            if (querySinPuntos === numeroSinPuntos) {
+                score += 400;
+            }
+            if (querySinPuntos.includes(numeroSinPuntos) || numeroSinPuntos.includes(querySinPuntos)) {
+                score += 150;
+            }
+        }
+
         // Coincidencia exacta en título (peso alto)
         if (this.normalize(item.title).includes(queryNormalized)) {
             score += 100;
@@ -99,15 +148,13 @@ class SearchEngine {
                 score += 50;
             }
 
-            // Número de tema (muy relevante)
-            if (item.numero && this.normalize(item.numero).includes(term)) {
-                score += 80;
-            }
-
             // Keywords
             if (item.keywords) {
                 item.keywords.forEach(keyword => {
-                    if (this.normalize(keyword).includes(term)) {
+                    const keywordNorm = this.normalize(keyword);
+                    if (keywordNorm === term) {
+                        score += 40;
+                    } else if (keywordNorm.includes(term)) {
                         score += 30;
                     }
                 });
