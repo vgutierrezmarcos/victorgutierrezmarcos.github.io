@@ -520,33 +520,7 @@
                 <div class="test-container">
                     <div id="fase-seleccion">
                         <div class="content-text">
-                            <p>Configura tu simulacro de examen: selecciona los temas, el número de preguntas y el tiempo disponible. Las preguntas se seleccionarán aleatoriamente pero se ordenarán según el temario. No verás si tus respuestas son correctas hasta finalizar el examen.</p>
-                        </div>
-
-                        <!-- Configuración del examen -->
-                        <div class="config-examen">
-                            <h3>Configuración del examen</h3>
-                            <div class="config-grid">
-                                <div class="config-item">
-                                    <label for="num-preguntas">Número de preguntas</label>
-                                    <input type="number" id="num-preguntas" value="50" min="1" max="200">
-                                    <span class="config-hint">Máximo: <span id="max-preguntas">0</span> disponibles</span>
-                                </div>
-                                <div class="config-item">
-                                    <label for="tiempo-examen">Tiempo disponible (minutos)</label>
-                                    <input type="number" id="tiempo-examen" value="120" min="1" max="300">
-                                    <span class="config-hint">Recomendado: 2,4 min/pregunta</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Filtro de preguntas oficiales -->
-                        <div class="filtro-oficial" id="filtro-oficial-container">
-                            <input type="checkbox" id="solo-oficiales" checked>
-                            <div>
-                                <label for="solo-oficiales">Incluir sólo preguntas de exámenes oficiales</label>
-                                <div class="filtro-hint">Excluye preguntas de elaboración propia o de otras fuentes</div>
-                            </div>
+                            <p>Configura tu simulacro de examen: selecciona los temas, el número de preguntas y el tiempo disponible.</p>
                         </div>
 
                         <div class="tema-selector">
@@ -563,6 +537,43 @@
                                 <span class="toggle-all" data-parte="B">Seleccionar todos</span>
                             </h3>
                             <div class="temas-grid" id="temas-parte-b"></div>
+                        </div>
+
+                        <!-- Filtro de preguntas oficiales -->
+                        <div class="filtro-oficial" id="filtro-oficial-container">
+                            <input type="checkbox" id="solo-oficiales" checked>
+                            <div>
+                                <label for="solo-oficiales">Incluir sólo preguntas de exámenes oficiales</label>
+                                <div class="filtro-hint">Excluye preguntas de simulacros o de otras fuentes</div>
+                            </div>
+                        </div>
+
+                        <!-- Configuración del examen -->
+                        <div class="config-examen">
+                            <h3>Configuración del examen</h3>
+                            <div class="config-grid">
+                                <div class="config-item">
+                                    <label for="num-preguntas">Número de preguntas</label>
+                                    <input type="number" id="num-preguntas" value="50" min="1" max="200">
+                                    <span class="config-hint">Máximo: <span id="max-preguntas">0</span> disponibles</span>
+                                </div>
+                                <div class="config-item">
+                                    <label for="tiempo-examen">Tiempo disponible (minutos)</label>
+                                    <input type="number" id="tiempo-examen" value="120" min="1" max="300">
+                                </div>
+                                <div class="config-item">
+                                    <label for="puntos-acierto">Puntos por acierto</label>
+                                    <input type="number" id="puntos-acierto" value="1" min="0" max="10" step="0.01">
+                                </div>
+                                <div class="config-item">
+                                    <label for="puntos-fallo">Puntos por fallo</label>
+                                    <input type="number" id="puntos-fallo" value="-0.33" min="-10" max="0" step="0.01">
+                                </div>
+                                <div class="config-item">
+                                    <label for="puntos-blanco">Puntos en blanco</label>
+                                    <input type="number" id="puntos-blanco" value="0" min="-10" max="10" step="0.01">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="selection-summary">
@@ -747,9 +758,18 @@
             document.getElementById('max-preguntas').textContent = preguntasFiltradas.length;
             document.getElementById('btn-comenzar').disabled = preguntasFiltradas.length === 0;
             
-            // Ajustar el máximo del input
+            // Ajustar el máximo del input y acotar el valor actual
             const inputNumPreguntas = document.getElementById('num-preguntas');
             inputNumPreguntas.max = preguntasFiltradas.length;
+            inputNumPreguntas.min = preguntasFiltradas.length > 0 ? 1 : 0;
+            
+            // Acotar el valor actual al rango válido
+            const valorActual = parseInt(inputNumPreguntas.value) || 0;
+            if (valorActual > preguntasFiltradas.length) {
+                inputNumPreguntas.value = preguntasFiltradas.length;
+            } else if (valorActual < 1 && preguntasFiltradas.length > 0) {
+                inputNumPreguntas.value = Math.min(50, preguntasFiltradas.length);
+            }
         }
 
         function obtenerOrdenTema(pregunta) {
@@ -967,6 +987,11 @@
             // Calcular tiempo transcurrido
             tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000);
             
+            // Obtener configuración de puntuación
+            const puntosAcierto = parseFloat(document.getElementById('puntos-acierto').value) || 1;
+            const puntosFallo = parseFloat(document.getElementById('puntos-fallo').value) || -0.33;
+            const puntosBlanco = parseFloat(document.getElementById('puntos-blanco').value) || 0;
+            
             // Calcular resultados
             let correctas = 0;
             let incorrectas = 0;
@@ -983,8 +1008,9 @@
                 }
             });
             
-            const puntosBrutos = correctas - (incorrectas * 0.25);
-            const nota = Math.max(0, (puntosBrutos / preguntasExamen.length) * 20);
+            const puntosBrutos = (correctas * puntosAcierto) + (incorrectas * puntosFallo) + (sinResponder * puntosBlanco);
+            const maxPuntos = preguntasExamen.length * puntosAcierto;
+            const nota = Math.max(0, (puntosBrutos / maxPuntos) * 20);
             
             document.getElementById('fase-seleccion').classList.add('hidden');
             document.getElementById('fase-examen').classList.add('hidden');
