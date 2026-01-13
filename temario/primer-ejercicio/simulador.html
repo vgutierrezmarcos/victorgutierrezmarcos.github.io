@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Test | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Simulador de exámenes tipo test para la oposición a Técnico Comercial y Economista del Estado">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Simulador de Test | Víctor Gutiérrez Marcos">
+    <meta property="og:description" content="Practica con preguntas de exámenes oficiales de la oposición a TCEE">
+    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://victorgutierrezmarcos.es/temario/primer-ejercicio/simulador.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../search-styles.css">
+    <style>
+        .test-container { position: relative; z-index: 1; }
+
+        .tema-selector { margin-bottom: 2rem; }
+        .tema-selector h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tema-selector h3 .toggle-all {
+            font-size: 0.8rem;
+            font-family: var(--font-ui);
+            color: var(--color-primary);
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .tema-selector h3 .toggle-all:hover { color: var(--color-primary-dark); }
+
+        .temas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .tema-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .tema-checkbox:hover { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .tema-checkbox.selected { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .tema-checkbox input[type="checkbox"] {
+            margin-top: 2px;
+            accent-color: var(--color-primary);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .tema-checkbox label {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+        .tema-checkbox .tema-code {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .selection-summary {
+            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .selection-summary .summary-text {
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+        .selection-summary .summary-text strong { color: var(--color-primary); }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.25rem;
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .btn-secondary:hover { background: var(--color-primary-pale); }
+
+        .examen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border-light);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .examen-progress {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        .examen-progress strong { color: var(--color-primary); font-size: 1.1rem; }
+        .examen-stats {
+            display: flex;
+            gap: 1.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+        }
+        .stat { display: flex; align-items: center; gap: 0.3rem; }
+        .stat.correct { color: #2e7d32; }
+        .stat.incorrect { color: #c62828; }
+        .stat.skipped { color: var(--color-text-muted); }
+
+        .pregunta-container {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .pregunta-numero {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pregunta-numero::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--color-accent-gold);
+        }
+        .pregunta-tipo {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+        }
+        .pregunta-enunciado {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        .opciones-list { list-style: none; padding: 0; margin: 0; }
+        .opcion-item { margin-bottom: 0.75rem; }
+        .opcion-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: var(--color-bg-light);
+            border: 2px solid var(--color-border-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--color-text);
+        }
+        .opcion-btn:hover:not(.disabled) { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .opcion-btn.selected { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .opcion-btn.correct { background: #e8f5e9; border-color: #4caf50; }
+        .opcion-btn.incorrect { background: #ffebee; border-color: #f44336; }
+        .opcion-btn.was-correct { background: #e8f5e9; border-color: #4caf50; }
+        .opcion-btn.disabled { cursor: default; }
+        .opcion-letra {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-text);
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .opcion-btn.selected .opcion-letra { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); }
+        .opcion-btn.correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
+        .opcion-btn.incorrect .opcion-letra { background: #f44336; border-color: #f44336; color: var(--color-white); }
+        .opcion-btn.was-correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
+
+        .examen-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .feedback-box {
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+        }
+        .feedback-box.correct { background: #e8f5e9; border: 1px solid #4caf50; color: #2e7d32; }
+        .feedback-box.incorrect { background: #ffebee; border: 1px solid #f44336; color: #c62828; }
+        .feedback-box.accepted { background: #fff3cd; border: 1px solid #ffc107; color: #856404; }
+
+        .resultados-header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .resultados-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .resultados-nota {
+            font-family: var(--font-ui);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        .resultados-desglose {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+        .resultados-desglose .stat-box { padding: 0.5rem 1rem; background: var(--color-white); border-radius: 4px; }
+        .resultados-desglose .stat-box.correct { color: #2e7d32; }
+        .resultados-desglose .stat-box.incorrect { color: #c62828; }
+        .resultados-desglose .stat-box.skipped { color: var(--color-text-muted); }
+
+        .revision-pregunta {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .revision-pregunta.resultado-correct { border-left: 4px solid #4caf50; }
+        .revision-pregunta.resultado-incorrect { border-left: 4px solid #f44336; }
+        .revision-pregunta.resultado-skipped { border-left: 4px solid var(--color-text-light); }
+        .revision-pregunta.resultado-accepted { border-left: 4px solid #ffc107; }
+        .revision-meta {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border-light);
+        }
+        .revision-meta .origen { font-weight: 500; color: var(--color-primary); }
+        .revision-meta .temas-tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--color-bg-light);
+            border-radius: 3px;
+            margin: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .temas-grid { grid-template-columns: 1fr; }
+            .selection-summary { flex-direction: column; text-align: center; }
+            .examen-header { flex-direction: column; align-items: flex-start; }
+            .examen-actions { flex-direction: column; }
+            .examen-actions .btn-primary, .examen-actions .btn-secondary { width: 100%; justify-content: center; }
+            .pregunta-container { padding: 1.25rem; }
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../index.html">INTRODUCCIÓN</a></li>
+                <li><a href="../index.html" class="active">TEMARIO</a></li>
+                <li><a href="../../organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="../../enlaces.html">ENLACES</a></li>
+                <li><a href="../../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <nav class="breadcrumb">
+                    <a href="../index.html">Temario</a><span>›</span><a href="../primer-ejercicio.html">Primer ejercicio</a><span>›</span><a href="test.html">Test</a><span>›</span>Simulador
+                </nav>
+                <h2 class="section-title">Simulador de Test</h2>
+                
+                <div class="test-container">
+                    <div id="fase-seleccion">
+                        <div class="content-text">
+                            <p>Selecciona los temas que hayas estudiado para practicar con preguntas de exámenes oficiales. Las preguntas se mostrarán de forma aleatoria y podrás finalizar el test cuando lo desees.</p>
+                        </div>
+
+                        <div class="tema-selector">
+                            <h3>
+                                Parte A) Economía General
+                                <span class="toggle-all" data-parte="A">Seleccionar todos</span>
+                            </h3>
+                            <div class="temas-grid" id="temas-parte-a"></div>
+                        </div>
+
+                        <div class="tema-selector">
+                            <h3>
+                                Parte B) Economía Financiera, Internacional y Relaciones Económicas
+                                <span class="toggle-all" data-parte="B">Seleccionar todos</span>
+                            </h3>
+                            <div class="temas-grid" id="temas-parte-b"></div>
+                        </div>
+
+                        <div class="selection-summary">
+                            <div class="summary-text">
+                                <strong id="temas-count">0</strong> temas seleccionados · 
+                                <strong id="preguntas-count">0</strong> preguntas disponibles
+                            </div>
+                            <button class="btn-primary" id="btn-comenzar" disabled>Comenzar test →</button>
+                        </div>
+                    </div>
+
+                    <div id="fase-examen" class="hidden">
+                        <div class="examen-header">
+                            <div class="examen-progress">
+                                Pregunta <strong id="pregunta-actual">1</strong> de <strong id="total-preguntas">0</strong>
+                            </div>
+                            <div class="examen-stats">
+                                <span class="stat correct">✓ <span id="stat-correct">0</span></span>
+                                <span class="stat incorrect">✗ <span id="stat-incorrect">0</span></span>
+                                <span class="stat skipped">○ <span id="stat-skipped">0</span></span>
+                            </div>
+                        </div>
+
+                        <div class="pregunta-container" id="pregunta-container">
+                            <div class="pregunta-numero" id="pregunta-numero"></div>
+                            <div class="pregunta-enunciado" id="pregunta-enunciado"></div>
+                            <ul class="opciones-list" id="opciones-list"></ul>
+                            <div class="feedback-box hidden" id="feedback-box"></div>
+                        </div>
+
+                        <div class="examen-actions">
+                            <button class="btn-secondary" id="btn-finalizar">Finalizar test</button>
+                            <div>
+                                <button class="btn-secondary" id="btn-saltar">Saltar pregunta</button>
+                                <button class="btn-primary hidden" id="btn-siguiente">Siguiente pregunta →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fase-resultados" class="hidden">
+                        <div class="resultados-header">
+                            <h3>Resultados del test</h3>
+                            <div class="resultados-nota" id="resultados-nota">0,00</div>
+                            <div class="resultados-desglose">
+                                <div class="stat-box correct">✓ <span id="final-correct">0</span> correctas</div>
+                                <div class="stat-box incorrect">✗ <span id="final-incorrect">0</span> incorrectas</div>
+                                <div class="stat-box skipped">○ <span id="final-skipped">0</span> sin contestar</div>
+                            </div>
+                        </div>
+
+                        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Revisión de preguntas</h3>
+                        <div id="revision-container"></div>
+
+                        <div class="selection-summary">
+                            <button class="btn-secondary" id="btn-volver">← Volver a seleccionar temas</button>
+                            <button class="btn-primary" id="btn-repetir">Repetir con los mismos temas</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Víctor Gutiérrez Marcos</p>
+        </div>
+    </footer>
+
+    <script src="../../search-engine.js"></script>
+    <script src="../../search-ui.js"></script>
+    <script>
+        let datosTest = null;
+        let temasSeleccionados = new Set();
+        let preguntasFiltradas = [];
+        let preguntasExamen = [];
+        let indicePreguntaActual = 0;
+        let respuestasUsuario = [];
+        let respondida = false;
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('preguntas.json');
+                datosTest = await response.json();
+                inicializarSelectores();
+            } catch (error) {
+                console.error('Error cargando preguntas:', error);
+                alert('Error al cargar las preguntas. Por favor, recarga la página.');
+            }
+        });
+
+        function inicializarSelectores() {
+            const temasParteA = document.getElementById('temas-parte-a');
+            const temasParteB = document.getElementById('temas-parte-b');
+
+            Object.entries(datosTest.temas).forEach(([codigo, nombre]) => {
+                const container = codigo.startsWith('3.A') ? temasParteA : temasParteB;
+                const numTema = codigo.replace('3.A.', '').replace('3.B.', '');
+                const preguntasTema = datosTest.preguntas.filter(p => p.temas.includes(codigo)).length;
+                
+                const div = document.createElement('div');
+                div.className = 'tema-checkbox';
+                div.innerHTML = `
+                    <input type="checkbox" id="${codigo}" value="${codigo}">
+                    <label for="${codigo}">
+                        <span class="tema-code">Tema ${numTema}</span>: ${nombre}
+                        ${preguntasTema > 0 ? `<span style="color: var(--color-text-light); font-size: 0.8rem;"> (${preguntasTema})</span>` : ''}
+                    </label>
+                `;
+                container.appendChild(div);
+
+                const checkbox = div.querySelector('input');
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        temasSeleccionados.add(codigo);
+                        div.classList.add('selected');
+                    } else {
+                        temasSeleccionados.delete(codigo);
+                        div.classList.remove('selected');
+                    }
+                    actualizarContadores();
+                });
+
+                div.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'INPUT') {
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change'));
+                    }
+                });
+            });
+
+            document.querySelectorAll('.toggle-all').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parte = this.dataset.parte;
+                    const prefix = parte === 'A' ? '3.A' : '3.B';
+                    const checkboxes = document.querySelectorAll(`input[value^="${prefix}"]`);
+                    const todosSeleccionados = Array.from(checkboxes).every(cb => cb.checked);
+                    
+                    checkboxes.forEach(cb => {
+                        cb.checked = !todosSeleccionados;
+                        cb.dispatchEvent(new Event('change'));
+                    });
+                    
+                    this.textContent = todosSeleccionados ? 'Seleccionar todos' : 'Deseleccionar todos';
+                });
+            });
+
+            document.getElementById('btn-comenzar').addEventListener('click', comenzarExamen);
+            document.getElementById('btn-finalizar').addEventListener('click', finalizarExamen);
+            document.getElementById('btn-saltar').addEventListener('click', saltarPregunta);
+            document.getElementById('btn-siguiente').addEventListener('click', siguientePregunta);
+            document.getElementById('btn-volver').addEventListener('click', volverASeleccion);
+            document.getElementById('btn-repetir').addEventListener('click', repetirExamen);
+        }
+
+        function actualizarContadores() {
+            preguntasFiltradas = datosTest.preguntas.filter(pregunta => 
+                pregunta.temas.some(tema => temasSeleccionados.has(tema))
+            );
+            document.getElementById('temas-count').textContent = temasSeleccionados.size;
+            document.getElementById('preguntas-count').textContent = preguntasFiltradas.length;
+            document.getElementById('btn-comenzar').disabled = preguntasFiltradas.length === 0;
+        }
+
+        function comenzarExamen() {
+            preguntasExamen = [...preguntasFiltradas].sort(() => Math.random() - 0.5);
+            indicePreguntaActual = 0;
+            respuestasUsuario = [];
+            
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-examen').classList.remove('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+            document.getElementById('total-preguntas').textContent = preguntasExamen.length;
+            
+            actualizarEstadisticas();
+            mostrarPregunta();
+        }
+
+        function mostrarPregunta() {
+            if (indicePreguntaActual >= preguntasExamen.length) {
+                finalizarExamen();
+                return;
+            }
+
+            respondida = false;
+            const pregunta = preguntasExamen[indicePreguntaActual];
+            
+            document.getElementById('pregunta-actual').textContent = indicePreguntaActual + 1;
+            
+            let tipoTag = '';
+            if (pregunta.tipo_pregunta === 'incorrecta') {
+                tipoTag = '<span class="pregunta-tipo">Señale la INCORRECTA</span>';
+            } else if (pregunta.tipo_pregunta === 'aceptada') {
+                tipoTag = '<span class="pregunta-tipo">Anulada - Todas válidas</span>';
+            }
+            
+            document.getElementById('pregunta-numero').innerHTML = `Pregunta ${indicePreguntaActual + 1}${tipoTag}`;
+            document.getElementById('pregunta-enunciado').textContent = pregunta.enunciado;
+            
+            const opcionesList = document.getElementById('opciones-list');
+            opcionesList.innerHTML = '';
+            
+            ['a', 'b', 'c', 'd'].forEach(letra => {
+                const li = document.createElement('li');
+                li.className = 'opcion-item';
+                
+                const btn = document.createElement('button');
+                btn.className = 'opcion-btn';
+                btn.dataset.opcion = letra;
+                btn.innerHTML = `
+                    <span class="opcion-letra">${letra.toUpperCase()}</span>
+                    <span class="opcion-texto">${pregunta.opciones[letra]}</span>
+                `;
+                btn.addEventListener('click', () => seleccionarOpcion(letra));
+                
+                li.appendChild(btn);
+                opcionesList.appendChild(li);
+            });
+            
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('btn-siguiente').classList.add('hidden');
+            document.getElementById('btn-saltar').classList.remove('hidden');
+        }
+
+        function seleccionarOpcion(letra) {
+            if (respondida) return;
+            respondida = true;
+            
+            const pregunta = preguntasExamen[indicePreguntaActual];
+            const esCorrecta = pregunta.respuesta.includes(letra);
+            const esAceptada = pregunta.tipo_pregunta === 'aceptada';
+            
+            respuestasUsuario.push({
+                preguntaId: pregunta.id,
+                respuesta: letra,
+                correcta: esCorrecta || esAceptada
+            });
+            
+            document.querySelectorAll('.opcion-btn').forEach(btn => {
+                btn.classList.add('disabled');
+                const opcion = btn.dataset.opcion;
+                
+                if (opcion === letra) {
+                    btn.classList.add('selected');
+                    if (esAceptada || esCorrecta) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                } else if (pregunta.respuesta.includes(opcion) && !esAceptada) {
+                    btn.classList.add('was-correct');
+                }
+            });
+            
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.classList.remove('hidden', 'correct', 'incorrect', 'accepted');
+            
+            if (esAceptada) {
+                feedbackBox.classList.add('accepted');
+                feedbackBox.innerHTML = `<strong>Pregunta anulada:</strong> Todas las respuestas se consideran correctas.`;
+            } else if (esCorrecta) {
+                feedbackBox.classList.add('correct');
+                feedbackBox.innerHTML = `<strong>¡Correcto!</strong>`;
+            } else {
+                feedbackBox.classList.add('incorrect');
+                const correctas = pregunta.respuesta.map(r => r.toUpperCase()).join(', ');
+                feedbackBox.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta es: ${correctas}`;
+            }
+            
+            actualizarEstadisticas();
+            document.getElementById('btn-siguiente').classList.remove('hidden');
+            document.getElementById('btn-saltar').classList.add('hidden');
+        }
+
+        function saltarPregunta() {
+            respuestasUsuario.push({
+                preguntaId: preguntasExamen[indicePreguntaActual].id,
+                respuesta: null,
+                correcta: false,
+                saltada: true
+            });
+            actualizarEstadisticas();
+            indicePreguntaActual++;
+            mostrarPregunta();
+        }
+
+        function siguientePregunta() {
+            indicePreguntaActual++;
+            mostrarPregunta();
+        }
+
+        function actualizarEstadisticas() {
+            const correctas = respuestasUsuario.filter(r => r.correcta && !r.saltada).length;
+            const incorrectas = respuestasUsuario.filter(r => !r.correcta && !r.saltada).length;
+            const saltadas = respuestasUsuario.filter(r => r.saltada).length;
+            
+            document.getElementById('stat-correct').textContent = correctas;
+            document.getElementById('stat-incorrect').textContent = incorrectas;
+            document.getElementById('stat-skipped').textContent = saltadas;
+        }
+
+        function finalizarExamen() {
+            while (respuestasUsuario.length < preguntasExamen.length) {
+                respuestasUsuario.push({
+                    preguntaId: preguntasExamen[respuestasUsuario.length].id,
+                    respuesta: null,
+                    correcta: false,
+                    saltada: true
+                });
+            }
+            
+            const correctas = respuestasUsuario.filter(r => r.correcta && !r.saltada).length;
+            const incorrectas = respuestasUsuario.filter(r => !r.correcta && !r.saltada).length;
+            const saltadas = respuestasUsuario.filter(r => r.saltada).length;
+            
+            const puntosBrutos = correctas - (incorrectas * 0.25);
+            const nota = Math.max(0, (puntosBrutos / preguntasExamen.length) * 20);
+            
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-examen').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.remove('hidden');
+            
+            document.getElementById('resultados-nota').textContent = nota.toFixed(2).replace('.', ',') + ' / 20';
+            document.getElementById('final-correct').textContent = correctas;
+            document.getElementById('final-incorrect').textContent = incorrectas;
+            document.getElementById('final-skipped').textContent = saltadas;
+            
+            generarRevision();
+        }
+
+        function generarRevision() {
+            const container = document.getElementById('revision-container');
+            container.innerHTML = '';
+            
+            preguntasExamen.forEach((pregunta, index) => {
+                const respuestaUsuario = respuestasUsuario[index];
+                const examen = datosTest.examenes.find(e => e.id === pregunta.examen);
+                
+                let resultado = 'skipped';
+                if (!respuestaUsuario.saltada) {
+                    if (pregunta.tipo_pregunta === 'aceptada') {
+                        resultado = 'accepted';
+                    } else {
+                        resultado = respuestaUsuario.correcta ? 'correct' : 'incorrect';
+                    }
+                }
+                
+                const div = document.createElement('div');
+                div.className = `revision-pregunta resultado-${resultado}`;
+                
+                let opcionesHtml = '';
+                ['a', 'b', 'c', 'd'].forEach(letra => {
+                    let clase = '';
+                    let marca = '';
+                    
+                    if (respuestaUsuario.respuesta === letra) {
+                        if (pregunta.tipo_pregunta === 'aceptada' || pregunta.respuesta.includes(letra)) {
+                            clase = 'correct';
+                            marca = ' ✓';
+                        } else {
+                            clase = 'incorrect';
+                            marca = ' ✗';
+                        }
+                    } else if (pregunta.respuesta.includes(letra) && pregunta.tipo_pregunta !== 'aceptada') {
+                        clase = 'was-correct';
+                        marca = ' ←';
+                    }
+                    
+                    opcionesHtml += `
+                        <li class="opcion-item">
+                            <div class="opcion-btn disabled ${clase}">
+                                <span class="opcion-letra">${letra.toUpperCase()}</span>
+                                <span class="opcion-texto">${pregunta.opciones[letra]}${marca}</span>
+                            </div>
+                        </li>
+                    `;
+                });
+                
+                const temasNombres = pregunta.temas.map(t => 
+                    `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`
+                ).join('');
+                
+                div.innerHTML = `
+                    <div class="pregunta-numero">
+                        Pregunta ${index + 1}
+                        ${pregunta.tipo_pregunta === 'incorrecta' ? '<span class="pregunta-tipo">INCORRECTA</span>' : ''}
+                        ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
+                    </div>
+                    <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                    <ul class="opciones-list">${opcionesHtml}</ul>
+                    <div class="revision-meta">
+                        <div class="origen">${examen.nombre} - Pregunta ${pregunta.numero}</div>
+                        <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+
+        function volverASeleccion() {
+            document.getElementById('fase-seleccion').classList.remove('hidden');
+            document.getElementById('fase-examen').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+        }
+
+        function repetirExamen() {
+            comenzarExamen();
+        }
+    </script>
+</body>
+</html>
