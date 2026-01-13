@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Test | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Simulador de exámenes tipo test para la oposición a Técnico Comercial y Economista del Estado">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Simulador de Test | Víctor Gutiérrez Marcos">
+    <meta property="og:description" content="Practica con preguntas de exámenes oficiales de la oposición a TCEE">
+    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://victorgutierrezmarcos.es/temario/primer-ejercicio/simulador.html">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../search-styles.css">
+    <style>
+        .test-container { position: relative; z-index: 1; }
+
+        .tema-selector { margin-bottom: 2rem; }
+        .tema-selector h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tema-selector h3 .toggle-all {
+            font-size: 0.8rem;
+            font-family: var(--font-ui);
+            color: var(--color-primary);
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .tema-selector h3 .toggle-all:hover { color: var(--color-primary-dark); }
+
+        .temas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .tema-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .tema-checkbox:hover { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .tema-checkbox.selected { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .tema-checkbox input[type="checkbox"] {
+            margin-top: 2px;
+            accent-color: var(--color-primary);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .tema-checkbox label {
+            font-size: 0.85rem;
+            color: var(--color-text);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+        .tema-checkbox .tema-code {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .selection-summary {
+            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .selection-summary .summary-text {
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+        .selection-summary .summary-text strong { color: var(--color-primary); }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.25rem;
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .btn-secondary:hover { background: var(--color-primary-pale); }
+
+        .examen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border-light);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .examen-progress {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        .examen-progress strong { color: var(--color-primary); font-size: 1.1rem; }
+        .examen-stats {
+            display: flex;
+            gap: 1.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+        }
+        .stat { display: flex; align-items: center; gap: 0.3rem; }
+        .stat.correct { color: #2e7d32; }
+        .stat.incorrect { color: #c62828; }
+        .stat.skipped { color: var(--color-text-muted); }
+
+        .pregunta-container {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .pregunta-numero {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .pregunta-numero::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--color-accent-gold);
+        }
+        .pregunta-tipo {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+        }
+        .pregunta-enunciado {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        .opciones-list { list-style: none; padding: 0; margin: 0; }
+        .opcion-item { margin-bottom: 0.75rem; }
+        .opcion-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: var(--color-bg-light);
+            border: 2px solid var(--color-border-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--color-text);
+        }
+        .opcion-btn:hover:not(.disabled) { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .opcion-btn.selected { background: var(--color-primary-pale); border-color: var(--color-primary); }
+        .opcion-btn.correct { background: #e8f5e9; border-color: #4caf50; }
+        .opcion-btn.incorrect { background: #ffebee; border-color: #f44336; }
+        .opcion-btn.was-correct { background: #e8f5e9; border-color: #4caf50; }
+        .opcion-btn.disabled { cursor: default; }
+        .opcion-letra {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-text);
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+        .opcion-btn.selected .opcion-letra { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); }
+        .opcion-btn.correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
+        .opcion-btn.incorrect .opcion-letra { background: #f44336; border-color: #f44336; color: var(--color-white); }
+        .opcion-btn.was-correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
+
+        .examen-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .feedback-box {
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+        }
+        .feedback-box.correct { background: #e8f5e9; border: 1px solid #4caf50; color: #2e7d32; }
+        .feedback-box.incorrect { background: #ffebee; border: 1px solid #f44336; color: #c62828; }
+        .feedback-box.accepted { background: #fff3cd; border: 1px solid #ffc107; color: #856404; }
+
+        .resultados-header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .resultados-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .resultados-nota {
+            font-family: var(--font-ui);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        .resultados-desglose {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+        .resultados-desglose .stat-box { padding: 0.5rem 1rem; background: var(--color-white); border-radius: 4px; }
+        .resultados-desglose .stat-box.correct { color: #2e7d32; }
+        .resultados-desglose .stat-box.incorrect { color: #c62828; }
+        .resultados-desglose .stat-box.skipped { color: var(--color-text-muted); }
+
+        .revision-pregunta {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .revision-pregunta.resultado-correct { border-left: 4px solid #4caf50; }
+        .revision-pregunta.resultado-incorrect { border-left: 4px solid #f44336; }
+        .revision-pregunta.resultado-skipped { border-left: 4px solid var(--color-text-light); }
+        .revision-pregunta.resultado-accepted { border-left: 4px solid #ffc107; }
+        .revision-meta {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border-light);
+        }
+        .revision-meta .origen { font-weight: 500; color: var(--color-primary); }
+        .revision-meta .temas-tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--color-bg-light);
+            border-radius: 3px;
+            margin: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+            .temas-grid { grid-template-columns: 1fr; }
+            .selection-summary { flex-direction: column; text-align: center; }
+            .examen-header { flex-direction: column; align-items: flex-start; }
+            .examen-actions { flex-direction: column; }
+            .examen-actions .btn-primary, .examen-actions .btn-secondary { width: 100%; justify-content: center; }
+            .pregunta-container { padding: 1.25rem; }
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../index.html">INTRODUCCIÓN</a></li>
+                <li><a href="../index.html" class="active">TEMARIO</a></li>
+                <li><a href="../../organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="../../enlaces.html">ENLACES</a></li>
+                <li><a href="../../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <nav class="breadcrumb">
+                    <a href="../index.html">Temario</a><span>›</span><a href="../primer-ejercicio.html">Primer ejercicio</a><span>›</span><a href="test.html">Test</a><span>›</span>Simulador
+                </nav>
+                <h2 class="section-title">Simulador de Test</h2>
+                
+                <div class="test-container">
+                    <div id="fase-seleccion">
+                        <div class="content-text">
+                            <p>Selecciona los temas que hayas estudiado para practicar con preguntas de exámenes oficiales. Las preguntas se mostrarán de forma aleatoria y podrás finalizar el test cuando lo desees.</p>
+                        </div>
+
+                        <div class="tema-selector">
+                            <h3>
+                                Parte A) Economía General
+                                <span class="toggle-all" data-parte="A">Seleccionar todos</span>
+                            </h3>
+                            <div class="temas-grid" id="temas-parte-a"></div>
+                        </div>
+
+                        <div class="tema-selector">
+                            <h3>
+                                Parte B) Economía Financiera, Internacional y Relaciones Económicas
+                                <span class="toggle-all" data-parte="B">Seleccionar todos</span>
+                            </h3>
+                            <div class="temas-grid" id="temas-parte-b"></div>
+                        </div>
+
+                        <div class="selection-summary">
+                            <div class="summary-text">
+                                <strong id="temas-count">0</strong> temas seleccionados · 
+                                <strong id="preguntas-count">0</strong> preguntas disponibles
+                            </div>
+                            <button class="btn-primary" id="btn-comenzar" disabled>Comenzar test →</button>
+                        </div>
+                    </div>
+
+                    <div id="fase-examen" class="hidden">
+                        <div class="examen-header">
+                            <div class="examen-progress">
+                                Pregunta <strong id="pregunta-actual">1</strong> de <strong id="total-preguntas">0</strong>
+                            </div>
+                            <div class="examen-stats">
+                                <span class="stat correct">✓ <span id="stat-correct">0</span></span>
+                                <span class="stat incorrect">✗ <span id="stat-incorrect">0</span></span>
+                                <span class="stat skipped">○ <span id="stat-skipped">0</span></span>
+                            </div>
+                        </div>
+
+                        <div class="pregunta-container" id="pregunta-container">
+                            <div class="pregunta-numero" id="pregunta-numero"></div>
+                            <div class="pregunta-enunciado" id="pregunta-enunciado"></div>
+                            <ul class="opciones-list" id="opciones-list"></ul>
+                            <div class="feedback-box hidden" id="feedback-box"></div>
+                        </div>
+
+                        <div class="examen-actions">
+                            <button class="btn-secondary" id="btn-finalizar">Finalizar test</button>
+                            <div>
+                                <button class="btn-secondary" id="btn-saltar">Saltar pregunta</button>
+                                <button class="btn-primary hidden" id="btn-siguiente">Siguiente pregunta →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fase-resultados" class="hidden">
+                        <div class="resultados-header">
+                            <h3>Resultados del test</h3>
+                            <div class="resultados-nota" id="resultados-nota">0,00</div>
+                            <div class="resultados-desglose">
+                                <div class="stat-box correct">✓ <span id="final-correct">0</span> correctas</div>
+                                <div class="stat-box incorrect">✗ <span id="final-incorrect">0</span> incorrectas</div>
+                                <div class="stat-box skipped">○ <span id="final-skipped">0</span> sin contestar</div>
+                            </div>
+                        </div>
+
+                        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Revisión de preguntas</h3>
+                        <div id="revision-container"></div>
+
+                        <div class="selection-summary">
+                            <button class="btn-secondary" id="btn-volver">← Volver a seleccionar temas</button>
+                            <button class="btn-primary" id="btn-repetir">Repetir con los mismos temas</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Víctor Gutiérrez Marcos</p>
+        </div>
+    </footer>
+
+    <script src="../../search-engine.js"></script>
+    <script src="../../search-ui.js"></script>
+    <script>
+        // Datos del test embebidos directamente (eliminando dependencia de preguntas.json)
+        const datosTest = {
+  "examenes": [
+    {
+      "id": "2025-marzo-A",
+      "nombre": "Examen oficial de marzo de 2025 - Modelo A",
+      "fecha": "2025-03-08",
+      "convocatoria": "Resolución de 22 de diciembre de 2024"
+    }
+  ],
+  "preguntas": [
+    {
+      "id": 1,
+      "examen": "2025-marzo-A",
+      "numero": 1,
+      "temas": ["3A.1"],
+      "enunciado": "El Methodenstreit o disputa sobre el método hace referencia al debate a finales de siglo XIX entre la Escuela austríaca y la Escuela historicista alemana. En este contexto, señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "La Escuela austríaca es partidaria de modelos económicos inductivos.",
+        "b": "Entre sus principales autores destacan Gustav Schmöller, de la Escuela Austríaca, y Carl Menger, representante del historicismo alemán.",
+        "c": "Menger parte de observaciones empíricas para validar modelos formulados previamente a partir de métodos deductivos.",
+        "d": "Schmöller defiende modelos deductivos, propugnando la inferencia de leyes económicas a partir del estudio de la historia."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 2,
+      "examen": "2025-marzo-A",
+      "numero": 2,
+      "temas": ["3A.2"],
+      "enunciado": "Señale la opción INCORRECTA en el pensamiento de Adam Smith:",
+      "opciones": {
+        "a": "En La Teoría de los Sentimientos Morales (1759), Adam Smith rechaza la idea de comportamiento egoísta del hombre, y sostiene que el individuo busca también simpatía con el resto de la sociedad.",
+        "b": "En La riqueza de las naciones (1776), Smith defiende que el individuo busca sólo su interés propio, pero una mano invisible lo conduce a promover un objetivo que no entraba en sus propósitos: el interés general.",
+        "c": "Para Smith, el fondo de salarios permite a los empresarios mantener o asegurar la subsistencia de los trabajadores durante el proceso productivo.",
+        "d": "Smith distingue entre el precio natural, que es el precio de equilibrio en función de la oferta y la demanda, y el precio de mercado, que depende de los costes de producción en un momento determinado."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 3,
+      "examen": "2025-marzo-A",
+      "numero": 3,
+      "temas": ["3A.3"],
+      "enunciado": "La controversia de Cambridge enfrentó a economistas de Cambridge, Reino Unido y Cambridge, Massachussets ¿Cuál fue el objeto central de este debate?",
+      "opciones": {
+        "a": "La existencia de grados de competencia diferentes al de competencia perfecta en los mercados.",
+        "b": "Las causas de los ciclos de negocios.",
+        "c": "La interpretación de la alta correlación entre inversión y ahorro como un síntoma de la baja movilidad del capital.",
+        "d": "La medición del factor capital y la influencia de tal concepción en las funciones de producción agregadas."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 4,
+      "examen": "2025-marzo-A",
+      "numero": 4,
+      "temas": ["3A.8", "3A.9"],
+      "enunciado": "Suponga un individuo cuyas preferencias por los bienes x e y vienen representadas por curvas de indiferencia decrecientes, convexas y que indican una mayor utilidad cuanto más alejadas están del origen. Suponga que inicialmente el individuo consume en equilibrio la cesta (x1, y1) y ante un aumento del precio del bien x pasa a consumir la cesta (x2, y2). Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Si x1 > x2, el bien x no puede ser un bien inferior.",
+        "b": "Si x1 < x2, seguro que x es un bien inferior y la curva de demanda del bien x tiene pendiente negativa.",
+        "c": "Si x1 < x2, seguro que la curva de demanda compensada del bien x tiene pendiente positiva.",
+        "d": "Si x1 > x2, el bien x puede ser un bien normal."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 5,
+      "examen": "2025-marzo-A",
+      "numero": 5,
+      "temas": ["3A.9"],
+      "enunciado": "Obtenga la Función de Utilidad directa de la que proviene la siguiente Función de Gasto: G = (4/3) * p1^(3/4) * p2^(1/4) * U^(1/4)",
+      "opciones": {
+        "a": "U = 3 * x1³ * x2",
+        "b": "U = x1³ * x2²",
+        "c": "U = x1³ * x2",
+        "d": "U = 3 * x1³ * x2²"
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 6,
+      "examen": "2025-marzo-A",
+      "numero": 6,
+      "temas": ["3A.8"],
+      "enunciado": "Señale la opción INCORRECTA con respecto al axioma débil de la preferencia revelada:",
+      "opciones": {
+        "a": "El cumplimiento de dicho axioma garantiza que las funciones de demanda tienen pendiente negativa.",
+        "b": "El cumplimiento de dicho axioma no garantiza la simetría de la matriz de efectos sustitución (matriz de Slutsky).",
+        "c": "Las decisiones consistentes con este axioma pueden ser incompatibles con unas preferencias racionales.",
+        "d": "Si las cestas X e Y están disponibles y se elige X, para cada vector de precios y renta donde tanto X como Y estén disponibles, el consumidor elegirá X sobre Y."
+      },
+      "respuesta": ["a"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 7,
+      "examen": "2025-marzo-A",
+      "numero": 7,
+      "temas": ["3A.11"],
+      "enunciado": "Dada la función de producción Y = 2L^(1/2) + K, señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Es una función homogénea de grado 1/2.",
+        "b": "No es una función homogénea, por lo que no se dan rendimientos a escala.",
+        "c": "Es una función homotética.",
+        "d": "La función tiene rendimientos a escala decrecientes."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 8,
+      "examen": "2025-marzo-A",
+      "numero": 8,
+      "temas": ["3A.14"],
+      "enunciado": "Suponga el siguiente juego de dos jugadores (A y B), donde cada uno de ellos dispone de dos estrategias posibles (1 y 2). La tabla muestra la matriz de pagos según las estrategias que sigan los jugadores, siendo el primer número de cada paréntesis el pago correspondiente al jugador A y el segundo número el pago correspondiente al jugador B. [Jugador A Estrategia 1: (3,1), (0,0); Jugador A Estrategia 2: (0,0), (1,2)]. Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "En el equilibrio en estrategias mixtas, el Jugador B juega la estrategia 1 con una probabilidad de 3/4 y la estrategia 2 con una probabilidad de 1/4.",
+        "b": "No existe ningún equilibrio de Nash.",
+        "c": "En el equilibrio en estrategias mixtas, el Jugador A juega la estrategia 1 con probabilidad 1/4 y la estrategia 2 con probabilidad 3/4.",
+        "d": "En el equilibrio en estrategias mixtas, el jugador A juega la estrategia 1 con una probabilidad de 2/3 y la estrategia 2 con una probabilidad de 1/3."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 9,
+      "examen": "2025-marzo-A",
+      "numero": 9,
+      "temas": ["3A.17"],
+      "enunciado": "Una empresa monopolista enfrenta la siguiente función de demanda: Q = 200 – 4P, donde Q es la cantidad demandada y P es el precio. El coste total de la empresa está dado por: CT=20Q+0,5Q²+800. ¿Cuál es el precio óptimo para el monopolista si el Gobierno impone un impuesto específico de 12 por unidad vendida?",
+      "opciones": {
+        "a": "35",
+        "b": "38",
+        "c": "47",
+        "d": "50"
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 10,
+      "examen": "2025-marzo-A",
+      "numero": 10,
+      "temas": ["3A.18"],
+      "enunciado": "Dos empresas simétricas se sitúan a lo largo de un segmento de longitud 1. Desde la perspectiva de la demanda, ese segmento se encuentra uniformemente poblado de consumidores que se enfrentan a costes de transporte en función de la distancia que recorran hasta llegar a cada una de las dos empresas. Cada consumidor demandará una unidad del único bien que venden las empresas y comprarán a aquella empresa que les reporte más utilidad, que dependerá positivamente del consumo unitario del bien y negativamente del precio y de la distancia recorrida. En este contexto:",
+      "opciones": {
+        "a": "Con costes de transporte cuadráticos y localización y precios endógenos, las empresas se situarán en los puntos ¼ y ¾.",
+        "b": "Con costes de transporte lineales y localización y precios endógenos, las dos empresas se sitúan en el centro.",
+        "c": "Con precios exógenos y localización endógena, las dos empresas se sitúan en el centro.",
+        "d": "La solución óptima con costes de transporte cuadráticos es que las dos empresas se sitúen en el centro."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 11,
+      "examen": "2025-marzo-A",
+      "numero": 11,
+      "temas": ["3A.23", "3A.24"],
+      "enunciado": "Dos opositores a Técnico Comercial y Economista del Estado quieren comprar el temario de la oposición, que cuesta 1.000€. Una vez comprado, puede ser utilizado por tantos opositores como se desee. El opositor 1 (O1) valora el temario en 700€ y el opositor 2 (O2) en 800€. Ambos tienen preferencias cuasilineares con respecto al dinero. Un planeador central está dispuesto a financiar el temario a los opositores, siempre y cuando su provisión sea eficiente. Si dicho planeador implementase un mecanismo de Vickrey-Clarke-Groves para conocer las preferencias de los opositores, el mecanismo de estrategias dominantes sería:",
+      "opciones": {
+        "a": "Un impuesto de 500€ a cada opositor.",
+        "b": "Un impuesto de 200€ al opositor 1 y un impuesto de 300€ al opositor 2.",
+        "c": "Un impuesto de 300€ al opositor 1 y un impuesto de 200€ al opositor 2.",
+        "d": "No existe una solución, puesto que cualquier mecanismo de Vickrey-Clarke-Groves debe generar los suficientes ingresos entre los opositores como para financiar el temario."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 12,
+      "examen": "2025-marzo-A",
+      "numero": 12,
+      "temas": ["3A.23"],
+      "enunciado": "Suponga una fábrica de cemento con unos costes marginales de producción dados por la función CMg=7+2q, que en el proceso de producción genera residuos que causan un daño a las tierras de un agricultor vecino. Los costes marginales externos causados por la fábrica vienen dados por la función: CMgE=q. Suponga además que no existen costes de transacción y que los derechos de propiedad de las tierras están bien definidos. Señale la afirmación CORRECTA:",
+      "opciones": {
+        "a": "Si el precio del cemento es de 19 unidades monetarias el nivel de producción de cemento socialmente óptimo es q=6.",
+        "b": "La cantidad de producción de cemento socialmente óptima va a depender de a quién se asignen los derechos de propiedad.",
+        "c": "Si los derechos de propiedad de las tierras corresponden al agricultor, la cantidad mínima que tendrá que pagar la fábrica al agricultor para que este le deje producir en el óptimo social es de 12 unidades monetarias.",
+        "d": "Si los derechos de propiedad de las tierras corresponden al agricultor, la cantidad máxima que está dispuesta a pagar la fábrica para producir la cantidad de cemento socialmente óptima es de 32 unidades monetarias."
+      },
+      "respuesta": ["a", "b", "c", "d"],
+      "tipo_pregunta": "aceptada"
+    },
+    {
+      "id": 13,
+      "examen": "2025-marzo-A",
+      "numero": 13,
+      "temas": ["3A.25"],
+      "enunciado": "Suponga un modelo neoclásico intertemporal donde los hogares cuentan con una función instantánea de utilidad del tipo U(Ct, Ot), donde Ct, Ot representan el consumo y el ocio en el periodo t respectivamente. Asimismo, el hogar cuenta con una unidad de tiempo que debe repartir entre ocio y trabajo. En el momento t, el agente experimenta un shock salarial positivo. Señale qué tipo de shock generará un incremento mayor en su oferta de trabajo:",
+      "opciones": {
+        "a": "Un shock transitorio y esperado.",
+        "b": "Un shock transitorio y sorpresivo.",
+        "c": "Un shock permanente y esperado.",
+        "d": "Un shock permanente y sorpresivo."
+      },
+      "respuesta": ["a", "b", "c", "d"],
+      "tipo_pregunta": "aceptada"
+    },
+    {
+      "id": 14,
+      "examen": "2025-marzo-A",
+      "numero": 14,
+      "temas": ["3A.25", "3A.26"],
+      "enunciado": "Card (1990) estudia las consecuencias que tuvo el \"Éxodo del Mariel\" en el mercado de trabajo de la ciudad de Miami. Entre sus principales conclusiones, destaca que, en el mercado de trabajadores no cualificados:",
+      "opciones": {
+        "a": "El aumento de trabajadores en la ciudad de Miami condujo a una caída de los salarios y al aumento del desempleo.",
+        "b": "El aumento de trabajadores en la ciudad de Miami condujo a una caída de los salarios, pero no a un aumento del desempleo.",
+        "c": "El aumento de trabajadores en la ciudad de Miami no tuvo efectos en los salarios, pero sí condujo al aumento del desempleo.",
+        "d": "El aumento de trabajadores en la ciudad de Miami no tuvo efectos ni en los salarios ni en el desempleo."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 15,
+      "examen": "2025-marzo-A",
+      "numero": 15,
+      "temas": ["3A.26"],
+      "enunciado": "El nivel de desempleo resultante de un modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides:",
+      "opciones": {
+        "a": "Es siempre inferior al eficiente.",
+        "b": "Es siempre superior al eficiente.",
+        "c": "Puede ser superior o inferior al eficiente.",
+        "d": "Los modelos de búsqueda no tienen interpretación normativa."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 16,
+      "examen": "2025-marzo-A",
+      "numero": 16,
+      "temas": ["3A.33"],
+      "enunciado": "Suponga el siguiente modelo de decisión intertemporal entre consumo (C) y ahorro (S), con dos períodos, bajo equilibrio parcial. Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Una mayor renta en el primer período supondrá un mayor consumo en el primer periodo y un menor consumo en el segundo período.",
+        "b": "Si la riqueza inicial del agente es elevada (A0 > Y2/(1+r)²), un aumento del tipo de interés real llevará a una disminución del consumo en el primer período.",
+        "c": "Si la riqueza inicial del agente es reducida (A0 < Y2/(1+r)²) y financia su consumo con créditos sobre su renta futura, un aumento del tipo de interés real supondrá una disminución del consumo en el primer período y un aumento del consumo en el segundo período.",
+        "d": "Si en el primer período C1 > Y1 + rA0, entonces el agente será necesariamente un prestatario."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 17,
+      "examen": "2025-marzo-A",
+      "numero": 17,
+      "temas": ["3A.34"],
+      "enunciado": "Considere el modelo dinámico de inversión con costes de ajuste en el que la empresa representativa maximiza intertemporalmente sus beneficios, cumpliéndose los siguientes supuestos: la función de producción de la empresa tiene rendimientos constantes a escala, el precio del capital es igual a 1 y la tasa de depreciación es igual a cero, los mercados de bienes y factores son perfectamente competitivos y los costes de ajuste son cuadráticos. Bajo estos supuestos y partiendo de una situación inicial de equilibrio, una disminución en el impuesto sobre los beneficios de la empresa:",
+      "opciones": {
+        "a": "Lleva a un aumento temporal de la inversión, que será mayor si la disminución del impuesto es temporal que si es permanente.",
+        "b": "Lleva a un nuevo equilibrio con un mayor valor marginal del capital.",
+        "c": "Lleva a un aumento del stock de capital en el nuevo equilibrio, tanto si la disminución del impuesto es temporal como si es permanente.",
+        "d": "Si la disminución es permanente, lleva a un aumento temporal de la inversión y del valor marginal del capital, conduciendo a un nuevo equilibrio con un mayor stock de capital."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 18,
+      "examen": "2025-marzo-A",
+      "numero": 18,
+      "temas": ["3A.31"],
+      "enunciado": "En el marco de análisis Input-Output, las matrices de contabilidad social:",
+      "opciones": {
+        "a": "Relacionan la matriz de inputs primarios con la matriz de demandas finales y cierran el flujo circular de la renta.",
+        "b": "Relacionan la matriz simétrica con la matriz de demandas finales y de inputs primarios.",
+        "c": "Representan la matriz de transacciones intersectoriales y deben ser matrices cuadradas.",
+        "d": "Sirven para calcular los eslabonamientos sectoriales."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 19,
+      "examen": "2025-marzo-A",
+      "numero": 19,
+      "temas": ["3A.31"],
+      "enunciado": "Los modelos de redes de producción à la Acemoglu et al (2012):",
+      "opciones": {
+        "a": "Estudian cómo un shock de productividad de un sector concreto se puede propagar al resto de sectores.",
+        "b": "Estudian cómo un shock en los salarios nominales tiene efectos sobre la productividad del factor trabajo.",
+        "c": "Estudian cómo un shock en el factor capital tiene efectos sobre la producción total de la economía.",
+        "d": "Estudian cómo un shock en el número de productores de un determinado input se propaga en el resto de la cadena de producción de un output."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 20,
+      "examen": "2025-marzo-A",
+      "numero": 20,
+      "temas": ["3A.6"],
+      "enunciado": "Responda la afirmación INCORRECTA sobre las aportaciones de Robert Lucas:",
+      "opciones": {
+        "a": "Bajo la Hipótesis de Expectativas Racionales, los errores de los agentes no estarán correlacionados.",
+        "b": "La conocida como \"Crítica de Lucas\" establece que las reglas de decisión de los agentes podrán expresarse en término de los parámetros profundos: esto es, de parámetros no dependientes de los cambios en los regímenes de política económica. Un ejemplo de estos parámetros son los parámetros de preferencias, tecnología o consumo privado.",
+        "c": "Bajo la interpretación de la curva de Phillips de Lucas, las sorpresas monetarias pueden inducir a los agentes a confundir transitoriamente shocks nominales con shocks reales y, por consiguiente, a moverse transitoriamente a lo largo de una curva de Phillips.",
+        "d": "Los modelos de ciclo introducidos por Lucas (Lucas, 1972) combinaban la introducción de agentes optimizadores en un entorno intertemporal y de incertidumbre, el uso de expectativas racionales y el vaciado constante de los mercados."
+      },
+      "respuesta": ["b"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 21,
+      "examen": "2025-marzo-A",
+      "numero": 21,
+      "temas": ["3A.7", "3A.36"],
+      "enunciado": "En el modelo base de la Nueva Economía Keynesiana (agentes optimizadores intertemporales, rigideces de precios à la Calvo y competencia monopolística), con una regla de política monetaria que sigue una regla de Taylor del tipo it = α + βy yt + βπ πt, que el parámetro βπ sea igual o mayor que 1:",
+      "opciones": {
+        "a": "Es condición necesaria y suficiente para garantizar la unicidad del equilibrio en el modelo.",
+        "b": "Es condición necesaria, pero no suficiente, para garantizar la unicidad del equilibrio en el modelo.",
+        "c": "No es condición necesaria ni suficiente, para garantizar la unicidad del equilibrio.",
+        "d": "Es condición suficiente, pero no necesaria, para garantizar la unicidad del equilibrio."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 22,
+      "examen": "2025-marzo-A",
+      "numero": 22,
+      "temas": ["3A.39"],
+      "enunciado": "Suponga una economía con una inflación del 3% y una tasa de crecimiento del PIB real del 2% que se mantienen constantes en el tiempo. Suponga que el Gobierno no puede apelar al Banco Central para financiar su déficit y sólo puede financiarlo emitiendo deuda a un tipo de interés nominal del 8%. En caso de ser necesario, calcule el tipo de interés real de manera aproximada. Señale la afirmación CORRECTA:",
+      "opciones": {
+        "a": "Si la deuda inicial es del 50% del PIB, un superávit permanente del 1% del PIB conducirá a un aumento continuado de la deuda, dándose una trayectoria explosiva.",
+        "b": "Si la deuda inicial es del 80% del PIB, un superávit permanente del 2% del PIB conducirá a una eliminación gradual del endeudamiento.",
+        "c": "Si la deuda inicial es del 40% del PIB, un superávit permanente del 1% del PIB conducirá a una eliminación gradual del endeudamiento.",
+        "d": "Dado que el tipo de interés real es superior a la tasa de crecimiento del PIB real de la economía, bajo ningún supuesto se podrá dar una eliminación gradual del endeudamiento."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 23,
+      "examen": "2025-marzo-A",
+      "numero": 23,
+      "temas": ["3A.42", "3B.26"],
+      "enunciado": "Señale cuál de los siguientes hechos estilizados NO es estudiado por Reinhart y Rogoff como una característica de las fluctuaciones financieras:",
+      "opciones": {
+        "a": "Durante la fase de crecimiento del ciclo financiero, los precios de la vivienda crecen más rápidamente que en largo plazo, y los bancos extienden más crédito.",
+        "b": "La fase de crecimiento suele terminar con un colapso de los precios de la vivienda y una crisis financiera y/o bancaria.",
+        "c": "Durante la fase de decrecimiento, los hogares y bancos reparan sus balances, reduciendo sus niveles de deuda.",
+        "d": "La fase de decrecimiento va acompañada de subidas de tipos de interés y aumentos progresivos en el crédito."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 24,
+      "examen": "2025-marzo-A",
+      "numero": 24,
+      "temas": ["3A.43"],
+      "enunciado": "Considere que en el modelo de Solow de crecimiento económico con progreso tecnológico, a partir de un estado estacionario inicial, se origina un aumento en la tasa de progreso tecnológico. Señale la opción INCORRECTA en relación con el nuevo estado estacionario:",
+      "opciones": {
+        "a": "En el nuevo estado estacionario, la tasa de crecimiento de la producción por trabajador será mayor que la inicial y menor que la alcanzada durante la transición.",
+        "b": "Durante la transición, el nivel de producción por trabajador aumenta hasta el nuevo estado estacionario.",
+        "c": "En el nuevo estado estacionario, la tasa de crecimiento de la producción por trabajador aumenta con respecto al estado estacionario inicial.",
+        "d": "Durante la transición, la tasa de crecimiento de la renta agregada será siempre inferior a su valor en el estado estacionario final."
+      },
+      "respuesta": ["a"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 25,
+      "examen": "2025-marzo-A",
+      "numero": 25,
+      "temas": ["3A.43", "3A.45"],
+      "enunciado": "Señale la respuesta CORRECTA con respecto al modelo de crecimiento de Mankiw, Romer y Weil (1992):",
+      "opciones": {
+        "a": "Una de las implicaciones de sus resultados es que las diferencias tecnológicas son la principal fuente de diferencias de renta per cápita entre países.",
+        "b": "Un supuesto del modelo es que los países tienen el mismo nivel de tecnología, pero difieren en su tasa de crecimiento.",
+        "c": "Un supuesto del modelo es que el nivel de tecnología de un país no está correlacionado con su inversión en capital físico y humano.",
+        "d": "Una de las principales críticas al modelo es que asumen economías perfectamente abiertas al exterior y no consideran factores geográficos."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 26,
+      "examen": "2025-marzo-A",
+      "numero": 26,
+      "temas": ["3B.1"],
+      "enunciado": "Unas necesidades operativas de fondos negativas:",
+      "opciones": {
+        "a": "Implican que la empresa está obteniendo financiación a través de su política de pagos y cobros.",
+        "b": "Ceteris paribus, se pueden conseguir aumentando el período medio de rotación de stocks.",
+        "c": "Implican un fondo de maniobra negativo.",
+        "d": "Ninguna es correcta."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 27,
+      "examen": "2025-marzo-A",
+      "numero": 27,
+      "temas": ["3B.3"],
+      "enunciado": "Una persona monta, junto con su tío, una empresa cuyo capital social asciende a 1.000€. Tío y sobrino son propietarios cada uno del 50% de la empresa. La empresa es un éxito y tiene planes de expandirse en Oriente Medio, para lo que necesita más fondos, por lo que decide realizar una ampliación de capital y contactar con un fondo de inversión. [I. Si el fondo aporta 333€ sin prima → 1/3 cada uno. II. Si el fondo aporta 500€ sin prima → 1/3 cada uno. III. Si el fondo aporta 500€ + prima 500€ → más del 50%. IV. Si el fondo aporta 500€ + prima 500€ → 1/3 cada uno.]",
+      "opciones": {
+        "a": "II y IV son correctas.",
+        "b": "Solamente I es correcta.",
+        "c": "I y III son correctas.",
+        "d": "Solamente II es correcta."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 28,
+      "examen": "2025-marzo-A",
+      "numero": 28,
+      "temas": ["3B.5"],
+      "enunciado": "En el modelo de Hecksher-Ohlin-Samuelson, en una situación de apertura comercial, existe un aumento del factor trabajo. En este contexto:",
+      "opciones": {
+        "a": "Los salarios aumentan",
+        "b": "Los salarios se mantienen constantes",
+        "c": "Los salarios disminuyen",
+        "d": "Los efectos sobre los salarios son indeterminados."
+      },
+      "respuesta": ["a", "b", "c", "d"],
+      "tipo_pregunta": "aceptada"
+    },
+    {
+      "id": 29,
+      "examen": "2025-marzo-A",
+      "numero": 29,
+      "temas": ["3B.5", "3B.6"],
+      "enunciado": "Señale la respuesta INCORRECTA con respecto al modelo de comercio internacional de Eaton y Kortum:",
+      "opciones": {
+        "a": "Es un modelo ricardiano basado en diferencias tecnológicas.",
+        "b": "Es un modelo que incorpora aspectos geográficos.",
+        "c": "Es un modelo donde existen países ganadores y perdedores del comercio internacional.",
+        "d": "Los flujos bilaterales comerciales se ajustan a una estructura similar a la de una ecuación de gravedad, que relaciona flujos comerciales con la distancia y el producto del PIB de ambos países."
+      },
+      "respuesta": ["c"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 30,
+      "examen": "2025-marzo-A",
+      "numero": 30,
+      "temas": ["3B.7"],
+      "enunciado": "Suponga una situación de comercio internacional, en la que se parte de un equilibrio de libre comercio entre 2 países (A y B) con dos bienes (bien X, que es intensivo en trabajo, y bien Y, que es intensivo en capital), y dos factores productivos (trabajo y capital). Suponga que el país A es un país grande y tiene ventaja comparativa en la producción del bien X, por lo que exporta el bien X e importa el bien Y. Partiendo de este equilibrio inicial, señale la afirmación INCORRECTA en relación con los efectos que tendrá la introducción de un arancel sobre las importaciones del bien Y:",
+      "opciones": {
+        "a": "En una situación normal, se dará un encarecimiento relativo del bien Y en el país A que llevará a una disminución del volumen de las importaciones de dicho bien.",
+        "b": "En una situación normal, se dará un abaratamiento relativo del bien Y a nivel mundial que compensará su encarecimiento relativo a nivel doméstico, conduciendo a un aumento del bienestar en el país A.",
+        "c": "Bajo ciertas circunstancias, el establecimiento del arancel puede llevar a una disminución de la relación real de intercambio para el país A.",
+        "d": "Si la propensión marginal del país A a consumir el bien X es mayor que la elasticidad de la demanda del país B sobre dicho bien, la imposición del arancel llevará a un encarecimiento relativo del bien importado en el país A."
+      },
+      "respuesta": ["b", "d"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 31,
+      "examen": "2025-marzo-A",
+      "numero": 31,
+      "temas": ["3B.18"],
+      "enunciado": "Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Feldstein (1994) afirma que existe un cierto \"sesgo del propio país\", pero que no es suficiente para explicar la paradoja de Feldstein-Horioka (1980).",
+        "b": "Lucas (1990) se pregunta por qué no existen más inversiones de países en desarrollo hacia países ricos, cuando es en éstos donde existen mejores oportunidades de inversión (son más productivos).",
+        "c": "Con su \"rompecabezas de la asignación\", Gourinchas (2007) demuestra empíricamente que la importación de capital es mayor cuanto mayor es el crecimiento de la productividad de la economía.",
+        "d": "Portes y Rey (2005) demuestran empíricamente que, debido a la existencia de fricciones de información entre países, no existen límites en la capacidad de los inversores para diversificar su riesgo."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 32,
+      "examen": "2025-marzo-A",
+      "numero": 32,
+      "temas": ["3B.11", "3B.12"],
+      "enunciado": "Un país presenta los siguientes datos de su balanza de pagos para un período determinado: Exportaciones de bienes: 12.000M€, Importaciones de bienes: 15.000M€, Transferencias de capital recibidas: 2.000M€, Transferencias de capital enviadas: 1.000M€, Inversión directa extranjera: Entrada neta de 6.000M€, Inversión en cartera: Salida neta de 4.500M€, Otros flujos financieros: Entrada neta de 3.000M€. Además, los cambios del tipo de cambio aumentan el valor de los activos del país en moneda extranjera en 1.200M€ y de la deuda externa en 600M€. ¿Cuál es la variación neta de la Posición Neta de Inversión Internacional (PNII) del país entre los dos períodos?",
+      "opciones": {
+        "a": "5.100 millones de euros",
+        "b": "-3.900 millones de euros",
+        "c": "6.100 millones de euros",
+        "d": "3.100 millones de euros"
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 33,
+      "examen": "2025-marzo-A",
+      "numero": 33,
+      "temas": ["3B.14"],
+      "enunciado": "Según el modelo de carteras de Branson y McKinnon:",
+      "opciones": {
+        "a": "Una política monetaria contractiva provoca una disminución del tipo de interés y una apreciación de la moneda nacional.",
+        "b": "Una política monetaria expansiva provoca una disminución del tipo de interés y una depreciación de la moneda nacional.",
+        "c": "Una política fiscal expansiva provoca un aumento del tipo de interés y una depreciación de la moneda nacional.",
+        "d": "Una política fiscal expansiva provoca una disminución del tipo de interés y un efecto ambiguo sobre el tipo de cambio."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 34,
+      "examen": "2025-marzo-A",
+      "numero": 34,
+      "temas": ["3B.15"],
+      "enunciado": "Considere una economía abierta descrita por el modelo IS-LM con movilidad perfecta de capital. A partir de una situación inicial de equilibrio, se origina un aumento del tipo de interés del resto del mundo. Señale la opción CORRECTA:",
+      "opciones": {
+        "a": "Con tipo de cambio flexible, caen el consumo y la inversión.",
+        "b": "Con tipo de cambio fijo, cae el consumo y aumentan las exportaciones netas.",
+        "c": "Con tipo de cambio flexible aumenta la renta, mientras que con tipo de cambio fijo la renta permanece constante.",
+        "d": "Con tipo de cambio fijo, la inversión no varía."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 35,
+      "examen": "2025-marzo-A",
+      "numero": 35,
+      "temas": ["3B.16", "3B.45"],
+      "enunciado": "El \"nuevo trilema imposible\" de Pisani-Ferry (2012) establece que, en el ámbito de la Zona Euro:",
+      "opciones": {
+        "a": "No se puede lograr una Unión Fiscal plena si existe interdependencia entre la banca y el Sector Público.",
+        "b": "Se puede lograr una Unión Fiscal plena si existe financiación no monetaria de la deuda pública e interdependencia entre la banca y el Sector Público.",
+        "c": "Se puede lograr una Unión Fiscal plena si existe no corresponsabilidad de la deuda pública y financiación no monetaria de la deuda pública.",
+        "d": "Todas son correctas."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 36,
+      "examen": "2025-marzo-A",
+      "numero": 36,
+      "temas": ["3B.23"],
+      "enunciado": "En el método de valoración de activos CAPM (Capital Asset Pricing Model), la Línea del Mercado de Títulos (SML, por sus siglas en inglés):",
+      "opciones": {
+        "a": "Tiene en cuenta el riesgo total de las carteras.",
+        "b": "Su pendiente es la prima de riesgo del mercado.",
+        "c": "Aquellos activos situados por encima de la SML estarán sobrevaluados.",
+        "d": "El inversor buscará que la diferencia entre el retorno esperado del activo y la SML sea inferior a 0."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 37,
+      "examen": "2025-marzo-A",
+      "numero": 37,
+      "temas": ["3B.24"],
+      "enunciado": "Suponga que compra el siguiente bono en el mercado: Valor nominal: 1.000€, Tasa de cupón: 8% anual, Frecuencia de pagos de cupones: Semestral, Plazo: 4 años, Tipo de interés de mercado (YTM) en el momento de la compra: 6% anual. Si al final del segundo año, el tipo de interés de mercado cambia a 10% anual capitalizado semestralmente. ¿Cuál sería el precio de mercado del bono al final del segundo año, después de haberse realizado el cuarto pago del cupón?",
+      "opciones": {
+        "a": "965 €",
+        "b": "1020 €",
+        "c": "990 €",
+        "d": "1060 €"
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 38,
+      "examen": "2025-marzo-A",
+      "numero": 38,
+      "temas": ["3B.26", "3B.27"],
+      "enunciado": "¿Qué bancos españoles son considerados por el Financial Stability Board como Bancos de Importancia Sistémica Global (G-SIB, por sus siglas en inglés) en la actualidad?",
+      "opciones": {
+        "a": "Ninguno.",
+        "b": "Banco Santander.",
+        "c": "Banco Santander y BBVA.",
+        "d": "Banco Santander, BBVA y Caixabank."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 39,
+      "examen": "2025-marzo-A",
+      "numero": 39,
+      "temas": ["3B.20"],
+      "enunciado": "Señale la afirmación CORRECTA con respecto a las contribuciones de John Maynard Keynes al debate sobre las reparaciones de guerra de Alemania después de la Primera Guerra Mundial:",
+      "opciones": {
+        "a": "El debate Keynes-Ohlin se centró en el problema presupuestario: es decir, en si Alemania podría generar los fondos suficientes para hacer frente a las compensaciones de guerra. En él, Keynes defendió la incapacidad de Alemania de generar dichos fondos en las condiciones propuestas.",
+        "b": "El debate Keynes-Ohlin se centró en el problema presupuestario: es decir, en si Alemania podría generar los fondos suficientes para hacer frente a las compensaciones de guerra. En él, Keynes defendió la capacidad de Alemania de generar dichos fondos en las condiciones propuestas.",
+        "c": "El debate Keynes-Ohlin se centró en el problema de la transferencia: es decir, en si Alemania sería capaz de transferir el dinero a los vencedores. En él, Keynes defendió que era virtualmente imposible porque exigiría una fuerte deflación en Alemania con riesgo de graves consecuencias económicas y políticas.",
+        "d": "El debate Keynes-Ohlin se centró en el problema presupuestario y de transferencias. En él, Keynes defendió que, aunque los efectos-renta derivados de los pagos de las reparaciones evitarían los posibles efectos deflacionarios, Alemania no podría generar los recursos suficientes para hacer frente a los pagos por reparaciones de guerra."
+      },
+      "respuesta": ["c"]
+    },
+    {
+      "id": 40,
+      "examen": "2025-marzo-A",
+      "numero": 40,
+      "temas": ["3B.22"],
+      "enunciado": "En relación con los recursos del Fondo Monetario Internacional, señale la respuesta INCORRECTA:",
+      "opciones": {
+        "a": "Las cuotas son la principal fuente de recursos del FMI. La Decimosexta revisión de cuotas concluyó en diciembre de 2023 y en ésta, la Junta de Gobernadores del FMI aprobó un aumento del 50% de las cuotas de los países miembros.",
+        "b": "Los Nuevos Acuerdos para la Obtención de Préstamos (NAP) son un conjunto permanente de acuerdos de crédito en virtud de los cuales los participantes (únicamente países miembros), se comprometen a brindar recursos complementarios al FMI.",
+        "c": "En enero de 2021, entró en vigor una reforma de los NAP que prácticamente duplicó su tamaño, a 361.000 millones de Derechos Especiales de Giro, entre 2021 y 2025.",
+        "d": "Los acuerdos bilaterales de préstamo (ABP) constituyen una tercera fuente de recursos, cuya activación requiere el apoyo del 85% de los acreedores con derecho a voto. Desde el inicio de la Crisis Financiera Global de 2007, el FMI ha celebrado varias rondas de ABP para atender las necesidades de financiación de sus países miembros."
+      },
+      "respuesta": ["b"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 41,
+      "examen": "2025-marzo-A",
+      "numero": 41,
+      "temas": ["3B.33", "3B.34"],
+      "enunciado": "¿Cuál de los siguientes Anexos NO se incluye en el Acuerdo General sobre el Comercio de Servicios (GATS)?",
+      "opciones": {
+        "a": "Anexo sobre Servicios Financieros.",
+        "b": "Anexo sobre Servicios de Transporte Aéreo.",
+        "c": "Anexo sobre Telecomunicaciones.",
+        "d": "Anexo sobre Servicios Profesionales."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 42,
+      "examen": "2025-marzo-A",
+      "numero": 42,
+      "temas": ["3B.35"],
+      "enunciado": "La Asociación Económica Integral Regional (RCEP) es:",
+      "opciones": {
+        "a": "Una Zona Comercial Preferente",
+        "b": "Un Acuerdo de Libre Comercio.",
+        "c": "Una Unión Aduanera.",
+        "d": "Un Mercado Común."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 43,
+      "examen": "2025-marzo-A",
+      "numero": 43,
+      "temas": ["3B.18"],
+      "enunciado": "En relación con el enfoque de los dos pilares de la OCDE sobre la reforma del sistema tributario internacional, señale la afirmación CORRECTA:",
+      "opciones": {
+        "a": "El Pilar 1 de la reforma propone un sistema en el que los países en desarrollo tienen derecho a gravar una porción de las ganancias obtenidas en sus territorios por empresas multinacionales, independientemente de si tienen presencia física en el país, con un límite máximo del 25% de los beneficios globales de estas empresas.",
+        "b": "El Pilar 2 introduce un tipo impositivo mínimo global del 15%, que los países deben aplicar a las multinacionales, para evitar que estas empresas utilicen estrategias de planificación fiscal agresiva y aprovechen los paraísos fiscales, asegurando una tributación mínima adecuada en todos los países.",
+        "c": "El Pilar 1 de la reforma busca limitar la capacidad de los países para imponer impuestos a las empresas digitales, y el Pilar 2 introduce una asignación de impuestos sobre el comercio digital basada en el volumen de ventas en línea de las empresas.",
+        "d": "En el marco del Pilar 2, los países deben establecer un tipo impositivo global mínimo del 25%, mientras que el Pilar 1 se enfoca en establecer un sistema de distribución de derechos de imposición para los países con una presencia física significativa de las empresas en cuestión."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 44,
+      "examen": "2025-marzo-A",
+      "numero": 44,
+      "temas": ["3B.31"],
+      "enunciado": "¿Cuál de los siguientes constituye un nuevo compromiso resultante de la COP29, realizada en Bakú en noviembre de 2024?",
+      "opciones": {
+        "a": "Acuerdo entre todos los países para mantener el calentamiento del planeta por debajo del 2°C hasta el final del siglo y desarrollar políticas para limitar ese aumento hasta el 1,5°C.",
+        "b": "Triplicar la financiación a los países en desarrollo, desde 100 mil millones de dólares anuales hasta alcanzar los 300 mil millones de dólares en 2035, para la lucha contra el cambio climático.",
+        "c": "El compromiso de los países por la reducción del carbón como fuente de energía y la eliminación gradual de los subsidios a los combustibles fósiles.",
+        "d": "Lanzamiento del Global Methane Pledge (Compromiso Global por el Metano), cuyo objetivo es limitar la emisión de metano en un 30% de aquí a 2030."
+      },
+      "respuesta": ["b"]
+    },
+    {
+      "id": 45,
+      "examen": "2025-marzo-A",
+      "numero": 45,
+      "temas": ["3B.36"],
+      "enunciado": "En relación con los instrumentos jurídicos de derecho derivado de la UE, señale la afirmación INCORRECTA:",
+      "opciones": {
+        "a": "El Reglamento es la principal fuente de derecho derivado de la UE, tiene alcance general y a través de éste, la regulación nacional es sustituida por la de la UE sin necesidad de trasposición alguna.",
+        "b": "La Decisión es obligatoria en todos sus elementos. Cuando designe destinatarios, sólo será obligatoria para éstos.",
+        "c": "Si una Directiva concede derechos específicos a los trabajadores y un Estado miembro no la ha traspuesto correctamente, el trabajador puede invocar la Directiva directamente ante un tribunal nacional para reclamar esos derechos, tanto contra una entidad estatal como contra su empleador privado.",
+        "d": "La Recomendación es una de las dos formas de actos no vinculantes de la UE, y usada por el Consejo en los procedimientos de déficit excesivo para recomendar a un Estado miembro una trayectoria de corrección del déficit."
+      },
+      "respuesta": ["c"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 46,
+      "examen": "2025-marzo-A",
+      "numero": 46,
+      "temas": ["3B.39"],
+      "enunciado": "La \"Brújula de la Competitividad\" de la nueva Comisión Europea se basa en tres ámbitos de actuación principales, a partir del informe Draghi:",
+      "opciones": {
+        "a": "Innovación, descarbonización y seguridad.",
+        "b": "Sostenibilidad, productividad y armonización.",
+        "c": "Trabajos, Medio Ambiente y resiliencia.",
+        "d": "Cohesión, transición limpia y soberanía."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 47,
+      "examen": "2025-marzo-A",
+      "numero": 47,
+      "temas": ["3B.38"],
+      "enunciado": "En relación con la Política Agraria Común (PAC) ¿cuál de las siguientes afirmaciones es CORRECTA?",
+      "opciones": {
+        "a": "La reforma de la PAC 2021-2027 ha incrementado el porcentaje destinado a la sostenibilidad ambiental, con el 40% del presupuesto total de la PAC reservado para medidas relacionadas con el clima y la biodiversidad, incluyendo los eco-regímenes.",
+        "b": "En el marco de la reforma de la PAC 2021-2027, los eco-regímenes han sido diseñados para representar sólo el 5% del total de los pagos directos de la PAC, limitando su alcance y aplicabilidad a una pequeña fracción de los agricultores, excluyendo a las grandes explotaciones.",
+        "c": "El presupuesto total de la PAC 2021-2027 es de 385.000 millones de euros, pero se ha recortado significativamente la financiación de desarrollo rural, reduciéndola al 25% de los fondos totales de la PAC, frente al 30% en el periodo anterior.",
+        "d": "La reforma de la PAC 2021-2027 ha establecido un porcentaje mínimo de pagos directos para los agricultores jóvenes que asciende al 5% del total de los pagos directos de la PAC, con el objetivo de mejorar la competitividad de las nuevas generaciones de agricultores."
+      },
+      "respuesta": ["a"]
+    },
+    {
+      "id": 48,
+      "examen": "2025-marzo-A",
+      "numero": 48,
+      "temas": ["3B.41", "3B.42"],
+      "enunciado": "En relación con la Inversión Directa Extranjera en la Unión Europea, señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Los Estados miembros pueden limitarla por motivos de seguridad o de orden público, incluyendo las inversiones intra-europeas.",
+        "b": "Forma parte de la Política Comercial Común de la Unión Europea.",
+        "c": "Existe un mecanismo de cooperación entre Estados miembros para detectar riesgos derivados de inversiones concretas.",
+        "d": "Todas son correctas."
+      },
+      "respuesta": ["d"]
+    },
+    {
+      "id": 49,
+      "examen": "2025-marzo-A",
+      "numero": 49,
+      "temas": ["3B.42"],
+      "enunciado": "La Unión Europea ha finalizado recientemente las negociaciones para un acuerdo de asociación entre la Unión y Mercosur. Señale la respuesta INCORRECTA:",
+      "opciones": {
+        "a": "El acuerdo supone la reducción o eliminación de aranceles para empresas exportadoras de la Unión en países Mercosur.",
+        "b": "Las empresas de la Unión Europea podrán participar en licitaciones públicas en los países Mercosur.",
+        "c": "El acuerdo plantea compromisos explícitos para combatir el cambio climático y la deforestación.",
+        "d": "El acuerdo refuerza la cooperación en áreas como la ciberseguridad."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta"
+    },
+    {
+      "id": 50,
+      "examen": "2025-marzo-A",
+      "numero": 50,
+      "temas": ["3B.43"],
+      "enunciado": "De acuerdo con la revisión del marco operativo para la aplicación de la política monetaria, anunciada en marzo de 2024 por el Consejo de Gobierno del Banco Central Europeo, la orientación de la política monetaria se guiará a través del tipo de interés de:",
+      "opciones": {
+        "a": "La facilidad de depósito.",
+        "b": "La facilidad de crédito.",
+        "c": "Las operaciones principales de financiación.",
+        "d": "Ninguno de los anteriores."
+      },
+      "respuesta": ["a"]
+    }
+  ],
+  "temas": {
+    "3A.1": "Objeto y métodos de la ciencia económica",
+    "3A.2": "Los economistas clásicos y Marx",
+    "3A.3": "Los economistas neoclásicos",
+    "3A.4": "El pensamiento económico de Keynes",
+    "3A.5": "La síntesis neoclásica. El monetarismo",
+    "3A.6": "La nueva macroeconomía clásica",
+    "3A.7": "La nueva economía keynesiana",
+    "3A.8": "Teoría de la demanda del consumidor (I)",
+    "3A.9": "Teoría de la demanda del consumidor (II)",
+    "3A.10": "Teoría de la demanda del consumidor (III)",
+    "3A.11": "Teoría de la producción",
+    "3A.12": "Teoría de los costes",
+    "3A.13": "Economía de la información y teoría de la agencia",
+    "3A.14": "Teoría de juegos",
+    "3A.15": "La empresa: tamaño eficiente y límites",
+    "3A.16": "Análisis de mercados (I) - Competencia perfecta",
+    "3A.17": "Análisis de mercados (II) - Monopolio",
+    "3A.18": "Análisis de mercados (III) - Competencia monopolística",
+    "3A.19": "Análisis de mercados (IV) - Oligopolio",
+    "3A.20": "Poder de mercado y regulación óptima",
+    "3A.21": "La teoría del equilibrio general",
+    "3A.22": "Economía del bienestar (I)",
+    "3A.23": "Economía del bienestar (II) - Externalidades y bienes públicos",
+    "3A.24": "Economía del bienestar (III) - Funciones de bienestar social",
+    "3A.25": "Teoría neoclásica del mercado de trabajo",
+    "3A.26": "Desempleo friccional - Modelo DMP",
+    "3A.27": "Determinación de salarios",
+    "3A.28": "La tasa natural de paro y la NAIRU",
+    "3A.29": "Modelización dinámica",
+    "3A.30": "Magnitudes macroeconómicas y contabilidad nacional",
+    "3A.31": "Análisis de las tablas input-output",
+    "3A.32": "El modelo de oferta y demanda agregada",
+    "3A.33": "Teorías de la demanda de consumo",
+    "3A.34": "Teorías de la inversión en bienes de equipo",
+    "3A.35": "Teorías de la demanda de dinero",
+    "3A.36": "Política monetaria (I) - Diseño e instrumentación",
+    "3A.37": "Política monetaria (II) - Mecanismos de transmisión",
+    "3A.38": "La política fiscal",
+    "3A.39": "Déficit público",
+    "3A.40": "Efectividad de políticas monetaria y fiscal",
+    "3A.41": "La inflación",
+    "3A.42": "Teorías de los ciclos económicos",
+    "3A.43": "Crecimiento económico (I) - Modelo de Solow",
+    "3A.44": "Crecimiento económico (II) - Crecimiento endógeno",
+    "3A.45": "Evidencia empírica sobre crecimiento económico",
+    "3B.1": "La información financiera de las empresas",
+    "3B.2": "La empresa y las decisiones de inversión",
+    "3B.3": "La empresa y las decisiones de financiación",
+    "3B.4": "Análisis del crecimiento de la empresa",
+    "3B.5": "Teoría del comercio internacional (I)",
+    "3B.6": "Teoría del comercio internacional (II)",
+    "3B.7": "La política comercial (I)",
+    "3B.8": "La política comercial (II)",
+    "3B.9": "Comercio internacional y crecimiento económico",
+    "3B.10": "Teoría de la integración económica",
+    "3B.11": "Balanza de pagos",
+    "3B.12": "Mecanismos de ajuste de la balanza de pagos",
+    "3B.13": "Mercados de divisas",
+    "3B.14": "Teorías de la determinación del tipo de cambio",
+    "3B.15": "Regímenes cambiarios",
+    "3B.16": "Teoría de la integración monetaria",
+    "3B.17": "Teorías de las crisis de balanza de pagos",
+    "3B.18": "La nueva globalización económica y financiera",
+    "3B.19": "La coordinación internacional de políticas económicas",
+    "3B.20": "El sistema económico internacional hasta Bretton-Woods",
+    "3B.21": "El sistema económico internacional post Bretton-Woods",
+    "3B.22": "El Fondo Monetario Internacional",
+    "3B.23": "Instrumentos financieros de renta variable",
+    "3B.24": "Instrumentos de renta fija",
+    "3B.25": "Instrumentos y mercados de derivados",
+    "3B.26": "Crisis financieras y pánicos bancarios",
+    "3B.27": "Regulación financiera",
+    "3B.28": "Economía de los países en desarrollo",
+    "3B.29": "Financiación exterior del desarrollo económico",
+    "3B.30": "Banco Mundial y Bancos Regionales de Desarrollo",
+    "3B.31": "El cambio climático y su impacto en la economía",
+    "3B.32": "Perspectivas económicas mundiales",
+    "3B.33": "La OMC - GATT y comercio de mercancías",
+    "3B.34": "La OMC - Acuerdos distintos de mercancías",
+    "3B.35": "Procesos de integración no comunitarios",
+    "3B.36": "Tratados e instituciones de la UE",
+    "3B.37": "Las finanzas de la Unión Europea",
+    "3B.38": "La política agrícola de la UE",
+    "3B.39": "El mercado único de la UE",
+    "3B.40": "Cohesión Económica y Social en la UE",
+    "3B.41": "La política comercial de la UE",
+    "3B.42": "Relaciones económicas exteriores de la UE",
+    "3B.43": "El origen del euro y el SEBC",
+    "3B.44": "La Unión Bancaria",
+    "3B.45": "La gobernanza económica de la UE"
+  }
+;
+
+        let temasSeleccionados = new Set();
+        let preguntasFiltradas = [];
+        let preguntasExamen = [];
+        let indicePreguntaActual = 0;
+        let respuestasUsuario = [];
+        let respondida = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            inicializarSelectores();
+        });
+
+        function inicializarSelectores() {
+            const temasParteA = document.getElementById('temas-parte-a');
+            const temasParteB = document.getElementById('temas-parte-b');
+
+            Object.entries(datosTest.temas).forEach(([codigo, nombre]) => {
+                const container = codigo.startsWith('3A') ? temasParteA : temasParteB;
+                const numTema = codigo.replace('3A.', '').replace('3B.', '');
+                const preguntasTema = datosTest.preguntas.filter(p => p.temas.includes(codigo)).length;
+                
+                const div = document.createElement('div');
+                div.className = 'tema-checkbox';
+                div.innerHTML = `
+                    <input type="checkbox" id="${codigo}" value="${codigo}">
+                    <label for="${codigo}">
+                        <span class="tema-code">Tema ${numTema}</span>: ${nombre}
+                        ${preguntasTema > 0 ? `<span style="color: var(--color-text-light); font-size: 0.8rem;"> (${preguntasTema})</span>` : ''}
+                    </label>
+                `;
+                container.appendChild(div);
+
+                const checkbox = div.querySelector('input');
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        temasSeleccionados.add(codigo);
+                        div.classList.add('selected');
+                    } else {
+                        temasSeleccionados.delete(codigo);
+                        div.classList.remove('selected');
+                    }
+                    actualizarContadores();
+                });
+
+                div.addEventListener('click', function(e) {
+                    if (e.target.tagName !== 'INPUT') {
+                        checkbox.checked = !checkbox.checked;
+                        checkbox.dispatchEvent(new Event('change'));
+                    }
+                });
+            });
+
+            document.querySelectorAll('.toggle-all').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const parte = this.dataset.parte;
+                    const prefix = parte === 'A' ? '3A' : '3B';
+                    const checkboxes = document.querySelectorAll(`input[value^="${prefix}"]`);
+                    const todosSeleccionados = Array.from(checkboxes).every(cb => cb.checked);
+                    
+                    checkboxes.forEach(cb => {
+                        cb.checked = !todosSeleccionados;
+                        cb.dispatchEvent(new Event('change'));
+                    });
+                    
+                    this.textContent = todosSeleccionados ? 'Seleccionar todos' : 'Deseleccionar todos';
+                });
+            });
+
+            document.getElementById('btn-comenzar').addEventListener('click', comenzarExamen);
+            document.getElementById('btn-finalizar').addEventListener('click', finalizarExamen);
+            document.getElementById('btn-saltar').addEventListener('click', saltarPregunta);
+            document.getElementById('btn-siguiente').addEventListener('click', siguientePregunta);
+            document.getElementById('btn-volver').addEventListener('click', volverASeleccion);
+            document.getElementById('btn-repetir').addEventListener('click', repetirExamen);
+        }
+
+        function actualizarContadores() {
+            preguntasFiltradas = datosTest.preguntas.filter(pregunta => 
+                pregunta.temas.some(tema => temasSeleccionados.has(tema))
+            );
+            document.getElementById('temas-count').textContent = temasSeleccionados.size;
+            document.getElementById('preguntas-count').textContent = preguntasFiltradas.length;
+            document.getElementById('btn-comenzar').disabled = preguntasFiltradas.length === 0;
+        }
+
+        function comenzarExamen() {
+            preguntasExamen = [...preguntasFiltradas].sort(() => Math.random() - 0.5);
+            indicePreguntaActual = 0;
+            respuestasUsuario = [];
+            
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-examen').classList.remove('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+            document.getElementById('total-preguntas').textContent = preguntasExamen.length;
+            
+            actualizarEstadisticas();
+            mostrarPregunta();
+        }
+
+        function mostrarPregunta() {
+            if (indicePreguntaActual >= preguntasExamen.length) {
+                finalizarExamen();
+                return;
+            }
+
+            respondida = false;
+            const pregunta = preguntasExamen[indicePreguntaActual];
+            
+            document.getElementById('pregunta-actual').textContent = indicePreguntaActual + 1;
+            
+            let tipoTag = '';
+            if (pregunta.tipo_pregunta === 'incorrecta') {
+                tipoTag = '<span class="pregunta-tipo">Señale la INCORRECTA</span>';
+            } else if (pregunta.tipo_pregunta === 'aceptada') {
+                tipoTag = '<span class="pregunta-tipo">Anulada - Todas válidas</span>';
+            }
+            
+            document.getElementById('pregunta-numero').innerHTML = `Pregunta ${indicePreguntaActual + 1}${tipoTag}`;
+            document.getElementById('pregunta-enunciado').textContent = pregunta.enunciado;
+            
+            const opcionesList = document.getElementById('opciones-list');
+            opcionesList.innerHTML = '';
+            
+            ['a', 'b', 'c', 'd'].forEach(letra => {
+                const li = document.createElement('li');
+                li.className = 'opcion-item';
+                
+                const btn = document.createElement('button');
+                btn.className = 'opcion-btn';
+                btn.dataset.opcion = letra;
+                btn.innerHTML = `
+                    <span class="opcion-letra">${letra.toUpperCase()}</span>
+                    <span class="opcion-texto">${pregunta.opciones[letra]}</span>
+                `;
+                btn.addEventListener('click', () => seleccionarOpcion(letra));
+                
+                li.appendChild(btn);
+                opcionesList.appendChild(li);
+            });
+            
+            document.getElementById('feedback-box').classList.add('hidden');
+            document.getElementById('btn-siguiente').classList.add('hidden');
+            document.getElementById('btn-saltar').classList.remove('hidden');
+        }
+
+        function seleccionarOpcion(letra) {
+            if (respondida) return;
+            respondida = true;
+            
+            const pregunta = preguntasExamen[indicePreguntaActual];
+            const esCorrecta = pregunta.respuesta.includes(letra);
+            const esAceptada = pregunta.tipo_pregunta === 'aceptada';
+            
+            respuestasUsuario.push({
+                preguntaId: pregunta.id,
+                respuesta: letra,
+                correcta: esCorrecta || esAceptada
+            });
+            
+            document.querySelectorAll('.opcion-btn').forEach(btn => {
+                btn.classList.add('disabled');
+                const opcion = btn.dataset.opcion;
+                
+                if (opcion === letra) {
+                    btn.classList.add('selected');
+                    if (esAceptada || esCorrecta) {
+                        btn.classList.add('correct');
+                    } else {
+                        btn.classList.add('incorrect');
+                    }
+                } else if (pregunta.respuesta.includes(opcion) && !esAceptada) {
+                    btn.classList.add('was-correct');
+                }
+            });
+            
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.classList.remove('hidden', 'correct', 'incorrect', 'accepted');
+            
+            if (esAceptada) {
+                feedbackBox.classList.add('accepted');
+                feedbackBox.innerHTML = `<strong>Pregunta anulada:</strong> Todas las respuestas se consideran correctas.`;
+            } else if (esCorrecta) {
+                feedbackBox.classList.add('correct');
+                feedbackBox.innerHTML = `<strong>¡Correcto!</strong>`;
+            } else {
+                feedbackBox.classList.add('incorrect');
+                const correctas = pregunta.respuesta.map(r => r.toUpperCase()).join(', ');
+                feedbackBox.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta es: ${correctas}`;
+            }
+            
+            actualizarEstadisticas();
+            document.getElementById('btn-siguiente').classList.remove('hidden');
+            document.getElementById('btn-saltar').classList.add('hidden');
+        }
+
+        function saltarPregunta() {
+            respuestasUsuario.push({
+                preguntaId: preguntasExamen[indicePreguntaActual].id,
+                respuesta: null,
+                correcta: false,
+                saltada: true
+            });
+            actualizarEstadisticas();
+            indicePreguntaActual++;
+            mostrarPregunta();
+        }
+
+        function siguientePregunta() {
+            indicePreguntaActual++;
+            mostrarPregunta();
+        }
+
+        function actualizarEstadisticas() {
+            const correctas = respuestasUsuario.filter(r => r.correcta && !r.saltada).length;
+            const incorrectas = respuestasUsuario.filter(r => !r.correcta && !r.saltada).length;
+            const saltadas = respuestasUsuario.filter(r => r.saltada).length;
+            
+            document.getElementById('stat-correct').textContent = correctas;
+            document.getElementById('stat-incorrect').textContent = incorrectas;
+            document.getElementById('stat-skipped').textContent = saltadas;
+        }
+
+        function finalizarExamen() {
+            while (respuestasUsuario.length < preguntasExamen.length) {
+                respuestasUsuario.push({
+                    preguntaId: preguntasExamen[respuestasUsuario.length].id,
+                    respuesta: null,
+                    correcta: false,
+                    saltada: true
+                });
+            }
+            
+            const correctas = respuestasUsuario.filter(r => r.correcta && !r.saltada).length;
+            const incorrectas = respuestasUsuario.filter(r => !r.correcta && !r.saltada).length;
+            const saltadas = respuestasUsuario.filter(r => r.saltada).length;
+            
+            const puntosBrutos = correctas - (incorrectas * 0.25);
+            const nota = Math.max(0, (puntosBrutos / preguntasExamen.length) * 20);
+            
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-examen').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.remove('hidden');
+            
+            document.getElementById('resultados-nota').textContent = nota.toFixed(2).replace('.', ',') + ' / 20';
+            document.getElementById('final-correct').textContent = correctas;
+            document.getElementById('final-incorrect').textContent = incorrectas;
+            document.getElementById('final-skipped').textContent = saltadas;
+            
+            generarRevision();
+        }
+
+        function generarRevision() {
+            const container = document.getElementById('revision-container');
+            container.innerHTML = '';
+            
+            preguntasExamen.forEach((pregunta, index) => {
+                const respuestaUsuario = respuestasUsuario[index];
+                const examen = datosTest.examenes.find(e => e.id === pregunta.examen);
+                
+                let resultado = 'skipped';
+                if (!respuestaUsuario.saltada) {
+                    if (pregunta.tipo_pregunta === 'aceptada') {
+                        resultado = 'accepted';
+                    } else {
+                        resultado = respuestaUsuario.correcta ? 'correct' : 'incorrect';
+                    }
+                }
+                
+                const div = document.createElement('div');
+                div.className = `revision-pregunta resultado-${resultado}`;
+                
+                let opcionesHtml = '';
+                ['a', 'b', 'c', 'd'].forEach(letra => {
+                    let clase = '';
+                    let marca = '';
+                    
+                    if (respuestaUsuario.respuesta === letra) {
+                        if (pregunta.tipo_pregunta === 'aceptada' || pregunta.respuesta.includes(letra)) {
+                            clase = 'correct';
+                            marca = ' ✓';
+                        } else {
+                            clase = 'incorrect';
+                            marca = ' ✗';
+                        }
+                    } else if (pregunta.respuesta.includes(letra) && pregunta.tipo_pregunta !== 'aceptada') {
+                        clase = 'was-correct';
+                        marca = ' ←';
+                    }
+                    
+                    opcionesHtml += `
+                        <li class="opcion-item">
+                            <div class="opcion-btn disabled ${clase}">
+                                <span class="opcion-letra">${letra.toUpperCase()}</span>
+                                <span class="opcion-texto">${pregunta.opciones[letra]}${marca}</span>
+                            </div>
+                        </li>
+                    `;
+                });
+                
+                const temasNombres = pregunta.temas.map(t => 
+                    `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`
+                ).join('');
+                
+                div.innerHTML = `
+                    <div class="pregunta-numero">
+                        Pregunta ${index + 1}
+                        ${pregunta.tipo_pregunta === 'incorrecta' ? '<span class="pregunta-tipo">INCORRECTA</span>' : ''}
+                        ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
+                    </div>
+                    <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                    <ul class="opciones-list">${opcionesHtml}</ul>
+                    <div class="revision-meta">
+                        <div class="origen">${examen.nombre} - Pregunta ${pregunta.numero}</div>
+                        <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+
+        function volverASeleccion() {
+            document.getElementById('fase-seleccion').classList.remove('hidden');
+            document.getElementById('fase-examen').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+        }
+
+        function repetirExamen() {
+            comenzarExamen();
+        }
+    </script>
+</body>
+</html>
