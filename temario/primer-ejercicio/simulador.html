@@ -104,6 +104,16 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .config-grid:last-child {
+            margin-bottom: 0;
+        }
+        .config-grid-2col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .config-grid-3col {
+            grid-template-columns: repeat(3, 1fr);
         }
         .config-item {
             display: flex;
@@ -481,7 +491,7 @@
             .examen-actions { flex-direction: column; }
             .examen-actions .btn-primary, .examen-actions .btn-secondary { width: 100%; justify-content: center; }
             .pregunta-container { padding: 1.25rem; }
-            .config-grid { grid-template-columns: 1fr; }
+            .config-grid-2col, .config-grid-3col { grid-template-columns: 1fr; }
             .navegador-preguntas { max-height: 80px; }
             .nav-pregunta { width: 32px; height: 32px; font-size: 0.8rem; }
         }
@@ -551,7 +561,7 @@
                         <!-- Configuración del examen -->
                         <div class="config-examen">
                             <h3>Configuración del examen</h3>
-                            <div class="config-grid">
+                            <div class="config-grid config-grid-2col">
                                 <div class="config-item">
                                     <label for="num-preguntas">Número de preguntas</label>
                                     <input type="number" id="num-preguntas" value="50" min="1" max="200">
@@ -561,6 +571,8 @@
                                     <label for="tiempo-examen">Tiempo disponible (minutos)</label>
                                     <input type="number" id="tiempo-examen" value="120" min="1" max="300">
                                 </div>
+                            </div>
+                            <div class="config-grid config-grid-3col">
                                 <div class="config-item">
                                     <label for="puntos-acierto">Puntos por acierto</label>
                                     <input type="number" id="puntos-acierto" value="1" min="0" max="10" step="0.01">
@@ -1010,13 +1022,13 @@
             
             const puntosBrutos = (correctas * puntosAcierto) + (incorrectas * puntosFallo) + (sinResponder * puntosBlanco);
             const maxPuntos = preguntasExamen.length * puntosAcierto;
-            const nota = Math.max(0, (puntosBrutos / maxPuntos) * 20);
+            const notaSobre10 = (puntosBrutos / maxPuntos) * 10;
             
             document.getElementById('fase-seleccion').classList.add('hidden');
             document.getElementById('fase-examen').classList.add('hidden');
             document.getElementById('fase-resultados').classList.remove('hidden');
             
-            document.getElementById('resultados-nota').textContent = nota.toFixed(2).replace('.', ',') + ' / 20';
+            document.getElementById('resultados-nota').innerHTML = `${puntosBrutos.toFixed(2).replace('.', ',')} / ${maxPuntos} puntos<br><span style="font-size: 1.5rem;">(${notaSobre10.toFixed(2).replace('.', ',')} / 10)</span>`;
             document.getElementById('final-correct').textContent = correctas;
             document.getElementById('final-incorrect').textContent = incorrectas;
             document.getElementById('final-skipped').textContent = sinResponder;
