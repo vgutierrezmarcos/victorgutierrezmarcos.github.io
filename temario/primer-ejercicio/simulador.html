@@ -22,18 +22,26 @@
     <style>
         .test-container { position: relative; z-index: 1; }
 
-        .tema-selector { margin-bottom: 2rem; }
+        .tema-selector { margin-bottom: 1rem; }
         .tema-selector h3 {
             font-family: var(--font-display);
             font-size: 1.15rem;
             font-weight: 600;
             color: var(--color-text);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--color-accent-gold);
+            margin-bottom: 0;
+            padding: 1rem;
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .tema-selector h3:hover {
+            background: var(--color-primary-pale);
+            border-color: var(--color-primary);
         }
         .tema-selector h3 .toggle-all {
             font-size: 0.8rem;
@@ -44,6 +52,30 @@
             font-weight: 500;
         }
         .tema-selector h3 .toggle-all:hover { color: var(--color-primary-dark); }
+        .tema-selector h3 .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            margin-right: 0.5rem;
+        }
+        .tema-selector.collapsed h3 .accordion-icon {
+            transform: rotate(-90deg);
+        }
+        .tema-selector .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .temas-content {
+            padding: 1rem;
+            border: 1px solid var(--color-border-light);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            background: var(--color-white);
+            transition: all 0.3s ease;
+        }
+        .tema-selector.collapsed .temas-content {
+            display: none;
+        }
 
         .temas-grid {
             display: grid;
@@ -484,6 +516,70 @@
             font-size: 0.75rem;
         }
 
+        /* Gráfico de bloques */
+        .grafico-bloques {
+            background: var(--color-white);
+            border: 1px solid var(--color-border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .grafico-bloques h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+        .bloque-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+        .bloque-nombre {
+            flex: 0 0 220px;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            color: var(--color-text);
+            text-align: right;
+        }
+        .bloque-barra-container {
+            flex: 1;
+            height: 24px;
+            background: var(--color-bg-light);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bloque-barra {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .bloque-barra.positivo {
+            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+        }
+        .bloque-barra.negativo {
+            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+        }
+        .bloque-barra.neutro {
+            background: var(--color-text-light);
+        }
+        .bloque-puntos {
+            flex: 0 0 80px;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .bloque-puntos.positivo { color: #2e7d32; }
+        .bloque-puntos.negativo { color: #c62828; }
+        .bloque-puntos.neutro { color: var(--color-text-muted); }
+
+        @media (max-width: 768px) {
+            .bloque-nombre { flex: 0 0 120px; font-size: 0.75rem; }
+            .bloque-puntos { flex: 0 0 60px; font-size: 0.8rem; }
+        }
+
         @media (max-width: 768px) {
             .temas-grid { grid-template-columns: 1fr; }
             .selection-summary { flex-direction: column; text-align: center; }
@@ -533,20 +629,30 @@
                             <p>Configura tu simulacro de examen: selecciona los temas, el número de preguntas y el tiempo disponible.</p>
                         </div>
 
-                        <div class="tema-selector">
-                            <h3>
-                                Parte A) Economía General
-                                <span class="toggle-all" data-parte="A">Seleccionar todos</span>
+                        <div class="tema-selector" id="selector-parte-a">
+                            <h3 onclick="toggleAcordeon('selector-parte-a')">
+                                <span class="header-left">
+                                    <span class="accordion-icon">▼</span>
+                                    Parte A) Economía General
+                                </span>
+                                <span class="toggle-all" data-parte="A" onclick="event.stopPropagation()">Deseleccionar todos</span>
                             </h3>
-                            <div class="temas-grid" id="temas-parte-a"></div>
+                            <div class="temas-content">
+                                <div class="temas-grid" id="temas-parte-a"></div>
+                            </div>
                         </div>
 
-                        <div class="tema-selector">
-                            <h3>
-                                Parte B) Economía Financiera, Internacional y Relaciones Económicas
-                                <span class="toggle-all" data-parte="B">Seleccionar todos</span>
+                        <div class="tema-selector" id="selector-parte-b">
+                            <h3 onclick="toggleAcordeon('selector-parte-b')">
+                                <span class="header-left">
+                                    <span class="accordion-icon">▼</span>
+                                    Parte B) Economía Financiera, Internacional y Relaciones Económicas
+                                </span>
+                                <span class="toggle-all" data-parte="B" onclick="event.stopPropagation()">Deseleccionar todos</span>
                             </h3>
-                            <div class="temas-grid" id="temas-parte-b"></div>
+                            <div class="temas-content">
+                                <div class="temas-grid" id="temas-parte-b"></div>
+                            </div>
                         </div>
 
                         <!-- Filtro de preguntas oficiales -->
@@ -638,6 +744,11 @@
                             </div>
                         </div>
 
+                        <div class="grafico-bloques">
+                            <h4>Resultados por bloque temático</h4>
+                            <div id="grafico-bloques-container"></div>
+                        </div>
+
                         <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Revisión de preguntas</h3>
                         <div id="revision-container"></div>
 
@@ -671,6 +782,38 @@
         let intervaloTemporizador = null;
         let tiempoTranscurrido = 0;
 
+        // Mapeo de temas a bloques
+        const temaABloque = {
+            '3.A.1': 'Pensamiento económico', '3.A.2': 'Pensamiento económico', '3.A.3': 'Pensamiento económico',
+            '3.A.4': 'Pensamiento económico', '3.A.5': 'Pensamiento económico', '3.A.6': 'Pensamiento económico',
+            '3.A.7': 'Pensamiento económico',
+            '3.A.8': 'Modelo neoclásico básico', '3.A.9': 'Modelo neoclásico básico', '3.A.11': 'Modelo neoclásico básico',
+            '3.A.12': 'Modelo neoclásico básico', '3.A.16': 'Modelo neoclásico básico', '3.A.21': 'Modelo neoclásico básico',
+            '3.A.10': 'Información y poder de mercado', '3.A.13': 'Información y poder de mercado',
+            '3.A.14': 'Información y poder de mercado', '3.A.15': 'Información y poder de mercado',
+            '3.A.17': 'Información y poder de mercado', '3.A.18': 'Información y poder de mercado',
+            '3.A.19': 'Información y poder de mercado', '3.A.20': 'Información y poder de mercado',
+            '3.A.22': 'Economía del Bienestar', '3.A.23': 'Economía del Bienestar', '3.A.24': 'Economía del Bienestar',
+            '3.A.25': 'Demanda y Oferta Agregada', '3.A.26': 'Demanda y Oferta Agregada', '3.A.27': 'Demanda y Oferta Agregada',
+            '3.A.28': 'Demanda y Oferta Agregada', '3.A.32': 'Demanda y Oferta Agregada', '3.A.33': 'Demanda y Oferta Agregada',
+            '3.A.34': 'Demanda y Oferta Agregada',
+            '3.A.30': 'Contabilidad Nacional', '3.A.31': 'Contabilidad Nacional',
+            '3.A.35': 'Ciclo y políticas de demanda', '3.A.36': 'Ciclo y políticas de demanda',
+            '3.A.37': 'Ciclo y políticas de demanda', '3.A.38': 'Ciclo y políticas de demanda',
+            '3.A.39': 'Ciclo y políticas de demanda', '3.A.40': 'Ciclo y políticas de demanda',
+            '3.A.41': 'Ciclo y políticas de demanda', '3.A.42': 'Ciclo y políticas de demanda',
+            '3.A.29': 'Crecimiento económico', '3.A.43': 'Crecimiento económico',
+            '3.A.44': 'Crecimiento económico', '3.A.45': 'Crecimiento económico'
+        };
+        // Temas de la Parte B se asignan al bloque correspondiente
+        for (let i = 1; i <= 45; i++) {
+            temaABloque[`3.B.${i}`] = 'Economía Financiera e Internacional';
+        }
+
+        function toggleAcordeon(id) {
+            document.getElementById(id).classList.toggle('collapsed');
+        }
+
         document.addEventListener('DOMContentLoaded', async function() {
             try {
                 const response = await fetch('preguntas.json');
@@ -692,15 +835,18 @@
                 const preguntasTema = datosTest.preguntas.filter(p => p.temas.includes(codigo)).length;
                 
                 const div = document.createElement('div');
-                div.className = 'tema-checkbox';
+                div.className = 'tema-checkbox selected'; // Seleccionado por defecto
                 div.innerHTML = `
-                    <input type="checkbox" id="${codigo}" value="${codigo}">
+                    <input type="checkbox" id="${codigo}" value="${codigo}" checked>
                     <label for="${codigo}">
                         <span class="tema-code">Tema ${numTema}</span>: ${nombre}
                         ${preguntasTema > 0 ? `<span style="color: var(--color-text-light); font-size: 0.8rem;"> (${preguntasTema})</span>` : ''}
                     </label>
                 `;
                 container.appendChild(div);
+
+                // Añadir al set de seleccionados
+                temasSeleccionados.add(codigo);
 
                 const checkbox = div.querySelector('input');
                 checkbox.addEventListener('change', function() {
@@ -712,6 +858,7 @@
                         div.classList.remove('selected');
                     }
                     actualizarContadores();
+                    actualizarToggleAllText();
                 });
 
                 div.addEventListener('click', function(e) {
@@ -723,7 +870,8 @@
             });
 
             document.querySelectorAll('.toggle-all').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
                     const parte = this.dataset.parte;
                     const prefix = parte === 'A' ? '3.A' : '3.B';
                     const checkboxes = document.querySelectorAll(`input[value^="${prefix}"]`);
@@ -754,6 +902,23 @@
             document.getElementById('btn-siguiente').addEventListener('click', siguientePregunta);
             document.getElementById('btn-volver').addEventListener('click', volverASeleccion);
             document.getElementById('btn-repetir').addEventListener('click', repetirExamen);
+
+            // Actualizar contadores inicial
+            actualizarContadores();
+            
+            // Colapsar acordeones por defecto
+            document.getElementById('selector-parte-a').classList.add('collapsed');
+            document.getElementById('selector-parte-b').classList.add('collapsed');
+        }
+
+        function actualizarToggleAllText() {
+            document.querySelectorAll('.toggle-all').forEach(btn => {
+                const parte = btn.dataset.parte;
+                const prefix = parte === 'A' ? '3.A' : '3.B';
+                const checkboxes = document.querySelectorAll(`input[value^="${prefix}"]`);
+                const todosSeleccionados = Array.from(checkboxes).every(cb => cb.checked);
+                btn.textContent = todosSeleccionados ? 'Deseleccionar todos' : 'Seleccionar todos';
+            });
         }
 
         function actualizarContadores() {
@@ -1043,7 +1208,83 @@
             document.getElementById('resultados-tiempo').textContent = `Tiempo empleado: ${tiempoStr}`;
             
             generarRevision();
+            generarGraficoBloques();
         }
+
+        function generarGraficoBloques() {
+            const puntosAcierto = parseFloat(document.getElementById('puntos-acierto').value) || 1;
+            const puntosFallo = parseFloat(document.getElementById('puntos-fallo').value) || -0.33;
+            const puntosBlanco = parseFloat(document.getElementById('puntos-blanco').value) || 0;
+            
+            // Calcular puntos por bloque
+            const bloques = {};
+            
+            preguntasExamen.forEach((pregunta, index) => {
+                const respuesta = respuestasUsuario[index];
+                const bloque = temaABloque[pregunta.temas[0]] || 'Otros';
+                
+                if (!bloques[bloque]) {
+                    bloques[bloque] = { puntos: 0, maxPuntos: 0, correctas: 0, incorrectas: 0, blanco: 0 };
+                }
+                
+                bloques[bloque].maxPuntos += puntosAcierto;
+                
+                if (respuesta === undefined) {
+                    bloques[bloque].puntos += puntosBlanco;
+                    bloques[bloque].blanco++;
+                } else if (pregunta.tipo_pregunta === 'aceptada' || pregunta.respuesta.includes(respuesta)) {
+                    bloques[bloque].puntos += puntosAcierto;
+                    bloques[bloque].correctas++;
+                } else {
+                    bloques[bloque].puntos += puntosFallo;
+                    bloques[bloque].incorrectas++;
+                }
+            });
+            
+            // Ordenar bloques
+            const ordenBloques = [
+                'Pensamiento económico',
+                'Modelo neoclásico básico',
+                'Información y poder de mercado',
+                'Economía del Bienestar',
+                'Contabilidad Nacional',
+                'Demanda y Oferta Agregada',
+                'Ciclo y políticas de demanda',
+                'Crecimiento económico',
+                'Economía Financiera e Internacional'
+            ];
+            
+            const bloquesOrdenados = ordenBloques.filter(b => bloques[b]).map(b => ({ nombre: b, ...bloques[b] }));
+            
+            // Añadir bloques no contemplados
+            Object.keys(bloques).forEach(b => {
+                if (!ordenBloques.includes(b)) {
+                    bloquesOrdenados.push({ nombre: b, ...bloques[b] });
+                }
+            });
+            
+            // Generar HTML
+            const container = document.getElementById('grafico-bloques-container');
+            container.innerHTML = '';
+            
+            const maxAbsoluto = Math.max(...bloquesOrdenados.map(b => Math.abs(b.maxPuntos)));
+            
+            bloquesOrdenados.forEach(bloque => {
+                const porcentaje = bloque.maxPuntos > 0 ? (bloque.puntos / bloque.maxPuntos) * 100 : 0;
+                const anchoBarra = Math.abs(porcentaje);
+                const clase = bloque.puntos > 0 ? 'positivo' : (bloque.puntos < 0 ? 'negativo' : 'neutro');
+                
+                const row = document.createElement('div');
+                row.className = 'bloque-row';
+                row.innerHTML = `
+                    <div class="bloque-nombre">${bloque.nombre}</div>
+                    <div class="bloque-barra-container">
+                        <div class="bloque-barra ${clase}" style="width: ${anchoBarra}%"></div>
+                    </div>
+                    <div class="bloque-puntos ${clase}">${bloque.puntos.toFixed(2)} / ${bloque.maxPuntos.toFixed(0)}</div>
+                `;
+                container.appendChild(row);
+            });
 
         function generarRevision() {
             const container = document.getElementById('revision-container');
