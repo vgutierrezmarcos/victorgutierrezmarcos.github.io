@@ -742,6 +742,34 @@
                     </div>
 
                     <div id="main-content" style="display: none;">
+                        <!-- Selector de temas Parte A -->
+                        <div class="tema-selector collapsed" id="selector-parte-a">
+                            <h3 onclick="toggleAcordeon('selector-parte-a')">
+                                <div class="header-left">
+                                    <span class="accordion-icon">▼</span>
+                                    <span>Parte A: Economía general</span>
+                                </div>
+                                <span class="toggle-all" data-parte="A">Deseleccionar todos</span>
+                            </h3>
+                            <div class="temas-content">
+                                <div class="temas-grid" id="temas-parte-a"></div>
+                            </div>
+                        </div>
+
+                        <!-- Selector de temas Parte B -->
+                        <div class="tema-selector collapsed" id="selector-parte-b">
+                            <h3 onclick="toggleAcordeon('selector-parte-b')">
+                                <div class="header-left">
+                                    <span class="accordion-icon">▼</span>
+                                    <span>Parte B: Economía Financiera, Economía Internacional y Relaciones Económicas Internacionales</span>
+                                </div>
+                                <span class="toggle-all" data-parte="B">Deseleccionar todos</span>
+                            </h3>
+                            <div class="temas-content">
+                                <div class="temas-grid" id="temas-parte-b"></div>
+                            </div>
+                        </div>
+
                         <!-- Filtro de solo oficiales -->
                         <div class="filtro-oficial" id="filtro-oficial-container">
                             <input type="checkbox" id="solo-oficiales" checked>
@@ -753,7 +781,7 @@
                         <!-- Configuración del examen -->
                         <div class="config-examen">
                             <h3>⚙️ Configuración del examen</h3>
-                            <div class="config-grid config-grid-3col">
+                            <div class="config-grid config-grid-2col">
                                 <div class="config-item">
                                     <label for="num-preguntas">Número de preguntas:</label>
                                     <input type="number" id="num-preguntas" value="50" min="1" max="100">
@@ -790,34 +818,6 @@
                             <div class="contador-item">
                                 <span class="contador-numero" id="preguntas-count">0</span>
                                 <span class="contador-label">Preguntas disponibles</span>
-                            </div>
-                        </div>
-
-                        <!-- Selector de temas Parte A -->
-                        <div class="tema-selector" id="selector-parte-a">
-                            <h3 onclick="toggleAcordeon('selector-parte-a')">
-                                <div class="header-left">
-                                    <span class="accordion-icon">▼</span>
-                                    <span>Parte A: Economía general</span>
-                                </div>
-                                <span class="toggle-all" data-parte="A">Deseleccionar todos</span>
-                            </h3>
-                            <div class="temas-content">
-                                <div class="temas-grid" id="temas-parte-a"></div>
-                            </div>
-                        </div>
-
-                        <!-- Selector de temas Parte B -->
-                        <div class="tema-selector" id="selector-parte-b">
-                            <h3 onclick="toggleAcordeon('selector-parte-b')">
-                                <div class="header-left">
-                                    <span class="accordion-icon">▼</span>
-                                    <span>Parte B: Economía Financiera, Economía Internacional y Relaciones Económicas Internacionales</span>
-                                </div>
-                                <span class="toggle-all" data-parte="B">Deseleccionar todos</span>
-                            </h3>
-                            <div class="temas-content">
-                                <div class="temas-grid" id="temas-parte-b"></div>
                             </div>
                         </div>
 
@@ -1230,7 +1230,6 @@
             container.innerHTML = `
                 <div class="pregunta-numero">
                     Pregunta ${indicePreguntaActual + 1}
-                    ${pregunta.tipo_pregunta === 'incorrecta' ? '<span class="pregunta-tipo">INCORRECTA</span>' : ''}
                     ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
                 </div>
                 <div class="pregunta-enunciado">${pregunta.enunciado}</div>
@@ -1484,7 +1483,6 @@
                 div.innerHTML = `
                     <div class="pregunta-numero">
                         Pregunta ${index + 1}
-                        ${pregunta.tipo_pregunta === 'incorrecta' ? '<span class="pregunta-tipo">INCORRECTA</span>' : ''}
                         ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
                     </div>
                     <div class="pregunta-enunciado">${pregunta.enunciado}</div>
