@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organización | Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Organización - Archivos útiles para la preparación de la oposición">
+    <title>Organización y planificación para opositar a TCEE | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Recursos de organización para preparar la oposición a Técnico Comercial: cronogramas, plantillas de estudio y consejos de planificación del opositor.">
+    
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/organizacion.html">
+    
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="organización oposiciones, planificación estudio, cronograma opositor, TCEE organización, preparar oposición">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Organización | Víctor Gutiérrez Marcos">
-    <meta property="og:description" content="Archivos útiles para la preparación de la oposición a TCEE">
-    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
-    <meta property="og:url" content="https://victorgutierrezmarcos.es/organizacion.html">
+    <meta property="og:title" content="Organización y planificación para opositar a TCEE">
+    <meta property="og:description" content="Recursos de organización para preparar la oposición: cronogramas, plantillas y consejos de planificación.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/organizacion.html">
+    <meta property="og:locale" content="es_ES">
     <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="styles.css" as="style">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +32,20 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="search-styles.css">
+    
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "Cómo organizar el estudio para la oposición TCEE",
+        "description": "Recursos y herramientas para organizar la preparación de la oposición a Técnico Comercial y Economista del Estado",
+        "author": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="site-header">
@@ -28,9 +54,7 @@
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
-    <!-- BANNER DEL CURSO -->
-<!-- Inserta este código DESPUÉS del </header> y ANTES del <nav class="main-nav"> -->
-
+<!-- BANNER DEL CURSO -->
 <div class="course-banner" id="course-banner">
     <div class="course-banner-content">
         <div class="course-icon">📢</div>
@@ -66,7 +90,7 @@
             </div>
         </div>
         
-        <button class="course-close" onclick="closeCourse Banner()" aria-label="Cerrar anuncio">
+        <button class="course-close" onclick="closeCourseBanner()" aria-label="Cerrar anuncio">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18"/>
                 <line x1="6" y1="6" x2="18" y2="18"/>
