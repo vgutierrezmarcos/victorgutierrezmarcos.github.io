@@ -542,18 +542,90 @@
             color: var(--color-text);
             margin-bottom: 1.5rem;
         }
+        .grafico-bloques-intro {
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: var(--color-bg-light);
+            border-radius: 4px;
+            border-left: 3px solid #5F2987;
+        }
         .bloque-row {
             display: grid;
             grid-template-columns: 1fr 2fr auto;
             gap: 1rem;
             align-items: center;
             margin-bottom: 0.75rem;
+            position: relative;
         }
         .bloque-nombre {
             font-family: var(--font-ui);
             font-size: 0.85rem;
             font-weight: 500;
             color: var(--color-text);
+            cursor: help;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .bloque-nombre .info-icon {
+            font-size: 0.75rem;
+            color: #5F2987;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .bloque-nombre:hover .info-icon {
+            opacity: 1;
+        }
+        .bloque-tooltip {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: #2d2d2d;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            min-width: 280px;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            line-height: 1.5;
+        }
+        .bloque-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 20px;
+            border: 6px solid transparent;
+            border-bottom-color: #2d2d2d;
+        }
+        .bloque-nombre:hover .bloque-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        .bloque-tooltip-title {
+            font-weight: 600;
+            color: #bb9cdb;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.4rem;
+        }
+        .bloque-tooltip-tema {
+            display: block;
+            padding: 0.15rem 0;
+            color: #e0e0e0;
+        }
+        .bloque-tooltip-tema strong {
+            color: #bb9cdb;
+            font-weight: 600;
         }
         .bloque-barra-container {
             background: var(--color-bg-light);
@@ -915,35 +987,133 @@
         let tiempoInicio = 0;
         let intervaloTemporizador = null;
 
-        // Mapeo de temas a bloques (para estadísticas)
-        const temaABloque = {};
-        for (let i = 1; i <= 4; i++) {
-            temaABloque[`3.A.${i}`] = 'Pensamiento económico';
-        }
-        for (let i = 8; i <= 15; i++) {
-            temaABloque[`3.A.${i}`] = 'Modelo neoclásico básico';
-        }
-        for (let i = 13; i <= 20; i++) {
-            temaABloque[`3.A.${i}`] = 'Información y poder de mercado';
-        }
-        for (let i = 21; i <= 28; i++) {
-            temaABloque[`3.A.${i}`] = 'Economía del Bienestar';
-        }
-        for (let i = 29; i <= 32; i++) {
-            temaABloque[`3.A.${i}`] = 'Contabilidad Nacional';
-        }
-        for (let i = 32; i <= 35; i++) {
-            temaABloque[`3.A.${i}`] = 'Demanda y Oferta Agregada';
-        }
-        for (let i = 36; i <= 42; i++) {
-            temaABloque[`3.A.${i}`] = 'Ciclo y políticas de demanda';
-        }
-        for (let i = 43; i <= 45; i++) {
-            temaABloque[`3.A.${i}`] = 'Crecimiento económico';
-        }
-        for (let i = 1; i <= 45; i++) {
-            temaABloque[`3.B.${i}`] = 'Economía Financiera e Internacional';
-        }
+        // Mapeo de temas a bloques (basado en bloques.xlsx)
+        const temaABloque = {
+            // === PARTE A ===
+            // Pensamiento económico (temas A.1-7)
+            '3.A.1': 'Pensamiento económico',
+            '3.A.2': 'Pensamiento económico',
+            '3.A.3': 'Pensamiento económico',
+            '3.A.4': 'Pensamiento económico',
+            '3.A.5': 'Pensamiento económico',
+            '3.A.6': 'Pensamiento económico',
+            '3.A.7': 'Pensamiento económico',
+            // Modelo neoclásico básico
+            '3.A.8': 'Modelo neoclásico básico',
+            '3.A.9': 'Modelo neoclásico básico',
+            '3.A.11': 'Modelo neoclásico básico',
+            '3.A.12': 'Modelo neoclásico básico',
+            '3.A.16': 'Modelo neoclásico básico',
+            '3.A.21': 'Modelo neoclásico básico',
+            // Información y poder de mercado
+            '3.A.10': 'Información y poder de mercado',
+            '3.A.13': 'Información y poder de mercado',
+            '3.A.14': 'Información y poder de mercado',
+            '3.A.15': 'Información y poder de mercado',
+            '3.A.17': 'Información y poder de mercado',
+            '3.A.18': 'Información y poder de mercado',
+            '3.A.19': 'Información y poder de mercado',
+            '3.A.20': 'Información y poder de mercado',
+            // Economía del Bienestar e Intervención del Sector Público
+            '3.A.22': 'Economía del Bienestar',
+            '3.A.23': 'Economía del Bienestar',
+            '3.A.24': 'Economía del Bienestar',
+            // Demanda Agregada y Oferta Agregada
+            '3.A.25': 'Demanda y Oferta Agregada',
+            '3.A.26': 'Demanda y Oferta Agregada',
+            '3.A.27': 'Demanda y Oferta Agregada',
+            '3.A.28': 'Demanda y Oferta Agregada',
+            '3.A.32': 'Demanda y Oferta Agregada',
+            '3.A.33': 'Demanda y Oferta Agregada',
+            '3.A.34': 'Demanda y Oferta Agregada',
+            // Contabilidad Nacional
+            '3.A.30': 'Contabilidad Nacional',
+            '3.A.31': 'Contabilidad Nacional',
+            '3.B.11': 'Contabilidad Nacional',
+            // Ciclo económico y políticas de demanda
+            '3.A.35': 'Ciclo y políticas de demanda',
+            '3.A.36': 'Ciclo y políticas de demanda',
+            '3.A.37': 'Ciclo y políticas de demanda',
+            '3.A.38': 'Ciclo y políticas de demanda',
+            '3.A.39': 'Ciclo y políticas de demanda',
+            '3.A.40': 'Ciclo y políticas de demanda',
+            '3.A.41': 'Ciclo y políticas de demanda',
+            '3.A.42': 'Ciclo y políticas de demanda',
+            // Crecimiento económico
+            '3.A.29': 'Crecimiento económico',
+            '3.A.43': 'Crecimiento económico',
+            '3.A.44': 'Crecimiento económico',
+            '3.A.45': 'Crecimiento económico',
+            '3.B.28': 'Crecimiento económico',
+            '3.B.31': 'Crecimiento económico',
+            // === PARTE B ===
+            // Economía financiera y corporativa
+            '3.B.1': 'Economía financiera y corporativa',
+            '3.B.2': 'Economía financiera y corporativa',
+            '3.B.3': 'Economía financiera y corporativa',
+            '3.B.4': 'Economía financiera y corporativa',
+            '3.B.13': 'Economía financiera y corporativa',
+            '3.B.23': 'Economía financiera y corporativa',
+            '3.B.24': 'Economía financiera y corporativa',
+            '3.B.25': 'Economía financiera y corporativa',
+            '3.B.26': 'Economía financiera y corporativa',
+            '3.B.27': 'Economía financiera y corporativa',
+            // Comercio Internacional
+            '3.B.5': 'Comercio Internacional',
+            '3.B.6': 'Comercio Internacional',
+            '3.B.7': 'Comercio Internacional',
+            '3.B.8': 'Comercio Internacional',
+            '3.B.9': 'Comercio Internacional',
+            '3.B.10': 'Comercio Internacional',
+            // Economía abierta
+            '3.B.12': 'Economía abierta',
+            '3.B.14': 'Economía abierta',
+            '3.B.15': 'Economía abierta',
+            '3.B.16': 'Economía abierta',
+            '3.B.17': 'Economía abierta',
+            '3.B.18': 'Economía abierta',
+            '3.B.19': 'Economía abierta',
+            '3.B.29': 'Economía abierta',
+            // Historia económica
+            '3.B.20': 'Historia económica',
+            '3.B.21': 'Historia económica',
+            '3.B.32': 'Historia económica',
+            // Organismos internacionales
+            '3.B.22': 'Organismos internacionales',
+            '3.B.30': 'Organismos internacionales',
+            '3.B.33': 'Organismos internacionales',
+            '3.B.34': 'Organismos internacionales',
+            '3.B.35': 'Organismos internacionales',
+            // Unión Europea
+            '3.B.36': 'Unión Europea',
+            '3.B.37': 'Unión Europea',
+            '3.B.38': 'Unión Europea',
+            '3.B.39': 'Unión Europea',
+            '3.B.40': 'Unión Europea',
+            '3.B.41': 'Unión Europea',
+            '3.B.42': 'Unión Europea',
+            '3.B.43': 'Unión Europea',
+            '3.B.44': 'Unión Europea',
+            '3.B.45': 'Unión Europea'
+        };
+        
+        // Mapeo inverso: de bloque a lista de temas (para tooltips)
+        const bloqueATemas = {};
+        Object.entries(temaABloque).forEach(([tema, bloque]) => {
+            if (!bloqueATemas[bloque]) {
+                bloqueATemas[bloque] = [];
+            }
+            bloqueATemas[bloque].push(tema);
+        });
+        // Ordenar temas dentro de cada bloque
+        Object.keys(bloqueATemas).forEach(bloque => {
+            bloqueATemas[bloque].sort((a, b) => {
+                const [, partA, numA] = a.match(/3\.([AB])\.(\d+)/);
+                const [, partB, numB] = b.match(/3\.([AB])\.(\d+)/);
+                if (partA !== partB) return partA.localeCompare(partB);
+                return parseInt(numA) - parseInt(numB);
+            });
+        });
 
         function toggleAcordeon(id) {
             document.getElementById(id).classList.toggle('collapsed');
@@ -1387,15 +1557,22 @@
             });
             
             const ordenBloques = [
+                // Parte A
                 'Pensamiento económico',
                 'Modelo neoclásico básico',
                 'Información y poder de mercado',
                 'Economía del Bienestar',
-                'Contabilidad Nacional',
                 'Demanda y Oferta Agregada',
+                'Contabilidad Nacional',
                 'Ciclo y políticas de demanda',
                 'Crecimiento económico',
-                'Economía Financiera e Internacional'
+                // Parte B
+                'Economía financiera y corporativa',
+                'Comercio Internacional',
+                'Economía abierta',
+                'Historia económica',
+                'Organismos internacionales',
+                'Unión Europea'
             ];
             
             const bloquesOrdenados = ordenBloques.filter(b => bloques[b]).map(b => ({ nombre: b, ...bloques[b] }));
@@ -1406,17 +1583,30 @@
             });
             
             const container = document.getElementById('grafico-bloques-container');
-            container.innerHTML = '';
+            container.innerHTML = '<p class="grafico-bloques-intro">💡 <strong>Consejo:</strong> Pasa el cursor sobre el nombre de cada bloque para ver los temas que lo componen.</p>';
             
             bloquesOrdenados.forEach(bloque => {
                 const porcentaje = bloque.maxPuntos > 0 ? (bloque.puntos / bloque.maxPuntos) * 100 : 0;
                 const anchoBarra = Math.abs(porcentaje);
                 const clase = bloque.puntos > 0 ? 'positivo' : (bloque.puntos < 0 ? 'negativo' : 'neutro');
                 
+                // Generar lista de temas para el tooltip
+                const temasDelBloque = bloqueATemas[bloque.nombre] || [];
+                let tooltipContent = `<div class="bloque-tooltip-title">${bloque.nombre}</div>`;
+                temasDelBloque.forEach(tema => {
+                    const titulo = datosTest.temas[tema] || 'Título no disponible';
+                    const numTema = tema.replace('3.A.', '').replace('3.B.', '');
+                    tooltipContent += `<span class="bloque-tooltip-tema"><strong>Tema ${numTema}:</strong> ${titulo}</span>`;
+                });
+                
                 const row = document.createElement('div');
                 row.className = 'bloque-row';
                 row.innerHTML = `
-                    <div class="bloque-nombre">${bloque.nombre}</div>
+                    <div class="bloque-nombre">
+                        <span>${bloque.nombre}</span>
+                        <span class="info-icon">ⓘ</span>
+                        <div class="bloque-tooltip">${tooltipContent}</div>
+                    </div>
                     <div class="bloque-barra-container">
                         <div class="bloque-barra ${clase}" style="width: ${anchoBarra}%"></div>
                     </div>
