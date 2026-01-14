@@ -3,28 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Víctor Gutiérrez Marcos | Oposición TCEE</title>
-    <meta name="description" content="Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado">
+    <title>Oposición TCEE: Temario y materiales gratuitos | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Temario, apuntes y materiales gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado (TCEE). Elaborados por un funcionario del cuerpo.">
+    
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/">
+    
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="oposición TCEE, técnico comercial, economista del estado, temario oposiciones, preparar oposición comercio, materiales oposición">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Víctor Gutiérrez Marcos | Oposición TCEE">
-    <meta property="og:description" content="Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado">
-    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
-    <meta property="og:url" content="https://victorgutierrezmarcos.es/">
-    <meta property="og:site_name" content="Víctor Gutiérrez Marcos">
+    <meta property="og:title" content="Oposición TCEE: Temario y materiales gratuitos | Víctor Gutiérrez Marcos">
+    <meta property="og:description" content="Temario, apuntes y materiales gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado (TCEE). Elaborados por un funcionario del cuerpo.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/">
+    <meta property="og:site_name" content="Víctor Gutiérrez Marcos - Oposición TCEE">
+    <meta property="og:locale" content="es_ES">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Víctor Gutiérrez Marcos | Oposición TCEE">
-    <meta name="twitter:description" content="Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado">
-    <meta name="twitter:image" content="https://victorgutierrezmarcos.es/social-preview.png">
+    <meta name="twitter:title" content="Oposición TCEE: Temario y materiales gratuitos | Víctor Gutiérrez Marcos">
+    <meta name="twitter:description" content="Temario, apuntes y materiales gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado (TCEE). Elaborados por un funcionario del cuerpo.">
+    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" as="style">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-
     <link rel="stylesheet" href="search-styles.css">
+    
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Oposición TCEE - Víctor Gutiérrez Marcos",
+        "description": "Temario y materiales gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado",
+        "url": "https://www.victorgutierrezmarcos.es",
+        "inLanguage": "es",
+        "author": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos",
+            "jobTitle": "Técnico Comercial y Economista del Estado",
+            "worksFor": {
+                "@type": "GovernmentOrganization",
+                "name": "Ministerio de Economía, Comercio y Empresa"
+            }
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/victorgutierrezmarcos",
+            "https://github.com/vgutierrezmarcos"
+        ]
+    }
+    </script>
+    
+    <!-- Schema.org adicional: Recurso educativo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Materiales para la oposición TCEE",
+        "description": "Temario completo para preparar la oposición al Cuerpo Superior de Técnicos Comerciales y Economistas del Estado",
+        "provider": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos"
+        },
+        "isAccessibleForFree": true,
+        "inLanguage": "es"
+    }
+    </script>
 </head>
 <body>
     <header class="site-header">
@@ -33,7 +90,6 @@
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
-
 <!-- BANNER DEL CURSO -->
 <!-- Inserta este código DESPUÉS del </header> y ANTES del <nav class="main-nav"> -->
 
@@ -72,7 +128,7 @@
             </div>
         </div>
         
-        <button class="course-close" onclick="closeCourse Banner()" aria-label="Cerrar anuncio">
+        <button class="course-close" onclick="closeCourseBanner()" aria-label="Cerrar anuncio">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18"/>
                 <line x1="6" y1="6" x2="18" y2="18"/>
@@ -103,7 +159,7 @@
                 <div class="content-text">
                     <p>En esta página web encontrarás:</p>
                     <ul>
-                        <li>El <a href="temario/index.html">temario</a> que he utilizado y elaborado durante mi preparación de la oposición.</li>
+                        <li>El <a href="temario.html">temario</a> que he utilizado y elaborado durante mi preparación de la oposición.</li>
                         <li>Una serie de documentos que considero útiles para la <a href="organizacion.html">organización</a> del opositor.</li>
                         <li>Algunos <a href="enlaces.html">enlaces</a> de utilidad para preparar la oposición.</li>
                     </ul>
