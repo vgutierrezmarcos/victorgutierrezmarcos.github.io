@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../styles.css">
     <link rel="stylesheet" href="../../../search-styles.css">
     <style>
@@ -62,7 +62,7 @@
             gap: 0.5rem;
         }
         .temas-content {
-            transition: all 0.3s ease;
+            padding-top: 1rem;
         }
         .tema-selector.collapsed .temas-content {
             display: none;
@@ -589,7 +589,7 @@
 <body>
     <header class="site-header">
         <div class="header-content">
-            <h1 class="site-title"><a href="../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <h1 class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></h1>
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
@@ -597,11 +597,11 @@
     <nav class="main-nav">
         <div class="nav-container">
             <ul class="nav-list">
-                <li><a href="../../index.html">INTRODUCCIÓN</a></li>
-                <li><a href="../index.html" class="active">TEMARIO</a></li>
-                <li><a href="../../organizacion.html">ORGANIZACIÓN</a></li>
-                <li><a href="../../enlaces.html">ENLACES</a></li>
-                <li><a href="../../sobre-mi.html">SOBRE MÍ</a></li>
+                <li><a href="../../../index.html">INTRODUCCIÓN</a></li>
+                <li><a href="../../index.html" class="active">TEMARIO</a></li>
+                <li><a href="../../../organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="../../../enlaces.html">ENLACES</a></li>
+                <li><a href="../../../sobre-mi.html">SOBRE MÍ</a></li>
             </ul>
         </div>
     </nav>
@@ -610,7 +610,7 @@
         <div class="content-container">
             <article class="page-content">
                 <nav class="breadcrumb">
-                    <a href="../index.html">Temario</a><span>›</span><a href="../primer-ejercicio.html">Primer ejercicio</a><span>›</span><a href="test.html">Test</a><span>›</span>Simulador
+                    <a href="../../index.html">Temario</a><span>›</span><a href="../index.html">Primer ejercicio</a><span>›</span><a href="index.html">Test</a><span>›</span>Simulador
                 </nav>
                 <h2 class="section-title">Simulador de Test</h2>
                 
@@ -759,8 +759,8 @@
         </div>
     </footer>
 
-    <script src="../../search-engine.js"></script>
-    <script src="../../search-ui.js"></script>
+    <script src="../../../search-engine.js"></script>
+    <script src="../../../search-ui.js"></script>
     <script>
         let datosTest = null;
         let temasSeleccionados = new Set();
@@ -808,11 +808,16 @@
         document.addEventListener('DOMContentLoaded', async function() {
             try {
                 const response = await fetch('preguntas.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 datosTest = await response.json();
+                console.log('Datos cargados:', datosTest);
+                console.log('Número de temas:', Object.keys(datosTest.temas).length);
                 inicializarSelectores();
             } catch (error) {
                 console.error('Error cargando preguntas:', error);
-                alert('Error al cargar las preguntas. Por favor, recarga la página.');
+                document.getElementById('temas-parte-a').innerHTML = '<p style="color: red; padding: 1rem;">Error al cargar preguntas.json. Asegúrate de que el archivo existe en la misma carpeta.</p>';
             }
         });
 
