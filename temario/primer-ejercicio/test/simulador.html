@@ -929,7 +929,7 @@
                 <!-- FASE 3: RESULTADOS -->
                 <div id="fase-resultados" class="hidden test-container">
                     <div class="resultados-header">
-                        <h2>📊 Resultados del Examen</h2>
+                        <h2>📊 Resultados del examen</h2>
                         <div class="nota-final" id="resultados-nota">0 / 50 puntos</div>
                         <div class="tiempo-empleado" id="resultados-tiempo">Tiempo empleado: 0min 0s</div>
                     </div>
@@ -1583,7 +1583,7 @@
             });
             
             const container = document.getElementById('grafico-bloques-container');
-            container.innerHTML = '<p class="grafico-bloques-intro">💡 <strong>Consejo:</strong> Pasa el cursor sobre el nombre de cada bloque para ver los temas que lo componen.</p>';
+            container.innerHTML = '<p class="grafico-bloques-intro">💡 Pasa el cursor sobre el nombre de cada bloque para ver los temas que lo componen.</p>';
             
             bloquesOrdenados.forEach(bloque => {
                 const porcentaje = bloque.maxPuntos > 0 ? (bloque.puntos / bloque.maxPuntos) * 100 : 0;
