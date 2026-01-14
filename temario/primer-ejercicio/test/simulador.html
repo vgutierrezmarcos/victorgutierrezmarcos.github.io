@@ -10,7 +10,7 @@
     <meta property="og:title" content="Simulador de Test | Víctor Gutiérrez Marcos">
     <meta property="og:description" content="Practica con preguntas de exámenes oficiales de la oposición a TCEE">
     <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
-    <meta property="og:url" content="https://victorgutierrezmarcos.es/temario/primer-ejercicio/simulador.html">
+    <meta property="og:url" content="https://victorgutierrezmarcos.es/temario/primer-ejercicio/test/simulador.html">
     <meta name="twitter:card" content="summary_large_image">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -193,404 +193,520 @@
         .filtro-oficial label {
             font-family: var(--font-ui);
             font-size: 0.95rem;
+            font-weight: 500;
             color: var(--color-text);
             cursor: pointer;
             flex: 1;
         }
-        .filtro-oficial .filtro-hint {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-        }
 
-        .selection-summary {
-            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
-            border: 1px solid var(--color-border);
-            border-left: 4px solid var(--color-primary);
-            border-radius: 0 8px 8px 0;
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .selection-summary .summary-text {
-            font-family: var(--font-ui);
-            font-size: 0.95rem;
-            color: var(--color-text);
-        }
-        .selection-summary .summary-text strong { color: var(--color-primary); }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
+        /* Contador de temas y preguntas */
+        .contador-seleccion {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: var(--color-white);
-            border: none;
-            border-radius: 6px;
-            font-family: var(--font-ui);
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            box-shadow: var(--shadow-sm);
+            color: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: var(--shadow-md);
         }
-        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .contador-item {
+            text-align: center;
+        }
+        .contador-numero {
+            font-size: 2rem;
+            font-weight: 600;
+            font-family: var(--font-ui);
+            display: block;
+        }
+        .contador-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: var(--font-ui);
+        }
 
-        .btn-secondary {
+        /* Botón comenzar */
+        .btn-comenzar-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .btn-comenzar {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.25rem;
-            background: var(--color-white);
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-            border-radius: 6px;
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-        .btn-secondary:hover { background: var(--color-primary-pale); }
-
-        /* Header del examen con temporizador */
-        .examen-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--color-border-light);
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .examen-progress {
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-        }
-        .examen-progress strong { color: var(--color-primary); font-size: 1.1rem; }
-
-        /* Temporizador */
-        .temporizador {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--color-bg-light);
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
             font-family: var(--font-ui);
             font-size: 1.1rem;
             font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+        }
+        .btn-comenzar:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .btn-comenzar:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* FASE EXAMEN */
+        .hidden { display: none; }
+        
+        .examen-header {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .examen-header-left, .examen-header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .header-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+        }
+        .header-info strong {
+            font-weight: 600;
+        }
+
+        .temporizador {
+            font-family: var(--font-ui);
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
         }
         .temporizador.warning {
-            background: #fff3cd;
-            border-color: #ffc107;
-            color: #856404;
+            background: #ff9800;
+            animation: pulse 1s infinite;
         }
         .temporizador.danger {
-            background: #ffebee;
-            border-color: #f44336;
-            color: #c62828;
-            animation: pulse 1s ease-in-out infinite;
+            background: #f44336;
+            animation: pulse 0.5s infinite;
         }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            50% { opacity: 0.8; }
         }
-        .temporizador-icon {
-            font-size: 1.2rem;
+
+        .pregunta-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 8px 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .pregunta-numero {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .pregunta-tipo {
+            background: #ff9800;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .pregunta-enunciado {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--color-bg-light);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 4px;
+        }
+
+        .opciones-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .opcion-item {
+            width: 100%;
+        }
+        .opcion-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: white;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            width: 100%;
+            text-align: left;
+        }
+        .opcion-btn:hover {
+            border-color: var(--color-primary);
+            background: var(--color-primary-pale);
+        }
+        .opcion-btn.selected {
+            border-color: var(--color-primary);
+            background: var(--color-primary-pale);
+        }
+        .opcion-btn.disabled {
+            pointer-events: none;
+        }
+        .opcion-letra {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .opcion-texto {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
         }
 
         /* Navegador de preguntas */
         .navegador-preguntas {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.5rem;
+            gap: 0.5rem;
             padding: 1rem;
             background: var(--color-bg-light);
-            border-radius: 8px;
-            max-height: 120px;
-            overflow-y: auto;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
         }
         .nav-pregunta {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 42px;
+            height: 42px;
             border: 2px solid var(--color-border);
-            border-radius: 4px;
-            font-family: var(--font-ui);
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            background: var(--color-white);
-        }
-        .nav-pregunta:hover { border-color: var(--color-primary); }
-        .nav-pregunta.actual { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
-        .nav-pregunta.respondida { background: var(--color-primary-pale); border-color: var(--color-primary); }
-        .nav-pregunta.marcada { background: #fff3cd; border-color: #ffc107; }
-
-        .pregunta-container {
-            background: var(--color-white);
-            border: 1px solid var(--color-border-light);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
-        .pregunta-numero {
-            font-family: var(--font-ui);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .pregunta-numero::before {
-            content: '';
-            width: 20px;
-            height: 2px;
-            background: var(--color-accent-gold);
-        }
-        .pregunta-tipo {
-            font-size: 0.75rem;
-            padding: 0.2rem 0.5rem;
-            background: #fff3cd;
-            color: #856404;
-            border-radius: 3px;
-            margin-left: 0.5rem;
-        }
-        .pregunta-enunciado {
-            font-family: var(--font-body);
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--color-text);
-            margin-bottom: 1.5rem;
-        }
-        .opciones-list { list-style: none; padding: 0; margin: 0; }
-        .opcion-item { margin-bottom: 0.75rem; }
-        .opcion-btn {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            width: 100%;
-            padding: 1rem 1.25rem;
-            background: var(--color-bg-light);
-            border: 2px solid var(--color-border-light);
+            background: white;
             border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all var(--transition-fast);
-            text-align: left;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: var(--color-text);
         }
-        .opcion-btn:hover:not(.disabled) { background: var(--color-primary-pale); border-color: var(--color-primary); }
-        .opcion-btn.selected { background: var(--color-primary-pale); border-color: var(--color-primary); }
-        .opcion-btn.correct { background: #e8f5e9; border-color: #4caf50; }
-        .opcion-btn.incorrect { background: #ffebee; border-color: #f44336; }
-        .opcion-btn.was-correct { background: #e8f5e9; border-color: #4caf50; }
-        .opcion-btn.disabled { cursor: default; }
-        .opcion-letra {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 28px;
-            height: 28px;
-            background: var(--color-white);
-            border: 2px solid var(--color-border);
-            border-radius: 50%;
-            font-family: var(--font-ui);
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--color-text);
-            text-transform: uppercase;
-            flex-shrink: 0;
+        .nav-pregunta:hover {
+            border-color: var(--color-primary);
+            transform: scale(1.1);
         }
-        .opcion-btn.selected .opcion-letra { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); }
-        .opcion-btn.correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
-        .opcion-btn.incorrect .opcion-letra { background: #f44336; border-color: #f44336; color: var(--color-white); }
-        .opcion-btn.was-correct .opcion-letra { background: #4caf50; border-color: #4caf50; color: var(--color-white); }
+        .nav-pregunta.actual {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        .nav-pregunta.respondida {
+            background: var(--color-primary-pale);
+            border-color: var(--color-primary);
+        }
 
-        .examen-actions {
+        /* Botones de navegación */
+        .navegacion-btns {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
+        .btn-nav {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--color-primary);
+            background: white;
+            color: var(--color-primary);
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .btn-nav:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+        .btn-finalizar {
+            padding: 0.75rem 1.5rem;
+            background: var(--color-accent-gold);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .btn-finalizar:hover {
+            background: var(--color-accent-gold-light);
+            transform: translateY(-2px);
         }
 
+        /* FASE RESULTADOS */
         .resultados-header {
-            text-align: center;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
             padding: 2rem;
-            background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg-cream) 100%);
             border-radius: 8px;
+            text-align: center;
             margin-bottom: 2rem;
         }
-        .resultados-header h3 {
+        .resultados-header h2 {
             font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-primary);
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
-        .resultados-nota {
-            font-family: var(--font-ui);
+        .nota-final {
             font-size: 3rem;
             font-weight: 600;
-            color: var(--color-primary);
+            font-family: var(--font-ui);
             margin-bottom: 0.5rem;
         }
-        .resultados-tiempo {
-            font-family: var(--font-ui);
-            font-size: 0.95rem;
-            color: var(--color-text-muted);
-            margin-bottom: 1rem;
+        .tiempo-empleado {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
-        .resultados-desglose {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            font-family: var(--font-ui);
-            font-size: 0.95rem;
-            flex-wrap: wrap;
-        }
-        .resultados-desglose .stat-box { padding: 0.5rem 1rem; background: var(--color-white); border-radius: 4px; }
-        .resultados-desglose .stat-box.correct { color: #2e7d32; }
-        .resultados-desglose .stat-box.incorrect { color: #c62828; }
-        .resultados-desglose .stat-box.skipped { color: var(--color-text-muted); }
 
-        .revision-pregunta {
-            background: var(--color-white);
-            border: 1px solid var(--color-border-light);
+        .estadisticas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .estadistica-item {
+            background: white;
+            border: 1px solid var(--color-border);
             border-radius: 8px;
             padding: 1.5rem;
-            margin-bottom: 1rem;
+            text-align: center;
         }
-        .revision-pregunta.resultado-correct { border-left: 4px solid #4caf50; }
-        .revision-pregunta.resultado-incorrect { border-left: 4px solid #f44336; }
-        .revision-pregunta.resultado-skipped { border-left: 4px solid var(--color-text-light); }
-        .revision-pregunta.resultado-accepted { border-left: 4px solid #ffc107; }
-        .revision-meta {
+        .estadistica-numero {
+            font-size: 2.5rem;
+            font-weight: 600;
             font-family: var(--font-ui);
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--color-border-light);
+            margin-bottom: 0.5rem;
         }
-        .revision-meta .origen { font-weight: 500; color: var(--color-primary); }
-        .revision-meta .temas-tag {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            background: var(--color-bg-light);
-            border-radius: 3px;
-            margin: 0.25rem;
-            font-size: 0.75rem;
+        .estadistica-numero.correctas { color: #4caf50; }
+        .estadistica-numero.incorrectas { color: #f44336; }
+        .estadistica-numero.blanco { color: #9e9e9e; }
+        .estadistica-label {
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         /* Gráfico de bloques */
         .grafico-bloques {
-            background: var(--color-white);
-            border: 1px solid var(--color-border-light);
+            background: white;
+            border: 1px solid var(--color-border);
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 2rem;
         }
-        .grafico-bloques h4 {
+        .grafico-bloques h3 {
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
             color: var(--color-text);
+            margin-bottom: 1.5rem;
         }
         .bloque-row {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 2fr auto;
+            gap: 1rem;
             align-items: center;
             margin-bottom: 0.75rem;
-            gap: 0.75rem;
         }
         .bloque-nombre {
-            flex: 0 0 220px;
             font-family: var(--font-ui);
             font-size: 0.85rem;
+            font-weight: 500;
             color: var(--color-text);
-            text-align: right;
         }
         .bloque-barra-container {
-            flex: 1;
-            height: 24px;
             background: var(--color-bg-light);
             border-radius: 4px;
+            height: 24px;
             overflow: hidden;
-            position: relative;
         }
         .bloque-barra {
             height: 100%;
-            border-radius: 4px;
             transition: width 0.5s ease;
         }
-        .bloque-barra.positivo {
-            background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
-        }
-        .bloque-barra.negativo {
-            background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
-        }
-        .bloque-barra.neutro {
-            background: var(--color-text-light);
-        }
+        .bloque-barra.positivo { background: #4caf50; }
+        .bloque-barra.negativo { background: #f44336; }
+        .bloque-barra.neutro { background: #9e9e9e; }
         .bloque-puntos {
-            flex: 0 0 80px;
             font-family: var(--font-ui);
             font-size: 0.85rem;
             font-weight: 600;
+            min-width: 80px;
+            text-align: right;
         }
-        .bloque-puntos.positivo { color: #2e7d32; }
-        .bloque-puntos.negativo { color: #c62828; }
-        .bloque-puntos.neutro { color: var(--color-text-muted); }
+        .bloque-puntos.positivo { color: #4caf50; }
+        .bloque-puntos.negativo { color: #f44336; }
+        .bloque-puntos.neutro { color: #9e9e9e; }
 
+        /* Revisión de preguntas */
+        .revision-section {
+            margin-top: 2rem;
+        }
+        .revision-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+        }
+        .revision-pregunta {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .revision-pregunta.resultado-correct {
+            border-left: 4px solid #4caf50;
+        }
+        .revision-pregunta.resultado-incorrect {
+            border-left: 4px solid #f44336;
+        }
+        .revision-pregunta.resultado-skipped {
+            border-left: 4px solid #9e9e9e;
+        }
+        .revision-pregunta.resultado-accepted {
+            border-left: 4px solid #ff9800;
+        }
+
+        .opcion-btn.correct {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        .opcion-btn.incorrect {
+            background: #ffebee;
+            border-color: #f44336;
+        }
+        .opcion-btn.was-correct {
+            background: #fff3e0;
+            border-color: #ff9800;
+        }
+
+        .revision-meta {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border-light);
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        .origen {
+            font-style: italic;
+        }
+        .temas-tag {
+            display: inline-block;
+            background: var(--color-primary-pale);
+            color: var(--color-primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Botones de resultados */
+        .resultados-acciones {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Avisos de estado de carga */
+        .loading-message {
+            text-align: center;
+            padding: 2rem;
+            color: var(--color-text-muted);
+        }
+        .error-message {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #c62828;
+        }
+        .success-message {
+            background: #e8f5e9;
+            border: 1px solid #4caf50;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #2e7d32;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .bloque-nombre { flex: 0 0 120px; font-size: 0.75rem; }
-            .bloque-puntos { flex: 0 0 60px; font-size: 0.8rem; }
+            .examen-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .examen-header-left, .examen-header-right {
+                justify-content: space-between;
+            }
+            .navegacion-btns {
+                flex-direction: column;
+            }
+            .config-grid {
+                grid-template-columns: 1fr;
+            }
+            .estadisticas-grid {
+                grid-template-columns: 1fr;
+            }
+            .bloque-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .bloque-puntos {
+                text-align: left;
+            }
         }
-
-        @media (max-width: 768px) {
-            .temas-grid { grid-template-columns: 1fr; }
-            .selection-summary { flex-direction: column; text-align: center; }
-            .examen-header { flex-direction: column; align-items: flex-start; }
-            .examen-actions { flex-direction: column; }
-            .examen-actions .btn-primary, .examen-actions .btn-secondary { width: 100%; justify-content: center; }
-            .pregunta-container { padding: 1.25rem; }
-            .config-grid-2col, .config-grid-3col { grid-template-columns: 1fr; }
-            .navegador-preguntas { max-height: 80px; }
-            .nav-pregunta { width: 32px; height: 32px; font-size: 0.8rem; }
-        }
-
-        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <header class="site-header">
         <div class="header-content">
             <h1 class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></h1>
-            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+            <p class="site-description">Simulador de Test - Oposición TCEE</p>
         </div>
     </header>
 
@@ -598,7 +714,7 @@
         <div class="nav-container">
             <ul class="nav-list">
                 <li><a href="../../../index.html">INTRODUCCIÓN</a></li>
-                <li><a href="../../index.html" class="active">TEMARIO</a></li>
+                <li><a href="../../index.html">TEMARIO</a></li>
                 <li><a href="../../../organizacion.html">ORGANIZACIÓN</a></li>
                 <li><a href="../../../enlaces.html">ENLACES</a></li>
                 <li><a href="../../../sobre-mi.html">SOBRE MÍ</a></li>
@@ -609,144 +725,171 @@
     <main class="main-content">
         <div class="content-container">
             <article class="page-content">
-                <nav class="breadcrumb">
-                    <a href="../../index.html">Temario</a><span>›</span><a href="../index.html">Primer ejercicio</a><span>›</span><a href="index.html">Test</a><span>›</span>Simulador
-                </nav>
-                <h2 class="section-title">Simulador de Test</h2>
-                
-                <div class="test-container">
-                    <div id="fase-seleccion">
-                        <div class="content-text">
-                            <p>Configura tu simulacro de examen: selecciona los temas, el número de preguntas y el tiempo disponible.</p>
+                <!-- FASE 1: SELECCIÓN DE TEMAS Y CONFIGURACIÓN -->
+                <div id="fase-seleccion" class="test-container">
+                    <nav class="breadcrumb">
+                        <a href="../../index.html">Temario</a>
+                        <span>›</span>
+                        <a href="../primer-ejercicio.html">Primer ejercicio</a>
+                        <span>›</span>
+                        Simulador de Test
+                    </nav>
+                    
+                    <h2 class="section-title">SIMULADOR DE TEST</h2>
+
+                    <div id="loading-indicator" class="loading-message">
+                        Cargando preguntas...
+                    </div>
+
+                    <div id="main-content" style="display: none;">
+                        <!-- Filtro de solo oficiales -->
+                        <div class="filtro-oficial" id="filtro-oficial-container">
+                            <input type="checkbox" id="solo-oficiales" checked>
+                            <label for="solo-oficiales">
+                                📋 Mostrar solo preguntas de exámenes oficiales
+                            </label>
                         </div>
 
+                        <!-- Configuración del examen -->
+                        <div class="config-examen">
+                            <h3>⚙️ Configuración del examen</h3>
+                            <div class="config-grid config-grid-3col">
+                                <div class="config-item">
+                                    <label for="num-preguntas">Número de preguntas:</label>
+                                    <input type="number" id="num-preguntas" value="50" min="1" max="100">
+                                    <span class="config-hint">Máximo: <span id="max-preguntas">0</span></span>
+                                </div>
+                                <div class="config-item">
+                                    <label for="tiempo-examen">Tiempo (minutos):</label>
+                                    <input type="number" id="tiempo-examen" value="120" min="1" max="300">
+                                    <span class="config-hint">Duración del examen</span>
+                                </div>
+                            </div>
+                            <div class="config-grid config-grid-3col" style="margin-top: 1rem;">
+                                <div class="config-item">
+                                    <label for="puntos-acierto">Puntos por acierto:</label>
+                                    <input type="number" id="puntos-acierto" value="1" step="0.01">
+                                </div>
+                                <div class="config-item">
+                                    <label for="puntos-fallo">Puntos por fallo:</label>
+                                    <input type="number" id="puntos-fallo" value="-0.33" step="0.01">
+                                </div>
+                                <div class="config-item">
+                                    <label for="puntos-blanco">Puntos en blanco:</label>
+                                    <input type="number" id="puntos-blanco" value="0" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contador de selección -->
+                        <div class="contador-seleccion">
+                            <div class="contador-item">
+                                <span class="contador-numero" id="temas-count">0</span>
+                                <span class="contador-label">Temas seleccionados</span>
+                            </div>
+                            <div class="contador-item">
+                                <span class="contador-numero" id="preguntas-count">0</span>
+                                <span class="contador-label">Preguntas disponibles</span>
+                            </div>
+                        </div>
+
+                        <!-- Selector de temas Parte A -->
                         <div class="tema-selector" id="selector-parte-a">
                             <h3 onclick="toggleAcordeon('selector-parte-a')">
-                                <span class="header-left">
+                                <div class="header-left">
                                     <span class="accordion-icon">▼</span>
-                                    Parte A) Economía General
-                                </span>
-                                <span class="toggle-all" data-parte="A" onclick="event.stopPropagation()">Deseleccionar todos</span>
+                                    <span>Parte A: Economía general</span>
+                                </div>
+                                <span class="toggle-all" data-parte="A">Deseleccionar todos</span>
                             </h3>
                             <div class="temas-content">
                                 <div class="temas-grid" id="temas-parte-a"></div>
                             </div>
                         </div>
 
+                        <!-- Selector de temas Parte B -->
                         <div class="tema-selector" id="selector-parte-b">
                             <h3 onclick="toggleAcordeon('selector-parte-b')">
-                                <span class="header-left">
+                                <div class="header-left">
                                     <span class="accordion-icon">▼</span>
-                                    Parte B) Economía Financiera, Internacional y Relaciones Económicas
-                                </span>
-                                <span class="toggle-all" data-parte="B" onclick="event.stopPropagation()">Deseleccionar todos</span>
+                                    <span>Parte B: Economía Financiera, Economía Internacional y Relaciones Económicas Internacionales</span>
+                                </div>
+                                <span class="toggle-all" data-parte="B">Deseleccionar todos</span>
                             </h3>
                             <div class="temas-content">
                                 <div class="temas-grid" id="temas-parte-b"></div>
                             </div>
                         </div>
 
-                        <!-- Filtro de preguntas oficiales -->
-                        <div class="filtro-oficial" id="filtro-oficial-container">
-                            <input type="checkbox" id="solo-oficiales" checked>
-                            <div>
-                                <label for="solo-oficiales">Incluir sólo preguntas de exámenes oficiales</label>
-                                <div class="filtro-hint">Excluye preguntas de simulacros o de otras fuentes</div>
+                        <!-- Botón comenzar -->
+                        <div class="btn-comenzar-container">
+                            <button id="btn-comenzar" class="btn-comenzar" disabled>
+                                🚀 Comenzar examen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FASE 2: EXAMEN -->
+                <div id="fase-examen" class="hidden test-container">
+                    <div class="examen-header">
+                        <div class="examen-header-left">
+                            <div class="header-info">
+                                Pregunta <strong><span id="pregunta-actual">1</span></strong> de <strong><span id="total-preguntas">50</span></strong>
                             </div>
                         </div>
-
-                        <!-- Configuración del examen -->
-                        <div class="config-examen">
-                            <h3>Configuración del examen</h3>
-                            <div class="config-grid config-grid-2col">
-                                <div class="config-item">
-                                    <label for="num-preguntas">Número de preguntas</label>
-                                    <input type="number" id="num-preguntas" value="50" min="1" max="200">
-                                    <span class="config-hint">Máximo: <span id="max-preguntas">0</span> disponibles</span>
-                                </div>
-                                <div class="config-item">
-                                    <label for="tiempo-examen">Tiempo disponible (minutos)</label>
-                                    <input type="number" id="tiempo-examen" value="120" min="1" max="300">
-                                </div>
-                            </div>
-                            <div class="config-grid config-grid-3col">
-                                <div class="config-item">
-                                    <label for="puntos-acierto">Puntos por acierto</label>
-                                    <input type="number" id="puntos-acierto" value="1" min="0" max="10" step="0.01">
-                                </div>
-                                <div class="config-item">
-                                    <label for="puntos-fallo">Puntos por fallo</label>
-                                    <input type="number" id="puntos-fallo" value="-0.33" min="-10" max="0" step="0.01">
-                                </div>
-                                <div class="config-item">
-                                    <label for="puntos-blanco">Puntos en blanco</label>
-                                    <input type="number" id="puntos-blanco" value="0" min="-10" max="10" step="0.01">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="selection-summary">
-                            <div class="summary-text">
-                                <strong id="temas-count">0</strong> temas seleccionados · 
-                                <strong id="preguntas-count">0</strong> preguntas disponibles
-                            </div>
-                            <button class="btn-primary" id="btn-comenzar" disabled>Comenzar simulacro →</button>
+                        <div class="examen-header-right">
+                            <div class="temporizador" id="temporizador">02:00:00</div>
                         </div>
                     </div>
 
-                    <div id="fase-examen" class="hidden">
-                        <div class="examen-header">
-                            <div class="examen-progress">
-                                Pregunta <strong id="pregunta-actual">1</strong> de <strong id="total-preguntas">0</strong>
-                            </div>
-                            <div class="temporizador" id="temporizador">
-                                <span class="temporizador-icon">⏱️</span>
-                                <span id="tiempo-restante">02:00:00</span>
-                            </div>
+                    <div class="navegador-preguntas" id="navegador-preguntas"></div>
+
+                    <div class="pregunta-container" id="pregunta-container"></div>
+
+                    <div class="navegacion-btns">
+                        <button id="btn-anterior" class="btn-nav">← Anterior</button>
+                        <button id="btn-finalizar" class="btn-finalizar">✓ Finalizar examen</button>
+                        <button id="btn-siguiente" class="btn-nav">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- FASE 3: RESULTADOS -->
+                <div id="fase-resultados" class="hidden test-container">
+                    <div class="resultados-header">
+                        <h2>📊 Resultados del Examen</h2>
+                        <div class="nota-final" id="resultados-nota">0 / 50 puntos</div>
+                        <div class="tiempo-empleado" id="resultados-tiempo">Tiempo empleado: 0min 0s</div>
+                    </div>
+
+                    <div class="estadisticas-grid">
+                        <div class="estadistica-item">
+                            <div class="estadistica-numero correctas" id="final-correct">0</div>
+                            <div class="estadistica-label">Correctas</div>
                         </div>
-
-                        <!-- Navegador de preguntas -->
-                        <div class="navegador-preguntas" id="navegador-preguntas"></div>
-
-                        <div class="pregunta-container" id="pregunta-container">
-                            <div class="pregunta-numero" id="pregunta-numero"></div>
-                            <div class="pregunta-enunciado" id="pregunta-enunciado"></div>
-                            <ul class="opciones-list" id="opciones-list"></ul>
+                        <div class="estadistica-item">
+                            <div class="estadistica-numero incorrectas" id="final-incorrect">0</div>
+                            <div class="estadistica-label">Incorrectas</div>
                         </div>
-
-                        <div class="examen-actions">
-                            <button class="btn-secondary" id="btn-finalizar">Finalizar examen</button>
-                            <div class="nav-buttons">
-                                <button class="btn-secondary" id="btn-anterior" disabled>← Anterior</button>
-                                <button class="btn-primary" id="btn-siguiente">Siguiente →</button>
-                            </div>
+                        <div class="estadistica-item">
+                            <div class="estadistica-numero blanco" id="final-skipped">0</div>
+                            <div class="estadistica-label">En blanco</div>
                         </div>
                     </div>
 
-                    <div id="fase-resultados" class="hidden">
-                        <div class="resultados-header">
-                            <h3>Resultados del simulacro</h3>
-                            <div class="resultados-nota" id="resultados-nota">0,00 / 20</div>
-                            <div class="resultados-tiempo" id="resultados-tiempo"></div>
-                            <div class="resultados-desglose">
-                                <div class="stat-box correct">✓ <span id="final-correct">0</span> correctas</div>
-                                <div class="stat-box incorrect">✗ <span id="final-incorrect">0</span> incorrectas</div>
-                                <div class="stat-box skipped">○ <span id="final-skipped">0</span> sin contestar</div>
-                            </div>
-                        </div>
+                    <div class="grafico-bloques">
+                        <h3>📈 Puntuación por bloque temático</h3>
+                        <div id="grafico-bloques-container"></div>
+                    </div>
 
-                        <div class="grafico-bloques">
-                            <h4>Resultados por bloque temático</h4>
-                            <div id="grafico-bloques-container"></div>
-                        </div>
+                    <div class="resultados-acciones">
+                        <button id="btn-volver" class="btn-nav">← Volver a configuración</button>
+                        <button id="btn-repetir" class="btn-comenzar">🔄 Repetir examen</button>
+                    </div>
 
-                        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Revisión de preguntas</h3>
+                    <div class="revision-section">
+                        <h3>📝 Revisión de preguntas</h3>
                         <div id="revision-container"></div>
-
-                        <div class="selection-summary">
-                            <button class="btn-secondary" id="btn-volver">← Volver a configurar</button>
-                            <button class="btn-primary" id="btn-repetir">Repetir simulacro</button>
-                        </div>
                     </div>
                 </div>
             </article>
@@ -762,41 +905,42 @@
     <script src="../../../search-engine.js"></script>
     <script src="../../../search-ui.js"></script>
     <script>
-        let datosTest = null;
+        let datosTest = { temas: {}, preguntas: [], examenes: [] };
         let temasSeleccionados = new Set();
         let preguntasFiltradas = [];
         let preguntasExamen = [];
+        let respuestasUsuario = {};
         let indicePreguntaActual = 0;
-        let respuestasUsuario = {}; // Cambiado a objeto para acceso por índice
-        let tiempoInicio = null;
         let tiempoRestante = 0;
+        let tiempoInicio = 0;
         let intervaloTemporizador = null;
-        let tiempoTranscurrido = 0;
 
-        // Mapeo de temas a bloques
-        const temaABloque = {
-            '3.A.1': 'Pensamiento económico', '3.A.2': 'Pensamiento económico', '3.A.3': 'Pensamiento económico',
-            '3.A.4': 'Pensamiento económico', '3.A.5': 'Pensamiento económico', '3.A.6': 'Pensamiento económico',
-            '3.A.7': 'Pensamiento económico',
-            '3.A.8': 'Modelo neoclásico básico', '3.A.9': 'Modelo neoclásico básico', '3.A.11': 'Modelo neoclásico básico',
-            '3.A.12': 'Modelo neoclásico básico', '3.A.16': 'Modelo neoclásico básico', '3.A.21': 'Modelo neoclásico básico',
-            '3.A.10': 'Información y poder de mercado', '3.A.13': 'Información y poder de mercado',
-            '3.A.14': 'Información y poder de mercado', '3.A.15': 'Información y poder de mercado',
-            '3.A.17': 'Información y poder de mercado', '3.A.18': 'Información y poder de mercado',
-            '3.A.19': 'Información y poder de mercado', '3.A.20': 'Información y poder de mercado',
-            '3.A.22': 'Economía del Bienestar', '3.A.23': 'Economía del Bienestar', '3.A.24': 'Economía del Bienestar',
-            '3.A.25': 'Demanda y Oferta Agregada', '3.A.26': 'Demanda y Oferta Agregada', '3.A.27': 'Demanda y Oferta Agregada',
-            '3.A.28': 'Demanda y Oferta Agregada', '3.A.32': 'Demanda y Oferta Agregada', '3.A.33': 'Demanda y Oferta Agregada',
-            '3.A.34': 'Demanda y Oferta Agregada',
-            '3.A.30': 'Contabilidad Nacional', '3.A.31': 'Contabilidad Nacional',
-            '3.A.35': 'Ciclo y políticas de demanda', '3.A.36': 'Ciclo y políticas de demanda',
-            '3.A.37': 'Ciclo y políticas de demanda', '3.A.38': 'Ciclo y políticas de demanda',
-            '3.A.39': 'Ciclo y políticas de demanda', '3.A.40': 'Ciclo y políticas de demanda',
-            '3.A.41': 'Ciclo y políticas de demanda', '3.A.42': 'Ciclo y políticas de demanda',
-            '3.A.29': 'Crecimiento económico', '3.A.43': 'Crecimiento económico',
-            '3.A.44': 'Crecimiento económico', '3.A.45': 'Crecimiento económico'
-        };
-        // Temas de la Parte B se asignan al bloque correspondiente
+        // Mapeo de temas a bloques (para estadísticas)
+        const temaABloque = {};
+        for (let i = 1; i <= 4; i++) {
+            temaABloque[`3.A.${i}`] = 'Pensamiento económico';
+        }
+        for (let i = 8; i <= 15; i++) {
+            temaABloque[`3.A.${i}`] = 'Modelo neoclásico básico';
+        }
+        for (let i = 13; i <= 20; i++) {
+            temaABloque[`3.A.${i}`] = 'Información y poder de mercado';
+        }
+        for (let i = 21; i <= 28; i++) {
+            temaABloque[`3.A.${i}`] = 'Economía del Bienestar';
+        }
+        for (let i = 29; i <= 32; i++) {
+            temaABloque[`3.A.${i}`] = 'Contabilidad Nacional';
+        }
+        for (let i = 32; i <= 35; i++) {
+            temaABloque[`3.A.${i}`] = 'Demanda y Oferta Agregada';
+        }
+        for (let i = 36; i <= 42; i++) {
+            temaABloque[`3.A.${i}`] = 'Ciclo y políticas de demanda';
+        }
+        for (let i = 43; i <= 45; i++) {
+            temaABloque[`3.A.${i}`] = 'Crecimiento económico';
+        }
         for (let i = 1; i <= 45; i++) {
             temaABloque[`3.B.${i}`] = 'Economía Financiera e Internacional';
         }
@@ -805,121 +949,56 @@
             document.getElementById(id).classList.toggle('collapsed');
         }
 
-        // Temas hardcodeados como fallback
-        const temasDefault = {
-            "3.A.1": "Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía conductual.",
-            "3.A.2": "Los economistas clásicos y Marx.",
-            "3.A.3": "Los economistas neoclásicos.",
-            "3.A.4": "El pensamiento económico de Keynes. Referencia a la economía postkeynesiana y el desequilibrio.",
-            "3.A.5": "La síntesis neoclásica. El monetarismo.",
-            "3.A.6": "La nueva macroeconomía clásica. La hipótesis de las expectativas racionales; la crítica de Lucas; el surgimiento de los modelos dinámicos estocásticos de equilibrio general.",
-            "3.A.7": "La nueva economía keynesiana. Primera y segunda generación.",
-            "3.A.8": "Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.",
-            "3.A.9": "Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar.",
-            "3.A.10": "Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre.",
-            "3.A.11": "Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.",
-            "3.A.12": "Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.",
-            "3.A.13": "Economía de la información y teoría de la agencia: selección adversa y riesgo moral.",
-            "3.A.14": "Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.",
-            "3.A.15": "La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables.",
-            "3.A.16": "Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar.",
-            "3.A.17": "Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral.",
-            "3.A.18": "Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos.",
-            "3.A.19": "Análisis de mercados (IV). Teoría del oligopolio: soluciones no cooperativas y soluciones cooperativas.",
-            "3.A.20": "Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.",
-            "3.A.21": "La teoría del equilibrio general.",
-            "3.A.22": "Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best».",
-            "3.A.23": "Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público.",
-            "3.A.24": "Economía del bienestar (III). Las funciones de bienestar social. Teoría de la elección colectiva. El teorema de imposibilidad de Arrow y desarrollos posteriores.",
-            "3.A.25": "La teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo. Teoría del capital humano. Función de ingresos de capital humano y evidencia empírica.",
-            "3.A.26": "Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides. Costes de ajuste y dinámica de la demanda de trabajo.",
-            "3.A.27": "Determinación de salarios: modelos de negociación, salarios de eficiencia y contratos implícitos.",
-            "3.A.28": "La tasa natural de paro y la NAIRU. La persistencia del desempleo.",
-            "3.A.29": "Modelización dinámica de las tomas de decisiones. Modelos de horizonte infinito y modelos de generaciones solapadas.",
-            "3.A.30": "Magnitudes macroeconómicas y contabilidad nacional.",
-            "3.A.31": "Análisis de las tablas «input-output».",
-            "3.A.32": "El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis de las políticas monetaria y fiscal, y de los shocks y políticas de oferta.",
-            "3.A.33": "Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero. Evidencia empírica e implicaciones de política económica.",
-            "3.A.34": "Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de política económica.",
-            "3.A.35": "Teorías de la demanda de dinero. Implicaciones de política económica.",
-            "3.A.36": "Política monetaria (I). El diseño y la instrumentación de la política monetaria.",
-            "3.A.37": "Política monetaria (II). Los mecanismos de transmisión de la política monetaria convencional. Rigideces de precios, rigideces de salarios y fricciones financieras. Los mecanismos de transmisión de la política monetaria no convencional.",
-            "3.A.38": "La política fiscal: efectos sobre el crecimiento económico y el ahorro.",
-            "3.A.39": "Déficit público. Conceptos. Financiación y sus consecuencias macroeconómicas. Dominación monetaria y dominación fiscal. La dinámica de la deuda pública y su sostenibilidad.",
-            "3.A.40": "Efectividad e interrelación de las políticas monetaria y fiscal en las principales economías desarrolladas desde la Gran Recesión de 2008. El valor de los multiplicadores fiscales.",
-            "3.A.41": "La inflación: causas y efectos sobre la eficiencia económica y el bienestar. Hiperinflación y deflación.",
-            "3.A.42": "Teorías de los ciclos económicos: ciclos nominales y reales. Referencia al ciclo financiero y sus interrelaciones con el ciclo real.",
-            "3.A.43": "Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de Solow aumentado con acumulación de capital humano. El modelo de Ramsey-Cass-Koopmans.",
-            "3.A.44": "Crecimiento económico (II). Modelos de crecimiento endógeno: rendimientos crecientes, capital humano e innovación tecnológica.",
-            "3.A.45": "Evidencia empírica sobre el crecimiento económico y la distribución de la renta entre los factores de producción. Contabilidad del crecimiento, con especial referencia a la productividad total de los factores. Convergencia económica internacional.",
-            "3.B.1": "La información financiera de las empresas: estados de situación y de circulación. Métodos de análisis económico y financiero de la empresa.",
-            "3.B.2": "La empresa y las decisiones de inversión. Diferentes criterios de valoración de proyectos. Rentabilidad, riesgo y coste del capital.",
-            "3.B.3": "La empresa y las decisiones de financiación: financiación propia frente a financiación ajena. Política de dividendos y estructura del capital.",
-            "3.B.4": "Análisis del crecimiento de la empresa. Métodos de valoración de empresas. Especial referencia a los procesos de fusión, adquisición y alianzas estratégicas.",
-            "3.B.5": "Teoría del comercio internacional (I). La teoría ricardiana de la ventaja comparativa. Determinación de la relación real de intercambio. El modelo de factores específicos. El Modelo Hecksher-Ohlin-Samuelson (H-O-S); teoremas derivados del modelo y extensiones.",
-            "3.B.6": "Teoría del comercio internacional (II). Nueva teoría del comercio internacional. Especial referencia a la competencia imperfecta, los rendimientos crecientes y la heterogeneidad empresarial.",
-            "3.B.7": "La política comercial (I). Instrumentos y efectos. Barreras arancelarias y no arancelarias. Otros instrumentos tradicionales.",
-            "3.B.8": "La política comercial (II). La política comercial estratégica.",
-            "3.B.9": "Comercio internacional y crecimiento económico. Especial referencia a los efectos del comercio sobre el crecimiento.",
-            "3.B.10": "Teoría de la integración económica.",
-            "3.B.11": "Balanza de pagos: concepto, medición e interpretación.",
-            "3.B.12": "Mecanismos de ajuste de la balanza de pagos. Especial referencia al enfoque intertemporal de balanza de pagos. Análisis de sostenibilidad del déficit y de la deuda exterior.",
-            "3.B.13": "Mercados de divisas: operaciones e instrumentos.",
-            "3.B.14": "Teorías de la determinación del tipo de cambio.",
-            "3.B.15": "Análisis comparado de los distintos regímenes cambiarios. Intervención y regulación de los mercados de cambio.",
-            "3.B.16": "Teoría de la integración monetaria.",
-            "3.B.17": "Teorías explicativas de las crisis de balanza de pagos.",
-            "3.B.18": "La nueva globalización económica y financiera. Determinantes y efectos de los movimientos internacionales de factores productivos: movilidad de trabajadores, inversión de cartera e inversión directa, con especial referencia a las cadenas globales de valor.",
-            "3.B.19": "La coordinación internacional de políticas económicas. Aspectos teóricos y prácticos. El G-20, la OCDE y otros foros internacionales.",
-            "3.B.20": "El sistema económico internacional desde el siglo XIX hasta la ruptura del sistema de Bretton-Woods.",
-            "3.B.21": "El sistema económico internacional desde la desaparición del sistema de Bretton-Woods.",
-            "3.B.22": "El Fondo Monetario Internacional. Estructura y políticas. La prevención y solución de crisis.",
-            "3.B.23": "Análisis de los instrumentos financieros de renta variable. Análisis fundamental. Teoría de la elección de cartera. El modelo de valoración de los activos de capital (CAPM). La teoría de valoración de activos por arbitraje (APT). Análisis técnico.",
-            "3.B.24": "Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.",
-            "3.B.25": "Análisis de los instrumentos y de los mercados de derivados.",
-            "3.B.26": "Crisis financieras y pánicos bancarios; especial referencia a la crisis financiera internacional iniciada en 2007-2008. Gestión de riesgos de las instituciones financieras.",
-            "3.B.27": "Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.",
-            "3.B.28": "Economía de los países en desarrollo. Teorías recientes del desarrollo económico. Evidencia empírica, con especial referencia a la aproximación experimental, e implicaciones para el diseño de políticas.",
-            "3.B.29": "La financiación exterior del desarrollo económico. El problema de la deuda externa. La ayuda al desarrollo.",
-            "3.B.30": "El Grupo del Banco Mundial, los Bancos Regionales de Desarrollo y otras instituciones financieras multilaterales de desarrollo.",
-            "3.B.31": "El cambio climático y su impacto en la economía. Evidencia y modelos integrados de evaluación. Acuerdos internacionales y principales medidas adoptadas para hacer frente al cambio climático.",
-            "3.B.32": "Perspectivas económicas mundiales. Estructura sectorial y geográfica de los flujos comerciales y financieros internacionales. Las nuevas áreas emergentes.",
-            "3.B.33": "La OMC. Antecedentes y Organización actual. El GATT y los Acuerdos sobre el comercio de mercancías. Situación actual.",
-            "3.B.34": "La OMC. Los acuerdos distintos de los de mercancías.",
-            "3.B.35": "Procesos de integración no comunitarios.",
-            "3.B.36": "Tratados, orden jurídico e instituciones de la Unión Europea.",
-            "3.B.37": "Las finanzas de la Unión Europea y el presupuesto comunitario. El marco financiero plurianual actual.",
-            "3.B.38": "La política agrícola de la Unión Europea. Problemas económicos y procesos de reforma. La política pesquera común.",
-            "3.B.39": "El mercado único de la Unión Europea. El principio de libre circulación de mercancías, servicios, personas y capitales. La política de competencia.",
-            "3.B.40": "La Cohesión Económica y Social en la Unión Europea: política regional e instrumentos presupuestarios y financieros. Política social y de empleo. El proceso de convergencia real en la Unión Europea.",
-            "3.B.41": "La política comercial de la Unión Europea.",
-            "3.B.42": "Las relaciones económicas exteriores de la Unión Europea. La política de cooperación al desarrollo de la Unión Europea.",
-            "3.B.43": "El origen del euro: funcionamiento y evolución del Sistema Monetario Europeo. Los criterios de convergencia nominal. El Sistema Europeo de Bancos Centrales: objetivos e instrumentos. La política monetaria en la Eurozona desde 2009.",
-            "3.B.44": "La Unión Bancaria: Pilares y Código normativo único. La Unión de Mercados de Capitales.",
-            "3.B.45": "La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento de Desequilibrios Macroeconómicos. El Mecanismo Europeo de Estabilidad. La respuesta común de política fiscal a partir de la covid-19."
-        };
-
+        // Cargar datos al iniciar
         document.addEventListener('DOMContentLoaded', async function() {
-            // Inicializar con datos por defecto primero (para que siempre se vean los temas)
-            datosTest = { temas: temasDefault, preguntas: [], examenes: [] };
-            inicializarSelectores();
+            console.log('Iniciando carga de datos...');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            const mainContent = document.getElementById('main-content');
             
-            // Luego intentar cargar el JSON con las preguntas
             try {
+                // Intentar cargar el JSON
+                console.log('Intentando cargar preguntas.json...');
                 const response = await fetch('preguntas.json');
-                if (response.ok) {
-                    const jsonData = await response.json();
-                    // Actualizar solo las preguntas y exámenes, mantener los temas
-                    datosTest.preguntas = jsonData.preguntas || [];
-                    datosTest.examenes = jsonData.examenes || [];
-                    if (jsonData.temas) {
-                        datosTest.temas = jsonData.temas;
-                    }
-                    actualizarContadores();
-                    console.log('Preguntas cargadas:', datosTest.preguntas.length);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                
+                const jsonData = await response.json();
+                console.log('JSON cargado exitosamente:', jsonData);
+                
+                // Validar datos
+                if (!jsonData.temas || Object.keys(jsonData.temas).length === 0) {
+                    throw new Error('No se encontraron temas en el archivo JSON');
+                }
+                
+                if (!jsonData.preguntas || jsonData.preguntas.length === 0) {
+                    throw new Error('No se encontraron preguntas en el archivo JSON');
+                }
+                
+                // Cargar datos
+                datosTest = {
+                    temas: jsonData.temas,
+                    preguntas: jsonData.preguntas || [],
+                    examenes: jsonData.examenes || []
+                };
+                
+                console.log(`Datos cargados: ${Object.keys(datosTest.temas).length} temas, ${datosTest.preguntas.length} preguntas`);
+                
+                // Inicializar la interfaz
+                inicializarSelectores();
+                loadingIndicator.style.display = 'none';
+                mainContent.style.display = 'block';
+                
             } catch (error) {
-                console.log('No se pudo cargar preguntas.json, usando solo los temas por defecto');
+                console.error('Error al cargar datos:', error);
+                loadingIndicator.innerHTML = `
+                    <div class="error-message">
+                        <strong>⚠️ Error al cargar las preguntas</strong><br>
+                        ${error.message}<br>
+                        <small>Asegúrate de que el archivo <code>preguntas.json</code> está en la misma carpeta que este archivo HTML.</small>
+                    </div>
+                `;
             }
         });
 
@@ -927,13 +1006,18 @@
             const temasParteA = document.getElementById('temas-parte-a');
             const temasParteB = document.getElementById('temas-parte-b');
 
+            // Limpiar contenedores
+            temasParteA.innerHTML = '';
+            temasParteB.innerHTML = '';
+
+            // Generar checkboxes para cada tema
             Object.entries(datosTest.temas).forEach(([codigo, nombre]) => {
                 const container = codigo.startsWith('3.A') ? temasParteA : temasParteB;
                 const numTema = codigo.replace('3.A.', '').replace('3.B.', '');
                 const preguntasTema = datosTest.preguntas.filter(p => p.temas.includes(codigo)).length;
                 
                 const div = document.createElement('div');
-                div.className = 'tema-checkbox selected'; // Seleccionado por defecto
+                div.className = 'tema-checkbox selected';
                 div.innerHTML = `
                     <input type="checkbox" id="${codigo}" value="${codigo}" checked>
                     <label for="${codigo}">
@@ -967,6 +1051,7 @@
                 });
             });
 
+            // Eventos para los botones de seleccionar/deseleccionar todos
             document.querySelectorAll('.toggle-all').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1044,9 +1129,7 @@
         }
 
         function obtenerOrdenTema(pregunta) {
-            // Obtener el primer tema de la pregunta para ordenar
             const tema = pregunta.temas[0];
-            // Extraer parte (A o B) y número
             const match = tema.match(/3\.([AB])\.(\d+)/);
             if (match) {
                 const parte = match[1] === 'A' ? 0 : 1;
@@ -1075,7 +1158,7 @@
             
             indicePreguntaActual = 0;
             respuestasUsuario = {};
-            tiempoRestante = tiempoMinutos * 60; // Convertir a segundos
+            tiempoRestante = tiempoMinutos * 60;
             tiempoInicio = Date.now();
             
             document.getElementById('fase-seleccion').classList.add('hidden');
@@ -1083,12 +1166,8 @@
             document.getElementById('fase-resultados').classList.add('hidden');
             document.getElementById('total-preguntas').textContent = preguntasExamen.length;
             
-            // Crear navegador de preguntas
             crearNavegadorPreguntas();
-            
-            // Iniciar temporizador
             iniciarTemporizador();
-            
             mostrarPregunta();
         }
 
@@ -1122,104 +1201,57 @@
             mostrarPregunta();
         }
 
-        function iniciarTemporizador() {
-            actualizarTemporizador();
-            intervaloTemporizador = setInterval(() => {
-                tiempoRestante--;
-                actualizarTemporizador();
-                
-                if (tiempoRestante <= 0) {
-                    clearInterval(intervaloTemporizador);
-                    alert('¡Se ha acabado el tiempo!');
-                    finalizarExamen();
-                }
-            }, 1000);
-        }
-
-        function actualizarTemporizador() {
-            const horas = Math.floor(tiempoRestante / 3600);
-            const minutos = Math.floor((tiempoRestante % 3600) / 60);
-            const segundos = tiempoRestante % 60;
-            
-            const tiempoStr = `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-            document.getElementById('tiempo-restante').textContent = tiempoStr;
-            
-            const temporizadorEl = document.getElementById('temporizador');
-            temporizadorEl.classList.remove('warning', 'danger');
-            
-            if (tiempoRestante <= 300) { // 5 minutos
-                temporizadorEl.classList.add('danger');
-            } else if (tiempoRestante <= 600) { // 10 minutos
-                temporizadorEl.classList.add('warning');
-            }
-        }
-
         function mostrarPregunta() {
-            if (indicePreguntaActual >= preguntasExamen.length) {
-                finalizarExamen();
-                return;
-            }
-
             const pregunta = preguntasExamen[indicePreguntaActual];
+            const examen = datosTest.examenes.find(e => e.id === pregunta.examen);
             
             document.getElementById('pregunta-actual').textContent = indicePreguntaActual + 1;
             
-            let tipoTag = '';
-            if (pregunta.tipo_pregunta === 'incorrecta') {
-                tipoTag = '<span class="pregunta-tipo">Señale la INCORRECTA</span>';
-            } else if (pregunta.tipo_pregunta === 'aceptada') {
-                tipoTag = '<span class="pregunta-tipo">Anulada - Todas válidas</span>';
-            }
-            
-            document.getElementById('pregunta-numero').innerHTML = `Pregunta ${indicePreguntaActual + 1}${tipoTag}`;
-            document.getElementById('pregunta-enunciado').textContent = pregunta.enunciado;
-            
-            const opcionesList = document.getElementById('opciones-list');
-            opcionesList.innerHTML = '';
-            
-            const respuestaGuardada = respuestasUsuario[indicePreguntaActual];
-            
+            let opcionesHtml = '';
             ['a', 'b', 'c', 'd'].forEach(letra => {
-                const li = document.createElement('li');
-                li.className = 'opcion-item';
-                
-                const btn = document.createElement('button');
-                btn.className = 'opcion-btn';
-                btn.dataset.opcion = letra;
-                
-                // Marcar si está seleccionada
-                if (respuestaGuardada === letra) {
-                    btn.classList.add('selected');
-                }
-                
-                btn.innerHTML = `
-                    <span class="opcion-letra">${letra.toUpperCase()}</span>
-                    <span class="opcion-texto">${pregunta.opciones[letra]}</span>
+                const seleccionada = respuestasUsuario[indicePreguntaActual] === letra ? 'selected' : '';
+                opcionesHtml += `
+                    <li class="opcion-item">
+                        <div class="opcion-btn ${seleccionada}" data-opcion="${letra}">
+                            <span class="opcion-letra">${letra.toUpperCase()}</span>
+                            <span class="opcion-texto">${pregunta.opciones[letra]}</span>
+                        </div>
+                    </li>
                 `;
-                btn.addEventListener('click', () => seleccionarOpcion(letra));
-                
-                li.appendChild(btn);
-                opcionesList.appendChild(li);
             });
             
-            // Actualizar botones de navegación
-            document.getElementById('btn-anterior').disabled = indicePreguntaActual === 0;
-            document.getElementById('btn-siguiente').textContent = 
-                indicePreguntaActual === preguntasExamen.length - 1 ? 'Última pregunta' : 'Siguiente →';
+            const temasNombres = pregunta.temas.map(t => 
+                `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`
+            ).join('');
             
-            actualizarNavegador();
-        }
-
-        function seleccionarOpcion(letra) {
-            // Guardar respuesta
-            respuestasUsuario[indicePreguntaActual] = letra;
+            const origenText = examen ? `${examen.nombre} - Pregunta ${pregunta.numero}` : 'Pregunta de elaboración propia';
             
-            // Actualizar visualización
-            document.querySelectorAll('.opcion-btn').forEach(btn => {
-                btn.classList.remove('selected');
-                if (btn.dataset.opcion === letra) {
-                    btn.classList.add('selected');
-                }
+            const container = document.getElementById('pregunta-container');
+            container.innerHTML = `
+                <div class="pregunta-numero">
+                    Pregunta ${indicePreguntaActual + 1}
+                    ${pregunta.tipo_pregunta === 'incorrecta' ? '<span class="pregunta-tipo">INCORRECTA</span>' : ''}
+                    ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
+                </div>
+                <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                <ul class="opciones-list">${opcionesHtml}</ul>
+                <div class="revision-meta">
+                    <div class="origen">${origenText}</div>
+                    <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
+                </div>
+            `;
+            
+            // Event listeners para las opciones
+            container.querySelectorAll('.opcion-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const opcion = this.dataset.opcion;
+                    respuestasUsuario[indicePreguntaActual] = opcion;
+                    
+                    container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    actualizarNavegador();
+                });
             });
             
             actualizarNavegador();
@@ -1239,34 +1271,55 @@
             }
         }
 
+        function iniciarTemporizador() {
+            actualizarTemporizador();
+            intervaloTemporizador = setInterval(() => {
+                tiempoRestante--;
+                actualizarTemporizador();
+                
+                if (tiempoRestante <= 0) {
+                    finalizarExamen();
+                }
+            }, 1000);
+        }
+
+        function actualizarTemporizador() {
+            const horas = Math.floor(tiempoRestante / 3600);
+            const minutos = Math.floor((tiempoRestante % 3600) / 60);
+            const segundos = tiempoRestante % 60;
+            
+            const tiempoStr = `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+            const temporizadorElem = document.getElementById('temporizador');
+            temporizadorElem.textContent = tiempoStr;
+            
+            // Alertas de tiempo
+            temporizadorElem.classList.remove('warning', 'danger');
+            if (tiempoRestante <= 300) {
+                temporizadorElem.classList.add('danger');
+            } else if (tiempoRestante <= 600) {
+                temporizadorElem.classList.add('warning');
+            }
+        }
+
         function confirmarFinalizacion() {
             const sinResponder = preguntasExamen.length - Object.keys(respuestasUsuario).length;
-            let mensaje = '¿Estás seguro de que quieres finalizar el examen?';
-            
             if (sinResponder > 0) {
-                mensaje += `\n\nTienes ${sinResponder} pregunta${sinResponder > 1 ? 's' : ''} sin responder.`;
+                if (!confirm(`Tienes ${sinResponder} pregunta(s) sin responder. ¿Estás seguro de que quieres finalizar el examen?`)) {
+                    return;
+                }
             }
-            
-            if (confirm(mensaje)) {
-                finalizarExamen();
-            }
+            finalizarExamen();
         }
 
         function finalizarExamen() {
             clearInterval(intervaloTemporizador);
+            const tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000);
             
-            // Calcular tiempo transcurrido
-            tiempoTranscurrido = Math.floor((Date.now() - tiempoInicio) / 1000);
-            
-            // Obtener configuración de puntuación
             const puntosAcierto = parseFloat(document.getElementById('puntos-acierto').value) || 1;
             const puntosFallo = parseFloat(document.getElementById('puntos-fallo').value) || -0.33;
             const puntosBlanco = parseFloat(document.getElementById('puntos-blanco').value) || 0;
             
-            // Calcular resultados
-            let correctas = 0;
-            let incorrectas = 0;
-            let sinResponder = 0;
+            let correctas = 0, incorrectas = 0, sinResponder = 0;
             
             preguntasExamen.forEach((pregunta, index) => {
                 const respuesta = respuestasUsuario[index];
@@ -1310,7 +1363,6 @@
             const puntosFallo = parseFloat(document.getElementById('puntos-fallo').value) || -0.33;
             const puntosBlanco = parseFloat(document.getElementById('puntos-blanco').value) || 0;
             
-            // Calcular puntos por bloque
             const bloques = {};
             
             preguntasExamen.forEach((pregunta, index) => {
@@ -1335,7 +1387,6 @@
                 }
             });
             
-            // Ordenar bloques
             const ordenBloques = [
                 'Pensamiento económico',
                 'Modelo neoclásico básico',
@@ -1349,19 +1400,14 @@
             ];
             
             const bloquesOrdenados = ordenBloques.filter(b => bloques[b]).map(b => ({ nombre: b, ...bloques[b] }));
-            
-            // Añadir bloques no contemplados
             Object.keys(bloques).forEach(b => {
                 if (!ordenBloques.includes(b)) {
                     bloquesOrdenados.push({ nombre: b, ...bloques[b] });
                 }
             });
             
-            // Generar HTML
             const container = document.getElementById('grafico-bloques-container');
             container.innerHTML = '';
-            
-            const maxAbsoluto = Math.max(...bloquesOrdenados.map(b => Math.abs(b.maxPuntos)));
             
             bloquesOrdenados.forEach(bloque => {
                 const porcentaje = bloque.maxPuntos > 0 ? (bloque.puntos / bloque.maxPuntos) * 100 : 0;
@@ -1379,6 +1425,7 @@
                 `;
                 container.appendChild(row);
             });
+        }
 
         function generarRevision() {
             const container = document.getElementById('revision-container');
