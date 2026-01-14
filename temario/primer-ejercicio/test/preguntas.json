@@ -74,12 +74,12 @@
       "examen": "2025-marzo-A",
       "numero": 5,
       "temas": ["3.A.9"],
-      "enunciado": "Obtenga la Función de Utilidad directa de la que proviene la siguiente Función de Gasto: G = (4/3) * p1^(3/4) * p2^(1/4) * U^(1/4)",
+      "enunciado": "Obtenga la Función de Utilidad directa de la que proviene la siguiente Función de Gasto: G = (4/3) · p₁^(3/4) · p₂^(1/4) · U^(1/4)",
       "opciones": {
-        "a": "U = 3 * x1³ * x2",
-        "b": "U = x1³ * x2²",
-        "c": "U = x1³ * x2",
-        "d": "U = 3 * x1³ * x2²"
+        "a": "U = 3 · x₁³ · x₂",
+        "b": "U = x₁³ · x₂²",
+        "c": "U = x₁³ · x₂",
+        "d": "U = 3 · x₁³ · x₂²"
       },
       "respuesta": ["a"],
       "oficial": true
@@ -120,7 +120,7 @@
       "examen": "2025-marzo-A",
       "numero": 8,
       "temas": ["3.A.14"],
-      "enunciado": "Suponga el siguiente juego de dos jugadores (A y B), donde cada uno de ellos dispone de dos estrategias posibles (1 y 2). La tabla muestra la matriz de pagos según las estrategias que sigan los jugadores, siendo el primer número de cada paréntesis el pago correspondiente al jugador A y el segundo número el pago correspondiente al jugador B. [Jugador A Estrategia 1: (3,1), (0,0); Jugador A Estrategia 2: (0,0), (1,2)]. Señale la respuesta CORRECTA:",
+      "enunciado": "Suponga el siguiente juego de dos jugadores (A y B), donde cada uno de ellos dispone de dos estrategias posibles (1 y 2). La tabla siguiente muestra la matriz de pagos según las estrategias que sigan los jugadores, siendo el primer número de cada paréntesis el pago correspondiente al jugador A y el segundo número el pago correspondiente al jugador B. [Jugador B Estrategia 1, Estrategia 2; Jugador A Estrategia 1: (3,1), (0,0); Jugador A Estrategia 2: (0,0), (1,2)]. Señale la respuesta CORRECTA:",
       "opciones": {
         "a": "En el equilibrio en estrategias mixtas, el Jugador B juega la estrategia 1 con una probabilidad de 3/4 y la estrategia 2 con una probabilidad de 1/4.",
         "b": "No existe ningún equilibrio de Nash.",
@@ -152,10 +152,574 @@
       "temas": ["3.A.18"],
       "enunciado": "Dos empresas simétricas se sitúan a lo largo de un segmento de longitud 1. Desde la perspectiva de la demanda, ese segmento se encuentra uniformemente poblado de consumidores que se enfrentan a costes de transporte en función de la distancia que recorran hasta llegar a cada una de las dos empresas. Cada consumidor demandará una unidad del único bien que venden las empresas y comprarán a aquella empresa que les reporte más utilidad, que dependerá positivamente del consumo unitario del bien y negativamente del precio y de la distancia recorrida. En este contexto:",
       "opciones": {
-        "a": "Siempre que los costes de transporte sean positivos, los precios de equilibrio serán mayores que en competencia perfecta.",
-        "b": "A mayor coste unitario de transporte, menores serán los precios de equilibrio.",
-        "c": "Los precios de equilibrio son independientes de los costes de transporte.",
-        "d": "Cuando una de las empresas se sitúa en un extremo del segmento y la otra en el punto medio, el precio de equilibrio de esta última será mayor que el de la primera."
+        "a": "Con costes de transporte cuadráticos y localización y precios endógenos, las empresas se situarán en los puntos ¼ y ¾.",
+        "b": "Con costes de transporte lineales y localización y precios endógenos, las dos empresas se sitúan en el centro.",
+        "c": "Con precios exógenos y localización endógena, las dos empresas se sitúan en el centro.",
+        "d": "La solución óptima con costes de transporte cuadráticos es que las dos empresas se sitúen en el centro."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 11,
+      "examen": "2025-marzo-A",
+      "numero": 11,
+      "temas": ["3.A.23", "3.A.24"],
+      "enunciado": "Dos opositores a Técnico Comercial y Economista del Estado quieren comprar el temario de la oposición, que cuesta 1.000€. Una vez comprado, puede ser utilizado por tantos opositores como se desee. El opositor 1 (O1) valora el temario en 700€ y el opositor 2 (O2) en 800€. Ambos tienen preferencias cuasilineales con respecto al dinero. Un planeador central está dispuesto a financiar el temario a los opositores, siempre y cuando su provisión sea eficiente. Si dicho planeador implementase un mecanismo de Vickrey-Clarke-Groves para conocer las preferencias de los opositores, el mecanismo de estrategias dominantes sería:",
+      "opciones": {
+        "a": "Un impuesto de 500€ a cada opositor.",
+        "b": "Un impuesto de 200€ al opositor 1 y un impuesto de 300€ al opositor 2.",
+        "c": "Un impuesto de 300€ al opositor 1 y un impuesto de 200€ al opositor 2.",
+        "d": "No existe una solución, puesto que cualquier mecanismo de Vickrey-Clarke-Groves debe generar los suficientes ingresos entre los opositores como para financiar el temario."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 12,
+      "examen": "2025-marzo-A",
+      "numero": 14,
+      "temas": ["3.A.25", "3.A.26"],
+      "enunciado": "Card (1990) estudia las consecuencias que tuvo el \"Éxodo del Mariel\" en el mercado de trabajo de la ciudad de Miami. Entre sus principales conclusiones, destaca que, en el mercado de trabajadores no cualificados:",
+      "opciones": {
+        "a": "El aumento de trabajadores en la ciudad de Miami condujo a una caída de los salarios y al aumento del desempleo.",
+        "b": "El aumento de trabajadores en la ciudad de Miami condujo a una caída de los salarios, pero no a un aumento del desempleo.",
+        "c": "El aumento de trabajadores en la ciudad de Miami no tuvo efectos en los salarios, pero sí condujo al aumento del desempleo.",
+        "d": "El aumento de trabajadores en la ciudad de Miami no tuvo efectos ni en los salarios ni en el desempleo."
+      },
+      "respuesta": ["d"],
+      "oficial": true
+    },
+    {
+      "id": 13,
+      "examen": "2025-marzo-A",
+      "numero": 15,
+      "temas": ["3.A.26"],
+      "enunciado": "El nivel de desempleo resultante de un modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides:",
+      "opciones": {
+        "a": "Es siempre inferior al eficiente.",
+        "b": "Es siempre superior al eficiente.",
+        "c": "Puede ser superior o inferior al eficiente.",
+        "d": "Los modelos de búsqueda no tienen interpretación normativa."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 14,
+      "examen": "2025-marzo-A",
+      "numero": 16,
+      "temas": ["3.A.33"],
+      "enunciado": "Suponga el siguiente modelo de decisión intertemporal entre consumo (C) y ahorro (S), con dos períodos, bajo equilibrio parcial: Max. U = U(C₁) + βU(C₂) con β ∊ (0,1), sujeto a C₁ + S = Y₁ + A₀(1 + r) y C₂ = Y₂ + S(1 + r). Donde A₀ es la riqueza inicial del agente, que toma como dada, Y₁ e Y₂ son las rentas que obtiene en los períodos 1 y 2 respectivamente, β es el factor de descuento intertemporal y r es el tipo de interés real. Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Una mayor renta en el primer período supondrá un mayor consumo en el primer periodo y un menor consumo en el segundo período.",
+        "b": "Si la riqueza inicial del agente es elevada (A₀ > Y₂/(1+r)²), un aumento del tipo de interés real llevará a una disminución del consumo en el primer período.",
+        "c": "Si la riqueza inicial del agente es reducida (A₀ < Y₂/(1+r)²) y financia su consumo con créditos sobre su renta futura, un aumento del tipo de interés real supondrá una disminución del consumo en el primer período y un aumento del consumo en el segundo período.",
+        "d": "Si en el primer período C₁ > Y₁ + rA₀, entonces el agente será necesariamente un prestatario."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 15,
+      "examen": "2025-marzo-A",
+      "numero": 17,
+      "temas": ["3.A.34"],
+      "enunciado": "Considere el modelo dinámico de inversión con costes de ajuste en el que la empresa representativa maximiza intertemporalmente sus beneficios, cumpliéndose los siguientes supuestos: la función de producción de la empresa tiene rendimientos constantes a escala, el precio del capital es igual a 1 y la tasa de depreciación es igual a cero, los mercados de bienes y factores son perfectamente competitivos y los costes de ajuste son cuadráticos. Bajo estos supuestos y partiendo de una situación inicial de equilibrio, una disminución en el impuesto sobre los beneficios de la empresa:",
+      "opciones": {
+        "a": "Lleva a un aumento temporal de la inversión, que será mayor si la disminución del impuesto es temporal que si es permanente.",
+        "b": "Lleva a un nuevo equilibrio con un mayor valor marginal del capital.",
+        "c": "Lleva a un aumento del stock de capital en el nuevo equilibrio, tanto si la disminución del impuesto es temporal como si es permanente.",
+        "d": "Si la disminución es permanente, lleva a un aumento temporal de la inversión y del valor marginal del capital, conduciendo a un nuevo equilibrio con un mayor stock de capital."
+      },
+      "respuesta": ["d"],
+      "oficial": true
+    },
+    {
+      "id": 16,
+      "examen": "2025-marzo-A",
+      "numero": 18,
+      "temas": ["3.A.31"],
+      "enunciado": "En el marco de análisis Input-Output, las matrices de contabilidad social:",
+      "opciones": {
+        "a": "Relacionan la matriz de inputs primarios con la matriz de demandas finales y cierran el flujo circular de la renta.",
+        "b": "Relacionan la matriz simétrica con la matriz de demandas finales y de inputs primarios.",
+        "c": "Representan la matriz de transacciones intersectoriales y deben ser matrices cuadradas.",
+        "d": "Sirven para calcular los eslabonamientos sectoriales."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 17,
+      "examen": "2025-marzo-A",
+      "numero": 19,
+      "temas": ["3.A.31"],
+      "enunciado": "Los modelos de redes de producción à la Acemoglu et al (2012):",
+      "opciones": {
+        "a": "Estudian cómo un shock de productividad de un sector concreto se puede propagar al resto de sectores.",
+        "b": "Estudian cómo un shock en los salarios nominales tiene efectos sobre la productividad del factor trabajo.",
+        "c": "Estudian cómo un shock en el factor capital tiene efectos sobre la producción total de la economía.",
+        "d": "Estudian cómo un shock en el número de productores de un determinado input se propaga en el resto de la cadena de producción de un output."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 18,
+      "examen": "2025-marzo-A",
+      "numero": 20,
+      "temas": ["3.A.6"],
+      "enunciado": "Responda la afirmación INCORRECTA sobre las aportaciones de Robert Lucas:",
+      "opciones": {
+        "a": "Bajo la Hipótesis de Expectativas Racionales, los errores de los agentes no estarán correlacionados.",
+        "b": "La conocida como \"Crítica de Lucas\" establece que las reglas de decisión de los agentes podrán expresarse en término de los parámetros profundos: esto es, de parámetros no dependientes de los cambios en los regímenes de política económica. Un ejemplo de estos parámetros son los parámetros de preferencias, tecnología o consumo privado.",
+        "c": "Bajo la interpretación de la curva de Phillips de Lucas, las sorpresas monetarias pueden inducir a los agentes a confundir transitoriamente shocks nominales con shocks reales y, por consiguiente, a moverse transitoriamente a lo largo de una curva de Phillips.",
+        "d": "Los modelos de ciclo introducidos por Lucas (Lucas, 1972) combinaban la introducción de agentes optimizadores en un entorno intertemporal y de incertidumbre, el uso de expectativas racionales y el vaciado constante de los mercados."
+      },
+      "respuesta": ["b"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 19,
+      "examen": "2025-marzo-A",
+      "numero": 21,
+      "temas": ["3.A.7"],
+      "enunciado": "En el modelo base de la Nueva Economía Keynesiana (agentes optimizadores intertemporales, rigideces de precios à la Calvo y competencia monopolística), con una regla de política monetaria que sigue una regla de Taylor del tipo it = α + βy·yt + βπ·πt, que el parámetro βπ sea igual o mayor que 1:",
+      "opciones": {
+        "a": "Es condición necesaria y suficiente para garantizar la unicidad del equilibrio en el modelo.",
+        "b": "Es condición necesaria, pero no suficiente, para garantizar la unicidad del equilibrio en el modelo.",
+        "c": "No es condición necesaria ni suficiente, para garantizar la unicidad del equilibrio.",
+        "d": "Es condición suficiente, pero no necesaria, para garantizar la unicidad del equilibrio."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 20,
+      "examen": "2025-marzo-A",
+      "numero": 22,
+      "temas": ["3.A.39"],
+      "enunciado": "Suponga una economía con una inflación del 3% y una tasa de crecimiento del PIB real del 2% que se mantienen constantes en el tiempo. Suponga que el Gobierno no puede apelar al Banco Central para financiar su déficit y sólo puede financiarlo emitiendo deuda a un tipo de interés nominal del 8%. En caso de ser necesario, calcule el tipo de interés real de manera aproximada. Señale la afirmación CORRECTA:",
+      "opciones": {
+        "a": "Si la deuda inicial es del 50% del PIB, un superávit permanente del 1% del PIB conducirá a un aumento continuado de la deuda, dándose una trayectoria explosiva.",
+        "b": "Si la deuda inicial es del 80% del PIB, un superávit permanente del 2% del PIB conducirá a una eliminación gradual del endeudamiento.",
+        "c": "Si la deuda inicial es del 40% del PIB, un superávit permanente del 1% del PIB conducirá a una eliminación gradual del endeudamiento.",
+        "d": "Dado que el tipo de interés real es superior a la tasa de crecimiento del PIB real de la economía, bajo ningún supuesto se podrá dar una eliminación gradual del endeudamiento."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 21,
+      "examen": "2025-marzo-A",
+      "numero": 23,
+      "temas": ["3.A.42", "3.B.26"],
+      "enunciado": "Señale cuál de los siguientes hechos estilizados NO es estudiado por Reinhart y Rogoff como una característica de las fluctuaciones financieras:",
+      "opciones": {
+        "a": "Durante la fase de crecimiento del ciclo financiero, los precios de la vivienda crecen más rápidamente que en largo plazo, y los bancos extienden más crédito.",
+        "b": "La fase de crecimiento suele terminar con un colapso de los precios de la vivienda y una crisis financiera y/o bancaria.",
+        "c": "Durante la fase de decrecimiento, los hogares y bancos reparan sus balances, reduciendo sus niveles de deuda.",
+        "d": "La fase de decrecimiento va acompañada de subidas de tipos de interés y aumentos progresivos en el crédito."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 22,
+      "examen": "2025-marzo-A",
+      "numero": 24,
+      "temas": ["3.A.43"],
+      "enunciado": "Considere que en el modelo de Solow de crecimiento económico con progreso tecnológico, a partir de un estado estacionario inicial, se origina un aumento en la tasa de progreso tecnológico. Señale la opción INCORRECTA en relación con el nuevo estado estacionario:",
+      "opciones": {
+        "a": "En el nuevo estado estacionario, la tasa de crecimiento de la producción por trabajador será mayor que la inicial y menor que la alcanzada durante la transición.",
+        "b": "Durante la transición, el nivel de producción por trabajador aumenta hasta el nuevo estado estacionario.",
+        "c": "En el nuevo estado estacionario, la tasa de crecimiento de la producción por trabajador aumenta con respecto al estado estacionario inicial.",
+        "d": "Durante la transición, la tasa de crecimiento de la renta agregada será siempre inferior a su valor en el estado estacionario final."
+      },
+      "respuesta": ["a"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 23,
+      "examen": "2025-marzo-A",
+      "numero": 25,
+      "temas": ["3.A.43", "3.A.44"],
+      "enunciado": "Señale la respuesta CORRECTA con respecto al modelo de crecimiento de Mankiw, Romer y Weil (1992):",
+      "opciones": {
+        "a": "Una de las implicaciones de sus resultados es que las diferencias tecnológicas son la principal fuente de diferencias de renta per cápita entre países.",
+        "b": "Un supuesto del modelo es que los países tienen el mismo nivel de tecnología, pero difieren en su tasa de crecimiento.",
+        "c": "Un supuesto del modelo es que el nivel de tecnología de un país no está correlacionado con su inversión en capital físico y humano.",
+        "d": "Una de las principales críticas al modelo es que asumen economías perfectamente abiertas al exterior y no consideran factores geográficos."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 24,
+      "examen": "2025-marzo-A",
+      "numero": 26,
+      "temas": ["3.B.1"],
+      "enunciado": "Unas necesidades operativas de fondos negativas:",
+      "opciones": {
+        "a": "Implican que la empresa está obteniendo financiación a través de su política de pagos y cobros.",
+        "b": "Ceteris paribus, se pueden conseguir aumentando el período medio de rotación de stocks.",
+        "c": "Implican un fondo de maniobra negativo.",
+        "d": "Ninguna es correcta."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 25,
+      "examen": "2025-marzo-A",
+      "numero": 27,
+      "temas": ["3.B.3"],
+      "enunciado": "Una persona monta, junto con su tío, una empresa cuyo capital social asciende a 1.000€. Tío y sobrino son propietarios cada uno del 50% de la empresa. La empresa es un éxito y tiene planes de expandirse en Oriente Medio, para lo que necesita más fondos, por lo que decide realizar una ampliación de capital y contactar con un fondo de inversión. I. Si el fondo de inversión aporta 333€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. II. Si el fondo de inversión aporta 500€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. III. Si el fondo de inversión aporta 500€ más una prima de emisión de 500€, el fondo se hará con más del 50% de la empresa. IV. Si el fondo aporta 500€ más una prima de emisión de 500€, sobrino, tío y fondo de inversión tendrán una participación del 1/3 de la empresa.",
+      "opciones": {
+        "a": "II y IV son correctas.",
+        "b": "Solamente I es correcta.",
+        "c": "I y III son correctas.",
+        "d": "Solamente II es correcta."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 26,
+      "examen": "2025-marzo-A",
+      "numero": 29,
+      "temas": ["3.B.6"],
+      "enunciado": "Señale la respuesta INCORRECTA con respecto al modelo de comercio internacional de Eaton y Kortum:",
+      "opciones": {
+        "a": "Es un modelo ricardiano basado en diferencias tecnológicas.",
+        "b": "Es un modelo que incorpora aspectos geográficos.",
+        "c": "Es un modelo donde existen países ganadores y perdedores del comercio internacional.",
+        "d": "Los flujos bilaterales comerciales se ajustan a una estructura similar a la de una ecuación de gravedad, que relaciona flujos comerciales con la distancia y el producto del PIB de ambos países."
+      },
+      "respuesta": ["c"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 27,
+      "examen": "2025-marzo-A",
+      "numero": 30,
+      "temas": ["3.B.7"],
+      "enunciado": "Suponga una situación de comercio internacional, en la que se parte de un equilibrio de libre comercio entre 2 países (A y B) con dos bienes (bien X, que es intensivo en trabajo, y bien Y, que es intensivo en capital), y dos factores productivos (trabajo y capital). Suponga que el país A es un país grande y tiene ventaja comparativa en la producción del bien X, por lo que exporta el bien X e importa el bien Y. Partiendo de este equilibrio inicial, señale la afirmación INCORRECTA en relación con los efectos que tendrá la introducción de un arancel sobre las importaciones del bien Y:",
+      "opciones": {
+        "a": "En una situación normal, se dará un encarecimiento relativo del bien Y en el país A que llevará a una disminución del volumen de las importaciones de dicho bien.",
+        "b": "En una situación normal, se dará un abaratamiento relativo del bien Y a nivel mundial que compensará su encarecimiento relativo a nivel doméstico, conduciendo a un aumento del bienestar en el país A.",
+        "c": "Bajo ciertas circunstancias, el establecimiento del arancel puede llevar a una disminución de la relación real de intercambio para el país A.",
+        "d": "Si la propensión marginal del país A a consumir el bien X es mayor que la elasticidad de la demanda del país B sobre dicho bien, la imposición del arancel llevará a un encarecimiento relativo del bien importado en el país A."
+      },
+      "respuesta": ["b", "d"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 28,
+      "examen": "2025-marzo-A",
+      "numero": 31,
+      "temas": ["3.B.18"],
+      "enunciado": "Señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Feldstein (1994) afirma que existe un cierto \"sesgo del propio país\", pero que no es suficiente para explicar la paradoja de Feldstein-Horioka (1980).",
+        "b": "Lucas (1990) se pregunta por qué no existen más inversiones de países en desarrollo hacia países ricos, cuando es en éstos donde existen mejores oportunidades de inversión (son más productivos).",
+        "c": "Con su \"rompecabezas de la asignación\", Gourinchas (2007) demuestra empíricamente que la importación de capital es mayor cuanto mayor es el crecimiento de la productividad de la economía.",
+        "d": "Portes y Rey (2005) demuestran empíricamente que, debido a la existencia de fricciones de información entre países, no existen límites en la capacidad de los inversores para diversificar su riesgo."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 29,
+      "examen": "2025-marzo-A",
+      "numero": 32,
+      "temas": ["3.B.11", "3.B.12"],
+      "enunciado": "Un país presenta los siguientes datos de su balanza de pagos para un período determinado: Exportaciones de bienes: 12.000 millones de euros. Importaciones de bienes: 15.000 millones de euros. Transferencias de capital recibidas: 2.000 millones de euros. Transferencias de capital enviadas: 1.000 millones de euros. Inversión directa extranjera: Entrada neta de 6.000 millones de euros. Inversión en cartera: Salida neta de 4.500 millones de euros. Otros flujos financieros: Entrada neta de 3.000 millones de euros. Además, considere que los cambios del tipo de cambio en el periodo considerado aumentan el valor de los activos del país denominados en moneda extranjera en 1.200 millones de euros y de la deuda externa en 600 millones de euros. ¿Cuál es la variación neta de la Posición Neta de Inversión Internacional (PNII) del país entre los dos períodos?",
+      "opciones": {
+        "a": "5.100 millones de euros",
+        "b": "-3.900 millones de euros",
+        "c": "6.100 millones de euros",
+        "d": "3.100 millones de euros"
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 30,
+      "examen": "2025-marzo-A",
+      "numero": 33,
+      "temas": ["3.B.14"],
+      "enunciado": "Según el modelo de carteras de Branson y McKinnon:",
+      "opciones": {
+        "a": "Una política monetaria contractiva provoca una disminución del tipo de interés y una apreciación de la moneda nacional.",
+        "b": "Una política monetaria expansiva provoca una disminución del tipo de interés y una depreciación de la moneda nacional.",
+        "c": "Una política fiscal expansiva provoca un aumento del tipo de interés y una depreciación de la moneda nacional.",
+        "d": "Una política fiscal expansiva provoca una disminución del tipo de interés y un efecto ambiguo sobre el tipo de cambio."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 31,
+      "examen": "2025-marzo-A",
+      "numero": 34,
+      "temas": ["3.B.12", "3.A.32"],
+      "enunciado": "Considere una economía abierta descrita por el modelo IS-LM con movilidad perfecta de capital. A partir de una situación inicial de equilibrio, se origina un aumento del tipo de interés del resto del mundo. Señale la opción CORRECTA:",
+      "opciones": {
+        "a": "Con tipo de cambio flexible, caen el consumo y la inversión.",
+        "b": "Con tipo de cambio fijo, cae el consumo y aumentan las exportaciones netas.",
+        "c": "Con tipo de cambio flexible aumenta la renta, mientras que con tipo de cambio fijo la renta permanece constante.",
+        "d": "Con tipo de cambio fijo, la inversión no varía."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 32,
+      "examen": "2025-marzo-A",
+      "numero": 35,
+      "temas": ["3.B.16", "3.B.45"],
+      "enunciado": "El \"nuevo trilema imposible\" de Pisani-Ferry (2012) establece que, en el ámbito de la Zona Euro:",
+      "opciones": {
+        "a": "No se puede lograr una Unión Fiscal plena si existe interdependencia entre la banca y el Sector Público.",
+        "b": "Se puede lograr una Unión Fiscal plena si existe financiación no monetaria de la deuda pública e interdependencia entre la banca y el Sector Público.",
+        "c": "Se puede lograr una Unión Fiscal plena si existe no corresponsabilidad de la deuda pública y financiación no monetaria de la deuda pública.",
+        "d": "Todas son correctas."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 33,
+      "examen": "2025-marzo-A",
+      "numero": 36,
+      "temas": ["3.B.23"],
+      "enunciado": "En el método de valoración de activos CAPM (Capital Asset Pricing Model), la Línea del Mercado de Títulos (SML, por sus siglas en inglés):",
+      "opciones": {
+        "a": "Tiene en cuenta el riesgo total de las carteras.",
+        "b": "Su pendiente es la prima de riesgo del mercado.",
+        "c": "Aquellos activos situados por encima de la SML estarán sobrevaluados.",
+        "d": "El inversor buscará que la diferencia entre el retorno esperado del activo y la SML sea inferior a 0."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 34,
+      "examen": "2025-marzo-A",
+      "numero": 37,
+      "temas": ["3.B.24"],
+      "enunciado": "Suponga que compra el siguiente bono en el mercado: Valor nominal: 1.000 euros. Tasa de cupón: 8% anual. Frecuencia de pagos de cupones: Semestral. Plazo: 4 años. Tipo de interés de mercado (rendimiento a vencimiento, YTM) en el momento de la compra: 6% anual. Si al final del segundo año, el tipo de interés de mercado cambia a 10% anual capitalizado semestralmente. ¿cuál sería el precio de mercado del bono al final del segundo año, después de haberse realizado el cuarto pago del cupón?",
+      "opciones": {
+        "a": "965 €",
+        "b": "1020 €",
+        "c": "990 €",
+        "d": "1060 €"
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 35,
+      "examen": "2025-marzo-A",
+      "numero": 38,
+      "temas": ["3.B.27"],
+      "enunciado": "¿Qué bancos españoles son considerados por el Financial Stability Board como Bancos de Importancia Sistémica Global (G-SIB, por sus siglas en inglés) en la actualidad?",
+      "opciones": {
+        "a": "Ninguno.",
+        "b": "Banco Santander.",
+        "c": "Banco Santander y BBVA.",
+        "d": "Banco Santander, BBVA y Caixabank."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 36,
+      "examen": "2025-marzo-A",
+      "numero": 39,
+      "temas": ["3.B.20"],
+      "enunciado": "Señale la afirmación CORRECTA con respecto a las contribuciones de John Maynard Keynes al debate sobre las reparaciones de guerra de Alemania después de la Primera Guerra Mundial:",
+      "opciones": {
+        "a": "El debate Keynes-Ohlin se centró en el problema presupuestario: es decir, en si Alemania podría generar los fondos suficientes para hacer frente a las compensaciones de guerra. En él, Keynes defendió la incapacidad de Alemania de generar dichos fondos en las condiciones propuestas.",
+        "b": "El debate Keynes-Ohlin se centró en el problema presupuestario: es decir, en si Alemania podría generar los fondos suficientes para hacer frente a las compensaciones de guerra. En él, Keynes defendió la capacidad de Alemania de generar dichos fondos en las condiciones propuestas.",
+        "c": "El debate Keynes-Ohlin se centró en el problema de la transferencia: es decir, en si Alemania sería capaz de transferir el dinero a los vencedores. En él, Keynes defendió que era virtualmente imposible porque exigiría una fuerte deflación en Alemania con riesgo de graves consecuencias económicas y políticas.",
+        "d": "El debate Keynes-Ohlin se centró en el problema presupuestario y de transferencias. En él, Keynes defendió que, aunque los efectos-renta derivados de los pagos de las reparaciones evitarían los posibles efectos deflacionarios, Alemania no podría generar los recursos suficientes para hacer frente a los pagos por reparaciones de guerra."
+      },
+      "respuesta": ["c"],
+      "oficial": true
+    },
+    {
+      "id": 37,
+      "examen": "2025-marzo-A",
+      "numero": 40,
+      "temas": ["3.B.22"],
+      "enunciado": "En relación con los recursos del Fondo Monetario Internacional, señale la respuesta INCORRECTA:",
+      "opciones": {
+        "a": "Las cuotas son la principal fuente de recursos del FMI. La Decimosexta revisión de cuotas concluyó en diciembre de 2023 y en ésta, la Junta de Gobernadores del FMI aprobó un aumento del 50% de las cuotas de los países miembros.",
+        "b": "Los Nuevos Acuerdos para la Obtención de Préstamos (NAP) son un conjunto permanente de acuerdos de crédito en virtud de los cuales los participantes (únicamente países miembros), se comprometen a brindar recursos complementarios al FMI.",
+        "c": "En enero de 2021, entró en vigor una reforma de los NAP que prácticamente duplicó su tamaño, a 361.000 millones de Derechos Especiales de Giro, entre 2021 y 2025.",
+        "d": "Los acuerdos bilaterales de préstamo (ABP) constituyen una tercera fuente de recursos, cuya activación requiere el apoyo del 85% de los acreedores con derecho a voto. Desde el inicio de la Crisis Financiera Global de 2007, el FMI ha celebrado varias rondas de ABP para atender las necesidades de financiación de sus países miembros."
+      },
+      "respuesta": ["b"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 38,
+      "examen": "2025-marzo-A",
+      "numero": 41,
+      "temas": ["3.B.34"],
+      "enunciado": "¿Cuál de los siguientes Anexos NO se incluye en el Acuerdo General sobre el Comercio de Servicios (GATS)?",
+      "opciones": {
+        "a": "Anexo sobre Servicios Financieros.",
+        "b": "Anexo sobre Servicios de Transporte Aéreo.",
+        "c": "Anexo sobre Telecomunicaciones.",
+        "d": "Anexo sobre Servicios Profesionales."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 39,
+      "examen": "2025-marzo-A",
+      "numero": 42,
+      "temas": ["3.B.35"],
+      "enunciado": "La Asociación Económica Integral Regional (RCEP) es:",
+      "opciones": {
+        "a": "Una Zona Comercial Preferente",
+        "b": "Un Acuerdo de Libre Comercio.",
+        "c": "Una Unión Aduanera.",
+        "d": "Un Mercado Común."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 40,
+      "examen": "2025-marzo-A",
+      "numero": 43,
+      "temas": ["3.B.19"],
+      "enunciado": "En relación con el enfoque de los dos pilares de la OCDE sobre la reforma del sistema tributario internacional, señale la afirmación CORRECTA:",
+      "opciones": {
+        "a": "El Pilar 1 de la reforma propone un sistema en el que los países en desarrollo tienen derecho a gravar una porción de las ganancias obtenidas en sus territorios por empresas multinacionales, independientemente de si tienen presencia física en el país, con un límite máximo del 25 % de los beneficios globales de estas empresas.",
+        "b": "El Pilar 2 introduce un tipo impositivo mínimo global del 15 %, que los países deben aplicar a las multinacionales, para evitar que estas empresas utilicen estrategias de planificación fiscal agresiva y aprovechen los paraísos fiscales, asegurando una tributación mínima adecuada en todos los países.",
+        "c": "El Pilar 1 de la reforma busca limitar la capacidad de los países para imponer impuestos a las empresas digitales, y el Pilar 2 introduce una asignación de impuestos sobre el comercio digital basada en el volumen de ventas en línea de las empresas.",
+        "d": "En el marco del Pilar 2, los países deben establecer un tipo impositivo global mínimo del 25 %, mientras que el Pilar 1 se enfoca en establecer un sistema de distribución de derechos de imposición para los países con una presencia física significativa de las empresas en cuestión."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 41,
+      "examen": "2025-marzo-A",
+      "numero": 44,
+      "temas": ["3.B.31"],
+      "enunciado": "¿Cuál de los siguientes constituye un nuevo compromiso resultante de la COP29, realizada en Bakú en noviembre de 2024?",
+      "opciones": {
+        "a": "Acuerdo entre todos los países para mantener el calentamiento del planeta por debajo del 2°C hasta el final del siglo y desarrollar políticas para limitar ese aumento hasta el 1,5°C.",
+        "b": "Triplicar la financiación a los países en desarrollo, desde 100 mil millones de dólares anuales hasta alcanzar los 300 mil millones de dólares en 2035, para la lucha contra el cambio climático.",
+        "c": "El compromiso de los países por la reducción del carbón como fuente de energía y la eliminación gradual de los subsidios a los combustibles fósiles.",
+        "d": "Lanzamiento del Global Methane Pledge (Compromiso Global por el Metano), cuyo objetivo es limitar la emisión de metano en un 30% de aquí a 2030."
+      },
+      "respuesta": ["b"],
+      "oficial": true
+    },
+    {
+      "id": 42,
+      "examen": "2025-marzo-A",
+      "numero": 45,
+      "temas": ["3.B.36"],
+      "enunciado": "En relación con los instrumentos jurídicos de derecho derivado de la UE, señale la afirmación INCORRECTA:",
+      "opciones": {
+        "a": "El Reglamento es la principal fuente de derecho derivado de la UE, tiene alcance general y a través de éste, la regulación nacional es sustituida por la de la UE sin necesidad de trasposición alguna.",
+        "b": "La Decisión es obligatoria en todos sus elementos. Cuando designe destinatarios, sólo será obligatoria para éstos.",
+        "c": "Si una Directiva concede derechos específicos a los trabajadores y un Estado miembro no la ha traspuesto correctamente, el trabajador puede invocar la Directiva directamente ante un tribunal nacional para reclamar esos derechos, tanto contra una entidad estatal como contra su empleador privado.",
+        "d": "La Recomendación es una de las dos formas de actos no vinculantes de la UE, y usada por el Consejo en los procedimientos de déficit excesivo para recomendar a un Estado miembro una trayectoria de corrección del déficit."
+      },
+      "respuesta": ["c"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 43,
+      "examen": "2025-marzo-A",
+      "numero": 46,
+      "temas": ["3.B.39"],
+      "enunciado": "La \"Brújula de la Competitividad\" de la nueva Comisión Europea se basa en tres ámbitos de actuación principales, a partir del informe Draghi:",
+      "opciones": {
+        "a": "Innovación, descarbonización y seguridad.",
+        "b": "Sostenibilidad, productividad y armonización.",
+        "c": "Trabajos, Medio Ambiente y resiliencia.",
+        "d": "Cohesión, transición limpia y soberanía."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 44,
+      "examen": "2025-marzo-A",
+      "numero": 47,
+      "temas": ["3.B.38"],
+      "enunciado": "En relación con la Política Agraria Común (PAC) ¿cuál de las siguientes afirmaciones es CORRECTA?",
+      "opciones": {
+        "a": "La reforma de la PAC 2021-2027 ha incrementado el porcentaje destinado a la sostenibilidad ambiental, con el 40 % del presupuesto total de la PAC reservado para medidas relacionadas con el clima y la biodiversidad, incluyendo los eco-regímenes.",
+        "b": "En el marco de la reforma de la PAC 2021-2027, los eco-regímenes han sido diseñados para representar sólo el 5 % del total de los pagos directos de la PAC, limitando su alcance y aplicabilidad a una pequeña fracción de los agricultores, excluyendo a las grandes explotaciones.",
+        "c": "El presupuesto total de la PAC 2021-2027 es de 385.000 millones de euros, pero se ha recortado significativamente la financiación de desarrollo rural, reduciéndola al 25 % de los fondos totales de la PAC, frente al 30 % en el periodo anterior.",
+        "d": "La reforma de la PAC 2021-2027 ha establecido un porcentaje mínimo de pagos directos para los agricultores jóvenes que asciende al 5% del total de los pagos directos de la PAC, con el objetivo de mejorar la competitividad de las nuevas generaciones de agricultores."
+      },
+      "respuesta": ["a"],
+      "oficial": true
+    },
+    {
+      "id": 45,
+      "examen": "2025-marzo-A",
+      "numero": 48,
+      "temas": ["3.B.41"],
+      "enunciado": "En relación con la Inversión Directa Extranjera en la Unión Europea, señale la respuesta CORRECTA:",
+      "opciones": {
+        "a": "Los Estados miembros pueden limitarla por motivos de seguridad o de orden público, incluyendo las inversiones intra-europeas.",
+        "b": "Forma parte de la Política Comercial Común de la Unión Europea.",
+        "c": "Existe un mecanismo de cooperación entre Estados miembros para detectar riesgos derivados de inversiones concretas.",
+        "d": "Todas son correctas."
+      },
+      "respuesta": ["d"],
+      "oficial": true
+    },
+    {
+      "id": 46,
+      "examen": "2025-marzo-A",
+      "numero": 49,
+      "temas": ["3.B.42"],
+      "enunciado": "La Unión Europea ha finalizado recientemente las negociaciones para un acuerdo de asociación entre la Unión y Mercosur. Señale la respuesta INCORRECTA:",
+      "opciones": {
+        "a": "El acuerdo supone la reducción o eliminación de aranceles para empresas exportadoras de la Unión en países Mercosur.",
+        "b": "Las empresas de la Unión Europea podrán participar en licitaciones públicas en los países Mercosur.",
+        "c": "El acuerdo plantea compromisos explícitos para combatir el cambio climático y la deforestación.",
+        "d": "El acuerdo refuerza la cooperación en áreas como la ciberseguridad."
+      },
+      "respuesta": ["d"],
+      "tipo_pregunta": "incorrecta",
+      "oficial": true
+    },
+    {
+      "id": 47,
+      "examen": "2025-marzo-A",
+      "numero": 50,
+      "temas": ["3.B.43"],
+      "enunciado": "De acuerdo con la revisión del marco operativo para la aplicación de la política monetaria, anunciada en marzo de 2024 por el Consejo de Gobierno del Banco Central Europeo, la orientación de la política monetaria se guiará a través del tipo de interés de:",
+      "opciones": {
+        "a": "La facilidad de depósito.",
+        "b": "La facilidad de crédito.",
+        "c": "Las operaciones principales de financiación.",
+        "d": "Ninguno de los anteriores."
       },
       "respuesta": ["a"],
       "oficial": true
