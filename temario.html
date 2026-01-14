@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="../favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="icon" href="favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="search-styles.css">
 </head>
 <body>
     <header class="site-header">
@@ -19,14 +19,60 @@
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
+<!-- BANNER DEL CURSO -->
+<!-- Inserta este código DESPUÉS del </header> y ANTES del <nav class="main-nav"> -->
+
+<div class="course-banner" id="course-banner">
+    <div class="course-banner-content">
+        <div class="course-icon">📢</div>
+        
+        <div class="course-info">
+            <h3 class="course-title">INTENSIVO TEST Y COYUNTURA 2026</h3>
+            
+            <div class="course-sections">
+                <div class="course-section">
+                    <h4>✅ Intensivo de coyuntura</h4>
+                    <ul>
+                        <li>Dictamen de coyuntura de 2 países</li>
+                        <li>Parte teórica en vídeo + simulacros</li>
+                        <li>Preparadores: Juan Luis Cordero y Víctor Gutiérrez (promociones 2022 y 2024)</li>
+                    </ul>
+                </div>
+                <div class="course-section">
+                    <h4>✅ Intensivo de test</h4>
+                    <ul>
+                        <li>4 simulacros tipo test con preguntas propias</li>
+                        <li>Preparadores: Luis de Fuentes y Juan Luis Cordero (promoción 2022)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="course-actions">
+                <a href="https://docs.google.com/document/d/11OcJBL2BPtYyMYO2_2-AP2KD2VbrvJFOK49zFi_dUoo/edit?tab=t.0" target="_blank" class="course-btn">
+                    ℹ️ Más información
+                </a>
+                <div class="course-contact">
+                    <strong>📩 Contacto WhatsApp:</strong> Víctor: 638224520 | Juan Luis: 644882469
+                </div>
+            </div>
+        </div>
+        
+        <button class="course-close" onclick="closeCourse Banner()" aria-label="Cerrar anuncio">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+</div>
     <nav class="main-nav">
         <div class="nav-container">
             <ul class="nav-list">
-                <li><a href="../index.html">INTRODUCCIÓN</a></li>
-                <li><a href="index.html" class="active">TEMARIO</a></li>
-                <li><a href="../organizacion.html">ORGANIZACIÓN</a></li>
-                <li><a href="../enlaces.html">ENLACES</a></li>
-                <li><a href="../sobre-mi.html">SOBRE MÍ</a></li>
+                <li><a href="index.html">INTRODUCCIÓN</a></li>
+                <li><a href="temario.html" class="active">TEMARIO</a></li>
+                <li><a href="organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="enlaces.html">ENLACES</a></li>
+                <li><a href="sobre-mi.html">SOBRE MÍ</a></li>
             </ul>
         </div>
     </nav>
@@ -45,35 +91,35 @@
                 </div>
                 <div class="cards-grid">
                     <div class="tema-card">
-                        <a href="primer-ejercicio.html">
+                        <a href="temario/primer-ejercicio.html">
                             <span class="tema-card-number">Ejercicio I</span>
                             <h3 class="tema-card-title">Primer ejercicio</h3>
                             <p class="tema-card-desc">Test y Dictamen de coyuntura</p>
                         </a>
                     </div>
                     <div class="tema-card">
-                        <a href="segundo-ejercicio.html">
+                        <a href="temario/segundo-ejercicio.html">
                             <span class="tema-card-number">Ejercicio II</span>
                             <h3 class="tema-card-title">Segundo ejercicio</h3>
                             <p class="tema-card-desc">Idiomas: Inglés (obligatorio) y otro a elegir</p>
                         </a>
                     </div>
                     <div class="tema-card">
-                        <a href="tercer-ejercicio.html">
+                        <a href="temario/tercer-ejercicio.html">
                             <span class="tema-card-number">Ejercicio III</span>
                             <h3 class="tema-card-title">Tercer ejercicio</h3>
                             <p class="tema-card-desc">Economía General y Economía Internacional</p>
                         </a>
                     </div>
                     <div class="tema-card">
-                        <a href="cuarto-ejercicio.html">
+                        <a href="temario/cuarto-ejercicio.html">
                             <span class="tema-card-number">Ejercicio IV</span>
                             <h3 class="tema-card-title">Cuarto ejercicio</h3>
                             <p class="tema-card-desc">Economía Española y Hacienda Pública</p>
                         </a>
                     </div>
                     <div class="tema-card">
-                        <a href="quinto-ejercicio.html">
+                        <a href="temario/quinto-ejercicio.html">
                             <span class="tema-card-number">Ejercicio V</span>
                             <h3 class="tema-card-title">Quinto ejercicio</h3>
                             <p class="tema-card-desc">Marketing, Econometría y Derecho</p>
@@ -88,7 +134,7 @@
             <p>Víctor Gutiérrez Marcos</p>
         </div>
     </footer>
-    <script src="../search-engine.js"></script>
-    <script src="../search-ui.js"></script>
+    <script src="search-engine.js"></script>
+    <script src="search-ui.js"></script>
 </body>
 </html>
