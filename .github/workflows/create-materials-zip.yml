@@ -42,7 +42,9 @@ jobs:
         
         # Eliminar archivos web
         find . -name "*.html" -type f -delete 2>/dev/null || true
+        find . -name "*.webmanifest" -type f -delete 2>/dev/null || true
         find . -name "*.css" -type f -delete 2>/dev/null || true
+        find . -name "*.ico" -type f -delete 2>/dev/null || true
         find . -name "*.svg" -type f -delete 2>/dev/null || true
         find . -name "*.png" -type f -delete 2>/dev/null || true
         find . -name "*.jpg" -type f -delete 2>/dev/null || true
