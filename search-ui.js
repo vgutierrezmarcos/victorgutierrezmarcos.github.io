@@ -1,6 +1,6 @@
 /**
  * Interfaz de búsqueda - UI y handlers
- * Versión mejorada con soporte para 4º ejercicio
+ * Versión mejorada con iconos SVG y mejor diseño
  */
 
 class SearchUI {
@@ -14,6 +14,53 @@ class SearchUI {
         this.selectedIndex = -1;
     }
 
+    // Iconos SVG para cada tipo de contenido
+    icons = {
+        tema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>`,
+        subtema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>`,
+        ejercicio: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>`,
+        page: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>`,
+        pdf: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <path d="M9 15v-2h2a1 1 0 1 1 0 2H9z"></path>
+        </svg>`,
+        excel: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="3" y1="15" x2="21" y2="15"></line>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <line x1="15" y1="3" x2="15" y2="21"></line>
+        </svg>`,
+        word: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>`,
+        presentacion: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>`
+    };
+
     async initialize() {
         // Inicializar el motor de búsqueda
         const initialized = await searchEngine.initialize();
@@ -22,8 +69,323 @@ class SearchUI {
             return;
         }
 
+        this.injectStyles();
         this.createSearchUI();
         this.attachEventListeners();
+    }
+
+    injectStyles() {
+        const styleId = 'search-ui-styles';
+        if (document.getElementById(styleId)) return;
+
+        const styles = document.createElement('style');
+        styles.id = styleId;
+        styles.textContent = `
+            /* Overlay */
+            .search-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(4px);
+                z-index: 9999;
+                display: none;
+                align-items: flex-start;
+                justify-content: center;
+                padding-top: 10vh;
+            }
+
+            .search-overlay.active {
+                display: flex;
+            }
+
+            /* Modal */
+            .search-modal {
+                background: #fff;
+                border-radius: 12px;
+                width: 90%;
+                max-width: 640px;
+                max-height: 70vh;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                overflow: hidden;
+            }
+
+            /* Header */
+            .search-header {
+                padding: 16px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .search-input-container {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: #f9fafb;
+                border: 2px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 12px 16px;
+                transition: border-color 0.2s;
+            }
+
+            .search-input-container:focus-within {
+                border-color: #6366f1;
+                background: #fff;
+            }
+
+            .search-icon {
+                width: 20px;
+                height: 20px;
+                color: #9ca3af;
+                flex-shrink: 0;
+            }
+
+            .search-input {
+                flex: 1;
+                border: none;
+                background: transparent;
+                font-size: 16px;
+                color: #1f2937;
+                outline: none;
+            }
+
+            .search-input::placeholder {
+                color: #9ca3af;
+            }
+
+            .search-close {
+                background: none;
+                border: none;
+                padding: 4px;
+                cursor: pointer;
+                color: #9ca3af;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s;
+            }
+
+            .search-close:hover {
+                background: #f3f4f6;
+                color: #4b5563;
+            }
+
+            .search-close svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .search-tips {
+                margin-top: 8px;
+                font-size: 13px;
+                color: #6b7280;
+            }
+
+            /* Results container */
+            .search-results-container {
+                flex: 1;
+                overflow-y: auto;
+                padding: 8px;
+            }
+
+            /* Empty state */
+            .search-empty {
+                padding: 24px 16px;
+                color: #6b7280;
+                font-size: 14px;
+            }
+
+            .search-empty p {
+                margin: 0 0 16px 0;
+            }
+
+            .search-suggestions {
+                background: #f9fafb;
+                border-radius: 8px;
+                padding: 16px;
+            }
+
+            .search-suggestions p {
+                margin: 0 0 8px 0;
+                font-weight: 600;
+                color: #374151;
+            }
+
+            .search-suggestions ul {
+                margin: 0;
+                padding-left: 20px;
+            }
+
+            .search-suggestions li {
+                margin: 6px 0;
+            }
+
+            .search-suggestions code {
+                background: #e5e7eb;
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-size: 13px;
+                color: #4b5563;
+            }
+
+            /* No results */
+            .search-no-results {
+                padding: 32px 16px;
+                text-align: center;
+                color: #6b7280;
+            }
+
+            .search-no-results p {
+                margin: 0 0 8px 0;
+            }
+
+            .search-no-results-hint {
+                font-size: 13px;
+                color: #9ca3af;
+            }
+
+            /* Result groups */
+            .search-result-group {
+                margin-bottom: 8px;
+            }
+
+            .search-result-group-title {
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #6b7280;
+                padding: 8px 12px 4px;
+            }
+
+            /* Result items */
+            .search-result-item {
+                border-radius: 8px;
+                transition: background-color 0.15s;
+            }
+
+            .search-result-item:hover,
+            .search-result-item.selected {
+                background: #f3f4f6;
+            }
+
+            .search-result-item.unavailable {
+                opacity: 0.5;
+            }
+
+            .search-result-link {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 10px 12px;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .search-result-icon {
+                flex-shrink: 0;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f3f4f6;
+                border-radius: 8px;
+                color: #6366f1;
+            }
+
+            .search-result-item:hover .search-result-icon,
+            .search-result-item.selected .search-result-icon {
+                background: #e0e7ff;
+            }
+
+            .search-result-content {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .search-result-title {
+                font-size: 14px;
+                font-weight: 500;
+                color: #1f2937;
+                margin-bottom: 2px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .search-result-title mark {
+                background: #fef08a;
+                color: inherit;
+                padding: 0 2px;
+                border-radius: 2px;
+            }
+
+            .search-result-subtitle {
+                font-size: 12px;
+                color: #6b7280;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .badge-unavailable {
+                font-size: 10px;
+                font-weight: 500;
+                background: #fef2f2;
+                color: #dc2626;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+
+            /* Footer */
+            .search-footer {
+                padding: 12px 16px;
+                border-top: 1px solid #e5e7eb;
+                background: #f9fafb;
+            }
+
+            .search-shortcuts {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                font-size: 12px;
+                color: #6b7280;
+            }
+
+            .search-shortcuts kbd {
+                display: inline-block;
+                padding: 2px 6px;
+                background: #fff;
+                border: 1px solid #d1d5db;
+                border-radius: 4px;
+                font-family: inherit;
+                font-size: 11px;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            }
+
+            /* Responsive */
+            @media (max-width: 640px) {
+                .search-overlay {
+                    padding-top: 5vh;
+                }
+                
+                .search-modal {
+                    width: 95%;
+                    max-height: 80vh;
+                }
+
+                .search-shortcuts {
+                    display: none;
+                }
+            }
+        `;
+        document.head.appendChild(styles);
     }
 
     createSearchUI() {
@@ -55,7 +417,7 @@ class SearchUI {
                         </button>
                     </div>
                     <div class="search-tips">
-                        <span class="search-tip">💡 Escribe el número del tema (ej: "4A1", "3.B.5") o palabras clave</span>
+                        Escribe el número del tema (ej: "4A1", "3.B.5") o palabras clave
                     </div>
                 </div>
                 <div class="search-results-container">
@@ -120,7 +482,7 @@ class SearchUI {
             clearTimeout(this.debounceTimer);
             this.debounceTimer = setTimeout(() => {
                 this.performSearch(e.target.value);
-            }, 200); // Reducido de 300ms a 200ms para mejor respuesta
+            }, 200);
         });
 
         // Atajos de teclado
@@ -162,6 +524,8 @@ class SearchUI {
         this.searchOverlay.classList.add('active');
         this.searchInput.focus();
         document.body.style.overflow = 'hidden';
+        // Mostrar estado inicial
+        this.searchResults.innerHTML = this.renderEmptyState();
     }
 
     closeSearch() {
@@ -208,7 +572,7 @@ class SearchUI {
             <div class="search-empty">
                 <p>Escribe al menos 2 caracteres para buscar...</p>
                 <div class="search-suggestions">
-                    <p><strong>Sugerencias:</strong></p>
+                    <p>Sugerencias:</p>
                     <ul>
                         <li>Número de tema: <code>4A1</code>, <code>3.B.5</code>, <code>4B12</code></li>
                         <li>Palabras clave: <code>balanza de pagos</code>, <code>imposición</code></li>
@@ -308,17 +672,7 @@ class SearchUI {
     }
 
     getTypeIcon(type) {
-        const icons = {
-            'tema': '📄',
-            'subtema': '📑',
-            'ejercicio': '📚',
-            'page': '📖',
-            'pdf': '📕',
-            'excel': '📊',
-            'word': '📝',
-            'presentacion': '🎯'
-        };
-        return icons[type] || '📄';
+        return this.icons[type] || this.icons.tema;
     }
 
     getSubtitle(item) {
