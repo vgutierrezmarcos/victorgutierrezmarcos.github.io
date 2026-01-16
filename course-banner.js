@@ -3,6 +3,8 @@
  * Coloca este código en un archivo course-banner.js o al final del body
  */
 
+localStorage.removeItem('courseBannerClosed');
+
 // Función para cerrar el banner
 function closeCourseBanner() {
     const banner = document.getElementById('course-banner');
