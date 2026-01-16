@@ -1,6 +1,6 @@
 /**
  * Interfaz de búsqueda - UI y handlers
- * Versión mejorada con iconos SVG y mejor diseño
+ * Versión con botones de sugerencias e iconos coloridos
  */
 
 class SearchUI {
@@ -14,52 +14,79 @@ class SearchUI {
         this.selectedIndex = -1;
     }
 
-    // Iconos SVG para cada tipo de contenido
+    // Iconos SVG coloridos para cada tipo de contenido
     icons = {
-        tema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        tema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
             <line x1="16" y1="13" x2="8" y2="13"></line>
             <line x1="16" y1="17" x2="8" y2="17"></line>
             <polyline points="10 9 9 9 8 9"></polyline>
         </svg>`,
-        subtema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        subtema: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
         </svg>`,
-        ejercicio: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        ejercicio: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
         </svg>`,
-        page: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        page: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>`,
-        pdf: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        pdf: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
-            <path d="M9 15v-2h2a1 1 0 1 1 0 2H9z"></path>
+            <path d="M10 12v6"></path>
+            <path d="M14 12v6"></path>
+            <path d="M10 12h4"></path>
         </svg>`,
-        excel: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        excel: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="3" y1="9" x2="21" y2="9"></line>
             <line x1="3" y1="15" x2="21" y2="15"></line>
             <line x1="9" y1="3" x2="9" y2="21"></line>
             <line x1="15" y1="3" x2="15" y2="21"></line>
         </svg>`,
-        word: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        word: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
             <line x1="16" y1="13" x2="8" y2="13"></line>
             <line x1="16" y1="17" x2="8" y2="17"></line>
         </svg>`,
-        presentacion: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        presentacion: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
             <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>`,
+        // Iconos para sugerencias
+        numero: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 12h8"></path>
+            <path d="M12 8v8"></path>
+        </svg>`,
+        buscar: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>`,
+        carpeta: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
         </svg>`
     };
+
+    // Sugerencias predefinidas para mostrar al abrir
+    suggestions = [
+        { label: '4A1', query: '4A1', icon: 'numero', color: '#3b82f6' },
+        { label: '3B5', query: '3B5', icon: 'numero', color: '#8b5cf6' },
+        { label: '4B12', query: '4B12', icon: 'numero', color: '#10b981' },
+        { label: 'Balanza de pagos', query: 'balanza de pagos', icon: 'buscar', color: '#f59e0b' },
+        { label: 'Imposición', query: 'imposición', icon: 'buscar', color: '#ef4444' },
+        { label: 'Mercado de trabajo', query: 'mercado de trabajo', icon: 'buscar', color: '#06b6d4' },
+        { label: 'Cuarto ejercicio', query: 'cuarto ejercicio', icon: 'carpeta', color: '#ec4899' },
+        { label: 'Organización', query: 'organización', icon: 'carpeta', color: '#84cc16' }
+    ];
 
     async initialize() {
         // Inicializar el motor de búsqueda
@@ -104,7 +131,7 @@ class SearchUI {
             /* Modal */
             .search-modal {
                 background: #fff;
-                border-radius: 12px;
+                border-radius: 16px;
                 width: 90%;
                 max-width: 640px;
                 max-height: 70vh;
@@ -116,7 +143,7 @@ class SearchUI {
 
             /* Header */
             .search-header {
-                padding: 16px;
+                padding: 20px;
                 border-bottom: 1px solid #e5e7eb;
             }
 
@@ -126,14 +153,15 @@ class SearchUI {
                 gap: 12px;
                 background: #f9fafb;
                 border: 2px solid #e5e7eb;
-                border-radius: 8px;
-                padding: 12px 16px;
-                transition: border-color 0.2s;
+                border-radius: 12px;
+                padding: 14px 18px;
+                transition: all 0.2s;
             }
 
             .search-input-container:focus-within {
                 border-color: #6366f1;
                 background: #fff;
+                box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
             }
 
             .search-icon {
@@ -159,10 +187,10 @@ class SearchUI {
             .search-close {
                 background: none;
                 border: none;
-                padding: 4px;
+                padding: 6px;
                 cursor: pointer;
                 color: #9ca3af;
-                border-radius: 4px;
+                border-radius: 6px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -179,62 +207,64 @@ class SearchUI {
                 height: 20px;
             }
 
-            .search-tips {
-                margin-top: 8px;
-                font-size: 13px;
-                color: #6b7280;
-            }
-
             /* Results container */
             .search-results-container {
                 flex: 1;
                 overflow-y: auto;
+                padding: 12px;
+            }
+
+            /* Suggestions Grid */
+            .search-suggestions-grid {
                 padding: 8px;
             }
 
-            /* Empty state */
-            .search-empty {
-                padding: 24px 16px;
-                color: #6b7280;
-                font-size: 14px;
-            }
-
-            .search-empty p {
-                margin: 0 0 16px 0;
-            }
-
-            .search-suggestions {
-                background: #f9fafb;
-                border-radius: 8px;
-                padding: 16px;
-            }
-
-            .search-suggestions p {
-                margin: 0 0 8px 0;
+            .search-suggestions-title {
+                font-size: 12px;
                 font-weight: 600;
-                color: #374151;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #6b7280;
+                margin-bottom: 12px;
+                padding-left: 4px;
             }
 
-            .search-suggestions ul {
-                margin: 0;
-                padding-left: 20px;
+            .search-suggestions-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
             }
 
-            .search-suggestions li {
-                margin: 6px 0;
-            }
-
-            .search-suggestions code {
-                background: #e5e7eb;
-                padding: 2px 6px;
-                border-radius: 4px;
+            .search-suggestion-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 8px 14px;
+                background: #f3f4f6;
+                border: 1px solid #e5e7eb;
+                border-radius: 20px;
                 font-size: 13px;
-                color: #4b5563;
+                font-weight: 500;
+                color: #374151;
+                cursor: pointer;
+                transition: all 0.15s;
+            }
+
+            .search-suggestion-btn:hover {
+                background: #e5e7eb;
+                border-color: #d1d5db;
+                transform: translateY(-1px);
+            }
+
+            .search-suggestion-btn svg {
+                width: 14px;
+                height: 14px;
+                flex-shrink: 0;
             }
 
             /* No results */
             .search-no-results {
-                padding: 32px 16px;
+                padding: 40px 16px;
                 text-align: center;
                 color: #6b7280;
             }
@@ -259,12 +289,12 @@ class SearchUI {
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
                 color: #6b7280;
-                padding: 8px 12px 4px;
+                padding: 8px 12px 6px;
             }
 
             /* Result items */
             .search-result-item {
-                border-radius: 8px;
+                border-radius: 10px;
                 transition: background-color 0.15s;
             }
 
@@ -288,19 +318,27 @@ class SearchUI {
 
             .search-result-icon {
                 flex-shrink: 0;
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: #f3f4f6;
-                border-radius: 8px;
-                color: #6366f1;
+                background: #f8fafc;
+                border-radius: 10px;
+                border: 1px solid #e2e8f0;
             }
+
+            .search-result-icon.tema { background: #eff6ff; border-color: #bfdbfe; }
+            .search-result-icon.subtema { background: #f5f3ff; border-color: #ddd6fe; }
+            .search-result-icon.ejercicio { background: #ecfdf5; border-color: #a7f3d0; }
+            .search-result-icon.pdf { background: #fef2f2; border-color: #fecaca; }
+            .search-result-icon.excel { background: #f0fdf4; border-color: #bbf7d0; }
+            .search-result-icon.word { background: #eff6ff; border-color: #bfdbfe; }
+            .search-result-icon.presentacion { background: #fffbeb; border-color: #fde68a; }
 
             .search-result-item:hover .search-result-icon,
             .search-result-item.selected .search-result-icon {
-                background: #e0e7ff;
+                border-color: currentColor;
             }
 
             .search-result-content {
@@ -339,20 +377,20 @@ class SearchUI {
                 font-weight: 500;
                 background: #fef2f2;
                 color: #dc2626;
-                padding: 2px 6px;
-                border-radius: 4px;
+                padding: 2px 8px;
+                border-radius: 10px;
             }
 
             /* Footer */
             .search-footer {
-                padding: 12px 16px;
+                padding: 12px 20px;
                 border-top: 1px solid #e5e7eb;
                 background: #f9fafb;
             }
 
             .search-shortcuts {
                 display: flex;
-                gap: 16px;
+                gap: 20px;
                 justify-content: center;
                 font-size: 12px;
                 color: #6b7280;
@@ -378,10 +416,16 @@ class SearchUI {
                 .search-modal {
                     width: 95%;
                     max-height: 80vh;
+                    border-radius: 12px;
                 }
 
                 .search-shortcuts {
                     display: none;
+                }
+
+                .search-suggestion-btn {
+                    padding: 6px 12px;
+                    font-size: 12px;
                 }
             }
         `;
@@ -415,9 +459,6 @@ class SearchUI {
                                 <line x1="6" y1="6" x2="18" y2="18"/>
                             </svg>
                         </button>
-                    </div>
-                    <div class="search-tips">
-                        Escribe el número del tema (ej: "4A1", "3.B.5") o palabras clave
                     </div>
                 </div>
                 <div class="search-results-container">
@@ -524,8 +565,9 @@ class SearchUI {
         this.searchOverlay.classList.add('active');
         this.searchInput.focus();
         document.body.style.overflow = 'hidden';
-        // Mostrar estado inicial
-        this.searchResults.innerHTML = this.renderEmptyState();
+        // Mostrar sugerencias iniciales
+        this.searchResults.innerHTML = this.renderSuggestions();
+        this.attachSuggestionListeners();
     }
 
     closeSearch() {
@@ -559,7 +601,8 @@ class SearchUI {
         this.selectedIndex = -1;
 
         if (!query || query.trim().length < 2) {
-            this.searchResults.innerHTML = this.renderEmptyState();
+            this.searchResults.innerHTML = this.renderSuggestions();
+            this.attachSuggestionListeners();
             return;
         }
 
@@ -567,20 +610,33 @@ class SearchUI {
         this.renderResults(results, query);
     }
 
-    renderEmptyState() {
+    renderSuggestions() {
+        let buttonsHtml = this.suggestions.map(s => `
+            <button class="search-suggestion-btn" data-query="${s.query}" style="color: ${s.color}">
+                ${this.icons[s.icon]}
+                ${s.label}
+            </button>
+        `).join('');
+
         return `
-            <div class="search-empty">
-                <p>Escribe al menos 2 caracteres para buscar...</p>
-                <div class="search-suggestions">
-                    <p>Sugerencias:</p>
-                    <ul>
-                        <li>Número de tema: <code>4A1</code>, <code>3.B.5</code>, <code>4B12</code></li>
-                        <li>Palabras clave: <code>balanza de pagos</code>, <code>imposición</code></li>
-                        <li>Ejercicio: <code>tercer ejercicio</code>, <code>cuarto ejercicio</code></li>
-                    </ul>
+            <div class="search-suggestions-grid">
+                <div class="search-suggestions-title">Sugerencias de búsqueda</div>
+                <div class="search-suggestions-buttons">
+                    ${buttonsHtml}
                 </div>
             </div>
         `;
+    }
+
+    attachSuggestionListeners() {
+        const buttons = this.searchResults.querySelectorAll('.search-suggestion-btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const query = btn.dataset.query;
+                this.searchInput.value = query;
+                this.performSearch(query);
+            });
+        });
     }
 
     renderResults(results, query) {
@@ -652,6 +708,7 @@ class SearchUI {
         const unavailableBadge = isUnavailable ? '<span class="badge-unavailable">No disponible</span>' : '';
         
         let icon = this.getTypeIcon(item.type);
+        let iconClass = item.type || 'tema';
         let subtitle = this.getSubtitle(item);
         let title = item.numero ? `${item.numero}: ${item.title}` : item.title;
         
@@ -661,7 +718,7 @@ class SearchUI {
         return `
             <div class="search-result-item ${unavailableClass}" data-url="${item.url}">
                 <a href="${item.url}" class="search-result-link">
-                    <div class="search-result-icon">${icon}</div>
+                    <div class="search-result-icon ${iconClass}">${icon}</div>
                     <div class="search-result-content">
                         <div class="search-result-title">${title} ${unavailableBadge}</div>
                         ${subtitle ? `<div class="search-result-subtitle">${subtitle}</div>` : ''}
