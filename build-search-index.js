@@ -1,7 +1,7 @@
 /**
  * Script para generar el índice de búsqueda
  * Incluye todos los ejercicios (1-5) con sus temas
- * Versión actualizada con 4º ejercicio completo
+ * Versión con títulos corregidos según la web
  */
 
 const fs = require('fs');
@@ -28,7 +28,7 @@ searchIndex.pages = [
   {
     id: 'temario',
     title: 'Temario',
-    url: 'temario/index.html',
+    url: 'temario.html',
     description: 'Temario completo para la preparación a la Oposición',
     keywords: ['temario', 'temas', 'ejercicios', 'contenidos'],
     content: 'Materiales organizados por ejercicios con contenidos actualizados hasta finales de 2023'
@@ -91,7 +91,7 @@ function generarVariacionesNumero(numero) {
   return [...new Set(variaciones)]; // Eliminar duplicados
 }
 
-// Ejercicios con sus temas
+// Ejercicios con sus temas - TÍTULOS CORREGIDOS SEGÚN LA WEB
 const ejercicios = [
   {
     id: 'ej1',
@@ -107,9 +107,9 @@ const ejercicios = [
   {
     id: 'ej2',
     numero: 'Segundo ejercicio',
-    title: 'Idiomas',
+    title: 'Idiomas: Inglés (obligatorio) y otro a elegir',  // CORREGIDO
     url: 'temario/segundo-ejercicio.html',
-    keywords: ['idiomas', 'inglés', 'francés', 'alemán', 'lenguas', 'ejercicio 2'],
+    keywords: ['idiomas', 'inglés', 'francés', 'alemán', 'lenguas', 'ejercicio 2', 'segundo ejercicio'],
     subtemas: []
   },
   {
@@ -117,7 +117,7 @@ const ejercicios = [
     numero: 'Tercer ejercicio',
     title: 'Economía General y Economía Internacional',
     url: 'temario/tercer-ejercicio.html',
-    keywords: ['economía general', 'economía internacional', 'ejercicio 3', 'macro', 'micro'],
+    keywords: ['economía general', 'economía internacional', 'ejercicio 3', 'macro', 'micro', 'tercer ejercicio'],
     grupos: [
       {
         nombre: 'Parte A: Economía general',
@@ -202,7 +202,7 @@ const ejercicios = [
     numero: 'Cuarto ejercicio',
     title: 'Economía Española y Hacienda Pública',
     url: 'temario/cuarto-ejercicio.html',
-    keywords: ['economía española', 'hacienda pública', 'ejercicio 4', 'sector público', 'España'],
+    keywords: ['economía española', 'hacienda pública', 'ejercicio 4', 'sector público', 'España', 'cuarto ejercicio'],
     grupos: [
       {
         nombre: 'Parte A: Economía española',
@@ -277,7 +277,7 @@ const ejercicios = [
     numero: 'Quinto ejercicio',
     title: 'Marketing, Econometría y Derecho',
     url: 'temario/quinto-ejercicio.html',
-    keywords: ['marketing', 'econometría', 'derecho', 'ejercicio 5'],
+    keywords: ['marketing', 'econometría', 'derecho', 'ejercicio 5', 'quinto ejercicio'],
     subtemas: [
       { title: 'Parte A: Marketing internacional y técnicas comerciales', file: 'quinto-ejercicio/parte_A.pdf' },
       { title: 'Parte B: Econometría', file: 'quinto-ejercicio/parte_B.pdf' }
