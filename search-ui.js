@@ -1,5 +1,6 @@
 /**
  * Interfaz de búsqueda - UI y handlers
+ * Versión mejorada con soporte para 4º ejercicio
  */
 
 class SearchUI {
@@ -10,6 +11,7 @@ class SearchUI {
         this.searchOverlay = null;
         this.currentQuery = '';
         this.debounceTimer = null;
+        this.selectedIndex = -1;
     }
 
     async initialize() {
@@ -53,7 +55,7 @@ class SearchUI {
                         </button>
                     </div>
                     <div class="search-tips">
-                        <span class="search-tip">💡 Consejo: Escribe el número del tema (ej: "3.A.5") o palabras clave</span>
+                        <span class="search-tip">💡 Escribe el número del tema (ej: "4A1", "3.B.5") o palabras clave</span>
                     </div>
                 </div>
                 <div class="search-results-container">
@@ -118,7 +120,7 @@ class SearchUI {
             clearTimeout(this.debounceTimer);
             this.debounceTimer = setTimeout(() => {
                 this.performSearch(e.target.value);
-            }, 300);
+            }, 200); // Reducido de 300ms a 200ms para mejor respuesta
         });
 
         // Atajos de teclado
@@ -141,9 +143,16 @@ class SearchUI {
                     this.navigateResults(e.key === 'ArrowDown' ? 1 : -1);
                 }
 
+                // Enter para abrir resultado seleccionado
                 if (e.key === 'Enter') {
-                    e.preventDefault();
-                    this.selectCurrentResult();
+                    const selected = this.searchResults.querySelector('.search-result-item.selected');
+                    if (selected) {
+                        e.preventDefault();
+                        const link = selected.querySelector('a');
+                        if (link) {
+                            window.location.href = link.href;
+                        }
+                    }
                 }
             }
         });
@@ -151,191 +160,198 @@ class SearchUI {
 
     openSearch() {
         this.searchOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
         this.searchInput.focus();
-        
-        // Mostrar sugerencias iniciales
-        if (this.currentQuery === '') {
-            this.showInitialSuggestions();
-        }
+        document.body.style.overflow = 'hidden';
     }
 
     closeSearch() {
         this.searchOverlay.classList.remove('active');
-        document.body.style.overflow = '';
         this.searchInput.value = '';
         this.searchResults.innerHTML = '';
-        this.currentQuery = '';
+        this.selectedIndex = -1;
+        document.body.style.overflow = '';
     }
 
-    showInitialSuggestions() {
-        const suggestions = `
-            <div class="search-suggestions">
-                <div class="suggestion-group">
-                    <h4>🔍 Búsquedas sugeridas:</h4>
-                    <div class="suggestion-items">
-                        <button class="suggestion-btn" data-query="economía internacional">Economía internacional</button>
-                        <button class="suggestion-btn" data-query="política monetaria">Política monetaria</button>
-                        <button class="suggestion-btn" data-query="comercio">Comercio</button>
-                        <button class="suggestion-btn" data-query="keynes">Keynes</button>
-                        <button class="suggestion-btn" data-query="UE">Unión Europea</button>
-                    </div>
-                </div>
-                <div class="suggestion-group">
-                    <h4>📚 Accesos rápidos:</h4>
-                    <div class="suggestion-items">
-                        <button class="suggestion-btn" data-query="tercer ejercicio">Tercer ejercicio</button>
-                        <button class="suggestion-btn" data-query="cuarto ejercicio">Cuarto ejercicio</button>
-                        <button class="suggestion-btn" data-query="test">Test</button>
-                        <button class="suggestion-btn" data-query="organización">Organización</button>
-                    </div>
-                </div>
-            </div>
-        `;
+    navigateResults(direction) {
+        const items = this.searchResults.querySelectorAll('.search-result-item');
+        if (items.length === 0) return;
 
-        this.searchResults.innerHTML = suggestions;
+        // Quitar selección actual
+        items.forEach(item => item.classList.remove('selected'));
 
-        // Event listeners para los botones de sugerencias
-        this.searchResults.querySelectorAll('.suggestion-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const query = btn.getAttribute('data-query');
-                this.searchInput.value = query;
-                this.performSearch(query);
-            });
-        });
+        // Actualizar índice
+        this.selectedIndex += direction;
+        if (this.selectedIndex < 0) this.selectedIndex = items.length - 1;
+        if (this.selectedIndex >= items.length) this.selectedIndex = 0;
+
+        // Seleccionar nuevo item
+        const selectedItem = items[this.selectedIndex];
+        selectedItem.classList.add('selected');
+        selectedItem.scrollIntoView({ block: 'nearest' });
     }
 
     performSearch(query) {
         this.currentQuery = query;
+        this.selectedIndex = -1;
 
         if (!query || query.trim().length < 2) {
-            this.showInitialSuggestions();
+            this.searchResults.innerHTML = this.renderEmptyState();
             return;
         }
 
         const results = searchEngine.search(query);
+        this.renderResults(results, query);
+    }
 
+    renderEmptyState() {
+        return `
+            <div class="search-empty">
+                <p>Escribe al menos 2 caracteres para buscar...</p>
+                <div class="search-suggestions">
+                    <p><strong>Sugerencias:</strong></p>
+                    <ul>
+                        <li>Número de tema: <code>4A1</code>, <code>3.B.5</code>, <code>4B12</code></li>
+                        <li>Palabras clave: <code>balanza de pagos</code>, <code>imposición</code></li>
+                        <li>Ejercicio: <code>tercer ejercicio</code>, <code>cuarto ejercicio</code></li>
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+
+    renderResults(results, query) {
         if (results.length === 0) {
             this.searchResults.innerHTML = `
-                <div class="no-results">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
-                    <h3>No se encontraron resultados</h3>
-                    <p>Intenta con otros términos de búsqueda</p>
+                <div class="search-no-results">
+                    <p>No se encontraron resultados para "<strong>${this.escapeHtml(query)}</strong>"</p>
+                    <p class="search-no-results-hint">Prueba con otros términos o el número del tema (ej: 4A1, 3B5)</p>
                 </div>
             `;
             return;
         }
 
-        this.renderResults(results, query);
-    }
-
-    renderResults(results, query) {
-        const html = results.map((result, index) => {
-            const icon = this.getIcon(result);
-            const badge = this.getBadge(result);
-            const description = result.description || result.content || '';
+        // Agrupar resultados por tipo
+        const grouped = this.groupResults(results);
+        
+        let html = '';
+        
+        // Renderizar cada grupo
+        for (const [groupName, items] of Object.entries(grouped)) {
+            if (items.length === 0) continue;
             
-            return `
-                <a href="${result.url}" class="search-result-item" data-index="${index}" target="${result.url.endsWith('.pdf') ? '_blank' : '_self'}">
-                    <div class="result-icon">${icon}</div>
-                    <div class="result-content">
-                        <div class="result-header">
-                            <span class="result-title">${result.title}</span>
-                            ${badge}
-                        </div>
-                        ${result.numero ? `<div class="result-numero">${result.numero}</div>` : ''}
-                        ${result.ejercicio ? `<div class="result-ejercicio">${result.ejercicio}</div>` : ''}
-                        ${description ? `<div class="result-description">${description}</div>` : ''}
-                    </div>
-                    <div class="result-arrow">→</div>
-                </a>
-            `;
-        }).join('');
-
-        this.searchResults.innerHTML = `
-            <div class="results-header">
-                <span class="results-count">${results.length} resultado${results.length !== 1 ? 's' : ''}</span>
-            </div>
-            ${html}
-        `;
-
-        // Highlight del primer resultado
-        const firstResult = this.searchResults.querySelector('.search-result-item');
-        if (firstResult) {
-            firstResult.classList.add('selected');
+            html += `<div class="search-result-group">`;
+            html += `<div class="search-result-group-title">${groupName}</div>`;
+            
+            items.forEach(item => {
+                html += this.renderResultItem(item, query);
+            });
+            
+            html += `</div>`;
         }
+
+        this.searchResults.innerHTML = html;
     }
 
-    getIcon(result) {
-        const icons = {
-            ejercicio: '📋',
-            tema: '📄',
-            subtema: '📝',
-            page: '🏠',
-            excel: '📊',
-            pdf: '📕',
-            presentacion: '🎯',
-            word: '📄',
-            default: '📌'
+    groupResults(results) {
+        const groups = {
+            'Temas del 4º ejercicio': [],
+            'Temas del 3er ejercicio': [],
+            'Otros ejercicios': [],
+            'Páginas': [],
+            'Recursos': []
         };
 
-        return icons[result.type] || icons.default;
+        results.forEach(item => {
+            if (item.type === 'tema' || item.type === 'subtema') {
+                if (item.ejercicio === 'Cuarto ejercicio') {
+                    groups['Temas del 4º ejercicio'].push(item);
+                } else if (item.ejercicio === 'Tercer ejercicio') {
+                    groups['Temas del 3er ejercicio'].push(item);
+                } else {
+                    groups['Otros ejercicios'].push(item);
+                }
+            } else if (item.type === 'ejercicio') {
+                groups['Otros ejercicios'].push(item);
+            } else if (item.type === 'excel' || item.type === 'pdf' || item.type === 'word' || item.type === 'presentacion') {
+                groups['Recursos'].push(item);
+            } else {
+                groups['Páginas'].push(item);
+            }
+        });
+
+        return groups;
     }
 
-    getBadge(result) {
-        if (result.type === 'tema') {
-            return '<span class="result-badge badge-tema">Tema</span>';
-        }
-        if (result.type === 'ejercicio') {
-            return '<span class="result-badge badge-ejercicio">Ejercicio</span>';
-        }
-        if (result.category === 'organización') {
-            return '<span class="result-badge badge-recurso">Recurso</span>';
-        }
-        return '';
+    renderResultItem(item, query) {
+        const isUnavailable = item.disponible === false;
+        const unavailableClass = isUnavailable ? 'unavailable' : '';
+        const unavailableBadge = isUnavailable ? '<span class="badge-unavailable">No disponible</span>' : '';
+        
+        let icon = this.getTypeIcon(item.type);
+        let subtitle = this.getSubtitle(item);
+        let title = item.numero ? `${item.numero}: ${item.title}` : item.title;
+        
+        // Resaltar términos de búsqueda
+        title = searchEngine.highlightTerms(title, query);
+        
+        return `
+            <div class="search-result-item ${unavailableClass}" data-url="${item.url}">
+                <a href="${item.url}" class="search-result-link">
+                    <div class="search-result-icon">${icon}</div>
+                    <div class="search-result-content">
+                        <div class="search-result-title">${title} ${unavailableBadge}</div>
+                        ${subtitle ? `<div class="search-result-subtitle">${subtitle}</div>` : ''}
+                    </div>
+                </a>
+            </div>
+        `;
     }
 
-    navigateResults(direction) {
-        const items = Array.from(this.searchResults.querySelectorAll('.search-result-item'));
-        if (items.length === 0) return;
-
-        const currentSelected = this.searchResults.querySelector('.search-result-item.selected');
-        let currentIndex = currentSelected ? items.indexOf(currentSelected) : -1;
-
-        // Remover selección actual
-        if (currentSelected) {
-            currentSelected.classList.remove('selected');
-        }
-
-        // Calcular nuevo índice
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = items.length - 1;
-        if (currentIndex >= items.length) currentIndex = 0;
-
-        // Seleccionar nuevo item
-        const newSelected = items[currentIndex];
-        newSelected.classList.add('selected');
-        newSelected.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    getTypeIcon(type) {
+        const icons = {
+            'tema': '📄',
+            'subtema': '📑',
+            'ejercicio': '📚',
+            'page': '📖',
+            'pdf': '📕',
+            'excel': '📊',
+            'word': '📝',
+            'presentacion': '🎯'
+        };
+        return icons[type] || '📄';
     }
 
-    selectCurrentResult() {
-        const selected = this.searchResults.querySelector('.search-result-item.selected');
-        if (selected) {
-            selected.click();
+    getSubtitle(item) {
+        const parts = [];
+        
+        if (item.ejercicio) {
+            parts.push(item.ejercicio);
         }
+        
+        if (item.grupo) {
+            parts.push(item.grupo);
+        }
+        
+        if (item.description) {
+            parts.push(item.description);
+        }
+        
+        if (item.category) {
+            parts.push(item.category);
+        }
+        
+        return parts.join(' › ');
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 }
 
 // Inicializar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        const searchUI = new SearchUI();
-        searchUI.initialize();
-    });
-} else {
+document.addEventListener('DOMContentLoaded', () => {
     const searchUI = new SearchUI();
     searchUI.initialize();
-}
+});
