@@ -8,8 +8,6 @@ function closeCourseBanner() {
     const banner = document.getElementById('course-banner');
     if (banner) {
         banner.classList.add('hidden');
-        // Guardar en localStorage que el usuario cerró el banner
-        localStorage.setItem('courseBannerClosed', 'true');
     }
 }
 
