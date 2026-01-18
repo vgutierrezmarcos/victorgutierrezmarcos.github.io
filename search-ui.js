@@ -1,5 +1,6 @@
 /**
  * Interfaz de búsqueda - UI y handlers
+ * Actualizado para mostrar estado de disponibilidad
  */
 
 class SearchUI {
@@ -237,9 +238,16 @@ class SearchUI {
             const icon = this.getIcon(result);
             const badge = this.getBadge(result);
             const description = result.description || result.content || '';
+            const isNoDisponible = result.disponible === false;
+            const itemClass = isNoDisponible ? 'search-result-item no-disponible' : 'search-result-item';
+            const target = result.url.endsWith('.pdf') ? '_blank' : '_self';
+            
+            // Si no está disponible, no hacer clickeable el enlace al PDF
+            const href = isNoDisponible ? '#' : result.url;
+            const onClick = isNoDisponible ? 'onclick="event.preventDefault(); alert(\'Este tema aún no está disponible.\')"' : '';
             
             return `
-                <a href="${result.url}" class="search-result-item" data-index="${index}" target="${result.url.endsWith('.pdf') ? '_blank' : '_self'}">
+                <a href="${href}" class="${itemClass}" data-index="${index}" target="${target}" ${onClick}>
                     <div class="result-icon">${icon}</div>
                     <div class="result-content">
                         <div class="result-header">
@@ -247,10 +255,10 @@ class SearchUI {
                             ${badge}
                         </div>
                         ${result.numero ? `<div class="result-numero">${result.numero}</div>` : ''}
-                        ${result.ejercicio ? `<div class="result-ejercicio">${result.ejercicio}</div>` : ''}
+                        ${result.ejercicio ? `<div class="result-ejercicio">${result.ejercicio}${result.grupo ? ' - ' + result.grupo : ''}</div>` : ''}
                         ${description ? `<div class="result-description">${description}</div>` : ''}
                     </div>
-                    <div class="result-arrow">→</div>
+                    <div class="result-arrow">${isNoDisponible ? '⛔' : '→'}</div>
                 </a>
             `;
         }).join('');
@@ -270,6 +278,11 @@ class SearchUI {
     }
 
     getIcon(result) {
+        // Si no está disponible, mostrar icono diferente
+        if (result.disponible === false) {
+            return '📭';
+        }
+        
         const icons = {
             ejercicio: '📋',
             tema: '📄',
@@ -286,16 +299,23 @@ class SearchUI {
     }
 
     getBadge(result) {
+        let badges = '';
+        
+        // Badge de tipo
         if (result.type === 'tema') {
-            return '<span class="result-badge badge-tema">Tema</span>';
+            badges += '<span class="result-badge badge-tema">Tema</span>';
+        } else if (result.type === 'ejercicio') {
+            badges += '<span class="result-badge badge-ejercicio">Ejercicio</span>';
+        } else if (result.category === 'organización') {
+            badges += '<span class="result-badge badge-recurso">Recurso</span>';
         }
-        if (result.type === 'ejercicio') {
-            return '<span class="result-badge badge-ejercicio">Ejercicio</span>';
+        
+        // Badge de disponibilidad (solo para temas)
+        if (result.type === 'tema' && result.disponible === false) {
+            badges += '<span class="result-badge badge-no-disponible">No disponible</span>';
         }
-        if (result.category === 'organización') {
-            return '<span class="result-badge badge-recurso">Recurso</span>';
-        }
-        return '';
+        
+        return badges;
     }
 
     navigateResults(direction) {
@@ -324,6 +344,11 @@ class SearchUI {
     selectCurrentResult() {
         const selected = this.searchResults.querySelector('.search-result-item.selected');
         if (selected) {
+            // No hacer click si es un tema no disponible
+            if (selected.classList.contains('no-disponible')) {
+                alert('Este tema aún no está disponible.');
+                return;
+            }
             selected.click();
         }
     }
