@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema no disponible | Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Este tema no está disponible actualmente">
+    <title>Blog | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Artículos sobre economía, comercio internacional, política económica y oposiciones al cuerpo de Técnicos Comerciales y Economistas del Estado.">
     
-    <!-- Open Graph / Social Media Preview -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Tema no disponible | Víctor Gutiérrez Marcos">
-    <meta property="og:description" content="Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado">
-    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Favicon -->
     <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/blog/">
+    
+    <!-- Estilos -->
     <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog de Víctor Gutiérrez Marcos",
+        "description": "Artículos sobre economía, comercio internacional y política económica",
+        "url": "https://www.victorgutierrezmarcos.es/blog/",
+        "author": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="site-header">
@@ -27,33 +39,71 @@
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
+
     <nav class="main-nav">
         <div class="nav-container">
             <ul class="nav-list">
                 <li><a href="../index.html">INTRODUCCIÓN</a></li>
-                <li><a href="../temario.html" class="active">TEMARIO</a></li>
+                <li><a href="../temario.html">TEMARIO</a></li>
                 <li><a href="../organizacion.html">ORGANIZACIÓN</a></li>
                 <li><a href="../enlaces.html">ENLACES</a></li>
                 <li><a href="../sobre-mi.html">SOBRE MÍ</a></li>
-                <li><a href="../blog/index.html">BLOG</a></li>
+                <li><a href="index.html" class="active">BLOG</a></li>
+
             </ul>
         </div>
     </nav>
+
     <main class="main-content">
         <div class="content-container">
-            <article class="page-content">
-                <nav class="breadcrumb"><a href="../temario.html">Temario</a><span>›</span>Tema no disponible</nav>
-                <h2 class="section-title">TEMA NO DISPONIBLE</h2>
-                <div class="content-text" style="text-align: center; padding: 3rem 1rem;">
-                    <p style="font-size: 1.2rem; color: var(--color-text-muted);">Este tema no está disponible actualmente.</p>
-                    <p style="color: var(--color-text-light);">Disculpen las molestias.</p>
-                    <p style="margin-top: 2rem;">
-                        <a href="../temario.html" style="display: inline-block; padding: 0.7rem 1.5rem; background: linear-gradient(135deg, #5F2987 0%, #4a1f6b 100%); color: white; text-decoration: none; border-radius: 6px; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 500;">← Volver al temario</a>
-                    </p>
+            <article class="page-content blog-page">
+                <h2 class="section-title">Blog</h2>
+                
+                <p class="blog-intro">
+                    Artículos y análisis sobre economía española, comercio internacional, 
+                    política económica.
+                </p>
+
+                <div class="articles-list">
+                    <!-- Los artículos se añaden aquí manualmente o mediante script -->
+                    <!-- INICIO ARTÍCULOS -->
+                    <!-- Ejemplo de artículo (eliminar cuando añadas reales) -->
+                    <article class="article-card">
+                        <div class="article-meta">
+                            <time datetime="2025-01-18">18 de enero de 2025</time>
+                            <span class="article-category">Economía Española</span>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="ejemplo-articulo.html">Título del artículo de ejemplo</a>
+                        </h3>
+                        <p class="article-excerpt">
+                            Este es un extracto del artículo que resume brevemente el contenido 
+                            y anima al lector a continuar leyendo...
+                        </p>
+                        <div class="article-actions">
+                            <a href="ejemplo-comercio-exterior.html" class="read-more">Leer artículo</a>
+                            <a href="ejemplo-comercio-exterior.pdf" class="download-pdf" download>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                PDF
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- FIN ARTÍCULOS -->
+                </div>
+                
+                <!-- Mensaje si no hay artículos -->
+                <div class="no-articles" style="display: none;">
+                    <p>Próximamente se publicarán artículos en esta sección.</p>
                 </div>
             </article>
         </div>
     </main>
+
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-social">
