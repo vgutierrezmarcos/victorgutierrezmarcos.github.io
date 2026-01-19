@@ -26,9 +26,10 @@ from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER, TA_LEFT, TA_RIGHT
 from reportlab.lib.colors import HexColor, Color
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, PageBreak,
-    Table, TableStyle, Image, KeepTogether, Flowable,
-    Frame, PageTemplate, BaseDocTemplate
+    Table, TableStyle, Image, KeepTogether, KeepInFrame,
+    Flowable, Frame, PageTemplate, BaseDocTemplate
 )
+from reportlab.platypus.doctemplate import LayoutError
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.graphics.shapes import Drawing, Line, Rect
@@ -215,8 +216,7 @@ def generar_html(metadatos, contenido_md, ruta_salida):
         </div>
         
         <div class="disclaimer">
-            <p class="copyright">© {datetime.now().year} Víctor Gutiérrez Marcos. Todos los derechos reservados.</p>
-            <p>Las opiniones expresadas en este artículo son exclusivamente del autor y no representan necesariamente las posiciones oficiales del Ministerio de Economía, Comercio y Empresa ni del Gobierno de España.</p>
+            <p class="copyright">© {datetime.now().year} Víctor Gutiérrez Marcos</p>
         </div>
     </footer>
     
@@ -271,13 +271,16 @@ class LineaDorada(Flowable):
 
 
 def crear_estilos_pdf():
-    """Crea estilos para el PDF estilo PIIE."""
+    """Crea estilos para el PDF con fuentes Sans Serif profesionales."""
     estilos = getSampleStyleSheet()
+    
+    # Fuente principal: Helvetica (sans-serif, limpia y profesional)
+    # Helvetica es la sans-serif estándar de ReportLab, muy legible
     
     # Título del artículo
     estilos.add(ParagraphStyle(
         name='TituloPIIE',
-        fontName='Times-Roman',
+        fontName='Helvetica',
         fontSize=22,
         leading=26,
         textColor=COLOR_PRIMARIO,
@@ -288,7 +291,7 @@ def crear_estilos_pdf():
     # Subtítulo
     estilos.add(ParagraphStyle(
         name='SubtituloPIIE',
-        fontName='Times-Italic',
+        fontName='Helvetica-Oblique',
         fontSize=13,
         leading=16,
         textColor=COLOR_PRIMARIO,
@@ -307,24 +310,24 @@ def crear_estilos_pdf():
         spaceAfter=25,
     ))
     
-    # Cuerpo de texto
+    # Cuerpo de texto - Sans Serif para mejor legibilidad
     estilos.add(ParagraphStyle(
         name='CuerpoPIIE',
-        fontName='Times-Roman',
-        fontSize=10.5,
+        fontName='Helvetica',
+        fontSize=10,
         leading=15,
         textColor=COLOR_TEXTO,
         alignment=TA_JUSTIFY,
-        firstLineIndent=18,
+        firstLineIndent=0,
         spaceBefore=0,
         spaceAfter=10,
     ))
     
-    # Primer párrafo sin sangría
+    # Primer párrafo (igual que el cuerpo en sans-serif)
     estilos.add(ParagraphStyle(
         name='PrimerParrafo',
-        fontName='Times-Roman',
-        fontSize=10.5,
+        fontName='Helvetica',
+        fontSize=10,
         leading=15,
         textColor=COLOR_TEXTO,
         alignment=TA_JUSTIFY,
@@ -337,13 +340,13 @@ def crear_estilos_pdf():
     estilos.add(ParagraphStyle(
         name='SeccionPIIE',
         fontName='Helvetica-Bold',
-        fontSize=10,
+        fontSize=11,
         leading=14,
         textColor=COLOR_PRIMARIO,
         alignment=TA_LEFT,
-        spaceBefore=20,
-        spaceAfter=10,
-        textTransform='uppercase',
+        spaceBefore=18,
+        spaceAfter=8,
+        keepWithNext=True,
     ))
     
     # Subsección H3
@@ -354,30 +357,44 @@ def crear_estilos_pdf():
         leading=13,
         textColor=COLOR_TEXTO,
         alignment=TA_LEFT,
-        spaceBefore=15,
-        spaceAfter=8,
+        spaceBefore=14,
+        spaceAfter=6,
+        keepWithNext=True,
+    ))
+    
+    # H4
+    estilos.add(ParagraphStyle(
+        name='H4PIIE',
+        fontName='Helvetica-BoldOblique',
+        fontSize=10,
+        leading=13,
+        textColor=COLOR_TEXTO_MUTED,
+        alignment=TA_LEFT,
+        spaceBefore=10,
+        spaceAfter=5,
+        keepWithNext=True,
     ))
     
     # Cita
     estilos.add(ParagraphStyle(
         name='CitaPIIE',
-        fontName='Times-Italic',
-        fontSize=10.5,
-        leading=15,
-        textColor=COLOR_TEXTO,
+        fontName='Helvetica-Oblique',
+        fontSize=10,
+        leading=14,
+        textColor=COLOR_TEXTO_MUTED,
         alignment=TA_CENTER,
         leftIndent=25,
         rightIndent=25,
-        spaceBefore=15,
-        spaceAfter=15,
+        spaceBefore=12,
+        spaceAfter=12,
     ))
     
     # Lista
     estilos.add(ParagraphStyle(
         name='ListaPIIE',
-        fontName='Times-Roman',
-        fontSize=10.5,
-        leading=15,
+        fontName='Helvetica',
+        fontSize=10,
+        leading=14,
         textColor=COLOR_TEXTO,
         alignment=TA_JUSTIFY,
         leftIndent=18,
@@ -389,9 +406,9 @@ def crear_estilos_pdf():
     # Nota al pie
     estilos.add(ParagraphStyle(
         name='NotaPie',
-        fontName='Times-Roman',
-        fontSize=8.5,
-        leading=11,
+        fontName='Helvetica',
+        fontSize=8,
+        leading=10,
         textColor=COLOR_TEXTO_LIGHT,
         alignment=TA_JUSTIFY,
         leftIndent=10,
@@ -434,80 +451,164 @@ def limpiar_html(texto):
 
 
 def procesar_contenido_pdf(contenido_html, estilos):
-    """Procesa HTML a elementos de ReportLab."""
+    """Procesa HTML a elementos de ReportLab, manteniendo títulos con su contenido."""
     elementos = []
     es_primer_parrafo = True
     
     bloques = re.split(r'(<h[1-6][^>]*>.*?</h[1-6]>|<p[^>]*>.*?</p>|<blockquote[^>]*>.*?</blockquote>|<ul[^>]*>.*?</ul>|<ol[^>]*>.*?</ol>)', 
                        contenido_html, flags=re.DOTALL)
     
-    for bloque in bloques:
-        bloque = bloque.strip()
+    # Procesar bloques y agrupar títulos con su contenido siguiente
+    i = 0
+    while i < len(bloques):
+        bloque = bloques[i].strip()
         if not bloque:
+            i += 1
             continue
         
-        # H2
+        # H2 - Mantener con siguiente párrafo
         match = re.match(r'<h2[^>]*>(.*?)</h2>', bloque, re.DOTALL)
         if match:
             texto = limpiar_html(match.group(1)).upper()
-            elementos.append(Spacer(1, 8))
-            elementos.append(Paragraph(texto, estilos['SeccionPIIE']))
+            titulo_elem = Paragraph(texto, estilos['SeccionPIIE'])
+            
+            # Buscar siguiente elemento de contenido
+            siguiente_contenido = None
+            j = i + 1
+            while j < len(bloques):
+                sig_bloque = bloques[j].strip()
+                if sig_bloque and not sig_bloque.startswith('<h'):
+                    siguiente_contenido = procesar_bloque_simple(sig_bloque, estilos, True)
+                    if siguiente_contenido:
+                        i = j  # Saltar al bloque procesado
+                    break
+                elif sig_bloque.startswith('<h'):
+                    break
+                j += 1
+            
+            if siguiente_contenido:
+                elementos.append(KeepTogether([titulo_elem, siguiente_contenido]))
+            else:
+                elementos.append(titulo_elem)
+            
             es_primer_parrafo = True
+            i += 1
             continue
         
-        # H3
+        # H3 - Mantener con siguiente párrafo
         match = re.match(r'<h3[^>]*>(.*?)</h3>', bloque, re.DOTALL)
         if match:
             texto = limpiar_html(match.group(1))
-            elementos.append(Paragraph(texto, estilos['SubseccionPIIE']))
+            titulo_elem = Paragraph(texto, estilos['SubseccionPIIE'])
+            
+            # Buscar siguiente elemento de contenido
+            siguiente_contenido = None
+            j = i + 1
+            while j < len(bloques):
+                sig_bloque = bloques[j].strip()
+                if sig_bloque and not sig_bloque.startswith('<h'):
+                    siguiente_contenido = procesar_bloque_simple(sig_bloque, estilos, True)
+                    if siguiente_contenido:
+                        i = j
+                    break
+                elif sig_bloque.startswith('<h'):
+                    break
+                j += 1
+            
+            if siguiente_contenido:
+                elementos.append(KeepTogether([titulo_elem, siguiente_contenido]))
+            else:
+                elementos.append(titulo_elem)
+            
             es_primer_parrafo = True
+            i += 1
             continue
         
-        # Blockquote
-        match = re.match(r'<blockquote[^>]*>(.*?)</blockquote>', bloque, re.DOTALL)
+        # H4 - Mantener con siguiente párrafo
+        match = re.match(r'<h4[^>]*>(.*?)</h4>', bloque, re.DOTALL)
         if match:
             texto = limpiar_html(match.group(1))
-            texto = re.sub(r'<p[^>]*>(.*?)</p>', r'\1', texto, flags=re.DOTALL)
-            elementos.append(Paragraph(f"«{texto.strip()}»", estilos['CitaPIIE']))
-            es_primer_parrafo = True
-            continue
-        
-        # Listas
-        match = re.match(r'<ul[^>]*>(.*?)</ul>', bloque, re.DOTALL)
-        if match:
-            items = re.findall(r'<li[^>]*>(.*?)</li>', match.group(1), re.DOTALL)
-            for item in items:
-                texto = limpiar_html(item)
-                elementos.append(Paragraph(f"• {texto}", estilos['ListaPIIE']))
-            es_primer_parrafo = True
-            continue
-        
-        match = re.match(r'<ol[^>]*>(.*?)</ol>', bloque, re.DOTALL)
-        if match:
-            items = re.findall(r'<li[^>]*>(.*?)</li>', match.group(1), re.DOTALL)
-            for i, item in enumerate(items, 1):
-                texto = limpiar_html(item)
-                elementos.append(Paragraph(f"{i}. {texto}", estilos['ListaPIIE']))
-            es_primer_parrafo = True
-            continue
-        
-        # Párrafos
-        match = re.match(r'<p[^>]*>(.*?)</p>', bloque, re.DOTALL)
-        if match:
-            texto = match.group(1)
-            # Convertir formato inline
-            texto = re.sub(r'<strong>(.*?)</strong>', r'<b>\1</b>', texto)
-            texto = re.sub(r'<em>(.*?)</em>', r'<i>\1</i>', texto)
-            texto = re.sub(r'<a[^>]*>(.*?)</a>', r'\1', texto)
-            texto = re.sub(r'<br\s*/?>', ' ', texto)
-            texto = re.sub(r'\s+', ' ', texto).strip()
+            titulo_elem = Paragraph(texto, estilos['H4PIIE'])
             
-            if texto:
-                estilo = 'PrimerParrafo' if es_primer_parrafo else 'CuerpoPIIE'
-                elementos.append(Paragraph(texto, estilos[estilo]))
+            siguiente_contenido = None
+            j = i + 1
+            while j < len(bloques):
+                sig_bloque = bloques[j].strip()
+                if sig_bloque and not sig_bloque.startswith('<h'):
+                    siguiente_contenido = procesar_bloque_simple(sig_bloque, estilos, True)
+                    if siguiente_contenido:
+                        i = j
+                    break
+                elif sig_bloque.startswith('<h'):
+                    break
+                j += 1
+            
+            if siguiente_contenido:
+                elementos.append(KeepTogether([titulo_elem, siguiente_contenido]))
+            else:
+                elementos.append(titulo_elem)
+            
+            es_primer_parrafo = True
+            i += 1
+            continue
+        
+        # Otros bloques (párrafos, citas, listas)
+        elem = procesar_bloque_simple(bloque, estilos, es_primer_parrafo)
+        if elem:
+            elementos.append(elem)
+            if re.match(r'<p[^>]*>', bloque):
                 es_primer_parrafo = False
+        
+        i += 1
     
     return elementos
+
+
+def procesar_bloque_simple(bloque, estilos, es_primer_parrafo):
+    """Procesa un bloque individual de contenido."""
+    
+    # Blockquote
+    match = re.match(r'<blockquote[^>]*>(.*?)</blockquote>', bloque, re.DOTALL)
+    if match:
+        texto = limpiar_html(match.group(1))
+        texto = re.sub(r'<p[^>]*>(.*?)</p>', r'\1', texto, flags=re.DOTALL)
+        return Paragraph(f"«{texto.strip()}»", estilos['CitaPIIE'])
+    
+    # Lista no ordenada
+    match = re.match(r'<ul[^>]*>(.*?)</ul>', bloque, re.DOTALL)
+    if match:
+        items = re.findall(r'<li[^>]*>(.*?)</li>', match.group(1), re.DOTALL)
+        lista_elementos = []
+        for item in items:
+            texto = limpiar_html(item)
+            lista_elementos.append(Paragraph(f"• {texto}", estilos['ListaPIIE']))
+        return KeepTogether(lista_elementos) if lista_elementos else None
+    
+    # Lista ordenada
+    match = re.match(r'<ol[^>]*>(.*?)</ol>', bloque, re.DOTALL)
+    if match:
+        items = re.findall(r'<li[^>]*>(.*?)</li>', match.group(1), re.DOTALL)
+        lista_elementos = []
+        for i, item in enumerate(items, 1):
+            texto = limpiar_html(item)
+            lista_elementos.append(Paragraph(f"{i}. {texto}", estilos['ListaPIIE']))
+        return KeepTogether(lista_elementos) if lista_elementos else None
+    
+    # Párrafo
+    match = re.match(r'<p[^>]*>(.*?)</p>', bloque, re.DOTALL)
+    if match:
+        texto = match.group(1)
+        texto = re.sub(r'<strong>(.*?)</strong>', r'<b>\1</b>', texto)
+        texto = re.sub(r'<em>(.*?)</em>', r'<i>\1</i>', texto)
+        texto = re.sub(r'<a[^>]*>(.*?)</a>', r'\1', texto)
+        texto = re.sub(r'<br\s*/?>', ' ', texto)
+        texto = re.sub(r'\s+', ' ', texto).strip()
+        
+        if texto:
+            estilo = 'PrimerParrafo' if es_primer_parrafo else 'CuerpoPIIE'
+            return Paragraph(texto, estilos[estilo])
+    
+    return None
 
 
 def agregar_cabecera_pie_pdf(canvas, doc, metadatos):
@@ -589,25 +690,22 @@ def generar_pdf(metadatos, contenido_md, ruta_salida):
     elementos_contenido = procesar_contenido_pdf(contenido_html, estilos)
     elementos.extend(elementos_contenido)
     
-    # Disclaimer
+    # Pie con copyright simple
     elementos.append(Spacer(1, 1*cm))
-    elementos.append(LineaDorada(ancho_contenido, grosor=3))
-    elementos.append(Spacer(1, 0.5*cm))
+    elementos.append(LineaDorada(ancho_contenido, grosor=2))
+    elementos.append(Spacer(1, 0.4*cm))
     
-    disclaimer = f"""<b>© {datetime.now().year} Víctor Gutiérrez Marcos. Todos los derechos reservados.</b><br/><br/>
-Las opiniones expresadas en este artículo son exclusivamente del autor y no representan 
-necesariamente las posiciones oficiales del Ministerio de Economía, Comercio y Empresa 
-ni del Gobierno de España."""
+    copyright_text = f"© {datetime.now().year} Víctor Gutiérrez Marcos"
     
     estilos.add(ParagraphStyle(
-        name='Disclaimer',
+        name='Copyright',
         fontName='Helvetica',
-        fontSize=7.5,
+        fontSize=8,
         leading=10,
         textColor=COLOR_TEXTO_LIGHT,
         alignment=TA_LEFT,
     ))
-    elementos.append(Paragraph(disclaimer, estilos['Disclaimer']))
+    elementos.append(Paragraph(copyright_text, estilos['Copyright']))
     
     # Construir PDF
     def agregar_marco(canvas, doc):
