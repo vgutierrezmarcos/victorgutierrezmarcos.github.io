@@ -21,6 +21,8 @@
     $for(css)$
     <link rel="stylesheet" href="$css$">
     $endfor$
+    <!-- Estilos del banner de cookies -->
+    <link rel="stylesheet" href="../cookie-consent.css">
     $for(header-includes)$
     $header-includes$
     $endfor$
@@ -46,8 +48,7 @@
             </div>
         </div>
         <div class="header-contact">
-            victorgutierrezmarcos.es<br>
-            contacto@victorgutierrezmarcos.es
+            www.victorgutierrezmarcos.es
         </div>
     </header>
 
@@ -65,26 +66,20 @@
             $if(subtitle)$
             <p class="article-subtitle">$subtitle$</p>
             $endif$
-            <p class="article-author-date">
-                <span class="article-author-name">$author$</span><br>
-                $if(date-formatted)$$date-formatted$$else$$date$$endif$
-            </p>
-            $if(updated)$
-            <p class="article-updated">Actualizado por última vez el $updated$</p>
-            $endif$
-
-            <div class="article-body">
-                $body$
+            <div class="article-meta-row">
+                <p class="article-author-date">
+                    <span class="article-author-name">$author$</span><br>
+                    $if(date-formatted)$$date-formatted$$else$$date$$endif$
+                </p>
+                <a id="pdf-download" class="download-btn" download>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Descargar PDF
+                </a>
             </div>
-
-            <a id="pdf-download" class="download-btn" download>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Descargar PDF
-            </a>
             <script>
                 // Set PDF link based on current HTML filename
                 (function() {
@@ -93,6 +88,13 @@
                     document.getElementById('pdf-download').href = pdfPath;
                 })();
             </script>
+            $if(updated)$
+            <p class="article-updated">Actualizado por última vez el $updated$</p>
+            $endif$
+
+            <div class="article-body">
+                $body$
+            </div>
         </div>
 
         <aside class="article-sidebar">
@@ -107,18 +109,13 @@
 
     <!-- Pie de artículo -->
     <footer class="article-footer">
-        <div class="footer-logo">
-            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 60px;">
+        <p class="copyright">
+            <svg class="footer-favicon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                 <rect width="32" height="32" rx="4" fill="#5F2987"/>
                 <text x="16" y="22" font-family="Palatino Linotype, Palatino, Georgia, serif" font-size="14" font-weight="600" fill="#E2EFD9" text-anchor="middle">VGM</text>
             </svg>
-            <div class="footer-logo-text">Víctor Gutiérrez Marcos</div>
-        </div>
-        <div class="disclaimer">
-            <p class="copyright">&copy; $if(year)$$year$$else$2025$endif$ Víctor Gutiérrez Marcos</p>
-            <p>Las opiniones expresadas en este artículo son exclusivamente del autor y no representan necesariamente las posiciones oficiales de ninguna institución.</p>
-            <p>Este contenido se comparte con fines educativos e informativos.</p>
-        </div>
+            &copy; $if(year)$$year$$else$2026$endif$ Víctor Gutiérrez Marcos
+        </p>
     </footer>
 
 </article>
@@ -126,6 +123,7 @@
 $for(include-after)$
 $include-after$
 $endfor$
-
+<!-- Script de consentimiento de cookies -->
+<script src="../cookie-consent.js"></script>
 </body>
 </html>
