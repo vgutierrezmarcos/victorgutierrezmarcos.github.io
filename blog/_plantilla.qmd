@@ -16,8 +16,9 @@ date-formatted: "[CAMBIAR] Enero 2025"
 categoria: "[CAMBIAR] Economía"
 description: "[CAMBIAR] Descripción breve para el índice del blog."
 
-# Opcionales
+# Opcionales (borrar si no se usan)
 numero: ""
+updated: ""
 bio: "Técnico Comercial y Economista del Estado en el Ministerio de Economía, Comercio y Empresa de España."
 year: 2025
 tags:
@@ -27,9 +28,29 @@ tags:
 format:
   html:
     template: _templates/articulo.html
-    css: articulo-styles.css
+    css: _templates/articulo-styles.css
+    self-contained: true
+    embed-resources: true
+    toc: false
+    theme: none
+    highlight-style: tango
   pdf:
     template: _templates/articulo.tex
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=2.5cm
+    fontsize: 11pt
+    colorlinks: true
+    linkcolor: "5F2987"
+    urlcolor: "5F2987"
+    toc: false
+    number-sections: false
+lang: es
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
 Párrafo introductorio del artículo. Aquí se presenta el tema principal y se captura la atención del lector.
