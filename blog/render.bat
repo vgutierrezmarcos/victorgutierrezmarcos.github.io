@@ -37,7 +37,7 @@ if errorlevel 1 (
 
 echo.
 echo Actualizando indice del blog...
-cscript //nologo "%~dp0_templates\update-index.js" "%1"
+cscript //nologo "%~dp0templates\update-index.js" "%1"
 
 echo.
 echo === Proceso completado ===
