@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="$lang$">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$title$ | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="$if(subtitle)$$subtitle$$endif$">
+    <meta name="author" content="$author$">
+    $if(date)$<meta name="date" content="$date$">$endif$
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="$title$ | Víctor Gutiérrez Marcos">
+    <meta property="og:description" content="$if(subtitle)$$subtitle$$endif$">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/blog/$if(slug)$$slug$$endif$.html">
+
+    $for(css)$
+    <link rel="stylesheet" href="$css$">
+    $endfor$
+    $for(header-includes)$
+    $header-includes$
+    $endfor$
+</head>
+<body>
+
+<div class="back-nav">
+    <a href="index.html">&larr; Volver al blog</a>
+</div>
+
+<article class="article-container">
+
+    <!-- Cabecera institucional -->
+    <header class="article-header-bar">
+        <div class="site-brand">
+            <svg class="site-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" fill="#5F2987" rx="8"/>
+                <text x="50" y="62" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">VG</text>
+            </svg>
+            <div>
+                <div class="site-name">Víctor Gutiérrez Marcos</div>
+                <div class="site-tagline">Análisis Económico y Comercial</div>
+            </div>
+        </div>
+        <div class="header-contact">
+            victorgutierrezmarcos.es<br>
+            contacto@victorgutierrezmarcos.es
+        </div>
+    </header>
+
+    <!-- Barra de tipo de documento -->
+    <div class="article-title-bar">
+        <div class="article-type">$if(tipo)$$tipo$$else$Artículo de Análisis$endif$</div>
+    </div>
+
+    <!-- Contenido principal con sidebar -->
+    <div class="article-main">
+        <div class="article-content">
+            <h1 class="article-number-title">
+                $if(numero)$<span class="article-number">$numero$</span> $endif$$title$
+            </h1>
+            $if(subtitle)$
+            <p class="article-subtitle">$subtitle$</p>
+            $endif$
+            <p class="article-author-date">
+                <span class="article-author-name">$author$</span><br>
+                $if(date-formatted)$$date-formatted$$else$$date$$endif$
+            </p>
+
+            <div class="article-body">
+                $body$
+            </div>
+
+            $if(slug)$
+            <a href="$slug$.pdf" class="download-btn" download>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Descargar PDF
+            </a>
+            $endif$
+        </div>
+
+        <aside class="article-sidebar">
+            <div class="author-info">
+                <div class="author-name-sidebar">$author$</div>
+                <div class="author-bio">
+                    <p>$if(bio)$$bio$$else$Técnico Comercial y Economista del Estado en el Ministerio de Economía, Comercio y Empresa de España.$endif$</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Pie de artículo -->
+    <footer class="article-footer">
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 60px;">
+                <rect width="100" height="100" fill="#5F2987" rx="8"/>
+                <text x="50" y="62" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">VG</text>
+            </svg>
+            <div class="footer-logo-text">Víctor Gutiérrez Marcos</div>
+        </div>
+        <div class="disclaimer">
+            <p class="copyright">&copy; $if(year)$$year$$else$2025$endif$ Víctor Gutiérrez Marcos</p>
+            <p>Las opiniones expresadas en este artículo son exclusivamente del autor y no representan necesariamente las posiciones oficiales de ninguna institución.</p>
+            <p>Este contenido se comparte con fines educativos e informativos.</p>
+        </div>
+    </footer>
+
+</article>
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+</body>
+</html>

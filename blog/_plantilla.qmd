@@ -1,0 +1,75 @@
+---
+title: "Título del artículo"
+subtitle: "Subtítulo descriptivo del contenido"
+author: "Víctor Gutiérrez Marcos"
+date: "2025-01-21"
+date-formatted: "Enero 2025"
+slug: "nombre-del-archivo"
+numero: ""
+categoria: "Economía"
+bio: "Técnico Comercial y Economista del Estado en el Ministerio de Economía, Comercio y Empresa de España."
+year: 2025
+
+# Metadatos para el índice del blog
+description: "Breve descripción del artículo que aparecerá en el índice del blog."
+tags:
+  - etiqueta1
+  - etiqueta2
+
+# Formato de salida
+format:
+  html:
+    template: _templates/articulo.html
+    css: articulo-styles.css
+  pdf:
+    template: _templates/articulo.tex
+---
+
+Párrafo introductorio del artículo. Aquí se presenta el tema principal y se captura la atención del lector.
+
+## Primera sección
+
+Desarrollo del primer punto principal. Usa **negrita** para énfasis y *cursiva* para términos técnicos.
+
+> Las citas se muestran centradas y en cursiva.
+
+## Segunda sección
+
+### Subsección
+
+Puedes usar listas:
+
+- Primer elemento
+- Segundo elemento
+- Tercer elemento
+
+O listas numeradas:
+
+1. **Punto importante**: explicación del punto
+2. **Otro punto**: más detalles
+3. **Tercer punto**: conclusión parcial
+
+## Datos y análisis
+
+Si necesitas incluir código R ejecutable:
+
+```{r}
+#| echo: false
+#| eval: false
+
+# Ejemplo de código R (cambiar eval: true para ejecutar)
+library(ggplot2)
+datos <- data.frame(x = 1:10, y = rnorm(10))
+ggplot(datos, aes(x, y)) + geom_line()
+```
+
+Para tablas simples:
+
+| Concepto | Valor 2023 | Valor 2024 |
+|----------|------------|------------|
+| Dato A   | 100        | 120        |
+| Dato B   | 200        | 180        |
+
+## Conclusiones
+
+Resumen de los puntos principales y reflexiones finales del artículo.
