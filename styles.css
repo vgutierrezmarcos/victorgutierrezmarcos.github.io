@@ -639,6 +639,29 @@ body {
 .footer-content { max-width: var(--max-width); margin: 0 auto; }
 .footer-content p { color: rgba(255, 255, 255, 0.85); font-family: var(--font-body); font-size: 0.95rem; font-style: italic; margin: 0; }
 
+/* Mejora del enlace de política de cookies en el footer */
+.footer-links {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .site-header { padding: 1.5rem 1rem; }
