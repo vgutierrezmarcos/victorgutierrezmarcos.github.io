@@ -1,0 +1,41 @@
+project:
+  type: default
+  output-dir: .
+
+# Configuración por defecto para todos los documentos
+format:
+  html:
+    template: _templates/articulo.html
+    css: articulo-styles.css
+    self-contained: true
+    embed-resources: true
+    toc: false
+    theme: none
+    highlight-style: tango
+    lang: es
+
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=2.5cm
+    fontsize: 11pt
+    lang: es
+    colorlinks: true
+    linkcolor: "5F2987"
+    urlcolor: "5F2987"
+    toc: false
+    number-sections: false
+    template: _templates/articulo.tex
+
+# Metadatos por defecto
+metadata:
+  author: "Víctor Gutiérrez Marcos"
+  bio: "Técnico Comercial y Economista del Estado en el Ministerio de Economía, Comercio y Empresa de España."
+  lang: es
+
+# Ejecutar código R si existe
+execute:
+  echo: false
+  warning: false
+  message: false

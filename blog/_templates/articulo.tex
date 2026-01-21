@@ -1,0 +1,160 @@
+% Plantilla LaTeX para artículos - Estilo PIIE adaptado
+\documentclass[$if(fontsize)$$fontsize$$else$11pt$endif$,$if(papersize)$$papersize$$else$a4paper$endif$]{article}
+
+% Codificación y fuentes
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}  % Palatino para texto
+\usepackage[scaled=0.95]{helvet}  % Helvetica para sans-serif
+
+% Idioma
+\usepackage[$if(lang)$$lang$$else$spanish$endif$]{babel}
+
+% Geometría de página
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+
+% Colores
+\usepackage{xcolor}
+\definecolor{primario}{HTML}{5F2987}
+\definecolor{primariooscuro}{HTML}{4a1f6b}
+\definecolor{texto}{HTML}{333333}
+\definecolor{textomuted}{HTML}{555555}
+\definecolor{dorado}{HTML}{b8860b}
+\definecolor{fondo}{HTML}{f5f5f5}
+
+% Enlaces
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primario,
+    urlcolor=primario,
+    citecolor=primario,
+    pdfauthor={$author$},
+    pdftitle={$title$},
+    pdfsubject={$if(subtitle)$$subtitle$$endif$},
+}
+
+% Gráficos
+\usepackage{graphicx}
+\usepackage{float}
+
+% Tablas
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+% Listas
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*,itemsep=0.25em}
+\setlist[enumerate]{leftmargin=*,itemsep=0.25em}
+
+% Encabezados y pies
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\color{textomuted}\small\thepage}
+
+% Títulos de sección
+\usepackage{titlesec}
+\titleformat{\section}
+    {\normalfont\fontsize{11}{13}\bfseries\sffamily\color{primario}\MakeUppercase}
+    {\thesection}{1em}{}
+\titleformat{\subsection}
+    {\normalfont\fontsize{10}{12}\bfseries\sffamily\color{texto}}
+    {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+    {\normalfont\fontsize{10}{12}\itshape\color{texto}}
+    {\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{2ex plus 1ex minus .2ex}{1ex plus .2ex}
+
+% Citas
+\usepackage{csquotes}
+\renewenvironment{quote}
+    {\list{}{\rightmargin=1cm \leftmargin=1cm}\item\relax\itshape\color{texto}}
+    {\endlist}
+
+% Código (si se usa)
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{fondo},
+    frame=single,
+    rulecolor=\color{textomuted},
+    breaklines=true
+}
+
+% Espacio entre párrafos
+\setlength{\parskip}{0.8em}
+\setlength{\parindent}{0pt}
+
+% Proveer comandos si no existen
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Imágenes inline
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+\begin{document}
+
+% === CABECERA ===
+\begin{center}
+{\Large\bfseries\sffamily\color{primario} VÍCTOR GUTIÉRREZ MARCOS}\\[0.3em]
+{\small\sffamily\color{textomuted} Análisis Económico y Comercial}
+\end{center}
+
+\vspace{0.5cm}
+\noindent\colorbox{primario}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep}{%
+        \centering\color{white}\bfseries\sffamily\large
+        \vspace{0.4cm}
+        $if(tipo)$$tipo$$else$ARTÍCULO DE ANÁLISIS$endif$
+        \vspace{0.4cm}
+    }%
+}
+\vspace{0.8cm}
+
+% === TÍTULO ===
+{\LARGE\color{primario}$if(numero)$\textbf{$numero$} $endif$$title$\par}
+\vspace{0.3cm}
+
+$if(subtitle)$
+{\large\itshape\color{primario}$subtitle$\par}
+\vspace{0.3cm}
+$endif$
+
+{\normalsize\textbf{$author$}\\
+$if(date-formatted)$$date-formatted$$else$$date$$endif$\par}
+
+\vspace{0.8cm}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.5cm}
+
+% === CONTENIDO ===
+$body$
+
+\vspace{1cm}
+\noindent\rule{\linewidth}{2pt}
+
+% === PIE ===
+\vspace{0.5cm}
+\begin{center}
+{\small\bfseries\sffamily\color{primario} \textcopyright{} $if(year)$$year$$else$2025$endif$ Víctor Gutiérrez Marcos}
+\end{center}
+
+{\footnotesize\color{textomuted}
+Las opiniones expresadas en este artículo son exclusivamente del autor y no representan necesariamente las posiciones oficiales de ninguna institución.
+
+Este contenido se comparte con fines educativos e informativos.
+}
+
+\end{document}
