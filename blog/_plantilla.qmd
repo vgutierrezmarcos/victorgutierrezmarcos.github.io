@@ -1,22 +1,29 @@
 ---
-title: "Título del artículo"
-subtitle: "Subtítulo descriptivo del contenido"
+# ============================================================
+# INSTRUCCIONES:
+# 1. Copia este archivo con un nuevo nombre (ej: mi-articulo.qmd)
+# 2. El nombre del archivo será el slug (sin .qmd)
+# 3. Rellena los campos marcados con [CAMBIAR]
+# 4. Ejecuta: Rscript render.R mi-articulo.qmd
+# 5. Haz commit y push a GitHub
+# ============================================================
+
+title: "[CAMBIAR] Título del artículo"
+subtitle: "[CAMBIAR] Subtítulo descriptivo"
 author: "Víctor Gutiérrez Marcos"
-date: "2025-01-21"
-date-formatted: "Enero 2025"
-slug: "nombre-del-archivo"
+date: "[CAMBIAR] 2025-01-21"
+date-formatted: "[CAMBIAR] Enero 2025"
+categoria: "[CAMBIAR] Economía"
+description: "[CAMBIAR] Descripción breve para el índice del blog."
+
+# Opcionales
 numero: ""
-categoria: "Economía"
 bio: "Técnico Comercial y Economista del Estado en el Ministerio de Economía, Comercio y Empresa de España."
 year: 2025
-
-# Metadatos para el índice del blog
-description: "Breve descripción del artículo que aparecerá en el índice del blog."
 tags:
   - etiqueta1
-  - etiqueta2
 
-# Formato de salida
+# No modificar (configuración de formato)
 format:
   html:
     template: _templates/articulo.html

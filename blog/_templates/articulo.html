@@ -36,9 +36,9 @@
     <!-- Cabecera institucional -->
     <header class="article-header-bar">
         <div class="site-brand">
-            <svg class="site-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" fill="#5F2987" rx="8"/>
-                <text x="50" y="62" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">VG</text>
+            <svg class="site-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect width="32" height="32" rx="4" fill="#5F2987"/>
+                <text x="16" y="22" font-family="Palatino Linotype, Palatino, Georgia, serif" font-size="14" font-weight="600" fill="#E2EFD9" text-anchor="middle">VGM</text>
             </svg>
             <div>
                 <div class="site-name">Víctor Gutiérrez Marcos</div>
@@ -74,8 +74,7 @@
                 $body$
             </div>
 
-            $if(slug)$
-            <a href="$slug$.pdf" class="download-btn" download>
+            <a id="pdf-download" class="download-btn" download>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>
@@ -83,7 +82,14 @@
                 </svg>
                 Descargar PDF
             </a>
-            $endif$
+            <script>
+                // Set PDF link based on current HTML filename
+                (function() {
+                    var path = window.location.pathname;
+                    var pdfPath = path.replace(/\.html$$/, '.pdf');
+                    document.getElementById('pdf-download').href = pdfPath;
+                })();
+            </script>
         </div>
 
         <aside class="article-sidebar">
@@ -99,9 +105,9 @@
     <!-- Pie de artículo -->
     <footer class="article-footer">
         <div class="footer-logo">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width: 60px;">
-                <rect width="100" height="100" fill="#5F2987" rx="8"/>
-                <text x="50" y="62" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle">VG</text>
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width: 60px;">
+                <rect width="32" height="32" rx="4" fill="#5F2987"/>
+                <text x="16" y="22" font-family="Palatino Linotype, Palatino, Georgia, serif" font-size="14" font-weight="600" fill="#E2EFD9" text-anchor="middle">VGM</text>
             </svg>
             <div class="footer-logo-text">Víctor Gutiérrez Marcos</div>
         </div>
