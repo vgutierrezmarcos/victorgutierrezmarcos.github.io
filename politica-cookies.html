@@ -18,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#5F2987">
     
     <link rel="canonical" href="https://www.victorgutierrezmarcos.es/politica-cookies.html">
@@ -30,10 +31,13 @@
            ======================================== */
         
         .legal-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2.5rem 2rem 4rem;
-        }
+    max-width: 800px;
+    margin: 2rem auto; /* Añadido margen vertical */
+    padding: 2.5rem 2rem 4rem;
+    background-color: white; /* ESTO AÑADE EL FONDO BLANCO */
+    border-radius: 8px;      /* Bordes redondeados */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
         
         .legal-header {
             text-align: center;
@@ -317,20 +321,21 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="header-content">
-            <a href="index.html" class="header-title-link">
-                <h1 class="site-title">Víctor Gutiérrez Marcos</h1>
-            </a>
-            <p class="site-subtitle">Técnico Comercial y Economista del Estado</p>
-        </div>
-    </header>
+    <div class="header-content">
+        <h1 class="site-title"><a href="index.html">Víctor Gutiérrez Marcos</a></h1>
+        <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+    </div>
+</header>
 
     <nav class="main-nav">
         <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="temario.html">Temario</a></li>
-                <li><a href="organizacion.html">Organización</a></li>
+            <ul class="nav-list">
+                <li><a href="index.html">INTRODUCCIÓN</a></li>
+                <li><a href="temario.html">TEMARIO</a></li>
+                <li><a href="organizacion.html">ORGANIZACIÓN</a></li>
+                <li><a href="enlaces.html">ENLACES</a></li>
+                <li><a href="sobre-mi.html" class="active">SOBRE MÍ</a></li>
+                <li><a href="blog/index.html">BLOG</a></li>
             </ul>
         </div>
     </nav>
@@ -539,7 +544,9 @@
             </div>
         </div>
     </footer>
-
+    <script src="search-engine.js"></script>
+    <script src="search-ui.js"></script>
+    <script src="course-banner.js"></script>
     <script src="cookie-consent.js"></script>
 </body>
 </html>
