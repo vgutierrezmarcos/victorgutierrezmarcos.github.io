@@ -69,6 +69,9 @@
                 <span class="article-author-name">$author$</span><br>
                 $if(date-formatted)$$date-formatted$$else$$date$$endif$
             </p>
+            $if(updated)$
+            <p class="article-updated">Actualizado por última vez el $updated$</p>
+            $endif$
 
             <div class="article-body">
                 $body$

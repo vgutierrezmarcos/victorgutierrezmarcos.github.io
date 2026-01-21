@@ -60,7 +60,7 @@ jobs:
         find . -name "CNAME" -type f -delete 2>/dev/null || true
         
         # Eliminar carpetas .git y .github
-        rm -rf .git .github backup blog 2>/dev/null || true
+        rm -rf .git .github backup blog .claude 2>/dev/null || true
         
         cd ..
         

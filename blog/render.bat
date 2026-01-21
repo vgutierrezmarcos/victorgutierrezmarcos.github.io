@@ -37,11 +37,7 @@ if errorlevel 1 (
 
 echo.
 echo Actualizando indice del blog...
-powershell -ExecutionPolicy Bypass -File "%~dp0update-index.ps1" -QmdFile "%1"
-if errorlevel 1 (
-    echo   Nota: No se pudo actualizar el indice automaticamente.
-    echo   Ejecuta manualmente: powershell -File update-index.ps1 -QmdFile %1
-)
+cscript //nologo "%~dp0_templates\update-index.js" "%1"
 
 echo.
 echo === Proceso completado ===
