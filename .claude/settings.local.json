@@ -18,7 +18,12 @@
       "Bash(tail:*)",
       "Bash(sort:*)",
       "Bash(wc:*)",
-      "Bash(head:*)"
+      "Bash(head:*)",
+      "Bash(node build-search-index.js:*)",
+      "Bash(find . -name \"*.rels\" -exec python3 -c \"\nimport sys\nfilepath = sys.argv[1]\nwith open\\(filepath, ''r'', encoding=''utf-8''\\) as f:\n    content = f.read\\(\\)\n# Replace the old URL pattern with the new one\nnew_content = content.replace\\(''victorgutierrezmarcos.es/temario/'', ''victorgutierrezmarcos.es/oposicion/temario/''\\)\nif content != new_content:\n    with open\\(filepath, ''w'', encoding=''utf-8''\\) as f:\n        f.write\\(new_content\\)\n    print\\(f''Updated: {filepath}''\\)\n\" {} ;)",
+      "Bash(apt-get install:*)",
+      "Bash(pip show:*)",
+      "Bash(pip install:*)"
     ]
   }
 }

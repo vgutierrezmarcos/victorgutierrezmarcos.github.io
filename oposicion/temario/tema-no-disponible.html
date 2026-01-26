@@ -16,29 +16,73 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../search-styles.css">
     <!-- Estilos del banner de cookies -->
-    <link rel="stylesheet" href="../cookie-consent.css">
+    <link rel="stylesheet" href="../../cookie-consent.css">
 
 </head>
 <body>
     <header class="site-header">
         <div class="header-content">
-            <h1 class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <h1 class="site-title"><a href="../../index.html">Víctor Gutiérrez Marcos</a></h1>
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
+
+<div class="course-banner" id="course-banner">
+    <div class="course-banner-content">
+        <div class="course-icon">📢</div>
+        <div class="course-info">
+            <h3 class="course-title">INTENSIVO TEST Y COYUNTURA 2026</h3>
+            <div class="course-sections">
+                <div class="course-section">
+                    <h4>✅ Intensivo de coyuntura</h4>
+                    <ul>
+                        <li>Dictamen de coyuntura de 2 países</li>
+                        <li>Parte teórica en vídeo + simulacros</li>
+                        <li>Preparadores: Juan Luis Cordero y Víctor Gutiérrez (promociones 2022 y 2024)</li>
+                    </ul>
+                </div>
+                <div class="course-section">
+                    <h4>✅ Intensivo de test</h4>
+                    <ul>
+                        <li>4 simulacros tipo test con preguntas propias</li>
+                        <li>Preparadores: Luis de Fuentes y Juan Luis Cordero (promoción 2022)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="course-actions">
+                <a href="../../informacion_del_curso.pdf" target="_blank" class="course-btn">ℹ️ Más información</a>
+                <a href="https://wa.link/38nddv" target="_blank" class="course-btn"><strong>📩 Contactar por WhatsApp</strong></a>
+            </div>
+        </div>
+        <button class="course-close" onclick="closeCourseBanner()" aria-label="Cerrar anuncio">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
     <nav class="main-nav">
         <div class="nav-container">
             <ul class="nav-list">
-                <li><a href="../index.html">INTRODUCCIÓN</a></li>
-                <li><a href="../temario.html" class="active">TEMARIO</a></li>
-                <li><a href="../organizacion.html">ORGANIZACIÓN</a></li>
-                <li><a href="../enlaces.html">ENLACES</a></li>
-                <li><a href="../sobre-mi.html">SOBRE MÍ</a></li>
-                <li><a href="../blog/index.html">BLOG</a></li>
+                <li><a href="../../index.html">INICIO</a></li>
+                <li><a href="../index.html" class="active">OPOSICIÓN</a></li>
+                <li><a href="../../blog/index.html">BLOG</a></li>
+                <li><a href="../../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="sub-nav" style="background: var(--color-bg-cream); border-bottom: 1px solid var(--color-border);">
+        <div class="nav-container">
+            <ul class="nav-list" style="padding: 0.3rem 0;">
+                <li><a href="../index.html" style="font-size: 0.75rem;">INTRODUCCIÓN</a></li>
+                <li><a href="../temario.html" class="active" style="font-size: 0.75rem;">TEMARIO</a></li>
+                <li><a href="../organizacion.html" style="font-size: 0.75rem;">ORGANIZACIÓN</a></li>
+                <li><a href="../enlaces.html" style="font-size: 0.75rem;">ENLACES</a></li>
             </ul>
         </div>
     </nav>
@@ -74,12 +118,13 @@
             </a>
         </div>
         <div class="footer-links">
-            <a href="../politica-cookies.html">🍪 Política de cookies</a>
+            <a href="../../politica-cookies.html">Política de cookies</a>
         </div>
     </div>
 </footer>
-    <script src="../search-engine.js"></script>
-    <script src="../search-ui.js"></script>
-    <script src="../cookie-consent.js"></script>
+    <script src="../../search-engine.js"></script>
+    <script src="../../search-ui.js"></script>
+    <script src="../../course-banner.js"></script>
+    <script src="../../cookie-consent.js"></script>
 </body>
 </html>
