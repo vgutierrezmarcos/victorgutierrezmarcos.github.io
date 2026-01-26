@@ -315,6 +315,64 @@ body {
     font-style: italic;
 }
 
+/* Two-column card grid for navigation pages */
+.cards-grid-half {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .cards-grid-half {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Featured card style */
+.tema-card--featured {
+    background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-white) 100%);
+    border-color: var(--color-primary-light);
+    position: relative;
+}
+
+.tema-card--featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent-gold), var(--color-primary));
+    transform: scaleX(1);
+}
+
+.tema-card--featured:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 30px rgba(95, 41, 135, 0.2);
+}
+
+.tema-card--featured .tema-card-title {
+    color: var(--color-primary);
+}
+
+/* Card badge */
+.tema-card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-gold-light) 100%);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 6px rgba(184, 134, 11, 0.3);
+}
+
 /* LISTA DE TEMAS */
 .temas-list { margin-top: 1.5rem; position: relative; z-index: 1; }
 .tema-group { margin-bottom: 1.5rem; }
