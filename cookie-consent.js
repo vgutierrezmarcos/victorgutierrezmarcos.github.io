@@ -138,8 +138,8 @@
                     <div class="cookie-banner-text">
                         <h3 id="cookie-banner-title">🍪 Uso de cookies</h3>
                         <p id="cookie-banner-description">
-                            Este sitio web utiliza cookies propias y de terceros para analizar el tráfico 
-                            y mejorar tu experiencia de navegación. Puedes aceptar todas las cookies, 
+                            Este sitio web utiliza cookies propias y de terceros para gestionar la sesión de usuario, 
+                            analizar el tráfico y mejorar tu experiencia de navegación. Puedes aceptar todas las cookies, 
                             rechazarlas o configurar tus preferencias.
                         </p>
                         <a href="/politica-cookies.html" class="cookie-link">Más información sobre cookies</a>
