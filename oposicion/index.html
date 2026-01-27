@@ -136,13 +136,58 @@
                 <h2 class="section-title">MATERIALES PARA LA OPOSICIÓN A TCEE</h2>
 
                 <div class="content-text">
-                    <p>En esta sección encontrarás:</p>
-                    <ul>
-                        <li>El <a href="temario.html">temario</a> que he utilizado y elaborado durante mi preparación de la oposición.</li>
-                        <li>Una serie de documentos que considero útiles para la <a href="organizacion.html">organización</a> del opositor.</li>
-                        <li>Algunos <a href="enlaces.html">enlaces</a> de utilidad para preparar la oposición.</li>
-                    </ul>
+                    <h3>En esta sección encontrarás</h3>
+                </div>
 
+                <!-- Cards de navegación -->
+                <div class="opo-cards">
+                       <div class="opo-card opo-card--primary">
+                           <a href="temario.html">
+                               <div class="opo-card-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                       <line x1="8" y1="7" x2="16" y2="7"></line>
+                                       <line x1="8" y1="11" x2="14" y2="11"></line>
+                                   </svg>
+                               </div>
+                               <h3 class="opo-card-title">Temario</h3>
+                               <p class="opo-card-desc"><em>El temario que he utilizado y elaborado durante mi preparación de la oposición</em></p>
+                               <span class="opo-card-cta">Ver temario <span class="cta-arrow">→</span></span>
+                           </a>
+                       </div>
+                       <div class="opo-card opo-card--secondary">
+                           <a href="organizacion.html">
+                               <div class="opo-card-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                       <line x1="16" y1="2" x2="16" y2="6"></line>
+                                       <line x1="8" y1="2" x2="8" y2="6"></line>
+                                       <line x1="3" y1="10" x2="21" y2="10"></line>
+                                       <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"></path>
+                                   </svg>
+                               </div>
+                               <h3 class="opo-card-title">Organización</h3>
+                               <p class="opo-card-desc"><em>Una serie de documentos que considero útiles para la planificación y la organización del opositor</em></p>
+                               <span class="opo-card-cta">Ver recursos <span class="cta-arrow">→</span></span>
+                           </a>
+                       </div>
+                       <div class="opo-card opo-card--tertiary">
+                           <a href="enlaces.html">
+                               <div class="opo-card-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                                   </svg>
+                               </div>
+                               <h3 class="opo-card-title">Enlaces</h3>
+                               <p class="opo-card-desc"><em>Webs oficiales, recursos externos y herramientas recomendadas</em></p>
+                               <span class="opo-card-cta">Ver enlaces <span class="cta-arrow">→</span></span>
+                           </a>
+                       </div>
+                </div>
+
+                <div class="content-text">
                     <div class="highlight-box">
                         <p>Todos los contenidos están disponibles para descargar en formato ZIP:</p>
                         <a href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/materiales-latest/materiales-tcee.zip" download class="highlight-link">📁 Descargar todos los materiales (ZIP)</a>
@@ -169,6 +214,195 @@
             </article>
         </div>
     </main>
+
+<style>
+    /* Oposición Cards Grid */
+    .opo-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Individual Card */
+    .opo-card {
+        background: var(--color-white);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--color-border-light);
+    }
+
+    .opo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        transition: height 0.3s ease;
+    }
+
+    .opo-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(95, 41, 135, 0.12);
+    }
+
+    .opo-card:hover::before {
+        height: 5px;
+    }
+
+    .opo-card a {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        height: 100%;
+    }
+
+    /* Card Variants */
+    .opo-card--primary::before {
+        background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    }
+
+    .opo-card--primary .opo-card-icon {
+        background: linear-gradient(135deg, var(--color-primary-pale) 0%, rgba(95, 41, 135, 0.08) 100%);
+        color: var(--color-primary);
+    }
+
+    .opo-card--primary:hover {
+        background: linear-gradient(135deg, var(--color-white) 0%, var(--color-primary-pale) 100%);
+    }
+
+    .opo-card--secondary::before {
+        background: linear-gradient(90deg, var(--color-accent-gold) 0%, var(--color-accent-gold-light) 100%);
+    }
+
+    .opo-card--secondary .opo-card-icon {
+        background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(184, 134, 11, 0.04) 100%);
+        color: var(--color-accent-gold);
+    }
+
+    .opo-card--secondary:hover {
+        background: linear-gradient(135deg, var(--color-white) 0%, rgba(184, 134, 11, 0.06) 100%);
+    }
+
+    .opo-card--tertiary::before {
+        background: linear-gradient(90deg, #4a9079 0%, #6bb39e 100%);
+    }
+
+    .opo-card--tertiary .opo-card-icon {
+        background: linear-gradient(135deg, rgba(74, 144, 121, 0.1) 0%, rgba(74, 144, 121, 0.04) 100%);
+        color: #4a9079;
+    }
+
+    .opo-card--tertiary:hover {
+        background: linear-gradient(135deg, var(--color-white) 0%, rgba(74, 144, 121, 0.06) 100%);
+    }
+
+    /* Card Icon */
+    .opo-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .opo-card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .opo-card:hover .opo-card-icon {
+        transform: scale(1.1);
+    }
+
+    /* Card Title */
+    .opo-card-title {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 0 0 0.5rem 0;
+        line-height: 1.2;
+    }
+
+    /* Card Description */
+    .opo-card-desc {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        line-height: 1.5;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    /* Card CTA */
+    .opo-card-cta {
+        font-family: var(--font-ui);
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--color-primary);
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: gap 0.3s ease;
+    }
+
+    .opo-card--secondary .opo-card-cta {
+        color: var(--color-accent-gold);
+    }
+
+    .opo-card--tertiary .opo-card-cta {
+        color: #4a9079;
+    }
+
+    .opo-card:hover .opo-card-cta {
+        gap: 0.6rem;
+    }
+
+    .opo-card:hover .cta-arrow {
+        transform: translateX(3px);
+    }
+
+    .cta-arrow {
+        transition: transform 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+        .opo-cards {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .opo-card a {
+            padding: 1.25rem;
+        }
+
+        .opo-card-icon {
+            width: 42px;
+            height: 42px;
+        }
+
+        .opo-card-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .opo-card-title {
+            font-size: 1.1rem;
+        }
+    }
+</style>
 
 <footer class="site-footer">
     <div class="footer-content">
