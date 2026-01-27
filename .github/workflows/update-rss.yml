@@ -1,12 +1,24 @@
-name: Update RSS Feed
+name: Update RSS Feed and Send Newsletter
 
 on:
   push:
     paths:
-      - 'blog/*.qmd'
+      # Se activa cuando se pushean artículos renderizados (HTML)
+      - 'blog/*.html'
+      - 'blog/index.html'
+      # También para cambios en los scripts
       - 'generate-rss.js'
+      - 'send-newsletter.js'
       - '.github/workflows/update-rss.yml'
+    branches:
+      - main
   workflow_dispatch:
+    inputs:
+      skip_newsletter:
+        description: 'Skip sending newsletter'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   build:
@@ -17,18 +29,27 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
 
-    - name: Generate RSS
+    - name: Generate RSS from HTML files
       run: node generate-rss.js
+
+    - name: Send Newsletter (if new articles)
+      if: ${{ github.event.inputs.skip_newsletter != 'true' }}
+      env:
+        BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+        BREVO_LIST_ID: ${{ secrets.BREVO_LIST_ID }}
+      run: node send-newsletter.js
 
     - name: Commit and push if changed
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add blog/newsletter/rss.xml
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Update RSS feed [skip ci]" && git push)
+        git add blog/newsletter/rss.xml blog/newsletter/published-articles.json
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Update RSS feed and article registry [skip ci]" && git push)
