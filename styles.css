@@ -1127,7 +1127,7 @@ body {
     align-items: center;
     gap: 0.4rem;
     padding: 0.4rem 0.85rem;
-    background: linear-gradient(135deg, var(--color-primary) 0%, #7b3fa8 100%);
+    background: linear-gradient(135deg, var(--color-accent-gold) 0%, #d4a012 100%);
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -1138,28 +1138,28 @@ body {
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(95, 41, 135, 0.25);
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
 }
 
 .auth-btn:hover {
-    background: linear-gradient(135deg, #7b3fa8 0%, var(--color-primary) 100%);
-    box-shadow: 0 4px 12px rgba(95, 41, 135, 0.35);
+    background: linear-gradient(135deg, #d4a012 0%, var(--color-accent-gold) 100%);
+    box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
     transform: translateY(-1px);
 }
 
 .auth-btn:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(95, 41, 135, 0.25);
+    box-shadow: 0 2px 6px rgba(184, 134, 11, 0.3);
 }
 
 .auth-btn.logged-in {
-    background: linear-gradient(135deg, #4a9079 0%, #5ba88f 100%);
-    box-shadow: 0 2px 8px rgba(74, 144, 121, 0.25);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #7b3fa8 100%);
+    box-shadow: 0 2px 8px rgba(95, 41, 135, 0.25);
 }
 
 .auth-btn.logged-in:hover {
-    background: linear-gradient(135deg, #5ba88f 0%, #4a9079 100%);
-    box-shadow: 0 4px 12px rgba(74, 144, 121, 0.35);
+    background: linear-gradient(135deg, #7b3fa8 0%, var(--color-primary) 100%);
+    box-shadow: 0 4px 12px rgba(95, 41, 135, 0.35);
 }
 
 .auth-icon {
@@ -1168,6 +1168,12 @@ body {
     justify-content: center;
     font-size: 0.9rem;
     line-height: 1;
+}
+
+.auth-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-primary);
 }
 
 .auth-icon img {
@@ -1180,6 +1186,11 @@ body {
     white-space: nowrap;
 }
 
+/* Auth button - logged in icon color */
+.auth-btn.logged-in .auth-icon svg {
+    stroke: #fff;
+}
+
 /* Auth button - Tablet */
 @media (max-width: 768px) {
     .auth-btn {
@@ -1188,8 +1199,9 @@ body {
         gap: 0.3rem;
     }
 
-    .auth-icon {
-        font-size: 0.85rem;
+    .auth-icon svg {
+        width: 14px;
+        height: 14px;
     }
 
     .auth-icon img {
@@ -1212,8 +1224,9 @@ body {
         display: none;
     }
 
-    .auth-icon {
-        font-size: 0.9rem;
+    .auth-icon svg {
+        width: 16px;
+        height: 16px;
     }
 
     .auth-icon img {

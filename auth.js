@@ -57,7 +57,7 @@ function injectLoginButton(auth, provider) {
     const btn = document.createElement('button');
     btn.className = 'auth-btn';
     btn.innerHTML = `
-        <span class="auth-icon">👤</span>
+        <span class="auth-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
         <span class="auth-text">Acceder</span>
     `;
     
@@ -103,7 +103,7 @@ function updateUIForLogout() {
         const authText = loginButton.querySelector('.auth-text');
         const authIcon = loginButton.querySelector('.auth-icon');
         if (authText) authText.textContent = 'Acceder';
-        if (authIcon) authIcon.textContent = '👤';
+        if (authIcon) authIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
         loginButton.classList.remove('logged-in');
     }
 }
