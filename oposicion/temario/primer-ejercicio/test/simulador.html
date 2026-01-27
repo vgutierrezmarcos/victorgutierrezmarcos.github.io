@@ -1735,8 +1735,15 @@
                 });
                 
                 const temasNombres = pregunta.temas.map(t => {
-                    const numTema = t.replace('3.A.', '').replace('3.B.', '');
-                    return `<a href="../../tercer-ejercicio.html" target="_blank" class="temas-tag" title="Ver tema ${numTema} del tercer ejercicio">${t}: ${datosTest.temas[t]}</a>`;
+                    // Convert "3.A.1" to "3A01" for the PDF filename
+                    const match = t.match(/3\.([AB])\.(\d+)/);
+                    if (match) {
+                        const parte = match[1];
+                        const numTema = match[2].padStart(2, '0');
+                        const pdfFile = `3${parte}${numTema}.pdf`;
+                        return `<a href="../../tercer-ejercicio/${pdfFile}" target="_blank" class="temas-tag" title="Ver tema ${match[2]} del tercer ejercicio">${t}: ${datosTest.temas[t]}</a>`;
+                    }
+                    return `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`;
                 }).join('');
                 
                 const origenText = examen ? `${examen.nombre} - Pregunta ${pregunta.numero}` : 'Pregunta de elaboración propia';
