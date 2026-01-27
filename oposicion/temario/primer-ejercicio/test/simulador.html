@@ -727,6 +727,12 @@
             border-radius: 4px;
             margin-right: 0.5rem;
             font-size: 0.8rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        a.temas-tag:hover {
+            background: var(--color-primary);
+            color: white;
         }
 
         /* Botones de resultados */
@@ -1448,8 +1454,7 @@
 
         function mostrarPregunta() {
             const pregunta = preguntasExamen[indicePreguntaActual];
-            const examen = datosTest.examenes.find(e => e.id === pregunta.examen);
-            
+
             document.getElementById('pregunta-actual').textContent = indicePreguntaActual + 1;
             
             let opcionesHtml = '';
@@ -1465,12 +1470,6 @@
                 `;
             });
             
-            const temasNombres = pregunta.temas.map(t => 
-                `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`
-            ).join('');
-            
-            const origenText = examen ? `${examen.nombre} - Pregunta ${pregunta.numero}` : 'Pregunta de elaboración propia';
-            
             const container = document.getElementById('pregunta-container');
             container.innerHTML = `
                 <div class="pregunta-numero">
@@ -1479,10 +1478,6 @@
                 </div>
                 <div class="pregunta-enunciado">${pregunta.enunciado}</div>
                 <ul class="opciones-list">${opcionesHtml}</ul>
-                <div class="revision-meta">
-                    <div class="origen">${origenText}</div>
-                    <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
-                </div>
             `;
             
             // Event listeners para las opciones
@@ -1739,9 +1734,10 @@
                     `;
                 });
                 
-                const temasNombres = pregunta.temas.map(t => 
-                    `<span class="temas-tag">${t}: ${datosTest.temas[t]}</span>`
-                ).join('');
+                const temasNombres = pregunta.temas.map(t => {
+                    const numTema = t.replace('3.A.', '').replace('3.B.', '');
+                    return `<a href="../../tercer-ejercicio.html" target="_blank" class="temas-tag" title="Ver tema ${numTema} del tercer ejercicio">${t}: ${datosTest.temas[t]}</a>`;
+                }).join('');
                 
                 const origenText = examen ? `${examen.nombre} - Pregunta ${pregunta.numero}` : 'Pregunta de elaboración propia';
                 
