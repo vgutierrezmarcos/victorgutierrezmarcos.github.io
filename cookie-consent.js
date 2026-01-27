@@ -136,21 +136,22 @@
             banner.innerHTML = `
                 <div class="cookie-banner-content">
                     <div class="cookie-banner-text">
-                        <h3 id="cookie-banner-title">🍪 Uso de cookies</h3>
+                        <h3 id="cookie-banner-title">🍪 Uso de cookies y almacenamiento local</h3>
                         <p id="cookie-banner-description">
-                            Este sitio web utiliza cookies propias y de terceros para gestionar la sesión de usuario, 
-                            analizar el tráfico y mejorar tu experiencia de navegación. Puedes aceptar todas las cookies, 
-                            rechazarlas o configurar tus preferencias.
+                            Este sitio web utiliza cookies y tecnologías similares (localStorage) para: gestionar
+                            tu sesión de usuario si inicias sesión con Google, almacenar tus preferencias, y con tu
+                            consentimiento, analizar el tráfico mediante Google Analytics. Puedes aceptar, rechazar
+                            o configurar tus preferencias.
                         </p>
-                        <a href="/politica-cookies.html" class="cookie-link">Más información sobre cookies</a>
+                        <a href="/politica-cookies.html" class="cookie-link">Más información sobre cookies y privacidad</a>
                     </div>
-                    
+
                     <div class="cookie-banner-actions">
                         <button id="cookie-accept-all" class="cookie-btn cookie-btn-primary">
                             Aceptar todas
                         </button>
                         <button id="cookie-reject-all" class="cookie-btn cookie-btn-secondary">
-                            Rechazar todas
+                            Solo esenciales
                         </button>
                         <button id="cookie-customize" class="cookie-btn cookie-btn-link">
                             Configurar
@@ -185,13 +186,15 @@
             modal.innerHTML = `
                 <div class="cookie-modal-overlay"></div>
                 <div class="cookie-modal-content">
-                    <h3 id="cookie-settings-title">Configuración de cookies</h3>
-                    
+                    <h3 id="cookie-settings-title">Configuración de cookies y almacenamiento</h3>
+
                     <div class="cookie-category">
                         <div class="cookie-category-header">
                             <div class="cookie-category-info">
-                                <h4>Cookies esenciales</h4>
-                                <p>Necesarias para el funcionamiento básico del sitio. No se pueden desactivar.</p>
+                                <h4>Esenciales y funcionales</h4>
+                                <p>Necesarias para el funcionamiento del sitio: preferencias de cookies,
+                                   sesión de usuario (si inicias sesión con Google), y estado de banners.
+                                   No se pueden desactivar.</p>
                             </div>
                             <label class="cookie-toggle cookie-toggle-disabled">
                                 <input type="checkbox" checked disabled>
@@ -199,13 +202,13 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="cookie-category">
                         <div class="cookie-category-header">
                             <div class="cookie-category-info">
                                 <h4>Cookies de análisis</h4>
-                                <p>Nos permiten medir el tráfico y analizar el comportamiento de los usuarios 
-                                   para mejorar el sitio. Utilizamos Google Analytics.</p>
+                                <p>Nos permiten medir el tráfico y analizar cómo se usa el sitio para mejorarlo.
+                                   Utilizamos Google Analytics con IP anonimizada.</p>
                             </div>
                             <label class="cookie-toggle">
                                 <input type="checkbox" id="cookie-analytics-toggle" ${analyticsChecked ? 'checked' : ''}>
@@ -213,7 +216,7 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="cookie-modal-actions">
                         <button id="cookie-save-settings" class="cookie-btn cookie-btn-primary">
                             Guardar preferencias

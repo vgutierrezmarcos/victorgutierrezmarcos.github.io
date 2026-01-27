@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Cookies | Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Política de cookies del sitio web victorgutierrezmarcos.es - Información sobre el uso de cookies y cómo gestionarlas según el RGPD">
+    <title>Política de Cookies y Privacidad | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Política de cookies y privacidad del sitio web victorgutierrezmarcos.es - Información sobre cookies, almacenamiento local, inicio de sesión y newsletter según el RGPD">
     <meta name="robots" content="noindex, follow">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -342,45 +342,51 @@
     <main class="main-content">
         <div class="legal-container">
             <header class="legal-header">
-                <h1>🍪 Política de Cookies</h1>
+                <h1>🍪 Política de Cookies y Privacidad</h1>
                 <p class="last-updated">Última actualización: enero de 2026</p>
             </header>
             
             <article class="legal-content">
-                <h2>1. ¿Qué son las cookies?</h2>
+                <h2>1. ¿Qué son las cookies y tecnologías similares?</h2>
                 <p>
-                    Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo 
-                    (ordenador, tablet o móvil) cuando los visitas. Se utilizan ampliamente para hacer que 
-                    los sitios web funcionen de manera más eficiente y para proporcionar información a los 
-                    propietarios del sitio.
+                    Las <strong>cookies</strong> son pequeños archivos de texto que los sitios web almacenan en tu dispositivo
+                    (ordenador, tablet o móvil) cuando los visitas. Además de cookies, este sitio utiliza tecnologías
+                    similares como <strong>localStorage</strong> e <strong>IndexedDB</strong>, que permiten almacenar datos
+                    en tu navegador de forma local.
                 </p>
-                
+                <p>
+                    Estas tecnologías se utilizan para hacer que el sitio funcione correctamente, recordar tus
+                    preferencias, y con tu consentimiento, analizar cómo se usa el sitio para mejorarlo.
+                </p>
+
                 <div class="info-card">
                     <p>
-                        <strong>En este sitio web respetamos tu privacidad.</strong> Las cookies de análisis 
-                        solo se activan si das tu consentimiento explícito. Puedes cambiar tus preferencias 
-                        en cualquier momento.
+                        <strong>En este sitio web respetamos tu privacidad.</strong> Las cookies de análisis
+                        solo se activan si das tu consentimiento explícito. El inicio de sesión con Google y
+                        la suscripción a la newsletter son completamente opcionales. Puedes cambiar tus
+                        preferencias en cualquier momento.
                     </p>
                 </div>
                 
-                <h2>2. ¿Qué cookies utilizamos?</h2>
+                <h2>2. ¿Qué cookies y tecnologías utilizamos?</h2>
                 <p>
-                    Este sitio web utiliza diferentes tipos de cookies. A continuación te explicamos 
-                    cuáles son y para qué las utilizamos:
+                    Este sitio web utiliza cookies y tecnologías similares como localStorage e IndexedDB.
+                    A continuación te explicamos cuáles son y para qué las utilizamos:
                 </p>
-                
-                <h3>2.1. Cookies esenciales</h3>
+
+                <h3>2.1. Cookies y almacenamiento esencial</h3>
                 <p>
-                    Son necesarias para el funcionamiento básico del sitio web. Estas cookies no recopilan 
-                    información personal que pueda ser utilizada con fines de marketing.
+                    Son necesarias para el funcionamiento básico del sitio web. Incluyen la gestión de
+                    tu sesión si inicias sesión con tu cuenta de Google, y el almacenamiento de tus
+                    preferencias. Estas tecnologías no recopilan información personal con fines de marketing.
                 </p>
-                
+
                 <div class="cookie-table-wrapper">
                     <table class="cookie-table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Proveedor</th>
+                                <th>Tipo</th>
                                 <th>Propósito</th>
                                 <th>Duración</th>
                             </tr>
@@ -388,21 +394,51 @@
                         <tbody>
                             <tr>
                                 <td><code>vgm_cookie_consent</code></td>
-                                <td>Este sitio</td>
+                                <td>localStorage</td>
                                 <td>Almacena tus preferencias de cookies</td>
-                                <td>1 año</td>
+                                <td>Permanente</td>
                             </tr>
                             <tr>
                                 <td><code>firebase:authUser:*</code></td>
-                                <td>Google Firebase</td>
-                                <td>Mantiene la sesión del usuario iniciada de forma segura</td>
+                                <td>IndexedDB / localStorage</td>
+                                <td>Mantiene tu sesión iniciada de forma segura cuando accedes con Google</td>
                                 <td>Persistente</td>
+                            </tr>
+                            <tr>
+                                <td><code>newsletter_subscribed</code></td>
+                                <td>localStorage</td>
+                                <td>Recuerda si ya estás suscrito a la newsletter para no mostrarte el formulario</td>
+                                <td>Permanente</td>
+                            </tr>
+                            <tr>
+                                <td><code>newsletter_banner_closed</code></td>
+                                <td>localStorage</td>
+                                <td>Recuerda si has cerrado el banner de newsletter temporalmente</td>
+                                <td>10 minutos</td>
+                            </tr>
+                            <tr>
+                                <td><code>course_banner_closed</code></td>
+                                <td>localStorage</td>
+                                <td>Recuerda si has cerrado el banner promocional temporalmente</td>
+                                <td>10 minutos</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
-                <h3>2.2. Cookies de análisis</h3>
+
+                <h3>2.2. Almacenamiento de datos de usuario (Firebase)</h3>
+                <p>
+                    Si inicias sesión con tu cuenta de Google, almacenamos de forma segura en la nube (Firebase Firestore):
+                </p>
+                <ul>
+                    <li><strong>Historial de exámenes:</strong> Tus resultados en el simulador de test (fecha, puntuación, tiempo empleado) para que puedas hacer seguimiento de tu progreso.</li>
+                </ul>
+                <p>
+                    Estos datos están asociados a tu cuenta de Google y solo tú puedes acceder a ellos.
+                    Puedes eliminar tu historial contactando con nosotros.
+                </p>
+
+                <h3>2.3. Cookies de análisis</h3>
                 <p>
                     Nos permiten medir y analizar cómo los usuarios navegan por el sitio web. Esto ayuda 
                     a mejorar el funcionamiento del sitio y la experiencia de usuario. <strong>Estas cookies 
@@ -441,16 +477,85 @@
                         </tbody>
                     </table>
                 </div>
-                
-                <h2>3. Base legal para el tratamiento</h2>
+
+                <h3>2.4. Cookies de terceros (formularios)</h3>
                 <p>
-                    El tratamiento de datos mediante cookies de análisis se basa en tu <strong>consentimiento</strong>, 
-                    que puedes otorgar o retirar en cualquier momento a través del panel de configuración de 
-                    cookies de este sitio web.
+                    El formulario de suscripción a la newsletter utiliza servicios de terceros que pueden
+                    establecer sus propias cookies:
                 </p>
+
+                <div class="cookie-table-wrapper">
+                    <table class="cookie-table">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Proveedor</th>
+                                <th>Propósito</th>
+                                <th>Más información</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>reCAPTCHA v3</strong></td>
+                                <td>Google</td>
+                                <td>Protege el formulario de newsletter contra spam y bots de forma invisible</td>
+                                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Google</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brevo</strong></td>
+                                <td>Brevo (Sendinblue)</td>
+                                <td>Gestión de la lista de suscriptores y envío de newsletters</td>
+                                <td><a href="https://www.brevo.com/es/legal/privacypolicy/" target="_blank" rel="noopener">Política de Brevo</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>3. Base legal para el tratamiento</h2>
+
+                <div class="cookie-table-wrapper">
+                    <table class="cookie-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de tratamiento</th>
+                                <th>Base legal</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cookies esenciales y localStorage</strong></td>
+                                <td>Interés legítimo</td>
+                                <td>Necesarias para el funcionamiento técnico del sitio web</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inicio de sesión con Google</strong></td>
+                                <td>Consentimiento</td>
+                                <td>Solo se activa cuando decides iniciar sesión voluntariamente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Historial de exámenes</strong></td>
+                                <td>Consentimiento / Ejecución de contrato</td>
+                                <td>Se almacena solo si inicias sesión, para ofrecerte el servicio de seguimiento</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cookies de análisis</strong></td>
+                                <td>Consentimiento</td>
+                                <td>Solo se activan si das tu consentimiento explícito</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Suscripción a newsletter</strong></td>
+                                <td>Consentimiento</td>
+                                <td>Tu email se almacena en Brevo solo si te suscribes voluntariamente</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <p>
-                    Para las cookies esenciales, la base legal es el <strong>interés legítimo</strong> del 
-                    responsable del sitio web, ya que son necesarias para el funcionamiento técnico del mismo.
+                    Puedes retirar tu consentimiento en cualquier momento a través del panel de configuración
+                    de cookies, cerrando sesión, o dándote de baja de la newsletter mediante el enlace
+                    incluido en cada email.
                 </p>
                 
                 <h2>4. ¿Cómo puedes gestionar las cookies?</h2>
@@ -481,14 +586,16 @@
                 
                 <h2>5. Transferencias internacionales</h2>
                 <p>
-                    Google Analytics puede transferir datos a servidores ubicados en Estados Unidos. Google 
-                    cumple con el EU-US Data Privacy Framework, lo que garantiza un nivel adecuado de 
-                    protección de datos según la normativa europea.
+                    Algunos de los servicios utilizados en este sitio web pueden transferir datos a servidores
+                    ubicados fuera del Espacio Económico Europeo:
                 </p>
-                <p>
-                    Puedes consultar más información sobre las prácticas de privacidad de Google en su 
-                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.
-                </p>
+                <ul>
+                    <li><strong>Google (Analytics, Firebase, reCAPTCHA):</strong> Puede transferir datos a Estados Unidos.
+                        Google cumple con el EU-US Data Privacy Framework, lo que garantiza un nivel adecuado de
+                        protección de datos. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google</a>.</li>
+                    <li><strong>Brevo (Newsletter):</strong> Los datos de suscriptores se almacenan en servidores de la UE.
+                        <a href="https://www.brevo.com/es/legal/privacypolicy/" target="_blank" rel="noopener">Política de privacidad de Brevo</a>.</li>
+                </ul>
                 
                 <h2>6. Responsable del tratamiento</h2>
                 <p>
@@ -513,9 +620,18 @@
                     <li>Solicitar la portabilidad de tus datos</li>
                     <li>Retirar el consentimiento en cualquier momento</li>
                 </ul>
+
+                <h3>¿Cómo ejercer tus derechos?</h3>
+                <ul>
+                    <li><strong>Cookies de análisis:</strong> Usa el botón "Configurar mis cookies" en esta página.</li>
+                    <li><strong>Cerrar sesión:</strong> Haz clic en tu perfil y selecciona "Cerrar sesión".</li>
+                    <li><strong>Eliminar historial de exámenes:</strong> Contacta con nosotros por email.</li>
+                    <li><strong>Darte de baja de la newsletter:</strong> Usa el enlace "Cancelar suscripción" en cualquier email recibido.</li>
+                    <li><strong>Eliminar todos tus datos:</strong> Contacta con nosotros en <a href="mailto:contacto@victorgutierrezmarcos.es">contacto@victorgutierrezmarcos.es</a>.</li>
+                </ul>
                 <p>
-                    Para ejercer estos derechos, puedes utilizar el panel de configuración de cookies o 
-                    contactar con el responsable del sitio web a través del correo electrónico indicado.
+                    También puedes presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos (AEPD)</a>
+                    si consideras que tus derechos no han sido atendidos correctamente.
                 </p>
                 
                 <h2>8. Actualizaciones de esta política</h2>
