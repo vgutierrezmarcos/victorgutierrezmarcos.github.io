@@ -72,46 +72,310 @@
         </div>
     </nav>
 
-    <main class="main-content">
+    <main class="main-content home-main">
+        <!-- Cards Section -->
         <div class="home-cards">
-            <div class="tema-card tema-card--featured">
+            <div class="home-card home-card--primary">
                 <a href="oposicion/index.html">
-                    <span class="tema-card-number">Recursos</span>
-                    <h3 class="tema-card-title">Materiales para la oposición a TCEE</h3>
-                    <p class="tema-card-desc">Temario, materiales y recursos gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado</p>
+                    <div class="home-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <line x1="8" y1="7" x2="16" y2="7"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </div>
+                    <span class="home-card-label">Recursos</span>
+                    <h3 class="home-card-title">Oposición a TCEE</h3>
+                    <p class="home-card-desc">Temario, materiales y recursos gratuitos para preparar la oposición a Técnico Comercial y Economista del Estado</p>
+                    <span class="home-card-cta">Explorar recursos <span class="cta-arrow">→</span></span>
                 </a>
             </div>
-            <div class="tema-card tema-card--featured">
+            <div class="home-card home-card--secondary">
                 <a href="blog/index.html">
-                    <span class="tema-card-number">Artículos</span>
-                    <h3 class="tema-card-title">Blog</h3>
-                    <p class="tema-card-desc">Reflexiones y artículos sobre política económica y comercio</p>
+                    <div class="home-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg>
+                    </div>
+                    <span class="home-card-label">Artículos</span>
+                    <h3 class="home-card-title">Blog</h3>
+                    <p class="home-card-desc">Reflexiones y análisis sobre política económica y comercio internacional</p>
+                    <span class="home-card-cta">Leer artículos <span class="cta-arrow">→</span></span>
                 </a>
             </div>
-            <div class="tema-card">
+            <div class="home-card home-card--tertiary">
                 <a href="sobre-mi.html">
-                    <span class="tema-card-number">Contacto</span>
-                    <h3 class="tema-card-title">Sobre mí</h3>
-                    <p class="tema-card-desc">Información y formas de contacto</p>
+                    <div class="home-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <span class="home-card-label">Contacto</span>
+                    <h3 class="home-card-title">Sobre mí</h3>
+                    <p class="home-card-desc">Información profesional y formas de contacto</p>
+                    <span class="home-card-cta">Conocer más <span class="cta-arrow">→</span></span>
                 </a>
             </div>
         </div>
     </main>
 
     <style>
+        /* Homepage Main */
+        .home-main {
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-cream) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Welcome Section */
+        .home-welcome {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .home-tagline {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin: 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .home-tagline::before,
+        .home-tagline::after {
+            content: '—';
+            margin: 0 0.75rem;
+            color: var(--color-primary-light);
+        }
+
+        /* Cards Grid */
         .home-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            gap: 1.5rem;
             width: 100%;
-            max-width: none;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1.5rem 0.75rem;
+            padding: 0 1rem;
         }
-        @media (max-width: 768px) {
+
+        /* Individual Card */
+        .home-card {
+            background: var(--color-white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .home-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            transition: height 0.3s ease;
+        }
+
+        .home-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(95, 41, 135, 0.15);
+        }
+
+        .home-card:hover::before {
+            height: 6px;
+        }
+
+        .home-card a {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+            min-height: 280px;
+        }
+
+        /* Card Variants */
+        .home-card--primary::before {
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        }
+
+        .home-card--primary .home-card-icon {
+            background: linear-gradient(135deg, var(--color-primary-pale) 0%, rgba(95, 41, 135, 0.1) 100%);
+            color: var(--color-primary);
+        }
+
+        .home-card--primary:hover {
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-primary-pale) 100%);
+        }
+
+        .home-card--secondary::before {
+            background: linear-gradient(90deg, var(--color-accent-gold) 0%, var(--color-accent-gold-light) 100%);
+        }
+
+        .home-card--secondary .home-card-icon {
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(184, 134, 11, 0.05) 100%);
+            color: var(--color-accent-gold);
+        }
+
+        .home-card--secondary:hover {
+            background: linear-gradient(135deg, var(--color-white) 0%, rgba(184, 134, 11, 0.08) 100%);
+        }
+
+        .home-card--tertiary::before {
+            background: linear-gradient(90deg, #4a9079 0%, #6bb39e 100%);
+        }
+
+        .home-card--tertiary .home-card-icon {
+            background: linear-gradient(135deg, rgba(74, 144, 121, 0.1) 0%, rgba(74, 144, 121, 0.05) 100%);
+            color: #4a9079;
+        }
+
+        .home-card--tertiary:hover {
+            background: linear-gradient(135deg, var(--color-white) 0%, rgba(74, 144, 121, 0.08) 100%);
+        }
+
+        /* Card Icon */
+        .home-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .home-card-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .home-card:hover .home-card-icon {
+            transform: scale(1.1);
+        }
+
+        /* Card Label */
+        .home-card-label {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Card Title */
+        .home-card-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0 0 0.75rem 0;
+            line-height: 1.2;
+        }
+
+        /* Card Description */
+        .home-card-desc {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        /* Card CTA */
+        .home-card-cta {
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            margin-top: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .home-card--secondary .home-card-cta {
+            color: var(--color-accent-gold);
+        }
+
+        .home-card--tertiary .home-card-cta {
+            color: #4a9079;
+        }
+
+        .cta-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .home-card:hover .home-card-cta {
+            gap: 0.75rem;
+        }
+
+        .home-card:hover .cta-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
             .home-cards {
                 grid-template-columns: 1fr;
-                padding: 1rem 0.5rem;
+                max-width: 500px;
+                gap: 1.25rem;
+            }
+
+            .home-card a {
+                min-height: auto;
+                padding: 1.5rem;
+            }
+
+            .home-card-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .home-card-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .home-card-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .home-main {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .home-welcome {
+                margin-bottom: 1.5rem;
+            }
+
+            .home-tagline {
+                font-size: 1rem;
+            }
+
+            .home-tagline::before,
+            .home-tagline::after {
+                display: none;
             }
         }
     </style>
