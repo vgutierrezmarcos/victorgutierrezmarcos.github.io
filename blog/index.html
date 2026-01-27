@@ -73,12 +73,32 @@
                 <div class="newsletter-box" style="margin: 2rem 0; padding: 2rem; background: var(--color-bg-light); border-radius: 8px; border-left: 4px solid var(--color-primary); text-align: center;">
                     <h3 style="font-family: var(--font-display); color: var(--color-primary); margin-bottom: 1rem;">📬 Newsletter</h3>
                     <p style="margin-bottom: 1.5rem;">Suscríbete para recibir los nuevos artículos y novedades directamente en tu correo.</p>
-                    <form onsubmit="alert('La suscripción estará disponible próximamente.'); return false;" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
-                        <input type="email" placeholder="Tu correo electrónico" required style="padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 4px; min-width: 250px; font-family: var(--font-ui);">
+                    <!-- BREVO FORM PLACEHOLDER -->
+                    <form id="newsletter-form" action="TU_URL_DE_ACCION_DE_BREVO_AQUI" method="post" target="_blank" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                        <input type="email" id="newsletter-email" name="EMAIL" placeholder="Tu correo electrónico" required style="padding: 0.8rem; border: 1px solid var(--color-border); border-radius: 4px; min-width: 250px; font-family: var(--font-ui);">
                         <button type="submit" style="display: inline-block; padding: 0.8rem 1.5rem; background: var(--color-primary); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-family: var(--font-ui); transition: background var(--transition-fast); border: none; cursor: pointer;">Suscribirse</button>
                     </form>
                     <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 1rem;">* No enviamos spam. Puedes darte de baja cuando quieras.</p>
                 </div>
+
+                <script>
+                    // Auto-fill email if logged in
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const checkAuth = setInterval(() => {
+                            if (typeof firebase !== 'undefined' && firebase.auth()) {
+                                clearInterval(checkAuth);
+                                firebase.auth().onAuthStateChanged((user) => {
+                                    if (user && user.email) {
+                                        const emailInput = document.getElementById('newsletter-email');
+                                        if (emailInput && !emailInput.value) {
+                                            emailInput.value = user.email;
+                                        }
+                                    }
+                                });
+                            }
+                        }, 500);
+                    });
+                </script>
 
                 <div class="articles-list">
                     <!-- INICIO ARTÍCULOS -->
