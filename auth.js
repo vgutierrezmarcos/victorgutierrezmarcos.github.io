@@ -51,6 +51,7 @@ function injectLoginButton(auth, provider) {
     // Crear elemento de lista para el login
     const li = document.createElement('li');
     li.id = 'auth-nav-item';
+    li.className = 'nav-right-item'; // Clase para alineación a la derecha
     
     // Botón de login
     const btn = document.createElement('button');

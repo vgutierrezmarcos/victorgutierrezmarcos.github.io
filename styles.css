@@ -1266,3 +1266,8 @@ body {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* Alineación de elementos a la derecha en la barra de navegación */
+.nav-list li:not(.nav-right-item) + li.nav-right-item {
+    margin-left: auto;
+}

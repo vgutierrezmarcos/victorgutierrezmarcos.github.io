@@ -80,6 +80,7 @@ class SearchUI {
         const nav = document.querySelector('.nav-list');
         if (nav) {
             const searchLi = document.createElement('li');
+            searchLi.className = 'nav-right-item'; // Clase para alineación a la derecha
             searchLi.innerHTML = `
                 <a href="#" id="open-search" class="search-trigger">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
