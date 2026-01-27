@@ -66,7 +66,7 @@ async function showUserHistoryUI() {
     modal.innerHTML = `
         <div class="profile-content" style="max-width: 800px; width: 95%;">
             <span class="close-profile" onclick="document.getElementById('history-modal').style.display='none'">&times;</span>
-            <h3 style="color: var(--color-primary); font-family: var(--font-display); margin-bottom: 1.5rem;">📅 Tu Historial de Exámenes</h3>
+            <h3 style="color: var(--color-primary); font-family: var(--font-display); margin-bottom: 1.5rem;">📅 Tu historial de exámenes</h3>
             <div id="history-loading">Cargando datos...</div>
             <div id="history-list" style="max-height: 60vh; overflow-y: auto;"></div>
         </div>
