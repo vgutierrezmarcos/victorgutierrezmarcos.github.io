@@ -293,7 +293,23 @@ async function showUserHistoryFromProfile() {
         });
 
         html += '</tbody></table></div>';
+
+        // Botón de borrar historial
+        html += `
+            <div style="margin-top: 2rem; text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border-light);">
+                <button id="btn-delete-history" class="profile-action-btn logout" style="background: #ffebee; color: #d32f2f; border: 1px solid #ffcdd2; width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    🗑️ Borrar todo el historial
+                </button>
+            </div>
+        `;
+        
         listContainer.innerHTML = html;
+
+        // Event listener para borrar
+        const btnDelete = document.getElementById('btn-delete-history');
+        if (btnDelete) {
+            btnDelete.onclick = () => deleteUserHistory(user.uid);
+        }
 
     } catch (error) {
         console.error('Error cargando historial:', error);
@@ -407,3 +423,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 100);
 });
+
+// Borrar todo el historial del usuario
+async function deleteUserHistory(uid) {
+    if (!confirm('¿Estás seguro de que quieres borrar TODO tu historial de exámenes?\n\nEsta acción eliminará permanentemente todos tus resultados guardados y no se puede deshacer.')) {
+        return;
+    }
+
+    const listContainer = document.getElementById('history-list');
+    const loadingEl = document.getElementById('history-loading');
+    
+    // Mostrar loading
+    if (listContainer) listContainer.style.display = 'none';
+    if (loadingEl) {
+        loadingEl.style.display = 'block';
+        loadingEl.innerHTML = '<div class="loading-spinner"></div><p>Borrando historial...</p>';
+    }
+
+    try {
+        const db = firebase.firestore();
+        // Obtener todos los resultados (sin límite)
+        const snapshot = await db.collection('users').doc(uid).collection('exam_results').get();
+        
+        if (snapshot.empty) {
+            showUserHistoryFromProfile();
+            return;
+        }
+
+        // Borrar en lotes (batches) de 500 (límite de Firestore)
+        const batchSize = 500;
+        const docs = snapshot.docs;
+        const chunks = [];
+
+        for (let i = 0; i < docs.length; i += batchSize) {
+            const chunk = docs.slice(i, i + batchSize);
+            const batch = db.batch();
+            chunk.forEach(doc => batch.delete(doc.ref));
+            chunks.push(batch.commit());
+        }
+
+        await Promise.all(chunks);
+        
+        // Recargar vista
+        showUserHistoryFromProfile();
+        alert('Historial borrado correctamente.');
+
+    } catch (error) {
+        console.error('Error al borrar historial:', error);
+        alert('Hubo un error al intentar borrar el historial: ' + error.message);
+        
+        // Restaurar vista recargándola
+        showUserHistoryFromProfile();
+    }
+}
