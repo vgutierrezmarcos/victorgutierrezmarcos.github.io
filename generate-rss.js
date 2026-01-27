@@ -45,16 +45,23 @@ function formatDateRFC822(dateString) {
 
 function generateRSS() {
     console.log('Scanning for .qmd files in ' + BLOG_DIR);
-    
+
     const files = fs.readdirSync(BLOG_DIR).filter(file => file.endsWith('.qmd') && !file.startsWith('_'));
-    
+
     const posts = [];
-    
+
     for (const file of files) {
         const content = fs.readFileSync(path.join(BLOG_DIR, file), 'utf8');
         const metadata = parseFrontmatter(content);
-        
+
         if (metadata && metadata.title && metadata.date && metadata.slug) {
+            // Solo incluir si el HTML renderizado existe
+            const htmlFile = path.join(BLOG_DIR, `${metadata.slug}.html`);
+            if (!fs.existsSync(htmlFile)) {
+                console.log(`  Skipping "${metadata.title}" - HTML not rendered yet`);
+                continue;
+            }
+
             posts.push({
                 title: metadata.title,
                 date: metadata.date, // Keep original for sorting
@@ -64,11 +71,11 @@ function generateRSS() {
             });
         }
     }
-    
+
     // Sort posts by date (newest first)
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-    console.log(`Found ${posts.length} posts.`);
+
+    console.log(`Found ${posts.length} published posts.`);
 
     const rssItems = posts.map(post => `
     <item>
