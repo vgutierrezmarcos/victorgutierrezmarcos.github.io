@@ -1877,6 +1877,72 @@
         function repetirExamen() {
             comenzarExamen();
         }
+
+        // ============================================
+        // PROTECCIÓN CONTRA SALIDA ACCIDENTAL
+        // ============================================
+
+        let examenEnProgreso = false;
+
+        // Detectar si el examen está en progreso
+        function isExamInProgress() {
+            return examenEnProgreso && !document.getElementById('fase-examen').classList.contains('hidden');
+        }
+
+        // Handler para beforeunload (refresh, cerrar pestaña)
+        function handleBeforeUnload(e) {
+            if (isExamInProgress()) {
+                e.preventDefault();
+                e.returnValue = '¿Estás seguro de que quieres salir? Perderás todo el progreso del examen.';
+                return e.returnValue;
+            }
+        }
+
+        // Interceptar clics en enlaces
+        function handleLinkClick(e) {
+            if (isExamInProgress()) {
+                const link = e.target.closest('a');
+                if (link && link.href && !link.href.startsWith('javascript:')) {
+                    // Excluir enlaces dentro de la pregunta (imágenes, lightbox)
+                    if (link.closest('.pregunta-container') || link.closest('.imagen-lightbox')) {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    if (confirm('¿Estás seguro de que quieres salir? Perderás todo el progreso del examen.')) {
+                        window.removeEventListener('beforeunload', handleBeforeUnload);
+                        window.location.href = link.href;
+                    }
+                }
+            }
+        }
+
+        // Activar protección al comenzar examen
+        const originalComenzarExamen = comenzarExamen;
+        comenzarExamen = function() {
+            examenEnProgreso = true;
+            window.addEventListener('beforeunload', handleBeforeUnload);
+            document.addEventListener('click', handleLinkClick, true);
+            originalComenzarExamen();
+        };
+
+        // Desactivar protección al finalizar
+        const originalFinalizarExamen = finalizarExamen;
+        finalizarExamen = function() {
+            examenEnProgreso = false;
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+            document.removeEventListener('click', handleLinkClick, true);
+            originalFinalizarExamen();
+        };
+
+        // Desactivar protección al volver a selección
+        const originalVolverASeleccion = volverASeleccion;
+        volverASeleccion = function() {
+            examenEnProgreso = false;
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+            document.removeEventListener('click', handleLinkClick, true);
+            originalVolverASeleccion();
+        };
     </script>
     <script src="../../../../course-banner.js"></script>
     <script src="../../../../cookie-consent.js"></script>
