@@ -1267,6 +1267,331 @@ body {
     to { transform: translateY(0); opacity: 1; }
 }
 
+/* ============================================
+   PROFILE MODAL EXTENDED STYLES
+   ============================================ */
+
+.profile-content-extended {
+    max-width: 420px;
+}
+
+.profile-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.profile-action-btn .btn-icon {
+    font-size: 1.1rem;
+}
+
+.profile-action-btn .btn-text {
+    font-size: 0.9rem;
+}
+
+.profile-divider {
+    height: 1px;
+    background: var(--color-border-light);
+    margin: 0.5rem 0;
+}
+
+/* Newsletter Section in Profile */
+.newsletter-profile-section {
+    width: 100%;
+}
+
+.newsletter-subscribed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: #e8f5e9;
+    border-radius: 6px;
+    color: #2e7d32;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.newsletter-btn {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+    color: white !important;
+    border: none;
+}
+
+.newsletter-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white !important;
+}
+
+/* ============================================
+   HISTORY MODAL STYLES
+   ============================================ */
+
+.history-content {
+    max-width: 600px;
+    width: 95%;
+}
+
+.history-title {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.history-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    color: var(--color-text-muted);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-border-light);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.history-empty {
+    text-align: center;
+    padding: 2rem;
+}
+
+.history-empty .empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.history-empty p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.history-error {
+    color: #c62828;
+    text-align: center;
+}
+
+.history-table-wrapper {
+    max-height: 50vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid var(--color-border-light);
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.history-table thead {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg-light);
+}
+
+.history-table th {
+    padding: 0.8rem 0.6rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+.history-table td {
+    padding: 0.8rem 0.6rem;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tr:hover {
+    background: var(--color-bg-cream);
+}
+
+.date-main {
+    display: block;
+    font-weight: 500;
+}
+
+.date-time {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.score-pass {
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+.score-fail {
+    color: #c62828;
+    font-weight: 700;
+}
+
+/* ============================================
+   NEWSLETTER MODAL STYLES
+   ============================================ */
+
+.newsletter-modal-content {
+    max-width: 400px;
+}
+
+.newsletter-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-header .newsletter-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-header h3 {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    margin: 0 0 0.5rem 0;
+}
+
+.newsletter-header p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.newsletter-form {
+    text-align: left;
+}
+
+.newsletter-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.newsletter-form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    margin-bottom: 0.4rem;
+}
+
+.newsletter-form input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: var(--color-bg-light);
+    box-sizing: border-box;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(95, 41, 135, 0.1);
+}
+
+.newsletter-form input[readonly] {
+    background: var(--color-bg-cream);
+    cursor: not-allowed;
+}
+
+.newsletter-submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-ui);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.newsletter-submit-btn:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+}
+
+.newsletter-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.newsletter-privacy {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.newsletter-success {
+    text-align: center;
+    padding: 1rem;
+}
+
+.newsletter-success .success-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.newsletter-success h4 {
+    color: #2e7d32;
+    margin: 0 0 0.5rem 0;
+}
+
+.newsletter-success p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments for modals */
+@media (max-width: 480px) {
+    .history-content {
+        max-width: 100%;
+        width: 100%;
+        margin: 5% auto;
+        border-radius: 0;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .profile-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+
 /* Alineación de elementos a la derecha en la barra de navegación */
 .nav-list li:not(.nav-right-item) + li.nav-right-item {
     margin-left: auto;
