@@ -1125,36 +1125,101 @@ body {
 .auth-btn {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: transparent;
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #7b3fa8 100%);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
     font-family: var(--font-ui);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(95, 41, 135, 0.25);
 }
 
 .auth-btn:hover {
-    background: var(--color-primary-pale);
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    background: linear-gradient(135deg, #7b3fa8 0%, var(--color-primary) 100%);
+    box-shadow: 0 4px 12px rgba(95, 41, 135, 0.35);
+    transform: translateY(-1px);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(95, 41, 135, 0.25);
 }
 
 .auth-btn.logged-in {
-    background: var(--color-bg-light);
-    border-color: var(--color-primary-light);
-    color: var(--color-primary);
+    background: linear-gradient(135deg, #4a9079 0%, #5ba88f 100%);
+    box-shadow: 0 2px 8px rgba(74, 144, 121, 0.25);
+}
+
+.auth-btn.logged-in:hover {
+    background: linear-gradient(135deg, #5ba88f 0%, #4a9079 100%);
+    box-shadow: 0 4px 12px rgba(74, 144, 121, 0.35);
 }
 
 .auth-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.auth-icon img {
+    width: 18px !important;
+    height: 18px !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.auth-text {
+    white-space: nowrap;
+}
+
+/* Auth button - Tablet */
+@media (max-width: 768px) {
+    .auth-btn {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.7rem;
+        gap: 0.3rem;
+    }
+
+    .auth-icon {
+        font-size: 0.85rem;
+    }
+
+    .auth-icon img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* Auth button - Mobile: icon only */
+@media (max-width: 480px) {
+    .auth-btn {
+        padding: 0.5rem;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+    }
+
+    .auth-text {
+        display: none;
+    }
+
+    .auth-icon {
+        font-size: 0.9rem;
+    }
+
+    .auth-icon img {
+        width: 20px !important;
+        height: 20px !important;
+    }
 }
 
 /* Modal de perfil */
