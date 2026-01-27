@@ -766,6 +766,42 @@
             color: #2e7d32;
         }
 
+        /* Imagen de pregunta */
+        .pregunta-imagen-container {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        .pregunta-imagen {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+            background: white;
+            cursor: zoom-in;
+        }
+        .pregunta-imagen:hover {
+            box-shadow: var(--shadow-md);
+        }
+        /* Lightbox */
+        .imagen-lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .imagen-lightbox.active { display: flex; }
+        .imagen-lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .examen-header {
@@ -1057,6 +1093,17 @@
 
     <script src="../../../../search-engine.js"></script>
     <script src="../../../../search-ui.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../../../../firebase-config.js"></script>
+    <script src="../../../../auth.js"></script>
+    <script src="simulator-history.js"></script>
+
     <script>
         let datosTest = { temas: {}, preguntas: [], examenes: [] };
         let temasSeleccionados = new Set();
@@ -1452,6 +1499,40 @@
             mostrarPregunta();
         }
 
+        // Funciones para renderizar imágenes de preguntas
+        function renderizarImagenes(pregunta) {
+            if (!pregunta.imagenes || pregunta.imagenes.length === 0) return '';
+            return pregunta.imagenes.map(img => `
+                <div class="pregunta-imagen-container">
+                    <img src="${img.src}" alt="${img.alt || 'Imagen de la pregunta'}"
+                         class="pregunta-imagen" loading="lazy"
+                         onclick="abrirLightbox(this.src, '${(img.alt || '').replace(/'/g, "\\'")}')">
+                </div>
+            `).join('');
+        }
+
+        function abrirLightbox(src, alt) {
+            let lb = document.getElementById('imagen-lightbox');
+            if (!lb) {
+                lb = document.createElement('div');
+                lb.id = 'imagen-lightbox';
+                lb.className = 'imagen-lightbox';
+                lb.innerHTML = '<img src="" alt="">';
+                lb.onclick = () => lb.classList.remove('active');
+                document.body.appendChild(lb);
+            }
+            lb.querySelector('img').src = src;
+            lb.querySelector('img').alt = alt;
+            lb.classList.add('active');
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const lb = document.getElementById('imagen-lightbox');
+                if (lb) lb.classList.remove('active');
+            }
+        });
+
         function mostrarPregunta() {
             const pregunta = preguntasExamen[indicePreguntaActual];
 
@@ -1477,9 +1558,10 @@
                     ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
                 </div>
                 <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                ${renderizarImagenes(pregunta)}
                 <ul class="opciones-list">${opcionesHtml}</ul>
             `;
-            
+
             // Event listeners para las opciones
             container.querySelectorAll('.opcion-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1595,6 +1677,24 @@
             
             generarRevision();
             generarGraficoBloques();
+
+            // Guardar en Firebase
+            const resultData = {
+                puntosBrutos: puntosBrutos,
+                maxPuntos: maxPuntos,
+                notaSobre10: notaSobre10,
+                correctas: correctas,
+                incorrectas: incorrectas,
+                sinResponder: sinResponder,
+                totalPreguntas: preguntasExamen.length,
+                tiempoSeconds: tiempoTranscurrido,
+                temas: Array.from(temasSeleccionados)
+            };
+            
+            // Llamada a la función de simulator-history.js
+            if (typeof saveExamResult === 'function') {
+                saveExamResult(resultData);
+            }
         }
 
         function generarGraficoBloques() {
@@ -1754,13 +1854,14 @@
                         ${pregunta.tipo_pregunta === 'aceptada' ? '<span class="pregunta-tipo">ANULADA</span>' : ''}
                     </div>
                     <div class="pregunta-enunciado">${pregunta.enunciado}</div>
+                    ${renderizarImagenes(pregunta)}
                     <ul class="opciones-list">${opcionesHtml}</ul>
                     <div class="revision-meta">
                         <div class="origen">${origenText}</div>
                         <div style="margin-top: 0.5rem;">Temas: ${temasNombres}</div>
                     </div>
                 `;
-                
+
                 container.appendChild(div);
             });
         }
