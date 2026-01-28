@@ -68,7 +68,8 @@
         <div class="newsletter-banner-content">
             <span class="newsletter-banner-icon">📬</span>
             <span class="newsletter-banner-text"><strong>Newsletter:</strong> Recibe los nuevos artículos en tu correo</span>
-            <form id="sib-form" class="newsletter-banner-form" method="POST" action="https://6de5a6a5.sibforms.com/serve/MUIFAHXAnoppQR8yHbmoRtq33MhK50ZI1iOJ-8sBBF8_WXTDC59dhFe2-PVOSw3Hr7WQ0oy3ln_lnCztp1v6uuv0v4YY9WzHdtrRAd-sXrbsadRIFPHVPi06HwxZafAqdvWdtLKM6R80la-Ftjc6CGc56jbrcyzdn4iqrUY-qjSU8q5RF6JD46GYRng3vYmHFi54OZvl_Xw0_udNcg==" data-type="subscription">
+            <iframe name="sib-iframe" style="display:none;"></iframe>
+            <form id="sib-form" class="newsletter-banner-form" method="POST" action="https://6de5a6a5.sibforms.com/serve/MUIFAHXAnoppQR8yHbmoRtq33MhK50ZI1iOJ-8sBBF8_WXTDC59dhFe2-PVOSw3Hr7WQ0oy3ln_lnCztp1v6uuv0v4YY9WzHdtrRAd-sXrbsadRIFPHVPi06HwxZafAqdvWdtLKM6R80la-Ftjc6CGc56jbrcyzdn4iqrUY-qjSU8q5RF6JD46GYRng3vYmHFi54OZvl_Xw0_udNcg==" target="sib-iframe" data-type="subscription">
                 <input type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="tu@email.com" required>
                 <button type="submit" class="newsletter-banner-btn">
                     <span class="btn-text">Suscribirse</span>
@@ -278,9 +279,8 @@
 
             // Form submission handler
             if (form) {
-                form.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-
+                form.addEventListener('submit', function(e) {
+                    // Don't prevent default - let form submit to iframe
                     const submitBtn = form.querySelector('.newsletter-banner-btn');
                     const btnText = submitBtn.querySelector('.btn-text');
                     const btnLoader = submitBtn.querySelector('.btn-loader');
@@ -295,20 +295,13 @@
                     errorMsg.style.display = 'none';
                     successMsg.style.display = 'none';
 
-                    try {
-                        const formData = new FormData(form);
+                    // Store the subscribed email
+                    if (emailInput && emailInput.value) {
+                        addSubscribedEmail(emailInput.value);
+                    }
 
-                        await fetch(form.action, {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        // Store the subscribed email
-                        if (emailInput && emailInput.value) {
-                            addSubscribedEmail(emailInput.value);
-                        }
-
-                        // Show success and hide form
+                    // Show success after a short delay (form submits to hidden iframe)
+                    setTimeout(() => {
                         form.style.display = 'none';
                         successMsg.style.display = 'block';
 
@@ -316,16 +309,7 @@
                         setTimeout(() => {
                             banner.style.display = 'none';
                         }, 3000);
-
-                    } catch (error) {
-                        console.error('Newsletter subscription error:', error);
-                        errorMsg.style.display = 'block';
-
-                        // Reset button
-                        btnText.style.display = 'inline';
-                        btnLoader.style.display = 'none';
-                        submitBtn.disabled = false;
-                    }
+                    }, 1000);
                 });
             }
         });
