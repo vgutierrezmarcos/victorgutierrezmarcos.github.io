@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$title$ | Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="$if(subtitle)$$subtitle$$endif$">
+    <meta name="description" content="$if(description)$$description$$else$$if(subtitle)$$subtitle$$endif$$endif$">
     <meta name="author" content="$author$">
     $if(date)$<meta name="date" content="$date$">$endif$
 
@@ -17,10 +17,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="$title$ | Víctor Gutiérrez Marcos">
-    <meta property="og:description" content="$if(subtitle)$$subtitle$$endif$">
+    <meta property="og:description" content="$if(description)$$description$$else$$if(subtitle)$$subtitle$$endif$$endif$">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.victorgutierrezmarcos.es/blog/$if(slug)$$slug$$endif$.html">
-    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:image" content="$if(image)$https://www.victorgutierrezmarcos.es/blog/$image$$else$https://www.victorgutierrezmarcos.es/social-preview.png$endif$">
     <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="Víctor Gutiérrez Marcos">
     <meta property="article:author" content="$author$">
@@ -29,8 +29,9 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="$title$ | Víctor Gutiérrez Marcos">
-    <meta name="twitter:description" content="$if(subtitle)$$subtitle$$endif$">
-    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta name="twitter:description" content="$if(description)$$description$$else$$if(subtitle)$$subtitle$$endif$$endif$">
+    <meta name="twitter:image" content="$if(image)$https://www.victorgutierrezmarcos.es/blog/$image$$else$https://www.victorgutierrezmarcos.es/social-preview.png$endif$">
+    $if(image-alt)$<meta name="twitter:image:alt" content="$image-alt$">$endif$
 
     <!-- SEO: Datos estructurados Schema.org - BlogPosting -->
     <script type="application/ld+json">
@@ -180,7 +181,10 @@
                     const authorEl = document.querySelector('.article-author-name');
                     const title = titleEl ? titleEl.textContent.trim() : document.title;
                     const author = authorEl ? authorEl.textContent.trim() : 'Víctor Gutiérrez Marcos';
-                    const url = window.location.href;
+                    
+                    // Use canonical URL if available to avoid query params
+                    const canonicalEl = document.querySelector('link[rel="canonical"]');
+                    const url = canonicalEl ? canonicalEl.href : window.location.href;
 
                     return {
                         url: url,
