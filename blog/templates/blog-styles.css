@@ -92,6 +92,59 @@ body {
     background: #E2EFD9;
 }
 
+/* Auth button in blog header */
+#blog-auth-container {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+#blog-auth-container .auth-btn {
+    background: #E2EFD9;
+    color: #5F2987;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+#blog-auth-container .auth-btn:hover {
+    background: #fff;
+}
+
+#blog-auth-container .auth-btn.logged-in {
+    background: #b8860b;
+    color: #fff;
+}
+
+#blog-auth-container .auth-btn.logged-in:hover {
+    background: #9a7209;
+}
+
+#blog-auth-container .auth-icon {
+    display: flex;
+    align-items: center;
+}
+
+#blog-auth-container .auth-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+}
+
+#blog-auth-container .auth-icon img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
 /* ==========================================================================
    BLOG MAIN CONTENT
    ========================================================================== */
@@ -908,7 +961,7 @@ body {
    ========================================================================== */
 
 .newsletter-banner {
-    background: #5f2987;
+    background: linear-gradient(135deg, #E2EFD9 0%, #c8e6c9 50%, #E2EFD9 100%);
     padding: 0.6rem 1rem;
     position: relative;
 }
@@ -925,16 +978,16 @@ body {
 
 .newsletter-banner-icon {
     font-size: 1.1rem;
-    filter: grayscale(1) brightness(10);
 }
 
 .newsletter-banner-text {
-    color: white;
+    color: #5F2987;
     font-size: 0.85rem;
 }
 
 .newsletter-banner-text strong {
     font-weight: 600;
+    color: #5F2987;
 }
 
 .newsletter-banner-form {
@@ -969,8 +1022,8 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     font-family: inherit;
-    color: #5f2987;
-    background: white;
+    color: #fff;
+    background: #5F2987;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -982,7 +1035,7 @@ body {
 }
 
 .newsletter-banner-btn:hover {
-    background: #f0e8f5;
+    background: #4a1f6b;
 }
 
 .newsletter-banner-btn:disabled {
@@ -1001,7 +1054,7 @@ body {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(95, 41, 135, 0.6);
     font-size: 1.3rem;
     cursor: pointer;
     padding: 0.2rem;
@@ -1010,22 +1063,24 @@ body {
 }
 
 .newsletter-banner-close:hover {
-    color: white;
+    color: #5F2987;
 }
 
 .newsletter-banner-message {
     text-align: center;
     padding: 0.4rem;
     font-size: 0.8rem;
-    color: white;
+    color: #5F2987;
 }
 
 .newsletter-banner-error {
-    background: rgba(198, 40, 40, 0.3);
+    background: rgba(198, 40, 40, 0.15);
+    color: #c62828;
 }
 
 .newsletter-banner-success {
-    background: rgba(46, 125, 50, 0.3);
+    background: rgba(46, 125, 50, 0.15);
+    color: #2e7d32;
 }
 
 /* Hidden honeypot field */
