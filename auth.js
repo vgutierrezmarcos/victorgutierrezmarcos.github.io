@@ -302,13 +302,16 @@ async function showUserHistoryFromProfile() {
             const minutes = Math.floor((data.tiempoSeconds || 0) / 60);
             const seconds = (data.tiempoSeconds || 0) % 60;
 
+            // Format score with comma as decimal separator
+            const scoreFormatted = data.notaSobre10.toFixed(2).replace('.', ',');
+
             html += `
                 <tr>
                     <td>
                         <span class="date-main">${date}</span>
                         <span class="date-time">${time}</span>
                     </td>
-                    <td class="${scoreClass}">${data.notaSobre10.toFixed(2)}</td>
+                    <td class="${scoreClass}">${scoreFormatted}</td>
                     <td>${data.correctas}/${data.totalPreguntas}</td>
                     <td>${minutes}m ${seconds}s</td>
                 </tr>
