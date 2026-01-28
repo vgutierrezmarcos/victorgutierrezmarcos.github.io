@@ -33,6 +33,21 @@
     <!-- Estilos del banner de cookies -->
     <link rel="stylesheet" href="../../../../cookie-consent.css">
 
+    <!-- MathJax para fórmulas LaTeX -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
         .test-container { position: relative; z-index: 1; }
 
@@ -1528,6 +1543,11 @@
                 <ul class="opciones-list">${opcionesHtml}</ul>
             `;
 
+            // Renderizar fórmulas LaTeX
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
+
             // Event listeners para las opciones
             container.querySelectorAll('.opcion-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1830,6 +1850,11 @@
 
                 container.appendChild(div);
             });
+
+            // Renderizar fórmulas LaTeX en todas las preguntas de revisión
+            if (window.MathJax && MathJax.typesetPromise) {
+                MathJax.typesetPromise([container]).catch(err => console.log('MathJax error:', err));
+            }
         }
 
         function volverASeleccion() {
