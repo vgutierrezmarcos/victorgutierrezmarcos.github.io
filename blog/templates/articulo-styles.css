@@ -29,7 +29,7 @@
 }
 
 body {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 16px;
     line-height: 1.7;
     color: var(--color-text);
@@ -58,6 +58,13 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-brand:hover {
+    text-decoration: none;
+    opacity: 0.9;
 }
 
 .site-logo {
@@ -87,6 +94,12 @@ body {
     font-size: 0.75rem;
     color: var(--color-text-light);
     text-align: right;
+    text-decoration: none;
+}
+
+.header-contact:hover {
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
 /* Barra de título tipo PIIE */
@@ -255,7 +268,7 @@ body {
     font-family: var(--font-sans);
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-primary);
     margin: 2rem 0 1rem 0;
 }
 
@@ -320,10 +333,21 @@ body {
 }
 
 .article-body figure img {
-    max-width: 100%;
+    max-width: 80%;
+    width: 80%;
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+/* Imágenes inline (no en figure) */
+.article-body p img,
+.article-body img.img-fluid {
+    max-width: 80%;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
 }
 
 .article-body figcaption {
@@ -399,6 +423,12 @@ body {
     font-weight: 600;
     color: var(--color-primary);
     margin: 0;
+    text-decoration: none;
+}
+
+.copyright:hover {
+    text-decoration: none;
+    opacity: 0.8;
 }
 
 .footer-favicon {
@@ -586,6 +616,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+    justify-content: center;
 }
 
 .share-btn {
@@ -610,7 +641,7 @@ body {
 }
 
 .share-btn span {
-    white-space: nowrap;
+    display: none;
 }
 
 /* WhatsApp */
@@ -658,18 +689,10 @@ body {
     background: #9a7209;
 }
 
-/* Responsive - hide text on small screens */
+/* Responsive - adjust icon size on small screens */
 @media (max-width: 600px) {
-    .share-buttons {
-        justify-content: center;
-    }
-
     .share-btn {
         padding: 0.75rem;
-    }
-
-    .share-btn span {
-        display: none;
     }
 
     .share-btn svg {
