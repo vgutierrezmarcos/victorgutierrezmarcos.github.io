@@ -203,7 +203,36 @@
             const errorMsg = document.getElementById('error-message');
             const successMsg = document.getElementById('success-message');
 
-            // Check if banner should be hidden
+            // Get list of subscribed emails from localStorage
+            function getSubscribedEmails() {
+                try {
+                    const emails = localStorage.getItem('newsletter_subscribed_emails');
+                    return emails ? JSON.parse(emails) : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            // Add email to subscribed list
+            function addSubscribedEmail(email) {
+                const emails = getSubscribedEmails();
+                const normalizedEmail = email.toLowerCase().trim();
+                if (!emails.includes(normalizedEmail)) {
+                    emails.push(normalizedEmail);
+                    localStorage.setItem('newsletter_subscribed_emails', JSON.stringify(emails));
+                }
+                // Also set the legacy flag for backwards compatibility
+                localStorage.setItem('newsletter_subscribed', 'true');
+            }
+
+            // Check if email is already subscribed
+            function isEmailSubscribed(email) {
+                if (!email) return false;
+                const emails = getSubscribedEmails();
+                return emails.includes(email.toLowerCase().trim());
+            }
+
+            // Check if banner should be hidden (initial check)
             const isSubscribed = localStorage.getItem('newsletter_subscribed') === 'true';
             const bannerClosed = localStorage.getItem('newsletter_banner_closed');
             const closedTime = bannerClosed ? parseInt(bannerClosed) : 0;
@@ -219,15 +248,21 @@
                 localStorage.setItem('newsletter_banner_closed', Date.now().toString());
             });
 
-            // Auto-fill email if logged in
+            // Check logged-in user's email against subscribed list
             const checkAuth = setInterval(() => {
                 if (typeof firebase !== 'undefined' && firebase.auth()) {
                     clearInterval(checkAuth);
                     firebase.auth().onAuthStateChanged((user) => {
                         if (user && user.email) {
-                            const emailInput = document.getElementById('EMAIL');
-                            if (emailInput && !emailInput.value) {
-                                emailInput.value = user.email;
+                            // Hide banner if user's email is already subscribed
+                            if (isEmailSubscribed(user.email)) {
+                                banner.style.display = 'none';
+                            } else {
+                                // Auto-fill email if not subscribed
+                                const emailInput = document.getElementById('EMAIL');
+                                if (emailInput && !emailInput.value) {
+                                    emailInput.value = user.email;
+                                }
                             }
                         }
                     });
@@ -242,6 +277,7 @@
                     const submitBtn = form.querySelector('.newsletter-banner-btn');
                     const btnText = submitBtn.querySelector('.btn-text');
                     const btnLoader = submitBtn.querySelector('.btn-loader');
+                    const emailInput = document.getElementById('EMAIL');
 
                     // Show loading state
                     btnText.style.display = 'none';
@@ -260,8 +296,10 @@
                             body: formData
                         });
 
-                        // Mark as subscribed in localStorage
-                        localStorage.setItem('newsletter_subscribed', 'true');
+                        // Store the subscribed email
+                        if (emailInput && emailInput.value) {
+                            addSubscribedEmail(emailInput.value);
+                        }
 
                         // Show success and hide form
                         form.style.display = 'none';
