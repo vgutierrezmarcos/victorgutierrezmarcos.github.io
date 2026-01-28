@@ -202,14 +202,14 @@
             <script>
                 // Social sharing functions
                 function getShareData() {
-                    const titleEl = document.querySelector('.article-number-title');
-                    const authorEl = document.querySelector('.article-author-name');
-                    const title = titleEl ? titleEl.textContent.trim() : document.title;
-                    const author = authorEl ? authorEl.textContent.trim() : 'Víctor Gutiérrez Marcos';
-                    
+                    var titleEl = document.querySelector('.article-number-title');
+                    var authorEl = document.querySelector('.article-author-name');
+                    var title = titleEl ? titleEl.textContent.trim() : document.title;
+                    var author = authorEl ? authorEl.textContent.trim() : 'Víctor Gutiérrez Marcos';
+
                     // Use canonical URL if available to avoid query params
-                    const canonicalEl = document.querySelector('link[rel="canonical"]');
-                    const url = canonicalEl ? canonicalEl.href : window.location.href;
+                    var canonicalEl = document.querySelector('link[rel="canonical"]');
+                    var url = canonicalEl ? canonicalEl.href : window.location.href;
 
                     return {
                         url: url,
@@ -218,62 +218,39 @@
                         titleEncoded: encodeURIComponent(title),
                         author: author,
                         authorEncoded: encodeURIComponent(author),
-                        message: encodeURIComponent(`"Bienvenido al blog" por Víctor Gutiérrez Marcos`)
+                        message: encodeURIComponent('"' + title + '" por ' + author)
                     };
                 }
 
                 function shareWhatsApp() {
-                    const { message, urlEncoded } = getShareData();
-                    window.open(`https://wa.me/?text=%0A%0A`, '_blank', 'width=600,height=400');
+                    var data = getShareData();
+                    window.open('https://wa.me/?text=' + data.message + '%0A%0A' + data.urlEncoded, '_blank', 'width=600,height=400');
                 }
 
                 function shareX() {
-                    const { message, urlEncoded } = getShareData();
-                    window.open(`https://twitter.com/intent/tweet?text=&url=`, '_blank', 'width=600,height=400');
+                    var data = getShareData();
+                    window.open('https://twitter.com/intent/tweet?text=' + data.message + '&url=' + data.urlEncoded, '_blank', 'width=600,height=400');
                 }
 
                 function shareLinkedIn() {
-                    const { urlEncoded } = getShareData();
-                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=`, '_blank', 'width=600,height=400');
+                    var data = getShareData();
+                    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + data.urlEncoded, '_blank', 'width=600,height=400');
                 }
 
                 function shareEmail() {
-                    const { title, titleEncoded, author, authorEncoded, urlEncoded } = getShareData();
-                    const subject = encodeURIComponent(`Artículo: Bienvenido al blog`);
-                    const body = encodeURIComponent(`Te comparto este artículo:\n\n"Bienvenido al blog"\npor Víctor Gutiérrez Marcos\n\nLeer más: `) + urlEncoded;
-                    window.location.href = `mailto:?subject=&body=<p>¡Bienvenidos a este nuevo espacio de análisis!</p>
-<section id="qué-encontrarás-aquí" class="level2">
-<h2>¿Qué encontrarás aquí?</h2>
-<p>Este blog nace con la vocación de compartir reflexiones sobre <strong>política económica</strong> y <strong>comercio internacional</strong>, dos áreas que considero fundamentales para entender el mundo en el que vivimos.</p>
-<p>Los temas que abordaré incluirán:</p>
-<ul>
-<li><strong>Comercio exterior</strong>: evolución de los flujos comerciales, política comercial y relaciones económicas internacionales.</li>
-<li><strong>Política económica</strong>: reflexiones sobre las decisiones de política fiscal, monetaria y estructural.</li>
-<li><strong>Economía aplicada</strong>: análisis de sectores específicos y su impacto en la economía real.</li>
-</ul>
-</section>
-<section id="el-enfoque" class="level2">
-<h2>El enfoque</h2>
-<p>Mi objetivo es ofrecer un análisis riguroso pero accesible, combinando el rigor técnico con la claridad expositiva. Cada artículo buscará aportar valor añadido, ya sea a través de datos, gráficos o reflexiones que ayuden a comprender mejor los fenómenos económicos que nos rodean.</p>
-<p>Todos los artículos estarán disponibles para su descarga en formato PDF, facilitando así su lectura y consulta.</p>
-</section>
-<section id="mantente-informado" class="level2">
-<h2>Mantente informado</h2>
-<p>Si te interesa recibir los nuevos artículos directamente en tu correo, puedes suscribirte a la newsletter en la parte superior de esta página.</p>
-<p>Espero que este espacio resulte útil e interesante. ¡Bienvenido!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img src="images/20260128_articulo_de_bienvenida.png" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%" /></p>
-</figure>
-</div>
-</section>`;
+                    var data = getShareData();
+                    var subject = encodeURIComponent('Artículo: ' + data.title);
+                    var body = encodeURIComponent('Te comparto este artículo:\n\n"' + data.title + '"\npor ' + data.author + '\n\nLeer más: ') + data.urlEncoded;
+                    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
                 }
 
                 function copyLink() {
-                    const btn = document.querySelector('.share-copy');
-                    navigator.clipboard.writeText(window.location.href).then(() => {
+                    var btn = document.querySelector('.share-copy');
+                    var canonicalEl = document.querySelector('link[rel="canonical"]');
+                    var url = canonicalEl ? canonicalEl.href : window.location.href;
+                    navigator.clipboard.writeText(url).then(function() {
                         btn.classList.add('copied');
-                        setTimeout(() => { btn.classList.remove('copied'); }, 2000);
+                        setTimeout(function() { btn.classList.remove('copied'); }, 2000);
                     });
                 }
             </script>
