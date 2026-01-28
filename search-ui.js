@@ -104,6 +104,15 @@ class SearchUI {
             });
         }
 
+        // Abrir búsqueda desde el blog
+        const blogSearchBtn = document.getElementById('blog-search-btn');
+        if (blogSearchBtn) {
+            blogSearchBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.openSearch();
+            });
+        }
+
         // Cerrar búsqueda
         const closeBtn = this.searchOverlay.querySelector('.search-close');
         closeBtn.addEventListener('click', () => this.closeSearch());

@@ -12,6 +12,7 @@ const searchIndex = {
   pages: [],
   temas: [],
   recursos: [],
+  blog: [],
   lastUpdated: new Date().toISOString()
 };
 
@@ -530,6 +531,51 @@ searchIndex.recursos = [
     type: 'word'
   }
 ];
+
+// ============================================
+// BLOG POSTS
+// ============================================
+
+// Añadir página principal del blog
+searchIndex.pages.push({
+  id: 'blog',
+  title: 'Blog',
+  url: 'blog/index.html',
+  description: 'Artículos y análisis sobre economía, política económica y comercio internacional',
+  keywords: ['blog', 'artículos', 'análisis', 'economía', 'comercio'],
+  content: 'Artículos sobre política económica y comercio internacional'
+});
+
+// Leer artículos del blog desde published-articles.json
+const blogArticlesPath = path.join(__dirname, 'blog/newsletter/published-articles.json');
+if (fs.existsSync(blogArticlesPath)) {
+  try {
+    const blogData = JSON.parse(fs.readFileSync(blogArticlesPath, 'utf8'));
+    if (blogData.articles && Array.isArray(blogData.articles)) {
+      blogData.articles.forEach(article => {
+        searchIndex.blog.push({
+          id: article.slug,
+          title: article.title,
+          url: `blog/${article.slug}.html`,
+          description: article.description,
+          date: article.date,
+          keywords: [
+            'blog',
+            'artículo',
+            ...article.title.toLowerCase().split(' ').filter(w => w.length > 2),
+            ...article.description.toLowerCase().split(' ').filter(w => w.length > 3)
+          ],
+          type: 'articulo'
+        });
+      });
+    }
+    console.log(`   - Artículos del blog: ${searchIndex.blog.length}`);
+  } catch (e) {
+    console.log('⚠️  No se pudieron cargar los artículos del blog');
+  }
+} else {
+  console.log('⚠️  No se encontró el archivo de artículos del blog');
+}
 
 // Guardar el índice como JSON
 const outputPath = path.join(__dirname, 'search-index.json');

@@ -38,7 +38,12 @@
       "WebFetch(domain:www.nslookup.io)",
       "Bash(grep:*)",
       "Bash(cmd.exe /c render.bat)",
-      "Bash(cmd.exe /c render.bat 20260128_articulo_de_bienvenida.qmd)"
+      "Bash(cmd.exe /c render.bat 20260128_articulo_de_bienvenida.qmd)",
+      "Bash(cmd.exe /c \"cd /d C:\\\\Users\\\\vgutierrez\\\\Documents\\\\src\\\\victorgutierrezmarcos.github.io && node build-search-index.js\")",
+      "Bash(cmd.exe /c \"where node 2>nul || echo Node not in PATH\")",
+      "Bash(cmd.exe /c \"where magick 2>nul || where cwebp 2>nul || echo No image tools found\")",
+      "Bash(cmd.exe /c \"python --version 2>nul && python -c \"\"from PIL import Image; print\\(''Pillow available''\\)\"\" 2>nul || echo Python/Pillow not available\")",
+      "Bash(cmd.exe /c \"pip install Pillow --quiet && echo Pillow installed\")"
     ]
   }
 }

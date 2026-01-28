@@ -241,7 +241,8 @@ class SearchEngine {
         const allItems = [
             ...this.index.pages,
             ...this.index.temas,
-            ...this.index.recursos
+            ...this.index.recursos,
+            ...(this.index.blog || [])
         ];
 
         // Calcular relevancia para cada item
