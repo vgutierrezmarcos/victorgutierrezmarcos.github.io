@@ -165,7 +165,7 @@
       "temas": [
         "3.A.9"
       ],
-      "enunciado": "Obtenga la Función de Utilidad directa de la que proviene la siguiente Función de Gasto: $G = \\frac{4}{3} \\cdot p_1^{\\frac{3}{4}} \\cdot p_2^{\\frac{1}{4}} \\cdot U^{\\frac{1}{4}}$",
+      "enunciado": "Obtenga la Función de Utilidad directa de la que proviene la siguiente Función de Gasto: $$G = \\frac{4}{3} \\cdot p_1^{\\frac{3}{4}} \\cdot p_2^{\\frac{1}{4}} \\cdot U^{\\frac{1}{4}}$$",
       "opciones": {
         "a": "$U = 3 \\cdot x_1^3 \\cdot x_2$",
         "b": "$U = x_1^3 \\cdot x_2^2$",
@@ -248,7 +248,7 @@
       "temas": [
         "3.A.17"
       ],
-      "enunciado": "Una empresa monopolista enfrenta la siguiente función de demanda: Q = 200 – 4P, donde Q es la cantidad demandada y P es el precio. El coste total de la empresa está dado por: CT=20Q+0,5$Q^2$+800. ¿Cuál es el precio óptimo para el monopolista si el Gobierno impone un impuesto específico de 12 por unidad vendida?",
+      "enunciado": "Una empresa monopolista enfrenta la siguiente función de demanda: $Q = 200 – 4P$, donde $Q$ es la cantidad demandada y $P$ es el precio. El coste total de la empresa está dado por: $CT = 20Q + 0,5Q^2 + 800$. ¿Cuál es el precio óptimo para el monopolista si el Gobierno impone un impuesto específico de 12 por unidad vendida?",
       "opciones": {
         "a": "35",
         "b": "38",
@@ -287,7 +287,7 @@
         "3.A.23",
         "3.A.24"
       ],
-      "enunciado": "Dos opositores a Técnico Comercial y Economista del Estado quieren comprar el temario de la oposición, que cuesta 1.000€. Una vez comprado, puede ser utilizado por tantos opositores como se desee. El opositor 1 (O1) valora el temario en 700€ y el opositor 2 (O2) en 800€. Ambos tienen preferencias cuasilineales con respecto al dinero. Un planeador central está dispuesto a financiar el temario a los opositores, siempre y cuando su provisión sea eficiente. Si dicho planeador implementase un mecanismo de Vickrey-Clarke-Groves para conocer las preferencias de los opositores, el mecanismo de estrategias dominantes sería:",
+      "enunciado": "Dos opositores a Técnico Comercial y Economista del Estado quieren comprar el temario de la oposición, que cuesta 1.000€. Una vez comprado, puede ser utilizado por tantos opositores como se desee. El opositor 1 ($O_1$) valora el temario en 700€ y el opositor 2 ($O_2$) en 800€. Ambos tienen preferencias cuasilineales con respecto al dinero. Un planeador central está dispuesto a financiar el temario a los opositores, siempre y cuando su provisión sea eficiente. Si dicho planeador implementase un mecanismo de Vickrey-Clarke-Groves para conocer las preferencias de los opositores, el mecanismo de estrategias dominantes sería:",
       "opciones": {
         "a": "Un impuesto de 500€ a cada opositor.",
         "b": "Un impuesto de 200€ al opositor 1 y un impuesto de 300€ al opositor 2.",
@@ -345,12 +345,14 @@
       "temas": [
         "3.A.33"
       ],
-      "enunciado": "Suponga el siguiente modelo de decisión intertemporal entre consumo (C) y ahorro (S), con dos períodos, bajo equilibrio parcial: Max. $U = U(C_1) + \\beta U(C_2) con \\beta \\in (0$,1), sujeto a $C_1$ + $S = Y_1 + A_0(1 + r) y C_2 = Y_2 + S(1 + r)$. Donde $A_0$ es la riqueza inicial del agente, que toma como dada, $Y_1$ e $Y_2$ son las rentas que obtiene en los períodos 1 y 2 respectivamente, $\\beta$ es el factor de descuento intertemporal y r es el tipo de interés real. Señale la respuesta CORRECTA:",
+      "enunciado": "Suponga el siguiente modelo de decisión intertemporal entre consumo (C) y ahorro (S), con dos períodos, bajo equilibrio parcial:
+$$\\begin{aligned} \\text{Max.} \\quad & U = U(C_1) + \\beta U(C_2) & \\beta \\in (0,1) \\\\ \\text{sujeto a} \\quad & C_1 + S = Y_1 + A_0(1+r) \\\\ & C_2 = Y_2 + S(1+r) \\end{aligned}$$
+Donde $A_0$ es la riqueza inicial del agente, que toma como dada, $Y_1$ e $Y_2$ son las rentas que obtiene en los períodos 1 y 2 respectivamente, $\\beta$ es el factor de descuento intertemporal y $r$ es el tipo de interés real. Señale la respuesta CORRECTA:",
       "opciones": {
         "a": "Una mayor renta en el primer período supondrá un mayor consumo en el primer periodo y un menor consumo en el segundo período.",
-        "b": "Si la riqueza inicial del agente es elevada ($A_0$ > $Y_2$/(1+r)²), un aumento del tipo de interés real llevará a una disminución del consumo en el primer período.",
-        "c": "Si la riqueza inicial del agente es reducida ($A_0$ < $Y_2$/(1+r)²) y financia su consumo con créditos sobre su renta futura, un aumento del tipo de interés real supondrá una disminución del consumo en el primer período y un aumento del consumo en el segundo período.",
-        "d": "Si en el primer período $C_1$ > $Y_1$ + rA₀, entonces el agente será necesariamente un prestatario."
+        "b": "Si la riqueza inicial del agente es elevada ($A_0 > frac{Y_2}{(1+r)^2}$), un aumento del tipo de interés real llevará a una disminución del consumo en el primer período.",
+        "c": "Si la riqueza inicial del agente es reducida ($A_0 < frac{Y_2}{(1+r)^2}$) y financia su consumo con créditos sobre su renta futura, un aumento del tipo de interés real supondrá una disminución del consumo en el primer período y un aumento del consumo en el segundo período.",
+        "d": "Si en el primer período $C_1 > Y_1 + rA_0$, entonces el agente será necesariamente un prestatario."
       },
       "respuesta": [
         "c"
@@ -441,7 +443,7 @@
       "temas": [
         "3.A.7"
       ],
-      "enunciado": "En el modelo base de la Nueva Economía Keynesiana (agentes optimizadores intertemporales, rigideces de precios à la Calvo y competencia monopolística), con una regla de política monetaria que sigue una regla de Taylor del tipo $it = \\alpha + \\beta y \\cdot yt + \\beta\\pi \\cdot \\pi t$, que el parámetro $\\beta$$\\pi$ sea igual o mayor que 1:",
+      "enunciado": "En el modelo base de la Nueva Economía Keynesiana (agentes optimizadores intertemporales, rigideces de precios à la Calvo y competencia monopolística), con una regla de política monetaria que sigue una regla de Taylor del tipo $i_t = \\alpha + \\beta y \\cdot y_t + \\beta\\pi \\cdot \\pi_t$, que el parámetro $\\beta$$\\pi$ sea igual o mayor que 1:",
       "opciones": {
         "a": "Es condición necesaria y suficiente para garantizar la unicidad del equilibrio en el modelo.",
         "b": "Es condición necesaria, pero no suficiente, para garantizar la unicidad del equilibrio en el modelo.",
@@ -559,7 +561,7 @@
       "temas": [
         "3.B.3"
       ],
-      "enunciado": "Una persona monta, junto con su tío, una empresa cuyo capital social asciende a 1.000€. Tío y sobrino son propietarios cada uno del 50% de la empresa. La empresa es un éxito y tiene planes de expandirse en Oriente Medio, para lo que necesita más fondos, por lo que decide realizar una ampliación de capital y contactar con un fondo de inversión. I. Si el fondo de inversión aporta 333€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. II. Si el fondo de inversión aporta 500€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. III. Si el fondo de inversión aporta 500€ más una prima de emisión de 500€, el fondo se hará con más del 50% de la empresa. IV. Si el fondo aporta 500€ más una prima de emisión de 500€, sobrino, tío y fondo de inversión tendrán una participación del 1/3 de la empresa.",
+      "enunciado": "Una persona monta, junto con su tío, una empresa cuyo capital social asciende a 1.000€. Tío y sobrino son propietarios cada uno del 50% de la empresa. La empresa es un éxito y tiene planes de expandirse en Oriente Medio, para lo que necesita más fondos, por lo que decide realizar una ampliación de capital y contactar con un fondo de inversión. /n I. Si el fondo de inversión aporta 333€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. /n II. Si el fondo de inversión aporta 500€ sin prima de emisión, sobrino, tío y fondo de inversión tendrán una participación de 1/3 de la empresa. /n III. Si el fondo de inversión aporta 500€ más una prima de emisión de 500€, el fondo se hará con más del 50% de la empresa. /n IV. Si el fondo aporta 500€ más una prima de emisión de 500€, sobrino, tío y fondo de inversión tendrán una participación del 1/3 de la empresa.",
       "opciones": {
         "a": "II y IV son correctas.",
         "b": "Solamente I es correcta.",
@@ -639,7 +641,7 @@
         "3.B.11",
         "3.B.12"
       ],
-      "enunciado": "Un país presenta los siguientes datos de su balanza de pagos para un período determinado: Exportaciones de bienes: 12.000 millones de euros. Importaciones de bienes: 15.000 millones de euros. Transferencias de capital recibidas: 2.000 millones de euros. Transferencias de capital enviadas: 1.000 millones de euros. Inversión directa extranjera: Entrada neta de 6.000 millones de euros. Inversión en cartera: Salida neta de 4.500 millones de euros. Otros flujos financieros: Entrada neta de 3.000 millones de euros. Además, considere que los cambios del tipo de cambio en el periodo considerado aumentan el valor de los activos del país denominados en moneda extranjera en 1.200 millones de euros y de la deuda externa en 600 millones de euros. ¿Cuál es la variación neta de la Posición Neta de Inversión Internacional (PNII) del país entre los dos períodos?",
+      "enunciado": "Un país presenta los siguientes datos de su balanza de pagos para un período determinado: /n Exportaciones de bienes: 12.000 millones de euros. /n Importaciones de bienes: 15.000 millones de euros. /n Transferencias de capital recibidas: 2.000 millones de euros. /n Transferencias de capital enviadas: 1.000 millones de euros. /n Inversión directa extranjera: Entrada neta de 6.000 millones de euros. /n Inversión en cartera: Salida neta de 4.500 millones de euros. /n Otros flujos financieros: Entrada neta de 3.000 millones de euros. /n Además, considere que los cambios del tipo de cambio en el periodo considerado aumentan el valor de los activos del país denominados en moneda extranjera en 1.200 millones de euros y de la deuda externa en 600 millones de euros. ¿Cuál es la variación neta de la Posición Neta de Inversión Internacional (PNII) del país entre los dos períodos?",
       "opciones": {
         "a": "5.100 millones de euros",
         "b": "-3.900 millones de euros",
@@ -736,7 +738,7 @@
       "temas": [
         "3.B.24"
       ],
-      "enunciado": "Suponga que compra el siguiente bono en el mercado: Valor nominal: 1.000 euros. Tasa de cupón: 8% anual. Frecuencia de pagos de cupones: Semestral. Plazo: 4 años. Tipo de interés de mercado (rendimiento a vencimiento, YTM) en el momento de la compra: 6% anual. Si al final del segundo año, el tipo de interés de mercado cambia a 10% anual capitalizado semestralmente. ¿cuál sería el precio de mercado del bono al final del segundo año, después de haberse realizado el cuarto pago del cupón?",
+      "enunciado": "Suponga que compra el siguiente bono en el mercado: /n Valor nominal: 1.000 euros. /n Tasa de cupón: 8% anual. /n Frecuencia de pagos de cupones: Semestral. /n Plazo: 4 años. /n Tipo de interés de mercado (rendimiento a vencimiento, YTM) en el momento de la compra: 6% anual. /n Si al final del segundo año, el tipo de interés de mercado cambia a 10% anual capitalizado semestralmente. ¿cuál sería el precio de mercado del bono al final del segundo año, después de haberse realizado el cuarto pago del cupón?",
       "opciones": {
         "a": "965 €",
         "b": "1020 €",
