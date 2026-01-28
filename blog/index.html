@@ -279,7 +279,8 @@
             // Form submission handler
             if (form) {
                 form.addEventListener('submit', function(e) {
-                    // Don't prevent default - let form submit to iframe
+                    e.preventDefault();
+
                     const submitBtn = form.querySelector('.newsletter-banner-btn');
                     const btnText = submitBtn.querySelector('.btn-text');
                     const btnLoader = submitBtn.querySelector('.btn-loader');
@@ -294,21 +295,48 @@
                     errorMsg.style.display = 'none';
                     successMsg.style.display = 'none';
 
-                    // Store the subscribed email
-                    if (emailInput && emailInput.value) {
-                        addSubscribedEmail(emailInput.value);
-                    }
+                    // Execute reCAPTCHA v3 and submit
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute('6LcL-FcsAAAAAH2EBkF16lVmlyxuRWLGTDeEpv8B', {action: 'submit'}).then(function(token) {
+                                // Add token to form
+                                let tokenInput = form.querySelector('input[name="g-recaptcha-response"]');
+                                if (!tokenInput) {
+                                    tokenInput = document.createElement('input');
+                                    tokenInput.type = 'hidden';
+                                    tokenInput.name = 'g-recaptcha-response';
+                                    form.appendChild(tokenInput);
+                                }
+                                tokenInput.value = token;
 
-                    // Show success after a short delay (form submits to hidden iframe)
-                    setTimeout(() => {
-                        form.style.display = 'none';
-                        successMsg.style.display = 'block';
+                                // Store the subscribed email
+                                if (emailInput && emailInput.value) {
+                                    addSubscribedEmail(emailInput.value);
+                                }
 
-                        // Hide banner after 3 seconds
+                                // Submit form to iframe
+                                form.submit();
+
+                                // Show success
+                                setTimeout(() => {
+                                    form.style.display = 'none';
+                                    successMsg.style.display = 'block';
+                                    setTimeout(() => { banner.style.display = 'none'; }, 3000);
+                                }, 1000);
+                            });
+                        });
+                    } else {
+                        // Fallback: submit without reCAPTCHA
+                        if (emailInput && emailInput.value) {
+                            addSubscribedEmail(emailInput.value);
+                        }
+                        form.submit();
                         setTimeout(() => {
-                            banner.style.display = 'none';
-                        }, 3000);
-                    }, 1000);
+                            form.style.display = 'none';
+                            successMsg.style.display = 'block';
+                            setTimeout(() => { banner.style.display = 'none'; }, 3000);
+                        }, 1000);
+                    }
                 });
             }
         });
