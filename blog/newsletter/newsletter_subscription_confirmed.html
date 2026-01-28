@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suscripción confirmada | Víctor Gutiérrez Marcos</title>
     <meta name="description" content="Suscripción a la newsletter confirmada correctamente.">
-    
+
     <!-- SEO: Canonical URL -->
-    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/blog/newsletter_subscription_confirmed.html">
-    
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/blog/newsletter/newsletter_subscription_confirmed.html">
+
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Favicons -->
@@ -20,13 +20,100 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="manifest" href="../../site.webmanifest">
     <meta name="theme-color" content="#5F2987">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="../../search-styles.css">
     <link rel="stylesheet" href="../../cookie-consent.css">
+    <style>
+        .confirmation-card {
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f4fb 100%);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(95, 41, 135, 0.15);
+            text-align: center;
+            border-top: 4px solid #5F2987;
+        }
+        .confirmation-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .confirmation-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #5F2987;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .confirmation-message {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .confirmation-details {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .confirmation-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            background: #5F2987;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Source Sans 3', sans-serif;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background: #4a1f6b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(95, 41, 135, 0.3);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            background: white;
+            color: #5F2987;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Source Sans 3', sans-serif;
+            border: 2px solid #5F2987;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #f3eef7;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -49,25 +136,30 @@
 
     <main class="main-content">
         <div class="content-container">
-            <article class="page-content" style="text-align: center;">
-                <h2 class="section-title">SUSCRIPCIÓN CONFIRMADA</h2>
-                
-                <div style="font-size: 4rem; margin: 1rem 0;">✅</div>
-                
-                <div class="content-text">
-                    <p style="text-align: center; font-size: 1.2rem;">
-                        <strong>¡Gracias por suscribirte!</strong>
-                    </p>
-                    <p style="text-align: center;">
-                        Tu suscripción a la newsletter se ha confirmado correctamente.<br>
-                        A partir de ahora recibirás en tu correo los nuevos artículos, análisis de coyuntura y novedades sobre la oposición.
-                    </p>
-                </div>
+            <div class="confirmation-card">
+                <div class="confirmation-icon">✓</div>
 
-                <div style="margin-top: 2rem;">
-                    <a href="index.html" class="download-btn">Ir al Blog</a>
+                <h2 class="confirmation-title">Suscripción confirmada</h2>
+
+                <p class="confirmation-message">
+                    <strong>¡Gracias por suscribirte!</strong>
+                </p>
+
+                <p class="confirmation-details">
+                    A partir de ahora recibirás en tu correo las novedades.
+                </p>
+
+                <div class="confirmation-buttons">
+                    <a href="../index.html" class="btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        Ir al Blog
+                    </a>
+                    <a href="../../index.html" class="btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        Inicio
+                    </a>
                 </div>
-            </article>
+            </div>
         </div>
     </main>
 
