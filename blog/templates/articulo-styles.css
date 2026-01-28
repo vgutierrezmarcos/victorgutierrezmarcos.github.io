@@ -570,7 +570,14 @@ body {
     text-decoration: underline;
 }
 
-/* Botón de descarga PDF */
+/* Botones de PDF */
+.pdf-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.view-btn,
 .download-btn {
     display: inline-flex;
     align-items: center;
@@ -578,17 +585,33 @@ body {
     font-family: var(--font-sans);
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-white);
-    background: var(--color-primary);
-    padding: 0.6rem 1.25rem;
+    padding: 0.6rem 1rem;
     border-radius: 4px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: all 0.2s;
     flex-shrink: 0;
+}
+
+.view-btn {
+    color: var(--color-primary);
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+}
+
+.view-btn:hover {
+    background: var(--color-primary-pale);
+    text-decoration: none;
+}
+
+.download-btn {
+    color: var(--color-white);
+    background: var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
 
 .download-btn:hover {
     background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
     text-decoration: none;
 }
 
@@ -684,9 +707,21 @@ body {
 .share-copy {
     background: var(--color-accent-gold);
     color: white;
+    transition: background-color 0.3s ease;
 }
 .share-copy:hover {
     background: #9a7209;
+}
+.share-copy.copied {
+    background: #2e7d32;
+}
+.share-copy.copied svg {
+    display: none;
+}
+.share-copy.copied::before {
+    content: '✓';
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 /* Responsive - adjust icon size on small screens */

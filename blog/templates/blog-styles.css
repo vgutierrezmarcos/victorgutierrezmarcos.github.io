@@ -218,6 +218,7 @@
     text-decoration: underline;
 }
 
+.view-pdf,
 .download-pdf {
     position: relative;
     z-index: 2;
@@ -235,12 +236,19 @@
     transition: all var(--transition-fast);
 }
 
+.view-pdf:hover {
+    background: var(--color-primary-pale);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
 .download-pdf:hover {
     background: var(--color-primary);
     color: var(--color-white);
     border-color: var(--color-primary);
 }
 
+.view-pdf svg,
 .download-pdf svg {
     flex-shrink: 0;
 }

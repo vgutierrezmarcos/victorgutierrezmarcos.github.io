@@ -119,8 +119,18 @@ function showProfileModal(user, auth) {
         document.body.appendChild(modal);
     }
 
-    // Verificar si el usuario ya está suscrito a la newsletter (guardado en localStorage)
-    const isSubscribed = localStorage.getItem('newsletter_subscribed') === 'true';
+    // Verificar si el usuario ya está suscrito a la newsletter
+    function isEmailSubscribed(email) {
+        if (!email) return false;
+        try {
+            const emails = localStorage.getItem('newsletter_subscribed_emails');
+            const subscribedEmails = emails ? JSON.parse(emails) : [];
+            return subscribedEmails.includes(email.toLowerCase().trim());
+        } catch (e) {
+            return false;
+        }
+    }
+    const isSubscribed = localStorage.getItem('newsletter_subscribed') === 'true' || isEmailSubscribed(user.email);
 
     modal.innerHTML = `
         <div class="profile-content profile-content-extended">
@@ -144,7 +154,10 @@ function showProfileModal(user, auth) {
                     ${isSubscribed ? `
                         <div class="newsletter-subscribed">
                             <span class="subscribed-icon">✅</span>
-                            <span class="subscribed-text">Suscrito a la newsletter</span>
+                            <div class="subscribed-info">
+                                <span class="subscribed-text">Suscrito a la newsletter</span>
+                                <span class="subscribed-thanks">¡Gracias por tu apoyo!</span>
+                            </div>
                         </div>
                     ` : `
                         <button id="btn-subscribe-newsletter" class="profile-action-btn newsletter-btn">

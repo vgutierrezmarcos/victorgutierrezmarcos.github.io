@@ -112,21 +112,31 @@
                     <span class="article-author-name">$author$</span><br>
                     $if(date-formatted)$$date-formatted$$else$$date$$endif$
                 </p>
-                <a id="pdf-download" class="download-btn" download>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                        <polyline points="7 10 12 15 17 10"/>
-                        <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    Descargar PDF
-                </a>
+                <div class="pdf-buttons">
+                    <a id="pdf-view" class="view-btn" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        Ver PDF
+                    </a>
+                    <a id="pdf-download" class="download-btn" download>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Descargar
+                    </a>
+                </div>
             </div>
             <script>
-                // Set PDF link based on current HTML filename
+                // Set PDF links based on current HTML filename
                 (function() {
                     var path = window.location.pathname;
                     var pdfPath = path.replace(/\.html$$/, '.pdf');
                     document.getElementById('pdf-download').href = pdfPath;
+                    document.getElementById('pdf-view').href = pdfPath;
                 })();
             </script>
             $if(updated)$
@@ -166,39 +176,50 @@
             <script>
                 // Social sharing functions
                 function getShareData() {
+                    const titleEl = document.querySelector('.article-number-title');
+                    const authorEl = document.querySelector('.article-author-name');
+                    const title = titleEl ? titleEl.textContent.trim() : document.title;
+                    const author = authorEl ? authorEl.textContent.trim() : 'Víctor Gutiérrez Marcos';
+                    const url = window.location.href;
+
                     return {
-                        url: encodeURIComponent(window.location.href),
-                        title: encodeURIComponent(document.title),
-                        text: encodeURIComponent(document.querySelector('meta[name="description"]')?.content || document.title)
+                        url: url,
+                        urlEncoded: encodeURIComponent(url),
+                        title: title,
+                        titleEncoded: encodeURIComponent(title),
+                        author: author,
+                        authorEncoded: encodeURIComponent(author),
+                        message: encodeURIComponent(`"${title}" por ${author}`)
                     };
                 }
 
                 function shareWhatsApp() {
-                    const { url, title } = getShareData();
-                    window.open(`https://wa.me/?text=${title}%20${url}`, '_blank', 'width=600,height=400');
+                    const { message, urlEncoded } = getShareData();
+                    window.open(`https://wa.me/?text=${message}%0A%0A${urlEncoded}`, '_blank', 'width=600,height=400');
                 }
 
                 function shareX() {
-                    const { url, title } = getShareData();
-                    window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`, '_blank', 'width=600,height=400');
+                    const { message, urlEncoded } = getShareData();
+                    window.open(`https://twitter.com/intent/tweet?text=${message}&url=${urlEncoded}`, '_blank', 'width=600,height=400');
                 }
 
                 function shareLinkedIn() {
-                    const { url } = getShareData();
-                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'width=600,height=400');
+                    const { urlEncoded } = getShareData();
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${urlEncoded}`, '_blank', 'width=600,height=400');
                 }
 
                 function shareEmail() {
-                    const { url, title, text } = getShareData();
-                    window.location.href = `mailto:?subject=${title}&body=${text}%0A%0ALeer%20m%C3%A1s:%20${url}`;
+                    const { title, titleEncoded, author, authorEncoded, urlEncoded } = getShareData();
+                    const subject = encodeURIComponent(`Artículo: ${title}`);
+                    const body = encodeURIComponent(`Te comparto este artículo:\n\n"${title}"\npor ${author}\n\nLeer más: `) + urlEncoded;
+                    window.location.href = `mailto:?subject=${subject}&body=${body}`;
                 }
 
                 function copyLink() {
+                    const btn = document.querySelector('.share-copy');
                     navigator.clipboard.writeText(window.location.href).then(() => {
-                        const btn = document.querySelector('.share-copy span');
-                        const originalText = btn.textContent;
-                        btn.textContent = '¡Copiado!';
-                        setTimeout(() => { btn.textContent = originalText; }, 2000);
+                        btn.classList.add('copied');
+                        setTimeout(() => { btn.classList.remove('copied'); }, 2000);
                     });
                 }
             </script>
