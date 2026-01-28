@@ -45,42 +45,52 @@ function initAuth() {
 
 // Función para inyectar el botón en la navegación
 function injectLoginButton(auth, provider) {
+    // Crear botón de login
+    function createAuthButton() {
+        const btn = document.createElement('button');
+        btn.className = 'auth-btn';
+        btn.innerHTML = `
+            <span class="auth-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+            <span class="auth-text">Acceder</span>
+        `;
+
+        btn.addEventListener('click', () => {
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                showProfileModal(currentUser, auth);
+            } else {
+                auth.signInWithPopup(provider).then((result) => {
+                    // Login exitoso
+                }).catch((error) => {
+                    console.error('Error en login:', error);
+                    alert('Error al iniciar sesión: ' + error.message);
+                });
+            }
+        });
+        return btn;
+    }
+
+    // Try standard nav-list first
     const navList = document.querySelector('.nav-list');
-    if (!navList) return;
+    if (navList) {
+        const li = document.createElement('li');
+        li.id = 'auth-nav-item';
+        li.className = 'nav-right-item';
+        const btn = createAuthButton();
+        li.appendChild(btn);
+        navList.appendChild(li);
+        loginButton = btn;
+        return;
+    }
 
-    // Crear elemento de lista para el login
-    const li = document.createElement('li');
-    li.id = 'auth-nav-item';
-    li.className = 'nav-right-item'; // Clase para alineación a la derecha
-    
-    // Botón de login
-    const btn = document.createElement('button');
-    btn.className = 'auth-btn';
-    btn.innerHTML = `
-        <span class="auth-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
-        <span class="auth-text">Acceder</span>
-    `;
-    
-    btn.addEventListener('click', () => {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-            // Si ya está logueado, mostrar menú de perfil (o cerrar sesión por simplicidad inicial)
-            // Aquí podríamos abrir un modal con historial y botón de logout
-            showProfileModal(currentUser, auth);
-        } else {
-            // Iniciar sesión
-            auth.signInWithPopup(provider).then((result) => {
-                // Login exitoso
-            }).catch((error) => {
-                console.error('Error en login:', error);
-                alert('Error al iniciar sesión: ' + error.message);
-            });
-        }
-    });
-
-    li.appendChild(btn);
-    navList.appendChild(li);
-    loginButton = btn;
+    // Try blog auth container
+    const blogAuthContainer = document.getElementById('blog-auth-container');
+    if (blogAuthContainer) {
+        const btn = createAuthButton();
+        blogAuthContainer.appendChild(btn);
+        loginButton = btn;
+        return;
+    }
 }
 
 // Actualizar UI cuando hay login
