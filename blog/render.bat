@@ -40,6 +40,21 @@ echo Actualizando indice del blog...
 cscript //nologo "%~dp0templates\update-index.js" "%1"
 
 echo.
+echo Limpiando archivos temporales...
+if exist "%~n1_files" (
+    rmdir /s /q "%~n1_files"
+    echo   Carpeta %~n1_files eliminada
+)
+if exist "%~n1.tex" (
+    del /q "%~n1.tex"
+    echo   Archivo %~n1.tex eliminado
+)
+if exist "%~n1.log" (
+    del /q "%~n1.log"
+    echo   Archivo %~n1.log eliminado
+)
+
+echo.
 echo === Proceso completado ===
 echo.
 echo Archivos generados:

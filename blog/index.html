@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -94,95 +94,68 @@
     <main class="main-content">
         <div class="content-container">
             <article class="page-content blog-page">
-                <h2 class="section-title">Blog</h2>
+                <!--h2 class="section-title">Blog</h2-->
 
-                <div class="blog-intro-box">
-                    <p class="blog-intro">
-                        Próximamente comenzaré a publicar artículos y análisis sobre <strong>política económica</strong> y <strong>comercio internacional</strong>.
-                    </p>
-                    <p class="blog-intro-secondary">
-                        El objetivo es compartir reflexiones y análisis sobre temas de actualidad económica,
-                        tanto desde una perspectiva española como internacional.
-                    </p>
-                </div>
-
-                <div class="articles-list">
+                <div class="articles-list" id="articles-list">
                     <!-- INICIO ARTÍCULOS -->
-
-                    <!--
-                    =====================================================
-                    PLANTILLA: Artículo CON imagen (lateral)
-                    =====================================================
                     <article class="article-card has-image">
                         <figure class="article-card-image">
-                            <a href="SLUG.html">
-                                <img src="images/IMAGEN.png" alt="Descripción de la imagen">
+                            <a href="20260128_post_bienvenida.html">
+                                <img src="images/20260128_welcome_post.png" alt="Bienvenido al blog">
                             </a>
-                            <figcaption>Fuente: Descripción opcional</figcaption>
                         </figure>
                         <div class="article-card-body">
                             <div class="article-meta">
-                                <time datetime="2026-01-27">27 de enero de 2026</time>
-                                <span class="article-category">Economía</span>
+                                <time datetime="2026-01-28">28 de enero de 2026</time>
+                                <span class="article-category">General</span>
                             </div>
                             <h3 class="article-title">
-                                <a href="SLUG.html">Título del artículo</a>
+                                <a href="20260128_post_bienvenida.html">Bienvenido al blog</a>
                             </h3>
                             <p class="article-excerpt">
-                                Descripción breve del artículo que aparece en el índice del blog.
+                                Presento este blog dedicado al análisis de política económica y comercio internacional desde una perspectiva española y global.
                             </p>
                             <div class="article-actions">
-                                <a href="SLUG.html" class="read-more">Leer artículo →</a>
-                                <a href="SLUG.pdf" class="download-pdf" download>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <a href="20260128_post_bienvenida.html" class="read-more">Leer articulo</a>
+                                <a href="20260128_post_bienvenida.pdf" class="download-pdf" download>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="7 10 12 15 17 10"/>
+                                        <line x1="12" y1="15" x2="12" y2="3"/>
+                                    </svg>
                                     PDF
                                 </a>
                             </div>
                         </div>
                     </article>
 
-                    =====================================================
-                    PLANTILLA: Artículo CON imagen grande (full width)
-                    =====================================================
-                    <article class="article-card has-image image-large">
-                        <figure class="article-card-image">
-                            <a href="SLUG.html">
-                                <img src="images/IMAGEN.png" alt="Descripción de la imagen">
-                            </a>
-                            <figcaption>Fuente: Descripción opcional</figcaption>
-                        </figure>
-                        <div class="article-card-body">
-                            ...mismo contenido...
-                        </div>
-                    </article>
-
-                    =====================================================
-                    PLANTILLA: Artículo SIN imagen (diseño actual)
-                    =====================================================
-                    <article class="article-card">
-                        <div class="article-meta">
-                            <time datetime="2026-01-27">27 de enero de 2026</time>
-                            <span class="article-category">Economía</span>
-                        </div>
-                        <h3 class="article-title">
-                            <a href="SLUG.html">Título del artículo</a>
-                        </h3>
-                        <p class="article-excerpt">
-                            Descripción breve del artículo.
-                        </p>
-                        <div class="article-actions">
-                            <a href="SLUG.html" class="read-more">Leer artículo →</a>
-                            <a href="SLUG.pdf" class="download-pdf" download>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                PDF
-                            </a>
-                        </div>
-                    </article>
-                    -->
 
                     <!-- FIN ARTÍCULOS -->
                 </div>
-                
+
+                <!-- Paginación -->
+                <nav class="blog-pagination" id="blog-pagination" aria-label="Paginación de artículos" style="display: none;">
+                    <button class="pagination-btn pagination-prev" id="pagination-prev" aria-label="Página anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <div class="pagination-tabs" id="pagination-tabs"></div>
+                    <button class="pagination-btn pagination-next" id="pagination-next" aria-label="Página siguiente">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </nav>
+
+                <!-- Licencia Creative Commons -->
+                <div class="blog-license">
+                    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank" rel="noopener noreferrer" class="cc-badge">
+                        <img src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" alt="Licencia Creative Commons BY-NC 4.0">
+                    </a>
+                    <p>
+                        El contenido de este blog está sujeto a una licencia <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.es" target="_blank" rel="noopener noreferrer">Creative Commons Reconocimiento-NoComercial 4.0 Internacional (CC BY-NC 4.0)</a>.
+                        Se permite la reproducción parcial o total del contenido siempre que se reconozca la autoría y se incluya un enlace al texto original.
+                        El uso de los contenidos con fines comerciales requiere el consentimiento previo del editor del blog.
+                    </p>
+                </div>
+
             </article>
         </div>
     </main>
@@ -311,6 +284,109 @@
                 });
             }
         });
+    </script>
+
+    <!-- Paginación de artículos -->
+    <script>
+        (function() {
+            const ARTICLES_PER_PAGE = 5;
+            const articlesList = document.getElementById('articles-list');
+            const pagination = document.getElementById('blog-pagination');
+            const tabsContainer = document.getElementById('pagination-tabs');
+            const prevBtn = document.getElementById('pagination-prev');
+            const nextBtn = document.getElementById('pagination-next');
+
+            let articles = [];
+            let currentPage = 1;
+            let totalPages = 1;
+
+            function init() {
+                // Get all article cards
+                articles = Array.from(articlesList.querySelectorAll('.article-card'));
+
+                if (articles.length <= ARTICLES_PER_PAGE) {
+                    // No pagination needed
+                    pagination.style.display = 'none';
+                    return;
+                }
+
+                totalPages = Math.ceil(articles.length / ARTICLES_PER_PAGE);
+
+                // Show pagination
+                pagination.style.display = 'flex';
+
+                // Create tabs
+                createTabs();
+
+                // Bind events
+                prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+                nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+                // Show first page
+                showPage(1);
+            }
+
+            function createTabs() {
+                tabsContainer.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const tab = document.createElement('button');
+                    tab.className = 'pagination-tab';
+                    tab.textContent = i;
+                    tab.setAttribute('aria-label', 'Página ' + i);
+                    tab.addEventListener('click', () => goToPage(i));
+                    tabsContainer.appendChild(tab);
+                }
+            }
+
+            function showPage(page) {
+                currentPage = page;
+
+                // Calculate range
+                const start = (page - 1) * ARTICLES_PER_PAGE;
+                const end = start + ARTICLES_PER_PAGE;
+
+                // Show/hide articles
+                articles.forEach((article, index) => {
+                    if (index >= start && index < end) {
+                        article.style.display = '';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+
+                // Update tabs
+                const tabs = tabsContainer.querySelectorAll('.pagination-tab');
+                tabs.forEach((tab, index) => {
+                    if (index + 1 === page) {
+                        tab.classList.add('active');
+                        tab.setAttribute('aria-current', 'page');
+                    } else {
+                        tab.classList.remove('active');
+                        tab.removeAttribute('aria-current');
+                    }
+                });
+
+                // Update prev/next buttons
+                prevBtn.disabled = page === 1;
+                nextBtn.disabled = page === totalPages;
+
+                // Scroll to top of articles list
+                articlesList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function goToPage(page) {
+                if (page >= 1 && page <= totalPages) {
+                    showPage(page);
+                }
+            }
+
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
     </script>
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LcL-FcsAAAAAH2EBkF16lVmlyxuRWLGTDeEpv8B&hl=es" async defer></script>
