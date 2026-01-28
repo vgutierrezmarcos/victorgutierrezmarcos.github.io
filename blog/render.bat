@@ -40,6 +40,15 @@ echo Actualizando indice del blog...
 cscript //nologo "%~dp0templates\update-index.js" "%1"
 
 echo.
+echo Actualizando RSS feed para newsletter...
+cscript //nologo "%~dp0templates\generate-rss.js"
+if errorlevel 1 (
+    echo   ERROR: Fallo al actualizar RSS
+) else (
+    echo   RSS actualizado correctamente
+)
+
+echo.
 echo Limpiando archivos temporales...
 if exist "%~n1_files" (
     rmdir /s /q "%~n1_files"

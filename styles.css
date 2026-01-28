@@ -1383,13 +1383,32 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8rem;
-    background: #e8f5e9;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
     border-radius: 6px;
     color: #2e7d32;
+}
+
+.newsletter-subscribed .subscribed-icon {
+    font-size: 1.25rem;
+}
+
+.newsletter-subscribed .subscribed-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.newsletter-subscribed .subscribed-text {
     font-weight: 600;
     font-size: 0.9rem;
+}
+
+.newsletter-subscribed .subscribed-thanks {
+    font-size: 0.8rem;
+    color: #388e3c;
+    font-style: italic;
 }
 
 .newsletter-btn {
