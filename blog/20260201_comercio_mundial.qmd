@@ -138,8 +138,7 @@ viviendas_plt <-
     check_overlap = TRUE
   )
 
-viviendas_plt <- 
-  viviendas_plt |> 
+viviendas_plt |> 
   victorgmtools::graficos_estilo_victorgm(
     .tipo_grafico_x = "fecha",
     .tipo_grafico_y = "porcentaje",
@@ -154,16 +153,9 @@ viviendas_plt <-
     .fecha_inicial_grafico = fecha_min,
     .fecha_final_grafico = fecha_max,
     .paleta_utilizada = paleta,
-    .logo_ancho_pct = 10
+    .logo_ancho_pct = 10,
+    .guardar_en = "images/20260129_viviendas.png"
   )
-
-htmlwidgets::saveWidget(viviendas_plt, "images/temp.html", selfcontained = TRUE)
-webshot2::webshot("images/temp.html", "images/20260129_viviendas.png")
-
-# Delete a file
-if (file.exists("images/temp.html")) file.remove("images/temp.html")
-# Delete a folder (and its contents)
-if (dir.exists("images/temp_files")) unlink("images/temp_files", recursive = TRUE) 
 ```
 
 
