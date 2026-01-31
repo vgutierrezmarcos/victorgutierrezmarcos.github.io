@@ -157,9 +157,9 @@ try {
     var rssContent = '<?xml version="1.0" encoding="UTF-8" ?>\n' +
         '<rss version="2.0">\n' +
         '  <channel>\n' +
-        '    <title>Blog | Victor Gutierrez Marcos</title>\n' +
+        '    <title>Blog | Víctor Gutiérrez Marcos</title>\n' +
         '    <link>' + siteUrl + '/blog/</link>\n' +
-        '    <description>Articulos y analisis sobre politica economica y comercio internacional.</description>\n' +
+        '    <description>Artículos y análisis sobre política económica y comercio internacional.</description>\n' +
         '    <language>es-es</language>\n' +
         '    <lastBuildDate>' + getCurrentDateRFC822() + '</lastBuildDate>' +
         rssItems + '\n' +
