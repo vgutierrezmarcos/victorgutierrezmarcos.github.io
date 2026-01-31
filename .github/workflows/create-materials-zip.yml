@@ -70,27 +70,27 @@ jobs:
           echo "Creando README explicativo..."
           
           cat > README.md << 'ENDOFFILE'
-        # Materiales TCEE - Victor Gutierrez Marcos
-        
+        # Materiales TCEE - Víctor Gutiérrez Marcos
+
         ## Acceso a los materiales
-        
-        Los materiales educativos (PDFs, documentos, plantillas) estan alojados en Google Drive.
-        
+
+        Los materiales educativos (PDFs, documentos, plantillas) están alojados en Google Drive.
+
         ### Enlaces directos:
-        
+
         - Todos los materiales: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_
         - Sitio web completo: https://victorgutierrezmarcos.es
-        
+
         ### Contenido disponible:
-        
+
         - Temario completo (5 ejercicios)
-        - Recursos de organizacion
+        - Recursos de organización
         - Plantillas de estudio
-        - Enlaces utiles
-        
+        - Enlaces útiles
+
         ---
-        
-        Tecnico Comercial y Economista del Estado - Promocion LXXIII
+
+        Técnico Comercial y Economista del Estado - Promoción LXXIII
         ENDOFFILE
           
           echo "README creado"
@@ -134,7 +134,7 @@ jobs:
     - name: Create new release
       run: |
         echo "Creando nuevo release..."
-        gh release create materiales-latest materiales-tcee.zip --title "Materiales TCEE - ${{ steps.date.outputs.date }}" --notes "Materiales para la Oposicion TCEE - Victor Gutierrez Marcos (Promocion LXXIII). Los materiales principales estan en Google Drive: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_. Sitio web: https://victorgutierrezmarcos.es. Actualizado: ${{ steps.date.outputs.date }}"
+        gh release create materiales-latest materiales-tcee.zip --title "Materiales TCEE - ${{ steps.date.outputs.date }}" --notes "Materiales para la Oposición TCEE - Víctor Gutiérrez Marcos (Promoción LXXIII). Los materiales principales están en Google Drive: https://drive.google.com/drive/folders/1r8qGub-oZS4xKYF-dnT_TdQ2dyAzfxB_. Sitio web: https://victorgutierrezmarcos.es. Actualizado: ${{ steps.date.outputs.date }}"
         echo "Release creado exitosamente"
       env:
         GH_TOKEN: ${{ github.token }}
