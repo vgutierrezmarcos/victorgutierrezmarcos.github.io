@@ -28,10 +28,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+
     <link rel="stylesheet" href="../../../../styles.css">
     <link rel="stylesheet" href="../../../../search-styles.css">
     <!-- Estilos del banner de cookies -->
     <link rel="stylesheet" href="../../../../cookie-consent.css">
+
+    <!-- SEO: Breadcrumbs Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Temario", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario.html"},
+            {"@type": "ListItem", "position": 4, "name": "Primer ejercicio", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio.html"},
+            {"@type": "ListItem", "position": 5, "name": "Test", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test.html"},
+            {"@type": "ListItem", "position": 6, "name": "Simulador"}
+        ]
+    }
+    </script>
 
     <!-- MathJax para fórmulas LaTeX -->
     <script>
@@ -843,6 +868,251 @@
                 text-align: left;
             }
         }
+
+        /* REPASO - REPETICIÓN ESPACIADA */
+        .repaso-optin {
+            margin-bottom: 1rem;
+        }
+        .repaso-toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            flex-wrap: wrap;
+        }
+        .repaso-toggle-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-accent-gold);
+            cursor: pointer;
+        }
+        .repaso-toggle-help {
+            display: block;
+            width: 100%;
+            margin-left: 1.75rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .repaso-container {
+            background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .repaso-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .repaso-icon { font-size: 1.5rem; }
+        .repaso-text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #92400e;
+            min-width: 200px;
+        }
+        .btn-repaso {
+            padding: 0.5rem 1.25rem;
+            background: var(--color-accent-gold);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-repaso:hover {
+            background: #9a7209;
+            transform: translateY(-1px);
+        }
+        .repaso-cajas {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .repaso-caja {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.7);
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        .repaso-caja strong { font-weight: 700; }
+
+        /* PANEL DE ESTADÍSTICAS */
+        .stats-body {
+            padding: 1.5rem;
+            max-height: 65vh;
+            overflow-y: auto;
+        }
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: var(--color-bg-light);
+            border: 1px solid var(--color-border-light);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.2;
+        }
+        .stat-value.score-pass { color: #059669; background: none; padding: 0; border-radius: 0; }
+        .stat-value.score-fail { color: #dc2626; background: none; padding: 0; border-radius: 0; }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .stat-trend {
+            margin-top: 0.25rem;
+            font-size: 0.7rem;
+        }
+        .trend-up { color: #059669; }
+        .trend-down { color: #dc2626; }
+        .trend-stable { color: var(--color-text-muted); }
+        .stats-section {
+            margin-bottom: 1.5rem;
+        }
+        .stats-section-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary-pale);
+        }
+        .stats-empty {
+            color: var(--color-text-muted);
+            font-style: italic;
+            text-align: center;
+            padding: 1rem;
+        }
+        /* Gráfico de evolución */
+        .evolution-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .evo-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .evo-date {
+            width: 55px;
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .evo-bar-bg {
+            flex: 1;
+            height: 22px;
+            background: var(--color-bg-light);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .evo-bar {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.4rem;
+            min-width: 30px;
+            transition: width 0.5s ease;
+        }
+        .evo-bar.bar-pass { background: linear-gradient(90deg, #059669, #34d399); }
+        .evo-bar.bar-fail { background: linear-gradient(90deg, #dc2626, #f87171); }
+        .evo-bar-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .evo-bar-threshold {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0,0,0,0.2);
+        }
+        /* Barras por tema */
+        .temas-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .tema-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .tema-label {
+            width: 100px;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .tema-label small {
+            color: var(--color-text-light);
+        }
+        .tema-bar-bg {
+            flex: 1;
+            height: 20px;
+            background: var(--color-bg-light);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .tema-bar {
+            height: 100%;
+            border-radius: 4px;
+            min-width: 4px;
+            transition: width 0.5s ease;
+        }
+        .tema-bar.bar-pass { background: linear-gradient(90deg, #059669, #34d399); }
+        .tema-bar.bar-fail { background: linear-gradient(90deg, #dc2626, #f87171); }
+        .tema-bar-value {
+            position: absolute;
+            right: 0.4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+        }
+        @media (max-width: 600px) {
+            .stats-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-value {
+                font-size: 1.2rem;
+            }
+            .evo-date, .tema-label {
+                width: 40px;
+                font-size: 0.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -975,6 +1245,26 @@
                             </div>
                         </div>
 
+                        <!-- Repetición espaciada (opt-in) -->
+                        <div class="repaso-optin">
+                            <label class="repaso-toggle-label">
+                                <input type="checkbox" id="repaso-toggle" onchange="toggleRepeticionEspaciada(this.checked)">
+                                <span>Activar repetición espaciada</span>
+                                <small class="repaso-toggle-help">Registra preguntas falladas para repasarlas en futuras sesiones</small>
+                            </label>
+                        </div>
+                        <div id="repaso-container" class="repaso-container" style="display: none;">
+                            <div class="repaso-info">
+                                <span class="repaso-icon">🔁</span>
+                                <div class="repaso-text">
+                                    <strong>Repetición espaciada:</strong>
+                                    Tienes <span id="repaso-count">0</span> preguntas pendientes de repaso
+                                </div>
+                                <button id="btn-repaso" class="btn-repaso" onclick="comenzarRepaso()">Repasar ahora</button>
+                            </div>
+                            <div class="repaso-cajas" id="repaso-cajas"></div>
+                        </div>
+
                         <!-- Botón comenzar -->
                         <div class="btn-comenzar-container">
                             <button id="btn-comenzar" class="btn-comenzar" disabled>
@@ -1039,6 +1329,7 @@
                     <div class="resultados-acciones">
                         <button id="btn-volver" class="btn-nav">← Volver a configuración</button>
                         <button id="btn-repetir" class="btn-comenzar">🔄 Repetir examen</button>
+                        <button id="btn-stats" class="btn-nav" onclick="showStatsPanel()" style="background: var(--color-accent-gold); color: #fff; border-color: var(--color-accent-gold);">📊 Ver estadísticas</button>
                     </div>
 
                     <div class="revision-section">
@@ -1084,6 +1375,8 @@
     <script src="../../../../firebase-config.js"></script>
     <script src="../../../../auth.js"></script>
     <script src="simulator-history.js"></script>
+    <script src="simulator-stats.js"></script>
+    <script src="spaced-repetition.js"></script>
 
     <script>
         let datosTest = { temas: {}, preguntas: [], examenes: [] };
@@ -1266,6 +1559,8 @@
                 
                 // Inicializar la interfaz
                 inicializarSelectores();
+                initRepasoToggle();
+                actualizarBadgeRepaso();
                 loadingIndicator.style.display = 'none';
                 mainContent.style.display = 'block';
                 
@@ -1681,6 +1976,12 @@
             if (typeof saveExamResult === 'function') {
                 saveExamResult(resultData);
             }
+
+            // Registrar en sistema de repetición espaciada (solo si activado)
+            if (typeof SpacedRepetition !== 'undefined' && isRepeticionEnabled()) {
+                SpacedRepetition.recordExamResults(preguntasExamen, respuestasUsuario);
+                actualizarBadgeRepaso();
+            }
         }
 
         function generarGraficoBloques() {
@@ -1869,6 +2170,115 @@
         }
 
         // ============================================
+        // REPETICIÓN ESPACIADA - UI
+        // ============================================
+
+        var SR_ENABLED_KEY = 'vgm_sr_enabled';
+
+        function isRepeticionEnabled() {
+            return localStorage.getItem(SR_ENABLED_KEY) === 'true';
+        }
+
+        function toggleRepeticionEspaciada(enabled) {
+            localStorage.setItem(SR_ENABLED_KEY, enabled ? 'true' : 'false');
+            actualizarBadgeRepaso();
+        }
+
+        function initRepasoToggle() {
+            var toggle = document.getElementById('repaso-toggle');
+            if (toggle) {
+                toggle.checked = isRepeticionEnabled();
+            }
+        }
+
+        function actualizarBadgeRepaso() {
+            if (typeof SpacedRepetition === 'undefined') return;
+            var container = document.getElementById('repaso-container');
+            if (!container) return;
+
+            if (!isRepeticionEnabled()) {
+                container.style.display = 'none';
+                return;
+            }
+
+            var summary = SpacedRepetition.getSummary();
+
+            if (summary.total === 0) {
+                container.style.display = 'none';
+                return;
+            }
+
+            container.style.display = 'block';
+            document.getElementById('repaso-count').textContent = summary.dueCount > 0 ? summary.dueCount : summary.total;
+
+            var cajasHTML = '';
+            for (var b = 1; b <= 5; b++) {
+                var nombres = ['', 'Nueva', 'Aprendiendo', 'Repaso', 'Avanzada', 'Dominada'];
+                if (summary.boxes[b] > 0) {
+                    cajasHTML += '<span class="repaso-caja">Caja ' + b + ' (' + nombres[b] + '): <strong>' + summary.boxes[b] + '</strong></span>';
+                }
+            }
+            var cajasContainer = document.getElementById('repaso-cajas');
+            if (cajasContainer) cajasContainer.innerHTML = cajasHTML;
+
+            // Actualizar texto del botón
+            var btn = document.getElementById('btn-repaso');
+            if (btn) {
+                btn.textContent = summary.dueCount > 0
+                    ? 'Repasar ' + summary.dueCount + ' preguntas'
+                    : 'Repasar todas (' + summary.total + ')';
+            }
+        }
+
+        function comenzarRepaso() {
+            if (typeof SpacedRepetition === 'undefined') return;
+            var dueIds = SpacedRepetition.getDueQuestionIds();
+
+            // Si no hay pendientes, usar todas las preguntas del sistema
+            if (dueIds.length === 0) {
+                var data = SpacedRepetition.loadData();
+                dueIds = Object.keys(data.questions).map(function(k) { return parseInt(k); });
+            }
+
+            if (dueIds.length === 0) {
+                alert('No hay preguntas para repasar.');
+                return;
+            }
+
+            // Filtrar preguntas del banco que coincidan con los IDs
+            var preguntasRepaso = datosTest.preguntas.filter(function(p) {
+                return dueIds.indexOf(p.id) !== -1;
+            });
+
+            if (preguntasRepaso.length === 0) {
+                alert('No se encontraron las preguntas de repaso en el banco.');
+                return;
+            }
+
+            // Mezclar aleatoriamente
+            preguntasRepaso.sort(function() { return Math.random() - 0.5; });
+
+            // Limitar a un máximo razonable
+            var max = Math.min(preguntasRepaso.length, 50);
+            preguntasExamen = preguntasRepaso.slice(0, max);
+            respuestasUsuario = {};
+            indicePreguntaActual = 0;
+
+            // Configurar tiempo (1.5 min por pregunta)
+            var tiempoMin = Math.ceil(preguntasExamen.length * 1.5);
+            tiempoRestante = tiempoMin * 60;
+
+            document.getElementById('fase-seleccion').classList.add('hidden');
+            document.getElementById('fase-resultados').classList.add('hidden');
+            document.getElementById('fase-examen').classList.remove('hidden');
+            document.getElementById('total-preguntas').textContent = preguntasExamen.length;
+
+            crearNavegadorPreguntas();
+            iniciarTemporizador();
+            mostrarPregunta();
+        }
+
+        // ============================================
         // PROTECCIÓN CONTRA SALIDA ACCIDENTAL
         // ============================================
 
@@ -1935,5 +2345,10 @@
         };
     </script>
     <script src="../../../../cookie-consent.js"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(function() {});
+    }
+    </script>
 </body>
 </html>

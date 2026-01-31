@@ -736,3 +736,328 @@ body {
         height: 20px;
     }
 }
+
+/* ==========================================================================
+   MODO OSCURO - Artículos del blog
+   ========================================================================== */
+
+[data-theme="dark"] {
+    --color-primary: #9b6bc7;
+    --color-primary-dark: #7a4fad;
+    --color-primary-light: #b48fda;
+    --color-primary-pale: #2a2040;
+    --color-bg: #121225;
+    --color-bg-light: #1e1e34;
+    --color-white: #252545;
+    --color-text: #e0e0e0;
+    --color-text-muted: #aaa;
+    --color-text-light: #888;
+    --color-border: #3a3a5c;
+    --color-accent-gold: #d4a017;
+}
+
+[data-theme="dark"] body {
+    background: #121225;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .article-container {
+    background: #1e1e34;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+/* Cabecera: forzar colores light originales */
+[data-theme="dark"] .article-header-bar {
+    background: #ffffff;
+    border-bottom-color: #e0e0e0;
+}
+
+[data-theme="dark"] .site-name {
+    color: #5F2987;
+}
+
+[data-theme="dark"] .site-tagline {
+    color: #666666;
+}
+
+[data-theme="dark"] .header-contact {
+    color: #666666;
+}
+
+[data-theme="dark"] .header-contact:hover {
+    color: #5F2987;
+}
+
+/* Barra de título: mantiene gradiente púrpura original */
+[data-theme="dark"] .article-title-bar {
+    background: linear-gradient(135deg, #5F2987 0%, #4a1f6b 100%);
+}
+
+[data-theme="dark"] .article-type {
+    color: #ffffff;
+}
+
+/* Pie: forzar colores light originales */
+[data-theme="dark"] .article-footer {
+    background: #fafafa;
+    border-top-color: #5F2987;
+}
+
+[data-theme="dark"] .copyright {
+    color: #5F2987;
+}
+
+[data-theme="dark"] .footer-links {
+    border-top-color: #e0e0e0;
+}
+
+[data-theme="dark"] .footer-links a {
+    color: #666666;
+}
+
+[data-theme="dark"] .footer-links a:hover {
+    color: #5F2987;
+}
+
+/* Contenido principal */
+[data-theme="dark"] .article-content {
+    border-right-color: #3a3a5c;
+}
+
+[data-theme="dark"] .article-number-title {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .article-subtitle {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .article-author-date {
+    color: #ccc;
+}
+
+[data-theme="dark"] .article-updated {
+    color: #888;
+}
+
+/* Sidebar */
+[data-theme="dark"] .article-sidebar {
+    background: #1a1a2e;
+}
+
+[data-theme="dark"] .author-name-sidebar {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .author-bio {
+    color: #aaa;
+}
+
+/* Texto del artículo */
+[data-theme="dark"] .article-body {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .article-body h2 {
+    color: #b48fda;
+    border-bottom-color: #3a3a5c;
+}
+
+[data-theme="dark"] .article-body h3 {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .article-body h4 {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .article-body blockquote {
+    color: #ccc;
+}
+
+[data-theme="dark"] .article-body a {
+    color: #b48fda;
+}
+
+/* Figuras y gráficos */
+[data-theme="dark"] .article-body figure {
+    background: #252545;
+    border-color: #3a3a5c;
+}
+
+[data-theme="dark"] .figure-title {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .figure-subtitle {
+    color: #b48fda;
+}
+
+[data-theme="dark"] .article-body figcaption {
+    color: #888;
+}
+
+/* Tablas */
+[data-theme="dark"] .article-body th {
+    background: #2a2040;
+    border-bottom-color: #9b6bc7;
+}
+
+[data-theme="dark"] .article-body td {
+    border-bottom-color: #3a3a5c;
+}
+
+[data-theme="dark"] .article-body tr:hover td {
+    background: #252545;
+}
+
+/* Notas al pie */
+[data-theme="dark"] .footnotes {
+    border-top-color: #3a3a5c;
+}
+
+[data-theme="dark"] .footnote-ref {
+    color: #b48fda;
+}
+
+/* Botones PDF */
+[data-theme="dark"] .view-btn {
+    color: #b48fda;
+    background: #1e1e34;
+    border-color: #9b6bc7;
+}
+
+[data-theme="dark"] .view-btn:hover {
+    background: #2a2040;
+}
+
+[data-theme="dark"] .download-btn {
+    background: #9b6bc7;
+    border-color: #9b6bc7;
+}
+
+[data-theme="dark"] .download-btn:hover {
+    background: #7a4fad;
+    border-color: #7a4fad;
+}
+
+/* Compartir */
+[data-theme="dark"] .share-section {
+    border-top-color: #3a3a5c;
+}
+
+[data-theme="dark"] .share-title {
+    color: #aaa;
+}
+
+/* Back nav */
+[data-theme="dark"] .back-nav {
+    background: #121225;
+}
+
+[data-theme="dark"] .back-nav a {
+    color: #b48fda;
+}
+
+/* Quarto overrides — forzar colores oscuros sobre los estilos de Quarto */
+[data-theme="dark"] .quarto-light {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] code {
+    background: #252545;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] pre {
+    background: #1a1a2e;
+    border-color: #3a3a5c;
+}
+
+/* Toggle de tema — mismo estilo que cookie-settings-floating */
+.theme-toggle {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5F2987 0%, #4a1f6b 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(95, 41, 135, 0.4);
+    transition: all 0.3s ease;
+    z-index: 9998;
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 0;
+    color: #fff;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(95, 41, 135, 0.5);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(95, 41, 135, 0.3), 0 4px 12px rgba(95, 41, 135, 0.4);
+}
+
+.theme-toggle .icon-light,
+.theme-toggle .icon-dark {
+    position: absolute;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle .icon-dark {
+    opacity: 0;
+}
+
+[data-theme="dark"] .theme-toggle .icon-light {
+    opacity: 0;
+}
+
+[data-theme="dark"] .theme-toggle .icon-dark {
+    opacity: 1;
+}
+
+/* Back to top — para artículos */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5F2987 0%, #4a1f6b 100%);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(95, 41, 135, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 90;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(95, 41, 135, 0.5);
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+}

@@ -387,42 +387,80 @@
     }
 }
 
-/* Modo oscuro (opcional - detecta preferencia del sistema) */
+/* Modo oscuro (preferencia del sistema o toggle manual) */
 @media (prefers-color-scheme: dark) {
     .cookie-modal-content {
         background: #1a1a2e;
         color: #e0e0e0;
     }
-    
+
     .cookie-modal-content h3 {
         color: #E2EFD9;
         border-bottom-color: rgba(226, 239, 217, 0.2);
     }
-    
+
     .cookie-category {
         background: #252540;
         border-color: #333355;
     }
-    
+
     .cookie-category-info h4 {
         color: #ffffff;
     }
-    
+
     .cookie-category-info p {
         color: #aaa;
     }
-    
+
     .cookie-modal-actions {
         border-top-color: #333355;
     }
-    
+
     .cookie-modal-actions .cookie-btn-secondary {
         background: #252540;
         color: #e0e0e0;
         border-color: #333355;
     }
-    
+
     .cookie-modal-actions .cookie-btn-secondary:hover {
         background: #333355;
     }
+}
+
+/* Modo oscuro via toggle manual */
+[data-theme="dark"] .cookie-modal-content {
+    background: #1a1a2e;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .cookie-modal-content h3 {
+    color: #E2EFD9;
+    border-bottom-color: rgba(226, 239, 217, 0.2);
+}
+
+[data-theme="dark"] .cookie-category {
+    background: #252540;
+    border-color: #333355;
+}
+
+[data-theme="dark"] .cookie-category-info h4 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .cookie-category-info p {
+    color: #aaa;
+}
+
+[data-theme="dark"] .cookie-modal-actions {
+    border-top-color: #333355;
+}
+
+[data-theme="dark"] .cookie-modal-actions .cookie-btn-secondary {
+    background: #252540;
+    color: #e0e0e0;
+    border-color: #333355;
+}
+
+[data-theme="dark"] .cookie-modal-actions .cookie-btn-secondary:hover {
+    background: #333355;
 }

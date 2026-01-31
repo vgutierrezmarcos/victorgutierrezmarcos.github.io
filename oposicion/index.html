@@ -35,6 +35,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../search-styles.css">
     <link rel="stylesheet" href="../cookie-consent.css">
@@ -52,6 +61,27 @@
         },
         "isAccessibleForFree": true,
         "inLanguage": "es"
+    }
+    </script>
+
+    <!-- SEO: Breadcrumbs Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://www.victorgutierrezmarcos.es/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Oposición TCEE"
+            }
+        ]
     }
     </script>
 </head>

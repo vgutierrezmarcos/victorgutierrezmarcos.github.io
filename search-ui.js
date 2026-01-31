@@ -364,13 +364,87 @@ class SearchUI {
     }
 }
 
-// Inicializar cuando el DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
+// Inicializar cuando el DOM esté listo (solo si search-engine.js está cargado)
+if (typeof searchEngine !== 'undefined') {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchUI = new SearchUI();
+            searchUI.initialize();
+        });
+    } else {
         const searchUI = new SearchUI();
         searchUI.initialize();
-    });
-} else {
-    const searchUI = new SearchUI();
-    searchUI.initialize();
+    }
 }
+
+// ============================================
+// MODO OSCURO
+// ============================================
+
+(function() {
+    // Aplicar tema guardado antes de que se pinte la página
+    var saved = localStorage.getItem('vgm_theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    function createToggle() {
+        var btn = document.createElement('button');
+        btn.className = 'theme-toggle';
+        btn.setAttribute('aria-label', 'Cambiar tema claro/oscuro');
+        btn.innerHTML = '<span class="icon-light">&#9789;</span><span class="icon-dark">&#9788;</span>';
+        document.body.appendChild(btn);
+
+        btn.addEventListener('click', function() {
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('vgm_theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('vgm_theme', 'dark');
+            }
+            // Actualizar LinkedIn badge si existe
+            var liBadge = document.querySelector('.badge-base.LI-profile-badge');
+            if (liBadge) {
+                liBadge.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                // Recargar el badge eliminando el iframe y re-invocando el script
+                var iframe = liBadge.querySelector('iframe');
+                if (iframe) iframe.remove();
+                if (typeof LI !== 'undefined' && LI.Profile && LI.Profile.init) {
+                    LI.Profile.init();
+                }
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', createToggle);
+    } else {
+        createToggle();
+    }
+})();
+
+// ============================================
+// BOTÓN VOLVER ARRIBA
+// ============================================
+
+(function() {
+    var btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', 'Volver arriba');
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>';
+    document.body.appendChild(btn);
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, { passive: true });
+
+    btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
