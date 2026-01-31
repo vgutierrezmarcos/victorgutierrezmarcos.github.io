@@ -43,8 +43,14 @@
     <!-- Estilos del banner de cookies -->
     <link rel="stylesheet" href="cookie-consent.css">
     
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
@@ -137,6 +143,15 @@
     </div>
 </footer>
 
+    <script>
+    (function() {
+        var t = localStorage.getItem('vgm_theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            var b = document.querySelector('.badge-base.LI-profile-badge');
+            if (b) b.setAttribute('data-theme', 'dark');
+        }
+    })();
+    </script>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <script src="search-engine.js"></script>
     <script src="search-ui.js"></script>

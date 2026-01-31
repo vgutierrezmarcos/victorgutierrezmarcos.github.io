@@ -73,6 +73,12 @@
         <link rel="stylesheet" href="templates/articulo-styles.css">
         <!-- Estilos del banner de cookies -->
     <link rel="stylesheet" href="../cookie-consent.css">
+    <script>
+    var t = localStorage.getItem('vgm_theme');
+    if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+    </script>
     </head>
 <body class="fullcontent quarto-light">
 
@@ -681,6 +687,8 @@
   });
   </script>
  <!-- /content -->
+<!-- Tema oscuro y botón volver arriba -->
+<script src="../search-ui.js"></script>
 <!-- Script de consentimiento de cookies -->
 <script src="../cookie-consent.js"></script>
 
