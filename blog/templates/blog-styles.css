@@ -100,8 +100,8 @@ body {
 }
 
 #blog-auth-container .auth-btn {
-    background: #E2EFD9;
-    color: #5F2987;
+    background: linear-gradient(135deg, #b8860b 0%, #d4a012 100%);
+    color: #fff;
     border: none;
     padding: 0.4rem 0.75rem;
     border-radius: 4px;
@@ -112,19 +112,24 @@ body {
     align-items: center;
     gap: 0.4rem;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.3);
 }
 
 #blog-auth-container .auth-btn:hover {
-    background: #fff;
+    background: linear-gradient(135deg, #d4a012 0%, #b8860b 100%);
+    box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
+    transform: translateY(-1px);
 }
 
 #blog-auth-container .auth-btn.logged-in {
-    background: #b8860b;
+    background: linear-gradient(135deg, #4a9079 0%, #5ba88f 100%);
     color: #fff;
+    box-shadow: 0 2px 8px rgba(74, 144, 121, 0.25);
 }
 
 #blog-auth-container .auth-btn.logged-in:hover {
-    background: #9a7209;
+    background: linear-gradient(135deg, #5ba88f 0%, #4a9079 100%);
+    box-shadow: 0 4px 12px rgba(74, 144, 121, 0.35);
 }
 
 #blog-auth-container .auth-icon {
@@ -135,7 +140,7 @@ body {
 #blog-auth-container .auth-icon svg {
     width: 16px;
     height: 16px;
-    stroke: currentColor;
+    stroke: #fff;
 }
 
 #blog-auth-container .auth-icon img {

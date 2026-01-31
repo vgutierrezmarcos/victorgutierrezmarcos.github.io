@@ -404,17 +404,6 @@ if (typeof searchEngine !== 'undefined') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('vgm_theme', 'dark');
             }
-            // Actualizar LinkedIn badge si existe
-            var liBadge = document.querySelector('.badge-base.LI-profile-badge');
-            if (liBadge) {
-                liBadge.setAttribute('data-theme', isDark ? 'light' : 'dark');
-                // Recargar el badge eliminando el iframe y re-invocando el script
-                var iframe = liBadge.querySelector('iframe');
-                if (iframe) iframe.remove();
-                if (typeof LI !== 'undefined' && LI.Profile && LI.Profile.init) {
-                    LI.Profile.init();
-                }
-            }
         });
     }
 
