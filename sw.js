@@ -4,11 +4,12 @@
  * Autor: Víctor Gutiérrez Marcos
  */
 
-var CACHE_NAME = 'vgm-simulador-v1';
+var CACHE_NAME = 'vgm-simulador-v2';
 
 var PRECACHE_URLS = [
     '/oposicion/temario/primer-ejercicio/test/simulador.html',
     '/oposicion/temario/primer-ejercicio/test/preguntas.json',
+    '/oposicion/temario/primer-ejercicio/test/bloques.json',
     '/oposicion/temario/primer-ejercicio/test/simulator-history.js',
     '/oposicion/temario/primer-ejercicio/test/simulator-stats.js',
     '/oposicion/temario/primer-ejercicio/test/spaced-repetition.js',
@@ -62,7 +63,7 @@ self.addEventListener('fetch', function(event) {
     }
 
     // Para preguntas.json usar cache-first (no cambia frecuentemente)
-    if (url.pathname.indexOf('preguntas.json') !== -1) {
+    if (url.pathname.indexOf('preguntas.json') !== -1 || url.pathname.indexOf('bloques.json') !== -1) {
         event.respondWith(
             caches.match(event.request).then(function(cached) {
                 if (cached) {

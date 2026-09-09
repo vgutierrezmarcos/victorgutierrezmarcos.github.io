@@ -1,0 +1,19 @@
+rules_version = '2';
+// Reglas de seguridad de Firestore para el proyecto web-vgm.
+// Compartidas por la web (auth.js, simulator-history.js) y la app móvil.
+// Aplicar desde la consola de Firebase (Firestore Database → Reglas) o con `firebase deploy --only firestore:rules`.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cada usuario solo puede leer y escribir su propio subárbol:
+    //   users/{uid}/exam_results/{id}        resultados de test (web y app)
+    //   users/{uid}/progress/spaced_repetition   repaso Leitner (app; la web lo adoptará después)
+    //   users/{uid}/progress/settings        convocatoria, temas estudiados, racha
+    //   users/{uid}/notes/{codigoTema}       notas propias por tema
+    match /users/{uid}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

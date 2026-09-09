@@ -1544,8 +1544,10 @@
         let tiempoInicio = 0;
         let intervaloTemporizador = null;
 
-        // Mapeo de temas a bloques (basado en bloques.xlsx)
-        const temaABloque = {
+        // Mapeo de temas a bloques (basado en bloques.xlsx).
+        // Fuente canónica: bloques.json (compartido con la app móvil). Este mapa inline
+        // se mantiene solo como respaldo si la carga del JSON falla.
+        let temaABloque = {
             // === PARTE A ===
             // Pensamiento económico (temas A.1-7)
             '3.A.1': 'Pensamiento económico',
@@ -1656,21 +1658,41 @@
         
         // Mapeo inverso: de bloque a lista de temas (para tooltips)
         const bloqueATemas = {};
-        Object.entries(temaABloque).forEach(([tema, bloque]) => {
-            if (!bloqueATemas[bloque]) {
-                bloqueATemas[bloque] = [];
-            }
-            bloqueATemas[bloque].push(tema);
-        });
-        // Ordenar temas dentro de cada bloque
-        Object.keys(bloqueATemas).forEach(bloque => {
-            bloqueATemas[bloque].sort((a, b) => {
-                const [, partA, numA] = a.match(/3\.([AB])\.(\d+)/);
-                const [, partB, numB] = b.match(/3\.([AB])\.(\d+)/);
-                if (partA !== partB) return partA.localeCompare(partB);
-                return parseInt(numA) - parseInt(numB);
+        function construirBloqueATemas() {
+            Object.keys(bloqueATemas).forEach(k => delete bloqueATemas[k]);
+            Object.entries(temaABloque).forEach(([tema, bloque]) => {
+                if (!bloqueATemas[bloque]) {
+                    bloqueATemas[bloque] = [];
+                }
+                bloqueATemas[bloque].push(tema);
             });
-        });
+            // Ordenar temas dentro de cada bloque
+            Object.keys(bloqueATemas).forEach(bloque => {
+                bloqueATemas[bloque].sort((a, b) => {
+                    const [, partA, numA] = a.match(/3\.([AB])\.(\d+)/);
+                    const [, partB, numB] = b.match(/3\.([AB])\.(\d+)/);
+                    if (partA !== partB) return partA.localeCompare(partB);
+                    return parseInt(numA) - parseInt(numB);
+                });
+            });
+        }
+        construirBloqueATemas();
+
+        // Cargar bloques.json (fuente compartida con la app). Si falla, se usa el mapa inline.
+        async function cargarBloques() {
+            try {
+                const resp = await fetch('bloques.json');
+                if (!resp.ok) return;
+                const data = await resp.json();
+                if (data && data.temaABloque && Object.keys(data.temaABloque).length > 0) {
+                    temaABloque = data.temaABloque;
+                    construirBloqueATemas();
+                    console.log(`bloques.json cargado: ${Object.keys(temaABloque).length} temas`);
+                }
+            } catch (e) {
+                console.warn('No se pudo cargar bloques.json, se usa el mapa inline.', e);
+            }
+        }
 
         function toggleAcordeon(id) {
             document.getElementById(id).classList.toggle('collapsed');
@@ -1685,7 +1707,7 @@
             try {
                 // Intentar cargar el JSON
                 console.log('Intentando cargar preguntas.json...');
-                const response = await fetch('preguntas.json');
+                const [response] = await Promise.all([fetch('preguntas.json'), cargarBloques()]);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
