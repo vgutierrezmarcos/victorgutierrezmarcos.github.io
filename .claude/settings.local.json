@@ -43,7 +43,12 @@
       "Bash(cmd.exe /c \"where node 2>nul || echo Node not in PATH\")",
       "Bash(cmd.exe /c \"where magick 2>nul || where cwebp 2>nul || echo No image tools found\")",
       "Bash(cmd.exe /c \"python --version 2>nul && python -c \"\"from PIL import Image; print\\(''Pillow available''\\)\"\" 2>nul || echo Python/Pillow not available\")",
-      "Bash(cmd.exe /c \"pip install Pillow --quiet && echo Pillow installed\")"
+      "Bash(cmd.exe /c \"pip install Pillow --quiet && echo Pillow installed\")",
+      "Bash(node create_template.js:*)",
+      "Bash(NODE_PATH=\"C:/Users/vgutierrez/node-v24.13.0-win-x64/node_modules\" node:*)",
+      "Bash(python:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(PYTHONIOENCODING=utf-8 python:*)"
     ]
   }
 }
