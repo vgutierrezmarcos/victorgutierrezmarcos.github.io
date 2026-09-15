@@ -353,6 +353,23 @@ body {
 }
 
 /* Featured card style */
+.tema-card-extra {
+    margin: -1rem 1.75rem 1.25rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+}
+
+.tema-card-extra a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-border-light);
+}
+
+.tema-card-extra a:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
 .tema-card--featured {
     background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-white) 100%);
     border-color: var(--color-primary-light);
@@ -487,6 +504,33 @@ body {
 
 .tema-item a:hover { color: var(--color-primary-dark); text-decoration: underline; }
 .tema-item-title { color: var(--color-text); font-weight: 400; }
+
+.tema-item-docx {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--color-border-light);
+    border-radius: 3px;
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-text-light);
+    text-decoration: none;
+    vertical-align: middle;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tema-item a.tema-item-docx {
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+.tema-item a.tema-item-docx:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    text-decoration: none;
+}
 
 .tema-item-unavailable {
     color: var(--color-text-light);

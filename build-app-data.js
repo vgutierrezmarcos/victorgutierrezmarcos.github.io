@@ -72,11 +72,13 @@ function parsearEjercicioConTemas(html, slug) {
         const letra = (tituloParte.match(/Parte ([A-Z])/) || [])[1] || '';
         const nombreParte = tituloParte.replace(/^Parte [A-Z]:\s*/, '');
         const temas = [];
-        const itemRe = /<div class="tema-item"><a href="([^"]+)"[^>]*>([\s\S]*?)<\/a><\/div>/g;
+        // el bloque puede llevar un segundo enlace opcional al DOCX del tema
+        const itemRe = /<div class="tema-item"><a href="([^"]+)"[^>]*>([\s\S]*?)<\/a>([\s\S]*?)<\/div>/g;
         let it;
         while ((it = itemRe.exec(g[2])) !== null) {
             const href = it[1];
             const inner = it[2];
+            const docxMatch = (it[3] || '').match(/class="tema-item-docx" href="([^"]+)"/);
             const disponible = !/tema-no-disponible\.html/.test(href);
             const codigoMatch = inner.match(/Tema\s+(\d+\.[A-Z]\.\d+)/);
             const tituloMatch = inner.match(/<span class="tema-item-title">([\s\S]*?)<\/span>/);
@@ -87,7 +89,8 @@ function parsearEjercicioConTemas(html, slug) {
                 titulo: tituloMatch ? limpiarTexto(tituloMatch[1]) : limpiarTexto(inner),
                 disponible,
                 temarioAnterior: temaAnterior,
-                url: disponible ? `${BASE_URL}/oposicion/temario/${href}` : null
+                url: disponible ? `${BASE_URL}/oposicion/temario/${href}` : null,
+                ...(docxMatch ? { urlDocx: `${BASE_URL}/oposicion/temario/${docxMatch[1]}` } : {})
             });
         }
         partes.push({ letra, nombre: nombreParte, temas });
@@ -136,7 +139,8 @@ function construirTemario() {
                 { id: 'simulador', titulo: 'Simulador de test', tipo: 'app', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/simulador.html` },
                 { id: 'examenes', titulo: 'Exámenes oficiales de test (PDF, 63 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf` },
                 { id: 'plantillas', titulo: 'Plantillas para practicar test', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/plantillas_para_practicar_test.pdf` },
-                { id: 'dictamen', titulo: 'Esquema del dictamen económico', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf` }
+                { id: 'dictamen', titulo: 'Esquema del dictamen económico', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf` },
+                { id: 'dictamen-docx', titulo: 'Esquema del dictamen económico 2025 (Word)', tipo: 'docx', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico_2025.docx` }
             ];
         }
         return base;
