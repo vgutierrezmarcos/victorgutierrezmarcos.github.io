@@ -129,20 +129,6 @@
                 </a>
             </div>
         </div>
-
-        <!-- Descarga de la app móvil: se muestra solo cuando oposicion/app-config.json tiene URLs de tienda -->
-        <div id="app-banner" class="app-banner" hidden>
-            <div class="app-banner-text">
-                <span class="home-card-label">App móvil</span>
-                <h3 class="home-card-title">Lleva la oposición en el bolsillo</h3>
-                <p class="home-card-desc"><em>Test, temario offline, sorteo de temas y cronómetro para cantar. Mismo historial que en la web.</em></p>
-            </div>
-            <div class="app-banner-links">
-                <a id="app-link-play" class="app-store-btn" target="_blank" rel="noopener" hidden>Google Play</a>
-                <a id="app-link-ios" class="app-store-btn" target="_blank" rel="noopener" hidden>App Store</a>
-            </div>
-        </div>
-        <script src="app-banner.js" defer></script>
     </main>
 
     <style>
@@ -177,35 +163,6 @@
             margin: 0 0.75rem;
             color: var(--color-primary-light);
         }
-
-        /* Banner de la app móvil */
-        .app-banner {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            background: var(--color-white);
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border-top: 5px solid var(--color-accent-gold);
-        }
-        .app-banner-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .app-store-btn {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            background: var(--color-primary);
-            color: #fff;
-            font-family: var(--font-ui);
-            font-weight: 600;
-            text-decoration: none;
-            transition: background var(--transition-fast);
-        }
-        .app-store-btn:hover { background: var(--color-primary-dark); }
 
         /* Cards Grid */
         .home-cards {
