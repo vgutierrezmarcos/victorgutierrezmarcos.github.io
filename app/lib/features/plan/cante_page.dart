@@ -26,7 +26,7 @@ class CantePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final c = ref.watch(cantesProvider).where((x) => x.id == id).firstOrNull;
-    if (c == null) return Scaffold(appBar: AppBar(title: const Text('Cante')), body: const Center(child: Text('Este cante ya no existe.')));
+    if (c == null) return Scaffold(appBar: BarraWeb(title: const Text('Cante')), body: const Center(child: Text('Este cante ya no existe.')));
     final temario = ref.watch(temarioProvider).value;
     final ajustes = ref.watch(ajustesProvider);
     final agendas = ref.watch(agendasProvider);
@@ -68,7 +68,7 @@ class CantePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: Text(tituloCante(c)),
         actions: [
           IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: c)))),
@@ -95,7 +95,7 @@ class CantePage extends ConsumerWidget {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(
             color: c.pendiente ? context.colores.primarioPalido : null,
@@ -106,7 +106,7 @@ class CantePage extends ConsumerWidget {
                 if (c.estado == EstadoCante.cancelado) Etiqueta('Cancelado', color: context.colores.textoClaro),
               ]),
               if (c.pendiente) Text(c.fecha.isAfter(DateTime.now()) ? 'Empieza ${cuentaAtras(c.fecha)}' : 'Pendiente de anotar', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
-              Text('${descripcionBolsa(c)} · ${c.minutos} min de exposición', style: context.textos.bodySmall),
+              Text('${descripcionBolsa(c)} · ${c.minutos} min', style: context.textos.bodySmall),
               if (c.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(c.notas, style: context.textos.bodyMedium)),
             ]),
           ),

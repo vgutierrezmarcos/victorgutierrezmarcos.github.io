@@ -28,7 +28,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
     final pendientes = leitner.pendientes();
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Simulador de test'),
         actions: [
           IconButton(
@@ -43,8 +43,9 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(preguntasProvider)),
         data: (b) {
           final disponibles = MotorTest.filtrar(b, _cfg).length;
+          final delTest = disponibles == 0 ? 0 : _cfg.numPreguntas.clamp(1, disponibles);
           return ListView(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
             children: [
               if (pendientes.isNotEmpty)
                 Tarjeta(
@@ -63,7 +64,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                     const Icon(Icons.chevron_right),
                   ]),
                 ),
-              TituloSeccion('Selección', accion: SegmentedButton<String>(
+              TituloSeccion('Selección', accion: SegmentedButton<String>(showSelectedIcon: false,
                 segments: const [
                   ButtonSegment(value: 'temas', label: Text('Temas')),
                   ButtonSegment(value: 'examenes', label: Text('Exámenes')),
@@ -76,21 +77,19 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                 style: const ButtonStyle(visualDensity: VisualDensity.compact),
               )),
               if (_modo == 'temas') _selectorTemas(b, bloques) else _selectorExamenes(b),
-              const TituloSeccion('Configuración'),
-              Tarjeta(
-                child: Column(children: [
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: const Text('Solo preguntas de exámenes oficiales'),
-                    value: _cfg.soloOficiales,
-                    onChanged: (v) => setState(() => _cfg = _cfg.copyWith(soloOficiales: v)),
-                  ),
+              const SizedBox(height: 8),
+              // .config-examen de la web: caja verde clara con el título subrayado en dorado.
+              Container(
+                padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
+                decoration: BoxDecoration(color: context.colores.fondoClaro, border: Border.all(color: context.colores.bordeClaro), borderRadius: BorderRadius.circular(8)),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  const Subtitulo('Configuración del examen'),
                   _slider('Preguntas', _cfg.numPreguntas.toDouble(), 5, 100, 19,
                       (v) => _cfg = _cfg.copyWith(numPreguntas: v.round()), '${_cfg.numPreguntas}'),
                   _slider('Tiempo', _cfg.minutos.toDouble(), 0, 180, 36,
                       (v) => _cfg = _cfg.copyWith(minutos: v.round()),
                       _cfg.minutos == 0 ? 'Sin límite' : '${_cfg.minutos} min'),
-                  const Divider(),
+                  const SizedBox(height: 8),
                   Row(children: [
                     Expanded(child: _numero('Acierto', _cfg.puntosAcierto, (v) => _cfg = _cfg.copyWith(puntosAcierto: v))),
                     const SizedBox(width: 8),
@@ -100,13 +99,34 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                   ]),
                 ]),
               ),
-              const SizedBox(height: 20),
-              FilledButton.icon(
-                onPressed: disponibles == 0 ? null : () => context.push('/examen', extra: _cfg),
-                icon: const Icon(Icons.play_arrow),
-                label: Text(disponibles == 0
-                    ? 'No hay preguntas con esos filtros'
-                    : 'Comenzar test · ${_cfg.numPreguntas.clamp(1, disponibles)} de $disponibles preguntas'),
+              const SizedBox(height: 12),
+              // .filtro-oficial
+              Tarjeta(
+                color: context.colores.primarioPalido,
+                padding: EdgeInsets.zero,
+                child: CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  title: Text('Solo preguntas de exámenes oficiales', style: context.textos.titleSmall),
+                  value: _cfg.soloOficiales,
+                  onChanged: (v) => setState(() => _cfg = _cfg.copyWith(soloOficiales: v ?? false)),
+                ),
+              ),
+              const SizedBox(height: 12),
+              // .contador-seleccion
+              Contador(cifras: [
+                (valor: _modo == 'temas' ? (_cfg.temas.isEmpty ? 'Todos' : '${_cfg.temas.length}') : (_cfg.examenes.isEmpty ? 'Todos' : '${_cfg.examenes.length}'), etiqueta: _modo == 'temas' ? 'Temas' : 'Exámenes'),
+                (valor: '$disponibles', etiqueta: 'Disponibles'),
+                (valor: '$delTest', etiqueta: 'En el test'),
+              ]),
+              const SizedBox(height: 18),
+              // .btn-comenzar
+              Center(
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16), textStyle: context.textos.labelLarge?.copyWith(fontSize: 16.5), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)), elevation: 3),
+                  onPressed: disponibles == 0 ? null : () => context.push('/examen', extra: _cfg),
+                  icon: const Icon(Icons.play_arrow),
+                  label: Text(disponibles == 0 ? 'No hay preguntas con esos filtros' : 'Comenzar test'),
+                ),
               ),
             ],
           );
@@ -181,27 +201,24 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
           ]),
         ),
       for (final e in partes.entries)
-        Tarjeta(
-          padding: EdgeInsets.zero,
-          child: ExpansionTile(
-            title: Text('Parte ${e.key}', style: context.textos.titleMedium),
-            subtitle: Text('${e.value.where(_cfg.temas.contains).length} de ${e.value.length} seleccionados', style: context.textos.bodySmall),
-            children: [
-              for (final c in e.value)
-                CheckboxListTile(
-                  dense: true,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  title: Text('$c · ${b.temas[c]}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
-                  secondary: Text('${conteo[c] ?? 0}', style: context.textos.labelMedium),
-                  value: _cfg.temas.contains(c),
-                  onChanged: (v) => setState(() {
-                    final s = {..._cfg.temas};
-                    v == true ? s.add(c) : s.remove(c);
-                    _cfg = _cfg.copyWith(temas: s);
-                  }),
-                ),
-            ],
-          ),
+        GrupoDesplegable(
+          titulo: 'Parte ${e.key}',
+          subtitulo: '${e.value.where(_cfg.temas.contains).length} de ${e.value.length} seleccionados',
+          children: [
+            for (final c in e.value)
+              CheckboxListTile(
+                dense: true,
+                controlAffinity: ListTileControlAffinity.leading,
+                title: TextoTema(c, b.temas[c] ?? ''),
+                secondary: Text('${conteo[c] ?? 0}', style: context.textos.labelMedium),
+                value: _cfg.temas.contains(c),
+                onChanged: (v) => setState(() {
+                  final s = {..._cfg.temas};
+                  v == true ? s.add(c) : s.remove(c);
+                  _cfg = _cfg.copyWith(temas: s);
+                }),
+              ),
+          ],
         ),
     ]);
   }
@@ -219,7 +236,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
           CheckboxListTile(
             dense: true,
             controlAffinity: ListTileControlAffinity.leading,
-            title: Text(ex.nombre, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+            title: Text(ex.nombre, style: context.textos.titleSmall),
             secondary: Text('${conteo[ex.id] ?? 0}', style: context.textos.labelMedium),
             value: _cfg.examenes.contains(ex.id),
             onChanged: (v) => setState(() {

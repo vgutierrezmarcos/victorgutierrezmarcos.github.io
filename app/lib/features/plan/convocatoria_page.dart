@@ -79,7 +79,7 @@ class ConvocatoriaPage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Convocatoria'),
         actions: [
           if (config.urlBoe != null) IconButton(tooltip: 'Convocatoria en el BOE', icon: const Icon(Icons.description_outlined), onPressed: () => abrirUrl(context, config.urlBoe)),
@@ -87,7 +87,7 @@ class ConvocatoriaPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(onPressed: nuevoHito, icon: const Icon(Icons.add), label: const Text('Hito')),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           if (config.nombreConvocatoria.isNotEmpty) Padding(padding: const EdgeInsets.fromLTRB(4, 0, 4, 4), child: Text(config.nombreConvocatoria, style: context.textos.titleMedium)),
           Padding(

@@ -19,7 +19,7 @@ class CuentaPage extends ConsumerWidget {
     final pendientes = repo.resultadosLocales().where((r) => !r.sincronizado).length;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Cuenta')),
+      appBar: BarraWeb(title: const Text('Cuenta')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

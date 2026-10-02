@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/models/temario.dart';
-import '../theme/app_theme.dart';
+import 'comunes.dart';
 
 /// Abre un selector de temas a pantalla completa y devuelve los códigos
 /// elegidos (null si se cancela). [ejercicios] limita los ejercicios mostrados.
@@ -39,7 +39,7 @@ class _SelectorTemasState extends State<_SelectorTemas> {
     List<String> ordenados() => [for (final t in widget.temario.todosLosTemas) if (_sel.contains(t.codigo)) t.codigo];
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: Text(widget.titulo),
         actions: [TextButton(onPressed: () => Navigator.pop(context, ordenados()), child: Text('Aceptar (${_sel.length})'))],
         bottom: PreferredSize(
@@ -54,7 +54,7 @@ class _SelectorTemasState extends State<_SelectorTemas> {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(8, 0, 8, 32),
+        padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
         children: [
           for (final e in ejercicios)
             for (final p in e.partes.where((p) => p.temas.isNotEmpty))
@@ -62,12 +62,13 @@ class _SelectorTemasState extends State<_SelectorTemas> {
                 final temas = p.temas.where((t) => q.isEmpty || '${t.codigo} ${t.titulo}'.toLowerCase().contains(q)).toList();
                 if (temas.isEmpty) return const SizedBox.shrink();
                 final marcados = p.temas.where((t) => _sel.contains(t.codigo)).length;
-                return ExpansionTile(
-                  key: PageStorageKey('${e.id}.${p.letra}'),
-                  initiallyExpanded: q.isNotEmpty || marcados > 0,
-                  title: Text('${e.id}.${p.letra} · ${p.nombre}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
-                  subtitle: Text('$marcados de ${p.temas.length}', style: context.textos.labelSmall),
-                  trailing: TextButton(
+                return GrupoDesplegable(
+                  // Al buscar, el grupo se reconstruye abierto.
+                  key: ValueKey('${e.id}.${p.letra}${q.isEmpty ? '' : '-busqueda'}'),
+                  abierto: q.isNotEmpty || marcados > 0,
+                  titulo: '${e.id}.${p.letra} · ${p.nombre}',
+                  subtitulo: '$marcados de ${p.temas.length}',
+                  accion: TextButton(
                     onPressed: () => setState(() {
                       final codigos = p.temas.map((t) => t.codigo);
                       marcados == p.temas.length ? _sel.removeAll(codigos) : _sel.addAll(codigos);
@@ -81,7 +82,7 @@ class _SelectorTemasState extends State<_SelectorTemas> {
                         controlAffinity: ListTileControlAffinity.leading,
                         value: _sel.contains(t.codigo),
                         onChanged: (v) => setState(() => v == true ? _sel.add(t.codigo) : _sel.remove(t.codigo)),
-                        title: Text('${t.codigo} · ${t.titulo}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                        title: TextoTema(t.codigo, t.titulo),
                       ),
                   ],
                 );

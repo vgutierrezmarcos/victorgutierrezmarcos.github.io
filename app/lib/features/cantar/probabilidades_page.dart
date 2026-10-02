@@ -35,7 +35,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
     final total = ProbabilidadAprobar(porEjercicio: probs, temasSabidos: ejercicios.fold(0, (s, ej) => s + partes(ej).fold(0, (x, p) => x + p.sabidos)));
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Probabilidades'),
         actions: [if (_simulados.isNotEmpty) TextButton(onPressed: () => setState(_simulados.clear), child: const Text('Mis temas'))],
       ),
@@ -43,7 +43,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
         data: (t) => ListView(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             Tarjeta(
               color: context.colores.primarioPalido,

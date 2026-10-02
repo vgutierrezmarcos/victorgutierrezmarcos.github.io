@@ -27,7 +27,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     int apuntes(String codigo) => agendas[codigo]?.pendientes.length ?? 0;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Temario'),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(56),
@@ -60,7 +60,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           final total = t.todosLosTemas.where((x) => x.disponible).length;
           final estudiados = ajustes.temasEstudiados.length;
           return ListView(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               Tarjeta(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -74,8 +74,10 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               ),
               for (final ej in t.ejercicios) ...[
                 TituloSeccion(ej.nombre),
-                Text(ej.descripcion, style: context.textos.bodySmall),
-                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 0, 4, 10),
+                  child: Text(ej.descripcion, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 15, color: context.colores.textoSuave)),
+                ),
                 if (ej.id == 2)
                   Tarjeta(onTap: () => abrirUrl(context, ej.urlPagina, enApp: true), child: Row(children: [Expanded(child: Text('Descripción de la prueba de idiomas en la web', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))), const Icon(Icons.open_in_new, size: 18)])),
                 for (final r in ej.recursos) _filaRecurso(r, descargas.descargado(r.url)),
@@ -83,23 +85,20 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                   if (p.temas.isEmpty)
                     _filaParte(p, p.url != null && descargas.descargado(p.url!))
                   else
-                    Tarjeta(
-                      padding: EdgeInsets.zero,
-                      child: ExpansionTile(
-                        title: Text('Parte ${p.letra}: ${p.nombre}', style: context.textos.titleSmall),
-                        subtitle: Text('${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} con PDF', style: context.textos.labelSmall),
+                    GrupoDesplegable(
+                        titulo: 'Parte ${p.letra}: ${p.nombre}',
+                        subtitulo: '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} con PDF',
                         children: [
                           // Quinto ejercicio: un único PDF con todos los temas de la parte.
                           if (p.url != null)
                             ListTile(
                               dense: true,
                               leading: Icon(Icons.picture_as_pdf_outlined, color: context.esquema.primary),
-                              title: Text('PDF completo de la parte', style: context.textos.titleSmall),
+                              title: Text('PDF completo de la parte', style: context.textos.titleSmall?.copyWith(color: context.esquema.primary)),
                               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '${ej.id}.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: false, url: p.url), esRecurso: true))),
                             ),
                           for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
                         ],
-                      ),
                     ),
               ],
               const TituloSeccion('Organización'),
@@ -119,7 +118,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
         tooltip: 'Estudiado',
         onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
       ),
-      title: Text('${x.codigo} · ${x.titulo}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: x.disponible ? context.esquema.onSurface : context.colores.textoClaro)),
+      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible),
       subtitle: Row(children: [
         if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text('Sin PDF', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),

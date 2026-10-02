@@ -4,7 +4,6 @@ import 'package:tcee_app/core/notificaciones.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/features/cantar/reloj_cante.dart';
 import 'package:tcee_app/features/plan/cantes_util.dart';
-import 'package:tcee_app/features/plan/planificador.dart';
 
 void main() {
   group('cantes', () {
@@ -65,66 +64,6 @@ void main() {
     });
   });
 
-  group('planificador', () {
-    final temas = [for (var i = 1; i <= 12; i++) '3.A.$i'];
-
-    test('lunes de la semana', () {
-      expect(Planificador.lunes(DateTime(2026, 10, 8, 15)), DateTime(2026, 10, 5)); // jueves
-      expect(Planificador.lunes(DateTime(2026, 10, 11)), DateTime(2026, 10, 5)); // domingo
-      expect(Planificador.lunes(DateTime(2026, 10, 5)), DateTime(2026, 10, 5));
-    });
-
-    test('alternar partes', () {
-      expect(Planificador.alternarPartes(['3.A.1', '3.A.2', '3.A.3', '3.B.1', '3.B.2', '4.A.1']), ['3.A.1', '3.B.1', '4.A.1', '3.A.2', '3.B.2', '3.A.3']);
-    });
-
-    test('por temas a la semana', () {
-      final c = Planificador.repartir(temas: temas, inicio: DateTime(2026, 10, 8), temasPorSemana: 3);
-      expect(c.inicio, DateTime(2026, 10, 5));
-      expect(c.semanas, 4);
-      expect([for (var s = 1; s <= 4; s++) c.deSemana(s).length], [3, 3, 3, 3]);
-      expect(c.entradas.first.semana, 1);
-      expect(c.deSemana(4).map((e) => e.codigo), ['3.A.10', '3.A.11', '3.A.12']);
-    });
-
-    test('hasta una fecha: reparto uniforme en las semanas disponibles', () {
-      final c = Planificador.repartir(temas: temas, inicio: DateTime(2026, 10, 5), fin: DateTime(2026, 11, 16)); // 6 semanas
-      expect(c.semanas, 6);
-      expect([for (var s = 1; s <= 6; s++) c.deSemana(s).length], [2, 2, 2, 2, 2, 2]);
-    });
-
-    test('más semanas que temas: no deja huecos al principio y no pasa de la fecha', () {
-      final c = Planificador.repartir(temas: temas.take(3).toList(), inicio: DateTime(2026, 10, 5), fin: DateTime(2026, 11, 16));
-      expect(c.entradas.map((e) => e.semana), [1, 3, 5]);
-    });
-
-    test('dos vueltas: la segunda va el doble de rápido', () {
-      final c = Planificador.repartir(temas: temas, inicio: DateTime(2026, 10, 5), temasPorSemana: 3, vueltas: 2);
-      expect(c.entradas.length, 24);
-      expect(c.semanas, 6); // 4 + 2
-      expect(c.entradas.where((e) => e.vuelta == 2).map((e) => e.semana).toSet(), {5, 6});
-      final porFecha = Planificador.repartir(temas: temas, inicio: DateTime(2026, 10, 5), fin: DateTime(2026, 11, 16), vueltas: 2);
-      expect(porFecha.semanas, 6);
-      expect(porFecha.entradas.where((e) => e.vuelta == 1).map((e) => e.semana).reduce((a, b) => a > b ? a : b), 4);
-    });
-
-    test('semana actual, previstos y desfase', () {
-      var c = Planificador.repartir(temas: temas, inicio: DateTime(2026, 10, 5), temasPorSemana: 3);
-      expect(c.semanaDe(DateTime(2026, 10, 4)), 0);
-      expect(c.semanaDe(DateTime(2026, 10, 5)), 1);
-      expect(c.semanaDe(DateTime(2026, 10, 11, 23)), 1);
-      expect(c.semanaDe(DateTime(2026, 10, 12)), 2);
-      expect(c.semanaDe(DateTime(2026, 10, 26)), 4); // tras el cambio de hora del 25 de octubre
-      expect(c.inicioSemana(4), DateTime(2026, 10, 26));
-      final hoy = DateTime(2026, 10, 21); // semana 3: deberían estar hechos 6
-      expect(c.previstosAntesDe(hoy), 6);
-      expect(c.desfase(hoy), -6);
-      c = Cronograma(inicio: c.inicio, entradas: [for (var i = 0; i < c.entradas.length; i++) c.entradas[i].copyWith(hecho: i < 7)]);
-      expect(c.desfase(hoy), 1);
-      expect(Cronograma.fromJson(c.toJson()).hechos, 7);
-    });
-  });
-
   group('horario', () {
     test('el horario por defecto reproduce las estadísticas del Excel', () {
       final h = Horario.porDefecto();
@@ -157,13 +96,11 @@ void main() {
     final p = const Plan().copyWith(
       fechas: {1: DateTime(2027, 3, 6), 3: DateTime(2027, 6, 1)},
       hitos: [Hito(id: 'h', titulo: 'Simulacro', fecha: DateTime(2027, 2, 1))],
-      cronograma: Planificador.repartir(temas: ['3.A.1', '3.A.2'], inicio: DateTime(2026, 10, 5), temasPorSemana: 1),
       avisosCante: false,
     );
     final d = Plan.fromJson(p.toJson());
     expect(d.fechas, p.fechas);
     expect(d.hitos.single.titulo, 'Simulacro');
-    expect(d.cronograma.semanas, 2);
     expect(d.horario, isNull);
     expect(d.avisosCante, isFalse);
     expect(d.updatedAt, isNotNull);
@@ -248,7 +185,7 @@ void main() {
       expect(ics, contains('UID:cante-abc@victorgutierrezmarcos.es'));
       expect(ics, contains('DTSTAMP:20261002T090000Z'));
       expect(ics, contains('DTSTART:20261008T150000Z'));
-      expect(ics, contains('DTEND:20261008T160000Z'));
+      expect(ics, contains('DTEND:20261008T153000Z')); // 30 minutos por defecto
       expect(ics, contains(r'SUMMARY:Cante TCEE · Preparador\; grupo\, A'));
       expect(ics, contains(r'Línea 1\nLínea 2'));
       expect(ics, contains('TRIGGER:-PT60M'));
@@ -262,7 +199,7 @@ void main() {
       final url = Uri.parse(Calendario.urlGoogle(eventoDeCante(cante)));
       expect(url.host, 'calendar.google.com');
       expect(url.queryParameters['action'], 'TEMPLATE');
-      expect(url.queryParameters['dates'], '20261008T150000Z/20261008T160000Z');
+      expect(url.queryParameters['dates'], '20261008T150000Z/20261008T153000Z');
       expect(url.queryParameters['text'], 'Cante TCEE · Preparador; grupo, A');
     });
   });

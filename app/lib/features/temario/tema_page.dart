@@ -82,7 +82,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final sinPdf = widget.tema.url == null;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: Text(widget.esRecurso ? widget.tema.titulo : 'Tema ${widget.tema.codigo}', overflow: TextOverflow.ellipsis),
         actions: [
           if (!widget.esRecurso && !sinPdf)
