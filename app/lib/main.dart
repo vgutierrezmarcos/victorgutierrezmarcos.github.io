@@ -13,6 +13,7 @@ import 'core/providers.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
 import 'data/repos/plan_repo.dart';
+import 'data/repos/preparador_repo.dart';
 import 'data/repos/usuario_repo.dart';
 
 Future<void> main() async {
@@ -41,6 +42,10 @@ Future<void> main() async {
     firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
     auth: firebaseDisponible ? FirebaseAuth.instance : null,
   );
+  final preparador = await PreparadorRepo.crear(
+    firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
+    auth: firebaseDisponible ? FirebaseAuth.instance : null,
+  );
   final descargas = await DescargasRepo.crear();
   await Notificaciones.iniciar();
 
@@ -50,6 +55,7 @@ Future<void> main() async {
     if (usuario.conSesion) {
       await usuario.sincronizarTodo();
       await plan.sincronizarTodo();
+      await preparador.sincronizarTodo();
     }
     // El recordatorio diario solo existe si el usuario lo ha activado: en cada
     // arranque se reprograma o, si está desactivado, se cancela el que hubiera.
@@ -68,6 +74,7 @@ Future<void> main() async {
           contenido: contenido,
           usuario: usuario,
           plan: plan,
+          preparador: preparador,
           descargas: descargas,
           firebaseDisponible: firebaseDisponible,
         )),

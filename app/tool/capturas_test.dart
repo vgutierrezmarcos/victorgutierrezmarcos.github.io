@@ -1,0 +1,295 @@
+// Capturas de la app para la página app/index.html y el vídeo promocional.
+//
+//   flutter test tool/capturas_test.dart --update-goldens
+//
+// Arranca la app completa sin Firebase ni red, con datos de demostración
+// ficticios, y guarda cada pantalla en promo/capturas/ a 1080 × 2340.
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tcee_app/app.dart';
+import 'package:tcee_app/core/cache_http.dart';
+import 'package:tcee_app/core/providers.dart';
+import 'package:tcee_app/data/models/estructura.dart';
+import 'package:tcee_app/data/models/plan.dart';
+import 'package:tcee_app/data/models/pregunta.dart';
+import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/resultado.dart';
+import 'package:tcee_app/data/models/temario.dart';
+import 'package:tcee_app/data/repos/contenido_repo.dart';
+import 'package:tcee_app/data/repos/descargas_repo.dart';
+import 'package:tcee_app/data/repos/plan_repo.dart';
+import 'package:tcee_app/data/repos/preparador_repo.dart';
+import 'package:tcee_app/data/repos/usuario_repo.dart';
+
+Map<String, dynamic> _json(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
+
+/// Versión de pubspec.yaml, para el pie de la pantalla Más.
+String _version() => RegExp(r'^version:\s*([\d.]+)', multiLine: true).firstMatch(File('pubspec.yaml').readAsStringSync())!.group(1)!;
+
+Future<void> _fuente(String familia, List<String> rutas) async {
+  final cargador = FontLoader(familia);
+  for (final r in rutas) {
+    cargador.addFont(Future.value(ByteData.view(Uint8List.fromList(File(r).readAsBytesSync()).buffer)));
+  }
+  await cargador.load();
+}
+
+void main() {
+  var n = 0;
+  Future<Box> caja() => Hive.openBox('captura${n++}', bytes: Uint8List(0));
+
+  setUpAll(() async {
+    await initializeDateFormatting('es');
+    // Este fichero es un test, aunque viva en tool/ para no ejecutarse con el resto.
+    // ignore: invalid_use_of_visible_for_testing_member
+    PackageInfo.setMockInitialValues(appName: 'Oposición TCEE', packageName: 'es.victorgutierrezmarcos.tcee_app', version: _version(), buildNumber: '', buildSignature: '');
+    await _fuente('Pagella', [for (final v in ['regular', 'italic', 'bold', 'bolditalic']) 'assets/fonts/texgyrepagella-$v.otf']);
+    await _fuente('SourceSans3', [for (final v in ['Regular', 'Medium', 'Semibold', 'Bold']) 'assets/fonts/SourceSans3-$v.ttf']);
+    await _fuente('MaterialIcons', ['${Platform.environment['FLUTTER_ROOT']}/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf']);
+  });
+
+  testWidgets('capturas', (tester) async {
+    final hoy = DateTime.now();
+    DateTime dia(int desplazamiento, [int hora = 17, int minuto = 30]) => DateTime(hoy.year, hoy.month, hoy.day + desplazamiento, hora, minuto);
+
+    final temario = Temario.fromJson(_json('../oposicion/temario/temario.json'));
+    final estructura = EstructuraTemario.fromJson(_json('../oposicion/organizacion/estructura_temario.json'));
+    final config = AppConfig.fromJson(_json('../oposicion/app-config.json'));
+    final banco = BancoPreguntas.fromJson(_json('../oposicion/temario/primer-ejercicio/test/preguntas.json'));
+    final bloques = Bloques.fromJson(_json('../oposicion/temario/primer-ejercicio/test/bloques.json'));
+
+    final usuario = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja());
+    final plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja());
+    final preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja());
+
+    // ------------------------------------------------- Datos de demostración
+    await usuario.guardarAjustes(Ajustes(
+      temasEstudiados: {
+        for (var i = 1; i <= 31; i++) '3.A.$i',
+        for (var i = 1; i <= 26; i++) '3.B.$i',
+        for (var i = 1; i <= 14; i++) '4.A.$i',
+        for (var i = 1; i <= 9; i++) '4.B.$i',
+        for (var i = 1; i <= 8; i++) '5.A.$i',
+        for (var i = 1; i <= 5; i++) '5.B.$i',
+        for (var i = 1; i <= 11; i++) '5.C.$i',
+      },
+      temasEnRepaso: const {'3.A.4', '3.A.12', '3.B.7'},
+      racha: 12,
+      mejorRacha: 21,
+      ultimoDia: Ajustes.claveDia(hoy),
+    ));
+    await plan.guardarPlan(Plan(
+      fechas: {1: dia(96, 9, 0), 3: dia(210, 9, 0)},
+      hitos: [Hito(id: 'h1', titulo: 'Simulacro del primer ejercicio', fecha: dia(40, 10, 0))],
+      updatedAt: hoy,
+    ));
+    Cante hecho(String id, int hace, String tema, int estrellas, int minutos, String comentario, {String titulo = 'Preparador'}) => Cante(
+          id: id,
+          fecha: dia(-hace),
+          titulo: titulo,
+          estado: EstadoCante.hecho,
+          bolsa: TipoBolsa.estudiados,
+          resultado: ResultadoCante(sorteados: [tema], temaCantado: tema, segundos: minutos * 60 + 20, valoracion: estrellas, comentarios: comentario),
+          updatedAt: hoy,
+        );
+    await plan.guardarCantes([
+      Cante(id: 'p1', fecha: dia(2), titulo: 'Preparador', bolsa: TipoBolsa.lista, temas: const ['3.A.12', '3.A.13', '3.A.14', '3.B.7', '3.B.8', '3.B.9'], notas: 'Llevar repasado el bloque de crecimiento.', updatedAt: hoy),
+      Cante(id: 'p2', fecha: dia(5, 18, 0), titulo: 'Grupo de cante', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 'p3', fecha: dia(9), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 'p4', fecha: dia(16), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta enlazar con el tema 3.A.8 en la conclusión.'),
+      hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Grupo de cante'),
+      hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y falla el esquema del modelo.'),
+      hecho('h4', 13, '3.A.4', 3, 31, 'Correcto; revisar los autores.'),
+      hecho('h5', 17, '3.B.11', 4, 28, ''),
+      hecho('h6', 20, '3.A.21', 2, 26, 'Mejor que la vez anterior, pero sigue flojo el final.'),
+      hecho('h7', 24, '3.A.15', 5, 30, ''),
+    ]);
+    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Actualizar los datos del PIB'));
+    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.4').anadir('Añadir la crítica de Lucas').anadir('Repasar el gráfico IS-LM'));
+    for (final (i, nota) in [6.8, 7.4, 5.9, 8.1, 7.7, 8.4].indexed) {
+      await usuario.guardarResultado(ResultadoTest(
+        id: 'r$i',
+        timestamp: dia(-12 + 2 * i, 20, 0),
+        puntosBrutos: nota * 5,
+        maxPuntos: 50,
+        notaSobre10: nota,
+        correctas: (nota * 4.6).round(),
+        incorrectas: 50 - (nota * 4.6).round() - 4,
+        sinResponder: 4,
+        totalPreguntas: 50,
+        tiempoSeconds: 5400 + 120 * i,
+        temas: const [],
+        sincronizado: true,
+      ));
+    }
+    await preparador.guardarAlumno(Alumno(id: 'lucia', uid: 'lucia', nombre: 'Lucía', temas: [for (var i = 1; i <= 22; i++) '3.A.$i', for (var i = 1; i <= 15; i++) '3.B.$i'], updatedAt: hoy));
+    await preparador.guardarAlumno(Alumno(id: 'pablo', nombre: 'Pablo', temas: [for (var i = 1; i <= 12; i++) '3.A.$i', for (var i = 1; i <= 8; i++) '3.B.$i'], updatedAt: hoy));
+    await preparador.guardarAlumno(Alumno(id: 'marta', uid: 'marta', nombre: 'Marta', ejercicio: 4, temas: [for (var i = 1; i <= 16; i++) '4.A.$i', for (var i = 1; i <= 11; i++) '4.B.$i'], updatedAt: hoy));
+    Cante sesionHecha(String id, String alumno, int hace, String tema, int estrellas, int minutos, String comentario) =>
+        hecho(id, hace, tema, estrellas, minutos, comentario, titulo: '').copyWith(alumno: alumno);
+    await preparador.guardarSesiones([
+      Cante(id: 's1', fecha: dia(0, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's2', fecha: dia(0, 18, 45), alumno: 'pablo', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's3', fecha: dia(3, 17, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's4', fecha: dia(7, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      sesionHecha('v1', 'lucia', 7, '3.A.9', 4, 29, 'Muy bien estructurado. En la conclusión, enlaza con la política de competencia.'),
+      sesionHecha('v2', 'lucia', 14, '3.B.4', 5, 30, 'Excelente.'),
+      sesionHecha('v3', 'lucia', 21, '3.A.17', 2, 23, 'Corto de tiempo; el modelo de Solow hay que llevarlo más rodado.'),
+      sesionHecha('v4', 'lucia', 28, '3.A.3', 4, 28, ''),
+      sesionHecha('v5', 'lucia', 35, '3.A.17', 2, 25, 'Mejora, pero aún flojo.'),
+      sesionHecha('v6', 'pablo', 7, '3.A.2', 3, 27, 'Correcto.'),
+      sesionHecha('v7', 'marta', 4, '4.A.6', 4, 30, 'Buen uso de los datos.'),
+    ]);
+
+    final http = CacheHttp(Dio(), await caja());
+    final overrides = [
+      serviciosProvider.overrideWithValue(Servicios(
+        http: http,
+        contenido: ContenidoRepo(http),
+        usuario: usuario,
+        plan: plan,
+        preparador: preparador,
+        descargas: DescargasRepo(await caja(), Directory.systemTemp.createTempSync('tcee_capturas')),
+        firebaseDisponible: true,
+      )),
+      authStateProvider.overrideWith((ref) => Stream<User?>.value(null)),
+      temarioProvider.overrideWith((ref) => temario),
+      configProvider.overrideWith((ref) => config),
+      estructuraProvider.overrideWith((ref) => estructura),
+      preguntasProvider.overrideWith((ref) => banco),
+      bloquesProvider.overrideWith((ref) => bloques),
+      enlacesProvider.overrideWith((ref) => <CategoriaEnlaces>[]),
+      actualizacionProvider.overrideWith((ref) => null),
+      // Lo que comparte un alumno enlazado: sus temas y un cante por su cuenta.
+      progresoAlumnoProvider.overrideWith((ref, id) async => ProgresoAlumno(
+            estudiados: preparador.alumno(id)!.temas.toSet(),
+            enRepaso: const {'3.A.5', '3.B.3'},
+            cantes: [hecho('x1', 2, '3.B.10', 3, 27, 'Me he quedado sin tiempo en el último epígrafe.', titulo: '')],
+          )),
+    ];
+
+    // Móvil de 1080 × 2340 a 2,625 de densidad (411 × 891 puntos).
+    tester.view.physicalSize = const Size(1080, 2340);
+    tester.view.devicePixelRatio = 2.625;
+    addTearDown(tester.view.reset);
+    // En los tests las sombras se pintan como bloques negros si no se activan.
+    debugDisableShadows = false;
+
+    await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
+    await tester.pumpAndSettle();
+
+    Future<void> captura(String nombre) async {
+      await tester.pumpAndSettle();
+      await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+    }
+
+    Future<void> tocar(Finder f) async {
+      await tester.tap(f.first);
+      await tester.pumpAndSettle();
+    }
+
+    Future<void> pestana(String nombre) async {
+      for (var i = 0; i < 2; i++) {
+        await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
+      }
+    }
+
+    Future<void> subpestana(String nombre) async {
+      await pestana('Cantes');
+      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    }
+
+    Future<void> bajar(double puntos) async {
+      await tester.drag(find.byType(ListView).first, Offset(0, -puntos));
+      await tester.pumpAndSettle();
+    }
+
+    /// Desplaza la lista de la pantalla hasta que se vea [f].
+    Future<void> buscar(Finder f) async {
+      await tester.scrollUntilVisible(f, 250, scrollable: find.descendant(of: find.byType(ListView).first, matching: find.byType(Scrollable)).first);
+      await tester.pumpAndSettle();
+    }
+
+    Future<void> atras() => tocar(find.byType(BackButton));
+
+    // ------------------------------------------------------------------ Hoy
+    await pestana('Hoy');
+    await captura('hoy');
+
+    // -------------------------------------------------------------- Temario
+    await pestana('Temario');
+    await captura('temario');
+    await buscar(find.textContaining('Parte A: Economía general'));
+    await tocar(find.textContaining('Parte A: Economía general'));
+    await bajar(330);
+    await captura('temario-temas');
+    await bajar(-20000); // de vuelta arriba
+    await tocar(find.text('Organización del temario'));
+    await captura('organizacion');
+    await tocar(find.text('Esquema'));
+    await captura('esquema');
+    await pestana('Temario');
+    await tocar(find.text('Probabilidades'));
+    await captura('probabilidades');
+    await tocar(find.text('3D'));
+    await bajar(430);
+    await captura('probabilidades-3d');
+
+    // --------------------------------------------------------------- Cantes
+    await subpestana('Agenda');
+    await captura('cantes-agenda');
+    await tocar(find.textContaining('Próximo cante'));
+    await captura('cante');
+    await atras();
+    await subpestana('Cantar');
+    await tocar(find.text('Sortear 2 temas de cada parte'));
+    await tocar(find.textContaining(RegExp(r'^3\.A\.\d+$')));
+    await bajar(232);
+    await captura('cantes-cantar');
+    await subpestana('Diario');
+    await captura('cantes-diario');
+
+    // ----------------------------------------------------------------- Test
+    await pestana('Test');
+    await captura('test');
+    await tocar(find.byTooltip('Estadísticas'));
+    await captura('test-estadisticas');
+
+    // ------------------------------------------------------------------ Más
+    // Hasta aquí, la app de un opositor; a partir de aquí, la de un preparador.
+    await preparador.guardarPerfil(PerfilPreparador(activo: true, codigo: 'K7M3PQ', nombre: 'Víctor', updatedAt: hoy));
+    ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).invalidate(perfilPreparadorProvider);
+    await pestana('Más');
+    await captura('mas');
+    await tocar(find.text('Mis alumnos'));
+    await captura('preparador');
+    await tocar(find.text('Lucía'));
+    await captura('alumno');
+    await bajar(520);
+    await captura('alumno-historial');
+    await buscar(find.textContaining('3.A.9 ·'));
+    await tocar(find.textContaining('3.A.9 ·'));
+    await captura('sesion');
+
+    // Una pregunta del simulador (pantalla completa: se deja para el final).
+    await pestana('Test');
+    await bajar(20000);
+    await tocar(find.text('Comenzar test'));
+    await tocar(find.textContaining('b)'));
+    await captura('test-pregunta');
+
+    debugDisableShadows = true;
+    expect(tester.takeException(), isNull);
+  });
+}

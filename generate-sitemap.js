@@ -21,6 +21,7 @@ const PAGE_CONFIG = {
     'oposicion/organizacion.html': { priority: '0.8', changefreq: 'monthly' },
     'oposicion/enlaces.html': { priority: '0.8', changefreq: 'monthly' },
     'blog/index.html': { priority: '0.8', changefreq: 'weekly' },
+    'app/index.html': { priority: '0.8', changefreq: 'monthly' },
 };
 
 // Directorios y archivos a excluir
@@ -29,6 +30,7 @@ const EXCLUDE_PATTERNS = [
     /^blog\/templates\//,
     /^blog\/.*_files\//,
     /^\.github\//,
+    /^app\/.+\//,   // de la app móvil solo se publica su página (app/index.html)
     /^node_modules\//,
     /404\.html$/,
     /tema-no-disponible\.html$/,

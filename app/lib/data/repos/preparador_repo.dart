@@ -1,0 +1,363 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../core/constants.dart';
+import '../models/plan.dart';
+import '../models/preparador.dart';
+
+/// Sección de preparadores. Igual que [PlanRepo]: siempre en local (Hive) y,
+/// si hay sesión, también en Firestore.
+///
+/// Lado del preparador (subárbol propio, users/{uid}):
+///   users/{uid}/progress/preparador   perfil (activo, código, nombre)
+///   users/{uid}/alumnos/{id}          alumnos
+///   users/{uid}/sesiones/{id}         sesiones de cante con sus alumnos
+///
+/// Enlace entre un alumno y su preparador (ver firestore.rules):
+///   codigos/{codigo}                           código → uid y nombre del preparador
+///   users/{alumno}/preparadores/{preparador}   permiso que da el alumno
+///   preparadores/{preparador}/alumnos/{alumno} para que el preparador vea quién se ha enlazado
+///   users/{alumno}/cantes/{id}                 copia de cada sesión, en la agenda y el diario del alumno
+class PreparadorRepo {
+  PreparadorRepo({
+    required Box alumnos,
+    required Box sesiones,
+    required Box perfil,
+    FirebaseFirestore? firestore,
+    FirebaseAuth? auth,
+  })  : _alumnos = alumnos,
+        _sesiones = sesiones,
+        _perfil = perfil,
+        _db = firestore,
+        _auth = auth;
+
+  final Box _alumnos;
+  final Box _sesiones;
+  final Box _perfil;
+  final FirebaseFirestore? _db;
+  final FirebaseAuth? _auth;
+
+  static Future<PreparadorRepo> crear({FirebaseFirestore? firestore, FirebaseAuth? auth}) async => PreparadorRepo(
+        alumnos: await Hive.openBox(Cajas.alumnos),
+        sesiones: await Hive.openBox(Cajas.sesiones),
+        perfil: await Hive.openBox(Cajas.preparador),
+        firestore: firestore,
+        auth: auth,
+      );
+
+  String? get uid => _auth?.currentUser?.uid;
+  bool get conSesion => uid != null && _db != null;
+
+  DocumentReference<Map<String, dynamic>>? get _docUsuario => conSesion ? _db!.collection('users').doc(uid) : null;
+
+  // -------------------------------------------------------------------- Perfil
+
+  PerfilPreparador perfil() => PerfilPreparador.fromJson(_perfil.get('perfil') as Map?);
+
+  Future<void> guardarPerfil(PerfilPreparador p) async {
+    await _perfil.put('perfil', p.toJson());
+    try {
+      await _docUsuario?.collection('progress').doc('preparador').set(p.toJson());
+    } catch (_) {
+      // Sin red: se sube en la próxima sincronización.
+    }
+  }
+
+  /// Activa «Soy preparador». Con sesión reserva además el código que se da
+  /// a los alumnos; sin sesión, la herramienta funciona solo en este dispositivo.
+  Future<PerfilPreparador> activar({String? nombre}) async {
+    var p = perfil().copyWith(activo: true, nombre: nombre ?? (perfil().nombre.isEmpty ? (_auth?.currentUser?.displayName ?? '') : null));
+    await guardarPerfil(p);
+    if (conSesion && p.codigo == null) {
+      final codigo = await _reservarCodigo(p.nombre);
+      if (codigo != null) {
+        p = p.copyWith(codigo: codigo);
+        await guardarPerfil(p);
+      }
+    }
+    return p;
+  }
+
+  Future<void> desactivar() => guardarPerfil(perfil().copyWith(activo: false));
+
+  /// Cambia el nombre con el que los alumnos ven al preparador.
+  Future<PerfilPreparador> renombrar(String nombre) async {
+    final p = perfil().copyWith(nombre: nombre.trim());
+    await guardarPerfil(p);
+    try {
+      if (conSesion && p.codigo != null) await _db!.collection('codigos').doc(p.codigo).set({'uid': uid, 'nombre': p.nombre}, SetOptions(merge: true));
+    } catch (_) {}
+    return p;
+  }
+
+  Future<String?> _reservarCodigo(String nombre) async {
+    try {
+      for (var i = 0; i < 6; i++) {
+        final codigo = generarCodigo();
+        final doc = _db!.collection('codigos').doc(codigo);
+        if ((await doc.get()).exists) continue;
+        await doc.set({'uid': uid, 'nombre': nombre, 'creado': DateTime.now().toIso8601String()});
+        return codigo;
+      }
+    } catch (_) {
+      // Sin red o sin permiso: se reintenta la próxima vez que se abra la sección.
+    }
+    return null;
+  }
+
+  // ------------------------------------------------------------------- Alumnos
+
+  List<Alumno> _todosLosAlumnos() => _alumnos.values.map((v) => Alumno.fromJson(v as Map)).toList();
+
+  /// Alumnos visibles, por orden alfabético.
+  List<Alumno> alumnos() => _todosLosAlumnos().where((a) => !a.borrado).toList()..sort((a, b) => a.nombre.toLowerCase().compareTo(b.nombre.toLowerCase()));
+
+  Alumno? alumno(String id) {
+    final j = _alumnos.get(id) as Map?;
+    return j == null ? null : Alumno.fromJson(j);
+  }
+
+  Future<void> guardarAlumno(Alumno a) async {
+    await _alumnos.put(a.id, a.toJson());
+    try {
+      await _docUsuario?.collection('alumnos').doc(a.id).set(a.toJson());
+    } catch (_) {}
+  }
+
+  /// Borrado lógico. Si el alumno estaba enlazado, se rompe también el enlace.
+  Future<void> borrarAlumno(Alumno a) async {
+    if (a.enlazado) await romperEnlaceConAlumno(a);
+    await guardarAlumno(a.copyWith(borrado: true, desenlazar: true));
+  }
+
+  // ------------------------------------------------------------------ Sesiones
+
+  List<Cante> _todasLasSesiones() => _sesiones.values.map((v) => Cante.fromJson(v as Map)).toList();
+
+  /// Sesiones visibles, ordenadas por fecha.
+  List<Cante> sesiones() => _todasLasSesiones().where((c) => !c.borrado).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+
+  Future<void> guardarSesion(Cante s) async {
+    await _sesiones.put(s.id, s.toJson());
+    try {
+      await _docUsuario?.collection('sesiones').doc(s.id).set(s.toJson());
+    } catch (_) {}
+    await _copiarAlAlumno(s);
+  }
+
+  Future<void> guardarSesiones(Iterable<Cante> lista) async {
+    for (final s in lista) {
+      await guardarSesion(s);
+    }
+  }
+
+  Future<void> borrarSesion(Cante s) => guardarSesion(s.copyWith(borrado: true));
+
+  /// Lo que ve el alumno enlazado en su agenda: el mismo cante, firmado por el preparador.
+  Map<String, dynamic> copiaParaAlumno(Cante s) {
+    final nombre = perfil().nombre;
+    return {
+      ...s.toJson()..remove('alumno'),
+      'titulo': s.titulo.isNotEmpty ? s.titulo : (nombre.isEmpty ? 'Preparador' : 'Con $nombre'),
+      'preparador': uid,
+      'preparadorNombre': nombre,
+    };
+  }
+
+  Future<void> _copiarAlAlumno(Cante s) async {
+    final a = s.alumno == null ? null : alumno(s.alumno!);
+    if (!conSesion || a?.uid == null) return;
+    try {
+      await _db!.collection('users').doc(a!.uid).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
+    } catch (_) {
+      // Sin red o enlace roto: la sesión queda guardada en el lado del preparador.
+    }
+  }
+
+  // ----------------------------------------------------- Enlace: lado del alumno
+
+  /// Preparadores con los que este usuario ha enlazado su app (copia local).
+  List<VinculoPreparador> misPreparadores() =>
+      ((_perfil.get('vinculos') as List?) ?? []).map((e) => VinculoPreparador.fromJson(e as Map)).toList();
+
+  Future<void> _guardarVinculos(List<VinculoPreparador> v) => _perfil.put('vinculos', v.map((e) => e.toJson()).toList());
+
+  /// Enlaza la app del alumno con el preparador que tiene ese código.
+  Future<VinculoPreparador> enlazarConCodigo(String texto) async {
+    final codigo = normalizarCodigo(texto);
+    if (codigo == null) throw const ErrorEnlace('El código tiene seis letras o cifras. Revísalo con tu preparador.');
+    if (!conSesion) throw const ErrorEnlace('Inicia sesión con Google para enlazar con tu preparador.');
+    final yo = _auth!.currentUser!;
+    final DocumentSnapshot<Map<String, dynamic>> doc;
+    try {
+      doc = await _db!.collection('codigos').doc(codigo).get();
+    } catch (_) {
+      throw const ErrorEnlace('No se pudo comprobar el código. Revisa la conexión e inténtalo de nuevo.');
+    }
+    final prep = doc.data()?['uid'] as String?;
+    if (!doc.exists || prep == null) throw const ErrorEnlace('No hay ningún preparador con ese código.');
+    if (prep == yo.uid) throw const ErrorEnlace('Ese es tu propio código de preparador.');
+    final vinculo = VinculoPreparador(uid: prep, nombre: doc.data()?['nombre'] as String? ?? '', codigo: codigo, desde: DateTime.now());
+    try {
+      final lote = _db.batch()
+        ..set(_docUsuario!.collection('preparadores').doc(prep), vinculo.toJson())
+        ..set(_db.collection('preparadores').doc(prep).collection('alumnos').doc(yo.uid), {
+          'uid': yo.uid,
+          'nombre': yo.displayName ?? '',
+          'email': yo.email,
+          'desde': DateTime.now().toIso8601String(),
+        });
+      await lote.commit();
+    } catch (_) {
+      throw const ErrorEnlace('No se pudo completar el enlace. Inténtalo de nuevo más tarde.');
+    }
+    await _guardarVinculos([...misPreparadores().where((v) => v.uid != prep), vinculo]);
+    return vinculo;
+  }
+
+  /// El alumno deja de compartir su progreso con ese preparador.
+  Future<void> desenlazar(String preparador) async {
+    await _guardarVinculos(misPreparadores().where((v) => v.uid != preparador).toList());
+    if (!conSesion) return;
+    try {
+      final lote = _db!.batch()
+        ..delete(_docUsuario!.collection('preparadores').doc(preparador))
+        ..delete(_db.collection('preparadores').doc(preparador).collection('alumnos').doc(uid));
+      await lote.commit();
+    } catch (_) {}
+  }
+
+  Future<void> _sincronizarVinculos() async {
+    final doc = _docUsuario;
+    if (doc == null) return;
+    try {
+      final snap = await doc.collection('preparadores').get();
+      await _guardarVinculos([for (final d in snap.docs) VinculoPreparador.fromJson({...d.data(), 'uid': d.id})]);
+    } catch (_) {}
+  }
+
+  // ------------------------------------------------- Enlace: lado del preparador
+
+  /// Da de alta como alumnos a quienes han enlazado con el código y quita el
+  /// enlace a los que lo han roto desde su app.
+  Future<void> _sincronizarAlumnosEnlazados() async {
+    if (!conSesion || !perfil().activo) return;
+    try {
+      final snap = await _db!.collection('preparadores').doc(uid).collection('alumnos').get();
+      final enlazados = {for (final d in snap.docs) d.id: d.data()};
+      final locales = _todosLosAlumnos();
+      for (final e in enlazados.entries) {
+        final existente = locales.where((a) => a.uid == e.key).firstOrNull;
+        if (existente != null && !existente.borrado) continue;
+        final nombre = (e.value['nombre'] as String?)?.trim() ?? '';
+        await guardarAlumno(Alumno(id: e.key, uid: e.key, nombre: nombre.isEmpty ? (e.value['email'] as String? ?? 'Alumno') : nombre, creado: DateTime.now(), updatedAt: DateTime.now()));
+      }
+      for (final a in locales.where((a) => a.enlazado && !a.borrado && !enlazados.containsKey(a.uid))) {
+        await guardarAlumno(a.copyWith(desenlazar: true));
+      }
+    } catch (_) {}
+  }
+
+  /// Progreso que comparte un alumno enlazado (null si no lo está o no hay red).
+  Future<ProgresoAlumno?> progreso(Alumno a) async {
+    if (!conSesion || a.uid == null) return null;
+    try {
+      final usuario = _db!.collection('users').doc(a.uid);
+      final ajustes = (await usuario.collection('progress').doc('settings').get()).data() ?? const {};
+      final cantes = await usuario.collection('cantes').get();
+      final estudiados = ((ajustes['temasEstudiados'] as List?) ?? []).map((e) => e.toString()).toSet();
+      // Se guarda la lista para poder sortear sin conexión.
+      final ordenados = estudiados.toList()..sort();
+      if (ordenados.join(',') != (List.of(a.temas)..sort()).join(',')) await guardarAlumno(a.copyWith(temas: ordenados));
+      return ProgresoAlumno(
+        estudiados: estudiados,
+        enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
+        cantes: [for (final d in cantes.docs) Cante.fromJson({...d.data(), 'id': d.id})].where((c) => !c.borrado).toList()..sort((x, y) => x.fecha.compareTo(y.fecha)),
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// El preparador deja de llevar a un alumno enlazado: pierde el acceso a su progreso.
+  Future<void> romperEnlaceConAlumno(Alumno a) async {
+    if (!conSesion || a.uid == null) return;
+    try {
+      final lote = _db!.batch()
+        ..delete(_db.collection('preparadores').doc(uid).collection('alumnos').doc(a.uid))
+        ..delete(_db.collection('users').doc(a.uid).collection('preparadores').doc(uid));
+      await lote.commit();
+    } catch (_) {}
+  }
+
+  // ------------------------------------------------------------ Sincronización
+
+  Future<void> _sincronizarPerfil() async {
+    final doc = _docUsuario;
+    if (doc == null) return;
+    try {
+      final local = perfil();
+      final snap = await doc.collection('progress').doc('preparador').get();
+      final nube = snap.exists ? PerfilPreparador.fromJson(snap.data()) : null;
+      if (nube != null && (nube.updatedAt ?? DateTime(0)).isAfter(local.updatedAt ?? DateTime(0))) {
+        await _perfil.put('perfil', nube.toJson());
+      } else if (local.updatedAt != null) {
+        await guardarPerfil(local);
+      }
+      // Activado sin sesión: ahora que la hay, se reserva el código.
+      if (perfil().activo && perfil().codigo == null) await activar();
+    } catch (_) {}
+  }
+
+  Future<void> _sincronizarColeccion<T>({
+    required String nombre,
+    required Box caja,
+    required T Function(Map<dynamic, dynamic>) leer,
+    required Map<String, dynamic> Function(T) escribir,
+    required DateTime? Function(T) marca,
+    required String Function(T) id,
+  }) async {
+    final doc = _docUsuario;
+    if (doc == null) return;
+    try {
+      final snap = await doc.collection(nombre).get();
+      final nube = {for (final d in snap.docs) d.id: leer({...d.data(), 'id': d.id})};
+      final locales = {for (final v in caja.values) id(leer(v as Map)): leer(v)};
+      for (final k in {...nube.keys, ...locales.keys}) {
+        final n = nube[k], l = locales[k];
+        final mn = n == null ? null : (marca(n) ?? DateTime(0)), ml = l == null ? null : (marca(l) ?? DateTime(0));
+        if (l == null || (mn != null && mn.isAfter(ml!))) {
+          await caja.put(k, escribir(n as T));
+        } else if (n == null || ml!.isAfter(mn!)) {
+          await doc.collection(nombre).doc(k).set(escribir(l));
+        }
+      }
+    } catch (_) {}
+  }
+
+  Future<void> sincronizarTodo() async {
+    if (!conSesion) return;
+    await _sincronizarVinculos();
+    await _sincronizarPerfil();
+    await _sincronizarColeccion<Alumno>(nombre: 'alumnos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id);
+    await _sincronizarColeccion<Cante>(nombre: 'sesiones', caja: _sesiones, leer: Cante.fromJson, escribir: (c) => c.toJson(), marca: (c) => c.updatedAt, id: (c) => c.id);
+    await _sincronizarAlumnosEnlazados();
+  }
+
+  // ------------------------------------------------------------------- General
+
+  Future<void> borrarDatosLocales() async {
+    await Future.wait([_alumnos.clear(), _sesiones.clear(), _perfil.clear()]);
+  }
+
+  /// Datos para la exportación en JSON (portabilidad RGPD).
+  Map<String, dynamic> exportar() => {
+        'preparador': {
+          'perfil': perfil().toJson(),
+          'misPreparadores': misPreparadores().map((v) => v.toJson()).toList(),
+          'alumnos': alumnos().map((a) => a.toJson()).toList(),
+          'sesiones': sesiones().map((s) => s.toJson()).toList(),
+        },
+      };
+}

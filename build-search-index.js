@@ -51,6 +51,14 @@ searchIndex.pages = [
     content: 'Blogs, think tanks y recursos en español, inglés y francés'
   },
   {
+    id: 'app',
+    title: 'App móvil',
+    url: '/app/',
+    description: 'App Oposición TCEE: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores',
+    keywords: ['app', 'aplicación', 'móvil', 'android', 'cantes', 'sorteo', 'cronómetro', 'preparador', 'preparadores', 'alumnos'],
+    content: 'Qué hace la app, capturas, vídeo de presentación, cómo instalarla y cómo se enlazan preparador y alumno'
+  },
+  {
     id: 'sobre-mi',
     title: 'Sobre mí',
     url: 'sobre-mi.html',

@@ -7,9 +7,10 @@ import '../../widgets/comunes.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
 
-/// Diario de cantes: cómo fue cada uno, estadísticas por tema y temas flojos.
-class DiarioPage extends ConsumerWidget {
-  const DiarioPage({super.key});
+/// Diario de cantes (subpestaña de Cantes): cómo fue cada uno, estadísticas
+/// por tema y temas flojos.
+class DiarioVista extends ConsumerWidget {
+  const DiarioVista({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,9 +23,7 @@ class DiarioPage extends ConsumerWidget {
     final porTema = stats.values.toList()..sort((a, b) => b.veces.compareTo(a.veces));
     String titulo(String codigo) => temario?.tema(codigo)?.titulo ?? '';
 
-    return Scaffold(
-      appBar: BarraWeb(title: const Text('Diario de cantes')),
-      body: diario.isEmpty
+    return diario.isEmpty
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
@@ -81,13 +80,12 @@ class DiarioPage extends ConsumerWidget {
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
                       child: ListTile(
                         title: Text(c.resultado?.temaCantado == null ? tituloCante(c) : '${c.resultado!.temaCantado} · ${titulo(c.resultado!.temaCantado!)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
-                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}', style: context.textos.labelSmall),
+                        subtitle: Text('${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}${c.dePreparador ? ' · valorado por tu preparador' : ''}', style: context.textos.labelSmall),
                         trailing: Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
                       ),
                     ),
                   ),
               ],
-            ),
-    );
+            );
   }
 }

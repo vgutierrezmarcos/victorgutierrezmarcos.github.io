@@ -4,14 +4,67 @@ rules_version = '2';
 // Aplicar desde la consola de Firebase (Firestore Database → Reglas) o con `firebase deploy --only firestore:rules`.
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Un preparador lo es de un alumno cuando el alumno ha creado, en su propio
+    // subárbol, el documento users/{alumno}/preparadores/{preparador}.
+    function esPreparadorDe(uid) {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/users/$(uid)/preparadores/$(request.auth.uid));
+    }
+
     // Cada usuario solo puede leer y escribir su propio subárbol:
     //   users/{uid}/exam_results/{id}        resultados de test (web y app)
     //   users/{uid}/progress/spaced_repetition   repaso Leitner (app; la web lo adoptará después)
     //   users/{uid}/progress/settings        convocatoria, temas estudiados, racha
+    //   users/{uid}/progress/plan            fechas de los ejercicios, hitos y horario
+    //   users/{uid}/progress/preparador      perfil de preparador (código para alumnos)
     //   users/{uid}/notes/{codigoTema}       notas propias por tema
+    //   users/{uid}/cantes/{id}              cantes programados y diario
+    //   users/{uid}/alumnos/{id}             alumnos de un preparador
+    //   users/{uid}/sesiones/{id}            sesiones de un preparador con sus alumnos
+    //   users/{uid}/preparadores/{prep}      preparadores a los que el usuario da acceso
     match /users/{uid}/{document=**} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+
+    // El preparador enlazado ve los temas que marca su alumno y sus cantes.
+    // No ve tests (exam_results), notas ni el resto del progreso.
+    match /users/{uid}/progress/settings {
+      allow get: if esPreparadorDe(uid);
+    }
+    match /users/{uid}/cantes/{id} {
+      allow read: if esPreparadorDe(uid);
+      // Solo puede crear y cambiar los cantes que firma con su uid: los que el
+      // alumno programa por su cuenta no los puede tocar.
+      allow create: if esPreparadorDe(uid) && request.resource.data.preparador == request.auth.uid;
+      allow update: if esPreparadorDe(uid)
+        && resource.data.preparador == request.auth.uid
+        && request.resource.data.preparador == request.auth.uid;
+    }
+    // El preparador puede leer su propio permiso y renunciar a él.
+    match /users/{uid}/preparadores/{preparador} {
+      allow get, delete: if request.auth != null && request.auth.uid == preparador;
+    }
+
+    // Código que el preparador da a sus alumnos: codigos/{codigo} → { uid, nombre }.
+    // Se consulta de uno en uno (no se pueden listar) y solo lo cambia su dueño.
+    match /codigos/{codigo} {
+      allow get: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow update: if request.auth != null
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.uid == request.auth.uid;
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+    }
+
+    // Alumnos enlazados con un preparador: los escribe el alumno al enlazar y
+    // los lee el preparador para saber quién se ha enlazado. Cualquiera de los
+    // dos puede romper el enlace.
+    match /preparadores/{preparador}/alumnos/{alumno} {
+      allow read: if request.auth != null && (request.auth.uid == preparador || request.auth.uid == alumno);
+      allow create, update: if request.auth != null && request.auth.uid == alumno && request.resource.data.uid == alumno;
+      allow delete: if request.auth != null && (request.auth.uid == preparador || request.auth.uid == alumno);
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

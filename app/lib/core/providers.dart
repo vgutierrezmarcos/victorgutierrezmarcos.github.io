@@ -7,10 +7,12 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../data/models/estructura.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
+import '../data/models/preparador.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
 import '../data/repos/descargas_repo.dart';
 import '../data/repos/plan_repo.dart';
+import '../data/repos/preparador_repo.dart';
 import '../data/repos/usuario_repo.dart';
 import '../features/test/leitner.dart';
 import 'cache_http.dart';
@@ -23,6 +25,7 @@ class Servicios {
     required this.contenido,
     required this.usuario,
     required this.plan,
+    required this.preparador,
     required this.descargas,
     required this.firebaseDisponible,
   });
@@ -30,6 +33,7 @@ class Servicios {
   final ContenidoRepo contenido;
   final UsuarioRepo usuario;
   final PlanRepo plan;
+  final PreparadorRepo preparador;
   final DescargasRepo descargas;
   /// false si no hay google-services.json / GoogleService-Info.plist (modo sin cuenta).
   final bool firebaseDisponible;
@@ -40,6 +44,7 @@ final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError(
 final contenidoProvider = Provider((ref) => ref.watch(serviciosProvider).contenido);
 final usuarioRepoProvider = Provider((ref) => ref.watch(serviciosProvider).usuario);
 final planRepoProvider = Provider((ref) => ref.watch(serviciosProvider).plan);
+final preparadorRepoProvider = Provider((ref) => ref.watch(serviciosProvider).preparador);
 final descargasProvider = Provider((ref) => ref.watch(serviciosProvider).descargas);
 
 // ------------------------------------------------------------------ Contenido
@@ -114,12 +119,17 @@ final sesionProvider = NotifierProvider<SesionNotifier, bool>(SesionNotifier.new
 Future<void> sincronizarTodo(Ref ref) async {
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   await ref.read(planRepoProvider).sincronizarTodo();
+  await ref.read(preparadorRepoProvider).sincronizarTodo();
   ref.invalidate(leitnerProvider);
   ref.invalidate(ajustesProvider);
   ref.invalidate(historialProvider);
   ref.invalidate(cantesProvider);
   ref.invalidate(planProvider);
   ref.invalidate(agendasProvider);
+  ref.invalidate(perfilPreparadorProvider);
+  ref.invalidate(alumnosProvider);
+  ref.invalidate(sesionesProvider);
+  ref.invalidate(misPreparadoresProvider);
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
 }
 
@@ -248,8 +258,11 @@ final diarioProvider = Provider<List<Cante>>((ref) => ref.watch(cantesProvider).
 
 final estadisticasCantesProvider = Provider<Map<String, EstadisticaTema>>((ref) => EstadisticaTema.desde(ref.watch(cantesProvider)));
 
-/// Cante de la agenda que se está cantando ahora en la pestaña Cantar.
+/// Cante de la agenda que se está cantando ahora en «Cantes → Cantar».
 final canteEnCursoProvider = StateProvider<String?>((ref) => null);
+
+/// Subpestaña visible del bloque Cantes: 0 = agenda, 1 = cantar, 2 = diario.
+final subpestanaCantesProvider = StateProvider<int>((ref) => 0);
 
 class PlanNotifier extends Notifier<Plan> {
   @override
@@ -299,4 +312,117 @@ final temasPorParteProvider = Provider<Map<String, List<Tema>>>((ref) {
       for (final p in e.partes)
         if (p.temas.isNotEmpty) '${e.id}.${p.letra}': p.temas,
   };
+});
+
+// ------------------------------------------------------------------ Preparadores
+
+class PerfilPreparadorNotifier extends Notifier<PerfilPreparador> {
+  @override
+  PerfilPreparador build() => ref.read(preparadorRepoProvider).perfil();
+
+  Future<void> activar() async {
+    final repo = ref.read(preparadorRepoProvider);
+    state = await repo.activar();
+    await repo.sincronizarTodo();
+    ref.invalidate(alumnosProvider);
+    ref.invalidate(sesionesProvider);
+  }
+
+  Future<void> desactivar() async {
+    await ref.read(preparadorRepoProvider).desactivar();
+    state = ref.read(preparadorRepoProvider).perfil();
+  }
+
+  Future<void> renombrar(String nombre) async => state = await ref.read(preparadorRepoProvider).renombrar(nombre);
+}
+
+/// Perfil de preparador del usuario («Soy preparador», código para alumnos).
+final perfilPreparadorProvider = NotifierProvider<PerfilPreparadorNotifier, PerfilPreparador>(PerfilPreparadorNotifier.new);
+
+class AlumnosNotifier extends Notifier<List<Alumno>> {
+  @override
+  List<Alumno> build() => ref.read(preparadorRepoProvider).alumnos();
+
+  Future<void> guardar(Alumno a) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.guardarAlumno(a);
+    state = repo.alumnos();
+  }
+
+  Future<void> borrar(Alumno a) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.borrarAlumno(a);
+    state = repo.alumnos();
+  }
+
+  /// Trae de la nube a los alumnos que han enlazado desde la última vez.
+  Future<void> refrescar() async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.sincronizarTodo();
+    state = repo.alumnos();
+    ref.invalidate(sesionesProvider);
+  }
+}
+
+final alumnosProvider = NotifierProvider<AlumnosNotifier, List<Alumno>>(AlumnosNotifier.new);
+
+/// Sesiones de cante del preparador con sus alumnos (son [Cante] con `alumno`).
+class SesionesNotifier extends Notifier<List<Cante>> {
+  @override
+  List<Cante> build() => ref.read(preparadorRepoProvider).sesiones();
+
+  Future<void> guardar(Cante s) => guardarVarias([s]);
+
+  Future<void> guardarVarias(List<Cante> lista) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.guardarSesiones(lista);
+    state = repo.sesiones();
+  }
+
+  Future<void> borrar(Cante s) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.borrarSesion(s);
+    state = repo.sesiones();
+  }
+}
+
+final sesionesProvider = NotifierProvider<SesionesNotifier, List<Cante>>(SesionesNotifier.new);
+
+/// Próximas sesiones del preparador, de la más cercana a la más lejana.
+final proximasSesionesProvider = Provider<List<Cante>>((ref) {
+  final ahora = DateTime.now();
+  return ref.watch(sesionesProvider).where((c) => c.pendiente && c.fecha.isAfter(ahora.subtract(const Duration(hours: 2)))).toList();
+});
+
+class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
+  @override
+  List<VinculoPreparador> build() => ref.read(preparadorRepoProvider).misPreparadores();
+
+  /// Enlaza con el preparador de ese código. Devuelve el mensaje de error, o null si ha ido bien.
+  Future<String?> enlazar(String codigo) async {
+    final repo = ref.read(preparadorRepoProvider);
+    try {
+      await repo.enlazarConCodigo(codigo);
+      state = repo.misPreparadores();
+      return null;
+    } on ErrorEnlace catch (e) {
+      return e.mensaje;
+    }
+  }
+
+  Future<void> desenlazar(String preparador) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.desenlazar(preparador);
+    state = repo.misPreparadores();
+  }
+}
+
+/// Preparadores con los que el usuario comparte su progreso.
+final misPreparadoresProvider = NotifierProvider<MisPreparadoresNotifier, List<VinculoPreparador>>(MisPreparadoresNotifier.new);
+
+/// Progreso que comparte un alumno enlazado (null si no lo está o no hay red).
+final progresoAlumnoProvider = FutureProvider.autoDispose.family<ProgresoAlumno?, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final alumno = repo.alumno(idAlumno);
+  return alumno == null ? null : repo.progreso(alumno);
 });

@@ -15,10 +15,12 @@ import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
+import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/repos/contenido_repo.dart';
 import 'package:tcee_app/data/repos/descargas_repo.dart';
 import 'package:tcee_app/data/repos/plan_repo.dart';
+import 'package:tcee_app/data/repos/preparador_repo.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
 import 'package:tcee_app/features/cantar/sorteo.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
@@ -31,6 +33,7 @@ void main() {
   late EstructuraTemario estructura;
   late UsuarioRepo usuario;
   late PlanRepo plan;
+  late PreparadorRepo preparador;
   late List<Override> overrides;
   late BancoPreguntas banco;
   var n = 0;
@@ -48,6 +51,7 @@ void main() {
     banco = const BancoPreguntas(preguntas: [], examenes: [], temas: {});
     usuario = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja());
     plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja());
+    preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja());
     final http = CacheHttp(Dio(), await caja());
     overrides = [
       serviciosProvider.overrideWithValue(Servicios(
@@ -55,6 +59,7 @@ void main() {
         contenido: ContenidoRepo(http),
         usuario: usuario,
         plan: plan,
+        preparador: preparador,
         descargas: DescargasRepo(await caja(), Directory.systemTemp.createTempSync('tcee_test')),
         firebaseDisponible: false,
       )),
@@ -82,6 +87,13 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  /// Subpestaña del bloque Cantes: Agenda, Cantar o Diario.
+  Future<void> subpestana(WidgetTester tester, String nombre) async {
+    await pestana(tester, 'Cantes');
+    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    await tester.pumpAndSettle();
+  }
+
   Future<void> tocar(WidgetTester tester, Finder f) async {
     await tester.tap(f.first);
     await tester.pumpAndSettle();
@@ -96,48 +108,53 @@ void main() {
     expect(config.partesARedactar, {5: 2});
   });
 
-  testWidgets('recorre las cinco pestañas', (tester) async {
+  testWidgets('recorre los cinco bloques', (tester) async {
     await arrancar(tester);
-    await pestana(tester, 'Inicio');
+    await pestana(tester, 'Hoy');
     expect(find.text('Sin cantes programados'), findsOneWidget);
     expect(find.text('FIJA LA FECHA DEL EXAMEN'), findsOneWidget);
-
-    await pestana(tester, 'Plan');
-    expect(find.text('Programa tu próximo cante'), findsOneWidget);
-    expect(find.byType(TableCalendar<Object>), findsOneWidget);
-    expect(find.text('Cronograma de temas'), findsNothing);
-    expect(find.text('Horario de estudio'), findsOneWidget);
 
     await pestana(tester, 'Temario');
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
     expect(find.textContaining('Parte B: Econometría'), findsOneWidget);
+    expect(find.text('Organización del temario'), findsOneWidget);
+    expect(find.text('Probabilidades'), findsOneWidget);
+
+    await subpestana(tester, 'Agenda');
+    expect(find.text('Programa tu próximo cante'), findsOneWidget);
+    expect(find.byType(TableCalendar<Object>), findsOneWidget);
+    await subpestana(tester, 'Cantar');
+    expect(find.text('Sortear 2 temas de cada parte'), findsOneWidget);
+    await subpestana(tester, 'Diario');
+    expect(find.textContaining('Aún no hay cantes anotados'), findsOneWidget);
 
     await pestana(tester, 'Test');
-    await pestana(tester, 'Cantar');
-    expect(find.text('Sortear 2 temas de cada parte'), findsOneWidget);
+
+    await pestana(tester, 'Más');
+    expect(find.text('MI OPOSICIÓN'), findsOneWidget);
+    expect(find.text('Convocatoria'), findsOneWidget);
+    expect(find.text('Horario de estudio'), findsOneWidget);
+    expect(find.text('Preparadores'), findsWidgets);
+    expect(find.text('Cronograma de temas'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('plan: convocatoria, horario, diario y probabilidades', (tester) async {
+  testWidgets('convocatoria, horario y probabilidades', (tester) async {
     await usuario.guardarAjustes(Ajustes(temasEstudiados: {
       for (var i = 1; i <= 30; i++) ...['3.A.$i', '3.B.$i'],
     }));
     await arrancar(tester);
 
-    await pestana(tester, 'Plan');
+    await pestana(tester, 'Más');
     await tocar(tester, find.text('Convocatoria'));
     expect(find.text('Tercer ejercicio'), findsOneWidget);
     expect(find.text('Toca para poner la fecha'), findsNWidgets(5));
 
-    await pestana(tester, 'Plan');
+    await pestana(tester, 'Más');
     await tocar(tester, find.text('Horario de estudio'));
     expect(find.text('52,0 horas de estudio a la semana.'), findsOneWidget);
 
-    await pestana(tester, 'Plan');
-    await tocar(tester, find.text('Diario de cantes'));
-    expect(find.textContaining('Aún no hay cantes anotados'), findsOneWidget);
-
-    await pestana(tester, 'Plan');
+    await pestana(tester, 'Temario');
     await tocar(tester, find.text('Probabilidades'));
     // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
     expect(find.text('TERCER EJERCICIO'), findsOneWidget);
@@ -159,17 +176,17 @@ void main() {
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Actualizar los datos del PIB'));
     await arrancar(tester);
 
-    await pestana(tester, 'Inicio');
+    await pestana(tester, 'Hoy');
     expect(find.textContaining('Próximo cante en'), findsOneWidget);
 
-    await pestana(tester, 'Plan');
+    await subpestana(tester, 'Agenda');
     await tocar(tester, find.textContaining('Próximo cante en'));
     expect(find.byType(CantePage), findsOneWidget);
     expect(find.text('TEMAS QUE ENTRAN (3)'), findsOneWidget);
     expect(find.text('• Actualizar los datos del PIB'), findsOneWidget);
 
     await tocar(tester, find.text('Sortear y cantar'));
-    expect(find.text('Cantar un tema'), findsOneWidget);
+    expect(find.text('Sortear 3 temas'), findsOneWidget); // ha saltado a la subpestaña Cantar
     expect(find.textContaining('3 temas en la bolsa. Al terminar'), findsOneWidget);
     expect(find.text('12:00'), findsOneWidget); // el cronómetro toma la duración del cante
     await tocar(tester, find.text('Sortear 3 temas'));
@@ -187,7 +204,7 @@ void main() {
 
   testWidgets('programar un cante desde el formulario', (tester) async {
     await arrancar(tester);
-    await pestana(tester, 'Plan');
+    await subpestana(tester, 'Agenda');
     await tocar(tester, find.widgetWithText(FloatingActionButton, 'Cante'));
     expect(find.text('Nuevo cante'), findsOneWidget);
     await tester.enterText(find.widgetWithText(TextField, 'Preparador, grupo de cante… (opcional)'), 'Grupo de los jueves');
@@ -206,13 +223,14 @@ void main() {
     expect(c.fecha.hour, 17);
     expect(c.pendiente, isTrue);
     expect(find.text('Nuevo cante'), findsNothing);
-    expect(find.textContaining('Próximo cante en'), findsOneWidget);
+    // De vuelta en la agenda, el cante está en el día elegido (hoy), sea la hora que sea.
+    expect(find.textContaining('17:00 · Grupo de los jueves'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 
   testWidgets('sortear, cronometrar y guardar el cante en el diario', (tester) async {
     await arrancar(tester);
-    await pestana(tester, 'Cantar');
+    await subpestana(tester, 'Cantar');
     await tocar(tester, find.text('Sortear 2 temas de cada parte'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+$')));
     expect(find.text('30:00'), findsOneWidget); // 30 minutos por defecto
@@ -236,8 +254,7 @@ void main() {
     expect(c.resultado!.comentarios, 'Me faltó el cierre');
     expect(usuario.ajustes().racha, 1); // cantar cuenta para la racha
 
-    await pestana(tester, 'Plan');
-    await tocar(tester, find.text('Diario de cantes'));
+    await subpestana(tester, 'Diario');
     expect(find.text('HISTORIAL'), findsOneWidget);
     expect(find.textContaining(c.resultado!.temaCantado!), findsWidgets);
     expect(tester.takeException(), isNull);
@@ -335,6 +352,75 @@ void main() {
 
     await tocar(tester, find.byType(BackButton));
     expect(find.text('1 apunte resuelto'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('preparador: alta de alumno, cante con sorteo y valoración en su ficha', (tester) async {
+    await arrancar(tester);
+    await pestana(tester, 'Más');
+    await tocar(tester, find.text('Preparadores'));
+    expect(find.text('TENGO PREPARADOR'), findsOneWidget);
+    expect(find.text('SOY PREPARADOR'), findsOneWidget);
+    await tocar(tester, find.text('Activar la sección de preparador'));
+    expect(preparador.perfil().activo, isTrue);
+    expect(find.text('Sin código para alumnos'), findsOneWidget); // sin Firebase no hay código
+    expect(find.textContaining('Todavía no tienes alumnos'), findsOneWidget);
+
+    // Alta de un alumno sin app.
+    await tocar(tester, find.text('Alumno'));
+    await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), 'Lucía');
+    await tocar(tester, find.text('Guardar'));
+    expect(preparador.alumnos().single.nombre, 'Lucía');
+
+    // Ficha del alumno y cante inmediato: sorteo, cronómetro y valoración.
+    await tocar(tester, find.text('Lucía'));
+    expect(find.text('TEMAS QUE LLEVA (0)'), findsOneWidget);
+    await tocar(tester, find.text('Cantar ahora'));
+    expect(find.textContaining('temas en la bolsa. Al terminar se guarda en su ficha.'), findsOneWidget);
+    await tocar(tester, find.text('Sortear 3 temas'));
+    await tocar(tester, find.textContaining(RegExp(r'^3\.[AB]\.\d+$')));
+    await tocar(tester, find.text('Empezar'));
+    await tester.pump(const Duration(milliseconds: 600));
+    await tocar(tester, find.text('Pausar'));
+    await tocar(tester, find.text('Valorar y guardar'));
+    expect(find.text('¿Cómo ha ido el cante de Lucía?'), findsOneWidget);
+    await tocar(tester, find.byIcon(Icons.star_border).at(1)); // dos estrellas
+    await tocar(tester, find.text('Guardar valoración'));
+
+    final s = preparador.sesiones().single;
+    expect(s.hecho, isTrue);
+    expect(s.alumno, preparador.alumnos().single.id);
+    expect(s.resultado!.valoracion, 2);
+    expect(plan.cantes(), isEmpty); // no se mezcla con el diario propio
+    // De vuelta en la ficha: un cante y el tema, flojo.
+    expect(find.text('HISTORIAL DE CANTES'), findsOneWidget);
+    expect(find.text('TEMAS FLOJOS'), findsOneWidget);
+    expect(find.text('CANTE'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('preparador: programar una sesión para dos alumnos', (tester) async {
+    await preparador.activar();
+    await preparador.guardarAlumno(Alumno(id: 'a1', nombre: 'Lucía', temas: const ['3.A.1', '3.A.2'], updatedAt: DateTime.now()));
+    await preparador.guardarAlumno(Alumno(id: 'a2', nombre: 'Pablo', updatedAt: DateTime.now()));
+    await arrancar(tester);
+    await pestana(tester, 'Más');
+    await tocar(tester, find.text('Mis alumnos'));
+    await tocar(tester, find.text('Sesión'));
+    expect(find.text('Nueva sesión'), findsOneWidget);
+    await tocar(tester, find.widgetWithText(FilterChip, 'Lucía'));
+    await tocar(tester, find.widgetWithText(FilterChip, 'Pablo'));
+    await tocar(tester, find.text('Guardar'));
+
+    final sesiones = preparador.sesiones();
+    expect(sesiones.map((s) => s.alumno).toSet(), {'a1', 'a2'});
+    expect(sesiones.map((s) => s.id).toSet().length, 2);
+    expect(find.text('PRÓXIMAS SESIONES'), findsOneWidget);
+
+    // Detalle de la sesión de Lucía: entran los dos temas que lleva.
+    await tocar(tester, find.textContaining('· Lucía'));
+    expect(find.text('TEMAS QUE ENTRAN (2)'), findsOneWidget);
+    expect(find.text('Alumno sin app enlazada'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }

@@ -19,6 +19,7 @@ class Urls {
   static const String politicaPrivacidad = '$base/politica-cookies.html';
   static const String sobreMi = '$base/sobre-mi.html';
   static const String simuladorWeb = '$test/simulador.html';
+  static const String paginaApp = '$base/app/';
 }
 
 /// Valores por defecto del simulador (idénticos a simulador.html).
@@ -46,4 +47,7 @@ class Cajas {
   static const String cantes = 'cantes';
   static const String plan = 'plan';
   static const String agendaTemas = 'agenda_temas';
+  static const String alumnos = 'alumnos';
+  static const String sesiones = 'sesiones';
+  static const String preparador = 'preparador';
 }

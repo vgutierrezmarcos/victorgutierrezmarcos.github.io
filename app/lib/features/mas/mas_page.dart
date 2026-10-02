@@ -6,11 +6,14 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../plan/cantes_util.dart';
 
-/// Más: enlaces, ajustes, cuenta y acerca de.
+/// Más: lo que no es del día a día. Convocatoria y horario, preparadores,
+/// cuenta, ajustes, enlaces y acerca de.
 class MasPage extends ConsumerWidget {
   const MasPage({super.key});
 
@@ -21,6 +24,11 @@ class MasPage extends ConsumerWidget {
     final usuario = ref.watch(usuarioActualProvider);
     final enlaces = ref.watch(enlacesProvider).value ?? [];
     final hora = ajustes.horaRecordatorio;
+    final plan = ref.watch(planProvider);
+    final proximaFecha = (ref.watch(fechasEjerciciosProvider).entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value))).firstOrNull;
+    final perfil = ref.watch(perfilPreparadorProvider);
+    final alumnos = ref.watch(alumnosProvider);
+    final vinculos = ref.watch(misPreparadoresProvider);
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Más')),
@@ -29,13 +37,35 @@ class MasPage extends ConsumerWidget {
         children: [
           Tarjeta(
             padding: EdgeInsets.zero,
-            onTap: () => context.push('/mas/cuenta'),
+            onTap: () => context.go('/mas/cuenta'),
             child: ListTile(
               leading: usuario?.photoURL != null ? CircleAvatar(backgroundImage: NetworkImage(usuario!.photoURL!)) : const CircleAvatar(child: Icon(Icons.person_outline)),
               title: Text(usuario?.displayName ?? 'Iniciar sesión con Google', style: context.textos.titleSmall),
               subtitle: Text(usuario?.email ?? 'Sincroniza tu historial y progreso con la web', style: context.textos.labelSmall),
               trailing: const Icon(Icons.chevron_right),
             ),
+          ),
+          const TituloSeccion('Mi oposición'),
+          FilaEnlace(
+            icono: Icons.flag_outlined,
+            titulo: 'Convocatoria',
+            subtitulo: proximaFecha == null ? 'Fechas de los ejercicios e hitos' : '${nombreEjercicio(proximaFecha.key)}: faltan ${diasHasta(proximaFecha.value)} días',
+            onTap: () => context.go('/mas/convocatoria'),
+          ),
+          FilaEnlace(
+            icono: Icons.schedule,
+            titulo: 'Horario de estudio',
+            subtitulo: '${(plan.horario ?? Horario.porDefecto()).horasEstudioSemana.toStringAsFixed(0)} horas de estudio a la semana',
+            onTap: () => context.go('/mas/horario'),
+          ),
+          const TituloSeccion('Preparadores'),
+          FilaEnlace(
+            icono: Icons.groups_outlined,
+            titulo: perfil.activo ? 'Mis alumnos' : 'Preparadores',
+            subtitulo: perfil.activo
+                ? (alumnos.isEmpty ? 'Añade a tus alumnos y programa sus cantes' : '${alumnos.length} ${alumnos.length == 1 ? 'alumno' : 'alumnos'} · sesiones, sorteos y valoraciones')
+                : (vinculos.isEmpty ? 'Enlaza con tu preparador o lleva a tus alumnos' : 'Compartes tu progreso con ${vinculos.map((v) => v.nombre.isEmpty ? 'tu preparador' : v.nombre).join(', ')}'),
+            onTap: () => context.go('/mas/preparador'),
           ),
           const TituloSeccion('Contenido'),
           _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, Urls.simuladorWeb)),
@@ -95,6 +125,7 @@ class MasPage extends ConsumerWidget {
             ]),
           ),
           const TituloSeccion('Acerca de'),
+          _fila(context, Icons.phone_android, 'La app, explicada', 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
           _fila(context, Icons.person_outline, 'Sobre mí', 'Víctor Gutiérrez Marcos · TCEE, promoción LXXIII', () => abrirUrl(context, Urls.sobreMi, enApp: true)),
           _fila(context, Icons.privacy_tip_outlined, 'Privacidad', 'Qué datos guarda la app y cómo borrarlos', () => abrirUrl(context, Urls.politicaPrivacidad, enApp: true)),
           _fila(context, Icons.alternate_email, 'Contacto', config.email, () => abrirUrl(context, 'mailto:${config.email}')),
