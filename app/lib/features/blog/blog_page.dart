@@ -121,7 +121,7 @@ class _ArticuloPageState extends State<ArticuloPage> {
         title: Text(widget.articulo.titulo, overflow: TextOverflow.ellipsis),
         actions: [
           IconButton(icon: const Icon(Icons.picture_as_pdf_outlined), tooltip: 'PDF', onPressed: () => abrirUrl(context, widget.articulo.urlPdf)),
-          IconButton(icon: const Icon(Icons.share_outlined), onPressed: () => Share.share('${widget.articulo.titulo}\n${widget.articulo.url}')),
+          IconButton(icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(text: '${widget.articulo.titulo}\n${widget.articulo.url}'))),
         ],
         bottom: _progreso < 100 ? PreferredSize(preferredSize: const Size.fromHeight(2), child: LinearProgressIndicator(value: _progreso / 100, minHeight: 2)) : null,
       ),

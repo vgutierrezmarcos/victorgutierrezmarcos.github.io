@@ -4,10 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../data/models/articulo.dart';
+import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
 import '../data/repos/descargas_repo.dart';
+import '../data/repos/plan_repo.dart';
 import '../data/repos/usuario_repo.dart';
 import '../features/test/leitner.dart';
 import 'cache_http.dart';
@@ -19,12 +21,14 @@ class Servicios {
     required this.http,
     required this.contenido,
     required this.usuario,
+    required this.plan,
     required this.descargas,
     required this.firebaseDisponible,
   });
   final CacheHttp http;
   final ContenidoRepo contenido;
   final UsuarioRepo usuario;
+  final PlanRepo plan;
   final DescargasRepo descargas;
   /// false si no hay google-services.json / GoogleService-Info.plist (modo sin cuenta).
   final bool firebaseDisponible;
@@ -34,6 +38,7 @@ final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError(
 
 final contenidoProvider = Provider((ref) => ref.watch(serviciosProvider).contenido);
 final usuarioRepoProvider = Provider((ref) => ref.watch(serviciosProvider).usuario);
+final planRepoProvider = Provider((ref) => ref.watch(serviciosProvider).plan);
 final descargasProvider = Provider((ref) => ref.watch(serviciosProvider).descargas);
 
 // ------------------------------------------------------------------ Contenido
@@ -66,10 +71,7 @@ class SesionNotifier extends Notifier<bool> {
       final auth = await google.authentication;
       final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
       await FirebaseAuth.instance.signInWithCredential(cred);
-      await ref.read(usuarioRepoProvider).sincronizarTodo();
-      ref.invalidate(leitnerProvider);
-      ref.invalidate(ajustesProvider);
-      ref.invalidate(historialProvider);
+      await sincronizarTodo(ref);
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message ?? e.code;
@@ -79,6 +81,8 @@ class SesionNotifier extends Notifier<bool> {
       state = false;
     }
   }
+
+  Future<void> sincronizar() => sincronizarTodo(ref);
 
   Future<void> cerrarSesion() async {
     try {
@@ -90,6 +94,19 @@ class SesionNotifier extends Notifier<bool> {
 }
 
 final sesionProvider = NotifierProvider<SesionNotifier, bool>(SesionNotifier.new);
+
+/// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
+Future<void> sincronizarTodo(Ref ref) async {
+  await ref.read(usuarioRepoProvider).sincronizarTodo();
+  await ref.read(planRepoProvider).sincronizarTodo();
+  ref.invalidate(leitnerProvider);
+  ref.invalidate(ajustesProvider);
+  ref.invalidate(historialProvider);
+  ref.invalidate(cantesProvider);
+  ref.invalidate(planProvider);
+  ref.invalidate(agendasProvider);
+  await ref.read(cantesProvider.notifier).reprogramarAvisos();
+}
 
 // ------------------------------------------------------------------ Usuario
 
@@ -161,4 +178,112 @@ final testDiarioHechoProvider = Provider<bool>((ref) {
       .read(usuarioRepoProvider)
       .resultadosLocales()
       .any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
+});
+
+// ------------------------------------------------------------------ Planificación
+
+class CantesNotifier extends Notifier<List<Cante>> {
+  @override
+  List<Cante> build() => ref.read(planRepoProvider).cantes();
+
+  Future<void> guardar(Cante c) => guardarVarios([c]);
+
+  Future<void> guardarVarios(List<Cante> lista) async {
+    final repo = ref.read(planRepoProvider);
+    await repo.guardarCantes(lista);
+    state = repo.cantes();
+    await reprogramarAvisos();
+  }
+
+  Future<void> borrar(Cante c) async {
+    final repo = ref.read(planRepoProvider);
+    await repo.borrarCante(c);
+    state = repo.cantes();
+    await reprogramarAvisos();
+  }
+
+  /// Borra un cante y los siguientes de su misma serie semanal.
+  Future<void> borrarSerieDesde(Cante c) async {
+    final repo = ref.read(planRepoProvider);
+    for (final x in state.where((x) => x.serie != null && x.serie == c.serie && !x.fecha.isBefore(c.fecha) && x.pendiente)) {
+      await repo.borrarCante(x);
+    }
+    state = repo.cantes();
+    await reprogramarAvisos();
+  }
+
+  Future<void> reprogramarAvisos() async {
+    try {
+      await Notificaciones.programarCantes(ref.read(planProvider).avisosCante ? state : const []);
+    } catch (_) {}
+  }
+}
+
+final cantesProvider = NotifierProvider<CantesNotifier, List<Cante>>(CantesNotifier.new);
+
+/// Próximos cantes pendientes, del más cercano al más lejano.
+final proximosCantesProvider = Provider<List<Cante>>((ref) {
+  final ahora = DateTime.now();
+  // Un cante sigue contando como próximo hasta dos horas después de su hora.
+  return ref.watch(cantesProvider).where((c) => c.pendiente && c.fecha.isAfter(ahora.subtract(const Duration(hours: 2)))).toList();
+});
+
+/// Diario: cantes ya hechos, del más reciente al más antiguo.
+final diarioProvider = Provider<List<Cante>>((ref) => ref.watch(cantesProvider).where((c) => c.hecho).toList().reversed.toList());
+
+final estadisticasCantesProvider = Provider<Map<String, EstadisticaTema>>((ref) => EstadisticaTema.desde(ref.watch(cantesProvider)));
+
+/// Cante de la agenda que se está cantando ahora en la pestaña Cantar.
+final canteEnCursoProvider = StateProvider<String?>((ref) => null);
+
+class PlanNotifier extends Notifier<Plan> {
+  @override
+  Plan build() => ref.read(planRepoProvider).plan();
+
+  Future<void> actualizar(Plan Function(Plan) f) async {
+    final nuevo = f(state);
+    state = nuevo;
+    await ref.read(planRepoProvider).guardarPlan(nuevo);
+  }
+}
+
+final planProvider = NotifierProvider<PlanNotifier, Plan>(PlanNotifier.new);
+
+/// Fecha de cada ejercicio: la del usuario y, si no la ha fijado, la oficial
+/// publicada en app-config.json.
+final fechasEjerciciosProvider = Provider<Map<int, DateTime>>((ref) {
+  final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+  final legado = ref.watch(ajustesProvider.select((a) => a.fechaConvocatoria));
+  return {
+    ...config.fechas,
+    if (legado != null) 1: legado,
+    ...ref.watch(planProvider.select((p) => p.fechas)),
+  };
+});
+
+class AgendasNotifier extends Notifier<Map<String, AgendaTema>> {
+  @override
+  Map<String, AgendaTema> build() => ref.read(planRepoProvider).agendas();
+
+  AgendaTema de(String codigo) => state[codigo] ?? AgendaTema(codigo: codigo);
+
+  Future<void> actualizar(String codigo, AgendaTema Function(AgendaTema) f) async {
+    final nueva = f(de(codigo));
+    state = {...state, codigo: nueva};
+    await ref.read(planRepoProvider).guardarAgenda(nueva);
+  }
+}
+
+/// Agenda de cada tema (apuntes para la próxima vuelta), por código.
+final agendasProvider = NotifierProvider<AgendasNotifier, Map<String, AgendaTema>>(AgendasNotifier.new);
+
+/// Temas por parte ("3.A" → temas) de los ejercicios con sorteo.
+final temasPorParteProvider = Provider<Map<String, List<Tema>>>((ref) {
+  final t = ref.watch(temarioProvider).value;
+  if (t == null) return const {};
+  return {
+    for (final e in t.ejercicios)
+      for (final p in e.partes)
+        if (p.temas.isNotEmpty) '${e.id}.${p.letra}': p.temas,
+  };
 });

@@ -30,7 +30,7 @@ class CuentaPage extends ConsumerWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text('Sincroniza con la web', style: context.textos.titleMedium),
                 const SizedBox(height: 6),
-                Text('Con tu cuenta de Google, los tests que hagas aquí y en victorgutierrezmarcos.es se guardan en el mismo historial, junto con el repaso, tus notas y la fecha del examen.', style: context.textos.bodySmall),
+                Text('Con tu cuenta de Google, los tests que hagas aquí y en victorgutierrezmarcos.es se guardan en el mismo historial, junto con el repaso, tus notas, tus cantes y tu planificación.', style: context.textos.bodySmall),
                 const SizedBox(height: 14),
                 FilledButton.icon(
                   onPressed: ocupado
@@ -59,10 +59,7 @@ class CuentaPage extends ConsumerWidget {
             const SizedBox(height: 10),
             OutlinedButton.icon(
               onPressed: () async {
-                await repo.sincronizarTodo();
-                ref.invalidate(historialProvider);
-                ref.invalidate(leitnerProvider);
-                ref.invalidate(ajustesProvider);
+                await ref.read(sesionProvider.notifier).sincronizar();
                 if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Sincronizado')));
               },
               icon: const Icon(Icons.sync),
@@ -77,8 +74,8 @@ class CuentaPage extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.file_download_outlined),
                 title: const Text('Exportar datos (JSON)'),
-                subtitle: Text('Resultados, repaso, ajustes y notas', style: context.textos.labelSmall),
-                onTap: () => Share.share(repo.exportarJson(), subject: 'Datos TCEE App'),
+                subtitle: Text('Resultados, repaso, ajustes, notas, cantes y planificación', style: context.textos.labelSmall),
+                onTap: () => SharePlus.instance.share(ShareParams(text: repo.exportarJson(extra: ref.read(planRepoProvider).exportar()), subject: 'Datos TCEE App')),
               ),
               ListTile(
                 leading: Icon(Icons.delete_outline, color: context.esquema.error),

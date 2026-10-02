@@ -99,7 +99,53 @@ function parsearEjercicioConTemas(html, slug) {
 }
 
 /**
+ * Temas del quinto ejercicio (la web solo publica un PDF por parte, así que los
+ * títulos se mantienen aquí; coinciden con la hoja "Listado de temas" del Excel
+ * de organización). Actualizar a mano si cambia el programa.
+ */
+const TEMAS_QUINTO = {
+    A: [
+        'Los regímenes de comercio exterior.',
+        'Los instrumentos de defensa comercial.',
+        'Los instrumentos de atracción de inversiones exteriores.',
+        'Los instrumentos de promoción del turismo en España.',
+        'La regulación de las inversiones extranjeras en España y de las españolas en el exterior.',
+        'Formas de penetración e implantación en los mercados. El estudio de los mercados exteriores y la prospección.',
+        'Los canales de distribución y las redes de venta.',
+        'La oferta internacional: el producto y el precio. La comunicación en el comercio internacional.',
+        'El cuadro jurídico de las operaciones de comercio exterior: el contrato de venta internacional y la resolución de litigios.',
+        'Las políticas logísticas y financieras de la empresa exportadora. Los medios de pago en el comercio internacional.'
+    ],
+    B: [
+        'Supuestos clásicos del modelo de regresión lineal. Aproximación lineal al modelo no lineal. Método de mínimos cuadrados ordinarios y método de máxima verosimilitud. Medidas de bondad de ajuste del modelo.',
+        'Propiedades de los estimadores de mínimos cuadrados ordinarios para muestras finitas y muestras grandes en el modelo de regresión lineal. Contraste de hipótesis e intervalos de confianza.',
+        'Heterocedasticidad y autocorrelación: origen, consecuencias, detección y soluciones. Estimación por mínimos cuadrados generalizados.',
+        'La causalidad en los modelos de regresión. Problema de la variable omitida y estimación por variables instrumentales. Otras soluciones: diseños experimentales, regresión en discontinuidad y diferencias en diferencias.',
+        'Procesos estocásticos. Ruido blanco, AR, MA, ARMA y ARIMA: identificación, estimación, verificación y predicción.',
+        'Datos de panel. Descripción del problema. El modelo de efectos fijos y de efectos aleatorios. Estimación.'
+    ],
+    C: [
+        'Las fuentes del Derecho Administrativo. La Constitución. La ley. Los decretos-leyes. La delegación legislativa.',
+        'El reglamento. La potestad reglamentaria. Los reglamentos ilegales. Actos administrativos generales, circulares e instrucciones.',
+        'El acto administrativo: concepto, clases y elementos. Su motivación y notificación. Eficacia y validez de los actos administrativos. Revisión, anulación y revocación.',
+        'Los recursos administrativos.',
+        'La jurisdicción contencioso-administrativa. Extensión y límites. Las partes del procedimiento. La sentencia. Recursos.',
+        'Los contratos del sector público: concepto y clases. Estudio de sus elementos. Su cumplimiento. La revisión de precios y otras alteraciones contractuales. Incumplimiento de los contratos.',
+        'El servicio público: concepto y clases. Forma de gestión de los servicios públicos. Examen especial de la gestión directa. La gestión indirecta: modalidades. La concesión. Régimen jurídico.',
+        'Procedimiento administrativo común de las administraciones públicas: objeto y ámbito de aplicación. El procedimiento administrativo: concepto y naturaleza. Las garantías del procedimiento. Iniciación, ordenación, instrucción y terminación del procedimiento administrativo común. Los procedimientos especiales.',
+        'Régimen jurídico del personal al servicio de las administraciones públicas. Ley del Estatuto Básico del Empleado Público. La Ley de Medidas para la Reforma de la Función Pública. Órganos superiores de la Función Pública. Oferta de empleo público.',
+        'La Constitución española de 1978: estructura y contenido. Derechos y deberes fundamentales. Su garantía y suspensión. El Defensor del Pueblo. El Tribunal de Cuentas. El Tribunal Constitucional. Reforma de la Constitución.',
+        'El Gobierno, su Presidente y el Consejo de Ministros. La Ley de Régimen Jurídico del Sector Público. Objeto y ámbito de aplicación. Principios generales. Organización y funcionamiento de la Administración General del Estado. Organización Central. Órganos Superiores y Directivos. Los Ministerios y su estructura interna. La Organización territorial de la Administración General del Estado. Las Delegaciones y Subdelegaciones del Gobierno.',
+        'Organización y competencias del Ministerio de Asuntos Económicos y Transformación Digital, y del Ministerio de Industria, Comercio y Turismo. Especial mención a la Secretaría de Estado de Economía y Apoyo a la Empresa, y a la Secretaría de Estado de Comercio. Otros Ministerios económicos. La Administración Territorial del Ministerio de Industria, Comercio y Turismo. Su administración institucional. ICEX España Exportación e Inversiones.',
+        'Organización territorial del Estado. Las Comunidades Autónomas: constitución, competencias, Estatutos de autonomía. El sistema institucional de las Comunidades Autónomas. La Administración Local.',
+        'Políticas de igualdad de género. La Ley Orgánica 3/2007, de 22 de marzo, para la igualdad efectiva de mujeres y hombres. Políticas contra la violencia de género. La Ley Orgánica 1/2004, de 28 de diciembre, de Medidas de Protección Integral contra la Violencia de Género. Políticas dirigidas a la atención de personas discapacitadas y/o dependientes: la Ley 39/2006, de 14 de diciembre, de Promoción de la Autonomía Personal y atención a las personas en situación de dependencia.',
+        'La gobernanza pública y el gobierno abierto. Concepto y principios informadores del gobierno abierto: colaboración, participación, transparencia y rendición de cuentas. Datos abiertos y reutilización. El marco jurídico y los planes de gobierno abierto en España.'
+    ]
+};
+
+/**
  * Quinto ejercicio: una lista plana de partes con PDF o no disponible.
+ * Cada parte lleva además sus temas, que apuntan al PDF de la parte completa.
  */
 function parsearQuinto(html) {
     const partes = [];
@@ -110,12 +156,20 @@ function parsearQuinto(html) {
         const texto = limpiarTexto(it[2]);                         // "Parte A: Marketing internacional..."
         const letra = (texto.match(/Parte ([A-Z])/) || [])[1] || '';
         const disponible = !/tema-no-disponible\.html/.test(href);
+        const url = disponible ? `${BASE_URL}/oposicion/temario/${href}` : null;
         partes.push({
             letra,
             nombre: texto.replace(/^Parte [A-Z]:\s*/, ''),
             disponible,
-            url: disponible ? `${BASE_URL}/oposicion/temario/${href}` : null,
-            temas: []
+            url,
+            temas: (TEMAS_QUINTO[letra] || []).map((titulo, i) => ({
+                codigo: `5.${letra}.${i + 1}`,
+                titulo,
+                disponible,
+                temarioAnterior: false,
+                url,
+                pdfDeParte: true
+            }))
         });
     }
     return partes;

@@ -12,6 +12,7 @@ import 'core/notificaciones.dart';
 import 'core/providers.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
+import 'data/repos/plan_repo.dart';
 import 'data/repos/usuario_repo.dart';
 
 Future<void> main() async {
@@ -36,13 +37,22 @@ Future<void> main() async {
     firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
     auth: firebaseDisponible ? FirebaseAuth.instance : null,
   );
+  final plan = await PlanRepo.crear(
+    firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
+    auth: firebaseDisponible ? FirebaseAuth.instance : null,
+  );
   final descargas = await DescargasRepo.crear();
   await Notificaciones.iniciar();
 
   // Refresco silencioso del contenido y sincronización si hay sesión.
   Future.microtask(() async {
     await contenido.refrescarTodo();
-    if (usuario.conSesion) await usuario.sincronizarTodo();
+    if (usuario.conSesion) {
+      await usuario.sincronizarTodo();
+      await plan.sincronizarTodo();
+    }
+    // Los avisos de cantes se reprograman en cada arranque (y tras sincronizar).
+    if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());
   });
 
   runApp(
@@ -52,6 +62,7 @@ Future<void> main() async {
           http: http,
           contenido: contenido,
           usuario: usuario,
+          plan: plan,
           descargas: descargas,
           firebaseDisponible: firebaseDisponible,
         )),

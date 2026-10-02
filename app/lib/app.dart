@@ -6,9 +6,15 @@ import 'package:go_router/go_router.dart';
 import 'core/providers.dart';
 import 'features/blog/blog_page.dart';
 import 'features/cantar/cantar_page.dart';
+import 'features/cantar/probabilidades_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
+import 'features/plan/convocatoria_page.dart';
+import 'features/plan/cronograma_page.dart';
+import 'features/plan/diario_page.dart';
+import 'features/plan/horario_page.dart';
+import 'features/plan/plan_page.dart';
 import 'features/temario/temario_page.dart';
 import 'features/test/config_test_page.dart';
 import 'features/test/estadisticas_page.dart';
@@ -25,21 +31,32 @@ final _router = GoRouter(
       branches: [
         StatefulShellBranch(routes: [GoRoute(path: '/inicio', builder: (c, s) => const InicioPage())]),
         StatefulShellBranch(routes: [
+          GoRoute(path: '/plan', builder: (c, s) => const PlanPage(), routes: [
+            GoRoute(path: 'convocatoria', builder: (c, s) => const ConvocatoriaPage()),
+            GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
+            GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
+            GoRoute(path: 'diario', builder: (c, s) => const DiarioPage()),
+          ]),
+        ]),
+        StatefulShellBranch(routes: [GoRoute(path: '/temario', builder: (c, s) => const TemarioPage())]),
+        StatefulShellBranch(routes: [
           GoRoute(path: '/test', builder: (c, s) => const ConfigTestPage(), routes: [
             GoRoute(path: 'estadisticas', builder: (c, s) => const EstadisticasPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [GoRoute(path: '/temario', builder: (c, s) => const TemarioPage())]),
-        StatefulShellBranch(routes: [GoRoute(path: '/cantar', builder: (c, s) => const CantarPage())]),
         StatefulShellBranch(routes: [
-          GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
-            GoRoute(path: 'blog', builder: (c, s) => const BlogPage()),
-            GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
+          GoRoute(path: '/cantar', builder: (c, s) => const CantarPage(), routes: [
+            GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
           ]),
         ]),
       ],
     ),
     // Fuera del shell: pantalla completa sin barra inferior.
+    // «Más» se abre desde la barra superior de Inicio (context.push).
+    GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
+      GoRoute(path: 'blog', builder: (c, s) => const BlogPage()),
+      GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
+    ]),
     GoRoute(path: '/examen', builder: (c, s) => ExamenPage(config: s.extra as ConfigTest)),
     GoRoute(path: '/resultados', builder: (c, s) => ResultadosPage(datos: s.extra as DatosResultado)),
   ],
@@ -81,10 +98,10 @@ class _Shell extends StatelessWidget {
         onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Inicio'),
-          NavigationDestination(icon: Icon(Icons.quiz_outlined), selectedIcon: Icon(Icons.quiz), label: 'Test'),
+          NavigationDestination(icon: Icon(Icons.event_note_outlined), selectedIcon: Icon(Icons.event_note), label: 'Plan'),
           NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'Temario'),
+          NavigationDestination(icon: Icon(Icons.quiz_outlined), selectedIcon: Icon(Icons.quiz), label: 'Test'),
           NavigationDestination(icon: Icon(Icons.record_voice_over_outlined), selectedIcon: Icon(Icons.record_voice_over), label: 'Cantar'),
-          NavigationDestination(icon: Icon(Icons.more_horiz), label: 'Más'),
         ],
       ),
     );

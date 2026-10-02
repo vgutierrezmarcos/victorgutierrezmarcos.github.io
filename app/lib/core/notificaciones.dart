@@ -2,12 +2,21 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
-/// Notificaciones locales: recordatorio diario de estudio y avisos del cronómetro.
+import '../data/models/plan.dart';
+
+/// Notificaciones locales: recordatorio diario de estudio, avisos del
+/// cronómetro y recordatorios de los cantes programados.
 class Notificaciones {
   Notificaciones._();
   static final _plugin = FlutterLocalNotificationsPlugin();
   static const _idRecordatorio = 1;
   static const _idCronometro = 2;
+  // Avisos programados del cronómetro (hitos de tiempo con la app en segundo plano).
+  static const _idCronometroProgramado = 10;
+  static const _maxAvisosCronometro = 8;
+  // Dos avisos por cante (víspera y una hora antes) para los próximos cantes.
+  static const _idCantes = 100;
+  static const maxCantesConAviso = 20;
   static bool _listo = false;
 
   static Future<void> iniciar() async {
@@ -54,6 +63,84 @@ class Notificaciones {
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
+  }
+
+  /// Programa los avisos del cronómetro para que suenen aunque la app esté
+  /// en segundo plano. Sustituye a los que hubiera.
+  static Future<void> programarCronometro(List<({DateTime cuando, String texto})> avisos) async {
+    await cancelarCronometro();
+    final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    // Sin permiso de alarmas exactas el aviso puede llegar con algo de retraso.
+    final exacto = await android?.canScheduleExactNotifications() ?? false;
+    final ahora = DateTime.now();
+    var i = 0;
+    for (final a in avisos.where((a) => a.cuando.isAfter(ahora)).take(_maxAvisosCronometro)) {
+      try {
+        await _plugin.zonedSchedule(
+          _idCronometroProgramado + i++,
+          'Cronómetro',
+          a.texto,
+          tz.TZDateTime.from(a.cuando, tz.local),
+          const NotificationDetails(
+            android: AndroidNotificationDetails('cronometro', 'Cronómetro de exposición',
+                channelDescription: 'Avisos de tiempo al cantar un tema', importance: Importance.high, priority: Priority.high),
+            iOS: DarwinNotificationDetails(presentSound: true),
+          ),
+          androidScheduleMode: exacto ? AndroidScheduleMode.exactAllowWhileIdle : AndroidScheduleMode.inexactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        );
+      } catch (_) {}
+    }
+  }
+
+  static Future<void> cancelarCronometro() async {
+    await iniciar();
+    for (var i = 0; i < _maxAvisosCronometro; i++) {
+      await _plugin.cancel(_idCronometroProgramado + i);
+    }
+  }
+
+  /// Avisos de un cante: la víspera a las 20:00 y una hora antes.
+  static List<({DateTime cuando, String titulo, String texto})> avisosDeCante(Cante c) {
+    final hora = '${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}';
+    final nombre = c.titulo.isEmpty ? 'Cante' : 'Cante · ${c.titulo}';
+    return [
+      (cuando: DateTime(c.fecha.year, c.fecha.month, c.fecha.day - 1, 20), titulo: nombre, texto: 'Mañana a las $hora. Repasa los temas que entran.'),
+      (cuando: c.fecha.subtract(const Duration(hours: 1)), titulo: nombre, texto: 'En una hora, a las $hora.'),
+    ];
+  }
+
+  /// Reprograma los recordatorios de los próximos cantes pendientes.
+  /// Con [cantes] vacío solo cancela los que hubiera.
+  static Future<void> programarCantes(List<Cante> cantes, {DateTime? ahora}) async {
+    await iniciar();
+    for (var i = 0; i < 2 * maxCantesConAviso; i++) {
+      await _plugin.cancel(_idCantes + i);
+    }
+    final hoy = ahora ?? DateTime.now();
+    final proximos = cantes.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+    var id = _idCantes;
+    for (final c in proximos.take(maxCantesConAviso)) {
+      for (final a in avisosDeCante(c)) {
+        final n = id++;
+        if (!a.cuando.isAfter(hoy)) continue;
+        try {
+          await _plugin.zonedSchedule(
+            n,
+            a.titulo,
+            a.texto,
+            tz.TZDateTime.from(a.cuando, tz.local),
+            const NotificationDetails(
+              android: AndroidNotificationDetails('cantes', 'Cantes programados',
+                  channelDescription: 'Recordatorios la víspera y una hora antes de cada cante', importance: Importance.high, priority: Priority.high),
+              iOS: DarwinNotificationDetails(),
+            ),
+            androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+            uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+          );
+        } catch (_) {}
+      }
+    }
   }
 
   /// Aviso inmediato (cronómetro de cantar un tema en segundo plano).
