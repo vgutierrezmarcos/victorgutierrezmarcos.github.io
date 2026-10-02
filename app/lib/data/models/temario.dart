@@ -6,12 +6,15 @@ class Tema {
     required this.disponible,
     required this.temarioAnterior,
     this.url,
+    this.pdfDeParte = false,
   });
   final String codigo; // 3.A.1
   final String titulo;
   final bool disponible;
   final bool temarioAnterior;
   final String? url;
+  /// true si [url] es el PDF de la parte entera (quinto ejercicio).
+  final bool pdfDeParte;
 
   int get ejercicio => int.tryParse(codigo.split('.').first) ?? 0;
   String get parte => codigo.split('.').length > 1 ? codigo.split('.')[1] : '';
@@ -20,12 +23,16 @@ class Tema {
   /// Nombre de fichero local para la descarga offline.
   String get nombreFichero => '${codigo.replaceAll('.', '')}.pdf';
 
+  /// "3.A", "5.C"…
+  String get claveParte => '$ejercicio.$parte';
+
   factory Tema.fromJson(Map<String, dynamic> j) => Tema(
         codigo: j['codigo'] as String,
         titulo: j['titulo'] as String? ?? '',
         disponible: j['disponible'] as bool? ?? false,
         temarioAnterior: j['temarioAnterior'] as bool? ?? false,
         url: j['url'] as String?,
+        pdfDeParte: j['pdfDeParte'] as bool? ?? false,
       );
 }
 
@@ -146,6 +153,9 @@ class AppConfig {
     this.urlAppStore,
     this.nombreConvocatoria = '',
     this.fechaPrimerEjercicio,
+    this.fechas = const {},
+    this.bolasPorParte = const {3: 2, 4: 2, 5: 1},
+    this.partesARedactar = const {5: 2},
     this.urlBoe,
     this.urlDiscord,
     this.urlTelegram,
@@ -162,6 +172,12 @@ class AppConfig {
   final String? urlAppStore;
   final String nombreConvocatoria;
   final DateTime? fechaPrimerEjercicio;
+  /// Fechas oficiales de cada ejercicio (1-5) cuando se conozcan.
+  final Map<int, DateTime> fechas;
+  /// Temas que se extraen de cada parte en el sorteo, por ejercicio.
+  final Map<int, int> bolasPorParte;
+  /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3).
+  final Map<int, int> partesARedactar;
   final String? urlBoe;
   final String? urlDiscord;
   final String? urlTelegram;
@@ -178,12 +194,31 @@ class AppConfig {
     final com = j['comunidad'] as Map<String, dynamic>? ?? {};
     final con = j['contacto'] as Map<String, dynamic>? ?? {};
     final f = conv['fechaPrimerEjercicio'] as String?;
+    final fechas = <int, DateTime>{};
+    ((conv['fechas'] as Map?) ?? {}).forEach((k, v) {
+      final n = int.tryParse(k.toString());
+      final d = v is String ? DateTime.tryParse(v) : null;
+      if (n != null && d != null) fechas[n] = d;
+    });
+    final primera = f == null ? null : DateTime.tryParse(f);
+    if (primera != null) fechas.putIfAbsent(1, () => primera);
+    final bolas = {...porDefecto.bolasPorParte};
+    final redactar = {...porDefecto.partesARedactar};
+    ((j['sorteo'] as Map?) ?? {}).forEach((k, v) {
+      final n = int.tryParse(k.toString());
+      if (n == null || v is! Map) return;
+      if (v['bolasPorParte'] is num) bolas[n] = (v['bolasPorParte'] as num).toInt();
+      if (v['partesARedactar'] is num) redactar[n] = (v['partesARedactar'] as num).toInt();
+    });
     return AppConfig(
       versionMinima: app['versionMinima'] as String? ?? '1.0.0',
       urlPlayStore: app['urlPlayStore'] as String?,
       urlAppStore: app['urlAppStore'] as String?,
       nombreConvocatoria: conv['nombre'] as String? ?? '',
-      fechaPrimerEjercicio: f == null ? null : DateTime.tryParse(f),
+      fechaPrimerEjercicio: primera,
+      fechas: fechas,
+      bolasPorParte: bolas,
+      partesARedactar: redactar,
       urlBoe: conv['urlBoe'] as String?,
       urlDiscord: com['urlDiscord'] as String?,
       urlTelegram: com['urlTelegram'] as String?,

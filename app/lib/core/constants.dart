@@ -44,4 +44,7 @@ class Cajas {
   static const String notas = 'notas';
   static const String descargas = 'descargas';
   static const String favoritosBlog = 'favoritos_blog';
+  static const String cantes = 'cantes';
+  static const String plan = 'plan';
+  static const String agendaTemas = 'agenda_temas';
 }

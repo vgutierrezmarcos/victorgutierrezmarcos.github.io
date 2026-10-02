@@ -135,3 +135,64 @@ String formatoTiempo(int segundos) {
 }
 
 String formatoNota(double n) => n.toStringAsFixed(2).replaceAll('.', ',');
+
+/// Cuenta atrás legible: "en 3 días", "en 5 h 20 min", "en 12 min", "ahora".
+String cuentaAtras(DateTime fecha, [DateTime? ahora]) {
+  final d = fecha.difference(ahora ?? DateTime.now());
+  if (d.isNegative) return d.inMinutes > -120 ? 'ahora' : 'pasado';
+  if (d.inDays >= 2) return 'en ${d.inDays} días';
+  if (d.inHours >= 1) return 'en ${d.inHours} h ${d.inMinutes % 60} min';
+  if (d.inMinutes >= 1) return 'en ${d.inMinutes} min';
+  return 'ahora';
+}
+
+/// Días naturales que faltan hasta [fecha] (0 = hoy; negativo = ya pasó).
+int diasHasta(DateTime fecha, [DateTime? ahora]) {
+  final h = ahora ?? DateTime.now();
+  return (DateTime(fecha.year, fecha.month, fecha.day).difference(DateTime(h.year, h.month, h.day)).inHours / 24).round();
+}
+
+/// Valoración de 1 a 5 estrellas (0 = sin valorar). Sin [onChanged] es de solo lectura.
+class Estrellas extends StatelessWidget {
+  const Estrellas({super.key, required this.valor, this.onChanged, this.tamano = 28});
+  final int valor;
+  final ValueChanged<int>? onChanged;
+  final double tamano;
+
+  @override
+  Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
+        for (var i = 1; i <= 5; i++)
+          GestureDetector(
+            onTap: onChanged == null ? null : () => onChanged!(i == valor ? 0 : i),
+            child: Padding(
+              padding: EdgeInsets.all(onChanged == null ? 0 : 4),
+              child: Icon(i <= valor ? Icons.star : Icons.star_border, size: tamano, color: i <= valor ? context.colores.dorado : context.colores.textoClaro),
+            ),
+          ),
+      ]);
+}
+
+/// Fila de navegación dentro de una tarjeta (icono, título, subtítulo y flecha).
+class FilaEnlace extends StatelessWidget {
+  const FilaEnlace({super.key, required this.icono, required this.titulo, this.subtitulo, required this.onTap, this.final_});
+  final IconData icono;
+  final String titulo;
+  final String? subtitulo;
+  final VoidCallback onTap;
+  final Widget? final_;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Tarjeta(
+          padding: EdgeInsets.zero,
+          onTap: onTap,
+          child: ListTile(
+            leading: Icon(icono, color: context.esquema.primary),
+            title: Text(titulo, style: context.textos.titleSmall),
+            subtitle: subtitulo == null ? null : Text(subtitulo!, style: context.textos.labelSmall),
+            trailing: final_ ?? const Icon(Icons.chevron_right),
+          ),
+        ),
+      );
+}

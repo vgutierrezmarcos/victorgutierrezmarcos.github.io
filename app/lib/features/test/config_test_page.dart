@@ -152,13 +152,18 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
     final partes = {'A': codigos.where((c) => c.contains('.A.')).toList(), 'B': codigos.where((c) => c.contains('.B.')).toList()};
 
     return Column(children: [
-      Row(children: [
-        TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: const {})), child: const Text('Todos')),
-        TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['A']!.toSet())), child: const Text('Parte A')),
-        TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['B']!.toSet())), child: const Text('Parte B')),
-        const Spacer(),
-        Text(_cfg.temas.isEmpty ? 'Todos los temas' : '${_cfg.temas.length} temas', style: context.textos.bodySmall),
-      ]),
+      // Wrap: en pantallas estrechas o con letra grande el contador baja a otra línea.
+      SizedBox(
+        width: double.infinity,
+        child: Wrap(alignment: WrapAlignment.spaceBetween, crossAxisAlignment: WrapCrossAlignment.center, children: [
+          Wrap(children: [
+            TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: const {})), child: const Text('Todos')),
+            TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['A']!.toSet())), child: const Text('Parte A')),
+            TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['B']!.toSet())), child: const Text('Parte B')),
+          ]),
+          Text(_cfg.temas.isEmpty ? 'Todos los temas' : '${_cfg.temas.length} temas', style: context.textos.bodySmall),
+        ]),
+      ),
       if (bloques.bloques.isNotEmpty)
         Padding(
           padding: const EdgeInsets.only(bottom: 8),

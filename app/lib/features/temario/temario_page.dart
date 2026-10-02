@@ -23,6 +23,8 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     final ajustes = ref.watch(ajustesProvider);
     final descargas = ref.watch(descargasProvider);
     final notas = ref.read(usuarioRepoProvider).todasLasNotas();
+    final agendas = ref.watch(agendasProvider);
+    int apuntes(String codigo) => agendas[codigo]?.pendientes.length ?? 0;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,7 +54,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
             final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
             return ListView(padding: const EdgeInsets.all(16), children: [
               Text('${res.length} resultados', style: context.textos.bodySmall),
-              for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo)),
+              for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
             ]);
           }
           final total = t.todosLosTemas.where((x) => x.disponible).length;
@@ -87,7 +89,15 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                         title: Text('Parte ${p.letra}: ${p.nombre}', style: context.textos.titleSmall),
                         subtitle: Text('${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} con PDF', style: context.textos.labelSmall),
                         children: [
-                          for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo)),
+                          // Quinto ejercicio: un único PDF con todos los temas de la parte.
+                          if (p.url != null)
+                            ListTile(
+                              dense: true,
+                              leading: Icon(Icons.picture_as_pdf_outlined, color: context.esquema.primary),
+                              title: Text('PDF completo de la parte', style: context.textos.titleSmall),
+                              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '${ej.id}.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: false, url: p.url), esRecurso: true))),
+                            ),
+                          for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
                         ],
                       ),
                     ),
@@ -101,25 +111,25 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     );
   }
 
-  Widget _filaTema(Tema x, bool estudiado, bool repaso, bool offline, bool conNota) {
+  Widget _filaTema(Tema x, bool estudiado, bool repaso, bool offline, bool conNota, int apuntes) {
     return ListTile(
       dense: true,
-      enabled: x.disponible,
       leading: IconButton(
         icon: Icon(estudiado ? Icons.check_circle : Icons.circle_outlined, color: estudiado ? Paleta.acierto : context.colores.textoClaro),
         tooltip: 'Estudiado',
         onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
       ),
       title: Text('${x.codigo} · ${x.titulo}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: x.disponible ? context.esquema.onSurface : context.colores.textoClaro)),
-      subtitle: !x.disponible
-          ? Text('No disponible', style: context.textos.labelSmall)
-          : Row(children: [
-              if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
-              if (offline) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
-              if (repaso) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
-              if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
-            ]),
-      onTap: x.disponible ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: x))) : null,
+      subtitle: Row(children: [
+        if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text('Sin PDF', style: context.textos.labelSmall)),
+        if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
+        if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
+        if (repaso) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
+        if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
+        if (apuntes > 0) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
+      ]),
+      // Los temas sin PDF también se abren: muestran su agenda (apuntes, vueltas y nota).
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: x.disponible ? x : Tema(codigo: x.codigo, titulo: x.titulo, disponible: false, temarioAnterior: x.temarioAnterior)))),
     );
   }
 

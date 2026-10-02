@@ -9,8 +9,11 @@ import '../../core/providers.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'agenda_tema_page.dart';
 
-/// Visor de un tema: PDF (descargado para offline), estado de estudio y notas propias.
+/// Visor de un tema: PDF (descargado para offline), estado de estudio y agenda
+/// del tema (apuntes para la próxima vuelta, vueltas y nota libre). Si el tema
+/// no tiene PDF se muestra directamente la agenda.
 class TemaPage extends ConsumerStatefulWidget {
   const TemaPage({super.key, required this.tema, this.esRecurso = false});
   final Tema tema;
@@ -30,7 +33,21 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   void initState() {
     super.initState();
     _cargar();
+    // Al abrir el tema se recuerdan los apuntes que se dejaron para esta vuelta.
+    if (!widget.esRecurso && widget.tema.url != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        final n = ref.read(agendasProvider.notifier).de(widget.tema.codigo).pendientes.length;
+        if (n == 0) return;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(n == 1 ? 'Tienes 1 apunte pendiente para esta vuelta' : 'Tienes $n apuntes pendientes para esta vuelta'),
+          action: SnackBarAction(label: 'Ver', textColor: Colors.white, onPressed: _abrirAgenda),
+        ));
+      });
+    }
   }
+
+  void _abrirAgenda() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AgendaTemaPage(tema: widget.tema)));
 
   Future<void> _cargar() async {
     final url = widget.tema.url;
@@ -60,21 +77,27 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final ajustes = ref.watch(ajustesProvider);
     final estudiado = ajustes.temasEstudiados.contains(widget.tema.codigo);
     final repaso = ajustes.temasEnRepaso.contains(widget.tema.codigo);
-    final nota = ref.read(usuarioRepoProvider).nota(widget.tema.codigo);
+    final pendientes = (ref.watch(agendasProvider)[widget.tema.codigo]?.pendientes ?? const []).length;
+    final conNota = ref.read(usuarioRepoProvider).nota(widget.tema.codigo).isNotEmpty;
+    final sinPdf = widget.tema.url == null;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.esRecurso ? widget.tema.titulo : 'Tema ${widget.tema.codigo}', overflow: TextOverflow.ellipsis),
         actions: [
-          if (!widget.esRecurso)
+          if (!widget.esRecurso && !sinPdf)
             IconButton(
-              tooltip: 'Notas',
-              icon: Icon(nota.isEmpty ? Icons.sticky_note_2_outlined : Icons.sticky_note_2, color: nota.isEmpty ? null : context.colores.dorado),
-              onPressed: () => _editarNota(nota),
+              tooltip: 'Agenda del tema: apuntes para la próxima vuelta y notas',
+              icon: Badge(
+                isLabelVisible: pendientes > 0,
+                label: Text('$pendientes'),
+                child: Icon(pendientes > 0 || conNota ? Icons.sticky_note_2 : Icons.sticky_note_2_outlined, color: pendientes > 0 || conNota ? context.colores.dorado : null),
+              ),
+              onPressed: _abrirAgenda,
             ),
           if (_fichero != null)
-            IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => Share.shareXFiles([XFile(_fichero!.path)], text: '${widget.tema.codigo} ${widget.tema.titulo}')),
-          PopupMenuButton<String>(
+            IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_fichero!.path)], text: '${widget.tema.codigo} ${widget.tema.titulo}'))),
+          if (!sinPdf) PopupMenuButton<String>(
             onSelected: (v) async {
               if (v == 'web') {
                 abrirUrl(context, widget.tema.url);
@@ -116,7 +139,9 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             ),
           ),
         Expanded(
-          child: _error != null
+          child: sinPdf
+              ? AgendaTemaVista(tema: widget.tema)
+              : _error != null
               ? ErrorVista(error: _error!, reintentar: () => setState(() { _error = null; _cargar(); }))
               : _pdf == null
                   ? Center(
@@ -153,30 +178,5 @@ class _TemaPageState extends ConsumerState<TemaPage> {
           ),
       ]),
     );
-  }
-
-  Future<void> _editarNota(String actual) async {
-    final ctrl = TextEditingController(text: actual);
-    final texto = await showModalBottomSheet<String>(
-      context: context,
-      isScrollControlled: true,
-      builder: (c) => Padding(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + MediaQuery.of(c).viewInsets.bottom),
-        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Notas · ${widget.tema.codigo}', style: context.textos.titleMedium),
-          const SizedBox(height: 8),
-          TextField(controller: ctrl, maxLines: 8, minLines: 4, autofocus: true, decoration: const InputDecoration(hintText: 'Ideas clave, dudas, esquema para cantar el tema…')),
-          const SizedBox(height: 12),
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextButton(onPressed: () => Navigator.pop(c), child: const Text('Cancelar')),
-            FilledButton(onPressed: () => Navigator.pop(c, ctrl.text), child: const Text('Guardar')),
-          ]),
-        ]),
-      ),
-    );
-    if (texto != null) {
-      await ref.read(usuarioRepoProvider).guardarNota(widget.tema.codigo, texto);
-      if (mounted) setState(() {});
-    }
   }
 }

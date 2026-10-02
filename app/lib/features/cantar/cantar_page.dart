@@ -4,40 +4,63 @@ import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:vibration/vibration.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/selector_temas.dart';
+import '../plan/cantes_util.dart';
+import '../plan/resultado_sheet.dart';
+import 'probabilidades.dart';
+import 'reloj_cante.dart';
 import 'sorteo.dart';
 
-/// Cantar un tema: sorteo (con probabilidades), cronómetro de exposición y grabación.
+enum _Modo { oficial, bolsa }
+
+enum _Fuente { estudiados, repaso, lista }
+
+/// Cantar un tema: sorteo (oficial o de una bolsa propia), cronómetro de
+/// preparación y exposición, grabación y registro en el diario de cantes.
 class CantarPage extends ConsumerStatefulWidget {
   const CantarPage({super.key});
   @override
   ConsumerState<CantarPage> createState() => _CantarPageState();
 }
 
-class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObserver {
+class _CantarPageState extends ConsumerState<CantarPage> {
+  // Sorteo
   int _ejercicio = 3;
+  _Modo _modo = _Modo.oficial;
+  _Fuente _fuente = _Fuente.estudiados;
+  List<String> _lista = const [];
+  bool _ponderar = false;
   List<Tema> _sorteados = [];
   Tema? _elegido;
 
   // Cronómetro
-  int _duracion = 10 * 60;
-  int _restante = 10 * 60;
-  Timer? _timer;
-  bool _corriendo = false;
-  final _avisados = <int>{};
+  int _minPreparacion = 0;
+  int _minExposicion = 15;
+  late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
+  Timer? _tic;
+  int _hitosAvisados = 0;
 
-  // Grabación
-  final _grabadora = AudioRecorder();
-  final _reproductor = AudioPlayer();
+  // Grabación (la grabadora y el reproductor se crean al usarlos por primera vez)
+  AudioRecorder? _grabadoraPerezosa;
+  AudioPlayer? _reproductorPerezoso;
+  AudioRecorder get _grabadora => _grabadoraPerezosa ??= AudioRecorder();
+  AudioPlayer get _reproductor => _reproductorPerezoso ??= AudioPlayer()
+    ..onPlayerComplete.listen((_) {
+      if (mounted) setState(() => _reproduciendo = false);
+    });
   bool _grabando = false;
   String? _ultimaGrabacion;
   bool _reproduciendo = false;
@@ -45,59 +68,97 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    _reproductor.onPlayerComplete.listen((_) => setState(() => _reproduciendo = false));
+    // Si se llega desde la agenda con un cante, el cronómetro toma su duración.
+    final id = ref.read(canteEnCursoProvider);
+    final cante = ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
+    if (cante != null) _minExposicion = cante.minutos;
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    _timer?.cancel();
-    _grabadora.dispose();
-    _reproductor.dispose();
+    _tic?.cancel();
+    _pantallaEncendida(false);
+    _grabadoraPerezosa?.dispose();
+    _reproductorPerezoso?.dispose();
     super.dispose();
   }
 
   // ------------------------------------------------------------ Cronómetro
 
-  void _iniciar() {
-    _timer?.cancel();
-    setState(() => _corriendo = true);
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) async {
-      if (_restante <= 0) {
-        _parar();
-        await _aviso('¡Tiempo! Se han cumplido los ${_duracion ~/ 60} minutos.', largo: true);
-        return;
-      }
-      setState(() => _restante--);
-      for (final hito in [_duracion ~/ 2, 60]) {
-        if (_restante == hito && !_avisados.contains(hito)) {
-          _avisados.add(hito);
-          await _aviso(hito == 60 ? 'Queda 1 minuto.' : 'Mitad del tiempo (${hito ~/ 60} min).');
-        }
-      }
-    });
+  void _pantallaEncendida(bool si) {
+    // Sin plugin (tests, escritorio) no pasa nada.
+    (si ? WakelockPlus.enable() : WakelockPlus.disable()).catchError((_) {});
   }
 
-  void _parar() {
-    _timer?.cancel();
-    setState(() => _corriendo = false);
+  void _nuevoReloj() {
+    _tic?.cancel();
+    _reloj = RelojCante(preparacion: Duration(minutes: _minPreparacion), exposicion: Duration(minutes: _minExposicion));
+    _hitosAvisados = 0;
+  }
+
+  void _iniciar() {
+    final ahora = DateTime.now();
+    setState(() => _reloj.iniciar(ahora));
+    _pantallaEncendida(true);
+    // Los avisos se programan también como notificaciones por si la app pasa a segundo plano.
+    Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
+    _tic?.cancel();
+    _tic = Timer.periodic(const Duration(milliseconds: 250), (_) => _alTic());
+  }
+
+  void _alTic() {
+    if (!mounted) return;
+    final ahora = DateTime.now();
+    final t = _reloj.transcurrido(ahora);
+    final hitos = _reloj.hitos;
+    while (_hitosAvisados < hitos.length && t >= hitos[_hitosAvisados].en) {
+      _aviso(hitos[_hitosAvisados].texto, largo: hitos[_hitosAvisados].fin);
+      _hitosAvisados++;
+    }
+    if (_reloj.terminado(ahora)) {
+      _parar(cancelarAvisos: false);
+      return;
+    }
+    setState(() {});
+  }
+
+  void _parar({bool cancelarAvisos = true}) {
+    _tic?.cancel();
+    setState(() => _reloj.pausar(DateTime.now()));
+    _pantallaEncendida(false);
+    if (cancelarAvisos) Notificaciones.cancelarCronometro().catchError((_) {});
   }
 
   void _reiniciar() {
     _parar();
-    setState(() {
-      _restante = _duracion;
-      _avisados.clear();
-    });
+    setState(_nuevoReloj);
   }
 
   Future<void> _aviso(String texto, {bool largo = false}) async {
-    if (await Vibration.hasVibrator()) {
-      Vibration.vibrate(pattern: largo ? [0, 400, 200, 400, 200, 600] : [0, 300]);
-    }
-    await Notificaciones.avisoCronometro(texto);
     if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(texto)));
+    try {
+      if (await Vibration.hasVibrator()) Vibration.vibrate(pattern: largo ? [0, 400, 200, 400, 200, 600] : [0, 300]);
+    } catch (_) {}
+  }
+
+  Future<void> _otraDuracion({required bool preparacion}) async {
+    final ctrl = TextEditingController(text: '${preparacion ? _minPreparacion : _minExposicion}');
+    final min = await showDialog<int>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: Text(preparacion ? 'Minutos de preparación' : 'Minutos de exposición'),
+        content: TextField(controller: ctrl, autofocus: true, keyboardType: TextInputType.number, decoration: const InputDecoration(suffixText: 'min')),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(c, int.tryParse(ctrl.text.trim())), child: const Text('Aceptar')),
+        ],
+      ),
+    );
+    if (min == null || min < 0 || min > 180 || (!preparacion && min == 0)) return;
+    setState(() {
+      preparacion ? _minPreparacion = min : _minExposicion = min;
+      _nuevoReloj();
+    });
   }
 
   // ------------------------------------------------------------ Grabación
@@ -119,7 +180,7 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
     final nombre = '${_elegido?.codigo.replaceAll('.', '') ?? 'tema'}_${DateTime.now().millisecondsSinceEpoch}.m4a';
     await _grabadora.start(const RecordConfig(encoder: AudioEncoder.aacLc, bitRate: 64000), path: '${dir.path}/$nombre');
     setState(() => _grabando = true);
-    if (!_corriendo) _iniciar();
+    if (!_reloj.corriendo) _iniciar();
   }
 
   Future<void> _reproducir() async {
@@ -133,17 +194,94 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
     setState(() => _reproduciendo = true);
   }
 
+  // ------------------------------------------------------------ Sorteo y diario
+
+  /// Temas de la bolsa propia según la fuente elegida (o el cante en curso).
+  List<Tema> _bolsa(Temario t, Cante? cante) {
+    final ajustes = ref.read(ajustesProvider);
+    if (cante != null) return temasDeCante(cante, t, ajustes);
+    final delEjercicio = t.todosLosTemas.where((x) => x.ejercicio == _ejercicio);
+    return switch (_fuente) {
+      _Fuente.estudiados => delEjercicio.where((x) => ajustes.temasEstudiados.contains(x.codigo)).toList(),
+      _Fuente.repaso => delEjercicio.where((x) => ajustes.temasEnRepaso.contains(x.codigo)).toList(),
+      _Fuente.lista => [for (final c in _lista) if (t.tema(c) != null) t.tema(c)!],
+    };
+  }
+
+  void _sortear(Temario t, Cante? cante, AppConfig config) {
+    final List<Tema> resultado;
+    if (_modo == _Modo.oficial && cante == null) {
+      final porParte = ref.read(temasPorParteProvider);
+      final partes = {for (final e in porParte.entries) if (e.key.startsWith('$_ejercicio.')) e.key: e.value};
+      resultado = Sorteo.sorteoOficial(partes, config.bolasPorParte[_ejercicio] ?? 2).values.expand((x) => x).toList();
+    } else {
+      final bolsa = _bolsa(t, cante);
+      final n = ref.read(ajustesProvider).temasExtraidos;
+      if (_ponderar) {
+        final stats = ref.read(estadisticasCantesProvider);
+        resultado = Sorteo.sortearPonderado(bolsa, n, (x) => Sorteo.pesoPractica(veces: stats[x.codigo]?.veces ?? 0, valoracionMedia: stats[x.codigo]?.valoracionMedia ?? 0));
+      } else {
+        resultado = Sorteo.sortear(bolsa, n);
+      }
+    }
+    setState(() {
+      _sorteados = resultado;
+      _elegido = resultado.length == 1 ? resultado.first : null;
+    });
+  }
+
+  Future<void> _guardarEnDiario(Cante? cante, List<Tema> opciones) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final res = await pedirResultadoCante(
+      context,
+      inicial: ResultadoCante(
+        sorteados: _sorteados.map((x) => x.codigo).toList(),
+        temaCantado: _elegido?.codigo,
+        segundos: _reloj.expuesto(DateTime.now()).inSeconds,
+      ),
+      opciones: opciones,
+    );
+    if (res == null) return;
+    final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
+    await ref.read(cantesProvider.notifier).guardar(base.copyWith(estado: EstadoCante.hecho, resultado: res));
+    await ref.read(ajustesProvider.notifier).registrarActividad();
+    ref.read(canteEnCursoProvider.notifier).state = null;
+    if (!mounted) return;
+    setState(() {
+      _sorteados = [];
+      _elegido = null;
+      _nuevoReloj();
+    });
+    messenger.showSnackBar(const SnackBar(content: Text('Cante guardado en el diario')));
+  }
+
   // ------------------------------------------------------------ UI
 
   @override
   Widget build(BuildContext context) {
     final temario = ref.watch(temarioProvider);
     final ajustes = ref.watch(ajustesProvider);
+    final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final idCante = ref.watch(canteEnCursoProvider);
+    final cante = idCante == null ? null : ref.watch(cantesProvider).where((c) => c.id == idCante && c.pendiente).firstOrNull;
+
+    // Al llegar desde la agenda, el cronómetro toma la duración del cante.
+    ref.listen(canteEnCursoProvider, (_, id) {
+      final c = ref.read(cantesProvider).where((x) => x.id == id).firstOrNull;
+      if (c == null) return;
+      setState(() {
+        _sorteados = [];
+        _elegido = null;
+        _minExposicion = c.minutos;
+        _nuevoReloj();
+      });
+    });
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cantar un tema'),
         actions: [
+          IconButton(tooltip: 'Probabilidades', icon: const Icon(Icons.percent), onPressed: () => context.go('/cantar/probabilidades')),
           IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, Urls.comoCantarUnTema)),
         ],
       ),
@@ -151,64 +289,105 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
         data: (t) {
-          final ej = t.ejercicios.firstWhere((e) => e.id == _ejercicio, orElse: () => t.ejercicios[2]);
-          final bolsa = ej.temas;
-          final estudiados = bolsa.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length;
+          final oficial = _modo == _Modo.oficial && cante == null;
+          final bolsa = oficial ? const <Tema>[] : _bolsa(t, cante);
           final k = ajustes.temasExtraidos;
-          final prob = Sorteo.probAlMenosUno(total: bolsa.length, estudiados: estudiados, extraidos: k);
-          final para90 = Sorteo.minimosPara(total: bolsa.length, extraidos: k, objetivo: 0.9);
+          final bolas = config.bolasPorParte[_ejercicio] ?? 2;
+          final ahora = DateTime.now();
+          final restante = _reloj.restanteFase(ahora);
+          final enPreparacion = _reloj.preparacion > Duration.zero && _reloj.enPreparacion(ahora);
+          final terminado = _reloj.terminado(ahora);
 
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
             children: [
-              TituloSeccion('Sorteo', accion: SegmentedButton<int>(
-                segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º'))],
-                selected: {_ejercicio},
-                onSelectionChanged: (s) => setState(() {
-                  _ejercicio = s.first;
-                  _sorteados = [];
-                  _elegido = null;
-                }),
-                style: const ButtonStyle(visualDensity: VisualDensity.compact),
-              )),
-              Tarjeta(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Row(children: [
-                    Expanded(child: Text('Llevas $estudiados de ${bolsa.length} temas', style: context.textos.titleMedium)),
-                    Text('${(100 * prob).toStringAsFixed(1)} %', style: context.textos.headlineSmall?.copyWith(color: prob >= 0.9 ? Paleta.acierto : (prob >= 0.6 ? context.colores.dorado : Paleta.fallo))),
-                  ]),
-                  Text('Probabilidad de que salga al menos un tema estudiado sacando $k. Para llegar al 90 % necesitas $para90 temas.', style: context.textos.bodySmall),
-                  const SizedBox(height: 8),
-                  Row(children: [
-                    Text('Temas extraídos:', style: context.textos.labelMedium),
+              if (cante != null)
+                Tarjeta(
+                  color: context.colores.primarioPalido,
+                  padding: const EdgeInsets.fromLTRB(14, 6, 4, 6),
+                  child: Row(children: [
+                    Icon(Icons.event_available, color: context.esquema.primary),
+                    const SizedBox(width: 10),
                     Expanded(
-                      child: Slider(value: k.toDouble(), min: 1, max: 6, divisions: 5, label: '$k', onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temasExtraidos: v.round()))),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Text('${tituloCante(cante)} · ${fechaCorta(cante.fecha)}, ${horaDe(cante.fecha)}', style: context.textos.titleSmall),
+                        Text('${bolsa.length} temas en la bolsa. Al terminar se guarda en el diario.', style: context.textos.labelSmall),
+                      ]),
+                    ),
+                    IconButton(tooltip: 'Salir del cante', icon: const Icon(Icons.close), onPressed: () => ref.read(canteEnCursoProvider.notifier).state = null),
+                  ]),
+                ),
+              TituloSeccion(
+                'Sorteo',
+                accion: cante != null
+                    ? null
+                    : SegmentedButton<int>(
+                        segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 5, label: Text('5.º'))],
+                        selected: {_ejercicio},
+                        onSelectionChanged: (s) => setState(() {
+                          _ejercicio = s.first;
+                          _sorteados = [];
+                          _elegido = null;
+                        }),
+                        style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                      ),
+              ),
+              if (cante == null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: SegmentedButton<_Modo>(
+                    segments: const [ButtonSegment(value: _Modo.oficial, label: Text('Como en el examen')), ButtonSegment(value: _Modo.bolsa, label: Text('Mi bolsa'))],
+                    selected: {_modo},
+                    onSelectionChanged: (s) => setState(() {
+                      _modo = s.first;
+                      _sorteados = [];
+                      _elegido = null;
+                    }),
+                    style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                  ),
+                ),
+              if (oficial) _resumenProbabilidad(context, config, bolas),
+              if (!oficial)
+                Tarjeta(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    if (cante == null) ...[
+                      Wrap(spacing: 6, children: [
+                        for (final (f, texto) in [(_Fuente.estudiados, 'Estudiados'), (_Fuente.repaso, 'En repaso'), (_Fuente.lista, 'Lista propia')])
+                          ChoiceChip(label: Text(texto), selected: _fuente == f, onSelected: (_) => setState(() => _fuente = f)),
+                      ]),
+                      if (_fuente == _Fuente.lista)
+                        TextButton.icon(
+                          onPressed: () async {
+                            final r = await elegirTemas(context, temario: t, seleccion: _lista, titulo: 'Temas del sorteo');
+                            if (r != null) setState(() => _lista = r);
+                          },
+                          icon: const Icon(Icons.checklist, size: 18),
+                          label: Text(_lista.isEmpty ? 'Elegir temas' : 'Cambiar temas'),
+                        ),
+                    ],
+                    Text(bolsa.isEmpty ? 'La bolsa está vacía.' : '${bolsa.length} temas en la bolsa.', style: context.textos.bodySmall),
+                    Row(children: [
+                      Text('Temas a sacar:', style: context.textos.labelMedium),
+                      Expanded(
+                        child: Slider(value: k.toDouble(), min: 1, max: 6, divisions: 5, label: '$k', onChanged: (v) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temasExtraidos: v.round()))),
+                      ),
+                      Text('$k', style: context.textos.titleSmall),
+                    ]),
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      dense: true,
+                      title: const Text('Dar prioridad a los temas flojos'),
+                      subtitle: Text('Salen más los menos cantados y los peor valorados en el diario', style: context.textos.labelSmall),
+                      value: _ponderar,
+                      onChanged: (v) => setState(() => _ponderar = v),
                     ),
                   ]),
-                  const Divider(),
-                  Text('Distribución de temas estudiados en el sorteo', style: context.textos.labelMedium),
-                  const SizedBox(height: 6),
-                  for (var i = 0; i <= k; i++)
-                    Row(children: [
-                      SizedBox(width: 24, child: Text('$i', style: context.textos.labelMedium)),
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(3),
-                          child: LinearProgressIndicator(value: Sorteo.probExacto(total: bolsa.length, estudiados: estudiados, extraidos: k, k: i), minHeight: 6, backgroundColor: context.colores.fondoClaro),
-                        ),
-                      ),
-                      SizedBox(width: 52, child: Text('${(100 * Sorteo.probExacto(total: bolsa.length, estudiados: estudiados, extraidos: k, k: i)).toStringAsFixed(1)} %', textAlign: TextAlign.end, style: context.textos.labelSmall)),
-                    ]),
-                ]),
-              ),
+                ),
               const SizedBox(height: 10),
               FilledButton.icon(
-                onPressed: bolsa.isEmpty ? null : () => setState(() {
-                  _sorteados = Sorteo.sortear(bolsa, k);
-                  _elegido = null;
-                }),
+                onPressed: (oficial ? ref.watch(temasPorParteProvider).keys.any((p) => p.startsWith('$_ejercicio.')) : bolsa.isNotEmpty) ? () => _sortear(t, cante, config) : null,
                 icon: const Icon(Icons.casino_outlined),
-                label: Text('Sortear $k temas'),
+                label: Text(oficial ? 'Sortear $bolas ${bolas == 1 ? 'tema' : 'temas'} de cada parte' : 'Sortear $k ${k == 1 ? 'tema' : 'temas'}'),
               ),
               for (final x in _sorteados)
                 Tarjeta(
@@ -222,46 +401,57 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
                     if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
                   ]),
                 ),
-              if (_sorteados.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Toca el tema que vas a cantar.', style: context.textos.labelSmall)),
-              const TituloSeccion('Cronómetro de exposición'),
+              if (_sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Toca el tema que vas a cantar.', style: context.textos.labelSmall)),
+              const TituloSeccion('Cronómetro'),
               Tarjeta(
                 child: Column(children: [
                   if (_elegido != null) Text('${_elegido!.codigo} · ${_elegido!.titulo}', textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
                   const SizedBox(height: 8),
-                  Text(_reloj(_restante), style: context.textos.displayMedium?.copyWith(fontFeatures: const [FontFeature.tabularFigures()], color: _restante <= 60 && _corriendo ? context.esquema.error : context.esquema.primary)),
-                  ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: 1 - _restante / _duracion, minHeight: 6, backgroundColor: context.colores.fondoClaro)),
+                  Text(terminado ? 'Tiempo cumplido' : (enPreparacion ? 'Preparación' : 'Exposición'), style: context.textos.labelMedium),
+                  Text(
+                    _formatoReloj(restante),
+                    style: context.textos.displayMedium?.copyWith(
+                      fontFeatures: const [FontFeature.tabularFigures()],
+                      color: !enPreparacion && restante.inSeconds <= 60 && _reloj.empezado ? context.esquema.error : (enPreparacion ? context.colores.dorado : context.esquema.primary),
+                    ),
+                  ),
+                  ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: _reloj.progresoFase(ahora).clamp(0, 1), minHeight: 6, backgroundColor: context.colores.fondoClaro)),
                   const SizedBox(height: 10),
-                  Wrap(spacing: 6, alignment: WrapAlignment.center, children: [
-                    for (final m in [5, 10, 12, 15, 20])
-                      ChoiceChip(label: Text('$m min'), selected: _duracion == m * 60, onSelected: _corriendo ? null : (_) => setState(() { _duracion = m * 60; _restante = _duracion; _avisados.clear(); })),
-                  ]),
+                  _duraciones(context, 'Preparación', [0, 5, 10, 15], _minPreparacion, preparacion: true),
+                  _duraciones(context, 'Exposición', [10, 12, 15, 20], _minExposicion, preparacion: false),
                   const SizedBox(height: 12),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
                     OutlinedButton.icon(onPressed: _reiniciar, icon: const Icon(Icons.restart_alt), label: const Text('Reiniciar')),
-                    const SizedBox(width: 10),
                     FilledButton.icon(
-                      onPressed: _corriendo ? _parar : (_restante == 0 ? null : _iniciar),
-                      icon: Icon(_corriendo ? Icons.pause : Icons.play_arrow),
-                      label: Text(_corriendo ? 'Pausar' : (_restante < _duracion ? 'Continuar' : 'Empezar')),
+                      onPressed: _reloj.corriendo ? _parar : (terminado ? null : _iniciar),
+                      icon: Icon(_reloj.corriendo ? Icons.pause : Icons.play_arrow),
+                      label: Text(_reloj.corriendo ? 'Pausar' : (_reloj.empezado ? 'Continuar' : 'Empezar')),
                     ),
                   ]),
-                  Text('Avisos con vibración a la mitad, a 1 minuto y al final.', style: context.textos.labelSmall),
+                  const SizedBox(height: 6),
+                  Text('Avisa a mitad de la exposición, a 1 minuto del final y al terminar, también con la pantalla apagada.', textAlign: TextAlign.center, style: context.textos.labelSmall),
+                  if (_reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null)) ...[
+                    const Divider(),
+                    FilledButton.tonalIcon(
+                      onPressed: () => _guardarEnDiario(cante, _sorteados.isNotEmpty ? _sorteados : (cante != null ? bolsa : [if (_elegido != null) _elegido!])),
+                      icon: const Icon(Icons.menu_book_outlined),
+                      label: const Text('Guardar en el diario de cantes'),
+                    ),
+                  ],
                 ]),
               ),
               const TituloSeccion('Grabación para autoescucha'),
               Tarjeta(
                 child: Column(children: [
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
                     FilledButton.icon(
                       style: _grabando ? FilledButton.styleFrom(backgroundColor: context.esquema.error) : null,
                       onPressed: _alternarGrabacion,
                       icon: Icon(_grabando ? Icons.stop : Icons.mic),
                       label: Text(_grabando ? 'Detener' : 'Grabar (y arrancar el cronómetro)'),
                     ),
-                    if (_ultimaGrabacion != null && !_grabando) ...[
-                      const SizedBox(width: 10),
+                    if (_ultimaGrabacion != null && !_grabando)
                       OutlinedButton.icon(onPressed: _reproducir, icon: Icon(_reproduciendo ? Icons.stop : Icons.play_arrow), label: Text(_reproduciendo ? 'Parar' : 'Escuchar')),
-                    ],
                   ]),
                   if (_ultimaGrabacion != null && !_grabando)
                     TextButton.icon(
@@ -283,5 +473,56 @@ class _CantarPageState extends ConsumerState<CantarPage> with WidgetsBindingObse
     );
   }
 
-  String _reloj(int s) => '${(s ~/ 60).toString().padLeft(2, '0')}:${(s % 60).toString().padLeft(2, '0')}';
+  /// Resumen de la probabilidad del ejercicio con los temas estudiados (sorteo oficial).
+  Widget _resumenProbabilidad(BuildContext context, AppConfig config, int bolas) {
+    final porParte = ref.watch(temasPorParteProvider);
+    final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    final partes = partesDeEjercicio(_ejercicio, porParte: porParte, estudiados: estudiados, config: config);
+    if (partes.isEmpty) return const SizedBox.shrink();
+    final elegir = config.partesARedactar[_ejercicio];
+    final p = Sorteo.probEjercicio(partes, elegir: elegir);
+    final letras = [for (final k in porParte.keys.where((k) => k.startsWith('$_ejercicio.')).toList()..sort()) k.split('.').last];
+    return Tarjeta(
+      onTap: () => context.go('/cantar/probabilidades'),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Expanded(child: Text([for (var i = 0; i < partes.length; i++) '${letras[i]}: ${partes[i].sabidos} de ${partes[i].total}'].join(' · '), style: context.textos.titleMedium)),
+          Text(porcentaje(p), style: context.textos.headlineSmall?.copyWith(color: p >= 0.9 ? Paleta.acierto : (p >= 0.6 ? context.colores.dorado : Paleta.fallo))),
+        ]),
+        Text(
+          elegir == null
+              ? 'Probabilidad de saberte al menos un tema de cada parte, sacando $bolas de cada una. Toca para ver el detalle.'
+              : 'Probabilidad de saberte $elegir de los ${partes.length} temas que salen (uno por parte). Toca para ver el detalle.',
+          style: context.textos.bodySmall,
+        ),
+      ]),
+    );
+  }
+
+  Widget _duraciones(BuildContext context, String etiqueta, List<int> opciones, int actual, {required bool preparacion}) => Row(children: [
+        SizedBox(width: 84, child: Text(etiqueta, style: context.textos.labelMedium)),
+        Expanded(
+          child: Wrap(spacing: 4, children: [
+            for (final m in {...opciones, actual}.toList()..sort())
+              ChoiceChip(
+                label: Text(m == 0 ? 'No' : '$m'),
+                selected: actual == m,
+                visualDensity: VisualDensity.compact,
+                onSelected: _reloj.corriendo
+                    ? null
+                    : (_) => setState(() {
+                          preparacion ? _minPreparacion = m : _minExposicion = m;
+                          _nuevoReloj();
+                        }),
+              ),
+            ActionChip(label: const Text('Otro'), visualDensity: VisualDensity.compact, onPressed: _reloj.corriendo ? null : () => _otraDuracion(preparacion: preparacion)),
+          ]),
+        ),
+      ]);
+
+  String _formatoReloj(Duration d) {
+    // Se redondea hacia arriba para que el reloj no marque 00:00 antes de tiempo.
+    final s = (d.inMilliseconds / 1000).ceil();
+    return '${(s ~/ 60).toString().padLeft(2, '0')}:${(s % 60).toString().padLeft(2, '0')}';
+  }
 }

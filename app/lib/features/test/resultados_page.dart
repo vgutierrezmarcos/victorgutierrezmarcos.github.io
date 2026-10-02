@@ -58,8 +58,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.share_outlined),
-              onPressed: () => Share.share(
-                  'Test TCEE: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es'),
+              onPressed: () => SharePlus.instance.share(ShareParams(text: 'Test TCEE: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es')),
             ),
           ],
         ),

@@ -322,12 +322,12 @@ class UsuarioRepo {
     final doc = _docUsuario;
     if (doc == null) return;
     try {
-      final ref = doc.collection('notes').doc(codigoTema.replaceAll('.', '_'));
-      if (texto.trim().isEmpty) {
-        await ref.delete();
-      } else {
-        await ref.set({'tema': codigoTema, 'texto': texto, 'updatedAt': FieldValue.serverTimestamp()});
-      }
+      // merge: el mismo documento guarda la agenda del tema (PlanRepo), así que
+      // una nota vacía se guarda como texto vacío en vez de borrar el documento.
+      await doc.collection('notes').doc(codigoTema.replaceAll('.', '_')).set(
+        {'tema': codigoTema, 'texto': texto.trim().isEmpty ? '' : texto, 'updatedAt': FieldValue.serverTimestamp()},
+        SetOptions(merge: true),
+      );
     } catch (_) {}
   }
 
@@ -338,12 +338,13 @@ class UsuarioRepo {
       final snap = await doc.collection('notes').get();
       for (final d in snap.docs) {
         final tema = d.data()['tema'] as String? ?? d.id.replaceAll('_', '.');
-        if (!_notas.containsKey(tema)) await _notas.put(tema, d.data()['texto'] as String? ?? '');
+        final texto = d.data()['texto'] as String? ?? '';
+        if (texto.isNotEmpty && !_notas.containsKey(tema)) await _notas.put(tema, texto);
       }
       for (final e in todasLasNotas().entries) {
         final id = e.key.replaceAll('.', '_');
         if (!snap.docs.any((d) => d.id == id)) {
-          await doc.collection('notes').doc(id).set({'tema': e.key, 'texto': e.value, 'updatedAt': FieldValue.serverTimestamp()});
+          await doc.collection('notes').doc(id).set({'tema': e.key, 'texto': e.value, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
         }
       }
     } catch (_) {}
@@ -362,11 +363,13 @@ class UsuarioRepo {
     await Future.wait([_resultados.clear(), _leitner.clear(), _ajustes.clear(), _notas.clear()]);
   }
 
-  /// Exporta todo en JSON (portabilidad RGPD).
-  String exportarJson() => const JsonEncoder.withIndent('  ').convert({
+  /// Exporta todo en JSON (portabilidad RGPD). [extra] añade los datos de
+  /// otros repositorios (planificación).
+  String exportarJson({Map<String, dynamic> extra = const {}}) => const JsonEncoder.withIndent('  ').convert({
         'resultados': resultadosLocales().map((r) => r.toLocal()).toList(),
         'leitner': leitner().toJson(),
         'ajustes': ajustes().toJson(),
         'notas': todasLasNotas(),
+        ...extra,
       });
 }

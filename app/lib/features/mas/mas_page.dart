@@ -29,7 +29,7 @@ class MasPage extends ConsumerWidget {
         children: [
           Tarjeta(
             padding: EdgeInsets.zero,
-            onTap: () => context.go('/mas/cuenta'),
+            onTap: () => context.push('/mas/cuenta'),
             child: ListTile(
               leading: usuario?.photoURL != null ? CircleAvatar(backgroundImage: NetworkImage(usuario!.photoURL!)) : const CircleAvatar(child: Icon(Icons.person_outline)),
               title: Text(usuario?.displayName ?? 'Iniciar sesión con Google', style: context.textos.titleSmall),
@@ -38,7 +38,7 @@ class MasPage extends ConsumerWidget {
             ),
           ),
           const TituloSeccion('Contenido'),
-          _fila(context, Icons.article_outlined, 'Blog', 'Artículos sobre política económica y comercio', () => context.go('/mas/blog')),
+          _fila(context, Icons.article_outlined, 'Blog', 'Artículos sobre política económica y comercio', () => context.push('/mas/blog')),
           _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, Urls.simuladorWeb)),
           const TituloSeccion('Comunidad'),
           _fila(context, Icons.forum_outlined, 'Discord / Telegram', config.urlDiscord == null && config.urlTelegram == null ? 'Disponible próximamente' : 'Únete al chat de opositores', () => abrirUrl(context, config.urlDiscord ?? config.urlTelegram)),
