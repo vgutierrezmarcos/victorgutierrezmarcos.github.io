@@ -10,7 +10,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
-/// Más: comunidad, enlaces, ajustes, cuenta y acerca de.
+/// Más: enlaces, ajustes, cuenta y acerca de.
 class MasPage extends ConsumerWidget {
   const MasPage({super.key});
 
@@ -39,8 +39,6 @@ class MasPage extends ConsumerWidget {
           ),
           const TituloSeccion('Contenido'),
           _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, Urls.simuladorWeb)),
-          const TituloSeccion('Comunidad'),
-          _fila(context, Icons.forum_outlined, 'Discord / Telegram', config.urlDiscord == null && config.urlTelegram == null ? 'Disponible próximamente' : 'Únete al chat de opositores', () => abrirUrl(context, config.urlDiscord ?? config.urlTelegram)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),

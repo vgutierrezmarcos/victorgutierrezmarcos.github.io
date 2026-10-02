@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/estructura.dart';
 import '../data/models/plan.dart';
@@ -49,6 +50,20 @@ final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProv
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) => ref.watch(contenidoProvider).estructura());
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());
 final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoProvider).config());
+
+/// Versión nueva disponible (o null): la publicada en app-config.json si es
+/// posterior a la instalada.
+final actualizacionProvider = FutureProvider<String?>((ref) async {
+  final config = await ref.watch(configProvider.future);
+  final publicada = config.versionActual;
+  if (publicada == null) return null;
+  try {
+    final instalada = (await PackageInfo.fromPlatform()).version;
+    return AppConfig.esPosterior(publicada, instalada) ? publicada : null;
+  } catch (_) {
+    return null;
+  }
+});
 
 // ------------------------------------------------------------------ Sesión
 

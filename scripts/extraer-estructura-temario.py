@@ -12,6 +12,7 @@ Qué se extrae:
     organización), con el color de su parte en el PowerPoint.
   - Los esquemas con la posición de cada tema, los marcos de bloque y las
     flechas que conectan temas y bloques (tercero, cuarto y combinado).
+  - Las conexiones de CONEXIONES_EXTRA, que no están en el PowerPoint.
   - La idea clave de cada tema (texto que acompaña a su casilla en las
     diapositivas de detalle de cada bloque).
 
@@ -55,6 +56,11 @@ ESQUEMAS = [
     ('tercero', 'Tercer ejercicio', 5),
     ('cuarto', 'Cuarto ejercicio', 7),
     ('combinado', 'Tercer y cuarto ejercicio', 10),
+]
+# Conexiones que el autor quiere en la app y que no están dibujadas en el
+# PowerPoint. Se añaden a todos los esquemas en los que aparecen los dos temas.
+CONEXIONES_EXTRA = [
+    {'de': '3.B.2', 'a': '3.B.3', 'flechaDe': True, 'flechaA': True},
 ]
 CATEGORIAS_3 = ['MICROECONOMÍA', 'MACROECONOMÍA', 'MIXTO']
 NOMBRES_CATEGORIA = {'MICROECONOMÍA': 'Microeconomía', 'MACROECONOMÍA': 'Macroeconomía', 'MIXTO': 'Mixto'}
@@ -291,6 +297,16 @@ def extraer_esquema(lector, numero, bloques, color_tema):
             'color': (lector.color(ln.find('a:solidFill', NS)) if ln is not None else None) or (color_tema.get(de[1]) if de[0] == 'tema' else color_bloque.get(de[1])),
             'discontinua': trazo is not None and trazo.get('val') != 'solid',
         })
+    presentes = {n['tema'] for n in nodos}
+    for extra in CONEXIONES_EXTRA:
+        de, a = ('tema', extra['de']), ('tema', extra['a'])
+        if extra['de'] in presentes and extra['a'] in presentes and (de, a) not in vistas and (a, de) not in vistas:
+            vistas.add((de, a))
+            conexiones.append({
+                'de': {'tema': extra['de']}, 'a': {'tema': extra['a']},
+                'flechaDe': extra['flechaDe'], 'flechaA': extra['flechaA'],
+                'color': color_tema.get(extra['de']), 'discontinua': False,
+            })
     return {'nodos': nodos, 'marcos': marcos_json, 'etiquetas': etiquetas, 'conexiones': conexiones}
 
 

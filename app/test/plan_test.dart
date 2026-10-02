@@ -2,10 +2,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/core/calendario.dart';
 import 'package:tcee_app/core/notificaciones.dart';
 import 'package:tcee_app/data/models/plan.dart';
+import 'package:tcee_app/data/models/temario.dart';
+import 'package:tcee_app/data/repos/usuario_repo.dart';
 import 'package:tcee_app/features/cantar/reloj_cante.dart';
 import 'package:tcee_app/features/plan/cantes_util.dart';
 
 void main() {
+  test('aviso de actualización: comparación de versiones', () {
+    expect(AppConfig.esPosterior('1.3.1', '1.3.0'), isTrue);
+    expect(AppConfig.esPosterior('1.10.0', '1.9.3'), isTrue);
+    expect(AppConfig.esPosterior('2.0.0', '1.99.99'), isTrue);
+    expect(AppConfig.esPosterior('1.3.1', '1.3.1'), isFalse);
+    expect(AppConfig.esPosterior('1.3.0', '1.3.1'), isFalse);
+    expect(AppConfig.esPosterior('1.3.1+5', '1.3.1'), isFalse);
+    final c = AppConfig.fromJson({'app': {'versionActual': '1.4.0', 'urlApk': 'https://example.org/app.apk'}});
+    expect(c.versionActual, '1.4.0');
+    expect(c.urlApk, 'https://example.org/app.apk');
+  });
+
+  test('el recordatorio diario está desactivado por defecto', () {
+    expect(const Ajustes().horaRecordatorio, -1);
+    expect(Ajustes.fromJson(null).horaRecordatorio, -1);
+    // Los ajustes guardados por versiones anteriores traían las 20:00 sin que nadie lo activara.
+    expect(Ajustes.fromJson({'horaRecordatorio': 1200, 'racha': 3}).horaRecordatorio, -1);
+    final activado = const Ajustes().copyWith(horaRecordatorio: 21 * 60);
+    expect(Ajustes.fromJson(activado.toJson()).horaRecordatorio, 21 * 60);
+  });
+
   group('cantes', () {
     final base = Cante(id: 'a', fecha: DateTime(2026, 10, 8, 17), titulo: 'Preparador', bolsa: TipoBolsa.lista, temas: const ['3.A.1', '3.B.2'], updatedAt: DateTime(2026, 10, 1));
 

@@ -69,6 +69,16 @@ void main() {
     expect(bloque.every((c) => !(c.de.esTema && c.a.esTema && temas.contains(c.de.tema) && temas.contains(c.a.tema))), isTrue);
   });
 
+  test('conexión añadida a mano entre 3.B.2 y 3.B.3, en los dos sentidos', () {
+    for (final id in ['tercero', 'combinado']) {
+      final c = e.esquemas.firstWhere((x) => x.id == id).conexiones.where((c) => {c.de.tema, c.a.tema}.containsAll(['3.B.2', '3.B.3'])).toList();
+      expect(c.length, 1, reason: id);
+      expect(c.single.flechaDe && c.single.flechaA, isTrue);
+    }
+    expect(e.relacionados('3.B.2').map((x) => x.clave), contains('3.B.3'));
+    expect(e.relacionados('3.B.3').map((x) => x.clave), contains('3.B.2'));
+  });
+
   test('por dónde seguir: temas sin estudiar conectados con los estudiados', () {
     expect(e.sugeridos(const {}), isEmpty);
     final s = e.sugeridos(const {'3.A.8'});

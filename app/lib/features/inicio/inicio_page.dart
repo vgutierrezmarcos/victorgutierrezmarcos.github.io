@@ -32,6 +32,7 @@ class InicioPage extends ConsumerWidget {
     final racha = ajustes.rachaVigente();
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
+    final versionNueva = ref.watch(actualizacionProvider).value;
 
     return Scaffold(
       appBar: BarraWeb(
@@ -43,7 +44,7 @@ class InicioPage extends ConsumerWidget {
             icon: usuario?.photoURL != null ? CircleAvatar(radius: 14, backgroundImage: NetworkImage(usuario!.photoURL!)) : const Icon(Icons.account_circle_outlined),
             onPressed: () => context.push('/mas/cuenta'),
           ),
-          IconButton(tooltip: 'Más: comunidad, enlaces y ajustes', icon: const Icon(Icons.menu), onPressed: () => context.push('/mas')),
+          IconButton(tooltip: 'Más: enlaces, ajustes y cuenta', icon: const Icon(Icons.menu), onPressed: () => context.push('/mas')),
         ],
       ),
       body: RefreshIndicator(
@@ -55,6 +56,25 @@ class InicioPage extends ConsumerWidget {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
+            if (versionNueva != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Tarjeta(
+                  color: context.colores.primarioPalido,
+                  child: Row(children: [
+                    Icon(Icons.system_update_outlined, color: context.esquema.primary, size: 30),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Text('Hay una versión nueva ($versionNueva)', style: context.textos.titleMedium),
+                        Text('Se instala encima de la actual, sin perder tus datos.', style: context.textos.bodySmall),
+                      ]),
+                    ),
+                    const SizedBox(width: 8),
+                    FilledButton(onPressed: () => abrirUrl(context, config?.urlPlayStore ?? config?.urlApk), child: const Text('Actualizar')),
+                  ]),
+                ),
+              ),
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
                 Padding(
