@@ -204,7 +204,7 @@ function construirTemario() {
         { id: 'excel', titulo: 'Estrategia y organización (Excel)', descripcion: 'Probabilidades de que caiga un tema estudiado, simulador de sorteos y base para cronogramas.', tipo: 'xlsm', url: `${BASE_URL}/oposicion/organizacion/preparacion_oposicion_tcee.xlsm` },
         { id: 'estructura', titulo: 'Estructura del temario', descripcion: 'Presentación con una propuesta de estructura de los temas del tercer y cuarto ejercicio.', tipo: 'pdf', url: `${BASE_URL}/oposicion/organizacion/estructura_temario.pdf` },
         { id: 'cantar', titulo: 'Cómo cantar un tema', descripcion: 'Formato, organización de conceptos y consejos para la exposición oral.', tipo: 'pdf', url: `${BASE_URL}/oposicion/organizacion/como_cantar_un_tema.pdf` },
-        { id: 'convocatoria', titulo: 'Convocatoria OEP 2025 (BOE)', descripcion: 'Texto de la convocatoria publicada en el BOE.', tipo: 'pdf', url: `${BASE_URL}/oposicion/organizacion/OEP2025TECOS_Convocatoria_BOE.pdf` },
+        { id: 'convocatoria', titulo: 'Convocatoria (BOE)', descripcion: 'Texto de la última convocatoria publicada en el BOE.', tipo: 'pdf', url: `${BASE_URL}/oposicion/organizacion/OEP2025TECOS_Convocatoria_BOE.pdf` },
         { id: 'plantilla-largos', titulo: 'Plantilla Word para temas largos', descripcion: '', tipo: 'dotx', url: `${BASE_URL}/oposicion/organizacion/1_plantilla_temas_largos.dotx` },
         { id: 'plantilla-cortos', titulo: 'Plantilla Word para temas cortos', descripcion: '', tipo: 'dotx', url: `${BASE_URL}/oposicion/organizacion/2_plantilla_temas_cortos.dotx` }
     ];

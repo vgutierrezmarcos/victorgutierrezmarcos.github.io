@@ -400,7 +400,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     child: Row(children: [
                       Icon(ajustes.temasEstudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: ajustes.temasEstudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
                       const SizedBox(width: 10),
-                      Expanded(child: TextoTema(x.codigo, x.titulo)),
+                      Expanded(child: TextoTema(x.codigo, x.titulo, color: ref.watch(estructuraProvider).value?.colorDe(x.codigo))),
                       if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
                     ]),
                   ),

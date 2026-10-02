@@ -12,6 +12,7 @@ class Urls {
   static const String imagenesTest = '$test/img';
   static const String temario = '$base/oposicion/temario/temario.json';
   static const String enlaces = '$base/oposicion/enlaces.json';
+  static const String estructura = '$base/oposicion/organizacion/estructura_temario.json';
   static const String appConfig = '$base/oposicion/app-config.json';
   static const String comoCantarUnTema =
       '$base/oposicion/organizacion/como_cantar_un_tema.pdf';

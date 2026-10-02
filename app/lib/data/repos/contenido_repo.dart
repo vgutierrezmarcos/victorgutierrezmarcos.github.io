@@ -1,5 +1,6 @@
 import '../../core/cache_http.dart';
 import '../../core/constants.dart';
+import '../models/estructura.dart';
 import '../models/pregunta.dart';
 import '../models/temario.dart';
 
@@ -25,6 +26,16 @@ class ContenidoRepo {
   Future<List<CategoriaEnlaces>> enlaces({bool forzar = false}) async =>
       CategoriaEnlaces.listaFromJson(await _http.json(Urls.enlaces, preferirCache: !forzar, forzar: forzar));
 
+  /// Organización del temario. Si aún no se ha podido descargar, se devuelve
+  /// vacía: la app funciona igual, sin colores de bloque ni esquemas.
+  Future<EstructuraTemario> estructura({bool forzar = false}) async {
+    try {
+      return EstructuraTemario.fromJson(await _http.json(Urls.estructura, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return EstructuraTemario.vacia;
+    }
+  }
+
   Future<AppConfig> config() async {
     try {
       // La configuración remota se revalida siempre que hay red.
@@ -36,7 +47,7 @@ class ContenidoRepo {
 
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
-    for (final u in [Urls.preguntas, Urls.bloques, Urls.temario, Urls.enlaces]) {
+    for (final u in [Urls.preguntas, Urls.bloques, Urls.temario, Urls.enlaces, Urls.estructura]) {
       await _http.refrescar(u);
     }
   }

@@ -192,6 +192,12 @@ class _PlanPageState extends ConsumerState<PlanPage> {
             onTap: () => context.go('/plan/convocatoria'),
           ),
           FilaEnlace(
+            icono: Icons.account_tree_outlined,
+            titulo: 'Organización del temario',
+            subtitulo: 'Bloques, esquemas y conexiones entre temas',
+            onTap: () => context.go('/temario/organizacion'),
+          ),
+          FilaEnlace(
             icono: Icons.schedule,
             titulo: 'Horario de estudio',
             subtitulo: '${(plan.horario ?? Horario.porDefecto()).horasEstudioSemana.toStringAsFixed(0)} horas de estudio a la semana',

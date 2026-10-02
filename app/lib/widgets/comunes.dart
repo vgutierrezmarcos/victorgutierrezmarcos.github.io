@@ -238,23 +238,56 @@ class _GrupoDesplegableState extends State<GrupoDesplegable> with AutomaticKeepA
 /// Código y título de un tema como en las listas de la web (.tema-item):
 /// "Tema 3.A.1" en morado y sans seminegrita, y el título en texto normal.
 class TextoTema extends StatelessWidget {
-  const TextoTema(this.codigo, this.titulo, {super.key, this.maxLines = 2, this.atenuado = false});
+  const TextoTema(this.codigo, this.titulo, {super.key, this.maxLines = 2, this.atenuado = false, this.color});
   final String codigo;
   final String titulo;
   final int maxLines;
   /// Tema sin PDF: en gris, como .tema-item-unavailable.
   final bool atenuado;
+  /// Color del bloque del tema en la organización del temario: el código se
+  /// pinta en una casilla de ese color, como en el PowerPoint.
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => Text.rich(
         TextSpan(children: [
-          TextSpan(text: codigo, style: TextStyle(fontWeight: FontWeight.w600, color: atenuado ? context.colores.textoClaro : context.esquema.primary)),
-          TextSpan(text: titulo.isEmpty ? '' : ' · $titulo'),
+          if (color != null)
+            WidgetSpan(alignment: PlaceholderAlignment.middle, child: Padding(padding: const EdgeInsets.only(right: 6), child: CasillaTema(codigo, color: color!)))
+          else
+            TextSpan(text: codigo, style: TextStyle(fontWeight: FontWeight.w600, color: atenuado ? context.colores.textoClaro : context.esquema.primary)),
+          TextSpan(text: titulo.isEmpty ? '' : (color != null ? titulo : ' · $titulo')),
         ]),
         maxLines: maxLines,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, height: 1.35, color: atenuado ? context.colores.textoClaro : context.esquema.onSurface),
       );
+}
+
+/// Casilla con el código de un tema sobre el color de su bloque, como las del
+/// PowerPoint de organización del temario. [apagada] la deja en contorno
+/// (tema aún no estudiado en las vistas de progreso).
+class CasillaTema extends StatelessWidget {
+  const CasillaTema(this.codigo, {super.key, required this.color, this.apagada = false, this.grande = false, this.onTap});
+  final String codigo;
+  final Color color;
+  final bool apagada;
+  final bool grande;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final texto = apagada ? context.esquema.onSurface : (color.computeLuminance() > 0.42 ? const Color(0xFF1F1F1F) : Colors.white);
+    final caja = Container(
+      padding: EdgeInsets.symmetric(horizontal: grande ? 10 : 6, vertical: grande ? 5 : 2),
+      decoration: BoxDecoration(
+        color: apagada ? color.withValues(alpha: 0.12) : color,
+        border: Border.all(color: color, width: 1.5),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Text(codigo, style: TextStyle(fontFamily: Fuentes.sans, fontSize: grande ? 14 : 12, fontWeight: FontWeight.w600, height: 1.2, color: texto)),
+    );
+    return onTap == null ? caja : GestureDetector(onTap: onTap, child: caja);
+  }
 }
 
 /// Banda morada con cifras en blanco (.contador-seleccion del simulador).

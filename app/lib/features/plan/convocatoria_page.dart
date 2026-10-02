@@ -10,8 +10,8 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'cantes_util.dart';
 
-/// Convocatoria: fecha de cada ejercicio (oficial o estimada por el opositor),
-/// hitos propios y cuenta atrás de cada uno.
+/// Convocatoria: fecha de cada ejercicio (la pone el opositor), hitos propios
+/// y cuenta atrás de cada uno.
 class ConvocatoriaPage extends ConsumerWidget {
   const ConvocatoriaPage({super.key});
 
@@ -89,10 +89,9 @@ class ConvocatoriaPage extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
-          if (config.nombreConvocatoria.isNotEmpty) Padding(padding: const EdgeInsets.fromLTRB(4, 0, 4, 4), child: Text(config.nombreConvocatoria, style: context.textos.titleMedium)),
           Padding(
             padding: const EdgeInsets.fromLTRB(4, 0, 4, 4),
-            child: Text('Pon la fecha de cada ejercicio (o la que estimes) para ver las cuentas atrás y planificar. Cuando se publiquen las fechas oficiales aparecerán aquí.', style: context.textos.bodySmall),
+            child: Text('Pon la fecha de cada ejercicio, o la que estimes mientras no se conozca, para ver las cuentas atrás y planificar.', style: context.textos.bodySmall),
           ),
           const TituloSeccion('Ejercicios'),
           for (var ej = 1; ej <= 5; ej++)
@@ -107,7 +106,6 @@ class ConvocatoriaPage extends ConsumerWidget {
                     Text(_descripciones[ej]!, style: context.textos.labelSmall),
                     Row(children: [
                       Flexible(child: Text(fechas[ej] == null ? 'Toca para poner la fecha' : formato.format(fechas[ej]!), style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
-                      if (fechas[ej] != null && !plan.fechas.containsKey(ej) && config.fechas.containsKey(ej)) const Padding(padding: EdgeInsets.only(left: 6), child: Etiqueta('Oficial')),
                     ]),
                   ]),
                   trailing: fechas[ej] == null
@@ -118,7 +116,7 @@ class ConvocatoriaPage extends ConsumerWidget {
                             onSelected: (v) => v == 'quitar' ? quitar(ej) : abrirUrl(context, Calendario.urlGoogle(eventoDeFecha('ej$ej', 'TCEE · ${nombreEjercicio(ej)}', fechas[ej]!))),
                             itemBuilder: (_) => [
                               const PopupMenuItem(value: 'google', child: Text('Añadir a Google Calendar')),
-                              if (plan.fechas.containsKey(ej) || ej == 1) const PopupMenuItem(value: 'quitar', child: Text('Quitar mi fecha')),
+                              const PopupMenuItem(value: 'quitar', child: Text('Quitar la fecha')),
                             ],
                           ),
                         ]),

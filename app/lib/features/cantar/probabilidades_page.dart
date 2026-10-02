@@ -6,6 +6,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import 'graficos_probabilidad.dart';
 import 'probabilidades.dart';
 import 'sorteo.dart';
 
@@ -21,6 +22,10 @@ class ProbabilidadesPage extends ConsumerStatefulWidget {
 class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
   /// Simulación "¿y si me supiera…?": temas sabidos por parte ("3.A" → n).
   final Map<String, int> _simulados = {};
+
+  /// Qué se pinta en el gráfico de cada ejercicio: probabilidad o eficiencia, en 2D o en 3D.
+  bool _eficiencia = false;
+  bool _tresD = false;
 
   @override
   Widget build(BuildContext context) {
@@ -116,17 +121,50 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
             _aviso(context, Icons.swap_horiz, consejo == Consejo.cambiarAporB ? 'Con los mismos temas, te rendiría más cambiar uno de la parte A por uno de la parte B.' : 'Con los mismos temas, te rendiría más cambiar uno de la parte B por uno de la parte A.'),
           if (siguiente != null) _aviso(context, Icons.trending_up, 'El siguiente tema que más sube tu probabilidad es uno de la parte ${nombres[siguiente].letra}.'),
           if (partes.length == 2) ...[
-            const SizedBox(height: 10),
-            Text('Probabilidad según los temas de cada parte', style: context.textos.labelMedium),
+            const SizedBox(height: 12),
+            Text(_eficiencia ? 'Eficiencia según los temas de cada parte' : 'Probabilidad según los temas de cada parte', style: context.textos.labelMedium),
             const SizedBox(height: 6),
-            AspectRatio(
-              aspectRatio: (partes[0].total + 1) / (partes[1].total + 1),
-              child: CustomPaint(
-                painter: _MapaCalor(a: partes[0], b: partes[1], marcador: context.esquema.onSurface, base: context.esquema.primary, fondo: context.colores.fondoClaro),
+            Wrap(spacing: 8, runSpacing: 6, children: [
+              SegmentedButton<bool>(
+                showSelectedIcon: false,
+                segments: const [ButtonSegment(value: false, label: Text('Probabilidad')), ButtonSegment(value: true, label: Text('Eficiencia'))],
+                selected: {_eficiencia},
+                onSelectionChanged: (s) => setState(() => _eficiencia = s.first),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
               ),
-            ),
+              SegmentedButton<bool>(
+                showSelectedIcon: false,
+                segments: const [ButtonSegment(value: false, label: Text('2D')), ButtonSegment(value: true, label: Text('3D'))],
+                selected: {_tresD},
+                onSelectionChanged: (s) => setState(() => _tresD = s.first),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+              ),
+            ]),
+            const SizedBox(height: 8),
+            Builder(builder: (context) {
+              final maximo = Sorteo.maxPorTema(partes);
+              final tabla = TablaGrafico(
+                x: partes[0].sabidos,
+                y: partes[1].sabidos,
+                valores: [
+                  for (var y = 0; y <= partes[1].total; y++)
+                    [
+                      for (var x = 0; x <= partes[0].total; x++)
+                        _eficiencia
+                            ? (maximo == 0 ? 0.0 : Sorteo.porTema([partes[0].con(x), partes[1].con(y)]) / maximo)
+                            : Sorteo.probEjercicio([partes[0].con(x), partes[1].con(y)])
+                    ]
+                ],
+              );
+              return _tresD ? Superficie3D(tabla: tabla) : MapaCalor(tabla: tabla);
+            }),
             const SizedBox(height: 4),
-            Text('Horizontal: temas de la parte A. Vertical: temas de la parte B. Cuanto más oscuro, más probabilidad; el punto eres tú.', style: context.textos.labelSmall),
+            Text(
+              _tresD
+                  ? 'La altura y el color indican ${_eficiencia ? 'lo que rinde cada tema estudiado' : 'la probabilidad'}; el poste eres tú. Arrastra a los lados para girar.'
+                  : 'Horizontal: temas de la parte A. Vertical: temas de la parte B. Cuanto más oscuro, ${_eficiencia ? 'más rinde cada tema estudiado' : 'más probabilidad'}; el punto eres tú.',
+              style: context.textos.labelSmall,
+            ),
           ],
         ]),
       ),
@@ -146,33 +184,4 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
           Expanded(child: Text(texto, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
         ]),
       );
-}
-
-/// Tabla del Excel dibujada como mapa de calor: columnas = temas sabidos de la
-/// parte A, filas = de la parte B (0 abajo).
-class _MapaCalor extends CustomPainter {
-  _MapaCalor({required this.a, required this.b, required this.marcador, required this.base, required this.fondo});
-  final ParteSorteo a;
-  final ParteSorteo b;
-  final Color marcador;
-  final Color base;
-  final Color fondo;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final ancho = size.width / (a.total + 1), alto = size.height / (b.total + 1);
-    final pincel = Paint();
-    for (var y = 0; y <= b.total; y++) {
-      for (var x = 0; x <= a.total; x++) {
-        pincel.color = Color.lerp(fondo, base, Sorteo.probEjercicio([a.con(x), b.con(y)]))!;
-        canvas.drawRect(Rect.fromLTWH(x * ancho, size.height - (y + 1) * alto, ancho + 0.5, alto + 0.5), pincel);
-      }
-    }
-    final centro = Offset((a.sabidos + 0.5) * ancho, size.height - (b.sabidos + 0.5) * alto);
-    canvas.drawCircle(centro, 6, Paint()..color = Colors.white);
-    canvas.drawCircle(centro, 4, Paint()..color = marcador);
-  }
-
-  @override
-  bool shouldRepaint(_MapaCalor old) => old.a.sabidos != a.sabidos || old.b.sabidos != b.sabidos || old.base != base || old.fondo != fondo;
 }
