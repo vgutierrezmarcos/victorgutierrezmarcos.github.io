@@ -5,10 +5,13 @@ import 'package:go_router/go_router.dart';
 import '../../core/calendario.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../preparador/red_widgets.dart';
+import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
 import 'cante_form_page.dart';
 import 'cantes_util.dart';
@@ -31,6 +34,7 @@ class CantePage extends ConsumerWidget {
     final conApuntes = [for (final t in temas) if ((agendas[t.codigo]?.pendientes ?? const []).isNotEmpty) t];
     final r = c.resultado;
     final notifier = ref.read(cantesProvider.notifier);
+    final peticion = ref.watch(peticionDeCanteProvider(c.id));
 
     Future<void> anotar() async {
       final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
@@ -105,10 +109,42 @@ class CantePage extends ConsumerWidget {
               if (c.dePreparador)
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
-                  child: Etiqueta((c.preparadorNombre ?? '').isEmpty ? 'Programado por tu preparador' : 'Programado por tu preparador · ${c.preparadorNombre}'),
+                  child: Row(children: [
+                    PuntoPersona(c.preparador!),
+                    const SizedBox(width: 6),
+                    Flexible(child: Etiqueta((c.preparadorNombre ?? '').isEmpty ? 'Programado por tu preparador' : 'Programado por tu preparador · ${c.preparadorNombre}', color: Color(colorDePersona(c.preparador!)))),
+                  ]),
                 ),
+              if (c.sustitucion != null) const Padding(padding: EdgeInsets.only(top: 8), child: Etiqueta('Sustitución')),
             ]),
           ),
+          if (c.cancelado && c.dePreparador && c.fecha.isAfter(DateTime.now()) && peticion == null)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Tarjeta(
+                color: context.esquema.errorContainer.withValues(alpha: 0.4),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado este cante', style: context.textos.titleSmall),
+                  if (c.motivo.isNotEmpty) Text('Motivo: ${c.motivo}', style: context.textos.bodySmall),
+                  const SizedBox(height: 8),
+                  FilledButton.icon(
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
+                    icon: const Icon(Icons.campaign_outlined, size: 18),
+                    label: const Text('Buscar preparador alternativo'),
+                  ),
+                ]),
+              ),
+            ),
+          if (peticion != null) ...[const SizedBox(height: 10), FilaMiPeticion(peticion: peticion)],
+          if (peticion == null && c.sustitucion == null && !c.hecho && !(c.cancelado && c.dePreparador) && c.fecha.isAfter(DateTime.now()) && ref.watch(usuarioActualProvider) != null)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
+                icon: const Icon(Icons.campaign_outlined, size: 18),
+                label: const Text('Buscar otro preparador para este cante'),
+              ),
+            ),
           if (c.pendiente) ...[
             const SizedBox(height: 10),
             Row(children: [

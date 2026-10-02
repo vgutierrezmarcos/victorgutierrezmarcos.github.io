@@ -13,8 +13,16 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../../core/red_providers.dart';
+import '../../data/models/red.dart';
+import 'ajustes_preparador_page.dart';
 import 'alumno_page.dart';
+import 'red_widgets.dart';
+import 'reservas.dart';
+import 'semana_page.dart';
 import 'sesion_page.dart';
+import 'sustituciones.dart';
+import 'verificacion_page.dart';
 
 /// Preparadores, en sus dos lados: «Tengo preparador» (el opositor enlaza su
 /// app con el código de su preparador) y «Soy preparador» (alumnos, sesiones
@@ -93,6 +101,15 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     final proximas = ref.watch(proximasSesionesProvider);
     final nombres = {for (final a in alumnos) a.id: a.nombre};
     final ahora = DateTime.now();
+    final red = ref.watch(estadoRedProvider);
+    final estado = red.value ?? const EstadoRed();
+    final tablon = ref.watch(tablonProvider).value ?? const <Sustitucion>[];
+    final solicitudes = ref.watch(solicitudesPendientesProvider).value ?? const <SolicitudPreparador>[];
+    final reservasPedidas = (ref.watch(reservasRecibidasProvider).value ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).toList();
+    final misPeticiones = (ref.watch(misPeticionesProvider).value ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
+    final lunes = DateTime(ahora.year, ahora.month, ahora.day - (ahora.weekday - 1));
+    final estaSemana = sesiones.where((s) => !s.cancelado && !s.fecha.isBefore(lunes) && s.fecha.isBefore(lunes.add(const Duration(days: 7)))).length;
+    void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
 
     // ---------------------------------------------------- Lado del opositor
     final ladoOpositor = <Widget>[
@@ -102,16 +119,23 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Tarjeta(
                   color: context.colores.primarioPalido,
-                  child: Row(children: [
-                    Icon(Icons.link, color: context.esquema.primary, size: 28),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text(v.nombre.isEmpty ? 'Tu preparador' : v.nombre, style: context.textos.titleMedium),
-                        Text('Enlazado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes.', style: context.textos.bodySmall),
-                      ]),
-                    ),
-                    TextButton(onPressed: () => _desenlazar(v), child: const Text('Quitar')),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Row(children: [
+                      PuntoPersona(v.uid, tamano: 14),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Text(v.nombre.isEmpty ? 'Tu preparador' : v.nombre, style: context.textos.titleMedium),
+                          Text('Enlazado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes. En tu agenda, sus cantes llevan este color.', style: context.textos.bodySmall),
+                        ]),
+                      ),
+                      TextButton(onPressed: () => _desenlazar(v), child: const Text('Quitar')),
+                    ]),
+                    if (ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: OutlinedButton.icon(onPressed: () => ir(ReservarPage(preparador: v)), icon: const Icon(Icons.event_available_outlined, size: 18), label: const Text('Reservar clase')),
+                      ),
                   ]),
                 ),
               ),
@@ -149,6 +173,16 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
               child: Text('Tu preparador ve los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.labelSmall),
             ),
+            if (firebase && usuario != null) ...[
+              const TituloSeccion('Sustituciones'),
+              FilaEnlace(
+                icono: Icons.campaign_outlined,
+                titulo: 'Buscar quién me coja un cante',
+                subtitulo: 'Si tu preparador cancela o no puede: pídeselo a otros preparadores verificados',
+                onTap: () => ir(const PedirSustitucionPage()),
+              ),
+              for (final s in misPeticiones) FilaMiPeticion(peticion: s),
+            ],
     ];
 
     // -------------------------------------------------- Lado del preparador
@@ -165,7 +199,34 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 ]),
               )
             else ...[
-              _tarjetaCodigo(context, perfil, firebase: firebase, conSesion: usuario != null),
+              _tarjetaRed(context, perfil, red: red, estado: estado, firebase: firebase, conSesion: usuario != null),
+              const SizedBox(height: 10),
+              FilaEnlace(
+                icono: Icons.view_week_outlined,
+                titulo: 'Mi semana',
+                subtitulo: '$estaSemana ${estaSemana == 1 ? 'sesión' : 'sesiones'} esta semana${reservasPedidas.isEmpty ? '' : ' · ${reservasPedidas.length} ${reservasPedidas.length == 1 ? 'reserva' : 'reservas'} por confirmar'}',
+                final_: globo(context, reservasPedidas.length),
+                onTap: () => ir(const SemanaPage()),
+              ),
+              if (estado.verificado)
+                FilaEnlace(
+                  icono: Icons.campaign_outlined,
+                  titulo: 'Sustituciones',
+                  subtitulo: tablon.isEmpty ? 'Cantes que otros alumnos necesitan que les cojan' : '${tablon.length} ${tablon.length == 1 ? 'alumno busca' : 'alumnos buscan'} preparador',
+                  final_: globo(context, tablon.length),
+                  onTap: () => ir(const TablonPage()),
+                ),
+              if (estado.verificado || estado.esAdmin)
+                FilaEnlace(
+                  icono: Icons.how_to_reg_outlined,
+                  titulo: 'Verificar preparadores',
+                  subtitulo: solicitudes.isEmpty ? 'Avala a quien conozcas' : '${solicitudes.length} por revisar',
+                  final_: globo(context, solicitudes.length),
+                  onTap: () => ir(const VerificarPreparadoresPage()),
+                ),
+              if (estado.esAdmin)
+                FilaEnlace(icono: Icons.admin_panel_settings_outlined, titulo: 'Administración', subtitulo: 'Quién está verificado y quién lo avaló', onTap: () => ir(const AdminRedPage())),
+              FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Teléfono, avisos y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
               TituloSeccion('Próximas sesiones', accion: TextButton.icon(onPressed: alumnos.isEmpty ? null : _nuevaSesion, icon: const Icon(Icons.add, size: 18), label: const Text('Sesión'))),
               if (proximas.isEmpty)
                 Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text(alumnos.isEmpty ? 'Añade primero a tus alumnos.' : 'No hay sesiones programadas.', style: context.textos.bodySmall))
@@ -177,7 +238,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                       padding: EdgeInsets.zero,
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
                       child: ListTile(
-                        leading: Icon(Icons.record_voice_over_outlined, color: context.esquema.primary),
+                        leading: PuntoPersona(s.alumno ?? '', tamano: 14),
                         title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)} · ${nombres[s.alumno] ?? 'Alumno'}', style: context.textos.titleSmall),
                         subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
                         trailing: s.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(s.fecha, ahora)) : const Icon(Icons.chevron_right),
@@ -210,13 +271,62 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     return Scaffold(
       appBar: BarraWeb(title: const Text('Preparadores')),
       body: RefreshIndicator(
-        onRefresh: () => ref.read(alumnosProvider.notifier).refrescar(),
+        onRefresh: () async {
+          await ref.read(alumnosProvider.notifier).refrescar();
+          refrescarRedDesdeWidget(ref);
+        },
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
           // Quien ya lleva alumnos ve primero su lado.
           children: perfil.activo ? [...ladoPreparador, ...ladoOpositor] : [...ladoOpositor, ...ladoPreparador],
         ),
       ),
+    );
+  }
+
+  /// Verificación como preparador: sin ella no hay código para alumnos ni
+  /// acceso a las sustituciones (para que nadie se haga pasar por preparador).
+  Widget _tarjetaRed(BuildContext context, PerfilPreparador perfil, {required AsyncValue<EstadoRed> red, required EstadoRed estado, required bool firebase, required bool conSesion}) {
+    if (!firebase || !conSesion) return _tarjetaCodigo(context, perfil, firebase: firebase, conSesion: conSesion);
+    if (red.isLoading && !red.hasValue) return const Tarjeta(child: Center(child: CircularProgressIndicator()));
+    if (estado.verificado) {
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        _tarjetaCodigo(context, perfil, firebase: firebase, conSesion: conSesion),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
+          child: Row(children: [
+            const Icon(Icons.verified, size: 16, color: Paleta.acierto),
+            const SizedBox(width: 6),
+            Expanded(child: Text(estado.verificacion!.avaladoPor == estado.verificacion!.uid ? 'Preparador verificado (administrador)' : 'Verificado por ${estado.verificacion!.avaladoPorNombre}', style: context.textos.labelSmall)),
+          ]),
+        ),
+      ]);
+    }
+    final solicitud = estado.solicitud;
+    return Tarjeta(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(solicitud == null ? 'Verifícate como preparador' : 'Verificación pendiente', style: context.textos.titleMedium),
+        const SizedBox(height: 4),
+        Text(
+          solicitud == null
+              ? 'Para dar tu código a alumnos, aparecer en la lista de preparadores y coger sustituciones, te tiene que verificar el administrador o un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos en este dispositivo.'
+              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}. La revisará el administrador o un preparador verificado; desliza hacia abajo para comprobarlo.',
+          style: context.textos.bodySmall,
+        ),
+        const SizedBox(height: 10),
+        Wrap(spacing: 10, runSpacing: 8, children: [
+          if (solicitud == null) FilledButton.icon(onPressed: () => solicitarVerificacion(context, ref), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
+          if (solicitud != null)
+            TextButton(
+              onPressed: () async {
+                await ref.read(redRepoProvider).retirarSolicitud();
+                ref.invalidate(estadoRedProvider);
+              },
+              child: const Text('Retirar la solicitud'),
+            ),
+          if (estado.esAdmin) OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminRedPage())), child: const Text('Administración')),
+        ]),
+      ]),
     );
   }
 
@@ -300,8 +410,8 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AlumnoPage(id: a.id))),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundColor: context.colores.primarioPalido,
-            foregroundColor: context.esquema.primary,
+            backgroundColor: Color(colorDePersona(a.id)).withValues(alpha: 0.18),
+            foregroundColor: Color(colorDePersona(a.id)),
             child: Text(a.nombre.isEmpty ? '?' : a.nombre.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fuentes.serif, fontWeight: FontWeight.w700)),
           ),
           title: Row(children: [
@@ -326,6 +436,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
 /// Diálogo para dar de alta o editar a un alumno. Devuelve null si se cancela.
 Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
   final nombre = TextEditingController(text: alumno?.nombre ?? '');
+  final telefono = TextEditingController(text: alumno?.telefono ?? '');
   var ejercicio = alumno?.ejercicio ?? 3;
   return showDialog<Alumno>(
     context: context,
@@ -334,6 +445,8 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
         title: Text(alumno == null ? 'Nuevo alumno' : 'Editar alumno'),
         content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           TextField(controller: nombre, autofocus: alumno == null, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre')),
+          const SizedBox(height: 10),
+          TextField(controller: telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono (opcional)', helperText: 'Para escribirle por WhatsApp desde la app')),
           const SizedBox(height: 16),
           Text('Ejercicio que prepara', style: Theme.of(d).textTheme.labelMedium),
           const SizedBox(height: 6),
@@ -351,7 +464,7 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
             onPressed: () {
               final n = nombre.text.trim();
               if (n.isEmpty) return;
-              Navigator.pop(d, alumno == null ? Alumno(id: nuevoId(), nombre: n, ejercicio: ejercicio, creado: DateTime.now(), updatedAt: DateTime.now()) : alumno.copyWith(nombre: n, ejercicio: ejercicio));
+              Navigator.pop(d, alumno == null ? Alumno(id: nuevoId(), nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim(), creado: DateTime.now(), updatedAt: DateTime.now()) : alumno.copyWith(nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim()));
             },
             child: const Text('Guardar'),
           ),

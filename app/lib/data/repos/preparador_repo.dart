@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
+import '../models/red.dart';
 
 /// Sección de preparadores. Igual que [PlanRepo]: siempre en local (Hive) y,
 /// si hay sesión, también en Firestore.
@@ -210,6 +211,14 @@ class PreparadorRepo {
     final prep = doc.data()?['uid'] as String?;
     if (!doc.exists || prep == null) throw const ErrorEnlace('No hay ningún preparador con ese código.');
     if (prep == yo.uid) throw const ErrorEnlace('Ese es tu propio código de preparador.');
+    try {
+      final v = await _db.collection('preparadoresVerificados').doc(prep).get();
+      if (!v.exists || v.data()?['activo'] != true) throw const ErrorEnlace('Ese preparador no está verificado. Pídele que se verifique en la app antes de enlazar.');
+    } on ErrorEnlace {
+      rethrow;
+    } catch (_) {
+      throw const ErrorEnlace('No se pudo comprobar el código. Revisa la conexión e inténtalo de nuevo.');
+    }
     final vinculo = VinculoPreparador(uid: prep, nombre: doc.data()?['nombre'] as String? ?? '', codigo: codigo, desde: DateTime.now());
     try {
       final lote = _db.batch()
@@ -403,6 +412,91 @@ class PreparadorRepo {
     }
     final codigo = perfil().codigo;
     if (codigo != null) await _db.collection('codigos').doc(codigo).delete();
+  }
+
+  // ------------------------------------------------------------- Clases fijas
+
+  /// Crea las sesiones de las clases fijas de cada alumno para las próximas
+  /// [semanas]. Cada sesión tiene un id que sale de la clase y del día, así que
+  /// no se duplica y, si el preparador borra o cancela una, no vuelve a salir.
+  Future<int> generarClasesFijas({DateTime? ahora, int semanas = 6}) async {
+    final hoy = ahora ?? DateTime.now();
+    final fin = DateTime(hoy.year, hoy.month, hoy.day + 7 * semanas);
+    var nuevas = 0;
+    for (final a in alumnos()) {
+      for (final c in a.clasesFijas) {
+        for (final f in c.fechasEntre(hoy, fin)) {
+          final id = idClaseFija(a, c, f);
+          if (_sesiones.containsKey(id)) continue;
+          await guardarSesion(Cante(
+            id: id,
+            fecha: f,
+            minutos: c.minutos,
+            ejercicio: a.ejercicio,
+            bolsa: TipoBolsa.estudiados,
+            alumno: a.id,
+            serie: 'fija_${a.id}_${c.id}',
+            updatedAt: DateTime.now(),
+          ));
+          nuevas++;
+        }
+      }
+    }
+    return nuevas;
+  }
+
+  static String idClaseFija(Alumno a, ClaseFija c, DateTime f) =>
+      'fija_${a.id}_${c.id}_${f.year}${f.month.toString().padLeft(2, '0')}${f.day.toString().padLeft(2, '0')}';
+
+  /// Al quitar una clase fija se borran sus sesiones futuras aún pendientes.
+  Future<void> quitarClaseFija(Alumno a, ClaseFija c, {DateTime? ahora}) async {
+    final desde = ahora ?? DateTime.now();
+    await guardarAlumno(a.copyWith(clasesFijas: a.clasesFijas.where((x) => x.id != c.id).toList()));
+    for (final s in sesiones().where((s) => s.serie == 'fija_${a.id}_${c.id}' && s.pendiente && s.fecha.isAfter(desde))) {
+      await borrarSesion(s);
+    }
+  }
+
+  // ------------------------------------------------- Reservas y sustituciones
+
+  /// Alumno enlazado con ese uid (o null).
+  Alumno? alumnoConUid(String uidAlumno) => alumnos().where((a) => a.uid == uidAlumno).firstOrNull;
+
+  /// El preparador acepta una reserva: se crea la sesión (y llega a la agenda del alumno).
+  Future<Cante> sesionDeReserva(Reserva r) async {
+    var a = alumnoConUid(r.alumno);
+    if (a == null) {
+      a = Alumno(id: r.alumno, uid: r.alumno, nombre: r.alumnoNombre.isEmpty ? 'Alumno' : r.alumnoNombre, creado: DateTime.now(), updatedAt: DateTime.now());
+      await guardarAlumno(a);
+    }
+    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, updatedAt: DateTime.now());
+    await guardarSesion(s);
+    return s;
+  }
+
+  /// El preparador ha cogido una sustitución: el alumno pasa a su lista (sin
+  /// enlace, con su teléfono) y el cante, a sus sesiones.
+  Future<Cante> sesionDeSustitucion(Sustitucion sust, ContactoRed alumno) async {
+    final id = 'sust_${sust.id}';
+    final existente = this.alumno(id) ?? alumnos().where((a) => a.telefono.isNotEmpty && telefonoWhatsApp(a.telefono) == telefonoWhatsApp(alumno.telefono)).firstOrNull;
+    final a = (existente ?? Alumno(id: id, nombre: alumno.nombre.isEmpty ? 'Alumno' : alumno.nombre, creado: DateTime.now(), updatedAt: DateTime.now()))
+        .copyWith(telefono: alumno.telefono, ejercicio: sust.ejercicio, temas: existente == null ? sust.temas : null);
+    await guardarAlumno(a);
+    final s = Cante(
+      id: id,
+      fecha: sust.fecha,
+      minutos: sust.minutos,
+      ejercicio: sust.ejercicio,
+      bolsa: TipoBolsa.lista,
+      temas: sust.temas,
+      notas: sust.notas,
+      titulo: 'Sustitución',
+      alumno: a.id,
+      sustitucion: sust.id,
+      updatedAt: DateTime.now(),
+    );
+    await guardarSesion(s);
+    return s;
   }
 
   // ------------------------------------------------------------------- General

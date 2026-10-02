@@ -8,6 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'app.dart';
+import 'core/avisos_fondo.dart';
 import 'core/cache_http.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
@@ -55,15 +56,13 @@ Future<void> main() async {
   );
   final descargas = await DescargasRepo.crear();
   await Notificaciones.iniciar();
+  await iniciarAvisosEnSegundoPlano();
 
   // Refresco silencioso del contenido y sincronización si hay sesión.
   Future.microtask(() async {
     await contenido.refrescarTodo();
-    if (usuario.conSesion) {
-      await usuario.sincronizarTodo();
-      await plan.sincronizarTodo();
-      await preparador.sincronizarTodo();
-    }
+    // La sincronización con la cuenta la lanza la app en cuanto se carga la
+    // sesión (TceeApp), junto con la red de preparadores.
     // El recordatorio diario solo existe si el usuario lo ha activado: en cada
     // arranque se reprograma o, si está desactivado, se cancela el que hubiera.
     try {

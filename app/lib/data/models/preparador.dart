@@ -19,6 +19,8 @@ class Alumno {
     this.notas = '',
     this.temas = const [],
     this.uid,
+    this.telefono = '',
+    this.clasesFijas = const [],
     this.creado,
     this.updatedAt,
     this.borrado = false,
@@ -35,19 +37,25 @@ class Alumno {
   final List<String> temas;
   /// uid del alumno si ha enlazado su app (null = alumno sin app).
   final String? uid;
+  /// Teléfono para hablar por WhatsApp (lo apunta el preparador, o llega al coger una sustitución).
+  final String telefono;
+  /// Clases que se repiten (p. ej. los martes a las 18:00): generan las sesiones solas.
+  final List<ClaseFija> clasesFijas;
   final DateTime? creado;
   final DateTime? updatedAt;
   final bool borrado;
 
   bool get enlazado => uid != null;
 
-  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, bool? borrado}) => Alumno(
+  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, String? telefono, List<ClaseFija>? clasesFijas, bool? borrado}) => Alumno(
         id: id,
         nombre: nombre ?? this.nombre,
         ejercicio: ejercicio ?? this.ejercicio,
         notas: notas ?? this.notas,
         temas: temas ?? this.temas,
         uid: desenlazar ? null : (uid ?? this.uid),
+        telefono: telefono ?? this.telefono,
+        clasesFijas: clasesFijas ?? this.clasesFijas,
         creado: creado,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
@@ -60,6 +68,8 @@ class Alumno {
         'notas': notas,
         'temas': temas,
         'uid': uid,
+        if (telefono.isNotEmpty) 'telefono': telefono,
+        if (clasesFijas.isNotEmpty) 'clasesFijas': clasesFijas.map((c) => c.toJson()).toList(),
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
@@ -72,6 +82,8 @@ class Alumno {
         notas: j['notas'] as String? ?? '',
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
         uid: j['uid'] as String?,
+        telefono: j['telefono'] as String? ?? '',
+        clasesFijas: [for (final c in (j['clasesFijas'] as List?) ?? const []) if (c is Map) ClaseFija.fromJson(c)],
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
@@ -88,25 +100,96 @@ class Alumno {
   }
 }
 
+/// Clase que se repite con un alumno: un día de la semana a una hora, cada
+/// [cadaSemanas] semanas desde [desde]. La app genera las sesiones de las
+/// próximas semanas (ver [ClaseFija.fechasEntre]).
+class ClaseFija {
+  const ClaseFija({required this.id, required this.diaSemana, required this.minutoDelDia, this.minutos = 30, this.cadaSemanas = 1, required this.desde});
+  final String id;
+  /// 1 = lunes … 7 = domingo (como [DateTime.weekday]).
+  final int diaSemana;
+  /// Hora de inicio en minutos desde medianoche.
+  final int minutoDelDia;
+  final int minutos;
+  /// 1 = cada semana, 2 = cada quince días.
+  final int cadaSemanas;
+  final DateTime desde;
+
+  Map<String, dynamic> toJson() => {'id': id, 'diaSemana': diaSemana, 'minutoDelDia': minutoDelDia, 'minutos': minutos, 'cadaSemanas': cadaSemanas, 'desde': desde.toIso8601String()};
+
+  factory ClaseFija.fromJson(Map<dynamic, dynamic> j) => ClaseFija(
+        id: j['id']?.toString() ?? '',
+        diaSemana: (j['diaSemana'] as num?)?.toInt() ?? 1,
+        minutoDelDia: (j['minutoDelDia'] as num?)?.toInt() ?? 18 * 60,
+        minutos: (j['minutos'] as num?)?.toInt() ?? 30,
+        cadaSemanas: (j['cadaSemanas'] as num?)?.toInt() ?? 1,
+        desde: _fecha(j['desde']) ?? DateTime(2026),
+      );
+
+  /// Fechas de la clase en [inicio, fin), respetando el ritmo desde [desde].
+  List<DateTime> fechasEntre(DateTime inicio, DateTime fin) {
+    final base = DateTime(desde.year, desde.month, desde.day);
+    // Primer día de la semana elegido a partir de [desde].
+    var d = base.add(Duration(days: (diaSemana - base.weekday) % 7));
+    final out = <DateTime>[];
+    while (d.isBefore(fin)) {
+      final f = DateTime(d.year, d.month, d.day, minutoDelDia ~/ 60, minutoDelDia % 60);
+      if (!f.isBefore(inicio)) out.add(f);
+      d = DateTime(d.year, d.month, d.day + 7 * cadaSemanas);
+    }
+    return out;
+  }
+}
+
 /// Perfil de preparador del usuario (documento users/{uid}/progress/preparador).
+/// Es privado: lo que ven los demás se publica aparte (ver data/models/red.dart).
 class PerfilPreparador {
-  const PerfilPreparador({this.activo = false, this.codigo, this.nombre = '', this.updatedAt});
+  const PerfilPreparador({
+    this.activo = false,
+    this.codigo,
+    this.nombre = '',
+    this.telefono = '',
+    this.avisosSustitucion = true,
+    this.reservas = false,
+    this.huecos = const [],
+    this.updatedAt,
+  });
 
   /// El usuario ha activado «Soy preparador».
   final bool activo;
-  /// Código que da a sus alumnos para enlazar (null hasta que inicia sesión).
+  /// Código que da a sus alumnos para enlazar (null hasta que está verificado).
   final String? codigo;
   /// Nombre con el que le ven sus alumnos.
   final String nombre;
+  /// Teléfono que se da al alumno cuando este preparador coge una sustitución.
+  final String telefono;
+  /// Avisar de las peticiones de sustitución nuevas (activado por defecto).
+  final bool avisosSustitucion;
+  /// Sus alumnos pueden reservar en sus huecos libres (desactivado por defecto).
+  final bool reservas;
+  /// Huecos semanales en los que acepta reservas.
+  final List<Hueco> huecos;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre}) =>
-      PerfilPreparador(activo: activo ?? this.activo, codigo: codigo ?? this.codigo, nombre: nombre ?? this.nombre, updatedAt: DateTime.now());
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? reservas, List<Hueco>? huecos}) => PerfilPreparador(
+        activo: activo ?? this.activo,
+        codigo: codigo ?? this.codigo,
+        nombre: nombre ?? this.nombre,
+        telefono: telefono ?? this.telefono,
+        avisosSustitucion: avisosSustitucion ?? this.avisosSustitucion,
+        reservas: reservas ?? this.reservas,
+        huecos: huecos ?? this.huecos,
+        updatedAt: DateTime.now(),
+      );
 
   Map<String, dynamic> toJson() => {
         'activo': activo,
         'codigo': codigo,
         'nombre': nombre,
+        'telefono': telefono,
+        'avisosSustitucion': avisosSustitucion,
+        'reservas': reservas,
+        'huecos': huecos.map((h) => h.toJson()).toList(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -116,8 +199,33 @@ class PerfilPreparador {
           activo: j['activo'] as bool? ?? false,
           codigo: j['codigo'] as String?,
           nombre: j['nombre'] as String? ?? '',
+          telefono: j['telefono'] as String? ?? '',
+          avisosSustitucion: j['avisosSustitucion'] as bool? ?? true,
+          reservas: j['reservas'] as bool? ?? false,
+          huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           updatedAt: _fecha(j['updatedAt']),
         );
+}
+
+/// Hueco semanal en el que un preparador acepta reservas de sus alumnos.
+class Hueco {
+  const Hueco({required this.diaSemana, required this.minutoDelDia, this.minutos = 30});
+  /// 1 = lunes … 7 = domingo.
+  final int diaSemana;
+  final int minutoDelDia;
+  final int minutos;
+
+  Map<String, dynamic> toJson() => {'diaSemana': diaSemana, 'minutoDelDia': minutoDelDia, 'minutos': minutos};
+  factory Hueco.fromJson(Map<dynamic, dynamic> j) => Hueco(
+        diaSemana: (j['diaSemana'] as num?)?.toInt() ?? 1,
+        minutoDelDia: (j['minutoDelDia'] as num?)?.toInt() ?? 18 * 60,
+        minutos: (j['minutos'] as num?)?.toInt() ?? 30,
+      );
+
+  @override
+  bool operator ==(Object other) => other is Hueco && other.diaSemana == diaSemana && other.minutoDelDia == minutoDelDia && other.minutos == minutos;
+  @override
+  int get hashCode => Object.hash(diaSemana, minutoDelDia, minutos);
 }
 
 /// Preparador con el que el usuario (alumno) ha enlazado su app

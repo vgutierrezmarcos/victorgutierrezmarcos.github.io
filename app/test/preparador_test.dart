@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/plan_repo.dart';
 import 'package:tcee_app/data/repos/preparador_repo.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
@@ -23,6 +24,10 @@ void main() {
 
   Future<PreparadorRepo> repo(FakeFirebaseFirestore? db, MockFirebaseAuth? auth) async =>
       PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja(), firestore: db, auth: auth);
+
+  /// Da de alta como verificado (lo haría el administrador o un verificado).
+  Future<void> verificar(FakeFirebaseFirestore db, String uid, String nombre) =>
+      db.collection('preparadoresVerificados').doc(uid).set(PreparadorVerificado(uid: uid, nombre: nombre, avaladoPor: 'admin', desde: DateTime.now()).toJson());
 
   test('códigos: forma, normalización e informe del cante', () {
     final codigo = generarCodigo(Random(7));
@@ -63,6 +68,7 @@ void main() {
     final db = FakeFirebaseFirestore();
     final authPrep = sesion('prep', 'Paula Preparadora'), authAlu = sesion('alu', 'Álex Alumno');
     final prep = await repo(db, authPrep), alumno = await repo(db, authAlu);
+    await verificar(db, 'prep', 'Paula Preparadora');
     final ajustesAlu = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja(), firestore: db, auth: authAlu);
     final planAlu = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), firestore: db, auth: authAlu);
 
@@ -144,6 +150,7 @@ void main() {
   test('el preparador puede dejar de llevar a un alumno enlazado', () async {
     final db = FakeFirebaseFirestore();
     final prep = await repo(db, sesion('prep', 'Paula')), alumno = await repo(db, sesion('alu', 'Álex'));
+    await verificar(db, 'prep', 'Paula');
     final codigo = (await prep.activar()).codigo!;
     await alumno.enlazarConCodigo(codigo);
     await prep.sincronizarTodo();
@@ -161,6 +168,7 @@ void main() {
     final db = FakeFirebaseFirestore();
     final authAlu = sesion('alu', 'Álex');
     final prep = await repo(db, sesion('prep', 'Paula')), alumno = await repo(db, authAlu);
+    await verificar(db, 'prep', 'Paula');
     final planAlu = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), firestore: db, auth: authAlu);
     await alumno.enlazarConCodigo((await prep.activar()).codigo!);
     await prep.sincronizarTodo();
@@ -193,6 +201,8 @@ void main() {
     final authPrep = sesion('prep', 'Paula'), authAlu = sesion('alu', 'Álex');
     final prep = await repo(db, authPrep), alumno = await repo(db, authAlu);
     final usuarioPrep = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja(), firestore: db, auth: authPrep);
+    await verificar(db, 'prep', 'Paula');
+    await verificar(db, 'otro', 'Olga');
     final codigo = (await prep.activar()).codigo!;
     await alumno.enlazarConCodigo(codigo);
     await prep.sincronizarTodo();

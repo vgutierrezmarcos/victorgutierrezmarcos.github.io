@@ -9,9 +9,11 @@ import '../../core/calendario.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../preparador/red_widgets.dart';
 import 'cante_form_page.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
@@ -54,6 +56,8 @@ class AgendaCantesVista extends ConsumerStatefulWidget {
 class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
   DateTime _mes = DateTime.now();
   DateTime _dia = DateTime.now();
+  /// Filtro por quién da el cante ([origenDeCante]); null = todos.
+  String? _origen;
   Timer? _tic;
 
   @override
@@ -76,15 +80,28 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
 
   @override
   Widget build(BuildContext context) {
-    final cantes = ref.watch(cantesProvider);
-    final proximos = ref.watch(proximosCantesProvider);
+    final todosLosCantes = ref.watch(cantesProvider);
+    // Con varios preparadores (o sustituciones) se puede ver solo los de uno.
+    final origenes = <String, String>{
+      for (final c in todosLosCantes.where((c) => !c.borrado))
+        origenDeCante(c): switch (origenDeCante(c)) {
+          'propio' => 'Por mi cuenta',
+          'sustitucion' => 'Sustituciones',
+          _ => (c.preparadorNombre ?? '').isEmpty ? 'Preparador' : c.preparadorNombre!,
+        },
+    };
+    final filtro = origenes.containsKey(_origen) ? _origen : null;
+    bool pasa(Cante c) => filtro == null || origenDeCante(c) == filtro;
+    final cantes = todosLosCantes.where(pasa).toList();
+    final proximos = ref.watch(proximosCantesProvider).where(pasa).toList();
     final plan = ref.watch(planProvider);
     final fechas = ref.watch(fechasEjerciciosProvider);
     final ahora = DateTime.now();
 
     // Lo que hay cada día: cantes y fechas señaladas.
     List<Object> eventosDe(DateTime d) => [
-          ...cantes.where((c) => !c.borrado && c.estado != EstadoCante.cancelado && isSameDay(c.fecha, d)),
+          // Los cancelados por el preparador se ven, para poder buscar sustituto.
+          ...cantes.where((c) => !c.borrado && (c.estado != EstadoCante.cancelado || c.dePreparador) && isSameDay(c.fecha, d)),
           ...fechas.entries.where((e) => isSameDay(e.value, d)).map((e) => nombreEjercicio(e.key)),
           ...plan.hitos.where((h) => isSameDay(h.fecha, d)).map((h) => h.titulo),
         ];
@@ -128,6 +145,20 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
                 ),
               ]),
             ),
+          if (origenes.length > 1)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Wrap(spacing: 6, runSpacing: 6, children: [
+                ChoiceChip(label: const Text('Todos'), selected: filtro == null, onSelected: (_) => setState(() => _origen = null)),
+                for (final e in origenes.entries)
+                  ChoiceChip(
+                    avatar: e.key == 'propio' ? null : PuntoPersona(e.key),
+                    label: Text(e.value),
+                    selected: filtro == e.key,
+                    onSelected: (_) => setState(() => _origen = filtro == e.key ? null : e.key),
+                  ),
+              ]),
+            ),
           const SizedBox(height: 10),
           Tarjeta(
             padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
@@ -147,6 +178,28 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
               onPageChanged: (mes) => _mes = mes,
               headerStyle: HeaderStyle(formatButtonVisible: false, titleCentered: true, titleTextStyle: context.textos.titleMedium!),
               daysOfWeekStyle: DaysOfWeekStyle(weekdayStyle: context.textos.labelSmall!, weekendStyle: context.textos.labelSmall!),
+              // Cada cante, con el color de quien lo da (dorado: los propios y las fechas).
+              calendarBuilders: CalendarBuilders<Object>(
+                markerBuilder: (context, dia, eventos) {
+                  final vivos = eventos.where((e) => e is! Cante || !e.cancelado).take(3).toList();
+                  if (vivos.isEmpty) return null;
+                  return Positioned(
+                    bottom: 4,
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      for (final e in vivos)
+                        Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 1),
+                          width: 6,
+                          height: 6,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: e is Cante && origenDeCante(e) != 'propio' ? Color(colorDePersona(origenDeCante(e))) : context.colores.dorado,
+                          ),
+                        ),
+                    ]),
+                  );
+                },
+              ),
               calendarStyle: CalendarStyle(
                 outsideDaysVisible: false,
                 defaultTextStyle: context.textos.bodySmall!.copyWith(color: context.esquema.onSurface),
@@ -181,9 +234,15 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
           padding: EdgeInsets.zero,
           onTap: () => _abrir(c),
           child: ListTile(
-            leading: Icon(c.hecho ? Icons.check_circle : Icons.record_voice_over_outlined, color: c.hecho ? Paleta.acierto : context.esquema.primary),
-            title: Text('${conFecha ? '${fechaCorta(c.fecha)} · ' : ''}${horaDe(c.fecha)} · ${tituloCante(c)}', style: context.textos.titleSmall),
-            subtitle: Text(c.hecho ? (c.resultado?.temaCantado ?? 'Hecho') : descripcionBolsa(c), style: context.textos.labelSmall),
+            leading: Icon(
+              c.hecho ? Icons.check_circle : (c.cancelado ? Icons.event_busy : Icons.record_voice_over_outlined),
+              color: c.hecho ? Paleta.acierto : (c.cancelado ? context.esquema.error : (origenDeCante(c) == 'propio' ? context.esquema.primary : Color(colorDePersona(origenDeCante(c))))),
+            ),
+            title: Text('${conFecha ? '${fechaCorta(c.fecha)} · ' : ''}${horaDe(c.fecha)} · ${tituloCante(c)}', style: context.textos.titleSmall?.copyWith(decoration: c.cancelado ? TextDecoration.lineThrough : null)),
+            subtitle: Text(
+              c.cancelado ? 'Cancelado${c.motivo.isEmpty ? '' : ': ${c.motivo}'} · toca para buscar sustituto' : (c.hecho ? (c.resultado?.temaCantado ?? 'Hecho') : descripcionBolsa(c)),
+              style: context.textos.labelSmall?.copyWith(color: c.cancelado ? context.esquema.error : null),
+            ),
             trailing: c.pendiente && c.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(c.fecha, ahora)) : const Icon(Icons.chevron_right),
           ),
         ),

@@ -5,6 +5,7 @@ import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
+import '../../data/models/red.dart';
 import '../../data/models/temario.dart';
 import '../../data/repos/usuario_repo.dart';
 import '../../theme/app_theme.dart';
@@ -13,6 +14,7 @@ import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../plan/resultado_sheet.dart';
+import 'red_widgets.dart';
 
 /// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos.
 List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
@@ -75,12 +77,63 @@ class SesionPage extends ConsumerWidget {
       nav.pop();
     }
 
+    Future<void> cambiarHora() async {
+      final messenger = ScaffoldMessenger.of(context);
+      final d = await showDatePicker(context: context, initialDate: s.fecha, firstDate: DateTime.now().subtract(const Duration(days: 1)), lastDate: DateTime.now().add(const Duration(days: 365)), helpText: 'Nuevo día');
+      if (d == null || !context.mounted) return;
+      final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(s.fecha), helpText: 'Nueva hora');
+      if (t == null) return;
+      final nueva = DateTime(d.year, d.month, d.day, t.hour, t.minute);
+      final choca = ref.read(sesionesProvider).where((x) => x.id != s.id && !x.cancelado && !x.borrado && seSolapan(x.fecha, x.fecha.add(Duration(minutes: x.minutos)), nueva, nueva.add(Duration(minutes: s.minutos))));
+      await notifier.guardar(s.copyWith(fecha: nueva, estado: EstadoCante.pendiente, motivo: ''));
+      messenger.showSnackBar(SnackBar(content: Text(choca.isEmpty ? 'Cambiada al ${fechaCorta(nueva)}, ${horaDe(nueva)}${alumno?.enlazado == true ? '. El alumno ya lo ve en su agenda' : ''}' : 'Cambiada, pero se solapa con otra sesión de ese día')));
+    }
+
+    Future<void> cancelar() async {
+      final motivo = TextEditingController();
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Cancelar la sesión?'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(alumno?.enlazado == true ? 'El alumno lo verá en su agenda, con la opción de buscar a otro preparador que se la coja.' : 'Queda marcada como cancelada en tu agenda.'),
+            const SizedBox(height: 10),
+            TextField(controller: motivo, decoration: const InputDecoration(labelText: 'Motivo (opcional)', hintText: 'Viaje, enfermedad…')),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('No')),
+            FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Cancelar sesión')),
+          ],
+        ),
+      );
+      if (ok == true) await notifier.guardar(s.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim()));
+    }
+
     return Scaffold(
       appBar: BarraWeb(
         title: Text(alumno?.nombre ?? 'Sesión'),
         actions: [
           IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: s, alumnos: alumnos)))),
-          IconButton(tooltip: 'Borrar', icon: const Icon(Icons.delete_outline), onPressed: borrar),
+          PopupMenuButton<String>(
+            onSelected: (v) async {
+              switch (v) {
+                case 'hora':
+                  await cambiarHora();
+                case 'cancelar':
+                  await cancelar();
+                case 'recuperar':
+                  await notifier.guardar(s.copyWith(estado: EstadoCante.pendiente, motivo: ''));
+                case 'borrar':
+                  await borrar();
+              }
+            },
+            itemBuilder: (_) => [
+              if (!s.hecho) const PopupMenuItem(value: 'hora', child: Text('Cambiar día u hora')),
+              if (s.pendiente) const PopupMenuItem(value: 'cancelar', child: Text('Cancelar sesión')),
+              if (s.cancelado) const PopupMenuItem(value: 'recuperar', child: Text('Recuperar sesión')),
+              const PopupMenuItem(value: 'borrar', child: Text('Borrar')),
+            ],
+          ),
         ],
       ),
       body: ListView(
@@ -92,7 +145,9 @@ class SesionPage extends ConsumerWidget {
               Row(children: [
                 Expanded(child: Text('${fechaLarga(s.fecha)}, ${horaDe(s.fecha)}', style: context.textos.titleMedium)),
                 if (s.hecho) const Etiqueta('Valorado', color: Paleta.acierto),
+                if (s.cancelado) Etiqueta('Cancelada', color: context.esquema.error),
               ]),
+              if (s.cancelado && s.motivo.isNotEmpty) Text('Motivo: ${s.motivo}', style: context.textos.bodySmall),
               if (s.pendiente) Text(s.fecha.isAfter(DateTime.now()) ? 'Empieza ${cuentaAtras(s.fecha)}' : 'Pendiente de valorar', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
               Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)} · ${s.minutos} min', style: context.textos.bodySmall),
               if (s.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(s.notas, style: context.textos.bodyMedium)),
@@ -102,7 +157,17 @@ class SesionPage extends ConsumerWidget {
               ),
             ]),
           ),
+          if (alumno != null && alumno.telefono.isNotEmpty) ...[
+            const SizedBox(height: 10),
+            BotonWhatsApp(telefono: alumno.telefono, texto: 'Escribir a ${alumno.nombre}', mensaje: 'Hola, ${alumno.nombre}. Sobre el cante del ${fechaCorta(s.fecha)} a las ${horaDe(s.fecha)}: '),
+          ],
           if (s.pendiente) ...[
+            const SizedBox(height: 10),
+            Row(children: [
+              Expanded(child: OutlinedButton.icon(onPressed: cambiarHora, icon: const Icon(Icons.schedule, size: 18), label: const Text('Cambiar hora'))),
+              const SizedBox(width: 10),
+              Expanded(child: OutlinedButton.icon(onPressed: cancelar, icon: Icon(Icons.event_busy, size: 18, color: context.esquema.error), label: Text('Cancelar', style: TextStyle(color: context.esquema.error)))),
+            ]),
             const SizedBox(height: 10),
             Row(children: [
               Expanded(

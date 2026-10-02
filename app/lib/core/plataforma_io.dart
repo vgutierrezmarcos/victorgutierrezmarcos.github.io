@@ -23,3 +23,8 @@ void borrarGrabacion(String ruta) {
     File(ruta).deleteSync();
   } catch (_) {}
 }
+
+/// Solo en el navegador: en el móvil se usan las notificaciones del sistema.
+void notificacionNavegador(String titulo, String texto) {}
+
+Future<bool> pedirPermisoNotificacionesNavegador() async => false;
