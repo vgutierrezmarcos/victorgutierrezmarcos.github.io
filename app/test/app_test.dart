@@ -385,7 +385,7 @@ void main() {
 
     // Alta de un alumno sin app.
     await tocar(tester, find.text('Alumno'));
-    await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), 'Lucía');
+    await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)).first, 'Lucía');
     await tocar(tester, find.text('Guardar'));
     expect(preparador.alumnos().single.nombre, 'Lucía');
 

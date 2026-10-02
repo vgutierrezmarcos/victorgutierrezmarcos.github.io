@@ -77,6 +77,8 @@ class Cante {
     this.alumno,
     this.preparador,
     this.preparadorNombre,
+    this.motivo = '',
+    this.sustitucion,
     this.updatedAt,
     this.borrado = false,
   });
@@ -103,6 +105,10 @@ class Cante {
   /// Cante programado o valorado por un preparador enlazado: su uid y su nombre.
   final String? preparador;
   final String? preparadorNombre;
+  /// Por qué se canceló (lo escribe quien cancela; el alumno lo ve en su agenda).
+  final String motivo;
+  /// Cante que coge un preparador sustituto: id de la petición de sustitución.
+  final String? sustitucion;
   final DateTime? updatedAt;
   /// Borrado lógico, para que la eliminación llegue a los demás dispositivos.
   final bool borrado;
@@ -110,6 +116,7 @@ class Cante {
   bool get hecho => estado == EstadoCante.hecho;
   bool get pendiente => estado == EstadoCante.pendiente;
   bool get dePreparador => preparador != null;
+  bool get cancelado => estado == EstadoCante.cancelado;
 
   Cante copyWith({
     DateTime? fecha,
@@ -125,6 +132,8 @@ class Cante {
     String? alumno,
     String? preparador,
     String? preparadorNombre,
+    String? motivo,
+    String? sustitucion,
     bool? borrado,
   }) =>
       Cante(
@@ -142,6 +151,8 @@ class Cante {
         alumno: alumno ?? this.alumno,
         preparador: preparador ?? this.preparador,
         preparadorNombre: preparadorNombre ?? this.preparadorNombre,
+        motivo: motivo ?? this.motivo,
+        sustitucion: sustitucion ?? this.sustitucion,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
       );
@@ -161,6 +172,8 @@ class Cante {
         if (alumno != null) 'alumno': alumno,
         if (preparador != null) 'preparador': preparador,
         if (preparadorNombre != null) 'preparadorNombre': preparadorNombre,
+        if (motivo.isNotEmpty) 'motivo': motivo,
+        if (sustitucion != null) 'sustitucion': sustitucion,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
       };
@@ -180,6 +193,8 @@ class Cante {
         alumno: j['alumno'] as String?,
         preparador: j['preparador'] as String?,
         preparadorNombre: j['preparadorNombre'] as String?,
+        motivo: j['motivo'] as String? ?? '',
+        sustitucion: j['sustitucion'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
       );
@@ -363,6 +378,7 @@ class Plan {
     this.hitos = const [],
     this.horario,
     this.avisosCante = true,
+    this.telefono = '',
     this.updatedAt,
   });
 
@@ -373,13 +389,17 @@ class Plan {
   final Horario? horario;
   /// Avisar la víspera y una hora antes de cada cante.
   final bool avisosCante;
+  /// Teléfono del opositor para las sustituciones (lo recuerda la app; solo
+  /// lo recibe el preparador que coge su cante).
+  final String telefono;
   final DateTime? updatedAt;
 
-  Plan copyWith({Map<int, DateTime>? fechas, List<Hito>? hitos, Horario? horario, bool? avisosCante}) => Plan(
+  Plan copyWith({Map<int, DateTime>? fechas, List<Hito>? hitos, Horario? horario, bool? avisosCante, String? telefono}) => Plan(
         fechas: fechas ?? this.fechas,
         hitos: hitos ?? this.hitos,
         horario: horario ?? this.horario,
         avisosCante: avisosCante ?? this.avisosCante,
+        telefono: telefono ?? this.telefono,
         updatedAt: DateTime.now(),
       );
 
@@ -388,6 +408,7 @@ class Plan {
         'hitos': hitos.map((h) => h.toJson()).toList(),
         'horario': horario?.toJson(),
         'avisosCante': avisosCante,
+        if (telefono.isNotEmpty) 'telefono': telefono,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -404,6 +425,7 @@ class Plan {
       hitos: ((j['hitos'] as List?) ?? []).map((e) => Hito.fromJson(e as Map)).toList(),
       horario: j['horario'] == null ? null : Horario.fromJson(j['horario']),
       avisosCante: j['avisosCante'] as bool? ?? true,
+      telefono: j['telefono'] as String? ?? '',
       updatedAt: _fecha(j['updatedAt']),
     );
   }

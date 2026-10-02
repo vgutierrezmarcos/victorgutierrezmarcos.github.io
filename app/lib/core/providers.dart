@@ -17,7 +17,9 @@ import '../data/repos/preparador_repo.dart';
 import '../data/repos/usuario_repo.dart';
 import '../features/test/leitner.dart';
 import 'cache_http.dart';
+import 'avisos_fondo.dart';
 import 'notificaciones.dart';
+import 'red_providers.dart';
 
 /// Servicios creados en main() antes de arrancar la app.
 class Servicios {
@@ -119,10 +121,10 @@ class SesionNotifier extends Notifier<bool> {
 
   /// Sincronización automática (al volver a la app y cada pocos minutos):
   /// solo con sesión, sin solaparse y como mucho una vez por minuto.
-  Future<void> sincronizarSiToca() async {
+  Future<void> sincronizarSiToca({bool forzar = false}) async {
     if (_sincronizando || !ref.read(usuarioRepoProvider).conSesion) return;
     final ahora = DateTime.now();
-    if (_ultima != null && ahora.difference(_ultima!) < const Duration(minutes: 1)) return;
+    if (!forzar && _ultima != null && ahora.difference(_ultima!) < const Duration(minutes: 1)) return;
     _sincronizando = true;
     _ultima = ahora;
     try {
@@ -139,6 +141,7 @@ class SesionNotifier extends Notifier<bool> {
       if (!kIsWeb) await GoogleSignIn().signOut();
     } catch (_) {}
     await FirebaseAuth.instance.signOut();
+    await programarAvisosEnSegundoPlano(activar: false);
     ref.invalidate(historialProvider);
   }
 }
@@ -164,6 +167,7 @@ Future<void> sincronizarTodo(Ref ref) async {
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   await ref.read(planRepoProvider).sincronizarTodo();
   await ref.read(preparadorRepoProvider).sincronizarTodo();
+  await sincronizarRed(ref);
   ref.invalidate(leitnerProvider);
   ref.invalidate(ajustesProvider);
   ref.invalidate(historialProvider);
@@ -370,6 +374,12 @@ class PerfilPreparadorNotifier extends Notifier<PerfilPreparador> {
     await repo.sincronizarTodo();
     ref.invalidate(alumnosProvider);
     ref.invalidate(sesionesProvider);
+  }
+
+  Future<void> guardar(PerfilPreparador p) async {
+    final repo = ref.read(preparadorRepoProvider);
+    await repo.guardarPerfil(p);
+    state = repo.perfil();
   }
 
   /// Vuelve a intentar reservar el código para alumnos.

@@ -54,7 +54,7 @@ ESCENAS = [
     (21, 31, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
     (31, 38, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
     (38, 45, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades', 'probabilidades-3d']),
-    (45, 54, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Sesiones, sorteo y valoraciones que llegan solas a la agenda y al diario del alumno.', ['preparador', 'alumno', 'sesion']),
+    (45, 54, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y sustituciones entre preparadores verificados.', ['preparador', 'semana', 'sustituciones']),
 ]
 INICIO_CIERRE = 54
 FUNDIDO = 0.45  # segundos de fundido entre escenas

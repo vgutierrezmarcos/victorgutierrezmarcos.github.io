@@ -153,6 +153,23 @@ class Notificaciones {
   }
 
   /// Aviso inmediato (cronómetro de cantar un tema en segundo plano).
+  /// Aviso de la red de preparadores (sustitución nueva, cante cogido, reserva).
+  static Future<void> avisoRed(String clave, String titulo, String texto) async {
+    if (!disponibles) return;
+    await iniciar();
+    await _plugin.show(
+      // Ids propios por encima de los de cantes y cronómetro.
+      1000 + (clave.hashCode & 0x7ffff),
+      titulo,
+      texto,
+      const NotificationDetails(
+        android: AndroidNotificationDetails('red', 'Preparadores y sustituciones',
+            channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
+        iOS: DarwinNotificationDetails(),
+      ),
+    );
+  }
+
   static Future<void> avisoCronometro(String texto) async {
     if (!disponibles) return;
     await iniciar();

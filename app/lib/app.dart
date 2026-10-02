@@ -101,6 +101,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Al cargarse la sesión (al arrancar o al iniciarla) se sincroniza todo.
+    ref.listen(usuarioActualProvider, (antes, ahora) {
+      if (ahora != null && antes?.uid != ahora.uid) ref.read(sesionProvider.notifier).sincronizarSiToca(forzar: true);
+    });
     return MaterialApp.router(
       title: 'Oposición TCEE',
       debugShowCheckedModeBanner: false,

@@ -19,6 +19,10 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
+import 'package:tcee_app/core/red_providers.dart';
+import 'package:tcee_app/data/models/red.dart';
+import 'package:tcee_app/features/preparador/semana_page.dart';
+import 'package:tcee_app/features/preparador/sustituciones.dart';
 import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
@@ -141,6 +145,9 @@ void main() {
       Cante(id: 's2', fecha: dia(0, 18, 45), alumno: 'pablo', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's3', fecha: dia(3, 17, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's4', fecha: dia(7, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's5', fecha: dia(1, 18, 0), alumno: 'pablo', bolsa: TipoBolsa.estudiados, estado: EstadoCante.cancelado, motivo: 'Viaje', updatedAt: hoy),
+      Cante(id: 's6', fecha: dia(3, 17, 15), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's7', fecha: dia(5, 10, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, serie: 'fija_marta_c1', updatedAt: hoy),
       sesionHecha('v1', 'lucia', 7, '3.A.9', 4, 29, 'Muy bien estructurado. En la conclusión, enlaza con la política de competencia.'),
       sesionHecha('v2', 'lucia', 14, '3.B.4', 5, 30, 'Excelente.'),
       sesionHecha('v3', 'lucia', 21, '3.A.17', 2, 23, 'Corto de tiempo; el modelo de Solow hay que llevarlo más rodado.'),
@@ -169,6 +176,16 @@ void main() {
       bloquesProvider.overrideWith((ref) => bloques),
       enlacesProvider.overrideWith((ref) => <CategoriaEnlaces>[]),
       actualizacionProvider.overrideWith((ref) => null),
+      // Red de preparadores de demostración: verificado, con dos peticiones en el tablón y una reserva.
+      estadoRedProvider.overrideWith((ref) async => const EstadoRed(verificacion: PreparadorVerificado(uid: 'yo', nombre: 'Víctor', avaladoPor: 'yo'))),
+      solicitudesPendientesProvider.overrideWith((ref) async => const <SolicitudPreparador>[]),
+      cogidasPorMiProvider.overrideWith((ref) async => const <Sustitucion>[]),
+      misPeticionesProvider.overrideWith((ref) async => const <Sustitucion>[]),
+      tablonProvider.overrideWith((ref) async => [
+            Sustitucion(id: 't1', alumno: 'x', fecha: dia(1, 19, 0), minutos: 30, ejercicio: 3, temas: [for (var i = 1; i <= 18; i++) '3.A.$i', for (var i = 1; i <= 10; i++) '3.B.$i'], notas: 'Mi preparadora ha cancelado. Por videollamada.'),
+            Sustitucion(id: 't2', alumno: 'y', fecha: dia(4, 17, 30), minutos: 45, ejercicio: 4, temas: [for (var i = 1; i <= 12; i++) '4.A.$i'], paraTodos: false, destinatarios: const ['yo']),
+          ]),
+      reservasRecibidasProvider.overrideWith((ref) async => [Reserva(id: 'r1', preparador: 'yo', alumno: 'marta', alumnoNombre: 'Marta', fecha: dia(2, 19, 0), nota: 'Quiero cantar el 4.A.9')]),
       // Lo que comparte un alumno enlazado: sus temas y un cante por su cuenta.
       progresoAlumnoProvider.overrideWith((ref, id) async => ProgresoAlumno(
             estudiados: preparador.alumno(id)!.temas.toSet(),
@@ -272,6 +289,15 @@ void main() {
     await captura('mas');
     await tocar(find.text('Mis alumnos'));
     await captura('preparador');
+    await tocar(find.text('Mi semana'));
+    await captura('semana');
+    Navigator.of(tester.element(find.byType(SemanaPage))).pop();
+    await tester.pumpAndSettle();
+    await tocar(find.text('Sustituciones'));
+    await captura('sustituciones');
+    Navigator.of(tester.element(find.byType(TablonPage))).pop();
+    await tester.pumpAndSettle();
+    await buscar(find.text('Lucía'));
     await tocar(find.text('Lucía'));
     await captura('alumno');
     await bajar(520);

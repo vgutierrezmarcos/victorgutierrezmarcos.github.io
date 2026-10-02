@@ -60,6 +60,19 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - `preparadores/{uidPreparador}`: preparadores a los que el usuario da acceso.
 - `notes/{tema}`: nota libre (`texto`) y agenda del tema (`pendientes`, `vueltas`).
 
+## Red de preparadores
+
+`data/models/red.dart`, `data/repos/red_repo.dart`, `core/red_providers.dart` y `features/preparador/` (semana, sustituciones, reservas, verificación, ajustes). Colecciones fuera de `users/{uid}` y sus reglas, en `firestore.rules`:
+
+- **Verificación** (`admins/{uid}`, `preparadoresVerificados/{uid}`, `solicitudesPreparador/{uid}`). Para tener código de alumnos, ver el tablón de sustituciones, publicar huecos y verificar a otros hay que estar verificado. Verifica el administrador o un preparador ya verificado, nunca uno mismo; queda registrado quién avaló a quién, y el administrador puede retirar a alguien (`activo: false`), también en cadena. Si se retira a alguien, sus alumnos enlazados dejan de compartir con él (`esPreparadorDe` exige la verificación). Los administradores se crean a mano en la consola: un documento `admins/{uid}`. El administrador se verifica a sí mismo desde la app (*Preparadores → Administración → Verificarme*).
+- **Sustituciones** (`sustituciones/{id}` y `privado/{alumno|preparador}`). El alumno pide que le cojan un cante (desde un cante cancelado por su preparador o desde cero), a todos los verificados o a los que elija. Los preparadores ven día, hora, duración, ejercicio, temas y nota; el nombre y el teléfono del alumno, solo quien la coge, que deja los suyos. Coger es una transacción (gana el primero). El cante pasa a la semana del sustituto (alumno sin enlace, con teléfono) y a la agenda del alumno (`sust_{id}`). WhatsApp con `wa.me`.
+- **Huecos y reservas** (`huecos/{preparador}`, `reservas/{id}`), desactivado por defecto. El preparador publica sus huecos semanales y las horas ocupadas (sin nombres); sus alumnos enlazados piden un hueco y él la acepta (se crea la sesión) o la rechaza.
+- **Clases fijas** (`Alumno.clasesFijas`): generan las sesiones de las seis semanas siguientes, con un id por día, así que no se duplican ni vuelven si se borran.
+- **Avisos**: `core/avisos_red.dart` comprueba lo nuevo al sincronizar (cada 3 min con la app abierta) y lo notifica una vez (`core/vistos.dart`). En Android, además, una tarea de WorkManager lo comprueba cada ~15 min con la app cerrada (`core/avisos_fondo_io.dart`). En el navegador, notificaciones del navegador con la pestaña abierta.
+- **Colores**: cada alumno y cada preparador tienen su color (`colorDePersona`); en la agenda del alumno se puede filtrar por preparador.
+
+Las reglas se prueban con el emulador: `tool/reglas/` (ver su README).
+
 ## Sincronización y privacidad
 
 Sin cuenta, todo vive en Hive (en el navegador, IndexedDB). Con cuenta, cada repositorio sube lo que cambia en cuanto se guarda y `sincronizarTodo` fusiona nube y local (por elemento y por `updatedAt`). Se sincroniza al arrancar, al iniciar sesión, al volver a la app (`AppLifecycleListener` en `app.dart`) y, con la app abierta, cada 3 minutos (`SesionNotifier.sincronizarSiToca`, como mucho una vez por minuto). Así lo que se hace en el móvil aparece en el ordenador, lo que programa el preparador llega al alumno y lo que el alumno cambia en una sesión (hora, notas, valoración) vuelve al preparador (`_traerCambiosDeAlumnos`, que conserva el alumno, el título y el borrado del lado del preparador).

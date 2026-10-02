@@ -11,6 +11,7 @@ import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import 'preparador_page.dart';
+import 'red_widgets.dart';
 import 'sesion_page.dart';
 
 /// Ficha de un alumno: qué temas lleva, qué ha cantado y cómo, qué temas
@@ -47,6 +48,34 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     if (ok != true) return;
     await ref.read(alumnosProvider.notifier).borrar(a);
     nav.pop();
+  }
+
+  Future<void> _nuevaClaseFija(Alumno a) async {
+    final f = await elegirFranja(context, titulo: 'Clase fija con ${a.nombre}', dia: DateTime.now().weekday, conRitmo: true);
+    if (f == null) return;
+    final c = ClaseFija(id: nuevoId(), diaSemana: f.dia, minutoDelDia: f.minuto, minutos: f.minutos, cadaSemanas: f.cada, desde: DateTime.now());
+    await ref.read(alumnosProvider.notifier).guardar(a.copyWith(clasesFijas: [...a.clasesFijas, c]));
+    final n = await ref.read(preparadorRepoProvider).generarClasesFijas();
+    ref.invalidate(sesionesProvider);
+    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Clase fija añadida: $n ${n == 1 ? 'sesión creada' : 'sesiones creadas'} para las próximas seis semanas')));
+  }
+
+  Future<void> _quitarClaseFija(Alumno a, ClaseFija c) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('¿Quitar la clase fija?'),
+        content: const Text('Se borrarán también sus próximas sesiones pendientes. Las ya hechas se quedan.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    await ref.read(preparadorRepoProvider).quitarClaseFija(a, c);
+    ref.invalidate(alumnosProvider);
+    ref.invalidate(sesionesProvider);
   }
 
   @override
@@ -125,6 +154,27 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Cargando lo que comparte el alumno…', style: context.textos.labelSmall))
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
+            if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
+            TituloSeccion('Clases fijas', accion: TextButton.icon(onPressed: () => _nuevaClaseFija(a), icon: const Icon(Icons.add, size: 18), label: const Text('Clase fija'))),
+            if (a.clasesFijas.isEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text('Si tenéis una hora fija (por ejemplo, los martes a las 18:00), añádela y las sesiones de las próximas semanas se crearán solas.', style: context.textos.bodySmall),
+              )
+            else
+              Tarjeta(
+                padding: EdgeInsets.zero,
+                child: Column(children: [
+                  for (final c in a.clasesFijas)
+                    ListTile(
+                      dense: true,
+                      leading: Icon(Icons.repeat, color: context.esquema.primary),
+                      title: Text('${c.cadaSemanas == 1 ? 'Cada' : 'Uno de cada dos'} ${nombresDias[c.diaSemana - 1]} a las ${horaMinutos(c.minutoDelDia)}'),
+                      subtitle: Text('${c.minutos} min · desde el ${fechaCorta(c.desde)}', style: context.textos.labelSmall),
+                      trailing: IconButton(tooltip: 'Quitar', icon: const Icon(Icons.close), onPressed: () => _quitarClaseFija(a, c)),
+                    ),
+                ]),
+              ),
             if (proximas.isNotEmpty) ...[
               const TituloSeccion('Próximas sesiones'),
               for (final s in proximas.take(4))
