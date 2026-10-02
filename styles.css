@@ -315,6 +315,28 @@ body {
     margin: 0;
 }
 
+/* LICENCIA CREATIVE COMMONS (misma que .blog-license del blog; páginas de temas) */
+.content-license {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--color-bg);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+.content-license .cc-badge { flex-shrink: 0; }
+.content-license .cc-badge img { display: block; border: none; }
+.content-license p { font-size: 0.8rem; line-height: 1.6; color: var(--color-text-light); margin: 0; }
+.content-license a { color: var(--color-primary); text-decoration: none; }
+.content-license a:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+    .content-license { flex-direction: column; align-items: center; text-align: center; }
+}
+
 /* TARJETAS DE TEMARIO */
 .cards-grid {
     display: grid;
