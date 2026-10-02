@@ -80,6 +80,21 @@
     </nav>
 
     <main class="main-content home-main">
+        <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
+        <div id="app-banner" class="app-banner" hidden>
+            <div class="app-banner-text">
+                <span class="app-banner-label">App móvil · versión de prueba</span>
+                <h3 class="app-banner-title">Lleva la oposición en el bolsillo</h3>
+                <p>Agenda de cantes con cuenta atrás, sorteo de temas, cronómetro, probabilidades, temario y simulador de test, con el mismo historial que en la web.</p>
+            </div>
+            <div class="app-banner-links">
+                <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
+                <a id="app-link-play" class="download-btn" target="_blank" rel="noopener" hidden>Google Play</a>
+                <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
+            </div>
+            <p id="app-banner-note" class="app-banner-note" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido.</p>
+        </div>
+
         <!-- Cards Section -->
         <div class="home-cards">
             <div class="home-card home-card--primary">
@@ -165,6 +180,13 @@
         }
 
         /* Cards Grid */
+        /* Aviso de la app sobre las tarjetas, con su mismo ancho */
+        .home-main .app-banner {
+            width: calc(100% - 2rem);
+            max-width: calc(1200px - 2rem);
+            margin: 0 auto 1.5rem auto;
+        }
+
         .home-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -408,6 +430,7 @@
         </div>
     </div>
 </footer>
+    <script src="app-banner.js" defer></script>
     <script src="search-engine.js"></script>
     <script src="search-ui.js"></script>
     <script src="cookie-consent.js"></script>
