@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 
 import '../../core/calendario.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
@@ -61,10 +58,7 @@ class CantePage extends ConsumerWidget {
     }
 
     Future<void> compartirIcs() async {
-      final dir = await getTemporaryDirectory();
-      final f = File('${dir.path}/cante_tcee.ics');
-      await f.writeAsString(Calendario.ics([eventoDeCante(c)]));
-      await SharePlus.instance.share(ShareParams(files: [XFile(f.path, mimeType: 'text/calendar')], subject: 'Cante TCEE'));
+      await guardarFichero(nombre: 'cante_tcee.ics', contenido: Calendario.ics([eventoDeCante(c)]), mime: 'text/calendar', asunto: 'Cante TCEE');
     }
 
     return Scaffold(

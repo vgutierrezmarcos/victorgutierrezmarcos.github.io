@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'constants.dart';
@@ -19,7 +20,8 @@ class CacheHttp {
     final dio = Dio(BaseOptions(
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 60),
-      headers: {'User-Agent': 'TCEE-App/1.0 (+https://www.victorgutierrezmarcos.es)'},
+      // El navegador no deja cambiar el User-Agent.
+      headers: kIsWeb ? null : {'User-Agent': 'TCEE-App/1.0 (+https://www.victorgutierrezmarcos.es)'},
     ));
     return CacheHttp(dio, caja);
   }

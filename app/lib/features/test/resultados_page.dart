@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
@@ -57,7 +57,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.share_outlined),
-              onPressed: () => SharePlus.instance.share(ShareParams(text: 'Test TCEE: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es')),
+              onPressed: () => compartirTexto(context, 'Test TCEE: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es'),
             ),
           ],
         ),

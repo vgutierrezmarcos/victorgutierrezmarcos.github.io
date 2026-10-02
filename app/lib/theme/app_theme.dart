@@ -255,6 +255,17 @@ class AppTheme {
           (s) => IconThemeData(size: 22, color: s.contains(WidgetState.selected) ? Colors.white : extra.textoSuave),
         ),
       ),
+      // En pantallas anchas (ordenador) el mismo menú va en un raíl a la izquierda.
+      navigationRailTheme: NavigationRailThemeData(
+        backgroundColor: extra.superficie,
+        elevation: 0,
+        indicatorColor: primario,
+        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        selectedIconTheme: const IconThemeData(size: 22, color: Colors.white),
+        unselectedIconTheme: IconThemeData(size: 22, color: extra.textoSuave),
+        selectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 0.7, color: primario),
+        unselectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w500, letterSpacing: 0.7, color: texto),
+      ),
       // Botones de la web (.download-btn, .btn-comenzar): morado, radio 6, sans.
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(

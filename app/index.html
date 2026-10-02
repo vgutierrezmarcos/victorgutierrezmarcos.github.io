@@ -55,7 +55,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Oposición TCEE",
-        "operatingSystem": "Android",
+        "operatingSystem": "Android, Web",
         "applicationCategory": "EducationalApplication",
         "description": "App para preparar la oposición a Técnico Comercial y Economista del Estado: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
@@ -97,7 +97,16 @@
         }
         .app-descarga[hidden], .app-descarga [hidden] { display: none; }
         .app-descarga-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .app-descarga .download-btn { font-size: 1rem; padding: 0.85rem 1.7rem; }
+        .app-descarga .download-btn, .app-web .download-btn { font-size: 1rem; padding: 0.85rem 1.7rem; }
+        /* Botón secundario: la versión para el navegador */
+        .app-web { margin-top: 0.9rem; }
+        .app-web .download-btn.secundario { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); box-shadow: none; }
+        .app-web .download-btn.secundario:hover { background: var(--color-primary); color: #fff; }
+        /* Privacidad */
+        .app-privacidad { border-left: 4px solid var(--color-primary); background: var(--color-surface, #fff); padding: 1.4rem 1.6rem; border-radius: 0 10px 10px 0; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,.08)); }
+        .app-privacidad > p:first-child { font-size: 1.2rem; margin-top: 0; }
+        .app-privacidad ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
+        .app-privacidad li { margin-bottom: 0.5rem; line-height: 1.6; }
         .app-nota {
             font-family: var(--font-ui);
             font-size: 0.85rem;
@@ -229,7 +238,7 @@
         .app-faq details[open] summary { color: var(--color-primary); border-bottom: 1px solid var(--color-border-light); }
         .app-faq details p { padding: 0.9rem 1.1rem 0.2rem; font-size: 1rem; line-height: 1.75; }
 
-        .app-cierre { text-align: center; margin-top: 3.5rem; position: relative; z-index: 1; }
+        .app-cierre { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 3.5rem; position: relative; z-index: 1; }
 
         @media (max-width: 760px) {
             .app-hero, .app-bloque { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -279,7 +288,7 @@
                 <!-- Presentación y descarga: los enlaces se rellenan desde app-config.json (app-banner.js) -->
                 <div class="app-hero">
                     <div>
-                        <span class="app-etiqueta">App móvil · versión de prueba</span>
+                        <span class="app-etiqueta">Android y navegador · versión de prueba</span>
                         <h2>Oposición TCEE, en el bolsillo</h2>
                         <p class="app-entradilla">La web pone el temario y los test. La app pone el día a día: cuándo cantas, qué temas entran, cuánto falta para el examen, cómo te fue la última vez y qué probabilidad llevas. Y, si tienes preparador, os enlaza.</p>
                         <div id="app-banner" class="app-descarga" hidden>
@@ -290,14 +299,19 @@
                             </div>
                             <p id="app-banner-note" class="app-nota" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido. <a href="#instalar">Cómo instalarla</a>.</p>
                         </div>
+                        <div class="app-web">
+                            <a class="download-btn secundario" href="abrir/">Usar en el navegador</a>
+                            <p class="app-nota">En el ordenador o en cualquier móvil (también iPhone), sin instalar nada. Con tu cuenta de Google ves lo mismo que en la app.</p>
+                        </div>
                         <ul class="app-datos">
                             <li>Gratis y sin anuncios</li>
+                            <li>Tus datos solo los ves tú</li>
                             <li>Funciona sin cuenta</li>
                             <li id="app-version" hidden></li>
                         </ul>
                     </div>
                     <div class="app-movil">
-                        <img src="promo/hoy.webp" width="720" height="1560" alt="Pantalla «Hoy» de la app: días que faltan para el examen, racha, próximo cante y test diario">
+                        <img src="promo/hoy.webp" width="720" height="1560" alt="Pantalla «Hoy» de la app: racha, próximo cante, test diario y probabilidad de aprobar">
                     </div>
                 </div>
 
@@ -319,8 +333,8 @@
                             <p>El contenido se descarga de la web: cuando se actualiza un tema o se añaden preguntas, la app lo recibe sin reinstalar nada.</p>
                         </div>
                         <div class="app-principio">
-                            <h4>Tus datos son tuyos</h4>
-                            <p>Puedes exportarlos o borrarlos desde la propia app. Lo que compartes con tu preparador lo decides tú.</p>
+                            <h4>Tus datos solo los ves tú</h4>
+                            <p>Ni otros opositores ni nadie más. Lo único que compartes es lo que decidas enseñar a tu preparador, y puedes exportarlo o borrarlo todo desde la propia app.</p>
                         </div>
                     </div>
                 </section>
@@ -464,6 +478,21 @@
                     <p>El enlace lo crea el alumno y cualquiera de los dos puede romperlo cuando quiera. Las notas que el preparador toma sobre un alumno son privadas.</p>
                 </section>
 
+                <section class="app-seccion" id="privacidad">
+                    <h3>Tus datos, solo para ti</h3>
+                    <div class="app-privacidad">
+                        <p><strong>Nadie más ve lo que haces en la app: ni otros opositores ni nadie.</strong></p>
+                        <ul>
+                            <li><strong>Sin cuenta</strong>, todo se queda en tu móvil o en tu navegador y no sale de ahí.</li>
+                            <li><strong>Con cuenta de Google</strong>, tus tests, temas, notas, cantes y planificación se guardan a nombre de tu cuenta para tenerlos en todos tus dispositivos. Las reglas de seguridad de la base de datos solo dejan leerlos a tu propia cuenta: ningún otro usuario de la app o de la web puede verlos.</li>
+                            <li><strong>Tu preparador</strong> solo ve algo si tú le das acceso con su código, y aun así solo los temas que marcas y tus cantes; nunca tus tests, tus notas ni tus grabaciones. Puedes quitárselo cuando quieras. Sus otros alumnos no ven nada tuyo.</li>
+                            <li><strong>Las grabaciones</strong> de tus cantes no se suben a ningún sitio.</li>
+                            <li><strong>Sin publicidad ni analítica</strong>: tus datos no se venden, no se ceden y no se usan para nada más que para que la app funcione. Yo tampoco los consulto.</li>
+                            <li><strong>Son tuyos</strong>: en <em>Más → Cuenta</em> puedes descargarlos o borrarlos todos, de la nube y del dispositivo, con un solo botón.</li>
+                        </ul>
+                    </div>
+                </section>
+
                 <section class="app-seccion" id="instalar">
                     <h3>Cómo instalarla</h3>
                     <p>De momento la app está disponible para Android como versión de prueba, fuera de Google Play:</p>
@@ -473,17 +502,20 @@
                         <li>Abre la app. Puedes usarla sin más o iniciar sesión con Google en <em>Más → Cuenta</em> para sincronizar.</li>
                     </ol>
                     <p>Cuando haya una versión nueva, la propia app lo avisa en «Hoy». Se instala encima de la anterior y no se pierde nada.</p>
+                    <h4>En el navegador</h4>
+                    <p>No hace falta instalar nada: abre <a href="abrir/">victorgutierrezmarcos.es/app/abrir/</a> en el ordenador, la tableta o un iPhone e inicia sesión con la misma cuenta de Google que en el móvil. Si quieres tenerla a mano como una aplicación más, Chrome y Edge ofrecen «Instalar» en la barra de direcciones, y en el iPhone, Safari → Compartir → «Añadir a pantalla de inicio».</p>
+                    <p>La versión web es la misma app, con dos diferencias: no puede mandar avisos ni recordatorios, y los PDF se leen con conexión. Lo demás (agenda, sorteo, cronómetro, test, diario, preparadores) funciona igual y se sincroniza solo.</p>
                 </section>
 
                 <section class="app-seccion app-faq" id="preguntas">
                     <h3>Preguntas frecuentes</h3>
                     <details>
                         <summary>¿Hay versión para iPhone?</summary>
-                        <p>Todavía no. La app está hecha para Android y iPhone, pero por ahora solo se publica la versión de Android.</p>
+                        <p>No como app de la App Store, pero en el iPhone puedes usar la <a href="abrir/">versión para el navegador</a> y añadirla a la pantalla de inicio desde Safari. Con tu cuenta de Google tendrás lo mismo que en Android.</p>
                     </details>
                     <details>
                         <summary>¿Necesito una cuenta?</summary>
-                        <p>No. Sin cuenta, todo se guarda en tu móvil. La cuenta de Google hace falta para tres cosas: compartir el historial de test con la web, sincronizar entre dispositivos y enlazar con un preparador.</p>
+                        <p>No. Sin cuenta, todo se guarda en tu móvil (o en tu navegador). La cuenta de Google hace falta para tres cosas: compartir el historial de test con la web, sincronizar entre el móvil y el ordenador y enlazar con un preparador.</p>
                     </details>
                     <details>
                         <summary>¿Funciona sin conexión?</summary>
@@ -494,8 +526,12 @@
                         <p>No. La app no incluye fechas oficiales: las de cada ejercicio las pones tú, con la fecha conocida o con la que estimes, y a partir de ellas se calculan las cuentas atrás.</p>
                     </details>
                     <details>
+                        <summary>¿Alguien más puede ver mis datos?</summary>
+                        <p>No. Ni otros opositores ni nadie: solo tu cuenta puede leerlos. La única excepción la eliges tú, el preparador al que des tu acceso, que ve tus temas y tus cantes y nada más. Lo explica <a href="#privacidad">esta sección</a>.</p>
+                    </details>
+                    <details>
                         <summary>¿Qué datos guarda y cómo los borro?</summary>
-                        <p>Los detalla la <a href="../politica-cookies.html">política de privacidad</a>. La app no tiene publicidad ni herramientas de análisis, y desde <em>Más → Cuenta</em> puedes exportar todos tus datos o borrarlos.</p>
+                        <p>Los detalla la <a href="../politica-cookies.html">política de privacidad</a>. La app no tiene publicidad ni herramientas de análisis, y desde <em>Más → Cuenta</em> puedes exportar todos tus datos o borrarlos de la nube y del dispositivo.</p>
                     </details>
                     <details>
                         <summary>He encontrado un fallo o tengo una idea</summary>
@@ -505,6 +541,7 @@
 
                 <div class="app-cierre">
                     <a class="download-btn" href="#app-banner">Ir a la descarga ↑</a>
+                    <a class="download-btn" href="abrir/">Usar en el navegador</a>
                 </div>
             </article>
         </div>

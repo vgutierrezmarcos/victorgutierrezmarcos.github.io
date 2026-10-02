@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -61,7 +62,8 @@ final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoPro
 final actualizacionProvider = FutureProvider<String?>((ref) async {
   final config = await ref.watch(configProvider.future);
   final publicada = config.versionActual;
-  if (publicada == null) return null;
+  // En el navegador siempre se carga la última versión publicada.
+  if (publicada == null || kIsWeb) return null;
   try {
     final instalada = (await PackageInfo.fromPlatform()).version;
     return AppConfig.esPosterior(publicada, instalada) ? publicada : null;
@@ -86,14 +88,22 @@ class SesionNotifier extends Notifier<bool> {
   Future<String?> iniciarConGoogle() async {
     state = true;
     try {
-      final google = await GoogleSignIn(scopes: const ['email']).signIn();
-      if (google == null) return null; // cancelado
-      final auth = await google.authentication;
-      final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
-      await FirebaseAuth.instance.signInWithCredential(cred);
+      if (kIsWeb) {
+        // En el navegador, la ventana de Google de Firebase (como en la web).
+        await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider()..addScope('email'));
+      } else {
+        final google = await GoogleSignIn(scopes: const ['email']).signIn();
+        if (google == null) return null; // cancelado
+        final auth = await google.authentication;
+        final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
+        await FirebaseAuth.instance.signInWithCredential(cred);
+      }
       await sincronizarTodo(ref);
       return null;
     } on FirebaseAuthException catch (e) {
+      // Ventana cerrada por el usuario: no es un error.
+      if (e.code == 'popup-closed-by-user' || e.code == 'cancelled-popup-request') return null;
+      if (e.code == 'popup-blocked') return 'el navegador ha bloqueado la ventana de Google. Permite las ventanas emergentes de esta página.';
       return e.message ?? e.code;
     } catch (e) {
       return e.toString();
@@ -104,9 +114,29 @@ class SesionNotifier extends Notifier<bool> {
 
   Future<void> sincronizar() => sincronizarTodo(ref);
 
+  DateTime? _ultima;
+  bool _sincronizando = false;
+
+  /// Sincronización automática (al volver a la app y cada pocos minutos):
+  /// solo con sesión, sin solaparse y como mucho una vez por minuto.
+  Future<void> sincronizarSiToca() async {
+    if (_sincronizando || !ref.read(usuarioRepoProvider).conSesion) return;
+    final ahora = DateTime.now();
+    if (_ultima != null && ahora.difference(_ultima!) < const Duration(minutes: 1)) return;
+    _sincronizando = true;
+    _ultima = ahora;
+    try {
+      await sincronizarTodo(ref);
+    } catch (_) {
+      // Sin red: se intenta en la próxima.
+    } finally {
+      _sincronizando = false;
+    }
+  }
+
   Future<void> cerrarSesion() async {
     try {
-      await GoogleSignIn().signOut();
+      if (!kIsWeb) await GoogleSignIn().signOut();
     } catch (_) {}
     await FirebaseAuth.instance.signOut();
     ref.invalidate(historialProvider);
@@ -114,6 +144,20 @@ class SesionNotifier extends Notifier<bool> {
 }
 
 final sesionProvider = NotifierProvider<SesionNotifier, bool>(SesionNotifier.new);
+
+/// Borra todos los datos del usuario en la nube y en este dispositivo y cierra
+/// la sesión. La cuenta de Google no se toca.
+Future<void> borrarTodosMisDatos(WidgetRef ref) async {
+  await ref.read(preparadorRepoProvider).romperTodosLosEnlaces();
+  await ref.read(usuarioRepoProvider).borrarTodoEnLaNube();
+  await ref.read(usuarioRepoProvider).borrarDatosLocales();
+  await ref.read(planRepoProvider).borrarDatosLocales();
+  await ref.read(preparadorRepoProvider).borrarDatosLocales();
+  await ref.read(sesionProvider.notifier).cerrarSesion();
+  for (final p in <ProviderOrFamily>[leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
+    ref.invalidate(p);
+  }
+}
 
 /// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
 Future<void> sincronizarTodo(Ref ref) async {
@@ -328,6 +372,11 @@ class PerfilPreparadorNotifier extends Notifier<PerfilPreparador> {
     ref.invalidate(sesionesProvider);
   }
 
+  /// Vuelve a intentar reservar el código para alumnos.
+  Future<void> reintentarCodigo() async {
+    state = await ref.read(preparadorRepoProvider).activar();
+  }
+
   Future<void> desactivar() async {
     await ref.read(preparadorRepoProvider).desactivar();
     state = ref.read(preparadorRepoProvider).perfil();
@@ -360,6 +409,8 @@ class AlumnosNotifier extends Notifier<List<Alumno>> {
     final repo = ref.read(preparadorRepoProvider);
     await repo.sincronizarTodo();
     state = repo.alumnos();
+    // La sincronización puede haber reservado el código o traído el perfil de otro dispositivo.
+    ref.invalidate(perfilPreparadorProvider);
     ref.invalidate(sesionesProvider);
   }
 }

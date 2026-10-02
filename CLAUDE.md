@@ -19,7 +19,7 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 /                      # Homepage with 3 cards
 ├── oposicion/         # Exam preparation materials
 │   └── temario/primer-ejercicio/test/  # Test simulator
-├── app/               # Flutter mobile app; app/index.html is its public landing page
+├── app/               # Flutter app; app/index.html is its public landing page, app/abrir/ its web build
 ├── blog/              # Articles (Quarto-based)
 ├── comunidad.html     # Community page
 ├── sobre-mi.html      # About page
@@ -55,6 +55,7 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 **Mobile app** (`app/`, see `app/README.md`)
 - Flutter app "Oposición TCEE" (Android); shares Firebase project and content JSON with the web
 - `app/index.html` is the public landing page (`/app/`): screenshots and promo video live in `app/promo/`, regenerated with `app/tool/capturas_test.dart` and `scripts/montar-video-app.py`
+- The same app compiled for the browser lives in `app/abrir/` (`/app/abrir/`), built with `python3 scripts/publicar-app-web.py` and committed; rebuild it whenever `app/lib/` or `app/web/` changes (see "Versión web" in `app/README.md`)
 - `app-banner.js` fills download links from `oposicion/app-config.json` (home, `/oposicion/` and `/app/`)
 - `firestore.rules` is shared by web and app; changes must be applied manually in the Firebase console
 

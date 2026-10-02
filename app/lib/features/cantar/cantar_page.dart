@@ -1,17 +1,17 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:vibration/vibration.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -190,9 +190,18 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Sin permiso de micrófono')));
       return;
     }
-    final dir = await getApplicationDocumentsDirectory();
     final nombre = '${_elegido?.codigo.replaceAll('.', '') ?? 'tema'}_${DateTime.now().millisecondsSinceEpoch}.m4a';
-    await _grabadora.start(const RecordConfig(encoder: AudioEncoder.aacLc, bitRate: 64000), path: '${dir.path}/$nombre');
+    // En el navegador no todos admiten AAC: se usa el primer formato disponible.
+    var formato = AudioEncoder.aacLc;
+    if (kIsWeb) {
+      for (final f in const [AudioEncoder.opus, AudioEncoder.aacLc, AudioEncoder.wav]) {
+        if (await _grabadora.isEncoderSupported(f)) {
+          formato = f;
+          break;
+        }
+      }
+    }
+    await _grabadora.start(RecordConfig(encoder: formato, bitRate: 64000), path: await rutaNuevaGrabacion(nombre));
     setState(() => _grabando = true);
     if (!_reloj.corriendo) _iniciar();
   }
@@ -204,7 +213,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       setState(() => _reproduciendo = false);
       return;
     }
-    await _reproductor.play(DeviceFileSource(_ultimaGrabacion!));
+    await _reproductor.play(kIsWeb ? UrlSource(_ultimaGrabacion!) : DeviceFileSource(_ultimaGrabacion!));
     setState(() => _reproduciendo = true);
   }
 
@@ -492,13 +501,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     TextButton.icon(
                       onPressed: () async {
                         await _reproductor.stop();
-                        try { File(_ultimaGrabacion!).deleteSync(); } catch (_) {}
+                        borrarGrabacion(_ultimaGrabacion!);
                         setState(() { _ultimaGrabacion = null; _reproduciendo = false; });
                       },
                       icon: const Icon(Icons.delete_outline, size: 18),
                       label: const Text('Borrar grabación'),
                     ),
-                  Text('Las grabaciones se guardan solo en este dispositivo.', style: context.textos.labelSmall),
+                  Text(kIsWeb ? 'La grabación no sale de este navegador y se pierde al cerrar la pestaña.' : 'Las grabaciones se guardan solo en este dispositivo y no se envían a ningún sitio.', style: context.textos.labelSmall),
                 ]),
               ),
             ],

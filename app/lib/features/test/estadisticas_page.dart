@@ -49,7 +49,7 @@ class EstadisticasPage extends ConsumerWidget {
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
               children: [
                 GridView.count(
-                  crossAxisCount: 2,
+                  crossAxisCount: MediaQuery.sizeOf(context).width >= 720 ? 4 : 2,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 1.7,

@@ -156,4 +156,64 @@ void main() {
     await alumno.sincronizarTodo();
     expect(alumno.misPreparadores(), isEmpty);
   });
+
+  test('lo que el alumno cambia en una sesión vuelve al preparador, sin perder su lado', () async {
+    final db = FakeFirebaseFirestore();
+    final authAlu = sesion('alu', 'Álex');
+    final prep = await repo(db, sesion('prep', 'Paula')), alumno = await repo(db, authAlu);
+    final planAlu = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), firestore: db, auth: authAlu);
+    await alumno.enlazarConCodigo((await prep.activar()).codigo!);
+    await prep.sincronizarTodo();
+    final a = prep.alumnos().single;
+    await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: a.id, titulo: 'Grupo de los jueves', updatedAt: DateTime.now()));
+    await planAlu.sincronizarCantes();
+
+    // El alumno la retrasa una hora y, otro día, la quita de su agenda.
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    final suya = planAlu.cantes().single;
+    await planAlu.guardarCante(suya.copyWith(fecha: DateTime(2026, 10, 8, 18), notas: 'Llego a las seis'));
+    await prep.sincronizarTodo();
+    var s = prep.sesiones().single;
+    expect(s.fecha, DateTime(2026, 10, 8, 18));
+    expect(s.notas, 'Llego a las seis');
+    expect(s.alumno, a.id);
+    expect(s.titulo, 'Grupo de los jueves');
+    expect(s.preparador, isNull);
+    expect((await db.doc('users/prep/sesiones/s1').get()).data()!['notas'], 'Llego a las seis');
+
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    await planAlu.borrarCante(planAlu.cantes().single);
+    await prep.sincronizarTodo();
+    s = prep.sesiones().single;
+    expect(s.borrado, isFalse, reason: 'quitarla de la agenda del alumno no la borra del preparador');
+  });
+
+  test('borrar todos mis datos rompe los enlaces, libera el código y vacía la nube', () async {
+    final db = FakeFirebaseFirestore();
+    final authPrep = sesion('prep', 'Paula'), authAlu = sesion('alu', 'Álex');
+    final prep = await repo(db, authPrep), alumno = await repo(db, authAlu);
+    final usuarioPrep = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja(), firestore: db, auth: authPrep);
+    final codigo = (await prep.activar()).codigo!;
+    await alumno.enlazarConCodigo(codigo);
+    await prep.sincronizarTodo();
+    await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: prep.alumnos().single.id, updatedAt: DateTime.now()));
+    await usuarioPrep.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1'}));
+    await usuarioPrep.guardarNota('3.A.1', 'Repasar Keynes');
+    // El preparador es a la vez alumno de otro preparador.
+    final otro = await repo(db, sesion('otro', 'Olga'));
+    await prep.enlazarConCodigo((await otro.activar()).codigo!);
+
+    await prep.romperTodosLosEnlaces();
+    await usuarioPrep.borrarTodoEnLaNube();
+
+    expect((await db.doc('codigos/$codigo').get()).exists, isFalse);
+    expect((await db.doc('users/alu/preparadores/prep').get()).exists, isFalse);
+    expect((await db.collection('preparadores').doc('prep').collection('alumnos').get()).docs, isEmpty);
+    expect((await db.doc('preparadores/otro/alumnos/prep').get()).exists, isFalse);
+    for (final c in UsuarioRepo.coleccionesUsuario) {
+      expect((await db.collection('users').doc('prep').collection(c).get()).docs, isEmpty, reason: c);
+    }
+    // Lo del alumno sigue siendo suyo: la sesión que recibió se queda en su agenda.
+    expect((await db.doc('users/alu/cantes/s1').get()).exists, isTrue);
+  });
 }

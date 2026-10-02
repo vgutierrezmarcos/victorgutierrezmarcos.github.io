@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
+import '../../core/constants.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
+import '../../data/repos/preparador_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
@@ -145,7 +147,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: () => setState(() => _otroPreparador = true), icon: const Icon(Icons.add, size: 18), label: const Text('Enlazar con otro preparador'))),
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
-              child: Text('Tu preparador ve los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras.', style: context.textos.labelSmall),
+              child: Text('Tu preparador ve los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.labelSmall),
             ),
     ];
 
@@ -190,6 +192,10 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 )
               else
                 for (final a in alumnos) _filaAlumno(context, a, sesiones),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+                child: Text('Tus alumnos, sesiones y notas privadas solo los ves tú, en todos tus dispositivos. Cada alumno ve únicamente sus propias sesiones y valoraciones, nunca las de los demás.', style: context.textos.labelSmall),
+              ),
               const SizedBox(height: 12),
               Align(
                 alignment: Alignment.centerLeft,
@@ -225,10 +231,28 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             !firebase
                 ? 'Esta compilación no incluye credenciales de Firebase: la sección funciona solo en este dispositivo.'
                 : (conSesion
-                    ? 'No se ha podido reservar tu código. Desliza hacia abajo para reintentarlo.'
+                    ? switch (ref.read(preparadorRepoProvider).errorCodigo) {
+                        ErrorCodigo.permiso => 'El servidor ha rechazado la reserva del código (permiso denegado). Es un problema de configuración de la base de datos, no de tu cuenta: avisa en contacto@victorgutierrezmarcos.es. Mientras, puedes llevar a tus alumnos en este dispositivo.',
+                        ErrorCodigo.red => 'No hay conexión con el servidor. Comprueba la red y vuelve a intentarlo.',
+                        _ => 'No se ha podido reservar tu código. Vuelve a intentarlo.',
+                      }
                     : 'Puedes llevar a tus alumnos solo en este móvil. Para que enlacen su app contigo y reciban tus valoraciones, inicia sesión con Google.'),
             style: context.textos.bodySmall,
           ),
+          if (firebase && conSesion)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: OutlinedButton.icon(
+                onPressed: () async {
+                  final messenger = ScaffoldMessenger.of(context);
+                  await ref.read(perfilPreparadorProvider.notifier).reintentarCodigo();
+                  if (ref.read(perfilPreparadorProvider).codigo != null) messenger.showSnackBar(const SnackBar(content: Text('Código reservado')));
+                  setState(() {});
+                },
+                icon: const Icon(Icons.refresh, size: 18),
+                label: const Text('Reintentar'),
+              ),
+            ),
           if (firebase && !conSesion) Padding(padding: const EdgeInsets.only(top: 10), child: OutlinedButton.icon(onPressed: () => context.go('/mas/cuenta'), icon: const Icon(Icons.login, size: 18), label: const Text('Iniciar sesión'))),
         ]),
       );
@@ -251,10 +275,11 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
           IconButton(
             tooltip: 'Enviar a un alumno',
             icon: const Icon(Icons.ios_share),
-            onPressed: () => SharePlus.instance.share(ShareParams(
-              text: 'Enlaza tu app Oposición TCEE conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario.',
-              subject: 'Código de preparador',
-            )),
+            onPressed: () => compartirTexto(
+              context,
+              'Enlaza tu app Oposición TCEE conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
+              asunto: 'Código de preparador',
+            ),
           ),
         ]),
         Text('El alumno lo escribe en Más → Preparadores → «Tengo preparador».', style: context.textos.bodySmall),

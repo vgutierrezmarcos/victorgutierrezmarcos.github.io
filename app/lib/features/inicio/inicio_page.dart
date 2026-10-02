@@ -189,7 +189,8 @@ class InicioPage extends ConsumerWidget {
             ],
             const TituloSeccion('Accesos rápidos'),
             GridView.count(
-              crossAxisCount: 2,
+              // En pantalla ancha (ordenador) van los cuatro en una fila.
+              crossAxisCount: MediaQuery.sizeOf(context).width >= 720 ? 4 : 2,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               childAspectRatio: 2.2,
