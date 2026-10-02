@@ -1,15 +1,13 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../core/calendario.dart';
 import '../../core/notificaciones.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
@@ -34,10 +32,7 @@ Future<void> exportarCalendario(BuildContext context, WidgetRef ref) async {
     messenger.showSnackBar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
     return;
   }
-  final dir = await getTemporaryDirectory();
-  final f = File('${dir.path}/oposicion_tcee.ics');
-  await f.writeAsString(Calendario.ics(eventos));
-  await SharePlus.instance.share(ShareParams(files: [XFile(f.path, mimeType: 'text/calendar')], subject: 'Calendario de la oposición TCEE'));
+  await guardarFichero(nombre: 'oposicion_tcee.ics', contenido: Calendario.ics(eventos), mime: 'text/calendar', asunto: 'Calendario de la oposición TCEE');
 }
 
 /// Activa o desactiva los avisos de la víspera y de una hora antes de cada cante.

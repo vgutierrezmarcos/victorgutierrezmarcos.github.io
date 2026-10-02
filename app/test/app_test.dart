@@ -72,9 +72,12 @@ void main() {
     ];
   });
 
-  Future<void> arrancar(WidgetTester tester) async {
-    await tester.binding.setSurfaceSize(const Size(480, 3200));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
+  /// Arranca la app en un móvil alto (480 × 3200) o, con [tamano], en un
+  /// ordenador, donde el menú pasa a un raíl lateral.
+  Future<void> arrancar(WidgetTester tester, {Size tamano = const Size(480, 3200)}) async {
+    tester.view.physicalSize = tamano;
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
   }
@@ -106,6 +109,20 @@ void main() {
     expect(temario.tema('5.B.6')!.pdfDeParte, isTrue);
     expect(config.bolasPorParte, {3: 2, 4: 2, 5: 1});
     expect(config.partesARedactar, {5: 2});
+  });
+
+  testWidgets('en el ordenador el menú va en un raíl y la app no pasa de 1000 px', (tester) async {
+    await arrancar(tester, tamano: const Size(1600, 1000));
+    expect(find.byType(NavigationBar), findsNothing);
+    expect(find.byType(NavigationRail), findsOneWidget);
+    expect(tester.getSize(find.byType(NavigationRail).first).height, 1000);
+    expect(tester.getTopLeft(find.byType(NavigationRail)).dx, 300);
+    await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('MÁS')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Iniciar sesión con Google').first);
+    await tester.pumpAndSettle();
+    expect(find.text('TUS DATOS SOLO LOS VES TÚ'), findsOneWidget);
+    expect(find.textContaining('ni otros opositores', findRichText: true), findsOneWidget);
   });
 
   testWidgets('recorre los cinco bloques', (tester) async {

@@ -88,11 +88,9 @@ void main() {
       mejorRacha: 21,
       ultimoDia: Ajustes.claveDia(hoy),
     ));
-    await plan.guardarPlan(Plan(
-      fechas: {1: dia(96, 9, 0), 3: dia(210, 9, 0)},
-      hitos: [Hito(id: 'h1', titulo: 'Simulacro del primer ejercicio', fecha: dia(40, 10, 0))],
-      updatedAt: hoy,
-    ));
+    // Sin fechas de los ejercicios: no se conocen y una fecha de ejemplo en la
+    // página o en el vídeo podría tomarse por oficial (decisión del usuario).
+    await plan.guardarPlan(Plan(updatedAt: hoy));
     Cante hecho(String id, int hace, String tema, int estrellas, int minutos, String comentario, {String titulo = 'Preparador'}) => Cante(
           id: id,
           fecha: dia(-hace),

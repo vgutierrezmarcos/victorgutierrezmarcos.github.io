@@ -19,6 +19,9 @@ import '../models/preparador.dart';
 ///   users/{alumno}/preparadores/{preparador}   permiso que da el alumno
 ///   preparadores/{preparador}/alumnos/{alumno} para que el preparador vea quién se ha enlazado
 ///   users/{alumno}/cantes/{id}                 copia de cada sesión, en la agenda y el diario del alumno
+/// Motivo por el que no se pudo reservar el código de preparador.
+enum ErrorCodigo { permiso, red, otro }
+
 class PreparadorRepo {
   PreparadorRepo({
     required Box alumnos,
@@ -91,17 +94,26 @@ class PreparadorRepo {
     return p;
   }
 
+  /// Por qué falló la última reserva del código (null si no falló).
+  ErrorCodigo? errorCodigo;
+
   Future<String?> _reservarCodigo(String nombre) async {
+    errorCodigo = null;
     try {
       for (var i = 0; i < 6; i++) {
         final codigo = generarCodigo();
         final doc = _db!.collection('codigos').doc(codigo);
-        if ((await doc.get()).exists) continue;
+        // Del servidor: con la caché sin conexión, un get() sin red diría que el código está libre.
+        if ((await doc.get(const GetOptions(source: Source.server))).exists) continue;
         await doc.set({'uid': uid, 'nombre': nombre, 'creado': DateTime.now().toIso8601String()});
         return codigo;
       }
+      errorCodigo = ErrorCodigo.otro;
+    } on FirebaseException catch (e) {
+      // Se reintenta la próxima vez que se abra la sección o con «Reintentar».
+      errorCodigo = e.code == 'permission-denied' ? ErrorCodigo.permiso : (e.code == 'unavailable' ? ErrorCodigo.red : ErrorCodigo.otro);
     } catch (_) {
-      // Sin red o sin permiso: se reintenta la próxima vez que se abra la sección.
+      errorCodigo = ErrorCodigo.otro;
     }
     return null;
   }
@@ -259,6 +271,34 @@ class PreparadorRepo {
     } catch (_) {}
   }
 
+  /// Trae los cambios que un alumno enlazado ha hecho en las sesiones que le
+  /// programó este preparador (cambio de hora, su valoración, notas): el más
+  /// reciente gana. Se conservan el alumno, el título y el borrado del lado del
+  /// preparador, así que si el alumno quita una sesión de su agenda, el
+  /// preparador no la pierde.
+  Future<void> _traerCambiosDeAlumnos() async {
+    if (!conSesion || !perfil().activo) return;
+    final locales = {for (final s in _todasLasSesiones()) s.id: s};
+    for (final a in alumnos().where((a) => a.enlazado)) {
+      try {
+        final snap = await _db!.collection('users').doc(a.uid).collection('cantes').where('preparador', isEqualTo: uid).get();
+        for (final d in snap.docs) {
+          final mia = locales[d.id];
+          if (mia == null) continue;
+          final suya = Cante.fromJson({...d.data(), 'id': d.id});
+          if (!(suya.updatedAt ?? DateTime(0)).isAfter(mia.updatedAt ?? DateTime(0))) continue;
+          final json = {...suya.toJson(), 'alumno': mia.alumno, 'titulo': mia.titulo, 'borrado': mia.borrado}
+            ..remove('preparador')
+            ..remove('preparadorNombre');
+          await _sesiones.put(d.id, json);
+          await _docUsuario?.collection('sesiones').doc(d.id).set(json);
+        }
+      } catch (_) {
+        // Sin red o enlace roto: se intenta en la próxima sincronización.
+      }
+    }
+  }
+
   /// Progreso que comparte un alumno enlazado (null si no lo está o no hay red).
   Future<ProgresoAlumno?> progreso(Alumno a) async {
     if (!conSesion || a.uid == null) return null;
@@ -343,6 +383,26 @@ class PreparadorRepo {
     await _sincronizarColeccion<Alumno>(nombre: 'alumnos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id);
     await _sincronizarColeccion<Cante>(nombre: 'sesiones', caja: _sesiones, leer: Cante.fromJson, escribir: (c) => c.toJson(), marca: (c) => c.updatedAt, id: (c) => c.id);
     await _sincronizarAlumnosEnlazados();
+    await _traerCambiosDeAlumnos();
+  }
+
+  /// Antes de borrar la cuenta: rompe los enlaces con preparadores y alumnos y
+  /// libera el código, para que nadie conserve acceso a nada.
+  Future<void> romperTodosLosEnlaces() async {
+    if (!conSesion) return;
+    await _sincronizarVinculos();
+    for (final v in misPreparadores()) {
+      await desenlazar(v.uid);
+    }
+    final snap = await _db!.collection('preparadores').doc(uid).collection('alumnos').get();
+    for (final d in snap.docs) {
+      final lote = _db.batch()
+        ..delete(d.reference)
+        ..delete(_db.collection('users').doc(d.id).collection('preparadores').doc(uid));
+      await lote.commit();
+    }
+    final codigo = perfil().codigo;
+    if (codigo != null) await _db.collection('codigos').doc(codigo).delete();
   }
 
   // ------------------------------------------------------------------- General

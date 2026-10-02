@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:share_plus/share_plus.dart';
 
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -18,10 +18,11 @@ import '../plan/resultado_sheet.dart';
 List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
 
 /// Envía el informe de un cante al alumno por la app que elija el preparador.
-Future<void> enviarInforme(Cante sesion, Alumno? alumno, Temario? temario) => SharePlus.instance.share(ShareParams(
-      text: informeCante(sesion, alumno: alumno?.nombre, tituloDe: (codigo) => temario?.tema(codigo)?.titulo ?? ''),
-      subject: 'Valoración del cante',
-    ));
+Future<void> enviarInforme(BuildContext context, Cante sesion, Alumno? alumno, Temario? temario) => compartirTexto(
+      context,
+      informeCante(sesion, alumno: alumno?.nombre, tituloDe: (codigo) => temario?.tema(codigo)?.titulo ?? ''),
+      asunto: 'Valoración del cante',
+    );
 
 /// Sesión de cante de un preparador con un alumno: cuándo es, qué temas
 /// entran y, una vez cantada, la valoración.
@@ -132,7 +133,7 @@ class SesionPage extends ConsumerWidget {
               ]),
             ),
             const SizedBox(height: 10),
-            OutlinedButton.icon(onPressed: () => enviarInforme(s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
+            OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (alumno?.enlazado == true) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
           TituloSeccion('Temas que entran (${temas.length})'),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -59,11 +61,46 @@ final _router = GoRouter(
   ],
 );
 
-class TceeApp extends ConsumerWidget {
+class TceeApp extends ConsumerStatefulWidget {
   const TceeApp({super.key});
+  @override
+  ConsumerState<TceeApp> createState() => _TceeAppState();
+}
+
+class _TceeAppState extends ConsumerState<TceeApp> {
+  late final AppLifecycleListener _ciclo;
+  Timer? _periodico;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void initState() {
+    super.initState();
+    // Con sesión, lo que se cambia en otro dispositivo (o lo que programa el
+    // preparador, o lo que marca el alumno) llega al volver a la app y, con
+    // ella abierta, cada pocos minutos.
+    _ciclo = AppLifecycleListener(
+      onResume: () {
+        ref.read(sesionProvider.notifier).sincronizarSiToca();
+        _programar();
+      },
+      onHide: () => _periodico?.cancel(),
+    );
+    _programar();
+  }
+
+  void _programar() {
+    _periodico?.cancel();
+    _periodico = Timer.periodic(const Duration(minutes: 3), (_) => ref.read(sesionProvider.notifier).sincronizarSiToca());
+  }
+
+  @override
+  void dispose() {
+    _periodico?.cancel();
+    _ciclo.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Oposición TCEE',
       debugShowCheckedModeBanner: false,
@@ -78,6 +115,31 @@ class TceeApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       routerConfig: _router,
+      builder: (context, child) => _AnchoMaximo(child: child ?? const SizedBox()),
+    );
+  }
+}
+
+/// En el ordenador la app ocupa, como la web, un máximo de 1000 px centrados
+/// sobre el fondo verde; en el móvil no cambia nada.
+class _AnchoMaximo extends StatelessWidget {
+  const _AnchoMaximo({required this.child});
+  final Widget child;
+  static const ancho = 1000.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final medidas = MediaQuery.of(context);
+    if (medidas.size.width <= ancho + 40) return child;
+    return ColoredBox(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: Center(
+        child: Container(
+          width: ancho,
+          decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.12), blurRadius: 24)]),
+          child: MediaQuery(data: medidas.copyWith(size: Size(ancho, medidas.size.height)), child: child),
+        ),
+      ),
     );
   }
 }
@@ -86,8 +148,36 @@ class _Shell extends StatelessWidget {
   const _Shell({required this.shell});
   final StatefulNavigationShell shell;
 
+  static const _destinos = [
+    (Icons.today_outlined, Icons.today, 'HOY'),
+    (Icons.menu_book_outlined, Icons.menu_book, 'TEMARIO'),
+    (Icons.record_voice_over_outlined, Icons.record_voice_over, 'CANTES'),
+    (Icons.quiz_outlined, Icons.quiz, 'TEST'),
+    (Icons.more_horiz, Icons.more_horiz, 'MÁS'),
+  ];
+
+  void _ir(int i) => shell.goBranch(i, initialLocation: i == shell.currentIndex);
+
   @override
   Widget build(BuildContext context) {
+    // Pantalla ancha (ordenador, tableta en horizontal): el menú va a la izquierda.
+    if (MediaQuery.sizeOf(context).width >= 720) {
+      return Scaffold(
+        body: Row(children: [
+          DecoratedBox(
+            decoration: BoxDecoration(border: Border(right: BorderSide(color: context.colores.borde))),
+            child: NavigationRail(
+              selectedIndex: shell.currentIndex,
+              onDestinationSelected: _ir,
+              labelType: NavigationRailLabelType.all,
+              groupAlignment: -0.9,
+              destinations: [for (final d in _destinos) NavigationRailDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: Text(d.$3))],
+            ),
+          ),
+          Expanded(child: shell),
+        ]),
+      );
+    }
     return Scaffold(
       body: shell,
       // Menú de la web (.main-nav): blanco, con filete superior y etiquetas en mayúsculas.
@@ -95,14 +185,8 @@ class _Shell extends StatelessWidget {
         decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.borde))),
         child: NavigationBar(
           selectedIndex: shell.currentIndex,
-          onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
-          destinations: const [
-            NavigationDestination(icon: Icon(Icons.today_outlined), selectedIcon: Icon(Icons.today), label: 'HOY'),
-            NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'TEMARIO'),
-            NavigationDestination(icon: Icon(Icons.record_voice_over_outlined), selectedIcon: Icon(Icons.record_voice_over), label: 'CANTES'),
-            NavigationDestination(icon: Icon(Icons.quiz_outlined), selectedIcon: Icon(Icons.quiz), label: 'TEST'),
-            NavigationDestination(icon: Icon(Icons.more_horiz), selectedIcon: Icon(Icons.more_horiz), label: 'MÁS'),
-          ],
+          onDestinationSelected: _ir,
+          destinations: [for (final d in _destinos) NavigationDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: d.$3)],
         ),
       ),
     );

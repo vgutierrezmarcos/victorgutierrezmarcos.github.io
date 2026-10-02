@@ -1,6 +1,6 @@
 # Oposición TCEE · app móvil
 
-App Flutter (Android e iOS) complementaria de [victorgutierrezmarcos.es](https://www.victorgutierrezmarcos.es). Todo el contenido (preguntas, temario, configuración) se descarga de la web, así que actualizar la web actualiza la app sin republicarla. Usa el mismo proyecto Firebase que la web (`web-vgm`): el historial de tests se comparte entre web y app, y el resto de datos del opositor (repaso, notas, cantes, planificación) se sincroniza entre sus dispositivos.
+App Flutter (Android, iOS y navegador) complementaria de [victorgutierrezmarcos.es](https://www.victorgutierrezmarcos.es). La versión para el navegador es la misma app compilada para web y se sirve en [victorgutierrezmarcos.es/app/abrir/](https://www.victorgutierrezmarcos.es/app/abrir/) (ver «Versión web»). Todo el contenido (preguntas, temario, configuración) se descarga de la web, así que actualizar la web actualiza la app sin republicarla. Usa el mismo proyecto Firebase que la web (`web-vgm`): el historial de tests se comparte entre web y app, y el resto de datos del opositor (repaso, notas, cantes, planificación) se sincroniza entre sus dispositivos.
 
 ## Qué hace
 
@@ -21,9 +21,10 @@ lib/
 ├── main.dart                  # Firebase + Hive + servicios; funciona sin credenciales Firebase (modo local)
 ├── app.dart                   # go_router: 5 bloques (/hoy, /temario, /cantes, /test, /mas); /examen y /resultados a pantalla completa
 ├── theme/app_theme.dart       # paleta, tipografías y componentes de styles.css (claro y oscuro)
-├── core/                      # constants (URLs), cache_http (ETag + Hive), notificaciones, calendario (.ics), providers (Riverpod)
+├── core/                      # constants (URLs), cache_http (ETag + Hive), notificaciones, calendario (.ics), providers (Riverpod),
+│                              # plataforma (ficheros y grabaciones: _io móvil / _web navegador), firebase_web (configuración web)
 ├── data/models/               # pregunta, resultado (esquema exam_results), temario, plan (cantes, horario, agenda), preparador (alumnos, enlace)
-├── data/repos/                # contenido (web), usuario, plan y preparador (Hive + Firestore), descargas (PDF)
+├── data/repos/                # contenido (web), usuario, plan y preparador (Hive + Firestore), descargas (PDF: _io guarda, _web en memoria)
 ├── features/test/             # motor_test (lógica pura), leitner (réplica de spaced-repetition.js), páginas
 ├── features/cantes/           # bloque Cantes: cabecera con las subpestañas Agenda, Cantar y Diario
 ├── features/cantar/           # sorteo (probabilidades del Excel y sorteos), reloj_cante, vista Cantar, probabilidades
@@ -36,6 +37,8 @@ test/                          # lógica (motor, Leitner, sorteo, plan, preparad
 tool/capturas_test.dart        # capturas de la app con datos de demostración (para la página y el vídeo)
 promo/                         # capturas ligeras (.webp), vídeo de presentación y su póster
 index.html                     # página pública de la app (victorgutierrezmarcos.es/app/)
+web/                           # plantilla de la versión web (index.html con pantalla de carga y pdf.js, manifiesto, iconos)
+abrir/                         # versión web compilada (la genera scripts/publicar-app-web.py; se sube al repositorio)
 android/, ios/                 # proyectos nativos (generados con flutter create y configurados)
 ```
 
@@ -57,6 +60,12 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - `preparadores/{uidPreparador}`: preparadores a los que el usuario da acceso.
 - `notes/{tema}`: nota libre (`texto`) y agenda del tema (`pendientes`, `vueltas`).
 
+## Sincronización y privacidad
+
+Sin cuenta, todo vive en Hive (en el navegador, IndexedDB). Con cuenta, cada repositorio sube lo que cambia en cuanto se guarda y `sincronizarTodo` fusiona nube y local (por elemento y por `updatedAt`). Se sincroniza al arrancar, al iniciar sesión, al volver a la app (`AppLifecycleListener` en `app.dart`) y, con la app abierta, cada 3 minutos (`SesionNotifier.sincronizarSiToca`, como mucho una vez por minuto). Así lo que se hace en el móvil aparece en el ordenador, lo que programa el preparador llega al alumno y lo que el alumno cambia en una sesión (hora, notas, valoración) vuelve al preparador (`_traerCambiosDeAlumnos`, que conserva el alumno, el título y el borrado del lado del preparador).
+
+Privacidad, tal como se explica en la app (`TarjetaPrivacidad` en Cuenta), en `index.html` y en la política: los datos de cada cuenta solo los puede leer esa cuenta (`firestore.rules`), salvo lo que el alumno comparte con el preparador que elige; ni otros opositores ni otros alumnos del mismo preparador ven nada. Las grabaciones no salen del dispositivo. «Borrar todos mis datos» (Cuenta) rompe los enlaces, libera el código de preparador y borra `users/{uid}/…` entero (`PreparadorRepo.romperTodosLosEnlaces` + `UsuarioRepo.borrarTodoEnLaNube`).
+
 ## Preparadores
 
 `data/repos/preparador_repo.dart` y `features/preparador/`. La sección tiene dos lados:
@@ -65,6 +74,23 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - **Tengo preparador**: el alumno escribe el código de seis caracteres de su preparador (`codigos/{codigo}` → uid). Al enlazar crea `users/{alumno}/preparadores/{preparador}` (el permiso) y `preparadores/{preparador}/alumnos/{alumno}` (para que el preparador lo vea en su lista). Desde entonces el preparador lee `users/{alumno}/progress/settings` (temas estudiados y en repaso) y `users/{alumno}/cantes`, y cada sesión que guarda se copia a `users/{alumno}/cantes/{id}`: aparece en la agenda del alumno y, una vez valorada, en su diario. No se comparten tests, notas ni grabaciones. Cualquiera de los dos puede romper el enlace.
 
 El enlace exige que ambos hayan iniciado sesión con Google y que las reglas de `firestore.rules` estén aplicadas en la consola de Firebase. `test/preparador_test.dart` comprueba el flujo completo con Firestore simulado; las reglas no se pueden probar ahí (el simulador no admite funciones), así que hay que verificarlas con dos cuentas reales.
+
+## Versión web
+
+La misma app compilada con `flutter build web`. Diferencias, todas resueltas con `kIsWeb` o con importaciones condicionales (`core/plataforma.dart`, `data/repos/descargas_repo.dart`):
+
+- Firebase se inicia con `opcionesFirebaseWeb` (la app web de `web-vgm`, la misma de `firebase-config.js`) y el inicio de sesión es `signInWithPopup`. Como comparte origen con la web, si ya se ha entrado en victorgutierrezmarcos.es suele estar dentro sin volver a iniciar sesión.
+- El contenido se pide al mismo origen (`Urls.base` = `Uri.base.origin`), sin cabeceras propias: así no hay peticiones entre dominios. En pruebas locales se lee el repositorio servido en localhost.
+- Sin notificaciones (`Notificaciones.disponibles`): se ocultan el recordatorio y los avisos de cantes. Los PDF se leen en memoria con pdf.js (cargado en `web/index.html`; su versión debe coincidir con la de `pdfx`), sin descargas para leer sin conexión. La grabación usa el primer formato que admita el navegador y vive en memoria. El `.ics` y la exportación JSON se descargan; los textos para compartir se copian al portapapeles.
+- En pantallas de 720 px o más el menú pasa a un raíl lateral, y por encima de 1040 px la app se centra con 1000 px de ancho, como la web.
+
+Publicar una versión nueva (cada vez que cambie `lib/` o `web/`):
+
+```bash
+python3 scripts/publicar-app-web.py   # desde la raíz: compila y copia a app/abrir/ (~9 MB)
+```
+
+y subir `app/abrir/`. El motor gráfico (canvaskit) no se copia: lo sirve www.gstatic.com.
 
 ## Diseño
 
@@ -116,7 +142,7 @@ flutter analyze
 flutter test
 ```
 
-`test/app_test.dart` arranca la app completa sin Firebase ni red, con el `temario.json` y el `app-config.json` reales del repositorio, y recorre los cinco bloques y los flujos principales (programar un cante, sortear, cronometrar, guardar en el diario, hacer un test completo, agenda por tema, alta de un alumno y sesión de preparador).
+`test/app_test.dart` arranca la app completa sin Firebase ni red, con el `temario.json` y el `app-config.json` reales del repositorio, comprueba el diseño de ordenador (raíl y 1000 px) y recorre los cinco bloques y los flujos principales (programar un cante, sortear, cronometrar, guardar en el diario, hacer un test completo, agenda por tema, alta de un alumno y sesión de preparador).
 
 Pruebas manuales en el móvil: programar un cante semanal y recibir el aviso; sortear y cantar con el cronómetro con la pantalla apagada; grabar y escucharse; apuntar algo en un tema y verlo al volver a abrirlo; hacer un test sin sesión, iniciar sesión y comprobar que aparece en el historial de la web y en `users/{uid}/exam_results`; modo avión con un PDF descargado; claro y oscuro.
 

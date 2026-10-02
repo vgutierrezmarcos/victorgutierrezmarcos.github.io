@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pdfx/pdfx.dart';
@@ -23,7 +22,7 @@ class TemaPage extends ConsumerStatefulWidget {
 }
 
 class _TemaPageState extends ConsumerState<TemaPage> {
-  File? _fichero;
+  String? _ruta; // fichero descargado (solo en el móvil)
   PdfControllerPinch? _pdf;
   double _progreso = 0;
   Object? _error;
@@ -53,13 +52,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final url = widget.tema.url;
     if (url == null) return;
     try {
-      final f = await ref.read(descargasProvider).obtener(url, progreso: (r, t) {
+      final pdf = await ref.read(descargasProvider).abrir(url, progreso: (r, t) {
         if (t > 0 && mounted) setState(() => _progreso = r / t);
       });
       if (!mounted) return;
       setState(() {
-        _fichero = f;
-        _pdf = PdfControllerPinch(document: PdfDocument.openFile(f.path));
+        _ruta = pdf.ruta;
+        _pdf = PdfControllerPinch(document: pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
       });
     } catch (e) {
       if (mounted) setState(() => _error = e);
@@ -95,8 +94,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               ),
               onPressed: _abrirAgenda,
             ),
-          if (_fichero != null)
-            IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_fichero!.path)], text: '${widget.tema.codigo} ${widget.tema.titulo}'))),
+          if (_ruta != null)
+            IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_ruta!)], text: '${widget.tema.codigo} ${widget.tema.titulo}'))),
           if (!sinPdf) PopupMenuButton<String>(
             onSelected: (v) async {
               if (v == 'web') {
@@ -109,9 +108,9 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                 nav.pop();
               }
             },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'web', child: Text('Abrir en el navegador')),
-              PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
+            itemBuilder: (_) => [
+              PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
+              if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
             ],
           ),
         ],
@@ -148,7 +147,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
                         SizedBox(width: 160, child: LinearProgressIndicator(value: _progreso == 0 ? null : _progreso)),
                         const SizedBox(height: 12),
-                        Text(_progreso == 0 ? 'Descargando PDF…' : 'Descargando ${(100 * _progreso).round()} %', style: context.textos.bodySmall),
+                        Text(_progreso == 0 ? (kIsWeb ? 'Cargando PDF…' : 'Descargando PDF…') : 'Descargando ${(100 * _progreso).round()} %', style: context.textos.bodySmall),
                       ]),
                     )
                   : PdfViewPinch(

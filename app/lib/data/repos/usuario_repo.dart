@@ -360,6 +360,27 @@ class UsuarioRepo {
     await sincronizarNotas();
   }
 
+  /// Subcolecciones de users/{uid} (ver firestore.rules).
+  static const coleccionesUsuario = ['exam_results', 'progress', 'notes', 'cantes', 'alumnos', 'sesiones', 'preparadores'];
+
+  /// Borra todo lo que el usuario tiene en la nube (users/{uid}/…). Los enlaces
+  /// con preparadores y alumnos se rompen antes en [PreparadorRepo].
+  Future<void> borrarTodoEnLaNube() async {
+    final doc = _docUsuario;
+    if (doc == null) return;
+    for (final c in coleccionesUsuario) {
+      final snap = await doc.collection(c).get();
+      // Un lote admite 500 operaciones.
+      for (var i = 0; i < snap.docs.length; i += 400) {
+        final lote = _db!.batch();
+        for (final d in snap.docs.skip(i).take(400)) {
+          lote.delete(d.reference);
+        }
+        await lote.commit();
+      }
+    }
+  }
+
   /// Borra todos los datos locales (cerrar sesión no los borra; esto es explícito).
   Future<void> borrarDatosLocales() async {
     await Future.wait([_resultados.clear(), _leitner.clear(), _ajustes.clear(), _notas.clear()]);

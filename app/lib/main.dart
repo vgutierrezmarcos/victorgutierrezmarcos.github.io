@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -8,6 +9,7 @@ import 'package:intl/date_symbol_data_local.dart';
 
 import 'app.dart';
 import 'core/cache_http.dart';
+import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
 import 'data/repos/contenido_repo.dart';
@@ -21,12 +23,17 @@ Future<void> main() async {
   await Hive.initFlutter();
   await initializeDateFormatting('es');
 
-  // Firebase: usa google-services.json / GoogleService-Info.plist del proyecto web-vgm.
+  // Firebase: usa google-services.json / GoogleService-Info.plist del proyecto web-vgm
+  // (en el navegador, la configuración de la web).
   // Si no están (p. ej. build de desarrollo sin credenciales), la app funciona sin cuenta.
   var firebaseDisponible = false;
   try {
-    await Firebase.initializeApp();
-    FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: true);
+    await Firebase.initializeApp(options: kIsWeb ? opcionesFirebaseWeb : null);
+    try {
+      FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: true);
+    } catch (_) {
+      // En el navegador la caché sin conexión puede no estar disponible (p. ej. ventana privada).
+    }
     firebaseDisponible = true;
   } catch (e) {
     debugPrint('Firebase no disponible: $e');

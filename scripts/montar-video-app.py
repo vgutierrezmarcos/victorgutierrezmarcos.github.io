@@ -49,7 +49,7 @@ def sans(tam, peso='Regular'):
 
 # Cada escena: (inicio, fin, rótulo, título, texto, capturas)
 ESCENAS = [
-    (5, 12, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al examen y al próximo cante, el test diario, el repaso pendiente y tu racha.', ['hoy']),
+    (5, 12, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
     (12, 21, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
     (21, 31, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
     (31, 38, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),

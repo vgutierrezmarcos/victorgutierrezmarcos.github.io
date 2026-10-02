@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- La ruta la pone `flutter build web --base-href /app/abrir/`. -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oposición TCEE · la app en el navegador | Víctor Gutiérrez Marcos</title>
+  <meta name="description" content="La app Oposición TCEE en el navegador: agenda de cantes, sorteo y cronómetro, temario, test y preparadores, sincronizada con tu cuenta. Tus datos solo los ves tú.">
+  <meta name="author" content="Víctor Gutiérrez Marcos">
+  <!-- La página pública de la app es /app/; esta es la herramienta. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.victorgutierrezmarcos.es/app/">
+  <meta name="theme-color" content="#5F2987">
+
+  <!-- Instalable como aplicación (Chrome, Edge, Safari) -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Oposición TCEE">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #E2EFD9; }
+    /* Pantalla de carga: cabecera de la web mientras llega la app. */
+    #carga {
+      position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #5F2987 0%, #4A1F6A 100%); color: #fff;
+      font-family: 'Palatino Linotype', Palatino, Georgia, serif; text-align: center; padding: 24px; box-sizing: border-box;
+      transition: opacity .3s ease;
+    }
+    #carga h1 { font-size: 1.7rem; font-weight: 400; margin: 18px 0 6px; letter-spacing: .02em; }
+    #carga p { font-family: 'Source Sans 3', 'Segoe UI', sans-serif; font-size: .95rem; opacity: .85; margin: 0; }
+    #carga .linea { width: 64px; height: 3px; background: #C9A227; margin: 14px auto 18px; border-radius: 2px; }
+    #carga .barra { width: 160px; height: 3px; background: rgba(255,255,255,.25); border-radius: 2px; overflow: hidden; margin-top: 22px; }
+    #carga .barra::after { content: ''; display: block; width: 40%; height: 100%; background: #fff; animation: ir 1.2s ease-in-out infinite; }
+    #carga img { width: 76px; height: 76px; border-radius: 18px; }
+    #carga .privado { margin-top: 28px; font-size: .8rem; opacity: .7; max-width: 340px; }
+    @keyframes ir { 0% { transform: translateX(-100%); } 100% { transform: translateX(250%); } }
+    #carga.fuera { opacity: 0; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="carga" aria-live="polite">
+    <img src="icons/Icon-192.png" alt="Icono de la app Oposición TCEE">
+    <h1>Oposición TCEE</h1>
+    <div class="linea"></div>
+    <p>Cargando la app…</p>
+    <div class="barra"></div>
+    <p class="privado">Tus datos solo los ves tú: ni otros opositores ni nadie más.</p>
+  </div>
+  <noscript>
+    <p style="font-family: Georgia, serif; padding: 24px;">La app necesita JavaScript. También puedes usar el <a href="/oposicion/temario/primer-ejercicio/test/simulador.html">simulador de test de la web</a>.</p>
+  </noscript>
+
+  <!-- pdf.js para el visor de temas (paquete pdfx). La versión debe coincidir con la de pdfx. -->
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs" type="module"></script>
+  <script type="module">
+    var { pdfjsLib } = globalThis;
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.mjs';
+    globalThis.pdfRenderOptions = {
+      cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',
+      cMapPacked: true,
+    };
+  </script>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var c = document.getElementById('carga');
+      c.classList.add('fuera');
+      setTimeout(function () { c.remove(); }, 400);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

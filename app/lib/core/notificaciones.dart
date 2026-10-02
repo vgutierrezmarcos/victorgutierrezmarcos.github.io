@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
@@ -19,8 +20,11 @@ class Notificaciones {
   static const maxCantesConAviso = 20;
   static bool _listo = false;
 
+  /// Las notificaciones solo existen en la app del móvil.
+  static bool get disponibles => !kIsWeb;
+
   static Future<void> iniciar() async {
-    if (_listo) return;
+    if (_listo || !disponibles) return;
     tzdata.initializeTimeZones();
     try {
       tz.setLocalLocation(tz.getLocation('Europe/Madrid'));
@@ -32,6 +36,7 @@ class Notificaciones {
   }
 
   static Future<bool> pedirPermiso() async {
+    if (!disponibles) return false;
     await iniciar();
     final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     final ios = _plugin.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
@@ -42,6 +47,7 @@ class Notificaciones {
 
   /// Programa (o cancela con [minutosDesdeMedianoche] < 0) el recordatorio diario.
   static Future<void> programarRecordatorio(int minutosDesdeMedianoche) async {
+    if (!disponibles) return;
     await iniciar();
     await _plugin.cancel(_idRecordatorio);
     if (minutosDesdeMedianoche < 0) return;
@@ -68,6 +74,7 @@ class Notificaciones {
   /// Programa los avisos del cronómetro para que suenen aunque la app esté
   /// en segundo plano. Sustituye a los que hubiera.
   static Future<void> programarCronometro(List<({DateTime cuando, String texto})> avisos) async {
+    if (!disponibles) return;
     await cancelarCronometro();
     final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     // Sin permiso de alarmas exactas el aviso puede llegar con algo de retraso.
@@ -94,6 +101,7 @@ class Notificaciones {
   }
 
   static Future<void> cancelarCronometro() async {
+    if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < _maxAvisosCronometro; i++) {
       await _plugin.cancel(_idCronometroProgramado + i);
@@ -113,6 +121,7 @@ class Notificaciones {
   /// Reprograma los recordatorios de los próximos cantes pendientes.
   /// Con [cantes] vacío solo cancela los que hubiera.
   static Future<void> programarCantes(List<Cante> cantes, {DateTime? ahora}) async {
+    if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < 2 * maxCantesConAviso; i++) {
       await _plugin.cancel(_idCantes + i);
@@ -145,6 +154,7 @@ class Notificaciones {
 
   /// Aviso inmediato (cronómetro de cantar un tema en segundo plano).
   static Future<void> avisoCronometro(String texto) async {
+    if (!disponibles) return;
     await iniciar();
     await _plugin.show(
       _idCronometro,

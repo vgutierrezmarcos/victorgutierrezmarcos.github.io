@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -82,7 +83,7 @@ class MasPage extends ConsumerWidget {
           Tarjeta(
             padding: EdgeInsets.zero,
             child: Column(children: [
-              ListTile(
+              if (Notificaciones.disponibles) ListTile(
                 leading: const Icon(Icons.notifications_outlined),
                 title: const Text('Recordatorio diario'),
                 subtitle: Text(hora < 0 ? 'Desactivado' : 'A las ${(hora ~/ 60).toString().padLeft(2, '0')}:${(hora % 60).toString().padLeft(2, '0')}', style: context.textos.labelSmall),
@@ -110,7 +111,7 @@ class MasPage extends ConsumerWidget {
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
                 ),
               ),
-              ListTile(
+              if (ref.read(descargasProvider).guardaSinConexion) ListTile(
                 leading: const Icon(Icons.download_done_outlined),
                 title: const Text('Descargas'),
                 subtitle: Text('${(ref.read(descargasProvider).tamanoTotal() / 1048576).toStringAsFixed(1)} MB en PDFs', style: context.textos.labelSmall),
@@ -125,7 +126,8 @@ class MasPage extends ConsumerWidget {
             ]),
           ),
           const TituloSeccion('Acerca de'),
-          _fila(context, Icons.phone_android, 'La app, explicada', 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
+          _fila(context, Icons.phone_android, kIsWeb ? 'La app en el móvil' : 'La app, explicada', kIsWeb ? 'Descárgala para Android: avisos, grabación y PDF sin conexión' : 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
+          if (!kIsWeb) _fila(context, Icons.computer, 'En el ordenador', 'La misma app en el navegador, con tu cuenta', () => abrirUrl(context, Urls.appWeb)),
           _fila(context, Icons.person_outline, 'Sobre mí', 'Víctor Gutiérrez Marcos · TCEE, promoción LXXIII', () => abrirUrl(context, Urls.sobreMi, enApp: true)),
           _fila(context, Icons.privacy_tip_outlined, 'Privacidad', 'Qué datos guarda la app y cómo borrarlos', () => abrirUrl(context, Urls.politicaPrivacidad, enApp: true)),
           _fila(context, Icons.alternate_email, 'Contacto', config.email, () => abrirUrl(context, 'mailto:${config.email}')),
@@ -133,7 +135,7 @@ class MasPage extends ConsumerWidget {
             future: PackageInfo.fromPlatform(),
             builder: (_, s) => Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: Text('Oposición TCEE · versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}\nContenido de victorgutierrezmarcos.es', textAlign: TextAlign.center, style: context.textos.labelSmall),
+              child: Text('Oposición TCEE · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nContenido de victorgutierrezmarcos.es', textAlign: TextAlign.center, style: context.textos.labelSmall),
             ),
           ),
         ],

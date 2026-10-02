@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants.dart';
+import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -52,8 +54,8 @@ class _CantesPageState extends ConsumerState<CantesPage> with SingleTickerProvid
               }
             },
             itemBuilder: (_) => [
-              const PopupMenuItem(value: 'exportar', child: Text('Exportar al calendario del móvil')),
-              CheckedPopupMenuItem(value: 'avisos', checked: avisos, child: const Text('Avisar antes de cada cante')),
+              PopupMenuItem(value: 'exportar', child: Text(kIsWeb ? 'Descargar para tu calendario (.ics)' : 'Exportar al calendario del móvil')),
+              if (Notificaciones.disponibles) CheckedPopupMenuItem(value: 'avisos', checked: avisos, child: const Text('Avisar antes de cada cante')),
               const PopupMenuItem(value: 'ayuda', child: Text('Cómo cantar un tema (PDF)')),
             ],
           ),

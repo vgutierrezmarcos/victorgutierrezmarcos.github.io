@@ -1,25 +1,32 @@
+import 'package:flutter/foundation.dart';
+
 /// URLs y constantes compartidas con la web victorgutierrezmarcos.es.
 /// Todo el contenido se descarga de la web para no tener que republicar la app
 /// cuando cambian preguntas, temas o artículos.
 class Urls {
   Urls._();
 
-  static const String base = 'https://www.victorgutierrezmarcos.es';
-  static const String test = '$base/oposicion/temario/primer-ejercicio/test';
+  /// La web. En la versión para el navegador, su mismo origen: así las
+  /// descargas no son peticiones entre dominios (y en pruebas locales se lee
+  /// el repositorio servido en localhost).
+  static final String base = kIsWeb ? Uri.base.origin : 'https://www.victorgutierrezmarcos.es';
+  static final String test = '$base/oposicion/temario/primer-ejercicio/test';
 
-  static const String preguntas = '$test/preguntas.json';
-  static const String bloques = '$test/bloques.json';
-  static const String imagenesTest = '$test/img';
-  static const String temario = '$base/oposicion/temario/temario.json';
-  static const String enlaces = '$base/oposicion/enlaces.json';
-  static const String estructura = '$base/oposicion/organizacion/estructura_temario.json';
-  static const String appConfig = '$base/oposicion/app-config.json';
-  static const String comoCantarUnTema =
+  static final String preguntas = '$test/preguntas.json';
+  static final String bloques = '$test/bloques.json';
+  static final String imagenesTest = '$test/img';
+  static final String temario = '$base/oposicion/temario/temario.json';
+  static final String enlaces = '$base/oposicion/enlaces.json';
+  static final String estructura = '$base/oposicion/organizacion/estructura_temario.json';
+  static final String appConfig = '$base/oposicion/app-config.json';
+  static final String comoCantarUnTema =
       '$base/oposicion/organizacion/como_cantar_un_tema.pdf';
-  static const String politicaPrivacidad = '$base/politica-cookies.html';
-  static const String sobreMi = '$base/sobre-mi.html';
-  static const String simuladorWeb = '$test/simulador.html';
-  static const String paginaApp = '$base/app/';
+  static final String politicaPrivacidad = '$base/politica-cookies.html';
+  static final String sobreMi = '$base/sobre-mi.html';
+  static final String simuladorWeb = '$test/simulador.html';
+  static final String paginaApp = '$base/app/';
+  /// La misma app, compilada para el navegador.
+  static final String appWeb = '$base/app/abrir/';
 }
 
 /// Valores por defecto del simulador (idénticos a simulador.html).
