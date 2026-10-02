@@ -10,7 +10,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
-/// Más: blog, comunidad, enlaces, ajustes, cuenta y acerca de.
+/// Más: comunidad, enlaces, ajustes, cuenta y acerca de.
 class MasPage extends ConsumerWidget {
   const MasPage({super.key});
 
@@ -23,9 +23,9 @@ class MasPage extends ConsumerWidget {
     final hora = ajustes.horaRecordatorio;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Más')),
+      appBar: BarraWeb(title: const Text('Más')),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(
             padding: EdgeInsets.zero,
@@ -38,21 +38,16 @@ class MasPage extends ConsumerWidget {
             ),
           ),
           const TituloSeccion('Contenido'),
-          _fila(context, Icons.article_outlined, 'Blog', 'Artículos sobre política económica y comercio', () => context.push('/mas/blog')),
           _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, Urls.simuladorWeb)),
           const TituloSeccion('Comunidad'),
           _fila(context, Icons.forum_outlined, 'Discord / Telegram', config.urlDiscord == null && config.urlTelegram == null ? 'Disponible próximamente' : 'Únete al chat de opositores', () => abrirUrl(context, config.urlDiscord ?? config.urlTelegram)),
-          _fila(context, Icons.mail_outline, 'Newsletter', 'Nuevos artículos y avisos de convocatoria', () => abrirUrl(context, config.urlNewsletter ?? '${Urls.base}/blog/index.html', enApp: true)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
             for (final c in enlaces)
-              Tarjeta(
-                padding: EdgeInsets.zero,
-                child: ExpansionTile(
-                  title: Text(c.nombre, style: context.textos.titleSmall),
-                  children: [for (final e in c.enlaces) ListTile(dense: true, title: Text(e.titulo, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)), trailing: const Icon(Icons.open_in_new, size: 16), onTap: () => abrirUrl(context, e.url))],
-                ),
+              GrupoDesplegable(
+                titulo: c.nombre,
+                children: [for (final e in c.enlaces) ListTile(dense: true, title: Text(e.titulo, style: context.textos.titleSmall?.copyWith(color: context.esquema.primary)), trailing: const Icon(Icons.open_in_new, size: 16), onTap: () => abrirUrl(context, e.url))],
               ),
           ],
           const TituloSeccion('Ajustes'),
@@ -80,7 +75,7 @@ class MasPage extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.dark_mode_outlined),
                 title: const Text('Tema'),
-                trailing: SegmentedButton<bool?>(
+                trailing: SegmentedButton<bool?>(showSelectedIcon: false, 
                   segments: const [ButtonSegment(value: null, label: Text('Auto')), ButtonSegment(value: false, label: Text('Claro')), ButtonSegment(value: true, label: Text('Oscuro'))],
                   selected: {ajustes.temaOscuro},
                   onSelectionChanged: (s) => ref.read(ajustesProvider.notifier).actualizar((a) => s.first == null ? a.copyWith(borrarTema: true) : a.copyWith(temaOscuro: s.first)),

@@ -4,14 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/providers.dart';
-import 'features/blog/blog_page.dart';
 import 'features/cantar/cantar_page.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
 import 'features/plan/convocatoria_page.dart';
-import 'features/plan/cronograma_page.dart';
 import 'features/plan/diario_page.dart';
 import 'features/plan/horario_page.dart';
 import 'features/plan/plan_page.dart';
@@ -33,7 +31,6 @@ final _router = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(path: '/plan', builder: (c, s) => const PlanPage(), routes: [
             GoRoute(path: 'convocatoria', builder: (c, s) => const ConvocatoriaPage()),
-            GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
             GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
             GoRoute(path: 'diario', builder: (c, s) => const DiarioPage()),
           ]),
@@ -54,7 +51,6 @@ final _router = GoRouter(
     // Fuera del shell: pantalla completa sin barra inferior.
     // «Más» se abre desde la barra superior de Inicio (context.push).
     GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
-      GoRoute(path: 'blog', builder: (c, s) => const BlogPage()),
       GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
     ]),
     GoRoute(path: '/examen', builder: (c, s) => ExamenPage(config: s.extra as ConfigTest)),
@@ -93,16 +89,20 @@ class _Shell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: shell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: shell.currentIndex,
-        onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'Inicio'),
-          NavigationDestination(icon: Icon(Icons.event_note_outlined), selectedIcon: Icon(Icons.event_note), label: 'Plan'),
-          NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'Temario'),
-          NavigationDestination(icon: Icon(Icons.quiz_outlined), selectedIcon: Icon(Icons.quiz), label: 'Test'),
-          NavigationDestination(icon: Icon(Icons.record_voice_over_outlined), selectedIcon: Icon(Icons.record_voice_over), label: 'Cantar'),
-        ],
+      // Menú de la web (.main-nav): blanco, con filete superior y etiquetas en mayúsculas.
+      bottomNavigationBar: DecoratedBox(
+        decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.borde))),
+        child: NavigationBar(
+          selectedIndex: shell.currentIndex,
+          onDestinationSelected: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home), label: 'INICIO'),
+            NavigationDestination(icon: Icon(Icons.event_note_outlined), selectedIcon: Icon(Icons.event_note), label: 'PLAN'),
+            NavigationDestination(icon: Icon(Icons.menu_book_outlined), selectedIcon: Icon(Icons.menu_book), label: 'TEMARIO'),
+            NavigationDestination(icon: Icon(Icons.quiz_outlined), selectedIcon: Icon(Icons.quiz), label: 'TEST'),
+            NavigationDestination(icon: Icon(Icons.record_voice_over_outlined), selectedIcon: Icon(Icons.record_voice_over), label: 'CANTAR'),
+          ],
+        ),
       ),
     );
   }

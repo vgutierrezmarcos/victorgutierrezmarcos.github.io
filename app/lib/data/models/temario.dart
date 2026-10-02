@@ -159,7 +159,6 @@ class AppConfig {
     this.urlBoe,
     this.urlDiscord,
     this.urlTelegram,
-    this.urlNewsletter,
     this.email = 'contacto@victorgutierrezmarcos.es',
     this.linkedin,
     this.github,
@@ -181,7 +180,6 @@ class AppConfig {
   final String? urlBoe;
   final String? urlDiscord;
   final String? urlTelegram;
-  final String? urlNewsletter;
   final String email;
   final String? linkedin;
   final String? github;
@@ -222,7 +220,6 @@ class AppConfig {
       urlBoe: conv['urlBoe'] as String?,
       urlDiscord: com['urlDiscord'] as String?,
       urlTelegram: com['urlTelegram'] as String?,
-      urlNewsletter: com['urlNewsletter'] as String?,
       email: con['email'] as String? ?? 'contacto@victorgutierrezmarcos.es',
       linkedin: con['linkedin'] as String?,
       github: con['github'] as String?,

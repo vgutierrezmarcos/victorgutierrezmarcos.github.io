@@ -48,7 +48,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
 
   // Cronómetro
   int _minPreparacion = 0;
-  int _minExposicion = 15;
+  int _minExposicion = 30;
   late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
   Timer? _tic;
   int _hitosAvisados = 0;
@@ -278,7 +278,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     });
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Cantar un tema'),
         actions: [
           IconButton(tooltip: 'Probabilidades', icon: const Icon(Icons.percent), onPressed: () => context.go('/cantar/probabilidades')),
@@ -299,7 +299,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
           final terminado = _reloj.terminado(ahora);
 
           return ListView(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               if (cante != null)
                 Tarjeta(
@@ -321,7 +321,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                 'Sorteo',
                 accion: cante != null
                     ? null
-                    : SegmentedButton<int>(
+                    : SegmentedButton<int>(showSelectedIcon: false, 
                         segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 5, label: Text('5.º'))],
                         selected: {_ejercicio},
                         onSelectionChanged: (s) => setState(() {
@@ -335,7 +335,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
               if (cante == null)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: SegmentedButton<_Modo>(
+                  child: SegmentedButton<_Modo>(showSelectedIcon: false, 
                     segments: const [ButtonSegment(value: _Modo.oficial, label: Text('Como en el examen')), ButtonSegment(value: _Modo.bolsa, label: Text('Mi bolsa'))],
                     selected: {_modo},
                     onSelectionChanged: (s) => setState(() {
@@ -389,17 +389,21 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                 icon: const Icon(Icons.casino_outlined),
                 label: Text(oficial ? 'Sortear $bolas ${bolas == 1 ? 'tema' : 'temas'} de cada parte' : 'Sortear $k ${k == 1 ? 'tema' : 'temas'}'),
               ),
+              if (_sorteados.isNotEmpty) const SizedBox(height: 4),
               for (final x in _sorteados)
-                Tarjeta(
-                  color: _elegido == x ? context.colores.primarioPalido : null,
-                  onTap: () => setState(() => _elegido = x),
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  child: Row(children: [
-                    Icon(ajustes.temasEstudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: ajustes.temasEstudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
-                    const SizedBox(width: 10),
-                    Expanded(child: Text('${x.codigo} · ${x.titulo}', maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
-                    if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
-                  ]),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Tarjeta(
+                    color: _elegido == x ? context.colores.primarioPalido : null,
+                    onTap: () => setState(() => _elegido = x),
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    child: Row(children: [
+                      Icon(ajustes.temasEstudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: ajustes.temasEstudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
+                      const SizedBox(width: 10),
+                      Expanded(child: TextoTema(x.codigo, x.titulo)),
+                      if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
+                    ]),
+                  ),
                 ),
               if (_sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Toca el tema que vas a cantar.', style: context.textos.labelSmall)),
               const TituloSeccion('Cronómetro'),
@@ -418,7 +422,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: _reloj.progresoFase(ahora).clamp(0, 1), minHeight: 6, backgroundColor: context.colores.fondoClaro)),
                   const SizedBox(height: 10),
                   _duraciones(context, 'Preparación', [0, 5, 10, 15], _minPreparacion, preparacion: true),
-                  _duraciones(context, 'Exposición', [10, 12, 15, 20], _minExposicion, preparacion: false),
+                  _duraciones(context, 'Exposición', [15, 20, 30], _minExposicion, preparacion: false),
                   const SizedBox(height: 12),
                   Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
                     OutlinedButton.icon(onPressed: _reiniciar, icon: const Icon(Icons.restart_alt), label: const Text('Reiniciar')),
@@ -499,10 +503,11 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     );
   }
 
-  Widget _duraciones(BuildContext context, String etiqueta, List<int> opciones, int actual, {required bool preparacion}) => Row(children: [
-        SizedBox(width: 84, child: Text(etiqueta, style: context.textos.labelMedium)),
-        Expanded(
-          child: Wrap(spacing: 4, children: [
+  Widget _duraciones(BuildContext context, String etiqueta, List<int> opciones, int actual, {required bool preparacion}) => Padding(
+        padding: const EdgeInsets.only(top: 6),
+        child: Column(children: [
+          Text('$etiqueta (min)', style: context.textos.labelMedium),
+          Wrap(alignment: WrapAlignment.center, spacing: 4, children: [
             for (final m in {...opciones, actual}.toList()..sort())
               ChoiceChip(
                 label: Text(m == 0 ? 'No' : '$m'),
@@ -517,8 +522,8 @@ class _CantarPageState extends ConsumerState<CantarPage> {
               ),
             ActionChip(label: const Text('Otro'), visualDensity: VisualDensity.compact, onPressed: _reloj.corriendo ? null : () => _otraDuracion(preparacion: preparacion)),
           ]),
-        ),
-      ]);
+        ]),
+      );
 
   String _formatoReloj(Duration d) {
     // Se redondea hacia arriba para que el reloj no marque 00:00 antes de tiempo.

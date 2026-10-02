@@ -30,6 +30,7 @@ void main() {
   late UsuarioRepo usuario;
   late PlanRepo plan;
   late List<Override> overrides;
+  late BancoPreguntas banco;
   var n = 0;
 
   Future<Box> caja() => Hive.openBox('prueba${n++}', bytes: Uint8List(0));
@@ -41,6 +42,7 @@ void main() {
   });
 
   setUp(() async {
+    banco = const BancoPreguntas(preguntas: [], examenes: [], temas: {});
     usuario = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja());
     plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja());
     final http = CacheHttp(Dio(), await caja());
@@ -55,10 +57,9 @@ void main() {
       )),
       temarioProvider.overrideWith((ref) => temario),
       configProvider.overrideWith((ref) => config),
-      preguntasProvider.overrideWith((ref) => const BancoPreguntas(preguntas: [], examenes: [], temas: {})),
+      preguntasProvider.overrideWith((ref) => banco),
       bloquesProvider.overrideWith((ref) => Bloques.vacio),
       enlacesProvider.overrideWith((ref) => <CategoriaEnlaces>[]),
-      articulosProvider.overrideWith((ref) => []),
     ];
   });
 
@@ -70,10 +71,10 @@ void main() {
   }
 
   Future<void> pestana(WidgetTester tester, String nombre) async {
-    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
     await tester.pumpAndSettle();
     // Segundo toque: vuelve a la raíz de la pestaña si se quedó en una subpágina.
-    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
     await tester.pumpAndSettle();
   }
 
@@ -95,12 +96,13 @@ void main() {
     await arrancar(tester);
     await pestana(tester, 'Inicio');
     expect(find.text('Sin cantes programados'), findsOneWidget);
-    expect(find.text('Fija la fecha del examen'), findsOneWidget);
+    expect(find.text('FIJA LA FECHA DEL EXAMEN'), findsOneWidget);
 
     await pestana(tester, 'Plan');
     expect(find.text('Programa tu próximo cante'), findsOneWidget);
     expect(find.byType(TableCalendar<Object>), findsOneWidget);
-    expect(find.text('Cronograma de temas'), findsOneWidget);
+    expect(find.text('Cronograma de temas'), findsNothing);
+    expect(find.text('Horario de estudio'), findsOneWidget);
 
     await pestana(tester, 'Temario');
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
@@ -112,7 +114,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('plan: convocatoria, cronograma, horario, diario y probabilidades', (tester) async {
+  testWidgets('plan: convocatoria, horario, diario y probabilidades', (tester) async {
     await usuario.guardarAjustes(Ajustes(temasEstudiados: {
       for (var i = 1; i <= 30; i++) ...['3.A.$i', '3.B.$i'],
     }));
@@ -124,22 +126,6 @@ void main() {
     expect(find.text('Toca para poner la fecha'), findsNWidgets(5));
 
     await pestana(tester, 'Plan');
-    await tocar(tester, find.text('Cronograma de temas'));
-    // Faltan 15 + 15 del tercero y 30 + 26 del cuarto = 86 temas, a 3 por semana.
-    expect(find.textContaining('86 temas en 29 semanas'), findsOneWidget);
-    await tocar(tester, find.text('Crear cronograma'));
-    expect(find.text('0 de 86 temas'), findsOneWidget);
-    expect(find.text('Semana 1 · esta semana'), findsOneWidget);
-    // Alternando partes, la primera semana empieza por 3.A.31, 3.B.31 y 4.A.1.
-    expect(find.textContaining('3.A.31 ·'), findsOneWidget);
-    expect(find.textContaining('4.A.1 ·'), findsOneWidget);
-    await tocar(tester, find.byTooltip('Hecho'));
-    expect(find.text('1 de 86 temas'), findsOneWidget);
-    expect(plan.plan().cronograma.hechos, 1);
-    expect(usuario.ajustes().temasEstudiados.contains('3.A.31'), isTrue);
-
-    await pestana(tester, 'Plan');
-    expect(find.textContaining('Semana 1 de 29 · 1 de 86 temas'), findsOneWidget);
     await tocar(tester, find.text('Horario de estudio'));
     expect(find.text('52,0 horas de estudio a la semana.'), findsOneWidget);
 
@@ -149,9 +135,9 @@ void main() {
 
     await pestana(tester, 'Plan');
     await tocar(tester, find.text('Probabilidades'));
-    // 31 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
+    // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
     expect(find.text('TERCER EJERCICIO'), findsOneWidget);
-    final p3 = Sorteo.probEjercicio([const ParteSorteo(total: 45, sabidos: 31), const ParteSorteo(total: 45, sabidos: 30)]);
+    final p3 = Sorteo.probEjercicio([const ParteSorteo(total: 45, sabidos: 30), const ParteSorteo(total: 45, sabidos: 30)]);
     expect(find.text('${(100 * p3).toStringAsFixed(1).replaceAll('.', ',')} %'), findsOneWidget);
     expect(find.text('0,0 %'), findsNWidgets(3)); // total, cuarto y quinto
     expect(tester.takeException(), isNull);
@@ -197,13 +183,17 @@ void main() {
     expect(find.text('Nuevo cante'), findsOneWidget);
     await tester.enterText(find.widgetWithText(TextField, 'Preparador, grupo de cante… (opcional)'), 'Grupo de los jueves');
     await tocar(tester, find.text('Todo el ejercicio'));
-    await tocar(tester, find.text('20 min'));
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min')).selected, isTrue); // duración por defecto
+    await tocar(tester, find.text('Otro'));
+    await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), '40');
+    await tocar(tester, find.text('Aceptar'));
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '40 min')).selected, isTrue);
     await tocar(tester, find.text('Guardar'));
 
     final c = plan.cantes().single;
     expect(c.titulo, 'Grupo de los jueves');
     expect(c.bolsa, TipoBolsa.ejercicio);
-    expect(c.minutos, 20);
+    expect(c.minutos, 40);
     expect(c.fecha.hour, 17);
     expect(c.pendiente, isTrue);
     expect(find.text('Nuevo cante'), findsNothing);
@@ -216,7 +206,7 @@ void main() {
     await pestana(tester, 'Cantar');
     await tocar(tester, find.text('Sortear 2 temas de cada parte'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
-    expect(find.text('15:00'), findsOneWidget);
+    expect(find.text('30:00'), findsOneWidget); // 30 minutos por defecto
     await tocar(tester, find.text('Empezar'));
     await tester.pump(const Duration(milliseconds: 600));
     expect(find.text('Pausar'), findsOneWidget);
@@ -241,6 +231,43 @@ void main() {
     await tocar(tester, find.text('Diario de cantes'));
     expect(find.text('HISTORIAL'), findsOneWidget);
     expect(find.textContaining(c.resultado!.temaCantado!), findsWidgets);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('simulador: configurar, responder, finalizar y revisar', (tester) async {
+    Pregunta p(int id, String tema, String correcta) => Pregunta(
+        id: id, examen: 'Examen 2024', numero: id, temas: [tema], enunciado: 'Enunciado de la pregunta $id',
+        opciones: {'a': 'Opción A de $id', 'b': 'Opción B de $id', 'c': 'Opción C de $id', 'd': 'Opción D de $id'}, respuesta: [correcta], oficial: true);
+    banco = BancoPreguntas(preguntas: [p(1, '3.A.1', 'a'), p(2, '3.A.1', 'b'), p(3, '3.B.2', 'c')], examenes: const [], temas: const {'3.A.1': 'Objeto y métodos', '3.B.2': 'Comercio'});
+    await arrancar(tester);
+    await pestana(tester, 'Test');
+    expect(find.text('CONFIGURACIÓN DEL EXAMEN'), findsNothing); // es un subtítulo, no un título de sección
+    expect(find.text('Configuración del examen'), findsOneWidget);
+    expect(find.text('DISPONIBLES'), findsOneWidget);
+    await tocar(tester, find.text('Comenzar test'));
+
+    expect(find.text('Pregunta 1 de 3'), findsOneWidget);
+    // Responde la opción a) de las tres preguntas: acierta solo la que tenga la «a» como correcta.
+    for (var i = 0; i < 3; i++) {
+      await tocar(tester, find.textContaining('Opción A de'));
+      if (i < 2) await tocar(tester, find.text('Siguiente'));
+    }
+    await tocar(tester, find.byTooltip('Navegador de preguntas'));
+    expect(find.textContaining('3 respondidas'), findsOneWidget);
+    await tester.tapAt(const Offset(10, 10)); // cierra la rejilla
+    await tester.pumpAndSettle();
+    await tocar(tester, find.widgetWithText(FilledButton, 'Finalizar'));
+    expect(find.text('Has respondido todas las preguntas.'), findsOneWidget);
+    await tocar(tester, find.descendant(of: find.byType(AlertDialog), matching: find.text('Finalizar')));
+
+    expect(find.text('CORRECTAS'), findsOneWidget);
+    expect(find.text('REVISIÓN'), findsOneWidget);
+    expect(find.text('Tu respuesta'), findsNWidgets(3));
+    final r = usuario.resultadosLocales().single;
+    expect(r.correctas, 1);
+    expect(r.incorrectas, 2);
+    await tocar(tester, find.text('Nuevo test'));
+    expect(find.text('Comenzar test'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

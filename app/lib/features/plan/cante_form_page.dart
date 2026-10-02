@@ -22,7 +22,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late final _titulo = TextEditingController(text: widget.cante?.titulo ?? '');
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late DateTime _fecha;
-  late int _minutos = widget.cante?.minutos ?? 15;
+  late int _minutos = widget.cante?.minutos ?? 30;
   late int _ejercicio = widget.cante?.ejercicio ?? 3;
   late TipoBolsa _bolsa = widget.cante?.bolsa ?? TipoBolsa.estudiados;
   late List<String> _temas = widget.cante?.temas ?? const [];
@@ -53,6 +53,22 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   Future<void> _elegirHora() async {
     final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_fecha), helpText: 'Hora del cante');
     if (t != null) setState(() => _fecha = DateTime(_fecha.year, _fecha.month, _fecha.day, t.hour, t.minute));
+  }
+
+  Future<void> _otraDuracion() async {
+    final ctrl = TextEditingController(text: '$_minutos');
+    final min = await showDialog<int>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text('Duración del cante'),
+        content: TextField(controller: ctrl, autofocus: true, keyboardType: TextInputType.number, decoration: const InputDecoration(suffixText: 'min')),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(c, int.tryParse(ctrl.text.trim())), child: const Text('Aceptar')),
+        ],
+      ),
+    );
+    if (min != null && min > 0 && min <= 240) setState(() => _minutos = min);
   }
 
   Future<void> _elegirTemas() async {
@@ -93,12 +109,12 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: Text(_edicion ? 'Editar cante' : 'Nuevo cante'),
         actions: [TextButton(onPressed: _guardar, child: const Text('Guardar'))],
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           const TituloSeccion('Cuándo'),
           Row(children: [
@@ -133,7 +149,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           const TituloSeccion('Con quién o dónde'),
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Preparador, grupo de cante… (opcional)')),
           const TituloSeccion('Qué temas entran'),
-          SegmentedButton<int>(
+          SegmentedButton<int>(showSelectedIcon: false, 
             segments: const [
               ButtonSegment(value: 3, label: Text('3.º')),
               ButtonSegment(value: 4, label: Text('4.º')),
@@ -162,9 +178,11 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             ),
           if (_bolsa == TipoBolsa.lista)
             OutlinedButton.icon(onPressed: _elegirTemas, icon: const Icon(Icons.checklist, size: 18), label: Text(_temas.isEmpty ? 'Elegir temas' : '${_temas.length} temas elegidos')),
-          const TituloSeccion('Tiempo de exposición'),
+          const TituloSeccion('Duración'),
           Wrap(spacing: 6, children: [
-            for (final m in [10, 12, 15, 20, 30]) ChoiceChip(label: Text('$m min'), selected: _minutos == m, onSelected: (_) => setState(() => _minutos = m)),
+            // Si se eligió otra duración, aparece como una opción más.
+            for (final m in {15, 20, 30, 45, _minutos}.toList()..sort()) ChoiceChip(label: Text('$m min'), selected: _minutos == m, onSelected: (_) => setState(() => _minutos = m)),
+            ActionChip(label: const Text('Otro'), onPressed: _otraDuracion),
           ]),
           const TituloSeccion('Notas'),
           TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Lo que quieras recordar para este cante (opcional)')),

@@ -20,7 +20,7 @@ import 'cante_page.dart';
 import 'cantes_util.dart';
 
 /// Plan: agenda de cantes con calendario y cuentas atrás, y acceso a la
-/// convocatoria, el cronograma, el horario, el diario y las probabilidades.
+/// convocatoria, el horario, el diario y las probabilidades.
 class PlanPage extends ConsumerStatefulWidget {
   const PlanPage({super.key});
   @override
@@ -88,10 +88,9 @@ class _PlanPageState extends ConsumerState<PlanPage> {
     final delDia = eventosDe(_dia);
     final siguiente = proximos.isEmpty ? null : proximos.first;
     final proximaFecha = (fechas.entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value))).firstOrNull;
-    final semana = plan.cronograma.semanaDe(ahora);
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Plan'),
         actions: [
           IconButton(tooltip: 'Exportar al calendario del móvil', icon: const Icon(Icons.ios_share), onPressed: _exportar),
@@ -110,7 +109,7 @@ class _PlanPageState extends ConsumerState<PlanPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(onPressed: () => _nuevoCante(_dia), icon: const Icon(Icons.add), label: const Text('Cante')),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 96),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           if (siguiente != null)
             Tarjeta(
@@ -191,14 +190,6 @@ class _PlanPageState extends ConsumerState<PlanPage> {
             titulo: 'Convocatoria',
             subtitulo: proximaFecha == null ? 'Fechas de los ejercicios e hitos' : '${nombreEjercicio(proximaFecha.key)}: faltan ${diasHasta(proximaFecha.value)} días',
             onTap: () => context.go('/plan/convocatoria'),
-          ),
-          FilaEnlace(
-            icono: Icons.view_week_outlined,
-            titulo: 'Cronograma de temas',
-            subtitulo: plan.cronograma.vacio
-                ? 'Reparte los temas por semanas hasta el examen'
-                : 'Semana ${semana.clamp(1, plan.cronograma.semanas)} de ${plan.cronograma.semanas} · ${plan.cronograma.hechos} de ${plan.cronograma.entradas.length} temas',
-            onTap: () => context.go('/plan/cronograma'),
           ),
           FilaEnlace(
             icono: Icons.schedule,

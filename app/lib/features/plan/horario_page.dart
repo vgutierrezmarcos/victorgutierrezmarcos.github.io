@@ -65,7 +65,7 @@ class _HorarioPageState extends ConsumerState<HorarioPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: BarraWeb(
         title: const Text('Horario de estudio'),
         actions: [
           if (_cambiado) TextButton(onPressed: _guardar, child: const Text('Guardar')),
@@ -79,7 +79,7 @@ class _HorarioPageState extends ConsumerState<HorarioPage> {
         ],
       ),
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+        padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Text('Elige una actividad y toca las franjas para pintarlas. Mantén pulsado y arrastra para pintar varias seguidas.', style: context.textos.bodySmall),
           const SizedBox(height: 8),

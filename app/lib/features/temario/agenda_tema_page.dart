@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../test/motor_test.dart';
 
 /// Agenda de un tema: lo que te apuntas para la próxima vuelta, las vueltas
 /// que llevas, cómo te ha ido al cantarlo y tu nota libre.
@@ -15,7 +17,7 @@ class AgendaTemaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
-        appBar: AppBar(title: Text('Agenda · ${tema.codigo}')),
+        appBar: BarraWeb(title: Text('Agenda · ${tema.codigo}')),
         body: AgendaTemaVista(tema: tema),
       );
 }
@@ -66,6 +68,21 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
     final resueltos = agenda.resueltos;
     final notifier = ref.read(agendasProvider.notifier);
     final fecha = DateFormat('d MMM y', 'es');
+
+    // Simulador: preguntas de este tema y cómo le ha ido en los tests hechos en la app.
+    final banco = ref.watch(preguntasProvider).value;
+    final delTema = banco == null ? const [] : MotorTest.filtrar(banco, ConfigTest(temas: {_codigo}));
+    var respondidas = 0, acertadas = 0;
+    if (banco != null && delTema.isNotEmpty) {
+      final ids = {for (final p in delTema) p.id};
+      for (final r in ref.watch(historialProvider).value ?? const []) {
+        r.respuestas.forEach((id, letra) {
+          if (!ids.contains(id)) return;
+          respondidas++;
+          if (letra != null && (banco.porId(id)?.esCorrecta(letra) ?? false)) acertadas++;
+        });
+      }
+    }
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
@@ -138,6 +155,24 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
             const SizedBox(width: 10),
             Expanded(child: Estadistica(valor: stats.valoracionMedia == 0 ? '—' : stats.valoracionMedia.toStringAsFixed(1).replaceAll('.', ','), etiqueta: 'valoración media', icono: Icons.star_outline, color: stats.flojo ? Paleta.fallo : null)),
           ]),
+        ],
+        if (delTema.isNotEmpty) ...[
+          const TituloSeccion('Test de este tema'),
+          Tarjeta(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                '${delTema.length} ${delTema.length == 1 ? 'pregunta oficial' : 'preguntas oficiales'} de este tema en el simulador.'
+                '${respondidas == 0 ? '' : ' Has acertado $acertadas de $respondidas (${(100 * acertadas / respondidas).round()} %).'}',
+                style: context.textos.bodySmall,
+              ),
+              const SizedBox(height: 10),
+              FilledButton.icon(
+                onPressed: () => context.push('/examen', extra: ConfigTest(temas: {_codigo}, numPreguntas: delTema.length.clamp(1, 20), minutos: 0)),
+                icon: const Icon(Icons.quiz_outlined, size: 18),
+                label: Text('Hacer test de ${delTema.length.clamp(1, 20)} preguntas'),
+              ),
+            ]),
+          ),
         ],
         const TituloSeccion('Nota libre'),
         TextField(

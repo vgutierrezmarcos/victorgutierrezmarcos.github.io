@@ -11,8 +11,8 @@ import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../test/motor_test.dart';
 
-/// Portada: cuentas atrás (examen y próximo cante), racha, test diario, temas
-/// de la semana, probabilidad de aprobar, último artículo y accesos rápidos.
+/// Portada: cuentas atrás (examen y próximo cante), racha, test diario,
+/// probabilidad de aprobar y accesos rápidos.
 class InicioPage extends ConsumerWidget {
   const InicioPage({super.key});
 
@@ -22,7 +22,6 @@ class InicioPage extends ConsumerWidget {
     final config = ref.watch(configProvider).value;
     final usuario = ref.watch(usuarioActualProvider);
     final diarioHecho = ref.watch(testDiarioHechoProvider);
-    final articulos = ref.watch(articulosProvider).value ?? [];
     final banco = ref.watch(preguntasProvider);
     final leitner = ref.watch(leitnerProvider);
     // Próxima fecha de examen: el primer ejercicio que aún no ha pasado.
@@ -32,33 +31,29 @@ class InicioPage extends ConsumerWidget {
     final dias = fecha == null ? null : diasHasta(fecha);
     final racha = ajustes.rachaVigente();
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
-    final crono = ref.watch(planProvider.select((p) => p.cronograma));
-    final semana = crono.semanaDe(DateTime.now());
-    final temasSemana = crono.deSemana(semana);
-    final temario = ref.watch(temarioProvider).value;
     final prob = ref.watch(probabilidadAprobarProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(usuario == null ? 'Oposición TCEE' : 'Hola, ${usuario.displayName?.split(' ').first ?? ''}'),
+      appBar: BarraWeb(
+        title: const Text('Oposición TCEE'),
+        subtitulo: usuario == null ? 'Técnico Comercial y Economista del Estado' : 'Hola, ${usuario.displayName?.split(' ').first ?? ''}',
         actions: [
           IconButton(
             tooltip: 'Cuenta',
             icon: usuario?.photoURL != null ? CircleAvatar(radius: 14, backgroundImage: NetworkImage(usuario!.photoURL!)) : const Icon(Icons.account_circle_outlined),
             onPressed: () => context.push('/mas/cuenta'),
           ),
-          IconButton(tooltip: 'Más: blog, comunidad, enlaces y ajustes', icon: const Icon(Icons.menu), onPressed: () => context.push('/mas')),
+          IconButton(tooltip: 'Más: comunidad, enlaces y ajustes', icon: const Icon(Icons.menu), onPressed: () => context.push('/mas')),
         ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(configProvider);
-          ref.invalidate(articulosProvider);
           ref.invalidate(historialProvider);
           ref.invalidate(temarioProvider);
         },
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
@@ -66,29 +61,26 @@ class InicioPage extends ConsumerWidget {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Tarjeta(color: context.colores.dorado.withValues(alpha: 0.12), child: Row(children: [Icon(Icons.campaign_outlined, color: context.colores.dorado), const SizedBox(width: 10), Expanded(child: Text(a, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)))])),
                 ),
-            Row(children: [
-              Expanded(
-                child: Tarjeta(
-                  onTap: () => context.go('/plan/convocatoria'),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Icon(Icons.event_outlined, color: context.esquema.primary, size: 20),
-                    const SizedBox(height: 6),
-                    Text(dias == null ? '—' : '$dias', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
-                    Text(dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}', style: context.textos.labelMedium),
-                    if (fecha != null) Text(DateFormat('d MMM y', 'es').format(fecha), style: context.textos.labelSmall),
-                  ]),
+            IntrinsicHeight(
+              child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Expanded(
+                  child: Estadistica(
+                    onTap: () => context.go('/plan/convocatoria'),
+                    valor: dias == null ? '—' : '$dias',
+                    etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
+                    detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Estadistica(
-                  valor: '$racha',
-                  etiqueta: racha == 1 ? 'día de racha' : 'días de racha',
-                  icono: Icons.local_fire_department_outlined,
-                  color: racha > 0 ? context.colores.dorado : null,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Estadistica(
+                    valor: '$racha',
+                    etiqueta: racha == 1 ? 'día de racha' : 'días de racha',
+                    color: racha > 0 ? context.colores.dorado : null,
+                  ),
                 ),
-              ),
-            ]),
+              ]),
+            ),
             const SizedBox(height: 10),
             Tarjeta(
               onTap: cante == null ? () => context.go('/plan') : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
@@ -137,25 +129,6 @@ class InicioPage extends ConsumerWidget {
                 ]),
               ),
             ],
-            if (temasSemana.isNotEmpty) ...[
-              TituloSeccion('Esta semana', accion: TextButton(onPressed: () => context.go('/plan/cronograma'), child: const Text('Cronograma'))),
-              Tarjeta(
-                onTap: () => context.go('/plan/cronograma'),
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  for (final e in temasSemana)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2),
-                      child: Row(children: [
-                        Icon(e.hecho ? Icons.check_circle : Icons.circle_outlined, size: 16, color: e.hecho ? Paleta.acierto : context.colores.textoClaro),
-                        const SizedBox(width: 8),
-                        Expanded(child: Text('${e.codigo} · ${temario?.tema(e.codigo)?.titulo ?? ''}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
-                      ]),
-                    ),
-                  if (crono.desfase(DateTime.now()) < 0) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Llevas ${-crono.desfase(DateTime.now())} temas de retraso de semanas anteriores.', style: context.textos.labelSmall?.copyWith(color: Paleta.fallo))),
-                ]),
-              ),
-            ],
             if (prob != null && prob.temasSabidos > 0) ...[
               const SizedBox(height: 10),
               Tarjeta(
@@ -164,6 +137,7 @@ class InicioPage extends ConsumerWidget {
                   Icon(Icons.percent, color: context.esquema.primary),
                   const SizedBox(width: 14),
                   Expanded(child: Text('Probabilidad de aprobar los ejercicios de temas con lo que llevas estudiado', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
+                  const SizedBox(width: 12),
                   Text(porcentaje(prob.total), style: context.textos.titleMedium?.copyWith(color: context.esquema.primary)),
                 ]),
               ),
@@ -179,22 +153,10 @@ class InicioPage extends ConsumerWidget {
               children: [
                 _acceso(context, Icons.quiz_outlined, 'Nuevo test', () => context.go('/test')),
                 _acceso(context, Icons.casino_outlined, 'Sortear temas', () => context.go('/cantar')),
-                _acceso(context, Icons.view_week_outlined, 'Cronograma', () => context.go('/plan/cronograma')),
+                _acceso(context, Icons.percent, 'Probabilidades', () => context.go('/cantar/probabilidades')),
                 _acceso(context, Icons.insights_outlined, 'Estadísticas', () => context.go('/test/estadisticas')),
               ],
             ),
-            if (articulos.isNotEmpty) ...[
-              TituloSeccion('Último artículo', accion: TextButton(onPressed: () => context.push('/mas/blog'), child: const Text('Ver blog'))),
-              Tarjeta(
-                onTap: () => abrirUrl(context, articulos.first.url, enApp: true),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(articulos.first.titulo, style: context.textos.titleMedium),
-                  if (articulos.first.fecha != null) Text(DateFormat('d MMMM y', 'es').format(articulos.first.fecha!), style: context.textos.labelSmall),
-                  const SizedBox(height: 6),
-                  Text(_sinHtml(articulos.first.descripcion), maxLines: 3, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
-                ]),
-              ),
-            ],
           ],
         ),
       ),
@@ -212,5 +174,3 @@ class InicioPage extends ConsumerWidget {
       );
 
 }
-
-String _sinHtml(String s) => s.replaceAll(RegExp(r'<[^>]+>'), '').replaceAll('&nbsp;', ' ').trim();

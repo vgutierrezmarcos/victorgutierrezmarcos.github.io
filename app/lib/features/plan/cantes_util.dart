@@ -40,7 +40,7 @@ EventoCalendario eventoDeCante(Cante c) => EventoCalendario(
       uid: 'cante-${c.id}',
       titulo: 'Cante TCEE${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}',
       inicio: c.fecha,
-      fin: c.fecha.add(const Duration(hours: 1)),
+      fin: c.fecha.add(Duration(minutes: c.minutos)),
       descripcion: [descripcionBolsa(c), if (c.notas.isNotEmpty) c.notas].join('\n'),
       avisoMinutos: 60,
     );

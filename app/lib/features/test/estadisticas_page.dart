@@ -21,7 +21,7 @@ class EstadisticasPage extends ConsumerWidget {
     final bloques = ref.watch(bloquesProvider).value ?? Bloques.vacio;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Estadísticas')),
+      appBar: BarraWeb(title: const Text('Estadísticas')),
       body: historial.when(
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(historialProvider)),
@@ -46,7 +46,7 @@ class EstadisticasPage extends ConsumerWidget {
           return RefreshIndicator(
             onRefresh: () async => ref.invalidate(historialProvider),
             child: ListView(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
               children: [
                 GridView.count(
                   crossAxisCount: 2,

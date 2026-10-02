@@ -3,7 +3,55 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../theme/app_theme.dart';
 
-/// Tarjeta con el estilo de las "cards" de la web (borde suave, esquinas 12).
+/// Cabecera de la web (.site-header): degradado morado, título centrado en
+/// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
+class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
+  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom});
+
+  final Widget? title;
+  /// Línea en cursiva bajo el título (.site-description).
+  final String? subtitulo;
+  final List<Widget>? actions;
+  final Widget? leading;
+  final PreferredSizeWidget? bottom;
+
+  static const _altoLinea = 4.0;
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0) + _altoLinea);
+
+  @override
+  Widget build(BuildContext context) {
+    final tema = Theme.of(context);
+    return Theme(
+      // Los botones de texto de la cabecera van en blanco sobre el morado.
+      data: tema.copyWith(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.white, textStyle: tema.textTheme.labelLarge))),
+      child: AppBar(
+        leading: leading,
+        actions: actions,
+        title: subtitulo == null
+            ? title
+            : Column(mainAxisSize: MainAxisSize.min, children: [
+                if (title != null) title!,
+                Text(subtitulo!, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 13, fontWeight: FontWeight.w400, color: Colors.white.withValues(alpha: 0.9))),
+              ]),
+        flexibleSpace: DecoratedBox(decoration: BoxDecoration(gradient: context.degradadoPrimario)),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight((bottom?.preferredSize.height ?? 0) + _altoLinea),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            if (bottom != null) bottom!,
+            Container(height: _altoLinea, decoration: BoxDecoration(gradient: context.degradadoDorado)),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Tarjeta con el estilo de la web: degradado de blanco a crema, borde y
+/// esquinas de 8 (.tema-card, .resource-item). Con [color] morado pálido se
+/// pinta como la caja destacada de la web (.highlight-box), con su filete
+/// morado a la izquierda.
 class Tarjeta extends StatelessWidget {
   const Tarjeta({super.key, required this.child, this.onTap, this.padding = const EdgeInsets.all(16), this.color});
   final Widget child;
@@ -13,15 +61,37 @@ class Tarjeta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: color,
+    final c = context.colores;
+    final destacada = color != null && color == c.primarioPalido;
+    final radio = destacada ? const BorderRadius.horizontal(right: Radius.circular(8)) : BorderRadius.circular(8);
+    return Container(
       clipBehavior: Clip.antiAlias,
-      child: InkWell(onTap: onTap, child: Padding(padding: padding, child: child)),
+      decoration: BoxDecoration(
+        color: color != null && !destacada ? Color.alphaBlend(color!, c.superficie) : null,
+        gradient: color != null && !destacada
+            ? null
+            : LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: destacada ? [c.primarioPalido, c.crema] : [c.superficie, c.crema]),
+        border: Border.all(color: c.borde),
+        borderRadius: radio,
+        boxShadow: context.sombraSuave,
+      ),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            decoration: destacada ? BoxDecoration(border: Border(left: BorderSide(color: context.esquema.primary, width: 4))) : null,
+            padding: padding,
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }
 
-/// Título de sección en mayúsculas con espaciado, como ".section-title" de la web.
+/// Título de sección como ".section-title" de la web: serif morado, subrayado
+/// morado del ancho del texto y un rombo en el centro del subrayado.
 class TituloSeccion extends StatelessWidget {
   const TituloSeccion(this.texto, {super.key, this.accion});
   final String texto;
@@ -29,20 +99,183 @@ class TituloSeccion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final morado = context.esquema.primary;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(4, 20, 4, 10),
+      padding: const EdgeInsets.fromLTRB(4, 22, 4, 12),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Expanded(
-            child: Text(texto.toUpperCase(),
-                style: context.textos.labelMedium?.copyWith(
-                    color: context.esquema.primary, fontWeight: FontWeight.w700, letterSpacing: 1.5)),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: IntrinsicWidth(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: [
+                  Text(texto.toUpperCase(), style: TextStyle(fontFamily: Fuentes.serif, fontSize: 16.5, fontWeight: FontWeight.w700, color: morado, letterSpacing: 0.4, height: 1.25)),
+                  const SizedBox(height: 3),
+                  SizedBox(
+                    height: 12,
+                    child: Stack(alignment: Alignment.center, children: [
+                      Container(height: 2, color: morado),
+                      Container(
+                        color: Theme.of(context).scaffoldBackgroundColor,
+                        padding: const EdgeInsets.symmetric(horizontal: 6),
+                        // El rombo no existe en la serif: se toma de la sans.
+                        child: Text('◆', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 9, height: 1, color: morado)),
+                      ),
+                    ]),
+                  ),
+                ]),
+              ),
+            ),
           ),
-          if (accion != null) accion!,
+          if (accion != null) Padding(padding: const EdgeInsets.only(left: 8), child: accion!),
         ],
       ),
     );
   }
+}
+
+/// Subtítulo dentro de una caja, como los h3 del simulador de la web: serif
+/// con un subrayado dorado a todo el ancho.
+class Subtitulo extends StatelessWidget {
+  const Subtitulo(this.texto, {super.key, this.accion});
+  final String texto;
+  final Widget? accion;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.only(bottom: 6),
+        decoration: BoxDecoration(border: Border(bottom: BorderSide(color: context.colores.dorado, width: 2))),
+        child: Row(children: [
+          Expanded(child: Text(texto, style: context.textos.titleMedium)),
+          if (accion != null) accion!,
+        ]),
+      );
+}
+
+/// Grupo desplegable de la web (.tema-group-header): barra con degradado
+/// morado, signo § y texto blanco; debajo, el contenido sobre blanco.
+class GrupoDesplegable extends StatefulWidget {
+  const GrupoDesplegable({super.key, required this.titulo, this.subtitulo, required this.children, this.abierto = false, this.accion});
+  final String titulo;
+  final String? subtitulo;
+  final List<Widget> children;
+  final bool abierto;
+  /// Control a la derecha de la barra (p. ej. «Todos»).
+  final Widget? accion;
+
+  @override
+  State<GrupoDesplegable> createState() => _GrupoDesplegableState();
+}
+
+class _GrupoDesplegableState extends State<GrupoDesplegable> with AutomaticKeepAliveClientMixin {
+  late bool _abierto = widget.abierto;
+
+  // Un grupo abierto no se cierra solo al salir de la pantalla por el desplazamiento.
+  @override
+  bool get wantKeepAlive => _abierto;
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    final tema = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(6), boxShadow: context.sombraSuave),
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              onTap: () => setState(() {
+                _abierto = !_abierto;
+                updateKeepAlive();
+              }),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
+                child: Row(children: [
+                  Text('§', style: TextStyle(fontFamily: Fuentes.serif, fontSize: 21, height: 1, color: Colors.white.withValues(alpha: 0.7))),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(widget.titulo, style: const TextStyle(fontFamily: Fuentes.serif, fontSize: 16.5, fontWeight: FontWeight.w700, color: Colors.white, height: 1.25)),
+                      if (widget.subtitulo != null) Text(widget.subtitulo!, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, color: Colors.white.withValues(alpha: 0.85))),
+                    ]),
+                  ),
+                  if (widget.accion != null)
+                    Theme(
+                      data: tema.copyWith(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.white, textStyle: tema.textTheme.labelLarge))),
+                      child: widget.accion!,
+                    ),
+                  AnimatedRotation(turns: _abierto ? 0.5 : 0, duration: const Duration(milliseconds: 200), child: Icon(Icons.expand_more, color: Colors.white.withValues(alpha: 0.85))),
+                ]),
+              ),
+            ),
+          ),
+        ),
+        if (_abierto)
+          // Material (y no una caja de color) para que se vean las pulsaciones de las filas.
+          Material(
+            color: context.colores.superficie,
+            borderRadius: const BorderRadius.vertical(bottom: Radius.circular(6)),
+            clipBehavior: Clip.antiAlias,
+            child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              for (var i = 0; i < widget.children.length; i++)
+                // Cada fila con su línea inferior, como .tema-item.
+                DecoratedBox(
+                  decoration: BoxDecoration(border: i == widget.children.length - 1 ? null : Border(bottom: BorderSide(color: context.colores.bordeClaro))),
+                  child: widget.children[i],
+                ),
+            ]),
+          ),
+      ]),
+    );
+  }
+}
+
+/// Código y título de un tema como en las listas de la web (.tema-item):
+/// "Tema 3.A.1" en morado y sans seminegrita, y el título en texto normal.
+class TextoTema extends StatelessWidget {
+  const TextoTema(this.codigo, this.titulo, {super.key, this.maxLines = 2, this.atenuado = false});
+  final String codigo;
+  final String titulo;
+  final int maxLines;
+  /// Tema sin PDF: en gris, como .tema-item-unavailable.
+  final bool atenuado;
+
+  @override
+  Widget build(BuildContext context) => Text.rich(
+        TextSpan(children: [
+          TextSpan(text: codigo, style: TextStyle(fontWeight: FontWeight.w600, color: atenuado ? context.colores.textoClaro : context.esquema.primary)),
+          TextSpan(text: titulo.isEmpty ? '' : ' · $titulo'),
+        ]),
+        maxLines: maxLines,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, height: 1.35, color: atenuado ? context.colores.textoClaro : context.esquema.onSurface),
+      );
+}
+
+/// Banda morada con cifras en blanco (.contador-seleccion del simulador).
+class Contador extends StatelessWidget {
+  const Contador({super.key, required this.cifras});
+  final List<({String valor, String etiqueta})> cifras;
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
+        decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
+        child: Row(children: [
+          for (final c in cifras)
+            Expanded(
+              child: Column(children: [
+                FittedBox(child: Text(c.valor, style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 26, fontWeight: FontWeight.w600, color: Colors.white, height: 1.1))),
+                Text(c.etiqueta.toUpperCase(), textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, letterSpacing: 0.6, color: Colors.white.withValues(alpha: 0.9))),
+              ]),
+            ),
+        ]),
+      );
 }
 
 class Cargando extends StatelessWidget {
@@ -81,6 +314,7 @@ class ErrorVista extends StatelessWidget {
       );
 }
 
+/// Etiqueta pequeña (.tema-card-badge, .pregunta-tipo).
 class Etiqueta extends StatelessWidget {
   const Etiqueta(this.texto, {super.key, this.color});
   final String texto;
@@ -89,29 +323,42 @@ class Etiqueta extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = color ?? context.esquema.primary;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(6)),
-      child: Text(texto, style: context.textos.labelSmall?.copyWith(color: c, fontWeight: FontWeight.w700)),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(4)),
+      child: Text(texto, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11.5, color: c, fontWeight: FontWeight.w600, letterSpacing: 0.3)),
     );
   }
 }
 
-/// Tarjeta de estadística ("stat-card" de la web).
+/// Cifra destacada (".estadistica-item" del simulador de la web): número en
+/// sans y etiqueta en mayúsculas, centrados sobre blanco.
 class Estadistica extends StatelessWidget {
-  const Estadistica({super.key, required this.valor, required this.etiqueta, this.icono, this.color});
+  const Estadistica({super.key, required this.valor, required this.etiqueta, this.icono, this.color, this.detalle, this.onTap});
   final String valor;
   final String etiqueta;
+  /// Se conserva por compatibilidad; la web no usa iconos en estas cajas.
   final IconData? icono;
   final Color? color;
+  /// Línea pequeña bajo la etiqueta (p. ej. una fecha).
+  final String? detalle;
+  final VoidCallback? onTap;
   @override
-  Widget build(BuildContext context) => Tarjeta(
-        padding: const EdgeInsets.all(14),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          if (icono != null) Icon(icono, size: 20, color: color ?? context.esquema.primary),
-          const SizedBox(height: 6),
-          Text(valor, style: context.textos.headlineSmall?.copyWith(color: color ?? context.esquema.primary)),
-          Text(etiqueta, style: context.textos.labelMedium),
-        ]),
+  Widget build(BuildContext context) => Material(
+        color: context.colores.superficie,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8), side: BorderSide(color: context.colores.borde)),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 14),
+            child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              FittedBox(child: Text(valor, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 28, fontWeight: FontWeight.w600, height: 1.1, color: color ?? context.esquema.primary))),
+              const SizedBox(height: 4),
+              Text(etiqueta.toUpperCase(), textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, letterSpacing: 0.6, height: 1.2, color: context.colores.textoSuave)),
+              if (detalle != null) Padding(padding: const EdgeInsets.only(top: 2), child: Text(detalle!, textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, color: context.colores.textoClaro))),
+            ]),
+          ),
+        ),
       );
 }
 
@@ -172,7 +419,8 @@ class Estrellas extends StatelessWidget {
       ]);
 }
 
-/// Fila de navegación dentro de una tarjeta (icono, título, subtítulo y flecha).
+/// Fila de navegación (.tema-card de la web): título serif y descripción en
+/// cursiva, con la flecha a la derecha.
 class FilaEnlace extends StatelessWidget {
   const FilaEnlace({super.key, required this.icono, required this.titulo, this.subtitulo, required this.onTap, this.final_});
   final IconData icono;
@@ -183,16 +431,21 @@ class FilaEnlace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.only(bottom: 10),
         child: Tarjeta(
-          padding: EdgeInsets.zero,
+          padding: const EdgeInsets.fromLTRB(14, 12, 10, 12),
           onTap: onTap,
-          child: ListTile(
-            leading: Icon(icono, color: context.esquema.primary),
-            title: Text(titulo, style: context.textos.titleSmall),
-            subtitle: subtitulo == null ? null : Text(subtitulo!, style: context.textos.labelSmall),
-            trailing: final_ ?? const Icon(Icons.chevron_right),
-          ),
+          child: Row(children: [
+            Icon(icono, color: context.esquema.primary, size: 26),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(titulo, style: context.textos.titleMedium),
+                if (subtitulo != null) Text(subtitulo!, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 14, height: 1.3, color: context.colores.textoSuave)),
+              ]),
+            ),
+            final_ ?? Icon(Icons.chevron_right, color: context.colores.textoClaro),
+          ]),
         ),
       );
 }

@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'constants.dart';
 
-/// Descarga JSON/XML de la web con caché persistente (Hive) y revalidación
+/// Descarga JSON de la web con caché persistente (Hive) y revalidación
 /// por ETag / Last-Modified. Estrategia "stale-while-revalidate": devuelve
 /// la copia en caché al instante y actualiza en segundo plano.
 class CacheHttp {

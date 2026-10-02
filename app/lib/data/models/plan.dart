@@ -1,7 +1,6 @@
 import 'dart:math';
 
-/// Modelos de planificación: cantes, convocatoria, cronograma, horario y
-/// agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
+/// Modelos de planificación: cantes, convocatoria, horario y agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
 /// bajo users/{uid}/cantes, users/{uid}/progress/plan y users/{uid}/notes.
 
 DateTime? _fecha(Object? s) => s is String ? DateTime.tryParse(s) : null;
@@ -67,7 +66,7 @@ class Cante {
     required this.id,
     required this.fecha,
     this.titulo = '',
-    this.minutos = 15,
+    this.minutos = 30,
     this.ejercicio = 3,
     this.bolsa = TipoBolsa.estudiados,
     this.temas = const [],
@@ -84,7 +83,7 @@ class Cante {
   final DateTime fecha;
   /// Con quién o dónde ("Preparador", "Grupo de cante"…).
   final String titulo;
-  /// Minutos de exposición previstos.
+  /// Duración prevista del cante, en minutos.
   final int minutos;
   /// 3, 4 o 5; 0 = cualquiera.
   final int ejercicio;
@@ -152,7 +151,7 @@ class Cante {
         id: j['id'].toString(),
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         titulo: j['titulo'] as String? ?? '',
-        minutos: (j['minutos'] as num?)?.toInt() ?? 15,
+        minutos: (j['minutos'] as num?)?.toInt() ?? 30,
         ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
         bolsa: TipoBolsa.values.firstWhere((b) => b.name == j['bolsa'], orElse: () => TipoBolsa.estudiados),
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
@@ -210,84 +209,6 @@ class EstadisticaTema {
       );
     });
   }
-}
-
-// ------------------------------------------------------------------ Cronograma
-
-/// Una fila de la hoja "Cronograma" del Excel: semana, día opcional, tema y comentario.
-class EntradaCronograma {
-  const EntradaCronograma({required this.codigo, required this.semana, this.dia, this.comentario = '', this.vuelta = 1, this.hecho = false});
-
-  final String codigo;
-  /// Semana 1, 2, 3… contada desde el inicio del cronograma.
-  final int semana;
-  /// 1 = lunes … 7 = domingo; null = sin día fijado.
-  final int? dia;
-  final String comentario;
-  final int vuelta;
-  final bool hecho;
-
-  EntradaCronograma copyWith({int? semana, int? dia, bool sinDia = false, String? comentario, bool? hecho}) => EntradaCronograma(
-        codigo: codigo,
-        semana: semana ?? this.semana,
-        dia: sinDia ? null : (dia ?? this.dia),
-        comentario: comentario ?? this.comentario,
-        vuelta: vuelta,
-        hecho: hecho ?? this.hecho,
-      );
-
-  Map<String, dynamic> toJson() => {'codigo': codigo, 'semana': semana, 'dia': dia, 'comentario': comentario, 'vuelta': vuelta, 'hecho': hecho};
-
-  factory EntradaCronograma.fromJson(Map<dynamic, dynamic> j) => EntradaCronograma(
-        codigo: j['codigo'].toString(),
-        semana: (j['semana'] as num?)?.toInt() ?? 1,
-        dia: (j['dia'] as num?)?.toInt(),
-        comentario: j['comentario'] as String? ?? '',
-        vuelta: (j['vuelta'] as num?)?.toInt() ?? 1,
-        hecho: j['hecho'] as bool? ?? false,
-      );
-}
-
-class Cronograma {
-  const Cronograma({this.inicio, this.entradas = const []});
-
-  /// Lunes de la semana 1.
-  final DateTime? inicio;
-  final List<EntradaCronograma> entradas;
-
-  bool get vacio => inicio == null || entradas.isEmpty;
-  int get semanas => entradas.fold(0, (m, e) => max(m, e.semana));
-
-  /// Semana (1…) en la que cae [d]; 0 o negativo si aún no ha empezado.
-  int semanaDe(DateTime d) {
-    if (inicio == null) return 0;
-    final dias = DateTime(d.year, d.month, d.day).difference(DateTime(inicio!.year, inicio!.month, inicio!.day)).inHours / 24;
-    return dias.round() < 0 ? 0 : dias.round() ~/ 7 + 1;
-  }
-
-  DateTime? inicioSemana(int semana) => inicio == null ? null : DateTime(inicio!.year, inicio!.month, inicio!.day + 7 * (semana - 1));
-
-  List<EntradaCronograma> deSemana(int semana) => entradas.where((e) => e.semana == semana).toList()..sort((a, b) => (a.dia ?? 8).compareTo(b.dia ?? 8));
-
-  /// Temas que ya deberían estar hechos antes de la semana de [hoy].
-  int previstosAntesDe(DateTime hoy) {
-    final s = semanaDe(hoy);
-    return entradas.where((e) => e.semana < s).length;
-  }
-
-  int get hechos => entradas.where((e) => e.hecho).length;
-
-  /// Positivo: temas de adelanto; negativo: temas de retraso.
-  int desfase(DateTime hoy) => hechos - previstosAntesDe(hoy);
-
-  Map<String, dynamic> toJson() => {'inicio': inicio?.toIso8601String(), 'entradas': entradas.map((e) => e.toJson()).toList()};
-
-  factory Cronograma.fromJson(Map<dynamic, dynamic>? j) => j == null
-      ? const Cronograma()
-      : Cronograma(
-          inicio: _fecha(j['inicio']),
-          entradas: ((j['entradas'] as List?) ?? []).map((e) => EntradaCronograma.fromJson(e as Map)).toList(),
-        );
 }
 
 // --------------------------------------------------------------------- Horario
@@ -419,7 +340,6 @@ class Plan {
   const Plan({
     this.fechas = const {},
     this.hitos = const [],
-    this.cronograma = const Cronograma(),
     this.horario,
     this.avisosCante = true,
     this.updatedAt,
@@ -428,17 +348,15 @@ class Plan {
   /// Fecha de cada ejercicio (1-5) fijada por el usuario.
   final Map<int, DateTime> fechas;
   final List<Hito> hitos;
-  final Cronograma cronograma;
   /// null = aún no personalizado (se muestra el horario por defecto).
   final Horario? horario;
   /// Avisar la víspera y una hora antes de cada cante.
   final bool avisosCante;
   final DateTime? updatedAt;
 
-  Plan copyWith({Map<int, DateTime>? fechas, List<Hito>? hitos, Cronograma? cronograma, Horario? horario, bool? avisosCante}) => Plan(
+  Plan copyWith({Map<int, DateTime>? fechas, List<Hito>? hitos, Horario? horario, bool? avisosCante}) => Plan(
         fechas: fechas ?? this.fechas,
         hitos: hitos ?? this.hitos,
-        cronograma: cronograma ?? this.cronograma,
         horario: horario ?? this.horario,
         avisosCante: avisosCante ?? this.avisosCante,
         updatedAt: DateTime.now(),
@@ -447,7 +365,6 @@ class Plan {
   Map<String, dynamic> toJson() => {
         'fechas': fechas.map((k, v) => MapEntry('$k', v.toIso8601String())),
         'hitos': hitos.map((h) => h.toJson()).toList(),
-        'cronograma': cronograma.toJson(),
         'horario': horario?.toJson(),
         'avisosCante': avisosCante,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
@@ -464,7 +381,6 @@ class Plan {
     return Plan(
       fechas: fechas,
       hitos: ((j['hitos'] as List?) ?? []).map((e) => Hito.fromJson(e as Map)).toList(),
-      cronograma: Cronograma.fromJson(j['cronograma'] as Map?),
       horario: j['horario'] == null ? null : Horario.fromJson(j['horario']),
       avisosCante: j['avisosCante'] as bool? ?? true,
       updatedAt: _fecha(j['updatedAt']),

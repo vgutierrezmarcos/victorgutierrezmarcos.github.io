@@ -35,7 +35,6 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
     final bloques = ref.watch(bloquesProvider).value ?? Bloques.vacio;
     final porBloque = MotorTest.porBloque(widget.datos.preguntas, widget.datos.respuestas, bloques);
     final aprobado = r.notaSobre10 >= 5;
-    final colorNota = aprobado ? Paleta.acierto : context.esquema.error;
 
     final preguntas = widget.datos.preguntas.where((p) {
       final resp = widget.datos.respuestas[p.id];
@@ -52,7 +51,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
         if (!didPop) context.go('/test');
       },
       child: Scaffold(
-        appBar: AppBar(
+        appBar: BarraWeb(
           title: const Text('Resultados'),
           leading: IconButton(icon: const Icon(Icons.close), onPressed: () => context.go('/test')),
           actions: [
@@ -63,35 +62,43 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
           ],
         ),
         body: ListView(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
           children: [
-            if (widget.datos.porTiempo)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text('⏱ Se agotó el tiempo', style: context.textos.labelLarge?.copyWith(color: context.esquema.error)),
-              ),
-            Tarjeta(
-              color: colorNota.withValues(alpha: 0.08),
+            // .resultados-header: nota final en blanco sobre el degradado morado.
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
               child: Column(children: [
-                Text('${formatoNota(r.notaSobre10)} / 10', style: context.textos.displaySmall?.copyWith(color: colorNota, fontWeight: FontWeight.w700)),
-                Text('${formatoNota(r.puntosBrutos)} de ${formatoNota(r.maxPuntos)} puntos · ${formatoTiempo(r.tiempoSeconds)}', style: context.textos.bodySmall),
-                const SizedBox(height: 12),
-                Row(children: [
-                  _cifra('${r.correctas}', 'Aciertos', Paleta.acierto),
-                  _cifra('${r.incorrectas}', 'Fallos', Paleta.fallo),
-                  _cifra('${r.sinResponder}', 'En blanco', Paleta.blanco),
-                ]),
-                const SizedBox(height: 8),
-                Text(
-                  ref.read(usuarioRepoProvider).conSesion ? '✅ Guardado en tu cuenta' : 'Guardado en este dispositivo. Inicia sesión para sincronizar con la web.',
-                  style: context.textos.labelSmall,
-                ),
+                Text(aprobado ? 'Aprobado' : 'Resultado', style: const TextStyle(fontFamily: Fuentes.serif, fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white)),
+                FittedBox(child: Text('${formatoNota(r.notaSobre10)} / 10', style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 44, fontWeight: FontWeight.w600, color: Colors.white, height: 1.2))),
+                Text('${formatoNota(r.puntosBrutos)} de ${formatoNota(r.maxPuntos)} puntos · ${formatoTiempo(r.tiempoSeconds)}', textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 14.5, color: Colors.white.withValues(alpha: 0.9))),
+                if (widget.datos.porTiempo) Padding(padding: const EdgeInsets.only(top: 6), child: Text('Se agotó el tiempo', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white.withValues(alpha: 0.9)))),
               ]),
             ),
+            const SizedBox(height: 12),
+            // .estadisticas-grid
+            Row(children: [
+              Expanded(child: Estadistica(valor: '${r.correctas}', etiqueta: 'Correctas', color: Paleta.aciertoWeb)),
+              const SizedBox(width: 10),
+              Expanded(child: Estadistica(valor: '${r.incorrectas}', etiqueta: 'Incorrectas', color: Paleta.falloWeb)),
+              const SizedBox(width: 10),
+              Expanded(child: Estadistica(valor: '${r.sinResponder}', etiqueta: 'En blanco', color: Paleta.blanco)),
+            ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+              child: Text(
+                ref.read(usuarioRepoProvider).conSesion ? 'Guardado en tu cuenta: también lo verás en la web.' : 'Guardado en este dispositivo. Inicia sesión para verlo también en la web.',
+                style: context.textos.labelSmall,
+              ),
+            ),
             if (porBloque.length > 1) ...[
-              const TituloSeccion('Puntuación por bloque'),
-              Tarjeta(
-                child: Column(children: [
+              const SizedBox(height: 12),
+              // .grafico-bloques
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(color: context.colores.superficie, border: Border.all(color: context.colores.borde), borderRadius: BorderRadius.circular(8)),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  const Subtitulo('Puntuación por bloque'),
                   for (final e in porBloque.entries.toList()..sort((a, b) => a.key.compareTo(b.key)))
                     _barra(e.key, e.value.aciertos, e.value.total),
                 ]),
@@ -100,6 +107,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             TituloSeccion('Revisión', accion: DropdownButton<String>(
               value: _filtro,
               underline: const SizedBox(),
+              style: context.textos.labelLarge,
               items: const [
                 DropdownMenuItem(value: 'todas', child: Text('Todas')),
                 DropdownMenuItem(value: 'falladas', child: Text('Falladas')),
@@ -109,19 +117,15 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             )),
             for (var i = 0; i < preguntas.length; i++) _revision(i, preguntas[i]),
             const SizedBox(height: 16),
-            FilledButton(onPressed: () => context.go('/test'), child: const Text('Nuevo test')),
+            Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
+              FilledButton(onPressed: () => context.go('/test'), child: const Text('Nuevo test')),
+              OutlinedButton(onPressed: () => context.go('/test/estadisticas'), child: const Text('Ver estadísticas')),
+            ]),
           ],
         ),
       ),
     );
   }
-
-  Widget _cifra(String v, String e, Color c) => Expanded(
-        child: Column(children: [
-          Text(v, style: context.textos.headlineSmall?.copyWith(color: c)),
-          Text(e, style: context.textos.labelMedium),
-        ]),
-      );
 
   Widget _barra(String nombre, int ok, int total) {
     final pct = total == 0 ? 0.0 : ok / total;
@@ -139,49 +143,67 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             value: pct,
             minHeight: 8,
             backgroundColor: context.colores.fondoClaro,
-            color: pct >= 0.5 ? Paleta.acierto : (pct >= 0.3 ? context.colores.dorado : Paleta.fallo),
+            color: pct >= 0.5 ? Paleta.aciertoWeb : (pct >= 0.3 ? Paleta.avisoWeb : Paleta.falloWeb),
           ),
         ),
       ]),
     );
   }
 
+  /// .revision-pregunta: caja blanca con un filete a la izquierda según el resultado.
   Widget _revision(int i, Pregunta p) {
     final resp = widget.datos.respuestas[p.id];
-    final estado = resp == null ? 'blanco' : (p.esCorrecta(resp) ? 'ok' : 'fallo');
-    final color = switch (estado) { 'ok' => Paleta.acierto, 'fallo' => Paleta.fallo, _ => Paleta.blanco };
+    final estado = p.anulada ? 'anulada' : (resp == null ? 'blanco' : (p.esCorrecta(resp) ? 'ok' : 'fallo'));
+    final color = switch (estado) { 'ok' => Paleta.aciertoWeb, 'fallo' => Paleta.falloWeb, 'anulada' => Paleta.avisoWeb, _ => Paleta.blanco };
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Tarjeta(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Icon(estado == 'ok' ? Icons.check_circle : (estado == 'fallo' ? Icons.cancel : Icons.remove_circle_outline), color: color, size: 20),
-            const SizedBox(width: 6),
-            Etiqueta(p.tema),
-            const Spacer(),
-            Text(p.examen, style: context.textos.labelSmall),
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(color: context.colores.superficie, border: Border.all(color: context.colores.borde), borderRadius: BorderRadius.circular(8)),
+        child: Container(
+          decoration: BoxDecoration(border: Border(left: BorderSide(color: color, width: 4))),
+          padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Row(children: [
+              Icon(switch (estado) { 'ok' => Icons.check_circle, 'fallo' => Icons.cancel, 'anulada' => Icons.info, _ => Icons.remove_circle_outline }, color: color, size: 20),
+              const SizedBox(width: 6),
+              Etiqueta(p.tema),
+            ]),
+            const SizedBox(height: 8),
+            Text(p.enunciado, style: context.textos.bodyMedium),
+            const SizedBox(height: 10),
+            for (final o in p.opciones.entries)
+              Builder(builder: (context) {
+                final correcta = p.respuesta.contains(o.key) && !p.anulada;
+                final elegida = resp == o.key;
+                // Verde la correcta; roja la elegida si era errónea (.opcion-btn.correct / .incorrect).
+                final c = correcta || (p.anulada && elegida) ? Paleta.aciertoWeb : (elegida ? Paleta.falloWeb : null);
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                  decoration: BoxDecoration(
+                    color: c?.withValues(alpha: 0.12),
+                    border: Border.all(color: c ?? context.colores.bordeClaro, width: c == null ? 1 : 2),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('${o.key}) ', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w600, fontSize: 14, color: context.esquema.primary)),
+                      Expanded(child: Text(o.value, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface, fontWeight: c != null ? FontWeight.w600 : null))),
+                    ]),
+                    if (elegida) Text('Tu respuesta', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, fontWeight: FontWeight.w600, color: context.colores.textoSuave)),
+                  ]),
+                );
+              }),
+            // .revision-meta
+            Container(
+              margin: const EdgeInsets.only(top: 4),
+              padding: const EdgeInsets.only(top: 8),
+              decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.bordeClaro))),
+              child: Text('${p.anulada ? 'Pregunta anulada: se cuenta como acierto. ' : ''}${p.examen}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontStyle: FontStyle.italic, color: context.colores.textoSuave)),
+            ),
           ]),
-          const SizedBox(height: 8),
-          Text(p.enunciado, style: context.textos.bodyMedium),
-          const SizedBox(height: 8),
-          for (final o in p.opciones.entries)
-            Builder(builder: (context) {
-              final correcta = p.respuesta.contains(o.key) && !p.anulada;
-              final elegida = resp == o.key;
-              Color? c;
-              if (correcta || (p.anulada && elegida)) c = Paleta.acierto;
-              if (elegida && !correcta && !p.anulada) c = Paleta.fallo;
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('${o.key}) ', style: context.textos.labelLarge?.copyWith(color: c)),
-                  Expanded(child: Text(o.value, style: context.textos.bodySmall?.copyWith(color: c ?? context.esquema.onSurface, fontWeight: c != null ? FontWeight.w600 : null))),
-                  if (elegida) Icon(Icons.person, size: 14, color: c ?? context.colores.textoClaro),
-                ]),
-              );
-            }),
-          if (p.anulada) Text('Pregunta anulada: se cuenta como acierto.', style: context.textos.labelSmall),
-        ]),
+        ),
       ),
     );
   }

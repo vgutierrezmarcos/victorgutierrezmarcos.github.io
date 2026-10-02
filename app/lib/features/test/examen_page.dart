@@ -87,16 +87,17 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
     final banco = ref.watch(preguntasProvider);
     return banco.when(
       loading: () => const Scaffold(body: Cargando()),
-      error: (e, _) => Scaffold(appBar: AppBar(), body: ErrorVista(error: e)),
+      error: (e, _) => Scaffold(appBar: BarraWeb(), body: ErrorVista(error: e)),
       data: (b) {
         _preguntas ??= MotorTest.componer(b, widget.config);
         final preguntas = _preguntas!;
         if (preguntas.isEmpty) {
-          return Scaffold(appBar: AppBar(), body: const Center(child: Text('No hay preguntas para este test.')));
+          return Scaffold(appBar: BarraWeb(), body: const Center(child: Text('No hay preguntas para este test.')));
         }
         final p = preguntas[_idx];
         final restante = _limite > 0 ? _limite - _segundos : _segundos;
-        final apurado = _limite > 0 && restante < 300;
+        // Como el temporizador de la web: naranja en los últimos 5 minutos y rojo en el último.
+        final colorReloj = _limite > 0 && restante < 60 ? Paleta.falloWeb : (_limite > 0 && restante < 300 ? Paleta.avisoWeb : Colors.white.withValues(alpha: 0.15));
 
         return PopScope(
           canPop: false,
@@ -105,22 +106,18 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
             if (await _confirmarSalida() && context.mounted) context.pop();
           },
           child: Scaffold(
-            appBar: AppBar(
-              title: Text('${_idx + 1} / ${preguntas.length}'),
+            // .examen-header: barra morada con la pregunta en curso y el temporizador.
+            appBar: BarraWeb(
+              title: Text('Pregunta ${_idx + 1} de ${preguntas.length}', style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Center(
-                    child: Text(
-                      formatoReloj(restante),
-                      style: context.textos.titleMedium?.copyWith(
-                        fontFeatures: const [FontFeature.tabularFigures()],
-                        color: apurado ? context.esquema.error : null,
-                      ),
-                    ),
+                Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(color: colorReloj, borderRadius: BorderRadius.circular(6)),
+                    child: Text(formatoReloj(restante), style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white, fontFeatures: [FontFeature.tabularFigures()])),
                   ),
                 ),
-                IconButton(icon: const Icon(Icons.grid_view), tooltip: 'Navegador', onPressed: _mostrarRejilla),
+                IconButton(icon: const Icon(Icons.grid_view), tooltip: 'Navegador de preguntas', onPressed: _mostrarRejilla),
               ],
             ),
             body: Column(children: [
@@ -129,60 +126,93 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                 child: ListView(
                   padding: const EdgeInsets.all(16),
                   children: [
-                    Row(children: [
-                      Etiqueta(p.tema),
-                      const SizedBox(width: 6),
-                      Expanded(child: Text(p.examen, style: context.textos.labelSmall, overflow: TextOverflow.ellipsis)),
-                      if (p.anulada) const Etiqueta('ANULADA', color: Colors.orange),
-                      IconButton(
-                        icon: Icon(_marcadas.contains(p.id) ? Icons.flag : Icons.outlined_flag),
-                        color: _marcadas.contains(p.id) ? context.colores.dorado : null,
-                        tooltip: 'Marcar para revisar',
-                        onPressed: () => setState(() => _marcadas.contains(p.id) ? _marcadas.remove(p.id) : _marcadas.add(p.id)),
-                      ),
-                    ]),
-                    const SizedBox(height: 8),
-                    Text(p.enunciado, style: context.textos.bodyLarge?.copyWith(fontSize: 17)),
-                    for (final img in p.imagenes)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: GestureDetector(
-                          onTap: () => showDialog(
-                            context: context,
-                            builder: (_) => Dialog(child: InteractiveViewer(child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}'))),
+                    // .pregunta-container
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                      decoration: BoxDecoration(color: context.colores.superficie, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                        Row(children: [
+                          Text('PREGUNTA ${_idx + 1}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, fontWeight: FontWeight.w600, letterSpacing: 0.7, color: context.esquema.primary)),
+                          const SizedBox(width: 8),
+                          Etiqueta(p.tema),
+                          if (p.anulada) const Padding(padding: EdgeInsets.only(left: 6), child: Etiqueta('ANULADA', color: Paleta.avisoWeb)),
+                          const Spacer(),
+                          IconButton(
+                            icon: Icon(_marcadas.contains(p.id) ? Icons.flag : Icons.outlined_flag),
+                            color: _marcadas.contains(p.id) ? context.colores.dorado : context.colores.textoClaro,
+                            tooltip: 'Marcar para revisar',
+                            onPressed: () => setState(() => _marcadas.contains(p.id) ? _marcadas.remove(p.id) : _marcadas.add(p.id)),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}', semanticLabel: img.alt),
+                        ]),
+                        // .pregunta-enunciado
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: context.colores.fondoClaro,
+                            border: Border(left: BorderSide(color: context.esquema.primary, width: 4)),
                           ),
+                          child: Text(p.enunciado, style: context.textos.bodyLarge?.copyWith(fontSize: 16.5)),
                         ),
-                      ),
-                    const SizedBox(height: 12),
-                    for (final e in p.opciones.entries) _opcion(p, e.key, e.value),
-                    if (_respuestas[p.id] != null)
-                      TextButton.icon(
-                        onPressed: () => setState(() => _respuestas[p.id] = null),
-                        icon: const Icon(Icons.backspace_outlined, size: 18),
-                        label: const Text('Dejar en blanco'),
-                      ),
+                        for (final img in p.imagenes)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: GestureDetector(
+                              onTap: () => showDialog(
+                                context: context,
+                                builder: (_) => Dialog(child: InteractiveViewer(child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}'))),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}', semanticLabel: img.alt),
+                              ),
+                            ),
+                          ),
+                        const SizedBox(height: 14),
+                        for (final e in p.opciones.entries) _opcion(p, e.key, e.value),
+                        Row(children: [
+                          Expanded(child: Text(p.examen, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontStyle: FontStyle.italic, color: context.colores.textoClaro), overflow: TextOverflow.ellipsis)),
+                          if (_respuestas[p.id] != null)
+                            TextButton.icon(
+                              onPressed: () => setState(() => _respuestas[p.id] = null),
+                              icon: const Icon(Icons.backspace_outlined, size: 18),
+                              label: const Text('Dejar en blanco'),
+                            ),
+                        ]),
+                      ]),
+                    ),
                   ],
                 ),
               ),
-              SafeArea(
-                top: false,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                  child: Row(children: [
-                    OutlinedButton(onPressed: _idx == 0 ? null : () => setState(() => _idx--), child: const Icon(Icons.chevron_left)),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: _idx < preguntas.length - 1
-                          ? FilledButton(onPressed: () => setState(() => _idx++), child: const Text('Siguiente'))
-                          : FilledButton.icon(onPressed: _confirmarFin, icon: const Icon(Icons.check), label: const Text('Finalizar')),
-                    ),
-                    const SizedBox(width: 8),
-                    TextButton(onPressed: _confirmarFin, child: const Text('Terminar')),
-                  ]),
+              // .navegacion-btns: anterior y siguiente con borde morado; finalizar en dorado.
+              Container(
+                decoration: BoxDecoration(color: context.colores.superficie, border: Border(top: BorderSide(color: context.colores.borde))),
+                child: SafeArea(
+                  top: false,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                    child: Row(children: [
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 13), minimumSize: const Size(48, 44)),
+                        onPressed: _idx == 0 ? null : () => setState(() => _idx--),
+                        child: const Icon(Icons.chevron_left),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: FilledButton(
+                          style: FilledButton.styleFrom(backgroundColor: context.colores.dorado),
+                          onPressed: _confirmarFin,
+                          child: const Text('Finalizar'),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: _idx < preguntas.length - 1 ? () => setState(() => _idx++) : null,
+                          child: const Text('Siguiente'),
+                        ),
+                      ),
+                    ]),
+                  ),
                 ),
               ),
             ]),
@@ -192,28 +222,25 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
     );
   }
 
+  /// .opcion-btn: caja blanca con borde de 2 px; elegida, morado pálido con borde morado.
   Widget _opcion(Pregunta p, String letra, String texto) {
     final sel = _respuestas[p.id] == letra;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.only(bottom: 10),
       child: Material(
         color: sel ? context.colores.primarioPalido : context.colores.superficie,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
         child: InkWell(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
           onTap: () => setState(() => _respuestas[p.id] = letra),
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: sel ? context.esquema.primary : context.colores.borde, width: sel ? 2 : 1),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: sel ? context.esquema.primary : context.colores.borde, width: 2),
             ),
             child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              CircleAvatar(
-                radius: 14,
-                backgroundColor: sel ? context.esquema.primary : context.colores.fondoClaro,
-                child: Text(letra, style: context.textos.labelLarge?.copyWith(color: sel ? Colors.white : context.esquema.primary)),
-              ),
+              Text('$letra)', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 16.5, fontWeight: FontWeight.w600, color: context.esquema.primary, height: 1.4)),
               const SizedBox(width: 12),
               Expanded(child: Text(texto, style: context.textos.bodyMedium)),
             ]),
@@ -231,7 +258,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Text('${_respuestas.values.where((v) => v != null).length} respondidas · ${_marcadas.length} marcadas', style: context.textos.bodySmall),
+            Text('${_respuestas.values.where((v) => v != null).length} respondidas · ${_marcadas.length} marcadas (borde dorado)', style: context.textos.bodySmall),
             const SizedBox(height: 12),
             Flexible(
               child: GridView.count(
@@ -246,15 +273,20 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                         setState(() => _idx = i);
                         Navigator.pop(c);
                       },
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          color: _respuestas[preguntas[i].id] != null ? context.esquema.primary : context.colores.fondoClaro,
-                          border: Border.all(color: i == _idx ? context.colores.dorado : (_marcadas.contains(preguntas[i].id) ? context.colores.dorado : context.colores.borde), width: i == _idx ? 2 : 1),
-                        ),
-                        child: Text('${i + 1}', style: TextStyle(color: _respuestas[preguntas[i].id] != null ? Colors.white : context.esquema.onSurface, fontSize: 12)),
-                      ),
+                      child: Builder(builder: (context) {
+                        final respondida = _respuestas[preguntas[i].id] != null;
+                        final actual = i == _idx;
+                        final marcada = _marcadas.contains(preguntas[i].id);
+                        return Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: actual ? context.esquema.primary : (respondida ? context.colores.primarioPalido : context.colores.superficie),
+                            border: Border.all(color: marcada ? context.colores.dorado : (actual || respondida ? context.esquema.primary : context.colores.borde), width: 2),
+                          ),
+                          child: Text('${i + 1}', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w600, fontSize: 13, color: actual ? Colors.white : context.esquema.onSurface)),
+                        );
+                      }),
                     ),
                 ],
               ),

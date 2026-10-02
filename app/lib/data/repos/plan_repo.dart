@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants.dart';
 import '../models/plan.dart';
 
-/// Planificación del opositor: cantes, plan (convocatoria, cronograma,
+/// Planificación del opositor: cantes, plan (convocatoria,
 /// horario) y agenda por tema. Igual que [UsuarioRepo]: siempre en local
 /// (Hive) y, si hay sesión, también en Firestore bajo users/{uid}.
 class PlanRepo {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../data/models/articulo.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
 import '../data/models/temario.dart';
@@ -47,7 +46,6 @@ final preguntasProvider = FutureProvider<BancoPreguntas>((ref) => ref.watch(cont
 final bloquesProvider = FutureProvider<Bloques>((ref) => ref.watch(contenidoProvider).bloques());
 final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProvider).temario());
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());
-final articulosProvider = FutureProvider<List<Articulo>>((ref) => ref.watch(contenidoProvider).articulos());
 final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoProvider).config());
 
 // ------------------------------------------------------------------ Sesión

@@ -23,7 +23,7 @@ class DiarioPage extends ConsumerWidget {
     String titulo(String codigo) => temario?.tema(codigo)?.titulo ?? '';
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Diario de cantes')),
+      appBar: BarraWeb(title: const Text('Diario de cantes')),
       body: diario.isEmpty
           ? Center(
               child: Padding(
@@ -32,7 +32,7 @@ class DiarioPage extends ConsumerWidget {
               ),
             )
           : ListView(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+              padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
               children: [
                 Row(children: [
                   Expanded(child: Estadistica(valor: '${diario.length}', etiqueta: 'cantes', icono: Icons.record_voice_over_outlined)),

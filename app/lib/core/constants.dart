@@ -13,7 +13,6 @@ class Urls {
   static const String temario = '$base/oposicion/temario/temario.json';
   static const String enlaces = '$base/oposicion/enlaces.json';
   static const String appConfig = '$base/oposicion/app-config.json';
-  static const String rss = '$base/blog/newsletter/rss.xml';
   static const String comoCantarUnTema =
       '$base/oposicion/organizacion/como_cantar_un_tema.pdf';
   static const String politicaPrivacidad = '$base/politica-cookies.html';
@@ -43,7 +42,6 @@ class Cajas {
   static const String ajustes = 'ajustes';
   static const String notas = 'notas';
   static const String descargas = 'descargas';
-  static const String favoritosBlog = 'favoritos_blog';
   static const String cantes = 'cantes';
   static const String plan = 'plan';
   static const String agendaTemas = 'agenda_temas';
