@@ -108,6 +108,11 @@ class CantePage extends ConsumerWidget {
               if (c.pendiente) Text(c.fecha.isAfter(DateTime.now()) ? 'Empieza ${cuentaAtras(c.fecha)}' : 'Pendiente de anotar', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
               Text('${descripcionBolsa(c)} · ${c.minutos} min', style: context.textos.bodySmall),
               if (c.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(c.notas, style: context.textos.bodyMedium)),
+              if (c.dePreparador)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Etiqueta((c.preparadorNombre ?? '').isEmpty ? 'Programado por tu preparador' : 'Programado por tu preparador · ${c.preparadorNombre}'),
+                ),
             ]),
           ),
           if (c.pendiente) ...[
@@ -120,8 +125,9 @@ class CantePage extends ConsumerWidget {
                       : () {
                           final router = GoRouter.of(context);
                           ref.read(canteEnCursoProvider.notifier).state = c.id;
+                          ref.read(subpestanaCantesProvider.notifier).state = 1;
                           Navigator.of(context).popUntil((r) => r.isFirst);
-                          router.go('/cantar');
+                          router.go('/cantes');
                         },
                   icon: const Icon(Icons.casino_outlined),
                   label: const Text('Sortear y cantar'),
@@ -134,7 +140,7 @@ class CantePage extends ConsumerWidget {
               Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: marca temas como estudiados o elige una lista.', style: context.textos.labelSmall)),
           ],
           if (c.hecho && r != null) ...[
-            TituloSeccion('Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
+            TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 if (r.temaCantado != null) Text('${r.temaCantado} · ${temario?.tema(r.temaCantado!)?.titulo ?? ''}', style: context.textos.titleSmall),

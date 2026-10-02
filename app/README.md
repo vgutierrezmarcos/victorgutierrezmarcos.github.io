@@ -4,31 +4,38 @@ App Flutter (Android e iOS) complementaria de [victorgutierrezmarcos.es](https:/
 
 ## Qué hace
 
-| Pestaña | Funciones |
+Cinco bloques, uno por cada cosa que se hace con la app. La página pública que la explica, con capturas y vídeo, es [`app/index.html`](index.html) (victorgutierrezmarcos.es/app/).
+
+| Bloque | Funciones |
 |---|---|
-| **Inicio** | Cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Avisa cuando hay una versión nueva. El menú de la barra superior abre **Más**: enlaces útiles, recordatorio diario (desactivado por defecto), tema claro/oscuro, descargas, cuenta (Google) y exportar/borrar datos. |
-| **Plan** | Agenda de cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; cantes con repetición semanal; exportación a Google Calendar o a un `.ics`. Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios), horario de estudio semanal y diario de cantes. Los cantes duran 30 minutos por defecto. |
-| **Temario** | Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Recursos de organización. |
+| **Hoy** | Lo que toca: cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Avisa cuando hay una versión nueva. A un preparador le recuerda las sesiones del día con sus alumnos. |
+| **Temario** | Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. Recursos de organización. |
+| **Cantes** | Tres subpestañas. **Agenda**: cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; repetición semanal; exportación a Google Calendar o a un `.ics`. **Cantar**: sorteo como en el examen (2 temas de cada parte; 1 por parte en el quinto) o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos; cronómetro de preparación y exposición con avisos también en segundo plano, y grabación de audio. **Diario**: cómo fue cada cante, estadísticas por tema y temas flojos. Los cantes duran 30 minutos por defecto. |
 | **Test** | Simulador con los mismos filtros y baremo que la web (temas, bloques, exámenes, nº de preguntas, tiempo, 1 / -0,33 / 0). Rejilla de navegación, imágenes, marcar preguntas. Resultados con puntuación por bloque y revisión. Estadísticas e historial unificado con la web. |
-| **Cantar** | Sorteo como en el examen (2 temas de cada parte; 1 por parte en el quinto) o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos. Cronómetro de preparación y exposición con avisos también en segundo plano, grabación de audio y registro en el diario. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. |
+| **Más** | Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios) y horario de estudio semanal. **Preparadores** (ver más abajo). Cuenta (Google), recordatorio diario (desactivado por defecto), tema claro/oscuro, descargas, enlaces útiles y exportar/borrar datos. |
 
 ## Estructura
 
 ```
 lib/
 ├── main.dart                  # Firebase + Hive + servicios; funciona sin credenciales Firebase (modo local)
-├── app.dart                   # go_router: 5 pestañas; /examen, /resultados y /mas a pantalla completa
+├── app.dart                   # go_router: 5 bloques (/hoy, /temario, /cantes, /test, /mas); /examen y /resultados a pantalla completa
 ├── theme/app_theme.dart       # paleta, tipografías y componentes de styles.css (claro y oscuro)
 ├── core/                      # constants (URLs), cache_http (ETag + Hive), notificaciones, calendario (.ics), providers (Riverpod)
-├── data/models/               # pregunta, resultado (esquema exam_results), temario, plan (cantes, horario, agenda)
-├── data/repos/                # contenido (web), usuario y plan (Hive + Firestore), descargas (PDF)
+├── data/models/               # pregunta, resultado (esquema exam_results), temario, plan (cantes, horario, agenda), preparador (alumnos, enlace)
+├── data/repos/                # contenido (web), usuario, plan y preparador (Hive + Firestore), descargas (PDF)
 ├── features/test/             # motor_test (lógica pura), leitner (réplica de spaced-repetition.js), páginas
-├── features/cantar/           # sorteo (probabilidades del Excel y sorteos), reloj_cante, páginas
-├── features/plan/             # agenda, cante, diario, convocatoria, horario
+├── features/cantes/           # bloque Cantes: cabecera con las subpestañas Agenda, Cantar y Diario
+├── features/cantar/           # sorteo (probabilidades del Excel y sorteos), reloj_cante, vista Cantar, probabilidades
+├── features/plan/             # vistas Agenda y Diario, cante, convocatoria, horario
+├── features/preparador/       # «Tengo preparador» / «Soy preparador», ficha del alumno y sesión
 ├── features/organizacion/     # bloques, detalle de bloque y esquema interactivo del temario
 ├── features/{inicio,temario,mas}/
 └── widgets/comunes.dart       # piezas de la web: cabecera, títulos de sección, tarjetas, grupos desplegables
-test/                          # lógica (motor, Leitner, sorteo, plan) y pruebas de humo de la app completa
+test/                          # lógica (motor, Leitner, sorteo, plan, preparadores) y pruebas de humo de la app completa
+tool/capturas_test.dart        # capturas de la app con datos de demostración (para la página y el vídeo)
+promo/                         # capturas ligeras (.webp), vídeo de presentación y su póster
+index.html                     # página pública de la app (victorgutierrezmarcos.es/app/)
 android/, ios/                 # proyectos nativos (generados con flutter create y configurados)
 ```
 
@@ -45,8 +52,19 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - `progress/spaced_repetition`: mismo formato que `localStorage.vgm_spaced_repetition` de la web.
 - `progress/settings`: temas estudiados/en repaso, racha, recordatorio, tema.
 - `progress/plan`: fechas de los ejercicios, hitos y horario.
-- `cantes/{id}`: cantes programados y hechos (diario). El borrado es lógico (`borrado: true`).
+- `cantes/{id}`: cantes programados y hechos (diario). El borrado es lógico (`borrado: true`). Los que programa o valora un preparador enlazado llevan `preparador` (su uid) y `preparadorNombre`.
+- `progress/preparador`, `alumnos/{id}` y `sesiones/{id}`: perfil de preparador (código), sus alumnos y sus sesiones de cante.
+- `preparadores/{uidPreparador}`: preparadores a los que el usuario da acceso.
 - `notes/{tema}`: nota libre (`texto`) y agenda del tema (`pendientes`, `vueltas`).
+
+## Preparadores
+
+`data/repos/preparador_repo.dart` y `features/preparador/`. La sección tiene dos lados:
+
+- **Soy preparador**: alumnos (enlazados o dados de alta a mano), sesiones de cante (un `Cante` con `alumno`; una por alumno aunque se programen en grupo), sorteo y cronómetro con la bolsa de temas del alumno (`CantarPage(sesion: …)`), valoración, ficha del alumno (temas que lleva, cantados y flojos, historial, notas privadas) e informe en texto para enviar (`informeCante`). Funciona sin cuenta, en local.
+- **Tengo preparador**: el alumno escribe el código de seis caracteres de su preparador (`codigos/{codigo}` → uid). Al enlazar crea `users/{alumno}/preparadores/{preparador}` (el permiso) y `preparadores/{preparador}/alumnos/{alumno}` (para que el preparador lo vea en su lista). Desde entonces el preparador lee `users/{alumno}/progress/settings` (temas estudiados y en repaso) y `users/{alumno}/cantes`, y cada sesión que guarda se copia a `users/{alumno}/cantes/{id}`: aparece en la agenda del alumno y, una vez valorada, en su diario. No se comparten tests, notas ni grabaciones. Cualquiera de los dos puede romper el enlace.
+
+El enlace exige que ambos hayan iniciado sesión con Google y que las reglas de `firestore.rules` estén aplicadas en la consola de Firebase. `test/preparador_test.dart` comprueba el flujo completo con Firestore simulado; las reglas no se pueden probar ahí (el simulador no admite funciones), así que hay que verificarlas con dos cuentas reales.
 
 ## Diseño
 
@@ -98,9 +116,18 @@ flutter analyze
 flutter test
 ```
 
-`test/app_test.dart` arranca la app completa sin Firebase ni red, con el `temario.json` y el `app-config.json` reales del repositorio, y recorre las pestañas y los flujos principales (programar un cante, sortear, cronometrar, guardar en el diario, hacer un test completo, agenda por tema).
+`test/app_test.dart` arranca la app completa sin Firebase ni red, con el `temario.json` y el `app-config.json` reales del repositorio, y recorre los cinco bloques y los flujos principales (programar un cante, sortear, cronometrar, guardar en el diario, hacer un test completo, agenda por tema, alta de un alumno y sesión de preparador).
 
 Pruebas manuales en el móvil: programar un cante semanal y recibir el aviso; sortear y cantar con el cronómetro con la pantalla apagada; grabar y escucharse; apuntar algo en un tema y verlo al volver a abrirlo; hacer un test sin sesión, iniciar sesión y comprobar que aparece en el historial de la web y en `users/{uid}/exam_results`; modo avión con un PDF descargado; claro y oscuro.
+
+## Capturas, vídeo y página de la app
+
+```bash
+flutter test tool/capturas_test.dart --update-goldens   # capturas en promo/capturas/ (no se suben)
+python3 ../scripts/montar-video-app.py --ffmpeg RUTA     # promo/*.webp, promo/oposicion-tcee.mp4 y promo/poster.jpg
+```
+
+`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. `scripts/montar-video-app.py` (Pillow + ffmpeg) exporta las capturas ligeras que usa `index.html` y monta el vídeo de un minuto. Hay que repetir los dos pasos cuando cambie el aspecto de la app.
 
 ## Compilación en GitHub Actions
 

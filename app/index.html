@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Oposición TCEE: cantes, temario y test en el móvil | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="App gratuita para preparar la oposición a Técnico Comercial y Economista del Estado: agenda de cantes, sorteo y cronómetro, temario, test y una sección para preparadores.">
+
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/app/">
+
+    <meta name="keywords" content="app oposición TCEE, técnico comercial, economista del estado, cantar temas, sorteo de temas, preparador oposiciones, test oposición, teco">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#5F2987">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="App Oposición TCEE: cantes, temario y test en el móvil">
+    <meta property="og:description" content="Agenda de cantes, sorteo y cronómetro, temario, test y una sección para preparadores. Gratis y sin anuncios.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/app/promo/poster.jpg">
+    <meta property="og:video" content="https://www.victorgutierrezmarcos.es/app/promo/oposicion-tcee.mp4">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/app/">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
+
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Oposición TCEE",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "description": "App para preparar la oposición a Técnico Comercial y Economista del Estado: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "author": { "@type": "Person", "name": "Víctor Gutiérrez Marcos" },
+        "inLanguage": "es"
+    }
+    </script>
+
+    <style>
+        /* Página de la app: estilos propios sobre las variables de styles.css */
+        .app-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+            gap: 2.5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .app-etiqueta {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+        }
+        .app-hero h2 {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            line-height: 1.15;
+            color: var(--color-text);
+            margin: 0.4rem 0 1rem;
+        }
+        .app-entradilla {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .app-descarga[hidden], .app-descarga [hidden] { display: none; }
+        .app-descarga-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .app-descarga .download-btn { font-size: 1rem; padding: 0.85rem 1.7rem; }
+        .app-nota {
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--color-text-light);
+            margin-top: 0.8rem;
+        }
+        .app-datos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.2rem;
+            list-style: none;
+            margin: 1.2rem 0 0;
+            padding: 0;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+        .app-datos li::before { content: '◆'; color: var(--color-accent-gold); font-size: 0.6rem; margin-right: 0.5rem; vertical-align: middle; }
+
+        /* Móvil dibujado alrededor de cada captura */
+        .app-movil {
+            display: block;
+            width: 100%;
+            max-width: 270px;
+            margin: 0 auto;
+            padding: 8px;
+            background: #1c1626;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        .app-movil img { display: block; width: 100%; height: auto; border-radius: 22px; }
+        .app-moviles { display: flex; gap: 1.2rem; justify-content: center; align-items: flex-start; }
+        .app-moviles .app-movil { margin: 0; }
+        .app-moviles .app-movil:nth-child(2) { margin-top: 1.6rem; }
+
+        .app-seccion { margin-top: 3.5rem; position: relative; z-index: 1; }
+        .app-seccion > h3 {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent-gold);
+            display: inline-block;
+        }
+        .app-seccion p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1.1rem; }
+
+        .app-principios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .app-principio {
+            background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.2rem 1.3rem;
+        }
+        .app-principio h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
+        .app-principio p { font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin: 0; }
+
+        .app-video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-md);
+            background: #4a1f6b;
+        }
+
+        /* Los cinco bloques: texto y capturas, alternando el lado */
+        .app-bloque {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: center;
+            padding: 2.2rem 0;
+            border-top: 1px solid var(--color-border-light);
+        }
+        .app-bloque:first-of-type { border-top: none; padding-top: 0.5rem; }
+        .app-bloque:nth-of-type(even) .app-bloque-texto { order: 2; }
+        .app-bloque-numero {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent-gold);
+        }
+        .app-bloque h4 { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-primary); margin: 0.2rem 0 0.2rem; }
+        .app-bloque-lema { font-style: italic; color: var(--color-text-muted); margin-bottom: 0.9rem !important; }
+        .app-bloque ul { margin: 0 0 0 1.2rem; font-size: 1rem; line-height: 1.7; }
+        .app-bloque li { margin-bottom: 0.45rem; }
+
+        .app-pasos { counter-reset: paso; list-style: none; margin: 1.2rem 0; padding: 0; }
+        .app-pasos li {
+            counter-increment: paso;
+            position: relative;
+            padding: 0 0 1.1rem 3rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .app-pasos li::before {
+            content: counter(paso);
+            position: absolute;
+            left: 0; top: 0.1rem;
+            width: 2rem; height: 2rem;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: #fff;
+            font-family: var(--font-ui);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .app-comparte { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+        .app-comparte div { border: 1px solid var(--color-border); border-radius: 8px; padding: 1.1rem 1.3rem; background: var(--color-bg-cream); }
+        .app-comparte h4 { font-family: var(--font-ui); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .app-comparte ul { margin: 0 0 0 1.1rem; font-size: 0.98rem; line-height: 1.65; }
+
+        .app-faq details { border: 1px solid var(--color-border); border-radius: 6px; margin-bottom: 0.6rem; background: var(--color-bg-cream); }
+        .app-faq summary { cursor: pointer; padding: 0.85rem 1.1rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--color-text); }
+        .app-faq details[open] summary { color: var(--color-primary); border-bottom: 1px solid var(--color-border-light); }
+        .app-faq details p { padding: 0.9rem 1.1rem 0.2rem; font-size: 1rem; line-height: 1.75; }
+
+        .app-cierre { text-align: center; margin-top: 3.5rem; position: relative; z-index: 1; }
+
+        @media (max-width: 760px) {
+            .app-hero, .app-bloque { grid-template-columns: 1fr; gap: 1.5rem; }
+            .app-hero h2 { font-size: 1.9rem; }
+            .app-bloque:nth-of-type(even) .app-bloque-texto { order: 0; }
+            .app-moviles { gap: 0.7rem; }
+            .app-movil { padding: 6px; border-radius: 24px; }
+            .app-movil img { border-radius: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../index.html">INICIO</a></li>
+                <li><a href="../oposicion/index.html" class="active">OPOSICIÓN</a></li>
+                <li><a href="../blog/index.html">BLOG</a></li>
+                <li><a href="../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-nav" style="background: var(--color-bg-cream); border-bottom: 1px solid var(--color-border);">
+        <div class="nav-container">
+            <ul class="nav-list" style="padding: 0.3rem 0;">
+                <li><a href="../oposicion/index.html" style="font-size: 0.75rem;">INTRODUCCIÓN</a></li>
+                <li><a href="../oposicion/temario.html" style="font-size: 0.75rem;">TEMARIO</a></li>
+                <li><a href="../oposicion/organizacion.html" style="font-size: 0.75rem;">ORGANIZACIÓN</a></li>
+                <li><a href="../oposicion/enlaces.html" style="font-size: 0.75rem;">ENLACES</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <h2 class="section-title">LA APP DE LA OPOSICIÓN</h2>
+
+                <!-- Presentación y descarga: los enlaces se rellenan desde app-config.json (app-banner.js) -->
+                <div class="app-hero">
+                    <div>
+                        <span class="app-etiqueta">App móvil · versión de prueba</span>
+                        <h2>Oposición TCEE, en el bolsillo</h2>
+                        <p class="app-entradilla">La web pone el temario y los test. La app pone el día a día: cuándo cantas, qué temas entran, cuánto falta para el examen, cómo te fue la última vez y qué probabilidad llevas. Y, si tienes preparador, os enlaza.</p>
+                        <div id="app-banner" class="app-descarga" hidden>
+                            <div class="app-descarga-botones">
+                                <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
+                                <a id="app-link-play" class="download-btn" target="_blank" rel="noopener" hidden>Google Play</a>
+                                <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
+                            </div>
+                            <p id="app-banner-note" class="app-nota" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido. <a href="#instalar">Cómo instalarla</a>.</p>
+                        </div>
+                        <ul class="app-datos">
+                            <li>Gratis y sin anuncios</li>
+                            <li>Funciona sin cuenta</li>
+                            <li id="app-version" hidden></li>
+                        </ul>
+                    </div>
+                    <div class="app-movil">
+                        <img src="promo/hoy.webp" width="720" height="1560" alt="Pantalla «Hoy» de la app: días que faltan para el examen, racha, próximo cante y test diario">
+                    </div>
+                </div>
+
+                <section class="app-seccion" id="idea">
+                    <h3>La idea</h3>
+                    <p>Preparar esta oposición no es solo estudiar temas: es sostener durante años una rutina de vueltas al temario, cantes semanales y test, y saber en cada momento dónde estás. Eso se suele llevar repartido entre una hoja de cálculo, el calendario del móvil, un cronómetro, una bolsa con papelitos y la memoria.</p>
+                    <p>La app reúne todo eso en un solo sitio y lo ordena alrededor de una pregunta: <strong>¿qué me toca hoy?</strong> No sustituye a la web ni al temario; se apoya en ellos. Descarga de aquí los temas, las preguntas oficiales y la organización del temario, y añade lo que solo tiene sentido en el móvil: avisos, cuenta atrás, sorteo, cronómetro y un diario de cómo va cada cante.</p>
+                    <div class="app-principios">
+                        <div class="app-principio">
+                            <h4>Gratis y sin anuncios</h4>
+                            <p>Como el resto de materiales de la web. No hay compras ni publicidad.</p>
+                        </div>
+                        <div class="app-principio">
+                            <h4>Sin cuenta, si quieres</h4>
+                            <p>Todo funciona guardando los datos en tu móvil. La cuenta de Google es opcional y sirve para sincronizar con la web y con tus otros dispositivos.</p>
+                        </div>
+                        <div class="app-principio">
+                            <h4>Siempre al día</h4>
+                            <p>El contenido se descarga de la web: cuando se actualiza un tema o se añaden preguntas, la app lo recibe sin reinstalar nada.</p>
+                        </div>
+                        <div class="app-principio">
+                            <h4>Tus datos son tuyos</h4>
+                            <p>Puedes exportarlos o borrarlos desde la propia app. Lo que compartes con tu preparador lo decides tú.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="app-seccion" id="video">
+                    <h3>En un minuto</h3>
+                    <video class="app-video" controls muted playsinline preload="none" poster="promo/poster.jpg" width="1920" height="1080" aria-label="Vídeo de presentación de la app Oposición TCEE (un minuto, sin sonido)">
+                        <source src="promo/oposicion-tcee.mp4" type="video/mp4">
+                        Tu navegador no reproduce vídeo. Puedes <a href="promo/oposicion-tcee.mp4">descargarlo</a>.
+                    </video>
+                    <p class="app-nota">Un minuto, sin sonido: las capturas son de la propia app, con datos de ejemplo.</p>
+                </section>
+
+                <section class="app-seccion" id="bloques">
+                    <h3>Cinco bloques</h3>
+                    <p>La app se organiza en cinco pestañas, una por cada cosa que se hace con ella.</p>
+
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <span class="app-bloque-numero">Bloque 1</span>
+                            <h4>Hoy</h4>
+                            <p class="app-bloque-lema">Lo que toca, nada más abrir.</p>
+                            <ul>
+                                <li>Días que faltan para tu próximo ejercicio (la fecha la pones tú) y cuenta atrás al próximo cante.</li>
+                                <li>Test diario: diez preguntas oficiales, las mismas para todos cada día.</li>
+                                <li>Preguntas pendientes de repaso y racha de días seguidos.</li>
+                                <li>Probabilidad de aprobar los ejercicios de temas con lo que llevas estudiado.</li>
+                            </ul>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/hoy.webp" width="720" height="1560" alt="Bloque Hoy: cuentas atrás, test diario y accesos rápidos"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <span class="app-bloque-numero">Bloque 2</span>
+                            <h4>Temario</h4>
+                            <p class="app-bloque-lema">Estudiar, con el mapa delante.</p>
+                            <ul>
+                                <li>Todos los temas por ejercicio y parte, con buscador y PDF que se pueden descargar para leer sin conexión.</li>
+                                <li>Organización del temario: los bloques con su código de colores, esquemas con las conexiones entre temas y «por dónde seguir».</li>
+                                <li>Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo y un test con sus preguntas.</li>
+                                <li>Probabilidades: qué probabilidad tienes de que salga un tema que te sabes, y qué pasaría si te supieras más.</li>
+                            </ul>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/organizacion.webp" width="720" height="1560" alt="Organización del temario por bloques de colores, con los temas estudiados de cada bloque"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/esquema.webp" width="720" height="1560" alt="Esquema interactivo del temario con las conexiones entre temas"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <span class="app-bloque-numero">Bloque 3</span>
+                            <h4>Cantes</h4>
+                            <p class="app-bloque-lema">Programar, cantar y anotar.</p>
+                            <ul>
+                                <li><strong>Agenda:</strong> calendario de cantes con repetición semanal, avisos la víspera y una hora antes, y exportación al calendario del móvil.</li>
+                                <li><strong>Cantar:</strong> sorteo como en el examen o de tu propia bolsa de temas, con prioridad opcional a los que flojean; cronómetro de preparación y exposición que avisa con la pantalla apagada, y grabación para escucharte.</li>
+                                <li><strong>Diario:</strong> qué tema cantaste, cuánto duró, cómo fue y qué te dijeron. Con eso se detectan los temas flojos.</li>
+                            </ul>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt="Agenda de cantes con el próximo cante y el calendario del mes"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/cantes-cantar.webp" width="720" height="1560" alt="Sorteo de temas y cronómetro de exposición"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <span class="app-bloque-numero">Bloque 4</span>
+                            <h4>Test</h4>
+                            <p class="app-bloque-lema">El simulador de la web, en el móvil.</p>
+                            <ul>
+                                <li>Las mismas preguntas oficiales, los mismos filtros (temas, bloques, exámenes) y el mismo baremo.</li>
+                                <li>Resultados con puntuación por bloque y revisión pregunta a pregunta.</li>
+                                <li>Estadísticas y repaso espaciado de las preguntas falladas.</li>
+                                <li>Con cuenta, el historial es el mismo que en el <a href="../oposicion/temario/primer-ejercicio/test/simulador.html">simulador de la web</a>.</li>
+                            </ul>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/test-pregunta.webp" width="720" height="1560" alt="Pregunta de test con sus cuatro opciones"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/test-estadisticas.webp" width="720" height="1560" alt="Estadísticas de los test: nota media, mejor nota y evolución"></div>
+                        </div>
+                    </div>
+
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <span class="app-bloque-numero">Bloque 5</span>
+                            <h4>Más</h4>
+                            <p class="app-bloque-lema">Lo que no es del día a día.</p>
+                            <ul>
+                                <li>Convocatoria: la fecha de cada ejercicio y tus propios hitos.</li>
+                                <li>Horario de estudio semanal, con las horas que dedicas a cada cosa.</li>
+                                <li>Preparadores: enlazar con el tuyo o llevar a tus alumnos.</li>
+                                <li>Cuenta, tema claro u oscuro, descargas, enlaces útiles y exportación de tus datos.</li>
+                            </ul>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/mas.webp" width="720" height="1560" alt="Bloque Más: convocatoria, horario de estudio, preparadores y ajustes"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="app-seccion" id="preparadores">
+                    <h3>Para preparadores</h3>
+                    <p>El preparador también tiene su sitio en la app. Activa «Soy preparador» en <em>Más → Preparadores</em> y lleva a sus alumnos desde el móvil: programa las sesiones de cante (una a una o en grupo), sortea entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha, con lo que ha cantado, cómo le ha ido y qué temas flojean.</p>
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <h4>Preparador y alumno, enlazados</h4>
+                            <ol class="app-pasos">
+                                <li>El preparador inicia sesión y la app le da un <strong>código de seis caracteres</strong>.</li>
+                                <li>El alumno lo escribe en <em>Más → Preparadores → Tengo preparador</em>.</li>
+                                <li>Desde entonces, las sesiones que programa el preparador aparecen en la agenda del alumno y sus valoraciones llegan a su diario de cantes.</li>
+                            </ol>
+                            <p>Con los alumnos que no usan la app funciona igual, solo que sin enlace: el preparador apunta los temas que llevan y les envía el informe de cada cante por mensaje o por correo.</p>
+                        </div>
+                        <div class="app-moviles">
+                            <div class="app-movil"><img loading="lazy" src="promo/preparador.webp" width="720" height="1560" alt="Sección del preparador: código para alumnos, próximas sesiones y lista de alumnos"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/alumno.webp" width="720" height="1560" alt="Ficha de un alumno: temas que lleva, cantes y valoración media"></div>
+                        </div>
+                    </div>
+                    <div class="app-comparte">
+                        <div>
+                            <h4>Qué ve el preparador</h4>
+                            <ul>
+                                <li>Los temas que el alumno marca como estudiados o en repaso.</li>
+                                <li>Sus cantes: fecha, tema, tiempo, valoración y comentarios.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Qué no ve</h4>
+                            <ul>
+                                <li>Los test ni sus resultados.</li>
+                                <li>Las notas y apuntes de cada tema.</li>
+                                <li>Las grabaciones, que no salen del móvil.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>El enlace lo crea el alumno y cualquiera de los dos puede romperlo cuando quiera. Las notas que el preparador toma sobre un alumno son privadas.</p>
+                </section>
+
+                <section class="app-seccion" id="instalar">
+                    <h3>Cómo instalarla</h3>
+                    <p>De momento la app está disponible para Android como versión de prueba, fuera de Google Play:</p>
+                    <ol class="app-pasos">
+                        <li>Pulsa <strong>Descargar para Android</strong> desde el móvil. Se descarga un fichero llamado <code>oposicion-tcee.apk</code>.</li>
+                        <li>Ábrelo. Android avisará de que viene de fuera de la tienda y pedirá permiso para instalarlo: acéptalo solo para esta instalación.</li>
+                        <li>Abre la app. Puedes usarla sin más o iniciar sesión con Google en <em>Más → Cuenta</em> para sincronizar.</li>
+                    </ol>
+                    <p>Cuando haya una versión nueva, la propia app lo avisa en «Hoy». Se instala encima de la anterior y no se pierde nada.</p>
+                </section>
+
+                <section class="app-seccion app-faq" id="preguntas">
+                    <h3>Preguntas frecuentes</h3>
+                    <details>
+                        <summary>¿Hay versión para iPhone?</summary>
+                        <p>Todavía no. La app está hecha para Android y iPhone, pero por ahora solo se publica la versión de Android.</p>
+                    </details>
+                    <details>
+                        <summary>¿Necesito una cuenta?</summary>
+                        <p>No. Sin cuenta, todo se guarda en tu móvil. La cuenta de Google hace falta para tres cosas: compartir el historial de test con la web, sincronizar entre dispositivos y enlazar con un preparador.</p>
+                    </details>
+                    <details>
+                        <summary>¿Funciona sin conexión?</summary>
+                        <p>Sí. Lo ya descargado (temario, preguntas y los PDF que guardes) sigue disponible sin red, y lo que anotes se sincroniza cuando vuelva la conexión.</p>
+                    </details>
+                    <details>
+                        <summary>¿Trae las fechas de la convocatoria?</summary>
+                        <p>No. La app no incluye fechas oficiales: las de cada ejercicio las pones tú, con la fecha conocida o con la que estimes, y a partir de ellas se calculan las cuentas atrás.</p>
+                    </details>
+                    <details>
+                        <summary>¿Qué datos guarda y cómo los borro?</summary>
+                        <p>Los detalla la <a href="../politica-cookies.html">política de privacidad</a>. La app no tiene publicidad ni herramientas de análisis, y desde <em>Más → Cuenta</em> puedes exportar todos tus datos o borrarlos.</p>
+                    </details>
+                    <details>
+                        <summary>He encontrado un fallo o tengo una idea</summary>
+                        <p>Escribe a <a href="mailto:contacto@victorgutierrezmarcos.es">contacto@victorgutierrezmarcos.es</a>. La app está en pruebas y cualquier comentario ayuda.</p>
+                    </details>
+                </section>
+
+                <div class="app-cierre">
+                    <a class="download-btn" href="#app-banner">Ir a la descarga ↑</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            </a>
+            <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="../politica-cookies.html">🍪 Política de cookies</a>
+        </div>
+    </div>
+</footer>
+    <script src="../app-banner.js" defer></script>
+    <script>
+    // Versión publicada de la app (oposicion/app-config.json).
+    fetch('/oposicion/app-config.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (cfg) {
+            var v = cfg && cfg.app && cfg.app.versionActual;
+            var el = document.getElementById('app-version');
+            if (v && el) { el.textContent = 'Versión ' + v; el.hidden = false; }
+        })
+        .catch(function () { /* silencio */ });
+    </script>
+    <script src="../search-engine.js"></script>
+    <script src="../search-ui.js"></script>
+    <script src="../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../firebase-config.js"></script>
+    <script src="../auth.js"></script>
+</body>
+</html>

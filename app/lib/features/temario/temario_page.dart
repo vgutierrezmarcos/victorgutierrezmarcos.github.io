@@ -6,6 +6,7 @@ import '../../core/providers.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../cantar/probabilidades.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
@@ -26,6 +27,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     final descargas = ref.watch(descargasProvider);
     final notas = ref.read(usuarioRepoProvider).todasLasNotas();
     final agendas = ref.watch(agendasProvider);
+    final prob = ref.watch(probabilidadAprobarProvider);
     // Código de colores de la organización del temario (vacío hasta que se descarga).
     final estructura = ref.watch(estructuraProvider).value;
     _colorDe = (codigo) => estructura?.colorDe(codigo);
@@ -83,6 +85,12 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                 titulo: 'Organización del temario',
                 subtitulo: 'Bloques por colores, esquemas y conexiones entre temas',
                 onTap: () => context.go('/temario/organizacion'),
+              ),
+              FilaEnlace(
+                icono: Icons.percent,
+                titulo: 'Probabilidades',
+                subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De aprobar los ejercicios de temas: ${porcentaje(prob.total)}',
+                onTap: () => context.go('/temario/probabilidades'),
               ),
               for (final ej in t.ejercicios) ...[
                 TituloSeccion(ej.nombre),

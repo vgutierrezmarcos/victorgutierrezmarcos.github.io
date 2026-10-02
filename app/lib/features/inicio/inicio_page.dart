@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
@@ -11,8 +12,8 @@ import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../test/motor_test.dart';
 
-/// Portada: cuentas atrás (examen y próximo cante), racha, test diario,
-/// probabilidad de aprobar y accesos rápidos.
+/// Hoy: lo que toca cada día. Cuentas atrás (examen y próximo cante), racha,
+/// test diario, repaso pendiente, probabilidad de aprobar y accesos rápidos.
 class InicioPage extends ConsumerWidget {
   const InicioPage({super.key});
 
@@ -33,6 +34,12 @@ class InicioPage extends ConsumerWidget {
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).value;
+    // Preparador: sus sesiones de hoy con alumnos.
+    final hoy = DateTime.now();
+    final sesionesHoy = ref.watch(perfilPreparadorProvider).activo
+        ? ref.watch(sesionesProvider).where((s) => s.pendiente && s.fecha.year == hoy.year && s.fecha.month == hoy.month && s.fecha.day == hoy.day).toList()
+        : const <Cante>[];
+    final nombres = {for (final a in ref.watch(alumnosProvider)) a.id: a.nombre};
 
     return Scaffold(
       appBar: BarraWeb(
@@ -42,9 +49,8 @@ class InicioPage extends ConsumerWidget {
           IconButton(
             tooltip: 'Cuenta',
             icon: usuario?.photoURL != null ? CircleAvatar(radius: 14, backgroundImage: NetworkImage(usuario!.photoURL!)) : const Icon(Icons.account_circle_outlined),
-            onPressed: () => context.push('/mas/cuenta'),
+            onPressed: () => context.go('/mas/cuenta'),
           ),
-          IconButton(tooltip: 'Más: enlaces, ajustes y cuenta', icon: const Icon(Icons.menu), onPressed: () => context.push('/mas')),
         ],
       ),
       body: RefreshIndicator(
@@ -52,6 +58,8 @@ class InicioPage extends ConsumerWidget {
           ref.invalidate(configProvider);
           ref.invalidate(historialProvider);
           ref.invalidate(temarioProvider);
+          // Con sesión, trae también lo nuevo de la nube (p. ej. un cante que ha puesto el preparador).
+          if (usuario != null) await ref.read(sesionProvider.notifier).sincronizar();
         },
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
@@ -85,7 +93,7 @@ class InicioPage extends ConsumerWidget {
               child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                 Expanded(
                   child: Estadistica(
-                    onTap: () => context.go('/plan/convocatoria'),
+                    onTap: () => context.go('/mas/convocatoria'),
                     valor: dias == null ? '—' : '$dias',
                     etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
                     detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
@@ -103,7 +111,7 @@ class InicioPage extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
             Tarjeta(
-              onTap: cante == null ? () => context.go('/plan') : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
+              onTap: cante == null ? () => _irACantes(context, ref, 0) : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
               child: Row(children: [
                 Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 32),
                 const SizedBox(width: 14),
@@ -137,6 +145,23 @@ class InicioPage extends ConsumerWidget {
                 if (!diarioHecho) const Icon(Icons.chevron_right),
               ]),
             ),
+            if (sesionesHoy.isNotEmpty) ...[
+              const SizedBox(height: 10),
+              Tarjeta(
+                onTap: () => context.go('/mas/preparador'),
+                child: Row(children: [
+                  Icon(Icons.groups_outlined, color: context.esquema.primary, size: 32),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(sesionesHoy.length == 1 ? 'Hoy tienes 1 sesión con tus alumnos' : 'Hoy tienes ${sesionesHoy.length} sesiones con tus alumnos', style: context.textos.titleMedium),
+                      Text([for (final s in sesionesHoy) '${horaDe(s.fecha)} ${nombres[s.alumno] ?? ''}'.trim()].join(' · '), maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
+                    ]),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ]),
+              ),
+            ],
             if (leitner.pendientes().isNotEmpty) ...[
               const SizedBox(height: 10),
               Tarjeta(
@@ -152,7 +177,7 @@ class InicioPage extends ConsumerWidget {
             if (prob != null && prob.temasSabidos > 0) ...[
               const SizedBox(height: 10),
               Tarjeta(
-                onTap: () => context.go('/cantar/probabilidades'),
+                onTap: () => context.go('/temario/probabilidades'),
                 child: Row(children: [
                   Icon(Icons.percent, color: context.esquema.primary),
                   const SizedBox(width: 14),
@@ -172,8 +197,8 @@ class InicioPage extends ConsumerWidget {
               crossAxisSpacing: 10,
               children: [
                 _acceso(context, Icons.quiz_outlined, 'Nuevo test', () => context.go('/test')),
-                _acceso(context, Icons.casino_outlined, 'Sortear temas', () => context.go('/cantar')),
-                _acceso(context, Icons.percent, 'Probabilidades', () => context.go('/cantar/probabilidades')),
+                _acceso(context, Icons.casino_outlined, 'Sortear temas', () => _irACantes(context, ref, 1)),
+                _acceso(context, Icons.percent, 'Probabilidades', () => context.go('/temario/probabilidades')),
                 _acceso(context, Icons.insights_outlined, 'Estadísticas', () => context.go('/test/estadisticas')),
               ],
             ),
@@ -181,6 +206,12 @@ class InicioPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  /// Abre el bloque Cantes en una de sus subpestañas (0 agenda, 1 cantar, 2 diario).
+  void _irACantes(BuildContext context, WidgetRef ref, int subpestana) {
+    ref.read(subpestanaCantesProvider.notifier).state = subpestana;
+    context.go('/cantes');
   }
 
   Widget _acceso(BuildContext context, IconData icono, String texto, VoidCallback onTap) => Tarjeta(

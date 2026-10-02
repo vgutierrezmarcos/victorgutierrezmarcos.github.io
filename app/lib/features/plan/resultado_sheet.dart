@@ -11,18 +11,22 @@ Future<ResultadoCante?> pedirResultadoCante(
   BuildContext context, {
   ResultadoCante inicial = const ResultadoCante(),
   List<Tema> opciones = const [],
+  String? titulo,
+  String? textoGuardar,
 }) =>
     showModalBottomSheet<ResultadoCante>(
       context: context,
       isScrollControlled: true,
       useRootNavigator: true,
-      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones),
+      builder: (_) => _ResultadoSheet(inicial: inicial, opciones: opciones, titulo: titulo ?? '¿Cómo ha ido el cante?', textoGuardar: textoGuardar ?? 'Guardar en el diario'),
     );
 
 class _ResultadoSheet extends StatefulWidget {
-  const _ResultadoSheet({required this.inicial, required this.opciones});
+  const _ResultadoSheet({required this.inicial, required this.opciones, required this.titulo, required this.textoGuardar});
   final ResultadoCante inicial;
   final List<Tema> opciones;
+  final String titulo;
+  final String textoGuardar;
   @override
   State<_ResultadoSheet> createState() => _ResultadoSheetState();
 }
@@ -47,7 +51,7 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
       padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + MediaQuery.of(context).viewInsets.bottom),
       child: SingleChildScrollView(
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('¿Cómo ha ido el cante?', style: context.textos.titleMedium),
+          Text(widget.titulo, style: context.textos.titleMedium),
           const SizedBox(height: 12),
           if (widget.opciones.isNotEmpty)
             DropdownButtonFormField<String>(
@@ -98,7 +102,7 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
                   ),
                 );
               },
-              child: const Text('Guardar en el diario'),
+              child: Text(widget.textoGuardar),
             ),
           ])),
         ]),

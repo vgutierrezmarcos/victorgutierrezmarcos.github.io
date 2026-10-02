@@ -4,16 +4,23 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
 import 'cantes_util.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
+///
+/// Con [alumnos] es el formulario de una sesión de preparador: se elige a
+/// quién se escucha y se crea una sesión por alumno (sirve para grupos).
 class CanteFormPage extends ConsumerStatefulWidget {
-  const CanteFormPage({super.key, this.cante, this.diaInicial});
+  const CanteFormPage({super.key, this.cante, this.diaInicial, this.alumnos, this.alumnosIniciales = const {}});
   final Cante? cante;
   final DateTime? diaInicial;
+  /// Alumnos entre los que elegir (null = cante propio del opositor).
+  final List<Alumno>? alumnos;
+  final Set<String> alumnosIniciales;
   @override
   ConsumerState<CanteFormPage> createState() => _CanteFormPageState();
 }
@@ -28,8 +35,10 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late List<String> _temas = widget.cante?.temas ?? const [];
   bool _repetir = false;
   DateTime? _hasta;
+  late final Set<String> _alumnos = {...widget.alumnosIniciales, if (widget.cante?.alumno != null) widget.cante!.alumno!};
 
   bool get _edicion => widget.cante != null;
+  bool get _sesion => widget.alumnos != null;
 
   @override
   void initState() {
@@ -83,6 +92,10 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige al menos un tema para el sorteo')));
       return;
     }
+    if (_sesion && _alumnos.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige al menos un alumno')));
+      return;
+    }
     final nav = Navigator.of(context);
     final base = (widget.cante ?? Cante(id: nuevoId(), fecha: _fecha)).copyWith(
       fecha: _fecha,
@@ -93,6 +106,19 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       temas: _bolsa == TipoBolsa.lista ? _temas : const [],
       notas: _notas.text.trim(),
     );
+    if (_sesion) {
+      // Una sesión por alumno, cada una con su repetición semanal si se pidió.
+      final sesiones = <Cante>[
+        for (final (i, alumno) in _alumnos.indexed)
+          ...() {
+            final suya = (i == 0 ? base : Cante.fromJson({...base.toJson(), 'id': nuevoId()})).copyWith(alumno: alumno);
+            return !_edicion && _repetir && _hasta != null ? serieSemanal(suya, _hasta!) : [suya];
+          }(),
+      ];
+      await ref.read(sesionesProvider.notifier).guardarVarias(sesiones);
+      nav.pop();
+      return;
+    }
     final lista = !_edicion && _repetir && _hasta != null ? serieSemanal(base, _hasta!) : [base];
     await ref.read(cantesProvider.notifier).guardarVarios(lista);
     // La primera vez que se programa un cante se pide permiso para avisar.
@@ -110,12 +136,27 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BarraWeb(
-        title: Text(_edicion ? 'Editar cante' : 'Nuevo cante'),
+        title: Text(_sesion ? (_edicion ? 'Editar sesión' : 'Nueva sesión') : (_edicion ? 'Editar cante' : 'Nuevo cante')),
         actions: [TextButton(onPressed: _guardar, child: const Text('Guardar'))],
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
+          if (_sesion && !_edicion) ...[
+            const TituloSeccion('Quién canta'),
+            if (widget.alumnos!.isEmpty)
+              Text('Aún no tienes alumnos.', style: context.textos.bodySmall)
+            else
+              Wrap(spacing: 6, runSpacing: 2, children: [
+                for (final a in widget.alumnos!)
+                  FilterChip(
+                    label: Text(a.nombre),
+                    selected: _alumnos.contains(a.id),
+                    onSelected: (v) => setState(() => v ? _alumnos.add(a.id) : _alumnos.remove(a.id)),
+                  ),
+              ]),
+            if (_alumnos.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Se crea una sesión para cada alumno, a la misma hora.', style: context.textos.labelSmall)),
+          ],
           const TituloSeccion('Cuándo'),
           Row(children: [
             Expanded(child: OutlinedButton.icon(onPressed: _elegirDia, icon: const Icon(Icons.event_outlined, size: 18), label: Text(fechaCorta(_fecha)))),
@@ -146,8 +187,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
               },
             ),
           ],
-          const TituloSeccion('Con quién o dónde'),
-          TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Preparador, grupo de cante… (opcional)')),
+          TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
+          TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
           const TituloSeccion('Qué temas entran'),
           SegmentedButton<int>(showSelectedIcon: false, 
             segments: const [
@@ -164,8 +205,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           ),
           const SizedBox(height: 8),
           for (final (tipo, titulo, sub) in [
-            (TipoBolsa.estudiados, 'Los que llevo estudiados', 'Los marcados como estudiados el día del cante'),
-            (TipoBolsa.lista, 'Una lista concreta', 'Los que hayas acordado con el preparador'),
+            (TipoBolsa.estudiados, _sesion ? 'Los que lleva estudiados' : 'Los que llevo estudiados', _sesion ? 'Los que el alumno tenga marcados el día del cante' : 'Los marcados como estudiados el día del cante'),
+            (TipoBolsa.lista, 'Una lista concreta', _sesion ? 'Los que hayas acordado con el alumno' : 'Los que hayas acordado con el preparador'),
             (TipoBolsa.ejercicio, 'Todo el ejercicio', 'Como en el examen'),
           ])
             ListTile(
@@ -185,7 +226,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             ActionChip(label: const Text('Otro'), onPressed: _otraDuracion),
           ]),
           const TituloSeccion('Notas'),
-          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Lo que quieras recordar para este cante (opcional)')),
+          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Indicaciones para el alumno (las verá si está enlazado)' : 'Lo que quieras recordar para este cante (opcional)')),
         ],
       ),
     );

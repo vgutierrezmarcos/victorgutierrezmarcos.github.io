@@ -1,0 +1,337 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
+
+import '../../core/providers.dart';
+import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
+import '../../theme/app_theme.dart';
+import '../../widgets/comunes.dart';
+import '../plan/cante_form_page.dart';
+import '../plan/cantes_util.dart';
+import 'alumno_page.dart';
+import 'sesion_page.dart';
+
+/// Preparadores, en sus dos lados: «Tengo preparador» (el opositor enlaza su
+/// app con el código de su preparador) y «Soy preparador» (alumnos, sesiones
+/// de cante y valoraciones).
+class PreparadorPage extends ConsumerStatefulWidget {
+  const PreparadorPage({super.key});
+  @override
+  ConsumerState<PreparadorPage> createState() => _PreparadorPageState();
+}
+
+class _PreparadorPageState extends ConsumerState<PreparadorPage> {
+  final _codigo = TextEditingController();
+  bool _enlazando = false;
+  bool _otroPreparador = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Al entrar se comprueba si algún alumno ha enlazado desde la última vez.
+    Future.microtask(() {
+      if (mounted && ref.read(perfilPreparadorProvider).activo && ref.read(usuarioActualProvider) != null) ref.read(alumnosProvider.notifier).refrescar();
+    });
+  }
+
+  @override
+  void dispose() {
+    _codigo.dispose();
+    super.dispose();
+  }
+
+  Future<void> _enlazar() async {
+    final messenger = ScaffoldMessenger.of(context);
+    setState(() => _enlazando = true);
+    final error = await ref.read(misPreparadoresProvider.notifier).enlazar(_codigo.text);
+    if (!mounted) return;
+    setState(() {
+      _enlazando = false;
+      if (error == null) {
+        _codigo.clear();
+        _otroPreparador = false;
+      }
+    });
+    messenger.showSnackBar(SnackBar(content: Text(error ?? 'Enlazado. Tu preparador ya puede ver tu progreso.')));
+  }
+
+  Future<void> _desenlazar(VinculoPreparador v) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('¿Dejar de compartir?'),
+        content: Text('${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+          FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar de compartir')),
+        ],
+      ),
+    );
+    if (ok == true) await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+  }
+
+  Future<void> _nuevoAlumno() async {
+    final a = await editarAlumno(context);
+    if (a != null) await ref.read(alumnosProvider.notifier).guardar(a);
+  }
+
+  void _nuevaSesion() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider))));
+
+  @override
+  Widget build(BuildContext context) {
+    final firebase = ref.watch(serviciosProvider).firebaseDisponible;
+    final usuario = ref.watch(usuarioActualProvider);
+    final vinculos = ref.watch(misPreparadoresProvider);
+    final perfil = ref.watch(perfilPreparadorProvider);
+    final alumnos = ref.watch(alumnosProvider);
+    final sesiones = ref.watch(sesionesProvider);
+    final proximas = ref.watch(proximasSesionesProvider);
+    final nombres = {for (final a in alumnos) a.id: a.nombre};
+    final ahora = DateTime.now();
+
+    // ---------------------------------------------------- Lado del opositor
+    final ladoOpositor = <Widget>[
+            const TituloSeccion('Tengo preparador'),
+            for (final v in vinculos)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Tarjeta(
+                  color: context.colores.primarioPalido,
+                  child: Row(children: [
+                    Icon(Icons.link, color: context.esquema.primary, size: 28),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Text(v.nombre.isEmpty ? 'Tu preparador' : v.nombre, style: context.textos.titleMedium),
+                        Text('Enlazado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes.', style: context.textos.bodySmall),
+                      ]),
+                    ),
+                    TextButton(onPressed: () => _desenlazar(v), child: const Text('Quitar')),
+                  ]),
+                ),
+              ),
+            if (vinculos.isEmpty || _otroPreparador)
+              Tarjeta(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Enlaza tu app con la de tu preparador', style: context.textos.titleMedium),
+                  const SizedBox(height: 4),
+                  Text('Pídele su código de seis caracteres. Los cantes que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.', style: context.textos.bodySmall),
+                  const SizedBox(height: 12),
+                  if (!firebase)
+                    Text('Esta compilación no incluye credenciales de Firebase: el enlace no está disponible.', style: context.textos.labelSmall)
+                  else if (usuario == null)
+                    OutlinedButton.icon(onPressed: () => context.go('/mas/cuenta'), icon: const Icon(Icons.login, size: 18), label: const Text('Inicia sesión con Google para enlazar'))
+                  else
+                    Row(children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _codigo,
+                          textCapitalization: TextCapitalization.characters,
+                          maxLength: 7,
+                          style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 4),
+                          decoration: const InputDecoration(hintText: 'CÓDIGO', counterText: '', isDense: true),
+                          onSubmitted: (_) => _enlazar(),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      FilledButton(onPressed: _enlazando ? null : _enlazar, child: Text(_enlazando ? 'Enlazando…' : 'Enlazar')),
+                    ]),
+                ]),
+              )
+            else
+              Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: () => setState(() => _otroPreparador = true), icon: const Icon(Icons.add, size: 18), label: const Text('Enlazar con otro preparador'))),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+              child: Text('Tu preparador ve los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras.', style: context.textos.labelSmall),
+            ),
+    ];
+
+    // -------------------------------------------------- Lado del preparador
+    final ladoPreparador = <Widget>[
+            const TituloSeccion('Soy preparador'),
+            if (!perfil.activo)
+              Tarjeta(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Lleva a tus alumnos desde la app', style: context.textos.titleMedium),
+                  const SizedBox(height: 4),
+                  Text('Programa las sesiones de cante, sortea entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha: qué ha cantado, cómo y qué temas flojean.', style: context.textos.bodySmall),
+                  const SizedBox(height: 12),
+                  FilledButton.icon(onPressed: () => ref.read(perfilPreparadorProvider.notifier).activar(), icon: const Icon(Icons.groups_outlined), label: const Text('Activar la sección de preparador')),
+                ]),
+              )
+            else ...[
+              _tarjetaCodigo(context, perfil, firebase: firebase, conSesion: usuario != null),
+              TituloSeccion('Próximas sesiones', accion: TextButton.icon(onPressed: alumnos.isEmpty ? null : _nuevaSesion, icon: const Icon(Icons.add, size: 18), label: const Text('Sesión'))),
+              if (proximas.isEmpty)
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text(alumnos.isEmpty ? 'Añade primero a tus alumnos.' : 'No hay sesiones programadas.', style: context.textos.bodySmall))
+              else
+                for (final s in proximas.take(8))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Tarjeta(
+                      padding: EdgeInsets.zero,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
+                      child: ListTile(
+                        leading: Icon(Icons.record_voice_over_outlined, color: context.esquema.primary),
+                        title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)} · ${nombres[s.alumno] ?? 'Alumno'}', style: context.textos.titleSmall),
+                        subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                        trailing: s.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(s.fecha, ahora)) : const Icon(Icons.chevron_right),
+                      ),
+                    ),
+                  ),
+              TituloSeccion('Mis alumnos', accion: TextButton.icon(onPressed: _nuevoAlumno, icon: const Icon(Icons.person_add_alt, size: 18), label: const Text('Alumno'))),
+              if (alumnos.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Text('Todavía no tienes alumnos. Los que enlacen su app con tu código aparecerán aquí solos; a los que no usen la app puedes añadirlos a mano.', style: context.textos.bodySmall),
+                )
+              else
+                for (final a in alumnos) _filaAlumno(context, a, sesiones),
+              const SizedBox(height: 12),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton(
+                  onPressed: () => ref.read(perfilPreparadorProvider.notifier).desactivar(),
+                  child: const Text('Ocultar la sección de preparador'),
+                ),
+              ),
+            ],
+    ];
+
+    return Scaffold(
+      appBar: BarraWeb(title: const Text('Preparadores')),
+      body: RefreshIndicator(
+        onRefresh: () => ref.read(alumnosProvider.notifier).refrescar(),
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+          // Quien ya lleva alumnos ve primero su lado.
+          children: perfil.activo ? [...ladoPreparador, ...ladoOpositor] : [...ladoOpositor, ...ladoPreparador],
+        ),
+      ),
+    );
+  }
+
+  Widget _tarjetaCodigo(BuildContext context, PerfilPreparador perfil, {required bool firebase, required bool conSesion}) {
+    final codigo = perfil.codigo;
+    if (codigo == null) {
+      return Tarjeta(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('Sin código para alumnos', style: context.textos.titleMedium),
+          const SizedBox(height: 4),
+          Text(
+            !firebase
+                ? 'Esta compilación no incluye credenciales de Firebase: la sección funciona solo en este dispositivo.'
+                : (conSesion
+                    ? 'No se ha podido reservar tu código. Desliza hacia abajo para reintentarlo.'
+                    : 'Puedes llevar a tus alumnos solo en este móvil. Para que enlacen su app contigo y reciban tus valoraciones, inicia sesión con Google.'),
+            style: context.textos.bodySmall,
+          ),
+          if (firebase && !conSesion) Padding(padding: const EdgeInsets.only(top: 10), child: OutlinedButton.icon(onPressed: () => context.go('/mas/cuenta'), icon: const Icon(Icons.login, size: 18), label: const Text('Iniciar sesión'))),
+        ]),
+      );
+    }
+    return Tarjeta(
+      color: context.colores.primarioPalido,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text('Tu código para alumnos', style: context.textos.labelMedium),
+        Row(children: [
+          Expanded(child: SelectableText(codigo, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 32, fontWeight: FontWeight.w700, letterSpacing: 6, color: context.esquema.primary))),
+          IconButton(
+            tooltip: 'Copiar',
+            icon: const Icon(Icons.copy),
+            onPressed: () async {
+              final messenger = ScaffoldMessenger.of(context);
+              await Clipboard.setData(ClipboardData(text: codigo));
+              messenger.showSnackBar(const SnackBar(content: Text('Código copiado')));
+            },
+          ),
+          IconButton(
+            tooltip: 'Enviar a un alumno',
+            icon: const Icon(Icons.ios_share),
+            onPressed: () => SharePlus.instance.share(ShareParams(
+              text: 'Enlaza tu app Oposición TCEE conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario.',
+              subject: 'Código de preparador',
+            )),
+          ),
+        ]),
+        Text('El alumno lo escribe en Más → Preparadores → «Tengo preparador».', style: context.textos.bodySmall),
+      ]),
+    );
+  }
+
+  Widget _filaAlumno(BuildContext context, Alumno a, List<Cante> sesiones) {
+    final suyas = sesiones.where((s) => s.alumno == a.id).toList();
+    final hechas = suyas.where((s) => s.hecho).toList();
+    final valoradas = hechas.where((s) => (s.resultado?.valoracion ?? 0) > 0).toList();
+    final media = valoradas.isEmpty ? 0.0 : valoradas.fold<int>(0, (t, s) => t + s.resultado!.valoracion) / valoradas.length;
+    final siguiente = suyas.where((s) => s.pendiente && s.fecha.isAfter(DateTime.now())).firstOrNull;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Tarjeta(
+        padding: EdgeInsets.zero,
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AlumnoPage(id: a.id))),
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundColor: context.colores.primarioPalido,
+            foregroundColor: context.esquema.primary,
+            child: Text(a.nombre.isEmpty ? '?' : a.nombre.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fuentes.serif, fontWeight: FontWeight.w700)),
+          ),
+          title: Row(children: [
+            Flexible(child: Text(a.nombre, maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall)),
+            if (a.enlazado) Padding(padding: const EdgeInsets.only(left: 6), child: Icon(Icons.link, size: 16, color: context.esquema.primary)),
+          ]),
+          subtitle: Text(
+            [
+              '${a.temas.length} temas',
+              '${hechas.length} ${hechas.length == 1 ? 'cante' : 'cantes'}',
+              if (siguiente != null) 'próxima: ${fechaCorta(siguiente.fecha)}',
+            ].join(' · '),
+            style: context.textos.labelSmall,
+          ),
+          trailing: media > 0 ? Estrellas(valor: media.round(), tamano: 14) : const Icon(Icons.chevron_right),
+        ),
+      ),
+    );
+  }
+}
+
+/// Diálogo para dar de alta o editar a un alumno. Devuelve null si se cancela.
+Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
+  final nombre = TextEditingController(text: alumno?.nombre ?? '');
+  var ejercicio = alumno?.ejercicio ?? 3;
+  return showDialog<Alumno>(
+    context: context,
+    builder: (d) => StatefulBuilder(
+      builder: (d, setState) => AlertDialog(
+        title: Text(alumno == null ? 'Nuevo alumno' : 'Editar alumno'),
+        content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          TextField(controller: nombre, autofocus: alumno == null, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre')),
+          const SizedBox(height: 16),
+          Text('Ejercicio que prepara', style: Theme.of(d).textTheme.labelMedium),
+          const SizedBox(height: 6),
+          SegmentedButton<int>(
+            showSelectedIcon: false,
+            segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 0, label: Text('3.º y 4.º'))],
+            selected: {ejercicio},
+            onSelectionChanged: (s) => setState(() => ejercicio = s.first),
+            style: const ButtonStyle(visualDensity: VisualDensity.compact),
+          ),
+        ]),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+          FilledButton(
+            onPressed: () {
+              final n = nombre.text.trim();
+              if (n.isEmpty) return;
+              Navigator.pop(d, alumno == null ? Alumno(id: nuevoId(), nombre: n, ejercicio: ejercicio, creado: DateTime.now(), updatedAt: DateTime.now()) : alumno.copyWith(nombre: n, ejercicio: ejercicio));
+            },
+            child: const Text('Guardar'),
+          ),
+        ],
+      ),
+    ),
+  );
+}

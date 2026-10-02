@@ -14,7 +14,9 @@ import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
+import '../../data/repos/usuario_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
@@ -28,10 +30,22 @@ enum _Modo { oficial, bolsa }
 
 enum _Fuente { estudiados, repaso, lista }
 
+/// Sesión de un preparador con uno de sus alumnos: el cante se sortea entre
+/// los temas del alumno y se guarda en su ficha, no en el diario propio.
+class SesionAlumno {
+  const SesionAlumno({required this.cante, required this.alumno});
+  final Cante cante;
+  final Alumno alumno;
+}
+
 /// Cantar un tema: sorteo (oficial o de una bolsa propia), cronómetro de
 /// preparación y exposición, grabación y registro en el diario de cantes.
+///
+/// Sin [sesion] es la subpestaña «Cantar» del bloque Cantes (sin cabecera
+/// propia). Con [sesion] es una pantalla completa del preparador.
 class CantarPage extends ConsumerStatefulWidget {
-  const CantarPage({super.key});
+  const CantarPage({super.key, this.sesion});
+  final SesionAlumno? sesion;
   @override
   ConsumerState<CantarPage> createState() => _CantarPageState();
 }
@@ -70,7 +84,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     super.initState();
     // Si se llega desde la agenda con un cante, el cronómetro toma su duración.
     final id = ref.read(canteEnCursoProvider);
-    final cante = ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
+    final cante = widget.sesion?.cante ?? ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
     if (cante != null) _minExposicion = cante.minutos;
   }
 
@@ -198,7 +212,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
 
   /// Temas de la bolsa propia según la fuente elegida (o el cante en curso).
   List<Tema> _bolsa(Temario t, Cante? cante) {
-    final ajustes = ref.read(ajustesProvider);
+    final ajustes = _ajustesDeLaBolsa();
     if (cante != null) return temasDeCante(cante, t, ajustes);
     final delEjercicio = t.todosLosTemas.where((x) => x.ejercicio == _ejercicio);
     return switch (_fuente) {
@@ -206,6 +220,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       _Fuente.repaso => delEjercicio.where((x) => ajustes.temasEnRepaso.contains(x.codigo)).toList(),
       _Fuente.lista => [for (final c in _lista) if (t.tema(c) != null) t.tema(c)!],
     };
+  }
+
+  /// En una sesión de preparador, «los temas estudiados» son los del alumno.
+  Ajustes _ajustesDeLaBolsa() {
+    final propios = ref.read(ajustesProvider);
+    final alumno = widget.sesion?.alumno;
+    return alumno == null ? propios : Ajustes(temasEstudiados: alumno.temas.toSet(), temasExtraidos: propios.temasExtraidos);
   }
 
   void _sortear(Temario t, Cante? cante, AppConfig config) {
@@ -232,8 +253,12 @@ class _CantarPageState extends ConsumerState<CantarPage> {
 
   Future<void> _guardarEnDiario(Cante? cante, List<Tema> opciones) async {
     final messenger = ScaffoldMessenger.of(context);
+    final nav = Navigator.of(context);
+    final sesion = widget.sesion;
     final res = await pedirResultadoCante(
       context,
+      titulo: sesion == null ? null : '¿Cómo ha ido el cante de ${sesion.alumno.nombre}?',
+      textoGuardar: sesion == null ? null : 'Guardar valoración',
       inicial: ResultadoCante(
         sorteados: _sorteados.map((x) => x.codigo).toList(),
         temaCantado: _elegido?.codigo,
@@ -242,6 +267,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       opciones: opciones,
     );
     if (res == null) return;
+    if (sesion != null) {
+      // Sesión de preparador: se guarda en la ficha del alumno (y en su diario, si está enlazado).
+      await ref.read(sesionesProvider.notifier).guardar((cante ?? sesion.cante).copyWith(estado: EstadoCante.hecho, resultado: res));
+      messenger.showSnackBar(const SnackBar(content: Text('Valoración guardada')));
+      nav.pop();
+      return;
+    }
     final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
     await ref.read(cantesProvider.notifier).guardar(base.copyWith(estado: EstadoCante.hecho, resultado: res));
     await ref.read(ajustesProvider.notifier).registrarActividad();
@@ -260,14 +292,18 @@ class _CantarPageState extends ConsumerState<CantarPage> {
   @override
   Widget build(BuildContext context) {
     final temario = ref.watch(temarioProvider);
+    final sesion = widget.sesion;
     final ajustes = ref.watch(ajustesProvider);
+    final estudiados = sesion == null ? ajustes.temasEstudiados : sesion.alumno.temas.toSet();
     final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
     final idCante = ref.watch(canteEnCursoProvider);
-    final cante = idCante == null ? null : ref.watch(cantesProvider).where((c) => c.id == idCante && c.pendiente).firstOrNull;
+    final cante = sesion != null
+        ? (ref.watch(sesionesProvider).where((c) => c.id == sesion.cante.id).firstOrNull ?? sesion.cante)
+        : (idCante == null ? null : ref.watch(cantesProvider).where((c) => c.id == idCante && c.pendiente).firstOrNull);
 
     // Al llegar desde la agenda, el cronómetro toma la duración del cante.
     ref.listen(canteEnCursoProvider, (_, id) {
-      final c = ref.read(cantesProvider).where((x) => x.id == id).firstOrNull;
+      final c = sesion != null ? null : ref.read(cantesProvider).where((x) => x.id == id).firstOrNull;
       if (c == null) return;
       setState(() {
         _sorteados = [];
@@ -277,15 +313,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       });
     });
 
-    return Scaffold(
-      appBar: BarraWeb(
-        title: const Text('Cantar un tema'),
-        actions: [
-          IconButton(tooltip: 'Probabilidades', icon: const Icon(Icons.percent), onPressed: () => context.go('/cantar/probabilidades')),
-          IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, Urls.comoCantarUnTema)),
-        ],
-      ),
-      body: temario.when(
+    final cuerpo = temario.when(
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
         data: (t) {
@@ -310,11 +338,14 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text('${tituloCante(cante)} · ${fechaCorta(cante.fecha)}, ${horaDe(cante.fecha)}', style: context.textos.titleSmall),
-                        Text('${bolsa.length} temas en la bolsa. Al terminar se guarda en el diario.', style: context.textos.labelSmall),
+                        Text('${sesion?.alumno.nombre ?? tituloCante(cante)} · ${fechaCorta(cante.fecha)}, ${horaDe(cante.fecha)}', style: context.textos.titleSmall),
+                        Text('${bolsa.length} temas en la bolsa. Al terminar se guarda en ${sesion == null ? 'el diario' : 'su ficha'}.', style: context.textos.labelSmall),
                       ]),
                     ),
-                    IconButton(tooltip: 'Salir del cante', icon: const Icon(Icons.close), onPressed: () => ref.read(canteEnCursoProvider.notifier).state = null),
+                    if (sesion == null)
+                      IconButton(tooltip: 'Salir del cante', icon: const Icon(Icons.close), onPressed: () => ref.read(canteEnCursoProvider.notifier).state = null)
+                    else
+                      const SizedBox(height: 40),
                   ]),
                 ),
               TituloSeccion(
@@ -398,7 +429,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     onTap: () => setState(() => _elegido = x),
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                     child: Row(children: [
-                      Icon(ajustes.temasEstudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: ajustes.temasEstudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
+                      Icon(estudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: estudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
                       const SizedBox(width: 10),
                       Expanded(child: TextoTema(x.codigo, x.titulo, color: ref.watch(estructuraProvider).value?.colorDe(x.codigo))),
                       if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
@@ -439,13 +470,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     FilledButton.tonalIcon(
                       onPressed: () => _guardarEnDiario(cante, _sorteados.isNotEmpty ? _sorteados : (cante != null ? bolsa : [if (_elegido != null) _elegido!])),
                       icon: const Icon(Icons.menu_book_outlined),
-                      label: const Text('Guardar en el diario de cantes'),
+                      label: Text(sesion == null ? 'Guardar en el diario de cantes' : 'Valorar y guardar'),
                     ),
                   ],
                 ]),
               ),
-              const TituloSeccion('Grabación para autoescucha'),
-              Tarjeta(
+              if (sesion == null) const TituloSeccion('Grabación para autoescucha'),
+              if (sesion == null) Tarjeta(
                 child: Column(children: [
                   Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
                     FilledButton.icon(
@@ -473,7 +504,16 @@ class _CantarPageState extends ConsumerState<CantarPage> {
             ],
           );
         },
+    );
+    // Dentro del bloque Cantes la cabecera la pone CantesPage.
+    if (sesion == null) return cuerpo;
+    return Scaffold(
+      appBar: BarraWeb(
+        title: Text(sesion.alumno.nombre),
+        subtitulo: 'Sorteo y cronómetro',
+        actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, Urls.comoCantarUnTema))],
       ),
+      body: cuerpo,
     );
   }
 
@@ -487,7 +527,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final p = Sorteo.probEjercicio(partes, elegir: elegir);
     final letras = [for (final k in porParte.keys.where((k) => k.startsWith('$_ejercicio.')).toList()..sort()) k.split('.').last];
     return Tarjeta(
-      onTap: () => context.go('/cantar/probabilidades'),
+      onTap: () => context.go('/temario/probabilidades'),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
           Expanded(child: Text([for (var i = 0; i < partes.length; i++) '${letras[i]}: ${partes[i].sabidos} de ${partes[i].total}'].join(' · '), style: context.textos.titleMedium)),

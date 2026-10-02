@@ -19,6 +19,7 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 /                      # Homepage with 3 cards
 ├── oposicion/         # Exam preparation materials
 │   └── temario/primer-ejercicio/test/  # Test simulator
+├── app/               # Flutter mobile app; app/index.html is its public landing page
 ├── blog/              # Articles (Quarto-based)
 ├── comunidad.html     # Community page
 ├── sobre-mi.html      # About page
@@ -50,6 +51,12 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 - Newsletter sent automatically via Brevo API when new articles detected
 - `blog/newsletter/published-articles.json` tracks already-sent articles (prevents re-sending)
 - Only articles with rendered `.html` files are included in RSS/newsletter
+
+**Mobile app** (`app/`, see `app/README.md`)
+- Flutter app "Oposición TCEE" (Android); shares Firebase project and content JSON with the web
+- `app/index.html` is the public landing page (`/app/`): screenshots and promo video live in `app/promo/`, regenerated with `app/tool/capturas_test.dart` and `scripts/montar-video-app.py`
+- `app-banner.js` fills download links from `oposicion/app-config.json` (home, `/oposicion/` and `/app/`)
+- `firestore.rules` is shared by web and app; changes must be applied manually in the Firebase console
 
 **Cookie Consent** (`cookie-consent.js`)
 - GDPR-compliant banner managing Google Analytics consent (`G-ZC63ML9ECJ`)

@@ -65,6 +65,9 @@ List<Cante> serieSemanal(Cante primero, DateTime hasta) {
       temas: primero.temas,
       notas: primero.notas,
       serie: serie,
+      alumno: primero.alumno,
+      preparador: primero.preparador,
+      preparadorNombre: primero.preparadorNombre,
       updatedAt: DateTime.now(),
     ));
   }

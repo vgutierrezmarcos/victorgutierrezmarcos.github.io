@@ -74,6 +74,9 @@ class Cante {
     this.estado = EstadoCante.pendiente,
     this.resultado,
     this.serie,
+    this.alumno,
+    this.preparador,
+    this.preparadorNombre,
     this.updatedAt,
     this.borrado = false,
   });
@@ -95,12 +98,18 @@ class Cante {
   final ResultadoCante? resultado;
   /// Identificador común de los cantes creados con repetición semanal.
   final String? serie;
+  /// Sesión de un preparador: identificador del alumno que canta.
+  final String? alumno;
+  /// Cante programado o valorado por un preparador enlazado: su uid y su nombre.
+  final String? preparador;
+  final String? preparadorNombre;
   final DateTime? updatedAt;
   /// Borrado lógico, para que la eliminación llegue a los demás dispositivos.
   final bool borrado;
 
   bool get hecho => estado == EstadoCante.hecho;
   bool get pendiente => estado == EstadoCante.pendiente;
+  bool get dePreparador => preparador != null;
 
   Cante copyWith({
     DateTime? fecha,
@@ -113,6 +122,9 @@ class Cante {
     EstadoCante? estado,
     ResultadoCante? resultado,
     String? serie,
+    String? alumno,
+    String? preparador,
+    String? preparadorNombre,
     bool? borrado,
   }) =>
       Cante(
@@ -127,6 +139,9 @@ class Cante {
         estado: estado ?? this.estado,
         resultado: resultado ?? this.resultado,
         serie: serie ?? this.serie,
+        alumno: alumno ?? this.alumno,
+        preparador: preparador ?? this.preparador,
+        preparadorNombre: preparadorNombre ?? this.preparadorNombre,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
       );
@@ -143,6 +158,9 @@ class Cante {
         'estado': estado.name,
         'resultado': resultado?.toJson(),
         'serie': serie,
+        if (alumno != null) 'alumno': alumno,
+        if (preparador != null) 'preparador': preparador,
+        if (preparadorNombre != null) 'preparadorNombre': preparadorNombre,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
       };
@@ -159,6 +177,9 @@ class Cante {
         estado: EstadoCante.values.firstWhere((e) => e.name == j['estado'], orElse: () => EstadoCante.pendiente),
         resultado: j['resultado'] is Map ? ResultadoCante.fromJson(j['resultado'] as Map) : null,
         serie: j['serie'] as String?,
+        alumno: j['alumno'] as String?,
+        preparador: j['preparador'] as String?,
+        preparadorNombre: j['preparadorNombre'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
       );

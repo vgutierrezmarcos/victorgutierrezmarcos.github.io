@@ -14,20 +14,49 @@ import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../cantar/probabilidades.dart';
 import 'cante_form_page.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
 
-/// Plan: agenda de cantes con calendario y cuentas atrás, y acceso a la
-/// convocatoria, el horario, el diario y las probabilidades.
-class PlanPage extends ConsumerStatefulWidget {
-  const PlanPage({super.key});
-  @override
-  ConsumerState<PlanPage> createState() => _PlanPageState();
+/// Exporta los próximos cantes, las fechas de los ejercicios y los hitos a un
+/// fichero .ics que se comparte con el calendario del móvil.
+Future<void> exportarCalendario(BuildContext context, WidgetRef ref) async {
+  final messenger = ScaffoldMessenger.of(context);
+  final cantes = ref.read(proximosCantesProvider);
+  final fechas = ref.read(fechasEjerciciosProvider);
+  final hitos = ref.read(planProvider).hitos;
+  final eventos = [
+    for (final c in cantes) eventoDeCante(c),
+    for (final e in fechas.entries) eventoDeFecha('ej${e.key}', 'TCEE · ${nombreEjercicio(e.key)}', e.value),
+    for (final h in hitos) eventoDeFecha(h.id, 'TCEE · ${h.titulo}', h.fecha),
+  ];
+  if (eventos.isEmpty) {
+    messenger.showSnackBar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
+    return;
+  }
+  final dir = await getTemporaryDirectory();
+  final f = File('${dir.path}/oposicion_tcee.ics');
+  await f.writeAsString(Calendario.ics(eventos));
+  await SharePlus.instance.share(ShareParams(files: [XFile(f.path, mimeType: 'text/calendar')], subject: 'Calendario de la oposición TCEE'));
 }
 
-class _PlanPageState extends ConsumerState<PlanPage> {
+/// Activa o desactiva los avisos de la víspera y de una hora antes de cada cante.
+Future<void> alternarAvisosCante(WidgetRef ref) async {
+  final activar = !ref.read(planProvider).avisosCante;
+  if (activar && !await Notificaciones.pedirPermiso()) return;
+  await ref.read(planProvider.notifier).actualizar((p) => p.copyWith(avisosCante: activar));
+  await ref.read(cantesProvider.notifier).reprogramarAvisos();
+}
+
+/// Agenda de cantes (subpestaña de Cantes): próximo cante con su cuenta
+/// atrás, calendario mensual y lo programado cada día.
+class AgendaCantesVista extends ConsumerStatefulWidget {
+  const AgendaCantesVista({super.key});
+  @override
+  ConsumerState<AgendaCantesVista> createState() => _AgendaCantesVistaState();
+}
+
+class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
   DateTime _mes = DateTime.now();
   DateTime _dia = DateTime.now();
   Timer? _tic;
@@ -50,33 +79,12 @@ class _PlanPageState extends ConsumerState<PlanPage> {
   void _nuevoCante([DateTime? dia]) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(diaInicial: dia)));
   void _abrir(Cante c) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id)));
 
-  Future<void> _exportar() async {
-    final cantes = ref.read(proximosCantesProvider);
-    final fechas = ref.read(fechasEjerciciosProvider);
-    final hitos = ref.read(planProvider).hitos;
-    final eventos = [
-      for (final c in cantes) eventoDeCante(c),
-      for (final e in fechas.entries) eventoDeFecha('ej${e.key}', 'TCEE · ${nombreEjercicio(e.key)}', e.value),
-      for (final h in hitos) eventoDeFecha(h.id, 'TCEE · ${h.titulo}', h.fecha),
-    ];
-    if (eventos.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
-      return;
-    }
-    final dir = await getTemporaryDirectory();
-    final f = File('${dir.path}/oposicion_tcee.ics');
-    await f.writeAsString(Calendario.ics(eventos));
-    await SharePlus.instance.share(ShareParams(files: [XFile(f.path, mimeType: 'text/calendar')], subject: 'Calendario de la oposición TCEE'));
-  }
-
   @override
   Widget build(BuildContext context) {
     final cantes = ref.watch(cantesProvider);
     final proximos = ref.watch(proximosCantesProvider);
     final plan = ref.watch(planProvider);
     final fechas = ref.watch(fechasEjerciciosProvider);
-    final diario = ref.watch(diarioProvider);
-    final prob = ref.watch(probabilidadAprobarProvider);
     final ahora = DateTime.now();
 
     // Lo que hay cada día: cantes y fechas señaladas.
@@ -87,26 +95,9 @@ class _PlanPageState extends ConsumerState<PlanPage> {
         ];
     final delDia = eventosDe(_dia);
     final siguiente = proximos.isEmpty ? null : proximos.first;
-    final proximaFecha = (fechas.entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value))).firstOrNull;
 
+    // Sin cabecera: va dentro de CantesPage, que pone el título y las subpestañas.
     return Scaffold(
-      appBar: BarraWeb(
-        title: const Text('Plan'),
-        actions: [
-          IconButton(tooltip: 'Exportar al calendario del móvil', icon: const Icon(Icons.ios_share), onPressed: _exportar),
-          PopupMenuButton<String>(
-            onSelected: (v) async {
-              if (v == 'avisos') {
-                final activar = !plan.avisosCante;
-                if (activar && !await Notificaciones.pedirPermiso()) return;
-                await ref.read(planProvider.notifier).actualizar((p) => p.copyWith(avisosCante: activar));
-                await ref.read(cantesProvider.notifier).reprogramarAvisos();
-              }
-            },
-            itemBuilder: (_) => [CheckedPopupMenuItem(value: 'avisos', checked: plan.avisosCante, child: const Text('Avisar antes de cada cante'))],
-          ),
-        ],
-      ),
       floatingActionButton: FloatingActionButton.extended(onPressed: () => _nuevoCante(_dia), icon: const Icon(Icons.add), label: const Text('Cante')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
@@ -184,37 +175,6 @@ class _PlanPageState extends ConsumerState<PlanPage> {
             const TituloSeccion('Próximos cantes'),
             for (final c in proximos.take(6)) _filaCante(c, ahora, conFecha: true),
           ],
-          const TituloSeccion('Planificación'),
-          FilaEnlace(
-            icono: Icons.flag_outlined,
-            titulo: 'Convocatoria',
-            subtitulo: proximaFecha == null ? 'Fechas de los ejercicios e hitos' : '${nombreEjercicio(proximaFecha.key)}: faltan ${diasHasta(proximaFecha.value)} días',
-            onTap: () => context.go('/plan/convocatoria'),
-          ),
-          FilaEnlace(
-            icono: Icons.account_tree_outlined,
-            titulo: 'Organización del temario',
-            subtitulo: 'Bloques, esquemas y conexiones entre temas',
-            onTap: () => context.go('/temario/organizacion'),
-          ),
-          FilaEnlace(
-            icono: Icons.schedule,
-            titulo: 'Horario de estudio',
-            subtitulo: '${(plan.horario ?? Horario.porDefecto()).horasEstudioSemana.toStringAsFixed(0)} horas de estudio a la semana',
-            onTap: () => context.go('/plan/horario'),
-          ),
-          FilaEnlace(
-            icono: Icons.menu_book_outlined,
-            titulo: 'Diario de cantes',
-            subtitulo: diario.isEmpty ? 'Cómo fue cada cante y qué temas flojean' : '${diario.length} cantes registrados',
-            onTap: () => context.go('/plan/diario'),
-          ),
-          FilaEnlace(
-            icono: Icons.percent,
-            titulo: 'Probabilidades',
-            subtitulo: prob == null ? 'Qué probabilidad tienes según los temas que te sabes' : 'Probabilidad de aprobar los ejercicios de temas: ${porcentaje(prob.total)}',
-            onTap: () => context.go('/cantar/probabilidades'),
-          ),
         ],
       ),
     );
@@ -238,7 +198,7 @@ class _PlanPageState extends ConsumerState<PlanPage> {
         padding: const EdgeInsets.only(bottom: 8),
         child: Tarjeta(
           padding: EdgeInsets.zero,
-          onTap: () => context.go('/plan/convocatoria'),
+          onTap: () => context.go('/mas/convocatoria'),
           child: ListTile(leading: Icon(Icons.flag, color: context.colores.dorado), title: Text(titulo, style: context.textos.titleSmall)),
         ),
       );

@@ -74,8 +74,8 @@ class CuentaPage extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.file_download_outlined),
                 title: const Text('Exportar datos (JSON)'),
-                subtitle: Text('Resultados, repaso, ajustes, notas, cantes y planificación', style: context.textos.labelSmall),
-                onTap: () => SharePlus.instance.share(ShareParams(text: repo.exportarJson(extra: ref.read(planRepoProvider).exportar()), subject: 'Datos TCEE App')),
+                subtitle: Text('Resultados, repaso, ajustes, notas, cantes, planificación y alumnos', style: context.textos.labelSmall),
+                onTap: () => SharePlus.instance.share(ShareParams(text: repo.exportarJson(extra: {...ref.read(planRepoProvider).exportar(), ...ref.read(preparadorRepoProvider).exportar()}), subject: 'Datos TCEE App')),
               ),
               ListTile(
                 leading: Icon(Icons.delete_outline, color: context.esquema.error),
