@@ -4,10 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/estructura.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../organizacion/bloque_page.dart';
 import '../test/motor_test.dart';
+import 'abrir_tema.dart';
 
 /// Agenda de un tema: lo que te apuntas para la próxima vuelta, las vueltas
 /// que llevas, cómo te ha ido al cantarlo y tu nota libre.
@@ -64,6 +67,11 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
   Widget build(BuildContext context) {
     final agenda = ref.watch(agendasProvider)[_codigo] ?? ref.read(agendasProvider.notifier).de(_codigo);
     final stats = ref.watch(estadisticasCantesProvider)[_codigo];
+    // Organización del temario: bloque del tema, idea clave y temas con los que conecta.
+    final estructura = ref.watch(estructuraProvider).value ?? EstructuraTemario.vacia;
+    final bloque = estructura.bloqueDe(_codigo);
+    final relacionados = estructura.relacionados(_codigo);
+    final temario = ref.watch(temarioProvider).value;
     final pendientes = agenda.pendientes;
     final resueltos = agenda.resueltos;
     final notifier = ref.read(agendasProvider.notifier);
@@ -88,6 +96,47 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
       children: [
         Text(widget.tema.titulo, style: context.textos.titleMedium),
+        if (bloque != null) ...[
+          const SizedBox(height: 10),
+          Tarjeta(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => BloquePage(id: bloque.id))),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(children: [
+                CasillaTema(_codigo, color: bloque.color, grande: true),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(bloque.nombre, style: context.textos.titleSmall),
+                    Text(bloque.categoria, style: context.textos.labelSmall),
+                  ]),
+                ),
+                Icon(Icons.chevron_right, color: context.colores.textoClaro),
+              ]),
+              if (estructura.ideas[_codigo] != null)
+                Padding(padding: const EdgeInsets.only(top: 8), child: Text(estructura.ideas[_codigo]!, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 14.5, height: 1.35, color: context.colores.textoSuave))),
+              if (relacionados.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Text('Conecta con', style: context.textos.labelSmall),
+                const SizedBox(height: 4),
+                Wrap(spacing: 6, runSpacing: 6, children: [
+                  for (final r in relacionados)
+                    if (r.esTema)
+                      CasillaTema(r.tema!, color: estructura.colorDe(r.tema!) ?? context.esquema.primary, onTap: () => abrirTema(context, temario, r.tema!))
+                    else
+                      GestureDetector(
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => BloquePage(id: r.bloque!))),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(border: Border.all(color: estructura.bloque(r.bloque!)?.color ?? context.colores.borde, width: 1.5), borderRadius: BorderRadius.circular(3)),
+                          child: Text(estructura.bloque(r.bloque!)?.nombre ?? '', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontWeight: FontWeight.w600, color: context.esquema.onSurface)),
+                        ),
+                      ),
+                ]),
+              ],
+            ]),
+          ),
+        ],
         const TituloSeccion('Para la próxima vuelta'),
         Tarjeta(
           padding: const EdgeInsets.fromLTRB(4, 4, 4, 8),

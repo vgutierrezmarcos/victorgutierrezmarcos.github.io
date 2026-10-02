@@ -7,10 +7,10 @@ App Flutter (Android e iOS) complementaria de [victorgutierrezmarcos.es](https:/
 | Pestaña | Funciones |
 |---|---|
 | **Inicio** | Cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. El menú de la barra superior abre **Más**: comunidad, enlaces útiles, recordatorio diario, tema claro/oscuro, descargas, cuenta (Google) y exportar/borrar datos. |
-| **Plan** | Agenda de cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; cantes con repetición semanal; exportación a Google Calendar o a un `.ics`. Convocatoria (fecha de cada ejercicio e hitos propios), horario de estudio semanal y diario de cantes. Los cantes duran 30 minutos por defecto. |
-| **Temario** | Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Recursos de organización. |
+| **Plan** | Agenda de cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; cantes con repetición semanal; exportación a Google Calendar o a un `.ics`. Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios), horario de estudio semanal y diario de cantes. Los cantes duran 30 minutos por defecto. |
+| **Temario** | Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Recursos de organización. |
 | **Test** | Simulador con los mismos filtros y baremo que la web (temas, bloques, exámenes, nº de preguntas, tiempo, 1 / -0,33 / 0). Rejilla de navegación, imágenes, marcar preguntas. Resultados con puntuación por bloque y revisión. Estadísticas e historial unificado con la web. |
-| **Cantar** | Sorteo como en el examen (2 temas de cada parte; 1 por parte en el quinto) o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos. Cronómetro de preparación y exposición con avisos también en segundo plano, grabación de audio y registro en el diario. Probabilidades calculadas como en el Excel de organización. |
+| **Cantar** | Sorteo como en el examen (2 temas de cada parte; 1 por parte en el quinto) o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos. Cronómetro de preparación y exposición con avisos también en segundo plano, grabación de audio y registro en el diario. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. |
 
 ## Estructura
 
@@ -25,6 +25,7 @@ lib/
 ├── features/test/             # motor_test (lógica pura), leitner (réplica de spaced-repetition.js), páginas
 ├── features/cantar/           # sorteo (probabilidades del Excel y sorteos), reloj_cante, páginas
 ├── features/plan/             # agenda, cante, diario, convocatoria, horario
+├── features/organizacion/     # bloques, detalle de bloque y esquema interactivo del temario
 ├── features/{inicio,temario,mas}/
 └── widgets/comunes.dart       # piezas de la web: cabecera, títulos de sección, tarjetas, grupos desplegables
 test/                          # lógica (motor, Leitner, sorteo, plan) y pruebas de humo de la app completa
@@ -35,7 +36,8 @@ Datos compartidos con la web (generados en el repo raíz):
 
 - `oposicion/temario/primer-ejercicio/test/preguntas.json` y `bloques.json`
 - `oposicion/temario/temario.json` y `oposicion/enlaces.json` (los crea `node build-app-data.js` en CI). Los temas del quinto ejercicio se mantienen a mano en `build-app-data.js` (`TEMAS_QUINTO`).
-- `oposicion/app-config.json`: fechas oficiales de los ejercicios (`convocatoria.fechas`), reglas del sorteo (`sorteo`), URLs de comunidad y tiendas, avisos. Editar a mano.
+- `oposicion/organizacion/estructura_temario.json`: bloques, colores, esquemas y conexiones del temario. Se genera con `python3 scripts/extraer-estructura-temario.py` a partir de `estructura_temario.ppsx` (y del Excel para los bloques del cuarto ejercicio); hay que repetirlo cuando cambie el PowerPoint.
+- `oposicion/app-config.json`: reglas del sorteo (`sorteo`), URLs de comunidad y de descarga, avisos. Editar a mano. La app no muestra el nombre de ninguna convocatoria ni trae fechas oficiales: las fechas las pone el usuario.
 
 Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 
@@ -54,7 +56,11 @@ La app reproduce la estética de la web (`styles.css` y los estilos de `simulado
 - `BarraWeb`: cabecera con degradado morado, título en blanco y línea dorada (`.site-header`). `TituloSeccion`: título morado con subrayado y rombo (`.section-title`). `Tarjeta`, `GrupoDesplegable` (`.tema-group-header`), `Contador` y `Estadistica` replican las cajas de la web y del simulador.
 - El menú inferior sigue el de la web: etiquetas en mayúsculas y la sección activa en blanco sobre morado.
 
-Sin blog: la app no enlaza ni muestra artículos. Sin cronograma: el reparto automático de temas se retiró a la espera de uno basado en los bloques e interconexiones de `oposicion/organizacion/estructura_temario.ppsx`.
+Sin blog: la app no enlaza ni muestra artículos. Sin cronograma: el reparto automático de temas se retiró; cuando se rehaga deberá apoyarse en los bloques y conexiones de la organización del temario.
+
+## Organización del temario
+
+`data/models/estructura.dart` lee `estructura_temario.json`. El código de colores es el del PowerPoint: catorce bloques en el tercer ejercicio (Microeconomía, Macroeconomía y Mixto), y rosa y morado para las dos partes del cuarto. `CasillaTema` pinta el código de un tema sobre el color de su bloque en el temario, la agenda de cada tema, el sorteo y los esquemas. `EsquemaVista` dibuja las casillas en la posición que tienen en la diapositiva, con sus marcos y flechas; al tocar un tema o un bloque se resaltan sus conexiones. «Por dónde seguir» propone los temas aún no estudiados que conectan con alguno ya estudiado.
 
 ## Probabilidades (réplica del Excel de organización)
 

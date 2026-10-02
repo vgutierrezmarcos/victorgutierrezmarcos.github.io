@@ -151,9 +151,6 @@ class AppConfig {
     this.versionMinima = '1.0.0',
     this.urlPlayStore,
     this.urlAppStore,
-    this.nombreConvocatoria = '',
-    this.fechaPrimerEjercicio,
-    this.fechas = const {},
     this.bolasPorParte = const {3: 2, 4: 2, 5: 1},
     this.partesARedactar = const {5: 2},
     this.urlBoe,
@@ -169,10 +166,6 @@ class AppConfig {
   final String versionMinima;
   final String? urlPlayStore;
   final String? urlAppStore;
-  final String nombreConvocatoria;
-  final DateTime? fechaPrimerEjercicio;
-  /// Fechas oficiales de cada ejercicio (1-5) cuando se conozcan.
-  final Map<int, DateTime> fechas;
   /// Temas que se extraen de cada parte en el sorteo, por ejercicio.
   final Map<int, int> bolasPorParte;
   /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3).
@@ -191,15 +184,6 @@ class AppConfig {
     final conv = j['convocatoria'] as Map<String, dynamic>? ?? {};
     final com = j['comunidad'] as Map<String, dynamic>? ?? {};
     final con = j['contacto'] as Map<String, dynamic>? ?? {};
-    final f = conv['fechaPrimerEjercicio'] as String?;
-    final fechas = <int, DateTime>{};
-    ((conv['fechas'] as Map?) ?? {}).forEach((k, v) {
-      final n = int.tryParse(k.toString());
-      final d = v is String ? DateTime.tryParse(v) : null;
-      if (n != null && d != null) fechas[n] = d;
-    });
-    final primera = f == null ? null : DateTime.tryParse(f);
-    if (primera != null) fechas.putIfAbsent(1, () => primera);
     final bolas = {...porDefecto.bolasPorParte};
     final redactar = {...porDefecto.partesARedactar};
     ((j['sorteo'] as Map?) ?? {}).forEach((k, v) {
@@ -212,9 +196,6 @@ class AppConfig {
       versionMinima: app['versionMinima'] as String? ?? '1.0.0',
       urlPlayStore: app['urlPlayStore'] as String?,
       urlAppStore: app['urlAppStore'] as String?,
-      nombreConvocatoria: conv['nombre'] as String? ?? '',
-      fechaPrimerEjercicio: primera,
-      fechas: fechas,
       bolasPorParte: bolas,
       partesARedactar: redactar,
       urlBoe: conv['urlBoe'] as String?,

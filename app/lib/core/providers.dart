@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../data/models/estructura.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
 import '../data/models/temario.dart';
@@ -45,6 +46,7 @@ final descargasProvider = Provider((ref) => ref.watch(serviciosProvider).descarg
 final preguntasProvider = FutureProvider<BancoPreguntas>((ref) => ref.watch(contenidoProvider).preguntas());
 final bloquesProvider = FutureProvider<Bloques>((ref) => ref.watch(contenidoProvider).bloques());
 final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProvider).temario());
+final estructuraProvider = FutureProvider<EstructuraTemario>((ref) => ref.watch(contenidoProvider).estructura());
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());
 final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoProvider).config());
 
@@ -247,13 +249,11 @@ class PlanNotifier extends Notifier<Plan> {
 
 final planProvider = NotifierProvider<PlanNotifier, Plan>(PlanNotifier.new);
 
-/// Fecha de cada ejercicio: la del usuario y, si no la ha fijado, la oficial
-/// publicada en app-config.json.
+/// Fecha de cada ejercicio. Las pone siempre el usuario: la app no trae
+/// fechas oficiales de ninguna convocatoria.
 final fechasEjerciciosProvider = Provider<Map<int, DateTime>>((ref) {
-  final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
   final legado = ref.watch(ajustesProvider.select((a) => a.fechaConvocatoria));
   return {
-    ...config.fechas,
     if (legado != null) 1: legado,
     ...ref.watch(planProvider.select((p) => p.fechas)),
   };

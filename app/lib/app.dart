@@ -9,6 +9,7 @@ import 'features/cantar/probabilidades_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
+import 'features/organizacion/organizacion_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/diario_page.dart';
 import 'features/plan/horario_page.dart';
@@ -35,7 +36,11 @@ final _router = GoRouter(
             GoRoute(path: 'diario', builder: (c, s) => const DiarioPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [GoRoute(path: '/temario', builder: (c, s) => const TemarioPage())]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/temario', builder: (c, s) => const TemarioPage(), routes: [
+            GoRoute(path: 'organizacion', builder: (c, s) => const OrganizacionPage()),
+          ]),
+        ]),
         StatefulShellBranch(routes: [
           GoRoute(path: '/test', builder: (c, s) => const ConfigTestPage(), routes: [
             GoRoute(path: 'estadisticas', builder: (c, s) => const EstadisticasPage()),

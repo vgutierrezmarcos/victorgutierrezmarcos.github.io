@@ -12,6 +12,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
+import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/temario.dart';
@@ -27,6 +28,7 @@ import 'package:tcee_app/features/plan/cante_page.dart';
 void main() {
   late Temario temario;
   late AppConfig config;
+  late EstructuraTemario estructura;
   late UsuarioRepo usuario;
   late PlanRepo plan;
   late List<Override> overrides;
@@ -38,6 +40,7 @@ void main() {
   setUpAll(() async {
     await initializeDateFormatting('es');
     temario = Temario.fromJson(jsonDecode(File('../oposicion/temario/temario.json').readAsStringSync()) as Map<String, dynamic>);
+    estructura = EstructuraTemario.fromJson(jsonDecode(File('../oposicion/organizacion/estructura_temario.json').readAsStringSync()) as Map<String, dynamic>);
     config = AppConfig.fromJson(jsonDecode(File('../oposicion/app-config.json').readAsStringSync()) as Map<String, dynamic>);
   });
 
@@ -57,6 +60,7 @@ void main() {
       )),
       temarioProvider.overrideWith((ref) => temario),
       configProvider.overrideWith((ref) => config),
+      estructuraProvider.overrideWith((ref) => estructura),
       preguntasProvider.overrideWith((ref) => banco),
       bloquesProvider.overrideWith((ref) => Bloques.vacio),
       enlacesProvider.overrideWith((ref) => <CategoriaEnlaces>[]),
@@ -140,6 +144,11 @@ void main() {
     final p3 = Sorteo.probEjercicio([const ParteSorteo(total: 45, sabidos: 30), const ParteSorteo(total: 45, sabidos: 30)]);
     expect(find.text('${(100 * p3).toStringAsFixed(1).replaceAll('.', ',')} %'), findsOneWidget);
     expect(find.text('0,0 %'), findsNWidgets(3)); // total, cuarto y quinto
+    // Gráfico: por eficiencia y en 3D.
+    await tocar(tester, find.descendant(of: find.byType(SegmentedButton<bool>), matching: find.text('Eficiencia')));
+    expect(find.text('Eficiencia según los temas de cada parte'), findsNWidgets(2)); // tercer y cuarto ejercicio
+    await tocar(tester, find.text('3D'));
+    expect(find.textContaining('Arrastra a los lados para girar'), findsNWidgets(2));
     expect(tester.takeException(), isNull);
   });
 
@@ -165,14 +174,14 @@ void main() {
     expect(find.text('12:00'), findsOneWidget); // el cronómetro toma la duración del cante
     await tocar(tester, find.text('Sortear 3 temas'));
     expect(find.text('Toca el tema que vas a cantar.'), findsOneWidget);
-    expect(find.textContaining('3.A.2 ·'), findsOneWidget);
+    expect(find.text('3.A.2'), findsOneWidget); // casilla con el color de su bloque
 
     // Salir del cante vuelve al sorteo normal.
     await tocar(tester, find.byTooltip('Salir del cante'));
     expect(find.text('Sortear 2 temas de cada parte'), findsOneWidget);
     await tocar(tester, find.text('Sortear 2 temas de cada parte'));
-    expect(find.textContaining(RegExp(r'^3\.A\.\d+ ·')), findsNWidgets(2));
-    expect(find.textContaining(RegExp(r'^3\.B\.\d+ ·')), findsNWidgets(2));
+    expect(find.textContaining(RegExp(r'^3\.A\.\d+$')), findsNWidgets(2));
+    expect(find.textContaining(RegExp(r'^3\.B\.\d+$')), findsNWidgets(2));
     expect(tester.takeException(), isNull);
   });
 
@@ -205,7 +214,7 @@ void main() {
     await arrancar(tester);
     await pestana(tester, 'Cantar');
     await tocar(tester, find.text('Sortear 2 temas de cada parte'));
-    await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
+    await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+$')));
     expect(find.text('30:00'), findsOneWidget); // 30 minutos por defecto
     await tocar(tester, find.text('Empezar'));
     await tester.pump(const Duration(milliseconds: 600));
@@ -268,6 +277,38 @@ void main() {
     expect(r.incorrectas, 2);
     await tocar(tester, find.text('Nuevo test'));
     expect(find.text('Comenzar test'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('organización del temario: bloques, detalle de bloque y esquema', (tester) async {
+    await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.8', '3.A.9'}));
+    await arrancar(tester);
+    await pestana(tester, 'Temario');
+    await tocar(tester, find.text('Organización del temario'));
+    expect(find.text('MICROECONOMÍA'), findsOneWidget);
+    expect(find.text('MACROECONOMÍA'), findsOneWidget);
+    expect(find.text('MIXTO'), findsOneWidget);
+    expect(find.text('Por dónde seguir'), findsOneWidget);
+    expect(find.text('Modelo neoclásico básico'), findsOneWidget);
+    expect(find.text('2 / 6'), findsOneWidget); // 3.A.8 y 3.A.9 estudiados
+
+    // Detalle del bloque.
+    await tocar(tester, find.text('Modelo neoclásico básico'));
+    expect(find.text('2 de 6 temas estudiados'), findsOneWidget);
+    expect(find.text('TEMAS DEL BLOQUE'), findsOneWidget);
+    expect(find.text('Teoría de la demanda'), findsOneWidget); // idea clave de 3.A.8
+    expect(find.text('CONEXIONES CON EL RESTO DEL TEMARIO'), findsOneWidget);
+    await tocar(tester, find.byType(BackButton));
+
+    // Cuarto ejercicio: dos categorías, una por parte.
+    await tocar(tester, find.text('Cuarto ejercicio'));
+    expect(find.text('ECONOMÍA ESPAÑOLA'), findsOneWidget);
+    expect(find.text('ECONOMÍA DEL SECTOR PÚBLICO'), findsOneWidget);
+
+    // Esquema interactivo.
+    await tocar(tester, find.text('Esquema'));
+    expect(find.textContaining('Toca un tema o el nombre de un bloque'), findsOneWidget);
+    expect(find.text('Tercer y cuarto ejercicio'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

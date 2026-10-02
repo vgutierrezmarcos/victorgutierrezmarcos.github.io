@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/temario.dart';
@@ -16,6 +17,7 @@ class TemarioPage extends ConsumerStatefulWidget {
 
 class _TemarioPageState extends ConsumerState<TemarioPage> {
   String _busqueda = '';
+  Color? Function(String) _colorDe = (_) => null;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,9 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     final descargas = ref.watch(descargasProvider);
     final notas = ref.read(usuarioRepoProvider).todasLasNotas();
     final agendas = ref.watch(agendasProvider);
+    // Código de colores de la organización del temario (vacío hasta que se descarga).
+    final estructura = ref.watch(estructuraProvider).value;
+    _colorDe = (codigo) => estructura?.colorDe(codigo);
     int apuntes(String codigo) => agendas[codigo]?.pendientes.length ?? 0;
 
     return Scaffold(
@@ -72,6 +77,13 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                   ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: total == 0 ? 0 : estudiados / total, minHeight: 8, backgroundColor: context.colores.fondoClaro)),
                 ]),
               ),
+              const SizedBox(height: 10),
+              FilaEnlace(
+                icono: Icons.account_tree_outlined,
+                titulo: 'Organización del temario',
+                subtitulo: 'Bloques por colores, esquemas y conexiones entre temas',
+                onTap: () => context.go('/temario/organizacion'),
+              ),
               for (final ej in t.ejercicios) ...[
                 TituloSeccion(ej.nombre),
                 Padding(
@@ -118,7 +130,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
         tooltip: 'Estudiado',
         onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
       ),
-      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible),
+      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
       subtitle: Row(children: [
         if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text('Sin PDF', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
