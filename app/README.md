@@ -6,7 +6,7 @@ App Flutter (Android e iOS) complementaria de [victorgutierrezmarcos.es](https:/
 
 | Pestaña | Funciones |
 |---|---|
-| **Inicio** | Cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. El menú de la barra superior abre **Más**: comunidad, enlaces útiles, recordatorio diario, tema claro/oscuro, descargas, cuenta (Google) y exportar/borrar datos. |
+| **Inicio** | Cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Avisa cuando hay una versión nueva. El menú de la barra superior abre **Más**: enlaces útiles, recordatorio diario (desactivado por defecto), tema claro/oscuro, descargas, cuenta (Google) y exportar/borrar datos. |
 | **Plan** | Agenda de cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; cantes con repetición semanal; exportación a Google Calendar o a un `.ics`. Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios), horario de estudio semanal y diario de cantes. Los cantes duran 30 minutos por defecto. |
 | **Temario** | Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Recursos de organización. |
 | **Test** | Simulador con los mismos filtros y baremo que la web (temas, bloques, exámenes, nº de preguntas, tiempo, 1 / -0,33 / 0). Rejilla de navegación, imágenes, marcar preguntas. Resultados con puntuación por bloque y revisión. Estadísticas e historial unificado con la web. |
@@ -36,8 +36,8 @@ Datos compartidos con la web (generados en el repo raíz):
 
 - `oposicion/temario/primer-ejercicio/test/preguntas.json` y `bloques.json`
 - `oposicion/temario/temario.json` y `oposicion/enlaces.json` (los crea `node build-app-data.js` en CI). Los temas del quinto ejercicio se mantienen a mano en `build-app-data.js` (`TEMAS_QUINTO`).
-- `oposicion/organizacion/estructura_temario.json`: bloques, colores, esquemas y conexiones del temario. Se genera con `python3 scripts/extraer-estructura-temario.py` a partir de `estructura_temario.ppsx` (y del Excel para los bloques del cuarto ejercicio); hay que repetirlo cuando cambie el PowerPoint.
-- `oposicion/app-config.json`: reglas del sorteo (`sorteo`), URLs de comunidad y de descarga, avisos. Editar a mano. La app no muestra el nombre de ninguna convocatoria ni trae fechas oficiales: las fechas las pone el usuario.
+- `oposicion/organizacion/estructura_temario.json`: bloques, colores, esquemas y conexiones del temario. Se genera con `python3 scripts/extraer-estructura-temario.py` a partir de `estructura_temario.ppsx` (y del Excel para los bloques del cuarto ejercicio; las conexiones que no están en el PowerPoint se añaden en `CONEXIONES_EXTRA`); hay que repetirlo cuando cambie el PowerPoint.
+- `oposicion/app-config.json`: versión publicada (`versionActual`), URL de descarga, reglas del sorteo (`sorteo`) y avisos. Editar a mano. La app no muestra el nombre de ninguna convocatoria ni trae fechas oficiales: las fechas las pone el usuario.
 
 Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 
@@ -111,13 +111,18 @@ Pruebas manuales en el móvil: programar un cante semanal y recibir el aviso; so
 
 ## Distribución del APK de prueba
 
-El APK se publica como release `app-latest` del repositorio, y la web lo enlaza desde `urlApk`. Para sustituirlo por una compilación nueva (subiendo antes `version` en `pubspec.yaml`, para que Android lo acepte como actualización):
+El APK se publica como release `app-latest` del repositorio, y la web lo enlaza desde `urlApk`. Para publicar una versión nueva:
 
-```bash
-flutter build apk --release
-cp build/app/outputs/flutter-apk/app-release.apk /tmp/oposicion-tcee.apk
-gh release upload app-latest /tmp/oposicion-tcee.apk --clobber
-```
+1. Subir `version` en `pubspec.yaml` (nombre y número de compilación), para que Android la acepte como actualización.
+2. Compilar y sustituir el fichero de la release:
+   ```bash
+   flutter build apk --release
+   cp build/app/outputs/flutter-apk/app-release.apk /tmp/oposicion-tcee.apk
+   gh release upload app-latest /tmp/oposicion-tcee.apk --clobber
+   ```
+3. Poner esa versión en `app.versionActual` de `oposicion/app-config.json` y subir el cambio. Las apps instaladas con una versión anterior muestran entonces en Inicio el aviso «Hay una versión nueva», con un botón que abre la descarga (o la ficha de Google Play cuando exista `urlPlayStore`).
+
+Las actualizaciones automáticas solo existen a través de las tiendas: al publicar en Google Play, es Play quien actualiza la app.
 
 ## Publicación
 

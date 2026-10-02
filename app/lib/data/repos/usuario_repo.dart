@@ -17,7 +17,7 @@ class Ajustes {
     this.racha = 0,
     this.mejorRacha = 0,
     this.ultimoDia,
-    this.horaRecordatorio = 20 * 60, // minutos desde medianoche; -1 = desactivado
+    this.horaRecordatorio = -1, // minutos desde medianoche; -1 = desactivado (valor por defecto)
     this.temaOscuro, // null = sistema
     this.temasExtraidos = 3,
     this.updatedAt,
@@ -70,7 +70,7 @@ class Ajustes {
         'racha': racha,
         'mejorRacha': mejorRacha,
         'ultimoDia': ultimoDia,
-        'horaRecordatorio': horaRecordatorio,
+        'recordatorio': horaRecordatorio,
         'temaOscuro': temaOscuro,
         'temasExtraidos': temasExtraidos,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
@@ -86,7 +86,9 @@ class Ajustes {
       racha: (j['racha'] as num?)?.toInt() ?? 0,
       mejorRacha: (j['mejorRacha'] as num?)?.toInt() ?? 0,
       ultimoDia: j['ultimoDia'] as String?,
-      horaRecordatorio: (j['horaRecordatorio'] as num?)?.toInt() ?? 20 * 60,
+      // Clave nueva: la antigua ('horaRecordatorio') guardaba las 20:00 aunque el
+      // usuario nunca lo hubiera activado, así que se ignora.
+      horaRecordatorio: (j['recordatorio'] as num?)?.toInt() ?? -1,
       temaOscuro: j['temaOscuro'] as bool?,
       temasExtraidos: (j['temasExtraidos'] as num?)?.toInt() ?? 3,
       updatedAt: f(j['updatedAt'] as String?),

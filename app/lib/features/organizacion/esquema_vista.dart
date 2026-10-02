@@ -363,10 +363,11 @@ class _PintorEsquema extends CustomPainter {
 
   void _punta(Canvas canvas, Offset desde, Offset hasta, Paint pincel) {
     final v = hasta - desde;
-    if (v.distance < 8) return;
+    if (v.distance < 5) return;
     final u = v / v.distance;
     final n = Offset(-u.dy, u.dx);
-    const largo = 9.0, ancho = 4.0;
+    // En conexiones muy cortas (casillas contiguas) las puntas se encogen para no pisarse.
+    final largo = min(9.0, v.distance * 0.42), ancho = largo * 0.45;
     canvas.drawPath(
       Path()
         ..moveTo(hasta.dx, hasta.dy)

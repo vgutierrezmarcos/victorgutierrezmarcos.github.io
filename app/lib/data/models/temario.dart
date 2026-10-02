@@ -149,13 +149,13 @@ class CategoriaEnlaces {
 class AppConfig {
   const AppConfig({
     this.versionMinima = '1.0.0',
+    this.versionActual,
+    this.urlApk,
     this.urlPlayStore,
     this.urlAppStore,
     this.bolasPorParte = const {3: 2, 4: 2, 5: 1},
     this.partesARedactar = const {5: 2},
     this.urlBoe,
-    this.urlDiscord,
-    this.urlTelegram,
     this.email = 'contacto@victorgutierrezmarcos.es',
     this.linkedin,
     this.github,
@@ -164,6 +164,10 @@ class AppConfig {
   });
 
   final String versionMinima;
+  /// Última versión publicada de la app; si es mayor que la instalada, la app avisa.
+  final String? versionActual;
+  /// Descarga directa del APK de Android mientras la app no esté en Google Play.
+  final String? urlApk;
   final String? urlPlayStore;
   final String? urlAppStore;
   /// Temas que se extraen de cada parte en el sorteo, por ejercicio.
@@ -171,8 +175,6 @@ class AppConfig {
   /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3).
   final Map<int, int> partesARedactar;
   final String? urlBoe;
-  final String? urlDiscord;
-  final String? urlTelegram;
   final String email;
   final String? linkedin;
   final String? github;
@@ -182,7 +184,6 @@ class AppConfig {
   factory AppConfig.fromJson(Map<String, dynamic> j) {
     final app = j['app'] as Map<String, dynamic>? ?? {};
     final conv = j['convocatoria'] as Map<String, dynamic>? ?? {};
-    final com = j['comunidad'] as Map<String, dynamic>? ?? {};
     final con = j['contacto'] as Map<String, dynamic>? ?? {};
     final bolas = {...porDefecto.bolasPorParte};
     final redactar = {...porDefecto.partesARedactar};
@@ -194,13 +195,13 @@ class AppConfig {
     });
     return AppConfig(
       versionMinima: app['versionMinima'] as String? ?? '1.0.0',
+      versionActual: app['versionActual'] as String?,
+      urlApk: app['urlApk'] as String?,
       urlPlayStore: app['urlPlayStore'] as String?,
       urlAppStore: app['urlAppStore'] as String?,
       bolasPorParte: bolas,
       partesARedactar: redactar,
       urlBoe: conv['urlBoe'] as String?,
-      urlDiscord: com['urlDiscord'] as String?,
-      urlTelegram: com['urlTelegram'] as String?,
       email: con['email'] as String? ?? 'contacto@victorgutierrezmarcos.es',
       linkedin: con['linkedin'] as String?,
       github: con['github'] as String?,
@@ -210,4 +211,15 @@ class AppConfig {
   }
 
   static const porDefecto = AppConfig();
+
+  /// true si la versión [a] es posterior a la [b] ("1.10.0" > "1.9.3").
+  static bool esPosterior(String a, String b) {
+    List<int> partes(String v) => v.split('+').first.split('.').map((p) => int.tryParse(p) ?? 0).toList();
+    final x = partes(a), y = partes(b);
+    for (var i = 0; i < 3; i++) {
+      final m = i < x.length ? x[i] : 0, n = i < y.length ? y[i] : 0;
+      if (m != n) return m > n;
+    }
+    return false;
+  }
 }
