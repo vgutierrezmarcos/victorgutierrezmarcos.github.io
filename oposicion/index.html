@@ -121,6 +121,21 @@
             <article class="page-content">
                 <h2 class="section-title">MATERIALES PARA LA OPOSICIÓN A TCEE</h2>
 
+                <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
+                <div id="app-banner" class="app-banner" hidden>
+                    <div class="app-banner-text">
+                        <span class="app-banner-label">App móvil · versión de prueba</span>
+                        <h3 class="app-banner-title">Lleva la oposición en el bolsillo</h3>
+                        <p>Agenda de cantes con cuenta atrás, sorteo de temas, cronómetro, probabilidades, temario y simulador de test, con el mismo historial que en la web.</p>
+                    </div>
+                    <div class="app-banner-links">
+                        <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
+                        <a id="app-link-play" class="download-btn" target="_blank" rel="noopener" hidden>Google Play</a>
+                        <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
+                    </div>
+                    <p id="app-banner-note" class="app-banner-note" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido.</p>
+                </div>
+
                 <div class="content-text">
                     <h3>En esta sección encontrarás</h3>
                 </div>
@@ -411,6 +426,7 @@
         </div>
     </div>
 </footer>
+    <script src="../app-banner.js" defer></script>
     <script src="../search-engine.js"></script>
     <script src="../search-ui.js"></script>
     <script src="../cookie-consent.js"></script>
