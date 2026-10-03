@@ -51,6 +51,10 @@ class Servicios {
 final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError('Se inyecta en main()'));
 
 final oposicionProvider = Provider<Oposicion>((ref) => ref.watch(serviciosProvider).oposicion);
+
+/// Cambia de oposición: se guarda y la app se vuelve a cargar con sus datos
+/// (lo pone RaizApp en main.dart).
+final cambiarOposicionProvider = Provider<Future<void> Function(Oposicion)>((ref) => (_) async {});
 final contenidoProvider = Provider((ref) => ref.watch(serviciosProvider).contenido);
 final usuarioRepoProvider = Provider((ref) => ref.watch(serviciosProvider).usuario);
 final planRepoProvider = Provider((ref) => ref.watch(serviciosProvider).plan);

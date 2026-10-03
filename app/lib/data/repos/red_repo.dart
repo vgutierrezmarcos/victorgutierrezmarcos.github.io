@@ -53,18 +53,33 @@ class RedRepo {
   // -------------------------------------------------------------- Verificación
 
   /// El usuario es administrador de la red de esta oposición (documento
-  /// admins/{uid} —en DCE, oposiciones/dce/admins/{uid}—, creado en la consola).
+  /// admins/{uid} —en DCE, oposiciones/dce/admins/{uid}—, creado en la consola)
+  /// o administrador general (admins/{uid} de la raíz con `general: true`).
   Future<bool> esAdmin() async => await diagnosticoAdmin() == DiagnosticoAdmin.si;
+
+  /// Si es administrador de [otra] oposición (para dejarle verla antes de que
+  /// se lance).
+  Future<bool> esAdminEn(Oposicion otra) async =>
+      await RedRepo(firestore: _db, auth: _auth, oposicion: otra).diagnosticoAdmin() == DiagnosticoAdmin.si;
+
+  /// Su documento de administrador en [admins] (llamado como su uid o como su
+  /// correo de Google), o null.
+  Future<DocumentSnapshot<Map<String, dynamic>>?> _docAdmin(CollectionReference<Map<String, dynamic>> admins) async {
+    final porUid = await admins.doc(uid).get(const GetOptions(source: Source.server));
+    if (porUid.exists) return porUid;
+    final correo = _auth!.currentUser?.email?.trim().toLowerCase();
+    if (correo == null || correo.isEmpty) return null;
+    final porCorreo = await admins.doc(correo).get(const GetOptions(source: Source.server));
+    return porCorreo.exists ? porCorreo : null;
+  }
 
   /// Por qué el usuario es o no es administrador, para explicárselo.
   Future<DiagnosticoAdmin> diagnosticoAdmin() async {
     if (!conSesion) return DiagnosticoAdmin.no;
     try {
-      // El documento puede llamarse como el uid o como el correo de Google.
-      final admins = oposicion.red(_db!, 'admins');
-      if ((await admins.doc(uid).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
-      final correo = _auth!.currentUser?.email?.trim().toLowerCase();
-      if (correo != null && correo.isNotEmpty && (await admins.doc(correo).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
+      if (await _docAdmin(oposicion.red(_db!, 'admins')) != null) return DiagnosticoAdmin.si;
+      // El administrador general lo es de todas las oposiciones.
+      if (!oposicion.esPrincipal && (await _docAdmin(_db.collection('admins')))?.data()?['general'] == true) return DiagnosticoAdmin.si;
       return DiagnosticoAdmin.no;
     } on FirebaseException catch (e) {
       return e.code == 'permission-denied' ? DiagnosticoAdmin.sinPermiso : DiagnosticoAdmin.sinRed;

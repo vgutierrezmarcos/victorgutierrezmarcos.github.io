@@ -14,6 +14,7 @@ import 'core/constants.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
+import 'features/inicio/elegir_oposicion.dart';
 import 'data/models/oposicion.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
@@ -43,9 +44,15 @@ Future<void> main() async {
   }
 
   final http = await CacheHttp.crear();
-  // La oposición elegida (la única, mientras solo esté TCEE) decide de qué web
-  // sale el contenido y dónde se guardan los datos del opositor.
-  final oposicion = Oposiciones.porId((await Hive.openBox(Cajas.app)).get('oposicion') as String?);
+  final cajaApp = await Hive.openBox(Cajas.app);
+  await Notificaciones.iniciar();
+
+  runApp(RaizApp(http: http, firebaseDisponible: firebaseDisponible, elegida: cajaApp.get('oposicion') as String?));
+}
+
+/// Crea los servicios de una oposición: su contenido, los datos del opositor
+/// en ella y la tarea de avisos.
+Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, required bool firebaseDisponible}) async {
   Oposiciones.actual = oposicion;
   final db = firebaseDisponible ? FirebaseFirestore.instance : null;
   final auth = firebaseDisponible ? FirebaseAuth.instance : null;
@@ -54,7 +61,6 @@ Future<void> main() async {
   final plan = await PlanRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final preparador = await PreparadorRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final descargas = await DescargasRepo.crear(oposicion: oposicion);
-  await Notificaciones.iniciar();
   await iniciarAvisosEnSegundoPlano(oposicion: oposicion.id);
 
   // Refresco silencioso del contenido y sincronización si hay sesión.
@@ -71,21 +77,63 @@ Future<void> main() async {
     if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());
   });
 
-  runApp(
-    ProviderScope(
+  return Servicios(
+    oposicion: oposicion,
+    http: http,
+    contenido: contenido,
+    usuario: usuario,
+    plan: plan,
+    preparador: preparador,
+    descargas: descargas,
+    firebaseDisponible: firebaseDisponible,
+  );
+}
+
+/// Raíz de la app: pregunta la oposición la primera vez (si hay varias) y
+/// vuelve a crear los servicios cuando se cambia (`cambiarOposicionProvider`).
+class RaizApp extends StatefulWidget {
+  const RaizApp({super.key, required this.http, required this.firebaseDisponible, this.elegida});
+  final CacheHttp http;
+  final bool firebaseDisponible;
+  /// La guardada en la caja `app` (null = aún no ha elegido).
+  final String? elegida;
+
+  @override
+  State<RaizApp> createState() => _RaizAppState();
+}
+
+class _RaizAppState extends State<RaizApp> {
+  Servicios? _servicios;
+
+  @override
+  void initState() {
+    super.initState();
+    final elegida = Oposiciones.todas.where((o) => o.id == widget.elegida).firstOrNull;
+    if (elegida != null || !Oposiciones.variasDisponibles) _arrancar(elegida ?? Oposiciones.todas.first);
+  }
+
+  Future<void> _arrancar(Oposicion oposicion) async {
+    await Hive.box(Cajas.app).put('oposicion', oposicion.id);
+    final servicios = await crearServicios(oposicion, http: widget.http, firebaseDisponible: widget.firebaseDisponible);
+    if (mounted) setState(() => _servicios = servicios);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final servicios = _servicios;
+    if (servicios == null) {
+      return Oposiciones.variasDisponibles && widget.elegida == null
+          ? ElegirOposicionApp(alElegir: _arrancar)
+          : const SizedBox.shrink();
+    }
+    // Una clave por oposición: al cambiarla se descartan todos los providers.
+    return ProviderScope(
+      key: ValueKey(servicios.oposicion.id),
       overrides: [
-        serviciosProvider.overrideWithValue(Servicios(
-          oposicion: oposicion,
-          http: http,
-          contenido: contenido,
-          usuario: usuario,
-          plan: plan,
-          preparador: preparador,
-          descargas: descargas,
-          firebaseDisponible: firebaseDisponible,
-        )),
+        serviciosProvider.overrideWithValue(servicios),
+        cambiarOposicionProvider.overrideWithValue(_arrancar),
       ],
       child: const TceeApp(),
-    ),
-  );
+    );
+  }
 }

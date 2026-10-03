@@ -1,9 +1,11 @@
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/features/cantar/probabilidades.dart';
 import 'package:tcee_app/features/cantar/sorteo.dart';
+import 'package:tcee_app/features/inicio/elegir_oposicion.dart';
 
 /// Una oposición de prueba con otro examen: un oral de dos partes en el que
 /// sale un tema de cada parte y basta con saberse uno de los dos, y un escrito
@@ -61,6 +63,39 @@ void main() {
     });
   });
 
+  group('DCE (convocatoria de la OEP 2025)', () {
+    const d = Oposiciones.dce;
+
+    test('examen: se canta el 3.º; sortean el 1.º, el 3.º y el 4.º, un par por parte', () {
+      expect([for (final e in d.conCante) e.numero], [3]);
+      expect([for (final e in d.conSorteo) e.numero], [1, 3, 4]);
+      expect([for (final e in d.conCronograma) e.numero], [1, 3, 4]);
+      expect([for (final n in [1, 3, 4]) d.bolasPorParte(n, AppConfig.porDefecto)], [2, 2, 2]);
+      expect(d.partesARedactar(1, AppConfig.porDefecto), isNull);
+      expect(d.esDictamen(1), isFalse);
+      expect(d.nombreEjercicio(0), '3.º ejercicio');
+    });
+
+    test('sin test propio: practica el de TCEE, pero lo guarda en lo suyo', () {
+      expect(d.testVoluntario, isTrue);
+      expect(d.urlPreguntas, Oposiciones.tcee.urlPreguntas);
+      expect(d.raizUsuario(FakeFirebaseFirestore(), 'u1').path, 'users/u1/oposiciones/dce');
+      expect(d.red(FakeFirebaseFirestore(), 'admins').path, 'oposiciones/dce/admins');
+    });
+
+    test('probabilidad del 3.º: como en el Excel, saber uno de los dos de cada parte', () {
+      final porParte = {
+        '3.A': [for (var i = 1; i <= 22; i++) tema('3.A.$i')],
+        '3.B': [for (var i = 1; i <= 22; i++) tema('3.B.$i')],
+      };
+      final estudiados = {for (var i = 1; i <= 11; i++) '3.A.$i', for (var i = 1; i <= 11; i++) '3.B.$i'};
+      final partes = partesDeEjercicio(3, porParte: porParte, estudiados: estudiados, config: AppConfig.porDefecto, oposicion: d);
+      // Por parte: x/N + (N−x)/N · x/(N−1) con x = 11 y N = 22.
+      const parte = 11 / 22 + (11 / 22) * (11 / 21);
+      expect(Sorteo.probEjercicio(partes), closeTo(parte * parte, 1e-12));
+    });
+  });
+
   group('otra oposición', () {
     test('sus datos van aparte', () {
       final db = FakeFirebaseFirestore();
@@ -83,5 +118,24 @@ void main() {
       final p = Sorteo.probEjercicio(partes, elegir: otra.partesARedactar(2, AppConfig.porDefecto));
       expect(p, closeTo(0.5, 1e-12));
     });
+  });
+
+  testWidgets('la primera vez pregunta a qué se presenta', (tester) async {
+    await initializeDateFormatting('es');
+    Oposicion? elegida;
+    await tester.pumpWidget(ElegirOposicionApp(alElegir: (o) async => elegida = o));
+    await tester.pumpAndSettle();
+    expect(find.text('¿A QUÉ TE PRESENTAS?'), findsOneWidget);
+    // Las lanzadas, sí; las que aún no, no (solo las ven sus administradores, en Ajustes).
+    for (final o in Oposiciones.disponibles) {
+      expect(find.text(o.nombre), findsOneWidget);
+    }
+    for (final o in Oposiciones.sinLanzar) {
+      expect(find.text(o.nombre), findsNothing);
+    }
+    final ultima = Oposiciones.disponibles.last;
+    await tester.tap(find.text(ultima.siglas));
+    await tester.pump();
+    expect(elegida?.id, ultima.id);
   });
 }
