@@ -10,9 +10,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'app.dart';
 import 'core/avisos_fondo.dart';
 import 'core/cache_http.dart';
+import 'core/constants.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
+import 'data/models/oposicion.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
 import 'data/repos/plan_repo.dart';
@@ -41,22 +43,19 @@ Future<void> main() async {
   }
 
   final http = await CacheHttp.crear();
-  final contenido = ContenidoRepo(http);
-  final usuario = await UsuarioRepo.crear(
-    firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
-    auth: firebaseDisponible ? FirebaseAuth.instance : null,
-  );
-  final plan = await PlanRepo.crear(
-    firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
-    auth: firebaseDisponible ? FirebaseAuth.instance : null,
-  );
-  final preparador = await PreparadorRepo.crear(
-    firestore: firebaseDisponible ? FirebaseFirestore.instance : null,
-    auth: firebaseDisponible ? FirebaseAuth.instance : null,
-  );
-  final descargas = await DescargasRepo.crear();
+  // La oposición elegida (la única, mientras solo esté TCEE) decide de qué web
+  // sale el contenido y dónde se guardan los datos del opositor.
+  final oposicion = Oposiciones.porId((await Hive.openBox(Cajas.app)).get('oposicion') as String?);
+  Oposiciones.actual = oposicion;
+  final db = firebaseDisponible ? FirebaseFirestore.instance : null;
+  final auth = firebaseDisponible ? FirebaseAuth.instance : null;
+  final contenido = ContenidoRepo(http, oposicion);
+  final usuario = await UsuarioRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
+  final plan = await PlanRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
+  final preparador = await PreparadorRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
+  final descargas = await DescargasRepo.crear(oposicion: oposicion);
   await Notificaciones.iniciar();
-  await iniciarAvisosEnSegundoPlano();
+  await iniciarAvisosEnSegundoPlano(oposicion: oposicion.id);
 
   // Refresco silencioso del contenido y sincronización si hay sesión.
   Future.microtask(() async {
@@ -76,6 +75,7 @@ Future<void> main() async {
     ProviderScope(
       overrides: [
         serviciosProvider.overrideWithValue(Servicios(
+          oposicion: oposicion,
           http: http,
           contenido: contenido,
           usuario: usuario,

@@ -153,8 +153,8 @@ class AppConfig {
     this.urlApk,
     this.urlPlayStore,
     this.urlAppStore,
-    this.bolasPorParte = const {3: 2, 4: 2, 5: 1},
-    this.partesARedactar = const {5: 2},
+    this.bolasPorParte = const {},
+    this.partesARedactar = const {},
     this.urlBoe,
     this.email = 'contacto@victorgutierrezmarcos.es',
     this.linkedin,
@@ -170,9 +170,11 @@ class AppConfig {
   final String? urlApk;
   final String? urlPlayStore;
   final String? urlAppStore;
-  /// Temas que se extraen de cada parte en el sorteo, por ejercicio.
+  /// Temas que se extraen de cada parte en el sorteo, por ejercicio, si la web
+  /// los cambia. Si no, valen los del examen (`Oposicion.bolasPorParte`).
   final Map<int, int> bolasPorParte;
-  /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3).
+  /// Ejercicios en los que basta con desarrollar algunas partes (5.º: 2 de 3),
+  /// si la web lo cambia (`Oposicion.partesARedactar`).
   final Map<int, int> partesARedactar;
   final String? urlBoe;
   final String email;
@@ -185,8 +187,8 @@ class AppConfig {
     final app = j['app'] as Map<String, dynamic>? ?? {};
     final conv = j['convocatoria'] as Map<String, dynamic>? ?? {};
     final con = j['contacto'] as Map<String, dynamic>? ?? {};
-    final bolas = {...porDefecto.bolasPorParte};
-    final redactar = {...porDefecto.partesARedactar};
+    final bolas = <int, int>{};
+    final redactar = <int, int>{};
     ((j['sorteo'] as Map?) ?? {}).forEach((k, v) {
       final n = int.tryParse(k.toString());
       if (n == null || v is! Map) return;

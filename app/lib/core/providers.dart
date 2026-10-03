@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/estructura.dart';
+import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
 import '../data/models/preparador.dart';
@@ -25,6 +26,7 @@ import 'red_providers.dart';
 /// Servicios creados en main() antes de arrancar la app.
 class Servicios {
   const Servicios({
+    required this.oposicion,
     required this.http,
     required this.contenido,
     required this.usuario,
@@ -33,6 +35,9 @@ class Servicios {
     required this.descargas,
     required this.firebaseDisponible,
   });
+  /// La oposición que prepara el usuario. Fija mientras la app está abierta:
+  /// al cambiarla se vuelven a crear los servicios con sus datos.
+  final Oposicion oposicion;
   final CacheHttp http;
   final ContenidoRepo contenido;
   final UsuarioRepo usuario;
@@ -45,6 +50,7 @@ class Servicios {
 
 final serviciosProvider = Provider<Servicios>((ref) => throw UnimplementedError('Se inyecta en main()'));
 
+final oposicionProvider = Provider<Oposicion>((ref) => ref.watch(serviciosProvider).oposicion);
 final contenidoProvider = Provider((ref) => ref.watch(serviciosProvider).contenido);
 final usuarioRepoProvider = Provider((ref) => ref.watch(serviciosProvider).usuario);
 final planRepoProvider = Provider((ref) => ref.watch(serviciosProvider).plan);

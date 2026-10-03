@@ -2,6 +2,8 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 
+import '../models/oposicion.dart';
+
 import 'pdf_local.dart';
 
 export 'pdf_local.dart';
@@ -13,7 +15,7 @@ class DescargasRepo {
   final _dio = Dio();
   final _memoria = <String, Uint8List>{};
 
-  static Future<DescargasRepo> crear() async => DescargasRepo();
+  static Future<DescargasRepo> crear({Oposicion oposicion = Oposiciones.tcee}) async => DescargasRepo();
 
   bool descargado(String url) => false;
 

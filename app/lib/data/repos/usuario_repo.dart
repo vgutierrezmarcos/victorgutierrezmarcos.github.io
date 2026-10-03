@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/oposicion.dart';
 import '../../features/test/leitner.dart';
 import '../models/resultado.dart';
 
@@ -125,6 +126,7 @@ class UsuarioRepo {
     required Box leitner,
     required Box ajustes,
     required Box notas,
+    this.oposicion = Oposiciones.tcee,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
   })  : _resultados = resultados,
@@ -134,6 +136,7 @@ class UsuarioRepo {
         _db = firestore,
         _auth = auth;
 
+  final Oposicion oposicion;
   final Box _resultados;
   final Box _leitner;
   final Box _ajustes;
@@ -141,11 +144,12 @@ class UsuarioRepo {
   final FirebaseFirestore? _db;
   final FirebaseAuth? _auth;
 
-  static Future<UsuarioRepo> crear({FirebaseFirestore? firestore, FirebaseAuth? auth}) async => UsuarioRepo(
-        resultados: await Hive.openBox(Cajas.resultados),
-        leitner: await Hive.openBox(Cajas.leitner),
-        ajustes: await Hive.openBox(Cajas.ajustes),
-        notas: await Hive.openBox(Cajas.notas),
+  static Future<UsuarioRepo> crear({Oposicion oposicion = Oposiciones.tcee, FirebaseFirestore? firestore, FirebaseAuth? auth}) async => UsuarioRepo(
+        oposicion: oposicion,
+        resultados: await Hive.openBox(oposicion.caja(Cajas.resultados)),
+        leitner: await Hive.openBox(oposicion.caja(Cajas.leitner)),
+        ajustes: await Hive.openBox(oposicion.caja(Cajas.ajustes)),
+        notas: await Hive.openBox(oposicion.caja(Cajas.notas)),
         firestore: firestore,
         auth: auth,
       );
@@ -154,7 +158,7 @@ class UsuarioRepo {
   bool get conSesion => uid != null;
 
   DocumentReference<Map<String, dynamic>>? get _docUsuario =>
-      uid == null || _db == null ? null : _db.collection('users').doc(uid);
+      uid == null || _db == null ? null : oposicion.raizUsuario(_db, uid!);
 
   // ---------------------------------------------------------------- Resultados
 

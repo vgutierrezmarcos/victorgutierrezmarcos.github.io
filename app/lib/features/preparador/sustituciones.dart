@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/red.dart';
@@ -42,8 +43,9 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
   bool _franja = true;
   /// Temas elegidos a mano (null = los de la bolsa del cante o los estudiados).
   List<String>? _elegidosTemas;
-  // Hay cantes del 1.º (coyuntura), del 3.º y del 4.º; el 5.º no se canta.
-  late int _ejercicio = ejerciciosConCante.contains(widget.cante?.ejercicio) ? widget.cante!.ejercicio : 3;
+  // Ejercicios con cante (en TCEE, 1.º —coyuntura—, 3.º y 4.º; el 5.º no se canta).
+  late int _ejercicio = ejerciciosConCante.contains(widget.cante?.ejercicio) ? widget.cante!.ejercicio : Oposiciones.actual.primerConTemas;
+  bool get _dictamen => Oposiciones.actual.esDictamen(_ejercicio);
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late final _nombre = TextEditingController(text: ref.read(usuarioActualProvider)?.displayName ?? '');
   late final _telefono = TextEditingController(text: ref.read(planProvider).telefono);
@@ -62,7 +64,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
   DateTime _en(TimeOfDay t) => DateTime(_dia.year, _dia.month, _dia.day, t.hour, t.minute);
 
   List<String> _temas(Temario? temario) {
-    if (temario == null || _ejercicio == 1) return const [];
+    if (temario == null || _dictamen) return const [];
     if (_elegidosTemas != null) return _elegidosTemas!;
     final c = widget.cante;
     final base = c ?? Cante(id: '', fecha: _dia, ejercicio: _ejercicio, bolsa: TipoBolsa.estudiados);
@@ -181,7 +183,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
                 title: const Text('Ejercicio'),
                 trailing: SegmentedButton<int>(
                   showSelectedIcon: false,
-                  segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º'))],
+                  segments: segmentosEjercicio(),
                   selected: {_ejercicio},
                   onSelectionChanged: (s) => setState(() {
                     _ejercicio = s.first;
@@ -193,8 +195,8 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
             ]),
           ),
           TituloSeccion(
-            _ejercicio == 1 ? 'Qué se canta' : 'Temas que llevas (${temas.length})',
-            accion: _ejercicio == 1 || temario == null
+            _dictamen ? 'Qué se canta' : 'Temas que llevas (${temas.length})',
+            accion: _dictamen || temario == null
                 ? null
                 : TextButton.icon(
                     icon: const Icon(Icons.checklist, size: 18),
@@ -205,8 +207,8 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
                     },
                   ),
           ),
-          if (_ejercicio == 1)
-            Text('Dictamen de coyuntura: no hay temas que sortear.', style: context.textos.bodySmall)
+          if (_dictamen)
+            Text('${Oposiciones.actual.avisoDictamen(_ejercicio)} No hay temas que sortear.', style: context.textos.bodySmall)
           else if (temas.isEmpty)
             Text('Ninguno: toca «Elegir» para marcar los temas que llevas para este cante.', style: context.textos.bodySmall)
           else

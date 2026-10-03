@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../models/oposicion.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
 
@@ -31,10 +32,12 @@ class ErrorRed implements Exception {
 /// Red de preparadores en Firestore (modelos en data/models/red.dart y reglas
 /// en firestore.rules). Sin sesión no hace nada: todo necesita cuenta.
 class RedRepo {
-  RedRepo({FirebaseFirestore? firestore, FirebaseAuth? auth})
+  RedRepo({FirebaseFirestore? firestore, FirebaseAuth? auth, this.oposicion = Oposiciones.tcee})
       : _db = firestore,
         _auth = auth;
 
+  /// La red es de una oposición: sus verificados, administradores y peticiones.
+  final Oposicion oposicion;
   final FirebaseFirestore? _db;
   final FirebaseAuth? _auth;
 
@@ -42,14 +45,15 @@ class RedRepo {
   bool get conSesion => uid != null && _db != null;
   String get _miNombre => _auth?.currentUser?.displayName ?? '';
 
-  CollectionReference<Map<String, dynamic>> get _verificados => _db!.collection('preparadoresVerificados');
-  CollectionReference<Map<String, dynamic>> get _solicitudes => _db!.collection('solicitudesPreparador');
-  CollectionReference<Map<String, dynamic>> get _sustituciones => _db!.collection('sustituciones');
-  CollectionReference<Map<String, dynamic>> get _reservas => _db!.collection('reservas');
+  CollectionReference<Map<String, dynamic>> get _verificados => oposicion.red(_db!, 'preparadoresVerificados');
+  CollectionReference<Map<String, dynamic>> get _solicitudes => oposicion.red(_db!, 'solicitudesPreparador');
+  CollectionReference<Map<String, dynamic>> get _sustituciones => oposicion.red(_db!, 'sustituciones');
+  CollectionReference<Map<String, dynamic>> get _reservas => oposicion.red(_db!, 'reservas');
 
   // -------------------------------------------------------------- Verificación
 
-  /// El usuario es administrador (documento admins/{uid}, creado en la consola).
+  /// El usuario es administrador de la red de esta oposición (documento
+  /// admins/{uid} —en DCE, oposiciones/dce/admins/{uid}—, creado en la consola).
   Future<bool> esAdmin() async => await diagnosticoAdmin() == DiagnosticoAdmin.si;
 
   /// Por qué el usuario es o no es administrador, para explicárselo.
@@ -57,7 +61,7 @@ class RedRepo {
     if (!conSesion) return DiagnosticoAdmin.no;
     try {
       // El documento puede llamarse como el uid o como el correo de Google.
-      final admins = _db!.collection('admins');
+      final admins = oposicion.red(_db!, 'admins');
       if ((await admins.doc(uid).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
       final correo = _auth!.currentUser?.email?.trim().toLowerCase();
       if (correo != null && correo.isNotEmpty && (await admins.doc(correo).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
@@ -137,8 +141,8 @@ class RedRepo {
   Future<void> rechazar(SolicitudPreparador s) => _solicitudes.doc(s.uid).delete();
 
   /// Solo el administrador: se verifica a sí mismo (primer preparador de la red).
-  Future<void> verificarme({required String nombre, List<int> ejercicios = const [1, 3, 4]}) =>
-      _verificados.doc(uid).set(PreparadorVerificado(uid: uid!, nombre: nombre, ejercicios: ejercicios, avaladoPor: uid, avaladoPorNombre: nombre, desde: DateTime.now()).toJson());
+  Future<void> verificarme({required String nombre, List<int>? ejercicios}) =>
+      _verificados.doc(uid).set(PreparadorVerificado(uid: uid!, nombre: nombre, ejercicios: ejercicios ?? ejerciciosConCante, avaladoPor: uid, avaladoPorNombre: nombre, desde: DateTime.now()).toJson());
 
   /// Solo el administrador: retira (o devuelve) la verificación. Con [cascada]
   /// retira también a quienes verificó esa persona.
@@ -234,12 +238,12 @@ class RedRepo {
   // ------------------------------------------------------------ Huecos y reservas
 
   Future<void> publicarHuecos(HuecosPublicos h) async {
-    if (conSesion) await _db!.collection('huecos').doc(uid).set(h.toJson());
+    if (conSesion) await oposicion.red(_db!, 'huecos').doc(uid).set(h.toJson());
   }
 
   Future<HuecosPublicos?> huecosDe(String preparador) async {
     if (!conSesion) return null;
-    final d = await _db!.collection('huecos').doc(preparador).get();
+    final d = await oposicion.red(_db!, 'huecos').doc(preparador).get();
     return d.exists ? HuecosPublicos.fromJson(d.data()!) : null;
   }
 
@@ -305,7 +309,7 @@ class RedRepo {
     try {
       final v = await miVerificacion();
       if (v == null) return false;
-      final d = await _db!.collection('users').doc(uid).collection('progress').doc('preparador').get();
+      final d = await oposicion.raizUsuario(_db!, uid!).collection('progress').doc('preparador').get();
       return PerfilPreparador.fromJson(d.data()).avisosSustitucion;
     } catch (_) {
       return false;

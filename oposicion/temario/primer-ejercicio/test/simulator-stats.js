@@ -41,7 +41,7 @@ async function showStatsPanel() {
 
     try {
         const db = firebase.firestore();
-        const snapshot = await db.collection('users').doc(user.uid).collection('exam_results')
+        const snapshot = await docUsuario(db, user.uid).collection('exam_results')
             .orderBy('timestamp', 'asc')
             .get();
 

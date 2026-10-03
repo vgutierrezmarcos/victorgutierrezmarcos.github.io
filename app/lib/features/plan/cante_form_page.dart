@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
@@ -30,7 +31,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late DateTime _fecha;
   late int _minutos = widget.cante?.minutos ?? 30;
-  late int _ejercicio = widget.cante?.ejercicio ?? 3;
+  late int _ejercicio = widget.cante?.ejercicio ?? Oposiciones.actual.primerConTemas;
   late TipoBolsa _bolsa = widget.cante?.bolsa ?? TipoBolsa.estudiados;
   late List<String> _temas = widget.cante?.temas ?? const [];
   bool _repetir = false;
@@ -83,7 +84,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   Future<void> _elegirTemas() async {
     final temario = ref.read(temarioProvider).value;
     if (temario == null) return;
-    final r = await elegirTemas(context, temario: temario, seleccion: _temas, ejercicios: _ejercicio == 0 ? {3, 4} : {_ejercicio}, titulo: 'Temas que entran');
+    final r = await elegirTemas(context, temario: temario, seleccion: _temas, ejercicios: Oposiciones.actual.ejerciciosDeBolsa(_ejercicio), titulo: 'Temas que entran');
     if (r != null) setState(() => _temas = r);
   }
 
@@ -191,12 +192,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
           const TituloSeccion('Qué se canta'),
           SegmentedButton<int>(showSelectedIcon: false, 
-            segments: const [
-              ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'),
-              ButtonSegment(value: 3, label: Text('3.º')),
-              ButtonSegment(value: 4, label: Text('4.º')),
-              ButtonSegment(value: 0, label: Text('3.º y 4.º')),
-            ],
+            segments: segmentosEjercicio(ambos: true),
             selected: {_ejercicio},
             onSelectionChanged: (s) => setState(() {
               _ejercicio = s.first;
@@ -205,9 +201,9 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             style: const ButtonStyle(visualDensity: VisualDensity.compact),
           ),
           const SizedBox(height: 8),
-          if (_ejercicio == 1)
-            Text('Primer ejercicio: dictamen de coyuntura. No hay sorteo de temas; el cronómetro y la valoración funcionan igual.', style: context.textos.bodySmall),
-          if (_ejercicio != 1)
+          if (Oposiciones.actual.esDictamen(_ejercicio))
+            Text('${Oposiciones.actual.avisoDictamen(_ejercicio)} No hay sorteo de temas; el cronómetro y la valoración funcionan igual.', style: context.textos.bodySmall),
+          if (!Oposiciones.actual.esDictamen(_ejercicio))
           for (final (tipo, titulo, sub) in [
             (TipoBolsa.estudiados, _sesion ? 'Los que lleva estudiados' : 'Los que llevo estudiados', _sesion ? 'Los que el alumno tenga marcados el día del cante' : 'Los marcados como estudiados el día del cante'),
             (TipoBolsa.lista, 'Una lista concreta', _sesion ? 'Los que hayas acordado con el alumno' : 'Los que hayas acordado con el preparador'),

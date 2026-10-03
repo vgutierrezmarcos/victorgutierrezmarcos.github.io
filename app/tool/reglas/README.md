@@ -1,6 +1,16 @@
-# Prueba de las reglas de Firestore
+# Reglas de Firestore: generación y prueba
 
-`prueba.mjs` comprueba `firestore.rules` contra el emulador oficial de Firestore con varias cuentas simuladas: alumno, preparadores verificados y retirados, administrador y otro opositor. Cubre la privacidad de los datos de cada usuario, la verificación, los códigos, las sustituciones con sus contactos, los huecos y las reservas.
+`firestore.rules` (en la raíz del repositorio) **no se edita a mano**: lo genera `generar.py`, porque cada oposición repite las mismas reglas (TCEE en la raíz y las demás en `oposiciones/{op}/…` y `users/{uid}/oposiciones/{op}/…`). Para cambiarlas, editar el script y ejecutar desde la raíz:
+
+```bash
+python3 app/tool/reglas/generar.py
+```
+
+Para añadir una oposición con datos, ponerla en `OPOSICIONES` del script.
+
+## Prueba
+
+`prueba.mjs` comprueba `firestore.rules` contra el emulador oficial de Firestore con varias cuentas simuladas: alumno, preparadores verificados y retirados, administrador y otro opositor. Cubre la privacidad de los datos de cada usuario, la verificación, los códigos, las sustituciones con sus contactos, los huecos y las reservas, y que cada oposición tenga su propia red (un administrador o un verificado de TCEE no lo es de DCE, y al revés).
 
 Hace falta Java 11 o posterior y Node 18 o posterior:
 

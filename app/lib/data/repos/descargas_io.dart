@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../core/constants.dart';
+import '../models/oposicion.dart';
 import 'pdf_local.dart';
 
 export 'pdf_local.dart';
@@ -16,11 +17,12 @@ class DescargasRepo {
   final Directory _dir;
   final _dio = Dio();
 
-  static Future<DescargasRepo> crear() async {
+  static Future<DescargasRepo> crear({Oposicion oposicion = Oposiciones.tcee}) async {
     final base = await getApplicationDocumentsDirectory();
-    final dir = Directory('${base.path}/pdf');
+    // Cada oposición, en su carpeta: los PDF se llaman por el código del tema.
+    final dir = Directory('${base.path}/${oposicion.caja('pdf')}');
     if (!dir.existsSync()) dir.createSync(recursive: true);
-    return DescargasRepo(await Hive.openBox(Cajas.descargas), dir);
+    return DescargasRepo(await Hive.openBox(oposicion.caja(Cajas.descargas)), dir);
   }
 
   String _nombre(String url) => url.split('/').last;
