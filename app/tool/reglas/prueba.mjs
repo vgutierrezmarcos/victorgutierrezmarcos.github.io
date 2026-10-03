@@ -25,7 +25,9 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/alu/cantes/propio'), { id: 'propio', estado: 'pendiente' });
   await setDoc(doc(d, 'users/alu/preparadores/paula'), { uid: 'paula' });
   await setDoc(doc(d, 'users/alu/preparadores/retirado'), { uid: 'retirado' });
-  await setDoc(doc(d, 'solicitudesPreparador/nuevo'), { uid: 'nuevo', nombre: 'Nuevo' });
+  await setDoc(doc(d, 'solicitudesPreparador/nuevo'), { uid: 'nuevo', nombre: 'Nuevo', paraTodos: true, destinatario: null });
+  await setDoc(doc(d, 'solicitudesPreparador/dirigida'), { uid: 'dirigida', nombre: 'Para Paula', paraTodos: false, destinatario: 'paula' });
+  await setDoc(doc(d, 'preparadoresVerificados/olga'), { uid: 'olga', nombre: 'Olga', avaladoPor: 'admin', activo: true });
 });
 
 console.log('Datos de cada usuario');
@@ -55,7 +57,13 @@ await caso('…y no sin cuenta', () => assertFails(getDocs(collection(db(null), 
 await caso('el interesado pide su verificación', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), { uid: 'pepe', nombre: 'Pepe' })));
 await caso('…pero no en nombre de otro', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/juan'), { uid: 'juan' })));
 await caso('un opositor no ve las solicitudes de otros', () => assertFails(getDocs(collection(db('pepe'), 'solicitudesPreparador'))));
-await caso('un verificado ve las solicitudes', () => assertSucceeds(getDocs(collection(db('paula'), 'solicitudesPreparador'))));
+await caso('un verificado ve las solicitudes abiertas', () => assertSucceeds(getDocs(query(collection(db('olga'), 'solicitudesPreparador'), where('paraTodos', '==', true)))));
+await caso('…y las que le piden a él', () => assertSucceeds(getDocs(query(collection(db('paula'), 'solicitudesPreparador'), where('destinatario', '==', 'paula')))));
+await caso('otro verificado no ve una dirigida a Paula', () => assertFails(getDoc(doc(db('olga'), 'solicitudesPreparador/dirigida'))));
+await caso('…ni puede rechazarla', () => assertFails(deleteDoc(doc(db('olga'), 'solicitudesPreparador/dirigida'))));
+await caso('Paula sí la ve', () => assertSucceeds(getDoc(doc(db('paula'), 'solicitudesPreparador/dirigida'))));
+await caso('el administrador ve todas', () => assertSucceeds(getDocs(collection(db('admin'), 'solicitudesPreparador'))));
+await caso('un verificado no puede listarlas todas sin filtrar', () => assertFails(getDocs(collection(db('olga'), 'solicitudesPreparador'))));
 await caso('saber si soy administrador', () => assertSucceeds(getDoc(doc(db('admin'), 'admins/admin'))));
 await caso('nadie se hace administrador', () => assertFails(setDoc(doc(db('pepe'), 'admins/pepe'), { x: 1 })));
 
@@ -95,6 +103,11 @@ await caso('…ni puede cogerla', () => assertFails(updateDoc(doc(db('paula'), '
 await caso('…el elegido sí la ve', () => assertSucceeds(getDocs(query(collection(db('admin'), 'sustituciones'), where('destinatarios', 'array-contains', 'admin')))));
 await caso('el alumno la retira', () => assertSucceeds(updateDoc(doc(db('alu'), 'sustituciones/s2'), { estado: 'cancelada' })));
 await caso('el alumno ve sus peticiones', () => assertSucceeds(getDocs(query(collection(db('alu'), 'sustituciones'), where('alumno', '==', 'alu')))));
+
+const s3 = { ...s1, id: 's3', fecha: '2030-01-08T16:00:00.000', hasta: '2030-01-08T21:00:00.000' };
+await caso('petición con franja de horas', () => assertSucceeds(setDoc(doc(db('alu'), 'sustituciones/s3'), s3)));
+await caso('…no se coge a una hora fuera de la franja', () => assertFails(updateDoc(doc(db('paula'), 'sustituciones/s3'), { estado: 'cogida', cogidaPor: 'paula', cogidaPorNombre: 'P', hora: '2030-01-08T22:00:00.000', updatedAt: 'x' })));
+await caso('…sí a una hora dentro', () => assertSucceeds(updateDoc(doc(db('paula'), 'sustituciones/s3'), { estado: 'cogida', cogidaPor: 'paula', cogidaPorNombre: 'P', hora: '2030-01-08T18:30:00.000', updatedAt: 'x' })));
 
 console.log('Huecos y reservas');
 await caso('el preparador publica sus huecos', () => assertSucceeds(setDoc(doc(db('paula'), 'huecos/paula'), { activo: true, huecos: [] })));

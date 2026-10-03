@@ -116,17 +116,29 @@ service cloud.firestore {
       allow delete: if esAdmin();
     }
 
-    // Peticiones de verificación: las crea el interesado y las leen él, los
-    // verificados (para avalarlo) y el administrador. Se borran al resolverlas.
+    // Peticiones de verificación: las crea el interesado y las leen él, el
+    // administrador y los verificados: todos si va abierta (paraTodos) o solo
+    // el preparador al que se la pide (destinatario). Se borran al resolverlas.
+    function solicitudParaMi() {
+      return esVerificado() && (resource.data.paraTodos == true || resource.data.destinatario == request.auth.uid);
+    }
     match /solicitudesPreparador/{uid} {
-      allow read: if (conSesion() && request.auth.uid == uid) || esVerificado() || esAdmin();
+      allow read: if (conSesion() && request.auth.uid == uid) || esAdmin() || solicitudParaMi();
       allow create, update: if conSesion() && request.auth.uid == uid && request.resource.data.uid == uid;
-      allow delete: if (conSesion() && request.auth.uid == uid) || esVerificado() || esAdmin();
+      allow delete: if (conSesion() && request.auth.uid == uid) || esAdmin() || solicitudParaMi();
     }
 
     // Sustituciones: el alumno publica un cante para que se lo coja otro
     // preparador. La ven el alumno, los verificados a los que va dirigida y
     // quien la coge. Coger = pasar de abierta a cogida firmando con su uid.
+    // La hora que elige quien coge el cante cae dentro de la franja del alumno
+    // (las fechas son textos ISO del mismo formato, que se comparan bien).
+    function horaEnLaFranja() {
+      let hora = request.resource.data.get('hora', resource.data.fecha);
+      let hasta = resource.data.get('hasta', null);
+      return (hasta == null && hora == resource.data.fecha)
+        || (hasta != null && hora >= resource.data.fecha && hora <= hasta);
+    }
     match /sustituciones/{id} {
       allow read: if (conSesion() && (resource.data.alumno == request.auth.uid || resource.data.cogidaPor == request.auth.uid))
         || (esVerificado() && (resource.data.paraTodos == true || request.auth.uid in resource.data.destinatarios));
@@ -138,7 +150,8 @@ service cloud.firestore {
           && (resource.data.paraTodos == true || request.auth.uid in resource.data.destinatarios)
           && request.resource.data.estado == 'cogida'
           && request.resource.data.cogidaPor == request.auth.uid
-          && soloCambia(['estado', 'cogidaPor', 'cogidaPorNombre', 'updatedAt']));
+          && soloCambia(['estado', 'cogidaPor', 'cogidaPorNombre', 'hora', 'updatedAt'])
+          && horaEnLaFranja());
       allow delete: if conSesion() && resource.data.alumno == request.auth.uid;
 
       // Contactos: privado/alumno (lo escribe el alumno) y privado/preparador

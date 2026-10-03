@@ -9,6 +9,7 @@ import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/repos/preparador_repo.dart';
+import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
@@ -310,12 +311,30 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         Text(
           solicitud == null
               ? 'Para dar tu código a alumnos, aparecer en la lista de preparadores y coger sustituciones, te tiene que verificar el administrador o un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos en este dispositivo.'
-              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}. La revisará el administrador o un preparador verificado; desliza hacia abajo para comprobarlo.',
+              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.destinatario == null ? '. La revisará el administrador o un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre} (y la ve también el administrador)'}; desliza hacia abajo para comprobarlo.',
           style: context.textos.bodySmall,
         ),
         const SizedBox(height: 10),
         Wrap(spacing: 10, runSpacing: 8, children: [
-          if (solicitud == null) FilledButton.icon(onPressed: () => solicitarVerificacion(context, ref), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
+          if (estado.esAdmin)
+            FilledButton.icon(
+              onPressed: () async {
+                final messenger = ScaffoldMessenger.of(context);
+                final nombre = perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? 'Administrador');
+                try {
+                  await ref.read(redRepoProvider).verificarme(nombre: nombre);
+                  refrescarRedDesdeWidget(ref);
+                  await ref.read(perfilPreparadorProvider.notifier).reintentarCodigo();
+                  messenger.showSnackBar(const SnackBar(content: Text('Verificado. Ya tienes tu código para alumnos.')));
+                } catch (e) {
+                  messenger.showSnackBar(SnackBar(content: Text('No se pudo: $e')));
+                }
+              },
+              icon: const Icon(Icons.verified_outlined, size: 18),
+              label: const Text('Verificarme (soy el administrador)'),
+            )
+          else if (solicitud == null)
+            FilledButton.icon(onPressed: () => solicitarVerificacion(context, ref), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
           if (solicitud != null)
             TextButton(
               onPressed: () async {
@@ -326,7 +345,46 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             ),
           if (estado.esAdmin) OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminRedPage())), child: const Text('Administración')),
         ]),
+        if (!estado.esAdmin) _ayudaAdministrador(context, estado.diagnostico),
       ]),
+    );
+  }
+
+  /// Para el administrador que aún no aparece como tal: su identificador y
+  /// por qué la app no le reconoce.
+  Widget _ayudaAdministrador(BuildContext context, DiagnosticoAdmin d) {
+    final uid = ref.read(usuarioActualProvider)?.uid ?? '';
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        tilePadding: EdgeInsets.zero,
+        childrenPadding: const EdgeInsets.only(bottom: 8),
+        title: Text('¿Eres el administrador?', style: context.textos.labelLarge?.copyWith(color: context.esquema.primary)),
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            switch (d) {
+              DiagnosticoAdmin.sinPermiso => 'El servidor no deja comprobarlo: las reglas nuevas (firestore.rules) aún no están publicadas en la consola de Firebase. Publícalas y desliza hacia abajo.',
+              DiagnosticoAdmin.sinRed => 'No se ha podido comprobar (¿sin conexión?). Desliza hacia abajo para reintentarlo.',
+              _ => 'No hay ningún documento admins/<tu identificador> en Firestore. Créalo en la consola (colección admins) con este identificador como «ID del documento» y desliza hacia abajo.',
+            },
+            style: context.textos.bodySmall,
+          ),
+          const SizedBox(height: 6),
+          Row(children: [
+            Expanded(child: SelectableText(uid, style: context.textos.labelMedium?.copyWith(fontFamily: 'monospace'))),
+            IconButton(
+              tooltip: 'Copiar identificador',
+              icon: const Icon(Icons.copy, size: 18),
+              onPressed: () async {
+                final messenger = ScaffoldMessenger.of(context);
+                await Clipboard.setData(ClipboardData(text: uid));
+                messenger.showSnackBar(const SnackBar(content: Text('Identificador copiado')));
+              },
+            ),
+          ]),
+        ],
+      ),
     );
   }
 
@@ -452,7 +510,7 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
           const SizedBox(height: 6),
           SegmentedButton<int>(
             showSelectedIcon: false,
-            segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 0, label: Text('3.º y 4.º'))],
+            segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 0, label: Text('3.º y 4.º'))],
             selected: {ejercicio},
             onSelectionChanged: (s) => setState(() => ejercicio = s.first),
             style: const ButtonStyle(visualDensity: VisualDensity.compact),

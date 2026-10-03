@@ -50,18 +50,22 @@ class PreparadorVerificado {
         activo: j['activo'] as bool? ?? true,
       );
 
-  String get descripcionEjercicios => ejercicios.isEmpty ? '' : '${ejercicios.map((e) => '$e.º').join(', ')} ejercicio';
+  String get descripcionEjercicios => describirEjercicios(ejercicios);
 }
 
 /// Petición para que verifiquen a alguien como preparador.
 class SolicitudPreparador {
-  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.creada});
+  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.destinatario, this.destinatarioNombre = '', this.creada});
   final String uid;
   final String nombre;
   final String email;
   final List<int> ejercicios;
   /// Quién es: promoción, cuerpo, academia, alumnos que lleva…
   final String presentacion;
+  /// Preparador concreto al que se la pide (null = al administrador y a
+  /// cualquier verificado). Solo la ven él y el administrador.
+  final String? destinatario;
+  final String destinatarioNombre;
   final DateTime? creada;
 
   Map<String, dynamic> toJson() => {
@@ -70,6 +74,9 @@ class SolicitudPreparador {
         'email': email,
         'ejercicios': ejercicios,
         'presentacion': presentacion,
+        'paraTodos': destinatario == null,
+        'destinatario': destinatario,
+        'destinatarioNombre': destinatarioNombre,
         'creada': (creada ?? DateTime.now()).toIso8601String(),
       };
 
@@ -79,6 +86,8 @@ class SolicitudPreparador {
         email: j['email'] as String? ?? '',
         ejercicios: _enteros(j['ejercicios']),
         presentacion: j['presentacion'] as String? ?? '',
+        destinatario: j['destinatario'] as String?,
+        destinatarioNombre: j['destinatarioNombre'] as String? ?? '',
         creada: _fecha(j['creada']),
       );
 }
@@ -93,6 +102,8 @@ class Sustitucion {
     required this.id,
     required this.alumno,
     required this.fecha,
+    this.hasta,
+    this.hora,
     this.minutos = 30,
     this.ejercicio = 3,
     this.temas = const [],
@@ -110,7 +121,13 @@ class Sustitucion {
   final String id;
   /// uid del alumno que la pide.
   final String alumno;
+  /// Día y hora desde la que el alumno puede (inicio de la franja).
   final DateTime fecha;
+  /// Hora hasta la que puede ese día (null = a la hora de [fecha] justa).
+  final DateTime? hasta;
+  /// Hora a la que queda el cante: la elige dentro de la franja quien lo coge.
+  final DateTime? hora;
+  /// Duración del cronómetro (no se pide ni se muestra: las clases duran lo que duran).
   final int minutos;
   final int ejercicio;
   /// Temas que entran en el cante.
@@ -129,13 +146,22 @@ class Sustitucion {
 
   bool get abierta => estado == EstadoSustitucion.abierta;
   bool get cogida => estado == EstadoSustitucion.cogida;
-  bool vigente([DateTime? ahora]) => fecha.isAfter(ahora ?? DateTime.now());
+  bool vigente([DateTime? ahora]) => (hora ?? hasta ?? fecha).isAfter(ahora ?? DateTime.now());
+  /// Hay una franja de horas (y no una hora fija).
+  bool get conFranja => hasta != null && hasta!.isAfter(fecha);
+  /// Hora del cante: la acordada al cogerlo o, si no, el inicio de la franja.
+  DateTime get inicio => hora ?? fecha;
   bool vaA(String uid) => paraTodos || destinatarios.contains(uid);
+  /// Primer ejercicio: dictamen de coyuntura, sin temas.
+  bool get coyuntura => ejercicio == 1;
+  String get descripcion => coyuntura ? 'Dictamen de coyuntura (1.er ejercicio)' : '$ejercicio.º ejercicio · ${temas.length} temas';
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'alumno': alumno,
         'fecha': fecha.toIso8601String(),
+        'hasta': hasta?.toIso8601String(),
+        'hora': hora?.toIso8601String(),
         'minutos': minutos,
         'ejercicio': ejercicio,
         'temas': temas,
@@ -154,6 +180,8 @@ class Sustitucion {
         id: j['id'].toString(),
         alumno: j['alumno'] as String? ?? '',
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
+        hasta: _fecha(j['hasta']),
+        hora: _fecha(j['hora']),
         minutos: (j['minutos'] as num?)?.toInt() ?? 30,
         ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
         temas: _textos(j['temas']),
@@ -171,7 +199,7 @@ class Sustitucion {
   /// Cante que aparece en la agenda del alumno cuando alguien la coge.
   Cante canteDelAlumno({String? nombreSustituto}) => Cante(
         id: 'sust_$id',
-        fecha: fecha,
+        fecha: inicio,
         minutos: minutos,
         ejercicio: ejercicio,
         bolsa: TipoBolsa.lista,
@@ -322,3 +350,14 @@ String? enlaceWhatsApp(String telefono, [String mensaje = '']) {
   if (t == null) return null;
   return 'https://wa.me/$t${mensaje.isEmpty ? '' : '?text=${Uri.encodeComponent(mensaje)}'}';
 }
+
+/// Ejercicios en los que hay cantes: el primero (dictamen de coyuntura), el
+/// tercero y el cuarto. El quinto no se canta.
+const ejerciciosConCante = [1, 3, 4];
+
+String describirEjercicios(List<int> ejercicios) => ejercicios.isEmpty ? '' : ejercicios.map((e) => e == 1 ? '1.º (coyuntura)' : '$e.º').join(', ');
+
+String _hm(DateTime d) => '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
+
+/// «de 16:00 a 21:00» o «a las 18:00».
+String horasDe(Sustitucion s) => s.hora != null ? 'a las ${_hm(s.hora!)}' : (s.conFranja ? 'de ${_hm(s.fecha)} a ${_hm(s.hasta!)}' : 'a las ${_hm(s.fecha)}');

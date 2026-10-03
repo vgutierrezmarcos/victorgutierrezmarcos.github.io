@@ -182,7 +182,7 @@ void main() {
       cogidasPorMiProvider.overrideWith((ref) async => const <Sustitucion>[]),
       misPeticionesProvider.overrideWith((ref) async => const <Sustitucion>[]),
       tablonProvider.overrideWith((ref) async => [
-            Sustitucion(id: 't1', alumno: 'x', fecha: dia(1, 19, 0), minutos: 30, ejercicio: 3, temas: [for (var i = 1; i <= 18; i++) '3.A.$i', for (var i = 1; i <= 10; i++) '3.B.$i'], notas: 'Mi preparadora ha cancelado. Por videollamada.'),
+            Sustitucion(id: 't1', alumno: 'x', fecha: dia(1, 16, 0), hasta: dia(1, 21, 0), ejercicio: 3, temas: [for (var i = 1; i <= 18; i++) '3.A.$i', for (var i = 1; i <= 10; i++) '3.B.$i'], notas: 'Mi preparadora ha cancelado. Por videollamada.'),
             Sustitucion(id: 't2', alumno: 'y', fecha: dia(4, 17, 30), minutos: 45, ejercicio: 4, temas: [for (var i = 1; i <= 12; i++) '4.A.$i'], paraTodos: false, destinatarios: const ['yo']),
           ]),
       reservasRecibidasProvider.overrideWith((ref) async => [Reserva(id: 'r1', preparador: 'yo', alumno: 'marta', alumnoNombre: 'Marta', fecha: dia(2, 19, 0), nota: 'Quiero cantar el 4.A.9')]),

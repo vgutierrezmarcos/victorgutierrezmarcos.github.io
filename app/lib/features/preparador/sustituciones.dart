@@ -11,16 +11,21 @@ import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import '../../widgets/selector_temas.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
 
 String _cuando(DateTime f) => DateFormat("EEEE d 'de' MMMM 'a las' HH:mm", 'es').format(f);
 
+/// «martes 6 de octubre, de 16:00 a 21:00» (o «a las 18:00» si es hora fija o ya se acordó).
+String cuandoSustitucion(Sustitucion s) => '${DateFormat("EEEE d 'de' MMMM", 'es').format(s.inicio)}, ${horasDe(s)}';
+
 // ===================================================================== Alumno
 
 /// El alumno pide que otro preparador le coja un cante. Sale de un cante de su
-/// agenda ([cante]) o desde cero. Los preparadores ven día, hora, duración,
-/// ejercicio, temas y notas; el nombre y el teléfono, solo quien lo coja.
+/// agenda ([cante]) o desde cero. El alumno da un día y una franja de horas
+/// (o una hora fija) y elige los temas que lleva. Los preparadores ven día,
+/// horas, ejercicio, temas y notas; el nombre y el teléfono, solo quien lo coja.
 class PedirSustitucionPage extends ConsumerStatefulWidget {
   const PedirSustitucionPage({super.key, this.cante});
   final Cante? cante;
@@ -29,9 +34,15 @@ class PedirSustitucionPage extends ConsumerStatefulWidget {
 }
 
 class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
-  late DateTime _fecha = widget.cante?.fecha ?? DateTime.now().add(const Duration(days: 1));
-  late int _minutos = widget.cante?.minutos ?? 30;
-  late int _ejercicio = widget.cante?.ejercicio == 0 ? 3 : (widget.cante?.ejercicio ?? 3);
+  // Día y horas en las que el alumno puede. Por defecto, una franja de tarde.
+  late DateTime _dia = widget.cante?.fecha ?? DateTime.now().add(const Duration(days: 1));
+  late TimeOfDay _desde = widget.cante == null ? const TimeOfDay(hour: 16, minute: 0) : TimeOfDay.fromDateTime(widget.cante!.fecha);
+  late TimeOfDay _hasta = TimeOfDay(hour: (_desde.hour + 4).clamp(0, 23), minute: _desde.minute);
+  bool _franja = true;
+  /// Temas elegidos a mano (null = los de la bolsa del cante o los estudiados).
+  List<String>? _elegidosTemas;
+  // Hay cantes del 1.º (coyuntura), del 3.º y del 4.º; el 5.º no se canta.
+  late int _ejercicio = ejerciciosConCante.contains(widget.cante?.ejercicio) ? widget.cante!.ejercicio : 3;
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late final _nombre = TextEditingController(text: ref.read(usuarioActualProvider)?.displayName ?? '');
   late final _telefono = TextEditingController(text: ref.read(planProvider).telefono);
@@ -47,16 +58,27 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
     super.dispose();
   }
 
+  DateTime _en(TimeOfDay t) => DateTime(_dia.year, _dia.month, _dia.day, t.hour, t.minute);
+
   List<String> _temas(Temario? temario) {
-    if (temario == null) return const [];
+    if (temario == null || _ejercicio == 1) return const [];
+    if (_elegidosTemas != null) return _elegidosTemas!;
     final c = widget.cante;
-    final base = c ?? Cante(id: '', fecha: _fecha, ejercicio: _ejercicio, bolsa: TipoBolsa.estudiados);
+    final base = c ?? Cante(id: '', fecha: _dia, ejercicio: _ejercicio, bolsa: TipoBolsa.estudiados);
     return temasDeCante(base.copyWith(ejercicio: _ejercicio), temario, ref.read(ajustesProvider)).map((t) => t.codigo).toList();
   }
 
   Future<void> _enviar(List<String> temas) async {
     final messenger = ScaffoldMessenger.of(context);
     final nav = Navigator.of(context);
+    if (_franja && !_en(_hasta).isAfter(_en(_desde))) {
+      messenger.showSnackBar(const SnackBar(content: Text('La hora final de la franja tiene que ser posterior a la inicial.')));
+      return;
+    }
+    if (!_en(_desde).isAfter(DateTime.now()) && !(_franja && _en(_hasta).isAfter(DateTime.now()))) {
+      messenger.showSnackBar(const SnackBar(content: Text('Elige un día y una hora que no hayan pasado.')));
+      return;
+    }
     if (!_todos && _elegidos.isEmpty) {
       messenger.showSnackBar(const SnackBar(content: Text('Elige al menos un preparador o envíala a todos.')));
       return;
@@ -67,8 +89,9 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
       final s = Sustitucion(
         id: nuevoId(),
         alumno: red.uid ?? '',
-        fecha: _fecha,
-        minutos: _minutos,
+        fecha: _en(_desde),
+        hasta: _franja ? _en(_hasta) : null,
+        minutos: widget.cante?.minutos ?? 30,
         ejercicio: _ejercicio,
         temas: temas,
         notas: _notas.text.trim(),
@@ -111,40 +134,89 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
             child: Column(children: [
               ListTile(
                 leading: const Icon(Icons.event),
-                title: Text(_cuando(_fecha)),
+                title: Text(DateFormat("EEEE d 'de' MMMM", 'es').format(_dia)),
                 trailing: const Icon(Icons.edit_outlined, size: 18),
                 onTap: () async {
-                  final d = await showDatePicker(context: context, initialDate: _fecha, firstDate: DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
-                  if (d == null || !context.mounted) return;
-                  final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_fecha));
-                  if (t != null) setState(() => _fecha = DateTime(d.year, d.month, d.day, t.hour, t.minute));
+                  final d = await showDatePicker(context: context, initialDate: _dia.isBefore(DateTime.now()) ? DateTime.now() : _dia, firstDate: DateTime.now(), lastDate: DateTime.now().add(const Duration(days: 365)));
+                  if (d != null) setState(() => _dia = d);
                 },
               ),
-              ListTile(
-                leading: const Icon(Icons.timer_outlined),
-                title: const Text('Duración'),
-                trailing: DropdownButton<int>(
-                  value: [30, 45, 60, 90].contains(_minutos) ? _minutos : 30,
-                  underline: const SizedBox(),
-                  items: const [30, 45, 60, 90].map((m) => DropdownMenuItem(value: m, child: Text('$m min'))).toList(),
-                  onChanged: (v) => setState(() => _minutos = v ?? _minutos),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
+                child: SegmentedButton<bool>(
+                  showSelectedIcon: false,
+                  segments: const [ButtonSegment(value: true, label: Text('Franja de horas')), ButtonSegment(value: false, label: Text('Hora fija'))],
+                  selected: {_franja},
+                  onSelectionChanged: (v) => setState(() => _franja = v.first),
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
                 ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.schedule),
+                title: Wrap(crossAxisAlignment: WrapCrossAlignment.center, spacing: 6, children: [
+                  Text(_franja ? 'Desde' : 'A las'),
+                  ActionChip(
+                    label: Text(_desde.format(context)),
+                    onPressed: () async {
+                      final t = await showTimePicker(context: context, initialTime: _desde);
+                      if (t != null) setState(() => _desde = t);
+                    },
+                  ),
+                  if (_franja) ...[
+                    const Text('hasta'),
+                    ActionChip(
+                      label: Text(_hasta.format(context)),
+                      onPressed: () async {
+                        final t = await showTimePicker(context: context, initialTime: _hasta);
+                        if (t != null) setState(() => _hasta = t);
+                      },
+                    ),
+                  ],
+                ]),
+                subtitle: Text(_franja ? 'Quien lo coja elegirá la hora dentro de la franja.' : 'El cante sería justo a esa hora.', style: context.textos.labelSmall),
               ),
               ListTile(
                 leading: const Icon(Icons.menu_book_outlined),
                 title: const Text('Ejercicio'),
                 trailing: SegmentedButton<int>(
                   showSelectedIcon: false,
-                  segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 5, label: Text('5.º'))],
+                  segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º'))],
                   selected: {_ejercicio},
-                  onSelectionChanged: widget.cante?.bolsa == TipoBolsa.lista ? null : (s) => setState(() => _ejercicio = s.first),
+                  onSelectionChanged: (s) => setState(() {
+                    _ejercicio = s.first;
+                    _elegidosTemas = null;
+                  }),
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
                 ),
               ),
             ]),
           ),
-          const SizedBox(height: 8),
-          Text(temas.isEmpty ? 'No hay temas en la bolsa: marca temas como estudiados o elige un cante con lista.' : 'Entran ${temas.length} temas: ${temas.take(12).join(', ')}${temas.length > 12 ? '…' : ''}', style: context.textos.labelSmall),
+          TituloSeccion(
+            _ejercicio == 1 ? 'Qué se canta' : 'Temas que llevas (${temas.length})',
+            accion: _ejercicio == 1 || temario == null
+                ? null
+                : TextButton.icon(
+                    icon: const Icon(Icons.checklist, size: 18),
+                    label: const Text('Elegir'),
+                    onPressed: () async {
+                      final r = await elegirTemas(context, temario: temario, seleccion: temas, ejercicios: {_ejercicio}, titulo: 'Temas que llevas');
+                      if (r != null) setState(() => _elegidosTemas = r);
+                    },
+                  ),
+          ),
+          if (_ejercicio == 1)
+            Text('Dictamen de coyuntura: no hay temas que sortear.', style: context.textos.bodySmall)
+          else if (temas.isEmpty)
+            Text('Ninguno: toca «Elegir» para marcar los temas que llevas para este cante.', style: context.textos.bodySmall)
+          else
+            Wrap(spacing: 4, runSpacing: 4, children: [
+              for (final c in temas) CasillaCodigo(codigo: c, color: ref.watch(estructuraProvider).value?.colorDe(c), titulo: temario?.tema(c)?.titulo),
+            ]),
+          if (_elegidosTemas == null && temas.isNotEmpty && _ejercicio != 1)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(widget.cante != null ? 'Son los del cante. Puedes cambiarlos.' : 'Son los que tienes marcados como estudiados. Puedes cambiarlos.', style: context.textos.labelSmall),
+            ),
           const SizedBox(height: 10),
           TextField(controller: _notas, maxLines: 2, decoration: const InputDecoration(labelText: 'Nota para el preparador (opcional)', hintText: 'Online o presencial, qué quieres trabajar…')),
           const TituloSeccion('A quién'),
@@ -176,7 +248,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
           TextField(controller: _telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono (WhatsApp)', helperText: 'Solo lo verá el preparador que coja el cante')),
           const SizedBox(height: 20),
           FilledButton.icon(
-            onPressed: _enviando || temas.isEmpty ? null : () => _enviar(temas),
+            onPressed: _enviando || (temas.isEmpty && _ejercicio != 1) ? null : () => _enviar(temas),
             icon: const Icon(Icons.campaign_outlined),
             label: Text(_enviando ? 'Enviando…' : 'Enviar la petición'),
           ),
@@ -201,7 +273,7 @@ class FilaMiPeticion extends ConsumerWidget {
         color: s.cogida ? context.colores.primarioPalido : null,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
-            Expanded(child: Text(_cuando(s.fecha), style: context.textos.titleSmall)),
+            Expanded(child: Text(cuandoSustitucion(s), style: context.textos.titleSmall)),
             Etiqueta(
               switch (s.estado) {
                 EstadoSustitucion.abierta => 'Buscando',
@@ -215,7 +287,7 @@ class FilaMiPeticion extends ConsumerWidget {
               },
             ),
           ]),
-          Text('${s.minutos} min · ${s.ejercicio}.º ejercicio · ${s.temas.length} temas · ${s.paraTodos ? 'a todos' : 'a ${s.destinatarios.length} preparadores'}', style: context.textos.labelSmall),
+          Text('${s.descripcion} · ${s.paraTodos ? 'a todos' : 'a ${s.destinatarios.length} preparadores'}', style: context.textos.labelSmall),
           if (s.cogida)
             FutureBuilder<ContactoRed?>(
               future: red.contacto(s.id, 'preparador'),
@@ -225,7 +297,7 @@ class FilaMiPeticion extends ConsumerWidget {
                   padding: const EdgeInsets.only(top: 8),
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text('Te lo coge ${c?.nombre ?? s.cogidaPorNombre}${c == null ? '' : ' · ${c.telefono}'}', style: context.textos.bodyMedium),
-                    if (c != null) Padding(padding: const EdgeInsets.only(top: 6), child: BotonWhatsApp(telefono: c.telefono, mensaje: 'Hola, ${c.nombre}. Soy ${ref.read(usuarioActualProvider)?.displayName ?? ''}: gracias por cogerme el cante del ${_cuando(s.fecha)}.')),
+                    if (c != null) Padding(padding: const EdgeInsets.only(top: 6), child: BotonWhatsApp(telefono: c.telefono, mensaje: 'Hola, ${c.nombre}. Soy ${ref.read(usuarioActualProvider)?.displayName ?? ''}: gracias por cogerme el cante del ${_cuando(s.inicio)}.')),
                   ]),
                 );
               },
@@ -260,7 +332,7 @@ class TablonPage extends ConsumerWidget {
       context: context,
       builder: (d) => AlertDialog(
         title: const Text('¿Coges este cante?'),
-        content: Text('${_cuando(s.fecha)} · ${s.minutos} min.\n\nAl cogerlo verás el nombre y el teléfono del alumno, y él verá los tuyos para que habléis por WhatsApp. El cante pasará a tu semana.'),
+        content: Text('${cuandoSustitucion(s)}.\n\nAl cogerlo verás el nombre y el teléfono del alumno, y él verá los tuyos para que habléis por WhatsApp. El cante pasará a tu semana.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Lo cojo')),
@@ -268,6 +340,13 @@ class TablonPage extends ConsumerWidget {
       ),
     );
     if (ok != true || !context.mounted) return;
+    // Con franja, el preparador elige a qué hora lo da.
+    var hora = s.fecha;
+    if (s.conFranja) {
+      final elegida = await elegirHoraEnFranja(context, s);
+      if (elegida == null || !context.mounted) return;
+      hora = elegida;
+    }
     var telefono = perfil.telefono;
     if (telefonoWhatsApp(telefono) == null) {
       final t = await pedirTelefono(context, inicial: telefono, explicacion: 'El alumno lo recibirá para escribirte por WhatsApp. Se guarda en tus ajustes de preparador.');
@@ -277,8 +356,8 @@ class TablonPage extends ConsumerWidget {
     }
     try {
       final nombre = perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? '');
-      final alumno = await ref.read(redRepoProvider).coger(s, ContactoRed(nombre: nombre, telefono: telefono));
-      await ref.read(preparadorRepoProvider).sesionDeSustitucion(s, alumno);
+      final alumno = await ref.read(redRepoProvider).coger(s, ContactoRed(nombre: nombre, telefono: telefono), hora: hora);
+      await ref.read(preparadorRepoProvider).sesionDeSustitucion(Sustitucion.fromJson({...s.toJson(), 'hora': hora.toIso8601String()}), alumno);
       ref.invalidate(sesionesProvider);
       ref.invalidate(alumnosProvider);
       ref.invalidate(tablonProvider);
@@ -320,13 +399,20 @@ class TablonPage extends ConsumerWidget {
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Tarjeta(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Text(_cuando(s.fecha), style: context.textos.titleMedium),
-                          Text('${s.minutos} min · ${s.ejercicio}.º ejercicio · ${s.temas.length} temas${s.paraTodos ? '' : ' · enviada a ti'}', style: context.textos.labelSmall),
-                          if (sesiones.any((x) => !x.cancelado && !x.borrado && seSolapan(x.fecha, x.fecha.add(Duration(minutes: x.minutos)), s.fecha, s.fecha.add(Duration(minutes: s.minutos)))))
-                            Padding(
-                              padding: const EdgeInsets.only(top: 4),
-                              child: Text('Ojo: tienes otra sesión a esa hora.', style: context.textos.labelSmall?.copyWith(color: context.esquema.error)),
-                            ),
+                          Text(cuandoSustitucion(s), style: context.textos.titleMedium),
+                          Text('${s.descripcion}${s.paraTodos ? '' : ' · enviada a ti'}', style: context.textos.labelSmall),
+                          // Lo que el preparador ya tiene ese día dentro de la franja.
+                          ...() {
+                            final fin = s.hasta ?? s.fecha.add(const Duration(hours: 2));
+                            final suyas = sesiones.where((x) => !x.cancelado && !x.borrado && seSolapan(x.fecha, x.fecha.add(Duration(minutes: x.minutos)), s.fecha, fin)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+                            if (suyas.isEmpty) return const <Widget>[];
+                            return [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4),
+                                child: Text('Ese día ya tienes: ${suyas.map((x) => horaDe(x.fecha)).join(', ')}', style: context.textos.labelSmall?.copyWith(color: context.esquema.error)),
+                              ),
+                            ];
+                          }(),
                           if (s.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text(s.notas, style: context.textos.bodyMedium)),
                           const SizedBox(height: 8),
                           Wrap(spacing: 4, runSpacing: 4, children: [
@@ -351,8 +437,8 @@ class TablonPage extends ConsumerWidget {
                     padding: EdgeInsets.zero,
                     onTap: sesiones.any((x) => x.id == 'sust_${s.id}') ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: 'sust_${s.id}'))) : null,
                     child: ListTile(
-                      title: Text(_cuando(s.fecha), style: context.textos.titleSmall),
-                      subtitle: Text('${s.minutos} min · ${s.temas.length} temas', style: context.textos.labelSmall),
+                      title: Text(cuandoSustitucion(s), style: context.textos.titleSmall),
+                      subtitle: Text(s.descripcion, style: context.textos.labelSmall),
                       trailing: const Icon(Icons.chevron_right),
                     ),
                   ),
@@ -380,4 +466,21 @@ class CasillaCodigo extends StatelessWidget {
           child: Text(codigo, style: context.textos.labelSmall?.copyWith(fontWeight: FontWeight.w600)),
         ),
       );
+}
+
+/// El preparador elige a qué hora da el cante dentro de la franja del alumno.
+Future<DateTime?> elegirHoraEnFranja(BuildContext context, Sustitucion s) async {
+  final desde = s.fecha, hasta = s.hasta!;
+  final t = await showTimePicker(
+    context: context,
+    initialTime: TimeOfDay.fromDateTime(desde),
+    helpText: 'Entre las ${horaDe(desde)} y las ${horaDe(hasta)}',
+  );
+  if (t == null) return null;
+  final h = DateTime(desde.year, desde.month, desde.day, t.hour, t.minute);
+  if (h.isBefore(desde) || h.isAfter(hasta)) {
+    if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Tiene que ser entre las ${horaDe(desde)} y las ${horaDe(hasta)}.')));
+    return null;
+  }
+  return h;
 }

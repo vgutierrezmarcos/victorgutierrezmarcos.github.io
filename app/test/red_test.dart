@@ -216,4 +216,62 @@ void main() {
     expect(prep.sesiones(), isEmpty);
     expect(prep.alumno('lucia')!.clasesFijas, isEmpty);
   });
+
+  test('solicitud dirigida: solo la ve y la recibe ese preparador (y el administrador)', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('admins').doc('admin').set({'x': 1});
+    for (final (uid, nombre) in [('paula', 'Paula'), ('olga', 'Olga')]) {
+      await db.collection('preparadoresVerificados').doc(uid).set(PreparadorVerificado(uid: uid, nombre: nombre, avaladoPor: 'admin').toJson());
+    }
+    final admin = RedRepo(firestore: db, auth: sesion('admin', 'Víctor'));
+    final paula = RedRepo(firestore: db, auth: sesion('paula', 'Paula'));
+    final olga = RedRepo(firestore: db, auth: sesion('olga', 'Olga'));
+    final nuevo = RedRepo(firestore: db, auth: sesion('nuevo', 'Nuevo'));
+    final abierto = RedRepo(firestore: db, auth: sesion('abierto', 'Abierto'));
+
+    await nuevo.solicitar(nombre: 'Nuevo', ejercicios: [1], presentacion: 'Preparo el dictamen de coyuntura', destinatario: 'olga', destinatarioNombre: 'Olga');
+    await abierto.solicitar(nombre: 'Abierto', ejercicios: [3], presentacion: 'Preparo el tercero desde 2021');
+    expect((await nuevo.miSolicitud())!.destinatarioNombre, 'Olga');
+
+    expect((await paula.solicitudesPendientes()).map((s) => s.uid), ['abierto']);
+    expect((await olga.solicitudesPendientes()).map((s) => s.uid).toSet(), {'nuevo', 'abierto'});
+    expect((await admin.solicitudesPendientes(admin: true)).map((s) => s.uid).toSet(), {'nuevo', 'abierto'});
+
+    // Avisos: la dirigida, solo a Olga; la abierta, solo al administrador.
+    expect((await olga.avisosNuevos(vistos: {}, preparador: true)).map((a) => a.id), ['sol:nuevo']);
+    expect(await paula.avisosNuevos(vistos: {}, preparador: true), isEmpty);
+    expect((await admin.avisosNuevos(vistos: {}, preparador: false, admin: true)).map((a) => a.id), ['sol:abierto']);
+
+    await olga.aprobar((await olga.solicitudesPendientes()).firstWhere((s) => s.uid == 'nuevo'));
+    expect((await nuevo.miVerificacion())!.ejercicios, [1]);
+    expect(describirEjercicios([1, 3]), '1.º (coyuntura), 3.º');
+  });
+
+  test('primer ejercicio: el cante es un dictamen de coyuntura, sin temas', () {
+    final s = Sustitucion(id: 'c', alumno: 'a', fecha: DateTime(2026, 11, 3, 18), ejercicio: 1);
+    expect(s.coyuntura, isTrue);
+    expect(s.descripcion, 'Dictamen de coyuntura (1.er ejercicio)');
+    expect(s.canteDelAlumno(nombreSustituto: 'Olga').ejercicio, 1);
+    expect(ejerciciosConCante, [1, 3, 4]);
+  });
+
+  test('franja de horas: quien coge el cante elige la hora dentro de ella', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    final alumno = RedRepo(firestore: db, auth: sesion('alu', 'Álex'));
+    final paula = RedRepo(firestore: db, auth: sesion('paula', 'Paula'));
+    final dia = DateTime.now().add(const Duration(days: 3));
+    final desde = DateTime(dia.year, dia.month, dia.day, 16), hasta = DateTime(dia.year, dia.month, dia.day, 21);
+    final s = Sustitucion(id: 'f1', alumno: 'alu', fecha: desde, hasta: hasta, temas: const ['3.A.4']);
+    expect(s.conFranja, isTrue);
+    expect(horasDe(s), 'de 16:00 a 21:00');
+    await alumno.publicarSustitucion(s, const ContactoRed(nombre: 'Álex', telefono: '600123456'));
+
+    expect(() => paula.coger(s, const ContactoRed(nombre: 'Paula', telefono: '611222333'), hora: DateTime(dia.year, dia.month, dia.day, 22)), throwsA(isA<ErrorRed>()));
+    await paula.coger(s, const ContactoRed(nombre: 'Paula', telefono: '611222333'), hora: DateTime(dia.year, dia.month, dia.day, 18, 30));
+    final cogida = (await alumno.misPeticiones()).single;
+    expect(cogida.hora, DateTime(dia.year, dia.month, dia.day, 18, 30));
+    expect(horasDe(cogida), 'a las 18:30');
+    expect(cogida.canteDelAlumno().fecha, DateTime(dia.year, dia.month, dia.day, 18, 30));
+  });
 }

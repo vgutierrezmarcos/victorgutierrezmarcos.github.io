@@ -326,7 +326,9 @@ class _CantarPageState extends ConsumerState<CantarPage> {
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
         data: (t) {
-          final oficial = _modo == _Modo.oficial && cante == null;
+          // Primer ejercicio: dictamen de coyuntura, sin sorteo de temas.
+          final coyuntura = (cante?.ejercicio ?? _ejercicio) == 1;
+          final oficial = _modo == _Modo.oficial && cante == null && !coyuntura;
           final bolsa = oficial ? const <Tema>[] : _bolsa(t, cante);
           final k = ajustes.temasExtraidos;
           final bolas = config.bolasPorParte[_ejercicio] ?? 2;
@@ -358,11 +360,11 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ]),
                 ),
               TituloSeccion(
-                'Sorteo',
+                coyuntura ? 'Coyuntura' : 'Sorteo',
                 accion: cante != null
                     ? null
                     : SegmentedButton<int>(showSelectedIcon: false, 
-                        segments: const [ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 5, label: Text('5.º'))],
+                        segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º'))],
                         selected: {_ejercicio},
                         onSelectionChanged: (s) => setState(() {
                           _ejercicio = s.first;
@@ -372,7 +374,9 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                         style: const ButtonStyle(visualDensity: VisualDensity.compact),
                       ),
               ),
-              if (cante == null)
+              if (coyuntura)
+                Tarjeta(child: Text('Primer ejercicio: dictamen de coyuntura. No hay sorteo de temas; prepara el dictamen y cronométralo.', style: context.textos.bodySmall)),
+              if (cante == null && !coyuntura)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: SegmentedButton<_Modo>(showSelectedIcon: false, 
@@ -387,7 +391,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ),
                 ),
               if (oficial) _resumenProbabilidad(context, config, bolas),
-              if (!oficial)
+              if (!oficial && !coyuntura)
                 Tarjeta(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     if (cante == null) ...[
@@ -424,6 +428,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ]),
                 ),
               const SizedBox(height: 10),
+              if (!coyuntura)
               FilledButton.icon(
                 onPressed: (oficial ? ref.watch(temasPorParteProvider).keys.any((p) => p.startsWith('$_ejercicio.')) : bolsa.isNotEmpty) ? () => _sortear(t, cante, config) : null,
                 icon: const Icon(Icons.casino_outlined),
@@ -474,7 +479,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ]),
                   const SizedBox(height: 6),
                   Text('Avisa a mitad de la exposición, a 1 minuto del final y al terminar, también con la pantalla apagada.', textAlign: TextAlign.center, style: context.textos.labelSmall),
-                  if (_reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null)) ...[
+                  if (_reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null || coyuntura)) ...[
                     const Divider(),
                     FilledButton.tonalIcon(
                       onPressed: () => _guardarEnDiario(cante, _sorteados.isNotEmpty ? _sorteados : (cante != null ? bolsa : [if (_elegido != null) _elegido!])),

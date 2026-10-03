@@ -7,6 +7,8 @@ import '../../data/repos/usuario_repo.dart';
 
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
 List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes) {
+  // Primer ejercicio: se canta un dictamen de coyuntura, no un tema.
+  if (c.ejercicio == 1) return const [];
   bool delEjercicio(Tema t) => c.ejercicio == 0 ? (t.ejercicio == 3 || t.ejercicio == 4) : t.ejercicio == c.ejercicio;
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
@@ -24,7 +26,7 @@ String nombreEjercicio(int ejercicio) => switch (ejercicio) {
       _ => '3.º y 4.º ejercicio',
     };
 
-String descripcionBolsa(Cante c) => switch (c.bolsa) {
+String descripcionBolsa(Cante c) => c.ejercicio == 1 ? 'Dictamen de coyuntura · primer ejercicio' : switch (c.bolsa) {
       TipoBolsa.lista => '${c.temas.length} temas elegidos',
       TipoBolsa.estudiados => 'Temas estudiados · ${nombreEjercicio(c.ejercicio).toLowerCase()}',
       TipoBolsa.ejercicio => 'Todos los temas · ${nombreEjercicio(c.ejercicio).toLowerCase()}',
