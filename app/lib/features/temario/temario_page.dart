@@ -89,7 +89,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               FilaEnlace(
                 icono: Icons.percent,
                 titulo: 'Probabilidades',
-                subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De aprobar los ejercicios de temas: ${porcentaje(prob.total)}',
+                subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}',
                 onTap: () => context.go('/temario/probabilidades'),
               ),
               for (final ej in t.ejercicios) ...[
