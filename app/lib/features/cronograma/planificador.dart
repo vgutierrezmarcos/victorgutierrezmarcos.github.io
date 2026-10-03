@@ -2,7 +2,7 @@ import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/estructura.dart';
 
-/// Lógica del cronograma (en prueba), sin interfaz: orden sugerido por bloques
+/// Lógica del cronograma, sin interfaz: orden sugerido por bloques
 /// y conexiones del PowerPoint de organización, intercalado de los temas más
 /// memorísticos (Mixto, en el 3.º) o de las dos partes (4.º), reparto por
 /// semanas y replanificación.

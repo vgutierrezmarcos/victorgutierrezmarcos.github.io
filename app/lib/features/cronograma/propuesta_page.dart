@@ -27,10 +27,7 @@ class CronogramaDelAlumno extends ConsumerWidget {
       Tarjeta(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PropuestaCronogramaPage(alumno: alumno, c: c))),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Expanded(child: Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium)),
-            const Etiqueta('EN PRUEBA'),
-          ]),
+          Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium),
           const SizedBox(height: 6),
           ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: estado.progreso, minHeight: 6)),
           const SizedBox(height: 6),

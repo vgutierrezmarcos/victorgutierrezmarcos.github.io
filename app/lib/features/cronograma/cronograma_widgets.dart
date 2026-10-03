@@ -19,23 +19,6 @@ String nombreDiaSemana(int dia) => const ['lunes', 'martes', 'miércoles', 'juev
 
 String nombreVuelta(int ejercicio) => 'Vuelta al ${EjercicioDef.ordinalAbreviado(ejercicio)} ejercicio';
 
-/// Aviso de que el cronograma está en prueba.
-class AvisoPrueba extends StatelessWidget {
-  const AvisoPrueba({super.key});
-  @override
-  Widget build(BuildContext context) => Tarjeta(
-        color: context.colores.primarioPalido,
-        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-        child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Icon(Icons.science_outlined, color: context.esquema.primary),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text('En prueba. El cronograma es nuevo: puede cambiar y nos ayuda mucho que nos cuentes qué mejorarías (Más → Contacto).', style: context.textos.bodySmall),
-          ),
-        ]),
-      );
-}
-
 /// Resumen: progreso, ritmo y fecha de fin.
 class ResumenCronograma extends StatelessWidget {
   const ResumenCronograma({super.key, required this.c, required this.estado});
@@ -44,10 +27,7 @@ class ResumenCronograma extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Tarjeta(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Expanded(child: Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium)),
-            const Etiqueta('EN PRUEBA'),
-          ]),
+          Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium),
           const SizedBox(height: 8),
           ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: estado.progreso, minHeight: 8)),
           const SizedBox(height: 6),

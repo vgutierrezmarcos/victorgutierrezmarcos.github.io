@@ -1,4 +1,4 @@
-/// Cronograma de una vuelta al temario (en prueba): qué temas toca cada semana.
+/// Cronograma de una vuelta al temario: qué temas toca cada semana.
 /// Se guarda en local (Hive) y, con sesión, en users/{uid}/cronogramas/{id}.
 /// Si el opositor lo comparte, su preparador enlazado lo ve y puede proponer
 /// cambios ([PropuestaCronograma]), que el opositor acepta o rechaza.
