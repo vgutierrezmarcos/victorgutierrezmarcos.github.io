@@ -88,7 +88,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   }
 
   Future<void> _elegirTemas() async {
-    final temario = ref.read(temarioProvider).value;
+    final temario = ref.read(temarioProvider).valueOrNull;
     if (temario == null) return;
     final r = await elegirTemas(context, temario: temario, seleccion: _temas, ejercicios: Oposiciones.actual.ejerciciosDeBolsa(_ejercicio), titulo: 'Temas que entran');
     if (r != null) setState(() => _temas = r);

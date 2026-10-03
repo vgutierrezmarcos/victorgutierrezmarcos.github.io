@@ -304,7 +304,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final sesion = widget.sesion;
     final ajustes = ref.watch(ajustesProvider);
     final estudiados = sesion == null ? ajustes.temasEstudiados : sesion.alumno.temas.toSet();
-    final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
     final oposicion = ref.watch(oposicionProvider);
     final idCante = ref.watch(canteEnCursoProvider);
     final cante = sesion != null
@@ -447,7 +447,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     child: Row(children: [
                       Icon(estudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: estudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
                       const SizedBox(width: 10),
-                      Expanded(child: TextoTema(x.codigo, x.titulo, color: ref.watch(estructuraProvider).value?.colorDe(x.codigo))),
+                      Expanded(child: TextoTema(x.codigo, x.titulo, color: ref.watch(estructuraProvider).valueOrNull?.colorDe(x.codigo))),
                       if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),
                     ]),
                   ),

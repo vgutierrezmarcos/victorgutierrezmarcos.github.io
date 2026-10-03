@@ -215,8 +215,8 @@ class TarjetaCronogramaHoy extends ConsumerWidget {
     final estado = ref.watch(estadoCronogramaProvider);
     if (c == null || estado == null) return const SizedBox();
     final s = estado.semanaActual;
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     final hechosSemana = s == null ? 0 : s.temas.where(estado.hechos.contains).length;
     return Padding(
       padding: const EdgeInsets.only(top: 10),

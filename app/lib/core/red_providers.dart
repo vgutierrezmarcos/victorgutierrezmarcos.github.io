@@ -122,7 +122,7 @@ final huecosDeProvider = FutureProvider.family<HuecosPublicos?, String>((ref, pr
 
 /// Petición de sustitución que sale de un cante del alumno (la última no cancelada).
 final peticionDeCanteProvider = Provider.family<Sustitucion?, String>((ref, cante) {
-  final todas = ref.watch(misPeticionesProvider).value ?? const [];
+  final todas = ref.watch(misPeticionesProvider).valueOrNull ?? const [];
   return todas.where((s) => s.cante == cante && s.estado != EstadoSustitucion.cancelada).firstOrNull;
 });
 

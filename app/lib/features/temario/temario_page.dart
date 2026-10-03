@@ -29,7 +29,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     final agendas = ref.watch(agendasProvider);
     final prob = ref.watch(probabilidadAprobarProvider);
     // Código de colores de la organización del temario (vacío hasta que se descarga).
-    final estructura = ref.watch(estructuraProvider).value;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     _colorDe = (codigo) => estructura?.colorDe(codigo);
     int apuntes(String codigo) => agendas[codigo]?.pendientes.length ?? 0;
 

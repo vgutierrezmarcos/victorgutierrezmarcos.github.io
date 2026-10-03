@@ -92,7 +92,7 @@ final authStateProvider = StreamProvider<User?>((ref) {
   return FirebaseAuth.instance.authStateChanges();
 });
 
-final usuarioActualProvider = Provider<User?>((ref) => ref.watch(authStateProvider).value);
+final usuarioActualProvider = Provider<User?>((ref) => ref.watch(authStateProvider).valueOrNull);
 
 class SesionNotifier extends Notifier<bool> {
   @override
@@ -366,7 +366,7 @@ final agendasProvider = NotifierProvider<AgendasNotifier, Map<String, AgendaTema
 
 /// Temas por parte ("3.A" → temas) de los ejercicios con sorteo.
 final temasPorParteProvider = Provider<Map<String, List<Tema>>>((ref) {
-  final t = ref.watch(temarioProvider).value;
+  final t = ref.watch(temarioProvider).valueOrNull;
   if (t == null) return const {};
   return {
     for (final e in t.ejercicios)
