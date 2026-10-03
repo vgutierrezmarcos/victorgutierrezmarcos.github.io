@@ -1,5 +1,5 @@
 /**
- * Enlaces de descarga y novedad de la app "Oposición TCEE".
+ * Enlaces de descarga de la app "Oposición TCEE".
  *
  * El aviso (div#app-banner) está en index.html y en oposicion/index.html y
  * permanece oculto mientras oposicion/app-config.json no tenga ninguna URL:
@@ -8,8 +8,6 @@
  *                     release "app-latest" en GitHub).
  *   - "urlPlayStore": ficha de Google Play, cuando exista.
  *   - "urlAppStore":  ficha del App Store, cuando exista.
- *   - "novedad":      lo último de la app, en una frase (opcional): sale en
- *                     el aviso con la etiqueta «Novedad».
  *
  * Cuando la app esté en Google Play, poner "urlApk" a null para que solo se
  * ofrezca la tienda.
@@ -34,9 +32,6 @@
             }
             if (cfg.app.urlPlayStore && play) { play.href = cfg.app.urlPlayStore; play.hidden = false; alguno = true; }
             if (cfg.app.urlAppStore && ios) { ios.href = cfg.app.urlAppStore; ios.hidden = false; alguno = true; }
-            var novedad = document.getElementById('app-banner-new');
-            var texto = document.getElementById('app-banner-new-text');
-            if (cfg.app.novedad && novedad && texto) { texto.textContent = cfg.app.novedad; novedad.hidden = false; }
             if (alguno) banner.hidden = false;
         })
         .catch(function () { /* silencio */ });
