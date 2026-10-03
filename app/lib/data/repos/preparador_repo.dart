@@ -484,7 +484,7 @@ class PreparadorRepo {
     await guardarAlumno(a);
     final s = Cante(
       id: id,
-      fecha: sust.fecha,
+      fecha: sust.inicio,
       minutos: sust.minutos,
       ejercicio: sust.ejercicio,
       bolsa: TipoBolsa.lista,

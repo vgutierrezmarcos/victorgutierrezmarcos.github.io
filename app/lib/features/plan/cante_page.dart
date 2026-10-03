@@ -150,7 +150,7 @@ class CantePage extends ConsumerWidget {
             Row(children: [
               Expanded(
                 child: FilledButton.icon(
-                  onPressed: temas.isEmpty
+                  onPressed: temas.isEmpty && c.ejercicio != 1
                       ? null
                       : () {
                           final router = GoRouter.of(context);
@@ -159,14 +159,14 @@ class CantePage extends ConsumerWidget {
                           Navigator.of(context).popUntil((r) => r.isFirst);
                           router.go('/cantes');
                         },
-                  icon: const Icon(Icons.casino_outlined),
-                  label: const Text('Sortear y cantar'),
+                  icon: Icon(c.ejercicio == 1 ? Icons.timer_outlined : Icons.casino_outlined),
+                  label: Text(c.ejercicio == 1 ? 'Cronometrar' : 'Sortear y cantar'),
                 ),
               ),
               const SizedBox(width: 10),
               OutlinedButton(onPressed: anotar, child: const Text('Anotar resultado')),
             ]),
-            if (temas.isEmpty)
+            if (temas.isEmpty && c.ejercicio != 1)
               Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: marca temas como estudiados o elige una lista.', style: context.textos.labelSmall)),
           ],
           if (c.hecho && r != null) ...[
@@ -200,8 +200,10 @@ class CantePage extends ConsumerWidget {
                 ),
               ),
           ],
-          TituloSeccion('Temas que entran (${temas.length})'),
-          if (temas.isEmpty)
+          if (c.ejercicio != 1) TituloSeccion('Temas que entran (${temas.length})'),
+          if (c.ejercicio == 1)
+            const SizedBox()
+          else if (temas.isEmpty)
             Text('Ninguno todavía.', style: context.textos.bodySmall)
           else
             Tarjeta(

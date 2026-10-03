@@ -172,15 +172,15 @@ class SesionPage extends ConsumerWidget {
             Row(children: [
               Expanded(
                 child: FilledButton.icon(
-                  onPressed: temas.isEmpty || alumno == null ? null : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantarPage(sesion: SesionAlumno(cante: s, alumno: alumno)))),
-                  icon: const Icon(Icons.casino_outlined),
-                  label: const Text('Sortear y cantar'),
+                  onPressed: (temas.isEmpty && s.ejercicio != 1) || alumno == null ? null : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantarPage(sesion: SesionAlumno(cante: s, alumno: alumno)))),
+                  icon: Icon(s.ejercicio == 1 ? Icons.timer_outlined : Icons.casino_outlined),
+                  label: Text(s.ejercicio == 1 ? 'Cronometrar' : 'Sortear y cantar'),
                 ),
               ),
               const SizedBox(width: 10),
               OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
-            if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
+            if (temas.isEmpty && s.ejercicio != 1) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
@@ -201,8 +201,10 @@ class SesionPage extends ConsumerWidget {
             OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (alumno?.enlazado == true) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
-          TituloSeccion('Temas que entran (${temas.length})'),
-          if (temas.isEmpty)
+          if (s.ejercicio != 1) TituloSeccion('Temas que entran (${temas.length})'),
+          if (s.ejercicio == 1)
+            const SizedBox()
+          else if (temas.isEmpty)
             Text('Ninguno todavía.', style: context.textos.bodySmall)
           else
             Tarjeta(

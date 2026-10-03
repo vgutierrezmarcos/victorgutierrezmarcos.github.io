@@ -88,7 +88,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   }
 
   Future<void> _guardar() async {
-    if (_bolsa == TipoBolsa.lista && _temas.isEmpty) {
+    if (_ejercicio != 1 && _bolsa == TipoBolsa.lista && _temas.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige al menos un tema para el sorteo')));
       return;
     }
@@ -102,8 +102,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       titulo: _titulo.text.trim(),
       minutos: _minutos,
       ejercicio: _ejercicio,
-      bolsa: _bolsa,
-      temas: _bolsa == TipoBolsa.lista ? _temas : const [],
+      bolsa: _ejercicio == 1 ? TipoBolsa.estudiados : _bolsa,
+      temas: _ejercicio != 1 && _bolsa == TipoBolsa.lista ? _temas : const [],
       notas: _notas.text.trim(),
     );
     if (_sesion) {
@@ -189,9 +189,10 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           ],
           TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
-          const TituloSeccion('Qué temas entran'),
+          const TituloSeccion('Qué se canta'),
           SegmentedButton<int>(showSelectedIcon: false, 
             segments: const [
+              ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'),
               ButtonSegment(value: 3, label: Text('3.º')),
               ButtonSegment(value: 4, label: Text('4.º')),
               ButtonSegment(value: 0, label: Text('3.º y 4.º')),
@@ -204,6 +205,9 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             style: const ButtonStyle(visualDensity: VisualDensity.compact),
           ),
           const SizedBox(height: 8),
+          if (_ejercicio == 1)
+            Text('Primer ejercicio: dictamen de coyuntura. No hay sorteo de temas; el cronómetro y la valoración funcionan igual.', style: context.textos.bodySmall),
+          if (_ejercicio != 1)
           for (final (tipo, titulo, sub) in [
             (TipoBolsa.estudiados, _sesion ? 'Los que lleva estudiados' : 'Los que llevo estudiados', _sesion ? 'Los que el alumno tenga marcados el día del cante' : 'Los marcados como estudiados el día del cante'),
             (TipoBolsa.lista, 'Una lista concreta', _sesion ? 'Los que hayas acordado con el alumno' : 'Los que hayas acordado con el preparador'),
@@ -217,7 +221,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
               title: Text(titulo, style: context.textos.titleSmall),
               subtitle: Text(sub, style: context.textos.labelSmall),
             ),
-          if (_bolsa == TipoBolsa.lista)
+          if (_bolsa == TipoBolsa.lista && _ejercicio != 1)
             OutlinedButton.icon(onPressed: _elegirTemas, icon: const Icon(Icons.checklist, size: 18), label: Text(_temas.isEmpty ? 'Elegir temas' : '${_temas.length} temas elegidos')),
           const TituloSeccion('Duración'),
           Wrap(spacing: 6, children: [

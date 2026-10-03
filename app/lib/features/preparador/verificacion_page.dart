@@ -15,6 +15,11 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
   final nombre = TextEditingController(text: ref.read(perfilPreparadorProvider).nombre.isNotEmpty ? ref.read(perfilPreparadorProvider).nombre : (usuario?.displayName ?? ''));
   final presentacion = TextEditingController();
   final ejercicios = <int>{3, 4};
+  // A quién se la pide: null = al administrador y a cualquier verificado.
+  PreparadorVerificado? destinatario;
+  final verificados = await ref.read(verificadosProvider.future);
+  final candidatos = verificados.where((v) => v.uid != usuario?.uid).toList();
+  if (!context.mounted) return;
   final ok = await showDialog<bool>(
     context: context,
     builder: (d) => StatefulBuilder(
@@ -22,15 +27,35 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
         title: const Text('Pedir la verificación'),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('La revisará el administrador o un preparador ya verificado. Cuéntales quién eres para que puedan comprobarlo.', style: Theme.of(d).textTheme.bodySmall),
+            Text('Cuenta quién eres para que puedan comprobarlo.', style: Theme.of(d).textTheme.bodySmall),
             const SizedBox(height: 12),
             TextField(controller: nombre, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre y apellidos')),
             const SizedBox(height: 12),
             Text('Ejercicios que preparas', style: Theme.of(d).textTheme.labelMedium),
             Wrap(spacing: 8, children: [
-              for (final e in const [3, 4, 5])
-                FilterChip(label: Text('$e.º'), selected: ejercicios.contains(e), onSelected: (v) => set(() => v ? ejercicios.add(e) : ejercicios.remove(e))),
+              for (final e in ejerciciosConCante)
+                FilterChip(label: Text(e == 1 ? '1.º (coyuntura)' : '$e.º'), selected: ejercicios.contains(e), onSelected: (v) => set(() => v ? ejercicios.add(e) : ejercicios.remove(e))),
             ]),
+            const SizedBox(height: 12),
+            Text('A quién se la pides', style: Theme.of(d).textTheme.labelMedium),
+            DropdownButtonFormField<String>(
+              initialValue: destinatario?.uid ?? '',
+              isExpanded: true,
+              items: [
+                const DropdownMenuItem(value: '', child: Text('Al administrador (o a cualquier verificado)')),
+                for (final v in candidatos) DropdownMenuItem(value: v.uid, child: Text(v.nombre, overflow: TextOverflow.ellipsis)),
+              ],
+              onChanged: (u) => set(() => destinatario = candidatos.where((v) => v.uid == u).firstOrNull),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                destinatario == null
+                    ? 'Le llegará un aviso al administrador; los preparadores verificados también podrán verla en su lista.'
+                    : 'Solo la verán ${destinatario!.nombre} (con un aviso) y el administrador.',
+                style: Theme.of(d).textTheme.labelSmall,
+              ),
+            ),
             const SizedBox(height: 12),
             TextField(
               controller: presentacion,
@@ -53,7 +78,13 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
   if (ok != true || !context.mounted) return;
   final messenger = ScaffoldMessenger.of(context);
   try {
-    await ref.read(redRepoProvider).solicitar(nombre: nombre.text, ejercicios: ejercicios.toList()..sort(), presentacion: presentacion.text);
+    await ref.read(redRepoProvider).solicitar(
+      nombre: nombre.text,
+      ejercicios: ejercicios.toList()..sort(),
+      presentacion: presentacion.text,
+      destinatario: destinatario?.uid,
+      destinatarioNombre: destinatario?.nombre ?? '',
+    );
     ref.invalidate(estadoRedProvider);
     messenger.showSnackBar(const SnackBar(content: Text('Solicitud enviada. Te avisaremos en esta pantalla cuando te verifiquen.')));
   } catch (e) {
@@ -109,7 +140,12 @@ class VerificarPreparadoresPage extends ConsumerWidget {
                       child: Tarjeta(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(s.nombre, style: context.textos.titleMedium),
-                          Text([s.email, if (s.ejercicios.isNotEmpty) '${s.ejercicios.map((e) => '$e.º').join(', ')} ejercicio', if (s.creada != null) 'pedida el ${fechaCorta(s.creada!)}'].join(' · '), style: context.textos.labelSmall),
+                          Text([s.email, if (s.ejercicios.isNotEmpty) '${describirEjercicios(s.ejercicios)} ejercicio', if (s.creada != null) 'pedida el ${fechaCorta(s.creada!)}'].join(' · '), style: context.textos.labelSmall),
+                          if (s.destinatario != null)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4),
+                              child: Etiqueta(s.destinatario == ref.read(redRepoProvider).uid ? 'Te la pide a ti' : 'Se la pide a ${s.destinatarioNombre}'),
+                            ),
                           const SizedBox(height: 8),
                           Text(s.presentacion, style: context.textos.bodyMedium),
                           const SizedBox(height: 10),

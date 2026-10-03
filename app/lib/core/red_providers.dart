@@ -17,8 +17,9 @@ final redRepoProvider = Provider<RedRepo>((ref) {
 
 /// Situación del usuario en la red.
 class EstadoRed {
-  const EstadoRed({this.esAdmin = false, this.verificacion, this.solicitud});
-  final bool esAdmin;
+  const EstadoRed({this.diagnostico = DiagnosticoAdmin.no, this.verificacion, this.solicitud});
+  final DiagnosticoAdmin diagnostico;
+  bool get esAdmin => diagnostico == DiagnosticoAdmin.si;
   final PreparadorVerificado? verificacion;
   final SolicitudPreparador? solicitud;
   bool get verificado => verificacion != null;
@@ -29,10 +30,16 @@ final estadoRedProvider = FutureProvider<EstadoRed>((ref) async {
   final red = ref.watch(redRepoProvider);
   if (!red.conSesion) return const EstadoRed();
   try {
-    final r = await Future.wait([red.esAdmin(), red.miVerificacion(), red.miSolicitud()]);
-    return EstadoRed(esAdmin: r[0] as bool, verificacion: r[1] as PreparadorVerificado?, solicitud: r[2] as SolicitudPreparador?);
+    final diagnostico = await red.diagnosticoAdmin();
+    PreparadorVerificado? v;
+    SolicitudPreparador? sol;
+    try {
+      v = await red.miVerificacion();
+      sol = await red.miSolicitud();
+    } catch (_) {}
+    return EstadoRed(diagnostico: diagnostico, verificacion: v, solicitud: sol);
   } catch (_) {
-    return const EstadoRed();
+    return const EstadoRed(diagnostico: DiagnosticoAdmin.sinRed);
   }
 });
 
@@ -58,7 +65,7 @@ final verificadosConRetiradosProvider = FutureProvider<List<PreparadorVerificado
 final solicitudesPendientesProvider = FutureProvider<List<SolicitudPreparador>>((ref) async {
   final e = await ref.watch(estadoRedProvider.future);
   if (!e.verificado && !e.esAdmin) return const [];
-  return _seguro(ref.watch(redRepoProvider).solicitudesPendientes);
+  return _seguro(() => ref.watch(redRepoProvider).solicitudesPendientes(admin: e.esAdmin));
 });
 
 final tablonProvider = FutureProvider<List<Sustitucion>>((ref) async {
@@ -142,7 +149,7 @@ Future<void> sincronizarRed(Ref ref) async {
       ));
     } catch (_) {}
   }
-  await comprobarAvisosRed(red, preparador: estado.verificado && perfil.activo && perfil.avisosSustitucion);
+  await comprobarAvisosRed(red, preparador: estado.verificado && perfil.activo && perfil.avisosSustitucion, admin: estado.esAdmin);
   await programarAvisosEnSegundoPlano(activar: true);
   refrescarRed(ref);
 }

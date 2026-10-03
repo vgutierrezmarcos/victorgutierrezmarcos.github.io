@@ -10,12 +10,13 @@ import 'vistos.dart';
 /// en el navegador con una del navegador (si se dio permiso). Devuelve los
 /// avisos nuevos. La usan la app abierta (al sincronizar) y la tarea en
 /// segundo plano de Android.
-Future<List<AvisoRed>> comprobarAvisosRed(RedRepo repo, {required bool preparador}) async {
+Future<List<AvisoRed>> comprobarAvisosRed(RedRepo repo, {required bool preparador, bool admin = false}) async {
   if (!repo.conSesion) return const [];
   final vistos = await leerVistos();
   final nuevos = await repo.avisosNuevos(
     vistos: vistos,
     preparador: preparador,
+    admin: admin,
     cuando: (d) => DateFormat("EEEE d 'a las' HH:mm", 'es').format(d),
   );
   if (nuevos.isEmpty) return nuevos;
