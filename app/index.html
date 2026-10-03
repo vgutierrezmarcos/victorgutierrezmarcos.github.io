@@ -74,6 +74,8 @@
             position: relative;
             z-index: 1;
         }
+        .app-marca { display: flex; align-items: center; gap: 0.75rem; }
+        .app-logo { width: 56px; height: 56px; flex: none; }
         .app-etiqueta {
             font-family: var(--font-ui);
             font-size: 0.78rem;
@@ -301,7 +303,10 @@
                 <!-- Presentación y descarga: los enlaces se rellenan desde app-config.json (app-banner.js) -->
                 <div class="app-hero">
                     <div>
-                        <span class="app-etiqueta">Android y navegador · versión de prueba</span>
+                        <div class="app-marca">
+                            <img class="app-logo" src="assets/icon/icon.svg" alt="Logo de la app: una diana" width="56" height="56">
+                            <span class="app-etiqueta">Android y navegador · versión de prueba</span>
+                        </div>
                         <h2>Oposición TCEE, en el bolsillo</h2>
                         <p class="app-entradilla">La web pone el temario y los test. La app pone el día a día: cuándo cantas, qué temas entran, cuánto falta para el examen, cómo te fue la última vez y qué probabilidad llevas. Y, si tienes preparador, os enlaza.</p>
                         <div id="app-banner" class="app-descarga" hidden>

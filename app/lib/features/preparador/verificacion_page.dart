@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
@@ -16,7 +17,7 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
   final nombre = TextEditingController(text: ref.read(perfilPreparadorProvider).nombre.isNotEmpty ? ref.read(perfilPreparadorProvider).nombre : (usuario?.displayName ?? ''));
   final presentacion = TextEditingController();
   final linkedin = TextEditingController(text: ref.read(perfilPreparadorProvider).linkedin);
-  final ejercicios = <int>{3, 4};
+  final ejercicios = {for (final e in Oposiciones.actual.conTemasCantados) e.numero};
   // A quién se la pide: null = al administrador y a cualquier verificado.
   PreparadorVerificado? destinatario;
   final verificados = await ref.read(verificadosProvider.future);
@@ -36,7 +37,7 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
             Text('Ejercicios que preparas', style: Theme.of(d).textTheme.labelMedium),
             Wrap(spacing: 8, children: [
               for (final e in ejerciciosConCante)
-                FilterChip(label: Text(e == 1 ? '1.º (coyuntura)' : '$e.º'), selected: ejercicios.contains(e), onSelected: (v) => set(() => v ? ejercicios.add(e) : ejercicios.remove(e))),
+                FilterChip(label: Text(etiquetaEjercicioCante(e)), selected: ejercicios.contains(e), onSelected: (v) => set(() => v ? ejercicios.add(e) : ejercicios.remove(e))),
             ]),
             const SizedBox(height: 12),
             Text('A quién se la pides', style: Theme.of(d).textTheme.labelMedium),

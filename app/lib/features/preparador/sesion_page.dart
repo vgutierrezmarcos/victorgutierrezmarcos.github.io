@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
@@ -201,8 +202,8 @@ class SesionPage extends ConsumerWidget {
             OutlinedButton.icon(onPressed: () => enviarInforme(context, s, alumno, temario), icon: const Icon(Icons.ios_share, size: 18), label: const Text('Enviar informe al alumno')),
             if (alumno?.enlazado == true) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Además, la valoración ya está en su diario de cantes.', textAlign: TextAlign.center, style: context.textos.labelSmall)),
           ],
-          if (s.ejercicio != 1) TituloSeccion('Temas que entran (${temas.length})'),
-          if (s.ejercicio == 1)
+          if (!Oposiciones.actual.esDictamen(s.ejercicio)) TituloSeccion('Temas que entran (${temas.length})'),
+          if (Oposiciones.actual.esDictamen(s.ejercicio))
             const SizedBox()
           else if (temas.isEmpty)
             Text('Ninguno todavía.', style: context.textos.bodySmall)

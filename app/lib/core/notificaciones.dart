@@ -1,3 +1,4 @@
+import '../data/models/oposicion.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
@@ -57,7 +58,7 @@ class Notificaciones {
     if (cuando.isBefore(ahora)) cuando = cuando.add(const Duration(days: 1));
     await _plugin.zonedSchedule(
       _idRecordatorio,
-      'Test diario TCEE',
+      'Test diario ${Oposiciones.actual.siglas}',
       'Tus 10 preguntas de hoy te esperan. ¡Mantén la racha!',
       cuando,
       const NotificationDetails(

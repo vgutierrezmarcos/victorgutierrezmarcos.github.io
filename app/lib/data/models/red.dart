@@ -1,3 +1,4 @@
+import 'oposicion.dart';
 import 'plan.dart';
 import 'preparador.dart';
 
@@ -160,9 +161,13 @@ class Sustitucion {
   /// Hora del cante: la acordada al cogerlo o, si no, el inicio de la franja.
   DateTime get inicio => hora ?? fecha;
   bool vaA(String uid) => paraTodos || destinatarios.contains(uid);
-  /// Primer ejercicio: dictamen de coyuntura, sin temas.
-  bool get coyuntura => ejercicio == 1;
-  String get descripcion => coyuntura ? 'Dictamen de coyuntura (1.er ejercicio)' : '$ejercicio.º ejercicio · ${temas.length} temas';
+  /// Dictamen (1.º de TCEE: coyuntura), sin temas.
+  bool get coyuntura => Oposiciones.actual.esDictamen(ejercicio);
+  String get descripcion {
+    if (!coyuntura) return '$ejercicio.º ejercicio · ${temas.length} temas';
+    final que = Oposiciones.actual.ejercicio(ejercicio)?.queSeCanta ?? 'cante';
+    return '${que[0].toUpperCase()}${que.substring(1)} (${ejercicio == 1 ? '1.er' : '$ejercicio.º'} ejercicio)';
+  }
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -359,11 +364,14 @@ String? enlaceWhatsApp(String telefono, [String mensaje = '']) {
   return 'https://wa.me/$t${mensaje.isEmpty ? '' : '?text=${Uri.encodeComponent(mensaje)}'}';
 }
 
-/// Ejercicios en los que hay cantes: el primero (dictamen de coyuntura), el
-/// tercero y el cuarto. El quinto no se canta.
-const ejerciciosConCante = [1, 3, 4];
+/// Ejercicios en los que hay cantes (en TCEE, el 1.º —dictamen de coyuntura—,
+/// el 3.º y el 4.º; el 5.º no se canta).
+List<int> get ejerciciosConCante => [for (final e in Oposiciones.actual.conCante) e.numero];
 
-String describirEjercicios(List<int> ejercicios) => ejercicios.isEmpty ? '' : ejercicios.map((e) => e == 1 ? '1.º (coyuntura)' : '$e.º').join(', ');
+/// «1.º (coyuntura)» para un ejercicio con cante.
+String etiquetaEjercicioCante(int e) => Oposiciones.actual.ejercicio(e)?.cortoConCante ?? '$e.º';
+
+String describirEjercicios(List<int> ejercicios) => ejercicios.isEmpty ? '' : ejercicios.map(etiquetaEjercicioCante).join(', ');
 
 String _hm(DateTime d) => '${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
 

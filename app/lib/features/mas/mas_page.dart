@@ -69,7 +69,8 @@ class MasPage extends ConsumerWidget {
             onTap: () => context.go('/mas/preparador'),
           ),
           const TituloSeccion('Contenido'),
-          _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, Urls.simuladorWeb)),
+          // El simulador web guarda en el historial de su propia oposición.
+          if (!ref.read(oposicionProvider).testVoluntario) _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, ref.read(oposicionProvider).urlSimuladorWeb)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
@@ -135,7 +136,14 @@ class MasPage extends ConsumerWidget {
             future: PackageInfo.fromPlatform(),
             builder: (_, s) => Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: Text('Oposición TCEE · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nContenido de victorgutierrezmarcos.es', textAlign: TextAlign.center, style: context.textos.labelSmall),
+              child: Column(children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(9),
+                  child: Image.asset('assets/icon/icon.png', width: 40, height: 40, semanticLabel: 'Logo de la app'),
+                ),
+                const SizedBox(height: 8),
+                Text('${Creditos.nombreApp} · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nDesarrollada por ${Creditos.desarrolladores}\nContenido de victorgutierrezmarcos.es', textAlign: TextAlign.center, style: context.textos.labelSmall),
+              ]),
             ),
           ),
         ],

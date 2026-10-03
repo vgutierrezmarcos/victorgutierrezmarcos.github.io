@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../data/models/oposicion.dart';
 import '../../core/providers.dart';
 import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
@@ -11,7 +12,7 @@ import 'planificador.dart';
 String diaMes(DateTime d) => DateFormat('d MMM', 'es').format(d);
 String fechaLargaCrono(DateTime d) => DateFormat("d 'de' MMMM", 'es').format(d);
 
-String nombreVuelta(int ejercicio) => ejercicio == 4 ? 'Vuelta al 4.º ejercicio' : 'Vuelta al 3.er ejercicio';
+String nombreVuelta(int ejercicio) => 'Vuelta al ${EjercicioDef.ordinalAbreviado(ejercicio)} ejercicio';
 
 /// Aviso de que el cronograma está en prueba.
 class AvisoPrueba extends StatelessWidget {

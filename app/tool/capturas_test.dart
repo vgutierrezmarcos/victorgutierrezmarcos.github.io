@@ -18,6 +18,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
@@ -181,8 +182,9 @@ void main() {
     final http = CacheHttp(Dio(), await caja());
     final overrides = [
       serviciosProvider.overrideWithValue(Servicios(
+        oposicion: Oposiciones.tcee,
         http: http,
-        contenido: ContenidoRepo(http),
+        contenido: ContenidoRepo(http, Oposiciones.tcee),
         usuario: usuario,
         plan: plan,
         preparador: preparador,

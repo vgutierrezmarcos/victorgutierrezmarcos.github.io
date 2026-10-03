@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'core/constants.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
@@ -109,7 +110,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (ahora != null && antes?.uid != ahora.uid) ref.read(sesionProvider.notifier).sincronizarSiToca(forzar: true);
     });
     return MaterialApp.router(
-      title: 'Oposición TCEE',
+      title: Creditos.nombreApp,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.claro,
       darkTheme: AppTheme.oscuro,

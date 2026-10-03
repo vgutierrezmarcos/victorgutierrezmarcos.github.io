@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
@@ -102,7 +103,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
 
     Future<void> editarTemas() async {
       if (temario == null) return;
-      final r = await elegirTemas(context, temario: temario, seleccion: a.temas, ejercicios: a.ejercicio == 0 ? {3, 4} : {a.ejercicio}, titulo: 'Temas que lleva');
+      final r = await elegirTemas(context, temario: temario, seleccion: a.temas, ejercicios: Oposiciones.actual.ejerciciosDeBolsa(a.ejercicio), titulo: 'Temas que lleva');
       if (r != null) await ref.read(alumnosProvider.notifier).guardar(a.copyWith(temas: r));
     }
 

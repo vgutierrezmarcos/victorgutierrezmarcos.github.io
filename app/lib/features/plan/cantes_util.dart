@@ -1,15 +1,18 @@
 import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../data/repos/usuario_repo.dart';
 
 /// Temas que entran en el sorteo de un cante según su tipo de bolsa.
 List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes) {
-  // Primer ejercicio: se canta un dictamen de coyuntura, no un tema.
-  if (c.ejercicio == 1) return const [];
-  bool delEjercicio(Tema t) => c.ejercicio == 0 ? (t.ejercicio == 3 || t.ejercicio == 4) : t.ejercicio == c.ejercicio;
+  final oposicion = Oposiciones.actual;
+  // Dictamen (1.º de TCEE): se canta sin temas.
+  if (oposicion.esDictamen(c.ejercicio)) return const [];
+  final ejercicios = oposicion.ejerciciosDeBolsa(c.ejercicio);
+  bool delEjercicio(Tema t) => ejercicios.contains(t.ejercicio);
   return switch (c.bolsa) {
     TipoBolsa.lista => [for (final codigo in c.temas) if (temario.tema(codigo) != null) temario.tema(codigo)!],
     TipoBolsa.estudiados => temario.todosLosTemas.where((t) => delEjercicio(t) && ajustes.temasEstudiados.contains(t.codigo)).toList(),
@@ -17,20 +20,21 @@ List<Tema> temasDeCante(Cante c, Temario temario, Ajustes ajustes) {
   };
 }
 
-String nombreEjercicio(int ejercicio) => switch (ejercicio) {
-      1 => 'Primer ejercicio',
-      2 => 'Segundo ejercicio',
-      3 => 'Tercer ejercicio',
-      4 => 'Cuarto ejercicio',
-      5 => 'Quinto ejercicio',
-      _ => '3.º y 4.º ejercicio',
-    };
+/// «Tercer ejercicio» (0: «3.º y 4.º ejercicio»).
+String nombreEjercicio(int ejercicio) => Oposiciones.actual.nombreEjercicio(ejercicio);
 
-String descripcionBolsa(Cante c) => c.ejercicio == 1 ? 'Dictamen de coyuntura · primer ejercicio' : switch (c.bolsa) {
+String descripcionBolsa(Cante c) => Oposiciones.actual.esDictamen(c.ejercicio) ? _descripcionDictamen(c.ejercicio) : switch (c.bolsa) {
       TipoBolsa.lista => '${c.temas.length} temas elegidos',
       TipoBolsa.estudiados => 'Temas estudiados · ${nombreEjercicio(c.ejercicio).toLowerCase()}',
       TipoBolsa.ejercicio => 'Todos los temas · ${nombreEjercicio(c.ejercicio).toLowerCase()}',
     };
+
+/// «Dictamen de coyuntura · primer ejercicio».
+String _descripcionDictamen(int ejercicio) {
+  final e = Oposiciones.actual.ejercicio(ejercicio)!;
+  final que = e.queSeCanta ?? 'cante';
+  return '${que[0].toUpperCase()}${que.substring(1)} · ${e.nombre.toLowerCase()}';
+}
 
 String tituloCante(Cante c) => c.titulo.isEmpty ? 'Cante' : c.titulo;
 
@@ -40,7 +44,7 @@ String horaDe(DateTime f) => DateFormat('HH:mm').format(f);
 
 EventoCalendario eventoDeCante(Cante c) => EventoCalendario(
       uid: 'cante-${c.id}',
-      titulo: 'Cante TCEE${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}',
+      titulo: 'Cante ${Oposiciones.actual.siglas}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}',
       inicio: c.fecha,
       fin: c.fecha.add(Duration(minutes: c.minutos)),
       descripcion: [descripcionBolsa(c), if (c.notas.isNotEmpty) c.notas].join('\n'),

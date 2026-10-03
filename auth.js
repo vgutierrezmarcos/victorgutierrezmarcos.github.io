@@ -256,7 +256,7 @@ async function showUserHistoryFromProfile() {
 
     try {
         const db = firebase.firestore();
-        const snapshot = await db.collection('users').doc(user.uid).collection('exam_results')
+        const snapshot = await docUsuario(db, user.uid).collection('exam_results')
             .orderBy('timestamp', 'desc')
             .limit(20)
             .get();
@@ -469,7 +469,7 @@ async function deleteUserHistory(uid) {
     try {
         const db = firebase.firestore();
         // Obtener todos los resultados (sin límite)
-        const snapshot = await db.collection('users').doc(uid).collection('exam_results').get();
+        const snapshot = await docUsuario(db, uid).collection('exam_results').get();
         
         if (snapshot.empty) {
             showUserHistoryFromProfile();

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
@@ -21,7 +22,7 @@ class CronogramaFormPage extends ConsumerStatefulWidget {
 }
 
 class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
-  int _ejercicio = 3;
+  int _ejercicio = Oposiciones.actual.primerConTemas;
   bool _todos = true;
   List<String> _elegidos = const [];
   bool _porFecha = false;
@@ -74,7 +75,7 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
         const TituloSeccion('Qué vuelta'),
         SegmentedButton<int>(
           showSelectedIcon: false,
-          segments: const [ButtonSegment(value: 3, label: Text('3.er ejercicio')), ButtonSegment(value: 4, label: Text('4.º ejercicio'))],
+          segments: [for (final e in Oposiciones.actual.conTemasCantados) ButtonSegment(value: e.numero, label: Text(e.abreviado))],
           selected: {_ejercicio},
           onSelectionChanged: (s) => setState(() {
             _ejercicio = s.first;
@@ -154,11 +155,9 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
             SwitchListTile(
               value: _intercalar,
               onChanged: (v) => setState(() => _intercalar = v),
-              title: Text(_ejercicio == 3 ? 'Intercalar los temas de Mixto' : 'Intercalar las dos partes'),
+              title: Text(Oposiciones.actual.ejercicio(_ejercicio)?.intercalar?.$1 ?? 'Intercalar las partes'),
               subtitle: Text(
-                _ejercicio == 3
-                    ? 'Historia, pensamiento económico, organismos internacionales y UE son más memorísticos: repartidos entre los demás para no pasar semanas solo con ellos.'
-                    : 'Economía española y sector público, alternados para no pasar semanas seguidas con una sola parte.',
+                Oposiciones.actual.ejercicio(_ejercicio)?.intercalar?.$2 ?? 'Alternadas para no pasar semanas seguidas con una sola parte.',
                 style: context.textos.labelSmall,
               ),
             ),

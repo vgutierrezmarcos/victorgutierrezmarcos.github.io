@@ -9,10 +9,10 @@ import 'package:record/record.dart';
 import 'package:vibration/vibration.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
@@ -52,7 +52,7 @@ class CantarPage extends ConsumerStatefulWidget {
 
 class _CantarPageState extends ConsumerState<CantarPage> {
   // Sorteo
-  int _ejercicio = 3;
+  int _ejercicio = Oposiciones.actual.primerConTemas;
   _Modo _modo = _Modo.oficial;
   _Fuente _fuente = _Fuente.estudiados;
   List<String> _lista = const [];
@@ -243,7 +243,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     if (_modo == _Modo.oficial && cante == null) {
       final porParte = ref.read(temasPorParteProvider);
       final partes = {for (final e in porParte.entries) if (e.key.startsWith('$_ejercicio.')) e.key: e.value};
-      resultado = Sorteo.sorteoOficial(partes, config.bolasPorParte[_ejercicio] ?? 2).values.expand((x) => x).toList();
+      resultado = Sorteo.sorteoOficial(partes, Oposiciones.actual.bolasPorParte(_ejercicio, config)).values.expand((x) => x).toList();
     } else {
       final bolsa = _bolsa(t, cante);
       final n = ref.read(ajustesProvider).temasExtraidos;
@@ -305,6 +305,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final ajustes = ref.watch(ajustesProvider);
     final estudiados = sesion == null ? ajustes.temasEstudiados : sesion.alumno.temas.toSet();
     final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final oposicion = ref.watch(oposicionProvider);
     final idCante = ref.watch(canteEnCursoProvider);
     final cante = sesion != null
         ? (ref.watch(sesionesProvider).where((c) => c.id == sesion.cante.id).firstOrNull ?? sesion.cante)
@@ -326,12 +327,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
         loading: () => const Cargando(),
         error: (e, _) => ErrorVista(error: e, reintentar: () => ref.invalidate(temarioProvider)),
         data: (t) {
-          // Primer ejercicio: dictamen de coyuntura, sin sorteo de temas.
-          final coyuntura = (cante?.ejercicio ?? _ejercicio) == 1;
+          // Dictamen (1.º de TCEE: coyuntura), sin sorteo de temas.
+          final ejercicioActual = cante?.ejercicio ?? _ejercicio;
+          final coyuntura = oposicion.esDictamen(ejercicioActual);
           final oficial = _modo == _Modo.oficial && cante == null && !coyuntura;
           final bolsa = oficial ? const <Tema>[] : _bolsa(t, cante);
           final k = ajustes.temasExtraidos;
-          final bolas = config.bolasPorParte[_ejercicio] ?? 2;
+          final bolas = oposicion.bolasPorParte(_ejercicio, config);
           final ahora = DateTime.now();
           final restante = _reloj.restanteFase(ahora);
           final enPreparacion = _reloj.preparacion > Duration.zero && _reloj.enPreparacion(ahora);
@@ -360,11 +362,11 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ]),
                 ),
               TituloSeccion(
-                coyuntura ? 'Coyuntura' : 'Sorteo',
+                coyuntura ? (oposicion.ejercicio(ejercicioActual)?.etiquetaCante ?? 'Cante') : 'Sorteo',
                 accion: cante != null
                     ? null
                     : SegmentedButton<int>(showSelectedIcon: false, 
-                        segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º'))],
+                        segments: segmentosEjercicio(),
                         selected: {_ejercicio},
                         onSelectionChanged: (s) => setState(() {
                           _ejercicio = s.first;
@@ -375,7 +377,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                       ),
               ),
               if (coyuntura)
-                Tarjeta(child: Text('Primer ejercicio: dictamen de coyuntura. No hay sorteo de temas; prepara el dictamen y cronométralo.', style: context.textos.bodySmall)),
+                Tarjeta(child: Text('${oposicion.avisoDictamen(ejercicioActual)} No hay sorteo de temas; prepáralo y cronométralo.', style: context.textos.bodySmall)),
               if (cante == null && !coyuntura)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
@@ -525,7 +527,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       appBar: BarraWeb(
         title: Text(sesion.alumno.nombre),
         subtitulo: 'Sorteo y cronómetro',
-        actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, Urls.comoCantarUnTema))],
+        actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,
     );
@@ -535,9 +537,10 @@ class _CantarPageState extends ConsumerState<CantarPage> {
   Widget _resumenProbabilidad(BuildContext context, AppConfig config, int bolas) {
     final porParte = ref.watch(temasPorParteProvider);
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
-    final partes = partesDeEjercicio(_ejercicio, porParte: porParte, estudiados: estudiados, config: config);
+    final oposicion = ref.watch(oposicionProvider);
+    final partes = partesDeEjercicio(_ejercicio, porParte: porParte, estudiados: estudiados, config: config, oposicion: oposicion);
     if (partes.isEmpty) return const SizedBox.shrink();
-    final elegir = config.partesARedactar[_ejercicio];
+    final elegir = oposicion.partesARedactar(_ejercicio, config);
     final p = Sorteo.probEjercicio(partes, elegir: elegir);
     final letras = [for (final k in porParte.keys.where((k) => k.startsWith('$_ejercicio.')).toList()..sort()) k.split('.').last];
     return Tarjeta(

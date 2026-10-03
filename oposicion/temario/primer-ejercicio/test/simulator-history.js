@@ -14,7 +14,7 @@ async function saveExamResult(resultData) {
     try {
         const db = firebase.firestore();
         // Colección: users/{uid}/exam_results
-        await db.collection('users').doc(user.uid).collection('exam_results').add({
+        await docUsuario(db, user.uid).collection('exam_results').add({
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             ...resultData
         });
@@ -74,7 +74,7 @@ async function showUserHistoryUI() {
 
     try {
         const db = firebase.firestore();
-        const snapshot = await db.collection('users').doc(user.uid).collection('exam_results')
+        const snapshot = await docUsuario(db, user.uid).collection('exam_results')
             .orderBy('timestamp', 'desc')
             .limit(20)
             .get();

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../plan/cantes_util.dart';
 import 'graficos_probabilidad.dart';
 import 'probabilidades.dart';
 import 'sorteo.dart';
@@ -33,10 +33,11 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
     final temario = ref.watch(temarioProvider);
     final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    final oposicion = ref.watch(oposicionProvider);
 
-    List<ParteSorteo> partes(int ej) => partesDeEjercicio(ej, porParte: porParte, estudiados: estudiados, config: config, sabidos: _simulados);
-    final ejercicios = [for (final ej in ejerciciosConSorteo) if (partes(ej).isNotEmpty) ej];
-    final probs = {for (final ej in ejercicios) ej: Sorteo.probEjercicio(partes(ej), elegir: config.partesARedactar[ej])};
+    List<ParteSorteo> partes(int ej) => partesDeEjercicio(ej, porParte: porParte, estudiados: estudiados, config: config, oposicion: oposicion, sabidos: _simulados);
+    final ejercicios = [for (final e in oposicion.conSorteo) if (partes(e.numero).isNotEmpty) e.numero];
+    final probs = {for (final ej in ejercicios) ej: Sorteo.probEjercicio(partes(ej), elegir: oposicion.partesARedactar(ej, config))};
     final total = ProbabilidadAprobar(porEjercicio: probs, temasSabidos: ejercicios.fold(0, (s, ej) => s + partes(ej).fold(0, (x, p) => x + p.sabidos)));
 
     return Scaffold(
@@ -57,33 +58,42 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
                 Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                   Text(porcentaje(total.total), style: context.textos.displaySmall?.copyWith(color: context.esquema.primary)),
                   const SizedBox(width: 10),
-                  Expanded(child: Padding(padding: const EdgeInsets.only(bottom: 6), child: Text('de que salga un tema que llevas en los tres ejercicios de temas', style: context.textos.bodySmall))),
+                  Expanded(child: Padding(padding: const EdgeInsets.only(bottom: 6), child: Text('de que salga un tema que llevas en ${_cuantos(ejercicios.length)}', style: context.textos.bodySmall))),
                 ]),
-                Text('${total.temasSabidos} temas · ${porcentaje(total.porTema, decimales: 2)} por tema estudiado. Supone pasar el test, la coyuntura y los idiomas.', style: context.textos.labelSmall),
+                Text('${total.temasSabidos} temas · ${porcentaje(total.porTema, decimales: 2)} por tema estudiado.${oposicion.notaProbabilidad == null ? '' : ' ${oposicion.notaProbabilidad}'}', style: context.textos.labelSmall),
               ]),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
               child: Text('Mueve los deslizadores para ver qué pasaría si te supieras más o menos temas de cada parte.', style: context.textos.bodySmall),
             ),
-            for (final ej in ejercicios) ..._ejercicio(context, ej, t, partes(ej), config),
+            for (final ej in ejercicios) ..._ejercicio(context, oposicion, ej, t, partes(ej), config),
           ],
         ),
       ),
     );
   }
 
-  List<Widget> _ejercicio(BuildContext context, int ej, Temario t, List<ParteSorteo> partes, AppConfig config) {
-    final elegir = config.partesARedactar[ej];
+  /// «los tres ejercicios de temas».
+  static String _cuantos(int n) => switch (n) {
+        1 => 'el ejercicio de temas',
+        2 => 'los dos ejercicios de temas',
+        3 => 'los tres ejercicios de temas',
+        4 => 'los cuatro ejercicios de temas',
+        _ => 'los $n ejercicios de temas',
+      };
+
+  List<Widget> _ejercicio(BuildContext context, Oposicion oposicion, int ej, Temario t, List<ParteSorteo> partes, AppConfig config) {
+    final elegir = oposicion.partesARedactar(ej, config);
     final p = Sorteo.probEjercicio(partes, elegir: elegir);
     final eficiencia = Sorteo.eficiencia(partes, elegir: elegir);
     final nombres = t.ejercicios.firstWhere((e) => e.id == ej).partes;
     final siguiente = Sorteo.siguienteParte(partes, elegir: elegir);
     final consejo = partes.length == 2 ? Sorteo.consejo(partes[0], partes[1]) : Consejo.ninguno;
-    final bolas = config.bolasPorParte[ej] ?? 2;
+    final bolas = oposicion.bolasPorParte(ej, config);
 
     return [
-      TituloSeccion(nombreEjercicio(ej)),
+      TituloSeccion(oposicion.nombreEjercicio(ej)),
       Tarjeta(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
