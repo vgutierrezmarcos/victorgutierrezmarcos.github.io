@@ -7,6 +7,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
+import '../inicio/elegir_oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
@@ -102,6 +104,14 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
+              if (Oposiciones.variasDisponibles)
+                ListTile(
+                  leading: const Icon(Icons.school_outlined),
+                  title: const Text('Oposición'),
+                  subtitle: Text(ref.read(oposicionProvider).nombre, style: context.textos.labelSmall),
+                  trailing: Text(ref.read(oposicionProvider).siglas, style: context.textos.titleMedium?.copyWith(color: context.esquema.primary)),
+                  onTap: () => _cambiarOposicion(context, ref),
+                ),
               ListTile(
                 leading: const Icon(Icons.dark_mode_outlined),
                 title: const Text('Modo'),
@@ -129,7 +139,8 @@ class MasPage extends ConsumerWidget {
           const TituloSeccion('Acerca de'),
           _fila(context, Icons.phone_android, kIsWeb ? 'La app en el móvil' : 'La app, explicada', kIsWeb ? 'Descárgala para Android: avisos, grabación y PDF sin conexión' : 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
           if (!kIsWeb) _fila(context, Icons.computer, 'En el ordenador', 'La misma app en el navegador, con tu cuenta', () => abrirUrl(context, Urls.appWeb)),
-          _fila(context, Icons.person_outline, 'Sobre mí', 'Víctor Gutiérrez Marcos · TCEE, promoción LXXIII', () => abrirUrl(context, Urls.sobreMi, enApp: true)),
+          if (ref.read(oposicionProvider).autor case (final nombre, final quien, final url?))
+            _fila(context, Icons.person_outline, 'Sobre el autor', '$nombre · $quien', () => abrirUrl(context, url, enApp: true)),
           _fila(context, Icons.privacy_tip_outlined, 'Privacidad', 'Qué datos guarda la app y cómo borrarlos', () => abrirUrl(context, Urls.politicaPrivacidad, enApp: true)),
           _fila(context, Icons.alternate_email, 'Contacto', config.email, () => abrirUrl(context, 'mailto:${config.email}')),
           FutureBuilder(
@@ -142,13 +153,37 @@ class MasPage extends ConsumerWidget {
                   child: Image.asset('assets/icon/icon.png', width: 40, height: 40, semanticLabel: 'Logo de la app'),
                 ),
                 const SizedBox(height: 8),
-                Text('${Creditos.nombreApp} · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nDesarrollada por ${Creditos.desarrolladores}\nContenido de victorgutierrezmarcos.es', textAlign: TextAlign.center, style: context.textos.labelSmall),
+                Text('${Creditos.nombreApp} · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nDesarrollada por ${Creditos.desarrolladores}\nContenido de ${ref.read(oposicionProvider).dominio}', textAlign: TextAlign.center, style: context.textos.labelSmall),
               ]),
             ),
           ),
         ],
       ),
     );
+  }
+
+  /// Elegir otra oposición. Los datos de cada una se quedan guardados.
+  Future<void> _cambiarOposicion(BuildContext context, WidgetRef ref) async {
+    final actual = ref.read(oposicionProvider);
+    final nueva = await showDialog<Oposicion>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('¿A qué te presentas?'),
+        content: SingleChildScrollView(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            for (final o in Oposiciones.todas)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: TarjetaOposicion(oposicion: o, elegida: o.id == actual.id, onTap: () => Navigator.pop(d, o)),
+              ),
+            Text('Cada una tiene su temario, sus cantes, sus tests y sus preparadores. Lo que lleves en ${actual.siglas} se queda guardado y vuelve si cambias otra vez.', style: Theme.of(d).textTheme.bodySmall),
+          ]),
+        ),
+        actions: [TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar'))],
+      ),
+    );
+    if (nueva == null || nueva.id == actual.id) return;
+    await ref.read(cambiarOposicionProvider)(nueva);
   }
 
   Widget _fila(BuildContext context, IconData icono, String titulo, String sub, VoidCallback onTap) => Padding(
