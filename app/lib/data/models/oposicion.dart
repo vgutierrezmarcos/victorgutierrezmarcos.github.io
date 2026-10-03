@@ -30,7 +30,8 @@ class EjercicioDef {
     this.etiquetaCante,
     this.categoriaIntercalable,
     this.intercalar,
-  });
+    bool? enCronograma,
+  }) : _enCronograma = enCronograma;
 
   final int numero;
 
@@ -61,6 +62,12 @@ class EjercicioDef {
   /// (los más memorísticos; en el 3.º de TCEE, «Mixto»). Sin ella, se alternan
   /// las partes.
   final String? categoriaIntercalable;
+
+  final bool? _enCronograma;
+
+  /// Se estudia tema a tema con un cronograma de vueltas. Por defecto, los de
+  /// temas cantados; los escritos de DCE, también.
+  bool get enCronograma => _enCronograma ?? cante == TipoCante.temas;
 
   /// Título y explicación de la opción de intercalar en el cronograma.
   final (String, String)? intercalar;
@@ -108,6 +115,7 @@ class Oposicion {
     this.rutaTest = 'temario/primer-ejercicio/test',
     this.notaProbabilidad,
     this.testDe,
+    this.autor,
   });
 
   /// Identificador estable ('tcee', 'dce'): va en Firestore y en Hive.
@@ -137,6 +145,12 @@ class Oposicion {
   /// practicar de forma voluntaria (DCE usa el de TCEE). null = el suyo.
   final String? testDe;
 
+  /// Quién publica su contenido: (nombre, presentación, página «Sobre mí»).
+  final (String, String, String?)? autor;
+
+  /// Dominio de su web, para el pie de Más («victorgutierrezmarcos.es»).
+  String get dominio => Uri.parse(web).host.replaceFirst('www.', '');
+
   /// El test no es parte de su examen: se ofrece como práctica voluntaria.
   bool get testVoluntario => testDe != null;
 
@@ -159,6 +173,9 @@ class Oposicion {
 
   /// Ejercicios en los que se cantan temas del temario.
   List<EjercicioDef> get conTemasCantados => ejercicios.where((e) => e.cante == TipoCante.temas).toList();
+
+  /// Ejercicios que se estudian con cronograma.
+  List<EjercicioDef> get conCronograma => ejercicios.where((e) => e.enCronograma).toList();
 
   /// Ejercicios con sorteo de temas (probabilidades).
   List<EjercicioDef> get conSorteo => ejercicios.where((e) => e.sorteo).toList();
@@ -240,6 +257,7 @@ class Oposiciones {
     web: 'https://www.victorgutierrezmarcos.es',
     mismoOrigenEnNavegador: true,
     notaProbabilidad: 'Supone pasar el test, la coyuntura y los idiomas.',
+    autor: ('Víctor Gutiérrez Marcos', 'TCEE, promoción LXXIII', 'https://www.victorgutierrezmarcos.es/sobre-mi.html'),
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Test y dictamen de coyuntura', cante: TipoCante.dictamen, queSeCanta: 'dictamen de coyuntura', etiquetaCante: 'Coyuntura'),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
@@ -264,8 +282,38 @@ class Oposiciones {
     ],
   );
 
+  /// Diplomado Comercial del Estado. Examen según la convocatoria de la OEP
+  /// 2025 (BOE-A-2025-26896, de 22 de diciembre de 2025):
+  ///  1.º escrito: dos temas, uno de cada par extraído de cada parte
+  ///      (Economía española, 18 temas; Economía pública, políticas
+  ///      comunitarias e instituciones multilaterales, 18).
+  ///  2.º idiomas (inglés y otro obligatorios; voluntarios aparte).
+  ///  3.º oral: dos temas, uno de cada par extraído de cada parte
+  ///      (Microeconomía y economía del sector público, 22; Macroeconomía y
+  ///      economía internacional, 22); 30 min de preparación y 40 de exposición.
+  ///  4.º escrito: dos temas, uno de cada par extraído de cada parte (Técnicas
+  ///      comerciales y marketing internacional, 10; Organización del Estado,
+  ///      9), y ocho preguntas prácticas.
+  /// No tiene test: se puede practicar, voluntario, con el de TCEE.
+  static const dce = Oposicion(
+    id: 'dce',
+    siglas: 'DCE',
+    nombre: 'Diplomado Comercial del Estado',
+    // TODO(lanzamiento): la web de Manuel Cabado García (sin barra final).
+    web: 'https://www.ejemplo-dce.es',
+    testDe: 'tcee',
+    notaProbabilidad: 'Supone pasar los idiomas y las preguntas prácticas del 4.º.',
+    autor: ('Manuel Cabado García', 'DCE', null),
+    ejercicios: [
+      EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
+      EjercicioDef(numero: 2, descripcion: 'Idiomas'),
+      EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2),
+      EjercicioDef(numero: 4, descripcion: 'Técnicas comerciales y organización del Estado (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
+    ],
+  );
+
   /// Las que se pueden elegir. La primera es la de por defecto.
-  static const todas = [tcee];
+  static const todas = [tcee, dce];
 
   /// La que prepara el usuario. La fija main() al arrancar y no cambia con la
   /// app abierta (al cambiarla se vuelven a crear los servicios), así que las

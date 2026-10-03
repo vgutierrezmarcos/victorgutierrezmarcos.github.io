@@ -21,9 +21,9 @@ class Urls {
 class Creditos {
   Creditos._();
 
-  static const String nombreApp = 'Oposición TCEE';
+  static const String nombreApp = 'Oposición TCEE · DCE';
 
-  static const String desarrolladores = 'Víctor Gutiérrez Marcos';
+  static const String desarrolladores = 'Víctor Gutiérrez Marcos y Manuel Cabado García';
 }
 
 /// Valores por defecto del simulador (idénticos a simulador.html).
