@@ -92,6 +92,13 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                 subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}',
                 onTap: () => context.go('/temario/probabilidades'),
               ),
+              FilaEnlace(
+                icono: Icons.event_note_outlined,
+                titulo: 'Cronograma',
+                subtitulo: 'Planifica una vuelta: qué temas cada semana',
+                final_: const Etiqueta('EN PRUEBA'),
+                onTap: () => context.go('/temario/cronograma'),
+              ),
               for (final ej in t.ejercicios) ...[
                 TituloSeccion(ej.nombre),
                 Padding(

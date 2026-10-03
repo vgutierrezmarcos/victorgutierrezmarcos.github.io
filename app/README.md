@@ -9,7 +9,7 @@ Cinco bloques, uno por cada cosa que se hace con la app. La página pública que
 | Bloque | Funciones |
 |---|---|
 | **Hoy** | Lo que toca: cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Avisa cuando hay una versión nueva. A un preparador le recuerda las sesiones del día con sus alumnos. |
-| **Temario** | Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. Recursos de organización. |
+| **Temario** | Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. **Cronograma** (en prueba) de una vuelta. Recursos de organización. |
 | **Cantes** | Tres subpestañas. **Agenda**: cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; repetición semanal; exportación a Google Calendar o a un `.ics`. **Cantar**: sorteo como en el examen (2 temas de cada parte del 3.º y del 4.º) o de una bolsa propia, y cronómetro para el dictamen de coyuntura del 1.º (el 5.º no se canta) (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos; cronómetro de preparación y exposición con avisos también en segundo plano, y grabación de audio. **Diario**: cómo fue cada cante, estadísticas por tema y temas flojos. Los cantes duran 30 minutos por defecto. |
 | **Test** | Simulador con los mismos filtros y baremo que la web (temas, bloques, exámenes, nº de preguntas, tiempo, 1 / -0,33 / 0). Rejilla de navegación, imágenes, marcar preguntas. Resultados con puntuación por bloque y revisión. Estadísticas e historial unificado con la web. |
 | **Más** | Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios) y horario de estudio semanal. **Preparadores** (ver más abajo). Cuenta (Google), recordatorio diario (desactivado por defecto), tema claro/oscuro, descargas, enlaces útiles y exportar/borrar datos. |
@@ -59,6 +59,20 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - `progress/preparador`, `alumnos/{id}` y `sesiones/{id}`: perfil de preparador (código), sus alumnos y sus sesiones de cante.
 - `preparadores/{uidPreparador}`: preparadores a los que el usuario da acceso.
 - `notes/{tema}`: nota libre (`texto`) y agenda del tema (`pendientes`, `vueltas`).
+
+## Cronograma (en prueba)
+
+`data/models/cronograma.dart`, `features/cronograma/` (`planificador.dart` es la lógica pura, probada en `test/cronograma_test.dart`) y `core/cronograma_providers.dart`. Una vuelta al 3.º o al 4.º, con todos los temas o una selección, a N temas por semana o hasta una fecha (una sale de la otra), con semanas de descanso. Solo hay uno activo; al empezar otro, el anterior se archiva.
+
+- **Orden sugerido** (`ordenSugerido`): los bloques del PowerPoint en su orden, eligiendo como siguiente el más conectado con lo ya puesto, y dentro de cada bloque un recorrido por las conexiones entre sus temas. El opositor lo reordena a mano (`ReordenarTemasPage`). No se reintroduce un reparto genérico: el anterior se retiró por ignorar bloques y conexiones.
+- **Intercalado** (activado por defecto): en el 3.º, los temas de Mixto (historia, pensamiento, organismos internacionales y UE, más memorísticos) se reparten entre los demás en proporción a su peso (≈1 de cada 4) o «1 de cada N»; en el 4.º, se alternan las dos partes.
+- **Hecho = estudiado + vuelta**: marcar un tema lo da por estudiado y anota una vuelta en su agenda; una vuelta anotada desde el tema también cuenta. Desmarcar no borra la vuelta (`desmarcados`).
+- **Retraso**: lo de semanas pasadas sin hacer. `replanificarCronograma` reparte lo pendiente desde esta semana manteniendo la fecha de fin (sube el ritmo) o el ritmo (se retrasa el fin). En Hoy, la tarjeta «Esta semana te toca».
+- **Preparador**: el opositor puede compartirlo (desactivado por defecto). El preparador enlazado lo ve en la ficha del alumno y puede proponer otro ritmo, fecha u orden con una nota (`propuesta`), que el alumno acepta o rechaza. Firestore: `users/{uid}/cronogramas/{id}`; el preparador solo lee si `compartir == true` y solo escribe `propuesta` firmada por él.
+
+## LinkedIn y directorio de preparadores
+
+Los preparadores pueden poner su perfil de LinkedIn (ajustes de preparador y solicitud de verificación; `enlaceLinkedin` lo deja en la forma `https://www.linkedin.com/in/…`, y las reglas solo aceptan esa forma). Sale en el directorio de preparadores verificados (`features/preparador/directorio_page.dart`, Más → Preparadores), filtrable por ejercicio, en la lista al pedir una sustitución y en las solicitudes de verificación.
 
 ## Red de preparadores
 

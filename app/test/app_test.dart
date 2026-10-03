@@ -142,6 +142,28 @@ void main() {
     expect(Theme.of(ctx()).brightness, Brightness.light);
   });
 
+  testWidgets('cronograma: se crea con el asistente, sale en Hoy y marcar un tema cuenta como vuelta', (tester) async {
+    await arrancar(tester);
+    await pestana(tester, 'Temario');
+    await tocar(tester, find.text('Cronograma'));
+    expect(find.textContaining('En prueba'), findsWidgets);
+    await tocar(tester, find.text('Crear un cronograma'));
+    expect(find.text('Intercalar los temas de Mixto'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Crear el cronograma'), 300, scrollable: find.byType(Scrollable).first);
+    await tocar(tester, find.text('Crear el cronograma'));
+    expect(find.text('Vuelta al 3.er ejercicio'), findsOneWidget);
+    final c = plan.cronogramaActivo()!;
+    expect(c.temas.length, 90);
+    expect(c.temasPorSemana, 3);
+    await pestana(tester, 'Hoy');
+    expect(find.text('Esta semana te toca'), findsOneWidget);
+    final primero = c.semanas.first.temas.first;
+    await tocar(tester, find.byType(Checkbox));
+    expect(plan.cronogramaActivo()!.hechos.containsKey(primero), isTrue);
+    expect(usuario.ajustes().temasEstudiados, contains(primero));
+    expect(plan.agenda(primero).vueltas, hasLength(1));
+  });
+
   testWidgets('recorre los cinco bloques', (tester) async {
     await arrancar(tester);
     await pestana(tester, 'Hoy');

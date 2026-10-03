@@ -10,6 +10,7 @@ import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../cronograma/propuesta_page.dart';
 import 'preparador_page.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
@@ -155,6 +156,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
+            CronogramaDelAlumno(alumno: a),
             TituloSeccion('Clases fijas', accion: TextButton.icon(onPressed: () => _nuevaClaseFija(a), icon: const Icon(Icons.add, size: 18), label: const Text('Clase fija'))),
             if (a.clasesFijas.isEmpty)
               Padding(

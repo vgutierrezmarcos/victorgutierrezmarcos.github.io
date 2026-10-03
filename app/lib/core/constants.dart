@@ -57,4 +57,5 @@ class Cajas {
   static const String alumnos = 'alumnos';
   static const String sesiones = 'sesiones';
   static const String preparador = 'preparador';
+  static const String cronogramas = 'cronogramas';
 }

@@ -24,6 +24,8 @@ import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
+import 'package:tcee_app/features/cronograma/cronograma_form_page.dart';
+import 'package:tcee_app/features/cronograma/planificador.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/semana_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
@@ -77,7 +79,7 @@ void main() {
     final bloques = Bloques.fromJson(_json('../oposicion/temario/primer-ejercicio/test/bloques.json'));
 
     final usuario = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja());
-    final plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja());
+    final plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), cronogramas: await caja());
     final preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja());
 
     // ------------------------------------------------- Datos de demostración
@@ -125,6 +127,14 @@ void main() {
     ]);
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Añadir la teoría del valor-trabajo de Ricardo').anadir('Repasar la ley de Say'));
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.4').anadir('Distinguir la Teoría General de la síntesis IS-LM de Hicks').anadir('Añadir la preferencia por la liquidez'));
+    // Cronograma de ejemplo (en prueba): empezó hace dos semanas y va un tema por detrás.
+    final ordenVuelta = ordenInicial(estructura, 3, {for (final t in temario.todosLosTemas.where((t) => t.ejercicio == 3)) t.codigo});
+    final crono = crearCronograma(id: 'crono', ejercicio: 3, temas: ordenVuelta, inicio: hoy.subtract(const Duration(days: 14)), porSemana: 3);
+    await plan.empezarCronograma(crono.copyWith(hechos: {
+      for (final t in crono.semanas[0].temas) t: hoy.subtract(const Duration(days: 12)),
+      for (final t in crono.semanas[1].temas.take(2)) t: hoy.subtract(const Duration(days: 5)),
+      crono.semanas[2].temas.first: hoy,
+    }));
     for (final (i, nota) in [6.8, 7.4, 5.9, 8.1, 7.7, 8.4].indexed) {
       await usuario.guardarResultado(ResultadoTest(
         id: 'r$i',
@@ -276,6 +286,19 @@ void main() {
     await tocar(find.text('3D'));
     await bajar(430);
     await captura('probabilidades-3d');
+    await pestana('Temario');
+    await tocar(find.text('Cronograma'));
+    await captura('cronograma');
+    await bajar(700);
+    await captura('cronograma-semanas');
+    await atras();
+    await tocar(find.text('Cronograma'));
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const CronogramaFormPage()));
+    await tester.pumpAndSettle();
+    await captura('cronograma-nuevo');
+    Navigator.of(tester.element(find.byType(CronogramaFormPage))).pop();
+    await tester.pumpAndSettle();
+    await atras();
 
     // --------------------------------------------------------------- Cantes
     await subpestana('Agenda');

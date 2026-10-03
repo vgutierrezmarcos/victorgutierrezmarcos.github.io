@@ -12,6 +12,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import '../../widgets/selector_temas.dart';
+import 'directorio_page.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
 
@@ -239,6 +240,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
                     onChanged: (x) => setState(() => x == true ? _elegidos.add(v.uid) : _elegidos.remove(v.uid)),
                     title: Text(v.nombre),
                     subtitle: Text(v.descripcionEjercicios, style: context.textos.labelSmall),
+                    secondary: v.linkedin.isEmpty ? null : BotonLinkedin(url: v.linkedin, compacto: true),
                   ),
             ]),
           ),

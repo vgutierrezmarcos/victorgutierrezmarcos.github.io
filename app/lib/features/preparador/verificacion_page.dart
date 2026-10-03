@@ -7,6 +7,7 @@ import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import 'directorio_page.dart';
 import 'red_widgets.dart';
 
 /// Formulario para pedir la verificación como preparador.
@@ -14,6 +15,7 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
   final usuario = ref.read(usuarioActualProvider);
   final nombre = TextEditingController(text: ref.read(perfilPreparadorProvider).nombre.isNotEmpty ? ref.read(perfilPreparadorProvider).nombre : (usuario?.displayName ?? ''));
   final presentacion = TextEditingController();
+  final linkedin = TextEditingController(text: ref.read(perfilPreparadorProvider).linkedin);
   final ejercicios = <int>{3, 4};
   // A quién se la pide: null = al administrador y a cualquier verificado.
   PreparadorVerificado? destinatario;
@@ -63,12 +65,24 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
               decoration: const InputDecoration(labelText: 'Quién eres', hintText: 'Promoción y cuerpo, destino, desde cuándo preparas, quién te conoce…'),
               onChanged: (_) => set(() {}),
             ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: linkedin,
+              keyboardType: TextInputType.url,
+              decoration: InputDecoration(
+                labelText: 'LinkedIn (opcional)',
+                hintText: 'linkedin.com/in/tu-perfil',
+                helperText: 'Ayuda a quien te verifica y saldrá en el directorio de preparadores',
+                errorText: linkedin.text.trim().isEmpty || enlaceLinkedin(linkedin.text) != null ? null : 'Pega el enlace a tu perfil (linkedin.com/in/…)',
+              ),
+              onChanged: (_) => set(() {}),
+            ),
           ]),
         ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(
-            onPressed: nombre.text.trim().isEmpty || presentacion.text.trim().length < 10 || ejercicios.isEmpty ? null : () => Navigator.pop(d, true),
+            onPressed: nombre.text.trim().isEmpty || presentacion.text.trim().length < 10 || ejercicios.isEmpty || (linkedin.text.trim().isNotEmpty && enlaceLinkedin(linkedin.text) == null) ? null : () => Navigator.pop(d, true),
             child: const Text('Enviar'),
           ),
         ],
@@ -82,6 +96,7 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
       nombre: nombre.text,
       ejercicios: ejercicios.toList()..sort(),
       presentacion: presentacion.text,
+      linkedin: linkedin.text,
       destinatario: destinatario?.uid,
       destinatarioNombre: destinatario?.nombre ?? '',
     );
@@ -148,6 +163,7 @@ class VerificarPreparadoresPage extends ConsumerWidget {
                             ),
                           const SizedBox(height: 8),
                           Text(s.presentacion, style: context.textos.bodyMedium),
+                          if (s.linkedin.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: BotonLinkedin(url: s.linkedin)),
                           const SizedBox(height: 10),
                           Row(children: [
                             FilledButton(onPressed: () => resolver(s, true), child: const Text('Verificar')),

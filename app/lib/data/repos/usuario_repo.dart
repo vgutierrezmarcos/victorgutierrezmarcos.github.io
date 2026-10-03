@@ -361,7 +361,7 @@ class UsuarioRepo {
   }
 
   /// Subcolecciones de users/{uid} (ver firestore.rules).
-  static const coleccionesUsuario = ['exam_results', 'progress', 'notes', 'cantes', 'alumnos', 'sesiones', 'preparadores'];
+  static const coleccionesUsuario = ['exam_results', 'progress', 'notes', 'cantes', 'alumnos', 'sesiones', 'preparadores', 'cronogramas'];
 
   /// Borra todo lo que el usuario tiene en la nube (users/{uid}/…). Los enlaces
   /// con preparadores y alumnos se rompen antes en [PreparadorRepo].
