@@ -29,7 +29,7 @@ class CantePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = ref.watch(cantesProvider).where((x) => x.id == id).firstOrNull;
     if (c == null) return Scaffold(appBar: BarraWeb(title: const Text('Cante')), body: const Center(child: Text('Este cante ya no existe.')));
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final ajustes = ref.watch(ajustesProvider);
     final agendas = ref.watch(agendasProvider);
     final temas = temario == null ? const <Tema>[] : temasDeCante(c, temario, ajustes);

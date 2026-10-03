@@ -21,7 +21,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final perfil = ref.watch(perfilPreparadorProvider);
     final notifier = ref.read(perfilPreparadorProvider.notifier);
-    final verificado = ref.watch(estadoRedProvider).value?.verificado ?? false;
+    final verificado = ref.watch(estadoRedProvider).valueOrNull?.verificado ?? false;
     final huecos = [...perfil.huecos]..sort((a, b) => a.diaSemana != b.diaSemana ? a.diaSemana.compareTo(b.diaSemana) : a.minutoDelDia.compareTo(b.minutoDelDia));
 
     Future<void> editarNombre() async {

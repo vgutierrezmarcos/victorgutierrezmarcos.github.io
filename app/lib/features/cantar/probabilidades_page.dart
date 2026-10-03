@@ -31,7 +31,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
   Widget build(BuildContext context) {
     final porParte = ref.watch(temasPorParteProvider);
     final temario = ref.watch(temarioProvider);
-    final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
     final oposicion = ref.watch(oposicionProvider);
 

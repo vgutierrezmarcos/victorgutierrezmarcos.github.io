@@ -30,7 +30,7 @@ List<ParteSorteo> partesDeEjercicio(
 final probabilidadAprobarProvider = Provider<ProbabilidadAprobar?>((ref) {
   final porParte = ref.watch(temasPorParteProvider);
   if (porParte.isEmpty) return null;
-  final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+  final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
   final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
   final oposicion = ref.watch(oposicionProvider);
   final porEjercicio = <int, double>{};

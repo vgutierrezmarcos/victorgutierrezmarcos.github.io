@@ -191,9 +191,9 @@ class AdminRedPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final estado = ref.watch(estadoRedProvider).value ?? const EstadoRed();
+    final estado = ref.watch(estadoRedProvider).valueOrNull ?? const EstadoRed();
     final todos = ref.watch(verificadosConRetiradosProvider);
-    final pendientes = ref.watch(solicitudesPendientesProvider).value ?? const [];
+    final pendientes = ref.watch(solicitudesPendientesProvider).valueOrNull ?? const [];
     final red = ref.read(redRepoProvider);
 
     Future<void> retirar(PreparadorVerificado v, List<PreparadorVerificado> lista) async {

@@ -40,7 +40,7 @@ class SesionPage extends ConsumerWidget {
     if (s == null) return Scaffold(appBar: BarraWeb(title: const Text('Sesión')), body: const Center(child: Text('Esta sesión ya no existe.')));
     final alumnos = ref.watch(alumnosProvider);
     final alumno = alumnos.where((a) => a.id == s.alumno).firstOrNull;
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario);
     final r = s.resultado;
     final notifier = ref.read(sesionesProvider.notifier);
@@ -189,7 +189,7 @@ class SesionPage extends ConsumerWidget {
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                if (r.temaCantado != null) TextoTema(r.temaCantado!, temario?.tema(r.temaCantado!)?.titulo ?? '', color: ref.watch(estructuraProvider).value?.colorDe(r.temaCantado!)),
+                if (r.temaCantado != null) TextoTema(r.temaCantado!, temario?.tema(r.temaCantado!)?.titulo ?? '', color: ref.watch(estructuraProvider).valueOrNull?.colorDe(r.temaCantado!)),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

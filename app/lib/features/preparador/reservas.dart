@@ -79,7 +79,7 @@ class ReservarPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final huecos = ref.watch(huecosDeProvider(preparador.uid));
-    final mias = (ref.watch(misReservasProvider).value ?? const <Reserva>[]).where((r) => r.preparador == preparador.uid).toList();
+    final mias = (ref.watch(misReservasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.preparador == preparador.uid).toList();
     final pedidas = mias.where((r) => r.pedida || r.estado == EstadoReserva.aceptada).map((r) => r.fecha);
     final nombre = preparador.nombre.isEmpty ? 'tu preparador' : preparador.nombre;
 

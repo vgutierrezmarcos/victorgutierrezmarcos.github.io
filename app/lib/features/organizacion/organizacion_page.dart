@@ -29,7 +29,7 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
   @override
   Widget build(BuildContext context) {
     final estructura = ref.watch(estructuraProvider);
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
 
     return Scaffold(

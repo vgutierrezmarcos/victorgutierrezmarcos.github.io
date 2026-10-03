@@ -47,8 +47,8 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     final vinculos = ref.watch(misPreparadoresProvider);
     if (temario == null || estructura == null) return Scaffold(appBar: BarraWeb(title: const Text('Nuevo cronograma')), body: const Cargando());
 

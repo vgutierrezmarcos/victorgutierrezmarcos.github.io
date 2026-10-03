@@ -23,10 +23,10 @@ class MasPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
     final ajustes = ref.watch(ajustesProvider);
     final usuario = ref.watch(usuarioActualProvider);
-    final enlaces = ref.watch(enlacesProvider).value ?? [];
+    final enlaces = ref.watch(enlacesProvider).valueOrNull ?? [];
     final hora = ajustes.horaRecordatorio;
     final plan = ref.watch(planProvider);
     final proximaFecha = (ref.watch(fechasEjerciciosProvider).entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value))).firstOrNull;
@@ -105,7 +105,7 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
-              if ((ref.watch(oposicionesVisiblesProvider).value ?? Oposiciones.disponibles).length > 1)
+              if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)
                 ListTile(
                   leading: const Icon(Icons.school_outlined),
                   title: const Text('Oposición'),
@@ -166,7 +166,7 @@ class MasPage extends ConsumerWidget {
   /// Elegir otra oposición. Los datos de cada una se quedan guardados.
   Future<void> _cambiarOposicion(BuildContext context, WidgetRef ref) async {
     final actual = ref.read(oposicionProvider);
-    final visibles = ref.read(oposicionesVisiblesProvider).value ?? Oposiciones.disponibles;
+    final visibles = ref.read(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles;
     final nueva = await showDialog<Oposicion>(
       context: context,
       builder: (d) => AlertDialog(

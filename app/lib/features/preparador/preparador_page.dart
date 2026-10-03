@@ -105,10 +105,10 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     final ahora = DateTime.now();
     final red = ref.watch(estadoRedProvider);
     final estado = red.value ?? const EstadoRed();
-    final tablon = ref.watch(tablonProvider).value ?? const <Sustitucion>[];
-    final solicitudes = ref.watch(solicitudesPendientesProvider).value ?? const <SolicitudPreparador>[];
-    final reservasPedidas = (ref.watch(reservasRecibidasProvider).value ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).toList();
-    final misPeticiones = (ref.watch(misPeticionesProvider).value ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
+    final tablon = ref.watch(tablonProvider).valueOrNull ?? const <Sustitucion>[];
+    final solicitudes = ref.watch(solicitudesPendientesProvider).valueOrNull ?? const <SolicitudPreparador>[];
+    final reservasPedidas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).toList();
+    final misPeticiones = (ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
     final lunes = DateTime(ahora.year, ahora.month, ahora.day - (ahora.weekday - 1));
     final estaSemana = sesiones.where((s) => !s.cancelado && !s.fecha.isBefore(lunes) && s.fecha.isBefore(lunes.add(const Duration(days: 7)))).length;
     void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
