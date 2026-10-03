@@ -49,12 +49,13 @@ def sans(tam, peso='Regular'):
 
 # Cada escena: (inicio, fin, rótulo, título, texto, capturas)
 ESCENAS = [
-    (5, 12, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
-    (12, 21, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
-    (21, 31, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
-    (31, 38, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
-    (38, 45, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades', 'probabilidades-3d']),
-    (45, 54, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y sustituciones entre preparadores verificados.', ['preparador', 'semana', 'sustituciones']),
+    (5, 10, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
+    (10, 16, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
+    (16, 23, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
+    (23, 28, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
+    (28, 32, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades']),
+    (32, 45, '¿TE CANCELAN LA CLASE?', 'Otro preparador\nte la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'buscar-preparador', 'peticion-cogida']),
+    (45, 54, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y el tablón de sustituciones.', ['preparador', 'semana', 'sustituciones']),
 ]
 INICIO_CIERRE = 54
 FUNDIDO = 0.45  # segundos de fundido entre escenas
@@ -233,7 +234,7 @@ def cierre(lienzo, t):
     icono = Image.open(ICONO).convert('RGBA').resize((170, 170), Image.LANCZOS)
     capa.paste(icono, ((ANCHO - 170) // 2, 0), icono)
     c.text((ANCHO // 2, 270), 'Oposición TCEE', font=serif(104), fill=BLANCO, anchor='mm')
-    c.text((ANCHO // 2, 380), 'Gratis · Sin anuncios · Para Android', font=sans(46, 'Medium'), fill=(240, 232, 248), anchor='mm')
+    c.text((ANCHO // 2, 380), 'Gratis · Sin anuncios · Android y navegador', font=sans(46, 'Medium'), fill=(240, 232, 248), anchor='mm')
     c.rectangle((ANCHO // 2 - 150, 440, ANCHO // 2 + 150, 445), fill=DORADO_CLARO)
     b = suave((t - 0.9) / 0.8)
     if b > 0:

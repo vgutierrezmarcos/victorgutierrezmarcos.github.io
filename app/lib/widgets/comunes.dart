@@ -560,9 +560,9 @@ class BotonTema extends ConsumerWidget {
   }
 }
 
-/// Foto de la cuenta de Google del usuario (o un icono si no hay sesión o no
-/// tiene foto). En el navegador la imagen se pinta como <img>: Google no deja
-/// leerla desde el lienzo de Flutter y, de otro modo, no se vería.
+/// Foto de la cuenta de Google del usuario; si no tiene, su inicial (como hace
+/// Google), y sin sesión, un icono. En el navegador, si alguna vez no se pudiera
+/// leer la imagen desde el lienzo de Flutter, se pinta como <img>.
 class AvatarUsuario extends ConsumerWidget {
   const AvatarUsuario({super.key, this.radio = 20});
   final double radio;
@@ -580,11 +580,14 @@ class AvatarUsuario extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioActualProvider);
     final url = fotoDe(usuario);
+    final nombre = (usuario?.displayName ?? '').trim().isNotEmpty ? usuario!.displayName!.trim() : (usuario?.email ?? '');
     final icono = CircleAvatar(
       radius: radio,
-      backgroundColor: context.colores.primarioPalido,
-      foregroundColor: context.esquema.primary,
-      child: Icon(usuario == null ? Icons.person_outline : Icons.account_circle, size: radio * 1.2),
+      backgroundColor: usuario == null ? context.colores.primarioPalido : context.relleno,
+      foregroundColor: usuario == null ? context.esquema.primary : Colors.white,
+      child: usuario == null || nombre.isEmpty
+          ? Icon(Icons.person_outline, size: radio * 1.2)
+          : Text(nombre.characters.first.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700, fontSize: radio * 1.05, color: Colors.white)),
     );
     if (url == null) return icono;
     return ClipOval(
@@ -593,7 +596,7 @@ class AvatarUsuario extends ConsumerWidget {
         width: radio * 2,
         height: radio * 2,
         fit: BoxFit.cover,
-        webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
+        webHtmlElementStrategy: WebHtmlElementStrategy.fallback,
         errorBuilder: (context, error, pila) => icono,
       ),
     );

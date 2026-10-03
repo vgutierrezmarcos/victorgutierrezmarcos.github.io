@@ -103,7 +103,7 @@ Publicar una versión nueva (cada vez que cambie `lib/` o `web/`):
 python3 scripts/publicar-app-web.py   # desde la raíz: compila y copia a app/abrir/ (~9 MB)
 ```
 
-y subir `app/abrir/`. El motor gráfico (canvaskit) no se copia: lo sirve www.gstatic.com.
+y subir `app/abrir/`. El motor gráfico (canvaskit) no se copia: lo sirve www.gstatic.com. El script renombra `main.dart.js` con una huella de su contenido (`main.<huella>.dart.js`) y la añade a `flutter_bootstrap.js?v=` en `index.html`: GitHub Pages deja guardar los ficheros 10 minutos y, con el nombre fijo, el navegador podía seguir con la versión anterior.
 
 ## Diseño
 
