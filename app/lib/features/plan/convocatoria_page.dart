@@ -18,7 +18,7 @@ class ConvocatoriaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final config = ref.watch(configProvider).value ?? AppConfig.porDefecto;
+    final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
     final plan = ref.watch(planProvider);
     final fechas = ref.watch(fechasEjerciciosProvider);
     final notifier = ref.read(planProvider.notifier);

@@ -22,7 +22,7 @@ class InicioPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ajustes = ref.watch(ajustesProvider);
-    final config = ref.watch(configProvider).value;
+    final config = ref.watch(configProvider).valueOrNull;
     final usuario = ref.watch(usuarioActualProvider);
     final diarioHecho = ref.watch(testDiarioHechoProvider);
     final banco = ref.watch(preguntasProvider);
@@ -35,7 +35,7 @@ class InicioPage extends ConsumerWidget {
     final racha = ajustes.rachaVigente();
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
-    final versionNueva = ref.watch(actualizacionProvider).value;
+    final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
     // Preparador: sus sesiones de hoy con alumnos.
     final hoy = DateTime.now();
     final sesionesHoy = ref.watch(perfilPreparadorProvider).activo
@@ -66,6 +66,28 @@ class InicioPage extends ConsumerWidget {
         child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
+            // Sin temario (sin red la primera vez, o una oposición cuya web aún no
+            // publica el contenido): se dice, en lugar de dejar la pantalla vacía.
+            if (ref.watch(temarioProvider).hasError && ref.watch(temarioProvider).valueOrNull == null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Tarjeta(
+                  color: context.colores.primarioPalido,
+                  child: Row(children: [
+                    Icon(Icons.cloud_off_outlined, color: context.esquema.primary, size: 30),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        Oposiciones.actual.lanzada
+                            ? 'No se ha podido descargar el temario de ${Oposiciones.actual.siglas}. Comprueba la conexión y vuelve a intentarlo.'
+                            : 'El contenido de ${Oposiciones.actual.siglas} aún no está publicado: la oposición está sin lanzar. Puedes volver a TCEE en Más → Ajustes → Oposición.',
+                        style: context.textos.bodySmall,
+                      ),
+                    ),
+                    TextButton(onPressed: () => ref.invalidate(temarioProvider), child: const Text('Reintentar')),
+                  ]),
+                ),
+              ),
             if (versionNueva != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),

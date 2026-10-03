@@ -123,9 +123,9 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final temas = _temas(temario);
-    final verificados = (ref.watch(verificadosProvider).value ?? const <PreparadorVerificado>[]).where((v) => v.uid != ref.read(redRepoProvider).uid).toList();
+    final verificados = (ref.watch(verificadosProvider).valueOrNull ?? const <PreparadorVerificado>[]).where((v) => v.uid != ref.read(redRepoProvider).uid).toList();
     final ordenados = [...verificados]..sort((a, b) => (b.ejercicios.contains(_ejercicio) ? 1 : 0) - (a.ejercicios.contains(_ejercicio) ? 1 : 0));
 
     return Scaffold(
@@ -235,7 +235,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
             Text('Ninguno: toca «Elegir» para marcar los temas que llevas para este cante.', style: context.textos.bodySmall)
           else
             Wrap(spacing: 4, runSpacing: 4, children: [
-              for (final c in temas) CasillaCodigo(codigo: c, color: ref.watch(estructuraProvider).value?.colorDe(c), titulo: temario?.tema(c)?.titulo),
+              for (final c in temas) CasillaCodigo(codigo: c, color: ref.watch(estructuraProvider).valueOrNull?.colorDe(c), titulo: temario?.tema(c)?.titulo),
             ]),
           if (_elegidosTemas == null && temas.isNotEmpty && _ejercicio != 1)
             Padding(
@@ -400,9 +400,9 @@ class TablonPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tablon = ref.watch(tablonProvider);
-    final cogidas = (ref.watch(cogidasPorMiProvider).value ?? const <Sustitucion>[]).where((s) => s.vigente()).toList();
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final cogidas = (ref.watch(cogidasPorMiProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente()).toList();
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     final sesiones = ref.watch(sesionesProvider);
 
     return Scaffold(

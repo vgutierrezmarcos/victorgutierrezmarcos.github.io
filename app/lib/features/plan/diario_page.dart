@@ -16,7 +16,7 @@ class DiarioVista extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final diario = ref.watch(diarioProvider);
     final stats = ref.watch(estadisticasCantesProvider);
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final valorados = diario.where((c) => (c.resultado?.valoracion ?? 0) > 0).toList();
     final media = valorados.isEmpty ? 0.0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracion) / valorados.length;
     final flojos = stats.values.where((e) => e.flojo).toList()..sort((a, b) => a.valoracionMedia.compareTo(b.valoracionMedia));

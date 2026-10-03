@@ -24,7 +24,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
   @override
   Widget build(BuildContext context) {
     final banco = ref.watch(preguntasProvider);
-    final bloques = ref.watch(bloquesProvider).value ?? Bloques.vacio;
+    final bloques = ref.watch(bloquesProvider).valueOrNull ?? Bloques.vacio;
     final leitner = ref.watch(leitnerProvider);
     final pendientes = leitner.pendientes();
 

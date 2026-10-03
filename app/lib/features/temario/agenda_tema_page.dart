@@ -68,22 +68,22 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
     final agenda = ref.watch(agendasProvider)[_codigo] ?? ref.read(agendasProvider.notifier).de(_codigo);
     final stats = ref.watch(estadisticasCantesProvider)[_codigo];
     // Organización del temario: bloque del tema, idea clave y temas con los que conecta.
-    final estructura = ref.watch(estructuraProvider).value ?? EstructuraTemario.vacia;
+    final estructura = ref.watch(estructuraProvider).valueOrNull ?? EstructuraTemario.vacia;
     final bloque = estructura.bloqueDe(_codigo);
     final relacionados = estructura.relacionados(_codigo);
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final pendientes = agenda.pendientes;
     final resueltos = agenda.resueltos;
     final notifier = ref.read(agendasProvider.notifier);
     final fecha = DateFormat('d MMM y', 'es');
 
     // Simulador: preguntas de este tema y cómo le ha ido en los tests hechos en la app.
-    final banco = ref.watch(preguntasProvider).value;
+    final banco = ref.watch(preguntasProvider).valueOrNull;
     final delTema = banco == null ? const [] : MotorTest.filtrar(banco, ConfigTest(temas: {_codigo}));
     var respondidas = 0, acertadas = 0;
     if (banco != null && delTema.isNotEmpty) {
       final ids = {for (final p in delTema) p.id};
-      for (final r in ref.watch(historialProvider).value ?? const []) {
+      for (final r in ref.watch(historialProvider).valueOrNull ?? const []) {
         r.respuestas.forEach((id, letra) {
           if (!ids.contains(id)) return;
           respondidas++;

@@ -39,7 +39,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
     final alumnos = {for (final a in ref.watch(alumnosProvider)) a.id: a};
     final solapadas = sesionesSolapadas(sesiones);
     final perfil = ref.watch(perfilPreparadorProvider);
-    final reservas = (ref.watch(reservasRecibidasProvider).value ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(DateTime.now())).toList();
+    final reservas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(DateTime.now())).toList();
     final fin = _lunes.add(const Duration(days: 7));
     final deLaSemana = sesiones.where((s) => !s.fecha.isBefore(_lunes) && s.fecha.isBefore(fin)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
     final horas = deLaSemana.where((s) => !s.cancelado).fold<int>(0, (t, s) => t + s.minutos);

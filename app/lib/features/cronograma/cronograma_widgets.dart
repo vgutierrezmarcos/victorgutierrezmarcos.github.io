@@ -55,8 +55,8 @@ class SemanasCronograma extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     final esta = inicioSemana(DateTime.now(), c.diaCante);
     final semanas = soloDesdeActual ? c.semanas.where((s) => !s.lunes.isBefore(esta)).toList() : c.semanas;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -195,8 +195,8 @@ class _ReordenarTemasPageState extends ConsumerState<ReordenarTemasPage> {
 
   @override
   Widget build(BuildContext context) {
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     return Scaffold(
       appBar: BarraWeb(
         title: Text(widget.titulo),

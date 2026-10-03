@@ -17,8 +17,8 @@ class EstadisticasPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final historial = ref.watch(historialProvider);
     final leitner = ref.watch(leitnerProvider);
-    final banco = ref.watch(preguntasProvider).value;
-    final bloques = ref.watch(bloquesProvider).value ?? Bloques.vacio;
+    final banco = ref.watch(preguntasProvider).valueOrNull;
+    final bloques = ref.watch(bloquesProvider).valueOrNull ?? Bloques.vacio;
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Estadísticas')),
