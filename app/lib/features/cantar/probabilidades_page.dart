@@ -57,7 +57,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
                 Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
                   Text(porcentaje(total.total), style: context.textos.displaySmall?.copyWith(color: context.esquema.primary)),
                   const SizedBox(width: 10),
-                  Expanded(child: Padding(padding: const EdgeInsets.only(bottom: 6), child: Text('de aprobar los tres ejercicios de temas', style: context.textos.bodySmall))),
+                  Expanded(child: Padding(padding: const EdgeInsets.only(bottom: 6), child: Text('de que salga un tema que llevas en los tres ejercicios de temas', style: context.textos.bodySmall))),
                 ]),
                 Text('${total.temasSabidos} temas · ${porcentaje(total.porTema, decimales: 2)} por tema estudiado. Supone pasar el test, la coyuntura y los idiomas.', style: context.textos.labelSmall),
               ]),

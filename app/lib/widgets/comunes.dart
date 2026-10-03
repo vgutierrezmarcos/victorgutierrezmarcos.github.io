@@ -583,11 +583,12 @@ class AvatarUsuario extends ConsumerWidget {
     final nombre = (usuario?.displayName ?? '').trim().isNotEmpty ? usuario!.displayName!.trim() : (usuario?.email ?? '');
     final icono = CircleAvatar(
       radius: radio,
-      backgroundColor: usuario == null ? context.colores.primarioPalido : context.relleno,
-      foregroundColor: usuario == null ? context.esquema.primary : Colors.white,
+      // Lila claro con la letra morada: se ve igual sobre la cabecera morada que sobre las tarjetas.
+      backgroundColor: const Color(0xFFE9DDF3),
+      foregroundColor: Paleta.primario,
       child: usuario == null || nombre.isEmpty
           ? Icon(Icons.person_outline, size: radio * 1.2)
-          : Text(nombre.characters.first.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700, fontSize: radio * 1.05, color: Colors.white)),
+          : Text(nombre.characters.first.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700, fontSize: radio * 1.05, color: Paleta.primario)),
     );
     if (url == null) return icono;
     return ClipOval(
