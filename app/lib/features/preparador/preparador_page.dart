@@ -248,7 +248,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                       child: ListTile(
                         leading: PuntoPersona(s.alumno ?? '', tamano: 14),
                         title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)} · ${nombres[s.alumno] ?? 'Alumno'}', style: context.textos.titleSmall),
-                        subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                        subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
                         trailing: s.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(s.fecha, ahora)) : const Icon(Icons.chevron_right),
                       ),
                     ),

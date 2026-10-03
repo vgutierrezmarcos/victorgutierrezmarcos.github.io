@@ -14,6 +14,7 @@ import '../../widgets/comunes.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
 import 'red_widgets.dart';
 
@@ -158,6 +159,7 @@ class SesionPage extends ConsumerWidget {
               ),
             ]),
           ),
+          if (s.modalidad != Modalidad.sinIndicar && !s.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: s, telefono: alumno?.telefono.isEmpty ?? true ? null : alumno!.telefono)),
           if (alumno != null && alumno.telefono.isNotEmpty) ...[
             const SizedBox(height: 10),
             BotonWhatsApp(telefono: alumno.telefono, texto: 'Escribir a ${alumno.nombre}', mensaje: 'Hola, ${alumno.nombre}. Sobre el cante del ${fechaCorta(s.fecha)} a las ${horaDe(s.fecha)}: '),

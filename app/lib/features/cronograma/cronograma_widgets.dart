@@ -11,6 +11,11 @@ import 'planificador.dart';
 
 String diaMes(DateTime d) => DateFormat('d MMM', 'es').format(d);
 String fechaLargaCrono(DateTime d) => DateFormat("d 'de' MMMM", 'es').format(d);
+/// «jueves 9 oct.».
+String diaSemanaYMes(DateTime d) => DateFormat('EEEE d MMM', 'es').format(d);
+
+/// Nombre del día de la semana (1 = lunes … 7 = domingo).
+String nombreDiaSemana(int dia) => const ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'][dia - 1];
 
 String nombreVuelta(int ejercicio) => 'Vuelta al ${EjercicioDef.ordinalAbreviado(ejercicio)} ejercicio';
 
@@ -72,7 +77,7 @@ class SemanasCronograma extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final temario = ref.watch(temarioProvider).value;
     final estructura = ref.watch(estructuraProvider).value;
-    final esta = lunesDe(DateTime.now());
+    final esta = inicioSemana(DateTime.now(), c.diaCante);
     final semanas = soloDesdeActual ? c.semanas.where((s) => !s.lunes.isBefore(esta)).toList() : c.semanas;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       for (final s in semanas)
@@ -85,7 +90,7 @@ class SemanasCronograma extends ConsumerWidget {
               Row(children: [
                 Expanded(
                   child: Text(
-                    'Semana del ${diaMes(s.lunes)} al ${diaMes(s.domingo)}${s.lunes == esta ? ' · esta semana' : ''}',
+                    '${c.diaCante == null ? 'Semana del ${diaMes(s.lunes)} al ${diaMes(s.domingo)}' : 'Cante del ${diaSemanaYMes(s.domingo)}'}${s.lunes == esta ? ' · esta semana' : ''}',
                     style: context.textos.titleSmall?.copyWith(color: s.lunes == esta ? context.esquema.primary : null),
                   ),
                 ),
@@ -135,10 +140,10 @@ class SemanasCronograma extends ConsumerWidget {
 }
 
 /// Elige ritmo: temas por semana o fecha de fin. Devuelve (porSemana, fin).
-Future<({int? porSemana, DateTime? fin})?> elegirRitmo(BuildContext context, {required int pendientes, required int porSemana, DateTime? fin, Set<DateTime> descansos = const {}}) {
+Future<({int? porSemana, DateTime? fin})?> elegirRitmo(BuildContext context, {required int pendientes, required int porSemana, DateTime? fin, Set<DateTime> descansos = const {}, int? diaCante}) {
   var porFecha = fin != null;
   var k = porSemana;
-  var f = fin ?? finEstimado(pendientes, DateTime.now(), porSemana, descansos);
+  var f = fin ?? finEstimado(pendientes, DateTime.now(), porSemana, descansos, diaCante: diaCante);
   return showDialog(
     context: context,
     builder: (d) => StatefulBuilder(
@@ -154,7 +159,7 @@ Future<({int? porSemana, DateTime? fin})?> elegirRitmo(BuildContext context, {re
           const SizedBox(height: 14),
           if (!porFecha) ...[
             SelectorNumero(valor: k, onChanged: (v) => set(() => k = v)),
-            Text('Acabarías el ${fechaLargaCrono(finEstimado(pendientes, DateTime.now(), k, descansos))}.', style: Theme.of(d).textTheme.bodySmall),
+            Text('Acabarías el ${fechaLargaCrono(finEstimado(pendientes, DateTime.now(), k, descansos, diaCante: diaCante))}.', style: Theme.of(d).textTheme.bodySmall),
           ] else ...[
             OutlinedButton.icon(
               icon: const Icon(Icons.event, size: 18),
@@ -165,7 +170,7 @@ Future<({int? porSemana, DateTime? fin})?> elegirRitmo(BuildContext context, {re
               },
             ),
             const SizedBox(height: 6),
-            Text('Unos ${ritmoPara(pendientes, DateTime.now(), f, descansos)} temas por semana.', style: Theme.of(d).textTheme.bodySmall),
+            Text('Unos ${ritmoPara(pendientes, DateTime.now(), f, descansos, diaCante: diaCante)} temas por semana.', style: Theme.of(d).textTheme.bodySmall),
           ],
         ]),
         actions: [

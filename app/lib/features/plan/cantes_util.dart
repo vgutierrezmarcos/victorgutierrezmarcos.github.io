@@ -36,6 +36,9 @@ String _descripcionDictamen(int ejercicio) {
   return '${que[0].toUpperCase()}${que.substring(1)} · ${e.nombre.toLowerCase()}';
 }
 
+/// Qué se canta y, si se sabe, si es online o presencial (para las listas).
+String detalleCante(Cante c) => [descripcionBolsa(c), if (c.online) 'online' else if (c.presencial) 'presencial'].join(' · ');
+
 String tituloCante(Cante c) => c.titulo.isEmpty ? 'Cante' : c.titulo;
 
 String fechaLarga(DateTime f) => DateFormat("EEEE d 'de' MMMM", 'es').format(f);
@@ -47,8 +50,9 @@ EventoCalendario eventoDeCante(Cante c) => EventoCalendario(
       titulo: 'Cante ${Oposiciones.actual.siglas}${c.titulo.isEmpty ? '' : ' · ${c.titulo}'}',
       inicio: c.fecha,
       fin: c.fecha.add(Duration(minutes: c.minutos)),
-      descripcion: [descripcionBolsa(c), if (c.notas.isNotEmpty) c.notas].join('\n'),
+      descripcion: [descripcionBolsa(c), if (c.online) c.enlace.isEmpty ? 'Online' : 'Online: ${c.enlace}', if (c.notas.isNotEmpty) c.notas].join('\n'),
       avisoMinutos: 60,
+      lugar: c.online ? c.enlace : c.lugar,
     );
 
 EventoCalendario eventoDeFecha(String id, String titulo, DateTime fecha) =>

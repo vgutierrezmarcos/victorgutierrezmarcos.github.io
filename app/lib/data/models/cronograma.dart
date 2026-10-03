@@ -10,7 +10,24 @@ List<String> _textos(Object? l) => [for (final e in (l as List?) ?? const []) e.
 /// Lunes (a las 0:00) de la semana de [d].
 DateTime lunesDe(DateTime d) => DateTime(d.year, d.month, d.day - (d.weekday - 1));
 
+/// Primer día de la semana del cronograma que contiene [d]. Con [diaCante]
+/// (1 = lunes … 7 = domingo) cada semana va del día siguiente a un cante hasta
+/// el cante siguiente, así que sus temas son los de ese cante; sin él, de
+/// lunes a domingo.
+DateTime inicioSemana(DateTime d, [int? diaCante]) {
+  final empieza = diaCante == null ? 1 : diaCante % 7 + 1;
+  return DateTime(d.year, d.month, d.day - (d.weekday - empieza + 7) % 7);
+}
+
+/// El cante de la semana que contiene [d] (o el mismo [d] si es día de cante).
+DateTime canteDeLaSemana(DateTime d, int diaCante) {
+  final i = inicioSemana(d, diaCante);
+  return DateTime(i.year, i.month, i.day + 6);
+}
+
 /// Una semana del cronograma: los temas que tocan (vacía si es de descanso).
+/// [lunes] es su primer día y [domingo], el último: con día de cante, el
+/// siguiente a un cante y el del cante (ver [inicioSemana]).
 class SemanaPlan {
   const SemanaPlan({required this.lunes, this.temas = const [], this.descanso = false});
   final DateTime lunes;
@@ -77,15 +94,24 @@ class Cronograma {
     this.propuestaResuelta,
     this.creado,
     this.updatedAt,
+    this.diaCante,
   });
 
   final String id;
+  /// Día de la semana en que canta (1 = lunes … 7 = domingo). Las semanas del
+  /// cronograma acaban ese día: los temas de cada una son los de ese cante.
+  /// null = semanas de lunes a domingo (cronogramas anteriores).
+  final int? diaCante;
   /// 3 o 4.
   final int ejercicio;
   /// Temas de la vuelta en el orden en que se estudian.
   final List<String> temas;
-  /// Lunes de la primera semana.
+  /// Primer día de la primera semana (el lunes o, con [diaCante], el siguiente
+  /// al cante anterior al primero de la vuelta).
   final DateTime inicio;
+
+  /// Fecha del primer cante de la vuelta (con [diaCante]).
+  DateTime? get primerCante => diaCante == null ? null : DateTime(inicio.year, inicio.month, inicio.day + 6);
   final int temasPorSemana;
   /// Fecha de fin que fijó el opositor (null = la que salga del ritmo).
   final DateTime? fin;
@@ -93,7 +119,7 @@ class Cronograma {
   final bool intercalar;
   /// Un tema intercalado «cada N» (null = en proporción a su peso).
   final int? cadaN;
-  /// Lunes de las semanas de descanso.
+  /// Primer día de las semanas de descanso.
   final Set<DateTime> descansos;
   /// Reparto de los temas por semanas.
   final List<SemanaPlan> semanas;
@@ -148,6 +174,7 @@ class Cronograma {
         propuestaResuelta: propuestaResuelta ?? this.propuestaResuelta,
         creado: creado,
         updatedAt: DateTime.now(),
+        diaCante: diaCante,
       );
 
   Map<String, dynamic> toJson() => {
@@ -169,6 +196,7 @@ class Cronograma {
         'propuestaResuelta': propuestaResuelta?.toIso8601String(),
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
+        if (diaCante != null) 'diaCante': diaCante,
       };
 
   factory Cronograma.fromJson(Map<dynamic, dynamic> j) => Cronograma(
@@ -193,6 +221,7 @@ class Cronograma {
         propuestaResuelta: _fecha(j['propuestaResuelta']),
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
+        diaCante: (j['diaCante'] as num?)?.toInt(),
       );
 
   /// Gana la versión más reciente, pero una propuesta del preparador posterior

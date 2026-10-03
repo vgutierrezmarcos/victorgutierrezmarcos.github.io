@@ -141,4 +141,33 @@ void main() {
     expect(Cronograma.fusionar(resuelta, nube).propuesta, isNull);
     expect(Cronograma.fromJson(jsonDecode(jsonEncode(f.toJson())) as Map).propuesta!.temasPorSemana, 2);
   });
+
+  group('día de cante', () {
+    // Jueves 8 de octubre de 2026.
+    final jueves = DateTime(2026, 10, 8);
+
+    test('cada semana va del viernes al jueves del cante', () {
+      expect(inicioSemana(DateTime(2026, 10, 8), 4), DateTime(2026, 10, 2)); // el jueves es el último día
+      expect(inicioSemana(DateTime(2026, 10, 9), 4), DateTime(2026, 10, 9)); // el viernes empieza otra
+      expect(inicioSemana(DateTime(2026, 10, 5), 4), DateTime(2026, 10, 2));
+      expect(canteDeLaSemana(DateTime(2026, 10, 5), 4), jueves);
+      expect(inicioSemana(DateTime(2026, 10, 7)), DateTime(2026, 10, 5)); // sin día: lunes
+    });
+
+    test('la primera semana acaba en el primer cante y las demás, en los siguientes', () {
+      final c = crearCronograma(id: 'x', ejercicio: 3, temas: ['3.A.1', '3.A.2', '3.A.3', '3.A.4', '3.A.5'], inicio: jueves, porSemana: 2, diaCante: 4);
+      expect(c.primerCante, jueves);
+      expect([for (final s in c.semanas) s.domingo], [jueves, DateTime(2026, 10, 15), DateTime(2026, 10, 22)]);
+      expect(c.semanas.first.temas, ['3.A.1', '3.A.2']);
+      // El día del cante aún es su semana; al día siguiente, la siguiente.
+      expect(estadoDe(c, jueves).semanaActual?.temas, ['3.A.1', '3.A.2']);
+      expect(estadoDe(c, DateTime(2026, 10, 9)).semanaActual?.temas, ['3.A.3', '3.A.4']);
+      expect(Cronograma.fromJson(c.toJson()).diaCante, 4);
+    });
+
+    test('con fecha de fin, cuenta los cantes hasta ella', () {
+      final c = crearCronograma(id: 'x', ejercicio: 3, temas: List.generate(6, (i) => '3.A.${i + 1}'), inicio: jueves, fin: DateTime(2026, 10, 22), diaCante: 4);
+      expect(c.temasPorSemana, 2); // tres cantes: 8, 15 y 22
+    });
+  });
 }

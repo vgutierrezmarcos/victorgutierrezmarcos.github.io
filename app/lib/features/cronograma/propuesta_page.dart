@@ -77,7 +77,7 @@ class _PropuestaCronogramaPageState extends ConsumerState<PropuestaCronogramaPag
     final pendiente = widget.c.propuesta;
 
     Future<void> ritmo() async {
-      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: _c.temasPorSemana, fin: _c.fin, descansos: _c.descansos);
+      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: _c.temasPorSemana, fin: _c.fin, descansos: _c.descansos, diaCante: _c.diaCante);
       if (r == null) return;
       setState(() {
         _c = replanificarCronograma(_c, DateTime.now(), porSemana: r.porSemana, fin: r.fin);
