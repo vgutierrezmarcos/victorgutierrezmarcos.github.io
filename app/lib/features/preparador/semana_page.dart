@@ -73,7 +73,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                             if (s.hecho) 'Valorada',
                             if (s.sustitucion != null) 'Sustitución',
                             if (s.serie?.startsWith('fija_') ?? false) 'Clase fija',
-                            if (!s.cancelado && !s.hecho) descripcionBolsa(s),
+                            if (!s.cancelado && !s.hecho) detalleCante(s),
                           ].join(' · '),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

@@ -16,6 +16,7 @@ import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
 import 'cante_form_page.dart';
 import 'cantes_util.dart';
+import 'modalidad.dart';
 import 'resultado_sheet.dart';
 
 /// Detalle de un cante: cuenta atrás, temas que entran, apuntes pendientes
@@ -119,6 +120,7 @@ class CantePage extends ConsumerWidget {
               if (c.sustitucion != null) const Padding(padding: EdgeInsets.only(top: 8), child: Etiqueta('Sustitución')),
             ]),
           ),
+          if (c.modalidad != Modalidad.sinIndicar && !c.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: c)),
           if (c.cancelado && c.dePreparador && c.fecha.isAfter(DateTime.now()) && peticion == null)
             Padding(
               padding: const EdgeInsets.only(top: 10),

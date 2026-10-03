@@ -8,7 +8,7 @@ import 'providers.dart';
 /// Vueltas anotadas en la agenda de cada tema (cuentan como hechas en el cronograma).
 final vueltasProvider = Provider<Map<String, List<DateTime>>>((ref) => {for (final e in ref.watch(agendasProvider).entries) e.key: e.value.vueltas});
 
-/// Cronograma activo del opositor (en prueba). Solo hay uno; al empezar otro,
+/// Cronograma activo del opositor. Solo hay uno; al empezar otro,
 /// el anterior se archiva.
 class CronogramaNotifier extends Notifier<Cronograma?> {
   @override
@@ -57,7 +57,7 @@ class CronogramaNotifier extends Notifier<Cronograma?> {
     final c = state;
     if (c == null) return;
     final d = {...c.descansos};
-    descansar ? d.add(lunesDe(lunes)) : d.remove(lunesDe(lunes));
+    descansar ? d.add(inicioSemana(lunes, c.diaCante)) : d.remove(inicioSemana(lunes, c.diaCante));
     await _guardar(replanificarCronograma(c.copyWith(descansos: d), DateTime.now(), vueltas: ref.read(vueltasProvider)));
   }
 

@@ -8,6 +8,7 @@ class EventoCalendario {
     this.todoElDia = false,
     this.descripcion = '',
     this.avisoMinutos,
+    this.lugar = '',
   });
 
   final String uid;
@@ -18,6 +19,8 @@ class EventoCalendario {
   final String descripcion;
   /// Minutos de antelación del recordatorio (null = sin recordatorio).
   final int? avisoMinutos;
+  /// Dónde: la dirección o el enlace de la videollamada.
+  final String lugar;
 }
 
 /// Exportación de cantes e hitos: fichero iCalendar (.ics), que abren Google
@@ -65,6 +68,7 @@ class Calendario {
       }
       l.add('SUMMARY:${_escapar(e.titulo)}');
       if (e.descripcion.isNotEmpty) l.add('DESCRIPTION:${_escapar(e.descripcion)}');
+      if (e.lugar.isNotEmpty) l.add('LOCATION:${_escapar(e.lugar)}');
       if (e.avisoMinutos != null) {
         l.addAll(['BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:${_escapar(e.titulo)}', 'TRIGGER:-PT${e.avisoMinutos}M', 'END:VALARM']);
       }
@@ -84,6 +88,7 @@ class Calendario {
       'text': e.titulo,
       'dates': fechas,
       if (e.descripcion.isNotEmpty) 'details': e.descripcion,
+      if (e.lugar.isNotEmpty) 'location': e.lugar,
     }).toString();
   }
 }

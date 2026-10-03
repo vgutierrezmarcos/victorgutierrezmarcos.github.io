@@ -518,6 +518,7 @@ class PreparadorRepo {
       titulo: 'Sustitución',
       alumno: a.id,
       sustitucion: sust.id,
+      modalidad: sust.modalidad,
       updatedAt: DateTime.now(),
     );
     await guardarSesion(s);

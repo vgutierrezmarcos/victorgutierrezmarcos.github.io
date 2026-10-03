@@ -47,7 +47,9 @@ La app y las dos webs usan el mismo proyecto de Firebase (`web-vgm`), para que h
 Cada oposición tiene su red: un preparador verificado en TCEE no lo está en DCE, y quien prepare las dos tiene que verificarse en cada una. Manuel es el administrador de DCE y Víctor, el de TCEE.
 
 - En la consola de Firestore, crear el documento `oposiciones/dce/admins/{correo de Google de Manuel}` (con cualquier campo, p. ej. `desde: "consola"`).
-- Después, en la app con DCE elegida: *Más → Preparadores → Verificarme*.
+- Después, en la app: *Más → Ajustes → Oposición → DCE* (le aparece por ser administrador, aunque no esté lanzada) y *Más → Preparadores → Verificarme*.
+
+Víctor es además **administrador general**: su documento `admins/{…}` de la raíz lleva el campo `general: true`, y con él administra también la red de DCE.
 
 Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separan las dos redes y sus administradores.
 
@@ -59,7 +61,7 @@ Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separa
 
 ## Lanzamiento (lo hace Víctor cuando lo decida)
 
-1. Poner la web de Manuel en `Oposiciones.dce.web` (`lib/data/models/oposicion.dart`, marcado con `TODO(lanzamiento)`) y comprobar que su web publica los ficheros de arriba.
+1. Poner la web de Manuel en `Oposiciones.dce.web` y `lanzada: true` (`lib/data/models/oposicion.dart`, marcados con `TODO(lanzamiento)`) y comprobar que su web publica los ficheros de arriba. Hasta entonces, DCE solo la ven en la app sus administradores y el general, en *Más → Ajustes → Oposición*.
 2. Fusionar `main` en `dce` (para traer lo último de TCEE) y después `dce` en `main`.
 3. Publicar `firestore.rules` en la consola (si ha cambiado) y crear el administrador de DCE.
 4. Subir la versión en `pubspec.yaml`, compilar el APK y la versión web (`scripts/publicar-app-web.py`) y poner la versión en `app-config.json`.

@@ -128,7 +128,7 @@ void main() {
     ]);
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Añadir la teoría del valor-trabajo de Ricardo').anadir('Repasar la ley de Say'));
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.4').anadir('Distinguir la Teoría General de la síntesis IS-LM de Hicks').anadir('Añadir la preferencia por la liquidez'));
-    // Cronograma de ejemplo (en prueba): empezó hace dos semanas y va un tema por detrás.
+    // Cronograma de ejemplo: empezó hace dos semanas y va un tema por detrás.
     final ordenVuelta = ordenInicial(estructura, 3, {for (final t in temario.todosLosTemas.where((t) => t.ejercicio == 3)) t.codigo});
     final crono = crearCronograma(id: 'crono', ejercicio: 3, temas: ordenVuelta, inicio: hoy.subtract(const Duration(days: 14)), porSemana: 3);
     await plan.empezarCronograma(crono.copyWith(hechos: {

@@ -61,6 +61,25 @@ class ResultadoCante {
       );
 }
 
+/// Dónde es un cante: en persona o por videollamada.
+enum Modalidad { sinIndicar, presencial, online }
+
+/// Abre una reunión nueva de Google Meet (con la cuenta de Google del navegador
+/// o de la app de Meet); su enlace se copia y se pega en el cante.
+const urlNuevaReunionMeet = 'https://meet.google.com/new';
+
+/// El enlace de una videollamada escrito o pegado por el usuario, completo
+/// (añade https:// si falta), o null si no parece un enlace. Vale cualquiera
+/// (Meet, Zoom, Teams…), aunque la app propone Meet.
+String? enlaceReunion(String texto) {
+  var t = texto.trim();
+  if (t.isEmpty) return null;
+  final m = RegExp(r'(https?://)?[\w.-]+\.[a-z]{2,}(/[^\s]*)?', caseSensitive: false).firstMatch(t);
+  if (m == null) return null;
+  t = m.group(0)!;
+  return t.startsWith('http') ? t : 'https://$t';
+}
+
 class Cante {
   const Cante({
     required this.id,
@@ -81,9 +100,18 @@ class Cante {
     this.sustitucion,
     this.updatedAt,
     this.borrado = false,
+    this.modalidad = Modalidad.sinIndicar,
+    this.lugar = '',
+    this.enlace = '',
   });
 
   final String id;
+  /// Presencial u online.
+  final Modalidad modalidad;
+  /// Dónde, si es presencial (opcional).
+  final String lugar;
+  /// Enlace de la videollamada (Google Meet u otra), si es online.
+  final String enlace;
   /// Fecha y hora del cante (hora local).
   final DateTime fecha;
   /// Con quién o dónde ("Preparador", "Grupo de cante"…).
@@ -117,6 +145,14 @@ class Cante {
   bool get pendiente => estado == EstadoCante.pendiente;
   bool get dePreparador => preparador != null;
   bool get cancelado => estado == EstadoCante.cancelado;
+  bool get online => modalidad == Modalidad.online;
+  bool get presencial => modalidad == Modalidad.presencial;
+  /// «Online · meet.google.com/abc-defg-hij», «Presencial · Calle…» o vacío.
+  String get descripcionModalidad => switch (modalidad) {
+        Modalidad.online => enlace.isEmpty ? 'Online' : 'Online · ${enlace.replaceFirst(RegExp(r'^https?://'), '')}',
+        Modalidad.presencial => lugar.isEmpty ? 'Presencial' : 'Presencial · $lugar',
+        Modalidad.sinIndicar => '',
+      };
 
   Cante copyWith({
     DateTime? fecha,
@@ -135,6 +171,9 @@ class Cante {
     String? motivo,
     String? sustitucion,
     bool? borrado,
+    Modalidad? modalidad,
+    String? lugar,
+    String? enlace,
   }) =>
       Cante(
         id: id,
@@ -155,12 +194,18 @@ class Cante {
         sustitucion: sustitucion ?? this.sustitucion,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
+        modalidad: modalidad ?? this.modalidad,
+        lugar: lugar ?? this.lugar,
+        enlace: enlace ?? this.enlace,
       );
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'fecha': fecha.toIso8601String(),
         'titulo': titulo,
+        if (modalidad != Modalidad.sinIndicar) 'modalidad': modalidad.name,
+        if (lugar.isNotEmpty) 'lugar': lugar,
+        if (enlace.isNotEmpty) 'enlace': enlace,
         'minutos': minutos,
         'ejercicio': ejercicio,
         'bolsa': bolsa.name,
@@ -197,6 +242,9 @@ class Cante {
         sustitucion: j['sustitucion'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
+        modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
+        lugar: j['lugar'] as String? ?? '',
+        enlace: j['enlace'] as String? ?? '',
       );
 
   /// Fusiona dos listas de cantes por id quedándose con la versión más reciente.

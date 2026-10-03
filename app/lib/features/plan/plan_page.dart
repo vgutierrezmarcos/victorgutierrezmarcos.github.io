@@ -126,7 +126,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text('Próximo cante ${cuentaAtras(siguiente.fecha, ahora)}', style: context.textos.titleMedium),
                     Text('${fechaLarga(siguiente.fecha)}, ${horaDe(siguiente.fecha)}${siguiente.titulo.isEmpty ? '' : ' · ${siguiente.titulo}'}', style: context.textos.bodySmall),
-                    Text(descripcionBolsa(siguiente), style: context.textos.labelSmall),
+                    Text(detalleCante(siguiente), style: context.textos.labelSmall),
                   ]),
                 ),
                 const Icon(Icons.chevron_right),
@@ -241,7 +241,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
             ),
             title: Text('${conFecha ? '${fechaCorta(c.fecha)} · ' : ''}${horaDe(c.fecha)} · ${tituloCante(c)}', style: context.textos.titleSmall?.copyWith(decoration: c.cancelado ? TextDecoration.lineThrough : null)),
             subtitle: Text(
-              c.cancelado ? 'Cancelado${c.motivo.isEmpty ? '' : ': ${c.motivo}'} · toca para buscar sustituto' : (c.hecho ? (c.resultado?.temaCantado ?? 'Hecho') : descripcionBolsa(c)),
+              c.cancelado ? 'Cancelado${c.motivo.isEmpty ? '' : ': ${c.motivo}'} · toca para buscar sustituto' : (c.hecho ? (c.resultado?.temaCantado ?? 'Hecho') : detalleCante(c)),
               style: context.textos.labelSmall?.copyWith(color: c.cancelado ? context.esquema.error : null),
             ),
             trailing: c.pendiente && c.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(c.fecha, ahora)) : const Icon(Icons.chevron_right),

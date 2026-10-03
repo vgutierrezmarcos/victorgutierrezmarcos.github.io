@@ -10,6 +10,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
 import 'cantes_util.dart';
+import 'modalidad.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
 ///
@@ -29,6 +30,9 @@ class CanteFormPage extends ConsumerStatefulWidget {
 class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late final _titulo = TextEditingController(text: widget.cante?.titulo ?? '');
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
+  late Modalidad _modalidad = widget.cante?.modalidad ?? Modalidad.sinIndicar;
+  late final _lugar = TextEditingController(text: widget.cante?.lugar ?? '');
+  late final _enlace = TextEditingController(text: widget.cante?.enlace ?? '');
   late DateTime _fecha;
   late int _minutos = widget.cante?.minutos ?? 30;
   late int _ejercicio = widget.cante?.ejercicio ?? Oposiciones.actual.primerConTemas;
@@ -52,6 +56,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   void dispose() {
     _titulo.dispose();
     _notas.dispose();
+    _lugar.dispose();
+    _enlace.dispose();
     super.dispose();
   }
 
@@ -103,9 +109,12 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       titulo: _titulo.text.trim(),
       minutos: _minutos,
       ejercicio: _ejercicio,
-      bolsa: _ejercicio == 1 ? TipoBolsa.estudiados : _bolsa,
-      temas: _ejercicio != 1 && _bolsa == TipoBolsa.lista ? _temas : const [],
+      bolsa: Oposiciones.actual.esDictamen(_ejercicio) ? TipoBolsa.estudiados : _bolsa,
+      temas: !Oposiciones.actual.esDictamen(_ejercicio) && _bolsa == TipoBolsa.lista ? _temas : const [],
       notas: _notas.text.trim(),
+      modalidad: _modalidad,
+      lugar: _modalidad == Modalidad.presencial ? _lugar.text.trim() : '',
+      enlace: _modalidad == Modalidad.online ? (enlaceReunion(_enlace.text) ?? '') : '',
     );
     if (_sesion) {
       // Una sesión por alumno, cada una con su repetición semanal si se pidió.
@@ -190,6 +199,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           ],
           TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
+          const TituloSeccion('Presencial u online'),
+          SelectorModalidad(modalidad: _modalidad, onModalidad: (m) => setState(() => _modalidad = m), lugar: _lugar, enlace: _enlace),
           const TituloSeccion('Qué se canta'),
           SegmentedButton<int>(showSelectedIcon: false, 
             segments: segmentosEjercicio(ambos: true),
@@ -217,7 +228,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
               title: Text(titulo, style: context.textos.titleSmall),
               subtitle: Text(sub, style: context.textos.labelSmall),
             ),
-          if (_bolsa == TipoBolsa.lista && _ejercicio != 1)
+          if (_bolsa == TipoBolsa.lista && !Oposiciones.actual.esDictamen(_ejercicio))
             OutlinedButton.icon(onPressed: _elegirTemas, icon: const Icon(Icons.checklist, size: 18), label: Text(_temas.isEmpty ? 'Elegir temas' : '${_temas.length} temas elegidos')),
           const TituloSeccion('Duración'),
           Wrap(spacing: 6, children: [

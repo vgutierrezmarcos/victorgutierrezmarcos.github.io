@@ -116,6 +116,7 @@ class Oposicion {
     this.notaProbabilidad,
     this.testDe,
     this.autor,
+    this.lanzada = true,
   });
 
   /// Identificador estable ('tcee', 'dce'): va en Firestore y en Hive.
@@ -144,6 +145,10 @@ class Oposicion {
   /// Si su examen no tiene test, la oposición cuyo banco de preguntas puede
   /// practicar de forma voluntaria (DCE usa el de TCEE). null = el suyo.
   final String? testDe;
+
+  /// La pueden elegir todos. Si no, solo sus administradores (y el general),
+  /// para probarla antes de lanzarla.
+  final bool lanzada;
 
   /// Quién publica su contenido: (nombre, presentación, página «Sobre mí»).
   final (String, String, String?)? autor;
@@ -321,8 +326,14 @@ class Oposiciones {
   /// widgets, mejor `oposicionProvider`.
   static Oposicion actual = tcee;
 
+  /// Las que puede elegir cualquiera.
+  static List<Oposicion> get disponibles => todas.where((o) => o.lanzada).toList();
+
+  /// Las que aún no se han lanzado (solo para sus administradores).
+  static List<Oposicion> get sinLanzar => todas.where((o) => !o.lanzada).toList();
+
   static Oposicion porId(String? id) => todas.firstWhere((o) => o.id == id, orElse: () => todas.first);
 
   /// Hay más de una para elegir.
-  static bool get variasDisponibles => todas.length > 1;
+  static bool get variasDisponibles => disponibles.length > 1;
 }
