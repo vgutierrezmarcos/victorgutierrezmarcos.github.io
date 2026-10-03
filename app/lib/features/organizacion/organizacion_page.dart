@@ -75,7 +75,7 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
 
   Widget _vistaBloques(EstructuraTemario e, Temario? temario, Set<String> estudiados) {
     final sugeridos = e.sugeridos(estudiados, ejercicio: _ejercicio).take(8).toList();
-    return ListView(
+    return ListaAdaptable(
       padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
       children: [
         SegmentedButton<int>(

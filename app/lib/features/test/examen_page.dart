@@ -123,7 +123,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
             body: Column(children: [
               LinearProgressIndicator(value: (_idx + 1) / preguntas.length, minHeight: 3),
               Expanded(
-                child: ListView(
+                child: ListaAdaptable(
                   padding: const EdgeInsets.all(16),
                   children: [
                     // .pregunta-container

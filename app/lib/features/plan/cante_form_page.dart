@@ -139,7 +139,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
         title: Text(_sesion ? (_edicion ? 'Editar sesión' : 'Nueva sesión') : (_edicion ? 'Editar cante' : 'Nuevo cante')),
         actions: [TextButton(onPressed: _guardar, child: const Text('Guardar'))],
       ),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           if (_sesion && !_edicion) ...[

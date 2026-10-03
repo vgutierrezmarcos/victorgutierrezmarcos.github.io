@@ -78,7 +78,7 @@ class _HorarioPageState extends ConsumerState<HorarioPage> {
           ),
         ],
       ),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Text('Elige una actividad y toca las franjas para pintarlas. Mantén pulsado y arrastra para pintar varias seguidas.', style: context.textos.bodySmall),

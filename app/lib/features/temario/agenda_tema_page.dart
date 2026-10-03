@@ -92,7 +92,7 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
       }
     }
 
-    return ListView(
+    return ListaAdaptable(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
       children: [
         Text(widget.tema.titulo, style: context.textos.titleMedium),

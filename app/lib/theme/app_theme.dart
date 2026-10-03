@@ -26,6 +26,11 @@ class Paleta {
   static const dPrimarioOscuro = Color(0xFF7A4FAD);
   static const dPrimarioClaro = Color(0xFFB48FDA);
   static const dPrimarioPalido = Color(0xFF2A2040);
+  // Rellenos con texto blanco encima (cabecera, botones, menú, selectores): el
+  // lila de [dPrimario] es para texto e iconos sobre fondo oscuro y, de fondo,
+  // apenas deja leer el blanco. Estos dos dan un contraste de 7:1 o más.
+  static const dRelleno = Color(0xFF6A3596);
+  static const dRellenoOscuro = Color(0xFF4A2370);
   static const dFondo = Color(0xFF1A1A2E);
   static const dFondoClaro = Color(0xFF1E1E34);
   static const dCrema = Color(0xFF222240);
@@ -135,8 +140,11 @@ extension ThemeX on BuildContext {
   LinearGradient get degradadoPrimario => LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: temaOscuro ? const [Paleta.dPrimario, Paleta.dPrimarioOscuro] : const [Paleta.primario, Paleta.primarioOscuro],
+        colors: temaOscuro ? const [Paleta.dRelleno, Paleta.dRellenoOscuro] : const [Paleta.primario, Paleta.primarioOscuro],
       );
+
+  /// Color de los rellenos con texto blanco encima (en claro, el morado de la web).
+  Color get relleno => temaOscuro ? Paleta.dRelleno : Paleta.primario;
 
   /// Línea dorada que cierra la cabecera de la web (.site-header::after).
   LinearGradient get degradadoDorado {
@@ -182,6 +190,7 @@ class AppTheme {
     final oscuro = brillo == Brightness.dark;
     final extra = oscuro ? ColoresExtra.oscuro : ColoresExtra.claro;
     final primario = oscuro ? Paleta.dPrimario : Paleta.primario;
+    final relleno = oscuro ? Paleta.dRelleno : Paleta.primario;
     final fondo = oscuro ? Paleta.dFondo : Paleta.fondo;
     final texto = oscuro ? Paleta.dTexto : Paleta.texto;
 
@@ -218,7 +227,7 @@ class AppTheme {
       // Cabecera morada con el título en blanco y serif, como .site-header.
       // El degradado y la línea dorada los pone BarraWeb (widgets/comunes.dart).
       appBarTheme: AppBarTheme(
-        backgroundColor: primario,
+        backgroundColor: relleno,
         foregroundColor: Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -240,7 +249,7 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         height: 66,
-        indicatorColor: primario,
+        indicatorColor: relleno,
         indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         labelTextStyle: WidgetStateProperty.resolveWith(
           (s) => TextStyle(
@@ -259,7 +268,7 @@ class AppTheme {
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: extra.superficie,
         elevation: 0,
-        indicatorColor: primario,
+        indicatorColor: relleno,
         indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         selectedIconTheme: const IconThemeData(size: 22, color: Colors.white),
         unselectedIconTheme: IconThemeData(size: 22, color: extra.textoSuave),
@@ -269,7 +278,7 @@ class AppTheme {
       // Botones de la web (.download-btn, .btn-comenzar): morado, radio 6, sans.
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
-          backgroundColor: primario,
+          backgroundColor: relleno,
           foregroundColor: Colors.white,
           textStyle: textos.labelLarge?.copyWith(fontSize: 14.5),
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
@@ -295,7 +304,7 @@ class AppTheme {
         style: ButtonStyle(
           shape: WidgetStatePropertyAll(forma6),
           side: WidgetStatePropertyAll(BorderSide(color: extra.borde)),
-          backgroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? primario : extra.superficie),
+          backgroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? relleno : extra.superficie),
           foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? Colors.white : texto),
           textStyle: WidgetStatePropertyAll(textos.labelLarge?.copyWith(fontSize: 13)),
         ),
@@ -319,7 +328,7 @@ class AppTheme {
         focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(4), borderSide: BorderSide(color: primario, width: 2)),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: primario,
+        backgroundColor: relleno,
         foregroundColor: Colors.white,
         extendedTextStyle: textos.labelLarge?.copyWith(color: Colors.white),
         shape: forma6,
@@ -337,10 +346,15 @@ class AppTheme {
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
       ),
       listTileTheme: ListTileThemeData(iconColor: extra.textoSuave, titleTextStyle: textos.titleSmall, subtitleTextStyle: textos.labelSmall),
+      checkboxTheme: CheckboxThemeData(
+        fillColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? relleno : null),
+        checkColor: const WidgetStatePropertyAll(Colors.white),
+      ),
+      badgeTheme: BadgeThemeData(backgroundColor: extra.dorado, textColor: Colors.white),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: primario, linearTrackColor: extra.fondoClaro),
       dividerTheme: DividerThemeData(color: extra.bordeClaro),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: oscuro ? Paleta.dPrimarioOscuro : Paleta.primarioOscuro,
+        backgroundColor: oscuro ? Paleta.dRellenoOscuro : Paleta.primarioOscuro,
         contentTextStyle: textos.bodySmall?.copyWith(color: Colors.white, fontSize: 14),
         behavior: SnackBarBehavior.floating,
         shape: forma6,

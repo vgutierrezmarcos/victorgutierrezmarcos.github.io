@@ -45,7 +45,7 @@ class EstadisticasPage extends ConsumerWidget {
 
           return RefreshIndicator(
             onRefresh: () async => ref.invalidate(historialProvider),
-            child: ListView(
+            child: ListaAdaptable(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
               children: [
                 GridView.count(

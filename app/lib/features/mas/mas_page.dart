@@ -33,14 +33,14 @@ class MasPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Más')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(
             padding: EdgeInsets.zero,
             onTap: () => context.go('/mas/cuenta'),
             child: ListTile(
-              leading: usuario?.photoURL != null ? CircleAvatar(backgroundImage: NetworkImage(usuario!.photoURL!)) : const CircleAvatar(child: Icon(Icons.person_outline)),
+              leading: const AvatarUsuario(),
               title: Text(usuario?.displayName ?? 'Iniciar sesión con Google', style: context.textos.titleSmall),
               subtitle: Text(usuario?.email ?? 'Sincroniza tu historial y progreso con la web', style: context.textos.labelSmall),
               trailing: const Icon(Icons.chevron_right),
@@ -103,11 +103,11 @@ class MasPage extends ConsumerWidget {
               ),
               ListTile(
                 leading: const Icon(Icons.dark_mode_outlined),
-                title: const Text('Tema'),
-                trailing: SegmentedButton<bool?>(showSelectedIcon: false, 
-                  segments: const [ButtonSegment(value: null, label: Text('Auto')), ButtonSegment(value: false, label: Text('Claro')), ButtonSegment(value: true, label: Text('Oscuro'))],
-                  selected: {ajustes.temaOscuro},
-                  onSelectionChanged: (s) => ref.read(ajustesProvider.notifier).actualizar((a) => s.first == null ? a.copyWith(borrarTema: true) : a.copyWith(temaOscuro: s.first)),
+                title: const Text('Modo'),
+                trailing: SegmentedButton<bool>(showSelectedIcon: false, 
+                  segments: const [ButtonSegment(value: false, label: Text('Claro')), ButtonSegment(value: true, label: Text('Oscuro'))],
+                  selected: {ajustes.temaOscuro == true},
+                  onSelectionChanged: (s) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaOscuro: s.first)),
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
                 ),
               ),

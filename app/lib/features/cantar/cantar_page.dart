@@ -337,7 +337,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
           final enPreparacion = _reloj.preparacion > Duration.zero && _reloj.enPreparacion(ahora);
           final terminado = _reloj.terminado(ahora);
 
-          return ListView(
+          return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               if (cante != null)

@@ -59,14 +59,14 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           if (_busqueda.trim().isNotEmpty) {
             final q = _normalizar(_busqueda);
             final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
-            return ListView(padding: const EdgeInsets.all(16), children: [
+            return ListaAdaptable(padding: const EdgeInsets.all(16), children: [
               Text('${res.length} resultados', style: context.textos.bodySmall),
               for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
             ]);
           }
           final total = t.todosLosTemas.where((x) => x.disponible).length;
           final estudiados = ajustes.temasEstudiados.length;
-          return ListView(
+          return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
               Tarjeta(

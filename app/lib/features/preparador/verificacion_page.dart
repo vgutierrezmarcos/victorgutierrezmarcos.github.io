@@ -126,7 +126,7 @@ class VerificarPreparadoresPage extends ConsumerWidget {
       appBar: BarraWeb(title: const Text('Verificar preparadores')),
       body: RefreshIndicator(
         onRefresh: () async => ref.invalidate(solicitudesPendientesProvider),
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             Text('Verifica solo a quien conozcas o puedas comprobar que prepara la oposición. Así se evita que alguien se haga pasar por preparador.', style: context.textos.bodySmall),
@@ -214,7 +214,7 @@ class AdminRedPage extends ConsumerWidget {
       appBar: BarraWeb(title: const Text('Gestionar la red')),
       body: RefreshIndicator(
         onRefresh: () async => refrescarRedDesdeWidget(ref),
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             if (!estado.esAdmin)

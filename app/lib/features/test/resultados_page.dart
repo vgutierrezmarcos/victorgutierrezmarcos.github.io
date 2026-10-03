@@ -61,7 +61,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             ),
           ],
         ),
-        body: ListView(
+        body: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 32),
           children: [
             // .resultados-header: nota final en blanco sobre el degradado morado.

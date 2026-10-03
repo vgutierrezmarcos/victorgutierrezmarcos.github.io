@@ -153,7 +153,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => ref.read(alumnosProvider.notifier).refrescar(),
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
           children: _mes
               ? [_vistaMes(sesiones, alumnos)]

@@ -22,7 +22,7 @@ class CuentaPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Cuenta')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.all(16),
         children: [
           if (!firebase)
@@ -49,7 +49,7 @@ class CuentaPage extends ConsumerWidget {
           ] else ...[
             Tarjeta(
               child: Row(children: [
-                if (usuario.photoURL != null) CircleAvatar(radius: 26, backgroundImage: NetworkImage(usuario.photoURL!)),
+                const AvatarUsuario(radio: 26),
                 const SizedBox(width: 14),
                 Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(usuario.displayName ?? '', style: context.textos.titleMedium),

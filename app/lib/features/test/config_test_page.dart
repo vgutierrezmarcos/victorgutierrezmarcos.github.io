@@ -44,7 +44,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
         data: (b) {
           final disponibles = MotorTest.filtrar(b, _cfg).length;
           final delTest = disponibles == 0 ? 0 : _cfg.numPreguntas.clamp(1, disponibles);
-          return ListView(
+          return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
             children: [
               if (pendientes.isNotEmpty)
