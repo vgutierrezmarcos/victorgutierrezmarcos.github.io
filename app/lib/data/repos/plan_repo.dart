@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/cronograma.dart';
 import '../models/plan.dart';
 
 /// Planificación del opositor: cantes, plan (convocatoria,
@@ -13,17 +16,22 @@ class PlanRepo {
     required Box cantes,
     required Box plan,
     required Box agenda,
+    Box? cronogramas,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
   })  : _cantes = cantes,
         _plan = plan,
         _agenda = agenda,
+        _cronogramas = cronogramas,
         _db = firestore,
         _auth = auth;
 
   final Box _cantes;
   final Box _plan;
   final Box _agenda;
+  /// Sin caja (pruebas antiguas), los cronogramas viven en memoria.
+  final Box? _cronogramas;
+  final _cronogramasEnMemoria = <String, Map<dynamic, dynamic>>{};
   final FirebaseFirestore? _db;
   final FirebaseAuth? _auth;
 
@@ -31,6 +39,7 @@ class PlanRepo {
         cantes: await Hive.openBox(Cajas.cantes),
         plan: await Hive.openBox(Cajas.plan),
         agenda: await Hive.openBox(Cajas.agendaTemas),
+        cronogramas: await Hive.openBox(Cajas.cronogramas),
         firestore: firestore,
         auth: auth,
       );
@@ -156,16 +165,65 @@ class PlanRepo {
     } catch (_) {}
   }
 
+  // --------------------------------------------------------------- Cronogramas
+
+  List<Cronograma> cronogramas() {
+    final valores = _cronogramas?.values ?? _cronogramasEnMemoria.values;
+    return [for (final v in valores) Cronograma.fromJson(v as Map)]..sort((a, b) => (b.creado ?? DateTime(0)).compareTo(a.creado ?? DateTime(0)));
+  }
+
+  /// El cronograma activo (solo hay uno; los demás están archivados).
+  Cronograma? cronogramaActivo() => cronogramas().where((c) => !c.archivado).firstOrNull;
+
+  Future<void> guardarCronograma(Cronograma c) async {
+    if (_cronogramas != null) {
+      await _cronogramas.put(c.id, c.toJson());
+    } else {
+      _cronogramasEnMemoria[c.id] = c.toJson();
+    }
+    try {
+      await _docUsuario?.collection('cronogramas').doc(c.id).set(c.toJson());
+    } catch (_) {}
+  }
+
+  /// Empieza un cronograma nuevo: el que hubiera activo pasa a archivado.
+  Future<void> empezarCronograma(Cronograma c) async {
+    for (final viejo in cronogramas().where((x) => !x.archivado && x.id != c.id)) {
+      await guardarCronograma(viejo.copyWith(archivado: true));
+    }
+    await guardarCronograma(c);
+  }
+
+  Future<void> sincronizarCronogramas() async {
+    final doc = _docUsuario;
+    if (doc == null) return;
+    try {
+      final snap = await doc.collection('cronogramas').get();
+      final nube = {for (final d in snap.docs) d.id: Cronograma.fromJson({...d.data(), 'id': d.id})};
+      final locales = {for (final c in cronogramas()) c.id: c};
+      for (final id in {...nube.keys, ...locales.keys}) {
+        final n = nube[id], l = locales[id];
+        final f = n == null ? l! : (l == null ? n : Cronograma.fusionar(l, n));
+        if (l == null || jsonEncode(f.toJson()) != jsonEncode(l.toJson())) {
+          _cronogramas != null ? await _cronogramas.put(id, f.toJson()) : _cronogramasEnMemoria[id] = f.toJson();
+        }
+        if (n == null || jsonEncode(f.toJson()) != jsonEncode(n.toJson())) await doc.collection('cronogramas').doc(id).set(f.toJson());
+      }
+    } catch (_) {}
+  }
+
   // ------------------------------------------------------------------- General
 
   Future<void> sincronizarTodo() async {
     await sincronizarCantes();
     await sincronizarPlan();
     await sincronizarAgendas();
+    await sincronizarCronogramas();
   }
 
   Future<void> borrarDatosLocales() async {
-    await Future.wait([_cantes.clear(), _plan.clear(), _agenda.clear()]);
+    await Future.wait([_cantes.clear(), _plan.clear(), _agenda.clear(), if (_cronogramas != null) _cronogramas.clear()]);
+    _cronogramasEnMemoria.clear();
   }
 
   /// Datos para la exportación en JSON (portabilidad RGPD).
@@ -173,5 +231,6 @@ class PlanRepo {
         'cantes': cantes().map((c) => c.toJson()).toList(),
         'plan': plan().toJson(),
         'agendaTemas': agendas().map((k, a) => MapEntry(k, a.toJson())),
+        'cronogramas': cronogramas().map((c) => c.toJson()).toList(),
       };
 }

@@ -41,6 +41,12 @@ service cloud.firestore {
         && exists(/databases/$(database)/documents/users/$(request.auth.uid)/preparadores/$(preparador));
     }
 
+    // Perfil de LinkedIn: vacío o https://www.linkedin.com/in/… (lo ven todos los usuarios con cuenta).
+    function linkedinValido() {
+      let l = request.resource.data.get('linkedin', '');
+      return l == '' || l.matches('https://www[.]linkedin[.]com/in/[^/?#]+');
+    }
+
     function soloCambia(campos) {
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
     }
@@ -74,6 +80,17 @@ service cloud.firestore {
         && resource.data.preparador == request.auth.uid
         && request.resource.data.preparador == request.auth.uid;
     }
+    // Cronograma (en prueba): el preparador enlazado lo ve solo si el alumno lo
+    // comparte, y solo puede escribir una propuesta firmada por él, que el
+    // alumno acepta o rechaza.
+    match /users/{uid}/cronogramas/{id} {
+      allow read: if esPreparadorDe(uid) && resource.data.compartir == true;
+      allow update: if esPreparadorDe(uid)
+        && resource.data.compartir == true
+        && soloCambia(['propuesta', 'updatedAt'])
+        && request.resource.data.propuesta.de == request.auth.uid;
+    }
+
     // El preparador puede leer su propio permiso y renunciar a él.
     match /users/{uid}/preparadores/{preparador} {
       allow get, delete: if request.auth != null && request.auth.uid == preparador;
@@ -116,9 +133,10 @@ service cloud.firestore {
       allow create: if (esAdmin() || (esVerificado() && uid != request.auth.uid))
         && request.resource.data.uid == uid
         && request.resource.data.avaladoPor == request.auth.uid
-        && request.resource.data.activo == true;
+        && request.resource.data.activo == true
+        && linkedinValido();
       allow update: if esAdmin()
-        || (request.auth.uid == uid && resource.data.activo == true && soloCambia(['nombre', 'ejercicios']));
+        || (request.auth.uid == uid && resource.data.activo == true && soloCambia(['nombre', 'ejercicios', 'linkedin']) && linkedinValido());
       allow delete: if esAdmin();
     }
 

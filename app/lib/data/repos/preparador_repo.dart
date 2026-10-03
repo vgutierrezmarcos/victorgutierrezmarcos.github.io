@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/cronograma.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
@@ -327,6 +328,26 @@ class PreparadorRepo {
     } catch (_) {
       return null;
     }
+  }
+
+  /// Cronograma activo que el alumno enlazado comparte con sus preparadores (o null).
+  Future<Cronograma?> cronogramaDe(Alumno a) async {
+    if (!conSesion || a.uid == null) return null;
+    try {
+      final snap = await _db!.collection('users').doc(a.uid).collection('cronogramas').where('compartir', isEqualTo: true).get();
+      final lista = [for (final d in snap.docs) Cronograma.fromJson({...d.data(), 'id': d.id})].where((c) => !c.archivado).toList()
+        ..sort((x, y) => (y.creado ?? DateTime(0)).compareTo(x.creado ?? DateTime(0)));
+      return lista.firstOrNull;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// El preparador propone cambios en el cronograma del alumno: solo escribe la
+  /// propuesta, que el alumno acepta o rechaza en su app.
+  Future<void> proponerCambios(Alumno a, Cronograma c, PropuestaCronograma p) async {
+    if (!conSesion || a.uid == null) return;
+    await _db!.collection('users').doc(a.uid).collection('cronogramas').doc(c.id).update({'propuesta': p.toJson(), 'updatedAt': DateTime.now().toIso8601String()});
   }
 
   /// El preparador deja de llevar a un alumno enlazado: pierde el acceso a su progreso.

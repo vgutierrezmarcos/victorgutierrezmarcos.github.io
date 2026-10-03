@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
+import 'features/cronograma/cronograma_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
@@ -38,6 +39,7 @@ final _router = GoRouter(
           GoRoute(path: '/temario', builder: (c, s) => const TemarioPage(), routes: [
             GoRoute(path: 'organizacion', builder: (c, s) => const OrganizacionPage()),
             GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
+            GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
           ]),
         ]),
         StatefulShellBranch(routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),

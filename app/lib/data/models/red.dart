@@ -19,7 +19,7 @@ List<String> _textos(Object? l) => [for (final e in (l as List?) ?? const []) e.
 /// Preparador verificado. Lo da de alta el administrador o un preparador ya
 /// verificado ([avaladoPor]); el administrador puede retirarlo ([activo]).
 class PreparadorVerificado {
-  const PreparadorVerificado({required this.uid, required this.nombre, this.ejercicios = const [3, 4], this.avaladoPor, this.avaladoPorNombre = '', this.desde, this.activo = true});
+  const PreparadorVerificado({required this.uid, required this.nombre, this.ejercicios = const [3, 4], this.avaladoPor, this.avaladoPorNombre = '', this.desde, this.activo = true, this.linkedin = ''});
   final String uid;
   final String nombre;
   /// Ejercicios que prepara (3, 4, 5).
@@ -29,11 +29,14 @@ class PreparadorVerificado {
   final String avaladoPorNombre;
   final DateTime? desde;
   final bool activo;
+  /// Perfil de LinkedIn (opcional), para que los opositores vean quién es.
+  final String linkedin;
 
   Map<String, dynamic> toJson() => {
         'uid': uid,
         'nombre': nombre,
         'ejercicios': ejercicios,
+        'linkedin': linkedin,
         'avaladoPor': avaladoPor,
         'avaladoPorNombre': avaladoPorNombre,
         'desde': (desde ?? DateTime.now()).toIso8601String(),
@@ -48,6 +51,7 @@ class PreparadorVerificado {
         avaladoPorNombre: j['avaladoPorNombre'] as String? ?? '',
         desde: _fecha(j['desde']),
         activo: j['activo'] as bool? ?? true,
+        linkedin: j['linkedin'] as String? ?? '',
       );
 
   String get descripcionEjercicios => describirEjercicios(ejercicios);
@@ -55,13 +59,15 @@ class PreparadorVerificado {
 
 /// Petición para que verifiquen a alguien como preparador.
 class SolicitudPreparador {
-  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.destinatario, this.destinatarioNombre = '', this.creada});
+  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.linkedin = '', this.destinatario, this.destinatarioNombre = '', this.creada});
   final String uid;
   final String nombre;
   final String email;
   final List<int> ejercicios;
   /// Quién es: promoción, cuerpo, academia, alumnos que lleva…
   final String presentacion;
+  /// LinkedIn (opcional): ayuda a quien la revisa y pasa al directorio.
+  final String linkedin;
   /// Preparador concreto al que se la pide (null = al administrador y a
   /// cualquier verificado). Solo la ven él y el administrador.
   final String? destinatario;
@@ -74,6 +80,7 @@ class SolicitudPreparador {
         'email': email,
         'ejercicios': ejercicios,
         'presentacion': presentacion,
+        'linkedin': linkedin,
         'paraTodos': destinatario == null,
         'destinatario': destinatario,
         'destinatarioNombre': destinatarioNombre,
@@ -86,6 +93,7 @@ class SolicitudPreparador {
         email: j['email'] as String? ?? '',
         ejercicios: _enteros(j['ejercicios']),
         presentacion: j['presentacion'] as String? ?? '',
+        linkedin: j['linkedin'] as String? ?? '',
         destinatario: j['destinatario'] as String?,
         destinatarioNombre: j['destinatarioNombre'] as String? ?? '',
         creada: _fecha(j['creada']),
@@ -361,3 +369,12 @@ String _hm(DateTime d) => '${d.hour.toString().padLeft(2, '0')}:${d.minute.toStr
 
 /// «de 16:00 a 21:00» o «a las 18:00».
 String horasDe(Sustitucion s) => s.hora != null ? 'a las ${_hm(s.hora!)}' : (s.conFranja ? 'de ${_hm(s.fecha)} a ${_hm(s.hasta!)}' : 'a las ${_hm(s.fecha)}');
+
+/// Enlace a un perfil de LinkedIn en su forma canónica
+/// (https://www.linkedin.com/in/…), o null si no lo es. Acepta lo que se copia
+/// del navegador o de la app, con o sin https://, www. o barra final.
+String? enlaceLinkedin(String texto) {
+  final t = texto.trim();
+  final m = RegExp(r'^(?:https?://)?(?:[a-z]{2,3}\.)?(?:www\.)?linkedin\.com/in/([^/?#\s]+)/?(?:[?#].*)?$', caseSensitive: false).firstMatch(t);
+  return m == null ? null : 'https://www.linkedin.com/in/${m.group(1)}';
+}

@@ -19,6 +19,7 @@ import '../features/test/leitner.dart';
 import 'cache_http.dart';
 import 'avisos_fondo.dart';
 import 'notificaciones.dart';
+import 'cronograma_providers.dart';
 import 'red_providers.dart';
 
 /// Servicios creados en main() antes de arrancar la app.
@@ -157,7 +158,7 @@ Future<void> borrarTodosMisDatos(WidgetRef ref) async {
   await ref.read(planRepoProvider).borrarDatosLocales();
   await ref.read(preparadorRepoProvider).borrarDatosLocales();
   await ref.read(sesionProvider.notifier).cerrarSesion();
-  for (final p in <ProviderOrFamily>[leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
+  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
     ref.invalidate(p);
   }
 }
@@ -178,6 +179,7 @@ Future<void> sincronizarTodo(Ref ref) async {
   ref.invalidate(alumnosProvider);
   ref.invalidate(sesionesProvider);
   ref.invalidate(misPreparadoresProvider);
+  ref.invalidate(cronogramaProvider);
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
 }
 

@@ -6,7 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/cronograma.dart';
 import 'package:tcee_app/data/models/red.dart';
+import 'package:tcee_app/data/repos/plan_repo.dart';
+import 'package:tcee_app/features/cronograma/planificador.dart';
 import 'package:tcee_app/data/repos/preparador_repo.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
 import 'package:tcee_app/widgets/comunes.dart';
@@ -291,5 +294,53 @@ void main() {
     expect(AvatarUsuario.fotoDe(MockUser(uid: 'a', photoURL: 'https://lh3.googleusercontent.com/a/xyz=s96-c')), 'https://lh3.googleusercontent.com/a/xyz=s256-c');
     expect(AvatarUsuario.fotoDe(MockUser(uid: 'b', photoURL: '')), isNull);
     expect(AvatarUsuario.fotoDe(null), isNull);
+  });
+
+  test('LinkedIn: enlace canónico, en la solicitud y luego en el directorio', () async {
+    expect(enlaceLinkedin('linkedin.com/in/paula-perez/'), 'https://www.linkedin.com/in/paula-perez');
+    expect(enlaceLinkedin('https://es.linkedin.com/in/paula?trk=x'), 'https://www.linkedin.com/in/paula');
+    expect(enlaceLinkedin('https://ejemplo.com/in/paula'), isNull);
+    final db = FakeFirebaseFirestore();
+    await db.collection('admins').doc('admin').set({'x': 1});
+    final admin = RedRepo(firestore: db, auth: sesion('admin', 'Víctor'));
+    final nuevo = RedRepo(firestore: db, auth: sesion('nuevo', 'Nuevo'));
+    await nuevo.solicitar(nombre: 'Nuevo', ejercicios: [3], presentacion: 'Preparo el tercero desde 2021', linkedin: 'linkedin.com/in/nuevo');
+    await admin.aprobar((await admin.solicitudesPendientes(admin: true)).single);
+    expect((await admin.verificados()).firstWhere((v) => v.uid == 'nuevo').linkedin, 'https://www.linkedin.com/in/nuevo');
+    await nuevo.actualizarMiFicha(linkedin: 'https://www.linkedin.com/in/otro/');
+    expect((await nuevo.miVerificacion())!.linkedin, 'https://www.linkedin.com/in/otro');
+  });
+
+  test('cronograma compartido: el preparador lo ve, propone y el alumno acepta', () async {
+    final db = FakeFirebaseFirestore();
+    final authAlu = sesion('alu', 'Álex'), authPrep = sesion('paula', 'Paula');
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    final planAlu = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), cronogramas: await caja(), firestore: db, auth: authAlu);
+    final prep = await prepRepo(db, authPrep);
+    final alumno = await prepRepo(db, authAlu);
+    await alumno.enlazarConCodigo((await prep.activar()).codigo!);
+    await prep.sincronizarTodo();
+    final a = prep.alumnos().single;
+
+    final c = crearCronograma(id: 'c1', ejercicio: 3, temas: [for (var i = 1; i <= 9; i++) '3.A.$i'], inicio: DateTime.now(), porSemana: 3);
+    await planAlu.empezarCronograma(c);
+    expect(await prep.cronogramaDe(a), isNull, reason: 'sin compartir no lo ve');
+    await planAlu.guardarCronograma(c.copyWith(compartir: true));
+    final visto = (await prep.cronogramaDe(a))!;
+    expect(visto.temas.length, 9);
+
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    final orden = visto.temas.reversed.toList();
+    await prep.proponerCambios(a, visto, PropuestaCronograma(de: 'paula', nombre: 'Paula', fecha: DateTime.now(), nota: 'Mejor al revés', temas: orden, temasPorSemana: 2));
+    await planAlu.sincronizarCronogramas();
+    final conPropuesta = planAlu.cronogramaActivo()!;
+    expect(conPropuesta.propuesta!.nota, 'Mejor al revés');
+    expect(conPropuesta.compartir, isTrue);
+
+    // Solo uno activo: empezar otro archiva el anterior.
+    await planAlu.empezarCronograma(crearCronograma(id: 'c2', ejercicio: 4, temas: const ['4.A.1'], inicio: DateTime.now()));
+    expect(planAlu.cronogramaActivo()!.id, 'c2');
+    expect(planAlu.cronogramas().firstWhere((x) => x.id == 'c1').archivado, isTrue);
+    expect(await prep.cronogramaDe(a), isNull, reason: 'los archivados no se muestran');
   });
 }

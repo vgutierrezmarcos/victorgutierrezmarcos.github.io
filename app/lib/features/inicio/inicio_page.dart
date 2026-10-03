@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../cronograma/cronograma_page.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -145,6 +146,7 @@ class InicioPage extends ConsumerWidget {
                 if (!diarioHecho) const Icon(Icons.chevron_right),
               ]),
             ),
+            TarjetaCronogramaHoy(abrir: () => context.go('/temario/cronograma')),
             if (sesionesHoy.isNotEmpty) ...[
               const SizedBox(height: 10),
               Tarjeta(

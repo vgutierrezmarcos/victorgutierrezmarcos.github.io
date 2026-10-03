@@ -26,6 +26,8 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/alu/cantes/propio'), { id: 'propio', estado: 'pendiente' });
   await setDoc(doc(d, 'users/alu/preparadores/paula'), { uid: 'paula' });
   await setDoc(doc(d, 'users/alu/preparadores/retirado'), { uid: 'retirado' });
+  await setDoc(doc(d, 'users/alu/cronogramas/cc'), { id: 'cc', compartir: true, temas: ['3.A.1'], updatedAt: 'x' });
+  await setDoc(doc(d, 'users/alu/cronogramas/priv'), { id: 'priv', compartir: false, temas: ['3.A.1'], updatedAt: 'x' });
   await setDoc(doc(d, 'solicitudesPreparador/nuevo'), { uid: 'nuevo', nombre: 'Nuevo', paraTodos: true, destinatario: null });
   await setDoc(doc(d, 'solicitudesPreparador/dirigida'), { uid: 'dirigida', nombre: 'Para Paula', paraTodos: false, destinatario: 'paula' });
   await setDoc(doc(d, 'preparadoresVerificados/olga'), { uid: 'olga', nombre: 'Olga', avaladoPor: 'admin', activo: true });
@@ -42,6 +44,16 @@ await caso('un preparador retirado pierde el acceso', () => assertFails(getDoc(d
 await caso('el preparador no toca los cantes propios del alumno', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cantes/propio'), { estado: 'cancelado' })));
 await caso('el preparador crea un cante firmado por él', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/cantes/s1'), { id: 's1', preparador: 'paula', estado: 'pendiente' })));
 
+console.log('Cronograma');
+await caso('su preparador ve el cronograma compartido', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cronogramas/cc'))));
+await caso('…y la lista de los compartidos', () => assertSucceeds(getDocs(query(collection(db('paula'), 'users/alu/cronogramas'), where('compartir', '==', true)))));
+await caso('no ve el que no comparte', () => assertFails(getDoc(doc(db('paula'), 'users/alu/cronogramas/priv'))));
+await caso('otro opositor no ve ninguno', () => assertFails(getDoc(doc(db('pepe'), 'users/alu/cronogramas/cc'))));
+await caso('el preparador propone cambios firmados por él', () => assertSucceeds(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { propuesta: { de: 'paula', temasPorSemana: 4 }, updatedAt: 'y' })));
+await caso('…pero no en nombre de otro', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { propuesta: { de: 'admin' }, updatedAt: 'y' })));
+await caso('…ni cambiando el cronograma directamente', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { temas: [] })));
+await caso('…ni en el que no comparte', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/priv'), { propuesta: { de: 'paula' }, updatedAt: 'y' })));
+
 console.log('Verificación');
 await caso('nadie se verifica a sí mismo', () => assertFails(setDoc(doc(db('pepe'), 'preparadoresVerificados/pepe'), { uid: 'pepe', avaladoPor: 'pepe', activo: true })));
 await caso('un no verificado no verifica a otro', () => assertFails(setDoc(doc(db('pepe'), 'preparadoresVerificados/juan'), { uid: 'juan', avaladoPor: 'pepe', activo: true })));
@@ -49,6 +61,8 @@ await caso('un verificado verifica a otro firmando', () => assertSucceeds(setDoc
 await caso('…pero no firmando como otro', () => assertFails(setDoc(doc(db('paula'), 'preparadoresVerificados/otro'), { uid: 'otro', avaladoPor: 'admin', activo: true })));
 await caso('un retirado no verifica a nadie', () => assertFails(setDoc(doc(db('retirado'), 'preparadoresVerificados/x'), { uid: 'x', avaladoPor: 'retirado', activo: true })));
 await caso('el verificado cambia su nombre', () => assertSucceeds(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { nombre: 'Paula P.' })));
+await caso('el verificado pone su LinkedIn', () => assertSucceeds(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { linkedin: 'https://www.linkedin.com/in/paula-perez' })));
+await caso('…pero no otro enlace', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { linkedin: 'https://ejemplo.com/phishing' })));
 await caso('…pero no su aval', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { avaladoPor: 'admin2' })));
 await caso('el retirado no se reactiva', () => assertFails(updateDoc(doc(db('retirado'), 'preparadoresVerificados/retirado'), { activo: true })));
 await caso('un verificado no retira a otro', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/admin'), { activo: false })));

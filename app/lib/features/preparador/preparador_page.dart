@@ -16,6 +16,7 @@ import '../plan/cantes_util.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
 import 'ajustes_preparador_page.dart';
+import 'directorio_page.dart';
 import 'alumno_page.dart';
 import 'red_widgets.dart';
 import 'reservas.dart';
@@ -175,6 +176,12 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             ),
             if (firebase && usuario != null) ...[
               const TituloSeccion('Sustituciones'),
+              FilaEnlace(
+                icono: Icons.badge_outlined,
+                titulo: 'Preparadores verificados',
+                subtitulo: 'Quiénes son, qué ejercicios preparan y su LinkedIn',
+                onTap: () => ir(const DirectorioPage()),
+              ),
               FilaEnlace(
                 icono: Icons.campaign_outlined,
                 titulo: 'Buscar quién me coja un cante',

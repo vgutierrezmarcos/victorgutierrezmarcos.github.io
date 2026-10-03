@@ -152,6 +152,7 @@ class PerfilPreparador {
     this.avisosSustitucion = true,
     this.reservas = false,
     this.huecos = const [],
+    this.linkedin = '',
     this.updatedAt,
   });
 
@@ -169,9 +170,11 @@ class PerfilPreparador {
   final bool reservas;
   /// Huecos semanales en los que acepta reservas.
   final List<Hueco> huecos;
+  /// Perfil de LinkedIn que sale en el directorio de preparadores.
+  final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? reservas, List<Hueco>? huecos}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? reservas, List<Hueco>? huecos, String? linkedin}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -179,6 +182,7 @@ class PerfilPreparador {
         avisosSustitucion: avisosSustitucion ?? this.avisosSustitucion,
         reservas: reservas ?? this.reservas,
         huecos: huecos ?? this.huecos,
+        linkedin: linkedin ?? this.linkedin,
         updatedAt: DateTime.now(),
       );
 
@@ -190,6 +194,7 @@ class PerfilPreparador {
         'avisosSustitucion': avisosSustitucion,
         'reservas': reservas,
         'huecos': huecos.map((h) => h.toJson()).toList(),
+        'linkedin': linkedin,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -203,6 +208,7 @@ class PerfilPreparador {
           avisosSustitucion: j['avisosSustitucion'] as bool? ?? true,
           reservas: j['reservas'] as bool? ?? false,
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
+          linkedin: j['linkedin'] as String? ?? '',
           updatedAt: _fecha(j['updatedAt']),
         );
 }

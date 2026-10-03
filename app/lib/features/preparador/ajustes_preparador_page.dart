@@ -69,6 +69,49 @@ class AjustesPreparadorPage extends ConsumerWidget {
                 onTap: editarNombre,
               ),
               ListTile(
+                leading: const Icon(Icons.badge_outlined),
+                title: const Text('Perfil de LinkedIn'),
+                subtitle: Text(perfil.linkedin.isEmpty ? 'Opcional: sale en el directorio de preparadores' : perfil.linkedin, maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                trailing: const Icon(Icons.edit_outlined, size: 18),
+                onTap: () async {
+                  final ctrl = TextEditingController(text: perfil.linkedin);
+                  final t = await showDialog<String>(
+                    context: context,
+                    builder: (d) => StatefulBuilder(
+                      builder: (d, set) {
+                        final valido = ctrl.text.trim().isEmpty || enlaceLinkedin(ctrl.text) != null;
+                        return AlertDialog(
+                          title: const Text('Perfil de LinkedIn'),
+                          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            Text('Los opositores lo verán en el directorio de preparadores verificados. Déjalo vacío para quitarlo.', style: Theme.of(d).textTheme.bodySmall),
+                            const SizedBox(height: 10),
+                            TextField(
+                              controller: ctrl,
+                              autofocus: true,
+                              keyboardType: TextInputType.url,
+                              decoration: InputDecoration(hintText: 'linkedin.com/in/tu-perfil', errorText: valido ? null : 'Pega el enlace a tu perfil (linkedin.com/in/…)'),
+                              onChanged: (_) => set(() {}),
+                            ),
+                          ]),
+                          actions: [
+                            TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+                            FilledButton(onPressed: valido ? () => Navigator.pop(d, ctrl.text.trim().isEmpty ? '' : enlaceLinkedin(ctrl.text)!) : null, child: const Text('Guardar')),
+                          ],
+                        );
+                      },
+                    ),
+                  );
+                  if (t == null) return;
+                  await notifier.guardar(perfil.copyWith(linkedin: t));
+                  if (verificado) {
+                    try {
+                      await ref.read(redRepoProvider).actualizarMiFicha(linkedin: t);
+                      ref.invalidate(verificadosProvider);
+                    } catch (_) {}
+                  }
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.phone_outlined),
                 title: const Text('Teléfono para WhatsApp'),
                 subtitle: Text(perfil.telefono.isEmpty ? 'Se pide al coger una sustitución' : '${perfil.telefono} · solo lo ve el alumno cuyo cante coges', style: context.textos.labelSmall),
