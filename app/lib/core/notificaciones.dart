@@ -115,7 +115,7 @@ class Notificaciones {
     final nombre = c.titulo.isEmpty ? 'Cante' : 'Cante · ${c.titulo}';
     return [
       (cuando: DateTime(c.fecha.year, c.fecha.month, c.fecha.day - 1, 20), titulo: nombre, texto: 'Mañana a las $hora. Repasa los temas que entran.'),
-      (cuando: c.fecha.subtract(const Duration(hours: 1)), titulo: nombre, texto: 'En una hora, a las $hora.'),
+      (cuando: c.fecha.subtract(const Duration(hours: 1)), titulo: nombre, texto: 'En una hora, a las $hora.${c.online ? (c.enlace.isEmpty ? ' Es online.' : ' Online: ${c.enlace}') : (c.presencial && c.lugar.isNotEmpty ? ' En ${c.lugar}.' : '')}'),
     ];
   }
 

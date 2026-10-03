@@ -125,8 +125,11 @@ class Sustitucion {
     this.cante,
     this.creada,
     this.updatedAt,
+    this.modalidad = Modalidad.sinIndicar,
   });
 
+  /// Presencial u online (sin indicar = le da igual).
+  final Modalidad modalidad;
   final String id;
   /// uid del alumno que la pide.
   final String alumno;
@@ -163,7 +166,16 @@ class Sustitucion {
   bool vaA(String uid) => paraTodos || destinatarios.contains(uid);
   /// Dictamen (1.º de TCEE: coyuntura), sin temas.
   bool get coyuntura => Oposiciones.actual.esDictamen(ejercicio);
-  String get descripcion {
+  /// «Presencial», «Online» o «Presencial u online».
+  String get textoModalidad => switch (modalidad) {
+        Modalidad.presencial => 'Presencial',
+        Modalidad.online => 'Online',
+        Modalidad.sinIndicar => 'Presencial u online',
+      };
+
+  String get descripcion => [_descripcionEjercicio(), if (modalidad != Modalidad.sinIndicar) textoModalidad.toLowerCase()].join(' · ');
+
+  String _descripcionEjercicio() {
     if (!coyuntura) return '$ejercicio.º ejercicio · ${temas.length} temas';
     final que = Oposiciones.actual.ejercicio(ejercicio)?.queSeCanta ?? 'cante';
     return '${que[0].toUpperCase()}${que.substring(1)} (${ejercicio == 1 ? '1.er' : '$ejercicio.º'} ejercicio)';
@@ -185,6 +197,7 @@ class Sustitucion {
         'cogidaPor': cogidaPor,
         'cogidaPorNombre': cogidaPorNombre,
         'cante': cante,
+        if (modalidad != Modalidad.sinIndicar) 'modalidad': modalidad.name,
         'creada': (creada ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
@@ -207,6 +220,7 @@ class Sustitucion {
         cante: j['cante'] as String?,
         creada: _fecha(j['creada']),
         updatedAt: _fecha(j['updatedAt']),
+        modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
       );
 
   /// Cante que aparece en la agenda del alumno cuando alguien la coge.
@@ -220,6 +234,7 @@ class Sustitucion {
         notas: notas,
         titulo: 'Sustitución · ${nombreSustituto ?? cogidaPorNombre}',
         sustitucion: id,
+        modalidad: modalidad,
         updatedAt: DateTime.now(),
       );
 }

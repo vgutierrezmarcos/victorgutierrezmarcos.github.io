@@ -46,6 +46,8 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
   // Ejercicios con cante (en TCEE, 1.º —coyuntura—, 3.º y 4.º; el 5.º no se canta).
   late int _ejercicio = ejerciciosConCante.contains(widget.cante?.ejercicio) ? widget.cante!.ejercicio : Oposiciones.actual.primerConTemas;
   bool get _dictamen => Oposiciones.actual.esDictamen(_ejercicio);
+  /// Presencial, online o le da igual (sin indicar); por defecto, la del cante.
+  late Modalidad _modalidad = widget.cante?.modalidad ?? Modalidad.sinIndicar;
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late final _nombre = TextEditingController(text: ref.read(usuarioActualProvider)?.displayName ?? '');
   late final _telefono = TextEditingController(text: ref.read(planProvider).telefono);
@@ -102,6 +104,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
         destinatarios: _todos ? const [] : _elegidos.toList(),
         cante: widget.cante?.id,
         creada: DateTime.now(),
+        modalidad: _modalidad,
       );
       await red.publicarSustitucion(s, ContactoRed(nombre: _nombre.text.trim(), telefono: _telefono.text.trim()));
       // El teléfono se recuerda para la próxima vez (solo en tu cuenta).
@@ -191,6 +194,25 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
                   }),
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
                 ),
+              ),
+              ListTile(
+                leading: Icon(_modalidad == Modalidad.online ? Icons.videocam_outlined : Icons.place_outlined),
+                title: const Text('Cómo'),
+                subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(_modalidad == Modalidad.sinIndicar ? 'Me da igual: presencial u online' : (_modalidad == Modalidad.online ? 'Online: así puede cogerlo alguien de otra ciudad' : 'Presencial'), style: context.textos.labelSmall),
+                  const SizedBox(height: 6),
+                  SegmentedButton<Modalidad>(
+                  showSelectedIcon: false,
+                  segments: const [
+                    ButtonSegment(value: Modalidad.presencial, label: Text('Presencial')),
+                    ButtonSegment(value: Modalidad.online, label: Text('Online')),
+                    ButtonSegment(value: Modalidad.sinIndicar, label: Text('Igual')),
+                  ],
+                  selected: {_modalidad},
+                  onSelectionChanged: (s) => setState(() => _modalidad = s.first),
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                ),
+                ]),
               ),
             ]),
           ),

@@ -51,14 +51,14 @@ class CronogramaPage extends ConsumerWidget {
       );
     }
 
-    final esta = lunesDe(DateTime.now());
+    final esta = inicioSemana(DateTime.now(), c.diaCante);
     final finObjetivo = c.fin ?? estado.fin ?? DateTime.now();
-    final ritmoNecesario = ritmoPara(estado.pendientes, esta, finObjetivo, c.descansos);
-    final finConRitmo = finEstimado(estado.pendientes, esta, c.temasPorSemana, c.descansos);
+    final ritmoNecesario = ritmoPara(estado.pendientes, esta, finObjetivo, c.descansos, diaCante: c.diaCante);
+    final finConRitmo = finEstimado(estado.pendientes, esta, c.temasPorSemana, c.descansos, diaCante: c.diaCante);
     final p = c.propuesta;
 
     Future<void> cambiarRitmo() async {
-      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: c.temasPorSemana, fin: c.fin, descansos: c.descansos);
+      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: c.temasPorSemana, fin: c.fin, descansos: c.descansos, diaCante: c.diaCante);
       if (r != null) await notifier.replanificar(porSemana: r.porSemana, fin: r.fin);
     }
 

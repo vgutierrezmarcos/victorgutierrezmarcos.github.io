@@ -57,7 +57,7 @@ class CronogramaNotifier extends Notifier<Cronograma?> {
     final c = state;
     if (c == null) return;
     final d = {...c.descansos};
-    descansar ? d.add(lunesDe(lunes)) : d.remove(lunesDe(lunes));
+    descansar ? d.add(inicioSemana(lunes, c.diaCante)) : d.remove(inicioSemana(lunes, c.diaCante));
     await _guardar(replanificarCronograma(c.copyWith(descansos: d), DateTime.now(), vueltas: ref.read(vueltasProvider)));
   }
 

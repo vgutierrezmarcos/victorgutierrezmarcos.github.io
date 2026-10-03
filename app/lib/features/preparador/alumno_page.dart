@@ -189,7 +189,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                     child: ListTile(
                       leading: Icon(Icons.event_outlined, color: context.esquema.primary),
                       title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)}', style: context.textos.titleSmall),
-                      subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                      subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
                       trailing: Etiqueta(cuentaAtras(s.fecha)),
                     ),
                   ),
