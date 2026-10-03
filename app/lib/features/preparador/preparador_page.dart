@@ -9,7 +9,6 @@ import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/repos/preparador_repo.dart';
-import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
@@ -226,7 +225,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                   onTap: () => ir(const VerificarPreparadoresPage()),
                 ),
               if (estado.esAdmin)
-                FilaEnlace(icono: Icons.admin_panel_settings_outlined, titulo: 'Administración', subtitulo: 'Quién está verificado y quién lo avaló', onTap: () => ir(const AdminRedPage())),
+                FilaEnlace(icono: Icons.admin_panel_settings_outlined, titulo: 'Gestionar la red', subtitulo: 'Quién está verificado y quién lo avaló', onTap: () => ir(const AdminRedPage())),
               FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Teléfono, avisos y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
               TituloSeccion('Próximas sesiones', accion: TextButton.icon(onPressed: alumnos.isEmpty ? null : _nuevaSesion, icon: const Icon(Icons.add, size: 18), label: const Text('Sesión'))),
               if (proximas.isEmpty)
@@ -298,7 +297,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
           child: Row(children: [
             const Icon(Icons.verified, size: 16, color: Paleta.acierto),
             const SizedBox(width: 6),
-            Expanded(child: Text(estado.verificacion!.avaladoPor == estado.verificacion!.uid ? 'Preparador verificado (administrador)' : 'Verificado por ${estado.verificacion!.avaladoPorNombre}', style: context.textos.labelSmall)),
+            Expanded(child: Text(estado.verificacion!.avaladoPor == estado.verificacion!.uid ? 'Preparador verificado' : 'Verificado por ${estado.verificacion!.avaladoPorNombre}', style: context.textos.labelSmall)),
           ]),
         ),
       ]);
@@ -310,8 +309,8 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         const SizedBox(height: 4),
         Text(
           solicitud == null
-              ? 'Para dar tu código a alumnos, aparecer en la lista de preparadores y coger sustituciones, te tiene que verificar el administrador o un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos en este dispositivo.'
-              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.destinatario == null ? '. La revisará el administrador o un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre} (y la ve también el administrador)'}; desliza hacia abajo para comprobarlo.',
+              ? 'Para dar tu código a alumnos, aparecer en la lista de preparadores y coger sustituciones, te tiene que verificar un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos en este dispositivo.'
+              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.destinatario == null ? '. La revisará un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre}'}; desliza hacia abajo para comprobarlo.',
           style: context.textos.bodySmall,
         ),
         const SizedBox(height: 10),
@@ -320,7 +319,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             FilledButton.icon(
               onPressed: () async {
                 final messenger = ScaffoldMessenger.of(context);
-                final nombre = perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? 'Administrador');
+                final nombre = perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? '');
                 try {
                   await ref.read(redRepoProvider).verificarme(nombre: nombre);
                   refrescarRedDesdeWidget(ref);
@@ -331,7 +330,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 }
               },
               icon: const Icon(Icons.verified_outlined, size: 18),
-              label: const Text('Verificarme (soy el administrador)'),
+              label: const Text('Verificarme'),
             )
           else if (solicitud == null)
             FilledButton.icon(onPressed: () => solicitarVerificacion(context, ref), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
@@ -343,48 +342,9 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               },
               child: const Text('Retirar la solicitud'),
             ),
-          if (estado.esAdmin) OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminRedPage())), child: const Text('Administración')),
+          if (estado.esAdmin) OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminRedPage())), child: const Text('Gestionar la red')),
         ]),
-        if (!estado.esAdmin) _ayudaAdministrador(context, estado.diagnostico),
       ]),
-    );
-  }
-
-  /// Para el administrador que aún no aparece como tal: su identificador y
-  /// por qué la app no le reconoce.
-  Widget _ayudaAdministrador(BuildContext context, DiagnosticoAdmin d) {
-    final uid = ref.read(usuarioActualProvider)?.uid ?? '';
-    return Theme(
-      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-      child: ExpansionTile(
-        tilePadding: EdgeInsets.zero,
-        childrenPadding: const EdgeInsets.only(bottom: 8),
-        title: Text('¿Eres el administrador?', style: context.textos.labelLarge?.copyWith(color: context.esquema.primary)),
-        expandedCrossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            switch (d) {
-              DiagnosticoAdmin.sinPermiso => 'El servidor no deja comprobarlo: las reglas nuevas (firestore.rules) aún no están publicadas en la consola de Firebase. Publícalas y desliza hacia abajo.',
-              DiagnosticoAdmin.sinRed => 'No se ha podido comprobar (¿sin conexión?). Desliza hacia abajo para reintentarlo.',
-              _ => 'No hay ningún documento admins/<tu identificador> en Firestore. Créalo en la consola (colección admins) con este identificador como «ID del documento» y desliza hacia abajo.',
-            },
-            style: context.textos.bodySmall,
-          ),
-          const SizedBox(height: 6),
-          Row(children: [
-            Expanded(child: SelectableText(uid, style: context.textos.labelMedium?.copyWith(fontFamily: 'monospace'))),
-            IconButton(
-              tooltip: 'Copiar identificador',
-              icon: const Icon(Icons.copy, size: 18),
-              onPressed: () async {
-                final messenger = ScaffoldMessenger.of(context);
-                await Clipboard.setData(ClipboardData(text: uid));
-                messenger.showSnackBar(const SnackBar(content: Text('Identificador copiado')));
-              },
-            ),
-          ]),
-        ],
-      ),
     );
   }
 

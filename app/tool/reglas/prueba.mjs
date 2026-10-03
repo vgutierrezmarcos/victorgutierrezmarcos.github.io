@@ -16,6 +16,7 @@ await env.clearFirestore();
 await env.withSecurityRulesDisabled(async (c) => {
   const d = c.firestore();
   await setDoc(doc(d, 'admins/admin'), { desde: 'consola' });
+  await setDoc(doc(d, 'admins/jefe@example.org'), { desde: 'consola' });
   await setDoc(doc(d, 'preparadoresVerificados/admin'), { uid: 'admin', nombre: 'Víctor', avaladoPor: 'admin', activo: true });
   await setDoc(doc(d, 'preparadoresVerificados/paula'), { uid: 'paula', nombre: 'Paula', avaladoPor: 'admin', activo: true });
   await setDoc(doc(d, 'preparadoresVerificados/retirado'), { uid: 'retirado', nombre: 'Retirado', avaladoPor: 'admin', activo: false });
@@ -66,6 +67,12 @@ await caso('el administrador ve todas', () => assertSucceeds(getDocs(collection(
 await caso('un verificado no puede listarlas todas sin filtrar', () => assertFails(getDocs(collection(db('olga'), 'solicitudesPreparador'))));
 await caso('saber si soy administrador', () => assertSucceeds(getDoc(doc(db('admin'), 'admins/admin'))));
 await caso('nadie se hace administrador', () => assertFails(setDoc(doc(db('pepe'), 'admins/pepe'), { x: 1 })));
+const jefe = () => env.authenticatedContext('jefe', { email: 'jefe@example.org', email_verified: true }).firestore();
+const falsoJefe = () => env.authenticatedContext('falso', { email: 'jefe@example.org', email_verified: false }).firestore();
+await caso('administrador por correo: lee su documento', () => assertSucceeds(getDoc(doc(jefe(), 'admins/jefe@example.org'))));
+await caso('…y verifica a alguien', () => assertSucceeds(setDoc(doc(jefe(), 'preparadoresVerificados/porcorreo'), { uid: 'porcorreo', avaladoPor: 'jefe', activo: true })));
+await caso('…pero no con el correo sin verificar', () => assertFails(setDoc(doc(falsoJefe(), 'preparadoresVerificados/otro2'), { uid: 'otro2', avaladoPor: 'falso', activo: true })));
+await caso('nadie lee el documento de otro administrador', () => assertFails(getDoc(doc(db('pepe'), 'admins/jefe@example.org'))));
 
 console.log('Códigos');
 await caso('un no verificado no reserva código', () => assertFails(setDoc(doc(db('pepe'), 'codigos/AAAAAA'), { uid: 'pepe' })));

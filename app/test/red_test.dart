@@ -274,4 +274,15 @@ void main() {
     expect(horasDe(cogida), 'a las 18:30');
     expect(cogida.canteDelAlumno().fecha, DateTime(dia.year, dia.month, dia.day, 18, 30));
   });
+
+  test('el administrador se reconoce por su uid o por su correo de Google', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('admins').doc('jefe@example.org').set({'x': 1});
+    final porCorreo = RedRepo(firestore: db, auth: MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: 'u1', displayName: 'Jefe', email: 'Jefe@Example.org')));
+    final otro = RedRepo(firestore: db, auth: sesion('u2', 'Otro'));
+    expect(await porCorreo.esAdmin(), isTrue);
+    expect(await otro.esAdmin(), isFalse);
+    await porCorreo.verificarme(nombre: 'Jefe');
+    expect((await porCorreo.miVerificacion())!.avaladoPorNombre, 'Jefe');
+  });
 }

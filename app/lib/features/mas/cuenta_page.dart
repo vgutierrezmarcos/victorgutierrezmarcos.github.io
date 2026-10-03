@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/constants.dart';
@@ -59,23 +58,7 @@ class CuentaPage extends ConsumerWidget {
                 ])),
               ]),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 6),
-              child: Row(children: [
-                Expanded(child: SelectableText('Tu identificador: ${usuario.uid}', style: context.textos.labelSmall)),
-                IconButton(
-                  tooltip: 'Copiar identificador',
-                  visualDensity: VisualDensity.compact,
-                  icon: const Icon(Icons.copy, size: 16),
-                  onPressed: () async {
-                    final messenger = ScaffoldMessenger.of(context);
-                    await Clipboard.setData(ClipboardData(text: usuario.uid));
-                    messenger.showSnackBar(const SnackBar(content: Text('Identificador copiado')));
-                  },
-                ),
-              ]),
-            ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 10),
             OutlinedButton.icon(
               onPressed: () async {
                 await ref.read(sesionProvider.notifier).sincronizar();
