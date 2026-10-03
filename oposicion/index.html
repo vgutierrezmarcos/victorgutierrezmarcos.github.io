@@ -121,21 +121,35 @@
             <article class="page-content">
                 <h2 class="section-title">MATERIALES PARA LA OPOSICIÓN A TCEE</h2>
 
-                <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
+                <!-- App móvil: los enlaces y la novedad se rellenan desde app-config.json (app-banner.js) -->
                 <div id="app-banner" class="app-banner" hidden>
                     <div class="app-banner-text">
-                        <span class="app-banner-label">Android y navegador · versión de prueba</span>
-                        <h3 class="app-banner-title">Lleva la oposición en el bolsillo</h3>
-                        <p>Agenda de cantes con cuenta atrás, sorteo de temas, cronómetro, probabilidades, temario y simulador de test, con el mismo historial que en la web. En el móvil o en el ordenador, y tus datos solo los ves tú.</p>
-                        <a class="app-banner-more" href="../app/">Qué hace, capturas y vídeo →</a>
+                        <div class="app-banner-cabecera">
+                            <img class="app-banner-logo" src="../app/favicon/favicon.svg" alt="" width="44" height="44">
+                            <div>
+                                <span class="app-banner-label">La app · gratis · Android y navegador</span>
+                                <h3 class="app-banner-title">Tu oposición, semana a semana</h3>
+                            </div>
+                        </div>
+                        <p>Abres la app y ves qué temas te tocan antes del próximo cante, cuánto falta para el examen y qué probabilidad llevas de que salga uno que te sabes.</p>
+                        <ul class="app-banner-chips">
+                            <li>Cronograma de vueltas</li>
+                            <li>Sorteo y cronómetro</li>
+                            <li>Probabilidad de aprobar</li>
+                            <li>Cantes online con Meet</li>
+                            <li>Preparadores y sustituciones</li>
+                            <li>Test con tu historial</li>
+                        </ul>
+                        <p id="app-banner-new" class="app-banner-new" hidden><span>Novedad</span> <span id="app-banner-new-text"></span></p>
                     </div>
                     <div class="app-banner-links">
                         <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
                         <a id="app-link-play" class="download-btn" target="_blank" rel="noopener" hidden>Google Play</a>
                         <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
-                        <a class="download-btn" href="../app/abrir/">Usar en el navegador</a>
+                        <a class="download-btn download-btn--sec" href="../app/abrir/">Abrir en el navegador</a>
+                        <a class="app-banner-more" href="../app/">Ver cómo funciona (vídeo de un minuto) →</a>
                     </div>
-                    <p id="app-banner-note" class="app-banner-note" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido.</p>
+                    <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note" hidden> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
                 </div>
 
                 <div class="content-text">
