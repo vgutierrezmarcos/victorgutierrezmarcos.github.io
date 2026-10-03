@@ -126,10 +126,16 @@ void main() {
     await tester.pumpWidget(ElegirOposicionApp(alElegir: (o) async => elegida = o));
     await tester.pumpAndSettle();
     expect(find.text('¿A QUÉ TE PRESENTAS?'), findsOneWidget);
-    expect(find.text('Técnico Comercial y Economista del Estado'), findsOneWidget);
-    expect(find.text('Diplomado Comercial del Estado'), findsOneWidget);
-    await tester.tap(find.text('DCE'));
+    // Las lanzadas, sí; las que aún no, no (solo las ven sus administradores, en Ajustes).
+    for (final o in Oposiciones.disponibles) {
+      expect(find.text(o.nombre), findsOneWidget);
+    }
+    for (final o in Oposiciones.sinLanzar) {
+      expect(find.text(o.nombre), findsNothing);
+    }
+    final ultima = Oposiciones.disponibles.last;
+    await tester.tap(find.text(ultima.siglas));
     await tester.pump();
-    expect(elegida?.id, 'dce');
+    expect(elegida?.id, ultima.id);
   });
 }

@@ -27,10 +27,7 @@ class CronogramaDelAlumno extends ConsumerWidget {
       Tarjeta(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PropuestaCronogramaPage(alumno: alumno, c: c))),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Expanded(child: Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium)),
-            const Etiqueta('EN PRUEBA'),
-          ]),
+          Text(nombreVuelta(c.ejercicio), style: context.textos.titleMedium),
           const SizedBox(height: 6),
           ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: estado.progreso, minHeight: 6)),
           const SizedBox(height: 6),
@@ -77,7 +74,7 @@ class _PropuestaCronogramaPageState extends ConsumerState<PropuestaCronogramaPag
     final pendiente = widget.c.propuesta;
 
     Future<void> ritmo() async {
-      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: _c.temasPorSemana, fin: _c.fin, descansos: _c.descansos);
+      final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: _c.temasPorSemana, fin: _c.fin, descansos: _c.descansos, diaCante: _c.diaCante);
       if (r == null) return;
       setState(() {
         _c = replanificarCronograma(_c, DateTime.now(), porSemana: r.porSemana, fin: r.fin);

@@ -120,7 +120,7 @@ class InicioPage extends ConsumerWidget {
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text(cante == null ? 'Sin cantes programados' : 'Próximo cante ${cuentaAtras(cante.fecha)}', style: context.textos.titleMedium),
-                    Text(cante == null ? 'Apunta cuándo es el siguiente para tener la cuenta atrás y un aviso.' : '${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${descripcionBolsa(cante)}', style: context.textos.bodySmall),
+                    Text(cante == null ? 'Apunta cuándo es el siguiente para tener la cuenta atrás y un aviso.' : '${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${detalleCante(cante)}', style: context.textos.bodySmall),
                   ]),
                 ),
                 const Icon(Icons.chevron_right),

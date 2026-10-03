@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/red.dart';
 import '../data/repos/red_repo.dart';
@@ -14,6 +15,21 @@ final redRepoProvider = Provider<RedRepo>((ref) {
   final firebase = ref.watch(serviciosProvider).firebaseDisponible;
   final oposicion = ref.watch(oposicionProvider);
   return firebase ? RedRepo(firestore: FirebaseFirestore.instance, auth: FirebaseAuth.instance, oposicion: oposicion) : RedRepo(oposicion: oposicion);
+});
+
+/// Oposiciones que puede elegir el usuario: las lanzadas, la que tiene
+/// abierta y las aún sin lanzar de las que es administrador (o todas, si es el
+/// administrador general), para probarlas.
+final oposicionesVisiblesProvider = FutureProvider<List<Oposicion>>((ref) async {
+  final actual = ref.watch(oposicionProvider);
+  ref.watch(usuarioActualProvider);
+  final red = ref.watch(redRepoProvider);
+  final visibles = [...Oposiciones.disponibles];
+  for (final o in Oposiciones.sinLanzar) {
+    if (o.id == actual.id || await red.esAdminEn(o).catchError((_) => false)) visibles.add(o);
+  }
+  if (!visibles.any((o) => o.id == actual.id)) visibles.add(actual);
+  return [for (final o in Oposiciones.todas) if (visibles.any((v) => v.id == o.id)) o];
 });
 
 /// Situación del usuario en la red.

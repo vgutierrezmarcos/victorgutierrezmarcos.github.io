@@ -2,7 +2,7 @@ import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/estructura.dart';
 
-/// Lógica del cronograma (en prueba), sin interfaz: orden sugerido por bloques
+/// Lógica del cronograma, sin interfaz: orden sugerido por bloques
 /// y conexiones del PowerPoint de organización, intercalado de los temas más
 /// memorísticos (Mixto, en el 3.º) o de las dos partes (4.º), reparto por
 /// semanas y replanificación.
@@ -142,26 +142,26 @@ int? unoDeCada(EstructuraTemario e, int ejercicio, List<String> temas) {
 }
 
 /// Semanas hábiles (sin descanso) desde la de [desde] hasta la de [fin].
-int semanasHabiles(DateTime desde, DateTime fin, Set<DateTime> descansos) {
+int semanasHabiles(DateTime desde, DateTime fin, Set<DateTime> descansos, {int? diaCante}) {
   var n = 0;
-  for (var l = lunesDe(desde); !l.isAfter(lunesDe(fin)); l = DateTime(l.year, l.month, l.day + 7)) {
+  for (var l = inicioSemana(desde, diaCante); !l.isAfter(inicioSemana(fin, diaCante)); l = DateTime(l.year, l.month, l.day + 7)) {
     if (!descansos.contains(l)) n++;
   }
   return n;
 }
 
 /// Temas por semana para acabar [pendientes] temas en la semana de [fin].
-int ritmoPara(int pendientes, DateTime desde, DateTime fin, Set<DateTime> descansos) {
-  final semanas = semanasHabiles(desde, fin, descansos);
+int ritmoPara(int pendientes, DateTime desde, DateTime fin, Set<DateTime> descansos, {int? diaCante}) {
+  final semanas = semanasHabiles(desde, fin, descansos, diaCante: diaCante);
   if (semanas <= 0) return pendientes < 1 ? 1 : pendientes;
   final r = (pendientes / semanas).ceil();
   return r < 1 ? 1 : r;
 }
 
 /// Reparte [temas] por semanas desde [desde], [porSemana] cada una, saltando los descansos.
-List<SemanaPlan> repartir(List<String> temas, DateTime desde, int porSemana, Set<DateTime> descansos) {
+List<SemanaPlan> repartir(List<String> temas, DateTime desde, int porSemana, Set<DateTime> descansos, {int? diaCante}) {
   final out = <SemanaPlan>[];
-  var l = lunesDe(desde);
+  var l = inicioSemana(desde, diaCante);
   var i = 0;
   final k = porSemana < 1 ? 1 : porSemana;
   while (i < temas.length) {
@@ -176,10 +176,11 @@ List<SemanaPlan> repartir(List<String> temas, DateTime desde, int porSemana, Set
   return out;
 }
 
-/// Domingo de la semana en la que se acabaría con [pendientes] temas a [porSemana].
-DateTime finEstimado(int pendientes, DateTime desde, int porSemana, Set<DateTime> descansos) {
-  final semanas = repartir(List.filled(pendientes, ''), desde, porSemana, descansos);
-  return semanas.isEmpty ? lunesDe(desde) : semanas.last.domingo;
+/// Último día (el del cante, si lo hay) de la semana en la que se acabaría con
+/// [pendientes] temas a [porSemana].
+DateTime finEstimado(int pendientes, DateTime desde, int porSemana, Set<DateTime> descansos, {int? diaCante}) {
+  final semanas = repartir(List.filled(pendientes, ''), desde, porSemana, descansos, diaCante: diaCante);
+  return semanas.isEmpty ? inicioSemana(desde, diaCante) : semanas.last.domingo;
 }
 
 /// Situación del cronograma en una fecha.
@@ -204,7 +205,7 @@ class EstadoCronograma {
 EstadoCronograma estadoDe(Cronograma c, DateTime hoy, {Map<String, List<DateTime>> vueltas = const {}}) {
   bool hecho(String t) => c.hechos.containsKey(t) || (!c.desmarcados.contains(t) && (vueltas[t] ?? const []).any((v) => !v.isBefore(c.inicio)));
   final hechos = {for (final t in c.temas) if (hecho(t)) t};
-  final esta = lunesDe(hoy);
+  final esta = inicioSemana(hoy, c.diaCante);
   final actual = c.semanas.where((s) => s.lunes == esta).firstOrNull;
   final atrasados = [for (final s in c.semanas.where((s) => s.lunes.isBefore(esta))) ...s.temas.where((t) => !hechos.contains(t))];
   final conTemas = c.semanas.where((s) => s.temas.isNotEmpty);
@@ -217,7 +218,7 @@ EstadoCronograma estadoDe(Cronograma c, DateTime hoy, {Map<String, List<DateTime
 /// con lo que se hizo en ellas, y la actual, con lo ya hecho en ella.
 Cronograma replanificarCronograma(Cronograma c, DateTime hoy, {int? porSemana, DateTime? fin, Map<String, List<DateTime>> vueltas = const {}}) {
   final hechos = estadoDe(c, hoy, vueltas: vueltas).hechos;
-  final esta = lunesDe(hoy);
+  final esta = inicioSemana(hoy, c.diaCante);
   final desde = c.inicio.isAfter(esta) ? c.inicio : esta;
   final pasadas = [
     for (final s in c.semanas.where((s) => s.lunes.isBefore(desde))) SemanaPlan(lunes: s.lunes, temas: s.temas.where(hechos.contains).toList(), descanso: s.descanso),
@@ -230,20 +231,22 @@ Cronograma replanificarCronograma(Cronograma c, DateTime hoy, {int? porSemana, D
   }
   final pendientes = c.temas.where((t) => !hechos.contains(t)).toList();
   final objetivo = fin ?? (porSemana == null ? c.fin : null);
-  final k = porSemana ?? (objetivo != null ? ritmoPara(pendientes.length + hechosEsta.length, desde, objetivo, c.descansos) : c.temasPorSemana);
+  final k = porSemana ?? (objetivo != null ? ritmoPara(pendientes.length + hechosEsta.length, desde, objetivo, c.descansos, diaCante: c.diaCante) : c.temasPorSemana);
   final futuras = <SemanaPlan>[];
   if (hechosEsta.isNotEmpty && !c.descansos.contains(desde)) {
     final hueco = (k - hechosEsta.length).clamp(0, pendientes.length);
     futuras.add(SemanaPlan(lunes: desde, temas: [...hechosEsta, ...pendientes.take(hueco)]));
-    futuras.addAll(repartir(pendientes.skip(hueco).toList(), DateTime(desde.year, desde.month, desde.day + 7), k, c.descansos));
+    futuras.addAll(repartir(pendientes.skip(hueco).toList(), DateTime(desde.year, desde.month, desde.day + 7), k, c.descansos, diaCante: c.diaCante));
   } else {
-    futuras.addAll(repartir(pendientes, desde, k, c.descansos));
+    futuras.addAll(repartir(pendientes, desde, k, c.descansos, diaCante: c.diaCante));
   }
   return c.copyWith(temasPorSemana: k, fin: objetivo, quitarFin: objetivo == null, semanas: [...pasadas, ...futuras]);
 }
 
 /// Cronograma nuevo a partir de un orden de temas: [porSemana] temas cada
-/// semana o, con [fin], los que hagan falta para acabar esa semana.
+/// semana o, con [fin], los que hagan falta para acabar esa semana. Con
+/// [diaCante], [inicio] es el día del primer cante de la vuelta y cada semana
+/// acaba en un cante.
 Cronograma crearCronograma({
   required String id,
   required int ejercicio,
@@ -254,9 +257,10 @@ Cronograma crearCronograma({
   bool intercalar = true,
   int? cadaN,
   bool compartir = false,
+  int? diaCante,
 }) {
-  final lunes = lunesDe(inicio);
-  final k = fin != null ? ritmoPara(temas.length, lunes, fin, const {}) : porSemana;
+  final lunes = inicioSemana(inicio, diaCante);
+  final k = fin != null ? ritmoPara(temas.length, lunes, fin, const {}, diaCante: diaCante) : porSemana;
   final ahora = DateTime.now();
   return Cronograma(
     id: id,
@@ -267,8 +271,9 @@ Cronograma crearCronograma({
     fin: fin,
     intercalar: intercalar,
     cadaN: cadaN,
-    semanas: repartir(temas, lunes, k, const {}),
+    semanas: repartir(temas, lunes, k, const {}, diaCante: diaCante),
     compartir: compartir,
+    diaCante: diaCante,
     creado: ahora,
     updatedAt: ahora,
   );

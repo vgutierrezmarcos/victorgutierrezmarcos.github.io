@@ -226,4 +226,25 @@ void main() {
       expect(url.queryParameters['text'], 'Cante TCEE · Preparador; grupo, A');
     });
   });
+
+  group('presencial u online', () {
+    test('reconoce el enlace de la reunión pegado', () {
+      expect(enlaceReunion('meet.google.com/abc-defg-hij'), 'https://meet.google.com/abc-defg-hij');
+      expect(enlaceReunion('Únete: https://meet.google.com/abc-defg-hij?pli=1 '), 'https://meet.google.com/abc-defg-hij?pli=1');
+      expect(enlaceReunion('nada que ver'), isNull);
+      expect(enlaceReunion(''), isNull);
+    });
+
+    test('se guarda y sale en el calendario', () {
+      final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.online, enlace: 'https://meet.google.com/abc-defg-hij');
+      final d = Cante.fromJson(c.toJson());
+      expect(d.online, isTrue);
+      expect(d.enlace, c.enlace);
+      expect(d.descripcionModalidad, 'Online · meet.google.com/abc-defg-hij');
+      expect(eventoDeCante(d).lugar, c.enlace);
+      final p = Cante(id: 'p', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.presencial, lugar: 'Academia');
+      expect(Cante.fromJson(p.toJson()).descripcionModalidad, 'Presencial · Academia');
+      expect(Cante.fromJson(Cante(id: 'x', fecha: DateTime(2026)).toJson()).modalidad, Modalidad.sinIndicar);
+    });
+  });
 }

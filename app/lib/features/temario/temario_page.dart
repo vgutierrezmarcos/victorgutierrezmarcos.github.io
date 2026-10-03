@@ -96,7 +96,6 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                 icono: Icons.event_note_outlined,
                 titulo: 'Cronograma',
                 subtitulo: 'Planifica una vuelta: qué temas cada semana',
-                final_: const Etiqueta('EN PRUEBA'),
                 onTap: () => context.go('/temario/cronograma'),
               ),
               for (final ej in t.ejercicios) ...[

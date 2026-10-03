@@ -12,7 +12,7 @@ import '../../widgets/selector_temas.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
 
-/// Crear un cronograma (en prueba): qué ejercicio, qué temas, a qué ritmo o
+/// Crear un cronograma: qué ejercicio, qué temas, a qué ritmo o
 /// hasta cuándo, si se intercalan Mixto (3.º) o las dos partes (4.º), y la
 /// vista previa de las primeras semanas.
 class CronogramaFormPage extends ConsumerStatefulWidget {
@@ -29,6 +29,18 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
   int _porSemana = 3;
   DateTime _fin = DateTime.now().add(const Duration(days: 120));
   bool _estaSemana = true;
+  /// Día de la semana en que canta (null = semanas de lunes a domingo). Por
+  /// defecto, el de su próximo cante programado.
+  late int? _diaCante = ref.read(cantesProvider).where((c) => !c.borrado && !c.hecho && c.fecha.isAfter(DateTime.now())).firstOrNull?.fecha.weekday;
+  /// Primer cante de la vuelta (con día de cante).
+  DateTime? _primerCante;
+
+  /// El próximo [dia] de la semana a partir de mañana.
+  static DateTime _proximo(int dia) {
+    final hoy = DateTime.now();
+    final d = (dia - hoy.weekday + 7) % 7;
+    return DateTime(hoy.year, hoy.month, hoy.day + (d == 0 ? 7 : d));
+  }
   bool _intercalar = true;
   int? _cadaN;
   bool _compartir = false;
@@ -43,8 +55,10 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     final delEjercicio = {for (final t in temario.todosLosTemas.where((t) => t.ejercicio == _ejercicio)) t.codigo};
     final temas = _todos ? delEjercicio : _elegidos.where(delEjercicio.contains).toSet();
     final orden = ordenInicial(estructura, _ejercicio, temas, intercalar: _intercalar, cadaN: _cadaN);
-    final inicio = lunesDe(_estaSemana ? DateTime.now() : DateTime.now().add(const Duration(days: 7)));
-    final c = crearCronograma(id: nuevoId(), ejercicio: _ejercicio, temas: orden, inicio: inicio, porSemana: _porSemana, fin: _porFecha ? _fin : null, intercalar: _intercalar, cadaN: _cadaN, compartir: _compartir);
+    final dia = _diaCante;
+    final primerCante = dia == null ? null : (_primerCante != null && _primerCante!.weekday == dia ? _primerCante! : _proximo(dia));
+    final inicio = primerCante ?? lunesDe(_estaSemana ? DateTime.now() : DateTime.now().add(const Duration(days: 7)));
+    final c = crearCronograma(id: nuevoId(), ejercicio: _ejercicio, temas: orden, inicio: inicio, porSemana: _porSemana, fin: _porFecha ? _fin : null, intercalar: _intercalar, cadaN: _cadaN, compartir: _compartir, diaCante: dia);
     final estado = estadoDe(c, DateTime.now());
     final auto = unoDeCada(estructura, _ejercicio, orden);
 
@@ -71,7 +85,6 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     return Scaffold(
       appBar: BarraWeb(title: const Text('Nuevo cronograma')),
       body: ListaAdaptable(children: [
-        const AvisoPrueba(),
         const TituloSeccion('Qué vuelta'),
         SegmentedButton<int>(
           showSelectedIcon: false,
@@ -138,14 +151,49 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
                   : (_porFecha ? 'Unos ${c.temasPorSemana} temas por semana; acabas el ${fechaLargaCrono(estado.fin!)}.' : 'Acabas el ${fechaLargaCrono(estado.fin!)} (${c.semanas.length} semanas).'),
               style: context.textos.bodySmall,
             ),
+            const SizedBox(height: 12),
+            Text('Día en que cantas', style: context.textos.labelMedium),
+            const SizedBox(height: 4),
+            Wrap(spacing: 6, runSpacing: 6, children: [
+              for (var d = 1; d <= 7; d++)
+                ChoiceChip(
+                  label: Text(const ['L', 'M', 'X', 'J', 'V', 'S', 'D'][d - 1]),
+                  tooltip: nombreDiaSemana(d),
+                  selected: dia == d,
+                  onSelected: (_) => setState(() {
+                    _diaCante = d;
+                    _primerCante = null;
+                  }),
+                ),
+              ChoiceChip(label: const Text('Sin día fijo'), selected: dia == null, onSelected: (_) => setState(() => _diaCante = null)),
+            ]),
             const SizedBox(height: 8),
-            SegmentedButton<bool>(
-              showSelectedIcon: false,
-              segments: const [ButtonSegment(value: true, label: Text('Empiezo esta semana')), ButtonSegment(value: false, label: Text('La semana que viene'))],
-              selected: {_estaSemana},
-              onSelectionChanged: (s) => setState(() => _estaSemana = s.first),
-              style: const ButtonStyle(visualDensity: VisualDensity.compact),
-            ),
+            if (primerCante != null) ...[
+              OutlinedButton.icon(
+                icon: const Icon(Icons.event, size: 18),
+                label: Text('Primer cante: ${diaSemanaYMes(primerCante)}'),
+                onPressed: () async {
+                  final x = await showDatePicker(
+                    context: context,
+                    initialDate: primerCante,
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(const Duration(days: 365)),
+                    selectableDayPredicate: (f) => f.weekday == dia,
+                    helpText: 'Primer cante de la vuelta',
+                  );
+                  if (x != null) setState(() => _primerCante = x);
+                },
+              ),
+              const SizedBox(height: 4),
+              Text('Cada semana del cronograma acaba en un cante: los temas de cada semana son los que llevas a ese cante, empezando por el del ${diaSemanaYMes(primerCante)}.', style: context.textos.labelSmall),
+            ] else
+              SegmentedButton<bool>(
+                showSelectedIcon: false,
+                segments: const [ButtonSegment(value: true, label: Text('Empiezo esta semana')), ButtonSegment(value: false, label: Text('La semana que viene'))],
+                selected: {_estaSemana},
+                onSelectionChanged: (s) => setState(() => _estaSemana = s.first),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+              ),
           ]),
         ),
         const TituloSeccion('Orden'),

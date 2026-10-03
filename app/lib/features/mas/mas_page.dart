@@ -7,6 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../inicio/elegir_oposicion.dart';
 import '../../data/models/plan.dart';
@@ -104,7 +105,7 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
-              if (Oposiciones.variasDisponibles)
+              if ((ref.watch(oposicionesVisiblesProvider).value ?? Oposiciones.disponibles).length > 1)
                 ListTile(
                   leading: const Icon(Icons.school_outlined),
                   title: const Text('Oposición'),
@@ -165,13 +166,14 @@ class MasPage extends ConsumerWidget {
   /// Elegir otra oposición. Los datos de cada una se quedan guardados.
   Future<void> _cambiarOposicion(BuildContext context, WidgetRef ref) async {
     final actual = ref.read(oposicionProvider);
+    final visibles = ref.read(oposicionesVisiblesProvider).value ?? Oposiciones.disponibles;
     final nueva = await showDialog<Oposicion>(
       context: context,
       builder: (d) => AlertDialog(
         title: const Text('¿A qué te presentas?'),
         content: SingleChildScrollView(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            for (final o in Oposiciones.todas)
+            for (final o in visibles)
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: TarjetaOposicion(oposicion: o, elegida: o.id == actual.id, onTap: () => Navigator.pop(d, o)),

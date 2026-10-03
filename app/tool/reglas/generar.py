@@ -25,6 +25,7 @@ CABECERA = """rules_version = '2';
 // Cada oposición tiene su red de preparadores y los datos de sus alumnos, con
 // sus propios administradores: TCEE en la raíz (admins/, preparadoresVerificados/,
 // users/{uid}/…) y las demás en oposiciones/{op}/… y users/{uid}/oposiciones/{op}/….
+// El administrador general (admins/… de la raíz con general: true) lo es de todas.
 // Un preparador de las dos tiene que estar verificado en cada una.
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -59,7 +60,16 @@ service cloud.firestore {
     function esAdmin(op) {
       return conSesionEn(op)
         && (exists(enRed(op, 'admins/' + request.auth.uid))
-          || (correo() != '' && exists(enRed(op, 'admins/' + correo()))));
+          || (correo() != '' && exists(enRed(op, 'admins/' + correo())))
+          || esAdminGeneral());
+    }
+
+    // Administrador general: lo es de todas las oposiciones. Es un
+    // administrador de TCEE (admins/… de la raíz) con el campo general: true.
+    function esAdminGeneral() {
+      return conSesion()
+        && ((exists(enRed('tcee', 'admins/' + request.auth.uid)) && get(enRed('tcee', 'admins/' + request.auth.uid)).data.get('general', false) == true)
+          || (correo() != '' && exists(enRed('tcee', 'admins/' + correo())) && get(enRed('tcee', 'admins/' + correo())).data.get('general', false) == true));
     }
 
     // Preparador verificado y en activo en esa oposición (lo da de alta su

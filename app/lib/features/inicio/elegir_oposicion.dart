@@ -48,7 +48,7 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Text('Cada oposición tiene su temario, sus cantes y sus preparadores. Podrás cambiarla cuando quieras en Más → Ajustes.', style: context.textos.bodySmall),
                   ),
-                  for (final o in Oposiciones.todas)
+                  for (final o in Oposiciones.disponibles)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: TarjetaOposicion(
@@ -88,6 +88,7 @@ class TarjetaOposicion extends StatelessWidget {
                 '${oposicion.ejercicios.length} ejercicios',
                 'se canta el $cantados',
                 if (oposicion.testVoluntario) 'test voluntario',
+                if (!oposicion.lanzada) 'aún sin lanzar: solo la ven sus administradores',
               ].join(' · '),
               style: context.textos.labelSmall,
             ),
