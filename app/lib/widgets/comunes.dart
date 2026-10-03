@@ -1,12 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../core/providers.dart';
 import '../theme/app_theme.dart';
 
 /// Cabecera de la web (.site-header): degradado morado, título centrado en
 /// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
 class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
-  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom});
+  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom, this.conTema = true});
 
   final Widget? title;
   /// Línea en cursiva bajo el título (.site-description).
@@ -14,6 +17,8 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final Widget? leading;
   final PreferredSizeWidget? bottom;
+  /// Botón para cambiar entre modo claro y oscuro (en todas las pantallas salvo donde estorbe).
+  final bool conTema;
 
   static const _altoLinea = 4.0;
 
@@ -28,7 +33,7 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
       data: tema.copyWith(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.white, textStyle: tema.textTheme.labelLarge))),
       child: AppBar(
         leading: leading,
-        actions: actions,
+        actions: [...?actions, if (conTema) const BotonTema()],
         title: subtitulo == null
             ? title
             : Column(mainAxisSize: MainAxisSize.min, children: [
@@ -481,4 +486,116 @@ class FilaEnlace extends StatelessWidget {
           ]),
         ),
       );
+}
+
+/// Lista de una página. En el móvil es una lista normal. En pantallas anchas
+/// (ordenador, tableta en horizontal) ocupa todo el ancho: las secciones (cada
+/// [TituloSeccion] empieza una; lo anterior al primero es otra) se reparten en
+/// dos columnas manteniendo el orden, y si la página tiene una sola sección se
+/// centra con un ancho cómodo de lectura.
+class ListaAdaptable extends StatelessWidget {
+  const ListaAdaptable({super.key, required this.children, this.padding = const EdgeInsets.fromLTRB(16, 14, 16, 32)});
+  final List<Widget> children;
+  final EdgeInsets padding;
+
+  static const anchoDosColumnas = 900.0;
+  static const anchoLectura = 960.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, c) {
+      final ancho = c.maxWidth;
+      if (ancho < anchoDosColumnas) return ListView(padding: padding, children: children);
+      final grupos = <List<Widget>>[];
+      for (final w in children) {
+        if (w is TituloSeccion || grupos.isEmpty) {
+          grupos.add([w]);
+        } else {
+          grupos.last.add(w);
+        }
+      }
+      if (grupos.length < 2) {
+        final lado = ((ancho - anchoLectura) / 2).clamp(padding.left, double.infinity);
+        return ListView(padding: padding.copyWith(left: lado, right: lado), children: children);
+      }
+      // Corte que deja las dos columnas lo más parejas posible (por número de piezas).
+      final pesos = [for (final g in grupos) g.length + 1];
+      final total = pesos.fold<int>(0, (a, b) => a + b);
+      var mejor = 1, diferencia = total, acumulado = 0;
+      for (var i = 1; i < grupos.length; i++) {
+        acumulado += pesos[i - 1];
+        final d = (total - 2 * acumulado).abs();
+        if (d < diferencia) {
+          diferencia = d;
+          mejor = i;
+        }
+      }
+      Widget columna(Iterable<List<Widget>> gs) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [for (final g in gs) ...g]);
+      final lado = ((ancho - 2000) / 2).clamp(padding.left + 8, double.infinity);
+      return ListView(
+        padding: padding.copyWith(left: lado, right: lado),
+        children: [
+          Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Expanded(child: columna(grupos.take(mejor))),
+            const SizedBox(width: 28),
+            Expanded(child: columna(grupos.skip(mejor))),
+          ]),
+        ],
+      );
+    });
+  }
+}
+
+/// Cambia entre modo claro y oscuro. Va en la cabecera de todas las pantallas.
+class BotonTema extends ConsumerWidget {
+  const BotonTema({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final oscuro = context.temaOscuro;
+    return IconButton(
+      tooltip: oscuro ? 'Modo claro' : 'Modo oscuro',
+      icon: Icon(oscuro ? Icons.light_mode_outlined : Icons.dark_mode_outlined),
+      onPressed: () => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaOscuro: !oscuro)),
+    );
+  }
+}
+
+/// Foto de la cuenta de Google del usuario (o un icono si no hay sesión o no
+/// tiene foto). En el navegador la imagen se pinta como <img>: Google no deja
+/// leerla desde el lienzo de Flutter y, de otro modo, no se vería.
+class AvatarUsuario extends ConsumerWidget {
+  const AvatarUsuario({super.key, this.radio = 20});
+  final double radio;
+
+  /// Foto del usuario: la de la cuenta o, si falta, la de su proveedor (Google),
+  /// pedida con el tamaño justo para que se vea nítida.
+  static String? fotoDe(User? u) {
+    if (u == null) return null;
+    final url = u.photoURL ?? u.providerData.map((p) => p.photoURL).whereType<String>().firstOrNull;
+    if (url == null || url.isEmpty) return null;
+    return url.replaceAll(RegExp(r'=s\d+-c$'), '=s256-c');
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final usuario = ref.watch(usuarioActualProvider);
+    final url = fotoDe(usuario);
+    final icono = CircleAvatar(
+      radius: radio,
+      backgroundColor: context.colores.primarioPalido,
+      foregroundColor: context.esquema.primary,
+      child: Icon(usuario == null ? Icons.person_outline : Icons.account_circle, size: radio * 1.2),
+    );
+    if (url == null) return icono;
+    return ClipOval(
+      child: Image.network(
+        url,
+        width: radio * 2,
+        height: radio * 2,
+        fit: BoxFit.cover,
+        webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
+        errorBuilder: (context, error, pila) => icono,
+      ),
+    );
+  }
 }

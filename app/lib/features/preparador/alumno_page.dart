@@ -128,7 +128,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () async => ref.invalidate(progresoAlumnoProvider(a.id)),
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             Row(children: [

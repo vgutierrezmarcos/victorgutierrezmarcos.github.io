@@ -111,7 +111,7 @@ class ReservarPage extends ConsumerWidget {
           ref.invalidate(huecosDeProvider(preparador.uid));
           ref.invalidate(misReservasProvider);
         },
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             ...switch (huecos) {

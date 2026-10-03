@@ -111,18 +111,35 @@ void main() {
     expect(config.partesARedactar, {5: 2});
   });
 
-  testWidgets('en el ordenador el menú va en un raíl y la app no pasa de 1000 px', (tester) async {
+  testWidgets('en el ordenador la app ocupa toda la pantalla, con raíl y dos columnas', (tester) async {
     await arrancar(tester, tamano: const Size(1600, 1000));
     expect(find.byType(NavigationBar), findsNothing);
     expect(find.byType(NavigationRail), findsOneWidget);
-    expect(tester.getSize(find.byType(NavigationRail).first).height, 1000);
-    expect(tester.getTopLeft(find.byType(NavigationRail)).dx, 300);
+    expect(tester.getTopLeft(find.byType(NavigationRail)).dx, 0);
     await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('MÁS')));
     await tester.pumpAndSettle();
+    // Las secciones de Más se reparten en dos columnas.
+    final izquierda = tester.getTopLeft(find.text('MI OPOSICIÓN')).dx;
+    final derecha = tester.getTopLeft(find.text('AJUSTES')).dx;
+    expect(derecha - izquierda, greaterThan(500));
     await tester.tap(find.text('Iniciar sesión con Google').first);
     await tester.pumpAndSettle();
     expect(find.text('TUS DATOS SOLO LOS VES TÚ'), findsOneWidget);
     expect(find.textContaining('ni otros opositores', findRichText: true), findsOneWidget);
+  });
+
+  testWidgets('empieza en modo claro y se cambia desde cualquier cabecera', (tester) async {
+    await arrancar(tester);
+    BuildContext ctx() => tester.element(find.byType(NavigationBar));
+    expect(Theme.of(ctx()).brightness, Brightness.light);
+    await tester.tap(find.byTooltip('Modo oscuro').first);
+    await tester.pumpAndSettle();
+    expect(Theme.of(ctx()).brightness, Brightness.dark);
+    expect(usuario.ajustes().temaOscuro, isTrue);
+    await pestana(tester, 'Test');
+    await tester.tap(find.byTooltip('Modo claro').first);
+    await tester.pumpAndSettle();
+    expect(Theme.of(ctx()).brightness, Brightness.light);
   });
 
   testWidgets('recorre los cinco bloques', (tester) async {

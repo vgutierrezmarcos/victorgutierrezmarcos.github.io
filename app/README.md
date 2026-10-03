@@ -95,7 +95,7 @@ La misma app compilada con `flutter build web`. Diferencias, todas resueltas con
 - Firebase se inicia con `opcionesFirebaseWeb` (la app web de `web-vgm`, la misma de `firebase-config.js`) y el inicio de sesión es `signInWithPopup`. Como comparte origen con la web, si ya se ha entrado en victorgutierrezmarcos.es suele estar dentro sin volver a iniciar sesión.
 - El contenido se pide al mismo origen (`Urls.base` = `Uri.base.origin`), sin cabeceras propias: así no hay peticiones entre dominios. En pruebas locales se lee el repositorio servido en localhost.
 - Sin notificaciones (`Notificaciones.disponibles`): se ocultan el recordatorio y los avisos de cantes. Los PDF se leen en memoria con pdf.js (cargado en `web/index.html`; su versión debe coincidir con la de `pdfx`), sin descargas para leer sin conexión. La grabación usa el primer formato que admita el navegador y vive en memoria. El `.ics` y la exportación JSON se descargan; los textos para compartir se copian al portapapeles.
-- En pantallas de 720 px o más el menú pasa a un raíl lateral, y por encima de 1040 px la app se centra con 1000 px de ancho, como la web.
+- En pantallas de 720 px o más el menú pasa a un raíl lateral (con la foto de la cuenta arriba) y la app ocupa toda la pantalla: `ListaAdaptable` (widgets/comunes.dart) reparte las secciones de cada página en dos columnas a partir de 900 px, o centra la página si tiene una sola sección.
 
 Publicar una versión nueva (cada vez que cambie `lib/` o `web/`):
 
@@ -106,6 +106,9 @@ python3 scripts/publicar-app-web.py   # desde la raíz: compila y copia a app/ab
 y subir `app/abrir/`. El motor gráfico (canvaskit) no se copia: lo sirve www.gstatic.com.
 
 ## Diseño
+
+Modo claro por defecto; el botón de sol y luna de la cabecera (`BotonTema`, en todas las pantallas) y *Más → Ajustes → Modo* cambian entre claro y oscuro. En oscuro, el lila (`dPrimario`) es para texto e iconos, y los rellenos con texto blanco (cabecera, botones, menú, selectores) usan `dRelleno`, con contraste de 7:1. La foto de la cuenta de Google sale en Hoy, Más, Cuenta y el raíl (`AvatarUsuario`).
+
 
 La app reproduce la estética de la web (`styles.css` y los estilos de `simulador.html`):
 

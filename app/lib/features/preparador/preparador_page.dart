@@ -275,7 +275,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
           await ref.read(alumnosProvider.notifier).refrescar();
           refrescarRedDesdeWidget(ref);
         },
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
           // Quien ya lleva alumnos ve primero su lado.
           children: perfil.activo ? [...ladoPreparador, ...ladoOpositor] : [...ladoOpositor, ...ladoPreparador],

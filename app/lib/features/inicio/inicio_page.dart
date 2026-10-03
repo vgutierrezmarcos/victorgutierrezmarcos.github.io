@@ -48,7 +48,7 @@ class InicioPage extends ConsumerWidget {
         actions: [
           IconButton(
             tooltip: 'Cuenta',
-            icon: usuario?.photoURL != null ? CircleAvatar(radius: 14, backgroundImage: NetworkImage(usuario!.photoURL!)) : const Icon(Icons.account_circle_outlined),
+            icon: usuario != null ? const AvatarUsuario(radio: 14) : const Icon(Icons.account_circle_outlined),
             onPressed: () => context.go('/mas/cuenta'),
           ),
         ],
@@ -61,7 +61,7 @@ class InicioPage extends ConsumerWidget {
           // Con sesión, trae también lo nuevo de la nube (p. ej. un cante que ha puesto el preparador).
           if (usuario != null) await ref.read(sesionProvider.notifier).sincronizar();
         },
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             if (versionNueva != null)

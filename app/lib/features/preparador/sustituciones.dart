@@ -124,7 +124,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Buscar preparador')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Text('Otros preparadores verificados verán el día, la hora y los temas que entran. Tu nombre y tu teléfono solo los verá quien lo coja, para que os escribáis por WhatsApp.', style: context.textos.bodySmall),
@@ -386,7 +386,7 @@ class TablonPage extends ConsumerWidget {
           ref.invalidate(tablonProvider);
           ref.invalidate(cogidasPorMiProvider);
         },
-        child: ListView(
+        child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             Text('Alumnos que buscan quién les coja un cante. No ves su nombre ni su teléfono hasta que lo coges.', style: context.textos.bodySmall),

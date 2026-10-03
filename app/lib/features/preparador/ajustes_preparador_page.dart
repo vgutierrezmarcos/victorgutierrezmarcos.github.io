@@ -55,7 +55,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Ajustes de preparador')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(

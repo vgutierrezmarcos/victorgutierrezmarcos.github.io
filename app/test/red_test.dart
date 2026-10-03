@@ -9,6 +9,7 @@ import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/preparador_repo.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 
 /// Red de preparadores: verificación, sustituciones, reservas, clases fijas y
 /// avisos. Firestore y la sesión son simulados; las reglas (firestore.rules)
@@ -284,5 +285,11 @@ void main() {
     expect(await otro.esAdmin(), isFalse);
     await porCorreo.verificarme(nombre: 'Jefe');
     expect((await porCorreo.miVerificacion())!.avaladoPorNombre, 'Jefe');
+  });
+
+  test('avatar: la foto de Google, con buen tamaño, también si solo la trae el proveedor', () {
+    expect(AvatarUsuario.fotoDe(MockUser(uid: 'a', photoURL: 'https://lh3.googleusercontent.com/a/xyz=s96-c')), 'https://lh3.googleusercontent.com/a/xyz=s256-c');
+    expect(AvatarUsuario.fotoDe(MockUser(uid: 'b', photoURL: '')), isNull);
+    expect(AvatarUsuario.fotoDe(null), isNull);
   });
 }

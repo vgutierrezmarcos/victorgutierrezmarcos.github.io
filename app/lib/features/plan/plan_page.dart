@@ -111,7 +111,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
     // Sin cabecera: va dentro de CantesPage, que pone el título y las subpestañas.
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(onPressed: () => _nuevoCante(_dia), icon: const Icon(Icons.add), label: const Text('Cante')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           if (siguiente != null)

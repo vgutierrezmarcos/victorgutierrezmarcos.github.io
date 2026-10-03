@@ -240,7 +240,8 @@ final ajustesProvider = NotifierProvider<AjustesNotifier, Ajustes>(AjustesNotifi
 
 final modoTemaProvider = Provider<ThemeMode>((ref) {
   final t = ref.watch(ajustesProvider.select((a) => a.temaOscuro));
-  return t == null ? ThemeMode.system : (t ? ThemeMode.dark : ThemeMode.light);
+  // Claro salvo que el usuario elija el oscuro (no se sigue el del sistema).
+  return t == true ? ThemeMode.dark : ThemeMode.light;
 });
 
 /// Marca de "test diario hecho hoy" (según historial local).

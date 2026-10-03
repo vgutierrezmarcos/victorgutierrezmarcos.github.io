@@ -22,6 +22,7 @@ import 'features/test/examen_page.dart';
 import 'features/test/motor_test.dart';
 import 'features/test/resultados_page.dart';
 import 'theme/app_theme.dart';
+import 'widgets/comunes.dart';
 
 /// Cinco bloques: Hoy (qué toca), Temario (estudiar), Cantes (programar,
 /// cantar y anotar), Test (simulador) y Más (convocatoria, horario,
@@ -119,31 +120,6 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       routerConfig: _router,
-      builder: (context, child) => _AnchoMaximo(child: child ?? const SizedBox()),
-    );
-  }
-}
-
-/// En el ordenador la app ocupa, como la web, un máximo de 1000 px centrados
-/// sobre el fondo verde; en el móvil no cambia nada.
-class _AnchoMaximo extends StatelessWidget {
-  const _AnchoMaximo({required this.child});
-  final Widget child;
-  static const ancho = 1000.0;
-
-  @override
-  Widget build(BuildContext context) {
-    final medidas = MediaQuery.of(context);
-    if (medidas.size.width <= ancho + 40) return child;
-    return ColoredBox(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Center(
-        child: Container(
-          width: ancho,
-          decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.12), blurRadius: 24)]),
-          child: MediaQuery(data: medidas.copyWith(size: Size(ancho, medidas.size.height)), child: child),
-        ),
-      ),
     );
   }
 }
@@ -175,6 +151,14 @@ class _Shell extends StatelessWidget {
               onDestinationSelected: _ir,
               labelType: NavigationRailLabelType.all,
               groupAlignment: -0.9,
+              // La cuenta, con la foto de Google, arriba del todo.
+              leading: Padding(
+                padding: const EdgeInsets.only(top: 12, bottom: 8),
+                child: Tooltip(
+                  message: 'Cuenta',
+                  child: InkWell(customBorder: const CircleBorder(), onTap: () => GoRouter.of(context).go('/mas/cuenta'), child: const AvatarUsuario(radio: 18)),
+                ),
+              ),
               destinations: [for (final d in _destinos) NavigationRailDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: Text(d.$3))],
             ),
           ),

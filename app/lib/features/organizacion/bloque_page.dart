@@ -41,7 +41,7 @@ class BloquePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Bloque')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           // Cabecera con el color del bloque, como su caja en el PowerPoint.

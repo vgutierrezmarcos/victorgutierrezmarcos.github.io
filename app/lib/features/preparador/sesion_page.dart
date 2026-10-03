@@ -136,7 +136,7 @@ class SesionPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(

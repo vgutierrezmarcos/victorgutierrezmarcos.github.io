@@ -86,7 +86,7 @@ class ConvocatoriaPage extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(onPressed: nuevoHito, icon: const Icon(Icons.add), label: const Text('Hito')),
-      body: ListView(
+      body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           Padding(
