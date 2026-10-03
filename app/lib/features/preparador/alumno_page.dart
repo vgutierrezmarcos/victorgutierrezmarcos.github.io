@@ -84,8 +84,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
   Widget build(BuildContext context) {
     final a = ref.watch(alumnosProvider).where((x) => x.id == widget.id).firstOrNull;
     if (a == null) return Scaffold(appBar: BarraWeb(title: const Text('Alumno')), body: const Center(child: Text('Este alumno ya no está en tu lista.')));
-    final temario = ref.watch(temarioProvider).value;
-    final estructura = ref.watch(estructuraProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    final estructura = ref.watch(estructuraProvider).valueOrNull;
     final progreso = a.enlazado ? ref.watch(progresoAlumnoProvider(a.id)) : null;
     final mias = ref.watch(sesionesProvider).where((s) => s.alumno == a.id).toList();
     // Con el alumno enlazado se ven también los cantes que hace por su cuenta.

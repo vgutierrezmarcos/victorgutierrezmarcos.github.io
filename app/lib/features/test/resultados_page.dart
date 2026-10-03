@@ -33,7 +33,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
   @override
   Widget build(BuildContext context) {
     final r = widget.datos.resultado;
-    final bloques = ref.watch(bloquesProvider).value ?? Bloques.vacio;
+    final bloques = ref.watch(bloquesProvider).valueOrNull ?? Bloques.vacio;
     final porBloque = MotorTest.porBloque(widget.datos.preguntas, widget.datos.respuestas, bloques);
     final aprobado = r.notaSobre10 >= 5;
 

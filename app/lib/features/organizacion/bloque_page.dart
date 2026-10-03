@@ -15,9 +15,9 @@ class BloquePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final e = ref.watch(estructuraProvider).value ?? EstructuraTemario.vacia;
+    final e = ref.watch(estructuraProvider).valueOrNull ?? EstructuraTemario.vacia;
     final b = e.bloque(id);
-    final temario = ref.watch(temarioProvider).value;
+    final temario = ref.watch(temarioProvider).valueOrNull;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
     if (b == null) return Scaffold(appBar: BarraWeb(title: const Text('Bloque')), body: const Center(child: Text('Bloque no encontrado.')));
 
