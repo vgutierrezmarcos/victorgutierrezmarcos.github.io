@@ -1,36 +1,37 @@
 import '../../core/cache_http.dart';
-import '../../core/constants.dart';
 import '../models/estructura.dart';
+import '../models/oposicion.dart';
 import '../models/pregunta.dart';
 import '../models/temario.dart';
 
-/// Acceso al contenido publicado en la web (con caché offline).
+/// Acceso al contenido que publica la web de una oposición (con caché offline).
 class ContenidoRepo {
-  ContenidoRepo(this._http);
+  ContenidoRepo(this._http, this.oposicion);
   final CacheHttp _http;
+  final Oposicion oposicion;
 
   Future<BancoPreguntas> preguntas({bool forzar = false}) async =>
-      BancoPreguntas.fromJson(await _http.json(Urls.preguntas, preferirCache: !forzar, forzar: forzar));
+      BancoPreguntas.fromJson(await _http.json(oposicion.urlPreguntas, preferirCache: !forzar, forzar: forzar));
 
   Future<Bloques> bloques({bool forzar = false}) async {
     try {
-      return Bloques.fromJson(await _http.json(Urls.bloques, preferirCache: !forzar, forzar: forzar));
+      return Bloques.fromJson(await _http.json(oposicion.urlBloques, preferirCache: !forzar, forzar: forzar));
     } catch (_) {
       return Bloques.vacio;
     }
   }
 
   Future<Temario> temario({bool forzar = false}) async =>
-      Temario.fromJson(await _http.json(Urls.temario, preferirCache: !forzar, forzar: forzar));
+      Temario.fromJson(await _http.json(oposicion.urlTemario, preferirCache: !forzar, forzar: forzar));
 
   Future<List<CategoriaEnlaces>> enlaces({bool forzar = false}) async =>
-      CategoriaEnlaces.listaFromJson(await _http.json(Urls.enlaces, preferirCache: !forzar, forzar: forzar));
+      CategoriaEnlaces.listaFromJson(await _http.json(oposicion.urlEnlaces, preferirCache: !forzar, forzar: forzar));
 
   /// Organización del temario. Si aún no se ha podido descargar, se devuelve
   /// vacía: la app funciona igual, sin colores de bloque ni esquemas.
   Future<EstructuraTemario> estructura({bool forzar = false}) async {
     try {
-      return EstructuraTemario.fromJson(await _http.json(Urls.estructura, preferirCache: !forzar, forzar: forzar));
+      return EstructuraTemario.fromJson(await _http.json(oposicion.urlEstructura, preferirCache: !forzar, forzar: forzar));
     } catch (_) {
       return EstructuraTemario.vacia;
     }
@@ -39,7 +40,7 @@ class ContenidoRepo {
   Future<AppConfig> config() async {
     try {
       // La configuración remota se revalida siempre que hay red.
-      return AppConfig.fromJson(await _http.json(Urls.appConfig));
+      return AppConfig.fromJson(await _http.json(oposicion.urlAppConfig));
     } catch (_) {
       return AppConfig.porDefecto;
     }
@@ -47,7 +48,7 @@ class ContenidoRepo {
 
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
-    for (final u in [Urls.preguntas, Urls.bloques, Urls.temario, Urls.enlaces, Urls.estructura]) {
+    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura]) {
       await _http.refrescar(u);
     }
   }

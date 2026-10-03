@@ -12,7 +12,8 @@ import 'providers.dart';
 /// Red de preparadores: verificación, sustituciones, huecos y reservas.
 final redRepoProvider = Provider<RedRepo>((ref) {
   final firebase = ref.watch(serviciosProvider).firebaseDisponible;
-  return firebase ? RedRepo(firestore: FirebaseFirestore.instance, auth: FirebaseAuth.instance) : RedRepo();
+  final oposicion = ref.watch(oposicionProvider);
+  return firebase ? RedRepo(firestore: FirebaseFirestore.instance, auth: FirebaseAuth.instance, oposicion: oposicion) : RedRepo(oposicion: oposicion);
 });
 
 /// Situación del usuario en la red.

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
@@ -80,10 +81,10 @@ class CuentaPage extends ConsumerWidget {
                 title: const Text('Exportar datos (JSON)'),
                 subtitle: Text('Resultados, repaso, ajustes, notas, cantes, planificación y alumnos', style: context.textos.labelSmall),
                 onTap: () => guardarFichero(
-                  nombre: 'oposicion_tcee_datos.json',
+                  nombre: 'oposicion_${Oposiciones.actual.id}_datos.json',
                   contenido: repo.exportarJson(extra: {...ref.read(planRepoProvider).exportar(), ...ref.read(preparadorRepoProvider).exportar()}),
                   mime: 'application/json',
-                  asunto: 'Datos TCEE App',
+                  asunto: 'Datos de ${Creditos.nombreApp}',
                 ),
               ),
               ListTile(

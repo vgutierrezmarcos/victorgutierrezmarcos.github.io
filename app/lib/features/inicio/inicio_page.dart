@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../cronograma/cronograma_page.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
@@ -44,8 +45,8 @@ class InicioPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: const Text('Oposición TCEE'),
-        subtitulo: usuario == null ? 'Técnico Comercial y Economista del Estado' : 'Hola, ${usuario.displayName?.split(' ').first ?? ''}',
+        title: Text('Oposición ${Oposiciones.actual.siglas}'),
+        subtitulo: usuario == null ? Oposiciones.actual.nombre : 'Hola, ${usuario.displayName?.split(' ').first ?? ''}',
         actions: [
           IconButton(
             tooltip: 'Cuenta',

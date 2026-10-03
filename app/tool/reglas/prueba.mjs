@@ -144,6 +144,42 @@ await caso('el preparador la acepta', () => assertSucceeds(updateDoc(doc(db('pau
 await caso('otro no ve la reserva', () => assertFails(getDoc(doc(db('pepe'), 'reservas/r1'))));
 await caso('el preparador ve las suyas', () => assertSucceeds(getDocs(query(collection(db('paula'), 'reservas'), where('preparador', '==', 'paula')))));
 
+console.log('Varias oposiciones: cada una con su red y sus administradores');
+// DCE: Manuel administra; Diana, verificada solo en DCE; Paula, solo en TCEE.
+await env.withSecurityRulesDisabled(async (c) => {
+  const d = c.firestore();
+  await setDoc(doc(d, 'oposiciones/dce/admins/manuel'), { desde: 'consola' });
+  await setDoc(doc(d, 'oposiciones/dce/preparadoresVerificados/diana'), { uid: 'diana', nombre: 'Diana', avaladoPor: 'manuel', activo: true });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/progress/settings'), { temasEstudiados: ['3.A.1'] });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/notes/3_A_1'), { texto: 'privado' });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/preparadores/diana'), { uid: 'diana' });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/preparadores/paula'), { uid: 'paula' });
+  await setDoc(doc(d, 'oposiciones/dce/sustituciones/d1'), { id: 'd1', alumno: 'ana', estado: 'abierta', paraTodos: true, destinatarios: [], ejercicio: 3, temas: [], fecha: futuro });
+});
+await caso('el administrador de DCE no lo es de TCEE', () => assertFails(updateDoc(doc(db('manuel'), 'preparadoresVerificados/paula'), { activo: false })));
+await caso('…ni el de TCEE de DCE', () => assertFails(updateDoc(doc(db('admin'), 'oposiciones/dce/preparadoresVerificados/diana'), { activo: false })));
+await caso('el de DCE retira a uno de DCE', () => assertSucceeds(updateDoc(doc(db('manuel'), 'oposiciones/dce/preparadoresVerificados/diana'), { activo: true })));
+await caso('el de DCE verifica en DCE', () => assertSucceeds(setDoc(doc(db('manuel'), 'oposiciones/dce/preparadoresVerificados/paula'), { uid: 'paula', nombre: 'Paula', avaladoPor: 'manuel', activo: true })));
+await env.withSecurityRulesDisabled(async (c) => { await deleteDoc(doc(c.firestore(), 'oposiciones/dce/preparadoresVerificados/paula')); });
+await caso('un verificado de TCEE no verifica en DCE', () => assertFails(setDoc(doc(db('paula'), 'oposiciones/dce/preparadoresVerificados/juan'), { uid: 'juan', nombre: 'Juan', avaladoPor: 'paula', activo: true })));
+await caso('un verificado de DCE no verifica en TCEE', () => assertFails(setDoc(doc(db('diana'), 'preparadoresVerificados/juan'), { uid: 'juan', nombre: 'Juan', avaladoPor: 'diana', activo: true })));
+await caso('su preparadora de DCE lee los temas de DCE de su alumna', () => assertSucceeds(getDoc(doc(db('diana'), 'users/ana/oposiciones/dce/progress/settings'))));
+await caso('…pero no sus notas', () => assertFails(getDoc(doc(db('diana'), 'users/ana/oposiciones/dce/notes/3_A_1'))));
+await caso('una verificada solo en TCEE no lee los de DCE aunque la alumna la enlace', () => assertFails(getDoc(doc(db('paula'), 'users/ana/oposiciones/dce/progress/settings'))));
+await caso('la preparadora de DCE no lee los datos de TCEE de otro alumno', () => assertFails(getDoc(doc(db('diana'), 'users/alu/progress/settings'))));
+await caso('la alumna lee lo suyo de DCE', () => assertSucceeds(getDoc(doc(db('ana'), 'users/ana/oposiciones/dce/notes/3_A_1'))));
+await caso('una verificada de DCE ve el tablón de DCE', () => assertSucceeds(getDoc(doc(db('diana'), 'oposiciones/dce/sustituciones/d1'))));
+await caso('una de TCEE no ve el tablón de DCE', () => assertFails(getDoc(doc(db('paula'), 'oposiciones/dce/sustituciones/d1'))));
+await caso('una de DCE no ve el tablón de TCEE', () => assertFails(getDoc(doc(db('diana'), 'sustituciones/s1'))));
+await caso('una de TCEE no coge una sustitución de DCE', () => assertFails(updateDoc(doc(db('paula'), 'oposiciones/dce/sustituciones/d1'), { estado: 'cogida', cogidaPor: 'paula', cogidaPorNombre: 'Paula', updatedAt: 'x' })));
+await caso('una de DCE la coge', () => assertSucceeds(updateDoc(doc(db('diana'), 'oposiciones/dce/sustituciones/d1'), { estado: 'cogida', cogidaPor: 'diana', cogidaPorNombre: 'Diana', updatedAt: 'x' })));
+await caso('una de DCE reserva su código de DCE', () => assertSucceeds(setDoc(doc(db('diana'), 'oposiciones/dce/codigos/DDDDDD'), { uid: 'diana' })));
+await caso('…pero no uno de TCEE', () => assertFails(setDoc(doc(db('diana'), 'codigos/EEEEEE'), { uid: 'diana' })));
+await caso('nadie escribe en una oposición que no existe', () => assertFails(setDoc(doc(db('pepe'), 'oposiciones/otra/solicitudesPreparador/pepe'), { uid: 'pepe' })));
+await caso('se pide la verificación en DCE', () => assertSucceeds(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), { uid: 'pepe', nombre: 'Pepe', paraTodos: true })));
+await caso('el administrador de DCE la ve', () => assertSucceeds(getDoc(doc(db('manuel'), 'oposiciones/dce/solicitudesPreparador/pepe'))));
+await caso('el de TCEE no', () => assertFails(getDoc(doc(db('admin'), 'oposiciones/dce/solicitudesPreparador/pepe'))));
+
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();
 process.exit(mal ? 1 : 0);

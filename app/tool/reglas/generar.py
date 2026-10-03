@@ -1,0 +1,312 @@
+#!/usr/bin/env python3
+"""Genera firestore.rules (en la raíz del repositorio).
+
+Cada oposición tiene su red de preparadores y los datos de sus alumnos, con las
+mismas reglas: TCEE en la raíz (admins/, preparadoresVerificados/…,
+users/{uid}/…) y las demás en oposiciones/{op}/… y users/{uid}/oposiciones/{op}/….
+Como Firestore no permite reutilizar un bloque `match`, las reglas de un alumno
+(USUARIO) y de la red (RED) se escriben una vez aquí y se copian para cada caso.
+
+Uso, desde la raíz del repositorio:
+    python3 app/tool/reglas/generar.py
+Después, probarlas (ver README.md) y publicarlas en la consola de Firebase.
+"""
+from pathlib import Path
+
+# Oposiciones que pueden tener datos (la primera, TCEE, vive en la raíz).
+OPOSICIONES = ['tcee', 'dce']
+
+CABECERA = """rules_version = '2';
+// GENERADO por app/tool/reglas/generar.py: no editar a mano (cambiar el script y volver a generarlo).
+// Reglas de seguridad de Firestore para el proyecto web-vgm.
+// Compartidas por la web (auth.js, simulator-history.js) y la app móvil.
+// Aplicar desde la consola de Firebase (Firestore Database → Reglas) o con `firebase deploy --only firestore:rules`.
+//
+// Cada oposición tiene su red de preparadores y los datos de sus alumnos, con
+// sus propios administradores: TCEE en la raíz (admins/, preparadoresVerificados/,
+// users/{uid}/…) y las demás en oposiciones/{op}/… y users/{uid}/oposiciones/{op}/….
+// Un preparador de las dos tiene que estar verificado en cada una.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function conSesion() {
+      return request.auth != null;
+    }
+
+    // Con sesión y en una oposición que existe.
+    function conSesionEn(op) {
+      return conSesion() && op in %OPOSICIONES%;
+    }
+
+    // Correo de Google (verificado) de quien hace la petición.
+    function correo() {
+      return request.auth.token.get('email_verified', false) == true ? request.auth.token.get('email', '') : '';
+    }
+
+    // Documento de la red de una oposición: enRed('tcee', 'admins/x') es admins/x;
+    // enRed('dce', 'admins/x'), oposiciones/dce/admins/x.
+    function enRed(op, resto) {
+      return path('/databases/' + database + '/documents/' + (op == 'tcee' ? '' : 'oposiciones/' + op + '/') + resto);
+    }
+
+    // Documento de los datos de un usuario en una oposición.
+    function deUsuario(op, uid, resto) {
+      return path('/databases/' + database + '/documents/users/' + uid + '/' + (op == 'tcee' ? '' : 'oposiciones/' + op + '/') + resto);
+    }
+
+    // Administradores de la red de una oposición: documentos creados a mano en
+    // la consola (admins/… en TCEE, oposiciones/{op}/admins/… en las demás),
+    // cuyo ID es el uid o el correo de Google (verificado) del administrador.
+    function esAdmin(op) {
+      return conSesionEn(op)
+        && (exists(enRed(op, 'admins/' + request.auth.uid))
+          || (correo() != '' && exists(enRed(op, 'admins/' + correo()))));
+    }
+
+    // Preparador verificado y en activo en esa oposición (lo da de alta su
+    // administrador u otro verificado; el administrador puede retirarlo
+    // poniendo activo = false).
+    function esVerificado(op) {
+      return conSesionEn(op)
+        && exists(enRed(op, 'preparadoresVerificados/' + request.auth.uid))
+        && get(enRed(op, 'preparadoresVerificados/' + request.auth.uid)).data.activo == true;
+    }
+
+    // Un preparador lo es de un alumno cuando el alumno ha creado, en sus datos
+    // de esa oposición, el documento preparadores/{preparador}, y sigue
+    // verificado en ella: si se le retira la verificación, pierde el acceso.
+    function esPreparadorDe(op, uid) {
+      return esVerificado(op) && exists(deUsuario(op, uid, 'preparadores/' + request.auth.uid));
+    }
+
+    // El usuario ha enlazado su app con ese preparador en esa oposición.
+    function tengoDePreparador(op, preparador) {
+      return conSesionEn(op) && exists(deUsuario(op, request.auth.uid, 'preparadores/' + preparador));
+    }
+
+    // Perfil de LinkedIn: vacío o https://www.linkedin.com/in/… (lo ven todos los usuarios con cuenta).
+    function linkedinValido() {
+      let l = request.resource.data.get('linkedin', '');
+      return l == '' || l.matches('https://www[.]linkedin[.]com/in/[^/?#]+');
+    }
+
+    function soloCambia(campos) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
+    }
+
+    // La hora que elige quien coge una sustitución cae dentro de la franja del
+    // alumno (las fechas son textos ISO del mismo formato, que se comparan bien).
+    function horaEnLaFranja() {
+      let hora = request.resource.data.get('hora', resource.data.fecha);
+      let hasta = resource.data.get('hasta', null);
+      return (hasta == null && hora == resource.data.fecha)
+        || (hasta != null && hora >= resource.data.fecha && hora <= hasta);
+    }
+
+    // Peticiones de verificación que puede ver un verificado: las abiertas a
+    // todos y las que le piden a él.
+    function solicitudParaMi(op) {
+      return esVerificado(op) && (resource.data.paraTodos == true || resource.data.destinatario == request.auth.uid);
+    }
+
+    // Cada usuario solo puede leer y escribir su propio subárbol (en TCEE, en la
+    // raíz; en las demás oposiciones, en users/{uid}/oposiciones/{op}/):
+    //   exam_results/{id}        resultados de test (web y app)
+    //   progress/spaced_repetition   repaso Leitner
+    //   progress/settings        temas estudiados, racha, oposición elegida
+    //   progress/plan            fechas de los ejercicios, hitos y horario
+    //   progress/preparador      perfil de preparador (código para alumnos)
+    //   notes/{codigoTema}       notas propias por tema
+    //   cantes/{id}              cantes programados y diario
+    //   cronogramas/{id}         cronogramas de estudio
+    //   alumnos/{id}             alumnos de un preparador
+    //   sesiones/{id}            sesiones de un preparador con sus alumnos
+    //   preparadores/{prep}      preparadores a los que el usuario da acceso
+    match /users/{uid}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+"""
+
+# Lo que el preparador enlazado ve de su alumno, relativo a sus datos de la oposición.
+USUARIO = """
+      // El preparador enlazado ve los temas que marca su alumno y sus cantes.
+      // No ve tests (exam_results), notas ni el resto del progreso.
+      match /progress/settings {
+        allow get: if esPreparadorDe(%OP%, uid);
+      }
+      match /cantes/{id} {
+        allow read: if esPreparadorDe(%OP%, uid);
+        // Solo puede crear y cambiar los cantes que firma con su uid: los que el
+        // alumno programa por su cuenta no los puede tocar.
+        allow create: if esPreparadorDe(%OP%, uid) && request.resource.data.preparador == request.auth.uid;
+        allow update: if esPreparadorDe(%OP%, uid)
+          && resource.data.preparador == request.auth.uid
+          && request.resource.data.preparador == request.auth.uid;
+      }
+      // Cronograma: el preparador enlazado lo ve solo si el alumno lo comparte,
+      // y solo puede escribir una propuesta firmada por él, que el alumno
+      // acepta o rechaza.
+      match /cronogramas/{id} {
+        allow read: if esPreparadorDe(%OP%, uid) && resource.data.compartir == true;
+        allow update: if esPreparadorDe(%OP%, uid)
+          && resource.data.compartir == true
+          && soloCambia(['propuesta', 'updatedAt'])
+          && request.resource.data.propuesta.de == request.auth.uid;
+      }
+      // El preparador puede leer su propio permiso y renunciar a él.
+      match /preparadores/{preparador} {
+        allow get, delete: if conSesionEn(%OP%) && request.auth.uid == preparador;
+      }
+"""
+
+# La red de preparadores de una oposición.
+RED = """
+      // Código que el preparador da a sus alumnos: codigos/{codigo} → { uid, nombre }.
+      // Se consulta de uno en uno (no se pueden listar), solo lo reserva un
+      // preparador verificado en la oposición y solo lo cambia su dueño.
+      match /codigos/{codigo} {
+        allow get: if conSesionEn(%OP%);
+        allow create: if esVerificado(%OP%) && request.resource.data.uid == request.auth.uid;
+        allow update: if conSesionEn(%OP%)
+          && resource.data.uid == request.auth.uid
+          && request.resource.data.uid == request.auth.uid;
+        allow delete: if conSesionEn(%OP%) && resource.data.uid == request.auth.uid;
+      }
+
+      // Alumnos enlazados con un preparador: los escribe el alumno al enlazar y
+      // los lee el preparador para saber quién se ha enlazado. Cualquiera de los
+      // dos puede romper el enlace.
+      match /preparadores/{preparador}/alumnos/{alumno} {
+        allow read: if conSesionEn(%OP%) && (request.auth.uid == preparador || request.auth.uid == alumno);
+        allow create, update: if conSesionEn(%OP%) && request.auth.uid == alumno && request.resource.data.uid == alumno;
+        allow delete: if conSesionEn(%OP%) && (request.auth.uid == preparador || request.auth.uid == alumno);
+      }
+
+      // Lo lee cada uno el suyo (para saber si es administrador).
+      match /admins/{id} {
+        allow get: if conSesionEn(%OP%) && (request.auth.uid == id || (correo() != '' && correo() == id));
+      }
+
+      // Lista de preparadores verificados: la ve cualquiera con cuenta (para
+      // elegir a quién pedir una sustitución). Da de alta el administrador o un
+      // verificado, nunca uno mismo; el interesado solo cambia su nombre y sus
+      // ejercicios; retirar (activo = false) o borrar, solo el administrador.
+      match /preparadoresVerificados/{uid} {
+        allow read: if conSesionEn(%OP%);
+        allow create: if (esAdmin(%OP%) || (esVerificado(%OP%) && uid != request.auth.uid))
+          && request.resource.data.uid == uid
+          && request.resource.data.avaladoPor == request.auth.uid
+          && request.resource.data.activo == true
+          && linkedinValido();
+        allow update: if esAdmin(%OP%)
+          || (conSesionEn(%OP%) && request.auth.uid == uid && resource.data.activo == true && soloCambia(['nombre', 'ejercicios', 'linkedin']) && linkedinValido());
+        allow delete: if esAdmin(%OP%);
+      }
+
+      // Peticiones de verificación: las crea el interesado y las leen él, el
+      // administrador y los verificados: todos si va abierta (paraTodos) o solo
+      // el preparador al que se la pide (destinatario). Se borran al resolverlas.
+      match /solicitudesPreparador/{uid} {
+        allow read: if (conSesionEn(%OP%) && request.auth.uid == uid) || esAdmin(%OP%) || solicitudParaMi(%OP%);
+        allow create, update: if conSesionEn(%OP%) && request.auth.uid == uid && request.resource.data.uid == uid;
+        allow delete: if (conSesionEn(%OP%) && request.auth.uid == uid) || esAdmin(%OP%) || solicitudParaMi(%OP%);
+      }
+
+      // Sustituciones: el alumno publica un cante para que se lo coja otro
+      // preparador. La ven el alumno, los verificados a los que va dirigida y
+      // quien la coge. Coger = pasar de abierta a cogida firmando con su uid.
+      match /sustituciones/{id} {
+        allow read: if (conSesionEn(%OP%) && (resource.data.alumno == request.auth.uid || resource.data.cogidaPor == request.auth.uid))
+          || (esVerificado(%OP%) && (resource.data.paraTodos == true || request.auth.uid in resource.data.destinatarios));
+        allow create: if conSesionEn(%OP%) && request.resource.data.alumno == request.auth.uid && request.resource.data.estado == 'abierta';
+        allow update: if (conSesionEn(%OP%) && resource.data.alumno == request.auth.uid && request.resource.data.alumno == request.auth.uid)
+          || (esVerificado(%OP%)
+            && resource.data.estado == 'abierta'
+            && resource.data.alumno != request.auth.uid
+            && (resource.data.paraTodos == true || request.auth.uid in resource.data.destinatarios)
+            && request.resource.data.estado == 'cogida'
+            && request.resource.data.cogidaPor == request.auth.uid
+            && soloCambia(['estado', 'cogidaPor', 'cogidaPorNombre', 'hora', 'updatedAt'])
+            && horaEnLaFranja());
+        allow delete: if conSesionEn(%OP%) && resource.data.alumno == request.auth.uid;
+
+        // Contactos: privado/alumno (lo escribe el alumno) y privado/preparador
+        // (lo escribe quien la coge). Solo los leen ellos dos. getAfter:
+        // privado/alumno se escribe en el mismo lote que crea la petición, y la
+        // regla tiene que verla ya creada.
+        match /privado/{quien} {
+          allow read: if conSesionEn(%OP%)
+            && (get(enRed(%OP%, 'sustituciones/' + id)).data.alumno == request.auth.uid
+              || get(enRed(%OP%, 'sustituciones/' + id)).data.cogidaPor == request.auth.uid);
+          allow write: if conSesionEn(%OP%)
+            && ((quien == 'alumno' && getAfter(enRed(%OP%, 'sustituciones/' + id)).data.alumno == request.auth.uid)
+              || (quien == 'preparador' && getAfter(enRed(%OP%, 'sustituciones/' + id)).data.cogidaPor == request.auth.uid));
+        }
+      }
+
+      // Huecos libres de un preparador: los ve él y sus alumnos enlazados.
+      match /huecos/{preparador} {
+        allow read: if (conSesionEn(%OP%) && request.auth.uid == preparador) || tengoDePreparador(%OP%, preparador);
+        allow write: if esVerificado(%OP%) && request.auth.uid == preparador;
+      }
+
+      // Reservas de un alumno en los huecos de su preparador.
+      match /reservas/{id} {
+        allow read: if conSesionEn(%OP%) && (resource.data.alumno == request.auth.uid || resource.data.preparador == request.auth.uid);
+        allow create: if conSesionEn(%OP%)
+          && request.resource.data.alumno == request.auth.uid
+          && request.resource.data.estado == 'pedida'
+          && tengoDePreparador(%OP%, request.resource.data.preparador);
+        allow update: if conSesionEn(%OP%)
+          && ((resource.data.preparador == request.auth.uid && request.resource.data.estado in ['aceptada', 'rechazada'] && soloCambia(['estado', 'updatedAt']))
+            || (resource.data.alumno == request.auth.uid && request.resource.data.estado == 'cancelada' && soloCambia(['estado', 'updatedAt'])));
+        allow delete: if conSesionEn(%OP%) && (resource.data.alumno == request.auth.uid || resource.data.preparador == request.auth.uid);
+      }
+"""
+
+PIE = """
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+"""
+
+
+def bloque(plantilla: str, op: str, sangria: str = '') -> str:
+    texto = plantilla.replace('%OP%', op)
+    if not sangria:
+        return texto
+    return '\n'.join(sangria + l if l.strip() else l for l in texto.split('\n'))
+
+
+def generar() -> str:
+    lista = '[' + ', '.join(f"'{o}'" for o in OPOSICIONES) + ']'
+    partes = [CABECERA.replace('%OPOSICIONES%', lista)]
+    partes.append("""
+    // ------------------------------------------------------------------ TCEE
+    // (en la raíz, como antes de que hubiera varias oposiciones)
+
+    match /users/{uid} {""")
+    partes.append(bloque(USUARIO, "'tcee'").rstrip('\n'))
+    partes.append('    }')
+    # La red de TCEE está en la raíz: sus bloques van un nivel menos sangrados.
+    partes.append('\n'.join(l[2:] if l.startswith('  ') else l for l in bloque(RED, "'tcee'").split('\n')).rstrip('\n'))
+    partes.append("""
+    // ------------------------------------------------- Las demás oposiciones
+    // Las mismas reglas, en users/{uid}/oposiciones/{op}/… y oposiciones/{op}/….
+
+    match /users/{uid}/oposiciones/{op} {""")
+    partes.append(bloque(USUARIO, 'op').rstrip('\n'))
+    partes.append("""    }
+
+    match /oposiciones/{op} {""")
+    partes.append(bloque(RED, 'op').rstrip('\n'))
+    partes.append('    }')
+    partes.append(PIE)
+    return '\n'.join(partes)
+
+
+if __name__ == '__main__':
+    destino = Path(__file__).resolve().parents[3] / 'firestore.rules'
+    destino.write_text(generar(), encoding='utf-8')
+    print(f'Escrito {destino}')

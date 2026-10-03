@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
@@ -57,7 +58,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.share_outlined),
-              onPressed: () => compartirTexto(context, 'Test TCEE: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es'),
+              onPressed: () => compartirTexto(context, 'Test ${Oposiciones.actual.siglas}: ${formatoNota(r.notaSobre10)}/10 · ${r.correctas} aciertos, ${r.incorrectas} fallos, ${r.sinResponder} en blanco (${formatoTiempo(r.tiempoSeconds)}). victorgutierrezmarcos.es'),
             ),
           ],
         ),
