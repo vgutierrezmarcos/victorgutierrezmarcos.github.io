@@ -42,7 +42,7 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
               initialValue: destinatario?.uid ?? '',
               isExpanded: true,
               items: [
-                const DropdownMenuItem(value: '', child: Text('Al administrador (o a cualquier verificado)')),
+                const DropdownMenuItem(value: '', child: Text('A cualquier preparador verificado')),
                 for (final v in candidatos) DropdownMenuItem(value: v.uid, child: Text(v.nombre, overflow: TextOverflow.ellipsis)),
               ],
               onChanged: (u) => set(() => destinatario = candidatos.where((v) => v.uid == u).firstOrNull),
@@ -51,8 +51,8 @@ Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
               padding: const EdgeInsets.only(top: 4),
               child: Text(
                 destinatario == null
-                    ? 'Le llegará un aviso al administrador; los preparadores verificados también podrán verla en su lista.'
-                    : 'Solo la verán ${destinatario!.nombre} (con un aviso) y el administrador.',
+                    ? 'La podrá revisar cualquier preparador verificado.'
+                    : 'Se la enviamos a ${destinatario!.nombre}, que recibirá un aviso.',
                 style: Theme.of(d).textTheme.labelSmall,
               ),
             ),
@@ -106,7 +106,7 @@ class VerificarPreparadoresPage extends ConsumerWidget {
         builder: (d) => AlertDialog(
           title: Text(aprobar ? '¿Verificar a ${s.nombre}?' : '¿Rechazar la solicitud?'),
           content: Text(aprobar
-              ? 'Avalas que ${s.nombre} es preparador o preparadora de la oposición. Podrá dar su código a alumnos, ver y coger sustituciones y verificar a otros. Queda registrado que lo has verificado tú, y el administrador puede retirarlo.'
+              ? 'Avalas que ${s.nombre} es preparador o preparadora de la oposición. Podrá dar su código a alumnos, ver y coger sustituciones y verificar a otros. Queda registrado que lo has verificado tú.'
               : 'Se borrará la solicitud de ${s.nombre}. Podrá volver a pedirla.'),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
@@ -211,14 +211,14 @@ class AdminRedPage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Administración')),
+      appBar: BarraWeb(title: const Text('Gestionar la red')),
       body: RefreshIndicator(
         onRefresh: () async => refrescarRedDesdeWidget(ref),
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
             if (!estado.esAdmin)
-              Text('Esta pantalla es solo para el administrador.', style: context.textos.bodySmall)
+              Text('No tienes acceso a esta pantalla.', style: context.textos.bodySmall)
             else ...[
               if (!estado.verificado)
                 Tarjeta(
@@ -230,7 +230,7 @@ class AdminRedPage extends ConsumerWidget {
                     FilledButton(
                       onPressed: () async {
                         final p = ref.read(perfilPreparadorProvider);
-                        await red.verificarme(nombre: p.nombre.isNotEmpty ? p.nombre : (ref.read(usuarioActualProvider)?.displayName ?? 'Administrador'));
+                        await red.verificarme(nombre: p.nombre.isNotEmpty ? p.nombre : (ref.read(usuarioActualProvider)?.displayName ?? ''));
                         refrescarRedDesdeWidget(ref);
                         await ref.read(perfilPreparadorProvider.notifier).reintentarCodigo();
                       },
@@ -259,7 +259,7 @@ class AdminRedPage extends ConsumerWidget {
                             subtitle: Text(
                               [
                                 if (v.descripcionEjercicios.isNotEmpty) v.descripcionEjercicios,
-                                v.avaladoPor == v.uid ? 'administrador' : 'verificado por ${v.avaladoPorNombre.isEmpty ? '—' : v.avaladoPorNombre}',
+                                v.avaladoPor == v.uid ? 'primer verificado' : 'verificado por ${v.avaladoPorNombre.isEmpty ? '—' : v.avaladoPorNombre}',
                                 if (v.desde != null) fechaCorta(v.desde!),
                                 if (!v.activo) 'RETIRADO',
                               ].join(' · '),
@@ -284,8 +284,6 @@ class AdminRedPage extends ConsumerWidget {
                 AsyncError() => [Text('No se ha podido cargar la lista.', style: context.textos.bodySmall)],
                 _ => [const Center(child: CircularProgressIndicator())],
               },
-              const SizedBox(height: 8),
-              Text('Los administradores se dan de alta en la consola de Firebase (colección admins, un documento por uid).', style: context.textos.labelSmall),
             ],
           ],
         ),

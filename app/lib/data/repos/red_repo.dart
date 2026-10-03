@@ -56,8 +56,12 @@ class RedRepo {
   Future<DiagnosticoAdmin> diagnosticoAdmin() async {
     if (!conSesion) return DiagnosticoAdmin.no;
     try {
-      final d = await _db!.collection('admins').doc(uid).get(const GetOptions(source: Source.server));
-      return d.exists ? DiagnosticoAdmin.si : DiagnosticoAdmin.no;
+      // El documento puede llamarse como el uid o como el correo de Google.
+      final admins = _db!.collection('admins');
+      if ((await admins.doc(uid).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
+      final correo = _auth!.currentUser?.email?.trim().toLowerCase();
+      if (correo != null && correo.isNotEmpty && (await admins.doc(correo).get(const GetOptions(source: Source.server))).exists) return DiagnosticoAdmin.si;
+      return DiagnosticoAdmin.no;
     } on FirebaseException catch (e) {
       return e.code == 'permission-denied' ? DiagnosticoAdmin.sinPermiso : DiagnosticoAdmin.sinRed;
     } catch (_) {
@@ -133,7 +137,7 @@ class RedRepo {
 
   /// Solo el administrador: se verifica a sí mismo (primer preparador de la red).
   Future<void> verificarme({required String nombre, List<int> ejercicios = const [1, 3, 4]}) =>
-      _verificados.doc(uid).set(PreparadorVerificado(uid: uid!, nombre: nombre, ejercicios: ejercicios, avaladoPor: uid, avaladoPorNombre: 'Administrador', desde: DateTime.now()).toJson());
+      _verificados.doc(uid).set(PreparadorVerificado(uid: uid!, nombre: nombre, ejercicios: ejercicios, avaladoPor: uid, avaladoPorNombre: nombre, desde: DateTime.now()).toJson());
 
   /// Solo el administrador: retira (o devuelve) la verificación. Con [cascada]
   /// retira también a quienes verificó esa persona.

@@ -8,9 +8,15 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // Administradores: documentos admins/{uid} creados a mano en la consola.
+    // Administradores: documentos creados a mano en la consola, cuyo ID es el
+    // uid o el correo de Google (verificado) del administrador.
+    function correo() {
+      return request.auth.token.get('email_verified', false) == true ? request.auth.token.get('email', '') : '';
+    }
     function esAdmin() {
-      return conSesion() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+      return conSesion()
+        && (exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+          || (correo() != '' && exists(/databases/$(database)/documents/admins/$(correo()))));
     }
 
     // Preparador verificado y en activo (lo da de alta el administrador u otro
@@ -97,8 +103,8 @@ service cloud.firestore {
     // ---------------------------------------------------- Red de preparadores
 
     // Lo lee cada uno el suyo (para saber si es administrador).
-    match /admins/{uid} {
-      allow get: if conSesion() && request.auth.uid == uid;
+    match /admins/{id} {
+      allow get: if conSesion() && (request.auth.uid == id || (correo() != '' && correo() == id));
     }
 
     // Lista de preparadores verificados: la ve cualquiera con cuenta (para
