@@ -7,7 +7,7 @@ import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/features/cronograma/planificador.dart';
 
-/// Cronograma (en prueba): orden por bloques y conexiones del PowerPoint,
+/// Cronograma: orden por bloques y conexiones del PowerPoint,
 /// intercalado de Mixto (3.º) o de las dos partes (4.º), reparto por semanas,
 /// retraso y replanificación. Con la organización real del temario.
 void main() {

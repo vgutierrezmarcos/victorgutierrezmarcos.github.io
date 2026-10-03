@@ -148,7 +148,7 @@ void main() {
     await arrancar(tester);
     await pestana(tester, 'Temario');
     await tocar(tester, find.text('Cronograma'));
-    expect(find.textContaining('En prueba'), findsWidgets);
+    expect(find.textContaining('En prueba'), findsNothing);
     await tocar(tester, find.text('Crear un cronograma'));
     expect(find.text('Intercalar los temas de Mixto'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Crear el cronograma'), 300, scrollable: find.byType(Scrollable).first);

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -10,7 +11,7 @@ import 'cronograma_form_page.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
 
-/// Cronograma de la vuelta en curso (en prueba): progreso, retraso con
+/// Cronograma de la vuelta en curso: progreso, retraso con
 /// replanificación, semanas con sus temas, propuestas del preparador y ajustes.
 class CronogramaPage extends ConsumerWidget {
   const CronogramaPage({super.key});
@@ -29,14 +30,13 @@ class CronogramaPage extends ConsumerWidget {
       return Scaffold(
         appBar: BarraWeb(title: const Text('Cronograma')),
         body: ListaAdaptable(children: [
-          const AvisoPrueba(),
           const SizedBox(height: 10),
           Tarjeta(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Planifica una vuelta al temario', style: context.textos.titleMedium),
               const SizedBox(height: 4),
               Text(
-                'Elige el 3.º o el 4.º, todos los temas o solo algunos, y cuántos temas a la semana o hasta cuándo. La app propone un orden por bloques y conexiones del temario, intercala los temas más memorísticos y te dice cada semana lo que toca.',
+                'Elige ${Oposiciones.actual.conCronograma.map((e) => 'el ${e.corto}').join(' o ')}, todos los temas o solo algunos, y cuántos temas a la semana o hasta cuándo. La app propone un orden por bloques y conexiones del temario, intercala los temas más memorísticos y te dice cada semana lo que toca.',
                 style: context.textos.bodySmall,
               ),
               const SizedBox(height: 12),
@@ -94,7 +94,6 @@ class CronogramaPage extends ConsumerWidget {
         ],
       ),
       body: ListaAdaptable(children: [
-        const AvisoPrueba(),
         const SizedBox(height: 10),
         ResumenCronograma(c: c, estado: estado),
         if (p != null) ...[

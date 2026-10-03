@@ -12,7 +12,7 @@ import '../../widgets/selector_temas.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
 
-/// Crear un cronograma (en prueba): qué ejercicio, qué temas, a qué ritmo o
+/// Crear un cronograma: qué ejercicio, qué temas, a qué ritmo o
 /// hasta cuándo, si se intercalan Mixto (3.º) o las dos partes (4.º), y la
 /// vista previa de las primeras semanas.
 class CronogramaFormPage extends ConsumerStatefulWidget {
@@ -85,7 +85,6 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     return Scaffold(
       appBar: BarraWeb(title: const Text('Nuevo cronograma')),
       body: ListaAdaptable(children: [
-        const AvisoPrueba(),
         const TituloSeccion('Qué vuelta'),
         SegmentedButton<int>(
           showSelectedIcon: false,
