@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/constants.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/repos/preparador_repo.dart';
@@ -412,7 +413,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             icon: const Icon(Icons.ios_share),
             onPressed: () => compartirTexto(
               context,
-              'Enlaza tu app Oposición TCEE conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
+              'Enlaza tu app ${Creditos.nombreApp} conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
               asunto: 'Código de preparador',
             ),
           ),
@@ -462,7 +463,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
 Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
   final nombre = TextEditingController(text: alumno?.nombre ?? '');
   final telefono = TextEditingController(text: alumno?.telefono ?? '');
-  var ejercicio = alumno?.ejercicio ?? 3;
+  var ejercicio = alumno?.ejercicio ?? Oposiciones.actual.primerConTemas;
   return showDialog<Alumno>(
     context: context,
     builder: (d) => StatefulBuilder(
@@ -477,7 +478,7 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
           const SizedBox(height: 6),
           SegmentedButton<int>(
             showSelectedIcon: false,
-            segments: const [ButtonSegment(value: 1, label: Text('1.º'), tooltip: 'Dictamen de coyuntura'), ButtonSegment(value: 3, label: Text('3.º')), ButtonSegment(value: 4, label: Text('4.º')), ButtonSegment(value: 0, label: Text('3.º y 4.º'))],
+            segments: segmentosEjercicio(ambos: true),
             selected: {ejercicio},
             onSelectionChanged: (s) => setState(() => ejercicio = s.first),
             style: const ButtonStyle(visualDensity: VisualDensity.compact),

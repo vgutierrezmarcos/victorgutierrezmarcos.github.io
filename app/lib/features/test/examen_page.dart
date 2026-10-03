@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/constants.dart';
 import '../../core/providers.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
@@ -159,11 +158,11 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                             child: GestureDetector(
                               onTap: () => showDialog(
                                 context: context,
-                                builder: (_) => Dialog(child: InteractiveViewer(child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}'))),
+                                builder: (_) => Dialog(child: InteractiveViewer(child: Image.network('${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}'))),
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8),
-                                child: Image.network('${Urls.imagenesTest}/${img.src.split('/').last}', semanticLabel: img.alt),
+                                child: Image.network('${ref.read(oposicionProvider).urlImagenesTest}/${img.src.split('/').last}', semanticLabel: img.alt),
                               ),
                             ),
                           ),

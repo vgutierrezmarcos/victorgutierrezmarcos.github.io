@@ -16,3 +16,15 @@ const firebaseConfig = {
 
 // Inicializar Firebase (se cargará desde los scripts en el HTML)
 // Las librerías de Firebase se cargarán vía CDN en los archivos HTML
+
+// Oposición de esta web. Decide dónde se guardan los datos de cada usuario en
+// Firestore (el mismo proyecto lo comparten la app y las webs de TCEE y DCE):
+// TCEE, en la raíz users/{uid}; cualquier otra, en users/{uid}/oposiciones/{id}.
+// La web de DCE pone aquí 'dce'.
+const OPOSICION_WEB = 'tcee';
+
+// Documento raíz de los datos del usuario en la oposición de esta web.
+function docUsuario(db, uid) {
+  const usuario = db.collection('users').doc(uid);
+  return OPOSICION_WEB === 'tcee' ? usuario : usuario.collection('oposiciones').doc(OPOSICION_WEB);
+}

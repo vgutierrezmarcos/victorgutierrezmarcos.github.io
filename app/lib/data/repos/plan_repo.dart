@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/oposicion.dart';
 import '../models/cronograma.dart';
 import '../models/plan.dart';
 
@@ -17,6 +18,7 @@ class PlanRepo {
     required Box plan,
     required Box agenda,
     Box? cronogramas,
+    this.oposicion = Oposiciones.tcee,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
   })  : _cantes = cantes,
@@ -26,6 +28,7 @@ class PlanRepo {
         _db = firestore,
         _auth = auth;
 
+  final Oposicion oposicion;
   final Box _cantes;
   final Box _plan;
   final Box _agenda;
@@ -35,18 +38,19 @@ class PlanRepo {
   final FirebaseFirestore? _db;
   final FirebaseAuth? _auth;
 
-  static Future<PlanRepo> crear({FirebaseFirestore? firestore, FirebaseAuth? auth}) async => PlanRepo(
-        cantes: await Hive.openBox(Cajas.cantes),
-        plan: await Hive.openBox(Cajas.plan),
-        agenda: await Hive.openBox(Cajas.agendaTemas),
-        cronogramas: await Hive.openBox(Cajas.cronogramas),
+  static Future<PlanRepo> crear({Oposicion oposicion = Oposiciones.tcee, FirebaseFirestore? firestore, FirebaseAuth? auth}) async => PlanRepo(
+        oposicion: oposicion,
+        cantes: await Hive.openBox(oposicion.caja(Cajas.cantes)),
+        plan: await Hive.openBox(oposicion.caja(Cajas.plan)),
+        agenda: await Hive.openBox(oposicion.caja(Cajas.agendaTemas)),
+        cronogramas: await Hive.openBox(oposicion.caja(Cajas.cronogramas)),
         firestore: firestore,
         auth: auth,
       );
 
   DocumentReference<Map<String, dynamic>>? get _docUsuario {
     final uid = _auth?.currentUser?.uid;
-    return uid == null || _db == null ? null : _db.collection('users').doc(uid);
+    return uid == null || _db == null ? null : oposicion.raizUsuario(_db, uid);
   }
 
   // -------------------------------------------------------------------- Cantes

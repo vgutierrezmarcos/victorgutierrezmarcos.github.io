@@ -60,6 +60,15 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 - `preparadores/{uidPreparador}`: preparadores a los que el usuario da acceso.
 - `notes/{tema}`: nota libre (`texto`) y agenda del tema (`pendientes`, `vueltas`).
 
+## Varias oposiciones
+
+La app está preparada para servir a más de una oposición, cada una independiente: su web (de la que sale el contenido), su examen, los datos de sus opositores y su red de preparadores con sus administradores. Hoy solo está TCEE; DCE (Diplomado Comercial del Estado) se prepara en la rama `dce` y no se activa hasta que se decida.
+
+- **Descripción de cada oposición**: `data/models/oposicion.dart` (`Oposicion`, `EjercicioDef`, `Oposiciones.todas`). Lleva la web y las rutas del contenido, los ejercicios (cuáles se cantan, si es un dictamen sin temas, cuáles tienen sorteo, temas por parte, partes que hay que desarrollar, PDF por parte, qué se intercala en el cronograma) y, si su examen no tiene test, de qué oposición se practica el test de forma voluntaria (`testDe`). Las pantallas no llevan números de ejercicio fijos: los sacan de aquí.
+- **La oposición elegida** se guarda en la caja Hive `app` (`oposicion`). Con ella `main()` crea los servicios y fija `Oposiciones.actual`; no cambia con la app abierta (`oposicionProvider` en los widgets). Las reglas del sorteo de `app-config.json` → `sorteo`, si las trae la web de esa oposición, mandan sobre las del examen (`Oposicion.bolasPorParte`).
+- **Datos separados**: los de TCEE siguen donde estaban (`users/{uid}/…` y cajas Hive sin sufijo); los de otra oposición van en `users/{uid}/oposiciones/{id}/…` y en cajas con sufijo (`cantes_dce`); los PDF descargados, en su carpeta (`Oposicion.raizUsuario`, `Oposicion.caja`). La web hace lo mismo con `docUsuario` y `OPOSICION_WEB` de `firebase-config.js`.
+- **Red de preparadores por oposición**: TCEE en las colecciones de la raíz y las demás en `oposiciones/{id}/…` (`Oposicion.red`), cada una con sus `admins`. Un preparador de las dos se verifica en cada una y tiene un código por oposición. `firestore.rules` se genera con `tool/reglas/generar.py` (ver su README).
+
 ## Cronograma (en prueba)
 
 `data/models/cronograma.dart`, `features/cronograma/` (`planificador.dart` es la lógica pura, probada en `test/cronograma_test.dart`) y `core/cronograma_providers.dart`. Una vuelta al 3.º o al 4.º, con todos los temas o una selección, a N temas por semana o hasta una fecha (una sale de la otra), con semanas de descanso. Solo hay uno activo; al empezar otro, el anterior se archiva.
@@ -85,7 +94,7 @@ Los preparadores pueden poner su perfil de LinkedIn (ajustes de preparador y sol
 - **Avisos**: `core/avisos_red.dart` comprueba lo nuevo al sincronizar (cada 3 min con la app abierta) y lo notifica una vez (`core/vistos.dart`). En Android, además, una tarea de WorkManager lo comprueba cada ~15 min con la app cerrada (`core/avisos_fondo_io.dart`). En el navegador, notificaciones del navegador con la pestaña abierta.
 - **Colores**: cada alumno y cada preparador tienen su color (`colorDePersona`); en la agenda del alumno se puede filtrar por preparador.
 
-Las reglas se prueban con el emulador: `tool/reglas/` (ver su README).
+Las reglas se generan y se prueban con el emulador: `tool/reglas/` (ver su README).
 
 ## Sincronización y privacidad
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/estructura.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
@@ -21,8 +22,8 @@ class OrganizacionPage extends ConsumerStatefulWidget {
 
 class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
   bool _esquema = false;
-  int _ejercicio = 3;
-  String _idEsquema = 'tercero';
+  late int _ejercicio = Oposiciones.actual.primerConTemas;
+  String? _idEsquema;
   bool _verProgreso = true;
 
   @override
@@ -73,6 +74,13 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
 
   // ------------------------------------------------------------------ Bloques
 
+  /// Ejercicios con bloques en la organización (o, si aún no se ha descargado,
+  /// los de temas cantados).
+  static List<int> _ejerciciosConBloques(EstructuraTemario e) {
+    final n = {for (final b in e.bloques) b.ejercicio}.toList()..sort();
+    return n.isEmpty ? [for (final x in Oposiciones.actual.conTemasCantados) x.numero] : n;
+  }
+
   Widget _vistaBloques(EstructuraTemario e, Temario? temario, Set<String> estudiados) {
     final sugeridos = e.sugeridos(estudiados, ejercicio: _ejercicio).take(8).toList();
     return ListaAdaptable(
@@ -80,7 +88,7 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
       children: [
         SegmentedButton<int>(
           showSelectedIcon: false,
-          segments: const [ButtonSegment(value: 3, label: Text('Tercer ejercicio')), ButtonSegment(value: 4, label: Text('Cuarto ejercicio'))],
+          segments: [for (final n in _ejerciciosConBloques(e)) ButtonSegment(value: n, label: Text(Oposiciones.actual.nombreEjercicio(n)))],
           selected: {_ejercicio},
           onSelectionChanged: (s) => setState(() => _ejercicio = s.first),
           style: const ButtonStyle(visualDensity: VisualDensity.compact),

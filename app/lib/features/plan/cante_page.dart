@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/calendario.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
@@ -62,7 +63,7 @@ class CantePage extends ConsumerWidget {
     }
 
     Future<void> compartirIcs() async {
-      await guardarFichero(nombre: 'cante_tcee.ics', contenido: Calendario.ics([eventoDeCante(c)]), mime: 'text/calendar', asunto: 'Cante TCEE');
+      await guardarFichero(nombre: 'cante_${Oposiciones.actual.id}.ics', contenido: Calendario.ics([eventoDeCante(c)]), mime: 'text/calendar', asunto: 'Cante ${Oposiciones.actual.siglas}');
     }
 
     return Scaffold(
@@ -200,8 +201,8 @@ class CantePage extends ConsumerWidget {
                 ),
               ),
           ],
-          if (c.ejercicio != 1) TituloSeccion('Temas que entran (${temas.length})'),
-          if (c.ejercicio == 1)
+          if (!Oposiciones.actual.esDictamen(c.ejercicio)) TituloSeccion('Temas que entran (${temas.length})'),
+          if (Oposiciones.actual.esDictamen(c.ejercicio))
             const SizedBox()
           else if (temas.isEmpty)
             Text('Ninguno todavía.', style: context.textos.bodySmall)

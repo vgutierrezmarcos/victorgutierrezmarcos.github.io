@@ -9,6 +9,7 @@ import '../../core/calendario.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
@@ -27,14 +28,14 @@ Future<void> exportarCalendario(BuildContext context, WidgetRef ref) async {
   final hitos = ref.read(planProvider).hitos;
   final eventos = [
     for (final c in cantes) eventoDeCante(c),
-    for (final e in fechas.entries) eventoDeFecha('ej${e.key}', 'TCEE · ${nombreEjercicio(e.key)}', e.value),
-    for (final h in hitos) eventoDeFecha(h.id, 'TCEE · ${h.titulo}', h.fecha),
+    for (final e in fechas.entries) eventoDeFecha('ej${e.key}', '${Oposiciones.actual.siglas} · ${nombreEjercicio(e.key)}', e.value),
+    for (final h in hitos) eventoDeFecha(h.id, '${Oposiciones.actual.siglas} · ${h.titulo}', h.fecha),
   ];
   if (eventos.isEmpty) {
     messenger.showSnackBar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
     return;
   }
-  await guardarFichero(nombre: 'oposicion_tcee.ics', contenido: Calendario.ics(eventos), mime: 'text/calendar', asunto: 'Calendario de la oposición TCEE');
+  await guardarFichero(nombre: 'oposicion_${Oposiciones.actual.id}.ics', contenido: Calendario.ics(eventos), mime: 'text/calendar', asunto: 'Calendario de la oposición ${Oposiciones.actual.siglas}');
 }
 
 /// Activa o desactiva los avisos de la víspera y de una hora antes de cada cante.

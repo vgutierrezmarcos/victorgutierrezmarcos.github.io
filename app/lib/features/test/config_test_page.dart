@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/constants.dart';
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -47,6 +48,14 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
           return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
             children: [
+              if (ref.watch(oposicionProvider).testVoluntario)
+                Tarjeta(
+                  color: context.colores.primarioPalido,
+                  child: Text(
+                    'Tu examen no tiene test. Esto es práctica voluntaria con las preguntas del test de ${Oposiciones.porId(ref.watch(oposicionProvider).testDe).siglas}: muchas tratan materias que también entran en tu temario.',
+                    style: context.textos.bodySmall,
+                  ),
+                ),
               if (pendientes.isNotEmpty)
                 Tarjeta(
                   color: context.colores.primarioPalido,
@@ -169,7 +178,12 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
       conteo[p.tema] = (conteo[p.tema] ?? 0) + 1;
     }
     final codigos = b.temas.keys.toList()..sort(_ordenTema);
-    final partes = {'A': codigos.where((c) => c.contains('.A.')).toList(), 'B': codigos.where((c) => c.contains('.B.')).toList()};
+    // Partes del banco de preguntas (A y B en TCEE), por la letra del código.
+    final partes = <String, List<String>>{};
+    for (final c in codigos) {
+      final trozos = c.split('.');
+      if (trozos.length >= 3) partes.putIfAbsent(trozos[1], () => []).add(c);
+    }
 
     return Column(children: [
       // Wrap: en pantallas estrechas o con letra grande el contador baja a otra línea.
@@ -178,8 +192,8 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
         child: Wrap(alignment: WrapAlignment.spaceBetween, crossAxisAlignment: WrapCrossAlignment.center, children: [
           Wrap(children: [
             TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: const {})), child: const Text('Todos')),
-            TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['A']!.toSet())), child: const Text('Parte A')),
-            TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes['B']!.toSet())), child: const Text('Parte B')),
+            for (final letra in partes.keys.toList()..sort())
+              TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes[letra]!.toSet())), child: Text('Parte $letra')),
           ]),
           Text(_cfg.temas.isEmpty ? 'Todos los temas' : '${_cfg.temas.length} temas', style: context.textos.bodySmall),
         ]),

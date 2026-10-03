@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../data/models/oposicion.dart';
 import '../core/providers.dart';
 import '../theme/app_theme.dart';
 
@@ -602,4 +603,14 @@ class AvatarUsuario extends ConsumerWidget {
       ),
     );
   }
+}
+
+/// Segmentos para elegir el ejercicio de un cante: los que se cantan en la
+/// oposición (1.º, 3.º y 4.º en TCEE) y, con [ambos], «3.º y 4.º» (valor 0).
+List<ButtonSegment<int>> segmentosEjercicio({bool ambos = false}) {
+  final o = Oposiciones.actual;
+  return [
+    for (final e in o.conCante) ButtonSegment(value: e.numero, label: Text(e.corto), tooltip: e.queSeCanta == null ? null : '${e.queSeCanta![0].toUpperCase()}${e.queSeCanta!.substring(1)}'),
+    if (ambos && o.conTemasCantados.length > 1) ButtonSegment(value: 0, label: Text(o.cortoEjercicio(0))),
+  ];
 }

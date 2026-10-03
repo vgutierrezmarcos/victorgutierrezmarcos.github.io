@@ -1,3 +1,4 @@
+import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/estructura.dart';
 
@@ -82,11 +83,12 @@ String _parte(String tema) {
   return p.length >= 2 ? '${p[0]}.${p[1]}' : tema;
 }
 
-/// Temas que se intercalan con el resto: en el 3.º, los de los bloques de
-/// Mixto (más memorísticos); en el 4.º, los de la parte con menos temas, para
-/// alternar las dos partes.
+/// Temas que se intercalan con el resto: los de la categoría intercalable del
+/// ejercicio (en el 3.º de TCEE, los bloques de Mixto, más memorísticos) o, si
+/// no tiene, los de la parte con menos temas, para alternar las partes.
 bool Function(String) temaSecundario(EstructuraTemario e, int ejercicio, List<String> temas) {
-  if (ejercicio == 3) return (t) => e.bloqueDe(t)?.categoria == 'Mixto';
+  final categoria = Oposiciones.actual.ejercicio(ejercicio)?.categoriaIntercalable;
+  if (categoria != null) return (t) => e.bloqueDe(t)?.categoria == categoria;
   final porParte = <String, int>{};
   for (final t in temas) {
     porParte[_parte(t)] = (porParte[_parte(t)] ?? 0) + 1;

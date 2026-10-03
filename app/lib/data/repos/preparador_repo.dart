@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../models/oposicion.dart';
 import '../models/cronograma.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
@@ -29,6 +30,7 @@ class PreparadorRepo {
     required Box alumnos,
     required Box sesiones,
     required Box perfil,
+    this.oposicion = Oposiciones.tcee,
     FirebaseFirestore? firestore,
     FirebaseAuth? auth,
   })  : _alumnos = alumnos,
@@ -37,16 +39,18 @@ class PreparadorRepo {
         _db = firestore,
         _auth = auth;
 
+  final Oposicion oposicion;
   final Box _alumnos;
   final Box _sesiones;
   final Box _perfil;
   final FirebaseFirestore? _db;
   final FirebaseAuth? _auth;
 
-  static Future<PreparadorRepo> crear({FirebaseFirestore? firestore, FirebaseAuth? auth}) async => PreparadorRepo(
-        alumnos: await Hive.openBox(Cajas.alumnos),
-        sesiones: await Hive.openBox(Cajas.sesiones),
-        perfil: await Hive.openBox(Cajas.preparador),
+  static Future<PreparadorRepo> crear({Oposicion oposicion = Oposiciones.tcee, FirebaseFirestore? firestore, FirebaseAuth? auth}) async => PreparadorRepo(
+        oposicion: oposicion,
+        alumnos: await Hive.openBox(oposicion.caja(Cajas.alumnos)),
+        sesiones: await Hive.openBox(oposicion.caja(Cajas.sesiones)),
+        perfil: await Hive.openBox(oposicion.caja(Cajas.preparador)),
         firestore: firestore,
         auth: auth,
       );
@@ -54,7 +58,7 @@ class PreparadorRepo {
   String? get uid => _auth?.currentUser?.uid;
   bool get conSesion => uid != null && _db != null;
 
-  DocumentReference<Map<String, dynamic>>? get _docUsuario => conSesion ? _db!.collection('users').doc(uid) : null;
+  DocumentReference<Map<String, dynamic>>? get _docUsuario => conSesion ? oposicion.raizUsuario(_db!, uid!) : null;
 
   // -------------------------------------------------------------------- Perfil
 
@@ -91,7 +95,7 @@ class PreparadorRepo {
     final p = perfil().copyWith(nombre: nombre.trim());
     await guardarPerfil(p);
     try {
-      if (conSesion && p.codigo != null) await _db!.collection('codigos').doc(p.codigo).set({'uid': uid, 'nombre': p.nombre}, SetOptions(merge: true));
+      if (conSesion && p.codigo != null) await oposicion.red(_db!, 'codigos').doc(p.codigo).set({'uid': uid, 'nombre': p.nombre}, SetOptions(merge: true));
     } catch (_) {}
     return p;
   }
@@ -104,7 +108,7 @@ class PreparadorRepo {
     try {
       for (var i = 0; i < 6; i++) {
         final codigo = generarCodigo();
-        final doc = _db!.collection('codigos').doc(codigo);
+        final doc = oposicion.red(_db!, 'codigos').doc(codigo);
         // Del servidor: con la caché sin conexión, un get() sin red diría que el código está libre.
         if ((await doc.get(const GetOptions(source: Source.server))).exists) continue;
         await doc.set({'uid': uid, 'nombre': nombre, 'creado': DateTime.now().toIso8601String()});
@@ -183,7 +187,7 @@ class PreparadorRepo {
     final a = s.alumno == null ? null : alumno(s.alumno!);
     if (!conSesion || a?.uid == null) return;
     try {
-      await _db!.collection('users').doc(a!.uid).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
+      await oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
     } catch (_) {
       // Sin red o enlace roto: la sesión queda guardada en el lado del preparador.
     }
@@ -205,7 +209,7 @@ class PreparadorRepo {
     final yo = _auth!.currentUser!;
     final DocumentSnapshot<Map<String, dynamic>> doc;
     try {
-      doc = await _db!.collection('codigos').doc(codigo).get();
+      doc = await oposicion.red(_db!, 'codigos').doc(codigo).get();
     } catch (_) {
       throw const ErrorEnlace('No se pudo comprobar el código. Revisa la conexión e inténtalo de nuevo.');
     }
@@ -213,7 +217,7 @@ class PreparadorRepo {
     if (!doc.exists || prep == null) throw const ErrorEnlace('No hay ningún preparador con ese código.');
     if (prep == yo.uid) throw const ErrorEnlace('Ese es tu propio código de preparador.');
     try {
-      final v = await _db.collection('preparadoresVerificados').doc(prep).get();
+      final v = await oposicion.red(_db, 'preparadoresVerificados').doc(prep).get();
       if (!v.exists || v.data()?['activo'] != true) throw const ErrorEnlace('Ese preparador no está verificado. Pídele que se verifique en la app antes de enlazar.');
     } on ErrorEnlace {
       rethrow;
@@ -224,7 +228,7 @@ class PreparadorRepo {
     try {
       final lote = _db.batch()
         ..set(_docUsuario!.collection('preparadores').doc(prep), vinculo.toJson())
-        ..set(_db.collection('preparadores').doc(prep).collection('alumnos').doc(yo.uid), {
+        ..set(oposicion.red(_db, 'preparadores').doc(prep).collection('alumnos').doc(yo.uid), {
           'uid': yo.uid,
           'nombre': yo.displayName ?? '',
           'email': yo.email,
@@ -245,7 +249,7 @@ class PreparadorRepo {
     try {
       final lote = _db!.batch()
         ..delete(_docUsuario!.collection('preparadores').doc(preparador))
-        ..delete(_db.collection('preparadores').doc(preparador).collection('alumnos').doc(uid));
+        ..delete(oposicion.red(_db, 'preparadores').doc(preparador).collection('alumnos').doc(uid));
       await lote.commit();
     } catch (_) {}
   }
@@ -266,7 +270,7 @@ class PreparadorRepo {
   Future<void> _sincronizarAlumnosEnlazados() async {
     if (!conSesion || !perfil().activo) return;
     try {
-      final snap = await _db!.collection('preparadores').doc(uid).collection('alumnos').get();
+      final snap = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
       final enlazados = {for (final d in snap.docs) d.id: d.data()};
       final locales = _todosLosAlumnos();
       for (final e in enlazados.entries) {
@@ -291,7 +295,7 @@ class PreparadorRepo {
     final locales = {for (final s in _todasLasSesiones()) s.id: s};
     for (final a in alumnos().where((a) => a.enlazado)) {
       try {
-        final snap = await _db!.collection('users').doc(a.uid).collection('cantes').where('preparador', isEqualTo: uid).get();
+        final snap = await oposicion.raizUsuario(_db!, a.uid!).collection('cantes').where('preparador', isEqualTo: uid).get();
         for (final d in snap.docs) {
           final mia = locales[d.id];
           if (mia == null) continue;
@@ -313,7 +317,7 @@ class PreparadorRepo {
   Future<ProgresoAlumno?> progreso(Alumno a) async {
     if (!conSesion || a.uid == null) return null;
     try {
-      final usuario = _db!.collection('users').doc(a.uid);
+      final usuario = oposicion.raizUsuario(_db!, a.uid!);
       final ajustes = (await usuario.collection('progress').doc('settings').get()).data() ?? const {};
       final cantes = await usuario.collection('cantes').get();
       final estudiados = ((ajustes['temasEstudiados'] as List?) ?? []).map((e) => e.toString()).toSet();
@@ -334,7 +338,7 @@ class PreparadorRepo {
   Future<Cronograma?> cronogramaDe(Alumno a) async {
     if (!conSesion || a.uid == null) return null;
     try {
-      final snap = await _db!.collection('users').doc(a.uid).collection('cronogramas').where('compartir', isEqualTo: true).get();
+      final snap = await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramas').where('compartir', isEqualTo: true).get();
       final lista = [for (final d in snap.docs) Cronograma.fromJson({...d.data(), 'id': d.id})].where((c) => !c.archivado).toList()
         ..sort((x, y) => (y.creado ?? DateTime(0)).compareTo(x.creado ?? DateTime(0)));
       return lista.firstOrNull;
@@ -347,7 +351,7 @@ class PreparadorRepo {
   /// propuesta, que el alumno acepta o rechaza en su app.
   Future<void> proponerCambios(Alumno a, Cronograma c, PropuestaCronograma p) async {
     if (!conSesion || a.uid == null) return;
-    await _db!.collection('users').doc(a.uid).collection('cronogramas').doc(c.id).update({'propuesta': p.toJson(), 'updatedAt': DateTime.now().toIso8601String()});
+    await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramas').doc(c.id).update({'propuesta': p.toJson(), 'updatedAt': DateTime.now().toIso8601String()});
   }
 
   /// El preparador deja de llevar a un alumno enlazado: pierde el acceso a su progreso.
@@ -355,8 +359,8 @@ class PreparadorRepo {
     if (!conSesion || a.uid == null) return;
     try {
       final lote = _db!.batch()
-        ..delete(_db.collection('preparadores').doc(uid).collection('alumnos').doc(a.uid))
-        ..delete(_db.collection('users').doc(a.uid).collection('preparadores').doc(uid));
+        ..delete(oposicion.red(_db, 'preparadores').doc(uid).collection('alumnos').doc(a.uid))
+        ..delete(oposicion.raizUsuario(_db, a.uid!).collection('preparadores').doc(uid));
       await lote.commit();
     } catch (_) {}
   }
@@ -424,15 +428,15 @@ class PreparadorRepo {
     for (final v in misPreparadores()) {
       await desenlazar(v.uid);
     }
-    final snap = await _db!.collection('preparadores').doc(uid).collection('alumnos').get();
+    final snap = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
     for (final d in snap.docs) {
       final lote = _db.batch()
         ..delete(d.reference)
-        ..delete(_db.collection('users').doc(d.id).collection('preparadores').doc(uid));
+        ..delete(oposicion.raizUsuario(_db, d.id).collection('preparadores').doc(uid));
       await lote.commit();
     }
     final codigo = perfil().codigo;
-    if (codigo != null) await _db.collection('codigos').doc(codigo).delete();
+    if (codigo != null) await oposicion.red(_db, 'codigos').doc(codigo).delete();
   }
 
   // ------------------------------------------------------------- Clases fijas
