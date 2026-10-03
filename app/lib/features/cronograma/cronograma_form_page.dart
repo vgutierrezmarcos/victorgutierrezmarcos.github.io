@@ -22,7 +22,7 @@ class CronogramaFormPage extends ConsumerStatefulWidget {
 }
 
 class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
-  int _ejercicio = Oposiciones.actual.primerConTemas;
+  int _ejercicio = Oposiciones.actual.conCronograma.first.numero;
   bool _todos = true;
   List<String> _elegidos = const [];
   bool _porFecha = false;
@@ -75,7 +75,7 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
         const TituloSeccion('Qué vuelta'),
         SegmentedButton<int>(
           showSelectedIcon: false,
-          segments: [for (final e in Oposiciones.actual.conTemasCantados) ButtonSegment(value: e.numero, label: Text(e.abreviado))],
+          segments: [for (final e in Oposiciones.actual.conCronograma) ButtonSegment(value: e.numero, label: Text(e.abreviado))],
           selected: {_ejercicio},
           onSelectionChanged: (s) => setState(() {
             _ejercicio = s.first;

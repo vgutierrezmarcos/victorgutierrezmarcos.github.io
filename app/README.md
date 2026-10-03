@@ -1,4 +1,4 @@
-# Oposición TCEE · app móvil
+# Oposición TCEE · DCE · app móvil
 
 App Flutter (Android, iOS y navegador) complementaria de [victorgutierrezmarcos.es](https://www.victorgutierrezmarcos.es). La versión para el navegador es la misma app compilada para web y se sirve en [victorgutierrezmarcos.es/app/abrir/](https://www.victorgutierrezmarcos.es/app/abrir/) (ver «Versión web»). Todo el contenido (preguntas, temario, configuración) se descarga de la web, así que actualizar la web actualiza la app sin republicarla. Usa el mismo proyecto Firebase que la web (`web-vgm`): el historial de tests se comparte entre web y app, y el resto de datos del opositor (repaso, notas, cantes, planificación) se sincroniza entre sus dispositivos.
 
@@ -62,7 +62,7 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 
 ## Varias oposiciones
 
-La app está preparada para servir a más de una oposición, cada una independiente: su web (de la que sale el contenido), su examen, los datos de sus opositores y su red de preparadores con sus administradores. Hoy solo está TCEE; DCE (Diplomado Comercial del Estado) se prepara en la rama `dce` y no se activa hasta que se decida.
+La app sirve a dos oposiciones independientes, TCEE y DCE (Diplomado Comercial del Estado), cada una con su web (de la que sale el contenido), su examen, los datos de sus opositores y su red de preparadores con sus administradores. DCE aún no está lanzada (`lanzada: false`): solo la ven, en *Más → Ajustes → Oposición*, sus administradores y el administrador general (`oposicionesVisiblesProvider`), para probarla; el resto de lo que hace falta para lanzarla (nombre «TCEE · DCE», créditos con Manuel, página) está en la rama `dce`. El opositor la elige al abrir la app por primera vez (`features/inicio/elegir_oposicion.dart`) y la cambia en *Más → Ajustes → Oposición* (`cambiarOposicionProvider`, que vuelve a crear los servicios en `RaizApp` de `main.dart`). Lo que necesita la web de DCE y los pasos del lanzamiento están en [`DCE.md`](DCE.md).
 
 - **Descripción de cada oposición**: `data/models/oposicion.dart` (`Oposicion`, `EjercicioDef`, `Oposiciones.todas`). Lleva la web y las rutas del contenido, los ejercicios (cuáles se cantan, si es un dictamen sin temas, cuáles tienen sorteo, temas por parte, partes que hay que desarrollar, PDF por parte, qué se intercala en el cronograma) y, si su examen no tiene test, de qué oposición se practica el test de forma voluntaria (`testDe`). Las pantallas no llevan números de ejercicio fijos: los sacan de aquí.
 - **La oposición elegida** se guarda en la caja Hive `app` (`oposicion`). Con ella `main()` crea los servicios y fija `Oposiciones.actual`; no cambia con la app abierta (`oposicionProvider` en los widgets). Las reglas del sorteo de `app-config.json` → `sorteo`, si las trae la web de esa oposición, mandan sobre las del examen (`Oposicion.bolasPorParte`).

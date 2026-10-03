@@ -156,6 +156,10 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/ana/oposiciones/dce/preparadores/paula'), { uid: 'paula' });
   await setDoc(doc(d, 'oposiciones/dce/sustituciones/d1'), { id: 'd1', alumno: 'ana', estado: 'abierta', paraTodos: true, destinatarios: [], ejercicio: 3, temas: [], fecha: futuro });
 });
+await env.withSecurityRulesDisabled(async (c) => { await setDoc(doc(c.firestore(), 'admins/general'), { general: true }); });
+await caso('el administrador general retira a una de DCE', () => assertSucceeds(updateDoc(doc(db('general'), 'oposiciones/dce/preparadoresVerificados/diana'), { activo: true })));
+await caso('…y ve las solicitudes de DCE', () => assertSucceeds(getDocs(collection(db('general'), 'oposiciones/dce/solicitudesPreparador'))));
+await caso('…y es administrador de TCEE', () => assertSucceeds(updateDoc(doc(db('general'), 'preparadoresVerificados/paula'), { activo: true })));
 await caso('el administrador de DCE no lo es de TCEE', () => assertFails(updateDoc(doc(db('manuel'), 'preparadoresVerificados/paula'), { activo: false })));
 await caso('…ni el de TCEE de DCE', () => assertFails(updateDoc(doc(db('admin'), 'oposiciones/dce/preparadoresVerificados/diana'), { activo: false })));
 await caso('el de DCE retira a uno de DCE', () => assertSucceeds(updateDoc(doc(db('manuel'), 'oposiciones/dce/preparadoresVerificados/diana'), { activo: true })));
