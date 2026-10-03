@@ -238,6 +238,19 @@
         .app-faq details[open] summary { color: var(--color-primary); border-bottom: 1px solid var(--color-border-light); }
         .app-faq details p { padding: 0.9rem 1.1rem 0.2rem; font-size: 1rem; line-height: 1.75; }
 
+        /* Clases sueltas: la sección destacada de la página */
+        .app-gancho { font-family: var(--font-ui); font-size: 1rem; margin: 1.1rem 0 0; padding: 0.7rem 1rem; border-left: 4px solid var(--color-accent-gold); background: rgba(95, 41, 135, 0.06); border-radius: 0 8px 8px 0; }
+        .app-destacada { background: linear-gradient(135deg, rgba(95, 41, 135, 0.07), rgba(184, 134, 11, 0.07)); border: 1px solid rgba(95, 41, 135, 0.18); border-radius: 14px; padding: 2rem 2rem 1.6rem; }
+        .app-destacada h3 { margin-top: 0.3rem; }
+        .app-destacada .app-bloque { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+        .app-moviles-3 .app-movil { max-width: 220px; }
+        .app-moviles-3 .app-movil:nth-child(2) { margin-top: 1.6rem; }
+        .app-moviles-3 .app-movil:nth-child(3) { margin-top: 3.2rem; }
+        @media (max-width: 760px) {
+            .app-destacada { padding: 1.3rem 1rem 1rem; }
+            .app-destacada .app-bloque { grid-template-columns: 1fr; }
+            .app-moviles-3 .app-movil { max-width: 31%; }
+        }
         .app-cierre { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 3.5rem; position: relative; z-index: 1; }
 
         @media (max-width: 760px) {
@@ -303,6 +316,7 @@
                             <a class="download-btn secundario" href="abrir/">Usar en el navegador</a>
                             <p class="app-nota">En el ordenador o en cualquier móvil (también iPhone), sin instalar nada. Con tu cuenta de Google ves lo mismo que en la app.</p>
                         </div>
+                        <p class="app-gancho"><strong>¿Te han cancelado la clase?</strong> Pide el cante a otros preparadores desde la app. <a href="#sustituto">Así funciona</a>.</p>
                         <ul class="app-datos">
                             <li>Gratis y sin anuncios</li>
                             <li>Tus datos solo los ves tú</li>
@@ -314,6 +328,47 @@
                         <img src="promo/hoy.webp" width="720" height="1560" alt="Pantalla «Hoy» de la app: racha, próximo cante, test diario y probabilidad de aprobar">
                     </div>
                 </div>
+
+                <section class="app-seccion app-destacada" id="sustituto">
+                    <span class="app-etiqueta">Clases sueltas</span>
+                    <h3>¿Te cancelan la clase? Otro preparador te la coge</h3>
+                    <p>Tu preparador se pone enfermo, tiene un viaje o, simplemente, esa semana no puede. Hasta ahora tocaba escribir a unos y a otros para ver si alguien te cogía el cante. Con la app lo pides una vez y les llega a los preparadores que estén disponibles.</p>
+                    <div class="app-bloque">
+                        <div class="app-bloque-texto">
+                            <ol class="app-pasos">
+                                <li><strong>Pide el cante.</strong> Desde el cante cancelado («Buscar preparador alternativo») o desde <em>Más → Preparadores</em>, para cualquier clase suelta.</li>
+                                <li><strong>Di cuándo puedes.</strong> El día y una franja de horas (por ejemplo, de 16:00 a 21:00) o una hora fija. No hace falta poner duración.</li>
+                                <li><strong>Elige los temas que llevas.</strong> Salen ya marcados los del cante o los que tienes como estudiados, y los cambias si quieres. También vale para el dictamen de coyuntura del primer ejercicio.</li>
+                                <li><strong>A quién se lo pides.</strong> A todos los preparadores verificados o solo a los que elijas. Les llega un aviso al momento.</li>
+                                <li><strong>Quien lo coge elige la hora</strong> dentro de tu franja. Los dos recibís el nombre y el teléfono del otro, con un botón para escribiros por WhatsApp, y el cante aparece en vuestras agendas.</li>
+                            </ol>
+                            <p>Mientras nadie la coja, puedes retirar la petición. Los preparadores ven el día, las horas y los temas, pero <strong>no ven tu nombre ni tu teléfono</strong> hasta que uno de ellos la coge, y solo ese.</p>
+                        </div>
+                        <div class="app-moviles app-moviles-3">
+                            <div class="app-movil"><img loading="lazy" src="promo/cante-cancelado.webp" width="720" height="1560" alt="Cante cancelado por la preparadora, con el botón «Buscar preparador alternativo»"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/buscar-preparador.webp" width="720" height="1560" alt="Formulario para buscar preparador: día, franja de horas, ejercicio y temas que lleva el opositor"></div>
+                            <div class="app-movil"><img loading="lazy" src="promo/peticion-cogida.webp" width="720" height="1560" alt="Petición cogida por otra preparadora, con su teléfono y el botón para escribirle por WhatsApp"></div>
+                        </div>
+                    </div>
+                    <div class="app-comparte">
+                        <div>
+                            <h4>Si eres opositor</h4>
+                            <ul>
+                                <li>No pierdes la semana de cante aunque falle tu preparador.</li>
+                                <li>Puedes pedir clases sueltas aunque no tengas preparador fijo.</li>
+                                <li>Solo te escriben preparadores verificados.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Si eres preparador</h4>
+                            <ul>
+                                <li>Ves en un tablón los cantes que buscan preparador, con los temas que entran.</li>
+                                <li>La app te avisa si ya tienes otra clase a esas horas.</li>
+                                <li>Al cogerlo, el alumno pasa a tu semana con su teléfono.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
                 <section class="app-seccion" id="idea">
                     <h3>La idea</h3>
@@ -547,6 +602,10 @@
                     <details>
                         <summary>¿Trae las fechas de la convocatoria?</summary>
                         <p>No. La app no incluye fechas oficiales: las de cada ejercicio las pones tú, con la fecha conocida o con la que estimes, y a partir de ellas se calculan las cuentas atrás.</p>
+                    </details>
+                    <details>
+                        <summary>Me han cancelado una clase, ¿cómo encuentro otro preparador?</summary>
+                        <p>Abre el cante cancelado y pulsa «Buscar preparador alternativo» (o, para una clase suelta cualquiera, ve a <em>Más → Preparadores</em>). Indica el día, una franja de horas y los temas que llevas, y elige si se lo pides a todos los preparadores verificados o solo a algunos. En cuanto uno lo coja, recibirás un aviso con su teléfono para hablar por WhatsApp. Lo explica <a href="#sustituto">esta sección</a>.</p>
                     </details>
                     <details>
                         <summary>¿Alguien más puede ver mis datos?</summary>

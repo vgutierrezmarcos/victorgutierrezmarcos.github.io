@@ -8,6 +8,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
+import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +23,8 @@ import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/data/models/red.dart';
+import 'package:tcee_app/data/repos/red_repo.dart';
+import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/semana_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
 import 'package:tcee_app/data/models/estructura.dart';
@@ -105,20 +109,22 @@ void main() {
           updatedAt: hoy,
         );
     await plan.guardarCantes([
-      Cante(id: 'p1', fecha: dia(2), titulo: 'Preparador', bolsa: TipoBolsa.lista, temas: const ['3.A.12', '3.A.13', '3.A.14', '3.B.7', '3.B.8', '3.B.9'], notas: 'Llevar repasado el bloque de crecimiento.', updatedAt: hoy),
+      Cante(id: 'p1', fecha: dia(2), titulo: 'Preparador', bolsa: TipoBolsa.lista, temas: const ['3.A.12', '3.A.13', '3.A.14', '3.B.7', '3.B.8', '3.B.9'], notas: 'Llevar repasadas las subastas (3.A.14) y la política comercial estratégica (3.B.8).', updatedAt: hoy),
       Cante(id: 'p2', fecha: dia(5, 18, 0), titulo: 'Grupo de cante', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 'p3', fecha: dia(9), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 'p4', fecha: dia(16), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
-      hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta enlazar con el tema 3.A.8 en la conclusión.'),
+      // La preparadora cancela el de mañana: el alumno buscará quién se lo coja.
+      Cante(id: 'pc', fecha: dia(1, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', estado: EstadoCante.cancelado, motivo: 'Estoy de viaje', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta explicar las rigideces nominales de la segunda generación (Mankiw, Akerlof y Yellen).'),
       hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Grupo de cante'),
-      hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y falla el esquema del modelo.'),
-      hecho('h4', 13, '3.A.4', 3, 31, 'Correcto; revisar los autores.'),
+      hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y no llega a los teoremas del bienestar.'),
+      hecho('h4', 13, '3.A.4', 3, 31, 'Correcto; diferenciar mejor a los postkeynesianos (Kalecki, Robinson).'),
       hecho('h5', 17, '3.B.11', 4, 28, ''),
-      hecho('h6', 20, '3.A.21', 2, 26, 'Mejor que la vez anterior, pero sigue flojo el final.'),
+      hecho('h6', 20, '3.A.21', 2, 26, 'Mejor que la vez anterior; falta la existencia y estabilidad del equilibrio (Arrow-Debreu).'),
       hecho('h7', 24, '3.A.15', 5, 30, ''),
     ]);
-    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Actualizar los datos del PIB'));
-    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.4').anadir('Añadir la crítica de Lucas').anadir('Repasar el gráfico IS-LM'));
+    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Añadir la teoría del valor-trabajo de Ricardo').anadir('Repasar la ley de Say'));
+    await plan.guardarAgenda(const AgendaTema(codigo: '3.A.4').anadir('Distinguir la Teoría General de la síntesis IS-LM de Hicks').anadir('Añadir la preferencia por la liquidez'));
     for (final (i, nota) in [6.8, 7.4, 5.9, 8.1, 7.7, 8.4].indexed) {
       await usuario.guardarResultado(ResultadoTest(
         id: 'r$i',
@@ -148,15 +154,20 @@ void main() {
       Cante(id: 's5', fecha: dia(1, 18, 0), alumno: 'pablo', bolsa: TipoBolsa.estudiados, estado: EstadoCante.cancelado, motivo: 'Viaje', updatedAt: hoy),
       Cante(id: 's6', fecha: dia(3, 17, 15), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's7', fecha: dia(5, 10, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, serie: 'fija_marta_c1', updatedAt: hoy),
-      sesionHecha('v1', 'lucia', 7, '3.A.9', 4, 29, 'Muy bien estructurado. En la conclusión, enlaza con la política de competencia.'),
+      sesionHecha('v1', 'lucia', 7, '3.A.9', 4, 29, 'Muy bien estructurado. Añade el sistema AIDS y las variaciones compensatoria y equivalente.'),
       sesionHecha('v2', 'lucia', 14, '3.B.4', 5, 30, 'Excelente.'),
-      sesionHecha('v3', 'lucia', 21, '3.A.17', 2, 23, 'Corto de tiempo; el modelo de Solow hay que llevarlo más rodado.'),
+      sesionHecha('v3', 'lucia', 21, '3.A.17', 2, 23, 'Corto de tiempo; la discriminación de precios de tercer grado hay que llevarla más rodada.'),
       sesionHecha('v4', 'lucia', 28, '3.A.3', 4, 28, ''),
-      sesionHecha('v5', 'lucia', 35, '3.A.17', 2, 25, 'Mejora, pero aún flojo.'),
+      sesionHecha('v5', 'lucia', 35, '3.A.17', 2, 25, 'Mejora, pero el monopolio natural sigue flojo.'),
       sesionHecha('v6', 'pablo', 7, '3.A.2', 3, 27, 'Correcto.'),
-      sesionHecha('v7', 'marta', 4, '4.A.6', 4, 30, 'Buen uso de los datos.'),
+      sesionHecha('v7', 'marta', 4, '4.A.6', 4, 30, 'Buen uso de los objetivos del PNIEC.'),
     ]);
 
+    // Red de demostración: el alumno (Álex) y el contacto de quien le coge el cante.
+    final yo = MockUser(uid: 'yo', displayName: 'Álex Martín', email: 'alex@example.org', photoURL: '');
+    final dbRed = FakeFirebaseFirestore();
+    await dbRed.doc('sustituciones/c1/privado/preparador').set(const ContactoRed(nombre: 'Olga Martín', telefono: '611 22 33 44').toJson());
+    var peticiones = <Sustitucion>[];
     final http = CacheHttp(Dio(), await caja());
     final overrides = [
       serviciosProvider.overrideWithValue(Servicios(
@@ -168,7 +179,12 @@ void main() {
         descargas: DescargasRepo(await caja(), Directory.systemTemp.createTempSync('tcee_capturas')),
         firebaseDisponible: true,
       )),
-      authStateProvider.overrideWith((ref) => Stream<User?>.value(null)),
+      authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
+      redRepoProvider.overrideWithValue(RedRepo(firestore: dbRed, auth: MockFirebaseAuth(signedIn: true, mockUser: yo))),
+      verificadosProvider.overrideWith((ref) async => const [
+            PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo'),
+            PreparadorVerificado(uid: 'luis', nombre: 'Luis Gómez', ejercicios: [1, 3], avaladoPor: 'yo'),
+          ]),
       temarioProvider.overrideWith((ref) => temario),
       configProvider.overrideWith((ref) => config),
       estructuraProvider.overrideWith((ref) => estructura),
@@ -180,7 +196,7 @@ void main() {
       estadoRedProvider.overrideWith((ref) async => const EstadoRed(verificacion: PreparadorVerificado(uid: 'yo', nombre: 'Víctor', avaladoPor: 'yo'))),
       solicitudesPendientesProvider.overrideWith((ref) async => const <SolicitudPreparador>[]),
       cogidasPorMiProvider.overrideWith((ref) async => const <Sustitucion>[]),
-      misPeticionesProvider.overrideWith((ref) async => const <Sustitucion>[]),
+      misPeticionesProvider.overrideWith((ref) async => peticiones),
       tablonProvider.overrideWith((ref) async => [
             Sustitucion(id: 't1', alumno: 'x', fecha: dia(1, 16, 0), hasta: dia(1, 21, 0), ejercicio: 3, temas: [for (var i = 1; i <= 18; i++) '3.A.$i', for (var i = 1; i <= 10; i++) '3.B.$i'], notas: 'Mi preparadora ha cancelado. Por videollamada.'),
             Sustitucion(id: 't2', alumno: 'y', fecha: dia(4, 17, 30), minutos: 45, ejercicio: 4, temas: [for (var i = 1; i <= 12; i++) '4.A.$i'], paraTodos: false, destinatarios: const ['yo']),
@@ -190,7 +206,7 @@ void main() {
       progresoAlumnoProvider.overrideWith((ref, id) async => ProgresoAlumno(
             estudiados: preparador.alumno(id)!.temas.toSet(),
             enRepaso: const {'3.A.5', '3.B.3'},
-            cantes: [hecho('x1', 2, '3.B.10', 3, 27, 'Me he quedado sin tiempo en el último epígrafe.', titulo: '')],
+            cantes: [hecho('x1', 2, '3.B.10', 3, 27, 'Me he quedado sin tiempo antes de llegar a las uniones monetarias.', titulo: '')],
           )),
     ];
 
@@ -275,6 +291,30 @@ void main() {
     await subpestana('Diario');
     await captura('cantes-diario');
 
+    // ------------------------------------------- Clase cancelada: sustituto
+    final container = ProviderScope.containerOf(tester.element(find.byType(MaterialApp)));
+    Future<void> abrirCante(String id) async {
+      Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => CantePage(id: id)));
+      await tester.pumpAndSettle();
+    }
+    await abrirCante('pc');
+    await captura('cante-cancelado');
+    await tocar(find.text('Buscar preparador alternativo'));
+    await captura('buscar-preparador');
+    Navigator.of(tester.element(find.byType(PedirSustitucionPage))).pop();
+    await tester.pumpAndSettle();
+    Navigator.of(tester.element(find.byType(CantePage))).pop();
+    await tester.pumpAndSettle();
+    // La coge Olga dentro de la franja: el alumno ve su contacto y el WhatsApp.
+    peticiones = [
+      Sustitucion(id: 'c1', alumno: 'yo', fecha: dia(1, 16, 0), hasta: dia(1, 21, 0), hora: dia(1, 18, 30), estado: EstadoSustitucion.cogida, cogidaPor: 'olga', cogidaPorNombre: 'Olga Martín', cante: 'pc', temas: [for (var i = 1; i <= 20; i++) '3.A.$i']),
+    ];
+    container.invalidate(misPeticionesProvider);
+    await abrirCante('pc');
+    await captura('peticion-cogida');
+    Navigator.of(tester.element(find.byType(CantePage))).pop();
+    await tester.pumpAndSettle();
+
     // ----------------------------------------------------------------- Test
     await pestana('Test');
     await captura('test');
@@ -314,6 +354,8 @@ void main() {
     await captura('test-pregunta');
 
     debugDisableShadows = true;
-    expect(tester.takeException(), isNull);
+    // Las imágenes de algunas preguntas se piden a la web y en la prueba no hay red.
+    final error = tester.takeException();
+    expect(error == null || error is NetworkImageLoadException, isTrue, reason: '$error');
   });
 }

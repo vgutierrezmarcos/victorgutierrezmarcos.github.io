@@ -14,6 +14,7 @@ www.gstatic.com, como hace Flutter por defecto. Tampoco se copian los
 .symbols (depuración) ni el service worker de Flutter (desactivado).
 """
 import argparse
+import hashlib
 import shutil
 import subprocess
 import sys
@@ -39,8 +40,29 @@ def copiar():
     if DESTINO.exists():
         shutil.rmtree(DESTINO)
     shutil.copytree(ORIGEN, DESTINO, ignore=lambda d, nombres: [n for n in nombres if n in EXCLUIR or n.endswith('.symbols')])
+    poner_huella()
     total = sum(f.stat().st_size for f in DESTINO.rglob('*') if f.is_file())
     print(f'Copiado a {DESTINO.relative_to(RAIZ)} ({total / 1048576:.1f} MB)')
+
+
+def poner_huella():
+    """GitHub Pages deja guardar cada fichero 10 minutos y main.dart.js se
+    llama siempre igual, así que el navegador podía seguir con la versión
+    anterior. Se renombra con una huella de su contenido (main.<huella>.dart.js)
+    y index.html carga flutter_bootstrap.js con esa misma huella."""
+    principal = DESTINO / 'main.dart.js'
+    huella = hashlib.sha256(principal.read_bytes()).hexdigest()[:10]
+    nuevo = f'main.{huella}.dart.js'
+    principal.rename(DESTINO / nuevo)
+    arranque = DESTINO / 'flutter_bootstrap.js'
+    texto = arranque.read_text(encoding='utf-8')
+    if 'main.dart.js' not in texto:
+        sys.exit('flutter_bootstrap.js no menciona main.dart.js: revisa el arranque de Flutter.')
+    arranque.write_text(texto.replace('main.dart.js', nuevo), encoding='utf-8')
+    indice = DESTINO / 'index.html'
+    html = indice.read_text(encoding='utf-8')
+    indice.write_text(html.replace('src="flutter_bootstrap.js"', f'src="flutter_bootstrap.js?v={huella}"'), encoding='utf-8')
+    print(f'Huella de la versión: {huella}')
 
 
 if __name__ == '__main__':
