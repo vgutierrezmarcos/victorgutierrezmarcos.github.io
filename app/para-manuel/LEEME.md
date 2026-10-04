@@ -6,7 +6,7 @@ La app «Oposición TCEE · DCE» descarga el temario de DCE de tu web. Esta car
 oposicion/
 ├── temario/temario.json   los 99 temas del programa oficial (1.º, 3.º y 4.º ejercicio);
 │                          los que ya tienes publicados, con el enlace a su página
-├── app-config.json        tu LinkedIn y, si quieres, avisos para los opositores
+├── app-config.json        tu correo de contacto, tu LinkedIn y, si quieres, avisos
 └── enlaces.json           enlaces útiles (vacío de momento)
 ```
 

@@ -76,6 +76,11 @@ void main() {
       expect(d.nombreEjercicio(0), '3.º ejercicio');
     });
 
+    test('contacto: su correo, no el de TCEE', () {
+      expect(d.correo, 'mcabag26@gmail.com');
+      expect(Oposiciones.tcee.correo, 'contacto@victorgutierrezmarcos.es');
+    });
+
     test('sin test propio: practica el de TCEE, pero lo guarda en lo suyo', () {
       expect(d.testVoluntario, isTrue);
       expect(d.urlPreguntas, Oposiciones.tcee.urlPreguntas);

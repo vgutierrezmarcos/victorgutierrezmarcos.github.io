@@ -117,6 +117,7 @@ class Oposicion {
     this.testDe,
     this.autor,
     this.lanzada = true,
+    this.correo,
   });
 
   /// Identificador estable ('tcee', 'dce'): va en Firestore y en Hive.
@@ -149,6 +150,10 @@ class Oposicion {
   /// La pueden elegir todos. Si no, solo sus administradores (y el general),
   /// para probarla antes de lanzarla.
   final bool lanzada;
+
+  /// Correo de contacto de la oposición (Más → Contacto) si su app-config.json
+  /// no trae otro.
+  final String? correo;
 
   /// Quién publica su contenido: (nombre, presentación, página «Sobre mí»).
   final (String, String, String?)? autor;
@@ -263,6 +268,7 @@ class Oposiciones {
     mismoOrigenEnNavegador: true,
     notaProbabilidad: 'Supone pasar el test, la coyuntura y los idiomas.',
     autor: ('Víctor Gutiérrez Marcos', 'TCEE, promoción LXXIII', 'https://www.victorgutierrezmarcos.es/sobre-mi.html'),
+    correo: 'contacto@victorgutierrezmarcos.es',
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Test y dictamen de coyuntura', cante: TipoCante.dictamen, queSeCanta: 'dictamen de coyuntura', etiquetaCante: 'Coyuntura'),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
@@ -308,6 +314,7 @@ class Oposiciones {
     testDe: 'tcee',
     notaProbabilidad: 'Supone pasar los idiomas y las preguntas prácticas del 4.º.',
     autor: ('Manuel Cabado García', 'DCE', 'https://manuelcabadogarcia.es'),
+    correo: 'mcabag26@gmail.com',
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
