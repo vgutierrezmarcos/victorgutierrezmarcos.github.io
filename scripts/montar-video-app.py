@@ -30,7 +30,7 @@ CAPTURAS = os.path.join(PROMO, 'capturas')
 FUENTES = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 ICONO = os.path.join(RAIZ, 'app', 'assets', 'icon', 'icon.png')
 
-ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 66
+ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 64
 
 # Estética neutra, común a TCEE y DCE (como PaletaNeutra de la app): la de
 # styles.css en lo fundamental (Pagella, Source Sans, línea dorada), con un
@@ -51,17 +51,20 @@ def sans(tam, peso='Regular'):
 
 
 # Cada escena: (inicio, fin, rótulo, título, texto, capturas)
+# Cada escena: (inicio, fin, rótulo, título, texto, capturas). Las capturas
+# están repartidas a partes iguales entre TCEE y DCE; una que empieza por «@»
+# se pinta en un portátil (la app en el ordenador).
 ESCENAS = [
-    (5, 11, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, sus cantes, sus probabilidades y sus preparadores, y con los colores de su web. Los apuntes de DCE son de Manuel Cabado García.', ['elegir-oposicion', 'dce-hoy', 'dce-temario']),
-    (11, 16, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
-    (16, 22, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
-    (22, 29, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
-    (29, 34, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
-    (34, 38, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades']),
-    (38, 51, '¿TE CANCELAN LA CLASE?', 'Otro preparador\nte la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'buscar-preparador', 'peticion-cogida']),
-    (51, 60, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y el tablón de sustituciones.', ['preparador', 'semana', 'sustituciones']),
+    (5, 11, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, su examen, sus probabilidades y sus preparadores, y con los colores de su web. Lo de cada una se guarda aparte.', ['elegir-oposicion', 'hoy', 'dce-hoy']),
+    (11, 18, 'TEMARIO', 'Todo el temario,\ndentro de la app', 'Los PDF de TCEE y los apuntes de DCE se leen sin salir de la app, y cada tema lleva su agenda: apuntes para la próxima vuelta, vueltas y notas.', ['temario-temas', 'tema-pdf', 'dce-tema-web']),
+    (18, 24, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, cantes presenciales u online, sorteo como en el examen, cronómetro y diario.', ['cantes-agenda', 'dce-cantar']),
+    (24, 29, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas. En DCE, como práctica voluntaria.', ['test-pregunta', 'dce-test']),
+    (29, 33, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La de que salga un tema que te sabes, con las reglas del examen de cada oposición.', ['probabilidades', 'dce-probabilidades']),
+    (33, 45, 'CLASES SUELTAS', '¿Te cancelan la clase?\nOtro preparador te la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'dce-buscar-preparador', 'peticion-cogida']),
+    (45, 52, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y el tablón de sustituciones de cada oposición.', ['dce-preparador', 'semana', 'dce-sustituciones']),
+    (52, 58, 'EN EL ORDENADOR', 'También en el ordenador,\ntodo sincronizado', 'La misma app en el navegador, con tu cuenta de Google: lo que haces en el móvil aparece en el ordenador, y al revés.', ['@dce-escritorio']),
 ]
-INICIO_CIERRE = 60
+INICIO_CIERRE = 58
 FUNDIDO = 0.45  # segundos de fundido entre escenas
 
 
@@ -148,6 +151,34 @@ def movil(nombre, ancho):
     return lienzo, margen
 
 
+def portatil(nombre, ancho):
+    """Captura de escritorio dentro de un portátil dibujado, con su sombra. Devuelve (RGBA, margen)."""
+    captura = Image.open(os.path.join(CAPTURAS, f'{nombre}.png')).convert('RGB')
+    marco, margen = 22, 50
+    pantalla_w = ancho - 2 * marco
+    pantalla_h = round(captura.height * pantalla_w / captura.width)
+    captura = captura.resize((pantalla_w, pantalla_h), Image.LANCZOS)
+    tapa_h = pantalla_h + 2 * marco
+    base_h, base_extra = 34, 70
+    w, h = ancho + 2 * base_extra, tapa_h + base_h
+    lienzo = Image.new('RGBA', (w + 2 * margen, h + 2 * margen), (0, 0, 0, 0))
+    sombra = Image.new('L', lienzo.size, 0)
+    ImageDraw.Draw(sombra).rounded_rectangle((margen + base_extra, margen + 20, margen + base_extra + ancho, margen + h + 16), 26, fill=120)
+    sombra = sombra.filter(ImageFilter.GaussianBlur(24))
+    lienzo.paste((40, 20, 60, 255), (0, 0), sombra)
+    lienzo.putalpha(sombra)
+    cuerpo = Image.new('RGBA', lienzo.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(cuerpo)
+    x0, y0 = margen + base_extra, margen
+    d.rounded_rectangle((x0, y0, x0 + ancho, y0 + tapa_h), 24, fill=(28, 22, 38, 255))
+    # Base: una plancha más ancha que la tapa, con la muesca para abrirla.
+    d.rounded_rectangle((margen, y0 + tapa_h - 4, margen + w, y0 + tapa_h + base_h), 16, fill=(190, 186, 196, 255))
+    d.rounded_rectangle((margen + w // 2 - 90, y0 + tapa_h - 4, margen + w // 2 + 90, y0 + tapa_h + 10), 8, fill=(160, 156, 168, 255))
+    lienzo = Image.alpha_composite(lienzo, cuerpo)
+    lienzo.paste(captura, (x0 + marco, y0 + marco))
+    return lienzo, margen
+
+
 def partir(texto, fuente, ancho):
     """Parte un texto en líneas que caben en [ancho]."""
     lineas, actual = [], ''
@@ -204,6 +235,12 @@ class Escena:
         self.inicio, self.fin = inicio, fin
         self.texto = bloque_texto(rotulo, titulo, texto, 620)
         n = len(capturas)
+        if n == 1 and capturas[0].startswith('@'):
+            img, margen = portatil(capturas[0][1:], 880)
+            self.moviles = [(img, margen)]
+            self.posiciones = [(770 + (ANCHO - 770 - img.width) // 2, 90 + (ALTO - 90 - img.height) // 2)]
+            self.retrasos = [0.25]
+            return
         ancho = {1: 400, 2: 380, 3: 318}[n]
         self.moviles = [movil(c, ancho) for c in capturas]
         m0, margen = self.moviles[0]
@@ -230,27 +267,34 @@ class Escena:
 
 
 def portada(lienzo, t):
-    """0-5 s: nombre de la app sobre morado y el móvil con la pantalla de hoy."""
+    """0-5 s: la app (icono, nombre y para qué es), sin capturas."""
     a = suave(t / 0.9)
-    ic = icono(150, sombra=True)
-    capa = Image.new('RGBA', (1120, 620), (0, 0, 0, 0))
+    capa = Image.new('RGBA', (ANCHO, 900), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
-    capa.paste(ic, (-27, -27), ic)
-    c.text((0, 200), 'Oposición TCEE · DCE', font=serif(92), fill=BLANCO)
-    c.rectangle((0, 352, 420, 358), fill=DORADO_CLARO)
-    c.text((0, 392), 'Técnico Comercial y Economista del Estado', font=serif(46, 'italic'), fill=(240, 232, 248))
-    c.text((0, 452), 'y Diplomado Comercial del Estado, en el bolsillo', font=serif(46, 'italic'), fill=(240, 232, 248))
-    capa = con_opacidad(capa, a)
-    lienzo.paste(capa, (120 - round(40 * (1 - a)), 230), capa)
-    img, _ = PORTADA_MOVIL
-    b = suave((t - 0.6) / 1.0)
+    ic = icono(190, sombra=True)
+    capa.paste(ic, ((ANCHO - ic.width) // 2, 0), ic)
+    c.text((ANCHO // 2, 330), 'Oposición TCEE · DCE', font=serif(104), fill=BLANCO, anchor='mm')
+    c.rectangle((ANCHO // 2 - 160, 412, ANCHO // 2 + 160, 417), fill=DORADO_CLARO)
+    c.text((ANCHO // 2, 482), 'La app para preparar las oposiciones a', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
+    c.text((ANCHO // 2, 540), 'Técnico Comercial y Economista del Estado', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
+    c.text((ANCHO // 2, 598), 'y a Diplomado Comercial del Estado', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
+    # Dónde se usa, en etiquetas.
+    b = suave((t - 0.8) / 0.8)
     if b > 0:
-        capa = con_opacidad(img, b)
-        lienzo.paste(capa, (1250, 60 + round(90 * (1 - b))), capa)
+        etiquetas = ['App para Android', 'En el navegador', 'Gratis']
+        f = sans(38, 'Semibold')
+        anchos = [f.getlength(e) + 64 for e in etiquetas]
+        x = (ANCHO - sum(anchos) - 28 * (len(anchos) - 1)) / 2
+        for e, w in zip(etiquetas, anchos):
+            c.rounded_rectangle((x, 668, x + w, 736), 34, outline=(240, 232, 248, round(255 * b)), width=3)
+            c.text((x + w / 2, 702), e, font=f, fill=(255, 255, 255, round(255 * b)), anchor='mm')
+            x += w + 28
+    capa = con_opacidad(capa, a)
+    lienzo.paste(capa, (0, 110 + round(30 * (1 - a))), capa)
 
 
 def cierre(lienzo, t):
-    """60-66 s: nombre de la app y de dónde salen los apuntes."""
+    """58-64 s: nombre de la app y de dónde salen los apuntes."""
     a = suave(t / 0.8)
     capa = Image.new('RGBA', (ANCHO, 700), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
@@ -298,11 +342,10 @@ def fotograma(t):
 
 
 def preparar():
-    global FONDO_CLARO, FONDO_OSCURO, OBJ_ESCENAS, CORTES, PORTADA_MOVIL
+    global FONDO_CLARO, FONDO_OSCURO, OBJ_ESCENAS, CORTES
     FONDO_CLARO, FONDO_OSCURO = fondo_claro(), fondo_oscuro()
     OBJ_ESCENAS = [Escena(*e) for e in ESCENAS]
     CORTES = [e[0] for e in ESCENAS] + [INICIO_CIERRE]
-    PORTADA_MOVIL = movil('hoy', 430)
 
 
 def exportar_capturas():
@@ -328,7 +371,7 @@ def main():
 
     if args.solo_fotogramas:
         os.makedirs(args.solo_fotogramas, exist_ok=True)
-        for t in [0.5, 3, 5.2, 7, 10, 14, 20, 23, 26, 29, 32, 36, 37.2, 42, 48, 53, 56, 59, 60.3, 64]:
+        for t in [0.5, 3, 5.2, 9, 14, 17, 21, 27, 31, 36, 42, 48, 51, 55, 58.3, 62]:
             fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.1f}.jpg'), quality=85)
         return
 
@@ -349,7 +392,7 @@ def main():
     proceso.stdin.close()
     if proceso.wait() != 0:
         sys.exit('ffmpeg ha fallado')
-    fotograma(10).save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
+    fotograma(3).save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
     print(f'{salida}: {os.path.getsize(salida) / 1e6:.1f} MB')
 
 
