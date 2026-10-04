@@ -1,6 +1,10 @@
 # DCE en la app: guía para la web de Manuel
 
-La app «Oposición TCEE · DCE» sirve a dos oposiciones independientes. Cada opositor elige la suya al abrirla (y la puede cambiar en *Más → Ajustes*), y cada oposición tiene su contenido, los datos de sus opositores y su propia red de preparadores. La app es una sola, para no duplicar nada: la versión para Android, la del navegador ([victorgutierrezmarcos.es/app/abrir/](https://www.victorgutierrezmarcos.es/app/abrir/)) y su página ([victorgutierrezmarcos.es/app/](https://www.victorgutierrezmarcos.es/app/)). **El contenido de DCE lo descarga de la web de Manuel**, así que actualizar su web actualiza la app sin publicar una versión nueva.
+La app «Oposición TCEE · DCE» sirve a dos oposiciones independientes. Cada opositor elige la suya al abrirla (y la puede cambiar en *Más → Ajustes*), y cada oposición tiene su contenido, los datos de sus opositores y su propia red de preparadores. La app es una sola, para no duplicar nada: la versión para Android, la del navegador ([victorgutierrezmarcos.es/app/abrir/](https://www.victorgutierrezmarcos.es/app/abrir/)) y su página ([victorgutierrezmarcos.es/app/](https://www.victorgutierrezmarcos.es/app/)). **El contenido de DCE lo descarga de la web de Manuel, [manuelcabadogarcia.es](https://manuelcabadogarcia.es)**, así que actualizar su web actualiza la app sin publicar una versión nueva.
+
+**Aspecto**: con DCE elegida, la app usa los colores y la tipografía de su web: granate `#7a1f4b`, crema `#f7f4ec` y azul `#234a6b` (en oscuro, fondo `#1e1d1b` y verde menta `#3ee6a8`), con Latin Modern Roman (`PaletaMarca.dce` en `lib/theme/app_theme.dart`). El logo es la diana partida: la mitad izquierda con los colores de TCEE y la derecha con los de DCE.
+
+**Temas en la web**: los apuntes de Manuel son páginas web, no PDF. La ficha del tema muestra «Leer el tema», que abre la página dentro de la app (`Tema.esPaginaWeb`).
 
 Desarrolladores: Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE).
 
@@ -20,6 +24,9 @@ La probabilidad de aprobar se calcula como en el Excel de organización de TCEE:
 **DCE no tiene test**, pero la app deja practicar el de TCEE de forma voluntaria (con un aviso que lo explica). Los resultados se guardan en el historial de DCE, no en el de TCEE.
 
 ## Qué tiene que publicar la web de DCE
+
+Ya están generados en [`para-manuel/`](para-manuel/), con instrucciones para él en [`para-manuel/LEEME.md`](para-manuel/LEEME.md): copiar la carpeta `oposicion/` a su web y añadirla a `resources` de su `_quarto.yml`. El temario se genera con `python3 scripts/generar-temario-dce.py` (títulos del programa oficial del BOE y enlaces de los temas que ya ha publicado, sacados de su «Índice de temas»).
+
 
 Con el mismo formato que la web de TCEE, en la carpeta `/oposicion/` de su web (se puede cambiar con `rutaContenido`):
 
@@ -61,7 +68,7 @@ Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separa
 
 ## Lanzamiento (lo hace Víctor cuando lo decida)
 
-1. Poner la web de Manuel en `Oposiciones.dce.web` y `lanzada: true` (`lib/data/models/oposicion.dart`, marcados con `TODO(lanzamiento)`) y comprobar que su web publica los ficheros de arriba. Hasta entonces, DCE solo la ven en la app sus administradores y el general, en *Más → Ajustes → Oposición*.
+1. Comprobar que su web publica los ficheros de arriba (https://manuelcabadogarcia.es/oposicion/temario/temario.json). En la rama `dce` ya están su web y `lanzada: true`. Hasta entonces, DCE solo la ven en la app sus administradores y el general, en *Más → Ajustes → Oposición*.
 2. Fusionar `main` en `dce` (para traer lo último de TCEE) y después `dce` en `main`.
 3. Publicar `firestore.rules` en la consola (si ha cambiado) y crear el administrador de DCE.
 4. Subir la versión en `pubspec.yaml`, compilar el APK y la versión web (`scripts/publicar-app-web.py`) y poner la versión en `app-config.json`.

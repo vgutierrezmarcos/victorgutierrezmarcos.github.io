@@ -74,6 +74,7 @@ class MasPage extends ConsumerWidget {
           const TituloSeccion('Contenido'),
           // El simulador web guarda en el historial de su propia oposición.
           if (!ref.read(oposicionProvider).testVoluntario) _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, ref.read(oposicionProvider).urlSimuladorWeb)),
+          if (!ref.read(oposicionProvider).esPrincipal) _fila(context, Icons.public, 'Apuntes en la web', ref.read(oposicionProvider).dominio, () => abrirUrl(context, ref.read(oposicionProvider).web)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),

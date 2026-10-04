@@ -70,8 +70,8 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
               child: Column(children: [
-                Text(aprobado ? 'Aprobado' : 'Resultado', style: const TextStyle(fontFamily: Fuentes.serif, fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white)),
-                FittedBox(child: Text('${formatoNota(r.notaSobre10)} / 10', style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 44, fontWeight: FontWeight.w600, color: Colors.white, height: 1.2))),
+                Text(aprobado ? 'Aprobado' : 'Resultado', style: TextStyle(fontFamily: Fuentes.serif, fontSize: 22, fontWeight: FontWeight.w700, color: Colors.white)),
+                FittedBox(child: Text('${formatoNota(r.notaSobre10)} / 10', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 44, fontWeight: FontWeight.w600, color: Colors.white, height: 1.2))),
                 Text('${formatoNota(r.puntosBrutos)} de ${formatoNota(r.maxPuntos)} puntos · ${formatoTiempo(r.tiempoSeconds)}', textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 14.5, color: Colors.white.withValues(alpha: 0.9))),
                 if (widget.datos.porTiempo) Padding(padding: const EdgeInsets.only(top: 6), child: Text('Se agotó el tiempo', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white.withValues(alpha: 0.9)))),
               ]),

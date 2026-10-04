@@ -15,6 +15,7 @@ import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
 import 'features/inicio/elegir_oposicion.dart';
+import 'theme/app_theme.dart';
 import 'data/models/oposicion.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
@@ -54,6 +55,8 @@ Future<void> main() async {
 /// en ella y la tarea de avisos.
 Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, required bool firebaseDisponible}) async {
   Oposiciones.actual = oposicion;
+  // Colores y tipografías de su web (TCEE: los de esta; DCE: los de Manuel).
+  Paleta.usar(oposicion.id);
   final db = firebaseDisponible ? FirebaseFirestore.instance : null;
   final auth = firebaseDisponible ? FirebaseAuth.instance : null;
   final contenido = ContenidoRepo(http, oposicion);

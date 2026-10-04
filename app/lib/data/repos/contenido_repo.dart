@@ -40,7 +40,15 @@ class ContenidoRepo {
   Future<AppConfig> config() async {
     try {
       // La configuración remota se revalida siempre que hay red.
-      return AppConfig.fromJson(await _http.json(oposicion.urlAppConfig));
+      final j = Map<String, dynamic>.from(await _http.json(oposicion.urlAppConfig) as Map);
+      // La app es una sola: su versión y sus descargas salen siempre de la
+      // configuración de TCEE, aunque se prepare otra oposición.
+      if (!oposicion.esPrincipal) {
+        try {
+          j['app'] = (await _http.json(Oposiciones.tcee.urlAppConfig) as Map)['app'];
+        } catch (_) {}
+      }
+      return AppConfig.fromJson(j);
     } catch (_) {
       return AppConfig.porDefecto;
     }

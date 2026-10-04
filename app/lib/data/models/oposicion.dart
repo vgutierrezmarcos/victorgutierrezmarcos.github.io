@@ -304,11 +304,10 @@ class Oposiciones {
     id: 'dce',
     siglas: 'DCE',
     nombre: 'Diplomado Comercial del Estado',
-    // TODO(lanzamiento): la web de Manuel Cabado García (sin barra final).
-    web: 'https://www.ejemplo-dce.es',
+    web: 'https://manuelcabadogarcia.es',
     testDe: 'tcee',
     notaProbabilidad: 'Supone pasar los idiomas y las preguntas prácticas del 4.º.',
-    autor: ('Manuel Cabado García', 'DCE', null),
+    autor: ('Manuel Cabado García', 'DCE', 'https://manuelcabadogarcia.es'),
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),

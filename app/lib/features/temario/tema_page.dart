@@ -50,7 +50,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
 
   Future<void> _cargar() async {
     final url = widget.tema.url;
-    if (url == null) return;
+    if (url == null || widget.tema.esPaginaWeb) return;
     try {
       final pdf = await ref.read(descargasProvider).abrir(url, progreso: (r, t) {
         if (t > 0 && mounted) setState(() => _progreso = r / t);
@@ -79,6 +79,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final pendientes = (ref.watch(agendasProvider)[widget.tema.codigo]?.pendientes ?? const []).length;
     final conNota = ref.read(usuarioRepoProvider).nota(widget.tema.codigo).isNotEmpty;
     final sinPdf = widget.tema.url == null;
+    final web = widget.tema.esPaginaWeb;
 
     return Scaffold(
       appBar: BarraWeb(
@@ -96,7 +97,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             ),
           if (_ruta != null)
             IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_ruta!)], text: '${widget.tema.codigo} ${widget.tema.titulo}'))),
-          if (!sinPdf) PopupMenuButton<String>(
+          if (!sinPdf && !web) PopupMenuButton<String>(
             onSelected: (v) async {
               if (v == 'web') {
                 abrirUrl(context, widget.tema.url);
@@ -140,6 +141,23 @@ class _TemaPageState extends ConsumerState<TemaPage> {
         Expanded(
           child: sinPdf
               ? AgendaTemaVista(tema: widget.tema)
+              : web
+              ? Column(children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 14, 16, 4),
+                    child: Tarjeta(
+                      color: context.colores.primarioPalido,
+                      onTap: () => abrirUrl(context, widget.tema.url, enApp: true),
+                      child: Row(children: [
+                        Icon(Icons.menu_book_outlined, color: context.esquema.primary),
+                        const SizedBox(width: 12),
+                        Expanded(child: Text('Los apuntes de este tema están en la web.', style: context.textos.bodySmall)),
+                        FilledButton(onPressed: () => abrirUrl(context, widget.tema.url, enApp: true), child: const Text('Leer el tema')),
+                      ]),
+                    ),
+                  ),
+                  Expanded(child: AgendaTemaVista(tema: widget.tema)),
+                ])
               : _error != null
               ? ErrorVista(error: _error!, reintentar: () => setState(() { _error = null; _cargar(); }))
               : _pdf == null
