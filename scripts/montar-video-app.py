@@ -443,9 +443,9 @@ def fotograma(t):
 # ------------------------------------------------------------------ Sonido
 # Banda sonora propia (sin derechos de terceros), generada a partir de los
 # tiempos de las escenas para que vaya siempre acompasada con la imagen:
-# piano en arpegios y colchón de cuerdas con un acorde por escena, el logo que
-# «suena» al montarse, un barrido en cada corte, un toque cuando entra cada
-# móvil, el reloj del cronómetro y la notificación de la clase cogida.
+# piano en arpegios (más suave en el cuerpo del vídeo) y colchón de cuerdas con
+# un acorde por escena, el logo que «suena» al montarse, un barrido suave en
+# cada corte, el reloj del cronómetro y la notificación de la clase cogida.
 
 SR = 44100
 
@@ -539,15 +539,21 @@ def banda_sonora(ruta):
     for ini, fin, nombre in tramos:
         notas = acordes[nombre]
         # Bajo y cuerdas sostenidos todo el tramo.
-        poner(_cuerdas([_nota(m + 12) for m in notas[1:4]], fin - ini + 0.5, 0.05), ini)
-        poner(_piano(_nota(notas[0] - 12), min(3.0, fin - ini + 0.6), 0.10), ini)
-        # Arpegio: en la portada empieza cuando el logo ya está montado.
+        cuerpo = nombre not in ('portada', 'cierre')
+        poner(_cuerdas([_nota(m + 12) for m in notas[1:4]], fin - ini + 0.5, 0.06 if cuerpo else 0.05), ini)
+        poner(_piano(_nota(notas[0] - 12), min(3.0, fin - ini + 0.6), 0.06 if cuerpo else 0.10), ini)
+        # Arpegio: en la portada empieza cuando el logo ya está montado. En el
+        # cuerpo del vídeo, más suave (una nota por pulso y menos volumen),
+        # para que acompañe sin distraer.
+        extremo = nombre in ('portada', 'cierre')
+        paso = corchea if extremo else 2 * corchea
+        fuerte, flojo = (0.075, 0.055) if extremo else (0.046, 0.036)
         t = ini + (1.0 if nombre == 'portada' else 0)
         i = 0
         while t < fin - 0.05 and not (nombre == 'cierre' and t > ini + 3.2):
             n = notas[patron[i % len(patron)]] + 12
-            poner(_piano(_nota(n), 1.4, 0.055 if i % 2 else 0.075), t)
-            t += corchea
+            poner(_piano(_nota(n), 1.8, flojo if i % 2 else fuerte), t)
+            t += paso
             i += 1
     # Cierre: acorde final que resuelve.
     for m in acordes['cierre']:
@@ -560,23 +566,21 @@ def banda_sonora(ruta):
             poner(_campana(_nota(nota), 0.09), base + (inicio + 0.12) * vel)
     poner(_campana(_nota(74), 0.12, 3.5), INICIO_CIERRE + 3.3)
 
-    # Barrido en cada corte; toque al entrar cada móvil.
+    # Un barrido suave en cada corte (sin sonido al entrar cada captura).
     for e in OBJ_ESCENAS:
-        poner(_barrido(0.05), e.inicio - 0.25)
-        for r in e.retrasos:
-            poner(_toque(0.07), e.inicio + r + 0.15)
-    poner(_barrido(0.05), INICIO_CIERRE - 0.25)
+        poner(_barrido(0.025), e.inicio - 0.25)
+    poner(_barrido(0.03), INICIO_CIERRE - 0.25)
 
     # Cantes: el reloj del cronómetro, al entrar el segundo móvil.
     cantes = next(e for e in OBJ_ESCENAS if e.titulo_rotulo == 'CANTES')
     t0 = cantes.inicio + cantes.retrasos[-1] + 0.4
     for k in range(6):
-        poner(_tic(0.05 if k % 2 else 0.07), t0 + k * 0.5)
+        poner(_tic(0.025 if k % 2 else 0.035), t0 + k * 0.5)
     # Clases sueltas: notificación cuando aparece la clase cogida (tercer móvil).
     clases = next(e for e in OBJ_ESCENAS if e.titulo_rotulo == 'CLASES SUELTAS')
     tn = clases.inicio + clases.retrasos[-1] + 0.35
-    poner(_campana(_nota(88), 0.10, 1.2), tn)
-    poner(_campana(_nota(93), 0.10, 1.4), tn + 0.13)
+    poner(_campana(_nota(88), 0.06, 1.2), tn)
+    poner(_campana(_nota(93), 0.06, 1.4), tn + 0.13)
 
     total = total[: int(DURACION * SR)]
     # Fundido final y normalización.
