@@ -8,6 +8,7 @@ import '../../core/providers.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/texto_formulas.dart';
 import 'motor_test.dart';
 import 'resultados_page.dart';
 
@@ -150,7 +151,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                             color: context.colores.fondoClaro,
                             border: Border(left: BorderSide(color: context.esquema.primary, width: 4)),
                           ),
-                          child: Text(p.enunciado, style: context.textos.bodyLarge?.copyWith(fontSize: 16.5)),
+                          child: TextoConFormulas(p.enunciado, style: context.textos.bodyLarge?.copyWith(fontSize: 16.5)),
                         ),
                         for (final img in p.imagenes)
                           Padding(
@@ -241,7 +242,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
             child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('$letra)', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 16.5, fontWeight: FontWeight.w600, color: context.esquema.primary, height: 1.4)),
               const SizedBox(width: 12),
-              Expanded(child: Text(texto, style: context.textos.bodyMedium)),
+              Expanded(child: TextoConFormulas(texto, style: context.textos.bodyMedium)),
             ]),
           ),
         ),

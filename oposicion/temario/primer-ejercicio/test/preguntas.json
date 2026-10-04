@@ -3085,7 +3085,7 @@
       "opciones": {
         "a": "La curva de contrato reflejada en el diagrama 2 es compatible con la expresión $x_2^{A} = 2x_1^{A}$",
         "b": "La curva de contrato reflejada en el diagrama 2 es compatible con la expresión $x_2^{A} = 0$",
-        "c": "La curva de contrato reflejada en el diagrama 1 es compatible con las preferencias $U^{A} = ax_1 + bx_2$; $U^{B} = cx_1 + dx_2} con {b/a < d/c$",
+        "c": "La curva de contrato reflejada en el diagrama 1 es compatible con las preferencias $U^{A} = ax_1 + bx_2$; $U^{B} = cx_1 + dx_2$ con $b/a < d/c$",
         "d": "La curva de contrato reflejada en el diagrama 2 es compatible con las preferencias $U^{A} = x_2^{A}$; $U^{B} = x_1^{B}$"
       },
       "respuesta": [
@@ -4909,7 +4909,7 @@
       "opciones": {
         "a": "Se puede calcular la demanda marshalliana $Y_i(p_Y, m_i)$ de los $n$ consumidores, $i = 1,…,n$ del bien $Y$ que fabrica la empresa.",
         "b": "Se puede obtener la curva de demanda de mercado a la que se enfrenta la empresa.",
-        "c": "Se pueden obtener las funciones de demanda de la empresa de los $n$ factores productivos que adquiere, como $x_i = \\pdv{C}{w_i}$, $i = 1,… n$",
+        "c": "Se pueden obtener las funciones de demanda de la empresa de los $n$ factores productivos que adquiere, como $x_i = \\frac{\\partial C}{\\partial w_i}$, $i = 1,… n$",
         "d": "Se pueden calcular las funciones de costes de las empresas rivales que oferten producto $Y$ en el mismo mercado."
       },
       "respuesta": [
@@ -4944,7 +4944,7 @@
       "temas": [
         "3.A.21"
       ],
-      "enunciado": "Considere el caso de una economía sin producción, en la que hay $n$ individuos y $k$ bienes, y cada individuo tiene un vector de dotaciones iniciales $\\omega_i = ({\\omega_i}_1, {\\omega_i}_2, …, {\\omega_i}_k)$. Si se abren mercados para todos los bienes, la Ley de Walras nos indica que $p \\cdot Z(p) = 0$, siendo $p$ un vector cualquiera de precios $p = (p_1, ..., p_k)$ y $Z(p)$ el vector de funciones de exceso de demanda, cuyos $k$ componentes se definen a partir de las demandas $(x_i)$ y las dotaciones de los individuos ($\\omega_i$) como: $Z_j(p) = \\Sigma {x_i}_j − \\Sigma$$\\{omega_i}_j$, para $j = 1, ..., k$. Si los mercados de todos los bienes salvo 1 y 2 se hallan en equilibrio, es decir, $Z_j(p) = 0$, $j = 3, 4, ..., k$, ¿cuál de las siguientes situaciones en los mercados de los bienes 1 y 2 no podría nunca observarse?",
+      "enunciado": "Considere el caso de una economía sin producción, en la que hay $n$ individuos y $k$ bienes, y cada individuo tiene un vector de dotaciones iniciales $\\omega_i = ({\\omega_i}_1, {\\omega_i}_2, …, {\\omega_i}_k)$. Si se abren mercados para todos los bienes, la Ley de Walras nos indica que $p \\cdot Z(p) = 0$, siendo $p$ un vector cualquiera de precios $p = (p_1, ..., p_k)$ y $Z(p)$ el vector de funciones de exceso de demanda, cuyos $k$ componentes se definen a partir de las demandas $(x_i)$ y las dotaciones de los individuos ($\\omega_i$) como: $Z_j(p) = \\Sigma {x_i}_j − \\Sigma$${\\omega_i}_j$, para $j = 1, ..., k$. Si los mercados de todos los bienes salvo 1 y 2 se hallan en equilibrio, es decir, $Z_j(p) = 0$, $j = 3, 4, ..., k$, ¿cuál de las siguientes situaciones en los mercados de los bienes 1 y 2 no podría nunca observarse?",
       "opciones": {
         "a": "Exceso de demanda del bien 1, $Z_1(p) > 0$, y exceso de oferta del bien 2, $Z_2(p) < 0$.",
         "b": "Exceso de oferta del bien 1, $Z_1(p) < 0$, y exceso de demanda del bien 2, $Z_2(p) > 0$.",
@@ -6965,7 +6965,7 @@
       ],
       "enunciado": "Considere el modelo de Solow à la Mankiw, Romer y Weil (1992), con la inclusión de capital humano en la función de producción: \n Función de producción: $Y(t) = (A(t)L(t))^{1−\\alpha−\\beta} H(t)^\\beta K(t)^\\alpha$ donde $\\alpha, \\beta \\in (0,1)$. \nAcumulación del capital: $K̇(t) = s_k Y(t) − \\delta_k K(t)$ donde $s_k, \\delta_k \\in (0,1)$. \nAcumulación del capital humano: $Ḣ(t) = s_h Y(t) − \\delta_h K(t)$ donde $s_h, \\delta_h \\in (0,1)$. \nProgreso tecnológico: $A(t) = e^{gt} A(0)$. \nCrecimiento de la población: $L(t) = e^{nt} L(0)$. \nIndique cuál de las siguientes sería una posible especificación del modelo de regresión lineal log-log de la renta per cápita ($y(t)$) en el estado estacionario, donde $u$ es el error:",
       "opciones": {
-        "a": "$log(y(t)) = \\frac{\\alpha}{1−$\\alpha$−$\\beta$} log(\\frac{s_k}{n+g+\\delta_k}) + \\frac{\\beta}{1−\\alpha−\\beta} log(\\frac{s_h}{n+g+\\delta_h}) + u$",
+        "a": "$log(y(t)) = \\frac{\\alpha}{1−\\alpha−\\beta} log(\\frac{s_k}{n+g+\\delta_k}) + \\frac{\\beta}{1−\\alpha−\\beta} log(\\frac{s_h}{n+g+\\delta_h}) + u$",
         "b": "$log(y(t)) = \\alpha log(\\frac{s_k}{n+g+\\delta_k}) + \\beta log(\\frac{s_h}{n+g+\\delta_h}) + u$",
         "c": "$log(y(t)) = log(A(0)) + g \\cdot t + \\frac{\\alpha}{1−\\alpha−\\beta} log(\\frac{s_k}{n+g+\\delta_k}) + \\frac{\\beta}{1−\\alpha−\\beta} log(\\frac{s_h}{n+g+\\delta_h}) + u$",
         "d": "$log(y(t)) = log(A(0)) + g \\cdot t + \\alpha log(\\frac{s_k}{n+g+\\delta_k}) + \\beta log(\\frac{s_h}{n+g+\\delta_h}) + u$"
