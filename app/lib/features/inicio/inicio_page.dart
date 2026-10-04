@@ -246,7 +246,9 @@ class InicioPage extends ConsumerWidget {
         child: Row(children: [
           Icon(icono, color: context.esquema.primary),
           const SizedBox(width: 10),
-          Expanded(child: Text(texto, style: context.textos.titleSmall)),
+          // Una palabra que no cabe (p. ej. «Probabilidades» en el ordenador) se
+          // reduce en lugar de partirse.
+          Expanded(child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(texto, maxLines: 1, style: context.textos.titleSmall))),
         ]),
       );
 
