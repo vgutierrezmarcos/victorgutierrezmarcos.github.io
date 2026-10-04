@@ -86,10 +86,9 @@ def fondo_claro():
     # Cabecera de la web: banda morada con la línea dorada.
     f.paste(degradado((ANCHO, 84), TINTA, TINTA_CLARA), (0, 0))
     f.paste(linea_dorada(ANCHO, 6), (0, 84))
-    icono = Image.open(ICONO).convert('RGBA').resize((52, 52), Image.LANCZOS)
-    f.paste(icono, (64, 16), icono)
+    ic = icono(52)
+    f.paste(ic, (64, 16), ic)
     d.text((132, 42), 'Oposición TCEE · DCE', font=serif(34), fill=BLANCO, anchor='lm')
-    d.text((ANCHO - 64, 42), 'victorgutierrezmarcos.es/app', font=sans(26, 'Medium'), fill=(255, 255, 255), anchor='rm')
     return f
 
 
@@ -97,6 +96,26 @@ def fondo_oscuro():
     f = degradado((ANCHO, ALTO), TINTA_CLARA, TINTA)
     f.paste(linea_dorada(ANCHO, 8), (0, ALTO - 8))
     return f
+
+
+def icono(tam, sombra=False):
+    """Icono de la app con la forma de los iconos de móvil: esquinas redondeadas
+    (22 % del lado) y, sobre fondo oscuro, una sombra suave que lo despega."""
+    img = Image.open(ICONO).convert('RGBA').resize((tam, tam), Image.LANCZOS)
+    mascara = Image.new('L', (tam, tam), 0)
+    ImageDraw.Draw(mascara).rounded_rectangle((0, 0, tam - 1, tam - 1), round(tam * 0.22), fill=255)
+    img.putalpha(mascara)
+    if not sombra:
+        return img
+    m = round(tam * 0.18)
+    lienzo = Image.new('RGBA', (tam + 2 * m, tam + 2 * m), (0, 0, 0, 0))
+    s = Image.new('L', lienzo.size, 0)
+    ImageDraw.Draw(s).rounded_rectangle((m, m + round(tam * 0.05), m + tam, m + tam + round(tam * 0.05)), round(tam * 0.22), fill=150)
+    s = s.filter(ImageFilter.GaussianBlur(tam * 0.08))
+    lienzo.paste((10, 5, 15, 255), (0, 0), s)
+    lienzo.putalpha(s)
+    lienzo.paste(img, (m, m), img)
+    return lienzo
 
 
 def linea_dorada(ancho, alto):
@@ -213,10 +232,10 @@ class Escena:
 def portada(lienzo, t):
     """0-5 s: nombre de la app sobre morado y el móvil con la pantalla de hoy."""
     a = suave(t / 0.9)
-    icono = Image.open(ICONO).convert('RGBA').resize((150, 150), Image.LANCZOS)
+    ic = icono(150, sombra=True)
     capa = Image.new('RGBA', (1120, 620), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
-    capa.paste(icono, (0, 0), icono)
+    capa.paste(ic, (-27, -27), ic)
     c.text((0, 200), 'Oposición TCEE · DCE', font=serif(92), fill=BLANCO)
     c.rectangle((0, 352, 420, 358), fill=DORADO_CLARO)
     c.text((0, 392), 'Técnico Comercial y Economista del Estado', font=serif(46, 'italic'), fill=(240, 232, 248))
@@ -231,23 +250,20 @@ def portada(lienzo, t):
 
 
 def cierre(lienzo, t):
-    """60-66 s: cómo conseguirla."""
+    """60-66 s: nombre de la app y de dónde salen los apuntes."""
     a = suave(t / 0.8)
     capa = Image.new('RGBA', (ANCHO, 700), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
-    icono = Image.open(ICONO).convert('RGBA').resize((170, 170), Image.LANCZOS)
-    capa.paste(icono, ((ANCHO - 170) // 2, 0), icono)
+    ic = icono(170, sombra=True)
+    capa.paste(ic, ((ANCHO - ic.width) // 2, -31), ic)
     c.text((ANCHO // 2, 270), 'Oposición TCEE · DCE', font=serif(96), fill=BLANCO, anchor='mm')
     c.text((ANCHO // 2, 380), 'Gratis · Sin anuncios · Android y navegador', font=sans(46, 'Medium'), fill=(240, 232, 248), anchor='mm')
     c.rectangle((ANCHO // 2 - 150, 440, ANCHO // 2 + 150, 445), fill=DORADO_CLARO)
     b = suave((t - 0.9) / 0.8)
     if b > 0:
-        ancho_caja = 900
-        c.rounded_rectangle(((ANCHO - ancho_caja) // 2, 500, (ANCHO + ancho_caja) // 2, 610), 14, fill=tuple(round(v * b + m * (1 - b)) for v, m in zip(BLANCO, TINTA)) + (255,))
-        c.text((ANCHO // 2, 555), 'victorgutierrezmarcos.es/app', font=sans(54, 'Semibold'), fill=TINTA + (round(255 * b),), anchor='mm')
-        c.text((ANCHO // 2, 660), 'Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es', font=sans(34, 'Medium'), fill=(240, 232, 248, round(255 * b)), anchor='mm')
+        c.text((ANCHO // 2, 520), 'Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es', font=sans(36, 'Medium'), fill=(240, 232, 248, round(255 * b)), anchor='mm')
     capa = con_opacidad(capa, a)
-    lienzo.paste(capa, (0, 190 + round(30 * (1 - a))), capa)
+    lienzo.paste(capa, (0, 250 + round(30 * (1 - a))), capa)
 
 
 def progreso(lienzo, t):
