@@ -48,9 +48,13 @@ class ContenidoRepo {
           j['app'] = (await _http.json(Oposiciones.tcee.urlAppConfig) as Map)['app'];
         } catch (_) {}
       }
+      // Sin correo en su app-config.json, el de la oposición.
+      final contacto = Map<String, dynamic>.from((j['contacto'] as Map?) ?? {});
+      if (oposicion.correo != null && (contacto['email'] as String?)?.isNotEmpty != true) contacto['email'] = oposicion.correo;
+      j['contacto'] = contacto;
       return AppConfig.fromJson(j);
     } catch (_) {
-      return AppConfig.porDefecto;
+      return oposicion.correo == null ? AppConfig.porDefecto : AppConfig(email: oposicion.correo!);
     }
   }
 

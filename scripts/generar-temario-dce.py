@@ -107,7 +107,7 @@ def temario() -> dict:
 def app_config() -> dict:
     return {
         'version': 1,
-        'contacto': {'linkedin': 'https://www.linkedin.com/in/manuel-cabado-garc%C3%ADa-340148145/'},
+        'contacto': {'email': 'mcabag26@gmail.com', 'linkedin': 'https://www.linkedin.com/in/manuel-cabado-garc%C3%ADa-340148145/'},
         'avisos': [],
     }
 
