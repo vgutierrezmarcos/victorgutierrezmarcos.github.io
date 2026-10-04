@@ -9,6 +9,7 @@ import '../../data/models/pregunta.dart';
 import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/texto_formulas.dart';
 import 'motor_test.dart';
 
 class DatosResultado {
@@ -171,7 +172,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
               Etiqueta(p.tema),
             ]),
             const SizedBox(height: 8),
-            Text(p.enunciado, style: context.textos.bodyMedium),
+            TextoConFormulas(p.enunciado, style: context.textos.bodyMedium),
             const SizedBox(height: 10),
             for (final o in p.opciones.entries)
               Builder(builder: (context) {
@@ -190,7 +191,7 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       Text('${o.key}) ', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w600, fontSize: 14, color: context.esquema.primary)),
-                      Expanded(child: Text(o.value, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface, fontWeight: c != null ? FontWeight.w600 : null))),
+                      Expanded(child: TextoConFormulas(o.value, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface, fontWeight: c != null ? FontWeight.w600 : null))),
                     ]),
                     if (elegida) Text('Tu respuesta', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, fontWeight: FontWeight.w600, color: context.colores.textoSuave)),
                   ]),
