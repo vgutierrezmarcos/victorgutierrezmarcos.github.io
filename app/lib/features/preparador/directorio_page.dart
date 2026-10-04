@@ -61,7 +61,7 @@ class FichaPreparador extends StatelessWidget {
             CircleAvatar(
               backgroundColor: const Color(0xFFE9DDF3),
               foregroundColor: Paleta.primario,
-              child: Text(v.nombre.isEmpty ? '?' : v.nombre.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700)),
+              child: Text(v.nombre.isEmpty ? '?' : v.nombre.characters.first.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700)),
             ),
             const SizedBox(width: 12),
             Expanded(

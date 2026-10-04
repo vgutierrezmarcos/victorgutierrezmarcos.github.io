@@ -159,7 +159,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                           controller: _codigo,
                           textCapitalization: TextCapitalization.characters,
                           maxLength: 7,
-                          style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 4),
+                          style: TextStyle(fontFamily: Fuentes.sans, fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 4),
                           decoration: const InputDecoration(hintText: 'CÓDIGO', counterText: '', isDense: true),
                           onSubmitted: (_) => _enlazar(),
                         ),
@@ -438,7 +438,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
           leading: CircleAvatar(
             backgroundColor: Color(colorDePersona(a.id)).withValues(alpha: 0.18),
             foregroundColor: Color(colorDePersona(a.id)),
-            child: Text(a.nombre.isEmpty ? '?' : a.nombre.characters.first.toUpperCase(), style: const TextStyle(fontFamily: Fuentes.serif, fontWeight: FontWeight.w700)),
+            child: Text(a.nombre.isEmpty ? '?' : a.nombre.characters.first.toUpperCase(), style: TextStyle(fontFamily: Fuentes.serif, fontWeight: FontWeight.w700)),
           ),
           title: Row(children: [
             Flexible(child: Text(a.nombre, maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall)),

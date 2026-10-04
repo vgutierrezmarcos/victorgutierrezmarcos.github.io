@@ -107,13 +107,13 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
           child: Scaffold(
             // .examen-header: barra morada con la pregunta en curso y el temporizador.
             appBar: BarraWeb(
-              title: Text('Pregunta ${_idx + 1} de ${preguntas.length}', style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
+              title: Text('Pregunta ${_idx + 1} de ${preguntas.length}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white)),
               actions: [
                 Center(
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(color: colorReloj, borderRadius: BorderRadius.circular(6)),
-                    child: Text(formatoReloj(restante), style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white, fontFeatures: [FontFeature.tabularFigures()])),
+                    child: Text(formatoReloj(restante), style: TextStyle(fontFamily: Fuentes.sans, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white, fontFeatures: [FontFeature.tabularFigures()])),
                   ),
                 ),
                 IconButton(icon: const Icon(Icons.grid_view), tooltip: 'Navegador de preguntas', onPressed: _mostrarRejilla),

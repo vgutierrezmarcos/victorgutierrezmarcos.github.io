@@ -1,47 +1,199 @@
 import 'package:flutter/material.dart';
 
-/// Paleta y tipografías tomadas de styles.css de la web.
-/// Claro: :root · Oscuro: [data-theme="dark"].
+/// Colores de marca de una oposición. TCEE: los de styles.css de esta web
+/// (claro, :root; oscuro, [data-theme="dark"]). DCE: los de la web de Manuel
+/// Cabado García (manuelcabadogarcia.es): granate, crema y azul; en oscuro, el
+/// verde menta de su web.
+class PaletaMarca {
+  const PaletaMarca({
+    required this.primario,
+    required this.primarioOscuro,
+    required this.primarioClaro,
+    required this.primarioPalido,
+    required this.fondo,
+    required this.fondoClaro,
+    required this.crema,
+    required this.texto,
+    required this.textoSuave,
+    required this.textoClaro,
+    required this.borde,
+    required this.bordeClaro,
+    required this.dorado,
+    required this.doradoClaro,
+    required this.dPrimario,
+    required this.dPrimarioOscuro,
+    required this.dPrimarioClaro,
+    required this.dPrimarioPalido,
+    required this.dRelleno,
+    required this.dRellenoOscuro,
+    required this.dFondo,
+    required this.dFondoClaro,
+    required this.dCrema,
+    required this.dSuperficie,
+    required this.dTexto,
+    required this.dTextoSuave,
+    required this.dTextoClaro,
+    required this.dBorde,
+    required this.dBordeClaro,
+    required this.dDorado,
+    required this.dDoradoClaro,
+    required this.serif,
+    required this.sans,
+  });
+
+  final Color primario;
+  final Color primarioOscuro;
+  final Color primarioClaro;
+  final Color primarioPalido;
+  final Color fondo;
+  final Color fondoClaro;
+  final Color crema;
+  final Color texto;
+  final Color textoSuave;
+  final Color textoClaro;
+  final Color borde;
+  final Color bordeClaro;
+  final Color dorado;
+  final Color doradoClaro;
+  final Color dPrimario;
+  final Color dPrimarioOscuro;
+  final Color dPrimarioClaro;
+  final Color dPrimarioPalido;
+  final Color dRelleno;
+  final Color dRellenoOscuro;
+  final Color dFondo;
+  final Color dFondoClaro;
+  final Color dCrema;
+  final Color dSuperficie;
+  final Color dTexto;
+  final Color dTextoSuave;
+  final Color dTextoClaro;
+  final Color dBorde;
+  final Color dBordeClaro;
+  final Color dDorado;
+  final Color dDoradoClaro;
+  /// Familias de assets/fonts para títulos y texto, y para la interfaz.
+  final String serif;
+  final String sans;
+
+  static const tcee = PaletaMarca(
+    primario: Color(0xFF5F2987),
+    primarioOscuro: Color(0xFF4A1F6B),
+    primarioClaro: Color(0xFF7A3CA8),
+    primarioPalido: Color(0xFFF3EEF7),
+    fondo: Color(0xFFE2EFD9),
+    fondoClaro: Color(0xFFEDF5E7),
+    crema: Color(0xFFFAF9F6),
+    texto: Color(0xFF2D2D2D),
+    textoSuave: Color(0xFF555555),
+    textoClaro: Color(0xFF777777),
+    borde: Color(0xFFC8D8C0),
+    bordeClaro: Color(0xFFDDE8D6),
+    dorado: Color(0xFFB8860B),
+    doradoClaro: Color(0xFFDAA520),
+    dPrimario: Color(0xFF9B6BC7),
+    dPrimarioOscuro: Color(0xFF7A4FAD),
+    dPrimarioClaro: Color(0xFFB48FDA),
+    dPrimarioPalido: Color(0xFF2A2040),
+    dRelleno: Color(0xFF6A3596),
+    dRellenoOscuro: Color(0xFF4A2370),
+    dFondo: Color(0xFF1A1A2E),
+    dFondoClaro: Color(0xFF1E1E34),
+    dCrema: Color(0xFF222240),
+    dSuperficie: Color(0xFF252545),
+    dTexto: Color(0xFFE0E0E0),
+    dTextoSuave: Color(0xFFB0B0B0),
+    dTextoClaro: Color(0xFF888888),
+    dBorde: Color(0xFF3A3A5C),
+    dBordeClaro: Color(0xFF2E2E4A),
+    dDorado: Color(0xFFD4A520),
+    dDoradoClaro: Color(0xFFE0B840),
+    serif: 'Pagella',
+    sans: 'SourceSans3',
+  );
+
+  // En oscuro, el granate es para texto e iconos ([dPrimario], más claro) y los
+  // rellenos con texto blanco usan [dRelleno] (contraste de 7:1 o más).
+  static const dce = PaletaMarca(
+    primario: Color(0xFF7A1F4B),
+    primarioOscuro: Color(0xFF5C1638),
+    primarioClaro: Color(0xFF9C3A68),
+    primarioPalido: Color(0xFFF4E9EE),
+    fondo: Color(0xFFF7F4EC),
+    fondoClaro: Color(0xFFFBF9F4),
+    crema: Color(0xFFFFFDF8),
+    texto: Color(0xFF2B2A28),
+    textoSuave: Color(0xFF57534B),
+    textoClaro: Color(0xFF6F6B62),
+    borde: Color(0xFFDDD6C6),
+    bordeClaro: Color(0xFFE9E3D6),
+    dorado: Color(0xFF234A6B),
+    doradoClaro: Color(0xFF3A6A93),
+    dPrimario: Color(0xFFD98BB0),
+    dPrimarioOscuro: Color(0xFFB56A90),
+    dPrimarioClaro: Color(0xFFE8B3CC),
+    dPrimarioPalido: Color(0xFF3A2230),
+    dRelleno: Color(0xFF8A2F5C),
+    dRellenoOscuro: Color(0xFF5C1638),
+    dFondo: Color(0xFF1E1D1B),
+    dFondoClaro: Color(0xFF24221F),
+    dCrema: Color(0xFF2A2825),
+    dSuperficie: Color(0xFF2E2C28),
+    dTexto: Color(0xFFE6E0D2),
+    dTextoSuave: Color(0xFFBDB6A6),
+    dTextoClaro: Color(0xFFA39D90),
+    dBorde: Color(0xFF3B3934),
+    dBordeClaro: Color(0xFF34322E),
+    dDorado: Color(0xFF3EE6A8),
+    dDoradoClaro: Color(0xFF7FF0C6),
+    // Latin Modern Roman, la de LaTeX, en toda la web de Manuel.
+    serif: 'LMRoman',
+    sans: 'LMRoman',
+  );
+}
+
+/// Paleta de la oposición que se está preparando ([usar] la cambia; el tema se
+/// vuelve a construir al cambiar de oposición) y colores semánticos comunes.
 class Paleta {
   Paleta._();
 
-  // Claro
-  static const primario = Color(0xFF5F2987);
-  static const primarioOscuro = Color(0xFF4A1F6B);
-  static const primarioClaro = Color(0xFF7A3CA8);
-  static const primarioPalido = Color(0xFFF3EEF7);
-  static const fondo = Color(0xFFE2EFD9);
-  static const fondoClaro = Color(0xFFEDF5E7);
-  static const crema = Color(0xFFFAF9F6);
-  static const texto = Color(0xFF2D2D2D);
-  static const textoSuave = Color(0xFF555555);
-  static const textoClaro = Color(0xFF777777);
-  static const borde = Color(0xFFC8D8C0);
-  static const bordeClaro = Color(0xFFDDE8D6);
-  static const dorado = Color(0xFFB8860B);
-  static const doradoClaro = Color(0xFFDAA520);
+  static PaletaMarca _m = PaletaMarca.tcee;
+  static PaletaMarca get marca => _m;
 
-  // Oscuro
-  static const dPrimario = Color(0xFF9B6BC7);
-  static const dPrimarioOscuro = Color(0xFF7A4FAD);
-  static const dPrimarioClaro = Color(0xFFB48FDA);
-  static const dPrimarioPalido = Color(0xFF2A2040);
-  // Rellenos con texto blanco encima (cabecera, botones, menú, selectores): el
-  // lila de [dPrimario] es para texto e iconos sobre fondo oscuro y, de fondo,
-  // apenas deja leer el blanco. Estos dos dan un contraste de 7:1 o más.
-  static const dRelleno = Color(0xFF6A3596);
-  static const dRellenoOscuro = Color(0xFF4A2370);
-  static const dFondo = Color(0xFF1A1A2E);
-  static const dFondoClaro = Color(0xFF1E1E34);
-  static const dCrema = Color(0xFF222240);
-  static const dSuperficie = Color(0xFF252545);
-  static const dTexto = Color(0xFFE0E0E0);
-  static const dTextoSuave = Color(0xFFB0B0B0);
-  static const dTextoClaro = Color(0xFF888888);
-  static const dBorde = Color(0xFF3A3A5C);
-  static const dBordeClaro = Color(0xFF2E2E4A);
-  static const dDorado = Color(0xFFD4A520);
-  static const dDoradoClaro = Color(0xFFE0B840);
+  /// Usa la paleta y las tipografías de la oposición [id] ('tcee', 'dce').
+  static void usar(String id) => _m = id == 'dce' ? PaletaMarca.dce : PaletaMarca.tcee;
+
+  static Color get primario => _m.primario;
+  static Color get primarioOscuro => _m.primarioOscuro;
+  static Color get primarioClaro => _m.primarioClaro;
+  static Color get primarioPalido => _m.primarioPalido;
+  static Color get fondo => _m.fondo;
+  static Color get fondoClaro => _m.fondoClaro;
+  static Color get crema => _m.crema;
+  static Color get texto => _m.texto;
+  static Color get textoSuave => _m.textoSuave;
+  static Color get textoClaro => _m.textoClaro;
+  static Color get borde => _m.borde;
+  static Color get bordeClaro => _m.bordeClaro;
+  static Color get dorado => _m.dorado;
+  static Color get doradoClaro => _m.doradoClaro;
+  static Color get dPrimario => _m.dPrimario;
+  static Color get dPrimarioOscuro => _m.dPrimarioOscuro;
+  static Color get dPrimarioClaro => _m.dPrimarioClaro;
+  static Color get dPrimarioPalido => _m.dPrimarioPalido;
+  static Color get dRelleno => _m.dRelleno;
+  static Color get dRellenoOscuro => _m.dRellenoOscuro;
+  static Color get dFondo => _m.dFondo;
+  static Color get dFondoClaro => _m.dFondoClaro;
+  static Color get dCrema => _m.dCrema;
+  static Color get dSuperficie => _m.dSuperficie;
+  static Color get dTexto => _m.dTexto;
+  static Color get dTextoSuave => _m.dTextoSuave;
+  static Color get dTextoClaro => _m.dTextoClaro;
+  static Color get dBorde => _m.dBorde;
+  static Color get dBordeClaro => _m.dBordeClaro;
+  static Color get dDorado => _m.dDorado;
+  static Color get dDoradoClaro => _m.dDoradoClaro;
 
   // Semánticos (simulador): tono oscuro para texto e iconos…
   static const acierto = Color(0xFF2E7D32);
@@ -58,8 +210,8 @@ class Paleta {
 /// de URW Palladio, que está en la lista de fuentes de styles.css).
 class Fuentes {
   Fuentes._();
-  static const serif = 'Pagella';
-  static const sans = 'SourceSans3';
+  static String get serif => Paleta.marca.serif;
+  static String get sans => Paleta.marca.sans;
 }
 
 /// Colores de superficie que no cubre ColorScheme, accesibles vía Theme.
@@ -86,7 +238,7 @@ class ColoresExtra extends ThemeExtension<ColoresExtra> {
   final Color dorado;
   final Color primarioPalido;
 
-  static const claro = ColoresExtra(
+  static ColoresExtra get claro => ColoresExtra(
     superficie: Colors.white,
     fondoClaro: Paleta.fondoClaro,
     crema: Paleta.crema,
@@ -98,7 +250,7 @@ class ColoresExtra extends ThemeExtension<ColoresExtra> {
     primarioPalido: Paleta.primarioPalido,
   );
 
-  static const oscuro = ColoresExtra(
+  static ColoresExtra get oscuro => ColoresExtra(
     superficie: Paleta.dSuperficie,
     fondoClaro: Paleta.dFondoClaro,
     crema: Paleta.dCrema,
@@ -140,7 +292,7 @@ extension ThemeX on BuildContext {
   LinearGradient get degradadoPrimario => LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: temaOscuro ? const [Paleta.dRelleno, Paleta.dRellenoOscuro] : const [Paleta.primario, Paleta.primarioOscuro],
+        colors: temaOscuro ? [Paleta.dRelleno, Paleta.dRellenoOscuro] : [Paleta.primario, Paleta.primarioOscuro],
       );
 
   /// Color de los rellenos con texto blanco encima (en claro, el morado de la web).

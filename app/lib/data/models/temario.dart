@@ -26,6 +26,12 @@ class Tema {
   /// "3.A", "5.C"…
   String get claveParte => '$ejercicio.$parte';
 
+  /// El tema es una página web (apuntes en HTML, como los de DCE) y no un PDF.
+  bool get esPaginaWeb {
+    final u = url?.toLowerCase().split('?').first;
+    return u != null && !u.endsWith('.pdf');
+  }
+
   factory Tema.fromJson(Map<String, dynamic> j) => Tema(
         codigo: j['codigo'] as String,
         titulo: j['titulo'] as String? ?? '',

@@ -206,7 +206,7 @@ class _GrupoDesplegableState extends State<GrupoDesplegable> with AutomaticKeepA
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(widget.titulo, style: const TextStyle(fontFamily: Fuentes.serif, fontSize: 16.5, fontWeight: FontWeight.w700, color: Colors.white, height: 1.25)),
+                      Text(widget.titulo, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 16.5, fontWeight: FontWeight.w700, color: Colors.white, height: 1.25)),
                       if (widget.subtitulo != null) Text(widget.subtitulo!, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, color: Colors.white.withValues(alpha: 0.85))),
                     ]),
                   ),
@@ -309,7 +309,7 @@ class Contador extends StatelessWidget {
           for (final c in cifras)
             Expanded(
               child: Column(children: [
-                FittedBox(child: Text(c.valor, style: const TextStyle(fontFamily: Fuentes.sans, fontSize: 26, fontWeight: FontWeight.w600, color: Colors.white, height: 1.1))),
+                FittedBox(child: Text(c.valor, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 26, fontWeight: FontWeight.w600, color: Colors.white, height: 1.1))),
                 Text(c.etiqueta.toUpperCase(), textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, letterSpacing: 0.6, color: Colors.white.withValues(alpha: 0.9))),
               ]),
             ),

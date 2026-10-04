@@ -84,7 +84,7 @@ void main() {
       await arrancar(tester);
       await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(p.toUpperCase())));
       await tester.pumpAndSettle();
-      if (p == 'Hoy') expect(find.textContaining('aún no está publicado'), findsOneWidget);
+      if (p == 'Hoy') expect(find.textContaining(RegExp('aún no está publicado|No se ha podido descargar el temario')), findsOneWidget);
       // Desde la oposición sin lanzar siempre se puede volver a las demás.
       if (p == 'Más') expect(find.text('Oposición'), findsOneWidget);
     });

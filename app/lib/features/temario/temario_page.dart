@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -64,7 +65,9 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
             ]);
           }
-          final total = t.todosLosTemas.where((x) => x.disponible).length;
+          // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
+          // apuntes, el progreso es sobre el programa entero.
+          final total = Oposiciones.actual.esPrincipal ? t.todosLosTemas.where((x) => x.disponible).length : t.todosLosTemas.length;
           final estudiados = ajustes.temasEstudiados.length;
           return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
@@ -80,6 +83,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                 ]),
               ),
               const SizedBox(height: 10),
+              if (Oposiciones.actual.esPrincipal || (ref.watch(estructuraProvider).valueOrNull?.bloques.isNotEmpty ?? false))
               FilaEnlace(
                 icono: Icons.account_tree_outlined,
                 titulo: 'Organización del temario',
@@ -113,7 +117,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                   else
                     GrupoDesplegable(
                         titulo: 'Parte ${p.letra}: ${p.nombre}',
-                        subtitulo: '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} con PDF',
+                        subtitulo: '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} ${Oposiciones.actual.esPrincipal ? 'con PDF' : 'publicados'}',
                         children: [
                           // Quinto ejercicio: un único PDF con todos los temas de la parte.
                           if (p.url != null)
@@ -146,7 +150,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
       ),
       title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
       subtitle: Row(children: [
-        if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text('Sin PDF', style: context.textos.labelSmall)),
+        if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
         if (repaso) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
