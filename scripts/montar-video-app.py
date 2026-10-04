@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-Monta el vídeo promocional de la app (1 minuto, 1920 × 1080, sin sonido) a
-partir de las capturas de app/promo/capturas/.
+Monta el vídeo promocional de la app (algo más de un minuto, 1920 × 1080, sin
+sonido) a partir de las capturas de app/promo/capturas/.
 
     python3 scripts/montar-video-app.py [--ffmpeg RUTA] [--solo-fotogramas DIR]
 
 Requisitos: Pillow y ffmpeg (por ejemplo, el binario estático que trae el
 paquete imageio-ffmpeg). Las capturas se regeneran con
-`flutter test tool/capturas_test.dart --update-goldens` desde app/.
+`flutter test tool/capturas_test.dart --update-goldens` y, las de DCE,
+`flutter test tool/capturas_dce_test.dart --update-goldens`, desde app/.
 
 Salida, en app/promo/: oposicion-tcee.mp4, poster.jpg y una versión ligera de
 cada captura (720 px de ancho, WebP) para la página app/index.html. Los PNG
@@ -29,11 +30,13 @@ CAPTURAS = os.path.join(PROMO, 'capturas')
 FUENTES = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 ICONO = os.path.join(RAIZ, 'app', 'assets', 'icon', 'icon.png')
 
-ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 60
+ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 66
 
-# Paleta de styles.css
-MORADO, MORADO_OSCURO, MORADO_CLARO = (95, 41, 135), (74, 31, 107), (122, 60, 168)
-VERDE, VERDE_CLARO = (226, 239, 217), (237, 245, 231)
+# Estética neutra, común a TCEE y DCE (como PaletaNeutra de la app): la de
+# styles.css en lo fundamental (Pagella, Source Sans, línea dorada), con un
+# berenjena oscuro y una crema que casan con el morado de TCEE y el granate de DCE.
+TINTA, TINTA_CLARA = (46, 34, 53), (67, 41, 79)
+FONDO, FONDO_2 = (246, 244, 239), (238, 234, 226)
 DORADO, DORADO_CLARO = (184, 134, 11), (218, 165, 32)
 TEXTO, TEXTO_SUAVE = (45, 45, 45), (85, 85, 85)
 BLANCO = (255, 255, 255)
@@ -49,15 +52,16 @@ def sans(tam, peso='Regular'):
 
 # Cada escena: (inicio, fin, rótulo, título, texto, capturas)
 ESCENAS = [
-    (5, 10, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
-    (10, 16, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
-    (16, 23, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
-    (23, 28, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
-    (28, 32, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades']),
-    (32, 45, '¿TE CANCELAN LA CLASE?', 'Otro preparador\nte la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'buscar-preparador', 'peticion-cogida']),
-    (45, 54, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y el tablón de sustituciones.', ['preparador', 'semana', 'sustituciones']),
+    (5, 11, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, sus cantes, sus probabilidades y sus preparadores, y con los colores de su web. Los apuntes de DCE son de Manuel Cabado García.', ['elegir-oposicion', 'dce-hoy', 'dce-temario']),
+    (11, 16, 'HOY', 'Cada día,\nlo que toca', 'La cuenta atrás al próximo cante (y al examen, con la fecha que pongas tú), el test diario y tu racha.', ['hoy']),
+    (16, 22, 'TEMARIO', 'El temario,\nordenado', 'Temas y PDF, bloques por colores y esquemas con las conexiones entre temas.', ['temario-temas', 'organizacion', 'esquema']),
+    (22, 29, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, sorteo como en el examen, cronómetro y diario de cantes.', ['cantes-agenda', 'cantes-cantar', 'cantes-diario']),
+    (29, 34, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas y el mismo historial.', ['test-pregunta', 'test-estadisticas']),
+    (34, 38, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La probabilidad de que salga un tema que te sabes, según los que llevas estudiados.', ['probabilidades']),
+    (38, 51, '¿TE CANCELAN LA CLASE?', 'Otro preparador\nte la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'buscar-preparador', 'peticion-cogida']),
+    (51, 60, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, valoraciones que llegan al alumno y el tablón de sustituciones.', ['preparador', 'semana', 'sustituciones']),
 ]
-INICIO_CIERRE = 54
+INICIO_CIERRE = 60
 FUNDIDO = 0.45  # segundos de fundido entre escenas
 
 
@@ -77,20 +81,20 @@ def degradado(tamano, c1, c2, vertical=False):
 
 
 def fondo_claro():
-    f = degradado((ANCHO, ALTO), VERDE, VERDE_CLARO).convert('RGB')
+    f = degradado((ANCHO, ALTO), FONDO, FONDO_2).convert('RGB')
     d = ImageDraw.Draw(f)
     # Cabecera de la web: banda morada con la línea dorada.
-    f.paste(degradado((ANCHO, 84), MORADO, MORADO_OSCURO), (0, 0))
+    f.paste(degradado((ANCHO, 84), TINTA, TINTA_CLARA), (0, 0))
     f.paste(linea_dorada(ANCHO, 6), (0, 84))
     icono = Image.open(ICONO).convert('RGBA').resize((52, 52), Image.LANCZOS)
     f.paste(icono, (64, 16), icono)
-    d.text((132, 42), 'Oposición TCEE', font=serif(34), fill=BLANCO, anchor='lm')
+    d.text((132, 42), 'Oposición TCEE · DCE', font=serif(34), fill=BLANCO, anchor='lm')
     d.text((ANCHO - 64, 42), 'victorgutierrezmarcos.es/app', font=sans(26, 'Medium'), fill=(255, 255, 255), anchor='rm')
     return f
 
 
 def fondo_oscuro():
-    f = degradado((ANCHO, ALTO), MORADO, MORADO_OSCURO)
+    f = degradado((ANCHO, ALTO), TINTA_CLARA, TINTA)
     f.paste(linea_dorada(ANCHO, 8), (0, ALTO - 8))
     return f
 
@@ -144,11 +148,11 @@ def bloque_texto(rotulo, titulo, texto, ancho):
     d = ImageDraw.Draw(img)
     y = 0
     f_rotulo = sans(30, 'Bold')
-    d.text((0, y), rotulo, font=f_rotulo, fill=MORADO)
+    d.text((0, y), rotulo, font=f_rotulo, fill=TINTA_CLARA)
     # Subrayado con rombo, como .section-title de la web.
     largo = round(f_rotulo.getlength(rotulo))
     y += 48
-    d.rectangle((0, y, largo, y + 3), fill=MORADO)
+    d.rectangle((0, y, largo, y + 3), fill=TINTA_CLARA)
     y += 40
     # El título se reduce lo justo para que su línea más larga quepa.
     tam = 76
@@ -210,13 +214,13 @@ def portada(lienzo, t):
     """0-5 s: nombre de la app sobre morado y el móvil con la pantalla de hoy."""
     a = suave(t / 0.9)
     icono = Image.open(ICONO).convert('RGBA').resize((150, 150), Image.LANCZOS)
-    capa = Image.new('RGBA', (1000, 620), (0, 0, 0, 0))
+    capa = Image.new('RGBA', (1120, 620), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
     capa.paste(icono, (0, 0), icono)
-    c.text((0, 200), 'Oposición TCEE', font=serif(118), fill=BLANCO)
+    c.text((0, 200), 'Oposición TCEE · DCE', font=serif(92), fill=BLANCO)
     c.rectangle((0, 352, 420, 358), fill=DORADO_CLARO)
-    c.text((0, 392), 'La oposición a Técnico Comercial', font=serif(50, 'italic'), fill=(240, 232, 248))
-    c.text((0, 456), 'y Economista del Estado, en el bolsillo', font=serif(50, 'italic'), fill=(240, 232, 248))
+    c.text((0, 392), 'Técnico Comercial y Economista del Estado', font=serif(46, 'italic'), fill=(240, 232, 248))
+    c.text((0, 452), 'y Diplomado Comercial del Estado, en el bolsillo', font=serif(46, 'italic'), fill=(240, 232, 248))
     capa = con_opacidad(capa, a)
     lienzo.paste(capa, (120 - round(40 * (1 - a)), 230), capa)
     img, _ = PORTADA_MOVIL
@@ -227,20 +231,21 @@ def portada(lienzo, t):
 
 
 def cierre(lienzo, t):
-    """54-60 s: cómo conseguirla."""
+    """60-66 s: cómo conseguirla."""
     a = suave(t / 0.8)
     capa = Image.new('RGBA', (ANCHO, 700), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
     icono = Image.open(ICONO).convert('RGBA').resize((170, 170), Image.LANCZOS)
     capa.paste(icono, ((ANCHO - 170) // 2, 0), icono)
-    c.text((ANCHO // 2, 270), 'Oposición TCEE', font=serif(104), fill=BLANCO, anchor='mm')
+    c.text((ANCHO // 2, 270), 'Oposición TCEE · DCE', font=serif(96), fill=BLANCO, anchor='mm')
     c.text((ANCHO // 2, 380), 'Gratis · Sin anuncios · Android y navegador', font=sans(46, 'Medium'), fill=(240, 232, 248), anchor='mm')
     c.rectangle((ANCHO // 2 - 150, 440, ANCHO // 2 + 150, 445), fill=DORADO_CLARO)
     b = suave((t - 0.9) / 0.8)
     if b > 0:
         ancho_caja = 900
-        c.rounded_rectangle(((ANCHO - ancho_caja) // 2, 500, (ANCHO + ancho_caja) // 2, 610), 14, fill=tuple(round(v * b + m * (1 - b)) for v, m in zip(BLANCO, MORADO_OSCURO)) + (255,))
-        c.text((ANCHO // 2, 555), 'victorgutierrezmarcos.es/app', font=sans(54, 'Semibold'), fill=MORADO + (round(255 * b),), anchor='mm')
+        c.rounded_rectangle(((ANCHO - ancho_caja) // 2, 500, (ANCHO + ancho_caja) // 2, 610), 14, fill=tuple(round(v * b + m * (1 - b)) for v, m in zip(BLANCO, TINTA)) + (255,))
+        c.text((ANCHO // 2, 555), 'victorgutierrezmarcos.es/app', font=sans(54, 'Semibold'), fill=TINTA + (round(255 * b),), anchor='mm')
+        c.text((ANCHO // 2, 660), 'Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es', font=sans(34, 'Medium'), fill=(240, 232, 248, round(255 * b)), anchor='mm')
     capa = con_opacidad(capa, a)
     lienzo.paste(capa, (0, 190 + round(30 * (1 - a))), capa)
 
@@ -307,7 +312,7 @@ def main():
 
     if args.solo_fotogramas:
         os.makedirs(args.solo_fotogramas, exist_ok=True)
-        for t in [0.5, 3, 5.2, 9, 14, 17, 20, 23, 26, 30, 31.2, 36, 42, 47, 50, 53, 54.3, 58]:
+        for t in [0.5, 3, 5.2, 7, 10, 14, 20, 23, 26, 29, 32, 36, 37.2, 42, 48, 53, 56, 59, 60.3, 64]:
             fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.1f}.jpg'), quality=85)
         return
 
@@ -328,7 +333,7 @@ def main():
     proceso.stdin.close()
     if proceso.wait() != 0:
         sys.exit('ffmpeg ha fallado')
-    fotograma(26).save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
+    fotograma(10).save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
     print(f'{salida}: {os.path.getsize(salida) / 1e6:.1f} MB')
 
 
