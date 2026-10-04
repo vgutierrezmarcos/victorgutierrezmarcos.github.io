@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -171,6 +172,50 @@ Future<void> borrarTodosMisDatos(WidgetRef ref) async {
   for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
     ref.invalidate(p);
   }
+}
+
+/// Elimina la cuenta: los datos de todas las oposiciones (nube y dispositivo),
+/// los enlaces con preparadores y alumnos, y la cuenta de la app (Firebase
+/// Auth). La cuenta de Google no se toca. Lo exige Google Play. Si Firebase
+/// pide un inicio de sesión reciente, se vuelve a pedir el de Google.
+/// Devuelve un mensaje de error o null.
+Future<String?> eliminarMiCuenta(WidgetRef ref) async {
+  final auth = FirebaseAuth.instance;
+  if (auth.currentUser == null) return 'No has iniciado sesión.';
+  try {
+    for (final o in Oposiciones.todas) {
+      final db = FirebaseFirestore.instance;
+      final preparador = await PreparadorRepo.crear(oposicion: o, firestore: db, auth: auth);
+      final usuario = await UsuarioRepo.crear(oposicion: o, firestore: db, auth: auth);
+      final plan = await PlanRepo.crear(oposicion: o, firestore: db, auth: auth);
+      await preparador.romperTodosLosEnlaces();
+      await usuario.borrarTodoEnLaNube();
+      await usuario.borrarDatosLocales();
+      await plan.borrarDatosLocales();
+      await preparador.borrarDatosLocales();
+    }
+    try {
+      await auth.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      if (e.code != 'requires-recent-login') rethrow;
+      if (kIsWeb) {
+        await auth.currentUser!.reauthenticateWithPopup(GoogleAuthProvider());
+      } else {
+        final google = await GoogleSignIn(scopes: const ['email']).signIn();
+        if (google == null) return 'Para eliminar la cuenta hay que volver a entrar con Google.';
+        final a = await google.authentication;
+        await auth.currentUser!.reauthenticateWithCredential(GoogleAuthProvider.credential(accessToken: a.accessToken, idToken: a.idToken));
+      }
+      await auth.currentUser!.delete();
+    }
+  } on FirebaseException catch (e) {
+    return e.message ?? e.code;
+  }
+  await ref.read(sesionProvider.notifier).cerrarSesion();
+  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
+    ref.invalidate(p);
+  }
+  return null;
 }
 
 /// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.

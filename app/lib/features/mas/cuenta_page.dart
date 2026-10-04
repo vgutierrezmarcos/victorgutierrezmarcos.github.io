@@ -112,6 +112,20 @@ class CuentaPage extends ConsumerWidget {
                     () => borrarTodosMisDatos(ref),
                   ),
                 ),
+              if (usuario != null)
+                ListTile(
+                  leading: Icon(Icons.person_remove_outlined, color: context.esquema.error),
+                  title: Text('Eliminar mi cuenta', style: TextStyle(color: context.esquema.error)),
+                  subtitle: Text('Todos tus datos, de todas las oposiciones, y tu cuenta en la app', style: context.textos.labelSmall),
+                  onTap: () => _confirmar(
+                    context,
+                    'Se borrarán de la nube y de este dispositivo todos tus datos, de todas las oposiciones (tests, repaso, temas, notas, cantes, planificación, alumnos y sesiones), se romperán los enlaces con tus preparadores y alumnos, y se eliminará tu cuenta en la app. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
+                    () async {
+                      final error = await eliminarMiCuenta(ref);
+                      if (error != null && context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No se ha podido eliminar la cuenta: $error')));
+                    },
+                  ),
+                ),
             ]),
           ),
         ],
