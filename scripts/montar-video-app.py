@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Monta el vídeo promocional de la app (algo más de un minuto, 1920 × 1080, sin
-sonido) a partir de las capturas de app/promo/capturas/.
+Monta el vídeo promocional de la app (un minuto, 1920 × 1080, con una banda
+sonora propia generada aquí) a partir de las capturas de app/promo/capturas/.
 
     python3 scripts/montar-video-app.py [--ffmpeg RUTA] [--solo-fotogramas DIR]
 
-Requisitos: Pillow y ffmpeg (por ejemplo, el binario estático que trae el
+Requisitos: Pillow, numpy y ffmpeg (por ejemplo, el binario estático que trae el
 paquete imageio-ffmpeg). Las capturas se regeneran con
 `flutter test tool/capturas_test.dart --update-goldens` y, las de DCE,
 `flutter test tool/capturas_dce_test.dart --update-goldens`, desde app/.
@@ -18,10 +18,12 @@ Autor: Víctor Gutiérrez Marcos
 """
 import argparse
 import os
+import tempfile
 import shutil
 import subprocess
 import sys
 
+import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,7 +32,7 @@ CAPTURAS = os.path.join(PROMO, 'capturas')
 FUENTES = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 ICONO = os.path.join(RAIZ, 'app', 'assets', 'icon', 'icon.png')
 
-ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 64
+ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 60
 
 # Estética neutra, común a TCEE y DCE (como PaletaNeutra de la app): la de
 # styles.css en lo fundamental (Pagella, Source Sans, línea dorada), con un
@@ -55,16 +57,16 @@ def sans(tam, peso='Regular'):
 # están repartidas a partes iguales entre TCEE y DCE; una que empieza por «@»
 # se pinta en un portátil (la app en el ordenador).
 ESCENAS = [
-    (5, 11, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, su examen, sus probabilidades y sus preparadores. Lo de cada una se guarda aparte.', ['elegir-oposicion', 'hoy', 'dce-hoy']),
-    (11, 18, 'TEMARIO', 'Todo el temario,\ndentro de la app', 'Los PDF de TCEE y los apuntes de DCE se leen sin salir de la app, y cada tema lleva su agenda: apuntes para la próxima vuelta, vueltas y notas.', ['temario-temas', 'tema-pdf', 'dce-tema-web']),
-    (18, 24, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, cantes presenciales u online, sorteo como en el examen, cronómetro y diario.', ['cantes-agenda', 'dce-cantar']),
-    (24, 29, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas. En DCE, como práctica voluntaria.', ['test-estadisticas', 'dce-test']),
-    (29, 33, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La de que salga un tema que te sabes, con las reglas del examen de cada oposición.', ['probabilidades', 'dce-probabilidades']),
-    (33, 45, 'CLASES SUELTAS', '¿Te cancelan la clase?\nOtro preparador te la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'dce-buscar-preparador', 'peticion-cogida']),
-    (45, 52, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, la ficha de cada alumno y el tablón de sustituciones de cada oposición.', ['dce-preparador', 'semana', 'dce-sustituciones']),
-    (52, 58, 'EN EL ORDENADOR', 'También en el ordenador,\ntodo sincronizado', 'La misma app en el navegador, con tu cuenta de Google: lo que haces en el móvil aparece en el ordenador, y al revés.', ['@dce-escritorio']),
+    (4.5, 10, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, su examen, sus probabilidades y sus preparadores. Lo de cada una se guarda aparte.', ['elegir-oposicion', 'hoy', 'dce-hoy']),
+    (10, 16, 'TEMARIO', 'Todo el temario,\ndentro de la app', 'Los PDF de TCEE y los apuntes de DCE se leen sin salir de la app, y cada tema lleva su agenda: apuntes para la próxima vuelta, vueltas y notas.', ['temario-temas', 'tema-pdf', 'dce-tema-web']),
+    (16, 21.5, 'CANTES', 'Programa, sortea,\ncanta y anota', 'Agenda con avisos, cantes presenciales u online, sorteo como en el examen, cronómetro y diario.', ['cantes-agenda', 'dce-cantar']),
+    (21.5, 26, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas. En DCE, como práctica voluntaria.', ['test-estadisticas', 'dce-test']),
+    (26, 30, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La de que salga un tema que te sabes, con las reglas del examen de cada oposición.', ['probabilidades', 'dce-probabilidades']),
+    (30, 41, 'CLASES SUELTAS', '¿Te cancelan la clase?\nOtro preparador te la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'dce-buscar-preparador', 'peticion-cogida']),
+    (41, 47, 'PREPARADORES', 'Tu preparador\ny tú, enlazados', 'Su semana con todas las clases, la ficha de cada alumno y el tablón de sustituciones de cada oposición.', ['dce-preparador', 'semana', 'dce-sustituciones']),
+    (47, 53, 'EN EL ORDENADOR', 'También en el ordenador,\ntodo sincronizado', 'La misma app en el navegador, con tu cuenta de Google: lo que haces en el móvil aparece en el ordenador, y al revés.', ['@dce-escritorio']),
 ]
-INICIO_CIERRE = 58
+INICIO_CIERRE = 53
 FUNDIDO = 0.45  # segundos de fundido entre escenas
 
 
@@ -119,6 +121,93 @@ def icono(tam, sombra=False):
     lienzo.putalpha(s)
     lienzo.paste(img, (m, m), img)
     return lienzo
+
+
+def rebote(x):
+    """Entrada con un pequeño rebote (easeOutBack), entre 0 y 1."""
+    x = max(0.0, min(1.0, x))
+    c = 1.70158
+    return 1 + (c + 1) * (x - 1) ** 3 + c * (x - 1) ** 2
+
+
+# Colores del logo: mitad izquierda, TCEE; mitad derecha, DCE.
+LOGO = {'fondo_i': (95, 41, 135), 'fondo_d': (122, 31, 75), 'aro_i': (226, 239, 217), 'aro_d': (247, 244, 236)}
+
+
+def logo_animado(tam, t, sombra=True):
+    """El icono montándose: las dos mitades (TCEE y DCE) entran desde los lados
+    y se juntan (0-0,7 s), y los anillos de la diana aparecen de fuera adentro
+    con un rebote (0,5-1,2 s). Con t ≥ 1,3 es el icono quieto."""
+    k = 4  # se dibuja a 4× y se reduce, para que los bordes salgan suaves
+    T = tam * k
+    capa = Image.new('RGBA', (T, T), (0, 0, 0, 0))
+    a = suave(t / 0.7)
+    desp = round(T * 0.55 * (1 - a))
+    mitad_i = Image.new('RGBA', (T, T), (0, 0, 0, 0))
+    mitad_d = Image.new('RGBA', (T, T), (0, 0, 0, 0))
+    di, dd = ImageDraw.Draw(mitad_i), ImageDraw.Draw(mitad_d)
+    di.rectangle((0, 0, T // 2, T), fill=LOGO['fondo_i'] + (255,))
+    dd.rectangle((T // 2, 0, T, T), fill=LOGO['fondo_d'] + (255,))
+    c = T / 2
+    for i, (r, grosor, inicio) in enumerate([(0.283, 0.0586, 0.5), (0.156, 0.0586, 0.68), (0.0566, 0, 0.86)]):
+        e = rebote((t - inicio) / 0.35)
+        if e <= 0:
+            continue
+        rr = r * T * e
+        g = grosor * T * min(1.0, e)
+        for d, color in ((di, LOGO['aro_i']), (dd, LOGO['aro_d'])):
+            if grosor:
+                d.ellipse((c - rr - g / 2, c - rr - g / 2, c + rr + g / 2, c + rr + g / 2), outline=color + (255,), width=max(1, round(g)))
+            else:
+                d.ellipse((c - rr, c - rr, c + rr, c + rr), fill=color + (255,))
+    # Cada mitad solo en su lado (los anillos también).
+    mi = Image.new('L', (T, T), 0)
+    ImageDraw.Draw(mi).rectangle((0, 0, T // 2, T), fill=255)
+    md = Image.new('L', (T, T), 0)
+    ImageDraw.Draw(md).rectangle((T // 2, 0, T, T), fill=255)
+    capa.paste(mitad_i, (-desp, 0), mi)
+    capa.paste(mitad_d, (desp, 0), md)
+    if a >= 0.999:
+        # Juntas: la forma de icono de app.
+        mascara = Image.new('L', (T, T), 0)
+        ImageDraw.Draw(mascara).rounded_rectangle((0, 0, T - 1, T - 1), round(T * 0.22), fill=255)
+        capa.putalpha(Image.composite(capa.getchannel('A'), Image.new('L', (T, T), 0), mascara))
+    else:
+        # Mientras entran, cada mitad con sus esquinas exteriores redondeadas.
+        mascara = Image.new('L', (T, T), 0)
+        m = ImageDraw.Draw(mascara)
+        m.rounded_rectangle((-desp, 0, T // 2 - desp + T * 0.3, T - 1), round(T * 0.22), fill=255)
+        m.rectangle((T // 2 - desp, 0, T // 2 - desp, T), fill=255)
+        m.rounded_rectangle((T // 2 + desp - T * 0.3, 0, T - 1 + desp, T - 1), round(T * 0.22), fill=255)
+        m.rectangle((T // 2 + desp - T * 0.3, 0, T // 2 + desp, T - 1), fill=255)
+        m.rectangle((T // 2 - desp - T * 0.3, 0, T // 2 - desp, T - 1), fill=255)
+        capa.putalpha(Image.composite(capa.getchannel('A'), Image.new('L', (T, T), 0), mascara))
+    img = capa.resize((tam, tam), Image.LANCZOS)
+    if not sombra:
+        return img
+    m = round(tam * 0.18)
+    lienzo = Image.new('RGBA', (tam + 2 * m, tam + 2 * m), (0, 0, 0, 0))
+    s = Image.new('L', lienzo.size, 0)
+    ImageDraw.Draw(s).rounded_rectangle((m, m + round(tam * 0.05), m + tam, m + tam + round(tam * 0.05)), round(tam * 0.22), fill=round(150 * a))
+    s = s.filter(ImageFilter.GaussianBlur(tam * 0.08))
+    lienzo.paste((10, 5, 15, 255), (0, 0), s)
+    lienzo.putalpha(s)
+    lienzo.paste(img, (m, m), img)
+    return lienzo
+
+
+def onda(capa, centro, t, tam):
+    """Onda que sale del icono (como un impacto en la diana)."""
+    if not 0 < t < 1.2:
+        return
+    d = ImageDraw.Draw(capa)
+    for retraso in (0, 0.25):
+        x = (t - retraso) / 0.95
+        if not 0 < x < 1:
+            continue
+        r = tam * 0.5 + tam * 1.1 * suave(x)
+        alfa = round(150 * (1 - x))
+        d.ellipse((centro[0] - r, centro[1] - r, centro[0] + r, centro[1] + r), outline=(218, 165, 32, alfa), width=4)
 
 
 def linea_dorada(ancho, alto):
@@ -233,6 +322,7 @@ def con_opacidad(img, alfa):
 class Escena:
     def __init__(self, inicio, fin, rotulo, titulo, texto, capturas):
         self.inicio, self.fin = inicio, fin
+        self.titulo_rotulo = rotulo
         self.texto = bloque_texto(rotulo, titulo, texto, 620)
         n = len(capturas)
         if n == 1 and capturas[0].startswith('@'):
@@ -250,7 +340,7 @@ class Escena:
         x0 = 770 + (ANCHO - 770 - 50 - total) // 2 - margen
         self.posiciones = [(x0 + i * paso, 84 + 6 + (ALTO - 90 - m0.height) // 2 + (26 if n == 3 and i == 1 else 0)) for i in range(n)]
         # Cada móvil entra un poco después que el anterior.
-        self.retrasos = [0.25 + i * (1.6 if n > 1 else 0) for i in range(n)]
+        self.retrasos = [0.2 + i * (1.2 if n > 1 else 0) for i in range(n)]
 
     def pintar(self, lienzo, t):
         dt = t - self.inicio
@@ -268,18 +358,22 @@ class Escena:
 
 def portada(lienzo, t):
     """0-5 s: la app (icono, nombre y para qué es), sin capturas."""
-    a = suave(t / 0.9)
+    # El logo se monta primero; el texto entra cuando ya está.
+    a = suave((t - 1.0) / 0.7)
     capa = Image.new('RGBA', (ANCHO, 900), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
-    ic = icono(190, sombra=True)
+    ic = logo_animado(190, t)
+    onda(capa, (ANCHO // 2, ic.height // 2), t - 1.05, 190)
     capa.paste(ic, ((ANCHO - ic.width) // 2, 0), ic)
+    texto = Image.new('RGBA', capa.size, (0, 0, 0, 0))
+    c = ImageDraw.Draw(texto)
     c.text((ANCHO // 2, 330), 'Oposición TCEE · DCE', font=serif(104), fill=BLANCO, anchor='mm')
     c.rectangle((ANCHO // 2 - 160, 412, ANCHO // 2 + 160, 417), fill=DORADO_CLARO)
     c.text((ANCHO // 2, 482), 'La app para preparar las oposiciones a', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
     c.text((ANCHO // 2, 540), 'Técnico Comercial y Economista del Estado', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
     c.text((ANCHO // 2, 598), 'y a Diplomado Comercial del Estado', font=serif(46, 'italic'), fill=(240, 232, 248), anchor='mm')
     # Dónde se usa, en etiquetas.
-    b = suave((t - 0.8) / 0.8)
+    b = suave((t - 1.8) / 0.6)
     if b > 0:
         etiquetas = ['App para Android', 'En el navegador', 'Gratis']
         f = sans(38, 'Semibold')
@@ -289,25 +383,29 @@ def portada(lienzo, t):
             c.rounded_rectangle((x, 668, x + w, 736), 34, outline=(240, 232, 248, round(255 * b)), width=3)
             c.text((x + w / 2, 702), e, font=f, fill=(255, 255, 255, round(255 * b)), anchor='mm')
             x += w + 28
-    capa = con_opacidad(capa, a)
-    lienzo.paste(capa, (0, 110 + round(30 * (1 - a))), capa)
+    texto = con_opacidad(texto, a)
+    capa.paste(texto, (0, round(30 * (1 - a))), texto)
+    lienzo.paste(capa, (0, 110), capa)
 
 
 def cierre(lienzo, t):
-    """58-64 s: nombre de la app y de dónde salen los apuntes."""
-    a = suave(t / 0.8)
+    """53-60 s: el logo vuelve a montarse, con su onda, y el nombre de la app."""
+    a = suave((t - 0.6) / 0.7)
+    fondo = Image.new('RGBA', (ANCHO, 700), (0, 0, 0, 0))
+    ic = logo_animado(170, t * 1.4)
+    onda(fondo, (ANCHO // 2, ic.height // 2 - 31), t - 0.8, 170)
+    fondo.paste(ic, ((ANCHO - ic.width) // 2, -31), ic)
     capa = Image.new('RGBA', (ANCHO, 700), (0, 0, 0, 0))
     c = ImageDraw.Draw(capa)
-    ic = icono(170, sombra=True)
-    capa.paste(ic, ((ANCHO - ic.width) // 2, -31), ic)
     c.text((ANCHO // 2, 270), 'Oposición TCEE · DCE', font=serif(96), fill=BLANCO, anchor='mm')
     c.text((ANCHO // 2, 380), 'Gratis · Sin anuncios · Android y navegador', font=sans(46, 'Medium'), fill=(240, 232, 248), anchor='mm')
     c.rectangle((ANCHO // 2 - 150, 440, ANCHO // 2 + 150, 445), fill=DORADO_CLARO)
-    b = suave((t - 0.9) / 0.8)
+    b = suave((t - 1.4) / 0.8)
     if b > 0:
         c.text((ANCHO // 2, 520), 'Apuntes de TCEE: victorgutierrezmarcos.es  ·  Apuntes de DCE: manuelcabadogarcia.es', font=sans(36, 'Medium'), fill=(240, 232, 248, round(255 * b)), anchor='mm')
     capa = con_opacidad(capa, a)
-    lienzo.paste(capa, (0, 250 + round(30 * (1 - a))), capa)
+    fondo.paste(capa, (0, round(30 * (1 - a))), capa)
+    lienzo.paste(fondo, (0, 250), fondo)
 
 
 def progreso(lienzo, t):
@@ -341,6 +439,158 @@ def fotograma(t):
     return img
 
 
+
+# ------------------------------------------------------------------ Sonido
+# Banda sonora propia (sin derechos de terceros), generada a partir de los
+# tiempos de las escenas para que vaya siempre acompasada con la imagen:
+# piano en arpegios y colchón de cuerdas con un acorde por escena, el logo que
+# «suena» al montarse, un barrido en cada corte, un toque cuando entra cada
+# móvil, el reloj del cronómetro y la notificación de la clase cogida.
+
+SR = 44100
+
+
+def _nota(n):
+    """Frecuencia de una nota MIDI."""
+    return 440.0 * 2 ** ((n - 69) / 12)
+
+
+def _env(n, ataque, caida):
+    t = np.arange(n) / SR
+    e = np.minimum(1.0, t / max(ataque, 1e-4)) * np.exp(-t / caida)
+    return e
+
+
+def _piano(f, dur, vel):
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    onda = sum(a * np.sin(2 * np.pi * f * k * t) for k, a in ((1, 1.0), (2, 0.45), (3, 0.18), (4, 0.08)))
+    return vel * onda * _env(n, 0.006, 0.9)
+
+
+def _cuerdas(fs, dur, vel):
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    onda = sum(np.sin(2 * np.pi * f * t) + 0.3 * np.sin(2 * np.pi * f * 1.003 * t) for f in fs) / len(fs)
+    ent = np.minimum(1.0, t / 0.6)
+    sal = np.minimum(1.0, (dur - t) / 0.6)
+    return vel * onda * ent * np.clip(sal, 0, 1)
+
+
+def _campana(f, vel, dur=2.2):
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    onda = sum(a * np.sin(2 * np.pi * f * k * t) * np.exp(-t / (1.2 / k)) for k, a in ((1, 1.0), (2.76, 0.4), (5.4, 0.2)))
+    return vel * onda * np.minimum(1.0, t / 0.003)
+
+
+def _golpe(vel):
+    """Golpe seco y grave (las dos mitades del logo al juntarse)."""
+    n = int(0.35 * SR)
+    t = np.arange(n) / SR
+    f = 140 * np.exp(-t * 9) + 55
+    return vel * np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.09)
+
+
+def _toque(vel):
+    """Toque suave de interfaz (al entrar un móvil)."""
+    n = int(0.12 * SR)
+    t = np.arange(n) / SR
+    return vel * (np.sin(2 * np.pi * 1320 * t) + 0.5 * np.sin(2 * np.pi * 2640 * t)) * np.exp(-t / 0.03)
+
+
+def _tic(vel):
+    n = int(0.05 * SR)
+    t = np.arange(n) / SR
+    return vel * np.sin(2 * np.pi * 2200 * t) * np.exp(-t / 0.008)
+
+
+def _barrido(vel, dur=0.5):
+    """Ruido filtrado que crece y se apaga (cambio de escena)."""
+    n = int(dur * SR)
+    ruido = np.random.default_rng(7).standard_normal(n)
+    k = 60
+    ruido = np.convolve(ruido, np.ones(k) / k, mode='same')
+    t = np.arange(n) / SR
+    env = np.sin(np.pi * t / dur) ** 2
+    return vel * ruido * env * 3
+
+
+def banda_sonora(ruta):
+    import wave
+    total = np.zeros(int((DURACION + 2) * SR))
+
+    def poner(muestra, t, pan=0.0):
+        i = int(t * SR)
+        j = min(len(total), i + len(muestra))
+        if 0 <= i < len(total):
+            total[i:j] += muestra[: j - i]
+
+    # Un acorde por escena (re mayor), en el orden de las escenas.
+    acordes = {
+        'portada': [50, 57, 62, 66, 69], 'DOS OPOSICIONES': [47, 54, 59, 62, 66], 'TEMARIO': [43, 50, 55, 59, 62],
+        'CANTES': [45, 52, 57, 61, 64], 'TEST': [42, 49, 54, 57, 61], 'PROBABILIDADES': [43, 50, 55, 59, 62],
+        'CLASES SUELTAS': [40, 47, 52, 55, 59], 'PREPARADORES': [45, 52, 57, 61, 64], 'EN EL ORDENADOR': [47, 54, 59, 62, 66],
+        'cierre': [50, 57, 62, 66, 69],
+    }
+    tramos = [(0, ESCENAS[0][0], 'portada')] + [(e[0], e[1], e[2]) for e in ESCENAS] + [(INICIO_CIERRE, DURACION, 'cierre')]
+    corchea = 60 / 96 / 2
+    patron = [0, 1, 2, 3, 4, 3, 2, 1]
+    for ini, fin, nombre in tramos:
+        notas = acordes[nombre]
+        # Bajo y cuerdas sostenidos todo el tramo.
+        poner(_cuerdas([_nota(m + 12) for m in notas[1:4]], fin - ini + 0.5, 0.05), ini)
+        poner(_piano(_nota(notas[0] - 12), min(3.0, fin - ini + 0.6), 0.10), ini)
+        # Arpegio: en la portada empieza cuando el logo ya está montado.
+        t = ini + (1.0 if nombre == 'portada' else 0)
+        i = 0
+        while t < fin - 0.05 and not (nombre == 'cierre' and t > ini + 3.2):
+            n = notas[patron[i % len(patron)]] + 12
+            poner(_piano(_nota(n), 1.4, 0.055 if i % 2 else 0.075), t)
+            t += corchea
+            i += 1
+    # Cierre: acorde final que resuelve.
+    for m in acordes['cierre']:
+        poner(_piano(_nota(m + 12), 4.0, 0.07), INICIO_CIERRE + 3.3)
+
+    # El logo al montarse (portada y cierre, que va 1,4 veces más deprisa).
+    for base, vel in ((0.0, 1.0), (INICIO_CIERRE, 1 / 1.4)):
+        poner(_golpe(0.35), base + 0.62 * vel)
+        for k, (inicio, nota) in enumerate(((0.5, 86), (0.68, 90), (0.86, 93))):
+            poner(_campana(_nota(nota), 0.09), base + (inicio + 0.12) * vel)
+    poner(_campana(_nota(74), 0.12, 3.5), INICIO_CIERRE + 3.3)
+
+    # Barrido en cada corte; toque al entrar cada móvil.
+    for e in OBJ_ESCENAS:
+        poner(_barrido(0.05), e.inicio - 0.25)
+        for r in e.retrasos:
+            poner(_toque(0.07), e.inicio + r + 0.15)
+    poner(_barrido(0.05), INICIO_CIERRE - 0.25)
+
+    # Cantes: el reloj del cronómetro, al entrar el segundo móvil.
+    cantes = next(e for e in OBJ_ESCENAS if e.titulo_rotulo == 'CANTES')
+    t0 = cantes.inicio + cantes.retrasos[-1] + 0.4
+    for k in range(6):
+        poner(_tic(0.05 if k % 2 else 0.07), t0 + k * 0.5)
+    # Clases sueltas: notificación cuando aparece la clase cogida (tercer móvil).
+    clases = next(e for e in OBJ_ESCENAS if e.titulo_rotulo == 'CLASES SUELTAS')
+    tn = clases.inicio + clases.retrasos[-1] + 0.35
+    poner(_campana(_nota(88), 0.10, 1.2), tn)
+    poner(_campana(_nota(93), 0.10, 1.4), tn + 0.13)
+
+    total = total[: int(DURACION * SR)]
+    # Fundido final y normalización.
+    fin = int(1.5 * SR)
+    total[-fin:] *= np.linspace(1, 0, fin)
+    total *= 0.89 / max(1e-9, np.abs(total).max())
+    estereo = np.repeat((total * 32767).astype('<i2')[:, None], 2, axis=1)
+    with wave.open(ruta, 'wb') as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes(estereo.tobytes())
+
+
 def preparar():
     global FONDO_CLARO, FONDO_OSCURO, OBJ_ESCENAS, CORTES
     FONDO_CLARO, FONDO_OSCURO = fondo_claro(), fondo_oscuro()
@@ -363,25 +613,33 @@ def main():
     p.add_argument('--ffmpeg', default=os.environ.get('FFMPEG') or shutil.which('ffmpeg'), help='ruta de ffmpeg')
     p.add_argument('--solo-fotogramas', metavar='DIR', help='guarda un fotograma de cada escena en DIR y termina (para revisar el montaje)')
     p.add_argument('--solo-capturas', action='store_true', help='solo exporta las capturas ligeras para la web')
+    p.add_argument('--solo-sonido', metavar='WAV', help='solo genera la banda sonora en WAV (para escucharla)')
     args = p.parse_args()
     exportar_capturas()
     if args.solo_capturas:
         return
     preparar()
+    if args.solo_sonido:
+        banda_sonora(args.solo_sonido)
+        return
 
     if args.solo_fotogramas:
         os.makedirs(args.solo_fotogramas, exist_ok=True)
-        for t in [0.5, 3, 5.2, 9, 14, 17, 21, 27, 31, 36, 42, 48, 51, 55, 58.3, 62]:
+        for t in [0.2, 0.45, 0.7, 0.9, 1.2, 3, 7, 13, 18, 24, 28, 35, 44, 50, 53.4, 54.2, 58]:
             fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.1f}.jpg'), quality=85)
         return
 
     if not args.ffmpeg:
         sys.exit('No se encuentra ffmpeg: indícalo con --ffmpeg o con la variable FFMPEG.')
     salida = os.path.join(PROMO, 'oposicion-tcee.mp4')
+    sonido = os.path.join(tempfile.gettempdir(), 'oposicion-tcee-sonido.wav')
+    banda_sonora(sonido)
     orden = [
         args.ffmpeg, '-y', '-loglevel', 'error',
         '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{ANCHO}x{ALTO}', '-r', str(FPS), '-i', '-',
-        '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', salida,
+        '-i', sonido,
+        '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-pix_fmt', 'yuv420p',
+        '-c:a', 'aac', '-b:a', '160k', '-shortest', '-movflags', '+faststart', salida,
     ]
     proceso = subprocess.Popen(orden, stdin=subprocess.PIPE)
     total = DURACION * FPS
