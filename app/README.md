@@ -206,7 +206,7 @@ python3 ../scripts/montar-video-app.py --ffmpeg RUTA     # promo/*.webp, promo/o
 - `GOOGLE_SERVICES_JSON`: `google-services.json` en base64.
 - `KEYSTORE_BASE64` y `KEYSTORE_PASSWORD`: almacén `tcee-upload.jks` en base64 y su contraseña (alias `tcee`).
 
-## Distribución del APK de prueba
+## Distribución del APK
 
 El APK se publica como release `app-latest` del repositorio, y la web lo enlaza desde `urlApk`. Para publicar una versión nueva:
 

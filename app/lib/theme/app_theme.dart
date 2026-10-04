@@ -76,6 +76,9 @@ class PaletaMarca {
   final String serif;
   final String sans;
 
+  /// La de la oposición [id] ('tcee', 'dce').
+  static PaletaMarca de(String id) => id == 'dce' ? dce : tcee;
+
   static const tcee = PaletaMarca(
     primario: Color(0xFF5F2987),
     primarioOscuro: Color(0xFF4A1F6B),
@@ -152,6 +155,21 @@ class PaletaMarca {
   );
 }
 
+/// Estética neutra, común a TCEE y DCE (pantalla de elegir oposición y vídeo
+/// de la app): la de TCEE en lo fundamental (Pagella, Source Sans, línea
+/// dorada), con un berenjena oscuro y una crema que casan con el morado de una
+/// y el granate de la otra.
+class PaletaNeutra {
+  PaletaNeutra._();
+  static const fondo = Color(0xFFF6F4EF);
+  static const tinta = Color(0xFF2E2235);
+  static const tintaClara = Color(0xFF43294F);
+  static const texto = Color(0xFF2D2D2D);
+  static const textoSuave = Color(0xFF5A5560);
+  static const dorado = Color(0xFFB8860B);
+  static const doradoClaro = Color(0xFFDAA520);
+}
+
 /// Paleta de la oposición que se está preparando ([usar] la cambia; el tema se
 /// vuelve a construir al cambiar de oposición) y colores semánticos comunes.
 class Paleta {
@@ -161,7 +179,7 @@ class Paleta {
   static PaletaMarca get marca => _m;
 
   /// Usa la paleta y las tipografías de la oposición [id] ('tcee', 'dce').
-  static void usar(String id) => _m = id == 'dce' ? PaletaMarca.dce : PaletaMarca.tcee;
+  static void usar(String id) => _m = PaletaMarca.de(id);
 
   static Color get primario => _m.primario;
   static Color get primarioOscuro => _m.primarioOscuro;

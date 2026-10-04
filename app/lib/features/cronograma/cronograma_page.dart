@@ -232,7 +232,6 @@ class TarjetaCronogramaHoy extends ConsumerWidget {
                 style: context.textos.titleMedium,
               ),
             ),
-            const Etiqueta('PRUEBA'),
           ]),
           if (s != null && !s.descanso && s.temas.isNotEmpty) ...[
             const SizedBox(height: 6),
