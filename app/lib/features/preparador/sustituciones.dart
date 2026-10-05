@@ -230,7 +230,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
                   ),
           ),
           if (_dictamen)
-            Text('${Oposiciones.actual.avisoDictamen(_ejercicio)} No hay temas que sortear.', style: context.textos.bodySmall)
+            Text('${Oposiciones.actual.avisoDictamen(_ejercicio)} No se saca bola.', style: context.textos.bodySmall)
           else if (temas.isEmpty)
             Text('Ninguno: toca «Elegir» para marcar los temas que llevas para este cante.', style: context.textos.bodySmall)
           else

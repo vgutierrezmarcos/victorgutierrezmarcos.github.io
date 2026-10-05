@@ -285,7 +285,7 @@ void main() {
     // --------------------------------------------------------------- Cantes
     await pestana('Cantes');
     await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('CANTAR')));
-    await tocar(find.textContaining('Sortear'));
+    await tocar(find.textContaining('de cada parte'));
     // Sin organización por bloques, cada tema sale como «3.A.9 · título».
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
     await bajar(150);

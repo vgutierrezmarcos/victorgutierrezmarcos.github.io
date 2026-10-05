@@ -201,7 +201,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text('Lleva a tus alumnos desde la app', style: context.textos.titleMedium),
                   const SizedBox(height: 4),
-                  Text('Programa las sesiones de cante, sortea entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha: qué ha cantado, cómo y qué temas flojean.', style: context.textos.bodySmall),
+                  Text('Programa las sesiones de cante, saca bola entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha: qué ha cantado, cómo y qué temas flojean.', style: context.textos.bodySmall),
                   const SizedBox(height: 12),
                   FilledButton.icon(onPressed: () => ref.read(perfilPreparadorProvider.notifier).activar(), icon: const Icon(Icons.groups_outlined), label: const Text('Activar la sección de preparador')),
                 ]),

@@ -182,7 +182,7 @@ void main() {
     expect(find.text('Programa tu próximo cante'), findsOneWidget);
     expect(find.byType(TableCalendar<Object>), findsOneWidget);
     await subpestana(tester, 'Cantar');
-    expect(find.text('Sortear 2 temas de cada parte'), findsOneWidget);
+    expect(find.text('Sacar 2 bolas de cada parte'), findsOneWidget);
     await subpestana(tester, 'Diario');
     expect(find.textContaining('Aún no hay cantes anotados'), findsOneWidget);
 
@@ -243,18 +243,18 @@ void main() {
     expect(find.text('TEMAS QUE ENTRAN (3)'), findsOneWidget);
     expect(find.text('• Actualizar los datos del PIB'), findsOneWidget);
 
-    await tocar(tester, find.text('Sortear y cantar'));
-    expect(find.text('Sortear 3 temas'), findsOneWidget); // ha saltado a la subpestaña Cantar
+    await tocar(tester, find.text('Sacar bola y cantar'));
+    expect(find.text('Sacar 3 bolas'), findsOneWidget); // ha saltado a la subpestaña Cantar
     expect(find.textContaining('3 temas en la bolsa. Al terminar'), findsOneWidget);
     expect(find.text('12:00'), findsOneWidget); // el cronómetro toma la duración del cante
-    await tocar(tester, find.text('Sortear 3 temas'));
+    await tocar(tester, find.text('Sacar 3 bolas'));
     expect(find.text('Toca el tema que vas a cantar.'), findsOneWidget);
     expect(find.text('3.A.2'), findsOneWidget); // casilla con el color de su bloque
 
     // Salir del cante vuelve al sorteo normal.
     await tocar(tester, find.byTooltip('Salir del cante'));
-    expect(find.text('Sortear 2 temas de cada parte'), findsOneWidget);
-    await tocar(tester, find.text('Sortear 2 temas de cada parte'));
+    expect(find.text('Sacar 2 bolas de cada parte'), findsOneWidget);
+    await tocar(tester, find.text('Sacar 2 bolas de cada parte'));
     expect(find.textContaining(RegExp(r'^3\.A\.\d+$')), findsNWidgets(2));
     expect(find.textContaining(RegExp(r'^3\.B\.\d+$')), findsNWidgets(2));
     expect(tester.takeException(), isNull);
@@ -289,7 +289,7 @@ void main() {
   testWidgets('sortear, cronometrar y guardar el cante en el diario', (tester) async {
     await arrancar(tester);
     await subpestana(tester, 'Cantar');
-    await tocar(tester, find.text('Sortear 2 temas de cada parte'));
+    await tocar(tester, find.text('Sacar 2 bolas de cada parte'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+$')));
     expect(find.text('30:00'), findsOneWidget); // 30 minutos por defecto
     await tocar(tester, find.text('Empezar'));
@@ -435,7 +435,7 @@ void main() {
     expect(find.text('TEMAS QUE LLEVA (0)'), findsOneWidget);
     await tocar(tester, find.text('Cantar ahora'));
     expect(find.textContaining('temas en la bolsa. Al terminar se guarda en su ficha.'), findsOneWidget);
-    await tocar(tester, find.text('Sortear 3 temas'));
+    await tocar(tester, find.text('Sacar 3 bolas'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.[AB]\.\d+$')));
     await tocar(tester, find.text('Empezar'));
     await tester.pump(const Duration(milliseconds: 600));

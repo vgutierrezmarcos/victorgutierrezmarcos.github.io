@@ -309,7 +309,7 @@ void main() {
     await captura('cante');
     await atras();
     await subpestana('Cantar');
-    await tocar(find.text('Sortear 2 temas de cada parte'));
+    await tocar(find.text('Sacar 2 bolas de cada parte'));
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+$')));
     await bajar(232);
     await captura('cantes-cantar');
