@@ -195,7 +195,7 @@ class InicioPage extends ConsumerWidget {
                 child: Row(children: [
                   Icon(Icons.percent, color: context.esquema.primary),
                   const SizedBox(width: 14),
-                  Expanded(child: Text('Probabilidad de que salga un tema que llevas con los temas que llevas estudiados', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
+                  Expanded(child: Text('Probabilidad de que salga alguno de los temas que llevas estudiados', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
                   const SizedBox(width: 12),
                   Text(porcentaje(prob.total), style: context.textos.titleMedium?.copyWith(color: context.esquema.primary)),
                 ]),

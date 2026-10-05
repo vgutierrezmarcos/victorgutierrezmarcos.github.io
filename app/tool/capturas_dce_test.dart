@@ -43,7 +43,9 @@ import 'package:tcee_app/data/repos/red_repo.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
 import 'package:tcee_app/features/inicio/elegir_oposicion.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
+import 'package:tcee_app/features/preparador/preparador_page.dart';
 import 'package:tcee_app/features/preparador/sustituciones.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
 
@@ -242,6 +244,7 @@ void main() {
       reservasRecibidasProvider.overrideWith((ref) async => const <Reserva>[]),
       progresoAlumnoProvider.overrideWith((ref, id) async => ProgresoAlumno(estudiados: preparador.alumno(id)!.temas.toSet(), enRepaso: const {'3.A.9'}, cantes: const [])),
     ]);
+    await preparador.guardarPerfil(PerfilPreparador(papelElegido: true, updatedAt: hoy));
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
 
@@ -265,8 +268,13 @@ void main() {
     await pestana('Hoy');
     await captura(tester, 'dce-hoy');
 
-    // -------------------------------------------------------------- Temario
-    await pestana('Temario');
+    // ------------------------------------------------------------- Estudiar
+    Future<void> estudiar(String nombre) async {
+      await pestana('Estudiar');
+      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    }
+
+    await estudiar('Temas');
     final parte = find.textContaining('Parte A: Microeconom');
     await tester.scrollUntilVisible(parte, 300, scrollable: find.descendant(of: find.byType(ListView).first, matching: find.byType(Scrollable)).first);
     // Que no quede detrás del menú inferior al tocarla.
@@ -277,15 +285,14 @@ void main() {
     await captura(tester, 'dce-tema');
     Navigator.of(tester.element(find.byType(TemaPage))).pop();
     await tester.pumpAndSettle();
-    await pestana('Temario');
-    await bajar(-20000);
+    await pestana('Organización');
     await tocar(find.text('Probabilidades'));
     await captura(tester, 'dce-probabilidades');
 
     // --------------------------------------------------------------- Cantes
     await pestana('Cantes');
     await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('CANTAR')));
-    await tocar(find.textContaining('de cada parte'));
+    await tocar(find.text('Sacar 2 bolas de cada parte'));
     // Sin organización por bloques, cada tema sale como «3.A.9 · título».
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
     await bajar(150);
@@ -294,7 +301,7 @@ void main() {
     // ------------------------------------------- Clase cancelada: sustituto
     Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
     await tester.pumpAndSettle();
-    await tocar(find.text('Buscar preparador alternativo'));
+    await tocar(find.text('Pedir una clase suelta'));
     await captura(tester, 'dce-buscar-preparador');
     Navigator.of(tester.element(find.byType(PedirSustitucionPage))).pop();
     await tester.pumpAndSettle();
@@ -302,22 +309,27 @@ void main() {
     await tester.pumpAndSettle();
 
     // ----------------------------------------------------------------- Test
-    await pestana('Test');
+    await estudiar('Test');
     await captura(tester, 'dce-test');
 
     // ------------------------------------------------------- Preparadora
-    await preparador.guardarPerfil(PerfilPreparador(activo: true, codigo: 'D4C9RT', nombre: 'Ana', updatedAt: hoy));
+    await preparador.guardarPerfil(PerfilPreparador(activo: true, papelElegido: true, codigo: 'D4C9RT', nombre: 'Ana', updatedAt: hoy));
     ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).invalidate(perfilPreparadorProvider);
+    await pestana('Hoy');
+    await captura(tester, 'dce-hoy-preparador');
     await pestana('Más');
-    await tocar(find.text('Mis alumnos'));
+    await tocar(find.widgetWithText(FilaEnlace, 'Preparador'));
     await captura(tester, 'dce-preparador');
-    await tocar(find.text('Sustituciones'));
+    final tablon = find.text('Tablón de clases sueltas');
+    await tester.scrollUntilVisible(tablon, 250, scrollable: find.descendant(of: find.byType(PreparadorPage), matching: find.byType(Scrollable)).first);
+    await tester.pumpAndSettle();
+    await tocar(tablon);
     await captura(tester, 'dce-sustituciones');
     Navigator.of(tester.element(find.byType(TablonPage))).pop();
     await tester.pumpAndSettle();
 
     // ---------------------------------------- En el ordenador, como opositora
-    await preparador.guardarPerfil(PerfilPreparador(activo: false, updatedAt: hoy));
+    await preparador.guardarPerfil(PerfilPreparador(activo: false, papelElegido: true, updatedAt: hoy));
     ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).invalidate(perfilPreparadorProvider);
     // En el móvil hay menú inferior; en el ordenador, un raíl: se elige antes.
     await pestana('Hoy');

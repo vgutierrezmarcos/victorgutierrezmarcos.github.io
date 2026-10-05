@@ -26,6 +26,13 @@ import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
 import 'package:tcee_app/features/cronograma/cronograma_form_page.dart';
+import 'package:tcee_app/features/cronograma/cronograma_manual_page.dart';
+import 'package:tcee_app/features/cronograma/importar_cronograma.dart';
+import 'package:tcee_app/features/preparador/alta_page.dart';
+import 'package:tcee_app/features/preparador/alumno_page.dart';
+import 'package:tcee_app/features/preparador/preparador_page.dart';
+import 'package:tcee_app/features/test/config_test_page.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/cronograma/planificador.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
 import 'package:tcee_app/features/preparador/semana_page.dart';
@@ -99,6 +106,7 @@ void main() {
       mejorRacha: 21,
       ultimoDia: Ajustes.claveDia(hoy),
     ));
+    await preparador.guardarPerfil(PerfilPreparador(papelElegido: true, updatedAt: hoy));
     // Sin fechas de los ejercicios: no se conocen y una fecha de ejemplo en la
     // página o en el vídeo podría tomarse por oficial (decisión del usuario).
     await plan.guardarPlan(Plan(updatedAt: hoy));
@@ -264,31 +272,57 @@ void main() {
       await tester.pumpAndSettle();
     }
 
+    /// Como [buscar] y [bajar], pero en la lista de la pantalla [T] (con
+    /// Cantes del preparador hay otra lista más en la pila de pestañas).
+    Future<void> buscarEn<T>(Finder f, {double paso = 250}) async {
+      await tester.scrollUntilVisible(f, paso, scrollable: find.descendant(of: find.byType(T), matching: find.byType(Scrollable)).first);
+      await tester.pumpAndSettle();
+    }
+
+    Future<void> bajarEn<T>(double puntos) async {
+      await tester.drag(find.descendant(of: find.byType(T), matching: find.byType(ListView)).first, Offset(0, -puntos));
+      await tester.pumpAndSettle();
+    }
+
     Future<void> atras() => tocar(find.byType(BackButton));
 
     // ------------------------------------------------------------------ Hoy
     await pestana('Hoy');
     await captura('hoy');
 
-    // -------------------------------------------------------------- Temario
-    await pestana('Temario');
+    // ------------------------------------------------------------- Estudiar
+    Future<void> estudiar(String nombre) async {
+      await pestana('Estudiar');
+      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    }
+
+    await estudiar('Temas');
     await captura('temario');
     await buscar(find.textContaining('Parte A: Economía general'));
     await tocar(find.textContaining('Parte A: Economía general'));
     await bajar(330);
     await captura('temario-temas');
     await bajar(-20000); // de vuelta arriba
-    await tocar(find.text('Organización del temario'));
+    await estudiar('Test');
+    await captura('test');
+    await tocar(find.byTooltip('Estadísticas'));
+    await captura('test-estadisticas');
+    await atras();
+
+    // --------------------------------------------------------- Organización
+    await pestana('Organización');
+    await captura('organizacion-hub');
+    await tocar(find.text('Mapa del temario'));
     await captura('organizacion');
     await tocar(find.text('Esquema'));
     await captura('esquema');
-    await pestana('Temario');
+    await pestana('Organización');
     await tocar(find.text('Probabilidades'));
     await captura('probabilidades');
     await tocar(find.text('3D'));
     await bajar(430);
     await captura('probabilidades-3d');
-    await pestana('Temario');
+    await pestana('Organización');
     await tocar(find.text('Cronograma'));
     await captura('cronograma');
     await bajar(700);
@@ -299,6 +333,20 @@ void main() {
     await tester.pumpAndSettle();
     await captura('cronograma-nuevo');
     Navigator.of(tester.element(find.byType(CronogramaFormPage))).pop();
+    await tester.pumpAndSettle();
+    // Traer el tuyo: un texto pegado y su revisión.
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const ImportarCronogramaPage()));
+    await tester.pumpAndSettle();
+    String f(int d) => '${dia(d).day}/${dia(d).month}';
+    await tester.enterText(find.byType(TextField), 'Cronograma de Paula (tercer ejercicio)\n${f(7)}: 3A22, 3A23 y 3A24\n${f(14)}: 3B16 – 3B18\n${f(28)}: 3A25, 3A26, 3B19');
+    await tester.pumpAndSettle();
+    await captura('cronograma-traer');
+    await buscar(find.text('Leer el texto'));
+    await tocar(find.text('Leer el texto'));
+    await captura('cronograma-revisar');
+    Navigator.of(tester.element(find.byType(CronogramaManualPage))).pop();
+    await tester.pumpAndSettle();
+    Navigator.of(tester.element(find.byType(ImportarCronogramaPage))).pop();
     await tester.pumpAndSettle();
     await atras();
 
@@ -324,7 +372,7 @@ void main() {
     }
     await abrirCante('pc');
     await captura('cante-cancelado');
-    await tocar(find.text('Buscar preparador alternativo'));
+    await tocar(find.text('Pedir una clase suelta'));
     await captura('buscar-preparador');
     Navigator.of(tester.element(find.byType(PedirSustitucionPage))).pop();
     await tester.pumpAndSettle();
@@ -340,40 +388,52 @@ void main() {
     Navigator.of(tester.element(find.byType(CantePage))).pop();
     await tester.pumpAndSettle();
 
-    // ----------------------------------------------------------------- Test
-    await pestana('Test');
-    await captura('test');
-    await tocar(find.byTooltip('Estadísticas'));
-    await captura('test-estadisticas');
-
     // ------------------------------------------------------------------ Más
-    // Hasta aquí, la app de un opositor; a partir de aquí, la de un preparador.
-    await preparador.guardarPerfil(PerfilPreparador(activo: true, codigo: 'K7M3PQ', nombre: 'Víctor', updatedAt: hoy));
-    ProviderScope.containerOf(tester.element(find.byType(MaterialApp))).invalidate(perfilPreparadorProvider);
     await pestana('Más');
     await captura('mas');
-    await tocar(find.text('Mis alumnos'));
+    await tocar(find.text('Mi preparador'));
+    await captura('mi-preparador');
+    // Alta de preparador: la presentación y el formulario.
+    await buscar(find.text('¿Preparas a opositores?'));
+    await tocar(find.text('¿Preparas a opositores?'));
+    await captura('preparador-presentacion');
+    await tocar(find.text('Darme de alta como preparador'));
+    await captura('alta-preparador');
+    Navigator.of(tester.element(find.byType(AltaPreparadorPage))).pop();
+    await tester.pumpAndSettle();
+
+    // Hasta aquí, la app de un opositor; a partir de aquí, la de un preparador.
+    await preparador.guardarPerfil(PerfilPreparador(activo: true, papelElegido: true, codigo: 'K7M3PQ', nombre: 'Víctor', updatedAt: hoy));
+    container.invalidate(perfilPreparadorProvider);
+    await pestana('Hoy');
+    await captura('hoy-preparador');
+    await subpestana('Clases');
+    await captura('cantes-clases');
+    await pestana('Más');
+    await captura('mas-preparador');
+    await tocar(find.widgetWithText(FilaEnlace, 'Preparador'));
     await captura('preparador');
     await tocar(find.text('Mi semana'));
     await captura('semana');
     Navigator.of(tester.element(find.byType(SemanaPage))).pop();
     await tester.pumpAndSettle();
-    await tocar(find.text('Sustituciones'));
+    await buscarEn<PreparadorPage>(find.text('Tablón de clases sueltas'));
+    await tocar(find.text('Tablón de clases sueltas'));
     await captura('sustituciones');
     Navigator.of(tester.element(find.byType(TablonPage))).pop();
     await tester.pumpAndSettle();
-    await buscar(find.text('Lucía'));
+    await buscarEn<PreparadorPage>(find.text('Lucía'), paso: -250); // está más arriba
     await tocar(find.text('Lucía'));
     await captura('alumno');
-    await bajar(520);
+    await bajarEn<AlumnoPage>(520);
     await captura('alumno-historial');
-    await buscar(find.textContaining('3.A.9 ·'));
+    await buscarEn<AlumnoPage>(find.textContaining('3.A.9 ·'));
     await tocar(find.textContaining('3.A.9 ·'));
     await captura('sesion');
 
     // Una pregunta del simulador (pantalla completa: se deja para el final).
-    await pestana('Test');
-    await bajar(20000);
+    await estudiar('Test');
+    await bajarEn<ConfigTestPage>(20000);
     await tocar(find.text('Comenzar test'));
     await tocar(find.textContaining('b)'));
     await captura('test-pregunta');

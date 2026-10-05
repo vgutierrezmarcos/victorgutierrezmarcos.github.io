@@ -34,12 +34,12 @@ _spec.loader.exec_module(v)
 CAPTURAS = [
     ('hoy', 'Cada día,\nlo que toca'),
     ('dce-tema-web', 'Todo el temario,\ndentro de la app'),
-    ('cantes-agenda', 'Tus cantes,\ncon avisos'),
     ('dce-cantar', 'Saca bola y canta\ncomo en el examen'),
-    ('cante-cancelado', '¿Te cancelan la clase?\nOtro preparador te la coge'),
+    ('cronograma-revisar', 'Tu cronograma,\no el que ya tienes'),
     ('dce-probabilidades', '¿Qué probabilidad\nllevas?'),
-    ('test-estadisticas', 'Los test oficiales,\ncon tu historial'),
-    ('dce-preparador', 'Tu preparador\ny tú, conectados'),
+    ('mi-preparador', 'Tu preparador\ny tú, conectados'),
+    ('cante-cancelado', '¿Te cancelan la clase?\nOtro preparador te la coge'),
+    ('dce-hoy-preparador', '¿Preparas a opositores?\nLo tuyo, al abrir la app'),
 ]
 
 
