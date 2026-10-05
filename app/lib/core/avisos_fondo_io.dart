@@ -27,7 +27,7 @@ void despachadorAvisos() {
       final usuario = auth.currentUser ?? await auth.authStateChanges().first.timeout(const Duration(seconds: 10), onTimeout: () => null);
       if (usuario == null) return true;
       final repo = RedRepo(firestore: FirebaseFirestore.instance, auth: auth, oposicion: Oposiciones.porId(await _leerOposicion()));
-      await comprobarAvisosRed(repo, preparador: await repo.quiereAvisosDeSustitucion(), admin: await repo.esAdmin());
+      await comprobarAvisosRed(repo, preparador: await repo.quiereAvisosDeSustitucion(), reservas: await repo.quiereAvisosDeReservas(), admin: await repo.esAdmin());
     } catch (_) {
       // Sin red o sin credenciales: la próxima vez.
     }

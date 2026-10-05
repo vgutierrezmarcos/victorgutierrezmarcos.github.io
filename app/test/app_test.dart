@@ -25,6 +25,7 @@ import 'package:tcee_app/data/repos/preparador_repo.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
 import 'package:tcee_app/features/cantar/sorteo.dart';
 import 'package:tcee_app/features/plan/cante_page.dart';
+import 'package:tcee_app/widgets/comunes.dart';
 
 /// Pruebas de humo de la app completa, sin Firebase ni red: usa los JSON
 /// reales de la web (temario.json y app-config.json del repositorio).
@@ -128,7 +129,7 @@ void main() {
     await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('MÁS')));
     await tester.pumpAndSettle();
     // Las secciones de Más se reparten en dos columnas.
-    final izquierda = tester.getTopLeft(find.text('PREPARADORES')).dx;
+    final izquierda = tester.getTopLeft(find.text('MI PREPARADOR')).dx;
     final derecha = tester.getTopLeft(find.text('AJUSTES')).dx;
     expect(derecha - izquierda, greaterThan(500));
     await tester.tap(find.text('Iniciar sesión con Google').first);
@@ -199,7 +200,7 @@ void main() {
     }
 
     await pestana(tester, 'Más');
-    expect(find.text('Preparadores'), findsWidgets);
+    expect(find.text('MI PREPARADOR'), findsOneWidget);
     expect(find.text('Cronograma de temas'), findsNothing);
     expect(tester.takeException(), isNull);
   });
@@ -420,14 +421,19 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('preparador: alta de alumno, cante con sorteo y valoración en su ficha', (tester) async {
+  testWidgets('preparador: alta, alumno, cante con sorteo y valoración en su ficha', (tester) async {
     await arrancar(tester);
+    // El opositor ve «Mi preparador» y, desde ahí, puede darse de alta como preparador.
     await pestana(tester, 'Más');
-    await tocar(tester, find.text('Preparadores'));
-    expect(find.text('TENGO PREPARADOR'), findsOneWidget);
-    expect(find.text('SOY PREPARADOR'), findsOneWidget);
-    await tocar(tester, find.text('Activar la sección de preparador'));
+    await tocar(tester, find.widgetWithText(FilaEnlace, 'Mi preparador'));
+    expect(find.text('Conecta con tu preparador'), findsOneWidget);
+    await tocar(tester, find.text('¿Preparas a opositores?'));
+    await tocar(tester, find.text('Darme de alta como preparador'));
+    expect(find.text('Prepara con la app'), findsOneWidget);
+    await tocar(tester, find.text('Empezar sin cuenta')); // sin Firebase
     expect(preparador.perfil().activo, isTrue);
+    expect(preparador.perfil().papelElegido, isTrue);
+    expect(find.text('TUS CLASES'), findsOneWidget);
     expect(find.text('Sin código para alumnos'), findsOneWidget); // sin Firebase no hay código
     expect(find.textContaining('Todavía no tienes alumnos'), findsOneWidget);
 
@@ -464,15 +470,19 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('preparador: programar una sesión para dos alumnos', (tester) async {
+  testWidgets('preparador: programar una clase para dos alumnos', (tester) async {
     await preparador.activar();
     await preparador.guardarAlumno(Alumno(id: 'a1', nombre: 'Lucía', temas: const ['3.A.1', '3.A.2'], updatedAt: DateTime.now()));
     await preparador.guardarAlumno(Alumno(id: 'a2', nombre: 'Pablo', updatedAt: DateTime.now()));
     await arrancar(tester);
+    // Hoy: primero su panel de preparador.
+    await pestana(tester, 'Hoy');
+    expect(find.text('Preparador de TCEE'), findsOneWidget);
+    expect(find.text('Hoy no tienes clases'), findsOneWidget);
     await pestana(tester, 'Más');
-    await tocar(tester, find.text('Mis alumnos'));
-    await tocar(tester, find.text('Sesión'));
-    expect(find.text('Nueva sesión'), findsOneWidget);
+    await tocar(tester, find.widgetWithText(FilaEnlace, 'Preparador'));
+    await tocar(tester, find.widgetWithText(TextButton, 'Clase'));
+    expect(find.text('Nueva clase'), findsOneWidget);
     await tocar(tester, find.widgetWithText(FilterChip, 'Lucía'));
     await tocar(tester, find.widgetWithText(FilterChip, 'Pablo'));
     await tocar(tester, find.text('Guardar'));
@@ -480,12 +490,35 @@ void main() {
     final sesiones = preparador.sesiones();
     expect(sesiones.map((s) => s.alumno).toSet(), {'a1', 'a2'});
     expect(sesiones.map((s) => s.id).toSet().length, 2);
-    expect(find.text('PRÓXIMAS SESIONES'), findsOneWidget);
+    expect(find.text('TUS CLASES'), findsOneWidget);
 
-    // Detalle de la sesión de Lucía: entran los dos temas que lleva.
+    // Detalle de la clase de Lucía: entran los dos temas que lleva.
     await tocar(tester, find.textContaining('· Lucía'));
     expect(find.text('TEMAS QUE ENTRAN (2)'), findsOneWidget);
     expect(find.text('Alumno sin app enlazada'), findsOneWidget);
     expect(tester.takeException(), isNull);
+  });
+
+  test('las rutas de antes de los cinco bloques llevan a su sitio nuevo', () {
+    expect(rutaNueva('/temario'), '/estudiar');
+    expect(rutaNueva('/test/estadisticas'), '/estudiar/test/estadisticas');
+    expect(rutaNueva('/temario/cronograma'), '/organizacion/cronograma');
+    expect(rutaNueva('/mas/convocatoria'), '/organizacion/convocatoria');
+    expect(rutaNueva('/mas/preparador'), isNull);
+  });
+
+  testWidgets('papel: el preparador vuelve a opositor desde Ajustes', (tester) async {
+    await preparador.activar();
+    await arrancar(tester);
+    await pestana(tester, 'Más');
+    expect(find.text('PREPARADOR'), findsOneWidget);
+    await tocar(tester, find.descendant(of: find.byType(SegmentedButton<Papel>), matching: find.text('Opositor')));
+    await tocar(tester, find.text('Cambiar'));
+    expect(preparador.perfil().activo, isFalse);
+    expect(preparador.perfil().papelElegido, isTrue);
+    expect(find.text('MI PREPARADOR'), findsOneWidget);
+    await pestana(tester, 'Hoy');
+    expect(find.text('Preparador de TCEE'), findsNothing);
+    expect(find.text('¿Cómo usas la app en TCEE?'), findsNothing);
   });
 }

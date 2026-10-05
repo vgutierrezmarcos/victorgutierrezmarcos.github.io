@@ -18,6 +18,7 @@ import 'features/organizacion/organizacion_hub_page.dart';
 import 'features/organizacion/organizacion_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/horario_page.dart';
+import 'features/preparador/mi_preparador_page.dart';
 import 'features/preparador/preparador_page.dart';
 import 'features/test/estadisticas_page.dart';
 import 'features/test/examen_page.dart';
@@ -58,6 +59,7 @@ final _router = GoRouter(
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage()),
+            GoRoute(path: 'mi-preparador', builder: (c, s) => const MiPreparadorPage()),
           ]),
         ]),
       ],

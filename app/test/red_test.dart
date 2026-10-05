@@ -61,6 +61,32 @@ void main() {
     });
   });
 
+  test('avisos: verificado, alumno conectado y clase cancelada o programada por el preparador', () async {
+    final db = FakeFirebaseFirestore();
+    final admin = RedRepo(firestore: db, auth: sesion('admin', 'Víctor'));
+    final paula = RedRepo(firestore: db, auth: sesion('paula', 'Paula'));
+    await db.collection('admins').doc('admin').set({'desde': 'consola'});
+    await admin.verificarme(nombre: 'Víctor');
+    await paula.solicitar(nombre: 'Paula', ejercicios: [3], presentacion: 'Preparo el tercero desde 2020');
+    await admin.aprobar((await admin.solicitudesPendientes()).single);
+    expect((await paula.avisosNuevos(vistos: {}, preparador: false)).map((a) => a.id), ['verif:tcee']);
+
+    // Un alumno conecta con su código.
+    await db.collection('preparadores').doc('paula').collection('alumnos').doc('alu').set({'uid': 'alu', 'nombre': 'Álex', 'desde': DateTime.now().toIso8601String()});
+    final avisos = await paula.avisosNuevos(vistos: {'verif:tcee'}, preparador: false);
+    expect(avisos.map((a) => a.id), ['enl:alu']);
+    expect(avisos.single.titulo, 'Álex se ha conectado contigo');
+
+    // Al alumno: una clase que le programa y otra que le cancela.
+    final alumno = RedRepo(firestore: db, auth: sesion('alu', 'Álex'));
+    final dentro = DateTime.now().add(const Duration(days: 2));
+    Cante clase(String id, EstadoCante e) => Cante(id: id, fecha: dentro, estado: e, preparador: 'paula', preparadorNombre: 'Paula', updatedAt: DateTime.now());
+    await db.collection('users').doc('alu').collection('cantes').doc('c1').set(clase('c1', EstadoCante.pendiente).toJson());
+    await db.collection('users').doc('alu').collection('cantes').doc('c2').set(clase('c2', EstadoCante.cancelado).toJson());
+    final delAlumno = await alumno.avisosNuevos(vistos: {}, preparador: false);
+    expect(delAlumno.map((a) => a.titulo), containsAll(['Paula te ha programado una clase', 'Paula ha cancelado tu clase']));
+  });
+
   test('verificación: se pide, la aprueba un verificado y el administrador la retira en cadena', () async {
     final db = FakeFirebaseFirestore();
     final admin = RedRepo(firestore: db, auth: sesion('admin', 'Víctor'));
@@ -133,9 +159,9 @@ void main() {
     expect(await alumno.tablon(), isEmpty, reason: 'las propias no salen en el tablón');
 
     // Avisos: Paula se entera una vez.
-    final avisos = await paula.avisosNuevos(vistos: {}, preparador: true);
+    final avisos = await paula.avisosNuevos(vistos: {'verif:tcee'}, preparador: true);
     expect(avisos.map((a) => a.id), ['sust:s1']);
-    expect(await paula.avisosNuevos(vistos: {'sust:s1'}, preparador: true), isEmpty);
+    expect(await paula.avisosNuevos(vistos: {'verif:tcee', 'sust:s1'}, preparador: true), isEmpty);
 
     // Paula la coge; Olga llega tarde.
     final contactoAlumno = await paula.coger(s, const ContactoRed(nombre: 'Paula', telefono: '611222333'));
@@ -154,7 +180,7 @@ void main() {
     expect(enAgenda.id, 'sust_s1');
     expect(enAgenda.bolsa, TipoBolsa.lista);
     expect(enAgenda.temas, ['3.A.1', '3.B.2']);
-    expect(enAgenda.titulo, 'Sustitución · Paula');
+    expect(enAgenda.titulo, 'Clase suelta · Paula');
 
     // Paula tiene al alumno (sin enlace, con teléfono) y la sesión en su semana.
     final prep = await prepRepo(db, authPaula);
@@ -242,8 +268,8 @@ void main() {
     expect((await admin.solicitudesPendientes(admin: true)).map((s) => s.uid).toSet(), {'nuevo', 'abierto'});
 
     // Avisos: la dirigida, solo a Olga; la abierta, solo al administrador.
-    expect((await olga.avisosNuevos(vistos: {}, preparador: true)).map((a) => a.id), ['sol:nuevo']);
-    expect(await paula.avisosNuevos(vistos: {}, preparador: true), isEmpty);
+    expect((await olga.avisosNuevos(vistos: {}, preparador: true)).map((a) => a.id), ['verif:tcee', 'sol:nuevo']);
+    expect(await paula.avisosNuevos(vistos: {'verif:tcee'}, preparador: true), isEmpty);
     expect((await admin.avisosNuevos(vistos: {}, preparador: false, admin: true)).map((a) => a.id), ['sol:abierto']);
 
     await olga.aprobar((await olga.solicitudesPendientes()).firstWhere((s) => s.uid == 'nuevo'));

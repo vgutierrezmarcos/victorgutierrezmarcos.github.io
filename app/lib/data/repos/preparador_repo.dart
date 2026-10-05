@@ -515,7 +515,7 @@ class PreparadorRepo {
       bolsa: TipoBolsa.lista,
       temas: sust.temas,
       notas: sust.notas,
-      titulo: 'Sustitución',
+      titulo: 'Clase suelta',
       alumno: a.id,
       sustitucion: sust.id,
       modalidad: sust.modalidad,

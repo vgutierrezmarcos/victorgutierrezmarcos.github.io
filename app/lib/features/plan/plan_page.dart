@@ -82,12 +82,12 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
   @override
   Widget build(BuildContext context) {
     final todosLosCantes = ref.watch(cantesProvider);
-    // Con varios preparadores (o sustituciones) se puede ver solo los de uno.
+    // Con varios preparadores (o clases sueltas) se puede ver solo los de uno.
     final origenes = <String, String>{
       for (final c in todosLosCantes.where((c) => !c.borrado))
         origenDeCante(c): switch (origenDeCante(c)) {
           'propio' => 'Por mi cuenta',
-          'sustitucion' => 'Sustituciones',
+          'sustitucion' => 'Clases sueltas',
           _ => (c.preparadorNombre ?? '').isEmpty ? 'Preparador' : c.preparadorNombre!,
         },
     };

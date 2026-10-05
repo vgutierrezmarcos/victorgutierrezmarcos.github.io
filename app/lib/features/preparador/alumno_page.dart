@@ -59,7 +59,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     await ref.read(alumnosProvider.notifier).guardar(a.copyWith(clasesFijas: [...a.clasesFijas, c]));
     final n = await ref.read(preparadorRepoProvider).generarClasesFijas();
     ref.invalidate(sesionesProvider);
-    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Clase fija añadida: $n ${n == 1 ? 'sesión creada' : 'sesiones creadas'} para las próximas seis semanas')));
+    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Clase fija añadida: $n ${n == 1 ? 'clase creada' : 'clases creadas'} para las próximas seis semanas')));
   }
 
   Future<void> _quitarClaseFija(Alumno a, ClaseFija c) async {
@@ -67,7 +67,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
       context: context,
       builder: (d) => AlertDialog(
         title: const Text('¿Quitar la clase fija?'),
-        content: const Text('Se borrarán también sus próximas sesiones pendientes. Las ya hechas se quedan.'),
+        content: const Text('Se borrarán también sus próximas clases pendientes. Las ya hechas se quedan.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
@@ -148,7 +148,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                 child: OutlinedButton.icon(
                   onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider), alumnosIniciales: {a.id}))),
                   icon: const Icon(Icons.event_outlined, size: 18),
-                  label: const Text('Programar sesión'),
+                  label: const Text('Programar clase'),
                 ),
               ),
             ]),
@@ -162,7 +162,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             if (a.clasesFijas.isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Text('Si tenéis una hora fija (por ejemplo, los martes a las 18:00), añádela y las sesiones de las próximas semanas se crearán solas.', style: context.textos.bodySmall),
+                child: Text('Si tenéis una hora fija (por ejemplo, los martes a las 18:00), añádela y las clases de las próximas semanas se crearán solas.', style: context.textos.bodySmall),
               )
             else
               Tarjeta(
@@ -179,7 +179,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                 ]),
               ),
             if (proximas.isNotEmpty) ...[
-              const TituloSeccion('Próximas sesiones'),
+              const TituloSeccion('Próximas clases'),
               for (final s in proximas.take(4))
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),

@@ -454,10 +454,30 @@ class PerfilPreparadorNotifier extends Notifier<PerfilPreparador> {
   }
 
   Future<void> renombrar(String nombre) async => state = await ref.read(preparadorRepoProvider).renombrar(nombre);
+
+  /// Fija el papel en esta oposición. Al pasar a preparador se deja de
+  /// compartir el progreso con los preparadores propios (en una misma oposición
+  /// no se es alumno y preparador a la vez); los datos se conservan.
+  Future<void> fijarPapel(Papel papel) async {
+    final repo = ref.read(preparadorRepoProvider);
+    if (papel == Papel.preparador) {
+      for (final v in ref.read(misPreparadoresProvider)) {
+        await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+      }
+      if (!state.activo) await activar();
+    } else if (state.activo) {
+      await repo.desactivar();
+    }
+    await repo.guardarPerfil(repo.perfil().copyWith(papelElegido: true));
+    state = repo.perfil();
+  }
 }
 
 /// Perfil de preparador del usuario («Soy preparador», código para alumnos).
 final perfilPreparadorProvider = NotifierProvider<PerfilPreparadorNotifier, PerfilPreparador>(PerfilPreparadorNotifier.new);
+
+/// Papel del usuario en la oposición actual: opositor o preparador.
+final papelProvider = Provider<Papel>((ref) => ref.watch(perfilPreparadorProvider).activo ? Papel.preparador : Papel.opositor);
 
 class AlumnosNotifier extends Notifier<List<Alumno>> {
   @override

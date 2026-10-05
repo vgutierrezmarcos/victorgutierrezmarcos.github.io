@@ -166,7 +166,7 @@ Future<void> sincronizarRed(Ref ref) async {
       ));
     } catch (_) {}
   }
-  await comprobarAvisosRed(red, preparador: estado.verificado && perfil.activo && perfil.avisosSustitucion, admin: estado.esAdmin);
+  await comprobarAvisosRed(red, preparador: estado.verificado && perfil.activo && perfil.avisosSustitucion, reservas: estado.verificado && perfil.activo && perfil.avisosReservas, admin: estado.esAdmin);
   await programarAvisosEnSegundoPlano(activar: true);
   refrescarRed(ref);
 }
@@ -184,3 +184,11 @@ int colorDePersona(String clave) {
 
 /// Cante del alumno según quién lo da: el preparador (uid), una sustitución o él mismo.
 String origenDeCante(Cante c) => c.preparador ?? (c.sustitucion != null ? 'sustitucion' : 'propio');
+
+/// Lo que espera al preparador: reservas por confirmar, clases sueltas en el
+/// tablón y solicitudes de verificación por revisar.
+final pendientesPreparadorProvider = Provider<int>((ref) {
+  final ahora = DateTime.now();
+  final reservas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).length;
+  return reservas + (ref.watch(tablonProvider).valueOrNull?.length ?? 0) + (ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0);
+});

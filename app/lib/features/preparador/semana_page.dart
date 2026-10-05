@@ -20,8 +20,10 @@ import 'sesion_page.dart';
 /// Agenda del preparador: todas las sesiones de todos sus alumnos por semana
 /// (o por mes), cada alumno con su color, con aviso de solapes, las reservas
 /// por aceptar y, si las ofrece, los huecos libres.
+/// Con [embebida] (subpestaña CLASES de Cantes) no lleva cabecera propia.
 class SemanaPage extends ConsumerStatefulWidget {
-  const SemanaPage({super.key});
+  const SemanaPage({super.key, this.embebida = false});
+  final bool embebida;
   @override
   ConsumerState<SemanaPage> createState() => _SemanaPageState();
 }
@@ -71,7 +73,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                           [
                             if (s.cancelado) 'Cancelada${s.motivo.isEmpty ? '' : ': ${s.motivo}'}',
                             if (s.hecho) 'Valorada',
-                            if (s.sustitucion != null) 'Sustitución',
+                            if (s.sustitucion != null) 'Clase suelta',
                             if (s.serie?.startsWith('fija_') ?? false) 'Clase fija',
                             if (!s.cancelado && !s.hecho) detalleCante(s),
                           ].join(' · '),
@@ -81,7 +83,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                         ),
                       ]),
                     ),
-                    if (solapadas.contains(s.id)) Tooltip(message: 'Se solapa con otra sesión', child: Icon(Icons.warning_amber_rounded, color: context.esquema.error)),
+                    if (solapadas.contains(s.id)) Tooltip(message: 'Se solapa con otra clase', child: Icon(Icons.warning_amber_rounded, color: context.esquema.error)),
                   ]),
                 ),
               ),
@@ -121,7 +123,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
             Text(DateFormat('EEEE d', 'es').format(d), style: context.textos.titleSmall?.copyWith(color: hoy ? context.esquema.primary : null, fontWeight: hoy ? FontWeight.w700 : null)),
             const Spacer(),
             IconButton(
-              tooltip: 'Nueva sesión este día',
+              tooltip: 'Nueva clase este día',
               visualDensity: VisualDensity.compact,
               icon: const Icon(Icons.add, size: 20),
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider), diaInicial: d))),
@@ -135,27 +137,25 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
       ];
     }
 
+    final alternarVista = IconButton(
+      tooltip: _mes ? 'Ver semana' : 'Ver mes',
+      icon: Icon(_mes ? Icons.view_week_outlined : Icons.calendar_month_outlined),
+      onPressed: () => setState(() => _mes = !_mes),
+    );
     return Scaffold(
-      appBar: BarraWeb(
-        title: const Text('Mi semana'),
-        actions: [
-          IconButton(
-            tooltip: _mes ? 'Ver semana' : 'Ver mes',
-            icon: Icon(_mes ? Icons.view_week_outlined : Icons.calendar_month_outlined),
-            onPressed: () => setState(() => _mes = !_mes),
-          ),
-        ],
-      ),
+      appBar: widget.embebida ? null : BarraWeb(title: const Text('Mi semana'), actions: [alternarVista]),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider)))),
         icon: const Icon(Icons.add),
-        label: const Text('Sesión'),
+        label: const Text('Clase'),
       ),
       body: RefreshIndicator(
         onRefresh: () => ref.read(alumnosProvider.notifier).refrescar(),
         child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
-          children: _mes
+          children: [
+            if (widget.embebida) Align(alignment: Alignment.centerRight, child: alternarVista),
+            ...(_mes
               ? [_vistaMes(sesiones, alumnos)]
               : [
                   Row(children: [
@@ -163,7 +163,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                     Expanded(
                       child: Column(children: [
                         Text('${DateFormat("d MMM", 'es').format(_lunes)} – ${DateFormat("d MMM", 'es').format(fin.subtract(const Duration(days: 1)))}', style: context.textos.titleMedium, textAlign: TextAlign.center),
-                        Text('${deLaSemana.where((s) => !s.cancelado).length} sesiones · ${(horas / 60).toStringAsFixed(horas % 60 == 0 ? 0 : 1)} h${solapadas.any((id) => deLaSemana.any((s) => s.id == id)) ? ' · hay solapes' : ''}', style: context.textos.labelSmall),
+                        Text('${deLaSemana.where((s) => !s.cancelado).length} clases · ${(horas / 60).toStringAsFixed(horas % 60 == 0 ? 0 : 1)} h${solapadas.any((id) => deLaSemana.any((s) => s.id == id)) ? ' · hay solapes' : ''}', style: context.textos.labelSmall),
                       ]),
                     ),
                     IconButton(tooltip: 'Semana siguiente', icon: const Icon(Icons.chevron_right), onPressed: () => setState(() => _lunes = _lunes.add(const Duration(days: 7)))),
@@ -173,7 +173,8 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                   for (var i = 0; i < 7; i++) ...dia(DateTime(_lunes.year, _lunes.month, _lunes.day + i)),
                   const SizedBox(height: 12),
                   _leyenda(alumnos.values.where((a) => deLaSemana.any((s) => s.alumno == a.id)).toList()),
-                ],
+                ]),
+          ],
         ),
       ),
     );
@@ -232,7 +233,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
               }), child: const Text('Ver la semana')),
         ]),
       ),
-      if (delDia.isEmpty) Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text('Sin sesiones.', style: context.textos.bodySmall)),
+      if (delDia.isEmpty) Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text('Sin clases.', style: context.textos.bodySmall)),
       for (final s in delDia)
         ListTile(
           dense: true,

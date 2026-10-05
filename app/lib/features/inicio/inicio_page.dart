@@ -6,16 +6,19 @@ import 'package:intl/intl.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../cronograma/cronograma_page.dart';
-import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
 import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
+import '../preparador/panel_hoy.dart';
 import '../test/motor_test.dart';
 
-/// Hoy: lo que toca cada día. Cuentas atrás (examen y próximo cante), racha,
-/// test diario, repaso pendiente y probabilidad de aprobar.
+/// Hoy: lo que toca cada día. Al opositor, cuentas atrás (examen y próximo
+/// cante), racha, test diario, cronograma, repaso pendiente y probabilidad de
+/// aprobar. Al preparador, primero su panel (clases de hoy y lo que espera
+/// respuesta) y después el test diario y el repaso.
 class InicioPage extends ConsumerWidget {
   const InicioPage({super.key});
 
@@ -36,12 +39,9 @@ class InicioPage extends ConsumerWidget {
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
-    // Preparador: sus sesiones de hoy con alumnos.
-    final hoy = DateTime.now();
-    final sesionesHoy = ref.watch(perfilPreparadorProvider).activo
-        ? ref.watch(sesionesProvider).where((s) => s.pendiente && s.fecha.year == hoy.year && s.fecha.month == hoy.month && s.fecha.day == hoy.day).toList()
-        : const <Cante>[];
-    final nombres = {for (final a in ref.watch(alumnosProvider)) a.id: a.nombre};
+    // El preparador ve primero lo suyo; las cuentas atrás, los cantes y el
+    // cronograma son del opositor.
+    final opositor = ref.watch(papelProvider) == Papel.opositor;
 
     return Scaffold(
       appBar: BarraWeb(
@@ -111,44 +111,50 @@ class InicioPage extends ConsumerWidget {
               for (final a in config.avisos)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: Tarjeta(color: context.colores.dorado.withValues(alpha: 0.12), child: Row(children: [Icon(Icons.campaign_outlined, color: context.colores.dorado), const SizedBox(width: 10), Expanded(child: Text(a, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)))])),
+                  child: Tarjeta(
+                      color: context.colores.dorado.withValues(alpha: 0.12),
+                      child: Row(children: [Icon(Icons.campaign_outlined, color: context.colores.dorado), const SizedBox(width: 10), Expanded(child: Text(a, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)))])),
                 ),
-            IntrinsicHeight(
-              child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Expanded(
-                  child: Estadistica(
-                    onTap: () => context.go('/organizacion/convocatoria'),
-                    valor: dias == null ? '—' : '$dias',
-                    etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
-                    detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
+            const TarjetaElegirPapel(),
+            if (!opositor) ...[const PanelPreparadorHoy(), const SizedBox(height: 10)],
+            if (opositor) ...[
+              IntrinsicHeight(
+                child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  Expanded(
+                    child: Estadistica(
+                      onTap: () => context.go('/organizacion/convocatoria'),
+                      valor: dias == null ? '—' : '$dias',
+                      etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
+                      detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Estadistica(
-                    valor: '$racha',
-                    etiqueta: racha == 1 ? 'día de racha' : 'días de racha',
-                    color: racha > 0 ? context.colores.dorado : null,
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Estadistica(
+                      valor: '$racha',
+                      etiqueta: racha == 1 ? 'día de racha' : 'días de racha',
+                      color: racha > 0 ? context.colores.dorado : null,
+                    ),
                   ),
-                ),
-              ]),
-            ),
-            const SizedBox(height: 10),
-            Tarjeta(
-              onTap: cante == null ? () => _irACantes(context, ref, 0) : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
-              child: Row(children: [
-                Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 32),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text(cante == null ? 'Sin cantes programados' : 'Próximo cante ${cuentaAtras(cante.fecha)}', style: context.textos.titleMedium),
-                    Text(cante == null ? 'Apunta cuándo es el siguiente para tener la cuenta atrás y un aviso.' : '${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${detalleCante(cante)}', style: context.textos.bodySmall),
-                  ]),
-                ),
-                const Icon(Icons.chevron_right),
-              ]),
-            ),
-            const SizedBox(height: 10),
+                ]),
+              ),
+              const SizedBox(height: 10),
+              Tarjeta(
+                onTap: cante == null ? () => _irACantes(context, ref, 0) : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
+                child: Row(children: [
+                  Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 32),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(cante == null ? 'Sin cantes programados' : 'Próximo cante ${cuentaAtras(cante.fecha)}', style: context.textos.titleMedium),
+                      Text(cante == null ? 'Apunta cuándo es el siguiente para tener la cuenta atrás y un aviso.' : '${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${detalleCante(cante)}', style: context.textos.bodySmall),
+                    ]),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ]),
+              ),
+              const SizedBox(height: 10),
+            ],
             Tarjeta(
               color: diarioHecho ? null : context.colores.primarioPalido,
               onTap: diarioHecho || banco.value == null
@@ -169,24 +175,7 @@ class InicioPage extends ConsumerWidget {
                 if (!diarioHecho) const Icon(Icons.chevron_right),
               ]),
             ),
-            TarjetaCronogramaHoy(abrir: () => context.go('/organizacion/cronograma')),
-            if (sesionesHoy.isNotEmpty) ...[
-              const SizedBox(height: 10),
-              Tarjeta(
-                onTap: () => context.go('/mas/preparador'),
-                child: Row(children: [
-                  Icon(Icons.groups_outlined, color: context.esquema.primary, size: 32),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(sesionesHoy.length == 1 ? 'Hoy tienes 1 sesión con tus alumnos' : 'Hoy tienes ${sesionesHoy.length} sesiones con tus alumnos', style: context.textos.titleMedium),
-                      Text([for (final s in sesionesHoy) '${horaDe(s.fecha)} ${nombres[s.alumno] ?? ''}'.trim()].join(' · '), maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
-                    ]),
-                  ),
-                  const Icon(Icons.chevron_right),
-                ]),
-              ),
-            ],
+            if (opositor) TarjetaCronogramaHoy(abrir: () => context.go('/organizacion/cronograma')),
             if (leitner.pendientes().isNotEmpty) ...[
               const SizedBox(height: 10),
               Tarjeta(
@@ -199,7 +188,7 @@ class InicioPage extends ConsumerWidget {
                 ]),
               ),
             ],
-            if (prob != null && prob.temasSabidos > 0) ...[
+            if (opositor && prob != null && prob.temasSabidos > 0) ...[
               const SizedBox(height: 10),
               Tarjeta(
                 onTap: () => context.go('/organizacion/probabilidades'),
@@ -223,5 +212,4 @@ class InicioPage extends ConsumerWidget {
     ref.read(subpestanaCantesProvider.notifier).state = subpestana;
     context.go('/cantes');
   }
-
 }

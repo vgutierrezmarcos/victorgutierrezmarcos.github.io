@@ -17,18 +17,19 @@ import '../plan/cantes_util.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
 import 'ajustes_preparador_page.dart';
+import 'alta_page.dart';
 import 'directorio_page.dart';
 import 'alumno_page.dart';
 import 'red_widgets.dart';
-import 'reservas.dart';
 import 'semana_page.dart';
 import 'sesion_page.dart';
 import 'sustituciones.dart';
 import 'verificacion_page.dart';
 
-/// Preparadores, en sus dos lados: «Tengo preparador» (el opositor enlaza su
-/// app con el código de su preparador) y «Soy preparador» (alumnos, sesiones
-/// de cante y valoraciones).
+/// Preparador: el lado de quien prepara a opositores en esta oposición. Si su
+/// papel aún es el de opositor, presenta la sección y lleva al alta.
+/// Por grupos: estado y código, tus clases, tus alumnos, clases sueltas, la
+/// red de preparadores y los ajustes.
 class PreparadorPage extends ConsumerStatefulWidget {
   const PreparadorPage({super.key});
   @override
@@ -36,10 +37,6 @@ class PreparadorPage extends ConsumerStatefulWidget {
 }
 
 class _PreparadorPageState extends ConsumerState<PreparadorPage> {
-  final _codigo = TextEditingController();
-  bool _enlazando = false;
-  bool _otroPreparador = false;
-
   @override
   void initState() {
     super.initState();
@@ -49,55 +46,42 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     });
   }
 
-  @override
-  void dispose() {
-    _codigo.dispose();
-    super.dispose();
-  }
-
-  Future<void> _enlazar() async {
-    final messenger = ScaffoldMessenger.of(context);
-    setState(() => _enlazando = true);
-    final error = await ref.read(misPreparadoresProvider.notifier).enlazar(_codigo.text);
-    if (!mounted) return;
-    setState(() {
-      _enlazando = false;
-      if (error == null) {
-        _codigo.clear();
-        _otroPreparador = false;
-      }
-    });
-    messenger.showSnackBar(SnackBar(content: Text(error ?? 'Enlazado. Tu preparador ya puede ver tu progreso.')));
-  }
-
-  Future<void> _desenlazar(VinculoPreparador v) async {
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (d) => AlertDialog(
-        title: const Text('¿Dejar de compartir?'),
-        content: Text('${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
-          FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar de compartir')),
-        ],
-      ),
-    );
-    if (ok == true) await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
-  }
-
   Future<void> _nuevoAlumno() async {
     final a = await editarAlumno(context);
     if (a != null) await ref.read(alumnosProvider.notifier).guardar(a);
   }
 
-  void _nuevaSesion() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider))));
+  void _nuevaClase() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider))));
 
   @override
   Widget build(BuildContext context) {
     final firebase = ref.watch(serviciosProvider).firebaseDisponible;
     final usuario = ref.watch(usuarioActualProvider);
-    final vinculos = ref.watch(misPreparadoresProvider);
     final perfil = ref.watch(perfilPreparadorProvider);
+    final siglas = Oposiciones.actual.siglas;
+    void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
+
+    // Opositor en esta oposición: qué es ser preparador en la app y el alta.
+    if (!perfil.activo) {
+      return Scaffold(
+        appBar: const BarraWeb(title: Text('Preparador')),
+        body: ListaAdaptable(
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+          children: [
+            Text('¿Preparas a opositores de $siglas?', style: context.textos.headlineSmall),
+            const SizedBox(height: 8),
+            Text('Lleva a tus alumnos desde la app: tu semana de clases, la ficha de cada alumno con sus temas y sus cantes, sacar bola y cronometrar, valorar y enviarle el informe. Y coge clases sueltas de otros alumnos cuando su preparador no puede.', style: context.textos.bodyMedium),
+            const SizedBox(height: 16),
+            FilledButton.icon(onPressed: () => ir(const AltaPreparadorPage()), icon: const Icon(Icons.how_to_reg_outlined), label: const Text('Darme de alta como preparador')),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 12, 4, 0),
+              child: Text('En $siglas dejarás de ser opositor (en una misma oposición no se puede ser las dos cosas). Lo que llevas como opositor se queda guardado.', style: context.textos.labelSmall),
+            ),
+          ],
+        ),
+      );
+    }
+
     final alumnos = ref.watch(alumnosProvider);
     final sesiones = ref.watch(sesionesProvider);
     final proximas = ref.watch(proximasSesionesProvider);
@@ -108,122 +92,71 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     final tablon = ref.watch(tablonProvider).valueOrNull ?? const <Sustitucion>[];
     final solicitudes = ref.watch(solicitudesPendientesProvider).valueOrNull ?? const <SolicitudPreparador>[];
     final reservasPedidas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).toList();
-    final misPeticiones = (ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
     final lunes = DateTime(ahora.year, ahora.month, ahora.day - (ahora.weekday - 1));
     final estaSemana = sesiones.where((s) => !s.cancelado && !s.fecha.isBefore(lunes) && s.fecha.isBefore(lunes.add(const Duration(days: 7)))).length;
-    void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
 
-    // ---------------------------------------------------- Lado del opositor
-    final ladoOpositor = <Widget>[
-            const TituloSeccion('Tengo preparador'),
-            for (final v in vinculos)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Tarjeta(
-                  color: context.colores.primarioPalido,
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Row(children: [
-                      PuntoPersona(v.uid, tamano: 14),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Text(v.nombre.isEmpty ? 'Tu preparador' : v.nombre, style: context.textos.titleMedium),
-                          Text('Enlazado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes. En tu agenda, sus cantes llevan este color.', style: context.textos.bodySmall),
-                        ]),
-                      ),
-                      TextButton(onPressed: () => _desenlazar(v), child: const Text('Quitar')),
-                    ]),
-                    if (ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false)
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8),
-                        child: OutlinedButton.icon(onPressed: () => ir(ReservarPage(preparador: v)), icon: const Icon(Icons.event_available_outlined, size: 18), label: const Text('Reservar clase')),
-                      ),
-                  ]),
+    return Scaffold(
+      appBar: const BarraWeb(title: Text('Preparador')),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await ref.read(alumnosProvider.notifier).refrescar();
+          refrescarRedDesdeWidget(ref);
+        },
+        child: ListaAdaptable(
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
+          children: [
+            _tarjetaRed(context, perfil, red: red, estado: estado, firebase: firebase, conSesion: usuario != null),
+            TituloSeccion('Tus clases', accion: TextButton.icon(onPressed: alumnos.isEmpty ? null : _nuevaClase, icon: const Icon(Icons.add, size: 18), label: const Text('Clase'))),
+            FilaEnlace(
+              icono: Icons.view_week_outlined,
+              titulo: 'Mi semana',
+              subtitulo: '$estaSemana ${estaSemana == 1 ? 'clase' : 'clases'} esta semana${reservasPedidas.isEmpty ? '' : ' · ${reservasPedidas.length} ${reservasPedidas.length == 1 ? 'reserva' : 'reservas'} por confirmar'}',
+              final_: globo(context, reservasPedidas.length),
+              onTap: () => ir(const SemanaPage()),
+            ),
+            if (proximas.isEmpty)
+              Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text(alumnos.isEmpty ? 'Añade primero a tus alumnos.' : 'No hay clases programadas.', style: context.textos.bodySmall))
+            else
+              for (final s in proximas.take(5))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Tarjeta(
+                    padding: EdgeInsets.zero,
+                    onTap: () => ir(SesionPage(id: s.id)),
+                    child: ListTile(
+                      leading: PuntoPersona(s.alumno ?? '', tamano: 14),
+                      title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)} · ${nombres[s.alumno] ?? 'Alumno'}', style: context.textos.titleSmall),
+                      subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                      trailing: s.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(s.fecha, ahora)) : const Icon(Icons.chevron_right),
+                    ),
+                  ),
                 ),
-              ),
-            if (vinculos.isEmpty || _otroPreparador)
-              Tarjeta(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Enlaza tu app con la de tu preparador', style: context.textos.titleMedium),
-                  const SizedBox(height: 4),
-                  Text('Pídele su código de seis caracteres. Los cantes que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.', style: context.textos.bodySmall),
-                  const SizedBox(height: 12),
-                  if (!firebase)
-                    Text('Esta compilación no incluye credenciales de Firebase: el enlace no está disponible.', style: context.textos.labelSmall)
-                  else if (usuario == null)
-                    OutlinedButton.icon(onPressed: () => context.go('/mas/cuenta'), icon: const Icon(Icons.login, size: 18), label: const Text('Inicia sesión con Google para enlazar'))
-                  else
-                    Row(children: [
-                      Expanded(
-                        child: TextField(
-                          controller: _codigo,
-                          textCapitalization: TextCapitalization.characters,
-                          maxLength: 7,
-                          style: TextStyle(fontFamily: Fuentes.sans, fontSize: 20, fontWeight: FontWeight.w600, letterSpacing: 4),
-                          decoration: const InputDecoration(hintText: 'CÓDIGO', counterText: '', isDense: true),
-                          onSubmitted: (_) => _enlazar(),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      FilledButton(onPressed: _enlazando ? null : _enlazar, child: Text(_enlazando ? 'Enlazando…' : 'Enlazar')),
-                    ]),
-                ]),
+            TituloSeccion('Tus alumnos', accion: TextButton.icon(onPressed: _nuevoAlumno, icon: const Icon(Icons.person_add_alt, size: 18), label: const Text('Alumno'))),
+            if (alumnos.isEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Text(
+                  perfil.codigo != null
+                      ? 'Todavía no tienes alumnos. Los que escriban tu código en su app aparecerán aquí solos; a los que no usen la app puedes añadirlos a mano.'
+                      : 'Todavía no tienes alumnos. Añádelos a mano; cuando te verifiquen tendrás un código para que se conecten desde su app.',
+                  style: context.textos.bodySmall,
+                ),
               )
             else
-              Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: () => setState(() => _otroPreparador = true), icon: const Icon(Icons.add, size: 18), label: const Text('Enlazar con otro preparador'))),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
-              child: Text('Tu preparador ve los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.labelSmall),
-            ),
-            if (firebase && usuario != null) ...[
-              const TituloSeccion('Sustituciones'),
-              FilaEnlace(
-                icono: Icons.badge_outlined,
-                titulo: 'Preparadores verificados',
-                subtitulo: 'Quiénes son, qué ejercicios preparan y su LinkedIn',
-                onTap: () => ir(const DirectorioPage()),
-              ),
+              for (final a in alumnos) _filaAlumno(context, a, sesiones),
+            if (estado.verificado) ...[
+              const TituloSeccion('Clases sueltas'),
               FilaEnlace(
                 icono: Icons.campaign_outlined,
-                titulo: 'Buscar quién me coja un cante',
-                subtitulo: 'Si tu preparador cancela o no puede: pídeselo a otros preparadores verificados',
-                onTap: () => ir(const PedirSustitucionPage()),
+                titulo: 'Tablón de clases sueltas',
+                subtitulo: tablon.isEmpty ? 'Clases que otros alumnos necesitan que les cojan' : '${tablon.length} ${tablon.length == 1 ? 'alumno busca' : 'alumnos buscan'} preparador',
+                final_: globo(context, tablon.length),
+                onTap: () => ir(const TablonPage()),
               ),
-              for (final s in misPeticiones) FilaMiPeticion(peticion: s),
             ],
-    ];
-
-    // -------------------------------------------------- Lado del preparador
-    final ladoPreparador = <Widget>[
-            const TituloSeccion('Soy preparador'),
-            if (!perfil.activo)
-              Tarjeta(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Lleva a tus alumnos desde la app', style: context.textos.titleMedium),
-                  const SizedBox(height: 4),
-                  Text('Programa las sesiones de cante, saca bola entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha: qué ha cantado, cómo y qué temas flojean.', style: context.textos.bodySmall),
-                  const SizedBox(height: 12),
-                  FilledButton.icon(onPressed: () => ref.read(perfilPreparadorProvider.notifier).activar(), icon: const Icon(Icons.groups_outlined), label: const Text('Activar la sección de preparador')),
-                ]),
-              )
-            else ...[
-              _tarjetaRed(context, perfil, red: red, estado: estado, firebase: firebase, conSesion: usuario != null),
-              const SizedBox(height: 10),
-              FilaEnlace(
-                icono: Icons.view_week_outlined,
-                titulo: 'Mi semana',
-                subtitulo: '$estaSemana ${estaSemana == 1 ? 'sesión' : 'sesiones'} esta semana${reservasPedidas.isEmpty ? '' : ' · ${reservasPedidas.length} ${reservasPedidas.length == 1 ? 'reserva' : 'reservas'} por confirmar'}',
-                final_: globo(context, reservasPedidas.length),
-                onTap: () => ir(const SemanaPage()),
-              ),
-              if (estado.verificado)
-                FilaEnlace(
-                  icono: Icons.campaign_outlined,
-                  titulo: 'Sustituciones',
-                  subtitulo: tablon.isEmpty ? 'Cantes que otros alumnos necesitan que les cojan' : '${tablon.length} ${tablon.length == 1 ? 'alumno busca' : 'alumnos buscan'} preparador',
-                  final_: globo(context, tablon.length),
-                  onTap: () => ir(const TablonPage()),
-                ),
+            if (firebase && usuario != null) ...[
+              const TituloSeccion('La red de preparadores'),
+              FilaEnlace(icono: Icons.badge_outlined, titulo: 'Preparadores verificados', subtitulo: 'Quiénes son, qué ejercicios preparan y su LinkedIn', onTap: () => ir(const DirectorioPage())),
               if (estado.verificado || estado.esAdmin)
                 FilaEnlace(
                   icono: Icons.how_to_reg_outlined,
@@ -234,59 +167,14 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 ),
               if (estado.esAdmin)
                 FilaEnlace(icono: Icons.admin_panel_settings_outlined, titulo: 'Gestionar la red', subtitulo: 'Quién está verificado y quién lo avaló', onTap: () => ir(const AdminRedPage())),
-              FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Teléfono, avisos y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
-              TituloSeccion('Próximas sesiones', accion: TextButton.icon(onPressed: alumnos.isEmpty ? null : _nuevaSesion, icon: const Icon(Icons.add, size: 18), label: const Text('Sesión'))),
-              if (proximas.isEmpty)
-                Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text(alumnos.isEmpty ? 'Añade primero a tus alumnos.' : 'No hay sesiones programadas.', style: context.textos.bodySmall))
-              else
-                for (final s in proximas.take(8))
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Tarjeta(
-                      padding: EdgeInsets.zero,
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
-                      child: ListTile(
-                        leading: PuntoPersona(s.alumno ?? '', tamano: 14),
-                        title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)} · ${nombres[s.alumno] ?? 'Alumno'}', style: context.textos.titleSmall),
-                        subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
-                        trailing: s.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(s.fecha, ahora)) : const Icon(Icons.chevron_right),
-                      ),
-                    ),
-                  ),
-              TituloSeccion('Mis alumnos', accion: TextButton.icon(onPressed: _nuevoAlumno, icon: const Icon(Icons.person_add_alt, size: 18), label: const Text('Alumno'))),
-              if (alumnos.isEmpty)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Text('Todavía no tienes alumnos. Los que enlacen su app con tu código aparecerán aquí solos; a los que no usen la app puedes añadirlos a mano.', style: context.textos.bodySmall),
-                )
-              else
-                for (final a in alumnos) _filaAlumno(context, a, sesiones),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
-                child: Text('Tus alumnos, sesiones y notas privadas solo los ves tú, en todos tus dispositivos. Cada alumno ve únicamente sus propias sesiones y valoraciones, nunca las de los demás.', style: context.textos.labelSmall),
-              ),
-              const SizedBox(height: 12),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: TextButton(
-                  onPressed: () => ref.read(perfilPreparadorProvider.notifier).desactivar(),
-                  child: const Text('Ocultar la sección de preparador'),
-                ),
-              ),
             ],
-    ];
-
-    return Scaffold(
-      appBar: BarraWeb(title: const Text('Preparadores')),
-      body: RefreshIndicator(
-        onRefresh: () async {
-          await ref.read(alumnosProvider.notifier).refrescar();
-          refrescarRedDesdeWidget(ref);
-        },
-        child: ListaAdaptable(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-          // Quien ya lleva alumnos ve primero su lado.
-          children: perfil.activo ? [...ladoPreparador, ...ladoOpositor] : [...ladoOpositor, ...ladoPreparador],
+            const TituloSeccion('Ajustes'),
+            FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Nombre, teléfono, avisos y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
+              child: Text('Tus alumnos, sus clases y tus notas privadas solo los ves tú, en todos tus dispositivos. Cada alumno ve únicamente sus propias clases y valoraciones, nunca las de los demás. Para volver a ser opositor en $siglas: Más → Ajustes → Tu papel.', style: context.textos.labelSmall),
+            ),
+          ],
         ),
       ),
     );
@@ -313,11 +201,11 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     final solicitud = estado.solicitud;
     return Tarjeta(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(solicitud == null ? 'Verifícate como preparador' : 'Verificación pendiente', style: context.textos.titleMedium),
+        Text(solicitud == null ? 'Termina tu alta: pide la verificación' : 'Verificación pendiente', style: context.textos.titleMedium),
         const SizedBox(height: 4),
         Text(
           solicitud == null
-              ? 'Para dar tu código a alumnos, aparecer en la lista de preparadores y coger sustituciones, te tiene que verificar un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos en este dispositivo.'
+              ? 'Para dar tu código a tus alumnos, aparecer en la lista de preparadores y coger clases sueltas, te tiene que verificar un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos a mano.'
               : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.destinatario == null ? '. La revisará un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre}'}; desliza hacia abajo para comprobarlo.',
           style: context.textos.bodySmall,
         ),
@@ -341,7 +229,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               label: const Text('Verificarme'),
             )
           else if (solicitud == null)
-            FilledButton.icon(onPressed: () => solicitarVerificacion(context, ref), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
+            FilledButton.icon(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AltaPreparadorPage(soloVerificacion: true))), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
           if (solicitud != null)
             TextButton(
               onPressed: () async {
@@ -350,7 +238,6 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               },
               child: const Text('Retirar la solicitud'),
             ),
-          if (estado.esAdmin) OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminRedPage())), child: const Text('Gestionar la red')),
         ]),
       ]),
     );
@@ -413,12 +300,12 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             icon: const Icon(Icons.ios_share),
             onPressed: () => compartirTexto(
               context,
-              'Enlaza tu app ${Creditos.nombreApp} conmigo: abre Más → Preparadores → «Tengo preparador» y escribe el código $codigo. Así verás en tu agenda los cantes que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
+              'Conecta tu app ${Creditos.nombreApp} conmigo: abre Más → Mi preparador y escribe el código $codigo. Así verás en tu agenda las clases que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
               asunto: 'Código de preparador',
             ),
           ),
         ]),
-        Text('El alumno lo escribe en Más → Preparadores → «Tengo preparador».', style: context.textos.bodySmall),
+        Text('El alumno lo escribe en Más → Mi preparador.', style: context.textos.bodySmall),
       ]),
     );
   }

@@ -2,6 +2,7 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
+import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/features/cantar/probabilidades.dart';
 import 'package:tcee_app/features/cantar/sorteo.dart';
@@ -125,12 +126,16 @@ void main() {
     });
   });
 
-  testWidgets('la primera vez pregunta a qué se presenta', (tester) async {
+  testWidgets('la primera vez pregunta la oposición y el papel', (tester) async {
     await initializeDateFormatting('es');
     Oposicion? elegida;
-    await tester.pumpWidget(ElegirOposicionApp(alElegir: (o) async => elegida = o));
+    Papel? papel;
+    await tester.pumpWidget(ElegirOposicionApp(alElegir: (o, p) async {
+      elegida = o;
+      papel = p;
+    }));
     await tester.pumpAndSettle();
-    expect(find.text('¿A qué te presentas?'), findsOneWidget);
+    expect(find.text('¿Qué oposición?'), findsOneWidget);
     // Las lanzadas, sí; las que aún no, no (solo las ven sus administradores, en Ajustes).
     for (final o in Oposiciones.disponibles) {
       expect(find.text(o.nombre), findsOneWidget);
@@ -140,7 +145,12 @@ void main() {
     }
     final ultima = Oposiciones.disponibles.last;
     await tester.tap(find.text(ultima.siglas));
+    await tester.pumpAndSettle();
+    expect(find.text('¿Cómo vas a usar la app?'), findsOneWidget);
+    expect(elegida, isNull);
+    await tester.tap(find.text('Preparo a opositores'));
     await tester.pump();
     expect(elegida?.id, ultima.id);
+    expect(papel, Papel.preparador);
   });
 }

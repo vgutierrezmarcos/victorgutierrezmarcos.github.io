@@ -11,12 +11,14 @@ import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../inicio/elegir_oposicion.dart';
 import '../plan/plan_page.dart';
+import '../preparador/red_widgets.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
-/// Más: lo que no es del día a día. Preparador, cuenta, contenido, ajustes y
-/// acerca de. (Convocatoria y horario están en Organización.)
+/// Más: lo que no es del día a día. Preparador (o Mi preparador), cuenta,
+/// contenido, ajustes y acerca de. (Convocatoria y horario están en Organización.)
 class MasPage extends ConsumerWidget {
   const MasPage({super.key});
 
@@ -28,8 +30,10 @@ class MasPage extends ConsumerWidget {
     final enlaces = ref.watch(enlacesProvider).valueOrNull ?? [];
     final hora = ajustes.horaRecordatorio;
     final avisosCante = ref.watch(planProvider.select((p) => p.avisosCante));
-    final perfil = ref.watch(perfilPreparadorProvider);
+    final papel = ref.watch(papelProvider);
     final alumnos = ref.watch(alumnosProvider);
+    final estadoRed = papel == Papel.preparador ? ref.watch(estadoRedProvider).valueOrNull : null;
+    final pendientesPreparador = papel == Papel.preparador ? ref.watch(pendientesPreparadorProvider) : 0;
     final vinculos = ref.watch(misPreparadoresProvider);
 
     return Scaffold(
@@ -47,15 +51,28 @@ class MasPage extends ConsumerWidget {
               trailing: const Icon(Icons.chevron_right),
             ),
           ),
-          const TituloSeccion('Preparadores'),
-          FilaEnlace(
-            icono: Icons.groups_outlined,
-            titulo: perfil.activo ? 'Mis alumnos' : 'Preparadores',
-            subtitulo: perfil.activo
-                ? (alumnos.isEmpty ? 'Añade a tus alumnos y programa sus cantes' : '${alumnos.length} ${alumnos.length == 1 ? 'alumno' : 'alumnos'} · sesiones, sorteos y valoraciones')
-                : (vinculos.isEmpty ? 'Enlaza con tu preparador o lleva a tus alumnos' : 'Compartes tu progreso con ${vinculos.map((v) => v.nombre.isEmpty ? 'tu preparador' : v.nombre).join(', ')}'),
-            onTap: () => context.go('/mas/preparador'),
-          ),
+          // El apartado de cada papel: el preparador, lo suyo; el opositor, su preparador.
+          if (papel == Papel.preparador) ...[
+            const TituloSeccion('Preparador'),
+            FilaEnlace(
+              icono: Icons.groups_outlined,
+              titulo: 'Preparador',
+              subtitulo: [
+                if (estadoRed?.verificado ?? false) 'Verificado' else if (estadoRed?.solicitud != null) 'Verificación pendiente' else if (usuario != null) 'Termina tu alta',
+                alumnos.isEmpty ? 'sin alumnos todavía' : '${alumnos.length} ${alumnos.length == 1 ? 'alumno' : 'alumnos'}',
+              ].join(' · '),
+              final_: globo(context, pendientesPreparador),
+              onTap: () => context.go('/mas/preparador'),
+            ),
+          ] else ...[
+            const TituloSeccion('Mi preparador'),
+            FilaEnlace(
+              icono: Icons.groups_outlined,
+              titulo: 'Mi preparador',
+              subtitulo: vinculos.isEmpty ? 'Conecta con tu preparador o pide una clase suelta' : 'Compartes tu progreso con ${vinculos.map((v) => v.nombre.isEmpty ? 'tu preparador' : v.nombre).join(', ')}',
+              onTap: () => context.go('/mas/mi-preparador'),
+            ),
+          ],
           const TituloSeccion('Contenido'),
           // El simulador web guarda en el historial de su propia oposición.
           if (!ref.read(oposicionProvider).testVoluntario) _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, ref.read(oposicionProvider).urlSimuladorWeb)),
@@ -105,6 +122,17 @@ class MasPage extends ConsumerWidget {
                   trailing: Text(ref.read(oposicionProvider).siglas, style: context.textos.titleMedium?.copyWith(color: context.esquema.primary)),
                   onTap: () => _cambiarOposicion(context, ref),
                 ),
+              ListTile(
+                leading: const Icon(Icons.badge_outlined),
+                title: Text('Tu papel en ${ref.read(oposicionProvider).siglas}'),
+                trailing: SegmentedButton<Papel>(
+                  showSelectedIcon: false,
+                  segments: const [ButtonSegment(value: Papel.opositor, label: Text('Opositor')), ButtonSegment(value: Papel.preparador, label: Text('Preparador'))],
+                  selected: {papel},
+                  onSelectionChanged: (s) => cambiarPapel(context, ref, s.first),
+                  style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                ),
+              ),
               ListTile(
                 leading: const Icon(Icons.dark_mode_outlined),
                 title: const Text('Modo'),
@@ -188,4 +216,27 @@ class MasPage extends ConsumerWidget {
           child: ListTile(leading: Icon(icono, color: context.esquema.primary), title: Text(titulo, style: context.textos.titleSmall), subtitle: Text(sub, style: context.textos.labelSmall), trailing: const Icon(Icons.chevron_right)),
         ),
       );
+}
+
+/// Cambia el papel en la oposición actual. A preparador se pasa por el alta
+/// (presentación y verificación); a opositor, tras confirmarlo.
+Future<void> cambiarPapel(BuildContext context, WidgetRef ref, Papel papel) async {
+  if (papel == ref.read(papelProvider)) return;
+  if (papel == Papel.preparador) {
+    context.go('/mas/preparador');
+    return;
+  }
+  final siglas = ref.read(oposicionProvider).siglas;
+  final ok = await showDialog<bool>(
+    context: context,
+    builder: (d) => AlertDialog(
+      title: Text('Opositor en $siglas'),
+      content: Text('Dejarás de ver la sección de preparador de $siglas. Tus alumnos, sus clases y tu código se quedan guardados y vuelven si cambias otra vez.'),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+        FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Cambiar')),
+      ],
+    ),
+  );
+  if (ok == true) await ref.read(perfilPreparadorProvider.notifier).fijarPapel(Papel.opositor);
 }

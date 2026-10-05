@@ -114,21 +114,22 @@ class AjustesPreparadorPage extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.phone_outlined),
                 title: const Text('Teléfono para WhatsApp'),
-                subtitle: Text(perfil.telefono.isEmpty ? 'Se pide al coger una sustitución' : '${perfil.telefono} · solo lo ve el alumno cuyo cante coges', style: context.textos.labelSmall),
+                subtitle: Text(perfil.telefono.isEmpty ? 'Se pide al coger una clase suelta' : '${perfil.telefono} · solo lo ve el alumno cuyo cante coges', style: context.textos.labelSmall),
                 trailing: const Icon(Icons.edit_outlined, size: 18),
                 onTap: () async {
-                  final t = await pedirTelefono(context, inicial: perfil.telefono, explicacion: 'Cuando cojas un cante de sustitución, el alumno lo recibirá para escribirte. Nadie más lo ve.');
+                  final t = await pedirTelefono(context, inicial: perfil.telefono, explicacion: 'Cuando cojas una clase suelta, el alumno lo recibirá para escribirte. Nadie más lo ve.');
                   if (t != null) await notifier.guardar(perfil.copyWith(telefono: t));
                 },
               ),
             ]),
           ),
-          const TituloSeccion('Sustituciones'),
+          const TituloSeccion('Avisos'),
           Tarjeta(
             padding: EdgeInsets.zero,
-            child: SwitchListTile(
+            child: Column(children: [
+            SwitchListTile(
               value: perfil.avisosSustitucion,
-              title: const Text('Avisarme cuando un alumno busque preparador'),
+              title: const Text('Clases sueltas: cuando un alumno pide una'),
               subtitle: Text(
                 kIsWeb
                     ? 'En el navegador, mientras tengas la app abierta en una pestaña. En el móvil llegan también con la app cerrada.'
@@ -142,6 +143,17 @@ class AjustesPreparadorPage extends ConsumerWidget {
                 await notifier.guardar(perfil.copyWith(avisosSustitucion: v));
               },
             ),
+            SwitchListTile(
+              value: perfil.avisosReservas,
+              title: const Text('Reservas: cuando un alumno reserva clase'),
+              onChanged: (v) async {
+                if (v) {
+                  kIsWeb ? await pedirPermisoNotificacionesNavegador() : await Notificaciones.pedirPermiso();
+                }
+                await notifier.guardar(perfil.copyWith(avisosReservas: v));
+              },
+            ),
+            ]),
           ),
           const TituloSeccion('Reservas de tus alumnos'),
           Tarjeta(
@@ -176,7 +188,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                     ),
                 ]),
               ),
-            Padding(padding: const EdgeInsets.only(top: 6), child: Text('Un hueco deja de ofrecerse cuando ya tienes una sesión a esa hora.', style: context.textos.labelSmall)),
+            Padding(padding: const EdgeInsets.only(top: 6), child: Text('Un hueco deja de ofrecerse cuando ya tienes una clase a esa hora.', style: context.textos.labelSmall)),
           ],
         ],
       ),
