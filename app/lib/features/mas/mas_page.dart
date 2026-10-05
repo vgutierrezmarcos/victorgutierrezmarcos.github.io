@@ -10,14 +10,13 @@ import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../inicio/elegir_oposicion.dart';
-import '../../data/models/plan.dart';
+import '../plan/plan_page.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../plan/cantes_util.dart';
 
-/// Más: lo que no es del día a día. Convocatoria y horario, preparadores,
-/// cuenta, ajustes, enlaces y acerca de.
+/// Más: lo que no es del día a día. Preparador, cuenta, contenido, ajustes y
+/// acerca de. (Convocatoria y horario están en Organización.)
 class MasPage extends ConsumerWidget {
   const MasPage({super.key});
 
@@ -28,8 +27,7 @@ class MasPage extends ConsumerWidget {
     final usuario = ref.watch(usuarioActualProvider);
     final enlaces = ref.watch(enlacesProvider).valueOrNull ?? [];
     final hora = ajustes.horaRecordatorio;
-    final plan = ref.watch(planProvider);
-    final proximaFecha = (ref.watch(fechasEjerciciosProvider).entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value))).firstOrNull;
+    final avisosCante = ref.watch(planProvider.select((p) => p.avisosCante));
     final perfil = ref.watch(perfilPreparadorProvider);
     final alumnos = ref.watch(alumnosProvider);
     final vinculos = ref.watch(misPreparadoresProvider);
@@ -48,19 +46,6 @@ class MasPage extends ConsumerWidget {
               subtitle: Text(usuario?.email ?? 'Sincroniza tu historial y progreso con la web', style: context.textos.labelSmall),
               trailing: const Icon(Icons.chevron_right),
             ),
-          ),
-          const TituloSeccion('Mi oposición'),
-          FilaEnlace(
-            icono: Icons.flag_outlined,
-            titulo: 'Convocatoria',
-            subtitulo: proximaFecha == null ? 'Fechas de los ejercicios e hitos' : '${nombreEjercicio(proximaFecha.key)}: faltan ${diasHasta(proximaFecha.value)} días',
-            onTap: () => context.go('/mas/convocatoria'),
-          ),
-          FilaEnlace(
-            icono: Icons.schedule,
-            titulo: 'Horario de estudio',
-            subtitulo: '${(plan.horario ?? Horario.porDefecto()).horasEstudioSemana.toStringAsFixed(0)} horas de estudio a la semana',
-            onTap: () => context.go('/mas/horario'),
           ),
           const TituloSeccion('Preparadores'),
           FilaEnlace(
@@ -105,6 +90,12 @@ class MasPage extends ConsumerWidget {
                         final t = await showTimePicker(context: context, initialTime: TimeOfDay(hour: hora ~/ 60, minute: hora % 60));
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
+              ),
+              if (Notificaciones.disponibles) ListTile(
+                leading: const Icon(Icons.notifications_active_outlined),
+                title: const Text('Avisar antes de cada cante'),
+                subtitle: Text('La víspera y una hora antes', style: context.textos.labelSmall),
+                trailing: Switch(value: avisosCante, onChanged: (_) => alternarAvisosCante(ref)),
               ),
               if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)
                 ListTile(

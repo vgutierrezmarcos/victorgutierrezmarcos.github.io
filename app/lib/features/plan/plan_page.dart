@@ -253,7 +253,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
         padding: const EdgeInsets.only(bottom: 8),
         child: Tarjeta(
           padding: EdgeInsets.zero,
-          onTap: () => context.go('/mas/convocatoria'),
+          onTap: () => context.go('/organizacion/convocatoria'),
           child: ListTile(leading: Icon(Icons.flag, color: context.colores.dorado), title: Text(titulo, style: context.textos.titleSmall)),
         ),
       );

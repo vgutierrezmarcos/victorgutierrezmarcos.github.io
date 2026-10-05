@@ -544,7 +544,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final p = Sorteo.probEjercicio(partes, elegir: elegir);
     final letras = [for (final k in porParte.keys.where((k) => k.startsWith('$_ejercicio.')).toList()..sort()) k.split('.').last];
     return Tarjeta(
-      onTap: () => context.go('/temario/probabilidades'),
+      onTap: () => context.go('/organizacion/probabilidades'),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
           Expanded(child: Text([for (var i = 0; i < partes.length; i++) '${letras[i]}: ${partes[i].sabidos} de ${partes[i].total}'].join(' · '), style: context.textos.titleMedium)),

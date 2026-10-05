@@ -99,6 +99,13 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  /// Subpestaña del bloque Estudiar: Temas o Test.
+  Future<void> estudiar(WidgetTester tester, String nombre) async {
+    await pestana(tester, 'Estudiar');
+    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())).first);
+    await tester.pumpAndSettle();
+  }
+
   Future<void> tocar(WidgetTester tester, Finder f) async {
     await tester.tap(f.first);
     await tester.pumpAndSettle();
@@ -121,7 +128,7 @@ void main() {
     await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('MÁS')));
     await tester.pumpAndSettle();
     // Las secciones de Más se reparten en dos columnas.
-    final izquierda = tester.getTopLeft(find.text('MI OPOSICIÓN')).dx;
+    final izquierda = tester.getTopLeft(find.text('PREPARADORES')).dx;
     final derecha = tester.getTopLeft(find.text('AJUSTES')).dx;
     expect(derecha - izquierda, greaterThan(500));
     await tester.tap(find.text('Iniciar sesión con Google').first);
@@ -138,7 +145,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(Theme.of(ctx()).brightness, Brightness.dark);
     expect(usuario.ajustes().temaOscuro, isTrue);
-    await pestana(tester, 'Test');
+    await estudiar(tester, 'Test');
     await tester.tap(find.byTooltip('Modo claro').first);
     await tester.pumpAndSettle();
     expect(Theme.of(ctx()).brightness, Brightness.light);
@@ -146,7 +153,7 @@ void main() {
 
   testWidgets('cronograma: se crea con el asistente, sale en Hoy y marcar un tema cuenta como vuelta', (tester) async {
     await arrancar(tester);
-    await pestana(tester, 'Temario');
+    await pestana(tester, 'Organización');
     await tocar(tester, find.text('Cronograma'));
     expect(find.textContaining('En prueba'), findsNothing);
     await tocar(tester, find.text('Crear un cronograma'));
@@ -172,11 +179,9 @@ void main() {
     expect(find.text('Sin cantes programados'), findsOneWidget);
     expect(find.text('FIJA LA FECHA DEL EXAMEN'), findsOneWidget);
 
-    await pestana(tester, 'Temario');
+    await estudiar(tester, 'Temas');
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
     expect(find.textContaining('Parte B: Econometría'), findsOneWidget);
-    expect(find.text('Organización del temario'), findsOneWidget);
-    expect(find.text('Probabilidades'), findsOneWidget);
 
     await subpestana(tester, 'Agenda');
     expect(find.text('Programa tu próximo cante'), findsOneWidget);
@@ -186,12 +191,14 @@ void main() {
     await subpestana(tester, 'Diario');
     expect(find.textContaining('Aún no hay cantes anotados'), findsOneWidget);
 
-    await pestana(tester, 'Test');
+    await estudiar(tester, 'Test');
+
+    await pestana(tester, 'Organización');
+    for (final t in ['Cronograma', 'Probabilidades', 'Convocatoria', 'Horario de estudio', 'Mapa del temario']) {
+      expect(find.text(t), findsOneWidget);
+    }
 
     await pestana(tester, 'Más');
-    expect(find.text('MI OPOSICIÓN'), findsOneWidget);
-    expect(find.text('Convocatoria'), findsOneWidget);
-    expect(find.text('Horario de estudio'), findsOneWidget);
     expect(find.text('Preparadores'), findsWidgets);
     expect(find.text('Cronograma de temas'), findsNothing);
     expect(tester.takeException(), isNull);
@@ -203,16 +210,16 @@ void main() {
     }));
     await arrancar(tester);
 
-    await pestana(tester, 'Más');
+    await pestana(tester, 'Organización');
     await tocar(tester, find.text('Convocatoria'));
     expect(find.text('Tercer ejercicio'), findsOneWidget);
     expect(find.text('Toca para poner la fecha'), findsNWidgets(5));
 
-    await pestana(tester, 'Más');
+    await pestana(tester, 'Organización');
     await tocar(tester, find.text('Horario de estudio'));
     expect(find.text('52,0 horas de estudio a la semana.'), findsOneWidget);
 
-    await pestana(tester, 'Temario');
+    await pestana(tester, 'Organización');
     await tocar(tester, find.text('Probabilidades'));
     // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
     expect(find.text('TERCER EJERCICIO'), findsOneWidget);
@@ -324,7 +331,7 @@ void main() {
         opciones: {'a': 'Opción A de $id', 'b': 'Opción B de $id', 'c': 'Opción C de $id', 'd': 'Opción D de $id'}, respuesta: [correcta], oficial: true);
     banco = BancoPreguntas(preguntas: [p(1, '3.A.1', 'a'), p(2, '3.A.1', 'b'), p(3, '3.B.2', 'c')], examenes: const [], temas: const {'3.A.1': 'Objeto y métodos', '3.B.2': 'Comercio'});
     await arrancar(tester);
-    await pestana(tester, 'Test');
+    await estudiar(tester, 'Test');
     expect(find.text('CONFIGURACIÓN DEL EXAMEN'), findsNothing); // es un subtítulo, no un título de sección
     expect(find.text('Configuración del examen'), findsOneWidget);
     expect(find.text('DISPONIBLES'), findsOneWidget);
@@ -358,8 +365,8 @@ void main() {
   testWidgets('organización del temario: bloques, detalle de bloque y esquema', (tester) async {
     await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.8', '3.A.9'}));
     await arrancar(tester);
-    await pestana(tester, 'Temario');
-    await tocar(tester, find.text('Organización del temario'));
+    await pestana(tester, 'Organización');
+    await tocar(tester, find.text('Mapa del temario'));
     expect(find.text('MICROECONOMÍA'), findsOneWidget);
     expect(find.text('MACROECONOMÍA'), findsOneWidget);
     expect(find.text('MIXTO'), findsOneWidget);
@@ -389,7 +396,7 @@ void main() {
 
   testWidgets('agenda por tema: apuntar algo para la próxima vuelta', (tester) async {
     await arrancar(tester);
-    await pestana(tester, 'Temario');
+    await estudiar(tester, 'Temas');
     await tocar(tester, find.textContaining('Parte C: Derecho'));
     // Tema sin PDF: se abre directamente su agenda.
     await tocar(tester, find.textContaining('5.C.4 ·'));

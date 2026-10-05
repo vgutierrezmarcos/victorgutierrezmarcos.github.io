@@ -79,7 +79,7 @@ void main() {
 
   tearDown(() => Oposiciones.actual = Oposiciones.tcee);
 
-  for (final p in ['Hoy', 'Temario', 'Cantes', 'Test', 'Más']) {
+  for (final p in ['Hoy', 'Estudiar', 'Cantes', 'Organización', 'Más']) {
     testWidgets('DCE sin contenido: $p', (tester) async {
       await arrancar(tester);
       await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(p.toUpperCase())));

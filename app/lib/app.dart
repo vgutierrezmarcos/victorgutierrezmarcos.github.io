@@ -10,15 +10,15 @@ import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
+import 'features/estudiar/estudiar_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
+import 'features/organizacion/organizacion_hub_page.dart';
 import 'features/organizacion/organizacion_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/horario_page.dart';
 import 'features/preparador/preparador_page.dart';
-import 'features/temario/temario_page.dart';
-import 'features/test/config_test_page.dart';
 import 'features/test/estadisticas_page.dart';
 import 'features/test/examen_page.dart';
 import 'features/test/motor_test.dart';
@@ -26,34 +26,37 @@ import 'features/test/resultados_page.dart';
 import 'theme/app_theme.dart';
 import 'widgets/comunes.dart';
 
-/// Cinco bloques: Hoy (qué toca), Temario (estudiar), Cantes (programar,
-/// cantar y anotar), Test (simulador) y Más (convocatoria, horario,
-/// preparadores, cuenta y ajustes).
+/// Cinco bloques, iguales para opositores y preparadores: Hoy (qué toca),
+/// Estudiar (temario y test), Cantes (programar, cantar y anotar), Organización
+/// (cronograma, probabilidades, convocatoria, horario y estructura del temario,
+/// como la sección de la web) y Más (preparador, cuenta y ajustes).
 final _router = GoRouter(
   initialLocation: '/hoy',
+  // Rutas de antes de la reorganización (avisos, enlaces guardados): a su sitio nuevo.
+  redirect: (context, state) => rutaNueva(state.uri.path),
   routes: [
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => _Shell(shell: shell),
       branches: [
         StatefulShellBranch(routes: [GoRoute(path: '/hoy', builder: (c, s) => const InicioPage())]),
         StatefulShellBranch(routes: [
-          GoRoute(path: '/temario', builder: (c, s) => const TemarioPage(), routes: [
-            GoRoute(path: 'organizacion', builder: (c, s) => const OrganizacionPage()),
-            GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
-            GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
+          GoRoute(path: '/estudiar', builder: (c, s) => const EstudiarPage(), routes: [
+            GoRoute(path: 'test/estadisticas', builder: (c, s) => const EstadisticasPage()),
           ]),
         ]),
         StatefulShellBranch(routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),
         StatefulShellBranch(routes: [
-          GoRoute(path: '/test', builder: (c, s) => const ConfigTestPage(), routes: [
-            GoRoute(path: 'estadisticas', builder: (c, s) => const EstadisticasPage()),
+          GoRoute(path: '/organizacion', builder: (c, s) => const OrganizacionHubPage(), routes: [
+            GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
+            GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
+            GoRoute(path: 'convocatoria', builder: (c, s) => const ConvocatoriaPage()),
+            GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
+            GoRoute(path: 'estructura', builder: (c, s) => const OrganizacionPage()),
           ]),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
-            GoRoute(path: 'convocatoria', builder: (c, s) => const ConvocatoriaPage()),
-            GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage()),
           ]),
         ]),
@@ -64,6 +67,18 @@ final _router = GoRouter(
     GoRoute(path: '/resultados', builder: (c, s) => ResultadosPage(datos: s.extra as DatosResultado)),
   ],
 );
+
+/// Ruta nueva de una de antes de la reorganización en cinco bloques (o null si no cambia).
+String? rutaNueva(String ruta) => const {
+      '/temario': '/estudiar',
+      '/test': '/estudiar',
+      '/test/estadisticas': '/estudiar/test/estadisticas',
+      '/temario/organizacion': '/organizacion/estructura',
+      '/temario/probabilidades': '/organizacion/probabilidades',
+      '/temario/cronograma': '/organizacion/cronograma',
+      '/mas/convocatoria': '/organizacion/convocatoria',
+      '/mas/horario': '/organizacion/horario',
+    }[ruta];
 
 class TceeApp extends ConsumerStatefulWidget {
   const TceeApp({super.key});
@@ -133,9 +148,9 @@ class _Shell extends StatelessWidget {
 
   static const _destinos = [
     (Icons.today_outlined, Icons.today, 'HOY'),
-    (Icons.menu_book_outlined, Icons.menu_book, 'TEMARIO'),
+    (Icons.menu_book_outlined, Icons.menu_book, 'ESTUDIAR'),
     (Icons.record_voice_over_outlined, Icons.record_voice_over, 'CANTES'),
-    (Icons.quiz_outlined, Icons.quiz, 'TEST'),
+    (Icons.event_note_outlined, Icons.event_note, 'ORGANIZACIÓN'),
     (Icons.more_horiz, Icons.more_horiz, 'MÁS'),
   ];
 

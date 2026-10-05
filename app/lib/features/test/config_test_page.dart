@@ -11,8 +11,10 @@ import '../../widgets/comunes.dart';
 import 'motor_test.dart';
 
 /// Fase de selección del simulador: temas, exámenes, nº de preguntas, tiempo y baremo.
+/// Es la subpestaña TEST de Estudiar; [pestanas] va en la cabecera.
 class ConfigTestPage extends ConsumerStatefulWidget {
-  const ConfigTestPage({super.key});
+  const ConfigTestPage({super.key, this.pestanas});
+  final PreferredSizeWidget? pestanas;
   @override
   ConsumerState<ConfigTestPage> createState() => _ConfigTestPageState();
 }
@@ -30,12 +32,13 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: const Text('Simulador de test'),
+        title: Text(widget.pestanas == null ? 'Simulador de test' : 'Estudiar'),
+        bottom: widget.pestanas,
         actions: [
           IconButton(
             tooltip: 'Estadísticas',
             icon: const Icon(Icons.insights_outlined),
-            onPressed: () => context.go('/test/estadisticas'),
+            onPressed: () => context.go('/estudiar/test/estadisticas'),
           ),
         ],
       ),

@@ -2,9 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
-import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/diario_page.dart';
@@ -31,7 +29,6 @@ class _CantesPageState extends ConsumerState<CantesPage> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     final indice = ref.watch(subpestanaCantesProvider);
-    final avisos = ref.watch(planProvider.select((p) => p.avisosCante));
     // Otras pantallas cambian de subpestaña (p. ej. «Sacar bola y cantar» desde un cante).
     ref.listen(subpestanaCantesProvider, (_, i) {
       if (_pestanas.index != i) _pestanas.animateTo(i);
@@ -46,31 +43,14 @@ class _CantesPageState extends ConsumerState<CantesPage> with SingleTickerProvid
               switch (v) {
                 case 'exportar':
                   await exportarCalendario(context, ref);
-                case 'avisos':
-                  await alternarAvisosCante(ref);
-                case 'ayuda':
-                  abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema);
               }
             },
             itemBuilder: (_) => [
               PopupMenuItem(value: 'exportar', child: Text(kIsWeb ? 'Descargar para tu calendario (.ics)' : 'Exportar al calendario del móvil')),
-              if (Notificaciones.disponibles) CheckedPopupMenuItem(value: 'avisos', checked: avisos, child: const Text('Avisar antes de cada cante')),
-              const PopupMenuItem(value: 'ayuda', child: Text('Cómo cantar un tema (PDF)')),
             ],
           ),
         ],
-        bottom: TabBar(
-          controller: _pestanas,
-          onTap: (i) => ref.read(subpestanaCantesProvider.notifier).state = i,
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.white.withValues(alpha: 0.7),
-          indicatorColor: context.colores.dorado,
-          indicatorWeight: 3,
-          dividerColor: Colors.transparent,
-          labelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w700, letterSpacing: 0.8),
-          unselectedLabelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.8),
-          tabs: const [Tab(text: 'AGENDA'), Tab(text: 'CANTAR'), Tab(text: 'DIARIO')],
-        ),
+        bottom: barraPestanas(context, controller: _pestanas, textos: const ['AGENDA', 'CANTAR', 'DIARIO'], onTap: (i) => ref.read(subpestanaCantesProvider.notifier).state = i),
       ),
       // IndexedStack y no TabBarView: el cronómetro sigue vivo al mirar la agenda o el diario.
       body: IndexedStack(

@@ -15,7 +15,7 @@ import '../plan/cantes_util.dart';
 import '../test/motor_test.dart';
 
 /// Hoy: lo que toca cada día. Cuentas atrás (examen y próximo cante), racha,
-/// test diario, repaso pendiente, probabilidad de aprobar y accesos rápidos.
+/// test diario, repaso pendiente y probabilidad de aprobar.
 class InicioPage extends ConsumerWidget {
   const InicioPage({super.key});
 
@@ -117,7 +117,7 @@ class InicioPage extends ConsumerWidget {
               child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                 Expanded(
                   child: Estadistica(
-                    onTap: () => context.go('/mas/convocatoria'),
+                    onTap: () => context.go('/organizacion/convocatoria'),
                     valor: dias == null ? '—' : '$dias',
                     etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
                     detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
@@ -169,7 +169,7 @@ class InicioPage extends ConsumerWidget {
                 if (!diarioHecho) const Icon(Icons.chevron_right),
               ]),
             ),
-            TarjetaCronogramaHoy(abrir: () => context.go('/temario/cronograma')),
+            TarjetaCronogramaHoy(abrir: () => context.go('/organizacion/cronograma')),
             if (sesionesHoy.isNotEmpty) ...[
               const SizedBox(height: 10),
               Tarjeta(
@@ -202,7 +202,7 @@ class InicioPage extends ConsumerWidget {
             if (prob != null && prob.temasSabidos > 0) ...[
               const SizedBox(height: 10),
               Tarjeta(
-                onTap: () => context.go('/temario/probabilidades'),
+                onTap: () => context.go('/organizacion/probabilidades'),
                 child: Row(children: [
                   Icon(Icons.percent, color: context.esquema.primary),
                   const SizedBox(width: 14),
@@ -212,22 +212,6 @@ class InicioPage extends ConsumerWidget {
                 ]),
               ),
             ],
-            const TituloSeccion('Accesos rápidos'),
-            GridView.count(
-              // En pantalla ancha (ordenador) van los cuatro en una fila.
-              crossAxisCount: MediaQuery.sizeOf(context).width >= 720 ? 4 : 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 2.2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              children: [
-                _acceso(context, Icons.quiz_outlined, 'Nuevo test', () => context.go('/test')),
-                _acceso(context, Icons.casino_outlined, 'Sacar bola', () => _irACantes(context, ref, 1)),
-                _acceso(context, Icons.percent, 'Probabilidades', () => context.go('/temario/probabilidades')),
-                _acceso(context, Icons.insights_outlined, 'Estadísticas', () => context.go('/test/estadisticas')),
-              ],
-            ),
           ],
         ),
       ),
@@ -239,17 +223,5 @@ class InicioPage extends ConsumerWidget {
     ref.read(subpestanaCantesProvider.notifier).state = subpestana;
     context.go('/cantes');
   }
-
-  Widget _acceso(BuildContext context, IconData icono, String texto, VoidCallback onTap) => Tarjeta(
-        onTap: onTap,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        child: Row(children: [
-          Icon(icono, color: context.esquema.primary),
-          const SizedBox(width: 10),
-          // Una palabra que no cabe (p. ej. «Probabilidades» en el ordenador) se
-          // reduce en lugar de partirse.
-          Expanded(child: FittedBox(fit: BoxFit.scaleDown, alignment: Alignment.centerLeft, child: Text(texto, maxLines: 1, style: context.textos.titleSmall))),
-        ]),
-      );
 
 }

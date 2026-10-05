@@ -7,6 +7,21 @@ import '../data/models/oposicion.dart';
 import '../core/providers.dart';
 import '../theme/app_theme.dart';
 
+/// Pestañas internas de un bloque (Estudiar, Cantes): en blanco sobre la
+/// cabecera morada, con el indicador dorado.
+TabBar barraPestanas(BuildContext context, {required TabController controller, required List<String> textos, ValueChanged<int>? onTap}) => TabBar(
+      controller: controller,
+      onTap: onTap,
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white.withValues(alpha: 0.7),
+      indicatorColor: context.colores.dorado,
+      indicatorWeight: 3,
+      dividerColor: Colors.transparent,
+      labelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w700, letterSpacing: 0.8),
+      unselectedLabelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.8),
+      tabs: [for (final t in textos) Tab(text: t)],
+    );
+
 /// Cabecera de la web (.site-header): degradado morado, título centrado en
 /// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
 class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
