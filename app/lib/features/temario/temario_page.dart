@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../cantar/probabilidades.dart';
 import 'tema_page.dart';
 
 /// Temario: ejercicios → partes → temas, con estado de estudio y descarga offline.
+/// Es la subpestaña TEMAS de Estudiar; [pestanas] va bajo el buscador.
 class TemarioPage extends ConsumerStatefulWidget {
-  const TemarioPage({super.key});
+  const TemarioPage({super.key, this.pestanas});
+  final PreferredSizeWidget? pestanas;
   @override
   ConsumerState<TemarioPage> createState() => _TemarioPageState();
 }
@@ -28,7 +28,6 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     final descargas = ref.watch(descargasProvider);
     final notas = ref.read(usuarioRepoProvider).todasLasNotas();
     final agendas = ref.watch(agendasProvider);
-    final prob = ref.watch(probabilidadAprobarProvider);
     // Código de colores de la organización del temario (vacío hasta que se descarga).
     final estructura = ref.watch(estructuraProvider).valueOrNull;
     _colorDe = (codigo) => estructura?.colorDe(codigo);
@@ -36,10 +35,11 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: const Text('Temario'),
+        title: Text(widget.pestanas == null ? 'Temario' : 'Estudiar'),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(56),
-          child: Padding(
+          preferredSize: Size.fromHeight(56 + (widget.pestanas?.preferredSize.height ?? 0)),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
               decoration: InputDecoration(
@@ -50,7 +50,9 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               ),
               onChanged: (v) => setState(() => _busqueda = v),
             ),
-          ),
+            ),
+            if (widget.pestanas != null) widget.pestanas!,
+          ]),
         ),
       ),
       body: temario.when(
@@ -83,25 +85,6 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                 ]),
               ),
               const SizedBox(height: 10),
-              if (Oposiciones.actual.esPrincipal || (ref.watch(estructuraProvider).valueOrNull?.bloques.isNotEmpty ?? false))
-              FilaEnlace(
-                icono: Icons.account_tree_outlined,
-                titulo: 'Organización del temario',
-                subtitulo: 'Bloques por colores, esquemas y conexiones entre temas',
-                onTap: () => context.go('/temario/organizacion'),
-              ),
-              FilaEnlace(
-                icono: Icons.percent,
-                titulo: 'Probabilidades',
-                subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}',
-                onTap: () => context.go('/temario/probabilidades'),
-              ),
-              FilaEnlace(
-                icono: Icons.event_note_outlined,
-                titulo: 'Cronograma',
-                subtitulo: 'Planifica una vuelta: qué temas cada semana',
-                onTap: () => context.go('/temario/cronograma'),
-              ),
               for (final ej in t.ejercicios) ...[
                 TituloSeccion(ej.nombre),
                 Padding(
@@ -131,8 +114,6 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                         ],
                     ),
               ],
-              const TituloSeccion('Organización'),
-              for (final r in t.organizacion) _filaRecurso(r, descargas.descargado(r.url)),
             ],
           );
         },

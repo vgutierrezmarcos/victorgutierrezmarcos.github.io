@@ -370,6 +370,9 @@ final canteEnCursoProvider = StateProvider<String?>((ref) => null);
 /// Subpestaña visible del bloque Cantes: 0 = agenda, 1 = cantar, 2 = diario.
 final subpestanaCantesProvider = StateProvider<int>((ref) => 0);
 
+/// Subpestaña visible del bloque Estudiar: 0 = temas, 1 = test.
+final subpestanaEstudiarProvider = StateProvider<int>((ref) => 0);
+
 class PlanNotifier extends Notifier<Plan> {
   @override
   Plan build() => ref.read(planRepoProvider).plan();

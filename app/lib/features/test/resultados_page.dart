@@ -31,6 +31,12 @@ class ResultadosPage extends ConsumerStatefulWidget {
 class _ResultadosPageState extends ConsumerState<ResultadosPage> {
   String _filtro = 'todas';
 
+  /// De vuelta al simulador: Estudiar, subpestaña TEST.
+  void _alTest() {
+    ref.read(subpestanaEstudiarProvider.notifier).state = 1;
+    context.go('/estudiar');
+  }
+
   @override
   Widget build(BuildContext context) {
     final r = widget.datos.resultado;
@@ -50,12 +56,12 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) context.go('/test');
+        if (!didPop) _alTest();
       },
       child: Scaffold(
         appBar: BarraWeb(
           title: const Text('Resultados'),
-          leading: IconButton(icon: const Icon(Icons.close), onPressed: () => context.go('/test')),
+          leading: IconButton(icon: const Icon(Icons.close), onPressed: _alTest),
           actions: [
             IconButton(
               icon: const Icon(Icons.share_outlined),
@@ -120,8 +126,8 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
             for (var i = 0; i < preguntas.length; i++) _revision(i, preguntas[i]),
             const SizedBox(height: 16),
             Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
-              FilledButton(onPressed: () => context.go('/test'), child: const Text('Nuevo test')),
-              OutlinedButton(onPressed: () => context.go('/test/estadisticas'), child: const Text('Ver estadísticas')),
+              FilledButton(onPressed: _alTest, child: const Text('Nuevo test')),
+              OutlinedButton(onPressed: () => context.go('/estudiar/test/estadisticas'), child: const Text('Ver estadísticas')),
             ]),
           ],
         ),
