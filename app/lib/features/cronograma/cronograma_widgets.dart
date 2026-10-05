@@ -46,11 +46,15 @@ class ResumenCronograma extends StatelessWidget {
 /// Las semanas del cronograma con sus temas. Con [onMarcar] se pueden marcar
 /// los temas; con [onDescanso], convertir una semana en descanso.
 class SemanasCronograma extends ConsumerWidget {
-  const SemanasCronograma({super.key, required this.c, required this.estado, this.onMarcar, this.onDescanso, this.soloDesdeActual = false});
+  const SemanasCronograma({super.key, required this.c, required this.estado, this.onMarcar, this.onDescanso, this.onRetocar, this.onTemas, this.soloDesdeActual = false});
   final Cronograma c;
   final EstadoCronograma estado;
   final void Function(String tema, bool hecho)? onMarcar;
   final void Function(SemanaPlan semana, bool descansar)? onDescanso;
+  /// Pulsación larga sobre un tema: moverlo de semana o quitarlo.
+  final void Function(String tema, SemanaPlan semana)? onRetocar;
+  /// Elegir los temas de una semana.
+  final void Function(SemanaPlan semana)? onTemas;
   final bool soloDesdeActual;
 
   @override
@@ -74,6 +78,8 @@ class SemanasCronograma extends ConsumerWidget {
                     style: context.textos.titleSmall?.copyWith(color: s.lunes == esta ? context.esquema.primary : null),
                   ),
                 ),
+                if (onTemas != null && !s.descanso && !s.lunes.isBefore(esta))
+                  IconButton(tooltip: 'Temas de esta semana', visualDensity: VisualDensity.compact, icon: const Icon(Icons.playlist_add, size: 20), onPressed: () => onTemas!(s)),
                 if (onDescanso != null && !s.lunes.isBefore(esta) && (s.descanso || s.temas.every((t) => !estado.hechos.contains(t))))
                   TextButton(
                     onPressed: () => onDescanso!(s, !s.descanso),
@@ -86,6 +92,7 @@ class SemanasCronograma extends ConsumerWidget {
                 for (final t in s.temas)
                   InkWell(
                     onTap: onMarcar == null ? null : () => onMarcar!(t, !estado.hechos.contains(t)),
+                    onLongPress: onRetocar == null ? null : () => onRetocar!(t, s),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 2),
                       child: Row(children: [

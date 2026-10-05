@@ -95,9 +95,13 @@ class Cronograma {
     this.creado,
     this.updatedAt,
     this.diaCante,
+    this.manual = false,
   });
 
   final String id;
+  /// Hecho o retocado a mano (semana a semana, importado o editado): sus
+  /// semanas no se reparten solas; se reparte lo pendiente solo si se pide.
+  final bool manual;
   /// Día de la semana en que canta (1 = lunes … 7 = domingo). Las semanas del
   /// cronograma acaban ese día: los temas de cada una son los de ese cante.
   /// null = semanas de lunes a domingo (cronogramas anteriores).
@@ -154,6 +158,7 @@ class Cronograma {
     PropuestaCronograma? propuesta,
     bool quitarPropuesta = false,
     DateTime? propuestaResuelta,
+    bool? manual,
   }) =>
       Cronograma(
         id: id,
@@ -175,6 +180,7 @@ class Cronograma {
         creado: creado,
         updatedAt: DateTime.now(),
         diaCante: diaCante,
+        manual: manual ?? this.manual,
       );
 
   Map<String, dynamic> toJson() => {
@@ -197,6 +203,7 @@ class Cronograma {
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         if (diaCante != null) 'diaCante': diaCante,
+        if (manual) 'manual': true,
       };
 
   factory Cronograma.fromJson(Map<dynamic, dynamic> j) => Cronograma(
@@ -222,6 +229,7 @@ class Cronograma {
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
         diaCante: (j['diaCante'] as num?)?.toInt(),
+        manual: j['manual'] as bool? ?? false,
       );
 
   /// Gana la versión más reciente, pero una propuesta del preparador posterior

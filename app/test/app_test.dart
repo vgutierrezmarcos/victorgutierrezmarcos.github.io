@@ -158,6 +158,7 @@ void main() {
     await tocar(tester, find.text('Cronograma'));
     expect(find.textContaining('En prueba'), findsNothing);
     await tocar(tester, find.text('Crear un cronograma'));
+    await tocar(tester, find.text('Generarlo'));
     expect(find.text('Intercalar los temas de Mixto'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Crear el cronograma'), 300, scrollable: find.byType(Scrollable).first);
     await tocar(tester, find.text('Crear el cronograma'));
@@ -520,5 +521,39 @@ void main() {
     await pestana(tester, 'Hoy');
     expect(find.text('Preparador de TCEE'), findsNothing);
     expect(find.text('¿Cómo usas la app en TCEE?'), findsNothing);
+  });
+
+  testWidgets('cronograma propio: pegar el texto, revisarlo, crearlo y retocarlo', (tester) async {
+    await arrancar(tester);
+    await pestana(tester, 'Organización');
+    await tocar(tester, find.text('Cronograma'));
+    await tocar(tester, find.text('Crear un cronograma'));
+    await tocar(tester, find.text('Traer el tuyo'));
+    final hoy = DateTime.now();
+    String f(int dias) {
+      final d = hoy.add(Duration(days: dias));
+      return '${d.day}/${d.month}/${d.year}';
+    }
+
+    await tester.enterText(find.byType(TextField), 'Mi plan\n${f(7)}: 3A1, 3A2\n${f(14)}: 3B1');
+    await tester.pumpAndSettle();
+    await tocar(tester, find.text('Leer el texto'));
+    expect(find.text('Revisa tu cronograma'), findsOneWidget);
+    expect(find.text('SEMANAS · 3 TEMAS'), findsOneWidget);
+    expect(find.text('Líneas que no he entendido (1)'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('Crear el cronograma'), 300, scrollable: find.byType(Scrollable).first);
+    await tocar(tester, find.text('Crear el cronograma'));
+
+    final c = plan.cronogramaActivo()!;
+    expect(c.manual, isTrue);
+    expect(c.semanas.map((s) => s.temas), [['3.A.1', '3.A.2'], ['3.B.1']]);
+    expect(find.text('Cronograma'), findsWidgets); // de vuelta en su pantalla
+
+    // Retoque: el 3.A.2 pasa a la segunda semana.
+    await tester.longPress(find.text('3.A.2').first);
+    await tester.pumpAndSettle();
+    await tocar(tester, find.textContaining('Mover al'));
+    expect(plan.cronogramaActivo()!.semanas.map((s) => s.temas), [['3.A.1'], ['3.B.1', '3.A.2']]);
+    expect(tester.takeException(), isNull);
   });
 }
