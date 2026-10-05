@@ -35,11 +35,11 @@ CAPTURAS = [
     ('hoy', 'Cada día,\nlo que toca'),
     ('dce-tema-web', 'Todo el temario,\ndentro de la app'),
     ('cantes-agenda', 'Tus cantes,\ncon avisos'),
-    ('dce-cantar', 'Sortea y canta\ncomo en el examen'),
+    ('dce-cantar', 'Saca bola y canta\ncomo en el examen'),
     ('cante-cancelado', '¿Te cancelan la clase?\nOtro preparador te la coge'),
     ('dce-probabilidades', '¿Qué probabilidad\nllevas?'),
     ('test-estadisticas', 'Los test oficiales,\ncon tu historial'),
-    ('dce-preparador', 'Tu preparador\ny tú, enlazados'),
+    ('dce-preparador', 'Tu preparador\ny tú, conectados'),
 ]
 
 
