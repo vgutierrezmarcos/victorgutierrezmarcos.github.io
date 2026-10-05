@@ -2,111 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
-import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import 'alta_page.dart';
 import 'directorio_page.dart';
 import 'red_widgets.dart';
 
-/// Formulario para pedir la verificación como preparador.
-Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) async {
-  final usuario = ref.read(usuarioActualProvider);
-  final nombre = TextEditingController(text: ref.read(perfilPreparadorProvider).nombre.isNotEmpty ? ref.read(perfilPreparadorProvider).nombre : (usuario?.displayName ?? ''));
-  final presentacion = TextEditingController();
-  final linkedin = TextEditingController(text: ref.read(perfilPreparadorProvider).linkedin);
-  final ejercicios = {for (final e in Oposiciones.actual.conTemasCantados) e.numero};
-  // A quién se la pide: null = al administrador y a cualquier verificado.
-  PreparadorVerificado? destinatario;
-  final verificados = await ref.read(verificadosProvider.future);
-  final candidatos = verificados.where((v) => v.uid != usuario?.uid).toList();
-  if (!context.mounted) return;
-  final ok = await showDialog<bool>(
-    context: context,
-    builder: (d) => StatefulBuilder(
-      builder: (d, set) => AlertDialog(
-        title: const Text('Pedir la verificación'),
-        content: SingleChildScrollView(
-          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('Cuenta quién eres para que puedan comprobarlo.', style: Theme.of(d).textTheme.bodySmall),
-            const SizedBox(height: 12),
-            TextField(controller: nombre, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre y apellidos')),
-            const SizedBox(height: 12),
-            Text('Ejercicios que preparas', style: Theme.of(d).textTheme.labelMedium),
-            Wrap(spacing: 8, children: [
-              for (final e in ejerciciosConCante)
-                FilterChip(label: Text(etiquetaEjercicioCante(e)), selected: ejercicios.contains(e), onSelected: (v) => set(() => v ? ejercicios.add(e) : ejercicios.remove(e))),
-            ]),
-            const SizedBox(height: 12),
-            Text('A quién se la pides', style: Theme.of(d).textTheme.labelMedium),
-            DropdownButtonFormField<String>(
-              initialValue: destinatario?.uid ?? '',
-              isExpanded: true,
-              items: [
-                const DropdownMenuItem(value: '', child: Text('A cualquier preparador verificado')),
-                for (final v in candidatos) DropdownMenuItem(value: v.uid, child: Text(v.nombre, overflow: TextOverflow.ellipsis)),
-              ],
-              onChanged: (u) => set(() => destinatario = candidatos.where((v) => v.uid == u).firstOrNull),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                destinatario == null
-                    ? 'La podrá revisar cualquier preparador verificado.'
-                    : 'Se la enviamos a ${destinatario!.nombre}, que recibirá un aviso.',
-                style: Theme.of(d).textTheme.labelSmall,
-              ),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: presentacion,
-              maxLines: 4,
-              decoration: const InputDecoration(labelText: 'Quién eres', hintText: 'Promoción y cuerpo, destino, desde cuándo preparas, quién te conoce…'),
-              onChanged: (_) => set(() {}),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: linkedin,
-              keyboardType: TextInputType.url,
-              decoration: InputDecoration(
-                labelText: 'LinkedIn (opcional)',
-                hintText: 'linkedin.com/in/tu-perfil',
-                helperText: 'Ayuda a quien te verifica y saldrá en el directorio de preparadores',
-                errorText: linkedin.text.trim().isEmpty || enlaceLinkedin(linkedin.text) != null ? null : 'Pega el enlace a tu perfil (linkedin.com/in/…)',
-              ),
-              onChanged: (_) => set(() {}),
-            ),
-          ]),
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
-          FilledButton(
-            onPressed: nombre.text.trim().isEmpty || presentacion.text.trim().length < 10 || ejercicios.isEmpty || (linkedin.text.trim().isNotEmpty && enlaceLinkedin(linkedin.text) == null) ? null : () => Navigator.pop(d, true),
-            child: const Text('Enviar'),
-          ),
-        ],
-      ),
-    ),
-  );
-  if (ok != true || !context.mounted) return;
-  final messenger = ScaffoldMessenger.of(context);
-  try {
-    await ref.read(redRepoProvider).solicitar(
-      nombre: nombre.text,
-      ejercicios: ejercicios.toList()..sort(),
-      presentacion: presentacion.text,
-      linkedin: linkedin.text,
-      destinatario: destinatario?.uid,
-      destinatarioNombre: destinatario?.nombre ?? '',
-    );
-    ref.invalidate(estadoRedProvider);
-    messenger.showSnackBar(const SnackBar(content: Text('Solicitud enviada. Te avisaremos en esta pantalla cuando te verifiquen.')));
-  } catch (e) {
-    messenger.showSnackBar(SnackBar(content: Text('No se pudo enviar: $e')));
-  }
-}
+/// Pedir la verificación como preparador (ya es preparador pero no la ha pedido).
+Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) =>
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AltaPreparadorPage(soloVerificacion: true)));
 
 /// Solicitudes pendientes: las ve y resuelve un preparador verificado o el administrador.
 class VerificarPreparadoresPage extends ConsumerWidget {
@@ -122,7 +29,7 @@ class VerificarPreparadoresPage extends ConsumerWidget {
         builder: (d) => AlertDialog(
           title: Text(aprobar ? '¿Verificar a ${s.nombre}?' : '¿Rechazar la solicitud?'),
           content: Text(aprobar
-              ? 'Avalas que ${s.nombre} es preparador o preparadora de la oposición. Podrá dar su código a alumnos, ver y coger sustituciones y verificar a otros. Queda registrado que lo has verificado tú.'
+              ? 'Avalas que ${s.nombre} es preparador o preparadora de la oposición. Podrá dar su código a alumnos, ver y coger clases sueltas y verificar a otros. Queda registrado que lo has verificado tú.'
               : 'Se borrará la solicitud de ${s.nombre}. Podrá volver a pedirla.'),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
@@ -205,7 +112,7 @@ class AdminRedPage extends ConsumerWidget {
           builder: (d, set) => AlertDialog(
             title: Text('¿Retirar a ${v.nombre}?'),
             content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('Dejará de aparecer en la lista, sus alumnos enlazados dejarán de compartir con él o ella, y no podrá coger sustituciones ni verificar a nadie.'),
+              const Text('Dejará de aparecer en la lista, sus alumnos enlazados dejarán de compartir con él o ella, y no podrá coger clases sueltas ni verificar a nadie.'),
               if (avalados > 0) CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
                 value: cascada,

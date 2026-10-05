@@ -117,7 +117,7 @@ class CantePage extends ConsumerWidget {
                     Flexible(child: Etiqueta((c.preparadorNombre ?? '').isEmpty ? 'Programado por tu preparador' : 'Programado por tu preparador · ${c.preparadorNombre}', color: Color(colorDePersona(c.preparador!)))),
                   ]),
                 ),
-              if (c.sustitucion != null) const Padding(padding: EdgeInsets.only(top: 8), child: Etiqueta('Sustitución')),
+              if (c.sustitucion != null) const Padding(padding: EdgeInsets.only(top: 8), child: Etiqueta('Clase suelta')),
             ]),
           ),
           if (c.modalidad != Modalidad.sinIndicar && !c.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: c)),
@@ -133,7 +133,7 @@ class CantePage extends ConsumerWidget {
                   FilledButton.icon(
                     onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
                     icon: const Icon(Icons.campaign_outlined, size: 18),
-                    label: const Text('Buscar preparador alternativo'),
+                    label: const Text('Pedir una clase suelta'),
                   ),
                 ]),
               ),
@@ -145,7 +145,7 @@ class CantePage extends ConsumerWidget {
               child: TextButton.icon(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
                 icon: const Icon(Icons.campaign_outlined, size: 18),
-                label: const Text('Buscar otro preparador para este cante'),
+                label: const Text('Pedir una clase suelta a otro preparador'),
               ),
             ),
           if (c.pendiente) ...[

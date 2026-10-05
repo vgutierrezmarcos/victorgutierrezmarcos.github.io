@@ -26,7 +26,7 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
       body: RefreshIndicator(
         onRefresh: () async => ref.invalidate(verificadosProvider),
         child: ListaAdaptable(children: [
-          Text('Preparadores que ha verificado otro preparador de la red. Mira su perfil y, si te interesa, pídele su código para enlazar o pídele un cante suelto desde «Buscar quién me coja un cante».', style: context.textos.bodySmall),
+          Text('Preparadores que ha verificado otro preparador de la red. Mira su perfil y, si te interesa, pídele su código para conectar con él o ella, o pídele una clase suelta desde «Pedir una clase suelta».', style: context.textos.bodySmall),
           const SizedBox(height: 10),
           Wrap(spacing: 6, runSpacing: 6, children: [
             ChoiceChip(label: const Text('Todos'), selected: _ejercicio == null, onSelected: (_) => setState(() => _ejercicio = null)),

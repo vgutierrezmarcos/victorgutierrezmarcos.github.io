@@ -146,7 +146,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BarraWeb(
-        title: Text(_sesion ? (_edicion ? 'Editar sesión' : 'Nueva sesión') : (_edicion ? 'Editar cante' : 'Nuevo cante')),
+        title: Text(_sesion ? (_edicion ? 'Editar clase' : 'Nueva clase') : (_edicion ? 'Editar cante' : 'Nuevo cante')),
         actions: [TextButton(onPressed: _guardar, child: const Text('Guardar'))],
       ),
       body: ListaAdaptable(
@@ -165,7 +165,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
                     onSelected: (v) => setState(() => v ? _alumnos.add(a.id) : _alumnos.remove(a.id)),
                   ),
               ]),
-            if (_alumnos.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Se crea una sesión para cada alumno, a la misma hora.', style: context.textos.labelSmall)),
+            if (_alumnos.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Se crea una clase para cada alumno, a la misma hora.', style: context.textos.labelSmall)),
           ],
           const TituloSeccion('Cuándo'),
           Row(children: [

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/oposicion.dart';
+import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
 
@@ -282,8 +283,10 @@ class RedRepo {
 
   /// Lo que merece una notificación y aún no se ha notificado ([vistos]).
   /// [preparador]: el usuario es preparador verificado con los avisos de
-  /// sustitución activados.
-  Future<List<AvisoRed>> avisosNuevos({required Set<String> vistos, required bool preparador, bool admin = false, String Function(DateTime)? cuando}) async {
+  /// clases sueltas activados; [reservas], con los de reservas (por defecto,
+  /// los mismos). Solo cuenta lo reciente (dos días), para no avisar de golpe
+  /// de lo de antes.
+  Future<List<AvisoRed>> avisosNuevos({required Set<String> vistos, required bool preparador, bool? reservas, bool admin = false, String Function(DateTime)? cuando}) async {
     if (!conSesion) return const [];
     String f(DateTime d) => cuando?.call(d) ?? '${d.day}/${d.month} a las ${d.hour.toString().padLeft(2, '0')}:${d.minute.toString().padLeft(2, '0')}';
     final out = <AvisoRed>[];
@@ -291,19 +294,51 @@ class RedRepo {
     try {
       // Solicitudes de verificación: al preparador al que se la piden y, las
       // abiertas, solo al administrador (no a todos los preparadores).
-      if (admin || (await miVerificacion()) != null) {
+      final verificacion = await miVerificacion();
+      final reciente = ahora.subtract(const Duration(days: 2));
+      // Al aprobarse su verificación.
+      if (verificacion != null && (verificacion.desde?.isAfter(reciente) ?? false)) {
+        out.add(AvisoRed(id: 'verif:${oposicion.id}', titulo: 'Ya estás verificado como preparador', texto: 'Ya puedes dar tu código a tus alumnos y coger clases sueltas. Lo tienes en Más → Preparador.'));
+      }
+      if (verificacion != null) {
+        // Alumnos que acaban de conectar con su código.
+        final enlazados = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
+        for (final d in enlazados.docs) {
+          final desde = DateTime.tryParse(d.data()['desde'] as String? ?? '');
+          if (desde == null || desde.isBefore(reciente)) continue;
+          final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
+          out.add(AvisoRed(id: 'enl:${d.id}', titulo: '${nombre.isEmpty ? 'Un alumno' : nombre} se ha conectado contigo', texto: 'Ya ves sus temas y sus cantes en Más → Preparador.'));
+        }
+      }
+      if (admin || verificacion != null) {
         for (final sol in await solicitudesPendientes(admin: admin)) {
           if (sol.destinatario == uid || (admin && sol.destinatario == null)) {
-            out.add(AvisoRed(id: 'sol:${sol.uid}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Preparadores → Verificar preparadores.'));
+            out.add(AvisoRed(id: 'sol:${sol.uid}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Más → Preparador → Verificar preparadores.'));
           }
         }
       }
       if (preparador) {
         for (final s in await tablon()) {
-          out.add(AvisoRed(id: 'sust:${s.id}', titulo: 'Buscan preparador para un cante', texto: '${f(s.fecha)}${s.conFranja ? ' – ${_hm(s.hasta!)}' : ''} · ${s.descripcion}'));
+          out.add(AvisoRed(id: 'sust:${s.id}', titulo: 'Un alumno pide una clase suelta', texto: '${f(s.fecha)}${s.conFranja ? ' – ${_hm(s.hasta!)}' : ''} · ${s.descripcion}'));
         }
+      }
+      if (reservas ?? preparador) {
         for (final r in (await reservasRecibidas()).where((r) => r.pedida && r.fecha.isAfter(ahora))) {
-          out.add(AvisoRed(id: 'res:${r.id}', titulo: 'Reserva de ${r.alumnoNombre.isEmpty ? 'un alumno' : r.alumnoNombre}', texto: 'Quiere clase el ${f(r.fecha)}. Acéptala o recházala en Preparadores.'));
+          out.add(AvisoRed(id: 'res:${r.id}', titulo: 'Reserva de ${r.alumnoNombre.isEmpty ? 'un alumno' : r.alumnoNombre}', texto: 'Quiere clase el ${f(r.fecha)}. Acéptala o recházala en Mi semana.'));
+        }
+      }
+      // Al alumno: clases que su preparador acaba de cancelar o de programar (o mover).
+      final cantes = await oposicion.raizUsuario(_db!, uid!).collection('cantes').where('preparador', isNull: false).get();
+      for (final d in cantes.docs) {
+        final c = Cante.fromJson(d.data());
+        // Las de reservas y clases sueltas ya tienen su propio aviso.
+        if (c.id.startsWith('res_') || c.id.startsWith('sust_')) continue;
+        if (c.borrado || !c.fecha.isAfter(ahora) || !(c.updatedAt?.isAfter(reciente) ?? false) || c.preparador == uid) continue;
+        final quien = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+        if (c.cancelado) {
+          out.add(AvisoRed(id: 'canc:${c.id}', titulo: '$quien ha cancelado tu clase', texto: 'La del ${f(c.fecha)}. Si quieres, pide una clase suelta desde el cante.'));
+        } else if (!c.hecho) {
+          out.add(AvisoRed(id: 'prog:${c.id}:${c.fecha.toIso8601String()}', titulo: '$quien te ha programado una clase', texto: 'El ${f(c.fecha)}. La tienes en tu agenda.'));
         }
       }
       for (final s in (await misPeticiones()).where((s) => s.cogida && s.vigente(ahora))) {
@@ -318,7 +353,19 @@ class RedRepo {
     return out.where((a) => !vistos.contains(a.id)).toList();
   }
 
-  /// ¿Tiene activados los avisos de sustitución? (lo lee la tarea en segundo plano).
+  /// ¿Tiene activados los avisos de reservas? (lo lee la tarea en segundo plano).
+  Future<bool> quiereAvisosDeReservas() async {
+    if (!conSesion) return false;
+    try {
+      if (await miVerificacion() == null) return false;
+      final d = await oposicion.raizUsuario(_db!, uid!).collection('progress').doc('preparador').get();
+      return PerfilPreparador.fromJson(d.data()).avisosReservas;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// ¿Tiene activados los avisos de clases sueltas? (lo lee la tarea en segundo plano).
   Future<bool> quiereAvisosDeSustitucion() async {
     if (!conSesion) return false;
     try {

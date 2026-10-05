@@ -33,7 +33,7 @@ class CuentaPage extends ConsumerWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(kIsWeb ? 'Lo mismo en el móvil y en el ordenador' : 'Sincroniza con la web y el ordenador', style: context.textos.titleMedium),
                 const SizedBox(height: 6),
-                Text('Con tu cuenta de Google tienes lo mismo en la app del móvil, en la versión para el navegador y en el simulador de victorgutierrezmarcos.es: historial de tests, repaso, temas, notas, cantes, planificación y, si eres preparador, tus alumnos y sesiones.', style: context.textos.bodySmall),
+                Text('Con tu cuenta de Google tienes lo mismo en la app del móvil, en la versión para el navegador y en el simulador de victorgutierrezmarcos.es: historial de tests, repaso, temas, notas, cantes, planificación y, si eres preparador, tus alumnos y sus clases.', style: context.textos.bodySmall),
                 const SizedBox(height: 14),
                 FilledButton.icon(
                   onPressed: ocupado
@@ -119,7 +119,7 @@ class CuentaPage extends ConsumerWidget {
                   subtitle: Text('Todos tus datos, de todas las oposiciones, y tu cuenta en la app', style: context.textos.labelSmall),
                   onTap: () => _confirmar(
                     context,
-                    'Se borrarán de la nube y de este dispositivo todos tus datos, de todas las oposiciones (tests, repaso, temas, notas, cantes, planificación, alumnos y sesiones), se romperán los enlaces con tus preparadores y alumnos, y se eliminará tu cuenta en la app. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
+                    'Se borrarán de la nube y de este dispositivo todos tus datos, de todas las oposiciones (tests, repaso, temas, notas, cantes, planificación, alumnos y sus clases), se romperán los enlaces con tus preparadores y alumnos, y se eliminará tu cuenta en la app. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
                     () async {
                       final error = await eliminarMiCuenta(ref);
                       if (error != null && context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No se ha podido eliminar la cuenta: $error')));

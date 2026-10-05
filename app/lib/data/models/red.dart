@@ -232,7 +232,7 @@ class Sustitucion {
         bolsa: TipoBolsa.lista,
         temas: temas,
         notas: notas,
-        titulo: 'Sustitución · ${nombreSustituto ?? cogidaPorNombre}',
+        titulo: 'Clase suelta · ${nombreSustituto ?? cogidaPorNombre}',
         sustitucion: id,
         modalidad: modalidad,
         updatedAt: DateTime.now(),

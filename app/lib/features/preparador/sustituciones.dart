@@ -129,7 +129,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
     final ordenados = [...verificados]..sort((a, b) => (b.ejercicios.contains(_ejercicio) ? 1 : 0) - (a.ejercicios.contains(_ejercicio) ? 1 : 0));
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Buscar preparador')),
+      appBar: BarraWeb(title: const Text('Pedir una clase suelta')),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
@@ -406,7 +406,7 @@ class TablonPage extends ConsumerWidget {
     final sesiones = ref.watch(sesionesProvider);
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Sustituciones')),
+      appBar: BarraWeb(title: const Text('Clases sueltas')),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(tablonProvider);

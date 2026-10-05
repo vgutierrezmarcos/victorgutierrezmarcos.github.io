@@ -113,7 +113,7 @@ void main() {
     movil(tester);
     Paleta.usar('tcee');
     // Con las dos lanzadas, como quedará la app.
-    await tester.pumpWidget(ElegirOposicionApp(alElegir: (_) async {}));
+    await tester.pumpWidget(ElegirOposicionApp(alElegir: (_, __) async {}));
     // El logo de la cabecera se carga fuera del reloj del test.
     await tester.runAsync(() => precacheImage(const AssetImage('assets/icon/icon.png'), tester.element(find.byType(Scaffold))));
     await tester.pump();

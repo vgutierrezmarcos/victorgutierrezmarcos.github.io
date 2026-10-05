@@ -17,6 +17,7 @@ import 'core/providers.dart';
 import 'features/inicio/elegir_oposicion.dart';
 import 'theme/app_theme.dart';
 import 'data/models/oposicion.dart';
+import 'data/models/preparador.dart';
 import 'data/repos/contenido_repo.dart';
 import 'data/repos/descargas_repo.dart';
 import 'data/repos/plan_repo.dart';
@@ -115,9 +116,15 @@ class _RaizAppState extends State<RaizApp> {
     if (elegida != null || !Oposiciones.variasDisponibles) _arrancar(elegida ?? Oposiciones.todas.first);
   }
 
-  Future<void> _arrancar(Oposicion oposicion) async {
+  /// Arranca con [oposicion]. Con [papel] (al elegirla la primera vez), lo fija.
+  Future<void> _arrancar(Oposicion oposicion, {Papel? papel}) async {
     await Hive.box(Cajas.app).put('oposicion', oposicion.id);
     final servicios = await crearServicios(oposicion, http: widget.http, firebaseDisponible: widget.firebaseDisponible);
+    if (papel != null) {
+      final repo = servicios.preparador;
+      if (papel == Papel.preparador && !repo.perfil().activo) await repo.activar();
+      await repo.guardarPerfil(repo.perfil().copyWith(papelElegido: true));
+    }
     if (mounted) setState(() => _servicios = servicios);
   }
 
@@ -126,7 +133,7 @@ class _RaizAppState extends State<RaizApp> {
     final servicios = _servicios;
     if (servicios == null) {
       return Oposiciones.variasDisponibles && widget.elegida == null
-          ? ElegirOposicionApp(alElegir: _arrancar)
+          ? ElegirOposicionApp(alElegir: (o, papel) => _arrancar(o, papel: papel))
           : const SizedBox.shrink();
     }
     // Una clave por oposición: al cambiarla se descartan todos los providers.

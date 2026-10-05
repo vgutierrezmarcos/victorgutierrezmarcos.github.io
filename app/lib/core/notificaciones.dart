@@ -164,7 +164,7 @@ class Notificaciones {
       titulo,
       texto,
       const NotificationDetails(
-        android: AndroidNotificationDetails('red', 'Preparadores y sustituciones',
+        android: AndroidNotificationDetails('red', 'Preparadores y clases sueltas',
             channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
         iOS: DarwinNotificationDetails(),
       ),

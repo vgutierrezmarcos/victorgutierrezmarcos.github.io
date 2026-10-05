@@ -143,6 +143,10 @@ class ClaseFija {
 
 /// Perfil de preparador del usuario (documento users/{uid}/progress/preparador).
 /// Es privado: lo que ven los demás se publica aparte (ver data/models/red.dart).
+/// Papel del usuario en una oposición: la prepara (opositor) o prepara a
+/// otros (preparador). Se guarda en [PerfilPreparador.activo].
+enum Papel { opositor, preparador }
+
 class PerfilPreparador {
   const PerfilPreparador({
     this.activo = false,
@@ -150,14 +154,20 @@ class PerfilPreparador {
     this.nombre = '',
     this.telefono = '',
     this.avisosSustitucion = true,
+    this.avisosReservas = true,
     this.reservas = false,
     this.huecos = const [],
     this.linkedin = '',
+    this.papelElegido = false,
     this.updatedAt,
   });
 
-  /// El usuario ha activado «Soy preparador».
+  /// Su papel en esta oposición es el de preparador (si no, es opositor). En
+  /// una misma oposición no se puede ser las dos cosas.
   final bool activo;
+  /// Ha elegido su papel en esta oposición (al empezar, en Ajustes o en Hoy).
+  /// Mientras no lo elija, se le pregunta una vez.
+  final bool papelElegido;
   /// Código que da a sus alumnos para enlazar (null hasta que está verificado).
   final String? codigo;
   /// Nombre con el que le ven sus alumnos.
@@ -166,6 +176,8 @@ class PerfilPreparador {
   final String telefono;
   /// Avisar de las peticiones de sustitución nuevas (activado por defecto).
   final bool avisosSustitucion;
+  /// Avisar de las reservas de sus alumnos (activado por defecto).
+  final bool avisosReservas;
   /// Sus alumnos pueden reservar en sus huecos libres (desactivado por defecto).
   final bool reservas;
   /// Huecos semanales en los que acepta reservas.
@@ -174,15 +186,17 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? reservas, List<Hueco>? huecos, String? linkedin}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
         telefono: telefono ?? this.telefono,
         avisosSustitucion: avisosSustitucion ?? this.avisosSustitucion,
+        avisosReservas: avisosReservas ?? this.avisosReservas,
         reservas: reservas ?? this.reservas,
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
+        papelElegido: papelElegido ?? this.papelElegido,
         updatedAt: DateTime.now(),
       );
 
@@ -192,9 +206,11 @@ class PerfilPreparador {
         'nombre': nombre,
         'telefono': telefono,
         'avisosSustitucion': avisosSustitucion,
+        'avisosReservas': avisosReservas,
         'reservas': reservas,
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
+        'papelElegido': papelElegido,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -206,9 +222,11 @@ class PerfilPreparador {
           nombre: j['nombre'] as String? ?? '',
           telefono: j['telefono'] as String? ?? '',
           avisosSustitucion: j['avisosSustitucion'] as bool? ?? true,
+          avisosReservas: j['avisosReservas'] as bool? ?? true,
           reservas: j['reservas'] as bool? ?? false,
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
+          papelElegido: j['papelElegido'] as bool? ?? false,
           updatedAt: _fecha(j['updatedAt']),
         );
 }
