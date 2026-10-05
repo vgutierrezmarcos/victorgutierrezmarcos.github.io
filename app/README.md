@@ -4,15 +4,19 @@ App Flutter (Android, iOS y navegador) complementaria de [victorgutierrezmarcos.
 
 ## Qué hace
 
-Cinco bloques, uno por cada cosa que se hace con la app. La página pública que la explica, con capturas y vídeo, es [`app/index.html`](index.html) (victorgutierrezmarcos.es/app/).
+Cinco bloques, iguales para opositores y preparadores, uno por cada cosa que se hace con la app (rutas en `lib/app.dart`; las de antes se redirigen con `rutaNueva`). La página pública que la explica, con capturas y vídeo, es [`app/index.html`](index.html) (victorgutierrezmarcos.es/app/).
 
 | Bloque | Funciones |
 |---|---|
-| **Hoy** | Lo que toca: cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Avisa cuando hay una versión nueva. A un preparador le recuerda las sesiones del día con sus alumnos. |
-| **Temario** | Ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso. Organización del temario (bloques con el código de colores del PowerPoint, esquemas interactivos con las conexiones entre temas y «por dónde seguir»). Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de las preguntas de ese tema y nota libre. Probabilidades calculadas como en el Excel de organización, con mapa de calor por probabilidad o por eficiencia, en 2D o en 3D. **Cronograma** de una vuelta. Recursos de organización. |
-| **Cantes** | Tres subpestañas. **Agenda**: cantes con calendario mensual, cuenta atrás y avisos la víspera y una hora antes; repetición semanal; exportación a Google Calendar o a un `.ics`. **Cantar**: sorteo como en el examen (2 temas de cada parte del 3.º y del 4.º) o de una bolsa propia, y cronómetro para el dictamen de coyuntura del 1.º (el 5.º no se canta) (estudiados, en repaso, lista o los temas de un cante), con opción de dar prioridad a los temas flojos; cronómetro de preparación y exposición con avisos también en segundo plano, y grabación de audio. **Diario**: cómo fue cada cante, estadísticas por tema y temas flojos. Los cantes duran 30 minutos por defecto. |
-| **Test** | Simulador con los mismos filtros y baremo que la web (temas, bloques, exámenes, nº de preguntas, tiempo, 1 / -0,33 / 0). Rejilla de navegación, imágenes, marcar preguntas. Resultados con puntuación por bloque y revisión. Estadísticas e historial unificado con la web. |
-| **Más** | Convocatoria (fecha de cada ejercicio, que introduce siempre el usuario, e hitos propios) y horario de estudio semanal. **Preparadores** (ver más abajo). Cuenta (Google), recordatorio diario (desactivado por defecto), tema claro/oscuro, descargas, enlaces útiles y exportar/borrar datos. |
+| **Hoy** | Lo que toca. Al opositor: cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, semana del cronograma, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Al preparador, primero su panel (`PanelPreparadorHoy`): clases de hoy, reservas por confirmar, clases sueltas del tablón y verificaciones; después, test diario y repaso. Avisa cuando hay una versión nueva. |
+| **Estudiar** | Dos subpestañas. **Temas**: ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso y agenda de cada tema (apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de sus preguntas y nota libre). **Test**: simulador con los mismos filtros y baremo que la web (1 / -0,33 / 0), resultados por bloque, revisión, estadísticas e historial unificado con la web. |
+| **Cantes** | Al opositor, tres subpestañas. **Agenda**: calendario mensual, cuenta atrás, avisos la víspera y una hora antes, repetición semanal y exportación a Google Calendar o `.ics`. **Cantar**: sacar bola como en el examen o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con prioridad opcional a los flojos; cronómetro de preparación y exposición con avisos en segundo plano y grabación. **Diario**: cómo fue cada cante, estadísticas por tema y temas flojos. Al preparador: **Clases** (su semana) y **Cantar**. |
+| **Organización** | Como la sección de la web: **cronograma** (generado, semana a semana o importado de texto, Excel, Word, PDF o CSV; se retoca a mano), **probabilidades** (como en el Excel de organización, por probabilidad o eficiencia, en 2D o 3D), **convocatoria** (fechas que pone el usuario e hitos propios), **horario** de estudio, **mapa del temario** (bloques con el código de colores y esquema de conexiones) y documentos de organización. |
+| **Más** | **Preparador** (si ese es su papel) o **Mi preparador** (si es opositor). Cuenta (Google), ajustes (oposición y papel, avisos, tema claro/oscuro, descargas), contenido, enlaces útiles y acerca de. |
+
+### Papel en cada oposición
+
+En cada oposición se es **opositor o preparador**, no las dos cosas (`Papel`, guardado en `PerfilPreparador.activo`, con `papelElegido`). Se elige al empezar (`ElegirOposicionApp`, segundo paso), se cambia en *Más → Ajustes → Tu papel* y a quien venía de una versión anterior se le pregunta una vez en Hoy (`TarjetaElegirPapel`). Pasar a preparador deja de compartir el progreso con los preparadores propios de esa oposición; los datos se conservan.
 
 ## Estructura
 
@@ -29,7 +33,7 @@ lib/
 ├── features/cantes/           # bloque Cantes: cabecera con las subpestañas Agenda, Cantar y Diario
 ├── features/cantar/           # sorteo (probabilidades del Excel y sorteos), reloj_cante, vista Cantar, probabilidades
 ├── features/plan/             # vistas Agenda y Diario, cante, convocatoria, horario
-├── features/preparador/       # «Tengo preparador» / «Soy preparador», ficha del alumno y sesión
+├── features/preparador/       # Preparador (alta, panel de Hoy, semana, alumnos, tablón) y Mi preparador
 ├── features/organizacion/     # bloques, detalle de bloque y esquema interactivo del temario
 ├── features/{inicio,temario,mas}/
 └── widgets/comunes.dart       # piezas de la web: cabecera, títulos de sección, tarjetas, grupos desplegables
@@ -109,10 +113,12 @@ Privacidad, tal como se explica en la app (`TarjetaPrivacidad` en Cuenta), en `i
 
 ## Preparadores
 
-`data/repos/preparador_repo.dart` y `features/preparador/`. La sección tiene dos lados:
+`data/repos/preparador_repo.dart` y `features/preparador/`. Cada papel tiene su pantalla:
 
-- **Soy preparador**: alumnos (enlazados o dados de alta a mano), sesiones de cante (un `Cante` con `alumno`; una por alumno aunque se programen en grupo), sorteo y cronómetro con la bolsa de temas del alumno (`CantarPage(sesion: …)`), valoración, ficha del alumno (temas que lleva, cantados y flojos, historial, notas privadas) e informe en texto para enviar (`informeCante`). Funciona sin cuenta, en local.
-- **Tengo preparador**: el alumno escribe el código de seis caracteres de su preparador (`codigos/{codigo}` → uid). Al enlazar crea `users/{alumno}/preparadores/{preparador}` (el permiso) y `preparadores/{preparador}/alumnos/{alumno}` (para que el preparador lo vea en su lista). Desde entonces el preparador lee `users/{alumno}/progress/settings` (temas estudiados y en repaso) y `users/{alumno}/cantes`, y cada sesión que guarda se copia a `users/{alumno}/cantes/{id}`: aparece en la agenda del alumno y, una vez valorada, en su diario. No se comparten tests, notas ni grabaciones. Cualquiera de los dos puede romper el enlace.
+- **Preparador** (`preparador_page.dart`, *Más → Preparador*): sin alta, presenta la sección y lleva a `AltaPreparadorPage`, que fija el papel y pide la verificación en un solo paso. Ya dado de alta, por grupos: estado y código, tus clases (semana; cada clase es un `Cante` con `alumno`, una por alumno aunque se programen en grupo), tus alumnos (enlazados o a mano; ficha con temas, cantados y flojos, historial, notas privadas, clases fijas, sacar bola con `CantarPage(sesion: …)`, valoración e informe), clases sueltas (tablón), la red (directorio, verificar, gestionar) y ajustes. Funciona sin cuenta, en local.
+- **Mi preparador** (`mi_preparador_page.dart`): el opositor escribe el código de seis caracteres de su preparador (`codigos/{codigo}` → uid). Al conectar crea `users/{alumno}/preparadores/{preparador}` (el permiso) y `preparadores/{preparador}/alumnos/{alumno}` (para que el preparador lo vea en su lista). Desde entonces el preparador lee `users/{alumno}/progress/settings` (temas estudiados y en repaso) y `users/{alumno}/cantes`, y cada clase que guarda se copia a `users/{alumno}/cantes/{id}`: aparece en la agenda del alumno y, una vez valorada, en su diario. No se comparten tests, notas ni grabaciones. Cualquiera de los dos puede romper el enlace. Desde aquí también se pide una clase suelta, se reserva clase y se ve el directorio.
+
+En la interfaz se dice «clase» (nunca «sesión») y «clase suelta» (nunca «sustitución»); los identificadores internos (`Sesion…`, `sustitucion`) no cambian.
 
 El enlace exige que ambos hayan iniciado sesión con Google y que las reglas de `firestore.rules` estén aplicadas en la consola de Firebase. `test/preparador_test.dart` comprueba el flujo completo con Firestore simulado; las reglas no se pueden probar ahí (el simulador no admite funciones), así que hay que verificarlas con dos cuentas reales.
 

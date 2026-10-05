@@ -186,15 +186,32 @@ class _Shell extends StatelessWidget {
         ]),
       );
     }
+    // La etiqueta más larga («ORGANIZACIÓN») cabe en una línea: si con la
+    // tipografía de la oposición no cabe en el ancho de cada destino, se reduce.
+    final tema = NavigationBarTheme.of(context);
+    final base = tema.labelTextStyle?.resolve({WidgetState.selected}) ?? const TextStyle(fontSize: 10.5);
+    final medida = (TextPainter(text: TextSpan(text: 'ORGANIZACIÓN', style: base), textDirection: TextDirection.ltr, textScaler: MediaQuery.textScalerOf(context))..layout()).width;
+    final cabe = MediaQuery.sizeOf(context).width / _destinos.length - 8;
+    final factor = medida > cabe ? cabe / medida : 1.0;
     return Scaffold(
       body: shell,
       // Menú de la web (.main-nav): blanco, con filete superior y etiquetas en mayúsculas.
       bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.borde))),
-        child: NavigationBar(
+        child: NavigationBarTheme(
+          data: factor == 1.0
+              ? tema
+              : tema.copyWith(
+                  labelTextStyle: WidgetStateProperty.resolveWith((estados) {
+                    final t = tema.labelTextStyle?.resolve(estados) ?? base;
+                    return t.copyWith(fontSize: (t.fontSize ?? 10.5) * factor, letterSpacing: (t.letterSpacing ?? 0) * factor);
+                  }),
+                ),
+          child: NavigationBar(
           selectedIndex: shell.currentIndex,
           onDestinationSelected: _ir,
           destinations: [for (final d in _destinos) NavigationDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: d.$3)],
+          ),
         ),
       ),
     );

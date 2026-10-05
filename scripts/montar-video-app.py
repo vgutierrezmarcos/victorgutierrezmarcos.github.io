@@ -57,13 +57,13 @@ def sans(tam, peso='Regular'):
 # están repartidas a partes iguales entre TCEE y DCE; una que empieza por «@»
 # se pinta en un portátil (la app en el ordenador).
 ESCENAS = [
-    (4.5, 10, 'DOS OPOSICIONES', 'TCEE o DCE:\nelige la tuya', 'Cada una con su temario, su examen, sus probabilidades y sus preparadores. Lo de cada una se guarda aparte.', ['elegir-oposicion', 'hoy', 'dce-hoy']),
-    (10, 16, 'TEMARIO', 'Todo el temario,\ndentro de la app', 'Los PDF de TCEE y los apuntes de DCE se leen sin salir de la app, y cada tema lleva su agenda: apuntes para la próxima vuelta, vueltas y notas.', ['temario-temas', 'tema-pdf', 'dce-tema-web']),
+    (4.5, 10, 'DOS OPOSICIONES', 'TCEE o DCE,\nopositor o preparador', 'Eliges tu oposición y cómo la usas. Cada una con su temario, su examen y sus preparadores; lo de cada una se guarda aparte.', ['elegir-oposicion', 'hoy', 'dce-hoy']),
+    (10, 16, 'ESTUDIAR', 'El temario y el test,\njuntos', 'Los PDF de TCEE y los apuntes de DCE se leen dentro de la app, cada tema con su agenda, y los test oficiales, con tu historial.', ['temario-temas', 'dce-tema-web', 'test-estadisticas']),
     (16, 21.5, 'CANTES', 'Programa, saca bola,\ncanta y anota', 'Agenda con avisos, cantes presenciales u online, sacar bola como en el examen, cronómetro y diario.', ['cantes-agenda', 'dce-cantar']),
-    (21.5, 26, 'TEST', 'Los test oficiales,\ncon tu historial', 'El simulador de la web en el móvil, con las mismas preguntas. En DCE, como práctica voluntaria.', ['test-estadisticas', 'dce-test']),
-    (26, 30, 'PROBABILIDADES', '¿Qué probabilidad\nllevas?', 'La de que salga un tema que te sabes, con las reglas del examen de cada oposición.', ['probabilidades', 'dce-probabilidades']),
-    (30, 41, 'CLASES SUELTAS', '¿Te cancelan la clase?\nOtro preparador te la coge', 'Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'dce-buscar-preparador', 'peticion-cogida']),
-    (41, 47, 'PREPARADORES', 'Tu preparador\ny tú, conectados', 'Su semana con todas las clases, la ficha de cada alumno y el tablón de sustituciones de cada oposición.', ['dce-preparador', 'semana', 'dce-sustituciones']),
+    (21.5, 26, 'ORGANIZACIÓN', 'Tu cronograma,\no el que ya tienes', 'Genéralo, hazlo semana a semana o tráelo de un Excel, un Word o un PDF. Y la probabilidad de que salga un tema que llevas.', ['cronograma-revisar', 'dce-probabilidades']),
+    (26, 30, 'TU PREPARADOR', 'Tu preparador\ny tú, conectados', 'Con su código, las clases que te programa salen en tu agenda y sus valoraciones, en tu diario.', ['mi-preparador']),
+    (30, 41, 'CLASES SUELTAS', '¿Te cancelan la clase?\nOtro preparador te la coge', 'Pide una clase suelta a los preparadores verificados: el día, una franja de horas y los temas que llevas. Quien la coge elige la hora y os pasáis el WhatsApp.', ['cante-cancelado', 'dce-buscar-preparador', 'peticion-cogida']),
+    (41, 47, 'PREPARADORES', '¿Preparas\na opositores?', 'Te das de alta y te verifica otro preparador. Al abrir la app, tus clases de hoy; además, tu semana, la ficha de cada alumno y el tablón de clases sueltas.', ['dce-hoy-preparador', 'semana', 'dce-preparador']),
     (47, 53, 'EN EL ORDENADOR', 'También en el ordenador,\ntodo sincronizado', 'La misma app en el navegador, con tu cuenta de Google: lo que haces en el móvil aparece en el ordenador, y al revés.', ['@dce-escritorio']),
 ]
 INICIO_CIERRE = 53
@@ -528,8 +528,8 @@ def banda_sonora(ruta):
 
     # Un acorde por escena (re mayor), en el orden de las escenas.
     acordes = {
-        'portada': [50, 57, 62, 66, 69], 'DOS OPOSICIONES': [47, 54, 59, 62, 66], 'TEMARIO': [43, 50, 55, 59, 62],
-        'CANTES': [45, 52, 57, 61, 64], 'TEST': [42, 49, 54, 57, 61], 'PROBABILIDADES': [43, 50, 55, 59, 62],
+        'portada': [50, 57, 62, 66, 69], 'DOS OPOSICIONES': [47, 54, 59, 62, 66], 'ESTUDIAR': [43, 50, 55, 59, 62],
+        'CANTES': [45, 52, 57, 61, 64], 'ORGANIZACIÓN': [42, 49, 54, 57, 61], 'TU PREPARADOR': [43, 50, 55, 59, 62],
         'CLASES SUELTAS': [40, 47, 52, 55, 59], 'PREPARADORES': [45, 52, 57, 61, 64], 'EN EL ORDENADOR': [47, 54, 59, 62, 66],
         'cierre': [50, 57, 62, 66, 69],
     }

@@ -25,32 +25,34 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 ```
 La app para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE). Gratis, sin anuncios y también en el navegador.
 
-Eliges tu oposición al abrirla y cada una tiene su temario, su examen, sus probabilidades y sus preparadores. Lo de cada una se guarda aparte.
+Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una tiene su temario, su examen, sus probabilidades y sus preparadores, y lo de cada una se guarda aparte.
 
 HOY
 • Cuenta atrás al próximo cante y al examen (la fecha la pones tú).
 • Test diario, racha y lo que te toca esta semana según tu cronograma.
 
-TEMARIO
+ESTUDIAR
 • Todos los temas, dentro de la app: los PDF de TCEE y los apuntes de DCE.
 • Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo te fue al cantarlo y notas.
-• Cronograma de vueltas: cuántos temas por semana, contando desde tu primer cante.
-• Probabilidad de que salga un tema que llevas, con las reglas de cada examen.
+• El simulador de test de la web, con las mismas preguntas oficiales y el mismo historial.
 
 CANTES
 • Agenda con avisos la víspera y una hora antes, cantes presenciales u online (con enlace de Google Meet) y exportación al calendario.
-• Sorteo como en el examen o de tu propia bolsa, cronómetro de preparación y exposición, y grabación para escucharte.
+• Sacar bola como en el examen o de tu propia bolsa, cronómetro de preparación y exposición, y grabación para escucharte.
 • Diario: qué tema cantaste, cuánto duró y cómo fue.
 
-¿TE CANCELAN LA CLASE?
-• Pide el cante a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien lo coge elige la hora y os pasáis el WhatsApp.
+ORGANIZACIÓN
+• Cronograma de vueltas: genéralo, hazlo semana a semana o trae el tuyo desde un Excel, un Word o un PDF.
+• Probabilidad de que salga un tema que llevas, con las reglas de cada examen.
+• Convocatoria con tus hitos, horario de estudio y el mapa del temario.
 
-TEST
-• El simulador de la web, con las mismas preguntas oficiales y el mismo historial.
+TU PREPARADOR
+• Conecta con tu preparador: ve tus temas y tus cantes, y te programa las clases.
+• ¿Te cancelan la clase? Pide una clase suelta a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien la coge elige la hora y os pasáis el WhatsApp.
 
-PREPARADORES
-• Enlaza con tu preparador: ve tus temas y tus cantes, y te programa las clases.
-• Para preparadores: semana con todas las clases, ficha de cada alumno, clases fijas y tablón de sustituciones.
+SI PREPARAS A OPOSITORES
+• Date de alta y te verifica otro preparador. Al abrir la app, tus clases de hoy.
+• Tu semana con todas las clases, la ficha de cada alumno, clases fijas, reservas y el tablón de clases sueltas.
 
 EN EL ORDENADOR
 • La misma app en el navegador, con tu cuenta de Google y todo sincronizado.
@@ -92,7 +94,7 @@ Hecha por Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE). Temari
 
 **Declaración de permisos**: si Play pregunta por `SCHEDULE_EXACT_ALARM`: *El cronómetro de exposición oral avisa de los minutos que quedan con la pantalla apagada; un aviso que llega minutos tarde no sirve. Si el usuario no concede el permiso, la app usa avisos aproximados.*
 
-**Funciones en segundo plano / tareas**: WorkManager comprueba cada ~15 minutos, con red y solo si el usuario lo activa, si hay sustituciones nuevas en el tablón.
+**Funciones en segundo plano / tareas**: WorkManager comprueba cada ~15 minutos, con red y solo si el usuario lo activa, si hay clases sueltas nuevas en el tablón o reservas por confirmar.
 
 ## Notas de la versión (ejemplo)
 
