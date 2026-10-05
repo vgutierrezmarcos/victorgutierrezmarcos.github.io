@@ -199,7 +199,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             if (a.temas.isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Text(a.enlazado ? 'Aún no ha marcado ningún tema como estudiado en su app.' : 'Apunta los temas que lleva preparados para sortear entre ellos.', style: context.textos.bodySmall),
+                child: Text(a.enlazado ? 'Aún no ha marcado ningún tema como estudiado en su app.' : 'Apunta los temas que lleva preparados para sacar bola entre ellos.', style: context.textos.bodySmall),
               )
             else
               Tarjeta(

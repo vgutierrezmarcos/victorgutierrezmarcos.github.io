@@ -362,7 +362,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ]),
                 ),
               TituloSeccion(
-                coyuntura ? (oposicion.ejercicio(ejercicioActual)?.etiquetaCante ?? 'Cante') : 'Sorteo',
+                coyuntura ? (oposicion.ejercicio(ejercicioActual)?.etiquetaCante ?? 'Cante') : 'Sacar bola',
                 accion: cante != null
                     ? null
                     : SegmentedButton<int>(showSelectedIcon: false, 
@@ -434,7 +434,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
               FilledButton.icon(
                 onPressed: (oficial ? ref.watch(temasPorParteProvider).keys.any((p) => p.startsWith('$_ejercicio.')) : bolsa.isNotEmpty) ? () => _sortear(t, cante, config) : null,
                 icon: const Icon(Icons.casino_outlined),
-                label: Text(oficial ? 'Sortear $bolas ${bolas == 1 ? 'tema' : 'temas'} de cada parte' : 'Sortear $k ${k == 1 ? 'tema' : 'temas'}'),
+                label: Text(oficial ? 'Sacar $bolas ${bolas == 1 ? 'bola' : 'bolas'} de cada parte' : 'Sacar $k ${k == 1 ? 'bola' : 'bolas'}'),
               ),
               if (_sorteados.isNotEmpty) const SizedBox(height: 4),
               for (final x in _sorteados)
@@ -526,7 +526,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     return Scaffold(
       appBar: BarraWeb(
         title: Text(sesion.alumno.nombre),
-        subtitulo: 'Sorteo y cronómetro',
+        subtitulo: 'Sacar bola y cronómetro',
         actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,

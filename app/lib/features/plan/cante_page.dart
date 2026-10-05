@@ -163,7 +163,7 @@ class CantePage extends ConsumerWidget {
                           router.go('/cantes');
                         },
                   icon: Icon(c.ejercicio == 1 ? Icons.timer_outlined : Icons.casino_outlined),
-                  label: Text(c.ejercicio == 1 ? 'Cronometrar' : 'Sortear y cantar'),
+                  label: Text(c.ejercicio == 1 ? 'Cronometrar' : 'Sacar bola y cantar'),
                 ),
               ),
               const SizedBox(width: 10),

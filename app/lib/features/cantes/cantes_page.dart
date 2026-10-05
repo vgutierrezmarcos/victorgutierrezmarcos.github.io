@@ -32,7 +32,7 @@ class _CantesPageState extends ConsumerState<CantesPage> with SingleTickerProvid
   Widget build(BuildContext context) {
     final indice = ref.watch(subpestanaCantesProvider);
     final avisos = ref.watch(planProvider.select((p) => p.avisosCante));
-    // Otras pantallas cambian de subpestaña (p. ej. «Sortear y cantar» desde un cante).
+    // Otras pantallas cambian de subpestaña (p. ej. «Sacar bola y cantar» desde un cante).
     ref.listen(subpestanaCantesProvider, (_, i) {
       if (_pestanas.index != i) _pestanas.animateTo(i);
     });

@@ -223,7 +223,7 @@ class InicioPage extends ConsumerWidget {
               crossAxisSpacing: 10,
               children: [
                 _acceso(context, Icons.quiz_outlined, 'Nuevo test', () => context.go('/test')),
-                _acceso(context, Icons.casino_outlined, 'Sortear temas', () => _irACantes(context, ref, 1)),
+                _acceso(context, Icons.casino_outlined, 'Sacar bola', () => _irACantes(context, ref, 1)),
                 _acceso(context, Icons.percent, 'Probabilidades', () => context.go('/temario/probabilidades')),
                 _acceso(context, Icons.insights_outlined, 'Estadísticas', () => context.go('/test/estadisticas')),
               ],

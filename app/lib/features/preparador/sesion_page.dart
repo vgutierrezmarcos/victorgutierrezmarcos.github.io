@@ -177,7 +177,7 @@ class SesionPage extends ConsumerWidget {
                 child: FilledButton.icon(
                   onPressed: (temas.isEmpty && s.ejercicio != 1) || alumno == null ? null : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantarPage(sesion: SesionAlumno(cante: s, alumno: alumno)))),
                   icon: Icon(s.ejercicio == 1 ? Icons.timer_outlined : Icons.casino_outlined),
-                  label: Text(s.ejercicio == 1 ? 'Cronometrar' : 'Sortear y cantar'),
+                  label: Text(s.ejercicio == 1 ? 'Cronometrar' : 'Sacar bola y cantar'),
                 ),
               ),
               const SizedBox(width: 10),
