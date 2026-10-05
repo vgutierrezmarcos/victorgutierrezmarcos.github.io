@@ -278,3 +278,93 @@ Cronograma crearCronograma({
     updatedAt: ahora,
   );
 }
+
+// ------------------------------------------------------- Cronograma a mano
+
+/// Cronograma hecho a mano (semana a semana o importado): [semanas] seguidas
+/// desde [inicio] (las de descanso, vacías). El ejercicio es el de la mayoría
+/// de sus temas y el ritmo, la media de las semanas con temas.
+Cronograma cronogramaManual({required String id, required DateTime inicio, required int diaCante, required List<SemanaPlan> semanas, bool compartir = false}) {
+  final temas = <String>[];
+  final limpias = <SemanaPlan>[];
+  var l = inicioSemana(inicio, diaCante);
+  for (final s in semanas) {
+    final suyas = s.descanso ? <String>[] : [for (final t in s.temas) if (!temas.contains(t)) t];
+    temas.addAll(suyas);
+    limpias.add(SemanaPlan(lunes: l, temas: suyas, descanso: s.descanso));
+    l = DateTime(l.year, l.month, l.day + 7);
+  }
+  final ejercicios = <int, int>{};
+  for (final t in temas) {
+    final e = int.tryParse(t.split('.').first) ?? 0;
+    ejercicios[e] = (ejercicios[e] ?? 0) + 1;
+  }
+  final conTemas = limpias.where((s) => s.temas.isNotEmpty).toList();
+  final ritmo = conTemas.isEmpty ? 1 : (temas.length / conTemas.length).round().clamp(1, 99);
+  final ahora = DateTime.now();
+  return Cronograma(
+    id: id,
+    ejercicio: ejercicios.isEmpty ? 0 : (ejercicios.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.key,
+    temas: temas,
+    inicio: inicioSemana(inicio, diaCante),
+    temasPorSemana: ritmo,
+    descansos: {for (final s in limpias) if (s.descanso) s.lunes},
+    semanas: limpias,
+    compartir: compartir,
+    diaCante: diaCante,
+    creado: ahora,
+    updatedAt: ahora,
+    manual: true,
+  );
+}
+
+/// [c] con otras semanas: los temas, en el orden de las semanas, y los
+/// descansos, los de sus semanas. Queda como hecho a mano.
+Cronograma _conSemanas(Cronograma c, List<SemanaPlan> semanas) {
+  final temas = [for (final s in semanas) ...s.temas];
+  return c.copyWith(semanas: semanas, temas: temas, descansos: {for (final s in semanas) if (s.descanso) s.lunes}, manual: true);
+}
+
+/// Pasa [tema] a la semana que empieza en [lunes] (al final de sus temas).
+Cronograma moverTema(Cronograma c, String tema, DateTime lunes) => _conSemanas(c, [
+      for (final s in c.semanas)
+        s.lunes == lunes
+            ? SemanaPlan(lunes: s.lunes, temas: [...s.temas.where((t) => t != tema), tema])
+            : SemanaPlan(lunes: s.lunes, temas: s.temas.where((t) => t != tema).toList(), descanso: s.descanso),
+    ]);
+
+/// Quita [tema] del cronograma.
+Cronograma quitarTema(Cronograma c, String tema) => _conSemanas(c, [
+      for (final s in c.semanas) SemanaPlan(lunes: s.lunes, temas: s.temas.where((t) => t != tema).toList(), descanso: s.descanso),
+    ]);
+
+/// Deja en la semana de [lunes] exactamente [temas] (los que estaban en otra
+/// semana pasan a esta). Si era de descanso, deja de serlo.
+Cronograma fijarTemasDeSemana(Cronograma c, DateTime lunes, List<String> temas) => _conSemanas(c, [
+      for (final s in c.semanas)
+        s.lunes == lunes ? SemanaPlan(lunes: s.lunes, temas: temas) : SemanaPlan(lunes: s.lunes, temas: s.temas.where((t) => !temas.contains(t)).toList(), descanso: s.descanso),
+    ]);
+
+/// Una semana más al final.
+Cronograma anadirSemana(Cronograma c) {
+  final ultima = c.semanas.isEmpty ? inicioSemana(c.inicio, c.diaCante) : DateTime(c.semanas.last.lunes.year, c.semanas.last.lunes.month, c.semanas.last.lunes.day + 7);
+  return _conSemanas(c, [...c.semanas, SemanaPlan(lunes: ultima)]);
+}
+
+/// Descanso en un cronograma a mano: la semana de [lunes] pasa a descanso y
+/// ella y las siguientes se retrasan una semana; quitarlo las adelanta.
+Cronograma alternarDescansoManual(Cronograma c, DateTime lunes) {
+  DateTime mas(DateTime d, int dias) => DateTime(d.year, d.month, d.day + dias);
+  final i = c.semanas.indexWhere((s) => s.lunes == lunes);
+  if (i < 0) return c;
+  final antes = c.semanas.sublist(0, i);
+  if (c.semanas[i].descanso) {
+    final despues = c.semanas.sublist(i + 1);
+    return _conSemanas(c, [...antes, for (final s in despues) SemanaPlan(lunes: mas(s.lunes, -7), temas: s.temas, descanso: s.descanso)]);
+  }
+  return _conSemanas(c, [
+    ...antes,
+    SemanaPlan(lunes: lunes, descanso: true),
+    for (final s in c.semanas.sublist(i)) SemanaPlan(lunes: mas(s.lunes, 7), temas: s.temas, descanso: s.descanso),
+  ]);
+}

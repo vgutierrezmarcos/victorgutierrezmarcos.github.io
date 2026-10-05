@@ -170,4 +170,48 @@ void main() {
       expect(c.temasPorSemana, 2); // tres cantes: 8, 15 y 22
     });
   });
+
+  group('a mano', () {
+    // Cantes los martes desde el 13 de octubre de 2026.
+    final primer = DateTime(2026, 10, 13);
+    Cronograma base() => cronogramaManual(id: 'm', inicio: primer, diaCante: DateTime.tuesday, semanas: [
+          SemanaPlan(lunes: _x, temas: const ['3.A.1', '3.A.2']),
+          SemanaPlan(lunes: _x, descanso: true),
+          SemanaPlan(lunes: _x, temas: const ['3.B.1', '3.A.1']),
+        ]);
+
+    test('semanas seguidas, sin repetidos, con descanso y ejercicio de la mayoría', () {
+      final c = base();
+      expect(c.manual, isTrue);
+      expect(c.ejercicio, 3);
+      expect(c.temas, ['3.A.1', '3.A.2', '3.B.1']);
+      expect(c.semanas.map((s) => s.domingo), [DateTime(2026, 10, 13), DateTime(2026, 10, 20), DateTime(2026, 10, 27)]);
+      expect(c.descansos, {c.semanas[1].lunes});
+      expect(Cronograma.fromJson(c.toJson()).manual, isTrue);
+    });
+
+    test('mover, quitar, fijar una semana y añadir otra', () {
+      var c = moverTema(base(), '3.A.2', base().semanas[2].lunes);
+      expect(c.semanas.map((s) => s.temas), [['3.A.1'], <String>[], ['3.B.1', '3.A.2']]);
+      expect(c.temas, ['3.A.1', '3.B.1', '3.A.2']);
+      c = quitarTema(c, '3.B.1');
+      expect(c.temas, ['3.A.1', '3.A.2']);
+      c = fijarTemasDeSemana(c, c.semanas[1].lunes, ['3.A.2', '3.A.3']);
+      expect(c.semanas.map((s) => s.temas), [['3.A.1'], ['3.A.2', '3.A.3'], <String>[]]);
+      expect(c.semanas[1].descanso, isFalse);
+      c = anadirSemana(c);
+      expect(c.semanas.last.domingo, DateTime(2026, 11, 3));
+    });
+
+    test('un descanso aplaza esa semana y las siguientes; quitarlo las adelanta', () {
+      final c = base();
+      final aplazado = alternarDescansoManual(c, c.semanas[0].lunes);
+      expect(aplazado.semanas.map((s) => s.descanso ? 'D' : s.temas.join(',')), ['D', '3.A.1,3.A.2', 'D', '3.B.1']);
+      expect(aplazado.semanas.last.domingo, DateTime(2026, 11, 3));
+      final otraVez = alternarDescansoManual(aplazado, aplazado.semanas[0].lunes);
+      expect(otraVez.semanas.map((s) => s.descanso ? 'D' : s.temas.join(',')), ['3.A.1,3.A.2', 'D', '3.B.1']);
+    });
+  });
 }
+
+final _x = DateTime(2000);

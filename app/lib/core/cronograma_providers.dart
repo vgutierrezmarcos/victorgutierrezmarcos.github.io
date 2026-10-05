@@ -56,9 +56,31 @@ class CronogramaNotifier extends Notifier<Cronograma?> {
   Future<void> descanso(DateTime lunes, {required bool descansar}) async {
     final c = state;
     if (c == null) return;
+    // Hecho a mano: se aplaza (o adelanta) desde esa semana, sin repartir.
+    if (c.manual) {
+      await _guardar(alternarDescansoManual(c, inicioSemana(lunes, c.diaCante)));
+      return;
+    }
     final d = {...c.descansos};
     descansar ? d.add(inicioSemana(lunes, c.diaCante)) : d.remove(inicioSemana(lunes, c.diaCante));
     await _guardar(replanificarCronograma(c.copyWith(descansos: d), DateTime.now(), vueltas: ref.read(vueltasProvider)));
+  }
+
+  /// Retoques a mano (el cronograma pasa a ser «a mano»).
+  Future<void> mover(String tema, DateTime lunes) async {
+    if (state != null) await _guardar(moverTema(state!, tema, lunes));
+  }
+
+  Future<void> quitar(String tema) async {
+    if (state != null) await _guardar(quitarTema(state!, tema));
+  }
+
+  Future<void> fijarSemana(DateTime lunes, List<String> temas) async {
+    if (state != null) await _guardar(fijarTemasDeSemana(state!, lunes, temas));
+  }
+
+  Future<void> semanaMas() async {
+    if (state != null) await _guardar(anadirSemana(state!));
   }
 
   Future<void> compartir(bool si) async {

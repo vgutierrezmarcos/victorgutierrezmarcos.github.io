@@ -8,6 +8,9 @@ import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'cronograma_form_page.dart';
+import 'cronograma_manual_page.dart';
+import 'importar_cronograma.dart';
+import '../../widgets/selector_temas.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
 
@@ -16,7 +19,23 @@ import 'planificador.dart';
 class CronogramaPage extends ConsumerWidget {
   const CronogramaPage({super.key});
 
-  void _nuevo(BuildContext context) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const CronogramaFormPage()));
+  /// Tres formas de empezar uno: generarlo, hacerlo semana a semana o traer el propio.
+  Future<void> _nuevo(BuildContext context) async {
+    final ir = Navigator.of(context);
+    final w = await showModalBottomSheet<Widget>(
+      context: context,
+      showDragHandle: true,
+      builder: (d) => SafeArea(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          ListTile(leading: const Icon(Icons.auto_awesome_outlined), title: const Text('Generarlo'), subtitle: const Text('Eliges temas y ritmo; la app propone el orden'), onTap: () => Navigator.pop(d, const CronogramaFormPage())),
+          ListTile(leading: const Icon(Icons.edit_calendar_outlined), title: const Text('Semana a semana'), subtitle: const Text('Pones tú los temas de cada cante'), onTap: () => Navigator.pop(d, const CronogramaManualPage())),
+          ListTile(leading: const Icon(Icons.upload_file), title: const Text('Traer el tuyo'), subtitle: const Text('Desde un Excel, un Word, un PDF o un texto'), onTap: () => Navigator.pop(d, const ImportarCronogramaPage())),
+          const SizedBox(height: 8),
+        ]),
+      ),
+    );
+    if (w != null) ir.push(MaterialPageRoute(builder: (_) => w));
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +55,7 @@ class CronogramaPage extends ConsumerWidget {
               Text('Planifica una vuelta al temario', style: context.textos.titleMedium),
               const SizedBox(height: 4),
               Text(
-                'Elige ${Oposiciones.actual.conCronograma.map((e) => 'el ${e.corto}').join(' o ')}, todos los temas o solo algunos, y cuántos temas a la semana o hasta cuándo. La app propone un orden por bloques y conexiones del temario, intercala los temas más memorísticos y te dice cada semana lo que toca.',
+                'Genéralo (eliges ${Oposiciones.actual.conCronograma.map((e) => 'el ${e.corto}').join(' o ')}, los temas y el ritmo, y la app propone un orden por bloques y conexiones), hazlo semana a semana o trae el tuyo desde un Excel, un Word o un PDF. Cada semana te dice lo que toca.',
                 style: context.textos.bodySmall,
               ),
               const SizedBox(height: 12),
@@ -84,11 +103,11 @@ class CronogramaPage extends ConsumerWidget {
                   await notifier.archivar();
               }
             },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'ritmo', child: Text('Cambiar el ritmo o la fecha de fin')),
-              PopupMenuItem(value: 'orden', child: Text('Cambiar el orden de los temas')),
-              PopupMenuItem(value: 'nuevo', child: Text('Empezar otro cronograma')),
-              PopupMenuItem(value: 'archivar', child: Text('Archivar este cronograma')),
+            itemBuilder: (_) => [
+              PopupMenuItem(value: 'ritmo', child: Text(c.manual ? 'Repartir lo pendiente a un ritmo fijo' : 'Cambiar el ritmo o la fecha de fin')),
+              if (!c.manual) const PopupMenuItem(value: 'orden', child: Text('Cambiar el orden de los temas')),
+              const PopupMenuItem(value: 'nuevo', child: Text('Empezar otro cronograma')),
+              const PopupMenuItem(value: 'archivar', child: Text('Archivar este cronograma')),
             ],
           ),
         ],
@@ -148,13 +167,20 @@ class CronogramaPage extends ConsumerWidget {
             ]),
           ),
         ],
-        TituloSeccion('Semanas', accion: TextButton.icon(onPressed: reordenar, icon: const Icon(Icons.swap_vert, size: 18), label: const Text('Orden'))),
+        TituloSeccion('Semanas', accion: c.manual ? null : TextButton.icon(onPressed: reordenar, icon: const Icon(Icons.swap_vert, size: 18), label: const Text('Orden'))),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(4, 0, 4, 8),
+          child: Text('Mantén pulsado un tema para moverlo de semana o quitarlo.', style: context.textos.labelSmall),
+        ),
         SemanasCronograma(
           c: c,
           estado: estado,
           onMarcar: (t, hecho) => notifier.marcar(t, hecho: hecho),
           onDescanso: (s, descansar) => notifier.descanso(s.lunes, descansar: descansar),
+          onRetocar: (t, s) => _retocar(context, ref, c, t, s),
+          onTemas: (s) => _temasDeSemana(context, ref, s),
         ),
+        Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: notifier.semanaMas, icon: const Icon(Icons.add, size: 18), label: const Text('Una semana más'))),
         const TituloSeccion('Ajustes'),
         Tarjeta(
           padding: EdgeInsets.zero,
@@ -186,6 +212,38 @@ class CronogramaPage extends ConsumerWidget {
         ],
       ]),
     );
+  }
+
+  /// Mover un tema a otra semana (de las que quedan) o quitarlo.
+  Future<void> _retocar(BuildContext context, WidgetRef ref, Cronograma c, String tema, SemanaPlan semana) async {
+    final notifier = ref.read(cronogramaProvider.notifier);
+    final esta = inicioSemana(DateTime.now(), c.diaCante);
+    final destinos = c.semanas.where((s) => s.lunes != semana.lunes && !s.descanso && !s.lunes.isBefore(esta)).toList();
+    final r = await showModalBottomSheet<Object>(
+      context: context,
+      showDragHandle: true,
+      builder: (d) => SafeArea(
+        child: ListView(shrinkWrap: true, children: [
+          Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 8), child: Text('Tema $tema', style: Theme.of(d).textTheme.titleMedium)),
+          for (final s in destinos)
+            ListTile(
+              leading: const Icon(Icons.drive_file_move_outline),
+              title: Text('Mover al ${c.diaCante == null ? 'semana del ${diaMes(s.lunes)}' : 'cante del ${diaSemanaYMes(s.domingo)}'}'),
+              onTap: () => Navigator.pop(d, s.lunes),
+            ),
+          ListTile(leading: const Icon(Icons.remove_circle_outline), title: const Text('Quitarlo del cronograma'), onTap: () => Navigator.pop(d, 'quitar')),
+        ]),
+      ),
+    );
+    if (r is DateTime) await notifier.mover(tema, r);
+    if (r == 'quitar') await notifier.quitar(tema);
+  }
+
+  Future<void> _temasDeSemana(BuildContext context, WidgetRef ref, SemanaPlan s) async {
+    final temario = ref.read(temarioProvider).valueOrNull;
+    if (temario == null) return;
+    final r = await elegirTemas(context, temario: temario, seleccion: s.temas, titulo: 'Temas de esta semana');
+    if (r != null) await ref.read(cronogramaProvider.notifier).fijarSemana(s.lunes, r);
   }
 
   Widget _filaArchivado(BuildContext context, WidgetRef ref, Cronograma a) {
