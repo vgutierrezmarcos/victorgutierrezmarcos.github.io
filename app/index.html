@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Oposición TCEE · DCE: cantes, temario y test en el móvil</title>
-    <meta name="description" content="App gratuita para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE): agenda de cantes, sorteo y cronómetro, temario, test y una sección para preparadores.">
+    <meta name="description" content="App gratuita para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE): agenda de cantes, sacar bola como en el examen y cronómetro, temario, test y una sección para preparadores.">
 
     <!-- SEO: Canonical URL -->
     <link rel="canonical" href="https://www.victorgutierrezmarcos.es/app/">
 
-    <meta name="keywords" content="app oposición TCEE, app oposición DCE, diplomado comercial del estado, técnico comercial, economista del estado, cantar temas, sorteo de temas, preparador oposiciones, test oposición, teco">
+    <meta name="keywords" content="app oposición TCEE, app oposición DCE, diplomado comercial del estado, técnico comercial, economista del estado, cantar temas, sacar bola, preparador oposiciones, test oposición, teco">
     <meta name="author" content="Víctor Gutiérrez Marcos">
     <meta name="robots" content="index, follow">
 
@@ -25,7 +25,7 @@
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="App Oposición TCEE · DCE: cantes, temario y test en el móvil">
-    <meta property="og:description" content="Agenda de cantes, sorteo y cronómetro, temario, test y una sección para preparadores. Gratis y sin anuncios.">
+    <meta property="og:description" content="Agenda de cantes, sacar bola como en el examen, cronómetro, temario, test y una sección para preparadores. Gratis y sin anuncios.">
     <meta property="og:image" content="https://www.victorgutierrezmarcos.es/app/promo/poster.jpg">
     <meta property="og:video" content="https://www.victorgutierrezmarcos.es/app/promo/oposicion-tcee.mp4">
     <meta property="og:url" content="https://www.victorgutierrezmarcos.es/app/">
@@ -35,6 +35,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tipografía de DCE (la de LaTeX, como en la web de Manuel Cabado García) -->
+    <link href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css" rel="stylesheet">
 
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
@@ -48,6 +50,7 @@
     <link rel="stylesheet" href="../search-styles.css">
     <link rel="stylesheet" href="../cookie-consent.css">
 
+
     <!-- SEO: Datos estructurados Schema.org -->
     <script type="application/ld+json">
     {
@@ -56,211 +59,494 @@
         "name": "Oposición TCEE · DCE",
         "operatingSystem": "Android, Web",
         "applicationCategory": "EducationalApplication",
-        "description": "App para preparar las oposiciones a Técnico Comercial y Economista del Estado y a Diplomado Comercial del Estado: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores.",
+        "description": "App para preparar las oposiciones a Técnico Comercial y Economista del Estado y a Diplomado Comercial del Estado: agenda de cantes, sacar bola como en el examen y cronómetro, temario, test y sección para preparadores.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
         "author": [{ "@type": "Person", "name": "Víctor Gutiérrez Marcos" }, { "@type": "Person", "name": "Manuel Cabado García" }],
         "inLanguage": "es"
     }
     </script>
 
+    <!-- Con JS, el relato se monta con el móvil fijo; sin JS, cada paso lleva su captura -->
+    <script>document.documentElement.classList.add('js');</script>
+
     <style>
-        /* Página de la app: estilos propios sobre las variables de styles.css */
-        .app-hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-            gap: 2.5rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
+        /* ==========================================================
+           Página de la app: TCEE, DCE y su mezcla
+           TCEE: morado, verde salvia y dorado; Palatino (esta web y la app).
+           DCE: granate y blanco de la bandera de León, crema y azul;
+                la tipografía de LaTeX (web de Manuel Cabado García).
+           Mezcla: degradado morado → granate con el dorado de nexo.
+           ========================================================== */
+        :root {
+            --tcee: #5F2987;
+            --tcee-oscuro: #4A1F6B;
+            --tcee-claro: #7A3CA8;
+            --tcee-palido: #F3EEF7;
+            --salvia: #E2EFD9;
+            --salvia-clara: #EDF5E7;
+            --oro: #B8860B;
+            --oro-claro: #DAA520;
+
+            --dce: #7A1F4B;
+            --dce-oscuro: #5C1638;
+            --dce-claro: #9C3A68;
+            --dce-palido: #F4E9EE;
+            --dce-crema: #F7F4EC;
+            --dce-papel: #FFFDF8;
+            --dce-azul: #234A6B;
+            --dce-rosa: #C98BA3;
+            --dce-tinte: rgba(122, 31, 75, 0.10);
+
+            --fuente-tcee: 'Palatino Linotype', Palatino, 'Book Antiqua', 'URW Palladio L', Georgia, serif;
+            --fuente-dce: 'Latin Modern Roman', 'LMRoman', 'Computer Modern Serif', 'CMU Serif', 'Iowan Old Style', Georgia, serif;
+            --fuente-ui: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --mezcla: linear-gradient(115deg, var(--tcee) 0%, #6E2369 50%, var(--dce) 100%);
+            --mezcla-suave: linear-gradient(110deg, var(--salvia) 0%, var(--salvia-clara) 40%, var(--dce-crema) 60%, var(--dce-crema) 100%);
+
+            --ap-texto: #2d2d2d;
+            --ap-suave: #555555;
+            --ap-tarjeta: #ffffff;
+            --ap-tarjeta-dce: #FFFDF8;
+            --ap-borde: rgba(0, 0, 0, 0.08);
+            --ap-tcee-texto: #5F2987;
+            --ap-dce-texto: #7A1F4B;
+            --ap-azul-texto: #234A6B;
+            --ap-sombra: 0 18px 40px -18px rgba(40, 20, 50, 0.35);
+            --nav-alto: 0px;
         }
-        .app-marca { display: flex; align-items: center; gap: 0.75rem; }
-        .app-logo { width: 56px; height: 56px; flex: none; }
+        [data-theme="dark"] {
+            --tcee-palido: #2a2040;
+            --salvia: #1a1a2e;
+            --salvia-clara: #1e1e34;
+            --dce-palido: #3A2230;
+            --dce-crema: #1E1D1B;
+            --dce-papel: #2A2825;
+            --dce-tinte: rgba(156, 52, 104, 0.18);
+            --ap-texto: #e0e0e0;
+            --ap-suave: #b0b0b0;
+            --ap-tarjeta: #252545;
+            --ap-tarjeta-dce: #2E2C28;
+            --ap-borde: rgba(255, 255, 255, 0.08);
+            --ap-tcee-texto: #B48FDA;
+            --ap-dce-texto: #D98BB0;
+            --ap-azul-texto: #7FF0C6;
+            --ap-sombra: 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+        }
+
+        .app-pagina.main-content { padding: 0; overflow-x: clip; }
+        .app-pagina [hidden] { display: none !important; }
+
+        /* Etiquetas y piezas comunes */
         .app-etiqueta {
-            font-family: var(--font-ui);
+            font-family: var(--fuente-ui);
             font-size: 0.78rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: var(--ap-tcee-texto);
         }
-        .app-hero h2 {
-            font-family: var(--font-display);
-            font-size: 2.4rem;
-            line-height: 1.15;
-            color: var(--color-text);
-            margin: 0.4rem 0 1rem;
+        .app-nota { font-family: var(--fuente-ui); font-size: 0.85rem; line-height: 1.5; color: var(--ap-suave); margin-top: 0.7rem; }
+        .t-tcee { color: var(--ap-tcee-texto); font-family: var(--fuente-tcee); }
+        .t-dce { color: var(--ap-dce-texto); font-family: var(--fuente-dce); }
+        .t-y { color: var(--oro); font-style: italic; }
+
+        /* Botones: la mezcla para lo principal */
+        .app-pagina .download-btn.mezcla { background: var(--mezcla); color: #fff; border: none; }
+        .app-pagina .download-btn.secundario { background: transparent; color: var(--ap-tcee-texto); border: 2px solid currentColor; box-shadow: none; }
+        .app-pagina .download-btn.secundario:hover { background: var(--tcee); border-color: var(--tcee); color: #fff; }
+        .app-pagina .download-btn { font-size: 1rem; padding: 0.85rem 1.7rem; }
+
+        /* Fondo partido: salvia (TCEE) a la izquierda, crema con un toque granate (DCE) a la derecha */
+        .fondo-partido { position: absolute; inset: 0; background: var(--mezcla-suave); overflow: hidden; }
+        .fondo-partido::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, transparent 45%, var(--dce-tinte) 100%);
         }
-        .app-entradilla {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: var(--color-text-muted);
-            margin-bottom: 1.5rem;
+
+        /* ---------- PORTADA ---------- */
+        .portada { position: relative; padding: 3.5rem 1.5rem 3rem; }
+        .portada-interior { position: relative; max-width: 1180px; margin: 0 auto; text-align: center; }
+        .portada h2 {
+            font-family: var(--fuente-tcee);
+            font-size: clamp(2.2rem, 5.2vw, 4rem);
+            line-height: 1.08;
+            font-weight: 600;
+            color: var(--ap-texto);
+            margin: 0.6rem 0 2.2rem;
         }
-        .app-descarga[hidden], .app-descarga [hidden] { display: none; }
-        .app-descarga-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .app-descarga .download-btn, .app-web .download-btn { font-size: 1rem; padding: 0.85rem 1.7rem; }
-        /* Botón secundario: la versión para el navegador */
+        .portada h2 .t-dce { font-weight: 700; }
+        .portada h2 .resto { display: block; font-size: 0.55em; font-weight: 400; font-style: italic; color: var(--ap-suave); margin-top: 0.3rem; }
+        .portada-trio {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .lado {
+            position: relative;
+            text-align: left;
+            border-radius: 12px;
+            padding: 1.6rem 1.7rem 1.5rem;
+            box-shadow: var(--ap-sombra);
+            border: 1px solid var(--ap-borde);
+            overflow: hidden;
+        }
+        .lado-tcee { background: var(--ap-tarjeta); border-left: 6px solid var(--tcee); }
+        .lado-dce { background: var(--ap-tarjeta-dce); border-right: 6px solid var(--dce); text-align: right; padding-top: 1.8rem; }
+        .lado-dce::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--dce); }
+        .lado .siglas { display: block; font-size: 3rem; line-height: 1; font-weight: 700; letter-spacing: 0.02em; }
+        .lado-tcee .siglas { font-family: var(--fuente-tcee); color: var(--ap-tcee-texto); }
+        .lado-dce .siglas { font-family: var(--fuente-dce); color: var(--ap-dce-texto); }
+        .lado .nombre { display: block; font-size: 1.15rem; line-height: 1.35; margin: 0.6rem 0 0.4rem; color: var(--ap-texto); }
+        .lado-tcee .nombre { font-family: var(--fuente-tcee); }
+        .lado-dce .nombre { font-family: var(--fuente-dce); }
+        .lado .datos { display: block; font-family: var(--fuente-ui); font-size: 0.9rem; line-height: 1.5; color: var(--ap-suave); }
+        .lado-dce .datos { font-family: var(--fuente-dce); letter-spacing: 0.02em; color: var(--ap-azul-texto); }
+        .lado .autor { display: block; margin-top: 0.7rem; font-family: var(--fuente-ui); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+        .lado-tcee .autor { color: var(--oro); }
+        .lado-dce .autor { color: var(--ap-dce-texto); }
+
+        .portada-movil { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        /* El icono de la app, con su forma de icono (cuadrado redondeado) */
+        .portada-diana {
+            width: 76px; height: 76px;
+            filter: drop-shadow(0 10px 18px rgba(70, 20, 60, 0.35));
+        }
+        .portada-diana img { display: block; width: 100%; height: 100%; }
+
+        /* Móvil dibujado (portada y relato) */
+        .movil {
+            --anillo: #6E2370;
+            position: relative;
+            padding: 9px;
+            background: #1c1626;
+            border-radius: 34px;
+            box-shadow: 0 0 0 3px var(--anillo), 0 30px 60px -22px rgba(30, 10, 40, 0.55);
+            transition: box-shadow 0.6s ease, background-color 0.6s ease;
+        }
+        .movil-pantalla {
+            position: relative;
+            height: var(--movil-alto, 520px);
+            aspect-ratio: 720 / 1560;
+            border-radius: 26px;
+            overflow: hidden;
+            background: var(--salvia);
+        }
+        .movil-pantalla > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .portada .movil { --movil-alto: min(520px, 62vh); }
+
+        .portada-accion {
+            position: relative;
+            max-width: 760px;
+            margin: 2.6rem auto 0;
+            padding: 1.8rem 2rem 1.6rem;
+            background: var(--ap-tarjeta);
+            border-radius: 14px;
+            box-shadow: var(--ap-sombra);
+            border: 1px solid var(--ap-borde);
+            overflow: hidden;
+        }
+        .portada-accion::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--mezcla); }
+        .app-entradilla { font-size: 1.12rem; line-height: 1.75; color: var(--ap-suave); margin: 0 0 1.4rem; }
+        .app-descarga-botones, .app-web-botones { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
         .app-web { margin-top: 0.9rem; }
-        .app-web .download-btn.secundario { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); box-shadow: none; }
-        .app-web .download-btn.secundario:hover { background: var(--color-primary); color: #fff; }
-        /* Privacidad */
-        .app-privacidad { border-left: 4px solid var(--color-primary); background: var(--color-surface, #fff); padding: 1.4rem 1.6rem; border-radius: 0 10px 10px 0; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,.08)); }
-        .app-privacidad > p:first-child { font-size: 1.2rem; margin-top: 0; }
-        .app-privacidad ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
-        .app-privacidad li { margin-bottom: 0.5rem; line-height: 1.6; }
-        .app-nota {
-            font-family: var(--font-ui);
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: var(--color-text-light);
-            margin-top: 0.8rem;
+        .app-gancho {
+            font-family: var(--fuente-ui);
+            font-size: 1rem;
+            margin: 1.2rem auto 0;
+            padding: 0.7rem 1rem;
+            border-left: 4px solid var(--oro);
+            background: linear-gradient(90deg, rgba(95, 41, 135, 0.07), rgba(123, 30, 75, 0.07));
+            border-radius: 0 8px 8px 0;
+            text-align: left;
         }
         .app-datos {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 0.4rem 1.2rem;
             list-style: none;
             margin: 1.2rem 0 0;
             padding: 0;
-            font-family: var(--font-ui);
+            font-family: var(--fuente-ui);
             font-size: 0.9rem;
-            color: var(--color-text-muted);
+            color: var(--ap-suave);
         }
-        .app-datos li::before { content: '◆'; color: var(--color-accent-gold); font-size: 0.6rem; margin-right: 0.5rem; vertical-align: middle; }
+        .app-datos li::before { content: '◆'; color: var(--oro); font-size: 0.6rem; margin-right: 0.5rem; vertical-align: middle; }
 
-        /* Móvil dibujado alrededor de cada captura */
-        .app-movil {
-            display: block;
-            width: 100%;
-            max-width: 270px;
-            margin: 0 auto;
-            padding: 8px;
-            background: #1c1626;
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-        }
-        .app-movil img { display: block; width: 100%; height: auto; border-radius: 22px; }
-        .app-moviles { display: flex; gap: 1.2rem; justify-content: center; align-items: flex-start; }
-        .app-moviles .app-movil { margin: 0; }
-        .app-moviles .app-movil:nth-child(2) { margin-top: 1.6rem; }
-
-        .app-seccion { margin-top: 3.5rem; position: relative; z-index: 1; }
-        .app-seccion > h3 {
-            font-family: var(--font-display);
-            font-size: 1.45rem;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--color-accent-gold);
-            display: inline-block;
-        }
-        .app-seccion p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1.1rem; }
-
-        .app-principios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .app-principio {
-            background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.2rem 1.3rem;
-        }
-        .app-principio h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
-        .app-principio p { font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin: 0; }
-
+        /* ---------- VÍDEO ---------- */
+        .franja-video { background: var(--mezcla); padding: 3.2rem 1.5rem 3.6rem; color: #fff; position: relative; }
+        .franja-video::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--oro-claro), transparent); }
+        .franja-video .interior { max-width: 960px; margin: 0 auto; }
+        .franja-video h3 { font-family: var(--fuente-tcee); font-size: 1.9rem; font-weight: 600; margin: 0.2rem 0 0.3rem; color: #fff; }
+        .franja-video .app-etiqueta { color: var(--oro-claro); }
+        .franja-video p { font-family: var(--fuente-ui); color: rgba(255, 255, 255, 0.82); margin: 0 0 1.4rem; }
         .app-video {
             display: block;
             width: 100%;
             height: auto;
             aspect-ratio: 16 / 9;
-            border-radius: 8px;
-            border: 1px solid var(--color-border);
-            box-shadow: var(--shadow-md);
+            border-radius: 10px;
+            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
             background: #4a1f6b;
         }
 
-        /* Los cinco bloques: texto y capturas, alternando el lado */
-        .app-bloque {
+        /* ---------- RELATO (scrollytelling) ---------- */
+        .relato { position: relative; }
+        .relato-fondo { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; z-index: 0; pointer-events: none; }
+        .relato-fondo > div { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; }
+        .relato-fondo .f-tcee { background: linear-gradient(160deg, var(--salvia) 0%, var(--salvia-clara) 100%); }
+        .relato-fondo .f-dce { background: linear-gradient(160deg, var(--dce-crema) 0%, var(--dce-crema) 55%, var(--dce-palido) 100%); }
+        .relato-fondo .f-mezcla { position: absolute; }
+        .relato[data-tono="tcee"] .f-tcee,
+        .relato[data-tono="dce"] .f-dce,
+        .relato[data-tono="mezcla"] .f-mezcla { opacity: 1; }
+
+        .relato-cabecera { position: relative; z-index: 1; text-align: center; padding: 4rem 1.5rem 0; max-width: 760px; margin: 0 auto; }
+        .relato-cabecera h3 { font-family: var(--fuente-tcee); font-size: clamp(1.8rem, 3.6vw, 2.5rem); color: var(--ap-texto); margin: 0.3rem 0 0.6rem; }
+        .relato-cabecera p { color: var(--ap-suave); font-size: 1.08rem; }
+
+        .relato-cuerpo {
+            position: relative;
+            z-index: 1;
             display: grid;
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            gap: 2.5rem;
-            align-items: center;
-            padding: 2.2rem 0;
-            border-top: 1px solid var(--color-border-light);
+            gap: 3rem;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        .app-bloque:first-of-type { border-top: none; padding-top: 0.5rem; }
-        .app-bloque:nth-of-type(even) .app-bloque-texto { order: 2; }
-        .app-bloque-numero {
-            font-family: var(--font-ui);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-accent-gold);
-        }
-        .app-bloque h4 { font-family: var(--font-display); font-size: 1.6rem; color: var(--color-primary); margin: 0.2rem 0 0.2rem; }
-        .app-bloque-lema { font-style: italic; color: var(--color-text-muted); margin-bottom: 0.9rem !important; }
-        .app-bloque ul { margin: 0 0 0 1.2rem; font-size: 1rem; line-height: 1.7; }
-        .app-bloque li { margin-bottom: 0.45rem; }
-
-        .app-pasos { counter-reset: paso; list-style: none; margin: 1.2rem 0; padding: 0; }
-        .app-pasos li {
-            counter-increment: paso;
-            position: relative;
-            padding: 0 0 1.1rem 3rem;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        .app-pasos li::before {
-            content: counter(paso);
-            position: absolute;
-            left: 0; top: 0.1rem;
-            width: 2rem; height: 2rem;
-            border-radius: 50%;
-            background: var(--color-primary);
-            color: #fff;
-            font-family: var(--font-ui);
-            font-weight: 600;
+        .relato-pasos { grid-column: 1; grid-row: 1; padding: 12vh 0 30vh; }
+        .relato-grafico {
+            grid-column: 2;
+            grid-row: 1;
+            align-self: start;
+            position: sticky;
+            top: var(--nav-alto);
+            height: calc(100vh - var(--nav-alto));
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 2rem;
         }
+        .relato-grafico .movil { --movil-alto: min(calc(100vh - var(--nav-alto) - 6rem), 640px); }
+        .relato[data-tono="tcee"] .movil { --anillo: var(--tcee); }
+        .relato[data-tono="dce"] .movil { --anillo: var(--dce); background: #26101c; }
+
+        .pantalla { position: absolute; inset: 0; opacity: 0; transform: scale(1.02); transition: opacity 0.55s ease, transform 0.55s ease; }
+        .pantalla.visible { opacity: 1; transform: none; }
+        .pantalla > img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+
+        /* Capítulos (ordenador) y barra de progreso (móvil) */
+        .capitulos { list-style: none; margin: 0; padding: 0.8rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; background: var(--ap-tarjeta); background: color-mix(in srgb, var(--ap-tarjeta) 82%, transparent); border-radius: 10px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); box-shadow: var(--shadow-sm); }
+        .capitulos button {
+            display: flex; align-items: center; gap: 0.6rem;
+            background: none; border: 0; padding: 0.25rem 0; cursor: pointer;
+            font-family: var(--fuente-ui); font-size: 0.85rem; color: var(--ap-suave); text-align: left;
+        }
+        .capitulos button::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.35; transition: all 0.3s ease; }
+        .capitulos button:hover { color: var(--ap-texto); }
+        .capitulos .activo button { color: var(--ap-texto); font-weight: 600; }
+        .capitulos .activo button::before { opacity: 1; width: 22px; border-radius: 4px; background: var(--mezcla); }
+        .relato[data-tono="tcee"] .capitulos .activo button::before { background: var(--tcee); }
+        .relato[data-tono="dce"] .capitulos .activo button::before { background: var(--dce); }
+        .relato-progreso { display: none; }
+
+        /* Pasos */
+        .paso { min-height: 82vh; display: flex; align-items: center; }
+        .paso-tarjeta {
+            position: relative;
+            max-width: 34rem;
+            background: var(--ap-tarjeta);
+            border: 1px solid var(--ap-borde);
+            border-radius: 14px;
+            padding: 1.7rem 1.9rem 1.5rem;
+            box-shadow: var(--ap-sombra);
+            overflow: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .js .paso:not(.activo) .paso-tarjeta { opacity: 0.4; transform: scale(0.98); }
+        .paso h4 { font-family: var(--fuente-tcee); font-size: 1.75rem; line-height: 1.2; color: var(--ap-texto); margin: 0.25rem 0 0.4rem; }
+        .paso .lema { font-style: italic; color: var(--ap-suave); margin: 0 0 0.9rem; }
+        .paso p { font-size: 1.02rem; line-height: 1.75; margin: 0 0 0.9rem; }
+        .paso ul { margin: 0 0 0.4rem 1.1rem; font-size: 1rem; line-height: 1.7; }
+        .paso li { margin-bottom: 0.4rem; }
+        .paso .app-etiqueta { color: var(--oro); }
+        .paso-captura { display: none; }
+        .paso-escritorio { display: block; width: 100%; height: auto; margin-top: 0.4rem; border-radius: 8px; border: 1px solid var(--ap-borde); box-shadow: var(--shadow-sm); }
+
+        .paso[data-tono="tcee"] .paso-tarjeta { border-left: 6px solid var(--tcee); }
+        .paso[data-tono="tcee"] h4 { color: var(--ap-tcee-texto); }
+        .paso[data-tono="dce"] .paso-tarjeta { background: var(--ap-tarjeta-dce); border-left: 6px solid var(--dce); padding-top: 2.2rem; }
+        .paso[data-tono="dce"] .paso-tarjeta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--dce); }
+        .paso[data-tono="dce"] h4 { font-family: var(--fuente-dce); color: var(--ap-dce-texto); }
+        .paso[data-tono="dce"] .app-etiqueta { color: var(--ap-azul-texto); }
+        .paso[data-tono="mezcla"] .paso-tarjeta { padding-top: 2rem; }
+        .paso[data-tono="mezcla"] .paso-tarjeta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--mezcla); }
+        .paso .aviso-dce {
+            font-family: var(--fuente-ui); font-size: 0.92rem; line-height: 1.5;
+            margin: 0.8rem 0 0; padding: 0.6rem 0.9rem;
+            border-left: 4px solid var(--dce); background: var(--dce-palido); border-radius: 0 8px 8px 0;
+        }
+
+        .app-pasos { counter-reset: paso; list-style: none; margin: 0.4rem 0 0.8rem !important; padding: 0; }
+        .app-pasos li { counter-increment: paso; position: relative; padding: 0 0 0.9rem 2.8rem; line-height: 1.65; }
+        .app-pasos li::before {
+            content: counter(paso);
+            position: absolute; left: 0; top: 0.1rem;
+            width: 1.9rem; height: 1.9rem;
+            border-radius: 50%;
+            background: var(--mezcla);
+            color: #fff;
+            font-family: var(--fuente-ui); font-weight: 600; font-size: 0.95rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Sin JS: sin móvil fijo, cada paso lleva su captura */
+        html:not(.js) .relato-grafico, .relato-simple .relato-grafico { display: none; }
+        html:not(.js) .relato-cuerpo, .relato-simple .relato-cuerpo { grid-template-columns: 1fr; }
+        html:not(.js) .relato-pasos, .relato-simple .relato-pasos { padding: 2rem 0; margin-top: 0; }
+        .relato-simple .paso .paso-tarjeta { opacity: 1; transform: none; }
+        html:not(.js) .relato-fondo .f-mezcla, .relato-simple .relato-fondo .f-mezcla { opacity: 1; }
+        html:not(.js) .paso, .relato-simple .paso { min-height: 0; padding: 1rem 0; }
+        html:not(.js) .paso-tarjeta, .relato-simple .paso-tarjeta { max-width: 760px; margin: 0 auto; }
+        html:not(.js) .paso-captura, .relato-simple .paso-captura { display: block; width: auto; height: min(476px, 75vh); max-width: 60%; object-fit: contain; margin: 1rem auto 0; border-radius: 18px; border: 6px solid #1c1626; }
+
+        /* ---------- RESTO DE LA PÁGINA ---------- */
+        .app-resto { padding: 3rem 1.5rem; position: relative; }
+        .app-resto .page-content { max-width: var(--max-width); margin: 0 auto; }
+        .app-seccion { margin-top: 3.2rem; position: relative; z-index: 1; }
+        .app-seccion:first-child { margin-top: 0; }
+        .app-seccion > h3 {
+            font-family: var(--fuente-tcee);
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--ap-texto);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+            border-image: var(--mezcla) 1;
+            display: inline-block;
+        }
+        .app-seccion p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1.1rem; }
+        .app-seccion h4 { font-family: var(--fuente-tcee); color: var(--ap-tcee-texto); }
+
+        .app-principios { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .app-principio {
+            position: relative;
+            background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.3rem 1.3rem 1.2rem;
+            overflow: hidden;
+        }
+        .app-principio::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--mezcla); }
+        .app-principio h4 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .app-principio p { font-size: 0.95rem; line-height: 1.6; color: var(--ap-suave); margin: 0; }
+
         .app-comparte { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
-        .app-comparte div { border: 1px solid var(--color-border); border-radius: 8px; padding: 1.1rem 1.3rem; background: var(--color-bg-cream); }
-        .app-comparte h4 { font-family: var(--font-ui); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.5rem; }
+        .app-comparte > div { border: 1px solid var(--color-border); border-radius: 8px; padding: 1.1rem 1.3rem; background: var(--color-bg-cream); }
+        .app-comparte > div:nth-child(2) { border-top: 3px solid var(--dce); }
+        .app-comparte > div:nth-child(1) { border-top: 3px solid var(--tcee); }
+        .app-comparte h4 { font-family: var(--fuente-ui); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .app-comparte > div:nth-child(2) h4 { color: var(--ap-dce-texto); }
         .app-comparte ul { margin: 0 0 0 1.1rem; font-size: 0.98rem; line-height: 1.65; }
 
+        .app-privacidad { border-left: 4px solid; border-image: linear-gradient(180deg, var(--tcee), var(--dce)) 1; background: var(--color-bg-cream); padding: 1.4rem 1.6rem; box-shadow: var(--shadow-sm); }
+        .app-privacidad > p:first-child { font-size: 1.2rem; margin-top: 0; }
+        .app-privacidad ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
+        .app-privacidad li { margin-bottom: 0.5rem; line-height: 1.6; }
+
         .app-faq details { border: 1px solid var(--color-border); border-radius: 6px; margin-bottom: 0.6rem; background: var(--color-bg-cream); }
-        .app-faq summary { cursor: pointer; padding: 0.85rem 1.1rem; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--color-text); }
-        .app-faq details[open] summary { color: var(--color-primary); border-bottom: 1px solid var(--color-border-light); }
+        .app-faq summary { cursor: pointer; padding: 0.85rem 1.1rem; font-family: var(--fuente-tcee); font-size: 1.05rem; font-weight: 600; color: var(--ap-texto); }
+        .app-faq details[open] summary { color: var(--ap-tcee-texto); border-bottom: 1px solid var(--color-border-light); }
         .app-faq details p { padding: 0.9rem 1.1rem 0.2rem; font-size: 1rem; line-height: 1.75; }
 
-        /* Clases sueltas: la sección destacada de la página */
-        .app-gancho { font-family: var(--font-ui); font-size: 1rem; margin: 1.1rem 0 0; padding: 0.7rem 1rem; border-left: 4px solid var(--color-accent-gold); background: rgba(95, 41, 135, 0.06); border-radius: 0 8px 8px 0; }
-        .app-destacada { background: linear-gradient(135deg, rgba(95, 41, 135, 0.07), rgba(184, 134, 11, 0.07)); border: 1px solid rgba(95, 41, 135, 0.18); border-radius: 14px; padding: 2rem 2rem 1.6rem; }
-        .app-destacada h3 { margin-top: 0.3rem; }
-        .app-destacada .app-bloque { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-        .app-moviles-3 .app-movil { max-width: 220px; }
-        .app-moviles-3 .app-movil:nth-child(2) { margin-top: 1.6rem; }
-        .app-moviles-3 .app-movil:nth-child(3) { margin-top: 3.2rem; }
-        @media (max-width: 760px) {
-            .app-destacada { padding: 1.3rem 1rem 1rem; }
-            .app-destacada .app-bloque { grid-template-columns: 1fr; }
-            .app-moviles-3 .app-movil { max-width: 31%; }
-        }
         .app-cierre { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 3.5rem; position: relative; z-index: 1; }
 
-        @media (max-width: 760px) {
-            .app-hero, .app-bloque { grid-template-columns: 1fr; gap: 1.5rem; }
-            .app-hero h2 { font-size: 1.9rem; }
-            .app-bloque:nth-of-type(even) .app-bloque-texto { order: 0; }
-            .app-moviles { gap: 0.7rem; }
-            .app-movil { padding: 6px; border-radius: 24px; }
-            .app-movil img { border-radius: 18px; }
+        /* ---------- ADAPTACIÓN ---------- */
+        @media (max-width: 1100px) {
+            .portada-trio { gap: 1.5rem; }
+            .lado .siglas { font-size: 2.4rem; }
+            .relato-grafico .capitulos { display: none; }
+        }
+        @media (max-width: 900px) {
+            /* Portada: título, móvil y las dos oposiciones lado a lado */
+            .portada { padding: 2.2rem 1rem 2.2rem; }
+            .portada h2 { margin-bottom: 1.6rem; }
+            .portada-trio { grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+            .portada-movil { grid-column: 1 / -1; grid-row: 1; margin-bottom: 0.6rem; }
+            .portada .movil { --movil-alto: min(440px, 58vh); }
+            .lado { padding: 1.1rem 1rem 1rem; }
+            .lado-dce { padding-top: 1.6rem; }
+            .lado .siglas { font-size: 2rem; }
+            .lado .nombre { font-size: 0.98rem; }
+            .lado .datos { font-size: 0.8rem; }
+            .lado .autor { font-size: 0.7rem; }
+            .portada-accion { padding: 1.4rem 1.1rem 1.2rem; margin-top: 1.6rem; }
+            .app-entradilla { font-size: 1.02rem; }
+
+            .franja-video { padding: 2.4rem 1rem 2.6rem; }
+
+            /* Relato: el móvil queda fijo en una franja arriba y el texto pasa por debajo
+               de ella, sin taparlo nunca, aunque la tarjeta sea larga */
+            .relato-cabecera { padding: 2.8rem 1rem 0; }
+            .relato-cuerpo { display: block; padding: 0 1rem; }
+            .relato-grafico {
+                --movil-alto: min(40vh, 380px);
+                --movil-alto: min(40svh, 380px);
+                height: auto;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 1rem 0 1.6rem;
+                margin: 0 -1rem;
+                gap: 0;
+                z-index: 3;
+                background: var(--mezcla-suave);
+            }
+            .relato[data-tono="tcee"] .relato-grafico { background: var(--salvia-clara); }
+            .relato[data-tono="dce"] .relato-grafico { background: var(--dce-crema); }
+            .relato-grafico::after {
+                content: '';
+                position: absolute; left: 0; right: 0; bottom: -18px;
+                height: 18px;
+                background: linear-gradient(rgba(30, 10, 40, 0.16), transparent);
+                pointer-events: none;
+            }
+            .relato-grafico .movil { --movil-alto: inherit; padding: 6px; border-radius: 24px; }
+            .relato-grafico .movil-pantalla { border-radius: 19px; }
+            .relato-progreso {
+                display: block;
+                position: absolute; left: 0; right: 0; bottom: 0;
+                height: 4px;
+                background: rgba(0, 0, 0, 0.06);
+            }
+            .relato-progreso span { display: block; height: 100%; width: calc(var(--progreso, 0) * 100%); background: var(--mezcla); }
+            .relato-pasos { position: relative; z-index: 1; padding: 1.5rem 0 45vh; }
+            .paso { min-height: 70vh; align-items: flex-start; padding-top: 1rem; }
+            .paso-tarjeta {
+                margin: 0 auto;
+                padding: 1.3rem 1.2rem 1rem;
+                box-shadow: var(--ap-sombra);
+            }
+            .paso[data-tono="dce"] .paso-tarjeta { padding-top: 1.9rem; }
+            .js .paso:not(.activo) .paso-tarjeta { opacity: 1; transform: none; }
+            .paso h4 { font-size: 1.45rem; }
+            .paso p, .paso ul { font-size: 0.98rem; }
+
+            .app-resto { padding: 2rem 0.75rem; }
+            .app-resto .page-content { padding: 1.6rem 1.1rem; }
+        }
+        @media (max-width: 420px) {
+            .lado .nombre { font-size: 0.9rem; }
+            .lado .datos { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pantalla, .relato-fondo > div, .movil, .paso-tarjeta { transition: none !important; }
         }
     </style>
 </head>
@@ -294,90 +580,382 @@
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="content-container">
-            <article class="page-content">
-                <h2 class="section-title">LA APP DE LA OPOSICIÓN</h2>
+    <main class="main-content app-pagina">
 
-                <!-- Presentación y descarga: los enlaces se rellenan desde app-config.json (app-banner.js) -->
-                <div class="app-hero">
-                    <div>
-                        <div class="app-marca">
-                            <img class="app-logo" src="assets/icon/icon.svg" alt="Logo de la app: una diana" width="56" height="56">
-                            <span class="app-etiqueta">Android y navegador · versión de prueba</span>
-                        </div>
-                        <h2>TCEE y DCE, en el bolsillo</h2>
-                        <p class="app-entradilla">La web pone el temario y los test. La app pone el día a día: cuándo cantas, qué temas entran, cuánto falta para el examen, cómo te fue la última vez y qué probabilidad llevas. Y, si tienes preparador, os enlaza. Sirve para las dos oposiciones de Comercio: eliges la tuya al abrirla, y cada una lleva su temario, sus cantes y sus preparadores. La hacemos Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE).</p>
-                        <div id="app-banner" class="app-descarga" hidden>
-                            <div class="app-descarga-botones">
-                                <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
-                                <a id="app-link-play" class="download-btn" target="_blank" rel="noopener" hidden>Google Play</a>
-                                <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
-                            </div>
-                            <p id="app-banner-note" class="app-nota" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido. <a href="#instalar">Cómo instalarla</a>.</p>
-                        </div>
-                        <div class="app-web">
-                            <a class="download-btn secundario" href="abrir/">Usar en el navegador</a>
-                            <p class="app-nota">En el ordenador o en cualquier móvil (también iPhone), sin instalar nada. Con tu cuenta de Google ves lo mismo que en la app.</p>
-                        </div>
-                        <p class="app-gancho"><strong>¿Te han cancelado la clase?</strong> Pide el cante a otros preparadores desde la app. <a href="#sustituto">Así funciona</a>.</p>
-                        <ul class="app-datos">
-                            <li>Gratis y sin anuncios</li>
-                            <li>Tus datos solo los ves tú</li>
-                            <li>Funciona sin cuenta</li>
-                            <li id="app-version" hidden></li>
-                        </ul>
+        <!-- ===== Portada: las dos oposiciones y su mezcla. Los enlaces se rellenan desde app-config.json (app-banner.js) ===== -->
+        <section class="portada" aria-labelledby="portada-titulo">
+            <div class="fondo-partido" aria-hidden="true"></div>
+            <div class="portada-interior">
+                <span class="app-etiqueta">La app de las oposiciones · Android y navegador</span>
+                <h2 id="portada-titulo"><span class="t-tcee">TCEE</span> <span class="t-y">y</span> <span class="t-dce">DCE</span><span class="resto">en el bolsillo</span></h2>
+
+                <div class="portada-trio">
+                    <div class="lado lado-tcee">
+                        <span class="siglas">TCEE</span>
+                        <span class="nombre">Técnico Comercial y Economista del Estado</span>
+                        <span class="autor">Víctor Gutiérrez Marcos</span>
                     </div>
-                    <div class="app-movil">
-                        <img src="promo/hoy.webp" width="720" height="1560" alt="Pantalla «Hoy» de la app: racha, próximo cante, test diario y probabilidad de que salga un tema que llevas">
+                    <div class="portada-movil">
+                        <div class="portada-diana"><img src="assets/icon/icon.svg" alt="Logo de la app: una diana, mitad TCEE y mitad DCE" width="76" height="76"></div>
+                        <div class="movil">
+                            <div class="movil-pantalla">
+                                <img src="promo/elegir-oposicion.webp" width="720" height="1560" alt="Pantalla de la app para elegir oposición: TCEE o DCE">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lado lado-dce">
+                        <span class="siglas">DCE</span>
+                        <span class="nombre">Diplomado Comercial del Estado</span>
+                        <span class="autor">Manuel Cabado García</span>
                     </div>
                 </div>
 
-                <section class="app-seccion app-destacada" id="sustituto">
-                    <span class="app-etiqueta">Clases sueltas</span>
-                    <h3>¿Te cancelan la clase? Otro preparador te la coge</h3>
-                    <p>Tu preparador se pone enfermo, tiene un viaje o, simplemente, esa semana no puede. Hasta ahora tocaba escribir a unos y a otros para ver si alguien te cogía el cante. Con la app lo pides una vez y les llega a los preparadores que estén disponibles.</p>
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
+                <div class="portada-accion">
+                    <p class="app-entradilla">La web pone el temario y los test. La app pone el día a día: cuándo cantas, qué temas entran, cuánto falta para el examen, cómo te fue la última vez y qué probabilidad llevas. Y, si tienes preparador, os enlaza. Sirve para las dos oposiciones de Comercio: eliges la tuya al abrirla, y cada una lleva su temario, sus cantes y sus preparadores. La hacemos Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE).</p>
+                    <div id="app-banner" class="app-descarga" hidden>
+                        <div class="app-descarga-botones">
+                            <a id="app-link-apk" class="download-btn mezcla" rel="noopener" hidden>Descargar para Android</a>
+                            <a id="app-link-play" class="download-btn mezcla" target="_blank" rel="noopener" hidden>Google Play</a>
+                            <a id="app-link-ios" class="download-btn mezcla" target="_blank" rel="noopener" hidden>App Store</a>
+                        </div>
+                        <p id="app-banner-note" class="app-nota" hidden>Se descarga un fichero APK: al abrirlo, Android pedirá permiso para instalar aplicaciones de origen desconocido. <a href="#instalar">Cómo instalarla</a>.</p>
+                    </div>
+                    <div class="app-web">
+                        <div class="app-web-botones"><a class="download-btn secundario" href="abrir/">Usar en el navegador</a></div>
+                        <p class="app-nota">En el ordenador o en cualquier móvil (también iPhone), sin instalar nada. Con tu cuenta de Google ves lo mismo que en la app.</p>
+                    </div>
+                    <p class="app-gancho"><strong>¿Te han cancelado la clase?</strong> Pide el cante a otros preparadores desde la app. <a href="#sustituto">Así funciona</a>.</p>
+                    <ul class="app-datos">
+                        <li>Gratis y sin anuncios</li>
+                        <li>Tus datos solo los ves tú</li>
+                        <li>Funciona sin cuenta</li>
+                        <li id="app-version" hidden></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Vídeo ===== -->
+        <section class="franja-video" id="video">
+            <div class="interior">
+                <span class="app-etiqueta">En un minuto</span>
+                <h3>La app, de un vistazo</h3>
+                <p>Un minuto.</p>
+                <video class="app-video" controls playsinline preload="none" poster="promo/poster.jpg" width="1920" height="1080" aria-label="Vídeo de presentación de la app Oposición TCEE · DCE (un minuto)">
+                    <source src="promo/oposicion-tcee.mp4" type="video/mp4">
+                    Tu navegador no reproduce vídeo. Puedes <a href="promo/oposicion-tcee.mp4">descargarlo</a>.
+                </video>
+            </div>
+        </section>
+
+        <!-- ===== Relato: el móvil se queda fijo y cambia de pantalla con cada paso ===== -->
+        <section class="relato" data-tono="mezcla" aria-label="Recorrido por la app">
+            <div class="relato-fondo" aria-hidden="true">
+                <div class="f-tcee"></div>
+                <div class="f-dce"></div>
+                <div class="f-mezcla fondo-partido"></div>
+            </div>
+
+            <div class="relato-cabecera">
+                <span class="app-etiqueta">Recorrido</span>
+                <h3>Una app, dos oposiciones</h3>
+                <p>Baja despacio: el móvil te va enseñando cada parte de la app.</p>
+            </div>
+
+            <div class="relato-cuerpo">
+                <div class="relato-grafico" aria-hidden="true">
+                    <div class="relato-progreso"><span></span></div>
+                    <div class="movil">
+                        <div class="movil-pantalla">
+                            <div class="pantalla visible" data-pantalla="elegir"><img src="promo/elegir-oposicion.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-hoy"><img loading="lazy" src="promo/dce-hoy.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-temario"><img loading="lazy" src="promo/dce-temario.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-tema-web"><img loading="lazy" src="promo/dce-tema-web.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="organizacion"><img loading="lazy" src="promo/organizacion.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="esquema"><img loading="lazy" src="promo/esquema.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-probabilidades"><img loading="lazy" src="promo/dce-probabilidades.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="cantes-agenda"><img loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-cantar"><img loading="lazy" src="promo/dce-cantar.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="cantes-diario"><img loading="lazy" src="promo/cantes-diario.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="test-pregunta"><img loading="lazy" src="promo/test-pregunta.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="test-estadisticas"><img loading="lazy" src="promo/test-estadisticas.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="mas"><img loading="lazy" src="promo/mas.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="cante-cancelado"><img loading="lazy" src="promo/cante-cancelado.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-buscar-preparador"><img loading="lazy" src="promo/dce-buscar-preparador.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="peticion-cogida"><img loading="lazy" src="promo/peticion-cogida.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="dce-preparador"><img loading="lazy" src="promo/dce-preparador.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="alumno"><img loading="lazy" src="promo/alumno.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="semana"><img loading="lazy" src="promo/semana.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="sustituciones"><img loading="lazy" src="promo/sustituciones.webp" width="720" height="1560" alt=""></div>
+                        </div>
+                    </div>
+                    <ol class="capitulos">
+                        <li data-capitulo="oposicion"><button type="button">Tu oposición</button></li>
+                        <li data-capitulo="hoy"><button type="button">Hoy</button></li>
+                        <li data-capitulo="temario"><button type="button">Temario</button></li>
+                        <li data-capitulo="cantes"><button type="button">Cantes</button></li>
+                        <li data-capitulo="test"><button type="button">Test</button></li>
+                        <li data-capitulo="mas"><button type="button">Más</button></li>
+                        <li data-capitulo="clases"><button type="button">Clases sueltas</button></li>
+                        <li data-capitulo="preparadores"><button type="button">Preparadores</button></li>
+                    </ol>
+                </div>
+
+                <div class="relato-pasos">
+                    <!-- Tu oposición -->
+                    <div class="paso" data-tono="mezcla" data-capitulo="oposicion" data-pantalla="elegir">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Al abrirla</span>
+                            <h4>Primero, eliges la tuya</h4>
+                            <p>Sirve para las dos oposiciones de Comercio. Cada una lleva su temario, sus cantes y sus preparadores, y la puedes cambiar cuando quieras en <em>Más → Ajustes → Oposición</em>.</p>
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="oposicion" data-pantalla="elegir">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">TCEE</span>
+                            <h4>Técnico Comercial y Economista del Estado</h4>
+                            <p>Con el temario, las preguntas oficiales de test y la organización del temario de esta web, y la red de preparadores de TCEE.</p>
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="dce" data-capitulo="oposicion" data-pantalla="elegir">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">DCE</span>
+                            <h4>Diplomado Comercial del Estado</h4>
+                            <p>Con los apuntes de Manuel Cabado García, que se leen dentro de la app, y la red de preparadores de DCE. Si quieres, también puedes practicar con el test de TCEE.</p>
+                        </div>
+                    </div>
+
+                    <!-- Hoy -->
+                    <div class="paso" id="bloques" data-tono="dce" data-capitulo="hoy" data-pantalla="dce-hoy">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Bloque 1 de 5</span>
+                            <h4>Hoy</h4>
+                            <p class="lema">Lo que toca, nada más abrir.</p>
+                            <ul>
+                                <li>Días que faltan para tu próximo ejercicio (la fecha la pones tú) y cuenta atrás al próximo cante.</li>
+                                <li>Test diario: diez preguntas oficiales, las mismas para todos cada día.</li>
+                                <li>Preguntas pendientes de repaso y racha de días seguidos.</li>
+                                <li>Probabilidad de que salga un tema que llevas con los temas que llevas estudiados.</li>
+                            </ul>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-hoy.webp" width="720" height="1560" alt="Bloque Hoy en DCE: próximo cante, test diario y probabilidad">
+                        </div>
+                    </div>
+
+                    <!-- Temario -->
+                    <div class="paso" data-tono="dce" data-capitulo="temario" data-pantalla="dce-temario">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Bloque 2 de 5</span>
+                            <h4>Temario</h4>
+                            <p class="lema">Estudiar, con el mapa delante.</p>
+                            <ul>
+                                <li>Todos los temas por ejercicio y parte, con buscador y PDF que se pueden descargar para leer sin conexión.</li>
+                                <li>Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo y un test con sus preguntas.</li>
+                            </ul>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-temario.webp" width="720" height="1560" alt="Temario de DCE con buscador y los temas estudiados marcados">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="dce" data-capitulo="temario" data-pantalla="dce-tema-web">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Temario</span>
+                            <h4>Cada tema, dentro de la app</h4>
+                            <p>Abres un tema y lo lees en la propia app, tal como está en la web de la que sale, sin cambiar de aplicación.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-tema-web.webp" width="720" height="1560" alt="Un tema de DCE abierto dentro de la app">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="temario" data-pantalla="organizacion">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Temario</span>
+                            <h4>Organización por bloques</h4>
+                            <p>La organización del temario: los bloques con su código de colores, esquemas con las conexiones entre temas y «por dónde seguir».</p>
+                            <img class="paso-captura" loading="lazy" src="promo/organizacion.webp" width="720" height="1560" alt="Organización del temario por bloques de colores, con los temas estudiados de cada bloque">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="temario" data-pantalla="esquema">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Temario</span>
+                            <h4>Las conexiones entre temas</h4>
+                            <p>Un esquema interactivo con los temas y sus conexiones, para ver qué tema lleva a cuál y repasar por relaciones, no solo en orden.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/esquema.webp" width="720" height="1560" alt="Esquema interactivo del temario con las conexiones entre temas">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="dce" data-capitulo="temario" data-pantalla="dce-probabilidades">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Temario</span>
+                            <h4>Probabilidades y cronograma</h4>
+                            <ul>
+                                <li>Probabilidades: qué probabilidad tienes de que salga un tema que te sabes, y qué pasaría si te supieras más.</li>
+                                <li>Cronograma: planifica una vuelta a los temas de un ejercicio, a tantos temas por semana o hasta una fecha, contando desde tu primer cante y con las semanas acabando el día en que cantas. Propone un orden por bloques y conexiones, intercala los temas más memorísticos, te dice cada semana lo que toca y, si te retrasas, lo reparte de nuevo. Puedes compartirlo con tu preparador para que te proponga cambios.</li>
+                            </ul>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-probabilidades.webp" width="720" height="1560" alt="Probabilidades en DCE: porcentaje de que salga un tema que llevas, con deslizadores por parte">
+                        </div>
+                    </div>
+
+                    <!-- Cantes -->
+                    <div class="paso" data-tono="tcee" data-capitulo="cantes" data-pantalla="cantes-agenda">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Bloque 3 de 5</span>
+                            <h4>Cantes</h4>
+                            <p class="lema">Programar, cantar y anotar.</p>
+                            <p><strong>Agenda:</strong> calendario de cantes con repetición semanal, avisos la víspera y una hora antes, y exportación al calendario del móvil. Cada cante puede ser presencial u online: para los online, creas la reunión de Google Meet, pegas el enlace y el día del cante entras con un toque.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt="Agenda de cantes con el próximo cante y el calendario del mes">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="dce" data-capitulo="cantes" data-pantalla="dce-cantar">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Cantes</span>
+                            <h4>Cantar</h4>
+                            <p>Sacar bola como en el examen o de tu propia bolsa de temas, con prioridad opcional a los que flojean; cronómetro de preparación y exposición que avisa con la pantalla apagada, y grabación para escucharte.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-cantar.webp" width="720" height="1560" alt="Sacar bola y cronómetro de exposición en DCE">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="cantes" data-pantalla="cantes-diario">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Cantes</span>
+                            <h4>Diario</h4>
+                            <p>Qué tema cantaste, cuánto duró, cómo fue y qué te dijeron. Con eso se detectan los temas flojos.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/cantes-diario.webp" width="720" height="1560" alt="Diario de cantes: temas flojos, valoración por tema e historial">
+                        </div>
+                    </div>
+
+                    <!-- Test -->
+                    <div class="paso" data-tono="tcee" data-capitulo="test" data-pantalla="test-pregunta">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Bloque 4 de 5</span>
+                            <h4>Test</h4>
+                            <p class="lema">El simulador de la web, en el móvil.</p>
+                            <ul>
+                                <li>Las mismas preguntas oficiales, los mismos filtros (temas, bloques, exámenes) y el mismo baremo.</li>
+                                <li>Resultados con puntuación por bloque y revisión pregunta a pregunta.</li>
+                            </ul>
+                            <p class="aviso-dce">Si preparas DCE, también puedes practicar con ellas.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/test-pregunta.webp" width="720" height="1560" alt="Pregunta de test con sus cuatro opciones">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="test" data-pantalla="test-estadisticas">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Test</span>
+                            <h4>Tu historial</h4>
+                            <ul>
+                                <li>Estadísticas y repaso espaciado de las preguntas falladas.</li>
+                                <li>Con cuenta, el historial es el mismo que en el <a href="../oposicion/temario/primer-ejercicio/test/simulador.html">simulador de la web</a>.</li>
+                            </ul>
+                            <img class="paso-captura" loading="lazy" src="promo/test-estadisticas.webp" width="720" height="1560" alt="Estadísticas de los test: nota media, mejor nota y evolución">
+                        </div>
+                    </div>
+
+                    <!-- Más -->
+                    <div class="paso" data-tono="tcee" data-capitulo="mas" data-pantalla="mas">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Bloque 5 de 5</span>
+                            <h4>Más</h4>
+                            <p class="lema">Lo que no es del día a día.</p>
+                            <ul>
+                                <li>Convocatoria: la fecha de cada ejercicio y tus propios hitos.</li>
+                                <li>Horario de estudio semanal, con las horas que dedicas a cada cosa.</li>
+                                <li>Preparadores: enlazar con el tuyo o llevar a tus alumnos.</li>
+                                <li>Cuenta, tema claro u oscuro, descargas, enlaces útiles y exportación de tus datos.</li>
+                            </ul>
+                            <img class="paso-captura" loading="lazy" src="promo/mas.webp" width="720" height="1560" alt="Bloque Más: convocatoria, horario de estudio, preparadores y ajustes">
+                        </div>
+                    </div>
+
+                    <div class="paso" data-tono="mezcla" data-capitulo="mas" data-pantalla="mas">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">En el ordenador</span>
+                            <h4>Todo sincronizado</h4>
+                            <p>La misma app en el navegador del ordenador, con la misma cuenta de Google: lo que haces en el móvil aparece allí, y al revés.</p>
+                            <img class="paso-escritorio" loading="lazy" src="promo/dce-escritorio.webp" width="1440" height="900" alt="La app en el navegador del ordenador, en DCE">
+                        </div>
+                    </div>
+
+                    <!-- Clases sueltas -->
+                    <div class="paso" id="sustituto" data-tono="tcee" data-capitulo="clases" data-pantalla="cante-cancelado">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Clases sueltas</span>
+                            <h4>¿Te cancelan la clase? Otro preparador te la coge</h4>
+                            <p>Tu preparador se pone enfermo, tiene un viaje o, simplemente, esa semana no puede. Hasta ahora tocaba escribir a unos y a otros para ver si alguien te cogía el cante. Con la app lo pides una vez y les llega a los preparadores que estén disponibles.</p>
                             <ol class="app-pasos">
                                 <li><strong>Pide el cante.</strong> Desde el cante cancelado («Buscar preparador alternativo») o desde <em>Más → Preparadores</em>, para cualquier clase suelta.</li>
+                            </ol>
+                            <img class="paso-captura" loading="lazy" src="promo/cante-cancelado.webp" width="720" height="1560" alt="Cante cancelado por la preparadora, con el botón «Buscar preparador alternativo»">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="dce" data-capitulo="clases" data-pantalla="dce-buscar-preparador">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Clases sueltas</span>
+                            <h4>Cuándo, qué temas y a quién</h4>
+                            <ol class="app-pasos" start="2" style="counter-reset: paso 1">
                                 <li><strong>Di cuándo puedes.</strong> El día y una franja de horas (por ejemplo, de 16:00 a 21:00) o una hora fija. No hace falta poner duración.</li>
-                                <li><strong>Elige los temas que llevas.</strong> Salen ya marcados los del cante o los que tienes como estudiados, y los cambias si quieres. También vale para el dictamen de coyuntura del primer ejercicio.</li>
+                                <li><strong>Elige los temas que llevas.</strong> Salen ya marcados los del cante o los que tienes como estudiados, y los cambias si quieres.</li>
                                 <li><strong>A quién se lo pides.</strong> A todos los preparadores verificados o solo a los que elijas. Les llega un aviso al momento.</li>
+                            </ol>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-buscar-preparador.webp" width="720" height="1560" alt="Formulario para buscar preparador en DCE: día, franja de horas, ejercicio y temas que lleva el opositor">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="clases" data-pantalla="peticion-cogida">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Clases sueltas</span>
+                            <h4>Alguien la coge</h4>
+                            <ol class="app-pasos" start="5" style="counter-reset: paso 4">
                                 <li><strong>Quien lo coge elige la hora</strong> dentro de tu franja. Los dos recibís el nombre y el teléfono del otro, con un botón para escribiros por WhatsApp, y el cante aparece en vuestras agendas.</li>
                             </ol>
                             <p>Mientras nadie la coja, puedes retirar la petición. Los preparadores ven el día, las horas y los temas, pero <strong>no ven tu nombre ni tu teléfono</strong> hasta que uno de ellos la coge, y solo ese.</p>
-                        </div>
-                        <div class="app-moviles app-moviles-3">
-                            <div class="app-movil"><img loading="lazy" src="promo/cante-cancelado.webp" width="720" height="1560" alt="Cante cancelado por la preparadora, con el botón «Buscar preparador alternativo»"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/buscar-preparador.webp" width="720" height="1560" alt="Formulario para buscar preparador: día, franja de horas, ejercicio y temas que lleva el opositor"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/peticion-cogida.webp" width="720" height="1560" alt="Petición cogida por otra preparadora, con su teléfono y el botón para escribirle por WhatsApp"></div>
+                            <img class="paso-captura" loading="lazy" src="promo/peticion-cogida.webp" width="720" height="1560" alt="Petición cogida por otra preparadora, con su teléfono y el botón para escribirle por WhatsApp">
                         </div>
                     </div>
-                    <div class="app-comparte">
-                        <div>
-                            <h4>Si eres opositor</h4>
-                            <ul>
-                                <li>No pierdes la semana de cante aunque falle tu preparador.</li>
-                                <li>Puedes pedir clases sueltas aunque no tengas preparador fijo.</li>
-                                <li>Solo te escriben preparadores verificados.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Si eres preparador</h4>
-                            <ul>
-                                <li>Ves en un tablón los cantes que buscan preparador, con los temas que entran.</li>
-                                <li>La app te avisa si ya tienes otra clase a esas horas.</li>
-                                <li>Al cogerlo, el alumno pasa a tu semana con su teléfono.</li>
-                            </ul>
+
+                    <!-- Preparadores -->
+                    <div class="paso" id="preparadores" data-tono="dce" data-capitulo="preparadores" data-pantalla="dce-preparador">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Para preparadores</span>
+                            <h4>Tu preparador y tú, conectados</h4>
+                            <p>El preparador también tiene su sitio en la app. Activa «Soy preparador» en <em>Más → Preparadores</em> y lleva a sus alumnos desde el móvil: programa las sesiones de cante (una a una o en grupo), saca bola entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha, con lo que ha cantado, cómo le ha ido y qué temas flojean.</p>
+                            <ol class="app-pasos">
+                                <li>El preparador inicia sesión y la app le da un <strong>código de seis caracteres</strong>.</li>
+                                <li>El alumno lo escribe en <em>Más → Preparadores → Tengo preparador</em>.</li>
+                                <li>Desde entonces, las sesiones que programa el preparador aparecen en la agenda del alumno.</li>
+                            </ol>
+                            <img class="paso-captura" loading="lazy" src="promo/dce-preparador.webp" width="720" height="1560" alt="Sección del preparador en DCE: código para alumnos, próximas sesiones y lista de alumnos">
                         </div>
                     </div>
-                </section>
+                    <div class="paso" data-tono="tcee" data-capitulo="preparadores" data-pantalla="alumno">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Para preparadores</span>
+                            <h4>La ficha de cada alumno</h4>
+                            <p>Los temas que lleva, sus cantes y su valoración media. Con los alumnos que no usan la app funciona igual, solo que sin enlace: el preparador apunta los temas que llevan y les envía el informe de cada cante por mensaje o por correo.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/alumno.webp" width="720" height="1560" alt="Ficha de un alumno: temas que lleva, cantes y valoración media">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="preparadores" data-pantalla="semana">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Para preparadores</span>
+                            <h4>Su semana, ordenada</h4>
+                            <p>Semana y mes con todas sus clases, aviso si dos se solapan, clases fijas que se programan solas y cancelar o cambiar la hora con un toque. Si quiere, sus alumnos pueden reservar en sus huecos libres.</p>
+                            <p><strong>Varios preparadores.</strong> Si tienes más de un preparador, cada uno tiene su color en tu agenda y puedes ver solo los cantes de uno. El preparador, igual con sus alumnos.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/semana.webp" width="720" height="1560" alt="Mi semana: las clases de cada alumno con su color, una cancelada y otra por confirmar">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="preparadores" data-pantalla="sustituciones">
+                        <div class="paso-tarjeta">
+                            <span class="app-etiqueta">Para preparadores</span>
+                            <h4>Verificados y sustituciones</h4>
+                            <p><strong>Preparadores verificados.</strong> Para dar su código a alumnos o coger sustituciones, a un preparador lo tiene que verificar otro preparador ya verificado. Así nadie puede hacerse pasar por preparador, y la verificación se puede retirar si hace falta. En el directorio de preparadores verificados ves qué ejercicios prepara cada uno y su LinkedIn.</p>
+                            <p><strong>Sustituciones.</strong> Si un preparador cancela, el alumno puede pedir a otros preparadores verificados (a todos o a los que elija) que le cojan el cante. El alumno elige los temas que lleva y da un día y una franja de horas (por ejemplo, de 16:00 a 21:00); a los preparadores les llega un aviso y quien lo coge elige la hora dentro de la franja. Entonces los dos reciben el teléfono del otro para hablar por WhatsApp.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/sustituciones.webp" width="720" height="1560" alt="Tablón de sustituciones: día, hora y temas de los cantes que buscan preparador">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== El resto, en formato de página ===== -->
+        <div class="app-resto">
+            <article class="page-content">
 
                 <section class="app-seccion" id="idea">
                     <h3>La idea</h3>
                     <p>Preparar esta oposición no es solo estudiar temas: es sostener durante años una rutina de vueltas al temario, cantes semanales y test, y saber en cada momento dónde estás. Eso se suele llevar repartido entre una hoja de cálculo, el calendario del móvil, un cronómetro, una bolsa con papelitos y la memoria.</p>
-                    <p>La app reúne todo eso en un solo sitio y lo ordena alrededor de una pregunta: <strong>¿qué me toca hoy?</strong> No sustituye a la web ni al temario; se apoya en ellos. Descarga de aquí los temas, las preguntas oficiales y la organización del temario, y añade lo que solo tiene sentido en el móvil: avisos, cuenta atrás, sorteo, cronómetro y un diario de cómo va cada cante.</p>
+                    <p>La app reúne todo eso en un solo sitio y lo ordena alrededor de una pregunta: <strong>¿qué me toca hoy?</strong> No sustituye a la web ni al temario; se apoya en ellos. Descarga de aquí los temas, las preguntas oficiales y la organización del temario, y añade lo que solo tiene sentido en el móvil: avisos, cuenta atrás, sacar bola, cronómetro y un diario de cómo va cada cante.</p>
                     <div class="app-principios">
                         <div class="app-principio">
                             <h4>Gratis y sin anuncios</h4>
@@ -398,125 +976,30 @@
                     </div>
                 </section>
 
-                <section class="app-seccion" id="video">
-                    <h3>En un minuto</h3>
-                    <video class="app-video" controls muted playsinline preload="none" poster="promo/poster.jpg" width="1920" height="1080" aria-label="Vídeo de presentación de la app Oposición TCEE · DCE (un minuto, sin sonido)">
-                        <source src="promo/oposicion-tcee.mp4" type="video/mp4">
-                        Tu navegador no reproduce vídeo. Puedes <a href="promo/oposicion-tcee.mp4">descargarlo</a>.
-                    </video>
-                </section>
-
-                <section class="app-seccion" id="bloques">
-                    <h3>Cinco bloques</h3>
-                    <p>La app se organiza en cinco pestañas, una por cada cosa que se hace con ella.</p>
-
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <span class="app-bloque-numero">Bloque 1</span>
-                            <h4>Hoy</h4>
-                            <p class="app-bloque-lema">Lo que toca, nada más abrir.</p>
+                <section class="app-seccion" id="clases-sueltas">
+                    <h3>Clases sueltas, para los dos lados</h3>
+                    <div class="app-comparte">
+                        <div>
+                            <h4>Si eres opositor</h4>
                             <ul>
-                                <li>Días que faltan para tu próximo ejercicio (la fecha la pones tú) y cuenta atrás al próximo cante.</li>
-                                <li>Test diario: diez preguntas oficiales, las mismas para todos cada día.</li>
-                                <li>Preguntas pendientes de repaso y racha de días seguidos.</li>
-                                <li>Probabilidad de que salga un tema que llevas con los temas que llevas estudiados.</li>
+                                <li>No pierdes la semana de cante aunque falle tu preparador.</li>
+                                <li>Puedes pedir clases sueltas aunque no tengas preparador fijo.</li>
+                                <li>Solo te escriben preparadores verificados.</li>
                             </ul>
                         </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/hoy.webp" width="720" height="1560" alt="Bloque Hoy: cuentas atrás, test diario y accesos rápidos"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <span class="app-bloque-numero">Bloque 2</span>
-                            <h4>Temario</h4>
-                            <p class="app-bloque-lema">Estudiar, con el mapa delante.</p>
+                        <div>
+                            <h4>Si eres preparador</h4>
                             <ul>
-                                <li>Todos los temas por ejercicio y parte, con buscador y PDF que se pueden descargar para leer sin conexión.</li>
-                                <li>Organización del temario: los bloques con su código de colores, esquemas con las conexiones entre temas y «por dónde seguir».</li>
-                                <li>Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo y un test con sus preguntas.</li>
-                                <li>Probabilidades: qué probabilidad tienes de que salga un tema que te sabes, y qué pasaría si te supieras más.</li>
-                                <li>Cronograma: planifica una vuelta al 3.º o al 4.º, a tantos temas por semana o hasta una fecha, contando desde tu primer cante y con las semanas acabando el día en que cantas. Propone un orden por bloques y conexiones, intercala los temas más memorísticos, te dice cada semana lo que toca y, si te retrasas, lo reparte de nuevo. Puedes compartirlo con tu preparador para que te proponga cambios.</li>
+                                <li>Ves en un tablón los cantes que buscan preparador, con los temas que entran.</li>
+                                <li>La app te avisa si ya tienes otra clase a esas horas.</li>
+                                <li>Al cogerlo, el alumno pasa a tu semana con su teléfono.</li>
                             </ul>
-                        </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/organizacion.webp" width="720" height="1560" alt="Organización del temario por bloques de colores, con los temas estudiados de cada bloque"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/esquema.webp" width="720" height="1560" alt="Esquema interactivo del temario con las conexiones entre temas"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <span class="app-bloque-numero">Bloque 3</span>
-                            <h4>Cantes</h4>
-                            <p class="app-bloque-lema">Programar, cantar y anotar.</p>
-                            <ul>
-                                <li><strong>Agenda:</strong> calendario de cantes con repetición semanal, avisos la víspera y una hora antes, y exportación al calendario del móvil. Cada cante puede ser presencial u online: para los online, creas la reunión de Google Meet, pegas el enlace y el día del cante entras con un toque.</li>
-                                <li><strong>Cantar:</strong> sorteo como en el examen o de tu propia bolsa de temas, con prioridad opcional a los que flojean; cronómetro de preparación y exposición que avisa con la pantalla apagada, y grabación para escucharte.</li>
-                                <li><strong>Diario:</strong> qué tema cantaste, cuánto duró, cómo fue y qué te dijeron. Con eso se detectan los temas flojos.</li>
-                            </ul>
-                        </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt="Agenda de cantes con el próximo cante y el calendario del mes"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/cantes-cantar.webp" width="720" height="1560" alt="Sorteo de temas y cronómetro de exposición"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <span class="app-bloque-numero">Bloque 4</span>
-                            <h4>Test</h4>
-                            <p class="app-bloque-lema">El simulador de la web, en el móvil.</p>
-                            <ul>
-                                <li>Las mismas preguntas oficiales, los mismos filtros (temas, bloques, exámenes) y el mismo baremo.</li>
-                                <li>Resultados con puntuación por bloque y revisión pregunta a pregunta.</li>
-                                <li>Estadísticas y repaso espaciado de las preguntas falladas.</li>
-                                <li>Con cuenta, el historial es el mismo que en el <a href="../oposicion/temario/primer-ejercicio/test/simulador.html">simulador de la web</a>.</li>
-                            </ul>
-                        </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/test-pregunta.webp" width="720" height="1560" alt="Pregunta de test con sus cuatro opciones"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/test-estadisticas.webp" width="720" height="1560" alt="Estadísticas de los test: nota media, mejor nota y evolución"></div>
-                        </div>
-                    </div>
-
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <span class="app-bloque-numero">Bloque 5</span>
-                            <h4>Más</h4>
-                            <p class="app-bloque-lema">Lo que no es del día a día.</p>
-                            <ul>
-                                <li>Convocatoria: la fecha de cada ejercicio y tus propios hitos.</li>
-                                <li>Horario de estudio semanal, con las horas que dedicas a cada cosa.</li>
-                                <li>Preparadores: enlazar con el tuyo o llevar a tus alumnos.</li>
-                                <li>Cuenta, tema claro u oscuro, descargas, enlaces útiles y exportación de tus datos.</li>
-                            </ul>
-                        </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/mas.webp" width="720" height="1560" alt="Bloque Más: convocatoria, horario de estudio, preparadores y ajustes"></div>
                         </div>
                     </div>
                 </section>
 
-                <section class="app-seccion" id="preparadores">
-                    <h3>Para preparadores</h3>
-                    <p>El preparador también tiene su sitio en la app. Activa «Soy preparador» en <em>Más → Preparadores</em> y lleva a sus alumnos desde el móvil: programa las sesiones de cante (una a una o en grupo), sortea entre los temas que lleva cada alumno, cronometra, valora y consulta su ficha, con lo que ha cantado, cómo le ha ido y qué temas flojean.</p>
-                    <div class="app-bloque">
-                        <div class="app-bloque-texto">
-                            <h4>Preparador y alumno, enlazados</h4>
-                            <ol class="app-pasos">
-                                <li>El preparador inicia sesión y la app le da un <strong>código de seis caracteres</strong>.</li>
-                                <li>El alumno lo escribe en <em>Más → Preparadores → Tengo preparador</em>.</li>
-                                <li>Desde entonces, las sesiones que programa el preparador aparecen en la agenda del alumno y sus valoraciones llegan a su diario de cantes.</li>
-                            </ol>
-                            <p>Con los alumnos que no usan la app funciona igual, solo que sin enlace: el preparador apunta los temas que llevan y les envía el informe de cada cante por mensaje o por correo.</p>
-                        </div>
-                        <div class="app-moviles">
-                            <div class="app-movil"><img loading="lazy" src="promo/preparador.webp" width="720" height="1560" alt="Sección del preparador: código para alumnos, próximas sesiones y lista de alumnos"></div>
-                            <div class="app-movil"><img loading="lazy" src="promo/alumno.webp" width="720" height="1560" alt="Ficha de un alumno: temas que lleva, cantes y valoración media"></div>
-                        </div>
-                    </div>
+                <section class="app-seccion" id="preparador-ve">
+                    <h3>Lo que ve tu preparador</h3>
                     <div class="app-comparte">
                         <div>
                             <h4>Qué ve el preparador</h4>
@@ -535,29 +1018,6 @@
                         </div>
                     </div>
                     <p>El enlace lo crea el alumno y cualquiera de los dos puede romperlo cuando quiera. Las notas que el preparador toma sobre un alumno son privadas.</p>
-
-                    <div class="app-principios">
-                        <div class="app-principio">
-                            <h4>Preparadores verificados</h4>
-                            <p>Para dar su código a alumnos o coger sustituciones, a un preparador lo tiene que verificar otro preparador ya verificado. Así nadie puede hacerse pasar por preparador, y la verificación se puede retirar si hace falta. En el directorio de preparadores verificados ves qué ejercicios prepara cada uno y su LinkedIn.</p>
-                        </div>
-                        <div class="app-principio">
-                            <h4>Varios preparadores</h4>
-                            <p>Si tienes más de un preparador, cada uno tiene su color en tu agenda y puedes ver solo los cantes de uno. El preparador, igual con sus alumnos.</p>
-                        </div>
-                        <div class="app-principio">
-                            <h4>Su semana, ordenada</h4>
-                            <p>Semana y mes con todas sus clases, aviso si dos se solapan, clases fijas que se programan solas y cancelar o cambiar la hora con un toque. Si quiere, sus alumnos pueden reservar en sus huecos libres.</p>
-                        </div>
-                        <div class="app-principio">
-                            <h4>Sustituciones</h4>
-                            <p>Si un preparador cancela, el alumno puede pedir a otros preparadores verificados (a todos o a los que elija) que le cojan el cante. El alumno elige los temas que lleva y da un día y una franja de horas (por ejemplo, de 16:00 a 21:00); a los preparadores les llega un aviso y quien lo coge elige la hora dentro de la franja. Entonces los dos reciben el teléfono del otro para hablar por WhatsApp.</p>
-                        </div>
-                    </div>
-                    <div class="app-moviles">
-                        <div class="app-movil"><img loading="lazy" src="promo/semana.webp" width="720" height="1560" alt="Mi semana: las clases de cada alumno con su color, una cancelada y otra por confirmar"></div>
-                        <div class="app-movil"><img loading="lazy" src="promo/sustituciones.webp" width="720" height="1560" alt="Tablón de sustituciones: día, hora y temas de los cantes que buscan preparador"></div>
-                    </div>
                 </section>
 
                 <section class="app-seccion" id="privacidad">
@@ -578,7 +1038,7 @@
 
                 <section class="app-seccion" id="instalar">
                     <h3>Cómo instalarla</h3>
-                    <p>De momento la app está disponible para Android como versión de prueba, fuera de Google Play:</p>
+                    <p>De momento la app está disponible para Android, fuera de Google Play:</p>
                     <ol class="app-pasos">
                         <li>Pulsa <strong>Descargar para Android</strong> desde el móvil. Se descarga un fichero llamado <code>oposicion-tcee.apk</code>.</li>
                         <li>Ábrelo. Android avisará de que viene de fuera de la tienda y pedirá permiso para instalarlo: acéptalo solo para esta instalación.</li>
@@ -587,7 +1047,7 @@
                     <p>Cuando haya una versión nueva, la propia app lo avisa en «Hoy». Se instala encima de la anterior y no se pierde nada.</p>
                     <h4>En el navegador</h4>
                     <p>No hace falta instalar nada: abre <a href="abrir/">victorgutierrezmarcos.es/app/abrir/</a> en el ordenador, la tableta o un iPhone e inicia sesión con la misma cuenta de Google que en el móvil. Si quieres tenerla a mano como una aplicación más, Chrome y Edge ofrecen «Instalar» en la barra de direcciones, y en el iPhone, Safari → Compartir → «Añadir a pantalla de inicio».</p>
-                    <p>La versión web es la misma app, con dos diferencias: no puede mandar avisos ni recordatorios, y los PDF se leen con conexión. Lo demás (agenda, sorteo, cronómetro, test, diario, preparadores) funciona igual y se sincroniza solo.</p>
+                    <p>La versión web es la misma app, con dos diferencias: no puede mandar avisos ni recordatorios, y los PDF se leen con conexión. Lo demás (agenda, sacar bola, cronómetro, test, diario, preparadores) funciona igual y se sincroniza solo.</p>
                 </section>
 
                 <section class="app-seccion app-faq" id="preguntas">
@@ -622,13 +1082,13 @@
                     </details>
                     <details>
                         <summary>He encontrado un fallo o tengo una idea</summary>
-                        <p>Escribe a <a href="mailto:contacto@victorgutierrezmarcos.es">contacto@victorgutierrezmarcos.es</a>. La app está en pruebas y cualquier comentario ayuda.</p>
+                        <p>Escribe a <a href="mailto:contacto@victorgutierrezmarcos.es">contacto@victorgutierrezmarcos.es</a>. Cualquier comentario ayuda.</p>
                     </details>
                 </section>
 
                 <div class="app-cierre">
-                    <a class="download-btn" href="#app-banner">Ir a la descarga ↑</a>
-                    <a class="download-btn" href="abrir/">Usar en el navegador</a>
+                    <a class="download-btn mezcla" href="#app-banner">Ir a la descarga ↑</a>
+                    <a class="download-btn secundario" href="abrir/">Usar en el navegador</a>
                 </div>
             </article>
         </div>
@@ -655,6 +1115,80 @@
         </div>
     </div>
 </footer>
+    <script>
+    // Relato: el paso cuya tarjeta cruza la línea de lectura manda en el móvil fijo
+    // (pantalla), en el tono (TCEE, DCE o mezcla) y en el capítulo marcado.
+    (function () {
+        var relato = document.querySelector('.relato');
+        if (!relato) return;
+        var pasos = [].slice.call(relato.querySelectorAll('.paso'));
+        var pantallas = [].slice.call(relato.querySelectorAll('.pantalla'));
+        var capitulos = [].slice.call(relato.querySelectorAll('.capitulos li'));
+        var nav = document.querySelector('.main-nav');
+        var estrecha = window.matchMedia('(max-width: 900px)');
+        var reducido = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var actual = -1;
+        var pendiente = false;
+
+        function medirNav() {
+            var fija = nav && getComputedStyle(nav).position === 'sticky';
+            document.documentElement.style.setProperty('--nav-alto', (fija ? nav.offsetHeight : 0) + 'px');
+        }
+
+        function activar(i) {
+            if (i === actual) return;
+            actual = i;
+            var p = pasos[i];
+            relato.setAttribute('data-tono', p.getAttribute('data-tono'));
+            pasos.forEach(function (x, j) { x.classList.toggle('activo', j === i); });
+            pantallas.forEach(function (s) { s.classList.toggle('visible', s.getAttribute('data-pantalla') === p.getAttribute('data-pantalla')); });
+            capitulos.forEach(function (c) { c.classList.toggle('activo', c.getAttribute('data-capitulo') === p.getAttribute('data-capitulo')); });
+        }
+
+        function linea() { return window.innerHeight * (estrecha.matches ? 0.85 : 0.62); }
+
+        function actualizar() {
+            pendiente = false;
+            var l = linea();
+            var i = 0;
+            for (var k = 0; k < pasos.length; k++) {
+                if (pasos[k].querySelector('.paso-tarjeta').getBoundingClientRect().top <= l) i = k;
+            }
+            activar(i);
+            var r = relato.getBoundingClientRect();
+            var recorrido = r.height - window.innerHeight;
+            var progreso = recorrido > 0 ? Math.min(1, Math.max(0, -r.top / recorrido)) : 0;
+            relato.style.setProperty('--progreso', progreso.toFixed(3));
+        }
+
+        function pedir() {
+            if (!pendiente) { pendiente = true; window.requestAnimationFrame(actualizar); }
+        }
+
+        // Los capítulos llevan al primer paso de cada uno
+        capitulos.forEach(function (c) {
+            c.querySelector('button').addEventListener('click', function () {
+                var destino = relato.querySelector('.paso[data-capitulo="' + c.getAttribute('data-capitulo') + '"] .paso-tarjeta');
+                if (!destino) return;
+                var y = window.scrollY + destino.getBoundingClientRect().top - window.innerHeight * 0.3;
+                window.scrollTo({ top: y, behavior: reducido.matches ? 'auto' : 'smooth' });
+            });
+        });
+
+        // Sin sticky o con muy poca altura (móvil apaisado), cada paso con su captura
+        function modoSimple() {
+            var simple = !(window.CSS && CSS.supports && CSS.supports('position', 'sticky')) || window.innerHeight < 480;
+            relato.classList.toggle('relato-simple', simple);
+            return simple;
+        }
+
+        medirNav();
+        modoSimple();
+        actualizar();
+        window.addEventListener('scroll', pedir, { passive: true });
+        window.addEventListener('resize', function () { medirNav(); modoSimple(); pedir(); });
+    })();
+    </script>
     <script src="../app-banner.js" defer></script>
     <script>
     // Versión publicada de la app (oposicion/app-config.json).
