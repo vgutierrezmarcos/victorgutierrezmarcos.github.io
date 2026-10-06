@@ -15,9 +15,6 @@ class Ajustes {
     this.fechaConvocatoria,
     this.temasEstudiados = const {},
     this.temasEnRepaso = const {},
-    this.racha = 0,
-    this.mejorRacha = 0,
-    this.ultimoDia,
     this.horaRecordatorio = -1, // minutos desde medianoche; -1 = desactivado (valor por defecto)
     this.temaOscuro, // null = sistema
     this.temasExtraidos = 3,
@@ -27,10 +24,6 @@ class Ajustes {
   final DateTime? fechaConvocatoria;
   final Set<String> temasEstudiados;
   final Set<String> temasEnRepaso;
-  final int racha;
-  final int mejorRacha;
-  /// Día (yyyy-mm-dd) de la última actividad que cuenta para la racha.
-  final String? ultimoDia;
   final int horaRecordatorio;
   final bool? temaOscuro;
   /// Nº de temas que se extraen en el sorteo real.
@@ -42,9 +35,6 @@ class Ajustes {
     bool borrarFecha = false,
     Set<String>? temasEstudiados,
     Set<String>? temasEnRepaso,
-    int? racha,
-    int? mejorRacha,
-    String? ultimoDia,
     int? horaRecordatorio,
     bool? temaOscuro,
     bool borrarTema = false,
@@ -55,9 +45,6 @@ class Ajustes {
         fechaConvocatoria: borrarFecha ? null : (fechaConvocatoria ?? this.fechaConvocatoria),
         temasEstudiados: temasEstudiados ?? this.temasEstudiados,
         temasEnRepaso: temasEnRepaso ?? this.temasEnRepaso,
-        racha: racha ?? this.racha,
-        mejorRacha: mejorRacha ?? this.mejorRacha,
-        ultimoDia: ultimoDia ?? this.ultimoDia,
         horaRecordatorio: horaRecordatorio ?? this.horaRecordatorio,
         temaOscuro: borrarTema ? null : (temaOscuro ?? this.temaOscuro),
         temasExtraidos: temasExtraidos ?? this.temasExtraidos,
@@ -68,9 +55,6 @@ class Ajustes {
         'fechaConvocatoria': fechaConvocatoria?.toIso8601String(),
         'temasEstudiados': temasEstudiados.toList()..sort(),
         'temasEnRepaso': temasEnRepaso.toList()..sort(),
-        'racha': racha,
-        'mejorRacha': mejorRacha,
-        'ultimoDia': ultimoDia,
         'recordatorio': horaRecordatorio,
         'temaOscuro': temaOscuro,
         'temasExtraidos': temasExtraidos,
@@ -84,9 +68,6 @@ class Ajustes {
       fechaConvocatoria: f(j['fechaConvocatoria'] as String?),
       temasEstudiados: ((j['temasEstudiados'] as List?) ?? []).map((e) => e.toString()).toSet(),
       temasEnRepaso: ((j['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
-      racha: (j['racha'] as num?)?.toInt() ?? 0,
-      mejorRacha: (j['mejorRacha'] as num?)?.toInt() ?? 0,
-      ultimoDia: j['ultimoDia'] as String?,
       // Clave nueva: la antigua ('horaRecordatorio') guardaba las 20:00 aunque el
       // usuario nunca lo hubiera activado, así que se ignora.
       horaRecordatorio: (j['recordatorio'] as num?)?.toInt() ?? -1,
@@ -98,23 +79,6 @@ class Ajustes {
 
   static String claveDia(DateTime d) =>
       '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
-
-  /// Actualiza la racha con actividad hoy.
-  Ajustes conActividadHoy([DateTime? ahora]) {
-    final hoy = ahora ?? DateTime.now();
-    final claveHoy = claveDia(hoy);
-    if (ultimoDia == claveHoy) return this;
-    final ayer = claveDia(hoy.subtract(const Duration(days: 1)));
-    final nueva = ultimoDia == ayer ? racha + 1 : 1;
-    return copyWith(racha: nueva, mejorRacha: nueva > mejorRacha ? nueva : mejorRacha, ultimoDia: claveHoy);
-  }
-
-  /// Racha vigente (0 si se rompió ayer).
-  int rachaVigente([DateTime? ahora]) {
-    final hoy = ahora ?? DateTime.now();
-    if (ultimoDia == claveDia(hoy) || ultimoDia == claveDia(hoy.subtract(const Duration(days: 1)))) return racha;
-    return 0;
-  }
 }
 
 /// Datos del usuario: resultados, Leitner, ajustes y notas.
@@ -302,8 +266,6 @@ class UsuarioRepo {
       final fusion = ganador.copyWith(
         temasEstudiados: {...local.temasEstudiados, ...nube.temasEstudiados},
         temasEnRepaso: {...local.temasEnRepaso, ...nube.temasEnRepaso},
-        racha: local.racha > nube.racha ? local.racha : nube.racha,
-        mejorRacha: local.mejorRacha > nube.mejorRacha ? local.mejorRacha : nube.mejorRacha,
       );
       await _ajustes.put('ajustes', fusion.toJson());
       return fusion;

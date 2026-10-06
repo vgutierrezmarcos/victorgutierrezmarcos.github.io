@@ -8,7 +8,7 @@ Cinco bloques, iguales para opositores y preparadores, uno por cada cosa que se 
 
 | Bloque | Funciones |
 |---|---|
-| **Hoy** | Lo que toca. Al opositor: cuenta atrás al próximo ejercicio y al próximo cante, racha diaria, semana del cronograma, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Al preparador, primero su panel (`PanelPreparadorHoy`): clases de hoy, reservas por confirmar, clases sueltas del tablón y verificaciones; después, test diario y repaso. Avisa cuando hay una versión nueva. |
+| **Hoy** | Lo que toca. Al opositor: cuenta atrás al próximo ejercicio y al próximo cante, semana del cronograma, test diario (10 preguntas, iguales para todos cada día), repaso pendiente y probabilidad de aprobar. Al preparador, primero su panel (`PanelPreparadorHoy`): clases de hoy, reservas por confirmar, clases sueltas del tablón y verificaciones; después, test diario y repaso. Avisa cuando hay una versión nueva. |
 | **Estudiar** | Dos subpestañas. **Temas**: ejercicios → partes → temas, búsqueda, visor PDF con descarga para offline, marcar estudiado / en repaso y agenda de cada tema (apuntes para la próxima vuelta, vueltas dadas, cómo fue al cantarlo, test de sus preguntas y nota libre). **Test**: simulador con los mismos filtros y baremo que la web (1 / -0,33 / 0), resultados por bloque, revisión, estadísticas e historial unificado con la web. |
 | **Cantes** | Al opositor, tres subpestañas. **Agenda**: calendario mensual, cuenta atrás, avisos la víspera y una hora antes, repetición semanal y exportación a Google Calendar o `.ics`. **Cantar**: sacar bola como en el examen o de una bolsa propia (estudiados, en repaso, lista o los temas de un cante), con prioridad opcional a los flojos; cronómetro de preparación y exposición con avisos en segundo plano y grabación. **Diario**: cómo fue cada cante, estadísticas por tema y temas flojos. Al preparador: **Clases** (su semana) y **Cantar**. |
 | **Organización** | Como la sección de la web: **cronograma** (generado, semana a semana o importado de texto, Excel, Word, PDF o CSV; se retoca a mano), **probabilidades** (como en el Excel de organización, por probabilidad o eficiencia, en 2D o 3D), **convocatoria** (fechas que pone el usuario e hitos propios), **horario** de estudio, **mapa del temario** (bloques con el código de colores y esquema de conexiones) y documentos de organización. |
@@ -57,7 +57,7 @@ Firestore (`users/{uid}/…`, reglas en `firestore.rules` del repo raíz):
 
 - `exam_results/{id}`: mismo esquema que la web; la app añade `respuestas`, `origen`, `tipo`.
 - `progress/spaced_repetition`: mismo formato que `localStorage.vgm_spaced_repetition` de la web.
-- `progress/settings`: temas estudiados/en repaso, racha, recordatorio, tema.
+- `progress/settings`: temas estudiados/en repaso, recordatorio, tema.
 - `progress/plan`: fechas de los ejercicios, hitos y horario.
 - `cantes/{id}`: cantes programados y hechos (diario). El borrado es lógico (`borrado: true`). Los que programa o valora un preparador enlazado llevan `preparador` (su uid) y `preparadorNombre`.
 - `progress/preparador`, `alumnos/{id}` y `sesiones/{id}`: perfil de preparador (código), sus alumnos y sus sesiones de cante.

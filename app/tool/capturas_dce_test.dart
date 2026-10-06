@@ -145,9 +145,6 @@ void main() {
         for (var i = 1; i <= 5; i++) '5.B.$i',
         for (var i = 1; i <= 11; i++) '5.C.$i',
       },
-      racha: 12,
-      mejorRacha: 21,
-      ultimoDia: Ajustes.claveDia(hoy),
     ));
     final plan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), cronogramas: await caja());
     await plan.guardarCantes([
@@ -199,9 +196,6 @@ void main() {
         for (var i = 1; i <= 5; i++) '4.A.$i',
         for (var i = 1; i <= 4; i++) '4.B.$i',
       },
-      racha: 9,
-      mejorRacha: 15,
-      ultimoDia: Ajustes.claveDia(hoy),
     ));
     await plan.guardarCantes([
       Cante(
