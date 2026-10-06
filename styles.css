@@ -326,6 +326,18 @@ body {
     padding: 0.2rem 0.7rem;
 }
 .app-banner-links { display: flex; flex-direction: column; align-items: stretch; gap: 0.5rem; flex: 0 1 260px; }
+/* Todo el aviso lleva a la página de la app: el enlace del título se estira
+   sobre el aviso entero; los botones y enlaces propios quedan por encima. */
+.app-banner { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.app-banner:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-primary-light); }
+.app-banner-enlace { color: inherit; text-decoration: none; }
+.app-banner-enlace::after { content: ''; position: absolute; inset: 0; z-index: 0; }
+.app-banner-enlace:focus-visible { outline: none; }
+.app-banner:has(.app-banner-enlace:focus-visible) { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.app-banner-flecha { display: inline-block; color: var(--color-primary); transition: transform 0.2s ease; }
+.app-banner:hover .app-banner-enlace { color: var(--color-primary); }
+.app-banner:hover .app-banner-flecha { transform: translateX(4px); }
+.app-banner-links a, .app-banner-links .pronto-play, .app-banner-note a { position: relative; z-index: 1; }
 .app-banner-links .download-btn { justify-content: center; }
 /* Distintivo oficial de Google Play (sin modificar) y su aviso mientras no está publicada */
 .insignia-play { display: inline-flex; justify-content: center; line-height: 0; }
@@ -2272,3 +2284,19 @@ body {
     mask-composite: intersect;
 }
 [data-theme="dark"] .fondo-rosetones { background-color: var(--color-primary-light); opacity: 0.32; }
+
+/* Patrón inverso: rosetones en verde sobre morado. Preparado para cualquier
+   superficie morada (cabecera, una banda, un aviso): basta con añadir la
+   clase .con-rosetones-verdes; el patrón va en ::before, detrás del contenido. */
+.con-rosetones-verdes { position: relative; isolation: isolate; }
+.con-rosetones-verdes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #C9E4B8;
+    opacity: 0.55;
+    -webkit-mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
+    mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
+}
