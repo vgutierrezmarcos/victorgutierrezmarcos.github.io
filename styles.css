@@ -2260,8 +2260,15 @@ body {
     pointer-events: none;
     z-index: 0;
     background-color: var(--color-primary);
-    opacity: 0.34;
-    -webkit-mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
-    mask: url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat;
+    opacity: 0.5;
+    /* El patrón, fundido de arriba (marcado) a abajo (nada): las dos máscaras se intersecan. */
+    -webkit-mask:
+        url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat,
+        linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 30%, transparent 80%);
+    -webkit-mask-composite: source-in;
+    mask:
+        url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat,
+        linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 30%, transparent 80%);
+    mask-composite: intersect;
 }
-[data-theme="dark"] .fondo-rosetones { background-color: var(--color-primary-light); opacity: 0.22; }
+[data-theme="dark"] .fondo-rosetones { background-color: var(--color-primary-light); opacity: 0.32; }
