@@ -96,14 +96,19 @@ Hecha por Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE). Temari
 - ¿Se pueden eliminar los datos? **Sí**: en la app (*Más → Cuenta → Eliminar mi cuenta*) y en https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html (es la **URL de eliminación de cuenta** que pide el formulario).
 - Datos que recoge (todos **opcionales**, solo si se inicia sesión, para **funcionalidad de la app** y **gestión de la cuenta**; ninguno para publicidad ni analíticas):
   - *Información personal*: **nombre** y **dirección de correo** (de la cuenta de Google); **ID de usuario**; **número de teléfono** (solo si un preparador o un alumno lo escribe para que le contacten al coger una sustitución).
-  - *Actividad en la app*: **otras acciones** (temas estudiados, resultados de test, cantes, notas, cronogramas).
+  - *Información personal*: **otra información**: la modalidad y la ciudad en la que da clase un preparador verificado (opcional; sale en el directorio de preparadores).
+  - *Actividad en la app*: **otras acciones** (temas estudiados, resultados de test, cantes, notas, cronogramas, el tema que un preparador manda antes de una clase y el cronómetro compartido de una clase).
   - *Fotos*: la foto de perfil de Google se muestra, no se guarda.
   - *Audio*: **no se recoge**: las grabaciones de los cantes se quedan en el dispositivo.
 - ¿Se tratan de forma efímera? No. ¿Obligatorio? No (opcional).
 
 **Declaración de permisos**: si Play pregunta por `SCHEDULE_EXACT_ALARM`: *El cronómetro de exposición oral avisa de los minutos que quedan con la pantalla apagada; un aviso que llega minutos tarde no sirve. Si el usuario no concede el permiso, la app usa avisos aproximados.*
 
-**Funciones en segundo plano / tareas**: WorkManager comprueba cada ~15 minutos, con red y solo si el usuario lo activa, si hay clases sueltas nuevas en el tablón o reservas por confirmar.
+**Funciones en segundo plano / tareas**: WorkManager comprueba cada ~15 minutos, con red y solo si el usuario lo activa, si hay clases sueltas nuevas en el tablón o reservas por confirmar, o documentos nuevos en la página del proceso selectivo; y, a la hora elegida por el preparador, si ya ha llegado el tema que manda antes de una clase.
+
+**API Play Integrity**: no se usa (la app no tiene servidor propio que compruebe veredictos). En *Protegida con Play → Configuración de la API Play Integrity* se puede dejar todo como está, sin vincular proyecto.
+
+**Publicación administrada** (*Resumen de la publicación*): opcional. Activada, lo que Google aprueba no sale hasta que se pulsa «Publicar»; útil para sacar la app y la web a la vez.
 
 ## Notas de la versión (ejemplo)
 
