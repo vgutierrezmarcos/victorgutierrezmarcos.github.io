@@ -17,6 +17,7 @@ import '../plan/cantes_util.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
 import 'red_widgets.dart';
+import 'tema_anticipado.dart';
 
 /// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos.
 List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
@@ -184,6 +185,10 @@ class SesionPage extends ConsumerWidget {
               OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
             if (temas.isEmpty && s.ejercicio != 1) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
+            if (!Oposiciones.actual.esDictamen(s.ejercicio) && (s.mandaTema || s.fecha.isAfter(DateTime.now()))) ...[
+              const TituloSeccion('Tema antes de la clase'),
+              SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: alumno?.enlazado == true),
+            ],
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),

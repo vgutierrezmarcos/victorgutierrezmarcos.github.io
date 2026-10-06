@@ -159,8 +159,26 @@ class PerfilPreparador {
     this.huecos = const [],
     this.linkedin = '',
     this.papelElegido = false,
+    this.horasTemaAntes = 24,
+    this.avisosClase = const [avisoVispera, 60],
+    this.modalidad = '',
+    this.ciudad = '',
     this.updatedAt,
   });
+
+  /// Valor de [avisosClase] que significa «la víspera a las 20:00».
+  static const avisoVispera = -1;
+
+  /// Antelación con la que se propone mandar el tema antes de la clase (horas).
+  final int horasTemaAntes;
+
+  /// Recordatorios de sus clases: minutos antes (o [avisoVispera]). Vacío, ninguno.
+  final List<int> avisosClase;
+
+  /// Cómo da clase (online, presencial o ambas; vacío si no lo dice) y dónde.
+  /// Salen en el directorio de preparadores.
+  final String modalidad;
+  final String ciudad;
 
   /// Su papel en esta oposición es el de preparador (si no, es opositor). En
   /// una misma oposición no se puede ser las dos cosas.
@@ -186,7 +204,7 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? horasTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -197,6 +215,10 @@ class PerfilPreparador {
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
         papelElegido: papelElegido ?? this.papelElegido,
+        horasTemaAntes: horasTemaAntes ?? this.horasTemaAntes,
+        avisosClase: avisosClase ?? this.avisosClase,
+        modalidad: modalidad ?? this.modalidad,
+        ciudad: ciudad ?? this.ciudad,
         updatedAt: DateTime.now(),
       );
 
@@ -211,6 +233,10 @@ class PerfilPreparador {
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
         'papelElegido': papelElegido,
+        'horasTemaAntes': horasTemaAntes,
+        'avisosClase': avisosClase,
+        if (modalidad.isNotEmpty) 'modalidad': modalidad,
+        if (ciudad.isNotEmpty) 'ciudad': ciudad,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -227,6 +253,10 @@ class PerfilPreparador {
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
           papelElegido: j['papelElegido'] as bool? ?? false,
+          horasTemaAntes: (j['horasTemaAntes'] as num?)?.toInt() ?? 24,
+          avisosClase: j['avisosClase'] is List ? [for (final x in j['avisosClase'] as List) (x as num).toInt()] : const [avisoVispera, 60],
+          modalidad: j['modalidad'] as String? ?? '',
+          ciudad: j['ciudad'] as String? ?? '',
           updatedAt: _fecha(j['updatedAt']),
         );
 }

@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -27,6 +28,7 @@ import 'avisos_proceso.dart';
 import 'notificaciones.dart';
 import 'cronograma_providers.dart';
 import 'red_providers.dart';
+import 'temas_anticipados.dart';
 
 /// Servicios creados en main() antes de arrancar la app.
 class Servicios {
@@ -240,6 +242,8 @@ Future<void> sincronizarTodo(Ref ref) async {
   await ref.read(planRepoProvider).sincronizarTodo();
   await ref.read(preparadorRepoProvider).sincronizarTodo();
   await sincronizarRed(ref);
+  final yo = ref.read(usuarioActualProvider);
+  if (yo != null) await comprobarTemasAnticipados(FirebaseFirestore.instance, yo.uid, ref.read(oposicionProvider));
   ref.invalidate(leitnerProvider);
   ref.invalidate(ajustesProvider);
   ref.invalidate(historialProvider);
@@ -252,6 +256,7 @@ Future<void> sincronizarTodo(Ref ref) async {
   ref.invalidate(misPreparadoresProvider);
   ref.invalidate(cronogramaProvider);
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
+  await ref.read(sesionesProvider.notifier).reprogramarAvisos();
 }
 
 // ------------------------------------------------------------------ Usuario
@@ -362,6 +367,7 @@ class CantesNotifier extends Notifier<List<Cante>> {
     try {
       await Notificaciones.programarCantes(ref.read(planProvider).avisosCante ? state : const []);
     } catch (_) {}
+    await programarTemasAnticipados(state);
   }
 }
 
@@ -384,6 +390,25 @@ final canteEnCursoProvider = StateProvider<String?>((ref) => null);
 
 /// Subpestaña visible del bloque Cantes: 0 = agenda, 1 = cantar, 2 = diario.
 final subpestanaCantesProvider = StateProvider<int>((ref) => 0);
+
+/// Tema con el que abrir Cantar (el que ha mandado el preparador): se elige
+/// solo y el cronómetro queda listo para el esquema.
+final temaParaCantarProvider = StateProvider<String?>((ref) => null);
+
+/// Tema que el preparador ha mandado para una clase, si ya es la hora.
+final temaAnticipadoProvider = FutureProvider.family<TemaAnticipado?, String>((ref, canteId) async {
+  final yo = ref.watch(usuarioActualProvider);
+  if (yo == null || !ref.watch(serviciosProvider).firebaseDisponible) return null;
+  return leerTemaAnticipado(FirebaseFirestore.instance, ref.watch(oposicionProvider), canteId);
+});
+
+/// Abre Cantar con la clase [canteId] y, si se da, ese [tema] ya elegido.
+void empezarCante(WidgetRef ref, GoRouter router, String canteId, {String? tema}) {
+  ref.read(canteEnCursoProvider.notifier).state = canteId;
+  ref.read(subpestanaCantesProvider.notifier).state = 1;
+  if (tema != null) ref.read(temaParaCantarProvider.notifier).state = tema;
+  router.go('/cantes');
+}
 
 /// Subpestaña visible del bloque Estudiar: 0 = temas, 1 = test.
 final subpestanaEstudiarProvider = StateProvider<int>((ref) => 0);
@@ -526,7 +551,12 @@ final alumnosProvider = NotifierProvider<AlumnosNotifier, List<Alumno>>(AlumnosN
 /// Sesiones de cante del preparador con sus alumnos (son [Cante] con `alumno`).
 class SesionesNotifier extends Notifier<List<Cante>> {
   @override
-  List<Cante> build() => ref.read(preparadorRepoProvider).sesiones();
+  List<Cante> build() {
+    final repo = ref.read(preparadorRepoProvider);
+    // El aviso del tema que se manda al alumno lleva su título completo.
+    repo.tituloTema = (c) => ref.read(temarioProvider).valueOrNull?.tema(c)?.titulo ?? '';
+    return repo.sesiones();
+  }
 
   Future<void> guardar(Cante s) => guardarVarias([s]);
 
@@ -534,12 +564,23 @@ class SesionesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(preparadorRepoProvider);
     await repo.guardarSesiones(lista);
     state = repo.sesiones();
+    await reprogramarAvisos();
   }
 
   Future<void> borrar(Cante s) async {
     final repo = ref.read(preparadorRepoProvider);
     await repo.borrarSesion(s);
     state = repo.sesiones();
+    await reprogramarAvisos();
+  }
+
+  /// Recordatorios de las próximas clases (si es preparador en esta oposición).
+  Future<void> reprogramarAvisos() async {
+    final perfil = ref.read(perfilPreparadorProvider);
+    final alumnos = {for (final a in ref.read(preparadorRepoProvider).alumnos()) a.id: a.nombre};
+    try {
+      await Notificaciones.programarClases(perfil.activo ? state : const [], alumno: (c) => alumnos[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+    } catch (_) {}
   }
 }
 

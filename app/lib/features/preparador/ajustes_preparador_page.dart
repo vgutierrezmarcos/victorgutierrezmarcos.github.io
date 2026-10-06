@@ -6,11 +6,13 @@ import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
+import '../../data/models/oposicion.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'red_widgets.dart';
+import 'tema_anticipado.dart';
 
 /// Ajustes del preparador: nombre, teléfono para las sustituciones, avisos y
 /// huecos libres que sus alumnos pueden reservar (desactivado por defecto).
@@ -44,6 +46,32 @@ class AjustesPreparadorPage extends ConsumerWidget {
           await ref.read(redRepoProvider).actualizarMiFicha(nombre: n);
         } catch (_) {}
       }
+    }
+
+    // Ficha del directorio: se guarda en el perfil y, si está verificado, en la ficha pública.
+    Future<void> guardarFicha({String? modalidad, String? ciudad, List<int>? ejercicios}) async {
+      await notifier.guardar(perfil.copyWith(modalidad: modalidad, ciudad: ciudad));
+      if (!verificado) return;
+      try {
+        await ref.read(redRepoProvider).actualizarMiFicha(modalidad: modalidad, ciudad: ciudad, ejercicios: ejercicios);
+        ref.invalidate(verificadosProvider);
+      } catch (_) {}
+    }
+
+    Future<void> editarCiudad() async {
+      final ctrl = TextEditingController(text: perfil.ciudad);
+      final c = await showDialog<String>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('Ciudad'),
+          content: TextField(controller: ctrl, autofocus: true, maxLength: 60, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(hintText: 'Madrid', helperText: 'Donde das clase presencial')),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+            FilledButton(onPressed: () => Navigator.pop(d, ctrl.text.trim()), child: const Text('Guardar')),
+          ],
+        ),
+      );
+      if (c != null) await guardarFicha(ciudad: c);
     }
 
     Future<void> nuevoHueco() async {
@@ -121,6 +149,81 @@ class AjustesPreparadorPage extends ConsumerWidget {
                   if (t != null) await notifier.guardar(perfil.copyWith(telefono: t));
                 },
               ),
+            ]),
+          ),
+          const TituloSeccion('En el directorio'),
+          Tarjeta(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Cómo das clase', style: context.textos.titleSmall),
+              const SizedBox(height: 6),
+              Wrap(spacing: 6, runSpacing: 6, children: [
+                for (final (m, t) in const [('online', 'Online'), ('presencial', 'Presencial'), ('ambas', 'Las dos'), ('', 'Sin indicar')])
+                  ChoiceChip(label: Text(t), selected: perfil.modalidad == m, onSelected: (_) => guardarFicha(modalidad: m)),
+              ]),
+              if (perfil.modalidad == 'presencial' || perfil.modalidad == 'ambas')
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.location_city_outlined),
+                  title: const Text('Ciudad'),
+                  subtitle: Text(perfil.ciudad.isEmpty ? 'Para que te encuentren quienes buscan clase presencial' : perfil.ciudad, style: context.textos.labelSmall),
+                  trailing: const Icon(Icons.edit_outlined, size: 18),
+                  onTap: editarCiudad,
+                ),
+              if (verificado) ...[
+                const SizedBox(height: 6),
+                Text('Ejercicios que preparas', style: context.textos.titleSmall),
+                const SizedBox(height: 6),
+                Builder(builder: (context) {
+                  final mia = ref.watch(verificadosProvider).valueOrNull?.where((v) => v.uid == ref.watch(usuarioActualProvider)?.uid).firstOrNull;
+                  final actuales = mia?.ejercicios ?? const <int>[];
+                  return Wrap(spacing: 6, runSpacing: 6, children: [
+                    for (final e in Oposiciones.actual.conTemasCantados)
+                      FilterChip(
+                        label: Text('${e.corto} · ${e.descripcion.replaceAll(RegExp(r' \(.*\)$'), '')}', overflow: TextOverflow.ellipsis),
+                        selected: actuales.contains(e.numero),
+                        onSelected: mia == null
+                            ? null
+                            : (v) {
+                                final lista = v ? [...actuales, e.numero] : actuales.where((x) => x != e.numero).toList();
+                                if (lista.isEmpty) return;
+                                guardarFicha(ejercicios: lista..sort());
+                              },
+                      ),
+                  ]);
+                }),
+              ],
+              const SizedBox(height: 4),
+              Text(verificado ? 'Lo ven los opositores en el directorio de preparadores verificados.' : 'Saldrá en el directorio cuando estés verificado.', style: context.textos.labelSmall),
+            ]),
+          ),
+          const TituloSeccion('Tus clases'),
+          Tarjeta(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Recordarme cada clase', style: context.textos.titleSmall),
+              const SizedBox(height: 6),
+              Wrap(spacing: 6, runSpacing: 6, children: [
+                for (final (m, t) in const [(PerfilPreparador.avisoVispera, 'La víspera, 20:00'), (60, '1 h antes'), (30, '30 min antes'), (15, '15 min antes')])
+                  FilterChip(
+                    label: Text(t),
+                    selected: perfil.avisosClase.contains(m),
+                    onSelected: (v) async {
+                      if (v && !kIsWeb) await Notificaciones.pedirPermiso();
+                      await notifier.guardar(perfil.copyWith(avisosClase: v ? [...perfil.avisosClase, m] : perfil.avisosClase.where((x) => x != m).toList()));
+                      await ref.read(sesionesProvider.notifier).reprogramarAvisos();
+                    },
+                  ),
+              ]),
+              if (kIsWeb) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Los recordatorios llegan en la app del móvil.', style: context.textos.labelSmall)),
+              const SizedBox(height: 12),
+              Text('Mandar el tema antes de la clase', style: context.textos.titleSmall),
+              Text('Antelación que se propone al programarlo en cada clase', style: context.textos.labelSmall),
+              const SizedBox(height: 6),
+              Wrap(spacing: 6, runSpacing: 6, children: [
+                for (final h in antelacionesTema)
+                  ChoiceChip(label: Text(textoAntelacion(h)), selected: perfil.horasTemaAntes == h, onSelected: (_) => notifier.guardar(perfil.copyWith(horasTemaAntes: h))),
+              ]),
             ]),
           ),
           const TituloSeccion('Avisos'),

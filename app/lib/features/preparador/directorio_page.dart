@@ -6,8 +6,9 @@ import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
-/// Directorio de preparadores verificados: nombre, ejercicios que preparan y
-/// su LinkedIn, para que el opositor vea qué perfil le interesa.
+/// Directorio de preparadores verificados: nombre, ejercicios que preparan,
+/// si dan clase online o presencial (y dónde) y su LinkedIn, para que el
+/// opositor vea qué perfil le interesa.
 class DirectorioPage extends ConsumerStatefulWidget {
   const DirectorioPage({super.key});
   @override
@@ -17,6 +18,17 @@ class DirectorioPage extends ConsumerStatefulWidget {
 class _DirectorioPageState extends ConsumerState<DirectorioPage> {
   /// Filtro por ejercicio (null = todos).
   int? _ejercicio;
+
+  /// Filtro por modalidad: 'online', 'presencial' o null (todas).
+  String? _modalidad;
+
+  /// Filtro por ciudad (null = todas).
+  String? _ciudad;
+
+  bool _pasa(PreparadorVerificado v) =>
+      (_ejercicio == null || v.ejercicios.contains(_ejercicio)) &&
+      (_modalidad == null || (_modalidad == 'online' ? v.daOnline : v.daPresencial)) &&
+      (_ciudad == null || v.ciudad.trim().toLowerCase() == _ciudad!.toLowerCase());
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +44,39 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
             ChoiceChip(label: const Text('Todos'), selected: _ejercicio == null, onSelected: (_) => setState(() => _ejercicio = null)),
             for (final e in ejerciciosConCante) ChoiceChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicio == e, onSelected: (_) => setState(() => _ejercicio = _ejercicio == e ? null : e)),
           ]),
+          const SizedBox(height: 6),
+          Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
+            for (final (m, t, i) in const [('online', 'Online', Icons.videocam_outlined), ('presencial', 'Presencial', Icons.groups_outlined)])
+              FilterChip(
+                avatar: Icon(i, size: 18),
+                label: Text(t),
+                selected: _modalidad == m,
+                onSelected: (v) => setState(() {
+                  _modalidad = v ? m : null;
+                  if (_modalidad != 'presencial') _ciudad = null;
+                }),
+              ),
+            if (_modalidad == 'presencial')
+              Builder(builder: (context) {
+                final ciudades = {for (final v in lista.valueOrNull ?? const <PreparadorVerificado>[]) if (v.daPresencial && v.ciudad.trim().isNotEmpty) v.ciudad.trim()}.toList()..sort();
+                if (ciudades.isEmpty) return const SizedBox.shrink();
+                return DropdownButton<String?>(
+                  value: _ciudad,
+                  hint: const Text('Cualquier ciudad'),
+                  underline: const SizedBox.shrink(),
+                  items: [
+                    const DropdownMenuItem(value: null, child: Text('Cualquier ciudad')),
+                    for (final c in ciudades) DropdownMenuItem(value: c, child: Text(c)),
+                  ],
+                  onChanged: (c) => setState(() => _ciudad = c),
+                );
+              }),
+          ]),
           const SizedBox(height: 10),
           ...switch (lista) {
             AsyncData(:final value) => () {
-                final filtrados = value.where((v) => _ejercicio == null || v.ejercicios.contains(_ejercicio)).toList();
-                if (filtrados.isEmpty) return [Text('No hay preparadores verificados para este ejercicio todavía.', style: context.textos.bodySmall)];
+                final filtrados = value.where(_pasa).toList();
+                if (filtrados.isEmpty) return [Text('No hay preparadores verificados con estos filtros todavía.', style: context.textos.bodySmall)];
                 return [for (final v in filtrados) FichaPreparador(v: v)];
               }(),
             AsyncError() => [Text('No se ha podido cargar la lista. Desliza hacia abajo para reintentarlo.', style: context.textos.bodySmall)],
@@ -68,6 +108,15 @@ class FichaPreparador extends StatelessWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(v.nombre, style: context.textos.titleSmall),
                 if (v.ejercicios.isNotEmpty) Text('Prepara el ${v.descripcionEjercicios} ejercicio', style: context.textos.labelSmall),
+                if (v.descripcionModalidad.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2),
+                    child: Row(children: [
+                      Icon(v.daPresencial ? Icons.place_outlined : Icons.videocam_outlined, size: 14, color: context.colores.textoSuave),
+                      const SizedBox(width: 4),
+                      Flexible(child: Text(v.descripcionModalidad, style: context.textos.labelSmall)),
+                    ]),
+                  ),
               ]),
             ),
             if (v.linkedin.isNotEmpty) BotonLinkedin(url: v.linkedin),

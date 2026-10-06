@@ -27,6 +27,8 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
   late final TextEditingController _telefono;
   late final TextEditingController _linkedin;
   final _presentacion = TextEditingController();
+  late final TextEditingController _ciudad;
+  String _modalidad = '';
   final _ejercicios = {for (final e in Oposiciones.actual.conTemasCantados) e.numero};
   /// A quién se pide la verificación: null = a cualquier verificado.
   PreparadorVerificado? _destinatario;
@@ -39,11 +41,13 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
     _nombre = TextEditingController(text: perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? ''));
     _telefono = TextEditingController(text: perfil.telefono);
     _linkedin = TextEditingController(text: perfil.linkedin);
+    _ciudad = TextEditingController(text: perfil.ciudad);
+    _modalidad = perfil.modalidad;
   }
 
   @override
   void dispose() {
-    for (final c in [_nombre, _telefono, _linkedin, _presentacion]) {
+    for (final c in [_nombre, _telefono, _linkedin, _presentacion, _ciudad]) {
       c.dispose();
     }
     super.dispose();
@@ -79,13 +83,16 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
       final notifier = ref.read(perfilPreparadorProvider.notifier);
       await notifier.fijarPapel(Papel.preparador);
       final linkedin = _linkedin.text.trim().isEmpty ? '' : enlaceLinkedin(_linkedin.text)!;
-      await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(telefono: _telefono.text.trim(), linkedin: linkedin));
+      final ciudad = _modalidad == 'online' ? '' : _ciudad.text.trim();
+      await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(telefono: _telefono.text.trim(), linkedin: linkedin, modalidad: _modalidad, ciudad: ciudad));
       if (_nombre.text.trim() != ref.read(perfilPreparadorProvider).nombre) await notifier.renombrar(_nombre.text);
       await ref.read(redRepoProvider).solicitar(
             nombre: _nombre.text,
             ejercicios: _ejercicios.toList()..sort(),
             presentacion: _presentacion.text,
             linkedin: linkedin,
+            modalidad: _modalidad,
+            ciudad: ciudad,
             destinatario: _destinatario?.uid,
             destinatarioNombre: _destinatario?.nombre ?? '',
           );
@@ -186,6 +193,16 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
               onChanged: (_) => setState(() {}),
             ),
             const SizedBox(height: 14),
+            const SizedBox(height: 14),
+            Text('Cómo das clase (sale en el directorio)', style: context.textos.labelMedium),
+            const SizedBox(height: 6),
+            Wrap(spacing: 6, runSpacing: 6, children: [
+              for (final (m, t) in const [('online', 'Online'), ('presencial', 'Presencial'), ('ambas', 'Las dos'), ('', 'Sin indicar')])
+                ChoiceChip(label: Text(t), selected: _modalidad == m, onSelected: (_) => setState(() => _modalidad = m)),
+            ]),
+            if (_modalidad == 'presencial' || _modalidad == 'ambas')
+              TextField(controller: _ciudad, maxLength: 60, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Ciudad', hintText: 'Madrid')),
+            const SizedBox(height: 8),
             TextField(controller: _telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono para WhatsApp (opcional)', helperText: 'Se da solo al alumno cuya clase suelta coges')),
             const TituloSeccion('Verificación'),
             DropdownButtonFormField<String>(

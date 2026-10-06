@@ -79,6 +79,12 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
     } catch (_) {}
     // Los avisos de cantes se reprograman en cada arranque (y tras sincronizar).
     if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());
+    // Y los de las clases, si en esta oposición es preparador.
+    final perfil = preparador.perfil();
+    if (perfil.activo) {
+      final nombres = {for (final a in preparador.alumnos()) a.id: a.nombre};
+      await Notificaciones.programarClases(preparador.sesiones(), alumno: (c) => nombres[c.alumno] ?? 'tu alumno', antelaciones: perfil.avisosClase);
+    }
   });
 
   return Servicios(

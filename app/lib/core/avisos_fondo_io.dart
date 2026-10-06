@@ -9,9 +9,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:workmanager/workmanager.dart';
 
 import '../data/models/oposicion.dart';
+import '../data/models/plan.dart';
 import '../data/repos/red_repo.dart';
 import 'avisos_proceso.dart';
 import 'avisos_red.dart';
+import 'temas_anticipados.dart';
 import 'vistos.dart';
 
 const _tarea = 'avisos-red';
@@ -33,7 +35,10 @@ void despachadorAvisos() {
       // La sesión guardada tarda un momento en cargarse en este isolate.
       final usuario = auth.currentUser ?? await auth.authStateChanges().first.timeout(const Duration(seconds: 10), onTimeout: () => null);
       if (usuario == null) return true;
-      final repo = RedRepo(firestore: FirebaseFirestore.instance, auth: auth, oposicion: Oposiciones.porId(await _leerOposicion()));
+      final oposicion = Oposiciones.porId(await _leerOposicion());
+      // El tema que manda el preparador, en cuanto es la hora.
+      await comprobarTemasAnticipados(FirebaseFirestore.instance, usuario.uid, oposicion);
+      final repo = RedRepo(firestore: FirebaseFirestore.instance, auth: auth, oposicion: oposicion);
       await comprobarAvisosRed(repo, preparador: await repo.quiereAvisosDeSustitucion(), reservas: await repo.quiereAvisosDeReservas(), admin: await repo.esAdmin());
     } catch (_) {
       // Sin red o sin credenciales: la próxima vez.
@@ -82,4 +87,25 @@ Future<void> programarAvisosEnSegundoPlano({required bool activar}) async {
       await Workmanager().cancelByUniqueName(_tarea);
     }
   } catch (_) {}
+}
+
+/// Para cada clase con tema anticipado, una comprobación a su hora (unos
+/// segundos después, para que el servidor ya lo entregue): el aviso llega
+/// aunque la app esté cerrada.
+Future<void> programarTemasAnticipados(List<Cante> cantes) async {
+  if (!Platform.isAndroid) return;
+  final ahora = DateTime.now();
+  for (final c in cantes) {
+    final cuando = c.temaA;
+    if (cuando == null || !cuando.isAfter(ahora) || !c.pendiente || c.borrado) continue;
+    try {
+      await Workmanager().registerOneOffTask(
+        'tema-${c.id}',
+        _tarea,
+        initialDelay: cuando.difference(ahora) + const Duration(seconds: 20),
+        constraints: Constraints(networkType: NetworkType.connected),
+        existingWorkPolicy: ExistingWorkPolicy.replace,
+      );
+    } catch (_) {}
+  }
 }

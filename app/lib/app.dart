@@ -18,6 +18,7 @@ import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
 import 'features/organizacion/organizacion_hub_page.dart';
 import 'features/organizacion/organizacion_page.dart';
+import 'features/plan/cante_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/horario_page.dart';
 import 'features/plan/proceso_page.dart';
@@ -119,7 +120,22 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     if (contenido.startsWith('url:')) {
       launchUrl(Uri.parse(contenido.substring(4)), mode: LaunchMode.externalApplication).catchError((_) => false);
     } else if (contenido.startsWith('ruta:')) {
-      _router.go(contenido.substring(5));
+      final uri = Uri.parse(contenido.substring(5));
+      final cante = uri.queryParameters['cante'];
+      final tema = uri.queryParameters['tema'];
+      if (uri.path == '/cantes' && cante != null) {
+        // Tema que manda el preparador: «Empezar el esquema» abre Cantar con
+        // él; tocar el aviso abre la clase.
+        if (uri.queryParameters['accion'] == 'esquema') {
+          empezarCante(ref, _router, cante, tema: tema);
+        } else {
+          _router.go('/cantes');
+          final nav = _router.routerDelegate.navigatorKey.currentState;
+          nav?.push(MaterialPageRoute(builder: (_) => CantePage(id: cante)));
+        }
+        return;
+      }
+      _router.go(uri.toString());
     }
   }
 
