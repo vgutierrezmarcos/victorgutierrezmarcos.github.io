@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -202,6 +203,15 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       routerConfig: _router,
+      // Barras del sistema en las pantallas sin cabecera morada y abajo:
+      // iconos oscuros sobre fondo claro y claros sobre fondo oscuro.
+      builder: (context, child) {
+        final tema = Theme.of(context);
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: estiloBarrasSistema(arriba: tema.scaffoldBackgroundColor, abajo: tema.navigationBarTheme.backgroundColor ?? tema.scaffoldBackgroundColor),
+          child: child!,
+        );
+      },
     );
   }
 }

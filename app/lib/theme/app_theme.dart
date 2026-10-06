@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// Colores de marca de una oposición. TCEE: los de styles.css de esta web
 /// (claro, :root; oscuro, [data-theme="dark"]). DCE: los de la web de Manuel
@@ -398,6 +399,8 @@ class AppTheme {
       // El degradado y la línea dorada los pone BarraWeb (widgets/comunes.dart).
       appBarTheme: AppBarTheme(
         backgroundColor: relleno,
+        // La cabecera es siempre morada: hora y batería en blanco.
+        systemOverlayStyle: estiloBarrasSistema(arriba: relleno, abajo: extra.superficie),
         foregroundColor: Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -534,4 +537,19 @@ class AppTheme {
 
   static ThemeData get claro => _build(brillo: Brightness.light);
   static ThemeData get oscuro => _build(brillo: Brightness.dark);
+}
+
+/// Barras del sistema (hora, batería… arriba; botones o gesto abajo) con los
+/// iconos en blanco o en negro según el fondo que tienen detrás.
+SystemUiOverlayStyle estiloBarrasSistema({required Color arriba, required Color abajo}) {
+  bool claro(Color c) => ThemeData.estimateBrightnessForColor(c) == Brightness.light;
+  return SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: claro(arriba) ? Brightness.dark : Brightness.light,
+    statusBarBrightness: claro(arriba) ? Brightness.light : Brightness.dark,
+    systemNavigationBarColor: abajo,
+    systemNavigationBarDividerColor: Colors.transparent,
+    systemNavigationBarIconBrightness: claro(abajo) ? Brightness.dark : Brightness.light,
+    systemNavigationBarContrastEnforced: false,
+  );
 }

@@ -73,7 +73,9 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
     final tema = f.temaActual;
     final con = f.compartidoCon;
 
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: estiloBarrasSistema(arriba: const Color(0xFF16101C), abajo: const Color(0xFF16101C)),
+      child: Scaffold(
       backgroundColor: const Color(0xFF16101C),
       body: SafeArea(
         child: LayoutBuilder(builder: (context, c) {
@@ -130,6 +132,7 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
             ]);
           }),
       ),
+    ),
     );
   }
 }
