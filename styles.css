@@ -2244,3 +2244,28 @@ body {
         display: none;
     }
 }
+
+/* ===== Portada: rosetones de la Catedral de Palencia =====
+   Calcos de dos rosetones (img/roseton-palencia-1.svg y -2.svg: la piedra
+   rellena en suave y el contorno en trazo fino) usados como máscara, para
+   que tomen el morado de la web (también en modo oscuro). Va sobre el fondo
+   verde de la portada y detrás del contenido, centrado en los márgenes
+   cuando hay sitio y asomando por los bordes cuando no; no intercepta clics. */
+.portada .home-main { position: relative; overflow: hidden; }
+.portada .home-main > :not(.fondo-rosetones) { position: relative; z-index: 1; }
+.fondo-rosetones { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.roseton {
+    position: absolute;
+    aspect-ratio: 1;
+    background-color: var(--color-primary);
+    -webkit-mask: var(--dibujo) center / contain no-repeat;
+    mask: var(--dibujo) center / contain no-repeat;
+}
+/* Centro de cada rosetón: en mitad del margen (o en el borde si no lo hay). */
+.roseton--1 { --dibujo: url(img/roseton-palencia-1.svg); --d: 600px; width: var(--d); top: -70px; left: calc(max(0px, (100% - 1200px) / 4) - var(--d) / 2); opacity: 0.6; }
+.roseton--2 { --dibujo: url(img/roseton-palencia-2.svg); --d: 680px; width: var(--d); bottom: -150px; right: calc(max(0px, (100% - 1200px) / 4) - var(--d) / 2); opacity: 0.5; }
+[data-theme="dark"] .roseton { background-color: var(--color-primary-light); }
+@media (max-width: 700px) {
+    .roseton--1 { --d: 420px; top: -40px; }
+    .roseton--2 { --d: 460px; bottom: -110px; }
+}
