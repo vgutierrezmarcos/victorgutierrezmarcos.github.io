@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
 import '../../core/plataforma.dart';
@@ -121,6 +122,7 @@ class CantePage extends ConsumerWidget {
             ]),
           ),
           if (c.modalidad != Modalidad.sinIndicar && !c.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: c)),
+          if (c.temaA != null && c.pendiente) Padding(padding: const EdgeInsets.only(top: 10), child: _TemaRecibido(cante: c)),
           if (c.cancelado && c.dePreparador && c.fecha.isAfter(DateTime.now()) && peticion == null)
             Padding(
               padding: const EdgeInsets.only(top: 10),
@@ -221,6 +223,64 @@ class CantePage extends ConsumerWidget {
             ),
         ],
       ),
+    );
+  }
+}
+
+/// El tema que manda el preparador antes de la clase: a qué hora llega y,
+/// cuando llega, cuál es, con el botón para empezar el esquema.
+class _TemaRecibido extends ConsumerWidget {
+  const _TemaRecibido({required this.cante});
+  final Cante cante;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final c = cante;
+    final de = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+    final cuando = DateFormat("EEEE d 'a las' HH:mm", 'es').format(c.temaA!);
+    if (c.temaA!.isAfter(DateTime.now())) {
+      return Tarjeta(
+        padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
+        child: Row(children: [
+          Icon(Icons.schedule_send_outlined, color: context.esquema.primary),
+          const SizedBox(width: 12),
+          Expanded(child: Text('$de te mandará un tema $cuando para que hagas el esquema.', style: context.textos.bodySmall)),
+        ]),
+      );
+    }
+    final t = ref.watch(temaAnticipadoProvider(c.id));
+    final tema = t.valueOrNull;
+    return Tarjeta(
+      color: context.colores.primarioPalido,
+      padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Icon(Icons.mark_email_unread_outlined, color: context.esquema.primary),
+          const SizedBox(width: 10),
+          Expanded(child: Text(tema?.sorteado == true ? '$de ha sacado esta bola para ti' : '$de te ha mandado este tema', style: context.textos.titleSmall)),
+        ]),
+        const SizedBox(height: 6),
+        if (t.isLoading)
+          const LinearProgressIndicator()
+        else if (tema == null)
+          Row(children: [
+            Expanded(child: Text('No se ha podido traer. Comprueba la conexión.', style: context.textos.bodySmall)),
+            TextButton(onPressed: () => ref.invalidate(temaAnticipadoProvider(c.id)), child: const Text('Reintentar')),
+          ])
+        else ...[
+          TextoTema(tema.tema, tema.titulo.isNotEmpty ? tema.titulo : (ref.watch(temarioProvider).valueOrNull?.tema(tema.tema)?.titulo ?? ''), color: ref.watch(estructuraProvider).valueOrNull?.colorDe(tema.tema)),
+          const SizedBox(height: 10),
+          FilledButton.icon(
+            onPressed: () {
+              final router = GoRouter.of(context);
+              Navigator.of(context).popUntil((r) => r.isFirst);
+              empezarCante(ref, router, c.id, tema: tema.tema);
+            },
+            icon: const Icon(Icons.edit_note),
+            label: const Text('Empezar el esquema'),
+          ),
+        ],
+      ]),
     );
   }
 }

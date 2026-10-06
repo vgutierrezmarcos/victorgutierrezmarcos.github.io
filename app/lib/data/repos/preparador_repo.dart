@@ -157,11 +157,55 @@ class PreparadorRepo {
   List<Cante> sesiones() => _todasLasSesiones().where((c) => !c.borrado).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
 
   Future<void> guardarSesion(Cante s) async {
+    final antes = _sesiones.get(s.id) as Map?;
     await _sesiones.put(s.id, s.toJson());
     try {
       await _docUsuario?.collection('sesiones').doc(s.id).set(s.toJson());
     } catch (_) {}
     await _copiarAlAlumno(s);
+    await _entregarTema(s, antes: antes == null ? null : Cante.fromJson(antes));
+  }
+
+  /// Título de un tema (lo pone la app con el temario cargado), para que el
+  /// aviso del alumno lo lleve completo.
+  String Function(String codigo)? tituloTema;
+
+  /// Tema que se manda al alumno antes de la clase: va aparte, en
+  /// temasAnticipados/{id}, que el alumno solo puede leer a partir de su hora
+  /// (lo comprueban las reglas del servidor). Si se quita, se cancela o se
+  /// borra la clase, se retira.
+  Future<void> _entregarTema(Cante s, {Cante? antes}) async {
+    final a = s.alumno == null ? null : alumno(s.alumno!);
+    if (!conSesion || a?.uid == null) return;
+    final doc = oposicion.red(_db!, 'temasAnticipados').doc(s.id);
+    try {
+      if (s.mandaTema && s.pendiente && !s.borrado) {
+        await doc.set({
+          'alumno': a!.uid,
+          'preparador': uid,
+          'preparadorNombre': perfil().nombre,
+          'tema': s.temaMandado,
+          'titulo': tituloTema?.call(s.temaMandado!) ?? '',
+          'sorteado': s.temaSorteado,
+          'visibleDesde': Timestamp.fromDate(s.temaA!),
+          'updatedAt': DateTime.now().toIso8601String(),
+        });
+      } else if (antes?.mandaTema ?? false) {
+        await doc.delete();
+      }
+    } catch (_) {
+      // Sin red: se reintenta al volver a guardar la clase.
+    }
+  }
+
+  /// El tema que se manda, ya en el servidor (null si aún no se ha subido).
+  Future<bool> temaEntregado(Cante s) async {
+    if (!conSesion) return false;
+    try {
+      return (await oposicion.red(_db!, 'temasAnticipados').doc(s.id).get()).exists;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> guardarSesiones(Iterable<Cante> lista) async {
@@ -176,7 +220,12 @@ class PreparadorRepo {
   Map<String, dynamic> copiaParaAlumno(Cante s) {
     final nombre = perfil().nombre;
     return {
-      ...s.toJson()..remove('alumno'),
+      // El tema que se manda antes de la clase no va en la copia: el alumno
+      // solo sabe a qué hora le llegará.
+      ...s.toJson()
+        ..remove('alumno')
+        ..remove('temaMandado')
+        ..remove('temaSorteado'),
       'titulo': s.titulo.isNotEmpty ? s.titulo : (nombre.isEmpty ? 'Preparador' : 'Con $nombre'),
       'preparador': uid,
       'preparadorNombre': nombre,
@@ -301,7 +350,15 @@ class PreparadorRepo {
           if (mia == null) continue;
           final suya = Cante.fromJson({...d.data(), 'id': d.id});
           if (!(suya.updatedAt ?? DateTime(0)).isAfter(mia.updatedAt ?? DateTime(0))) continue;
-          final json = {...suya.toJson(), 'alumno': mia.alumno, 'titulo': mia.titulo, 'borrado': mia.borrado}
+          final json = {
+            ...suya.toJson(),
+            'alumno': mia.alumno,
+            'titulo': mia.titulo,
+            'borrado': mia.borrado,
+            if (mia.temaA != null) 'temaA': mia.temaA!.toIso8601String(),
+            if (mia.temaMandado != null) 'temaMandado': mia.temaMandado,
+            if (mia.temaSorteado) 'temaSorteado': true,
+          }
             ..remove('preparador')
             ..remove('preparadorNombre');
           await _sesiones.put(d.id, json);

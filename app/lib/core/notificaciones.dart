@@ -185,6 +185,62 @@ class Notificaciones {
     }
   }
 
+  // Recordatorios de las clases del preparador.
+  static const _idClases = 200;
+  static const _maxAvisosClase = 80;
+
+  /// Recordatorios de una clase del preparador: [antelaciones] en minutos
+  /// antes (-1 = la víspera a las 20:00).
+  static List<({DateTime cuando, String titulo, String texto})> avisosDeClase(Cante c, {required String alumno, required List<int> antelaciones, String? tema}) {
+    final hora = '${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}';
+    final detalle = [
+      if (tema != null) 'Le has mandado el $tema',
+      if (c.online && c.enlace.isNotEmpty) 'Online: ${c.enlace}' else if (c.presencial && c.lugar.isNotEmpty) 'En ${c.lugar}',
+    ].join('. ');
+    return [
+      for (final m in antelaciones..sort())
+        if (m < 0)
+          (cuando: DateTime(c.fecha.year, c.fecha.month, c.fecha.day - 1, 20), titulo: 'Clase con $alumno', texto: 'Mañana a las $hora.${detalle.isEmpty ? '' : ' $detalle.'}')
+        else
+          (cuando: c.fecha.subtract(Duration(minutes: m)), titulo: 'Clase con $alumno', texto: '${m >= 60 ? 'En ${m ~/ 60} h' : 'En $m min'}, a las $hora.${detalle.isEmpty ? '' : ' $detalle.'}'),
+    ];
+  }
+
+  /// Reprograma los recordatorios de las próximas clases del preparador.
+  static Future<void> programarClases(List<Cante> clases, {required String Function(Cante) alumno, required List<int> antelaciones, DateTime? ahora}) async {
+    if (!disponibles) return;
+    await iniciar();
+    for (var i = 0; i < _maxAvisosClase; i++) {
+      await _plugin.cancel(_idClases + i);
+    }
+    if (antelaciones.isEmpty) return;
+    final hoy = ahora ?? DateTime.now();
+    final proximas = clases.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
+    final avisos = [
+      for (final c in proximas)
+        for (final a in avisosDeClase(c, alumno: alumno(c), antelaciones: [...antelaciones], tema: c.mandaTema && !c.temaSorteado ? c.temaMandado : null))
+          if (a.cuando.isAfter(hoy)) a,
+    ].take(_maxAvisosClase);
+    var id = _idClases;
+    for (final a in avisos) {
+      try {
+        await _plugin.zonedSchedule(
+          id++,
+          a.titulo,
+          a.texto,
+          tz.TZDateTime.from(a.cuando, tz.local),
+          const NotificationDetails(
+            android: AndroidNotificationDetails('clases', 'Tus clases',
+                channelDescription: 'Recordatorios de las clases con tus alumnos', importance: Importance.high, priority: Priority.high),
+            iOS: DarwinNotificationDetails(),
+          ),
+          androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+        );
+      } catch (_) {}
+    }
+  }
+
   /// Aviso inmediato (cronómetro de cantar un tema en segundo plano).
   /// Aviso de la red de preparadores (sustitución nueva, cante cogido, reserva).
   static Future<void> avisoRed(String clave, String titulo, String texto) async {
@@ -200,6 +256,38 @@ class Notificaciones {
             channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
         iOS: DarwinNotificationDetails(),
       ),
+    );
+  }
+
+  /// Tema que manda el preparador antes de la clase, como un mensaje suyo.
+  /// Al tocarlo se abre la clase; con «Empezar el esquema», Cantar con ese
+  /// tema y el cronómetro del esquema preparado.
+  static Future<void> avisoTema({required String canteId, required String de, required String texto, required String tema, bool sorteado = false}) async {
+    if (!disponibles) return;
+    await iniciar();
+    final persona = Person(name: de, key: de, important: true);
+    await _plugin.show(
+      1000 + ('tema:$canteId'.hashCode & 0x7ffff),
+      de,
+      texto,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          'temas',
+          'Temas de tu preparador',
+          channelDescription: 'El tema que te manda tu preparador antes de la clase',
+          importance: Importance.high,
+          priority: Priority.high,
+          category: AndroidNotificationCategory.message,
+          styleInformation: MessagingStyleInformation(
+            persona,
+            conversationTitle: sorteado ? 'Ha salido esta bola' : null,
+            messages: [Message(texto, DateTime.now(), persona)],
+          ),
+          actions: const [AndroidNotificationAction('esquema', 'Empezar el esquema', showsUserInterface: true)],
+        ),
+        iOS: const DarwinNotificationDetails(),
+      ),
+      payload: 'ruta:/cantes?cante=$canteId&tema=$tema',
     );
   }
 

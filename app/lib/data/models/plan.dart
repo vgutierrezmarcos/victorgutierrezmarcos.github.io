@@ -103,9 +103,25 @@ class Cante {
     this.modalidad = Modalidad.sinIndicar,
     this.lugar = '',
     this.enlace = '',
+    this.temaA,
+    this.temaMandado,
+    this.temaSorteado = false,
   });
 
   final String id;
+
+  /// Hora a la que el preparador manda un tema al alumno antes de la clase
+  /// (la ve el alumno; el tema no, hasta esa hora).
+  final DateTime? temaA;
+
+  /// El tema que se manda. Solo lo tiene el preparador: nunca va en la copia
+  /// del alumno (se le entrega aparte, en temasAnticipados, a su hora).
+  final String? temaMandado;
+
+  /// El tema lo ha sacado la app al azar: tampoco el preparador lo ve antes.
+  final bool temaSorteado;
+
+  bool get mandaTema => temaA != null && temaMandado != null;
   /// Presencial u online.
   final Modalidad modalidad;
   /// Dónde, si es presencial (opcional).
@@ -174,6 +190,10 @@ class Cante {
     Modalidad? modalidad,
     String? lugar,
     String? enlace,
+    DateTime? temaA,
+    String? temaMandado,
+    bool? temaSorteado,
+    bool sinTema = false,
   }) =>
       Cante(
         id: id,
@@ -197,6 +217,9 @@ class Cante {
         modalidad: modalidad ?? this.modalidad,
         lugar: lugar ?? this.lugar,
         enlace: enlace ?? this.enlace,
+        temaA: sinTema ? null : (temaA ?? this.temaA),
+        temaMandado: sinTema ? null : (temaMandado ?? this.temaMandado),
+        temaSorteado: sinTema ? false : (temaSorteado ?? this.temaSorteado),
       );
 
   Map<String, dynamic> toJson() => {
@@ -221,6 +244,9 @@ class Cante {
         if (sustitucion != null) 'sustitucion': sustitucion,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
+        if (temaA != null) 'temaA': temaA!.toIso8601String(),
+        if (temaMandado != null) 'temaMandado': temaMandado,
+        if (temaSorteado) 'temaSorteado': true,
       };
 
   factory Cante.fromJson(Map<dynamic, dynamic> j) => Cante(
@@ -245,6 +271,9 @@ class Cante {
         modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
         lugar: j['lugar'] as String? ?? '',
         enlace: j['enlace'] as String? ?? '',
+        temaA: _fecha(j['temaA']),
+        temaMandado: j['temaMandado'] as String?,
+        temaSorteado: j['temaSorteado'] as bool? ?? false,
       );
 
   /// Fusiona dos listas de cantes por id quedándose con la versión más reciente.

@@ -264,13 +264,13 @@ service cloud.firestore {
       allow create: if esPreparadorDe('tcee', request.resource.data.alumno)
         && request.resource.data.preparador == request.auth.uid
         && request.resource.data.visibleDesde is timestamp
-        && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+        && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
       allow update: if resource.data.preparador == request.auth.uid
         && esPreparadorDe('tcee', resource.data.alumno)
         && request.resource.data.preparador == request.auth.uid
         && request.resource.data.alumno == resource.data.alumno
         && request.resource.data.visibleDesde is timestamp
-        && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+        && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
       allow delete: if conSesionEn('tcee') && resource.data.preparador == request.auth.uid;
     }
 
@@ -433,13 +433,13 @@ service cloud.firestore {
         allow create: if esPreparadorDe(op, request.resource.data.alumno)
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.visibleDesde is timestamp
-          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
         allow update: if resource.data.preparador == request.auth.uid
           && esPreparadorDe(op, resource.data.alumno)
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.alumno == resource.data.alumno
           && request.resource.data.visibleDesde is timestamp
-          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
         allow delete: if conSesionEn(op) && resource.data.preparador == request.auth.uid;
       }
 

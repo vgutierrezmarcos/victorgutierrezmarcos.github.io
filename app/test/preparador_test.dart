@@ -118,6 +118,32 @@ void main() {
     expect(enAgenda.alumno, isNull);
     expect(enAgenda.pendiente, isTrue);
 
+    // Un tema antes de la clase: el alumno sabe la hora, pero no el tema; el
+    // tema va aparte, en temasAnticipados (las reglas solo se lo dejan leer a su hora).
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    prep.tituloTema = (c) => c == '3.B.5' ? 'Política fiscal' : '';
+    final hora = cuando.subtract(const Duration(hours: 24));
+    await prep.guardarSesion(s.copyWith(temaA: hora, temaMandado: '3.B.5', temaSorteado: true));
+    expect(prep.sesiones().single.temaMandado, '3.B.5');
+    await planAlu.sincronizarCantes();
+    final conTema = planAlu.cantes().firstWhere((c) => c.id == 's1');
+    expect(conTema.temaA, hora);
+    expect(conTema.temaMandado, isNull);
+    expect((await db.doc('users/alu/cantes/s1').get()).data()!.containsKey('temaMandado'), isFalse);
+    final anticipado = (await db.doc('temasAnticipados/s1').get()).data()!;
+    expect(anticipado['tema'], '3.B.5');
+    expect(anticipado['titulo'], 'Política fiscal');
+    expect(anticipado['alumno'], 'alu');
+    expect(anticipado['sorteado'], isTrue);
+    // Lo que cambia el alumno no borra el tema del lado del preparador.
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    await planAlu.guardarCante(conTema.copyWith(notas: 'Llevo el esquema'));
+    await prep.sincronizarTodo();
+    expect(prep.sesiones().single.temaMandado, '3.B.5');
+    // Si se quita, se retira.
+    await prep.guardarSesion(prep.sesiones().single.copyWith(sinTema: true));
+    expect((await db.doc('temasAnticipados/s1').get()).exists, isFalse);
+
     // La valoración llega a su diario.
     await Future<void>.delayed(const Duration(milliseconds: 5));
     await prep.guardarSesion(s.copyWith(estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.B.5', segundos: 1700, valoracion: 4, comentarios: 'Muy bien el esquema.')));
@@ -225,5 +251,19 @@ void main() {
     }
     // Lo del alumno sigue siendo suyo: la sesión que recibió se queda en su agenda.
     expect((await db.doc('users/alu/cantes/s1').get()).exists, isTrue);
+  });
+
+  test('directorio: modalidad y ciudad', () {
+    expect(describirModalidad('ambas', ' Madrid '), 'Online y presencial en Madrid');
+    expect(describirModalidad('presencial', ''), 'Presencial');
+    expect(describirModalidad('online', 'Sevilla'), 'Online');
+    expect(describirModalidad('', 'Sevilla'), '');
+    final v = PreparadorVerificado.fromJson(const {'uid': 'p', 'nombre': 'Paula', 'modalidad': 'ambas', 'ciudad': 'Madrid'});
+    expect(v.daOnline && v.daPresencial, isTrue);
+    expect(PreparadorVerificado.fromJson(v.toJson()).ciudad, 'Madrid');
+    final perfil = PerfilPreparador.fromJson(const PerfilPreparador().copyWith(modalidad: 'online', avisosClase: [15]).toJson());
+    expect(perfil.modalidad, 'online');
+    expect(perfil.avisosClase, [15]);
+    expect(const PerfilPreparador().avisosClase, [PerfilPreparador.avisoVispera, 60]);
   });
 }

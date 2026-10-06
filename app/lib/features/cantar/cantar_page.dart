@@ -100,6 +100,25 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (cante != null) _minExposicion = cante.minutos;
     _minEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
     _nuevoReloj();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
+  }
+
+  /// Si se llega con el tema que ha mandado el preparador, se elige y el
+  /// cronómetro queda con el esquema de un tema.
+  void _tomarTemaMandado() {
+    final codigo = ref.read(temaParaCantarProvider);
+    final tema = codigo == null ? null : ref.read(temarioProvider).valueOrNull?.tema(codigo);
+    if (!mounted || tema == null) return;
+    ref.read(temaParaCantarProvider.notifier).state = null;
+    final def = Oposiciones.actual.ejercicio(tema.ejercicio);
+    setState(() {
+      _sorteados = [tema];
+      _elegido = tema;
+      if (!_reloj.empezado && def != null && def.minutosEsquema > 0) {
+        _minEsquema = def.minutosEsquemaPara(1);
+        _nuevoReloj();
+      }
+    });
   }
 
   // ------------------------------------------------------------ Esquema
@@ -489,6 +508,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         if (mounted) setState(() => _prepararCompartido(cante));
       });
     }
+
+    // El tema que ha mandado el preparador: elegido y el esquema listo.
+    ref.listen(temaParaCantarProvider, (_, codigo) {
+      if (codigo != null) WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
+    });
 
     // Al llegar desde la agenda, el cronómetro toma la duración del cante.
     ref.listen(canteEnCursoProvider, (_, id) {

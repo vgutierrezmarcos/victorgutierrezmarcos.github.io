@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/core/calendario.dart';
 import 'package:tcee_app/core/notificaciones.dart';
 import 'package:tcee_app/data/models/plan.dart';
+import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
@@ -274,5 +275,16 @@ void main() {
       expect(Cante.fromJson(p.toJson()).descripcionModalidad, 'Presencial · Academia');
       expect(Cante.fromJson(Cante(id: 'x', fecha: DateTime(2026)).toJson()).modalidad, Modalidad.sinIndicar);
     });
+  });
+
+  test('recordatorios de las clases del preparador', () {
+    final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.online, enlace: 'https://meet.google.com/abc', temaA: DateTime(2026, 10, 7, 18), temaMandado: '3.A.7');
+    final a = Notificaciones.avisosDeClase(c, alumno: 'Ana', antelaciones: [60, PerfilPreparador.avisoVispera, 15], tema: c.temaMandado);
+    expect(a.map((x) => x.cuando), [DateTime(2026, 10, 7, 20), DateTime(2026, 10, 8, 17, 45), DateTime(2026, 10, 8, 17)]);
+    expect(a.first.titulo, 'Clase con Ana');
+    expect(a.first.texto, contains('Mañana a las 18:00'));
+    expect(a.last.texto, contains('En 1 h'));
+    expect(a.last.texto, contains('3.A.7'));
+    expect(a.last.texto, contains('meet.google.com'));
   });
 }

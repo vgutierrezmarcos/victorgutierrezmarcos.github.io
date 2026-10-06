@@ -20,7 +20,7 @@ List<String> _textos(Object? l) => [for (final e in (l as List?) ?? const []) e.
 /// Preparador verificado. Lo da de alta el administrador o un preparador ya
 /// verificado ([avaladoPor]); el administrador puede retirarlo ([activo]).
 class PreparadorVerificado {
-  const PreparadorVerificado({required this.uid, required this.nombre, this.ejercicios = const [3, 4], this.avaladoPor, this.avaladoPorNombre = '', this.desde, this.activo = true, this.linkedin = ''});
+  const PreparadorVerificado({required this.uid, required this.nombre, this.ejercicios = const [3, 4], this.avaladoPor, this.avaladoPorNombre = '', this.desde, this.activo = true, this.linkedin = '', this.modalidad = '', this.ciudad = ''});
   final String uid;
   final String nombre;
   /// Ejercicios que prepara (3, 4, 5).
@@ -33,11 +33,25 @@ class PreparadorVerificado {
   /// Perfil de LinkedIn (opcional), para que los opositores vean quién es.
   final String linkedin;
 
+  /// Cómo da clase: 'online', 'presencial', 'ambas' o '' (sin indicar).
+  final String modalidad;
+
+  /// Ciudad en la que da clase presencial (opcional).
+  final String ciudad;
+
+  bool get daOnline => modalidad == 'online' || modalidad == 'ambas';
+  bool get daPresencial => modalidad == 'presencial' || modalidad == 'ambas';
+
+  /// «Online y presencial en Madrid», «Presencial en Sevilla», «Online» o ''.
+  String get descripcionModalidad => describirModalidad(modalidad, ciudad);
+
   Map<String, dynamic> toJson() => {
         'uid': uid,
         'nombre': nombre,
         'ejercicios': ejercicios,
         'linkedin': linkedin,
+        if (modalidad.isNotEmpty) 'modalidad': modalidad,
+        if (ciudad.isNotEmpty) 'ciudad': ciudad,
         'avaladoPor': avaladoPor,
         'avaladoPorNombre': avaladoPorNombre,
         'desde': (desde ?? DateTime.now()).toIso8601String(),
@@ -53,14 +67,27 @@ class PreparadorVerificado {
         desde: _fecha(j['desde']),
         activo: j['activo'] as bool? ?? true,
         linkedin: j['linkedin'] as String? ?? '',
+        modalidad: j['modalidad'] as String? ?? '',
+        ciudad: j['ciudad'] as String? ?? '',
       );
 
   String get descripcionEjercicios => describirEjercicios(ejercicios);
 }
 
+/// «Online y presencial en Madrid», «Presencial en Sevilla», «Online» o ''.
+String describirModalidad(String modalidad, String ciudad) {
+  final en = ciudad.trim().isEmpty ? '' : ' en ${ciudad.trim()}';
+  return switch (modalidad) {
+    'online' => 'Online',
+    'presencial' => 'Presencial$en',
+    'ambas' => 'Online y presencial$en',
+    _ => '',
+  };
+}
+
 /// Petición para que verifiquen a alguien como preparador.
 class SolicitudPreparador {
-  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.linkedin = '', this.destinatario, this.destinatarioNombre = '', this.creada});
+  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.linkedin = '', this.modalidad = '', this.ciudad = '', this.destinatario, this.destinatarioNombre = '', this.creada});
   final String uid;
   final String nombre;
   final String email;
@@ -69,6 +96,9 @@ class SolicitudPreparador {
   final String presentacion;
   /// LinkedIn (opcional): ayuda a quien la revisa y pasa al directorio.
   final String linkedin;
+  /// Modalidad y ciudad, que pasan al directorio al verificarlo.
+  final String modalidad;
+  final String ciudad;
   /// Preparador concreto al que se la pide (null = al administrador y a
   /// cualquier verificado). Solo la ven él y el administrador.
   final String? destinatario;
@@ -82,6 +112,8 @@ class SolicitudPreparador {
         'ejercicios': ejercicios,
         'presentacion': presentacion,
         'linkedin': linkedin,
+        if (modalidad.isNotEmpty) 'modalidad': modalidad,
+        if (ciudad.isNotEmpty) 'ciudad': ciudad,
         'paraTodos': destinatario == null,
         'destinatario': destinatario,
         'destinatarioNombre': destinatarioNombre,
@@ -95,6 +127,8 @@ class SolicitudPreparador {
         ejercicios: _enteros(j['ejercicios']),
         presentacion: j['presentacion'] as String? ?? '',
         linkedin: j['linkedin'] as String? ?? '',
+        modalidad: j['modalidad'] as String? ?? '',
+        ciudad: j['ciudad'] as String? ?? '',
         destinatario: j['destinatario'] as String?,
         destinatarioNombre: j['destinatarioNombre'] as String? ?? '',
         creada: _fecha(j['creada']),

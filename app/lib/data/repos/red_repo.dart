@@ -115,7 +115,7 @@ class RedRepo {
 
   /// Pide la verificación al administrador y a cualquier verificado o, con
   /// [destinatario], solo a ese preparador (y al administrador).
-  Future<void> solicitar({required String nombre, required List<int> ejercicios, required String presentacion, String linkedin = '', String? destinatario, String destinatarioNombre = ''}) async {
+  Future<void> solicitar({required String nombre, required List<int> ejercicios, required String presentacion, String linkedin = '', String modalidad = '', String ciudad = '', String? destinatario, String destinatarioNombre = ''}) async {
     if (!conSesion) throw const ErrorRed('Inicia sesión con Google para pedir la verificación.');
     await _solicitudes.doc(uid).set(SolicitudPreparador(
       uid: uid!,
@@ -124,6 +124,8 @@ class RedRepo {
       ejercicios: ejercicios,
       presentacion: presentacion.trim(),
       linkedin: enlaceLinkedin(linkedin) ?? '',
+      modalidad: modalidad,
+      ciudad: ciudad.trim(),
       destinatario: destinatario,
       destinatarioNombre: destinatarioNombre,
       creada: DateTime.now(),
@@ -147,7 +149,7 @@ class RedRepo {
 
   /// Verifica a quien lo pidió, avalado por el usuario (verificado o administrador).
   Future<void> aprobar(SolicitudPreparador s, {String? avalNombre}) async {
-    final v = PreparadorVerificado(uid: s.uid, nombre: s.nombre, ejercicios: s.ejercicios, linkedin: s.linkedin, avaladoPor: uid, avaladoPorNombre: avalNombre ?? _miNombre, desde: DateTime.now());
+    final v = PreparadorVerificado(uid: s.uid, nombre: s.nombre, ejercicios: s.ejercicios, linkedin: s.linkedin, modalidad: s.modalidad, ciudad: s.ciudad.length > 60 ? s.ciudad.substring(0, 60) : s.ciudad, avaladoPor: uid, avaladoPorNombre: avalNombre ?? _miNombre, desde: DateTime.now());
     final lote = _db!.batch()
       ..set(_verificados.doc(s.uid), v.toJson())
       ..delete(_solicitudes.doc(s.uid));
@@ -182,10 +184,12 @@ class RedRepo {
   }
 
   /// El preparador cambia cómo aparece en la lista (no su verificación).
-  Future<void> actualizarMiFicha({String? nombre, List<int>? ejercicios, String? linkedin}) => _verificados.doc(uid).update({
+  Future<void> actualizarMiFicha({String? nombre, List<int>? ejercicios, String? linkedin, String? modalidad, String? ciudad}) => _verificados.doc(uid).update({
         if (nombre != null) 'nombre': nombre,
         if (ejercicios != null) 'ejercicios': ejercicios,
         if (linkedin != null) 'linkedin': linkedin.isEmpty ? '' : (enlaceLinkedin(linkedin) ?? ''),
+        if (modalidad != null) 'modalidad': modalidad,
+        if (ciudad != null) 'ciudad': ciudad.trim().length > 60 ? ciudad.trim().substring(0, 60) : ciudad.trim(),
       });
 
   // ------------------------------------------------------------- Sustituciones
