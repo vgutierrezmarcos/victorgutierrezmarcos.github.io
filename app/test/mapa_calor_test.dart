@@ -10,7 +10,7 @@ void main() {
 
   test('sin datos, gris; solo estudiado, en medio', () {
     expect(valorTema(const DatosTema(), LenteMapa.dominio, ahora), isNull);
-    expect(valorTema(const DatosTema(estudiado: true), LenteMapa.dominio, ahora), 1);
+    expect(valorTema(const DatosTema(estudiado: true), LenteMapa.dominio, ahora), closeTo(0.58, 1e-9));
     expect(valorTema(const DatosTema(estudiado: true), LenteMapa.cantes, ahora), isNull);
     expect(valorTema(const DatosTema(estudiado: true), LenteMapa.repaso, ahora), isNull);
   });
@@ -18,7 +18,8 @@ void main() {
   test('los cantes flojos y un repaso viejo bajan el dominio', () {
     final bien = DatosTema(estudiado: true, valoracion: 5, cantes: 3, ultimo: ahora);
     final mal = DatosTema(estudiado: true, valoracion: 2, cantes: 2, ultimo: ahora.subtract(const Duration(days: 90)));
-    expect(valorTema(bien, LenteMapa.dominio, ahora), closeTo(1, 1e-9));
+    expect(valorTema(bien, LenteMapa.dominio, ahora), closeTo(0.925, 1e-9));
+    // Peor que un tema solo estudiado, del que no se sabe más.
     expect(valorTema(mal, LenteMapa.dominio, ahora)!, lessThan(0.5));
     expect(valorTema(mal, LenteMapa.cantes, ahora), 0.25);
     expect(frescura(ahora.subtract(const Duration(days: 30)), ahora), closeTo(0.5, 1e-9));

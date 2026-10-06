@@ -8,6 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
+import 'core/widget_inicio.dart';
+import 'core/widget_providers.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
@@ -114,6 +116,31 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     );
     _programar();
     Notificaciones.alTocar = _alTocarNotificacion;
+    // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
+    abiertoDesdeWidget().then(_desdeWidget);
+    _clicsWidget = clicsEnWidget().listen(_desdeWidget);
+    // Y se redibuja cuando cambia lo que muestra.
+    ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
+  }
+
+  StreamSubscription<Uri?>? _clicsWidget;
+
+  /// tcee://widget/{ruta}: cada zona del widget abre su pantalla.
+  void _desdeWidget(Uri? uri) {
+    if (uri == null || uri.host != 'widget') return;
+    final ruta = uri.path;
+    if (ruta == '/test-diario') {
+      final banco = ref.read(preguntasProvider).valueOrNull;
+      if (banco == null || ref.read(testDiarioHechoProvider)) {
+        _router.go('/hoy');
+        return;
+      }
+      _router.go('/hoy');
+      _router.push('/examen', extra: ConfigTest(idsFijos: MotorTest.testDiario(banco, DateTime.now()).map((p) => p.id).toList(), minutos: 15, tipo: 'diario'));
+      return;
+    }
+    if (ruta == '/cantes') ref.read(subpestanaCantesProvider.notifier).state = 0;
+    _router.go(ruta.isEmpty ? '/hoy' : ruta);
   }
 
   /// Al tocar una notificación: `url:` abre esa página (p. ej. la del proceso
@@ -151,6 +178,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _periodico?.cancel();
     _ciclo.dispose();
     Notificaciones.alTocar = null;
+    _clicsWidget?.cancel();
     super.dispose();
   }
 

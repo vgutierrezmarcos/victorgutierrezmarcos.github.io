@@ -667,7 +667,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
               TituloSeccion(
                 'Cronómetro',
                 accion: TextButton.icon(
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => RelojGrandePage(fuente: this))),
+                  onPressed: () => Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: this))),
                   icon: const Icon(Icons.fullscreen, size: 20),
                   label: const Text('Pantalla grande'),
                 ),

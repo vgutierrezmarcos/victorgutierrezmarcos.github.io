@@ -24,7 +24,7 @@ class ProcesoPage extends ConsumerStatefulWidget {
 
 class _ProcesoPageState extends ConsumerState<ProcesoPage> {
   int _convocatoria = 0;
-  bool? _avisos;
+  bool _avisos = false;
 
   @override
   void initState() {
@@ -110,8 +110,8 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
                           : 'Una notificación cuando aparezca un documento nuevo; al tocarla se abre la página oficial.',
                       style: context.textos.labelSmall,
                     ),
-                    value: _avisos ?? false,
-                    onChanged: _avisos == null ? null : _alternarAvisos,
+                    value: _avisos,
+                    onChanged: _alternarAvisos,
                   ),
                 ),
                 if (novedades.isNotEmpty) ...[
