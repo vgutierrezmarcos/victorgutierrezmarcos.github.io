@@ -418,6 +418,10 @@ String? enlaceWhatsApp(String telefono, [String mensaje = '']) {
 List<int> get ejerciciosConCante => [for (final e in Oposiciones.actual.conCante) e.numero];
 
 /// «1.º (coyuntura)» para un ejercicio con cante.
+/// Ejercicios que puede preparar un preparador: los que se cantan y el
+/// primero (en TCEE, el dictamen de coyuntura; en DCE, el escrito).
+List<int> get ejerciciosPreparables => ({if (Oposiciones.actual.ejercicio(1) != null) 1, ...ejerciciosConCante}.toList()..sort());
+
 String etiquetaEjercicioCante(int e) => Oposiciones.actual.ejercicio(e)?.cortoConCante ?? '$e.º';
 
 String describirEjercicios(List<int> ejercicios) => ejercicios.isEmpty ? '' : ejercicios.map(etiquetaEjercicioCante).join(', ');

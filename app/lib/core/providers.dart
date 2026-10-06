@@ -108,7 +108,9 @@ final actualizacionProvider = FutureProvider<String?>((ref) async {
 
 final authStateProvider = StreamProvider<User?>((ref) {
   if (!ref.watch(serviciosProvider).firebaseDisponible) return Stream.value(null);
-  return FirebaseAuth.instance.authStateChanges();
+  // userChanges (y no authStateChanges): también avisa cuando se completan
+  // el nombre o la foto de la cuenta.
+  return FirebaseAuth.instance.userChanges();
 });
 
 final usuarioActualProvider = Provider<User?>((ref) => ref.watch(authStateProvider).valueOrNull);
@@ -128,7 +130,13 @@ class SesionNotifier extends Notifier<bool> {
         if (google == null) return null; // cancelado
         final auth = await google.authentication;
         final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
-        await FirebaseAuth.instance.signInWithCredential(cred);
+        final r = await FirebaseAuth.instance.signInWithCredential(cred);
+        // Si la cuenta no trae la foto o el nombre de Google, se le ponen.
+        final u = r.user;
+        try {
+          if (u != null && (u.photoURL ?? '').isEmpty && (google.photoUrl ?? '').isNotEmpty) await u.updatePhotoURL(google.photoUrl);
+          if (u != null && (u.displayName ?? '').isEmpty && (google.displayName ?? '').isNotEmpty) await u.updateDisplayName(google.displayName);
+        } catch (_) {}
       }
       await sincronizarTodo(ref);
       return null;

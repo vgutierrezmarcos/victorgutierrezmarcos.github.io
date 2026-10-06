@@ -45,3 +45,7 @@ final probabilidadAprobarProvider = Provider<ProbabilidadAprobar?>((ref) {
 });
 
 String porcentaje(double p, {int decimales = 1}) => '${(100 * p).toStringAsFixed(decimales).replaceAll('.', ',')} %';
+
+/// Lo mismo en puntos porcentuales («1,32 p.p.»): lo que suma a la
+/// probabilidad cada tema estudiado se mide así, no en tanto por ciento.
+String puntos(double p, {int decimales = 1}) => '${(100 * p).toStringAsFixed(decimales).replaceAll('.', ',')} p.p.';

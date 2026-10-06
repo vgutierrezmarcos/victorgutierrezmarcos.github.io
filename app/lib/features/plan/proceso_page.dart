@@ -72,7 +72,15 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
             return Center(
               child: Padding(
                 padding: const EdgeInsets.all(32),
-                child: Text('Cuando el Ministerio publique la página de la convocatoria, aparecerá aquí.', textAlign: TextAlign.center, style: context.textos.bodyMedium),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Text('Todavía no hay aquí información del proceso. Mientras tanto, la tienes en la sección de empleo del Ministerio.', textAlign: TextAlign.center, style: context.textos.bodyMedium),
+                  const SizedBox(height: 14),
+                  FilledButton.icon(
+                    onPressed: () => abrirUrl(context, 'https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx'),
+                    icon: const Icon(Icons.open_in_new),
+                    label: const Text('Empleo en el Ministerio'),
+                  ),
+                ]),
               ),
             );
           }
