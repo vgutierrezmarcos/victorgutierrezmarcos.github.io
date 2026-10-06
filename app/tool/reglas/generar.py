@@ -99,6 +99,13 @@ service cloud.firestore {
       return l == '' || l.matches('https://www[.]linkedin[.]com/in/[^/?#]+');
     }
 
+    // Ficha del directorio: LinkedIn como arriba, modalidad conocida y ciudad corta.
+    function fichaValida() {
+      let m = request.resource.data.get('modalidad', '');
+      let c = request.resource.data.get('ciudad', '');
+      return linkedinValido() && m in ['', 'online', 'presencial', 'ambas'] && c is string && c.size() <= 60;
+    }
+
     function soloCambia(campos) {
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
     }
@@ -131,6 +138,7 @@ service cloud.firestore {
     //   alumnos/{id}             alumnos de un preparador
     //   sesiones/{id}            sesiones de un preparador con sus alumnos
     //   preparadores/{prep}      preparadores a los que el usuario da acceso
+    //   cantes/{id}/reloj/estado cronómetro compartido con el preparador
     match /users/{uid}/{document=**} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
@@ -151,6 +159,13 @@ USUARIO = """
         allow update: if esPreparadorDe(%OP%, uid)
           && resource.data.preparador == request.auth.uid
           && request.resource.data.preparador == request.auth.uid;
+
+        // Cronómetro compartido de una clase: lo manejan el alumno (dueño de
+        // todo su subárbol) y el preparador que firma esa clase.
+        match /reloj/{doc} {
+          allow read, write: if esPreparadorDe(%OP%, uid)
+            && get(deUsuario(%OP%, uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
+        }
       }
       // Cronograma: el preparador enlazado lo ve solo si el alumno lo comparte,
       // y solo puede escribir una propuesta firmada por él, que el alumno
@@ -198,17 +213,19 @@ RED = """
 
       // Lista de preparadores verificados: la ve cualquiera con cuenta (para
       // elegir a quién pedir una sustitución). Da de alta el administrador o un
-      // verificado, nunca uno mismo; el interesado solo cambia su nombre y sus
-      // ejercicios; retirar (activo = false) o borrar, solo el administrador.
+      // verificado, nunca uno mismo; el interesado solo cambia su ficha (nombre,
+      // ejercicios, LinkedIn, modalidad y ciudad); retirar (activo = false) o
+      // borrar, solo el administrador.
       match /preparadoresVerificados/{uid} {
         allow read: if conSesionEn(%OP%);
         allow create: if (esAdmin(%OP%) || (esVerificado(%OP%) && uid != request.auth.uid))
           && request.resource.data.uid == uid
           && request.resource.data.avaladoPor == request.auth.uid
           && request.resource.data.activo == true
-          && linkedinValido();
+          && fichaValida();
         allow update: if esAdmin(%OP%)
-          || (conSesionEn(%OP%) && request.auth.uid == uid && resource.data.activo == true && soloCambia(['nombre', 'ejercicios', 'linkedin']) && linkedinValido());
+          || (conSesionEn(%OP%) && request.auth.uid == uid && resource.data.activo == true
+            && soloCambia(['nombre', 'ejercicios', 'linkedin', 'modalidad', 'ciudad']) && fichaValida());
         allow delete: if esAdmin(%OP%);
       }
 
@@ -251,6 +268,27 @@ RED = """
             && ((quien == 'alumno' && getAfter(enRed(%OP%, 'sustituciones/' + id)).data.alumno == request.auth.uid)
               || (quien == 'preparador' && getAfter(enRed(%OP%, 'sustituciones/' + id)).data.cogidaPor == request.auth.uid));
         }
+      }
+
+      // Tema que el preparador manda a su alumno antes de una clase. Está fuera
+      // de los datos del alumno a propósito: el alumno solo puede leerlo a
+      // partir de la hora elegida (visibleDesde), lo comprueba el servidor.
+      // Solo se lee de uno en uno, nunca en listas.
+      match /temasAnticipados/{id} {
+        allow get: if conSesionEn(%OP%)
+          && (resource.data.preparador == request.auth.uid
+            || (resource.data.alumno == request.auth.uid && request.time >= resource.data.visibleDesde));
+        allow create: if esPreparadorDe(%OP%, request.resource.data.alumno)
+          && request.resource.data.preparador == request.auth.uid
+          && request.resource.data.visibleDesde is timestamp
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+        allow update: if resource.data.preparador == request.auth.uid
+          && esPreparadorDe(%OP%, resource.data.alumno)
+          && request.resource.data.preparador == request.auth.uid
+          && request.resource.data.alumno == resource.data.alumno
+          && request.resource.data.visibleDesde is timestamp
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'sorteado', 'visibleDesde', 'updatedAt']);
+        allow delete: if conSesionEn(%OP%) && resource.data.preparador == request.auth.uid;
       }
 
       // Huecos libres de un preparador: los ve él y sus alumnos enlazados.
