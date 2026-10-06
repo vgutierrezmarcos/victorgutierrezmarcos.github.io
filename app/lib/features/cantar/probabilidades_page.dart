@@ -68,11 +68,40 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
               child: Text('Mueve los deslizadores para ver qué pasaría si te supieras más o menos temas de cada parte.', style: context.textos.bodySmall),
             ),
             for (final ej in ejercicios) ..._ejercicio(context, oposicion, ej, t, partes(ej), config),
+            // Todas juntas al final, con la total: arriba a veces pasa desapercibida.
+            if (ejercicios.length > 1) ...[
+              const TituloSeccion('En resumen'),
+              Tarjeta(
+                color: context.colores.primarioPalido,
+                child: Column(children: [
+                  for (final ej in ejercicios)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 3),
+                      child: Row(children: [
+                        Expanded(child: Text(oposicion.nombreEjercicio(ej), style: context.textos.bodyMedium)),
+                        Text(porcentaje(probs[ej]!), style: context.textos.titleMedium?.copyWith(color: _color(context, probs[ej]!))),
+                      ]),
+                    ),
+                  const Divider(),
+                  Row(children: [
+                    Expanded(child: Text('Total, en ${_cuantos(ejercicios.length)}', style: context.textos.titleSmall)),
+                    Text(porcentaje(total.total), style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
+                  ]),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('${total.temasSabidos} temas · ${puntos(total.porTema, decimales: 2)} por tema estudiado', style: context.textos.labelSmall),
+                  ),
+                ]),
+              ),
+            ],
           ],
         ),
       ),
     );
   }
+
+  /// Verde, dorado o rojo según la probabilidad (como en cada ejercicio).
+  static Color _color(BuildContext context, double p) => p >= 0.9 ? Paleta.acierto : (p >= 0.6 ? context.colores.dorado : Paleta.fallo);
 
   /// «los tres ejercicios de temas».
   static String _cuantos(int n) => switch (n) {
@@ -104,7 +133,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
               ),
             ),
             const SizedBox(width: 10),
-            Text(porcentaje(p), style: context.textos.headlineSmall?.copyWith(color: p >= 0.9 ? Paleta.acierto : (p >= 0.6 ? context.colores.dorado : Paleta.fallo))),
+            Text(porcentaje(p), style: context.textos.headlineSmall?.copyWith(color: _color(context, p))),
           ]),
           const SizedBox(height: 6),
           for (var i = 0; i < partes.length; i++)
