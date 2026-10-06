@@ -16,6 +16,7 @@ import 'features/estudiar/estudiar_page.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
+import 'features/organizacion/mapa_calor_page.dart';
 import 'features/organizacion/organizacion_hub_page.dart';
 import 'features/organizacion/organizacion_page.dart';
 import 'features/plan/cante_page.dart';
@@ -58,6 +59,7 @@ final _router = GoRouter(
             GoRoute(path: 'proceso', builder: (c, s) => const ProcesoPage()),
             GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
             GoRoute(path: 'estructura', builder: (c, s) => const OrganizacionPage()),
+            GoRoute(path: 'mapa-calor', builder: (c, s) => const MapaCalorPage()),
           ]),
         ]),
         StatefulShellBranch(routes: [
