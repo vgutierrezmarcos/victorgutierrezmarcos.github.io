@@ -14,6 +14,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Cómo se reclutaron | (rellenar: opositores y preparadores de TCEE y DCE, conocidos, alumnos de Manuel…) |
 | Cómo se recogen los comentarios | (rellenar: WhatsApp, correo de contacto, en persona…) |
 
+## Pendiente
+
+- Formulario **Seguridad de los datos**: se dejó como estaba (6 oct. 2026). Cuando haya que tocarlo por otra cosa, añadir en *Información personal → Otra información* la modalidad y la ciudad de los preparadores, y en *Actividad en la app → Otro contenido generado por el usuario* las notas.
+
 ## Versiones subidas
 
 | Fecha | Versión | Qué traía |
