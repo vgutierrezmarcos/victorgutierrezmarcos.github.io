@@ -2246,9 +2246,10 @@ body {
 }
 
 /* ===== Portada: rosetones de la Catedral de Palencia =====
-   Patrón diminuto que se repite por el fondo verde de la portada: los dos
-   rosetones (calcados en img/roseton-palencia-1.svg y -2.svg) al
-   tresbolillo, con la piedra rellena en suave y el contorno en trazo fino.
+   Patrón diminuto y continuo por el fondo verde de la portada, como un
+   shippō japonés: los dos rosetones (calcados en img/roseton-palencia-1.svg
+   y -2.svg) alternados y tocándose, con una estrella de cuatro puntas en
+   cada hueco; piedra rellena en suave y contorno en trazo fino.
    La tesela (img/patron-rosetones.svg) se usa como máscara para que tome el
    morado de la web, también en modo oscuro. No intercepta clics. */
 .portada .home-main { position: relative; }
@@ -2259,8 +2260,8 @@ body {
     pointer-events: none;
     z-index: 0;
     background-color: var(--color-primary);
-    opacity: 0.5;
-    -webkit-mask: url(img/patron-rosetones.svg) 0 0 / 132px 132px repeat;
-    mask: url(img/patron-rosetones.svg) 0 0 / 132px 132px repeat;
+    opacity: 0.3;
+    -webkit-mask: url(img/patron-rosetones.svg) 0 0 / 56px 56px repeat;
+    mask: url(img/patron-rosetones.svg) 0 0 / 56px 56px repeat;
 }
 [data-theme="dark"] .fondo-rosetones { background-color: var(--color-primary-light); opacity: 0.22; }
