@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../../core/constants.dart';
@@ -87,7 +88,10 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
   @override
   Widget build(BuildContext context) {
     final serif = PaletaMarca.tcee.serif;
-    return Scaffold(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      // Cabecera berenjena: hora y batería en blanco; abajo, fondo claro.
+      value: estiloBarrasSistema(arriba: PaletaNeutra.tinta, abajo: Theme.of(context).scaffoldBackgroundColor),
+      child: Scaffold(
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         // Cabecera: berenjena con la línea dorada, el logo y el nombre.
         Container(
@@ -124,6 +128,7 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
                 ),
         ),
       ]),
+    ),
     );
   }
 }
