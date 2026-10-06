@@ -334,7 +334,7 @@ body {
 .app-banner-enlace::after { content: ''; position: absolute; inset: 0; z-index: 0; }
 .app-banner-enlace:focus-visible { outline: none; }
 .app-banner:has(.app-banner-enlace:focus-visible) { outline: 2px solid var(--color-primary); outline-offset: 3px; }
-.app-banner-flecha { display: inline-block; color: var(--color-primary); transition: transform 0.2s ease; }
+.app-banner-flecha { display: inline-block; margin-left: 0.4rem; color: var(--color-primary); transition: transform 0.2s ease; }
 .app-banner:hover .app-banner-enlace { color: var(--color-primary); }
 .app-banner:hover .app-banner-flecha { transform: translateX(4px); }
 .app-banner-links a, .app-banner-links .pronto-play, .app-banner-note a { position: relative; z-index: 1; }
