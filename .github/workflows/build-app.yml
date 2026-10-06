@@ -28,35 +28,35 @@ jobs:
           channel: stable
           cache: true
 
-      # Las carpetas nativas no están en el repo: se generan aquí.
-      - name: Generar proyecto nativo
-        run: flutter create --org es.victorgutierrezmarcos --project-name tcee_app --platforms android .
-
+      # Sin este secreto la app compila igualmente, pero sin inicio de sesión.
       - name: Credenciales Firebase (secreto GOOGLE_SERVICES_JSON, base64)
         if: ${{ env.GSJ != '' }}
         env:
           GSJ: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: |
-          echo "$GSJ" | base64 -d > android/app/google-services.json
-          # Plugin de Google Services
-          sed -i 's/id "com.android.application"/id "com.android.application"\n    id "com.google.gms.google-services"/' android/app/build.gradle || true
+        run: echo "$GSJ" | base64 -d > android/app/google-services.json
 
-      - name: Ajustes Android (minSdk 23, permisos)
+      # Sin estos secretos se firma con una clave de depuración distinta en cada
+      # ejecución y el inicio de sesión con Google no funcionará en ese APK.
+      - name: Clave de firma (secretos KEYSTORE_BASE64 y KEYSTORE_PASSWORD)
+        if: ${{ env.KS != '' }}
+        env:
+          KS: ${{ secrets.KEYSTORE_BASE64 }}
+          KP: ${{ secrets.KEYSTORE_PASSWORD }}
         run: |
-          sed -i 's/minSdk = flutter.minSdkVersion/minSdk = 23/; s/minSdkVersion flutter.minSdkVersion/minSdkVersion 23/' android/app/build.gradle
-          python3 - <<'PY'
-          import re
-          p='android/app/src/main/AndroidManifest.xml'; s=open(p).read()
-          perms=''.join(f'    <uses-permission android:name="android.permission.{x}"/>\n' for x in ['INTERNET','RECORD_AUDIO','POST_NOTIFICATIONS','VIBRATE','RECEIVE_BOOT_COMPLETED'])
-          s=s.replace('<application',perms+'    <application',1)
-          open(p,'w').write(s)
-          PY
+          echo "$KS" | base64 -d > android/tcee-upload.jks
+          printf 'storeFile=tcee-upload.jks\nstorePassword=%s\nkeyAlias=tcee\nkeyPassword=%s\n' "$KP" "$KP" > android/key.properties
 
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
       - name: Build APK
         run: flutter build apk --release
+
+      - name: Guardar el APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: oposicion-tcee-apk
+          path: app/build/app/outputs/flutter-apk/app-release.apk
 
       - name: Adjuntar a la release
         if: startsWith(github.ref, 'refs/tags/app-v')
@@ -65,4 +65,4 @@ jobs:
           files: app/build/app/outputs/flutter-apk/app-release.apk
           name: App ${{ github.ref_name }}
           body: |
-            APK de prueba de la app Oposición TCEE. Firmado con la clave de depuración: solo para pruebas internas.
+            APK de prueba de la app Oposición TCEE, para instalar directamente en Android.
