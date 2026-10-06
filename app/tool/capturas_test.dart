@@ -341,6 +341,8 @@ void main() {
     await tocar(find.text('3D'));
     await bajar(430);
     await captura('probabilidades-3d');
+    await bajar(20000);
+    await captura('probabilidades-resumen');
     await pestana('Organización');
     await tocar(find.text('Cronograma'));
     await captura('cronograma');
@@ -451,7 +453,7 @@ void main() {
     await buscarEn<SesionPage>(find.text('Mandarle un tema antes'));
     await tocar(find.text('Mandarle un tema antes'));
     await tocar(find.textContaining('3.A.12'));
-    await tocar(find.text('1 día antes'));
+    await tocar(find.text('45 min antes'));
     await captura('tema-programar');
     await tocar(find.text('Programar el envío'));
     await captura('sesion-tema');

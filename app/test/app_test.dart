@@ -226,8 +226,11 @@ void main() {
     // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
     expect(find.text('TERCER EJERCICIO'), findsOneWidget);
     final p3 = Sorteo.probEjercicio([const ParteSorteo(total: 45, sabidos: 30), const ParteSorteo(total: 45, sabidos: 30)]);
-    expect(find.text('${(100 * p3).toStringAsFixed(1).replaceAll('.', ',')} %'), findsOneWidget);
-    expect(find.text('0,0 %'), findsNWidgets(3)); // total, cuarto y quinto
+    // Cada probabilidad sale en su ejercicio y otra vez en el resumen del final.
+    expect(find.text('${(100 * p3).toStringAsFixed(1).replaceAll('.', ',')} %'), findsWidgets);
+    expect(find.text('0,0 %'), findsAtLeastNWidgets(3)); // total, cuarto y quinto
+    await tester.scrollUntilVisible(find.text('En resumen'.toUpperCase()), 400, scrollable: find.byType(Scrollable).last);
+    expect(find.textContaining('Total, en los tres ejercicios'), findsOneWidget);
     // Gráfico: por eficiencia y en 3D.
     await tocar(tester, find.descendant(of: find.byType(SegmentedButton<bool>), matching: find.text('Eficiencia')));
     expect(find.text('Eficiencia según los temas de cada parte'), findsNWidgets(2)); // tercer y cuarto ejercicio
