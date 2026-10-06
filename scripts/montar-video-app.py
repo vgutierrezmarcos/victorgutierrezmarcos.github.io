@@ -742,7 +742,7 @@ def e_hoy(t):
     cambio = COMPAS
     rotulo(img, 'CADA DÍA', 120, 330, t)
     titular(img, ['Cada día sabes', '*qué *te *toca.'], 120, 400, t, tam=92, paso=MEDIO / 2)
-    parrafo(img, 'Cuenta atrás, test diario, los temas de tu cronograma y tu probabilidad, nada más abrir.', 120, 660, t, inicio=0.6, ancho=620)
+    parrafo(img, 'Cuenta atrás, test diario, los temas de tu cronograma y lo último del proceso selectivo, nada más abrir. Y en un widget, sin abrirla.', 120, 660, t, inicio=0.6, ancho=620)
     a = entre(t, 0, 0.8)
     f = entre(t, cambio - 0.1, cambio + 0.35)
     tel = telefono('hoy', 390, 'dce-hoy', f)
@@ -757,20 +757,42 @@ def e_hoy(t):
         d.line((1290, y_m, x1, y_m), fill=DORADO, width=4)
         d.ellipse((1282, y_m - 8, 1298, y_m + 8), fill=DORADO)
         pegar(img, lupa('hoy', 960, 1480, 560), 1600, y_m, escala=0.8 + 0.2 * rebote(l), alfa=l)
-    # Después, en DCE: los datos del día, como pastillas.
-    for i, (txt, color) in enumerate([('Próximo cante en 41 h', LOGO['fondo_d']), ('Test diario: 10 preguntas', VERDE), ('Esta semana: 3 temas', DORADO)]):
-        e = entre(t, cambio + 0.3 + i * PULSO, cambio + 0.7 + i * PULSO)
-        pegar(img, pastilla(txt, color), 1580 + round(80 * (1 - e)), 400 + i * 130 + 6 * math.sin(t * 2 + i), alfa=e)
+    # Después, en DCE: el widget de la pantalla de inicio, que se va rellenando.
+    e = entre(t, cambio + 0.2, cambio + 0.6)
+    if e > 0:
+        filas = sum(t > cambio + 0.5 + i * PULSO for i in range(3))
+        pegar(img, widget(filas), 1660 + round(80 * (1 - e)), 560 + 6 * math.sin(t * 2), alfa=e, escala=0.9 + 0.1 * rebote(e))
+        pegar(img, pastilla('En la pantalla de inicio', DORADO), 1660, 300 + 5 * math.sin(t * 2.4), alfa=entre(t, cambio + 0.5, cambio + 0.9))
     return img
+
+
+def widget(filas):
+    """El widget de Android (DCE): cuenta atrás grande y hasta tres filas."""
+    def crear():
+        w, h = 420, 370
+        cont = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        d = ImageDraw.Draw(cont)
+        ic = icono(48)
+        cont.paste(ic, (0, 0), ic)
+        d.text((64, 24), 'OPOSICIÓN DCE', font=fuente('sans', 28, 'Bold'), fill=LOGO['fondo_d'], anchor='lm')
+        d.text((0, 160), '128', font=fuente('serif', 110, 'bold'), fill=TINTA_CLARA, anchor='ls')
+        d.text((200, 114), 'días para', font=fuente('sans', 30, 'Medium'), fill=TEXTO_SUAVE, anchor='ls')
+        d.text((200, 154), 'el examen', font=fuente('sans', 30, 'Medium'), fill=TEXTO_SUAVE, anchor='ls')
+        for i, (txt, color) in enumerate([('Cante: mañana, 18:00', LOGO['fondo_d']), ('Esta semana: 3 temas', DORADO), ('Test de hoy: hecho', VERDE)][:filas]):
+            y = 222 + i * 56
+            d.ellipse((4, y - 9, 22, y + 9), fill=color + (255,))
+            d.text((40, y), txt, font=fuente('sans', 32, 'Semibold'), fill=TEXTO, anchor='lm')
+        return tarjeta(cont, radio=40, borde=None, margen=36)
+    return cache(('widget', filas), crear)
 
 
 def e_estudiar(t):
     img = lienzo_luz(t)
     rotulo(img, 'ESTUDIAR', 120, 330, t)
-    titular(img, ['Todo el temario.', '*Todos *los *test.'], 120, 400, t, tam=92, paso=MEDIO / 2)
-    parrafo(img, 'Los PDF de TCEE y los apuntes de DCE, dentro de la app, cada tema con su agenda. Y las preguntas oficiales, con tu historial.', 120, 660, t, inicio=0.6, ancho=640)
+    titular(img, ['Todo el temario.', '*Y *cómo *lo *llevas.'], 120, 400, t, tam=92, paso=MEDIO / 2)
+    parrafo(img, 'Los PDF de TCEE y los apuntes de DCE, cada tema con su agenda, y los test oficiales. El mapa de calor te dice qué dominas y qué flojea.', 120, 660, t, inicio=0.6, ancho=640)
     deriva = -12 * t
-    for i, (nombre, x, y, giro, ancho) in enumerate([('temario-temas', 1040, 600, 7, 320), ('test-estadisticas', 1640, 600, -7, 320), ('dce-tema-web', 1340, 560, 0, 350)]):
+    for i, (nombre, x, y, giro, ancho) in enumerate([('temario-temas', 1040, 600, 7, 320), ('mapa-calor', 1640, 600, -7, 320), ('dce-tema-web', 1340, 560, 0, 350)]):
         e = entre(t, i * PULSO, i * PULSO + 0.7)
         pegar(img, telefono(nombre, ancho), x, y + deriva + round(260 * (1 - e)), giro=giro + (14 if giro >= 0 else -14) * (1 - e), alfa=e)
     return img
@@ -781,7 +803,11 @@ def e_cantes(t):
     c1, c2 = COMPAS, 2 * COMPAS
     a = entre(t, 0, 0.7)
     f = entre(t, c2 - 0.1, c2 + 0.35)
-    pegar(img, telefono('dce-cantar', 380, 'cantes-diario', f), 470, 560 + round(120 * (1 - a)), alfa=a)
+    if t < c1 + 0.5:
+        tel = telefono('dce-cantar', 380, 'reloj-grande', entre(t, c1 - 0.1, c1 + 0.35))
+    else:
+        tel = telefono('reloj-grande', 380, 'cantes-diario', f)
+    pegar(img, tel, 470, 560 + round(120 * (1 - a)), alfa=a)
     rotulo(img, 'CANTES', 860, 200, t)
     titular(img, ['Saca bola.'], 860, 270, t, tam=110, color=BLANCO, salida=c1 - 0.2)
     titular(img, ['Cronometra.'], 860, 270, t, tam=110, color=BLANCO, inicio=c1, salida=c2 - 0.2)
@@ -804,14 +830,16 @@ def e_cantes(t):
     if c1 - 0.1 < t < c2 + 0.3:
         e = entre(t, c1, c1 + 0.4) * (1 - entre(t, c2 - 0.2, c2 + 0.2))
         pasos = max(0, int((t - c1) / PULSO))
-        resto = 30 * 60 - pasos
+        resto = 45 * 60 - pasos
         texto = f'{resto // 60:02d}:{resto % 60:02d}'
-        pegar(img, palabra('Exposición', fuente('sans', 40, 'Medium'), CREMA), 1240, 480, alfa=e)
+        pegar(img, palabra('Esquema', fuente('sans', 40, 'Medium'), CREMA), 1240, 480, alfa=e)
         pegar(img, palabra(texto, fuente('sans', 230, 'Medium'), BLANCO), 1240, 640, alfa=e, escala=0.94 + 0.06 * e)
         d = ImageDraw.Draw(img)
         largo = round(620 * e)
         d.rounded_rectangle((1240 - 310, 790, 1240 - 310 + largo, 800), 5, fill=(90, 70, 100))
         d.rounded_rectangle((1240 - 310, 790, 1240 - 310 + round(largo * (1 - (t - c1) / (COMPAS * 6))), 800), 5, fill=DORADO_CLARO)
+        p = entre(t, c1 + PULSO * 1.5, c1 + PULSO * 1.5 + 0.4) * (1 - entre(t, c2 - 0.2, c2 + 0.2))
+        pegar(img, pastilla('El mismo reloj en el móvil de tu preparador', DORADO_CLARO, oscura=True, tam=30), 1240, 900, alfa=p, escala=0.9 + 0.1 * rebote(p))
     # 3) Valoración: las estrellas se llenan a pulso.
     if t > c2 - 0.1:
         e = entre(t, c2 + 0.2, c2 + 0.6)
@@ -970,8 +998,8 @@ def e_preparadores(t):
     img = fondo_noche().copy()
     rotulo(img, 'SI PREPARAS A OPOSITORES', 120, 300, t, color=DORADO_CLARO)
     titular(img, ['Lleva a', 'tus alumnos.'], 120, 370, t, tam=96, color=BLANCO, paso=MEDIO / 2)
-    parrafo(img, 'Te das de alta y te verifica otro preparador. Al abrir la app, tus clases de hoy; además, tu semana, la ficha de cada alumno y el tablón de clases sueltas.', 120, 640, t, inicio=0.6, ancho=640, color=CREMA)
-    for i, (nombre, x, y, giro) in enumerate([('dce-hoy-preparador', 1080, 590, 5), ('dce-preparador', 1760, 590, -5), ('semana', 1420, 560, 0)]):
+    parrafo(img, 'Te das de alta y te verifica otro preparador. Tus clases de hoy, tu semana, la ficha de cada alumno y el tema que le mandas antes de la clase.', 120, 640, t, inicio=0.6, ancho=640, color=CREMA)
+    for i, (nombre, x, y, giro) in enumerate([('dce-hoy-preparador', 1080, 590, 5), ('tema-programar', 1760, 590, -5), ('semana', 1420, 560, 0)]):
         e = entre(t, i * PULSO, i * PULSO + 0.7)
         pegar(img, telefono(nombre, 340), x + round(300 * (1 - e)), y, giro=giro, alfa=e)
     return img

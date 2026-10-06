@@ -78,10 +78,9 @@ def grafico_destacado(ruta):
     d = ImageDraw.Draw(img)
     ic = v.icono(150, sombra=True)
     img.paste(ic, (60, (alto - ic.height) // 2 - 10), ic)
-    d.text((270, 190), 'Oposición TCEE · DCE', font=v.serif(58), fill=v.BLANCO, anchor='lm')
-    d.rectangle((270, 236, 470, 240), fill=v.DORADO_CLARO)
-    d.text((270, 288), 'Cantes, temario, test y preparadores', font=v.serif(32, 'italic'), fill=(240, 232, 248), anchor='lm')
-    d.text((270, 334), 'para las oposiciones de Comercio del Estado', font=v.serif(32, 'italic'), fill=(240, 232, 248), anchor='lm')
+    d.text((270, 196), 'Oposición TCEE · DCE', font=v.serif(58), fill=v.BLANCO, anchor='lm')
+    d.rectangle((270, 242, 470, 246), fill=v.DORADO_CLARO)
+    d.text((270, 296), 'Cantes, temario, test y preparadores', font=v.serif(34, 'italic'), fill=(240, 232, 248), anchor='lm')
     img.save(ruta)
 
 
