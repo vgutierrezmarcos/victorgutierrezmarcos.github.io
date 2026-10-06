@@ -327,6 +327,23 @@ body {
 }
 .app-banner-links { display: flex; flex-direction: column; align-items: stretch; gap: 0.5rem; flex: 0 1 260px; }
 .app-banner-links .download-btn { justify-content: center; }
+/* Distintivo oficial de Google Play (sin modificar) y su aviso mientras no está publicada */
+.insignia-play { display: inline-flex; justify-content: center; line-height: 0; }
+.insignia-play img { height: 54px; width: auto; }
+.pronto-play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.9rem;
+    border: 1.5px dashed var(--color-border);
+    border-radius: 8px;
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+.pronto-play[hidden], .insignia-play[hidden] { display: none; }
 .download-btn.download-btn--sec {
     background: transparent;
     color: var(--color-primary);
