@@ -30,6 +30,8 @@ Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una ti
 HOY
 • Cuenta atrás al próximo cante y al examen (la fecha la pones tú).
 • Test diario y lo que te toca esta semana según tu cronograma.
+• Lo último que ha publicado el Ministerio en tu proceso selectivo.
+• Y todo eso, también en un widget en la pantalla de inicio del móvil.
 
 ESTUDIAR
 • Todos los temas, dentro de la app: los PDF de TCEE y los apuntes de DCE.
@@ -38,21 +40,28 @@ ESTUDIAR
 
 CANTES
 • Agenda con avisos la víspera y una hora antes, cantes presenciales u online (con enlace de Google Meet) y exportación al calendario.
-• Sacar bola como en el examen o de tu propia bolsa, cronómetro de preparación y exposición, y grabación para escucharte.
+• Sacar bola como en el examen o de tu propia bolsa y cronómetro con el tiempo de esquema del examen (para uno o dos temas) y de exposición.
+• En clase, el mismo cronómetro en tu móvil y en el de tu preparador, o a pantalla grande en una tableta o el portátil.
+• Grabación para escucharte.
 • Diario: qué tema cantaste, cuánto duró y cómo fue.
 
 ORGANIZACIÓN
 • Cronograma de vueltas: genéralo, hazlo semana a semana o trae el tuyo desde un Excel, un Word o un PDF.
 • Probabilidad de que salga un tema que llevas, con las reglas de cada examen.
+• El proceso selectivo al día: convocatoria, listas, calendario y convocatorias de cada ejercicio, con aviso cuando se publica algo nuevo (si lo activas).
+• Mapa de calor del temario: qué temas dominas y cuáles flojean, de un vistazo.
 • Convocatoria con tus hitos, horario de estudio y el mapa del temario.
 
 TU PREPARADOR
 • Conecta con tu preparador: ve tus temas y tus cantes, y te programa las clases.
+• Antes de la clase te puede mandar el tema, que te llega como un mensaje suyo para que hagas el esquema.
 • ¿Te cancelan la clase? Pide una clase suelta a preparadores verificados: el día, una franja de horas y los temas que llevas. Quien la coge elige la hora y os pasáis el WhatsApp.
 
 SI PREPARAS A OPOSITORES
 • Date de alta y te verifica otro preparador. Al abrir la app, tus clases de hoy.
-• Tu semana con todas las clases, la ficha de cada alumno, clases fijas, reservas y el tablón de clases sueltas.
+• Tu semana con todas las clases y recordatorios, la ficha de cada alumno (con su mapa de calor), clases fijas, reservas y el tablón de clases sueltas.
+• Manda a tu alumno el tema antes de la clase, elegido o sacado a suerte, a la hora que quieras.
+• Sal en el directorio de preparadores verificados con cómo das clase y en qué ciudad.
 
 EN EL ORDENADOR
 • La misma app en el navegador, con tu cuenta de Google y todo sincronizado.
@@ -97,6 +106,14 @@ Hecha por Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE). Temari
 **Funciones en segundo plano / tareas**: WorkManager comprueba cada ~15 minutos, con red y solo si el usuario lo activa, si hay clases sueltas nuevas en el tablón o reservas por confirmar.
 
 ## Notas de la versión (ejemplo)
+
+1.14.0:
+
+```
+Novedades del proceso selectivo con aviso, cronómetro del esquema y compartido con tu preparador, tema antes de la clase, mapa de calor del temario, widget y directorio con modalidad y ciudad.
+```
+
+Primera versión:
 
 ```
 Primera versión en Google Play: TCEE y DCE, cronograma con tu día de cante, cantes presenciales u online y la app también en el ordenador.

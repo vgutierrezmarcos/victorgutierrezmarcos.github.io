@@ -48,9 +48,11 @@ double frescura(DateTime ultimo, DateTime ahora) => pow(0.5, max(0, ahora.differ
 
 /// Valor de 0 a 1 de un tema con la [lente], o null si no hay datos.
 ///
-/// El dominio pondera lo que haya: los cantes (40 %), el test (20 %), si está
-/// estudiado (20 %) y lo reciente del último repaso o cante (20 %). Un tema
-/// sin estudiar y sin nada más queda sin dato (gris).
+/// El dominio pondera si está estudiado (30 %), los cantes (40 %), el test
+/// (15 %) y lo reciente del último repaso o cante (15 %). Lo que no se sabe
+/// cuenta como regular si el tema está estudiado (cantes 0,4; test 0,5;
+/// repaso 0,3) y como nada si no: un tema solo marcado como estudiado se
+/// queda a medias (58), no «dominado». Sin estudiar y sin nada más, sin dato.
 double? valorTema(DatosTema d, LenteMapa lente, DateTime ahora) {
   switch (lente) {
     case LenteMapa.cantes:
@@ -61,21 +63,11 @@ double? valorTema(DatosTema d, LenteMapa lente, DateTime ahora) {
       return d.ultimo == null ? null : frescura(d.ultimo!, ahora);
     case LenteMapa.dominio:
       if (!d.estudiado && d.valoracion == 0 && !d.conTest && d.ultimo == null) return null;
-      var suma = 0.2 * (d.estudiado ? 1 : 0);
-      var pesos = 0.2;
-      if (d.valoracion > 0) {
-        suma += 0.4 * (d.valoracion - 1) / 4;
-        pesos += 0.4;
-      }
-      if (d.conTest) {
-        suma += 0.2 * d.acierto;
-        pesos += 0.2;
-      }
-      if (d.ultimo != null) {
-        suma += 0.2 * frescura(d.ultimo!, ahora);
-        pesos += 0.2;
-      }
-      return suma / pesos;
+      final e = d.estudiado ? 1.0 : 0.0;
+      final cantes = d.valoracion > 0 ? (d.valoracion - 1) / 4 : 0.4 * e;
+      final test = d.conTest ? d.acierto : 0.5 * e;
+      final fresco = d.ultimo != null ? frescura(d.ultimo!, ahora) : 0.3 * e;
+      return 0.3 * e + 0.4 * cantes + 0.15 * test + 0.15 * fresco;
   }
 }
 

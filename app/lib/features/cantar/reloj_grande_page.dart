@@ -142,7 +142,13 @@ class _Boton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => OutlinedButton.icon(
-        style: OutlinedButton.styleFrom(foregroundColor: Colors.white, side: const BorderSide(color: Colors.white38), padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14)),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
+          disabledForegroundColor: Colors.white38,
+          side: const BorderSide(color: Colors.white38),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+        ),
         onPressed: onPressed,
         icon: Icon(icono),
         label: Text(texto, style: const TextStyle(fontSize: 16)),

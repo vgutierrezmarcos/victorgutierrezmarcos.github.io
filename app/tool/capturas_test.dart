@@ -23,6 +23,9 @@ import 'package:tcee_app/app.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
+import 'package:tcee_app/core/temas_anticipados.dart';
+import 'package:tcee_app/features/cantar/reloj_grande_page.dart';
+import 'package:tcee_app/features/preparador/sesion_page.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
 import 'package:tcee_app/features/cronograma/cronograma_form_page.dart';
@@ -123,6 +126,8 @@ void main() {
       Cante(id: 'p4', fecha: dia(16), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       // La preparadora cancela el de mañana: el alumno buscará quién se lo coja.
       Cante(id: 'pc', fecha: dia(1, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', estado: EstadoCante.cancelado, motivo: 'Estoy de viaje', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      // La preparadora le ha mandado ya el tema de la clase del jueves.
+      Cante(id: 'pt', fecha: dia(3, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', temaA: hoy.subtract(const Duration(minutes: 40)), bolsa: TipoBolsa.estudiados, modalidad: Modalidad.online, enlace: 'https://meet.google.com/xqe-ptwd-kbn', updatedAt: hoy),
       hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta explicar las rigideces nominales de la segunda generación (Mankiw, Akerlof y Yellen).'),
       hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Grupo de cante'),
       hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y no llega a los teoremas del bienestar.'),
@@ -185,7 +190,16 @@ void main() {
     await dbRed.doc('sustituciones/c1/privado/preparador').set(const ContactoRed(nombre: 'Olga Martín', telefono: '611 22 33 44').toJson());
     var peticiones = <Sustitucion>[];
     final http = CacheHttp(Dio(), await caja());
+    // Lo publicado en el proceso selectivo (el JSON de la web), con las tres
+    // últimas novedades de esta semana para que se vean como tales.
+    final proceso = _json('../oposicion/proceso.json');
+    final docsTcee = ((proceso['tcee'] as Map)['procesos'] as List).first['documentos'] as List;
+    for (final (i, d) in docsTcee.reversed.take(3).indexed) {
+      (d as Map)['desde'] = DateTime(hoy.year, hoy.month, hoy.day - 1 - 2 * i).toIso8601String().substring(0, 10);
+    }
     final overrides = [
+      procesoJsonProvider.overrideWith((ref) async => proceso),
+      temaAnticipadoProvider.overrideWith((ref, id) async => id == 'pt' ? const TemaAnticipado(tema: '3.A.18', titulo: 'Teoría de juegos. Equilibrio de Nash. Juegos repetidos y secuenciales', preparadorNombre: 'Paula Pérez', sorteado: false) : null),
       serviciosProvider.overrideWithValue(Servicios(
         oposicion: Oposiciones.tcee,
         http: http,
@@ -199,8 +213,8 @@ void main() {
       authStateProvider.overrideWith((ref) => Stream<User?>.value(yo)),
       redRepoProvider.overrideWithValue(RedRepo(firestore: dbRed, auth: MockFirebaseAuth(signedIn: true, mockUser: yo))),
       verificadosProvider.overrideWith((ref) async => const [
-            PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo'),
-            PreparadorVerificado(uid: 'luis', nombre: 'Luis Gómez', ejercicios: [1, 3], avaladoPor: 'yo'),
+            PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo', modalidad: 'ambas', ciudad: 'Madrid'),
+            PreparadorVerificado(uid: 'luis', nombre: 'Luis Gómez', ejercicios: [1, 3], avaladoPor: 'yo', modalidad: 'online'),
           ]),
       temarioProvider.overrideWith((ref) => temario),
       configProvider.overrideWith((ref) => config),
@@ -309,6 +323,14 @@ void main() {
     // --------------------------------------------------------- Organización
     await pestana('Organización');
     await captura('organizacion-hub');
+    await tocar(find.text('Proceso selectivo'));
+    await captura('proceso');
+    await pestana('Organización');
+    await buscar(find.text('Mapa de calor'));
+    await tocar(find.text('Mapa de calor'));
+    await captura('mapa-calor');
+    await pestana('Organización');
+    await bajar(-20000);
     await tocar(find.text('Mapa del temario'));
     await captura('organizacion');
     await tocar(find.text('Esquema'));
@@ -358,6 +380,11 @@ void main() {
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+$')));
     await bajar(232);
     await captura('cantes-cantar');
+    await bajar(-20000);
+    await tocar(find.text('Pantalla grande'));
+    await captura('reloj-grande');
+    Navigator.of(tester.element(find.byType(RelojGrandePage))).pop();
+    await tester.pumpAndSettle();
     await subpestana('Diario');
     await captura('cantes-diario');
 
@@ -367,6 +394,10 @@ void main() {
       Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => CantePage(id: id)));
       await tester.pumpAndSettle();
     }
+    await abrirCante('pt');
+    await captura('tema-recibido');
+    Navigator.of(tester.element(find.byType(CantePage))).pop();
+    await tester.pumpAndSettle();
     await abrirCante('pc');
     await captura('cante-cancelado');
     await tocar(find.text('Pedir una clase suelta'));
@@ -413,6 +444,18 @@ void main() {
     await tocar(find.text('Mi semana'));
     await captura('semana');
     Navigator.of(tester.element(find.byType(SemanaPage))).pop();
+    await tester.pumpAndSettle();
+    // Mandar a Lucía un tema antes de la clase de la semana que viene.
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const SesionPage(id: 's4')));
+    await tester.pumpAndSettle();
+    await buscarEn<SesionPage>(find.text('Mandarle un tema antes'));
+    await tocar(find.text('Mandarle un tema antes'));
+    await tocar(find.textContaining('3.A.12'));
+    await tocar(find.text('1 día antes'));
+    await captura('tema-programar');
+    await tocar(find.text('Programar el envío'));
+    await captura('sesion-tema');
+    Navigator.of(tester.element(find.byType(SesionPage))).pop();
     await tester.pumpAndSettle();
     await buscarEn<PreparadorPage>(find.text('Tablón de clases sueltas'));
     await tocar(find.text('Tablón de clases sueltas'));
