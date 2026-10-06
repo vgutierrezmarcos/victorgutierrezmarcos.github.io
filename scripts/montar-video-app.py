@@ -828,12 +828,12 @@ def e_organizacion(t):
     img = lienzo_luz(t)
     c1, c2 = COMPAS, 2 * COMPAS
     rotulo(img, 'ORGANIZACIÓN', 120, 250, t)
-    titular(img, ['¿Sin cronograma?', '*La *app *te *lo *hace.'], 120, 320, t, tam=86, paso=MEDIO / 2, salida=c1 - 0.25)
+    titular(img, ['¿Sin cronograma?', '*La *app *te *lo *hace.'], 120, 320, t, tam=86, paso=MEDIO / 2, salida=c1 - 0.3)
     parrafo(img, 'Eliges los temas y el ritmo: propone un orden por bloques y conexiones y te dice cada semana lo que toca.', 120, 560, t, inicio=0.6, ancho=620, alfa=1 - entre(t, c1 - 0.25, c1))
-    titular(img, ['¿Ya tienes el tuyo?', '*Tráelo.'], 120, 320, t, tam=86, paso=MEDIO / 2, inicio=c1, salida=c2 - 0.25)
+    titular(img, ['¿Ya tienes el tuyo?', '*Tráelo.'], 120, 320, t, tam=86, paso=MEDIO / 2, inicio=c1 + 0.15, salida=c2 - 0.3)
     parrafo(img, 'De un Excel, un Word, un PDF o un texto: lo lee y te lo deja para revisar.', 120, 560, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 - 0.25, c2))
-    titular(img, ['¿Qué probabilidad', '*llevas?'], 120, 300, t, tam=86, paso=MEDIO / 2, inicio=c2, salida=c2 + PULSO * 2.6)
-    titular(img, ['Cada tema', '*suma.'], 120, 300, t, tam=96, paso=MEDIO / 2, inicio=c2 + PULSO * 3)
+    titular(img, ['¿Qué probabilidad', '*llevas?'], 120, 300, t, tam=86, paso=MEDIO / 2, inicio=c2 + 0.15, salida=c2 + PULSO * 2.4)
+    titular(img, ['Cada tema', '*suma.'], 120, 300, t, tam=96, paso=MEDIO / 2, inicio=c2 + PULSO * 2.4 + 0.4)
     # El móvil: el asistente, el cronograma hecho, el importado y las probabilidades.
     cx, cy = 1420, 560
     a = entre(t, 0, 0.7)
