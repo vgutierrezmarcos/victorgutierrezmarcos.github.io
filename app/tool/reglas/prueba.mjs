@@ -1,6 +1,6 @@
 // Prueba de firestore.rules con el emulador: node prueba.mjs (dentro de emulators:exec)
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp } from 'firebase/firestore';
 import { readFileSync } from 'node:fs';
 
 const env = await initializeTestEnvironment({ projectId: 'demo-tcee', firestore: { rules: readFileSync(process.argv[2], 'utf8'), host: '127.0.0.1', port: 8080 } });
@@ -24,6 +24,10 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/alu/exam_results/r1'), { nota: 7 });
   await setDoc(doc(d, 'users/alu/notes/3_A_1'), { texto: 'privado' });
   await setDoc(doc(d, 'users/alu/cantes/propio'), { id: 'propio', estado: 'pendiente' });
+  await setDoc(doc(d, 'users/alu/cantes/clase'), { id: 'clase', preparador: 'paula', estado: 'pendiente' });
+  await setDoc(doc(d, 'users/alu/cantes/clase/reloj/estado'), { corriendo: false, por: 'alu' });
+  await setDoc(doc(d, 'temasAnticipados/futuro'), { alumno: 'alu', preparador: 'paula', tema: '3.A.7', visibleDesde: Timestamp.fromMillis(Date.now() + 3600e3) });
+  await setDoc(doc(d, 'temasAnticipados/pasado'), { alumno: 'alu', preparador: 'paula', tema: '3.A.8', visibleDesde: Timestamp.fromMillis(Date.now() - 60e3) });
   await setDoc(doc(d, 'users/alu/preparadores/paula'), { uid: 'paula' });
   await setDoc(doc(d, 'users/alu/preparadores/retirado'), { uid: 'retirado' });
   await setDoc(doc(d, 'users/alu/cronogramas/cc'), { id: 'cc', compartir: true, temas: ['3.A.1'], updatedAt: 'x' });
@@ -54,6 +58,23 @@ await caso('…pero no en nombre de otro', () => assertFails(updateDoc(doc(db('p
 await caso('…ni cambiando el cronograma directamente', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { temas: [] })));
 await caso('…ni en el que no comparte', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/priv'), { propuesta: { de: 'paula' }, updatedAt: 'y' })));
 
+console.log('Cronómetro compartido y tema anticipado');
+await caso('el preparador de la clase lee el reloj', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cantes/clase/reloj/estado'))));
+await caso('…y lo maneja', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/cantes/clase/reloj/estado'), { corriendo: true, por: 'paula' })));
+await caso('el alumno también', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/clase/reloj/estado'), { corriendo: false, por: 'alu' })));
+await caso('otro preparador no lo toca', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cantes/clase/reloj/estado'))));
+await caso('el preparador no usa el reloj de un cante propio del alumno', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/propio/reloj/estado'), { corriendo: true })));
+await caso('el alumno no lee el tema antes de su hora', () => assertFails(getDoc(doc(db('alu'), 'temasAnticipados/futuro'))));
+await caso('…y sí después', () => assertSucceeds(getDoc(doc(db('alu'), 'temasAnticipados/pasado'))));
+await caso('…pero no puede listarlos', () => assertFails(getDocs(query(collection(db('alu'), 'temasAnticipados'), where('alumno', '==', 'alu')))));
+await caso('el alumno no adelanta la hora', () => assertFails(updateDoc(doc(db('alu'), 'temasAnticipados/futuro'), { visibleDesde: Timestamp.fromMillis(0) })));
+await caso('el alumno no crea uno para leerlo', () => assertFails(setDoc(doc(db('alu'), 'temasAnticipados/mio'), { alumno: 'alu', preparador: 'alu', tema: '3.A.1', visibleDesde: Timestamp.fromMillis(0) })));
+await caso('el preparador lo lee siempre', () => assertSucceeds(getDoc(doc(db('paula'), 'temasAnticipados/futuro'))));
+await caso('el preparador manda un tema a su alumno', () => assertSucceeds(setDoc(doc(db('paula'), 'temasAnticipados/nuevo'), { alumno: 'alu', preparador: 'paula', preparadorNombre: 'Paula', tema: '3.B.2', sorteado: false, visibleDesde: Timestamp.fromMillis(Date.now() + 86400e3), updatedAt: 'x' })));
+await caso('…pero no a quien no es su alumno', () => assertFails(setDoc(doc(db('olga'), 'temasAnticipados/ajeno'), { alumno: 'alu', preparador: 'olga', tema: '3.B.2', visibleDesde: Timestamp.fromMillis(Date.now()) })));
+await caso('…ni con campos de más', () => assertFails(setDoc(doc(db('paula'), 'temasAnticipados/raro'), { alumno: 'alu', preparador: 'paula', tema: '3.B.2', visibleDesde: Timestamp.fromMillis(Date.now()), otro: 1 })));
+await caso('otro usuario no lo lee', () => assertFails(getDoc(doc(db('pepe'), 'temasAnticipados/pasado'))));
+
 console.log('Verificación');
 await caso('nadie se verifica a sí mismo', () => assertFails(setDoc(doc(db('pepe'), 'preparadoresVerificados/pepe'), { uid: 'pepe', avaladoPor: 'pepe', activo: true })));
 await caso('un no verificado no verifica a otro', () => assertFails(setDoc(doc(db('pepe'), 'preparadoresVerificados/juan'), { uid: 'juan', avaladoPor: 'pepe', activo: true })));
@@ -63,6 +84,9 @@ await caso('un retirado no verifica a nadie', () => assertFails(setDoc(doc(db('r
 await caso('el verificado cambia su nombre', () => assertSucceeds(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { nombre: 'Paula P.' })));
 await caso('el verificado pone su LinkedIn', () => assertSucceeds(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { linkedin: 'https://www.linkedin.com/in/paula-perez' })));
 await caso('…pero no otro enlace', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { linkedin: 'https://ejemplo.com/phishing' })));
+await caso('el verificado pone su modalidad y ciudad', () => assertSucceeds(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { modalidad: 'ambas', ciudad: 'Madrid' })));
+await caso('…pero no una modalidad inventada', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { modalidad: 'por carta' })));
+await caso('…ni una ciudad kilométrica', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { ciudad: 'x'.repeat(61) })));
 await caso('…pero no su aval', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/paula'), { avaladoPor: 'admin2' })));
 await caso('el retirado no se reactiva', () => assertFails(updateDoc(doc(db('retirado'), 'preparadoresVerificados/retirado'), { activo: true })));
 await caso('un verificado no retira a otro', () => assertFails(updateDoc(doc(db('paula'), 'preparadoresVerificados/admin'), { activo: false })));

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,6 +27,8 @@ import '../plan/cantes_util.dart';
 import '../plan/resultado_sheet.dart';
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
+import 'reloj_compartido.dart';
+import 'reloj_grande_page.dart';
 import 'sorteo.dart';
 
 enum _Modo { oficial, bolsa }
@@ -52,7 +55,7 @@ class CantarPage extends ConsumerStatefulWidget {
   ConsumerState<CantarPage> createState() => _CantarPageState();
 }
 
-class _CantarPageState extends ConsumerState<CantarPage> {
+class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj {
   // Sorteo
   int _ejercicio = Oposiciones.actual.primerConTemas;
   _Modo _modo = _Modo.oficial;
@@ -68,6 +71,13 @@ class _CantarPageState extends ConsumerState<CantarPage> {
   late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
   Timer? _tic;
   int _hitosAvisados = 0;
+
+  // Cronómetro compartido con el preparador (o con el alumno).
+  RelojCompartido? _compartido;
+  String? _claveCompartido;
+  StreamSubscription<EstadoRelojCompartido?>? _escucha;
+  EstadoRelojCompartido? _remoto;
+  bool _compartiendo = false;
 
   // Grabación (la grabadora y el reproductor se crean al usarlos por primera vez)
   AudioRecorder? _grabadoraPerezosa;
@@ -117,10 +127,125 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     setState(() => saltar ? _reloj.saltarFase(ahora) : _reloj.ampliarFase(ahora, const Duration(minutes: 5)));
     _hitosAvisados = _reloj.hitosPasados(ahora);
     if (_reloj.corriendo) Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
+    _publicar();
   }
+
+  // ------------------------------------------------------------ Reloj compartido
+
+  /// Con quién se puede compartir el reloj de este cante: el alumno enlazado
+  /// (para el preparador) o el preparador que lo ha programado (para el alumno).
+  ({String alumnoUid, String canteId, String otro})? _destinoCompartido(Cante? cante) {
+    if (!ref.read(serviciosProvider).firebaseDisponible || ref.read(usuarioActualProvider) == null || cante == null) return null;
+    final sesion = widget.sesion;
+    if (sesion != null) {
+      final uid = sesion.alumno.uid;
+      return uid == null ? null : (alumnoUid: uid, canteId: cante.id, otro: sesion.alumno.nombre);
+    }
+    if (!cante.dePreparador) return null;
+    return (alumnoUid: ref.read(usuarioActualProvider)!.uid, canteId: cante.id, otro: cante.preparadorNombre ?? 'tu preparador');
+  }
+
+  /// Se escucha el reloj de la clase en curso (aunque no se comparta, para
+  /// saber si el otro lo está usando).
+  void _prepararCompartido(Cante? cante) {
+    final d = _destinoCompartido(cante);
+    final clave = d == null ? null : '${d.alumnoUid}/${d.canteId}';
+    if (clave == _claveCompartido) return;
+    _escucha?.cancel();
+    if (_compartiendo) _compartido?.dejar();
+    _claveCompartido = clave;
+    _compartido = null;
+    _remoto = null;
+    _compartiendo = false;
+    if (d == null) return;
+    final yo = ref.read(usuarioActualProvider)!;
+    final nombre = widget.sesion != null ? ref.read(perfilPreparadorProvider).nombre : (yo.displayName ?? 'Tu alumno');
+    _compartido = RelojCompartido.deClase(FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: d.alumnoUid, canteId: d.canteId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
+    _escucha = _compartido!.escuchar().listen(_alCambiarRemoto);
+  }
+
+  void _alCambiarRemoto(EstadoRelojCompartido? e) {
+    if (!mounted) return;
+    final mio = e?.por == _compartido?.miUid;
+    setState(() => _remoto = e);
+    if (e == null || !_compartiendo || mio) return;
+    if (!e.activo) {
+      setState(() => _compartiendo = false);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${e.porNombre} ha dejado de compartir el cronómetro')));
+      return;
+    }
+    _adoptar(e);
+  }
+
+  /// Toma el reloj (y el sorteo) que ha dejado el otro.
+  void _adoptar(EstadoRelojCompartido e) {
+    final temario = ref.read(temarioProvider).valueOrNull;
+    final ahora = DateTime.now();
+    setState(() {
+      _reloj = e.reloj;
+      _minEsquema = e.reloj.preparacion.inMinutes;
+      _minExposicion = e.reloj.exposicion.inMinutes;
+      if (temario != null && e.temas.isNotEmpty) {
+        _sorteados = [for (final c in e.temas) if (temario.tema(c) != null) temario.tema(c)!];
+        _elegido = e.elegido == null ? null : temario.tema(e.elegido!);
+      }
+    });
+    _hitosAvisados = _reloj.hitosPasados(ahora);
+    _tic?.cancel();
+    if (_reloj.corriendo && !_reloj.terminado(ahora)) {
+      _pantallaEncendida(true);
+      Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
+      _tic = Timer.periodic(const Duration(milliseconds: 250), (_) => _alTic());
+    } else {
+      _pantallaEncendida(false);
+      Notificaciones.cancelarCronometro().catchError((_) {});
+    }
+  }
+
+  Future<void> _alternarCompartir(bool si) async {
+    final c = _compartido;
+    if (c == null) return;
+    if (!si) {
+      setState(() => _compartiendo = false);
+      await c.dejar();
+      return;
+    }
+    await c.medirDesfase();
+    if (!mounted) return;
+    final r = _remoto;
+    setState(() => _compartiendo = true);
+    // Si el otro ya lo estaba usando, se toma su reloj; si no, se le pasa el nuestro.
+    if (r != null && r.activo && r.por != c.miUid) {
+      _adoptar(r);
+    } else {
+      _publicar();
+    }
+  }
+
+  void _publicar() {
+    if (!_compartiendo) return;
+    _compartido?.publicar(_reloj, temas: [for (final t in _sorteados) t.codigo], elegido: _elegido?.codigo);
+  }
+
+  // FuenteReloj (pantalla grande)
+  @override
+  RelojCante get reloj => _reloj;
+  @override
+  String? get temaActual => _elegido == null ? null : '${_elegido!.codigo} · ${_elegido!.titulo}';
+  @override
+  String? get compartidoCon => _compartiendo ? (_destinoOtro ?? 'el otro') : null;
+  String? _destinoOtro;
+  @override
+  void alternar() => _reloj.corriendo ? _parar() : (_reloj.terminado(DateTime.now()) ? null : _iniciar());
+  @override
+  void masTiempo() => _cambiarFase();
+  @override
+  void pasarAExponer() => _cambiarFase(saltar: true);
 
   @override
   void dispose() {
+    if (_compartiendo && !_reloj.corriendo) _compartido?.dejar();
+    _escucha?.cancel();
     _tic?.cancel();
     _pantallaEncendida(false);
     _grabadoraPerezosa?.dispose();
@@ -139,6 +264,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     _tic?.cancel();
     _reloj = RelojCante(preparacion: Duration(minutes: _minEsquema), exposicion: Duration(minutes: _minExposicion));
     _hitosAvisados = 0;
+    _publicar();
   }
 
   void _iniciar() {
@@ -149,6 +275,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
     _tic?.cancel();
     _tic = Timer.periodic(const Duration(milliseconds: 250), (_) => _alTic());
+    _publicar();
   }
 
   void _alTic() {
@@ -172,6 +299,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     setState(() => _reloj.pausar(DateTime.now()));
     _pantallaEncendida(false);
     if (cancelarAvisos) Notificaciones.cancelarCronometro().catchError((_) {});
+    _publicar();
   }
 
   void _reiniciar() {
@@ -300,6 +428,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       _sorteados = resultado;
       _elegido = resultado.length == 1 ? resultado.first : null;
     });
+    _publicar();
   }
 
   Future<void> _guardarEnDiario(Cante? cante, List<Tema> opciones) async {
@@ -351,6 +480,15 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final cante = sesion != null
         ? (ref.watch(sesionesProvider).where((c) => c.id == sesion.cante.id).firstOrNull ?? sesion.cante)
         : (idCante == null ? null : ref.watch(cantesProvider).where((c) => c.id == idCante && c.pendiente).firstOrNull);
+
+    // Reloj compartido de la clase en curso (si la hay y es con preparador).
+    final destino = _destinoCompartido(cante);
+    _destinoOtro = destino?.otro;
+    if ((destino == null ? null : '${destino.alumnoUid}/${destino.canteId}') != _claveCompartido) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() => _prepararCompartido(cante));
+      });
+    }
 
     // Al llegar desde la agenda, el cronómetro toma la duración del cante.
     ref.listen(canteEnCursoProvider, (_, id) {
@@ -488,7 +626,10 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   padding: const EdgeInsets.only(top: 8),
                   child: Tarjeta(
                     color: _elegido == x ? context.colores.primarioPalido : null,
-                    onTap: () => setState(() => _elegido = x),
+                    onTap: () {
+                      setState(() => _elegido = x);
+                      _publicar();
+                    },
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                     child: Row(children: [
                       Icon(estudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: estudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
@@ -499,9 +640,40 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ),
                 ),
               if (_sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Toca el tema que vas a cantar.', style: context.textos.labelSmall)),
-              const TituloSeccion('Cronómetro'),
+              TituloSeccion(
+                'Cronómetro',
+                accion: TextButton.icon(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => RelojGrandePage(fuente: this))),
+                  icon: const Icon(Icons.fullscreen, size: 20),
+                  label: const Text('Pantalla grande'),
+                ),
+              ),
+              if (_compartido != null && !_compartiendo && _remoto != null && _remoto!.activo && _remoto!.por != _compartido!.miUid)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Tarjeta(
+                    color: context.colores.primarioPalido,
+                    padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+                    child: Row(children: [
+                      Icon(Icons.sync, color: context.esquema.primary),
+                      const SizedBox(width: 10),
+                      Expanded(child: Text('${_remoto!.porNombre} está usando el cronómetro compartido', style: context.textos.bodySmall)),
+                      FilledButton(onPressed: () => _alternarCompartir(true), child: const Text('Unirme')),
+                    ]),
+                  ),
+                ),
               Tarjeta(
                 child: Column(children: [
+                  if (_compartido != null)
+                    SwitchListTile(
+                      contentPadding: EdgeInsets.zero,
+                      dense: true,
+                      secondary: Icon(Icons.sync, color: _compartiendo ? context.esquema.primary : context.colores.textoClaro),
+                      title: Text('Compartir con ${destino?.otro ?? ''}'),
+                      subtitle: Text('Los dos veis el mismo tiempo, juntos o a distancia, y cualquiera lo maneja', style: context.textos.labelSmall),
+                      value: _compartiendo,
+                      onChanged: _alternarCompartir,
+                    ),
                   if (_elegido != null) Text('${_elegido!.codigo} · ${_elegido!.titulo}', textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
                   const SizedBox(height: 8),
                   Text(terminado ? 'Tiempo cumplido' : (enPreparacion ? 'Esquema' : 'Exposición'), style: context.textos.labelMedium),
