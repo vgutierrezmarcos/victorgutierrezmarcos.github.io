@@ -9,8 +9,11 @@
  *   - "urlPlayStore": ficha de Google Play, cuando exista.
  *   - "urlAppStore":  ficha del App Store, cuando exista.
  *
- * Cuando la app esté en Google Play, poner "urlApk" a null para que solo se
- * ofrezca la tienda.
+ * Con "urlPlayStore" se muestra el distintivo oficial de Google Play
+ * (#app-link-play) y deja de ofrecerse el APK; sin ella, «Próximamente en
+ * Google Play» (#app-play-pronto) y la descarga directa. Cuando la app esté
+ * en Google Play, basta con rellenar "urlPlayStore" (y, pasado un tiempo,
+ * poner "urlApk" a null). Cómo instalarla, paso a paso: app/instalar.html.
  *
  * Autor: Víctor Gutiérrez Marcos
  */
@@ -25,12 +28,17 @@
             var ios = document.getElementById('app-link-ios');
             var apk = document.getElementById('app-link-apk');
             var nota = document.getElementById('app-banner-note');
+            var pronto = document.getElementById('app-play-pronto');
             var alguno = false;
-            if (cfg.app.urlApk && apk) {
-                apk.href = cfg.app.urlApk; apk.hidden = false; alguno = true;
-                if (nota) nota.hidden = false;
+            if (cfg.app.urlPlayStore && play) {
+                play.href = cfg.app.urlPlayStore; play.hidden = false; alguno = true;
+            } else {
+                if (pronto) pronto.hidden = false;
+                if (cfg.app.urlApk && apk) {
+                    apk.href = cfg.app.urlApk; apk.hidden = false; alguno = true;
+                    if (nota) nota.hidden = false;
+                }
             }
-            if (cfg.app.urlPlayStore && play) { play.href = cfg.app.urlPlayStore; play.hidden = false; alguno = true; }
             if (cfg.app.urlAppStore && ios) { ios.href = cfg.app.urlAppStore; ios.hidden = false; alguno = true; }
             if (alguno) banner.hidden = false;
         })
