@@ -7,6 +7,7 @@ import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../organizacion/mapa_calor_page.dart';
 import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
@@ -157,6 +158,16 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
+            if (a.enlazado && progreso?.value != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: FilaEnlace(
+                  icono: Icons.grid_view_rounded,
+                  titulo: 'Mapa de calor',
+                  subtitulo: 'Qué temas domina y cuáles flojean, según sus cantes',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MapaCalorPage(alumno: progreso!.value, nombreAlumno: a.nombre))),
+                ),
+              ),
             CronogramaDelAlumno(alumno: a),
             TituloSeccion('Clases fijas', accion: TextButton.icon(onPressed: () => _nuevaClaseFija(a), icon: const Icon(Icons.add, size: 18), label: const Text('Clase fija'))),
             if (a.clasesFijas.isEmpty)

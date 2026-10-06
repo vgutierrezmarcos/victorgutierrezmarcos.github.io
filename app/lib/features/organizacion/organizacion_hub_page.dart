@@ -81,6 +81,12 @@ class OrganizacionHubPage extends ConsumerWidget {
             onTap: () => context.go('/organizacion/horario'),
           ),
           const TituloSeccion('El temario, desde arriba'),
+          FilaEnlace(
+            icono: Icons.grid_view_rounded,
+            titulo: 'Mapa de calor',
+            subtitulo: 'Qué temas dominas y cuáles están flojos, de un vistazo',
+            onTap: () => context.go('/organizacion/mapa-calor'),
+          ),
           if (estructura != null && estructura.bloques.isNotEmpty)
             FilaEnlace(
               icono: Icons.account_tree_outlined,

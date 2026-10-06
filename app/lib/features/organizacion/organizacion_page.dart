@@ -7,6 +7,7 @@ import '../../data/models/estructura.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'mapa_calor_page.dart';
 import '../temario/abrir_tema.dart';
 import 'bloque_page.dart';
 import 'esquema_vista.dart';
@@ -36,6 +37,7 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
       appBar: BarraWeb(
         title: const Text('Organización del temario'),
         actions: [
+          IconButton(tooltip: 'Mapa de calor', icon: const Icon(Icons.grid_view_rounded), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MapaCalorPage()))),
           IconButton(
             tooltip: _verProgreso ? 'Ver todos los temas encendidos' : 'Ver mi progreso',
             icon: Icon(_verProgreso ? Icons.visibility : Icons.visibility_off_outlined),
