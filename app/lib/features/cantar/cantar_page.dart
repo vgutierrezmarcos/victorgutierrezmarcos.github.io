@@ -285,7 +285,6 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     }
     final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
     await ref.read(cantesProvider.notifier).guardar(base.copyWith(estado: EstadoCante.hecho, resultado: res));
-    await ref.read(ajustesProvider.notifier).registrarActividad();
     ref.read(canteEnCursoProvider.notifier).state = null;
     if (!mounted) return;
     setState(() {

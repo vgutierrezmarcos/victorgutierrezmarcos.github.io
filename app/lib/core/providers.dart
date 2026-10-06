@@ -273,7 +273,6 @@ class AjustesNotifier extends Notifier<Ajustes> {
     await ref.read(usuarioRepoProvider).guardarAjustes(nuevo);
   }
 
-  Future<void> registrarActividad() => actualizar((a) => a.conActividadHoy());
 
   Future<void> alternarEstudiado(String codigo) => actualizar((a) {
         final s = {...a.temasEstudiados};

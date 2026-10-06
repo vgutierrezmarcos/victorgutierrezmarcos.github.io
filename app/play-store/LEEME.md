@@ -29,7 +29,7 @@ Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una ti
 
 HOY
 • Cuenta atrás al próximo cante y al examen (la fecha la pones tú).
-• Test diario, racha y lo que te toca esta semana según tu cronograma.
+• Test diario y lo que te toca esta semana según tu cronograma.
 
 ESTUDIAR
 • Todos los temas, dentro de la app: los PDF de TCEE y los apuntes de DCE.

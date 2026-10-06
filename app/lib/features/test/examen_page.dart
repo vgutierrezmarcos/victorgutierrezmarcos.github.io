@@ -60,7 +60,6 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
     await ref.read(leitnerProvider.notifier).registrarExamen({
       for (final p in preguntas) p.id: _respuestas[p.id] != null && p.esCorrecta(_respuestas[p.id]),
     });
-    await ref.read(ajustesProvider.notifier).registrarActividad();
     ref.invalidate(historialProvider);
     if (!mounted) return;
     context.pushReplacement('/resultados',

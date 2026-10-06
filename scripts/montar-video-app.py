@@ -739,7 +739,7 @@ def e_elegir(t):
 
 def e_hoy(t):
     img = lienzo_luz(t)
-    cambio = 2 * COMPAS
+    cambio = COMPAS
     rotulo(img, 'CADA DÍA', 120, 330, t)
     titular(img, ['Cada día sabes', '*qué *te *toca.'], 120, 400, t, tam=92, paso=MEDIO / 2)
     parrafo(img, 'Cuenta atrás, test diario, los temas de tu cronograma y tu probabilidad, nada más abrir.', 120, 660, t, inicio=0.6, ancho=620)
@@ -749,7 +749,7 @@ def e_hoy(t):
     cx, cy = 1110, 560 + round(100 * (1 - a))
     pegar(img, tel, cx, cy, giro=-3 * a, alfa=a)
     # Lupa sobre «Esta semana te toca», unida al móvil por una línea dorada.
-    l = entre(t, COMPAS * 0.5, COMPAS * 0.5 + 0.5) * (1 - entre(t, cambio - 0.4, cambio))
+    l = entre(t, 0.5, 0.9) * (1 - entre(t, cambio - 0.3, cambio))
     if l > 0:
         y_m = cy - 464 + round((1220 / 2340) * 845)
         d = ImageDraw.Draw(img)
@@ -758,7 +758,7 @@ def e_hoy(t):
         d.ellipse((1282, y_m - 8, 1298, y_m + 8), fill=DORADO)
         pegar(img, lupa('hoy', 960, 1480, 560), 1600, y_m, escala=0.8 + 0.2 * rebote(l), alfa=l)
     # Después, en DCE: los datos del día, como pastillas.
-    for i, (txt, color) in enumerate([('9 días de racha', DORADO), ('Próximo cante en 41 h', LOGO['fondo_d']), ('Test diario: 10 preguntas', VERDE)]):
+    for i, (txt, color) in enumerate([('Próximo cante en 41 h', LOGO['fondo_d']), ('Test diario: 10 preguntas', VERDE), ('Esta semana: 3 temas', DORADO)]):
         e = entre(t, cambio + 0.3 + i * PULSO, cambio + 0.7 + i * PULSO)
         pegar(img, pastilla(txt, color), 1580 + round(80 * (1 - e)), 400 + i * 130 + 6 * math.sin(t * 2 + i), alfa=e)
     return img
@@ -823,28 +823,75 @@ def e_cantes(t):
 
 
 def e_organizacion(t):
+    """Tres tiempos: si no tienes cronograma, la app te lo hace; si ya lo
+    tienes, lo traes; y la probabilidad de que salga un tema que llevas."""
     img = lienzo_luz(t)
-    llegan = COMPAS
-    rotulo(img, 'ORGANIZACIÓN', 120, 200, t)
-    titular(img, ['¿Ya tienes', 'tu cronograma?'], 120, 270, t, tam=88, paso=MEDIO / 2)
-    titular(img, ['*Tráelo.'], 120, 490, t, tam=110, inicio=llegan, paso=0.1)
-    parrafo(img, 'De un Excel, un Word, un PDF o un texto. O genéralo, o hazlo semana a semana.', 120, 650, t, inicio=0.6, ancho=620)
-    f = entre(t, llegan, llegan + 0.4)
+    c1, c2 = COMPAS, 2 * COMPAS
+    rotulo(img, 'ORGANIZACIÓN', 120, 250, t)
+    titular(img, ['¿Sin cronograma?', '*La *app *te *lo *hace.'], 120, 320, t, tam=86, paso=MEDIO / 2, salida=c1 - 0.25)
+    parrafo(img, 'Eliges los temas y el ritmo: propone un orden por bloques y conexiones y te dice cada semana lo que toca.', 120, 560, t, inicio=0.6, ancho=620, alfa=1 - entre(t, c1 - 0.25, c1))
+    titular(img, ['¿Ya tienes el tuyo?', '*Tráelo.'], 120, 320, t, tam=86, paso=MEDIO / 2, inicio=c1, salida=c2 - 0.25)
+    parrafo(img, 'De un Excel, un Word, un PDF o un texto: lo lee y te lo deja para revisar.', 120, 560, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 - 0.25, c2))
+    titular(img, ['¿Qué probabilidad', '*llevas?'], 120, 300, t, tam=86, paso=MEDIO / 2, inicio=c2, salida=c2 + PULSO * 2.6)
+    titular(img, ['Cada tema', '*suma.'], 120, 300, t, tam=96, paso=MEDIO / 2, inicio=c2 + PULSO * 3)
+    # El móvil: el asistente, el cronograma hecho, el importado y las probabilidades.
+    cx, cy = 1420, 560
     a = entre(t, 0, 0.7)
-    cx, cy = 1460, 560
-    pegar(img, telefono('cronograma-traer', 380, 'cronograma-revisar', f), cx, cy + round(100 * (1 - a)), alfa=a)
-    # Los ficheros vuelan al móvil, uno por pulso.
-    for i, (etq, color, x0, y0) in enumerate([('XLSX', (33, 115, 70), 200, 880), ('DOCX', (43, 87, 154), 390, 880), ('PDF', (179, 11, 0), 580, 880)]):
-        aparece = entre(t, 0.2 + i * MEDIO, 0.5 + i * MEDIO)
-        u = entre(t, PULSO * (2 + i * 0.5), PULSO * (2 + i * 0.5) + 0.6)
-        if u >= 1:
+    if t < c1 * 0.5 + 0.4:
+        tel = telefono('cronograma-nuevo', 380, 'cronograma', entre(t, c1 * 0.5, c1 * 0.5 + 0.35))
+    elif t < c1 + PULSO * 3:
+        tel = telefono('cronograma', 380, 'cronograma-revisar', entre(t, c1 + PULSO * 2.6, c1 + PULSO * 2.6 + 0.35))
+    else:
+        tel = telefono('cronograma-revisar', 380, 'probabilidades', entre(t, c2 - 0.1, c2 + 0.35))
+    pegar(img, tel, cx, cy + round(100 * (1 - a)), alfa=a)
+    e = entre(t, c1 * 0.5 + 0.35, c1 * 0.5 + 0.7) * (1 - entre(t, c1 - 0.2, c1))
+    pegar(img, pastilla('3 temas por semana', DORADO), 1060, 300 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
+    # Los ficheros vuelan al móvil, uno por corchea.
+    for i, (etq, color, x0, y0) in enumerate([('XLSX', (33, 115, 70), 200, 820), ('DOCX', (43, 87, 154), 390, 820), ('PDF', (179, 11, 0), 580, 820)]):
+        aparece = entre(t, c1 + 0.2 + i * MEDIO, c1 + 0.5 + i * MEDIO)
+        u = entre(t, c1 + PULSO * (1.4 + i * 0.5), c1 + PULSO * (1.4 + i * 0.5) + 0.55)
+        if aparece <= 0 or u >= 1:
             continue
         x = x0 + (cx - x0) * u
         y = y0 + (cy - 80 - y0) * u - 260 * math.sin(math.pi * u)
         pegar(img, documento(etq, color), x, y + 6 * math.sin(t * 3 + i), escala=1.15 - 0.75 * u, giro=(1 - u) * (6 - 6 * i) + 30 * u, alfa=aparece * (1 - u * 0.5))
-    e = entre(t, llegan + 0.4, llegan + 0.8)
-    pegar(img, pastilla('9 temas en 3 semanas', VERDE), 1020, 300 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
+    e = entre(t, c1 + PULSO * 3, c1 + PULSO * 3 + 0.4) * (1 - entre(t, c2 - 0.2, c2))
+    pegar(img, pastilla('9 temas en 3 semanas', VERDE), 1060, 300 + 5 * math.sin(t * 2), alfa=e, escala=0.85 + 0.15 * rebote(e))
+    # La probabilidad del tercer ejercicio en un medidor que se llena contando;
+    # después, lo que sube con cinco temas más (34 y 28 de 45: 81,5 %).
+    if t > c2:
+        e = entre(t, c2 + 0.15, c2 + 0.45)
+        sube = entre(t, c2 + PULSO * 2.5, c2 + PULSO * 3.3)
+        v = 75.1 * entre(t, c2 + 0.3, c2 + 1.3) + (81.5 - 75.1) * sube
+        medidor(img, 400, 700, 150, v / 100, t, alfa=e)
+        pegar(img, palabra('Tercer ejercicio de TCEE', fuente('sans', 30, 'Semibold'), TEXTO_SUAVE), 400, 900, alfa=e)
+        p = entre(t, c2 + PULSO * 1.8, c2 + PULSO * 2.3)
+        pegar(img, pastilla('¿Y si estudias 5 temas más?', DORADO), 400, 990, alfa=p, escala=0.85 + 0.15 * rebote(p))
     return img
+
+
+def medidor(img, cx, cy, r, valor, t, alfa=1.0):
+    """Anillo dorado que se llena hasta [valor] (0-1), con la cifra dentro."""
+    if alfa <= 0:
+        return
+    k = 3
+    capa = Image.new('RGBA', (2 * r * k + 40 * k, 2 * r * k + 40 * k), (0, 0, 0, 0))
+    d = ImageDraw.Draw(capa)
+    c = capa.width / 2
+    g = 26 * k
+    caja = (c - r * k, c - r * k, c + r * k, c + r * k)
+    d.ellipse(caja, outline=TINTA_CLARA + (40,), width=g)
+    if valor > 0.001:
+        d.arc(caja, -90, -90 + 360 * valor, fill=DORADO_CLARO + (255,), width=g)
+        # Extremo redondeado y con brillo.
+        ang = math.radians(-90 + 360 * valor)
+        x, y = c + (r * k - g / 2) * math.cos(ang), c + (r * k - g / 2) * math.sin(ang)
+        d.ellipse((x - g / 2, y - g / 2, x + g / 2, y + g / 2), fill=DORADO_CLARO + (255,))
+    capa = capa.resize((capa.width // k, capa.height // k), Image.LANCZOS)
+    pegar(img, capa, cx, cy, alfa=alfa)
+    texto = f'{valor * 100:.1f}'.replace('.', ',')
+    pegar(img, palabra(texto, fuente('serif', 92, 'bold'), TINTA_CLARA), cx - 18, cy - 4, alfa=alfa)
+    pegar(img, palabra('%', fuente('serif', 52, 'bold'), DORADO), cx + palabra(texto, fuente('serif', 92, 'bold'), TINTA_CLARA).width / 2 + 6, cy + 4, alfa=alfa)
 
 
 def e_clases(t):
@@ -971,11 +1018,11 @@ GUION = [
     (e_gancho, 2, 'fundido'),
     (e_elegir, 4, 'barrido'),
     (e_hoy, 6, 'empuje'),
-    (e_estudiar, 9, 'zoom'),
-    (e_cantes, 11, 'barrido'),
-    (e_organizacion, 14, 'empuje'),
-    (e_clases, 16, 'zoom'),
-    (e_mi_preparador, 19, 'corte'),
+    (e_estudiar, 8, 'zoom'),
+    (e_cantes, 10, 'barrido'),
+    (e_organizacion, 13, 'empuje'),
+    (e_mi_preparador, 16, 'zoom'),
+    (e_clases, 17, 'corte'),
     (e_preparadores, 20, 'barrido'),
     (e_ordenador, 22, 'empuje'),
     (e_cierre, 24, 'zoom'),
@@ -1125,6 +1172,11 @@ def _madera(vel, f=520):
     return vel * np.sin(2 * np.pi * f * t) * np.exp(-t / 0.025)
 
 
+def inicio(escena):
+    """Segundo en que empieza [escena] según el guion."""
+    return compas(next(c for f, c, _ in GUION if f is escena))
+
+
 def banda_sonora(ruta):
     import wave
     largo = int((DURACION + 2) * SR)
@@ -1160,7 +1212,7 @@ def banda_sonora(ruta):
             tt = np.arange(n) / SR
             poner(ritmo, 0.2 * (np.sin(2 * np.pi * raiz * tt) + 0.3 * np.sin(4 * np.pi * raiz * tt)) * np.exp(-tt / 1.2) * np.minimum(1.0, tt / 0.01), t0)
         # Bombo (más suave en el respiro de las clases sueltas), charles y palmada.
-        respiro = b == 16
+        respiro = compas(b) == inicio(e_clases)
         if gancho and b == 2:
             for k in (0, 2):
                 poner(bombos, _bombo(0.3), t0 + k * PULSO)
@@ -1188,14 +1240,14 @@ def banda_sonora(ruta):
     # Logo: el golpe al juntarse las mitades y una campana por anillo.
     for base, vel in ((0.0, 1.0), (compas(24), 1 / 1.3)):
         poner(efectos, _golpe(0.4), base + 0.62 * vel)
-        for inicio, nota in ((0.5, 86), (0.68, 90), (0.86, 93)):
-            poner(efectos, _campana(_nota(nota), 0.08), base + (inicio + 0.12) * vel)
+        for desde, nota in ((0.5, 86), (0.68, 90), (0.86, 93)):
+            poner(efectos, _campana(_nota(nota), 0.08), base + (desde + 0.12) * vel)
     # Subida hacia el primer gran cambio y golpe al entrar el cuerpo.
     poner(efectos, _subida(180, 900, COMPAS * 0.9, 0.05), compas(4) - COMPAS * 0.9)
     poner(efectos, _golpe(0.35), compas(4))
     poner(efectos, _golpe(0.3), compas(24))
     # Cantes: bolas que botan, el reloj a pulso y las estrellas.
-    c = compas(11)
+    c = inicio(e_cantes)
     for i in range(2):
         t0 = c + PULSO * (1 + i) + 0.45
         for k, h in enumerate((1.0, 0.45, 0.2)):
@@ -1205,17 +1257,23 @@ def banda_sonora(ruta):
     for i in range(4):
         poner(efectos, _campana(_nota(81 + 2 * i), 0.05, 1.0), c + 2 * COMPAS + PULSO * (1 + i * 0.5))
     # Clases sueltas: los avisos y los preparadores que se encienden.
-    c = compas(16)
+    c = inicio(e_clases)
     for t0 in (c + 0.35, c + 2 * COMPAS + 0.35):
         poner(efectos, _campana(_nota(88), 0.07, 1.2), t0)
         poner(efectos, _campana(_nota(93), 0.07, 1.4), t0 + 0.13)
     for k in range(6):
         poner(efectos, _toque(0.05), c + COMPAS + 0.25 + k * MEDIO)
     # Tu preparador: el teclado.
-    c = compas(19)
+    c = inicio(e_mi_preparador)
     for i in range(6):
         poner(efectos, _tic(0.08), c + 0.2 + i * MEDIO * 0.75)
     poner(efectos, _campana(_nota(86), 0.06, 1.0), c + 0.3 + 6 * MEDIO * 0.75)
+
+    # Organización: los ficheros llegan al móvil y la probabilidad sube.
+    c = inicio(e_organizacion)
+    for i in range(3):
+        poner(efectos, _toque(0.05), c + COMPAS + PULSO * (1.4 + i * 0.5) + 0.5)
+    poner(efectos, _subida(300, 1200, 1.1, 0.03), c + 2 * COMPAS + 0.3)
 
     # «Sidechain»: el bombo hace respirar al colchón y al arpegio.
     golpes = np.convolve(np.abs(bombos), np.ones(int(0.01 * SR)) / int(0.01 * SR), mode='same')

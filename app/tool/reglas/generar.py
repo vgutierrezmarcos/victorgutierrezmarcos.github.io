@@ -122,7 +122,7 @@ service cloud.firestore {
     // raíz; en las demás oposiciones, en users/{uid}/oposiciones/{op}/):
     //   exam_results/{id}        resultados de test (web y app)
     //   progress/spaced_repetition   repaso Leitner
-    //   progress/settings        temas estudiados, racha, oposición elegida
+    //   progress/settings        temas estudiados, oposición elegida
     //   progress/plan            fechas de los ejercicios, hitos y horario
     //   progress/preparador      perfil de preparador (código para alumnos)
     //   notes/{codigoTema}       notas propias por tema

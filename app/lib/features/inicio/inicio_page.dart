@@ -16,7 +16,7 @@ import '../preparador/panel_hoy.dart';
 import '../test/motor_test.dart';
 
 /// Hoy: lo que toca cada día. Al opositor, cuentas atrás (examen y próximo
-/// cante), racha, test diario, cronograma, repaso pendiente y probabilidad de
+/// cante), test diario, cronograma, repaso pendiente y probabilidad de
 /// aprobar. Al preparador, primero su panel (clases de hoy y lo que espera
 /// respuesta) y después el test diario y el repaso.
 class InicioPage extends ConsumerWidget {
@@ -24,7 +24,6 @@ class InicioPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ajustes = ref.watch(ajustesProvider);
     final config = ref.watch(configProvider).valueOrNull;
     final usuario = ref.watch(usuarioActualProvider);
     final diarioHecho = ref.watch(testDiarioHechoProvider);
@@ -35,7 +34,6 @@ class InicioPage extends ConsumerWidget {
     final proximo = fechas.firstOrNull;
     final fecha = proximo?.value;
     final dias = fecha == null ? null : diasHasta(fecha);
-    final racha = ajustes.rachaVigente();
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
@@ -118,25 +116,11 @@ class InicioPage extends ConsumerWidget {
             const TarjetaElegirPapel(),
             if (!opositor) ...[const PanelPreparadorHoy(), const SizedBox(height: 10)],
             if (opositor) ...[
-              IntrinsicHeight(
-                child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  Expanded(
-                    child: Estadistica(
-                      onTap: () => context.go('/organizacion/convocatoria'),
-                      valor: dias == null ? '—' : '$dias',
-                      etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
-                      detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Estadistica(
-                      valor: '$racha',
-                      etiqueta: racha == 1 ? 'día de racha' : 'días de racha',
-                      color: racha > 0 ? context.colores.dorado : null,
-                    ),
-                  ),
-                ]),
+              Estadistica(
+                onTap: () => context.go('/organizacion/convocatoria'),
+                valor: dias == null ? '—' : '$dias',
+                etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
+                detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
               ),
               const SizedBox(height: 10),
               Tarjeta(

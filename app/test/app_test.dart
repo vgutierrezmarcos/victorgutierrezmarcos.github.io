@@ -319,7 +319,6 @@ void main() {
     expect(c.resultado!.sorteados.length, 4);
     expect(c.resultado!.valoracion, 4);
     expect(c.resultado!.comentarios, 'Me faltó el cierre');
-    expect(usuario.ajustes().racha, 1); // cantar cuenta para la racha
 
     await subpestana(tester, 'Diario');
     expect(find.text('HISTORIAL'), findsOneWidget);

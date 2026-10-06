@@ -59,7 +59,7 @@ class Notificaciones {
     await _plugin.zonedSchedule(
       _idRecordatorio,
       'Test diario ${Oposiciones.actual.siglas}',
-      'Tus 10 preguntas de hoy te esperan. ¡Mantén la racha!',
+      'Tus 10 preguntas de hoy te esperan.',
       cuando,
       const NotificationDetails(
         android: AndroidNotificationDetails('recordatorio', 'Recordatorio diario',

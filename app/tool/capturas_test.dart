@@ -102,9 +102,6 @@ void main() {
         for (var i = 1; i <= 11; i++) '5.C.$i',
       },
       temasEnRepaso: const {'3.A.4', '3.A.12', '3.B.7'},
-      racha: 12,
-      mejorRacha: 21,
-      ultimoDia: Ajustes.claveDia(hoy),
     ));
     await preparador.guardarPerfil(PerfilPreparador(papelElegido: true, updatedAt: hoy));
     // Sin fechas de los ejercicios: no se conocen y una fecha de ejemplo en la
