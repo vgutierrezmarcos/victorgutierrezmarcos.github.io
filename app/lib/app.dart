@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'core/constants.dart';
+import 'core/notificaciones.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
@@ -18,6 +20,7 @@ import 'features/organizacion/organizacion_hub_page.dart';
 import 'features/organizacion/organizacion_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/horario_page.dart';
+import 'features/plan/proceso_page.dart';
 import 'features/preparador/mi_preparador_page.dart';
 import 'features/preparador/preparador_page.dart';
 import 'features/test/estadisticas_page.dart';
@@ -51,6 +54,7 @@ final _router = GoRouter(
             GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
             GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
             GoRoute(path: 'convocatoria', builder: (c, s) => const ConvocatoriaPage()),
+            GoRoute(path: 'proceso', builder: (c, s) => const ProcesoPage()),
             GoRoute(path: 'horario', builder: (c, s) => const HorarioPage()),
             GoRoute(path: 'estructura', builder: (c, s) => const OrganizacionPage()),
           ]),
@@ -106,6 +110,17 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       onHide: () => _periodico?.cancel(),
     );
     _programar();
+    Notificaciones.alTocar = _alTocarNotificacion;
+  }
+
+  /// Al tocar una notificación: `url:` abre esa página (p. ej. la del proceso
+  /// selectivo); `ruta:` lleva a esa pantalla de la app.
+  void _alTocarNotificacion(String contenido) {
+    if (contenido.startsWith('url:')) {
+      launchUrl(Uri.parse(contenido.substring(4)), mode: LaunchMode.externalApplication).catchError((_) => false);
+    } else if (contenido.startsWith('ruta:')) {
+      _router.go(contenido.substring(5));
+    }
   }
 
   void _programar() {
@@ -117,6 +132,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   void dispose() {
     _periodico?.cancel();
     _ciclo.dispose();
+    Notificaciones.alTocar = null;
     super.dispose();
   }
 

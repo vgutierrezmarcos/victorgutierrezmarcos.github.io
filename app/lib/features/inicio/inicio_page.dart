@@ -10,6 +10,7 @@ import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
+import '../plan/proceso_page.dart';
 import '../plan/cante_page.dart';
 import '../plan/cantes_util.dart';
 import '../preparador/panel_hoy.dart';
@@ -113,6 +114,7 @@ class InicioPage extends ConsumerWidget {
                       color: context.colores.dorado.withValues(alpha: 0.12),
                       child: Row(children: [Icon(Icons.campaign_outlined, color: context.colores.dorado), const SizedBox(width: 10), Expanded(child: Text(a, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)))])),
                 ),
+            const TarjetaNovedadProceso(),
             const TarjetaElegirPapel(),
             if (!opositor) ...[const PanelPreparadorHoy(), const SizedBox(height: 10)],
             if (opositor) ...[

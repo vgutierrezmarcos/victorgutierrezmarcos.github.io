@@ -1,0 +1,39 @@
+name: Leer el proceso selectivo
+
+# Lee las páginas del Ministerio de cada proceso (TCEE y DCE) y actualiza
+# oposicion/proceso.json, del que la app saca los avisos de novedades.
+on:
+  schedule:
+    # Cada 2 horas entre las 7:00 y las 23:00 (hora de España).
+    - cron: '0 5-21/2 * * *'
+  push:
+    paths:
+      - 'scripts/leer-proceso.py'
+      - '.github/workflows/leer-proceso.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: leer-proceso
+  cancel-in-progress: false
+
+jobs:
+  leer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Leer las páginas del proceso
+      run: python3 scripts/leer-proceso.py
+
+    - name: Commit and push if changed
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add oposicion/proceso.json
+        git diff --staged --quiet || (git commit -m "Novedades del proceso selectivo [skip ci]" && git pull --rebase && git push)

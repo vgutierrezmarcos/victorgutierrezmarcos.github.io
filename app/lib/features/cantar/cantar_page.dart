@@ -5,10 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:record/record.dart';
 import 'package:vibration/vibration.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
+import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
@@ -61,7 +63,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
   Tema? _elegido;
 
   // Cronómetro
-  int _minPreparacion = 0;
+  int _minEsquema = 0;
   int _minExposicion = 30;
   late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
   Timer? _tic;
@@ -86,6 +88,35 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     final id = ref.read(canteEnCursoProvider);
     final cante = widget.sesion?.cante ?? ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
     if (cante != null) _minExposicion = cante.minutos;
+    _minEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
+    _nuevoReloj();
+  }
+
+  // ------------------------------------------------------------ Esquema
+
+  /// Clave de la última duración de esquema elegida en un ejercicio.
+  String _claveEsquema(int ejercicio) => 'esquema:${Oposiciones.actual.id}:$ejercicio';
+
+  /// La última que se usó en ese ejercicio o, si no, la del examen.
+  int _esquemaPorDefecto(int ejercicio) {
+    final guardado = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app).get(_claveEsquema(ejercicio)) : null;
+    return guardado is int ? guardado : (Oposiciones.actual.ejercicio(ejercicio)?.minutosEsquema ?? 0);
+  }
+
+  void _elegirEsquema(int minutos, int ejercicio) {
+    setState(() {
+      _minEsquema = minutos;
+      _nuevoReloj();
+    });
+    if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put(_claveEsquema(ejercicio), minutos);
+  }
+
+  /// +5 minutos a la fase en curso, o pasar ya a exponer: los avisos se rehacen.
+  void _cambiarFase({bool saltar = false}) {
+    final ahora = DateTime.now();
+    setState(() => saltar ? _reloj.saltarFase(ahora) : _reloj.ampliarFase(ahora, const Duration(minutes: 5)));
+    _hitosAvisados = _reloj.hitosPasados(ahora);
+    if (_reloj.corriendo) Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
   }
 
   @override
@@ -106,7 +137,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
 
   void _nuevoReloj() {
     _tic?.cancel();
-    _reloj = RelojCante(preparacion: Duration(minutes: _minPreparacion), exposicion: Duration(minutes: _minExposicion));
+    _reloj = RelojCante(preparacion: Duration(minutes: _minEsquema), exposicion: Duration(minutes: _minExposicion));
     _hitosAvisados = 0;
   }
 
@@ -156,11 +187,11 @@ class _CantarPageState extends ConsumerState<CantarPage> {
   }
 
   Future<void> _otraDuracion({required bool preparacion}) async {
-    final ctrl = TextEditingController(text: '${preparacion ? _minPreparacion : _minExposicion}');
+    final ctrl = TextEditingController(text: '${preparacion ? _minEsquema : _minExposicion}');
     final min = await showDialog<int>(
       context: context,
       builder: (c) => AlertDialog(
-        title: Text(preparacion ? 'Minutos de preparación' : 'Minutos de exposición'),
+        title: Text(preparacion ? 'Minutos de esquema' : 'Minutos de exposición'),
         content: TextField(controller: ctrl, autofocus: true, keyboardType: TextInputType.number, decoration: const InputDecoration(suffixText: 'min')),
         actions: [
           TextButton(onPressed: () => Navigator.pop(c), child: const Text('Cancelar')),
@@ -169,10 +200,21 @@ class _CantarPageState extends ConsumerState<CantarPage> {
       ),
     );
     if (min == null || min < 0 || min > 180 || (!preparacion && min == 0)) return;
+    if (preparacion) {
+      _elegirEsquema(min, _ejercicioDelCante());
+      return;
+    }
     setState(() {
-      preparacion ? _minPreparacion = min : _minExposicion = min;
+      _minExposicion = min;
       _nuevoReloj();
     });
+  }
+
+  int _ejercicioDelCante() {
+    final id = ref.read(canteEnCursoProvider);
+    final c = widget.sesion?.cante ?? ref.read(cantesProvider).where((x) => x.id == id).firstOrNull;
+    final e = c?.ejercicio ?? 0;
+    return e == 0 ? _ejercicio : e;
   }
 
   // ------------------------------------------------------------ Grabación
@@ -318,6 +360,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
         _sorteados = [];
         _elegido = null;
         _minExposicion = c.minutos;
+        _minEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio);
         _nuevoReloj();
       });
     });
@@ -371,6 +414,10 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                           _ejercicio = s.first;
                           _sorteados = [];
                           _elegido = null;
+                          if (!_reloj.empezado) {
+                            _minEsquema = _esquemaPorDefecto(_ejercicio);
+                            _nuevoReloj();
+                          }
                         }),
                         style: const ButtonStyle(visualDensity: VisualDensity.compact),
                       ),
@@ -457,7 +504,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                 child: Column(children: [
                   if (_elegido != null) Text('${_elegido!.codigo} · ${_elegido!.titulo}', textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
                   const SizedBox(height: 8),
-                  Text(terminado ? 'Tiempo cumplido' : (enPreparacion ? 'Preparación' : 'Exposición'), style: context.textos.labelMedium),
+                  Text(terminado ? 'Tiempo cumplido' : (enPreparacion ? 'Esquema' : 'Exposición'), style: context.textos.labelMedium),
                   Text(
                     _formatoReloj(restante),
                     style: context.textos.displayMedium?.copyWith(
@@ -467,7 +514,12 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                   ),
                   ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: _reloj.progresoFase(ahora).clamp(0, 1), minHeight: 6, backgroundColor: context.colores.fondoClaro)),
                   const SizedBox(height: 10),
-                  _duraciones(context, 'Preparación', [0, 5, 10, 15], _minPreparacion, preparacion: true),
+                  if (_reloj.empezado && !terminado)
+                    Wrap(alignment: WrapAlignment.center, spacing: 8, children: [
+                      ActionChip(avatar: const Icon(Icons.more_time, size: 18), label: const Text('+5 min'), onPressed: () => _cambiarFase()),
+                      if (enPreparacion) ActionChip(avatar: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Pasar a exponer'), onPressed: () => _cambiarFase(saltar: true)),
+                    ]),
+                  _esquema(context, cante == null || cante.ejercicio == 0 ? _ejercicio : cante.ejercicio),
                   _duraciones(context, 'Exposición', [15, 20, 30], _minExposicion, preparacion: false),
                   const SizedBox(height: 12),
                   Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
@@ -479,7 +531,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                     ),
                   ]),
                   const SizedBox(height: 6),
-                  Text('Avisa a mitad de la exposición, a 1 minuto del final y al terminar, también con la pantalla apagada.', textAlign: TextAlign.center, style: context.textos.labelSmall),
+                  Text('Avisa al acabar el esquema, a mitad de la exposición, a 1 minuto del final y al terminar, también con la pantalla apagada.', textAlign: TextAlign.center, style: context.textos.labelSmall),
                   if (_reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null || coyuntura)) ...[
                     const Divider(),
                     FilledButton.tonalIcon(
@@ -559,6 +611,35 @@ class _CantarPageState extends ConsumerState<CantarPage> {
     );
   }
 
+  /// Tiempo de esquema: el del examen para todos sus temas o para uno, sin
+  /// esquema u otro a medida.
+  Widget _esquema(BuildContext context, int ejercicio) {
+    final def = Oposiciones.actual.ejercicio(ejercicio);
+    if (def == null || def.minutosEsquema == 0) return _duraciones(context, 'Esquema', [0, 5, 10, 15], _minEsquema, preparacion: true);
+    final opciones = <(int, String)>[
+      (0, 'Sin esquema'),
+      for (var n = 1; n <= def.temasEsquema; n++) (def.minutosEsquemaPara(n), '$n ${n == 1 ? 'tema' : 'temas'} · ${def.minutosEsquemaPara(n)} min'),
+    ];
+    final propio = !opciones.any((o) => o.$1 == _minEsquema);
+    return Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Column(children: [
+        Text('Esquema (en el examen, ${def.minutosEsquema} min para ${def.temasEsquema} temas)', textAlign: TextAlign.center, style: context.textos.labelMedium),
+        Wrap(alignment: WrapAlignment.center, spacing: 4, children: [
+          for (final (m, texto) in opciones)
+            ChoiceChip(
+              label: Text(texto),
+              selected: _minEsquema == m,
+              visualDensity: VisualDensity.compact,
+              onSelected: _reloj.corriendo ? null : (_) => _elegirEsquema(m, ejercicio),
+            ),
+          if (propio) ChoiceChip(label: Text('$_minEsquema min'), selected: true, visualDensity: VisualDensity.compact, onSelected: null),
+          ActionChip(label: const Text('Otro'), visualDensity: VisualDensity.compact, onPressed: _reloj.corriendo ? null : () => _otraDuracion(preparacion: true)),
+        ]),
+      ]),
+    );
+  }
+
   Widget _duraciones(BuildContext context, String etiqueta, List<int> opciones, int actual, {required bool preparacion}) => Padding(
         padding: const EdgeInsets.only(top: 6),
         child: Column(children: [
@@ -572,7 +653,7 @@ class _CantarPageState extends ConsumerState<CantarPage> {
                 onSelected: _reloj.corriendo
                     ? null
                     : (_) => setState(() {
-                          preparacion ? _minPreparacion = m : _minExposicion = m;
+                          preparacion ? _minEsquema = m : _minExposicion = m;
                           _nuevoReloj();
                         }),
               ),
