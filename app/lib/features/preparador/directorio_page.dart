@@ -42,7 +42,7 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
           const SizedBox(height: 10),
           Wrap(spacing: 6, runSpacing: 6, children: [
             ChoiceChip(label: const Text('Todos'), selected: _ejercicio == null, onSelected: (_) => setState(() => _ejercicio = null)),
-            for (final e in ejerciciosConCante) ChoiceChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicio == e, onSelected: (_) => setState(() => _ejercicio = _ejercicio == e ? null : e)),
+            for (final e in ejerciciosPreparables) ChoiceChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicio == e, onSelected: (_) => setState(() => _ejercicio = _ejercicio == e ? null : e)),
           ]),
           const SizedBox(height: 6),
           Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [

@@ -60,7 +60,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
                   const SizedBox(width: 10),
                   Expanded(child: Padding(padding: const EdgeInsets.only(bottom: 6), child: Text('de que salga un tema que llevas en ${_cuantos(ejercicios.length)}', style: context.textos.bodySmall))),
                 ]),
-                Text('${total.temasSabidos} temas · ${porcentaje(total.porTema, decimales: 2)} por tema estudiado.${oposicion.notaProbabilidad == null ? '' : ' ${oposicion.notaProbabilidad}'}', style: context.textos.labelSmall),
+                Text('${total.temasSabidos} temas · ${puntos(total.porTema, decimales: 2)} por tema estudiado.${oposicion.notaProbabilidad == null ? '' : ' ${oposicion.notaProbabilidad}'}', style: context.textos.labelSmall),
               ]),
             ),
             Padding(
@@ -123,7 +123,7 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
             ]),
           const Divider(),
           Row(children: [
-            Expanded(child: _dato(context, 'Por tema estudiado', porcentaje(Sorteo.porTema(partes, elegir: elegir), decimales: 2))),
+            Expanded(child: _dato(context, 'Por tema estudiado', puntos(Sorteo.porTema(partes, elegir: elegir), decimales: 2))),
             Expanded(child: _dato(context, 'Eficiencia', porcentaje(eficiencia, decimales: 0))),
           ]),
           if (consejo != Consejo.ninguno || siguiente != null) const SizedBox(height: 8),

@@ -10,10 +10,63 @@ import '../../widgets/comunes.dart';
 import '../cantar/sorteo.dart';
 import '../plan/cantes_util.dart';
 
-/// Antelaciones que se ofrecen para mandar el tema (en horas antes de la clase).
-const antelacionesTema = [1, 2, 4, 24, 48];
+/// Antelaciones que se ofrecen para mandar el tema, en segundos antes de la
+/// clase: el tiempo de esquema de un tema (22'30"), de dos (45 min) o una hora.
+const antelacionesTema = [1350, 2700, 3600];
 
-String textoAntelacion(int horas) => horas % 24 == 0 ? (horas == 24 ? '1 día antes' : '${horas ~/ 24} días antes') : (horas == 1 ? '1 hora antes' : '$horas horas antes');
+/// «22 min 30 s», «45 min», «1 h», «1 h 30 min», «2 días».
+String textoAntelacion(int segundos) {
+  final d = Duration(seconds: segundos);
+  if (d.inHours >= 24 && d.inHours % 24 == 0 && d.inMinutes % 60 == 0) return d.inDays == 1 ? '1 día' : '${d.inDays} días';
+  final partes = [
+    if (d.inHours > 0) '${d.inHours} h',
+    if (d.inMinutes % 60 > 0) '${d.inMinutes % 60} min',
+    if (d.inSeconds % 60 > 0) '${d.inSeconds % 60} s',
+  ];
+  return partes.isEmpty ? '0 min' : partes.join(' ');
+}
+
+/// Lee «45», «22:30», «22,5» o «1:30:00» (minutos, o horas:minutos:segundos).
+int? leerAntelacion(String texto) {
+  final t = texto.trim().replaceAll(',', '.');
+  if (t.isEmpty) return null;
+  final partes = t.split(':');
+  if (partes.length == 1) {
+    final m = double.tryParse(t);
+    return m == null || m <= 0 ? null : (m * 60).round();
+  }
+  final n = partes.map(int.tryParse).toList();
+  if (n.contains(null)) return null;
+  final s = n.length == 2 ? n[0]! * 60 + n[1]! : n[0]! * 3600 + n[1]! * 60 + n[2]!;
+  return s <= 0 ? null : s;
+}
+
+/// Pide una antelación a medida.
+Future<int?> pedirAntelacion(BuildContext context, {int? actual}) async {
+  final ctrl = TextEditingController(text: actual == null ? '' : '${actual ~/ 60}${actual % 60 == 0 ? '' : ':${(actual % 60).toString().padLeft(2, '0')}'}');
+  return showDialog<int>(
+    context: context,
+    builder: (d) => StatefulBuilder(
+      builder: (d, set) {
+        final s = leerAntelacion(ctrl.text);
+        return AlertDialog(
+          title: const Text('Otra antelación'),
+          content: TextField(
+            controller: ctrl,
+            autofocus: true,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: InputDecoration(suffixText: 'min antes', helperText: s == null ? 'Minutos (por ejemplo, 30 o 22:30)' : textoAntelacion(s)),
+            onChanged: (_) => set(() {}),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+            FilledButton(onPressed: s == null ? null : () => Navigator.pop(d, s), child: const Text('Aceptar')),
+          ],
+        );
+      },
+    ),
+  );
+}
 
 /// «el martes 14 a las 18:00».
 String cuandoTema(DateTime d) => DateFormat("EEEE d 'a las' HH:mm", 'es').format(d);
@@ -124,15 +177,15 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
     super.initState();
     final s = widget.sesion;
     if (s.mandaTema) {
-      final horas = s.fecha.difference(s.temaA!).inMinutes / 60;
-      _antelacion = antelacionesTema.where((h) => h == horas).firstOrNull;
-      if (_antelacion == null) _hora = s.temaA;
+      // Si se programó con antelación, se muestra así; si no, la hora exacta.
+      _antelacion = s.fecha.difference(s.temaA!).inSeconds;
+      _hora = s.temaA;
     } else {
-      _antelacion = ref.read(perfilPreparadorProvider).horasTemaAntes;
+      _antelacion = ref.read(perfilPreparadorProvider).segundosTemaAntes;
     }
   }
 
-  DateTime? get _cuando => _antelacion != null ? widget.sesion.fecha.subtract(Duration(hours: _antelacion!)) : _hora;
+  DateTime? get _cuando => _antelacion != null ? widget.sesion.fecha.subtract(Duration(seconds: _antelacion!)) : _hora;
 
   Future<void> _elegirHora() async {
     final s = widget.sesion;
@@ -196,9 +249,16 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
               ),
             const TituloSeccion('¿Cuándo le llega?'),
             Wrap(spacing: 6, runSpacing: 6, children: [
-              for (final h in antelacionesTema)
-                if (s.fecha.subtract(Duration(hours: h)).isAfter(ahora))
-                  ChoiceChip(label: Text(textoAntelacion(h)), selected: _antelacion == h, onSelected: (_) => setState(() => _antelacion = h)),
+              for (final h in {...antelacionesTema, if (_antelacion != null) _antelacion!}.toList()..sort())
+                if (s.fecha.subtract(Duration(seconds: h)).isAfter(ahora))
+                  ChoiceChip(label: Text('${textoAntelacion(h)} antes'), selected: _antelacion == h, onSelected: (_) => setState(() => _antelacion = h)),
+              ActionChip(
+                label: const Text('Otra'),
+                onPressed: () async {
+                  final h = await pedirAntelacion(context, actual: _antelacion);
+                  if (h != null) setState(() => _antelacion = h);
+                },
+              ),
               ChoiceChip(
                 avatar: const Icon(Icons.edit_calendar_outlined, size: 18),
                 label: Text(_hora == null || _antelacion != null ? 'A una hora concreta' : DateFormat('EEE d, HH:mm', 'es').format(_hora!)),

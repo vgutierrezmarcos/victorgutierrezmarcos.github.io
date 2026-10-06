@@ -178,7 +178,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                   final mia = ref.watch(verificadosProvider).valueOrNull?.where((v) => v.uid == ref.watch(usuarioActualProvider)?.uid).firstOrNull;
                   final actuales = mia?.ejercicios ?? const <int>[];
                   return Wrap(spacing: 6, runSpacing: 6, children: [
-                    for (final e in Oposiciones.actual.conTemasCantados)
+                    for (final e in [for (final n in ejerciciosPreparables) Oposiciones.actual.ejercicio(n)!])
                       FilterChip(
                         label: Text('${e.corto} · ${e.descripcion.replaceAll(RegExp(r' \(.*\)$'), '')}', overflow: TextOverflow.ellipsis),
                         selected: actuales.contains(e.numero),
@@ -217,12 +217,23 @@ class AjustesPreparadorPage extends ConsumerWidget {
               ]),
               if (kIsWeb) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Los recordatorios llegan en la app del móvil.', style: context.textos.labelSmall)),
               const SizedBox(height: 12),
-              Text('Mandar el tema antes de la clase', style: context.textos.titleSmall),
-              Text('Antelación que se propone al programarlo en cada clase', style: context.textos.labelSmall),
+              Text('Tema antes de la clase: antelación propuesta', style: context.textos.titleSmall),
+              Text(
+                'Es la que aparece ya elegida cuando programas el envío del tema en una clase, para no tener que elegirla cada vez. '
+                'No se manda nada sola: en cada clase decides si mandas tema y puedes cambiar la antelación o poner una hora concreta.',
+                style: context.textos.labelSmall,
+              ),
               const SizedBox(height: 6),
               Wrap(spacing: 6, runSpacing: 6, children: [
-                for (final h in antelacionesTema)
-                  ChoiceChip(label: Text(textoAntelacion(h)), selected: perfil.horasTemaAntes == h, onSelected: (_) => notifier.guardar(perfil.copyWith(horasTemaAntes: h))),
+                for (final h in {...antelacionesTema, perfil.segundosTemaAntes}.toList()..sort())
+                  ChoiceChip(label: Text('${textoAntelacion(h)} antes'), selected: perfil.segundosTemaAntes == h, onSelected: (_) => notifier.guardar(perfil.copyWith(segundosTemaAntes: h))),
+                ActionChip(
+                  label: const Text('Otra'),
+                  onPressed: () async {
+                    final h = await pedirAntelacion(context, actual: perfil.segundosTemaAntes);
+                    if (h != null) await notifier.guardar(perfil.copyWith(segundosTemaAntes: h));
+                  },
+                ),
               ]),
             ]),
           ),

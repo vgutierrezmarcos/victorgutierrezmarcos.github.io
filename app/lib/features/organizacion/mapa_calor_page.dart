@@ -40,23 +40,32 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
     final ajustes = ref.watch(ajustesProvider);
     final tests = alumno == null ? (ref.watch(historialProvider).valueOrNull ?? const []) : const [];
     final banco = alumno == null ? ref.watch(preguntasProvider).valueOrNull : null;
-    final lentes = [for (final l in LenteMapa.values) if (alumno == null || l != LenteMapa.test) l];
     final ahora = DateTime.now();
 
     if (temario == null) return Scaffold(appBar: BarraWeb(title: const Text('Mapa de calor')), body: const Cargando());
     final ejercicios = temario.ejercicios.where((e) => e.partes.any((p) => p.temas.isNotEmpty) && (Oposiciones.actual.ejercicio(e.id)?.sorteo ?? true)).toList();
     final ej = ejercicios.where((e) => e.id == _ejercicio).firstOrNull ?? ejercicios.where((e) => e.id == Oposiciones.actual.primerConTemas).firstOrNull ?? ejercicios.first;
     final codigos = [for (final p in ej.partes) for (final t in p.temas) t.codigo];
+    // Cantes, solo en los ejercicios que se cantan (3.º y 4.º de TCEE, 3.º de
+    // DCE); test, solo en el 3.º de TCEE, que es de donde salen sus preguntas.
+    final oposicion = Oposiciones.actual;
+    final conCantes = oposicion.ejercicio(ej.id)?.cante == TipoCante.temas;
+    final conTest = alumno == null && oposicion.id == 'tcee' && ej.id == 3;
+    final lentes = [
+      for (final l in LenteMapa.values)
+        if ((l != LenteMapa.cantes || conCantes) && (l != LenteMapa.test || conTest)) l,
+    ];
+    final lente = lentes.contains(_lente) ? _lente : LenteMapa.dominio;
     final datos = datosPorTema(
       codigos: codigos,
       estudiados: alumno?.estudiados ?? ajustes.temasEstudiados,
       enRepaso: alumno?.enRepaso ?? ajustes.temasEnRepaso,
       cantes: alumno == null ? ref.watch(estadisticasCantesProvider) : EstadisticaTema.desde(alumno.cantes),
       vueltas: alumno == null ? ref.watch(vueltasProvider) : const {},
-      tests: [...tests],
-      banco: banco,
+      tests: conTest ? [...tests] : const [],
+      banco: conTest ? banco : null,
     );
-    final valores = {for (final c in codigos) c: valorTema(datos[c]!, _lente, ahora)};
+    final valores = {for (final c in codigos) c: valorTema(datos[c]!, lente, ahora)};
     final conDato = valores.values.whereType<double>().toList();
     final media = conDato.isEmpty ? null : conDato.reduce((a, b) => a + b) / conDato.length;
 
@@ -86,16 +95,16 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
           SegmentedButton<LenteMapa>(
             showSelectedIcon: false,
             segments: [for (final l in lentes) ButtonSegment(value: l, label: Text(l.nombre))],
-            selected: {_lente},
+            selected: {lente},
             onSelectionChanged: (s) => setState(() => _lente = s.first),
             style: const ButtonStyle(visualDensity: VisualDensity.compact),
           ),
           const SizedBox(height: 10),
-          _Leyenda(lente: _lente, media: media, conDato: conDato.length, total: codigos.length),
+          _Leyenda(lente: lente, media: media, conDato: conDato.length, total: codigos.length),
           for (final p in ej.partes.where((p) => p.temas.isNotEmpty)) ...[
             TituloSeccion('${p.letra}. ${p.nombre}'),
             Wrap(spacing: 5, runSpacing: 5, children: [
-              for (final t in p.temas) _Casilla(tema: t, valor: valores[t.codigo], onTap: () => _detalle(t, datos[t.codigo]!, ahora)),
+              for (final t in p.temas) _Casilla(tema: t, valor: valores[t.codigo], onTap: () => _detalle(t, datos[t.codigo]!, ahora, conCantes: conCantes, conTest: conTest)),
             ]),
           ],
         ],
@@ -103,7 +112,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
     );
   }
 
-  void _detalle(Tema t, DatosTema d, DateTime ahora) {
+  void _detalle(Tema t, DatosTema d, DateTime ahora, {required bool conCantes, required bool conTest}) {
     final propio = widget.alumno == null;
     final dominio = valorTema(d, LenteMapa.dominio, ahora);
     showModalBottomSheet<void>(
@@ -117,9 +126,9 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
             const SizedBox(height: 12),
             _Fila('Dominio', dominio == null ? 'Sin datos' : '${(dominio * 100).round()} de 100'),
             _Fila('Estudiado', d.estudiado ? (d.enRepaso ? 'Sí, y en repaso' : 'Sí') : (d.enRepaso ? 'En repaso' : 'No')),
-            _Fila('Cantes', d.cantes == 0 ? 'Ninguno' : '${d.cantes} · ${d.valoracion == 0 ? 'sin valorar' : '${d.valoracion.toStringAsFixed(1).replaceAll('.', ',')} de 5'}'),
-            if (propio) _Fila('Test', d.respuestas == 0 ? 'Sin preguntas respondidas' : '${d.aciertos} de ${d.respuestas} (${(d.acierto * 100).round()} %)'),
-            _Fila('Último repaso o cante', d.ultimo == null ? 'Nunca' : '${DateFormat('d MMM y', 'es').format(d.ultimo!)} · hace ${ahora.difference(d.ultimo!).inDays} días'),
+            if (conCantes) _Fila('Cantes', d.cantes == 0 ? 'Ninguno' : '${d.cantes} · ${d.valoracion == 0 ? 'sin valorar' : '${d.valoracion.toStringAsFixed(1).replaceAll('.', ',')} de 5'}'),
+            if (conTest) _Fila('Test', d.respuestas == 0 ? 'Sin preguntas respondidas' : '${d.aciertos} de ${d.respuestas} (${(d.acierto * 100).round()} %)'),
+            _Fila(conCantes ? 'Último repaso o cante' : 'Último repaso', d.ultimo == null ? 'Nunca' : '${DateFormat('d MMM y', 'es').format(d.ultimo!)} · hace ${ahora.difference(d.ultimo!).inDays} días'),
             if (propio) ...[
               const SizedBox(height: 14),
               Row(children: [
@@ -133,6 +142,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
                     label: const Text('Abrir el tema'),
                   ),
                 ),
+                if (conCantes) ...[
                 const SizedBox(width: 10),
                 Expanded(
                   child: FilledButton.icon(
@@ -147,6 +157,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
                     label: const Text('Cantarlo'),
                   ),
                 ),
+                ],
               ]),
             ],
           ]),

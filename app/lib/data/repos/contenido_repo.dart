@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import '../../core/cache_http.dart';
 import '../models/estructura.dart';
 import '../models/oposicion.dart';
@@ -60,7 +62,15 @@ class ContenidoRepo {
 
   /// Documentos del proceso selectivo (de todas las oposiciones). Se
   /// revalida siempre que hay red; sin red, la última copia.
-  Future<Map<String, dynamic>> proceso() async => Map<String, dynamic>.from(await _http.json(oposicion.urlProceso) as Map);
+  /// Si la web aún no lo tiene publicado (404), vacío.
+  Future<Map<String, dynamic>> proceso() async {
+    try {
+      return Map<String, dynamic>.from(await _http.json(oposicion.urlProceso) as Map);
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) return const {};
+      rethrow;
+    }
+  }
 
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {

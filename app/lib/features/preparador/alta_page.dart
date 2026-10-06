@@ -170,7 +170,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
             const SizedBox(height: 14),
             Text('Ejercicios que preparas', style: context.textos.labelMedium),
             Wrap(spacing: 8, children: [
-              for (final e in ejerciciosConCante)
+              for (final e in ejerciciosPreparables)
                 FilterChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicios.contains(e), onSelected: (v) => setState(() => v ? _ejercicios.add(e) : _ejercicios.remove(e))),
             ]),
             const SizedBox(height: 14),

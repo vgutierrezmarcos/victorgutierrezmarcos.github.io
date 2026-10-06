@@ -159,7 +159,7 @@ class PerfilPreparador {
     this.huecos = const [],
     this.linkedin = '',
     this.papelElegido = false,
-    this.horasTemaAntes = 24,
+    this.segundosTemaAntes = 2700,
     this.avisosClase = const [avisoVispera, 60],
     this.modalidad = '',
     this.ciudad = '',
@@ -169,8 +169,10 @@ class PerfilPreparador {
   /// Valor de [avisosClase] que significa «la víspera a las 20:00».
   static const avisoVispera = -1;
 
-  /// Antelación con la que se propone mandar el tema antes de la clase (horas).
-  final int horasTemaAntes;
+  /// Antelación que se propone (ya elegida) al programar el envío del tema
+  /// en cada clase, en segundos: 45 min por defecto, lo que dura el esquema
+  /// de dos temas en TCEE. Es solo una propuesta: se cambia en cada clase.
+  final int segundosTemaAntes;
 
   /// Recordatorios de sus clases: minutos antes (o [avisoVispera]). Vacío, ninguno.
   final List<int> avisosClase;
@@ -204,7 +206,7 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? horasTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -215,7 +217,7 @@ class PerfilPreparador {
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
         papelElegido: papelElegido ?? this.papelElegido,
-        horasTemaAntes: horasTemaAntes ?? this.horasTemaAntes,
+        segundosTemaAntes: segundosTemaAntes ?? this.segundosTemaAntes,
         avisosClase: avisosClase ?? this.avisosClase,
         modalidad: modalidad ?? this.modalidad,
         ciudad: ciudad ?? this.ciudad,
@@ -233,7 +235,7 @@ class PerfilPreparador {
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
         'papelElegido': papelElegido,
-        'horasTemaAntes': horasTemaAntes,
+        'segundosTemaAntes': segundosTemaAntes,
         'avisosClase': avisosClase,
         if (modalidad.isNotEmpty) 'modalidad': modalidad,
         if (ciudad.isNotEmpty) 'ciudad': ciudad,
@@ -253,7 +255,7 @@ class PerfilPreparador {
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
           papelElegido: j['papelElegido'] as bool? ?? false,
-          horasTemaAntes: (j['horasTemaAntes'] as num?)?.toInt() ?? 24,
+          segundosTemaAntes: (j['segundosTemaAntes'] as num?)?.toInt() ?? 2700,
           avisosClase: j['avisosClase'] is List ? [for (final x in j['avisosClase'] as List) (x as num).toInt()] : const [avisoVispera, 60],
           modalidad: j['modalidad'] as String? ?? '',
           ciudad: j['ciudad'] as String? ?? '',
