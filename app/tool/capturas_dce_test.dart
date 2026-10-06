@@ -120,6 +120,11 @@ void main() {
     await tester.runAsync(() => precacheImage(const AssetImage('assets/icon/icon.png'), tester.element(find.byType(Scaffold))));
     await tester.pump();
     await captura(tester, 'elegir-oposicion');
+    // Segundo paso: el papel en la oposición elegida.
+    await tester.tap(find.text('DCE'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    await captura(tester, 'elegir-papel');
     finCaptura();
   });
 
