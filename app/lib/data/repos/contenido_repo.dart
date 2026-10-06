@@ -58,6 +58,10 @@ class ContenidoRepo {
     }
   }
 
+  /// Documentos del proceso selectivo (de todas las oposiciones). Se
+  /// revalida siempre que hay red; sin red, la última copia.
+  Future<Map<String, dynamic>> proceso() async => Map<String, dynamic>.from(await _http.json(oposicion.urlProceso) as Map);
+
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
     for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura]) {

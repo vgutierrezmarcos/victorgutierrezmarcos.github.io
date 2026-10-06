@@ -4,6 +4,7 @@ import 'package:tcee_app/core/notificaciones.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
+import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/features/cantar/reloj_cante.dart';
 import 'package:tcee_app/features/plan/cantes_util.dart';
 
@@ -194,6 +195,33 @@ void main() {
       expect(r.avisosPendientes(en(6)).map((a) => a.cuando), [en(10), en(14), en(15)]);
       // Exposición muy corta: solo avisa al final.
       expect(RelojCante(exposicion: const Duration(minutes: 2)).hitos.length, 1);
+    });
+
+    test('más tiempo, pasar a exponer y estado compartible', () {
+      final r = RelojCante(preparacion: const Duration(minutes: 45), exposicion: const Duration(minutes: 30));
+      r.iniciar(t0);
+      r.ampliarFase(en(40), const Duration(minutes: 5));
+      expect(r.preparacion, const Duration(minutes: 50));
+      expect(r.restanteFase(en(40)), const Duration(minutes: 10));
+      r.saltarFase(en(42));
+      expect(r.enPreparacion(en(42)), isFalse);
+      expect(r.restanteFase(en(42)), const Duration(minutes: 30));
+      // El aviso de fin del esquema ya ha pasado: no se repite.
+      expect(r.hitosPasados(en(42)), 1);
+      r.ampliarFase(en(50), const Duration(minutes: 5));
+      expect(r.exposicion, const Duration(minutes: 35));
+      // Otro dispositivo con el mismo estado marca lo mismo.
+      final copia = RelojCante.desdeJson(r.aJson(en(50)), guardado: en(50));
+      expect(copia.corriendo, isTrue);
+      expect(copia.restanteFase(en(60)), r.restanteFase(en(60)));
+      expect(copia.preparacion, r.preparacion);
+    });
+
+    test('tiempo de esquema del examen', () {
+      expect(Oposiciones.tcee.ejercicio(3)!.minutosEsquema, 45);
+      expect(Oposiciones.tcee.ejercicio(3)!.minutosEsquemaPara(1), 23);
+      expect(Oposiciones.dce.ejercicio(3)!.minutosEsquemaPara(2), 30);
+      expect(Oposiciones.tcee.ejercicio(1)!.minutosEsquema, 0);
     });
   });
 

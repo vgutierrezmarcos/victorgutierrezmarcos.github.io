@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/calendario.dart';
@@ -85,6 +86,12 @@ class ConvocatoriaPage extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(4, 0, 4, 4),
             child: Text('Pon la fecha de cada ejercicio, o la que estimes mientras no se conozca, para ver las cuentas atrás y planificar.', style: context.textos.bodySmall),
+          ),
+          FilaEnlace(
+            icono: Icons.gavel_outlined,
+            titulo: 'Proceso selectivo',
+            subtitulo: 'Fechas oficiales, listas y convocatorias de cada ejercicio en la página del Ministerio',
+            onTap: () => context.go('/organizacion/proceso'),
           ),
           const TituloSeccion('Ejercicios'),
           for (final ej in Oposiciones.actual.ejercicios.map((e) => e.numero))

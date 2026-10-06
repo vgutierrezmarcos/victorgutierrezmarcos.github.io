@@ -10,7 +10,9 @@ import 'package:workmanager/workmanager.dart';
 
 import '../data/models/oposicion.dart';
 import '../data/repos/red_repo.dart';
+import 'avisos_proceso.dart';
 import 'avisos_red.dart';
+import 'vistos.dart';
 
 const _tarea = 'avisos-red';
 
@@ -19,6 +21,11 @@ const _tarea = 'avisos-red';
 void despachadorAvisos() {
   Workmanager().executeTask((tarea, datos) async {
     WidgetsFlutterBinding.ensureInitialized();
+    // Novedades del proceso selectivo: no necesitan cuenta.
+    try {
+      await initializeDateFormatting('es');
+      await comprobarProceso(await descargarProceso());
+    } catch (_) {}
     try {
       await Firebase.initializeApp();
       await initializeDateFormatting('es');
@@ -58,11 +65,12 @@ Future<void> iniciarAvisosEnSegundoPlano({String oposicion = 'tcee'}) async {
   } catch (_) {}
 }
 
-/// Activa (con sesión) o quita la comprobación periódica.
+/// Activa o quita la comprobación periódica: hace falta con sesión
+/// ([activar]) o con los avisos del proceso de alguna oposición.
 Future<void> programarAvisosEnSegundoPlano({required bool activar}) async {
   if (!Platform.isAndroid) return;
   try {
-    if (activar) {
+    if (activar || (await leerVistos(lista: 'proceso_activado')).isNotEmpty) {
       await Workmanager().registerPeriodicTask(
         _tarea,
         _tarea,

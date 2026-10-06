@@ -27,6 +27,7 @@ class OrganizacionHubPage extends ConsumerWidget {
     final fechas = ref.watch(fechasEjerciciosProvider).entries.where((e) => diasHasta(e.value) >= 0).toList()..sort((a, b) => a.value.compareTo(b.value));
     final proximo = fechas.firstOrNull;
     final documentos = temario?.organizacion ?? const <Recurso>[];
+    final ultimo = (ref.watch(procesoProvider).valueOrNull ?? const []).expand((p) => p.novedades).firstOrNull;
     // «Cómo cantar un tema» suele estar ya entre los documentos de la web.
     final conComoCantar = documentos.any((r) => r.url == oposicion.urlComoCantarUnTema);
 
@@ -58,6 +59,12 @@ class OrganizacionHubPage extends ConsumerWidget {
             titulo: 'Probabilidades',
             subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}',
             onTap: () => context.go('/organizacion/probabilidades'),
+          ),
+          FilaEnlace(
+            icono: Icons.gavel_outlined,
+            titulo: 'Proceso selectivo',
+            subtitulo: ultimo == null ? 'Lo que publica el Ministerio: listas, calendario, convocatorias…' : 'Lo último: ${ultimo.seccion.toLowerCase()} · ${ultimo.titulo}',
+            onTap: () => context.go('/organizacion/proceso'),
           ),
           FilaEnlace(
             icono: Icons.flag_outlined,

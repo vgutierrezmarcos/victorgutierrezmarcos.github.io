@@ -21,6 +21,27 @@ class Notificaciones {
   static const maxCantesConAviso = 20;
   static bool _listo = false;
 
+  /// Qué hacer al tocar una notificación con contenido (`url:…` abre esa
+  /// página; `ruta:…` va a esa pantalla de la app). Lo pone la app al arrancar;
+  /// hasta entonces, el contenido espera en [_pendiente].
+  static void Function(String contenido)? _alTocar;
+  static String? _pendiente;
+
+  static set alTocar(void Function(String contenido)? f) {
+    _alTocar = f;
+    final p = _pendiente;
+    if (f != null && p != null) {
+      _pendiente = null;
+      f(p);
+    }
+  }
+
+  static void _tocada(String? contenido) {
+    if (contenido == null || contenido.isEmpty) return;
+    final f = _alTocar;
+    f == null ? _pendiente = contenido : f(contenido);
+  }
+
   /// Las notificaciones solo existen en la app del móvil.
   static bool get disponibles => !kIsWeb;
 
@@ -32,8 +53,19 @@ class Notificaciones {
     } catch (_) {}
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings(requestAlertPermission: false, requestBadgePermission: false, requestSoundPermission: false);
-    await _plugin.initialize(const InitializationSettings(android: android, iOS: ios));
+    await _plugin.initialize(
+      const InitializationSettings(android: android, iOS: ios),
+      onDidReceiveNotificationResponse: (r) => _tocada(r.actionId == null || r.actionId!.isEmpty ? r.payload : '${r.payload}&accion=${r.actionId}'),
+    );
     _listo = true;
+    // Si la app se ha abierto tocando una notificación.
+    try {
+      final d = await _plugin.getNotificationAppLaunchDetails();
+      if (d?.didNotificationLaunchApp ?? false) {
+        final r = d!.notificationResponse;
+        _tocada(r?.actionId == null || r!.actionId!.isEmpty ? r?.payload : '${r.payload}&accion=${r.actionId}');
+      }
+    } catch (_) {}
   }
 
   static Future<bool> pedirPermiso() async {
@@ -168,6 +200,26 @@ class Notificaciones {
             channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
         iOS: DarwinNotificationDetails(),
       ),
+    );
+  }
+
+  /// Novedad en la página del proceso selectivo: al tocarla se abre [url].
+  static Future<void> avisoProceso(String clave, String titulo, String texto, String url) async {
+    if (!disponibles) return;
+    await iniciar();
+    await _plugin.show(
+      1000 + (clave.hashCode & 0x7ffff),
+      titulo,
+      texto,
+      NotificationDetails(
+        android: AndroidNotificationDetails('proceso', 'Novedades del proceso selectivo',
+            channelDescription: 'Documentos nuevos en la página oficial del proceso (convocatoria, listas, calendario…)',
+            importance: Importance.high,
+            priority: Priority.high,
+            styleInformation: BigTextStyleInformation(texto)),
+        iOS: const DarwinNotificationDetails(),
+      ),
+      payload: 'url:$url',
     );
   }
 

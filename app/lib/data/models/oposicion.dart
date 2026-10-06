@@ -30,6 +30,8 @@ class EjercicioDef {
     this.etiquetaCante,
     this.categoriaIntercalable,
     this.intercalar,
+    this.minutosEsquema = 0,
+    this.temasEsquema = 2,
     bool? enCronograma,
   }) : _enCronograma = enCronograma;
 
@@ -62,6 +64,14 @@ class EjercicioDef {
   /// (los más memorísticos; en el 3.º de TCEE, «Mixto»). Sin ella, se alternan
   /// las partes.
   final String? categoriaIntercalable;
+
+  /// Minutos que da el examen para hacer el esquema de los temas antes de
+  /// exponerlos (0 si no hay), y de cuántos temas.
+  final int minutosEsquema;
+  final int temasEsquema;
+
+  /// Minutos de esquema para [temas] temas (la parte proporcional).
+  int minutosEsquemaPara(int temas) => temasEsquema == 0 ? minutosEsquema : (minutosEsquema * temas / temasEsquema).round();
 
   final bool? _enCronograma;
 
@@ -236,6 +246,10 @@ class Oposicion {
   String get urlEnlaces => '$_base/enlaces.json';
   String get urlEstructura => '$_base/organizacion/estructura_temario.json';
   String get urlAppConfig => '$_base/app-config.json';
+
+  /// Documentos del proceso selectivo de todas las oposiciones: un único
+  /// fichero en la web de TCEE (ver scripts/leer-proceso.py).
+  String get urlProceso => '${Oposiciones.tcee._base}/proceso.json';
   String get urlComoCantarUnTema => '$_base/organizacion/como_cantar_un_tema.pdf';
 
   // ------------------------------------------------------------ Persistencia
@@ -279,6 +293,7 @@ class Oposiciones {
         sorteo: true,
         bolasPorParte: 2,
         categoriaIntercalable: 'Mixto',
+        minutosEsquema: 45,
         intercalar: ('Intercalar los temas de Mixto', 'Historia, pensamiento económico, organismos internacionales y UE son más memorísticos: repartidos entre los demás para no pasar semanas solo con ellos.'),
       ),
       EjercicioDef(
@@ -287,6 +302,7 @@ class Oposiciones {
         cante: TipoCante.temas,
         sorteo: true,
         bolasPorParte: 2,
+        minutosEsquema: 45,
         intercalar: ('Intercalar las dos partes', 'Economía española y sector público, alternados para no pasar semanas seguidas con una sola parte.'),
       ),
       EjercicioDef(numero: 5, descripcion: 'Marketing, econometría y derecho (escrito)', sorteo: true, bolasPorParte: 1, partesARedactar: 2, pdfPorParte: true),
@@ -318,7 +334,7 @@ class Oposiciones {
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
-      EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2),
+      EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2, minutosEsquema: 30),
       EjercicioDef(numero: 4, descripcion: 'Técnicas comerciales y organización del Estado (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
     ],
   );

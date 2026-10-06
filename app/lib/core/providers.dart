@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -10,6 +12,7 @@ import '../data/models/estructura.dart';
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
+import '../data/models/proceso.dart';
 import '../data/models/preparador.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
@@ -20,6 +23,7 @@ import '../data/repos/usuario_repo.dart';
 import '../features/test/leitner.dart';
 import 'cache_http.dart';
 import 'avisos_fondo.dart';
+import 'avisos_proceso.dart';
 import 'notificaciones.dart';
 import 'cronograma_providers.dart';
 import 'red_providers.dart';
@@ -70,6 +74,18 @@ final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProv
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) => ref.watch(contenidoProvider).estructura());
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());
 final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoProvider).config());
+
+/// JSON del proceso selectivo. Al cargarlo se avisa de lo nuevo (en el
+/// navegador es el único momento; en Android lo hace también la tarea en
+/// segundo plano).
+final procesoJsonProvider = FutureProvider<Map<String, dynamic>>((ref) async {
+  final j = await ref.watch(contenidoProvider).proceso();
+  unawaited(comprobarProceso(j).catchError((_) => const <DocumentoProceso>[]));
+  return j;
+});
+
+/// Convocatorias de la oposición actual, de la más reciente a la más antigua.
+final procesoProvider = FutureProvider<List<ProcesoSelectivo>>((ref) async => ProcesoSelectivo.deOposicion(await ref.watch(procesoJsonProvider.future), ref.watch(oposicionProvider).id));
 
 /// Versión nueva disponible (o null): la publicada en app-config.json si es
 /// posterior a la instalada.
