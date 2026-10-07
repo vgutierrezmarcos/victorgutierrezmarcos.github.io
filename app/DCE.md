@@ -68,13 +68,13 @@ Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separa
 
 ## Lanzamiento: 12 de octubre de 2026
 
-El día que manuelcabadogarcia.es se hace público. Google Play aún no estará en producción (prueba cerrada de 14 días), así que en Android se descarga el **APK universal firmado por Google** (Play Console → Explorador de App Bundle → versión 22): tiene la misma firma que la de Play y, cuando salga allí, se pasa sin desinstalar. iPhone y ordenador, por el navegador (`app/instalar.html`).
+El día que manuelcabadogarcia.es se hace público. Google Play aún no estará en producción (prueba cerrada de 14 días), así que en Android se descarga el **APK universal firmado por Google** (Play Console → Explorador de App Bundle → versión 23, la 1.14.2): tiene la misma firma que la de Play y, cuando salga allí, se pasa sin desinstalar. iPhone y ordenador, por el navegador (`app/instalar.html`).
 
-**Hecho antes (7 oct.):** rosetones en todas las páginas, aviso de la app oculto en la portada y en /oposicion de `main` (sin `app-banner.js`), `oposicion/proceso.json` y su workflow en `main`, reglas probadas (128 casos), versión web 1.14.1 en `app/abrir/`, textos de instalación y `versionActual: "1.14.1"` en `dce`.
+**Hecho antes (7 oct.):** rosetones en todas las páginas, aviso de la app oculto en la portada y en /oposicion de `main` (sin `app-banner.js`), `oposicion/proceso.json` y su workflow en `main`, reglas probadas (128 casos), versión web 1.14.2 en `app/abrir/`, textos de instalación y `versionActual: "1.14.2"` en `dce`.
 
 **Pendiente antes del día 12:**
 - Víctor: publicar `firestore.rules` en la consola y comprobar `general: true` en su `admins`.
-- Víctor: descargar el APK universal firmado de la versión 22 y comprobar en su móvil que Play lo reconoce como la misma app.
+- Víctor: subir la 1.14.2 (23) a la prueba cerrada y, aprobada, descargar su APK universal firmado y comprobar en su móvil que Play lo reconoce como la misma app.
 - Manuel: su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
 
 **El día 12 (unos 20 minutos):**
@@ -82,7 +82,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 2. Fusionar `origin/main` en `dce` (trae los `proceso.json` automáticos; en portada, /oposicion y estilos se queda lo de `dce`) y pasar `dart analyze` y `flutter test`.
 3. Subir el APK de Google: `gh release upload app-latest oposicion-tcee.apk --clobber`.
 4. Publicar: `git push origin dce:main` (sin forzar; hace falta una cuenta con el permiso `workflow`).
-5. Comprobar en vivo: portada y /oposicion con el aviso, /app/, /app/instalar.html, /app/abrir/ en 1.14.1, `proceso.json`, la descarga del APK.
+5. Comprobar en vivo: portada y /oposicion con el aviso, /app/, /app/instalar.html, /app/abrir/ en 1.14.2, `proceso.json`, la descarga del APK.
 6. Si algo sale mal: `git revert -m 1 <fusión>` y push; volver a subir el APK anterior.
 
 **Cuando Google Play esté en producción:** `urlPlayStore` en `oposicion/app-config.json`; unas semanas después, `urlApk: null`.
