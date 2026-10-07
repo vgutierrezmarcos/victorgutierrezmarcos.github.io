@@ -1,3 +1,5 @@
+import 'dart:ui' show Color;
+
 import '../data/models/oposicion.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -11,6 +13,9 @@ import '../data/models/plan.dart';
 class Notificaciones {
   Notificaciones._();
   static final _plugin = FlutterLocalNotificationsPlugin();
+  /// Color del círculo de la diana en la notificación: el berenjena común a
+  /// las dos oposiciones (PaletaNeutra.tintaClara).
+  static const _colorAviso = Color(0xFF43294F);
   static const _idRecordatorio = 1;
   static const _idCronometro = 2;
   // Avisos programados del cronómetro (hitos de tiempo con la app en segundo plano).
@@ -51,7 +56,8 @@ class Notificaciones {
     try {
       tz.setLocalLocation(tz.getLocation('Europe/Madrid'));
     } catch (_) {}
-    const android = AndroidInitializationSettings('@mipmap/ic_launcher');
+    // Icono pequeño: la diana del logo en silueta (res/drawable/ic_stat_diana.xml).
+    const android = AndroidInitializationSettings('ic_stat_diana');
     const ios = DarwinInitializationSettings(requestAlertPermission: false, requestBadgePermission: false, requestSoundPermission: false);
     await _plugin.initialize(
       const InitializationSettings(android: android, iOS: ios),
@@ -94,7 +100,7 @@ class Notificaciones {
       'Tus 10 preguntas de hoy te esperan.',
       cuando,
       const NotificationDetails(
-        android: AndroidNotificationDetails('recordatorio', 'Recordatorio diario',
+        android: AndroidNotificationDetails(color: _colorAviso, 'recordatorio', 'Recordatorio diario',
             channelDescription: 'Aviso diario para hacer el test', importance: Importance.defaultImportance),
         iOS: DarwinNotificationDetails(),
       ),
@@ -122,7 +128,7 @@ class Notificaciones {
           a.texto,
           tz.TZDateTime.from(a.cuando, tz.local),
           const NotificationDetails(
-            android: AndroidNotificationDetails('cronometro', 'Cronómetro de exposición',
+            android: AndroidNotificationDetails(color: _colorAviso, 'cronometro', 'Cronómetro de exposición',
                 channelDescription: 'Avisos de tiempo al cantar un tema', importance: Importance.high, priority: Priority.high),
             iOS: DarwinNotificationDetails(presentSound: true),
           ),
@@ -173,7 +179,7 @@ class Notificaciones {
             a.texto,
             tz.TZDateTime.from(a.cuando, tz.local),
             const NotificationDetails(
-              android: AndroidNotificationDetails('cantes', 'Cantes programados',
+              android: AndroidNotificationDetails(color: _colorAviso, 'cantes', 'Cantes programados',
                   channelDescription: 'Recordatorios la víspera y una hora antes de cada cante', importance: Importance.high, priority: Priority.high),
               iOS: DarwinNotificationDetails(),
             ),
@@ -230,7 +236,7 @@ class Notificaciones {
           a.texto,
           tz.TZDateTime.from(a.cuando, tz.local),
           const NotificationDetails(
-            android: AndroidNotificationDetails('clases', 'Tus clases',
+            android: AndroidNotificationDetails(color: _colorAviso, 'clases', 'Tus clases',
                 channelDescription: 'Recordatorios de las clases con tus alumnos', importance: Importance.high, priority: Priority.high),
             iOS: DarwinNotificationDetails(),
           ),
@@ -252,7 +258,7 @@ class Notificaciones {
       titulo,
       texto,
       const NotificationDetails(
-        android: AndroidNotificationDetails('red', 'Preparadores y clases sueltas',
+        android: AndroidNotificationDetails(color: _colorAviso, 'red', 'Preparadores y clases sueltas',
             channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
         iOS: DarwinNotificationDetails(),
       ),
@@ -271,7 +277,7 @@ class Notificaciones {
       de,
       texto,
       NotificationDetails(
-        android: AndroidNotificationDetails(
+        android: AndroidNotificationDetails(color: _colorAviso, 
           'temas',
           'Temas de tu preparador',
           channelDescription: 'El tema que te manda tu preparador antes de la clase',
@@ -300,7 +306,7 @@ class Notificaciones {
       titulo,
       texto,
       NotificationDetails(
-        android: AndroidNotificationDetails('proceso', 'Novedades del proceso selectivo',
+        android: AndroidNotificationDetails(color: _colorAviso, 'proceso', 'Novedades del proceso selectivo',
             channelDescription: 'Documentos nuevos en la página oficial del proceso (convocatoria, listas, calendario…)',
             importance: Importance.high,
             priority: Priority.high,
@@ -319,7 +325,7 @@ class Notificaciones {
       'Cronómetro',
       texto,
       const NotificationDetails(
-        android: AndroidNotificationDetails('cronometro', 'Cronómetro de exposición',
+        android: AndroidNotificationDetails(color: _colorAviso, 'cronometro', 'Cronómetro de exposición',
             channelDescription: 'Avisos de tiempo al cantar un tema', importance: Importance.high, priority: Priority.high),
         iOS: DarwinNotificationDetails(presentSound: true),
       ),
