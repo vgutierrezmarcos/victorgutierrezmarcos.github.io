@@ -39,6 +39,10 @@ class DefaultsTest {
 }
 
 /// Nombres de cajas Hive.
+/// En la caja [Cajas.app]: la oposición en la que se acaba de elegir el papel
+/// de preparador; al arrancar, la app abre el alta para pedir la verificación.
+const claveAbrirAlta = 'abrir_alta';
+
 class Cajas {
   Cajas._();
 

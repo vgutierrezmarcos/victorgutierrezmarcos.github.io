@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../data/models/oposicion.dart';
 import '../core/providers.dart';
 import '../theme/app_theme.dart';
+import 'boton_oposicion.dart';
 
 /// Pestañas internas de un bloque (Estudiar, Cantes): en blanco sobre la
 /// cabecera morada, con el indicador dorado.
@@ -25,7 +26,7 @@ TabBar barraPestanas(BuildContext context, {required TabController controller, r
 /// Cabecera de la web (.site-header): degradado morado, título centrado en
 /// blanco y serif, y la línea dorada al pie. Sustituye a AppBar en toda la app.
 class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
-  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom, this.conTema = true});
+  const BarraWeb({super.key, this.title, this.subtitulo, this.actions, this.leading, this.bottom, this.conTema = true, this.conOposicion = false});
 
   final Widget? title;
   /// Línea en cursiva bajo el título (.site-description).
@@ -35,6 +36,9 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
   /// Botón para cambiar entre modo claro y oscuro (en todas las pantallas salvo donde estorbe).
   final bool conTema;
+  /// Botón para cambiar de oposición arriba a la izquierda (en las cinco
+  /// pestañas; en las demás pantallas ahí va la flecha de volver).
+  final bool conOposicion;
 
   static const _altoLinea = 4.0;
 
@@ -48,7 +52,7 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
       // Los botones de texto de la cabecera van en blanco sobre el morado.
       data: tema.copyWith(textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.white, textStyle: tema.textTheme.labelLarge))),
       child: AppBar(
-        leading: leading,
+        leading: leading ?? (conOposicion ? const BotonOposicion() : null),
         actions: [...?actions, if (conTema) const BotonTema()],
         title: subtitulo == null
             ? title

@@ -54,7 +54,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
   }
 
   bool get _linkedinValido => _linkedin.text.trim().isEmpty || enlaceLinkedin(_linkedin.text) != null;
-  bool get _completo => _nombre.text.trim().isNotEmpty && _presentacion.text.trim().length >= 10 && _ejercicios.isNotEmpty && _linkedinValido;
+  bool get _completo => _nombre.text.trim().isNotEmpty && _ejercicios.isNotEmpty && _linkedinValido;
 
   /// Al pasar a preparador se deja de compartir con los preparadores propios.
   Future<bool> _confirmarVinculos() async {
@@ -143,7 +143,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
             const SizedBox(height: 6),
             Text('Lleva a tus alumnos de $siglas desde el móvil o el ordenador, y coge clases sueltas de otros alumnos cuando su preparador no puede.', style: context.textos.bodyMedium),
             const SizedBox(height: 16),
-            paso(1, 'Te das de alta y te verifican', 'Te verifica otro preparador de $siglas ya verificado. Así ningún alumno da sus datos a quien no es preparador.'),
+            paso(1, 'Pones tu nombre y te verifica un compañero', 'Otro preparador de $siglas ya verificado te verifica desde la app. Así ningún alumno da sus datos a quien no es preparador.'),
             paso(2, 'Das tu código a tus alumnos', 'Al escribirlo en su app, ves sus temas y sus cantes, y las clases que les programas aparecen en su agenda.'),
             paso(3, 'Llevas tus clases', 'Tu semana, la ficha de cada alumno, sacar bola y cronometrar, valorar y enviar el informe, y el tablón de clases sueltas.'),
           ],
@@ -165,6 +165,11 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
               ]),
             ),
           ] else ...[
+            const SizedBox(height: 8),
+            Tarjeta(
+              color: context.colores.primarioPalido,
+              child: Text('Solo hace falta tu nombre: lo demás es opcional. Un compañero preparador de $siglas ya verificado te verificará desde la app y te llegará el aviso.', style: context.textos.bodyMedium),
+            ),
             const TituloSeccion('Tus datos'),
             TextField(controller: _nombre, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre y apellidos', helperText: 'Así te verán tus alumnos y los demás preparadores'), onChanged: (_) => setState(() {})),
             const SizedBox(height: 14),
@@ -174,53 +179,59 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
                 FilterChip(label: Text(etiquetaEjercicioCante(e)), selected: _ejercicios.contains(e), onSelected: (v) => setState(() => v ? _ejercicios.add(e) : _ejercicios.remove(e))),
             ]),
             const SizedBox(height: 14),
-            TextField(
-              controller: _presentacion,
-              maxLines: 4,
-              decoration: const InputDecoration(labelText: 'Quién eres', hintText: 'Promoción y cuerpo, destino, desde cuándo preparas, quién te conoce…', helperText: 'Lo lee quien te verifica'),
-              onChanged: (_) => setState(() {}),
-            ),
-            const SizedBox(height: 14),
-            TextField(
-              controller: _linkedin,
-              keyboardType: TextInputType.url,
-              decoration: InputDecoration(
-                labelText: 'LinkedIn (opcional)',
-                hintText: 'linkedin.com/in/tu-perfil',
-                helperText: 'Ayuda a quien te verifica y sale en el directorio de preparadores',
-                errorText: _linkedinValido ? null : 'Pega el enlace a tu perfil (linkedin.com/in/…)',
-              ),
-              onChanged: (_) => setState(() {}),
-            ),
-            const SizedBox(height: 14),
-            const SizedBox(height: 14),
-            Text('Cómo das clase (sale en el directorio)', style: context.textos.labelMedium),
-            const SizedBox(height: 6),
-            Wrap(spacing: 6, runSpacing: 6, children: [
-              for (final (m, t) in const [('online', 'Online'), ('presencial', 'Presencial'), ('ambas', 'Las dos'), ('', 'Sin indicar')])
-                ChoiceChip(label: Text(t), selected: _modalidad == m, onSelected: (_) => setState(() => _modalidad = m)),
-            ]),
-            if (_modalidad == 'presencial' || _modalidad == 'ambas')
-              TextField(controller: _ciudad, maxLength: 60, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Ciudad', hintText: 'Madrid')),
-            const SizedBox(height: 8),
-            TextField(controller: _telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono para WhatsApp (opcional)', helperText: 'Se da solo al alumno cuya clase suelta coges')),
-            const TituloSeccion('Verificación'),
-            DropdownButtonFormField<String>(
-              initialValue: _destinatario?.uid ?? '',
-              isExpanded: true,
-              decoration: const InputDecoration(labelText: 'A quién se la pides'),
-              items: [
-                const DropdownMenuItem(value: '', child: Text('A cualquier preparador verificado')),
-                for (final v in candidatos) DropdownMenuItem(value: v.uid, child: Text(v.nombre, overflow: TextOverflow.ellipsis)),
+            GrupoDesplegable(
+              titulo: 'Más datos (opcional)',
+              subtitulo: 'Quién eres, LinkedIn, cómo das clase, teléfono y a quién pides la verificación',
+              children: [
+                const SizedBox(height: 10),
+                TextField(
+                  controller: _presentacion,
+                  maxLines: 4,
+                  decoration: const InputDecoration(labelText: 'Quién eres', hintText: 'Promoción y cuerpo, destino, desde cuándo preparas, quién te conoce…', helperText: 'Lo lee quien te verifica; ayuda si no te conoce'),
+                  onChanged: (_) => setState(() {}),
+                ),
+                const SizedBox(height: 14),
+                TextField(
+                  controller: _linkedin,
+                  keyboardType: TextInputType.url,
+                  decoration: InputDecoration(
+                    labelText: 'LinkedIn (opcional)',
+                    hintText: 'linkedin.com/in/tu-perfil',
+                    helperText: 'Ayuda a quien te verifica y sale en el directorio de preparadores',
+                    errorText: _linkedinValido ? null : 'Pega el enlace a tu perfil (linkedin.com/in/…)',
+                  ),
+                  onChanged: (_) => setState(() {}),
+                ),
+                const SizedBox(height: 14),
+                Text('Cómo das clase (sale en el directorio)', style: context.textos.labelMedium),
+                const SizedBox(height: 6),
+                Wrap(spacing: 6, runSpacing: 6, children: [
+                  for (final (m, t) in const [('online', 'Online'), ('presencial', 'Presencial'), ('ambas', 'Las dos'), ('', 'Sin indicar')])
+                    ChoiceChip(label: Text(t), selected: _modalidad == m, onSelected: (_) => setState(() => _modalidad = m)),
+                ]),
+                if (_modalidad == 'presencial' || _modalidad == 'ambas')
+                  TextField(controller: _ciudad, maxLength: 60, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Ciudad', hintText: 'Madrid')),
+                const SizedBox(height: 8),
+                TextField(controller: _telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono para WhatsApp (opcional)', helperText: 'Se da solo al alumno cuya clase suelta coges')),
+                const SizedBox(height: 14),
+                DropdownButtonFormField<String>(
+                  initialValue: _destinatario?.uid ?? '',
+                  isExpanded: true,
+                  decoration: const InputDecoration(labelText: 'A quién se la pides'),
+                  items: [
+                    const DropdownMenuItem(value: '', child: Text('A cualquier preparador verificado')),
+                    for (final v in candidatos) DropdownMenuItem(value: v.uid, child: Text(v.nombre, overflow: TextOverflow.ellipsis)),
+                  ],
+                  onChanged: (u) => setState(() => _destinatario = candidatos.where((v) => v.uid == u).firstOrNull),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
+                  child: Text(
+                    _destinatario == null ? 'La podrá revisar cualquier preparador verificado de $siglas.' : 'Se la enviamos a ${_destinatario!.nombre}, que recibirá un aviso.',
+                    style: context.textos.labelSmall,
+                  ),
+                ),
               ],
-              onChanged: (u) => setState(() => _destinatario = candidatos.where((v) => v.uid == u).firstOrNull),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4, 6, 4, 0),
-              child: Text(
-                _destinatario == null ? 'La podrá revisar cualquier preparador verificado de $siglas.' : 'Se la enviamos a ${_destinatario!.nombre}, que recibirá un aviso.',
-                style: context.textos.labelSmall,
-              ),
             ),
             const SizedBox(height: 20),
             FilledButton.icon(

@@ -44,6 +44,7 @@ class InicioPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(
+        conOposicion: true,
         title: Text('Oposición ${Oposiciones.actual.siglas}'),
         subtitulo: usuario == null ? Oposiciones.actual.nombre : 'Hola, ${usuario.displayName?.split(' ').first ?? ''}',
         actions: [

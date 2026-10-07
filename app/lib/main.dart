@@ -129,6 +129,8 @@ class _RaizAppState extends State<RaizApp> {
     if (papel != null) {
       final repo = servicios.preparador;
       if (papel == Papel.preparador && !repo.perfil().activo) await repo.activar();
+      // Y, al arrancar, directo a pedir la verificación (ver TceeApp).
+      if (papel == Papel.preparador) await Hive.box(Cajas.app).put(claveAbrirAlta, oposicion.id);
       await repo.guardarPerfil(repo.perfil().copyWith(papelElegido: true));
     }
     if (mounted) setState(() => _servicios = servicios);

@@ -9,12 +9,12 @@ import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
-import '../inicio/elegir_oposicion.dart';
 import '../plan/plan_page.dart';
 import '../preparador/red_widgets.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
+import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
 import '../plan/proceso_page.dart';
 
@@ -38,7 +38,7 @@ class MasPage extends ConsumerWidget {
     final vinculos = ref.watch(misPreparadoresProvider);
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Más')),
+      appBar: BarraWeb(title: const Text('Más'), conOposicion: true),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
@@ -121,28 +121,31 @@ class MasPage extends ConsumerWidget {
                   title: const Text('Oposición'),
                   subtitle: Text(ref.read(oposicionProvider).nombre, style: context.textos.labelSmall),
                   trailing: Text(ref.read(oposicionProvider).siglas, style: context.textos.titleMedium?.copyWith(color: context.esquema.primary)),
-                  onTap: () => _cambiarOposicion(context, ref),
+                  onTap: () => elegirOtraOposicion(context, ref),
                 ),
+              // El título arriba y los botones debajo, a todo el ancho: en
+              // pantallas estrechas no caben en la misma línea.
               ListTile(
                 leading: const Icon(Icons.badge_outlined),
                 title: Text('Tu papel en ${ref.read(oposicionProvider).siglas}'),
-                trailing: SegmentedButton<Papel>(
+                subtitle: _segmentos(SegmentedButton<Papel>(
                   showSelectedIcon: false,
                   segments: const [ButtonSegment(value: Papel.opositor, label: Text('Opositor')), ButtonSegment(value: Papel.preparador, label: Text('Preparador'))],
                   selected: {papel},
                   onSelectionChanged: (s) => cambiarPapel(context, ref, s.first),
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
-                ),
+                )),
               ),
               ListTile(
                 leading: const Icon(Icons.dark_mode_outlined),
                 title: const Text('Modo'),
-                trailing: SegmentedButton<bool>(showSelectedIcon: false, 
+                subtitle: _segmentos(SegmentedButton<bool>(
+                  showSelectedIcon: false,
                   segments: const [ButtonSegment(value: false, label: Text('Claro')), ButtonSegment(value: true, label: Text('Oscuro'))],
                   selected: {ajustes.temaOscuro == true},
                   onSelectionChanged: (s) => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaOscuro: s.first)),
                   style: const ButtonStyle(visualDensity: VisualDensity.compact),
-                ),
+                )),
               ),
               if (ref.read(descargasProvider).guardaSinConexion) ListTile(
                 leading: const Icon(Icons.download_done_outlined),
@@ -185,30 +188,8 @@ class MasPage extends ConsumerWidget {
     );
   }
 
-  /// Elegir otra oposición. Los datos de cada una se quedan guardados.
-  Future<void> _cambiarOposicion(BuildContext context, WidgetRef ref) async {
-    final actual = ref.read(oposicionProvider);
-    final visibles = ref.read(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles;
-    final nueva = await showDialog<Oposicion>(
-      context: context,
-      builder: (d) => AlertDialog(
-        title: const Text('¿A qué te presentas?'),
-        content: SingleChildScrollView(
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            for (final o in visibles)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: TarjetaOposicion(oposicion: o, elegida: o.id == actual.id, onTap: () => Navigator.pop(d, o)),
-              ),
-            Text('Cada una tiene su temario, sus cantes, sus tests y sus preparadores. Lo que lleves en ${actual.siglas} se queda guardado y vuelve si cambias otra vez.', style: Theme.of(d).textTheme.bodySmall),
-          ]),
-        ),
-        actions: [TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar'))],
-      ),
-    );
-    if (nueva == null || nueva.id == actual.id) return;
-    await ref.read(cambiarOposicionProvider)(nueva);
-  }
+  /// Botones de elegir bajo el título de la fila, a todo el ancho.
+  Widget _segmentos(Widget botones) => Padding(padding: const EdgeInsets.only(top: 8, bottom: 4), child: SizedBox(width: double.infinity, child: botones));
 
   Widget _fila(BuildContext context, IconData icono, String titulo, String sub, VoidCallback onTap) => Padding(
         padding: const EdgeInsets.only(bottom: 8),
@@ -225,7 +206,7 @@ class MasPage extends ConsumerWidget {
 Future<void> cambiarPapel(BuildContext context, WidgetRef ref, Papel papel) async {
   if (papel == ref.read(papelProvider)) return;
   if (papel == Papel.preparador) {
-    context.go('/mas/preparador');
+    context.go('/mas/preparador/alta');
     return;
   }
   final siglas = ref.read(oposicionProvider).siglas;
