@@ -70,7 +70,7 @@ class VerificarPreparadoresPage extends ConsumerWidget {
                               child: Etiqueta(s.destinatario == ref.read(redRepoProvider).uid ? 'Te la pide a ti' : 'Se la pide a ${s.destinatarioNombre}'),
                             ),
                           const SizedBox(height: 8),
-                          Text(s.presentacion, style: context.textos.bodyMedium),
+                          if (s.presentacion.isNotEmpty) Text(s.presentacion, style: context.textos.bodyMedium),
                           if (s.linkedin.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: BotonLinkedin(url: s.linkedin)),
                           const SizedBox(height: 10),
                           Row(children: [

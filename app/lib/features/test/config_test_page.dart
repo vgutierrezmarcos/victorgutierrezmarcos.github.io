@@ -32,6 +32,7 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
 
     return Scaffold(
       appBar: BarraWeb(
+        conOposicion: widget.pestanas != null,
         title: Text(widget.pestanas == null ? 'Simulador de test' : 'Estudiar'),
         bottom: widget.pestanas,
         actions: [

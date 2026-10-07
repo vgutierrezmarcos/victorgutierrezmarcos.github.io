@@ -141,7 +141,7 @@ class TarjetaElegirPapel extends ConsumerWidget {
               OutlinedButton(onPressed: () => notifier.fijarPapel(Papel.opositor), child: const Text('Soy opositor')),
             ] else ...[
               FilledButton(onPressed: () => notifier.fijarPapel(Papel.opositor), child: const Text('Me preparo la oposición')),
-              OutlinedButton(onPressed: () => context.go('/mas/preparador'), child: const Text('Soy preparador')),
+              OutlinedButton(onPressed: () => context.go('/mas/preparador/alta'), child: const Text('Soy preparador')),
             ],
           ]),
         ]),

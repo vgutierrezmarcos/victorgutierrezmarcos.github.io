@@ -35,6 +35,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
 
     return Scaffold(
       appBar: BarraWeb(
+        conOposicion: widget.pestanas != null,
         title: Text(widget.pestanas == null ? 'Temario' : 'Estudiar'),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(56 + (widget.pestanas?.preferredSize.height ?? 0)),

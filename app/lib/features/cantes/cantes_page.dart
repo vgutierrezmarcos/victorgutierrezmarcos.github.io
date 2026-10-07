@@ -52,6 +52,7 @@ class _CantesPageState extends ConsumerState<CantesPage> with TickerProviderStat
 
     return Scaffold(
       appBar: BarraWeb(
+        conOposicion: true,
         title: const Text('Cantes'),
         actions: [
           if (!preparador) PopupMenuButton<String>(

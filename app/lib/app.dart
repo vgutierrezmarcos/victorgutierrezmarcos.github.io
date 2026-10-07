@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
+import 'core/red_providers.dart';
 import 'core/widget_inicio.dart';
 import 'core/widget_providers.dart';
 import 'core/providers.dart';
@@ -26,6 +28,7 @@ import 'features/plan/cante_page.dart';
 import 'features/plan/convocatoria_page.dart';
 import 'features/plan/horario_page.dart';
 import 'features/plan/proceso_page.dart';
+import 'features/preparador/alta_page.dart';
 import 'features/preparador/mi_preparador_page.dart';
 import 'features/preparador/preparador_page.dart';
 import 'features/test/estadisticas_page.dart';
@@ -68,7 +71,9 @@ final _router = GoRouter(
         StatefulShellBranch(routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
-            GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage()),
+            GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage(), routes: [
+              GoRoute(path: 'alta', builder: (c, s) => const AltaPreparadorPage()),
+            ]),
             GoRoute(path: 'mi-preparador', builder: (c, s) => const MiPreparadorPage()),
           ]),
         ]),
@@ -122,6 +127,22 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _clicsWidget = clicsEnWidget().listen(_desdeWidget);
     // Y se redibuja cuando cambia lo que muestra.
     ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _abrirAltaSiToca());
+  }
+
+  /// Quien acaba de elegir «Preparo a opositores» va directo a pedir la
+  /// verificación (salvo que ya esté verificado o la haya pedido antes).
+  Future<void> _abrirAltaSiToca() async {
+    if (!Hive.isBoxOpen(Cajas.app)) return;
+    final caja = Hive.box(Cajas.app);
+    if (caja.get(claveAbrirAlta) != ref.read(oposicionProvider).id) return;
+    await caja.delete(claveAbrirAlta);
+    EstadoRed? estado;
+    try {
+      estado = await ref.read(estadoRedProvider.future).timeout(const Duration(seconds: 8));
+    } catch (_) {}
+    if (!mounted || (estado?.verificado ?? false) || estado?.solicitud != null) return;
+    _router.go('/mas/preparador/alta');
   }
 
   StreamSubscription<Uri?>? _clicsWidget;

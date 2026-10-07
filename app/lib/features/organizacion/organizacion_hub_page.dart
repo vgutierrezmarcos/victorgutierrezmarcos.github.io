@@ -43,7 +43,7 @@ class OrganizacionHubPage extends ConsumerWidget {
                     : 'Esta semana: ${semana.temas.length} ${semana.temas.length == 1 ? 'tema' : 'temas'} · ${estado.hechos.length} de ${estado.total}';
 
     return Scaffold(
-      appBar: const BarraWeb(title: Text('Organización')),
+      appBar: const BarraWeb(title: Text('Organización'), conOposicion: true),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 6, 16, 32),
         children: [
