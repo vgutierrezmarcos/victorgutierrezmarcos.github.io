@@ -587,12 +587,15 @@ class AvatarUsuario extends ConsumerWidget {
   const AvatarUsuario({super.key, this.radio = 20});
   final double radio;
 
-  /// Foto del usuario: la de la cuenta o, si falta, la de su proveedor (Google),
-  /// pedida con el tamaño justo para que se vea nítida.
+  /// Foto del usuario: la de Google (Firebase la renueva en cada inicio de
+  /// sesión) y, si no hay, la de la cuenta (que Firebase guarda la primera vez
+  /// y no actualiza sola), pedida con el tamaño justo para que se vea nítida.
   static String? fotoDe(User? u) {
     if (u == null) return null;
-    final url = u.photoURL ?? u.providerData.map((p) => p.photoURL).whereType<String>().firstOrNull;
-    if (url == null || url.isEmpty) return null;
+    bool valida(String? x) => x != null && x.isNotEmpty;
+    final google = u.providerData.where((p) => p.providerId == 'google.com').map((p) => p.photoURL).where(valida).firstOrNull;
+    final url = google ?? (valida(u.photoURL) ? u.photoURL : null) ?? u.providerData.map((p) => p.photoURL).where(valida).firstOrNull;
+    if (url == null) return null;
     return url.replaceAll(RegExp(r'=s\d+-c$'), '=s256-c');
   }
 

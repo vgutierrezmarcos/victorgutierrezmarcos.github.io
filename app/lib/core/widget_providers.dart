@@ -50,11 +50,12 @@ final datosWidgetProvider = Provider<DatosWidget>((ref) {
 
   return DatosWidget(
     siglas: oposicion.siglas,
-    examen: proximo?.value,
-    examenNombre: proximo == null ? '' : oposicion.nombreEjercicio(proximo.key).toLowerCase(),
+    // El preparador, como en Hoy: sin cuenta atrás al examen ni cronograma propio.
+    examen: preparador ? null : proximo?.value,
+    examenNombre: proximo == null || preparador ? '' : oposicion.nombreEjercicio(proximo.key).toLowerCase(),
     cante: cante,
     canteTexto: canteTexto,
-    semana: textoSemana,
+    semana: preparador ? null : textoSemana,
     testHecho: ref.watch(testDiarioHechoProvider) ? ahora : null,
     preparador: preparador,
   );

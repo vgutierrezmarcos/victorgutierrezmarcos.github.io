@@ -16,9 +16,18 @@ abstract class FuenteReloj {
   /// Nombre de con quién se comparte el reloj, si se comparte.
   String? get compartidoCon;
 
+  /// Hacia delante (cronómetro) o cuenta atrás.
+  ModoReloj get modo;
+
+  /// Empezar, pausar o continuar (o empezar la exposición si espera).
   void alternar();
-  void masTiempo();
+  /// Minutos de más (o de menos) para la fase en curso.
+  void ajustarMinutos(int minutos);
   void pasarAExponer();
+  void empezarExposicion();
+  void reiniciarExposicion();
+  void reiniciarTodo();
+  void alternarModo();
 }
 
 /// El cronómetro a pantalla completa, con los números enormes, para ponerlo
@@ -51,14 +60,6 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
     super.dispose();
   }
 
-  String _formato(Duration d) {
-    final s = (d.inMilliseconds / 1000).ceil();
-    final h = s ~/ 3600;
-    final mm = ((s % 3600) ~/ 60).toString().padLeft(2, '0');
-    final ss = (s % 60).toString().padLeft(2, '0');
-    return h > 0 ? '$h:$mm:$ss' : '$mm:$ss';
-  }
-
   @override
   Widget build(BuildContext context) {
     final f = widget.fuente;
@@ -66,10 +67,11 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
     final ahora = DateTime.now();
     final terminado = r.terminado(ahora);
     final esquema = r.preparacion > Duration.zero && r.enPreparacion(ahora);
-    final restante = r.restanteFase(ahora);
-    final ultimoMinuto = !esquema && r.empezado && restante.inSeconds <= 60;
-    final color = terminado || ultimoMinuto ? const Color(0xFFE57373) : (esquema ? context.colores.dorado : Colors.white);
-    final fase = terminado ? 'TIEMPO CUMPLIDO' : (esquema ? 'ESQUEMA' : 'EXPOSICIÓN');
+    final esperando = r.esperandoExposicion(ahora);
+    final lectura = lecturaReloj(r, ahora, f.modo);
+    final ultimoMinuto = !esquema && !esperando && r.empezado && r.restanteFase(ahora).inSeconds <= 60;
+    final color = terminado || ultimoMinuto ? const Color(0xFFE57373) : (esquema || esperando ? context.colores.dorado : Colors.white);
+    final fase = terminado ? 'TIEMPO CUMPLIDO' : (esperando ? 'ESQUEMA TERMINADO' : (esquema ? 'ESQUEMA' : 'EXPOSICIÓN'));
     final tema = f.temaActual;
     final con = f.compartidoCon;
 
@@ -101,10 +103,12 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
                   Text(fase, style: TextStyle(color: color.withValues(alpha: 0.85), fontSize: (grande / 6).clamp(14.0, 34.0), letterSpacing: 4, fontWeight: FontWeight.w600)),
                   FittedBox(
                     child: Text(
-                      _formato(restante),
+                      lectura.texto,
                       style: TextStyle(color: color, fontSize: grande, fontWeight: FontWeight.w300, fontFeatures: const [FontFeature.tabularFigures()], height: 1.05),
                     ),
                   ),
+                  if (lectura.demas != null)
+                    Text('${lectura.demas} de más', style: TextStyle(color: color, fontSize: (grande / 5).clamp(16.0, 40.0), fontFeatures: const [FontFeature.tabularFigures()])),
                   SizedBox(
                     width: c.maxWidth * 0.6,
                     child: ClipRRect(
@@ -123,10 +127,28 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
                 left: 0,
                 right: 0,
                 bottom: 18,
-                child: Wrap(alignment: WrapAlignment.center, spacing: 12, runSpacing: 8, children: [
-                  _Boton(r.corriendo ? Icons.pause : Icons.play_arrow, r.corriendo ? 'Pausar' : (r.empezado ? 'Continuar' : 'Empezar'), terminado ? null : f.alternar),
-                  if (r.empezado && !terminado) _Boton(Icons.more_time, '+5 min', f.masTiempo),
-                  if (esquema && r.empezado) _Boton(Icons.record_voice_over_outlined, 'Pasar a exponer', f.pasarAExponer),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  // Los principales.
+                  Wrap(alignment: WrapAlignment.center, spacing: 12, runSpacing: 8, children: [
+                    if (esperando)
+                      _Boton(Icons.record_voice_over_outlined, 'Empezar la exposición', f.empezarExposicion, destacado: true)
+                    else
+                      _Boton(r.corriendo ? Icons.pause : Icons.play_arrow, r.corriendo ? 'Pausar' : (r.empezado ? 'Continuar' : 'Empezar'), f.alternar, destacado: !r.corriendo),
+                    if (esquema && r.empezado) _Boton(Icons.record_voice_over_outlined, 'Pasar a exponer', f.pasarAExponer),
+                  ]),
+                  const SizedBox(height: 10),
+                  // Los de ajuste, más pequeños.
+                  Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 6, children: [
+                    if (r.empezado) ...[
+                      _Boton(Icons.remove, '1 min', () => f.ajustarMinutos(-1), pequeno: true),
+                      _Boton(Icons.add, '1 min', () => f.ajustarMinutos(1), pequeno: true),
+                      _Boton(Icons.more_time, '+5 min', () => f.ajustarMinutos(5), pequeno: true),
+                    ],
+                    if (!esquema && !esperando && r.empezado && r.preparacion > Duration.zero)
+                      _Boton(Icons.replay, 'Reiniciar la exposición', f.reiniciarExposicion, pequeno: true),
+                    if (r.empezado) _Boton(Icons.restart_alt, 'Reiniciar todo', f.reiniciarTodo, pequeno: true),
+                    _Boton(f.modo == ModoReloj.adelante ? Icons.hourglass_bottom : Icons.timer_outlined, f.modo == ModoReloj.adelante ? 'Cuenta atrás' : 'Cronómetro', f.alternarModo, pequeno: true),
+                  ]),
                 ]),
               ),
             ]);
@@ -138,22 +160,27 @@ class _RelojGrandePageState extends State<RelojGrandePage> {
 }
 
 class _Boton extends StatelessWidget {
-  const _Boton(this.icono, this.texto, this.onPressed);
+  const _Boton(this.icono, this.texto, this.onPressed, {this.destacado = false, this.pequeno = false});
   final IconData icono;
   final String texto;
   final VoidCallback? onPressed;
+  /// El principal (empezar, continuar, empezar la exposición): relleno.
+  final bool destacado;
+  /// Los de ajuste: más pequeños, para que no tapen los números.
+  final bool pequeno;
 
   @override
   Widget build(BuildContext context) => OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.transparent,
+          foregroundColor: destacado ? const Color(0xFF16101C) : (pequeno ? Colors.white70 : Colors.white),
+          backgroundColor: destacado ? Colors.white : Colors.transparent,
           disabledForegroundColor: Colors.white38,
-          side: const BorderSide(color: Colors.white38),
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          side: BorderSide(color: destacado ? Colors.white : (pequeno ? Colors.white24 : Colors.white38)),
+          padding: pequeno ? const EdgeInsets.symmetric(horizontal: 12, vertical: 8) : const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+          visualDensity: pequeno ? VisualDensity.compact : null,
         ),
         onPressed: onPressed,
-        icon: Icon(icono),
-        label: Text(texto, style: const TextStyle(fontSize: 16)),
+        icon: Icon(icono, size: pequeno ? 18 : 22),
+        label: Text(texto, style: TextStyle(fontSize: pequeno ? 13 : 16)),
       );
 }

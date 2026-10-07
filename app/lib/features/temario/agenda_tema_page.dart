@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/estructura.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
@@ -76,6 +77,8 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
     final resueltos = agenda.resueltos;
     final notifier = ref.read(agendasProvider.notifier);
     final fecha = DateFormat('d MMM y', 'es');
+    // El preparador no estudia el tema: sin apuntes de vuelta, vueltas ni cómo le fue al cantarlo.
+    final preparador = ref.watch(papelProvider) == Papel.preparador;
 
     // Simulador: preguntas de este tema y cómo le ha ido en los tests hechos en la app.
     final banco = ref.watch(preguntasProvider).valueOrNull;
@@ -137,6 +140,7 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
             ]),
           ),
         ],
+        if (!preparador) ...[
         const TituloSeccion('Para la próxima vuelta'),
         Tarjeta(
           padding: const EdgeInsets.fromLTRB(4, 4, 4, 8),
@@ -197,7 +201,8 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
             OutlinedButton.icon(onPressed: _vuelta, icon: const Icon(Icons.replay, size: 18), label: const Text('Vuelta completada hoy')),
           ]),
         ),
-        if (stats != null) ...[
+        ],
+        if (stats != null && !preparador) ...[
           const TituloSeccion('Al cantarlo'),
           Row(children: [
             Expanded(child: Estadistica(valor: '${stats.veces}', etiqueta: stats.veces == 1 ? 'vez cantado' : 'veces cantado', icono: Icons.record_voice_over_outlined)),

@@ -25,6 +25,7 @@ import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
 import '../plan/cantes_util.dart';
 import '../plan/resultado_sheet.dart';
+import '../preparador/tema_anticipado.dart' show leerAntelacion, textoAntelacion;
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
 import 'reloj_compartido.dart';
@@ -66,9 +67,12 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   Tema? _elegido;
 
   // Cronómetro
-  int _minEsquema = 0;
+  /// Esquema en segundos (22 min 30 s para un tema de TCEE); exposición en minutos.
+  int _segEsquema = 0;
   int _minExposicion = 30;
   late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
+  /// Hacia delante desde 0 (por defecto) o cuenta atrás; se recuerda en cada dispositivo.
+  ModoReloj _modoReloj = _modoGuardado();
   Timer? _tic;
   int _hitosAvisados = 0;
 
@@ -98,7 +102,9 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     final id = ref.read(canteEnCursoProvider);
     final cante = widget.sesion?.cante ?? ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
     if (cante != null) _minExposicion = cante.minutos;
-    _minEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
+    // El preparador sin alumno no tiene temas estudiados propios: su bolsa es una lista.
+    if (widget.sesion == null && ref.read(papelProvider) == Papel.preparador) _fuente = _Fuente.lista;
+    _segEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
     _nuevoReloj();
     WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
   }
@@ -115,7 +121,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       _sorteados = [tema];
       _elegido = tema;
       if (!_reloj.empezado && def != null && def.minutosEsquema > 0) {
-        _minEsquema = def.minutosEsquemaPara(1);
+        _segEsquema = def.segundosEsquemaPara(1);
         _nuevoReloj();
       }
     });
@@ -123,30 +129,63 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
 
   // ------------------------------------------------------------ Esquema
 
-  /// Clave de la última duración de esquema elegida en un ejercicio.
-  String _claveEsquema(int ejercicio) => 'esquema:${Oposiciones.actual.id}:$ejercicio';
+  /// Clave de la última duración de esquema elegida en un ejercicio, en
+  /// segundos (la de antes, `esquema:`, guardaba minutos enteros).
+  String _claveEsquema(int ejercicio) => 'esquema_s:${Oposiciones.actual.id}:$ejercicio';
 
-  /// La última que se usó en ese ejercicio o, si no, la del examen.
+  /// La última que se usó en ese ejercicio o, si no, la del examen (segundos).
   int _esquemaPorDefecto(int ejercicio) {
-    final guardado = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app).get(_claveEsquema(ejercicio)) : null;
-    return guardado is int ? guardado : (Oposiciones.actual.ejercicio(ejercicio)?.minutosEsquema ?? 0);
+    final caja = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : null;
+    final guardado = caja?.get(_claveEsquema(ejercicio));
+    if (guardado is int) return guardado;
+    final antiguo = caja?.get('esquema:${Oposiciones.actual.id}:$ejercicio');
+    if (antiguo is int) return antiguo * 60;
+    return (Oposiciones.actual.ejercicio(ejercicio)?.minutosEsquema ?? 0) * 60;
   }
 
-  void _elegirEsquema(int minutos, int ejercicio) {
+  void _elegirEsquema(int segundos, int ejercicio) {
     setState(() {
-      _minEsquema = minutos;
+      _segEsquema = segundos;
       _nuevoReloj();
     });
-    if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put(_claveEsquema(ejercicio), minutos);
+    if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put(_claveEsquema(ejercicio), segundos);
   }
 
-  /// +5 minutos a la fase en curso, o pasar ya a exponer: los avisos se rehacen.
-  void _cambiarFase({bool saltar = false}) {
+  static ModoReloj _modoGuardado() {
+    final v = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app).get('reloj_modo') : null;
+    return v == 'atras' ? ModoReloj.atras : ModoReloj.adelante;
+  }
+
+  void _alternarModo() {
+    setState(() => _modoReloj = _modoReloj == ModoReloj.adelante ? ModoReloj.atras : ModoReloj.adelante);
+    if (Hive.isBoxOpen(Cajas.app)) Hive.box(Cajas.app).put('reloj_modo', _modoReloj.name);
+  }
+
+  /// Cambia el reloj en marcha (más o menos tiempo, pasar a exponer, empezar
+  /// o reiniciar la exposición): los avisos se rehacen y se comparte.
+  void _cambiarReloj(void Function(RelojCante r, DateTime ahora) cambio) {
     final ahora = DateTime.now();
-    setState(() => saltar ? _reloj.saltarFase(ahora) : _reloj.ampliarFase(ahora, const Duration(minutes: 5)));
+    setState(() => cambio(_reloj, ahora));
     _hitosAvisados = _reloj.hitosPasados(ahora);
-    if (_reloj.corriendo) Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
+    if (_reloj.corriendo) {
+      Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
+      _pantallaEncendida(true);
+      if (_tic == null || !_tic!.isActive) _tic = Timer.periodic(const Duration(milliseconds: 250), (_) => _alTic());
+    } else {
+      Notificaciones.cancelarCronometro().catchError((_) {});
+    }
     _publicar();
+  }
+
+  void _cambiarFase({bool saltar = false, int minutos = 5}) =>
+      _cambiarReloj((r, ahora) => saltar ? r.saltarFase(ahora) : r.ampliarFase(ahora, Duration(minutes: minutos)));
+
+  void _empezarExposicion() => _cambiarReloj((r, ahora) => r.empezarExposicion(ahora));
+
+  void _reiniciarExposicion() {
+    _tic?.cancel();
+    _pantallaEncendida(false);
+    _cambiarReloj((r, _) => r.reiniciarExposicion());
   }
 
   // ------------------------------------------------------------ Reloj compartido
@@ -202,8 +241,8 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     final ahora = DateTime.now();
     setState(() {
       _reloj = e.reloj;
-      _minEsquema = e.reloj.preparacion.inMinutes;
-      _minExposicion = e.reloj.exposicion.inMinutes;
+      _segEsquema = e.reloj.preparacion.inSeconds;
+      _minExposicion = (e.reloj.exposicion.inSeconds / 60).round();
       if (temario != null && e.temas.isNotEmpty) {
         _sorteados = [for (final c in e.temas) if (temario.tema(c) != null) temario.tema(c)!];
         _elegido = e.elegido == null ? null : temario.tema(e.elegido!);
@@ -211,7 +250,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     });
     _hitosAvisados = _reloj.hitosPasados(ahora);
     _tic?.cancel();
-    if (_reloj.corriendo && !_reloj.terminado(ahora)) {
+    if (_reloj.corriendo) {
       _pantallaEncendida(true);
       Notificaciones.programarCronometro(_reloj.avisosPendientes(ahora)).catchError((_) {});
       _tic = Timer.periodic(const Duration(milliseconds: 250), (_) => _alTic());
@@ -255,11 +294,21 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   String? get compartidoCon => _compartiendo ? (_destinoOtro ?? 'el otro') : null;
   String? _destinoOtro;
   @override
-  void alternar() => _reloj.corriendo ? _parar() : (_reloj.terminado(DateTime.now()) ? null : _iniciar());
+  ModoReloj get modo => _modoReloj;
   @override
-  void masTiempo() => _cambiarFase();
+  void alternar() => _reloj.esperandoExposicion(DateTime.now()) ? _empezarExposicion() : (_reloj.corriendo ? _parar() : _iniciar());
+  @override
+  void ajustarMinutos(int minutos) => _cambiarFase(minutos: minutos);
   @override
   void pasarAExponer() => _cambiarFase(saltar: true);
+  @override
+  void empezarExposicion() => _empezarExposicion();
+  @override
+  void reiniciarExposicion() => _reiniciarExposicion();
+  @override
+  void reiniciarTodo() => _reiniciar();
+  @override
+  void alternarModo() => _alternarModo();
 
   @override
   void dispose() {
@@ -281,7 +330,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
 
   void _nuevoReloj() {
     _tic?.cancel();
-    _reloj = RelojCante(preparacion: Duration(minutes: _minEsquema), exposicion: Duration(minutes: _minExposicion));
+    _reloj = RelojCante(preparacion: Duration(seconds: _segEsquema), exposicion: Duration(minutes: _minExposicion));
     _hitosAvisados = 0;
     _publicar();
   }
@@ -306,10 +355,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       _aviso(hitos[_hitosAvisados].texto, largo: hitos[_hitosAvisados].fin);
       _hitosAvisados++;
     }
-    if (_reloj.terminado(ahora)) {
-      _parar(cancelarAvisos: false);
-      return;
-    }
+    // Al cumplirse el tiempo no se para: sigue contando (en rojo) lo que se pasa.
     setState(() {});
   }
 
@@ -334,23 +380,33 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   }
 
   Future<void> _otraDuracion({required bool preparacion}) async {
-    final ctrl = TextEditingController(text: '${preparacion ? _minEsquema : _minExposicion}');
-    final min = await showDialog<int>(
+    final actual = preparacion ? '${_segEsquema ~/ 60}${_segEsquema % 60 == 0 ? '' : ':${(_segEsquema % 60).toString().padLeft(2, '0')}'}' : '$_minExposicion';
+    final ctrl = TextEditingController(text: actual);
+    final texto = await showDialog<String>(
       context: context,
       builder: (c) => AlertDialog(
-        title: Text(preparacion ? 'Minutos de esquema' : 'Minutos de exposición'),
-        content: TextField(controller: ctrl, autofocus: true, keyboardType: TextInputType.number, decoration: const InputDecoration(suffixText: 'min')),
+        title: Text(preparacion ? 'Tiempo de esquema' : 'Minutos de exposición'),
+        content: TextField(
+          controller: ctrl,
+          autofocus: true,
+          keyboardType: preparacion ? TextInputType.text : TextInputType.number,
+          decoration: InputDecoration(suffixText: 'min', helperText: preparacion ? 'Minutos, o minutos:segundos (22:30)' : null),
+        ),
         actions: [
           TextButton(onPressed: () => Navigator.pop(c), child: const Text('Cancelar')),
-          FilledButton(onPressed: () => Navigator.pop(c, int.tryParse(ctrl.text.trim())), child: const Text('Aceptar')),
+          FilledButton(onPressed: () => Navigator.pop(c, ctrl.text), child: const Text('Aceptar')),
         ],
       ),
     );
-    if (min == null || min < 0 || min > 180 || (!preparacion && min == 0)) return;
+    if (texto == null) return;
     if (preparacion) {
-      _elegirEsquema(min, _ejercicioDelCante());
+      final seg = texto.trim() == '0' ? 0 : leerAntelacion(texto);
+      if (seg == null || seg > 180 * 60) return;
+      _elegirEsquema(seg, _ejercicioDelCante());
       return;
     }
+    final min = int.tryParse(texto.trim());
+    if (min == null || min <= 0 || min > 180) return;
     setState(() {
       _minExposicion = min;
       _nuevoReloj();
@@ -493,6 +549,8 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     final sesion = widget.sesion;
     final ajustes = ref.watch(ajustesProvider);
     final estudiados = sesion == null ? ajustes.temasEstudiados : sesion.alumno.temas.toSet();
+    // Preparador cantando sin alumno: sin probabilidad propia, sin «estudiados» ni diario.
+    final soloPreparador = sesion == null && ref.watch(papelProvider) == Papel.preparador;
     final config = ref.watch(configProvider).valueOrNull ?? AppConfig.porDefecto;
     final oposicion = ref.watch(oposicionProvider);
     final idCante = ref.watch(canteEnCursoProvider);
@@ -522,7 +580,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         _sorteados = [];
         _elegido = null;
         _minExposicion = c.minutos;
-        _minEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio);
+        _segEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio);
         _nuevoReloj();
       });
     });
@@ -539,9 +597,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
           final k = ajustes.temasExtraidos;
           final bolas = oposicion.bolasPorParte(_ejercicio, config);
           final ahora = DateTime.now();
-          final restante = _reloj.restanteFase(ahora);
           final enPreparacion = _reloj.preparacion > Duration.zero && _reloj.enPreparacion(ahora);
+          final esperando = _reloj.esperandoExposicion(ahora);
           final terminado = _reloj.terminado(ahora);
+          final lectura = lecturaReloj(_reloj, ahora, _modoReloj);
+          final ultimoMinuto = !enPreparacion && !esperando && _reloj.empezado && _reloj.restanteFase(ahora).inSeconds <= 60;
 
           return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
@@ -577,7 +637,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                           _sorteados = [];
                           _elegido = null;
                           if (!_reloj.empezado) {
-                            _minEsquema = _esquemaPorDefecto(_ejercicio);
+                            _segEsquema = _esquemaPorDefecto(_ejercicio);
                             _nuevoReloj();
                           }
                         }),
@@ -600,13 +660,13 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                     style: const ButtonStyle(visualDensity: VisualDensity.compact),
                   ),
                 ),
-              if (oficial) _resumenProbabilidad(context, config, bolas),
+              if (oficial && !soloPreparador) _resumenProbabilidad(context, config, bolas),
               if (!oficial && !coyuntura)
                 Tarjeta(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     if (cante == null) ...[
                       Wrap(spacing: 6, children: [
-                        for (final (f, texto) in [(_Fuente.estudiados, 'Estudiados'), (_Fuente.repaso, 'En repaso'), (_Fuente.lista, 'Lista propia')])
+                        for (final (f, texto) in [if (!soloPreparador) ...[(_Fuente.estudiados, 'Estudiados'), (_Fuente.repaso, 'En repaso')], (_Fuente.lista, 'Lista propia')])
                           ChoiceChip(label: Text(texto), selected: _fuente == f, onSelected: (_) => setState(() => _fuente = f)),
                       ]),
                       if (_fuente == _Fuente.lista)
@@ -700,35 +760,62 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                     ),
                   if (_elegido != null) Text('${_elegido!.codigo} · ${_elegido!.titulo}', textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall),
                   const SizedBox(height: 8),
-                  Text(terminado ? 'Tiempo cumplido' : (enPreparacion ? 'Esquema' : 'Exposición'), style: context.textos.labelMedium),
+                  SegmentedButton<ModoReloj>(
+                    showSelectedIcon: false,
+                    style: const ButtonStyle(visualDensity: VisualDensity.compact),
+                    segments: const [
+                      ButtonSegment(value: ModoReloj.adelante, icon: Icon(Icons.timer_outlined, size: 18), label: Text('Cronómetro')),
+                      ButtonSegment(value: ModoReloj.atras, icon: Icon(Icons.hourglass_bottom, size: 18), label: Text('Cuenta atrás')),
+                    ],
+                    selected: {_modoReloj},
+                    onSelectionChanged: (_) => _alternarModo(),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(terminado ? 'Tiempo cumplido' : (esperando ? 'Esquema terminado' : (enPreparacion ? 'Esquema' : 'Exposición')), style: context.textos.labelMedium),
                   Text(
-                    _formatoReloj(restante),
+                    lectura.texto,
                     style: context.textos.displayMedium?.copyWith(
                       fontFeatures: const [FontFeature.tabularFigures()],
-                      color: !enPreparacion && restante.inSeconds <= 60 && _reloj.empezado ? context.esquema.error : (enPreparacion ? context.colores.dorado : context.esquema.primary),
+                      color: lectura.pasado || ultimoMinuto ? context.esquema.error : (enPreparacion || esperando ? context.colores.dorado : context.esquema.primary),
                     ),
                   ),
+                  if (lectura.demas != null) Text('${lectura.demas} de más', style: context.textos.titleSmall?.copyWith(color: context.esquema.error, fontFeatures: const [FontFeature.tabularFigures()])),
                   ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: _reloj.progresoFase(ahora).clamp(0, 1), minHeight: 6, backgroundColor: context.colores.fondoClaro)),
                   const SizedBox(height: 10),
-                  if (_reloj.empezado && !terminado)
-                    Wrap(alignment: WrapAlignment.center, spacing: 8, children: [
+                  if (esperando)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: FilledButton.icon(
+                        onPressed: _empezarExposicion,
+                        icon: const Icon(Icons.record_voice_over_outlined),
+                        label: const Text('Empezar la exposición'),
+                        style: FilledButton.styleFrom(minimumSize: const Size(240, 52)),
+                      ),
+                    ),
+                  if (_reloj.empezado)
+                    Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 4, children: [
+                      ActionChip(label: const Text('−1 min'), onPressed: () => _cambiarFase(minutos: -1)),
+                      ActionChip(label: const Text('+1 min'), onPressed: () => _cambiarFase(minutos: 1)),
                       ActionChip(avatar: const Icon(Icons.more_time, size: 18), label: const Text('+5 min'), onPressed: () => _cambiarFase()),
                       if (enPreparacion) ActionChip(avatar: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Pasar a exponer'), onPressed: () => _cambiarFase(saltar: true)),
+                      if (!enPreparacion && !esperando && _reloj.preparacion > Duration.zero)
+                        ActionChip(avatar: const Icon(Icons.replay, size: 18), label: const Text('Reiniciar la exposición'), onPressed: _reiniciarExposicion),
                     ]),
                   _esquema(context, cante == null || cante.ejercicio == 0 ? _ejercicio : cante.ejercicio),
                   _duraciones(context, 'Exposición', [15, 20, 30], _minExposicion, preparacion: false),
                   const SizedBox(height: 12),
                   Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 8, children: [
-                    OutlinedButton.icon(onPressed: _reiniciar, icon: const Icon(Icons.restart_alt), label: const Text('Reiniciar')),
-                    FilledButton.icon(
-                      onPressed: _reloj.corriendo ? _parar : (terminado ? null : _iniciar),
-                      icon: Icon(_reloj.corriendo ? Icons.pause : Icons.play_arrow),
-                      label: Text(_reloj.corriendo ? 'Pausar' : (_reloj.empezado ? 'Continuar' : 'Empezar')),
-                    ),
+                    OutlinedButton.icon(onPressed: _reiniciar, icon: const Icon(Icons.restart_alt), label: const Text('Reiniciar todo')),
+                    if (!esperando)
+                      FilledButton.icon(
+                        onPressed: _reloj.corriendo ? _parar : _iniciar,
+                        icon: Icon(_reloj.corriendo ? Icons.pause : Icons.play_arrow),
+                        label: Text(_reloj.corriendo ? 'Pausar' : (_reloj.empezado ? 'Continuar' : 'Empezar')),
+                      ),
                   ]),
                   const SizedBox(height: 6),
-                  Text('Avisa al acabar el esquema, a mitad de la exposición, a 1 minuto del final y al terminar, también con la pantalla apagada.', textAlign: TextAlign.center, style: context.textos.labelSmall),
-                  if (_reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null || coyuntura)) ...[
+                  Text('Avisa al acabar el esquema (la exposición espera a que la empieces), a mitad de la exposición, a 1 minuto del final y al cumplirse, también con la pantalla apagada. Si te pasas, sigue contando.', textAlign: TextAlign.center, style: context.textos.labelSmall),
+                  if (!soloPreparador && _reloj.empezado && !_reloj.corriendo && (_elegido != null || cante != null || coyuntura)) ...[
                     const Divider(),
                     FilledButton.tonalIcon(
                       onPressed: () => _guardarEnDiario(cante, _sorteados.isNotEmpty ? _sorteados : (cante != null ? bolsa : [if (_elegido != null) _elegido!])),
@@ -783,7 +870,9 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   /// Resumen de la probabilidad del ejercicio con los temas estudiados (sorteo oficial).
   Widget _resumenProbabilidad(BuildContext context, AppConfig config, int bolas) {
     final porParte = ref.watch(temasPorParteProvider);
-    final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    // Con un alumno, los temas que lleva él (no los del preparador).
+    final propios = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    final estudiados = widget.sesion?.alumno.temas.toSet() ?? propios;
     final oposicion = ref.watch(oposicionProvider);
     final partes = partesDeEjercicio(_ejercicio, porParte: porParte, estudiados: estudiados, config: config, oposicion: oposicion);
     if (partes.isEmpty) return const SizedBox.shrink();
@@ -811,12 +900,14 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   /// esquema u otro a medida.
   Widget _esquema(BuildContext context, int ejercicio) {
     final def = Oposiciones.actual.ejercicio(ejercicio);
-    if (def == null || def.minutosEsquema == 0) return _duraciones(context, 'Esquema', [0, 5, 10, 15], _minEsquema, preparacion: true);
+    if (def == null || def.minutosEsquema == 0) {
+      return _duraciones(context, 'Esquema', [0, 5, 10, 15], _segEsquema % 60 == 0 ? _segEsquema ~/ 60 : -1, preparacion: true);
+    }
     final opciones = <(int, String)>[
       (0, 'Sin esquema'),
-      for (var n = 1; n <= def.temasEsquema; n++) (def.minutosEsquemaPara(n), '$n ${n == 1 ? 'tema' : 'temas'} · ${def.minutosEsquemaPara(n)} min'),
+      for (var n = 1; n <= def.temasEsquema; n++) (def.segundosEsquemaPara(n), '$n ${n == 1 ? 'tema' : 'temas'} · ${textoAntelacion(def.segundosEsquemaPara(n))}'),
     ];
-    final propio = !opciones.any((o) => o.$1 == _minEsquema);
+    final propio = !opciones.any((o) => o.$1 == _segEsquema);
     return Padding(
       padding: const EdgeInsets.only(top: 6),
       child: Column(children: [
@@ -825,11 +916,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
           for (final (m, texto) in opciones)
             ChoiceChip(
               label: Text(texto),
-              selected: _minEsquema == m,
+              selected: _segEsquema == m,
               visualDensity: VisualDensity.compact,
               onSelected: _reloj.corriendo ? null : (_) => _elegirEsquema(m, ejercicio),
             ),
-          if (propio) ChoiceChip(label: Text('$_minEsquema min'), selected: true, visualDensity: VisualDensity.compact, onSelected: null),
+          if (propio) ChoiceChip(label: Text(textoAntelacion(_segEsquema)), selected: true, visualDensity: VisualDensity.compact, onSelected: null),
           ActionChip(label: const Text('Otro'), visualDensity: VisualDensity.compact, onPressed: _reloj.corriendo ? null : () => _otraDuracion(preparacion: true)),
         ]),
       ]),
@@ -841,7 +932,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
         child: Column(children: [
           Text('$etiqueta (min)', style: context.textos.labelMedium),
           Wrap(alignment: WrapAlignment.center, spacing: 4, children: [
-            for (final m in {...opciones, actual}.toList()..sort())
+            for (final m in {...opciones, if (actual >= 0) actual}.toList()..sort())
               ChoiceChip(
                 label: Text(m == 0 ? 'No' : '$m'),
                 selected: actual == m,
@@ -849,7 +940,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                 onSelected: _reloj.corriendo
                     ? null
                     : (_) => setState(() {
-                          preparacion ? _minEsquema = m : _minExposicion = m;
+                          preparacion ? _segEsquema = m * 60 : _minExposicion = m;
                           _nuevoReloj();
                         }),
               ),
@@ -857,10 +948,4 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
           ]),
         ]),
       );
-
-  String _formatoReloj(Duration d) {
-    // Se redondea hacia arriba para que el reloj no marque 00:00 antes de tiempo.
-    final s = (d.inMilliseconds / 1000).ceil();
-    return '${(s ~/ 60).toString().padLeft(2, '0')}:${(s % 60).toString().padLeft(2, '0')}';
-  }
 }

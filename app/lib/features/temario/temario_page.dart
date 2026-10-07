@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -18,11 +19,15 @@ class TemarioPage extends ConsumerStatefulWidget {
 }
 
 class _TemarioPageState extends ConsumerState<TemarioPage> {
+  /// El preparador consulta el temario: sin marcar estudiados, repaso ni apuntes de vuelta.
+  bool _preparador = false;
+
   String _busqueda = '';
   Color? Function(String) _colorDe = (_) => null;
 
   @override
   Widget build(BuildContext context) {
+    _preparador = ref.watch(papelProvider) == Papel.preparador;
     final temario = ref.watch(temarioProvider);
     final ajustes = ref.watch(ajustesProvider);
     final descargas = ref.watch(descargasProvider);
@@ -75,7 +80,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
           return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
-              Tarjeta(
+              if (!_preparador) Tarjeta(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Row(children: [
                     Expanded(child: Text('Progreso: $estudiados temas marcados como estudiados', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
@@ -101,7 +106,10 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                   else
                     GrupoDesplegable(
                         titulo: 'Parte ${p.letra}: ${p.nombre}',
-                        subtitulo: '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados · ${p.temas.where((x) => x.disponible).length} ${Oposiciones.actual.esPrincipal ? 'con PDF' : 'publicados'}',
+                        subtitulo: [
+                          if (!_preparador) '${p.temas.where((x) => ajustes.temasEstudiados.contains(x.codigo)).length} de ${p.temas.length} estudiados' else '${p.temas.length} temas',
+                          '${p.temas.where((x) => x.disponible).length} ${Oposiciones.actual.esPrincipal ? 'con PDF' : 'publicados'}',
+                        ].join(' · '),
                         children: [
                           // Quinto ejercicio: un único PDF con todos los temas de la parte.
                           if (p.url != null)
@@ -125,19 +133,21 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
   Widget _filaTema(Tema x, bool estudiado, bool repaso, bool offline, bool conNota, int apuntes) {
     return ListTile(
       dense: true,
-      leading: IconButton(
-        icon: Icon(estudiado ? Icons.check_circle : Icons.circle_outlined, color: estudiado ? Paleta.acierto : context.colores.textoClaro),
-        tooltip: 'Estudiado',
-        onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
-      ),
+      leading: _preparador
+          ? Padding(padding: const EdgeInsets.symmetric(horizontal: 12), child: Icon(Icons.description_outlined, color: context.colores.textoClaro))
+          : IconButton(
+              icon: Icon(estudiado ? Icons.check_circle : Icons.circle_outlined, color: estudiado ? Paleta.acierto : context.colores.textoClaro),
+              tooltip: 'Estudiado',
+              onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
+            ),
       title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
       subtitle: Row(children: [
         if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
-        if (repaso) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
+        if (repaso && !_preparador) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
         if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
-        if (apuntes > 0) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
+        if (apuntes > 0 && !_preparador) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
       ]),
       // Los temas sin PDF también se abren: muestran su agenda (apuntes, vueltas y nota).
       onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: x.disponible ? x : Tema(codigo: x.codigo, titulo: x.titulo, disponible: false, temarioAnterior: x.temarioAnterior)))),

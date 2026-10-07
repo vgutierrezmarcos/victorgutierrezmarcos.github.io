@@ -20,7 +20,7 @@ class EsquemaVista extends StatefulWidget {
     required this.verProgreso,
     required this.alAbrirTema,
     required this.alAbrirBloque,
-    required this.alAlternarEstudiado,
+    this.alAlternarEstudiado,
     this.seleccionInicial,
   });
 
@@ -32,7 +32,8 @@ class EsquemaVista extends StatefulWidget {
   final bool verProgreso;
   final ValueChanged<String> alAbrirTema;
   final ValueChanged<String> alAbrirBloque;
-  final ValueChanged<String> alAlternarEstudiado;
+  /// Sin él (preparador) no se marca nada como estudiado.
+  final ValueChanged<String>? alAlternarEstudiado;
   final Extremo? seleccionInicial;
 
   @override
@@ -171,11 +172,11 @@ class _EsquemaVistaState extends State<EsquemaVista> {
               if (bloque != null) Text(bloque.nombre, style: context.textos.labelSmall),
             ]),
           ),
-          IconButton(
+          if (widget.alAlternarEstudiado != null) IconButton(
             tooltip: estudiado ? 'Estudiado' : 'Marcar estudiado',
             visualDensity: VisualDensity.compact,
             icon: Icon(estudiado ? Icons.check_circle : Icons.circle_outlined, color: estudiado ? Paleta.acierto : context.colores.textoClaro),
-            onPressed: () => widget.alAlternarEstudiado(codigo),
+            onPressed: () => widget.alAlternarEstudiado!(codigo),
           ),
         ]),
         if (e.ideas[codigo] != null) Padding(padding: const EdgeInsets.only(top: 4), child: Text(e.ideas[codigo]!, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 14, color: context.colores.textoSuave))),

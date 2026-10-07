@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
@@ -42,13 +43,17 @@ class OrganizacionHubPage extends ConsumerWidget {
                     ? 'Esta semana descansas · ${estado.hechos.length} de ${estado.total}'
                     : 'Esta semana: ${semana.temas.length} ${semana.temas.length == 1 ? 'tema' : 'temas'} · ${estado.hechos.length} de ${estado.total}';
 
+    // El preparador no lleva un plan de estudio propio: sin cronograma,
+    // horario ni mapa de calor propio (el de cada alumno está en su ficha).
+    final preparador = ref.watch(papelProvider) == Papel.preparador;
+
     return Scaffold(
       appBar: const BarraWeb(title: Text('Organización'), conOposicion: true),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 6, 16, 32),
         children: [
-          const TituloSeccion('Tu plan'),
-          FilaEnlace(
+          TituloSeccion(preparador ? 'La oposición' : 'Tu plan'),
+          if (!preparador) FilaEnlace(
             icono: Icons.event_note_outlined,
             titulo: 'Cronograma',
             subtitulo: resumenCronograma,
@@ -57,7 +62,9 @@ class OrganizacionHubPage extends ConsumerWidget {
           FilaEnlace(
             icono: Icons.percent,
             titulo: 'Probabilidades',
-            subtitulo: prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}',
+            subtitulo: preparador
+                ? 'Cuánto sube la probabilidad de que salga un tema con cada uno que se lleva'
+                : (prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}'),
             onTap: () => context.go('/organizacion/probabilidades'),
           ),
           FilaEnlace(
@@ -70,18 +77,18 @@ class OrganizacionHubPage extends ConsumerWidget {
             icono: Icons.flag_outlined,
             titulo: 'Convocatoria',
             subtitulo: proximo == null
-                ? 'Las fechas de cada ejercicio y tus propios hitos'
+                ? (preparador ? 'Las fechas de cada ejercicio' : 'Las fechas de cada ejercicio y tus propios hitos')
                 : '${diasHasta(proximo.value)} ${diasHasta(proximo.value) == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo.key).toLowerCase()}',
             onTap: () => context.go('/organizacion/convocatoria'),
           ),
-          FilaEnlace(
+          if (!preparador) FilaEnlace(
             icono: Icons.schedule_outlined,
             titulo: 'Horario de estudio',
             subtitulo: 'Las horas que dedicas a cada cosa, semana a semana',
             onTap: () => context.go('/organizacion/horario'),
           ),
           const TituloSeccion('El temario, desde arriba'),
-          FilaEnlace(
+          if (!preparador) FilaEnlace(
             icono: Icons.grid_view_rounded,
             titulo: 'Mapa de calor',
             subtitulo: 'Qué temas dominas y cuáles están flojos, de un vistazo',

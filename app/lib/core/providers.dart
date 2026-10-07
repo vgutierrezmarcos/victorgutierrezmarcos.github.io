@@ -131,10 +131,11 @@ class SesionNotifier extends Notifier<bool> {
         final auth = await google.authentication;
         final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
         final r = await FirebaseAuth.instance.signInWithCredential(cred);
-        // Si la cuenta no trae la foto o el nombre de Google, se le ponen.
+        // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
+        // guarda los del primer inicio de sesión y no los renueva solo).
         final u = r.user;
         try {
-          if (u != null && (u.photoURL ?? '').isEmpty && (google.photoUrl ?? '').isNotEmpty) await u.updatePhotoURL(google.photoUrl);
+          if (u != null && (google.photoUrl ?? '').isNotEmpty && u.photoURL != google.photoUrl) await u.updatePhotoURL(google.photoUrl);
           if (u != null && (u.displayName ?? '').isEmpty && (google.displayName ?? '').isNotEmpty) await u.updateDisplayName(google.displayName);
         } catch (_) {}
       }
@@ -153,6 +154,18 @@ class SesionNotifier extends Notifier<bool> {
   }
 
   Future<void> sincronizar() => sincronizarTodo(ref);
+
+  /// Con la sesión ya iniciada de antes: renueva la foto de la cuenta con la
+  /// de Google de ahora, sin pedir nada al usuario (en el móvil).
+  Future<void> renovarFoto() async {
+    final u = FirebaseAuth.instance.currentUser;
+    if (kIsWeb || u == null) return;
+    try {
+      final google = await GoogleSignIn(scopes: const ['email']).signInSilently();
+      final foto = google?.photoUrl;
+      if (foto != null && foto.isNotEmpty && u.photoURL != foto) await u.updatePhotoURL(foto);
+    } catch (_) {}
+  }
 
   DateTime? _ultima;
   bool _sincronizando = false;
