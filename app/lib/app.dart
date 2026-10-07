@@ -127,7 +127,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _clicsWidget = clicsEnWidget().listen(_desdeWidget);
     // Y se redibuja cuando cambia lo que muestra.
     ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _abrirAltaSiToca());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _abrirAltaSiToca();
+      if (ref.read(serviciosProvider).firebaseDisponible) ref.read(sesionProvider.notifier).renovarFoto();
+    });
   }
 
   /// Quien acaba de elegir «Preparo a opositores» va directo a pedir la

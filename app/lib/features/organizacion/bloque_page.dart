@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/estructura.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -19,6 +20,7 @@ class BloquePage extends ConsumerWidget {
     final b = e.bloque(id);
     final temario = ref.watch(temarioProvider).valueOrNull;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    final preparador = ref.watch(papelProvider) == Papel.preparador;
     if (b == null) return Scaffold(appBar: BarraWeb(title: const Text('Bloque')), body: const Center(child: Text('Bloque no encontrado.')));
 
     final hechos = b.temas.where(estudiados.contains).length;
@@ -52,12 +54,14 @@ class BloquePage extends ConsumerWidget {
               Text(b.categoria.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11.5, fontWeight: FontWeight.w600, letterSpacing: 0.8, color: textoSobre(b.color).withValues(alpha: 0.85))),
               Text(b.nombre, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 21, fontWeight: FontWeight.w700, height: 1.2, color: textoSobre(b.color))),
               const SizedBox(height: 4),
-              Text('$hechos de ${b.temas.length} temas estudiados', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, color: textoSobre(b.color))),
+              Text(preparador ? '${b.temas.length} temas' : '$hechos de ${b.temas.length} temas estudiados', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, color: textoSobre(b.color))),
             ]),
           ),
-          const SizedBox(height: 6),
-          ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: b.temas.isEmpty ? 0 : hechos / b.temas.length, minHeight: 6)),
-          if (siguientes.isNotEmpty) ...[
+          if (!preparador) ...[
+            const SizedBox(height: 6),
+            ClipRRect(borderRadius: BorderRadius.circular(4), child: LinearProgressIndicator(value: b.temas.isEmpty ? 0 : hechos / b.temas.length, minHeight: 6)),
+          ],
+          if (siguientes.isNotEmpty && !preparador) ...[
             const SizedBox(height: 12),
             Tarjeta(
               color: context.colores.primarioPalido,
@@ -80,7 +84,7 @@ class BloquePage extends ConsumerWidget {
                   decoration: BoxDecoration(border: i == b.temas.length - 1 ? null : Border(bottom: BorderSide(color: context.colores.bordeClaro))),
                   child: ListTile(
                     dense: true,
-                    leading: IconButton(
+                    leading: preparador ? null : IconButton(
                       icon: Icon(estudiados.contains(b.temas[i]) ? Icons.check_circle : Icons.circle_outlined, color: estudiados.contains(b.temas[i]) ? Paleta.acierto : context.colores.textoClaro),
                       tooltip: 'Estudiado',
                       onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(b.temas[i]),

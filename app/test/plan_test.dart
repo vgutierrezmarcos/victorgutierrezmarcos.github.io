@@ -169,60 +169,81 @@ void main() {
     final t0 = DateTime(2026, 10, 8, 17);
     DateTime en(int min, [int seg = 0]) => t0.add(Duration(minutes: min, seconds: seg));
 
-    test('fases, pausa y fin', () {
+    test('fases: el esquema acaba y la exposición espera a que se empiece', () {
       final r = RelojCante(preparacion: const Duration(minutes: 5), exposicion: const Duration(minutes: 10));
       expect(r.empezado, isFalse);
       r.iniciar(t0);
       expect(r.enPreparacion(en(4)), isTrue);
       expect(r.restanteFase(en(4)), const Duration(minutes: 1));
-      expect(r.enPreparacion(en(5)), isFalse);
-      expect(r.restanteFase(en(7)), const Duration(minutes: 8));
-      expect(r.expuesto(en(7)), const Duration(minutes: 2));
-      r.pausar(en(7));
-      expect(r.corriendo, isFalse);
+      expect(r.transcurridoFase(en(4)), const Duration(minutes: 4));
+      // Acabado el esquema, el tiempo no avanza hasta empezar la exposición.
+      expect(r.esperandoExposicion(en(9)), isTrue);
+      expect(r.transcurrido(en(9)), const Duration(minutes: 5));
+      expect(r.restanteFase(en(9)), const Duration(minutes: 10));
+      expect(r.hitos.length, 1); // solo el fin del esquema, hasta que se empiece
+      expect(r.avisosPendientes(en(9)), isEmpty);
+      r.empezarExposicion(en(9));
+      expect(r.esperandoExposicion(en(9)), isFalse);
+      expect(r.transcurridoFase(en(11)), const Duration(minutes: 2));
+      expect(r.expuesto(en(11)), const Duration(minutes: 2));
+      expect(r.hitos.map((h) => h.en.inMinutes), [5, 10, 14, 15]);
+      r.pausar(en(11));
       expect(r.transcurrido(en(60)), const Duration(minutes: 7)); // parado no avanza
       r.iniciar(en(60));
       expect(r.terminado(en(67, 59)), isFalse);
       expect(r.terminado(en(68)), isTrue);
-      expect(r.expuesto(en(90)), const Duration(minutes: 10)); // no pasa del total
+      // Al cumplirse sigue contando lo que se pasa.
+      expect(r.exceso(en(69, 30)), const Duration(minutes: 1, seconds: 30));
+      expect(r.expuesto(en(69, 30)), const Duration(minutes: 11, seconds: 30));
       expect(r.progresoFase(en(90)), 1);
     });
 
-    test('hitos y avisos pendientes', () {
-      final r = RelojCante(preparacion: const Duration(minutes: 5), exposicion: const Duration(minutes: 10));
-      expect(r.hitos.map((h) => h.en.inMinutes), [5, 10, 14, 15]);
-      expect(r.hitos.last.fin, isTrue);
-      r.iniciar(t0);
-      expect(r.avisosPendientes(en(6)).map((a) => a.cuando), [en(10), en(14), en(15)]);
-      // Exposición muy corta: solo avisa al final.
-      expect(RelojCante(exposicion: const Duration(minutes: 2)).hitos.length, 1);
+    test('lectura: cronómetro y cuenta atrás', () {
+      final r = RelojCante(exposicion: const Duration(minutes: 30))..iniciar(t0);
+      expect(lecturaReloj(r, en(0), ModoReloj.adelante).texto, '00:00');
+      expect(lecturaReloj(r, en(0), ModoReloj.atras).texto, '30:00');
+      expect(lecturaReloj(r, en(12, 5), ModoReloj.adelante).texto, '12:05');
+      final pasado = lecturaReloj(r, en(31, 12), ModoReloj.adelante);
+      expect((pasado.texto, pasado.demas, pasado.pasado), ('31:12', '+01:12', true));
+      final atras = lecturaReloj(r, en(31, 12), ModoReloj.atras);
+      expect((atras.texto, atras.demas), ('00:00', '+01:12'));
     });
 
-    test('más tiempo, pasar a exponer y estado compartible', () {
+    test('reiniciar la exposición, ajustar minutos y pasar a exponer', () {
       final r = RelojCante(preparacion: const Duration(minutes: 45), exposicion: const Duration(minutes: 30));
       r.iniciar(t0);
       r.ampliarFase(en(40), const Duration(minutes: 5));
       expect(r.preparacion, const Duration(minutes: 50));
-      expect(r.restanteFase(en(40)), const Duration(minutes: 10));
-      r.saltarFase(en(42));
-      expect(r.enPreparacion(en(42)), isFalse);
-      expect(r.restanteFase(en(42)), const Duration(minutes: 30));
-      // El aviso de fin del esquema ya ha pasado: no se repite.
-      expect(r.hitosPasados(en(42)), 1);
-      r.ampliarFase(en(50), const Duration(minutes: 5));
-      expect(r.exposicion, const Duration(minutes: 35));
+      r.ampliarFase(en(40), const Duration(minutes: -1));
+      expect(r.preparacion, const Duration(minutes: 49));
+      // No baja de lo que ya va.
+      r.ampliarFase(en(40), const Duration(minutes: -20));
+      expect(r.preparacion, const Duration(minutes: 40, seconds: 1));
+      r.saltarFase(en(40));
+      expect(r.enPreparacion(en(40)), isFalse);
+      expect(r.restanteFase(en(40)), const Duration(minutes: 30));
+      expect(r.hitosPasados(en(40)), 1); // el fin del esquema ya ha pasado
+      r.ampliarFase(en(50), const Duration(minutes: 1));
+      expect(r.exposicion, const Duration(minutes: 31));
+      r.reiniciarExposicion();
+      expect(r.esperandoExposicion(en(60)), isTrue);
+      expect(r.transcurridoFase(en(60)), Duration.zero);
+      r.empezarExposicion(en(60));
       // Otro dispositivo con el mismo estado marca lo mismo.
-      final copia = RelojCante.desdeJson(r.aJson(en(50)), guardado: en(50));
+      final copia = RelojCante.desdeJson(r.aJson(en(65)), guardado: en(65));
       expect(copia.corriendo, isTrue);
-      expect(copia.restanteFase(en(60)), r.restanteFase(en(60)));
+      expect(copia.exposicionEmpezada, isTrue);
+      expect(copia.restanteFase(en(70)), r.restanteFase(en(70)));
       expect(copia.preparacion, r.preparacion);
     });
 
-    test('tiempo de esquema del examen', () {
+    test('tiempo de esquema del examen, sin redondear', () {
       expect(Oposiciones.tcee.ejercicio(3)!.minutosEsquema, 45);
-      expect(Oposiciones.tcee.ejercicio(3)!.minutosEsquemaPara(1), 23);
-      expect(Oposiciones.dce.ejercicio(3)!.minutosEsquemaPara(2), 30);
+      expect(Oposiciones.tcee.ejercicio(3)!.segundosEsquemaPara(1), 1350); // 22 min 30 s
+      expect(Oposiciones.tcee.ejercicio(3)!.segundosEsquemaPara(2), 2700);
+      expect(Oposiciones.dce.ejercicio(3)!.segundosEsquemaPara(2), 1800);
       expect(Oposiciones.tcee.ejercicio(1)!.minutosEsquema, 0);
+      expect(textoMinutos(const Duration(minutes: 22, seconds: 30)), '22 minutos 30 segundos');
     });
   });
 

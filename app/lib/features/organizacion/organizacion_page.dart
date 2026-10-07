@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/estructura.dart';
 import '../../data/models/temario.dart';
@@ -31,14 +32,17 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
   Widget build(BuildContext context) {
     final estructura = ref.watch(estructuraProvider);
     final temario = ref.watch(temarioProvider).valueOrNull;
+    // El preparador ve el mapa del temario entero, sin progreso propio ni marcar estudiados.
+    final preparador = ref.watch(papelProvider) == Papel.preparador;
     final estudiados = ref.watch(ajustesProvider.select((a) => a.temasEstudiados));
+    if (preparador) _verProgreso = false;
 
     return Scaffold(
       appBar: BarraWeb(
         title: const Text('Organización del temario'),
         actions: [
-          IconButton(tooltip: 'Mapa de calor', icon: const Icon(Icons.grid_view_rounded), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MapaCalorPage()))),
-          IconButton(
+          if (!preparador) IconButton(tooltip: 'Mapa de calor', icon: const Icon(Icons.grid_view_rounded), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const MapaCalorPage()))),
+          if (!preparador) IconButton(
             tooltip: _verProgreso ? 'Ver todos los temas encendidos' : 'Ver mi progreso',
             icon: Icon(_verProgreso ? Icons.visibility : Icons.visibility_off_outlined),
             onPressed: () => setState(() => _verProgreso = !_verProgreso),
@@ -176,7 +180,7 @@ class _OrganizacionPageState extends ConsumerState<OrganizacionPage> {
           verProgreso: _verProgreso,
           alAbrirTema: (t) => abrirTema(context, temario, t),
           alAbrirBloque: _abrirBloque,
-          alAlternarEstudiado: (t) => ref.read(ajustesProvider.notifier).alternarEstudiado(t),
+          alAlternarEstudiado: ref.read(papelProvider) == Papel.preparador ? null : (t) => ref.read(ajustesProvider.notifier).alternarEstudiado(t),
         ),
       ),
     ]);

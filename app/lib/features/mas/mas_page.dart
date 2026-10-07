@@ -109,7 +109,8 @@ class MasPage extends ConsumerWidget {
                         if (t != null) await ref.read(ajustesProvider.notifier).fijarRecordatorio(t.hour * 60 + t.minute);
                       },
               ),
-              if (Notificaciones.disponibles) ListTile(
+              // El preparador tiene sus propios avisos de clases (en Preparador → Ajustes).
+              if (Notificaciones.disponibles && papel != Papel.preparador) ListTile(
                 leading: const Icon(Icons.notifications_active_outlined),
                 title: const Text('Avisar antes de cada cante'),
                 subtitle: Text('La víspera y una hora antes', style: context.textos.labelSmall),

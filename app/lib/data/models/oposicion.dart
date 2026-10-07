@@ -70,8 +70,9 @@ class EjercicioDef {
   final int minutosEsquema;
   final int temasEsquema;
 
-  /// Minutos de esquema para [temas] temas (la parte proporcional).
-  int minutosEsquemaPara(int temas) => temasEsquema == 0 ? minutosEsquema : (minutosEsquema * temas / temasEsquema).round();
+  /// Segundos de esquema para [temas] temas (la parte proporcional, sin
+  /// redondear a minutos: 45 min para 2 temas son 22 min 30 s para 1).
+  int segundosEsquemaPara(int temas) => temasEsquema == 0 ? minutosEsquema * 60 : (minutosEsquema * 60 * temas / temasEsquema).round();
 
   final bool? _enCronograma;
 

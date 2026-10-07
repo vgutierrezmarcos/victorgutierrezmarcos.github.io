@@ -5,6 +5,7 @@ import 'package:pdfx/pdfx.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -79,6 +80,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final pendientes = (ref.watch(agendasProvider)[widget.tema.codigo]?.pendientes ?? const []).length;
     final conNota = ref.read(usuarioRepoProvider).nota(widget.tema.codigo).isNotEmpty;
     final sinPdf = widget.tema.url == null;
+    // El preparador consulta el tema: sin marcar estudiado ni repaso.
+    final preparador = ref.watch(papelProvider) == Papel.preparador;
     final web = widget.tema.esPaginaWeb;
 
     return Scaffold(
@@ -87,7 +90,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
         actions: [
           if (!widget.esRecurso && !sinPdf)
             IconButton(
-              tooltip: 'Agenda del tema: apuntes para la próxima vuelta y notas',
+              tooltip: preparador ? 'Notas y test del tema' : 'Agenda del tema: apuntes para la próxima vuelta y notas',
               icon: Badge(
                 isLabelVisible: pendientes > 0,
                 label: Text('$pendientes'),
@@ -124,12 +127,12 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
               child: Row(children: [
                 Expanded(child: Text(widget.tema.titulo, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
-                IconButton(
+                if (!preparador) IconButton(
                   tooltip: 'En repaso',
                   icon: Icon(Icons.replay, color: repaso ? context.esquema.primary : context.colores.textoClaro),
                   onPressed: () => ref.read(ajustesProvider.notifier).alternarRepaso(widget.tema.codigo),
                 ),
-                FilterChip(
+                if (!preparador) FilterChip(
                   label: Text(estudiado ? 'Estudiado' : 'Marcar estudiado'),
                   selected: estudiado,
                   avatar: estudiado ? const Icon(Icons.check, size: 16) : null,
