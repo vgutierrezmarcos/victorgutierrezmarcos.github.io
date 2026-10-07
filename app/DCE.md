@@ -66,10 +66,23 @@ Las reglas (`firestore.rules`, generadas con `tool/reglas/generar.py`) ya separa
 - App en el navegador: `https://www.victorgutierrezmarcos.es/app/abrir/`
 - Descarga para Android: la `urlApk` de `https://www.victorgutierrezmarcos.es/oposicion/app-config.json` (o copiar `app-banner.js`, que la rellena sola).
 
-## Lanzamiento (lo hace Víctor cuando lo decida)
+## Lanzamiento: 12 de octubre de 2026
 
-1. Comprobar que su web publica los ficheros de arriba (https://manuelcabadogarcia.es/oposicion/temario/temario.json). En la rama `dce` ya están su web y `lanzada: true`. Hasta entonces, DCE solo la ven en la app sus administradores y el general, en *Más → Ajustes → Oposición*.
-2. Fusionar `main` en `dce` (para traer lo último de TCEE) y después `dce` en `main`.
-3. Publicar `firestore.rules` en la consola (si ha cambiado) y crear el administrador de DCE.
-4. Subir la versión en `pubspec.yaml`, compilar el APK y la versión web (`scripts/publicar-app-web.py`) y poner la versión en `app-config.json`.
-5. Rehacer las capturas y el vídeo de `app/index.html` con las dos oposiciones (`tool/capturas_test.dart`, `scripts/montar-video-app.py`).
+El día que manuelcabadogarcia.es se hace público. Google Play aún no estará en producción (prueba cerrada de 14 días), así que en Android se descarga el **APK universal firmado por Google** (Play Console → Explorador de App Bundle → versión 22): tiene la misma firma que la de Play y, cuando salga allí, se pasa sin desinstalar. iPhone y ordenador, por el navegador (`app/instalar.html`).
+
+**Hecho antes (7 oct.):** rosetones en todas las páginas, aviso de la app oculto en la portada y en /oposicion de `main` (sin `app-banner.js`), `oposicion/proceso.json` y su workflow en `main`, reglas probadas (128 casos), versión web 1.14.1 en `app/abrir/`, textos de instalación y `versionActual: "1.14.1"` en `dce`.
+
+**Pendiente antes del día 12:**
+- Víctor: publicar `firestore.rules` en la consola y comprobar `general: true` en su `admins`.
+- Víctor: descargar el APK universal firmado de la versión 22 y comprobar en su móvil que Play lo reconoce como la misma app.
+- Manuel: su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
+
+**El día 12 (unos 20 minutos):**
+1. Comprobar que la web de Manuel es pública y sirve `temario.json` (si cambió el temario, regenerar con `scripts/generar-temario-dce.py`).
+2. Fusionar `origin/main` en `dce` (trae los `proceso.json` automáticos; en portada, /oposicion y estilos se queda lo de `dce`) y pasar `dart analyze` y `flutter test`.
+3. Subir el APK de Google: `gh release upload app-latest oposicion-tcee.apk --clobber`.
+4. Publicar: `git push origin dce:main` (sin forzar; hace falta una cuenta con el permiso `workflow`).
+5. Comprobar en vivo: portada y /oposicion con el aviso, /app/, /app/instalar.html, /app/abrir/ en 1.14.1, `proceso.json`, la descarga del APK.
+6. Si algo sale mal: `git revert -m 1 <fusión>` y push; volver a subir el APK anterior.
+
+**Cuando Google Play esté en producción:** `urlPlayStore` en `oposicion/app-config.json`; unas semanas después, `urlApk: null`.
