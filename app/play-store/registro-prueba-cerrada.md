@@ -23,7 +23,8 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Fecha | Versión | Qué traía |
 |---|---|---|
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
-| (al enviarla) | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
+| 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
+| (al enviarla) | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa y Ajustes en pantallas estrechas. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -48,6 +49,11 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ### 7 oct. 2026
 - **Google rechazó la versión por la política de afirmaciones engañosas**: la app muestra información de la Administración (proceso selectivo, preguntas de exámenes) y la ficha no enlazaba a las fuentes oficiales ni decía que la app no es oficial. Se añadió a la descripción un aviso de «app no oficial» y los enlaces al Ministerio (empleo y página de cada proceso) y al BOE; y en la app (1.14.1), el mismo aviso con enlaces en *Proceso selectivo* y en *Más → Acerca de*.
+
+### 8 oct. 2026
+- **Cambiar de oposición era poco visible** (estaba en Más → Ajustes): ahora hay un botón arriba a la izquierda en la cabecera de las cinco pestañas.
+- **Quien elegía «Preparo a opositores» no sabía qué hacer después:** ahora va directo a pedir la verificación, y se aclara que basta con poner el nombre y que un compañero verificado le verifica desde la app; lo demás es opcional.
+- **En pantallas estrechas, «Tu papel» y «Modo» de Ajustes se montaban** sobre los botones: ahora los botones van debajo del título.
 
 (Seguir añadiendo aquí, con fecha.)
 
