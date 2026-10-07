@@ -23,6 +23,8 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 **Descripción completa** (máx. 4000):
 
 ```
+AVISO: esta app no es oficial. No está asociada al Ministerio de Economía, Comercio y Empresa ni a ningún organismo público y no los representa. La información oficial está en las fuentes indicadas al final.
+
 La app para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE). Gratis, sin anuncios y también en el navegador.
 
 Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una tiene su temario, su examen, sus probabilidades y sus preparadores, y lo de cada una se guarda aparte.
@@ -30,13 +32,13 @@ Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una ti
 HOY
 • Cuenta atrás al próximo cante y al examen (la fecha la pones tú).
 • Test diario y lo que te toca esta semana según tu cronograma.
-• Lo último que ha publicado el Ministerio en tu proceso selectivo.
+• Lo último que ha publicado el Ministerio en la página oficial de tu proceso selectivo, con el enlace al documento original.
 • Y todo eso, también en un widget en la pantalla de inicio del móvil.
 
 ESTUDIAR
 • Todos los temas, dentro de la app: los PDF de TCEE y los apuntes de DCE.
 • Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo te fue al cantarlo y notas.
-• El simulador de test de la web, con las mismas preguntas oficiales y el mismo historial.
+• El simulador de test de la web, con las preguntas de exámenes anteriores publicadas por el Ministerio y el mismo historial.
 
 CANTES
 • Agenda con avisos la víspera y una hora antes, cantes presenciales u online (con enlace de Google Meet) y exportación al calendario.
@@ -48,7 +50,7 @@ CANTES
 ORGANIZACIÓN
 • Cronograma de vueltas: genéralo, hazlo semana a semana o trae el tuyo desde un Excel, un Word o un PDF.
 • Probabilidad de que salga un tema que llevas, con las reglas de cada examen.
-• El proceso selectivo al día: convocatoria, listas, calendario y convocatorias de cada ejercicio, con aviso cuando se publica algo nuevo (si lo activas).
+• El proceso selectivo al día: convocatoria, listas, calendario y convocatorias de cada ejercicio, enlazados a la página oficial del Ministerio, con aviso cuando se publica algo nuevo (si lo activas).
 • Mapa de calor del temario: qué temas dominas y cuáles flojean, de un vistazo.
 • Convocatoria con tus hitos, horario de estudio y el mapa del temario.
 
@@ -69,6 +71,13 @@ EN EL ORDENADOR
 Tus datos solo los ves tú: ni otros opositores ni nadie más. Solo compartes lo que decidas enseñar a tu preparador. La cuenta de Google es opcional.
 
 Hecha por Víctor Gutiérrez Marcos (TCEE) y Manuel Cabado García (DCE). Temario de TCEE en victorgutierrezmarcos.es y de DCE en manuelcabadogarcia.es.
+
+FUENTES OFICIALES
+La app enlaza siempre al documento original:
+• Ministerio de Economía, Comercio y Empresa, procesos selectivos: https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx
+• Proceso selectivo de TCEE: https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/OEP2025TECOS.aspx
+• Proceso selectivo de DCE: https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/OEP2025DIPLOS.aspx
+• Boletín Oficial del Estado (convocatorias y temarios): https://www.boe.es
 ```
 
 **Categoría**: Educación. **Etiquetas**: Estudio, Educación.
