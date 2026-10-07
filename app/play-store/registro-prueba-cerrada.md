@@ -23,7 +23,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Fecha | Versión | Qué traía |
 |---|---|---|
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
-| (al enviarla) | 1.14.0 (21) | Ver «Cambios durante la prueba». |
+| (al enviarla) | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -45,6 +45,9 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
   - mapa de calor del temario;
   - widget de Android;
   - modalidad y ciudad en el directorio de preparadores.
+
+### 7 oct. 2026
+- **Google rechazó la versión por la política de afirmaciones engañosas**: la app muestra información de la Administración (proceso selectivo, preguntas de exámenes) y la ficha no enlazaba a las fuentes oficiales ni decía que la app no es oficial. Se añadió a la descripción un aviso de «app no oficial» y los enlaces al Ministerio (empleo y página de cada proceso) y al BOE; y en la app (1.14.1), el mismo aviso con enlaces en *Proceso selectivo* y en *Más → Acerca de*.
 
 (Seguir añadiendo aquí, con fecha.)
 

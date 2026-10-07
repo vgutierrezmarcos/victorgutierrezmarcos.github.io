@@ -92,6 +92,8 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
             child: ListaAdaptable(
               padding: const EdgeInsets.fromLTRB(16, 10, 16, 32),
               children: [
+                const AvisoNoOficial(),
+                const SizedBox(height: 12),
                 Text('Lo publica el Ministerio en la página del proceso: convocatoria, inscripción, admitidos, calendario, convocatorias de cada ejercicio y aprobados. La app la revisa varias veces al día.', style: context.textos.bodySmall),
                 const SizedBox(height: 12),
                 FilledButton.icon(
@@ -139,6 +141,48 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
           );
         },
       ),
+    );
+  }
+}
+
+/// Aviso de que la app no es oficial, con las fuentes oficiales (lo pide la
+/// política de Google Play para las apps con información de la Administración).
+class AvisoNoOficial extends ConsumerWidget {
+  const AvisoNoOficial({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final siglas = ref.watch(oposicionProvider).siglas;
+    final proceso = ref.watch(procesoProvider).valueOrNull?.firstOrNull;
+    return Tarjeta(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 6),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Icon(Icons.info_outline, color: context.esquema.primary, size: 22),
+          const SizedBox(width: 10),
+          Text('App no oficial', style: context.textos.titleSmall),
+        ]),
+        const SizedBox(height: 6),
+        Text('No está asociada al Ministerio de Economía, Comercio y Empresa ni a ningún organismo público, y no los representa. La información oficial de las oposiciones está en la página del Ministerio y en el BOE.', style: context.textos.bodySmall),
+        Wrap(spacing: 4, children: [
+          if (proceso != null)
+            TextButton.icon(
+              onPressed: () => abrirUrl(context, proceso.url),
+              icon: const Icon(Icons.open_in_new, size: 16),
+              label: Text('Proceso de $siglas (OEP ${proceso.convocatoria})'),
+            ),
+          TextButton.icon(
+            onPressed: () => abrirUrl(context, 'https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx'),
+            icon: const Icon(Icons.open_in_new, size: 16),
+            label: const Text('Empleo en el Ministerio'),
+          ),
+          TextButton.icon(
+            onPressed: () => abrirUrl(context, 'https://www.boe.es'),
+            icon: const Icon(Icons.open_in_new, size: 16),
+            label: const Text('BOE'),
+          ),
+        ]),
+      ]),
     );
   }
 }
