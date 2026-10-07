@@ -2227,3 +2227,42 @@ body {
         display: none;
     }
 }
+
+/* ===== Rosetones de la Catedral de Palencia sobre el fondo verde =====
+   Patrón diminuto y continuo, como un shippō japonés: los dos rosetones
+   (calcados en img/roseton-palencia-1.svg y -2.svg) alternados y tocándose,
+   con una estrella de cuatro puntas en cada hueco; piedra rellena en suave y
+   contorno en trazo fino. Va en todas las páginas con el fondo verde (el
+   contenido principal, .main-content, y el del blog, .blog-main), marcado
+   arriba y desvaneciéndose hacia abajo en los primeros 1200 px, sea cual sea
+   el largo de la página. La tesela (img/patron-rosetones.svg) se usa como
+   máscara para que tome el morado de la web, también en modo oscuro. Queda
+   detrás del contenido y no intercepta clics. La ruta de la imagen es
+   relativa a esta hoja, así que sirve desde cualquier carpeta. */
+.main-content, .blog-main { position: relative; isolation: isolate; }
+.main-content::before, .blog-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: min(100%, 1200px);
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--color-primary);
+    opacity: 0.5;
+    /* El patrón, fundido de arriba (marcado) a abajo (nada): las dos máscaras se intersecan. */
+    -webkit-mask:
+        url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat,
+        linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 30%, transparent 80%);
+    -webkit-mask-composite: source-in;
+    mask:
+        url(img/patron-rosetones.svg) 0 0 / 96px 96px repeat,
+        linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.55) 30%, transparent 80%);
+    mask-composite: intersect;
+}
+[data-theme="dark"] .main-content::before,
+[data-theme="dark"] .blog-main::before { background-color: var(--color-primary-light); opacity: 0.32; }
+@media print {
+    .main-content::before, .blog-main::before { display: none; }
+}
