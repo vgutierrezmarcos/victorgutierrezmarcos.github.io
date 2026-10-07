@@ -16,6 +16,7 @@ import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../plan/proceso_page.dart';
 
 /// Más: lo que no es del día a día. Preparador (o Mi preparador), cuenta,
 /// contenido, ajustes y acerca de. (Convocatoria y horario están en Organización.)
@@ -158,6 +159,7 @@ class MasPage extends ConsumerWidget {
             ]),
           ),
           const TituloSeccion('Acerca de'),
+          const Padding(padding: EdgeInsets.only(bottom: 8), child: AvisoNoOficial()),
           _fila(context, Icons.phone_android, kIsWeb ? 'La app en el móvil' : 'La app, explicada', kIsWeb ? 'Descárgala para Android: avisos, grabación y PDF sin conexión' : 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
           if (!kIsWeb) _fila(context, Icons.computer, 'En el ordenador', 'La misma app en el navegador, con tu cuenta', () => abrirUrl(context, Urls.appWeb)),
           if (ref.read(oposicionProvider).autor case (final nombre, final quien, final url?))
