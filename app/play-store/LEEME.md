@@ -25,14 +25,14 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 ```
 AVISO: esta app no es oficial. No está asociada al Ministerio de Economía, Comercio y Empresa ni a ningún organismo público y no los representa. La información oficial está en las fuentes indicadas al final.
 
-La app para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE). Gratis, sin anuncios y también en el navegador.
+Para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE). Gratis, sin anuncios y también en el navegador.
 
 Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una tiene su temario, su examen, sus probabilidades y sus preparadores, y lo de cada una se guarda aparte.
 
 HOY
 • Cuenta atrás al próximo cante y al examen (la fecha la pones tú).
 • Test diario y lo que te toca esta semana según tu cronograma.
-• Lo último que ha publicado el Ministerio en la página oficial de tu proceso selectivo, con el enlace al documento original.
+• Lo último que publica el Ministerio sobre tu proceso selectivo, con enlace al documento original.
 • Y todo eso, también en un widget en la pantalla de inicio del móvil.
 
 ESTUDIAR
@@ -41,7 +41,7 @@ ESTUDIAR
 • El simulador de test de la web, con las preguntas de exámenes anteriores publicadas por el Ministerio y el mismo historial.
 
 CANTES
-• Agenda con avisos la víspera y una hora antes, cantes presenciales u online (con enlace de Google Meet) y exportación al calendario.
+• Agenda con avisos, cantes presenciales u online (con Google Meet) y exportación al calendario.
 • Sacar bola como en el examen o de tu propia bolsa y cronómetro con el tiempo de esquema del examen (para uno o dos temas) y de exposición.
 • En clase, el mismo cronómetro en tu móvil y en el de tu preparador, o a pantalla grande en una tableta o el portátil.
 • Grabación para escucharte.
@@ -50,7 +50,7 @@ CANTES
 ORGANIZACIÓN
 • Cronograma de vueltas: genéralo, hazlo semana a semana o trae el tuyo desde un Excel, un Word o un PDF.
 • Probabilidad de que salga un tema que llevas, con las reglas de cada examen.
-• El proceso selectivo al día: convocatoria, listas, calendario y convocatorias de cada ejercicio, enlazados a la página oficial del Ministerio, con aviso cuando se publica algo nuevo (si lo activas).
+• El proceso selectivo al día: convocatoria, listas y calendario, enlazados a la página oficial del Ministerio, con aviso de novedades (si lo activas).
 • Mapa de calor del temario: qué temas dominas y cuáles flojean, de un vistazo.
 • Convocatoria con tus hitos, horario de estudio y el mapa del temario.
 
