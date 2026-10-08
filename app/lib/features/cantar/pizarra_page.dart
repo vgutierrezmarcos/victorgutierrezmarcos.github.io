@@ -17,18 +17,21 @@ import 'pizarra_trazos.dart';
 
 /// Abre la pizarra de la clase [canteId] del alumno [alumnoUid] a pantalla
 /// completa, con [otroNombre] (el otro: el alumno o el preparador).
-Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre}) =>
-    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre)));
+Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, FirebaseFirestore? db}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, db: db)));
 
 /// Pizarra compartida de una clase: un lienzo en blanco en el que dibujan el
 /// preparador y el alumno, cada uno con su color, y lo que pinta uno le llega
 /// al otro al instante. Solo se comparte lo que se dibuja aquí, nada más del
 /// móvil. Sirve en el móvil, la tableta y el ordenador (versión web).
 class PizarraPage extends ConsumerStatefulWidget {
-  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre});
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db});
   final String alumnoUid;
   final String canteId;
   final String otroNombre;
+
+  /// Base de datos (por defecto, la de Firebase; en las capturas, una simulada).
+  final FirebaseFirestore? db;
 
   @override
   ConsumerState<PizarraPage> createState() => _PizarraPageState();
@@ -71,10 +74,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (!kIsWeb) {
       SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-      WakelockPlus.enable();
+      WakelockPlus.enable().catchError((_) {});
     }
     if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
-      _pizarra = PizarraCompartida.deClase(FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
+      _pizarra = PizarraCompartida.deClase(widget.db ?? FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
       _escucha = _pizarra!.escuchar().listen(_alLlegar, onError: (Object e) {
         if (mounted) setState(() => _sinAcceso = true);
       });
@@ -90,7 +93,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (!kIsWeb) {
       SystemChrome.setPreferredOrientations([]);
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-      WakelockPlus.disable();
+      WakelockPlus.disable().catchError((_) {});
     }
     super.dispose();
   }

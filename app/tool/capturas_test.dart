@@ -5,6 +5,7 @@
 // Arranca la app completa sin Firebase ni red, con datos de demostración
 // ficticios, y guarda cada pantalla en promo/capturas/ a 1080 × 2340.
 import 'dart:convert';
+import 'dart:math';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -24,7 +25,11 @@ import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/core/temas_anticipados.dart';
+import 'package:tcee_app/features/cantar/pizarra_page.dart';
+import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
 import 'package:tcee_app/features/cantar/reloj_grande_page.dart';
+import 'package:tcee_app/features/inicio/permisos_sheet.dart';
+import 'package:tcee_app/features/preparador/materiales_page.dart';
 import 'package:tcee_app/features/preparador/sesion_page.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
@@ -127,7 +132,7 @@ void main() {
       // La preparadora cancela el de mañana: el alumno buscará quién se lo coja.
       Cante(id: 'pc', fecha: dia(1, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', estado: EstadoCante.cancelado, motivo: 'Estoy de viaje', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       // La preparadora le ha mandado ya el tema de la clase del jueves.
-      Cante(id: 'pt', fecha: dia(3, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', temaA: hoy.subtract(const Duration(minutes: 40)), bolsa: TipoBolsa.estudiados, modalidad: Modalidad.online, enlace: 'https://meet.google.com/xqe-ptwd-kbn', updatedAt: hoy),
+      Cante(id: 'pt', fecha: dia(3, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', temaA: hoy.subtract(const Duration(minutes: 40)), minutos: 120, bolsa: TipoBolsa.estudiados, modalidad: Modalidad.online, enlace: 'https://meet.google.com/xqe-ptwd-kbn', updatedAt: hoy),
       hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta explicar las rigideces nominales de la segunda generación (Mankiw, Akerlof y Yellen).'),
       hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Grupo de cante'),
       hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y no llega a los teoremas del bienestar.'),
@@ -171,7 +176,7 @@ void main() {
       Cante(id: 's1', fecha: dia(0, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's2', fecha: dia(0, 18, 45), alumno: 'pablo', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's3', fecha: dia(3, 17, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, updatedAt: hoy),
-      Cante(id: 's4', fecha: dia(7, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 's4', fecha: dia(7, 18, 0), alumno: 'lucia', bolsa: TipoBolsa.estudiados, minutos: 120, modalidad: Modalidad.online, plataforma: plataformaTeams, enlace: 'https://teams.live.com/meet/9311822904123', updatedAt: hoy),
       Cante(id: 's5', fecha: dia(1, 18, 0), alumno: 'pablo', bolsa: TipoBolsa.estudiados, estado: EstadoCante.cancelado, motivo: 'Viaje', updatedAt: hoy),
       Cante(id: 's6', fecha: dia(3, 17, 15), alumno: 'lucia', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 's7', fecha: dia(5, 10, 0), alumno: 'marta', ejercicio: 4, bolsa: TipoBolsa.estudiados, serie: 'fija_marta_c1', updatedAt: hoy),
@@ -188,6 +193,30 @@ void main() {
     final yo = MockUser(uid: 'yo', displayName: 'Álex Martín', email: 'alex@example.org', photoURL: '');
     final dbRed = FakeFirebaseFirestore();
     await dbRed.doc('sustituciones/c1/privado/preparador').set(const ContactoRed(nombre: 'Olga Martín', telefono: '611 22 33 44').toJson());
+    // La pizarra de la clase del jueves, con lo que han dibujado los dos: unos
+    // ejes con las curvas IS y LM (Paula) y una anotación del alumno.
+    List<Map<String, dynamic>> trazos() {
+      List<Point<int>> curva(double Function(double) f, int x0, int x1, [int paso = 12]) => [for (var x = x0; x <= x1; x += paso) Point(x, f(x.toDouble()).round())];
+      final lista = <Trazo>[
+        Trazo(id: 'e1', de: 'paula', grosor: 6, puntos: const [Point(260, 160), Point(260, 820)]),
+        Trazo(id: 'e2', de: 'paula', grosor: 6, puntos: const [Point(260, 820), Point(1240, 820)]),
+        Trazo(id: 'is', de: 'paula', grosor: 6, puntos: curva((x) => 240 + (x - 340) * 0.62, 340, 1180)),
+        Trazo(id: 'lm', de: 'paula', grosor: 6, puntos: curva((x) => 800 - 0.0009 * (x - 340) * (x - 340) + 0.1 * (x - 340), 340, 1180)),
+        Trazo(id: 'r', de: 'paula', grosor: 3, puntos: curva((x) => 540.0, 260, 760, 20)),
+        Trazo(id: 'y', de: 'paula', grosor: 3, puntos: const [Point(760, 540), Point(760, 820)]),
+        Trazo(id: 'o', de: 'yo', grosor: 6, puntos: [for (var a = 0; a <= 360; a += 15) Point(760 + (36 * cos(a * pi / 180)).round(), 540 + (36 * sin(a * pi / 180)).round())]),
+        Trazo(id: 'f1', de: 'yo', grosor: 6, puntos: const [Point(1180, 300), Point(1180, 470)]),
+        Trazo(id: 'f2', de: 'yo', grosor: 6, puntos: const [Point(1150, 440), Point(1180, 470), Point(1210, 440)]),
+        Trazo(id: 'q', de: 'yo', grosor: 6, puntos: curva((x) => 300 + 40 * sin((x - 1300) / 30), 1300, 1420, 8)),
+      ];
+      return [for (final t in lista) t.toJson()];
+    }
+    await dbRed.doc('users/yo/cantes/pt/pizarra/p1').set({'n': 1, 'trazos': trazos()});
+    const materiales = [
+      MaterialCompartido(id: 'm1', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Mis apuntes del tema 3.A.14 (teoría de juegos)', url: 'https://drive.google.com/file/d/1a2b3c', texto: 'El esquema que seguimos en clase, con los ejemplos del dilema del prisionero, el duopolio de Cournot y las subastas.', tema: '3.A.14'),
+      MaterialCompartido(id: 'm2', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Cómo exponer un tema en 22 minutos (vídeo)', url: 'https://www.youtube.com/watch?v=xyz', texto: 'Grabación de la sesión del grupo: estructura, tiempos y cierre.'),
+      MaterialCompartido(id: 'm3', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Esquemas de la parte B (PDF)', url: 'https://ejemplo.org/esquemas-parte-b.pdf', paraTodos: false, alumnos: ['yo', 'lucia']),
+    ];
     var peticiones = <Sustitucion>[];
     final http = CacheHttp(Dio(), await caja());
     // Lo publicado en el proceso selectivo (el JSON de la web), con las tres
@@ -199,7 +228,18 @@ void main() {
     }
     final overrides = [
       procesoJsonProvider.overrideWith((ref) async => proceso),
-      temaAnticipadoProvider.overrideWith((ref, id) async => id == 'pt' ? const TemaAnticipado(tema: '3.A.18', titulo: 'Teoría de juegos. Equilibrio de Nash. Juegos repetidos y secuenciales', preparadorNombre: 'Paula Pérez', sorteado: false) : null),
+      // Los títulos, los reales del temario (3.A.14: teoría de juegos; 3.B.5: comercio internacional).
+      temaAnticipadoProvider.overrideWith((ref, id) async => id == 'pt'
+          ? TemaAnticipado(
+              tema: '3.A.14',
+              titulo: temario.tema('3.A.14')!.titulo,
+              temas: const ['3.A.14', '3.B.5'],
+              titulos: [temario.tema('3.A.14')!.titulo, temario.tema('3.B.5')!.titulo],
+              preparadorNombre: 'Paula Pérez',
+              sorteado: true)
+          : null),
+      misMaterialesProvider.overrideWith((ref) async => materiales),
+      materialesParaMiProvider.overrideWith((ref) async => materiales.where((m) => m.vaA('yo')).toList()),
       serviciosProvider.overrideWithValue(Servicios(
         oposicion: Oposiciones.tcee,
         http: http,
@@ -374,10 +414,16 @@ void main() {
     // --------------------------------------------------------------- Cantes
     await subpestana('Agenda');
     await captura('cantes-agenda');
+    // El «+»: un cante propio, reservar clase o pedir una clase suelta.
+    await tocar(find.text('Añadir'));
+    await captura('cantes-anadir');
+    Navigator.of(tester.element(find.text('¿Qué quieres apuntar?'))).pop();
+    await tester.pumpAndSettle();
     await tocar(find.textContaining('Próximo cante'));
     await captura('cante');
     await atras();
     await subpestana('Cantar');
+    await tocar(find.byTooltip('Entendido'));
     await tocar(find.text('Sacar 2 bolas de cada parte'));
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+$')));
     await bajar(232);
@@ -388,6 +434,7 @@ void main() {
     Navigator.of(tester.element(find.byType(RelojGrandePage))).pop();
     await tester.pumpAndSettle();
     await subpestana('Diario');
+    await tocar(find.byTooltip('Entendido'));
     await captura('cantes-diario');
 
     // ------------------------------------------- Clase cancelada: sustituto
@@ -399,6 +446,21 @@ void main() {
     await abrirCante('pt');
     await captura('tema-recibido');
     Navigator.of(tester.element(find.byType(CantePage))).pop();
+    await tester.pumpAndSettle();
+    // La pizarra de esa clase, apaisada (como se usa).
+    tester.view.physicalSize = const Size(2340, 1080);
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => PizarraPage(alumnoUid: 'yo', canteId: 'pt', otroNombre: 'Paula Pérez', db: dbRed)));
+    await tester.pumpAndSettle();
+    await captura('pizarra');
+    Navigator.of(tester.element(find.byType(PizarraPage))).pop();
+    await tester.pumpAndSettle();
+    tester.view.physicalSize = const Size(1080, 2340);
+    await tester.pumpAndSettle();
+    // Los avisos: lo que pide la app al abrirla por primera vez.
+    showModalBottomSheet<void>(context: tester.element(find.byType(Scaffold).first), isScrollControlled: true, showDragHandle: true, builder: (_) => const HojaPermisos());
+    await tester.pumpAndSettle();
+    await captura('avisos-permiso');
+    Navigator.of(tester.element(find.byType(HojaPermisos))).pop();
     await tester.pumpAndSettle();
     await abrirCante('pc');
     await captura('cante-cancelado');
@@ -438,6 +500,7 @@ void main() {
     await pestana('Hoy');
     await captura('hoy-preparador');
     await subpestana('Clases');
+    await tocar(find.byTooltip('Entendido'));
     await captura('cantes-clases');
     await pestana('Más');
     await captura('mas-preparador');
@@ -447,16 +510,30 @@ void main() {
     await captura('semana');
     Navigator.of(tester.element(find.byType(SemanaPage))).pop();
     await tester.pumpAndSettle();
-    // Mandar a Lucía un tema antes de la clase de la semana que viene.
+    // Los materiales que comparte con sus alumnos.
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const MaterialesPage()));
+    await tester.pumpAndSettle();
+    await captura('materiales');
+    Navigator.of(tester.element(find.byType(MaterialesPage))).pop();
+    await tester.pumpAndSettle();
+    // Mandar a Lucía los dos temas antes de la clase de la semana que viene.
     Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const SesionPage(id: 's4')));
     await tester.pumpAndSettle();
-    await buscarEn<SesionPage>(find.text('Mandarle un tema antes'));
-    await tocar(find.text('Mandarle un tema antes'));
-    await tocar(find.textContaining('3.A.12'));
-    await tocar(find.text('45 min antes'));
+    await buscarEn<SesionPage>(find.text('Mandarle los temas antes'));
+    await tocar(find.text('Mandarle los temas antes'));
+    // Dos temas de los primeros de la lista de la hoja (el código va solo en
+    // su casilla; en la ficha, detrás, va con el título, así que no se confunden).
+    await tocar(find.textContaining(RegExp(r'^3\.A\.2$')));
+    await tocar(find.textContaining(RegExp(r'^3\.A\.3$')));
     await captura('tema-programar');
+    // El botón queda por debajo del borde de la hoja: se sube la hoja.
+    await tester.drag(find.textContaining('CUÁNDO LE LLEGAN'), const Offset(0, -700));
+    await tester.pumpAndSettle();
     await tocar(find.text('Programar el envío'));
     await captura('sesion-tema');
+    // La ficha de la clase: todo se cambia desde aquí (y la reunión de Teams).
+    await buscarEn<SesionPage>(find.text('DETALLES DE LA CLASE'), paso: -250); // está más arriba
+    await captura('clase-detalles');
     Navigator.of(tester.element(find.byType(SesionPage))).pop();
     await tester.pumpAndSettle();
     await buscarEn<PreparadorPage>(find.text('Tablón de clases sueltas'));

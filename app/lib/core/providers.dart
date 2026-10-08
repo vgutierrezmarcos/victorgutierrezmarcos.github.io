@@ -161,9 +161,10 @@ class SesionNotifier extends Notifier<bool> {
   /// Con la sesión ya iniciada de antes: renueva la foto de la cuenta con la
   /// de Google de ahora, sin pedir nada al usuario (en el móvil).
   Future<void> renovarFoto() async {
-    final u = FirebaseAuth.instance.currentUser;
-    if (kIsWeb || u == null) return;
+    if (kIsWeb) return;
     try {
+      final u = FirebaseAuth.instance.currentUser;
+      if (u == null) return;
       final google = await GoogleSignIn(scopes: const ['email']).signInSilently();
       final foto = google?.photoUrl;
       if (foto != null && foto.isNotEmpty && u.photoURL != foto) await u.updatePhotoURL(foto);
