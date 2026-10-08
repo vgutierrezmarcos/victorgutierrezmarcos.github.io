@@ -11,6 +11,7 @@ class Urls {
   /// el repositorio servido en localhost).
   static final String base = kIsWeb ? Uri.base.origin : 'https://www.victorgutierrezmarcos.es';
   static final String politicaPrivacidad = '$base/politica-cookies.html';
+  static final String condiciones = '$base/app/condiciones.html';
   static final String sobreMi = '$base/sobre-mi.html';
   static final String paginaApp = '$base/app/';
   /// La misma app, compilada para el navegador.

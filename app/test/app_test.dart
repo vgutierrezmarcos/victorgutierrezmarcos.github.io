@@ -130,7 +130,7 @@ void main() {
     await tester.pumpAndSettle();
     // Las secciones de Más se reparten en dos columnas.
     final izquierda = tester.getTopLeft(find.text('MI PREPARADOR')).dx;
-    final derecha = tester.getTopLeft(find.text('AJUSTES')).dx;
+    final derecha = tester.getTopLeft(find.text('ACERCA DE')).dx;
     expect(derecha - izquierda, greaterThan(500));
     await tester.tap(find.text('Iniciar sesión con Google').first);
     await tester.pumpAndSettle();

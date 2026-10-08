@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../data/models/oposicion.dart';
+import '../core/constants.dart';
 import '../core/providers.dart';
 import '../theme/app_theme.dart';
 import 'boton_oposicion.dart';
@@ -636,3 +637,29 @@ List<ButtonSegment<int>> segmentosEjercicio({bool ambos = false}) {
     if (ambos && o.conTemasCantados.length > 1) ButtonSegment(value: 0, label: Text(o.cortoEjercicio(0))),
   ];
 }
+
+/// «Al … aceptas las condiciones de uso y la política de privacidad», con los
+/// dos enlaces (al iniciar sesión y al darse de alta como preparador).
+class AvisoLegal extends StatelessWidget {
+  const AvisoLegal(this.prefijo, {super.key, this.conEncargo = false});
+  final String prefijo;
+  /// Para el alta de preparador: recuerda el encargo de los datos de sus alumnos.
+  final bool conEncargo;
+
+  @override
+  Widget build(BuildContext context) {
+    final estilo = context.textos.labelSmall;
+    Widget enlace(String texto, String url) => InkWell(
+          onTap: () => abrirUrl(context, url, enApp: true),
+          child: Text(texto, style: estilo?.copyWith(color: context.esquema.primary, decoration: TextDecoration.underline)),
+        );
+    return Wrap(crossAxisAlignment: WrapCrossAlignment.center, runSpacing: 2, children: [
+      Text('$prefijo aceptas las ', style: estilo),
+      enlace('condiciones de uso', Urls.condiciones),
+      Text(conEncargo ? ' (incluido el encargo de los datos de tus alumnos) y la ' : ' y la ', style: estilo),
+      enlace('política de privacidad', Urls.politicaPrivacidad),
+      Text('.', style: estilo),
+    ]);
+  }
+}
+

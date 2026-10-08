@@ -45,6 +45,8 @@ class CuentaPage extends ConsumerWidget {
                   icon: ocupado ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)) : const Icon(Icons.login),
                   label: const Text('Iniciar sesión con Google'),
                 ),
+                const SizedBox(height: 10),
+                const AvisoLegal('Al iniciar sesión'),
               ]),
             ),
           ] else ...[

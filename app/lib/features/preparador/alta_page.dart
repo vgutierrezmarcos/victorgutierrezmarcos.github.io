@@ -239,6 +239,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
               icon: const Icon(Icons.how_to_reg_outlined),
               label: Text(_enviando ? 'Enviando…' : (widget.soloVerificacion ? 'Pedir la verificación' : 'Darme de alta como preparador')),
             ),
+            const Padding(padding: EdgeInsets.fromLTRB(4, 10, 4, 0), child: AvisoLegal('Al darte de alta', conEncargo: true)),
             if (!widget.soloVerificacion)
               Padding(
                 padding: const EdgeInsets.fromLTRB(4, 10, 4, 0),
