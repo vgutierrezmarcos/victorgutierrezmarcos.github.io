@@ -67,9 +67,21 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
       try {
         await cal.comprobar();
       } catch (e) {
-        cal.ultimoError = e.toString();
-        messenger.showSnackBar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e')));
-        return;
+        // Permiso retirado desde la cuenta de Google (o token caducado): se
+        // vuelve a pedir desde cero, con la ventana de Google, y se reintenta.
+        if (permisoRetirado(e) && await renovarPermisoCalendario()) {
+          try {
+            await cal.comprobar();
+          } catch (e2) {
+            cal.ultimoError = e2.toString();
+            messenger.showSnackBar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e2')));
+            return;
+          }
+        } else {
+          cal.ultimoError = e.toString();
+          messenger.showSnackBar(SnackBar(content: Text(permisoRetirado(e) ? 'Google ha retirado el permiso del calendario y no se ha podido volver a pedir. Prueba otra vez.' : 'Google no deja usar tu calendario desde la app todavía: $e')));
+          return;
+        }
       }
       cal.ultimoError = null;
       await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: true));
