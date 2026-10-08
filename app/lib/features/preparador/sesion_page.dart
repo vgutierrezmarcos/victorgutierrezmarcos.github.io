@@ -323,18 +323,28 @@ class SesionPage extends ConsumerWidget {
               Expanded(child: OutlinedButton.icon(onPressed: cancelar, icon: Icon(Icons.event_busy, size: 18, color: context.esquema.error), label: Text('Cancelar', style: TextStyle(color: context.esquema.error)))),
             ]),
             const SizedBox(height: 10),
+            // En la clase se cantan los temas mandados antes (o se cronometra el
+            // dictamen); los temas no se sortean desde aquí.
             Row(children: [
-              Expanded(
-                child: FilledButton.icon(
-                  onPressed: (temas.isEmpty && !dictamen) || alumno == null ? null : () => cantar(conMandados: mandadosLlegados),
-                  icon: Icon(dictamen ? Icons.timer_outlined : (mandadosLlegados ? Icons.mic : Icons.casino_outlined)),
-                  label: Text(dictamen ? 'Cronometrar' : (mandadosLlegados ? 'Cantar los temas mandados' : 'Sortear y cantar')),
+              if (dictamen || mandadosLlegados) ...[
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: alumno == null ? null : () => cantar(conMandados: mandadosLlegados),
+                    icon: Icon(dictamen ? Icons.timer_outlined : Icons.mic),
+                    label: Text(dictamen ? 'Cronometrar' : 'Cantar los temas mandados'),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 10),
-              OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
+                const SizedBox(width: 10),
+                OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
+              ] else
+                Expanded(child: OutlinedButton.icon(onPressed: valorar, icon: const Icon(Icons.star_outline, size: 18), label: const Text('Valorar la clase'))),
             ]),
-            if (temas.isEmpty && !dictamen) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
+          ],
+          // Lo principal de la clase: mandarle los temas antes.
+          if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
+            const TituloSeccion('Temas antes de la clase'),
+            SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
+            if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
           ],
           if (conUid && usuario != null && alumno != null) ...[
             const SizedBox(height: 10),
@@ -369,10 +379,6 @@ class SesionPage extends ConsumerWidget {
                 if (perfil.calendarioGoogle && s.pendiente && s.fecha.isAfter(ahora)) _FilaCalendario(sesion: s),
               ]),
             ),
-          ],
-          if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
-            const TituloSeccion('Temas antes de la clase'),
-            SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
