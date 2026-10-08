@@ -106,6 +106,25 @@ service cloud.firestore {
       return linkedinValido() && m in ['', 'online', 'presencial', 'ambas'] && c is string && c.size() <= 60;
     }
 
+    // El preparador que ha cogido la clase suelta sust_{id} del alumno (la
+    // petición sustituciones/{id} está cogida por él): puede escribir esa clase
+    // en la agenda del alumno y usar su cronómetro y su pizarra.
+    function esSustitutoDe(op, idCante) {
+      return conSesionEn(op) && idCante.matches('sust_.*')
+        && get(enRed(op, 'sustituciones/' + idCante[5:])).data.get('cogidaPor', '') == request.auth.uid;
+    }
+
+    // Material (enlace) que un preparador comparte con sus alumnos: campos
+    // conocidos, título corto, enlace http(s) y destinatarios bien formados.
+    function materialValido() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['id', 'preparador', 'preparadorNombre', 'titulo', 'url', 'texto', 'tema', 'paraTodos', 'alumnos', 'creado', 'updatedAt'])
+        && d.titulo is string && d.titulo.size() > 0 && d.titulo.size() <= 120
+        && d.url is string && d.url.matches('https?://[^ ]+')
+        && d.get('texto', '') is string && d.get('texto', '').size() <= 2000
+        && d.paraTodos is bool && d.alumnos is list && d.alumnos.size() <= 200;
+    }
+
     function soloCambia(campos) {
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
     }
@@ -139,6 +158,7 @@ service cloud.firestore {
     //   sesiones/{id}            sesiones de un preparador con sus alumnos
     //   preparadores/{prep}      preparadores a los que el usuario da acceso
     //   cantes/{id}/reloj/estado cronómetro compartido con el preparador
+    //   cantes/{id}/pizarra/{p}  pizarra compartida con el preparador
     match /users/{uid}/{document=**} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
@@ -152,18 +172,19 @@ USUARIO = """
         allow get: if esPreparadorDe(%OP%, uid);
       }
       match /cantes/{id} {
-        allow read: if esPreparadorDe(%OP%, uid);
+        allow read: if esPreparadorDe(%OP%, uid) || esSustitutoDe(%OP%, id);
         // Solo puede crear y cambiar los cantes que firma con su uid: los que el
-        // alumno programa por su cuenta no los puede tocar.
-        allow create: if esPreparadorDe(%OP%, uid) && request.resource.data.preparador == request.auth.uid;
-        allow update: if esPreparadorDe(%OP%, uid)
-          && resource.data.preparador == request.auth.uid
+        // alumno programa por su cuenta no los puede tocar. El preparador que
+        // coge una clase suelta (sust_…) escribe esa clase, aunque no esté enlazado.
+        allow create: if (esPreparadorDe(%OP%, uid) || esSustitutoDe(%OP%, id)) && request.resource.data.preparador == request.auth.uid;
+        allow update: if ((esPreparadorDe(%OP%, uid) && resource.data.preparador == request.auth.uid) || esSustitutoDe(%OP%, id))
           && request.resource.data.preparador == request.auth.uid;
 
-        // Cronómetro compartido de una clase: lo manejan el alumno (dueño de
-        // todo su subárbol) y el preparador que firma esa clase.
-        match /reloj/{doc} {
-          allow read, write: if esPreparadorDe(%OP%, uid)
+        // Cronómetro y pizarra compartidos de una clase: los manejan el alumno
+        // (dueño de todo su subárbol) y el preparador que firma esa clase.
+        match /{compartido}/{doc} {
+          allow read, write: if compartido in ['reloj', 'pizarra']
+            && (esPreparadorDe(%OP%, uid) || esSustitutoDe(%OP%, id))
             && get(deUsuario(%OP%, uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
         }
       }
@@ -288,13 +309,31 @@ RED = """
         allow create: if esPreparadorDe(%OP%, request.resource.data.alumno)
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.visibleDesde is timestamp
-          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'temas', 'titulos', 'sorteado', 'visibleDesde', 'updatedAt']);
         allow update: if resource.data.preparador == request.auth.uid
           && esPreparadorDe(%OP%, resource.data.alumno)
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.alumno == resource.data.alumno
           && request.resource.data.visibleDesde is timestamp
-          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'sorteado', 'visibleDesde', 'updatedAt']);
+          && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'temas', 'titulos', 'sorteado', 'visibleDesde', 'updatedAt']);
+        allow delete: if conSesionEn(%OP%) && resource.data.preparador == request.auth.uid;
+      }
+
+      // Materiales (enlaces) que un preparador comparte con todos sus alumnos
+      // enlazados o con algunos. Los escribe solo él, verificado y firmando con
+      // su uid (borrar, también si le han retirado la verificación, para poder
+      // eliminar la cuenta); los lee el alumno enlazado al que van dirigidos.
+      // El alumno los lista con dos consultas: preparador == X y paraTodos, o
+      // preparador == X y alumnos contiene su uid.
+      match /materiales/{id} {
+        allow read: if (conSesionEn(%OP%) && resource.data.preparador == request.auth.uid)
+          || (tengoDePreparador(%OP%, resource.data.preparador)
+            && (resource.data.paraTodos == true || request.auth.uid in resource.data.alumnos));
+        allow create: if esVerificado(%OP%) && request.resource.data.preparador == request.auth.uid && materialValido();
+        allow update: if esVerificado(%OP%)
+          && resource.data.preparador == request.auth.uid
+          && request.resource.data.preparador == request.auth.uid
+          && materialValido();
         allow delete: if conSesionEn(%OP%) && resource.data.preparador == request.auth.uid;
       }
 

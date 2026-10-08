@@ -9,6 +9,8 @@ import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../../core/red_providers.dart';
+import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 
 /// Visor de un tema: PDF (descargado para offline), estado de estudio y agenda
@@ -120,6 +122,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
         ],
       ),
       body: Column(children: [
+        if (!widget.esRecurso) _FilaMateriales(codigo: widget.tema.codigo),
         if (!widget.esRecurso)
           Material(
             color: context.colores.superficie,
@@ -197,6 +200,31 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             ),
           ),
       ]),
+    );
+  }
+}
+
+/// Materiales que el preparador ha compartido para este tema (sobre el PDF,
+/// sin robarle sitio): uno se abre directamente; varios, en una hoja.
+class _FilaMateriales extends ConsumerWidget {
+  const _FilaMateriales({required this.codigo});
+  final String codigo;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final materiales = ref.watch(materialesDeTemaProvider(codigo));
+    if (materiales.isEmpty) return const SizedBox.shrink();
+    final uno = materiales.length == 1 ? materiales.first : null;
+    return Material(
+      color: context.colores.primarioPalido,
+      child: ListTile(
+        dense: true,
+        leading: Icon(uno == null ? Icons.folder_shared_outlined : iconoMaterial(uno.tipo), color: context.esquema.primary),
+        title: Text(uno == null ? '${materiales.length} materiales de tu preparador' : uno.titulo, maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
+        subtitle: Text(uno == null ? 'Toca para verlos' : 'De ${uno.preparadorNombre.isEmpty ? 'tu preparador' : uno.preparadorNombre} · ${uno.dominio}', style: context.textos.labelSmall),
+        trailing: Icon(uno == null ? Icons.chevron_right : Icons.open_in_new, size: 18),
+        onTap: () => uno == null ? mostrarMaterialesDeTema(context, materiales) : abrirUrl(context, uno.url),
+      ),
     );
   }
 }

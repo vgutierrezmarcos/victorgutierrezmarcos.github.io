@@ -64,8 +64,9 @@ class CuentaPage extends ConsumerWidget {
             const SizedBox(height: 10),
             OutlinedButton.icon(
               onPressed: () async {
-                await ref.read(sesionProvider.notifier).sincronizar();
-                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Sincronizado')));
+                final messenger = ScaffoldMessenger.of(context);
+                final ok = await ref.read(sesionProvider.notifier).sincronizar();
+                messenger.showSnackBar(SnackBar(content: Text(ok ? 'Sincronizado con la nube' : 'No se ha podido sincronizar: comprueba la conexión')));
               },
               icon: const Icon(Icons.sync),
               label: const Text('Sincronizar ahora'),

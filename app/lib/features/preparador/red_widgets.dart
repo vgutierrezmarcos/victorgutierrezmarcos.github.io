@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/red_providers.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
+import '../plan/cantes_util.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
@@ -43,10 +45,11 @@ Future<({int dia, int minuto, int minutos, int cada})?> elegirFranja(
   required String titulo,
   int dia = 1,
   int minuto = 18 * 60,
-  int minutos = 30,
+  int minutos = PerfilPreparador.minutosClasePorDefecto,
   int cada = 1,
   bool conRitmo = false,
 }) {
+  final opciones = {...duracionesClase, 30, 45, minutos}.toList()..sort();
   return showDialog(
     context: context,
     builder: (d) => StatefulBuilder(
@@ -70,9 +73,9 @@ Future<({int dia, int minuto, int minutos, int cada})?> elegirFranja(
           ),
           const SizedBox(height: 12),
           DropdownButtonFormField<int>(
-            initialValue: [30, 45, 60, 90].contains(minutos) ? minutos : 30,
+            initialValue: minutos,
             decoration: const InputDecoration(labelText: 'Duración'),
-            items: const [30, 45, 60, 90].map((m) => DropdownMenuItem(value: m, child: Text('$m min'))).toList(),
+            items: opciones.map((m) => DropdownMenuItem(value: m, child: Text(textoDuracion(m)))).toList(),
             onChanged: (v) => set(() => minutos = v ?? minutos),
           ),
           if (conRitmo) ...[

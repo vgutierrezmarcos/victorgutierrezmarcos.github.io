@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../core/calendario.dart';
-import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -15,9 +14,11 @@ import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../preparador/red_widgets.dart';
+import '../cantes/nuevo_cante_sheet.dart';
 import 'cante_form_page.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
+import '../inicio/permisos_sheet.dart';
 
 /// Exporta los próximos cantes, las fechas de los ejercicios y los hitos a un
 /// fichero .ics que se comparte con el calendario del móvil.
@@ -39,9 +40,9 @@ Future<void> exportarCalendario(BuildContext context, WidgetRef ref) async {
 }
 
 /// Activa o desactiva los avisos de la víspera y de una hora antes de cada cante.
-Future<void> alternarAvisosCante(WidgetRef ref) async {
+Future<void> alternarAvisosCante(BuildContext context, WidgetRef ref) async {
   final activar = !ref.read(planProvider).avisosCante;
-  if (activar && !await Notificaciones.pedirPermiso()) return;
+  if (activar && !await asegurarAvisos(context)) return;
   await ref.read(planProvider.notifier).actualizar((p) => p.copyWith(avisosCante: activar));
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
 }
@@ -95,6 +96,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
     bool pasa(Cante c) => filtro == null || origenDeCante(c) == filtro;
     final cantes = todosLosCantes.where(pasa).toList();
     final proximos = ref.watch(proximosCantesProvider).where(pasa).toList();
+    final canceladas = ref.watch(canceladasProximasProvider);
     final plan = ref.watch(planProvider);
     final fechas = ref.watch(fechasEjerciciosProvider);
     final ahora = DateTime.now();
@@ -111,10 +113,30 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
 
     // Sin cabecera: va dentro de CantesPage, que pone el título y las subpestañas.
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(onPressed: () => _nuevoCante(_dia), icon: const Icon(Icons.add), label: const Text('Cante')),
+      floatingActionButton: FloatingActionButton.extended(onPressed: () => mostrarHojaNuevoCante(context, ref, dia: _dia), icon: const Icon(Icons.add), label: const Text('Añadir')),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
+          TarjetaAyudaCantes(clave: 'agenda', icono: Icons.event_note_outlined, titulo: ayudasCantes['agenda']!.$1, texto: ayudasCantes['agenda']!.$2),
+          for (final c in canceladas.where(pasa))
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Tarjeta(
+                color: context.esquema.errorContainer.withValues(alpha: 0.35),
+                onTap: () => _abrir(c),
+                child: Row(children: [
+                  Icon(Icons.event_busy, color: context.esquema.error, size: 28),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}', style: context.textos.titleSmall),
+                      Text('${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para pedir una clase suelta.', style: context.textos.labelSmall),
+                    ]),
+                  ),
+                  const Icon(Icons.chevron_right),
+                ]),
+              ),
+            ),
           if (siguiente != null)
             Tarjeta(
               color: context.colores.primarioPalido,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
@@ -57,6 +58,11 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
     );
     final repo = ref.read(usuarioRepoProvider);
     await repo.guardarResultado(resultado);
+    if (widget.config.tipo == 'diario') {
+      try {
+        await Notificaciones.programarRecordatorio(repo.ajustes().horaRecordatorio, hechoHoy: true);
+      } catch (_) {}
+    }
     await ref.read(leitnerProvider.notifier).registrarExamen({
       for (final p in preguntas) p.id: _respuestas[p.id] != null && p.esCorrecta(_respuestas[p.id]),
     });

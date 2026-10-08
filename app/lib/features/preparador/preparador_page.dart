@@ -19,6 +19,7 @@ import '../../data/models/red.dart';
 import 'ajustes_preparador_page.dart';
 import 'alta_page.dart';
 import 'directorio_page.dart';
+import 'materiales_page.dart';
 import 'alumno_page.dart';
 import 'red_widgets.dart';
 import 'semana_page.dart';
@@ -145,6 +146,13 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             else
               for (final a in alumnos) _filaAlumno(context, a, sesiones),
             if (estado.verificado) ...[
+              const TituloSeccion('Materiales'),
+              FilaEnlace(
+                icono: Icons.folder_shared_outlined,
+                titulo: 'Materiales para tus alumnos',
+                subtitulo: (ref.watch(misMaterialesProvider).valueOrNull?.length ?? 0) == 0 ? 'Enlaces a Drive, PDF o vídeos, para todos o para algunos' : '${ref.watch(misMaterialesProvider).valueOrNull!.length} compartidos',
+                onTap: () => ir(const MaterialesPage()),
+              ),
               const TituloSeccion('Clases sueltas'),
               FilaEnlace(
                 icono: Icons.campaign_outlined,
@@ -169,7 +177,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 FilaEnlace(icono: Icons.admin_panel_settings_outlined, titulo: 'Gestionar la red', subtitulo: 'Quién está verificado y quién lo avaló', onTap: () => ir(const AdminRedPage())),
             ],
             const TituloSeccion('Ajustes'),
-            FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Nombre, teléfono, avisos y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
+            FilaEnlace(icono: Icons.tune, titulo: 'Ajustes de preparador', subtitulo: 'Nombre, teléfono, duración de las clases, Meet o Teams, avisos, Google Calendar y huecos para reservas', onTap: () => ir(const AjustesPreparadorPage())),
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 4, 4, 0),
               child: Text('Tus alumnos, sus clases y tus notas privadas solo los ves tú, en todos tus dispositivos. Cada alumno ve únicamente sus propias clases y valoraciones, nunca las de los demás. Para volver a ser opositor en $siglas: Más → Ajustes → Tu papel.', style: context.textos.labelSmall),

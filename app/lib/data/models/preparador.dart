@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'oposicion.dart';
 import 'plan.dart';
 
 /// Modelos de la sección de preparadores. El preparador guarda a sus alumnos
@@ -22,6 +23,7 @@ class Alumno {
     this.telefono = '',
     this.email = '',
     this.clasesFijas = const [],
+    this.suelto = false,
     this.creado,
     this.updatedAt,
     this.borrado = false,
@@ -39,8 +41,12 @@ class Alumno {
   /// Temas que lleva preparados. En un alumno enlazado se actualizan con los
   /// que él marca como estudiados; en uno sin app los apunta el preparador.
   final List<String> temas;
-  /// uid del alumno si ha enlazado su app (null = alumno sin app).
+  /// uid del alumno si ha enlazado su app (null = alumno sin app) o si es el
+  /// alumno de una clase suelta que se cogió ([suelto]).
   final String? uid;
+  /// Alumno de una clase suelta: tiene [uid] (para que le lleguen los cambios
+  /// de esa clase), pero no ha enlazado su app con este preparador.
+  final bool suelto;
   /// Teléfono para hablar por WhatsApp (lo apunta el preparador, o llega al coger una sustitución).
   final String telefono;
   /// Clases que se repiten (p. ej. los martes a las 18:00): generan las sesiones solas.
@@ -49,9 +55,9 @@ class Alumno {
   final DateTime? updatedAt;
   final bool borrado;
 
-  bool get enlazado => uid != null;
+  bool get enlazado => uid != null && !suelto;
 
-  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, String? telefono, String? email, List<ClaseFija>? clasesFijas, bool? borrado}) => Alumno(
+  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, String? telefono, String? email, List<ClaseFija>? clasesFijas, bool? suelto, bool? borrado}) => Alumno(
         id: id,
         nombre: nombre ?? this.nombre,
         ejercicio: ejercicio ?? this.ejercicio,
@@ -61,6 +67,7 @@ class Alumno {
         telefono: telefono ?? this.telefono,
         email: email ?? this.email,
         clasesFijas: clasesFijas ?? this.clasesFijas,
+        suelto: desenlazar ? false : (suelto ?? this.suelto),
         creado: creado,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
@@ -76,6 +83,7 @@ class Alumno {
         if (telefono.isNotEmpty) 'telefono': telefono,
         if (email.isNotEmpty) 'email': email,
         if (clasesFijas.isNotEmpty) 'clasesFijas': clasesFijas.map((c) => c.toJson()).toList(),
+        if (suelto) 'suelto': true,
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
@@ -91,6 +99,7 @@ class Alumno {
         telefono: j['telefono'] as String? ?? '',
         email: j['email'] as String? ?? '',
         clasesFijas: [for (final c in (j['clasesFijas'] as List?) ?? const []) if (c is Map) ClaseFija.fromJson(c)],
+        suelto: j['suelto'] as bool? ?? false,
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
@@ -111,7 +120,7 @@ class Alumno {
 /// [cadaSemanas] semanas desde [desde]. La app genera las sesiones de las
 /// próximas semanas (ver [ClaseFija.fechasEntre]).
 class ClaseFija {
-  const ClaseFija({required this.id, required this.diaSemana, required this.minutoDelDia, this.minutos = 30, this.cadaSemanas = 1, required this.desde});
+  const ClaseFija({required this.id, required this.diaSemana, required this.minutoDelDia, this.minutos = PerfilPreparador.minutosClasePorDefecto, this.cadaSemanas = 1, required this.desde});
   final String id;
   /// 1 = lunes … 7 = domingo (como [DateTime.weekday]).
   final int diaSemana;
@@ -166,21 +175,48 @@ class PerfilPreparador {
     this.huecos = const [],
     this.linkedin = '',
     this.papelElegido = false,
-    this.segundosTemaAntes = 2700,
+    this.segundosTemaAntes,
     this.avisosClase = const [avisoVispera, 60],
     this.modalidad = '',
     this.ciudad = '',
     this.calendarioGoogle = false,
+    this.minutosClase = minutosClasePorDefecto,
+    this.temasPorClase = 2,
+    this.plataforma = plataformaMeet,
     this.updatedAt,
   });
 
   /// Valor de [avisosClase] que significa «la víspera a las 20:00».
   static const avisoVispera = -1;
 
+  /// Lo que dura una clase con el preparador si no se dice otra cosa: 2 h
+  /// (esquema, exposición de los temas y comentarios).
+  static const minutosClasePorDefecto = 120;
+
   /// Antelación que se propone (ya elegida) al programar el envío del tema
-  /// en cada clase, en segundos: 45 min por defecto, lo que dura el esquema
-  /// de dos temas en TCEE. Es solo una propuesta: se cambia en cada clase.
-  final int segundosTemaAntes;
+  /// en cada clase, en segundos. Si es null, el tiempo de esquema del examen
+  /// para los temas de la clase (45 min para dos en TCEE, 30 en DCE). Es solo
+  /// una propuesta: se cambia en cada clase.
+  final int? segundosTemaAntes;
+
+  /// Antelación propuesta para mandar [temas] temas en el ejercicio [ejercicio].
+  int antelacionTema({int temas = 2, int? ejercicio}) {
+    if (segundosTemaAntes != null) return segundosTemaAntes!;
+    final o = Oposiciones.actual;
+    final e = o.ejercicio(ejercicio ?? o.primerConTemas);
+    final s = e == null || e.minutosEsquema <= 0 ? 0 : e.segundosEsquemaPara(temas);
+    return s > 0 ? s : 2700;
+  }
+
+  /// Duración habitual de sus clases, en minutos (clases nuevas, fijas,
+  /// huecos para reservas y clases sueltas).
+  final int minutosClase;
+
+  /// Cuántos temas se cantan en cada clase, salvo que se cambie en la clase.
+  final int temasPorClase;
+
+  /// Videollamada que propone para sus clases online ('meet' o 'teams').
+  final String plataforma;
 
   /// Recordatorios de sus clases: minutos antes (o [avisoVispera]). Vacío, ninguno.
   final List<int> avisosClase;
@@ -217,7 +253,7 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, bool antelacionDelExamen = false, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle, int? minutosClase, int? temasPorClase, String? plataforma}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -228,11 +264,14 @@ class PerfilPreparador {
         huecos: huecos ?? this.huecos,
         linkedin: linkedin ?? this.linkedin,
         papelElegido: papelElegido ?? this.papelElegido,
-        segundosTemaAntes: segundosTemaAntes ?? this.segundosTemaAntes,
+        segundosTemaAntes: antelacionDelExamen ? null : (segundosTemaAntes ?? this.segundosTemaAntes),
         avisosClase: avisosClase ?? this.avisosClase,
         modalidad: modalidad ?? this.modalidad,
         ciudad: ciudad ?? this.ciudad,
         calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
+        minutosClase: minutosClase ?? this.minutosClase,
+        temasPorClase: temasPorClase ?? this.temasPorClase,
+        plataforma: plataforma ?? this.plataforma,
         updatedAt: DateTime.now(),
       );
 
@@ -247,8 +286,11 @@ class PerfilPreparador {
         'huecos': huecos.map((h) => h.toJson()).toList(),
         'linkedin': linkedin,
         'papelElegido': papelElegido,
-        'segundosTemaAntes': segundosTemaAntes,
+        if (segundosTemaAntes != null) 'segundosTemaAntes': segundosTemaAntes,
         'avisosClase': avisosClase,
+        'minutosClase': minutosClase,
+        'temasPorClase': temasPorClase,
+        'plataforma': plataforma,
         if (modalidad.isNotEmpty) 'modalidad': modalidad,
         if (ciudad.isNotEmpty) 'ciudad': ciudad,
         if (calendarioGoogle) 'calendarioGoogle': true,
@@ -268,18 +310,21 @@ class PerfilPreparador {
           huecos: [for (final h in (j['huecos'] as List?) ?? const []) if (h is Map) Hueco.fromJson(h)],
           linkedin: j['linkedin'] as String? ?? '',
           papelElegido: j['papelElegido'] as bool? ?? false,
-          segundosTemaAntes: (j['segundosTemaAntes'] as num?)?.toInt() ?? 2700,
+          segundosTemaAntes: (j['segundosTemaAntes'] as num?)?.toInt(),
           avisosClase: j['avisosClase'] is List ? [for (final x in j['avisosClase'] as List) (x as num).toInt()] : const [avisoVispera, 60],
           modalidad: j['modalidad'] as String? ?? '',
           ciudad: j['ciudad'] as String? ?? '',
           calendarioGoogle: j['calendarioGoogle'] as bool? ?? false,
+          minutosClase: (j['minutosClase'] as num?)?.toInt() ?? minutosClasePorDefecto,
+          temasPorClase: (j['temasPorClase'] as num?)?.toInt() ?? 2,
+          plataforma: j['plataforma'] as String? ?? plataformaMeet,
           updatedAt: _fecha(j['updatedAt']),
         );
 }
 
 /// Hueco semanal en el que un preparador acepta reservas de sus alumnos.
 class Hueco {
-  const Hueco({required this.diaSemana, required this.minutoDelDia, this.minutos = 30});
+  const Hueco({required this.diaSemana, required this.minutoDelDia, this.minutos = PerfilPreparador.minutosClasePorDefecto});
   /// 1 = lunes … 7 = domingo.
   final int diaSemana;
   final int minutoDelDia;

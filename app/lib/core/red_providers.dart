@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -111,6 +113,66 @@ final misReservasProvider = FutureProvider<List<Reserva>>((ref) {
   return _seguro(ref.watch(redRepoProvider).misReservas);
 });
 
+/// Grupo en el que sale cada preparador en el directorio.
+enum GrupoDirectorio { mios, conClase, autoverificados, resto }
+
+/// Directorio ordenado para el usuario: primero sus preparadores, luego con
+/// los que ya ha tenido clase (fueron su preparador o le cogieron una clase
+/// suelta), luego los autoverificados (quienes administran la red, sin
+/// llamarlos así) y el resto al azar (mismo orden mientras dura la sesión).
+final directorioOrdenadoProvider = Provider<List<(GrupoDirectorio, PreparadorVerificado)>>((ref) {
+  final lista = ref.watch(verificadosProvider).valueOrNull ?? const <PreparadorVerificado>[];
+  final yo = ref.watch(usuarioActualProvider)?.uid;
+  final mios = {for (final v in ref.watch(misPreparadoresProvider)) v.uid};
+  final conClase = {
+    for (final c in ref.watch(cantesProvider)) if (c.preparador != null && !c.borrado) c.preparador!,
+    for (final s in ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]) if (s.cogidaPor != null) s.cogidaPor!,
+  }..removeAll(mios);
+  GrupoDirectorio grupo(PreparadorVerificado v) {
+    if (mios.contains(v.uid)) return GrupoDirectorio.mios;
+    if (conClase.contains(v.uid)) return GrupoDirectorio.conClase;
+    if (v.avaladoPor == v.uid) return GrupoDirectorio.autoverificados;
+    return GrupoDirectorio.resto;
+  }
+
+  final semilla = ref.watch(semillaDirectorioProvider);
+  final porGrupo = <GrupoDirectorio, List<PreparadorVerificado>>{};
+  for (final v in lista) {
+    if (v.uid == yo) continue;
+    porGrupo.putIfAbsent(grupo(v), () => []).add(v);
+  }
+  final out = <(GrupoDirectorio, PreparadorVerificado)>[];
+  for (final g in GrupoDirectorio.values) {
+    final vs = porGrupo[g] ?? const [];
+    final ordenados = g == GrupoDirectorio.resto ? (List.of(vs)..shuffle(Random(semilla))) : (List.of(vs)..sort((a, b) => a.nombre.toLowerCase().compareTo(b.nombre.toLowerCase())));
+    out.addAll(ordenados.map((v) => (g, v)));
+  }
+  return out;
+});
+
+/// Semilla del orden al azar del directorio: cambia en cada arranque de la app.
+final semillaDirectorioProvider = Provider<int>((ref) => Random().nextInt(1 << 30));
+
+/// Materiales que ha compartido el preparador con sus alumnos.
+final misMaterialesProvider = FutureProvider<List<MaterialCompartido>>((ref) async {
+  final e = await ref.watch(estadoRedProvider.future);
+  if (!e.verificado) return const [];
+  return _seguro(ref.watch(redRepoProvider).misMateriales);
+});
+
+/// Materiales que los preparadores del alumno le han compartido.
+final materialesParaMiProvider = FutureProvider<List<MaterialCompartido>>((ref) {
+  ref.watch(usuarioActualProvider);
+  final vinculos = ref.watch(misPreparadoresProvider);
+  if (vinculos.isEmpty) return Future.value(const []);
+  return _seguro(() => ref.watch(redRepoProvider).materialesParaMi(preparadores: vinculos.map((v) => v.uid)));
+});
+
+/// Los materiales de un tema concreto.
+final materialesDeTemaProvider = Provider.family<List<MaterialCompartido>, String>((ref, codigo) {
+  return (ref.watch(materialesParaMiProvider).valueOrNull ?? const []).where((m) => m.tema == codigo).toList();
+});
+
 /// Huecos que publica un preparador para sus alumnos.
 final huecosDeProvider = FutureProvider.family<HuecosPublicos?, String>((ref, preparador) async {
   try {
@@ -128,7 +190,7 @@ final peticionDeCanteProvider = Provider.family<Sustitucion?, String>((ref, cant
 
 /// Vuelve a pedir a la red todo lo que se muestra.
 void refrescarRed(Ref ref) {
-  for (final p in <ProviderOrFamily>[estadoRedProvider, verificadosProvider, verificadosConRetiradosProvider, solicitudesPendientesProvider, tablonProvider, cogidasPorMiProvider, misPeticionesProvider, reservasRecibidasProvider, misReservasProvider, huecosDeProvider]) {
+  for (final p in <ProviderOrFamily>[estadoRedProvider, verificadosProvider, verificadosConRetiradosProvider, solicitudesPendientesProvider, tablonProvider, cogidasPorMiProvider, misPeticionesProvider, reservasRecibidasProvider, misReservasProvider, huecosDeProvider, misMaterialesProvider, materialesParaMiProvider]) {
     ref.invalidate(p);
   }
 }
@@ -183,7 +245,7 @@ int colorDePersona(String clave) {
 }
 
 /// Cante del alumno según quién lo da: el preparador (uid), una sustitución o él mismo.
-String origenDeCante(Cante c) => c.preparador ?? (c.sustitucion != null ? 'sustitucion' : 'propio');
+String origenDeCante(Cante c) => c.sustitucion != null ? 'sustitucion' : (c.preparador ?? 'propio');
 
 /// Lo que espera al preparador: reservas por confirmar, clases sueltas en el
 /// tablón y solicitudes de verificación por revisar.

@@ -84,8 +84,12 @@ class Notificaciones {
     return (a ?? true) && (i ?? true);
   }
 
-  /// Programa (o cancela con [minutosDesdeMedianoche] < 0) el recordatorio diario.
-  static Future<void> programarRecordatorio(int minutosDesdeMedianoche) async {
+  /// Programa (o cancela con [minutosDesdeMedianoche] < 0) el recordatorio del
+  /// test diario: el próximo, hoy si queda hora y el test no está hecho
+  /// ([hechoHoy]); si no, mañana. No se repite solo: la app lo vuelve a
+  /// programar en cada arranque, al sincronizar y al terminar el test, así
+  /// que no llega si no hay nada que recordar.
+  static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false}) async {
     if (!disponibles) return;
     await iniciar();
     await _plugin.cancel(_idRecordatorio);
@@ -93,11 +97,11 @@ class Notificaciones {
     final ahora = tz.TZDateTime.now(tz.local);
     var cuando = tz.TZDateTime(tz.local, ahora.year, ahora.month, ahora.day,
         minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
-    if (cuando.isBefore(ahora)) cuando = cuando.add(const Duration(days: 1));
+    if (cuando.isBefore(ahora) || hechoHoy) cuando = cuando.add(const Duration(days: 1));
     await _plugin.zonedSchedule(
       _idRecordatorio,
       'Test diario ${Oposiciones.actual.siglas}',
-      'Tus 10 preguntas de hoy te esperan.',
+      'Tus 10 preguntas de hoy te esperan. Toca para empezar.',
       cuando,
       const NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 'recordatorio', 'Recordatorio diario',
@@ -106,8 +110,43 @@ class Notificaciones {
       ),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
+      payload: 'ruta:/hoy?test=diario',
     );
+  }
+
+  /// Si el permiso del sistema para mostrar notificaciones está concedido
+  /// (null si no se puede saber: web, iOS sin plugin).
+  static Future<bool?> activadas() async {
+    if (!disponibles) return null;
+    await iniciar();
+    try {
+      return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.areNotificationsEnabled();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Si se pueden programar alarmas exactas (los avisos del cronómetro a su
+  /// segundo); null si no aplica.
+  static Future<bool?> alarmasExactas() async {
+    if (!disponibles) return null;
+    await iniciar();
+    try {
+      return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.canScheduleExactNotifications();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Pide el permiso de alarmas exactas (Android 12+ abre los ajustes).
+  static Future<bool> pedirAlarmasExactas() async {
+    if (!disponibles) return false;
+    await iniciar();
+    try {
+      return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestExactAlarmsPermission() ?? false;
+    } catch (_) {
+      return false;
+    }
   }
 
   /// Programa los avisos del cronómetro para que suenen aunque la app esté
@@ -185,6 +224,8 @@ class Notificaciones {
             ),
             androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
             uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+            // Al tocarlo se abre el cante.
+            payload: 'ruta:/cantes?cante=${c.id}',
           );
         } catch (_) {}
       }
@@ -200,7 +241,7 @@ class Notificaciones {
   static List<({DateTime cuando, String titulo, String texto})> avisosDeClase(Cante c, {required String alumno, required List<int> antelaciones, String? tema}) {
     final hora = '${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}';
     final detalle = [
-      if (tema != null) 'Le has mandado el $tema',
+      if (tema != null) 'Le has mandado ${tema.contains(',') ? 'los temas' : 'el tema'} ${tema.replaceAll(',', ' y ')}',
       if (c.online && c.enlace.isNotEmpty) 'Online: ${c.enlace}' else if (c.presencial && c.lugar.isNotEmpty) 'En ${c.lugar}',
     ].join('. ');
     return [
@@ -224,8 +265,8 @@ class Notificaciones {
     final proximas = clases.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
     final avisos = [
       for (final c in proximas)
-        for (final a in avisosDeClase(c, alumno: alumno(c), antelaciones: [...antelaciones], tema: c.mandaTema && !c.temaSorteado ? c.temaMandado : null))
-          if (a.cuando.isAfter(hoy)) a,
+        for (final a in avisosDeClase(c, alumno: alumno(c), antelaciones: [...antelaciones], tema: c.mandaTema && !c.temaSorteado ? c.temasMandados.join(',') : null))
+          if (a.cuando.isAfter(hoy)) (cuando: a.cuando, titulo: a.titulo, texto: a.texto, clase: c.id),
     ].take(_maxAvisosClase);
     var id = _idClases;
     for (final a in avisos) {
@@ -242,14 +283,18 @@ class Notificaciones {
           ),
           androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
           uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+          // Al tocarlo se abre la ficha de la clase.
+          payload: 'ruta:/clase?id=${a.clase}',
         );
       } catch (_) {}
     }
   }
 
-  /// Aviso inmediato (cronómetro de cantar un tema en segundo plano).
-  /// Aviso de la red de preparadores (sustitución nueva, cante cogido, reserva).
-  static Future<void> avisoRed(String clave, String titulo, String texto) async {
+  /// Aviso de la red de preparadores (clase suelta nueva, clase cogida,
+  /// reserva, clase programada, movida o cancelada, material…). Al tocarlo se
+  /// abre [ruta] (la pantalla que corresponde) y, en Android, lleva el botón
+  /// «Ver».
+  static Future<void> avisoRed(String clave, String titulo, String texto, {String? ruta}) async {
     if (!disponibles) return;
     await iniciar();
     await _plugin.show(
@@ -257,11 +302,33 @@ class Notificaciones {
       1000 + (clave.hashCode & 0x7ffff),
       titulo,
       texto,
+      NotificationDetails(
+        android: AndroidNotificationDetails(color: _colorAviso, 'red', 'Preparadores y clases',
+            channelDescription: 'Clases programadas, movidas o canceladas, clases sueltas, reservas y materiales',
+            importance: Importance.high,
+            priority: Priority.high,
+            styleInformation: BigTextStyleInformation(texto),
+            actions: [if (ruta != null) const AndroidNotificationAction('ver', 'Ver', showsUserInterface: true)]),
+        iOS: const DarwinNotificationDetails(),
+      ),
+      payload: ruta == null ? null : 'ruta:$ruta',
+    );
+  }
+
+  /// Hay una versión nueva de la app: al tocarlo se abre [url] (Play o el APK).
+  static Future<void> avisoVersion(String version, String url) async {
+    if (!disponibles) return;
+    await iniciar();
+    await _plugin.show(
+      1000 + ('version:$version'.hashCode & 0x7ffff),
+      'Hay una versión nueva de la app ($version)',
+      'Toca para actualizarla. Se instala encima de la actual, sin perder tus datos.',
       const NotificationDetails(
-        android: AndroidNotificationDetails(color: _colorAviso, 'red', 'Preparadores y clases sueltas',
-            channelDescription: 'Peticiones de sustitución, cantes cogidos y reservas', importance: Importance.high, priority: Priority.high),
+        android: AndroidNotificationDetails(color: _colorAviso, 'version', 'Versiones nuevas',
+            channelDescription: 'Aviso de que hay una versión nueva de la app', importance: Importance.defaultImportance),
         iOS: DarwinNotificationDetails(),
       ),
+      payload: 'url:$url',
     );
   }
 

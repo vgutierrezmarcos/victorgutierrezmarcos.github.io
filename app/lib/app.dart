@@ -19,6 +19,7 @@ import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
 import 'features/inicio/inicio_page.dart';
+import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
 import 'features/mas/mas_page.dart';
 import 'features/organizacion/mapa_calor_page.dart';
@@ -31,6 +32,9 @@ import 'features/plan/proceso_page.dart';
 import 'features/preparador/alta_page.dart';
 import 'features/preparador/mi_preparador_page.dart';
 import 'features/preparador/preparador_page.dart';
+import 'features/preparador/semana_page.dart';
+import 'features/preparador/sesion_page.dart';
+import 'features/preparador/sustituciones.dart';
 import 'features/test/estadisticas_page.dart';
 import 'features/test/examen_page.dart';
 import 'features/test/motor_test.dart';
@@ -117,8 +121,15 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       onResume: () {
         ref.read(sesionProvider.notifier).sincronizarSiToca();
         _programar();
+        // Lo que haya cambiado en los ajustes del sistema, y la escucha en
+        // tiempo real de las clases del preparador.
+        ref.invalidate(permisosProvider);
+        if (ref.read(usuarioActualProvider) != null) ref.read(cantesProvider.notifier).escucharNube();
       },
-      onHide: () => _periodico?.cancel(),
+      onHide: () {
+        _periodico?.cancel();
+        ref.read(cantesProvider.notifier).dejarDeEscuchar();
+      },
     );
     _programar();
     Notificaciones.alTocar = _alTocarNotificacion;
@@ -130,7 +141,21 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _abrirAltaSiToca();
       if (ref.read(serviciosProvider).firebaseDisponible) ref.read(sesionProvider.notifier).renovarFoto();
+      // La primera vez: para qué sirven los avisos y el permiso para mostrarlos.
+      Future.delayed(const Duration(milliseconds: 800), () {
+        final c = _router.routerDelegate.navigatorKey.currentContext;
+        // ignore: use_build_context_synchronously
+        if (c != null && mounted) mostrarHojaPermisosSiToca(c);
+      });
     });
+  }
+
+  /// Abre el test diario de hoy (si no está hecho; si no, Hoy).
+  void _abrirTestDiario() {
+    final banco = ref.read(preguntasProvider).valueOrNull;
+    _router.go('/hoy');
+    if (banco == null || ref.read(testDiarioHechoProvider)) return;
+    _router.push('/examen', extra: ConfigTest(idsFijos: MotorTest.testDiario(banco, DateTime.now()).map((p) => p.id).toList(), minutos: 15, tipo: 'diario'));
   }
 
   /// Quien acaba de elegir «Preparo a opositores» va directo a pedir la
@@ -155,13 +180,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     if (uri == null || uri.host != 'widget') return;
     final ruta = uri.path;
     if (ruta == '/test-diario') {
-      final banco = ref.read(preguntasProvider).valueOrNull;
-      if (banco == null || ref.read(testDiarioHechoProvider)) {
-        _router.go('/hoy');
-        return;
-      }
-      _router.go('/hoy');
-      _router.push('/examen', extra: ConfigTest(idsFijos: MotorTest.testDiario(banco, DateTime.now()).map((p) => p.id).toList(), minutos: 15, tipo: 'diario'));
+      _abrirTestDiario();
       return;
     }
     if (ruta == '/cantes') ref.read(subpestanaCantesProvider.notifier).state = 0;
@@ -169,27 +188,43 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 
   /// Al tocar una notificación: `url:` abre esa página (p. ej. la del proceso
-  /// selectivo); `ruta:` lleva a esa pantalla de la app.
+  /// selectivo o la descarga de la versión nueva); `ruta:` lleva a la pantalla
+  /// de la app que corresponde (la clase, el tablón, la semana, el test…).
   void _alTocarNotificacion(String contenido) {
     if (contenido.startsWith('url:')) {
       launchUrl(Uri.parse(contenido.substring(4)), mode: LaunchMode.externalApplication).catchError((_) => false);
-    } else if (contenido.startsWith('ruta:')) {
-      final uri = Uri.parse(contenido.substring(5));
-      final cante = uri.queryParameters['cante'];
-      final tema = uri.queryParameters['tema'];
-      if (uri.path == '/cantes' && cante != null) {
+      return;
+    }
+    if (!contenido.startsWith('ruta:')) return;
+    final uri = Uri.parse(contenido.substring(5));
+    final nav = _router.routerDelegate.navigatorKey.currentState;
+    final cante = uri.queryParameters['cante'];
+    final tema = uri.queryParameters['tema'];
+    switch (uri.path) {
+      case '/cantes' when cante != null:
         // Tema que manda el preparador: «Empezar el esquema» abre Cantar con
-        // él; tocar el aviso abre la clase.
+        // él; tocar el aviso (o «Ver») abre la clase.
         if (uri.queryParameters['accion'] == 'esquema') {
           empezarCante(ref, _router, cante, tema: tema);
         } else {
           _router.go('/cantes');
-          final nav = _router.routerDelegate.navigatorKey.currentState;
           nav?.push(MaterialPageRoute(builder: (_) => CantePage(id: cante)));
         }
-        return;
-      }
-      _router.go(uri.toString());
+      case '/clase':
+        // Clase del preparador con un alumno.
+        final id = uri.queryParameters['id'];
+        _router.go('/cantes');
+        if (id != null) nav?.push(MaterialPageRoute(builder: (_) => SesionPage(id: id)));
+      case '/tablon':
+        _router.go('/mas/preparador');
+        nav?.push(MaterialPageRoute(builder: (_) => const TablonPage()));
+      case '/semana':
+        _router.go('/cantes');
+        nav?.push(MaterialPageRoute(builder: (_) => const SemanaPage()));
+      case '/hoy' when uri.queryParameters['test'] == 'diario':
+        _abrirTestDiario();
+      default:
+        _router.go(uri.path);
     }
   }
 
@@ -211,7 +246,11 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   Widget build(BuildContext context) {
     // Al cargarse la sesión (al arrancar o al iniciarla) se sincroniza todo.
     ref.listen(usuarioActualProvider, (antes, ahora) {
-      if (ahora != null && antes?.uid != ahora.uid) ref.read(sesionProvider.notifier).sincronizarSiToca(forzar: true);
+      if (ahora != null && antes?.uid != ahora.uid) {
+        ref.read(sesionProvider.notifier).sincronizarSiToca(forzar: true);
+        ref.read(cantesProvider.notifier).escucharNube();
+      }
+      if (ahora == null) ref.read(cantesProvider.notifier).dejarDeEscuchar();
     });
     return MaterialApp.router(
       title: Creditos.nombreApp,

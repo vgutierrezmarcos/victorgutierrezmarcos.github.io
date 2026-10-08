@@ -77,7 +77,9 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
     // El recordatorio diario solo existe si el usuario lo ha activado: en cada
     // arranque se reprograma o, si está desactivado, se cancela el que hubiera.
     try {
-      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio);
+      final hoy = Ajustes.claveDia(DateTime.now());
+      final hecho = usuario.resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
+      await Notificaciones.programarRecordatorio(usuario.ajustes().horaRecordatorio, hechoHoy: hecho);
     } catch (_) {}
     // Los avisos de cantes se reprograman en cada arranque (y tras sincronizar).
     if (plan.plan().avisosCante) await Notificaciones.programarCantes(plan.cantes());

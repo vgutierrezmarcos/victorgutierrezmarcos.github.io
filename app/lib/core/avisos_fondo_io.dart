@@ -13,8 +13,8 @@ import '../data/models/plan.dart';
 import '../data/repos/red_repo.dart';
 import 'avisos_proceso.dart';
 import 'avisos_red.dart';
+import 'avisos_version.dart';
 import 'temas_anticipados.dart';
-import 'vistos.dart';
 
 const _tarea = 'avisos-red';
 
@@ -27,6 +27,10 @@ void despachadorAvisos() {
     try {
       await initializeDateFormatting('es');
       await comprobarProceso(await descargarProceso());
+    } catch (_) {}
+    // Versión nueva de la app: un aviso por versión.
+    try {
+      await comprobarVersion();
     } catch (_) {}
     try {
       await Firebase.initializeApp();
@@ -70,22 +74,20 @@ Future<void> iniciarAvisosEnSegundoPlano({String oposicion = 'tcee'}) async {
   } catch (_) {}
 }
 
-/// Activa o quita la comprobación periódica: hace falta con sesión
-/// ([activar]) o con los avisos del proceso de alguna oposición.
+/// Deja programada la comprobación periódica. Hace falta con sesión
+/// ([activar]) o con los avisos del proceso; y, en cualquier caso, sirve para
+/// avisar de las versiones nuevas (con la app instalada desde el APK es la
+/// única forma de enterarse), así que no se cancela nunca.
 Future<void> programarAvisosEnSegundoPlano({required bool activar}) async {
   if (!Platform.isAndroid) return;
   try {
-    if (activar || (await leerVistos(lista: 'proceso_activado')).isNotEmpty) {
-      await Workmanager().registerPeriodicTask(
-        _tarea,
-        _tarea,
-        frequency: const Duration(minutes: 15),
-        constraints: Constraints(networkType: NetworkType.connected),
-        existingWorkPolicy: ExistingPeriodicWorkPolicy.keep,
-      );
-    } else {
-      await Workmanager().cancelByUniqueName(_tarea);
-    }
+    await Workmanager().registerPeriodicTask(
+      _tarea,
+      _tarea,
+      frequency: const Duration(minutes: 15),
+      constraints: Constraints(networkType: NetworkType.connected),
+      existingWorkPolicy: ExistingPeriodicWorkPolicy.keep,
+    );
   } catch (_) {}
 }
 

@@ -206,8 +206,8 @@ void main() {
       PreparadorRepo con(String uid) => PreparadorRepo(alumnos: Hive.box('x'), sesiones: Hive.box('x'), perfil: Hive.box('x'), firestore: db, auth: MockFirebaseAuth(signedIn: true, mockUser: MockUser(uid: uid, email: '$uid@gmail.com')));
       await Hive.openBox('x', bytes: Uint8List(0));
       await db.collection('pruebasCalendario').doc('victor@gmail.com').set({'desde': 'consola'});
-      expect(await con('victor').calendarioPermitido(), isTrue);
-      expect(await con('otro').calendarioPermitido(), isFalse);
+      expect(await con('victor').calendarioPermitido(), PermisoCalendario.permitido);
+      expect(await con('otro').calendarioPermitido(), PermisoCalendario.noEnLista);
     });
   });
 }

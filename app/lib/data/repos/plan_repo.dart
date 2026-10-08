@@ -79,11 +79,13 @@ class PlanRepo {
   /// Borrado lógico: el cante deja de verse y la baja llega a otros dispositivos.
   Future<void> borrarCante(Cante c) => guardarCante(c.copyWith(borrado: true));
 
-  Future<void> sincronizarCantes() async {
+  /// Devuelve si se pudo (sin red, false). Con [delServidor] no vale la
+  /// caché: es lo que hace «Sincronizar ahora».
+  Future<bool> sincronizarCantes({bool delServidor = false}) async {
     final doc = _docUsuario;
-    if (doc == null) return;
+    if (doc == null) return true;
     try {
-      final snap = await doc.collection('cantes').get();
+      final snap = await doc.collection('cantes').get(delServidor ? const GetOptions(source: Source.server) : null);
       final nube = {for (final d in snap.docs) d.id: Cante.fromJson({...d.data(), 'id': d.id})};
       final locales = {for (final c in _todos()) c.id: c};
       for (final c in Cante.fusionar(locales.values, nube.values)) {
@@ -91,7 +93,38 @@ class PlanRepo {
         if (locales[c.id] == null || marca.isAfter(locales[c.id]!.updatedAt ?? DateTime(0))) await _cantes.put(c.id, c.toJson());
         if (nube[c.id] == null || marca.isAfter(nube[c.id]!.updatedAt ?? DateTime(0))) await doc.collection('cantes').doc(c.id).set(c.toJson());
       }
-    } catch (_) {}
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// Las clases que programan los preparadores, en tiempo real (mientras la
+  /// app está abierta): cada cambio llega al momento. Null sin sesión.
+  Stream<List<Cante>>? escucharCantesDePreparadores() {
+    final doc = _docUsuario;
+    if (doc == null) return null;
+    return doc
+        .collection('cantes')
+        .where('preparador', isNull: false)
+        .snapshots()
+        .map((snap) => [for (final d in snap.docs) Cante.fromJson({...d.data(), 'id': d.id})])
+        .handleError((_) {});
+  }
+
+  /// Guarda en local los cantes de [nube] más recientes que los que hay.
+  /// Devuelve cuántos han cambiado.
+  Future<int> incorporar(List<Cante> nube) async {
+    var n = 0;
+    for (final c in nube) {
+      final local = _cantes.get(c.id) as Map?;
+      final marca = local == null ? null : Cante.fromJson(local).updatedAt;
+      if (local == null || (c.updatedAt ?? DateTime(0)).isAfter(marca ?? DateTime(0))) {
+        await _cantes.put(c.id, c.toJson());
+        n++;
+      }
+    }
+    return n;
   }
 
   // ---------------------------------------------------------------------- Plan
@@ -218,11 +251,13 @@ class PlanRepo {
 
   // ------------------------------------------------------------------- General
 
-  Future<void> sincronizarTodo() async {
-    await sincronizarCantes();
+  /// Devuelve si los cantes se pudieron sincronizar (lo demás se intenta igual).
+  Future<bool> sincronizarTodo({bool delServidor = false}) async {
+    final ok = await sincronizarCantes(delServidor: delServidor);
     await sincronizarPlan();
     await sincronizarAgendas();
     await sincronizarCronogramas();
+    return ok;
   }
 
   Future<void> borrarDatosLocales() async {

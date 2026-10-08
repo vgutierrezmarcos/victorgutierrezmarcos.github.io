@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -13,6 +14,7 @@ import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../cronograma/propuesta_page.dart';
+import 'materiales_page.dart';
 import 'preparador_page.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
@@ -54,7 +56,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
   }
 
   Future<void> _nuevaClaseFija(Alumno a) async {
-    final f = await elegirFranja(context, titulo: 'Clase fija con ${a.nombre}', dia: DateTime.now().weekday, conRitmo: true);
+    final f = await elegirFranja(context, titulo: 'Clase fija con ${a.nombre}', dia: DateTime.now().weekday, minutos: ref.read(perfilPreparadorProvider).minutosClase, conRitmo: true);
     if (f == null) return;
     final c = ClaseFija(id: nuevoId(), diaSemana: f.dia, minutoDelDia: f.minuto, minutos: f.minutos, cadaSemanas: f.cada, desde: DateTime.now());
     await ref.read(alumnosProvider.notifier).guardar(a.copyWith(clasesFijas: [...a.clasesFijas, c]));
@@ -158,6 +160,15 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
+            if (a.enlazado && (ref.watch(estadoRedProvider).valueOrNull?.verificado ?? false))
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MaterialFormPage(alumnoUid: a.uid))),
+                  icon: const Icon(Icons.add_link, size: 18),
+                  label: Text('Compartir material con ${a.nombre}'),
+                ),
+              ),
             if (a.enlazado && progreso?.value != null)
               Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -184,7 +195,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                       dense: true,
                       leading: Icon(Icons.repeat, color: context.esquema.primary),
                       title: Text('${c.cadaSemanas == 1 ? 'Cada' : 'Uno de cada dos'} ${nombresDias[c.diaSemana - 1]} a las ${horaMinutos(c.minutoDelDia)}'),
-                      subtitle: Text('${c.minutos} min · desde el ${fechaCorta(c.desde)}', style: context.textos.labelSmall),
+                      subtitle: Text('${textoDuracion(c.minutos)} · desde el ${fechaCorta(c.desde)}', style: context.textos.labelSmall),
                       trailing: IconButton(tooltip: 'Quitar', icon: const Icon(Icons.close), onPressed: () => _quitarClaseFija(a, c)),
                     ),
                 ]),

@@ -298,8 +298,59 @@ void main() {
     });
   });
 
+  group('clase con varios temas, exposición y videollamada', () {
+    test('ida y vuelta por JSON y compatibilidad con las clases antiguas', () {
+      final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), minutos: 120, exposicion: 20, temaA: DateTime(2026, 10, 8, 17), temasMandados: const ['3.A.7', '3.B.2'], temaSorteado: true, numTemas: 2, unoPorParte: true, plataforma: plataformaTeams);
+      final j = c.toJson();
+      // El primero también en singular, para las versiones anteriores.
+      expect(j['temaMandado'], '3.A.7');
+      expect(j['temasMandados'], ['3.A.7', '3.B.2']);
+      final otra = Cante.fromJson(j);
+      expect(otra.temasMandados, ['3.A.7', '3.B.2']);
+      expect(otra.temaMandado, '3.A.7');
+      expect(otra.mandaTema, isTrue);
+      expect(otra.exposicion, 20);
+      expect(otra.minutos, 120);
+      expect(otra.numTemas, 2);
+      expect(otra.unoPorParte, isTrue);
+      expect(otra.plataforma, plataformaTeams);
+      // Una clase guardada por una versión anterior: un solo tema y sin exposición.
+      final antigua = Cante.fromJson({'id': 'v', 'fecha': '2026-10-08T18:00:00.000', 'minutos': 30, 'temaA': '2026-10-08T17:00:00.000', 'temaMandado': '3.B.5'});
+      expect(antigua.temasMandados, ['3.B.5']);
+      expect(antigua.exposicion, 30);
+      expect(antigua.numTemas, 2);
+      expect(antigua.copyWith(sinTema: true).mandaTema, isFalse);
+    });
+
+    test('la videollamada se deduce del enlace', () {
+      expect(plataformaDeEnlace('https://meet.google.com/abc-defg-hij'), plataformaMeet);
+      expect(plataformaDeEnlace('https://teams.live.com/meet/9311'), plataformaTeams);
+      expect(plataformaDeEnlace('https://teams.microsoft.com/l/meetup-join/x'), plataformaTeams);
+      expect(plataformaDeEnlace('https://zoom.us/j/1'), '');
+      final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8), modalidad: Modalidad.online, enlace: 'https://teams.live.com/meet/1');
+      expect(c.plataformaEfectiva, plataformaTeams);
+      expect(c.copyWith(plataforma: plataformaMeet).plataformaEfectiva, plataformaMeet);
+      expect(textoDuracion(120), '2 h');
+      expect(textoDuracion(90), '1 h 30 min');
+      expect(textoDuracion(45), '45 min');
+    });
+
+    test('el perfil del preparador propone la antelación del examen para los temas de la clase', () {
+      Oposiciones.actual = Oposiciones.tcee;
+      const p = PerfilPreparador();
+      expect(p.antelacionTema(temas: 2, ejercicio: 3), 45 * 60);
+      expect(p.antelacionTema(temas: 1, ejercicio: 3), 1350);
+      expect(p.copyWith(segundosTemaAntes: 600).antelacionTema(temas: 2), 600);
+      expect(p.copyWith(segundosTemaAntes: 600).copyWith(antelacionDelExamen: true).segundosTemaAntes, isNull);
+      expect(p.minutosClase, 120);
+      expect(p.temasPorClase, 2);
+      expect(p.plataforma, plataformaMeet);
+      expect(PerfilPreparador.fromJson({'activo': true}).minutosClase, 120);
+    });
+  });
+
   test('recordatorios de las clases del preparador', () {
-    final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.online, enlace: 'https://meet.google.com/abc', temaA: DateTime(2026, 10, 7, 18), temaMandado: '3.A.7');
+    final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), modalidad: Modalidad.online, enlace: 'https://meet.google.com/abc', temaA: DateTime(2026, 10, 7, 18), temasMandados: const ['3.A.7']);
     final a = Notificaciones.avisosDeClase(c, alumno: 'Ana', antelaciones: [60, PerfilPreparador.avisoVispera, 15], tema: c.temaMandado);
     expect(a.map((x) => x.cuando), [DateTime(2026, 10, 7, 20), DateTime(2026, 10, 8, 17, 45), DateTime(2026, 10, 8, 17)]);
     expect(a.first.titulo, 'Clase con Ana');

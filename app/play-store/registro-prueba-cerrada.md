@@ -7,7 +7,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Dato | Valor |
 |---|---|
 | Pista | Prueba cerrada |
-| Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) |
+| Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) y 1.15.0 (24), el 8 oct. |
 | Día en que se llegó a 12 testers apuntados | 8 oct. 2026, 11:30 |
 | Día en que se pueden pedir producción | 22 oct. 2026 (comprobar en el Panel de Play Console) |
 | Testers apuntados | 12 el 8 oct. (seguir sumando) |
@@ -25,6 +25,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
 | 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
 | 8 oct. 2026 | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
+| 8 oct. 2026 | 1.15.0 (24) | Mejoras pedidas por los testers: permisos de avisos al abrir, cambios de clase en tiempo real con aviso, notificaciones que abren la clase, dos temas por clase, clases de 2 h, ficha de la clase editable, Meet o Teams, materiales del preparador, pizarra compartida, orden del directorio, sección Cantes más clara, actualizaciones desde Play. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -62,6 +63,23 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Foto de perfil de Google:** se quedaba la del primer inicio de sesión; ahora se renueva.
 - **Google Calendar y Meet (en pruebas, con unos pocos preparadores):** las clases van al calendario del preparador con su reunión de Meet y la invitación al alumno.
 
+### 8 oct. 2026 (testers, para la 1.15.0)
+- **A algunos no les llegaban las notificaciones:** la app nunca pedía el permiso de notificaciones (solo al activar a mano un interruptor), así que en Android 13+ los avisos de clases y del tema no se mostraban. Ahora se pide al abrir la app la primera vez (con la explicación de para qué sirve cada aviso), cada interruptor lo comprueba y, si el sistema lo tiene denegado, lo dice con un botón a los ajustes; en Hoy sale un aviso si están desactivadas.
+- **Un cambio de hora o una cancelación no le llegaban al alumno** (ni con «Sincronizar ahora»): la copia a la agenda del alumno se escribía una sola vez y en silencio, y una clase cancelada desaparecía de «Próximos». Ahora el alumno escucha los cambios en tiempo real, las copias que fallan se reintentan y se concilian al sincronizar, la ficha de la clase muestra si ha llegado, las canceladas se ven como tales (con «pedir clase suelta») y llega un aviso «ha movido tu clase» / «ha cancelado tu clase».
+- **Las notificaciones no llevaban a ningún sitio:** ahora cada aviso abre su pantalla (la clase, el tablón, la semana, Mi preparador, el test diario) y en Android lleva el botón «Ver».
+- **Recordatorio diario:** se explica qué recuerda (el test diario de 10 preguntas) y no llega si el test ya está hecho ese día.
+- **Cerca del examen se cantan dos temas:** por defecto se mandan y se sortean dos temas por clase (se puede dejar en uno), elegidos por el preparador o a suerte entre los que lleva el alumno, con opción «uno de cada parte»; el esquema del alumno es el de dos temas, como en el examen.
+- **Al alumno le salía «Sacar bola y cantar» en una clase del preparador:** ya no; él solo recibe los temas y canta (o cronometra).
+- **Duración de las clases:** antes todo partía de 30 min (que era el tiempo de exposición). Ahora una clase dura 2 h por defecto (se cambia en Ajustes y en cada clase) y la exposición por tema va aparte en el cronómetro.
+- **No era fácil ver que la clase se edita con el lápiz:** la ficha de la clase cambia al momento día y hora, duración, presencial u online (con crear la reunión de Meet o Teams y pegar el enlace al volver), temas que se cantan y exposición; sigue el «Editar todo».
+- **Orden de los preparadores:** primero los del alumno, luego con los que ha tenido clase, luego quienes administran la red y el resto al azar.
+- **Cantes más claro:** «Añadir» en la agenda ofrece un cante propio, reservar clase con el preparador o pedir una clase suelta, sin ir a «Más»; tarjetas de ayuda en cada subpestaña y un icono de ayuda.
+- **Compartir materiales:** el preparador comparte enlaces (Drive, PDF, vídeos) con título, nota y tema, para todos sus alumnos o para algunos; al alumno le llega un aviso y los ve en Mi preparador y en el tema.
+- **Pizarra compartida:** durante la clase, preparador y alumno dibujan en una pizarra en blanco que se ve en los dos dispositivos al instante (solo se comparte lo dibujado), en el móvil, la tableta o el ordenador.
+- **Teams además de Meet:** el preparador elige la videollamada que propone.
+- **Actualizaciones:** instalada desde Play, la app ofrece la actualización dentro de la propia app; desde el APK, avisa con una notificación.
+- **Google Calendar:** la tarjeta explica por qué no está disponible todavía (cuenta no apuntada en la lista de prueba) y la clase muestra si está en el calendario y el error de Google si lo hay.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»
@@ -80,4 +98,4 @@ El formulario tiene tres bloques. Hay que adaptar los números y nombres al fina
 
 **Preparación para producción**
 - *¿Qué cambiaste por lo aprendido en la prueba?* Ver «Cambios durante la prueba».
-- *¿Cómo decidiste que está lista?* Los testers la usan a diario sin errores bloqueantes, los fallos encontrados están corregidos y hay pruebas automáticas (147) y pruebas de las reglas de seguridad de la base de datos (128 casos) que pasan en cada versión.
+- *¿Cómo decidiste que está lista?* Los testers la usan a diario sin errores bloqueantes, los fallos encontrados están corregidos y hay pruebas automáticas (más de 180) y pruebas de las reglas de seguridad de la base de datos (180 casos) que pasan en cada versión.

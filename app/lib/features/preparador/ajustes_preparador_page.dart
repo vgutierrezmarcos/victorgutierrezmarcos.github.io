@@ -2,18 +2,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../core/notificaciones.dart';
-import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
+import '../plan/cantes_util.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
+import '../inicio/permisos_sheet.dart';
 
 /// Ajustes del preparador: nombre, teléfono para las sustituciones, avisos y
 /// huecos libres que sus alumnos pueden reservar (desactivado por defecto).
@@ -76,7 +77,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
     }
 
     Future<void> nuevoHueco() async {
-      final f = await elegirFranja(context, titulo: 'Hueco libre');
+      final f = await elegirFranja(context, titulo: 'Hueco libre', minutos: perfil.minutosClase);
       if (f == null) return;
       final h = Hueco(diaSemana: f.dia, minutoDelDia: f.minuto, minutos: f.minutos);
       if (!perfil.huecos.contains(h)) await notifier.guardar(perfil.copyWith(huecos: [...perfil.huecos, h]));
@@ -202,6 +203,39 @@ class AjustesPreparadorPage extends ConsumerWidget {
           Tarjeta(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Duración habitual', style: context.textos.titleSmall),
+              Text('Lo que ocupa una clase en tu agenda y en el calendario (el cronómetro de exposición de cada tema va aparte). Se puede cambiar en cada clase.', style: context.textos.labelSmall),
+              const SizedBox(height: 6),
+              Wrap(spacing: 6, runSpacing: 6, children: [
+                for (final m in {...duracionesClase, perfil.minutosClase}.toList()..sort())
+                  ChoiceChip(label: Text(textoDuracion(m)), selected: perfil.minutosClase == m, onSelected: (_) => notifier.guardar(perfil.copyWith(minutosClase: m))),
+              ]),
+              const SizedBox(height: 12),
+              Text('Temas por clase', style: context.textos.titleSmall),
+              Text('Cuántos temas canta el alumno en cada clase (cerca del examen, lo normal son dos). Se puede cambiar en cada clase.', style: context.textos.labelSmall),
+              const SizedBox(height: 6),
+              SegmentedButton<int>(
+                showSelectedIcon: false,
+                segments: const [ButtonSegment(value: 1, label: Text('1 tema')), ButtonSegment(value: 2, label: Text('2 temas'))],
+                selected: {perfil.temasPorClase.clamp(1, 2)},
+                onSelectionChanged: (s) => notifier.guardar(perfil.copyWith(temasPorClase: s.first)),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+              ),
+              const SizedBox(height: 12),
+              Text('Videollamadas', style: context.textos.titleSmall),
+              Text('La que propones para tus clases online. El alumno entra con el enlace que pongas; vale también cualquier otro.', style: context.textos.labelSmall),
+              const SizedBox(height: 6),
+              SegmentedButton<String>(
+                showSelectedIcon: false,
+                segments: const [
+                  ButtonSegment(value: plataformaMeet, label: Text('Google Meet'), icon: Icon(Icons.video_call_outlined, size: 18)),
+                  ButtonSegment(value: plataformaTeams, label: Text('Microsoft Teams'), icon: Icon(Icons.groups_outlined, size: 18)),
+                ],
+                selected: {perfil.plataforma == plataformaTeams ? plataformaTeams : plataformaMeet},
+                onSelectionChanged: (s) => notifier.guardar(perfil.copyWith(plataforma: s.first)),
+                style: const ButtonStyle(visualDensity: VisualDensity.compact),
+              ),
+              const SizedBox(height: 12),
               Text('Recordarme cada clase', style: context.textos.titleSmall),
               const SizedBox(height: 6),
               Wrap(spacing: 6, runSpacing: 6, children: [
@@ -210,7 +244,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                     label: Text(t),
                     selected: perfil.avisosClase.contains(m),
                     onSelected: (v) async {
-                      if (v && !kIsWeb) await Notificaciones.pedirPermiso();
+                      if (v && !await asegurarAvisos(context)) return;
                       await notifier.guardar(perfil.copyWith(avisosClase: v ? [...perfil.avisosClase, m] : perfil.avisosClase.where((x) => x != m).toList()));
                       await ref.read(sesionesProvider.notifier).reprogramarAvisos();
                     },
@@ -226,7 +260,12 @@ class AjustesPreparadorPage extends ConsumerWidget {
               ),
               const SizedBox(height: 6),
               Wrap(spacing: 6, runSpacing: 6, children: [
-                for (final h in {...antelacionesTema, perfil.segundosTemaAntes}.toList()..sort())
+                ChoiceChip(
+                  label: Text('Como en el examen (${textoAntelacion(perfil.copyWith(antelacionDelExamen: true).antelacionTema(temas: perfil.temasPorClase))} para ${perfil.temasPorClase == 1 ? 'un tema' : 'dos temas'})'),
+                  selected: perfil.segundosTemaAntes == null,
+                  onSelected: (_) => notifier.guardar(perfil.copyWith(antelacionDelExamen: true)),
+                ),
+                for (final h in {...antelacionesTema, if (perfil.segundosTemaAntes != null) perfil.segundosTemaAntes!}.toList()..sort())
                   ChoiceChip(label: Text('${textoAntelacion(h)} antes'), selected: perfil.segundosTemaAntes == h, onSelected: (_) => notifier.guardar(perfil.copyWith(segundosTemaAntes: h))),
                 ActionChip(
                   label: const Text('Otra'),
@@ -253,9 +292,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                 style: context.textos.labelSmall,
               ),
               onChanged: (v) async {
-                if (v) {
-                  kIsWeb ? await pedirPermisoNotificacionesNavegador() : await Notificaciones.pedirPermiso();
-                }
+                if (v && !await asegurarAvisos(context)) return;
                 await notifier.guardar(perfil.copyWith(avisosSustitucion: v));
               },
             ),
@@ -263,9 +300,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
               value: perfil.avisosReservas,
               title: const Text('Reservas: cuando un alumno reserva clase'),
               onChanged: (v) async {
-                if (v) {
-                  kIsWeb ? await pedirPermisoNotificacionesNavegador() : await Notificaciones.pedirPermiso();
-                }
+                if (v && !await asegurarAvisos(context)) return;
                 await notifier.guardar(perfil.copyWith(avisosReservas: v));
               },
             ),
@@ -295,7 +330,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                       dense: true,
                       leading: const Icon(Icons.event_available_outlined),
                       title: Text('${nombresDias[h.diaSemana - 1]} · ${horaMinutos(h.minutoDelDia)}'),
-                      subtitle: Text('${h.minutos} min', style: context.textos.labelSmall),
+                      subtitle: Text(textoDuracion(h.minutos), style: context.textos.labelSmall),
                       trailing: IconButton(
                         tooltip: 'Quitar',
                         icon: const Icon(Icons.close),

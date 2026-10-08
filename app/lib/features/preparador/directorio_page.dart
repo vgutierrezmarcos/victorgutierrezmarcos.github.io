@@ -33,6 +33,7 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
   @override
   Widget build(BuildContext context) {
     final lista = ref.watch(verificadosProvider);
+    final ordenados = ref.watch(directorioOrdenadoProvider);
     return Scaffold(
       appBar: BarraWeb(title: const Text('Preparadores verificados')),
       body: RefreshIndicator(
@@ -74,10 +75,26 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
           ]),
           const SizedBox(height: 10),
           ...switch (lista) {
-            AsyncData(:final value) => () {
-                final filtrados = value.where(_pasa).toList();
+            AsyncData() => () {
+                final filtrados = ordenados.where((e) => _pasa(e.$2)).toList();
                 if (filtrados.isEmpty) return [Text('No hay preparadores verificados con estos filtros todavía.', style: context.textos.bodySmall)];
-                return [for (final v in filtrados) FichaPreparador(v: v)];
+                // Subtítulos solo cuando hay grupos que distinguir.
+                final conGrupos = filtrados.any((e) => e.$1 == GrupoDirectorio.mios || e.$1 == GrupoDirectorio.conClase);
+                final widgets = <Widget>[];
+                GrupoDirectorio? anterior;
+                for (final (g, v) in filtrados) {
+                  if (g != anterior) {
+                    final titulo = switch (g) {
+                      GrupoDirectorio.mios => 'Tus preparadores',
+                      GrupoDirectorio.conClase => 'Con los que has tenido clase',
+                      _ => conGrupos && (anterior == GrupoDirectorio.mios || anterior == GrupoDirectorio.conClase) ? 'Otros preparadores' : null,
+                    };
+                    if (titulo != null) widgets.add(Subtitulo(titulo));
+                    anterior = g;
+                  }
+                  widgets.add(FichaPreparador(v: v));
+                }
+                return widgets;
               }(),
             AsyncError() => [Text('No se ha podido cargar la lista. Desliza hacia abajo para reintentarlo.', style: context.textos.bodySmall)],
             _ => [const Center(child: CircularProgressIndicator())],

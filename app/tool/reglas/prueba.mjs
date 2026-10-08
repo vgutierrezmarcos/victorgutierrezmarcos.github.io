@@ -1,6 +1,6 @@
 // Prueba de firestore.rules con el emulador: node prueba.mjs (dentro de emulators:exec)
 import { initializeTestEnvironment, assertSucceeds, assertFails } from '@firebase/rules-unit-testing';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, collection, getDocs, query, where, writeBatch, runTransaction, Timestamp, arrayUnion } from 'firebase/firestore';
 import { readFileSync } from 'node:fs';
 
 const env = await initializeTestEnvironment({ projectId: 'demo-tcee', firestore: { rules: readFileSync(process.argv[2], 'utf8'), host: '127.0.0.1', port: 8080 } });
@@ -27,6 +27,7 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/alu/cantes/propio'), { id: 'propio', estado: 'pendiente' });
   await setDoc(doc(d, 'users/alu/cantes/clase'), { id: 'clase', preparador: 'paula', estado: 'pendiente' });
   await setDoc(doc(d, 'users/alu/cantes/clase/reloj/estado'), { corriendo: false, por: 'alu' });
+  await setDoc(doc(d, 'users/alu/cantes/clase/pizarra/p1'), { n: 1, trazos: [] });
   await setDoc(doc(d, 'temasAnticipados/futuro'), { alumno: 'alu', preparador: 'paula', tema: '3.A.7', visibleDesde: Timestamp.fromMillis(Date.now() + 3600e3) });
   await setDoc(doc(d, 'temasAnticipados/pasado'), { alumno: 'alu', preparador: 'paula', tema: '3.A.8', visibleDesde: Timestamp.fromMillis(Date.now() - 60e3) });
   await setDoc(doc(d, 'users/alu/preparadores/paula'), { uid: 'paula' });
@@ -59,12 +60,22 @@ await caso('…pero no en nombre de otro', () => assertFails(updateDoc(doc(db('p
 await caso('…ni cambiando el cronograma directamente', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { temas: [] })));
 await caso('…ni en el que no comparte', () => assertFails(updateDoc(doc(db('paula'), 'users/alu/cronogramas/priv'), { propuesta: { de: 'paula' }, updatedAt: 'y' })));
 
-console.log('Cronómetro compartido y tema anticipado');
+console.log('Cronómetro y pizarra compartidos, tema anticipado');
 await caso('el preparador de la clase lee el reloj', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cantes/clase/reloj/estado'))));
 await caso('…y lo maneja', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/cantes/clase/reloj/estado'), { corriendo: true, por: 'paula' })));
 await caso('el alumno también', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/cantes/clase/reloj/estado'), { corriendo: false, por: 'alu' })));
 await caso('otro preparador no lo toca', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cantes/clase/reloj/estado'))));
 await caso('el preparador no usa el reloj de un cante propio del alumno', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/propio/reloj/estado'), { corriendo: true })));
+await caso('el preparador de la clase lee la pizarra', () => assertSucceeds(getDoc(doc(db('paula'), 'users/alu/cantes/clase/pizarra/p1'))));
+await caso('…y lista sus páginas', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/cantes/clase/pizarra'))));
+await caso('…y dibuja', () => assertSucceeds(updateDoc(doc(db('paula'), 'users/alu/cantes/clase/pizarra/p1'), { trazos: arrayUnion({ i: 'a', u: 'paula', g: 1, p: '1,1' }) })));
+await caso('…y abre otra página', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/cantes/clase/pizarra/p2'), { n: 2, trazos: [] })));
+await caso('el alumno también dibuja', () => assertSucceeds(updateDoc(doc(db('alu'), 'users/alu/cantes/clase/pizarra/p1'), { trazos: arrayUnion({ i: 'b', u: 'alu', g: 1, p: '2,2' }) })));
+await caso('otro preparador verificado no ve la pizarra', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cantes/clase/pizarra/p1'))));
+await caso('otro opositor tampoco', () => assertFails(getDoc(doc(db('pepe'), 'users/alu/cantes/clase/pizarra/p1'))));
+await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), 'users/alu/cantes/clase/pizarra/p1'))));
+await caso('el preparador no usa la pizarra de un cante propio del alumno', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/propio/pizarra/p1'), { n: 1, trazos: [] })));
+await caso('…ni otra subcolección de la clase', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cantes/clase/otra/x'), { a: 1 })));
 await caso('el alumno no lee el tema antes de su hora', () => assertFails(getDoc(doc(db('alu'), 'temasAnticipados/futuro'))));
 await caso('…y sí después', () => assertSucceeds(getDoc(doc(db('alu'), 'temasAnticipados/pasado'))));
 await caso('…pero no puede listarlos', () => assertFails(getDocs(query(collection(db('alu'), 'temasAnticipados'), where('alumno', '==', 'alu')))));
@@ -72,6 +83,7 @@ await caso('el alumno no adelanta la hora', () => assertFails(updateDoc(doc(db('
 await caso('el alumno no crea uno para leerlo', () => assertFails(setDoc(doc(db('alu'), 'temasAnticipados/mio'), { alumno: 'alu', preparador: 'alu', tema: '3.A.1', visibleDesde: Timestamp.fromMillis(0) })));
 await caso('el preparador lo lee siempre', () => assertSucceeds(getDoc(doc(db('paula'), 'temasAnticipados/futuro'))));
 await caso('el preparador manda un tema a su alumno', () => assertSucceeds(setDoc(doc(db('paula'), 'temasAnticipados/nuevo'), { alumno: 'alu', preparador: 'paula', preparadorNombre: 'Paula', tema: '3.B.2', titulo: 'Comercio', sorteado: false, visibleDesde: Timestamp.fromMillis(Date.now() + 86400e3), updatedAt: 'x' })));
+await caso('…o varios temas', () => assertSucceeds(setDoc(doc(db('paula'), 'temasAnticipados/dos'), { alumno: 'alu', preparador: 'paula', preparadorNombre: 'Paula', tema: '3.B.2', titulo: 'Comercio', temas: ['3.B.2', '3.A.4'], titulos: ['Comercio', 'Renta'], sorteado: true, visibleDesde: Timestamp.fromMillis(Date.now() + 86400e3), updatedAt: 'x' })));
 await caso('…pero no a quien no es su alumno', () => assertFails(setDoc(doc(db('olga'), 'temasAnticipados/ajeno'), { alumno: 'alu', preparador: 'olga', tema: '3.B.2', visibleDesde: Timestamp.fromMillis(Date.now()) })));
 await caso('…ni con campos de más', () => assertFails(setDoc(doc(db('paula'), 'temasAnticipados/raro'), { alumno: 'alu', preparador: 'paula', tema: '3.B.2', visibleDesde: Timestamp.fromMillis(Date.now()), otro: 1 })));
 await caso('otro usuario no lo lee', () => assertFails(getDoc(doc(db('pepe'), 'temasAnticipados/pasado'))));
@@ -158,6 +170,57 @@ await caso('petición con franja de horas', () => assertSucceeds(setDoc(doc(db('
 await caso('…no se coge a una hora fuera de la franja', () => assertFails(updateDoc(doc(db('paula'), 'sustituciones/s3'), { estado: 'cogida', cogidaPor: 'paula', cogidaPorNombre: 'P', hora: '2030-01-08T22:00:00.000', updatedAt: 'x' })));
 await caso('…sí a una hora dentro', () => assertSucceeds(updateDoc(doc(db('paula'), 'sustituciones/s3'), { estado: 'cogida', cogidaPor: 'paula', cogidaPorNombre: 'P', hora: '2030-01-08T18:30:00.000', updatedAt: 'x' })));
 
+console.log('Clase suelta cogida: el sustituto escribe esa clase en la agenda del alumno');
+await env.withSecurityRulesDisabled(async (c) => {
+  const d = c.firestore();
+  await setDoc(doc(d, 'sustituciones/s4'), { id: 's4', alumno: 'luis', fecha: futuro, estado: 'cogida', cogidaPor: 'olga', cogidaPorNombre: 'Olga', paraTodos: true, destinatarios: [], temas: [] });
+  await setDoc(doc(d, 'users/luis/cantes/sust_s4'), { id: 'sust_s4', estado: 'pendiente', sustitucion: 's4' });
+  await setDoc(doc(d, 'users/luis/cantes/propio'), { id: 'propio', estado: 'pendiente' });
+});
+await caso('la sustituta escribe la clase suelta (sin estar enlazada)', () => assertSucceeds(setDoc(doc(db('olga'), 'users/luis/cantes/sust_s4'), { id: 'sust_s4', preparador: 'olga', estado: 'pendiente', sustitucion: 's4', fecha: futuro })));
+await caso('…y la lee', () => assertSucceeds(getDoc(doc(db('olga'), 'users/luis/cantes/sust_s4'))));
+await caso('…pero no sin firmarla', () => assertFails(setDoc(doc(db('olga'), 'users/luis/cantes/sust_s4'), { id: 'sust_s4', preparador: 'paula', estado: 'cancelado' })));
+await caso('…ni toca otros cantes del alumno', () => assertFails(updateDoc(doc(db('olga'), 'users/luis/cantes/propio'), { estado: 'cancelado' })));
+await caso('…ni sus temas', () => assertFails(getDoc(doc(db('olga'), 'users/luis/progress/settings'))));
+await caso('quien no la cogió no la escribe', () => assertFails(setDoc(doc(db('paula'), 'users/luis/cantes/sust_s4'), { id: 'sust_s4', preparador: 'paula', estado: 'cancelado' })));
+await caso('un cante con nombre de clase suelta sin petición no se escribe', () => assertFails(setDoc(doc(db('olga'), 'users/luis/cantes/sust_nada'), { id: 'sust_nada', preparador: 'olga', estado: 'pendiente' })));
+await caso('la sustituta usa el reloj de esa clase', () => assertSucceeds(setDoc(doc(db('olga'), 'users/luis/cantes/sust_s4/reloj/estado'), { corriendo: true, por: 'olga' })));
+await caso('…y su pizarra', () => assertSucceeds(setDoc(doc(db('olga'), 'users/luis/cantes/sust_s4/pizarra/p1'), { n: 1, trazos: [] })));
+await caso('el alumno sigue mandando en su clase', () => assertSucceeds(updateDoc(doc(db('luis'), 'users/luis/cantes/sust_s4'), { notas: 'x' })));
+
+console.log('Materiales');
+await env.withSecurityRulesDisabled(async (c) => {
+  const d = c.firestore();
+  await setDoc(doc(d, 'materiales/m1'), { id: 'm1', preparador: 'paula', paraTodos: true, alumnos: [], titulo: 'A', url: 'https://a' });
+  await setDoc(doc(d, 'materiales/m2'), { id: 'm2', preparador: 'paula', paraTodos: false, alumnos: ['alu'], titulo: 'B', url: 'https://b' });
+  await setDoc(doc(d, 'materiales/m3'), { id: 'm3', preparador: 'paula', paraTodos: false, alumnos: ['otro'], titulo: 'C', url: 'https://c' });
+  await setDoc(doc(d, 'materiales/m4'), { id: 'm4', preparador: 'olga', paraTodos: true, alumnos: [], titulo: 'D', url: 'https://d' });
+});
+const mv = { id: 'm5', preparador: 'paula', preparadorNombre: 'Paula', titulo: 'Esquema', url: 'https://drive.google.com/x', texto: '', tema: '3.A.1', paraTodos: true, alumnos: [], creado: 'x', updatedAt: 'x' };
+await caso('la preparadora verificada comparte un material', () => assertSucceeds(setDoc(doc(db('paula'), 'materiales/m5'), mv)));
+await caso('…pero no firmando como otra', () => assertFails(setDoc(doc(db('paula'), 'materiales/m6'), { ...mv, id: 'm6', preparador: 'admin' })));
+await caso('un no verificado no comparte', () => assertFails(setDoc(doc(db('pepe'), 'materiales/m7'), { ...mv, id: 'm7', preparador: 'pepe' })));
+await caso('una retirada tampoco', () => assertFails(setDoc(doc(db('retirado'), 'materiales/m8'), { ...mv, id: 'm8', preparador: 'retirado' })));
+await caso('…ni con un enlace que no sea http(s)', () => assertFails(setDoc(doc(db('paula'), 'materiales/m9'), { ...mv, id: 'm9', url: 'javascript:alert(1)' })));
+await caso('…ni con campos de más', () => assertFails(setDoc(doc(db('paula'), 'materiales/m9'), { ...mv, id: 'm9', extra: 1 })));
+await caso('…ni sin título', () => assertFails(setDoc(doc(db('paula'), 'materiales/m9'), { ...mv, id: 'm9', titulo: '' })));
+await caso('la preparadora lista los suyos', () => assertSucceeds(getDocs(query(collection(db('paula'), 'materiales'), where('preparador', '==', 'paula')))));
+await caso('…pero no los de otra', () => assertFails(getDocs(query(collection(db('paula'), 'materiales'), where('preparador', '==', 'olga')))));
+await caso('el alumno enlazado lista los que son para todos', () => assertSucceeds(getDocs(query(collection(db('alu'), 'materiales'), where('preparador', '==', 'paula'), where('paraTodos', '==', true)))));
+await caso('…y los dirigidos a él', () => assertSucceeds(getDocs(query(collection(db('alu'), 'materiales'), where('preparador', '==', 'paula'), where('alumnos', 'array-contains', 'alu')))));
+await caso('…pero no todos los de su preparadora sin filtrar', () => assertFails(getDocs(query(collection(db('alu'), 'materiales'), where('preparador', '==', 'paula')))));
+await caso('el alumno lee uno dirigido a él', () => assertSucceeds(getDoc(doc(db('alu'), 'materiales/m2'))));
+await caso('…y no uno dirigido a otro', () => assertFails(getDoc(doc(db('alu'), 'materiales/m3'))));
+await caso('un alumno no enlazado con esa preparadora no ve ni los de todos', () => assertFails(getDoc(doc(db('alu'), 'materiales/m4'))));
+await caso('…ni listándolos', () => assertFails(getDocs(query(collection(db('alu'), 'materiales'), where('preparador', '==', 'olga'), where('paraTodos', '==', true)))));
+await caso('otro opositor no ve nada', () => assertFails(getDoc(doc(db('pepe'), 'materiales/m1'))));
+await caso('el alumno no se añade a los destinatarios', () => assertFails(updateDoc(doc(db('alu'), 'materiales/m3'), { alumnos: ['alu'] })));
+await caso('…ni borra', () => assertFails(deleteDoc(doc(db('alu'), 'materiales/m1'))));
+await caso('la preparadora edita el suyo', () => assertSucceeds(setDoc(doc(db('paula'), 'materiales/m5'), { ...mv, titulo: 'Otro', updatedAt: 'y' })));
+await caso('…no el de otra', () => assertFails(updateDoc(doc(db('paula'), 'materiales/m4'), { titulo: 'x' })));
+await caso('…ni cambia el autor', () => assertFails(setDoc(doc(db('paula'), 'materiales/m5'), { ...mv, preparador: 'olga' })));
+await caso('la preparadora borra el suyo', () => assertSucceeds(deleteDoc(doc(db('paula'), 'materiales/m5'))));
+
 console.log('Huecos y reservas');
 await caso('el preparador publica sus huecos', () => assertSucceeds(setDoc(doc(db('paula'), 'huecos/paula'), { activo: true, huecos: [] })));
 await caso('un no verificado no publica huecos', () => assertFails(setDoc(doc(db('pepe'), 'huecos/pepe'), { activo: true })));
@@ -182,6 +245,8 @@ await env.withSecurityRulesDisabled(async (c) => {
   await setDoc(doc(d, 'users/ana/oposiciones/dce/notes/3_A_1'), { texto: 'privado' });
   await setDoc(doc(d, 'users/ana/oposiciones/dce/preparadores/diana'), { uid: 'diana' });
   await setDoc(doc(d, 'users/ana/oposiciones/dce/preparadores/paula'), { uid: 'paula' });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/cantes/clase'), { id: 'clase', preparador: 'diana', estado: 'pendiente' });
+  await setDoc(doc(d, 'users/ana/oposiciones/dce/cantes/clase/pizarra/p1'), { n: 1, trazos: [] });
   await setDoc(doc(d, 'oposiciones/dce/sustituciones/d1'), { id: 'd1', alumno: 'ana', estado: 'abierta', paraTodos: true, destinatarios: [], ejercicio: 3, temas: [], fecha: futuro });
 });
 await env.withSecurityRulesDisabled(async (c) => { await setDoc(doc(c.firestore(), 'admins/general'), { general: true }); });
@@ -207,6 +272,12 @@ await caso('una de TCEE no coge una sustitución de DCE', () => assertFails(upda
 await caso('una de DCE la coge', () => assertSucceeds(updateDoc(doc(db('diana'), 'oposiciones/dce/sustituciones/d1'), { estado: 'cogida', cogidaPor: 'diana', cogidaPorNombre: 'Diana', updatedAt: 'x' })));
 await caso('una de DCE reserva su código de DCE', () => assertSucceeds(setDoc(doc(db('diana'), 'oposiciones/dce/codigos/DDDDDD'), { uid: 'diana' })));
 await caso('…pero no uno de TCEE', () => assertFails(setDoc(doc(db('diana'), 'codigos/EEEEEE'), { uid: 'diana' })));
+await caso('la preparadora de DCE dibuja en la pizarra de su alumna de DCE', () => assertSucceeds(updateDoc(doc(db('diana'), 'users/ana/oposiciones/dce/cantes/clase/pizarra/p1'), { trazos: arrayUnion({ i: 'a', u: 'diana', g: 1, p: '1,1' }) })));
+await caso('una verificada solo en TCEE no, aunque la alumna la enlace', () => assertFails(getDoc(doc(db('paula'), 'users/ana/oposiciones/dce/cantes/clase/pizarra/p1'))));
+const md = { id: 'd1', preparador: 'diana', preparadorNombre: 'Diana', titulo: 'Esquema', url: 'https://drive.google.com/x', texto: '', tema: null, paraTodos: true, alumnos: [], creado: 'x', updatedAt: 'x' };
+await caso('una verificada de DCE comparte material en DCE', () => assertSucceeds(setDoc(doc(db('diana'), 'oposiciones/dce/materiales/d1'), md)));
+await caso('una de TCEE no comparte en DCE', () => assertFails(setDoc(doc(db('paula'), 'oposiciones/dce/materiales/d2'), { ...md, id: 'd2', preparador: 'paula' })));
+await caso('la alumna de DCE lista los de su preparadora', () => assertSucceeds(getDocs(query(collection(db('ana'), 'oposiciones/dce/materiales'), where('preparador', '==', 'diana'), where('paraTodos', '==', true)))));
 await caso('nadie escribe en una oposición que no existe', () => assertFails(setDoc(doc(db('pepe'), 'oposiciones/otra/solicitudesPreparador/pepe'), { uid: 'pepe' })));
 await caso('se pide la verificación en DCE', () => assertSucceeds(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), { uid: 'pepe', nombre: 'Pepe', paraTodos: true })));
 await caso('el administrador de DCE la ve', () => assertSucceeds(getDoc(doc(db('manuel'), 'oposiciones/dce/solicitudesPreparador/pepe'))));

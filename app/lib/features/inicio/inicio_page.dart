@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/actualizaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
+import 'permisos_sheet.dart';
 import '../cronograma/cronograma_page.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
@@ -38,6 +40,11 @@ class InicioPage extends ConsumerWidget {
     final cante = ref.watch(proximosCantesProvider).firstOrNull;
     final prob = ref.watch(probabilidadAprobarProvider);
     final versionNueva = ref.watch(actualizacionProvider).valueOrNull;
+    final canceladas = ref.watch(canceladasProximasProvider);
+    // Con la app instalada desde Google Play, la actualización se ofrece dentro de la app.
+    ref.listen(actualizacionProvider, (_, v) {
+      if (v.valueOrNull != null) comprobarActualizacionDePlay(context);
+    });
     // El preparador ve primero lo suyo; las cuentas atrás, los cantes y el
     // cronograma son del opositor.
     final opositor = ref.watch(papelProvider) == Papel.opositor;
@@ -88,6 +95,27 @@ class InicioPage extends ConsumerWidget {
                   ]),
                 ),
               ),
+            const TarjetaAvisosDesactivados(),
+            if (opositor)
+              for (final c in canceladas)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Tarjeta(
+                    color: context.esquema.errorContainer.withValues(alpha: 0.35),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
+                    child: Row(children: [
+                      Icon(Icons.event_busy, color: context.esquema.error, size: 30),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}', style: context.textos.titleMedium),
+                          Text('${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedir una clase suelta.', style: context.textos.bodySmall),
+                        ]),
+                      ),
+                      const Icon(Icons.chevron_right),
+                    ]),
+                  ),
+                ),
             if (versionNueva != null)
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
@@ -103,7 +131,7 @@ class InicioPage extends ConsumerWidget {
                       ]),
                     ),
                     const SizedBox(width: 8),
-                    FilledButton(onPressed: () => abrirUrl(context, config?.urlPlayStore ?? config?.urlApk), child: const Text('Actualizar')),
+                    FilledButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: const Text('Actualizar')),
                   ]),
                 ),
               ),
