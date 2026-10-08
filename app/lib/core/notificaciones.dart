@@ -41,6 +41,14 @@ class Notificaciones {
     }
   }
 
+  /// El contenido del aviso más el botón pulsado («Ver», «Empezar el
+  /// esquema»…) como parámetro `accion`. Con `?` si la ruta no llevaba
+  /// parámetros: `/tablon&accion=ver` no sería ninguna ruta.
+  static String? conAccion(String? payload, String? accion) {
+    if (payload == null || accion == null || accion.isEmpty) return payload;
+    return '$payload${payload.contains('?') ? '&' : '?'}accion=$accion';
+  }
+
   static void _tocada(String? contenido) {
     if (contenido == null || contenido.isEmpty) return;
     final f = _alTocar;
@@ -61,7 +69,7 @@ class Notificaciones {
     const ios = DarwinInitializationSettings(requestAlertPermission: false, requestBadgePermission: false, requestSoundPermission: false);
     await _plugin.initialize(
       const InitializationSettings(android: android, iOS: ios),
-      onDidReceiveNotificationResponse: (r) => _tocada(r.actionId == null || r.actionId!.isEmpty ? r.payload : '${r.payload}&accion=${r.actionId}'),
+      onDidReceiveNotificationResponse: (r) => _tocada(conAccion(r.payload, r.actionId)),
     );
     _listo = true;
     // Si la app se ha abierto tocando una notificación.
@@ -69,7 +77,7 @@ class Notificaciones {
       final d = await _plugin.getNotificationAppLaunchDetails();
       if (d?.didNotificationLaunchApp ?? false) {
         final r = d!.notificationResponse;
-        _tocada(r?.actionId == null || r!.actionId!.isEmpty ? r?.payload : '${r.payload}&accion=${r.actionId}');
+        _tocada(conAccion(r?.payload, r?.actionId));
       }
     } catch (_) {}
   }
