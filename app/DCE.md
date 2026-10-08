@@ -75,7 +75,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **Pendiente antes del día 12:**
 - [x] Víctor: subir la 1.14.2 (23) a la prueba cerrada (9 oct.) y preparar Firebase (reglas nuevas y `pruebasCalendario`).
 - [ ] Víctor: comprobar `general: true` en su documento de `admins`.
-- [ ] Víctor: cuando Google apruebe la 1.14.2, descargar su **APK universal firmado** (Explorador de App Bundle → 23) a Descargas y avisar; comprobar en su móvil que Play lo reconoce como la misma app.
+- [x] Víctor: descargar el **APK universal firmado** de la versión 23 (9 oct.). Comprobado: 1.14.2 (23), firmado por Google (SHA-1 `11:1D:E2:24:6D:64:C0:62:E9:20:37:DD:1D:42:C2:6A:33:4C:3D:88`). Guardado en el Escritorio como `oposicion-tcee-1.14.2-google.apk`.
 - [ ] Víctor: probar la 1.14.2 en el móvil (si se quiere ya, también en la prueba interna, que no pasa revisión): cronómetro, botón de oposición, alta de preparador, icono de las notificaciones, foto de perfil de Google.
 - [ ] Víctor: probar **Google Calendar** (ver abajo, «Google Calendar y Meet»).
 - [ ] Manuel: su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
@@ -84,7 +84,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **El día 12 (unos 20 minutos):**
 1. Comprobar que la web de Manuel es pública y sirve `temario.json` (si cambió el temario, regenerar con `scripts/generar-temario-dce.py`).
 2. Fusionar `origin/main` en `dce` (trae los `proceso.json` automáticos; en portada, /oposicion y estilos se queda lo de `dce`) y pasar `dart analyze` y `flutter test`.
-3. Subir el APK de Google: `gh release upload app-latest oposicion-tcee.apk --clobber`.
+3. Subir el APK de Google (Escritorio, `oposicion-tcee-1.14.2-google.apk`, renombrado a `oposicion-tcee.apk`): `gh release upload app-latest oposicion-tcee.apk --clobber`.
 4. Publicar: `git push origin dce:main` (sin forzar; hace falta una cuenta con el permiso `workflow`).
 5. Comprobar en vivo: portada y /oposicion con el aviso, /app/, /app/instalar.html, /app/abrir/ en 1.14.2, `proceso.json`, la descarga del APK.
 6. Si algo sale mal: `git revert -m 1 <fusión>` y push; volver a subir el APK anterior.
