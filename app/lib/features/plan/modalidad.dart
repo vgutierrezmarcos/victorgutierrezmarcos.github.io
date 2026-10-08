@@ -10,8 +10,11 @@ import 'cantes_util.dart';
 /// Presencial u online, con el lugar o el enlace de la videollamada. Para
 /// online propone crear una reunión de Google Meet y pegar su enlace.
 class SelectorModalidad extends StatelessWidget {
-  const SelectorModalidad({super.key, required this.modalidad, required this.onModalidad, required this.lugar, required this.enlace});
+  const SelectorModalidad({super.key, required this.modalidad, required this.onModalidad, required this.lugar, required this.enlace, this.meetAutomatico = false});
   final Modalidad modalidad;
+  /// El preparador tiene conectado Google Calendar: si se deja el enlace
+  /// vacío, la reunión de Meet se crea sola al guardar.
+  final bool meetAutomatico;
   final ValueChanged<Modalidad> onModalidad;
   final TextEditingController lugar;
   final TextEditingController enlace;
@@ -53,6 +56,13 @@ class SelectorModalidad extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 6),
+          if (meetAutomatico)
+            Row(children: [
+              Icon(Icons.event_available_outlined, size: 18, color: context.esquema.primary),
+              const SizedBox(width: 8),
+              Expanded(child: Text('Déjalo vacío y, al guardar, la reunión de Meet se crea sola en tu Google Calendar, con la invitación al alumno.', style: context.textos.labelSmall)),
+            ])
+          else
           Wrap(spacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
             OutlinedButton.icon(
               icon: const Icon(Icons.video_call_outlined, size: 18),

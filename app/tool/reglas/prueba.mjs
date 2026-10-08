@@ -17,6 +17,7 @@ await env.withSecurityRulesDisabled(async (c) => {
   const d = c.firestore();
   await setDoc(doc(d, 'admins/admin'), { desde: 'consola' });
   await setDoc(doc(d, 'admins/jefe@example.org'), { desde: 'consola' });
+  await setDoc(doc(d, 'pruebasCalendario/jefe@example.org'), { desde: 'consola' });
   await setDoc(doc(d, 'preparadoresVerificados/admin'), { uid: 'admin', nombre: 'Víctor', avaladoPor: 'admin', activo: true });
   await setDoc(doc(d, 'preparadoresVerificados/paula'), { uid: 'paula', nombre: 'Paula', avaladoPor: 'admin', activo: true });
   await setDoc(doc(d, 'preparadoresVerificados/retirado'), { uid: 'retirado', nombre: 'Retirado', avaladoPor: 'admin', activo: false });
@@ -110,6 +111,9 @@ const falsoJefe = () => env.authenticatedContext('falso', { email: 'jefe@example
 await caso('administrador por correo: lee su documento', () => assertSucceeds(getDoc(doc(jefe(), 'admins/jefe@example.org'))));
 await caso('…y verifica a alguien', () => assertSucceeds(setDoc(doc(jefe(), 'preparadoresVerificados/porcorreo'), { uid: 'porcorreo', avaladoPor: 'jefe', activo: true })));
 await caso('…pero no con el correo sin verificar', () => assertFails(setDoc(doc(falsoJefe(), 'preparadoresVerificados/otro2'), { uid: 'otro2', avaladoPor: 'falso', activo: true })));
+await caso('calendario: lee su propio permiso de prueba', () => assertSucceeds(getDoc(doc(jefe(), 'pruebasCalendario/jefe@example.org'))));
+await caso('calendario: no lee el de otro', () => assertFails(getDoc(doc(db('pepe'), 'pruebasCalendario/jefe@example.org'))));
+await caso('calendario: nadie se da de alta solo', () => assertFails(setDoc(doc(jefe(), 'pruebasCalendario/jefe@example.org'), { x: 1 })));
 await caso('nadie lee el documento de otro administrador', () => assertFails(getDoc(doc(db('pepe'), 'admins/jefe@example.org'))));
 
 console.log('Códigos');

@@ -78,6 +78,10 @@ List<Cante> serieSemanal(Cante primero, DateTime hasta) {
       alumno: primero.alumno,
       preparador: primero.preparador,
       preparadorNombre: primero.preparadorNombre,
+      // Presencial u online, dónde y el enlace: igual en todas las de la serie.
+      modalidad: primero.modalidad,
+      lugar: primero.lugar,
+      enlace: primero.enlace,
       updatedAt: DateTime.now(),
     ));
   }

@@ -20,6 +20,7 @@ class Alumno {
     this.temas = const [],
     this.uid,
     this.telefono = '',
+    this.email = '',
     this.clasesFijas = const [],
     this.creado,
     this.updatedAt,
@@ -28,6 +29,9 @@ class Alumno {
 
   final String id;
   final String nombre;
+  /// Correo de Google del alumno (el de su cuenta, si se ha enlazado, o el que
+  /// apunte el preparador): se le invita a las clases en Google Calendar.
+  final String email;
   /// Ejercicio que prepara: 3, 4 o 5; 0 = tercero y cuarto.
   final int ejercicio;
   /// Notas privadas del preparador (no se comparten con el alumno).
@@ -47,7 +51,7 @@ class Alumno {
 
   bool get enlazado => uid != null;
 
-  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, String? telefono, List<ClaseFija>? clasesFijas, bool? borrado}) => Alumno(
+  Alumno copyWith({String? nombre, int? ejercicio, String? notas, List<String>? temas, String? uid, bool desenlazar = false, String? telefono, String? email, List<ClaseFija>? clasesFijas, bool? borrado}) => Alumno(
         id: id,
         nombre: nombre ?? this.nombre,
         ejercicio: ejercicio ?? this.ejercicio,
@@ -55,6 +59,7 @@ class Alumno {
         temas: temas ?? this.temas,
         uid: desenlazar ? null : (uid ?? this.uid),
         telefono: telefono ?? this.telefono,
+        email: email ?? this.email,
         clasesFijas: clasesFijas ?? this.clasesFijas,
         creado: creado,
         updatedAt: DateTime.now(),
@@ -69,6 +74,7 @@ class Alumno {
         'temas': temas,
         'uid': uid,
         if (telefono.isNotEmpty) 'telefono': telefono,
+        if (email.isNotEmpty) 'email': email,
         if (clasesFijas.isNotEmpty) 'clasesFijas': clasesFijas.map((c) => c.toJson()).toList(),
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
@@ -83,6 +89,7 @@ class Alumno {
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
         uid: j['uid'] as String?,
         telefono: j['telefono'] as String? ?? '',
+        email: j['email'] as String? ?? '',
         clasesFijas: [for (final c in (j['clasesFijas'] as List?) ?? const []) if (c is Map) ClaseFija.fromJson(c)],
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
@@ -163,6 +170,7 @@ class PerfilPreparador {
     this.avisosClase = const [avisoVispera, 60],
     this.modalidad = '',
     this.ciudad = '',
+    this.calendarioGoogle = false,
     this.updatedAt,
   });
 
@@ -181,6 +189,9 @@ class PerfilPreparador {
   /// Salen en el directorio de preparadores.
   final String modalidad;
   final String ciudad;
+  /// Las clases van a su Google Calendar (con reunión de Meet si son online
+  /// e invitación al alumno). En este dispositivo, con el permiso de Google.
+  final bool calendarioGoogle;
 
   /// Su papel en esta oposición es el de preparador (si no, es opositor). En
   /// una misma oposición no se puede ser las dos cosas.
@@ -206,7 +217,7 @@ class PerfilPreparador {
   final String linkedin;
   final DateTime? updatedAt;
 
-  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad}) => PerfilPreparador(
+  PerfilPreparador copyWith({bool? activo, String? codigo, String? nombre, String? telefono, bool? avisosSustitucion, bool? avisosReservas, bool? reservas, List<Hueco>? huecos, String? linkedin, bool? papelElegido, int? segundosTemaAntes, List<int>? avisosClase, String? modalidad, String? ciudad, bool? calendarioGoogle}) => PerfilPreparador(
         activo: activo ?? this.activo,
         codigo: codigo ?? this.codigo,
         nombre: nombre ?? this.nombre,
@@ -221,6 +232,7 @@ class PerfilPreparador {
         avisosClase: avisosClase ?? this.avisosClase,
         modalidad: modalidad ?? this.modalidad,
         ciudad: ciudad ?? this.ciudad,
+        calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
         updatedAt: DateTime.now(),
       );
 
@@ -239,6 +251,7 @@ class PerfilPreparador {
         'avisosClase': avisosClase,
         if (modalidad.isNotEmpty) 'modalidad': modalidad,
         if (ciudad.isNotEmpty) 'ciudad': ciudad,
+        if (calendarioGoogle) 'calendarioGoogle': true,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
       };
 
@@ -259,6 +272,7 @@ class PerfilPreparador {
           avisosClase: j['avisosClase'] is List ? [for (final x in j['avisosClase'] as List) (x as num).toInt()] : const [avisoVispera, 60],
           modalidad: j['modalidad'] as String? ?? '',
           ciudad: j['ciudad'] as String? ?? '',
+          calendarioGoogle: j['calendarioGoogle'] as bool? ?? false,
           updatedAt: _fecha(j['updatedAt']),
         );
 }

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -8,6 +11,7 @@ import '../models/cronograma.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
+import 'calendario_google.dart';
 
 /// Sección de preparadores. Igual que [PlanRepo]: siempre en local (Hive) y,
 /// si hay sesión, también en Firestore.
@@ -54,6 +58,10 @@ class PreparadorRepo {
         firestore: firestore,
         auth: auth,
       );
+
+  /// Google Calendar del preparador (lo pone la app al crear los servicios;
+  /// sin él, o con la opción apagada, las clases no van al calendario).
+  CalendarioGoogle? calendario;
 
   String? get uid => _auth?.currentUser?.uid;
   bool get conSesion => uid != null && _db != null;
@@ -164,6 +172,75 @@ class PreparadorRepo {
     } catch (_) {}
     await _copiarAlAlumno(s);
     await _entregarTema(s, antes: antes == null ? null : Cante.fromJson(antes));
+    // Al calendario en segundo plano: guardar no espera a Google.
+    if (calendario != null && perfil().calendarioGoogle) {
+      unawaited(llevarAlCalendario(s.id).then((cambio) {
+        if (cambio) alCambiarSesiones?.call();
+      }));
+    }
+  }
+
+  /// Se llama cuando el calendario cambia una clase (su enlace de Meet), para
+  /// que la pantalla la vuelva a leer.
+  void Function()? alCambiarSesiones;
+
+  /// Lo que se está mandando al calendario, por clase: cada envío espera al
+  /// anterior de la misma clase (si no, una clase guardada dos veces seguidas
+  /// podría crear dos eventos).
+  final Map<String, Future<bool>> _colaCalendario = {};
+
+  /// Si el preparador tiene conectado Google Calendar, lleva la clase a su
+  /// calendario (crea, cambia o borra el evento, con su Meet y la invitación
+  /// al alumno) y guarda lo que cambie: el evento y el enlace de la reunión,
+  /// que llega también al alumno. Sin red o sin permiso no pasa nada: la clase
+  /// ya está guardada y se reintenta al volver a guardarla.
+  /// Devuelve si ha cambiado la clase guardada.
+  Future<bool> llevarAlCalendario(String id) {
+    final previo = _colaCalendario[id] ?? Future.value(false);
+    final f = previo.then((_) => _llevarAlCalendario(id));
+    _colaCalendario[id] = f;
+    return f.whenComplete(() {
+      if (identical(_colaCalendario[id], f)) _colaCalendario.remove(id);
+    });
+  }
+
+  Future<bool> _llevarAlCalendario(String id) async {
+    final cal = calendario;
+    final j = _sesiones.get(id) as Map?;
+    if (cal == null || j == null || !perfil().calendarioGoogle) return false;
+    // La versión de ahora (con el evento que dejara el envío anterior).
+    final s = Cante.fromJson(j);
+    if (s.alumno == null) return false;
+    final a = alumno(s.alumno!);
+    try {
+      final nuevo = await cal.sincronizar(s, alumno: a?.nombre ?? '', email: a?.email ?? '', preparador: perfil().nombre, siglas: oposicion.siglas);
+      if (nuevo == null) return false;
+      // Sobre la última versión (por si se ha cambiado mientras tanto): solo
+      // el evento y, si no tenía, el enlace de la reunión.
+      final ultimo = Cante.fromJson(_sesiones.get(id) as Map? ?? j);
+      final guardar = ultimo.copyWith(eventoGoogle: nuevo.eventoGoogle, enlace: ultimo.enlace.isEmpty ? nuevo.enlace : null);
+      await _sesiones.put(id, guardar.toJson());
+      try {
+        await _docUsuario?.collection('sesiones').doc(id).set(guardar.toJson());
+      } catch (_) {}
+      if (guardar.enlace != s.enlace) await _copiarAlAlumno(guardar);
+      return true;
+    } catch (e) {
+      cal.ultimoError = e is DioException ? (e.response?.data?.toString() ?? e.message ?? e.type.name) : e.toString();
+      return false;
+    }
+  }
+
+  /// Al conectar el calendario: lleva todas las clases pendientes que vienen.
+  /// Devuelve cuántas se han llevado.
+  Future<int> llevarClasesAlCalendario({DateTime? ahora}) async {
+    final hoy = ahora ?? DateTime.now();
+    var n = 0;
+    for (final s in sesiones().where((s) => s.pendiente && s.alumno != null && s.fecha.isAfter(hoy))) {
+      await llevarAlCalendario(s.id);
+      if ((Cante.fromJson(_sesiones.get(s.id) as Map)).eventoGoogle.isNotEmpty) n++;
+    }
+    return n;
   }
 
   /// Título de un tema (lo pone la app con el temario cargado), para que el
@@ -224,6 +301,7 @@ class PreparadorRepo {
       // solo sabe a qué hora le llegará.
       ...s.toJson()
         ..remove('alumno')
+        ..remove('eventoGoogle')
         ..remove('temaMandado')
         ..remove('temaSorteado'),
       'titulo': s.titulo.isNotEmpty ? s.titulo : (nombre.isEmpty ? 'Preparador' : 'Con $nombre'),
@@ -239,6 +317,21 @@ class PreparadorRepo {
       await oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
     } catch (_) {
       // Sin red o enlace roto: la sesión queda guardada en el lado del preparador.
+    }
+  }
+
+  /// Si la cuenta puede usar Google Calendar mientras Google no verifica el
+  /// permiso: la apunta el administrador en pruebasCalendario/{correo o uid}.
+  Future<bool> calendarioPermitido() async {
+    if (!conSesion) return false;
+    final yo = _auth!.currentUser!;
+    try {
+      final col = Oposiciones.tcee.red(_db!, 'pruebasCalendario');
+      if ((await col.doc(yo.uid).get()).exists) return true;
+      final email = yo.email?.toLowerCase();
+      return email != null && (await col.doc(email).get()).exists;
+    } catch (_) {
+      return false;
     }
   }
 
@@ -324,9 +417,14 @@ class PreparadorRepo {
       final locales = _todosLosAlumnos();
       for (final e in enlazados.entries) {
         final existente = locales.where((a) => a.uid == e.key).firstOrNull;
-        if (existente != null && !existente.borrado) continue;
+        final email = (e.value['email'] as String?)?.trim() ?? '';
+        if (existente != null && !existente.borrado) {
+          // El correo de su cuenta, para invitarle a las clases en Google Calendar.
+          if (existente.email.isEmpty && email.isNotEmpty) await guardarAlumno(existente.copyWith(email: email));
+          continue;
+        }
         final nombre = (e.value['nombre'] as String?)?.trim() ?? '';
-        await guardarAlumno(Alumno(id: e.key, uid: e.key, nombre: nombre.isEmpty ? (e.value['email'] as String? ?? 'Alumno') : nombre, creado: DateTime.now(), updatedAt: DateTime.now()));
+        await guardarAlumno(Alumno(id: e.key, uid: e.key, nombre: nombre.isEmpty ? (email.isEmpty ? 'Alumno' : email) : nombre, email: email, creado: DateTime.now(), updatedAt: DateTime.now()));
       }
       for (final a in locales.where((a) => a.enlazado && !a.borrado && !enlazados.containsKey(a.uid))) {
         await guardarAlumno(a.copyWith(desenlazar: true));

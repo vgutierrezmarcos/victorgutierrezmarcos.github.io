@@ -11,6 +11,7 @@ import 'app.dart';
 import 'core/avisos_fondo.dart';
 import 'core/cache_http.dart';
 import 'core/constants.dart';
+import 'core/permiso_calendario.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
@@ -64,6 +65,7 @@ Future<Servicios> crearServicios(Oposicion oposicion, {required CacheHttp http, 
   final usuario = await UsuarioRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final plan = await PlanRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
   final preparador = await PreparadorRepo.crear(oposicion: oposicion, firestore: db, auth: auth);
+  if (firebaseDisponible) preparador.calendario = crearCalendario();
   final descargas = await DescargasRepo.crear(oposicion: oposicion);
   await iniciarAvisosEnSegundoPlano(oposicion: oposicion.id);
 

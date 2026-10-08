@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/notificaciones.dart';
+import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
@@ -200,7 +201,13 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
           const TituloSeccion('Presencial u online'),
-          SelectorModalidad(modalidad: _modalidad, onModalidad: (m) => setState(() => _modalidad = m), lugar: _lugar, enlace: _enlace),
+          SelectorModalidad(
+            modalidad: _modalidad,
+            onModalidad: (m) => setState(() => _modalidad = m),
+            lugar: _lugar,
+            enlace: _enlace,
+            meetAutomatico: _sesion && calendarioDisponible && ref.watch(perfilPreparadorProvider).calendarioGoogle,
+          ),
           const TituloSeccion('Qué se canta'),
           SegmentedButton<int>(showSelectedIcon: false, 
             segments: segmentosEjercicio(ambos: true),
