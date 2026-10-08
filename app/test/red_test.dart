@@ -362,6 +362,64 @@ void main() {
     expect(enAgenda.dePreparador, isTrue);
   });
 
+  test('buscar preparador: compatibilidad entre lo que busca el opositor y la ficha y las plazas del preparador', () {
+    final b = Busqueda(id: 'b', alumno: 'alu', ejercicios: const [3], modalidad: Modalidad.online, disponibilidad: const ['2-t', '4-t'], desde: null);
+    const paula = PreparadorVerificado(uid: 'paula', nombre: 'Paula', ejercicios: [3, 4], modalidad: 'online');
+    const olga = PreparadorVerificado(uid: 'olga', nombre: 'Olga', ejercicios: [4], modalidad: 'online');
+    const luis = PreparadorVerificado(uid: 'luis', nombre: 'Luis', ejercicios: [3], modalidad: 'presencial', ciudad: 'Sevilla');
+    expect(compatibilidad(b, olga), 0, reason: 'no prepara el 3.º');
+    expect(compatibilidad(b, luis), 0, reason: 'solo presencial y el opositor quiere online');
+    expect(compatibilidad(b, paula), 40 + 25 + 17, reason: 'sin plazas no se sabe la disponibilidad');
+    expect(compatibilidad(b, paula, plazas: const Plazas(preparador: 'paula', admite: true, disponibilidad: ['2-t', '3-t'])), 40 + 25 + 18, reason: 'un tramo de dos en común');
+    expect(compatibilidad(b, paula, plazas: const Plazas(preparador: 'paula', admite: true, disponibilidad: ['2-t', '4-t'])), 100);
+    // Empieza mucho después de lo que quiere el opositor: resta.
+    final dentroDe4Meses = DateTime.now().add(const Duration(days: 120));
+    expect(compatibilidad(b, paula, plazas: Plazas(preparador: 'paula', admite: true, disponibilidad: const ['2-t', '4-t'], desde: dentroDe4Meses)), 85);
+    // Si el opositor también empieza entonces, no resta.
+    expect(compatibilidad(b.copyWith(desde: dentroDe4Meses), paula, plazas: Plazas(preparador: 'paula', admite: true, disponibilidad: const ['2-t', '4-t'], desde: dentroDe4Meses)), 100);
+    // Presencial en la misma ciudad (sin distinguir mayúsculas) encaja; en otra, no.
+    final sevilla = b.copyWith(modalidad: Modalidad.presencial, ciudad: 'sevilla');
+    expect(compatibilidad(sevilla, luis), greaterThan(0));
+    expect(compatibilidad(sevilla.copyWith(ciudad: 'Madrid'), luis), 0);
+    expect(describirDisponibilidad(['2-t', '4-t', '1-m']), 'lunes por la mañana; martes y jueves por la tarde');
+    expect(b.descripcion, '3.º · Online · 1 clase por semana');
+  });
+
+  test('buscar preparador: el opositor publica sin nombre, el preparador se interesa y deja su contacto; plazas', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', ejercicios: [3], modalidad: 'online', avaladoPor: 'admin').toJson());
+    final alu = RedRepo(firestore: db, auth: sesion('alu', 'Álex'));
+    final paula = RedRepo(firestore: db, auth: sesion('paula', 'Paula'));
+    final b = Busqueda(id: 'b1', alumno: 'alu', ejercicios: const [3], modalidad: Modalidad.online, disponibilidad: const ['2-t'], creada: DateTime.now());
+    await alu.guardarBusqueda(b);
+    expect((await db.doc('busquedas/b1').get()).data()!.containsKey('nombre'), isFalse);
+    expect((await alu.misBusquedas()).single.abierta, isTrue);
+    expect((await paula.busquedasAbiertas()).single.id, 'b1');
+    expect((await alu.busquedasAbiertas()), isEmpty, reason: 'las propias no salen');
+    // Aviso al preparador, una vez.
+    final avisosPaula = await paula.avisosNuevos(vistos: {}, preparador: true);
+    expect(avisosPaula.where((a) => a.id == 'busq:b1').single.ruta, '/busquedas');
+    // Le interesa: deja su contacto; el opositor lo ve y recibe el aviso.
+    await paula.interesarme('b1', Interesado(uid: 'paula', nombre: 'Paula', telefono: '611222333', mensaje: 'Tengo hueco los martes', creado: DateTime.now()));
+    expect(await paula.misIntereses(['b1']), {'b1'});
+    final interesados = await alu.interesados('b1');
+    expect(interesados.single.telefono, '611222333');
+    final avisosAlu = await alu.avisosNuevos(vistos: {}, preparador: false);
+    expect(avisosAlu.where((a) => a.id == 'int:b1:paula').single.ruta, '/buscar-preparador');
+    expect((await alu.avisosNuevos(vistos: {'int:b1:paula'}, preparador: false)).where((a) => a.id.startsWith('int:')), isEmpty);
+    await paula.retirarInteres('b1');
+    expect(await alu.interesados('b1'), isEmpty);
+    // Cerrada, deja de verse en el tablón.
+    await alu.guardarBusqueda(b.copyWith(estado: 'cerrada'));
+    expect(await paula.busquedasAbiertas(), isEmpty);
+    // Plazas: las publica el preparador y las ven los opositores.
+    await paula.guardarPlazas(const Plazas(preparador: 'paula', admite: true, disponibilidad: ['2-t'], telefono: '611222333'));
+    expect((await paula.misPlazas())!.admite, isTrue);
+    expect((await alu.plazasAbiertas()).single.preparador, 'paula');
+    await paula.guardarPlazas((await paula.misPlazas())!.copyWith(admite: false));
+    expect(await alu.plazasAbiertas(), isEmpty);
+  });
+
   test('primer ejercicio: el cante es un dictamen de coyuntura, sin temas', () {
     final s = Sustitucion(id: 'c', alumno: 'a', fecha: DateTime(2026, 11, 3, 18), ejercicio: 1);
     expect(s.coyuntura, isTrue);

@@ -101,6 +101,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
 - [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).
+- [ ] Víctor: **volver a publicar las reglas** (`firestore.rules`, ahora 202 casos): la búsqueda de preparador añade `busquedas`, `interesados` y `plazas`. Sin esto, «Buscar preparador» y «Alumnos nuevos» dan «sin permiso».
 - [x] Víctor: exención de índice `pizarra` → `trazos` creada (8 oct.).
 - [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).
 - [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.

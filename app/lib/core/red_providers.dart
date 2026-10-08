@@ -113,6 +113,63 @@ final misReservasProvider = FutureProvider<List<Reserva>>((ref) {
   return _seguro(ref.watch(redRepoProvider).misReservas);
 });
 
+/// Lo que busca el opositor (la más reciente abierta, o null).
+final miBusquedaProvider = FutureProvider<Busqueda?>((ref) async {
+  ref.watch(usuarioActualProvider);
+  final lista = await _seguro(ref.watch(redRepoProvider).misBusquedas);
+  return lista.where((b) => b.abierta).firstOrNull;
+});
+
+/// Preparadores interesados en la búsqueda del opositor.
+final interesadosProvider = FutureProvider.family<List<Interesado>, String>((ref, busqueda) {
+  ref.watch(usuarioActualProvider);
+  return _seguro(() => ref.watch(redRepoProvider).interesados(busqueda));
+});
+
+/// Plazas del preparador (las suyas; null si nunca las ha puesto).
+final misPlazasProvider = FutureProvider<Plazas?>((ref) async {
+  final e = await ref.watch(estadoRedProvider.future);
+  if (!e.verificado) return null;
+  try {
+    return await ref.watch(redRepoProvider).misPlazas();
+  } catch (_) {
+    return null;
+  }
+});
+
+/// Para el opositor: preparadores verificados que admiten alumnos, con su
+/// ficha y sus plazas, ordenados por compatibilidad con lo que busca (si ha
+/// publicado algo) o, si no, por nombre.
+final preparadoresConPlazasProvider = FutureProvider<List<(PreparadorVerificado, Plazas, int)>>((ref) async {
+  ref.watch(usuarioActualProvider);
+  final red = ref.watch(redRepoProvider);
+  final verificados = await ref.watch(verificadosProvider.future);
+  final plazas = await _seguro(red.plazasAbiertas);
+  final busqueda = await ref.watch(miBusquedaProvider.future);
+  final out = <(PreparadorVerificado, Plazas, int)>[];
+  for (final p in plazas) {
+    final v = verificados.where((v) => v.uid == p.preparador).firstOrNull;
+    if (v == null || v.uid == red.uid) continue;
+    out.add((v, p, busqueda == null ? -1 : compatibilidad(busqueda, v, plazas: p)));
+  }
+  out.sort((a, b) => b.$3 != a.$3 ? b.$3.compareTo(a.$3) : a.$1.nombre.toLowerCase().compareTo(b.$1.nombre.toLowerCase()));
+  return out;
+});
+
+/// Para el preparador: lo que buscan los opositores, con la compatibilidad
+/// con su ficha y sus plazas, y si ya se ha interesado.
+final busquedasProvider = FutureProvider<List<(Busqueda, int, bool)>>((ref) async {
+  final e = await ref.watch(estadoRedProvider.future);
+  if (!e.verificado) return const [];
+  final red = ref.watch(redRepoProvider);
+  final lista = await _seguro(red.busquedasAbiertas);
+  final plazas = await ref.watch(misPlazasProvider.future);
+  final mios = await red.misIntereses(lista.map((b) => b.id));
+  final out = [for (final b in lista) (b, compatibilidad(b, e.verificacion!, plazas: plazas), mios.contains(b.id))];
+  out.sort((a, b) => b.$2 != a.$2 ? b.$2.compareTo(a.$2) : (b.$1.creada ?? DateTime(0)).compareTo(a.$1.creada ?? DateTime(0)));
+  return out;
+});
+
 /// Grupo en el que sale cada preparador en el directorio.
 enum GrupoDirectorio { mios, conClase, autoverificados, resto }
 
@@ -190,7 +247,7 @@ final peticionDeCanteProvider = Provider.family<Sustitucion?, String>((ref, cant
 
 /// Vuelve a pedir a la red todo lo que se muestra.
 void refrescarRed(Ref ref) {
-  for (final p in <ProviderOrFamily>[estadoRedProvider, verificadosProvider, verificadosConRetiradosProvider, solicitudesPendientesProvider, tablonProvider, cogidasPorMiProvider, misPeticionesProvider, reservasRecibidasProvider, misReservasProvider, huecosDeProvider, misMaterialesProvider, materialesParaMiProvider]) {
+  for (final p in <ProviderOrFamily>[estadoRedProvider, verificadosProvider, verificadosConRetiradosProvider, solicitudesPendientesProvider, tablonProvider, cogidasPorMiProvider, misPeticionesProvider, reservasRecibidasProvider, misReservasProvider, huecosDeProvider, misMaterialesProvider, materialesParaMiProvider, miBusquedaProvider, interesadosProvider, misPlazasProvider, preparadoresConPlazasProvider, busquedasProvider]) {
     ref.invalidate(p);
   }
 }
@@ -252,5 +309,5 @@ String origenDeCante(Cante c) => c.sustitucion != null ? 'sustitucion' : (c.prep
 final pendientesPreparadorProvider = Provider<int>((ref) {
   final ahora = DateTime.now();
   final reservas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).length;
-  return reservas + (ref.watch(tablonProvider).valueOrNull?.length ?? 0) + (ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0);
+  return reservas + (ref.watch(tablonProvider).valueOrNull?.length ?? 0) + (ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0) + (ref.watch(busquedasProvider).valueOrNull?.where((b) => !b.$3 && b.$2 > 0).length ?? 0);
 });

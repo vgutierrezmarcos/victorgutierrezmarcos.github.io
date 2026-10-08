@@ -10,6 +10,7 @@ import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import 'buscar_preparador_page.dart';
 import 'directorio_page.dart';
 import 'materiales_widgets.dart';
 import 'verificacion_page.dart';
@@ -74,6 +75,8 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     final ahora = DateTime.now();
     final misPeticiones = (ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
     final materiales = ref.watch(materialesParaMiProvider).valueOrNull ?? const <MaterialCompartido>[];
+    final busqueda = ref.watch(miBusquedaProvider).valueOrNull;
+    final interesados = busqueda == null ? 0 : (ref.watch(interesadosProvider(busqueda.id)).valueOrNull?.length ?? 0);
     void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
 
     return Scaffold(
@@ -142,6 +145,18 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
             if (materiales.isNotEmpty) ...[
               TituloSeccion(vinculos.length > 1 ? 'Materiales de tus preparadores' : 'Materiales de tu preparador'),
               for (final m in materiales) TarjetaMaterial(material: m, subtitulo: vinculos.length > 1 && m.preparadorNombre.isNotEmpty ? 'De ${m.preparadorNombre}' : null),
+            ],
+            if (firebase) ...[
+              const TituloSeccion('¿Buscas preparador?'),
+              FilaEnlace(
+                icono: Icons.person_search_outlined,
+                titulo: 'Buscar preparador',
+                subtitulo: busqueda == null
+                    ? 'Quién admite alumnos y, si cuentas lo que buscas, quién se interesa por ti'
+                    : (interesados == 0 ? 'Tu búsqueda está publicada' : '$interesados ${interesados == 1 ? 'preparador interesado' : 'preparadores interesados'} en prepararte'),
+                final_: interesados == 0 ? null : globo(context, interesados),
+                onTap: () => ir(const BuscarPreparadorPage()),
+              ),
             ],
             if (firebase && usuario != null) ...[
               const TituloSeccion('¿Te han cancelado una clase?'),

@@ -116,7 +116,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
 
   // ------------------------------------------------------------- Dibujar
 
-  Point<double> _virtual(Offset p) => Point(((p.dx - _origen.dx) / _escala).clamp(0, anchoLienzo.toDouble()), ((p.dy - _origen.dy) / _escala).clamp(0, altoLienzo.toDouble()));
+  // [p] viene en píxeles del lienzo (el Listener ya está en su origen).
+  Point<double> _virtual(Offset p) => Point((p.dx / _escala).clamp(0, anchoLienzo.toDouble()), (p.dy / _escala).clamp(0, altoLienzo.toDouble()));
 
   void _bajar(PointerDownEvent e) {
     if (_punteroActivo != null || _sinAcceso || (_actual?.llena ?? false)) return;
@@ -223,7 +224,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                         color: Colors.white,
                         child: Stack(fit: StackFit.expand, children: [
                           RepaintBoundary(child: CustomPaint(painter: _PintorTrazos(actual?.trazos ?? const [], _pendientes, _escala, _colorDe))),
-                          CustomPaint(painter: _PintorEnCurso([for (final p in _enCurso) p - _origen], _miColor, grosores[_grosor] * _escala)),
+                          CustomPaint(painter: _PintorEnCurso(_enCurso, _miColor, grosores[_grosor] * _escala)),
                         ]),
                       ),
                     ),

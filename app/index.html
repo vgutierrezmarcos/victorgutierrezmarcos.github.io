@@ -822,7 +822,6 @@
                             <div class="pantalla" data-pantalla="dce-tema-web"><img loading="lazy" src="promo/dce-tema-web.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="test-estadisticas"><img loading="lazy" src="promo/test-estadisticas.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="cantes-agenda"><img loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt=""></div>
-                            <div class="pantalla" data-pantalla="cantes-anadir"><img loading="lazy" src="promo/cantes-anadir.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="dce-cantar"><img loading="lazy" src="promo/dce-cantar.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="reloj-grande"><img loading="lazy" src="promo/reloj-grande.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="cantes-diario"><img loading="lazy" src="promo/cantes-diario.webp" width="720" height="1560" alt=""></div>
@@ -832,6 +831,8 @@
                             <div class="pantalla" data-pantalla="cronograma-revisar"><img loading="lazy" src="promo/cronograma-revisar.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="esquema"><img loading="lazy" src="promo/esquema.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="dce-probabilidades"><img loading="lazy" src="promo/dce-probabilidades.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="buscar-preparador"><img loading="lazy" src="promo/buscar-preparador.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="buscar-preparador-plazas"><img loading="lazy" src="promo/buscar-preparador-plazas.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="mi-preparador"><img loading="lazy" src="promo/mi-preparador.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="tema-recibido"><img loading="lazy" src="promo/tema-recibido.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="avisos-permiso"><img loading="lazy" src="promo/avisos-permiso.webp" width="720" height="1560" alt=""></div>
@@ -841,6 +842,7 @@
                             <div class="pantalla" data-pantalla="preparador-presentacion"><img loading="lazy" src="promo/preparador-presentacion.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="dce-hoy-preparador"><img loading="lazy" src="promo/dce-hoy-preparador.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="semana"><img loading="lazy" src="promo/semana.webp" width="720" height="1560" alt=""></div>
+                            <div class="pantalla" data-pantalla="busquedas"><img loading="lazy" src="promo/busquedas.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="tema-programar"><img loading="lazy" src="promo/tema-programar.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="clase-detalles"><img loading="lazy" src="promo/clase-detalles.webp" width="720" height="1560" alt=""></div>
                             <div class="pantalla" data-pantalla="materiales"><img loading="lazy" src="promo/materiales.webp" width="720" height="1560" alt=""></div>
@@ -942,13 +944,6 @@
                             <img class="paso-captura" loading="lazy" src="promo/cantes-agenda.webp" width="720" height="1560" alt="Agenda de cantes con el próximo cante y el calendario del mes">
                         </div>
                     </div>
-                    <div class="paso" data-tono="tcee" data-capitulo="cantes" data-pantalla="cantes-anadir">
-                        <div class="paso-tarjeta">
-                            <h4>Añadir, sin perderse</h4>
-                            <p>El botón «Añadir» de la agenda te explica las tres cosas que puedes apuntar: un cante por tu cuenta, reservar clase con tu preparador en uno de sus huecos o pedir una clase suelta a otro preparador. Cada parte de Cantes lleva además una tarjeta de ayuda que puedes cerrar y volver a abrir.</p>
-                            <img class="paso-captura" loading="lazy" src="promo/cantes-anadir.webp" width="720" height="1560" alt="Hoja «¿Qué quieres apuntar?» con las opciones de cante propio, reservar clase y pedir una clase suelta">
-                        </div>
-                    </div>
                     <div class="paso" data-tono="dce" data-capitulo="cantes" data-pantalla="dce-cantar">
                         <div class="paso-tarjeta">
                             <h4>Cantar</h4>
@@ -1020,10 +1015,19 @@
                     </div>
 
                     <!-- 06 · Tu preparador -->
-                    <div class="paso abre" id="preparadores" data-tono="tcee" data-capitulo="preparador" data-pantalla="mi-preparador">
+                    <div class="paso abre" id="preparadores" data-tono="tcee" data-capitulo="preparador" data-pantalla="buscar-preparador-plazas">
                         <div class="paso-tarjeta" data-num="06">
+                            <span class="app-etiqueta">¿Sin preparador?</span>
+                            <h3>Búscalo en la app</h3>
+                            <p>En <em>Más → Mi preparador → Buscar preparador</em> ves qué preparadores verificados <strong>admiten alumnos</strong> (y desde cuándo), ordenados por lo que encajan contigo: el ejercicio, online o presencial en tu ciudad, y los tramos de la semana en los que podéis. Miras su ficha y su LinkedIn y le escribes tú, por WhatsApp si ha dejado el teléfono.</p>
+                            <p>Si cuentas lo que buscas (sin tu nombre ni tu teléfono: ejercicio, modalidad, cuándo puedes, cuántas clases a la semana y desde cuándo, aunque sea dentro de unos meses), los preparadores a los que les interese te dejan su contacto y te llega un aviso. Nadie te escribe sin que lo pidas, y nada te compromete: la conexión en la app la haces después, con su código, cuando os hayáis entendido.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/buscar-preparador-plazas.webp" width="720" height="1560" alt="Buscar preparador: preparadores que admiten alumnos, ordenados por compatibilidad, con LinkedIn y WhatsApp">
+                        </div>
+                    </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="preparador" data-pantalla="mi-preparador">
+                        <div class="paso-tarjeta">
                             <span class="app-etiqueta">Con tu preparador</span>
-                            <h3>Tu preparador y tú, conectados</h3>
+                            <h4>Tu preparador y tú, conectados</h4>
                             <p>En <em>Más → Mi preparador</em>:</p>
                             <ol class="app-pasos">
                                 <li>Tu preparador te da su <strong>código de seis caracteres</strong>.</li>
@@ -1126,6 +1130,13 @@
                             <img class="paso-captura" loading="lazy" src="promo/semana.webp" width="720" height="1560" alt="Mi semana: las clases de cada alumno con su color, una cancelada y una reserva por confirmar">
                         </div>
                     </div>
+                    <div class="paso" data-tono="tcee" data-capitulo="preparar" data-pantalla="busquedas">
+                        <div class="paso-tarjeta">
+                            <h4>Alumnos nuevos</h4>
+                            <p>En tus ajustes dices si admites alumnos, desde cuándo, en qué tramos de la semana podrías dar clase y si pueden escribirte por WhatsApp: lo ven solo los opositores que buscan preparador (los demás preparadores, no). Y en «Opositores que buscan preparador» ves lo que buscan, sin su nombre, ordenado por lo que encaja contigo; si te interesa alguno, le dejas tu contacto y es él quien te escribe.</p>
+                            <img class="paso-captura" loading="lazy" src="promo/busquedas.webp" width="720" height="1560" alt="Opositores que buscan preparador: cada búsqueda con su compatibilidad y el botón para dejarle el contacto">
+                        </div>
+                    </div>
                     <div class="paso" data-tono="tcee" data-capitulo="preparar" data-pantalla="tema-programar">
                         <div class="paso-tarjeta">
                             <h4>Manda los temas antes</h4>
@@ -1157,7 +1168,7 @@
                     <div class="paso" data-tono="dce" data-capitulo="preparar" data-pantalla="dce-preparador">
                         <div class="paso-tarjeta">
                             <h4>Tu sección de preparador</h4>
-                            <p>En <em>Más → Preparador</em>, por partes: tu código, tus clases, tus alumnos, tus materiales, el tablón de clases sueltas, la red de preparadores verificados y tus ajustes (teléfono, duración habitual de las clases, Meet o Teams, avisos, Google Calendar y huecos para reservas).</p>
+                            <p>En <em>Más → Preparador</em>, por partes: tu código, tus clases, tus alumnos, los opositores que buscan preparador, tus materiales, el tablón de clases sueltas, la red de preparadores verificados y tus ajustes (teléfono, alumnos nuevos, duración habitual de las clases, Meet o Teams, avisos, Google Calendar y huecos para reservas).</p>
                             <img class="paso-captura" loading="lazy" src="promo/dce-preparador.webp" width="720" height="1560" alt="Sección del preparador en DCE: código para alumnos, clases y alumnos">
                         </div>
                     </div>

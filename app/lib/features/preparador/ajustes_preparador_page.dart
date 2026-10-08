@@ -11,6 +11,7 @@ import '../../data/models/red.dart';
 import '../plan/cantes_util.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'busquedas_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
@@ -199,6 +200,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
               Text(verificado ? 'Lo ven los opositores en el directorio de preparadores verificados.' : 'Saldrá en el directorio cuando estés verificado.', style: context.textos.labelSmall),
             ]),
           ),
+          const SeccionPlazas(),
           const TituloSeccion('Tus clases'),
           Tarjeta(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
@@ -284,7 +286,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
             child: Column(children: [
             SwitchListTile(
               value: perfil.avisosSustitucion,
-              title: const Text('Clases sueltas: cuando un alumno pide una'),
+              title: const Text('Clases sueltas y opositores que buscan preparador'),
               subtitle: Text(
                 kIsWeb
                     ? 'En el navegador, mientras tengas la app abierta en una pestaña. En el móvil llegan también con la app cerrada.'

@@ -54,6 +54,8 @@ class RedRepo {
   CollectionReference<Map<String, dynamic>> get _sustituciones => oposicion.red(_db!, 'sustituciones');
   CollectionReference<Map<String, dynamic>> get _reservas => oposicion.red(_db!, 'reservas');
   CollectionReference<Map<String, dynamic>> get _materiales => oposicion.red(_db!, 'materiales');
+  CollectionReference<Map<String, dynamic>> get _busquedas => oposicion.red(_db!, 'busquedas');
+  CollectionReference<Map<String, dynamic>> get _plazas => oposicion.red(_db!, 'plazas');
 
   // -------------------------------------------------------------- Verificación
 
@@ -287,6 +289,71 @@ class RedRepo {
 
   Future<void> cambiarReserva(Reserva r, EstadoReserva estado) => _reservas.doc(r.id).update({'estado': estado.name, 'updatedAt': DateTime.now().toIso8601String()});
 
+  // --------------------------------------------------------- Buscar preparador
+
+  /// El opositor publica (o cambia) lo que busca.
+  Future<void> guardarBusqueda(Busqueda b) async {
+    if (!conSesion) throw const ErrorRed('Inicia sesión con Google para buscar preparador.');
+    await _busquedas.doc(b.id).set(b.toJson());
+  }
+
+  Future<void> borrarBusqueda(String id) => _busquedas.doc(id).delete();
+
+  /// Las búsquedas del opositor (abiertas y cerradas, la más reciente primero).
+  Future<List<Busqueda>> misBusquedas() async {
+    if (!conSesion) return const [];
+    final snap = await _busquedas.where('alumno', isEqualTo: uid).get();
+    return [for (final d in snap.docs) Busqueda.fromJson({...d.data(), 'id': d.id})]..sort((a, b) => (b.creada ?? DateTime(0)).compareTo(a.creada ?? DateTime(0)));
+  }
+
+  /// Tablón del preparador verificado: lo que buscan los opositores.
+  Future<List<Busqueda>> busquedasAbiertas() async {
+    if (!conSesion) return const [];
+    final snap = await _busquedas.where('estado', isEqualTo: 'abierta').get();
+    return [for (final d in snap.docs) Busqueda.fromJson({...d.data(), 'id': d.id})].where((b) => b.alumno != uid).toList()..sort((a, b) => (b.creada ?? DateTime(0)).compareTo(a.creada ?? DateTime(0)));
+  }
+
+  /// El preparador dice que le interesa una búsqueda y deja su contacto.
+  Future<void> interesarme(String busqueda, Interesado yo) => _busquedas.doc(busqueda).collection('interesados').doc(uid).set(yo.toJson());
+
+  Future<void> retirarInteres(String busqueda) => _busquedas.doc(busqueda).collection('interesados').doc(uid).delete();
+
+  /// Búsquedas en las que este preparador ya se ha interesado.
+  Future<Set<String>> misIntereses(Iterable<String> busquedas) async {
+    if (!conSesion) return const {};
+    final out = <String>{};
+    for (final b in busquedas) {
+      try {
+        if ((await _busquedas.doc(b).collection('interesados').doc(uid).get()).exists) out.add(b);
+      } catch (_) {}
+    }
+    return out;
+  }
+
+  /// Los preparadores interesados en una búsqueda del opositor.
+  Future<List<Interesado>> interesados(String busqueda) async {
+    if (!conSesion) return const [];
+    final snap = await _busquedas.doc(busqueda).collection('interesados').get();
+    return [for (final d in snap.docs) Interesado.fromJson({...d.data(), 'uid': d.id})]..sort((a, b) => (a.creado ?? DateTime(0)).compareTo(b.creado ?? DateTime(0)));
+  }
+
+  /// Plazas del preparador (las suyas).
+  Future<Plazas?> misPlazas() async {
+    if (!conSesion) return null;
+    final d = await _plazas.doc(uid).get();
+    return d.exists ? Plazas.fromJson(d.data()!) : null;
+  }
+
+  Future<void> guardarPlazas(Plazas p) => _plazas.doc(uid).set(p.toJson());
+
+  /// Preparadores que admiten alumnos nuevos (solo lo pueden leer los
+  /// opositores: a un preparador verificado las reglas no se lo dejan).
+  Future<List<Plazas>> plazasAbiertas() async {
+    if (!conSesion) return const [];
+    final snap = await _plazas.where('admite', isEqualTo: true).get();
+    return [for (final d in snap.docs) Plazas.fromJson(d.data())];
+  }
+
   // --------------------------------------------------------------- Materiales
 
   /// El preparador comparte (o cambia) un material.
@@ -404,6 +471,21 @@ class RedRepo {
       }
       for (final r in (await misReservas()).where((r) => !r.pedida && r.estado != EstadoReserva.cancelada && r.fecha.isAfter(ahora))) {
         out.add(AvisoRed(id: 'resp:${r.id}:${r.estado.name}', titulo: r.estado == EstadoReserva.aceptada ? 'Reserva aceptada' : 'Reserva rechazada', texto: 'Tu clase del ${f(r.fecha)}.', ruta: r.estado == EstadoReserva.aceptada ? '/cantes?cante=res_${r.id}' : '/mas/mi-preparador'));
+      }
+      // Al preparador: opositores que buscan preparador (si prepara ese ejercicio).
+      if (preparador) {
+        for (final b in await busquedasAbiertas()) {
+          if (!(b.creada?.isAfter(reciente) ?? false)) continue;
+          if (verificacion != null && compatibilidad(b, verificacion) == 0) continue;
+          out.add(AvisoRed(id: 'busq:${b.id}', titulo: 'Un opositor busca preparador', texto: '${b.descripcion}. Toca para verlo y, si te interesa, dejarle tu contacto.', ruta: '/busquedas'));
+        }
+      }
+      // Al opositor: preparadores a los que les interesa su búsqueda.
+      for (final b in (await misBusquedas()).where((b) => b.abierta)) {
+        for (final i in await interesados(b.id)) {
+          if (!(i.creado?.isAfter(reciente) ?? false)) continue;
+          out.add(AvisoRed(id: 'int:${b.id}:${i.uid}', titulo: 'A ${i.nombre.isEmpty ? 'un preparador' : i.nombre} le interesa prepararte', texto: 'Toca para ver su perfil y escribirle.', ruta: '/buscar-preparador'));
+        }
       }
       // Materiales que un preparador acaba de compartir conmigo.
       for (final m in await materialesParaMi()) {
