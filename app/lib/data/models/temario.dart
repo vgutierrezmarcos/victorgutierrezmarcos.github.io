@@ -159,6 +159,7 @@ class AppConfig {
     this.urlApk,
     this.urlPlayStore,
     this.urlAppStore,
+    this.calendarioParaTodos = false,
     this.bolasPorParte = const {},
     this.partesARedactar = const {},
     this.urlBoe,
@@ -176,6 +177,9 @@ class AppConfig {
   final String? urlApk;
   final String? urlPlayStore;
   final String? urlAppStore;
+  /// Google Calendar abierto a todos los preparadores (cuando Google haya
+  /// verificado el permiso); si no, solo a la lista `pruebasCalendario`.
+  final bool calendarioParaTodos;
   /// Temas que se extraen de cada parte en el sorteo, por ejercicio, si la web
   /// los cambia. Si no, valen los del examen (`Oposicion.bolasPorParte`).
   final Map<int, int> bolasPorParte;
@@ -207,6 +211,7 @@ class AppConfig {
       urlApk: app['urlApk'] as String?,
       urlPlayStore: app['urlPlayStore'] as String?,
       urlAppStore: app['urlAppStore'] as String?,
+      calendarioParaTodos: app['calendarioParaTodos'] == true,
       bolasPorParte: bolas,
       partesARedactar: redactar,
       urlBoe: conv['urlBoe'] as String?,

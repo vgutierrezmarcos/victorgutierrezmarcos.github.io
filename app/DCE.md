@@ -106,7 +106,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 
 **Versión 1.15.2 (26): buscar preparador y arreglos del móvil (8-9 oct.)**
 - [x] Víctor: reglas publicadas (206 casos) el 9 oct.
-- [ ] Víctor: subir el `.aab` **1.15.2 (26)** (`Escritorio\oposicion-tcee-dce-1.15.2.aab`; la 25 no hace falta) a la prueba cerrada (ya anotado en el registro). Hasta que el móvil tenga la 26, el tema de una clase suelta no se puede mandar (la 24 lo bloquea en la app). Cuando Play lo procese, bajar su **APK universal firmado** (Explorador de App Bundle → versión 26), dejarlo en el Escritorio como `oposicion-tcee.apk`: Claude lo sube a `app-latest` (`gh auth switch -u vgutierrezmarcos`) y pone `versionActual: "1.15.2"` en `oposicion/app-config.json`. Hasta entonces, el APK público es el 1.14.2.
+- [ ] Víctor: subir el `.aab` **1.15.3 (27)** (`Escritorio\oposicion-tcee-dce-1.15.3.aab`; la 25 y la 26 no hacen falta) a la prueba cerrada (ya anotado en el registro). Hasta que el móvil tenga la 26, el tema de una clase suelta no se puede mandar (la 24 lo bloquea en la app). Cuando Play lo procese, bajar su **APK universal firmado** (Explorador de App Bundle → versión 27), dejarlo en el Escritorio como `oposicion-tcee.apk`: Claude lo sube a `app-latest` (`gh auth switch -u vgutierrezmarcos`) y pone `versionActual: "1.15.3"` en `oposicion/app-config.json`. Hasta entonces, el APK público es el 1.14.2.
 - [ ] Víctor: en el móvil, comprobar: el alumno duplicado («Unir fichas» en la clase o en su ficha), mandar temas en una clase suelta, «Empezar el esquema» arranca el cronómetro y el aviso con cuenta atrás (al alumno y a ti), la pizarra (trazo donde se toca, colores, borrador), buscar preparador en los dos lados.
 - [x] Víctor: exención de índice `pizarra` → `trazos` creada (8 oct.).
 - [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).
@@ -117,17 +117,18 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Firebase: reglas con `pruebasCalendario` publicadas y las cuentas de prueba dadas de alta (8 oct.).
 - [x] La tarjeta no aparecía: faltaba el documento `pruebasCalendario/{gmail}`; creado el 8 oct. y la tarjeta sale. Consentimiento de Google superado (app no verificada → «Configuración avanzada») y **conectado** (8 oct., 19:30).
 - [ ] Probar en el móvil (ya conectado): clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. La ficha de la clase muestra el estado en el calendario y el error exacto si lo hay.
-- [ ] Ya se puede (política publicada el 8 oct.). En la pantalla de consentimiento la app sale como «project-1092815793613» y sin enlaces a la política: es lo que arregla este paso. Comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
+- [x] Marca en Google Auth Platform rellenada (9 oct.) y `victorgutierrezmarcos.es` verificado en Search Console (propiedad de dominio, ya existía). Antes: comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
 - [ ] Claude prepara la justificación del permiso (en inglés) y el guion del vídeo; Víctor graba el vídeo (YouTube, oculto) y envía la verificación en el Centro de verificación.
-- [ ] Verificado el permiso: actualización de la app que abra la opción a todos los preparadores (sin la lista `pruebasCalendario`).
+- [ ] Verificado el permiso: poner `"calendarioParaTodos": true` en `oposicion/app-config.json` (bloque `app`) y publicar; la app (desde la 1.15.3) lo lee y abre la opción a todos los preparadores sin versión nueva. Hasta entonces, la lista `pruebasCalendario`.
 - [ ] Mejora pendiente: si el alumno cambia o cancela la clase desde su app, que el calendario del preparador se actualice sin que este vuelva a guardarla.
 
 **Protección de datos (RGPD y LOPDGDD)**
 - [x] Política de privacidad completada (bases legales de la app, corresponsables, encargados, plazos, menores, derechos) y condiciones de uso con el encargo para preparadores (`app/condiciones.html`), enlazadas en la app (8 oct.). Se publican el día 12 con el lanzamiento.
 - [x] Registro de actividades de tratamiento y acuerdo de corresponsabilidad con Manuel, en Claude Docs (8 oct.). Manuel no tiene acceso a Firebase.
-- [x] Acuerdo con Manuel: aceptado por correo el 8 oct. (guardar su respuesta).
-- [ ] Aceptar los términos de tratamiento de datos de Firebase (Configuración del proyecto → Privacidad) y de Google Analytics.
-- [ ] Mirar dónde está la base de datos de Firestore (región) y anotarlo en el registro.
-- [ ] Verificación en dos pasos en la cuenta de Google del proyecto (y en la de Manuel).
+- [x] Acuerdo con Manuel: aceptado por correo el 8 oct.; respuesta guardada (9 oct.).
+- [x] Términos de tratamiento de datos de Firebase aceptados (9 oct.).
+- [ ] Google Analytics: analytics.google.com → Administrar (engranaje abajo a la izquierda) → columna Cuenta → **Configuración de la cuenta** → «Condiciones de tratamiento de datos» / «Enmienda sobre el tratamiento de datos» → Revisar y aceptar (y en la misma pantalla, los ajustes de uso compartido de datos que quieras dejar). Si pide país, España.
+- [x] Región de Firestore: **eur3** (multirregión Europa: Bélgica y Países Bajos, Unión Europea); anotada en el registro de actividades (9 oct.).
+- [x] Verificación en dos pasos en la cuenta del proyecto (9 oct.); Manuel, en la suya.
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 

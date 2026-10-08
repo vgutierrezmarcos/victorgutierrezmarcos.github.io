@@ -50,6 +50,9 @@ import 'widgets/comunes.dart';
 /// como la sección de la web) y Más (preparador, cuenta y ajustes).
 final _router = GoRouter(
   initialLocation: '/hoy',
+  // Una ruta que no existe (un aviso antiguo, un enlace roto) lleva a Hoy en
+  // vez de a la página de error del enrutador, de la que no se puede salir.
+  onException: (_, state, router) => router.go('/hoy'),
   // Rutas de antes de la reorganización (avisos, enlaces guardados): a su sitio nuevo.
   redirect: (context, state) => rutaNueva(state.uri.path),
   routes: [

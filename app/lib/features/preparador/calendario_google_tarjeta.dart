@@ -12,7 +12,19 @@ import '../../widgets/comunes.dart';
 /// el permiso, solo las que apunta el administrador) y, si no, por qué.
 final calendarioPermitidoProvider = FutureProvider<PermisoCalendario>((ref) async {
   ref.watch(usuarioActualProvider);
+  // Verificado el permiso por Google, se abre a todos desde app-config.json
+  // (`app.calendarioParaTodos`) sin publicar una versión nueva.
+  if (await ref.watch(calendarioParaTodosProvider.future)) return PermisoCalendario.permitido;
   return ref.watch(preparadorRepoProvider).calendarioPermitido();
+});
+
+/// Si Google Calendar ya está abierto a todos los preparadores.
+final calendarioParaTodosProvider = FutureProvider<bool>((ref) async {
+  try {
+    return (await ref.watch(configProvider.future)).calendarioParaTodos;
+  } catch (_) {
+    return false;
+  }
 });
 
 /// El último error de Google al llevar una clase al calendario (null si no hay).
@@ -133,7 +145,7 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
               child: Text(
-                'En pruebas. Al alumno se le invita con el correo de su cuenta de Google si ha enlazado su app, o con el que apuntes en su ficha.',
+                '${ref.watch(calendarioParaTodosProvider).valueOrNull ?? false ? '' : 'En pruebas. '}Al alumno se le invita con el correo de su cuenta de Google si ha enlazado su app, o con el que apuntes en su ficha.',
                 style: context.textos.labelSmall,
               ),
             ),

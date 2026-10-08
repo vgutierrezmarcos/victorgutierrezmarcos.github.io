@@ -7,27 +7,29 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Dato | Valor |
 |---|---|
 | Pista | Prueba cerrada |
-| Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) y 1.15.0 (24), el 8 oct. |
+| Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) y 1.15.0 (24) el 8 oct. y 1.15.1 (25) el 9 oct. |
 | Día en que se llegó a 12 testers apuntados | 8 oct. 2026, 11:30 |
 | Día en que se pueden pedir producción | 22 oct. 2026 (comprobar en el Panel de Play Console) |
 | Testers apuntados | 12 el 8 oct. (seguir sumando) |
-| Cómo se reclutaron | (rellenar: opositores y preparadores de TCEE y DCE, conocidos, alumnos de Manuel…) |
-| Cómo se recogen los comentarios | (rellenar: WhatsApp, correo de contacto, en persona…) |
+| Cómo se reclutaron | Opositores y preparadores de TCEE y DCE del entorno de los dos autores (Víctor Gutiérrez Marcos, TCEE; Manuel Cabado García, DCE). (Completar con el número de cada perfil.) |
+| Cómo se recogen los comentarios | En persona y por mensaje a los autores; se anotan aquí con fecha. (Completar con el canal exacto.) |
+| Web pública | `https://www.victorgutierrezmarcos.es/app/` (desde el 8 oct. 2026), con la política de privacidad y las condiciones de uso |
 
 ## Pendiente
 
-- Formulario **Seguridad de los datos**: se dejó como estaba (6 oct. 2026). Cuando haya que tocarlo por otra cosa, añadir en *Información personal → Otra información* la modalidad y la ciudad de los preparadores, y en *Actividad en la app → Otro contenido generado por el usuario* las notas.
+- Formulario **Seguridad de los datos**: se dejó como estaba (6 oct. 2026). Antes de pedir producción, revisarlo con lo nuevo: en *Información personal → Otra información*, la modalidad, la ciudad y la disponibilidad de los preparadores y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos, nota; sin nombre ni teléfono); en *Actividad en la app → Otro contenido generado por el usuario*, las notas, los materiales (enlaces) y los trazos de la pizarra; en *Calendario*, el acceso a Google Calendar (opcional, solo preparadores).
+- Cuando Google verifique el permiso de Calendar, abrirlo a todos los preparadores (hoy, lista de prueba).
 
 ## Versiones subidas
 
 | Fecha | Versión | Qué traía |
 |---|---|---|
-| (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
-| 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
+| 6 oct. 2026 | 1.14.0 (21) | Primera versión en Play (no llegó a publicarse: ver 7 oct.): TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas; novedades del proceso selectivo, cronómetro con el tiempo del examen y compartido, tema antes de la clase, mapa de calor, widget. |
+| 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 más el aviso de app no oficial con enlaces a las fuentes oficiales (lo que pidió Google). |
 | 8 oct. 2026 | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
-| 9 oct. 2026 | 1.15.2 (26) | La 1.15.1 más: en la ficha de la clase lo principal es mandar los temas antes (sección justo debajo de los botones); desaparece «Sortear y cantar» (en clase se cantan los temas mandados). |
-| 8 oct. 2026 | 1.15.1 (25) (no subida) | Buscar preparador (plazas del preparador, lo que busca el opositor sin su nombre, interesados; «encaja» en palabras, nunca una nota), fichas de alumno que se unen, temas en clases sueltas, «Empezar el esquema» arranca el cronómetro con cuenta atrás en el aviso (también al preparador), un tema por clase por defecto en TCEE, pizarra: trazo donde se toca, colores y borrador. |
 | 8 oct. 2026 | 1.15.0 (24) | Mejoras pedidas por los testers: permisos de avisos al abrir, cambios de clase en tiempo real con aviso, notificaciones que abren la clase, dos temas por clase, clases de 2 h, ficha de la clase editable, Meet o Teams, materiales del preparador, pizarra compartida, orden del directorio, sección Cantes más clara, actualizaciones desde Play. |
+| 9 oct. 2026 | 1.15.1 (25) | Buscar preparador (el preparador dice si admite alumnos; el opositor publica lo que busca sin su nombre y escribe él a quien le interese; «encaja» en palabras, nunca una nota), fichas de alumno que se unen, temas en clases sueltas, «Empezar el esquema» arranca el cronómetro con cuenta atrás en el aviso (también al preparador), un tema por clase por defecto en TCEE, pizarra: trazo donde se toca, colores y borrador. |
+| (pendiente) | 1.15.3 (27) | La 1.15.1 más: en la ficha de la clase lo principal es mandar los temas antes (desaparece «Sortear y cantar»); el botón «Ver» de algunos avisos abría una página «Not found» sin salida (arreglado; cualquier ruta desconocida lleva a Hoy). (La 1.15.2 (26) no se subió.) |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -53,38 +55,45 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 ### 7 oct. 2026
 - **Google rechazó la versión por la política de afirmaciones engañosas**: la app muestra información de la Administración (proceso selectivo, preguntas de exámenes) y la ficha no enlazaba a las fuentes oficiales ni decía que la app no es oficial. Se añadió a la descripción un aviso de «app no oficial» y los enlaces al Ministerio (empleo y página de cada proceso) y al BOE; y en la app (1.14.1), el mismo aviso con enlaces en *Proceso selectivo* y en *Más → Acerca de*.
 
-### 8 oct. 2026
+### 8 oct. 2026 (para la 1.14.2)
 - **Cambiar de oposición era poco visible** (estaba en Más → Ajustes): ahora hay un botón arriba a la izquierda en la cabecera de las cinco pestañas.
 - **Quien elegía «Preparo a opositores» no sabía qué hacer después:** ahora va directo a pedir la verificación, y se aclara que basta con poner el nombre y que un compañero verificado le verifica desde la app; lo demás es opcional.
 - **En pantallas estrechas, «Tu papel» y «Modo» de Ajustes se montaban** sobre los botones: ahora los botones van debajo del título.
-
-### 8 oct. 2026 (más para la 1.14.2)
 - **Cronómetro:** con un tema el esquema daba 23 min en vez de 22'30"; ahora es exacto. Por petición de opositores, cuenta **hacia delante por defecto** (con opción de cuenta atrás) y sigue contando en rojo si te pasas; al acabar el esquema la exposición espera a que la empieces; la pantalla grande tiene más controles (reiniciar la exposición o todo, ±1 min).
 - **Preparadores:** sin las herramientas de estudio personal (marcar estudiados, vueltas, cronograma…), que no usaban; se quedan el temario, los test y las probabilidades.
 - **Notificaciones** con el icono de la app (la diana).
 - **Foto de perfil de Google:** se quedaba la del primer inicio de sesión; ahora se renueva.
 - **Google Calendar y Meet (en pruebas, con unos pocos preparadores):** las clases van al calendario del preparador con su reunión de Meet y la invitación al alumno.
 
-### 8 oct. 2026 (testers, para la 1.15.0)
+### 8 oct. 2026 (doce sugerencias de los testers, para la 1.15.0)
 - **A algunos no les llegaban las notificaciones:** la app nunca pedía el permiso de notificaciones (solo al activar a mano un interruptor), así que en Android 13+ los avisos de clases y del tema no se mostraban. Ahora se pide al abrir la app la primera vez (con la explicación de para qué sirve cada aviso), cada interruptor lo comprueba y, si el sistema lo tiene denegado, lo dice con un botón a los ajustes; en Hoy sale un aviso si están desactivadas.
 - **Un cambio de hora o una cancelación no le llegaban al alumno** (ni con «Sincronizar ahora»): la copia a la agenda del alumno se escribía una sola vez y en silencio, y una clase cancelada desaparecía de «Próximos». Ahora el alumno escucha los cambios en tiempo real, las copias que fallan se reintentan y se concilian al sincronizar, la ficha de la clase muestra si ha llegado, las canceladas se ven como tales (con «pedir clase suelta») y llega un aviso «ha movido tu clase» / «ha cancelado tu clase».
 - **Las notificaciones no llevaban a ningún sitio:** ahora cada aviso abre su pantalla (la clase, el tablón, la semana, Mi preparador, el test diario) y en Android lleva el botón «Ver».
 - **Recordatorio diario:** se explica qué recuerda (el test diario de 10 preguntas) y no llega si el test ya está hecho ese día.
-- **Cerca del examen se cantan dos temas:** por defecto se mandan y se sortean dos temas por clase (se puede dejar en uno), elegidos por el preparador o a suerte entre los que lleva el alumno, con opción «uno de cada parte»; el esquema del alumno es el de dos temas, como en el examen.
+- **Cerca del examen se cantan dos temas:** se pueden mandar y sortear dos temas por clase, elegidos por el preparador o a suerte entre los que lleva el alumno, con opción «uno de cada parte»; el esquema del alumno es el de dos temas, como en el examen. (El 9 oct. se dejó en **un tema por defecto en TCEE** y dos en DCE; el preparador lo cambia en Ajustes y por clase.)
 - **Al alumno le salía «Sacar bola y cantar» en una clase del preparador:** ya no; él solo recibe los temas y canta (o cronometra).
 - **Duración de las clases:** antes todo partía de 30 min (que era el tiempo de exposición). Ahora una clase dura 2 h por defecto (se cambia en Ajustes y en cada clase) y la exposición por tema va aparte en el cronómetro.
 - **No era fácil ver que la clase se edita con el lápiz:** la ficha de la clase cambia al momento día y hora, duración, presencial u online (con crear la reunión de Meet o Teams y pegar el enlace al volver), temas que se cantan y exposición; sigue el «Editar todo».
 - **Orden de los preparadores:** primero los del alumno, luego con los que ha tenido clase, luego quienes administran la red y el resto al azar.
-- **Cantes más claro:** «Añadir» en la agenda ofrece un cante propio, reservar clase con el preparador o pedir una clase suelta, sin ir a «Más»; tarjetas de ayuda en cada subpestaña y un icono de ayuda.
+- **Cantes más claro:** «Añadir» en la agenda ofrece un cante propio, reservar clase con el preparador, pedir una clase suelta o buscar preparador, sin ir a «Más»; tarjetas de ayuda en cada subpestaña y un icono de ayuda.
 - **Compartir materiales:** el preparador comparte enlaces (Drive, PDF, vídeos) con título, nota y tema, para todos sus alumnos o para algunos; al alumno le llega un aviso y los ve en Mi preparador y en el tema.
 - **Pizarra compartida:** durante la clase, preparador y alumno dibujan en una pizarra en blanco que se ve en los dos dispositivos al instante (solo se comparte lo dibujado), en el móvil, la tableta o el ordenador.
 - **Teams además de Meet:** el preparador elige la videollamada que propone.
 - **Actualizaciones:** instalada desde Play, la app ofrece la actualización dentro de la propia app; desde el APK, avisa con una notificación.
 - **Google Calendar:** la tarjeta explica por qué no está disponible todavía (cuenta no apuntada en la lista de prueba) y la clase muestra si está en el calendario y el error de Google si lo hay.
-- **Alumnos duplicados:** si un alumno apuntado a mano enlaza después su app, las dos fichas se unen solas (por correo o nombre) o desde la ficha con «Unir»; las clases pasan a la ficha enlazada. Los temas antes de la clase se pueden mandar también en una clase suelta.
-- **Esquema desde el aviso:** «Empezar el esquema» arranca el cronómetro; el aviso lleva la cuenta atrás del esquema y el preparador recibe el mismo aviso a esa hora. En TCEE, por defecto, un tema por clase (dos en DCE).
-- **Pizarra:** el trazo sale donde se toca (se restaba dos veces el margen); seis colores y borrador que quita los trazos que se tocan.
-- **Buscar preparador (no solo clases sueltas):** el preparador dice si admite alumnos nuevos (desde cuándo, disponibilidad, mensaje, WhatsApp), visible solo para opositores; el opositor ve quién admite alumnos ordenado por compatibilidad (ejercicio, online/presencial y ciudad, tramos de la semana) y publica lo que busca sin su nombre; a quien le interese le deja su contacto y el opositor le escribe. Sin precios ni intermediación; la conexión en la app sigue siendo con el código.
+
+### 8 oct. 2026 (para la 1.15.1)
+- **Buscar preparador, no solo clases sueltas** (petición del autor): el preparador dice en Ajustes si admite alumnos nuevos (desde cuándo, disponibilidad por tramos de la semana, un mensaje y si deja su WhatsApp), visible solo para opositores, nunca para otros preparadores; el opositor ve quién admite alumnos, ordenado por lo que encaja (ejercicio, online o presencial y ciudad, tramos de la semana) y publica lo que busca **sin su nombre ni su teléfono**; al preparador al que le interese le deja su contacto y es el opositor quien escribe. Sin precios ni intermediación; la conexión en la app sigue siendo con el código. Se decidió que **nadie recibe una nota pública**: «encaja mucho / encaja / encaja poco / no encaja», nunca un número.
+- **Alumno duplicado:** un preparador apuntó a mano a un alumno y, cuando este enlazó su app, salía dos veces y en la clase seguía «sin app enlazada». Ahora las dos fichas se unen solas (por correo o nombre) o desde la ficha con «Unir»; las clases pasan a la ficha enlazada.
+- **Mandar los temas en una clase suelta:** un preparador que coge una clase suelta pedida desde la app no podía mandarle los temas al alumno (solo a alumnos enlazados). Ahora sí (reglas del servidor ampliadas).
+- **«Empezar el esquema» desde el aviso** arranca el cronómetro directamente; el aviso lleva la cuenta atrás del esquema y el preparador recibe el mismo aviso con la misma cuenta atrás a esa hora.
+- **Pizarra:** el trazo salía desplazado respecto al dedo (se restaba dos veces el margen); corregido. Se añadieron seis colores y un borrador que quita los trazos que se tocan.
+- **Fórmulas del test:** se comprobó que las 599 preguntas (152 con fórmulas) se dibujan bien.
+
+### 9 oct. 2026 (para la 1.15.3)
+- **Google Calendar probado por el autor** (cuenta en la lista de prueba): consentimiento superado (aviso de app no verificada), clase online sin enlace → evento con Meet, invitación al alumno y el enlace en la clase.
+- **Ficha de la clase:** el preparador quiere, sobre todo, mandar los temas antes; la sección «Temas antes de la clase» va ahora justo bajo los botones y desaparece «Sortear y cantar» (en clase, «Cantar los temas mandados» o «Cronometrar»).
+- **Página «Not found» sin salida al tocar «Ver» en un aviso** (clase suelta pedida, reservas, búsquedas): el botón añadía el parámetro de la acción a una ruta sin parámetros y se pedía una ruta inexistente. Arreglado; además, cualquier ruta desconocida lleva a Hoy.
 
 (Seguir añadiendo aquí, con fecha.)
 
@@ -93,15 +102,15 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 El formulario tiene tres bloques. Hay que adaptar los números y nombres al final de la prueba.
 
 **Sobre la prueba cerrada**
-- *¿Cómo de fácil fue reclutar testers?* Fácil: la app es para un colectivo concreto (opositores y preparadores de las oposiciones de Técnico Comercial y Economista del Estado y de Diplomado Comercial del Estado) y los testers salieron de nuestro entorno de preparación. [Añadir número y perfiles.]
-- *Describe la participación de los testers.* Usaron la app a diario para el test, para programar y cronometrar cantes y para conectar alumnos con preparadores. Los preparadores probaron el alta, la verificación y la gestión de clases. [Añadir lo observado.]
-- *Resume los comentarios y cómo los recogiste.* Por [WhatsApp, correo de contacto o en persona]. Lo principal: el inicio de sesión desde Play, la legibilidad en modo oscuro, ajustes en el mapa de calor, en las probabilidades y en el tema antes de la clase, y peticiones de funciones (proceso selectivo, cronómetro compartido, widget).
+- *¿Cómo de fácil fue reclutar testers?* Fácil: la app es para un colectivo concreto (opositores y preparadores de las oposiciones de Técnico Comercial y Economista del Estado y de Diplomado Comercial del Estado) y los testers salieron del entorno de preparación de los dos autores. Se llegó a 12 el primer día (8 oct.). [Añadir número final y perfiles.]
+- *Describe la participación de los testers.* Usaron la app a diario para el test, para programar y cronometrar cantes y para conectar alumnos con preparadores (código, clases programadas, temas antes de la clase, clases sueltas, pizarra). Los preparadores probaron el alta, la verificación y la gestión de clases, y uno de los autores probó la integración con Google Calendar. [Añadir lo observado.]
+- *Resume los comentarios y cómo los recogiste.* En persona y por mensaje a los autores, anotados con fecha en este registro. En la primera semana los testers enviaron doce sugerencias (notificaciones que no llegaban o no abrían nada, cambios de clase que no se veían, duración de las clases, dos temas por clase, materiales, pizarra, Teams, orden del directorio, claridad de la sección Cantes, actualizaciones) y se publicaron tres versiones con ellas en dos días.
 
 **Sobre la app**
 - *Público:* opositores y preparadores de TCEE y DCE, mayores de edad.
-- *Qué aporta:* reúne en una sola app gratuita y sin anuncios lo que hasta ahora estaba repartido: temario, test oficial, cantes con sorteo y cronómetro, cronograma, probabilidades, seguimiento del proceso selectivo y la relación entre opositor y preparador. Los datos de cada usuario solo los ve él.
+- *Qué aporta:* reúne en una sola app gratuita y sin anuncios lo que hasta ahora estaba repartido: temario, test oficial, cantes con sorteo y cronómetro, cronograma, probabilidades, seguimiento del proceso selectivo y la relación entre opositor y preparador (incluida la búsqueda de preparador sin intermediarios). Los datos de cada usuario solo los ve él.
 - *Instalaciones previstas el primer año:* [estimar: unos pocos cientos; cada convocatoria tiene del orden de cientos de opositores].
 
 **Preparación para producción**
-- *¿Qué cambiaste por lo aprendido en la prueba?* Ver «Cambios durante la prueba».
-- *¿Cómo decidiste que está lista?* Los testers la usan a diario sin errores bloqueantes, los fallos encontrados están corregidos y hay pruebas automáticas (más de 180) y pruebas de las reglas de seguridad de la base de datos (180 casos) que pasan en cada versión.
+- *¿Qué cambiaste por lo aprendido en la prueba?* Ver «Cambios durante la prueba»: 4 versiones en la pista en una semana con los fallos corregidos (inicio de sesión, permisos de notificaciones, sincronización de clases, navegación desde los avisos) y las funciones pedidas.
+- *¿Cómo decidiste que está lista?* Los testers la usan a diario sin errores bloqueantes, los fallos encontrados están corregidos y hay pruebas automáticas (más de 170) y pruebas de las reglas de seguridad de la base de datos (206 casos) que pasan en cada versión; la web pública, la política de privacidad y las condiciones de uso están publicadas.
