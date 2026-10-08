@@ -106,9 +106,15 @@ class Cante {
     this.temaA,
     this.temaMandado,
     this.temaSorteado = false,
+    this.eventoGoogle = '',
   });
 
   final String id;
+
+  /// Evento del Google Calendar del preparador que corresponde a esta clase
+  /// (vacío si no está en su calendario). Solo lo usa el preparador: no va en
+  /// la copia del alumno.
+  final String eventoGoogle;
 
   /// Hora a la que el preparador manda un tema al alumno antes de la clase
   /// (la ve el alumno; el tema no, hasta esa hora).
@@ -194,6 +200,7 @@ class Cante {
     String? temaMandado,
     bool? temaSorteado,
     bool sinTema = false,
+    String? eventoGoogle,
   }) =>
       Cante(
         id: id,
@@ -220,6 +227,7 @@ class Cante {
         temaA: sinTema ? null : (temaA ?? this.temaA),
         temaMandado: sinTema ? null : (temaMandado ?? this.temaMandado),
         temaSorteado: sinTema ? false : (temaSorteado ?? this.temaSorteado),
+        eventoGoogle: eventoGoogle ?? this.eventoGoogle,
       );
 
   Map<String, dynamic> toJson() => {
@@ -247,6 +255,7 @@ class Cante {
         if (temaA != null) 'temaA': temaA!.toIso8601String(),
         if (temaMandado != null) 'temaMandado': temaMandado,
         if (temaSorteado) 'temaSorteado': true,
+        if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
       };
 
   factory Cante.fromJson(Map<dynamic, dynamic> j) => Cante(
@@ -274,6 +283,7 @@ class Cante {
         temaA: _fecha(j['temaA']),
         temaMandado: j['temaMandado'] as String?,
         temaSorteado: j['temaSorteado'] as bool? ?? false,
+        eventoGoogle: j['eventoGoogle'] as String? ?? '',
       );
 
   /// Fusiona dos listas de cantes por id quedándose con la versión más reciente.

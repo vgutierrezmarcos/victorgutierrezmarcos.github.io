@@ -11,6 +11,7 @@ import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 
@@ -237,6 +238,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
               ]),
             ]),
           ),
+          const TarjetaCalendarioGoogle(),
           const TituloSeccion('Avisos'),
           Tarjeta(
             padding: EdgeInsets.zero,

@@ -576,6 +576,8 @@ class SesionesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(preparadorRepoProvider);
     // El aviso del tema que se manda al alumno lleva su título completo.
     repo.tituloTema = (c) => ref.read(temarioProvider).valueOrNull?.tema(c)?.titulo ?? '';
+    // El calendario de Google pone el enlace de Meet después de guardar.
+    repo.alCambiarSesiones = () => state = repo.sesiones();
     return repo.sesiones();
   }
 

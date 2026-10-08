@@ -211,6 +211,13 @@ RED = """
         allow get: if conSesionEn(%OP%) && (request.auth.uid == id || (correo() != '' && correo() == id));
       }
 
+      // Cuentas que pueden conectar Google Calendar mientras Google no
+      // verifica ese permiso (las da de alta el administrador en la consola).
+      // Cada uno lee solo la suya.
+      match /pruebasCalendario/{id} {
+        allow get: if conSesionEn(%OP%) && (request.auth.uid == id || (correo() != '' && correo() == id));
+      }
+
       // Lista de preparadores verificados: la ve cualquiera con cuenta (para
       // elegir a quién pedir una sustitución). Da de alta el administrador o un
       // verificado, nunca uno mismo; el interesado solo cambia su ficha (nombre,

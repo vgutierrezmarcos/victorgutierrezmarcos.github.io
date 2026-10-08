@@ -350,6 +350,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
 Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
   final nombre = TextEditingController(text: alumno?.nombre ?? '');
   final telefono = TextEditingController(text: alumno?.telefono ?? '');
+  final email = TextEditingController(text: alumno?.email ?? '');
   var ejercicio = alumno?.ejercicio ?? Oposiciones.actual.primerConTemas;
   return showDialog<Alumno>(
     context: context,
@@ -360,6 +361,8 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
           TextField(controller: nombre, autofocus: alumno == null, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Nombre')),
           const SizedBox(height: 10),
           TextField(controller: telefono, keyboardType: TextInputType.phone, decoration: const InputDecoration(labelText: 'Teléfono (opcional)', helperText: 'Para escribirle por WhatsApp desde la app')),
+          const SizedBox(height: 10),
+          TextField(controller: email, keyboardType: TextInputType.emailAddress, decoration: const InputDecoration(labelText: 'Correo de Google (opcional)', helperText: 'Para invitarle a las clases en Google Calendar')),
           const SizedBox(height: 16),
           Text('Ejercicio que prepara', style: Theme.of(d).textTheme.labelMedium),
           const SizedBox(height: 6),
@@ -377,7 +380,8 @@ Future<Alumno?> editarAlumno(BuildContext context, {Alumno? alumno}) {
             onPressed: () {
               final n = nombre.text.trim();
               if (n.isEmpty) return;
-              Navigator.pop(d, alumno == null ? Alumno(id: nuevoId(), nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim(), creado: DateTime.now(), updatedAt: DateTime.now()) : alumno.copyWith(nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim()));
+              final correo = email.text.trim().toLowerCase();
+              Navigator.pop(d, alumno == null ? Alumno(id: nuevoId(), nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim(), email: correo, creado: DateTime.now(), updatedAt: DateTime.now()) : alumno.copyWith(nombre: n, ejercicio: ejercicio, telefono: telefono.text.trim(), email: correo));
             },
             child: const Text('Guardar'),
           ),
