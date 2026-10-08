@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../core/constants.dart';
+import '../../core/permiso_calendario.dart';
 import '../models/oposicion.dart';
 import '../models/cronograma.dart';
 import '../models/plan.dart';
@@ -262,7 +263,9 @@ class PreparadorRepo {
       if (guardar.enlace != s.enlace) await _copiarAlAlumno(guardar);
       return true;
     } catch (e) {
-      cal.ultimoError = e is DioException ? (e.response?.data?.toString() ?? e.message ?? e.type.name) : e.toString();
+      cal.ultimoError = permisoRetirado(e)
+          ? 'Google ha retirado el permiso del calendario (o ha caducado): apaga y vuelve a encender «Mis clases en Google Calendar» en Ajustes de preparador.'
+          : (e is DioException ? (e.response?.data?.toString() ?? e.message ?? e.type.name) : e.toString());
       return false;
     }
   }
