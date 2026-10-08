@@ -24,7 +24,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 |---|---|---|
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
 | 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
-| (al enviarla) | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa y Ajustes en pantallas estrechas. |
+| (al enviarla) | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -54,6 +54,13 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Cambiar de oposición era poco visible** (estaba en Más → Ajustes): ahora hay un botón arriba a la izquierda en la cabecera de las cinco pestañas.
 - **Quien elegía «Preparo a opositores» no sabía qué hacer después:** ahora va directo a pedir la verificación, y se aclara que basta con poner el nombre y que un compañero verificado le verifica desde la app; lo demás es opcional.
 - **En pantallas estrechas, «Tu papel» y «Modo» de Ajustes se montaban** sobre los botones: ahora los botones van debajo del título.
+
+### 8-9 oct. 2026 (más para la 1.14.2)
+- **Cronómetro:** con un tema el esquema daba 23 min en vez de 22'30"; ahora es exacto. Por petición de opositores, cuenta **hacia delante por defecto** (con opción de cuenta atrás) y sigue contando en rojo si te pasas; al acabar el esquema la exposición espera a que la empieces; la pantalla grande tiene más controles (reiniciar la exposición o todo, ±1 min).
+- **Preparadores:** sin las herramientas de estudio personal (marcar estudiados, vueltas, cronograma…), que no usaban; se quedan el temario, los test y las probabilidades.
+- **Notificaciones** con el icono de la app (la diana).
+- **Foto de perfil de Google:** se quedaba la del primer inicio de sesión; ahora se renueva.
+- **Google Calendar y Meet (en pruebas, con unos pocos preparadores):** las clases van al calendario del preparador con su reunión de Meet y la invitación al alumno.
 
 (Seguir añadiendo aquí, con fecha.)
 
