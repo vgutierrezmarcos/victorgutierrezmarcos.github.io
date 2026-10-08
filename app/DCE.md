@@ -119,7 +119,8 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] La tarjeta no aparecía: faltaba el documento `pruebasCalendario/{gmail}`; creado el 8 oct. y la tarjeta sale. Consentimiento de Google superado (app no verificada → «Configuración avanzada») y **conectado** (8 oct., 19:30).
 - [ ] Probar en el móvil (ya conectado): clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. La ficha de la clase muestra el estado en el calendario y el error exacto si lo hay.
 - [x] Marca en Google Auth Platform rellenada (9 oct.) y `victorgutierrezmarcos.es` verificado en Search Console (propiedad de dominio, ya existía). Antes: comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
-- [ ] Claude prepara la justificación del permiso (en inglés) y el guion del vídeo; Víctor graba el vídeo (YouTube, oculto) y envía la verificación en el Centro de verificación.
+- [x] Permisos revisados (solo `calendar.events`) y justificación pegada en Acceso a datos (9 oct.); guion y justificación en `app/google-calendar-verificacion.md`.
+- [ ] Víctor graba el consentimiento (pendiente de poder volver a entrar en la app: acceso retirado en la cuenta de Google) y manda los vídeos como documento; Claude monta el vídeo; subir a YouTube (no listado) y enviar la verificación en el Centro de verificación.
 - [ ] Verificado el permiso: poner `"calendarioParaTodos": true` en `oposicion/app-config.json` (bloque `app`) y publicar; la app (desde la 1.15.3) lo lee y abre la opción a todos los preparadores sin versión nueva. Hasta entonces, la lista `pruebasCalendario`.
 - [ ] Mejora pendiente: si el alumno cambia o cancela la clase desde su app, que el calendario del preparador se actualice sin que este vuelva a guardarla.
 
@@ -128,7 +129,7 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Registro de actividades de tratamiento y acuerdo de corresponsabilidad con Manuel, en Claude Docs (8 oct.). Manuel no tiene acceso a Firebase.
 - [x] Acuerdo con Manuel: aceptado por correo el 8 oct.; respuesta guardada (9 oct.).
 - [x] Términos de tratamiento de datos de Firebase aceptados (9 oct.).
-- [ ] Google Analytics: analytics.google.com → Administrar (engranaje abajo a la izquierda) → columna Cuenta → **Configuración de la cuenta** → «Condiciones de tratamiento de datos» / «Enmienda sobre el tratamiento de datos» → Revisar y aceptar (y en la misma pantalla, los ajustes de uso compartido de datos que quieras dejar). Si pide país, España.
+- [x] Google Analytics: condiciones de tratamiento de datos aceptadas (9 oct.). (Antes: analytics.google.com → Administrar (engranaje abajo a la izquierda) → columna Cuenta → **Configuración de la cuenta** → «Condiciones de tratamiento de datos» / «Enmienda sobre el tratamiento de datos» → Revisar y aceptar (y en la misma pantalla, los ajustes de uso compartido de datos que quieras dejar). Si pide país, España.
 - [x] Región de Firestore: **eur3** (multirregión Europa: Bélgica y Países Bajos, Unión Europea); anotada en el registro de actividades (9 oct.).
 - [x] Verificación en dos pasos en la cuenta del proyecto (9 oct.); Manuel, en la suya.
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
