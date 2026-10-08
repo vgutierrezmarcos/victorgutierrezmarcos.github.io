@@ -206,10 +206,10 @@ void main() {
         Trazo(id: 'lm', de: 'paula', grosor: 6, puntos: curva((x) => 800 - 0.0009 * (x - 340) * (x - 340) + 0.1 * (x - 340), 340, 1180)),
         Trazo(id: 'r', de: 'paula', grosor: 3, puntos: curva((x) => 540.0, 260, 760, 20)),
         Trazo(id: 'y', de: 'paula', grosor: 3, puntos: const [Point(760, 540), Point(760, 820)]),
-        Trazo(id: 'o', de: 'yo', grosor: 6, puntos: [for (var a = 0; a <= 360; a += 15) Point(760 + (36 * cos(a * pi / 180)).round(), 540 + (36 * sin(a * pi / 180)).round())]),
+        Trazo(id: 'o', de: 'yo', grosor: 6, color: 0xFFC62828, puntos: [for (var a = 0; a <= 360; a += 15) Point(760 + (36 * cos(a * pi / 180)).round(), 540 + (36 * sin(a * pi / 180)).round())]),
         Trazo(id: 'f1', de: 'yo', grosor: 6, puntos: const [Point(1180, 300), Point(1180, 470)]),
         Trazo(id: 'f2', de: 'yo', grosor: 6, puntos: const [Point(1150, 440), Point(1180, 470), Point(1210, 440)]),
-        Trazo(id: 'q', de: 'yo', grosor: 6, puntos: curva((x) => 300 + 40 * sin((x - 1300) / 30), 1300, 1420, 8)),
+        Trazo(id: 'q', de: 'yo', grosor: 6, color: 0xFF2E7D32, puntos: curva((x) => 300 + 40 * sin((x - 1300) / 30), 1300, 1420, 8)),
       ];
       return [for (final t in lista) t.toJson()];
     }
@@ -564,6 +564,8 @@ void main() {
     await tester.pumpAndSettle();
     await buscarEn<SesionPage>(find.text('Mandarle los temas antes'));
     await tocar(find.text('Mandarle los temas antes'));
+    // En TCEE, por defecto, un tema: para la captura, dos (como cerca del examen).
+    await tocar(find.text('2 temas'));
     // Dos temas de los primeros de la lista de la hoja (el código va solo en
     // su casilla; en la ficha, detrás, va con el título, así que no se confunden).
     await tocar(find.textContaining(RegExp(r'^3\.A\.2$')));

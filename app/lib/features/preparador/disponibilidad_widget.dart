@@ -74,22 +74,28 @@ class TextoDisponibilidad extends StatelessWidget {
   }
 }
 
-/// Anillo con la compatibilidad (0-100) y el porcentaje dentro.
+/// Cuánto encaja (ejercicio, online o presencial y horarios), en palabras:
+/// nunca se enseña un número, para que nadie lo tome por una nota.
 class Compatibilidad extends StatelessWidget {
   const Compatibilidad(this.valor, {super.key, this.tamano = 52});
+  /// Resultado de [compatibilidad] (0-100); solo sirve para elegir la palabra.
   final int valor;
   final double tamano;
+
+  static String texto(int valor) => valor >= 75 ? 'Encaja mucho' : (valor >= 45 ? 'Encaja' : (valor > 0 ? 'Encaja poco' : 'No encaja'));
+
   @override
   Widget build(BuildContext context) {
     final color = valor >= 75 ? Paleta.acierto : (valor >= 45 ? context.colores.dorado : context.colores.textoClaro);
     return Tooltip(
-      message: 'Compatibilidad con lo que buscas',
-      child: SizedBox(
-        width: tamano,
-        height: tamano,
-        child: Stack(alignment: Alignment.center, children: [
-          CircularProgressIndicator(value: valor / 100, strokeWidth: 5, color: color, backgroundColor: context.colores.borde),
-          Text('$valor', style: context.textos.labelMedium?.copyWith(color: color, fontWeight: FontWeight.w700)),
+      message: 'Por el ejercicio, online o presencial y los horarios. No es una valoración de nadie.',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+        decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(999)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Icon(valor >= 45 ? Icons.handshake_outlined : Icons.remove, size: 14, color: color),
+          const SizedBox(width: 4),
+          Text(texto(valor), style: context.textos.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w700)),
         ]),
       ),
     );

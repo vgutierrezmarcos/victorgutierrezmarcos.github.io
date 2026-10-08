@@ -123,6 +123,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (!mounted || temas.isEmpty) return;
     ref.read(temaParaCantarProvider.notifier).state = null;
     _ponerTemasMandados(temas);
+    // Desde «Empezar el esquema» del aviso: el cronómetro arranca ya.
+    if (ref.read(arrancarEsquemaProvider)) {
+      ref.read(arrancarEsquemaProvider.notifier).state = false;
+      if (!_reloj.empezado) _iniciar();
+    }
   }
 
   void _ponerTemasMandados(List<Tema> temas) {

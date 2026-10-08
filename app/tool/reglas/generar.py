@@ -315,12 +315,12 @@ RED = """
         allow get: if conSesionEn(%OP%)
           && (resource.data.preparador == request.auth.uid
             || (resource.data.alumno == request.auth.uid && request.time >= resource.data.visibleDesde));
-        allow create: if esPreparadorDe(%OP%, request.resource.data.alumno)
+        allow create: if (esPreparadorDe(%OP%, request.resource.data.alumno) || esSustitutoDe(%OP%, id))
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.visibleDesde is timestamp
           && request.resource.data.keys().hasOnly(['alumno', 'preparador', 'preparadorNombre', 'tema', 'titulo', 'temas', 'titulos', 'sorteado', 'visibleDesde', 'updatedAt']);
         allow update: if resource.data.preparador == request.auth.uid
-          && esPreparadorDe(%OP%, resource.data.alumno)
+          && (esPreparadorDe(%OP%, resource.data.alumno) || esSustitutoDe(%OP%, id))
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.alumno == resource.data.alumno
           && request.resource.data.visibleDesde is timestamp

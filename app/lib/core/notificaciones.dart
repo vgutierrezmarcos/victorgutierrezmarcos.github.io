@@ -1,11 +1,11 @@
 import 'dart:ui' show Color;
 
-import '../data/models/oposicion.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
+import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 
 /// Notificaciones locales: recordatorio diario de estudio, avisos del
@@ -257,11 +257,12 @@ class Notificaciones {
   static Future<void> programarClases(List<Cante> clases, {required String Function(Cante) alumno, required List<int> antelaciones, DateTime? ahora}) async {
     if (!disponibles) return;
     await iniciar();
-    for (var i = 0; i < _maxAvisosClase; i++) {
+    for (var i = 0; i < _maxAvisosClase + _maxAvisosTema; i++) {
       await _plugin.cancel(_idClases + i);
     }
-    if (antelaciones.isEmpty) return;
     final hoy = ahora ?? DateTime.now();
+    await _programarEntregasDeTemas(clases, alumno: alumno, ahora: hoy);
+    if (antelaciones.isEmpty) return;
     final proximas = clases.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
     final avisos = [
       for (final c in proximas)
@@ -285,6 +286,43 @@ class Notificaciones {
           uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
           // Al tocarlo se abre la ficha de la clase.
           payload: 'ruta:/clase?id=${a.clase}',
+        );
+      } catch (_) {}
+    }
+  }
+
+  static const _maxAvisosTema = 20;
+
+  /// Al preparador, a la hora en que le llegan los temas al alumno: el mismo
+  /// aviso con la cuenta atrás del esquema que ve el alumno.
+  static Future<void> _programarEntregasDeTemas(List<Cante> clases, {required String Function(Cante) alumno, required DateTime ahora}) async {
+    final entregas = clases.where((c) => c.pendiente && !c.borrado && c.mandaTema && c.temaA!.isAfter(ahora)).toList()
+      ..sort((a, b) => a.temaA!.compareTo(b.temaA!));
+    var id = _idClases + _maxAvisosClase;
+    for (final c in entregas.take(_maxAvisosTema)) {
+      final seg = Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.temasMandados.length) ?? 0;
+      final hasta = c.temaA!.add(Duration(seconds: seg));
+      final temas = c.temaSorteado ? 'los temas sorteados' : (c.temasMandados.length == 1 ? 'el tema ${c.temasMandados.first}' : 'los temas ${c.temasMandados.join(' y ')}');
+      try {
+        await _plugin.zonedSchedule(
+          id++,
+          'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas',
+          seg > 0 ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.' : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.',
+          tz.TZDateTime.from(c.temaA!, tz.local),
+          NotificationDetails(
+            android: AndroidNotificationDetails(color: _colorAviso, 'clases', 'Tus clases',
+                channelDescription: 'Recordatorios de las clases con tus alumnos',
+                importance: Importance.high,
+                priority: Priority.high,
+                usesChronometer: seg > 0,
+                chronometerCountDown: seg > 0,
+                when: seg > 0 ? hasta.millisecondsSinceEpoch : null,
+                showWhen: seg > 0),
+            iOS: const DarwinNotificationDetails(),
+          ),
+          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+          payload: 'ruta:/clase?id=${c.id}',
         );
       } catch (_) {}
     }
@@ -335,16 +373,25 @@ class Notificaciones {
   /// Tema que manda el preparador antes de la clase, como un mensaje suyo.
   /// Al tocarlo se abre la clase; con «Empezar el esquema», Cantar con ese
   /// tema y el cronómetro del esquema preparado.
-  static Future<void> avisoTema({required String canteId, required String de, required String texto, required String tema, bool sorteado = false}) async {
+  ///
+  /// Si [esquemaHasta] es futuro, el aviso lleva la cuenta atrás del tiempo
+  /// de esquema (como en el examen, desde que llegan los temas).
+  static Future<void> avisoTema({required String canteId, required String de, required String texto, required String tema, bool sorteado = false, DateTime? esquemaHasta}) async {
     if (!disponibles) return;
     await iniciar();
     final persona = Person(name: de, key: de, important: true);
+    final cuentaAtras = esquemaHasta != null && esquemaHasta.isAfter(DateTime.now());
     await _plugin.show(
       1000 + ('tema:$canteId'.hashCode & 0x7ffff),
       de,
       texto,
       NotificationDetails(
         android: AndroidNotificationDetails(color: _colorAviso, 
+          usesChronometer: cuentaAtras,
+          chronometerCountDown: cuentaAtras,
+          when: cuentaAtras ? esquemaHasta.millisecondsSinceEpoch : null,
+          showWhen: cuentaAtras,
+          ongoing: cuentaAtras,
           'temas',
           'Temas de tu preparador',
           channelDescription: 'El tema que te manda tu preparador antes de la clase',

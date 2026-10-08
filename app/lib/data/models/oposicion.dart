@@ -115,9 +115,14 @@ class EjercicioDef {
 /// preparadores).
 @immutable
 class Oposicion {
+  /// Temas que se cantan en una clase con el preparador, por defecto (TCEE
+  /// uno; DCE dos). El preparador lo cambia en sus ajustes.
+  final int temasPorClase;
+
   const Oposicion({
     required this.id,
     required this.siglas,
+    this.temasPorClase = 1,
     required this.nombre,
     required this.web,
     required this.ejercicios,
@@ -326,6 +331,7 @@ class Oposiciones {
   static const dce = Oposicion(
     id: 'dce',
     siglas: 'DCE',
+    temasPorClase: 2,
     nombre: 'Diplomado Comercial del Estado',
     web: 'https://manuelcabadogarcia.es',
     testDe: 'tcee',

@@ -18,6 +18,7 @@ import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
+import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
@@ -85,7 +86,6 @@ class SesionPage extends ConsumerWidget {
     final repo = ref.read(preparadorRepoProvider);
     final perfil = ref.watch(perfilPreparadorProvider);
     final usuario = ref.watch(usuarioActualProvider);
-    final enlazado = alumno?.enlazado == true;
     final conUid = alumno?.uid != null;
     final ahora = DateTime.now();
     final dictamen = Oposiciones.actual.esDictamen(s.ejercicio);
@@ -286,6 +286,15 @@ class SesionPage extends ConsumerWidget {
                     },
                     color: estadoCopia == null ? context.colores.textoClaro : (estadoCopia == EstadoCopia.enviada ? null : context.esquema.error),
                   ),
+                  // Apuntado a mano pero ya con la app (sale duplicado): unir las dos fichas.
+                  if (alumno != null && alumno.uid == null && alumnos.any((a) => a.enlazado))
+                    TextButton(
+                      onPressed: () async {
+                        final unido = await unirAlumnoDialogo(context, ref, alumno);
+                        if (unido != null) ref.invalidate(sesionesProvider);
+                      },
+                      child: const Text('¿Ya tiene la app? Unir fichas'),
+                    ),
                   if (estadoCopia != null && estadoCopia != EstadoCopia.enviada)
                     TextButton(
                       onPressed: () async {
@@ -363,7 +372,7 @@ class SesionPage extends ConsumerWidget {
           ],
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
             const TituloSeccion('Temas antes de la clase'),
-            SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: enlazado),
+            SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),

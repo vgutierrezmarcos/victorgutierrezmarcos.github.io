@@ -25,6 +25,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
 | 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
 | 8 oct. 2026 | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
+| 8 oct. 2026 | 1.15.1 (25) | Buscar preparador (plazas del preparador, lo que busca el opositor sin su nombre, interesados; «encaja» en palabras, nunca una nota), fichas de alumno que se unen, temas en clases sueltas, «Empezar el esquema» arranca el cronómetro con cuenta atrás en el aviso (también al preparador), un tema por clase por defecto en TCEE, pizarra: trazo donde se toca, colores y borrador. |
 | 8 oct. 2026 | 1.15.0 (24) | Mejoras pedidas por los testers: permisos de avisos al abrir, cambios de clase en tiempo real con aviso, notificaciones que abren la clase, dos temas por clase, clases de 2 h, ficha de la clase editable, Meet o Teams, materiales del preparador, pizarra compartida, orden del directorio, sección Cantes más clara, actualizaciones desde Play. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
@@ -79,6 +80,9 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Teams además de Meet:** el preparador elige la videollamada que propone.
 - **Actualizaciones:** instalada desde Play, la app ofrece la actualización dentro de la propia app; desde el APK, avisa con una notificación.
 - **Google Calendar:** la tarjeta explica por qué no está disponible todavía (cuenta no apuntada en la lista de prueba) y la clase muestra si está en el calendario y el error de Google si lo hay.
+- **Alumnos duplicados:** si un alumno apuntado a mano enlaza después su app, las dos fichas se unen solas (por correo o nombre) o desde la ficha con «Unir»; las clases pasan a la ficha enlazada. Los temas antes de la clase se pueden mandar también en una clase suelta.
+- **Esquema desde el aviso:** «Empezar el esquema» arranca el cronómetro; el aviso lleva la cuenta atrás del esquema y el preparador recibe el mismo aviso a esa hora. En TCEE, por defecto, un tema por clase (dos en DCE).
+- **Pizarra:** el trazo sale donde se toca (se restaba dos veces el margen); seis colores y borrador que quita los trazos que se tocan.
 - **Buscar preparador (no solo clases sueltas):** el preparador dice si admite alumnos nuevos (desde cuándo, disponibilidad, mensaje, WhatsApp), visible solo para opositores; el opositor ve quién admite alumnos ordenado por compatibilidad (ejercicio, online/presencial y ciudad, tramos de la semana) y publica lo que busca sin su nombre; a quien le interese le deja su contacto y el opositor le escribe. Sin precios ni intermediación; la conexión en la app sigue siendo con el código.
 
 (Seguir añadiendo aquí, con fecha.)

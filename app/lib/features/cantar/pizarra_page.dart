@@ -10,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../core/providers.dart';
-import '../../core/red_providers.dart';
 import '../../theme/app_theme.dart';
 import 'pizarra_compartida.dart';
 import 'pizarra_trazos.dart';
@@ -51,6 +50,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   final List<Trazo> _pendientes = [];
   int? _punteroActivo;
   int _grosor = 1;
+  /// Color elegido (null = el del papel) y si está puesto el borrador.
+  int? _colorElegido;
+  bool _borrador = false;
+  // Trazos que ya se han borrado aquí y aún no ha confirmado el servidor.
+  final Set<String> _borrados = {};
+  Point<double>? _ultimoBorrado;
   late final String _miUid = ref.read(usuarioActualProvider)?.uid ?? '';
   // Para no avisar dos veces del mismo borrado del otro.
   final Set<String> _borradosAvisados = {};
@@ -60,9 +65,9 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   Offset _origen = Offset.zero;
 
   bool get _soyAlumno => _miUid == widget.alumnoUid;
-  Color get _miColor => Color(coloresPersonas[_soyAlumno ? 0 : 1]);
-  Color get _colorOtro => Color(coloresPersonas[_soyAlumno ? 1 : 0]);
-  Color _colorDe(String uid) => uid == widget.alumnoUid ? Color(coloresPersonas[0]) : Color(coloresPersonas[1]);
+  Color get _miColor => Color(_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]);
+  Color get _colorOtro => Color(coloresPizarra[_soyAlumno ? 1 : 0]);
+  Color _colorDe(Trazo t) => Color(t.color ?? (t.de == widget.alumnoUid ? coloresPizarra[0] : coloresPizarra[1]));
 
   PaginaPizarra? get _actual => _pagina < _paginas.length ? _paginas[_pagina] : null;
   String get _idPaginaActual => _actual?.id ?? PizarraCompartida.idPagina(_pagina + 1);
@@ -106,6 +111,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       // Lo que ya ha confirmado el servidor deja de estar pendiente.
       final ids = {for (final p in paginas) for (final t in p.trazos) t.id};
       _pendientes.removeWhere((t) => ids.contains(t.id));
+      _borrados.removeWhere((id) => !ids.contains(id));
       final a = _actual;
       if (a != null && a.trazos.isEmpty && a.borradoPor != null && a.borradoPor != _miUid && !_borradosAvisados.contains('${a.id}:${a.borradoPor}')) {
         _borradosAvisados.add('${a.id}:${a.borradoPor}');
@@ -120,8 +126,13 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   Point<double> _virtual(Offset p) => Point((p.dx / _escala).clamp(0, anchoLienzo.toDouble()), (p.dy / _escala).clamp(0, altoLienzo.toDouble()));
 
   void _bajar(PointerDownEvent e) {
-    if (_punteroActivo != null || _sinAcceso || (_actual?.llena ?? false)) return;
+    if (_punteroActivo != null || _sinAcceso || (!_borrador && (_actual?.llena ?? false))) return;
     _punteroActivo = e.pointer;
+    if (_borrador) {
+      _ultimoBorrado = null;
+      _borrarEn(e.localPosition);
+      return;
+    }
     setState(() => _enCurso
       ..clear()
       ..add(e.localPosition));
@@ -131,17 +142,42 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (e.pointer != _punteroActivo) return;
     // Con ratón, solo con el botón pulsado.
     if (e.kind == PointerDeviceKind.mouse && e.buttons == 0) return;
+    if (_borrador) {
+      _borrarEn(e.localPosition);
+      return;
+    }
     // Muestreo: un punto nuevo solo si se ha movido al menos 2 px.
     if (_enCurso.isNotEmpty && (e.localPosition - _enCurso.last).distance < 2) return;
     setState(() => _enCurso.add(e.localPosition));
   }
 
+  /// Borrador: quita los trazos (de los dos) que pasan por donde se toca.
+  void _borrarEn(Offset p) {
+    final v = _virtual(p);
+    if (_ultimoBorrado != null && v.distanceTo(_ultimoBorrado!) < 4) return;
+    _ultimoBorrado = v;
+    final radio = 14 / _escala;
+    final pendientes = _pendientes.where((t) => t.cerca(v, radio)).toList();
+    final subidos = (_actual?.trazos ?? const <Trazo>[]).where((t) => !_borrados.contains(t.id) && t.cerca(v, radio)).toList();
+    if (pendientes.isEmpty && subidos.isEmpty) return;
+    setState(() {
+      for (final t in pendientes) {
+        _pizarra?.quitarDeCola(t.id);
+        _pendientes.remove(t);
+      }
+      _borrados.addAll(subidos.map((t) => t.id));
+    });
+    for (final t in subidos) {
+      if (t.crudo != null) _pizarra?.deshacer(_idPaginaActual, t.crudo!).catchError((_) {});
+    }
+  }
+
   void _soltar(int puntero) {
     if (puntero != _punteroActivo) return;
     _punteroActivo = null;
-    if (_enCurso.isEmpty) return;
+    if (_borrador || _enCurso.isEmpty) return;
     final virtuales = simplificar([for (final p in _enCurso) _virtual(p)]);
-    final trazo = Trazo(id: nuevoIdTrazo(), de: _miUid, grosor: grosores[_grosor], puntos: [for (final p in virtuales) Point(p.x.round(), p.y.round())]);
+    final trazo = Trazo(id: nuevoIdTrazo(), de: _miUid, grosor: grosores[_grosor], color: _colorElegido, puntos: [for (final p in virtuales) Point(p.x.round(), p.y.round())]);
     setState(() {
       _enCurso.clear();
       _pendientes.add(trazo);
@@ -223,7 +259,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                       child: Container(
                         color: Colors.white,
                         child: Stack(fit: StackFit.expand, children: [
-                          RepaintBoundary(child: CustomPaint(painter: _PintorTrazos(actual?.trazos ?? const [], _pendientes, _escala, _colorDe))),
+                          RepaintBoundary(child: CustomPaint(painter: _PintorTrazos(_borrados.isEmpty ? (actual?.trazos ?? const []) : [for (final t in actual?.trazos ?? const <Trazo>[]) if (!_borrados.contains(t.id)) t], _pendientes, _escala, _colorDe))),
                           CustomPaint(painter: _PintorEnCurso(_enCurso, _miColor, grosores[_grosor] * _escala)),
                         ]),
                       ),
@@ -265,18 +301,42 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               child: Row(children: [
                 IconButton(tooltip: 'Salir', icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()),
                 const SizedBox(width: 4),
-                _Leyenda(color: _miColor, texto: 'Tú'),
+                _Leyenda(color: Color(coloresPizarra[_soyAlumno ? 0 : 1]), texto: 'Tú'),
                 const SizedBox(width: 8),
                 _Leyenda(color: _colorOtro, texto: widget.otroNombre),
                 const SizedBox(width: 12),
+                // Colores: el primero es el del propio papel.
+                for (final c in [coloresPizarra[_soyAlumno ? 0 : 1], ...coloresPizarra.skip(2)])
+                  IconButton(
+                    tooltip: 'Color',
+                    visualDensity: VisualDensity.compact,
+                    isSelected: !_borrador && (_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]) == c,
+                    style: IconButton.styleFrom(backgroundColor: !_borrador && (_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]) == c ? Colors.white30 : null),
+                    icon: Icon(Icons.circle, size: 18, color: Color(c)),
+                    onPressed: () => setState(() {
+                      _borrador = false;
+                      _colorElegido = c == coloresPizarra[_soyAlumno ? 0 : 1] ? null : c;
+                    }),
+                  ),
+                const SizedBox(width: 8),
                 for (var i = 0; i < grosores.length; i++)
                   IconButton(
                     tooltip: ['Fino', 'Medio', 'Grueso'][i],
-                    isSelected: _grosor == i,
-                    style: IconButton.styleFrom(backgroundColor: _grosor == i ? Colors.white24 : null),
+                    isSelected: !_borrador && _grosor == i,
+                    style: IconButton.styleFrom(backgroundColor: !_borrador && _grosor == i ? Colors.white24 : null),
                     icon: Icon(Icons.circle, size: 8.0 + 6 * i, color: Colors.white),
-                    onPressed: () => setState(() => _grosor = i),
+                    onPressed: () => setState(() {
+                      _borrador = false;
+                      _grosor = i;
+                    }),
                   ),
+                IconButton(
+                  tooltip: 'Borrador: quita los trazos que toques',
+                  isSelected: _borrador,
+                  style: IconButton.styleFrom(backgroundColor: _borrador ? Colors.white24 : null),
+                  icon: const Icon(Icons.auto_fix_high_outlined, color: Colors.white),
+                  onPressed: _sinAcceso ? null : () => setState(() => _borrador = !_borrador),
+                ),
                 const SizedBox(width: 8),
                 IconButton(tooltip: 'Deshacer mi último trazo', icon: const Icon(Icons.undo, color: Colors.white), onPressed: puedeDeshacer && !_sinAcceso ? _deshacer : null),
                 IconButton(tooltip: 'Borrar todo', icon: const Icon(Icons.delete_outline, color: Colors.white), onPressed: _sinAcceso ? null : _borrarTodo),
@@ -317,7 +377,7 @@ class _PintorTrazos extends CustomPainter {
   final List<Trazo> trazos;
   final List<Trazo> pendientes;
   final double escala;
-  final Color Function(String uid) colorDe;
+  final Color Function(Trazo t) colorDe;
 
   static final Map<String, Path> _cache = {};
 
@@ -347,13 +407,13 @@ class _PintorTrazos extends CustomPainter {
       ..strokeJoin = StrokeJoin.round;
     for (final t in trazos) {
       pintura
-        ..color = colorDe(t.de)
+        ..color = colorDe(t)
         ..strokeWidth = t.grosor.toDouble();
       canvas.drawPath(caminoDe(t), pintura);
     }
     for (final t in pendientes) {
       pintura
-        ..color = colorDe(t.de).withValues(alpha: 0.6)
+        ..color = colorDe(t).withValues(alpha: 0.6)
         ..strokeWidth = t.grosor.toDouble();
       canvas.drawPath(caminoDe(t), pintura);
     }

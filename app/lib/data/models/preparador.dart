@@ -181,10 +181,10 @@ class PerfilPreparador {
     this.ciudad = '',
     this.calendarioGoogle = false,
     this.minutosClase = minutosClasePorDefecto,
-    this.temasPorClase = 2,
+    int? temasPorClase,
     this.plataforma = plataformaMeet,
     this.updatedAt,
-  });
+  }) : _temasPorClase = temasPorClase;
 
   /// Valor de [avisosClase] que significa «la víspera a las 20:00».
   static const avisoVispera = -1;
@@ -213,7 +213,9 @@ class PerfilPreparador {
   final int minutosClase;
 
   /// Cuántos temas se cantan en cada clase, salvo que se cambie en la clase.
-  final int temasPorClase;
+  /// Temas por clase; si no se ha fijado, el de la oposición (TCEE 1, DCE 2).
+  final int? _temasPorClase;
+  int get temasPorClase => _temasPorClase ?? Oposiciones.actual.temasPorClase;
 
   /// Videollamada que propone para sus clases online ('meet' o 'teams').
   final String plataforma;
@@ -270,7 +272,7 @@ class PerfilPreparador {
         ciudad: ciudad ?? this.ciudad,
         calendarioGoogle: calendarioGoogle ?? this.calendarioGoogle,
         minutosClase: minutosClase ?? this.minutosClase,
-        temasPorClase: temasPorClase ?? this.temasPorClase,
+        temasPorClase: temasPorClase ?? _temasPorClase,
         plataforma: plataforma ?? this.plataforma,
         updatedAt: DateTime.now(),
       );
@@ -289,7 +291,7 @@ class PerfilPreparador {
         if (segundosTemaAntes != null) 'segundosTemaAntes': segundosTemaAntes,
         'avisosClase': avisosClase,
         'minutosClase': minutosClase,
-        'temasPorClase': temasPorClase,
+        'temasPorClase': _temasPorClase,
         'plataforma': plataforma,
         if (modalidad.isNotEmpty) 'modalidad': modalidad,
         if (ciudad.isNotEmpty) 'ciudad': ciudad,
@@ -316,7 +318,7 @@ class PerfilPreparador {
           ciudad: j['ciudad'] as String? ?? '',
           calendarioGoogle: j['calendarioGoogle'] as bool? ?? false,
           minutosClase: (j['minutosClase'] as num?)?.toInt() ?? minutosClasePorDefecto,
-          temasPorClase: (j['temasPorClase'] as num?)?.toInt() ?? 2,
+          temasPorClase: (j['temasPorClase'] as num?)?.toInt(),
           plataforma: j['plataforma'] as String? ?? plataformaMeet,
           updatedAt: _fecha(j['updatedAt']),
         );
