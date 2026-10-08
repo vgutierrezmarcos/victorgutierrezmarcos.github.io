@@ -104,9 +104,9 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
 - [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).
 
-**Versión 1.15.1 (25): buscar preparador y arreglos del móvil (8 oct.)**
-- [ ] Víctor: **volver a publicar las reglas** (`firestore.rules`, ahora 206 casos): la búsqueda de preparador añade `busquedas`, `interesados` y `plazas`, y los temas de las clases sueltas. Sin esto, «Buscar preparador» y «Alumnos nuevos» dan «sin permiso».
-- [ ] Víctor: subir el `.aab` 1.15.1 (25) (`Escritorio\oposicion-tcee-dce-1.15.1.aab`) a la prueba cerrada y anotarlo en el registro.
+**Versión 1.15.2 (26): buscar preparador y arreglos del móvil (8-9 oct.)**
+- [x] Víctor: reglas publicadas (206 casos) el 9 oct.
+- [ ] Víctor: subir el `.aab` **1.15.2 (26)** (`Escritorio\oposicion-tcee-dce-1.15.2.aab`; la 25 no hace falta) a la prueba cerrada (ya anotado en el registro). Hasta que el móvil tenga la 26, el tema de una clase suelta no se puede mandar (la 24 lo bloquea en la app). Cuando Play lo procese, bajar su **APK universal firmado** (Explorador de App Bundle → versión 26), dejarlo en el Escritorio como `oposicion-tcee.apk`: Claude lo sube a `app-latest` (`gh auth switch -u vgutierrezmarcos`) y pone `versionActual: "1.15.2"` en `oposicion/app-config.json`. Hasta entonces, el APK público es el 1.14.2.
 - [ ] Víctor: en el móvil, comprobar: el alumno duplicado («Unir fichas» en la clase o en su ficha), mandar temas en una clase suelta, «Empezar el esquema» arranca el cronómetro y el aviso con cuenta atrás (al alumno y a ti), la pizarra (trazo donde se toca, colores, borrador), buscar preparador en los dos lados.
 - [x] Víctor: exención de índice `pizarra` → `trazos` creada (8 oct.).
 - [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).

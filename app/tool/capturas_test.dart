@@ -565,7 +565,10 @@ void main() {
     await buscarEn<SesionPage>(find.text('Mandarle los temas antes'));
     await tocar(find.text('Mandarle los temas antes'));
     // En TCEE, por defecto, un tema: para la captura, dos (como cerca del examen).
-    await tocar(find.text('2 temas'));
+    // El de la hoja es el último «2 temas» (la fila «Temas que se cantan» de la
+    // ficha, debajo, también lo dice y tocarla abriría su diálogo).
+    await tester.tap(find.text('2 temas').last);
+    await tester.pumpAndSettle();
     // Dos temas de los primeros de la lista de la hoja (el código va solo en
     // su casilla; en la ficha, detrás, va con el título, así que no se confunden).
     await tocar(find.textContaining(RegExp(r'^3\.A\.2$')));
@@ -577,7 +580,8 @@ void main() {
     await tocar(find.text('Programar el envío'));
     await captura('sesion-tema');
     // La ficha de la clase: todo se cambia desde aquí (y la reunión de Teams).
-    await buscarEn<SesionPage>(find.text('DETALLES DE LA CLASE'), paso: -250); // está más arriba
+    // Ahora «Temas antes de la clase» va antes: los detalles quedan más abajo.
+    await buscarEn<SesionPage>(find.text('DETALLES DE LA CLASE'));
     await captura('clase-detalles');
     Navigator.of(tester.element(find.byType(SesionPage))).pop();
     await tester.pumpAndSettle();
