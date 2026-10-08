@@ -128,9 +128,24 @@ class SesionNotifier extends Notifier<bool> {
         // En el navegador, la ventana de Google de Firebase (como en la web).
         await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider()..addScope('email'));
       } else {
-        final google = await GoogleSignIn(scopes: const ['email']).signIn();
+        final inicio = GoogleSignIn(scopes: const ['email']);
+        var google = await inicio.signIn();
         if (google == null) return null; // cancelado
-        final auth = await google.authentication;
+        var auth = await google.authentication;
+        if (auth.idToken == null && auth.accessToken == null) {
+          // Play Services da la cuenta sin tokens cuando el usuario ha retirado
+          // el acceso de la app desde su cuenta de Google: se rompe el enlace
+          // guardado y se vuelve a entrar (Google vuelve a pedir el permiso).
+          try {
+            await inicio.disconnect();
+          } catch (_) {}
+          google = await inicio.signIn();
+          if (google == null) return null;
+          auth = await google.authentication;
+          if (auth.idToken == null && auth.accessToken == null) {
+            return 'Google no ha dado acceso a la app. Si has retirado el acceso desde tu cuenta de Google, espera unos minutos y vuelve a intentarlo.';
+          }
+        }
         final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
         final r = await FirebaseAuth.instance.signInWithCredential(cred);
         // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
