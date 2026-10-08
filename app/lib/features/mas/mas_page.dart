@@ -169,6 +169,7 @@ class MasPage extends ConsumerWidget {
           if (ref.read(oposicionProvider).autor case (final nombre, final quien, final url?))
             _fila(context, Icons.person_outline, 'Sobre el autor', '$nombre · $quien', () => abrirUrl(context, url, enApp: true)),
           _fila(context, Icons.privacy_tip_outlined, 'Privacidad', 'Qué datos guarda la app y cómo borrarlos', () => abrirUrl(context, Urls.politicaPrivacidad, enApp: true)),
+          _fila(context, Icons.gavel_outlined, 'Condiciones de uso', 'Cómo se usa la app y, si preparas, los datos de tus alumnos', () => abrirUrl(context, Urls.condiciones, enApp: true)),
           _fila(context, Icons.alternate_email, 'Contacto', config.email, () => abrirUrl(context, 'mailto:${config.email}')),
           FutureBuilder(
             future: PackageInfo.fromPlatform(),
