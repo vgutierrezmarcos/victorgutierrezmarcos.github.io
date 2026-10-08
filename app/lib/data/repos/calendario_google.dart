@@ -33,8 +33,16 @@ class CalendarioGoogle {
 
   static const _eventos = 'https://www.googleapis.com/calendar/v3/calendars/primary/events';
 
-  /// El último error al hablar con Google (para enseñarlo en Ajustes).
-  String? ultimoError;
+  /// El último error al hablar con Google (para enseñarlo en Ajustes y en la
+  /// clase). Se guarda en la caja para que no se pierda al cerrar la app.
+  String? get ultimoError => _huellas?.get('cal_error') as String? ?? _ultimoErrorMemoria;
+  String? _ultimoErrorMemoria;
+  set ultimoError(String? e) {
+    _ultimoErrorMemoria = e;
+    try {
+      e == null ? _huellas?.delete('cal_error') : _huellas?.put('cal_error', e);
+    } catch (_) {}
+  }
 
   String? _huella(String id) => _huellas?.get('cal:$id') as String? ?? _huellasMemoria[id];
   Future<void> _guardarHuella(String id, String? h) async {
@@ -52,7 +60,9 @@ class CalendarioGoogle {
     final inicio = c.fecha.toUtc();
     final fin = inicio.add(Duration(minutes: c.minutos <= 0 ? 60 : c.minutos));
     final con = [if (preparador.isNotEmpty) preparador, if (alumno.isNotEmpty) alumno].join(' y ');
-    final crearMeet = c.online && c.enlace.isEmpty;
+    // La reunión de Meet se pide solo si la clase es online, no tiene enlace
+    // y la videollamada elegida es Meet (con Teams, el preparador pega su enlace).
+    final crearMeet = c.online && c.enlace.isEmpty && c.plataformaEfectiva != plataformaTeams;
     return {
       'summary': 'Clase de ${siglas.isEmpty ? 'oposición' : siglas}${con.isEmpty ? '' : ': $con'}',
       'description': [

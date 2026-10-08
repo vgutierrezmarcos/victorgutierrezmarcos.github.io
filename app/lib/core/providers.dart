@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/estructura.dart';
@@ -23,6 +24,7 @@ import '../data/repos/preparador_repo.dart';
 import '../data/repos/usuario_repo.dart';
 import '../features/test/leitner.dart';
 import 'cache_http.dart';
+import 'constants.dart';
 import 'avisos_fondo.dart';
 import 'avisos_proceso.dart';
 import 'notificaciones.dart';
@@ -153,7 +155,8 @@ class SesionNotifier extends Notifier<bool> {
     }
   }
 
-  Future<void> sincronizar() => sincronizarTodo(ref);
+  /// «Sincronizar ahora»: del servidor. Devuelve si se pudo.
+  Future<bool> sincronizar() => sincronizarTodo(ref, delServidor: true);
 
   /// Con la sesión ya iniciada de antes: renueva la foto de la cuenta con la
   /// de Google de ahora, sin pedir nada al usuario (en el móvil).
@@ -258,9 +261,10 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
 }
 
 /// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
-Future<void> sincronizarTodo(Ref ref) async {
+/// Devuelve si se pudo (los cantes, que es lo que más importa).
+Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
   await ref.read(usuarioRepoProvider).sincronizarTodo();
-  await ref.read(planRepoProvider).sincronizarTodo();
+  final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
   await ref.read(preparadorRepoProvider).sincronizarTodo();
   await sincronizarRed(ref);
   final yo = ref.read(usuarioActualProvider);
@@ -278,6 +282,19 @@ Future<void> sincronizarTodo(Ref ref) async {
   ref.invalidate(cronogramaProvider);
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
   await ref.read(sesionesProvider.notifier).reprogramarAvisos();
+  await reprogramarRecordatorio(ref);
+  return ok;
+}
+
+/// Vuelve a programar el recordatorio del test diario según si ya está hecho
+/// hoy (así no llega si no hay nada que recordar).
+Future<void> reprogramarRecordatorio(Ref ref) async {
+  try {
+    final hora = ref.read(usuarioRepoProvider).ajustes().horaRecordatorio;
+    final hoy = Ajustes.claveDia(DateTime.now());
+    final hecho = ref.read(usuarioRepoProvider).resultadosLocales().any((r) => r.tipo == 'diario' && Ajustes.claveDia(r.timestamp) == hoy);
+    await Notificaciones.programarRecordatorio(hora, hechoHoy: hecho);
+  } catch (_) {}
 }
 
 // ------------------------------------------------------------------ Usuario
@@ -330,7 +347,7 @@ class AjustesNotifier extends Notifier<Ajustes> {
 
   Future<void> fijarRecordatorio(int minutos) async {
     await actualizar((a) => a.copyWith(horaRecordatorio: minutos));
-    await Notificaciones.programarRecordatorio(minutos);
+    await reprogramarRecordatorio(ref);
   }
 }
 
@@ -356,7 +373,30 @@ final testDiarioHechoProvider = Provider<bool>((ref) {
 
 class CantesNotifier extends Notifier<List<Cante>> {
   @override
-  List<Cante> build() => ref.read(planRepoProvider).cantes();
+  List<Cante> build() {
+    ref.onDispose(dejarDeEscuchar);
+    return ref.read(planRepoProvider).cantes();
+  }
+
+  StreamSubscription<List<Cante>>? _escucha;
+
+  /// Escucha en tiempo real las clases que programan los preparadores (con
+  /// la app en primer plano): un cambio de hora o una cancelación se ve al
+  /// momento, sin esperar a sincronizar.
+  void escucharNube() {
+    _escucha?.cancel();
+    final repo = ref.read(planRepoProvider);
+    _escucha = repo.escucharCantesDePreparadores()?.listen((lista) async {
+      if (await repo.incorporar(lista) == 0) return;
+      state = repo.cantes();
+      await reprogramarAvisos();
+    });
+  }
+
+  void dejarDeEscuchar() {
+    _escucha?.cancel();
+    _escucha = null;
+  }
 
   Future<void> guardar(Cante c) => guardarVarios([c]);
 
@@ -401,6 +441,14 @@ final proximosCantesProvider = Provider<List<Cante>>((ref) {
   return ref.watch(cantesProvider).where((c) => c.pendiente && c.fecha.isAfter(ahora.subtract(const Duration(hours: 2)))).toList();
 });
 
+/// Clases que vienen y que el preparador ha cancelado: se enseñan como
+/// canceladas (si no, parecería que no han llegado) y desde ellas se pide una
+/// clase suelta.
+final canceladasProximasProvider = Provider<List<Cante>>((ref) {
+  final ahora = DateTime.now();
+  return ref.watch(cantesProvider).where((c) => c.cancelado && c.dePreparador && c.fecha.isAfter(ahora)).toList();
+});
+
 /// Diario: cantes ya hechos, del más reciente al más antiguo.
 final diarioProvider = Provider<List<Cante>>((ref) => ref.watch(cantesProvider).where((c) => c.hecho).toList().reversed.toList());
 
@@ -408,6 +456,24 @@ final estadisticasCantesProvider = Provider<Map<String, EstadisticaTema>>((ref) 
 
 /// Cante de la agenda que se está cantando ahora en «Cantes → Cantar».
 final canteEnCursoProvider = StateProvider<String?>((ref) => null);
+
+/// Tarjetas de ayuda ya cerradas por el usuario (caja `app`, por clave).
+class AyudaVistaNotifier extends FamilyNotifier<bool, String> {
+  @override
+  bool build(String clave) => Hive.isBoxOpen(Cajas.app) && Hive.box(Cajas.app).get('ayuda_vista:$clave') == true;
+
+  Future<void> marcar() async {
+    state = true;
+    if (Hive.isBoxOpen(Cajas.app)) await Hive.box(Cajas.app).put('ayuda_vista:$arg', true);
+  }
+
+  Future<void> reponer() async {
+    state = false;
+    if (Hive.isBoxOpen(Cajas.app)) await Hive.box(Cajas.app).delete('ayuda_vista:$arg');
+  }
+}
+
+final ayudaVistaProvider = NotifierProvider.family<AyudaVistaNotifier, bool, String>(AyudaVistaNotifier.new);
 
 /// Subpestaña visible del bloque Cantes: 0 = agenda, 1 = cantar, 2 = diario.
 final subpestanaCantesProvider = StateProvider<int>((ref) => 0);

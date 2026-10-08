@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:record/record.dart';
@@ -23,12 +24,14 @@ import '../../data/repos/usuario_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
+import '../cantes/nuevo_cante_sheet.dart';
 import '../plan/cantes_util.dart';
 import '../plan/resultado_sheet.dart';
 import '../preparador/tema_anticipado.dart' show leerAntelacion, textoAntelacion;
 import 'probabilidades.dart';
 import 'reloj_cante.dart';
 import 'reloj_compartido.dart';
+import 'pizarra_page.dart';
 import 'reloj_grande_page.dart';
 import 'sorteo.dart';
 
@@ -101,7 +104,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     // Si se llega desde la agenda con un cante, el cronómetro toma su duración.
     final id = ref.read(canteEnCursoProvider);
     final cante = widget.sesion?.cante ?? ref.read(cantesProvider).where((c) => c.id == id).firstOrNull;
-    if (cante != null) _minExposicion = cante.minutos;
+    if (cante != null) _minExposicion = cante.exposicion;
     // El preparador sin alumno no tiene temas estudiados propios: su bolsa es una lista.
     if (widget.sesion == null && ref.read(papelProvider) == Papel.preparador) _fuente = _Fuente.lista;
     _segEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
@@ -109,22 +112,30 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
   }
 
-  /// Si se llega con el tema que ha mandado el preparador, se elige y el
-  /// cronómetro queda con el esquema de un tema.
+  /// Si se llega con los temas que ha mandado el preparador (uno o dos,
+  /// separados por comas), quedan como sorteados y el cronómetro con el
+  /// esquema de esos temas (45 min para dos en TCEE, como en el examen).
   void _tomarTemaMandado() {
-    final codigo = ref.read(temaParaCantarProvider);
-    final tema = codigo == null ? null : ref.read(temarioProvider).valueOrNull?.tema(codigo);
-    if (!mounted || tema == null) return;
+    final codigos = ref.read(temaParaCantarProvider);
+    if (codigos == null) return;
+    final temario = ref.read(temarioProvider).valueOrNull;
+    final temas = [for (final c in codigos.split(',')) if (temario?.tema(c.trim()) != null) temario!.tema(c.trim())!];
+    if (!mounted || temas.isEmpty) return;
     ref.read(temaParaCantarProvider.notifier).state = null;
-    final def = Oposiciones.actual.ejercicio(tema.ejercicio);
+    _ponerTemasMandados(temas);
+  }
+
+  void _ponerTemasMandados(List<Tema> temas) {
+    final def = Oposiciones.actual.ejercicio(temas.first.ejercicio);
     setState(() {
-      _sorteados = [tema];
-      _elegido = tema;
+      _sorteados = temas;
+      _elegido = temas.length == 1 ? temas.first : null;
       if (!_reloj.empezado && def != null && def.minutosEsquema > 0) {
-        _segEsquema = def.segundosEsquemaPara(1);
+        _segEsquema = def.segundosEsquemaPara(temas.length);
         _nuevoReloj();
       }
     });
+    _publicar();
   }
 
   // ------------------------------------------------------------ Esquema
@@ -491,8 +502,11 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       resultado = Sorteo.sorteoOficial(partes, Oposiciones.actual.bolasPorParte(_ejercicio, config)).values.expand((x) => x).toList();
     } else {
       final bolsa = _bolsa(t, cante);
-      final n = ref.read(ajustesProvider).temasExtraidos;
-      if (_ponderar) {
+      // En una clase del preparador se sacan los temas que diga la clase.
+      final n = widget.sesion != null && cante != null ? cante.numTemas : ref.read(ajustesProvider).temasExtraidos;
+      if (widget.sesion != null && cante != null) {
+        resultado = Sorteo.sortearClase(bolsa, n, unoPorParte: cante.unoPorParte, parte: (x) => x.codigo.split('.').take(2).join('.'));
+      } else if (_ponderar) {
         final stats = ref.read(estadisticasCantesProvider);
         resultado = Sorteo.sortearPonderado(bolsa, n, (x) => Sorteo.pesoPractica(veces: stats[x.codigo]?.veces ?? 0, valoracionMedia: stats[x.codigo]?.valoracionMedia ?? 0));
       } else {
@@ -529,7 +543,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       nav.pop();
       return;
     }
-    final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
+    final base = cante ?? Cante(id: nuevoId(), fecha: DateTime.now(), titulo: 'Práctica', minutos: _minExposicion, exposicion: _minExposicion, ejercicio: _elegido?.ejercicio ?? _ejercicio, bolsa: TipoBolsa.lista);
     await ref.read(cantesProvider.notifier).guardar(base.copyWith(estado: EstadoCante.hecho, resultado: res));
     ref.read(canteEnCursoProvider.notifier).state = null;
     if (!mounted) return;
@@ -579,11 +593,22 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       setState(() {
         _sorteados = [];
         _elegido = null;
-        _minExposicion = c.minutos;
+        _minExposicion = c.exposicion;
         _segEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio);
         _nuevoReloj();
       });
     });
+
+    // Clase del preparador (el alumno): los temas los manda él, no se sortean
+    // aquí. Si ya han llegado, quedan puestos.
+    final clasePreparador = sesion == null && cante != null && cante.dePreparador;
+    if (clasePreparador && cante.temaA != null && !cante.temaA!.isAfter(DateTime.now())) {
+      ref.listen(temaAnticipadoProvider(cante.id), (_, t) {
+        final temario = ref.read(temarioProvider).valueOrNull;
+        final temas = [for (final c in t.valueOrNull?.temas ?? const <String>[]) if (temario?.tema(c) != null) temario!.tema(c)!];
+        if (temas.isNotEmpty && _sorteados.isEmpty) WidgetsBinding.instance.addPostFrameCallback((_) => _ponerTemasMandados(temas));
+      });
+    }
 
     final cuerpo = temario.when(
         loading: () => const Cargando(),
@@ -606,6 +631,10 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
           return ListaAdaptable(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
             children: [
+              if (sesion == null && soloPreparador)
+                TarjetaAyudaCantes(clave: 'cantar_preparador', icono: Icons.record_voice_over_outlined, titulo: ayudasCantes['cantar_preparador']!.$1, texto: ayudasCantes['cantar_preparador']!.$2)
+              else if (sesion == null)
+                TarjetaAyudaCantes(clave: 'cantar', icono: Icons.record_voice_over_outlined, titulo: ayudasCantes['cantar']!.$1, texto: ayudasCantes['cantar']!.$2),
               if (cante != null)
                 Tarjeta(
                   color: context.colores.primarioPalido,
@@ -626,7 +655,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                   ]),
                 ),
               TituloSeccion(
-                coyuntura ? (oposicion.ejercicio(ejercicioActual)?.etiquetaCante ?? 'Cante') : 'Sacar bola',
+                coyuntura ? (oposicion.ejercicio(ejercicioActual)?.etiquetaCante ?? 'Cante') : (clasePreparador ? 'Temas de la clase' : 'Sacar bola'),
                 accion: cante != null
                     ? null
                     : SegmentedButton<int>(showSelectedIcon: false, 
@@ -661,7 +690,18 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                   ),
                 ),
               if (oficial && !soloPreparador) _resumenProbabilidad(context, config, bolas),
-              if (!oficial && !coyuntura)
+              if (clasePreparador && !coyuntura)
+                Tarjeta(
+                  child: Text(
+                    cante.temaA == null
+                        ? 'Los temas los saca o elige ${cante.preparadorNombre ?? 'tu preparador'} en la clase: aquí tienes el cronómetro (y el reloj compartido, si lo activáis).'
+                        : (cante.temaA!.isAfter(ahora)
+                            ? '${cante.preparadorNombre ?? 'Tu preparador'} te manda los temas ${DateFormat("EEEE d 'a las' HH:mm", 'es').format(cante.temaA!)}. Entonces aparecerán aquí, con el esquema listo.'
+                            : (_sorteados.isEmpty ? 'Cargando los temas que te ha mandado…' : 'Los temas que te ha mandado ${cante.preparadorNombre ?? 'tu preparador'}. Toca el que vayas a exponer.')),
+                    style: context.textos.bodySmall,
+                  ),
+                ),
+              if (!oficial && !coyuntura && !clasePreparador)
                 Tarjeta(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     if (cante == null) ...[
@@ -698,11 +738,13 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                   ]),
                 ),
               const SizedBox(height: 10),
-              if (!coyuntura)
+              if (!coyuntura && !clasePreparador)
               FilledButton.icon(
                 onPressed: (oficial ? ref.watch(temasPorParteProvider).keys.any((p) => p.startsWith('$_ejercicio.')) : bolsa.isNotEmpty) ? () => _sortear(t, cante, config) : null,
                 icon: const Icon(Icons.casino_outlined),
-                label: Text(oficial ? 'Sacar $bolas ${bolas == 1 ? 'bola' : 'bolas'} de cada parte' : 'Sacar $k ${k == 1 ? 'bola' : 'bolas'}'),
+                label: Text(oficial
+                    ? 'Sacar $bolas ${bolas == 1 ? 'bola' : 'bolas'} de cada parte'
+                    : (sesion != null && cante != null ? 'Sacar ${cante.numTemas} ${cante.numTemas == 1 ? 'bola' : 'bolas'}${cante.unoPorParte && cante.numTemas > 1 ? ' (una de cada parte)' : ''}' : 'Sacar $k ${k == 1 ? 'bola' : 'bolas'}')),
               ),
               if (_sorteados.isNotEmpty) const SizedBox(height: 4),
               for (final x in _sorteados)
@@ -726,11 +768,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
               if (_sorteados.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Toca el tema que vas a cantar.', style: context.textos.labelSmall)),
               TituloSeccion(
                 'Cronómetro',
-                accion: TextButton.icon(
-                  onPressed: () => Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: this))),
-                  icon: const Icon(Icons.fullscreen, size: 20),
-                  label: const Text('Pantalla grande'),
-                ),
+                accion: Wrap(spacing: 2, children: [
+                  if (destino != null)
+                    TextButton.icon(
+                      onPressed: () => abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro),
+                      icon: const Icon(Icons.draw_outlined, size: 20),
+                      label: const Text('Pizarra'),
+                    ),
+                  TextButton.icon(
+                    onPressed: () => Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: this))),
+                    icon: const Icon(Icons.fullscreen, size: 20),
+                    label: const Text('Pantalla grande'),
+                  ),
+                ]),
               ),
               if (_compartido != null && !_compartiendo && _remoto != null && _remoto!.activo && _remoto!.por != _compartido!.miUid)
                 Padding(
@@ -860,7 +910,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     return Scaffold(
       appBar: BarraWeb(
         title: Text(sesion.alumno.nombre),
-        subtitulo: 'Sacar bola y cronómetro',
+        subtitulo: 'Sortear y cronómetro',
         actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,

@@ -277,6 +277,91 @@ void main() {
     expect(describirEjercicios([1, 3]), '1.º (coyuntura), 3.º');
   });
 
+  test('materiales: el preparador los comparte y los ve el alumno al que van', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('preparadoresVerificados').doc('paula').set(PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    await db.doc('users/alu/preparadores/paula').set({'uid': 'paula'});
+    final paula = RedRepo(firestore: db, auth: sesion('paula', 'Paula'));
+    final alu = RedRepo(firestore: db, auth: sesion('alu', 'Álex'));
+    final otro = RedRepo(firestore: db, auth: sesion('otro', 'Otro'));
+    await paula.guardarMaterial(const MaterialCompartido(id: 'm1', preparador: 'paula', preparadorNombre: 'Paula', titulo: 'Esquemas', url: 'https://drive.google.com/x', tema: '3.A.1'));
+    await paula.guardarMaterial(const MaterialCompartido(id: 'm2', preparador: 'paula', preparadorNombre: 'Paula', titulo: 'Para Álex', url: 'https://ejemplo.org/a.pdf', paraTodos: false, alumnos: ['alu']));
+    await paula.guardarMaterial(const MaterialCompartido(id: 'm3', preparador: 'paula', preparadorNombre: 'Paula', titulo: 'Para otro', url: 'https://ejemplo.org/b.pdf', paraTodos: false, alumnos: ['otro']));
+    expect((await paula.misMateriales()).length, 3);
+    expect((await alu.materialesDe('paula')).map((m) => m.id).toSet(), {'m1', 'm2'});
+    expect((await otro.materialesDe('paula')).map((m) => m.id).toSet(), {'m1', 'm3'});
+    // Con los vínculos de la nube (como la tarea en segundo plano) y con los locales.
+    expect((await alu.materialesParaMi()).length, 2);
+    expect((await alu.materialesParaMi(preparadores: ['paula'])).length, 2);
+    // El aviso llega una vez.
+    final avisos = await alu.avisosNuevos(vistos: {}, preparador: false);
+    expect(avisos.where((a) => a.id.startsWith('mat:')).map((a) => a.id).toSet(), {'mat:m1', 'mat:m2'});
+    expect(avisos.firstWhere((a) => a.id == 'mat:m1').ruta, '/mas/mi-preparador');
+    expect((await alu.avisosNuevos(vistos: {'mat:m1', 'mat:m2'}, preparador: false)).where((a) => a.id.startsWith('mat:')), isEmpty);
+    // Tipo y dominio por el enlace; enlaces válidos.
+    final m = (await alu.materialesDe('paula')).firstWhere((m) => m.id == 'm1');
+    expect(m.tipo, TipoMaterial.drive);
+    expect(m.dominio, 'drive.google.com');
+    expect(MaterialCompartido.fromJson(m.toJson()).alumnos, isEmpty);
+    expect(enlaceMaterial('drive.google.com/file/d/1'), 'https://drive.google.com/file/d/1');
+    expect(enlaceMaterial('javascript:alert(1)'), isNull);
+    expect(enlaceMaterial('hola'), isNull);
+    // Al borrar la cuenta se van con ella.
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.romperTodosLosEnlaces();
+    expect((await db.collection('materiales').get()).docs, isEmpty);
+  });
+
+  test('clase movida o cancelada por el preparador: el alumno recibe el aviso que toca', () async {
+    final db = FakeFirebaseFirestore();
+    final alu = RedRepo(firestore: db, auth: sesion('alu', 'Álex'));
+    final f = DateTime.now().add(const Duration(days: 3));
+    Future<void> clase(DateTime fecha, {String estado = 'pendiente'}) =>
+        db.doc('users/alu/cantes/c1').set({'id': 'c1', 'fecha': fecha.toIso8601String(), 'preparador': 'paula', 'preparadorNombre': 'Paula', 'estado': estado, 'updatedAt': DateTime.now().toIso8601String()});
+    await clase(f);
+    var avisos = await alu.avisosNuevos(vistos: {}, preparador: false);
+    expect(avisos.single.id, 'prog:c1:${f.toIso8601String()}');
+    expect(avisos.single.ruta, '/cantes?cante=c1');
+    // La mueve: ya se había avisado de esa clase, así que es un cambio de hora.
+    final vistos = {avisos.single.id};
+    final f2 = f.add(const Duration(hours: 2));
+    await clase(f2);
+    avisos = await alu.avisosNuevos(vistos: vistos, preparador: false);
+    expect(avisos.single.id, 'mov:c1:${f2.toIso8601String()}');
+    expect(avisos.single.titulo, contains('ha movido'));
+    vistos.add(avisos.single.id);
+    await clase(f2, estado: 'cancelado');
+    avisos = await alu.avisosNuevos(vistos: vistos, preparador: false);
+    expect(avisos.single.id, 'canc:c1');
+  });
+
+  test('clase suelta cogida: el alumno queda con uid (suelto) y los cambios le llegan', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    final cuando = DateTime.now().add(const Duration(days: 2));
+    final s = Sustitucion(id: 's9', alumno: 'luis', fecha: cuando, estado: EstadoSustitucion.cogida, cogidaPor: 'paula', cogidaPorNombre: 'Paula', temas: const ['3.A.1']);
+    final clase = await prep.sesionDeSustitucion(s, const ContactoRed(nombre: 'Luis', telefono: '600111222'));
+    final a = prep.alumno(clase.alumno!)!;
+    expect(a.uid, 'luis');
+    expect(a.suelto, isTrue);
+    expect(a.enlazado, isFalse);
+    expect(clase.minutos, PerfilPreparador.minutosClasePorDefecto);
+    // La copia va a la agenda del alumno, firmada por la sustituta.
+    final copia = (await db.doc('users/luis/cantes/sust_s9').get()).data()!;
+    expect(copia['preparador'], 'paula');
+    expect(copia['sustitucion'], 's9');
+    expect(prep.estadoCopia(clase.id), EstadoCopia.enviada);
+    // Un cambio de hora también.
+    final nueva = cuando.add(const Duration(hours: 1));
+    await prep.guardarSesion(clase.copyWith(fecha: nueva));
+    expect((await db.doc('users/luis/cantes/sust_s9').get()).data()!['fecha'], nueva.toIso8601String());
+    // En el lado del alumno, el cante de la clase suelta lleva al sustituto.
+    final enAgenda = s.canteDelAlumno();
+    expect(enAgenda.preparador, 'paula');
+    expect(enAgenda.dePreparador, isTrue);
+  });
+
   test('primer ejercicio: el cante es un dictamen de coyuntura, sin temas', () {
     final s = Sustitucion(id: 'c', alumno: 'a', fecha: DateTime(2026, 11, 3, 18), ejercicio: 1);
     expect(s.coyuntura, isTrue);

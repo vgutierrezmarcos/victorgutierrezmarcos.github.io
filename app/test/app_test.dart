@@ -242,7 +242,7 @@ void main() {
   testWidgets('un cante programado aparece en la agenda y se puede sortear y cantar', (tester) async {
     await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1', '3.A.2', '3.B.1'}));
     final cuando = DateTime.now().add(const Duration(days: 3));
-    await plan.guardarCante(Cante(id: 'c1', fecha: cuando, titulo: 'Preparador', minutos: 12, bolsa: TipoBolsa.lista, temas: const ['3.A.1', '3.A.2', '3.B.1'], updatedAt: DateTime.now()));
+    await plan.guardarCante(Cante(id: 'c1', fecha: cuando, titulo: 'Preparador', minutos: 12, exposicion: 12, bolsa: TipoBolsa.lista, temas: const ['3.A.1', '3.A.2', '3.B.1'], updatedAt: DateTime.now()));
     await plan.guardarAgenda(const AgendaTema(codigo: '3.A.2').anadir('Actualizar los datos del PIB'));
     await arrancar(tester);
 
@@ -281,15 +281,21 @@ void main() {
   testWidgets('programar un cante desde el formulario', (tester) async {
     await arrancar(tester);
     await subpestana(tester, 'Agenda');
-    await tocar(tester, find.widgetWithText(FloatingActionButton, 'Cante'));
+    // El «+» explica qué se puede añadir: un cante propio, reservar o pedir una clase suelta.
+    await tocar(tester, find.widgetWithText(FloatingActionButton, 'Añadir'));
+    expect(find.text('¿Qué quieres apuntar?'), findsOneWidget);
+    expect(find.text('Reservar clase con mi preparador'), findsOneWidget);
+    await tocar(tester, find.text('Un cante por mi cuenta'));
     expect(find.text('Nuevo cante'), findsOneWidget);
     await tester.enterText(find.widgetWithText(TextField, 'Preparador, grupo de cante… (opcional)'), 'Grupo de los jueves');
     await tocar(tester, find.text('Todo el ejercicio'));
-    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min')).selected, isTrue); // duración por defecto
-    await tocar(tester, find.text('Otro'));
+    // Duración por defecto (30 min) y exposición por tema aparte.
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min').first).selected, isTrue);
+    expect(find.text('EXPOSICIÓN POR TEMA'), findsOneWidget);
+    await tocar(tester, find.text('Otra'));
     await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), '40');
     await tocar(tester, find.text('Aceptar'));
-    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '40 min')).selected, isTrue);
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '40 min').first).selected, isTrue);
     await tocar(tester, find.text('Guardar'));
 
     final c = plan.cantes().single;
@@ -464,7 +470,8 @@ void main() {
     expect(find.text('TEMAS QUE LLEVA (0)'), findsOneWidget);
     await tocar(tester, find.text('Cantar ahora'));
     expect(find.textContaining('temas en la bolsa. Al terminar se guarda en su ficha.'), findsOneWidget);
-    await tocar(tester, find.text('Sacar 3 bolas'));
+    // En una clase se sacan los temas de la clase (dos, como cerca del examen).
+    await tocar(tester, find.text('Sacar 2 bolas'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.[AB]\.\d+$')));
     await tocar(tester, find.text('Empezar'));
     await tester.pump(const Duration(milliseconds: 600));

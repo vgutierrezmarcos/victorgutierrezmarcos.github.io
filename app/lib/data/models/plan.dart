@@ -68,6 +68,30 @@ enum Modalidad { sinIndicar, presencial, online }
 /// o de la app de Meet); su enlace se copia y se pega en el cante.
 const urlNuevaReunionMeet = 'https://meet.google.com/new';
 
+/// Reunión nueva de Microsoft Teams (Teams personal; con una cuenta del
+/// trabajo se crea en su Teams y se pega el enlace).
+const urlNuevaReunionTeams = 'https://teams.live.com/meet';
+
+/// Plataformas de videollamada que propone la app. El enlace vale de
+/// cualquiera; esto solo cambia el botón de crear la reunión y el texto.
+const plataformaMeet = 'meet';
+const plataformaTeams = 'teams';
+
+/// 'meet' o 'teams' según el enlace, o '' si no se reconoce.
+String plataformaDeEnlace(String enlace) {
+  final e = enlace.toLowerCase();
+  if (e.contains('meet.google.com')) return plataformaMeet;
+  if (e.contains('teams.microsoft.com') || e.contains('teams.live.com')) return plataformaTeams;
+  return '';
+}
+
+/// «Meet», «Teams» o «videollamada».
+String nombrePlataforma(String plataforma) => switch (plataforma) {
+      plataformaMeet => 'Meet',
+      plataformaTeams => 'Teams',
+      _ => 'videollamada',
+    };
+
 /// El enlace de una videollamada escrito o pegado por el usuario, completo
 /// (añade https:// si falta), o null si no parece un enlace. Vale cualquiera
 /// (Meet, Zoom, Teams…), aunque la app propone Meet.
@@ -86,6 +110,7 @@ class Cante {
     required this.fecha,
     this.titulo = '',
     this.minutos = 30,
+    this.exposicion = 30,
     this.ejercicio = 3,
     this.bolsa = TipoBolsa.estudiados,
     this.temas = const [],
@@ -104,8 +129,11 @@ class Cante {
     this.lugar = '',
     this.enlace = '',
     this.temaA,
-    this.temaMandado,
+    this.temasMandados = const [],
     this.temaSorteado = false,
+    this.numTemas = 2,
+    this.unoPorParte = false,
+    this.plataforma = '',
     this.eventoGoogle = '',
   });
 
@@ -120,14 +148,32 @@ class Cante {
   /// (la ve el alumno; el tema no, hasta esa hora).
   final DateTime? temaA;
 
-  /// El tema que se manda. Solo lo tiene el preparador: nunca va en la copia
-  /// del alumno (se le entrega aparte, en temasAnticipados, a su hora).
-  final String? temaMandado;
+  /// Los temas que se mandan (uno o dos). Solo los tiene el preparador: nunca
+  /// van en la copia del alumno (se le entregan aparte, en temasAnticipados,
+  /// a su hora).
+  final List<String> temasMandados;
 
-  /// El tema lo ha sacado la app al azar: tampoco el preparador lo ve antes.
+  /// El primero de los temas mandados (compatibilidad con las clases antiguas,
+  /// que mandaban uno solo).
+  String? get temaMandado => temasMandados.firstOrNull;
+
+  /// Los temas los ha sacado la app al azar: tampoco el preparador los ve antes.
   final bool temaSorteado;
 
-  bool get mandaTema => temaA != null && temaMandado != null;
+  /// Cuántos temas se cantan en esta clase (lo normal cerca del examen: 2).
+  final int numTemas;
+
+  /// Al sortearlos, uno de cada parte del ejercicio (como en el examen).
+  final bool unoPorParte;
+
+  /// Videollamada que propone el preparador ('meet' o 'teams'; vacío = la
+  /// que diga el enlace). La elige siempre el preparador.
+  final String plataforma;
+
+  /// 'meet', 'teams' o '': la plataforma dicha o la que se deduce del enlace.
+  String get plataformaEfectiva => plataforma.isNotEmpty ? plataforma : plataformaDeEnlace(enlace);
+
+  bool get mandaTema => temaA != null && temasMandados.isNotEmpty;
   /// Presencial u online.
   final Modalidad modalidad;
   /// Dónde, si es presencial (opcional).
@@ -138,8 +184,12 @@ class Cante {
   final DateTime fecha;
   /// Con quién o dónde ("Preparador", "Grupo de cante"…).
   final String titulo;
-  /// Duración prevista del cante, en minutos.
+  /// Duración de la clase o del cante, en minutos (lo que ocupa en la agenda
+  /// y en el calendario).
   final int minutos;
+
+  /// Minutos de exposición por tema: lo que cuenta el cronómetro al cantar.
+  final int exposicion;
   /// 3, 4 o 5; 0 = cualquiera.
   final int ejercicio;
   final TipoBolsa bolsa;
@@ -171,7 +221,7 @@ class Cante {
   bool get presencial => modalidad == Modalidad.presencial;
   /// «Online · meet.google.com/abc-defg-hij», «Presencial · Calle…» o vacío.
   String get descripcionModalidad => switch (modalidad) {
-        Modalidad.online => enlace.isEmpty ? 'Online' : 'Online · ${enlace.replaceFirst(RegExp(r'^https?://'), '')}',
+        Modalidad.online => enlace.isEmpty ? 'Online${plataforma.isEmpty ? '' : ' · ${nombrePlataforma(plataforma)}'}' : 'Online · ${enlace.replaceFirst(RegExp(r'^https?://'), '')}',
         Modalidad.presencial => lugar.isEmpty ? 'Presencial' : 'Presencial · $lugar',
         Modalidad.sinIndicar => '',
       };
@@ -180,6 +230,7 @@ class Cante {
     DateTime? fecha,
     String? titulo,
     int? minutos,
+    int? exposicion,
     int? ejercicio,
     TipoBolsa? bolsa,
     List<String>? temas,
@@ -197,9 +248,12 @@ class Cante {
     String? lugar,
     String? enlace,
     DateTime? temaA,
-    String? temaMandado,
+    List<String>? temasMandados,
     bool? temaSorteado,
     bool sinTema = false,
+    int? numTemas,
+    bool? unoPorParte,
+    String? plataforma,
     String? eventoGoogle,
   }) =>
       Cante(
@@ -207,6 +261,7 @@ class Cante {
         fecha: fecha ?? this.fecha,
         titulo: titulo ?? this.titulo,
         minutos: minutos ?? this.minutos,
+        exposicion: exposicion ?? this.exposicion,
         ejercicio: ejercicio ?? this.ejercicio,
         bolsa: bolsa ?? this.bolsa,
         temas: temas ?? this.temas,
@@ -225,8 +280,11 @@ class Cante {
         lugar: lugar ?? this.lugar,
         enlace: enlace ?? this.enlace,
         temaA: sinTema ? null : (temaA ?? this.temaA),
-        temaMandado: sinTema ? null : (temaMandado ?? this.temaMandado),
+        temasMandados: sinTema ? const [] : (temasMandados ?? this.temasMandados),
         temaSorteado: sinTema ? false : (temaSorteado ?? this.temaSorteado),
+        numTemas: numTemas ?? this.numTemas,
+        unoPorParte: unoPorParte ?? this.unoPorParte,
+        plataforma: plataforma ?? this.plataforma,
         eventoGoogle: eventoGoogle ?? this.eventoGoogle,
       );
 
@@ -238,6 +296,7 @@ class Cante {
         if (lugar.isNotEmpty) 'lugar': lugar,
         if (enlace.isNotEmpty) 'enlace': enlace,
         'minutos': minutos,
+        if (exposicion != 30) 'exposicion': exposicion,
         'ejercicio': ejercicio,
         'bolsa': bolsa.name,
         'temas': temas,
@@ -253,8 +312,13 @@ class Cante {
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
         if (temaA != null) 'temaA': temaA!.toIso8601String(),
-        if (temaMandado != null) 'temaMandado': temaMandado,
+        // El primero también como temaMandado, que es lo que leen las versiones anteriores.
+        if (temasMandados.isNotEmpty) 'temaMandado': temasMandados.first,
+        if (temasMandados.isNotEmpty) 'temasMandados': temasMandados,
         if (temaSorteado) 'temaSorteado': true,
+        if (numTemas != 2) 'numTemas': numTemas,
+        if (unoPorParte) 'unoPorParte': true,
+        if (plataforma.isNotEmpty) 'plataforma': plataforma,
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
       };
 
@@ -263,6 +327,7 @@ class Cante {
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         titulo: j['titulo'] as String? ?? '',
         minutos: (j['minutos'] as num?)?.toInt() ?? 30,
+        exposicion: (j['exposicion'] as num?)?.toInt() ?? 30,
         ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
         bolsa: TipoBolsa.values.firstWhere((b) => b.name == j['bolsa'], orElse: () => TipoBolsa.estudiados),
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
@@ -281,8 +346,13 @@ class Cante {
         lugar: j['lugar'] as String? ?? '',
         enlace: j['enlace'] as String? ?? '',
         temaA: _fecha(j['temaA']),
-        temaMandado: j['temaMandado'] as String?,
+        temasMandados: j['temasMandados'] is List
+            ? [for (final t in j['temasMandados'] as List) t.toString()]
+            : [if (j['temaMandado'] is String) j['temaMandado'] as String],
         temaSorteado: j['temaSorteado'] as bool? ?? false,
+        numTemas: (j['numTemas'] as num?)?.toInt() ?? 2,
+        unoPorParte: j['unoPorParte'] as bool? ?? false,
+        plataforma: j['plataforma'] as String? ?? '',
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
       );
 

@@ -41,6 +41,22 @@ String detalleCante(Cante c) => [descripcionBolsa(c), if (c.online) 'online' els
 
 String tituloCante(Cante c) => c.titulo.isEmpty ? 'Cante' : c.titulo;
 
+/// «2 h», «1 h 30 min», «45 min».
+String textoDuracion(int minutos) {
+  if (minutos <= 0) return '';
+  final h = minutos ~/ 60, m = minutos % 60;
+  return [if (h > 0) '$h h', if (m > 0) '$m min'].join(' ');
+}
+
+/// Duraciones que se ofrecen para una clase con el preparador (minutos).
+const duracionesClase = [60, 90, 120, 150, 180];
+
+/// Duraciones que se ofrecen para un cante por cuenta propia (minutos).
+const duracionesCante = [15, 20, 30, 45, 60];
+
+/// Minutos de exposición por tema que se ofrecen.
+const duracionesExposicion = [10, 15, 20, 30, 45];
+
 String fechaLarga(DateTime f) => DateFormat("EEEE d 'de' MMMM", 'es').format(f);
 String fechaCorta(DateTime f) => DateFormat('EEE d MMM', 'es').format(f);
 String horaDe(DateTime f) => DateFormat('HH:mm').format(f);
@@ -70,6 +86,7 @@ List<Cante> serieSemanal(Cante primero, DateTime hasta) {
       fecha: f,
       titulo: primero.titulo,
       minutos: primero.minutos,
+      exposicion: primero.exposicion,
       ejercicio: primero.ejercicio,
       bolsa: primero.bolsa,
       temas: primero.temas,
@@ -82,6 +99,9 @@ List<Cante> serieSemanal(Cante primero, DateTime hasta) {
       modalidad: primero.modalidad,
       lugar: primero.lugar,
       enlace: primero.enlace,
+      plataforma: primero.plataforma,
+      numTemas: primero.numTemas,
+      unoPorParte: primero.unoPorParte,
       updatedAt: DateTime.now(),
     ));
   }

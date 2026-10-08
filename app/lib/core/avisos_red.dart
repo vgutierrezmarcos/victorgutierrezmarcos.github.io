@@ -24,7 +24,7 @@ Future<List<AvisoRed>> comprobarAvisosRed(RedRepo repo, {required bool preparado
   if (nuevos.isEmpty) return nuevos;
   for (final a in nuevos) {
     if (Notificaciones.disponibles) {
-      await Notificaciones.avisoRed(a.id, a.titulo, a.texto);
+      await Notificaciones.avisoRed(a.id, a.titulo, a.texto, ruta: a.ruta);
     } else {
       notificacionNavegador(a.titulo, a.texto);
     }

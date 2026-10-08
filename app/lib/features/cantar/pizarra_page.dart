@@ -1,0 +1,393 @@
+import 'dart:async';
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart' show PointerDeviceKind;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
+
+import '../../core/providers.dart';
+import '../../core/red_providers.dart';
+import '../../theme/app_theme.dart';
+import 'pizarra_compartida.dart';
+import 'pizarra_trazos.dart';
+
+/// Abre la pizarra de la clase [canteId] del alumno [alumnoUid] a pantalla
+/// completa, con [otroNombre] (el otro: el alumno o el preparador).
+Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre)));
+
+/// Pizarra compartida de una clase: un lienzo en blanco en el que dibujan el
+/// preparador y el alumno, cada uno con su color, y lo que pinta uno le llega
+/// al otro al instante. Solo se comparte lo que se dibuja aquí, nada más del
+/// móvil. Sirve en el móvil, la tableta y el ordenador (versión web).
+class PizarraPage extends ConsumerStatefulWidget {
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre});
+  final String alumnoUid;
+  final String canteId;
+  final String otroNombre;
+
+  @override
+  ConsumerState<PizarraPage> createState() => _PizarraPageState();
+}
+
+class _PizarraPageState extends ConsumerState<PizarraPage> {
+  PizarraCompartida? _pizarra;
+  StreamSubscription<List<PaginaPizarra>>? _escucha;
+  List<PaginaPizarra> _paginas = const [];
+  int _pagina = 0;
+  bool _sinAcceso = false;
+  String? _aviso;
+
+  // Trazo propio en curso (en píxeles de pantalla) y los terminados que aún
+  // no ha confirmado el servidor (se pintan algo transparentes).
+  final List<Offset> _enCurso = [];
+  final List<Trazo> _pendientes = [];
+  int? _punteroActivo;
+  int _grosor = 1;
+  late final String _miUid = ref.read(usuarioActualProvider)?.uid ?? '';
+  // Para no avisar dos veces del mismo borrado del otro.
+  final Set<String> _borradosAvisados = {};
+
+  // Geometría del lienzo en pantalla (la calcula el LayoutBuilder).
+  double _escala = 1;
+  Offset _origen = Offset.zero;
+
+  bool get _soyAlumno => _miUid == widget.alumnoUid;
+  Color get _miColor => Color(coloresPersonas[_soyAlumno ? 0 : 1]);
+  Color get _colorOtro => Color(coloresPersonas[_soyAlumno ? 1 : 0]);
+  Color _colorDe(String uid) => uid == widget.alumnoUid ? Color(coloresPersonas[0]) : Color(coloresPersonas[1]);
+
+  PaginaPizarra? get _actual => _pagina < _paginas.length ? _paginas[_pagina] : null;
+  String get _idPaginaActual => _actual?.id ?? PizarraCompartida.idPagina(_pagina + 1);
+  int get _nPaginaActual => _actual?.n ?? _pagina + 1;
+
+  @override
+  void initState() {
+    super.initState();
+    if (!kIsWeb) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+      WakelockPlus.enable();
+    }
+    if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
+      _pizarra = PizarraCompartida.deClase(FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
+      _escucha = _pizarra!.escuchar().listen(_alLlegar, onError: (Object e) {
+        if (mounted) setState(() => _sinAcceso = true);
+      });
+    } else {
+      _sinAcceso = true;
+    }
+  }
+
+  @override
+  void dispose() {
+    _escucha?.cancel();
+    _pizarra?.vaciar();
+    if (!kIsWeb) {
+      SystemChrome.setPreferredOrientations([]);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+      WakelockPlus.disable();
+    }
+    super.dispose();
+  }
+
+  void _alLlegar(List<PaginaPizarra> paginas) {
+    if (!mounted) return;
+    setState(() {
+      _paginas = paginas;
+      if (_pagina >= paginas.length && paginas.isNotEmpty) _pagina = paginas.length - 1;
+      // Lo que ya ha confirmado el servidor deja de estar pendiente.
+      final ids = {for (final p in paginas) for (final t in p.trazos) t.id};
+      _pendientes.removeWhere((t) => ids.contains(t.id));
+      final a = _actual;
+      if (a != null && a.trazos.isEmpty && a.borradoPor != null && a.borradoPor != _miUid && !_borradosAvisados.contains('${a.id}:${a.borradoPor}')) {
+        _borradosAvisados.add('${a.id}:${a.borradoPor}');
+        _aviso = '${widget.otroNombre} ha borrado la pizarra';
+      }
+    });
+  }
+
+  // ------------------------------------------------------------- Dibujar
+
+  Point<double> _virtual(Offset p) => Point(((p.dx - _origen.dx) / _escala).clamp(0, anchoLienzo.toDouble()), ((p.dy - _origen.dy) / _escala).clamp(0, altoLienzo.toDouble()));
+
+  void _bajar(PointerDownEvent e) {
+    if (_punteroActivo != null || _sinAcceso || (_actual?.llena ?? false)) return;
+    _punteroActivo = e.pointer;
+    setState(() => _enCurso
+      ..clear()
+      ..add(e.localPosition));
+  }
+
+  void _mover(PointerMoveEvent e) {
+    if (e.pointer != _punteroActivo) return;
+    // Con ratón, solo con el botón pulsado.
+    if (e.kind == PointerDeviceKind.mouse && e.buttons == 0) return;
+    // Muestreo: un punto nuevo solo si se ha movido al menos 2 px.
+    if (_enCurso.isNotEmpty && (e.localPosition - _enCurso.last).distance < 2) return;
+    setState(() => _enCurso.add(e.localPosition));
+  }
+
+  void _soltar(int puntero) {
+    if (puntero != _punteroActivo) return;
+    _punteroActivo = null;
+    if (_enCurso.isEmpty) return;
+    final virtuales = simplificar([for (final p in _enCurso) _virtual(p)]);
+    final trazo = Trazo(id: nuevoIdTrazo(), de: _miUid, grosor: grosores[_grosor], puntos: [for (final p in virtuales) Point(p.x.round(), p.y.round())]);
+    setState(() {
+      _enCurso.clear();
+      _pendientes.add(trazo);
+    });
+    _pizarra?.encolar(_idPaginaActual, _nPaginaActual, trazo);
+  }
+
+  Future<void> _deshacer() async {
+    // El último trazo mío de esta página: si aún no se ha subido, se quita
+    // de la cola; si no, se pide al servidor que lo quite.
+    final pendiente = _pendientes.lastOrNull;
+    if (pendiente != null && _pizarra!.quitarDeCola(pendiente.id)) {
+      setState(() => _pendientes.remove(pendiente));
+      return;
+    }
+    final mio = _actual?.trazos.where((t) => t.de == _miUid).lastOrNull;
+    if (mio?.crudo == null) return;
+    try {
+      await _pizarra!.deshacer(_idPaginaActual, mio!.crudo!);
+    } catch (_) {}
+  }
+
+  Future<void> _borrarTodo() async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('¿Borrar la pizarra?'),
+        content: Text('Se borra esta página para los dos (también para ${widget.otroNombre}).'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+          FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Borrar')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    setState(() => _pendientes.clear());
+    try {
+      await _pizarra!.borrarTodo(_idPaginaActual);
+    } catch (_) {}
+  }
+
+  Future<void> _nuevaPagina() async {
+    final n = (_paginas.isEmpty ? 1 : _paginas.last.n) + 1;
+    if (n > maxPaginas) return;
+    try {
+      await _pizarra!.nuevaPagina(n);
+      setState(() => _pagina = n - 1);
+    } catch (_) {}
+  }
+
+  // ------------------------------------------------------------- UI
+
+  @override
+  Widget build(BuildContext context) {
+    final actual = _actual;
+    final llena = actual?.llena ?? false;
+    final puedeDeshacer = _pendientes.isNotEmpty || (actual?.trazos.any((t) => t.de == _miUid) ?? false);
+    return Scaffold(
+      backgroundColor: const Color(0xFF16101C),
+      body: SafeArea(
+        child: Column(children: [
+          Expanded(
+            child: LayoutBuilder(builder: (context, c) {
+              _escala = min(c.maxWidth / anchoLienzo, c.maxHeight / altoLienzo);
+              final ancho = anchoLienzo * _escala, alto = altoLienzo * _escala;
+              _origen = Offset((c.maxWidth - ancho) / 2, (c.maxHeight - alto) / 2);
+              return Stack(children: [
+                Positioned(
+                  left: _origen.dx,
+                  top: _origen.dy,
+                  width: ancho,
+                  height: alto,
+                  child: Listener(
+                    onPointerDown: _bajar,
+                    onPointerMove: _mover,
+                    onPointerUp: (e) => _soltar(e.pointer),
+                    onPointerCancel: (e) => _soltar(e.pointer),
+                    child: ClipRect(
+                      child: Container(
+                        color: Colors.white,
+                        child: Stack(fit: StackFit.expand, children: [
+                          RepaintBoundary(child: CustomPaint(painter: _PintorTrazos(actual?.trazos ?? const [], _pendientes, _escala, _colorDe))),
+                          CustomPaint(painter: _PintorEnCurso([for (final p in _enCurso) p - _origen], _miColor, grosores[_grosor] * _escala)),
+                        ]),
+                      ),
+                    ),
+                  ),
+                ),
+                if (_sinAcceso)
+                  Positioned.fill(
+                    child: ColoredBox(
+                      color: Colors.black54,
+                      child: Center(child: Text('No tienes acceso a la pizarra de esta clase.', style: context.textos.titleMedium?.copyWith(color: Colors.white))),
+                    ),
+                  ),
+                if (llena && !_sinAcceso)
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: _origen.dy + 8,
+                    child: Center(child: Chip(label: const Text('Página llena: abre otra'), backgroundColor: context.esquema.errorContainer)),
+                  ),
+                if (_aviso != null)
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: _origen.dy + 8,
+                    child: Center(
+                      child: ActionChip(label: Text(_aviso!), avatar: const Icon(Icons.info_outline, size: 18), onPressed: () => setState(() => _aviso = null)),
+                    ),
+                  ),
+              ]);
+            }),
+          ),
+          // Barra de herramientas.
+          Container(
+            color: const Color(0xFF221830),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+                IconButton(tooltip: 'Salir', icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()),
+                const SizedBox(width: 4),
+                _Leyenda(color: _miColor, texto: 'Tú'),
+                const SizedBox(width: 8),
+                _Leyenda(color: _colorOtro, texto: widget.otroNombre),
+                const SizedBox(width: 12),
+                for (var i = 0; i < grosores.length; i++)
+                  IconButton(
+                    tooltip: ['Fino', 'Medio', 'Grueso'][i],
+                    isSelected: _grosor == i,
+                    style: IconButton.styleFrom(backgroundColor: _grosor == i ? Colors.white24 : null),
+                    icon: Icon(Icons.circle, size: 8.0 + 6 * i, color: Colors.white),
+                    onPressed: () => setState(() => _grosor = i),
+                  ),
+                const SizedBox(width: 8),
+                IconButton(tooltip: 'Deshacer mi último trazo', icon: const Icon(Icons.undo, color: Colors.white), onPressed: puedeDeshacer && !_sinAcceso ? _deshacer : null),
+                IconButton(tooltip: 'Borrar todo', icon: const Icon(Icons.delete_outline, color: Colors.white), onPressed: _sinAcceso ? null : _borrarTodo),
+                const SizedBox(width: 8),
+                IconButton(tooltip: 'Página anterior', icon: const Icon(Icons.chevron_left, color: Colors.white), onPressed: _pagina > 0 ? () => setState(() => _pagina--) : null),
+                Text('${_pagina + 1}/${max(_paginas.length, 1)}', style: const TextStyle(color: Colors.white)),
+                IconButton(tooltip: 'Página siguiente', icon: const Icon(Icons.chevron_right, color: Colors.white), onPressed: _pagina < _paginas.length - 1 ? () => setState(() => _pagina++) : null),
+                TextButton.icon(
+                  onPressed: _sinAcceso || _paginas.length >= maxPaginas ? null : _nuevaPagina,
+                  icon: const Icon(Icons.note_add_outlined, color: Colors.white, size: 18),
+                  label: const Text('Nueva página', style: TextStyle(color: Colors.white)),
+                ),
+              ]),
+            ),
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class _Leyenda extends StatelessWidget {
+  const _Leyenda({required this.color, required this.texto});
+  final Color color;
+  final String texto;
+  @override
+  Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
+        Icon(Icons.circle, size: 12, color: color),
+        const SizedBox(width: 4),
+        Text(texto, style: const TextStyle(color: Colors.white, fontSize: 12), overflow: TextOverflow.ellipsis),
+      ]);
+}
+
+/// Trazos consolidados (y los míos pendientes, algo transparentes), con los
+/// caminos en caché por id.
+class _PintorTrazos extends CustomPainter {
+  _PintorTrazos(this.trazos, this.pendientes, this.escala, this.colorDe);
+  final List<Trazo> trazos;
+  final List<Trazo> pendientes;
+  final double escala;
+  final Color Function(String uid) colorDe;
+
+  static final Map<String, Path> _cache = {};
+
+  static Path caminoDe(Trazo t) => _cache.putIfAbsent(t.id, () {
+        final p = Path();
+        final pts = t.puntos;
+        if (pts.isEmpty) return p;
+        p.moveTo(pts.first.x.toDouble(), pts.first.y.toDouble());
+        if (pts.length == 1) {
+          p.lineTo(pts.first.x.toDouble(), pts.first.y.toDouble());
+          return p;
+        }
+        for (var i = 1; i < pts.length - 1; i++) {
+          final a = pts[i], b = pts[i + 1];
+          p.quadraticBezierTo(a.x.toDouble(), a.y.toDouble(), (a.x + b.x) / 2, (a.y + b.y) / 2);
+        }
+        p.lineTo(pts.last.x.toDouble(), pts.last.y.toDouble());
+        return p;
+      });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.scale(escala);
+    final pintura = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    for (final t in trazos) {
+      pintura
+        ..color = colorDe(t.de)
+        ..strokeWidth = t.grosor.toDouble();
+      canvas.drawPath(caminoDe(t), pintura);
+    }
+    for (final t in pendientes) {
+      pintura
+        ..color = colorDe(t.de).withValues(alpha: 0.6)
+        ..strokeWidth = t.grosor.toDouble();
+      canvas.drawPath(caminoDe(t), pintura);
+    }
+    // La caché no crece sin límite.
+    if (_cache.length > 6000) _cache.clear();
+  }
+
+  @override
+  bool shouldRepaint(_PintorTrazos old) =>
+      old.escala != escala || old.trazos.length != trazos.length || old.pendientes.length != pendientes.length || !identical(old.trazos, trazos) || !identical(old.pendientes, pendientes);
+}
+
+/// El trazo que se está dibujando ahora (en píxeles de pantalla).
+class _PintorEnCurso extends CustomPainter {
+  _PintorEnCurso(this.puntos, this.color, this.grosor);
+  final List<Offset> puntos;
+  final Color color;
+  final double grosor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (puntos.isEmpty) return;
+    final pintura = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = grosor
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    final p = Path()..moveTo(puntos.first.dx, puntos.first.dy);
+    if (puntos.length == 1) p.lineTo(puntos.first.dx, puntos.first.dy);
+    for (var i = 1; i < puntos.length - 1; i++) {
+      final a = puntos[i], b = puntos[i + 1];
+      p.quadraticBezierTo(a.dx, a.dy, (a.dx + b.dx) / 2, (a.dy + b.dy) / 2);
+    }
+    if (puntos.length > 1) p.lineTo(puntos.last.dx, puntos.last.dy);
+    canvas.drawPath(p, pintura);
+  }
+
+  @override
+  bool shouldRepaint(_PintorEnCurso old) => true;
+}

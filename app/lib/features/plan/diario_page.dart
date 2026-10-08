@@ -6,6 +6,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'cante_page.dart';
 import 'cantes_util.dart';
+import '../cantes/nuevo_cante_sheet.dart';
 
 /// Diario de cantes (subpestaña de Cantes): cómo fue cada uno, estadísticas
 /// por tema y temas flojos.
@@ -33,6 +34,7 @@ class DiarioVista extends ConsumerWidget {
           : ListView(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
               children: [
+                TarjetaAyudaCantes(clave: 'diario', icono: Icons.auto_stories_outlined, titulo: ayudasCantes['diario']!.$1, texto: ayudasCantes['diario']!.$2),
                 Row(children: [
                   Expanded(child: Estadistica(valor: '${diario.length}', etiqueta: 'cantes', icono: Icons.record_voice_over_outlined)),
                   const SizedBox(width: 10),

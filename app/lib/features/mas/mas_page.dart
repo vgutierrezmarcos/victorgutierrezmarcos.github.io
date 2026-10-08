@@ -17,6 +17,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
 import '../plan/proceso_page.dart';
+import '../inicio/permisos_sheet.dart';
 
 /// Más: lo que no es del día a día. Preparador (o Mi preparador), cuenta,
 /// contenido, ajustes y acerca de. (Convocatoria y horario están en Organización.)
@@ -94,11 +95,11 @@ class MasPage extends ConsumerWidget {
               if (Notificaciones.disponibles) ListTile(
                 leading: const Icon(Icons.notifications_outlined),
                 title: const Text('Recordatorio diario'),
-                subtitle: Text(hora < 0 ? 'Desactivado' : 'A las ${(hora ~/ 60).toString().padLeft(2, '0')}:${(hora % 60).toString().padLeft(2, '0')}', style: context.textos.labelSmall),
+                subtitle: Text('${hora < 0 ? 'Desactivado' : 'A las ${(hora ~/ 60).toString().padLeft(2, '0')}:${(hora % 60).toString().padLeft(2, '0')}'}. Te recuerda el test diario de 10 preguntas, solo si aún no lo has hecho ese día.', style: context.textos.labelSmall),
                 trailing: Switch(
                   value: hora >= 0,
                   onChanged: (v) async {
-                    if (v && !await Notificaciones.pedirPermiso()) return;
+                    if (v && !await asegurarAvisos(context)) return;
                     await ref.read(ajustesProvider.notifier).fijarRecordatorio(v ? 20 * 60 : -1);
                   },
                 ),
@@ -114,8 +115,9 @@ class MasPage extends ConsumerWidget {
                 leading: const Icon(Icons.notifications_active_outlined),
                 title: const Text('Avisar antes de cada cante'),
                 subtitle: Text('La víspera y una hora antes', style: context.textos.labelSmall),
-                trailing: Switch(value: avisosCante, onChanged: (_) => alternarAvisosCante(ref)),
+                trailing: Switch(value: avisosCante, onChanged: (_) => alternarAvisosCante(context, ref)),
               ),
+              const FilasAvisosSistema(),
               if ((ref.watch(oposicionesVisiblesProvider).valueOrNull ?? Oposiciones.disponibles).length > 1)
                 ListTile(
                   leading: const Icon(Icons.school_outlined),

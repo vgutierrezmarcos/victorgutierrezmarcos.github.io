@@ -126,7 +126,9 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
     final temario = ref.watch(temarioProvider).valueOrNull;
     final temas = _temas(temario);
     final verificados = (ref.watch(verificadosProvider).valueOrNull ?? const <PreparadorVerificado>[]).where((v) => v.uid != ref.read(redRepoProvider).uid).toList();
-    final ordenados = [...verificados]..sort((a, b) => (b.ejercicios.contains(_ejercicio) ? 1 : 0) - (a.ejercicios.contains(_ejercicio) ? 1 : 0));
+    // El orden del directorio (los míos, con los que he tenido clase…) y,
+    // dentro, primero los que preparan el ejercicio elegido.
+    final ordenados = [for (final e in ref.watch(directorioOrdenadoProvider)) e.$2]..sort((a, b) => (b.ejercicios.contains(_ejercicio) ? 1 : 0) - (a.ejercicios.contains(_ejercicio) ? 1 : 0));
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Pedir una clase suelta')),

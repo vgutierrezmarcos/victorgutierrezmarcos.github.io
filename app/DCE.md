@@ -99,10 +99,17 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Cumplidos los 14 días: Play Console → Panel → **Solicitar acceso a producción**, con el borrador del registro.
 - [ ] Aprobado el acceso: subir la última versión a **Producción** y, publicada, `urlPlayStore` en `oposicion/app-config.json` (la web y la app pasan a enlazar a Play). Unas semanas después, `urlApk: null`.
 
+**Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
+- [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).
+- [x] Víctor: exención de índice `pizarra` → `trazos` creada (8 oct.).
+- [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).
+- [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.
+
 **Google Calendar y Meet (en pruebas)**
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).
 - [x] Firebase: reglas con `pruebasCalendario` publicadas y las cuentas de prueba dadas de alta (8 oct.).
-- [ ] Probar en el móvil: Preparador → Ajustes → «Mis clases en Google Calendar» (aceptar el aviso de app no verificada en «Configuración avanzada»); clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. Contar a Claude lo que salga.
+- [ ] La tarjeta no aparecía (8 oct.): en la 1.15.0 dice por qué (cuenta no en `pruebasCalendario` —el id es el Gmail en minúsculas o el uid—, reglas sin publicar o sin red). Comprobar en Preparador → Ajustes qué dice y, si es la lista, revisar el id del documento.
+- [ ] Probar en el móvil: Preparador → Ajustes → «Mis clases en Google Calendar» (aceptar el aviso de app no verificada en «Configuración avanzada»); clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. La ficha de la clase muestra el estado en el calendario y el error exacto si lo hay.
 - [ ] Después del 12 (con la política de privacidad ya publicada): comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
 - [ ] Claude prepara la justificación del permiso (en inglés) y el guion del vídeo; Víctor graba el vídeo (YouTube, oculto) y envía la verificación en el Centro de verificación.
 - [ ] Verificado el permiso: actualización de la app que abra la opción a todos los preparadores (sin la lista `pruebasCalendario`).
@@ -115,5 +122,5 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Aceptar los términos de tratamiento de datos de Firebase (Configuración del proyecto → Privacidad) y de Google Analytics.
 - [ ] Mirar dónde está la base de datos de Firestore (región) y anotarlo en el registro.
 - [ ] Verificación en dos pasos en la cuenta de Google del proyecto (y en la de Manuel).
-- [ ] Siguiente versión de la app (1.14.3): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador).
+- [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 

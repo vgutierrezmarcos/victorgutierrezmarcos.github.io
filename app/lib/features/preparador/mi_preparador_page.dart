@@ -11,6 +11,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import 'directorio_page.dart';
+import 'materiales_widgets.dart';
 import 'verificacion_page.dart';
 import 'red_widgets.dart';
 import 'reservas.dart';
@@ -72,6 +73,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     final vinculos = ref.watch(misPreparadoresProvider);
     final ahora = DateTime.now();
     final misPeticiones = (ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
+    final materiales = ref.watch(materialesParaMiProvider).valueOrNull ?? const <MaterialCompartido>[];
     void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
 
     return Scaffold(
@@ -137,6 +139,10 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               )
             else
               Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: () => setState(() => _otroPreparador = true), icon: const Icon(Icons.add, size: 18), label: const Text('Conectar con otro preparador'))),
+            if (materiales.isNotEmpty) ...[
+              TituloSeccion(vinculos.length > 1 ? 'Materiales de tus preparadores' : 'Materiales de tu preparador'),
+              for (final m in materiales) TarjetaMaterial(material: m, subtitulo: vinculos.length > 1 && m.preparadorNombre.isNotEmpty ? 'De ${m.preparadorNombre}' : null),
+            ],
             if (firebase && usuario != null) ...[
               const TituloSeccion('¿Te han cancelado una clase?'),
               FilaEnlace(
@@ -154,7 +160,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               ),
             ],
             const TituloSeccion('Qué ve tu preparador'),
-            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.bodySmall),
+            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.bodySmall),
             const SizedBox(height: 18),
             FilaEnlace(
               icono: Icons.groups_outlined,

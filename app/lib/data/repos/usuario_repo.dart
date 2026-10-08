@@ -336,11 +336,20 @@ class UsuarioRepo {
     if (doc == null) return;
     for (final c in coleccionesUsuario) {
       final snap = await doc.collection(c).get();
+      // Las clases de preparador llevan debajo el cronómetro y la pizarra
+      // compartidos: también se borran (borrar el documento no los borra).
+      final refs = [
+        for (final d in snap.docs) ...[
+          if (c == 'cantes' && d.data()['preparador'] != null)
+            for (final sub in const ['reloj', 'pizarra']) ...(await d.reference.collection(sub).get()).docs.map((x) => x.reference),
+          d.reference,
+        ],
+      ];
       // Un lote admite 500 operaciones.
-      for (var i = 0; i < snap.docs.length; i += 400) {
+      for (var i = 0; i < refs.length; i += 400) {
         final lote = _db!.batch();
-        for (final d in snap.docs.skip(i).take(400)) {
-          lote.delete(d.reference);
+        for (final r in refs.skip(i).take(400)) {
+          lote.delete(r);
         }
         await lote.commit();
       }

@@ -7,12 +7,11 @@ import 'package:intl/intl.dart';
 
 import '../../core/avisos_proceso.dart';
 import '../../core/constants.dart';
-import '../../core/notificaciones.dart';
-import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/proceso.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../inicio/permisos_sheet.dart';
 
 /// El proceso selectivo según la página oficial del Ministerio: lo último que
 /// se ha publicado, todo el proceso por apartados y el aviso de novedades.
@@ -37,8 +36,7 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
   Future<void> _alternarAvisos(bool v) async {
     final messenger = ScaffoldMessenger.of(context);
     if (v) {
-      final permiso = kIsWeb ? await pedirPermisoNotificacionesNavegador() : await Notificaciones.pedirPermiso();
-      if (!permiso) {
+      if (!await asegurarAvisos(context)) {
         messenger.showSnackBar(const SnackBar(content: Text('Sin permiso para mostrar notificaciones')));
         return;
       }

@@ -3,18 +3,28 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
+import '../../data/repos/preparador_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 
 /// Si la cuenta puede conectar Google Calendar (mientras Google no verifica
-/// el permiso, solo las que apunta el administrador).
-final calendarioPermitidoProvider = FutureProvider<bool>((ref) async {
+/// el permiso, solo las que apunta el administrador) y, si no, por qué.
+final calendarioPermitidoProvider = FutureProvider<PermisoCalendario>((ref) async {
   ref.watch(usuarioActualProvider);
   return ref.watch(preparadorRepoProvider).calendarioPermitido();
 });
 
+/// El último error de Google al llevar una clase al calendario (null si no hay).
+final errorCalendarioProvider = Provider<String?>((ref) {
+  // Se vuelve a leer cuando cambian las sesiones (es cuando se habla con Google).
+  ref.watch(sesionesProvider);
+  return ref.watch(preparadorRepoProvider).calendario?.ultimoError;
+});
+
 /// En Ajustes del preparador: llevar las clases a su Google Calendar, con la
-/// reunión de Meet de las online y la invitación al alumno.
+/// reunión de Meet de las online y la invitación al alumno. Si la cuenta no
+/// puede todavía, dice por qué.
 class TarjetaCalendarioGoogle extends ConsumerStatefulWidget {
   const TarjetaCalendarioGoogle({super.key});
 
@@ -37,17 +47,19 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
     setState(() => _ocupado = true);
     try {
       if (!await pedirPermisoCalendario()) {
-        messenger.showSnackBar(const SnackBar(content: Text('Google no ha dado acceso a tu calendario.')));
+        messenger.showSnackBar(const SnackBar(content: Text('Google no ha dado acceso a tu calendario. Si sale «aplicación no verificada», entra en «Configuración avanzada» y continúa.')));
         return;
       }
       final cal = repo.calendario;
       if (cal == null) return;
       try {
         await cal.comprobar();
-      } catch (_) {
-        messenger.showSnackBar(const SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía. Vuelve a intentarlo más tarde.')));
+      } catch (e) {
+        cal.ultimoError = e.toString();
+        messenger.showSnackBar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e')));
         return;
       }
+      cal.ultimoError = null;
       await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: true));
       final n = await repo.llevarClasesAlCalendario();
       ref.invalidate(sesionesProvider);
@@ -59,16 +71,22 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
 
   @override
   Widget build(BuildContext context) {
-    final permitido = ref.watch(calendarioPermitidoProvider).valueOrNull ?? false;
-    if (!permitido) return const SizedBox.shrink();
+    final permiso = ref.watch(calendarioPermitidoProvider);
+    final verificado = ref.watch(estadoRedProvider).valueOrNull?.verificado ?? false;
+    final usuario = ref.watch(usuarioActualProvider);
+    // Sin sesión o sin verificar no tiene sentido; con sesión se enseña siempre,
+    // aunque sea para decir por qué no se puede todavía.
+    if (usuario == null || !verificado) return const SizedBox.shrink();
     final activo = ref.watch(perfilPreparadorProvider).calendarioGoogle;
-    final error = ref.read(preparadorRepoProvider).calendario?.ultimoError;
+    final error = ref.watch(errorCalendarioProvider);
+    final p = permiso.valueOrNull;
+    final puede = p == PermisoCalendario.permitido;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       const TituloSeccion('Google Calendar'),
       Tarjeta(
         padding: const EdgeInsets.fromLTRB(4, 4, 4, 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          if (calendarioDisponible)
+          if (puede && calendarioDisponible)
             SwitchListTile(
               value: activo,
               onChanged: _ocupado ? null : _alternar,
@@ -77,27 +95,52 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
                   : Icon(Icons.event_available_outlined, color: context.esquema.primary),
               title: const Text('Mis clases en Google Calendar'),
               subtitle: Text(
-                'Cada clase va a tu Google Calendar y al alumno le llega la invitación. Si es online y no tiene enlace, se crea su reunión de Meet. '
+                'Cada clase va a tu Google Calendar y al alumno le llega la invitación. Si es online, sin enlace y con Meet, se crea su reunión. '
                 'Al cambiarla o cancelarla, se cambia o se quita del calendario.',
                 style: context.textos.labelSmall,
               ),
             )
+          else if (puede)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+              child: Text('Se conecta desde la app del móvil. Después, las clases que programes aquí también irán a tu calendario cuando el móvil sincronice.', style: context.textos.bodySmall),
+            )
           else
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
-              child: Text('Se conecta desde la app del móvil. Después, las clases que programes aquí también irán a tu calendario cuando las abras en el móvil.', style: context.textos.bodySmall),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Row(children: [
+                  Icon(Icons.event_busy_outlined, color: context.colores.textoClaro),
+                  const SizedBox(width: 10),
+                  Expanded(child: Text('Mis clases en Google Calendar', style: context.textos.titleSmall)),
+                ]),
+                const SizedBox(height: 6),
+                Text(
+                  switch (p) {
+                    null => permiso.isLoading ? 'Comprobando si tu cuenta puede usarlo…' : 'No se ha podido comprobar.',
+                    PermisoCalendario.noEnLista => 'Todavía en pruebas: tu cuenta (${usuario.email ?? 'sin correo'}) no está en la lista de prueba. Se abrirá a todos los preparadores cuando Google verifique el permiso.',
+                    PermisoCalendario.sinPermiso => 'No se ha podido comprobar: el servidor no deja leer la lista de prueba (faltan por publicar las reglas nuevas).',
+                    PermisoCalendario.sinRed => 'No se ha podido comprobar: sin conexión.',
+                    PermisoCalendario.sinSesion => 'Inicia sesión con Google.',
+                    PermisoCalendario.permitido => '',
+                  },
+                  style: context.textos.bodySmall,
+                ),
+                Align(alignment: Alignment.centerRight, child: TextButton(onPressed: () => ref.invalidate(calendarioPermitidoProvider), child: const Text('Volver a comprobar'))),
+              ]),
             ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
-            child: Text(
-              'En pruebas. Al alumno se le invita con el correo de su cuenta de Google si ha enlazado su app, o con el que apuntes en su ficha.',
-              style: context.textos.labelSmall,
+          if (puede)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+              child: Text(
+                'En pruebas. Al alumno se le invita con el correo de su cuenta de Google si ha enlazado su app, o con el que apuntes en su ficha.',
+                style: context.textos.labelSmall,
+              ),
             ),
-          ),
           if (activo && error != null)
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 6, 16, 0),
-              child: Text('La última vez Google respondió con un error; se reintenta al guardar la clase.', style: context.textos.labelSmall?.copyWith(color: context.esquema.error)),
+              child: Text('La última vez Google respondió con un error (se reintenta al guardar la clase): $error', style: context.textos.labelSmall?.copyWith(color: context.esquema.error)),
             ),
         ]),
       ),

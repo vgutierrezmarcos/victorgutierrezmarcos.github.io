@@ -16,6 +16,7 @@ import 'ajustes_preparador_page.dart';
 import 'red_widgets.dart';
 import 'reservas.dart';
 import 'sesion_page.dart';
+import '../cantes/nuevo_cante_sheet.dart';
 
 /// Agenda del preparador: todas las sesiones de todos sus alumnos por semana
 /// (o por mes), cada alumno con su color, con aviso de solapes, las reservas
@@ -154,6 +155,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
         child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
           children: [
+            if (widget.embebida) TarjetaAyudaCantes(clave: 'clases', icono: Icons.event_note_outlined, titulo: ayudasCantes['clases']!.$1, texto: ayudasCantes['clases']!.$2),
             if (widget.embebida) Align(alignment: Alignment.centerRight, child: alternarVista),
             ...(_mes
               ? [_vistaMes(sesiones, alumnos)]
@@ -239,7 +241,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
           dense: true,
           leading: PuntoPersona(s.alumno ?? ''),
           title: Text('${horaDe(s.fecha)} · ${alumnos[s.alumno]?.nombre ?? 'Alumno'}'),
-          subtitle: Text('${s.minutos} min', style: context.textos.labelSmall),
+          subtitle: Text(textoDuracion(s.minutos), style: context.textos.labelSmall),
           onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
         ),
     ]);

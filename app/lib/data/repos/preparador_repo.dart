@@ -29,6 +29,12 @@ import 'calendario_google.dart';
 /// Motivo por el que no se pudo reservar el código de preparador.
 enum ErrorCodigo { permiso, red, otro }
 
+/// Si la cuenta puede conectar Google Calendar y, si no, por qué.
+enum PermisoCalendario { permitido, sinSesion, noEnLista, sinPermiso, sinRed }
+
+/// Cómo quedó la copia de una clase en la agenda del alumno.
+enum EstadoCopia { enviada, sinRed, sinPermiso, otro }
+
 class PreparadorRepo {
   PreparadorRepo({
     required Box alumnos,
@@ -253,16 +259,20 @@ class PreparadorRepo {
   /// borra la clase, se retira.
   Future<void> _entregarTema(Cante s, {Cante? antes}) async {
     final a = s.alumno == null ? null : alumno(s.alumno!);
-    if (!conSesion || a?.uid == null) return;
+    // Solo a un alumno enlazado (las reglas no lo entregan a uno de clase suelta).
+    if (!conSesion || a == null || !a.enlazado) return;
     final doc = oposicion.red(_db!, 'temasAnticipados').doc(s.id);
     try {
       if (s.mandaTema && s.pendiente && !s.borrado) {
         await doc.set({
-          'alumno': a!.uid,
+          'alumno': a.uid,
           'preparador': uid,
           'preparadorNombre': perfil().nombre,
-          'tema': s.temaMandado,
-          'titulo': tituloTema?.call(s.temaMandado!) ?? '',
+          // El primero también en singular, para las versiones anteriores de la app.
+          'tema': s.temasMandados.first,
+          'titulo': tituloTema?.call(s.temasMandados.first) ?? '',
+          'temas': s.temasMandados,
+          'titulos': [for (final t in s.temasMandados) tituloTema?.call(t) ?? ''],
           'sorteado': s.temaSorteado,
           'visibleDesde': Timestamp.fromDate(s.temaA!),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -303,6 +313,7 @@ class PreparadorRepo {
         ..remove('alumno')
         ..remove('eventoGoogle')
         ..remove('temaMandado')
+        ..remove('temasMandados')
         ..remove('temaSorteado'),
       'titulo': s.titulo.isNotEmpty ? s.titulo : (nombre.isEmpty ? 'Preparador' : 'Con $nombre'),
       'preparador': uid,
@@ -310,28 +321,78 @@ class PreparadorRepo {
     };
   }
 
-  Future<void> _copiarAlAlumno(Cante s) async {
+  /// Copias que no llegaron al alumno (sin red, sin permiso…), por id de clase,
+  /// con el motivo. Se reintentan en cada sincronización.
+  Map<String, EstadoCopia> copiasPendientes() => {
+        for (final e in ((_perfil.get('copiasPendientes') as Map?) ?? const {}).entries)
+          e.key.toString(): EstadoCopia.values.firstWhere((x) => x.name == e.value, orElse: () => EstadoCopia.otro),
+      };
+
+  Future<void> _anotarCopia(String id, EstadoCopia? estado) async {
+    final m = {for (final e in copiasPendientes().entries) e.key: e.value.name};
+    estado == null ? m.remove(id) : m[id] = estado.name;
+    await _perfil.put('copiasPendientes', m);
+  }
+
+  /// Estado de la copia de una clase en la agenda del alumno: enviada si no
+  /// consta como pendiente.
+  EstadoCopia estadoCopia(String id) => copiasPendientes()[id] ?? EstadoCopia.enviada;
+
+  /// Lleva la clase a la agenda del alumno (si tiene uid). Devuelve cómo quedó
+  /// y, si no llegó, lo deja anotado para reintentarlo al sincronizar.
+  Future<EstadoCopia> _copiarAlAlumno(Cante s) async {
     final a = s.alumno == null ? null : alumno(s.alumno!);
-    if (!conSesion || a?.uid == null) return;
+    if (!conSesion || a?.uid == null) return EstadoCopia.enviada;
     try {
       await oposicion.raizUsuario(_db!, a!.uid!).collection('cantes').doc(s.id).set(copiaParaAlumno(s));
+      await _anotarCopia(s.id, null);
+      return EstadoCopia.enviada;
+    } on FirebaseException catch (e) {
+      final estado = e.code == 'permission-denied' ? EstadoCopia.sinPermiso : (e.code == 'unavailable' ? EstadoCopia.sinRed : EstadoCopia.otro);
+      await _anotarCopia(s.id, estado);
+      return estado;
     } catch (_) {
-      // Sin red o enlace roto: la sesión queda guardada en el lado del preparador.
+      await _anotarCopia(s.id, EstadoCopia.otro);
+      return EstadoCopia.otro;
+    }
+  }
+
+  /// Vuelve a intentar la copia de una clase al alumno. Devuelve cómo quedó.
+  Future<EstadoCopia> reintentarCopia(String id) async {
+    final j = _sesiones.get(id) as Map?;
+    if (j == null) return EstadoCopia.otro;
+    return _copiarAlAlumno(Cante.fromJson(j));
+  }
+
+  /// Reintenta las copias que quedaron pendientes.
+  Future<void> _reintentarCopiasPendientes() async {
+    for (final id in copiasPendientes().keys.toList()) {
+      final j = _sesiones.get(id) as Map?;
+      if (j == null) {
+        await _anotarCopia(id, null);
+        continue;
+      }
+      await _copiarAlAlumno(Cante.fromJson(j));
     }
   }
 
   /// Si la cuenta puede usar Google Calendar mientras Google no verifica el
   /// permiso: la apunta el administrador en pruebasCalendario/{correo o uid}.
-  Future<bool> calendarioPermitido() async {
-    if (!conSesion) return false;
+  /// Si no puede, dice por qué (para enseñarlo en Ajustes).
+  Future<PermisoCalendario> calendarioPermitido() async {
+    if (!conSesion) return PermisoCalendario.sinSesion;
     final yo = _auth!.currentUser!;
     try {
       final col = Oposiciones.tcee.red(_db!, 'pruebasCalendario');
-      if ((await col.doc(yo.uid).get()).exists) return true;
+      // Del servidor: la caché podría no tener el documento recién creado.
+      if ((await col.doc(yo.uid).get(const GetOptions(source: Source.server))).exists) return PermisoCalendario.permitido;
       final email = yo.email?.toLowerCase();
-      return email != null && (await col.doc(email).get()).exists;
+      if (email != null && (await col.doc(email).get(const GetOptions(source: Source.server))).exists) return PermisoCalendario.permitido;
+      return PermisoCalendario.noEnLista;
+    } on FirebaseException catch (e) {
+      return e.code == 'permission-denied' ? PermisoCalendario.sinPermiso : PermisoCalendario.sinRed;
     } catch (_) {
-      return false;
+      return PermisoCalendario.sinRed;
     }
   }
 
@@ -419,8 +480,9 @@ class PreparadorRepo {
         final existente = locales.where((a) => a.uid == e.key).firstOrNull;
         final email = (e.value['email'] as String?)?.trim() ?? '';
         if (existente != null && !existente.borrado) {
-          // El correo de su cuenta, para invitarle a las clases en Google Calendar.
-          if (existente.email.isEmpty && email.isNotEmpty) await guardarAlumno(existente.copyWith(email: email));
+          // El correo de su cuenta, para invitarle a las clases en Google
+          // Calendar; y si era un alumno de clase suelta, ya está enlazado.
+          if ((existente.email.isEmpty && email.isNotEmpty) || existente.suelto) await guardarAlumno(existente.copyWith(email: email.isEmpty ? null : email, suelto: false));
           continue;
         }
         final nombre = (e.value['nombre'] as String?)?.trim() ?? '';
@@ -432,21 +494,33 @@ class PreparadorRepo {
     } catch (_) {}
   }
 
-  /// Trae los cambios que un alumno enlazado ha hecho en las sesiones que le
-  /// programó este preparador (cambio de hora, su valoración, notas): el más
-  /// reciente gana. Se conservan el alumno, el título y el borrado del lado del
-  /// preparador, así que si el alumno quita una sesión de su agenda, el
-  /// preparador no la pierde.
+  /// Concilia las clases con la agenda de cada alumno que tiene uid (enlazado
+  /// o de clase suelta), en los dos sentidos:
+  /// - lo que el alumno ha cambiado en su copia (su valoración, notas) y es
+  ///   más reciente, se trae; se conservan el alumno, el título, el borrado y
+  ///   los temas mandados del lado del preparador, así que si el alumno quita
+  ///   una clase de su agenda, el preparador no la pierde;
+  /// - lo que el preparador cambió y no llegó (la copia falta o es más
+  ///   antigua), se vuelve a copiar.
   Future<void> _traerCambiosDeAlumnos() async {
     if (!conSesion || !perfil().activo) return;
     final locales = {for (final s in _todasLasSesiones()) s.id: s};
-    for (final a in alumnos().where((a) => a.enlazado)) {
+    final ahora = DateTime.now();
+    for (final a in alumnos().where((a) => a.uid != null)) {
+      final mias = locales.values.where((s) => s.alumno == a.id).toList();
       try {
-        final snap = await oposicion.raizUsuario(_db!, a.uid!).collection('cantes').where('preparador', isEqualTo: uid).get();
-        for (final d in snap.docs) {
+        final List<DocumentSnapshot<Map<String, dynamic>>> docs;
+        if (a.enlazado) {
+          docs = (await oposicion.raizUsuario(_db!, a.uid!).collection('cantes').where('preparador', isEqualTo: uid).get()).docs;
+        } else {
+          // Alumno de clase suelta: las reglas solo dejan leer esa clase, una a una.
+          docs = [for (final s in mias.where((s) => s.sustitucion != null)) await oposicion.raizUsuario(_db!, a.uid!).collection('cantes').doc(s.id).get()];
+        }
+        final suyas = {for (final d in docs) if (d.exists) d.id: Cante.fromJson({...d.data()!, 'id': d.id})};
+        for (final d in docs) {
           final mia = locales[d.id];
-          if (mia == null) continue;
-          final suya = Cante.fromJson({...d.data(), 'id': d.id});
+          final suya = suyas[d.id];
+          if (mia == null || suya == null) continue;
           if (!(suya.updatedAt ?? DateTime(0)).isAfter(mia.updatedAt ?? DateTime(0))) continue;
           final json = {
             ...suya.toJson(),
@@ -454,13 +528,26 @@ class PreparadorRepo {
             'titulo': mia.titulo,
             'borrado': mia.borrado,
             if (mia.temaA != null) 'temaA': mia.temaA!.toIso8601String(),
-            if (mia.temaMandado != null) 'temaMandado': mia.temaMandado,
+            if (mia.temasMandados.isNotEmpty) 'temaMandado': mia.temasMandados.first,
+            if (mia.temasMandados.isNotEmpty) 'temasMandados': mia.temasMandados,
             if (mia.temaSorteado) 'temaSorteado': true,
+            if (mia.eventoGoogle.isNotEmpty) 'eventoGoogle': mia.eventoGoogle,
           }
             ..remove('preparador')
             ..remove('preparadorNombre');
           await _sesiones.put(d.id, json);
           await _docUsuario?.collection('sesiones').doc(d.id).set(json);
+          locales[d.id] = Cante.fromJson(json);
+        }
+        // Lo mío que no ha llegado: clases que vienen (o canceladas hace poco)
+        // cuya copia falta o es más antigua que la mía.
+        for (final s in mias) {
+          if (s.borrado && !suyas.containsKey(s.id)) continue;
+          final cuenta = s.fecha.isAfter(ahora.subtract(const Duration(days: 2)));
+          if (!cuenta) continue;
+          final suya = suyas[s.id];
+          final mia = locales[s.id]!;
+          if (suya == null || (mia.updatedAt ?? DateTime(0)).isAfter(suya.updatedAt ?? DateTime(0))) await _copiarAlAlumno(mia);
         }
       } catch (_) {
         // Sin red o enlace roto: se intenta en la próxima sincronización.
@@ -470,7 +557,7 @@ class PreparadorRepo {
 
   /// Progreso que comparte un alumno enlazado (null si no lo está o no hay red).
   Future<ProgresoAlumno?> progreso(Alumno a) async {
-    if (!conSesion || a.uid == null) return null;
+    if (!conSesion || !a.enlazado) return null;
     try {
       final usuario = oposicion.raizUsuario(_db!, a.uid!);
       final ajustes = (await usuario.collection('progress').doc('settings').get()).data() ?? const {};
@@ -491,7 +578,7 @@ class PreparadorRepo {
 
   /// Cronograma activo que el alumno enlazado comparte con sus preparadores (o null).
   Future<Cronograma?> cronogramaDe(Alumno a) async {
-    if (!conSesion || a.uid == null) return null;
+    if (!conSesion || !a.enlazado) return null;
     try {
       final snap = await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramas').where('compartir', isEqualTo: true).get();
       final lista = [for (final d in snap.docs) Cronograma.fromJson({...d.data(), 'id': d.id})].where((c) => !c.archivado).toList()
@@ -505,13 +592,13 @@ class PreparadorRepo {
   /// El preparador propone cambios en el cronograma del alumno: solo escribe la
   /// propuesta, que el alumno acepta o rechaza en su app.
   Future<void> proponerCambios(Alumno a, Cronograma c, PropuestaCronograma p) async {
-    if (!conSesion || a.uid == null) return;
+    if (!conSesion || !a.enlazado) return;
     await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramas').doc(c.id).update({'propuesta': p.toJson(), 'updatedAt': DateTime.now().toIso8601String()});
   }
 
   /// El preparador deja de llevar a un alumno enlazado: pierde el acceso a su progreso.
   Future<void> romperEnlaceConAlumno(Alumno a) async {
-    if (!conSesion || a.uid == null) return;
+    if (!conSesion || !a.enlazado) return;
     try {
       final lote = _db!.batch()
         ..delete(oposicion.red(_db, 'preparadores').doc(uid).collection('alumnos').doc(a.uid))
@@ -539,7 +626,12 @@ class PreparadorRepo {
     } catch (_) {}
   }
 
-  Future<void> _sincronizarColeccion<T>({
+  /// La última sincronización de las sesiones con la nube falló: mientras
+  /// tanto no se regeneran las clases fijas (se crearían encima de las
+  /// movidas o canceladas en otro dispositivo).
+  bool sincronizacionFallida = false;
+
+  Future<bool> _sincronizarColeccion<T>({
     required String nombre,
     required Box caja,
     required T Function(Map<dynamic, dynamic>) leer,
@@ -548,7 +640,7 @@ class PreparadorRepo {
     required String Function(T) id,
   }) async {
     final doc = _docUsuario;
-    if (doc == null) return;
+    if (doc == null) return false;
     try {
       final snap = await doc.collection(nombre).get();
       final nube = {for (final d in snap.docs) d.id: leer({...d.data(), 'id': d.id})};
@@ -562,7 +654,10 @@ class PreparadorRepo {
           await doc.collection(nombre).doc(k).set(escribir(l));
         }
       }
-    } catch (_) {}
+      return true;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> sincronizarTodo() async {
@@ -570,9 +665,18 @@ class PreparadorRepo {
     await _sincronizarVinculos();
     await _sincronizarPerfil();
     await _sincronizarColeccion<Alumno>(nombre: 'alumnos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id);
-    await _sincronizarColeccion<Cante>(nombre: 'sesiones', caja: _sesiones, leer: Cante.fromJson, escribir: (c) => c.toJson(), marca: (c) => c.updatedAt, id: (c) => c.id);
+    sincronizacionFallida = !await _sincronizarColeccion<Cante>(nombre: 'sesiones', caja: _sesiones, leer: Cante.fromJson, escribir: (c) => c.toJson(), marca: (c) => c.updatedAt, id: (c) => c.id);
     await _sincronizarAlumnosEnlazados();
+    await _reintentarCopiasPendientes();
     await _traerCambiosDeAlumnos();
+    // Las clases que llegaron de otro dispositivo (o de la web) van también
+    // al calendario, si está conectado en este.
+    if (calendario != null && perfil().calendarioGoogle) {
+      final ahora = DateTime.now();
+      for (final s in sesiones().where((s) => s.pendiente && s.alumno != null && s.eventoGoogle.isEmpty && s.fecha.isAfter(ahora))) {
+        if (await llevarAlCalendario(s.id)) alCambiarSesiones?.call();
+      }
+    }
   }
 
   /// Antes de borrar la cuenta: rompe los enlaces con preparadores y alumnos y
@@ -590,6 +694,17 @@ class PreparadorRepo {
         ..delete(oposicion.raizUsuario(_db, d.id).collection('preparadores').doc(uid));
       await lote.commit();
     }
+    // Los materiales que compartió con sus alumnos.
+    try {
+      final mats = await oposicion.red(_db, 'materiales').where('preparador', isEqualTo: uid).get();
+      for (var i = 0; i < mats.docs.length; i += 400) {
+        final lote = _db.batch();
+        for (final d in mats.docs.skip(i).take(400)) {
+          lote.delete(d.reference);
+        }
+        await lote.commit();
+      }
+    } catch (_) {}
     final codigo = perfil().codigo;
     if (codigo != null) await oposicion.red(_db, 'codigos').doc(codigo).delete();
   }
@@ -600,6 +715,9 @@ class PreparadorRepo {
   /// [semanas]. Cada sesión tiene un id que sale de la clase y del día, así que
   /// no se duplica y, si el preparador borra o cancela una, no vuelve a salir.
   Future<int> generarClasesFijas({DateTime? ahora, int semanas = 6}) async {
+    // Si no se han podido traer las sesiones de la nube, se espera: si no,
+    // una clase movida o cancelada en otro dispositivo volvería a salir.
+    if (sincronizacionFallida) return 0;
     final hoy = ahora ?? DateTime.now();
     final fin = DateTime(hoy.year, hoy.month, hoy.day + 7 * semanas);
     var nuevas = 0;
@@ -658,9 +776,11 @@ class PreparadorRepo {
   /// enlace, con su teléfono) y el cante, a sus sesiones.
   Future<Cante> sesionDeSustitucion(Sustitucion sust, ContactoRed alumno) async {
     final id = 'sust_${sust.id}';
-    final existente = this.alumno(id) ?? alumnos().where((a) => a.telefono.isNotEmpty && telefonoWhatsApp(a.telefono) == telefonoWhatsApp(alumno.telefono)).firstOrNull;
+    final existente = alumnoConUid(sust.alumno) ?? this.alumno(id) ?? alumnos().where((a) => a.telefono.isNotEmpty && telefonoWhatsApp(a.telefono) == telefonoWhatsApp(alumno.telefono)).firstOrNull;
+    // Con el uid del alumno (sin enlazar: «suelto»), para que los cambios de
+    // la clase le lleguen a su agenda.
     final a = (existente ?? Alumno(id: id, nombre: alumno.nombre.isEmpty ? 'Alumno' : alumno.nombre, creado: DateTime.now(), updatedAt: DateTime.now()))
-        .copyWith(telefono: alumno.telefono, ejercicio: sust.ejercicio, temas: existente == null ? sust.temas : null);
+        .copyWith(telefono: alumno.telefono, ejercicio: sust.ejercicio, temas: existente == null ? sust.temas : null, uid: existente?.uid ?? sust.alumno, suelto: existente?.enlazado == true ? false : true);
     await guardarAlumno(a);
     final s = Cante(
       id: id,
@@ -669,7 +789,9 @@ class PreparadorRepo {
       ejercicio: sust.ejercicio,
       bolsa: TipoBolsa.lista,
       temas: sust.temas,
-      notas: sust.notas,
+      // El alumno ve en la clase quién se la da y su teléfono (la copia de la
+      // clase lleva estas notas).
+      notas: [if (sust.notas.isNotEmpty) sust.notas, 'Te la da ${perfil().nombre.isEmpty ? 'un preparador' : perfil().nombre}${telefonoWhatsApp(perfil().telefono) == null ? '' : ' · ${perfil().telefono}'}'].join('\n'),
       titulo: 'Clase suelta',
       alumno: a.id,
       sustitucion: sust.id,

@@ -12,6 +12,7 @@ import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../cantar/pizarra_page.dart';
 import '../preparador/red_widgets.dart';
 import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
@@ -38,6 +39,11 @@ class CantePage extends ConsumerWidget {
     final r = c.resultado;
     final notifier = ref.read(cantesProvider.notifier);
     final peticion = ref.watch(peticionDeCanteProvider(c.id));
+    final usuario = ref.watch(usuarioActualProvider);
+    // Las clases del preparador las cambia él: aquí se ven, se anotan y se
+    // pide clase suelta si las cancela.
+    final mia = !c.dePreparador;
+    final temasRecibidos = c.dePreparador && c.temaA != null && !c.temaA!.isAfter(DateTime.now()) ? ref.watch(temaAnticipadoProvider(c.id)).valueOrNull : null;
 
     Future<void> anotar() async {
       final res = await pedirResultadoCante(context, inicial: r ?? const ResultadoCante(), opciones: temas);
@@ -72,7 +78,7 @@ class CantePage extends ConsumerWidget {
       appBar: BarraWeb(
         title: Text(tituloCante(c)),
         actions: [
-          IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: c)))),
+          if (mia) IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: c)))),
           PopupMenuButton<String>(
             onSelected: (v) async {
               switch (v) {
@@ -89,8 +95,8 @@ class CantePage extends ConsumerWidget {
             itemBuilder: (_) => [
               const PopupMenuItem(value: 'google', child: Text('Añadir a Google Calendar')),
               const PopupMenuItem(value: 'ics', child: Text('Enviar a otro calendario (.ics)')),
-              if (!c.hecho) PopupMenuItem(value: 'cancelar', child: Text(c.estado == EstadoCante.cancelado ? 'Recuperar cante' : 'Marcar como cancelado')),
-              const PopupMenuItem(value: 'borrar', child: Text('Borrar')),
+              if (!c.hecho && mia) PopupMenuItem(value: 'cancelar', child: Text(c.estado == EstadoCante.cancelado ? 'Recuperar cante' : 'Marcar como cancelado')),
+              if (mia) const PopupMenuItem(value: 'borrar', child: Text('Borrar')),
             ],
           ),
         ],
@@ -107,7 +113,7 @@ class CantePage extends ConsumerWidget {
                 if (c.estado == EstadoCante.cancelado) Etiqueta('Cancelado', color: context.colores.textoClaro),
               ]),
               if (c.pendiente) Text(c.fecha.isAfter(DateTime.now()) ? 'Empieza ${cuentaAtras(c.fecha)}' : 'Pendiente de anotar', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
-              Text('${descripcionBolsa(c)} · ${c.minutos} min', style: context.textos.bodySmall),
+              Text('${descripcionBolsa(c)} · ${textoDuracion(c.minutos)}', style: context.textos.bodySmall),
               if (c.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(c.notas, style: context.textos.bodyMedium)),
               if (c.dePreparador)
                 Padding(
@@ -155,24 +161,33 @@ class CantePage extends ConsumerWidget {
             Row(children: [
               Expanded(
                 child: FilledButton.icon(
-                  onPressed: temas.isEmpty && c.ejercicio != 1
+                  onPressed: temas.isEmpty && c.ejercicio != 1 && mia
                       ? null
                       : () {
                           final router = GoRouter.of(context);
-                          ref.read(canteEnCursoProvider.notifier).state = c.id;
-                          ref.read(subpestanaCantesProvider.notifier).state = 1;
                           Navigator.of(context).popUntil((r) => r.isFirst);
-                          router.go('/cantes');
+                          // En una clase del preparador no se sortea: se canta lo que él manda (o se cronometra).
+                          empezarCante(ref, router, c.id, tema: temasRecibidos?.temas.join(','));
                         },
-                  icon: Icon(c.ejercicio == 1 ? Icons.timer_outlined : Icons.casino_outlined),
-                  label: Text(c.ejercicio == 1 ? 'Cronometrar' : 'Sacar bola y cantar'),
+                  icon: Icon(c.ejercicio == 1 || (c.dePreparador && temasRecibidos == null) ? Icons.timer_outlined : (c.dePreparador ? Icons.mic : Icons.casino_outlined)),
+                  label: Text(c.ejercicio == 1 || (c.dePreparador && temasRecibidos == null) ? 'Cronometrar' : (c.dePreparador ? 'Cantar los temas' : 'Sacar bola y cantar')),
                 ),
               ),
               const SizedBox(width: 10),
               OutlinedButton(onPressed: anotar, child: const Text('Anotar resultado')),
             ]),
-            if (temas.isEmpty && c.ejercicio != 1)
+            if (temas.isEmpty && c.ejercicio != 1 && mia)
               Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: marca temas como estudiados o elige una lista.', style: context.textos.labelSmall)),
+            if (c.dePreparador && c.temaA == null)
+              Padding(padding: const EdgeInsets.only(top: 6), child: Text('Los temas los saca o elige tu preparador en la clase; tú tienes el cronómetro.', style: context.textos.labelSmall)),
+          ],
+          if (c.dePreparador && usuario != null && !c.cancelado) ...[
+            const SizedBox(height: 10),
+            OutlinedButton.icon(
+              onPressed: () => abrirPizarra(context, alumnoUid: usuario.uid, canteId: c.id, otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!),
+              icon: const Icon(Icons.draw_outlined, size: 18),
+              label: const Text('Pizarra compartida'),
+            ),
           ],
           if (c.hecho && r != null) ...[
             TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
@@ -244,7 +259,7 @@ class _TemaRecibido extends ConsumerWidget {
         child: Row(children: [
           Icon(Icons.schedule_send_outlined, color: context.esquema.primary),
           const SizedBox(width: 12),
-          Expanded(child: Text('$de te mandará un tema $cuando para que hagas el esquema.', style: context.textos.bodySmall)),
+          Expanded(child: Text('$de te mandará ${c.numTemas == 1 ? 'un tema' : 'los temas'} $cuando para que hagas el esquema.', style: context.textos.bodySmall)),
         ]),
       );
     }
@@ -257,7 +272,7 @@ class _TemaRecibido extends ConsumerWidget {
         Row(children: [
           Icon(Icons.mark_email_unread_outlined, color: context.esquema.primary),
           const SizedBox(width: 10),
-          Expanded(child: Text(tema?.sorteado == true ? '$de ha sacado esta bola para ti' : '$de te ha mandado este tema', style: context.textos.titleSmall)),
+          Expanded(child: Text(tema?.sorteado == true ? '$de ha sacado ${(tema?.temas.length ?? 1) == 1 ? 'esta bola' : 'estas bolas'} para ti' : '$de te ha mandado ${(tema?.temas.length ?? 1) == 1 ? 'este tema' : 'estos temas'}', style: context.textos.titleSmall)),
         ]),
         const SizedBox(height: 6),
         if (t.isLoading)
@@ -268,16 +283,24 @@ class _TemaRecibido extends ConsumerWidget {
             TextButton(onPressed: () => ref.invalidate(temaAnticipadoProvider(c.id)), child: const Text('Reintentar')),
           ])
         else ...[
-          TextoTema(tema.tema, tema.titulo.isNotEmpty ? tema.titulo : (ref.watch(temarioProvider).valueOrNull?.tema(tema.tema)?.titulo ?? ''), color: ref.watch(estructuraProvider).valueOrNull?.colorDe(tema.tema)),
-          const SizedBox(height: 10),
+          for (var i = 0; i < tema.temas.length; i++)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: TextoTema(
+                tema.temas[i],
+                (i < tema.titulos.length && tema.titulos[i].isNotEmpty) ? tema.titulos[i] : (ref.watch(temarioProvider).valueOrNull?.tema(tema.temas[i])?.titulo ?? ''),
+                color: ref.watch(estructuraProvider).valueOrNull?.colorDe(tema.temas[i]),
+              ),
+            ),
+          const SizedBox(height: 6),
           FilledButton.icon(
             onPressed: () {
               final router = GoRouter.of(context);
               Navigator.of(context).popUntil((r) => r.isFirst);
-              empezarCante(ref, router, c.id, tema: tema.tema);
+              empezarCante(ref, router, c.id, tema: tema.temas.join(','));
             },
             icon: const Icon(Icons.edit_note),
-            label: const Text('Empezar el esquema'),
+            label: Text(tema.temas.length == 1 ? 'Empezar el esquema' : 'Empezar el esquema de los ${tema.temas.length} temas'),
           ),
         ],
       ]),

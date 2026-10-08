@@ -156,6 +156,23 @@ class Sorteo {
     return copia.take(n).toList();
   }
 
+  /// Sorteo de [n] elementos de [bolsa] para una clase: con [unoPorParte],
+  /// de partes distintas (una bola de cada una de [n] partes al azar, como en
+  /// el examen) mientras haya partes; si no hay bastantes, se completa con el
+  /// resto de la bolsa.
+  static List<T> sortearClase<T>(List<T> bolsa, int n, {bool unoPorParte = false, String Function(T)? parte, Random? random}) {
+    final r = random ?? Random();
+    if (!unoPorParte || parte == null) return sortear(bolsa, n, random: r);
+    final porParte = <String, List<T>>{};
+    for (final x in bolsa) {
+      porParte.putIfAbsent(parte(x), () => []).add(x);
+    }
+    final partes = porParte.keys.toList()..shuffle(r);
+    final out = <T>[for (final p in partes.take(n)) sortear(porParte[p]!, 1, random: r).first];
+    if (out.length < n) out.addAll(sortear(bolsa.where((x) => !out.contains(x)).toList(), n - out.length, random: r));
+    return out;
+  }
+
   /// Sorteo oficial: [bolas] temas de cada parte.
   static Map<String, List<T>> sorteoOficial<T>(Map<String, List<T>> porParte, int bolas, {Random? random}) =>
       {for (final e in porParte.entries) e.key: sortear(e.value, bolas, random: random)};

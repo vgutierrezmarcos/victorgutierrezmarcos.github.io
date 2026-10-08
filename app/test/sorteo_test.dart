@@ -89,6 +89,21 @@ void main() {
     expect(Sorteo.probAlMenosUno(total: 90, estudiados: m - 1, extraidos: 3), lessThan(0.9));
   });
 
+  test('sorteo de clase: n bolas y, si se pide, una de cada parte', () {
+    final bolsa = ['3.A.1', '3.A.2', '3.A.3', '3.B.1', '3.B.2'];
+    String parte(String c) => c.split('.').take(2).join('.');
+    final r = Random(7);
+    for (var i = 0; i < 20; i++) {
+      final dos = Sorteo.sortearClase(bolsa, 2, unoPorParte: true, parte: parte, random: r);
+      expect(dos.length, 2);
+      expect(dos.map(parte).toSet().length, 2, reason: 'una de cada parte');
+      expect(Sorteo.sortearClase(bolsa, 1, unoPorParte: true, parte: parte, random: r).length, 1);
+    }
+    // Sin partes suficientes, se completa con el resto de la bolsa.
+    expect(Sorteo.sortearClase(['3.A.1', '3.A.2', '3.A.3'], 2, unoPorParte: true, parte: parte, random: r).length, 2);
+    expect(Sorteo.sortearClase(bolsa, 2, random: r).toSet().length, 2);
+  });
+
   group('sorteos', () {
     test('sortear devuelve n distintos', () {
       final s = Sorteo.sortear(List.generate(10, (i) => i), 4);

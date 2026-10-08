@@ -147,7 +147,7 @@ class Sustitucion {
     required this.fecha,
     this.hasta,
     this.hora,
-    this.minutos = 30,
+    this.minutos = PerfilPreparador.minutosClasePorDefecto,
     this.ejercicio = 3,
     this.temas = const [],
     this.notas = '',
@@ -173,7 +173,7 @@ class Sustitucion {
   final DateTime? hasta;
   /// Hora a la que queda el cante: la elige dentro de la franja quien lo coge.
   final DateTime? hora;
-  /// Duración del cronómetro (no se pide ni se muestra: las clases duran lo que duran).
+  /// Duración prevista de la clase (no se pide ni se muestra: unas 2 h).
   final int minutos;
   final int ejercicio;
   /// Temas que entran en el cante.
@@ -242,7 +242,7 @@ class Sustitucion {
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         hasta: _fecha(j['hasta']),
         hora: _fecha(j['hora']),
-        minutos: (j['minutos'] as num?)?.toInt() ?? 30,
+        minutos: (j['minutos'] as num?)?.toInt() ?? PerfilPreparador.minutosClasePorDefecto,
         ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
         temas: _textos(j['temas']),
         notas: j['notas'] as String? ?? '',
@@ -257,7 +257,9 @@ class Sustitucion {
         modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
       );
 
-  /// Cante que aparece en la agenda del alumno cuando alguien la coge.
+  /// Cante que aparece en la agenda del alumno cuando alguien la coge. Va
+  /// firmado por el sustituto, que desde entonces puede cambiarlo (hora,
+  /// enlace, cancelación) como una clase más.
   Cante canteDelAlumno({String? nombreSustituto}) => Cante(
         id: 'sust_$id',
         fecha: inicio,
@@ -268,9 +270,119 @@ class Sustitucion {
         notas: notas,
         titulo: 'Clase suelta · ${nombreSustituto ?? cogidaPorNombre}',
         sustitucion: id,
+        preparador: cogidaPor,
+        preparadorNombre: nombreSustituto ?? cogidaPorNombre,
         modalidad: modalidad,
         updatedAt: DateTime.now(),
       );
+}
+
+/// Qué es un material, por su enlace (para el icono).
+enum TipoMaterial { drive, video, pdf, web }
+
+/// Enlace (Drive, PDF en la web, vídeo…) que un preparador comparte con todos
+/// sus alumnos enlazados o con algunos, con un título, una nota y, si va de
+/// un tema, el tema. Vive en materiales/{id} de la red de la oposición.
+class MaterialCompartido {
+  const MaterialCompartido({
+    required this.id,
+    required this.preparador,
+    this.preparadorNombre = '',
+    required this.titulo,
+    required this.url,
+    this.texto = '',
+    this.tema,
+    this.paraTodos = true,
+    this.alumnos = const [],
+    this.creado,
+    this.updatedAt,
+  });
+
+  final String id;
+  final String preparador;
+  final String preparadorNombre;
+  final String titulo;
+  final String url;
+  /// Nota del preparador (qué es, cómo usarlo).
+  final String texto;
+  /// Código del tema del temario al que va (null si es general).
+  final String? tema;
+  /// Para todos sus alumnos enlazados o solo para los uids de [alumnos].
+  final bool paraTodos;
+  final List<String> alumnos;
+  final DateTime? creado;
+  final DateTime? updatedAt;
+
+  bool vaA(String uid) => paraTodos || alumnos.contains(uid);
+
+  /// «drive.google.com», «youtube.com»…
+  String get dominio {
+    final h = Uri.tryParse(url)?.host ?? '';
+    return h.startsWith('www.') ? h.substring(4) : h;
+  }
+
+  TipoMaterial get tipo {
+    final u = url.toLowerCase();
+    if (u.contains('drive.google.com') || u.contains('docs.google.com') || u.contains('dropbox.com') || u.contains('onedrive')) return TipoMaterial.drive;
+    if (u.contains('youtube.com') || u.contains('youtu.be') || u.contains('vimeo.com')) return TipoMaterial.video;
+    if (u.endsWith('.pdf') || u.contains('.pdf?')) return TipoMaterial.pdf;
+    return TipoMaterial.web;
+  }
+
+  MaterialCompartido copyWith({String? titulo, String? url, String? texto, String? tema, bool sinTema = false, bool? paraTodos, List<String>? alumnos, String? preparadorNombre}) => MaterialCompartido(
+        id: id,
+        preparador: preparador,
+        preparadorNombre: preparadorNombre ?? this.preparadorNombre,
+        titulo: titulo ?? this.titulo,
+        url: url ?? this.url,
+        texto: texto ?? this.texto,
+        tema: sinTema ? null : (tema ?? this.tema),
+        paraTodos: paraTodos ?? this.paraTodos,
+        alumnos: alumnos ?? this.alumnos,
+        creado: creado,
+        updatedAt: DateTime.now(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'preparador': preparador,
+        'preparadorNombre': preparadorNombre,
+        'titulo': titulo,
+        'url': url,
+        'texto': texto,
+        'tema': tema,
+        'paraTodos': paraTodos,
+        'alumnos': paraTodos ? const [] : alumnos,
+        'creado': (creado ?? DateTime.now()).toIso8601String(),
+        'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
+      };
+
+  factory MaterialCompartido.fromJson(Map<dynamic, dynamic> j) => MaterialCompartido(
+        id: j['id'].toString(),
+        preparador: j['preparador'] as String? ?? '',
+        preparadorNombre: j['preparadorNombre'] as String? ?? '',
+        titulo: j['titulo'] as String? ?? '',
+        url: j['url'] as String? ?? '',
+        texto: j['texto'] as String? ?? '',
+        tema: j['tema'] as String?,
+        paraTodos: j['paraTodos'] as bool? ?? true,
+        alumnos: _textos(j['alumnos']),
+        creado: _fecha(j['creado']),
+        updatedAt: _fecha(j['updatedAt']),
+      );
+}
+
+/// Enlace de un material tal como lo escribe o pega el preparador, completo
+/// (añade https:// si falta), o null si no es un enlace http(s).
+String? enlaceMaterial(String texto) {
+  var t = texto.trim();
+  if (t.isEmpty || t.contains(' ')) return null;
+  if (!RegExp(r'^https?://', caseSensitive: false).hasMatch(t)) {
+    if (t.contains(':')) return null;
+    t = 'https://$t';
+  }
+  final u = Uri.tryParse(t);
+  return u == null || !u.host.contains('.') ? null : t;
 }
 
 /// Nombre y teléfono que se intercambian el alumno y el sustituto.
@@ -339,7 +451,7 @@ enum EstadoReserva { pedida, aceptada, rechazada, cancelada }
 /// Reserva de un alumno en un hueco de su preparador. El preparador la acepta
 /// (y entonces se crea la sesión) o la rechaza.
 class Reserva {
-  const Reserva({required this.id, required this.preparador, required this.alumno, this.alumnoNombre = '', required this.fecha, this.minutos = 30, this.nota = '', this.estado = EstadoReserva.pedida, this.creada, this.updatedAt});
+  const Reserva({required this.id, required this.preparador, required this.alumno, this.alumnoNombre = '', required this.fecha, this.minutos = PerfilPreparador.minutosClasePorDefecto, this.nota = '', this.estado = EstadoReserva.pedida, this.creada, this.updatedAt});
   final String id;
   final String preparador;
   final String alumno;
@@ -372,7 +484,7 @@ class Reserva {
         alumno: j['alumno'] as String? ?? '',
         alumnoNombre: j['alumnoNombre'] as String? ?? '',
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
-        minutos: (j['minutos'] as num?)?.toInt() ?? 30,
+        minutos: (j['minutos'] as num?)?.toInt() ?? PerfilPreparador.minutosClasePorDefecto,
         nota: j['nota'] as String? ?? '',
         estado: EstadoReserva.values.firstWhere((e) => e.name == j['estado'], orElse: () => EstadoReserva.pedida),
         creada: _fecha(j['creada']),

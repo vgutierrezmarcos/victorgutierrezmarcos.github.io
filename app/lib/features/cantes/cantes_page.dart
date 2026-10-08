@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/cantar_page.dart';
+import 'nuevo_cante_sheet.dart';
 import '../plan/diario_page.dart';
 import '../plan/plan_page.dart';
 import '../preparador/semana_page.dart';
@@ -55,6 +56,7 @@ class _CantesPageState extends ConsumerState<CantesPage> with TickerProviderStat
         conOposicion: true,
         title: const Text('Cantes'),
         actions: [
+          IconButton(tooltip: 'Para qué sirve cada parte', icon: const Icon(Icons.help_outline), onPressed: () => mostrarAyudasCantes(ref)),
           if (!preparador) PopupMenuButton<String>(
             onSelected: (v) async {
               switch (v) {

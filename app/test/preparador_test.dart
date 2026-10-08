@@ -123,7 +123,7 @@ void main() {
     await Future<void>.delayed(const Duration(milliseconds: 5));
     prep.tituloTema = (c) => c == '3.B.5' ? 'Política fiscal' : '';
     final hora = cuando.subtract(const Duration(hours: 24));
-    await prep.guardarSesion(s.copyWith(temaA: hora, temaMandado: '3.B.5', temaSorteado: true));
+    await prep.guardarSesion(s.copyWith(temaA: hora, temasMandados: ['3.B.5'], temaSorteado: true));
     expect(prep.sesiones().single.temaMandado, '3.B.5');
     await planAlu.sincronizarCantes();
     final conTema = planAlu.cantes().firstWhere((c) => c.id == 's1');

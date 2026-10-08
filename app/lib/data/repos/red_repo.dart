@@ -8,11 +8,14 @@ import '../models/red.dart';
 
 /// Aviso de la red (sustitución nueva, cogida, reserva…) para notificar una vez.
 class AvisoRed {
-  const AvisoRed({required this.id, required this.titulo, required this.texto});
+  const AvisoRed({required this.id, required this.titulo, required this.texto, this.ruta});
   /// Identificador estable: el mismo aviso no se repite (ver [RedRepo.avisosNuevos]).
   final String id;
   final String titulo;
   final String texto;
+  /// Pantalla de la app que se abre al tocar el aviso (`/cantes?cante=…`,
+  /// `/clase?id=…`, `/tablon`, `/semana`, `/mas/preparador`…).
+  final String? ruta;
 }
 
 /// Resultado de comprobar si el usuario es administrador.
@@ -50,6 +53,7 @@ class RedRepo {
   CollectionReference<Map<String, dynamic>> get _solicitudes => oposicion.red(_db!, 'solicitudesPreparador');
   CollectionReference<Map<String, dynamic>> get _sustituciones => oposicion.red(_db!, 'sustituciones');
   CollectionReference<Map<String, dynamic>> get _reservas => oposicion.red(_db!, 'reservas');
+  CollectionReference<Map<String, dynamic>> get _materiales => oposicion.red(_db!, 'materiales');
 
   // -------------------------------------------------------------- Verificación
 
@@ -283,6 +287,49 @@ class RedRepo {
 
   Future<void> cambiarReserva(Reserva r, EstadoReserva estado) => _reservas.doc(r.id).update({'estado': estado.name, 'updatedAt': DateTime.now().toIso8601String()});
 
+  // --------------------------------------------------------------- Materiales
+
+  /// El preparador comparte (o cambia) un material.
+  Future<void> guardarMaterial(MaterialCompartido m) async {
+    if (!conSesion) throw const ErrorRed('Inicia sesión con Google para compartir materiales.');
+    await _materiales.doc(m.id).set(m.toJson());
+  }
+
+  Future<void> borrarMaterial(String id) => _materiales.doc(id).delete();
+
+  /// Los materiales que ha compartido el preparador (los más recientes primero).
+  Future<List<MaterialCompartido>> misMateriales() async {
+    if (!conSesion) return const [];
+    final snap = await _materiales.where('preparador', isEqualTo: uid).get();
+    return [for (final d in snap.docs) MaterialCompartido.fromJson({...d.data(), 'id': d.id})]..sort((a, b) => (b.updatedAt ?? DateTime(0)).compareTo(a.updatedAt ?? DateTime(0)));
+  }
+
+  /// Los materiales de [preparador] que van al alumno: los de todos sus
+  /// alumnos y los dirigidos a él (dos consultas, que son las que las reglas
+  /// dejan hacer).
+  Future<List<MaterialCompartido>> materialesDe(String preparador) async {
+    if (!conSesion) return const [];
+    final todos = await _materiales.where('preparador', isEqualTo: preparador).where('paraTodos', isEqualTo: true).get();
+    final mios = await _materiales.where('preparador', isEqualTo: preparador).where('alumnos', arrayContains: uid).get();
+    final porId = {for (final d in [...todos.docs, ...mios.docs]) d.id: MaterialCompartido.fromJson({...d.data(), 'id': d.id})};
+    return porId.values.toList()..sort((a, b) => (b.updatedAt ?? DateTime(0)).compareTo(a.updatedAt ?? DateTime(0)));
+  }
+
+  /// Los materiales de todos los preparadores con los que el alumno ha
+  /// enlazado. Sin [preparadores] los lee de la nube (la tarea en segundo
+  /// plano no tiene la lista local).
+  Future<List<MaterialCompartido>> materialesParaMi({Iterable<String>? preparadores}) async {
+    if (!conSesion) return const [];
+    final lista = preparadores?.toList() ?? [for (final d in (await oposicion.raizUsuario(_db!, uid!).collection('preparadores').get()).docs) d.id];
+    final out = <MaterialCompartido>[];
+    for (final p in lista) {
+      try {
+        out.addAll(await materialesDe(p));
+      } catch (_) {}
+    }
+    return out..sort((a, b) => (b.updatedAt ?? DateTime(0)).compareTo(a.updatedAt ?? DateTime(0)));
+  }
+
   // ------------------------------------------------------------------- Avisos
 
   /// Lo que merece una notificación y aún no se ha notificado ([vistos]).
@@ -302,7 +349,7 @@ class RedRepo {
       final reciente = ahora.subtract(const Duration(days: 2));
       // Al aprobarse su verificación.
       if (verificacion != null && (verificacion.desde?.isAfter(reciente) ?? false)) {
-        out.add(AvisoRed(id: 'verif:${oposicion.id}', titulo: 'Ya estás verificado como preparador', texto: 'Ya puedes dar tu código a tus alumnos y coger clases sueltas. Lo tienes en Más → Preparador.'));
+        out.add(AvisoRed(id: 'verif:${oposicion.id}', titulo: 'Ya estás verificado como preparador', texto: 'Ya puedes dar tu código a tus alumnos y coger clases sueltas. Lo tienes en Más → Preparador.', ruta: '/mas/preparador'));
       }
       if (verificacion != null) {
         // Alumnos que acaban de conectar con su código.
@@ -311,45 +358,57 @@ class RedRepo {
           final desde = DateTime.tryParse(d.data()['desde'] as String? ?? '');
           if (desde == null || desde.isBefore(reciente)) continue;
           final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
-          out.add(AvisoRed(id: 'enl:${d.id}', titulo: '${nombre.isEmpty ? 'Un alumno' : nombre} se ha conectado contigo', texto: 'Ya ves sus temas y sus cantes en Más → Preparador.'));
+          out.add(AvisoRed(id: 'enl:${d.id}', titulo: '${nombre.isEmpty ? 'Un alumno' : nombre} se ha conectado contigo', texto: 'Ya ves sus temas y sus cantes en Más → Preparador.', ruta: '/mas/preparador'));
         }
       }
       if (admin || verificacion != null) {
         for (final sol in await solicitudesPendientes(admin: admin)) {
           if (sol.destinatario == uid || (admin && sol.destinatario == null)) {
-            out.add(AvisoRed(id: 'sol:${sol.uid}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Más → Preparador → Verificar preparadores.'));
+            out.add(AvisoRed(id: 'sol:${sol.uid}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Más → Preparador → Verificar preparadores.', ruta: '/mas/preparador'));
           }
         }
       }
       if (preparador) {
         for (final s in await tablon()) {
-          out.add(AvisoRed(id: 'sust:${s.id}', titulo: 'Un alumno pide una clase suelta', texto: '${f(s.fecha)}${s.conFranja ? ' – ${_hm(s.hasta!)}' : ''} · ${s.descripcion}'));
+          out.add(AvisoRed(id: 'sust:${s.id}', titulo: 'Un alumno pide una clase suelta', texto: '${f(s.fecha)}${s.conFranja ? ' – ${_hm(s.hasta!)}' : ''} · ${s.descripcion}. Toca para verla y cogerla.', ruta: '/tablon'));
         }
       }
       if (reservas ?? preparador) {
         for (final r in (await reservasRecibidas()).where((r) => r.pedida && r.fecha.isAfter(ahora))) {
-          out.add(AvisoRed(id: 'res:${r.id}', titulo: 'Reserva de ${r.alumnoNombre.isEmpty ? 'un alumno' : r.alumnoNombre}', texto: 'Quiere clase el ${f(r.fecha)}. Acéptala o recházala en Mi semana.'));
+          out.add(AvisoRed(id: 'res:${r.id}', titulo: 'Reserva de ${r.alumnoNombre.isEmpty ? 'un alumno' : r.alumnoNombre}', texto: 'Quiere clase el ${f(r.fecha)}. Toca para aceptarla o rechazarla.', ruta: '/semana'));
         }
       }
-      // Al alumno: clases que su preparador acaba de cancelar o de programar (o mover).
+      // Al alumno: clases que su preparador acaba de cancelar, programar o mover.
       final cantes = await oposicion.raizUsuario(_db!, uid!).collection('cantes').where('preparador', isNull: false).get();
       for (final d in cantes.docs) {
         final c = Cante.fromJson(d.data());
-        // Las de reservas y clases sueltas ya tienen su propio aviso.
-        if (c.id.startsWith('res_') || c.id.startsWith('sust_')) continue;
+        // Las de reservas ya tienen su propio aviso; las clases sueltas, al
+        // cogerse (sus cambios de hora o cancelación sí se avisan).
+        final suelta = c.id.startsWith('sust_');
+        if (c.id.startsWith('res_')) continue;
         if (c.borrado || !c.fecha.isAfter(ahora) || !(c.updatedAt?.isAfter(reciente) ?? false) || c.preparador == uid) continue;
         final quien = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+        final ruta = '/cantes?cante=${c.id}';
+        // Se sabe que es un cambio de hora porque ya se avisó de la misma clase con otra fecha.
+        final avisada = vistos.any((v) => v.startsWith('prog:${c.id}:') || v.startsWith('mov:${c.id}:') || v == 'cog:${c.sustitucion ?? ''}');
         if (c.cancelado) {
-          out.add(AvisoRed(id: 'canc:${c.id}', titulo: '$quien ha cancelado tu clase', texto: 'La del ${f(c.fecha)}. Si quieres, pide una clase suelta desde el cante.'));
-        } else if (!c.hecho) {
-          out.add(AvisoRed(id: 'prog:${c.id}:${c.fecha.toIso8601String()}', titulo: '$quien te ha programado una clase', texto: 'El ${f(c.fecha)}. La tienes en tu agenda.'));
+          out.add(AvisoRed(id: 'canc:${c.id}', titulo: '$quien ha cancelado tu clase', texto: 'La del ${f(c.fecha)}${c.motivo.isEmpty ? '' : ' (${c.motivo})'}. Toca para verla o pedir una clase suelta.', ruta: ruta));
+        } else if (!c.hecho && avisada) {
+          out.add(AvisoRed(id: 'mov:${c.id}:${c.fecha.toIso8601String()}', titulo: '$quien ha movido tu clase', texto: 'Ahora es el ${f(c.fecha)}. Toca para verla.', ruta: ruta));
+        } else if (!c.hecho && !suelta) {
+          out.add(AvisoRed(id: 'prog:${c.id}:${c.fecha.toIso8601String()}', titulo: '$quien te ha programado una clase', texto: 'El ${f(c.fecha)}. Toca para verla.', ruta: ruta));
         }
       }
       for (final s in (await misPeticiones()).where((s) => s.cogida && s.vigente(ahora))) {
-        out.add(AvisoRed(id: 'cog:${s.id}', titulo: '${s.cogidaPorNombre.isEmpty ? 'Un preparador' : s.cogidaPorNombre} te coge el cante', texto: 'El ${f(s.inicio)}. Abre la app para escribirle por WhatsApp.'));
+        out.add(AvisoRed(id: 'cog:${s.id}', titulo: '${s.cogidaPorNombre.isEmpty ? 'Un preparador' : s.cogidaPorNombre} te coge el cante', texto: 'El ${f(s.inicio)}. Toca para verlo y escribirle por WhatsApp.', ruta: '/cantes?cante=sust_${s.id}'));
       }
       for (final r in (await misReservas()).where((r) => !r.pedida && r.estado != EstadoReserva.cancelada && r.fecha.isAfter(ahora))) {
-        out.add(AvisoRed(id: 'resp:${r.id}:${r.estado.name}', titulo: r.estado == EstadoReserva.aceptada ? 'Reserva aceptada' : 'Reserva rechazada', texto: 'Tu clase del ${f(r.fecha)}.'));
+        out.add(AvisoRed(id: 'resp:${r.id}:${r.estado.name}', titulo: r.estado == EstadoReserva.aceptada ? 'Reserva aceptada' : 'Reserva rechazada', texto: 'Tu clase del ${f(r.fecha)}.', ruta: r.estado == EstadoReserva.aceptada ? '/cantes?cante=res_${r.id}' : '/mas/mi-preparador'));
+      }
+      // Materiales que un preparador acaba de compartir conmigo.
+      for (final m in await materialesParaMi()) {
+        if (m.preparador == uid || !(m.updatedAt?.isAfter(reciente) ?? false)) continue;
+        out.add(AvisoRed(id: 'mat:${m.id}', titulo: '${m.preparadorNombre.isEmpty ? 'Tu preparador' : m.preparadorNombre} te ha compartido material', texto: '${m.titulo}${m.tema == null ? '' : ' · Tema ${m.tema}'}. Toca para abrirlo.', ruta: '/mas/mi-preparador'));
       }
     } catch (_) {
       // Sin red o sin permiso: se intenta en la próxima.
