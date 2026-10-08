@@ -9,6 +9,17 @@ import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
 /// Pizarra compartida: cómo se guardan los trazos y que lo que dibuja uno lo
 /// ve el otro.
 void main() {
+  test('trazo con color: ida y vuelta en JSON, y si pasa cerca de un punto (para el borrador)', () {
+    const t = Trazo(id: 'a', de: 'yo', grosor: 6, color: 0xFFC62828, puntos: [Point(100, 100), Point(300, 100)]);
+    final j = t.toJson();
+    expect(j['c'], 0xFFC62828);
+    expect(Trazo.fromJson(j).color, 0xFFC62828);
+    expect(Trazo.fromJson({'i': 'b', 'u': 'yo', 'g': 3, 'p': '0,0'}).color, isNull, reason: 'los trazos de antes no llevan color');
+    expect(t.cerca(const Point(200, 110), 10), isTrue);
+    expect(t.cerca(const Point(200, 140), 10), isFalse);
+    expect(t.cerca(const Point(320, 100), 10), isFalse, reason: 'más allá del extremo');
+  });
+
   group('trazos', () {
     test('los puntos van como diferencias y vuelven iguales', () {
       final puntos = [const Point(812, 420), const Point(815, 418), const Point(820, 418), const Point(824, 419)];

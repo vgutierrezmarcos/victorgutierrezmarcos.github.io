@@ -157,6 +157,36 @@ class PreparadorRepo {
     } catch (_) {}
   }
 
+  /// Une dos fichas del mismo alumno: la que se apuntó a mano ([sinApp]) y la
+  /// que apareció al enlazar su app ([enlazado]). Las clases, las clases
+  /// fijas, las notas, el teléfono y los temas pasan a la enlazada (y las
+  /// clases se le copian a su agenda); la de a mano desaparece.
+  Future<Alumno> unirAlumnos(Alumno sinApp, Alumno enlazado) async {
+    if (sinApp.id == enlazado.id) return enlazado;
+    final unido = enlazado.copyWith(
+      ejercicio: enlazado.ejercicio == 3 && sinApp.ejercicio != 3 ? sinApp.ejercicio : null,
+      notas: [enlazado.notas, sinApp.notas].where((n) => n.trim().isNotEmpty).join('\n'),
+      temas: enlazado.temas.isEmpty ? sinApp.temas : null,
+      telefono: enlazado.telefono.isEmpty ? sinApp.telefono : null,
+      email: enlazado.email.isEmpty ? sinApp.email : null,
+      clasesFijas: [...enlazado.clasesFijas, ...sinApp.clasesFijas],
+    );
+    await guardarAlumno(unido);
+    for (final s in _todasLasSesiones().where((s) => s.alumno == sinApp.id)) {
+      await guardarSesion(s.copyWith(alumno: unido.id));
+    }
+    await guardarAlumno(sinApp.copyWith(borrado: true, desenlazar: true, clasesFijas: const []));
+    return unido;
+  }
+
+  /// La ficha apuntada a mano que parece ser la misma persona que [uid]
+  /// (mismo correo o mismo nombre), para unirlas al enlazarse.
+  Alumno? _fichaSinAppDe(String nombre, String email) {
+    final n = nombre.trim().toLowerCase(), e = email.trim().toLowerCase();
+    final sinApp = _todosLosAlumnos().where((a) => !a.borrado && a.uid == null);
+    return sinApp.where((a) => e.isNotEmpty && a.email.trim().toLowerCase() == e).firstOrNull ?? sinApp.where((a) => n.isNotEmpty && a.nombre.trim().toLowerCase() == n).firstOrNull;
+  }
+
   /// Borrado lógico. Si el alumno estaba enlazado, se rompe también el enlace.
   Future<void> borrarAlumno(Alumno a) async {
     if (a.enlazado) await romperEnlaceConAlumno(a);
@@ -259,8 +289,9 @@ class PreparadorRepo {
   /// borra la clase, se retira.
   Future<void> _entregarTema(Cante s, {Cante? antes}) async {
     final a = s.alumno == null ? null : alumno(s.alumno!);
-    // Solo a un alumno enlazado (las reglas no lo entregan a uno de clase suelta).
-    if (!conSesion || a == null || !a.enlazado) return;
+    // A un alumno con app: enlazado o el de una clase suelta (las reglas
+    // dejan escribirlo a quien cogió la clase).
+    if (!conSesion || a == null || a.uid == null) return;
     final doc = oposicion.red(_db!, 'temasAnticipados').doc(s.id);
     try {
       if (s.mandaTema && s.pendiente && !s.borrado) {
@@ -486,7 +517,12 @@ class PreparadorRepo {
           continue;
         }
         final nombre = (e.value['nombre'] as String?)?.trim() ?? '';
-        await guardarAlumno(Alumno(id: e.key, uid: e.key, nombre: nombre.isEmpty ? (email.isEmpty ? 'Alumno' : email) : nombre, email: email, creado: DateTime.now(), updatedAt: DateTime.now()));
+        final nuevo = Alumno(id: e.key, uid: e.key, nombre: nombre.isEmpty ? (email.isEmpty ? 'Alumno' : email) : nombre, email: email, creado: DateTime.now(), updatedAt: DateTime.now());
+        await guardarAlumno(nuevo);
+        // Si ya estaba apuntado a mano (mismo correo o nombre), es la misma
+        // ficha: sus clases pasan a la enlazada y no queda duplicado.
+        final aMano = _fichaSinAppDe(nombre, email);
+        if (aMano != null) await unirAlumnos(aMano, nuevo);
       }
       for (final a in locales.where((a) => a.enlazado && !a.borrado && !enlazados.containsKey(a.uid))) {
         await guardarAlumno(a.copyWith(desenlazar: true));

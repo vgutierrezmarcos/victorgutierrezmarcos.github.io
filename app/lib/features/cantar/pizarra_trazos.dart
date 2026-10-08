@@ -13,6 +13,10 @@ const altoLienzo = 1000;
 /// Grosores del lápiz, en unidades del lienzo.
 const grosores = [3, 6, 12];
 
+/// Colores que se pueden elegir (ARGB). Los dos primeros son los de cada
+/// papel por defecto (alumno y preparador).
+const coloresPizarra = [0xFF2E7D9A, 0xFFC0662B, 0xFF1F1F1F, 0xFF5F2987, 0xFF2E7D32, 0xFFC62828];
+
 /// Páginas como mucho por clase.
 const maxPaginas = 10;
 
@@ -22,24 +26,39 @@ const bytesMaxPagina = 700 * 1024;
 
 /// Un trazo de alguien ([de], su uid) con un [grosor] y sus [puntos].
 class Trazo {
-  const Trazo({required this.id, required this.de, required this.grosor, required this.puntos, this.crudo});
+  const Trazo({required this.id, required this.de, required this.grosor, required this.puntos, this.color, this.crudo});
 
   final String id;
   final String de;
   final int grosor;
   final List<Point<int>> puntos;
 
+  /// Color ARGB elegido; null = el color del papel de quien lo pintó.
+  final int? color;
+
+  /// Si el trazo pasa a menos de [radio] (en unidades del lienzo) del punto.
+  bool cerca(Point<double> p, double radio) {
+    final r = radio + grosor / 2;
+    Point<double> d(Point<int> q) => Point(q.x.toDouble(), q.y.toDouble());
+    if (puntos.length == 1) return p.distanceTo(d(puntos.first)) <= r;
+    for (var i = 0; i < puntos.length - 1; i++) {
+      if (_distanciaASegmento(p, d(puntos[i]), d(puntos[i + 1])) <= r) return true;
+    }
+    return false;
+  }
+
   /// El elemento tal como vino de Firestore: para quitarlo (arrayRemove) hace
   /// falta exactamente el mismo mapa.
   final Map<String, dynamic>? crudo;
 
-  Map<String, dynamic> toJson() => {'i': id, 'u': de, 'g': grosor, 'p': codificarPuntos(puntos)};
+  Map<String, dynamic> toJson() => {'i': id, 'u': de, 'g': grosor, 'p': codificarPuntos(puntos), if (color != null) 'c': color};
 
   factory Trazo.fromJson(Map<dynamic, dynamic> j) => Trazo(
         id: j['i']?.toString() ?? '',
         de: j['u']?.toString() ?? '',
         grosor: (j['g'] as num?)?.toInt() ?? grosores[1],
         puntos: decodificarPuntos(j['p']?.toString() ?? ''),
+        color: (j['c'] as num?)?.toInt(),
         crudo: Map<String, dynamic>.from(j),
       );
 

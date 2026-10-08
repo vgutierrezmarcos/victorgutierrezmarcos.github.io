@@ -121,7 +121,7 @@ class BuscarPreparadorPage extends ConsumerWidget {
               AsyncData(:final value) => value.isEmpty
                   ? [Text('Ningún preparador verificado ha dicho que admita alumnos nuevos por ahora. Puedes mirar el directorio completo y escribirles igualmente.', style: context.textos.bodySmall)]
                   : [
-                      if (b == null) Padding(padding: const EdgeInsets.only(bottom: 8), child: Text('Cuenta lo que buscas y se ordenarán por lo que encajan contigo.', style: context.textos.labelSmall)),
+                      Padding(padding: const EdgeInsets.only(bottom: 8), child: Text(b == null ? 'Cuenta lo que buscas y se ordenarán por lo que encajan contigo.' : '«Encaja» mira solo el ejercicio, online o presencial y los horarios; no es una valoración de nadie.', style: context.textos.labelSmall)),
                       for (final (v, p, c) in value) _TarjetaConPlazas(v: v, plazas: p, compat: c),
                     ],
               AsyncError() => [Text('No se ha podido cargar. Desliza hacia abajo para reintentarlo.', style: context.textos.bodySmall)],
@@ -195,7 +195,7 @@ class _TarjetaInteresado extends ConsumerWidget {
             PuntoPersona(i.uid, tamano: 12),
             const SizedBox(width: 10),
             Expanded(child: Text(i.nombre.isEmpty ? 'Un preparador' : i.nombre, style: context.textos.titleMedium)),
-            if (v != null) Compatibilidad(compatibilidad(busqueda, v), tamano: 44),
+            if (v != null) Compatibilidad(compatibilidad(busqueda, v)),
           ]),
           if (v != null && v.ejercicios.isNotEmpty) Text('Prepara el ${v.descripcionEjercicios} ejercicio${v.descripcionModalidad.isEmpty ? '' : ' · ${v.descripcionModalidad}'}', style: context.textos.labelSmall),
           if (i.mensaje.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('«${i.mensaje}»', style: context.textos.bodySmall)),

@@ -491,12 +491,16 @@ final temaAnticipadoProvider = FutureProvider.family<TemaAnticipado?, String>((r
 });
 
 /// Abre Cantar con la clase [canteId] y, si se da, ese [tema] ya elegido.
-void empezarCante(WidgetRef ref, GoRouter router, String canteId, {String? tema}) {
+void empezarCante(WidgetRef ref, GoRouter router, String canteId, {String? tema, bool arrancarEsquema = false}) {
   ref.read(canteEnCursoProvider.notifier).state = canteId;
   ref.read(subpestanaCantesProvider.notifier).state = 1;
+  ref.read(arrancarEsquemaProvider.notifier).state = arrancarEsquema;
   if (tema != null) ref.read(temaParaCantarProvider.notifier).state = tema;
   router.go('/cantes');
 }
+
+/// Al llegar desde «Empezar el esquema» del aviso: el cronómetro arranca solo.
+final arrancarEsquemaProvider = StateProvider<bool>((ref) => false);
 
 /// Subpestaña visible del bloque Estudiar: 0 = temas, 1 = test.
 final subpestanaEstudiarProvider = StateProvider<int>((ref) => 0);

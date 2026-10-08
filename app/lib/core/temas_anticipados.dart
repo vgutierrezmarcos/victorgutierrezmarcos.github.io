@@ -68,8 +68,11 @@ Future<int> comprobarTemasAnticipados(FirebaseFirestore db, String uid, Oposicio
       vistos.add(clave);
       avisados++;
       final texto = t.texto;
+      // Cuenta atrás del esquema desde que llegan los temas (como en el examen).
+      final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 0;
+      final seg = oposicion.ejercicio(ejercicio)?.segundosEsquemaPara(t.temas.length) ?? 0;
       if (Notificaciones.disponibles) {
-        await Notificaciones.avisoTema(canteId: d.id, de: t.preparadorNombre, texto: texto, tema: t.temas.join(','), sorteado: t.sorteado);
+        await Notificaciones.avisoTema(canteId: d.id, de: t.preparadorNombre, texto: texto, tema: t.temas.join(','), sorteado: t.sorteado, esquemaHasta: seg > 0 ? cuando.add(Duration(seconds: seg)) : null);
       } else {
         notificacionNavegador(t.preparadorNombre, texto);
       }

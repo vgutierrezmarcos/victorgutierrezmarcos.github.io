@@ -37,6 +37,13 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     super.dispose();
   }
 
+  Future<void> _unir(Alumno a) async {
+    final unido = await unirAlumnoDialogo(context, ref, a);
+    if (unido != null && mounted && unido.id != a.id) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => AlumnoPage(id: unido.id)));
+    }
+  }
+
   Future<void> _quitar(Alumno a) async {
     final nav = Navigator.of(context);
     final ok = await showDialog<bool>(
@@ -128,6 +135,8 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               if (nuevo != null) await ref.read(alumnosProvider.notifier).guardar(nuevo);
             },
           ),
+          if (ref.watch(alumnosProvider).any((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)))
+            IconButton(tooltip: a.enlazado ? 'Unir con una ficha apuntada a mano' : 'Unir con su ficha enlazada', icon: const Icon(Icons.merge_type), onPressed: () => _unir(a)),
           IconButton(tooltip: 'Quitar alumno', icon: const Icon(Icons.person_remove_outlined), onPressed: () => _quitar(a)),
         ],
       ),
@@ -314,4 +323,32 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
       ),
     );
   }
+}
+
+/// El mismo alumno con dos fichas (una apuntada a mano y otra al enlazar su
+/// app): se elige la otra y se unen. Devuelve la ficha unida (la enlazada) o
+/// null si se cancela.
+Future<Alumno?> unirAlumnoDialogo(BuildContext context, WidgetRef ref, Alumno a) async {
+  final otros = ref.read(alumnosProvider).where((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)).toList();
+  if (otros.isEmpty) return null;
+  final otro = await showDialog<Alumno>(
+    context: context,
+    builder: (d) => SimpleDialog(
+      title: Text(a.enlazado ? '¿Qué ficha a mano es ${a.nombre}?' : '¿Con qué ficha enlazada se une ${a.nombre}?'),
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+          child: Text('Las clases, las clases fijas, las notas y los temas pasan a la ficha enlazada; la otra desaparece. Las clases se le copian a su agenda.', style: Theme.of(d).textTheme.bodySmall),
+        ),
+        for (final o in otros) SimpleDialogOption(onPressed: () => Navigator.pop(d, o), child: Text(o.nombre)),
+      ],
+    ),
+  );
+  if (otro == null) return null;
+  final sinApp = a.enlazado ? otro : a, enlazado = a.enlazado ? a : otro;
+  final unido = await ref.read(preparadorRepoProvider).unirAlumnos(sinApp, enlazado);
+  ref.invalidate(alumnosProvider);
+  ref.invalidate(sesionesProvider);
+  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Fichas unidas: ahora ${unido.nombre} tiene todas sus clases.')));
+  return unido;
 }

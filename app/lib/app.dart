@@ -207,7 +207,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         // Tema que manda el preparador: «Empezar el esquema» abre Cantar con
         // él; tocar el aviso (o «Ver») abre la clase.
         if (uri.queryParameters['accion'] == 'esquema') {
-          empezarCante(ref, _router, cante, tema: tema);
+          empezarCante(ref, _router, cante, tema: tema, arrancarEsquema: true);
         } else {
           _router.go('/cantes');
           nav?.push(MaterialPageRoute(builder: (_) => CantePage(id: cante)));

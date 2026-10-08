@@ -107,7 +107,7 @@ class SeccionTemaAnticipado extends ConsumerWidget {
     }
 
     if (!enlazado) {
-      return Text('Cuando el alumno enlace su app, podrás mandarle los temas antes de la clase para que haga el esquema.', style: context.textos.labelSmall);
+      return Text('Cuando el alumno enlace su app (o si es una clase suelta pedida desde la app), podrás mandarle los temas antes de la clase para que haga el esquema. Si ya la tiene y sale duplicado, une las dos fichas desde la suya.', style: context.textos.labelSmall);
     }
     if (!s.mandaTema) {
       return Tarjeta(

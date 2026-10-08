@@ -996,12 +996,11 @@ def e_mi_preparador(t):
     else:
         tel = telefono('buscar-preparador', 380, 'mi-preparador', entre(t, c2 - 0.1, c2 + 0.35))
     pegar(img, tel, cx, cy + round(100 * (1 - a)), alfa=a)
-    # 1) Las compatibilidades suben contando.
-    for i, (v, y) in enumerate([(100, 330), (68, 520)]):
+    # 1) Lo que encaja cada uno (en palabras, nunca una nota).
+    for i, (txt, color, y) in enumerate([('Encaja mucho', VERDE, 330), ('Encaja', DORADO, 520)]):
         e = entre(t, 0.6 + i * PULSO, 1.0 + i * PULSO) * (1 - entre(t, c1 - 0.3, c1))
         if e > 0:
-            n = round(v * entre(t, 0.6 + i * PULSO, 0.6 + i * PULSO + 1.0))
-            pegar(img, pastilla(f'{n} % de compatibilidad', VERDE if v >= 75 else DORADO), 1000, y + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
+            pegar(img, pastilla(txt, color), 1000, y + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
     # 2) El aviso: a una preparadora le interesa.
     e = entre(t, c1 + 0.5, c1 + 0.85) * (1 - entre(t, c2 - 0.3, c2))
     if e > 0:
@@ -1073,8 +1072,8 @@ def e_clase_viva(t):
     rotulo(img, 'LA CLASE, AL DÍA', 120, 200, t)
     titular(img, ['¿Cambia la hora?', '*Lo *sabes *al *momento.'], 120, 270, t, tam=84, paso=MEDIO / 2, salida=c1 - 0.3)
     parrafo(img, 'Lo que tu preparador cambia en la clase llega a tu agenda al instante, con un aviso que la abre.', 120, 520, t, inicio=0.5, ancho=620, alfa=1 - entre(t, c1 - 0.25, c1))
-    titular(img, ['Dos temas,', '*como *en *el *examen.'], 120, 270, t, tam=84, paso=MEDIO / 2, inicio=c1 + 0.15, salida=c2 + PULSO * 2.4)
-    parrafo(img, 'Elegidos por tu preparador o a suerte entre los que llevas, uno de cada parte si quiere. Te llegan a su hora, con el esquema de los dos listo en el cronómetro.', 120, 520, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 + PULSO * 2.3, c2 + PULSO * 2.6))
+    titular(img, ['Los temas,', '*a *su *hora.'], 120, 270, t, tam=84, paso=MEDIO / 2, inicio=c1 + 0.15, salida=c2 + PULSO * 2.4)
+    parrafo(img, 'Uno o dos, elegidos por tu preparador o a suerte entre los que llevas. Te llegan cuando toca, con la cuenta atrás del esquema en el aviso y el cronómetro listo.', 120, 520, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 + PULSO * 2.3, c2 + PULSO * 2.6))
     titular(img, ['Y tú solo', '*tienes *que *cantar.'], 120, 270, t, tam=84, paso=MEDIO / 2, inicio=c2 + PULSO * 2.6)
     cx, cy = 1340, 560
     a = entre(t, 0, 0.7)

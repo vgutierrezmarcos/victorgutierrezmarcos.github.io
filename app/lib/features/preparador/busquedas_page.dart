@@ -30,7 +30,7 @@ class BusquedasPage extends ConsumerWidget {
         child: ListaAdaptable(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
           children: [
-            Text('Lo que buscan, sin su nombre ni su teléfono. Si te interesa alguno y tienes hueco, deja tu contacto: será él quien te escriba. Ordenados por lo que encajan con lo que preparas, cómo das clase y tu disponibilidad.', style: context.textos.bodySmall),
+            Text('Lo que buscan, sin su nombre ni su teléfono. Si te interesa alguno y tienes hueco, deja tu contacto: será él quien te escriba. Ordenados por lo que encajan con lo que preparas, cómo das clase y tu disponibilidad (solo eso: no es una valoración de nadie).', style: context.textos.bodySmall),
             if (plazas == null || !plazas.admite)
               Padding(
                 padding: const EdgeInsets.only(top: 8),

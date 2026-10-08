@@ -343,7 +343,9 @@ void main() {
       expect(p.copyWith(segundosTemaAntes: 600).antelacionTema(temas: 2), 600);
       expect(p.copyWith(segundosTemaAntes: 600).copyWith(antelacionDelExamen: true).segundosTemaAntes, isNull);
       expect(p.minutosClase, 120);
-      expect(p.temasPorClase, 2);
+      expect(p.temasPorClase, 1, reason: 'en TCEE, un tema por clase por defecto');
+      expect(p.copyWith(temasPorClase: 2).temasPorClase, 2);
+      expect(PerfilPreparador.fromJson(p.copyWith(temasPorClase: 2).toJson()).temasPorClase, 2);
       expect(p.plataforma, plataformaMeet);
       expect(PerfilPreparador.fromJson({'activo': true}).minutosClase, 120);
     });

@@ -77,8 +77,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Víctor: comprobar `general: true` en su documento de `admins` (8 oct.).
 - [x] Víctor: descargar el **APK universal firmado** de la versión 23 (8 oct.). Comprobado: 1.14.2 (23), firmado por Google (SHA-1 `11:1D:E2:24:6D:64:C0:62:E9:20:37:DD:1D:42:C2:6A:33:4C:3D:88`). Guardado en el Escritorio como `oposicion-tcee-1.14.2-google.apk`.
 - [x] Víctor: probar la 1.14.2 en el móvil (8 oct.): va bien.
-- [ ] Víctor: probar **Google Calendar** (ver abajo, «Google Calendar y Meet»).
-- [ ] Manuel: su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
+- [ ] Víctor: probar **Google Calendar** (ver abajo, «Google Calendar y Meet»): la tarjeta dice «Todavía en pruebas: tu cuenta no está en la lista de prueba» → falta el documento `pruebasCalendario/{tu Gmail en minúsculas}` en la raíz de Firestore (TCEE).
+- [ ] Manuel (se lo ha dicho Víctor; lo lleva él): su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
 - [x] 12 testers apuntados a la prueba cerrada desde el 8 oct. a las 11:30 (enlace: `https://play.google.com/apps/testing/es.victorgutierrezmarcos.tcee_app`). Conviene llegar a 15-20 por si alguien se sale.
 
 **El día 12 (unos 20 minutos):**
@@ -101,7 +101,11 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 
 **Versión 1.15.0 (24): mejoras de los testers (8 oct.)**
 - [x] Víctor: reglas nuevas (`firestore.rules`, 180 casos) publicadas (8 oct.).
-- [ ] Víctor: **volver a publicar las reglas** (`firestore.rules`, ahora 202 casos): la búsqueda de preparador añade `busquedas`, `interesados` y `plazas`. Sin esto, «Buscar preparador» y «Alumnos nuevos» dan «sin permiso».
+
+**Versión 1.15.1 (25): buscar preparador y arreglos del móvil (8 oct.)**
+- [ ] Víctor: **volver a publicar las reglas** (`firestore.rules`, ahora 206 casos): la búsqueda de preparador añade `busquedas`, `interesados` y `plazas`, y los temas de las clases sueltas. Sin esto, «Buscar preparador» y «Alumnos nuevos» dan «sin permiso».
+- [ ] Víctor: subir el `.aab` 1.15.1 (25) (`Escritorio\oposicion-tcee-dce-1.15.1.aab`) a la prueba cerrada y anotarlo en el registro.
+- [ ] Víctor: en el móvil, comprobar: el alumno duplicado («Unir fichas» en la clase o en su ficha), mandar temas en una clase suelta, «Empezar el esquema» arranca el cronómetro y el aviso con cuenta atrás (al alumno y a ti), la pizarra (trazo donde se toca, colores, borrador), buscar preparador en los dos lados.
 - [x] Víctor: exención de índice `pizarra` → `trazos` creada (8 oct.).
 - [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).
 - [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.
