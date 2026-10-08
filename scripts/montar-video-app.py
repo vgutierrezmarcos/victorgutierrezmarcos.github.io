@@ -41,7 +41,7 @@ CAPTURAS = os.path.join(PROMO, 'capturas')
 FUENTES = os.path.join(RAIZ, 'app', 'assets', 'fonts')
 ICONO = os.path.join(RAIZ, 'app', 'assets', 'icon', 'icon.png')
 
-ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 60
+ANCHO, ALTO, FPS, DURACION = 1920, 1080, 30, 90
 
 # Estética neutra, común a TCEE y DCE (como PaletaNeutra de la app): la de
 # styles.css en lo fundamental (Pagella, Source Sans, línea dorada), con un
@@ -998,8 +998,8 @@ def e_preparadores(t):
     img = fondo_noche().copy()
     rotulo(img, 'SI PREPARAS A OPOSITORES', 120, 300, t, color=DORADO_CLARO)
     titular(img, ['Lleva a', 'tus alumnos.'], 120, 370, t, tam=96, color=BLANCO, paso=MEDIO / 2)
-    parrafo(img, 'Te das de alta y te verifica otro preparador. Tus clases de hoy, tu semana, la ficha de cada alumno y el tema que le mandas antes de la clase.', 120, 640, t, inicio=0.6, ancho=640, color=CREMA)
-    for i, (nombre, x, y, giro) in enumerate([('dce-hoy-preparador', 1080, 590, 5), ('tema-programar', 1760, 590, -5), ('semana', 1420, 560, 0)]):
+    parrafo(img, 'Te das de alta y te verifica otro preparador. Tus clases de hoy, tu semana, la ficha de cada alumno, y cada clase se cambia al momento: hora, duración, Meet o Teams y los temas que le mandas antes.', 120, 640, t, inicio=0.6, ancho=640, color=CREMA)
+    for i, (nombre, x, y, giro) in enumerate([('dce-hoy-preparador', 1080, 590, 5), ('tema-programar', 1760, 590, -5), ('clase-detalles', 1420, 560, 0)]):
         e = entre(t, i * PULSO, i * PULSO + 0.7)
         pegar(img, telefono(nombre, 340), x + round(300 * (1 - e)), y, giro=giro, alfa=e)
     return img
@@ -1040,6 +1040,122 @@ def e_cierre(t):
     return img
 
 
+def e_clase_viva(t):
+    """La clase, en vivo: si el preparador la mueve, el alumno lo ve al
+    momento y le llega el aviso; y los temas, dos como en el examen."""
+    img = lienzo_luz(t)
+    c1, c2 = COMPAS, 2 * COMPAS
+    rotulo(img, 'LA CLASE, AL DÍA', 120, 200, t)
+    titular(img, ['¿Cambia la hora?', '*Lo *sabes *al *momento.'], 120, 270, t, tam=84, paso=MEDIO / 2, salida=c1 - 0.3)
+    parrafo(img, 'Lo que tu preparador cambia en la clase llega a tu agenda al instante, con un aviso que la abre.', 120, 520, t, inicio=0.5, ancho=620, alfa=1 - entre(t, c1 - 0.25, c1))
+    titular(img, ['Dos temas,', '*como *en *el *examen.'], 120, 270, t, tam=84, paso=MEDIO / 2, inicio=c1 + 0.15, salida=c2 + PULSO * 2.4)
+    parrafo(img, 'Elegidos por tu preparador o a suerte entre los que llevas, uno de cada parte si quiere. Te llegan a su hora, con el esquema de los dos listo en el cronómetro.', 120, 520, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 + PULSO * 2.3, c2 + PULSO * 2.6))
+    titular(img, ['Y tú solo', '*tienes *que *cantar.'], 120, 270, t, tam=84, paso=MEDIO / 2, inicio=c2 + PULSO * 2.6)
+    cx, cy = 1340, 560
+    a = entre(t, 0, 0.7)
+    pegar(img, telefono('tema-recibido', 390), cx, cy + round(100 * (1 - a)), alfa=a)
+    # 1) El aviso de la clase movida cae desde arriba.
+    av = aviso('Paula Pérez ha movido tu clase', 'Ahora es el jueves a las 19:00 · Toca para verla', DORADO, 640)
+    e = entre(t, 0.35, 0.7) * (1 - entre(t, c1 - 0.25, c1))
+    if e > 0:
+        pegar(img, av, cx + 40, 150 + round(-120 * (1 - e)), alfa=e)
+    # 2) Dos bolas que caen y botan, una de cada parte.
+    for i, (codigo, color, x) in enumerate([('3.A.14', LOGO['fondo_i'], 1120), ('3.B.5', LOGO['fondo_d'], 1560)]):
+        t0 = c1 + PULSO * (1 + i)
+        if t < t0 or t > c2 + PULSO * 2.6:
+            continue
+        u = t - t0
+        caida = 0.45
+        if u < caida:
+            y = 220 - 500 * (1 - (u / caida) ** 2)
+        else:
+            v = u - caida
+            y = 220 - 90 * abs(math.sin(v * 7)) * math.exp(-v * 5)
+        fuera = entre(t, c2 + PULSO * 2.3, c2 + PULSO * 2.6)
+        pegar(img, bola(codigo, color), x, y - 200 * fuera, alfa=1 - fuera)
+    p = entre(t, c2, c2 + 0.4) * (1 - entre(t, c2 + PULSO * 2.3, c2 + PULSO * 2.6))
+    pegar(img, pastilla('45 min de esquema para los dos', DORADO), cx, 960 + 5 * math.sin(t * 2), alfa=p, escala=0.85 + 0.15 * rebote(p))
+    return img
+
+
+def e_pizarra(t):
+    """Pizarra compartida: una tableta apaisada en la que aparece el dibujo."""
+    img = fondo_noche().copy()
+    c1 = COMPAS
+    rotulo(img, 'EN LA CLASE', 120, 150, t, color=DORADO_CLARO)
+    titular(img, ['Una pizarra', '*para *los *dos.'], 120, 220, t, tam=96, color=BLANCO, acento=DORADO_CLARO, paso=MEDIO / 2)
+    parrafo(img, 'Lo que dibuja uno lo ve el otro al instante, cada uno con su color. Solo se comparte la pizarra, nada más del móvil. En el móvil, la tableta o el ordenador, con Meet o Teams a la vez.', 120, 470, t, inicio=0.6, ancho=560, color=CREMA)
+    a = entre(t, 0.2, 0.9)
+    tab = cache(('tableta', 'pizarra'), lambda: telefono('pizarra', 1040))
+    cx, cy = 1300, 620
+    pegar(img, tab, cx, cy + round(140 * (1 - a)), alfa=a, escala=0.94 + 0.06 * a)
+    # Un trazo dorado que se dibuja sobre la pizarra, como si lo hiciera el otro.
+    u = entre(t, c1, c1 + 2 * PULSO)
+    if 0 < u:
+        d = ImageDraw.Draw(img)
+        puntos = []
+        n = int(60 * u)
+        for k in range(n + 1):
+            x = k / 60
+            puntos.append((cx - 240 + 380 * x, cy + 70 - 70 * math.sin(x * 3.3) - 40 * x))
+        if len(puntos) > 1:
+            d.line(puntos, fill=DORADO_CLARO, width=9, joint='curve')
+        if u < 1:
+            x, y = puntos[-1]
+            d.ellipse((x - 16, y - 16, x + 16, y + 16), fill=DORADO_CLARO)
+    for i, (txt, ini) in enumerate([('Tú', 0.8), ('Paula Pérez', 1.1)]):
+        e = entre(t, ini, ini + 0.4)
+        pegar(img, pastilla(txt, [(43, 87, 154), (192, 102, 43)][i], oscura=True, tam=30), 1660, 150 + i * 70, alfa=e, escala=0.85 + 0.15 * rebote(e))
+    return img
+
+
+def e_materiales(t):
+    """Materiales del preparador: enlaces que llegan al móvil y se quedan en el tema."""
+    img = lienzo_luz(t)
+    c1, c2 = COMPAS, 2 * COMPAS
+    rotulo(img, 'MATERIALES', 120, 220, t)
+    titular(img, ['Sus apuntes,', '*en *tu *tema.'], 120, 290, t, tam=92, paso=MEDIO / 2)
+    parrafo(img, 'Tu preparador te comparte enlaces (sus temas en Drive, un PDF, un vídeo), para todos sus alumnos o solo para ti. Te avisa y los tienes en Mi preparador y dentro de ese tema.', 120, 540, t, inicio=0.6, ancho=620)
+    cx, cy = 1420, 560
+    a = entre(t, 0, 0.7)
+    tel = telefono('materiales', 380, 'mi-preparador', entre(t, c2 - 0.1, c2 + 0.35))
+    pegar(img, tel, cx, cy + round(100 * (1 - a)), alfa=a)
+    # Los ficheros vuelan al móvil, uno por corchea.
+    for i, (etq, color, x0, y0) in enumerate([('DRIVE', (33, 115, 70), 220, 800), ('PDF', (179, 11, 0), 430, 800), ('VÍDEO', (200, 40, 40), 640, 800)]):
+        aparece = entre(t, 0.2 + i * MEDIO, 0.5 + i * MEDIO)
+        u = entre(t, c1 - PULSO + PULSO * (0.6 + i * 0.5), c1 - PULSO + PULSO * (0.6 + i * 0.5) + 0.55)
+        if aparece <= 0 or u >= 1:
+            continue
+        x = x0 + (cx - x0) * u
+        y = y0 + (cy - 80 - y0) * u - 260 * math.sin(math.pi * u)
+        pegar(img, documento(etq, color), x, y + 6 * math.sin(t * 3 + i), escala=1.15 - 0.75 * u, giro=(1 - u) * (6 - 6 * i) + 30 * u, alfa=aparece * (1 - u * 0.5))
+    e = entre(t, c1 + 0.6, c1 + 1.0) * (1 - entre(t, c2 - 0.2, c2))
+    pegar(img, aviso('Paula Pérez te ha compartido material', 'Mis apuntes del tema 3.A.14 · Toca para abrirlo', VERDE, 620), cx + 40, 150, alfa=e)
+    p = entre(t, c2 + 0.3, c2 + 0.7)
+    pegar(img, pastilla('Meet o Teams: lo elige tu preparador', DORADO), 430, 1000 + 5 * math.sin(t * 2), alfa=p, escala=0.85 + 0.15 * rebote(p))
+    return img
+
+
+def e_avisos(t):
+    """Los avisos: se piden al abrir la app y cada uno te lleva a su sitio."""
+    img = fondo_noche().copy()
+    rotulo(img, 'AVISOS', 120, 300, t, color=DORADO_CLARO)
+    titular(img, ['Cada aviso', '*te *lleva *a *su *sitio.'], 120, 370, t, tam=72, color=BLANCO, acento=DORADO_CLARO, paso=MEDIO / 2)
+    parrafo(img, 'La app te pide el permiso al abrirla y te explica para qué. Clases, temas, materiales, el test diario: tocas el aviso y estás allí.', 120, 640, t, inicio=0.6, ancho=620, color=CREMA)
+    a = entre(t, 0, 0.7)
+    pegar(img, telefono('avisos-permiso', 380), 1560, 560 + round(100 * (1 - a)), alfa=a)
+    for i, (av, ini) in enumerate([(aviso('Olga Martín te coge la clase', 'Mañana, 18:30 · Toca para verla', VERDE, 580), 0.4),
+                                   (aviso('Los temas de tu clase', '3.A.14 y 3.B.5 · Empezar el esquema', DORADO, 580), 0.4 + 2 * MEDIO),
+                                   (aviso('Test diario TCEE', 'Tus 10 preguntas de hoy te esperan', TINTA_CLARA, 580), 0.4 + 4 * MEDIO)]):
+        e = entre(t, ini, ini + 0.4)
+        if e > 0:
+            pegar(img, av, 1110, 250 + i * 150 + round(-80 * (1 - e)), alfa=e, escala=0.9 + 0.1 * rebote(e))
+    return img
+
+
+# Compás en que empieza el cierre («Empieza hoy»): la música lo sigue.
+CIERRE = 38
+
 # (escena, compás de inicio, transición de entrada)
 GUION = [
     (e_portada, 0, None),
@@ -1051,9 +1167,13 @@ GUION = [
     (e_organizacion, 13, 'empuje'),
     (e_mi_preparador, 16, 'zoom'),
     (e_clases, 17, 'corte'),
-    (e_preparadores, 20, 'barrido'),
-    (e_ordenador, 22, 'empuje'),
-    (e_cierre, 24, 'zoom'),
+    (e_clase_viva, 20, 'empuje'),
+    (e_pizarra, 23, 'barrido'),
+    (e_materiales, 27, 'empuje'),
+    (e_preparadores, 30, 'barrido'),
+    (e_avisos, 33, 'zoom'),
+    (e_ordenador, 35, 'empuje'),
+    (e_cierre, CIERRE, 'zoom'),
 ]
 # Escenas en las que no va la barra de progreso.
 SIN_PROGRESO = {e_portada, e_gancho, e_cierre}
@@ -1222,8 +1342,8 @@ def banda_sonora(ruta):
         t0 = compas(b)
         acorde = [_nota(n) for n in ACORDES[b % 4]]
         raiz = _nota(RAICES[b % 4])
-        # El ritmo sigue hasta «Empieza hoy» (compases 24 y 25); al final, el acorde.
-        intro, gancho, cierre = b < 2, 2 <= b < 4, b >= 26
+        # El ritmo sigue hasta «Empieza hoy» (dos compases); al final, el acorde.
+        intro, gancho, cierre = b < 2, 2 <= b < 4, b >= CIERRE + 2
         cuerpo = not (intro or gancho or cierre)
         # Colchón.
         vel = 0.12 if intro else (0.04 if cuerpo else (0.08 if gancho else 0.06))
@@ -1235,7 +1355,7 @@ def banda_sonora(ruta):
         elif cuerpo:
             for k in range(8):
                 poner(ritmo, _bajo(raiz * (2 if k % 4 == 3 else 1), MEDIO, 0.15), t0 + k * MEDIO)
-        elif cierre and b == 26:
+        elif cierre and b == CIERRE + 2:
             n = int(3.0 * SR)
             tt = np.arange(n) / SR
             poner(ritmo, 0.2 * (np.sin(2 * np.pi * raiz * tt) + 0.3 * np.sin(4 * np.pi * raiz * tt)) * np.exp(-tt / 1.2) * np.minimum(1.0, tt / 0.01), t0)
@@ -1260,20 +1380,20 @@ def banda_sonora(ruta):
             notas = [acorde[0] * 2, acorde[2] * 2, acorde[1] * 2, acorde[2] * 2]
             for k in range(8):
                 poner(musica, _pulsacion(notas[k % 4], 0.04 if b < 2 else 0.05, 0.4), t0 + k * MEDIO)
-        if 6 <= b < 26 and not respiro:
+        if 6 <= b < CIERRE + 2 and not respiro:
             notas = [acorde[0] * 2, acorde[1] * 2, acorde[2] * 2, acorde[1] * 2]
             for k in range(16):
                 poner(musica, _pulsacion(notas[k % 4], 0.03 + 0.008 * (k % 4 == 0)), t0 + k * PULSO / 4)
 
     # Logo: el golpe al juntarse las mitades y una campana por anillo.
-    for base, vel in ((0.0, 1.0), (compas(24), 1 / 1.3)):
+    for base, vel in ((0.0, 1.0), (compas(CIERRE), 1 / 1.3)):
         poner(efectos, _golpe(0.4), base + 0.62 * vel)
         for desde, nota in ((0.5, 86), (0.68, 90), (0.86, 93)):
             poner(efectos, _campana(_nota(nota), 0.08), base + (desde + 0.12) * vel)
     # Subida hacia el primer gran cambio y golpe al entrar el cuerpo.
     poner(efectos, _subida(180, 900, COMPAS * 0.9, 0.05), compas(4) - COMPAS * 0.9)
     poner(efectos, _golpe(0.35), compas(4))
-    poner(efectos, _golpe(0.3), compas(24))
+    poner(efectos, _golpe(0.3), compas(CIERRE))
     # Cantes: bolas que botan, el reloj a pulso y las estrellas.
     c = inicio(e_cantes)
     for i in range(2):
@@ -1297,6 +1417,26 @@ def banda_sonora(ruta):
         poner(efectos, _tic(0.08), c + 0.2 + i * MEDIO * 0.75)
     poner(efectos, _campana(_nota(86), 0.06, 1.0), c + 0.3 + 6 * MEDIO * 0.75)
 
+    # La clase al día: el aviso y las dos bolas.
+    c = inicio(e_clase_viva)
+    poner(efectos, _campana(_nota(88), 0.07, 1.2), c + 0.35)
+    poner(efectos, _campana(_nota(93), 0.07, 1.4), c + 0.48)
+    for i in range(2):
+        t0 = c + COMPAS + PULSO * (1 + i) + 0.45
+        for k, h in enumerate((1.0, 0.45, 0.2)):
+            poner(efectos, _madera(0.18 * h, 480 + 60 * i), t0 + k * (math.pi / 7))
+    # Pizarra: el trazo que se dibuja.
+    c = inicio(e_pizarra)
+    poner(efectos, _subida(220, 660, 2 * PULSO, 0.025), c + COMPAS)
+    # Materiales: los ficheros y el aviso.
+    c = inicio(e_materiales)
+    for i in range(3):
+        poner(efectos, _toque(0.05), c + PULSO * (0.6 + i * 0.5) + 0.5)
+    poner(efectos, _campana(_nota(88), 0.06, 1.2), c + COMPAS + 0.6)
+    # Avisos: tres campanas.
+    c = inicio(e_avisos)
+    for i in range(3):
+        poner(efectos, _campana(_nota(86 + 2 * i), 0.06, 1.2), c + 0.4 + i * 2 * MEDIO)
     # Organización: los ficheros llegan al móvil y la probabilidad sube.
     c = inicio(e_organizacion)
     for i in range(3):
@@ -1338,11 +1478,12 @@ def main():
         return
     if args.solo_fotogramas:
         os.makedirs(args.solo_fotogramas, exist_ok=True)
-        for b in range(25):
+        for b in range(int(DURACION / COMPAS) + 1):
             for frac in (0.15, 0.6, 0.95):
                 t = compas(b) + COMPAS * frac
-                fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.2f}.jpg'), quality=82)
-        for t in (0.3, 0.8, 1.3, 2.0, 3.2, 53.5, 55.0, 58.0):
+                if t < DURACION:
+                    fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.2f}.jpg'), quality=82)
+        for t in (0.3, 0.8, 1.3, 2.0, 3.2, DURACION - 6.5, DURACION - 5.0, DURACION - 2.0):
             fotograma(t).save(os.path.join(args.solo_fotogramas, f't{t:05.2f}.jpg'), quality=82)
         return
 
