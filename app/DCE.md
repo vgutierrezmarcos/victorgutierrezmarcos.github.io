@@ -73,13 +73,13 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **Hecho antes (7 oct.):** rosetones en todas las páginas, aviso de la app oculto en la portada y en /oposicion de `main` (sin `app-banner.js`), `oposicion/proceso.json` y su workflow en `main`, reglas probadas (128 casos), versión web 1.14.2 en `app/abrir/`, textos de instalación y `versionActual: "1.14.2"` en `dce`.
 
 **Pendiente antes del día 12:**
-- [x] Víctor: subir la 1.14.2 (23) a la prueba cerrada (9 oct.) y preparar Firebase (reglas nuevas y `pruebasCalendario`).
-- [ ] Víctor: comprobar `general: true` en su documento de `admins`.
-- [x] Víctor: descargar el **APK universal firmado** de la versión 23 (9 oct.). Comprobado: 1.14.2 (23), firmado por Google (SHA-1 `11:1D:E2:24:6D:64:C0:62:E9:20:37:DD:1D:42:C2:6A:33:4C:3D:88`). Guardado en el Escritorio como `oposicion-tcee-1.14.2-google.apk`.
-- [ ] Víctor: probar la 1.14.2 en el móvil (si se quiere ya, también en la prueba interna, que no pasa revisión): cronómetro, botón de oposición, alta de preparador, icono de las notificaciones, foto de perfil de Google.
+- [x] Víctor: subir la 1.14.2 (23) a la prueba cerrada (8 oct.) y preparar Firebase (reglas nuevas y `pruebasCalendario`).
+- [x] Víctor: comprobar `general: true` en su documento de `admins` (8 oct.).
+- [x] Víctor: descargar el **APK universal firmado** de la versión 23 (8 oct.). Comprobado: 1.14.2 (23), firmado por Google (SHA-1 `11:1D:E2:24:6D:64:C0:62:E9:20:37:DD:1D:42:C2:6A:33:4C:3D:88`). Guardado en el Escritorio como `oposicion-tcee-1.14.2-google.apk`.
+- [x] Víctor: probar la 1.14.2 en el móvil (8 oct.): va bien.
 - [ ] Víctor: probar **Google Calendar** (ver abajo, «Google Calendar y Meet»).
 - [ ] Manuel: su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
-- [ ] Los 12 testers apuntados a la prueba cerrada (enlace: `https://play.google.com/apps/testing/es.victorgutierrezmarcos.tcee_app`), mejor 15-20.
+- [x] 12 testers apuntados a la prueba cerrada desde el 8 oct. a las 11:30 (enlace: `https://play.google.com/apps/testing/es.victorgutierrezmarcos.tcee_app`). Conviene llegar a 15-20 por si alguien se sale.
 
 **El día 12 (unos 20 minutos):**
 1. Comprobar que la web de Manuel es pública y sirve `temario.json` (si cambió el temario, regenerar con `scripts/generar-temario-dce.py`).
@@ -94,14 +94,14 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 ## Próximos días
 
 **Prueba cerrada de Google Play**
-- [ ] Desde el día en que haya 12 testers apuntados, 14 días seguidos (si se llega el 10 de octubre, hasta el 24). Que no bajen de 12.
+- [ ] 14 días seguidos con 12 o más testers: desde el 8 oct. a las 11:30 hasta el **22 oct.** Que no bajen de 12.
 - [ ] Ir anotando comentarios y cambios en `app/play-store/registro-prueba-cerrada.md` (rellenar fechas y número de testers).
 - [ ] Cumplidos los 14 días: Play Console → Panel → **Solicitar acceso a producción**, con el borrador del registro.
 - [ ] Aprobado el acceso: subir la última versión a **Producción** y, publicada, `urlPlayStore` en `oposicion/app-config.json` (la web y la app pasan a enlazar a Play). Unas semanas después, `urlApk: null`.
 
 **Google Calendar y Meet (en pruebas)**
-- [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (9 oct.).
-- [x] Firebase: reglas con `pruebasCalendario` publicadas y las cuentas de prueba dadas de alta (9 oct.).
+- [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).
+- [x] Firebase: reglas con `pruebasCalendario` publicadas y las cuentas de prueba dadas de alta (8 oct.).
 - [ ] Probar en el móvil: Preparador → Ajustes → «Mis clases en Google Calendar» (aceptar el aviso de app no verificada en «Configuración avanzada»); clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. Contar a Claude lo que salga.
 - [ ] Después del 12 (con la política de privacidad ya publicada): comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
 - [ ] Claude prepara la justificación del permiso (en inglés) y el guion del vídeo; Víctor graba el vídeo (YouTube, oculto) y envía la verificación en el Centro de verificación.
@@ -109,11 +109,11 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Mejora pendiente: si el alumno cambia o cancela la clase desde su app, que el calendario del preparador se actualice sin que este vuelva a guardarla.
 
 **Protección de datos (RGPD y LOPDGDD)**
-- [x] Política de privacidad completada (bases legales de la app, corresponsables, encargados, plazos, menores, derechos) y condiciones de uso con el encargo para preparadores (`app/condiciones.html`), enlazadas en la app (9 oct.). Se publican el día 12 con el lanzamiento.
-- [x] Registro de actividades de tratamiento y acuerdo de corresponsabilidad con Manuel, en Claude Docs (9 oct.).
+- [x] Política de privacidad completada (bases legales de la app, corresponsables, encargados, plazos, menores, derechos) y condiciones de uso con el encargo para preparadores (`app/condiciones.html`), enlazadas en la app (8 oct.). Se publican el día 12 con el lanzamiento.
+- [x] Registro de actividades de tratamiento y acuerdo de corresponsabilidad con Manuel, en Claude Docs (8 oct.). Manuel no tiene acceso a Firebase.
+- [x] Acuerdo con Manuel: aceptado por correo el 8 oct. (guardar su respuesta).
 - [ ] Aceptar los términos de tratamiento de datos de Firebase (Configuración del proyecto → Privacidad) y de Google Analytics.
 - [ ] Mirar dónde está la base de datos de Firestore (región) y anotarlo en el registro.
 - [ ] Verificación en dos pasos en la cuenta de Google del proyecto (y en la de Manuel).
-- [ ] Completar DNI y domicilios del acuerdo con Manuel y firmarlo los dos.
 - [ ] Siguiente versión de la app (1.14.3): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador).
 
