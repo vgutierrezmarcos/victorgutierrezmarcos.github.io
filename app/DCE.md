@@ -108,3 +108,12 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Verificado el permiso: actualización de la app que abra la opción a todos los preparadores (sin la lista `pruebasCalendario`).
 - [ ] Mejora pendiente: si el alumno cambia o cancela la clase desde su app, que el calendario del preparador se actualice sin que este vuelva a guardarla.
 
+**Protección de datos (RGPD y LOPDGDD)**
+- [x] Política de privacidad completada (bases legales de la app, corresponsables, encargados, plazos, menores, derechos) y condiciones de uso con el encargo para preparadores (`app/condiciones.html`), enlazadas en la app (9 oct.). Se publican el día 12 con el lanzamiento.
+- [x] Registro de actividades de tratamiento y acuerdo de corresponsabilidad con Manuel, en Claude Docs (9 oct.).
+- [ ] Aceptar los términos de tratamiento de datos de Firebase (Configuración del proyecto → Privacidad) y de Google Analytics.
+- [ ] Mirar dónde está la base de datos de Firestore (región) y anotarlo en el registro.
+- [ ] Verificación en dos pasos en la cuenta de Google del proyecto (y en la de Manuel).
+- [ ] Completar DNI y domicilios del acuerdo con Manuel y firmarlo los dos.
+- [ ] Siguiente versión de la app (1.14.3): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador).
+
