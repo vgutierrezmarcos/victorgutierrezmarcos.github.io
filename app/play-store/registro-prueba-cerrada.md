@@ -7,10 +7,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Dato | Valor |
 |---|---|
 | Pista | Prueba cerrada |
-| Primera versión en la pista | (rellenar: número y fecha) |
-| Día en que se llegó a 12 testers apuntados | (rellenar: lo dice el Panel de Play Console) |
-| Día en que se pueden pedir producción | (el anterior + 14 días) |
-| Testers apuntados | (rellenar) |
+| Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) |
+| Día en que se llegó a 12 testers apuntados | 8 oct. 2026, 11:30 |
+| Día en que se pueden pedir producción | 22 oct. 2026 (comprobar en el Panel de Play Console) |
+| Testers apuntados | 12 el 8 oct. (seguir sumando) |
 | Cómo se reclutaron | (rellenar: opositores y preparadores de TCEE y DCE, conocidos, alumnos de Manuel…) |
 | Cómo se recogen los comentarios | (rellenar: WhatsApp, correo de contacto, en persona…) |
 
@@ -24,7 +24,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 |---|---|---|
 | (rellenar) | (la primera de la prueba) | Primera versión en Play: TCEE y DCE, papel de opositor o preparador, cinco pestañas, cronograma propio, preparadores y clases sueltas. |
 | 7 oct. 2026 | 1.14.1 (22) | Lo de la 1.14.0 (21), que no llegó a publicarse, y el aviso de app no oficial. Ver «Cambios durante la prueba». |
-| (al enviarla) | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
+| 8 oct. 2026 | 1.14.2 (23) | Botón de oposición en la cabecera, alta de preparador directa, Ajustes en pantallas estrechas, cronómetro, preparador sin estudio personal, icono de notificaciones, foto de Google y Google Calendar (en pruebas). |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -55,7 +55,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Quien elegía «Preparo a opositores» no sabía qué hacer después:** ahora va directo a pedir la verificación, y se aclara que basta con poner el nombre y que un compañero verificado le verifica desde la app; lo demás es opcional.
 - **En pantallas estrechas, «Tu papel» y «Modo» de Ajustes se montaban** sobre los botones: ahora los botones van debajo del título.
 
-### 8-9 oct. 2026 (más para la 1.14.2)
+### 8 oct. 2026 (más para la 1.14.2)
 - **Cronómetro:** con un tema el esquema daba 23 min en vez de 22'30"; ahora es exacto. Por petición de opositores, cuenta **hacia delante por defecto** (con opción de cuenta atrás) y sigue contando en rojo si te pasas; al acabar el esquema la exposición espera a que la empieces; la pantalla grande tiene más controles (reiniciar la exposición o todo, ±1 min).
 - **Preparadores:** sin las herramientas de estudio personal (marcar estudiados, vueltas, cronograma…), que no usaban; se quedan el temario, los test y las probabilidades.
 - **Notificaciones** con el icono de la app (la diana).
