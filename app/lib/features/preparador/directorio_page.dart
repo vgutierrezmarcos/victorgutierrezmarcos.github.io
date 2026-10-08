@@ -34,6 +34,8 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
   Widget build(BuildContext context) {
     final lista = ref.watch(verificadosProvider);
     final ordenados = ref.watch(directorioOrdenadoProvider);
+    // A un opositor, además, quién admite alumnos (a un preparador las reglas no se lo dicen).
+    final conPlazas = {for (final e in ref.watch(preparadoresConPlazasProvider).valueOrNull ?? const <(PreparadorVerificado, Plazas, int)>[]) e.$1.uid};
     return Scaffold(
       appBar: BarraWeb(title: const Text('Preparadores verificados')),
       body: RefreshIndicator(
@@ -92,7 +94,7 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
                     if (titulo != null) widgets.add(Subtitulo(titulo));
                     anterior = g;
                   }
-                  widgets.add(FichaPreparador(v: v));
+                  widgets.add(FichaPreparador(v: v, admiteAlumnos: conPlazas.contains(v.uid)));
                 }
                 return widgets;
               }(),
@@ -107,8 +109,9 @@ class _DirectorioPageState extends ConsumerState<DirectorioPage> {
 
 /// Ficha de un preparador verificado, con su LinkedIn si lo ha puesto.
 class FichaPreparador extends StatelessWidget {
-  const FichaPreparador({super.key, required this.v});
+  const FichaPreparador({super.key, required this.v, this.admiteAlumnos = false});
   final PreparadorVerificado v;
+  final bool admiteAlumnos;
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(bottom: 8),
@@ -125,6 +128,7 @@ class FichaPreparador extends StatelessWidget {
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(v.nombre, style: context.textos.titleSmall),
                 if (v.ejercicios.isNotEmpty) Text('Prepara el ${v.descripcionEjercicios} ejercicio', style: context.textos.labelSmall),
+                if (admiteAlumnos) Text('Admite alumnos nuevos', style: context.textos.labelSmall?.copyWith(color: Paleta.acierto)),
                 if (v.descripcionModalidad.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.only(top: 2),

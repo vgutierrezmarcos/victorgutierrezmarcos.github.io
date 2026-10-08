@@ -18,6 +18,7 @@ import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
 import 'ajustes_preparador_page.dart';
 import 'alta_page.dart';
+import 'busquedas_page.dart';
 import 'directorio_page.dart';
 import 'materiales_page.dart';
 import 'alumno_page.dart';
@@ -146,6 +147,17 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             else
               for (final a in alumnos) _filaAlumno(context, a, sesiones),
             if (estado.verificado) ...[
+              const TituloSeccion('Alumnos nuevos'),
+              FilaEnlace(
+                icono: Icons.person_search_outlined,
+                titulo: 'Opositores que buscan preparador',
+                subtitulo: () {
+                  final n = ref.watch(busquedasProvider).valueOrNull?.where((b) => !b.$3 && b.$2 > 0).length ?? 0;
+                  return n == 0 ? 'Lo que buscan, sin su nombre; si te interesa, le dejas tu contacto' : '$n ${n == 1 ? 'opositor encaja' : 'opositores encajan'} con lo que preparas';
+                }(),
+                final_: globo(context, ref.watch(busquedasProvider).valueOrNull?.where((b) => !b.$3 && b.$2 > 0).length ?? 0),
+                onTap: () => ir(const BusquedasPage()),
+              ),
               const TituloSeccion('Materiales'),
               FilaEnlace(
                 icono: Icons.folder_shared_outlined,

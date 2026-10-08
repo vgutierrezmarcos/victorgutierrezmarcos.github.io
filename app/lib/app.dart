@@ -31,6 +31,8 @@ import 'features/plan/horario_page.dart';
 import 'features/plan/proceso_page.dart';
 import 'features/preparador/alta_page.dart';
 import 'features/preparador/mi_preparador_page.dart';
+import 'features/preparador/buscar_preparador_page.dart';
+import 'features/preparador/busquedas_page.dart';
 import 'features/preparador/preparador_page.dart';
 import 'features/preparador/semana_page.dart';
 import 'features/preparador/sesion_page.dart';
@@ -221,6 +223,14 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       case '/semana':
         _router.go('/cantes');
         nav?.push(MaterialPageRoute(builder: (_) => const SemanaPage()));
+      case '/busquedas':
+        // Opositores que buscan preparador (al preparador).
+        _router.go('/mas/preparador');
+        nav?.push(MaterialPageRoute(builder: (_) => const BusquedasPage()));
+      case '/buscar-preparador':
+        // Preparadores interesados en lo que busca (al opositor).
+        _router.go('/mas/mi-preparador');
+        nav?.push(MaterialPageRoute(builder: (_) => const BuscarPreparadorPage()));
       case '/hoy' when uri.queryParameters['test'] == 'diario':
         _abrirTestDiario();
       default:

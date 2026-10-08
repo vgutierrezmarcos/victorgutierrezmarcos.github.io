@@ -79,6 +79,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Teams además de Meet:** el preparador elige la videollamada que propone.
 - **Actualizaciones:** instalada desde Play, la app ofrece la actualización dentro de la propia app; desde el APK, avisa con una notificación.
 - **Google Calendar:** la tarjeta explica por qué no está disponible todavía (cuenta no apuntada en la lista de prueba) y la clase muestra si está en el calendario y el error de Google si lo hay.
+- **Buscar preparador (no solo clases sueltas):** el preparador dice si admite alumnos nuevos (desde cuándo, disponibilidad, mensaje, WhatsApp), visible solo para opositores; el opositor ve quién admite alumnos ordenado por compatibilidad (ejercicio, online/presencial y ciudad, tramos de la semana) y publica lo que busca sin su nombre; a quien le interese le deja su contacto y el opositor le escribe. Sin precios ni intermediación; la conexión en la app sigue siendo con el código.
 
 (Seguir añadiendo aquí, con fecha.)
 

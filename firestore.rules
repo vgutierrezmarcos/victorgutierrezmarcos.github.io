@@ -107,6 +107,15 @@ service cloud.firestore {
         && d.paraTodos is bool && d.alumnos is list && d.alumnos.size() <= 200;
     }
 
+    // Búsqueda de preparador: campos conocidos, sin nombre ni teléfono.
+    function busquedaValida() {
+      let d = request.resource.data;
+      return d.keys().hasOnly(['id', 'alumno', 'ejercicios', 'modalidad', 'ciudad', 'disponibilidad', 'clasesPorSemana', 'temas', 'desde', 'nota', 'estado', 'creada', 'updatedAt'])
+        && d.estado in ['abierta', 'cerrada']
+        && d.get('nota', '') is string && d.get('nota', '').size() <= 1000
+        && d.get('ciudad', '') is string && d.get('ciudad', '').size() <= 60;
+    }
+
     function soloCambia(campos) {
       return request.resource.data.diff(resource.data).affectedKeys().hasOnly(campos);
     }
@@ -320,6 +329,35 @@ service cloud.firestore {
       allow delete: if conSesionEn('tcee') && resource.data.preparador == request.auth.uid;
     }
 
+    // Búsqueda de preparador. El opositor publica lo que busca (ejercicio,
+    // modalidad, ciudad, disponibilidad, cuándo empieza, nota), sin nombre
+    // ni teléfono: la ven los preparadores verificados. Un preparador puede
+    // decir que le interesa (interesados/{uid}, con su contacto), y solo el
+    // opositor lo lee y es él quien le escribe. No crea ninguna relación:
+    // esa la hace el opositor después, con el código, si se entienden.
+    match /busquedas/{id} {
+      allow read: if (conSesionEn('tcee') && resource.data.alumno == request.auth.uid) || esVerificado('tcee');
+      allow create: if conSesionEn('tcee') && request.resource.data.alumno == request.auth.uid && busquedaValida();
+      allow update: if conSesionEn('tcee') && resource.data.alumno == request.auth.uid && request.resource.data.alumno == request.auth.uid && busquedaValida();
+      allow delete: if conSesionEn('tcee') && resource.data.alumno == request.auth.uid;
+
+      match /interesados/{preparador} {
+        allow read: if conSesionEn('tcee')
+          && (request.auth.uid == preparador || get(enRed('tcee', 'busquedas/' + id)).data.alumno == request.auth.uid);
+        allow create, update: if esVerificado('tcee') && request.auth.uid == preparador && request.resource.data.uid == preparador;
+        allow delete: if conSesionEn('tcee')
+          && (request.auth.uid == preparador || get(enRed('tcee', 'busquedas/' + id)).data.alumno == request.auth.uid);
+      }
+    }
+
+    // Plazas de un preparador: si admite alumnos nuevos, desde cuándo, su
+    // disponibilidad y cómo contactarle. Las ven los opositores (quien no
+    // es preparador verificado), nunca los demás preparadores.
+    match /plazas/{preparador} {
+      allow read: if conSesionEn('tcee') && (request.auth.uid == preparador || !esVerificado('tcee'));
+      allow write: if esVerificado('tcee') && request.auth.uid == preparador && request.resource.data.preparador == preparador;
+    }
+
     // Huecos libres de un preparador: los ve él y sus alumnos enlazados.
     match /huecos/{preparador} {
       allow read: if (conSesionEn('tcee') && request.auth.uid == preparador) || tengoDePreparador('tcee', preparador);
@@ -513,6 +551,35 @@ service cloud.firestore {
           && request.resource.data.preparador == request.auth.uid
           && materialValido();
         allow delete: if conSesionEn(op) && resource.data.preparador == request.auth.uid;
+      }
+
+      // Búsqueda de preparador. El opositor publica lo que busca (ejercicio,
+      // modalidad, ciudad, disponibilidad, cuándo empieza, nota), sin nombre
+      // ni teléfono: la ven los preparadores verificados. Un preparador puede
+      // decir que le interesa (interesados/{uid}, con su contacto), y solo el
+      // opositor lo lee y es él quien le escribe. No crea ninguna relación:
+      // esa la hace el opositor después, con el código, si se entienden.
+      match /busquedas/{id} {
+        allow read: if (conSesionEn(op) && resource.data.alumno == request.auth.uid) || esVerificado(op);
+        allow create: if conSesionEn(op) && request.resource.data.alumno == request.auth.uid && busquedaValida();
+        allow update: if conSesionEn(op) && resource.data.alumno == request.auth.uid && request.resource.data.alumno == request.auth.uid && busquedaValida();
+        allow delete: if conSesionEn(op) && resource.data.alumno == request.auth.uid;
+
+        match /interesados/{preparador} {
+          allow read: if conSesionEn(op)
+            && (request.auth.uid == preparador || get(enRed(op, 'busquedas/' + id)).data.alumno == request.auth.uid);
+          allow create, update: if esVerificado(op) && request.auth.uid == preparador && request.resource.data.uid == preparador;
+          allow delete: if conSesionEn(op)
+            && (request.auth.uid == preparador || get(enRed(op, 'busquedas/' + id)).data.alumno == request.auth.uid);
+        }
+      }
+
+      // Plazas de un preparador: si admite alumnos nuevos, desde cuándo, su
+      // disponibilidad y cómo contactarle. Las ven los opositores (quien no
+      // es preparador verificado), nunca los demás preparadores.
+      match /plazas/{preparador} {
+        allow read: if conSesionEn(op) && (request.auth.uid == preparador || !esVerificado(op));
+        allow write: if esVerificado(op) && request.auth.uid == preparador && request.resource.data.preparador == preparador;
       }
 
       // Huecos libres de un preparador: los ve él y sus alumnos enlazados.

@@ -705,12 +705,13 @@ def e_portada(t):
 
 def e_gancho(t):
     img = fondo_noche().copy()
-    sal = COMPAS - 0.15
+    # Tres líneas en dos compases (da tiempo a leerlas) y el remate en el tercero.
+    sal = 2 * COMPAS - 0.15
     y = 330
-    for i, (linea, ini) in enumerate([('Años de vueltas al temario.', 0.0), ('Cantes cada semana.', 2 * PULSO), ('Test, diario, *cronograma…', 3 * PULSO)]):
+    for i, (linea, ini) in enumerate([('Años de vueltas al temario.', 0.0), ('Cantes cada semana.', 3 * PULSO), ('Test, diario, *cronograma…', 5 * PULSO)]):
         titular(img, [linea], 220, y + i * 140, t, tam=90, color=CREMA, acento=DORADO_CLARO, inicio=ini, paso=MEDIO / 2, salida=sal)
-    titular(img, ['Ahora, todo', 'en *un *solo *sitio.'], ANCHO // 2, 330, t, tam=124, color=BLANCO, acento=DORADO_CLARO, centrado=True, inicio=COMPAS, paso=MEDIO)
-    a = entre(t, COMPAS + 4 * MEDIO, COMPAS + 6 * MEDIO)
+    titular(img, ['Ahora, todo', 'en *un *solo *sitio.'], ANCHO // 2, 330, t, tam=124, color=BLANCO, acento=DORADO_CLARO, centrado=True, inicio=2 * COMPAS, paso=MEDIO)
+    a = entre(t, 2 * COMPAS + 4 * MEDIO, 2 * COMPAS + 6 * MEDIO)
     ImageDraw.Draw(img).rectangle((ANCHO // 2 - round(260 * a), 680, ANCHO // 2 + round(260 * a), 686), fill=DORADO_CLARO)
     return img
 
@@ -977,20 +978,44 @@ def _avatar(inicial, encendido):
 
 
 def e_mi_preparador(t):
+    """Tres tiempos: quién admite alumnos (ordenados por lo que encajan),
+    cuenta lo que buscas y los interesados te dejan su contacto, y al final
+    conectas con el código."""
     img = lienzo_luz(t)
-    rotulo(img, 'TU PREPARADOR', 120, 290, t)
-    titular(img, ['Conecta con', 'tu preparador.'], 120, 360, t, tam=88, paso=MEDIO / 2)
+    c1, c2 = COMPAS, 2 * COMPAS
+    rotulo(img, 'TU PREPARADOR', 120, 200, t)
+    titular(img, ['¿Sin preparador?', '*Búscalo *aquí.'], 120, 270, t, tam=86, paso=MEDIO / 2, salida=c1 - 0.3)
+    parrafo(img, 'Quién admite alumnos, ordenado por lo que encaja contigo: ejercicio, online o presencial, y cuándo puedes. Miras su LinkedIn y le escribes tú.', 120, 520, t, inicio=0.5, ancho=620, alfa=1 - entre(t, c1 - 0.25, c1))
+    titular(img, ['Cuenta lo que buscas.', '*Sin *tu *nombre.'], 120, 270, t, tam=86, paso=MEDIO / 2, inicio=c1 + 0.15, salida=c2 - 0.3)
+    parrafo(img, 'Los preparadores a los que les interese te dejan su contacto; nadie te escribe sin que lo pidas. Aunque pienses empezar dentro de unos meses.', 120, 520, t, inicio=c1 + 0.5, ancho=620, alfa=1 - entre(t, c2 - 0.25, c2))
+    titular(img, ['Y cuando os', '*entendáis, *conecta.'], 120, 270, t, tam=86, paso=MEDIO / 2, inicio=c2 + 0.15)
+    cx, cy = 1420, 560
     a = entre(t, 0, 0.6)
-    pegar(img, telefono('mi-preparador', 380), 1420, 560 + round(100 * (1 - a)), alfa=a)
-    # El código se teclea, una letra por corchea.
-    d = ImageDraw.Draw(img)
-    for i, letra in enumerate('K7M3PQ'):
-        x = 120 + i * 104
-        d.rounded_rectangle((x, 620, x + 88, 726), 14, fill=BLANCO, outline=(DORADO if t > 0.2 + i * MEDIO * 0.75 else (210, 204, 214)), width=4)
-        if t > 0.2 + i * MEDIO * 0.75:
-            pegar(img, palabra(letra, fuente('sans', 64, 'Bold'), TINTA_CLARA), x + 44, 673)
-    e = entre(t, 0.3 + 6 * MEDIO * 0.75, 0.6 + 6 * MEDIO * 0.75)
-    pegar(img, pastilla('Conectado', VERDE), 120 + 150, 810, alfa=e, escala=0.8 + 0.2 * rebote(e))
+    if t < c1 + 0.5:
+        tel = telefono('buscar-preparador-plazas', 380, 'buscar-preparador', entre(t, c1 - 0.1, c1 + 0.35))
+    else:
+        tel = telefono('buscar-preparador', 380, 'mi-preparador', entre(t, c2 - 0.1, c2 + 0.35))
+    pegar(img, tel, cx, cy + round(100 * (1 - a)), alfa=a)
+    # 1) Las compatibilidades suben contando.
+    for i, (v, y) in enumerate([(100, 330), (68, 520)]):
+        e = entre(t, 0.6 + i * PULSO, 1.0 + i * PULSO) * (1 - entre(t, c1 - 0.3, c1))
+        if e > 0:
+            n = round(v * entre(t, 0.6 + i * PULSO, 0.6 + i * PULSO + 1.0))
+            pegar(img, pastilla(f'{n} % de compatibilidad', VERDE if v >= 75 else DORADO), 1000, y + 5 * math.sin(t * 2 + i), alfa=e, escala=0.85 + 0.15 * rebote(e))
+    # 2) El aviso: a una preparadora le interesa.
+    e = entre(t, c1 + 0.5, c1 + 0.85) * (1 - entre(t, c2 - 0.3, c2))
+    if e > 0:
+        pegar(img, aviso('A Olga Martín le interesa prepararte', 'Toca para ver su perfil y escribirle', VERDE, 640), cx + 40, 150 + round(-120 * (1 - e)), alfa=e)
+    # 3) El código se teclea, una letra por corchea.
+    if t > c2:
+        d = ImageDraw.Draw(img)
+        for i, letra in enumerate('K7M3PQ'):
+            x = 120 + i * 104
+            d.rounded_rectangle((x, 560, x + 88, 666), 14, fill=BLANCO, outline=(DORADO if t > c2 + 0.3 + i * MEDIO * 0.75 else (210, 204, 214)), width=4)
+            if t > c2 + 0.3 + i * MEDIO * 0.75:
+                pegar(img, palabra(letra, fuente('sans', 64, 'Bold'), TINTA_CLARA), x + 44, 613)
+        e = entre(t, c2 + 0.4 + 6 * MEDIO * 0.75, c2 + 0.7 + 6 * MEDIO * 0.75)
+        pegar(img, pastilla('Conectado', VERDE), 120 + 150, 750, alfa=e, escala=0.8 + 0.2 * rebote(e))
     return img
 
 
@@ -1153,26 +1178,27 @@ def e_avisos(t):
     return img
 
 
-# Compás en que empieza el cierre («Empieza hoy»): la música lo sigue.
+# Compases en que empiezan el cuerpo (tras el gancho) y el cierre («Empieza
+# hoy»): la música los sigue.
+CUERPO = 5
 CIERRE = 38
 
 # (escena, compás de inicio, transición de entrada)
 GUION = [
     (e_portada, 0, None),
     (e_gancho, 2, 'fundido'),
-    (e_elegir, 4, 'barrido'),
-    (e_hoy, 6, 'empuje'),
-    (e_estudiar, 8, 'zoom'),
-    (e_cantes, 10, 'barrido'),
-    (e_organizacion, 13, 'empuje'),
-    (e_mi_preparador, 16, 'zoom'),
-    (e_clases, 17, 'corte'),
-    (e_clase_viva, 20, 'empuje'),
-    (e_pizarra, 23, 'barrido'),
-    (e_materiales, 27, 'empuje'),
-    (e_preparadores, 30, 'barrido'),
-    (e_avisos, 33, 'zoom'),
-    (e_ordenador, 35, 'empuje'),
+    (e_elegir, 5, 'barrido'),
+    (e_hoy, 7, 'empuje'),
+    (e_estudiar, 9, 'zoom'),
+    (e_cantes, 11, 'barrido'),
+    (e_organizacion, 14, 'empuje'),
+    (e_mi_preparador, 17, 'zoom'),
+    (e_clases, 20, 'corte'),
+    (e_clase_viva, 23, 'empuje'),
+    (e_pizarra, 26, 'barrido'),
+    (e_materiales, 30, 'empuje'),
+    (e_preparadores, 33, 'barrido'),
+    (e_ordenador, 36, 'empuje'),
     (e_cierre, CIERRE, 'zoom'),
 ]
 # Escenas en las que no va la barra de progreso.
@@ -1343,7 +1369,7 @@ def banda_sonora(ruta):
         acorde = [_nota(n) for n in ACORDES[b % 4]]
         raiz = _nota(RAICES[b % 4])
         # El ritmo sigue hasta «Empieza hoy» (dos compases); al final, el acorde.
-        intro, gancho, cierre = b < 2, 2 <= b < 4, b >= CIERRE + 2
+        intro, gancho, cierre = b < 2, 2 <= b < CUERPO, b >= CIERRE + 2
         cuerpo = not (intro or gancho or cierre)
         # Colchón.
         vel = 0.12 if intro else (0.04 if cuerpo else (0.08 if gancho else 0.06))
@@ -1361,10 +1387,10 @@ def banda_sonora(ruta):
             poner(ritmo, 0.2 * (np.sin(2 * np.pi * raiz * tt) + 0.3 * np.sin(4 * np.pi * raiz * tt)) * np.exp(-tt / 1.2) * np.minimum(1.0, tt / 0.01), t0)
         # Bombo (más suave en el respiro de las clases sueltas), charles y palmada.
         respiro = compas(b) == inicio(e_clases)
-        if gancho and b == 2:
+        if gancho and b < CUERPO - 1:
             for k in (0, 2):
                 poner(bombos, _bombo(0.3), t0 + k * PULSO)
-        if cuerpo or (gancho and b == 3):
+        if cuerpo or (gancho and b == CUERPO - 1):
             for k in range(4):
                 if respiro and k % 2:
                     continue
@@ -1372,15 +1398,15 @@ def banda_sonora(ruta):
         if cuerpo:
             for k in range(4):
                 poner(ritmo, _charles(0.05), t0 + k * PULSO + MEDIO)
-            if b >= 6 and not respiro:
+            if b >= CUERPO + 2 and not respiro:
                 for k in (1, 3):
                     poner(ritmo, _palmada(0.06), t0 + k * PULSO)
         # Arpegio: corcheas suaves en la intro y el gancho, semicorcheas en el cuerpo.
-        if b < 4:
+        if b < CUERPO:
             notas = [acorde[0] * 2, acorde[2] * 2, acorde[1] * 2, acorde[2] * 2]
             for k in range(8):
                 poner(musica, _pulsacion(notas[k % 4], 0.04 if b < 2 else 0.05, 0.4), t0 + k * MEDIO)
-        if 6 <= b < CIERRE + 2 and not respiro:
+        if CUERPO + 2 <= b < CIERRE + 2 and not respiro:
             notas = [acorde[0] * 2, acorde[1] * 2, acorde[2] * 2, acorde[1] * 2]
             for k in range(16):
                 poner(musica, _pulsacion(notas[k % 4], 0.03 + 0.008 * (k % 4 == 0)), t0 + k * PULSO / 4)
@@ -1391,8 +1417,8 @@ def banda_sonora(ruta):
         for desde, nota in ((0.5, 86), (0.68, 90), (0.86, 93)):
             poner(efectos, _campana(_nota(nota), 0.08), base + (desde + 0.12) * vel)
     # Subida hacia el primer gran cambio y golpe al entrar el cuerpo.
-    poner(efectos, _subida(180, 900, COMPAS * 0.9, 0.05), compas(4) - COMPAS * 0.9)
-    poner(efectos, _golpe(0.35), compas(4))
+    poner(efectos, _subida(180, 900, COMPAS * 0.9, 0.05), compas(CUERPO) - COMPAS * 0.9)
+    poner(efectos, _golpe(0.35), compas(CUERPO))
     poner(efectos, _golpe(0.3), compas(CIERRE))
     # Cantes: bolas que botan, el reloj a pulso y las estrellas.
     c = inicio(e_cantes)
@@ -1411,11 +1437,14 @@ def banda_sonora(ruta):
         poner(efectos, _campana(_nota(93), 0.07, 1.4), t0 + 0.13)
     for k in range(6):
         poner(efectos, _toque(0.05), c + COMPAS + 0.25 + k * MEDIO)
-    # Tu preparador: el teclado.
+    # Tu preparador: la compatibilidad que sube, el aviso y el teclado.
     c = inicio(e_mi_preparador)
+    poner(efectos, _subida(300, 1200, 1.0, 0.03), c + 0.6)
+    poner(efectos, _campana(_nota(88), 0.07, 1.2), c + COMPAS + 0.5)
+    poner(efectos, _campana(_nota(93), 0.07, 1.4), c + COMPAS + 0.63)
     for i in range(6):
-        poner(efectos, _tic(0.08), c + 0.2 + i * MEDIO * 0.75)
-    poner(efectos, _campana(_nota(86), 0.06, 1.0), c + 0.3 + 6 * MEDIO * 0.75)
+        poner(efectos, _tic(0.08), c + 2 * COMPAS + 0.3 + i * MEDIO * 0.75)
+    poner(efectos, _campana(_nota(86), 0.06, 1.0), c + 2 * COMPAS + 0.4 + 6 * MEDIO * 0.75)
 
     # La clase al día: el aviso y las dos bolas.
     c = inicio(e_clase_viva)
@@ -1433,10 +1462,6 @@ def banda_sonora(ruta):
     for i in range(3):
         poner(efectos, _toque(0.05), c + PULSO * (0.6 + i * 0.5) + 0.5)
     poner(efectos, _campana(_nota(88), 0.06, 1.2), c + COMPAS + 0.6)
-    # Avisos: tres campanas.
-    c = inicio(e_avisos)
-    for i in range(3):
-        poner(efectos, _campana(_nota(86 + 2 * i), 0.06, 1.2), c + 0.4 + i * 2 * MEDIO)
     # Organización: los ficheros llegan al móvil y la probabilidad sube.
     c = inicio(e_organizacion)
     for i in range(3):

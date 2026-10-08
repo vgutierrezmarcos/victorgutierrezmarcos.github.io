@@ -30,6 +30,8 @@ import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
 import 'package:tcee_app/features/cantar/reloj_grande_page.dart';
 import 'package:tcee_app/features/inicio/permisos_sheet.dart';
 import 'package:tcee_app/features/preparador/materiales_page.dart';
+import 'package:tcee_app/features/preparador/buscar_preparador_page.dart';
+import 'package:tcee_app/features/preparador/busquedas_page.dart';
 import 'package:tcee_app/features/preparador/sesion_page.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/red_repo.dart';
@@ -239,6 +241,20 @@ void main() {
               sorteado: true)
           : null),
       misMaterialesProvider.overrideWith((ref) async => materiales),
+      // Buscar preparador: lo que busca Álex, a quién le interesa y quién admite alumnos.
+      miBusquedaProvider.overrideWith((ref) async => Busqueda(id: 'bq1', alumno: 'yo', ejercicios: const [3], modalidad: Modalidad.sinIndicar, ciudad: 'Madrid', disponibilidad: const ['1-t', '2-t', '4-t', '6-m'], clasesPorSemana: 1, temas: 57, nota: 'Voy por la segunda vuelta del tercer ejercicio. He tenido preparador hasta el verano.', creada: hoy)),
+      interesadosProvider.overrideWith((ref, id) async => [Interesado(uid: 'olga', nombre: 'Olga Martín', telefono: '611 22 33 44', mensaje: 'Tengo hueco los martes por la tarde, online o en Madrid.', creado: hoy)]),
+      preparadoresConPlazasProvider.overrideWith((ref) async => [
+            (const PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo', modalidad: 'ambas', ciudad: 'Madrid', linkedin: 'https://www.linkedin.com/in/olga-martin'), Plazas(preparador: 'olga', admite: true, disponibilidad: const ['2-t', '4-t', '6-m'], mensaje: 'Grupos pequeños; en el 3.º vamos por la parte B.', telefono: '611 22 33 44', updatedAt: hoy), 100),
+            (const PreparadorVerificado(uid: 'luis', nombre: 'Luis Gómez', ejercicios: [1, 3], avaladoPor: 'yo', modalidad: 'online', linkedin: 'https://www.linkedin.com/in/luis-gomez'), Plazas(preparador: 'luis', admite: true, desde: DateTime(hoy.year, hoy.month + 3), disponibilidad: const ['1-n', '3-n'], updatedAt: hoy), 68),
+          ]),
+      // Como preparador: quién busca y las plazas propias.
+      busquedasProvider.overrideWith((ref) async => [
+            (Busqueda(id: 'bq2', alumno: 'x', ejercicios: const [3], modalidad: Modalidad.online, disponibilidad: const ['2-t', '3-t', '5-t'], clasesPorSemana: 1, temas: 41, nota: 'Primera vuelta casi terminada; busco alguien que me siga de cerca los cantes.', creada: hoy), 92, false),
+            (Busqueda(id: 'bq3', alumno: 'y', ejercicios: const [3, 4], modalidad: Modalidad.presencial, ciudad: 'Madrid', disponibilidad: const ['6-m', '7-m'], clasesPorSemana: 2, temas: 20, desde: DateTime(hoy.year, hoy.month + 2), creada: hoy), 61, true),
+            (Busqueda(id: 'bq4', alumno: 'z', ejercicios: const [4], modalidad: Modalidad.online, disponibilidad: const ['1-m'], clasesPorSemana: 1, temas: 8, creada: hoy), 0, false),
+          ]),
+      misPlazasProvider.overrideWith((ref) async => Plazas(preparador: 'yo', admite: true, disponibilidad: const ['2-t', '3-t', '4-t'], mensaje: 'Clases online de hora y media; también presencial en Madrid.', telefono: '600 11 22 33', updatedAt: hoy)),
       materialesParaMiProvider.overrideWith((ref) async => materiales.where((m) => m.vaA('yo')).toList()),
       serviciosProvider.overrideWithValue(Servicios(
         oposicion: Oposiciones.tcee,
@@ -291,9 +307,16 @@ void main() {
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
 
+    final excepciones = <Object>[];
     Future<void> captura(String nombre) async {
       await tester.pumpAndSettle();
       await expectLater(find.byType(MaterialApp), matchesGoldenFile('../promo/capturas/$nombre.png'));
+      // Si una pantalla ha fallado (p. ej. un desbordamiento), que se sepa en cuál.
+      final e = tester.takeException();
+      if (e != null) {
+        debugPrint('Excepción en la captura «$nombre»: $e');
+        excepciones.add(e);
+      }
     }
 
     Future<void> tocar(Finder f) async {
@@ -485,6 +508,20 @@ void main() {
     await captura('mas');
     await tocar(find.text('Mi preparador'));
     await captura('mi-preparador');
+    // Buscar preparador: quién admite alumnos y a quién le interesa lo que busca Álex.
+    await buscar(find.text('Buscar preparador'));
+    await tocar(find.text('Buscar preparador'));
+    await captura('buscar-preparador');
+    await buscar(find.text('PREPARADORES QUE ADMITEN ALUMNOS'));
+    await captura('buscar-preparador-plazas');
+    await bajar(-20000);
+    await tocar(find.text('Cambiar'));
+    await captura('busqueda-form');
+    Navigator.of(tester.element(find.byType(BusquedaFormPage))).pop();
+    await tester.pumpAndSettle();
+    Navigator.of(tester.element(find.byType(BuscarPreparadorPage))).pop();
+    await tester.pumpAndSettle();
+    await bajar(-20000);
     // Alta de preparador: la presentación y el formulario.
     await buscar(find.text('¿Preparas a opositores?'));
     await tocar(find.text('¿Preparas a opositores?'));
@@ -509,6 +546,12 @@ void main() {
     await tocar(find.text('Mi semana'));
     await captura('semana');
     Navigator.of(tester.element(find.byType(SemanaPage))).pop();
+    await tester.pumpAndSettle();
+    // Opositores que buscan preparador, y las plazas en Ajustes.
+    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const BusquedasPage()));
+    await tester.pumpAndSettle();
+    await captura('busquedas');
+    Navigator.of(tester.element(find.byType(BusquedasPage))).pop();
     await tester.pumpAndSettle();
     // Los materiales que comparte con sus alumnos.
     Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const MaterialesPage()));
@@ -560,6 +603,7 @@ void main() {
     debugDisableShadows = true;
     // Las imágenes de algunas preguntas se piden a la web y en la prueba no hay red.
     final error = tester.takeException();
-    expect(error == null || error is NetworkImageLoadException, isTrue, reason: '$error');
+    if (error != null) excepciones.add(error);
+    expect(excepciones.where((e) => e is! NetworkImageLoadException), isEmpty, reason: '$excepciones');
   });
 }

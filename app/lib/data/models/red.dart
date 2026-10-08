@@ -12,6 +12,9 @@ import 'preparador.dart';
 ///   sustituciones/{id}/privado/{quien}   contacto del alumno y del sustituto (solo los dos)
 ///   huecos/{uidPreparador}               huecos libres que ven sus alumnos enlazados
 ///   reservas/{id}                        reservas de un alumno en los huecos de su preparador
+///   busquedas/{id}                       lo que busca un opositor que necesita preparador (sin nombre)
+///   busquedas/{id}/interesados/{uid}     preparadores a los que les interesa, con su contacto (solo lo lee el opositor)
+///   plazas/{uidPreparador}               si admite alumnos nuevos, desde cuándo y su disponibilidad (solo lo ven opositores)
 
 DateTime? _fecha(Object? s) => s is String ? DateTime.tryParse(s) : null;
 List<int> _enteros(Object? l) => [for (final e in (l as List?) ?? const []) if (e is num) e.toInt()];
@@ -383,6 +386,239 @@ String? enlaceMaterial(String texto) {
   }
   final u = Uri.tryParse(t);
   return u == null || !u.host.contains('.') ? null : t;
+}
+
+// ------------------------------------------------------- Buscar preparador
+
+/// Tramos del día de la disponibilidad semanal (clave: «2-t» = martes por la tarde).
+const tramosDia = [('m', 'Mañana', 'hasta las 14'), ('t', 'Tarde', 'de 14 a 20'), ('n', 'Noche', 'desde las 20')];
+
+String claveTramo(int diaSemana, String tramo) => '$diaSemana-$tramo';
+
+/// «lunes y martes por la tarde, jueves por la mañana».
+String describirDisponibilidad(Iterable<String> claves) {
+  const dias = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+  final porTramo = <String, List<String>>{};
+  for (final c in claves) {
+    final partes = c.split('-');
+    if (partes.length != 2) continue;
+    final d = int.tryParse(partes[0]);
+    if (d == null || d < 1 || d > 7) continue;
+    porTramo.putIfAbsent(partes[1], () => []).add(dias[d - 1]);
+  }
+  final out = <String>[];
+  for (final (t, nombre, _) in tramosDia) {
+    final ds = porTramo[t];
+    if (ds == null || ds.isEmpty) continue;
+    final lista = ds.length == 1 ? ds.first : '${ds.take(ds.length - 1).join(', ')} y ${ds.last}';
+    out.add('$lista por la ${nombre.toLowerCase()}');
+  }
+  return out.join('; ');
+}
+
+/// Lo que busca un opositor que necesita preparador. Va sin nombre ni
+/// teléfono: la ven los preparadores verificados, y es el opositor quien
+/// escribe a los que le interesen.
+class Busqueda {
+  const Busqueda({
+    required this.id,
+    required this.alumno,
+    this.ejercicios = const [3],
+    this.modalidad = Modalidad.sinIndicar,
+    this.ciudad = '',
+    this.disponibilidad = const [],
+    this.clasesPorSemana = 1,
+    this.temas = 0,
+    this.desde,
+    this.nota = '',
+    this.estado = 'abierta',
+    this.creada,
+    this.updatedAt,
+  });
+
+  final String id;
+  final String alumno;
+  final List<int> ejercicios;
+  /// Online, presencial o le da igual ([Modalidad.sinIndicar]).
+  final Modalidad modalidad;
+  final String ciudad;
+  /// Claves «día-tramo» en las que puede dar clase.
+  final List<String> disponibilidad;
+  final int clasesPorSemana;
+  /// Temas que lleva preparados (orientativo).
+  final int temas;
+  /// Cuándo quiere empezar (null = cuanto antes; si no, el mes).
+  final DateTime? desde;
+  final String nota;
+  final String estado;
+  final DateTime? creada;
+  final DateTime? updatedAt;
+
+  bool get abierta => estado == 'abierta';
+  bool get empiezaMasAdelante => desde != null && desde!.isAfter(DateTime.now().add(const Duration(days: 30)));
+
+  String get textoModalidad => switch (modalidad) {
+        Modalidad.presencial => 'Presencial${ciudad.isEmpty ? '' : ' en $ciudad'}',
+        Modalidad.online => 'Online',
+        Modalidad.sinIndicar => ciudad.isEmpty ? 'Online o presencial' : 'Online o presencial en $ciudad',
+      };
+
+  /// «3.º · Online · 1 clase por semana · desde enero».
+  String get descripcion => [
+        ejercicios.map((e) => '$e.º').join(' y '),
+        textoModalidad,
+        '$clasesPorSemana ${clasesPorSemana == 1 ? 'clase' : 'clases'} por semana',
+        if (desde != null) 'desde ${_mes(desde!)}',
+      ].join(' · ');
+
+  Busqueda copyWith({List<int>? ejercicios, Modalidad? modalidad, String? ciudad, List<String>? disponibilidad, int? clasesPorSemana, int? temas, DateTime? desde, bool cuantoAntes = false, String? nota, String? estado}) => Busqueda(
+        id: id,
+        alumno: alumno,
+        ejercicios: ejercicios ?? this.ejercicios,
+        modalidad: modalidad ?? this.modalidad,
+        ciudad: ciudad ?? this.ciudad,
+        disponibilidad: disponibilidad ?? this.disponibilidad,
+        clasesPorSemana: clasesPorSemana ?? this.clasesPorSemana,
+        temas: temas ?? this.temas,
+        desde: cuantoAntes ? null : (desde ?? this.desde),
+        nota: nota ?? this.nota,
+        estado: estado ?? this.estado,
+        creada: creada,
+        updatedAt: DateTime.now(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'alumno': alumno,
+        'ejercicios': ejercicios,
+        'modalidad': modalidad == Modalidad.sinIndicar ? '' : modalidad.name,
+        'ciudad': ciudad,
+        'disponibilidad': disponibilidad,
+        'clasesPorSemana': clasesPorSemana,
+        'temas': temas,
+        'desde': desde?.toIso8601String(),
+        'nota': nota,
+        'estado': estado,
+        'creada': (creada ?? DateTime.now()).toIso8601String(),
+        'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
+      };
+
+  factory Busqueda.fromJson(Map<dynamic, dynamic> j) => Busqueda(
+        id: j['id'].toString(),
+        alumno: j['alumno'] as String? ?? '',
+        ejercicios: _enteros(j['ejercicios']),
+        modalidad: Modalidad.values.firstWhere((m) => m.name == j['modalidad'], orElse: () => Modalidad.sinIndicar),
+        ciudad: j['ciudad'] as String? ?? '',
+        disponibilidad: _textos(j['disponibilidad']),
+        clasesPorSemana: (j['clasesPorSemana'] as num?)?.toInt() ?? 1,
+        temas: (j['temas'] as num?)?.toInt() ?? 0,
+        desde: _fecha(j['desde']),
+        nota: j['nota'] as String? ?? '',
+        estado: j['estado'] as String? ?? 'abierta',
+        creada: _fecha(j['creada']),
+        updatedAt: _fecha(j['updatedAt']),
+      );
+}
+
+String _mes(DateTime d) => const ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'][d.month - 1] + (d.year != DateTime.now().year ? ' de ${d.year}' : '');
+
+/// Preparador al que le interesa una búsqueda: deja su contacto para que el
+/// opositor le escriba (él no puede escribir al opositor).
+class Interesado {
+  const Interesado({required this.uid, required this.nombre, this.telefono = '', this.linkedin = '', this.mensaje = '', this.creado});
+  final String uid;
+  final String nombre;
+  final String telefono;
+  final String linkedin;
+  final String mensaje;
+  final DateTime? creado;
+
+  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'telefono': telefono, 'linkedin': linkedin, 'mensaje': mensaje, 'creado': (creado ?? DateTime.now()).toIso8601String()};
+  factory Interesado.fromJson(Map<dynamic, dynamic> j) => Interesado(
+        uid: j['uid'].toString(),
+        nombre: j['nombre'] as String? ?? '',
+        telefono: j['telefono'] as String? ?? '',
+        linkedin: j['linkedin'] as String? ?? '',
+        mensaje: j['mensaje'] as String? ?? '',
+        creado: _fecha(j['creado']),
+      );
+}
+
+/// Plazas de un preparador: si admite alumnos nuevos, desde cuándo, su
+/// disponibilidad y cómo contactarle. Solo lo ven los opositores.
+class Plazas {
+  const Plazas({required this.preparador, this.admite = false, this.desde, this.disponibilidad = const [], this.mensaje = '', this.telefono = '', this.updatedAt});
+  final String preparador;
+  final bool admite;
+  /// A partir de cuándo (null = ya).
+  final DateTime? desde;
+  final List<String> disponibilidad;
+  final String mensaje;
+  /// Teléfono para que le escriban por WhatsApp (vacío = solo LinkedIn).
+  final String telefono;
+  final DateTime? updatedAt;
+
+  Plazas copyWith({bool? admite, DateTime? desde, bool ya = false, List<String>? disponibilidad, String? mensaje, String? telefono}) => Plazas(
+        preparador: preparador,
+        admite: admite ?? this.admite,
+        desde: ya ? null : (desde ?? this.desde),
+        disponibilidad: disponibilidad ?? this.disponibilidad,
+        mensaje: mensaje ?? this.mensaje,
+        telefono: telefono ?? this.telefono,
+        updatedAt: DateTime.now(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        'preparador': preparador,
+        'admite': admite,
+        'desde': desde?.toIso8601String(),
+        'disponibilidad': disponibilidad,
+        'mensaje': mensaje,
+        'telefono': telefono,
+        'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
+      };
+
+  factory Plazas.fromJson(Map<dynamic, dynamic> j) => Plazas(
+        preparador: j['preparador'] as String? ?? '',
+        admite: j['admite'] as bool? ?? false,
+        desde: _fecha(j['desde']),
+        disponibilidad: _textos(j['disponibilidad']),
+        mensaje: j['mensaje'] as String? ?? '',
+        telefono: j['telefono'] as String? ?? '',
+        updatedAt: _fecha(j['updatedAt']),
+      );
+}
+
+/// Compatibilidad (0-100) entre lo que busca un opositor y un preparador (su
+/// ficha y sus plazas): 0 si no prepara ese ejercicio o no coinciden en
+/// online/presencial; suma por la modalidad, por los tramos de la semana en
+/// común y resta si el preparador empieza mucho después que el opositor.
+int compatibilidad(Busqueda b, PreparadorVerificado v, {Plazas? plazas}) {
+  if (b.ejercicios.isNotEmpty && v.ejercicios.isNotEmpty && !b.ejercicios.any(v.ejercicios.contains)) return 0;
+  var s = 40;
+  final mismaCiudad = b.ciudad.trim().isEmpty || v.ciudad.trim().isEmpty || b.ciudad.trim().toLowerCase() == v.ciudad.trim().toLowerCase();
+  final online = b.modalidad != Modalidad.presencial && v.daOnline;
+  final presencial = b.modalidad != Modalidad.online && v.daPresencial && mismaCiudad;
+  if (v.modalidad.isEmpty) {
+    s += 12;
+  } else if (online || presencial) {
+    s += 25;
+  } else {
+    return 0;
+  }
+  final suya = plazas?.disponibilidad ?? const <String>[];
+  if (b.disponibilidad.isEmpty || suya.isEmpty) {
+    s += 17;
+  } else {
+    final comunes = b.disponibilidad.where(suya.contains).length;
+    s += (35 * comunes / b.disponibilidad.length).round();
+  }
+  final empieza = plazas?.desde;
+  if (empieza != null) {
+    final quiere = b.desde ?? DateTime.now();
+    if (empieza.isAfter(quiere.add(const Duration(days: 45)))) s -= 15;
+  }
+  return s.clamp(0, 100);
 }
 
 /// Nombre y teléfono que se intercambian el alumno y el sustituto.

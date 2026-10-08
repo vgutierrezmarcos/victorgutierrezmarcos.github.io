@@ -221,6 +221,32 @@ await caso('…no el de otra', () => assertFails(updateDoc(doc(db('paula'), 'mat
 await caso('…ni cambia el autor', () => assertFails(setDoc(doc(db('paula'), 'materiales/m5'), { ...mv, preparador: 'olga' })));
 await caso('la preparadora borra el suyo', () => assertSucceeds(deleteDoc(doc(db('paula'), 'materiales/m5'))));
 
+console.log('Búsqueda de preparador');
+const bq = { id: 'b1', alumno: 'pepe', ejercicios: [3], modalidad: 'online', ciudad: '', disponibilidad: ['2-t', '4-t'], clasesPorSemana: 1, temas: 12, desde: null, nota: 'Empiezo en enero', estado: 'abierta', creada: 'x', updatedAt: 'x' };
+await caso('el opositor publica lo que busca', () => assertSucceeds(setDoc(doc(db('pepe'), 'busquedas/b1'), bq)));
+await caso('…no en nombre de otro', () => assertFails(setDoc(doc(db('pepe'), 'busquedas/b2'), { ...bq, id: 'b2', alumno: 'alu' })));
+await caso('…ni con nombre o teléfono dentro', () => assertFails(setDoc(doc(db('pepe'), 'busquedas/b2'), { ...bq, id: 'b2', telefono: '600' })));
+await caso('un preparador verificado la ve en el tablón', () => assertSucceeds(getDocs(query(collection(db('paula'), 'busquedas'), where('estado', '==', 'abierta')))));
+await caso('otro opositor no la ve', () => assertFails(getDoc(doc(db('alu'), 'busquedas/b1'))));
+await caso('un retirado tampoco', () => assertFails(getDoc(doc(db('retirado'), 'busquedas/b1'))));
+await caso('la preparadora dice que le interesa, con su contacto', () => assertSucceeds(setDoc(doc(db('paula'), 'busquedas/b1/interesados/paula'), { uid: 'paula', nombre: 'Paula', telefono: '611', linkedin: '', mensaje: 'Tengo hueco los martes' })));
+await caso('…no en nombre de otra', () => assertFails(setDoc(doc(db('paula'), 'busquedas/b1/interesados/olga'), { uid: 'olga', nombre: 'Olga' })));
+await caso('un no verificado no puede interesarse', () => assertFails(setDoc(doc(db('alu'), 'busquedas/b1/interesados/alu'), { uid: 'alu', nombre: 'Álex' })));
+await caso('el opositor ve a los interesados', () => assertSucceeds(getDocs(collection(db('pepe'), 'busquedas/b1/interesados'))));
+await caso('otra preparadora no ve quién más está interesado', () => assertFails(getDoc(doc(db('olga'), 'busquedas/b1/interesados/paula'))));
+await caso('la preparadora retira su interés', () => assertSucceeds(deleteDoc(doc(db('paula'), 'busquedas/b1/interesados/paula'))));
+await caso('el opositor cierra la búsqueda', () => assertSucceeds(updateDoc(doc(db('pepe'), 'busquedas/b1'), { estado: 'cerrada', updatedAt: 'y' })));
+await caso('…y la borra', () => assertSucceeds(deleteDoc(doc(db('pepe'), 'busquedas/b1'))));
+const pl = { preparador: 'paula', admite: true, desde: null, disponibilidad: ['2-t', '3-t'], mensaje: 'Tardes', telefono: '611', updatedAt: 'x' };
+await caso('la preparadora publica sus plazas', () => assertSucceeds(setDoc(doc(db('paula'), 'plazas/paula'), pl)));
+await caso('…no las de otra', () => assertFails(setDoc(doc(db('paula'), 'plazas/olga'), { ...pl, preparador: 'olga' })));
+await caso('un no verificado no publica plazas', () => assertFails(setDoc(doc(db('pepe'), 'plazas/pepe'), { ...pl, preparador: 'pepe' })));
+await caso('un opositor ve las plazas', () => assertSucceeds(getDoc(doc(db('pepe'), 'plazas/paula'))));
+await caso('…y las lista', () => assertSucceeds(getDocs(collection(db('pepe'), 'plazas'))));
+await caso('otro preparador verificado no ve las plazas de nadie', () => assertFails(getDoc(doc(db('olga'), 'plazas/paula'))));
+await caso('…ni listándolas', () => assertFails(getDocs(collection(db('olga'), 'plazas'))));
+await caso('la preparadora ve las suyas', () => assertSucceeds(getDoc(doc(db('paula'), 'plazas/paula'))));
+
 console.log('Huecos y reservas');
 await caso('el preparador publica sus huecos', () => assertSucceeds(setDoc(doc(db('paula'), 'huecos/paula'), { activo: true, huecos: [] })));
 await caso('un no verificado no publica huecos', () => assertFails(setDoc(doc(db('pepe'), 'huecos/pepe'), { activo: true })));

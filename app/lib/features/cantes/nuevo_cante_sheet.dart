@@ -8,6 +8,7 @@ import '../../data/models/oposicion.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
+import '../preparador/buscar_preparador_page.dart';
 import '../preparador/reservas.dart';
 import '../preparador/sustituciones.dart';
 
@@ -26,7 +27,8 @@ Future<void> mostrarHojaNuevoCante(BuildContext context, WidgetRef ref, {DateTim
     context: context,
     showDragHandle: true,
     builder: (d) => SafeArea(
-      child: Padding(
+      // Con cuatro opciones no cabe en móviles bajos: que se pueda desplazar.
+      child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Text('¿Qué quieres apuntar?', style: d.textos.titleLarge),
@@ -59,6 +61,16 @@ Future<void> mostrarHojaNuevoCante(BuildContext context, WidgetRef ref, {DateTim
               }
             },
           ),
+          if (vinculos.isEmpty && firebase)
+            FilaEnlace(
+              icono: Icons.person_search_outlined,
+              titulo: 'Buscar preparador',
+              subtitulo: 'Quién admite alumnos y, si cuentas lo que buscas, quién se interesa por ti. Le escribes tú.',
+              onTap: () {
+                Navigator.pop(d);
+                ir(const BuscarPreparadorPage());
+              },
+            ),
           if (firebase)
             FilaEnlace(
               icono: Icons.campaign_outlined,
