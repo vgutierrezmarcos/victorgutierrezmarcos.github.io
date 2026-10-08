@@ -113,6 +113,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.
 
 **Google Calendar y Meet (en pruebas)**
+Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).
 - [x] Firebase: reglas con `pruebasCalendario` publicadas y las cuentas de prueba dadas de alta (8 oct.).
 - [x] La tarjeta no aparecía: faltaba el documento `pruebasCalendario/{gmail}`; creado el 8 oct. y la tarjeta sale. Consentimiento de Google superado (app no verificada → «Configuración avanzada») y **conectado** (8 oct., 19:30).
