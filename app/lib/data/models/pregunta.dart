@@ -20,6 +20,7 @@ class Pregunta {
     required this.oficial,
     this.tipoPregunta,
     this.imagenes = const [],
+    this.nota,
   });
 
   final int id;
@@ -33,6 +34,9 @@ class Pregunta {
   /// "aceptada" (anulada: se cuenta siempre como acierto) o "incorrecta".
   final String? tipoPregunta;
   final List<ImagenPregunta> imagenes;
+
+  /// Aclaración que se ve al corregir (respuesta oficial desactualizada o discutible).
+  final String? nota;
 
   String get tema => temas.isEmpty ? '' : temas.first;
   bool get anulada => tipoPregunta == 'aceptada';
@@ -60,6 +64,7 @@ class Pregunta {
       imagenes: (j['imagenes'] as List? ?? [])
           .map((e) => ImagenPregunta.fromJson(e as Map<String, dynamic>))
           .toList(),
+      nota: j['nota'] as String?,
     );
   }
 }

@@ -203,6 +203,18 @@ class _ResultadosPageState extends ConsumerState<ResultadosPage> {
                   ]),
                 );
               }),
+            // .nota-pregunta
+            if (p.nota != null)
+              Container(
+                margin: const EdgeInsets.only(top: 4, bottom: 6),
+                padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                decoration: BoxDecoration(
+                  color: Paleta.avisoWeb.withValues(alpha: 0.12),
+                  border: const Border(left: BorderSide(color: Paleta.avisoWeb, width: 3)),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: TextoConFormulas('Nota: ${p.nota}', style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+              ),
             // .revision-meta
             Container(
               margin: const EdgeInsets.only(top: 4),
