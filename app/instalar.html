@@ -155,7 +155,10 @@
                     <div class="acciones">
                         <span class="pronto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>Próximamente en Google Play</span>
                     </div>
-                    <p>La app está terminando su paso por las pruebas de Google Play. Mientras tanto, se instala descargándola de esta web:</p>
+                    <p id="android-con-apk">La app está terminando su paso por las pruebas de Google Play. Mientras tanto, se instala descargándola de esta web:</p>
+                    <div class="caja" id="android-sin-apk" hidden>
+                        <p><strong>La descarga para Android vuelve en unas horas.</strong> Mientras tanto, úsala en el navegador del móvil: funciona igual, con tu cuenta, y puedes añadirla a la pantalla de inicio. <a href="abrir/">Abrir la app en el navegador</a>.</p>
+                    </div>
                     <div class="acciones">
                         <a class="download-btn" id="enlace-apk" rel="noopener" hidden>Descargar para Android</a>
                     </div>
@@ -278,6 +281,11 @@
                         var apk = document.getElementById('enlace-apk');
                         apk.href = app.urlApk;
                         apk.hidden = false;
+                    } else {
+                        // Sin descarga por ahora: al navegador.
+                        document.getElementById('android-con-apk').hidden = true;
+                        document.getElementById('android-sin-apk').hidden = false;
+                        document.querySelectorAll('#android-apk .pasos, #android-apk .caja:not(#android-sin-apk)').forEach(function (e) { e.hidden = true; });
                     }
                 })
                 .catch(function () {});
