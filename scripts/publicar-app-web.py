@@ -11,7 +11,8 @@ que cambie el código de la app (lib/) o web/index.html.
 
 El motor gráfico (canvaskit, ~37 MB) no se copia: el navegador lo descarga de
 www.gstatic.com, como hace Flutter por defecto. Tampoco se copian los
-.symbols (depuración) ni el service worker de Flutter (desactivado); sí
+.symbols (depuración). El service worker de Flutter está desactivado: en su
+lugar va un interruptor que apaga el de las primeras versiones, y
 avisos-sw.js, el de los avisos del navegador (sin caché).
 """
 import argparse
@@ -27,7 +28,9 @@ APP = RAIZ / 'app'
 ORIGEN = APP / 'build' / 'web'
 DESTINO = APP / 'abrir'
 RUTA_WEB = '/app/abrir/'
-EXCLUIR = {'canvaskit', '.last_build_id', 'flutter_service_worker.js'}
+# flutter_service_worker.js no lo genera Flutter (--pwa-strategy=none): es el
+# de app/web/, que apaga el service worker de las primeras versiones.
+EXCLUIR = {'canvaskit', '.last_build_id'}
 
 
 def compilar():

@@ -14,6 +14,7 @@ import 'core/notificaciones.dart';
 import 'core/red_providers.dart';
 import 'core/widget_inicio.dart';
 import 'core/widget_providers.dart';
+import 'core/actualizaciones.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
 import 'features/cantes/cantes_page.dart';
@@ -288,7 +289,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         final tema = Theme.of(context);
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: estiloBarrasSistema(arriba: tema.scaffoldBackgroundColor, abajo: tema.navigationBarTheme.backgroundColor ?? tema.scaffoldBackgroundColor),
-          child: child!,
+          child: ref.watch(versionObsoletaProvider).valueOrNull ?? false ? const _VersionObsoleta() : child!,
         );
       },
     );
@@ -362,6 +363,39 @@ class _Shell extends StatelessWidget {
           selectedIndex: shell.currentIndex,
           onDestinationSelected: _ir,
           destinations: [for (final d in _destinos) NavigationDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: d.$3)],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// La versión instalada es más antigua que la mínima compatible: se pide
+/// actualizar (sin sincronizar, para no estropear los datos de la cuenta).
+class _VersionObsoleta extends ConsumerWidget {
+  const _VersionObsoleta();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final config = ref.watch(configProvider).valueOrNull;
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(28),
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Icon(Icons.system_update_outlined, size: 56, color: Theme.of(context).colorScheme.primary),
+              const SizedBox(height: 16),
+              Text('Actualiza la app', style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center),
+              const SizedBox(height: 8),
+              Text(
+                'Esta versión ya no es compatible con la de tus otros dispositivos y podría estropear tus datos (clases, alumnos, temas). Actualízala para seguir: se instala encima, sin perder nada.',
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              FilledButton.icon(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), icon: const Icon(Icons.download_outlined), label: const Text('Actualizar')),
+            ]),
           ),
         ),
       ),

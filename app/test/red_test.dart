@@ -424,6 +424,37 @@ void main() {
     expect(prep.misAlumnos().map((a) => a.id), containsAll(['mano', 'sust_s7']));
   });
 
+  test('clase suelta: una versión antigua no le quita el alumno, y si se lo quitó, se recupera', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    final cuando = DateTime.now().add(const Duration(days: 2));
+    await db.doc('sustituciones/s3').set({'id': 's3', 'alumno': 'luis', 'estado': 'cogida', 'cogidaPor': 'paula', 'fecha': cuando.toIso8601String()});
+    final s = Sustitucion(id: 's3', alumno: 'luis', fecha: cuando, estado: EstadoSustitucion.cogida, cogidaPor: 'paula', cogidaPorNombre: 'Paula');
+    final clase = await prep.sesionDeSustitucion(s, const ContactoRed(nombre: 'Luis', telefono: '600111222'));
+    // En la nube, en su propia colección (las versiones antiguas no la leen).
+    expect((await db.doc('users/paula/alumnosSueltos/sust_s3').get()).exists, isTrue);
+    expect((await db.doc('users/paula/alumnos/sust_s3').get()).exists, isFalse);
+
+    // Una versión antigua sube a «alumnos» la ficha sin uid y más reciente.
+    final viejo = {...prep.alumno('sust_s3')!.toJson(), 'uid': null, 'updatedAt': DateTime.now().add(const Duration(minutes: 5)).toIso8601String()}..remove('suelto');
+    await db.doc('users/paula/alumnos/sust_s3').set(viejo);
+    await prep.sincronizarTodo();
+    expect(prep.alumno('sust_s3')!.uid, 'luis');
+    expect((await db.doc('users/paula/alumnos/sust_s3').get()).exists, isFalse, reason: 'la copia de la versión antigua se borra');
+
+    // Un dispositivo nuevo que solo encuentra la copia estropeada: la clase
+    // suelta recupera al alumno desde la sustitución.
+    await db.doc('users/paula/alumnosSueltos/sust_s3').delete();
+    await db.doc('users/paula/alumnos/sust_s3').set(viejo);
+    final otro = await prepRepo(db, sesion('paula', 'Paula'));
+    await otro.sincronizarTodo();
+    expect(otro.alumno(clase.alumno!)!.uid, 'luis');
+    expect(otro.alumno(clase.alumno!)!.suelto, isTrue);
+    expect(otro.misAlumnos(), isEmpty);
+    expect((await db.doc('users/luis/cantes/sust_s3').get()).data()!['preparador'], 'paula');
+  });
+
   test('clase suelta: se separa la ficha a mano que la 1.15.3 convirtió en suelta', () async {
     final db = FakeFirebaseFirestore();
     final prep = await prepRepo(db, sesion('paula', 'Paula'));

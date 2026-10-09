@@ -68,12 +68,64 @@
   </script>
 
   <script>
+    // Avisos del navegador y versión nueva (los usa la app: core/avisos_navegador_web.dart).
+    window.huellaApp = 'ec61640389';
+    window.avisosApp = (function () {
+      var registro = null, alTocar = null, pendientes = [];
+      var conSw = 'serviceWorker' in navigator;
+      function tocar(aviso) { if (!aviso) return; if (alTocar) alTocar(aviso); else pendientes.push(aviso); }
+      if (conSw) {
+        // Fuera cualquier service worker antiguo (guardaba versiones viejas
+        // de la app) y sus cachés; se queda solo el de los avisos.
+        navigator.serviceWorker.getRegistrations().then(function (rs) {
+          rs.forEach(function (r) {
+            var w = r.active || r.waiting || r.installing;
+            if (!w || w.scriptURL.indexOf('avisos-sw.js') < 0) r.unregister();
+          });
+        }).catch(function () {});
+        navigator.serviceWorker.register('avisos-sw.js').then(function (r) { registro = r; }).catch(function () {});
+        navigator.serviceWorker.addEventListener('message', function (e) { if (e.data && e.data.aviso) tocar(e.data.aviso); });
+      }
+      if ('caches' in window) caches.keys().then(function (ks) { ks.forEach(function (k) { caches.delete(k); }); }).catch(function () {});
+      // Abierta desde un aviso con la app cerrada: ?aviso=…
+      try {
+        var q = new URLSearchParams(location.search);
+        if (q.get('aviso')) { pendientes.push(q.get('aviso')); history.replaceState(null, '', location.pathname + location.hash); }
+      } catch (e) {}
+      return {
+        admite: function () { return 'Notification' in window; },
+        permiso: function () { return 'Notification' in window ? Notification.permission : 'denied'; },
+        pedir: function () {
+          if (!('Notification' in window)) return Promise.resolve('denied');
+          return Promise.resolve(Notification.requestPermission()).then(function (r) { return r || Notification.permission; });
+        },
+        mostrar: function (id, titulo, texto, aviso) {
+          if (!('Notification' in window) || Notification.permission !== 'granted') return;
+          var o = { body: texto, icon: 'icons/Icon-192.png', badge: 'icons/Icon-192.png', tag: 'aviso' + id, data: { aviso: aviso || '' } };
+          if (registro && registro.showNotification) { registro.showNotification(titulo, o).catch(function () {}); return; }
+          try {
+            var n = new Notification(titulo, o);
+            n.onclick = function () { window.focus(); tocar(aviso); n.close(); };
+          } catch (e) {}
+        },
+        alTocar: function (f) { alTocar = f; pendientes.splice(0).forEach(function (a) { f(a); }); },
+        // Huella de la versión publicada si es distinta de la abierta (o '').
+        versionNueva: function () {
+          if (window.huellaApp.indexOf('HUELLA') >= 0) return Promise.resolve('');
+          return fetch('version.json', { cache: 'no-store' }).then(function (r) { return r.json(); })
+            .then(function (v) { return v.huella && v.huella !== window.huellaApp ? (v.etiqueta || v.huella) : ''; })
+            .catch(function () { return ''; });
+        },
+        recargar: function () { location.reload(); }
+      };
+    })();
+
     window.addEventListener('flutter-first-frame', function () {
       var c = document.getElementById('carga');
       c.classList.add('fuera');
       setTimeout(function () { c.remove(); }, 400);
     });
   </script>
-  <script src="flutter_bootstrap.js?v=74230acab8" async></script>
+  <script src="flutter_bootstrap.js?v=ec61640389" async></script>
 </body>
 </html>

@@ -343,7 +343,7 @@ class SesionPage extends ConsumerWidget {
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
             const TituloSeccion('Temas antes de la clase'),
-            SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
+            if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
             if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
           ],
           if (conUid && usuario != null && alumno != null) ...[
@@ -445,4 +445,46 @@ class _FilaCalendario extends ConsumerWidget {
       },
     );
   }
+}
+
+/// Clase suelta cuya ficha ha perdido el alumno (sin él no se le pueden
+/// mandar los temas): se recupera de la sustitución que se cogió.
+class _RecuperarClaseSuelta extends ConsumerStatefulWidget {
+  const _RecuperarClaseSuelta({required this.id});
+  final String id;
+  @override
+  ConsumerState<_RecuperarClaseSuelta> createState() => _RecuperarClaseSueltaState();
+}
+
+class _RecuperarClaseSueltaState extends ConsumerState<_RecuperarClaseSuelta> {
+  bool _buscando = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _recuperar();
+  }
+
+  Future<void> _recuperar() async {
+    setState(() => _buscando = true);
+    final n = await ref.read(preparadorRepoProvider).repararClasesSueltas(soloId: widget.id);
+    if (!mounted) return;
+    if (n > 0) {
+      ref.invalidate(alumnosProvider);
+      ref.invalidate(sesionesProvider);
+    }
+    setState(() => _buscando = false);
+  }
+
+  @override
+  Widget build(BuildContext context) => _buscando
+      ? Row(children: [
+          const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
+          const SizedBox(width: 10),
+          Expanded(child: Text('Recuperando al alumno de esta clase suelta para poder mandarle los temas…', style: context.textos.labelSmall)),
+        ])
+      : Row(children: [
+          Expanded(child: Text('No se ha podido recuperar al alumno de esta clase suelta (¿sin conexión?). Sin él no se le pueden mandar los temas.', style: context.textos.labelSmall)),
+          TextButton(onPressed: _recuperar, child: const Text('Reintentar')),
+        ]);
 }

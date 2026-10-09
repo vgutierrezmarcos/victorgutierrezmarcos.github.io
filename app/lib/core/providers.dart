@@ -108,6 +108,27 @@ final actualizacionProvider = FutureProvider<String?>((ref) async {
   }
 });
 
+/// Esta versión de la app es más antigua que `versionMinima` de
+/// app-config.json: ya no es compatible con los datos de las versiones nuevas
+/// y, para no estropearlos, no se sincroniza y se pide actualizar. (En el
+/// navegador no hace falta: se ofrece recargar con la versión publicada.)
+final versionObsoletaProvider = FutureProvider<bool>((ref) async {
+  if (kIsWeb) return false;
+  try {
+    final config = await ref.watch(configProvider.future);
+    final instalada = (await PackageInfo.fromPlatform()).version;
+    final obsoleta = AppConfig.esPosterior(config.versionMinima, instalada);
+    versionObsoleta = obsoleta;
+    return obsoleta;
+  } catch (_) {
+    return false;
+  }
+});
+
+/// Lo último que dijo [versionObsoletaProvider] (para la sincronización, que
+/// no espera a cargarlo).
+bool versionObsoleta = false;
+
 // ------------------------------------------------------------------ Sesión
 
 final authStateProvider = StreamProvider<User?>((ref) {
@@ -281,6 +302,8 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
 /// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
 /// Devuelve si se pudo (los cantes, que es lo que más importa).
 Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
+  // Una versión demasiado antigua no toca la nube (ver versionObsoletaProvider).
+  if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
   await ref.read(preparadorRepoProvider).sincronizarTodo();
