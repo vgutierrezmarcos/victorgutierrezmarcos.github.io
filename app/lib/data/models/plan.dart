@@ -23,6 +23,7 @@ class ResultadoCante {
   const ResultadoCante({
     this.sorteados = const [],
     this.temaCantado,
+    this.otrosCantados = const [],
     this.segundos = 0,
     this.valoracion = 0,
     this.comentarios = '',
@@ -30,15 +31,21 @@ class ResultadoCante {
 
   final List<String> sorteados;
   final String? temaCantado;
+  /// Cuando se cantan varios (los dos que manda el preparador o los dos de un
+  /// simulacro): los demás, en orden, después de [temaCantado]. Va aparte para
+  /// que las versiones anteriores sigan leyendo [temaCantado].
+  final List<String> otrosCantados;
+  List<String> get temasCantados => [if (temaCantado != null) temaCantado!, ...otrosCantados];
   final int segundos;
   /// 1-5; 0 = sin valorar.
   final int valoracion;
   /// Comentarios propios o del preparador.
   final String comentarios;
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, int? segundos, int? valoracion, String? comentarios}) => ResultadoCante(
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, String? comentarios}) => ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
+        otrosCantados: otrosCantados ?? this.otrosCantados,
         segundos: segundos ?? this.segundos,
         valoracion: valoracion ?? this.valoracion,
         comentarios: comentarios ?? this.comentarios,
@@ -47,6 +54,7 @@ class ResultadoCante {
   Map<String, dynamic> toJson() => {
         'sorteados': sorteados,
         'temaCantado': temaCantado,
+        if (otrosCantados.isNotEmpty) 'otrosCantados': otrosCantados,
         'segundos': segundos,
         'valoracion': valoracion,
         'comentarios': comentarios,
@@ -55,6 +63,7 @@ class ResultadoCante {
   factory ResultadoCante.fromJson(Map<dynamic, dynamic> j) => ResultadoCante(
         sorteados: ((j['sorteados'] as List?) ?? []).map((e) => e.toString()).toList(),
         temaCantado: j['temaCantado'] as String?,
+        otrosCantados: ((j['otrosCantados'] as List?) ?? []).map((e) => e.toString()).toList(),
         segundos: (j['segundos'] as num?)?.toInt() ?? 0,
         valoracion: (j['valoracion'] as num?)?.toInt() ?? 0,
         comentarios: j['comentarios'] as String? ?? '',
@@ -122,6 +131,8 @@ class Cante {
     this.preparador,
     this.preparadorNombre,
     this.motivo = '',
+    this.canceladoPor,
+    this.ocultaAlAlumno = false,
     this.sustitucion,
     this.updatedAt,
     this.borrado = false,
@@ -182,7 +193,7 @@ class Cante {
   final String enlace;
   /// Fecha y hora del cante (hora local).
   final DateTime fecha;
-  /// Con quién o dónde ("Preparador", "Grupo de cante"…).
+  /// Con quién o dónde ("Preparador", "Simulacro"…).
   final String titulo;
   /// Duración de la clase o del cante, en minutos (lo que ocupa en la agenda
   /// y en el calendario).
@@ -207,6 +218,12 @@ class Cante {
   final String? preparadorNombre;
   /// Por qué se canceló (lo escribe quien cancela; el alumno lo ve en su agenda).
   final String motivo;
+  /// Quién la canceló (uid): el alumno o el preparador. Así cada uno sabe si
+  /// la canceló el otro (y se le avisa).
+  final String? canceladoPor;
+  /// Solo en el lado del preparador: el alumno la ha quitado de su agenda
+  /// (cancelada); al preparador le sigue saliendo, pero no se le vuelve a mandar.
+  final bool ocultaAlAlumno;
   /// Cante que coge un preparador sustituto: id de la petición de sustitución.
   final String? sustitucion;
   final DateTime? updatedAt;
@@ -242,6 +259,8 @@ class Cante {
     String? preparador,
     String? preparadorNombre,
     String? motivo,
+    String? canceladoPor,
+    bool? ocultaAlAlumno,
     String? sustitucion,
     bool? borrado,
     Modalidad? modalidad,
@@ -273,6 +292,8 @@ class Cante {
         preparador: preparador ?? this.preparador,
         preparadorNombre: preparadorNombre ?? this.preparadorNombre,
         motivo: motivo ?? this.motivo,
+        canceladoPor: canceladoPor ?? this.canceladoPor,
+        ocultaAlAlumno: ocultaAlAlumno ?? this.ocultaAlAlumno,
         sustitucion: sustitucion ?? this.sustitucion,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
@@ -308,6 +329,8 @@ class Cante {
         if (preparador != null) 'preparador': preparador,
         if (preparadorNombre != null) 'preparadorNombre': preparadorNombre,
         if (motivo.isNotEmpty) 'motivo': motivo,
+        if (canceladoPor != null) 'canceladoPor': canceladoPor,
+        if (ocultaAlAlumno) 'ocultaAlAlumno': true,
         if (sustitucion != null) 'sustitucion': sustitucion,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
@@ -339,6 +362,8 @@ class Cante {
         preparador: j['preparador'] as String?,
         preparadorNombre: j['preparadorNombre'] as String?,
         motivo: j['motivo'] as String? ?? '',
+        canceladoPor: j['canceladoPor'] as String?,
+        ocultaAlAlumno: j['ocultaAlAlumno'] == true,
         sustitucion: j['sustitucion'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,
@@ -383,9 +408,10 @@ class EstadisticaTema {
   static Map<String, EstadisticaTema> desde(Iterable<Cante> cantes) {
     final porTema = <String, List<Cante>>{};
     for (final c in cantes) {
-      final t = c.resultado?.temaCantado;
-      if (!c.hecho || c.borrado || t == null) continue;
-      porTema.putIfAbsent(t, () => []).add(c);
+      if (!c.hecho || c.borrado) continue;
+      for (final t in c.resultado?.temasCantados ?? const <String>[]) {
+        porTema.putIfAbsent(t, () => []).add(c);
+      }
     }
     return porTema.map((codigo, lista) {
       final valorados = lista.where((c) => c.resultado!.valoracion > 0).toList();

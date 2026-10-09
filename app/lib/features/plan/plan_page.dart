@@ -263,13 +263,30 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
             ),
             title: Text('${conFecha ? '${fechaCorta(c.fecha)} · ' : ''}${horaDe(c.fecha)} · ${tituloCante(c)}', style: context.textos.titleSmall?.copyWith(decoration: c.cancelado ? TextDecoration.lineThrough : null)),
             subtitle: Text(
-              c.cancelado ? 'Cancelado${c.motivo.isEmpty ? '' : ': ${c.motivo}'} · toca para buscar sustituto' : (c.hecho ? (c.resultado?.temaCantado ?? 'Hecho') : detalleCante(c)),
+              c.cancelado
+                  ? (c.canceladoPor != null && c.canceladoPor == ref.read(usuarioActualProvider)?.uid
+                      ? 'La cancelaste tú${c.motivo.isEmpty ? '' : ': ${c.motivo}'}'
+                      : 'Cancelado${c.motivo.isEmpty ? '' : ': ${c.motivo}'} · toca para buscar sustituto')
+                  : (c.hecho ? (c.resultado?.temasCantados.join(' y ') ?? 'Hecho') : detalleCante(c)),
               style: context.textos.labelSmall?.copyWith(color: c.cancelado ? context.esquema.error : null),
             ),
-            trailing: c.pendiente && c.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(c.fecha, ahora)) : const Icon(Icons.chevron_right),
+            trailing: c.cancelado
+                ? IconButton(tooltip: 'Quitar de la agenda', icon: const Icon(Icons.delete_outline), onPressed: () => _quitarCancelada(c))
+                : (c.pendiente && c.fecha.isAfter(ahora) ? Etiqueta(cuentaAtras(c.fecha, ahora)) : const Icon(Icons.chevron_right)),
           ),
         ),
       );
+
+  /// Quitar de la agenda una clase cancelada, con un toque y deshacer.
+  Future<void> _quitarCancelada(Cante c) async {
+    final notifier = ref.read(cantesProvider.notifier);
+    final messenger = ScaffoldMessenger.of(context);
+    await notifier.borrar(c);
+    messenger.showSnackBar(SnackBar(
+      content: const Text('Clase cancelada quitada de la agenda'),
+      action: SnackBarAction(label: 'Deshacer', onPressed: () => notifier.guardar(c.copyWith(borrado: false))),
+    ));
+  }
 
   Widget _filaFecha(String titulo) => Padding(
         padding: const EdgeInsets.only(bottom: 8),

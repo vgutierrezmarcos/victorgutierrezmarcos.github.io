@@ -42,6 +42,8 @@ class PizarraCompartida {
     await _col.doc(pagina).set({
       'n': n,
       'trazos': FieldValue.arrayUnion([for (final t in trazos) t.toJson()]),
+      // Se vuelve a escribir: ya no está «recién borrada».
+      'borradoPor': FieldValue.delete(),
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
   }
@@ -50,6 +52,7 @@ class PizarraCompartida {
   /// snapshot (arrayRemove exige igualdad exacta).
   Future<void> deshacer(String pagina, Map<String, dynamic> elementoExacto) => _col.doc(pagina).update({
         'trazos': FieldValue.arrayRemove([elementoExacto]),
+        'borradoPor': FieldValue.delete(),
         'updatedAt': FieldValue.serverTimestamp(),
       });
 

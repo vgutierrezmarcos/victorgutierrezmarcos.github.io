@@ -287,7 +287,7 @@ void main() {
     expect(find.text('Reservar clase con mi preparador'), findsOneWidget);
     await tocar(tester, find.text('Un cante por mi cuenta'));
     expect(find.text('Nuevo cante'), findsOneWidget);
-    await tester.enterText(find.widgetWithText(TextField, 'Preparador, grupo de cante… (opcional)'), 'Grupo de los jueves');
+    await tester.enterText(find.widgetWithText(TextField, 'Preparador, simulacro… (opcional)'), 'Simulacro del jueves');
     await tocar(tester, find.text('Todo el ejercicio'));
     // Duración por defecto (30 min) y exposición por tema aparte.
     expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min').first).selected, isTrue);
@@ -299,14 +299,14 @@ void main() {
     await tocar(tester, find.text('Guardar'));
 
     final c = plan.cantes().single;
-    expect(c.titulo, 'Grupo de los jueves');
+    expect(c.titulo, 'Simulacro del jueves');
     expect(c.bolsa, TipoBolsa.ejercicio);
     expect(c.minutos, 40);
     expect(c.fecha.hour, 17);
     expect(c.pendiente, isTrue);
     expect(find.text('Nuevo cante'), findsNothing);
     // De vuelta en la agenda, el cante está en el día elegido (hoy), sea la hora que sea.
-    expect(find.textContaining('17:00 · Grupo de los jueves'), findsWidgets);
+    expect(find.textContaining('17:00 · Simulacro del jueves'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 
@@ -493,7 +493,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('preparador: programar una clase para dos alumnos', (tester) async {
+  testWidgets('preparador: programar una clase (un solo alumno por clase)', (tester) async {
     await preparador.activar();
     await preparador.guardarAlumno(Alumno(id: 'a1', nombre: 'Lucía', temas: const ['3.A.1', '3.A.2'], updatedAt: DateTime.now()));
     await preparador.guardarAlumno(Alumno(id: 'a2', nombre: 'Pablo', updatedAt: DateTime.now()));
@@ -506,13 +506,13 @@ void main() {
     await tocar(tester, find.widgetWithText(FilaEnlace, 'Preparador'));
     await tocar(tester, find.widgetWithText(TextButton, 'Clase'));
     expect(find.text('Nueva clase'), findsOneWidget);
-    await tocar(tester, find.widgetWithText(FilterChip, 'Lucía'));
-    await tocar(tester, find.widgetWithText(FilterChip, 'Pablo'));
+    // Elegir a Pablo y luego a Lucía deja solo a Lucía: las clases son individuales.
+    await tocar(tester, find.widgetWithText(ChoiceChip, 'Pablo'));
+    await tocar(tester, find.widgetWithText(ChoiceChip, 'Lucía'));
     await tocar(tester, find.text('Guardar'));
 
     final sesiones = preparador.sesiones();
-    expect(sesiones.map((s) => s.alumno).toSet(), {'a1', 'a2'});
-    expect(sesiones.map((s) => s.id).toSet().length, 2);
+    expect(sesiones.map((s) => s.alumno).toList(), ['a1']);
     expect(find.text('TUS CLASES'), findsOneWidget);
 
     // Detalle de la clase de Lucía: entran los dos temas que lleva.

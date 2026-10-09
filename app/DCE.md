@@ -113,15 +113,19 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.
 
 **Versión 1.15.4 (28): clase suelta, código fijo, solicitudes y web (9 oct.)**
-- [ ] Víctor: publicar las reglas nuevas (`firestore.rules`, 233 casos): solicitudes de verificación validadas (siempre aprobables), reverificación solo por la administración, correo del administrador sin mayúsculas.
-- [ ] Víctor: subir el `.aab` **1.15.4 (28)** a la prueba cerrada y anotarlo en el registro.
+- [x] Víctor: publicar las reglas nuevas (`firestore.rules`, 233 casos; publicadas el 9 oct.): solicitudes de verificación validadas (siempre aprobables), reverificación solo por la administración, correo del administrador sin mayúsculas.
+- [x] ~~Subir el `.aab` 1.15.4 (28)~~: no se subió; va dentro de la 1.15.6 (30), ver abajo.
 - [ ] Víctor: en el navegador, abrir `/app/abrir/` y comprobar que ya no salen rachas (se quita la versión vieja guardada); permitir los avisos y ver que llegan con la web abierta.
-- [ ] Cuando la 1.15.4 esté en Play y en `app-latest`: poner `"versionMinima": "1.15.4"` en `oposicion/app-config.json` (las versiones anteriores dejan de sincronizar y piden actualizar). Las 1.15.3 y anteriores no leen ese campo: para ellas, las fichas de clase suelta ya van aparte (`alumnosSueltos`) y la clase recupera al alumno sola.
+- [ ] Cuando la 1.15.6 esté en Play y en `app-latest`: poner `"versionMinima": "1.15.6"` en `oposicion/app-config.json` (las versiones anteriores dejan de sincronizar y piden actualizar). Las 1.15.3 y anteriores no leen ese campo: para ellas, las fichas de clase suelta ya van aparte (`alumnosSueltos`) y la clase recupera al alumno sola.
 
 **Vídeos de ayuda (9 oct.)**: 11 vídeos verticales de menos de un minuto en `promo/ayuda/` (guiones en `promo/ayuda/GUIONES.md`; cómo se rehacen, en el README).
 - [x] Los 11 vídeos montados (28-47 s cada uno) y botón ▶ en las pantallas (9 oct.).
 - [x] Tests (181) y prueba en la versión web; versión web 1.15.5 (29) en `app/abrir/`; vídeos publicados con la sección «Cómo se usa» de `/app/` (9 oct.).
 - [ ] Compilar el `.aab` 1.15.5 (29) y subirlo a la prueba cerrada (ya anotado en el registro).
+
+**Versión 1.15.6 (30): cancelar y borrar clases, relaciones, dos temas, simulacro, cronómetro y pizarra (9 oct.)**
+- [ ] Víctor: subir el `.aab` **1.15.6 (30)** a la prueba cerrada (lleva también la 1.15.4 y la 1.15.5) y, cuando Play lo procese, bajar el APK universal firmado por Google al Escritorio (`oposicion-tcee.apk`) para subirlo a `app-latest` con `versionActual: "1.15.6"`.
+- [ ] Probar con alumno y preparador: el alumno cancela una clase (al preparador le llega con aviso) y la quita de su agenda; quitar relaciones desde los dos lados; mandar 2 temas y cantarlos por orden; «Simulación de examen real»; el cronómetro del alumno en el móvil del preparador (ficha de la clase y notificación con cuenta atrás); pizarra con colores entre los dos.
 
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.

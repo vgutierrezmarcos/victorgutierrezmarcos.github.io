@@ -72,7 +72,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                         Text(a?.nombre ?? 'Alumno', style: context.textos.titleSmall?.copyWith(decoration: s.cancelado ? TextDecoration.lineThrough : null)),
                         Text(
                           [
-                            if (s.cancelado) 'Cancelada${s.motivo.isEmpty ? '' : ': ${s.motivo}'}',
+                            if (s.cancelado) '${a?.uid != null && s.canceladoPor == a!.uid ? 'La canceló el alumno' : 'Cancelada'}${s.motivo.isEmpty ? '' : ': ${s.motivo}'}',
                             if (s.hecho) 'Valorada',
                             if (s.sustitucion != null) 'Clase suelta',
                             if (s.serie?.startsWith('fija_') ?? false) 'Clase fija',
@@ -85,6 +85,20 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                       ]),
                     ),
                     if (solapadas.contains(s.id)) Tooltip(message: 'Se solapa con otra clase', child: Icon(Icons.warning_amber_rounded, color: context.esquema.error)),
+                    if (s.cancelado)
+                      IconButton(
+                        tooltip: 'Borrar la clase cancelada',
+                        icon: const Icon(Icons.delete_outline),
+                        onPressed: () async {
+                          final messenger = ScaffoldMessenger.of(context);
+                          final notifier = ref.read(sesionesProvider.notifier);
+                          await notifier.borrar(s);
+                          messenger.showSnackBar(SnackBar(
+                            content: const Text('Clase cancelada borrada'),
+                            action: SnackBarAction(label: 'Deshacer', onPressed: () => notifier.guardar(s.copyWith(borrado: false))),
+                          ));
+                        },
+                      ),
                   ]),
                 ),
               ),

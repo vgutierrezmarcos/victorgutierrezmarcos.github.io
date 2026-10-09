@@ -327,6 +327,33 @@ class PreparadorRepo {
     return sinApp.where((a) => e.isNotEmpty && a.email.trim().toLowerCase() == e).firstOrNull ?? sinApp.where((a) => n.isNotEmpty && a.nombre.trim().toLowerCase() == n).firstOrNull;
   }
 
+  /// Cancela las clases pendientes que quedan de un alumno (con aviso en su
+  /// agenda, mientras se pueda escribir en ella). Devuelve cuántas.
+  Future<int> cancelarPendientesDe(Alumno a, {required String motivo}) async {
+    final ahora = DateTime.now();
+    var n = 0;
+    for (final s in _todasLasSesiones().where((s) => s.alumno == a.id && s.pendiente && !s.borrado && s.fecha.isAfter(ahora))) {
+      await guardarSesion(s.copyWith(estado: EstadoCante.cancelado, motivo: motivo, canceladoPor: uid));
+      n++;
+    }
+    return n;
+  }
+
+  /// Quita a un alumno de clase suelta: sus clases pendientes se cancelan (le
+  /// llega a su agenda), las demás salen de la semana del preparador (no de la
+  /// agenda del alumno) y la ficha desaparece.
+  Future<void> olvidarAlumnoSuelto(Alumno a) async {
+    await cancelarPendientesDe(a, motivo: 'El preparador ya no da esta clase');
+    for (final s in _todasLasSesiones().where((s) => s.alumno == a.id && !s.borrado)) {
+      final b = s.copyWith(borrado: true);
+      await _sesiones.put(s.id, b.toJson());
+      try {
+        await _docUsuario?.collection('sesiones').doc(s.id).set(b.toJson()).timeout(_esperaNube);
+      } catch (_) {}
+    }
+    await guardarAlumno(a.copyWith(borrado: true));
+  }
+
   /// Borrado lógico. Si el alumno estaba enlazado, se rompe también el enlace.
   Future<void> borrarAlumno(Alumno a) async {
     if (a.enlazado) await romperEnlaceConAlumno(a);
@@ -487,7 +514,10 @@ class PreparadorRepo {
         ..remove('eventoGoogle')
         ..remove('temaMandado')
         ..remove('temasMandados')
-        ..remove('temaSorteado'),
+        ..remove('temaSorteado')
+        ..remove('ocultaAlAlumno'),
+      // La que el alumno quitó de su agenda no vuelve a aparecerle.
+      if (s.ocultaAlAlumno) 'borrado': true,
       'titulo': s.titulo.isNotEmpty ? s.titulo : (nombre.isEmpty ? 'Preparador' : 'Con $nombre'),
       'preparador': uid,
       'preparadorNombre': nombre,
@@ -670,6 +700,18 @@ class PreparadorRepo {
       }
       for (final a in locales.where((a) => a.enlazado && !a.borrado && !enlazados.containsKey(a.uid))) {
         await guardarAlumno(a.copyWith(desenlazar: true));
+        // Ha dejado de compartir: sus clases pendientes quedan canceladas en la
+        // agenda del preparador (ya no se puede escribir en la suya), para
+        // que no se queden colgadas; se pueden borrar o volver a programar.
+        final ahora = DateTime.now();
+        for (final s in _todasLasSesiones().where((s) => s.alumno == a.id && s.pendiente && !s.borrado && s.fecha.isAfter(ahora))) {
+          final c = s.copyWith(estado: EstadoCante.cancelado, motivo: 'Ha dejado de compartir contigo', canceladoPor: a.uid);
+          await _sesiones.put(s.id, c.toJson());
+          try {
+            await _docUsuario?.collection('sesiones').doc(s.id).set(c.toJson()).timeout(_esperaNube);
+          } catch (_) {}
+          if (calendario != null && perfil().calendarioGoogle) unawaited(llevarAlCalendario(s.id));
+        }
       }
     } catch (_) {}
   }
@@ -682,6 +724,10 @@ class PreparadorRepo {
   ///   una clase de su agenda, el preparador no la pierde;
   /// - lo que el preparador cambió y no llegó (la copia falta o es más
   ///   antigua), se vuelve a copiar.
+  /// Clases que han cancelado los alumnos desde su app (desde la última vez
+  /// que se miró): las avisa la sincronización y vacía la lista.
+  final canceladasPorAlumnos = <({Cante clase, String alumno})>[];
+
   Future<void> _traerCambiosDeAlumnos() async {
     if (!conSesion || !perfil().activo) return;
     final locales = {for (final s in _todasLasSesiones()) s.id: s};
@@ -702,11 +748,23 @@ class PreparadorRepo {
           final suya = suyas[d.id];
           if (mia == null || suya == null) continue;
           if (!(suya.updatedAt ?? DateTime(0)).isAfter(mia.updatedAt ?? DateTime(0))) continue;
+          // El alumno la ha quitado de su agenda: el preparador la conserva,
+          // pero ya no se le manda.
+          if (suya.borrado && !mia.borrado) {
+            if (!mia.ocultaAlAlumno) {
+              final oculta = mia.copyWith(ocultaAlAlumno: true);
+              await _sesiones.put(d.id, oculta.toJson());
+              await _docUsuario?.collection('sesiones').doc(d.id).set(oculta.toJson());
+              locales[d.id] = oculta;
+            }
+            continue;
+          }
           final json = {
             ...suya.toJson(),
             'alumno': mia.alumno,
             'titulo': mia.titulo,
             'borrado': mia.borrado,
+            if (mia.ocultaAlAlumno) 'ocultaAlAlumno': true,
             if (mia.temaA != null) 'temaA': mia.temaA!.toIso8601String(),
             if (mia.temasMandados.isNotEmpty) 'temaMandado': mia.temasMandados.first,
             if (mia.temasMandados.isNotEmpty) 'temasMandados': mia.temasMandados,
@@ -715,9 +773,17 @@ class PreparadorRepo {
           }
             ..remove('preparador')
             ..remove('preparadorNombre');
-          await _sesiones.put(d.id, json);
-          await _docUsuario?.collection('sesiones').doc(d.id).set(json);
-          locales[d.id] = Cante.fromJson(json);
+          final nueva = Cante.fromJson(json);
+          if (mia.pendiente && nueva.cancelado) {
+            // La ha cancelado el alumno: como si la cancelara el preparador
+            // (fuera del calendario y sin tema que mandar), y se le avisa.
+            await guardarSesion(nueva);
+            canceladasPorAlumnos.add((clase: nueva, alumno: a.nombre));
+          } else {
+            await _sesiones.put(d.id, json);
+            await _docUsuario?.collection('sesiones').doc(d.id).set(json);
+          }
+          locales[d.id] = nueva;
         }
         // Lo mío que no ha llegado: clases que vienen (o canceladas hace poco)
         // cuya copia falta o es más antigua que la mía.

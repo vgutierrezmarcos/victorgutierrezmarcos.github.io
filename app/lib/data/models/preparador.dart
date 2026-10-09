@@ -400,7 +400,7 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
   String dos(int n) => n.toString().padLeft(2, '0');
   final lineas = <String>[
     'Cante del ${c.fecha.day}/${c.fecha.month}/${c.fecha.year}${alumno == null || alumno.isEmpty ? '' : ' · $alumno'}',
-    if (r?.temaCantado != null) 'Tema ${r!.temaCantado}${tituloDe == null || tituloDe(r.temaCantado!).isEmpty ? '' : ' · ${tituloDe(r.temaCantado!)}'}',
+    for (final t in r?.temasCantados ?? const <String>[]) 'Tema $t${tituloDe == null || tituloDe(t).isEmpty ? '' : ' · ${tituloDe(t)}'}',
     if ((r?.valoracion ?? 0) > 0) 'Valoración: ${'★' * r!.valoracion}${'☆' * (5 - r.valoracion)}',
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',

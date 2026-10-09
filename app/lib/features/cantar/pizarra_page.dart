@@ -57,16 +57,21 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   final Set<String> _borrados = {};
   Point<double>? _ultimoBorrado;
   late final String _miUid = ref.read(usuarioActualProvider)?.uid ?? '';
-  // Para no avisar dos veces del mismo borrado del otro.
-  final Set<String> _borradosAvisados = {};
 
   // Geometría del lienzo en pantalla (la calcula el LayoutBuilder).
   double _escala = 1;
   Offset _origen = Offset.zero;
 
   bool get _soyAlumno => _miUid == widget.alumnoUid;
-  Color get _miColor => Color(_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]);
-  Color get _colorOtro => Color(coloresPizarra[_soyAlumno ? 1 : 0]);
+  /// Mi color por defecto: azul el alumno, rojo el preparador.
+  int get _colorPorDefecto => coloresRapidos[_soyAlumno ? 0 : 2];
+  Color get _miColor => Color(_colorElegido ?? _colorPorDefecto);
+  /// El color con el que el otro escribió por última vez en esta página.
+  Color get _colorOtro {
+    final suyo = _actual?.trazos.lastWhere((t) => t.de != _miUid, orElse: () => Trazo(id: '', de: '', grosor: 0, puntos: const []));
+    return suyo == null || suyo.id.isEmpty ? Color(coloresRapidos[_soyAlumno ? 2 : 0]) : _colorDe(suyo);
+  }
+  // Los trazos de versiones anteriores sin color: el del papel de quien los hizo.
   Color _colorDe(Trazo t) => Color(t.color ?? (t.de == widget.alumnoUid ? coloresPizarra[0] : coloresPizarra[1]));
 
   PaginaPizarra? get _actual => _pagina < _paginas.length ? _paginas[_pagina] : null;
@@ -93,6 +98,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
 
   @override
   void dispose() {
+    _quitarAviso?.cancel();
     _escucha?.cancel();
     _pizarra?.vaciar();
     if (!kIsWeb) {
@@ -112,12 +118,61 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       final ids = {for (final p in paginas) for (final t in p.trazos) t.id};
       _pendientes.removeWhere((t) => ids.contains(t.id));
       _borrados.removeWhere((id) => !ids.contains(id));
+      // Aviso de que el otro la ha borrado entera: solo si pasa con la
+      // pizarra abierta (no al abrirla) y unos segundos.
       final a = _actual;
-      if (a != null && a.trazos.isEmpty && a.borradoPor != null && a.borradoPor != _miUid && !_borradosAvisados.contains('${a.id}:${a.borradoPor}')) {
-        _borradosAvisados.add('${a.id}:${a.borradoPor}');
+      final borrada = a != null && a.trazos.isEmpty && a.borradoPor != null && a.borradoPor != _miUid;
+      if (borrada && _habiaTrazos.contains(a.id)) {
         _aviso = '${widget.otroNombre} ha borrado la pizarra';
+        _quitarAviso?.cancel();
+        _quitarAviso = Timer(const Duration(seconds: 4), () {
+          if (mounted) setState(() => _aviso = null);
+        });
       }
+      _habiaTrazos
+        ..clear()
+        ..addAll([for (final p in paginas) if (p.trazos.isNotEmpty) p.id]);
     });
+  }
+
+  /// Páginas con algo escrito en la última lectura (para saber si se acaban de borrar).
+  final Set<String> _habiaTrazos = {};
+  Timer? _quitarAviso;
+
+  /// Cualquier color: el tono y la luminosidad, con la muestra.
+  Future<void> _otroColor() async {
+    var hsv = HSVColor.fromColor(_miColor);
+    final elegido = await showDialog<Color>(
+      context: context,
+      builder: (d) => StatefulBuilder(
+        builder: (d, set) => AlertDialog(
+          title: const Text('Elige un color'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Container(height: 44, decoration: BoxDecoration(color: hsv.toColor(), borderRadius: BorderRadius.circular(8))),
+            const SizedBox(height: 14),
+            const Text('Tono'),
+            _BarraColor(colores: [for (var h = 0; h <= 360; h += 30) HSVColor.fromAHSV(1, h.toDouble(), 1, 0.9).toColor()]),
+            Slider(value: hsv.hue, min: 0, max: 360, onChanged: (v) => set(() => hsv = hsv.withHue(v).withSaturation(hsv.saturation == 0 ? 0.85 : hsv.saturation))),
+            const Text('Intensidad'),
+            _BarraColor(colores: [hsv.withSaturation(0).toColor(), hsv.withSaturation(1).toColor()]),
+            Slider(value: hsv.saturation, min: 0, max: 1, onChanged: (v) => set(() => hsv = hsv.withSaturation(v))),
+            const Text('Luz'),
+            _BarraColor(colores: [hsv.withValue(0).toColor(), hsv.withValue(1).toColor()]),
+            Slider(value: hsv.value, min: 0, max: 1, onChanged: (v) => set(() => hsv = hsv.withValue(v))),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+            FilledButton(onPressed: () => Navigator.pop(d, hsv.toColor()), child: const Text('Usar este color')),
+          ],
+        ),
+      ),
+    );
+    if (elegido != null) {
+      setState(() {
+        _borrador = false;
+        _colorElegido = elegido.toARGB32();
+      });
+    }
   }
 
   // ------------------------------------------------------------- Dibujar
@@ -177,7 +232,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _punteroActivo = null;
     if (_borrador || _enCurso.isEmpty) return;
     final virtuales = simplificar([for (final p in _enCurso) _virtual(p)]);
-    final trazo = Trazo(id: nuevoIdTrazo(), de: _miUid, grosor: grosores[_grosor], color: _colorElegido, puntos: [for (final p in virtuales) Point(p.x.round(), p.y.round())]);
+    // Siempre con su color (también el de por defecto): el otro lo ve tal cual.
+    final trazo = Trazo(id: nuevoIdTrazo(), de: _miUid, grosor: grosores[_grosor], color: _miColor.toARGB32(), puntos: [for (final p in virtuales) Point(p.x.round(), p.y.round())]);
     setState(() {
       _enCurso.clear();
       _pendientes.add(trazo);
@@ -301,23 +357,31 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               child: Row(children: [
                 IconButton(tooltip: 'Salir', icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()),
                 const SizedBox(width: 4),
-                _Leyenda(color: Color(coloresPizarra[_soyAlumno ? 0 : 1]), texto: 'Tú'),
+                _Leyenda(color: _miColor, texto: 'Tú'),
                 const SizedBox(width: 8),
                 _Leyenda(color: _colorOtro, texto: widget.otroNombre),
                 const SizedBox(width: 12),
-                // Colores: el primero es el del propio papel.
-                for (final c in [coloresPizarra[_soyAlumno ? 0 : 1], ...coloresPizarra.skip(2)])
+                // Colores a un toque (azul, negro, rojo, verde) y la paleta con todos.
+                for (var i = 0; i < coloresRapidos.length; i++)
                   IconButton(
-                    tooltip: 'Color',
+                    tooltip: nombresColoresRapidos[i],
                     visualDensity: VisualDensity.compact,
-                    isSelected: !_borrador && (_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]) == c,
-                    style: IconButton.styleFrom(backgroundColor: !_borrador && (_colorElegido ?? coloresPizarra[_soyAlumno ? 0 : 1]) == c ? Colors.white30 : null),
-                    icon: Icon(Icons.circle, size: 18, color: Color(c)),
+                    isSelected: !_borrador && _miColor.toARGB32() == coloresRapidos[i],
+                    style: IconButton.styleFrom(backgroundColor: !_borrador && _miColor.toARGB32() == coloresRapidos[i] ? Colors.white30 : null),
+                    icon: Icon(Icons.circle, size: 18, color: Color(coloresRapidos[i])),
                     onPressed: () => setState(() {
                       _borrador = false;
-                      _colorElegido = c == coloresPizarra[_soyAlumno ? 0 : 1] ? null : c;
+                      _colorElegido = coloresRapidos[i];
                     }),
                   ),
+                IconButton(
+                  tooltip: 'Otro color',
+                  visualDensity: VisualDensity.compact,
+                  isSelected: !_borrador && !coloresRapidos.contains(_miColor.toARGB32()),
+                  style: IconButton.styleFrom(backgroundColor: !_borrador && !coloresRapidos.contains(_miColor.toARGB32()) ? Colors.white30 : null),
+                  icon: Icon(Icons.palette_outlined, color: coloresRapidos.contains(_miColor.toARGB32()) ? Colors.white : _miColor),
+                  onPressed: _otroColor,
+                ),
                 const SizedBox(width: 8),
                 for (var i = 0; i < grosores.length; i++)
                   IconButton(
@@ -454,4 +518,16 @@ class _PintorEnCurso extends CustomPainter {
 
   @override
   bool shouldRepaint(_PintorEnCurso old) => true;
+}
+
+/// Degradado de muestra bajo cada deslizador del color.
+class _BarraColor extends StatelessWidget {
+  const _BarraColor({required this.colores});
+  final List<Color> colores;
+  @override
+  Widget build(BuildContext context) => Container(
+        height: 10,
+        margin: const EdgeInsets.symmetric(horizontal: 24),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), gradient: LinearGradient(colors: colores)),
+      );
 }

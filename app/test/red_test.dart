@@ -369,6 +369,93 @@ void main() {
     expect(avisos.single.id, 'canc:c1');
   });
 
+  test('el alumno cancela una clase del preparador: le llega cancelada, con aviso, y no se le avisa a él mismo', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    await prep.activar(nombre: 'Paula');
+    await db.doc('preparadores/paula/alumnos/alu').set({'uid': 'alu', 'nombre': 'Álex'});
+    await prep.sincronizarTodo();
+    final cuando = DateTime.now().add(const Duration(days: 2));
+    await prep.guardarSesion(Cante(id: 'c1', fecha: cuando, alumno: 'alu', updatedAt: DateTime.now()));
+    expect((await db.doc('users/alu/cantes/c1').get()).data()!['estado'], 'pendiente');
+    // El alumno la cancela en su agenda.
+    final copia = Cante.fromJson({...(await db.doc('users/alu/cantes/c1').get()).data()!, 'id': 'c1'});
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    final cancelada = copia.copyWith(estado: EstadoCante.cancelado, motivo: 'Estoy enfermo', canceladoPor: 'alu');
+    await db.doc('users/alu/cantes/c1').set(cancelada.toJson());
+    expect((await RedRepo(firestore: db, auth: sesion('alu', 'Álex')).avisosNuevos(vistos: {}, preparador: false)).where((a) => a.id.startsWith('canc:')), isEmpty);
+    await prep.sincronizarTodo();
+    final mia = prep.sesiones().singleWhere((s) => s.id == 'c1');
+    expect(mia.cancelado, isTrue);
+    expect(mia.canceladoPor, 'alu');
+    expect(mia.motivo, 'Estoy enfermo');
+    expect(prep.canceladasPorAlumnos.single.alumno, 'Álex');
+
+    // El alumno la quita de su agenda: el preparador la conserva, pero no se la vuelve a mandar.
+    prep.canceladasPorAlumnos.clear();
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    await db.doc('users/alu/cantes/c1').set(cancelada.copyWith(borrado: true).toJson());
+    await prep.sincronizarTodo();
+    final oculta = prep.sesiones().singleWhere((s) => s.id == 'c1');
+    expect(oculta.ocultaAlAlumno, isTrue);
+    expect(oculta.borrado, isFalse);
+    await prep.guardarSesion(oculta.copyWith(notas: 'otra cosa'));
+    expect((await db.doc('users/alu/cantes/c1').get()).data()!['borrado'], isTrue);
+  });
+
+  test('el alumno deja de compartir: sus clases pendientes quedan canceladas en la agenda del preparador', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    await prep.activar(nombre: 'Paula');
+    await db.doc('preparadores/paula/alumnos/alu').set({'uid': 'alu', 'nombre': 'Álex'});
+    await prep.sincronizarTodo();
+    await prep.guardarSesion(Cante(id: 'c2', fecha: DateTime.now().add(const Duration(days: 3)), alumno: 'alu', updatedAt: DateTime.now()));
+    await db.doc('preparadores/paula/alumnos/alu').delete();
+    await prep.sincronizarTodo();
+    final c = prep.sesiones().singleWhere((s) => s.id == 'c2');
+    expect(c.cancelado, isTrue);
+    expect(c.canceladoPor, 'alu');
+  });
+
+  test('el preparador quita a un alumno de clase suelta: se cancela lo pendiente y sale de su semana', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    final cuando = DateTime.now().add(const Duration(days: 2));
+    final s = Sustitucion(id: 's6', alumno: 'luis', fecha: cuando, estado: EstadoSustitucion.cogida, cogidaPor: 'paula', cogidaPorNombre: 'Paula');
+    final clase = await prep.sesionDeSustitucion(s, const ContactoRed(nombre: 'Luis', telefono: '600111222'));
+    await prep.olvidarAlumnoSuelto(prep.alumno(clase.alumno!)!);
+    expect(prep.sesiones(), isEmpty);
+    expect(prep.alumnos(), isEmpty);
+    expect((await db.doc('users/luis/cantes/sust_s6').get()).data()!['estado'], 'cancelado');
+    // No vuelve a aparecer al sincronizar.
+    await db.doc('sustituciones/s6').set({'id': 's6', 'alumno': 'luis', 'estado': 'cogida', 'cogidaPor': 'paula', 'fecha': cuando.toIso8601String()});
+    await prep.sincronizarTodo();
+    expect(prep.sesiones(), isEmpty);
+  });
+
+  test('el alumno quita al preparador de sus clases sueltas: se borran esas peticiones', () async {
+    final db = FakeFirebaseFirestore();
+    final alu = RedRepo(firestore: db, auth: sesion('luis', 'Luis'));
+    await db.doc('sustituciones/s1').set({'id': 's1', 'alumno': 'luis', 'estado': 'cogida', 'cogidaPor': 'paula', 'fecha': DateTime.now().toIso8601String()});
+    await db.doc('sustituciones/s2').set({'id': 's2', 'alumno': 'luis', 'estado': 'cogida', 'cogidaPor': 'olga', 'fecha': DateTime.now().toIso8601String()});
+    expect(await alu.olvidarSustituto('paula'), 1);
+    expect((await db.doc('sustituciones/s1').get()).exists, isFalse);
+    expect((await db.doc('sustituciones/s2').get()).exists, isTrue);
+  });
+
+  test('varios temas cantados: se guardan aparte y cuentan en las estadísticas de cada uno', () {
+    const r = ResultadoCante(sorteados: ['3.A.1', '3.B.2'], temaCantado: '3.A.1', otrosCantados: ['3.B.2'], valoracion: 4);
+    final j = r.toJson();
+    expect(j['temaCantado'], '3.A.1', reason: 'las versiones anteriores siguen leyendo el primero');
+    expect(ResultadoCante.fromJson(j).temasCantados, ['3.A.1', '3.B.2']);
+    final stats = EstadisticaTema.desde([Cante(id: 'x', fecha: DateTime(2026, 10, 1), estado: EstadoCante.hecho, resultado: r)]);
+    expect(stats.keys, containsAll(['3.A.1', '3.B.2']));
+    expect(const ResultadoCante(temaCantado: '3.A.1').toJson().containsKey('otrosCantados'), isFalse);
+  });
+
   test('clase suelta cogida: el alumno queda con uid (suelto) y los cambios le llegan', () async {
     final db = FakeFirebaseFirestore();
     final prep = await prepRepo(db, sesion('paula', 'Paula'));

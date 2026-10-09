@@ -53,7 +53,9 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(widget.titulo, style: context.textos.titleMedium),
           const SizedBox(height: 12),
-          if (widget.opciones.isNotEmpty)
+          if (widget.inicial.otrosCantados.isNotEmpty)
+            Text('Temas cantados: ${widget.inicial.temasCantados.join(' y ')}', style: context.textos.titleSmall)
+          else if (widget.opciones.isNotEmpty)
             DropdownButtonFormField<String>(
               initialValue: codigos.contains(_tema) ? _tema : null,
               isExpanded: true,
@@ -94,7 +96,8 @@ class _ResultadoSheetState extends State<_ResultadoSheet> {
                   context,
                   ResultadoCante(
                     sorteados: widget.inicial.sorteados,
-                    temaCantado: _tema,
+                    temaCantado: widget.inicial.otrosCantados.isNotEmpty ? widget.inicial.temaCantado : _tema,
+                    otrosCantados: widget.inicial.otrosCantados,
                     // Si no se tocan los minutos se conserva el tiempo exacto del cronómetro.
                     segundos: min == null ? 0 : (min == (widget.inicial.segundos / 60).round() ? widget.inicial.segundos : min * 60),
                     valoracion: _valoracion,

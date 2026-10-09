@@ -271,7 +271,8 @@ Future<void> sincronizarRed(Ref ref) async {
   if (!red.conSesion) return;
   try {
     for (final s in await red.misPeticiones()) {
-      if (!s.cogida || plan.cantes().any((c) => c.id == 'sust_${s.id}')) continue;
+      // Aunque se haya borrado: si no, una clase suelta quitada volvería a salir.
+      if (!s.cogida || plan.tieneCante('sust_${s.id}')) continue;
       final contacto = await red.contacto(s.id, 'preparador');
       final c = s.canteDelAlumno(nombreSustituto: contacto?.nombre);
       await plan.guardarCante(c.copyWith(notas: [if (s.notas.isNotEmpty) s.notas, if (contacto != null) 'Contacto: ${contacto.nombre} · ${contacto.telefono}'].join('\n')));

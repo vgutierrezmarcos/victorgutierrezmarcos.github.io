@@ -17,6 +17,12 @@ const grosores = [3, 6, 12];
 /// papel por defecto (alumno y preparador).
 const coloresPizarra = [0xFF2E7D9A, 0xFFC0662B, 0xFF1F1F1F, 0xFF5F2987, 0xFF2E7D32, 0xFFC62828];
 
+/// Los cuatro colores a un toque: azul, negro, rojo y verde. Por defecto, el
+/// alumno escribe en azul y el preparador en rojo; cualquier otro color se
+/// elige con la paleta. Cada trazo guarda su color, así el otro lo ve igual.
+const coloresRapidos = [0xFF1E5AA8, 0xFF1F1F1F, 0xFFC62828, 0xFF2E7D32];
+const nombresColoresRapidos = ['Azul', 'Negro', 'Rojo', 'Verde'];
+
 /// Páginas como mucho por clase.
 const maxPaginas = 10;
 

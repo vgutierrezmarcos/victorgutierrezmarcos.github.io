@@ -15,8 +15,8 @@ import '../inicio/permisos_sheet.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
 ///
-/// Con [alumnos] es el formulario de una sesión de preparador: se elige a
-/// quién se escucha y se crea una sesión por alumno (sirve para grupos).
+/// Con [alumnos] es el formulario de una sesión de preparador: se elige al
+/// alumno (uno solo: las clases son individuales).
 class CanteFormPage extends ConsumerStatefulWidget {
   const CanteFormPage({super.key, this.cante, this.diaInicial, this.alumnos, this.alumnosIniciales = const {}});
   final Cante? cante;
@@ -105,7 +105,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       return;
     }
     if (_sesion && _alumnos.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige al menos un alumno')));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige el alumno')));
       return;
     }
     final nav = Navigator.of(context);
@@ -168,13 +168,16 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             else
               Wrap(spacing: 6, runSpacing: 2, children: [
                 for (final a in widget.alumnos!)
-                  FilterChip(
+                  // Un solo alumno por clase: elegir otro sustituye al anterior.
+                  ChoiceChip(
                     label: Text(a.nombre),
                     selected: _alumnos.contains(a.id),
-                    onSelected: (v) => setState(() => v ? _alumnos.add(a.id) : _alumnos.remove(a.id)),
+                    onSelected: (v) => setState(() {
+                      _alumnos.clear();
+                      if (v) _alumnos.add(a.id);
+                    }),
                   ),
               ]),
-            if (_alumnos.length > 1) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Se crea una clase para cada alumno, a la misma hora.', style: context.textos.labelSmall)),
           ],
           const TituloSeccion('Cuándo'),
           Row(children: [
@@ -207,7 +210,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             ),
           ],
           TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
-          TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Grupo de los jueves, simulacro… (opcional)' : 'Preparador, grupo de cante… (opcional)')),
+          TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Simulacro, repaso del bloque A… (opcional)' : 'Preparador, simulacro… (opcional)')),
           const TituloSeccion('Presencial u online'),
           SelectorModalidad(
             modalidad: _modalidad,

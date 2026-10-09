@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
+import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
@@ -53,19 +55,108 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     messenger.showSnackBar(SnackBar(content: Text(error ?? 'Conectado. Tu preparador ya puede ver tu progreso.')));
   }
 
+  /// Clases pendientes de un preparador en la agenda.
+  List<Cante> _pendientesDe(String preparador) {
+    final ahora = DateTime.now();
+    return ref.read(cantesProvider).where((c) => c.preparador == preparador && c.pendiente && c.fecha.isAfter(ahora)).toList();
+  }
+
+  Future<void> _cancelarPendientes(List<Cante> clases, String motivo) async {
+    final yo = ref.read(usuarioActualProvider)?.uid;
+    await ref.read(cantesProvider.notifier).guardarVarios([for (final c in clases) c.copyWith(estado: EstadoCante.cancelado, motivo: motivo, canceladoPor: yo)]);
+  }
+
   Future<void> _desconectar(VinculoPreparador v) async {
+    final pendientes = _pendientesDe(v.uid);
+    var cancelar = true;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => StatefulBuilder(
+        builder: (d, set) => AlertDialog(
+          title: const Text('¿Dejar de compartir?'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'),
+            if (pendientes.isNotEmpty)
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                value: cancelar,
+                onChanged: (x) => set(() => cancelar = x ?? false),
+                title: Text('Cancelar sus ${pendientes.length} ${pendientes.length == 1 ? 'clase pendiente' : 'clases pendientes'}'),
+              ),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar de compartir')),
+          ],
+        ),
+      ),
+    );
+    if (ok != true) return;
+    if (cancelar && pendientes.isNotEmpty) await _cancelarPendientes(pendientes, 'Has dejado de compartir con tu preparador');
+    await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+  }
+
+  /// Quitar a un preparador que te cogió clases sueltas: pierde el acceso a
+  /// esas clases y salen de la agenda las que no se han hecho.
+  Future<void> _olvidarSustituto(String uid, String nombre) async {
+    final messenger = ScaffoldMessenger.of(context);
     final ok = await showDialog<bool>(
       context: context,
       builder: (d) => AlertDialog(
-        title: const Text('¿Dejar de compartir?'),
-        content: Text('${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'),
+        title: Text('¿Quitar a $nombre?'),
+        content: const Text('Dejará de tener acceso a las clases sueltas que te cogió (cronómetro, pizarra y temas). Las que estén pendientes se cancelan y salen de tu agenda; las ya hechas se quedan en tu diario.'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
-          FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar de compartir')),
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+          FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
         ],
       ),
     );
-    if (ok == true) await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+    if (ok != true) return;
+    try {
+      final suyas = ref.read(cantesProvider).where((c) => c.preparador == uid && c.sustitucion != null && !c.hecho).toList();
+      await _cancelarPendientes(suyas.where((c) => c.pendiente).toList(), 'Has quitado a este preparador');
+      await ref.read(redRepoProvider).olvidarSustituto(uid);
+      final notifier = ref.read(cantesProvider.notifier);
+      for (final c in suyas) {
+        await notifier.borrar(c);
+      }
+      ref.invalidate(misPeticionesProvider);
+      messenger.showSnackBar(SnackBar(content: Text('$nombre ya no tiene acceso a tus clases.')));
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('No se pudo (${textoError(e)}).')));
+    }
+  }
+
+  /// Preparadores (sin conexión con código) que te han cogido clases sueltas.
+  List<Widget> _sustitutos(BuildContext context, List<VinculoPreparador> vinculos) {
+    final todas = ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[];
+    final enlazados = {for (final v in vinculos) v.uid};
+    final porPreparador = <String, List<Sustitucion>>{};
+    for (final s in todas.where((s) => s.cogida && s.cogidaPor != null && s.cogidaPor!.isNotEmpty && !enlazados.contains(s.cogidaPor))) {
+      porPreparador.putIfAbsent(s.cogidaPor!, () => []).add(s);
+    }
+    if (porPreparador.isEmpty) return const [];
+    return [
+      const TituloSeccion('Preparadores de tus clases sueltas'),
+      for (final e in porPreparador.entries)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Tarjeta(
+            padding: const EdgeInsets.fromLTRB(14, 8, 8, 8),
+            child: Row(children: [
+              PuntoPersona(e.key, tamano: 14),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(e.value.first.cogidaPorNombre.isEmpty ? 'Preparador' : e.value.first.cogidaPorNombre, style: context.textos.titleSmall),
+                  Text('${e.value.length} ${e.value.length == 1 ? 'clase suelta' : 'clases sueltas'}. Solo ve esas clases.', style: context.textos.labelSmall),
+                ]),
+              ),
+              TextButton(onPressed: () => _olvidarSustituto(e.key, e.value.first.cogidaPorNombre.isEmpty ? 'este preparador' : e.value.first.cogidaPorNombre), child: const Text('Quitar')),
+            ]),
+          ),
+        ),
+    ];
   }
 
   @override
@@ -113,6 +204,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
                   ]),
                 ),
               ),
+            ..._sustitutos(context, vinculos),
             if (vinculos.isEmpty || _otroPreparador)
               Tarjeta(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

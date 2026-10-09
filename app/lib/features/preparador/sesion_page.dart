@@ -14,6 +14,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/cantar_page.dart';
 import '../cantar/pizarra_page.dart';
+import '../cantar/relojes_alumnos.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../plan/modalidad.dart';
@@ -170,7 +171,7 @@ class SesionPage extends ConsumerWidget {
           ],
         ),
       );
-      if (ok == true) await guardar(s.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim()), mensaje: 'Clase cancelada.');
+      if (ok == true) await guardar(s.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim(), canceladoPor: repo.uid), mensaje: 'Clase cancelada.');
     }
 
     Future<void> cambiarDuracion() async {
@@ -271,7 +272,13 @@ class SesionPage extends ConsumerWidget {
                 if (s.cancelado) Etiqueta('Cancelada', color: context.esquema.error),
                 if (!s.hecho) Icon(Icons.edit_outlined, size: 18, color: context.colores.textoClaro),
               ]),
+              if (s.cancelado && alumno?.uid != null && s.canceladoPor == alumno!.uid) Text('La ha cancelado ${alumno.nombre} desde su app.', style: context.textos.bodySmall?.copyWith(color: context.esquema.error)),
               if (s.cancelado && s.motivo.isNotEmpty) Text('Motivo: ${s.motivo}', style: context.textos.bodySmall),
+              if (s.cancelado)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: OutlinedButton.icon(onPressed: borrar, icon: const Icon(Icons.delete_outline, size: 18), label: const Text('Borrar la clase')),
+                ),
               if (s.pendiente) Text(s.fecha.isAfter(ahora) ? 'Empieza ${cuentaAtras(s.fecha)}' : 'Pendiente de valorar', style: context.textos.headlineSmall?.copyWith(color: context.esquema.primary)),
               Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${descripcionBolsa(s)} · ${textoDuracion(s.minutos)}', style: context.textos.bodySmall),
               if (s.notas.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(s.notas, style: context.textos.bodyMedium)),
@@ -327,20 +334,19 @@ class SesionPage extends ConsumerWidget {
             const SizedBox(height: 10),
             // En la clase se cantan los temas mandados antes (o se cronometra el
             // dictamen); los temas no se sortean desde aquí.
+            // El cronómetro de la clase (compartido con el alumno, si tiene la app).
             Row(children: [
-              if (dictamen || mandadosLlegados) ...[
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: alumno == null ? null : () => cantar(conMandados: mandadosLlegados),
-                    icon: Icon(dictamen ? Icons.timer_outlined : Icons.mic),
-                    label: Text(dictamen ? 'Cronometrar' : 'Cantar los temas mandados'),
-                  ),
+              Expanded(
+                child: FilledButton.icon(
+                  onPressed: alumno == null ? null : () => cantar(conMandados: mandadosLlegados && !dictamen),
+                  icon: Icon(mandadosLlegados && !dictamen ? Icons.mic : Icons.timer_outlined),
+                  label: Text(mandadosLlegados && !dictamen ? 'Cantar los temas mandados' : 'Cronometrar'),
                 ),
-                const SizedBox(width: 10),
-                OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
-              ] else
-                Expanded(child: OutlinedButton.icon(onPressed: valorar, icon: const Icon(Icons.star_outline, size: 18), label: const Text('Valorar la clase'))),
+              ),
+              const SizedBox(width: 10),
+              OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
+            TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),
           ],
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[
@@ -386,7 +392,7 @@ class SesionPage extends ConsumerWidget {
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                if (r.temaCantado != null) TextoTema(r.temaCantado!, temario?.tema(r.temaCantado!)?.titulo ?? '', color: ref.watch(estructuraProvider).valueOrNull?.colorDe(r.temaCantado!)),
+                for (final t in r.temasCantados) TextoTema(t, temario?.tema(t)?.titulo ?? '', color: ref.watch(estructuraProvider).valueOrNull?.colorDe(t)),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),
