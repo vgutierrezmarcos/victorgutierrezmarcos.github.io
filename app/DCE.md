@@ -81,6 +81,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Manuel (se lo ha dicho Víctor; lo lleva él): su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
 - [x] 12 testers apuntados a la prueba cerrada desde el 8 oct. a las 11:30 (enlace: `https://play.google.com/apps/testing/es.victorgutierrezmarcos.tcee_app`). Conviene llegar a 15-20 por si alguien se sale.
 
+**Desde el 9 oct. todo se trabaja en `main`** (por decisión de Víctor): la rama `dce` quedó igual que `main` (`ba0d78c`) y ya no se usa. Las referencias a `dce` de abajo son históricas.
+
 **Lanzado el 8 oct. (18:50), antes de lo previsto, a petición de Víctor:** `dce` fusionada con `main` y publicada (`484cae3`), APK 1.14.2 firmado por Google en `app-latest`, versión web 1.15.1 en `/app/abrir/`, política y condiciones públicas. Por decisión de Víctor, **la portada y /oposicion no enlazan a la app** (sin `app-banner.js`; la app se llega por `/app/` y por la web de Manuel). Los pasos de abajo quedan como referencia para futuras publicaciones.
 
 **El día de publicar (unos 20 minutos):**
