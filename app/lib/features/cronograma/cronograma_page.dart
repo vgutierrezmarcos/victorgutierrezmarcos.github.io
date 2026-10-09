@@ -13,6 +13,7 @@ import 'importar_cronograma.dart';
 import '../../widgets/selector_temas.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Cronograma de la vuelta en curso: progreso, retraso con
 /// replanificación, semanas con sus temas, propuestas del preparador y ajustes.
@@ -47,7 +48,7 @@ class CronogramaPage extends ConsumerWidget {
 
     if (c == null || estado == null) {
       return Scaffold(
-        appBar: BarraWeb(title: const Text('Cronograma')),
+        appBar: BarraWeb(title: const Text('Cronograma'), actions: const [BotonVideoAyuda('cronograma')]),
         body: ListaAdaptable(children: [
           const SizedBox(height: 10),
           Tarjeta(
@@ -90,6 +91,7 @@ class CronogramaPage extends ConsumerWidget {
       appBar: BarraWeb(
         title: const Text('Cronograma'),
         actions: [
+          const BotonVideoAyuda('cronograma'),
           PopupMenuButton<String>(
             onSelected: (v) async {
               switch (v) {

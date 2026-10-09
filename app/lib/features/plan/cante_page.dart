@@ -20,6 +20,7 @@ import 'cante_form_page.dart';
 import 'cantes_util.dart';
 import 'modalidad.dart';
 import 'resultado_sheet.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Detalle de un cante: cuenta atrás, temas que entran, apuntes pendientes
 /// de esos temas y, una vez hecho, cómo fue.
@@ -78,6 +79,7 @@ class CantePage extends ConsumerWidget {
       appBar: BarraWeb(
         title: Text(tituloCante(c)),
         actions: [
+          if (c.dePreparador) const BotonVideoAyuda('clase'),
           if (mia) IconButton(tooltip: 'Editar', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: c)))),
           PopupMenuButton<String>(
             onSelected: (v) async {

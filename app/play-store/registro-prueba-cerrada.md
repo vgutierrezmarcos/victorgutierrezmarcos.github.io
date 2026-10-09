@@ -31,6 +31,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | 9 oct. 2026 | 1.15.1 (25) | Buscar preparador (el preparador dice si admite alumnos; el opositor publica lo que busca sin su nombre y escribe él a quien le interese; «encaja» en palabras, nunca una nota), fichas de alumno que se unen, temas en clases sueltas, «Empezar el esquema» arranca el cronómetro con cuenta atrás en el aviso (también al preparador), un tema por clase por defecto en TCEE, pizarra: trazo donde se toca, colores y borrador. |
 | (pendiente) | 1.15.3 (27) | La 1.15.1 más: en la ficha de la clase lo principal es mandar los temas antes (desaparece «Sortear y cantar»); el botón «Ver» de algunos avisos abría una página «Not found» sin salida (arreglado; cualquier ruta desconocida lleva a Hoy). (La 1.15.2 (26) no se subió.) |
 | (pendiente) | 1.15.4 (28) | La 1.15.3 más: clases sueltas que no convierten al alumno en tuyo y a las que siempre se pueden mandar temas, código de preparador fijo, solicitudes de verificación que no fallan, avisos en la versión web y protección frente a versiones antiguas. |
+| (pendiente) | 1.15.5 (29) | La 1.15.4 más: «Más → Ayuda en vídeo» y un botón ▶ en la cabecera de las pantallas principales, que abren vídeos de menos de un minuto (cómo se reserva una clase, la clase suelta, el cronograma, la clase con el preparador…). |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -105,6 +106,9 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Solicitudes de verificación**: no se quedan colgadas sin conexión (se envían solas al volver), no se pierde el preparador propio si falla, la pantalla dice si ya estás verificado o tienes una pendiente (y deja cambiarla), y a quien se le retiró la verificación la revisa la administración. Las reglas comprueban cada campo, así que toda solicitud que llega se puede aprobar.
 - **Versión web igual que la app**: avisos del navegador con la web abierta (los mismos que en el móvil), «Recargar» cuando hay versión nueva y nunca una versión vieja guardada (se veían las rachas, ya quitadas).
 - **Versión mínima**: una versión demasiado antigua deja de sincronizar y pide actualizar (`versionMinima` en `app-config.json`).
+
+### 9 oct. 2026 (para la 1.15.5)
+- **Ayuda en vídeo**, para que todo sea fácil de seguir: once vídeos de ayuda, verticales y de menos de un minuto (reservar clase, pedir una clase suelta, conectar con el preparador, buscar preparador, cronograma, la clase con el preparador; y, para preparadores, alta, huecos y reservas, programar una clase y mandar los temas, coger una clase suelta y compartir materiales). Están en la página de la app («Cómo se usa») y la app los abre desde «Más → Ayuda en vídeo» y desde el botón ▶ de cada pantalla.
 
 (Seguir añadiendo aquí, con fecha.)
 

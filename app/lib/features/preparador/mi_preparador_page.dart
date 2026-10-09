@@ -17,6 +17,7 @@ import 'verificacion_page.dart';
 import 'red_widgets.dart';
 import 'reservas.dart';
 import 'sustituciones.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Mi preparador: el lado del opositor. Conectar con su preparador (o con
 /// varios), reservar clase y pedir una clase suelta si se la cancelan.
@@ -80,7 +81,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
 
     return Scaffold(
-      appBar: const BarraWeb(title: Text('Mi preparador')),
+      appBar: const BarraWeb(title: Text('Mi preparador'), actions: [BotonVideoAyuda('conectar-preparador')]),
       body: RefreshIndicator(
         onRefresh: () async => refrescarRedDesdeWidget(ref),
         child: ListaAdaptable(

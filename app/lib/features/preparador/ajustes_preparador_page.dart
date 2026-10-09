@@ -16,6 +16,7 @@ import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 import '../inicio/permisos_sheet.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Ajustes del preparador: nombre, teléfono para las sustituciones, avisos y
 /// huecos libres que sus alumnos pueden reservar (desactivado por defecto).
@@ -85,7 +86,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Ajustes de preparador')),
+      appBar: BarraWeb(title: const Text('Ajustes de preparador'), actions: const [BotonVideoAyuda('huecos-reservas')]),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [

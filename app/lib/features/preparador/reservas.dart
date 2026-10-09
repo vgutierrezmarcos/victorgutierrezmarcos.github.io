@@ -11,6 +11,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import 'ajustes_preparador_page.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Reserva pedida por un alumno, con Aceptar / Rechazar (lado del preparador).
 class FilaReservaPedida extends ConsumerStatefulWidget {
@@ -105,7 +106,7 @@ class ReservarPage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: BarraWeb(title: Text('Reservar con $nombre')),
+      appBar: BarraWeb(title: Text('Reservar con $nombre'), actions: const [BotonVideoAyuda('reservar-clase')]),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(huecosDeProvider(preparador.uid));

@@ -22,6 +22,7 @@ import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Temas que entran en la sesión de un alumno: «los estudiados» son los suyos.
 List<Tema> temasDeSesion(Cante sesion, Alumno alumno, Temario temario) => temasDeCante(sesion, temario, Ajustes(temasEstudiados: alumno.temas.toSet()));
@@ -233,6 +234,7 @@ class SesionPage extends ConsumerWidget {
       appBar: BarraWeb(
         title: Text(alumno == null ? 'Clase' : (alumno.suelto ? '${alumno.nombre} · clase suelta' : alumno.nombre)),
         actions: [
+          const BotonVideoAyuda('programar-clase'),
           IconButton(tooltip: 'Editar todo', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: s, alumnos: [...ref.read(misAlumnosProvider), if (alumno != null && alumno.suelto) alumno])))),
           PopupMenuButton<String>(
             onSelected: (v) async {

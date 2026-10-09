@@ -12,6 +12,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'materiales_widgets.dart';
 import 'alta_page.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Materiales que el preparador comparte con sus alumnos: enlaces (Drive,
 /// PDF en la web, vídeos…) con un título y una nota, para todos sus alumnos
@@ -55,7 +56,7 @@ class MaterialesPage extends ConsumerWidget {
     return Scaffold(
       appBar: BarraWeb(
         title: const Text('Materiales para tus alumnos'),
-        actions: [if (verificado) IconButton(tooltip: 'Compartir material', icon: const Icon(Icons.add), onPressed: () => ir(const MaterialFormPage()))],
+        actions: [const BotonVideoAyuda('materiales'), if (verificado) IconButton(tooltip: 'Compartir material', icon: const Icon(Icons.add), onPressed: () => ir(const MaterialFormPage()))],
       ),
       floatingActionButton: verificado ? FloatingActionButton.extended(onPressed: () => ir(const MaterialFormPage()), icon: const Icon(Icons.add_link), label: const Text('Material')) : null,
       body: RefreshIndicator(

@@ -10,6 +10,7 @@ import '../../data/models/red.dart';
 import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Alta como preparador en un solo paso: qué es ser preparador en la app y el
 /// formulario que fija el papel de preparador y pide la verificación a la vez.
@@ -180,7 +181,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
         );
 
     return Scaffold(
-      appBar: BarraWeb(title: Text(widget.soloVerificacion ? 'Pedir la verificación' : 'Alta de preparador')),
+      appBar: BarraWeb(title: Text(widget.soloVerificacion ? 'Pedir la verificación' : 'Alta de preparador'), actions: const [BotonVideoAyuda('empezar-preparador')]),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [

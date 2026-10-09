@@ -16,6 +16,7 @@ import '../../widgets/selector_temas.dart';
 import 'directorio_page.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
+import '../mas/ayuda_videos.dart';
 
 String _cuando(DateTime f) => DateFormat("EEEE d 'de' MMMM 'a las' HH:mm", 'es').format(f);
 
@@ -131,7 +132,7 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
     final ordenados = [for (final e in ref.watch(directorioOrdenadoProvider)) e.$2]..sort((a, b) => (b.ejercicios.contains(_ejercicio) ? 1 : 0) - (a.ejercicios.contains(_ejercicio) ? 1 : 0));
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Pedir una clase suelta')),
+      appBar: BarraWeb(title: const Text('Pedir una clase suelta'), actions: const [BotonVideoAyuda('clase-suelta')]),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
@@ -408,7 +409,7 @@ class TablonPage extends ConsumerWidget {
     final sesiones = ref.watch(sesionesProvider);
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Clases sueltas')),
+      appBar: BarraWeb(title: const Text('Clases sueltas'), actions: const [BotonVideoAyuda('coger-clase')]),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(tablonProvider);

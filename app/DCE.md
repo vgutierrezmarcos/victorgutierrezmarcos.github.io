@@ -118,6 +118,11 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Víctor: en el navegador, abrir `/app/abrir/` y comprobar que ya no salen rachas (se quita la versión vieja guardada); permitir los avisos y ver que llegan con la web abierta.
 - [ ] Cuando la 1.15.4 esté en Play y en `app-latest`: poner `"versionMinima": "1.15.4"` en `oposicion/app-config.json` (las versiones anteriores dejan de sincronizar y piden actualizar). Las 1.15.3 y anteriores no leen ese campo: para ellas, las fichas de clase suelta ya van aparte (`alumnosSueltos`) y la clase recupera al alumno sola.
 
+**Vídeos de ayuda (9 oct.)**: 11 vídeos verticales de menos de un minuto en `promo/ayuda/` (guiones en `promo/ayuda/GUIONES.md`; cómo se rehacen, en el README).
+- [x] Los 11 vídeos montados (28-47 s cada uno) y botón ▶ en las pantallas (9 oct.).
+- [x] Tests (181) y prueba en la versión web; versión web 1.15.5 (29) en `app/abrir/`; vídeos publicados con la sección «Cómo se usa» de `/app/` (9 oct.).
+- [ ] Compilar el `.aab` 1.15.5 (29) y subirlo a la prueba cerrada (ya anotado en el registro).
+
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).
