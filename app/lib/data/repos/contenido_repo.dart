@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../../core/cache_http.dart';
 import '../models/estructura.dart';
+import '../models/frecuencia_test.dart';
 import '../models/oposicion.dart';
 import '../models/pregunta.dart';
 import '../models/temario.dart';
@@ -20,6 +21,17 @@ class ContenidoRepo {
       return Bloques.fromJson(await _http.json(oposicion.urlBloques, preferirCache: !forzar, forzar: forzar));
     } catch (_) {
       return Bloques.vacio;
+    }
+  }
+
+  /// Frecuencia de cada tema en el test. Solo en TCEE (sus temas son los del
+  /// tercer ejercicio de TCEE); sin descargar todavía, null.
+  Future<FrecuenciaTest?> frecuenciaTest({bool forzar = false}) async {
+    if (!oposicion.esPrincipal) return null;
+    try {
+      return FrecuenciaTest.fromJson(Map<String, dynamic>.from(await _http.json(oposicion.urlFrecuenciaTest, preferirCache: !forzar, forzar: forzar) as Map));
+    } catch (_) {
+      return null;
     }
   }
 
@@ -74,7 +86,7 @@ class ContenidoRepo {
 
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
-    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura]) {
+    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest]) {
       await _http.refrescar(u);
     }
   }

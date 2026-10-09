@@ -6,6 +6,7 @@ import '../../data/models/oposicion.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../organizacion/probabilidad_test_page.dart';
 import 'graficos_probabilidad.dart';
 import 'probabilidades.dart';
 import 'sorteo.dart';
@@ -68,6 +69,16 @@ class _ProbabilidadesPageState extends ConsumerState<ProbabilidadesPage> {
               child: Text('Mueve los deslizadores para ver qué pasaría si te supieras más o menos temas de cada parte.', style: context.textos.bodySmall),
             ),
             for (final ej in ejercicios) ..._ejercicio(context, oposicion, ej, t, partes(ej), config),
+            // El test del primer ejercicio va aparte: no es un sorteo de temas.
+            if (oposicion.esPrincipal) ...[
+              const TituloSeccion('Primer ejercicio: el test'),
+              FilaEnlace(
+                icono: Icons.fact_check_outlined,
+                titulo: 'Probabilidad de aprobar el test',
+                subtitulo: 'Al azar, pregunta a pregunta o con tus temas, y qué temas caen más',
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+              ),
+            ],
             // Todas juntas al final, con la total: arriba a veces pasa desapercibida.
             if (ejercicios.length > 1) ...[
               const TituloSeccion('En resumen'),

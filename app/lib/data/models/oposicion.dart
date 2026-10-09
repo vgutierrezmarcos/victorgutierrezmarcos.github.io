@@ -246,6 +246,8 @@ class Oposicion {
   String get urlTest => identical(_oposicionTest, this) ? '$_base/$rutaTest' : _oposicionTest.urlTest;
   String get urlPreguntas => '$urlTest/preguntas.json';
   String get urlBloques => '$urlTest/bloques.json';
+  /// Preguntas de cada tema en cada examen oficial del test (scripts/frecuencia-test.py).
+  String get urlFrecuenciaTest => '$urlTest/frecuencia_temas.json';
   String get urlImagenesTest => '$urlTest/img';
   String get urlSimuladorWeb => '$urlTest/simulador.html';
   String get urlTemario => '$_base/temario/temario.json';

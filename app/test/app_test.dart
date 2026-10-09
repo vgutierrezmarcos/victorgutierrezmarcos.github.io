@@ -18,6 +18,7 @@ import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/temario.dart';
+import 'package:tcee_app/data/models/frecuencia_test.dart';
 import 'package:tcee_app/data/repos/contenido_repo.dart';
 import 'package:tcee_app/data/repos/descargas_repo.dart';
 import 'package:tcee_app/data/repos/plan_repo.dart';
@@ -519,6 +520,18 @@ void main() {
     await tocar(tester, find.textContaining('· Lucía'));
     expect(find.text('TEMAS QUE ENTRAN (2)'), findsOneWidget);
     expect(find.text('Alumno sin app enlazada'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('probabilidad de aprobar el test: se abre desde Organización y calcula', (tester) async {
+    final f = FrecuenciaTest.fromJson(jsonDecode(File('../oposicion/temario/primer-ejercicio/test/frecuencia_temas.json').readAsStringSync()) as Map<String, dynamic>);
+    overrides = [...overrides, frecuenciaTestProvider.overrideWith((ref) => f)];
+    await arrancar(tester);
+    await pestana(tester, 'Organización');
+    await tocar(tester, find.text('Probabilidad de aprobar el test'));
+    expect(find.text('SIN SABER NINGUNA PREGUNTA'), findsOneWidget);
+    expect(find.text('PREGUNTA A PREGUNTA'), findsOneWidget);
+    expect(find.textContaining('de aprobar'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
 

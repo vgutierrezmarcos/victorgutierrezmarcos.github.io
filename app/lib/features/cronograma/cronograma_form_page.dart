@@ -5,6 +5,7 @@ import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
+import '../../data/models/frecuencia_test.dart';
 import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -44,6 +45,8 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
   bool _intercalar = true;
   int? _cadaN;
   bool _compartir = false;
+  /// Primero los temas que más caen en el test del primer ejercicio (solo 3.º de TCEE).
+  bool _porTest = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +57,13 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
 
     final delEjercicio = {for (final t in temario.todosLosTemas.where((t) => t.ejercicio == _ejercicio)) t.codigo};
     final temas = _todos ? delEjercicio : _elegidos.where(delEjercicio.contains).toSet();
-    final orden = ordenInicial(estructura, _ejercicio, temas, intercalar: _intercalar, cadaN: _cadaN);
+    final frecuencia = _ejercicio == 3 ? ref.watch(frecuenciaTestProvider).valueOrNull : null;
+    final base = ordenInicial(estructura, _ejercicio, temas, intercalar: _intercalar && !_porTest, cadaN: _cadaN);
+    final orden = _porTest && frecuencia != null ? primeroLoQueMasCae(base, frecuencia.frecuencias(PesoRecientes.mas)) : base;
     final dia = _diaCante;
     final primerCante = dia == null ? null : (_primerCante != null && _primerCante!.weekday == dia ? _primerCante! : _proximo(dia));
     final inicio = primerCante ?? lunesDe(_estaSemana ? DateTime.now() : DateTime.now().add(const Duration(days: 7)));
-    final c = crearCronograma(id: nuevoId(), ejercicio: _ejercicio, temas: orden, inicio: inicio, porSemana: _porSemana, fin: _porFecha ? _fin : null, intercalar: _intercalar, cadaN: _cadaN, compartir: _compartir, diaCante: dia);
+    final c = crearCronograma(id: nuevoId(), ejercicio: _ejercicio, temas: orden, inicio: inicio, porSemana: _porSemana, fin: _porFecha ? _fin : null, intercalar: _intercalar && !_porTest, cadaN: _cadaN, compartir: _compartir, diaCante: dia);
     final estado = estadoDe(c, DateTime.now());
     final auto = unoDeCada(estructura, _ejercicio, orden);
 
@@ -202,14 +207,21 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
           child: Column(children: [
             SwitchListTile(
               value: _intercalar,
-              onChanged: (v) => setState(() => _intercalar = v),
+              onChanged: _porTest ? null : (v) => setState(() => _intercalar = v),
               title: Text(Oposiciones.actual.ejercicio(_ejercicio)?.intercalar?.$1 ?? 'Intercalar las partes'),
               subtitle: Text(
                 Oposiciones.actual.ejercicio(_ejercicio)?.intercalar?.$2 ?? 'Alternadas para no pasar semanas seguidas con una sola parte.',
                 style: context.textos.labelSmall,
               ),
             ),
-            if (_intercalar && auto != null)
+            if (frecuencia != null)
+              SwitchListTile(
+                value: _porTest,
+                onChanged: (v) => setState(() => _porTest = v),
+                title: const Text('Primero lo que más cae en el test'),
+                subtitle: Text('Los temas con más preguntas en los exámenes oficiales del test van al principio (sin intercalar). Útil si el test del primer ejercicio es lo próximo.', style: context.textos.labelSmall),
+              ),
+            if (_intercalar && auto != null && !_porTest)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 4),
                 child: DropdownButtonFormField<int?>(

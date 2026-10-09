@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/constants.dart';
 import '../../core/providers.dart';
+import '../../data/models/frecuencia_test.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/pregunta.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../organizacion/probabilidad_test_page.dart';
 import 'motor_test.dart';
 
 /// Fase de selección del simulador: temas, exámenes, nº de preguntas, tiempo y baremo.
@@ -76,6 +78,16 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                     ),
                     const Icon(Icons.chevron_right),
                   ]),
+                ),
+              if (ref.watch(oposicionProvider).esPrincipal)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: FilaEnlace(
+                    icono: Icons.fact_check_outlined,
+                    titulo: 'Probabilidad de aprobar el test',
+                    subtitulo: 'Cuánto te da cada estrategia y qué temas caen más',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+                  ),
                 ),
               TituloSeccion('Selección', accion: SegmentedButton<String>(showSelectedIcon: false,
                 segments: const [
@@ -198,6 +210,13 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
             TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: const {})), child: const Text('Todos')),
             for (final letra in partes.keys.toList()..sort())
               TextButton(onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: partes[letra]!.toSet())), child: Text('Parte $letra')),
+            // Los temas que más caen en los exámenes oficiales (frecuencia_temas.json).
+            if (ref.watch(frecuenciaTestProvider).valueOrNull case final f?)
+              for (final n in const [20, 40])
+                TextButton(
+                  onPressed: () => setState(() => _cfg = _cfg.copyWith(temas: f.masPreguntados(PesoRecientes.mas).take(n).where(b.temas.containsKey).toSet())),
+                  child: Text('$n más preguntados'),
+                ),
           ]),
           Text(_cfg.temas.isEmpty ? 'Todos los temas' : '${_cfg.temas.length} temas', style: context.textos.bodySmall),
         ]),

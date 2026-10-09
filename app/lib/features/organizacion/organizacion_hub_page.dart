@@ -10,6 +10,7 @@ import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
 import '../plan/cantes_util.dart';
 import '../temario/tema_page.dart';
+import 'probabilidad_test_page.dart';
 
 /// Organización: lo que sirve para planificar la oposición, como la sección
 /// «Organización» de la web. Tu plan (cronograma, probabilidades, convocatoria
@@ -67,6 +68,13 @@ class OrganizacionHubPage extends ConsumerWidget {
                 : (prob == null || prob.temasSabidos == 0 ? 'Qué probabilidad tienes según los temas que te sabes' : 'De que salga un tema que llevas: ${porcentaje(prob.total)}'),
             onTap: () => context.go('/organizacion/probabilidades'),
           ),
+          if (oposicion.esPrincipal)
+            FilaEnlace(
+              icono: Icons.fact_check_outlined,
+              titulo: 'Probabilidad de aprobar el test',
+              subtitulo: 'Al azar, pregunta a pregunta o con tus temas, y qué temas caen más',
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+            ),
           FilaEnlace(
             icono: Icons.gavel_outlined,
             titulo: 'Proceso selectivo',
