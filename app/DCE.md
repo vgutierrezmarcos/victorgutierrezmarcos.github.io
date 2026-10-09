@@ -112,6 +112,12 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Víctor: `.aab` 1.15.0 (24) subido a la prueba cerrada (8 oct.).
 - [ ] Probar con una cuenta de alumno y otra de preparador: permiso pedido al abrir; cambiar hora y cancelar una clase → el alumno lo ve al instante y recibe «ha movido tu clase»; tocar el aviso abre la clase; mandar 2 temas; pizarra entre los dos; material enlazado; Teams; actualización desde Play.
 
+**Versión 1.15.4 (28): clase suelta, código fijo, solicitudes y web (9 oct.)**
+- [ ] Víctor: publicar las reglas nuevas (`firestore.rules`, 233 casos): solicitudes de verificación validadas (siempre aprobables), reverificación solo por la administración, correo del administrador sin mayúsculas.
+- [ ] Víctor: subir el `.aab` **1.15.4 (28)** a la prueba cerrada y anotarlo en el registro.
+- [ ] Víctor: en el navegador, abrir `/app/abrir/` y comprobar que ya no salen rachas (se quita la versión vieja guardada); permitir los avisos y ver que llegan con la web abierta.
+- [ ] Cuando la 1.15.4 esté en Play y en `app-latest`: poner `"versionMinima": "1.15.4"` en `oposicion/app-config.json` (las versiones anteriores dejan de sincronizar y piden actualizar). Las 1.15.3 y anteriores no leen ese campo: para ellas, las fichas de clase suelta ya van aparte (`alumnosSueltos`) y la clase recupera al alumno sola.
+
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).

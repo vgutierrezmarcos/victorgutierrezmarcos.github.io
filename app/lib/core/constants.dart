@@ -14,6 +14,8 @@ class Urls {
   static final String condiciones = '$base/app/condiciones.html';
   static final String sobreMi = '$base/sobre-mi.html';
   static final String paginaApp = '$base/app/';
+  /// Un vídeo de ayuda (sección «Cómo se usa» de la página de la app).
+  static String videoAyuda(String id) => '$paginaApp#ayuda-$id';
   /// La misma app, compilada para el navegador.
   static final String appWeb = '$base/app/abrir/';
 }

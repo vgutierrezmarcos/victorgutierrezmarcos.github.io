@@ -228,10 +228,21 @@ class PreparadorRepo {
     return j == null ? null : Alumno.fromJson(j);
   }
 
+  /// En la nube, las fichas de las clases sueltas van en su propia colección
+  /// (`alumnosSueltos`), que las versiones anteriores a la 1.15.4 no leen:
+  /// esas versiones no conocen las fichas sueltas, las tomaban por alumnos que
+  /// habían roto el enlace y les quitaban el uid (y con él la clase y los temas).
+  static String _coleccionDe(Alumno a) => a.suelto ? 'alumnosSueltos' : 'alumnos';
+
   Future<void> guardarAlumno(Alumno a) async {
+    final antes = alumno(a.id);
     await _alumnos.put(a.id, a.toJson());
     try {
-      await _docUsuario?.collection('alumnos').doc(a.id).set(a.toJson()).timeout(_esperaNube);
+      final doc = _docUsuario;
+      if (doc == null) return;
+      await doc.collection(_coleccionDe(a)).doc(a.id).set(a.toJson()).timeout(_esperaNube);
+      // Pasa de suelta a alumno suyo (o al revés): fuera de la otra colección.
+      if (antes != null && antes.suelto != a.suelto) await doc.collection(_coleccionDe(antes)).doc(a.id).delete().timeout(_esperaNube);
     } catch (_) {}
   }
 
@@ -811,14 +822,23 @@ class PreparadorRepo {
     required Map<String, dynamic> Function(T) escribir,
     required DateTime? Function(T) marca,
     required String Function(T) id,
+    bool Function(T)? deEsta,
   }) async {
     final doc = _docUsuario;
     if (doc == null) return false;
     try {
       final snap = await doc.collection(nombre).get();
       final nube = {for (final d in snap.docs) d.id: leer({...d.data(), 'id': d.id})};
-      final locales = {for (final v in caja.values) id(leer(v as Map)): leer(v)};
+      final todos = {for (final v in caja.values) id(leer(v as Map)): leer(v)};
+      // Con [deEsta], la caja se reparte entre varias colecciones: lo local
+      // que va en otra no se sube aquí ni se pisa con lo que haya aquí (y si
+      // aquí quedó una copia, se borra).
+      final locales = deEsta == null ? todos : {for (final e in todos.entries) if (deEsta(e.value)) e.key: e.value};
       for (final k in {...nube.keys, ...locales.keys}) {
+        if (deEsta != null && locales[k] == null && todos[k] != null) {
+          await doc.collection(nombre).doc(k).delete();
+          continue;
+        }
         final n = nube[k], l = locales[k];
         final mn = n == null ? null : (marca(n) ?? DateTime(0)), ml = l == null ? null : (marca(l) ?? DateTime(0));
         if (l == null || (mn != null && mn.isAfter(ml!))) {
@@ -837,7 +857,8 @@ class PreparadorRepo {
     if (!conSesion) return;
     await _sincronizarVinculos();
     await _sincronizarPerfil();
-    await _sincronizarColeccion<Alumno>(nombre: 'alumnos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id);
+    await _sincronizarColeccion<Alumno>(nombre: 'alumnosSueltos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id, deEsta: (a) => a.suelto);
+    await _sincronizarColeccion<Alumno>(nombre: 'alumnos', caja: _alumnos, leer: Alumno.fromJson, escribir: (a) => a.toJson(), marca: (a) => a.updatedAt, id: (a) => a.id, deEsta: (a) => !a.suelto);
     sincronizacionFallida = !await _sincronizarColeccion<Cante>(nombre: 'sesiones', caja: _sesiones, leer: Cante.fromJson, escribir: (c) => c.toJson(), marca: (c) => c.updatedAt, id: (c) => c.id);
     await _sincronizarAlumnosEnlazados();
     await _reintentarCopiasPendientes();

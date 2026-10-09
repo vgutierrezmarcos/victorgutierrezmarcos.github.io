@@ -30,6 +30,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | 8 oct. 2026 | 1.15.0 (24) | Mejoras pedidas por los testers: permisos de avisos al abrir, cambios de clase en tiempo real con aviso, notificaciones que abren la clase, dos temas por clase, clases de 2 h, ficha de la clase editable, Meet o Teams, materiales del preparador, pizarra compartida, orden del directorio, sección Cantes más clara, actualizaciones desde Play. |
 | 9 oct. 2026 | 1.15.1 (25) | Buscar preparador (el preparador dice si admite alumnos; el opositor publica lo que busca sin su nombre y escribe él a quien le interese; «encaja» en palabras, nunca una nota), fichas de alumno que se unen, temas en clases sueltas, «Empezar el esquema» arranca el cronómetro con cuenta atrás en el aviso (también al preparador), un tema por clase por defecto en TCEE, pizarra: trazo donde se toca, colores y borrador. |
 | (pendiente) | 1.15.3 (27) | La 1.15.1 más: en la ficha de la clase lo principal es mandar los temas antes (desaparece «Sortear y cantar»); el botón «Ver» de algunos avisos abría una página «Not found» sin salida (arreglado; cualquier ruta desconocida lleva a Hoy). (La 1.15.2 (26) no se subió.) |
+| (pendiente) | 1.15.4 (28) | La 1.15.3 más: clases sueltas que no convierten al alumno en tuyo y a las que siempre se pueden mandar temas, código de preparador fijo, solicitudes de verificación que no fallan, avisos en la versión web y protección frente a versiones antiguas. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -96,6 +97,14 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Ficha de la clase:** el preparador quiere, sobre todo, mandar los temas antes; la sección «Temas antes de la clase» va ahora justo bajo los botones y desaparece «Sortear y cantar» (en clase, «Cantar los temas mandados» o «Cronometrar»).
 - **Permiso de Calendar retirado desde la cuenta de Google:** al volver a activar el interruptor, la app usaba el token guardado y Google respondía 401 sin volver a pedir el permiso. Ahora, ante un 401, cierra la sesión de Google de la app, vuelve a entrar y pide el permiso con la ventana de Google; la ficha de la clase lo explica si pasa al sincronizar.
 - **Página «Not found» sin salida al tocar «Ver» en un aviso** (clase suelta pedida, reservas, búsquedas): el botón añadía el parámetro de la acción a una ruta sin parámetros y se pedía una ruta inexistente. Arreglado; además, cualquier ruta desconocida lleva a Hoy.
+
+### 9 oct. 2026 (para la 1.15.4)
+- **El preparador no podía mandar los temas en una clase suelta** («Alumno sin app enlazada»): una versión antigua de la app (en otro dispositivo o la web guardada en el navegador) tomaba al alumno de la clase suelta por un alumno que había roto el enlace y le quitaba la cuenta. Ahora esas fichas van aparte en la nube (las versiones antiguas no las leen) y la clase recupera sola al alumno desde la clase suelta cogida.
+- **Coger una clase suelta convertía al alumno en «mi alumno»**: ya no sale en «Mis alumnos» (solo si escribe el código del preparador); se le siguen mandando temas. Una ficha apuntada a mano con el mismo teléfono ya no se toca.
+- **El código del preparador cambiaba** al instalar la app en otro móvil o abrir la web: ahora se recupera el que ya tenía y la reserva es atómica (nunca dos códigos).
+- **Solicitudes de verificación**: no se quedan colgadas sin conexión (se envían solas al volver), no se pierde el preparador propio si falla, la pantalla dice si ya estás verificado o tienes una pendiente (y deja cambiarla), y a quien se le retiró la verificación la revisa la administración. Las reglas comprueban cada campo, así que toda solicitud que llega se puede aprobar.
+- **Versión web igual que la app**: avisos del navegador con la web abierta (los mismos que en el móvil), «Recargar» cuando hay versión nueva y nunca una versión vieja guardada (se veían las rachas, ya quitadas).
+- **Versión mínima**: una versión demasiado antigua deja de sincronizar y pide actualizar (`versionMinima` en `app-config.json`).
 
 (Seguir añadiendo aquí, con fecha.)
 
