@@ -133,9 +133,10 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Probar con alumno y preparador: el alumno cancela una clase (al preparador le llega con aviso) y la quita de su agenda; quitar relaciones desde los dos lados; mandar 2 temas y cantarlos por orden; «Simulación de examen real»; el cronómetro del alumno en el móvil del preparador (ficha de la clase y notificación con cuenta atrás); pizarra con colores entre los dos.
 
 **Test: probabilidad y frecuencia de temas (9 oct.)**: clasificación de Álvaro cruzada con la nuestra (89 reclasificadas), 8 exámenes de 2002-2009 transcritos del PDF escaneado, `frecuencia_temas.json` (`scripts/frecuencia-test.py`), calculadora en la web (`oposicion/probabilidad-test.html`) y en la app 1.15.8 (32).
-- [ ] Víctor: revisar las lecturas dudosas del escaneo (2007 n.º 8 «½ o ¼»; 2002 n.º 4 subíndice; 2005 n.º 8 y 10; fecha de 2004, 26 o 28 de junio; plantilla discutible en 2005 n.º 15, 16 y 23).
-- [ ] Víctor: si aparece, el PDF del examen de la OEP 2025 (de 2026) para meterlo en el simulador (ahora solo cuenta en las estadísticas).
-- [ ] Publicar (web y `app/abrir`) y subir el `.aab` 1.15.8 (32) a la prueba cerrada.
+- [x] Lecturas dudosas del escaneo comprobadas con las cuentas (2007 n.º 8, 2002 n.º 4, 2005 n.º 8, 10, 15, 16 y 23 cuadran con la plantilla). Queda la fecha de 2004 (26 o 28 de junio), sin importancia.
+- [x] Revisión de todo el banco (9 oct.): 6 temas, 19 fórmulas, 4 preguntas con «<» que la web cortaba, saltos de línea en la web y asteriscos sueltos; notas (`nota`, se ven al corregir) en 8 respuestas oficiales desactualizadas o discutibles (2006 n.º 35, 41 y 44; 2011 n.º 21; 2013 n.º 4 y 11; 2005 n.º 22; 2023 n.º 7); quitada la 15 de 2014 (anulada).
+- [x] Examen de marzo de 2026 (OEP 2025) en el simulador (`2026-marzo`, 45 preguntas, 3 y 28 anuladas, 42 «B y C») y en la recopilación `examenes_oficiales_test.pdf`.
+- [ ] Víctor: subir el `.aab` 1.15.8 (32) a la prueba cerrada (está en el Escritorio; web y `app/abrir` ya publicados). La nota de las preguntas se ve en la app a partir de la siguiente versión.
 
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
