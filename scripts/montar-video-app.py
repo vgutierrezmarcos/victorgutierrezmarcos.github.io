@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monta el vídeo promocional de la app (un minuto, 1920 × 1080, con una banda
+Monta el vídeo promocional de la app (noventa segundos, 1920 × 1080, con una banda
 sonora electrónica propia generada aquí) a partir de las capturas de
 app/promo/capturas/.
 
@@ -337,9 +337,22 @@ def entre(t, a, b):
 
 # ===================================================================== Piezas
 
+def _avisos_activados(img):
+    """El interruptor «Avisarme de las novedades» de la captura, encendido."""
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle((823, 1345, 963, 1432), 44, fill=LOGO['fondo_i'])
+    d.ellipse((919 - 32, 1388 - 32, 919 + 32, 1388 + 32), fill=BLANCO)
+    return img
+
+
+# Capturas retocadas: nombre → (captura original, retoque).
+RETOQUES = {'proceso-avisos': ('proceso', _avisos_activados)}
+
+
 def captura(nombre, ancho):
     def crear():
-        img = Image.open(os.path.join(CAPTURAS, f'{nombre}.png')).convert('RGB')
+        original, retoque = RETOQUES.get(nombre, (nombre, lambda i: i))
+        img = retoque(Image.open(os.path.join(CAPTURAS, f'{original}.png')).convert('RGB'))
         return img.resize((ancho, round(img.height * ancho / img.width)), Image.LANCZOS)
     return cache(('captura', nombre, ancho), crear)
 
@@ -767,6 +780,27 @@ def e_hoy(t):
     return img
 
 
+def e_proceso(t):
+    """Novedades del proceso selectivo: la app vigila la página oficial y,
+    cuando sale una lista o una convocatoria, llega el aviso."""
+    img = fondo_noche().copy()
+    rotulo(img, 'PROCESO SELECTIVO', 120, 300, t, color=DORADO_CLARO)
+    titular(img, ['¿Sale una lista?', '*Te *llega *el *aviso.'], 120, 370, t, tam=84, color=BLANCO, acento=DORADO_CLARO, paso=MEDIO / 2)
+    parrafo(img, 'La app revisa la página oficial varias veces al día: convocatorias de cada ejercicio, listas de admitidos y de aprobados. Tocas el aviso y se abre.', 120, 620, t, inicio=0.6, ancho=600, color=CREMA)
+    a = entre(t, 0, 0.7)
+    # Se activan los avisos (justo antes del primero).
+    activado = 'proceso-avisos' if t > PULSO - 0.15 else 'proceso'
+    pegar(img, telefono(activado, 380), 1560, 560 + round(100 * (1 - a)), alfa=a)
+    # Los avisos llegan uno tras otro, a pulso.
+    for i, (av, ini) in enumerate([(aviso('Novedad en el proceso de TCEE', 'Primer ejercicio: Lista de aprobados', VERDE, 580), PULSO),
+                                   (aviso('Novedad en el proceso de DCE', 'Tercer ejercicio: Convocatoria', DORADO, 580), 3 * PULSO),
+                                   (aviso('Novedad en el proceso de TCEE', 'Segundo ejercicio: Convocatoria', DORADO, 580), 5 * PULSO)]):
+        e = entre(t, ini, ini + 0.4)
+        if e > 0:
+            pegar(img, av, 1110, 250 + i * 150 + round(-80 * (1 - e)), alfa=e, escala=0.9 + 0.1 * rebote(e))
+    return img
+
+
 def widget(filas):
     """El widget de Android (DCE): cuenta atrás grande y hasta tres filas."""
     def crear():
@@ -1108,13 +1142,13 @@ def e_pizarra(t):
     c1 = COMPAS
     rotulo(img, 'EN LA CLASE', 120, 150, t, color=DORADO_CLARO)
     titular(img, ['Una pizarra', '*para *los *dos.'], 120, 220, t, tam=96, color=BLANCO, acento=DORADO_CLARO, paso=MEDIO / 2)
-    parrafo(img, 'Lo que dibuja uno lo ve el otro al instante, cada uno con su color. Solo se comparte la pizarra, nada más del móvil. En el móvil, la tableta o el ordenador, con Meet o Teams a la vez.', 120, 470, t, inicio=0.6, ancho=560, color=CREMA)
+    parrafo(img, 'Lo que dibuja uno lo ve el otro al instante, cada uno con su color. Solo se comparte la pizarra, con Meet o Teams a la vez.', 120, 470, t, inicio=0.6, ancho=560, color=CREMA)
     a = entre(t, 0.2, 0.9)
     tab = cache(('tableta', 'pizarra'), lambda: telefono('pizarra', 1040))
     cx, cy = 1300, 620
     pegar(img, tab, cx, cy + round(140 * (1 - a)), alfa=a, escala=0.94 + 0.06 * a)
     # Un trazo dorado que se dibuja sobre la pizarra, como si lo hiciera el otro.
-    u = entre(t, c1, c1 + 2 * PULSO)
+    u = entre(t, 2 * PULSO, c1 + 2 * PULSO)
     if 0 < u:
         d = ImageDraw.Draw(img)
         puntos = []
@@ -1188,13 +1222,14 @@ GUION = [
     (e_gancho, 2, 'fundido'),
     (e_elegir, 5, 'barrido'),
     (e_hoy, 7, 'empuje'),
-    (e_estudiar, 9, 'zoom'),
-    (e_cantes, 11, 'barrido'),
-    (e_organizacion, 14, 'empuje'),
-    (e_mi_preparador, 17, 'zoom'),
-    (e_clases, 20, 'corte'),
-    (e_clase_viva, 23, 'empuje'),
-    (e_pizarra, 26, 'barrido'),
+    (e_proceso, 9, 'corte'),
+    (e_estudiar, 11, 'zoom'),
+    (e_cantes, 13, 'barrido'),
+    (e_organizacion, 16, 'empuje'),
+    (e_mi_preparador, 19, 'zoom'),
+    (e_clases, 22, 'corte'),
+    (e_clase_viva, 25, 'empuje'),
+    (e_pizarra, 28, 'barrido'),
     (e_materiales, 30, 'empuje'),
     (e_preparadores, 33, 'barrido'),
     (e_ordenador, 36, 'empuje'),
@@ -1455,7 +1490,13 @@ def banda_sonora(ruta):
             poner(efectos, _madera(0.18 * h, 480 + 60 * i), t0 + k * (math.pi / 7))
     # Pizarra: el trazo que se dibuja.
     c = inicio(e_pizarra)
-    poner(efectos, _subida(220, 660, 2 * PULSO, 0.025), c + COMPAS)
+    poner(efectos, _subida(220, 660, 4 * PULSO, 0.025), c + 2 * PULSO)
+    # Proceso selectivo: un aviso por novedad.
+    c = inicio(e_proceso)
+    poner(efectos, _toque(0.05), c + PULSO - 0.15)
+    for k in (1, 3, 5):
+        poner(efectos, _campana(_nota(88), 0.06, 1.2), c + k * PULSO)
+        poner(efectos, _campana(_nota(93), 0.06, 1.4), c + k * PULSO + 0.13)
     # Materiales: los ficheros y el aviso.
     c = inicio(e_materiales)
     for i in range(3):

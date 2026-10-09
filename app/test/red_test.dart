@@ -122,8 +122,42 @@ void main() {
     expect(await olga.miVerificacion(), isNull);
     expect((await admin.verificados()).map((v) => v.uid), ['admin']);
     expect((await admin.verificados(incluirRetirados: true)).length, 3);
+    // Olga, retirada, la vuelve a pedir: va solo a la administración.
+    await olga.solicitar(nombre: 'Olga', ejercicios: [5], presentacion: 'Otra vez');
+    final re = (await olga.miSolicitud())!;
+    expect(re.reverificacion, isTrue);
+    expect(re.destinatario, isNull);
+    expect((await db.doc('solicitudesPreparador/olga').get()).data()!['paraTodos'], isFalse);
+    expect((await admin.solicitudesPendientes(admin: true)).single.reverificacion, isTrue);
+    await admin.aprobar((await admin.solicitudesPendientes(admin: true)).single);
+    expect((await olga.miVerificacion())!.avaladoPor, 'admin');
+
     await admin.cambiarActivo(v, activo: true);
     expect(await paula.miVerificacion(), isNotNull);
+    // Ya verificada, no puede pedirla otra vez.
+    expect(() => paula.solicitar(nombre: 'Paula', ejercicios: [3], presentacion: ''), throwsA(isA<ErrorRed>()));
+  });
+
+  test('solicitud: se reenvía cambiada, se retira, se pide tras un rechazo y vuelve a avisar', () async {
+    final db = FakeFirebaseFirestore();
+    final admin = RedRepo(firestore: db, auth: sesion('admin', 'Víctor'));
+    final pepe = RedRepo(firestore: db, auth: sesion('pepe', 'Pepe'));
+    await db.doc('admins/admin').set({'desde': 'consola'});
+    expect(await pepe.solicitar(nombre: 'Pepe', ejercicios: [3], presentacion: 'Uno', modalidad: 'por carta', ciudad: 'x' * 80), isTrue);
+    final primera = (await pepe.miSolicitud())!;
+    expect(primera.modalidad, '', reason: 'una modalidad desconocida no se guarda (las reglas la rechazarían)');
+    expect(primera.ciudad.length, 60);
+    final aviso1 = (await admin.avisosNuevos(vistos: {}, preparador: false, admin: true)).single.id;
+    await pepe.solicitar(nombre: 'Pepe', ejercicios: [3, 4], presentacion: 'Dos');
+    expect((await pepe.miSolicitud())!.presentacion, 'Dos');
+    await admin.rechazar((await admin.solicitudesPendientes(admin: true)).single);
+    expect(await pepe.miSolicitud(), isNull);
+    await Future<void>.delayed(const Duration(milliseconds: 5));
+    await pepe.solicitar(nombre: 'Pepe', ejercicios: [3], presentacion: 'Tres');
+    final aviso2 = (await admin.avisosNuevos(vistos: {aviso1}, preparador: false, admin: true)).single.id;
+    expect(aviso2, isNot(aviso1), reason: 'la nueva solicitud vuelve a avisar');
+    await pepe.retirarSolicitud();
+    expect(await pepe.miSolicitud(), isNull);
   });
 
   test('un alumno no puede enlazar con alguien que no está verificado', () async {
@@ -268,9 +302,9 @@ void main() {
     expect((await admin.solicitudesPendientes(admin: true)).map((s) => s.uid).toSet(), {'nuevo', 'abierto'});
 
     // Avisos: la dirigida, solo a Olga; la abierta, solo al administrador.
-    expect((await olga.avisosNuevos(vistos: {}, preparador: true)).map((a) => a.id), ['verif:tcee', 'sol:nuevo']);
+    expect((await olga.avisosNuevos(vistos: {}, preparador: true)).map((a) => a.id.split(':').take(2).join(':')), ['verif:tcee', 'sol:nuevo']);
     expect(await paula.avisosNuevos(vistos: {'verif:tcee'}, preparador: true), isEmpty);
-    expect((await admin.avisosNuevos(vistos: {}, preparador: false, admin: true)).map((a) => a.id), ['sol:abierto']);
+    expect((await admin.avisosNuevos(vistos: {}, preparador: false, admin: true)).map((a) => a.id.split(':').take(2).join(':')), ['sol:abierto']);
 
     await olga.aprobar((await olga.solicitudesPendientes()).firstWhere((s) => s.uid == 'nuevo'));
     expect((await nuevo.miVerificacion())!.ejercicios, [1]);
@@ -360,6 +394,54 @@ void main() {
     final enAgenda = s.canteDelAlumno();
     expect(enAgenda.preparador, 'paula');
     expect(enAgenda.dePreparador, isTrue);
+  });
+
+  test('clase suelta: el alumno no pasa a «Mis alumnos» ni toca una ficha apuntada a mano', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    // Ficha a mano con el mismo teléfono que el alumno de la clase suelta.
+    await prep.guardarAlumno(Alumno(id: 'mano', nombre: 'Luis (a mano)', telefono: '600 111 222', creado: DateTime.now(), updatedAt: DateTime.now()));
+    final cuando = DateTime.now().add(const Duration(days: 2));
+    final s = Sustitucion(id: 's7', alumno: 'luis', fecha: cuando, estado: EstadoSustitucion.cogida, cogidaPor: 'paula', cogidaPorNombre: 'Paula', temas: const ['3.A.1']);
+    final clase = await prep.sesionDeSustitucion(s, const ContactoRed(nombre: 'Luis', telefono: '600111222'));
+    expect(clase.alumno, 'sust_s7');
+    expect(prep.misAlumnos().map((a) => a.id), ['mano']);
+    final mano = prep.alumno('mano')!;
+    expect(mano.uid, isNull);
+    expect(mano.suelto, isFalse);
+    // Otra clase suelta del mismo alumno va a la misma ficha suelta.
+    final s2 = Sustitucion(id: 's8', alumno: 'luis', fecha: cuando.add(const Duration(days: 7)), estado: EstadoSustitucion.cogida, cogidaPor: 'paula', cogidaPorNombre: 'Paula');
+    expect((await prep.sesionDeSustitucion(s2, const ContactoRed(nombre: 'Luis', telefono: '600111222'))).alumno, 'sust_s7');
+    expect(prep.alumnos().where((a) => a.suelto).length, 1);
+    // Las clases fijas no se generan para fichas sueltas.
+    await prep.guardarAlumno(prep.alumno('sust_s7')!.copyWith(clasesFijas: [ClaseFija(id: 'c', diaSemana: 2, minutoDelDia: 18 * 60, desde: DateTime.now())]));
+    expect(await prep.generarClasesFijas(), 0);
+    // Solo si escribe el código pasa a ser alumno suyo (enlazado).
+    await db.doc('preparadores/paula/alumnos/luis').set({'uid': 'luis', 'nombre': 'Luis'});
+    await prep.sincronizarTodo();
+    expect(prep.alumno('sust_s7')!.enlazado, isTrue);
+    expect(prep.misAlumnos().map((a) => a.id), containsAll(['mano', 'sust_s7']));
+  });
+
+  test('clase suelta: se separa la ficha a mano que la 1.15.3 convirtió en suelta', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    await prep.guardarAlumno(Alumno(id: 'mano', nombre: 'Luis', telefono: '600111222', uid: 'luis', suelto: true, notas: 'Lleva 40 temas', creado: DateTime.now(), updatedAt: DateTime.now()));
+    await prep.guardarSesion(Cante(id: 'sust_s5', fecha: DateTime.now().add(const Duration(days: 1)), alumno: 'mano', sustitucion: 's5', titulo: 'Clase suelta', updatedAt: DateTime.now()));
+    await prep.guardarSesion(Cante(id: 'propia', fecha: DateTime.now().add(const Duration(days: 3)), alumno: 'mano', updatedAt: DateTime.now()));
+    await prep.sincronizarTodo();
+    final mano = prep.alumno('mano')!;
+    expect(mano.suelto, isFalse);
+    expect(mano.uid, isNull);
+    expect(mano.notas, 'Lleva 40 temas');
+    expect(prep.misAlumnos().map((a) => a.id), ['mano']);
+    final suelta = prep.alumno('sust_s5')!;
+    expect(suelta.uid, 'luis');
+    expect(suelta.suelto, isTrue);
+    expect(prep.sesiones().firstWhere((x) => x.id == 'sust_s5').alumno, 'sust_s5');
+    expect(prep.sesiones().firstWhere((x) => x.id == 'propia').alumno, 'mano');
   });
 
   test('buscar preparador: compatibilidad entre lo que busca el opositor y la ficha y las plazas del preparador', () {

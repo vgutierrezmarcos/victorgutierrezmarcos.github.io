@@ -36,8 +36,10 @@ final oposicionesVisiblesProvider = FutureProvider<List<Oposicion>>((ref) async 
 
 /// Situación del usuario en la red.
 class EstadoRed {
-  const EstadoRed({this.diagnostico = DiagnosticoAdmin.no, this.verificacion, this.solicitud});
+  const EstadoRed({this.diagnostico = DiagnosticoAdmin.no, this.verificacion, this.solicitud, this.retirada = false});
   final DiagnosticoAdmin diagnostico;
+  /// Estuvo verificado y se le retiró: si lo pide otra vez, lo revisa la administración.
+  final bool retirada;
   bool get esAdmin => diagnostico == DiagnosticoAdmin.si;
   final PreparadorVerificado? verificacion;
   final SolicitudPreparador? solicitud;
@@ -50,13 +52,17 @@ final estadoRedProvider = FutureProvider<EstadoRed>((ref) async {
   if (!red.conSesion) return const EstadoRed();
   try {
     final diagnostico = await red.diagnosticoAdmin();
-    PreparadorVerificado? v;
+    PreparadorVerificado? ficha;
     SolicitudPreparador? sol;
+    // Por separado: si falla una, la otra sigue valiendo.
     try {
-      v = await red.miVerificacion();
+      ficha = await red.miFicha();
+    } catch (_) {}
+    try {
       sol = await red.miSolicitud();
     } catch (_) {}
-    return EstadoRed(diagnostico: diagnostico, verificacion: v, solicitud: sol);
+    final activa = ficha != null && ficha.activo;
+    return EstadoRed(diagnostico: diagnostico, verificacion: activa ? ficha : null, solicitud: activa ? null : sol, retirada: ficha != null && !ficha.activo);
   } catch (_) {
     return const EstadoRed(diagnostico: DiagnosticoAdmin.sinRed);
   }

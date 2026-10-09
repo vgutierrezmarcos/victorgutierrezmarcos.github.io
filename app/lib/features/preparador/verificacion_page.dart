@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
+import '../../data/repos/red_repo.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
@@ -14,6 +15,9 @@ import 'red_widgets.dart';
 /// Pedir la verificación como preparador (ya es preparador pero no la ha pedido).
 Future<void> solicitarVerificacion(BuildContext context, WidgetRef ref) =>
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AltaPreparadorPage(soloVerificacion: true)));
+
+/// Solicitudes que se están resolviendo (contra el doble toque).
+final _resolviendo = <String>{};
 
 /// Solicitudes pendientes: las ve y resuelve un preparador verificado o el administrador.
 class VerificarPreparadoresPage extends ConsumerWidget {
@@ -37,9 +41,17 @@ class VerificarPreparadoresPage extends ConsumerWidget {
           ],
         ),
       );
-      if (ok != true) return;
+      if (ok != true || !_resolviendo.add(s.uid) || !context.mounted) return;
+      final messenger = ScaffoldMessenger.of(context);
       final red = ref.read(redRepoProvider);
-      aprobar ? await red.aprobar(s, avalNombre: perfil.nombre.isEmpty ? null : perfil.nombre) : await red.rechazar(s);
+      try {
+        aprobar ? await red.aprobar(s, avalNombre: perfil.nombre.isEmpty ? null : perfil.nombre) : await red.rechazar(s);
+        messenger.showSnackBar(SnackBar(content: Text(aprobar ? '${s.nombre} ya está verificado.' : 'Solicitud rechazada.')));
+      } catch (e) {
+        messenger.showSnackBar(SnackBar(content: Text('No se pudo ${aprobar ? 'verificar' : 'rechazar'} (${textoError(e)}).')));
+      } finally {
+        _resolviendo.remove(s.uid);
+      }
       ref.invalidate(solicitudesPendientesProvider);
       ref.invalidate(verificadosProvider);
       ref.invalidate(verificadosConRetiradosProvider);
@@ -64,6 +76,8 @@ class VerificarPreparadoresPage extends ConsumerWidget {
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(s.nombre, style: context.textos.titleMedium),
                           Text([s.email, if (s.ejercicios.isNotEmpty) '${describirEjercicios(s.ejercicios)} ejercicio', if (s.creada != null) 'pedida el ${fechaCorta(s.creada!)}'].join(' · '), style: context.textos.labelSmall),
+                          if (s.reverificacion)
+                            const Padding(padding: EdgeInsets.only(top: 4), child: Etiqueta('Se le retiró la verificación: la revisa la administración')),
                           if (s.destinatario != null)
                             Padding(
                               padding: const EdgeInsets.only(top: 4),

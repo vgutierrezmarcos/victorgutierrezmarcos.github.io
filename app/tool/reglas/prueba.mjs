@@ -106,8 +106,40 @@ await caso('un verificado no retira a otro', () => assertFails(updateDoc(doc(db(
 await caso('el administrador retira a cualquiera', () => assertSucceeds(updateDoc(doc(db('admin'), 'preparadoresVerificados/nuevo'), { activo: false })));
 await caso('la lista de verificados la ve quien tenga cuenta', () => assertSucceeds(getDocs(collection(db('pepe'), 'preparadoresVerificados'))));
 await caso('…y no sin cuenta', () => assertFails(getDocs(collection(db(null), 'preparadoresVerificados'))));
-await caso('el interesado pide su verificación', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), { uid: 'pepe', nombre: 'Pepe' })));
-await caso('…pero no en nombre de otro', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/juan'), { uid: 'juan' })));
+// Como la escribe la app (SolicitudPreparador.toJson).
+const sol = (uid, extra = {}) => ({ uid, nombre: 'Pepe', email: uid + '@example.org', ejercicios: [3], presentacion: 'Preparo el tercero', linkedin: '', paraTodos: true, destinatario: null, destinatarioNombre: '', creada: new Date().toISOString(), ...extra });
+await caso('el interesado pide su verificación', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe'))));
+await caso('…y la vuelve a enviar cambiada', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { presentacion: 'Otra', modalidad: 'presencial', ciudad: 'Sevilla' }))));
+await caso('…o se la pide a Paula', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { paraTodos: false, destinatario: 'paula', destinatarioNombre: 'Paula' }))));
+await caso('…no a quien no está verificado', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { paraTodos: false, destinatario: 'juan' }))));
+await caso('…ni con un LinkedIn falso', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { linkedin: 'https://ejemplo.com/x' }))));
+await caso('…ni con una modalidad inventada', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { modalidad: 'por carta' }))));
+await caso('…ni con campos de más', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { activo: true }))));
+await caso('…ni sin nombre', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { nombre: '' }))));
+await caso('…ni con una presentación enorme', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe', { presentacion: 'x'.repeat(2001) }))));
+await caso('la retira', () => assertSucceeds(deleteDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'))));
+await caso('…y la pide otra vez (tras un rechazo, igual)', () => assertSucceeds(setDoc(doc(db('pepe'), 'solicitudesPreparador/pepe'), sol('pepe'))));
+await caso('un verificado no pide la verificación otra vez', () => assertFails(setDoc(doc(db('paula'), 'solicitudesPreparador/paula'), sol('paula'))));
+await caso('a quien se la retiraron no la pide a todos', () => assertFails(setDoc(doc(db('nuevo'), 'solicitudesPreparador/nuevo'), sol('nuevo'))));
+await caso('…sino a la administración', () => assertSucceeds(setDoc(doc(db('nuevo'), 'solicitudesPreparador/nuevo'), sol('nuevo', { paraTodos: false, reverificacion: true }))));
+await caso('…y un verificado no la ve', () => assertFails(getDoc(doc(db('paula'), 'solicitudesPreparador/nuevo'))));
+await caso('…ni la aprueba', () => assertFails(setDoc(doc(db('paula'), 'preparadoresVerificados/nuevo'), { uid: 'nuevo', nombre: 'Nuevo', avaladoPor: 'paula', activo: true })));
+await caso('…el administrador sí (verificación y solicitud a la vez)', () => {
+  const d = db('admin');
+  return assertSucceeds(writeBatch(d).set(doc(d, 'preparadoresVerificados/nuevo'), { uid: 'nuevo', nombre: 'Nuevo', avaladoPor: 'admin', activo: true }).delete(doc(d, 'solicitudesPreparador/nuevo')).commit());
+});
+await caso('Lucas la pide a todos', () => assertSucceeds(setDoc(doc(db('lucas'), 'solicitudesPreparador/lucas'), sol('lucas', { nombre: 'Lucas' }))));
+await caso('un verificado aprueba una solicitud abierta (verificación y borrado a la vez)', () => {
+  const d = db('olga');
+  return assertSucceeds(writeBatch(d).set(doc(d, 'preparadoresVerificados/lucas'), { uid: 'lucas', nombre: 'Lucas', ejercicios: [3], linkedin: '', avaladoPor: 'olga', activo: true }).delete(doc(d, 'solicitudesPreparador/lucas')).commit());
+});
+await caso('Marta se la pide a Paula', () => assertSucceeds(setDoc(doc(db('marta'), 'solicitudesPreparador/marta'), sol('marta', { nombre: 'Marta', paraTodos: false, destinatario: 'paula', destinatarioNombre: 'Paula' }))));
+await caso('Paula aprueba la que le piden a ella', () => {
+  const d = db('paula');
+  return assertSucceeds(writeBatch(d).set(doc(d, 'preparadoresVerificados/marta'), { uid: 'marta', nombre: 'Marta', avaladoPor: 'paula', activo: true }).delete(doc(d, 'solicitudesPreparador/marta')).commit());
+});
+await caso('el administrador con el correo en mayúsculas', () => assertSucceeds(getDoc(doc(env.authenticatedContext('jefe2', { email: 'Jefe@Example.org', email_verified: true }).firestore(), 'admins/jefe@example.org'))));
+await caso('…pero no en nombre de otro', () => assertFails(setDoc(doc(db('pepe'), 'solicitudesPreparador/juan'), sol('juan'))));
 await caso('un opositor no ve las solicitudes de otros', () => assertFails(getDocs(collection(db('pepe'), 'solicitudesPreparador'))));
 await caso('un verificado ve las solicitudes abiertas', () => assertSucceeds(getDocs(query(collection(db('olga'), 'solicitudesPreparador'), where('paraTodos', '==', true)))));
 await caso('…y las que le piden a él', () => assertSucceeds(getDocs(query(collection(db('paula'), 'solicitudesPreparador'), where('destinatario', '==', 'paula')))));
@@ -310,9 +342,18 @@ await caso('una verificada de DCE comparte material en DCE', () => assertSucceed
 await caso('una de TCEE no comparte en DCE', () => assertFails(setDoc(doc(db('paula'), 'oposiciones/dce/materiales/d2'), { ...md, id: 'd2', preparador: 'paula' })));
 await caso('la alumna de DCE lista los de su preparadora', () => assertSucceeds(getDocs(query(collection(db('ana'), 'oposiciones/dce/materiales'), where('preparador', '==', 'diana'), where('paraTodos', '==', true)))));
 await caso('nadie escribe en una oposición que no existe', () => assertFails(setDoc(doc(db('pepe'), 'oposiciones/otra/solicitudesPreparador/pepe'), { uid: 'pepe' })));
-await caso('se pide la verificación en DCE', () => assertSucceeds(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), { uid: 'pepe', nombre: 'Pepe', paraTodos: true })));
-await caso('el administrador de DCE la ve', () => assertSucceeds(getDoc(doc(db('manuel'), 'oposiciones/dce/solicitudesPreparador/pepe'))));
-await caso('el de TCEE no', () => assertFails(getDoc(doc(db('admin'), 'oposiciones/dce/solicitudesPreparador/pepe'))));
+await caso('se pide la verificación en DCE (aunque ya lo esté en TCEE)', () => assertSucceeds(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), sol('pepe'))));
+await caso('…también a una verificada de DCE', () => assertSucceeds(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), sol('pepe', { paraTodos: false, destinatario: 'diana' }))));
+await caso('…no a una de TCEE', () => assertFails(setDoc(doc(db('pepe'), 'oposiciones/dce/solicitudesPreparador/pepe'), sol('pepe', { paraTodos: false, destinatario: 'paula' }))));
+await caso('una verificada de DCE no la pide en DCE', () => assertFails(setDoc(doc(db('diana'), 'oposiciones/dce/solicitudesPreparador/diana'), sol('diana'))));
+await caso('…y sí en TCEE', () => assertSucceeds(setDoc(doc(db('diana'), 'solicitudesPreparador/diana'), sol('diana'))));
+await caso('Diana aprueba en DCE (verificación y borrado a la vez)', () => {
+  const d = db('diana');
+  return assertSucceeds(writeBatch(d).set(doc(d, 'oposiciones/dce/preparadoresVerificados/pepe'), { uid: 'pepe', nombre: 'Pepe', avaladoPor: 'diana', activo: true }).delete(doc(d, 'oposiciones/dce/solicitudesPreparador/pepe')).commit());
+});
+await caso('la solicitud vuelve a pedirse en DCE (otra persona)', () => assertSucceeds(setDoc(doc(db('pepa'), 'oposiciones/dce/solicitudesPreparador/pepa'), sol('pepa'))));
+await caso('el administrador de DCE la ve', () => assertSucceeds(getDoc(doc(db('manuel'), 'oposiciones/dce/solicitudesPreparador/pepa'))));
+await caso('el de TCEE no', () => assertFails(getDoc(doc(db('admin'), 'oposiciones/dce/solicitudesPreparador/pepa'))));
 
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();

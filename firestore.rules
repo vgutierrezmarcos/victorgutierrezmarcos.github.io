@@ -22,7 +22,7 @@ service cloud.firestore {
 
     // Correo de Google (verificado) de quien hace la petición.
     function correo() {
-      return request.auth.token.get('email_verified', false) == true ? request.auth.token.get('email', '') : '';
+      return request.auth.token.get('email_verified', false) == true ? request.auth.token.get('email', '').lower() : '';
     }
 
     // Documento de la red de una oposición: enRed('tcee', 'admins/x') es admins/x;
@@ -127,6 +127,28 @@ service cloud.firestore {
       let hasta = resource.data.get('hasta', null);
       return (hasta == null && hora == resource.data.fecha)
         || (hasta != null && hora >= resource.data.fecha && hora <= hasta);
+    }
+
+    // Petición de verificación bien formada (así toda la que se guarda se puede
+    // aprobar): campos conocidos y cortos, ficha válida, destinatario
+    // verificado o ninguno, y nunca de quien ya está verificado. Quien estuvo
+    // verificado y se le retiró solo puede pedírsela a la administración.
+    function solicitudValida(op, uid) {
+      let d = request.resource.data;
+      let dest = d.get('destinatario', null);
+      let previa = enRed(op, 'preparadoresVerificados/' + uid);
+      return d.keys().hasOnly(['uid', 'nombre', 'email', 'ejercicios', 'presentacion', 'linkedin', 'modalidad', 'ciudad', 'paraTodos', 'destinatario', 'destinatarioNombre', 'creada', 'reverificacion'])
+        && d.uid == uid
+        && d.nombre is string && d.nombre.size() > 0 && d.nombre.size() <= 100
+        && d.get('email', '') is string && d.get('email', '').size() <= 200
+        && d.get('presentacion', '') is string && d.get('presentacion', '').size() <= 2000
+        && d.get('destinatarioNombre', '') is string && d.get('destinatarioNombre', '').size() <= 100
+        && d.get('ejercicios', []) is list && d.get('ejercicios', []).size() <= 10
+        && d.paraTodos is bool
+        && fichaValida()
+        && (dest == null || (d.paraTodos == false && dest is string && exists(enRed(op, 'preparadoresVerificados/' + dest))))
+        && !esVerificado(op)
+        && (!exists(previa) || (d.get('reverificacion', false) == true && d.paraTodos == false && dest == null));
     }
 
     // Peticiones de verificación que puede ver un verificado: las abiertas a
@@ -251,10 +273,11 @@ service cloud.firestore {
 
     // Peticiones de verificación: las crea el interesado y las leen él, el
     // administrador y los verificados: todos si va abierta (paraTodos) o solo
-    // el preparador al que se la pide (destinatario). Se borran al resolverlas.
+    // el preparador al que se la pide (destinatario); la de quien tuvo la
+    // verificación retirada, solo el administrador. Se borran al resolverlas.
     match /solicitudesPreparador/{uid} {
       allow read: if (conSesionEn('tcee') && request.auth.uid == uid) || esAdmin('tcee') || solicitudParaMi('tcee');
-      allow create, update: if conSesionEn('tcee') && request.auth.uid == uid && request.resource.data.uid == uid;
+      allow create, update: if conSesionEn('tcee') && request.auth.uid == uid && solicitudValida('tcee', uid);
       allow delete: if (conSesionEn('tcee') && request.auth.uid == uid) || esAdmin('tcee') || solicitudParaMi('tcee');
     }
 
@@ -475,10 +498,11 @@ service cloud.firestore {
 
       // Peticiones de verificación: las crea el interesado y las leen él, el
       // administrador y los verificados: todos si va abierta (paraTodos) o solo
-      // el preparador al que se la pide (destinatario). Se borran al resolverlas.
+      // el preparador al que se la pide (destinatario); la de quien tuvo la
+      // verificación retirada, solo el administrador. Se borran al resolverlas.
       match /solicitudesPreparador/{uid} {
         allow read: if (conSesionEn(op) && request.auth.uid == uid) || esAdmin(op) || solicitudParaMi(op);
-        allow create, update: if conSesionEn(op) && request.auth.uid == uid && request.resource.data.uid == uid;
+        allow create, update: if conSesionEn(op) && request.auth.uid == uid && solicitudValida(op, uid);
         allow delete: if (conSesionEn(op) && request.auth.uid == uid) || esAdmin(op) || solicitudParaMi(op);
       }
 

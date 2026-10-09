@@ -51,7 +51,7 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
     setState(() => _avisos = v);
     messenger.showSnackBar(SnackBar(
       content: Text(v
-          ? (kIsWeb ? 'Te avisaremos al abrir la app cuando haya algo nuevo.' : 'Te avisaremos cuando se publique algo nuevo.')
+          ? (kIsWeb ? 'Te avisaremos cuando haya algo nuevo mientras tengas la web abierta (con la app del móvil, aunque no la abras).' : 'Te avisaremos cuando se publique algo nuevo.')
           : 'Ya no te avisaremos de las novedades del proceso.'),
     ));
   }
@@ -114,7 +114,7 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
                     title: const Text('Avisarme de las novedades'),
                     subtitle: Text(
                       kIsWeb
-                          ? 'En el navegador, al abrir la app. En el móvil llegan aunque no la abras.'
+                          ? 'Un aviso del navegador cuando aparezca un documento nuevo, mientras tengas la web abierta; al tocarlo se abre la página oficial. En el móvil llegan aunque no la abras.'
                           : 'Una notificación cuando aparezca un documento nuevo; al tocarla se abre la página oficial.',
                       style: context.textos.labelSmall,
                     ),

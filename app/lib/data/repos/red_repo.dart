@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -31,6 +33,21 @@ class ErrorRed implements Exception {
   final String mensaje;
   @override
   String toString() => mensaje;
+}
+
+/// Explicación corta de un error de la red para el usuario.
+String textoError(Object e) {
+  if (e is ErrorRed) return e.mensaje;
+  if (e is FirebaseException) {
+    return switch (e.code) {
+      'permission-denied' => 'sin permiso; comprueba que has iniciado sesión',
+      'unavailable' || 'deadline-exceeded' => 'sin conexión',
+      'unauthenticated' => 'la sesión ha caducado; vuelve a iniciarla',
+      _ => e.code,
+    };
+  }
+  if (e is TimeoutException) return 'sin conexión';
+  return 'error inesperado';
 }
 
 /// Red de preparadores en Firestore (modelos en data/models/red.dart y reglas
@@ -97,10 +114,15 @@ class RedRepo {
 
   /// Verificación del usuario (null si no está verificado o se la retiraron).
   Future<PreparadorVerificado?> miVerificacion() async {
+    final v = await miFicha();
+    return v != null && v.activo ? v : null;
+  }
+
+  /// Su ficha de verificado, también si se la retiraron (activo = false).
+  Future<PreparadorVerificado?> miFicha() async {
     if (!conSesion) return null;
     final d = await _verificados.doc(uid).get();
-    final v = d.exists ? PreparadorVerificado.fromJson({...d.data()!, 'uid': d.id}) : null;
-    return v != null && v.activo ? v : null;
+    return d.exists ? PreparadorVerificado.fromJson({...d.data()!, 'uid': d.id}) : null;
   }
 
   /// Preparadores verificados en activo, por nombre.
@@ -120,23 +142,44 @@ class RedRepo {
   }
 
   /// Pide la verificación al administrador y a cualquier verificado o, con
-  /// [destinatario], solo a ese preparador (y al administrador).
-  Future<void> solicitar({required String nombre, required List<int> ejercicios, required String presentacion, String linkedin = '', String modalidad = '', String ciudad = '', String? destinatario, String destinatarioNombre = ''}) async {
+  /// [destinatario], solo a ese preparador (y al administrador). Si ya estuvo
+  /// verificado y se la retiraron, la pide solo a la administración. Sin red,
+  /// la petición queda en cola y se envía sola al volver la conexión: entonces
+  /// devuelve false (true = ya ha llegado).
+  Future<bool> solicitar({required String nombre, required List<int> ejercicios, required String presentacion, String linkedin = '', String modalidad = '', String ciudad = '', String? destinatario, String destinatarioNombre = '', Duration espera = const Duration(seconds: 10)}) async {
     if (!conSesion) throw const ErrorRed('Inicia sesión con Google para pedir la verificación.');
-    await _solicitudes.doc(uid).set(SolicitudPreparador(
+    PreparadorVerificado? ficha;
+    try {
+      ficha = await miFicha();
+    } catch (_) {}
+    if (ficha != null && ficha.activo) throw const ErrorRed('Ya estás verificado: no hace falta pedirlo otra vez.');
+    final ciudadCorta = ciudad.trim();
+    final escritura = _solicitudes.doc(uid).set(SolicitudPreparador(
       uid: uid!,
-      nombre: nombre.trim(),
+      nombre: _corta(nombre.trim(), 100),
       email: _auth!.currentUser!.email ?? '',
       ejercicios: ejercicios,
-      presentacion: presentacion.trim(),
+      presentacion: _corta(presentacion.trim(), 2000),
       linkedin: enlaceLinkedin(linkedin) ?? '',
-      modalidad: modalidad,
-      ciudad: ciudad.trim(),
+      modalidad: const ['online', 'presencial', 'ambas'].contains(modalidad) ? modalidad : '',
+      ciudad: _corta(ciudadCorta, 60),
       destinatario: destinatario,
-      destinatarioNombre: destinatarioNombre,
+      destinatarioNombre: _corta(destinatarioNombre, 100),
       creada: DateTime.now(),
+      reverificacion: ficha != null,
     ).toJson());
+    try {
+      await escritura.timeout(espera);
+      return true;
+    } on TimeoutException {
+      // Sigue en la cola de Firestore; si luego la rechazara el servidor, se
+      // vería al abrir la sección (no aparecería como pendiente).
+      unawaited(escritura.catchError((_) {}));
+      return false;
+    }
   }
+
+  static String _corta(String s, int max) => s.length <= max ? s : s.substring(0, max);
 
   Future<void> retirarSolicitud() async {
     if (conSesion) await _solicitudes.doc(uid).delete();
@@ -431,7 +474,7 @@ class RedRepo {
       if (admin || verificacion != null) {
         for (final sol in await solicitudesPendientes(admin: admin)) {
           if (sol.destinatario == uid || (admin && sol.destinatario == null)) {
-            out.add(AvisoRed(id: 'sol:${sol.uid}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Más → Preparador → Verificar preparadores.', ruta: '/mas/preparador'));
+            out.add(AvisoRed(id: 'sol:${sol.uid}:${sol.creada?.millisecondsSinceEpoch ?? 0}', titulo: '${sol.nombre} pide que le verifiques', texto: 'Como preparador o preparadora. Revísalo en Más → Preparador → Verificar preparadores.', ruta: '/mas/preparador'));
           }
         }
       }

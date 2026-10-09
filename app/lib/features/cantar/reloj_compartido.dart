@@ -1,9 +1,13 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../data/models/oposicion.dart';
 import 'reloj_cante.dart';
+
+/// Firestore del cronómetro compartido (en las capturas de la app, una simulada).
+final firestoreRelojProvider = Provider<FirebaseFirestore>((ref) => FirebaseFirestore.instance);
 
 /// Estado del cronómetro compartido de una clase, tal como lo dejó el último
 /// que lo tocó (alumno o preparador).

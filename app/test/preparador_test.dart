@@ -64,6 +64,35 @@ void main() {
     expect(prep.alumnos(), isEmpty);
   });
 
+  test('el código del preparador no cambia: otro dispositivo, llamadas a la vez y sincronización', () async {
+    final db = FakeFirebaseFirestore();
+    final auth = sesion('prep', 'Paula');
+    await verificar(db, 'prep', 'Paula');
+    final movil = await repo(db, auth);
+    final codigo = (await movil.activar()).codigo!;
+    expect((await db.doc('users/prep/progress/preparador').get()).data()!['codigo'], codigo);
+
+    // Un dispositivo nuevo (o el navegador): sin nada en local, recupera el mismo.
+    final web = await repo(db, auth);
+    expect((await web.activar()).codigo, codigo);
+    // Guardar el perfil sin código no borra el de la nube.
+    final otro = await repo(db, auth);
+    await otro.guardarPerfil(otro.perfil().copyWith(activo: true, telefono: '600'));
+    expect((await db.doc('users/prep/progress/preparador').get()).data()!['codigo'], codigo);
+    await otro.sincronizarTodo();
+    expect(otro.perfil().codigo, codigo);
+    expect(otro.perfil().telefono, '600');
+
+    // Dos activaciones a la vez en un dispositivo vacío: un solo código.
+    final db2 = FakeFirebaseFirestore();
+    final auth2 = sesion('olga', 'Olga');
+    await verificar(db2, 'olga', 'Olga');
+    final r = await repo(db2, auth2);
+    final ambos = await Future.wait([r.activar(), r.activar(), r.sincronizarTodo().then((_) => r.activar())]);
+    expect(ambos.map((p) => p.codigo).toSet().length, 1);
+    expect((await db2.collection('codigos').get()).docs.length, 1);
+  });
+
   test('enlace por código: el alumno comparte y recibe las sesiones y valoraciones', () async {
     final db = FakeFirebaseFirestore();
     final authPrep = sesion('prep', 'Paula Preparadora'), authAlu = sesion('alu', 'Álex Alumno');

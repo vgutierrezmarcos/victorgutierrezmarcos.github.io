@@ -33,7 +33,7 @@ class MasPage extends ConsumerWidget {
     final hora = ajustes.horaRecordatorio;
     final avisosCante = ref.watch(planProvider.select((p) => p.avisosCante));
     final papel = ref.watch(papelProvider);
-    final alumnos = ref.watch(alumnosProvider);
+    final alumnos = ref.watch(misAlumnosProvider);
     final estadoRed = papel == Papel.preparador ? ref.watch(estadoRedProvider).valueOrNull : null;
     final pendientesPreparador = papel == Papel.preparador ? ref.watch(pendientesPreparadorProvider) : 0;
     final vinculos = ref.watch(misPreparadoresProvider);
@@ -183,7 +183,7 @@ class MasPage extends ConsumerWidget {
                   child: Image.asset('assets/icon/icon.png', width: 40, height: 40, semanticLabel: 'Logo de la app'),
                 ),
                 const SizedBox(height: 8),
-                Text('${Creditos.nombreApp} · ${kIsWeb ? 'versión web' : 'versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}'}\nDesarrollada por ${Creditos.desarrolladores}\nContenido de ${ref.read(oposicionProvider).dominio}', textAlign: TextAlign.center, style: context.textos.labelSmall),
+                Text('${Creditos.nombreApp} · versión ${s.data?.version ?? ''}${s.data == null ? '' : ' (${s.data!.buildNumber})'}${kIsWeb ? ' · web' : ''}\nDesarrollada por ${Creditos.desarrolladores}\nContenido de ${ref.read(oposicionProvider).dominio}', textAlign: TextAlign.center, style: context.textos.labelSmall),
               ]),
             ),
           ),
