@@ -429,6 +429,20 @@
         .app-seccion p { font-size: 1.05rem; line-height: 1.85; margin-bottom: 1.1rem; }
         .app-seccion h4 { font-family: var(--fuente-tcee); color: var(--ap-tcee-texto); }
 
+        /* Vídeos de ayuda: verticales, en fila deslizable en el móvil */
+        .ayuda-grupo { font-size: 1.1rem; margin: 1.6rem 0 0.8rem; }
+        .ayuda-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.1rem; }
+        .ayuda-video { margin: 0; scroll-margin-top: 1.5rem; }
+        .ayuda-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 14px; background: #2e2235; box-shadow: var(--shadow-sm); }
+        .ayuda-video figcaption { font-family: var(--fuente-ui); font-size: 0.9rem; line-height: 1.4; margin-top: 0.55rem; color: var(--ap-texto); }
+        .ayuda-video figcaption strong { display: block; font-size: 0.98rem; }
+        .ayuda-video figcaption span { color: var(--color-text-light, #666); }
+        .ayuda-video:target video { outline: 3px solid var(--oro-claro); outline-offset: 3px; }
+        @media (max-width: 640px) {
+            .ayuda-lista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.9rem; padding-bottom: 0.6rem; margin: 0 -1.5rem; padding-inline: 1.5rem; }
+            .ayuda-video { flex: 0 0 62%; scroll-snap-align: start; }
+        }
+
         .app-principios { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
         .app-principio {
             position: relative;
@@ -768,6 +782,7 @@
                         <p class="app-nota">En el ordenador o en cualquier móvil (también iPhone), sin instalar nada. Con tu cuenta de Google ves lo mismo que en la app.</p>
                     </div>
                     <p class="app-gancho"><strong>¿Te han cancelado la clase?</strong> Pide el cante a otros preparadores desde la app. <a href="#sustituto">Así funciona</a>.</p>
+                    <p class="app-gancho"><strong>¿Cómo se hace?</strong> Cada cosa, en un vídeo de un minuto. <a href="#ayuda">Cómo se usa</a>.</p>
                     <p class="app-gancho"><strong>¿Preparas a opositores?</strong> Date de alta y lleva a tus alumnos desde la app. <a href="#alta-preparador">Así funciona</a>.</p>
                     <ul class="app-datos">
                         <li>Gratis y sin anuncios</li>
@@ -1179,6 +1194,83 @@
         <!-- ===== El resto, en formato de página ===== -->
         <div class="app-resto">
             <article class="page-content">
+
+                <section class="app-seccion revelar" id="ayuda">
+                    <h3>Cómo se usa</h3>
+                    <p>Cada cosa, en un vídeo de menos de un minuto. También están en la app, en <em>Más → Ayuda en vídeo</em>.</p>
+                    <h4 class="ayuda-grupo">Si te preparas la oposición</h4>
+                    <div class="ayuda-lista">
+                        <figure class="ayuda-video" id="ayuda-reservar-clase">
+                            <video controls playsinline preload="none" poster="promo/ayuda/reservar-clase.jpg" width="1080" height="1920" aria-label="Vídeo: Reserva clase con tu preparador">
+                                <source src="promo/ayuda/reservar-clase.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Reserva clase con tu preparador</strong><span>Elige un hueco libre de tu preparador y pídele la clase.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-clase-suelta">
+                            <video controls playsinline preload="none" poster="promo/ayuda/clase-suelta.jpg" width="1080" height="1920" aria-label="Vídeo: ¿Te cancelan? Pide una clase suelta">
+                                <source src="promo/ayuda/clase-suelta.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>¿Te cancelan? Pide una clase suelta</strong><span>Si te cancelan, otro preparador verificado te coge el cante.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-conectar-preparador">
+                            <video controls playsinline preload="none" poster="promo/ayuda/conectar-preparador.jpg" width="1080" height="1920" aria-label="Vídeo: Conecta con tu preparador">
+                                <source src="promo/ayuda/conectar-preparador.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Conecta con tu preparador</strong><span>Su código de seis letras, y qué ve y qué no.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-buscar-preparador">
+                            <video controls playsinline preload="none" poster="promo/ayuda/buscar-preparador.jpg" width="1080" height="1920" aria-label="Vídeo: Busca preparador">
+                                <source src="promo/ayuda/buscar-preparador.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Busca preparador</strong><span>Quién admite alumnos y cómo contar lo que buscas.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-cronograma">
+                            <video controls playsinline preload="none" poster="promo/ayuda/cronograma.jpg" width="1080" height="1920" aria-label="Vídeo: Tu cronograma">
+                                <source src="promo/ayuda/cronograma.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Tu cronograma</strong><span>Planifica la vuelta y mira cada semana lo que te toca.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-clase">
+                            <video controls playsinline preload="none" poster="promo/ayuda/clase.jpg" width="1080" height="1920" aria-label="Vídeo: La clase con tu preparador">
+                                <source src="promo/ayuda/clase.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>La clase con tu preparador</strong><span>Meet, los temas mandados, el cronómetro compartido y la pizarra.</span></figcaption>
+                        </figure>
+                    </div>
+                    <h4 class="ayuda-grupo">Si preparas a opositores</h4>
+                    <div class="ayuda-lista">
+                        <figure class="ayuda-video" id="ayuda-empezar-preparador">
+                            <video controls playsinline preload="none" poster="promo/ayuda/empezar-preparador.jpg" width="1080" height="1920" aria-label="Vídeo: Empieza como preparador">
+                                <source src="promo/ayuda/empezar-preparador.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Empieza como preparador</strong><span>Date de alta, verifícate y pasa tu código.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-huecos-reservas">
+                            <video controls playsinline preload="none" poster="promo/ayuda/huecos-reservas.jpg" width="1080" height="1920" aria-label="Vídeo: Abre huecos y acepta reservas">
+                                <source src="promo/ayuda/huecos-reservas.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Abre huecos y acepta reservas</strong><span>Ofrece tus huecos libres y acepta lo que te piden.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-programar-clase">
+                            <video controls playsinline preload="none" poster="promo/ayuda/programar-clase.jpg" width="1080" height="1920" aria-label="Vídeo: Programa una clase y manda los temas">
+                                <source src="promo/ayuda/programar-clase.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Programa una clase y manda los temas</strong><span>La clase, la reunión de Meet y los temas antes, a su hora.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-coger-clase">
+                            <video controls playsinline preload="none" poster="promo/ayuda/coger-clase.jpg" width="1080" height="1920" aria-label="Vídeo: Coge una clase suelta">
+                                <source src="promo/ayuda/coger-clase.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Coge una clase suelta</strong><span>El tablón de clases sueltas y cómo coger una.</span></figcaption>
+                        </figure>
+                        <figure class="ayuda-video" id="ayuda-materiales">
+                            <video controls playsinline preload="none" poster="promo/ayuda/materiales.jpg" width="1080" height="1920" aria-label="Vídeo: Comparte materiales">
+                                <source src="promo/ayuda/materiales.mp4" type="video/mp4">
+                            </video>
+                            <figcaption><strong>Comparte materiales</strong><span>Enlaces de Drive, PDF o vídeos para tus alumnos.</span></figcaption>
+                        </figure>
+                    </div>
+                </section>
 
                 <section class="app-seccion revelar" id="idea">
                     <h3>Cómo está hecha</h3>

@@ -275,6 +275,39 @@ class PreparadorRepo {
     }
   }
 
+  /// Clases sueltas cuya ficha ha perdido el uid del alumno (p. ej. una
+  /// versión antigua de la app, que no conocía las fichas «sueltas», la tomó
+  /// por un alumno que había roto el enlace y se lo quitó): sin uid, la clase
+  /// no llega a su agenda y no se le pueden mandar temas. El uid se recupera
+  /// de la sustitución cogida (la puede leer quien la cogió). Con [soloId],
+  /// solo esa clase. Devuelve cuántas se han arreglado.
+  Future<int> repararClasesSueltas({String? soloId}) async {
+    if (!conSesion) return 0;
+    var arregladas = 0;
+    final sueltas = _todasLasSesiones().where((s) => s.sustitucion != null && !s.borrado && (soloId == null || s.id == soloId)).toList();
+    for (final s in sueltas) {
+      final a = s.alumno == null ? null : alumno(s.alumno!);
+      if (a != null && a.uid != null && !a.borrado) continue;
+      String? uidAlumno;
+      try {
+        final d = await oposicion.red(_db!, 'sustituciones').doc(s.sustitucion).get().timeout(_esperaNube);
+        if (d.data()?['cogidaPor'] != uid) continue;
+        uidAlumno = d.data()?['alumno'] as String?;
+      } catch (_) {
+        continue;
+      }
+      if (uidAlumno == null || uidAlumno.isEmpty) continue;
+      // Si ya es alumno suyo (enlazado) o tiene otra ficha suelta, va a esa.
+      final destino = alumnoConUid(uidAlumno) ??
+          (a != null && a.id.startsWith('sust_') ? a.copyWith(uid: uidAlumno, suelto: true, borrado: false) : null) ??
+          Alumno(id: 'sust_${s.sustitucion}', nombre: a?.nombre ?? 'Alumno', ejercicio: s.ejercicio, telefono: a?.telefono ?? '', uid: uidAlumno, suelto: true, creado: DateTime.now(), updatedAt: DateTime.now());
+      if (alumno(destino.id)?.uid != destino.uid || alumno(destino.id)?.borrado == true) await guardarAlumno(destino);
+      await guardarSesion(s.copyWith(alumno: destino.id));
+      arregladas++;
+    }
+    return arregladas;
+  }
+
   /// La ficha apuntada a mano que parece ser la misma persona que [uid]
   /// (mismo correo o mismo nombre), para unirlas al enlazarse.
   Alumno? _fichaSinAppDe(String nombre, String email) {
@@ -602,6 +635,7 @@ class PreparadorRepo {
   Future<void> _sincronizarAlumnosEnlazados() async {
     if (!conSesion || !perfil().activo) return;
     await _separarFichasSueltas();
+    await repararClasesSueltas();
     try {
       final snap = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
       final enlazados = {for (final d in snap.docs) d.id: d.data()};

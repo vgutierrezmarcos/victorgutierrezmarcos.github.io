@@ -188,6 +188,7 @@ void main() {
     await r.bajar(330);
     await v.foto('temas');
     await r.buscar(find.text('Enviar la petición'));
+    await v.foto('contacto');
     await v.escribir(find.widgetWithText(TextField, 'Teléfono (WhatsApp)'), '600 12 34 56');
     await tester.testTextInput.receiveAction(TextInputAction.done);
     await tester.pumpAndSettle();
@@ -288,9 +289,13 @@ void main() {
     // Se para el cronómetro (si no, el test no acaba nunca de asentarse).
     await r.buscar(find.text('Pausar'));
     await r.tocar(find.text('Pausar'));
+    // La pizarra, apaisada (como se usa).
+    tester.view.physicalSize = const Size(2340, 1080);
     await r.abrir(PizarraPage(alumnoUid: 'yo', canteId: 'pt', otroNombre: 'Paula Pérez', db: demo.dbRed));
     await v.foto('pizarra', asentar: false);
     await r.cerrar(find.byType(PizarraPage));
+    tester.view.physicalSize = const Size(1080, 2340);
+    await tester.pumpAndSettle();
     // Al acabar, la valoración de Paula queda en el diario.
     await r.subpestana('Diario');
     await r.tocar(find.byTooltip('Entendido'));
@@ -318,6 +323,7 @@ void main() {
     await v.toque(find.text('Darme de alta como preparador'));
     await v.foto('alta');
     await r.buscar(find.widgetWithText(TextField, 'Nombre y apellidos'));
+    await v.foto('nombre');
     await v.escribir(find.widgetWithText(TextField, 'Nombre y apellidos'), 'Víctor Gutiérrez Marcos');
     await v.foto('datos');
     await r.buscar(find.text('Darme de alta como preparador'));
@@ -325,7 +331,7 @@ void main() {
     await v.foto('enviar');
     await v.toque(find.text('Darme de alta como preparador'), tocar: false);
     // Ya verificado, con su código.
-    demo.estadoRed = const EstadoRed(verificacion: PreparadorVerificado(uid: 'yo', nombre: 'Víctor', avaladoPor: 'olga'));
+    demo.estadoRed = const EstadoRed(verificacion: PreparadorVerificado(uid: 'yo', nombre: 'Víctor', avaladoPor: 'yo'));
     await serPreparador(demo);
     r.container
       ..invalidate(perfilPreparadorProvider)
@@ -442,6 +448,7 @@ void main() {
     await v.toque(find.text('Material'));
     await v.foto('nuevo');
     await v.escribir(find.widgetWithText(TextField, 'Título'), 'Esquema del tema 3.B.5 (comercio internacional)');
+    await v.foto('titulo');
     await v.escribir(find.widgetWithText(TextField, 'Enlace'), 'https://drive.google.com/file/d/3b5-esquema');
     await v.foto('enlace');
     await v.toque(find.textContaining('Sin tema'));
