@@ -30,6 +30,7 @@ import 'avisos_fondo.dart';
 import 'avisos_proceso.dart';
 import 'notificaciones.dart';
 import 'cronograma_providers.dart';
+import 'avisos_red.dart';
 import 'red_providers.dart';
 import 'temas_anticipados.dart';
 
@@ -299,15 +300,10 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
   return null;
 }
 
-/// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
-/// Devuelve si se pudo (los cantes, que es lo que más importa).
-Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
-  // Una versión demasiado antigua no toca la nube (ver versionObsoletaProvider).
-  if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
-  await ref.read(usuarioRepoProvider).sincronizarTodo();
-  final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
-  final preparador = ref.read(preparadorRepoProvider);
-  await preparador.sincronizarTodo();
+/// Avisos de lo que ha hecho el otro: clases que ha cancelado un alumno y
+/// relaciones que se han roto (alumno que deja de compartir, preparador que
+/// deja de llevar al alumno).
+Future<void> avisarCambiosDeLaRed(PreparadorRepo preparador) async {
   // Clases que han cancelado los alumnos desde su app: aviso al preparador.
   for (final c in List.of(preparador.canceladasPorAlumnos)) {
     final f = c.clase.fecha;
@@ -319,6 +315,31 @@ Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
     ).catchError((_) {});
   }
   preparador.canceladasPorAlumnos.clear();
+  // Relaciones que ha roto el otro.
+  for (final nombre in List.of(preparador.alumnosQueSeFueron)) {
+    await Notificaciones.avisoRed('se-fue-alu:$nombre:${DateTime.now().millisecondsSinceEpoch ~/ 60000}', '$nombre ha dejado de compartir contigo',
+            'Ya no ves su progreso. Sus clases pendientes quedan canceladas en tu semana: puedes borrarlas.', ruta: '/semana')
+        .catchError((_) {});
+  }
+  preparador.alumnosQueSeFueron.clear();
+  for (final nombre in List.of(preparador.preparadoresQueSeFueron)) {
+    await Notificaciones.avisoRed('se-fue-prep:$nombre:${DateTime.now().millisecondsSinceEpoch ~/ 60000}', '$nombre ya no es tu preparador',
+            'Ha dejado de llevarte en la app: ya no ve tu progreso. Puedes conectar con otro en Más → Mi preparador.', ruta: '/mas/mi-preparador')
+        .catchError((_) {});
+  }
+  preparador.preparadoresQueSeFueron.clear();
+}
+
+/// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
+/// Devuelve si se pudo (los cantes, que es lo que más importa).
+Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
+  // Una versión demasiado antigua no toca la nube (ver versionObsoletaProvider).
+  if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
+  await ref.read(usuarioRepoProvider).sincronizarTodo();
+  final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
+  final preparador = ref.read(preparadorRepoProvider);
+  await preparador.sincronizarTodo();
+  await avisarCambiosDeLaRed(preparador);
   await sincronizarRed(ref);
   final yo = ref.read(usuarioActualProvider);
   if (yo != null) await comprobarTemasAnticipados(FirebaseFirestore.instance, yo.uid, ref.read(oposicionProvider));
@@ -443,6 +464,11 @@ class CantesNotifier extends Notifier<List<Cante>> {
       if (await repo.incorporar(lista) == 0) return;
       state = repo.cantes();
       await reprogramarAvisos();
+      // El aviso (clase programada, movida o cancelada) llega al momento, sin
+      // esperar a la siguiente sincronización.
+      try {
+        await comprobarAvisosRed(ref.read(redRepoProvider), preparador: false);
+      } catch (_) {}
     });
   }
 
@@ -480,6 +506,9 @@ class CantesNotifier extends Notifier<List<Cante>> {
   Future<void> reprogramarAvisos() async {
     try {
       await Notificaciones.programarCantes(ref.read(planProvider).avisosCante ? state : const []);
+    } catch (_) {}
+    try {
+      await Notificaciones.programarTemasQueLlegan(state);
     } catch (_) {}
     await programarTemasAnticipados(state);
   }
@@ -722,6 +751,35 @@ class SesionesNotifier extends Notifier<List<Cante>> {
     await repo.borrarSesion(s);
     state = repo.sesiones();
     await reprogramarAvisos();
+  }
+
+  List<StreamSubscription<Object?>> _escuchas = [];
+  Timer? _espera;
+
+  /// Con la app abierta, escucha en tiempo real las clases en las agendas de
+  /// los alumnos: si uno cancela, el preparador lo ve (y se le avisa) al
+  /// momento, sin esperar a la siguiente sincronización.
+  void escucharAlumnos() {
+    dejarDeEscucharAlumnos();
+    final repo = ref.read(preparadorRepoProvider);
+    if (!repo.perfil().activo) return;
+    _escuchas = repo.escucharClasesDeAlumnos(() {
+      // Varias escrituras seguidas (también las propias): una sola vez.
+      _espera?.cancel();
+      _espera = Timer(const Duration(seconds: 2), () async {
+        await repo.traerCambiosDeAlumnos();
+        state = repo.sesiones();
+        await avisarCambiosDeLaRed(repo);
+      });
+    });
+  }
+
+  void dejarDeEscucharAlumnos() {
+    _espera?.cancel();
+    for (final e in _escuchas) {
+      e.cancel();
+    }
+    _escuchas = [];
   }
 
   /// Recordatorios de las próximas clases (si es preparador en esta oposición).

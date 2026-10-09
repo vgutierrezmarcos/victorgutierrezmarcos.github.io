@@ -346,7 +346,18 @@ class SesionPage extends ConsumerWidget {
               const SizedBox(width: 10),
               OutlinedButton(onPressed: valorar, child: const Text('Valorar')),
             ]),
-            TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),
+            // El cronómetro compartido de la clase, el mismo que ve el alumno.
+            if (alumno?.uid != null && usuario != null)
+              RelojDeClaseTarjeta(
+                alumnoUid: alumno!.uid!,
+                claseId: s.id,
+                otroNombre: alumno.nombre,
+                esquema: Duration(seconds: Oposiciones.actual.ejercicio(s.ejercicio)?.segundosEsquemaPara(s.mandaTema ? s.temasMandados.length : s.numTemas) ?? 0),
+                exposicion: Duration(minutes: s.exposicion),
+                onAbrir: () => cantar(conMandados: mandadosLlegados && !dictamen),
+              )
+            else
+              TarjetaRelojAlumno(claseId: s.id, onAbrir: () => cantar()),
           ],
           // Lo principal de la clase: mandarle los temas antes.
           if (!dictamen && s.pendiente && (s.mandaTema || s.fecha.isAfter(ahora))) ...[

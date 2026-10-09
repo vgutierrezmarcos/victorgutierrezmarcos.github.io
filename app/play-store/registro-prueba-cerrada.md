@@ -33,6 +33,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (pendiente) | 1.15.4 (28) | La 1.15.3 más: clases sueltas que no convierten al alumno en tuyo y a las que siempre se pueden mandar temas, código de preparador fijo, solicitudes de verificación que no fallan, avisos en la versión web y protección frente a versiones antiguas. |
 | (pendiente) | 1.15.5 (29) | La 1.15.4 más: «Más → Ayuda en vídeo» y un botón ▶ en la cabecera de las pantallas principales, que abren vídeos de menos de un minuto (cómo se reserva una clase, la clase suelta, el cronograma, la clase con el preparador…). |
 | (pendiente) | 1.15.6 (30) | La 1.15.5 más: cancelar y borrar clases desde los dos lados, quitar relaciones, cantar los dos temas mandados sin elegir y «Simulación de examen real», cronómetro del alumno visible para el preparador (con notificación) y pizarra con cualquier color. |
+| (pendiente) | 1.15.7 (31) | La 1.15.6 más: avisos al momento con la app abierta y los temas a su hora exacta con ella cerrada, aviso cuando el otro rompe la relación, eliminar páginas de la pizarra, cronómetro compartido en la ficha de la clase y clases de 2 h en todas partes. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -117,6 +118,13 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Dos temas mandados**: la app preguntaba cuál iba a cantar. Ahora se cantan todos, por orden («Tema 1 de 2», «Pasar al tema 2» al acabar la exposición), y el diario guarda los dos. Nuevo modo **«Simulación de examen real»**: dos bolas de cada parte, el opositor elige una de cada parte y canta las dos con el esquema de las dos.
 - **El cronómetro compartido no le salía al preparador**: en una clase se comparte solo; el preparador tiene «Cronometrar» en cualquier clase, ve en la ficha cuánto le queda al alumno y, con la app abierta, una notificación con la cuenta atrás del esquema o de la exposición.
 - **Pizarra**: cuatro colores a un toque (azul, negro, rojo, verde) y una paleta con cualquier color; cada trazo guarda su color, así el otro lo ve igual; el aviso «… ha borrado la pizarra» dura unos segundos.
+
+### 9 oct. 2026 (para la 1.15.7)
+- **Los avisos tardaban** (clase cancelada, temas): con la app abierta ahora llega todo al momento, en los dos sentidos (el preparador escucha en tiempo real las clases de sus alumnos); el aviso de los temas se programa en el móvil a la hora exacta, aunque la app esté cerrada. Sin servidor, con la app cerrada el resto se comprueba cada 15 minutos (el mínimo de Android): la app lo explica y recomienda abrirla si se espera algo.
+- **Aviso cuando el otro rompe la relación**: «X ha dejado de compartir contigo» (al preparador) y «X ya no es tu preparador» (al alumno).
+- **Pizarra**: «Vaciar la página» (borra lo escrito) y un botón aparte, «Eliminar la página», que la quita entera.
+- **El cronómetro compartido no se veía**: ahora está en la ficha de la clase, a los dos lados, siempre sincronizado (cualquiera lo empieza, lo pausa o pasa a exponer) y avisa si no se puede leer; además, notificación con lo que queda también al alumno cuando lo lleva el preparador.
+- **Duración de las clases**: las clases sueltas pedidas desde un cante propio y «Cantar ahora» del preparador salían de 30 min; ahora, 2 h como el resto.
 
 (Seguir añadiendo aquí, con fecha.)
 

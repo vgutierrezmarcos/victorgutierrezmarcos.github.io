@@ -6,6 +6,7 @@ import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
 import '../../data/models/temario.dart';
 import '../../data/repos/red_repo.dart';
@@ -97,7 +98,8 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
         alumno: red.uid ?? '',
         fecha: _en(_desde),
         hasta: _franja ? _en(_hasta) : null,
-        minutos: widget.cante?.minutos ?? 30,
+        // Una clase dura lo de una clase (2 h), aunque se pida desde un cante propio.
+        minutos: widget.cante?.dePreparador == true ? widget.cante!.minutos : PerfilPreparador.minutosClasePorDefecto,
         ejercicio: _ejercicio,
         temas: temas,
         notas: _notas.text.trim(),

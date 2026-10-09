@@ -79,6 +79,9 @@ class RelojCompartido {
   /// Cambios del reloj (de los dos).
   Stream<EstadoRelojCompartido?> escuchar() => _doc.snapshots().map(_leer).handleError((_) {});
 
+  /// Igual, pero con los errores (sin permiso, sin red) para enseñarlos.
+  Stream<EstadoRelojCompartido?> escucharConErrores() => _doc.snapshots().map(_leer);
+
   /// Publica el estado de [reloj] tal como está ahora.
   Future<void> publicar(RelojCante reloj, {List<String> temas = const [], String? elegido, bool activo = true}) async {
     try {

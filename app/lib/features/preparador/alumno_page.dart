@@ -137,7 +137,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     }
 
     void cantarAhora() {
-      final sesion = Cante(id: nuevoId(), fecha: DateTime.now(), ejercicio: a.ejercicio, alumno: a.id, bolsa: a.temas.isEmpty ? TipoBolsa.ejercicio : TipoBolsa.estudiados, updatedAt: DateTime.now());
+      final sesion = Cante(id: nuevoId(), fecha: DateTime.now(), minutos: ref.read(perfilPreparadorProvider).minutosClase, ejercicio: a.ejercicio, alumno: a.id, bolsa: a.temas.isEmpty ? TipoBolsa.ejercicio : TipoBolsa.estudiados, updatedAt: DateTime.now());
       Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantarPage(sesion: SesionAlumno(cante: sesion, alumno: a))));
     }
 

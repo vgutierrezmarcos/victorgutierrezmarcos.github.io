@@ -260,8 +260,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     final ok = await showDialog<bool>(
       context: context,
       builder: (d) => AlertDialog(
-        title: const Text('¿Borrar la pizarra?'),
-        content: Text('Se borra esta página para los dos (también para ${widget.otroNombre}).'),
+        title: const Text('¿Vaciar esta página?'),
+        content: Text('Se borra lo escrito en esta página para los dos (también para ${widget.otroNombre}); la página se queda, en blanco.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Borrar')),
@@ -272,6 +272,31 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     setState(() => _pendientes.clear());
     try {
       await _pizarra!.borrarTodo(_idPaginaActual);
+    } catch (_) {}
+  }
+
+  /// Elimina la página entera (para los dos) y se pasa a la anterior.
+  Future<void> _eliminarPagina() async {
+    final actual = _actual;
+    if (actual == null) return;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: Text('¿Eliminar la página ${_pagina + 1}?'),
+        content: Text('Desaparece la página entera, con lo escrito, para los dos (también para ${widget.otroNombre}).'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
+          FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Eliminar la página')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    setState(() {
+      _pendientes.clear();
+      if (_pagina > 0) _pagina--;
+    });
+    try {
+      await _pizarra!.eliminarPagina(actual.id);
     } catch (_) {}
   }
 
@@ -403,7 +428,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                 ),
                 const SizedBox(width: 8),
                 IconButton(tooltip: 'Deshacer mi último trazo', icon: const Icon(Icons.undo, color: Colors.white), onPressed: puedeDeshacer && !_sinAcceso ? _deshacer : null),
-                IconButton(tooltip: 'Borrar todo', icon: const Icon(Icons.delete_outline, color: Colors.white), onPressed: _sinAcceso ? null : _borrarTodo),
+                IconButton(tooltip: 'Vaciar la página (borrar lo escrito)', icon: const Icon(Icons.layers_clear_outlined, color: Colors.white), onPressed: _sinAcceso ? null : _borrarTodo),
+                IconButton(tooltip: 'Eliminar la página', icon: const Icon(Icons.delete_outline, color: Colors.white), onPressed: _sinAcceso || _actual == null ? null : _eliminarPagina),
                 const SizedBox(width: 8),
                 IconButton(tooltip: 'Página anterior', icon: const Icon(Icons.chevron_left, color: Colors.white), onPressed: _pagina > 0 ? () => setState(() => _pagina--) : null),
                 Text('${_pagina + 1}/${max(_paginas.length, 1)}', style: const TextStyle(color: Colors.white)),
