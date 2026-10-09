@@ -9,10 +9,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | Pista | Prueba cerrada |
 | Primera versión en la pista | 1.14.1 (22), aprobada el 7-8 oct. 2026; después 1.14.2 (23) y 1.15.0 (24) el 8 oct. y 1.15.1 (25) el 9 oct. |
 | Día en que se llegó a 12 testers apuntados | 8 oct. 2026, 11:30 |
-| Día en que se pueden pedir producción | 22 oct. 2026 (comprobar en el Panel de Play Console) |
-| Testers apuntados | 12 el 8 oct. (seguir sumando) |
-| Cómo se reclutaron | Opositores y preparadores de TCEE y DCE del entorno de los dos autores (Víctor Gutiérrez Marcos, TCEE; Manuel Cabado García, DCE). (Completar con el número de cada perfil.) |
-| Cómo se recogen los comentarios | En persona y por mensaje a los autores; se anotan aquí con fecha. (Completar con el canal exacto.) |
+| Día en que se pueden pedir producción | 22 oct. 2026 (se solicitará el 21 o el 22; comprobar en el Panel de Play Console) |
+| Testers apuntados | 12 el 8 oct.; 14-15 el 9 oct. (seguir sumando) |
+| Cómo se reclutaron | Opositores y preparadores de TCEE y DCE del entorno de los dos autores (Víctor Gutiérrez Marcos, TCEE; Manuel Cabado García, DCE). |
+| Cómo se recogen los comentarios | En persona y por WhatsApp a los autores; se anotan aquí con fecha. |
 | Web pública | `https://www.victorgutierrezmarcos.es/app/` (desde el 8 oct. 2026), con la política de privacidad y las condiciones de uso |
 
 ## Pendiente
@@ -104,9 +104,9 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 El formulario tiene tres bloques. Hay que adaptar los números y nombres al final de la prueba.
 
 **Sobre la prueba cerrada**
-- *¿Cómo de fácil fue reclutar testers?* Fácil: la app es para un colectivo concreto (opositores y preparadores de las oposiciones de Técnico Comercial y Economista del Estado y de Diplomado Comercial del Estado) y los testers salieron del entorno de preparación de los dos autores. Se llegó a 12 el primer día (8 oct.). [Añadir número final y perfiles.]
+- *¿Cómo de fácil fue reclutar testers?* Fácil: la app es para un colectivo concreto (opositores y preparadores de las oposiciones de Técnico Comercial y Economista del Estado y de Diplomado Comercial del Estado) y los testers salieron del entorno de preparación de los dos autores. Se llegó a 12 el primer día (8 oct.) y a 14-15 al día siguiente. [Poner el número final.]
 - *Describe la participación de los testers.* Usaron la app a diario para el test, para programar y cronometrar cantes y para conectar alumnos con preparadores (código, clases programadas, temas antes de la clase, clases sueltas, pizarra). Los preparadores probaron el alta, la verificación y la gestión de clases, y uno de los autores probó la integración con Google Calendar. [Añadir lo observado.]
-- *Resume los comentarios y cómo los recogiste.* En persona y por mensaje a los autores, anotados con fecha en este registro. En la primera semana los testers enviaron doce sugerencias (notificaciones que no llegaban o no abrían nada, cambios de clase que no se veían, duración de las clases, dos temas por clase, materiales, pizarra, Teams, orden del directorio, claridad de la sección Cantes, actualizaciones) y se publicaron tres versiones con ellas en dos días.
+- *Resume los comentarios y cómo los recogiste.* En persona y por WhatsApp a los autores, anotados con fecha en este registro. En la primera semana los testers enviaron doce sugerencias (notificaciones que no llegaban o no abrían nada, cambios de clase que no se veían, duración de las clases, dos temas por clase, materiales, pizarra, Teams, orden del directorio, claridad de la sección Cantes, actualizaciones) y se publicaron tres versiones con ellas en dos días.
 
 **Sobre la app**
 - *Público:* opositores y preparadores de TCEE y DCE, mayores de edad.
