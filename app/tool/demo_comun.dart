@@ -139,7 +139,7 @@ class Demo {
         );
     await plan.guardarCantes([
       Cante(id: 'p1', fecha: dia(2), titulo: 'Preparador', bolsa: TipoBolsa.lista, temas: const ['3.A.12', '3.A.13', '3.A.14', '3.B.7', '3.B.8', '3.B.9'], notas: 'Llevar repasadas las subastas (3.A.14) y la política comercial estratégica (3.B.8).', updatedAt: hoy),
-      Cante(id: 'p2', fecha: dia(5, 18, 0), titulo: 'Grupo de cante', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
+      Cante(id: 'p2', fecha: dia(5, 18, 0), titulo: 'Simulacro', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 'p3', fecha: dia(9), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       Cante(id: 'p4', fecha: dia(16), titulo: 'Preparador', bolsa: TipoBolsa.estudiados, updatedAt: hoy),
       // La preparadora cancela el de mañana: el alumno buscará quién se lo coja.
@@ -147,7 +147,7 @@ class Demo {
       // La preparadora le ha mandado ya el tema de la clase del jueves.
       Cante(id: 'pt', fecha: dia(3, 18, 0), titulo: 'Con Paula Pérez', preparador: 'paula', preparadorNombre: 'Paula Pérez', temaA: hoy.subtract(const Duration(minutes: 40)), minutos: 120, bolsa: TipoBolsa.estudiados, modalidad: Modalidad.online, enlace: 'https://meet.google.com/xqe-ptwd-kbn', updatedAt: hoy),
       hecho('h1', 3, '3.A.7', 4, 29, 'Buen ritmo. Falta explicar las rigideces nominales de la segunda generación (Mankiw, Akerlof y Yellen).'),
-      hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Grupo de cante'),
+      hecho('h2', 6, '3.B.2', 5, 30, 'Muy completo.', titulo: 'Simulacro'),
       hecho('h3', 10, '3.A.21', 2, 24, 'Se queda corto de tiempo y no llega a los teoremas del bienestar.'),
       hecho('h4', 13, '3.A.4', 3, 31, 'Correcto; diferenciar mejor a los postkeynesianos (Kalecki, Robinson).'),
       hecho('h5', 17, '3.B.11', 4, 28, ''),
@@ -227,7 +227,7 @@ class Demo {
     await dbRed.doc('users/yo/cantes/pt/pizarra/p1').set({'n': 1, 'trazos': trazos()});
     const materiales = [
       MaterialCompartido(id: 'm1', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Mis apuntes del tema 3.A.14 (teoría de juegos)', url: 'https://drive.google.com/file/d/1a2b3c', texto: 'El esquema que seguimos en clase, con los ejemplos del dilema del prisionero, el duopolio de Cournot y las subastas.', tema: '3.A.14'),
-      MaterialCompartido(id: 'm2', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Cómo exponer un tema en 22 minutos (vídeo)', url: 'https://www.youtube.com/watch?v=xyz', texto: 'Grabación de la sesión del grupo: estructura, tiempos y cierre.'),
+      MaterialCompartido(id: 'm2', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Cómo exponer un tema en 22 minutos (vídeo)', url: 'https://www.youtube.com/watch?v=xyz', texto: 'Grabación de una clase: estructura, tiempos y cierre.'),
       MaterialCompartido(id: 'm3', preparador: 'paula', preparadorNombre: 'Paula Pérez', titulo: 'Esquemas de la parte B (PDF)', url: 'https://ejemplo.org/esquemas-parte-b.pdf', paraTodos: false, alumnos: ['yo', 'lucia']),
     ];
     final http = CacheHttp(Dio(), await caja());
@@ -262,7 +262,7 @@ class Demo {
       miBusquedaProvider.overrideWith((ref) async => demo.miBusqueda),
       interesadosProvider.overrideWith((ref, id) async => [Interesado(uid: 'olga', nombre: 'Olga Martín', telefono: '611 22 33 44', mensaje: 'Tengo hueco los martes por la tarde, online o en Madrid.', creado: hoy)]),
       preparadoresConPlazasProvider.overrideWith((ref) async => [
-            (const PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo', modalidad: 'ambas', ciudad: 'Madrid', linkedin: 'https://www.linkedin.com/in/olga-martin'), Plazas(preparador: 'olga', admite: true, disponibilidad: const ['2-t', '4-t', '6-m'], mensaje: 'Grupos pequeños; en el 3.º vamos por la parte B.', telefono: '611 22 33 44', updatedAt: hoy), 100),
+            (const PreparadorVerificado(uid: 'olga', nombre: 'Olga Martín', ejercicios: [3, 4], avaladoPor: 'yo', modalidad: 'ambas', ciudad: 'Madrid', linkedin: 'https://www.linkedin.com/in/olga-martin'), Plazas(preparador: 'olga', admite: true, disponibilidad: const ['2-t', '4-t', '6-m'], mensaje: 'Clases individuales de dos horas, online o en Madrid.', telefono: '611 22 33 44', updatedAt: hoy), 100),
             (const PreparadorVerificado(uid: 'luis', nombre: 'Luis Gómez', ejercicios: [1, 3], avaladoPor: 'yo', modalidad: 'online', linkedin: 'https://www.linkedin.com/in/luis-gomez'), Plazas(preparador: 'luis', admite: true, desde: DateTime(hoy.year, hoy.month + 3), disponibilidad: const ['1-n', '3-n'], updatedAt: hoy), 68),
           ]),
       // Como preparador: quién busca y las plazas propias.
@@ -271,7 +271,7 @@ class Demo {
             (Busqueda(id: 'bq3', alumno: 'y', ejercicios: const [3, 4], modalidad: Modalidad.presencial, ciudad: 'Madrid', disponibilidad: const ['6-m', '7-m'], clasesPorSemana: 2, temas: 20, desde: DateTime(hoy.year, hoy.month + 2), creada: hoy), 61, true),
             (Busqueda(id: 'bq4', alumno: 'z', ejercicios: const [4], modalidad: Modalidad.online, disponibilidad: const ['1-m'], clasesPorSemana: 1, temas: 8, creada: hoy), 0, false),
           ]),
-      misPlazasProvider.overrideWith((ref) async => Plazas(preparador: 'yo', admite: true, disponibilidad: const ['2-t', '3-t', '4-t'], mensaje: 'Clases online de hora y media; también presencial en Madrid.', telefono: '600 11 22 33', updatedAt: hoy)),
+      misPlazasProvider.overrideWith((ref) async => Plazas(preparador: 'yo', admite: true, disponibilidad: const ['2-t', '3-t', '4-t'], mensaje: 'Clases individuales de dos horas, online o presencial en Madrid.', telefono: '600 11 22 33', updatedAt: hoy)),
       materialesParaMiProvider.overrideWith((ref) async => demo.materialesParaMi),
       serviciosProvider.overrideWithValue(Servicios(
         oposicion: Oposiciones.tcee,

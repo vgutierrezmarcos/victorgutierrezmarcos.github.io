@@ -306,7 +306,19 @@ Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
   if (versionObsoleta || await ref.read(versionObsoletaProvider.future)) return false;
   await ref.read(usuarioRepoProvider).sincronizarTodo();
   final ok = await ref.read(planRepoProvider).sincronizarTodo(delServidor: delServidor);
-  await ref.read(preparadorRepoProvider).sincronizarTodo();
+  final preparador = ref.read(preparadorRepoProvider);
+  await preparador.sincronizarTodo();
+  // Clases que han cancelado los alumnos desde su app: aviso al preparador.
+  for (final c in List.of(preparador.canceladasPorAlumnos)) {
+    final f = c.clase.fecha;
+    await Notificaciones.avisoRed(
+      'canc-alu:${c.clase.id}',
+      '${c.alumno} ha cancelado la clase',
+      'La del ${f.day}/${f.month} a las ${f.hour.toString().padLeft(2, '0')}:${f.minute.toString().padLeft(2, '0')}${c.clase.motivo.isEmpty ? '' : ': ${c.clase.motivo}'}.',
+      ruta: '/clase?id=${c.clase.id}',
+    ).catchError((_) {});
+  }
+  preparador.canceladasPorAlumnos.clear();
   await sincronizarRed(ref);
   final yo = ref.read(usuarioActualProvider);
   if (yo != null) await comprobarTemasAnticipados(FirebaseFirestore.instance, yo.uid, ref.read(oposicionProvider));

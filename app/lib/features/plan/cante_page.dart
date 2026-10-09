@@ -71,6 +71,52 @@ class CantePage extends ConsumerWidget {
       nav.pop();
     }
 
+    final yo = usuario?.uid;
+    final laCanceleYo = c.cancelado && c.canceladoPor != null && c.canceladoPor == yo;
+
+    /// Cancelar una clase del preparador (o una clase suelta): le llega a él y
+    /// se le avisa.
+    Future<void> cancelarClase() async {
+      final motivo = TextEditingController();
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Cancelar la clase?'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} verá que la has cancelado y le llegará un aviso.'),
+            const SizedBox(height: 10),
+            TextField(controller: motivo, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(labelText: 'Motivo (opcional)')),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+            FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Cancelar la clase')),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      await notifier.guardar(c.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim(), canceladoPor: yo));
+    }
+
+    /// Quitar de la agenda una clase del preparador ya cancelada: solo de la
+    /// del alumno (el preparador la sigue viendo).
+    Future<void> quitarDeLaAgenda() async {
+      final nav = Navigator.of(context);
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('¿Quitar la clase de tu agenda?'),
+          content: const Text('Está cancelada. Desaparece de tu agenda; tu preparador la sigue viendo como cancelada.'),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      await notifier.borrar(c);
+      nav.pop();
+    }
+
     Future<void> compartirIcs() async {
       await guardarFichero(nombre: 'cante_${Oposiciones.actual.id}.ics', contenido: Calendario.ics([eventoDeCante(c)]), mime: 'text/calendar', asunto: 'Cante ${Oposiciones.actual.siglas}');
     }
@@ -92,6 +138,10 @@ class CantePage extends ConsumerWidget {
                   await notifier.guardar(c.copyWith(estado: c.estado == EstadoCante.cancelado ? EstadoCante.pendiente : EstadoCante.cancelado));
                 case 'borrar':
                   await borrar();
+                case 'cancelar-clase':
+                  await cancelarClase();
+                case 'quitar':
+                  await quitarDeLaAgenda();
               }
             },
             itemBuilder: (_) => [
@@ -99,6 +149,8 @@ class CantePage extends ConsumerWidget {
               const PopupMenuItem(value: 'ics', child: Text('Enviar a otro calendario (.ics)')),
               if (!c.hecho && mia) PopupMenuItem(value: 'cancelar', child: Text(c.estado == EstadoCante.cancelado ? 'Recuperar cante' : 'Marcar como cancelado')),
               if (mia) const PopupMenuItem(value: 'borrar', child: Text('Borrar')),
+              if (!mia && c.pendiente) const PopupMenuItem(value: 'cancelar-clase', child: Text('Cancelar la clase')),
+              if (!mia && c.cancelado) const PopupMenuItem(value: 'quitar', child: Text('Quitar de mi agenda')),
             ],
           ),
         ],
@@ -131,7 +183,24 @@ class CantePage extends ConsumerWidget {
           ),
           if (c.modalidad != Modalidad.sinIndicar && !c.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: c)),
           if (c.temaA != null && c.pendiente) Padding(padding: const EdgeInsets.only(top: 10), child: _TemaRecibido(cante: c)),
-          if (c.cancelado && c.dePreparador && c.fecha.isAfter(DateTime.now()) && peticion == null)
+          if (c.cancelado && c.dePreparador)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(children: [
+                Expanded(child: Text(laCanceleYo ? 'La cancelaste tú${c.motivo.isEmpty ? '' : ': ${c.motivo}'}.' : 'Clase cancelada.', style: context.textos.bodySmall)),
+                OutlinedButton.icon(onPressed: quitarDeLaAgenda, icon: const Icon(Icons.delete_outline, size: 18), label: const Text('Quitar de mi agenda')),
+              ]),
+            ),
+          if (c.pendiente && c.dePreparador)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: cancelarClase,
+                icon: Icon(Icons.event_busy, size: 18, color: context.esquema.error),
+                label: Text('No puedo ir: cancelar la clase', style: TextStyle(color: context.esquema.error)),
+              ),
+            ),
+          if (c.cancelado && c.dePreparador && !laCanceleYo && c.fecha.isAfter(DateTime.now()) && peticion == null)
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Tarjeta(
@@ -195,7 +264,7 @@ class CantePage extends ConsumerWidget {
             TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                if (r.temaCantado != null) Text('${r.temaCantado} · ${temario?.tema(r.temaCantado!)?.titulo ?? ''}', style: context.textos.titleSmall),
+                for (final t in r.temasCantados) Text('$t · ${temario?.tema(t)?.titulo ?? ''}', style: context.textos.titleSmall),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

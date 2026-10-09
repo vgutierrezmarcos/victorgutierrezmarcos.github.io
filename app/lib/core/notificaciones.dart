@@ -509,6 +509,43 @@ class Notificaciones {
     );
   }
 
+  /// Al preparador: el cronómetro de su alumno en la clase de ahora (esquema,
+  /// exposición), con la cuenta atrás hasta [hasta] si está corriendo. Se
+  /// actualiza sin volver a sonar; al tocarlo se abre la clase.
+  static Future<void> relojAlumno(String clave, {required String titulo, required String texto, DateTime? hasta, required String ruta}) async {
+    if (!disponibles) return;
+    await iniciar();
+    final id = 1000 + ('reloj:$clave'.hashCode & 0x7ffff);
+    if (kIsWeb) return mostrarAvisoNavegador(id, titulo, texto, contenido: 'ruta:$ruta');
+    final cuenta = hasta != null && hasta.isAfter(DateTime.now());
+    await _plugin.show(
+      id,
+      titulo,
+      texto,
+      NotificationDetails(
+        android: AndroidNotificationDetails(color: _colorAviso, 'clases', 'Tus clases',
+            channelDescription: 'Recordatorios de las clases con tus alumnos',
+            importance: Importance.high,
+            priority: Priority.high,
+            onlyAlertOnce: true,
+            ongoing: cuenta,
+            autoCancel: false,
+            usesChronometer: cuenta,
+            chronometerCountDown: cuenta,
+            when: cuenta ? hasta.millisecondsSinceEpoch : null,
+            showWhen: cuenta),
+        iOS: const DarwinNotificationDetails(),
+      ),
+      payload: 'ruta:$ruta',
+    );
+  }
+
+  static Future<void> quitarRelojAlumno(String clave) async {
+    if (!disponibles || kIsWeb) return;
+    await iniciar();
+    await _plugin.cancel(1000 + ('reloj:$clave'.hashCode & 0x7ffff));
+  }
+
   static Future<void> avisoCronometro(String texto) async {
     if (!disponibles) return;
     await iniciar();

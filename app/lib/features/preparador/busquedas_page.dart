@@ -222,7 +222,7 @@ class _SeccionPlazasState extends ConsumerState<SeccionPlazas> {
                   context: context,
                   builder: (d) => AlertDialog(
                     title: const Text('Mensaje'),
-                    content: TextField(controller: ctrl, autofocus: true, maxLines: 3, maxLength: 300, decoration: const InputDecoration(hintText: 'Cómo trabajo, a quién busco, en qué parte del temario voy con mis grupos…')),
+                    content: TextField(controller: ctrl, autofocus: true, maxLines: 3, maxLength: 300, decoration: const InputDecoration(hintText: 'Cómo trabajo, a quién busco, qué ejercicios preparo, cuándo tengo hueco…')),
                     actions: [
                       TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
                       FilledButton(onPressed: () => Navigator.pop(d, ctrl.text.trim()), child: const Text('Guardar')),

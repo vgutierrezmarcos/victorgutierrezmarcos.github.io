@@ -228,7 +228,7 @@ void main() {
     await alumno.enlazarConCodigo((await prep.activar()).codigo!);
     await prep.sincronizarTodo();
     final a = prep.alumnos().single;
-    await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: a.id, titulo: 'Grupo de los jueves', updatedAt: DateTime.now()));
+    await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: a.id, titulo: 'Simulacro del jueves', updatedAt: DateTime.now()));
     await planAlu.sincronizarCantes();
 
     // El alumno la retrasa una hora y, otro día, la quita de su agenda.
@@ -240,7 +240,7 @@ void main() {
     expect(s.fecha, DateTime(2026, 10, 8, 18));
     expect(s.notas, 'Llego a las seis');
     expect(s.alumno, a.id);
-    expect(s.titulo, 'Grupo de los jueves');
+    expect(s.titulo, 'Simulacro del jueves');
     expect(s.preparador, isNull);
     expect((await db.doc('users/prep/sesiones/s1').get()).data()!['notas'], 'Llego a las seis');
 

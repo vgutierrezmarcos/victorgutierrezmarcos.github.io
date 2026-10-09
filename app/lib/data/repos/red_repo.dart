@@ -263,6 +263,18 @@ class RedRepo {
     return [for (final d in snap.docs) Sustitucion.fromJson({...d.data(), 'id': d.id})]..sort((a, b) => b.fecha.compareTo(a.fecha));
   }
 
+  /// El alumno quita al preparador que le cogió clases sueltas: se borran esas
+  /// peticiones, y con ellas el acceso de ese preparador a esas clases (su
+  /// cronómetro, su pizarra y los temas). Devuelve cuántas.
+  Future<int> olvidarSustituto(String preparador) async {
+    if (!conSesion) return 0;
+    final suyas = (await misPeticiones()).where((s) => s.cogidaPor == preparador).toList();
+    for (final s in suyas) {
+      await _sustituciones.doc(s.id).delete();
+    }
+    return suyas.length;
+  }
+
   /// Tablón del preparador verificado: peticiones abiertas y futuras dirigidas
   /// a todos o a él, salvo las suyas propias.
   Future<List<Sustitucion>> tablon() async {
@@ -501,6 +513,8 @@ class RedRepo {
         final ruta = '/cantes?cante=${c.id}';
         // Se sabe que es un cambio de hora porque ya se avisó de la misma clase con otra fecha.
         final avisada = vistos.any((v) => v.startsWith('prog:${c.id}:') || v.startsWith('mov:${c.id}:') || v == 'cog:${c.sustitucion ?? ''}');
+        // La ha cancelado el propio alumno: no hay nada que avisarle.
+        if (c.cancelado && c.canceladoPor == uid) continue;
         if (c.cancelado) {
           out.add(AvisoRed(id: 'canc:${c.id}', titulo: '$quien ha cancelado tu clase', texto: 'La del ${f(c.fecha)}${c.motivo.isEmpty ? '' : ' (${c.motivo})'}. Toca para verla o pedir una clase suelta.', ruta: ruta));
         } else if (!c.hecho && avisada) {

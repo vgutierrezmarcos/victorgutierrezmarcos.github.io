@@ -32,6 +32,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (pendiente) | 1.15.3 (27) | La 1.15.1 más: en la ficha de la clase lo principal es mandar los temas antes (desaparece «Sortear y cantar»); el botón «Ver» de algunos avisos abría una página «Not found» sin salida (arreglado; cualquier ruta desconocida lleva a Hoy). (La 1.15.2 (26) no se subió.) |
 | (pendiente) | 1.15.4 (28) | La 1.15.3 más: clases sueltas que no convierten al alumno en tuyo y a las que siempre se pueden mandar temas, código de preparador fijo, solicitudes de verificación que no fallan, avisos en la versión web y protección frente a versiones antiguas. |
 | (pendiente) | 1.15.5 (29) | La 1.15.4 más: «Más → Ayuda en vídeo» y un botón ▶ en la cabecera de las pantallas principales, que abren vídeos de menos de un minuto (cómo se reserva una clase, la clase suelta, el cronograma, la clase con el preparador…). |
+| (pendiente) | 1.15.6 (30) | La 1.15.5 más: cancelar y borrar clases desde los dos lados, quitar relaciones, cantar los dos temas mandados sin elegir y «Simulación de examen real», cronómetro del alumno visible para el preparador (con notificación) y pizarra con cualquier color. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -109,6 +110,13 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ### 9 oct. 2026 (para la 1.15.5)
 - **Ayuda en vídeo**, para que todo sea fácil de seguir: once vídeos de ayuda, verticales y de menos de un minuto (reservar clase, pedir una clase suelta, conectar con el preparador, buscar preparador, cronograma, la clase con el preparador; y, para preparadores, alta, huecos y reservas, programar una clase y mandar los temas, coger una clase suelta y compartir materiales). Están en la página de la app («Cómo se usa») y la app los abre desde «Más → Ayuda en vídeo» y desde el botón ▶ de cada pantalla.
+
+### 9 oct. 2026 (para la 1.15.6, pruebas de los autores con la app)
+- **El alumno no podía cancelar una clase** de su preparador (ni una clase suelta que había pedido): ahora puede («No puedo ir: cancelar la clase»), le llega al preparador cancelada y con aviso, y no se le avisa a él mismo. Las clases canceladas se pueden quitar de la agenda (alumno) o borrar (preparador) con un toque, también desde la lista; lo que quita el alumno ya no le vuelve a aparecer.
+- **Quitar relaciones**: el alumno puede dejar de compartir con su preparador cancelando a la vez sus clases pendientes, y quitar a los preparadores que le cogieron clases sueltas (pierden el acceso a esas clases); el preparador puede quitar a un alumno cancelando sus clases pendientes y a los alumnos de clases sueltas. Si el alumno deja de compartir, sus clases pendientes quedan canceladas en la agenda del preparador.
+- **Dos temas mandados**: la app preguntaba cuál iba a cantar. Ahora se cantan todos, por orden («Tema 1 de 2», «Pasar al tema 2» al acabar la exposición), y el diario guarda los dos. Nuevo modo **«Simulación de examen real»**: dos bolas de cada parte, el opositor elige una de cada parte y canta las dos con el esquema de las dos.
+- **El cronómetro compartido no le salía al preparador**: en una clase se comparte solo; el preparador tiene «Cronometrar» en cualquier clase, ve en la ficha cuánto le queda al alumno y, con la app abierta, una notificación con la cuenta atrás del esquema o de la exposición.
+- **Pizarra**: cuatro colores a un toque (azul, negro, rojo, verde) y una paleta con cualquier color; cada trazo guarda su color, así el otro lo ve igual; el aviso «… ha borrado la pizarra» dura unos segundos.
 
 (Seguir añadiendo aquí, con fecha.)
 

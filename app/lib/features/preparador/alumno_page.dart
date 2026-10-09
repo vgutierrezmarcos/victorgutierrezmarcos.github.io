@@ -46,18 +46,37 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
 
   Future<void> _quitar(Alumno a) async {
     final nav = Navigator.of(context);
+    final ahora = DateTime.now();
+    final pendientes = ref.read(sesionesProvider).where((s) => s.alumno == a.id && s.pendiente && s.fecha.isAfter(ahora)).length;
+    var cancelar = true;
     final ok = await showDialog<bool>(
       context: context,
-      builder: (d) => AlertDialog(
-        title: Text('¿Quitar a ${a.nombre}?'),
-        content: Text(a.enlazado ? 'Dejarás de ver su progreso y desaparecerá de tu lista. Los cantes que ya le has valorado se quedan en su diario.' : 'Desaparecerá de tu lista junto con su ficha.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
-          FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
-        ],
+      builder: (d) => StatefulBuilder(
+        builder: (d, set) => AlertDialog(
+          title: Text('¿Quitar a ${a.nombre}?'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(a.enlazado ? 'Dejarás de ver su progreso y desaparecerá de tu lista. Los cantes que ya le has valorado se quedan en su diario.' : 'Desaparecerá de tu lista junto con su ficha.'),
+            if (pendientes > 0)
+              CheckboxListTile(
+                contentPadding: EdgeInsets.zero,
+                value: cancelar,
+                onChanged: (x) => set(() => cancelar = x ?? false),
+                title: Text('Cancelar sus $pendientes ${pendientes == 1 ? 'clase pendiente' : 'clases pendientes'}${a.uid != null ? ' (se le avisa)' : ''}'),
+              ),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+            FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
+          ],
+        ),
       ),
     );
     if (ok != true) return;
+    // Antes de romper el enlace, mientras se puede escribir en su agenda.
+    if (cancelar && pendientes > 0) {
+      await ref.read(preparadorRepoProvider).cancelarPendientesDe(a, motivo: 'Tu preparador ya no te da clase');
+      ref.invalidate(sesionesProvider);
+    }
     await ref.read(alumnosProvider.notifier).borrar(a);
     nav.pop();
   }
@@ -310,7 +329,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('Cante por su cuenta · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
           const SizedBox(height: 8),
-          if (r?.temaCantado != null) Text('${r!.temaCantado} · ${titulo(r.temaCantado!)}', style: context.textos.titleSmall),
+          for (final t in r?.temasCantados ?? const <String>[]) Text('$t · ${titulo(t)}', style: context.textos.titleSmall),
           const SizedBox(height: 6),
           Row(children: [
             Estrellas(valor: r?.valoracion ?? 0, tamano: 20),

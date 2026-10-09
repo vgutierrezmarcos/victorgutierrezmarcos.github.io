@@ -147,6 +147,22 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
               )
             else
               for (final a in alumnos) _filaAlumno(context, a, sesiones),
+            // Alumnos a los que solo se ha dado alguna clase suelta: no son alumnos
+            // suyos, pero se pueden quitar (pierde sus clases de la semana).
+            if (ref.watch(alumnosProvider).any((a) => a.suelto))
+              GrupoDesplegable(
+                titulo: 'Alumnos de clases sueltas',
+                subtitulo: 'No son alumnos tuyos: solo les has cogido alguna clase',
+                children: [
+                  for (final a in ref.watch(alumnosProvider).where((a) => a.suelto))
+                    ListTile(
+                      dense: true,
+                      title: Text(a.nombre, style: context.textos.titleSmall),
+                      subtitle: Text('${sesiones.where((s) => s.alumno == a.id).length} ${sesiones.where((s) => s.alumno == a.id).length == 1 ? 'clase suelta' : 'clases sueltas'}', style: context.textos.labelSmall),
+                      trailing: TextButton(onPressed: () => _olvidarSuelto(a), child: const Text('Quitar')),
+                    ),
+                ],
+              ),
             if (estado.verificado) ...[
               const TituloSeccion('Alumnos nuevos'),
               FilaEnlace(
@@ -336,6 +352,24 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         Text('El alumno lo escribe en Más → Mi preparador.', style: context.textos.bodySmall),
       ]),
     );
+  }
+
+  Future<void> _olvidarSuelto(Alumno a) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: Text('¿Quitar a ${a.nombre}?'),
+        content: const Text('Sus clases sueltas pendientes se cancelan (le llega a su agenda) y las demás salen de tu semana. Su agenda conserva las que ya se hicieron.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+          FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Quitar')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    await ref.read(preparadorRepoProvider).olvidarAlumnoSuelto(a);
+    ref.invalidate(alumnosProvider);
+    ref.invalidate(sesionesProvider);
   }
 
   Widget _filaAlumno(BuildContext context, Alumno a, List<Cante> sesiones) {

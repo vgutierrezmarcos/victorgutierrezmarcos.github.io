@@ -17,6 +17,7 @@ import 'core/widget_providers.dart';
 import 'core/actualizaciones.dart';
 import 'core/providers.dart';
 import 'features/cantar/probabilidades_page.dart';
+import 'features/cantar/relojes_alumnos.dart';
 import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
@@ -117,6 +118,8 @@ class TceeApp extends ConsumerStatefulWidget {
 class _TceeAppState extends ConsumerState<TceeApp> {
   late final AppLifecycleListener _ciclo;
   Timer? _periodico;
+  /// Cronómetro de los alumnos en sus clases de ahora (para el preparador).
+  late final VigilanteRelojes _relojes = VigilanteRelojes(ref);
 
   @override
   void initState() {
@@ -142,6 +145,10 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     );
     _programar();
     Notificaciones.alTocar = _alTocarNotificacion;
+    _relojes.empezar();
+    ref.listenManual(sesionesProvider, (_, __) => _relojes.revisar());
+    ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
+    ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
     abiertoDesdeWidget().then(_desdeWidget);
     _clicsWidget = clicsEnWidget().listen(_desdeWidget);
@@ -255,6 +262,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     _periodico?.cancel();
     _ciclo.dispose();
     Notificaciones.alTocar = null;
+    _relojes.cerrar();
     _clicsWidget?.cancel();
     super.dispose();
   }

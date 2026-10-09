@@ -58,6 +58,9 @@ class PlanRepo {
   /// Todos los cantes guardados, incluidos los borrados (para sincronizar).
   List<Cante> _todos() => _cantes.values.map((v) => Cante.fromJson(v as Map)).toList();
 
+  /// Si existe el cante [id], aunque esté borrado (para no volver a crearlo).
+  bool tieneCante(String id) => _cantes.containsKey(id);
+
   /// Cantes visibles, ordenados por fecha.
   List<Cante> cantes() => _todos().where((c) => !c.borrado).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
 
