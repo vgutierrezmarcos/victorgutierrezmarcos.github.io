@@ -27,7 +27,7 @@ void main() {
     final fallos = <String>[];
     var n = 0;
     for (final p in preguntas) {
-      final textos = [p['enunciado'] as String, ...(p['opciones'] as Map).values.cast<String>()];
+      final textos = [p['enunciado'] as String, ...(p['opciones'] as Map).values.cast<String>(), if (p['nota'] != null) p['nota'] as String];
       for (final t in textos) {
         for (final f in separarFormulas(t).where((x) => x.formula)) {
           n++;
