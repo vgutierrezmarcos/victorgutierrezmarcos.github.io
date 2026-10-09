@@ -9,6 +9,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/sorteo.dart';
 import '../plan/cantes_util.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Antelaciones que se ofrecen para mandar el tema, en segundos antes de la
 /// clase: el tiempo de esquema de un tema (22'30"), de dos (45 min) o una hora.
@@ -244,7 +245,10 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
         padding: EdgeInsets.fromLTRB(20, 0, 20, 16 + MediaQuery.viewInsetsOf(context).bottom),
         child: SingleChildScrollView(
           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Text('Mandar los temas antes de la clase', style: context.textos.titleLarge),
+            Row(children: [
+              Expanded(child: Text('Mandar los temas antes de la clase', style: context.textos.titleLarge)),
+              const BotonVideoAyuda('programar-clase'),
+            ]),
             const SizedBox(height: 4),
             Text('Le llegan como un mensaje tuyo con el número y el título de cada tema, para que haga el esquema y los practique. Antes de esa hora no puede verlos.', style: context.textos.bodySmall),
             const TituloSeccion('¿Cuántos temas?'),

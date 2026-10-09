@@ -18,6 +18,7 @@ import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
 import '../plan/proceso_page.dart';
 import '../inicio/permisos_sheet.dart';
+import 'ayuda_videos.dart';
 
 /// Más: lo que no es del día a día. Preparador (o Mi preparador), cuenta,
 /// contenido, ajustes y acerca de. (Convocatoria y horario están en Organización.)
@@ -166,6 +167,7 @@ class MasPage extends ConsumerWidget {
           ),
           const TituloSeccion('Acerca de'),
           const Padding(padding: EdgeInsets.only(bottom: 8), child: AvisoNoOficial()),
+          _fila(context, Icons.play_circle_outline, 'Ayuda en vídeo', 'Cómo se pide una clase, el cronograma, la pizarra… en un minuto', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AyudaVideosPage()))),
           _fila(context, Icons.phone_android, kIsWeb ? 'La app en el móvil' : 'La app, explicada', kIsWeb ? 'Descárgala para Android: avisos, grabación y PDF sin conexión' : 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
           if (!kIsWeb) _fila(context, Icons.computer, 'En el ordenador', 'La misma app en el navegador, con tu cuenta', () => abrirUrl(context, Urls.appWeb)),
           if (ref.read(oposicionProvider).autor case (final nombre, final quien, final url?))

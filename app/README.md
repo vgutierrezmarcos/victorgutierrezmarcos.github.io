@@ -243,7 +243,18 @@ flutter test tool/capturas_test.dart --update-goldens   # capturas en promo/capt
 python3 ../scripts/montar-video-app.py --ffmpeg RUTA     # promo/*.webp, promo/oposicion-tcee.mp4 y promo/poster.jpg
 ```
 
-`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. `scripts/montar-video-app.py` (Pillow + ffmpeg) exporta las capturas ligeras que usa `index.html` y monta el vídeo de un minuto. Hay que repetir los dos pasos cuando cambie el aspecto de la app.
+`tool/capturas_test.dart` arranca la app con datos de demostración ficticios y guarda cada pantalla a 1080 × 2340. `scripts/montar-video-app.py` (Pillow + ffmpeg) exporta las capturas ligeras que usa `index.html` y monta el vídeo de un minuto. Hay que repetir los dos pasos cuando cambie el aspecto de la app. Los datos de demostración y la navegación comunes están en `tool/demo_comun.dart`.
+
+### Vídeos de ayuda
+
+Once vídeos verticales de menos de un minuto (cómo se reserva una clase, la clase suelta, el cronograma, la clase con el preparador…), sin voz, con un rótulo por paso y un dedo que toca lo que se nombra. Están en `index.html#ayuda` («Cómo se usa») y la app los abre desde *Más → Ayuda en vídeo* y desde el botón ▶ de la cabecera de cada pantalla (`lib/features/mas/ayuda_videos.dart`, enlace `Urls.videoAyuda(id)` → `/app/#ayuda-<id>`).
+
+```bash
+flutter test tool/capturas_ayuda_test.dart --update-goldens          # promo/ayuda/capturas/<id>/ (no se suben)
+python3 ../scripts/montar-videos-ayuda.py --ffmpeg RUTA [--solo ID]  # promo/ayuda/<id>.mp4 y <id>.jpg
+```
+
+`tool/capturas_ayuda_test.dart` recorre cada vídeo tocando los botones de verdad y guarda, con cada pantalla, dónde se toca (`pasos.json`). Los guiones están en `promo/ayuda/GUIONES.md` y, como datos, en `VIDEOS` del script. Si se añade o cambia un vídeo, hay que tocar los tres sitios a la vez: el script, `videosAyuda` en `ayuda_videos.dart` y la sección `#ayuda` de `index.html`. Con poca memoria, mejor montar los vídeos de uno en uno (`--solo`).
 
 ## Compilación en GitHub Actions
 

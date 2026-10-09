@@ -11,6 +11,7 @@ import '../plan/cante_form_page.dart';
 import '../preparador/buscar_preparador_page.dart';
 import '../preparador/reservas.dart';
 import '../preparador/sustituciones.dart';
+import '../mas/ayuda_videos.dart';
 
 /// El «+» de la agenda de cantes: qué se puede añadir y para qué sirve cada
 /// cosa (un cante por cuenta propia, reservar clase con el preparador o pedir
@@ -31,7 +32,10 @@ Future<void> mostrarHojaNuevoCante(BuildContext context, WidgetRef ref, {DateTim
       child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Text('¿Qué quieres apuntar?', style: d.textos.titleLarge),
+          Row(children: [
+            Expanded(child: Text('¿Qué quieres apuntar?', style: d.textos.titleLarge)),
+            const BotonVideoAyuda('reservar-clase'),
+          ]),
           const SizedBox(height: 10),
           FilaEnlace(
             icono: Icons.record_voice_over_outlined,

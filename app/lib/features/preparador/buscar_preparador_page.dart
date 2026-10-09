@@ -12,6 +12,7 @@ import '../../widgets/comunes.dart';
 import 'directorio_page.dart';
 import 'disponibilidad_widget.dart';
 import 'red_widgets.dart';
+import '../mas/ayuda_videos.dart';
 
 /// Buscar preparador (el opositor). Dos caminos que se juntan: los
 /// preparadores verificados que admiten alumnos, ordenados por lo que
@@ -53,7 +54,7 @@ class BuscarPreparadorPage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: const BarraWeb(title: Text('Buscar preparador')),
+      appBar: const BarraWeb(title: Text('Buscar preparador'), actions: [BotonVideoAyuda('buscar-preparador')]),
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(miBusquedaProvider);

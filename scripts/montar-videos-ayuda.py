@@ -543,7 +543,7 @@ def montar(vid, ffmpeg):
         ffmpeg, '-y', '-loglevel', 'error',
         '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{ANCHO}x{ALTO}', '-r', str(FPS), '-i', '-',
         '-i', sonido,
-        '-c:v', 'libx264', '-preset', 'slow', '-crf', '24', '-pix_fmt', 'yuv420p',
+        '-c:v', 'libx264', '-preset', 'slow', '-crf', '24', '-pix_fmt', 'yuv420p', '-threads', '2',
         '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', salida,
     ]
     proceso = subprocess.Popen(orden, stdin=subprocess.PIPE)
