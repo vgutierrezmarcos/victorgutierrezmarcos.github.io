@@ -91,6 +91,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Fórmulas del test:** se comprobó que las 599 preguntas (152 con fórmulas) se dibujan bien.
 
 ### 9 oct. 2026 (para la 1.15.3)
+- **Verificación del permiso de Google Calendar enviada a Google** (marca verificada, permisos, justificación y vídeo de demostración), 9 oct.
 - **Google Calendar probado por el autor** (cuenta en la lista de prueba): consentimiento superado (aviso de app no verificada), clase online sin enlace → evento con Meet, invitación al alumno y el enlace en la clase.
 - **Ficha de la clase:** el preparador quiere, sobre todo, mandar los temas antes; la sección «Temas antes de la clase» va ahora justo bajo los botones y desaparece «Sortear y cantar» (en clase, «Cantar los temas mandados» o «Cronometrar»).
 - **Permiso de Calendar retirado desde la cuenta de Google:** al volver a activar el interruptor, la app usaba el token guardado y Google respondía 401 sin volver a pedir el permiso. Ahora, ante un 401, cierra la sesión de Google de la app, vuelve a entrar y pide el permiso con la ventana de Google; la ficha de la clase lo explica si pasa al sincronizar.

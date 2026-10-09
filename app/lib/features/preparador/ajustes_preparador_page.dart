@@ -252,7 +252,7 @@ class AjustesPreparadorPage extends ConsumerWidget {
                     },
                   ),
               ]),
-              if (kIsWeb) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Los recordatorios llegan en la app del móvil.', style: context.textos.labelSmall)),
+              if (kIsWeb) Padding(padding: const EdgeInsets.only(top: 4), child: Text('En el navegador llegan mientras tengas la web abierta (aunque sea en otra pestaña); en la app del móvil, siempre.', style: context.textos.labelSmall)),
               const SizedBox(height: 12),
               Text('Tema antes de la clase: antelación propuesta', style: context.textos.titleSmall),
               Text(

@@ -6,9 +6,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/permisos.dart';
-import '../../core/plataforma.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+
+/// En el navegador, el permiso se cambia desde el candado de la barra de direcciones.
+const _textoBloqueadosNavegador = 'El navegador no deja a la web mostrar avisos. Para recibirlos (clases, temas del preparador, recordatorios), permite las notificaciones de esta web: en el candado o el icono de ajustes junto a la dirección → Notificaciones → Permitir.';
 
 /// Clave (caja `app`) de que ya se pidieron los permisos la primera vez.
 const clavePermisosPedidos = 'permisos_pedidos';
@@ -19,10 +21,20 @@ final permisosProvider = FutureProvider<EstadoPermisos>((ref) => comprobarPermis
 /// Pide el permiso de notificaciones y, si está denegado en el sistema, lo
 /// explica con un botón a los ajustes. Devuelve si los avisos pueden llegar.
 Future<bool> asegurarAvisos(BuildContext context) async {
-  if (kIsWeb) return pedirPermisoNotificacionesNavegador();
   if (!Notificaciones.disponibles) return true;
   if (await Notificaciones.pedirPermiso()) return true;
   if (!context.mounted) return false;
+  if (kIsWeb) {
+    await showDialog<void>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: const Text('Los avisos están bloqueados'),
+        content: const Text(_textoBloqueadosNavegador),
+        actions: [FilledButton(onPressed: () => Navigator.pop(d), child: const Text('Entendido'))],
+      ),
+    );
+    return false;
+  }
   final abrir = await showDialog<bool>(
     context: context,
     builder: (d) => AlertDialog(
@@ -85,7 +97,12 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Text('Avisos de la app', style: context.textos.titleLarge),
           const SizedBox(height: 6),
-          Text('Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones. Solo se usan para esto:', style: context.textos.bodySmall),
+          Text(
+            kIsWeb
+                ? 'En el navegador llegan mientras tengas la web abierta (aunque estés en otra pestaña o la ventana esté minimizada), si el navegador lo permite. Solo se usan para esto:'
+                : 'Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones. Solo se usan para esto:',
+            style: context.textos.bodySmall,
+          ),
           const SizedBox(height: 10),
           for (final (icono, texto) in const [
             (Icons.event_outlined, 'Clases que tu preparador programa, mueve o cancela (o, si eres preparador, las que reservan o piden tus alumnos).'),
@@ -103,14 +120,16 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
             ),
           if (denegado) ...[
             const SizedBox(height: 6),
-            Text('El sistema ha denegado el permiso. Puedes activarlo en los ajustes de la app.', style: context.textos.bodySmall?.copyWith(color: context.esquema.error)),
+            Text(kIsWeb ? _textoBloqueadosNavegador : 'El sistema ha denegado el permiso. Puedes activarlo en los ajustes de la app.', style: context.textos.bodySmall?.copyWith(color: context.esquema.error)),
           ],
           if (_notificaciones == true && _exactas == false) ...[
             const SizedBox(height: 6),
             Text('Sin «alarmas exactas», los avisos del cronómetro pueden llegar con algo de retraso. Se activan en los ajustes de la app.', style: context.textos.bodySmall),
           ],
           const SizedBox(height: 14),
-          if (denegado || (_notificaciones == true && _exactas == false))
+          if (kIsWeb && denegado)
+            FilledButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Entendido'))
+          else if (denegado || (_notificaciones == true && _exactas == false))
             FilledButton.icon(
               onPressed: () async {
                 await abrirAjustesNotificaciones();
@@ -151,11 +170,11 @@ class TarjetaAvisosDesactivados extends ConsumerWidget {
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Los avisos no pueden llegar', style: context.textos.titleMedium),
-              Text('El sistema tiene desactivadas las notificaciones de la app: no te enterarás de las clases ni de los temas de tu preparador.', style: context.textos.bodySmall),
+              Text(kIsWeb ? 'El navegador bloquea los avisos de esta web: no te enterarás de las clases ni de los temas de tu preparador mientras la tengas abierta.' : 'El sistema tiene desactivadas las notificaciones de la app: no te enterarás de las clases ni de los temas de tu preparador.', style: context.textos.bodySmall),
             ]),
           ),
           const SizedBox(width: 8),
-          FilledButton(onPressed: () => abrirAjustesNotificaciones(), child: const Text('Activar')),
+          FilledButton(onPressed: () => kIsWeb ? asegurarAvisos(context).then((_) => ref.invalidate(permisosProvider)) : abrirAjustesNotificaciones(), child: const Text('Activar')),
         ]),
       ),
     );
@@ -174,16 +193,22 @@ class FilasAvisosSistema extends ConsumerWidget {
     return Column(children: [
       ListTile(
         leading: Icon(activadas == false ? Icons.notifications_off_outlined : Icons.notifications_none, color: activadas == false ? context.esquema.error : null),
-        title: const Text('Avisos del sistema'),
+        title: Text(kIsWeb ? 'Avisos del navegador' : 'Avisos del sistema'),
         subtitle: Text(
-          activadas == false
-              ? 'Desactivados: la app no puede mostrar notificaciones. Toca para activarlos.'
-              : 'Activados.${p?.alarmasExactas == false ? ' Sin alarmas exactas: los avisos del cronómetro pueden retrasarse.' : ''}',
+          kIsWeb
+              ? switch (activadas) {
+                  false => 'Bloqueados por el navegador. Toca para ver cómo permitirlos.',
+                  true => 'Activados: llegan mientras tengas la web abierta (aunque sea en otra pestaña). Con la web cerrada, solo en la app del móvil.',
+                  null => 'Toca para permitirlos. Llegan mientras tengas la web abierta.',
+                }
+              : activadas == false
+                  ? 'Desactivados: la app no puede mostrar notificaciones. Toca para activarlos.'
+                  : 'Activados.${p?.alarmasExactas == false ? ' Sin alarmas exactas: los avisos del cronómetro pueden retrasarse.' : ''}',
           style: context.textos.labelSmall,
         ),
-        trailing: const Icon(Icons.open_in_new, size: 18),
+        trailing: Icon(kIsWeb ? Icons.chevron_right : Icons.open_in_new, size: 18),
         onTap: () async {
-          await abrirAjustesNotificaciones();
+          kIsWeb ? await asegurarAvisos(context) : await abrirAjustesNotificaciones();
           ref.invalidate(permisosProvider);
         },
       ),

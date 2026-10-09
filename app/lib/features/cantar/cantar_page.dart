@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -234,7 +233,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (d == null) return;
     final yo = ref.read(usuarioActualProvider)!;
     final nombre = widget.sesion != null ? ref.read(perfilPreparadorProvider).nombre : (yo.displayName ?? 'Tu alumno');
-    _compartido = RelojCompartido.deClase(FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: d.alumnoUid, canteId: d.canteId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
+    _compartido = RelojCompartido.deClase(ref.read(firestoreRelojProvider), ref.read(oposicionProvider), alumnoUid: d.alumnoUid, canteId: d.canteId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
     _escucha = _compartido!.escuchar().listen(_alCambiarRemoto);
   }
 

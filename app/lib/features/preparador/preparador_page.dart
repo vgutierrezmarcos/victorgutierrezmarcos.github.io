@@ -16,6 +16,7 @@ import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
+import '../../data/repos/red_repo.dart';
 import 'ajustes_preparador_page.dart';
 import 'alta_page.dart';
 import 'busquedas_page.dart';
@@ -53,7 +54,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     if (a != null) await ref.read(alumnosProvider.notifier).guardar(a);
   }
 
-  void _nuevaClase() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider))));
+  void _nuevaClase() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(misAlumnosProvider))));
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +85,10 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
       );
     }
 
-    final alumnos = ref.watch(alumnosProvider);
+    final alumnos = ref.watch(misAlumnosProvider);
     final sesiones = ref.watch(sesionesProvider);
     final proximas = ref.watch(proximasSesionesProvider);
-    final nombres = {for (final a in alumnos) a.id: a.nombre};
+    final nombres = {for (final a in ref.watch(alumnosProvider)) a.id: a.nombre};
     final ahora = DateTime.now();
     final red = ref.watch(estadoRedProvider);
     final estado = red.value ?? const EstadoRed();
@@ -225,8 +226,8 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         const SizedBox(height: 4),
         Text(
           solicitud == null
-              ? 'Para dar tu código a tus alumnos, aparecer en la lista de preparadores y coger clases sueltas, te tiene que verificar un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos a mano.'
-              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.destinatario == null ? '. La revisará un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre}'}; desliza hacia abajo para comprobarlo.',
+              ? estado.retirada ? 'Te retiraron la verificación. Si quieres volver a tenerla, pídela otra vez: la revisa la administración. Mientras, puedes llevar a tus alumnos a mano.' : 'Para dar tu código a tus alumnos, aparecer en la lista de preparadores y coger clases sueltas, te tiene que verificar un preparador ya verificado. Así nadie puede hacerse pasar por preparador. Mientras, puedes llevar a tus alumnos a mano.'
+              : 'Has pedido la verificación${solicitud.creada == null ? '' : ' el ${fechaCorta(solicitud.creada!)}'}${solicitud.reverificacion ? '. La revisará la administración' : solicitud.destinatario == null ? '. La revisará un preparador verificado' : ' a ${solicitud.destinatarioNombre.isEmpty ? 'un preparador' : solicitud.destinatarioNombre}'}; desliza hacia abajo para comprobarlo.',
           style: context.textos.bodySmall,
         ),
         const SizedBox(height: 10),
@@ -250,14 +251,21 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             )
           else if (solicitud == null)
             FilledButton.icon(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AltaPreparadorPage(soloVerificacion: true))), icon: const Icon(Icons.how_to_reg_outlined, size: 18), label: const Text('Pedir la verificación')),
-          if (solicitud != null)
+          if (solicitud != null) ...[
+            OutlinedButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AltaPreparadorPage(soloVerificacion: true))), child: const Text('Cambiar la solicitud')),
             TextButton(
               onPressed: () async {
-                await ref.read(redRepoProvider).retirarSolicitud();
+                final messenger = ScaffoldMessenger.of(context);
+                try {
+                  await ref.read(redRepoProvider).retirarSolicitud().timeout(const Duration(seconds: 10));
+                } catch (e) {
+                  messenger.showSnackBar(SnackBar(content: Text('No se pudo retirar (${textoError(e)}).')));
+                }
                 ref.invalidate(estadoRedProvider);
               },
               child: const Text('Retirar la solicitud'),
             ),
+          ],
         ]),
       ]),
     );

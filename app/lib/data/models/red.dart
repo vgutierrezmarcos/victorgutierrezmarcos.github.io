@@ -90,7 +90,7 @@ String describirModalidad(String modalidad, String ciudad) {
 
 /// Petición para que verifiquen a alguien como preparador.
 class SolicitudPreparador {
-  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.linkedin = '', this.modalidad = '', this.ciudad = '', this.destinatario, this.destinatarioNombre = '', this.creada});
+  const SolicitudPreparador({required this.uid, required this.nombre, this.email = '', this.ejercicios = const [3, 4], this.presentacion = '', this.linkedin = '', this.modalidad = '', this.ciudad = '', this.destinatario, this.destinatarioNombre = '', this.creada, this.reverificacion = false});
   final String uid;
   final String nombre;
   final String email;
@@ -107,6 +107,9 @@ class SolicitudPreparador {
   final String? destinatario;
   final String destinatarioNombre;
   final DateTime? creada;
+  /// Ya estuvo verificado y se le retiró: solo la ve y la resuelve la
+  /// administración (no va a todos ni a un preparador concreto).
+  final bool reverificacion;
 
   Map<String, dynamic> toJson() => {
         'uid': uid,
@@ -117,10 +120,11 @@ class SolicitudPreparador {
         'linkedin': linkedin,
         if (modalidad.isNotEmpty) 'modalidad': modalidad,
         if (ciudad.isNotEmpty) 'ciudad': ciudad,
-        'paraTodos': destinatario == null,
-        'destinatario': destinatario,
-        'destinatarioNombre': destinatarioNombre,
+        'paraTodos': destinatario == null && !reverificacion,
+        'destinatario': reverificacion ? null : destinatario,
+        'destinatarioNombre': reverificacion ? '' : destinatarioNombre,
         'creada': (creada ?? DateTime.now()).toIso8601String(),
+        if (reverificacion) 'reverificacion': true,
       };
 
   factory SolicitudPreparador.fromJson(Map<dynamic, dynamic> j) => SolicitudPreparador(
@@ -135,6 +139,7 @@ class SolicitudPreparador {
         destinatario: j['destinatario'] as String?,
         destinatarioNombre: j['destinatarioNombre'] as String? ?? '',
         creada: _fecha(j['creada']),
+        reverificacion: j['reverificacion'] == true,
       );
 }
 

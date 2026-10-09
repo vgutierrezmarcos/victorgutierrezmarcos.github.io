@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_update/in_app_update.dart';
 
 import '../widgets/comunes.dart';
+import 'avisos_navegador.dart';
 
 // Actualizaciones de la app. Instalada desde Google Play, Play la actualiza
 // dentro de la app («actualización flexible»: se descarga mientras se usa y
@@ -33,7 +34,9 @@ Future<void> comprobarActualizacionDePlay(BuildContext context) async {
 }
 
 /// Botón «Actualizar» de la tarjeta de Hoy: por Play si se puede; si no, [url].
+/// En el navegador, recarga la página (con la versión nueva).
 Future<void> actualizar(BuildContext context, String? url) async {
+  if (kIsWeb) return recargarNavegador();
   if (!kIsWeb && defaultTargetPlatform.name.contains('android')) {
     try {
       final info = await InAppUpdate.checkForUpdate();

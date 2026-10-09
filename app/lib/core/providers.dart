@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'avisos_navegador.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -92,12 +93,13 @@ final procesoJsonProvider = FutureProvider<Map<String, dynamic>>((ref) async {
 final procesoProvider = FutureProvider<List<ProcesoSelectivo>>((ref) async => ProcesoSelectivo.deOposicion(await ref.watch(procesoJsonProvider.future), ref.watch(oposicionProvider).id));
 
 /// Versión nueva disponible (o null): la publicada en app-config.json si es
-/// posterior a la instalada.
+/// posterior a la instalada. En el navegador, si se ha publicado otra versión
+/// web desde que se abrió la pestaña (se ofrece recargar).
 final actualizacionProvider = FutureProvider<String?>((ref) async {
+  if (kIsWeb) return versionNuevaNavegador();
   final config = await ref.watch(configProvider.future);
   final publicada = config.versionActual;
-  // En el navegador siempre se carga la última versión publicada.
-  if (publicada == null || kIsWeb) return null;
+  if (publicada == null) return null;
   try {
     final instalada = (await PackageInfo.fromPlatform()).version;
     return AppConfig.esPosterior(publicada, instalada) ? publicada : null;
@@ -654,6 +656,10 @@ class AlumnosNotifier extends Notifier<List<Alumno>> {
 }
 
 final alumnosProvider = NotifierProvider<AlumnosNotifier, List<Alumno>>(AlumnosNotifier.new);
+
+/// Los alumnos del preparador: sin los de las clases sueltas que ha cogido
+/// (esos no son alumnos suyos hasta que escriban su código).
+final misAlumnosProvider = Provider<List<Alumno>>((ref) => ref.watch(alumnosProvider).where((a) => !a.suelto).toList());
 
 /// Sesiones de cante del preparador con sus alumnos (son [Cante] con `alumno`).
 class SesionesNotifier extends Notifier<List<Cante>> {

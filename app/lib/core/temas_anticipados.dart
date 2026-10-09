@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../data/models/oposicion.dart';
 import 'notificaciones.dart';
-import 'plataforma.dart';
 import 'vistos.dart';
 
 /// Tema (o temas) que el preparador manda antes de una clase, ya visible.
@@ -71,11 +70,7 @@ Future<int> comprobarTemasAnticipados(FirebaseFirestore db, String uid, Oposicio
       // Cuenta atrás del esquema desde que llegan los temas (como en el examen).
       final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 0;
       final seg = oposicion.ejercicio(ejercicio)?.segundosEsquemaPara(t.temas.length) ?? 0;
-      if (Notificaciones.disponibles) {
-        await Notificaciones.avisoTema(canteId: d.id, de: t.preparadorNombre, texto: texto, tema: t.temas.join(','), sorteado: t.sorteado, esquemaHasta: seg > 0 ? cuando.add(Duration(seconds: seg)) : null);
-      } else {
-        notificacionNavegador(t.preparadorNombre, texto);
-      }
+      await Notificaciones.avisoTema(canteId: d.id, de: t.preparadorNombre, texto: texto, tema: t.temas.join(','), sorteado: t.sorteado, esquemaHasta: seg > 0 ? cuando.add(Duration(seconds: seg)) : null);
     }
   } catch (_) {}
   if (avisados > 0) await guardarVistos(vistos, lista: 'temas_anticipados');

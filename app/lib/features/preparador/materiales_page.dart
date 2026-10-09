@@ -185,7 +185,7 @@ class _MaterialFormPageState extends ConsumerState<MaterialFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    final alumnos = ref.watch(alumnosProvider).where((a) => a.enlazado).toList();
+    final alumnos = ref.watch(misAlumnosProvider).where((a) => a.enlazado).toList();
     final temario = ref.watch(temarioProvider).valueOrNull;
     final tema = _tema == null ? null : temario?.tema(_tema!);
     return Scaffold(

@@ -135,7 +135,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               if (nuevo != null) await ref.read(alumnosProvider.notifier).guardar(nuevo);
             },
           ),
-          if (ref.watch(alumnosProvider).any((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)))
+          if (ref.watch(misAlumnosProvider).any((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)))
             IconButton(tooltip: a.enlazado ? 'Unir con una ficha apuntada a mano' : 'Unir con su ficha enlazada', icon: const Icon(Icons.merge_type), onPressed: () => _unir(a)),
           IconButton(tooltip: 'Quitar alumno', icon: const Icon(Icons.person_remove_outlined), onPressed: () => _quitar(a)),
         ],
@@ -158,7 +158,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               const SizedBox(width: 10),
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider), alumnosIniciales: {a.id}))),
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(misAlumnosProvider), alumnosIniciales: {a.id}))),
                   icon: const Icon(Icons.event_outlined, size: 18),
                   label: const Text('Programar clase'),
                 ),
@@ -329,7 +329,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
 /// app): se elige la otra y se unen. Devuelve la ficha unida (la enlazada) o
 /// null si se cancela.
 Future<Alumno?> unirAlumnoDialogo(BuildContext context, WidgetRef ref, Alumno a) async {
-  final otros = ref.read(alumnosProvider).where((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)).toList();
+  final otros = ref.read(misAlumnosProvider).where((x) => x.id != a.id && (a.enlazado ? x.uid == null : x.enlazado)).toList();
   if (otros.isEmpty) return null;
   final otro = await showDialog<Alumno>(
     context: context,

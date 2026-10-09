@@ -26,20 +26,3 @@ void borrarGrabacion(String ruta) {
   if (ruta.startsWith('blob:')) web.URL.revokeObjectURL(ruta);
 }
 
-/// Notificación del navegador (si el usuario dio permiso). Solo llega con la
-/// pestaña abierta, aunque esté en segundo plano.
-void notificacionNavegador(String titulo, String texto) {
-  try {
-    if (web.Notification.permission == 'granted') web.Notification(titulo, web.NotificationOptions(body: texto, icon: 'icons/Icon-192.png'));
-  } catch (_) {}
-}
-
-Future<bool> pedirPermisoNotificacionesNavegador() async {
-  try {
-    if (web.Notification.permission == 'granted') return true;
-    final r = await web.Notification.requestPermission().toDart;
-    return r.toDart == 'granted';
-  } catch (_) {
-    return false;
-  }
-}

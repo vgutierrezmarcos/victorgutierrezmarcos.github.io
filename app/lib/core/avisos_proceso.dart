@@ -6,7 +6,6 @@ import '../data/models/oposicion.dart';
 import '../data/models/proceso.dart';
 import 'avisos_fondo.dart';
 import 'notificaciones.dart';
-import 'plataforma.dart';
 import 'vistos.dart';
 
 // Las oposiciones con avisos del proceso y los documentos ya avisados se
@@ -59,11 +58,7 @@ Future<List<DocumentoProceso>> comprobarProceso(Map<String, dynamic> json) async
               (clave: 'proc:${op.id}:${d.id}', titulo: titulo, texto: '${d.seccion}: ${d.titulo}', url: procesos.firstWhere((p) => p.documentos.contains(d), orElse: () => procesos.first).url),
           ];
     for (final a in avisos) {
-      if (Notificaciones.disponibles) {
-        await Notificaciones.avisoProceso(a.clave, a.titulo, a.texto, a.url);
-      } else {
-        notificacionNavegador(a.titulo, a.texto);
-      }
+      await Notificaciones.avisoProceso(a.clave, a.titulo, a.texto, a.url);
     }
     avisados.addAll(r.nuevos);
   }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' show Color;
 
 import 'package:flutter/foundation.dart';
@@ -7,9 +8,12 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
+import 'avisos_navegador.dart';
 
 /// Notificaciones locales: recordatorio diario de estudio, avisos del
-/// cronómetro y recordatorios de los cantes programados.
+/// cronómetro y recordatorios de los cantes programados. En el navegador son
+/// los avisos del navegador (los mismos, pero solo con la web abierta, aunque
+/// esté en otra pestaña): los programados van con temporizadores.
 class Notificaciones {
   Notificaciones._();
   static final _plugin = FlutterLocalNotificationsPlugin();
@@ -55,11 +59,41 @@ class Notificaciones {
     f == null ? _pendiente = contenido : f(contenido);
   }
 
-  /// Las notificaciones solo existen en la app del móvil.
-  static bool get disponibles => !kIsWeb;
+  /// En el móvil, siempre; en el navegador, si admite notificaciones.
+  static bool get disponibles => !kIsWeb || navegadorAdmiteAvisos;
+
+  // ------------------------------------------------- En el navegador
+  static final _temporizadores = <int, Timer>{};
+
+  static void _cancelarWeb(int id) => _temporizadores.remove(id)?.cancel();
+
+  /// Aviso a una hora: con un temporizador (si la web está abierta a esa hora).
+  /// Los navegadores no esperan más de ~24 días de una vez: se despierta cada
+  /// día y vuelve a mirar.
+  static void _programarWeb(int id, DateTime cuando, String titulo, String texto, {String? contenido}) {
+    _cancelarWeb(id);
+    final falta = cuando.difference(DateTime.now());
+    if (falta.isNegative) return;
+    const dia = Duration(days: 1);
+    _temporizadores[id] = Timer(falta > dia ? dia : falta, () {
+      _temporizadores.remove(id);
+      if (falta > dia) {
+        _programarWeb(id, cuando, titulo, texto, contenido: contenido);
+      } else {
+        mostrarAvisoNavegador(id, titulo, texto, contenido: contenido);
+      }
+    });
+  }
+
+  static Future<void> _cancelar(int id) async => kIsWeb ? _cancelarWeb(id) : await _plugin.cancel(id);
 
   static Future<void> iniciar() async {
     if (_listo || !disponibles) return;
+    if (kIsWeb) {
+      iniciarAvisosNavegador(_tocada);
+      _listo = true;
+      return;
+    }
     tzdata.initializeTimeZones();
     try {
       tz.setLocalLocation(tz.getLocation('Europe/Madrid'));
@@ -85,6 +119,7 @@ class Notificaciones {
   static Future<bool> pedirPermiso() async {
     if (!disponibles) return false;
     await iniciar();
+    if (kIsWeb) return pedirPermisoAvisosNavegador();
     final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     final ios = _plugin.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>();
     final a = await android?.requestNotificationsPermission();
@@ -100,8 +135,15 @@ class Notificaciones {
   static Future<void> programarRecordatorio(int minutosDesdeMedianoche, {bool hechoHoy = false}) async {
     if (!disponibles) return;
     await iniciar();
-    await _plugin.cancel(_idRecordatorio);
+    await _cancelar(_idRecordatorio);
     if (minutosDesdeMedianoche < 0) return;
+    if (kIsWeb) {
+      final ahora = DateTime.now();
+      var cuando = DateTime(ahora.year, ahora.month, ahora.day, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
+      if (cuando.isBefore(ahora) || hechoHoy) cuando = DateTime(ahora.year, ahora.month, ahora.day + 1, minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
+      _programarWeb(_idRecordatorio, cuando, 'Test diario ${Oposiciones.actual.siglas}', 'Tus 10 preguntas de hoy te esperan. Toca para empezar.', contenido: 'ruta:/hoy?test=diario');
+      return;
+    }
     final ahora = tz.TZDateTime.now(tz.local);
     var cuando = tz.TZDateTime(tz.local, ahora.year, ahora.month, ahora.day,
         minutosDesdeMedianoche ~/ 60, minutosDesdeMedianoche % 60);
@@ -127,6 +169,9 @@ class Notificaciones {
   static Future<bool?> activadas() async {
     if (!disponibles) return null;
     await iniciar();
+    if (kIsWeb) {
+      return switch (permisoAvisosNavegador()) { 'granted' => true, 'denied' => false, _ => null };
+    }
     try {
       return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.areNotificationsEnabled();
     } catch (_) {
@@ -137,7 +182,7 @@ class Notificaciones {
   /// Si se pueden programar alarmas exactas (los avisos del cronómetro a su
   /// segundo); null si no aplica.
   static Future<bool?> alarmasExactas() async {
-    if (!disponibles) return null;
+    if (!disponibles || kIsWeb) return null;
     await iniciar();
     try {
       return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.canScheduleExactNotifications();
@@ -148,7 +193,7 @@ class Notificaciones {
 
   /// Pide el permiso de alarmas exactas (Android 12+ abre los ajustes).
   static Future<bool> pedirAlarmasExactas() async {
-    if (!disponibles) return false;
+    if (!disponibles || kIsWeb) return false;
     await iniciar();
     try {
       return await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestExactAlarmsPermission() ?? false;
@@ -162,6 +207,13 @@ class Notificaciones {
   static Future<void> programarCronometro(List<({DateTime cuando, String texto})> avisos) async {
     if (!disponibles) return;
     await cancelarCronometro();
+    if (kIsWeb) {
+      var i = 0;
+      for (final a in avisos.where((a) => a.cuando.isAfter(DateTime.now())).take(_maxAvisosCronometro)) {
+        _programarWeb(_idCronometroProgramado + i++, a.cuando, 'Cronómetro', a.texto);
+      }
+      return;
+    }
     final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
     // Sin permiso de alarmas exactas el aviso puede llegar con algo de retraso.
     final exacto = await android?.canScheduleExactNotifications() ?? false;
@@ -190,7 +242,7 @@ class Notificaciones {
     if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < _maxAvisosCronometro; i++) {
-      await _plugin.cancel(_idCronometroProgramado + i);
+      await _cancelar(_idCronometroProgramado + i);
     }
   }
 
@@ -210,7 +262,7 @@ class Notificaciones {
     if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < 2 * maxCantesConAviso; i++) {
-      await _plugin.cancel(_idCantes + i);
+      await _cancelar(_idCantes + i);
     }
     final hoy = ahora ?? DateTime.now();
     final proximos = cantes.where((c) => c.pendiente && !c.borrado && c.fecha.isAfter(hoy)).toList()..sort((a, b) => a.fecha.compareTo(b.fecha));
@@ -219,6 +271,10 @@ class Notificaciones {
       for (final a in avisosDeCante(c)) {
         final n = id++;
         if (!a.cuando.isAfter(hoy)) continue;
+        if (kIsWeb) {
+          _programarWeb(n, a.cuando, a.titulo, a.texto, contenido: 'ruta:/cantes?cante=${c.id}');
+          continue;
+        }
         try {
           await _plugin.zonedSchedule(
             n,
@@ -266,7 +322,7 @@ class Notificaciones {
     if (!disponibles) return;
     await iniciar();
     for (var i = 0; i < _maxAvisosClase + _maxAvisosTema; i++) {
-      await _plugin.cancel(_idClases + i);
+      await _cancelar(_idClases + i);
     }
     final hoy = ahora ?? DateTime.now();
     await _programarEntregasDeTemas(clases, alumno: alumno, ahora: hoy);
@@ -279,6 +335,10 @@ class Notificaciones {
     ].take(_maxAvisosClase);
     var id = _idClases;
     for (final a in avisos) {
+      if (kIsWeb) {
+        _programarWeb(id++, a.cuando, a.titulo, a.texto, contenido: 'ruta:/clase?id=${a.clase}');
+        continue;
+      }
       try {
         await _plugin.zonedSchedule(
           id++,
@@ -311,11 +371,17 @@ class Notificaciones {
       final seg = Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.temasMandados.length) ?? 0;
       final hasta = c.temaA!.add(Duration(seconds: seg));
       final temas = c.temaSorteado ? 'los temas sorteados' : (c.temasMandados.length == 1 ? 'el tema ${c.temasMandados.first}' : 'los temas ${c.temasMandados.join(' y ')}');
+      final titulo = 'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas';
+      final texto = seg > 0 ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.' : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.';
+      if (kIsWeb) {
+        _programarWeb(id++, c.temaA!, titulo, texto, contenido: 'ruta:/clase?id=${c.id}');
+        continue;
+      }
       try {
         await _plugin.zonedSchedule(
           id++,
-          'A ${alumno(c)} le ${c.temasMandados.length == 1 && !c.temaSorteado ? 'ha llegado' : 'han llegado'} $temas',
-          seg > 0 ? 'Tiene ${seg ~/ 60} min de esquema, hasta las ${hasta.hour.toString().padLeft(2, '0')}:${hasta.minute.toString().padLeft(2, '0')}.' : 'Para la clase de las ${c.fecha.hour.toString().padLeft(2, '0')}:${c.fecha.minute.toString().padLeft(2, '0')}.',
+          titulo,
+          texto,
           tz.TZDateTime.from(c.temaA!, tz.local),
           NotificationDetails(
             android: AndroidNotificationDetails(color: _colorAviso, 'clases', 'Tus clases',
@@ -343,6 +409,7 @@ class Notificaciones {
   static Future<void> avisoRed(String clave, String titulo, String texto, {String? ruta}) async {
     if (!disponibles) return;
     await iniciar();
+    if (kIsWeb) return mostrarAvisoNavegador(1000 + (clave.hashCode & 0x7ffff), titulo, texto, contenido: ruta == null ? null : 'ruta:$ruta');
     await _plugin.show(
       // Ids propios por encima de los de cantes y cronómetro.
       1000 + (clave.hashCode & 0x7ffff),
@@ -365,6 +432,7 @@ class Notificaciones {
   static Future<void> avisoVersion(String version, String url) async {
     if (!disponibles) return;
     await iniciar();
+    if (kIsWeb) return mostrarAvisoNavegador(1000 + ('version:$version'.hashCode & 0x7ffff), 'Hay una versión nueva de la app ($version)', 'Toca para abrirla.', contenido: 'url:$url');
     await _plugin.show(
       1000 + ('version:$version'.hashCode & 0x7ffff),
       'Hay una versión nueva de la app ($version)',
@@ -387,6 +455,7 @@ class Notificaciones {
   static Future<void> avisoTema({required String canteId, required String de, required String texto, required String tema, bool sorteado = false, DateTime? esquemaHasta}) async {
     if (!disponibles) return;
     await iniciar();
+    if (kIsWeb) return mostrarAvisoNavegador(1000 + ('tema:$canteId'.hashCode & 0x7ffff), de, texto, contenido: 'ruta:/cantes?cante=$canteId&tema=$tema');
     final persona = Person(name: de, key: de, important: true);
     final cuentaAtras = esquemaHasta != null && esquemaHasta.isAfter(DateTime.now());
     await _plugin.show(
@@ -423,6 +492,7 @@ class Notificaciones {
   static Future<void> avisoProceso(String clave, String titulo, String texto, String url) async {
     if (!disponibles) return;
     await iniciar();
+    if (kIsWeb) return mostrarAvisoNavegador(1000 + (clave.hashCode & 0x7ffff), titulo, texto, contenido: 'url:$url');
     await _plugin.show(
       1000 + (clave.hashCode & 0x7ffff),
       titulo,
@@ -442,6 +512,7 @@ class Notificaciones {
   static Future<void> avisoCronometro(String texto) async {
     if (!disponibles) return;
     await iniciar();
+    if (kIsWeb) return mostrarAvisoNavegador(_idCronometro, 'Cronómetro', texto);
     await _plugin.show(
       _idCronometro,
       'Cronómetro',

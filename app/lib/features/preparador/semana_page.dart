@@ -127,7 +127,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
               tooltip: 'Nueva clase este día',
               visualDensity: VisualDensity.compact,
               icon: const Icon(Icons.add, size: 20),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider), diaInicial: d))),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(misAlumnosProvider), diaInicial: d))),
             ),
           ]),
         ),
@@ -146,7 +146,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
     return Scaffold(
       appBar: widget.embebida ? null : BarraWeb(title: const Text('Mi semana'), actions: [alternarVista]),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(alumnosProvider)))),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(alumnos: ref.read(misAlumnosProvider)))),
         icon: const Icon(Icons.add),
         label: const Text('Clase'),
       ),

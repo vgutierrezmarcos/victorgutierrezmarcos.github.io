@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -126,6 +127,8 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       onResume: () {
         ref.read(sesionProvider.notifier).sincronizarSiToca();
         _programar();
+        // En el navegador: si se ha publicado otra versión, se ofrece recargar.
+        if (kIsWeb) ref.invalidate(actualizacionProvider);
         // Lo que haya cambiado en los ajustes del sistema, y la escucha en
         // tiempo real de las clases del preparador.
         ref.invalidate(permisosProvider);

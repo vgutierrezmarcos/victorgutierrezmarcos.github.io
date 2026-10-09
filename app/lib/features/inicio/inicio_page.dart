@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -127,11 +128,11 @@ class InicioPage extends ConsumerWidget {
                     Expanded(
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Text('Hay una versión nueva ($versionNueva)', style: context.textos.titleMedium),
-                        Text('Se instala encima de la actual, sin perder tus datos.', style: context.textos.bodySmall),
+                        Text(kIsWeb ? 'Recarga la página para usarla; tus datos están en tu cuenta.' : 'Se instala encima de la actual, sin perder tus datos.', style: context.textos.bodySmall),
                       ]),
                     ),
                     const SizedBox(width: 8),
-                    FilledButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: const Text('Actualizar')),
+                    FilledButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(kIsWeb ? 'Recargar' : 'Actualizar')),
                   ]),
                 ),
               ),

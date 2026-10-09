@@ -11,10 +11,12 @@ que cambie el código de la app (lib/) o web/index.html.
 
 El motor gráfico (canvaskit, ~37 MB) no se copia: el navegador lo descarga de
 www.gstatic.com, como hace Flutter por defecto. Tampoco se copian los
-.symbols (depuración) ni el service worker de Flutter (desactivado).
+.symbols (depuración) ni el service worker de Flutter (desactivado); sí
+avisos-sw.js, el de los avisos del navegador (sin caché).
 """
 import argparse
 import hashlib
+import json
 import shutil
 import subprocess
 import sys
@@ -61,7 +63,17 @@ def poner_huella():
     arranque.write_text(texto.replace('main.dart.js', nuevo), encoding='utf-8')
     indice = DESTINO / 'index.html'
     html = indice.read_text(encoding='utf-8')
-    indice.write_text(html.replace('src="flutter_bootstrap.js"', f'src="flutter_bootstrap.js?v={huella}"'), encoding='utf-8')
+    if '__HUELLA__' not in html:
+        sys.exit('index.html no tiene __HUELLA__: revisa app/web/index.html.')
+    html = html.replace('src="flutter_bootstrap.js"', f'src="flutter_bootstrap.js?v={huella}"').replace('__HUELLA__', huella)
+    indice.write_text(html, encoding='utf-8')
+    # La app abierta compara su huella con la de version.json (que se pide
+    # sin caché) para ofrecer «Recargar» cuando hay una versión nueva.
+    version = DESTINO / 'version.json'
+    datos = json.loads(version.read_text(encoding='utf-8'))
+    datos['huella'] = huella
+    datos['etiqueta'] = f"{datos.get('version', '')} ({datos.get('build_number', '')})"
+    version.write_text(json.dumps(datos, ensure_ascii=False), encoding='utf-8')
     print(f'Huella de la versión: {huella}')
 
 

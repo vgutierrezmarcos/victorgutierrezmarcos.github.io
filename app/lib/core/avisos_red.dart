@@ -2,7 +2,6 @@ import 'package:intl/intl.dart';
 
 import '../data/repos/red_repo.dart';
 import 'notificaciones.dart';
-import 'plataforma.dart';
 import 'vistos.dart';
 
 /// Comprueba si hay algo nuevo en la red (clases sueltas, reservas, clases
@@ -23,11 +22,7 @@ Future<List<AvisoRed>> comprobarAvisosRed(RedRepo repo, {required bool preparado
   );
   if (nuevos.isEmpty) return nuevos;
   for (final a in nuevos) {
-    if (Notificaciones.disponibles) {
-      await Notificaciones.avisoRed(a.id, a.titulo, a.texto, ruta: a.ruta);
-    } else {
-      notificacionNavegador(a.titulo, a.texto);
-    }
+    await Notificaciones.avisoRed(a.id, a.titulo, a.texto, ruta: a.ruta);
   }
   await guardarVistos({...vistos, ...nuevos.map((a) => a.id)});
   return nuevos;

@@ -79,24 +79,88 @@ class PreparadorRepo {
 
   PerfilPreparador perfil() => PerfilPreparador.fromJson(_perfil.get('perfil') as Map?);
 
+  /// Sin red, Firestore no termina la escritura hasta que vuelve la conexión
+  /// (la deja en cola y la sube sola): no se espera más que esto.
+  static const _esperaNube = Duration(seconds: 8);
+
+  DocumentReference<Map<String, dynamic>>? get _docPerfil => _docUsuario?.collection('progress').doc('preparador');
+
+  /// Claves del perfil que solo se escriben cuando tienen valor.
+  static const _clavesOpcionales = ['segundosTemaAntes', 'modalidad', 'ciudad', 'calendarioGoogle'];
+
   Future<void> guardarPerfil(PerfilPreparador p) async {
     await _perfil.put('perfil', p.toJson());
     try {
-      await _docUsuario?.collection('progress').doc('preparador').set(p.toJson());
+      final doc = _docPerfil;
+      if (doc == null) return;
+      if (p.codigo != null) {
+        await doc.set(p.toJson()).timeout(_esperaNube);
+      } else {
+        // Sin código en este dispositivo (p. ej. recién instalado): no se
+        // borra el que haya en la nube, que es el que tienen los alumnos.
+        final datos = p.toJson()..remove('codigo');
+        for (final k in _clavesOpcionales) {
+          datos.putIfAbsent(k, FieldValue.delete);
+        }
+        await doc.set(datos, SetOptions(merge: true)).timeout(_esperaNube);
+      }
     } catch (_) {
       // Sin red: se sube en la próxima sincronización.
     }
   }
 
+  /// Si este dispositivo no tiene el código pero la nube sí (otro móvil, el
+  /// navegador, una reinstalación), se usa ese: el código no cambia nunca.
+  Future<void> _traerCodigoDeLaNube() async {
+    final doc = _docPerfil;
+    if (doc == null || perfil().codigo != null) return;
+    try {
+      DocumentSnapshot<Map<String, dynamic>> snap;
+      try {
+        snap = await doc.get(const GetOptions(source: Source.server));
+      } catch (_) {
+        snap = await doc.get();
+      }
+      final nube = snap.exists ? PerfilPreparador.fromJson(snap.data()) : null;
+      if (nube?.codigo == null) return;
+      final local = perfil();
+      final masNueva = (nube!.updatedAt ?? DateTime(0)).isAfter(local.updatedAt ?? DateTime(0));
+      await _perfil.put('perfil', masNueva ? nube.toJson() : {...local.toJson(), 'codigo': nube.codigo});
+    } catch (_) {}
+  }
+
+  Future<void>? _activacionEnCurso;
+
   /// Activa «Soy preparador». Con sesión reserva además el código que se da
-  /// a los alumnos; sin sesión, la herramienta funciona solo en este dispositivo.
+  /// a los alumnos (o recupera el que ya tenía); sin sesión, la herramienta
+  /// funciona solo en este dispositivo. Las llamadas van de una en una para
+  /// que dos a la vez no reserven dos códigos.
   Future<PerfilPreparador> activar({String? nombre}) async {
-    var p = perfil().copyWith(activo: true, nombre: nombre ?? (perfil().nombre.isEmpty ? (_auth?.currentUser?.displayName ?? '') : null));
-    await guardarPerfil(p);
+    while (_activacionEnCurso != null) {
+      await _activacionEnCurso;
+    }
+    final hecho = Completer<void>();
+    _activacionEnCurso = hecho.future;
+    try {
+      return await _activar(nombre: nombre);
+    } finally {
+      _activacionEnCurso = null;
+      hecho.complete();
+    }
+  }
+
+  Future<PerfilPreparador> _activar({String? nombre}) async {
+    await _traerCodigoDeLaNube();
+    var p = perfil();
+    final nuevoNombre = nombre ?? (p.nombre.isEmpty ? (_auth?.currentUser?.displayName ?? '') : null);
+    if (!p.activo || (nuevoNombre != null && nuevoNombre != p.nombre)) {
+      p = p.copyWith(activo: true, nombre: nuevoNombre);
+      await guardarPerfil(p);
+    }
     if (conSesion && p.codigo == null) {
       final codigo = await _reservarCodigo(p.nombre);
       if (codigo != null) {
-        p = p.copyWith(codigo: codigo);
+        p = perfil().copyWith(codigo: codigo);
         await guardarPerfil(p);
       }
     }
@@ -121,13 +185,22 @@ class PreparadorRepo {
   Future<String?> _reservarCodigo(String nombre) async {
     errorCodigo = null;
     try {
+      final docPerfil = _docPerfil!;
       for (var i = 0; i < 6; i++) {
         final codigo = generarCodigo();
         final doc = oposicion.red(_db!, 'codigos').doc(codigo);
-        // Del servidor: con la caché sin conexión, un get() sin red diría que el código está libre.
-        if ((await doc.get(const GetOptions(source: Source.server))).exists) continue;
-        await doc.set({'uid': uid, 'nombre': nombre, 'creado': DateTime.now().toIso8601String()});
-        return codigo;
+        // En una transacción (siempre contra el servidor): si otro dispositivo
+        // ya ha reservado el código de este preparador, se usa ese; si el
+        // código nuevo ya es de otro, se prueba otro.
+        final r = await _db.runTransaction<String?>((tx) async {
+          final yaTenia = (await tx.get(docPerfil)).data()?['codigo'];
+          if (yaTenia is String && yaTenia.isNotEmpty) return yaTenia;
+          if ((await tx.get(doc)).exists) return null;
+          tx.set(doc, {'uid': uid, 'nombre': nombre, 'creado': DateTime.now().toIso8601String()});
+          tx.set(docPerfil, {'codigo': codigo}, SetOptions(merge: true));
+          return codigo;
+        });
+        if (r != null) return r;
       }
       errorCodigo = ErrorCodigo.otro;
     } on FirebaseException catch (e) {
@@ -146,6 +219,10 @@ class PreparadorRepo {
   /// Alumnos visibles, por orden alfabético.
   List<Alumno> alumnos() => _todosLosAlumnos().where((a) => !a.borrado).toList()..sort((a, b) => a.nombre.toLowerCase().compareTo(b.nombre.toLowerCase()));
 
+  /// Los alumnos del preparador: sin los de las clases sueltas que ha cogido,
+  /// que no son alumnos suyos hasta que escriban su código.
+  List<Alumno> misAlumnos() => alumnos().where((a) => !a.suelto).toList();
+
   Alumno? alumno(String id) {
     final j = _alumnos.get(id) as Map?;
     return j == null ? null : Alumno.fromJson(j);
@@ -154,7 +231,7 @@ class PreparadorRepo {
   Future<void> guardarAlumno(Alumno a) async {
     await _alumnos.put(a.id, a.toJson());
     try {
-      await _docUsuario?.collection('alumnos').doc(a.id).set(a.toJson());
+      await _docUsuario?.collection('alumnos').doc(a.id).set(a.toJson()).timeout(_esperaNube);
     } catch (_) {}
   }
 
@@ -178,6 +255,24 @@ class PreparadorRepo {
     }
     await guardarAlumno(sinApp.copyWith(borrado: true, desenlazar: true, clasesFijas: const []));
     return unido;
+  }
+
+  /// Hasta la 1.15.3, coger una clase suelta de alguien con el mismo teléfono
+  /// que una ficha apuntada a mano convertía esa ficha en «suelta» (y salía de
+  /// «Mis alumnos»). Se separan otra vez: la de a mano vuelve a ser como era y
+  /// las clases sueltas pasan a una ficha suelta propia.
+  Future<void> _separarFichasSueltas() async {
+    for (final a in _todosLosAlumnos().where((a) => a.suelto && !a.borrado && !a.id.startsWith('sust_'))) {
+      final sueltas = _todasLasSesiones().where((s) => s.alumno == a.id && s.sustitucion != null).toList();
+      if (sueltas.isNotEmpty) {
+        final suelta = Alumno(id: 'sust_${sueltas.first.sustitucion}', nombre: a.nombre, ejercicio: a.ejercicio, telefono: a.telefono, uid: a.uid, suelto: true, creado: DateTime.now(), updatedAt: DateTime.now());
+        await guardarAlumno(suelta);
+        for (final s in sueltas) {
+          await guardarSesion(s.copyWith(alumno: suelta.id));
+        }
+      }
+      await guardarAlumno(a.copyWith(desenlazar: true));
+    }
   }
 
   /// La ficha apuntada a mano que parece ser la misma persona que [uid]
@@ -487,7 +582,7 @@ class PreparadorRepo {
       final lote = _db!.batch()
         ..delete(_docUsuario!.collection('preparadores').doc(preparador))
         ..delete(oposicion.red(_db, 'preparadores').doc(preparador).collection('alumnos').doc(uid));
-      await lote.commit();
+      await lote.commit().timeout(_esperaNube);
     } catch (_) {}
   }
 
@@ -506,6 +601,7 @@ class PreparadorRepo {
   /// enlace a los que lo han roto desde su app.
   Future<void> _sincronizarAlumnosEnlazados() async {
     if (!conSesion || !perfil().activo) return;
+    await _separarFichasSueltas();
     try {
       final snap = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
       final enlazados = {for (final d in snap.docs) d.id: d.data()};
@@ -655,10 +751,14 @@ class PreparadorRepo {
       final local = perfil();
       final snap = await doc.collection('progress').doc('preparador').get();
       final nube = snap.exists ? PerfilPreparador.fromJson(snap.data()) : null;
+      // El código no se pierde nunca: si un lado no lo tiene, vale el del otro.
+      final codigo = local.codigo ?? nube?.codigo;
       if (nube != null && (nube.updatedAt ?? DateTime(0)).isAfter(local.updatedAt ?? DateTime(0))) {
-        await _perfil.put('perfil', nube.toJson());
+        await _perfil.put('perfil', {...nube.toJson(), 'codigo': nube.codigo ?? codigo});
+        if (nube.codigo == null && codigo != null) await guardarPerfil(perfil());
       } else if (local.updatedAt != null) {
-        await guardarPerfil(local);
+        if (local.codigo == null && codigo != null) await _perfil.put('perfil', {...local.toJson(), 'codigo': codigo});
+        await guardarPerfil(perfil());
       }
       // Activado sin sesión: ahora que la hay, se reserva el código.
       if (perfil().activo && perfil().codigo == null) await activar();
@@ -760,7 +860,7 @@ class PreparadorRepo {
     final hoy = ahora ?? DateTime.now();
     final fin = DateTime(hoy.year, hoy.month, hoy.day + 7 * semanas);
     var nuevas = 0;
-    for (final a in alumnos()) {
+    for (final a in misAlumnos()) {
       for (final c in a.clasesFijas) {
         for (final f in c.fechasEntre(hoy, fin)) {
           final id = idClaseFija(a, c, f);
@@ -811,11 +911,14 @@ class PreparadorRepo {
     return s;
   }
 
-  /// El preparador ha cogido una sustitución: el alumno pasa a su lista (sin
-  /// enlace, con su teléfono) y el cante, a sus sesiones.
+  /// El preparador ha cogido una sustitución: el cante pasa a sus sesiones.
+  /// El alumno no pasa a ser alumno suyo: queda una ficha «suelta» (oculta en
+  /// «Mis alumnos») con su uid y su teléfono, para que la clase y los temas
+  /// mandados le lleguen a su agenda. Solo si ya era alumno enlazado, la clase
+  /// va a su ficha de siempre. Una ficha apuntada a mano no se toca nunca.
   Future<Cante> sesionDeSustitucion(Sustitucion sust, ContactoRed alumno) async {
     final id = 'sust_${sust.id}';
-    final existente = alumnoConUid(sust.alumno) ?? this.alumno(id) ?? alumnos().where((a) => a.telefono.isNotEmpty && telefonoWhatsApp(a.telefono) == telefonoWhatsApp(alumno.telefono)).firstOrNull;
+    final existente = alumnoConUid(sust.alumno) ?? this.alumno(id);
     // Con el uid del alumno (sin enlazar: «suelto»), para que los cambios de
     // la clase le lleguen a su agenda.
     final a = (existente ?? Alumno(id: id, nombre: alumno.nombre.isEmpty ? 'Alumno' : alumno.nombre, creado: DateTime.now(), updatedAt: DateTime.now()))

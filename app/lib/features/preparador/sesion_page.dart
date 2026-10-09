@@ -231,9 +231,9 @@ class SesionPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(
-        title: Text(alumno?.nombre ?? 'Clase'),
+        title: Text(alumno == null ? 'Clase' : (alumno.suelto ? '${alumno.nombre} · clase suelta' : alumno.nombre)),
         actions: [
-          IconButton(tooltip: 'Editar todo', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: s, alumnos: alumnos)))),
+          IconButton(tooltip: 'Editar todo', icon: const Icon(Icons.edit_outlined), onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CanteFormPage(cante: s, alumnos: [...ref.read(misAlumnosProvider), if (alumno != null && alumno.suelto) alumno])))),
           PopupMenuButton<String>(
             onSelected: (v) async {
               switch (v) {
@@ -279,7 +279,7 @@ class SesionPage extends ConsumerWidget {
                   Etiqueta(
                     switch (estadoCopia) {
                       null => 'Alumno sin app enlazada',
-                      EstadoCopia.enviada => alumno!.suelto ? 'Clase suelta: el alumno la ve en su agenda' : 'El alumno la ve en su agenda',
+                      EstadoCopia.enviada => alumno!.suelto ? 'Clase suelta: la ve en su agenda (no pasa a tus alumnos salvo que escriba tu código)' : 'El alumno la ve en su agenda',
                       EstadoCopia.sinRed => 'Pendiente de llegar al alumno (sin conexión)',
                       EstadoCopia.sinPermiso => 'No ha llegado al alumno: su app ya no está enlazada contigo',
                       EstadoCopia.otro => 'Pendiente de llegar al alumno',
