@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
+import '../../data/models/frecuencia_test.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
@@ -51,9 +54,11 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
     final oposicion = Oposiciones.actual;
     final conCantes = oposicion.ejercicio(ej.id)?.cante == TipoCante.temas;
     final conTest = alumno == null && oposicion.id == 'tcee' && ej.id == 3;
+    final frecuencia = conTest ? ref.watch(frecuenciaTestProvider).valueOrNull : null;
+    final caen = frecuencia?.frecuencias(PesoRecientes.mas);
     final lentes = [
       for (final l in LenteMapa.values)
-        if ((l != LenteMapa.cantes || conCantes) && (l != LenteMapa.test || conTest)) l,
+        if ((l != LenteMapa.cantes || conCantes) && (l != LenteMapa.test || conTest) && (l != LenteMapa.cae || caen != null)) l,
     ];
     final lente = lentes.contains(_lente) ? _lente : LenteMapa.dominio;
     final datos = datosPorTema(
@@ -65,7 +70,8 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
       tests: conTest ? [...tests] : const [],
       banco: conTest ? banco : null,
     );
-    final valores = {for (final c in codigos) c: valorTema(datos[c]!, lente, ahora)};
+    final maxCae = caen == null || caen.isEmpty ? 1.0 : caen.values.reduce(max);
+    final valores = {for (final c in codigos) c: lente == LenteMapa.cae ? (caen![c] ?? 0) / maxCae : valorTema(datos[c]!, lente, ahora)};
     final conDato = valores.values.whereType<double>().toList();
     final media = conDato.isEmpty ? null : conDato.reduce((a, b) => a + b) / conDato.length;
 
@@ -104,7 +110,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
           for (final p in ej.partes.where((p) => p.temas.isNotEmpty)) ...[
             TituloSeccion('${p.letra}. ${p.nombre}'),
             Wrap(spacing: 5, runSpacing: 5, children: [
-              for (final t in p.temas) _Casilla(tema: t, valor: valores[t.codigo], onTap: () => _detalle(t, datos[t.codigo]!, ahora, conCantes: conCantes, conTest: conTest)),
+              for (final t in p.temas) _Casilla(tema: t, valor: valores[t.codigo], onTap: () => _detalle(t, datos[t.codigo]!, ahora, conCantes: conCantes, conTest: conTest, frecuencia: frecuencia)),
             ]),
           ],
         ],
@@ -112,7 +118,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
     );
   }
 
-  void _detalle(Tema t, DatosTema d, DateTime ahora, {required bool conCantes, required bool conTest}) {
+  void _detalle(Tema t, DatosTema d, DateTime ahora, {required bool conCantes, required bool conTest, FrecuenciaTest? frecuencia}) {
     final propio = widget.alumno == null;
     final dominio = valorTema(d, LenteMapa.dominio, ahora);
     showModalBottomSheet<void>(
@@ -128,6 +134,7 @@ class _MapaCalorPageState extends ConsumerState<MapaCalorPage> {
             _Fila('Estudiado', d.estudiado ? (d.enRepaso ? 'Sí, y en repaso' : 'Sí') : (d.enRepaso ? 'En repaso' : 'No')),
             if (conCantes) _Fila('Cantes', d.cantes == 0 ? 'Ninguno' : '${d.cantes} · ${d.valoracion == 0 ? 'sin valorar' : '${d.valoracion.toStringAsFixed(1).replaceAll('.', ',')} de 5'}'),
             if (conTest) _Fila('Test', d.respuestas == 0 ? 'Sin preguntas respondidas' : '${d.aciertos} de ${d.respuestas} (${(d.acierto * 100).round()} %)'),
+            if (frecuencia != null && frecuencia.temas.containsKey(t.codigo)) _Fila('Cae en el test', textoFrecuencia(frecuencia, t.codigo)),
             _Fila(conCantes ? 'Último repaso o cante' : 'Último repaso', d.ultimo == null ? 'Nunca' : '${DateFormat('d MMM y', 'es').format(d.ultimo!)} · hace ${ahora.difference(d.ultimo!).inDays} días'),
             if (propio) ...[
               const SizedBox(height: 14),
@@ -218,6 +225,7 @@ class _Leyenda extends StatelessWidget {
       LenteMapa.cantes => ('1 estrella', '5 estrellas'),
       LenteMapa.test => ('0 %', '100 %'),
       LenteMapa.repaso => ('Hace mucho', 'Reciente'),
+      LenteMapa.cae => ('Casi nunca', 'Lo que más'),
     };
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(children: [

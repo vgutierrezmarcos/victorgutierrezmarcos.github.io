@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probabilidad de aprobar el test de TCEE | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Calculadora del test del primer ejercicio de TCEE: probabilidad de aprobar y nota esperada según lo que sabes, qué temas caen más y cuáles estudiar después, con 22 exámenes oficiales.">
+    
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/probabilidad-test.html">
+    
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="test TCEE, probabilidad aprobar test, primer ejercicio técnico comercial, temas más preguntados, calculadora test oposición">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Probabilidad de aprobar el test de TCEE">
+    <meta property="og:description" content="Probabilidad de aprobar el test del primer ejercicio y temas que más caen, con 22 exámenes oficiales.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/probabilidad-test.html">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Probabilidad de aprobar el test de TCEE">
+    <meta name="twitter:description" content="Probabilidad de aprobar el test del primer ejercicio y temas que más caen, con 22 exámenes oficiales.">
+    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#5F2987">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="styles.css" as="style">
+    <!-- Estilos del banner de cookies -->
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+
+    <link rel="stylesheet" href="/cookie-consent.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
+    
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Probabilidad de aprobar el test de TCEE",
+        "description": "Calculadora del test del primer ejercicio de la oposición a Técnico Comercial y Economista del Estado",
+        "applicationCategory": "EducationalApplication",
+        "author": {
+            "@type": "Person",
+            "name": "Víctor Gutiérrez Marcos"
+        }
+    }
+    </script>
+
+    <!-- SEO: Breadcrumbs Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Organización", "item": "https://www.victorgutierrezmarcos.es/oposicion/organizacion.html"},
+            {"@type": "ListItem", "position": 4, "name": "Probabilidad de aprobar el test"}
+        ]
+    }
+    </script>
+<style>
+.calc {
+  --bg: var(--color-bg); --surface: var(--color-white); --surface-2: var(--color-bg-cream); --ink: var(--color-text); --muted: var(--color-text-muted); --line: var(--color-border);
+  --accent: var(--color-primary); --accent-soft: var(--color-primary-pale); --gold: var(--color-accent-gold); --good: #2e7d32; --bad: #b3261e;
+  --serif: var(--font-display); --sans: var(--font-ui);
+  font-family: var(--sans); font-size: 15px; line-height: 1.5; color: var(--ink); max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px;
+}
+[data-theme="dark"] .calc { --good: #7cc47f; --bad: #f08a80 }
+.calc * { box-sizing: border-box }
+.calc .avisos { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 10px; padding: 14px 18px }
+.calc .avisos summary { cursor: pointer; font-weight: 600 }
+.calc .avisos ul { margin: 10px 0 0; padding-left: 1.2rem; display: grid; gap: 6px; max-width: 85ch }
+
+.calc .envoltorio { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px }
+.calc header h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin: 0; color: var(--accent); text-wrap: balance }
+.calc header p { margin: 6px 0 0; color: var(--muted); max-width: 72ch }
+.calc .rejilla { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 20px; align-items: start }
+@media (max-width: 860px) { .calc .rejilla { grid-template-columns: minmax(0, 1fr) } .calc .panel { position: static !important } }
+.calc .panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 14px }
+.calc .panel h2, .calc section h2 { font-family: var(--serif); font-size: 1.2rem; margin: 0; color: var(--ink) }
+.calc .etiqueta { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600 }
+.calc .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.calc label.campo { display: grid; gap: 3px; font-size: .85rem; color: var(--muted) }
+.calc input[type=number], .calc select { font: inherit; color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; width: 100%; font-variant-numeric: tabular-nums }
+.calc input[type=range] { width: 100%; accent-color: var(--accent) }
+.calc :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.calc .fila { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.calc .segmentos { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden }
+.calc .segmentos button { font: inherit; font-size: .85rem; border: 0; background: var(--surface-2); color: var(--ink); padding: 5px 10px; cursor: pointer }
+.calc .segmentos button[aria-pressed="true"] { background: var(--accent); color: var(--surface) }
+.calc .boton { font: inherit; font-size: .85rem; border: 1px solid var(--accent); color: var(--accent); background: transparent; border-radius: 6px; padding: 5px 10px; cursor: pointer }
+.calc .boton:hover { background: var(--accent-soft) }
+.calc .resultados { display: grid; gap: 20px; min-width: 0 }
+.calc section { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; min-width: 0 }
+.calc section > p.intro { margin: 0; color: var(--muted); max-width: 75ch }
+.calc .cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px }
+.calc .cifra { background: var(--surface-2); border-radius: 8px; padding: 10px 12px }
+.calc .cifra .v { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.15 }
+.calc .cifra .v.principal { color: var(--accent) }
+.calc .cifra .d { font-size: .82rem; color: var(--muted) }
+.calc .consejo { border-left: 3px solid var(--gold); padding: 4px 0 4px 12px; margin: 0; max-width: 78ch }
+.calc .grafico { width: 100%; overflow-x: auto }
+.calc .grafico svg { display: block; width: 100%; height: auto; min-width: 320px }
+.calc .grafico text { fill: var(--muted); font-family: var(--sans); font-size: 11px }
+.calc .tooltip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-size: .8rem; line-height: 1.4; padding: 5px 8px; border-radius: 5px; z-index: 5; white-space: nowrap }
+.calc .temas { max-height: 380px; overflow-y: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2) }
+.calc .temas h3 { position: sticky; top: 0; margin: 0; padding: 6px 10px; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; background: var(--surface-2); color: var(--muted); border-bottom: 1px solid var(--line) }
+.calc .tema { display: grid; grid-template-columns: auto 52px minmax(0, 1fr) 54px; gap: 8px; align-items: center; padding: 4px 10px; font-size: .84rem; cursor: pointer }
+.calc .tema:hover { background: var(--accent-soft) }
+.calc .tema .cod { font-variant-numeric: tabular-nums; font-weight: 600 }
+.calc .tema .tit { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted) }
+.calc .tema .pct { text-align: right; font-variant-numeric: tabular-nums; position: relative }
+.calc .tema .pct i { position: absolute; right: 0; bottom: -2px; height: 2px; background: var(--accent); border-radius: 1px }
+.calc table { border-collapse: collapse; width: 100%; font-size: .86rem; font-variant-numeric: tabular-nums }
+.calc th, .calc td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right }
+.calc th:first-child, .calc td:first-child { text-align: left }
+.calc th { font-weight: 600; color: var(--muted); font-size: .78rem }
+.calc .tabla { overflow-x: auto }
+.calc .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: .76rem; font-weight: 600 }
+.calc .chip.si { background: color-mix(in srgb, var(--good) 18%, transparent); color: var(--good) }
+.calc .chip.no { background: color-mix(in srgb, var(--bad) 16%, transparent); color: var(--bad) }
+.calc .lista-sig { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none }
+.calc .lista-sig li { display: grid; grid-template-columns: 60px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; font-size: .9rem }
+.calc .lista-sig .mas { color: var(--good); font-weight: 600; font-variant-numeric: tabular-nums }
+.calc .grupos input[type=number] { width: 76px }
+.calc .grupos select { width: auto }
+.calc .grupos td, .calc .grupos th { vertical-align: middle }
+.calc .leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .82rem; color: var(--ink) }
+.calc .leyenda span { display: inline-flex; align-items: center; gap: 6px }
+.calc .leyenda i { display: inline-block; width: 18px; height: 0; border-top: 2px solid; }
+.calc .decision { font-size: .8rem; font-weight: 600 }
+.calc .decision.si { color: var(--good) }
+.calc .decision.no { color: var(--muted) }
+.calc .aviso-suma { color: var(--bad); font-size: .85rem; margin: 0 }
+.calc .nota-pie { font-size: .8rem; color: var(--muted); margin: 0 }
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../index.html">INICIO</a></li>
+                <li><a href="index.html" class="active">OPOSICIÓN</a></li>
+                <li><a href="../blog/index.html">BLOG</a></li>
+                <!-- <li><a href="../comunidad.html">COMUNIDAD</a></li> -->
+                <li><a href="../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-nav" style="background: var(--color-bg-cream); border-bottom: 1px solid var(--color-border);">
+        <div class="nav-container">
+            <ul class="nav-list" style="padding: 0.3rem 0;">
+                <li><a href="index.html" style="font-size: 0.75rem;">INTRODUCCIÓN</a></li>
+                <li><a href="temario.html" style="font-size: 0.75rem;">TEMARIO</a></li>
+                <li><a href="organizacion.html" class="active" style="font-size: 0.75rem;">ORGANIZACIÓN</a></li>
+                <li><a href="enlaces.html" style="font-size: 0.75rem;">ENLACES</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+    <div class="calc">
+    <p id="calc-cargando">Cargando los exámenes…</p>
+    <div id="calc" hidden>
+<div class="envoltorio">
+  <header>
+    <h1>Probabilidad de aprobar el test</h1>
+    <p>Primer ejercicio de TCEE. Cuánto se saca respondiendo al azar, cuánto cambia con los temas que llevas y qué temas conviene estudiar después, con las preguntas de 22 exámenes oficiales (2002-2026) clasificadas por tema.</p>
+  </header>
+    <details class="avisos" open>
+      <summary>Antes de usarla</summary>
+      <ul>
+        <li><strong>Es un modelo sencillo.</strong> Supone que cada pregunta es independiente, que aciertas siempre el mismo porcentaje de lo que sabes y que, al dudar, aciertas como el azar. Sirve para comparar estrategias y temas, no para predecir tu nota exacta.</li>
+        <li><strong>La intuición cuenta.</strong> Al dudar entre 3 se suele acertar más de 1 de cada 3, y entre 4, más de 1 de cada 4, porque casi siempre algo se sabe. Si en tus simulacros te pasa, pon tu propio porcentaje en «Pregunta a pregunta».</li>
+        <li><strong>Responde a todo.</strong> La recomendación es contestar todas las preguntas y entrenarlo así en casa: obliga a razonar cada pregunta, desarrolla la intuición y el día del examen no hay que improvisar. Cuando la calculadora sugiere dejar algo en blanco, es suponiendo que en esas preguntas aciertas solo por azar.</li>
+        <li><strong>El pasado orienta, no asegura.</strong> El temario y el tribunal cambian, y cada pregunta cuenta en un solo tema aunque toque varios. Por eso los exámenes recientes pesan más (puedes cambiarlo).</li>
+        <li><strong>La nota para aprobar es la que elijas.</strong> La nota de corte real depende de cada convocatoria y del resto del ejercicio.</li>
+      </ul>
+    </details>
+
+  <div class="rejilla">
+    <aside class="panel" aria-label="Ajustes del examen">
+      <h2>El examen</h2>
+      <div class="campos">
+        <label class="campo" for="n">Preguntas<input id="n" type="number" min="10" max="100" value="50"></label>
+        <label class="campo" for="k">Opciones por pregunta<input id="k" type="number" min="2" max="6" value="4"></label>
+        <label class="campo" for="a">Suma un acierto<input id="a" type="number" step="0.01" value="1"></label>
+        <label class="campo" for="f">Resta un fallo<input id="f" type="number" step="0.01" value="0.33"></label>
+        <label class="campo" for="b">En blanco<input id="b" type="number" step="0.01" value="0"></label>
+        <label class="campo" for="min">Nota para aprobar (sobre 10)<input id="min" type="number" step="0.1" min="0" max="10" value="5"></label>
+      </div>
+      <div>
+        <div class="etiqueta">Peso de los exámenes recientes</div>
+        <div class="segmentos" role="group" aria-label="Peso de los exámenes recientes">
+          <button type="button" data-h="0">Igual</button>
+          <button type="button" data-h="10" aria-pressed="true">Más</button>
+          <button type="button" data-h="5">Mucho más</button>
+        </div>
+        <p class="nota-pie" id="peso-texto"></p>
+      </div>
+      <div>
+        <div class="etiqueta">En las preguntas que sabes</div>
+        <label class="campo" for="s">Aciertas el <b id="s-v">85 %</b><input id="s" type="range" min="40" max="100" value="85"></label>
+      </div>
+      <div>
+        <div class="etiqueta">En las que no sabes, descartas</div>
+        <div class="segmentos" role="group" aria-label="Opciones que descartas">
+          <button type="button" data-d="0" aria-pressed="true">Ninguna</button>
+          <button type="button" data-d="1">1 opción</button>
+          <button type="button" data-d="2">2 opciones</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="resultados">
+      <section id="azar">
+        <h2>Sin saber ninguna pregunta</h2>
+        <p class="intro">Respondiendo todo al azar, sin descartar nada. Debajo, cuántas preguntas hay que saberse para aprobar según cómo estés en las demás: dejándolas en blanco o respondiéndolas cuando dudas entre 2, entre 3… o no tienes ni idea.</p>
+        <div class="cifras" id="azar-cifras"></div>
+        <div class="leyenda" id="azar-leyenda"></div>
+        <div class="grafico" id="azar-grafico"></div>
+        <p class="consejo" id="azar-consejo"></p>
+      </section>
+
+      <section id="pregunta">
+        <h2>Pregunta a pregunta</h2>
+        <p class="intro">Reparte las preguntas del examen según lo que sabes de cada una: las que te sabes (aciertas el porcentaje del panel), las que dudas entre dos opciones, entre tres… La última fila se completa sola hasta el total. Elige si respondes cada grupo o deja que la calculadora busque lo que más sube la probabilidad de aprobar.</p>
+        <div class="tabla"><table class="grupos" id="tabla-grupos"></table></div>
+        <p class="aviso-suma" id="aviso-suma" hidden></p>
+        <div class="cifras" id="pregunta-cifras"></div>
+        <div class="grafico" id="pregunta-histo"></div>
+        <p class="consejo" id="pregunta-consejo"></p>
+      </section>
+
+      <section id="sabes">
+        <h2>Con los temas que llevas</h2>
+        <p class="intro">Marca tus temas. La probabilidad combina lo que habría pasado en cada uno de los 22 exámenes con tus temas (cuántas preguntas te habrían caído de lo que sabes), con más peso los recientes.</p>
+        <div class="fila">
+          <span class="etiqueta">Marcar</span>
+          <label class="fila" for="top" style="gap:6px">los <input id="top" type="number" min="0" max="90" value="45" style="width:64px"> más preguntados</label>
+          <button class="boton" type="button" id="aplicar-top">Marcar</button>
+          <button class="boton" type="button" id="ninguno">Ninguno</button>
+        </div>
+        <div class="temas" id="lista-temas"></div>
+        <div class="cifras" id="sabes-cifras"></div>
+        <div class="grafico" id="histograma"></div>
+        <p class="consejo" id="sabes-consejo"></p>
+      </section>
+
+      <section id="siguiente">
+        <h2>Qué estudiar después</h2>
+        <p class="intro" id="siguiente-intro">Los temas que no llevas que más suben tu probabilidad de aprobar, uno a uno.</p>
+        <ol class="lista-sig" id="lista-sig"></ol>
+      </section>
+
+      <section id="curva">
+        <h2>Cuántos temas hacen falta</h2>
+        <p class="intro">Probabilidad de aprobar si estudias los N temas más preguntados, con tu porcentaje de acierto y tus descartes. El punto marca los temas que llevas ahora.</p>
+        <div class="grafico" id="curva-grafico"></div>
+      </section>
+
+      <section id="reales">
+        <h2>En los exámenes reales</h2>
+        <p class="intro">Cuántas preguntas de tus temas cayeron en cada examen y qué nota habrías sacado de media, con tus ajustes.</p>
+        <div class="tabla"><table id="tabla-reales"></table></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="tooltip" id="tooltip" hidden></div>
+
+    </div>
+    </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+            </a>
+            <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="../politica-cookies.html">🍪 Política de cookies</a>
+        </div>
+    </div>
+</footer>
+    <script src="probabilidad-test.js"></script>
+    <script src="../search-engine.js"></script>
+    <script src="../search-ui.js"></script>
+    <script src="../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../firebase-config.js"></script>
+    <script src="../auth.js"></script>
+</body>
+</html>

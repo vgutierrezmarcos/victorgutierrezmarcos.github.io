@@ -132,6 +132,11 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Víctor: subir el `.aab` **1.15.6 (30)** a la prueba cerrada (lleva también la 1.15.4 y la 1.15.5) y, cuando Play lo procese, bajar el APK universal firmado por Google al Escritorio (`oposicion-tcee.apk`) para subirlo a `app-latest` con `versionActual: "1.15.6"`.
 - [ ] Probar con alumno y preparador: el alumno cancela una clase (al preparador le llega con aviso) y la quita de su agenda; quitar relaciones desde los dos lados; mandar 2 temas y cantarlos por orden; «Simulación de examen real»; el cronómetro del alumno en el móvil del preparador (ficha de la clase y notificación con cuenta atrás); pizarra con colores entre los dos.
 
+**Test: probabilidad y frecuencia de temas (9 oct.)**: clasificación de Álvaro cruzada con la nuestra (89 reclasificadas), 8 exámenes de 2002-2009 transcritos del PDF escaneado, `frecuencia_temas.json` (`scripts/frecuencia-test.py`), calculadora en la web (`oposicion/probabilidad-test.html`) y en la app 1.15.8 (32).
+- [ ] Víctor: revisar las lecturas dudosas del escaneo (2007 n.º 8 «½ o ¼»; 2002 n.º 4 subíndice; 2005 n.º 8 y 10; fecha de 2004, 26 o 28 de junio; plantilla discutible en 2005 n.º 15, 16 y 23).
+- [ ] Víctor: si aparece, el PDF del examen de la OEP 2025 (de 2026) para meterlo en el simulador (ahora solo cuenta en las estadísticas).
+- [ ] Publicar (web y `app/abrir`) y subir el `.aab` 1.15.8 (32) a la prueba cerrada.
+
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).

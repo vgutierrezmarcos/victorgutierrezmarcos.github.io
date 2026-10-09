@@ -10,6 +10,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../core/red_providers.dart';
+import '../../data/models/frecuencia_test.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 
@@ -129,7 +130,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
               child: Row(children: [
-                Expanded(child: Text(widget.tema.titulo, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface))),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+                    Text(widget.tema.titulo, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
+                    // Cuánto cae en el test del primer ejercicio (solo los temas que entran en él).
+                    if (ref.watch(frecuenciaTestProvider).valueOrNull case final f? when f.temas.containsKey(widget.tema.codigo))
+                      Text('En el test: ${textoFrecuencia(f, widget.tema.codigo)}', style: context.textos.labelSmall),
+                  ]),
+                ),
                 if (!preparador) IconButton(
                   tooltip: 'En repaso',
                   icon: Icon(Icons.replay, color: repaso ? context.esquema.primary : context.colores.textoClaro),

@@ -12,6 +12,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../data/models/estructura.dart';
+import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
@@ -76,6 +77,8 @@ final descargasProvider = Provider((ref) => ref.watch(serviciosProvider).descarg
 
 final preguntasProvider = FutureProvider<BancoPreguntas>((ref) => ref.watch(contenidoProvider).preguntas());
 final bloquesProvider = FutureProvider<Bloques>((ref) => ref.watch(contenidoProvider).bloques());
+/// Frecuencia de cada tema en el test (solo TCEE; null si no hay datos).
+final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) => ref.watch(contenidoProvider).frecuenciaTest());
 final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProvider).temario());
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) => ref.watch(contenidoProvider).estructura());
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());

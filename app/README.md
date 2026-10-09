@@ -258,6 +258,10 @@ Los cuatro de instalación (`instalar-android`, `-iphone`, `-windows`, `-mac`, c
 
 `tool/capturas_ayuda_test.dart` recorre cada vídeo tocando los botones de verdad y guarda, con cada pantalla, dónde se toca (`pasos.json`). Los guiones están en `promo/ayuda/GUIONES.md` y, como datos, en `VIDEOS` del script. Si se añade o cambia un vídeo, hay que tocar los tres sitios a la vez: el script, `videosAyuda` en `ayuda_videos.dart` y la sección `#ayuda` de `index.html`. Con poca memoria, mejor montar los vídeos de uno en uno (`--solo`).
 
+## Frecuencia de temas en el test y probabilidad de aprobar
+
+`oposicion/temario/primer-ejercicio/test/frecuencia_temas.json` dice cuántas preguntas tuvo cada tema en cada examen oficial del test. Se genera con `python3 ../scripts/frecuencia-test.py` a partir de `preguntas.json` y de `examenes_sin_texto.json` (exámenes clasificados de los que no está el texto); hay que repetirlo al añadir exámenes o cambiar temas. Lo usan la calculadora (`lib/features/organizacion/probabilidad_test*.dart`, igual que `oposicion/probabilidad-test.html` + `.js`), la ficha del tema, el mapa de calor («Lo que cae»), el simulador («N más preguntados») y el cronograma («Primero lo que más cae en el test»). Solo en TCEE.
+
 ## Compilación en GitHub Actions
 
 `.github/workflows/build-app.yml` analiza, pasa los tests y compila el APK en cada tag `app-v*` (lo adjunta a una release) y en ejecución manual (lo deja como artefacto). Secretos opcionales:

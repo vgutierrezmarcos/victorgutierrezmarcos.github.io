@@ -34,7 +34,9 @@ enum LenteMapa {
   dominio('Dominio'),
   cantes('Cantes'),
   test('Test'),
-  repaso('Repaso');
+  repaso('Repaso'),
+  /// Lo que cae en el test (frecuencia en los exámenes oficiales; se calcula aparte).
+  cae('Lo que cae');
 
   const LenteMapa(this.nombre);
   final String nombre;
@@ -61,6 +63,8 @@ double? valorTema(DatosTema d, LenteMapa lente, DateTime ahora) {
       return d.conTest ? d.acierto : null;
     case LenteMapa.repaso:
       return d.ultimo == null ? null : frescura(d.ultimo!, ahora);
+    case LenteMapa.cae:
+      return null;
     case LenteMapa.dominio:
       if (!d.estudiado && d.valoracion == 0 && !d.conTest && d.ultimo == null) return null;
       final e = d.estudiado ? 1.0 : 0.0;

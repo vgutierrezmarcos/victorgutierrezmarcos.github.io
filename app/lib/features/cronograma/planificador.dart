@@ -134,6 +134,16 @@ List<String> ordenInicial(EstructuraTemario e, int ejercicio, Set<String> elegid
   return intercalar ? intercalarTemas(orden, temaSecundario(e, ejercicio, orden), cadaN: cadaN) : orden;
 }
 
+/// [orden] con los temas que más caen en el test primero ([frecuencia]: parte
+/// del test de cada tema); a igualdad, se mantiene el orden que traían.
+List<String> primeroLoQueMasCae(List<String> orden, Map<String, double> frecuencia) {
+  final pos = {for (var i = 0; i < orden.length; i++) orden[i]: i};
+  return [...orden]..sort((a, b) {
+      final d = (frecuencia[b] ?? 0).compareTo(frecuencia[a] ?? 0);
+      return d != 0 ? d : pos[a]!.compareTo(pos[b]!);
+    });
+}
+
 /// Proporción automática de temas intercalados, como «1 de cada N».
 int? unoDeCada(EstructuraTemario e, int ejercicio, List<String> temas) {
   final sec = temas.where(temaSecundario(e, ejercicio, temas)).length;

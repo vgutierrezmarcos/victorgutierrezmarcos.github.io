@@ -34,6 +34,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (pendiente) | 1.15.5 (29) | La 1.15.4 más: «Más → Ayuda en vídeo» y un botón ▶ en la cabecera de las pantallas principales, que abren vídeos de menos de un minuto (cómo se reserva una clase, la clase suelta, el cronograma, la clase con el preparador…). |
 | (pendiente) | 1.15.6 (30) | La 1.15.5 más: cancelar y borrar clases desde los dos lados, quitar relaciones, cantar los dos temas mandados sin elegir y «Simulación de examen real», cronómetro del alumno visible para el preparador (con notificación) y pizarra con cualquier color. |
 | (pendiente) | 1.15.7 (31) | La 1.15.6 más: avisos al momento con la app abierta y los temas a su hora exacta con ella cerrada, aviso cuando el otro rompe la relación, eliminar páginas de la pizarra, cronómetro compartido en la ficha de la clase y clases de 2 h en todas partes. |
+| (pendiente) | 1.15.8 (32) | La 1.15.7 más: calculadora «Probabilidad de aprobar el test» (al azar, pregunta a pregunta con dudas entre 2, 3…, con los temas estudiados y qué estudiar después), lo que cae de cada tema en el test (ficha del tema, mapa de calor, simulador y cronograma) y 8 exámenes oficiales más en el simulador (2002-2009). |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -125,6 +126,11 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Pizarra**: «Vaciar la página» (borra lo escrito) y un botón aparte, «Eliminar la página», que la quita entera.
 - **El cronómetro compartido no se veía**: ahora está en la ficha de la clase, a los dos lados, siempre sincronizado (cualquiera lo empieza, lo pausa o pasa a exponer) y avisa si no se puede leer; además, notificación con lo que queda también al alumno cuando lo lleva el preparador.
 - **Duración de las clases**: las clases sueltas pedidas desde un cante propio y «Cantar ahora» del preparador salían de 30 min; ahora, 2 h como el resto.
+
+### 9 oct. 2026 (para la 1.15.8)
+- **Probabilidad de aprobar el test**: calculadora del primer ejercicio (Organización, Probabilidades y el test): al azar, pregunta a pregunta (las que te sabes, las que dudas entre 2, entre 3…), con tus temas estudiados y tu acierto en los tests, qué estudiar después y cómo te habría ido en 22 exámenes oficiales. Con los avisos de las «Claves para preparar el test». También en la web (oposicion/probabilidad-test.html).
+- **Lo que cae en el test**: cada tema muestra qué parte del test suele ser suya y en cuántos exámenes salió (ficha del tema, mapa de calor con la vista «Lo que cae», selección rápida de los temas más preguntados en el simulador y un orden del cronograma que los pone primero).
+- **Simulador**: 8 exámenes oficiales más (2002-2009, 361 preguntas) y 89 preguntas reclasificadas de tema tras cruzarlas con la clasificación de otro opositor.
 
 (Seguir añadiendo aquí, con fecha.)
 
