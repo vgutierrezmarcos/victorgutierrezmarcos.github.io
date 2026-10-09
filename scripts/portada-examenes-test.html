@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Portada de los exámenes del test</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=block">
+<style>
+@page { size: 297mm 210mm; margin: 0; }
+:root { --morado: #5F2987; --morado-suave: #8a63a8; --salvia: #E2EFD9; --panel: #EEF5E8; --tinta: #3d2a4d; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 297mm; height: 210mm; background: var(--salvia); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: 'Palatino Linotype', Palatino, Georgia, serif; color: var(--morado); position: relative; overflow: hidden; }
+.marco { position: absolute; inset: 9mm; border: 2.2mm solid var(--morado); }
+.marco::after { content: ''; position: absolute; inset: 2.2mm; border: 0.3mm solid var(--morado); }
+.esquina { position: absolute; width: 5mm; height: 5mm; background: var(--morado); transform: rotate(45deg); }
+.contenido { position: absolute; inset: 21mm 26mm 17mm; display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; }
+.cabecera { display: flex; flex-direction: column; align-items: center; }
+.antetitulo { font-family: 'Source Sans 3', sans-serif; font-weight: 600; font-size: 10.5pt; letter-spacing: 0.32em; text-transform: uppercase; color: var(--morado-suave); }
+h1 { font-weight: 700; font-size: 40pt; letter-spacing: 0.04em; line-height: 1.05; margin-top: 4mm; text-transform: uppercase; }
+.cuerpo { font-style: italic; font-size: 17pt; margin-top: 2.5mm; color: var(--tinta); }
+.adorno { display: flex; align-items: center; gap: 3mm; width: 120mm; margin: 6mm 0 5mm; }
+.adorno span { flex: 1; height: 0.3mm; background: var(--morado); }
+.adorno i { width: 2.4mm; height: 2.4mm; background: var(--morado); transform: rotate(45deg); }
+.ejercicio { font-weight: 700; font-size: 19pt; letter-spacing: 0.05em; }
+.ejercicio em { font-weight: 400; font-style: italic; letter-spacing: 0; }
+.panel { width: 100%; background: var(--panel); border: 0.3mm solid var(--morado); }
+.banda { background: var(--morado); color: var(--salvia); font-style: italic; font-size: 12pt; letter-spacing: 0.3em; padding: 1.4mm 0; text-transform: uppercase; }
+.columnas { display: grid; grid-template-columns: repeat(3, 1fr); padding: 4.5mm 0 4.5mm; }
+.columna { padding: 0 9mm; }
+.columna + .columna { border-left: 0.3mm solid rgba(95, 41, 135, 0.35); }
+.columna h2 { font-family: 'Source Sans 3', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.22em; color: var(--morado-suave); margin-bottom: 1.6mm; }
+.fila { display: flex; align-items: baseline; gap: 2mm; font-size: 13pt; line-height: 1.62; }
+.fila b { font-variant-numeric: tabular-nums lining-nums; font-weight: 700; }
+.fila span { flex: 1; border-bottom: 0.35mm dotted rgba(95, 41, 135, 0.45); transform: translateY(-1mm); }
+.fila em { font-size: 11pt; color: var(--tinta); }
+.pie { width: 100%; display: flex; justify-content: space-between; font-family: 'Source Sans 3', sans-serif; font-size: 9.5pt; letter-spacing: 0.06em; color: var(--morado-suave); }
+.pie strong { color: var(--morado); font-weight: 600; }
+</style></head>
+<body>
+<div class="marco"></div>
+<div class="contenido">
+  <div class="cabecera"><div class="antetitulo">Recopilación · 2002 – 2026</div>
+  <h1>Exámenes de la oposición</h1>
+  <div class="cuerpo">al Cuerpo Superior de Técnicos Comerciales y Economistas del Estado</div>
+  <div class="adorno"><span></span><i></i><span></span></div>
+  <div class="ejercicio">PRIMER EJERCICIO – PRIMERA PARTE <em>(test)</em></div></div>
+  <div class="panel">
+    <div class="banda">Años</div>
+    <div class="columnas" id="columnas"></div>
+  </div>
+  <div class="pie"><span><strong>22 exámenes oficiales</strong> · cada uno con su plantilla de corrección</span><span>victorgutierrezmarcos.es</span></div>
+</div>
+<script>
+const grupos = [
+  ['2020 – 2026', [['2026','marzo'],['2025','marzo'],['2024','junio'],['2023','junio'],['2022','julio'],['2021','julio'],['2020','enero']]],
+  ['2011 – 2019', [['2019','febrero'],['2018','enero'],['2016','noviembre'],['2016','enero'],['2014','septiembre'],['2013','noviembre'],['2011','octubre']]],
+  ['2002 – 2009', [['2009','octubre'],['2008','julio'],['2007','julio'],['2006','septiembre'],['2005','septiembre'],['2004','junio'],['2003','julio'],['2002','octubre']]],
+];
+document.getElementById('columnas').innerHTML = grupos.map(([t, filas]) =>
+  `<div class="columna"><h2>${t}</h2>${filas.map(([a, m]) => `<div class="fila"><b>${a}</b><span></span><em>${m}</em></div>`).join('')}</div>`).join('');
+</script>
+</body></html>
