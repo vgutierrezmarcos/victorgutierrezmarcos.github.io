@@ -40,7 +40,9 @@
                 }
             }
             if (cfg.app.urlAppStore && ios) { ios.href = cfg.app.urlAppStore; ios.hidden = false; alguno = true; }
-            if (alguno) banner.hidden = false;
+            // Aunque no haya descarga (ni Play ni APK), la tarjeta sale: la app
+            // se usa igual en el navegador.
+            banner.hidden = false;
         })
         .catch(function () { /* silencio */ });
 })();
