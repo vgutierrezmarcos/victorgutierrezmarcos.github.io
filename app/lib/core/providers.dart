@@ -75,13 +75,41 @@ final descargasProvider = Provider((ref) => ref.watch(serviciosProvider).descarg
 
 // ------------------------------------------------------------------ Contenido
 
-final preguntasProvider = FutureProvider<BancoPreguntas>((ref) => ref.watch(contenidoProvider).preguntas());
-final bloquesProvider = FutureProvider<Bloques>((ref) => ref.watch(contenidoProvider).bloques());
+/// Cambia cuando el refresco silencioso trae contenido nuevo de la web: los
+/// providers de contenido lo vigilan y vuelven a leer su JSON.
+final versionContenidoProvider = Provider<int>((ref) {
+  final c = ref.watch(contenidoProvider);
+  void cambio() => ref.invalidateSelf();
+  c.cambios.addListener(cambio);
+  ref.onDispose(() => c.cambios.removeListener(cambio));
+  return c.cambios.value;
+});
+
+final preguntasProvider = FutureProvider<BancoPreguntas>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).preguntas();
+});
+final bloquesProvider = FutureProvider<Bloques>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).bloques();
+});
 /// Frecuencia de cada tema en el test (solo TCEE; null si no hay datos).
-final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) => ref.watch(contenidoProvider).frecuenciaTest());
-final temarioProvider = FutureProvider<Temario>((ref) => ref.watch(contenidoProvider).temario());
-final estructuraProvider = FutureProvider<EstructuraTemario>((ref) => ref.watch(contenidoProvider).estructura());
-final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) => ref.watch(contenidoProvider).enlaces());
+final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).frecuenciaTest();
+});
+final temarioProvider = FutureProvider<Temario>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).temario();
+});
+final estructuraProvider = FutureProvider<EstructuraTemario>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).estructura();
+});
+final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).enlaces();
+});
 final configProvider = FutureProvider<AppConfig>((ref) => ref.watch(contenidoProvider).config());
 
 /// JSON del proceso selectivo. Al cargarlo se avisa de lo nuevo (en el

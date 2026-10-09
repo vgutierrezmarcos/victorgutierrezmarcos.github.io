@@ -4,7 +4,7 @@
  * Autor: Víctor Gutiérrez Marcos
  */
 
-var CACHE_NAME = 'vgm-simulador-v2';
+var CACHE_NAME = 'vgm-simulador-v3';
 
 var PRECACHE_URLS = [
     '/oposicion/temario/primer-ejercicio/test/simulador.html',
@@ -62,36 +62,8 @@ self.addEventListener('fetch', function(event) {
         return;
     }
 
-    // Para preguntas.json usar cache-first (no cambia frecuentemente)
-    if (url.pathname.indexOf('preguntas.json') !== -1 || url.pathname.indexOf('bloques.json') !== -1) {
-        event.respondWith(
-            caches.match(event.request).then(function(cached) {
-                if (cached) {
-                    // Actualizar cache en background
-                    fetch(event.request).then(function(response) {
-                        if (response.ok) {
-                            caches.open(CACHE_NAME).then(function(cache) {
-                                cache.put(event.request, response);
-                            });
-                        }
-                    }).catch(function() {});
-                    return cached;
-                }
-                return fetch(event.request).then(function(response) {
-                    if (response.ok) {
-                        var clone = response.clone();
-                        caches.open(CACHE_NAME).then(function(cache) {
-                            cache.put(event.request, clone);
-                        });
-                    }
-                    return response;
-                });
-            })
-        );
-        return;
-    }
-
-    // Para el resto: network first, fallback a cache
+    // Todo (también preguntas.json y bloques.json): primero la red y, sin
+    // conexión, la copia guardada; así las preguntas nuevas salen al momento.
     event.respondWith(
         fetch(event.request).then(function(response) {
             if (response.ok) {

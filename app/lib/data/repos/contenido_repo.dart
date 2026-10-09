@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../core/cache_http.dart';
 import '../models/estructura.dart';
@@ -12,6 +13,10 @@ class ContenidoRepo {
   ContenidoRepo(this._http, this.oposicion);
   final CacheHttp _http;
   final Oposicion oposicion;
+
+  /// Sube cada vez que el refresco silencioso trae contenido nuevo (para que
+  /// las pantallas vuelvan a leerlo sin reiniciar la app).
+  final cambios = ValueNotifier<int>(0);
 
   Future<BancoPreguntas> preguntas({bool forzar = false}) async =>
       BancoPreguntas.fromJson(await _http.json(oposicion.urlPreguntas, preferirCache: !forzar, forzar: forzar));
@@ -86,8 +91,10 @@ class ContenidoRepo {
 
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
+    var hayNuevo = false;
     for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest]) {
-      await _http.refrescar(u);
+      if (await _http.refrescar(u)) hayNuevo = true;
     }
+    if (hayNuevo) cambios.value++;
   }
 }

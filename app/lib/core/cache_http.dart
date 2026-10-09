@@ -82,10 +82,14 @@ class CacheHttp {
   }
 
   /// Refresca en segundo plano sin bloquear (ignora errores).
-  Future<void> refrescar(String url) async {
+  /// Vuelve a descargar el recurso; true si ha cambiado respecto a la copia.
+  Future<bool> refrescar(String url) async {
+    final antes = textoEnCache(url);
     try {
-      await texto(url);
-    } catch (_) {}
+      return await texto(url) != antes;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> limpiar() => _caja.clear();
