@@ -100,7 +100,7 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
           Text(
             kIsWeb
                 ? 'En el navegador llegan mientras tengas la web abierta (aunque estés en otra pestaña o la ventana esté minimizada), si el navegador lo permite. Solo se usan para esto:'
-                : 'Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones. Solo se usan para esto:',
+                : 'Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones. Con la app abierta llega todo al momento; cerrada, el móvil mira lo nuevo cada 15 minutos más o menos (los temas, a su hora exacta). Si esperas algo, abre la app. Solo se usan para esto:',
             style: context.textos.bodySmall,
           ),
           const SizedBox(height: 10),
@@ -203,7 +203,7 @@ class FilasAvisosSistema extends ConsumerWidget {
                 }
               : activadas == false
                   ? 'Desactivados: la app no puede mostrar notificaciones. Toca para activarlos.'
-                  : 'Activados.${p?.alarmasExactas == false ? ' Sin alarmas exactas: los avisos del cronómetro pueden retrasarse.' : ''}',
+                  : 'Activados. Con la app abierta llega todo al momento; cerrada, cada 15 minutos más o menos: si esperas algo, ábrela.${p?.alarmasExactas == false ? ' Sin alarmas exactas: los avisos del cronómetro pueden retrasarse.' : ''}',
           style: context.textos.labelSmall,
         ),
         trailing: Icon(kIsWeb ? Icons.chevron_right : Icons.open_in_new, size: 18),

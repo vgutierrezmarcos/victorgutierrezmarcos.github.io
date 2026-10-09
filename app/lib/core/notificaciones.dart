@@ -488,6 +488,45 @@ class Notificaciones {
     );
   }
 
+  /// Al alumno, a la hora exacta a la que el preparador le manda los temas
+  /// (la sabe por la clase): un aviso programado en el móvil, que llega aunque
+  /// la app esté cerrada. Usa el mismo id que [avisoTema], así que cuando la
+  /// app trae los temas, ese aviso (con los temas y la cuenta atrás) lo sustituye.
+  static Future<void> programarTemasQueLlegan(List<Cante> cantes) async {
+    if (!disponibles) return;
+    await iniciar();
+    final ahora = DateTime.now();
+    for (final c in cantes.where((c) => c.dePreparador && c.temaA != null && c.temaA!.isAfter(ahora))) {
+      final id = 1000 + ('tema:${c.id}'.hashCode & 0x7ffff);
+      if (!c.pendiente || c.borrado) {
+        await _cancelar(id);
+        continue;
+      }
+      final de = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+      const texto = 'Te acaba de mandar los temas de la clase. Toca para verlos y empezar el esquema.';
+      if (kIsWeb) {
+        _programarWeb(id, c.temaA!, de, texto, contenido: 'ruta:/cantes?cante=${c.id}');
+        continue;
+      }
+      try {
+        await _plugin.zonedSchedule(
+          id,
+          de,
+          texto,
+          tz.TZDateTime.from(c.temaA!, tz.local),
+          const NotificationDetails(
+            android: AndroidNotificationDetails(color: _colorAviso, 'temas', 'Temas de tu preparador',
+                channelDescription: 'El tema que te manda tu preparador antes de la clase', importance: Importance.high, priority: Priority.high, category: AndroidNotificationCategory.message),
+            iOS: DarwinNotificationDetails(),
+          ),
+          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
+          payload: 'ruta:/cantes?cante=${c.id}',
+        );
+      } catch (_) {}
+    }
+  }
+
   /// Novedad en la página del proceso selectivo: al tocarla se abre [url].
   static Future<void> avisoProceso(String clave, String titulo, String texto, String url) async {
     if (!disponibles) return;

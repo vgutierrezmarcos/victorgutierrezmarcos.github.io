@@ -13,6 +13,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/pizarra_page.dart';
+import '../cantar/relojes_alumnos.dart';
 import '../preparador/red_widgets.dart';
 import '../preparador/sustituciones.dart';
 import '../temario/agenda_tema_page.dart';
@@ -183,6 +184,16 @@ class CantePage extends ConsumerWidget {
           ),
           if (c.modalidad != Modalidad.sinIndicar && !c.cancelado) Padding(padding: const EdgeInsets.only(top: 10), child: TarjetaModalidad(cante: c)),
           if (c.temaA != null && c.pendiente) Padding(padding: const EdgeInsets.only(top: 10), child: _TemaRecibido(cante: c)),
+          // El cronómetro de la clase, el mismo que ve el preparador.
+          if (c.dePreparador && c.pendiente && usuario != null)
+            RelojDeClaseTarjeta(
+              alumnoUid: usuario.uid,
+              claseId: c.id,
+              otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!,
+              esquema: Duration(seconds: Oposiciones.actual.ejercicio(c.ejercicio)?.segundosEsquemaPara(c.numTemas) ?? 0),
+              exposicion: Duration(minutes: c.exposicion),
+              onAbrir: () => empezarCante(ref, GoRouter.of(context), c.id, tema: temasRecibidos?.temas.join(',')),
+            ),
           if (c.cancelado && c.dePreparador)
             Padding(
               padding: const EdgeInsets.only(top: 10),

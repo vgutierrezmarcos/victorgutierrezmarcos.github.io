@@ -660,12 +660,25 @@ class PreparadorRepo {
     } catch (_) {}
   }
 
+  /// Relaciones que ha roto el otro desde la última vez que se miró (para
+  /// avisar): preparadores que han dejado de llevar al alumno y alumnos que
+  /// han dejado de compartir con el preparador. Las vacía quien avisa.
+  final preparadoresQueSeFueron = <String>[];
+  final alumnosQueSeFueron = <String>[];
+
   Future<void> _sincronizarVinculos() async {
     final doc = _docUsuario;
     if (doc == null) return;
     try {
-      final snap = await doc.collection('preparadores').get();
-      await _guardarVinculos([for (final d in snap.docs) VinculoPreparador.fromJson({...d.data(), 'uid': d.id})]);
+      final antes = misPreparadores();
+      final snap = await doc.collection('preparadores').get(const GetOptions(source: Source.server));
+      final ahora = [for (final d in snap.docs) VinculoPreparador.fromJson({...d.data(), 'uid': d.id})];
+      // Los que tenía y ya no están: los ha quitado el preparador (los que
+      // quita el propio alumno ya no estaban en local).
+      for (final v in antes.where((v) => !ahora.any((x) => x.uid == v.uid))) {
+        preparadoresQueSeFueron.add(v.nombre.isEmpty ? 'Tu preparador' : v.nombre);
+      }
+      await _guardarVinculos(ahora);
     } catch (_) {}
   }
 
@@ -699,6 +712,7 @@ class PreparadorRepo {
         if (aMano != null) await unirAlumnos(aMano, nuevo);
       }
       for (final a in locales.where((a) => a.enlazado && !a.borrado && !enlazados.containsKey(a.uid))) {
+        alumnosQueSeFueron.add(a.nombre);
         await guardarAlumno(a.copyWith(desenlazar: true));
         // Ha dejado de compartir: sus clases pendientes quedan canceladas en la
         // agenda del preparador (ya no se puede escribir en la suya), para
@@ -724,6 +738,28 @@ class PreparadorRepo {
   ///   una clase de su agenda, el preparador no la pierde;
   /// - lo que el preparador cambió y no llegó (la copia falta o es más
   ///   antigua), se vuelve a copiar.
+  /// Escucha en tiempo real las copias de las clases en las agendas de los
+  /// alumnos (las de los enlazados y las clases sueltas pendientes); llama a
+  /// [alCambiar] en cada cambio, sin contar la primera lectura.
+  List<StreamSubscription<Object?>> escucharClasesDeAlumnos(void Function() alCambiar) {
+    final subs = <StreamSubscription<Object?>>[];
+    if (!conSesion) return subs;
+    for (final a in alumnos().where((a) => a.uid != null)) {
+      final cantes = oposicion.raizUsuario(_db!, a.uid!).collection('cantes');
+      if (a.enlazado) {
+        subs.add(cantes.where('preparador', isEqualTo: uid).snapshots().skip(1).listen((_) => alCambiar(), onError: (_) {}));
+      } else {
+        for (final s in _todasLasSesiones().where((s) => s.alumno == a.id && s.sustitucion != null && s.pendiente && !s.borrado)) {
+          subs.add(cantes.doc(s.id).snapshots().skip(1).listen((_) => alCambiar(), onError: (_) {}));
+        }
+      }
+    }
+    return subs;
+  }
+
+  /// Trae lo que los alumnos han cambiado en sus copias (sin sincronizar todo).
+  Future<void> traerCambiosDeAlumnos() => _traerCambiosDeAlumnos();
+
   /// Clases que han cancelado los alumnos desde su app (desde la última vez
   /// que se miró): las avisa la sincronización y vacía la lista.
   final canceladasPorAlumnos = <({Cante clase, String alumno})>[];

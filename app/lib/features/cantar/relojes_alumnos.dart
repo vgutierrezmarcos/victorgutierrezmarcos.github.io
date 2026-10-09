@@ -33,6 +33,7 @@ class VigilanteRelojes {
   final _escuchas = <String, StreamSubscription<EstadoRelojCompartido?>>{};
   final _temporizadores = <String, Timer>{};
   final _avisado = <String, String>{};
+  final _rutas = <String, String>{};
   Timer? _revision;
 
   void empezar() {
@@ -43,23 +44,35 @@ class VigilanteRelojes {
 
   void revisar() {
     final yo = _ref.read(usuarioActualProvider);
-    final activo = yo != null && _ref.read(serviciosProvider).firebaseDisponible && _ref.read(papelProvider) == Papel.preparador;
+    final activo = yo != null && _ref.read(serviciosProvider).firebaseDisponible;
+    final preparador = _ref.read(papelProvider) == Papel.preparador;
     final ahora = DateTime.now();
+    bool deAhora(DateTime f) => f.isAfter(ahora.subtract(const Duration(hours: 3))) && f.isBefore(ahora.add(const Duration(hours: 1)));
     final alumnos = {for (final a in _ref.read(alumnosProvider)) a.id: a};
-    final clases = !activo
-        ? const <String, ({String uid, String nombre})>{}
-        : {
-            for (final s in _ref.read(sesionesProvider))
-              if (s.pendiente && !s.borrado && s.alumno != null && alumnos[s.alumno]?.uid != null && s.fecha.isAfter(ahora.subtract(const Duration(hours: 3))) && s.fecha.isBefore(ahora.add(const Duration(hours: 1))))
-                s.id: (uid: alumnos[s.alumno]!.uid!, nombre: alumnos[s.alumno]!.nombre),
-          };
+    // El preparador mira el cronómetro de sus alumnos; el alumno, el de las
+    // clases que le da su preparador (si es el preparador quien lo lleva).
+    final Map<String, ({String uid, String nombre, String ruta})> clases = !activo
+        ? const {}
+        : preparador
+            ? {
+                for (final s in _ref.read(sesionesProvider))
+                  if (s.pendiente && !s.borrado && s.alumno != null && alumnos[s.alumno]?.uid != null && deAhora(s.fecha))
+                    s.id: (uid: alumnos[s.alumno]!.uid!, nombre: alumnos[s.alumno]!.nombre, ruta: '/clase?id=${s.id}'),
+              }
+            : {
+                for (final c in _ref.read(cantesProvider))
+                  if (c.dePreparador && c.pendiente && deAhora(c.fecha))
+                    c.id: (uid: yo.uid, nombre: (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!, ruta: '/cantes?cante=${c.id}'),
+              };
     for (final id in _escuchas.keys.where((k) => !clases.containsKey(k)).toList()) {
       _quitar(id);
     }
     for (final e in clases.entries) {
       if (_escuchas.containsKey(e.key)) continue;
-      final reloj = RelojCompartido.deClase(_ref.read(firestoreRelojProvider), _ref.read(oposicionProvider), alumnoUid: e.value.uid, canteId: e.key, miUid: yo!.uid, miNombre: _ref.read(perfilPreparadorProvider).nombre);
+      final reloj = RelojCompartido.deClase(_ref.read(firestoreRelojProvider), _ref.read(oposicionProvider), alumnoUid: e.value.uid, canteId: e.key, miUid: yo!.uid, miNombre: preparador ? _ref.read(perfilPreparadorProvider).nombre : (yo.displayName ?? 'Tu alumno'));
+      _rutas[e.key] = e.value.ruta;
       _escuchas[e.key] = reloj.escuchar().listen((estado) => _alCambiar(e.key, e.value.nombre, estado, yo.uid));
+      reloj.medirDesfase();
     }
   }
 
@@ -88,7 +101,7 @@ class VigilanteRelojes {
     final clave = '${f.fase}|${e.reloj.corriendo}|${f.hasta == null ? '' : f.hasta!.millisecondsSinceEpoch ~/ 5000}|${e.elegido}';
     if (_avisado[id] != clave) {
       _avisado[id] = clave;
-      Notificaciones.relojAlumno(id, titulo: '$alumno · ${f.fase}', texto: texto, hasta: f.hasta, ruta: '/clase?id=$id').catchError((_) {});
+      Notificaciones.relojAlumno(id, titulo: '$alumno · ${f.fase}', texto: texto, hasta: f.hasta, ruta: _rutas[id] ?? '/clase?id=$id').catchError((_) {});
     }
     _temporizadores.remove(id)?.cancel();
     if (f.hasta != null) {
@@ -171,3 +184,128 @@ class _TarjetaRelojAlumnoState extends ConsumerState<TarjetaRelojAlumno> {
     );
   }
 }
+
+/// El cronómetro compartido de una clase, en la ficha de la clase (del alumno
+/// y del preparador): los dos ven el mismo tiempo en todo momento y
+/// cualquiera lo empieza, lo pausa o pasa a exponer. Si aún no se ha usado,
+/// lo prepara con el esquema y la exposición de la clase.
+class RelojDeClaseTarjeta extends ConsumerStatefulWidget {
+  const RelojDeClaseTarjeta({super.key, required this.alumnoUid, required this.claseId, required this.otroNombre, required this.esquema, required this.exposicion, required this.onAbrir});
+  final String alumnoUid;
+  final String claseId;
+  final String otroNombre;
+  /// Por defecto, si el cronómetro aún no existe.
+  final Duration esquema;
+  final Duration exposicion;
+  final VoidCallback onAbrir;
+  @override
+  ConsumerState<RelojDeClaseTarjeta> createState() => _RelojDeClaseTarjetaState();
+}
+
+class _RelojDeClaseTarjetaState extends ConsumerState<RelojDeClaseTarjeta> {
+  RelojCompartido? _reloj;
+  StreamSubscription<EstadoRelojCompartido?>? _escucha;
+  EstadoRelojCompartido? _estado;
+  bool _cargado = false;
+  String? _error;
+  Timer? _tic;
+
+  @override
+  void initState() {
+    super.initState();
+    final yo = ref.read(usuarioActualProvider);
+    if (yo == null || !ref.read(serviciosProvider).firebaseDisponible) return;
+    final soyAlumno = yo.uid == widget.alumnoUid;
+    final nombre = soyAlumno ? (yo.displayName ?? 'Tu alumno') : ref.read(perfilPreparadorProvider).nombre;
+    _reloj = RelojCompartido.deClase(ref.read(firestoreRelojProvider), ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.claseId, miUid: yo.uid, miNombre: nombre.isEmpty ? 'Preparador' : nombre);
+    _reloj!.medirDesfase();
+    _escucha = _reloj!.escucharConErrores().listen(
+      (e) {
+        if (mounted) {
+          setState(() {
+            _estado = e;
+            _cargado = true;
+            _error = null;
+          });
+        }
+      },
+      onError: (Object e) {
+        if (mounted) {
+          setState(() {
+            _cargado = true;
+            _error = e.toString().contains('permission') ? 'sin permiso' : 'sin conexión';
+          });
+        }
+      },
+    );
+    _tic = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (mounted && (_estado?.reloj.corriendo ?? false)) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _escucha?.cancel();
+    _tic?.cancel();
+    super.dispose();
+  }
+
+  /// Cambia el reloj compartido y lo publica (para los dos).
+  Future<void> _cambiar(void Function(RelojCante r, DateTime ahora) cambio) async {
+    final e = _estado;
+    final r = e?.reloj ?? RelojCante(preparacion: widget.esquema, exposicion: widget.exposicion);
+    final ahora = DateTime.now();
+    cambio(r, ahora);
+    await _reloj?.publicar(r, temas: e?.temas ?? const [], elegido: e?.elegido);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_reloj == null) return const SizedBox.shrink();
+    final ahora = DateTime.now();
+    final e = _estado;
+    final r = e?.reloj;
+    final f = r == null ? null : faseDeReloj(r, ahora);
+    final yo = _reloj!.miUid;
+    final quien = e == null || e.por.isEmpty ? '' : (e.por == yo ? 'tú' : e.porNombre);
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Tarjeta(
+        color: (r?.corriendo ?? false) ? context.colores.primarioPalido : null,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Icon(Icons.timer_outlined, color: context.esquema.primary),
+            const SizedBox(width: 8),
+            Expanded(child: Text('Cronómetro compartido con ${widget.otroNombre}', style: context.textos.titleSmall)),
+            TextButton(onPressed: widget.onAbrir, child: const Text('Abrir')),
+          ]),
+          if (_error != null)
+            Text('No se puede ver el cronómetro de esta clase ($_error). Si la clase no le ha llegado al alumno, vuelve a guardarla.', style: context.textos.bodySmall?.copyWith(color: context.esquema.error))
+          else if (!_cargado)
+            const LinearProgressIndicator()
+          else if (r == null || !r.empezado)
+            Text('Sin empezar. Lo que haga uno lo ve el otro al momento, cada uno en su móvil.', style: context.textos.bodySmall)
+          else ...[
+            Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Text(f!.acabado || f.fase == 'Esquema terminado' ? '--:--' : formatoReloj(f.queda, haciaArriba: true), style: context.textos.headlineMedium?.copyWith(fontFeatures: const [FontFeature.tabularFigures()], color: f.queda.inSeconds <= 60 && !f.acabado ? context.esquema.error : context.esquema.primary)),
+              const SizedBox(width: 10),
+              Expanded(child: Text('${f.fase}${r.corriendo ? '' : ' · en pausa'}${quien.isEmpty ? '' : ' · lo lleva $quien'}${e!.elegido == null ? '' : ' · tema ${e.elegido}'}', style: context.textos.bodySmall)),
+            ]),
+          ],
+          if (_error == null && _cargado)
+            Wrap(spacing: 8, runSpacing: 4, children: [
+              if (r != null && r.esperandoExposicion(ahora))
+                FilledButton.icon(onPressed: () => _cambiar((r, a) => r.empezarExposicion(a)), icon: const Icon(Icons.record_voice_over_outlined, size: 18), label: const Text('Empezar la exposición'))
+              else if (r == null || !r.corriendo)
+                FilledButton.icon(onPressed: () => _cambiar((r, a) => r.iniciar(a)), icon: const Icon(Icons.play_arrow, size: 18), label: Text(r != null && r.empezado ? 'Continuar' : 'Empezar'))
+              else
+                OutlinedButton.icon(onPressed: () => _cambiar((r, a) => r.pausar(a)), icon: const Icon(Icons.pause, size: 18), label: const Text('Pausar')),
+              if (r != null && r.corriendo && r.enPreparacion(ahora))
+                OutlinedButton(onPressed: () => _cambiar((r, a) => r.saltarFase(a)), child: const Text('Pasar a exponer')),
+            ]),
+        ]),
+      ),
+    );
+  }
+}
+

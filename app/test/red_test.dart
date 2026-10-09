@@ -419,6 +419,29 @@ void main() {
     expect(c.canceladoPor, 'alu');
   });
 
+  test('relaciones rotas por el otro: se apuntan para avisar (y no las propias)', () async {
+    final db = FakeFirebaseFirestore();
+    await db.collection('preparadoresVerificados').doc('paula').set(const PreparadorVerificado(uid: 'paula', nombre: 'Paula', avaladoPor: 'admin').toJson());
+    await db.doc('codigos/PAULA2').set({'uid': 'paula', 'nombre': 'Paula'});
+    final alu = await prepRepo(db, sesion('alu', 'Álex'));
+    await alu.enlazarConCodigo('PAULA2');
+    await alu.sincronizarTodo();
+    expect(alu.preparadoresQueSeFueron, isEmpty);
+    // La preparadora le quita: al alumno se le avisa.
+    await db.doc('users/alu/preparadores/paula').delete();
+    await alu.sincronizarTodo();
+    expect(alu.preparadoresQueSeFueron, ['Paula']);
+
+    final prep = await prepRepo(db, sesion('paula', 'Paula'));
+    await prep.activar(nombre: 'Paula');
+    await db.doc('preparadores/paula/alumnos/alu').set({'uid': 'alu', 'nombre': 'Álex'});
+    await prep.sincronizarTodo();
+    expect(prep.alumnosQueSeFueron, isEmpty);
+    await db.doc('preparadores/paula/alumnos/alu').delete();
+    await prep.sincronizarTodo();
+    expect(prep.alumnosQueSeFueron, ['Álex']);
+  });
+
   test('el preparador quita a un alumno de clase suelta: se cancela lo pendiente y sale de su semana', () async {
     final db = FakeFirebaseFirestore();
     final prep = await prepRepo(db, sesion('paula', 'Paula'));

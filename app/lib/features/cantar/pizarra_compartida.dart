@@ -58,6 +58,9 @@ class PizarraCompartida {
 
   Future<void> borrarTodo(String pagina) => _col.doc(pagina).set({'trazos': <Map<String, dynamic>>[], 'borradoPor': miUid, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
+  /// Quita la página entera (no solo lo escrito), para los dos.
+  Future<void> eliminarPagina(String pagina) => _col.doc(pagina).delete();
+
   Future<void> nuevaPagina(int n) => _col.doc(idPagina(n)).set({'n': n, 'trazos': <Map<String, dynamic>>[], 'creado': DateTime.now().toIso8601String(), 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   // ------------------------------------------------------------- Cola

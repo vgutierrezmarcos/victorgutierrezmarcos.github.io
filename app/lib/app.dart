@@ -136,17 +136,26 @@ class _TceeAppState extends ConsumerState<TceeApp> {
         // Lo que haya cambiado en los ajustes del sistema, y la escucha en
         // tiempo real de las clases del preparador.
         ref.invalidate(permisosProvider);
-        if (ref.read(usuarioActualProvider) != null) ref.read(cantesProvider.notifier).escucharNube();
+        if (ref.read(usuarioActualProvider) != null) {
+          ref.read(cantesProvider.notifier).escucharNube();
+          ref.read(sesionesProvider.notifier).escucharAlumnos();
+        }
       },
       onHide: () {
         _periodico?.cancel();
         ref.read(cantesProvider.notifier).dejarDeEscuchar();
+        ref.read(sesionesProvider.notifier).dejarDeEscucharAlumnos();
       },
     );
     _programar();
     Notificaciones.alTocar = _alTocarNotificacion;
     _relojes.empezar();
     ref.listenManual(sesionesProvider, (_, __) => _relojes.revisar());
+    ref.listenManual(cantesProvider, (_, __) => _relojes.revisar());
+    // Un alumno nuevo (o uno que se va): se escuchan sus clases.
+    ref.listenManual(alumnosProvider, (antes, ahora) {
+      if (antes?.map((a) => '${a.id}:${a.uid}').join() != ahora.map((a) => '${a.id}:${a.uid}').join()) ref.read(sesionesProvider.notifier).escucharAlumnos();
+    });
     ref.listenManual(papelProvider, (_, __) => _relojes.revisar());
     ref.listenManual(usuarioActualProvider, (_, __) => _relojes.revisar());
     // Widget de la pantalla de inicio: al abrir la app desde él o tocarlo con ella abierta.
@@ -274,8 +283,12 @@ class _TceeAppState extends ConsumerState<TceeApp> {
       if (ahora != null && antes?.uid != ahora.uid) {
         ref.read(sesionProvider.notifier).sincronizarSiToca(forzar: true);
         ref.read(cantesProvider.notifier).escucharNube();
+        ref.read(sesionesProvider.notifier).escucharAlumnos();
       }
-      if (ahora == null) ref.read(cantesProvider.notifier).dejarDeEscuchar();
+      if (ahora == null) {
+        ref.read(cantesProvider.notifier).dejarDeEscuchar();
+        ref.read(sesionesProvider.notifier).dejarDeEscucharAlumnos();
+      }
     });
     return MaterialApp.router(
       title: Creditos.nombreApp,
