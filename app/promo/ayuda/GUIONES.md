@@ -115,3 +115,35 @@ Cierre: «Activa los avisos de clases sueltas en Ajustes».
 4. Si es de un tema, elige el **tema**.
 5. **Para todos** tus alumnos o solo para algunos. **Guardar**.
 6. Les llega un aviso y lo ven en **Mi preparador** y en **ese tema**.
+
+## Cómo instalarla
+
+Pantallas de `scripts/maquetas-instalar.py` (tienda, navegador y sistema dibujados de forma genérica, y la app de verdad con **DCE** elegida). Van en la sección «Cómo se usa» de `/app/` y en `app/instalar.html`, cada uno en su dispositivo.
+
+### instalar-android · Instala la app en Android
+1. En Google Play, busca la app y toca **Instalar**.
+2. Cuando acabe, toca **Abrir**.
+3. Elige tu oposición: **DCE** o TCEE.
+4. Y si **te preparas** o preparas a otros.
+5. **Listo**: tu oposición, en el móvil.
+6. Mientras llega a Google Play: **Descargar para Android** (la guía de la web).
+7. Abre el archivo **descargado**.
+8. Toca **Configuración** y permite esta fuente.
+9. Toca **Instalar** y luego **Abrir**.
+
+### instalar-iphone · Instala la app en iPhone
+1. Abre la app **en Safari** y toca **Compartir**.
+2. Toca **Añadir a pantalla de inicio**.
+3. Toca **Añadir**.
+4. Ya está en tu **pantalla de inicio**.
+5. Elige **DCE** o TCEE, y si te preparas o preparas a otros.
+
+### instalar-windows · Instala la app en Windows
+1. Abre la app **en Edge o Chrome**.
+2. Toca el icono de **instalar** y luego **Instalar**.
+3. Se abre en su ventana y queda en la **barra de tareas**.
+
+### instalar-mac · Instala la app en Mac
+1. Abre la app **en Safari** y ve a **Archivo**.
+2. Toca **Añadir al Dock…** y luego **Añadir**.
+3. Ya está en el **Dock**.

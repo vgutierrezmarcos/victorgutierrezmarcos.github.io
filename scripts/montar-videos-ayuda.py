@@ -46,7 +46,7 @@ TINTA, TINTA_CLARA, DORADO, DORADO_CLARO = promo.TINTA, promo.TINTA_CLARA, promo
 TEXTO, TEXTO_SUAVE, BLANCO, CREMA = promo.TEXTO, promo.TEXTO_SUAVE, promo.BLANCO, promo.CREMA
 cache, entre, suave, rebote, pegar, fuente, palabra = promo.cache, promo.entre, promo.suave, promo.rebote, promo.pegar, promo.fuente, promo.palabra
 
-OPOSITOR, PREPARADOR = 'Para opositores', 'Para preparadores'
+OPOSITOR, PREPARADOR, INSTALAR = 'Para opositores', 'Para preparadores', 'Cómo instalarla'
 
 # ======================================================================= Guiones
 # Cada paso: (rótulo, pantallas[, opciones]). En el rótulo, lo que va entre
@@ -183,6 +183,54 @@ VIDEOS = {
         ],
         'cierre': 'Lo ven en «Mi preparador» y dentro de ese tema.',
     },
+    # Instalación: pantallas de scripts/maquetas-instalar.py, con DCE elegida.
+    'instalar-android': {
+        'titulo': 'Instala la app en Android', 'para': INSTALAR,
+        'pasos': [
+            ('En Google Play, busca la app y toca [Instalar]', ['tienda']),
+            ('Cuando acabe, toca [Abrir]', ['abrir']),
+            ('Elige tu oposición: [DCE] o TCEE', ['elegir']),
+            ('Y si [te preparas] o preparas a otros', ['papel']),
+            ('[Listo]: tu oposición, en el móvil', ['hoy']),
+            ('Mientras llega a Google Play: [Descargar para Android]', ['web']),
+            ('Abre el archivo [descargado]', ['descarga']),
+            ('Toca [Configuración] y permite esta fuente', ['fuente', 'permitir', 'permitido']),
+            ('Toca [Instalar] y luego [Abrir]', ['instalar', 'instalada']),
+        ],
+        'cierre': 'Para tenerlo en todos tus dispositivos, inicia sesión en Más → Cuenta.',
+    },
+    'instalar-iphone': {
+        'titulo': 'Instala la app en iPhone', 'para': INSTALAR, 'enlace': 'victorgutierrezmarcos.es/app/abrir',
+        'pasos': [
+            ('Abre la app [en Safari] y toca [Compartir]', ['safari']),
+            ('Toca [Añadir a pantalla de inicio]', ['compartir']),
+            ('Toca [Añadir]', ['anadir']),
+            ('Ya está en tu [pantalla de inicio]', ['inicio']),
+            ('Elige tu oposición: [DCE] o TCEE', ['elegir']),
+            ('Y si [te preparas] o preparas a otros', ['papel']),
+            ('[Listo]: a pantalla completa, como cualquier app', ['hoy']),
+        ],
+        'cierre': '¿Llegas desde WhatsApp? Abre antes el enlace en Safari.',
+    },
+    'instalar-windows': {
+        'titulo': 'Instala la app en Windows', 'para': INSTALAR, 'enlace': 'victorgutierrezmarcos.es/app/abrir',
+        'pasos': [
+            ('Abre la app [en Edge o Chrome]', ['navegador']),
+            ('Toca el icono de [instalar] y luego [Instalar]', ['instalar']),
+            ('Se abre en su ventana y queda en la [barra de tareas]', ['app']),
+        ],
+        'cierre': 'Inicia sesión en Más → Cuenta con la misma cuenta que en el móvil.',
+    },
+    'instalar-mac': {
+        'titulo': 'Instala la app en Mac', 'para': INSTALAR, 'enlace': 'victorgutierrezmarcos.es/app/abrir',
+        'pasos': [
+            ('Abre la app [en Safari] y ve a [Archivo]', ['safari']),
+            ('Toca [Añadir al Dock…]', ['menu']),
+            ('Toca [Añadir]', ['anadir']),
+            ('Ya está en el [Dock]: ábrela desde ahí', ['dock', 'app']),
+        ],
+        'cierre': 'En Chrome o Edge: el icono de instalar de la barra de direcciones.',
+    },
 }
 
 # ======================================================================= Tiempos
@@ -266,6 +314,8 @@ def zoom_de(toque, img):
     if toque is None:
         return 1.0
     area = toque[2] * toque[3] / (img.width * img.height)
+    if area < 0.004:   # un icono en la pantalla de un ordenador
+        return 1.7
     return 1.45 if area < 0.01 else (1.3 if area < 0.04 else 1.15)
 
 
@@ -447,7 +497,9 @@ def intro(vid, t):
     promo.rotulo(img, v['para'].upper(), ANCHO / 2, 820, t, color=DORADO_CLARO, inicio=0.5, centrado=True)
     f = fuente('serif', 84, 'bold')
     lineas = promo.partir(v['titulo'], f, ANCHO - 160)
-    promo.titular(img, lineas, ANCHO / 2, 920, t, tam=84, color=BLANCO, centrado=True, inicio=0.7, paso=0.08)
+    alto = promo.titular(img, lineas, ANCHO / 2, 920, t, tam=84, color=BLANCO, centrado=True, inicio=0.7, paso=0.08)
+    if v.get('enlace'):
+        promo.titular(img, [v['enlace']], ANCHO / 2, 960 + alto, t, tam=46, color=CREMA, centrado=True, inicio=1.3, paso=0.05, tipo='sans', estilo='Semibold')
     return img
 
 

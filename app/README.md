@@ -254,6 +254,8 @@ flutter test tool/capturas_ayuda_test.dart --update-goldens          # promo/ayu
 python3 ../scripts/montar-videos-ayuda.py --ffmpeg RUTA [--solo ID]  # promo/ayuda/<id>.mp4 y <id>.jpg
 ```
 
+Los cuatro de instalación (`instalar-android`, `-iphone`, `-windows`, `-mac`, con DCE elegida) no salen de un test sino de maquetas: `python3 ../scripts/maquetas-instalar.py` (usa las capturas de la app y `promo/ayuda/fuentes/instalar-movil.png`, una captura de `instalar.html` en el móvil); están en `#ayuda` y en `instalar.html`.
+
 `tool/capturas_ayuda_test.dart` recorre cada vídeo tocando los botones de verdad y guarda, con cada pantalla, dónde se toca (`pasos.json`). Los guiones están en `promo/ayuda/GUIONES.md` y, como datos, en `VIDEOS` del script. Si se añade o cambia un vídeo, hay que tocar los tres sitios a la vez: el script, `videosAyuda` en `ayuda_videos.dart` y la sección `#ayuda` de `index.html`. Con poca memoria, mejor montar los vídeos de uno en uno (`--solo`).
 
 ## Compilación en GitHub Actions

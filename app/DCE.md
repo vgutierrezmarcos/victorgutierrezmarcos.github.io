@@ -121,7 +121,9 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 **Vídeos de ayuda (9 oct.)**: 11 vídeos verticales de menos de un minuto en `promo/ayuda/` (guiones en `promo/ayuda/GUIONES.md`; cómo se rehacen, en el README).
 - [x] Los 11 vídeos montados (28-47 s cada uno) y botón ▶ en las pantallas (9 oct.).
 - [x] Tests (181) y prueba en la versión web; versión web 1.15.5 (29) en `app/abrir/`; vídeos publicados con la sección «Cómo se usa» de `/app/` (9 oct.).
-- [ ] Compilar el `.aab` 1.15.5 (29) y subirlo a la prueba cerrada (ya anotado en el registro).
+- [x] Sin «grupos» (la preparación es individual) y una clase = un solo opositor; vídeos y capturas rehechos (9 oct.).
+- [x] 4 vídeos de instalación con DCE elegida (Android con Google Play y APK, iPhone, Windows, Mac) en `/app/#ayuda` y en `instalar.html` (9 oct.).
+- [ ] Publicarlos y que la sesión del vídeo promocional lo rehaga con las capturas nuevas.
 
 **Versión 1.15.6 (30): cancelar y borrar clases, relaciones, dos temas, simulacro, cronómetro y pizarra (9 oct.)**
 - [ ] Víctor: subir el `.aab` **1.15.6 (30)** a la prueba cerrada (lleva también la 1.15.4 y la 1.15.5) y, cuando Play lo procese, bajar el APK universal firmado por Google al Escritorio (`oposicion-tcee.apk`) para subirlo a `app-latest` con `versionActual: "1.15.6"`.
