@@ -19,6 +19,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/core/cache_http.dart';
+import 'package:tcee_app/core/constants.dart';
+import 'package:tcee_app/features/guia/guia.dart';
+import 'package:tcee_app/features/inicio/para_empezar.dart';
+import 'package:tcee_app/features/inicio/permisos_sheet.dart';
+import 'package:tcee_app/features/organizacion/organizacion_hub_page.dart';
 import 'package:tcee_app/core/providers.dart';
 import 'package:tcee_app/core/red_providers.dart';
 import 'package:tcee_app/core/temas_anticipados.dart';
@@ -57,9 +62,23 @@ var _n = 0;
 /// Caja de Hive en memoria, nueva en cada llamada.
 Future<Box> caja() => Hive.openBox('captura${_n++}', bytes: Uint8List(0));
 
+/// Caja `app` en memoria para las capturas: sin bienvenida, guía, hoja de
+/// permisos ni «Para empezar», y con «Más herramientas» abierto en Organización.
+Future<void> cajaAppSinPrimerosPasos() async {
+  final app = await Hive.openBox(Cajas.app, bytes: Uint8List(0));
+  await app.putAll({
+    claveBienvenidaVista: true,
+    clavePermisosPedidos: true,
+    claveMasHerramientas: true,
+    for (final o in Oposiciones.todas)
+      for (final p in Papel.values) ...{claveGuiaVista(o.id, p): true, claveParaEmpezarOculta(o.id, p): true},
+  });
+}
+
 /// Fuentes de la app y fechas en español: en el setUpAll de cada recorrido.
 Future<void> prepararCapturas() async {
   await initializeDateFormatting('es');
+  await cajaAppSinPrimerosPasos();
   // Este fichero es para tests, aunque viva en tool/ para no ejecutarse con el resto.
   // ignore: invalid_use_of_visible_for_testing_member
   PackageInfo.setMockInitialValues(appName: 'Oposición TCEE', packageName: 'es.victorgutierrezmarcos.tcee_app', version: versionApp(), buildNumber: '', buildSignature: '');

@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import '../../core/avisos_proceso.dart';
 import '../../core/constants.dart';
 import '../../core/providers.dart';
+import '../inicio/para_empezar.dart';
 import '../../data/models/proceso.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -47,6 +48,7 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
       json: ref.read(procesoJsonProvider).valueOrNull,
       conSesion: ref.read(usuarioActualProvider) != null,
     );
+    ref.invalidate(avisosProcesoActivosProvider);
     if (!mounted) return;
     setState(() => _avisos = v);
     messenger.showSnackBar(SnackBar(

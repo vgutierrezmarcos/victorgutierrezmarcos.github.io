@@ -18,6 +18,24 @@ Cinco bloques, iguales para opositores y preparadores, uno por cada cosa que se 
 
 En cada oposición se es **opositor o preparador**, no las dos cosas (`Papel`, guardado en `PerfilPreparador.activo`, con `papelElegido`). Se elige al empezar (`ElegirOposicionApp`, segundo paso), se cambia en *Más → Ajustes → Tu papel* y a quien venía de una versión anterior se le pregunta una vez en Hoy (`TarjetaElegirPapel`). Pasar a preparador deja de compartir el progreso con los preparadores propios de esa oposición; los datos se conservan.
 
+## Primeros pasos: bienvenida, guía y «Para empezar»
+
+Lo que encuentra quien abre la app por primera vez, para que no abrume sin quitar nada:
+
+- **Bienvenida** (`features/inicio/elegir_oposicion.dart`, solo en instalaciones nuevas con Firebase):
+  - Entrada con Google (`entrarConGoogle` en `core/providers.dart`) o «Ahora no».
+  - Después, «¿Qué oposición?» y «¿Cómo vas a usar la app?».
+  - Se marca vista en la caja `app` (`bienvenida_vista`).
+- **Guía de la app** (`features/guia/guia.dart`):
+  - Globos sobre las pestañas (`AnclaGuia` en `_Shell`), con los pasos de `pasosGuia(papel)` y enlaces a los vídeos de ayuda.
+  - Sale una vez por oposición y papel (`guia_vista_{oposicion}_{papel}`), después de la hoja de permisos, y se vuelve a abrir desde Más → Guía de la app.
+- **«Para empezar» en Hoy** (`features/inicio/para_empezar.dart`):
+  - Primeros pasos que se tachan solos según lo que ya se ha hecho (cuenta, fecha del examen, primer tema, primer test, preparador, avisos del proceso; al preparador: alta, código, huecos, primera clase).
+  - Se oculta al completarlos o con «Ocultar».
+- **Menos ruido**: Hoy no muestra la cuenta atrás sin fecha ni «Sin cantes programados», y en Organización lo menos usado va plegado en «Más herramientas».
+
+Las capturas (`tool/demo_comun.dart`, `cajaAppSinPrimerosPasos`) dan todo esto por visto.
+
 ## Estructura
 
 ```

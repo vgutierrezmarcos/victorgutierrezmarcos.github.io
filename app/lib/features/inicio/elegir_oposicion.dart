@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/constants.dart';
+import '../../core/providers.dart' show entrarConGoogle;
 import '../../data/models/oposicion.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 
-/// Primera pantalla cuando hay varias oposiciones: «¿A qué te presentas?» y,
-/// después, «¿Cómo vas a usar la app?» (opositor o preparador en esa
+/// Primeras pantallas de una instalación nueva: la bienvenida con la entrada
+/// con Google (opcional, [conBienvenida]), «¿Qué oposición?» (si hay varias,
+/// [conOposicion]) y «¿Cómo vas a usar la app?» (opositor o preparador en esa
 /// oposición). Va antes de crear los servicios, así que no usa Riverpod.
 /// Estética neutra ([PaletaNeutra]); cada tarjeta, con la de su oposición.
 class ElegirOposicionApp extends StatelessWidget {
-  const ElegirOposicionApp({super.key, required this.alElegir});
-  final Future<void> Function(Oposicion, Papel) alElegir;
+  const ElegirOposicionApp({super.key, required this.alElegir, this.conBienvenida = false, this.conOposicion = true});
+  /// Con una sola oposición no se pregunta ni la oposición ni el papel: [Papel] es null.
+  final Future<void> Function(Oposicion, Papel?) alElegir;
+  final bool conBienvenida;
+  final bool conOposicion;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -28,13 +35,15 @@ class ElegirOposicionApp extends StatelessWidget {
         locale: const Locale('es'),
         supportedLocales: const [Locale('es')],
         localizationsDelegates: GlobalMaterialLocalizations.delegates,
-        home: _ElegirOposicionPage(alElegir: alElegir),
+        home: _ElegirOposicionPage(alElegir: alElegir, conBienvenida: conBienvenida, conOposicion: conOposicion),
       );
 }
 
 class _ElegirOposicionPage extends StatefulWidget {
-  const _ElegirOposicionPage({required this.alElegir});
-  final Future<void> Function(Oposicion, Papel) alElegir;
+  const _ElegirOposicionPage({required this.alElegir, required this.conBienvenida, required this.conOposicion});
+  final Future<void> Function(Oposicion, Papel?) alElegir;
+  final bool conBienvenida;
+  final bool conOposicion;
 
   @override
   State<_ElegirOposicionPage> createState() => _ElegirOposicionPageState();
@@ -44,6 +53,106 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
   bool _cargando = false;
   /// Oposición elegida en el primer paso (null mientras no la elige).
   Oposicion? _oposicion;
+  late bool _bienvenida = widget.conBienvenida;
+  bool _entrando = false;
+  String? _error;
+
+  /// Bienvenida terminada (con sesión o sin ella): no se vuelve a mostrar.
+  Future<void> _seguir() async {
+    await Hive.box(Cajas.app).put(claveBienvenidaVista, true);
+    if (!mounted) return;
+    if (!widget.conOposicion) {
+      setState(() => _cargando = true);
+      await widget.alElegir(Oposiciones.disponibles.first, null);
+      return;
+    }
+    setState(() => _bienvenida = false);
+  }
+
+  Future<void> _entrar() async {
+    setState(() {
+      _entrando = true;
+      _error = null;
+    });
+    final r = await entrarConGoogle();
+    if (!mounted) return;
+    setState(() {
+      _entrando = false;
+      _error = r.error;
+    });
+    if (r.dentro) await _seguir();
+  }
+
+  List<Widget> _pasoBienvenida(String serif) {
+    Widget ventaja(IconData icono, String titulo, String texto) => Padding(
+          padding: const EdgeInsets.only(bottom: 14),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(color: PaletaNeutra.tinta.withValues(alpha: 0.08), borderRadius: BorderRadius.circular(10)),
+              child: Icon(icono, size: 22, color: PaletaNeutra.tinta),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(titulo, style: TextStyle(fontFamily: serif, fontSize: 17, fontWeight: FontWeight.w700, color: PaletaNeutra.texto)),
+                const SizedBox(height: 2),
+                Text(texto, style: const TextStyle(fontSize: 14, height: 1.35, color: PaletaNeutra.textoSuave)),
+              ]),
+            ),
+          ]),
+        );
+    return [
+      ..._cabeceraPaso(serif, 'Te damos la bienvenida', 'El temario, el test, tus cantes y tu preparador, en el móvil y en el ordenador. Entra con tu cuenta de Google y lo tendrás todo guardado desde el principio.'),
+      ventaja(Icons.devices_outlined, 'Tu progreso, en todas partes', 'Tests, temas, cantes y cronograma, en el móvil y en la web, y a salvo si cambias de móvil.'),
+      ventaja(Icons.groups_outlined, 'Preparadores', 'Busca preparador o conecta con el tuyo; si preparas, da clases y coge clases sueltas.'),
+      ventaja(Icons.notifications_active_outlined, 'Avisos', 'De tus clases, de los temas que te mandan y de lo que publica el Ministerio.'),
+      const SizedBox(height: 10),
+      FilledButton.icon(
+        onPressed: _entrando ? null : _entrar,
+        style: FilledButton.styleFrom(backgroundColor: PaletaNeutra.tinta, minimumSize: const Size.fromHeight(50), textStyle: TextStyle(fontFamily: PaletaMarca.tcee.sans, fontSize: 16, fontWeight: FontWeight.w600)),
+        icon: _entrando ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)) : const Icon(Icons.login),
+        label: const Text('Entrar con Google'),
+      ),
+      if (_error != null)
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Text('No se ha podido entrar: $_error', style: const TextStyle(fontSize: 13.5, color: Color(0xFFB3261E))),
+        ),
+      const SizedBox(height: 6),
+      TextButton(
+        onPressed: _entrando ? null : _seguir,
+        style: TextButton.styleFrom(minimumSize: const Size.fromHeight(46)),
+        child: const Text('Ahora no', style: TextStyle(fontSize: 15.5, color: PaletaNeutra.tinta)),
+      ),
+      const Text(
+        'La app funciona igual sin cuenta. Puedes entrar cuando quieras desde Más → Cuenta.',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 13, height: 1.4, color: PaletaNeutra.textoSuave),
+      ),
+      const SizedBox(height: 18),
+      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const Icon(Icons.lock_outline, size: 18, color: PaletaNeutra.textoSuave),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text.rich(
+            TextSpan(children: [
+              const TextSpan(text: 'Tus datos solo los ves tú (tu preparador, lo que tú le enseñes). Sin publicidad ni analítica. '),
+              WidgetSpan(
+                alignment: PlaceholderAlignment.baseline,
+                baseline: TextBaseline.alphabetic,
+                child: GestureDetector(
+                  onTap: () => launchUrl(Uri.parse(Urls.politicaPrivacidad), mode: LaunchMode.externalApplication).catchError((_) => false),
+                  child: const Text('Política de privacidad', style: TextStyle(fontSize: 12.5, color: PaletaNeutra.tinta, decoration: TextDecoration.underline)),
+                ),
+              ),
+            ]),
+            style: const TextStyle(fontSize: 12.5, height: 1.4, color: PaletaNeutra.textoSuave),
+          ),
+        ),
+      ]),
+    ];
+  }
 
   Future<void> _elegirPapel(Papel papel) async {
     setState(() => _cargando = true);
@@ -123,7 +232,11 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
               : Center(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 560),
-                    child: ListView(padding: const EdgeInsets.fromLTRB(20, 28, 20, 32), children: _oposicion == null ? _pasoOposicion(serif) : _pasoPapel(serif, _oposicion!)),
+                    child: ListView(padding: const EdgeInsets.fromLTRB(20, 28, 20, 32), children: _bienvenida
+                            ? _pasoBienvenida(serif)
+                            : _oposicion == null
+                                ? _pasoOposicion(serif)
+                                : _pasoPapel(serif, _oposicion!)),
                   ),
                 ),
         ),

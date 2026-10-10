@@ -132,6 +132,16 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Lo que cae en el test**: cada tema muestra qué parte del test suele ser suya y en cuántos exámenes salió (ficha del tema, mapa de calor con la vista «Lo que cae», selección rápida de los temas más preguntados en el simulador y un orden del cronograma que los pone primero).
 - **Simulador**: 8 exámenes oficiales más (2002-2009, 361 preguntas) y 89 preguntas reclasificadas de tema tras cruzarlas con la clasificación de otro opositor.
 
+### 10 oct. 2026 (para la 1.15.9)
+- **Primeros pasos más claros** (una tester: «nada más entras tienes demasiadas cosas»):
+  - En una instalación nueva, una bienvenida con la entrada con Google (se puede saltar) antes de elegir oposición y papel.
+  - Una guía de la app con globos sobre las pestañas, distinta para opositor y preparador, que se puede saltar y volver a abrir desde Más → Guía de la app, con enlaces a los vídeos de ayuda.
+  - En Hoy, «Para empezar» con los primeros pasos, que se tachan solos.
+  - Hoy ya no muestra tarjetas vacías.
+  - En Organización, lo menos usado queda plegado en «Más herramientas».
+- **Correcciones del test**: notas en las respuestas oficiales desactualizadas o discutibles, y el examen de marzo de 2026 en el simulador.
+- **Contenido nuevo sin reiniciar**: el contenido nuevo de la web se ve sin cerrar la app.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

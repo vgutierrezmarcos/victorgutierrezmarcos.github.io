@@ -46,6 +46,10 @@ class DefaultsTest {
 /// de preparador; al arrancar, la app abre el alta para pedir la verificación.
 const claveAbrirAlta = 'abrir_alta';
 
+/// En la caja [Cajas.app]: ya se ha mostrado la bienvenida con la entrada con
+/// Google (se muestra una vez, en la instalación nueva).
+const claveBienvenidaVista = 'bienvenida_vista';
+
 class Cajas {
   Cajas._();
 

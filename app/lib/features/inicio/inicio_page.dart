@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import '../../core/actualizaciones.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
+import 'para_empezar.dart';
 import 'permisos_sheet.dart';
 import '../cronograma/cronograma_page.dart';
 import '../../data/models/preparador.dart';
@@ -146,24 +147,29 @@ class InicioPage extends ConsumerWidget {
                 ),
             const TarjetaNovedadProceso(),
             const TarjetaElegirPapel(),
+            const TarjetaParaEmpezar(),
             if (!opositor) ...[const PanelPreparadorHoy(), const SizedBox(height: 10)],
-            if (opositor) ...[
+            // Sin fecha de examen ni cantes no se ven sus tarjetas vacías: esos
+            // pasos están en «Para empezar».
+            if (opositor && fecha != null) ...[
               Estadistica(
                 onTap: () => context.go('/organizacion/convocatoria'),
-                valor: dias == null ? '—' : '$dias',
-                etiqueta: dias == null ? 'Fija la fecha del examen' : '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
-                detalle: fecha == null ? null : DateFormat('d MMM y', 'es').format(fecha),
+                valor: '$dias',
+                etiqueta: '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
+                detalle: DateFormat('d MMM y', 'es').format(fecha),
               ),
               const SizedBox(height: 10),
+            ],
+            if (opositor && cante != null) ...[
               Tarjeta(
-                onTap: cante == null ? () => _irACantes(context, ref, 0) : () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
                 child: Row(children: [
                   Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 32),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(cante == null ? 'Sin cantes programados' : 'Próximo cante ${cuentaAtras(cante.fecha)}', style: context.textos.titleMedium),
-                      Text(cante == null ? 'Apunta cuándo es el siguiente para tener la cuenta atrás y un aviso.' : '${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${detalleCante(cante)}', style: context.textos.bodySmall),
+                      Text('Próximo cante ${cuentaAtras(cante.fecha)}', style: context.textos.titleMedium),
+                      Text('${fechaLarga(cante.fecha)}, ${horaDe(cante.fecha)} · ${detalleCante(cante)}', style: context.textos.bodySmall),
                     ]),
                   ),
                   const Icon(Icons.chevron_right),
@@ -221,11 +227,5 @@ class InicioPage extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  /// Abre el bloque Cantes en una de sus subpestañas (0 agenda, 1 cantar, 2 diario).
-  void _irACantes(BuildContext context, WidgetRef ref, int subpestana) {
-    ref.read(subpestanaCantesProvider.notifier).state = subpestana;
-    context.go('/cantes');
   }
 }

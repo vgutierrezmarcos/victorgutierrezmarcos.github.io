@@ -108,6 +108,13 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  /// Abre «Más herramientas» en Organización (si no está ya abierto).
+  Future<void> masHerramientas(WidgetTester tester) async {
+    if (find.text('Horario de estudio').evaluate().isNotEmpty || find.text('Mapa del temario').evaluate().isNotEmpty) return;
+    await tester.tap(find.text('Más herramientas'));
+    await tester.pumpAndSettle();
+  }
+
   Future<void> tocar(WidgetTester tester, Finder f) async {
     await tester.tap(f.first);
     await tester.pumpAndSettle();
@@ -179,8 +186,11 @@ void main() {
   testWidgets('recorre los cinco bloques', (tester) async {
     await arrancar(tester);
     await pestana(tester, 'Hoy');
-    expect(find.text('Sin cantes programados'), findsOneWidget);
-    expect(find.text('FIJA LA FECHA DEL EXAMEN'), findsOneWidget);
+    // Sin datos, nada de tarjetas vacías: los primeros pasos, en «Para empezar».
+    expect(find.text('Sin cantes programados'), findsNothing);
+    expect(find.text('Para empezar'), findsOneWidget);
+    expect(find.text('Pon la fecha del examen'), findsOneWidget);
+    expect(find.text('Haz tu primer test'), findsOneWidget);
 
     await estudiar(tester, 'Temas');
     expect(find.textContaining('Parte A: Economía general'), findsOneWidget);
@@ -197,7 +207,13 @@ void main() {
     await estudiar(tester, 'Test');
 
     await pestana(tester, 'Organización');
-    for (final t in ['Cronograma', 'Probabilidades', 'Convocatoria', 'Horario de estudio', 'Mapa del temario']) {
+    for (final t in ['Cronograma', 'Proceso selectivo', 'Convocatoria']) {
+      expect(find.text(t), findsOneWidget);
+    }
+    // Lo demás, plegado en «Más herramientas».
+    expect(find.text('Horario de estudio'), findsNothing);
+    await masHerramientas(tester);
+    for (final t in ['Probabilidades', 'Horario de estudio', 'Mapa de calor', 'Mapa del temario']) {
       expect(find.text(t), findsOneWidget);
     }
 
@@ -219,10 +235,12 @@ void main() {
     expect(find.text('Toca para poner la fecha'), findsNWidgets(5));
 
     await pestana(tester, 'Organización');
+    await masHerramientas(tester);
     await tocar(tester, find.text('Horario de estudio'));
     expect(find.text('52,0 horas de estudio a la semana.'), findsOneWidget);
 
     await pestana(tester, 'Organización');
+    await masHerramientas(tester);
     await tocar(tester, find.text('Probabilidades'));
     // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
     expect(find.text('TERCER EJERCICIO'), findsOneWidget);
@@ -390,6 +408,7 @@ void main() {
     await usuario.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.8', '3.A.9'}));
     await arrancar(tester);
     await pestana(tester, 'Organización');
+    await masHerramientas(tester);
     await tocar(tester, find.text('Mapa del temario'));
     expect(find.text('MICROECONOMÍA'), findsOneWidget);
     expect(find.text('MACROECONOMÍA'), findsOneWidget);
@@ -528,6 +547,7 @@ void main() {
     overrides = [...overrides, frecuenciaTestProvider.overrideWith((ref) => f)];
     await arrancar(tester);
     await pestana(tester, 'Organización');
+    await masHerramientas(tester);
     await tocar(tester, find.text('Probabilidad de aprobar el test'));
     expect(find.text('SIN SABER NINGUNA PREGUNTA'), findsOneWidget);
     expect(find.text('PREGUNTA A PREGUNTA'), findsOneWidget);
