@@ -140,7 +140,9 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 
 **Versión 1.15.9 (33): primeros pasos (10 oct.)**
 Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.
-- [ ] Víctor: subir el `.aab` **1.15.9 (33)** (`Escritorio\oposicion-tcee-dce-1.15.9.aab`, lleva también la 32) a la prueba cerrada.
+- [x] Víctor: subir el `.aab` **1.15.9 (33)** (`Escritorio\oposicion-tcee-dce-1.15.9.aab`, lleva también la 32) a la prueba cerrada.
+- [x] APK universal 33 firmado por Google, **sin la protección automática de Play** (la 23 y la 30 sí la llevaban), en `app-latest` (10 oct.); vuelve la descarga en la web (`urlApk`).
+- [ ] Cuando Play apruebe la revisión de la 33: `"versionActual": "1.15.9"` en `oposicion/app-config.json` (la app avisa a todos de que actualicen).
 - [ ] Probar en el móvil: instalación nueva (bienvenida → oposición → papel → hoja de avisos → guía), saltar la guía y abrirla desde Más, «Para empezar» tachándose y «Ocultar».
 
 **Google Calendar y Meet (en pruebas)**
