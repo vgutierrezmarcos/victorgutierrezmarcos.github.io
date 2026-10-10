@@ -1,0 +1,26 @@
+% Variante vertical, para la ficha de repaso, de esquema-ingredientes.tex:
+% de las preferencias a la demanda de mercado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=2pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\footnotesize,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=2pt,align=center,
+                 inner sep=2.5pt,minimum height=0.85cm,text width=2.75cm},
+    clave/.style={caja,fill=tceemorado!12,very thick},
+    une/.style={->,thick,tceemorado}]
+  \node[caja] (S) at (0,0) {Conjunto de elección\\ $S\subseteq\mathbb{R}^n_+$};
+  \node[caja] (P) at (3.2,0) {Preferencias $\succcurlyeq$\\ axiomas 1-4 (\textsc{Debreu})};
+  \node[caja] (U) at (3.2,-1.3) {Función de utilidad\\ $U(x)$};
+  \node[caja] (B) at (0,-1.3) {Restricción presupuestaria\\ $p\cdot x\leq\overline{W}$};
+  \node[clave] (PMU) at (1.6,-2.6) {PMU: $\max\limits_{x}U(x)$\\ s.a.\ $p\cdot x\leq\overline{W}$};
+  \node[caja] (X) at (0,-3.95) {Demanda marshalliana\\ $x(p,\overline{W})$};
+  \node[caja] (M) at (3.2,-3.95) {Demanda de mercado\\ $X(p,\overline{W}_1,\dots,\overline{W}_H)$};
+  \draw[une] (S) -- (P);
+  \draw[une] (P) -- (U);
+  \draw[une] (U) -- (PMU);
+  \draw[une] (B) -- (PMU);
+  \draw[une] (PMU) -- (X);
+  \draw[une] (X) -- (M);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,49 @@
+% Variante para la ficha de repaso (letra mayor, se reduce a ancho de columna) de solucion-interior-esquina.tex.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\LARGE,etiqueta/.style={font=\LARGE,inner sep=2pt},eje/.append style={line width=1.2pt},curva1/.append style={line width=2pt},curva2/.append style={line width=2pt},curva3/.append style={line width=2pt},curva4/.append style={line width=2pt},punto/.append style={inner sep=2.4pt}]
+  % Panel izquierdo: solución interior.
+  % Recta x2 = 3 - 0,75 x1; U = x1 x2, tangente en x* = (2; 1,5) con U* = 3.
+  \ejes{$x_1$}{$x_2$}{5}{4}
+  \capa{1}{
+    \fill[area] (0,0) -- (0,3) -- (4,0) -- cycle;
+    \draw[curva1] (0,3) -- (4,0);
+  }
+  \capa{2}{\draw[curva2] plot[domain=0.45:4.6,samples=80,smooth] (\x,{1.6/\x}) node[etiqueta,right] {$U^0$};}
+  \capa{3}{\draw[curva3] plot[domain=0.8:4.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$U^*$};}
+  \capa{4}{\draw[curva4] plot[domain=1.35:4.6,samples=80,smooth] (\x,{5/\x}) node[etiqueta,right] {$U^2$};}
+  \capa{5}{
+    \node[punto] (E) at (2,1.5) {};
+    \node[etiqueta,above right] at (E) {$x^*$};
+    \proyeccion{(E)}{$x_1^*$}{$x_2^*$}
+  }
+  % Panel derecho: solución de esquina en el eje x1.
+  % Recta x2 = 2 - 0,5 x1 (p1/p2 = 0,5); U = x1 + ln(1+x2): x2 = e^{c-x1} - 1,
+  % con RMS = 1 + x2 >= 1 > p1/p2, así que la curva más alta alcanzable (c = 4)
+  % toca la recta solo en (4, 0).
+  \begin{scope}[xshift=7.6cm]
+    \capa{7}{\ejes{$x_1$}{$x_2$}{5.6}{4}}
+    \capa{8}{
+      \fill[area] (0,0) -- (0,2) -- (4,0) -- cycle;
+      \draw[curva1] (0,2) -- (4,0);
+    }
+    \capa{9}{
+      \draw[curva2] plot[domain=1.7:3.2,samples=60,smooth] (\x,{exp(3.2-\x)-1});
+    }
+    \capa{10}{
+      \draw[curva3] plot[domain=2.5:4,samples=60,smooth] (\x,{exp(4-\x)-1});
+      \node[etiqueta,above] at (2.5,{exp(1.5)-1}) {$U^*$};
+    }
+    \capa{11}{
+      \draw[curva4] plot[domain=3.3:4.8,samples=60,smooth] (\x,{exp(4.8-\x)-1});
+    }
+    \capa{12}{
+      \node[punto] at (4,0) {};
+      \node[below] at (4,0) {$x_1^*$};
+      \node[etiqueta,above right] at (4,0) {$x^*$};
+    }
+  \end{scope}
+\end{tikzpicture}
+\end{document}

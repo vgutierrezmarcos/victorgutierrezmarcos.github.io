@@ -1,0 +1,46 @@
+% Variante para la ficha de repaso (letra mayor, se reduce a ancho de columna) de elasticidades-renta-precio.tex.
+% Autor: Víctor Gutiérrez Marcos
+% Relación entre la clasificación por la elasticidad-renta (inferiores / normales:
+% primera necesidad y lujo) y por la elasticidad-precio propia (Giffen / ordinarios)
+% (rehace el esquema de la página 26 del tema original, sin el «Veblen», que no
+% es un caso de la ecuación de Slutsky).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\LARGE,
+    eje2/.style={<->,line width=1.4pt,black},
+    marca/.style={thick},
+    tipo/.style={font=\huge,align=center},
+    implica/.style={-{Triangle[width=11pt,length=7pt]},line width=4pt,tceemorado!45}]
+  % 1: eje de la elasticidad-renta (de -inf a +inf) con 0 y 1
+  \capa{1}{\draw[eje2] (0,3) -- (12,3);}
+  \capa{1}{\node[anchor=east] at (-0.7,3) {$\varepsilon_{x_i,\overline{W}}$};}
+  \capa{1}{\node[above] at (0.2,3.1) {$-\infty$};}
+  \capa{1}{\node[above] at (11.8,3.1) {$+\infty$};}
+  \capa{1}{\draw[marca] (6,3.1) -- (6,2.9) node[below] {$0$};}
+  \capa{1}{\draw[marca] (8.5,3.1) -- (8.5,2.9) node[below] {$1$};}
+  % 2: bienes inferiores y normales
+  \capa{2}{\node[tipo,text=tceedorado] (inf) at (3,2.2) {Bienes inferiores};}
+  \capa{2}{\node[tipo,text=tceeverde] (nor) at (9.6,2.2) {Bienes normales};}
+  % 3: primera necesidad y lujo
+  \capa{3}{\node[font=\LARGE,text=tceeverde] at (7.1,3.45) {necesarios};}
+  \capa{3}{\node[font=\LARGE,text=tceeverde] at (10.3,3.45) {lujo};}
+  % 4: eje de la elasticidad-precio propia (de +inf a -inf) con 0
+  \capa{4}{\draw[eje2] (0,0) -- (12,0);}
+  \capa{4}{\node[anchor=east] at (-0.7,0) {$\varepsilon_{x_i,p_i}$};}
+  \capa{4}{\node[below] at (0.2,-0.1) {$+\infty$};}
+  \capa{4}{\node[below] at (11.8,-0.1) {$-\infty$};}
+  \capa{4}{\draw[marca] (4.5,-0.1) -- (4.5,0.1);}
+  \capa{4}{\node[below] at (4.5,-0.1) {$0$};}
+  % 5: bienes Giffen y ordinarios
+  \capa{5}{\node[tipo,text=tceerojo] (gif) at (3,0.6) {Bienes \textsc{Giffen}};}
+  \capa{5}{\node[tipo,text=tceeazul] (ord) at (9.6,0.6) {Bienes ordinarios};}
+  % 6: los dos ceros no coinciden: hay bienes inferiores ordinarios
+  \capa{6}{\draw[guia,thick] (6,3) -- (4.5,0);}
+  % 7: todo bien normal es ordinario
+  \capa{7}{\draw[implica] (nor.south) -- (ord.north -| nor.south);}
+  % 8: todo bien Giffen es inferior
+  \capa{8}{\draw[implica] (gif.north) -- (inf.south -| gif.north);}
+\end{tikzpicture}
+\end{document}

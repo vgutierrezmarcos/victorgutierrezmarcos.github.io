@@ -10,190 +10,154 @@
 \bloque{Esquema del cante}
 \esquemacante{%
 \apartadocante{Introducción}{3}
-\apartadocante{I. La función de demanda}{10}
-\subcante{1. Preferencias y utilidad (Debreu, RMS)}{}
-\subcante{2. Presupuesto y demanda $x(p,\overline{W})$}{}
-\subcante{3. Agregación: Gorman y efecto renta nulo}{}
+\apartadocante{I. Fundamentos (elección racional)}{10}
+\subcante{1. Ingredientes}{5}
+\subcante{2. PMU: el equilibrio}{3}
+\subcante{3. Solución: $x(p,\overline{W})$, FIU, mercado}{2}
 \apartadocante{II. Estática comparativa}{7}
-\subcante{1. Efecto renta (Engel)}{2}
-\subcante{2. Precio propio (Slutsky: ES + ER)}{3}
-\subcante{3. Precio cruzado (brutos y netos, Cournot)}{2}
+\subcante{1. Variaciones en la renta (Engel)}{2}
+\subcante{2. Variaciones en los precios (Slutsky)}{4}
+\subcante{3. Valoración}{1}
 \apartadocante{III. Otros desarrollos}{7}
-\subcante{1. Preferencia revelada (Houthakker, Afriat)}{3}
+\subcante{1. Preferencia revelada}{3}
 \subcante{2. Producción doméstica (Becker)}{1,5}
-\subcante{3. Precios hedónicos (Griliches, Rosen)}{2,5}
+\subcante{3. Precios hedónicos (Rosen)}{2,5}
 \apartadocante{Conclusión}{3}}
-Se dibujan: ingredientes, renta-consumo y Engel, \textbf{Slutsky} (gráfico central), ADPR con efecto sustitución y función hedónica.
+Anexos (no se cantan): PMU en 3D, derivaciones, formas funcionales, sistemas de demanda, cardinal, \autor{Lancaster}, \autor{Thaler}.
 
 % ==========================================================================
 \bloque[3]{Introducción}
 \begin{itemize}
 \item \textbf{Enganche}: \autor{Marshall} (1890), «el estudio de la humanidad en los asuntos ordinarios de la vida» $\Rightarrow$ \concepto{individualismo metodológico}.
-\item \textbf{Relevancia}: micro, paso previo al equilibrio de mercado \vertema{3.A.16}; macro, el consumo de los hogares es el \dato{54,1\,\% del PIB}{España, 2025; 55,2\,\% con ISFLSH}.
-\item \textbf{Contexto}: utilidad (\autor{Bernoulli}, \autor{Dupuit}, \autor{Gossen}) $\to$ marginalistas $\to$ \autor{Marshall} cardinal (sin efecto renta) $\to$ \autor{Edgeworth}, \autor{Pareto} ordinal $\to$ \autor{Slutsky}, \autor{Hicks}-\autor{Allen}, \autor{Debreu} $\to$ hacia lo observable: \autor{Samuelson}, \autor{Becker}, \autor{Rosen}.
-\item \textbf{Problemática}: ¿cómo se obtiene la demanda de preferencias y presupuesto, y cuándo hay demanda de mercado? ¿Cómo varía con renta y precios? ¿Puede construirse desde lo observable?
-\item \textbf{Estructura}: I. función de demanda; II. estática comparativa; III. otros desarrollos.
+\item \textbf{Relevancia}: micro, paso previo al equilibrio de mercado; macro, consumo de los hogares \dato{54,1\,\% del PIB}{España, 2025}.
+\item \textbf{Contexto}: \autor{Bernoulli}, \autor{Gossen} $\to$ marginalistas $\to$ \autor{Marshall} cardinal $\to$ \autor{Pareto} ordinal $\to$ \autor{Slutsky}, \autor{Hicks}-\autor{Allen}, \autor{Debreu} $\to$ \autor{Samuelson}, \autor{Becker}, \autor{Rosen}.
+\item \textbf{Problemática}: ¿cómo se obtiene la demanda? ¿Cómo varía con renta y precios? ¿Puede construirse desde lo observable?
+\item \textbf{Estructura}: I. fundamentos; II. estática comparativa; III. otros desarrollos.
 \end{itemize}
 
 % ==========================================================================
-\bloque[10]{I. La función de demanda}
-Preferencias $\to$ utilidad; + restricción presupuestaria $\to$ PMU $\to$ demanda marshalliana $\to$ demanda de mercado.
+\bloque[10]{I. Elección racional}
+\graficorepaso{esquema-ingredientes-repaso}{Ingredientes: de las preferencias a la demanda de mercado}
 \begin{itemize}
-\item \textbf{Supuestos}: estático y sin incertidumbre; información perfecta; precio-aceptante, bienes divisibles; consumo separado de trabajo e intertemporal; bienes homogéneos.
+\item \textbf{Supuestos}: estático, sin incertidumbre; información perfecta; precio-aceptante, bienes divisibles; consumo separado de trabajo e intertemporal.
 \end{itemize}
 
-\sub{I.1. Preferencias y función de utilidad}
+\sub{I.1. Ingredientes}
 \begin{itemize}
-\item \concepto{Conjunto de elección} $S\subseteq\mathbb{R}^n_+$: no vacío, cerrado, acotado inferiormente, convexo (divisibilidad).
-\item \concepto{Preferencia débil} $\succcurlyeq$ (relación binaria primitiva); de ella, estricta $\succ$ e indiferencia $\sim$. Conjuntos «al menos tan bueno como» $B(x^0)$, «no mejor que» $H(x^0)$ e indiferencia $I(x^0)=B\cap H$.
-\item \textbf{Axiomas} (\autor{Debreu}, 1959):
-  \begin{itemize}
-  \item 1-3 \emph{racionalidad} (preorden completo): completitud, reflexividad, transitividad $\Rightarrow$ particionan $S$ en conjuntos de indiferencia que no se cortan.
-  \item 4 \emph{continuidad}: contornos cerrados.
-  \item 5 \emph{deseabilidad}: no saturación global $\Leftarrow$ insaciabilidad local $\Leftarrow$ monotonía $\Leftarrow$ monotonía estricta.
-  \item 6 \emph{convexidad} (diversificación) y 6$'$ estricta (demanda única).
-  \item 7 \emph{diferenciabilidad}: sin vértices; solo conveniencia técnica.
-  \end{itemize}
-\item \concepto{Teorema de Debreu}: 1-4 $\Rightarrow$ existe $U$ continua. Contraejemplo: \concepto{lexicográficas} (preorden completo, no continuas, sin utilidad).
-\item \concepto{Función de utilidad}: $x^1\succcurlyeq x^2\Leftrightarrow U(x^1)\geq U(x^2)$; «numera» los conjuntos de indiferencia. \concepto{Ordinal}: única salvo transformación monótona creciente. Con preferencias regulares, continua, creciente, (estr.) cuasicóncava.
-\item \concepto{Curva de indiferencia}: conjunto de nivel de $U$. Propiedades y axioma: toda cesta en una (1-2), no se cortan (3), continuas (4), más lejos = mejor y pendiente negativa (5), convexas (6), sin vértices (7).
+\item \concepto{Conjunto de elección} $S\subseteq\mathbb{R}^n_+$: no vacío, cerrado, acotado inferiormente, convexo.
+\item \concepto{Preferencia débil} $\succcurlyeq$ (primitiva) $\to$ estricta $\succ$ e indiferencia $\sim$. Conjuntos «al menos tan bueno como» $B(x^0)$, «no mejor que» $H(x^0)$; $I(x^0)=B\cap H$.
 \end{itemize}
+\graficorepaso{esquema-axiomas-repaso}{Axiomas: qué garantiza cada uno y su papel}
+\begin{itemize}
+\item \concepto{Teorema de Debreu}: 1-4 $\Rightarrow$ existe $U$ continua. \concepto{Lexicográficas}: racionales, no continuas, sin utilidad. Deseabilidad: monot.\ estricta $\Rightarrow$ monot.\ $\Rightarrow$ insaciab.\ local $\Rightarrow$ no saturación.
+\item \concepto{Función de utilidad}: $x^1\succcurlyeq x^2\Leftrightarrow U(x^1)\geq U(x^2)$; «numera» los conjuntos de indiferencia; \concepto{ordinal} (transf.\ monótonas). \concepto{Curvas de indiferencia} = conjuntos de nivel de $U$: no se cortan (3), pendiente negativa (5), convexas (6).
+\end{itemize}
+\graficorepaso[0.72\linewidth]{superficie-utilidad-repaso}{Superficie de utilidad cortada a $U=1,2,3$: su proyección es el mapa de curvas de indiferencia}
 \begin{formula}
-$RMS_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$\qquad $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln RMS_{12}}$
+\centering $RMS_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$\\[1pt] $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln RMS_{12}}$
 \end{formula}
 \begin{itemize}
-\item \concepto{CES}: $U=A\big[\sum a_ix_i^{(\sigma-1)/\sigma}\big]^{\sigma/(\sigma-1)}$; $\sigma\to0$ \autor{Leontief}, $\sigma\to1$ Cobb-Douglas, $\sigma\to\infty$ lineal.
+\item \concepto{CES}: $\sigma\to0$ \autor{Leontief}, $\sigma\to1$ Cobb-Douglas, $\sigma\to\infty$ lineal.
+\item \concepto{Conjunto presupuestario} $B(p,\overline{W})=\{x\in S: p\cdot x\leq\overline{W}\}$: compacto si $p\gg0$, convexo. Recta de balance, pendiente $-p_1/p_2$.
 \end{itemize}
-\graficorepaso[0.62\linewidth]{ces-curvas-indiferencia}{Curvas de indiferencia de la CES según $\sigma$}
 
-\sub{I.2. Restricción presupuestaria y demanda individual}
+\sub{I.2. PMU: el equilibrio}
 \begin{itemize}
-\item \concepto{Conjunto presupuestario walrasiano} $B(p,\overline{W})=\{x\in S: p\cdot x\leq\overline{W}\}$: no vacío, cerrado, acotado si $p\gg0$ (compacto), convexo. Recta de balance con pendiente $-p_1/p_2$.
-\item \concepto{PMU}: $\max U(x)$ s.a. $p\cdot x\leq\overline{W}$, $x\geq0$. Existencia (\autor{Weierstrass}), unicidad (estr. cuasiconcavidad), CPO suficientes (\autor{Arrow}-\autor{Enthoven}, 1961).
-\item \concepto{Kuhn-Tucker}: $U_i-\lambda p_i\leq0$, $x_i\geq0$, holgura complementaria. $\lambda$ = utilidad marginal de la renta (precio sombra); $\lambda>0$ por insaciabilidad local.
+\item $\max U(x)$ s.a.\ $p\cdot x\leq\overline{W}$, $x\geq0$: existe (\autor{Weierstrass}), única (estr.\ cuasiconcavidad), CPO suficientes (\autor{Arrow}-\autor{Enthoven}).
+\item \concepto{Kuhn-Tucker}: $U_i-\lambda p_i\leq0$, $x_i\geq0$, holgura complementaria. $\lambda$ = UMg de la renta; $\lambda>0$ por insaciabilidad local (con saturación interior, $\lambda=0$).
 \end{itemize}
 \begin{formula}
-Interior: $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$ \ (2.ª ley de \autor{Gossen}) $\Rightarrow RMS_{12}=\dfrac{p_1}{p_2}$\\[1pt]
-Esquina ($x_2^*=0$): $RMS_{12}\geq p_1/p_2$
+Interior (\autor{Gossen}): $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$\\ $\Rightarrow RMS_{12}=p_1/p_2$.\ \ Esquina ($x_2^*=0$): $RMS_{12}\geq p_1/p_2$
 \end{formula}
-\begin{itemize}
-\item \concepto{Demanda marshalliana} (ordinaria, walrasiana) $x(p,\overline{W})$: existe y es única; continua (\autor{Berge}); \textbf{homogénea de grado 0} (sin ilusión monetaria); \textbf{ley de Walras} $p\cdot x=\overline{W}$; diferenciable.
-\item \concepto{Función indirecta de utilidad} $V(p,\overline{W})$: continua, homogénea de grado 0, creciente en $\overline{W}$, no creciente en $p$, cuasiconvexa.
-\end{itemize}
-\begin{formula}
-\autor{Roy} (1947): $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$
-\end{formula}
+\graficorepaso{solucion-interior-esquina-repaso}{Solución interior (tangencia) y de esquina}
 
-\sub{I.3. Agregación y efecto renta nulo}
+\sub{I.3. Solución: demanda y mercado}
 \begin{itemize}
-\item \concepto{Demanda de mercado} $X_i=\sum_h x_{hi}(p,\overline{W}_h)$: suma horizontal; en general depende de toda la distribución de la renta.
-\item \concepto{Gorman} (1953, 1961): depende solo de $\overline{W}=\sum_h\overline{W}_h$ $\Leftrightarrow$ forma polar $V_h=a_h(p)+b(p)\,\overline{W}_h$, con $b(p)$ común $\Leftrightarrow$ curvas de Engel \textbf{rectas y paralelas}. Casos: homotéticas idénticas ($a_h=0$) y cuasilineales $U_h=x_0+\phi_h(x)$ (efecto renta nulo). $\Rightarrow$ \concepto{consumidor representativo}. \autor{Muellbauer}: PIGL/PIGLOG (base del AIDS).
-\item \textbf{Efecto renta nulo}: agregación inmediata, marshalliana = hicksiana, excedente exacto. Pero sin inferiores ni Giffen, contra la ley de Engel, esquinas con renta baja.
-\item \textbf{Herencia}: se conservan continuidad, homogeneidad y ley de Walras; \emph{no} el ADPR ni la simetría/negatividad de Slutsky. \concepto{Sonnenschein-Mantel-Debreu}: cualquier función continua, homogénea y walrasiana puede ser un exceso de demanda $\Rightarrow$ ni unicidad ni estabilidad \vertema{3.A.21}.
+\item \concepto{Demanda marshalliana} $x(p,\overline{W})$: única, continua (\autor{Berge}), \textbf{homogénea de grado 0} (sin ilusión monetaria), \textbf{ley de Walras} $p\cdot x=\overline{W}$, diferenciable.
+\item \concepto{FIU} $V(p,\overline{W})$: homogénea de grado 0, creciente en $\overline{W}$, no creciente en $p$, cuasiconvexa. \autor{Roy}: $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$.
+\item \concepto{Demanda de mercado}: suma horizontal; depende de la distribución de la renta. Solo de $\sum_h\overline{W}_h$ $\Leftrightarrow$ \concepto{forma polar de Gorman} $V_h=a_h(p)+b(p)\overline{W}_h$ $\Leftrightarrow$ curvas de Engel \textbf{rectas y paralelas} $\Rightarrow$ consumidor representativo. Casos: homotéticas idénticas; cuasilineales (\textbf{efecto renta nulo}: excedente exacto, pero sin inferiores ni Giffen).
+\item Se heredan homogeneidad y ley de Walras, no el ADPR ni Slutsky: \concepto{SMD} $\Rightarrow$ ni unicidad ni estabilidad \vertema{3.A.21}.
 \end{itemize}
-\graficorepaso[0.6\linewidth]{engel-gorman}{Gorman: curvas de Engel rectas y paralelas}
-\begin{ideaclave}
-Demanda de mercado como la de un consumidor representativo solo si las curvas de Engel son rectas y paralelas (Gorman); el efecto renta nulo es el caso más cómodo y más restrictivo.
-\end{ideaclave}
 
 % ==========================================================================
 \bloque[7]{II. Estática comparativa}
-Comparar óptimos sin estudiar el ajuste; derivadas como \concepto{elasticidades} (números puros, medida \emph{local}: un bien puede ser normal a una renta e inferior a otra).
+Comparar óptimos sin el ajuste; \concepto{elasticidades}: números puros y medida \emph{local}.
 
-\sub{II.1. Efecto renta}
+\sub{II.1. Variaciones en la renta}
 \begin{itemize}
-\item \concepto{Curva de renta-consumo} (senda de expansión): óptimos al variar $\overline{W}$. Homotéticas: semirrecta desde el origen.
-\item \concepto{Curva de Engel} $x_i(\bar p,\overline{W})$; pendiente = efecto renta: $>0$ normal, $<0$ inferior.
+\item \concepto{Curva de renta-consumo} $\to$ \concepto{curva de Engel} $x_i(\bar p,\overline{W})$; pendiente = efecto renta.
 \item $\varepsilon_{x_i,\overline{W}}$: $<0$ inferior; $=0$ independiente; $(0,1)$ necesario; $>1$ lujo.
-\item \concepto{Ley de Engel} (1857): el peso de la alimentación cae con la renta. EPF: \dato{19,6\,\% quintil bajo frente a 12,3\,\% alto; media 16,0\,\%}{INE, 2025}.
+\item \concepto{Ley de Engel} (1857): alimentos \dato{19,6\,\% (Q1) frente a 12,3\,\% (Q5)}{INE, EPF 2025}.
 \end{itemize}
 \begin{formula}
 Agregación de \autor{Engel}: $\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1$,\ \ $s_i=p_ix_i/\overline{W}$
 \end{formula}
-No todos los bienes pueden ser inferiores; al menos uno con $\varepsilon\geq1$.
 
-\sub{II.2. Efecto precio propio}
+\sub{II.2. Variaciones en los precios}
 \begin{itemize}
-\item \concepto{Curva de precio-consumo} $\to$ \concepto{curva de demanda} $x_1(p_1;p_2,\overline{W})$.
-\item $\varepsilon_{x_i,p_i}$: $<0$ ordinario ($<-1$ elástica: el gasto cae al subir $p$; $(-1,0)$ inelástica); $=0$ rígida; $>0$ \autor{Giffen}.
-\item \concepto{Demanda hicksiana} $h_i(p,\overline{U})$: mantiene la utilidad; solución del dual \vertema{3.A.9}.
+\item \concepto{Curva de precio-consumo} $\to$ \concepto{curva de demanda}. $\varepsilon_{x_i,p_i}$: $<0$ ordinario ($<-1$ elástica); $=0$ rígida; $>0$ \autor{Giffen}.
+\item \concepto{Hicksiana} $h_i(p,\overline{U})$: mantiene la utilidad \vertema{3.A.9}.
 \end{itemize}
 \begin{formula}
-\autor{Slutsky} (1915): $\underbrace{\dfrac{\partial x_i}{\partial p_i}}_{ET}=\underbrace{\dfrac{\partial h_i}{\partial p_i}}_{ES\,\leq\,0}\ \underbrace{-\,x_i\dfrac{\partial x_i}{\partial\overline{W}}}_{ER}$
+\autor{Slutsky}: $\underbrace{\dfrac{\partial x_i}{\partial p_j}}_{ET}=\underbrace{\dfrac{\partial h_i}{\partial p_j}}_{ES}\ \underbrace{-\,x_j\dfrac{\partial x_i}{\partial\overline{W}}}_{ER}$\\ Con $j=i$, $ES\leq0$.
 \end{formula}
 \begin{itemize}
-\item ES siempre $\leq0$ (concavidad de la función de gasto). ER: su signo depende del bien; su tamaño, del peso en el gasto.
-\item Normal $\Rightarrow$ ordinario (\emph{ley de la demanda}). Inferior: ordinario si domina el ES; \concepto{Giffen} si el ER es mayor. Evidencia: arroz en Hunan (\autor{Jensen} y \autor{Miller}, 2008).
-\item Gráfico: baja $p_1$; $A\to B$ ES (misma curva de indiferencia), $B\to C$ ER. Hicksiana (por $A$ y $B$) más inclinada que la marshalliana (por $A$ y $C$) en un bien normal.
-\item \concepto{Efecto Veblen}: el precio entra en las preferencias; fuera del modelo (\autor{Leibenstein}, 1950: arrastre y esnob).
+\item Normal $\Rightarrow$ ordinario (\emph{ley de la demanda}). Inferior: ordinario si domina ES; \concepto{Giffen} si domina ER (arroz en Hunan, \autor{Jensen}-\autor{Miller}, 2008). \concepto{Veblen}: precio en las preferencias, fuera del modelo.
 \end{itemize}
-\graficorepaso[0.7\linewidth]{efecto-sustitucion-renta}{Descomposición de Slutsky y demandas marshalliana y hicksiana}
-
-\sub{II.3. Efecto precio cruzado}
+\graficorepaso{elasticidades-renta-precio-repaso}{Todo normal es ordinario; todo Giffen es inferior}
+\graficorepaso[0.62\linewidth]{efecto-sustitucion-renta}{ES ($A\to B$) y ER ($B\to C$); hicksiana por $A$ y $B$}
 \begin{itemize}
-\item $\varepsilon_{x_i,p_j}$: $>0$ \concepto{sustitutivo bruto}, $=0$ independiente, $<0$ \concepto{complementario bruto}. Brutas \textbf{no simétricas} (incluyen ER).
-\item Slutsky cruzada: $\dfrac{\partial x_i}{\partial p_j}=\dfrac{\partial h_i}{\partial p_j}-x_j\dfrac{\partial x_i}{\partial\overline{W}}$. \concepto{Sustitutivos/complementarios netos} según $\partial h_i/\partial p_j\gtrless0$: \textbf{simétricas}.
-\item Todo bien tiene al menos un sustitutivo neto; con dos bienes, ambos lo son.
+\item $\varepsilon_{x_i,p_j}>0$ \concepto{sustitutivo bruto}, $<0$ \concepto{complementario bruto}: \textbf{no simétricas}. Netos según $\partial h_i/\partial p_j$: \textbf{simétricos}; todo bien tiene un sustitutivo neto.
 \end{itemize}
 \begin{formula}
-Homog.: $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$\\
-\autor{Cournot}: $\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j$
+Homog.: $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$\qquad\autor{Cournot}: $\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j$
 \end{formula}
+
+\sub{II.3. Valoración}
 \begin{itemize}
-\item Agregaciones: de la ley de Walras; homogeneidad: del conjunto presupuestario; simetría y negatividad: de la maximización. Son las \concepto{restricciones contrastables}.
-\item \textbf{Limitaciones} $\to$ III: preferencias inobservables; sin tiempo; sin calidad ni características; estático y sin incertidumbre.
+\item \concepto{Restricciones contrastables}: homogeneidad y agregaciones (presupuesto); simetría y negatividad (maximización). Límites $\to$ III: preferencias inobservables; sin tiempo; sin características; estático.
 \end{itemize}
-\begin{ideaclave}
-ES siempre $\leq0$; ER según normal o inferior. La ley de la demanda vale siempre para la compensada y para la marshalliana salvo Giffen. Netas simétricas; brutas, no.
-\end{ideaclave}
 
 % ==========================================================================
 \bloque[7]{III. Otros desarrollos}
 \sub{III.1. Preferencia revelada}
 \begin{itemize}
-\item \autor{Samuelson} (1938, 1948): parte de las \emph{elecciones} (enfoque inductivo), no de preferencias inobservables (deductivo). Supuestos: consumidor individual, función de demanda, ley de Walras.
-\item $x^0$ \concepto{directamente revelada preferida} a $x^1$: se eligió $x^0$ con $x^1$ asequible.
+\item \autor{Samuelson} (1938, 1948): de las \emph{elecciones} (inductivo), no de preferencias inobservables.
 \end{itemize}
 \begin{formula}
 \textbf{ADPR}: $p^0\cdot x^1\leq p^0\cdot x^0,\ x^1\neq x^0\Rightarrow p^1\cdot x^0>p^1\cdot x^1$
 \end{formula}
 \begin{itemize}
-\item Implicaciones: homogeneidad de grado 0; \concepto{ley de la demanda compensada} (Slutsky) $(p'-p)\cdot\Delta x\leq0$ $\Rightarrow$ ES $\leq0$ sin utilidad; Slutsky semidefinida negativa, \emph{no} simétrica $\Rightarrow$ con $n>2$ no basta (con 2 sí, \autor{Rose}, 1958).
-\item \concepto{AFPR} (\autor{Houthakker}, 1950): transitividad de la preferencia revelada (directa o indirecta). \concepto{Teorema de Houthakker}: AFPR $\Leftrightarrow$ demanda generada por preferencias racionales $\Rightarrow$ equivalencia con la teoría ordinal.
-\item \concepto{Afriat} (1967): con datos finitos, GARP (\autor{Varian}, 1982) $\Leftrightarrow$ compatible con utilidad continua, creciente y cóncava $\Rightarrow$ contraste no paramétrico.
-\item Aplicaciones: obtención de curvas de indiferencia (\autor{Samuelson}, 1948); índices de \autor{Laspeyres} y \autor{Paasche}. Crítica: identifica elección y bienestar (\autor{Sen}, 1973).
+\item ADPR $\Rightarrow$ homogeneidad; \concepto{ley de la demanda compensada} (ES $\leq0$ sin utilidad); Slutsky semidefinida negativa, \emph{no} simétrica (con 2 bienes basta, \autor{Rose}).
+\item \concepto{AFPR} (\autor{Houthakker}, 1950): transitividad; AFPR $\Leftrightarrow$ preferencias racionales. \concepto{Afriat} (1967): datos finitos, GARP $\Rightarrow$ contraste no paramétrico. Crítica: elección $\neq$ bienestar (\autor{Sen}).
 \end{itemize}
-\graficorepaso[0.68\linewidth]{preferencia-revelada-indiferencia}{Curva de indiferencia acotada por la preferencia revelada}
+\graficorepaso[0.6\linewidth]{preferencia-revelada-indiferencia}{Curva de indiferencia acotada por la preferencia revelada}
 
 \sub{III.2. Producción doméstica}
 \begin{itemize}
-\item \concepto{Tecnologías del consumo}: los bienes son insumos. \autor{Becker} (1965): el hogar produce \emph{commodities} $Z_i=f_i(x_i,t_i)$ con bienes y \emph{tiempo} (\emph{New Home Economics}). \autor{Lancaster} (1966): características $z=Bx$ \vertema{3.A.18}.
+\item \autor{Becker} (1965): el hogar produce \emph{commodities} $Z_i=f_i(x_i,t_i)$ con bienes y \emph{tiempo}. \autor{Lancaster} (1966): características $z=Bx$ (anexo; \vertema{3.A.18}).
 \end{itemize}
 \begin{formula}
 Renta completa: $\sum_i(p_ix_i+w\,t_i)=wT+V$;\ \ $\pi_i=p_ib_i+w\,\tau_i$
 \end{formula}
 \begin{itemize}
-\item El salario es también un precio del consumo: $w\uparrow\Rightarrow$ se sustituye tiempo por bienes (comida preparada, guarderías); ayuda a explicar la incorporación de la mujer al trabajo. \autor{Gronau} (1977): trabajo doméstico $\neq$ ocio. El PIB omite la producción doméstica.
+\item $w\uparrow\Rightarrow$ se sustituye tiempo por bienes. \autor{Gronau} (1977): trabajo doméstico $\neq$ ocio.
 \end{itemize}
 
 \sub{III.3. Precios hedónicos}
 \begin{itemize}
-\item Bienes diferenciados = paquetes de características $z$. \concepto{Función hedónica} $p(z)$; \concepto{precio implícito} $\partial p/\partial z_j$. Método de preferencias reveladas.
-\item \autor{Court} (1939) acuña el término (automóviles); \autor{Griliches} (1961), índices ajustados por calidad; \autor{Rosen} (1974), fundamento teórico.
-\item \concepto{Modelo de Rosen}: $\max U(z,y)$ s.a. $p(z)+y=\overline{W}$ $\Rightarrow \dfrac{U_{z_j}}{U_y}=\dfrac{\partial p}{\partial z_j}$. Curvas de \emph{puja} $\theta(z;\overline{U},\overline{W})$ y de \emph{oferta} $\phi(z;\pi)$: $p(z)$ es su \textbf{envolvente}, lugar de equilibrios, no curva de demanda ni de oferta.
-\item Estimación: 1.ª etapa, $\ln p_v=\beta_0+\sum_j\beta_jz_{vj}+u_v$; 2.ª, demandas de características: problema de \textbf{identificación}.
-\item Aplicaciones: \textbf{IPC} con ajuste de calidad (\autor{Boskin}, 1996: sesgo \dato{1,1 p.p./año, 0,6 por calidad y nuevos productos}{EE.\,UU.}); BLS en \dato{unas 35 categorías}{BLS}; \textbf{IPV} del INE desde 2008 (estratificación + hedónica); IPC español: solapamiento, expertos, imputación; valoración de bienes sin mercado (análisis coste-beneficio \vertema{4.B.6}); salarios hedónicos (valor estadístico de la vida).
-\item Límites: forma funcional y variables omitidas; 2.ª etapa mal identificada; supone equilibrio competitivo e información perfecta; precios marginales.
+\item \concepto{Función hedónica} $p(z)$; \concepto{precio implícito} $\partial p/\partial z_j$. \autor{Court} (1939), \autor{Griliches} (1961), \autor{Rosen} (1974).
+\item \concepto{Rosen}: $\dfrac{U_{z_j}}{U_y}=\dfrac{\partial p}{\partial z_j}$; $p(z)$, \textbf{envolvente} de curvas de puja y de oferta (no es demanda ni oferta).
+\item Estimación en dos etapas; la 2.ª, mal identificada. Aplicaciones: IPC con ajuste de calidad (\autor{Boskin}: sesgo \dato{1,1 p.p./año}{EE.\,UU., 1996}), \textbf{IPV} del INE, bienes sin mercado \vertema{4.B.6}, salarios hedónicos.
 \end{itemize}
-\graficorepaso[0.68\linewidth]{funcion-hedonica-rosen}{$p(z)$, envolvente de curvas de puja y de oferta}
 \begin{ideaclave}
-Los tres desarrollos acercan la teoría a lo observable: elecciones (Afriat), coste del tiempo y valor de cada característica.
+Los tres desarrollos acercan la teoría a lo observable: elecciones, coste del tiempo y valor de cada característica.
 \end{ideaclave}
 
 % ==========================================================================
 \bloque[3]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: de unos pocos axiomas a la demanda marshalliana con restricciones contrastables; agregación exigente (Gorman) (I); Slutsky explica la clasificación de los bienes y brutas frente a netas (II); tres desarrollos hacia lo observable (III).
+\item \textbf{Recapitulación}: de unos pocos axiomas a la demanda marshalliana y, con Gorman, a la de mercado (I); Slutsky explica la clasificación de los bienes (II); tres desarrollos hacia lo observable (III).
 \item \textbf{Valoración}: construcción lógica muy acabada (ida y vuelta: Houthakker, integrabilidad). Empíricamente discutible: homogeneidad y simetría rechazadas con datos agregados (\autor{Deaton}-\autor{Muellbauer}, 1980); \emph{como si} (\autor{Friedman}, 1953); economía conductual (\autor{Simon}, \autor{Kahneman}-\autor{Tversky}, \autor{Thaler}); «tonto racional» (\autor{Sen}, 1977).
 \item \textbf{Extensiones}: dualidad, bienestar y sistemas de demanda \vertema{3.A.9}; incertidumbre \vertema{3.A.10}; intertemporal \vertema{3.A.29}; equilibrio \vertema{3.A.16}\vertema{3.A.21}; trabajo \vertema{3.A.25}; producción \vertema{3.A.11}.
 \item \textbf{Idea final}: primer ladrillo del análisis de mercados: precios, inflación con calidad cambiante y bienestar.

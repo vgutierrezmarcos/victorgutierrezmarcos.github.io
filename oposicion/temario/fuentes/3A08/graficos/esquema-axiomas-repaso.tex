@@ -1,0 +1,26 @@
+% Variante compacta, para la ficha de repaso, de esquema-axiomas.tex: los siete
+% axiomas, qué garantiza cada uno y su papel (bandas de color en lugar de llaves).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=1pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\footnotesize,
+    banda/.style={fill=tceemorado!14,draw=none,anchor=north west,text width=6.3cm,
+                  minimum height=0.4cm,inner sep=2pt,text=tceemorado,font=\footnotesize\bfseries},
+    ax/.style={anchor=west,inner sep=1pt},
+    ga/.style={anchor=west,inner sep=1pt,text=black!75}]
+  \def\fila#1#2#3{\node[ax] at (0.05,#1) {#2}; \node[ga] at (2.45,#1) {#3};}
+  \node[banda] at (0,0) {Racionalidad (preorden completo)};
+  \fila{-0.62}{1.\ Completitud}{toda cesta es comparable}
+  \fila{-1.02}{2.\ Reflexividad}{cada cesta, en su conjunto}
+  \fila{-1.42}{3.\ Transitividad}{los conjuntos no se cortan}
+  \node[banda] at (0,-1.68) {Con 4: existe $U$ continua (\textsc{Debreu})};
+  \fila{-2.30}{4.\ Continuidad}{contornos cerrados}
+  \node[banda] at (0,-2.56) {Propiedades de $U$ y dualidad};
+  \fila{-3.18}{5.\ Monotonía}{$U$ creciente; se gasta la renta}
+  \fila{-3.58}{6.\ Convexidad}{$U$ cuasicóncava}
+  \node[banda] at (0,-3.84) {Para simplificar};
+  \fila{-4.46}{6$'$.\ Conv.\ estricta}{demanda única}
+  \fila{-4.86}{7.\ Diferenciab.}{sin vértices; cálculo}
+\end{tikzpicture}
+\end{document}
