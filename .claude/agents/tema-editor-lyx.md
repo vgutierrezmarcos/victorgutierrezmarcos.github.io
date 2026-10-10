@@ -54,7 +54,8 @@ sencillo y solo las órdenes de `tcee.sty`):
   repetir nombre ni año) y `\parencite[pág.]{clave}` si no. **Nunca**
   `\footcite` ni notas al pie solo para autor y año; `\footnote{…}` solo para
   aclaraciones con texto.
-- `\clearpage` justo después de la introducción.
+- `\clearpage` tras la conclusión, justo antes de `\appendix` (no tras la introducción).
+- Tablas de clasificación con color (CRITERIOS.md, 2).
 - Introducción con sus cinco bloques (enganche, relevancia, contextualización,
   problemática, estructura) y conclusión con los suyos (CRITERIOS.md, 2).
 - Las derivaciones que no se cantan se pasan a un anexo, nunca se borran.

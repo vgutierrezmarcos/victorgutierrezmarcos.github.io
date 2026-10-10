@@ -100,15 +100,107 @@ local function Image(img)
   return img
 end
 
+-- Colores de tcee.sty ---------------------------------------------------------
+local COLORES = {
+  tceemorado = '5F2987', tceeverde = '2E8B3A', tceeazul = '1C8FC9', tceenaranja = 'E07B28',
+  tceerojo = 'D11F1F', tceedorado = 'B8860B', tceegris = '767171', tceesalvia = 'E2EFD9',
+  tceeazulpalido = 'DDEBF7', tceesalmon = 'FBE4D5', tceemoradopalido = 'F3EEF7',
+}
+-- Estilos de carácter de reference.docx para el texto en color
+local ESTILO_COLOR = {
+  tceemorado = 'Texto morado', tceeverde = 'Texto verde', tceeazul = 'Texto azul',
+  tceenaranja = 'Texto naranja', tceerojo = 'Texto rojo', tceedorado = 'Texto dorado',
+}
+
 -- Spans ----------------------------------------------------------------------
 local function Span(s)
   local estilo = s.attributes['style'] or ''
-  if estilo:match('tceegris') then
+  local color = estilo:match('color:%s*(tcee%w+)')
+  if color == 'tceenota' then
+    -- Notas pequeñas (bajo las tablas): texto normal
+    s.attributes['style'] = nil
+    s.classes:insert('nota-tabla')
+    return s
+  elseif color == 'tceegris' then
     s.attributes['style'] = nil
     s.classes:insert('vertema')
     if es_docx then s.attributes['custom-style'] = 'Referencia a tema' end
+  elseif color and COLORES[color] then
+    if es_docx then
+      s.attributes['style'] = nil
+      if ESTILO_COLOR[color] then s.attributes['custom-style'] = ESTILO_COLOR[color] end
+    else
+      s.attributes['style'] = 'color: #' .. COLORES[color]
+    end
   end
   return s
+end
+
+-- Tablas: marcas que deja construir-tema.py (celdas combinadas, saltos, fondos)
+local function marcas_celda(celda)
+  local filas, fondo, fondo_fila = nil, nil, nil
+  celda.contents = celda.contents:walk({
+    Span = function(sp)
+      local c = (sp.attributes['style'] or ''):match('color:%s*(tcee%w+)')
+      if not c then return nil end
+      local n = c:match('^tceefilas(%d+)$')
+      if n then filas = tonumber(n); return sp.content end
+      if c == 'tceesalto' then return pandoc.LineBreak() end
+      local f = c:match('^tceefilafondo(%w+)$')
+      if f then fondo_fila = f; return {} end
+      f = c:match('^tceefondo(%w+)$')
+      if f then fondo = f; return {} end
+      return nil
+    end,
+  })
+  return filas, fondo, fondo_fila
+end
+
+-- Fondo de una celda: en HTML con estilo; en Word con un estilo de párrafo
+-- sombreado de reference.docx («Celda tceesalvia»…), porque pandoc no pasa el
+-- sombreado de las celdas
+local function pintar_celda(celda, color)
+  if es_docx then
+    -- El estilo solo se aplica a párrafos (Para), no a Plain
+    local bloques = pandoc.List()
+    for _, b in ipairs(celda.contents) do
+      bloques:insert(b.t == 'Plain' and pandoc.Para(b.content) or b)
+    end
+    celda.contents = { pandoc.Div(bloques, pandoc.Attr('', {}, { ['custom-style'] = 'Celda ' .. color })) }
+  else
+    celda.attributes['style'] = 'background: #' .. COLORES[color] .. '; color: #222'
+  end
+end
+
+local function Table(t)
+  local filas = {}
+  for _, f in ipairs(t.head.rows) do filas[#filas + 1] = f end
+  for _, cuerpo in ipairs(t.bodies) do
+    for _, f in ipairs(cuerpo.body) do filas[#filas + 1] = f end
+  end
+  local ocupada = {}          -- columna → filas que aún ocupa una celda combinada
+  for _, fila in ipairs(filas) do
+    local nuevas, fondo_de_fila = pandoc.List(), nil
+    for c, celda in ipairs(fila.cells) do
+      if (ocupada[c] or 0) > 0 then
+        ocupada[c] = ocupada[c] - 1       -- hueco de una celda combinada: se quita
+      else
+        local n, fondo, ff = marcas_celda(celda)
+        if ff then fondo_de_fila = ff end
+        if n and n > 1 then
+          celda.row_span = n
+          ocupada[c] = n - 1
+        end
+        if fondo and COLORES[fondo] then pintar_celda(celda, fondo) end
+        nuevas:insert(celda)
+      end
+    end
+    if fondo_de_fila and COLORES[fondo_de_fila] then
+      for _, celda in ipairs(nuevas) do pintar_celda(celda, fondo_de_fila) end
+    end
+    fila.cells = nuevas
+  end
+  return t
 end
 
 -- Párrafos «Fuente: …» --------------------------------------------------------
@@ -247,6 +339,7 @@ function Pandoc(doc)
   end
 
   procesar(doc.blocks)
+  doc = doc:walk({ Table = Table })
   return doc:walk({ Image = Image, Span = Span })
 end
 

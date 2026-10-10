@@ -44,8 +44,16 @@ Cada tema revisado debe quedar:
     procede) e **Idea final** (p. ej., la respuesta a la problemática).
   - Introducción y conclusión, unos 3 minutos cada una en el cante.
 - Orden del final del documento: **anexos** (con `\appendix`) y después la
-  **bibliografía**. Salto de página (`\clearpage`) tras la introducción; el de
-  antes de la bibliografía lo pone `\bibliografia`.
+  **bibliografía**. Salto de página (`\clearpage`) tras la conclusión, antes
+  de los anexos (no tras la introducción); el de antes de la bibliografía lo
+  pone `\bibliografia`.
+- **Tablas de clasificación con color**, como en los temas en Word (p. ej.,
+  la ecuación de Slutsky): fila de la ecuación sobre fondo salvia
+  (`\cellcolor{tceesalvia}`), banda del título en `tceeazulpalido` o
+  `tceesalmon` (`\rowcolor`), celdas combinadas (`\multirow`) y el texto de
+  cada categoría en su color (`\textcolor{tceeverde}` normal/sustitutivos,
+  `tceenaranja` inferior/complementarios, `tceeazul` ordinario, `tceerojo`
+  Giffen). construir-tema.py lo pasa también a la web y a Word.
 - Las derivaciones que no se cantan (agregaciones de Engel y Cournot,
   homogeneidad, simetría, identidades…) **no se borran**: van a un anexo.
 - Enlace a preguntas de test: nunca a quia.com; un único enlace genérico al

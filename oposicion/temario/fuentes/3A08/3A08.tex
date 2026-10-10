@@ -88,7 +88,7 @@ Conclusión
 La estructura sigue la propuesta que acompañó al cambio de título del tema en el temario de 2023: I. La función de demanda (preferencias y utilidad; restricción presupuestaria y demanda individual; agregación y efecto renta nulo); II. Estática comparativa (efecto renta, precio propio y precio cruzado); III. Otros desarrollos (preferencia revelada, producción doméstica y precios hedónicos). Conviene escribir este esquema en la pizarra al empezar.
 \end{notaopositor}
 
-\clearpage
+
 % ==========================================================================
 \section{La función de demanda}
 \minutos{10}
@@ -748,16 +748,24 @@ Precio propio, $\varepsilon_{x_i,p_i}$ & $>0$ & \autor{Giffen} (siempre inferior
 
 \begin{table}[H]
 \centering\small
-\caption{Ecuación de Slutsky para el precio propio: $\frac{\partial x_i}{\partial p_i}=\frac{\partial h_i}{\partial p_i}-x_i\frac{\partial x_i}{\partial\overline{W}}$ (ET = ES + ER)}\label{tab:slutsky-propio}
-\begin{tabular}{@{}cll@{}}
-\toprule
-\textbf{Efecto sustitución} & \textbf{Efecto renta} (según la renta) & \textbf{Efecto total} (según el precio) \\
-\midrule
-$\leq 0$ & $<0$: bien \emph{normal} & $<0$: bien \emph{ordinario} \\
-$\leq 0$ & $=0$: bien \emph{frontera} (independiente de la renta) & $\leq 0$: bien \emph{ordinario} (o demanda rígida si ES $=0$) \\
-$\leq 0$ & $>0$: bien \emph{inferior}, con ER $<|$ES$|$ & $<0$: bien \emph{ordinario} \\
-$\leq 0$ & $>0$: bien \emph{inferior}, con ER $>|$ES$|$ & $>0$: bien \emph{\autor{Giffen}} \\
-\bottomrule
+\caption{Ecuación de \autor{Slutsky} para la descomposición de la variación del precio propio}\label{tab:slutsky-propio}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\centering\arraybackslash}m{0.28\textwidth}|>{\centering\arraybackslash}m{0.28\textwidth}|>{\centering\arraybackslash}m{0.28\textwidth}|}
+\hline
+\cellcolor{tceesalvia}$\displaystyle\underbrace{\frac{\partial h_i(p,\overline{U})}{\partial p_i}}_{\text{efecto sustitución propio}}$ &
+\cellcolor{tceesalvia}$\displaystyle\underbrace{-\,x_i\cdot\frac{\partial x_i(p,\overline{W})}{\partial\overline{W}}}_{\text{efecto renta propio}}$ &
+\cellcolor{tceesalvia}$\displaystyle=\ \underbrace{\frac{\partial x_i(p,\overline{W})}{\partial p_i}}_{\text{efecto total propio}}$ \\
+\hline
+\rowcolor{tceeazulpalido}\textit{Efecto sustitución propio} & \textit{Efecto renta propio} & \textit{Efecto total propio} \\
+\hline
+$\leq 0$ & \textcolor{tceeverde}{$<0$\newline Bien normal} & \multirow{3}{=}{\centering\textcolor{tceeazul}{$\leq 0$\newline Bien ordinario}\newline{\footnotesize (|ES| $\geq$ ER)}} \\
+\cline{1-2}
+$\leq 0$ & $=0$\newline Bien frontera & \\
+\cline{1-2}
+$\leq 0$ & \multirow{2}{=}{\centering\textcolor{tceenaranja}{$>0$\newline Bien inferior}} & \\
+\cline{1-1}\cline{3-3}
+$\leq 0$ & & \textcolor{tceerojo}{$>0$\newline Bien \autor{Giffen}}\newline{\footnotesize (ER $>$ |ES|)} \\
+\hline
 \end{tabular}
 \par\vspace{2pt}{\footnotesize ES, ER y ET: efectos sustitución, renta y total. El efecto renta lleva el signo contrario al de $\partial x_i/\partial\overline{W}$, porque una subida de $p_i$ reduce la renta real. Los bienes \autor{Veblen} no aparecen: en ellos el precio entra en las preferencias y la ecuación de \autor{Slutsky} no se aplica (ver más abajo).}
 \fuente{elaboración propia a partir de \textcite[§2.E y §3.G]{MasColellWhinstonGreen1995}.}
@@ -833,23 +841,34 @@ $\leq 0$ & $>0$: bien \emph{inferior}, con ER $>|$ES$|$ & $>0$: bien \emph{\auto
 
 \begin{table}[H]
 \centering\small
-\caption{Ecuación de Slutsky cruzada: $\frac{\partial x_i}{\partial p_j}=\frac{\partial h_i}{\partial p_j}-x_j\frac{\partial x_i}{\partial\overline{W}}$ (ET = ES + ER)}\label{tab:slutsky-cruzado}
-\begin{tabular}{@{}p{0.25\textwidth}p{0.27\textwidth}p{0.38\textwidth}@{}}
-\toprule
-\textbf{Efecto sustitución} (relación neta) & \textbf{Efecto renta} (según el bien $i$) & \textbf{Efecto total} (relación bruta) \\
-\midrule
-$>0$: sustitutivos netos & $<0$: $i$ normal & ambiguo: sustitutivos brutos si ES $>|$ER$|$, complementarios brutos si ES $<|$ER$|$ \\
- & $=0$: $i$ frontera & $>0$: sustitutivos brutos \\
- & $>0$: $i$ inferior & $>0$: sustitutivos brutos \\
-\midrule
-$=0$: independientes netos & $<0$: $i$ normal & $<0$: complementarios brutos \\
+\caption{Ecuación de \autor{Slutsky} para la descomposición de la variación del precio cruzado}\label{tab:slutsky-cruzado}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\centering\arraybackslash}m{0.24\textwidth}|>{\centering\arraybackslash}m{0.24\textwidth}|>{\centering\arraybackslash}m{0.38\textwidth}|}
+\hline
+\cellcolor{tceesalvia}$\displaystyle\underbrace{\frac{\partial h_i(p,\overline{U})}{\partial p_j}}_{\text{efecto sustitución cruzado}}$ &
+\cellcolor{tceesalvia}$\displaystyle\underbrace{-\,x_j\cdot\frac{\partial x_i(p,\overline{W})}{\partial\overline{W}}}_{\text{efecto renta cruzado}}$ &
+\cellcolor{tceesalvia}$\displaystyle=\ \underbrace{\frac{\partial x_i(p,\overline{W})}{\partial p_j}}_{\text{efecto total cruzado}}$ \\
+\hline
+\rowcolor{tceesalmon}\textit{Efecto sustitución cruzado}\newline(relación neta) & \textit{Efecto renta cruzado}\newline(según el bien $i$) & \textit{Efecto total cruzado}\newline(relación bruta) \\
+\hline
+\multirow{3}{=}{\centering\textcolor{tceeverde}{$>0$\newline Sustitutivos netos}} & \textcolor{tceeverde}{$<0$: $i$ normal} & ambiguo: sustitutivos brutos si ES $>$ |ER|; complementarios brutos si ES $<$ |ER| \\
+\cline{2-3}
+ & $=0$: $i$ frontera & \textcolor{tceeverde}{$>0$: sustitutivos brutos} \\
+\cline{2-3}
+ & \textcolor{tceenaranja}{$>0$: $i$ inferior} & \textcolor{tceeverde}{$>0$: sustitutivos brutos} \\
+\hline
+\multirow{3}{=}{\centering\textcolor{black}{$=0$\newline Independientes netos}} & \textcolor{tceeverde}{$<0$: $i$ normal} & \textcolor{tceenaranja}{$<0$: complementarios brutos} \\
+\cline{2-3}
  & $=0$: $i$ frontera & $=0$: independientes brutos \\
- & $>0$: $i$ inferior & $>0$: sustitutivos brutos \\
-\midrule
-$<0$: complementarios netos & $<0$: $i$ normal & $<0$: complementarios brutos \\
- & $=0$: $i$ frontera & $<0$: complementarios brutos \\
- & $>0$: $i$ inferior & ambiguo: complementarios brutos si $|$ES$|>$ER, sustitutivos brutos si $|$ES$|<$ER \\
-\bottomrule
+\cline{2-3}
+ & \textcolor{tceenaranja}{$>0$: $i$ inferior} & \textcolor{tceeverde}{$>0$: sustitutivos brutos} \\
+\hline
+\multirow{3}{=}{\centering\textcolor{tceenaranja}{$<0$\newline Complementarios netos}} & \textcolor{tceeverde}{$<0$: $i$ normal} & \textcolor{tceenaranja}{$<0$: complementarios brutos} \\
+\cline{2-3}
+ & $=0$: $i$ frontera & \textcolor{tceenaranja}{$<0$: complementarios brutos} \\
+\cline{2-3}
+ & \textcolor{tceenaranja}{$>0$: $i$ inferior} & ambiguo: complementarios brutos si |ES| $>$ ER; sustitutivos brutos si |ES| $<$ ER \\
+\hline
 \end{tabular}
 \par\vspace{2pt}{\footnotesize Con $x_j>0$. Las relaciones netas son simétricas ($\partial h_i/\partial p_j=\partial h_j/\partial p_i$); las brutas, no, porque el efecto renta de $i$ ante $p_j$ ($-x_j\,\partial x_i/\partial\overline{W}$) no tiene por qué coincidir con el de $j$ ante $p_i$ ($-x_i\,\partial x_j/\partial\overline{W}$).}
 \fuente{elaboración propia a partir de \textcite[§3.G]{MasColellWhinstonGreen1995}.}
@@ -1121,6 +1140,7 @@ Los tres desarrollos acercan la teoría a lo observable: la preferencia revelada
 \end{itemize}
 
 % ==========================================================================
+\clearpage
 \appendix
 
 \section{Anexo: el enfoque cardinal de Marshall}\label{anexo:cardinal}

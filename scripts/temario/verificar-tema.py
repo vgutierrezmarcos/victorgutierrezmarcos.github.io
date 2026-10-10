@@ -118,6 +118,9 @@ def verificar(tema):
             from docx import Document
             d = Document(docx)
             datos['docx_imagenes'] = len(d.inline_shapes)
+            for p in d.paragraphs:
+                if re.search(r'\\[a-zA-Z]{2,}\{|\$\$', p.text):
+                    errores.append(f'LaTeX sin convertir en el Word: {p.text[:80]}')
         except Exception as e:
             errores.append(f'El Word no se abre: {e}')
 

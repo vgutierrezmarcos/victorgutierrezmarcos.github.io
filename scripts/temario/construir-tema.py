@@ -227,6 +227,20 @@ def preparar_pandoc(tema, tex, formato):
     cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',
                     lambda m: re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1)), cuerpo, flags=re.S)
     cuerpo = numerar_anexos(cuerpo)
+    # Tablas: pandoc no entiende \multirow, \newline, \cellcolor ni \rowcolor y
+    # pierde lo que va en {\footnotesize …}. Se dejan como marcas de color
+    # (\textcolor{tcee…}) que tcee.lua convierte en celdas combinadas, saltos de
+    # línea y fondos.
+    cuerpo = re.sub(r'\\multirow\{(\d+)\}\{[^}]*\}\{', r'\\textcolor{tceefilas\1}{', cuerpo)
+    cuerpo = re.sub(r'\\newline\b\s*', r'\\textcolor{tceesalto}{.}', cuerpo)
+    cuerpo = re.sub(r'\\cellcolor\{(\w+)\}', r'\\textcolor{tceefondo\1}{.}', cuerpo)
+    cuerpo = re.sub(r'\\rowcolor\{(\w+)\}', r'\\textcolor{tceefilafondo\1}{.}', cuerpo)
+    cuerpo = re.sub(r'\{\\(?:footnotesize|scriptsize|small)\s+', r'\\textcolor{tceenota}{', cuerpo)
+    # Dentro de \text{…} de una fórmula, \autor{} y \textsc{} rompen la conversión
+    # de la ecuación en Word: se dejan como texto normal
+    patron_text = re.compile(r'(\\text\{[^{}]*)\\(?:autor|textsc)\{([^{}]*)\}')
+    while patron_text.search(cuerpo):
+        cuerpo = patron_text.sub(r'\1\2', cuerpo)
     # Los saltos de página del PDF pasan a Word (tcee.lua los convierte; en HTML se quitan)
     cuerpo = re.sub(r'\\(?:clearpage|newpage|pagebreak)\b', r'\\begin{saltopagina}\\mbox{}\\end{saltopagina}', cuerpo)
     destino = os.path.join(tema.trabajo, f'{tema.archivo}-pandoc-{formato}.tex')
@@ -251,7 +265,8 @@ def comunes_pandoc(tema, datos):
 def generar_html(tema, tex_pandoc, datos):
     destino = os.path.join(tema.trabajo, f'{tema.archivo}.html')
     corto = re.split(r'[.:]', datos['titulo'])[0].strip()
-    orden = [PANDOC, ruta_windows(tex_pandoc), '-t', 'html5', '-s', '--mathjax',
+    # --wrap=none: si pandoc parte una línea dentro de \text{…}, MathJax se come el espacio
+    orden = [PANDOC, ruta_windows(tex_pandoc), '-t', 'html5', '-s', '--mathjax', '--wrap=none',
              '--template', ruta_windows(os.path.join(LATEX, 'plantilla-tema.html')),
              '--toc', '--toc-depth=2', '--section-divs',
              '-M', f'graficos-html=../fuentes/{tema.archivo}/graficos',

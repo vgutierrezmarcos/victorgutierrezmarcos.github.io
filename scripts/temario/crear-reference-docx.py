@@ -224,6 +224,39 @@ def main():
     except KeyError:
         ref = estilos.add_style('Referencia a tema', WD_STYLE_TYPE.CHARACTER)
     ref.font.color.rgb = GRIS
+    # Celdas con fondo de las tablas de clasificación (\cellcolor, \rowcolor)
+    for color, rgb in (('tceesalvia', 'E2EFD9'), ('tceeazulpalido', 'DDEBF7'), ('tceesalmon', 'FBE4D5'),
+                       ('tceemoradopalido', 'F3EEF7')):
+        celda = estilo_parrafo(doc, f'Celda {color}')
+        fuente(celda, tam=10)
+        celda.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        celda.paragraph_format.space_after = Pt(0)
+        sombreado(celda.element.get_or_add_pPr(), rgb)
+    # Tablas con rayas finas, como en el PDF
+    try:
+        tabla = estilos['Table']
+        tblpr = tabla.element.find(qn('w:tblPr'))
+        if tblpr is None:
+            tblpr = OxmlElement('w:tblPr')
+            tabla.element.append(tblpr)
+        bordes_t = OxmlElement('w:tblBorders')
+        for lado in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+            b = OxmlElement(f'w:{lado}')
+            b.set(qn('w:val'), 'single')
+            b.set(qn('w:sz'), '4')
+            b.set(qn('w:color'), 'A6A6A6')
+            bordes_t.append(b)
+        tblpr.append(bordes_t)
+    except KeyError:
+        pass
+    # Texto en color de las tablas de clasificación (\textcolor{tceeverde}{…})
+    for nombre, rgb in (('Texto morado', '5F2987'), ('Texto verde', '2E8B3A'), ('Texto azul', '1C8FC9'),
+                        ('Texto naranja', 'E07B28'), ('Texto rojo', 'D11F1F'), ('Texto dorado', 'B8860B')):
+        try:
+            e = estilos[nombre]
+        except KeyError:
+            e = estilos.add_style(nombre, WD_STYLE_TYPE.CHARACTER)
+        e.font.color.rgb = RGBColor.from_string(rgb)
 
     # Cabecera y pie
     cab = sec.header.paragraphs[0] if sec.header.paragraphs else sec.header.add_paragraph()
