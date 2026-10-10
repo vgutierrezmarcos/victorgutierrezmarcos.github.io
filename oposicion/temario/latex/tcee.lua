@@ -188,6 +188,14 @@ function Pandoc(doc)
             b.attributes['custom-style'] = estilo
           end
         end
+        -- En Word las cajas no tienen título propio (en HTML lo pone el CSS)
+        local titulos = { notaopositor = 'Nota al opositor. ', esquema = 'Esquema del tema. ' }
+        for clase, titulo in pairs(titulos) do
+          local primero = b.content[1]
+          if es_docx and b.classes:includes(clase) and primero and (primero.t == 'Para' or primero.t == 'Plain') then
+            primero.content:insert(1, pandoc.Strong({ pandoc.Str(titulo) }))
+          end
+        end
         procesar(b.content)
       elseif b.t == 'BulletList' or b.t == 'OrderedList' then
         for _, item in ipairs(b.content) do procesar(item) end

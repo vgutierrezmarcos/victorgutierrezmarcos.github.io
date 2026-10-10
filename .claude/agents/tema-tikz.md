@@ -38,8 +38,9 @@ Para cada gráfico:
    - Gráficos de datos: copia el CSV de `D/_trabajo/datos/` a `D/datos/`
      (esa carpeta sí va a git) y léelo con `pgfplots` desde
      `../datos/<nombre>.csv`.
-3. Compila: `python3 R/scripts/temario/construir-tema.py T --solo graficos`
-   (compila los que hayan cambiado y genera PDF, SVG y PNG en `D/graficos/`).
+3. Compila **solo los tuyos** (otros agentes TikZ trabajan a la vez):
+   `python3 R/scripts/temario/construir-tema.py T --grafico <nombre> [--grafico <otro>]`
+   (genera PDF, SVG y PNG en `D/graficos/`).
 4. **Mira el PNG** resultante (Read) y compáralo con el original: misma
    información, nada cortado, etiquetas legibles y sin solaparse. Corrige y
    recompila hasta que esté bien. Comprueba también una capa intermedia:

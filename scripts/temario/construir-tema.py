@@ -72,7 +72,7 @@ def exportar_latex(tema):
 
 def datos_documento(tex):
     texto = open(tex, encoding='utf-8').read()
-    m = re.search(r'\\tcetema\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto)
+    m = re.search(r'\\tcetema(?:\[[^\]]*\])?\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto)
     f = re.search(r'\\tcefecha\{([^}]*)\}', texto)
     minutos = [int(x) for x in re.findall(r'\\minutos\{(\d+)\}', texto)]
     return {
@@ -83,12 +83,14 @@ def datos_documento(tex):
 
 
 # --- 2. Gráficos -------------------------------------------------------------------
-def compilar_graficos(tema, forzar=False):
+def compilar_graficos(tema, forzar=False, solo=None):
     """Compila cada graficos/*.tex a PDF, SVG y PNG. Devuelve la lista de errores."""
     errores = []
     env = entorno_tex()
     for tex in sorted(glob.glob(os.path.join(tema.graficos, '*.tex'))):
         base = tex[:-4]
+        if solo and os.path.basename(base) not in solo:
+            continue
         pdf, svg, png = base + '.pdf', base + '.svg', base + '.png'
         if not forzar and all(os.path.exists(x) and os.path.getmtime(x) >= os.path.getmtime(tex)
                               for x in (pdf, svg, png)):
@@ -144,11 +146,56 @@ def video_de(tema):
     return None
 
 
-def preparar_pandoc(tema, tex):
-    """LaTeX para pandoc: las equivalencias de pandoc-macros.tex delante."""
+def etiquetas_aux(tema):
+    """Números de las etiquetas según el .aux del PDF: {'eq:gorman': '17', 'anexo:cardinal': 'A'}."""
+    aux = os.path.join(tema.trabajo, f'{tema.archivo}.aux')
+    if not os.path.exists(aux):
+        return {}
+    texto = open(aux, encoding='utf-8', errors='replace').read()
+    return {m.group(1): m.group(2) for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{([^}]*)\}', texto)}
+
+
+def numerar_anexos(cuerpo):
+    """Tras \\appendix, los apartados pasan a «A.», «A.1.»… como en el PDF (pandoc no
+    entiende \\appendix y seguiría con la numeración romana)."""
+    if '\\appendix' not in cuerpo:
+        return cuerpo
+    antes, despues = cuerpo.split('\\appendix', 1)
+    letra, sub = 0, 0
+
+    def cambiar(m):
+        nonlocal letra, sub
+        nivel = m.group(1)
+        if nivel == 'section':
+            letra += 1
+            sub = 0
+            return f'\\section*{{{chr(64 + letra)}. '
+        sub += 1
+        return f'\\subsection*{{{chr(64 + letra)}.{sub}. '
+    despues = re.sub(r'\\(section|subsection)\{', cambiar, despues)
+    return antes + despues
+
+
+def preparar_pandoc(tema, tex, formato):
+    """LaTeX para pandoc: las equivalencias de pandoc-macros.tex delante, las
+    referencias (\\ref, \\eqref) con el número que tienen en el PDF y los anexos
+    con letra. En HTML, las ecuaciones citadas llevan su número (\\tag)."""
     macros = open(os.path.join(LATEX, 'pandoc-macros.tex'), encoding='utf-8').read()
     cuerpo = open(tex, encoding='utf-8').read()
-    destino = os.path.join(tema.trabajo, f'{tema.archivo}-pandoc.tex')
+    numeros = etiquetas_aux(tema)
+    cuerpo = re.sub(r'\\eqref\{([^}]+)\}', lambda m: f'({numeros.get(m.group(1), "?")})', cuerpo)
+    cuerpo = re.sub(r'\\(?:auto|c|C|name)?ref\{([^}]+)\}', lambda m: numeros.get(m.group(1), '?'), cuerpo)
+
+    def etiqueta(m):
+        n = numeros.get(m.group(1))
+        if formato == 'html' and n and m.group(1).startswith('eq'):
+            return f'\\tag{{{n}}}'
+        return ''
+    # Solo las etiquetas dentro de fórmulas; las de figuras y apartados las usa pandoc
+    cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',
+                    lambda m: re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1)), cuerpo, flags=re.S)
+    cuerpo = numerar_anexos(cuerpo)
+    destino = os.path.join(tema.trabajo, f'{tema.archivo}-pandoc-{formato}.tex')
     with open(destino, 'w', encoding='utf-8') as f:
         f.write(macros + '\n' + cuerpo)
     return destino
@@ -202,17 +249,20 @@ def main():
     ap.add_argument('tema')
     ap.add_argument('--solo', choices=['pdf', 'html', 'docx', 'graficos'])
     ap.add_argument('--forzar-graficos', action='store_true')
+    ap.add_argument('--grafico', action='append',
+                    help='compila solo ese gráfico (nombre sin .tex; se puede repetir). '
+                         'Para que varios agentes TikZ trabajen a la vez sin pisarse')
     ap.add_argument('--no-publicar', action='store_true',
                     help='deja los resultados en _trabajo/ sin copiarlos a la carpeta pública')
     args = ap.parse_args()
     tema = Tema(args.tema)
 
-    errores = compilar_graficos(tema, forzar=args.forzar_graficos)
+    errores = compilar_graficos(tema, forzar=args.forzar_graficos or bool(args.grafico), solo=args.grafico)
     if errores:
         print('ERRORES EN LOS GRÁFICOS:\n' + '\n\n'.join(errores))
         sys.exit(1)
     print('Gráficos compilados.')
-    if args.solo == 'graficos':
+    if args.solo == 'graficos' or args.grafico:
         return
 
     tex = exportar_latex(tema)
@@ -225,12 +275,11 @@ def main():
             print('AVISO LaTeX:', a)
         print('PDF:', pdf, f'({fitz.open(pdf).page_count} páginas)')
     if args.solo in (None, 'html', 'docx'):
-        tex_pandoc = preparar_pandoc(tema, tex)
         if args.solo in (None, 'html'):
-            resultados['html'] = generar_html(tema, tex_pandoc, datos)
+            resultados['html'] = generar_html(tema, preparar_pandoc(tema, tex, 'html'), datos)
             print('HTML:', resultados['html'])
         if args.solo in (None, 'docx'):
-            resultados['docx'] = generar_docx(tema, tex_pandoc, datos)
+            resultados['docx'] = generar_docx(tema, preparar_pandoc(tema, tex, 'docx'), datos)
             print('Word:', resultados['docx'])
 
     if not args.no_publicar:

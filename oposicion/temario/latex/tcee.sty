@@ -9,7 +9,7 @@
 %
 % Uso (en el preámbulo de LyX o en un .tex):
 %   \usepackage{tcee}
-%   \tcetema{3.A.8}{Teoría de la demanda del consumidor (I)…}
+%   \tcetema[Teoría de la demanda del consumidor (I)]{3.A.8}{<título oficial completo>}
 %   \tcefecha{10/10/2026}
 %   \addbibresource{3A08.bib}
 % ==========================================================================
@@ -70,7 +70,10 @@
 \newcommand{\tcee@codigo}{}
 \newcommand{\tcee@titulo}{}
 \newcommand{\tcee@fecha}{\today}
-\newcommand{\tcetema}[2]{\renewcommand{\tcee@codigo}{#1}\renewcommand{\tcee@titulo}{#2}}
+\newcommand{\tcee@corto}{}
+% \tcetema[título corto para la cabecera]{código}{título oficial}
+\newcommand{\tcetema}[3][]{\renewcommand{\tcee@codigo}{#2}\renewcommand{\tcee@titulo}{#3}%
+  \if\relax\detokenize{#1}\relax\renewcommand{\tcee@corto}{#3}\else\renewcommand{\tcee@corto}{#1}\fi}
 \newcommand{\tcefecha}[1]{\renewcommand{\tcee@fecha}{#1}}
 \newcommand{\tceecodigo}{\tcee@codigo}
 
@@ -78,7 +81,7 @@
 \fancypagestyle{tcee}{%
   \fancyhf{}%
   \fancyhead[L]{\footnotesize\color{tceemorado}\textbf{\tcee@codigo}}%
-  \fancyhead[C]{\footnotesize\itshape\color{tceemorado}\parbox[b]{0.62\textwidth}{\centering\tcee@titulo}}%
+  \fancyhead[C]{\footnotesize\itshape\color{tceemorado}\parbox[b]{0.62\textwidth}{\centering\tcee@corto}}%
   \fancyhead[R]{\footnotesize\itshape\color{tceemorado}Víctor Gutiérrez Marcos}%
   \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\pageref*{LastPage}}}%
   \renewcommand{\headrule}{{\color{tceemorado}\hrule height 0.6pt}}%

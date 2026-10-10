@@ -162,6 +162,7 @@ def main():
     for nombre in ('Figure', 'Captioned Figure'):
         try:
             estilos[nombre].paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            estilos[nombre].paragraph_format.keep_with_next = True  # con su «Fuente»
         except KeyError:
             pass
     for nombre in ('Image Caption', 'Table Caption', 'Caption'):
@@ -169,6 +170,8 @@ def main():
             e = estilos[nombre]
             fuente(e, tam=10, color=MORADO, negrita=False, cursiva=False)
             e.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            # El título va encima del gráfico: que no se quede solo al pie de página
+            e.paragraph_format.keep_with_next = True
         except KeyError:
             pass
     fuente(estilos['Footnote Text'], tam=9)

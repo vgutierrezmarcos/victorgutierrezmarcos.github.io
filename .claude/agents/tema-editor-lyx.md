@@ -24,7 +24,7 @@ sencillo y solo las órdenes de `tcee.sty`):
 \documentclass[11pt]{article}
 \usepackage{tcee}
 \addbibresource{T.bib}
-\tcetema{3.A.8}{<título oficial completo de temario.json>}
+\tcetema[<título corto para la cabecera, p. ej. Teoría de la demanda del consumidor (I)>]{3.A.8}{<título oficial completo de temario.json>}
 \tcefecha{<fecha de hoy dd/mm/aaaa>}
 \begin{document}
 \tceetitulo

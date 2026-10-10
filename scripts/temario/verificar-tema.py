@@ -35,7 +35,7 @@ SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos
 
 
 def leer(ruta):
-    return open(ruta, encoding='utf-8').read() if os.path.exists(ruta) else None
+    return open(ruta, encoding='utf-8', errors='replace').read() if os.path.exists(ruta) else None
 
 
 def parrafos_tex(tex):
@@ -130,7 +130,11 @@ def verificar(tema):
     if guion is None:
         errores.append('Falta guion-cante.md')
     else:
-        palabras = len(re.findall(r'\w+', re.sub(r'^#.*$|^>.*$|\|.*\|', '', guion, flags=re.M)))
+        # Solo lo que se dice: fuera títulos, el esquema de pizarra y las notas [Pizarra: …]
+        hablado = re.sub(r'^## Esquema de pizarra.*?(?=^## )', '', guion, flags=re.M | re.S)
+        hablado = re.sub(r'^```.*?^```', '', hablado, flags=re.M | re.S)
+        hablado = re.sub(r'\[[^\]\n]*\]|^#.*$|^>.*$|\|.*\|', '', hablado, flags=re.M)
+        palabras = len(re.findall(r'\w+', hablado))
         datos['guion_palabras'] = palabras
         datos['guion_minutos_estimados'] = round(palabras / PALABRAS_POR_MINUTO, 1)
         if not 27 <= palabras / PALABRAS_POR_MINUTO <= 33:
