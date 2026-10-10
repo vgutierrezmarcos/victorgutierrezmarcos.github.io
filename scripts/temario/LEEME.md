@@ -69,7 +69,7 @@ Los resultados públicos van a `oposicion/temario/<ejercicio>/<tema>.{pdf,html,d
 | `indexar-referencias.py [--indexar] T` | Baja los temas de otros preparadores y de Manuel para el tema. |
 | `construir-tema.py T [--solo pdf\|html\|docx\|graficos]` | Gráficos, PDF, HTML y Word. |
 | `verificar-tema.py T` | Comprobaciones finales. |
-| `generar-video.py T [--solo-escena N] [--borrador]` | Vídeo del cante. |
+| `generar-video.py T [--medir] [--tramo 3:00-6:00] [--borrador]` | Vídeo del cante (30:00 exactos). `--medir` solo dice cuánto dura la narración. |
 | `publicar-tema.py T` | Enlaces en el índice, `temario.json` y buscador. |
 | `crear-reference-docx.py` | Plantilla de estilos de Word. |
 | `word-a-pdf.vbs` | Word → PDF con Microsoft Word, para revisar (PowerShell está bloqueado). |

@@ -28,7 +28,7 @@ Sé exigente: Víctor tiene que poder fiarse del resultado.
      el `.tex` con su cita y que su URL existe;
    - que no queda nada privado (clases, grabaciones, «coordinar con…»);
    - que el tema cubre todos los epígrafes del título oficial;
-   - que la suma de `\minutos` es 30 y el guion tiene ~4.000 palabras.
+   - que la suma de `\minutos` es 30 y el guion tiene ~4.800 palabras y cumple los criterios del cante (CRITERIOS.md, 8: sin saludo, conclusión con «En conclusión», sin números de tema en voz alta ni gracias al final).
 6. `revision.md`: completo, con las siete secciones, y sin afirmar nada que
    no se haya hecho.
 
