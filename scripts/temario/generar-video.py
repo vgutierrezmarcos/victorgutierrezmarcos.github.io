@@ -408,7 +408,11 @@ def main():
         for i, (a, b, texto) in enumerate(subtitulos, 1):
             f.write(f'{i}\n{srt_tiempo(a)} --> {srt_tiempo(b)}\n{texto}\n\n')
     with open(os.path.join(SALIDA, f'{tema.archivo}{sufijo}-youtube.txt'), 'w', encoding='utf-8') as f:
-        f.write(f'Tema {tema.codigo}: {titulo} | Cante (Oposición TCEE)\n\n')
+        # YouTube admite 100 caracteres en el título: si no cabe, solo hasta el primer punto
+        titulo_yt = f'Tema {tema.codigo}: {titulo} | Cante (Oposición TCEE)'
+        if len(titulo_yt) > 100:
+            titulo_yt = f'Tema {tema.codigo}: {titulo.split(". ")[0].rstrip(".")} | Cante TCEE'
+        f.write(f'{titulo_yt[:100]}\n\n{titulo}\n\n')
         f.write(f'Exposición oral del tema {tema.codigo} de la oposición a Técnico Comercial y Economista '
                 f'del Estado, con la pizarra y los gráficos del tema.\n\n'
                 f'Tema completo (PDF, Word y web): https://www.victorgutierrezmarcos.es/oposicion/temario/'
