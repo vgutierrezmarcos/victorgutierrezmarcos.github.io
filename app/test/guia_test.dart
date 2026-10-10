@@ -53,7 +53,7 @@ void main() {
   setUp(() async {
     await app.clear();
     // La hoja de los permisos de avisos ya se vio (si no, la guía espera a que se cierre).
-    await app.put(clavePermisosPedidos, true);
+    await app.putAll({clavePermisosPedidos: true, claveBateriaPedida: true});
     usuario = UsuarioRepo(resultados: await caja(), leitner: await caja(), ajustes: await caja(), notas: await caja());
     preparador = PreparadorRepo(alumnos: await caja(), sesiones: await caja(), perfil: await caja());
     final http = CacheHttp(Dio(), await caja());

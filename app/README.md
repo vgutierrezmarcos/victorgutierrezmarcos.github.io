@@ -163,7 +163,14 @@ Privacidad, tal como se explica en la app (`TarjetaPrivacidad` en Cuenta), en `i
 
 ## Avisos y permisos del sistema
 
-La primera vez que se abre la app (y la primera con la 1.15.0) una hoja (`features/inicio/permisos_sheet.dart`) explica para qué son los avisos y pide el permiso de notificaciones y, en Android 12+, el de alarmas exactas. Cada interruptor de avisos pasa por `asegurarAvisos(context)`, que pide el permiso y, si el sistema lo tiene denegado, lo dice con un botón a los ajustes de la app (`core/permisos.dart` → canal `es.victorgutierrezmarcos.tcee_app/sistema` en `MainActivity.kt`, que abre los ajustes de notificaciones o los de batería y dice si la app está exenta de la optimización). En Hoy sale una tarjeta si el sistema tiene las notificaciones desactivadas, y en Más → Ajustes, el estado y la batería. El recordatorio diario no se repite solo: se programa el siguiente en cada arranque, al sincronizar y al terminar el test diario, así que no llega si el test ya está hecho.
+La primera vez que se abre la app (y la primera con la 1.15.0) una hoja (`features/inicio/permisos_sheet.dart`) explica para qué son los avisos y pide el permiso de notificaciones y, en Android 12+, el de alarmas exactas. Cada interruptor de avisos pasa por `asegurarAvisos(context)`, que pide el permiso y, si el sistema lo tiene denegado, lo dice con un botón a los ajustes de la app (`core/permisos.dart` → canal `es.victorgutierrezmarcos.tcee_app/sistema` en `MainActivity.kt`, que abre los ajustes de notificaciones o los de batería y dice si la app está exenta de la optimización). En Hoy sale una tarjeta si el sistema tiene las notificaciones desactivadas, y en Más → Ajustes, el estado y la batería.
+
+**Batería (desde la 1.15.10).** Android no deja que una app se quite sola la restricción de batería: la pide el usuario.
+- En la hoja de los avisos, después del permiso de notificaciones, se abre el diálogo del sistema «¿Permitir que la app se ejecute siempre en segundo plano?» (`pedirSinRestriccionBateria`, permiso `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`).
+- Si el móvil es de una marca con ahorro de batería propio (Xiaomi, Huawei, Honor, Samsung, OPPO, realme, OnePlus, vivo), un paso más con lo que hay que tocar (`consejoFabricante` en `core/permisos.dart`) y un botón a esos ajustes (`ajustesFabricante` en `MainActivity.kt`, que prueba las pantallas conocidas de cada marca y, si no, abre los ajustes de la app).
+- A quien ya había visto la hoja se le pide solo lo de la batería, una vez y si la batería restringe la app (clave `bateria_pedida`).
+- En Más → Ajustes: «La batería restringe la app» mientras lo haga, y el ahorro de batería de la marca.
+- Google Play solo admite ese permiso si los avisos son esenciales para la app (aquí: clases, temas que manda el preparador, cronómetro). Si en la revisión lo rechazan, se quita del manifiesto y `pedirSinRestriccionBateria` abre la lista de optimización de batería, como antes. El recordatorio diario no se repite solo: se programa el siguiente en cada arranque, al sincronizar y al terminar el test diario, así que no llega si el test ya está hecho.
 
 ## Actualizaciones
 
