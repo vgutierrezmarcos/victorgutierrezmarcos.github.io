@@ -28,10 +28,11 @@ Lee `R/.claude/skills/revisartema/CRITERIOS.md` (secciones 2, 6 y 8),
    Comprueba que las referencias cruzadas apuntan al tema correcto con la
    numeración **actual**.
 4. **Cantabilidad**: la **estructura final** es la del tema original de
-   Víctor (sus apartados I, II, III… y subapartados, en su orden): no la
-   reorganices según la ficha del tribunal ni muevas contenido a otros temas.
-   Solo propones cambios de estructura si falta un epígrafe del título oficial
-   (se añade donde encaje) y se lo dejas a Víctor como duda. Da los minutos de
+   Víctor en sus dos primeros niveles (bloques I, II, III… y sus títulos
+   I.1, I.2…, en su orden): no la reorganices según la ficha del tribunal.
+   Lo que alargue demasiado el cuerpo puede pasar a un anexo (nunca se
+   borra). Si falta un epígrafe del título oficial, propón dónde añadirlo y
+   déjalo como duda para Víctor. Da los minutos de
    cante de cada apartado (introducción y
    conclusión ~3 min; total 30) y qué se dibuja en la pizarra en cada uno.
    Marca qué partes del documento son de profundización (no se cantan) y qué
