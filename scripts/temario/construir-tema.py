@@ -39,22 +39,54 @@ PDFTOCAIRO = os.path.join(MIKTEX, 'miktex-pdftocairo.exe')
 
 
 # --- 1. LyX ↔ LaTeX ------------------------------------------------------------
+def _lyx_windows(exe, argumentos, cwd):
+    """LyX y tex2lyx necesitan que se les llame con su ruta completa de Windows
+    (si no, no encuentran su instalación): se lanzan desde un .bat."""
+    bat = os.path.join(cwd, '_lyx.bat')
+    with open(bat, 'w', encoding='utf-8', newline='\r\n') as f:
+        f.write('@echo off\nchcp 65001 >nul\n')
+        f.write(f'set PATH={ruta_windows(MIKTEX)};%PATH%\n')
+        f.write(f'cd /d "{ruta_windows(cwd)}"\n')
+        f.write(f'"{ruta_windows(exe)}" ' + ' '.join(f'"{a}"' for a in argumentos) + '\n')
+    try:
+        return ejecutar(['/mnt/c/Windows/System32/cmd.exe', '/c', ruta_windows(bat)], timeout=900, comprobar=False)
+    finally:
+        os.remove(bat)
+
+
+def _huella_fichero(ruta):
+    import hashlib
+    return hashlib.sha1(open(ruta, 'rb').read()).hexdigest()
+
+
 def sincronizar_lyx(tema):
     """Mantiene a la par T.lyx y T.tex, ambos en git.
 
-    Los agentes escriben el .tex; Víctor puede editar el .lyx en LyX. Manda el
-    más reciente: si el .lyx es más nuevo, LyX lo exporta a .tex; si lo es el
-    .tex, tex2lyx regenera el .lyx. Sin LyX instalado no se hace nada.
+    El .tex es la fuente de los agentes; el .lyx se regenera a partir de él
+    para que Víctor pueda abrir el tema en LyX. Solo si Víctor ha editado el
+    .lyx (su contenido ya no es el que generó tex2lyx) se exporta a .tex.
+    Sin LyX, o si LyX falla, se avisa y se sigue con el .tex.
     """
     tex = os.path.join(tema.dir, f'{tema.archivo}.tex')
-    if not LYX:
+    marca = os.path.join(tema.trabajo, 'lyx-generado.sha1')
+    if not LYX or not TEX2LYX:
         return 'LyX no está instalado: se usa solo el .tex'
-    if os.path.exists(tema.lyx) and (not os.path.exists(tex) or os.path.getmtime(tema.lyx) > os.path.getmtime(tex) + 1):
-        ejecutar([LYX, '--batch', '-E', 'pdflatex', ruta_windows(tex), ruta_windows(tema.lyx)],
-                 env=entorno_tex(), timeout=600)
-        return f'{tema.archivo}.lyx → {tema.archivo}.tex'
-    if os.path.exists(tex) and (not os.path.exists(tema.lyx) or os.path.getmtime(tex) > os.path.getmtime(tema.lyx) + 1):
-        ejecutar([TEX2LYX, '-f', '-n', ruta_windows(tex), ruta_windows(tema.lyx)], env=entorno_tex(), timeout=600)
+    generado = open(marca).read().strip() if os.path.exists(marca) else None
+    if os.path.exists(tema.lyx) and generado and _huella_fichero(tema.lyx) != generado:
+        cod, salida = _lyx_windows(LYX, ['--batch', '-E', 'pdflatex', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'],
+                                   tema.dir)
+        if cod != 0:
+            return f'AVISO: LyX no pudo exportar {tema.archivo}.lyx: {salida.strip()[-300:]}'
+        open(marca, 'w').write(_huella_fichero(tema.lyx))
+        return f'{tema.archivo}.lyx (editado en LyX) → {tema.archivo}.tex'
+    if not os.path.exists(tema.lyx) or os.path.getmtime(tex) > os.path.getmtime(tema.lyx) + 1:
+        cod, salida = _lyx_windows(TEX2LYX, ['-f', '-n', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'], tema.dir)
+        if cod != 0 or not os.path.exists(tema.lyx) or os.path.getsize(tema.lyx) == 0:
+            if os.path.exists(tema.lyx) and os.path.getsize(tema.lyx) == 0:
+                os.remove(tema.lyx)
+            return f'AVISO: tex2lyx no pudo generar {tema.archivo}.lyx: {salida.strip()[-300:]}'
+        os.makedirs(tema.trabajo, exist_ok=True)
+        open(marca, 'w').write(_huella_fichero(tema.lyx))
         return f'{tema.archivo}.tex → {tema.archivo}.lyx'
     return 'LyX y LaTeX ya estaban a la par'
 
