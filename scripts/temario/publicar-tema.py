@@ -11,7 +11,9 @@ En oposicion/temario/<ejercicio>.html deja la línea del tema con:
   - un botón WEB a la página HTML del tema;
   - un botón VÍDEO si el tema tiene vídeo en oposicion/temario/videos.json
     ({"3A08": "https://youtu.be/…"}).
-Si el tema figuraba como no disponible, pasa a disponible.
+Si el tema figuraba como no disponible, pasa a disponible. En el 4.º ejercicio
+se quitan las etiquetas «Temario anterior» y «Parcial»: el tema revisado ya
+está adaptado al temario nuevo.
 
 Después ejecuta build-app-data.js (temario.json, con urlHtml y urlVideo) y
 build-search-index.js con el deno de Quarto.
@@ -27,11 +29,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar  # noqa: E402
 
 
-def linea_tema(tema, titulo_html, badges, video):
+def linea_tema(tema, titulo_html, video):
     c = tema.carpeta
     a = tema.archivo
     partes = [f'<div class="tema-item"><a href="{c}/{a}.pdf" target="_blank">Tema {tema.codigo}: '
-              f'{badges}<span class="tema-item-title">{titulo_html}</span></a>',
+              f'<span class="tema-item-title">{titulo_html}</span></a>',
               f'<a class="tema-item-docx" href="{c}/{a}.docx" download title="Descargar el tema en Word">DOCX</a>',
               f'<a class="tema-item-docx tema-item-html" href="{c}/{a}.html" title="Leer el tema en la web">WEB</a>']
     if video:
@@ -63,8 +65,7 @@ def main():
         sys.exit(1)
     interior = m.group(1)
     titulo = re.search(r'<span class="tema-item-title">(.*?)</span>', interior, re.S)
-    badges = ''.join(re.findall(r'<span class="badge-[^"]*"[^>]*>.*?</span>\s*', interior.split('tema-item-title')[0]))
-    nueva = linea_tema(tema, titulo.group(1).strip() if titulo else tema.titulo(), badges, video)
+    nueva = linea_tema(tema, titulo.group(1).strip() if titulo else tema.titulo(), video)
     html = html[:m.start()] + nueva + html[m.end():]
     open(ruta, 'w', encoding='utf-8').write(html)
     print(f'{os.path.relpath(ruta, RAIZ)}: tema {tema.codigo} con PDF, DOCX, WEB' + (' y VÍDEO' if video else ''))
