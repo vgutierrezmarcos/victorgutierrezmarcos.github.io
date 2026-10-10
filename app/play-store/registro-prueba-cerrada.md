@@ -142,6 +142,12 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Correcciones del test**: notas en las respuestas oficiales desactualizadas o discutibles, y el examen de marzo de 2026 en el simulador.
 - **Contenido nuevo sin reiniciar**: el contenido nuevo de la web se ve sin cerrar la app.
 
+### 10 oct. 2026 (para la 1.15.10)
+- **Avisos a su hora con la app cerrada**:
+  - Al permitir los avisos, la app pide con el diálogo del sistema que la batería no la restrinja.
+  - En los móviles con ahorro de batería propio (Xiaomi, Huawei, Honor, Samsung, OPPO, realme, OnePlus, vivo), indica qué tocar y abre esos ajustes.
+  - A quien ya tenía la app se le pide una vez.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

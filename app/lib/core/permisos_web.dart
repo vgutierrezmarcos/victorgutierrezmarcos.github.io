@@ -10,3 +10,9 @@ Future<bool> abrirAjustesNotificaciones() async => false;
 Future<bool> abrirAjustesBateria() async => false;
 
 Future<bool> pedirAlarmasExactas() async => false;
+
+Future<bool> pedirSinRestriccionBateria() async => false;
+
+Future<String?> fabricanteMovil() async => null;
+
+Future<bool> abrirAjustesFabricante() async => false;

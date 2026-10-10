@@ -69,6 +69,7 @@ Future<void> cajaAppSinPrimerosPasos() async {
   await app.putAll({
     claveBienvenidaVista: true,
     clavePermisosPedidos: true,
+    claveBateriaPedida: true,
     claveMasHerramientas: true,
     for (final o in Oposiciones.todas)
       for (final p in Papel.values) ...{claveGuiaVista(o.id, p): true, claveParaEmpezarOculta(o.id, p): true},

@@ -38,5 +38,38 @@ Future<bool> abrirAjustesBateria() async {
   }
 }
 
+/// Pide con el diálogo del sistema que la batería no restrinja la app
+/// («¿Permitir que se ejecute siempre en segundo plano?»). El resultado se ve
+/// al volver a la app (comprobarPermisos). Devuelve si se pudo abrir.
+Future<bool> pedirSinRestriccionBateria() async {
+  if (!Platform.isAndroid) return false;
+  try {
+    return await _canal.invokeMethod<bool>('pedirSinRestriccionBateria') ?? false;
+  } catch (_) {
+    return false;
+  }
+}
+
+/// Fabricante del móvil, en minúsculas (xiaomi, samsung…); null fuera de Android.
+Future<String?> fabricanteMovil() async {
+  if (!Platform.isAndroid) return null;
+  try {
+    return await _canal.invokeMethod<String>('fabricante');
+  } catch (_) {
+    return null;
+  }
+}
+
+/// Abre los ajustes del ahorro de batería propio del fabricante (o, si no se
+/// conocen, los de la app). Devuelve si pudo.
+Future<bool> abrirAjustesFabricante() async {
+  if (!Platform.isAndroid) return false;
+  try {
+    return await _canal.invokeMethod<bool>('ajustesFabricante') ?? false;
+  } catch (_) {
+    return false;
+  }
+}
+
 /// Pide el permiso de alarmas exactas (Android 12+ abre sus ajustes).
 Future<bool> pedirAlarmasExactas() => Notificaciones.pedirAlarmasExactas();

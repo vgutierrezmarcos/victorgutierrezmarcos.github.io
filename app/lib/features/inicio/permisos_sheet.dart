@@ -15,8 +15,15 @@ const _textoBloqueadosNavegador = 'El navegador no deja a la web mostrar avisos.
 /// Clave (caja `app`) de que ya se pidieron los permisos la primera vez.
 const clavePermisosPedidos = 'permisos_pedidos';
 
+/// Clave (caja `app`) de que ya se pidió que la batería no restrinja la app
+/// (a quien ya había visto la hoja de los avisos se le pide una vez aparte).
+const claveBateriaPedida = 'bateria_pedida';
+
 /// Lo que permite el sistema ahora (se vuelve a mirar al volver a la app).
 final permisosProvider = FutureProvider<EstadoPermisos>((ref) => comprobarPermisos());
+
+/// Fabricante del móvil (para los consejos de su ahorro de batería).
+final fabricanteProvider = FutureProvider<String?>((ref) => fabricanteMovil());
 
 /// Pide el permiso de notificaciones y, si está denegado en el sistema, lo
 /// explica con un botón a los ajustes. Devuelve si los avisos pueden llegar.
@@ -50,20 +57,32 @@ Future<bool> asegurarAvisos(BuildContext context) async {
   return false;
 }
 
-/// La primera vez que se abre la app (o la primera con esta versión): para
-/// qué sirven los avisos y el permiso para mostrarlos; en Android 12+,
-/// también el de alarmas exactas (los avisos del cronómetro a su segundo).
+/// La primera vez que se abre la app: para qué sirven los avisos, el permiso
+/// para mostrarlos y, en Android, el de alarmas exactas (los avisos del
+/// cronómetro a su segundo) y que la batería no restrinja la app. A quien ya
+/// la había visto antes de que se pidiera lo de la batería, se le pide eso solo
+/// (una vez y si la batería la restringe).
 Future<void> mostrarHojaPermisosSiToca(BuildContext context) async {
   if (!Notificaciones.disponibles || !Hive.isBoxOpen(Cajas.app)) return;
   final caja = Hive.box(Cajas.app);
-  if (caja.get(clavePermisosPedidos) == true) return;
-  await caja.put(clavePermisosPedidos, true);
+  if (caja.get(clavePermisosPedidos) == true) {
+    if (kIsWeb || caja.get(claveBateriaPedida) == true) return;
+    final p = await comprobarPermisos();
+    if (!p.bateriaRestringida || p.notificaciones != true) return;
+    await caja.put(claveBateriaPedida, true);
+    if (!context.mounted) return;
+    await showModalBottomSheet<void>(context: context, isScrollControlled: true, showDragHandle: true, builder: (_) => const HojaPermisos(soloBateria: true));
+    return;
+  }
+  await caja.putAll({clavePermisosPedidos: true, claveBateriaPedida: true});
   if (!context.mounted) return;
   await showModalBottomSheet<void>(context: context, isScrollControlled: true, showDragHandle: true, builder: (_) => const HojaPermisos());
 }
 
 class HojaPermisos extends ConsumerStatefulWidget {
-  const HojaPermisos({super.key});
+  const HojaPermisos({super.key, this.soloBateria = false});
+  /// Solo lo de la batería (los avisos ya se pidieron antes).
+  final bool soloBateria;
   @override
   ConsumerState<HojaPermisos> createState() => _HojaPermisosState();
 }
@@ -72,6 +91,22 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
   bool _ocupado = false;
   bool? _notificaciones;
   bool? _exactas;
+  /// Último paso: el ahorro de batería propio del fabricante del móvil.
+  ({String nombre, String pasos})? _fabricante;
+
+  /// Que la batería no restrinja la app (diálogo del sistema) y, si el móvil
+  /// tiene su propio ahorro de batería, el paso de su fabricante. Devuelve si
+  /// la hoja se queda abierta para ese paso.
+  Future<bool> _bateria() async {
+    if (kIsWeb) return false;
+    final p = await comprobarPermisos();
+    if (p.bateriaRestringida) await pedirSinRestriccionBateria();
+    final consejo = consejoFabricante(await fabricanteMovil());
+    ref.invalidate(permisosProvider);
+    if (consejo == null || !mounted) return false;
+    setState(() => _fabricante = consejo);
+    return true;
+  }
 
   Future<void> _permitir() async {
     setState(() => _ocupado = true);
@@ -81,15 +116,78 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
     ref.invalidate(permisosProvider);
     if (!mounted) return;
     setState(() {
-      _ocupado = false;
       _notificaciones = n;
       _exactas = e;
     });
-    if (n && e != false) Navigator.of(context).pop();
+    final sigue = n && await _bateria();
+    if (!mounted) return;
+    setState(() => _ocupado = false);
+    if (n && e != false && !sigue) Navigator.of(context).pop();
   }
+
+  Future<void> _soloBateria() async {
+    setState(() => _ocupado = true);
+    final sigue = await _bateria();
+    if (!mounted) return;
+    setState(() => _ocupado = false);
+    if (!sigue) Navigator.of(context).pop();
+  }
+
+  /// El paso del fabricante (Xiaomi, Samsung…): qué tocar y un botón a sus ajustes.
+  Widget _pasoFabricante(({String nombre, String pasos}) f) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text('Un paso más en tu ${f.nombre}', style: context.textos.titleLarge),
+            const SizedBox(height: 6),
+            Text('Los móviles ${f.nombre} tienen su propio ahorro de batería, aparte del de Android, que también puede retrasar los avisos con la app cerrada. Para que lleguen a su hora:', style: context.textos.bodySmall),
+            const SizedBox(height: 10),
+            Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Icon(Icons.battery_charging_full, size: 20, color: context.esquema.primary),
+              const SizedBox(width: 10),
+              Expanded(child: Text(f.pasos, style: context.textos.bodyMedium)),
+            ]),
+            const SizedBox(height: 14),
+            FilledButton.icon(
+              onPressed: () async {
+                await abrirAjustesFabricante();
+                if (mounted) Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.settings_outlined),
+              label: Text('Abrir los ajustes de ${f.nombre}'),
+            ),
+            TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Ya está o más tarde')),
+            Text('Lo tienes también en Más → Ajustes.', textAlign: TextAlign.center, style: context.textos.labelSmall),
+          ]),
+        ),
+      );
+
+  /// Solo lo de la batería, a quien ya había visto la hoja de los avisos.
+  Widget _pasoBateria() => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Text('Que los avisos lleguen a su hora', style: context.textos.titleLarge),
+            const SizedBox(height: 6),
+            Text(
+              'El sistema está ahorrando batería con la app: con ella cerrada, los avisos de tus clases y de los temas que te mandan pueden llegar tarde o no llegar. Permite que funcione en segundo plano; gasta muy poca batería, porque solo mira lo nuevo cada 15 minutos más o menos.',
+              style: context.textos.bodySmall,
+            ),
+            const SizedBox(height: 14),
+            FilledButton.icon(
+              onPressed: _ocupado ? null : _soloBateria,
+              icon: _ocupado ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.battery_charging_full),
+              label: const Text('Permitir en segundo plano'),
+            ),
+            TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Ahora no')),
+          ]),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
+    if (_fabricante case final f?) return _pasoFabricante(f);
+    if (widget.soloBateria) return _pasoBateria();
     final denegado = _notificaciones == false;
     return SafeArea(
       child: Padding(
@@ -100,7 +198,7 @@ class _HojaPermisosState extends ConsumerState<HojaPermisos> {
           Text(
             kIsWeb
                 ? 'En el navegador llegan mientras tengas la web abierta (aunque estés en otra pestaña o la ventana esté minimizada), si el navegador lo permite. Solo se usan para esto:'
-                : 'Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones. Con la app abierta llega todo al momento; cerrada, el móvil mira lo nuevo cada 15 minutos más o menos (los temas, a su hora exacta). Si esperas algo, abre la app. Solo se usan para esto:',
+                : 'Para que te lleguen aunque la app esté cerrada, el sistema tiene que permitir que muestre notificaciones y que funcione en segundo plano (gasta muy poca batería). Con la app abierta llega todo al momento; cerrada, el móvil mira lo nuevo cada 15 minutos más o menos (los temas, a su hora exacta). Solo se usan para esto:',
             style: context.textos.bodySmall,
           ),
           const SizedBox(height: 10),
@@ -212,16 +310,24 @@ class FilasAvisosSistema extends ConsumerWidget {
           ref.invalidate(permisosProvider);
         },
       ),
-      if (p?.bateriaSinOptimizar == false)
+      if (p?.bateriaRestringida ?? false)
         ListTile(
-          leading: const Icon(Icons.battery_saver_outlined),
-          title: const Text('Avisos con la app cerrada'),
-          subtitle: Text('Si llegan tarde, quita la app de la optimización de batería del sistema.', style: context.textos.labelSmall),
-          trailing: const Icon(Icons.open_in_new, size: 18),
+          leading: Icon(Icons.battery_saver_outlined, color: context.esquema.error),
+          title: const Text('La batería restringe la app'),
+          subtitle: Text('Con la app cerrada, los avisos pueden llegar tarde. Toca para permitir que funcione en segundo plano.', style: context.textos.labelSmall),
+          trailing: const Icon(Icons.chevron_right, size: 18),
           onTap: () async {
-            await abrirAjustesBateria();
+            await pedirSinRestriccionBateria();
             ref.invalidate(permisosProvider);
           },
+        ),
+      if (consejoFabricante(kIsWeb ? null : ref.watch(fabricanteProvider).valueOrNull) case final f?)
+        ListTile(
+          leading: const Icon(Icons.battery_charging_full),
+          title: Text('Ahorro de batería de ${f.nombre}'),
+          subtitle: Text('Para que los avisos lleguen con la app cerrada: ${f.pasos}', style: context.textos.labelSmall),
+          trailing: const Icon(Icons.open_in_new, size: 18),
+          onTap: abrirAjustesFabricante,
         ),
     ]);
   }
