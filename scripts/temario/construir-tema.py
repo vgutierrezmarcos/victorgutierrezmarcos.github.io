@@ -230,6 +230,8 @@ def generar_html(tema, tex_pandoc, datos):
     video = video_de(tema)
     if video:
         orden += ['-M', f'video={video}']
+    if os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}-repaso.pdf')):
+        orden += ['-M', 'repaso=true']
     ejecutar(orden, timeout=600)
     return destino
 

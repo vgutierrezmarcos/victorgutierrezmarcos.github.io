@@ -84,6 +84,7 @@ function parsearEjercicioConTemas(html, slug) {
             const pdfMatch = (it[3] || '').match(/class="tema-item-docx tema-item-pdf" href="([^"]+)"/);
             const htmlMatch = pdfMatch && /\.html$/.test(href) ? [null, href] : null;
             const videoMatch = (it[3] || '').match(/class="tema-item-docx tema-item-video" href="([^"]+)"/);
+            const repasoMatch = (it[3] || '').match(/class="tema-item-docx tema-item-repaso" href="([^"]+)"/);
             const disponible = !/tema-no-disponible\.html/.test(href);
             const codigoMatch = inner.match(/Tema\s+(\d+\.[A-Z]\.\d+)/);
             const tituloMatch = inner.match(/<span class="tema-item-title">([\s\S]*?)<\/span>/);
@@ -97,7 +98,8 @@ function parsearEjercicioConTemas(html, slug) {
                 url: disponible ? `${BASE_URL}/oposicion/temario/${pdfMatch ? pdfMatch[1] : href}` : null,
                 ...(docxMatch ? { urlDocx: `${BASE_URL}/oposicion/temario/${docxMatch[1]}` } : {}),
                 ...(htmlMatch ? { urlHtml: `${BASE_URL}/oposicion/temario/${htmlMatch[1]}` } : {}),
-                ...(videoMatch ? { urlVideo: videoMatch[1] } : {})
+                ...(videoMatch ? { urlVideo: videoMatch[1] } : {}),
+                ...(repasoMatch ? { urlRepaso: `${BASE_URL}/oposicion/temario/${repasoMatch[1]}` } : {})
             });
         }
         partes.push({ letra, nombre: nombreParte, temas });

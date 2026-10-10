@@ -182,7 +182,7 @@ el texto original y lo que se hizo.
 
 - Esquema de pizarra y texto del cante apartado a apartado, con minutos.
 - Ritmo algo más rápido que el de una lectura pausada para que quepa más
-  contenido: unas **4.800 palabras** de narración para 30 minutos (≈165 por
+  contenido: unas **5.500 palabras** de narración para 30 minutos (≈185 por
   minuto con la voz del vídeo). La medida buena es la del vídeo:
   `generar-video.py T --medir` dice cuántas palabras sobran o faltan.
 
@@ -191,7 +191,7 @@ el texto original y lo que se hizo.
 - **Exactamente 30:00**: el script ajusta el ritmo de toda la narración (sin
   cambiar el tono) para que acabe justo antes de la pantalla final. El ajuste
   debe quedar entre ×0,95 y ×1,05; si no, se recorta o se alarga el guion.
-- Voz: Edge TTS `es-ES-AlvaroNeural` a **+10 %** mientras no haya voz clonada
+- Voz: Edge TTS `es-ES-AlvaroNeural` a **+15 %** (o lo que haga falta para que el ajuste quede cerca de ×1,00) mientras no haya voz clonada
   de Víctor (`voz: {motor: xtts, muestra: …}`). Los nombres que la voz lee mal
   van en `scripts/temario/pronunciacion.yaml` (comunes) o en `pronunciacion:`
   del tema.
@@ -220,6 +220,19 @@ el texto original y lo que se hizo.
 - El vídeo se guarda en `Vídeos\temario\` de Windows. Víctor lo sube a
   YouTube como **no listado** y anota el enlace en
   `oposicion/temario/videos.json`.
+
+## 8 bis. Ficha de repaso (dos páginas)
+
+- Cada tema tiene una ficha de repaso en **exactamente dos páginas** (A4, tres
+  columnas, estética del tema: `tcee-repaso.sty`), para repasar antes del
+  examen: esquema del cante con minutos, introducción, ideas clave,
+  definiciones, fórmulas y 2-4 gráficos por apartado, conclusión, autores y
+  fechas, datos clave, preguntas probables del tribunal y trampas del test.
+- Solo resume el tema: nada que no esté en él.
+- Letra de 7 puntos o más y la segunda página llena (`construir-repaso.py`
+  elige la letra y avisa).
+- Se publica como `<ejercicio>/<tema>-repaso.pdf`, con botón en el índice y en
+  la página del tema.
 
 ## 9. Informe para Víctor (`revision.md`)
 

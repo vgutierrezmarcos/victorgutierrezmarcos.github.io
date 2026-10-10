@@ -85,6 +85,9 @@ $endif$
                     <div class="tema-descargas">
                         <a href="$archivo$.pdf" target="_blank">Descargar PDF</a>
                         <a href="$archivo$.docx" download>Descargar Word</a>
+$if(repaso)$
+                        <a href="$archivo$-repaso.pdf" target="_blank">Ficha de repaso (2 págs.)</a>
+$endif$
 $if(video)$
                         <a href="$video$" target="_blank" rel="noopener">Vídeo del cante</a>
 $endif$

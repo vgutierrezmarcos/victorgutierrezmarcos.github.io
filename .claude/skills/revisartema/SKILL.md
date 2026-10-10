@@ -1,7 +1,7 @@
 ---
 name: revisartema
 description: Revisa de principio a fin un tema del 3.er o 4.º ejercicio de la oposición TCEE (p. ej. /revisartema 3A08). Lo migra a LyX/LaTeX con gráficos TikZ, corrige errores, resuelve lo marcado en amarillo y rojo, actualiza los datos con fuentes, comprueba la coherencia, genera PDF, HTML y Word, el guion del cante de 30 minutos y el vídeo, y hace commit en la rama revision-temario.
-argument-hint: "<tema> [--fase extraer|revisar|integrar|graficos|construir|guion|video|calidad|publicar] [--sin-video]"
+argument-hint: "<tema> [--fase extraer|revisar|integrar|graficos|construir|guion|video|calidad|publicar]"
 ---
 
 # /revisartema
@@ -65,11 +65,16 @@ compila y lo compara con el original.
 repite (máximo 3 intentos). Si LyX está instalado, el script sincroniza el
 `.lyx` y el `.tex`.
 
-### 6. guion — agente `tema-guionista`
-Escribe `D/guion-cante.md` y `D/video/escenas.yaml` a partir del tema ya construido.
+### 6. guion y repaso — agentes `tema-guionista` y `tema-repaso` en paralelo
+- `tema-guionista` escribe `D/guion-cante.md` y `D/video/escenas.yaml` y
+  ajusta su longitud con `generar-video.py T --medir`.
+- `tema-repaso` escribe la ficha de repaso de dos páginas
+  (`D/repaso/T-repaso.tex`) y la compila con `construir-repaso.py T`.
 
-### 7. video — agente `tema-video` (salvo `--sin-video`)
-Ejecuta `generar-video.py` y comprueba el resultado.
+### 7. video — agente `tema-video`, **solo cuando Víctor lo pida**
+Víctor revisa primero el tema y el guion. El vídeo no se genera en la pasada
+diaria: se lanza después con `/revisartema T --fase video`, cuando él dé el
+visto bueno (y tras aplicar sus correcciones).
 
 ### 8. calidad — agente `tema-control-calidad`
 Ejecuta `verificar-tema.py`, revisa PDF, HTML y Word, y lee el informe. Si
@@ -78,7 +83,9 @@ vuelve a construir y repite la calidad **una vez** como máximo. Lo que quede
 va a «Dudas abiertas» de `revision.md`.
 
 ### 9. publicar — tú mismo
-1. `python3 R/scripts/temario/publicar-tema.py T` (índice, `temario.json`, buscador).
+1. `python3 R/scripts/temario/construir-tema.py T --solo html` (para que la
+   página enlace la ficha de repaso) y
+   `python3 R/scripts/temario/publicar-tema.py T` (índice, `temario.json`, buscador).
 2. Comprueba con `git status` que solo cambian cosas del tema `T`, su línea en
    el índice, `temario.json`, `search-index.json` y, si hizo falta, la
    infraestructura común. `_trabajo/` no debe aparecer (está en .gitignore).

@@ -8,7 +8,8 @@ revision-temario; la web no cambia hasta que se fusione con main).
 
 En oposicion/temario/<ejercicio>.html deja la línea del tema con:
   - el título enlazado a la página web del tema (HTML);
-  - los botones PDF y DOCX para descargarlo;
+  - los botones PDF y DOCX para descargarlo y REPASO (ficha de dos páginas)
+    si existe <tema>-repaso.pdf;
   - un botón VÍDEO si el tema tiene vídeo en oposicion/temario/videos.json
     ({"3A08": "https://youtu.be/…"}).
 Si el tema figuraba como no disponible, pasa a disponible. En el 4.º ejercicio
@@ -40,6 +41,9 @@ def linea_tema(tema, titulo_html, video):
               f'<a class="tema-item-docx tema-item-pdf" href="{c}/{a}.pdf" target="_blank" '
               f'title="Descargar el tema en PDF">PDF</a>',
               f'<a class="tema-item-docx" href="{c}/{a}.docx" download title="Descargar el tema en Word">DOCX</a>']
+    if os.path.exists(os.path.join(tema.dir_publico, f'{a}-repaso.pdf')):
+        partes.append(f'<a class="tema-item-docx tema-item-repaso" href="{c}/{a}-repaso.pdf" target="_blank" '
+                      f'title="Ficha de repaso del tema en dos páginas">REPASO</a>')
     if video:
         partes.append(f'<a class="tema-item-docx tema-item-video" href="{video}" target="_blank" '
                       f'rel="noopener" title="Vídeo del cante del tema">VÍDEO</a>')

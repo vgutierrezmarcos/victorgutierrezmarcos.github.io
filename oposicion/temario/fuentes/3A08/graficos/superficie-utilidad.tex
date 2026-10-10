@@ -19,7 +19,7 @@
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.6,0) node[right] {$x_2$};}
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U$};}
     % 2: la superficie de utilidad
-    \capa{2}{\addplot3[superficie,domain=0:4,y domain=0:4,samples=17,samples y=17] {sqrt(x*y)};}
+    \capa{2}{\addplot3[superficie,domain=0:4,y domain=0:4,samples=9,samples y=9] {sqrt(x*y)};}
     \capa{2}{\node[etiqueta] at (axis cs:4,4,4.5) {$U(x_1,x_2)$};}
     % 3-5: cortes a los niveles 1, 2 y 3 y su proyección en el plano
     \capa{3}{\addplot3[corte,domain=0.25:4,samples=40,samples y=0] (x,{1/x},1);}

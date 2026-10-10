@@ -31,7 +31,7 @@ Formato de escenas.yaml:
 
     tema: 3.A.8
     duracion: 1800                     # opcional
-    voz: {motor: edge, nombre: es-ES-AlvaroNeural, velocidad: "+10%"}
+    voz: {motor: edge, nombre: es-ES-AlvaroNeural, velocidad: "+15%"}
     pronunciacion: {Slutsky: Slútski}  # además de scripts/temario/pronunciacion.yaml
     bloques:                           # cabecera (orden de la exposición)
       - {nombre: Introducción, minutos: 3}
@@ -110,7 +110,7 @@ FUNDIDO = 0.4
 SALIDA = os.environ.get('TCEE_VIDEOS', '/mnt/c/Users/vgutierrez/Videos/temario')
 FUENTES_WIN = '/mnt/c/Windows/Fonts'
 PRONUNCIACION = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pronunciacion.yaml')
-VOZ_DEFECTO = {'motor': 'edge', 'nombre': 'es-ES-AlvaroNeural', 'velocidad': '+10%'}
+VOZ_DEFECTO = {'motor': 'edge', 'nombre': 'es-ES-AlvaroNeural', 'velocidad': '+15%'}
 PYTHON_VOZ = os.path.expanduser('~/.venvs/voz/bin/python')
 
 MORADO = (95, 41, 135)

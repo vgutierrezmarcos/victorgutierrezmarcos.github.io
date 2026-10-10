@@ -41,7 +41,7 @@ VACIAS = set('de del la las el los y en a o u e con por para su sus al lo un una
 def codigo_de_ruta(ruta):
     """Código de tema (3A08) a partir de la ruta de un fichero de Drive, o None."""
     nombre = os.path.basename(ruta)
-    m = re.search(r'(?<![\w.])([34])\.?\s?([AB])\.?\s?(\d{1,2})(?!\d)', nombre)
+    m = re.search(r'(?<![\w.])([34])\.?\s?([AB])[._]?\s?(\d{1,2})(?!\d)', nombre)
     if m:
         return f'{m.group(1)}{m.group(2)}{int(m.group(3)):02d}'
     partes = ruta.replace('\\', '/').split('/')
@@ -74,8 +74,18 @@ def indexar():
         entrada = {'nombre': autor['nombre'], 'temas': {}, 'sin_tema': [], 'error': None}
         try:
             if autor['tipo'] == 'drive':
-                ficheros = gdown.download_folder(id=autor['id'], skip_download=True, quiet=True)
-                lista = [(f.path, f.id) for f in ficheros]
+                # Una carpeta (id) o varias (carpetas: {ejercicio: id}); las que no
+                # son públicas se anotan y se sigue con las demás
+                carpetas = autor.get('carpetas') or {'': autor['id']}
+                lista, fallos = [], []
+                for etiqueta, fid in carpetas.items():
+                    try:
+                        ficheros = gdown.download_folder(id=fid, skip_download=True, quiet=True)
+                        lista += [(os.path.join(etiqueta, f.path), f.id) for f in ficheros]
+                    except Exception as e:
+                        fallos.append(f'{etiqueta or fid}: {type(e).__name__}')
+                if fallos:
+                    entrada['error'] = 'sin acceso a ' + ', '.join(fallos)
             elif autor['tipo'] == 'carpeta':
                 base = os.path.expanduser(autor['ruta'])
                 lista = [(os.path.relpath(os.path.join(d, f), base), None)
@@ -86,9 +96,11 @@ def indexar():
         except Exception as e:  # carpeta privada, cuota de Drive…
             entrada['error'] = f'{type(e).__name__}: {str(e)[:200]}'
             lista = []
+        entrada['todos'] = []
         for ruta, fid in lista:
             if os.path.basename(ruta).startswith('~$') or not ruta.lower().endswith(EXTENSIONES):
                 continue
+            entrada['todos'].append({'ruta': ruta, 'id': fid})
             cod = codigo_de_ruta(ruta)
             if cod:
                 entrada['temas'].setdefault(cod, []).append({'ruta': ruta, 'id': fid})
@@ -146,8 +158,20 @@ def preparar_tema(tema):
     lineas = [f'# Referencias para el tema {tema.codigo}', '',
               'Temas de otros preparadores (en ~/.cache/apuntes-tcee/, fuera de git). Se usan para '
               'contrastar y completar; si se toma una idea concreta, se cita al autor. No se copian.', '']
+    objetivo = palabras(tema.titulo())
+    notas = {a['clave']: a.get('nota', '') for a in json.load(open(CONFIG, encoding='utf-8'))['autores']}
     for clave, autor in indice['autores'].items():
-        ficheros = autor['temas'].get(tema.archivo, [])
+        if 'ANTERIOR' in notas.get(clave, ''):
+            lineas.append(f'- *{autor["nombre"]} usa la numeración del temario anterior: {notas[clave]} '
+                          'Los ficheros elegidos por el número pueden ser de otro tema.*')
+        ficheros = list(autor['temas'].get(tema.archivo, []))
+        # Muchos usan la numeración del temario anterior: se añade el fichero
+        # cuyo nombre más se parece al título (si comparte al menos 3 palabras)
+        por_titulo = sorted(autor.get('todos', []),
+                            key=lambda f: -len(objetivo & palabras(os.path.basename(f['ruta']))))
+        if por_titulo and len(objetivo & palabras(os.path.basename(por_titulo[0]['ruta']))) >= 3 \
+                and por_titulo[0]['ruta'] not in {f['ruta'] for f in ficheros}:
+            ficheros.append({**por_titulo[0], 'por_titulo': True})
         if not ficheros:
             lineas.append(f'- **{autor["nombre"]}**: no hay tema {tema.codigo}'
                           + (f' ({autor["error"]})' if autor.get('error') else '') + '.')
@@ -165,8 +189,8 @@ def preparar_tema(tema):
             if not os.path.exists(md):
                 with open(md, 'w', encoding='utf-8') as s:
                     s.write(a_texto(destino))
-            lineas.append(f'- **{autor["nombre"]}**: `{md}` (original: {f["ruta"]})')
-    objetivo = palabras(tema.titulo())
+            lineas.append(f'- **{autor["nombre"]}**: `{md}` (original: {f["ruta"]}'
+                          + ('; elegido por el título: comprobar que es el mismo tema' if f.get('por_titulo') else '') + ')')
     for clave, web in indice.get('web', {}).items():
         candidatos = sorted(web['temas'], key=lambda t: -len(objetivo & palabras(t['titulo'])))
         elegidos = [t for t in candidatos[:3] if len(objetivo & palabras(t['titulo'])) >= 3]

@@ -17,7 +17,7 @@ Errores (el tema no está terminado):
 
 Avisos (para que los mire el control de calidad):
   - párrafos con cifras (%, millones, años recientes) sin cita en ese párrafo;
-  - palabras del guion y de la narración del vídeo lejos de ≈4.800;
+  - palabras del guion y de la narración del vídeo lejos de ≈5.500;
   - números de tema dichos en voz alta.
 Y comprueba los criterios del cante: sin saludo al tribunal, conclusión que
 empieza por «En conclusión» y sin gracias al final.
@@ -32,7 +32,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import Tema  # noqa: E402
 
-PALABRAS_POR_MINUTO = 160
+PALABRAS_POR_MINUTO = 185
 SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos actualizados',
                      'Coherencia', 'Dudas abiertas']
 
@@ -153,11 +153,11 @@ def verificar(tema):
             dichos = [p.get('di', '') for e in escs for p in e.get('pasos', [])]
             palabras_video = len(re.findall(r'\w+', ' '.join(dichos)))
             datos['video_palabras'] = palabras_video
-            # La voz del vídeo (+10 %) dice unas 165 palabras por minuto; el script
+            # La voz del vídeo (+15 %) dice unas 185 palabras por minuto; el script
             # ajusta el ritmo para que dure 30:00 (generar-video.py --medir da la cifra exacta)
-            datos['video_minutos_naturales_estimados'] = round(palabras_video / 165, 1)
-            if not 4300 <= palabras_video <= 5300:
-                avisos.append(f'La narración del vídeo tiene {palabras_video} palabras (objetivo ≈4.800)')
+            datos['video_minutos_naturales_estimados'] = round(palabras_video / 185, 1)
+            if not 5000 <= palabras_video <= 6000:
+                avisos.append(f'La narración del vídeo tiene {palabras_video} palabras (objetivo ≈5.500)')
             if 'bloques' not in g:
                 errores.append('escenas.yaml sin «bloques» (formato antiguo del vídeo)')
             nombres = {b['nombre'] for b in g.get('bloques', [])}
