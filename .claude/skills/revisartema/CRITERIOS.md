@@ -32,6 +32,11 @@ Cada tema revisado debe quedar:
     **Relevancia**, **Contextualización**, **Problemática** (preguntas clave) y
     **Estructura** (los apartados y por qué ese orden). Las definiciones básicas
     se dan aquí.
+  - **Se mantiene la estructura del tema original de Víctor** (sus apartados
+    y su orden). No se reorganiza según la ficha del tribunal ni se mueve
+    contenido a otros temas: se corrige, se completa y se actualiza dentro de
+    esa estructura. Si falta un epígrafe del título oficial, se añade donde
+    encaje y se anota en el informe.
   - Apartados numerados **I., II., III.** con subapartados **I.1., I.1.1.**
     Cada apartado empieza anunciando su conclusión y termina con una
     recapitulación y el enlace con el siguiente. Los modelos siguen el orden

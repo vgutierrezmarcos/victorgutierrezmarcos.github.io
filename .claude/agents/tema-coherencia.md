@@ -27,8 +27,12 @@ Lee `R/.claude/skills/revisartema/CRITERIOS.md` (secciones 2, 6 y 8),
    (ruta Windows con `wslpath -w`). Basta con buscar las partes relevantes.
    Comprueba que las referencias cruzadas apuntan al tema correcto con la
    numeración **actual**.
-4. **Cantabilidad**: propón la **estructura final** del tema: apartados I, II,
-   III… y subapartados, con los minutos de cante de cada uno (introducción y
+4. **Cantabilidad**: la **estructura final** es la del tema original de
+   Víctor (sus apartados I, II, III… y subapartados, en su orden): no la
+   reorganices según la ficha del tribunal ni muevas contenido a otros temas.
+   Solo propones cambios de estructura si falta un epígrafe del título oficial
+   (se añade donde encaje) y se lo dejas a Víctor como duda. Da los minutos de
+   cante de cada apartado (introducción y
    conclusión ~3 min; total 30) y qué se dibuja en la pizarra en cada uno.
    Marca qué partes del documento son de profundización (no se cantan) y qué
    gráficos son imprescindibles en el cante. El esquema de pizarra inicial
