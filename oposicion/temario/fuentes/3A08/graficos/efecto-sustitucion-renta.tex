@@ -17,42 +17,42 @@
   \ejes{$x_1$}{$x_2$}{7.6}{5.9}
   \capa{1}{
     \draw[curva1] (0,5) -- (3.3333,0);
-    \draw[curva1] plot[domain=0.78:6.4,samples=80,smooth] (\x,{25/6/\x})
-      node[etiqueta,right] {$U^0$};
+    \node[left] at (0,5) {$\dfrac{\overline{W}}{p_2}$};
+  }
+  \capa{2}{\draw[curva1] plot[domain=0.78:6.4,samples=80,smooth] (\x,{25/6/\x})
+      node[etiqueta,right] {$U^0$};}
+  \capa{3}{
     \node[punto] (A) at (\xA,\yA) {};
     \node[etiqueta,above right] at (A) {$A$};
     \draw[guia] (\xA,\yA) -- (\xA,0);
-    \node[left] at (0,5) {$\dfrac{\overline{W}}{p_2}$};
+    \node[below,font=\footnotesize] at (\xA,0) {$x_1^A$};
   }
-  \capa{2}{
-    \draw[curvanueva] (0,5) -- (6.6667,0);
-    \draw[curvanueva] plot[domain=1.5:7.1,samples=80,smooth] (\x,{25/3/\x})
-      node[etiqueta,right] {$U^1$};
+  \capa{4}{\draw[curvanueva] (0,5) -- (6.6667,0);}
+  \capa{5}{\draw[curvanueva] plot[domain=1.5:7.1,samples=80,smooth] (\x,{25/3/\x})
+      node[etiqueta,right] {$U^1$};}
+  \capa{6}{
     \node[punto] (C) at (\xC,\yA) {};
     \node[etiqueta,above right] at (C) {$C$};
     \draw[guia] (\xC,\yA) -- (\xC,0);
+    \node[below,font=\footnotesize] at (\xC,0) {$x_1^C$};
   }
-  \capa{3}{
-    \draw[curva2,desplazada] (0,3.5355) -- (4.7140,0);
+  \capa{7}{\draw[curva2,desplazada] (0,3.5355) -- (4.7140,0);}
+  \capa{8}{
     \node[punto] (B) at (\xB,\yB) {};
     \node[etiqueta,below left] at (B) {$B$};
     \draw[guia] (\xB,\yB) -- (\xB,0);
+    \node[below,font=\footnotesize] at (\xB,0) {$x_1^B$};
   }
-  \node[below,font=\footnotesize] at (\xA,0) {$x_1^A$};
-  \capa{3}{\node[below,font=\footnotesize] at (\xB,0) {$x_1^B$};}
-  \capa{2}{\node[below,font=\footnotesize] at (\xC,0) {$x_1^C$};}
-  \capa{4}{
-    \draw[flecha,tceeazul] (\xA,-0.75) -- (\xB,-0.75)
-      node[midway,below,font=\footnotesize,text=tceeazul] {ES};
-    \draw[flecha,tceeverde] (\xB,-0.75) -- (\xC,-0.75)
-      node[midway,below,font=\footnotesize,text=tceeverde] {ER};
-    \draw[flecha] (\xA,-1.45) -- (\xC,-1.45)
-      node[midway,below,font=\footnotesize,text=tceerojo] {ET};
-  }
+  \capa{9}{\draw[flecha,tceeazul] (\xA,-0.75) -- (\xB,-0.75)
+      node[midway,below,font=\footnotesize,text=tceeazul] {ES};}
+  \capa{10}{\draw[flecha,tceeverde] (\xB,-0.75) -- (\xC,-0.75)
+      node[midway,below,font=\footnotesize,text=tceeverde] {ER};}
+  \capa{11}{\draw[flecha] (\xA,-1.45) -- (\xC,-1.45)
+      node[midway,below,font=\footnotesize,text=tceerojo] {ET};}
   % ---------------- Panel inferior ----------------
-  \capa{5}{
-    \begin{scope}[shift={(0,\pinf)}]
-      \ejes{$x_1$}{$p_1$}{7.6}{4.9}
+  \begin{scope}[shift={(0,\pinf)}]
+    \capa{12}{\ejes{$x_1$}{$p_1$}{7.6}{4.9}}
+    \capa{13}{
       % Guías verticales desde el panel superior (eje x1 alineado)
       \draw[guia] (\xA,-\pinf) -- (\xA,3.6);
       \draw[guia] (\xB,-\pinf-0.75) -- (\xB,1.8);
@@ -61,19 +61,21 @@
       \node[left] at (0,3.6) {$p_1^0$};
       \draw[guia] (0,1.8) -- (\xC,1.8);
       \node[left] at (0,1.8) {$p_1^1$};
-      % Marshalliana: p1 = 5/x1 (escala 1,2)
-      \draw[curva1] plot[domain=1.35:4.6,samples=60,smooth] (\x,{1.2*5/\x})
-        node[etiqueta,right] {$x_1(p_1;\,p_2,\overline{W})$};
-      % Hicksiana: p1 = (25/3)/x1^2 (escala 1,2)
-      \draw[curva2] plot[domain=1.5:2.85,samples=60,smooth] (\x,{1.2*25/3/(\x*\x)})
-        node[etiqueta,below right] {$h_1(p_1;\,p_2,U^0)$};
+    }
+    % Marshalliana: p1 = 5/x1 (escala 1,2)
+    \capa{14}{\draw[curva1] plot[domain=1.35:4.6,samples=60,smooth] (\x,{1.2*5/\x})
+        node[etiqueta,right] {$x_1(p_1;\,p_2,\overline{W})$};}
+    % Hicksiana: p1 = (25/3)/x1^2 (escala 1,2)
+    \capa{15}{\draw[curva2] plot[domain=1.5:2.85,samples=60,smooth] (\x,{1.2*25/3/(\x*\x)})
+        node[etiqueta,below right] {$h_1(p_1;\,p_2,U^0)$};}
+    \capa{16}{
       \node[punto] at (\xA,3.6) {};
       \node[etiqueta,above right] at (\xA,3.6) {$A'$};
       \node[punto] at (\xB,1.8) {};
       \node[etiqueta,below left] at (\xB,1.8) {$B'$};
       \node[punto] at (\xC,1.8) {};
       \node[etiqueta,above right] at (\xC,1.8) {$C'$};
-    \end{scope}
-  }
+    }
+  \end{scope}
 \end{tikzpicture}
 \end{document}

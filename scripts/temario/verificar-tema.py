@@ -17,7 +17,10 @@ Errores (el tema no está terminado):
 
 Avisos (para que los mire el control de calidad):
   - párrafos con cifras (%, millones, años recientes) sin cita en ese párrafo;
-  - duración estimada del guion y del vídeo fuera de 27-33 minutos.
+  - palabras del guion y de la narración del vídeo lejos de ≈4.800;
+  - números de tema dichos en voz alta.
+Y comprueba los criterios del cante: sin saludo al tribunal, conclusión que
+empieza por «En conclusión» y sin gracias al final.
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -29,7 +32,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import Tema  # noqa: E402
 
-PALABRAS_POR_MINUTO = 135
+PALABRAS_POR_MINUTO = 160
 SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos actualizados',
                      'Coherencia', 'Dudas abiertas']
 
@@ -137,7 +140,7 @@ def verificar(tema):
         palabras = len(re.findall(r'\w+', hablado))
         datos['guion_palabras'] = palabras
         datos['guion_minutos_estimados'] = round(palabras / PALABRAS_POR_MINUTO, 1)
-        if not 27 <= palabras / PALABRAS_POR_MINUTO <= 33:
+        if not 28 <= palabras / PALABRAS_POR_MINUTO <= 32:
             avisos.append(f'El guion da {palabras / PALABRAS_POR_MINUTO:.1f} min a {PALABRAS_POR_MINUTO} palabras/min')
     escenas = leer(os.path.join(tema.dir, 'video', 'escenas.yaml'))
     if escenas is None:
@@ -146,16 +149,41 @@ def verificar(tema):
         import yaml
         try:
             g = yaml.safe_load(escenas)
-            dicho = ' '.join(p.get('di', '') for e in g['escenas'] for p in e.get('pasos', []))
-            minutos = len(re.findall(r'\w+', dicho)) / 150  # Edge TTS habla algo más rápido
-            datos['video_minutos_estimados'] = round(minutos, 1)
-            datos['video_minutos_declarados'] = sum(e.get('minutos', 0) or 0 for e in g['escenas'])
-            if not 26 <= minutos <= 34:
-                avisos.append(f'La narración del vídeo da unos {minutos:.1f} min')
-            for e in g['escenas']:
+            escs = g['escenas']
+            dichos = [p.get('di', '') for e in escs for p in e.get('pasos', [])]
+            palabras_video = len(re.findall(r'\w+', ' '.join(dichos)))
+            datos['video_palabras'] = palabras_video
+            # La voz del vídeo (+10 %) dice unas 165 palabras por minuto; el script
+            # ajusta el ritmo para que dure 30:00 (generar-video.py --medir da la cifra exacta)
+            datos['video_minutos_naturales_estimados'] = round(palabras_video / 165, 1)
+            if not 4300 <= palabras_video <= 5300:
+                avisos.append(f'La narración del vídeo tiene {palabras_video} palabras (objetivo ≈4.800)')
+            if 'bloques' not in g:
+                errores.append('escenas.yaml sin «bloques» (formato antiguo del vídeo)')
+            nombres = {b['nombre'] for b in g.get('bloques', [])}
+            for i, e in enumerate(escs, 1):
+                if e.get('bloque') not in nombres:
+                    errores.append(f'Escena {i}: el bloque «{e.get("bloque")}» no está en «bloques»')
                 for p in e.get('pasos', []):
-                    if p.get('grafico') and not os.path.exists(os.path.join(tema.graficos, p['grafico'] + '.tex')):
-                        errores.append(f'escenas.yaml usa un gráfico inexistente: {p["grafico"]}')
+                    acciones = p.get('pizarra') or []
+                    for a in (acciones if isinstance(acciones, list) else [acciones]):
+                        if a.get('grafico') and not os.path.exists(os.path.join(tema.graficos, a['grafico'] + '.tex')):
+                            errores.append(f'escenas.yaml usa un gráfico inexistente: {a["grafico"]}')
+            # Criterios del cante (CRITERIOS.md, 8)
+            texto = ' '.join(dichos)
+            if re.search(r'miembros del tribunal', texto, re.I):
+                errores.append('El cante saluda al tribunal («Señores miembros del tribunal»): se empieza por el título')
+            if re.search(r'\b(muchas gracias|gracias por su atención|gracias)\b', ' '.join(dichos[-3:]), re.I):
+                errores.append('El cante termina dando las gracias')
+            concl = [e for e in escs if re.match(r'conclusi', str(e.get('bloque', '')), re.I)]
+            if concl:
+                primero = next((p.get('di', '') for p in concl[0].get('pasos', []) if p.get('di')), '')
+                if not re.match(r'\s*(En conclusión|A modo de conclusión)', primero):
+                    errores.append('La conclusión no empieza por «En conclusión» o «A modo de conclusión»')
+            for m in set(re.findall(r'\btema\s+(?:\d|tres|cuatro)[\w .]*?(?=[,.;:]|$)', texto, re.I)):
+                avisos.append(f'Se dice un número de tema en voz alta: «{m.strip()[:40]}»')
+            if re.search(r'\btermino ya\b', texto, re.I):
+                avisos.append('«termino ya»: la conclusión empieza por «En conclusión»')
         except Exception as e:
             errores.append(f'escenas.yaml no es válido: {e}')
     return errores, avisos, datos

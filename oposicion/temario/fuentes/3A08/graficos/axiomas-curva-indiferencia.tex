@@ -1,4 +1,5 @@
-% Lo que garantiza cada axioma sobre los conjuntos de indiferencia
+% Lo que garantiza cada axioma sobre los conjuntos de indiferencia, agrupados por su papel:
+% 1-4 bastan para que exista U continua (Debreu); 5-6 le dan propiedades; 6' y 7 simplifican.
 % (fusión de los gráficos 2.2a-f de Segura en seis paneles, en el orden de los axiomas del tema)
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -7,12 +8,17 @@
 \begin{document}
 \begin{tikzpicture}[tcee,
     titulo/.style={font=\small\bfseries,align=center,anchor=base},
+    llave/.style={decorate,decoration={brace,mirror,amplitude=6pt},thick,tceemorado},
+    grupo/.style={font=\small\bfseries,text=tceemorado,anchor=base},
     pref/.style={draw=tceemorado,thick,regular polygon,regular polygon sides=3,inner sep=1.4pt}]
   \newcommand{\ejesp}{\draw[eje] (0,0) -- (4.3,0) node[below left=2pt and 0pt] {$x_1$};
     \draw[eje] (0,0) -- (0,3.8) node[left] {$x_2$};
     \node[below left] at (0,0) {$0$};}
-  % ---------- 1: preorden completo (axiomas 1-3) ----------
-  \capa{1}{
+  % ---------- columna 1: existencia de la función de utilidad ----------
+  \capa{1}{\draw[llave] (0,4.75) -- (4.3,4.75);}
+  \capa{1}{\node[grupo] at (2.15,5.05) {Existencia de $U$ continua (\textsc{Debreu})};}
+  % ---------- 2: preorden completo (axiomas 1-3) ----------
+  \capa{2}{
   \begin{scope}[shift={(0,0)}]
     \node[titulo] at (2.1,4.1) {Axiomas 1-3: preorden completo};
     \ejesp
@@ -25,9 +31,9 @@
     \node[font=\footnotesize,align=left,anchor=north] at (2.1,-0.45)
       {\tikz\node[punto]{}; $\sim x^0$ \quad \tikz\node[pref]{}; $\succ x^0$ \quad resto: $\prec x^0$};
   \end{scope}}
-  % ---------- 2: continuidad (axioma 4) ----------
-  \capa{2}{
-  \begin{scope}[shift={(5.6,0)}]
+  % ---------- 3: continuidad (axioma 4) ----------
+  \capa{3}{
+  \begin{scope}[shift={(0,-5.8)}]
     \node[titulo] at (2.1,4.1) {+ 4. Continuidad};
     \ejesp
     \fill[area] plot[smooth] coordinates {(0,3.5) (0.8,2.8) (1.5,2.95) (2.3,2.2) (3.2,1.7) (4.0,1.6)}
@@ -39,11 +45,14 @@
     \node[etiqueta] at (3.1,1.15) {$I(x^0)$};
     \node[etiqueta] at (2.9,3.1) {$B(x^0)$};
     \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
-    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {conjuntos de contorno cerrados;\\ la indiferencia puede ser «gruesa»};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {ya existe $U(x)$ continua, aunque\\ la indiferencia puede ser «gruesa»};
   \end{scope}}
-  % ---------- 3: monotonía estricta (axioma 5) ----------
-  \capa{3}{
-  \begin{scope}[shift={(11.2,0)}]
+  % ---------- columna 2: propiedades de la función de utilidad ----------
+  \capa{4}{\draw[llave] (5.6,4.75) -- (9.9,4.75);}
+  \capa{4}{\node[grupo] at (7.75,5.05) {Propiedades de $U$ y dualidad};}
+  % ---------- 5: monotonía estricta (axioma 5) ----------
+  \capa{5}{
+  \begin{scope}[shift={(5.6,0)}]
     \node[titulo] at (2.1,4.1) {+ 5. Monotonía estricta};
     \ejesp
     \draw[curva1] plot[domain=0:3.8,samples=80,smooth] (\x,{3.4-0.85*\x+0.25*sin(2.5*\x r)})
@@ -53,11 +62,11 @@
     \node[etiqueta] at (3.3,3.4) {$B(x^0)$};
     \node[etiqueta] at (0.8,0.8) {$H(x^0)$};
     \draw[flecha] (1.8,1.7) -- ++(0.7,0.7) node[etiqueta,right,text=tceerojo] {preferidas};
-    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {curva «fina» y estrictamente\\ decreciente};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {$U$ creciente: curva «fina»\\ y estrictamente decreciente};
   \end{scope}}
-  % ---------- 4: convexidad (axioma 6) ----------
-  \capa{4}{
-  \begin{scope}[shift={(0,-5.8)}]
+  % ---------- 6: convexidad (axioma 6) ----------
+  \capa{6}{
+  \begin{scope}[shift={(5.6,-5.8)}]
     \node[titulo] at (2.1,4.1) {+ 6. Convexidad};
     \ejesp
     \draw[curva1] (0,3.3) -- (1.2,1.5) -- (3.9,0.25) node[etiqueta,above right] {$I(x^0)$};
@@ -67,11 +76,14 @@
     \node[etiqueta,above right] at (x1) {$x^1$};
     \node[etiqueta] at (3.0,2.6) {$B(x^0)$};
     \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
-    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {convexa, pero con tramos\\ rectos y vértices};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {$U$ cuasicóncava, pero con\\ tramos rectos y vértices};
   \end{scope}}
-  % ---------- 5: convexidad estricta (axioma 6') ----------
-  \capa{5}{
-  \begin{scope}[shift={(5.6,-5.8)}]
+  % ---------- columna 3: supuestos para simplificar ----------
+  \capa{7}{\draw[llave] (11.2,4.75) -- (15.5,4.75);}
+  \capa{7}{\node[grupo] at (13.35,5.05) {Para simplificar la exposición};}
+  % ---------- 8: convexidad estricta (axioma 6') ----------
+  \capa{8}{
+  \begin{scope}[shift={(11.2,0)}]
     \node[titulo] at (2.1,4.1) {+ 6$'$. Convexidad estricta};
     \ejesp
     \draw[curva1] plot[domain=0.3:1.3,samples=40,smooth] (\x,{1.2+0.8*(1.3-\x)^2+1.4*(1.3-\x)})
@@ -83,10 +95,10 @@
     \node[etiqueta,above right] at (x1) {$x^1$};
     \node[etiqueta] at (3.0,2.6) {$B(x^0)$};
     \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
-    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {sin tramos rectos;\\ aún puede haber vértices};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {sin tramos rectos (demanda única);\\ aún puede haber vértices};
   \end{scope}}
-  % ---------- 6: diferenciabilidad (axioma 7) ----------
-  \capa{6}{
+  % ---------- 9: diferenciabilidad (axioma 7) ----------
+  \capa{9}{
   \begin{scope}[shift={(11.2,-5.8)}]
     \node[titulo] at (2.1,4.1) {+ 7. Diferenciabilidad};
     \ejesp

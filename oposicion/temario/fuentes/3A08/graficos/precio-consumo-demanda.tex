@@ -14,39 +14,41 @@
   % ---------------- Panel superior ----------------
   \ejes{$x_1$}{$x_2$}{8.4}{6.2}
   \node[left] at (0,5) {$\dfrac{\overline{W}}{p_2}$};
-  \capa{1}{
-    \draw[curva1] (0,5) -- (2.5,0) node[etiqueta,below right,xshift=-3pt,font=\footnotesize] {$\overline{W}/p_1^0$};
+  \capa{1}{\draw[curva1] (0,5) -- (2.5,0) node[etiqueta,below right,xshift=-3pt,font=\footnotesize] {$\overline{W}/p_1^0$};}
+  \capa{2}{
     \draw[curva2] plot[domain=1.129:2.76,samples=50,smooth] (\x,{1/(1.1657-1/\x)});
     \node[punto] (E0) at (1.464,2.071) {};
     \node[etiqueta,above=3pt,xshift=4pt] at (E0) {$E_0$};
   }
-  \capa{2}{
-    \draw[curva1] (0,5) -- (4.444,0) node[etiqueta,below,font=\footnotesize] {$\overline{W}/p_1^1$};
-    \draw[curva1] (0,5) -- (6.944,0) node[etiqueta,below,font=\footnotesize] {$\overline{W}/p_1^2$};
+  \capa{3}{\draw[curva1] (0,5) -- (4.444,0) node[etiqueta,below,font=\footnotesize] {$\overline{W}/p_1^1$};}
+  \capa{4}{
     \draw[curva2] plot[domain=1.682:3.59,samples=50,smooth] (\x,{1/(0.8493-1/\x)});
-    \draw[curva2] plot[domain=2.244:4.49,samples=50,smooth] (\x,{1/(0.6834-1/\x)});
     \node[punto] (E1) at (2.288,2.426) {};
-    \node[punto] (E2) at (3.188,2.705) {};
     \node[etiqueta,above=3pt,xshift=4pt] at (E1) {$E_1$};
+  }
+  \capa{5}{\draw[curva1] (0,5) -- (6.944,0) node[etiqueta,below,font=\footnotesize] {$\overline{W}/p_1^2$};}
+  \capa{6}{
+    \draw[curva2] plot[domain=2.244:4.49,samples=50,smooth] (\x,{1/(0.6834-1/\x)});
+    \node[punto] (E2) at (3.188,2.705) {};
     \node[etiqueta,above=3pt,xshift=4pt] at (E2) {$E_2$};
   }
-  \capa{3}{
-    \draw[curvanueva] plot[domain=6:1.05,samples=60,smooth,variable=\p] ({xu(\p)},{xd(\p)})
-      node[etiqueta,right] {CPC};
-  }
+  \capa{7}{\draw[curvanueva] plot[domain=6:1.05,samples=60,smooth,variable=\p] ({xu(\p)},{xd(\p)})
+      node[etiqueta,right] {CPC};}
   % ---------------- Panel inferior ----------------
-  \capa{4}{
-    \begin{scope}[shift={(0,\pinf)}]
-      \ejes{$x_1$}{$p_1$}{8.4}{4.4}
+  \begin{scope}[shift={(0,\pinf)}]
+    \capa{8}{\ejes{$x_1$}{$p_1$}{8.4}{4.4}}
+    \capa{9}{
       \draw[guia] (1.464,-\pinf+2.071) -- (1.464,3.6) -- (0,3.6) node[left,black] {$p_1^0$};
       \draw[guia] (2.288,-\pinf+2.426) -- (2.288,2.025) -- (0,2.025) node[left,black] {$p_1^1$};
       \draw[guia] (3.188,-\pinf+2.705) -- (3.188,1.296) -- (0,1.296) node[left,black] {$p_1^2$};
+    }
+    \capa{10}{
       \draw[curva1] plot[domain=4.6:1.05,samples=60,smooth,variable=\p] ({xu(\p)},{0.9*\p})
         node[etiqueta,right] {$x_1(p_1;\,p_2,\overline{W})$};
       \node[punto] at (1.464,3.6) {};
       \node[punto] at (2.288,2.025) {};
       \node[punto] at (3.188,1.296) {};
-    \end{scope}
-  }
+    }
+  \end{scope}
 \end{tikzpicture}
 \end{document}

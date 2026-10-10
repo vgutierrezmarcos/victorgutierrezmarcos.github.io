@@ -32,9 +32,14 @@ Para cada gráfico:
      las coordenadas: si dos curvas son tangentes o se cortan en un punto, que
      lo hagan de verdad (usa funciones con `plot` o `intersections`).
    - Etiquetas en matemáticas (`$x_1$`, `$U_0$`) y en castellano.
-   - **Capas**: envuelve en `\capa{n}{…}` lo que en la pizarra se dibuja
-     después, siguiendo `capas` del pedido (1 = lo primero; lo que no está
-     en ninguna capa se ve siempre).
+   - **Orden y capas** (el vídeo dibuja el gráfico trazo a trazo en el orden
+     del código): escribe el código en el orden en que el opositor lo
+     dibujaría en la pizarra (ejes y rótulos, primera curva y su rótulo,
+     puntos, proyecciones, desplazamientos…). Cada cosa que se nombra por
+     separado va en su propia `\capa{n}{…}` (1 = lo primero), siempre como
+     instrucción completa, nunca dentro de un camino; los nodos con nombre que
+     use una capa posterior se definen en su capa o antes. Lo que no está en
+     ninguna capa se ve siempre.
    - Gráficos de datos: copia el CSV de `D/_trabajo/datos/` a `D/datos/`
      (esa carpeta sí va a git) y léelo con `pgfplots` desde
      `../datos/<nombre>.csv`.

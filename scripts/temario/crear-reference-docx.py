@@ -134,19 +134,32 @@ def main():
     t = estilos['Title']
     fuente(t, tam=13, color=MORADO, negrita=True, mayus=True)
     t.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    t.paragraph_format.space_after = Pt(4)
     h1 = estilos['Heading 1']
     fuente(h1, tam=12, color=RGBColor(0xFF, 0xFF, 0xFF), negrita=True, mayus=True)
     sombreado(h1.element.get_or_add_pPr(), '5F2987')
     h1.paragraph_format.space_before = Pt(14)
     h1.paragraph_format.space_after = Pt(6)
+    # Los niveles se distinguen como en el PDF: banda, subrayado, sangrado en
+    # cursiva y más sangrado
     h2 = estilos['Heading 2']
-    fuente(h2, tam=11, color=MORADO, negrita=True, mayus=False)
-    sombreado(h2.element.get_or_add_pPr(), 'E2EFD9')
+    fuente(h2, tam=12, color=MORADO, negrita=True, mayus=False)
+    bordes(h2.element.get_or_add_pPr(), '5F2987', lados=('bottom',), grosor='4', espacio='1')
+    h2.paragraph_format.space_before = Pt(12)
     h3 = estilos['Heading 3']
     fuente(h3, tam=11, color=MORADO, negrita=False, cursiva=True)
+    h3.paragraph_format.left_indent = Cm(0.5)
     for nombre in ('Heading 4', 'Heading 5', 'Heading 6'):
         try:
-            fuente(estilos[nombre], tam=11, color=RGBColor(0x4A, 0x1F, 0x6B), negrita=True)
+            fuente(estilos[nombre], tam=11, color=RGBColor(0x4A, 0x1F, 0x6B), negrita=False, cursiva=True)
+            estilos[nombre].paragraph_format.left_indent = Cm(1.0)
+        except KeyError:
+            pass
+    # Ningún título puede quedar solo al pie de una página
+    for nombre in ('Title', 'Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 6'):
+        try:
+            estilos[nombre].paragraph_format.keep_with_next = True
+            estilos[nombre].paragraph_format.keep_together = True
         except KeyError:
             pass
 
@@ -157,6 +170,8 @@ def main():
             e.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
         except KeyError:
             pass
+    # Espacio en blanco tras el título (la fecha es lo último de la cabecera)
+    estilos['Date'].paragraph_format.space_after = Pt(30)
 
     # Figuras, notas y bibliografía
     for nombre in ('Figure', 'Captioned Figure'):

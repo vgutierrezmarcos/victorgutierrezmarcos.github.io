@@ -1,32 +1,39 @@
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
+\pgfdeclarelayer{frente}\pgfsetlayers{background,main,frente}
 \begin{document}
 % Recta inicial: x2 = 4 - 0,8 x1, se elige x0 = (2,5; 2).
 % Curva de indiferencia por x0: x2 = -1,2 + 12,8/(x1 + 1,5), convexa y tangente a la recta inicial en x0.
 % Recta más inclinada por x0: x2 = 5,5 - 1,4 x1, se elige x1 = (1,8; 2,98), por encima de U0 (2,68).
 % Recta menos inclinada por x0: x2 = 3 - 0,4 x1, se elige x2 = (4; 1,4), por encima de U0 (1,13).
 \begin{tikzpicture}[tcee,scale=0.8]
-  \capa{1}{
-    \ejes{$x_1$}{$x_2$}{8.6}{5.8}
+  \capa{1}{\ejes{$x_1$}{$x_2$}{8.6}{5.8}}
+  \capa{2}{
     \fill[area] (0,0) -- (0,4) -- (5,0) -- cycle;
     \draw[curva1] (0,4) -- (5,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};
-    \node[etiqueta,align=center,font=\footnotesize] at (1.25,0.85) {revelado\\peor que $x^0$};
   }
-  \capa{2}{
-    \fill[area2] (1.8,5.6) -- (1.8,2.98) -- (2.5,2.98) -- (2.5,2) -- (8.2,2) -- (8.2,5.6) -- cycle;
+  % x0 en la capa de primer plano: queda por encima de las rectas y la curva que pasan por él
+  \capa{3}{\begin{pgfonlayer}{frente}\node[punto,label={[etiqueta]above right:$x^0$}] at (2.5,2) {};\end{pgfonlayer}}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize] at (1.25,0.85) {revelado\\peor que $x^0$};}
+  \capa{5}{
     \draw[curva2] (0,5.5) -- (3.929,0) node[etiqueta,below] {$p^1$};
     \node[punto,label={[etiqueta]above right:$x^1$}] at (1.8,2.98) {};
+  }
+  % la región revelada mejor se sombrea por debajo de lo ya dibujado (capa de fondo)
+  \capa{6}{
+    \begin{scope}[on background layer]
+      \fill[area2] (1.8,5.6) -- (1.8,2.98) -- (2.5,2.98) -- (2.5,2) -- (8.2,2) -- (8.2,5.6) -- cycle;
+    \end{scope}
     \node[etiqueta,align=center,font=\footnotesize] at (5.3,4.3) {revelado\\mejor que $x^0$};
   }
-  \capa{3}{
-    \draw[curvanueva,desplazada] plot[domain=1.0:6.0,samples=60] (\x,{-1.2+12.8/(\x+1.5)})
-      node[etiqueta,below right=0pt and -2pt] {$U^0$};
-  }
-  \capa{4}{
-    \fill[area2] (4,2) -- (4,1.4) -- (8.2,1.4) -- (8.2,2) -- cycle;
+  \capa{7}{\draw[curvanueva,desplazada] plot[domain=1.0:6.0,samples=60] (\x,{-1.2+12.8/(\x+1.5)})
+      node[etiqueta,below right=0pt and -2pt] {$U^0$};}
+  \capa{8}{
     \draw[curva3] (0,3) -- (7.5,0) node[etiqueta,above right=1pt and -2pt] {$p^2$};
     \node[punto,label={[etiqueta]above right:$x^2$}] at (4,1.4) {};
+    \begin{scope}[on background layer]
+      \fill[area2] (4,2) -- (4,1.4) -- (8.2,1.4) -- (8.2,2) -- cycle;
+    \end{scope}
   }
-  \node[punto,label={[etiqueta]above right:$x^0$}] at (2.5,2) {};
 \end{tikzpicture}
 \end{document}

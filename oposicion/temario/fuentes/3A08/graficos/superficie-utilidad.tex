@@ -1,0 +1,51 @@
+% Superficie de utilidad U(x1,x2) = (x1·x2)^(1/2) cortada a los niveles U = 1, 2 y 3,
+% y proyección de los cortes sobre el plano (x1,x2): el mapa de curvas de indiferencia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  superficie/.style={surf,shader=faceted,fill opacity=0.55,draw=tceemorado!40,line width=0.15pt,
+    colormap={tcee}{rgb255=(226,239,217) rgb255=(167,137,189)}},
+  corte/.style={curvanueva,line width=1.1pt},
+  proyeccion/.style={curva1,line width=1.1pt},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- panel izquierdo: la superficie en tres dimensiones ----------
+  \begin{axis}[name=tresd,width=8.2cm,height=7.6cm,view={30}{25},axis lines=none,
+      xmin=0,xmax=4.4,ymin=0,ymax=4.4,zmin=0,zmax=4.4,clip=false]
+    % 1: ejes
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.6,0,0) node[below] {$x_1$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.6,0) node[right] {$x_2$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U$};}
+    % 2: la superficie de utilidad
+    \capa{2}{\addplot3[superficie,domain=0:4,y domain=0:4,samples=17,samples y=17] {sqrt(x*y)};}
+    \capa{2}{\node[etiqueta] at (axis cs:4,4,4.5) {$U(x_1,x_2)$};}
+    % 3-5: cortes a los niveles 1, 2 y 3 y su proyección en el plano
+    \capa{3}{\addplot3[corte,domain=0.25:4,samples=40,samples y=0] (x,{1/x},1);}
+    \capa{3}{\addplot3[proyeccion,domain=0.25:4,samples=40,samples y=0] (x,{1/x},0);}
+    \capa{3}{\draw[guia] (axis cs:1,1,1) -- (axis cs:1,1,0);}
+    \capa{3}{\node[etiqueta,text=tceerojo,anchor=west] at (axis cs:4,0.25,1) {$U=1$};}
+    \capa{4}{\addplot3[corte,domain=1:4,samples=40,samples y=0] (x,{4/x},2);}
+    \capa{4}{\addplot3[proyeccion,domain=1:4,samples=40,samples y=0] (x,{4/x},0);}
+    \capa{4}{\draw[guia] (axis cs:2,2,2) -- (axis cs:2,2,0);}
+    \capa{4}{\node[etiqueta,text=tceerojo,anchor=west] at (axis cs:4,1,2) {$U=2$};}
+    \capa{5}{\addplot3[corte,domain=2.25:4,samples=40,samples y=0] (x,{9/x},3);}
+    \capa{5}{\addplot3[proyeccion,domain=2.25:4,samples=40,samples y=0] (x,{9/x},0);}
+    \capa{5}{\draw[guia] (axis cs:3,3,3) -- (axis cs:3,3,0);}
+    \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (axis cs:4,2.25,3) {$U=3$};}
+  \end{axis}
+  % ---------- panel derecho: el mapa de curvas de indiferencia ----------
+  \begin{scope}[shift={(8.6,0.6)}]
+    % 6: ejes del plano
+    \capa{6}{\ejes{$x_1$}{$x_2$}{4.6}{4.6}}
+    % 7: las tres curvas de indiferencia, de menor a mayor utilidad
+    \capa{7}{\draw[curva1] plot[domain=0.25:4.2,samples=50] (\x,{1/\x}) node[etiqueta,right] {$U=1$};}
+    \capa{7}{\draw[curva1] plot[domain=0.95:4.2,samples=50] (\x,{4/\x}) node[etiqueta,right] {$U=2$};}
+    \capa{7}{\draw[curva1] plot[domain=2.1:4.2,samples=50] (\x,{9/\x}) node[etiqueta,right] {$U=3$};}
+    % 8: dirección de mayor utilidad
+    \capa{8}{\draw[flecha] (1.2,1.2) -- (2.6,2.6) node[etiqueta,above,text=tceerojo] {más utilidad};}
+    \capa{8}{\node[font=\small,align=center,anchor=north] at (2.3,-0.55) {mapa de curvas de indiferencia:\\ proyección de los cortes};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

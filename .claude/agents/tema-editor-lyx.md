@@ -38,9 +38,9 @@ sencillo y solo las órdenes de `tcee.sty`):
 \section*{Conclusión}
 \minutos{3}
 ...
-\bibliografia
 \appendix
-\section{Anexo: ...}   % si hay anexos
+\section{Anexo: ...}   % anexos ANTES de la bibliografía (derivaciones, test…)
+\bibliografia          % ya pone su salto de página
 \end{document}
 ```
 
@@ -49,7 +49,16 @@ sencillo y solo las órdenes de `tcee.sty`):
   las que rechaces razonadamente (anótalo en el informe). Mantén el estilo
   esquemático con `itemize` anidados (hasta 4 niveles) y párrafos breves.
 - Fórmulas en `equation`/`align` (con `\label` si se citan) o `$…$`.
-- Notas al pie con `\footnote{…}`; citas con `\footcite[pág.]{clave}`.
+- Citas en el texto, enlazadas a la bibliografía: `\textcite[pág.]{clave}` si el
+  autor se nombra en la frase («\textcite{slutsky1915} descompone…», sin
+  repetir nombre ni año) y `\parencite[pág.]{clave}` si no. **Nunca**
+  `\footcite` ni notas al pie solo para autor y año; `\footnote{…}` solo para
+  aclaraciones con texto.
+- `\clearpage` justo después de la introducción.
+- Introducción con sus cinco bloques (enganche, relevancia, contextualización,
+  problemática, estructura) y conclusión con los suyos (CRITERIOS.md, 2).
+- Las derivaciones que no se cantan se pasan a un anexo, nunca se borran.
+- Preguntas de test: solo el enlace genérico al simulador (CRITERIOS.md, 2).
 - Cajas: `notaopositor`, `anotaciones`, `ideaclave`.
 - Figuras:
   ```latex

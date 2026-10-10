@@ -25,10 +25,31 @@ Cada tema revisado debe quedar:
 
 - Castellano cuidado, con todas las tildes. Términos en inglés en cursiva
   (*second-best*, *trade-off*) solo si son los habituales en la literatura.
-- Estructura del tema: **Introducción** (enganche, relevancia, contextualización
-  y estructura de la exposición), apartados numerados **I., II., III.** con
-  subapartados **I.1., I.1.1.**, y **Conclusión** (recapitulación, valoración y
-  cierre). Introducción y conclusión, unos 3 minutos cada una en el cante.
+- Estructura del tema (guía de Víctor «Cómo cantar un tema»,
+  `oposicion/organizacion/como_cantar_un_tema.pdf`, y la de Manuel,
+  manuelcabadogarcia.es/como-cantar-un-tema.html):
+  - **Introducción**, siempre con los mismos cinco bloques: **Enganche**,
+    **Relevancia**, **Contextualización**, **Problemática** (preguntas clave) y
+    **Estructura** (los apartados y por qué ese orden). Las definiciones básicas
+    se dan aquí.
+  - Apartados numerados **I., II., III.** con subapartados **I.1., I.1.1.**
+    Cada apartado empieza anunciando su conclusión y termina con una
+    recapitulación y el enlace con el siguiente. Los modelos siguen el orden
+    idea, supuestos, desarrollo (analítico y gráfico), implicaciones,
+    extensiones/evidencia y valoración. Cada concepto importante: definición,
+    interpretación analítica e interpretación gráfica.
+  - **Conclusión**, con sus bloques: **Recapitulación** (ideas clave, sin
+    repetir el tema), **Relevancia**, **Extensiones** (otros enfoques y
+    partes del temario, para «lanzar la caña» al tribunal), **Opinión** (si
+    procede) e **Idea final** (p. ej., la respuesta a la problemática).
+  - Introducción y conclusión, unos 3 minutos cada una en el cante.
+- Orden del final del documento: **anexos** (con `\appendix`) y después la
+  **bibliografía**. Salto de página (`\clearpage`) tras la introducción; el de
+  antes de la bibliografía lo pone `\bibliografia`.
+- Las derivaciones que no se cantan (agregaciones de Engel y Cournot,
+  homogeneidad, simetría, identidades…) **no se borran**: van a un anexo.
+- Enlace a preguntas de test: nunca a quia.com; un único enlace genérico al
+  simulador: https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html
 - Mantener el estilo esquemático de los temas actuales: viñetas jerárquicas
   (■, –, ○), conceptos clave en **negrita** (`\concepto{}`), autores en
   versalitas (`\autor{}`) con el año de la obra.
@@ -74,8 +95,11 @@ el texto original y lo que se hizo.
 - **Doble comprobación**: cada cifra que cambia se comprueba en una segunda
   consulta independiente (otra tabla, otro organismo o la publicación oficial).
   Si no cuadra, se deja el dato anterior y se anota la duda.
-- **Cómo citar**: cada dato con `\footcite{clave}` a una entrada del
-  `.bib` del tema. Para fuentes en línea: autor institucional, título, año,
+- **Cómo citar**: dentro del texto, enlazado a la bibliografía, **nunca con
+  una nota al pie solo para autor y año**. Si el autor se nombra en la frase,
+  `\textcite{clave}` (sale «Slutsky (1915)»); si no, `\parencite{clave}`
+  («(INE, 2026)»). Las notas al pie quedan para aclaraciones con texto. Cada
+  dato cita una entrada del `.bib` del tema. Para fuentes en línea: autor institucional, título, año,
   `url` y `urldate` (fecha de consulta). Gráficos y tablas con `\fuente{…}`.
 - Se respetan las citas que ya hay en el tema (bibliografía, notas al pie).
   Si una cita antigua no se puede comprobar, se anota en el informe.
@@ -107,8 +131,18 @@ el texto original y lo que se hizo.
   datos), con los estilos de `oposicion/temario/latex/tikz-tcee.tex`: ejes con
   `\ejes`, curvas `curva1`…`curva4`, desplazamientos `curvanueva` y
   `desplazada`, líneas guía `\proyeccion`.
-- Cada elemento que en el cante se dibuja después va en `\capa{n}{…}`, en el
-  orden en que se dibujaría en la pizarra (el vídeo los muestra en ese orden).
+- El vídeo dibuja cada gráfico **trazo a trazo en el orden del código**: el
+  código va en el orden en que el opositor lo dibujaría en la pizarra para
+  demostrar que lo entiende (ejes y sus rótulos; primera curva y su rótulo;
+  punto de equilibrio y sus proyecciones; desplazamiento; nuevo equilibrio…).
+- Cada cosa que la narración nombra por separado va en su propia
+  `\capa{n}{…}` (de grano fino), siempre como instrucción completa (nunca
+  dentro de un camino). Los nodos con nombre que use una capa posterior se
+  definen en la capa en que se dibujan o antes.
+- Gráficos que muestran **cómo se obtiene** un concepto (no solo el resultado):
+  p. ej., la curva de indiferencia como frontera de los conjuntos «al menos
+  tan bueno como» y «no mejor que», o el mapa de indiferencia como proyección
+  de la superficie de utilidad.
 - Los gráficos de datos (series) se hacen con pgfplots a partir de
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
@@ -116,15 +150,73 @@ el texto original y lo que se hizo.
 
 ## 8. Guion del cante y vídeo
 
-- `guion-cante.md`: esquema de pizarra (lo que se escribe al empezar) y el
-  texto del cante, apartado a apartado, con minutos. Unas **4.000 palabras**
-  (≈135 palabras por minuto, 30 minutos).
-- Registro: el de un opositor ante el tribunal («Señores miembros del
-  tribunal…» solo al principio), claro, sin leer fórmulas largas: se dibujan.
-- Vídeo: voz **es-ES-AlvaroNeural** (Edge TTS), velocidad normal. Entre 27 y
-  33 minutos. Pizarra blanca con la estética de la web. Se pueden incluir
-  imágenes (retratos de autores, portadas) solo si son de dominio público o
-  con licencia libre (Wikimedia Commons), citando la fuente en el `pie`.
+### Cómo se canta (guías de Víctor y de Manuel)
+
+- **Sin saludo**: se lee el título del tema y se entra directamente en el
+  enganche. Nada de «Señores miembros del tribunal».
+- Introducción con sus cinco bloques **en este orden y nombrándolos con
+  naturalidad** para que el tribunal sepa dónde está: enganche, relevancia,
+  contextualización, problemática y estructura.
+- Al empezar cada apartado se dice cuál es («Paso al segundo bloque de la
+  exposición: la estática comparativa») y su conclusión anticipada; al
+  terminarlo, una recapitulación breve y el puente al siguiente.
+- Conectores que guían al tribunal: «en primer lugar», «a continuación»,
+  «como acabamos de ver», «esto nos lleva a…», «recapitulando…».
+- **Pausas** entre bloques y apartados (el vídeo las pone: 1,8 s entre
+  bloques y 1 s entre apartados).
+- Lenguaje formal: «la exposición», no «el tema»; sin muletillas.
+- La conclusión **empieza siempre por «En conclusión,» o «A modo de
+  conclusión,»** (nunca «termino ya» ni similares) y sigue sus bloques:
+  recapitulación, relevancia, extensiones, opinión e idea final.
+- **No se dicen números de temas** en voz alta («como veremos en el 3.A.9»):
+  se mencionan los enfoques o extensiones por su contenido («la teoría de la
+  dualidad», «la demanda bajo incertidumbre»). En el guion escrito sí puede
+  figurar el número entre corchetes como nota.
+- **Nunca** se termina dando las gracias ni con fórmulas de despedida: la idea
+  final es la última frase. El vídeo pone después la pantalla de cierre en
+  silencio.
+- Se usa la pizarra solo cuando ayuda (gráficos, fórmulas clave, esquema); la
+  introducción y la conclusión se cantan sin pizarra.
+
+### `guion-cante.md`
+
+- Esquema de pizarra y texto del cante apartado a apartado, con minutos.
+- Ritmo algo más rápido que el de una lectura pausada para que quepa más
+  contenido: unas **4.800 palabras** de narración para 30 minutos (≈165 por
+  minuto con la voz del vídeo). La medida buena es la del vídeo:
+  `generar-video.py T --medir` dice cuántas palabras sobran o faltan.
+
+### Vídeo (`video/escenas.yaml`, formato en `scripts/temario/generar-video.py`)
+
+- **Exactamente 30:00**: el script ajusta el ritmo de toda la narración (sin
+  cambiar el tono) para que acabe justo antes de la pantalla final. El ajuste
+  debe quedar entre ×0,95 y ×1,05; si no, se recorta o se alarga el guion.
+- Voz: Edge TTS `es-ES-AlvaroNeural` a **+10 %** mientras no haya voz clonada
+  de Víctor (`voz: {motor: xtts, muestra: …}`). Los nombres que la voz lee mal
+  van en `scripts/temario/pronunciacion.yaml` (comunes) o en `pronunciacion:`
+  del tema.
+- Cabecera tipo Beamer: los bloques de la exposición (`bloques`, con sus
+  minutos) y un punto por apartado (cada escena es un apartado o
+  subapartado, con `titulo`), el tiempo transcurrido y el que queda.
+- Dos modos, y que se distinga siempre lo que es pizarra de lo que es
+  didáctico:
+  - `modo: guion` cuando el opositor no usaría la pizarra (introducción,
+    conclusión, partes habladas): en pantalla el guion en viñetas sangradas
+    que aparecen según se dicen. En la introducción y en la conclusión,
+    `estructura:` con sus cinco bloques y `parte:` para ir pasando de uno a
+    otro.
+  - `modo: pizarra` cuando se expone con gráficos y fórmulas: la pantalla es
+    solo la pizarra (tres paneles). Hay que **planificar la pizarra** como en
+    el examen: qué va en cada panel (p. ej., panel 1 el título del apartado y
+    las fórmulas, paneles 2-3 el gráfico), cuándo se borra y que nunca se
+    llene (el script avisa). Lo didáctico para el opositor (definición
+    precisa, autor y año, idea clave) va en `apunte:`, en la franja de abajo.
+- Los gráficos se dibujan con las capas del TikZ (`capa:` creciente, justo
+  cuando la narración lo nombra) y el script los traza en el orden del código;
+  si un paso tiene demasiado dibujo para su narración, el script avisa y hay
+  que repartirlo en más pasos.
+- Imágenes (retratos, portadas) solo de dominio público o con licencia libre,
+  citando la fuente.
 - El vídeo se guarda en `Vídeos\temario\` de Windows. Víctor lo sube a
   YouTube como **no listado** y anota el enlace en
   `oposicion/temario/videos.json`.

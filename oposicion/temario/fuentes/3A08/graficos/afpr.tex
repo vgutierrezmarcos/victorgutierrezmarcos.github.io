@@ -6,21 +6,15 @@
 % Recta 1 (se elige x1): x2 = 3,41 - 0,55 x1  -> x2 asequible (1,21 > 1), x0 no (2,97 < 3,6)
 % Recta 2 (se elige x2): x2 = 2,2 - 0,3 x1    -> x0 no asequible (1,96 < 3,6), x1 tampoco (1,54 < 2,2)
 \begin{tikzpicture}[tcee,xscale=0.85]
-  \capa{1}{
-    \ejes{$x_1$}{$x_2$}{8}{4.8}
-    \draw[curva1] (0,4.32) -- (4.8,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};
-    \node[punto,label={[etiqueta]above right:$x^0$}] at (0.8,3.6) {};
-    \node[punto,label={[etiqueta]below:$x^1$}] at (2.2,2.2) {};
-    \node[etiqueta,anchor=west] at (4.3,4.4) {$x^0$ se revela directamente preferida a $x^1$};
-  }
-  \capa{2}{
-    \draw[curva2] (0,3.41) -- (6.2,0) node[etiqueta,below] {$p^1$};
-    \node[punto,label={[etiqueta]above right:$x^2$}] at (4,1) {};
-    \node[etiqueta,anchor=west] at (4.3,3.95) {$x^1$ se revela directamente preferida a $x^2$};
-  }
-  \capa{3}{
-    \draw[curva3,desplazada] (0,2.2) -- (7.333,0) node[etiqueta,above right=1pt and -2pt] {$p^2$};
-    \node[etiqueta,anchor=west,text=tceerojo] at (4.3,3.5) {$\Rightarrow x^0$ indirectamente preferida a $x^2$};
-  }
+  \capa{1}{\ejes{$x_1$}{$x_2$}{8}{4.8}}
+  \capa{2}{\draw[curva1] (0,4.32) -- (4.8,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$x^0$}] at (0.8,3.6) {};}
+  \capa{4}{\node[punto,label={[etiqueta]below:$x^1$}] at (2.2,2.2) {};}
+  \capa{5}{\node[etiqueta,anchor=west] at (4.3,4.4) {$x^0$ se revela directamente preferida a $x^1$};}
+  \capa{6}{\draw[curva2] (0,3.41) -- (6.2,0) node[etiqueta,below] {$p^1$};}
+  \capa{7}{\node[punto,label={[etiqueta]above right:$x^2$}] at (4,1) {};}
+  \capa{8}{\node[etiqueta,anchor=west] at (4.3,3.95) {$x^1$ se revela directamente preferida a $x^2$};}
+  \capa{9}{\draw[curva3,desplazada] (0,2.2) -- (7.333,0) node[etiqueta,above right=1pt and -2pt] {$p^2$};}
+  \capa{10}{\node[etiqueta,anchor=west,text=tceerojo] at (4.3,3.5) {$\Rightarrow x^0$ indirectamente preferida a $x^2$};}
 \end{tikzpicture}
 \end{document}

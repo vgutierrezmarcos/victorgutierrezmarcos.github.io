@@ -7,16 +7,18 @@ revision-temario; la web no cambia hasta que se fusione con main).
     python3 scripts/temario/publicar-tema.py 3A08
 
 En oposicion/temario/<ejercicio>.html deja la línea del tema con:
-  - el título enlazado al PDF (como ahora) y el botón DOCX;
-  - un botón WEB a la página HTML del tema;
+  - el título enlazado a la página web del tema (HTML);
+  - los botones PDF y DOCX para descargarlo;
   - un botón VÍDEO si el tema tiene vídeo en oposicion/temario/videos.json
     ({"3A08": "https://youtu.be/…"}).
 Si el tema figuraba como no disponible, pasa a disponible. En el 4.º ejercicio
 se quitan las etiquetas «Temario anterior» y «Parcial»: el tema revisado ya
 está adaptado al temario nuevo.
 
-Después ejecuta build-app-data.js (temario.json, con urlHtml y urlVideo) y
-build-search-index.js con el deno de Quarto.
+En build-search-index.js el tema pasa a enlazar a su página web. Después
+ejecuta build-app-data.js (temario.json: url sigue siendo el PDF, para la
+app, y urlHtml la página web; urlVideo si hay vídeo) y build-search-index.js
+con el deno de Quarto.
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -30,12 +32,14 @@ from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar  # noqa: E402
 
 
 def linea_tema(tema, titulo_html, video):
+    """El título lleva a la página web del tema; PDF y Word se descargan con los botones."""
     c = tema.carpeta
     a = tema.archivo
-    partes = [f'<div class="tema-item"><a href="{c}/{a}.pdf" target="_blank">Tema {tema.codigo}: '
+    partes = [f'<div class="tema-item"><a href="{c}/{a}.html">Tema {tema.codigo}: '
               f'<span class="tema-item-title">{titulo_html}</span></a>',
-              f'<a class="tema-item-docx" href="{c}/{a}.docx" download title="Descargar el tema en Word">DOCX</a>',
-              f'<a class="tema-item-docx tema-item-html" href="{c}/{a}.html" title="Leer el tema en la web">WEB</a>']
+              f'<a class="tema-item-docx tema-item-pdf" href="{c}/{a}.pdf" target="_blank" '
+              f'title="Descargar el tema en PDF">PDF</a>',
+              f'<a class="tema-item-docx" href="{c}/{a}.docx" download title="Descargar el tema en Word">DOCX</a>']
     if video:
         partes.append(f'<a class="tema-item-docx tema-item-video" href="{video}" target="_blank" '
                       f'rel="noopener" title="Vídeo del cante del tema">VÍDEO</a>')
@@ -68,7 +72,16 @@ def main():
     nueva = linea_tema(tema, titulo.group(1).strip() if titulo else tema.titulo(), video)
     html = html[:m.start()] + nueva + html[m.end():]
     open(ruta, 'w', encoding='utf-8').write(html)
-    print(f'{os.path.relpath(ruta, RAIZ)}: tema {tema.codigo} con PDF, DOCX, WEB' + (' y VÍDEO' if video else ''))
+    print(f'{os.path.relpath(ruta, RAIZ)}: tema {tema.codigo} con web, PDF, DOCX' + (' y VÍDEO' if video else ''))
+
+    # El buscador también lleva a la página web del tema
+    ruta_buscador = os.path.join(RAIZ, 'build-search-index.js')
+    if os.path.exists(ruta_buscador):
+        js = open(ruta_buscador, encoding='utf-8').read()
+        nuevo = js.replace(f"file: '{tema.archivo}.pdf'", f"file: '{tema.archivo}.html'")
+        if nuevo != js:
+            open(ruta_buscador, 'w', encoding='utf-8').write(nuevo)
+            print(f'build-search-index.js: el tema {tema.codigo} enlaza a su página web')
 
     for script in ('build-app-data.js', 'build-search-index.js'):
         if os.path.exists(os.path.join(RAIZ, script)):

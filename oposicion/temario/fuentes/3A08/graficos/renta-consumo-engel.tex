@@ -16,46 +16,54 @@
   \ejes{$x_1$}{$x_2$}{6.9}{6.9}
   \capa{1}{
     \draw[curva1] (0,3) -- (3,0);
+    \node[left,font=\footnotesize] at (0,3) {$\overline{W}^0/p_2$};
+  }
+  \capa{2}{
     \draw[curva2] plot[domain=0.22:2.3,samples=50,smooth,variable=\t]
       ({2.299*exp(G(0.7)-G(\t))},{\t});
     \node[punto] (E0) at (2.299,0.7) {};
     \node[etiqueta,left=5pt,yshift=4pt] at (E0) {$E_0$};
-    \node[left,font=\footnotesize] at (0,3) {$\overline{W}^0/p_2$};
-  }
-  \capa{2}{
-    \draw[curva1] (0,4.5) -- (4.5,0);
-    \draw[curva1] (0,6.233) -- (6.233,0);
-    \draw[curva2] plot[domain=0.6:3.4,samples=50,smooth,variable=\t]
-      ({3*exp(G(1.5)-G(\t))},{\t});
-    \draw[curva2] plot[domain=2.8:6.2,samples=50,smooth,variable=\t]
-      ({1.833*exp(G(4.4)-G(\t))},{\t});
-    \node[punto] (E1) at (3,1.5) {};
-    \node[punto] (E2) at (1.833,4.4) {};
-    \node[etiqueta,above right] at (E1) {$E_1$};
-    \node[etiqueta,above right] at (E2) {$E_2$};
-    \node[left,font=\footnotesize] at (0,4.5) {$\overline{W}^1/p_2$};
-    \node[left,font=\footnotesize] at (0,6.233) {$\overline{W}^2/p_2$};
   }
   \capa{3}{
-    \draw[curvanueva] plot[domain=0.02:5.6,samples=100,smooth,variable=\t]
-      ({g(\t)},{\t}) node[etiqueta,above] {CRC};
+    \draw[curva1] (0,4.5) -- (4.5,0);
+    \node[left,font=\footnotesize] at (0,4.5) {$\overline{W}^1/p_2$};
   }
-  % ---------------- Panel derecho: curva de Engel ----------------
   \capa{4}{
-    \begin{scope}[shift={(8.6,0)}]
-      \ejes{$\overline{W}$}{$x_1$}{7.6}{5.5}
-      % x1 en escala 1,6
-      \draw[curva1] plot[domain=0.02:5.0,samples=100,smooth,variable=\t]
-        ({\t+g(\t)},{1.6*g(\t)}) node[etiqueta,right] {$x_1(\bar p,\overline{W})$};
+    \draw[curva2] plot[domain=0.6:3.4,samples=50,smooth,variable=\t]
+      ({3*exp(G(1.5)-G(\t))},{\t});
+    \node[punto] (E1) at (3,1.5) {};
+    \node[etiqueta,above right] at (E1) {$E_1$};
+  }
+  \capa{5}{
+    \draw[curva1] (0,6.233) -- (6.233,0);
+    \node[left,font=\footnotesize] at (0,6.233) {$\overline{W}^2/p_2$};
+  }
+  \capa{6}{
+    \draw[curva2] plot[domain=2.8:6.2,samples=50,smooth,variable=\t]
+      ({1.833*exp(G(4.4)-G(\t))},{\t});
+    \node[punto] (E2) at (1.833,4.4) {};
+    \node[etiqueta,above right] at (E2) {$E_2$};
+  }
+  \capa{7}{\draw[curvanueva] plot[domain=0.02:5.6,samples=100,smooth,variable=\t]
+      ({g(\t)},{\t}) node[etiqueta,above] {CRC};}
+  % ---------------- Panel derecho: curva de Engel ----------------
+  \begin{scope}[shift={(8.6,0)}]
+    \capa{8}{\ejes{$\overline{W}$}{$x_1$}{7.6}{5.5}}
+    % x1 en escala 1,6
+    \capa{9}{\draw[curva1] plot[domain=0.02:5.0,samples=100,smooth,variable=\t]
+        ({\t+g(\t)},{1.6*g(\t)}) node[etiqueta,right] {$x_1(\bar p,\overline{W})$};}
+    \capa{10}{
       \foreach \w/\x/\e/\n in {3.0/2.299/0/, 4.5/3/1/{=\overline{W}^{*}}, 6.233/1.833/2/}{
         \draw[guia] (\w,0) -- (\w,1.6*\x) -- (0,1.6*\x);
         \node[below,font=\footnotesize] at (\w,0) {$\overline{W}^{\e}\n$};
         \node[left,font=\footnotesize] at (0,1.6*\x) {$x_1^{\e}$};
         \node[punto] at (\w,1.6*\x) {};
       }
+    }
+    \capa{11}{
       \node[etiqueta,font=\footnotesize,text=tceeverde,rotate=42] at (2.3,4.2) {normal};
       \node[etiqueta,font=\footnotesize,text=tceerojo,rotate=-35] at (6.3,4.1) {inferior};
-    \end{scope}
-  }
+    }
+  \end{scope}
 \end{tikzpicture}
 \end{document}

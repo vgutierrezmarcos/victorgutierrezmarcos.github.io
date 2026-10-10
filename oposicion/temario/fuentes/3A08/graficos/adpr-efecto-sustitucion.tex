@@ -11,42 +11,47 @@
 %   nueva elección x1 = (3,6; 1,2), a la derecha de x0.
 \begin{tikzpicture}[tcee]
   % ---------------- Panel izquierdo ----------------
-  \capa{1}{
-    \ejes{$x_1$}{$x_2$}{6.2}{4.6}
-    \draw[curva1] (0,2.5) -- (5,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};
-    \node[punto,label={[etiqueta]above right:$x^0$}] at (3.6,0.7) {};
-    \node[punto,label={[etiqueta]below left:$x^1$}] at (2,1) {};
-  }
-  \capa{2}{
-    \draw[curva2] (0,4) -- (2.667,0) node[etiqueta,above right=1pt and -2pt] {$p^1$};
-    \node[etiqueta,align=center,anchor=south] at (3.9,3.3)
-      {$x^0$ se revela\\preferida a $x^1$};
-    \node[etiqueta,align=center,anchor=north,font=\footnotesize] at (4.6,2.1)
-      {$x^0$ no es asequible\\cuando se elige $x^1$};
-  }
+  \capa{1}{\ejes{$x_1$}{$x_2$}{6.2}{4.6}}
+  \capa{2}{\draw[curva1] (0,2.5) -- (5,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$x^0$}] at (3.6,0.7) {};}
+  \capa{4}{\node[punto,label={[etiqueta]below left:$x^1$}] at (2,1) {};}
+  \capa{5}{\node[etiqueta,align=center,anchor=south] at (3.9,3.3)
+      {$x^0$ se revela\\preferida a $x^1$};}
+  \capa{6}{\draw[curva2] (0,4) -- (2.667,0) node[etiqueta,above right=1pt and -2pt] {$p^1$};}
+  \capa{7}{\node[etiqueta,align=center,anchor=north,font=\footnotesize] at (4.6,2.1)
+      {$x^0$ no es asequible\\cuando se elige $x^1$};}
   % ---------------- Panel derecho ----------------
   \begin{scope}[xshift=7.4cm]
-    \capa{3}{
-      \ejes{$x_1$}{$x_2$}{6.6}{4.6}
+    \capa{8}{\ejes{$x_1$}{$x_2$}{6.6}{4.6}}
+    \capa{9}{
       \fill[area] (0,0) -- (0,4) -- (4,0) -- cycle;
       \draw[curva1] (0,4) -- (4,0) node[etiqueta,above right=1pt and -2pt] {$p$};
+    }
+    \capa{10}{
       \node[punto] (X0) at (2,2) {};
       \node[etiqueta,above right] at (X0) {$x^0$};
     }
-    \capa{4}{
+    % recta compensada que pasa por x0: tramo izquierdo resaltado y tramo derecho
+    \capa{11}{
       \draw[curva4,line width=2.4pt] (0,3) -- (2,2);
       \draw[curva3] (2,2) -- (6,0) node[etiqueta,above right=1pt and -2pt] {$p'$};
-      \node[punto] (X1) at (3.6,1.2) {};
-      \node[etiqueta,above right] at (X1) {$x^1$};
-      \draw[guia] (X0) -- (2,0) node[below] {$x_1^0$};
-      \draw[guia] (X1) -- (3.6,0) node[below] {$x_1^1$};
-      \draw[flecha] (2.1,0.35) -- (3.5,0.35);
+    }
+    \capa{12}{
       \node[etiqueta,align=left,anchor=south west,font=\footnotesize] at (1.75,3.15)
         {ya era asequible\\y no se eligió};
       \draw[thin,tceegris] (1.85,3.2) -- (1.0,2.58);
-      \node[etiqueta,align=left,anchor=west,font=\footnotesize] at (3.9,2.4)
-        {baja $p_1$ y se\\compensa la renta:\\elige a la derecha};
     }
+    \capa{13}{
+      \node[punto] (X1) at (3.6,1.2) {};
+      \node[etiqueta,above right] at (X1) {$x^1$};
+    }
+    \capa{14}{
+      \draw[guia] (X0) -- (2,0) node[below] {$x_1^0$};
+      \draw[guia] (X1) -- (3.6,0) node[below] {$x_1^1$};
+      \draw[flecha] (2.1,0.35) -- (3.5,0.35);
+    }
+    \capa{15}{\node[etiqueta,align=left,anchor=west,font=\footnotesize] at (3.9,2.4)
+        {baja $p_1$ y se\\compensa la renta:\\elige a la derecha};}
   \end{scope}
 \end{tikzpicture}
 \end{document}

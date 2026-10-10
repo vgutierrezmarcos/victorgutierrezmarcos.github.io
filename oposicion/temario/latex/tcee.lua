@@ -13,6 +13,10 @@ Qué hace:
   - Cambia la ruta y la extensión de los gráficos (SVG en HTML, PNG en Word).
   - Convierte las cajas (notaopositor, anotaciones, ideaclave, esquema) en
     estilos de Word y \vertema en una clase CSS.
+  - Pasa los \clearpage del PDF (construir-tema.py los deja como un entorno
+    «saltopagina») a saltos de página en Word, y pone otro antes de la
+    bibliografía. En HTML se quitan.
+  - En Word reparte el título en líneas de longitud parecida, como el PDF.
 
 Autor: Víctor Gutiérrez Marcos
 ]]
@@ -37,9 +41,37 @@ local function romano(n)
   return s
 end
 
+local SALTO = pandoc.RawBlock('openxml', '<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
+
+-- Reparte las palabras en n líneas de longitud parecida (n según la longitud)
+local function titulo_equilibrado(texto, por_linea)
+  local palabras = {}
+  for p in texto:gmatch('%S+') do palabras[#palabras + 1] = p end
+  local total = utf8.len(texto) or #texto
+  local n = math.max(1, math.ceil(total / por_linea))
+  local objetivo = total / n
+  local salida, actual, lineas = pandoc.List(), 0, 1
+  for i, p in ipairs(palabras) do
+    local largo = utf8.len(p) or #p
+    if actual > 0 and lineas < n and actual + largo / 2 > objetivo * lineas then
+      salida:insert(pandoc.LineBreak())
+      lineas = lineas + 1
+    elseif i > 1 then
+      salida:insert(pandoc.Space())
+    end
+    salida:insert(pandoc.Str(p))
+    actual = actual + largo + 1
+  end
+  return salida
+end
+
 function Meta(m)
   if m['graficos-html'] then graficos_html = pandoc.utils.stringify(m['graficos-html']) end
   if m['graficos-docx'] then graficos_docx = pandoc.utils.stringify(m['graficos-docx']) end
+  if es_docx and m.title then
+    m.title = pandoc.MetaInlines(titulo_equilibrado(pandoc.utils.stringify(m.title), 62))
+  end
+  return m
 end
 
 -- Gráficos -----------------------------------------------------------------
@@ -181,6 +213,16 @@ function Pandoc(doc)
             end
           end
           b.content = dentro
+        end
+      elseif b.t == 'Div' and b.classes:includes('saltopagina') then
+        if es_docx then bloques[i] = SALTO else table.remove(bloques, i); i = i - 1 end
+      elseif b.t == 'Div' and b.identifier == 'refs' then
+        -- La bibliografía (citeproc) empieza en página nueva, como en el PDF
+        local previo = bloques[i - 1]
+        if es_docx then
+          local pos = (previo and previo.t == 'Header') and i - 1 or i
+          table.insert(bloques, pos, SALTO)
+          i = i + 1
         end
       elseif b.t == 'Div' then
         for clase, estilo in pairs(estilos_docx) do

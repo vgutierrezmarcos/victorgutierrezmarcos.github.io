@@ -348,3 +348,66 @@ Ordenadas por prioridad. Ninguna impide compilar ni publicar el tema; las de pri
 12. **Enlace del test (Anexo C)**: el cuestionario de quia.com funciona, pero se titula «A06» (numeración anterior) y no se sabe quién lo mantiene (P49, V57). Decidir si se conserva.
 13. **Preferencias macro (Anexo B)**: KPR, GHH y JR se dejan como bloque de test con remisión a 3.A.29, como proponían C52 y K11. Si 3.A.29 ya las cubre, pueden quitarse de aquí.
 14. **Anexo 1 escaneado (P37)**: se ha quitado porque no tiene fuente identificable (¿Maté y Pérez Domínguez, 2007, o Pérez Domínguez, 2004?). Si Víctor confirma el manual y lo quiere, se puede rehacer en TikZ con su fuente.
+
+## Cambios tras la revisión de Víctor (10 oct. 2026)
+
+1. **Axiomas: no hacen falta los siete para tener una función de utilidad.**
+   - Texto (I.1.3): nueva lista al presentar los axiomas. Los tres primeros son la racionalidad. Con la continuidad ya existe una función de utilidad continua (Debreu). La monotonía y la convexidad le dan sus propiedades (creciente, cuasicóncava) y permiten la dualidad. La convexidad estricta y la diferenciabilidad simplifican (demanda única y diferenciable).
+   - Teorema de Debreu: se añade «basta con estos cuatro axiomas», con una nota: MWG (prop. 3.C.1) añade la monotonía solo para simplificar la prueba.
+   - Se reescriben la introducción a los axiomas de regularidad, su nota y el cierre («con los axiomas 1 a 4 existe…; con los demás, preferencias regulares…»).
+   - La tabla 1 cambia la columna «Grupo» por «Papel»: racionalidad / existencia de U / propiedades de U y dualidad / simplificación.
+   - Gráfico `axiomas-curva-indiferencia`: los seis paneles se reordenan en tres columnas con una llave sobre cada una: «Existencia de U continua (Debreu)» (1-3 y 4), «Propiedades de U y dualidad» (5 y 6) y «Para simplificar la exposición» (6′ y 7). Los pies de panel dicen ahora qué aporta cada axioma a U. El pie del gráfico también se ha cambiado.
+   - El gráfico `esquema-ingredientes` decía «Axiomas 1-7» → «Axiomas 1-4 (Debreu)». No queda ninguna otra frase que diga lo contrario: se han revisado la introducción, la nota al opositor y I.1-I.2.
+2. **Esquema de la página 6 del original**, rehecho en TikZ (`esquema-axiomas`, gráfico 4) e insertado tras la presentación de los axiomas, con `\fuente`. Las llaves agrupan 1-3, 1-4, 1-6 y 6′-7, como en el original. La tercera llave dice también qué propiedades da a U.
+3. **Tablas de Slutsky y esquema de elasticidades.**
+   - Tabla 3 (precio propio), con la disposición del original: ES, ER según la renta (normal / frontera / inferior) y ET según el precio (ordinario / Giffen). Tiene cuatro filas: normal; frontera; inferior con ER < |ES|; inferior con ER > |ES| (Giffen).
+   - Tabla 4 (cruzada): 3 × 3, relación neta por bien normal, frontera o inferior y relación bruta resultante. Comprobada: las casillas «ambiguo» son la de sustitutivos netos con *i* normal y la de complementarios netos con *i* inferior; con *i* frontera, la relación bruta coincide con la neta. Lleva una nota sobre la simetría de las relaciones netas.
+   - Veblen: no aparece en ninguna tabla. Se explica en la nota de la tabla 3 y en la viñeta propia que ya existía.
+   - Nuevo gráfico `elasticidades-renta-precio` (gráfico 16), rehecho de la página 26 del original. Muestra los dos ejes con sus flechas («normal ⇒ ordinario», «Giffen ⇒ inferior») y la línea entre los dos ceros (inferiores ordinarios). «Giffen o Veblen» pasa a «Giffen».
+4. **Derivaciones recuperadas: nuevo anexo B «Derivaciones»**, remitido desde el texto en cada caso. Comparando `original.md` con el tema:
+
+   | Derivación | En el original | Ahora | Correcciones |
+   |---|---|---|---|
+   | Homogeneidad de grado cero ⇒ restricción en elasticidades (Euler) | Solo «se demuestra aplicando Euler» (nota 34) | B.1, paso a paso | El original atribuía a Euler la *demostración* de la homogeneidad; Euler solo da la restricción |
+   | Agregación de Engel | Desarrollo con dos bienes (l. 934-938) | B.2 (el texto mantiene la versión compacta) | «Por el axioma de monotonía» → por la insaciabilidad local |
+   | Agregación de Cournot | Desarrollo con dos bienes (l. 1120-1130), quitado en la revisión | B.3, con dos bienes y con *n* bienes, y el caso $s_2\varepsilon_{21}=-s_1(1+\varepsilon_{11})$ | Monotonía → insaciabilidad local; la nota 47 (el consumo del bien 2 «debe aumentar») ya estaba corregida |
+   | Identidad de Roy | Solo el enunciado («∀ k») | B.4, con el teorema de la envolvente | ∀ k → ∀ i (ya corregido) |
+   | Ecuación de Slutsky (y en elasticidades) | Solo «surge de la identidad entre demanda compensada y ordinaria» (nota 46) | B.5, desde $h_i=x_i(p,E(p,\overline{U}))$ y el lema de Shephard, y en elasticidades | — |
+   | Simetría, negatividad y «al menos un sustitutivo neto» | Solo enunciados (nota 48) | B.6: matriz de Slutsky = hessiana de E (Young), concavidad de E y Euler sobre $h$ | El original lo derivaba de la agregación de Cournot; sale de la homogeneidad de $h$ (ya corregido en el texto) |
+   | ADPR ⇒ ley de la demanda compensada | Solo gráfico | B.7, demostración de MWG 2.F.1 | — |
+   | ADPR ⇒ homogeneidad | Esbozo (nota 52) | Se mantiene en la nota del texto | — |
+   | Demandas Cobb-Douglas | Solo el resultado | B.8 | — |
+   | Cobb-Douglas como límite de la CES | Captura de Wikipedia (nota 63) | B.9, L'Hôpital con pesos normalizados | — |
+   | Enfoque cardinal (CPO, λ = 1) y contraejemplo cuasilineal | Sí | Siguen en el anexo A | «U′(M)» → u′(M) |
+   | Pendiente de la curva de indiferencia y RMS | Sí | En el texto (ec. 3 y 4) | — |
+
+   No había más derivaciones en el original. El Anexo 1 escaneado en ℝ³ lo sustituye ahora el gráfico de la superficie de utilidad (punto 5). La nota al opositor de II ya no dice que estas derivaciones «solo se enuncian»: remite al anexo.
+5. **Función de utilidad y curvas de indiferencia, con definiciones formales y gráficos.**
+   - Se definen los conjuntos $B(x^0)$ («al menos tan bueno como»), $H(x^0)$ («no mejor que») e $I(x^0)=B\cap H$. Nuevo gráfico `conjuntos-contorno` (gráfico 3): la curva de indiferencia es su frontera común.
+   - Función de utilidad: interpretación (numera los conjuntos de indiferencia) y cómo se construye (diagonal, MWG 3.C.1).
+   - Nuevo gráfico `superficie-utilidad` (gráfico 6): superficie $\sqrt{x_1x_2}$ en 3D cortada en U = 1, 2 y 3, proyección de los cortes y mapa de curvas de indiferencia. Las curvas de indiferencia se definen como conjuntos de nivel (ec. 2).
+   - Las propiedades de las curvas se reescriben, cada una con el axioma que la da y su razonamiento: completitud y reflexividad, transitividad (con el argumento A, B, C), continuidad, monotonía (pendiente negativa y más utilidad cuanto más lejos) y convexidad. Nuevo gráfico `propiedades-curvas-indiferencia` (gráfico 8), con cuatro paneles.
+   - Se actualiza la nota al opositor de I.1.
+6. **Preferencias y conjunto de elección.**
+   - La relación binaria se define como subconjunto de $S\times S$, con la preferencia débil como primitiva y la notación $\preccurlyeq$, $\prec$. Los cuatro casos van ahora en lista numerada, con remisión al gráfico.
+   - Tras los axiomas: la indiferencia es una relación de equivalencia y la preferencia estricta, irreflexiva, asimétrica y transitiva.
+   - Conjunto de elección: no vacío, cerrado (con la definición por sucesiones), acotado inferiormente ($x\geq0$; antes decía «acotado por la cesta nula»; se aclara que no está acotado superiormente) y convexo (divisibilidad). Nota: $S=\mathbb{R}^n_+$ cumple las cuatro.
+7. **Partición en conjuntos de indiferencia**: la idea ya estaba. Se desarrolla en una viñeta propia tras el preorden completo: completitud (todas), reflexividad ($x^0\in I(x^0)$) y transitividad (uno solo; dos conjuntos que comparten una cesta son el mismo). Remite al panel 1-3 del gráfico 5.
+8. **Test**: el enlace a quia.com se sustituye por «Preguntas tipo test: simulador de test», que enlaza a `…/primer-ejercicio/test/simulador.html`.
+9. **Orden**: los anexos van antes de la bibliografía (`\bibliografia` justo antes de `\end{document}`), y hay un `\clearpage` tras la introducción. Anexos: A cardinal, B derivaciones (nuevo), C formas funcionales, D test.
+10. **Citas.**
+    - Ya no queda ningún `\footcite` ni `\footcites`. Cuando el autor aparece en el texto se usa `\textcite`, quitando nombre y año duplicados: «\textcite{Slutsky1915Bilancio} descompone…», «ecuación de \textcite{…}», «identidad de \textcite{Roy1947Distribution}», «forma polar de \textcite{Gorman1961Class}», «teorema de \textcite{Afriat1967Construction}». En los demás casos, y en las fuentes de datos (INE, Eurostat, BLS), se usa `\parencite`, con la puntuación detrás.
+    - Los nombres de pila desaparecen del texto cuando los sustituye `\textcite`. En Edgeworth, el nombre completo pasa a la nota de «Ysidro».
+    - Las notas que solo citaban se han quitado; las que aportan texto siguen como `\footnote`. Los dos `\cite` sueltos pasan a `\parencite`.
+    - Comprobado en el PDF: sin citas rotas ni referencias indefinidas (log y biber sin avisos) y sin duplicados del tipo «Slutsky Slutsky».
+11. **Reglas TikZ** aplicadas a los gráficos nuevos y a los existentes: código en el orden de la pizarra, capas finas y solo como instrucciones completas, nodos con nombre definidos antes de usarse. El aspecto final no cambia; la diferencia de píxeles es nula salvo dos zonas imperceptibles en `demanda-cardinal` y `precio-consumo-demanda`. Capas de los gráficos nuevos:
+    - `esquema-axiomas`: 1 completitud; 2 reflexividad; 3 transitividad; 4 llave «racionalidad»; 5 línea y continuidad; 6 llave «función de utilidad continua (Debreu)»; 7 línea y monotonía; 8 convexidad; 9 llave «propiedades de U y dualidad»; 10 línea gruesa y convexidad estricta; 11 diferenciabilidad; 12 llave «para simplificar».
+    - `axiomas-curva-indiferencia`: 1 llave «Existencia de U»; 2 panel 1-3; 3 panel continuidad; 4 llave «Propiedades de U y dualidad»; 5 monotonía; 6 convexidad; 7 llave «Para simplificar»; 8 convexidad estricta; 9 diferenciabilidad.
+    - `conjuntos-contorno`: 1 ejes; 2 $x^0$; 3 $B(x^0)$; 4 $H(x^0)$; 5 curva $I(x^0)$ como frontera común.
+    - `superficie-utilidad`: 1 ejes 3D; 2 superficie; 3-5 cortes U = 1, 2, 3 con su proyección; 6 ejes del plano; 7 mapa de curvas; 8 «más utilidad».
+    - `propiedades-curvas-indiferencia`: (a) 1 ejes, 2 $x^0$ y guías, 3 «más de todo», 4 «menos de todo», 5 curva y lectura; (b) 6 ejes, 7 tres curvas, 8 rayo y A, B, C, 9 lectura; (c) 10 ejes, 11 $U_1$, 12 $U_2$ y A, 13 B y C, 14 lectura; (d) 15 ejes, 16 conjunto superior y curva, 17 $x'$ y $x''$, 18 segmento y combinación, 19 lectura.
+    - `elasticidades-renta-precio`: 1 eje de la elasticidad-renta; 2 inferiores y normales; 3 primera necesidad y lujo; 4 eje de la elasticidad-precio; 5 Giffen y ordinarios; 6 línea entre los ceros; 7 normal ⇒ ordinario; 8 Giffen ⇒ inferior; 9 lectura.
+    - `esquema-ingredientes`: la restricción presupuestaria (capa 3) va ahora antes que el PMU (capa 4) en el código.
+    - Las capas nuevas de los otros trece gráficos están en sus `.tex`. **Ojo: `guion-cante.md` y `video/escenas.yaml` citan números de capa antiguos.**
+
+Resultado: el PDF pasa de 45 a 54 páginas y tiene 22 gráficos. `verificar-tema.py`: 0 errores. Quedan dos avisos de «cifra sin cita» que ya estaban (la nota sobre el temario de 2023 y la remisión «III.2»), además de los de LyX y del guion.

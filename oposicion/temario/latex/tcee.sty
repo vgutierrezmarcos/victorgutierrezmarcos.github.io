@@ -63,6 +63,8 @@
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \RequirePackage[hang,flushmargin]{footmisc}
+\RequirePackage{needspace}
+\RequirePackage{etoolbox}
 \renewcommand{\footnotelayout}{\footnotesize}
 \renewcommand{\thefootnote}{\arabic{footnote}}
 
@@ -90,7 +92,7 @@
 }
 \fancypagestyle{tceeprimera}{%
   \fancyhf{}%
-  \fancyhead[L]{\parbox[b]{0.2\textwidth}{\raggedright\scriptsize\itshape\color{tceemorado}Fecha de la última actualización:\\\tcee@fecha}}%
+  \fancyhead[L]{\parbox[b]{0.24\textwidth}{\raggedright\scriptsize\itshape\color{tceemorado}Última actualización:\\\tcee@fecha}}%
   \fancyhead[C]{\small\itshape\color{tceemorado}Oposición a Técnico Comercial y Economista del Estado}%
   \fancyhead[R]{\small\itshape\color{tceemorado}\tcee@codigo}%
   \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\pageref*{LastPage}}}%
@@ -101,19 +103,40 @@
 \pagestyle{tcee}
 
 % --- Título del tema --------------------------------------------------------
+% Las líneas del título salen equilibradas: se mide el título, se calcula
+% cuántas líneas necesita y se compone en una caja de 1/n de su anchura (con
+% un poco de holgura para que quepan las palabras), centrada.
+\newlength{\tcee@ancho}
+\newlength{\tcee@maximo}
+\newcount\tcee@lineas
+\newcommand{\tcee@formatotitulo}{\large\bfseries\color{tceemorado}\hyphenpenalty=10000\exhyphenpenalty=10000}
 \newcommand{\tceetitulo}{%
   \thispagestyle{tceeprimera}%
+  \begingroup
+  \setlength{\tcee@maximo}{0.92\textwidth}%
+  \sbox0{\tcee@formatotitulo\MakeUppercase{\tcee@codigo:\ \tcee@titulo}}%
+  \tcee@lineas=\numexpr\wd0/\tcee@maximo\relax
+  \ifdim\tcee@lineas\tcee@maximo<\wd0 \advance\tcee@lineas by 1 \fi
+  \ifnum\tcee@lineas<1 \tcee@lineas=1 \fi
+  \setlength{\tcee@ancho}{\dimexpr\wd0/\tcee@lineas+2.2em\relax}%
+  \ifdim\tcee@ancho>\textwidth \setlength{\tcee@ancho}{\textwidth}\fi
   \begin{center}
-    {\large\bfseries\color{tceemorado}\MakeUppercase{\tcee@codigo:\ \tcee@titulo}\par}
-    \vspace{0.3em}{\color{tceemorado}\rule{0.6\textwidth}{0.8pt}}
+    \parbox{\tcee@ancho}{\centering\tcee@formatotitulo\MakeUppercase{\tcee@codigo:\ \tcee@titulo}\par}\par
+    \vspace{0.5em}{\color{tceemorado}\rule{0.6\textwidth}{0.8pt}}
   \end{center}
-  \vspace{0.6em}%
+  \endgroup
+  \vspace{2.2em}%
 }
 
 % --- Apartados ---------------------------------------------------------------
-% \section    → banda morada con texto blanco en versalitas (INTRODUCCIÓN, I. …)
-% \subsection → I.1. en morado, negrita
-% \subsubsection y \paragraph → niveles inferiores, en morado
+% Cada nivel se distingue a simple vista (y lo mismo en la web y en Word):
+% \section       → banda morada con texto blanco (INTRODUCCIÓN, I. …)
+% \subsection    → I.1. grande, morado, negrita y subrayado con una raya fina
+% \subsubsection → I.1.1. sangrado 1,2 em, morado, cursiva (sin negrita)
+% \paragraph     → sangrado 2,4 em, cursiva gris oscura, sin número
+% Ningún título puede quedar al pie de una página: antes de cada uno se pide
+% sitio para el título y unas líneas de texto (\needspace) y los minutos del
+% cante no permiten salto.
 \setcounter{secnumdepth}{3}
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
@@ -129,16 +152,22 @@
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
     \large\bfseries\color{white}\strut\MakeUppercase{#1}\strut}}}
 \titlespacing*{\section}{0pt}{1.4em}{0.8em}
-\titleformat{\subsection}{\normalfont\bfseries\color{tceemorado}}{\thesubsection.}{0.5em}{}
-\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
-\titleformat{\subsubsection}{\normalfont\bfseries\itshape\color{tceemorado}}{\thesubsubsection.}{0.5em}{}
-\titlespacing*{\subsubsection}{0pt}{0.9em}{0.3em}
-\titleformat{\paragraph}[runin]{\normalfont\bfseries\color{tceemoradooscuro}}{}{0pt}{}[.]
-\titlespacing*{\paragraph}{0pt}{0.6em}{0.5em}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{tceemorado}}{\thesubsection.}{0.5em}{}
+  [\vspace{-0.15em}{\color{tceemorado}\titlerule[0.5pt]}]
+\titlespacing*{\subsection}{0pt}{1.3em}{0.5em}
+\titleformat{\subsubsection}{\normalfont\itshape\color{tceemorado}}{\upshape\thesubsubsection.}{0.5em}{}
+\titlespacing*{\subsubsection}{1.2em}{0.9em}{0.3em}
+\titleformat{\paragraph}{\normalfont\itshape\color{tceemoradooscuro}}{}{0pt}{}
+\titlespacing*{\paragraph}{2.4em}{0.7em}{0.2em}
+\preto\section{\Needspace{8\baselineskip}}
+\preto\subsection{\Needspace{6\baselineskip}}
+\preto\subsubsection{\Needspace{5\baselineskip}}
+\preto\paragraph{\Needspace{4\baselineskip}}
 
 
 % Minutos del cante: \minutos{6} justo después del título del apartado
-\newcommand{\minutos}[1]{\par\vspace*{-0.9em}\hfill{\scriptsize\itshape\color{tceegris}#1 min}\par\vspace{-0.2em}}
+\newcommand{\minutos}[1]{\par\nopagebreak\vspace*{-0.9em}\nopagebreak
+  \hfill{\scriptsize\itshape\color{tceegris}#1 min}\par\nopagebreak\vspace{-0.2em}\@afterheading}
 
 % --- Listas (viñetas como en Word: ■, –, o) ---------------------------------
 \setlist{itemsep=0.15em,topsep=0.3em,parsep=0.15em}
@@ -192,11 +221,12 @@
 \setlength{\footnotesep}{0.8\baselineskip}
 
 % --- Bibliografía ---------------------------------------------------------------
-\RequirePackage[backend=biber,style=authoryear,maxcitenames=2,uniquename=false,
-  uniquelist=false,dashed=false,autocite=footnote,sorting=nyt]{biblatex}
+\RequirePackage[backend=biber,style=authoryear-comp,maxcitenames=2,uniquename=false,
+  uniquelist=false,dashed=false,autocite=inline,sorting=nyt]{biblatex}
 \DeclareFieldFormat{urldate}{(consulta: #1)}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
-\newcommand{\bibliografia}{\printbibliography[heading=bibintoc,title={Bibliografía}]}
+% La bibliografía va al final, después de los anexos, en página nueva
+\newcommand{\bibliografia}{\clearpage\printbibliography[heading=bibintoc,title={Bibliografía}]}
 
 % --- Hiperenlaces (al final) -----------------------------------------------------
 \RequirePackage[hidelinks,unicode,pdfusetitle]{hyperref}

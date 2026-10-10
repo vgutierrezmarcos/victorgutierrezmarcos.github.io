@@ -1,0 +1,74 @@
+% Por qué las curvas de indiferencia (a) tienen pendiente negativa, (b) dan más utilidad
+% cuanto más alejadas del origen, (c) no se cortan y (d) son convexas, con el axioma
+% que da cada propiedad. Curvas del tipo x1·x2 = k.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    titulo/.style={font=\small\bfseries,align=center,anchor=base},
+    pie/.style={font=\footnotesize,align=center,anchor=north}]
+  \newcommand{\ejesp}{\ejes{$x_1$}{$x_2$}{4.4}{4.2}}
+  % ================= (a) pendiente negativa: monotonía =================
+  \begin{scope}[shift={(0,0)}]
+    \capa{1}{\node[titulo] at (2.2,4.6) {(a) Pendiente negativa (monotonía)};}
+    \capa{1}{\ejesp}
+    \capa{2}{\node[punto] (a0) at (2,2) {};}
+    \capa{2}{\draw[guia] (0,2) -- (4.2,2);}
+    \capa{2}{\draw[guia] (2,0) -- (2,4);}
+    \capa{3}{\fill[area] (2,2) rectangle (4.2,4);}
+    \capa{3}{\node[etiqueta,align=center] at (3.1,3.3) {más de\\ todo: $\succ x^0$};}
+    \capa{4}{\fill[area2] (0,0) rectangle (2,2);}
+    \capa{4}{\node[etiqueta,align=center] at (1,0.75) {menos de\\ todo: $\prec x^0$};}
+    \capa{5}{\draw[curva1] plot[domain=1.0:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above] {$I(x^0)$};}
+    \capa{5}{\node[punto] at (2,2) {};}
+    \capa{5}{\node[etiqueta,above right] at (2,2) {$x^0$};}
+    \capa{5}{\node[pie] at (2.2,-0.5) {la curva solo puede pasar por los cuadrantes\\ noroeste y sudeste de $x^0$};}
+  \end{scope}
+  % ================= (b) más alejadas, más utilidad: monotonía =================
+  \begin{scope}[shift={(6.8,0)}]
+    \capa{6}{\node[titulo] at (2.2,4.6) {(b) Más alejadas, más utilidad (monotonía)};}
+    \capa{6}{\ejesp}
+    \capa{7}{\draw[curva1] plot[domain=0.4:4.0,samples=50] (\x,{1.5/\x}) node[etiqueta,above right] {$U_0$};}
+    \capa{7}{\draw[curva2] plot[domain=0.75:4.0,samples=50] (\x,{3/\x}) node[etiqueta,above right] {$U_1$};}
+    \capa{7}{\draw[curva3] plot[domain=1.25:4.0,samples=50] (\x,{5/\x}) node[etiqueta,above right] {$U_2$};}
+    \capa{8}{\draw[guia] (0,0) -- (3.4,3.4);}
+    \capa{8}{\node[punto] (bA) at (1.2247,1.2247) {};}
+    \capa{8}{\node[etiqueta,below right] at (bA) {$A$};}
+    \capa{8}{\node[punto] (bB) at (1.7321,1.7321) {};}
+    \capa{8}{\node[etiqueta,below right] at (bB) {$B$};}
+    \capa{8}{\node[punto] (bC) at (2.2361,2.2361) {};}
+    \capa{8}{\node[etiqueta,below right] at (bC) {$C$};}
+    \capa{9}{\node[pie] at (2.2,-0.5) {$C$ tiene más de ambos bienes que $B$, y $B$ que $A$:\\ $C\succ B\succ A$, luego $U_2>U_1>U_0$};}
+  \end{scope}
+  % ================= (c) no se cortan: transitividad =================
+  \begin{scope}[shift={(0,-7.0)}]
+    \capa{10}{\node[titulo] at (2.2,4.6) {(c) No se cortan (transitividad)};}
+    \capa{10}{\ejesp}
+    \capa{11}{\draw[curva1] plot[domain=1.0:4.0,samples=50] (\x,{4/\x}) node[etiqueta,below] {$U_1$};}
+    \capa{12}{\draw[curva2] plot[domain=0.6:4.0,samples=50] (\x,{1.2+1.6/\x}) node[etiqueta,above] {$U_2$};}
+    \capa{12}{\node[punto] (cA) at (2,2) {};}
+    \capa{12}{\node[etiqueta,above right] at (cA) {$A$};}
+    \capa{13}{\node[punto] (cB) at (3,1.7333) {};}
+    \capa{13}{\node[etiqueta,above] at (cB) {$B$};}
+    \capa{13}{\node[punto] (cC) at (3,1.3333) {};}
+    \capa{13}{\node[etiqueta,below] at (cC) {$C$};}
+    \capa{14}{\node[pie] at (2.2,-0.5) {$B\sim A$ y $A\sim C\Rightarrow B\sim C$ (transitividad),\\ pero $B$ tiene más bien 2 que $C$,\\ luego $B\succ C$: contradicción};}
+  \end{scope}
+  % ================= (d) convexas: convexidad =================
+  \begin{scope}[shift={(6.8,-7.0)}]
+    \capa{15}{\node[titulo] at (2.2,4.6) {(d) Convexas (convexidad)};}
+    \capa{15}{\ejesp}
+    \capa{16}{\fill[area] plot[domain=0.976:4.0,samples=50] (\x,{4/\x}) -- (4.0,4.1) -- (0.976,4.1) -- cycle;}
+    \capa{16}{\draw[curva1] plot[domain=0.976:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above right] {$I(x')$};}
+    \capa{17}{\node[punto] (dx1) at (1.2,3.3333) {};}
+    \capa{17}{\node[etiqueta,left] at (dx1) {$x'$};}
+    \capa{17}{\node[punto] (dx2) at (3.2,1.25) {};}
+    \capa{17}{\node[etiqueta,below left] at (dx2) {$x''$};}
+    \capa{18}{\draw[thick,dashed,tceerojo] (dx1) -- (dx2);}
+    \capa{18}{\node[punto,fill=tceerojo] (dm) at (2.2,2.2917) {};}
+    \capa{18}{\node[etiqueta,above right,text=tceerojo] at (dm) {$\lambda x'+(1-\lambda)x''$};}
+    \capa{19}{\node[pie] at (2.2,-0.5) {las combinaciones de dos cestas indiferentes son\\ al menos tan buenas: el conjunto $B(x')$ es convexo};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

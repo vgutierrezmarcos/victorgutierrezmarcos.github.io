@@ -9,13 +9,15 @@
     \fill[area] (0,0) -- (0,3) -- (4,0) -- cycle;
     \draw[curva1] (0,3) -- (4,0);
   }
-  \capa{2}{
-    \draw[curva2] plot[domain=0.45:4.6,samples=80,smooth] (\x,{1.6/\x}) node[etiqueta,right] {$U^0$};
-    \draw[curva3] plot[domain=0.8:4.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$U^*$};
-    \draw[curva4] plot[domain=1.35:4.6,samples=80,smooth] (\x,{5/\x}) node[etiqueta,right] {$U^2$};
+  \capa{2}{\draw[curva2] plot[domain=0.45:4.6,samples=80,smooth] (\x,{1.6/\x}) node[etiqueta,right] {$U^0$};}
+  \capa{3}{\draw[curva3] plot[domain=0.8:4.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$U^*$};}
+  \capa{4}{\draw[curva4] plot[domain=1.35:4.6,samples=80,smooth] (\x,{5/\x}) node[etiqueta,right] {$U^2$};}
+  \capa{5}{
     \node[punto] (E) at (2,1.5) {};
     \node[etiqueta,above right] at (E) {$x^*$};
     \proyeccion{(E)}{$x_1^*$}{$x_2^*$}
+  }
+  \capa{6}{
     \node[etiqueta,anchor=west] at (2.6,2.6) {$RMS_{12}=p_1/p_2$};
     \draw[guia,solid] (2.7,2.45) -- (2.1,1.6);
   }
@@ -24,21 +26,29 @@
   % con RMS = 1 + x2 >= 1 > p1/p2, así que la curva más alta alcanzable (c = 4)
   % toca la recta solo en (4, 0).
   \begin{scope}[xshift=6.8cm]
-    \ejes{$x_1$}{$x_2$}{5.6}{4}
-    \capa{3}{
+    \capa{7}{\ejes{$x_1$}{$x_2$}{5.6}{4}}
+    \capa{8}{
       \fill[area] (0,0) -- (0,2) -- (4,0) -- cycle;
       \draw[curva1] (0,2) -- (4,0);
+    }
+    \capa{9}{
       \draw[curva2] plot[domain=1.7:3.2,samples=60,smooth] (\x,{exp(3.2-\x)-1});
-      \draw[curva3] plot[domain=2.5:4,samples=60,smooth] (\x,{exp(4-\x)-1});
-      \draw[curva4] plot[domain=3.3:4.8,samples=60,smooth] (\x,{exp(4.8-\x)-1});
       \node[etiqueta,above] at (1.7,{exp(1.5)-1}) {$U^0$};
+    }
+    \capa{10}{
+      \draw[curva3] plot[domain=2.5:4,samples=60,smooth] (\x,{exp(4-\x)-1});
       \node[etiqueta,above] at (2.5,{exp(1.5)-1}) {$U^*$};
+    }
+    \capa{11}{
+      \draw[curva4] plot[domain=3.3:4.8,samples=60,smooth] (\x,{exp(4.8-\x)-1});
       \node[etiqueta,above] at (3.3,{exp(1.5)-1}) {$U^2$};
+    }
+    \capa{12}{
       \node[punto] at (4,0) {};
       \node[below] at (4,0) {$x_1^*=\overline{W}/p_1$};
       \node[etiqueta,above right] at (4,0) {$x^*$};
-      \node[etiqueta,align=left,anchor=west] at (3.9,2.1) {$x_2^*=0$\\$RMS_{12}\geq p_1/p_2$};
     }
+    \capa{13}{\node[etiqueta,align=left,anchor=west] at (3.9,2.1) {$x_2^*=0$\\$RMS_{12}\geq p_1/p_2$};}
   \end{scope}
 \end{tikzpicture}
 \end{document}

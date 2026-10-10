@@ -79,8 +79,10 @@ function parsearEjercicioConTemas(html, slug) {
             const href = it[1];
             const inner = it[2];
             const docxMatch = (it[3] || '').match(/class="tema-item-docx" href="([^"]+)"/);
-            // temas ya revisados (rama revision-temario): página web y vídeo del cante
-            const htmlMatch = (it[3] || '').match(/class="tema-item-docx tema-item-html" href="([^"]+)"/);
+            // temas ya revisados (rama revision-temario): el título lleva a la página
+            // web, el PDF va en un botón aparte y puede haber vídeo del cante
+            const pdfMatch = (it[3] || '').match(/class="tema-item-docx tema-item-pdf" href="([^"]+)"/);
+            const htmlMatch = pdfMatch && /\.html$/.test(href) ? [null, href] : null;
             const videoMatch = (it[3] || '').match(/class="tema-item-docx tema-item-video" href="([^"]+)"/);
             const disponible = !/tema-no-disponible\.html/.test(href);
             const codigoMatch = inner.match(/Tema\s+(\d+\.[A-Z]\.\d+)/);
@@ -92,7 +94,7 @@ function parsearEjercicioConTemas(html, slug) {
                 titulo: tituloMatch ? limpiarTexto(tituloMatch[1]) : limpiarTexto(inner),
                 disponible,
                 temarioAnterior: temaAnterior,
-                url: disponible ? `${BASE_URL}/oposicion/temario/${href}` : null,
+                url: disponible ? `${BASE_URL}/oposicion/temario/${pdfMatch ? pdfMatch[1] : href}` : null,
                 ...(docxMatch ? { urlDocx: `${BASE_URL}/oposicion/temario/${docxMatch[1]}` } : {}),
                 ...(htmlMatch ? { urlHtml: `${BASE_URL}/oposicion/temario/${htmlMatch[1]}` } : {}),
                 ...(videoMatch ? { urlVideo: videoMatch[1] } : {})

@@ -195,6 +195,8 @@ def preparar_pandoc(tema, tex, formato):
     cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',
                     lambda m: re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1)), cuerpo, flags=re.S)
     cuerpo = numerar_anexos(cuerpo)
+    # Los saltos de página del PDF pasan a Word (tcee.lua los convierte; en HTML se quitan)
+    cuerpo = re.sub(r'\\(?:clearpage|newpage|pagebreak)\b', r'\\begin{saltopagina}\\mbox{}\\end{saltopagina}', cuerpo)
     destino = os.path.join(tema.trabajo, f'{tema.archivo}-pandoc-{formato}.tex')
     with open(destino, 'w', encoding='utf-8') as f:
         f.write(macros + '\n' + cuerpo)
@@ -202,12 +204,14 @@ def preparar_pandoc(tema, tex, formato):
 
 
 def comunes_pandoc(tema, datos):
-    orden = ['-f', 'latex', '--figure-caption-position=above', '--lua-filter', ruta_windows(os.path.join(LATEX, 'tcee.lua')),
+    # citeproc va antes del filtro para que tcee.lua vea ya la bibliografía (salto de página en Word)
+    orden = ['-f', 'latex', '--figure-caption-position=above'] + (['--citeproc'] if os.path.exists(tema.bib) else []) + [
+             '--lua-filter', ruta_windows(os.path.join(LATEX, 'tcee.lua')),
              '-M', 'lang=es-ES', '-M', f'codigo={tema.codigo}', '-M', f'titulo={datos["titulo"]}',
              '-M', f'fecha={datos["fecha"]}', '-M', f'archivo={tema.archivo}',
              '-M', f'carpeta={tema.carpeta}', '-M', f'ejercicio={tema.nombre_ejercicio}']
     if os.path.exists(tema.bib):
-        orden += ['--citeproc', '--bibliography', ruta_windows(tema.bib),
+        orden += ['--bibliography', ruta_windows(tema.bib),
                   '-M', 'link-citations=true', '-M', 'reference-section-title=Bibliografía']
     return orden
 
@@ -237,7 +241,7 @@ def generar_docx(tema, tex_pandoc, datos):
              '-M', f'graficos-docx={ruta_windows(tema.graficos)}',
              '-M', f'title={tema.codigo}: {datos["titulo"]}',
              '-M', 'author=Víctor Gutiérrez Marcos',
-             '-M', f'date=Fecha de la última actualización: {datos["fecha"]}',
+             '-M', f'date=Última actualización: {datos["fecha"]}',
              '--resource-path', ruta_windows(tema.dir), '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)
     ejecutar(orden, timeout=600)
