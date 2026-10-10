@@ -1,0 +1,50 @@
+% De las preferencias a la demanda de mercado (sustituye a la tabla-esquema del original)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,node distance=0.7cm and 0.7cm,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
+                 minimum height=1.3cm,inner sep=5pt},
+    clave/.style={caja,fill=tceemorado!12,very thick},
+    une/.style={->,thick,tceemorado}]
+  % 1: conjunto de elección y preferencias
+  \capa{1}{
+    \node[caja] (S) {Conjunto de elección\\ $S\subseteq\mathbb{R}^n_+$};
+    \node[caja,right=of S] (P) {Preferencias\\ $\succcurlyeq$};
+    \draw[une] (S) -- (P);
+  }
+  % 2: axiomas y función de utilidad (los nodos existen siempre, invisibles antes
+  % del paso 2, porque el PMU se sitúa respecto de U)
+  \ifnum\tceepaso<2 \tikzset{c2/.style={opacity=0}}\else\tikzset{c2/.style={}}\fi
+  \node[caja,right=of P,c2] (A) {Axiomas\\ 1-7};
+  \node[caja,right=of A,c2] (U) {Función de utilidad\\ $U(x)$};
+  \capa{2}{
+    \draw[une] (P) -- (A);
+    \draw[une] (A) -- (U);
+  }
+  % 4: problema de maximización de la utilidad (se coloca antes para situar el resto)
+  \path (U.south) ++(0,-1.9) coordinate (cPMU);
+  \capa{4}{
+    \node[clave] (PMU) at (cPMU) {PMU\\ $\max\limits_{x}\ U(x)$\\ s.a.\ $p\cdot x\leq \overline{W}$};
+  }
+  % 3: restricción presupuestaria
+  \capa{3}{
+    \node[caja,anchor=east] (B) at ($(cPMU)+(-2.2,0)$) {Restricción presupuestaria\\ $p\cdot x\leq \overline{W}$\\ Conjunto presupuestario $B(p,\overline{W})$};
+  }
+  \capa{4}{
+    \draw[une] (U) -- (PMU);
+    \draw[une] (B) -- (PMU);
+  }
+  % 5: demanda marshalliana
+  \capa{5}{
+    \node[caja,right=0.9cm of PMU] (X) {Demanda marshalliana\\ $x(p,\overline{W})$};
+    \draw[une] (PMU) -- (X);
+  }
+  % 6: agregación
+  \capa{6}{
+    \node[caja,below=0.9cm of X] (M) {Agregación: demanda de mercado\\ $X(p,\overline{W}_1,\dots,\overline{W}_H)$};
+    \draw[une] (X) -- (M);
+  }
+\end{tikzpicture}
+\end{document}

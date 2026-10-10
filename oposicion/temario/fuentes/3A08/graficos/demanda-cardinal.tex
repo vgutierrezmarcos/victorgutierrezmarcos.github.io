@@ -1,0 +1,23 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Demanda en el enfoque cardinal de Marshall (anexo A del tema 3.A.8).
+% Curva p_i = u_i'(x_i) = 3,2/(x_i + 0,6) + 0,3: decreciente y convexa.
+% Con p_i^0 = 1,5 la cantidad es x_i^0 = 3,2/1,2 - 0,6 = 2,0667.
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \def\xcero{2.0667}
+  \def\pcero{1.5}
+  \ejes{$x_i$}{$p_i$}{7}{6.2}
+  \capa{3}{%
+    \fill[area] (0,\pcero) -- plot[domain=0:\xcero,samples=40] (\x,{3.2/(\x+0.6)+0.3}) -- cycle;
+    \node[etiqueta,align=left,anchor=west] (EC) at (2.4,3.7) {excedente\\del consumidor};
+    \draw[->,thin,black] (EC.west) .. controls (1.4,3.6) .. (0.75,2.3);
+  }
+  \draw[curva1] plot[domain=0:6.3,samples=80] (\x,{3.2/(\x+0.6)+0.3})
+    node[etiqueta,above,align=center] {$p_i=u_i'(x_i)$\\[-1pt]{\footnotesize (con $u'(M)=1$)}};
+  \capa{2}{%
+    \node[punto] (E) at (\xcero,\pcero) {};
+    \proyeccion{(E)}{$x_i^0$}{$p_i^0$}
+  }
+\end{tikzpicture}
+\end{document}

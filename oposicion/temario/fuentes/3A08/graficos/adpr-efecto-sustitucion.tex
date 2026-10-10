@@ -1,0 +1,52 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Panel izquierdo (ADPR):
+%   situación 0: x2 = 2,5 - 0,5 x1 (pendiente -p1^0/p2^0), elige x0 = (3,6; 0,7)
+%   situación 1: x2 = 4 - 1,5 x1, elige x1 = (2; 1)
+%   x1 es asequible en 0 (2,5 - 1 = 1,5 > 1) y x0 no lo es en 1 (4 - 5,4 < 0,7).
+% Panel derecho (signo del efecto sustitución):
+%   recta inicial x2 = 4 - x1, elige x0 = (2; 2)
+%   baja p1 y se compensa la renta à la Slutsky: x2 = 3 - 0,5 x1, pasa por x0
+%   nueva elección x1 = (3,6; 1,2), a la derecha de x0.
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel izquierdo ----------------
+  \capa{1}{
+    \ejes{$x_1$}{$x_2$}{6.2}{4.6}
+    \draw[curva1] (0,2.5) -- (5,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};
+    \node[punto,label={[etiqueta]above right:$x^0$}] at (3.6,0.7) {};
+    \node[punto,label={[etiqueta]below left:$x^1$}] at (2,1) {};
+  }
+  \capa{2}{
+    \draw[curva2] (0,4) -- (2.667,0) node[etiqueta,above right=1pt and -2pt] {$p^1$};
+    \node[etiqueta,align=center,anchor=south] at (3.9,3.3)
+      {$x^0$ se revela\\preferida a $x^1$};
+    \node[etiqueta,align=center,anchor=north,font=\footnotesize] at (4.6,2.1)
+      {$x^0$ no es asequible\\cuando se elige $x^1$};
+  }
+  % ---------------- Panel derecho ----------------
+  \begin{scope}[xshift=7.4cm]
+    \capa{3}{
+      \ejes{$x_1$}{$x_2$}{6.6}{4.6}
+      \fill[area] (0,0) -- (0,4) -- (4,0) -- cycle;
+      \draw[curva1] (0,4) -- (4,0) node[etiqueta,above right=1pt and -2pt] {$p$};
+      \node[punto] (X0) at (2,2) {};
+      \node[etiqueta,above right] at (X0) {$x^0$};
+    }
+    \capa{4}{
+      \draw[curva4,line width=2.4pt] (0,3) -- (2,2);
+      \draw[curva3] (2,2) -- (6,0) node[etiqueta,above right=1pt and -2pt] {$p'$};
+      \node[punto] (X1) at (3.6,1.2) {};
+      \node[etiqueta,above right] at (X1) {$x^1$};
+      \draw[guia] (X0) -- (2,0) node[below] {$x_1^0$};
+      \draw[guia] (X1) -- (3.6,0) node[below] {$x_1^1$};
+      \draw[flecha] (2.1,0.35) -- (3.5,0.35);
+      \node[etiqueta,align=left,anchor=south west,font=\footnotesize] at (1.75,3.15)
+        {ya era asequible\\y no se eligió};
+      \draw[thin,tceegris] (1.85,3.2) -- (1.0,2.58);
+      \node[etiqueta,align=left,anchor=west,font=\footnotesize] at (3.9,2.4)
+        {baja $p_1$ y se\\compensa la renta:\\elige a la derecha};
+    }
+  \end{scope}
+\end{tikzpicture}
+\end{document}

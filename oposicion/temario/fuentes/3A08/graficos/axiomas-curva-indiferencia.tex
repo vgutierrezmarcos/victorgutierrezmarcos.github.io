@@ -1,0 +1,103 @@
+% Lo que garantiza cada axioma sobre los conjuntos de indiferencia
+% (fusión de los gráficos 2.2a-f de Segura en seis paneles, en el orden de los axiomas del tema)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    titulo/.style={font=\small\bfseries,align=center,anchor=base},
+    pref/.style={draw=tceemorado,thick,regular polygon,regular polygon sides=3,inner sep=1.4pt}]
+  \newcommand{\ejesp}{\draw[eje] (0,0) -- (4.3,0) node[below left=2pt and 0pt] {$x_1$};
+    \draw[eje] (0,0) -- (0,3.8) node[left] {$x_2$};
+    \node[below left] at (0,0) {$0$};}
+  % ---------- 1: preorden completo (axiomas 1-3) ----------
+  \capa{1}{
+  \begin{scope}[shift={(0,0)}]
+    \node[titulo] at (2.1,4.1) {Axiomas 1-3: preorden completo};
+    \ejesp
+    \foreach \p in {(0.5,3.3),(0.75,2.85),(0.45,2.45),(1.2,2.25),(2.3,2.6),(3.0,3.3),(0.45,1.35),(1.6,1.35),(1.0,0.85),(2.65,1.0),(2.1,0.55)}
+      \node[punto] at \p {};
+    \foreach \p in {(1.75,3.45),(1.25,2.95),(3.15,2.75),(0.8,1.95),(1.25,1.65),(2.05,1.65),(2.95,1.35),(3.35,1.35),(0.65,0.75),(1.75,0.6),(2.95,0.65),(3.6,2.05)}
+      \node[pref] at \p {};
+    \node[punto,fill=tceerojo] (x0) at (2.4,1.95) {};
+    \node[etiqueta,above right,text=tceerojo] at (x0) {$x^0$};
+    \node[font=\footnotesize,align=left,anchor=north] at (2.1,-0.45)
+      {\tikz\node[punto]{}; $\sim x^0$ \quad \tikz\node[pref]{}; $\succ x^0$ \quad resto: $\prec x^0$};
+  \end{scope}}
+  % ---------- 2: continuidad (axioma 4) ----------
+  \capa{2}{
+  \begin{scope}[shift={(5.6,0)}]
+    \node[titulo] at (2.1,4.1) {+ 4. Continuidad};
+    \ejesp
+    \fill[area] plot[smooth] coordinates {(0,3.5) (0.8,2.8) (1.5,2.95) (2.3,2.2) (3.2,1.7) (4.0,1.6)}
+      -- (4.0,0.45) -- plot[smooth] coordinates {(3.2,0.6) (2.4,0.75) (1.6,1.5) (0.9,1.45) (0,2.4)} -- cycle;
+    \draw[curva1] plot[smooth] coordinates {(0,3.5) (0.8,2.8) (1.5,2.95) (2.3,2.2) (3.2,1.7) (4.0,1.6)};
+    \draw[curva1] plot[smooth] coordinates {(0,2.4) (0.9,1.45) (1.6,1.5) (2.4,0.75) (3.2,0.6) (4.0,0.45)};
+    \node[punto] (x0) at (1.9,1.95) {};
+    \node[etiqueta,right] at (x0) {$x^0$};
+    \node[etiqueta] at (3.1,1.15) {$I(x^0)$};
+    \node[etiqueta] at (2.9,3.1) {$B(x^0)$};
+    \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {conjuntos de contorno cerrados;\\ la indiferencia puede ser «gruesa»};
+  \end{scope}}
+  % ---------- 3: monotonía estricta (axioma 5) ----------
+  \capa{3}{
+  \begin{scope}[shift={(11.2,0)}]
+    \node[titulo] at (2.1,4.1) {+ 5. Monotonía estricta};
+    \ejesp
+    \draw[curva1] plot[domain=0:3.8,samples=80,smooth] (\x,{3.4-0.85*\x+0.25*sin(2.5*\x r)})
+      node[etiqueta,above right] {$I(x^0)$};
+    \node[punto] (x0) at (0.8,{3.4-0.85*0.8+0.25*sin(2 r)}) {};
+    \node[etiqueta,above right] at (x0) {$x^0$};
+    \node[etiqueta] at (3.3,3.4) {$B(x^0)$};
+    \node[etiqueta] at (0.8,0.8) {$H(x^0)$};
+    \draw[flecha] (1.8,1.7) -- ++(0.7,0.7) node[etiqueta,right,text=tceerojo] {preferidas};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {curva «fina» y estrictamente\\ decreciente};
+  \end{scope}}
+  % ---------- 4: convexidad (axioma 6) ----------
+  \capa{4}{
+  \begin{scope}[shift={(0,-5.8)}]
+    \node[titulo] at (2.1,4.1) {+ 6. Convexidad};
+    \ejesp
+    \draw[curva1] (0,3.3) -- (1.2,1.5) -- (3.9,0.25) node[etiqueta,above right] {$I(x^0)$};
+    \node[punto] (x0) at (0.6,2.4) {};
+    \node[etiqueta,right] at (x0) {$x^0$};
+    \node[punto] (x1) at (1.2,1.5) {};
+    \node[etiqueta,above right] at (x1) {$x^1$};
+    \node[etiqueta] at (3.0,2.6) {$B(x^0)$};
+    \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {convexa, pero con tramos\\ rectos y vértices};
+  \end{scope}}
+  % ---------- 5: convexidad estricta (axioma 6') ----------
+  \capa{5}{
+  \begin{scope}[shift={(5.6,-5.8)}]
+    \node[titulo] at (2.1,4.1) {+ 6$'$. Convexidad estricta};
+    \ejesp
+    \draw[curva1] plot[domain=0.3:1.3,samples=40,smooth] (\x,{1.2+0.8*(1.3-\x)^2+1.4*(1.3-\x)})
+      -- plot[domain=1.3:3.8,samples=60,smooth] (\x,{0.42+0.1154*(3.9-\x)^2})
+      node[etiqueta,above] {$I(x^0)$};
+    \node[punto] (x0) at (0.7,{1.2+0.8*0.36+1.4*0.6}) {};
+    \node[etiqueta,right] at (x0) {$x^0$};
+    \node[punto] (x1) at (1.3,1.2) {};
+    \node[etiqueta,above right] at (x1) {$x^1$};
+    \node[etiqueta] at (3.0,2.6) {$B(x^0)$};
+    \node[etiqueta] at (0.75,0.6) {$H(x^0)$};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {sin tramos rectos;\\ aún puede haber vértices};
+  \end{scope}}
+  % ---------- 6: diferenciabilidad (axioma 7) ----------
+  \capa{6}{
+  \begin{scope}[shift={(11.2,-5.8)}]
+    \node[titulo] at (2.1,4.1) {+ 7. Diferenciabilidad};
+    \ejesp
+    \draw[curva1] plot[domain=0.35:3.8,samples=80,smooth] (\x,{1.2/\x}) node[etiqueta,above] {$I(x^0)$};
+    % tangente en x0 = (0.7, 1.2/0.7): pendiente -1.2/0.49
+    \draw[guia,solid,tceegris,thick] plot[domain=0.3:1.1] (\x,{1.7143-2.449*(\x-0.7)});
+    \node[punto] (x0) at (0.7,1.7143) {};
+    \node[etiqueta,right] at (x0) {$x^0$};
+    \node[etiqueta] at (3.0,2.6) {$B(x^0)$};
+    \node[etiqueta] at (0.55,0.4) {$H(x^0)$};
+    \node[font=\footnotesize,align=center,anchor=north] at (2.1,-0.45) {curva suave: pendiente (RMS)\\ única en cada punto};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

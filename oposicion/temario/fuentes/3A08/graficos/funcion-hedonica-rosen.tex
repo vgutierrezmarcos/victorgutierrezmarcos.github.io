@@ -1,0 +1,38 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Función hedónica p(z) = 1 + 0,12 z^2 (creciente y convexa).
+% Variedades z1 = 2 (p = 1,48; p' = 0,48) y z2 = 4,5 (p = 3,43; p' = 1,08).
+% Curva de puja: tangente menos 0,15 (z - zi)^2 (cóncava, por debajo de p y creciente en su tramo).
+% Curva de oferta: tangente más 0,45 (z - zi)^2 (más convexa que p, por encima y creciente en su tramo).
+\begin{tikzpicture}[tcee]
+  \capa{1}{
+    \ejes{$z$}{$p$}{7}{5.8}
+    \draw[curva1,line width=2pt] plot[domain=0:6.2,samples=60] (\x,{1+0.12*\x*\x})
+      node[etiqueta,right] {$p(z)$};
+    \node[etiqueta,text=tceemorado,anchor=west] at (0.4,5.3) {$p(z)$: envolvente};
+  }
+  \capa{2}{
+    \draw[curva2] plot[domain=0.6:3.1,samples=40] (\x,{1.48+0.48*(\x-2)-0.15*(\x-2)^2});
+    \node[etiqueta,text=tceeazul,anchor=west] at (0.15,0.3) {$\theta_1(z;U_1)$};
+    \draw[curva2] plot[domain=3.4:6.0,samples=40] (\x,{3.43+1.08*(\x-4.5)-0.15*(\x-4.5)^2})
+      node[etiqueta,below right=0pt and -2pt] {$\theta_2(z;U_2)$};
+  }
+  \capa{3}{
+    \draw[curva3] plot[domain=1.5:3.1,samples=40] (\x,{1.48+0.48*(\x-2)+0.45*(\x-2)^2})
+      node[etiqueta,above left=0pt and -2pt] {$\phi_1(z;\pi_1)$};
+    \draw[curva3] plot[domain=3.4:5.4,samples=40] (\x,{3.43+1.08*(\x-4.5)+0.45*(\x-4.5)^2})
+      node[etiqueta,above left=0pt and -2pt] {$\phi_2(z;\pi_2)$};
+  }
+  \node[punto] (A) at (2,1.48) {};
+  \node[punto] (B) at (4.5,3.43) {};
+  \draw[guia] (A) -- (2,0) node[below] {$z_1$};
+  \draw[guia] (B) -- (4.5,0) node[below] {$z_2$};
+  \capa{4}{
+    \draw[thick,black] (2,1.48) -- (3,1.48) -- (3,1.96);
+    \node[etiqueta,below,font=\footnotesize] at (2.5,1.48) {$1$};
+    \node[etiqueta,font=\footnotesize,anchor=west] (PI) at (3.5,1.05) {$\dfrac{\partial p}{\partial z}(z_1)$: precio implícito};
+    \draw[thin,tceegris] (PI.west) -- (3.03,1.7);
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,32 @@
+% La relación de preferencia: preferencia débil, indiferencia y preferencia estricta
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: rectángulo de pares de cestas y elipse x0 >= x1
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (8,4.4);
+    \node[etiqueta,below right] at (0,4.4) {pares de cestas $(x^0,x^1)$};
+    \fill[area] (3,2) ellipse [x radius=2.2,y radius=1.3];
+    \draw[curva1] (3,2) ellipse [x radius=2.2,y radius=1.3];
+    \node[etiqueta,text=tceemorado] at (2.2,3.55) {$x^0\succcurlyeq x^1$};
+  }
+  % 2: elipse x1 >= x0
+  \capa{2}{
+    \fill[area2] (5,2) ellipse [x radius=2.2,y radius=1.3];
+    \draw[curva4] (5,2) ellipse [x radius=2.2,y radius=1.3];
+    \node[etiqueta,text=tceedorado] at (5.8,3.55) {$x^1\succcurlyeq x^0$};
+  }
+  % 3: rótulos de cada zona
+  \capa{3}{
+    \node[etiqueta] at (1.85,2) {$x^0\succ x^1$};
+    \node[etiqueta] at (4,2) {$x^0\sim x^1$};
+    \node[etiqueta] at (6.15,2) {$x^1\succ x^0$};
+  }
+  % 4: zona exterior
+  \capa{4}{
+    \node[etiqueta,align=right,font=\footnotesize,above left] at (8,0) {no comparables\\ (lo excluye la completitud)};
+  }
+\end{tikzpicture}
+\end{document}

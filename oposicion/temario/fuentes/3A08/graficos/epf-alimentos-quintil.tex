@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Ley de Engel en España: % del gasto en alimentos y bebidas no alcohólicas
+% por quintil de gasto, EPF 2025 (INE, tabla 73828). Datos en ../datos/.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/epf2025-alimentos-quintil.csv}\epf
+\pgfplotstablegetelem{5}{porcentaje_alimentos}\of\epf
+\let\epftotal\pgfplotsretval
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=9cm, height=6cm,
+      ybar, bar width=0.9cm,
+      ymin=0, ymax=25, ytick={0,5,...,25},
+      yticklabel style={/pgf/number format/precision=0, /pgf/number format/fixed zerofill=false},
+      xmin=-0.6, xmax=4.6, xtick={0,...,4},
+      xticklabels={{Q1\\\footnotesize(menos gasto)},Q2,Q3,Q4,{Q5\\\footnotesize(más gasto)}},
+      xticklabel style={align=center},
+      xlabel={Quintil de gasto de los hogares},
+      ylabel={\% del gasto total},
+      clip=false, axis lines*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      /pgf/number format/.cd, use comma, fixed, fixed zerofill, precision=2,
+    ]
+    \capa{1}{
+      \addplot[fill=tceemorado!80, draw=tceemorado,
+        skip coords between index={5}{6},
+        nodes near coords, nodes near coords style={font=\footnotesize,black}]
+        table[x expr=\coordindex, y=porcentaje_alimentos] {\epf};
+    }
+    \capa{2}{
+      \draw[very thick, dashed, tceedorado]
+        (axis cs:-0.6,\epftotal) -- (axis cs:4.6,\epftotal)
+        node[pos=1, right, align=left, font=\footnotesize, text=tceedorado!70!black]
+        {Total\\\pgfmathprintnumber[use comma,fixed,fixed zerofill,precision=2]{\epftotal}\,\%};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Descomposición de Hicks con U = (x1·x2)^(1/2), W = 10, p2 = 2.
+%   Precio inicial p1^0 = 3:   A = (5/3, 5/2),  U^0: x1·x2 = 25/6.
+%   Precio final   p1^1 = 1,5: C = (10/3, 5/2), U^1: x1·x2 = 25/3.
+%   Recta compensada (pendiente -0,75) tangente a U^0 en
+%   B = (sqrt(50/9), 0,75·sqrt(50/9)) = (2,357; 1,768).
+% Panel inferior (escala vertical 1,2 por unidad de p1):
+%   marshalliana x1 = W/(2p1) -> p1 = 5/x1;
+%   hicksiana  h1 = sqrt(U^0·p2/p1) = sqrt(25/3/p1) -> p1 = (25/3)/x1^2.
+\begin{tikzpicture}[tcee,scale=0.85]
+  \def\xA{1.6667}\def\xB{2.3570}\def\xC{3.3333}
+  \def\yA{2.5}\def\yB{1.7678}
+  \def\pinf{-7.3}% ordenada del origen del panel inferior
+  % ---------------- Panel superior ----------------
+  \ejes{$x_1$}{$x_2$}{7.6}{5.9}
+  \capa{1}{
+    \draw[curva1] (0,5) -- (3.3333,0);
+    \draw[curva1] plot[domain=0.78:6.4,samples=80,smooth] (\x,{25/6/\x})
+      node[etiqueta,right] {$U^0$};
+    \node[punto] (A) at (\xA,\yA) {};
+    \node[etiqueta,above right] at (A) {$A$};
+    \draw[guia] (\xA,\yA) -- (\xA,0);
+    \node[left] at (0,5) {$\dfrac{\overline{W}}{p_2}$};
+  }
+  \capa{2}{
+    \draw[curvanueva] (0,5) -- (6.6667,0);
+    \draw[curvanueva] plot[domain=1.5:7.1,samples=80,smooth] (\x,{25/3/\x})
+      node[etiqueta,right] {$U^1$};
+    \node[punto] (C) at (\xC,\yA) {};
+    \node[etiqueta,above right] at (C) {$C$};
+    \draw[guia] (\xC,\yA) -- (\xC,0);
+  }
+  \capa{3}{
+    \draw[curva2,desplazada] (0,3.5355) -- (4.7140,0);
+    \node[punto] (B) at (\xB,\yB) {};
+    \node[etiqueta,below left] at (B) {$B$};
+    \draw[guia] (\xB,\yB) -- (\xB,0);
+  }
+  \node[below,font=\footnotesize] at (\xA,0) {$x_1^A$};
+  \capa{3}{\node[below,font=\footnotesize] at (\xB,0) {$x_1^B$};}
+  \capa{2}{\node[below,font=\footnotesize] at (\xC,0) {$x_1^C$};}
+  \capa{4}{
+    \draw[flecha,tceeazul] (\xA,-0.75) -- (\xB,-0.75)
+      node[midway,below,font=\footnotesize,text=tceeazul] {ES};
+    \draw[flecha,tceeverde] (\xB,-0.75) -- (\xC,-0.75)
+      node[midway,below,font=\footnotesize,text=tceeverde] {ER};
+    \draw[flecha] (\xA,-1.45) -- (\xC,-1.45)
+      node[midway,below,font=\footnotesize,text=tceerojo] {ET};
+  }
+  % ---------------- Panel inferior ----------------
+  \capa{5}{
+    \begin{scope}[shift={(0,\pinf)}]
+      \ejes{$x_1$}{$p_1$}{7.6}{4.9}
+      % Guías verticales desde el panel superior (eje x1 alineado)
+      \draw[guia] (\xA,-\pinf) -- (\xA,3.6);
+      \draw[guia] (\xB,-\pinf-0.75) -- (\xB,1.8);
+      \draw[guia] (\xC,-\pinf-1.45) -- (\xC,1.8);
+      \draw[guia] (0,3.6) -- (\xA,3.6);
+      \node[left] at (0,3.6) {$p_1^0$};
+      \draw[guia] (0,1.8) -- (\xC,1.8);
+      \node[left] at (0,1.8) {$p_1^1$};
+      % Marshalliana: p1 = 5/x1 (escala 1,2)
+      \draw[curva1] plot[domain=1.35:4.6,samples=60,smooth] (\x,{1.2*5/\x})
+        node[etiqueta,right] {$x_1(p_1;\,p_2,\overline{W})$};
+      % Hicksiana: p1 = (25/3)/x1^2 (escala 1,2)
+      \draw[curva2] plot[domain=1.5:2.85,samples=60,smooth] (\x,{1.2*25/3/(\x*\x)})
+        node[etiqueta,below right] {$h_1(p_1;\,p_2,U^0)$};
+      \node[punto] at (\xA,3.6) {};
+      \node[etiqueta,above right] at (\xA,3.6) {$A'$};
+      \node[punto] at (\xB,1.8) {};
+      \node[etiqueta,below left] at (\xB,1.8) {$B'$};
+      \node[punto] at (\xC,1.8) {};
+      \node[etiqueta,above right] at (\xC,1.8) {$C'$};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

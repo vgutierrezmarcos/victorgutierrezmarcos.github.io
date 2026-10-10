@@ -52,6 +52,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 
 import fitz  # PyMuPDF
 import yaml
@@ -129,13 +130,15 @@ def sintetizar(texto, voz, velocidad, carpeta):
     h = huella(texto, voz, velocidad)
     mp3, marcas = os.path.join(carpeta, f'voz-{h}.mp3'), os.path.join(carpeta, f'voz-{h}.json')
     if not (os.path.exists(mp3) and os.path.getsize(mp3) > 0 and os.path.exists(marcas)):
-        for intento in range(4):
+        # Edge TTS devuelve a veces 403 durante un rato: se reintenta esperando cada vez más
+        for intento in range(8):
             try:
                 asyncio.run(_sintetizar(texto, voz, velocidad, mp3, marcas))
                 break
-            except Exception as e:  # cortes de red: se reintenta
-                if intento == 3:
+            except Exception as e:
+                if intento == 7:
                     raise RuntimeError(f'Edge TTS falló: {e}')
+                time.sleep(min(15 * 2 ** intento, 300))
     return mp3, json.load(open(marcas, encoding='utf-8'))
 
 

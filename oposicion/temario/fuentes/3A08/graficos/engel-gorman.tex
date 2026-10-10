@@ -1,0 +1,34 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Curvas de Engel rectas y paralelas: x_{hi} = a_h + b W_h, con b común.
+% a_1 = 0,4; a_2 = 1,3; b = 0,5. El consumidor 1 cede renta (4 -> 3)
+% y el 2 la recibe (0,8 -> 1,8): la demanda agregada no cambia.
+\begin{tikzpicture}[tcee]
+  \ejes{$\overline{W}_h$}{$x_{hi}$}{5.3}{4}
+  \capa{1}{
+    \draw[curva1] (0,0.4) -- (5,2.9) node[etiqueta,right] {$h=1$};
+    \draw[curva2] (0,1.3) -- (5,3.8) node[etiqueta,right] {$h=2$};
+    \node[left] at (0,0.4) {$a_1$};
+    \node[left] at (0,1.3) {$a_2$};
+  }
+  \capa{2}{
+    % Consumidor 1: pierde renta
+    \draw[guia] (3,1.9) -- (4,1.9) -- (4,2.4);
+    \fill[area] (3,1.9) -- (4,1.9) -- (4,2.4) -- cycle;
+    \node[punto] (A0) at (4,2.4) {};
+    \node[punto] (A1) at (3,1.9) {};
+    \draw[flecha] (3.95,2.55) to[bend right=25] (3.1,2.1);
+    \node[etiqueta,below] at (3.5,1.9) {$-\Delta\overline{W}$};
+    \node[etiqueta,right] at (4,2.1) {$-\Delta x_{1i}$};
+    % Consumidor 2: gana renta
+    \draw[guia] (0.8,1.7) -- (1.8,1.7) -- (1.8,2.2);
+    \fill[area] (0.8,1.7) -- (1.8,1.7) -- (1.8,2.2) -- cycle;
+    \node[punto] (B0) at (0.8,1.7) {};
+    \node[punto] (B1) at (1.8,2.2) {};
+    \draw[flecha] (0.75,1.95) to[bend left=25] (1.6,2.4);
+    \node[etiqueta,below] at (1.3,1.7) {$+\Delta\overline{W}$};
+    \node[etiqueta,right] at (1.8,1.9) {$+\Delta x_{2i}$};
+  }
+\end{tikzpicture}
+\end{document}

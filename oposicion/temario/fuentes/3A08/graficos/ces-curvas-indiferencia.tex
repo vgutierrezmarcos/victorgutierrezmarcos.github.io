@@ -1,0 +1,33 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Curvas de indiferencia CES con pesos iguales que pasan por (1,1):
+% x1^rho + x2^rho = 2, con rho = (sigma-1)/sigma.
+\begin{tikzpicture}[tcee,scale=1.7]
+  \ejes{$x_1$}{$x_2$}{3.6}{3.4}
+  \foreach \t in {1,2,3} {
+    \draw (\t,0) -- (\t,-0.05) node[below] {$\t$};
+    \draw (0,\t) -- (-0.05,\t) node[left] {$\t$};
+  }
+  \draw[guia] (1,0) -- (1,1) -- (0,1);
+  \node[punto] at (1,1) {};
+  % sigma = 0 (Leontief) y sigma = infinito (lineal)
+  \capa{2}{
+    \draw[curva1] (1,3) -- (1,1) -- (3,1) node[etiqueta,right] {$\sigma=0$};
+    \draw[curva2] (0,2) -- (2,0);
+    \node[etiqueta,text=tceeazul] at (0.38,1.22) {$\sigma=\infty$};
+  }
+  % sigma = 1 (Cobb-Douglas): x1 x2 = 1
+  \capa{3}{
+    \draw[curva3] plot[domain=0.3333:3,samples=80,smooth] (\x,{1/\x})
+      node[etiqueta,right] {$\sigma=1$};
+  }
+  % sigma = 0,5 (rho = -1) y sigma = 5 (rho = 0,8)
+  \capa{4}{
+    \draw[curva1,desplazada] plot[domain=0.6:3,samples=80,smooth] (\x,{\x/(2*\x-1)})
+      node[etiqueta,right] {$\sigma=0{,}5$};
+    \draw[curva2,desplazada] plot[domain=0.001:2.377,samples=80,smooth] (\x,{(2-\x^0.8)^1.25});
+    \node[etiqueta,anchor=west] at (2.4,0.1) {$\sigma=5$};
+  }
+\end{tikzpicture}
+\end{document}
