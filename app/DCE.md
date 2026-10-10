@@ -140,7 +140,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 
 **Versión 1.15.9 (33): primeros pasos (10 oct.)**
 Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.
-- [ ] Víctor: mirar la bienvenida y la guía (capturas en el chat) y decir si se compila el `.aab` 33.
+- [ ] Víctor: subir el `.aab` **1.15.9 (33)** (`Escritorio\oposicion-tcee-dce-1.15.9.aab`, lleva también la 32) a la prueba cerrada.
 - [ ] Probar en el móvil: instalación nueva (bienvenida → oposición → papel → hoja de avisos → guía), saltar la guía y abrirla desde Más, «Para empezar» tachándose y «Ocultar».
 
 **Google Calendar y Meet (en pruebas)**
