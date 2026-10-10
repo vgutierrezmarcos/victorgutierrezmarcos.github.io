@@ -1,0 +1,65 @@
+% ==========================================================================
+% tikz-tcee.tex — Estilos comunes de los gráficos TikZ del temario
+% Autor: Víctor Gutiérrez Marcos
+%
+% Cada gráfico es un fichero standalone en fuentes/<tema>/graficos/:
+%
+%   \documentclass[tikz,border=4pt]{standalone}
+%   \input{../../../latex/tikz-tcee}
+%   \begin{document}
+%   \begin{tikzpicture}[tcee]
+%     \ejes{Q}{P}{6}{5}
+%     \draw[curva1] (0.5,4.5) -- (5,0.8) node[etiqueta,right] {$D$};
+%     \capa{2}{\draw[curva2] ...;}   % en el vídeo aparece en el paso 2
+%   \end{tikzpicture}
+%   \end{document}
+%
+% Paleta: la de la web (morado, dorado, salvia) más tres colores de apoyo
+% distinguibles en blanco y negro por el trazo.
+% ==========================================================================
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext,newpxmath}
+\usepackage{xcolor}
+\usepackage{tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,positioning,patterns,decorations.pathreplacing,intersections,shapes.misc,backgrounds}
+
+\definecolor{tceemorado}{HTML}{5F2987}
+\definecolor{tceedorado}{HTML}{B8860B}
+\definecolor{tceeverde}{HTML}{3C7D3A}
+\definecolor{tceeazul}{HTML}{1F5F99}
+\definecolor{tceerojo}{HTML}{B22222}
+\definecolor{tceegris}{HTML}{767171}
+\definecolor{tceesalvia}{HTML}{E2EFD9}
+
+% Capas para el vídeo: \capa{n}{…} dibuja su contenido solo a partir del paso n.
+% En el PDF, la web y Word se ve todo; generar-video.py compila el gráfico una
+% vez por paso con \def\tceepaso{k} para que cada elemento aparezca al narrarlo.
+\providecommand{\tceepaso}{1000}
+\newcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\else#2\fi}
+
+\tikzset{
+  tcee/.style={line cap=round,line join=round,font=\small,>={Stealth[length=2.2mm]}},
+  eje/.style={->,thick,black},
+  curva1/.style={very thick,tceemorado},
+  curva2/.style={very thick,tceeazul},
+  curva3/.style={very thick,tceeverde},
+  curva4/.style={very thick,tceedorado},
+  curvanueva/.style={very thick,tceerojo},
+  desplazada/.style={very thick,dashed},
+  guia/.style={thin,dashed,tceegris},
+  punto/.style={circle,fill=black,inner sep=1.3pt},
+  etiqueta/.style={font=\small,inner sep=2pt},
+  flecha/.style={->,thick,tceerojo},
+  area/.style={fill=tceemorado,fill opacity=0.18,draw=none},
+  area2/.style={fill=tceedorado,fill opacity=0.22,draw=none},
+}
+
+% \ejes{etiqueta x}{etiqueta y}{largo x}{alto y}
+\newcommand{\ejes}[4]{%
+  \draw[eje] (0,0) -- (#3,0) node[below left=2pt and 0pt] {#1};
+  \draw[eje] (0,0) -- (0,#4) node[left] {#2};
+  \node[below left] at (0,0) {$0$};}
+% \proyeccion{(x,y)}{etq x}{etq y}: líneas guía a los ejes con etiquetas
+\newcommand{\proyeccion}[3]{%
+  \draw[guia] let \p1=#1 in (\x1,0) node[below] {#2} |- (0,\y1) node[left] {#3};}

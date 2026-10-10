@@ -1,0 +1,203 @@
+% ==========================================================================
+% tcee.sty — Estilo común de los temas del 3.º y 4.º ejercicio
+% Oposición a Técnico Comercial y Economista del Estado
+% Autor: Víctor Gutiérrez Marcos
+%
+% Reproduce la estética de los temas en Word y de victorgutierrezmarcos.es:
+% Palatino, morado #5F2987, salvia #E2EFD9, cabecera con la fecha de la
+% última actualización y apartados en banda morada.
+%
+% Uso (en el preámbulo de LyX o en un .tex):
+%   \usepackage{tcee}
+%   \tcetema{3.A.8}{Teoría de la demanda del consumidor (I)…}
+%   \tcefecha{10/10/2026}
+%   \addbibresource{3A08.bib}
+% ==========================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tcee}[2026/10/10 Temas TCEE]
+
+% --- Idioma y codificación ------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish,es-noshorthands,es-tabla,es-nodecimaldot]{babel}
+\RequirePackage{csquotes}
+
+% --- Tipografía: Palatino (texto y matemáticas) ----------------------------
+\RequirePackage{amsmath}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage{microtype}
+
+% --- Página -----------------------------------------------------------------
+\RequirePackage[a4paper,top=2.6cm,bottom=2.4cm,left=2.2cm,right=2.2cm,
+  headheight=26pt,footskip=1.2cm]{geometry}
+\RequirePackage{setspace}
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+% --- Colores -----------------------------------------------------------------
+\RequirePackage[dvipsnames,table]{xcolor}
+\definecolor{tceemorado}{HTML}{5F2987}
+\definecolor{tceemoradooscuro}{HTML}{4A1F6B}
+\definecolor{tceemoradopalido}{HTML}{F3EEF7}
+\definecolor{tceesalvia}{HTML}{E2EFD9}
+\definecolor{tceesalviaoscuro}{HTML}{C8D8C0}
+\definecolor{tceedorado}{HTML}{B8860B}
+\definecolor{tceegris}{HTML}{767171}
+\definecolor{tceegrisclaro}{HTML}{E7E6E6}
+\definecolor{tceecrema}{HTML}{FAF9F6}
+
+% --- Paquetes generales -----------------------------------------------------
+\RequirePackage{mathtools}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs,tabularx,array,multirow}
+\RequirePackage{enumitem}
+\RequirePackage{caption}
+\RequirePackage{float}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{titlesec}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\RequirePackage[hang,flushmargin]{footmisc}
+\renewcommand{\footnotelayout}{\footnotesize}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+% --- Datos del tema ----------------------------------------------------------
+\newcommand{\tcee@codigo}{}
+\newcommand{\tcee@titulo}{}
+\newcommand{\tcee@fecha}{\today}
+\newcommand{\tcetema}[2]{\renewcommand{\tcee@codigo}{#1}\renewcommand{\tcee@titulo}{#2}}
+\newcommand{\tcefecha}[1]{\renewcommand{\tcee@fecha}{#1}}
+\newcommand{\tceecodigo}{\tcee@codigo}
+
+% --- Cabecera y pie ---------------------------------------------------------
+\fancypagestyle{tcee}{%
+  \fancyhf{}%
+  \fancyhead[L]{\footnotesize\color{tceemorado}\textbf{\tcee@codigo}}%
+  \fancyhead[C]{\footnotesize\itshape\color{tceemorado}\parbox[b]{0.62\textwidth}{\centering\tcee@titulo}}%
+  \fancyhead[R]{\footnotesize\itshape\color{tceemorado}Víctor Gutiérrez Marcos}%
+  \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\pageref*{LastPage}}}%
+  \renewcommand{\headrule}{{\color{tceemorado}\hrule height 0.6pt}}%
+  \renewcommand{\footrule}{{\color{tceemorado}\hrule height 0.6pt}}%
+  \renewcommand{\footrulewidth}{0.6pt}%
+}
+\fancypagestyle{tceeprimera}{%
+  \fancyhf{}%
+  \fancyhead[L]{\parbox[b]{0.2\textwidth}{\raggedright\scriptsize\itshape\color{tceemorado}Fecha de la última actualización:\\\tcee@fecha}}%
+  \fancyhead[C]{\small\itshape\color{tceemorado}Oposición a Técnico Comercial y Economista del Estado}%
+  \fancyhead[R]{\small\itshape\color{tceemorado}\tcee@codigo}%
+  \fancyfoot[R]{\footnotesize\color{tceemorado}\textbf{\thepage/\pageref*{LastPage}}}%
+  \renewcommand{\headrule}{{\color{tceemorado}\hrule height 0.6pt}}%
+  \renewcommand{\footrule}{{\color{tceemorado}\hrule height 0.6pt}}%
+  \renewcommand{\footrulewidth}{0.6pt}%
+}
+\pagestyle{tcee}
+
+% --- Título del tema --------------------------------------------------------
+\newcommand{\tceetitulo}{%
+  \thispagestyle{tceeprimera}%
+  \begin{center}
+    {\large\bfseries\color{tceemorado}\MakeUppercase{\tcee@codigo:\ \tcee@titulo}\par}
+    \vspace{0.3em}{\color{tceemorado}\rule{0.6\textwidth}{0.8pt}}
+  \end{center}
+  \vspace{0.6em}%
+}
+
+% --- Apartados ---------------------------------------------------------------
+% \section    → banda morada con texto blanco en versalitas (INTRODUCCIÓN, I. …)
+% \subsection → I.1. en morado, negrita
+% \subsubsection y \paragraph → niveles inferiores, en morado
+\setcounter{secnumdepth}{3}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\titleformat{\section}[block]{\normalfont}{}{0pt}{\tcee@banda}
+\newcommand{\tcee@banda}[1]{%
+  \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+    \large\bfseries\color{white}\strut
+    \thesection.\ \MakeUppercase{#1}\strut}}}
+% Introducción y Conclusión: \section*{Introducción}, banda sin número
+\titleformat{name=\section,numberless}[block]{\normalfont}{}{0pt}{\tcee@bandasin}
+\newcommand{\tcee@bandasin}[1]{%
+  \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+    \large\bfseries\color{white}\strut\MakeUppercase{#1}\strut}}}
+\titlespacing*{\section}{0pt}{1.4em}{0.8em}
+\titleformat{\subsection}{\normalfont\bfseries\color{tceemorado}}{\thesubsection.}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.1em}{0.4em}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\color{tceemorado}}{\thesubsubsection.}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{0.9em}{0.3em}
+\titleformat{\paragraph}[runin]{\normalfont\bfseries\color{tceemoradooscuro}}{}{0pt}{}[.]
+\titlespacing*{\paragraph}{0pt}{0.6em}{0.5em}
+
+
+% Minutos del cante: \minutos{6} justo después del título del apartado
+\newcommand{\minutos}[1]{\par\vspace*{-0.9em}\hfill{\scriptsize\itshape\color{tceegris}#1 min}\par\vspace{-0.2em}}
+
+% --- Listas (viñetas como en Word: ■, –, o) ---------------------------------
+\setlist{itemsep=0.15em,topsep=0.3em,parsep=0.15em}
+\setlist[itemize,1]{label={\color{tceemorado}\scriptsize$\blacksquare$},leftmargin=1.4em}
+\setlist[itemize,2]{label={\color{tceemorado}--},leftmargin=1.4em}
+\setlist[itemize,3]{label={\color{tceemorado}\footnotesize$\circ$},leftmargin=1.4em}
+\setlist[itemize,4]{label={\color{tceemorado}\tiny$\blacktriangleright$},leftmargin=1.4em}
+\setlist[enumerate,1]{label={\color{tceemorado}\arabic*.},leftmargin=1.6em}
+\setlist[enumerate,2]{label={\color{tceemorado}\roman*.},leftmargin=1.6em}
+
+% --- Énfasis propios ----------------------------------------------------------
+\newcommand{\autor}[1]{\textsc{#1}}                        % ALFRED MARSHALL
+\newcommand{\concepto}[1]{\textbf{#1}}                     % término clave
+\newcommand{\vertema}[1]{{\color{tceegris}[ver tema #1]}}  % referencia cruzada
+
+% --- Cajas ----------------------------------------------------------------------
+% Nota al opositor: consejo útil para el cante (sustituye a la caja amarilla
+% con texto rojo de los Word antiguos).
+\newtcolorbox{notaopositor}[1][]{enhanced,breakable,
+  colback=tceemoradopalido,colframe=tceemorado,boxrule=0pt,leftrule=3pt,arc=1pt,
+  fontupper=\small,left=8pt,right=8pt,top=5pt,bottom=5pt,
+  title={\textsc{Nota al opositor}},coltitle=tceemorado,fonttitle=\small\bfseries,
+  attach title to upper={\ \textbullet\ },#1}
+% Anotaciones: lecturas recomendadas, enlaces y material complementario.
+\newtcolorbox{anotaciones}[1][]{enhanced,breakable,
+  colback=tceegrisclaro!55,colframe=tceegris,boxrule=0.4pt,arc=1pt,
+  fontupper=\footnotesize,left=8pt,right=8pt,top=4pt,bottom=4pt,#1}
+% Idea clave: frase que conviene decir tal cual en el cante.
+\newtcolorbox{ideaclave}[1][]{enhanced,breakable,
+  colback=tceesalvia,colframe=tceesalviaoscuro,boxrule=0.6pt,arc=2pt,
+  fontupper=\itshape,left=8pt,right=8pt,top=5pt,bottom=5pt,#1}
+% Esquema del tema (para la pizarra)
+\newtcolorbox{esquema}[1][]{enhanced,breakable,
+  colback=tceecrema,colframe=tceemorado,boxrule=0.6pt,arc=2pt,
+  title={Esquema del tema},fonttitle=\bfseries,colbacktitle=tceemorado,
+  fontupper=\small,#1}
+
+% --- Figuras y tablas ---------------------------------------------------------
+% Título encima («Gráfico 1.– …») y fuente obligatoria debajo con \fuente{…}.
+\captionsetup{font=small,labelfont={bf,color=tceemorado},labelsep=endash,
+  justification=centering,position=top,skip=4pt}
+\captionsetup[figure]{name=Gráfico}
+\captionsetup[table]{name=Tabla}
+\newcommand{\fuente}[1]{\par\vspace{2pt}{\centering\footnotesize\itshape Fuente: #1\par}}
+\newcommand{\grafico}[2][0.75\textwidth]{%
+  \includegraphics[width=#1]{#2}}
+\graphicspath{{graficos/}{../graficos/}}
+
+% --- Notas al pie ---------------------------------------------------------------
+\renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}
+\setlength{\footnotesep}{0.8\baselineskip}
+
+% --- Bibliografía ---------------------------------------------------------------
+\RequirePackage[backend=biber,style=authoryear,maxcitenames=2,uniquename=false,
+  uniquelist=false,dashed=false,autocite=footnote,sorting=nyt]{biblatex}
+\DeclareFieldFormat{urldate}{(consulta: #1)}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\newcommand{\bibliografia}{\printbibliography[heading=bibintoc,title={Bibliografía}]}
+
+% --- Hiperenlaces (al final) -----------------------------------------------------
+\RequirePackage[hidelinks,unicode,pdfusetitle]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=tceemorado,urlcolor=tceemoradooscuro,citecolor=tceemoradooscuro}
+\RequirePackage{bookmark}
+
+\endinput

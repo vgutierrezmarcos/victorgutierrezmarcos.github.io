@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema $codigo$: $titulo-corto$ | Víctor Gutiérrez Marcos</title>
+    <meta name="description" content="Tema $codigo$ de la oposición a Técnico Comercial y Economista del Estado: $titulo$">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="../../../search-styles.css">
+    <link rel="stylesheet" href="../../../cookie-consent.css">
+    <link rel="stylesheet" href="../latex/tema.css">
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html">
+    <script>
+    window.MathJax = {
+        tex: { tags: 'ams', macros: { R: '\\mathbb{R}' } },
+        chtml: { scale: 0.97 },
+        options: { enableMenu: false }
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+            {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+            {"@type": "ListItem", "position": 3, "name": "Temario", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario.html"},
+            {"@type": "ListItem", "position": 4, "name": "$ejercicio$", "item": "https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$.html"},
+            {"@type": "ListItem", "position": 5, "name": "Tema $codigo$"}
+        ]
+    }
+    </script>
+</head>
+<body class="pagina-tema">
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="../../../index.html">INICIO</a></li>
+                <li><a href="../../index.html" class="active">OPOSICIÓN</a></li>
+                <li><a href="../../../blog/index.html">BLOG</a></li>
+                <li><a href="../../../sobre-mi.html">SOBRE MÍ</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="sub-nav" style="background: var(--color-bg-cream); border-bottom: 1px solid var(--color-border);">
+        <div class="nav-container">
+            <ul class="nav-list" style="padding: 0.3rem 0;">
+                <li><a href="../../index.html" style="font-size: 0.75rem;">INTRODUCCIÓN</a></li>
+                <li><a href="../../temario.html" class="active" style="font-size: 0.75rem;">TEMARIO</a></li>
+                <li><a href="../../organizacion.html" style="font-size: 0.75rem;">ORGANIZACIÓN</a></li>
+                <li><a href="../../enlaces.html" style="font-size: 0.75rem;">ENLACES</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="tema-layout">
+            <aside class="tema-indice" aria-label="Índice del tema">
+                <p class="tema-indice-titulo">Índice</p>
+$if(toc)$
+$table-of-contents$
+$endif$
+            </aside>
+            <article class="tema-documento">
+                <nav class="breadcrumb"><a href="../../temario.html">Temario</a><span>›</span><a href="../$carpeta$.html">$ejercicio$</a><span>›</span>Tema $codigo$</nav>
+                <header class="tema-cabecera">
+                    <p class="tema-codigo">Tema $codigo$</p>
+                    <h2 class="tema-titulo">$titulo$</h2>
+                    <p class="tema-meta">Última actualización: $fecha$$if(duracion)$ · Cante: $duracion$ minutos$endif$</p>
+                    <div class="tema-descargas">
+                        <a href="$archivo$.pdf" target="_blank">PDF</a>
+                        <a href="$archivo$.docx" download>Word</a>
+$if(video)$
+                        <a href="$video$" target="_blank" rel="noopener">Vídeo del cante</a>
+$endif$
+                    </div>
+                </header>
+$body$
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="../../../politica-cookies.html">Política de cookies</a>
+        </div>
+    </div>
+</footer>
+    <script src="../../../search-engine.js"></script>
+    <script src="../../../search-ui.js"></script>
+    <script src="../../../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../../../firebase-config.js"></script>
+    <script src="../../../auth.js"></script>
+</body>
+</html>

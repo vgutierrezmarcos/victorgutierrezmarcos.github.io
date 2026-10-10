@@ -1,0 +1,12 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9]
+  \ejes{$Q$}{$P$}{6}{5}
+  \draw[curva1] (0.6,4.4) -- (5.2,0.8) node[etiqueta,right] {$D$};
+  \draw[curva2] (0.6,0.8) -- (5.2,4.4) node[etiqueta,right] {$S$};
+  \node[punto] (E) at (2.9,2.6) {};
+  \proyeccion{(E)}{$Q^*$}{$P^*$}
+  \capa{2}{\draw[curvanueva,desplazada] (1.4,4.4) -- (6,0.8) node[etiqueta,right] {$D'$};}
+\end{tikzpicture}
+\end{document}

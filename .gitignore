@@ -38,8 +38,24 @@ oculto/
 other/
 
 *_.claude/
-/.claude/
-.claude/
+# De .claude/ solo se versiona la revisión del temario (/revisartema)
+.claude/*
+!.claude/skills/
+!.claude/agents/
+!.claude/settings.json
+
+# Revisión del temario: intermedios de cada tema y auxiliares de LaTeX
+oposicion/temario/fuentes/*/_trabajo/
+oposicion/temario/fuentes/*/graficos/*.aux
+oposicion/temario/fuentes/*/graficos/*.log
+oposicion/temario/fuentes/_ejemplo/*.aux
+oposicion/temario/fuentes/_ejemplo/*.log
+oposicion/temario/fuentes/_ejemplo/*.bcf
+oposicion/temario/fuentes/_ejemplo/*.bbl
+oposicion/temario/fuentes/_ejemplo/*.blg
+oposicion/temario/fuentes/_ejemplo/*.run.xml
+oposicion/temario/fuentes/_ejemplo/*.out
+oposicion/temario/fuentes/_ejemplo/biber.out
 
 # Temporary files created by R markdown
 *.utf8.md

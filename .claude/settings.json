@@ -1,0 +1,52 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 scripts/temario/*)",
+      "Bash(python3 /mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision/scripts/temario/*)",
+      "Bash(python3 -c *)",
+      "Bash(python3 -m http.server *)",
+      "Bash(/mnt/c/Users/vgutierrez/AppData/Local/Programs/MiKTeX/miktex/bin/x64/*)",
+      "Bash(/mnt/c/Users/vgutierrez/AppData/Local/Programs/Quarto/bin/tools/pandoc.exe *)",
+      "Bash(\"/mnt/c/Users/vgutierrez/AppData/Local/Programs/Quarto/bin/tools/pandoc.exe\" *)",
+      "Bash(\"/mnt/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe\" *)",
+      "Bash(timeout *)",
+      "Bash(/mnt/c/Windows/System32/cscript.exe *)",
+      "Bash(wslpath *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git fetch*)",
+      "Bash(git merge --no-edit origin/main)",
+      "Bash(git push origin revision-temario)",
+      "Bash(git rev-parse *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(grep *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Read",
+      "Edit(/oposicion/temario/fuentes/**)",
+      "Write(/oposicion/temario/fuentes/**)",
+      "Edit(/oposicion/temario/videos.json)",
+      "WebSearch",
+      "WebFetch",
+      "mcp__sql_eurostat__read_query",
+      "mcp__sql_eurostat__list_tables",
+      "mcp__sql_eurostat__describe_table",
+      "mcp__sql_onu__read_query",
+      "mcp__sql_onu__list_tables",
+      "mcp__sql_onu__describe_table"
+    ],
+    "deny": [
+      "Bash(git push origin main*)",
+      "Bash(git push * main*)",
+      "Bash(git checkout main*)",
+      "Bash(git rebase*)"
+    ]
+  }
+}
