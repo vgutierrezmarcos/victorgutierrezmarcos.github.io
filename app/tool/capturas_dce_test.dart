@@ -49,6 +49,8 @@ import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
 
+import 'demo_comun.dart' show cajaAppSinPrimerosPasos;
+
 Map<String, dynamic> _json(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
 
 Future<void> _fuente(String familia, List<String> rutas) async {
@@ -65,6 +67,7 @@ void main() {
 
   setUpAll(() async {
     await initializeDateFormatting('es');
+    await cajaAppSinPrimerosPasos();
     // ignore: invalid_use_of_visible_for_testing_member
     PackageInfo.setMockInitialValues(appName: 'Oposición TCEE · DCE', packageName: 'es.victorgutierrezmarcos.tcee_app', version: '', buildNumber: '', buildSignature: '');
     await _fuente('Pagella', [for (final v in ['regular', 'italic', 'bold', 'bolditalic']) 'assets/fonts/texgyrepagella-$v.otf']);

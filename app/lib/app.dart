@@ -21,6 +21,7 @@ import 'features/cantar/relojes_alumnos.dart';
 import 'features/cantes/cantes_page.dart';
 import 'features/cronograma/cronograma_page.dart';
 import 'features/estudiar/estudiar_page.dart';
+import 'features/guia/guia.dart';
 import 'features/inicio/inicio_page.dart';
 import 'features/inicio/permisos_sheet.dart';
 import 'features/mas/cuenta_page.dart';
@@ -164,13 +165,17 @@ class _TceeAppState extends ConsumerState<TceeApp> {
     // Y se redibuja cuando cambia lo que muestra.
     ref.listenManual(datosWidgetProvider, (_, d) => actualizarWidget(d), fireImmediately: true);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _abrirAltaSiToca();
       if (ref.read(serviciosProvider).firebaseDisponible) ref.read(sesionProvider.notifier).renovarFoto();
-      // La primera vez: para qué sirven los avisos y el permiso para mostrarlos.
-      Future.delayed(const Duration(milliseconds: 800), () {
+      // La primera vez: para qué sirven los avisos y el permiso para
+      // mostrarlos; después, la guía de la app (una vez por oposición y papel)
+      // y, a quien acaba de elegir «Preparo a opositores», el alta.
+      Future.delayed(const Duration(milliseconds: 800), () async {
         final c = _router.routerDelegate.navigatorKey.currentContext;
         // ignore: use_build_context_synchronously
-        if (c != null && mounted) mostrarHojaPermisosSiToca(c);
+        if (c != null && mounted) await mostrarHojaPermisosSiToca(c);
+        if (!mounted) return;
+        await empezarGuiaSiToca(ref);
+        if (mounted) await _abrirAltaSiToca();
       });
     });
   }
@@ -317,7 +322,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
   }
 }
 
-class _Shell extends StatelessWidget {
+class _Shell extends ConsumerWidget {
   const _Shell({required this.shell});
   final StatefulNavigationShell shell;
 
@@ -332,7 +337,25 @@ class _Shell extends StatelessWidget {
   void _ir(int i) => shell.goBranch(i, initialLocation: i == shell.currentIndex);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Cada paso de la guía abre su pestaña (y su subpestaña).
+    ref.listen(guiaProvider, (antes, e) {
+      // Al acabarla, de vuelta a Hoy.
+      if (e == null) {
+        if (antes != null) shell.goBranch(0, initialLocation: true);
+        return;
+      }
+      final p = e.paso;
+      if (p.estudiar != null) ref.read(subpestanaEstudiarProvider.notifier).state = p.estudiar!;
+      if (p.cantes != null) ref.read(subpestanaCantesProvider.notifier).state = p.cantes!;
+      shell.goBranch(p.pestana, initialLocation: true);
+    });
+    final guia = ref.watch(guiaProvider);
+    final pantalla = _pantalla(context);
+    return guia == null ? pantalla : Stack(children: [pantalla, Positioned.fill(child: CapaGuia(estado: guia))]);
+  }
+
+  Widget _pantalla(BuildContext context) {
     // Pantalla ancha (ordenador, tableta en horizontal): el menú va a la izquierda.
     if (MediaQuery.sizeOf(context).width >= 720) {
       return Scaffold(
@@ -352,7 +375,10 @@ class _Shell extends StatelessWidget {
                   child: InkWell(customBorder: const CircleBorder(), onTap: () => GoRouter.of(context).go('/mas/cuenta'), child: const AvatarUsuario(radio: 18)),
                 ),
               ),
-              destinations: [for (final d in _destinos) NavigationRailDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: Text(d.$3))],
+              destinations: [
+                for (final (i, d) in _destinos.indexed)
+                  NavigationRailDestination(icon: AnclaGuia(pestana: i, child: Icon(d.$1)), selectedIcon: AnclaGuia(pestana: i, child: Icon(d.$2)), label: Text(d.$3)),
+              ],
             ),
           ),
           Expanded(child: shell),
@@ -383,7 +409,10 @@ class _Shell extends StatelessWidget {
           child: NavigationBar(
           selectedIndex: shell.currentIndex,
           onDestinationSelected: _ir,
-          destinations: [for (final d in _destinos) NavigationDestination(icon: Icon(d.$1), selectedIcon: Icon(d.$2), label: d.$3)],
+          destinations: [
+            for (final (i, d) in _destinos.indexed)
+              NavigationDestination(icon: AnclaGuia(pestana: i, child: Icon(d.$1)), selectedIcon: AnclaGuia(pestana: i, child: Icon(d.$2)), label: d.$3),
+          ],
           ),
         ),
       ),

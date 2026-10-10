@@ -172,6 +172,53 @@ final authStateProvider = StreamProvider<User?>((ref) {
 
 final usuarioActualProvider = Provider<User?>((ref) => ref.watch(authStateProvider).valueOrNull);
 
+/// Inicia sesión con Google (ventana de Firebase en el navegador; Google
+/// Sign-In en el móvil). [dentro] si se ha entrado; [error], el mensaje si ha
+/// fallado (cancelar no es un error). No sincroniza: lo hace quien la llama
+/// o, en la bienvenida, la app al arrancar con la sesión ya abierta.
+Future<({bool dentro, String? error})> entrarConGoogle() async {
+  try {
+    if (kIsWeb) {
+      // En el navegador, la ventana de Google de Firebase (como en la web).
+      await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider()..addScope('email'));
+    } else {
+      final inicio = GoogleSignIn(scopes: const ['email']);
+      var google = await inicio.signIn();
+      if (google == null) return (dentro: false, error: null); // cancelado
+      var auth = await google.authentication;
+      if (auth.idToken == null && auth.accessToken == null) {
+        // Play Services da la cuenta sin tokens cuando el usuario ha retirado
+        // el acceso de la app desde su cuenta de Google: se rompe el enlace
+        // guardado y se vuelve a entrar (Google vuelve a pedir el permiso).
+        try {
+          await inicio.disconnect();
+        } catch (_) {}
+        google = await inicio.signIn();
+        if (google == null) return (dentro: false, error: null);
+        auth = await google.authentication;
+        if (auth.idToken == null && auth.accessToken == null) {
+          return (dentro: false, error: 'Google no ha dado acceso a la app. Si has retirado el acceso desde tu cuenta de Google, espera unos minutos y vuelve a intentarlo.');
+        }
+      }
+      final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
+      final r = await FirebaseAuth.instance.signInWithCredential(cred);
+      // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
+      // guarda los del primer inicio de sesión y no los renueva solo).
+      final u = r.user;
+      try {
+        if (u != null && (google.photoUrl ?? '').isNotEmpty && u.photoURL != google.photoUrl) await u.updatePhotoURL(google.photoUrl);
+        if (u != null && (u.displayName ?? '').isEmpty && (google.displayName ?? '').isNotEmpty) await u.updateDisplayName(google.displayName);
+      } catch (_) {}
+    }
+    return (dentro: true, error: null);
+  } on FirebaseAuthException catch (e) {
+    // Ventana cerrada por el usuario: no es un error.
+    if (e.code == 'popup-closed-by-user' || e.code == 'cancelled-popup-request') return (dentro: false, error: null);
+    if (e.code == 'popup-blocked') return (dentro: false, error: 'el navegador ha bloqueado la ventana de Google. Permite las ventanas emergentes de esta página.');
+    return (dentro: false, error: e.message ?? e.code);
+  }
+}
+
 class SesionNotifier extends Notifier<bool> {
   @override
   bool build() => false; // ocupado
@@ -179,45 +226,9 @@ class SesionNotifier extends Notifier<bool> {
   Future<String?> iniciarConGoogle() async {
     state = true;
     try {
-      if (kIsWeb) {
-        // En el navegador, la ventana de Google de Firebase (como en la web).
-        await FirebaseAuth.instance.signInWithPopup(GoogleAuthProvider()..addScope('email'));
-      } else {
-        final inicio = GoogleSignIn(scopes: const ['email']);
-        var google = await inicio.signIn();
-        if (google == null) return null; // cancelado
-        var auth = await google.authentication;
-        if (auth.idToken == null && auth.accessToken == null) {
-          // Play Services da la cuenta sin tokens cuando el usuario ha retirado
-          // el acceso de la app desde su cuenta de Google: se rompe el enlace
-          // guardado y se vuelve a entrar (Google vuelve a pedir el permiso).
-          try {
-            await inicio.disconnect();
-          } catch (_) {}
-          google = await inicio.signIn();
-          if (google == null) return null;
-          auth = await google.authentication;
-          if (auth.idToken == null && auth.accessToken == null) {
-            return 'Google no ha dado acceso a la app. Si has retirado el acceso desde tu cuenta de Google, espera unos minutos y vuelve a intentarlo.';
-          }
-        }
-        final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
-        final r = await FirebaseAuth.instance.signInWithCredential(cred);
-        // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
-        // guarda los del primer inicio de sesión y no los renueva solo).
-        final u = r.user;
-        try {
-          if (u != null && (google.photoUrl ?? '').isNotEmpty && u.photoURL != google.photoUrl) await u.updatePhotoURL(google.photoUrl);
-          if (u != null && (u.displayName ?? '').isEmpty && (google.displayName ?? '').isNotEmpty) await u.updateDisplayName(google.displayName);
-        } catch (_) {}
-      }
-      await sincronizarTodo(ref);
-      return null;
-    } on FirebaseAuthException catch (e) {
-      // Ventana cerrada por el usuario: no es un error.
-      if (e.code == 'popup-closed-by-user' || e.code == 'cancelled-popup-request') return null;
-      if (e.code == 'popup-blocked') return 'el navegador ha bloqueado la ventana de Google. Permite las ventanas emergentes de esta página.';
-      return e.message ?? e.code;
+      final r = await entrarConGoogle();
+      if (r.dentro) await sincronizarTodo(ref);
+      return r.error;
     } catch (e) {
       return e.toString();
     } finally {

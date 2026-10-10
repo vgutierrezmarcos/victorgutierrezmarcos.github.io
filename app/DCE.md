@@ -138,6 +138,11 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Examen de marzo de 2026 (OEP 2025) en el simulador (`2026-marzo`, 45 preguntas, 3 y 28 anuladas, 42 «B y C») y en la recopilación `examenes_oficiales_test.pdf`.
 - [ ] Víctor: subir el `.aab` 1.15.8 (32) a la prueba cerrada (está en el Escritorio; web y `app/abrir` ya publicados). La siguiente versión llevará además la nota de las preguntas al corregir y que el contenido nuevo de la web (preguntas, temario…) se vea sin cerrar la app; la versión web ya lo tiene.
 
+**Versión 1.15.9 (33): primeros pasos (10 oct.)**
+Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.
+- [ ] Víctor: mirar la bienvenida y la guía (capturas en el chat) y decir si se compila el `.aab` 33.
+- [ ] Probar en el móvil: instalación nueva (bienvenida → oposición → papel → hoja de avisos → guía), saltar la guía y abrirla desde Más, «Para empezar» tachándose y «Ocultar».
+
 **Google Calendar y Meet (en pruebas)**
 Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.google.com/auth/overview?project=web-vgm) · [Marca](https://console.cloud.google.com/auth/branding?project=web-vgm) · [Público (estado de publicación y usuarios de prueba)](https://console.cloud.google.com/auth/audience?project=web-vgm) · [Acceso a datos (permisos)](https://console.cloud.google.com/auth/scopes?project=web-vgm) · [Centro de verificación](https://console.cloud.google.com/auth/verification?project=web-vgm) · [YouTube Studio](https://studio.youtube.com/) · guion y justificación en `app/google-calendar-verificacion.md`.
 - [x] Google Cloud (`web-vgm`): Google Calendar API activada y permiso `calendar.events` en la pantalla de consentimiento (8 oct.).

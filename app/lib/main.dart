@@ -119,11 +119,15 @@ class RaizApp extends StatefulWidget {
 class _RaizAppState extends State<RaizApp> {
   Servicios? _servicios;
 
+  /// Instalación nueva: antes de nada, la bienvenida con la entrada con
+  /// Google (una vez; sin Firebase no tiene sentido).
+  late final bool _bienvenida = widget.firebaseDisponible && widget.elegida == null && Hive.box(Cajas.app).get(claveBienvenidaVista) != true;
+
   @override
   void initState() {
     super.initState();
     final elegida = Oposiciones.todas.where((o) => o.id == widget.elegida).firstOrNull;
-    if (elegida != null || !Oposiciones.variasDisponibles) _arrancar(elegida ?? Oposiciones.todas.first);
+    if (elegida != null || (!Oposiciones.variasDisponibles && !_bienvenida)) _arrancar(elegida ?? Oposiciones.todas.first);
   }
 
   /// Arranca con [oposicion]. Con [papel] (al elegirla la primera vez), lo fija.
@@ -144,8 +148,8 @@ class _RaizAppState extends State<RaizApp> {
   Widget build(BuildContext context) {
     final servicios = _servicios;
     if (servicios == null) {
-      return Oposiciones.variasDisponibles && widget.elegida == null
-          ? ElegirOposicionApp(alElegir: (o, papel) => _arrancar(o, papel: papel))
+      return (Oposiciones.variasDisponibles && widget.elegida == null) || _bienvenida
+          ? ElegirOposicionApp(conBienvenida: _bienvenida, conOposicion: Oposiciones.variasDisponibles, alElegir: (o, papel) => _arrancar(o, papel: papel))
           : const SizedBox.shrink();
     }
     // Una clave por oposición: al cambiarla se descartan todos los providers.

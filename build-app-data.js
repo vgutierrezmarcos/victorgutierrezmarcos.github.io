@@ -191,7 +191,8 @@ function construirTemario() {
         if (ej.id === 1) {
             base.recursos = [
                 { id: 'simulador', titulo: 'Simulador de test', tipo: 'app', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/simulador.html` },
-                { id: 'examenes', titulo: 'Exámenes oficiales de test (PDF, 63 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf` },
+                { id: 'examenes', titulo: 'Exámenes oficiales de test (PDF, 11 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf` },
+                { id: 'examenes-dictamen', titulo: 'Exámenes oficiales del dictamen (PDF, 7 MB)', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/examenes_oficiales_dictamen.pdf` },
                 { id: 'plantillas', titulo: 'Plantillas para practicar test', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/test/plantillas_para_practicar_test.pdf` },
                 { id: 'dictamen', titulo: 'Esquema del dictamen económico', tipo: 'pdf', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico.pdf` },
                 { id: 'dictamen-docx', titulo: 'Esquema del dictamen económico 2025 (Word)', tipo: 'docx', url: `${BASE_URL}/oposicion/temario/primer-ejercicio/esquema_dictamen_economico_2025.docx` }
