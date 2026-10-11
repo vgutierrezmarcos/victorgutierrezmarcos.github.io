@@ -1,0 +1,48 @@
+% Ecuación de Slutsky para el precio cruzado, versión reducida para la pizarra del vídeo
+% (la tabla completa, con los casos frontera e independientes, está en el tema:
+% tab:slutsky-cruzado). Relación neta (efecto sustitución cruzado), efecto renta
+% cruzado según el bien i y relación bruta (efecto total cruzado).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cab/.style={font=\small\bfseries,align=center,text width=3.3cm},
+    celda/.style={font=\small,align=center,text width=3.3cm},
+    rejilla/.style={thick,tceegris}]
+  % 1: ecuación y cabecera
+  \capa{1}{\fill[tceesalvia] (0,0) rectangle (10.8,1.4);}
+  \capa{1}{\node[font=\normalsize] at (5.4,0.75)
+    {$\underbrace{\partial x_i/\partial p_j}_{\text{ET}}=\underbrace{\partial h_i/\partial p_j}_{\text{ES}}\ \underbrace{-\,x_j\,\partial x_i/\partial\overline{W}}_{\text{ER}}$};}
+  \capa{1}{\draw[rejilla] (0,0) rectangle (10.8,1.4);}
+  \capa{1}{\node[cab] at (1.8,-0.45) {Efecto sustitución\\ (relación neta)};}
+  \capa{1}{\node[cab] at (5.4,-0.45) {Efecto renta\\ (según el bien $i$)};}
+  \capa{1}{\node[cab] at (9.0,-0.45) {Efecto total\\ (relación bruta)};}
+  \capa{1}{\draw[rejilla] (0,-0.9) -- (10.8,-0.9);}
+  % 2: sustitutivos netos con el bien i normal
+  \capa{2}{\node[celda,text=tceeverde] at (1.8,-1.8) {${>}\,0$:\\ sustitutivos netos};}
+  \capa{2}{\node[celda,text=tceeverde] at (5.4,-1.35) {${<}\,0$: $i$ normal};}
+  \capa{2}{\node[celda] at (9.0,-1.35) {ambiguo};}
+  \capa{2}{\draw[rejilla] (3.6,-1.8) -- (10.8,-1.8);}
+  % 3: sustitutivos netos con el bien i inferior
+  \capa{3}{\node[celda,text=tceedorado] at (5.4,-2.25) {${>}\,0$: $i$ inferior};}
+  \capa{3}{\node[celda,text=tceeverde] at (9.0,-2.25) {${>}\,0$: sustitutivos brutos};}
+  \capa{3}{\draw[rejilla] (0,-2.7) -- (10.8,-2.7);}
+  % 4: complementarios netos con el bien i normal
+  \capa{4}{\node[celda,text=tceedorado] at (1.8,-3.6) {${<}\,0$:\\ complementarios netos};}
+  \capa{4}{\node[celda,text=tceeverde] at (5.4,-3.15) {${<}\,0$: $i$ normal};}
+  \capa{4}{\node[celda,text=tceedorado] at (9.0,-3.15) {${<}\,0$: complementarios brutos};}
+  \capa{4}{\draw[rejilla] (3.6,-3.6) -- (10.8,-3.6);}
+  % 5: complementarios netos con el bien i inferior
+  \capa{5}{\node[celda,text=tceedorado] at (5.4,-4.05) {${>}\,0$: $i$ inferior};}
+  \capa{5}{\node[celda] at (9.0,-4.05) {ambiguo};}
+  \capa{5}{\draw[rejilla] (0,-4.5) -- (10.8,-4.5);}
+  % rejilla vertical, que crece con las filas
+  \foreach \k/\a/\b in {1/0/-0.9,2/-0.9/-1.8,3/-1.8/-2.7,4/-2.7/-3.6,5/-3.6/-4.5}{
+    \capa{\k}{\foreach \x in {0,3.6,7.2,10.8} \draw[rejilla] (\x,\a) -- (\x,\b);}
+  }
+  % 6: simetría
+  \capa{6}{\node[font=\small,text=tceemorado] at (5.4,-5.0)
+    {Relaciones netas simétricas: $\partial h_i/\partial p_j=\partial h_j/\partial p_i$; las brutas, no};}
+\end{tikzpicture}
+\end{document}
