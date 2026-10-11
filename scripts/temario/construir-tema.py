@@ -75,12 +75,19 @@ def sincronizar_lyx(tema):
     if os.path.exists(tema.lyx) and generado and _huella_fichero(tema.lyx) != generado:
         cod, salida = _lyx_windows(LYX, ['--batch', '-E', 'pdflatex', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'],
                                    tema.dir)
-        if cod != 0:
-            return f'AVISO: LyX no pudo exportar {tema.archivo}.lyx: {salida.strip()[-300:]}'
+        if cod != 0 or os.path.getmtime(tex) < os.path.getmtime(tema.lyx):
+            return (f'AVISO: {tema.archivo}.lyx se ha editado en LyX pero no se pudo exportar desde aquí: '
+                    f'en LyX, Archivo > Exportar > LaTeX (pdflatex) sobre {tema.archivo}.tex, y volver a construir')
         open(marca, 'w').write(_huella_fichero(tema.lyx))
         return f'{tema.archivo}.lyx (editado en LyX) → {tema.archivo}.tex'
     if not os.path.exists(tema.lyx) or os.path.getmtime(tex) > os.path.getmtime(tema.lyx) + 1:
-        cod, salida = _lyx_windows(TEX2LYX, ['-f', '-n', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'], tema.dir)
+        # El módulo tcee.module convierte \\autor, \\concepto, las cajas… en elementos de LyX
+        modulo = os.path.join(os.environ.get('LYX_USERDIR', '/mnt/c/Users/vgutierrez/AppData/Roaming/LyX2.4'),
+                              'layouts', 'tcee.module')
+        if os.path.isdir(os.path.dirname(modulo)):
+            shutil.copyfile(os.path.join(LATEX, 'tcee.module'), modulo)
+        cod, salida = _lyx_windows(TEX2LYX, ['-m', 'tcee', '-f', '-n', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'],
+                                   tema.dir)
         if cod != 0 or not os.path.exists(tema.lyx) or os.path.getsize(tema.lyx) == 0:
             if os.path.exists(tema.lyx) and os.path.getsize(tema.lyx) == 0:
                 os.remove(tema.lyx)

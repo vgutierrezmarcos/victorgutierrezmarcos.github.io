@@ -1,0 +1,113 @@
+#\DeclareLyXModule{Temario TCEE (tcee.sty)}
+#\DeclareCategory{Temario TCEE}
+#DescriptionBegin
+#Órdenes y cajas de tcee.sty para editar en LyX los temas del 3.er y 4.º
+#ejercicio de la oposición TCEE: autor, concepto, referencia a otro tema,
+#fuente, minutos del cante y cajas (nota al opositor, anotaciones, idea
+#clave, esquema). El documento carga tcee.sty en el preámbulo.
+#DescriptionEnd
+# Autor: Víctor Gutiérrez Marcos
+#
+# Instalación: copiar a %APPDATA%\LyX2.4\layouts\ y Herramientas >
+# Reconfigurar (scripts/temario/construir-tema.py lo copia solo).
+
+Format 104
+
+InsetLayout Flex:Autor
+	LyxType               charstyle
+	LabelString           autor
+	LatexType             command
+	LatexName             autor
+	Font
+	  Shape               Smallcaps
+	EndFont
+	ResetsFont            true
+End
+
+InsetLayout Flex:Concepto
+	LyxType               charstyle
+	LabelString           concepto
+	LatexType             command
+	LatexName             concepto
+	Font
+	  Series              Bold
+	EndFont
+	ResetsFont            true
+End
+
+InsetLayout Flex:Ver_tema
+	LyxType               charstyle
+	LabelString           "ver tema"
+	LatexType             command
+	LatexName             vertema
+	Font
+	  Color               gray
+	EndFont
+	ResetsFont            true
+End
+
+InsetLayout Flex:Fuente
+	LyxType               custom
+	LabelString           Fuente
+	LatexType             command
+	LatexName             fuente
+	Decoration            classic
+	Font
+	  Shape               Italic
+	  Size                Small
+	EndFont
+	MultiPar              false
+End
+
+InsetLayout Flex:Minutos
+	LyxType               custom
+	LabelString           min
+	LatexType             command
+	LatexName             minutos
+	Decoration            conglomerate
+	Font
+	  Color               gray
+	  Size                Small
+	EndFont
+	MultiPar              false
+End
+
+InsetLayout Flex:Nota_al_opositor
+	LyxType               custom
+	LabelString           "Nota al opositor"
+	LatexType             environment
+	LatexName             notaopositor
+	Decoration            classic
+	MultiPar              true
+	BgColor               lightgray
+End
+
+InsetLayout Flex:Anotaciones
+	LyxType               custom
+	LabelString           Anotaciones
+	LatexType             environment
+	LatexName             anotaciones
+	Decoration            classic
+	MultiPar              true
+End
+
+InsetLayout Flex:Idea_clave
+	LyxType               custom
+	LabelString           "Idea clave"
+	LatexType             environment
+	LatexName             ideaclave
+	Decoration            classic
+	MultiPar              true
+	Font
+	  Shape               Italic
+	EndFont
+End
+
+InsetLayout Flex:Esquema
+	LyxType               custom
+	LabelString           "Esquema del tema"
+	LatexType             environment
+	LatexName             esquema
+	Decoration            classic
+	MultiPar              true
+End
