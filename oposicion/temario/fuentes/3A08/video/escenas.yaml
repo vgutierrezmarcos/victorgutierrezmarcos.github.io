@@ -256,10 +256,11 @@ escenas:
         pizarra:
           - {formula: 'U_i-\lambda p_i\leq 0,\ \ x_i\geq 0,\ \ x_i(U_i-\lambda p_i)=0', zona: "1"}
           - {formula: '\lambda>0\ \Rightarrow\ p\cdot x=\overline{W}', zona: "1"}
+          - {grafico: solucion-interior-esquina, capa: 1, zona: "2"}
         guion: "Holgura complementaria; λ: utilidad marginal de la renta"
         apunte: "Kuhn y Tucker (1951): L = U(x) + λ(W − p·x); λ es la utilidad marginal de la renta"
       - di: "Gráficamente, sobre el conjunto presupuestario dibujamos el mapa de curvas de indiferencia: la curva más baja es alcanzable pero mejorable, y la más alta es inalcanzable."
-        pizarra: [{grafico: solucion-interior-esquina, capa: 4, zona: "2"}]
+        pizarra: [{grafico: solucion-interior-esquina, capa: 4}]
         guion: "La curva más baja es mejorable; la más alta, inalcanzable"
         apunte: ""
       - di: "En una solución interior, el óptimo es el punto de tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, se iguala al cociente de precios, lo que exige el mercado. Analíticamente, la utilidad marginal por unidad monetaria es la misma en todos los bienes: es la segunda ley de Gossen."
@@ -273,9 +274,7 @@ escenas:
         guion: "Esquina: algún bien no se consume"
         apunte: ""
       - di: "Si solo se compra el bien uno, la relación marginal de sustitución es mayor o igual que el cociente de precios: incluso en la esquina, el consumidor valora el bien uno más de lo que le cuesta en el mercado."
-        pizarra:
-          - {grafico: solucion-interior-esquina, capa: 13}
-          - {formula: 'x_2^*=0:\ RMS_{12}\geq\frac{p_1}{p_2}', zona: "1"}
+        pizarra: [{grafico: solucion-interior-esquina, capa: 13}]
         guion: "Valora el bien 1 más de lo que le cuesta"
         apunte: "Arrow y Enthoven (1961): con U cuasicóncava, las condiciones de primer orden son suficientes"
 

@@ -477,11 +477,14 @@ def trazos_mano(alfa, dx=0, dy=0, umbral=90):
     # Renglones
     grandes = sorted((c for c in comps if not c['marca']), key=lambda c: c['y0'])
     bandas = []
+    solo_rayas = False      # un renglón con solo rayas (la de W̄) se une al de debajo
     for c in grandes:
-        if bandas and c['y0'] < bandas[-1][1] + 0.12 * ref:
+        if bandas and (c['y0'] < bandas[-1][1] + 0.12 * ref or (solo_rayas and c['y0'] < bandas[-1][1] + ref)):
             bandas[-1][1] = max(bandas[-1][1], c['y1'])
+            solo_rayas = solo_rayas and c['barra']
         else:
             bandas.append([c['y0'], c['y1']])
+            solo_rayas = c['barra']
     for c in comps:
         cy = (c['y0'] + c['y1']) / 2
         c['banda'] = min(range(len(bandas)), key=lambda k: 0 if bandas[k][0] <= cy <= bandas[k][1]
@@ -489,11 +492,21 @@ def trazos_mano(alfa, dx=0, dy=0, umbral=90):
     orden = []
     for k in range(max(1, len(bandas))):
         en = [c for c in comps if c['banda'] == k]
-        barras = [c for c in en if c['barra']]
+
+        def junto(o, c):
+            return not o['barra'] and o['x0'] < c['x1'] and o['x1'] > c['x0']
+        # Una raya sin nada encima es una barra de W̄ o x̄: va después de lo que cubre
+        for c in en:
+            c['sobre'] = None
+            if c['barra'] and not any(junto(o, c) and o['y1'] <= c['y0'] + 2 for o in en):
+                debajo = [o for o in en if junto(o, c) and o['y0'] >= c['y1'] - 2]
+                if debajo:
+                    c['sobre'] = max(o['x0'] for o in debajo)
+        barras = [c for c in en if c['barra'] and c['sobre'] is None]
 
         def clave(c):
             if c['barra']:
-                return (c['x0'], 1, c['x0'])
+                return (c['sobre'], 1, c['sobre'] + 0.5) if c['sobre'] is not None else (c['x0'], 1, c['x0'])
             cx = (c['x0'] + c['x1']) / 2
             cubren = [r for r in barras if r['x0'] - 2 <= cx <= r['x1'] + 2
                       and (c['y1'] <= r['y0'] + 2 or c['y0'] >= r['y1'] - 2)]
