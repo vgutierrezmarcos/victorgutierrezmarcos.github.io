@@ -54,6 +54,11 @@ Cada tema revisado debe quedar:
   **bibliografía**. Salto de página (`\clearpage`) tras la conclusión, antes
   de los anexos (no tras la introducción); el de antes de la bibliografía lo
   pone `\bibliografia`.
+- **Sin líneas viudas ni huérfanas** en ningún tema: ningún párrafo deja una
+  línea sola al pie o al principio de una página (lo hacen `tcee.sty`, con
+  penalizaciones de 10000, el control de viudas y huérfanas del Word y
+  `orphans`/`widows` en la web). No se desactiva en ningún tema; si una página
+  queda corta, se acepta el hueco.
 - **Tablas de clasificación con color**, como en los temas en Word (p. ej.,
   la ecuación de Slutsky): fila de la ecuación sobre fondo salvia
   (`\cellcolor{tceesalvia}`), banda del título en `tceeazulpalido` o
@@ -158,6 +163,10 @@ el texto original y lo que se hizo.
   p. ej., la curva de indiferencia como frontera de los conjuntos «al menos
   tan bueno como» y «no mejor que», o el mapa de indiferencia como proyección
   de la superficie de utilidad.
+- Las representaciones en tres dimensiones, en perspectiva caballera (eje
+  vertical hacia arriba, uno horizontal a la derecha y el de profundidad a
+  45° con coeficiente 0,5; en pgfplots, `x={(1cm,0cm)}, y={(0.354cm,0.354cm)},
+  z={(0cm,1cm)}` en lugar de `view`).
 - Los gráficos de datos (series) se hacen con pgfplots a partir de
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
@@ -210,26 +219,45 @@ el texto original y lo que se hizo.
   de Víctor (`voz: {motor: xtts, muestra: …}`). Los nombres que la voz lee mal
   van en `scripts/temario/pronunciacion.yaml` (comunes) o en `pronunciacion:`
   del tema.
-- Cabecera tipo Beamer: los bloques de la exposición (`bloques`, con sus
-  minutos) y un punto por apartado (cada escena es un apartado o
-  subapartado, con `titulo`), el tiempo transcurrido y el que queda.
-- Dos modos, y que se distinga siempre lo que es pizarra de lo que es
-  didáctico:
+- Cabecera tipo Beamer en tres filas: tema, apartado y tiempo que queda; los
+  bloques (`bloques`, con sus minutos; los ya expuestos con ✓), y los
+  apartados de segundo nivel del bloque actual (I.1, I.2…; en la introducción
+  y la conclusión, sus cinco partes) como pasos, con un punto por escena. Al
+  cambiar de bloque o de apartado se ilumina el paso nuevo y, en la pausa,
+  sale el **esquema de la exposición** con la banda avanzando del apartado
+  anterior al nuevo. El apartado se saca del `titulo` («I.1. …: …»; lo que va
+  tras los dos puntos es el tercer nivel) o de `apartado:`.
+- Dos modos, y que se distinga siempre lo que se escribe en la pizarra de lo
+  que no:
   - `modo: guion` cuando el opositor no usaría la pizarra (introducción,
     conclusión, partes habladas): en pantalla el guion en viñetas sangradas
     que aparecen según se dicen. En la introducción y en la conclusión,
     `estructura:` con sus cinco bloques y `parte:` para ir pasando de uno a
     otro.
-  - `modo: pizarra` cuando se expone con gráficos y fórmulas: la pantalla es
-    solo la pizarra (tres paneles). Hay que **planificar la pizarra** como en
-    el examen: qué va en cada panel (p. ej., panel 1 el título del apartado y
-    las fórmulas, paneles 2-3 el gráfico), cuándo se borra y que nunca se
-    llene (el script avisa). Lo didáctico para el opositor (definición
-    precisa, autor y año, idea clave) va en `apunte:`, en la franja de abajo.
+  - `modo: pizarra`: en la pizarra blanca, **solo lo que el opositor
+    escribiría a mano**. El cante es *de máximos*: ante la duda, a la
+    pizarra, pero **solo gráficos y fórmulas**; texto, casi nunca (quita
+    tiempo), solo si aclara mucho (p. ej., una palabra que nombra una zona
+    del gráfico). Los títulos de apartado no se escriben: ya están en la
+    cabecera. Lo que se dice sin escribirlo va en `guion:` (franja «Se dice»
+    de abajo, Palatino sobre papel) y lo didáctico (definición precisa, autor
+    y año, idea clave) en `apunte:` (franja salvia).
+  - Todo lo de la pizarra (fórmulas, texto y gráficos) sale **trazo a trazo
+    a la velocidad de una mano**, sin mano visible. Lo que se dibuja hace
+    cola y puede seguir mientras se habla del paso siguiente, pero tiene que
+    acabar antes de borrar, de cambiar de apartado o de pasar al guion: si
+    no da tiempo, el script avisa (la mano iría a más de 1,6 veces lo
+    natural) y hay que quitar cosas de la pizarra o repartirlas.
+- **Rejilla de la pizarra** (`rejilla:` en la escena o en un paso): de 1 a 3
+  columnas, cada una con 1 o 2 filas, con el porcentaje que convenga a cada
+  celda ("100", "40|60", "35|65(55/45)", "30|40|30"). Las rayas de
+  separación solo cuando ayudan a seguir la exposición (`lineas: true`, p. ej.
+  fórmulas a un lado y gráfico al otro con dos apartados distintos); si hay
+  una sola cosa, sin rayas. Cambiar de rejilla borra la pizarra. Planifica
+  la pizarra como en el examen: qué va en cada celda, cuándo se borra y que
+  nunca se llene ni se salga (el script avisa).
 - Los gráficos se dibujan con las capas del TikZ (`capa:` creciente, justo
-  cuando la narración lo nombra) y el script los traza en el orden del código;
-  si un paso tiene demasiado dibujo para su narración, el script avisa y hay
-  que repartirlo en más pasos.
+  cuando la narración lo nombra) y el script los traza en el orden del código.
 - Imágenes (retratos, portadas) solo de dominio público o con licencia libre,
   citando la fuente.
 - El vídeo se guarda en `Vídeos\temario\` de Windows. Víctor lo sube a

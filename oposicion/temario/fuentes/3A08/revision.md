@@ -459,3 +459,13 @@ Anexos (tras `\clearpage` y `\appendix`, antes de la bibliografía): A. PMU en t
 **Coherencia**: el anexo D remite a 3.A.9 (sistemas de demanda en estudios empíricos, dualidad e integrabilidad) y el F a 3.A.18 (diferenciación de productos) y 3.A.10 (media-varianza). Al revisar 3.A.9 conviene que su apartado de sistemas de demanda use las mismas correcciones (Rotterdam, sistema lineal de gasto, translog) y no repita la lista de propiedades de la Cobb-Douglas; al revisar 3.A.18, que el modelo de Lancaster coincida con el del anexo F (ahí está con la lista mal numerada, punto 6 de las contradicciones).
 
 **Dudas**: (1) fuente del Anexo 1 escaneado (sigue sin identificar); (2) ¿basta el anexo G o Víctor quiere más de Thaler?; (3) `guion-cante.md` y `video/escenas.yaml` no se han tocado: citan la estructura y las capas antiguas (el gráfico 4 tiene capas nuevas) y deben rehacerse.
+
+## Gráficos en tres dimensiones en perspectiva caballera (11 oct. 2026)
+
+A petición de Víctor, los cuatro gráficos 3D (`superficie-utilidad`, `superficie-utilidad-repaso`, `cuasiconcavidad` y `pmu-r3`) pasan de la vista isométrica de pgfplots (`view`) a **perspectiva caballera**: $x_1$ horizontal a la derecha, $U$ vertical y $x_2$ en profundidad a 45° hacia arriba a la derecha con coeficiente de reducción 0,5 (vectores unitarios `x`, `y`, `z` de pgfplots). Mismo contenido económico, mismas capas en el mismo orden (las de `video/escenas.yaml` siguen valiendo). Ajustes de rótulos para que no se solapen: eje $x_2$ algo más largo, rótulos $U=k$ un poco desplazados, títulos de los paneles de `cuasiconcavidad` como nodos a la misma altura y pies de `pmu-r3` anclados al eje $x_1$; en `pmu-r3` el eje $U$ llega a 4,6 para que no quede por debajo de la superficie monótona. La regla queda en `CRITERIOS.md` (sección 7) y en el agente `tema-tikz`.
+
+## Notación de la preferencia revelada y fuentes de los gráficos (11 oct. 2026)
+
+- Víctor vio que el gráfico del axioma débil mezclaba dos fuentes con notación distinta (Jehle y Reny en el panel izquierdo: $p^0$, $p^1$; Mas-Colell et al. en el derecho: $p$, $p'$, con $x^0$ y $x^1$ con otro significado). Ahora todo el tema usa la misma: situación 0 ($p^0$, $\overline{W}^0$, se elige $x^0$) y situación 1 ($p^1$, $\overline{W}^1$, se elige $x^1$), en los dos paneles, en la ley de la demanda compensada, $(p^1-p^0)\cdot(x^1-x^0)\leq 0$, en su demostración (anexo), en el guion y en la pizarra del vídeo. Las rectas tienen el mismo color en los tres gráficos de preferencia revelada ($p^0$ morada, $p^1$ azul, $p^2$ verde).
+- Las fuentes de todos los gráficos y tablas propios dicen «elaboración propia basada en …» (antes, «elaboración propia a partir de …»).
+- Control de líneas viudas y huérfanas en PDF, Word y web.

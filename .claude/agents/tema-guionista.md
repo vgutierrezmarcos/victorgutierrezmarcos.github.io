@@ -22,7 +22,7 @@ Lee antes:
 # Cante del tema 3.A.8: <título>
 
 ## Plan de pizarra
-(por apartado: qué va en cada panel —1, 2, 3— y cuándo se borra)
+(por apartado: la rejilla —columnas y filas con sus porcentajes—, qué va en cada celda y cuándo se borra)
 
 ## Introducción (3 min)
 ### Enganche
@@ -64,16 +64,24 @@ El mismo cante, **todo**, repartido en pasos:
     salen en pantalla (`>` sangra un nivel). Introducción y conclusión llevan
     `estructura:` con sus cinco bloques y `parte:` en el paso en que empieza
     cada uno.
-  - `modo: pizarra` para lo que se expone con gráficos y fórmulas. Planifica
-    la pizarra como en el examen: título del apartado y fórmulas en un panel,
-    gráfico en dos paneles (`zona: 2-3`), `borrar:` al cambiar de apartado y
-    antes de que se llene. Lo que se escribe es breve (rotulador): títulos con
-    `#`, ideas en pocas palabras, fórmulas clave en `formula`.
-  - `apunte:` (franja de abajo, didáctica) para la definición precisa, el
-    autor y año o la idea clave que ayuda al opositor a entender lo que oye.
+  - `modo: pizarra` para lo que se expone con gráficos y fórmulas. En la
+    pizarra, solo lo que el opositor escribiría a mano: gráficos y fórmulas
+    (cante de máximos: ante la duda, a la pizarra), y texto casi nunca (solo
+    si aclara mucho). Los títulos de apartado no se escriben (están en la
+    cabecera). Elige la `rejilla` de cada escena (o de un paso) según lo que
+    va a haber: "100" si hay una sola cosa, "38|62" fórmulas y gráfico,
+    "40|60(50/50)" fórmulas y dos gráficos, etc.; `lineas: true` solo si las
+    rayas ayudan a seguir. Zonas: "1", "2a", "2b", "1-2". `borrar:` al
+    cambiar de apartado y antes de que se llene.
+  - `guion:` en los pasos de pizarra: lo que se dice sin escribirlo, muy
+    breve (franja «Se dice»). `apunte:` (franja salvia) para la definición
+    precisa, el autor y año o la idea clave que ayuda al opositor.
 - Gráficos: `grafico` + `capa`, subiendo de capa justo cuando la narración
-  nombra lo que se dibuja. Un paso no debe pedir más dibujo del que da tiempo
-  a narrar (≈0,6 s por trazo o rótulo): reparte las capas en pasos.
+  nombra lo que se dibuja. Todo se dibuja a velocidad de mano (una fórmula
+  de 20 símbolos, unos 7 s; un eje, 1 s) y hace cola: lo que no acaba en su
+  paso sigue en los siguientes, pero tiene que acabar antes de borrar o de
+  cambiar de apartado. Comprueba los AVISOS con
+  `generar-video.py T --borrador --fotogramas 0:01` (planifica sin montar).
 - Los conceptos importantes, con definición, interpretación analítica
   (fórmula) e interpretación gráfica.
 - En `di`, las abreviaturas como se leen («s.a.» → «sujeto a») y las fórmulas

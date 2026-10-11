@@ -331,7 +331,7 @@ Recapitulando, la ecuación de Slutsky explica por qué la ley de la demanda val
 
 [Pizarra: gráfico `adpr-efecto-sustitucion` hasta la capa 12] bajamos el precio del bien uno y compensamos la renta para que el consumidor pueda seguir comprando equis cero. Las cestas de la nueva recta a la izquierda de equis cero ya eran asequibles y no se eligieron,
 
-[Pizarra: gráfico `adpr-efecto-sustitucion` hasta la capa 15] [Pizarra 1: fórmula `(p'-p)\cdot\Delta x\leq 0`] así que el consumidor elegirá una cesta a la derecha, con más bien uno: es la ley de la demanda compensada, el resultado de Slutsky sin hablar de utilidad. El axioma débil implica también la homogeneidad de grado cero, pero, con más de dos bienes, no basta para que exista una utilidad, porque no garantiza la simetría.
+[Pizarra: gráfico `adpr-efecto-sustitucion` hasta la capa 15] [Pizarra 1: fórmula `(p^1-p^0)\cdot(x^1-x^0)\leq 0`] así que el consumidor elegirá una cesta a la derecha, con más bien uno: es la ley de la demanda compensada, el resultado de Slutsky sin hablar de utilidad. El axioma débil implica también la homogeneidad de grado cero, pero, con más de dos bienes, no basta para que exista una utilidad, porque no garantiza la simetría.
 
 > Apunte: Ley de la demanda compensada: si baja p₁ y se compensa la renta (Slutsky), x₁ no disminuye
 

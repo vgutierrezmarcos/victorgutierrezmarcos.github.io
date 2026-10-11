@@ -5,7 +5,8 @@
 %   situación 0: x2 = 2,5 - 0,5 x1 (pendiente -p1^0/p2^0), elige x0 = (3,6; 0,7)
 %   situación 1: x2 = 4 - 1,5 x1, elige x1 = (2; 1)
 %   x1 es asequible en 0 (2,5 - 1 = 1,5 > 1) y x0 no lo es en 1 (4 - 5,4 < 0,7).
-% Panel derecho (signo del efecto sustitución):
+% Panel derecho (signo del efecto sustitución), con la misma notación que el izquierdo:
+%   en la situación 0 se elige x0; en la 1 (precios p1 y renta compensada) se elige x1.
 %   recta inicial x2 = 4 - x1, elige x0 = (2; 2)
 %   baja p1 y se compensa la renta à la Slutsky: x2 = 3 - 0,5 x1, pasa por x0
 %   nueva elección x1 = (3,6; 1,2), a la derecha de x0.
@@ -25,7 +26,7 @@
     \capa{8}{\ejes{$x_1$}{$x_2$}{6.6}{4.6}}
     \capa{9}{
       \fill[area] (0,0) -- (0,4) -- (4,0) -- cycle;
-      \draw[curva1] (0,4) -- (4,0) node[etiqueta,above right=1pt and -2pt] {$p$};
+      \draw[curva1] (0,4) -- (4,0) node[etiqueta,above right=1pt and -2pt] {$p^0$};
     }
     \capa{10}{
       \node[punto] (X0) at (2,2) {};
@@ -34,7 +35,7 @@
     % recta compensada que pasa por x0: tramo izquierdo resaltado y tramo derecho
     \capa{11}{
       \draw[curva4,line width=2.4pt] (0,3) -- (2,2);
-      \draw[curva3] (2,2) -- (6,0) node[etiqueta,above right=1pt and -2pt] {$p'$};
+      \draw[curva2] (2,2) -- (6,0) node[etiqueta,above right=1pt and -2pt] {$p^1$};
     }
     \capa{12}{
       \node[etiqueta,align=left,anchor=south west,font=\footnotesize] at (1.75,3.15)

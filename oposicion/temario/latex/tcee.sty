@@ -35,6 +35,11 @@
 \setstretch{1.08}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.45em}
+% Control de líneas viudas y huérfanas: ningún párrafo deja una línea sola al pie
+% o al principio de una página (tampoco antes o después de una ecuación ni con
+% un guion de corte al final de página)
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+\predisplaypenalty=10000 \brokenpenalty=10000
 
 % --- Colores -----------------------------------------------------------------
 \RequirePackage[dvipsnames,table]{xcolor}

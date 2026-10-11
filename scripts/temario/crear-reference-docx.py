@@ -128,6 +128,7 @@ def main():
         fuente(e, tam=11)
         e.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         e.paragraph_format.space_after = Pt(6)
+        e.paragraph_format.widow_control = True   # sin líneas viudas ni huérfanas
     estilos['Compact'].paragraph_format.space_after = Pt(2)
 
     # Títulos
