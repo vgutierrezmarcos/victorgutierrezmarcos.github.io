@@ -139,7 +139,7 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [ ] Víctor: subir el `.aab` 1.15.8 (32) a la prueba cerrada (está en el Escritorio; web y `app/abrir` ya publicados). La siguiente versión llevará además la nota de las preguntas al corregir y que el contenido nuevo de la web (preguntas, temario…) se vea sin cerrar la app; la versión web ya lo tiene.
 
 **Versión 1.15.10 (34): batería sin restricciones (10 oct.)**
-Al permitir los avisos, el diálogo del sistema para que la batería no restrinja la app (permiso `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`) y, en Xiaomi, Huawei, Honor, Samsung, OPPO, realme, OnePlus y vivo, el paso de su ahorro de batería propio. A quien ya tenía la app, una vez. Versión web publicada; `.aab` sin compilar.
+Al permitir los avisos, el diálogo del sistema para que la batería no restrinja la app (permiso `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`) y, en Xiaomi, Huawei, Honor, Samsung, OPPO, realme, OnePlus y vivo, el paso de su ahorro de batería propio. A quien ya tenía la app, una vez. También (12 oct.) repetir clases y cantes cada N semanas (de 1 a 12), no solo cada semana, y lo mismo en las clases fijas. Versión web publicada; `.aab` sin compilar.
 - [ ] Víctor: decir cuándo se compila el `.aab` 34 (la 33 está en revisión).
 - [ ] Probar en el móvil: el diálogo del sistema, el paso del fabricante y Más → Ajustes («La batería restringe la app» desaparece al permitirlo).
 - [ ] Si Google Play pone pegas al permiso en la revisión: quitarlo del manifiesto (ver README, «Avisos y permisos del sistema»).

@@ -74,12 +74,13 @@ EventoCalendario eventoDeCante(Cante c) => EventoCalendario(
 EventoCalendario eventoDeFecha(String id, String titulo, DateTime fecha) =>
     EventoCalendario(uid: 'hito-$id', titulo: titulo, inicio: fecha, todoElDia: true);
 
-/// Cantes de una serie semanal desde [primero] hasta [hasta] (incluido).
-List<Cante> serieSemanal(Cante primero, DateTime hasta) {
+/// Cantes de una serie desde [primero] hasta [hasta] (incluido), uno cada
+/// [cadaSemanas] semanas.
+List<Cante> serieSemanal(Cante primero, DateTime hasta, {int cadaSemanas = 1}) {
   final serie = nuevoId();
   final out = <Cante>[];
   for (var i = 0; i < 104; i++) {
-    final f = DateTime(primero.fecha.year, primero.fecha.month, primero.fecha.day + 7 * i, primero.fecha.hour, primero.fecha.minute);
+    final f = DateTime(primero.fecha.year, primero.fecha.month, primero.fecha.day + 7 * cadaSemanas * i, primero.fecha.hour, primero.fecha.minute);
     if (f.isAfter(DateTime(hasta.year, hasta.month, hasta.day, 23, 59))) break;
     out.add(Cante(
       id: i == 0 ? primero.id : nuevoId(),
