@@ -64,6 +64,12 @@ void main() {
       expect(serie.map((c) => c.serie).toSet().length, 1);
     });
 
+    test('serie cada tres semanas', () {
+      final serie = serieSemanal(base, DateTime(2026, 11, 30), cadaSemanas: 3);
+      expect(serie.map((c) => '${c.fecha.day}/${c.fecha.month}'), ['8/10', '29/10', '19/11']);
+      expect(serie.map((c) => c.serie).toSet().length, 1);
+    });
+
     test('la serie conserva la hora al cruzar el cambio de hora', () {
       final serie = serieSemanal(Cante(id: 'x', fecha: DateTime(2026, 10, 22, 17)), DateTime(2026, 11, 5));
       expect(serie.map((c) => '${c.fecha.day}/${c.fecha.month} ${c.fecha.hour}'), ['22/10 17', '29/10 17', '5/11 17']);

@@ -127,7 +127,7 @@ class ClaseFija {
   /// Hora de inicio en minutos desde medianoche.
   final int minutoDelDia;
   final int minutos;
-  /// 1 = cada semana, 2 = cada quince días.
+  /// Cada cuántas semanas (1 = todas, 2 = cada quince días…).
   final int cadaSemanas;
   final DateTime desde;
 

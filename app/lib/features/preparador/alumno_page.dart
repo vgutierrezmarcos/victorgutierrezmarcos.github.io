@@ -222,7 +222,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                     ListTile(
                       dense: true,
                       leading: Icon(Icons.repeat, color: context.esquema.primary),
-                      title: Text('${c.cadaSemanas == 1 ? 'Cada' : 'Uno de cada dos'} ${nombresDias[c.diaSemana - 1]} a las ${horaMinutos(c.minutoDelDia)}'),
+                      title: Text('${nombresDias[c.diaSemana - 1][0].toUpperCase()}${nombresDias[c.diaSemana - 1].substring(1)} a las ${horaMinutos(c.minutoDelDia)}, ${textoCadaSemanas(c.cadaSemanas)}'),
                       subtitle: Text('${textoDuracion(c.minutos)} · desde el ${fechaCorta(c.desde)}', style: context.textos.labelSmall),
                       trailing: IconButton(tooltip: 'Quitar', icon: const Icon(Icons.close), onPressed: () => _quitarClaseFija(a, c)),
                     ),

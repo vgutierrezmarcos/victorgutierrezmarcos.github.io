@@ -33,6 +33,8 @@ void main() {
       final quincena = ClaseFija(id: 'q', diaSemana: 2, minutoDelDia: 18 * 60, cadaSemanas: 2, desde: DateTime(2026, 10, 1));
       // Las fechas no dependen de desde cuándo se miren: el ritmo empieza en «desde».
       expect(quincena.fechasEntre(DateTime(2026, 10, 10), DateTime(2026, 11, 10)), [DateTime(2026, 10, 20, 18), DateTime(2026, 11, 3, 18)]);
+      final tres = ClaseFija(id: 't', diaSemana: 2, minutoDelDia: 18 * 60, cadaSemanas: 3, desde: DateTime(2026, 10, 1));
+      expect(tres.fechasEntre(DateTime(2026, 10, 1), DateTime(2026, 11, 30)), [DateTime(2026, 10, 6, 18), DateTime(2026, 10, 27, 18), DateTime(2026, 11, 17, 18)]);
     });
 
     test('huecos libres: quita los ocupados, los pedidos y los ya pasados', () {

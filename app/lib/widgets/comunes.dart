@@ -663,3 +663,25 @@ class AvisoLegal extends StatelessWidget {
   }
 }
 
+
+/// «cada semana», «cada 3 semanas»…
+String textoCadaSemanas(int n) => n == 1 ? 'cada semana' : 'cada $n semanas';
+
+/// Elige cada cuántas semanas se repite una clase o un cante (de 1 a [maximo]).
+class SelectorCadaSemanas extends StatelessWidget {
+  const SelectorCadaSemanas({super.key, required this.valor, required this.onCambio, this.maximo = 12});
+  final int valor;
+  final ValueChanged<int> onCambio;
+  final int maximo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      Text('Cada', style: context.textos.bodyMedium),
+      IconButton(tooltip: 'Menos semanas', icon: const Icon(Icons.remove_circle_outline), onPressed: valor > 1 ? () => onCambio(valor - 1) : null),
+      SizedBox(width: 22, child: Text('$valor', textAlign: TextAlign.center, style: context.textos.titleMedium)),
+      IconButton(tooltip: 'Más semanas', icon: const Icon(Icons.add_circle_outline), onPressed: valor < maximo ? () => onCambio(valor + 1) : null),
+      Text(valor == 1 ? 'semana' : 'semanas', style: context.textos.bodyMedium),
+    ]);
+  }
+}

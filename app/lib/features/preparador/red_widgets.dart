@@ -80,12 +80,7 @@ Future<({int dia, int minuto, int minutos, int cada})?> elegirFranja(
           ),
           if (conRitmo) ...[
             const SizedBox(height: 12),
-            SegmentedButton<int>(
-              showSelectedIcon: false,
-              segments: const [ButtonSegment(value: 1, label: Text('Cada semana')), ButtonSegment(value: 2, label: Text('Cada 15 días'))],
-              selected: {cada},
-              onSelectionChanged: (s) => set(() => cada = s.first),
-            ),
+            SelectorCadaSemanas(valor: cada, onCambio: (n) => set(() => cada = n)),
           ],
         ]),
         actions: [
