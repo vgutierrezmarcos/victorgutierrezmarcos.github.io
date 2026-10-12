@@ -39,10 +39,22 @@ TRAMOS = [
     ('bruto.mp4', 8, 22, 1, 'Tutors schedule classes with their students',
      'The app is a free study companion for candidates to the Spanish civil-service exams TCEE and DCE. '
      'Tutors (“preparadores”) plan their classes in the Classes tab: date, time, duration, online or in person.'),
-    ('clip4.mp4', 30, 52, 2, 'The feature is optional and off by default',
-     'Settings → “My classes in Google Calendar”. Turning the switch on opens Google’s consent screen. '
-     'The app requests a single scope: see and edit calendar events (calendar.events). '
-     'The “unverified app” warning is what this verification will remove.'),
+    # Paso 2, regrabado el 12 oct. con el móvil en inglés (Google pidió que se viera
+    # el flujo de consentimiento entero). Un séptimo valor ralentiza el tramo.
+    ('consentimiento.mp4', 0, 10.5, 2, 'Signing in uses only the basic profile',
+     'The tutor signs in with Google. At this point the app only receives the name, e-mail address and profile picture. '
+     'No calendar access is requested.'),
+    ('consentimiento.mp4', 33, 48, 2, 'The feature is optional and off by default',
+     'Más (More) → Preparador (Tutor) → Ajustes de preparador (Tutor settings) → Google Calendar. The switch “Mis clases en Google Calendar” (My classes in Google Calendar) stays off '
+     'until the tutor turns it on.'),
+    ('consentimiento.mp4', 48, 56.8, 2, 'Turning it on starts Google’s consent flow',
+     'Google first shows the “unverified app” warning (this verification will remove it): '
+     'Advanced → Go to Oposición TCEE · DCE.'),
+    ('consentimiento.mp4', 56.8, 60.6, 2, 'The OAuth consent screen (slowed down)',
+     'Google asks the tutor to allow a single permission: “View and edit events on all your calendars” '
+     '(calendar.events). The tutor reviews it and taps Continue.', 2.5),
+    ('consentimiento.mp4', 60.6, 65.7, 2, 'Access granted',
+     'Back in the app the switch is on and the app confirms: “Conectado. Las clases que programes irán a tu Google Calendar” (Connected: the classes you schedule will go to your Google Calendar).'),
     ('bruto.mp4', 76, 108, 3, 'Saving a class creates one event',
      'A new online class with the student, with no meeting link. When the tutor saves it, the app creates one event '
      'in the tutor’s primary calendar and asks Google Calendar to add a Google Meet conference.'),
@@ -170,7 +182,7 @@ def main():
 
     tarjeta_a_video(tarjeta(PORTADA), 'portada', 6)
     tamanos = {}
-    for i, (fichero, desde, hasta, num, titulo, texto) in enumerate(TRAMOS):
+    for i, (fichero, desde, hasta, num, titulo, texto, *lento) in enumerate(TRAMOS):
         ruta = os.path.join(args.carpeta, fichero)
         if fichero not in tamanos:
             tamanos[fichero] = tamano_video(args.ffmpeg, ruta)
@@ -183,7 +195,7 @@ def main():
             args.ffmpeg, '-y', '-loglevel', 'error',
             '-loop', '1', '-framerate', str(FPS), '-i', fondo,
             '-ss', str(desde), '-t', str(hasta - desde), '-i', ruta,
-            '-filter_complex', f'[1:v]scale={ancho_movil}:{ALTO_MOVIL}:flags=lanczos,fps={FPS}[m];[0:v][m]overlay={X_MOVIL}:{Y_MOVIL}:shortest=1[v]',
+            '-filter_complex', f'[1:v]setpts={lento[0] if lento else 1}*(PTS-STARTPTS),scale={ancho_movil}:{ALTO_MOVIL}:flags=lanczos,fps={FPS}[m];[0:v][m]overlay={X_MOVIL}:{Y_MOVIL}:shortest=1[v]',
             '-map', '[v]', *comunes, mp4,
         ], check=True)
         partes.append(mp4)
