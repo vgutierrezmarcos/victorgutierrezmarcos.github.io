@@ -164,6 +164,14 @@ el texto original y lo que se hizo.
      se desarrolla, la conclusión lo recoge) y en perspectiva amplia: qué
      aporta el tema dentro de su bloque y del temario, sin solapes
      innecesarios con sus vecinos.
+  - **3.er y 4.º ejercicio son dos exámenes distintos**, y los opositores
+    suelen estudiar antes y con más detalle el 3.º. Por eso el **tema de
+    referencia de un modelo teórico es, siempre que se pueda, uno del 3.er
+    ejercicio**; el 4.º lo aplica (a España, al sector público) y lo resume
+    remitiendo al 3.º. Cada tema tiene que poder cantarse en su examen sin
+    depender de haber estudiado temas del otro ejercicio: un tema del 4.º
+    resume lo imprescindible del modelo, aunque esté desarrollado en el 3.º,
+    y un tema del 3.º no remite al 4.º para algo que necesite.
   4. **Referencias cruzadas** «[ver tema …]»: cada una apunta al tema donde
      de verdad se trata eso, con la numeración actual; se añaden las que
      faltan (sobre todo al tema de referencia de cada modelo que se use).
