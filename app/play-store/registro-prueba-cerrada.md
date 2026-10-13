@@ -153,6 +153,8 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ### 13 oct. 2026 (para la 1.15.10)
 - **Entrar con Google tras retirar el acceso**: si se había quitado el acceso de la app desde la cuenta de Google, el móvil daba un token revocado y la entrada fallaba con «Invalid Value»; ahora la app pide uno nuevo.
+- **Más seguridad al conectar con el preparador**: tras escribir su código, la conexión queda pendiente hasta que el preparador la acepta; hasta entonces no ve nada del opositor. Vídeos de ayuda actualizados.
+- **Modo noche de DCE** con los colores del de la web de Manuel Cabado García.
 
 (Seguir añadiendo aquí, con fecha.)
 

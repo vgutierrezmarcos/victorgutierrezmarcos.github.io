@@ -135,12 +135,13 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                   ),
                 ),
             TituloSeccion('Tus alumnos', accion: TextButton.icon(onPressed: _nuevoAlumno, icon: const Icon(Icons.person_add_alt, size: 18), label: const Text('Alumno'))),
+            for (final sol in ref.watch(solicitudesEnlaceProvider)) _solicitudEnlace(context, sol),
             if (alumnos.isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Text(
                   perfil.codigo != null
-                      ? 'Todavía no tienes alumnos. Los que escriban tu código en su app aparecerán aquí solos; a los que no usen la app puedes añadirlos a mano.'
+                      ? 'Todavía no tienes alumnos. Los que escriban tu código en su app te aparecerán aquí para que los aceptes; a los que no usen la app puedes añadirlos a mano.'
                       : 'Todavía no tienes alumnos. Añádelos a mano; cuando te verifiquen tendrás un código para que se conecten desde su app.',
                   style: context.textos.bodySmall,
                 ),
@@ -370,6 +371,57 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     await ref.read(preparadorRepoProvider).olvidarAlumnoSuelto(a);
     ref.invalidate(alumnosProvider);
     ref.invalidate(sesionesProvider);
+  }
+
+  /// Opositor que ha escrito tu código: hasta que lo aceptes no ves nada suyo.
+  Widget _solicitudEnlace(BuildContext context, SolicitudEnlace sol) {
+    Future<void> responder(bool aceptar) async {
+      final messenger = ScaffoldMessenger.of(context);
+      if (!aceptar) {
+        final ok = await showDialog<bool>(
+          context: context,
+          builder: (d) => AlertDialog(
+            title: const Text('¿Rechazar la conexión?'),
+            content: Text('${sol.nombre.isEmpty ? 'Este opositor' : sol.nombre} no podrá compartir su progreso contigo. Si te equivocas, puede volver a escribir tu código.'),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+              FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Rechazar')),
+            ],
+          ),
+        );
+        if (ok != true) return;
+      }
+      final error = await ref.read(solicitudesEnlaceProvider.notifier).responder(sol, aceptar: aceptar);
+      messenger.showSnackBar(SnackBar(content: Text(error ?? (aceptar ? '${sol.nombre.isEmpty ? 'Alumno' : sol.nombre} ya es alumno tuyo: ves sus temas y sus cantes.' : 'Conexión rechazada.'))));
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Tarjeta(
+        color: context.colores.primarioPalido,
+        padding: const EdgeInsets.fromLTRB(14, 10, 8, 6),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Icon(Icons.person_add_alt_1_outlined, color: context.esquema.primary),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('${sol.nombre.isEmpty ? 'Un opositor' : sol.nombre} quiere conectar contigo', style: context.textos.titleSmall),
+                Text(
+                  '${sol.email.isEmpty ? '' : '${sol.email} · '}Ha escrito tu código${sol.desde == null ? '' : ' el ${fechaCorta(sol.desde!)}'}. Acéptalo solo si es alumno tuyo.',
+                  style: context.textos.labelSmall,
+                ),
+              ]),
+            ),
+          ]),
+          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            TextButton(onPressed: () => responder(false), child: const Text('Rechazar')),
+            const SizedBox(width: 4),
+            FilledButton(onPressed: () => responder(true), child: const Text('Aceptar')),
+          ]),
+        ]),
+      ),
+    );
   }
 
   Widget _filaAlumno(BuildContext context, Alumno a, List<Cante> sesiones) {

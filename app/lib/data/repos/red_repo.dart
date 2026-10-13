@@ -480,7 +480,11 @@ class RedRepo {
           final desde = DateTime.tryParse(d.data()['desde'] as String? ?? '');
           if (desde == null || desde.isBefore(reciente)) continue;
           final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
-          out.add(AvisoRed(id: 'enl:${d.id}', titulo: '${nombre.isEmpty ? 'Un alumno' : nombre} se ha conectado contigo', texto: 'Ya ves sus temas y sus cantes en Más → Preparador.', ruta: '/mas/preparador'));
+          if (d.data()['aceptado'] == false) {
+            out.add(AvisoRed(id: 'enl-pide:${d.id}', titulo: '${nombre.isEmpty ? 'Un opositor' : nombre} quiere conectar contigo', texto: 'Ha escrito tu código. Acéptalo o recházalo en Más → Preparador.', ruta: '/mas/preparador'));
+          } else if (d.data()['aceptadoEn'] == null) {
+            out.add(AvisoRed(id: 'enl:${d.id}', titulo: '${nombre.isEmpty ? 'Un alumno' : nombre} se ha conectado contigo', texto: 'Ya ves sus temas y sus cantes en Más → Preparador.', ruta: '/mas/preparador'));
+          }
         }
       }
       if (admin || verificacion != null) {
@@ -500,8 +504,17 @@ class RedRepo {
           out.add(AvisoRed(id: 'res:${r.id}', titulo: 'Reserva de ${r.alumnoNombre.isEmpty ? 'un alumno' : r.alumnoNombre}', texto: 'Quiere clase el ${f(r.fecha)}. Toca para aceptarla o rechazarla.', ruta: '/semana'));
         }
       }
+      // Al alumno: preparadores que acaban de aceptar su conexión.
+      final misPreparadores = await oposicion.raizUsuario(_db!, uid!).collection('preparadores').get().then((q) => q.docs, onError: (_) => <QueryDocumentSnapshot<Map<String, dynamic>>>[]);
+      for (final d in misPreparadores) {
+        final suyo = (await oposicion.red(_db, 'preparadores').doc(d.id).collection('alumnos').doc(uid).get()).data();
+        final aceptadoEn = DateTime.tryParse(suyo?['aceptadoEn'] as String? ?? '');
+        if (suyo?['aceptado'] != true || aceptadoEn == null || aceptadoEn.isBefore(reciente)) continue;
+        final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
+        out.add(AvisoRed(id: 'enl-ok:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} ha aceptado tu conexión', texto: 'Ya ve tus temas y tus cantes, y puede programarte clases.', ruta: '/mas/mi-preparador'));
+      }
       // Al alumno: clases que su preparador acaba de cancelar, programar o mover.
-      final cantes = await oposicion.raizUsuario(_db!, uid!).collection('cantes').where('preparador', isNull: false).get();
+      final cantes = await oposicion.raizUsuario(_db, uid!).collection('cantes').where('preparador', isNull: false).get();
       for (final d in cantes.docs) {
         final c = Cante.fromJson(d.data());
         // Las de reservas ya tienen su propio aviso; las clases sueltas, al

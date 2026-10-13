@@ -62,7 +62,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
 
   /// Al pasar a preparador se deja de compartir con los preparadores propios.
   Future<bool> _confirmarVinculos() async {
-    final vinculos = ref.read(misPreparadoresProvider);
+    final vinculos = ref.read(vinculosPreparadorProvider);
     if (vinculos.isEmpty || widget.soloVerificacion) return true;
     final ok = await showDialog<bool>(
       context: context,
@@ -169,7 +169,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
     Widget paso(int n, String titulo, String texto) => Padding(
           padding: const EdgeInsets.only(bottom: 12),
           child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            CircleAvatar(radius: 14, backgroundColor: context.esquema.primary, child: Text('$n', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700, color: Colors.white, fontSize: 13))),
+            CircleAvatar(radius: 14, backgroundColor: context.esquema.primary, child: Text('$n', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w700, color: context.esquema.onPrimary, fontSize: 13))),
             const SizedBox(width: 12),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

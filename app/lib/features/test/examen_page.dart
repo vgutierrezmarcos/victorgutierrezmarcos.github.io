@@ -289,7 +289,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                             color: actual ? context.esquema.primary : (respondida ? context.colores.primarioPalido : context.colores.superficie),
                             border: Border.all(color: marcada ? context.colores.dorado : (actual || respondida ? context.esquema.primary : context.colores.borde), width: 2),
                           ),
-                          child: Text('${i + 1}', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w600, fontSize: 13, color: actual ? Colors.white : context.esquema.onSurface)),
+                          child: Text('${i + 1}', style: TextStyle(fontFamily: Fuentes.sans, fontWeight: FontWeight.w600, fontSize: 13, color: actual ? context.esquema.onPrimary : context.esquema.onSurface)),
                         );
                       }),
                     ),

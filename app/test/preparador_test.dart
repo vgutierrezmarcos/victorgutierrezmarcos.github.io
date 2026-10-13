@@ -118,8 +118,20 @@ void main() {
     expect((await db.doc('users/alu/preparadores/prep').get()).exists, isTrue);
     expect((await db.doc('preparadores/prep/alumnos/alu').get()).data()!['nombre'], 'Álex Alumno');
 
-    // Al sincronizar, el preparador lo ve en su lista.
+    expect(vinculo.aceptado, isFalse);
+    expect((await db.doc('preparadores/prep/alumnos/alu').get()).data()!['aceptado'], isFalse);
+
+    // Al sincronizar, el preparador ve la petición, no un alumno: hasta que la
+    // acepta no ve nada suyo.
     await prep.sincronizarTodo();
+    expect(prep.alumnos(), isEmpty);
+    expect(prep.solicitudesEnlace().single.nombre, 'Álex Alumno');
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
+    expect(prep.solicitudesEnlace(), isEmpty);
+    expect((await db.doc('preparadores/prep/alumnos/alu').get()).data()!['aceptado'], isTrue);
+    // El alumno se entera al sincronizar.
+    await alumno.sincronizarTodo();
+    expect(alumno.misPreparadores().single.aceptado, isTrue);
     var a = prep.alumnos().single;
     expect(a.nombre, 'Álex Alumno');
     expect(a.uid, 'alu');
@@ -209,6 +221,7 @@ void main() {
     final codigo = (await prep.activar()).codigo!;
     await alumno.enlazarConCodigo(codigo);
     await prep.sincronizarTodo();
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
 
     await prep.borrarAlumno(prep.alumnos().single);
     expect(prep.alumnos(), isEmpty);
@@ -219,6 +232,23 @@ void main() {
     expect(alumno.misPreparadores(), isEmpty);
   });
 
+  test('el preparador rechaza la conexión: se borra en los dos lados y se avisa al alumno', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = await repo(db, sesion('prep', 'Paula')), alumno = await repo(db, sesion('alu', 'Álex'));
+    await verificar(db, 'prep', 'Paula');
+    await alumno.enlazarConCodigo((await prep.activar()).codigo!);
+    await prep.sincronizarTodo();
+    await prep.rechazarEnlace(prep.solicitudesEnlace().single);
+    expect(prep.solicitudesEnlace(), isEmpty);
+    expect(prep.alumnos(), isEmpty);
+    expect((await db.doc('preparadores/prep/alumnos/alu').get()).exists, isFalse);
+    expect((await db.doc('users/alu/preparadores/prep').get()).exists, isFalse);
+    await alumno.sincronizarTodo();
+    expect(alumno.misPreparadores(), isEmpty);
+    expect(alumno.preparadoresQueRechazaron, ['Paula']);
+    expect(alumno.preparadoresQueSeFueron, isEmpty);
+  });
+
   test('lo que el alumno cambia en una sesión vuelve al preparador, sin perder su lado', () async {
     final db = FakeFirebaseFirestore();
     final authAlu = sesion('alu', 'Álex');
@@ -227,6 +257,7 @@ void main() {
     final planAlu = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), firestore: db, auth: authAlu);
     await alumno.enlazarConCodigo((await prep.activar()).codigo!);
     await prep.sincronizarTodo();
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
     final a = prep.alumnos().single;
     await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: a.id, titulo: 'Simulacro del jueves', updatedAt: DateTime.now()));
     await planAlu.sincronizarCantes();
@@ -261,6 +292,7 @@ void main() {
     final codigo = (await prep.activar()).codigo!;
     await alumno.enlazarConCodigo(codigo);
     await prep.sincronizarTodo();
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
     await prep.guardarSesion(Cante(id: 's1', fecha: DateTime(2026, 10, 8, 17), alumno: prep.alumnos().single.id, updatedAt: DateTime.now()));
     await usuarioPrep.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1'}));
     await usuarioPrep.guardarNota('3.A.1', 'Repasar Keynes');

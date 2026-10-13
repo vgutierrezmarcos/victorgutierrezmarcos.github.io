@@ -34,8 +34,8 @@ Cierre: «Tu nombre y tu teléfono solo los ve quien la coge».
 ### conectar-preparador · Conecta con tu preparador
 1. En **Más**, toca **Mi preparador**.
 2. Escribe el **código de 6 letras** que te da tu preparador.
-3. Toca **Conectar**.
-4. Sus clases aparecen en tu agenda y sus valoraciones, en tu diario.
+3. Toca **Conectar**: la conexión queda **pendiente** hasta que tu preparador la acepta (así nadie puede ver tus datos solo con su código).
+4. Cuando la acepta, te llega un aviso: sus clases aparecen en tu agenda y sus valoraciones, en tu diario.
 5. **Qué ve**: tus temas y tus cantes. Ni tus tests, ni tus notas, ni tus grabaciones.
 
 Cierre: «Puedes dejar de compartir cuando quieras».
@@ -78,7 +78,7 @@ Cierre: «En la pizarra solo se comparte lo que dibujáis en ella».
 2. **Darme de alta como preparador**.
 3. Solo hace falta tu **nombre** y los **ejercicios** que preparas.
 4. Envía la solicitud: **otro preparador verificado** te verifica y te llega un aviso.
-5. En **Más → Preparador** tienes tu **código**: dáselo a tus alumnos.
+5. En **Más → Preparador** tienes tu **código**: dáselo a tus alumnos. Cuando lo escriban, te aparecen en «Tus alumnos» para que **aceptes** su conexión.
 6. Cuando lo escriben, ves sus temas y sus cantes y les programas las clases.
 
 ### huecos-reservas · Abre huecos y acepta reservas

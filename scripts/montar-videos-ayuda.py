@@ -83,7 +83,8 @@ VIDEOS = {
         'pasos': [
             ('En Más, toca [Mi preparador]', ['mas']),
             ('Escribe el [código de 6 letras] de tu preparador', ['mi-preparador', 'codigo']),
-            ('Sus clases y sus materiales [ya están en tu app]', ['conectado']),
+            ('Queda [pendiente] hasta que tu preparador la acepte', ['pendiente']),
+            ('Cuando la acepta, [te llega un aviso]: sus clases y materiales ya están en tu app', ['conectado'], {'aviso': ('Paula Pérez ha aceptado tu conexión', 'Ya ve tus temas y tus cantes')}),
             ('[Qué ve]: tus temas y tus cantes. Ni tus tests ni tus notas', ['que-ve']),
         ],
         'cierre': 'Puedes dejar de compartir cuando quieras.',
@@ -131,7 +132,7 @@ VIDEOS = {
             ('[Darme de alta como preparador]', ['presentacion', 'alta']),
             ('Solo hace falta tu [nombre] y tus ejercicios', ['nombre', 'datos', 'enviar']),
             ('Otro preparador verificado [te verifica]', ['codigo'], {'aviso': ('Ya estás verificado', 'Olga Martín te ha verificado')}),
-            ('Dale tu [código] a tus alumnos: ves sus temas y sus cantes', ['codigo']),
+            ('Dale tu [código] a tus alumnos y [acepta] su conexión: verás sus temas y sus cantes', ['codigo']),
         ],
         'cierre': 'Sus clases y valoraciones nunca las ve nadie más.',
     },

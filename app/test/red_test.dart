@@ -427,7 +427,11 @@ void main() {
     await db.doc('codigos/PAULA2').set({'uid': 'paula', 'nombre': 'Paula'});
     final alu = await prepRepo(db, sesion('alu', 'Álex'));
     await alu.enlazarConCodigo('PAULA2');
+    expect(alu.misPreparadores().single.aceptado, isFalse);
+    // La preparadora acepta: el alumno lo ve al sincronizar.
+    await db.doc('preparadores/paula/alumnos/alu').update({'aceptado': true});
     await alu.sincronizarTodo();
+    expect(alu.misPreparadores().single.aceptado, isTrue);
     expect(alu.preparadoresQueSeFueron, isEmpty);
     // La preparadora le quita: al alumno se le avisa.
     await db.doc('users/alu/preparadores/paula').delete();
@@ -714,6 +718,7 @@ void main() {
     final alumno = await prepRepo(db, authAlu);
     await alumno.enlazarConCodigo((await prep.activar()).codigo!);
     await prep.sincronizarTodo();
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
     final a = prep.alumnos().single;
 
     final c = crearCronograma(id: 'c1', ejercicio: 3, temas: [for (var i = 1; i <= 9; i++) '3.A.$i'], inicio: DateTime.now(), porSemana: 3);
