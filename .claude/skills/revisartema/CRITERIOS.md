@@ -142,8 +142,28 @@ el texto original y lo que se hizo.
 - Bloques de temas relacionados en `oposicion/organizacion/estructura_temario.json`.
   Revisar los temas del mismo bloque y los citados con «[ver tema …]»: misma
   notación, mismas definiciones y sin contradicciones.
+- **Canon común** (`oposicion/temario/canon/`, ver su `LEEME.md`): todas las
+  revisiones son coherentes entre sí en cuatro sentidos.
+  1. **Notación matemática**: la de `canon/notacion.md`, en todo el
+     temario. Si un tema necesita un símbolo nuevo o cambiar uno, se propone
+     el cambio al canon (no se inventa en el tema).
+  2. **Mismo modelo, misma forma, adaptado a cada tema**: cada modelo que
+     sale en varios temas se cuenta de forma **reconocible** (mismos
+     supuestos de partida, mismas ecuaciones y notación, mismo gráfico de
+     referencia) pero **adaptado a la pregunta que responde en ese tema**, y
+     más extenso en su **tema de referencia** (ficha en `canon/modelos/`).
+     Así se entiende y se memoriza el temario como un todo.
+  3. **Estructura**: coherente dentro del tema (la introducción anuncia lo que
+     se desarrolla, la conclusión lo recoge) y en perspectiva amplia: qué
+     aporta el tema dentro de su bloque y del temario, sin solapes
+     innecesarios con sus vecinos.
+  4. **Referencias cruzadas** «[ver tema …]»: cada una apunta al tema donde
+     de verdad se trata eso, con la numeración actual; se añaden las que
+     faltan (sobre todo al tema de referencia de cada modelo que se use).
 - Si se detecta una contradicción con **otro** tema, no se cambia el otro tema:
-  se anota en `revision.md` («Coherencia») para cuando le toque.
+  se anota en `revision.md` («Coherencia») y, si es del canon, en
+  `canon/pendientes-coherencia.md` para ponerlo al día con
+  `--fase coherencia`.
 
 ## 7. Gráficos
 
@@ -215,6 +235,24 @@ el texto original y lo que se hizo.
 - **Exactamente 30:00**: el script ajusta el ritmo de toda la narración (sin
   cambiar el tono) para que acabe justo antes de la pantalla final. El ajuste
   debe quedar entre ×0,95 y ×1,05; si no, se recorta o se alarga el guion.
+- **Cómo habla el vídeo**: registro formal pero cercano y humano, natural
+  y fácil de seguir, como un experto en comunicación ante el tribunal: frases
+  de longitud variada (más cortas en lo difícil), conectores que guían
+  («fíjense en que…», «la clave está en…», «dicho de otro modo…»),
+  preguntas retóricas que anticipan lo que viene, **énfasis** en la idea
+  central de cada apartado (repetirla con otras palabras, anunciar que es
+  importante) y **pausas** donde ayudan a asimilar: `[pausa]` (0,5 s) o
+  `[pausa 800]` (ms, hasta 2 s) dentro de `di:`, tras una pregunta, antes de la idea
+  clave o entre las partes de una enumeración. Sin abusar: una o dos por
+  paso como mucho. Las marcas no salen en los subtítulos.
+- **Pregunta de enganche y cierre (solo en el vídeo; los documentos no
+  cambian)**: el vídeo empieza, tras leer el título, con una **pregunta**
+  sobre lo que se va a ver, que puede ser muy abierta, incluso
+  epistemológica («¿Podemos explicar con una teoría algo tan cotidiano como
+  lo que compramos?»), y que hace de enganche. Toda la exposición se orienta
+  a ella y la **idea final la responde**, aunque sea de forma abierta y
+  dejando pie a otras partes del temario. Cierre natural: la última frase es
+  esa respuesta; nunca «muchas gracias» ni fórmulas de despedida.
 - Voz: Edge TTS `es-ES-AlvaroNeural` a **+15 %** (o lo que haga falta para que el ajuste quede cerca de ×1,00) mientras no haya voz clonada
   de Víctor (`voz: {motor: xtts, muestra: …}`). Los nombres que la voz lee mal
   van en `scripts/temario/pronunciacion.yaml` (comunes) o en `pronunciacion:`
@@ -243,11 +281,35 @@ el texto original y lo que se hizo.
     de abajo, Palatino sobre papel) y lo didáctico (definición precisa, autor
     y año, idea clave) en `apunte:` (franja salvia).
   - Todo lo de la pizarra (fórmulas, texto y gráficos) sale **trazo a trazo
-    a la velocidad de una mano**, sin mano visible. Lo que se dibuja hace
-    cola y puede seguir mientras se habla del paso siguiente, pero tiene que
-    acabar antes de borrar, de cambiar de apartado o de pasar al guion: si
-    no da tiempo, el script avisa (la mano iría a más de 1,6 veces lo
-    natural) y hay que quitar cosas de la pizarra o repartirlas.
+    a la velocidad de una mano**, sin mano visible.
+  - **Coordinación perfecta voz–pizarra**: lo que dibuja un paso se escribe
+    *mientras se dice ese paso* y nunca invade el siguiente. Mientras se
+    escribe algo, la voz habla **exactamente de eso** (si se escribe la
+    ecuación de Slutsky, se está explicando la ecuación de Slutsky; si se
+    traza la curva de Engel, se está describiendo la curva de Engel).
+  - **La voz no se para nunca**: no se queda callada mientras se escribe ni
+    esperando a que acabe el dibujo. Cada paso dura lo que tarda en decirse
+    y su dibujo tiene que caber en ese tiempo (la mano puede acelerar hasta
+    1,6 veces lo natural; si no basta, el script avisa). Los avisos se
+    corrigen **diciendo más sobre lo que se está escribiendo** (leer la
+    fórmula mientras se escribe, describir cada curva mientras se traza),
+    repartiendo el dibujo en más pasos con su narración o aligerando la
+    pizarra. Las únicas pausas son las de énfasis (`[pausa]`, de 2 s como
+    máximo) y las de cambio de paso, escena y apartado. El vídeo sigue
+    durando **exactamente 30:00**. Comprobación rápida (sin voz):
+    `python3 scripts/temario/generar-video.py T --borrador --medir`.
+  - **Apoyo visual** (`apoyo:` en un paso): en el cuerpo del tema pueden
+    salir gráficos, ecuaciones o texto que **no** están en la pizarra pero
+    ayudan al oyente a seguir lo que se cuenta (un gráfico completo de
+    referencia, la ecuación entera mientras se escribe solo su parte clave,
+    una idea clave en texto). Sale de golpe, en una tarjeta azulada con el
+    rótulo «APOYO · no se escribe en la pizarra», en una celda de la
+    rejilla: así nunca se confunde con lo que escribe el opositor. Sirve
+    también para no cargar la mano: lo que no haría falta escribir en el
+    examen va a apoyo.
+  - Un paso = una idea que se dice y lo que se escribe para ella. Si un paso
+    dibuja varias cosas, la narración las recorre en el mismo orden en que
+    se dibujan.
 - **Rejilla de la pizarra** (`rejilla:` en la escena o en un paso): de 1 a 3
   columnas, cada una con 1 o 2 filas, con el porcentaje que convenga a cada
   celda ("100", "40|60", "35|65(55/45)", "30|40|30"). Las rayas de

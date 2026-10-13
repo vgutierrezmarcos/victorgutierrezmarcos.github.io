@@ -76,12 +76,27 @@ El mismo cante, **todo**, repartido en pasos:
   - `guion:` en los pasos de pizarra: lo que se dice sin escribirlo, muy
     breve (franja «Se dice»). `apunte:` (franja salvia) para la definición
     precisa, el autor y año o la idea clave que ayuda al opositor.
+- `apoyo:` para lo que ayuda a seguir pero el opositor no escribiría
+  (gráfico de referencia completo, ecuación entera, idea clave en texto):
+  tarjeta azulada que sale de golpe en una celda libre de la rejilla.
 - Gráficos: `grafico` + `capa`, subiendo de capa justo cuando la narración
   nombra lo que se dibuja. Todo se dibuja a velocidad de mano (una fórmula
-  de 20 símbolos, unos 7 s; un eje, 1 s) y hace cola: lo que no acaba en su
-  paso sigue en los siguientes, pero tiene que acabar antes de borrar o de
-  cambiar de apartado. Comprueba los AVISOS con
-  `generar-video.py T --borrador --fotogramas 0:01` (planifica sin montar).
+  de 20 símbolos, unos 7 s; un eje, 1 s).
+- **Coordinación voz–pizarra y voz continua**: lo que dibuja un paso se
+  escribe mientras se dice ese paso (nunca invade el siguiente) y la voz no
+  se para: el dibujo tiene que caber en lo que dura su narración (la mano
+  acelera hasta 1,6×). Mientras se escribe algo, `di` habla exactamente de
+  eso (lee la fórmula, describe la curva). Si no cabe: más narración sobre
+  lo que se escribe, más pasos o menos pizarra (o pásalo a `apoyo:`).
+- **Cómo habla**: formal pero cercano y natural, como un experto en
+  comunicación; énfasis con la redacción (anunciar y repetir la idea clave,
+  preguntas retóricas, frases cortas en lo difícil) y pausas `[pausa]` o
+  `[pausa 800]` (2 s como máximo) tras una pregunta o antes de la idea clave,
+  una o dos por paso como mucho.
+- **Pregunta de enganche** (solo en el vídeo): tras el título, una pregunta
+  abierta, incluso epistemológica, sobre lo que se va a ver; la exposición
+  se orienta a ella y la idea final la responde de forma abierta, enlazando
+  con otras partes del temario. Sin «muchas gracias» ni despedidas.
 - Los conceptos importantes, con definición, interpretación analítica
   (fórmula) e interpretación gráfica.
 - En `di`, las abreviaturas como se leen («s.a.» → «sujeto a») y las fórmulas
@@ -94,7 +109,9 @@ python3 -c "import yaml; yaml.safe_load(open('D/video/escenas.yaml'))"
 python3 R/scripts/temario/generar-video.py T --medir
 ```
 
-`--medir` genera la voz y dice el ajuste de ritmo y cuántas palabras sobran o
-faltan. Ajusta el texto hasta que el ritmo quede entre ×0,97 y ×1,03 (mantén
+Primero sin voz: `generar-video.py T --borrador --medir` (estima la duración
+por palabras y lista los avisos de la mano: el objetivo es 0). Después,
+`--medir` sin `--borrador` genera la voz y dice el ajuste de ritmo y cuántas
+palabras sobran o faltan. Ajusta el texto hasta que el ritmo quede entre ×0,97 y ×1,03 (mantén
 `guion-cante.md` y `escenas.yaml` iguales). Termina diciendo las palabras,
 el ajuste y los gráficos usados.

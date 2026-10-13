@@ -10,7 +10,10 @@ temas están en el checkout de main (no en git):
 `/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/<ejercicio>/oculto/`;
 los temas ya revisados, en `R/oposicion/temario/fuentes/*/`.
 
-Lee `R/.claude/skills/revisartema/CRITERIOS.md` (secciones 2, 6 y 8),
+Lee `R/.claude/skills/revisartema/CRITERIOS.md` (secciones 2, 6 y 8), el
+canon (`R/oposicion/temario/canon/`: `LEEME.md`, `notacion.md`, las fichas de
+`modelos/` de los modelos del tema, `mapa.yaml` y el inventario
+`_inventario/<T>.json` del tema y de los temas con los que se relaciona),
 `D/_trabajo/original.md`, `D/_trabajo/pendientes.md` y `D/_trabajo/estructura.md`.
 
 1. **Título oficial** (`R/oposicion/temario/temario.json`): ¿cubre todos los
@@ -38,6 +41,18 @@ Lee `R/.claude/skills/revisartema/CRITERIOS.md` (secciones 2, 6 y 8),
    Marca qué partes del documento son de profundización (no se cantan) y qué
    gráficos son imprescindibles en el cante. El esquema de pizarra inicial
    debe caber en una pizarra (unas 15-20 líneas).
+
+5. **Canon**: notación del tema frente a `notacion.md` (lista de cambios);
+   cada modelo frente a su ficha: ¿se reconoce la presentación de
+   referencia?, ¿está adaptado a la pregunta de este tema?, ¿la extensión es
+   la que toca (en extenso solo si este es su tema de referencia)?
+   Referencias de `mapa.yaml` del tema: corrige las que estén mal y añade las
+   que falten. Si algo del canon debería cambiar por lo que enseña este tema,
+   propónlo en una sección «Cambios al canon» (lo aplica `tema-canon`).
+
+**Modo ligero (`--fase coherencia`)**: solo lee las entradas del tema en
+`R/oposicion/temario/canon/pendientes-coherencia.md` y propone los cambios
+concretos al `D/T.tex` (con texto listo para pegar).
 
 Escribe `D/_trabajo/propuestas-coherencia.md`: propuestas numeradas (K1, K2…)
 con dónde, qué y texto nuevo listo para pegar cuando haga falta; después, la

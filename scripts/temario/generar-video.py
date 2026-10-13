@@ -28,15 +28,16 @@ Cómo es el vídeo (CRITERIOS.md, «Vídeo»):
                código. Lo que se dice pero no se escribe va fuera de la
                pizarra, en la franja de abajo («Se dice», Palatino sobre
                papel), y lo didáctico en «Apunte» (sobre salvia).
+  - Además de lo escrito a mano puede salir material de APOYO (gráficos,
+    fórmulas o texto que el opositor no escribiría pero que ayudan a seguirle),
+    en tarjetas azuladas que aparecen de golpe y no se confunden con la pizarra.
+  - La voz no se para: lo que dibuja cada paso se escribe mientras se dice ese
+    paso (la mano acelera hasta 1,6 veces si hace falta; si no basta, aviso).
+    «[pausa]» o «[pausa 800]» en lo que se dice: pausa de énfasis (2 s como máximo).
   - La pizarra se divide en una rejilla de 1 a 3 columnas, y cada columna en
     1 o 2 filas, con el ancho y el alto que se quiera; las rayas que separan
     las celdas solo se pintan si se pide (lineas: true), cuando ayudan a
     seguir la exposición. Cambiar de rejilla borra la pizarra.
-  - Lo que se dibuja forma una cola: si un dibujo no termina antes del paso
-    siguiente, sigue mientras se habla (como en el examen). Antes de borrar,
-    de cambiar de apartado o de pasar al guion, la cola tiene que acabar: si
-    no da tiempo, se acelera la mano y, si hay que ir a más de 1,6 veces la
-    velocidad natural, se avisa (hay que quitar cosas de la pizarra).
   - Pausa entre pasos, más larga entre escenas y más aún entre apartados y
     bloques.
   - Dura exactamente lo que diga «duracion» (1800 s): se ajusta el ritmo de
@@ -76,11 +77,18 @@ Formato de escenas.yaml:
               - {formula: 'x \\succeq y', zona: 1}
               - {grafico: axiomas, capa: 1, zona: 2, alto: 0.9}
               - {escribe: "Completitud", zona: 1, color: rojo}   # texto: solo si aclara
+            apoyo: {grafico: axiomas, capa: 3, zona: 2}   # apoyo: se enseña, no se escribe
             guion: "Tres axiomas de racionalidad"    # franja «Se dice»
             apunte: "Debreu (1959): racionalidad + continuidad ⇒ U"
           - di: "…"
             rejilla: {columnas: [40, 60], filas: {2: [55, 45]}, lineas: true}
             pizarra: [{grafico: axiomas, capa: 3}]    # mismo gráfico: dibuja lo nuevo
+
+Apoyo (`apoyo:` en un paso, uno o una lista): gráficos, fórmulas ({formula: …}),
+texto ({texto: [..]}) o imágenes que ayudan a seguir la exposición pero que el
+opositor NO escribiría: salen de golpe en una tarjeta azulada («APOYO · no se
+escribe en la pizarra») en una celda de la rejilla, y se quitan al borrar esa
+zona o cambiar de rejilla.
 
 Rejilla: "100" (una celda), "50|50", "30|40|30", "40|60(55/45)" (la segunda
 columna con dos filas del 55 % y 45 %) o {columnas: [...], filas: {col:
@@ -88,10 +96,10 @@ columna con dos filas del 55 % y 45 %) o {columnas: [...], filas: {col:
 columna 2), "1-2" (columnas 1 y 2) y "1a-2a". Cada cosa va debajo de lo último
 escrito en su zona.
 
-Salida (fuera de git, en la carpeta Vídeos de Windows):
-  Vídeos/temario/<tema>.mp4          el vídeo
-  Vídeos/temario/<tema>.srt          subtítulos (para YouTube)
-  Vídeos/temario/<tema>-youtube.txt  título, descripción y capítulos para YouTube
+Salida (fuera de git, en oposicion/temario/videos/, que está en .gitignore):
+  videos/<tema>.mp4          el vídeo
+  videos/<tema>.srt          subtítulos (para YouTube)
+  videos/<tema>-youtube.txt  título, descripción y capítulos para YouTube
 
 Voces (voz.motor): «edge» (Edge TTS neural, gratis) o «xtts» (voz clonada a
 partir de una grabación, con scripts/temario/voz-xtts.py en ~/.venvs/voz).
@@ -141,7 +149,10 @@ VEL_TRAZO = 800                # píxeles por segundo de los trazos de los gráf
 VEL_REGLA = 1400               # rayas de la rejilla (con regla)
 LEVANTAR = 0.06                # levantar la pluma entre trazos
 ACELERACION_MAX = 1.6          # más rápido que esto ya no parece una mano: se avisa
-SALIDA = os.environ.get('TCEE_VIDEOS', '/mnt/c/Users/vgutierrez/Videos/temario')
+# Todos los vídeos juntos en oposicion/temario/videos/ (fuera de git: .gitignore); se
+# publican en YouTube cuando estén todos
+SALIDA = os.environ.get('TCEE_VIDEOS', os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))), 'oposicion', 'temario', 'videos'))
 FUENTES_WIN = '/mnt/c/Windows/Fonts'
 PRONUNCIACION = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pronunciacion.yaml')
 VOZ_DEFECTO = {'motor': 'edge', 'nombre': 'es-ES-AlvaroNeural', 'velocidad': '+15%'}
@@ -157,6 +168,8 @@ TINTA = (40, 38, 44)
 GRIS = (130, 125, 135)
 SALVIA = (226, 239, 217)
 SALVIA_OSCURO = (150, 180, 140)
+APOYO_FONDO = (232, 239, 248)  # tarjetas de apoyo: lo que se enseña pero no se escribe
+APOYO_BORDE = (120, 145, 185)
 PAPEL = (250, 249, 246)
 FONDO = (236, 236, 232)
 PIZARRA = (253, 253, 251)
@@ -191,6 +204,7 @@ F_FRANJA_I = fuente('palai.ttf', 28)
 F_ETIQUETA = fuente('segoeuib.ttf', 17)
 F_APUNTE_E = fuente('segoeuib.ttf', 20)
 F_PIZ = fuente('segoeprb.ttf', 38)
+F_APOYO = fuente('pala.ttf', 32)
 F_PIZ_T = fuente('segoeprb.ttf', 44)
 F_TITULO = fuente('palab.ttf', 64)
 F_SUBTITULO = fuente('pala.ttf', 42)
@@ -872,6 +886,8 @@ class Pizarra:
 
     def anadir(self, accion):
         """Coloca un elemento y devuelve la operación que lo dibuja."""
+        if accion.get('_apoyo'):
+            return self.anadir_apoyo(accion)
         color = ROTULADOR.get(accion.get('color', ''), None)
         zona = accion.get('zona')
         if 'escribe' in accion:
@@ -929,6 +945,44 @@ class Pizarra:
             g.capa = capa
             return op_dibujo((g.x, g.y), g.imagen(), True, self.fondo, partes)
         raise ValueError(f'Acción de pizarra desconocida: {accion}')
+
+    def anadir_apoyo(self, accion):
+        """Material de apoyo (gráfico, fórmula, texto o imagen) que NO escribe el opositor:
+        una tarjeta azulada con su rótulo, en una celda de la rejilla, que aparece de golpe."""
+        zona = accion.get('zona')
+        x0, x1, y, limite, celdas = self._sitio(zona, 200)
+        alto_max = (limite - y) * float(accion.get('alto', 1.0))
+        ancho, margen, cab = int(x1 - x0), 18, 42
+        caja_util = (ancho - 2 * margen, int(alto_max) - cab - margen)
+        if 'grafico' in accion:
+            g = Grafico(self.tema, accion['grafico'], self.carpeta, (0, 0, caja_util[0], caja_util[1]))
+            dentro = g.imagen(int(accion.get('capa', 1000)))
+        elif 'formula' in accion:
+            dentro = Image.open(formula_png(accion['formula'], TINTA, self.carpeta)).convert('RGBA')
+            esc = min(accion.get('tam', 1.0), caja_util[0] / dentro.width, caja_util[1] / dentro.height)
+            dentro = dentro.resize((max(1, int(dentro.width * esc)), max(1, int(dentro.height * esc))), Image.LANCZOS)
+        elif 'imagen' in accion:
+            dentro = Image.open(os.path.join(self.tema.dir, accion['imagen'])).convert('RGBA')
+            esc = min(caja_util[0] / dentro.width, caja_util[1] / dentro.height)
+            dentro = dentro.resize((max(1, int(dentro.width * esc)), max(1, int(dentro.height * esc))), Image.LANCZOS)
+        else:
+            lineas = []
+            for t in ([accion['texto']] if isinstance(accion.get('texto'), str) else accion.get('texto', [])):
+                lineas += partir(str(t), F_APOYO, caja_util[0])
+            dentro = Image.new('RGBA', (caja_util[0], max(1, 44 * len(lineas))), (0, 0, 0, 0))
+            dd = ImageDraw.Draw(dentro)
+            for i, l in enumerate(lineas):
+                dd.text((0, i * 44), l, font=F_APOYO, fill=TINTA + (255,))
+        alto = min(int(alto_max), dentro.height + cab + margen)
+        tarjeta = Image.new('RGBA', (ancho, alto), (0, 0, 0, 0))
+        d = ImageDraw.Draw(tarjeta)
+        d.rounded_rectangle([0, 0, ancho - 1, alto - 1], radius=14, fill=APOYO_FONDO + (255,), outline=APOYO_BORDE, width=2)
+        d.text((margen, 9), 'APOYO  ·  no se escribe en la pizarra', font=F_MARCO, fill=APOYO_BORDE)
+        tarjeta.alpha_composite(dentro, ((ancho - dentro.width) // 2, cab))
+        pos = (int(x0), int(y))
+        self._ocupar(celdas, y + alto, limite, zona)
+        return op_dibujo(pos, tarjeta, False, self.fondo,
+                         [{'tipo': 'relleno', 'caja': (0, 0, ancho, alto), 'dur': 0.3}])
 
 
 def op_dibujo(pos, img, reemplaza, fondo, partes):
@@ -1466,6 +1520,28 @@ def yt_tiempo(s):
     return f'{h}:{m:02d}:{s:02d}' if h else f'{m}:{s:02d}'
 
 
+PAUSA_RE = re.compile(r'\s*\[pausa(?:\s+(\d+))?\]\s*')
+
+
+def sin_pausas(texto):
+    """Lo que se dice sin las marcas de pausa (para subtítulos, avisos y recuentos)."""
+    return re.sub(r'\s{2,}', ' ', PAUSA_RE.sub(' ', texto)).strip()
+
+
+def trozos_pausa(texto):
+    """[(trozo, silencio después en s)]: «[pausa]» son 0,5 s y «[pausa 800]», 800 ms (2 s como máximo)."""
+    trozos, ini = [], 0
+    for m in PAUSA_RE.finditer(texto):
+        if texto[ini:m.start()].strip():
+            trozos.append([texto[ini:m.start()].strip(), 0.0])
+        if trozos:
+            trozos[-1][1] = min(2.0, trozos[-1][1] + (int(m.group(1)) / 1000 if m.group(1) else 0.5))
+        ini = m.end()
+    if texto[ini:].strip():
+        trozos.append([texto[ini:].strip(), 0.0])
+    return [tuple(t) for t in trozos]
+
+
 def frases(texto):
     return [f.strip() for f in re.split(r'(?<=[.!?…])\s+(?=[«¿¡A-ZÁÉÍÓÚÑ0-9])', texto) if f.strip()]
 
@@ -1501,39 +1577,169 @@ def main():
     escenas = guion['escenas']
 
     # 1. Voz de cada paso (y del título, al principio) ------------------------------------
+    # «[pausa]» o «[pausa 800]» (ms) en lo que se dice: silencio para dar énfasis o separar ideas
     lectura_titulo = guion.get('lectura_titulo') or f'Tema {tema.codigo.replace(".", " ")}. {titulo}'
     dichos = [lectura_titulo] + [p.get('di', '').strip() for e in escenas for p in e.get('pasos', [])]
     if args.borrador:
-        duraciones = [max(1.0, len(t.split()) / 2.75) if t else 0 for t in dichos]
+        duraciones = [max(1.0, len(sin_pausas(t).split()) / 2.75) + sum(s for _, s in trozos_pausa(t)) if t else 0
+                      for t in dichos]
         audios = [None] * len(dichos)
     else:
-        con_texto = [pronunciar(t, diccionario) for t in dichos if t]
-        rutas = iter(sintetizar_todos(con_texto, voz, carpeta, ffmpeg))
-        audios = [next(rutas) if t else None for t in dichos]
+        trozos = [trozos_pausa(t) if t else [] for t in dichos]
+        textos = [pronunciar(x, diccionario) for tr in trozos for x, _ in tr]
+        rutas = iter(sintetizar_todos(textos, voz, carpeta, ffmpeg))
+        audios = []
+        for t, tr in zip(dichos, trozos):
+            if not t:
+                audios.append(None)
+                continue
+            piezas = [(next(rutas), s) for _, s in tr]
+            if len(piezas) == 1 and not piezas[0][1]:
+                audios.append(piezas[0][0])
+                continue
+            junta = os.path.join(carpeta, f'voz-junta-{huella(*[a for a, _ in piezas], *[s for _, s in piezas])}.pcm')
+            if not os.path.exists(junta):
+                open(junta, 'wb').write(b''.join(leer_pcm(a) + silencio(s) for a, s in piezas))
+            audios.append(junta)
         duraciones = [os.path.getsize(a) / 2 / MUESTREO if a else 0 for a in audios]
 
-    # 2. Línea de tiempo natural y ajuste a la duración exacta ------------------------------
-    pasos = []           # escena, paso, inicio y duración (naturales), índice de audio
-    t = duraciones[0] + PAUSA_BLOQUE
-    portada_fin = t
-    k = 1
-    for i, e in enumerate(escenas):
-        for p in e.get('pasos', []):
-            dur = duraciones[k] if dichos[k] else 1.2
-            pasos.append({'escena': i, 'paso': p, 'inicio': t, 'dur': dur, 'audio': k})
-            t += dur + PAUSA_PASO
-            k += 1
-        if i + 1 < len(escenas):
-            if escenas[i + 1]['bloque'] != e['bloque']:
-                pausa = PAUSA_BLOQUE
-            elif pantallas.cambia_apartado(i, i + 1):
-                pausa = PAUSA_APARTADO
+    # 2. Plan de la pizarra y línea de tiempo -------------------------------------------------
+    # La voz no se para: cada paso dura lo que tarda en decirse y lo que dibuja tiene que
+    # escribirse dentro de ese tiempo (la mano acelera hasta ACELERACION_MAX; si no basta,
+    # se avisa y se corrige el guion). Así lo que se escribe es siempre lo que se dice.
+    def cronologia(minimos):
+        pasos = []           # escena, paso, inicio y duración (naturales), índice de audio
+        t = duraciones[0] + PAUSA_BLOQUE
+        portada_fin = t
+        k = 1
+        for i, e in enumerate(escenas):
+            for p in e.get('pasos', []):
+                dur = duraciones[k] if dichos[k] else 1.2
+                hueco = max(dur, minimos.get(len(pasos), 0.0))
+                pasos.append({'escena': i, 'paso': p, 'inicio': t, 'dur': dur, 'hueco': hueco, 'audio': k})
+                t += hueco + PAUSA_PASO
+                k += 1
+            if i + 1 < len(escenas):
+                if escenas[i + 1]['bloque'] != e['bloque']:
+                    pausa = PAUSA_BLOQUE
+                elif pantallas.cambia_apartado(i, i + 1):
+                    pausa = PAUSA_APARTADO
+                else:
+                    pausa = PAUSA_ESCENA
             else:
-                pausa = PAUSA_ESCENA
-        else:
-            pausa = PAUSA_BLOQUE
-        t += pausa - PAUSA_PASO
-    natural = t
+                pausa = PAUSA_BLOQUE
+            t += pausa - PAUSA_PASO
+        return pasos, t, portada_fin
+
+    def planificar(pasos, contenido_fin):
+        pizarra = Pizarra(tema, carpeta)
+        ops, pendientes, tarjetas, avisos = [], [], [], pizarra.avisos
+        subtitulos, capitulos = [], [(0.0, 'Título')]
+
+        def barrera(tb):
+            for op in pendientes:
+                op['barrera'] = tb
+            pendientes.clear()
+
+        escena_actual, estado_guion, dice, apunte, modo_previo = -1, None, None, None, None
+        for n, p in enumerate(pasos):
+            e = escenas[p['escena']]
+            paso = p['paso']
+            t0 = p['inicio']
+            modo = e.get('modo', 'pizarra')
+            listo = t0
+            nueva = p['escena'] != escena_actual
+            p['brillo_desde'] = None
+            if nueva:
+                escena_actual = p['escena']
+                capitulos.append((t0, e.get('titulo') or e['bloque']))
+                dice = apunte = None
+                if n > 0 and pantallas.cambia_apartado(pasos[n - 1]['escena'], p['escena']):
+                    previo = pasos[n - 1]
+                    c0 = previo['inicio'] + previo['dur'] + 0.15
+                    c1 = max(c0 + TARJETA_MIN, t0 + 0.6)
+                    tarjetas.append({'c0': c0, 'c1': c1, 'escena': p['escena'], 'previa': previo['escena']})
+                    barrera(c0 - 0.1)
+                    listo = c1
+                    p['brillo_desde'] = t0
+                    p['brillo_bloque'] = escenas[previo['escena']]['bloque'] != e['bloque']
+                if modo == 'guion':
+                    estructura = e.get('estructura') or []
+                    estado_guion = {'partes': [{'nombre': x, 'estado': 'pendiente', 'lineas': []} for x in estructura],
+                                    'ultima': None}
+                    if not estructura:
+                        estado_guion['partes'].append({'nombre': None, 'estado': 'actual', 'lineas': []})
+            if paso.get('di'):
+                fr = frases(sin_pausas(paso['di']))
+                largo = sum(len(f) for f in fr) or 1
+                ti = t0
+                for f in fr:
+                    tf = ti + p['dur'] * len(f) / largo
+                    subtitulos.append((ti, tf, f))
+                    ti = tf
+            # Coordinación voz-pizarra: lo del paso anterior tiene que estar escrito al empezar este
+            barrera(t0)
+            p['modo'] = modo
+            p['fundido'] = n > 0 and (modo == 'guion' or modo_previo == 'guion')
+            if modo == 'guion':
+                barrera(t0)
+                if paso.get('parte'):
+                    encontrada = False
+                    for parte in estado_guion['partes']:
+                        if parte['nombre'] == paso['parte']:
+                            parte['estado'] = 'actual'
+                            encontrada = True
+                        elif parte['estado'] == 'actual':
+                            parte['estado'] = 'hecha'
+                    if not encontrada:
+                        for parte in estado_guion['partes']:
+                            if parte['estado'] == 'actual':
+                                parte['estado'] = 'hecha'
+                        estado_guion['partes'].append({'nombre': paso['parte'], 'estado': 'actual', 'lineas': []})
+                nuevas = paso.get('guion') or []
+                if isinstance(nuevas, str):
+                    nuevas = [nuevas]
+                destino = next((x for x in estado_guion['partes'] if x['estado'] == 'actual'), estado_guion['partes'][-1])
+                for linea in nuevas:
+                    destino['lineas'].append(str(linea))
+                    estado_guion['ultima'] = str(linea)
+                p['guion'] = copy.deepcopy(estado_guion)
+                p['parte'] = next((x['nombre'] for x in estado_guion['partes'] if x['estado'] == 'actual'), None)
+            else:
+                p['parte'] = None
+                if p['fundido']:
+                    listo = max(listo, t0 + FUNDIDO)
+                if paso.get('guion') is not None:
+                    g = paso.get('guion')
+                    dice = ' · '.join(map(str, g)) if isinstance(g, list) else (str(g) if g else None)
+                if paso.get('apunte') is not None:
+                    apunte = paso.get('apunte') or None
+                p['dice'], p['apunte'] = dice, apunte
+                nuevos = []
+                spec = paso.get('rejilla', e.get('rejilla') if nueva else None)
+                if spec is not None and Rejilla(spec).clave != pizarra.rejilla.clave or paso.get('borrar'):
+                    barrera(t0)
+                if spec is not None:
+                    nuevos += pizarra.cambiar_rejilla(spec)
+                if paso.get('borrar'):
+                    nuevos += pizarra.borrar(paso['borrar'])
+                acciones = paso.get('pizarra') or []
+                if isinstance(acciones, dict):
+                    acciones = [acciones]
+                for accion in acciones:
+                    nuevos.append(pizarra.anadir(accion))
+                apoyos = paso.get('apoyo') or []
+                for accion in ([apoyos] if isinstance(apoyos, dict) else apoyos):
+                    nuevos.append(pizarra.anadir({**accion, '_apoyo': True}))
+                for op in nuevos:
+                    op['listo'], op['paso'], op['dicho'] = listo, n, sin_pausas(paso.get('di') or '')
+                    ops.append(op)
+                    pendientes.append(op)
+            modo_previo = modo
+        barrera(contenido_fin - 0.2)
+        return ops, tarjetas, avisos, subtitulos, capitulos
+
+    pasos, natural, portada_fin = cronologia({})
     factor = natural / (total - CIERRE)
     print(f'Narración natural: {mmss(natural)}; ritmo ajustado ×{factor:.3f} para durar {mmss(total)}', flush=True)
     if not 0.9 <= factor <= 1.12:
@@ -1541,16 +1747,26 @@ def main():
               f'conviene {"recortar" if factor > 1 else "alargar"} unas {abs(int((natural - total + CIERRE) * 2.6))} '
               f'palabras', flush=True)
     if args.medir:
-        palabras = sum(len(re.findall(r'\w+', d)) for d in dichos)
+        palabras = sum(len(re.findall(r'\w+', sin_pausas(d))) for d in dichos)
         objetivo = int(palabras / factor)
         print(f'MEDIDA: {palabras} palabras; narración natural {mmss(natural)}; ritmo ×{factor:.3f}. '
               f'Para ritmo ×1,00 harían falta unas {objetivo} palabras ({objetivo - palabras:+d}).')
+        # Y si a la mano le da tiempo a escribir lo de cada paso mientras se dice
+        prueba = copy.deepcopy(pasos)
+        for p in prueba:
+            p['inicio'] /= factor
+        ops_m, _, avisos_m, _, _ = planificar(prueba, total - CIERRE)
+        programar(ops_m, avisos_m)
+        for aviso in dict.fromkeys(avisos_m):
+            print('AVISO:', aviso)
+        print(f'{len(set(avisos_m))} avisos de pizarra')
         return
     escala = 1 / factor
     portada_fin *= escala
     for p in pasos:
         p['inicio'] *= escala
         p['dur'] *= escala
+        p['hueco'] *= escala
     contenido_fin = total - CIERRE
 
     # 3. Audio completo ---------------------------------------------------------------------
@@ -1573,107 +1789,8 @@ def main():
                         '-i', crudo_ruta, '-af', f'atempo={factor:.6f},apad', '-t', f'{total:.3f}',
                         '-ar', str(MUESTREO), audio_wav], check=True)
 
-    # 4. Plan: qué hay en pantalla en cada paso y qué se dibuja en la pizarra -------------------
-    pizarra = Pizarra(tema, carpeta)
-    ops, pendientes, tarjetas, avisos = [], [], [], pizarra.avisos
-    subtitulos, capitulos = [], [(0.0, 'Título')]
-
-    def barrera(tb):
-        for op in pendientes:
-            op['barrera'] = tb
-        pendientes.clear()
-
-    escena_actual, estado_guion, dice, apunte, modo_previo = -1, None, None, None, None
-    for n, p in enumerate(pasos):
-        e = escenas[p['escena']]
-        paso = p['paso']
-        t0 = p['inicio']
-        modo = e.get('modo', 'pizarra')
-        listo = t0
-        nueva = p['escena'] != escena_actual
-        p['brillo_desde'] = None
-        if nueva:
-            escena_actual = p['escena']
-            capitulos.append((t0, e.get('titulo') or e['bloque']))
-            dice = apunte = None
-            if n > 0 and pantallas.cambia_apartado(pasos[n - 1]['escena'], p['escena']):
-                previo = pasos[n - 1]
-                c0 = previo['inicio'] + previo['dur'] + 0.15
-                c1 = max(c0 + TARJETA_MIN, t0 + 0.6)
-                tarjetas.append({'c0': c0, 'c1': c1, 'escena': p['escena'], 'previa': previo['escena']})
-                barrera(c0 - 0.1)
-                listo = c1
-                p['brillo_desde'] = t0
-                p['brillo_bloque'] = escenas[previo['escena']]['bloque'] != e['bloque']
-            if modo == 'guion':
-                estructura = e.get('estructura') or []
-                estado_guion = {'partes': [{'nombre': x, 'estado': 'pendiente', 'lineas': []} for x in estructura],
-                                'ultima': None}
-                if not estructura:
-                    estado_guion['partes'].append({'nombre': None, 'estado': 'actual', 'lineas': []})
-        if paso.get('di'):
-            fr = frases(paso['di'])
-            largo = sum(len(f) for f in fr) or 1
-            ti = t0
-            for f in fr:
-                tf = ti + p['dur'] * len(f) / largo
-                subtitulos.append((ti, tf, f))
-                ti = tf
-        p['modo'] = modo
-        p['fundido'] = n > 0 and (modo == 'guion' or modo_previo == 'guion')
-        if modo == 'guion':
-            barrera(t0)
-            if paso.get('parte'):
-                encontrada = False
-                for parte in estado_guion['partes']:
-                    if parte['nombre'] == paso['parte']:
-                        parte['estado'] = 'actual'
-                        encontrada = True
-                    elif parte['estado'] == 'actual':
-                        parte['estado'] = 'hecha'
-                if not encontrada:
-                    for parte in estado_guion['partes']:
-                        if parte['estado'] == 'actual':
-                            parte['estado'] = 'hecha'
-                    estado_guion['partes'].append({'nombre': paso['parte'], 'estado': 'actual', 'lineas': []})
-            nuevas = paso.get('guion') or []
-            if isinstance(nuevas, str):
-                nuevas = [nuevas]
-            destino = next((x for x in estado_guion['partes'] if x['estado'] == 'actual'), estado_guion['partes'][-1])
-            for linea in nuevas:
-                destino['lineas'].append(str(linea))
-                estado_guion['ultima'] = str(linea)
-            p['guion'] = copy.deepcopy(estado_guion)
-            p['parte'] = next((x['nombre'] for x in estado_guion['partes'] if x['estado'] == 'actual'), None)
-        else:
-            p['parte'] = None
-            if p['fundido']:
-                listo = max(listo, t0 + FUNDIDO)
-            if paso.get('guion') is not None:
-                g = paso.get('guion')
-                dice = ' · '.join(map(str, g)) if isinstance(g, list) else (str(g) if g else None)
-            if paso.get('apunte') is not None:
-                apunte = paso.get('apunte') or None
-            p['dice'], p['apunte'] = dice, apunte
-            nuevos = []
-            spec = paso.get('rejilla', e.get('rejilla') if nueva else None)
-            if spec is not None and Rejilla(spec).clave != pizarra.rejilla.clave or paso.get('borrar'):
-                barrera(t0)
-            if spec is not None:
-                nuevos += pizarra.cambiar_rejilla(spec)
-            if paso.get('borrar'):
-                nuevos += pizarra.borrar(paso['borrar'])
-            acciones = paso.get('pizarra') or []
-            if isinstance(acciones, dict):
-                acciones = [acciones]
-            for accion in acciones:
-                nuevos.append(pizarra.anadir(accion))
-            for op in nuevos:
-                op['listo'], op['paso'], op['dicho'] = listo, n, paso.get('di') or ''
-                ops.append(op)
-                pendientes.append(op)
-        modo_previo = modo
-    barrera(contenido_fin - 0.2)
+    # 4. Plan definitivo de la pizarra --------------------------------------------------------
+    ops, tarjetas, avisos, subtitulos, capitulos = planificar(pasos, contenido_fin)
     programar(ops, avisos)
     for p in pasos:
         p['fin'] = None

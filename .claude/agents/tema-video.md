@@ -20,7 +20,8 @@ Eres el agente de vídeo de /revisartema. Te dan `R` y `T`.
 3. Genera el vídeo completo: `python3 R/scripts/temario/generar-video.py T`
    (tarda; tiempo de espera largo, hasta 90 minutos). Debe durar 30:00.
 4. Comprueba:
-   - los AVISOS que imprime (pizarra llena, dibujo demasiado rápido) y
+   - los AVISOS que imprime (pizarra llena, mano a más de 1,6×: la voz no se
+     para nunca, así que todo dibujo cabe en lo que dura su paso) y
      `D/_trabajo/video/informe-video.json`: corrige `escenas.yaml` (borrar
      antes, repartir capas en más pasos) y vuelve a generar;
    - fotogramas en ocho momentos repartidos (con el ffmpeg de imageio:
@@ -31,6 +32,6 @@ Eres el agente de vídeo de /revisartema. Te dan `R` y `T`.
      `.srt`), y una tira de fotogramas seguidos (`-vf fps=4,tile=…`) en un
      paso con gráfico para ver que se dibuja trazo a trazo;
    - que existen el `.srt` y el `-youtube.txt` junto al MP4
-     (`/mnt/c/Users/vgutierrez/Videos/temario/`).
+     (`R/oposicion/temario/videos/`, fuera de git).
 
 Termina con la ruta del vídeo, su duración, el ajuste de ritmo y lo comprobado.
