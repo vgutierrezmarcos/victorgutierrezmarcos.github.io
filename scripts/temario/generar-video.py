@@ -1593,6 +1593,8 @@ def main():
     ap.add_argument('--fotogramas', help='en vez del vídeo, guarda los fotogramas de esos instantes '
                                          '(p. ej. 1:30,4:10) en _trabajo/video/fotogramas/')
     ap.add_argument('--ffmpeg', default=None)
+    ap.add_argument('--voz', help='JSON que cambia la voz de escenas.yaml (p. ej. otro motor para todos los temas, '
+                                  'desde voz-todos.py): {"motor_tts": "voxcpm2"}')
     args = ap.parse_args()
     tema = Tema(args.tema)
     import imageio_ffmpeg
@@ -1600,6 +1602,8 @@ def main():
 
     guion = yaml.safe_load(open(args.escenas or os.path.join(tema.dir, 'video', 'escenas.yaml'), encoding='utf-8'))
     voz = {**VOZ_DEFECTO, **(guion.get('voz') or {})} if isinstance(guion.get('voz'), dict) else dict(VOZ_DEFECTO)
+    if args.voz:
+        voz.update(json.loads(args.voz))
     total = float(guion.get('duracion', 1800))
     titulo = guion.get('titulo') or tema.titulo()
     corto = guion.get('titulo_corto') or re.split(r'[.:]', titulo)[0].strip()

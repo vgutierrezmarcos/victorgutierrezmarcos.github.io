@@ -142,7 +142,12 @@ compila con `construir-repaso.py T`; luego
    cierre, registro cercano con énfasis y pausas, voz que no se para,
    coordinación exacta voz–pizarra, apoyo visual, rejilla. Itera con
    `generar-video.py T --borrador --medir` hasta 0 avisos y ritmo ×0,95–1,05.
-2. `tema-video` → voz (motor de `voz:`), vídeo de 30:00 exactos y
+2. **Mientras no esté el ordenador nuevo** (Víctor, 14/10/2026): el vídeo se
+   monta **sin audio** (`generar-video.py T --borrador`, duración estimada) y
+   se le pasa para revisar la pizarra. La voz de todos los temas se pone de
+   golpe en el ordenador nuevo con `scripts/temario/voz-todos.py` (genera la
+   voz de cada tema y vuelve a montar el vídeo sincronizado con ella).
+   Después: `tema-video` → voz (motor de `voz:`), vídeo de 30:00 exactos y
    comprobación de fotogramas. Los vídeos van todos a
    `R/oposicion/temario/videos/` (fuera de git): **no se publican** hasta
    que Víctor tenga todos y los suba a YouTube; entonces se rellena
