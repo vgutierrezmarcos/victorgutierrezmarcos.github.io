@@ -65,9 +65,9 @@
     % Marshalliana: p1 = 5/x1 (escala 1,2)
     \capa{14}{\draw[curva1] plot[domain=1.35:4.6,samples=60,smooth] (\x,{1.2*5/\x})
         node[etiqueta,right] {$x_1(p_1;\,p_2,\overline{W})$};}
-    % Hicksiana: p1 = (25/3)/x1^2 (escala 1,2)
-    \capa{15}{\draw[curva2] plot[domain=1.5:2.85,samples=60,smooth] (\x,{1.2*25/3/(\x*\x)})
-        node[etiqueta,below right] {$h_1(p_1;\,p_2,U^0)$};}
+    % Hicksiana (en verde, como en todo el temario): p1 = (25/3)/x1^2 (escala 1,2)
+    \capa{15}{\draw[curva3] plot[domain=1.5:2.85,samples=60,smooth] (\x,{1.2*25/3/(\x*\x)})
+        node[etiqueta,below right] {$h_1(p_1;\,p_2,\overline{U}^0)$};}
     \capa{16}{
       \node[punto] at (\xA,3.6) {};
       \node[etiqueta,above right] at (\xA,3.6) {$A'$};

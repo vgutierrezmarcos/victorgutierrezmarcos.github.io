@@ -7,46 +7,49 @@
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \pgfplotsset{
-  superficie/.style={surf,shader=faceted,fill opacity=0.45,draw=tceemorado!40,line width=0.15pt,
+  superficie/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.45,draw=tceemorado!40,line width=0.15pt,
     colormap={tcee}{rgb255=(226,239,217) rgb255=(167,137,189)}},
   presupuesto/.style={fill=tceedorado,fill opacity=0.25,draw=tceedorado,thick},
-  % perspectiva caballera: x1 a la derecha, U vertical, x2 en profundidad a 45° con coeficiente 0,5
-  tresd/.style={x={(1.2cm,0cm)},y={(0.4243cm,0.4243cm)},z={(0cm,1.2cm)},axis lines=none,
+  % perspectiva del gráfico de cuasiconcavidad (vista por defecto de pgfplots, acimut 30°,
+  % elevación 28°): origen a la izquierda, x1 a la derecha algo hacia abajo,
+  % x2 en profundidad hacia arriba a la derecha, U vertical
+  tresd/.style={x={(1.02cm,-0.2805cm)},y={(0.5865cm,0.476cm)},z={(0cm,1.037cm)},axis lines=none,
     xmin=0,xmax=4,ymin=0,ymax=4,zmin=0,zmax=4.6,clip=false},
 }
 \begin{document}
 \begin{tikzpicture}[tcee]
   % ---------- panel izquierdo: restricción no operativa ----------
   \begin{axis}[tresd,name=a]
-    \coordinate (pie-a) at (axis cs:2.1,0,0); % para el rótulo del panel
     % 1: ejes
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
-    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.4,0) node[right] {$x_2$};}
-    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(x)$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.6,0) coordinate (finx2a);}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(\vect{x})$};}
     % 2: conjunto presupuestario en el suelo
     \capa{2}{\addplot3[presupuesto] coordinates {(0,0,0) (3.5,0,0) (0,3.5,0) (0,0,0)};}
     % 3: utilidad con un máximo absoluto (punto de saturación)
     \capa{3}{\addplot3[superficie,domain=0:3.5,y domain=0:3.5,samples=12,samples y=12]
       {3*exp(-((x-1.2)^2+(y-1.2)^2)/2.5)};}
+    % el rótulo de x2 (paso 1) va después de la superficie para que no quede tapado
+    \capa{1}{\node[right] at (finx2a) {$x_2$};}
     % 4: el máximo, dentro del conjunto presupuestario
     \capa{4}{\draw[guia] (axis cs:1.2,1.2,3) -- (axis cs:1.2,1.2,0);}
     \capa{4}{\node[punto] at (axis cs:1.2,1.2,3) {};}
     \capa{4}{\node[punto] at (axis cs:1.2,1.2,0) {};}
-    \capa{4}{\node[etiqueta,below] at (axis cs:1.2,1.2,0) {$x^*$};}
+    \capa{4}{\node[etiqueta,below] at (axis cs:1.2,1.2,0) {$\vect{x}^*$};}
   \end{axis}
-  \capa{4}{\node[font=\small,align=center,anchor=north] at ($(pie-a)+(0,-0.7)$)
-    {(a) Máximo absoluto dentro\\ del conjunto presupuestario:\\ $p\cdot x^*<\overline{W}$, \ $\lambda=0$};}
+  \capa{4}{\node[font=\small,align=center,anchor=north] at ([yshift=-0.45cm]a.south)
+    {(a) Máximo absoluto dentro\\ del conjunto presupuestario:\\ $\vect{p}\cdot \vect{x}^*<\overline{W}$, \ $\lambda=0$};}
   % ---------- panel derecho: restricción operativa ----------
   \begin{axis}[tresd,name=b,at={(a.east)},anchor=west,xshift=1.0cm]
-    \coordinate (pie-b) at (axis cs:2.1,0,0);
     % 5: ejes
     \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
-    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.6,0) node[right] {$x_2$};}
-    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(x)$};}
+    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.6,0) coordinate (finx2b);}
+    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(\vect{x})$};}
     % 6: conjunto presupuestario
     \capa{6}{\addplot3[presupuesto] coordinates {(0,0,0) (3.5,0,0) (0,3.5,0) (0,0,0)};}
     % 7: utilidad monótona (siempre crece: no hay máximo absoluto)
     \capa{7}{\addplot3[superficie,domain=0:3.5,y domain=0:3.5,samples=12,samples y=12] {sqrt(x*y)};}
+    \capa{5}{\node[right] at (finx2b) {$x_2$};}
     % 8: utilidad a lo largo de la recta de balance (corte vertical)
     \capa{8}{\addplot3[curvanueva,domain=0:3.5,samples=40,samples y=0] (x,{3.5-x},{sqrt(x*(3.5-x))});}
     \capa{8}{\addplot3[guia,domain=0:3.5,samples=2,samples y=0] (x,{3.5-x},0);}
@@ -54,9 +57,9 @@
     \capa{9}{\draw[guia] (axis cs:1.75,1.75,1.75) -- (axis cs:1.75,1.75,0);}
     \capa{9}{\node[punto] at (axis cs:1.75,1.75,1.75) {};}
     \capa{9}{\node[punto] at (axis cs:1.75,1.75,0) {};}
-    \capa{9}{\node[etiqueta,below] at (axis cs:1.75,1.75,0) {$x^*$};}
+    \capa{9}{\node[etiqueta,below] at (axis cs:1.75,1.75,0) {$\vect{x}^*$};}
   \end{axis}
-  \capa{9}{\node[font=\small,align=center,anchor=north] at ($(pie-b)+(0,-0.7)$)
-    {(b) Utilidad monótona: máximo\\ condicionado sobre la recta de balance:\\ $p\cdot x^*=\overline{W}$, \ $\lambda>0$};}
+  \capa{9}{\node[font=\small,align=center,anchor=north] at ([yshift=-0.45cm]b.south)
+    {(b) Utilidad monótona: máximo\\ condicionado sobre la recta de balance:\\ $\vect{p}\cdot \vect{x}^*=\overline{W}$, \ $\lambda>0$};}
 \end{tikzpicture}
 \end{document}

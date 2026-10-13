@@ -10,16 +10,16 @@
   \capa{1}{\ejes{$x_1$}{$x_2$}{6.2}{5.2}}
   % 2: la cesta de referencia
   \capa{2}{\node[punto] (x0) at (2,2) {};}
-  \capa{2}{\node[etiqueta,below left] at (x0) {$x^0$};}
+  \capa{2}{\node[etiqueta,below left] at (x0) {$\vect{x}^0$};}
   % 3: conjunto de contorno superior
   \capa{3}{\fill[area] plot[domain=0.8:5.9,samples=60] (\x,{4/\x}) -- (5.9,5) -- (0.8,5) -- cycle;}
-  \capa{3}{\node[etiqueta,align=center] at (4.3,3.9) {$B(x^0)=\{x\in S:\ x\succcurlyeq x^0\}$\\ «al menos tan buenas como $x^0$»};}
+  \capa{3}{\node[etiqueta,align=center] at (4.3,3.9) {$B(\vect{x}^0)=\{\vect{x}\in S:\ \vect{x}\succcurlyeq \vect{x}^0\}$\\ «al menos tan buenas como $\vect{x}^0$»};}
   % 4: conjunto de contorno inferior
   \capa{4}{\fill[area2] plot[domain=0.8:5.9,samples=60] (\x,{4/\x}) -- (5.9,0) -- (0,0) -- (0,5) -- (0.8,5) -- cycle;}
-  \capa{4}{\node[etiqueta,align=center] at (1.75,0.65) {$H(x^0)=\{x\in S:\ x^0\succcurlyeq x\}$\\ «no mejores que $x^0$»};}
+  \capa{4}{\node[etiqueta,align=center] at (1.75,0.65) {$H(\vect{x}^0)=\{\vect{x}\in S:\ \vect{x}^0\succcurlyeq \vect{x}\}$\\ «no mejores que $\vect{x}^0$»};}
   % 5: la curva de indiferencia, frontera común
   \capa{5}{\draw[curva1] plot[domain=0.8:5.9,samples=60] (\x,{4/\x});}
-  \capa{5}{\node[etiqueta,text=tceemorado,align=left,anchor=west] at (5.0,1.25) {$I(x^0)=B(x^0)\cap H(x^0)$\\ $=\{x\in S:\ x\sim x^0\}$};}
+  \capa{5}{\node[etiqueta,text=tceemorado,align=left,anchor=west] at (5.0,1.25) {$I(\vect{x}^0)=B(\vect{x}^0)\cap H(\vect{x}^0)$\\ $=\{\vect{x}\in S:\ \vect{x}\sim \vect{x}^0\}$};}
   \capa{5}{\node[punto] at (2,2) {};}
 \end{tikzpicture}
 \end{document}

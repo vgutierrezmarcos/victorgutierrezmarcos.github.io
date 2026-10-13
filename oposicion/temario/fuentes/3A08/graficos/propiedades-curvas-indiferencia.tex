@@ -17,13 +17,13 @@
     \capa{2}{\draw[guia] (0,2) -- (4.2,2);}
     \capa{2}{\draw[guia] (2,0) -- (2,4);}
     \capa{3}{\fill[area] (2,2) rectangle (4.2,4);}
-    \capa{3}{\node[etiqueta,align=center] at (3.1,3.3) {más de\\ todo: $\succ x^0$};}
+    \capa{3}{\node[etiqueta,align=center] at (3.1,3.3) {más de\\ todo: $\succ \vect{x}^0$};}
     \capa{4}{\fill[area2] (0,0) rectangle (2,2);}
-    \capa{4}{\node[etiqueta,align=center] at (1,0.75) {menos de\\ todo: $\prec x^0$};}
-    \capa{5}{\draw[curva1] plot[domain=1.0:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above] {$I(x^0)$};}
+    \capa{4}{\node[etiqueta,align=center] at (1,0.75) {menos de\\ todo: $\prec \vect{x}^0$};}
+    \capa{5}{\draw[curva1] plot[domain=1.0:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above] {$I(\vect{x}^0)$};}
     \capa{5}{\node[punto] at (2,2) {};}
-    \capa{5}{\node[etiqueta,above right] at (2,2) {$x^0$};}
-    \capa{5}{\node[pie] at (2.2,-0.5) {la curva solo puede pasar por los cuadrantes\\ noroeste y sudeste de $x^0$};}
+    \capa{5}{\node[etiqueta,above right] at (2,2) {$\vect{x}^0$};}
+    \capa{5}{\node[pie] at (2.2,-0.5) {la curva solo puede pasar por los cuadrantes\\ noroeste y sudeste de $\vect{x}^0$};}
   \end{scope}
   % ================= (b) más alejadas, más utilidad: monotonía =================
   \begin{scope}[shift={(6.8,0)}]
@@ -60,15 +60,15 @@
     \capa{15}{\node[titulo] at (2.2,4.6) {(d) Convexas (convexidad)};}
     \capa{15}{\ejesp}
     \capa{16}{\fill[area] plot[domain=0.976:4.0,samples=50] (\x,{4/\x}) -- (4.0,4.1) -- (0.976,4.1) -- cycle;}
-    \capa{16}{\draw[curva1] plot[domain=0.976:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above right] {$I(x')$};}
+    \capa{16}{\draw[curva1] plot[domain=0.976:4.0,samples=50] (\x,{4/\x}) node[etiqueta,above right] {$I(\vect{x}')$};}
     \capa{17}{\node[punto] (dx1) at (1.2,3.3333) {};}
-    \capa{17}{\node[etiqueta,left] at (dx1) {$x'$};}
+    \capa{17}{\node[etiqueta,left] at (dx1) {$\vect{x}'$};}
     \capa{17}{\node[punto] (dx2) at (3.2,1.25) {};}
-    \capa{17}{\node[etiqueta,below left] at (dx2) {$x''$};}
+    \capa{17}{\node[etiqueta,below left] at (dx2) {$\vect{x}''$};}
     \capa{18}{\draw[thick,dashed,tceerojo] (dx1) -- (dx2);}
     \capa{18}{\node[punto,fill=tceerojo] (dm) at (2.2,2.2917) {};}
-    \capa{18}{\node[etiqueta,above right,text=tceerojo] at (dm) {$\lambda x'+(1-\lambda)x''$};}
-    \capa{19}{\node[pie] at (2.2,-0.5) {las combinaciones de dos cestas indiferentes son\\ al menos tan buenas: el conjunto $B(x')$ es convexo};}
+    \capa{18}{\node[etiqueta,above right,text=tceerojo] at (dm) {$\tau \vect{x}'+(1-\tau)\vect{x}''$};}
+    \capa{19}{\node[pie] at (2.2,-0.5) {las combinaciones de dos cestas indiferentes son\\ al menos tan buenas: el conjunto $B(\vect{x}')$ es convexo};}
   \end{scope}
 \end{tikzpicture}
 \end{document}
