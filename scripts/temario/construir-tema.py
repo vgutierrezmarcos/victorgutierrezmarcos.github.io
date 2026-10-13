@@ -258,7 +258,7 @@ def preparar_pandoc(tema, tex, formato):
 
 def comunes_pandoc(tema, datos):
     # citeproc va antes del filtro para que tcee.lua vea ya la bibliografía (salto de página en Word)
-    orden = ['-f', 'latex', '--figure-caption-position=above'] + (['--citeproc'] if os.path.exists(tema.bib) else []) + [
+    orden = ['-f', 'latex', '--figure-caption-position=above'] + (['--citeproc', '--csl', ruta_windows(os.path.join(LATEX, 'tcee.csl'))] if os.path.exists(tema.bib) else []) + [
              '--lua-filter', ruta_windows(os.path.join(LATEX, 'tcee.lua')),
              '-M', 'lang=es-ES', '-M', f'codigo={tema.codigo}', '-M', f'titulo={datos["titulo"]}',
              '-M', f'fecha={datos["fecha"]}', '-M', f'archivo={tema.archivo}',

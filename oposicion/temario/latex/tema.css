@@ -183,7 +183,9 @@
     margin-bottom: 0.4rem;
 }
 .tema-documento figcaption .etiqueta { color: var(--color-primary); font-weight: 700; }
-.tema-documento figure img { width: min(100%, 560px); height: auto; }
+.tema-documento figure img { width: min(100%, 560px); max-width: 100%; height: auto; }
+/* Si el .tex fija el ancho (\grafico[0.85\textwidth]), pandoc lo pone en style: se respeta (hasta 900 px) */
+.tema-documento figure img[style*="width"] { max-width: min(100%, 900px); }
 .tema-documento .fuente { font-size: 0.82rem; font-style: italic; color: var(--color-text-muted); text-align: center; }
 
 /* Tablas */
