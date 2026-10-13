@@ -200,8 +200,20 @@ Future<({bool dentro, String? error})> entrarConGoogle() async {
           return (dentro: false, error: 'Google no ha dado acceso a la app. Si has retirado el acceso desde tu cuenta de Google, espera unos minutos y vuelve a intentarlo.');
         }
       }
-      final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
-      final r = await FirebaseAuth.instance.signInWithCredential(cred);
+      // Con el token de identidad basta; el de acceso solo si no lo hay (el de
+      // acceso que guarda el móvil puede estar revocado: «Invalid Value»).
+      AuthCredential credencial(GoogleSignInAuthentication a) =>
+          GoogleAuthProvider.credential(idToken: a.idToken, accessToken: a.idToken == null ? a.accessToken : null);
+      UserCredential r;
+      try {
+        r = await FirebaseAuth.instance.signInWithCredential(credencial(auth));
+      } on FirebaseAuthException {
+        // Tokens caducados o revocados en la caché del móvil: se borran y se
+        // piden otros una vez.
+        if (auth.accessToken != null) await google.clearAuthCache();
+        auth = await google.authentication;
+        r = await FirebaseAuth.instance.signInWithCredential(credencial(auth));
+      }
       // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
       // guarda los del primer inicio de sesión y no los renueva solo).
       final u = r.user;
