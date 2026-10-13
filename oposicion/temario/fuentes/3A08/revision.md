@@ -469,3 +469,8 @@ A petición de Víctor, los cuatro gráficos 3D (`superficie-utilidad`, `superfi
 - Víctor vio que el gráfico del axioma débil mezclaba dos fuentes con notación distinta (Jehle y Reny en el panel izquierdo: $p^0$, $p^1$; Mas-Colell et al. en el derecho: $p$, $p'$, con $x^0$ y $x^1$ con otro significado). Ahora todo el tema usa la misma: situación 0 ($p^0$, $\overline{W}^0$, se elige $x^0$) y situación 1 ($p^1$, $\overline{W}^1$, se elige $x^1$), en los dos paneles, en la ley de la demanda compensada, $(p^1-p^0)\cdot(x^1-x^0)\leq 0$, en su demostración (anexo), en el guion y en la pizarra del vídeo. Las rectas tienen el mismo color en los tres gráficos de preferencia revelada ($p^0$ morada, $p^1$ azul, $p^2$ verde).
 - Las fuentes de todos los gráficos y tablas propios dicen «elaboración propia basada en …» (antes, «elaboración propia a partir de …»).
 - Control de líneas viudas y huérfanas en PDF, Word y web.
+
+## Decisiones de Víctor (13/10/2026)
+
+- El anexo de Thaler («Psicología y economía») se mantiene.
+- LyX: configurado para ver el PDF desde LyX (preferencias de LyX 2.4: `\\texinputs_prefix ".;./../../latex"` y biber como programa de bibliografía).
