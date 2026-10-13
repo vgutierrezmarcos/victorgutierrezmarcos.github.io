@@ -1,8 +1,9 @@
 # Teoría de la captura del regulador (Stigler, 1971) y grupos de interés (Olson, 1965)
 
-- **Área:** sector público · **Tema de referencia:** 4.B.2 **[decidir]** (mapa: el que más lo trata). Alternativa: 3.A.20 (regulación), que según el inventario de 4.B.15 es su sitio natural. Propuesta: la captura como teoría positiva de la regulación en 3.A.20 y los grupos de interés (Olson, Becker 1983) en 4.B.2.
+- **Área:** sector público · **Tema de referencia:** 3.A.20 (regulación): la captura como teoría positiva de la regulación (Stigler, Peltzman). Los grupos de interés (Olson, Becker 1983) se desarrollan en 4.B.2, que resume la captura con lo imprescindible para cantarse sin el 3.A.20.
 - **Temas que lo usan:** 4.B.2 (resumen), 4.B.15 (mención), 3.A.17/3.A.20 (mención)
 - **Manuales de referencia:** Stigler (1971), «The theory of economic regulation», *Bell Journal*; Peltzman (1976); Becker (1983), *QJE*; Olson, *The Logic of Collective Action* (1965); Laffont y Tirole (1991), *QJE*.
+- **Decisión D092 (13/10/2026):** ¿Cuál es el tema de referencia de la teoría de la captura del regulador? 3.A.20 (regulación: teoría positiva) y los grupos de interés (Olson, Becker 1983) en 4.B.2
 
 ## Presentación de referencia
 **Contenido:** la regulación se «demanda» y se «oferta»: los grupos pequeños y concentrados (la industria regulada) tienen más incentivos y menos problemas de acción colectiva (Olson) que los consumidores dispersos, así que el regulador acaba sirviendo a la industria. Peltzman: el regulador equilibra apoyos de productores y consumidores. Becker: competencia entre grupos de presión, con ventaja para los que generan menos pérdida de eficiencia.

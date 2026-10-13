@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.4 — está en el título («saldo cíclico, saldo estructural y esfuerzo fiscal»).
 - **Temas que lo usan:** 4.B.4 (desarrollo), 4.B.1 (mención), 4.B.21 (mención: límite de déficit estructural de la LOEPSF), 4.B.26 (resumen: evolución del saldo estructural de España), 3.B.45 (gobernanza fiscal de la UE: ficha `pec`)
 - **Manuales de referencia:** Mourre et al. (2013, 2019), *European Economy*; Havik et al. (2014), PIB potencial de la Comisión (función de producción, NAWRU); Comisión Europea, *Vade Mecum on the Stability and Growth Pact* y, desde 2024, el marco del Reglamento (UE) 2024/1263; AIReF, informes sobre el saldo estructural; Blanchard, cap. 22.
+- **Decisión D029 (13/10/2026):** ¿Cómo se escriben el saldo presupuestario y sus componentes? b (% PIB, positivo = superávit); b^c cíclico, b^{ca} cíclicamente ajustado, b^e estructural, b^p primario; semielasticidad ε (b^c = ε·OG); brecha OG
 
 ## Presentación de referencia
 **Pregunta:** ¿qué parte del saldo se debe al ciclo y cuál a decisiones de política? ¿Cuál es la orientación (tono) de la política fiscal?

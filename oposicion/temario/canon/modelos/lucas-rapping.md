@@ -1,8 +1,9 @@
 # Oferta de trabajo intertemporal (Lucas y Rapping, 1969)
 
-- **Área:** pensamiento · **Tema de referencia:** 3.A.25 (Teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo) **[decidir]** — el título de 3.A.25 pide el análisis intertemporal y es el único tema que lo desarrolla; el mapa lo asignó a 3.A.6 por el nombre de Lucas. Propuesta: referencia en 3.A.25 (pasaría al área macro cerrada).
+- **Área:** pensamiento · **Tema de referencia:** 3.A.25 (Teoría neoclásica del mercado de trabajo. Análisis intertemporal de la oferta de trabajo): su título pide el análisis intertemporal y es el único tema que lo desarrolla (el mapa lo asignaba a 3.A.6 por el nombre de Lucas). Pasa al área macro cerrada.
 - **Temas que lo usan:** 3.A.25 (desarrollo), 3.A.6 (resumen: microfundamentos del mercado de trabajo en la NMC), 3.A.42 (mención: mecanismo de propagación del RBC).
 - **Manuales de referencia:** Lucas y Rapping (1969), *JPE* 77; Romer (2019), cap. 5.4; Cahuc, Carcillo y Zylberberg (2014), cap. 1; Blanchard y Fischer (1989), cap. 7.
+- **Decisión D068 (13/10/2026):** ¿Cuál es el tema de referencia de Lucas-Rapping (oferta de trabajo intertemporal)? 3.A.25 (lo pide su título y es el único que lo desarrolla)
 
 ## Presentación de referencia
 
@@ -31,6 +32,6 @@ La oferta relativa de trabajo depende del **salario relativo intertemporal** w_1
 ## Divergencias encontradas en el temario actual
 
 - El inventario no registra ecuaciones en ningún tema: 3.A.25 debe incluir la condición intertemporal. Notación: β, r, w, L como en `_notacion/macro-cerrada.md`; φ inversa de Frisch.
-- Tema de referencia: 3.A.6 en el mapa, 3.A.25 en la propuesta **[decidir]**.
+- Tema de referencia: 3.A.25 (el mapa lo ponía en 3.A.6).
 
 Autor: Víctor Gutiérrez Marcos

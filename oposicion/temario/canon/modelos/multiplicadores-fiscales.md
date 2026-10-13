@@ -1,8 +1,9 @@
 # Multiplicadores fiscales
 
-- **Área:** sector público · **Tema de referencia:** 4.B.4 **[decidir]** (mapa: es el que más lo trata con ecuaciones). Alternativa: 3.A.38 o 3.A.40 (política fiscal y su efectividad), dejando en 4.B.4 el resumen aplicado al presupuesto compensador. Propuesta: teoría de los multiplicadores (keynesiano, IS-LM, NEK en el ELB) en 3.A.40; definiciones empíricas (impacto, acumulado, máximo) y evidencia en 4.B.4.
+- **Área:** sector público · **Tema de referencia:** 3.A.40 para la teoría de los multiplicadores (keynesiano, IS-LM, NEK en el límite inferior); 4.B.4 para las definiciones empíricas (impacto, acumulado, máximo) y la evidencia, con un resumen de la teoría suficiente para cantarse sin el 3.A.40.
 - **Temas que lo usan:** 4.B.4 (resumen keynesiano + desarrollo empírico), 3.A.38 (desarrollo), 3.A.40 (desarrollo previsto), 4.A.11 (mención: inversión pública, Plan E), 4.B.26 (mención: consolidación)
 - **Manuales de referencia:** Blanchard, cap. 3 y 22; Romer, *Advanced Macroeconomics*, cap. 12; Ramey (2019), «Ten years after the financial crisis: what have we learned from the renaissance in fiscal research?», *JEP*; Blanchard y Leigh (2013); Christiano, Eichenbaum y Rebelo (2011); Galí, López-Salido y Vallés (2007); Hall (2009).
+- **Decisión D052 (13/10/2026):** ¿Cuál es el tema de referencia de los multiplicadores fiscales? 3.A.40 para la teoría (keynesiano, IS-LM, NEK en el límite inferior) y 4.B.4 para las definiciones empíricas y la evidencia
 
 ## Presentación de referencia
 **Pregunta:** ¿cuánto cambia la producción por cada euro de gasto o de impuestos?
@@ -24,4 +25,4 @@ $$m^{\,t}_t=\frac{\Delta Y_t}{\Delta G_t},\qquad m^{\,t+k}_t=\frac{\Delta Y_{t+k
 ## Divergencias encontradas en el temario actual
 - 4.B.4: la sensibilidad de la inversión al tipo de interés es $v$ en las ecuaciones y $b$ en el texto; el texto dice que con presupuesto equilibrado $\Delta Y<\Delta G$ por desplazamiento y la nota 13 da el multiplicador de Haavelmo $=1$ sin aclarar que difieren por la inversión endógena.
 - 4.B.4, nota 29: «$\phi_\pi=\phi_\pi=0{,}5$» → $\phi_y=\phi_\pi=0{,}5$.
-- **[decidir]** tema de referencia (4.B.4 frente a 3.A.38/3.A.40).
+- Tema de referencia fijado: teoría en 3.A.40, evidencia en 4.B.4.

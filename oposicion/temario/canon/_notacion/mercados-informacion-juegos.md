@@ -1,22 +1,22 @@
 # Notación del área mercados, información y juegos (3.A.13-3.A.20)
 
-Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15 y 3.A.20 sin fuente), `resumen-por-area.md` (comprobado), 3.A.8 revisado. Manuales base: Mas-Colell, Whinston y Green (MWG); Tirole, *The Theory of Industrial Organization*; Gibbons, *Un primer curso de teoría de juegos*; Varian; Viscusi, Harrington y Vernon (regulación). **[decidir]** = pendiente de Víctor.
+Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15 y 3.A.20 sin fuente), `resumen-por-area.md` (comprobado), 3.A.8 revisado. Manuales base: Mas-Colell, Whinston y Green (MWG); Tirole, *The Theory of Industrial Organization*; Gibbons, *Un primer curso de teoría de juegos*; Varian; Viscusi, Harrington y Vernon (regulación). Decisiones aprobadas por Víctor el 13/10/2026 (`decisiones.json`): la columna «Canon» es la notación definitiva; `notacion.md` manda si difiere por un choque entre áreas.
 
 ## Mercados (competencia perfecta, monopolio, competencia monopolística, oligopolio)
 
-| Símbolo | Significado | Alternativas en el temario (temas) | Propuesta | Motivo |
+| Símbolo | Significado | Alternativas en el temario (temas) | Canon | Motivo |
 |---|---|---|---|---|
 | $p$ | Precio del bien | $P$, $P_i$ (3.A.17, 4.B.15), $P(Q)$ (3.A.19 Cournot) y $p$ (Bertrand) | **$p$** minúscula siempre | MWG, Tirole; $P$ es el nivel de precios en macro; quita la incoherencia interna de 3.A.19 |
 | $p(q)$, $p(Q)$ | Demanda inversa | $P(x)$ (3.A.16), $P(q)$ (3.A.17), $P(Q)=a-bQ$ (3.A.19) | **$p(q)$**; lineal **$p(Q)=a-bQ$** | Igual |
 | $x$, $x(p)$ | Cantidad demandada, demanda de mercado | $q^m(p)$ (3.A.17), $x_i$ variedad (3.A.18) | **$x(p)$** en competencia perfecta (3.A.16); **$q$** cuando una sola empresa sirve toda la demanda (monopolio, oligopolio) | MWG separa demanda $x$ y oferta $q$ |
 | $q_i$, $Q=\sum_iq_i$ | Producción de la empresa $i$ y de la industria | — | Igual | Unánime |
-| $B_i$ | Beneficio | $B$ (3.A.12, 3.A.17, 3.A.19, 4.B.10), $B_i$ (3.A.16, 3.A.19, 3.A.21), $\pi$ (3.A.18, 3.A.19, 4.B.13), $\Pi$ (3.A.19), $\phi(z;\pi)$ (3.A.8) | **$B$** **[decidir]** | La mayoría de temas y los manuales en castellano; $\pi$ es la inflación en macro y choca en los temas que mezclan empresa e inflación (NEK: 3.A.7, 3.A.36). Alternativa: $\pi$ (MWG, Tirole). Choque menor: consumidor $B$ del 2×2×2×2 (se distingue por el subíndice: $B_X$ beneficio, $U_B$ utilidad) |
+| $B_i$ | Beneficio | $B$ (3.A.12, 3.A.17, 3.A.19, 4.B.10), $B_i$ (3.A.16, 3.A.19, 3.A.21), $\pi$ (3.A.18, 3.A.19, 4.B.13), $\Pi$ (3.A.19), $\phi(z;\pi)$ (3.A.8) | **$B$** | La mayoría de temas y los manuales en castellano; $\pi$ es la inflación en macro y choca en los temas que mezclan empresa e inflación (NEK: 3.A.7, 3.A.36). Choque menor: consumidor $B$ del 2×2×2×2 (se distingue por el subíndice: $B_X$ beneficio, $U_B$ utilidad) |
 | $\sum_t\beta^tB_{it}$ | Beneficio intertemporal (juegos repetidos) | $\Pi$ (3.A.19) | **$\sum_t\beta^tB_{it}$**, sin símbolo propio | Coherente con $\beta$ = factor de descuento en macro |
 | $C(q)$, $C(w,q)$ | Coste total | $C_i(\bar q_i,w)$ (3.A.16) | **$C(w,q)$**, o $C(q)$ si $w$ no cambia | Ver `consumidor-produccion.md` |
-| $c$, $CF$ | Coste marginal constante y coste fijo | $F$ (3.A.18, choca con la función de producción) | **$c$** y **$CF$**; en Dixit-Stiglitz $C(q)=CF+cq$ **[decidir]** | $F(\cdot)$ es la función de producción |
+| $c$, $CF$ | Coste marginal constante y coste fijo | $F$ (3.A.18, choca con la función de producción) | **$c$** y **$CF$**; en Dixit-Stiglitz $C(q)=CF+cq$ | $F(\cdot)$ es la función de producción |
 | $IMg$, $CMg$, $CMe$ | Ingreso marginal, coste marginal, coste medio | — | Igual | Unánime |
 | $\varepsilon$ | Elasticidad-precio de la demanda | $\varepsilon_i$, $|\varepsilon_{q_i,P_i}|$ | **$|\varepsilon|$** en las reglas de margen | Signo explícito |
-| $\mathcal L=\frac{p-CMg}{p}$ | Índice de Lerner | $L$ | **$\mathcal L$** **[decidir]** | $L$ es trabajo y pérdida |
+| $\mathcal L=\frac{p-CMg}{p}$ | Índice de Lerner | $L$ | **$\mathcal L$** | $L$ es trabajo y pérdida |
 | $\mu=\frac{\sigma}{\sigma-1}$ | Margen (mark-up) | — | **$\mu$** | 3.A.18 y macro (NEK) |
 | $\sigma$ | Elasticidad de sustitución entre variedades | — | **$\sigma>1$** | Dixit-Stiglitz; misma letra que la CES (3.A.11) |
 | $EC$, $EP$, $ET$ | Excedentes del consumidor, del productor y total | $W$ bienestar (3.A.17 Ramsey-Boiteux) | **$ET=EC+EP$** (en regulación $ET=EC+B$) | $W(\cdot)$ es la FBS y $\overline W$ la renta |
@@ -27,13 +27,13 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15
 
 ## Juegos (3.A.14)
 
-| Símbolo | Significado | Alternativas (temas) | Propuesta | Motivo |
+| Símbolo | Significado | Alternativas (temas) | Canon | Motivo |
 |---|---|---|---|---|
 | $i\in N$ | Jugadores | — | **$N=\{1,\dots,n\}$** | Gibbons |
 | $s_i\in S_i$, $s_{-i}$ | Estrategia y conjunto de estrategias | $S_i$ para la estrategia (3.A.14) | **$s_i\in S_i$** | Gibbons, MWG |
 | $u_i(s_i,s_{-i})$ | Pagos | — | **$u_i$** | Unánime |
 | EN | $u_i(s_i^*,s_{-i}^*)\ge u_i(s_i,s_{-i}^*)$ | desigualdad estricta (3.A.14) | **$\ge$** | Errata |
-| $t_i\in\mathcal T_i$ | Tipo del jugador (juegos bayesianos) | $\theta_1$, $\alpha$ (probabilidad del tipo) (3.A.14) | **$t_i$**, creencias **$\mu$** **[decidir]** | Gibbons; $\theta$ es la CRRA y $\alpha$ se usa en la puja |
+| $t_i\in\mathcal T_i$ | Tipo del jugador (juegos bayesianos) | $\theta_1$, $\alpha$ (probabilidad del tipo) (3.A.14) | **$t_i$**, creencias **$\mu$** | Gibbons; $\theta$ es la CRRA y $\alpha$ se usa en la puja |
 | $T\subseteq N$, $v(T)$ | Coalición y función característica | $S$, $v(S)$ (3.A.14) | **$T$, $v(T)$** | $S_i$ ya es el conjunto de estrategias |
 | $x_i$ | Imputación (pago asignado) | — | **$x_i$**, local | Uso estándar |
 | EBP | Equilibrio bayesiano perfecto | «EBPS» (3.A.14) | **EBP** | Nombre estándar |
@@ -41,12 +41,12 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15
 
 ## Información asimétrica (3.A.13)
 
-| Símbolo | Significado | Alternativas (temas) | Propuesta | Motivo |
+| Símbolo | Significado | Alternativas (temas) | Canon | Motivo |
 |---|---|---|---|---|
 | $\overline W$, $L$, $\pi$, $r$, $S$ | Riqueza inicial, pérdida, probabilidad de accidente, prima unitaria, cobertura | $W$, $P$, $p$ (3.A.13) | Como en `consumidor-produccion.md` | Mismo modelo que 3.A.10 |
-| $y$ | Educación (Spence) | $E$ (3.A.13) | **$y$** **[decidir]** | Spence (1973) usa $y$; $E$ es la función de gasto y en 3.A.13 también «éxito» |
+| $y$ | Educación (Spence) | $E$ (3.A.13) | **$y$** | Spence (1973) usa $y$; $E$ es la función de gasto y en 3.A.13 también «éxito» |
 | $e$, $e^A$, $e^B$ | Esfuerzo (alto, bajo) | — | **$e$** | MWG cap. 14 |
-| $\pi(e)$ | Probabilidad de éxito con esfuerzo $e$ | $p_E$, $p_F$ (3.A.13) | **$\pi(e)$** y $1-\pi(e)$ **[decidir]** | Coherente con $\pi$ = probabilidad |
+| $\pi(e)$ | Probabilidad de éxito con esfuerzo $e$ | $p_E$, $p_F$ (3.A.13) | **$\pi(e)$** y $1-\pi(e)$ | Coherente con $\pi$ = probabilidad |
 | $w(\cdot)$ | Remuneración del agente | $w(I)$ y $w(e)$ mezcladas (3.A.13) | **$w(x)$**, función del resultado observable $x$ | Quita la incoherencia; solo con esfuerzo observable $w(e)$ |
 | $v(e)$ | Desutilidad del esfuerzo | — | **$v(e)$** | 3.A.13 |
 | $U^R$ | Utilidad de reserva | — | **$U^R$** | $\overline U$ es el nivel de utilidad de la dualidad |
@@ -54,7 +54,7 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15
 | $\mathbb E[\cdot]$ | Esperanza | $E[B]$ (3.B.27, 4.A.20) | **$\mathbb E$** | $E$ es la función de gasto |
 
 ## Choques con otras áreas que se mezclan
-- **$\pi$**: beneficio (3.A.18-3.A.19) frente a inflación (macro) → beneficio $B$ **[decidir]**; queda libre para la probabilidad.
+- **$\pi$**: beneficio (3.A.18-3.A.19) frente a inflación (macro) → beneficio $B$; queda libre para la probabilidad.
 - **$W$**: bienestar del regulador (3.A.17) frente a FBS y renta → $ET$.
 - **$\theta$**: tipos de jugador y valoraciones (3.A.14) frente a CRRA → $t_i$ y $v_i$.
 - **$E$**: educación y éxito (3.A.13) frente a función de gasto y esperanza → $y$, $\pi(e)$, $\mathbb E$.

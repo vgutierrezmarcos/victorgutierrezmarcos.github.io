@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.11 (imposición óptima) — caso particular de la regla de Ramsey.
 - **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención), 4.B.20 (mención prevista: impuestos especiales)
 - **Manuales de referencia:** Ramsey (1927); Baumol y Bradford (1970), *AER*; Rosen y Gayer, cap. 16; Stiglitz y Rosengard, cap. 20.
+- **Decisión D132 (13/10/2026):** ¿Se suprime «regla de Pigou» para la regla de la elasticidad inversa? Sí: «regla de la elasticidad inversa» (Ramsey 1927; Baumol-Bradford 1970)
 
 ## Presentación de referencia
 **Pregunta:** con demandas independientes, ¿qué tipo debe tener cada bien?
@@ -24,5 +25,5 @@ Con oferta de elasticidad finita: $\frac{t_i}{q_i}=\theta\left(\frac{1}{\lvert\v
 | 4.B.13 / 4.B.20 | Impuestos especiales | Mención | Uso como justificación junto a Pigou y equidad | La derivación |
 
 ## Divergencias encontradas en el temario actual
-- 4.B.11 la llama «regla de Pigou»: el nombre habitual es **regla de la elasticidad inversa** (Ramsey, 1927; Baumol-Bradford, 1970). **Propuesta [decidir]:** suprimir «regla de Pigou», que se confunde con el impuesto pigouviano.
+- 4.B.11 la llama «regla de Pigou»: el nombre habitual es **regla de la elasticidad inversa** (Ramsey, 1927; Baumol-Bradford, 1970). Canon: se suprime «regla de Pigou», que se confunde con el impuesto pigouviano.
 - La fórmula es una imagen vacía en los Word de 4.B.11 y 4.B.13.

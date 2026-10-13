@@ -1,8 +1,9 @@
 # Suavización impositiva (Barro, 1979)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público. Financiación) **[decidir]** — teoría de la financiación óptima del déficit; pero 4.B.11 (imposición óptima) es el que la desarrolla con ecuaciones. Alternativa: referencia en 4.B.11 y resumen en 3.A.39.
+- **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público. Financiación): teoría de la financiación óptima del déficit, escrita con la versión con ecuaciones que hoy tiene 4.B.11 (imposición óptima), que la resume.
 - **Temas que lo usan:** 3.A.39 (desarrollo, hoy sin ecuaciones), 4.B.11 (desarrollo), 4.B.9 (resumen).
 - **Manuales de referencia:** Barro (1979), «On the Determination of the Public Debt», *JPE* 87; Romer (2019), cap. 13.5; Lucas y Stokey (1983).
+- **Decisión D089 (13/10/2026):** ¿Cuál es el tema de referencia de la suavización impositiva de Barro (1979)? 3.A.39 (financiación del déficit), con la versión con ecuaciones de 4.B.11
 
 ## Presentación de referencia
 
@@ -31,6 +32,6 @@ Condición de primer orden: f'(T_t/Y_t) = f'(T_{t+1}/Y_{t+1}) ⟹ **T_t/Y_t = T_
 ## Divergencias encontradas en el temario actual
 
 - **τ_t como recaudación en nivel** (4.B.9, 4.B.11, con aviso «aquí τ es recaudación, no tipo»): canon **T_t** para la recaudación y **T_t/Y_t** para el tipo medio, de modo que τ sea siempre un tipo.
-- 3.A.39 lo trata sin ecuaciones; 4.B.11 lo desarrolla mejor: decidir el tema de referencia **[decidir]**.
+- 3.A.39 lo trataba sin ecuaciones y 4.B.11 lo desarrollaba mejor: el desarrollo con ecuaciones pasa a 3.A.39 (tema de referencia) y 4.B.11 queda en resumen suficiente para su examen.
 
 Autor: Víctor Gutiérrez Marcos

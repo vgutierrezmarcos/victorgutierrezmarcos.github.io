@@ -1,8 +1,9 @@
 # Clasificación de los impuestos en el SEC 2010
 
-- **Área:** sector público · **Tema de referencia:** 4.B.7 **[decidir]** (mapa: 4.B.12, que solo lo resume). Propuesta: la clasificación completa en 4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 (directos) y 4.B.13 (indirectos); las cifras de España en 4.B.23.
+- **Área:** sector público · **Tema de referencia:** 4.B.7 (el mapa proponía 4.B.12, que solo lo resume): la clasificación completa en 4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 (directos) y 4.B.13 (indirectos); las cifras de España en 4.B.23.
 - **Temas que lo usan:** 4.B.7 (resumen hoy), 4.B.12 (resumen: D.5 y D.91), 4.B.13 (resumen: D.21 y D.29), 4.B.23 (aplicación prevista: estructura de ingresos)
 - **Manuales de referencia:** Reglamento (UE) 549/2013, cap. 4; Eurostat, *Taxation trends in the European Union* (clasificación por función: consumo, trabajo, capital).
+- **Decisión D077 (13/10/2026):** ¿Dónde va la clasificación SEC 2010 de los impuestos? 4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 y 4.B.13 y las cifras de España en 4.B.23
 
 ## Presentación de referencia
 **Clasificación:** D.2 impuestos sobre la producción y las importaciones = D.21 impuestos sobre los productos (IVA D.211, impuestos sobre importaciones D.212, otros D.214: especiales) + D.29 otros impuestos sobre la producción (IBI de empresas, IAE…); D.5 impuestos corrientes sobre la renta, el patrimonio, etc. (IRPF, IS, IP); D.91 impuestos sobre el capital (ISD); D.61 cotizaciones sociales. Distinción con «directos/indirectos» de la doctrina (ficha de 4.B.7) y con la clasificación económica de los PGE (capítulos 1-3 de ingresos; ficha `clasificaciones-presupuestarias`).

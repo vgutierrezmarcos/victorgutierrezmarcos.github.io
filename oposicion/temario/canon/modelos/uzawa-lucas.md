@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.44 (crecimiento endógeno: capital humano) — lo tiene en el título.
 - **Temas que lo usan:** 3.A.44 (desarrollo), 3.B.9 (desarrollo: versión con externalidades y apertura), 4.A.29 (mención), 4.A.2 (previsto)
 - **Manuales de referencia:** Uzawa (1965); Lucas (1988), *JME*; Barro y Sala i Martín (2004), cap. 5; Sala i Martín (2000), cap. 5; Acemoglu (2009), cap. 10.
+- **Decisión D131 (13/10/2026):** ¿Cómo se distinguen en Uzawa-Lucas la externalidad del capital humano y la participación del capital en Ḣ? η para la externalidad y α_H para la participación del capital físico en la producción de capital humano
 
 ## Presentación de referencia
 Pregunta: ¿puede la acumulación de capital humano sostener el crecimiento? Supuestos: dos sectores; el bien final usa capital físico y una fracción u del capital humano; el sector educativo usa solo capital humano, (1−u), con rendimientos constantes; hogares CRRA; externalidad del capital humano medio (Lucas), h_a^η.
@@ -21,7 +22,7 @@ Gráfico de referencia: no imprescindible.
 | 4.A.29, 4.A.2 | Política macro y crecimiento en España | mención / previsto | Relevancia del crecimiento a largo plazo | — |
 
 ## Divergencias encontradas en el temario actual
-- En 3.A.44, η significa a la vez la externalidad (Lucas) y la participación del capital físico en la producción de capital humano (Ḣ = B K^η H^{1−η}): propuesta **η** para la externalidad y **α_H** para la participación **[decidir]**.
+- En 3.A.44, η significa a la vez la externalidad (Lucas) y la participación del capital físico en la producción de capital humano (Ḣ = B K^η H^{1−η}): canon **η** para la externalidad y **α_H** para la participación.
 - Depreciaciones δ^K, δ^H (3.A.44): propuesta **δ_K, δ_H** (subíndice).
 - En 3.A.44 la fórmula de γ usa δ sin distinguir: con la ecuación de ḣ anterior es **δ_H**.
 - 3.B.9 llama «Lucas» a una variante con externalidad de la apertura (β) que no es el modelo de 1988; β ahí choca con el factor de descuento: decirlo.

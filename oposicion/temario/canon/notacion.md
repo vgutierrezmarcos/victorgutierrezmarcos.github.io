@@ -2,7 +2,7 @@
 
 Un símbolo, un significado, en todo el temario. Consolidación inicial del canon (13 oct. 2026) a partir de las doce tablas de `_notacion/<área>.md`, que conservan el detalle (alternativas encontradas tema a tema y motivos). Este fichero manda: cuando difiere de una tabla de área es porque aquí se ha resuelto un choque entre áreas.
 
-**Estado.** Lo que lleva un id `Dnnn` es una **propuesta pendiente de Víctor** (ver `decisiones.json`; se muestra la opción recomendada). Lo que no lleva id es canon ya: o es la notación del 3.A.8 revisado o es unánime en el temario y en los manuales. Hasta que se apruebe una decisión, los temas que se revisen usan la opción recomendada y lo anotan en su `revision.md`.
+**Estado.** Notación **definitiva**. Víctor aprobó el 13/10/2026 todas las decisiones de `decisiones.json` (las de notación, con la opción recomendada); el id `Dnnn` de cada fila indica la decisión que la fijó. Lo que no lleva id es canon desde la consolidación: o es la notación del 3.A.8 revisado o es unánime en el temario y en los manuales. Los temas que se revisen la aplican tal cual; si un tema necesita un símbolo nuevo o cambiar uno, se propone el cambio al canon (`cambios.md`), no se inventa en el tema. Los cambios que el 3.A.8 ya revisado debe recoger están en `pendientes-coherencia.md`.
 
 Manuales de referencia por área: Mas-Colell, Whinston y Green (MWG); Varian; Jehle y Reny (consumidor, producción, equilibrio general); Tirole, Gibbons (mercados y juegos); Romer, Blanchard y Fischer, Galí, Walsh, Sala i Martín, Acemoglu (macro); Krugman, Obstfeld y Melitz, Obstfeld y Rogoff, Gandolfo, Sarno y Taylor (macro abierta); Feenstra, Fujita-Krugman-Venables (comercio); Brealey-Myers, Bodie-Kane-Marcus, Hull, Freixas-Rochet (finanzas); Stiglitz, Rosen, Atkinson-Stiglitz, Mueller (sector público).
 
@@ -34,7 +34,7 @@ Autor: Víctor Gutiérrez Marcos
 | **B / π** | B: beneficio (B_j, B(p,w)); π: inflación (macro) y probabilidad (micro: π_s, π(e)); B(p,W̄): conjunto presupuestario (con argumentos); B, B*: bonos en Branson (local); B(G): beneficio social del gasto (4.B, local) | Beneficio π o Π → B; probabilidades p_s → π_s; saldo presupuestario B → b | D003, D017, D029 |
 | **e** | Logaritmo del tipo de cambio nominal (e = ln E); esfuerzo e (información asimétrica) | Dotación → ω; coeficiente de efectivo → notación de `multiplicador-monetario`; tipo de cambio real → q; tipo sombra o fijo → Ẽ, Ē | D013, D045, D015 |
 | **λ** | Multiplicador y precio sombra; λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
-| **β** | Factor de descuento β ≡ 1/(1+ρ); coeficientes de regresión (β_0, β_1, con subíndice); β_i del CAPM; β movilidad del capital en la BP; β de MRW (elasticidad del capital humano) | Respuesta de la producción en Lucas → ψ; ponderaciones del ITC → ω_i; apertura comercial (3.B.9) → otra letra | D036, D044, D107 |
+| **β** | Factor de descuento β ≡ 1/(1+ρ); coeficientes de regresión (β_0, β_1, con subíndice); β_i del CAPM; β movilidad del capital en la BP; β de MRW (elasticidad del capital humano) | Respuesta de la producción en Lucas → ψ; ponderaciones del ITC → ω_i; grado de apertura (3.B.9) → (X+M)/Y, sin símbolo | D036, D044, D107 |
 | **γ** | Tasa de variación γ_X; peso de la inflación en la pérdida de Barro-Gordon; poder negociador (Nash, 3.A.27) | Peso de las manufacturas en la NEG → μ; constante de Cagan → ζ | D012, D019, D061, D106 |
 | **g** | Tasa de progreso técnico; g = G/Y en sector público | Crecimiento del PIB → γ_Y («r − g» solo como nombre del debate); tasa m del anexo de 3.A.43 → g | D010 |
 | **ρ** | Tasa de descuento (preferencia temporal); ρ = (σ−1)/σ dentro de la CES (avisado); prima de riesgo dentro de 3.A.10 (avisado) | Prima de riesgo de mercado en finanzas → λ_M o sin símbolo; persistencia AR(1) → ρ_A | — |
@@ -74,6 +74,7 @@ Autor: Víctor Gutiérrez Marcos
 | Θ(z;Ū,W̄), φ(z;B) | Funciones de puja y de oferta de Rosen | D006 |
 | x̃ (ỹ) | Lotería o renta aleatoria | — |
 | π_s | Probabilidad del estado s | D017 |
+| w(π_s), v(x − r) | Teoría de las perspectivas: ponderación de las probabilidades y función de valor respecto al punto de referencia r | D017 |
 | u(·), U(x̃) = 𝔼[u(x̃)] | Utilidad de Bernoulli y utilidad esperada | — |
 | r_A, r_R | Aversión absoluta y relativa (Arrow-Pratt) | — |
 | θ, 1/θ | CRRA y ESI | D001 |

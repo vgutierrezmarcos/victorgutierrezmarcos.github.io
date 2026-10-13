@@ -1,8 +1,10 @@
 # Patinkin (1956): efecto saldos reales e integración de la teoría monetaria y del valor
 
-- **Área:** pensamiento · **Tema de referencia:** 3.A.4 **[decidir]** — con el título vigente, Patinkin entra como antecedente del desequilibrio (capítulos 13-14 de *Money, Interest and Prices*) y del debate con Keynes; el mapa lo asigna a 3.A.5 porque el Word de 3.A.5 (título anterior) lo desarrolla. Alternativa: 3.A.5, como pieza de la síntesis (efecto Pigou-Patinkin contra la trampa de la liquidez).
+- **Área:** pensamiento · **Tema de referencia:** 3.A.4: con el título vigente, Patinkin entra como antecedente del desequilibrio (capítulos 13-14 de *Money, Interest and Prices*) y del debate con Keynes; el mapa lo asigna a 3.A.5 porque el Word de 3.A.5 (título anterior) lo desarrolla; 3.A.5 lo resume como pieza de la síntesis (efecto Pigou-Patinkin contra la trampa de la liquidez).
 - **Temas que lo usan:** 3.A.5 (hoy desarrollo), 3.A.4 (propuesto), 3.A.21 (resumen: el dinero en el equilibrio general).
 - **Manuales de referencia:** Patinkin (1956, 2.ª ed. 1965), *Money, Interest and Prices*; Pigou (1943); Heijdra (2017), cap. 1; De Vroey (2016), cap. 5.
+- **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
+- **Decisión D111 (13/10/2026):** ¿Cuál es el tema de referencia de Patinkin? 3.A.4 (antecedente del desequilibrio y debate con Keynes)
 
 ## Presentación de referencia
 
@@ -26,6 +28,6 @@ Una caída de precios aumenta M/P y la demanda (**efecto saldos reales** o Pigou
 
 ## Divergencias encontradas en el temario actual
 
-- Tema de referencia discutible por el cruce 3.A.4/3.A.5 **[decidir]**. Sin ecuaciones en el inventario.
+- Tema de referencia fijado en 3.A.4 al deshacer el cruce 3.A.4/3.A.5. Sin ecuaciones en el inventario.
 
 Autor: Víctor Gutiérrez Marcos

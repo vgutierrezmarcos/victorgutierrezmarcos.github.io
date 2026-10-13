@@ -3,6 +3,7 @@
 - **Área:** comercio · **Tema de referencia:** 3.B.8 (Política comercial estratégica) — único desarrollo.
 - **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.41 (mención), 4.A.24 (mención)
 - **Manuales de referencia:** Brander y Spencer (1985, *JIE*); Eaton y Grossman (1986, *QJE*); Krugman, Obstfeld y Melitz, cap. 12 (Airbus-Boeing); Feenstra, cap. 7; Helpman y Krugman (1989).
+- **Decisión D016 (13/10/2026):** ¿Se reserva φ para la productividad de Melitz (y la inversa de Frisch en macro) y se cambian sus otros usos en comercio y macro abierta? Sí: función de reacción R_A(q_B), coeficiente técnico de la protección efectiva a_ij, sensibilidad del saldo comercial al tipo real ν
 
 ## Presentación de referencia
 **Pregunta:** ¿puede un gobierno aumentar el bienestar nacional subvencionando a su exportadora en un oligopolio internacional?
@@ -26,6 +27,6 @@ El subsidio desplaza $R_A(q_B)$ hacia fuera y lleva al equilibrio de Stackelberg
 
 ## Divergencias encontradas en el temario actual
 - El nombre de la ficha en el mapa («Brander-Krugman (1983) y Brander-Spencer (1985)») y 3.B.8 («en el marco del modelo de Brander y Krugman (1983)») atribuyen el duopolio Cournot de tercer mercado a Brander-Krugman: es un Cournot estándar; Brander-Krugman (1983) es el dumping recíproco. Renombrar a «Brander y Spencer (1985)».
-- Función de reacción $\varphi_A(q_B)$: canon $R_A(q_B)$ **[decidir]**.
+- Función de reacción $\varphi_A(q_B)$: canon $R_A(q_B)$; $\varphi$ queda para la productividad de Melitz.
 
 Autor: Víctor Gutiérrez Marcos

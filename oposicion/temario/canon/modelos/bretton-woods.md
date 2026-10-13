@@ -3,6 +3,7 @@
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.20 (SEI hasta la ruptura de Bretton Woods): lo tiene en el título y es el único que debe contar los acuerdos y su ruptura con detalle; 3.B.21 arranca donde 3.B.20 acaba (1971-1976)
 - **Temas que lo usan:** 3.B.20 (desarrollo), 3.B.21 (hoy desarrollo duplicado → debe quedar en resumen), 3.B.22 (resumen: el FMI en 1944-1973), 3.B.33 y 3.B.34 (mención: OIC fallida y GATT), 3.B.35 (mención), 4.A.27 (mención: entrada de España en el FMI/BIRD en 1958 y paridad de 60 pta/$ en 1959), 3.B.43 (mención, SME como «Bretton Woods europeo»; sin fuente)
 - **Manuales de referencia:** Eichengreen, *Globalizing Capital* (caps. 3-4); Krugman-Obstfeld-Melitz, cap. «El sistema monetario internacional, 1870-1973»; Bordo y Eichengreen (eds.), *A Retrospective on the Bretton Woods System* (1993); Triffin (1960)
+- **Decisión D025 (13/10/2026):** ¿Cómo se reparte Bretton Woods, cuyo texto se repite en seis temas? Desarrollo solo en 3.B.20; en 3.B.21 un resumen de la ruptura (1971-1976); una frase con el pilar monetario en 3.B.22 y con el comercial en 3.B.33-3.B.34; nada en 3.B.35
 
 ## Presentación de referencia
 Pregunta: cómo se organizó la cooperación económica internacional tras 1945 y por qué se rompió el sistema monetario en 1971-1973.
@@ -30,8 +31,8 @@ Gráfico de referencia: cronograma 1944-1976 (no hace falta gráfico analítico;
 | 4.A.27 | España 1959-1999 | Mención | España entra en FMI y BIRD (1958) y OECE (1959); paridad de 60 pta/$ | — |
 
 ## Divergencias encontradas en el temario actual
-- **Párrafo de los «tres pilares» repetido literalmente en seis temas**: 3.B.20, 3.B.21, 3.B.22, 3.B.33, 3.B.34 y 3.B.35 (mismo texto, «La Segunda Guerra Mundial aún no había terminado…»). **[decidir]** Propuesta: dejarlo solo en 3.B.20 (desarrollo); en 3.B.22 una frase con el pilar monetario; en 3.B.33-3.B.34 una frase con el pilar comercial; quitarlo de 3.B.21 y 3.B.35 (en 3.B.21 sustituirlo por la ruptura de 1971-1976).
-- **3.B.21 repite íntegra la sección de Bretton Woods de 3.B.20** (sección «0», unas 108 líneas idénticas: contexto, Plan White/Keynes, Triffin, Smithsonian). **[decidir]** Propuesta: reducir a un resumen de la ruptura y remitir a 3.B.20.
+- **Párrafo de los «tres pilares» repetido literalmente en seis temas**: 3.B.20, 3.B.21, 3.B.22, 3.B.33, 3.B.34 y 3.B.35 (mismo texto, «La Segunda Guerra Mundial aún no había terminado…»). Reparto: dejarlo solo en 3.B.20 (desarrollo); en 3.B.22 una frase con el pilar monetario; en 3.B.33-3.B.34 una frase con el pilar comercial; quitarlo de 3.B.21 y 3.B.35 (en 3.B.21 sustituirlo por la ruptura de 1971-1976).
+- **3.B.21 repite íntegra la sección de Bretton Woods de 3.B.20** (sección «0», unas 108 líneas idénticas: contexto, Plan White/Keynes, Triffin, Smithsonian). Canon: reducir a un resumen de la ruptura y remitir a 3.B.20.
 - **Dos tríadas distintas en el mismo tema** (3.B.20 y 3.B.21): «monetario-financiero / desarrollo / comercial» (pilares de Bretton Woods) y, unas líneas después, «comercial / financiero / monetario» (pilares del SEI). Propuesta: reservar «pilares» para las instituciones de 1944 y llamar «planos» a los del SEI.
 - 3.B.20 y 3.B.21 remiten a 3.B.23, 3.B.31, 3.B.34-3.B.35 (numeración antigua) en el mismo párrafo; correcto: 3.B.22, 3.B.30, 3.B.33-3.B.34.
 - 3.B.22: «paridad del dólar con respecto al dólar (35 $/onza)» → «con respecto al oro».

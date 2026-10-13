@@ -3,6 +3,7 @@
 - **Área:** macro-abierta · **Tema de referencia:** 3.B.19 (Coordinación internacional de políticas) — único tema con ecuaciones y gráfico, y el modelo responde a su pregunta (ganancias de la coordinación con microfundamentos).
 - **Temas que lo usan:** 3.B.19 (desarrollo), 3.A.37 (desarrollo → resumen), 3.B.14 (resumen → mención)
 - **Manuales de referencia:** Corsetti y Pesenti (2005), «International Dimensions of Optimal Monetary Policy», *JME*; Obstfeld y Rogoff (1995, 2002); Obstfeld y Rogoff, *Foundations…*, cap. 10; Corsetti, Dedola y Leduc (2010, *Handbook of Monetary Economics*).
+- **Decisión D015 (13/10/2026):** ¿Cómo se escribe el tipo de cambio real? q = EP*/P (↑q = depreciación real), como Krugman-Obstfeld y Obstfeld-Rogoff; κ queda libre (desutilidad del trabajo en Corsetti-Pesenti)
 
 ## Presentación de referencia
 **Pregunta:** ¿hay ganancias de coordinar la política monetaria cuando los precios son rígidos y el *pass-through* es incompleto?
@@ -25,7 +26,7 @@ con $\mu$ = tono de la política monetaria (gasto nominal), $Z$ productividad, $
 | 3.B.14 | Determinación del tipo de cambio | mención | Tipo de cambio con microfundamentos: $E = \mu/\mu^*$ | El modelo |
 
 ## Divergencias encontradas en el temario actual
-- 3.B.19 llama $e$ al tipo de cambio real ($e = E P_H^*/P_F$) y usa $\kappa$ para la desutilidad del trabajo: con el canon del área, tipo real $q$ y $\kappa$ libre **[decidir]** (si se mantiene $\varkappa$ para el tipo real, $\kappa$ y $\varkappa$ se confunden).
+- 3.B.19 llama $e$ al tipo de cambio real ($e = E P_H^*/P_F$) y usa $\kappa$ para la desutilidad del trabajo: con el canon del área, tipo real $q$ y $\kappa$ libre para la desutilidad del trabajo ($\varkappa$ deja de usarse).
 - $\mu$ es aquí el tono monetario y en 3.B.17 el crecimiento del crédito interno (Flood-Garber): ambos son la notación de los artículos y no se mezclan; mantener y definir en cada tema.
 
 Autor: Víctor Gutiérrez Marcos

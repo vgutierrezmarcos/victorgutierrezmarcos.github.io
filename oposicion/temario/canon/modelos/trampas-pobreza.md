@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.43 (crecimiento I: extensiones de Solow) — es una extensión del modelo de su título.
 - **Temas que lo usan:** 3.A.43 (resumen), 3.B.42 (mención: teorías del desarrollo, Nurkse)
 - **Manuales de referencia:** Sala i Martín (2000), cap. 1; Barro y Sala i Martín (2004), cap. 1; Azariadis y Stachurski (2005), *Handbook of Economic Growth*; Nurkse (1953); Murphy, Shleifer y Vishny (1989).
+- **Decisión D110 (13/10/2026):** ¿Se sustituye el ejemplo formal de trampa de pobreza de 3.A.43? Sí, por un ejemplo con un tramo de rendimientos crecientes que genere dos estados estacionarios
 
 ## Presentación de referencia
 Pregunta: ¿puede una economía quedar atrapada en un nivel de renta bajo aunque sus parámetros permitan uno alto? Supuestos: Solow con s, n, δ exógenos pero función de producción con rendimientos decrecientes del capital a niveles bajos, crecientes a niveles intermedios (externalidades, umbral de infraestructuras, cambio de tecnología) y otra vez decrecientes a niveles altos; también puede generarse con s(k) o n(k) endógenos (trampa malthusiana).
@@ -19,7 +20,7 @@ Gráfico de referencia: representación en tasas de crecimiento: s f(k)/k con fo
 | 3.B.42 | Subdesarrollo y teorías del desarrollo | mención | Trampa de pobreza de Nurkse y gran empujón como justificación de la ayuda al desarrollo | El gráfico [ver tema 3.A.43] |
 
 ## Divergencias encontradas en el temario actual
-- El ejemplo formal de 3.A.43, γ_k = sA − (n+δ) si k < B/A y sB/k − (n+δ) si k > B/A (tecnología AK hasta un umbral y producción constante después), **no genera dos estados estacionarios**: según sA ≷ n+δ hay un único estado estacionario estable o la economía decrece hasta k = 0. Debe sustituirse por un ejemplo con tramo de rendimientos crecientes (como dice el propio texto del tema) **[decidir]**.
+- El ejemplo formal de 3.A.43, γ_k = sA − (n+δ) si k < B/A y sB/k − (n+δ) si k > B/A (tecnología AK hasta un umbral y producción constante después), **no genera dos estados estacionarios**: según sA ≷ n+δ hay un único estado estacionario estable o la economía decrece hasta k = 0. Debe sustituirse por un ejemplo con tramo de rendimientos crecientes (como dice el propio texto del tema) que genere dos estados estacionarios.
 - La nota interna de 3.A.43 pide desarrollar las extensiones de Solow (trampas, recurso natural constante) y la velocidad de convergencia.
 
 Autor: Víctor Gutiérrez Marcos

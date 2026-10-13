@@ -3,6 +3,7 @@
 - **Área:** pensamiento · **Tema de referencia:** 3.A.4 (Keynes. Referencia a la economía postkeynesiana y el **desequilibrio**) — está en el título vigente. Hoy lo desarrolla el Word de 3.A.5 (título anterior).
 - **Temas que lo usan:** 3.A.4 (desarrollo; hoy mención), 3.A.5 (hoy resumen; con el título vigente, mención o nada). Relacionado con `patinkin` (antecedente) y con la NEK (3.A.7: rigideces como fundamento).
 - **Manuales de referencia:** Clower (1965); Leijonhufvud (1968); Barro y Grossman (1971), *AER*; Malinvaud (1977), *The Theory of Unemployment Reconsidered*; Bénassy (1975); Heijdra (2017), cap. 1; De Vroey (2016), caps. 5-6; Escartín (2008).
+- **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 
 ## Presentación de referencia
 
@@ -27,7 +28,7 @@
 
 ## Divergencias encontradas en el temario actual
 
-- **Cruce 3.A.4/3.A.5:** el desequilibrio está desarrollado en el Word de 3.A.5 (epígrafe IV, con Patinkin, Leijonhufvud, Clower y Malinvaud) y solo mencionado en 3.A.4. Propuesta: trasladar el bloque a 3.A.4 **[decidir]** (ver `is-lm`).
+- **Cruce 3.A.4/3.A.5:** el desequilibrio está desarrollado en el Word de 3.A.5 (epígrafe IV, con Patinkin, Leijonhufvud, Clower y Malinvaud) y solo mencionado en 3.A.4. Reparto: el bloque pasa a 3.A.4 (ver `is-lm`).
 - El inventario no registra ecuaciones ni gráficos: falta el diagrama de regímenes de Malinvaud.
 
 Autor: Víctor Gutiérrez Marcos

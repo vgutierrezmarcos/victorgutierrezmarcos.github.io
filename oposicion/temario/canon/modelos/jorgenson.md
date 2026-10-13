@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.34 (teorías de la inversión) — es la teoría neoclásica de la inversión.
 - **Temas que lo usan:** 3.A.34 (desarrollo), 4.B.10 (desarrollo: impuesto de sociedades)
 - **Manuales de referencia:** Jorgenson (1963); Hall y Jorgenson (1967); Romer (2019), cap. 9; Blanchard y Fischer (1989).
+- **Decisión D009 (13/10/2026):** ¿Cómo se escribe la sensibilidad de la inversión al tipo de interés en IS-LM y Mundell-Fleming? b (I = Ī − b·i), como Dornbusch-Fischer-Startz; v queda solo para la relación capital-producto (acelerador, Harrod-Domar)
 
 ## Presentación de referencia
 Pregunta: ¿cuál es el stock de capital deseado y de qué depende? Supuestos: empresa competitiva que alquila (o compra) capital sin costes de ajuste; precio del producto P, del bien de capital P^K; depreciación δ; tipo de interés real r.
@@ -22,6 +23,6 @@ Gráfico de referencia: plano (K, coste): productividad marginal del capital en 
 
 ## Divergencias encontradas en el temario actual
 - 3.A.34 escribe el coste en términos reales (P^K/P)(r + δ − Ṗ^K/P^K) y 4.B.10 con P^K = 1; unificar con **c_K** y precios relativos explícitos.
-- En 3.A.34, v se usa a la vez como sensibilidad de la inversión al tipo y como relación capital-producto (acelerador): propuesta **b** y **v** **[decidir]**.
+- En 3.A.34, v se usa a la vez como sensibilidad de la inversión al tipo y como relación capital-producto (acelerador): canon **b** para la sensibilidad y **v** para la relación capital-producto.
 
 Autor: Víctor Gutiérrez Marcos

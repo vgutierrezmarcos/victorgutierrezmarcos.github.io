@@ -1,6 +1,8 @@
 # Informe del repaso general del temario (consolidación del canon)
 
-Para Víctor. 13 oct. 2026. Resultado de la consolidación inicial del canon (`/revisartema --canon`): inventario de los 146 temas, fichas de modelos, notación por áreas y mapa de conexiones. Todo lo que necesita tu decisión está en `decisiones.json` (ids `D001`…`D132`), ordenado por impacto y con la opción recomendada en primer lugar; aquí se agrupa por áreas y se remite a esos ids.
+Para Víctor. 13 oct. 2026. Resultado de la consolidación inicial del canon (`/revisartema --canon`): inventario de los 146 temas, fichas de modelos, notación por áreas y mapa de conexiones. Las decisiones están en `decisiones.json` (ids `D001`…`D133`); aquí se agrupan por áreas y se remite a esos ids.
+
+**Estado (13/10/2026): Víctor ha aprobado las 133 decisiones**, todas con la opción recomendada salvo **D088** (RBC con política fiscal: tema de referencia **3.A.38**, no 4.B.4) y **D069, D075, D094 y D120**, que se desarrollan **en los dos ejercicios** (efectos no keynesianos: 3.A.39 y 4.B.4; curva de Lorenz e índice de Atkinson: 3.A.24 y 4.B.3; recuento de Borda: 3.A.24 y 4.B.2), cada tema completo para su examen. Con ellas entra un criterio nuevo (`CRITERIOS.md` § 6): **el 3.er y el 4.º ejercicio son exámenes distintos**; el tema de referencia de un modelo teórico es, siempre que se pueda, del 3.º; los del 4.º lo aplican y resumen lo imprescindible, y ningún tema depende de estudiar el otro ejercicio. Ya están aplicadas al canon (`notacion.md`, `_notacion/`, `modelos/`, `mapa.yaml`; resumen en `cambios.md`). Lo que queda marcado **[decidir]** en este informe son propuestas nuevas (§ 12).
 
 Autor: Víctor Gutiérrez Marcos
 
@@ -19,13 +21,13 @@ Autor: Víctor Gutiérrez Marcos
 | Referencias «[ver tema …]» inventariadas | 1.172: 947 bien, **208 a corregir**, **17 sobran** (en 74 temas) |
 | Referencias que faltan (sobre todo al tema de referencia de cada modelo) | 731 |
 | Incoherencias internas detectadas en los inventarios | 357 |
-| Marcas [decidir] en fichas y tablas de notación | ≈ 250, deduplicadas en **132 decisiones** |
-| Decisiones por tipo | notación 61 · tema de referencia 36 · reparto de contenido 23 · otras 12 |
-| Decisiones que cambian el 3.A.8 ya revisado | 6 (D001, D002, D003, D004, D005, D006) |
+| Marcas [decidir] en fichas y tablas de notación | ≈ 250, deduplicadas en **133 decisiones** (la 133, el orden de revisión): **todas aprobadas el 13/10/2026** y aplicadas al canon |
+| Decisiones por tipo | notación 61 · tema de referencia 36 · reparto de contenido 23 · otras 13 |
+| Decisiones que cambian el 3.A.8 ya revisado | 6 (D001-D006), aprobadas: 19 cambios concretos en `pendientes-coherencia.md` |
 
-## 2. Decisiones, por área (detalle en `decisiones.json`)
+## 2. Decisiones aprobadas (13/10/2026), por área (detalle en `decisiones.json`)
 
-Recomendación general: aprobar en bloque las recomendadas salvo las que quieras discutir; las seis primeras son las únicas que obligan a volver sobre el 3.A.8 (ver § 9).
+Todas aprobadas; las seis primeras son las únicas que obligan a volver sobre el 3.A.8 (ver § 9). Las que no siguieron la recomendación se indican en su sitio.
 
 ### 2.1. Transversales (choques de símbolos entre áreas)
 - **D001** CRRA = **θ** y ESI = 1/θ; σ solo elasticidad de sustitución y desviación típica. (Cambia 3.A.8: η→θ en la CRRA; σ→θ en KPR, GHH y JR.)
@@ -68,7 +70,7 @@ Recomendación general: aprobar en bloque las recomendadas salvo las que quieras
 ### 2.8. Sector público
 - Notación: D027 W̄ / Y · D046 p_c, p_v · D047 ε con signo · D029 b, b^c, b^{ca}, b^e, b^p y ε · D109 ϕ · D132 «regla de la elasticidad inversa» · D040 0,5 % y 0,4 % · D086 «Programa de Estabilidad» · D067 etapas.
 - Reparto: D022 normativa de 4.B.12/4.B.13 como semilla de 4.B.16, 4.B.17, 4.B.19 y 4.B.20 · D079 exceso de gravamen en 4.B.9 · D098 versión 1×2×2×2 · D099 Fisher en 4.B.10 · D126 Harberger solo en 4.B.8 · D127 tamaño del sector público en 4.B.5 · D128 Niskanen en 4.B.2 · D055 4.B.21/4.B.22/4.B.23 · D121 Condorcet y Arrow.
-- Temas de referencia: D054 progresividad en **4.B.9** · D094 Atkinson y D075 Lorenz en **4.B.3** · D120 Borda y D095 Leviatán en **4.B.2** · D076 competencia fiscal en **4.B.14** · D122 financiación autonómica en **4.B.25** · D123 impuesto dual en **4.B.12** · D096 ITF en **4.B.18** · D077 SEC de impuestos en **4.B.7** · D124 rentas mínimas en 4.B.3 e IMV en 4.B.24 · D074 armonización fiscal en **3.B.39** · D069 efectos no keynesianos y D088 RBC fiscal en 4.B.4.
+- Temas de referencia: D054 progresividad en **4.B.9** · D094 Atkinson y D075 Lorenz: **dobles**, 4.B.3 (4.º) y 3.A.24 (3.º) · D120 Borda: **doble**, 4.B.2 (4.º) y 3.A.24 (3.º) · D095 Leviatán en **4.B.2** · D076 competencia fiscal en **4.B.14** · D122 financiación autonómica en **4.B.25** · D123 impuesto dual en **4.B.12** · D096 ITF en **4.B.18** · D077 SEC de impuestos en **4.B.7** · D124 rentas mínimas en 4.B.3 e IMV en 4.B.24 · D074 armonización fiscal en **3.B.39** · D069 efectos no keynesianos: **doble**, 3.A.39 (3.º; 3.A.40 lo aplica a 2010-2013) y 4.B.4 (4.º; aplicación a España en 4.B.26) · D088 RBC fiscal en **3.A.38** (elegida por Víctor; la recomendada era 4.B.4), con resumen en 4.B.4.
 
 ## 3. Referencias «[ver tema …]» erróneas, por tema
 
@@ -313,76 +315,76 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 - **Notas de trabajo y textos copiados** («Copiar de Sahuquillo», «Ver tema de Juan Luis», «copiado de María Palacios Carrere»): 3.A.13, 3.A.12, 3.A.24, 3.B.9, 4.B.9, 4.A.17, 4.A.21, 4.A.23. En la revisión se reescriben con fuentes propias y se citan.
 - **Datos desactualizados o de años mezclados** en casi todo el 4.A (años 2016-2023 en el mismo apartado): se actualizan con `datos/*.csv` al revisar cada tema.
 
-## 9. Cambios que afectarían al 3.A.8 ya revisado
+## 9. Cambios aprobados en el 3.A.8 ya revisado
 
-Solo si se aprueban las decisiones; el detalle, en `pendientes-coherencia.md`.
+Aprobados el 13/10/2026. La lista exacta (línea, símbolo antiguo → nuevo, gráfico de Rosen, escenas del vídeo, guion y repaso) está en `pendientes-coherencia.md`; se aplica con `/revisartema 3.A.8 --fase coherencia`.
 
 | Decisión | Cambio en 3.A.8 |
 |---|---|
-| D001 | CRRA u(C) = (C^{1−η} − 1)/(1 − η) → θ; preferencias KPR, GHH y JR: σ → θ (y se quita el aviso de que σ cambia de sentido en el anexo) |
-| D004 | GHH y JR: exponente θ → φ (inversa de Frisch) y peso ψ → χ |
+| D001 | CRRA u(C) = (C^{1−η} − 1)/(1 − η) → θ; preferencias KPR, GHH y JR: σ → θ |
+| D004 | GHH: N^{1+θ}/(1+θ) → N^{1+φ}/(1+φ) y ψ → χ (oferta χN^φ = w); JR: ψN_t^θ → χN_t^{1+φ} |
 | D002 | Becker (ec. `becker-restricciones` y `renta-completa`): renta no laboral V → W̄ (renta completa wT + W̄) |
-| D003 y D006 | Rosen: función de oferta φ(z;π) → φ(z;B); función de puja θ(z;Ū,W̄) → Θ(z;Ū,W̄) |
-| D005 | Remisión a 3.A.11 cuando se hable de la Cobb-Douglas como función de producción |
+| D003 y D006 | Rosen: función de oferta φ(z;π) → φ(z;B); función de puja θ(z;Ū,W̄) → Θ(z;Ū,W̄), también en el gráfico `funcion-hedonica-rosen` |
+| D005 | Remisión a 3.A.11 en la nota de la Cobb-Douglas como función de producción |
 
 Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s_i, ε y la denominación «marshalliana» son el canon.
 
-## 10. Orden de revisión propuesto
+## 10. Orden de revisión
 
-**Criterio.** (1) Por bloques del PowerPoint (`organizacion/estructura_temario.json`), de la teoría a la aplicación: primero la micro del 3.A, que fija la notación básica (el 3.A.8 ya está); después la macro del 3.A, la economía internacional y la empresa del 3.B, el sector público (4.B) y la economía española (4.A), que aplican modelos que ya estarán en su forma canónica. (2) Dentro de cada bloque, **primero los temas de referencia**, ordenados por cuántos temas usan los modelos de los que son referencia (con los temas de referencia de § 2 recomendados). (3) Los temas sin fuente que son referencia de modelos importantes (3.A.32, 3.A.40, 3.B.26, 3.B.45) se escriben en su sitio del orden, a partir del material desplazado; los demás sin fuente, al final de su bloque. Entre paréntesis, la puntuación de referencia (suma de los temas que usan sus modelos).
+**Criterio.** (1) **Primero el 3.er ejercicio, después el 4.º**, que son exámenes distintos: los temas del 3.º fijan la forma canónica de los modelos teóricos (sus temas de referencia están en el 3.º siempre que se puede) y los del 4.º se revisan después, aplicándolos y resumiendo lo imprescindible para cantarse sin el 3.º. Dentro del 3.º, por bloques del PowerPoint (`organizacion/estructura_temario.json`), de la teoría a la aplicación: micro del 3.A (el 3.A.8 ya está), macro del 3.A, economía internacional y empresa del 3.B; después el sector público (4.B) y la economía española (4.A). (2) Dentro de cada bloque, **primero el tema del que se depende** (D133: un tema que usa un modelo de otro se revisa después de este, para no rehacer) y, a igualdad, los temas de referencia de más modelos. (3) Los temas sin fuente que son referencia de modelos (3.A.15, 3.A.20, 3.A.31, 3.A.32, 3.A.40, 3.B.26, 3.B.31, 3.B.43, 3.B.44, 3.B.45, 4.B.14, 4.B.25) se escriben en su sitio del orden, a partir del material desplazado, antes de los temas que pasan a resumir ese modelo. Entre paréntesis, la puntuación de referencia del repaso (suma de los temas que usan sus modelos) o el motivo del puesto.
 
-**Fase 1. Microeconomía (3.A)**
+**Fase 1. Microeconomía (3.A)** (D133)
 
-- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8) · 3. 3.A.12 (8) · 4. 3.A.21 (5) · 5. 3.A.16 (3)
-- *Información y poder de mercado*: 6. 3.A.17 (12) · 7. 3.A.13 (6) · 8. 3.A.14 (3) · 9. 3.A.10 (1) · 10. 3.A.18 (1) · 11. 3.A.19 (0) · 12. 3.A.15 (2) (sin fuente)
-- *Economía del Bienestar e Intervención del Sector Público*: 13. 3.A.23 (12) · 14. 3.A.22 (8) · 15. 3.A.24 (5) · 16. 3.A.20 (1) (sin fuente) · 17. 3.B.31 (1) (sin fuente)
+- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5) · 5. 3.A.16 (3)
+- *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick) · 7. **3.A.10** (antes que 3.A.13 y 3.A.14, que usan sus seguros y la utilidad esperada) · 8. 3.A.13 (6; Stiglitz-Weiss en desarrollo) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
+- *Economía del Bienestar e Intervención del Sector Público*: 13. **3.A.22** (antes que 3.A.23, que se apoya en los teoremas del bienestar) · 14. 3.A.23 (12) · 15. 3.A.24 (referencia del 3.º de Lorenz, Atkinson y Borda, además de Arrow) · 16. 3.A.20 (sin fuente; referencia de la captura del regulador) · 17. 3.B.31 (sin fuente; referencia del MAFC)
 
-**Fase 2. Macroeconomía (3.A)**
+**Fase 2. Macroeconomía (3.A)** (mismo criterio de dependencias que D133; es una propuesta de orden, no una decisión nueva)
 
-- *Demanda Agregada y Oferta Agregada*: 18. 3.A.28 (7) · 19. 3.A.33 (5) · 20. 3.A.34 (4) · 21. 3.A.25 (3) · 22. 3.A.27 (3) · 23. 3.A.26 (2)
-- *Crecimiento económico*: 24. 3.A.44 (9) · 25. 3.A.43 (8) · 26. 3.A.29 (4) · 27. 3.A.45 (4) · 28. 3.B.28 (1)
-- *Ciclo económico y políticas de demanda*: 29. 3.A.39 (11) · 30. 3.A.40 (6) (sin fuente) · 31. 3.A.35 (5) · 32. 3.A.36 (5) · 33. 3.A.38 (4) · 34. 3.A.41 (3) · 35. 3.A.42 (2) · 36. 3.A.37 (1)
-- *Historia del pensamiento económico*: 37. 3.A.5 (6) · 38. 3.A.6 (6) · 39. 3.A.7 (6) · 40. 3.A.3 (2) · 41. 3.A.4 (2) · 42. 3.A.1 (0) · 43. 3.A.2 (0)
-- *Contabilidad Nacional*: 44. 3.B.11 (4) · 45. 3.A.30 (0) · 46. 3.A.31 (1) (sin fuente)
+- *Demanda Agregada y Oferta Agregada*: 18. 3.A.25 (Lucas-Rapping y oferta de trabajo: base del mercado de trabajo) · 19. 3.A.27 · 20. 3.A.26 · 21. 3.A.28 (7) · 22. 3.A.33 (5) · 23. 3.A.34 (4)
+- *Crecimiento económico*: 24. 3.A.43 (Solow, RCK y ahora MRW, que usan 3.A.44 y 3.A.45) · 25. 3.A.44 (9) · 26. 3.A.45 (4) · 27. 3.A.29 (4) · 28. 3.B.28 (1)
+- *Historia del pensamiento económico* (adelantado: IS-LM, desequilibrio, Lucas y el NEK, que usan los temas de ciclo, tienen aquí su referencia): 29. 3.A.5 (IS-LM, con el bloque trasladado desde 3.A.4) · 30. 3.A.4 (desequilibrio, Patinkin y Malinvaud, con el bloque trasladado desde 3.A.5) · 31. 3.A.7 (NEK) · 32. 3.A.6 (islas de Lucas, crítica de Lucas) · 33. 3.A.3 (2) · 34. 3.A.1 (0) · 35. 3.A.2 (0)
+- *Ciclo económico y políticas de demanda*: 36. 3.A.39 (11; restricción del gobierno, suavización impositiva y efectos no keynesianos, referencia del 3.º) · 37. 3.A.36 (Taylor, Barro-Gordon) · 38. 3.A.42 (RBC base, que usa 3.A.38) · 39. 3.A.38 (Barro 1990 con ecuaciones y RBC con política fiscal, D088) · 40. 3.A.40 (sin fuente; estancamiento secular y teoría de los multiplicadores) · 41. 3.A.35 (5) · 42. 3.A.41 (3) · 43. 3.A.37 (1)
+- *Contabilidad Nacional*: 44. 3.B.11 (4) · 45. 3.A.31 (sin fuente; input-output, antes que 3.A.30, que lo resume) · 46. 3.A.30
 
 **Fase 3. Economía internacional y empresa (3.B)**
 
-- *Economía abierta*: 47. 3.A.32 (5) (sin fuente) · 48. 3.B.12 (3) · 49. 3.B.16 (3) · 50. 3.B.14 (2) · 51. 3.B.19 (2) · 52. 3.B.15 (0) · 53. 3.B.17 (0) · 54. 3.B.18 (0) (sin fuente) · 55. 3.B.29 (0) (sin fuente)
-- *Comercio Internacional*: 56. 3.B.6 (17) · 57. 3.B.10 (12) · 58. 3.B.5 (5) · 59. 3.B.8 (4) · 60. 3.B.7 (3) · 61. 3.B.9 (3)
-- *Economía Corporativa y Financiera*: 62. 3.B.23 (5) · 63. 3.B.4 (3) · 64. 3.B.2 (2) · 65. 3.B.3 (2) · 66. 3.B.13 (2) · 67. 3.B.25 (1) · 68. 3.B.27 (1) · 69. 3.B.1 (0) · 70. 3.B.24 (0) · 71. 3.B.26 (4) (sin fuente)
-- *Historia económica*: 72. 3.B.20 (1) · 73. 3.B.21 (0) · 74. 3.B.32 (0) (sin fuente)
-- *Organismos internacionales*: 75. 3.B.22 (0) · 76. 3.B.33 (0) · 77. 3.B.34 (0) · 78. 3.B.35 (0) · 79. 3.B.30 (0) (sin fuente)
-- *Unión Europea*: 80. 3.B.45 (9) (sin fuente) · 81. 3.B.39 (2) · 82. 3.B.37 (1) · 83. 3.B.41 (1) · 84. 3.B.36 (0) · 85. 3.B.40 (0) · 86. 3.B.42 (0) · 87. 3.B.38 (0) (sin fuente) · 88. 3.B.43 (0) (sin fuente) · 89. 3.B.44 (0) (sin fuente)
+- *Economía abierta*: 47. 3.A.32 (sin fuente; Mundell-Fleming, escrito desde 3.B.15) · 48. 3.B.12 (3) · 49. 3.B.16 (3) · 50. 3.B.14 (2) · 51. 3.B.15 (pasa a resumir Mundell-Fleming) · 52. 3.B.19 (2; recibe el G-20 y la OCDE de 3.B.35) · 53. 3.B.17 (0) · 54. 3.B.18 (sin fuente) · 55. 3.B.29 (sin fuente)
+- *Comercio Internacional*: 56. 3.B.6 (17; también Falvey) · 57. 3.B.10 (12) · 58. 3.B.5 (5; Haberler) · 59. 3.B.8 (4) · 60. 3.B.7 (3) · 61. 3.B.9 (3)
+- *Economía Corporativa y Financiera*: 62. 3.B.23 (5) · 63. 3.B.4 (3) · 64. 3.B.2 (2) · 65. 3.B.3 (2) · 66. 3.B.25 (contango, antes que 3.B.13) · 67. 3.B.13 (2) · 68. 3.B.26 (sin fuente; Diamond-Dybvig y teoría del bucle banca-soberano, antes que 3.B.27) · 69. 3.B.27 (1) · 70. 3.B.1 (0) · 71. 3.B.24 (0)
+- *Historia económica*: 72. 3.B.20 (Bretton Woods, único desarrollo) · 73. 3.B.21 (0) · 74. 3.B.32 (sin fuente)
+- *Organismos internacionales*: 75. 3.B.22 (0) · 76. 3.B.33 (0) · 77. 3.B.34 (0) · 78. 3.B.35 (0) · 79. 3.B.30 (sin fuente)
+- *Unión Europea*: 80. 3.B.45 (9; sin fuente: PEC, MEDE, NGEU, SURE, Semestre) · 81. 3.B.44 (sin fuente; Unión Bancaria y UMC) · 82. 3.B.43 (sin fuente; papel internacional del euro) · 83. 3.B.39 (armonización fiscal) · 84. 3.B.37 (1) · 85. 3.B.41 (1) · 86. 3.B.36 (0; historia general de la UE) · 87. 3.B.40 (0) · 88. 3.B.42 (0) · 89. 3.B.38 (sin fuente)
 
-**Fase 4. Sector público (4.B)**
+**Fase 4. Sector público (4.B)** (después de todo el 3.º: sus modelos teóricos ya estarán en forma canónica y cada tema los resume para su examen)
 
-- *Economía política*: 90. 4.B.2 (16)
-- *Contabilidad pública y fuentes estadísticas*: 91. 4.B.1 (4)
-- *Gastos y presupuestos*: 92. 4.B.21 (10) · 93. 4.B.23 (10) (sin fuente) · 94. 4.B.5 (3) · 95. 4.B.22 (3) · 96. 4.B.3 (2) · 97. 4.B.26 (1) · 98. 4.B.24 (2) (sin fuente)
-- *Política fiscal y estabilización*: 99. 4.B.4 (5)
+- *Economía política*: 90. 4.B.2 (Condorcet, votante mediano, Niskanen, Leviatán; Borda como referencia del 4.º)
+- *Contabilidad pública y fuentes estadísticas*: 91. 4.B.1 (sin el «comodín» del tamaño óptimo)
+- *Gastos y presupuestos*: 92. 4.B.21 (10) · 93. 4.B.23 (sin fuente) · 94. 4.B.5 (3) · 95. 4.B.3 (referencia del 4.º de Lorenz y Atkinson; rentas mínimas) · 96. 4.B.22 (3) · 97. 4.B.26 (1) · 98. 4.B.24 (sin fuente)
+- *Política fiscal y estabilización*: 99. 4.B.4 (efectos no keynesianos como referencia del 4.º; resumen del RBC fiscal y de la teoría de los multiplicadores)
 - *Inversión pública*: 100. 4.B.6 (2)
-- *Impuestos*: 101. 4.B.9 (10) · 102. 4.B.11 (5) · 103. 4.B.19 (5) (sin fuente) · 104. 4.B.20 (5) (sin fuente) · 105. 4.B.8 (4) · 106. 4.B.18 (4) · 107. 4.B.7 (2) · 108. 4.B.12 (1) · 109. 4.B.10 (0) · 110. 4.B.13 (0) · 111. 4.B.16 (3) (sin fuente) · 112. 4.B.17 (3) (sin fuente)
-- *Federalismo fiscal y haciendas territoriales*: 113. 4.B.14 (7) (sin fuente) · 114. 4.B.25 (3) (sin fuente)
+- *Impuestos*: 101. 4.B.9 (10; progresividad y exceso de gravamen) · 102. 4.B.7 (clasificación SEC de los impuestos) · 103. 4.B.8 (Harberger) · 104. 4.B.11 (5) · 105. 4.B.10 (Fisher con impuestos) · 106. 4.B.12 (impuesto dual; la normativa del IRPF, IS y patrimonio sirve de semilla) · 107. 4.B.13 (la del IVA, ídem) · 108. 4.B.18 (ITF) · 109. 4.B.16 (sin fuente) · 110. 4.B.17 (sin fuente) · 111. 4.B.19 (sin fuente) · 112. 4.B.20 (sin fuente)
+- *Federalismo fiscal y haciendas territoriales*: 113. 4.B.14 (sin fuente; competencia fiscal) · 114. 4.B.25 (sin fuente; financiación autonómica)
 - *Empresas públicas*: 115. 4.B.15 (2)
 
 **Fase 5. Economía española (4.A)**
 
 - *Fuentes estadísticas*: 116. 4.A.1 (0)
-- *Mercado de trabajo*: 117. 4.A.16 (0) · 118. 4.A.2 (0) (sin fuente)
-- *Desigualdad*: 119. 4.A.3 (0) (sin fuente)
-- *Sector primario*: 120. 4.A.4 (0) (sin fuente)
-- *Sector extractivo y energía*: 121. 4.A.5 (0) (sin fuente)
-- *Política medioambiental*: 122. 4.A.6 (0) (sin fuente)
-- *Política de ciencia y tecnología*: 123. 4.A.7 (0) (sin fuente)
-- *Empresa*: 124. 4.A.8 (0) (sin fuente)
-- *Industria y política industrial*: 125. 4.A.9 (0) (sin fuente) · 126. 4.A.10 (0) (sin fuente)
+- *Mercado de trabajo*: 117. 4.A.16 (0) · 118. 4.A.2 (sin fuente)
+- *Desigualdad*: 119. 4.A.3 (sin fuente)
+- *Sector primario*: 120. 4.A.4 (sin fuente)
+- *Sector extractivo y energía*: 121. 4.A.5 (sin fuente)
+- *Política medioambiental*: 122. 4.A.6 (sin fuente)
+- *Política de ciencia y tecnología*: 123. 4.A.7 (sin fuente)
+- *Empresa*: 124. 4.A.8 (sin fuente)
+- *Industria y política industrial*: 125. 4.A.9 (sin fuente) · 126. 4.A.10 (sin fuente)
 - *Construcción*: 127. 4.A.11 (0)
 - *Servicios*: 128. 4.A.12 (0) · 129. 4.A.13 (0) · 130. 4.A.14 (0)
 - *Políticas de liberalización*: 131. 4.A.15 (0)
 - *Política regional*: 132. 4.A.17 (0)
-- *Sector financiero y política monetaria*: 133. 4.A.18 (1) · 134. 4.A.19 (0) · 135. 4.A.20 (0)
-- *Sector exterior*: 136. 4.A.21 (0) · 137. 4.A.22 (0) · 138. 4.A.23 (0) · 139. 4.A.24 (0) · 140. 4.A.25 (0) · 141. 4.A.26 (0) (sin fuente)
-- *Historia económica*: 142. 4.A.30 (1) · 143. 4.A.27 (0) · 144. 4.A.28 (0) · 145. 4.A.29 (0)
+- *Sector financiero y política monetaria*: 133. 4.A.18 (bucle banca-soberano; introducción común del sistema financiero) · 134. 4.A.19 (0) · 135. 4.A.20 (0)
+- *Sector exterior*: 136. 4.A.21 (introducción de la BP) · 137. 4.A.22 (0) · 138. 4.A.23 (0) · 139. 4.A.24 (0) · 140. 4.A.25 (0) · 141. 4.A.26 (sin fuente)
+- *Historia económica*: 142. 4.A.30 (descomposición del PIB per cápita, trasladada desde 4.A.29) · 143. 4.A.27 (0) · 144. 4.A.28 (0) · 145. 4.A.29 (0)
 
 
 ## 11. Ideas para reorganizar el PowerPoint del temario (fase `--organizacion`)
@@ -395,3 +397,33 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 6. **Unir «Contabilidad pública y fuentes» (4.B.1) con «Gastos y presupuestos»** o al menos con 4.B.23 (finanzas de las AAPP en contabilidad nacional), que comparte el SEC.
 7. **3.B.28 (desarrollo)** puede estar en «Crecimiento económico» y en «Organismos internacionales» (con 3.B.29 y 3.B.30), y **3.B.31 (cambio climático)** junto a 4.A.6 (política de energía y clima) en el esquema combinado.
 8. **Temas sin fuente** con un color o trama propios en el PowerPoint, para ver de un vistazo qué falta por escribir (33).
+
+## 12. Propuestas nuevas por el criterio del 3.er y el 4.º ejercicio (13/10/2026)
+
+Al aplicar las decisiones aprobadas se ha repasado todo `mapa.yaml` con el criterio nuevo de `CRITERIOS.md` § 6. No se ha cambiado nada de esto en el canon: son propuestas.
+
+**Modelos teóricos cuyo tema de referencia está solo en el 4.º y que usa algún tema del 3.º**
+
+| Modelo | Referencia hoy | Uso en el 3.º | Propuesta |
+|---|---|---|---|
+| `incidencia-equilibrio-parcial` (incidencia de un impuesto con elasticidades) | 4.B.8 | 3.A.16, **desarrollo** | **[decidir]** Doble, como Lorenz o Borda: 3.A.16 (3.º: incidencia y pérdida de eficiencia en competencia perfecta) y 4.B.8 (4.º: con Harberger). Alternativa: referencia en 3.A.16 y 4.B.8 en resumen suficiente para su examen. |
+| `paradoja-condorcet` | 4.B.2 (D121) | 3.A.24, resumen | **[decidir]** Hacerla doble (3.A.24 y 4.B.2), igual que Borda (D120): en 3.A.24 es la antesala de Arrow y no puede depender de 4.B.2. Si se mantiene D121 tal cual, el resumen de 3.A.24 debe incluir el ciclo de votaciones con su ejemplo. |
+| `doom-loop` (bucle banca-soberano) | 4.A.18 (D078) | 3.B.26, resumen (sin fuente); 3.B.44, mención | **[decidir]** Doble: el mecanismo teórico en 3.B.26 (crisis financieras, 3.º) y el caso español de 2010-2012 en 4.A.18 (4.º). Hoy el 3.º solo tendría un resumen de algo cuyo desarrollo está en el 4.º. |
+| `votante-mediano`, `buchanan-tullock-mayoria-optima`, `downs-hotelling`, `niskanen` | 4.B.2 | 3.A.24 (resumen o mención), 3.A.18 y 3.A.23 (mención) | Mantener la referencia en 4.B.2 (la elección pública es materia del 4.º) y comprobar al revisar 3.A.24 que su resumen del votante mediano y de la mayoría óptima se entiende sin 4.B.2. No requiere decisión salvo que prefieras hacer doble el votante mediano **[decidir]**. |
+| `rct` (ensayos aleatorizados) | 4.B.6 | 3.A.1, resumen | Sin cambio: 3.A.1 lo usa como método y basta un resumen propio. |
+
+**Remisiones de temas del 3.º a temas del 4.º** (6 en el inventario). Ninguna debe ser necesaria para entender el tema del 3.º; se dejan solo como «para ampliar»:
+
+- 3.A.8 → 4.B.6 (valoración hedónica en el análisis coste-beneficio, ejemplo del Retiro): es una aplicación; el 3.A.8 ya se entiende sin ella. Sin cambio.
+- 3.A.24 → 4.B.2 (nota bajo el criterio de Pareto): con Borda y, si se aprueba, Condorcet desarrollados en 3.A.24, la remisión pasa a ser de ampliación.
+- 3.B.3 → 4.A.20 y 3.B.27 → 4.A.19/4.A.20 (financiación no bancaria, pánicos): el contenido teórico va en 3.B.26 (Diamond-Dybvig) y 3.B.27; remitir al 4.A solo para el caso español.
+- 3.B.8 → 4.A.24/4.A.25 y 3.B.41 → 4.A.25 (instrumentos españoles de apoyo a la internacionalización): ejemplos de aplicación; sin cambio.
+
+**Temas del 4.º que hoy solo mencionan modelos del 3.º que necesitan para cantarse** (comprobar al revisarlos; no hace falta decisión, es la regla «un tema del 4.º resume lo imprescindible»):
+
+- **4.B.15** (empresas públicas y regulación): menciona nueve modelos de 3.A.15, 3.A.17 y 3.A.20 (monopolio natural, Ramsey-Boiteux, *price cap*, Averch-Johnson, Laffont-Tirole, tarifa en dos partes, yardstick, impugnables, captura). Necesita un resumen propio de la regulación del monopolio natural.
+- **4.B.10 y 4.B.11**: Slutsky, segundo óptimo, Pigou y equivalencia ricardiana solo mencionados; la imposición óptima necesita al menos el enunciado del segundo óptimo y la descomposición de Slutsky.
+- **4.A.24 y 4.A.25** (sector exterior): Melitz, gravedad, Stiglitz-Weiss mencionados; basta una frase de resultado de cada uno.
+- **4.B.4**: la regla de Taylor solo se menciona; con el NEK fiscal hace falta su forma canónica.
+
+**Idea para la organización** (§ 11): marcar en el PowerPoint los modelos con referencia doble (efectos no keynesianos, Lorenz, Atkinson, Borda y los que se aprueben aquí) con un enlace 3.º ↔ 4.º, para que se vea que cada examen tiene su desarrollo completo.

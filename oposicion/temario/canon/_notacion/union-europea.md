@@ -2,11 +2,13 @@
 
 Área institucional: casi toda la «notación» son siglas y unidades. Fichas: `instituciones-ue`, `tratados-ue`, `mede`, `pec`, `semestre-europeo`, `next-generation-eu`, `sure`, `recursos-propios-ue`, `mfp`, `cbam`, `arancel-exterior-comun`, `union-bancaria`, `union-mercados-capitales`, `papel-internacional-euro`, `criterios-convergencia-nominal`, `politica-cohesion`, `pac`.
 
+Decisiones aprobadas por Víctor el 13/10/2026 (`decisiones.json`): la columna «Canon» es la notación definitiva; `notacion.md` manda si difiere por un choque entre áreas.
+
 ## Símbolos
 
-| Símbolo | Significado | Alternativas en el temario (temas) | Propuesta | Motivo |
+| Símbolo | Significado | Alternativas en el temario (temas) | Canon | Motivo |
 |---|---|---|---|---|
-| $\sigma$ | Dispersión de la renta per cápita (σ-convergencia) | elasticidad de sustitución / «preferencia por la variedad» en la NGE (3.B.40) | **[decidir]** $\sigma_t$ solo para la dispersión de $\ln y$; la elasticidad de sustitución de la NGE, con la letra que fije el área de comercio (3.B.6) | Conflicto real dentro de 3.B.40 |
+| $\sigma$ | Dispersión de la renta per cápita (σ-convergencia) | elasticidad de sustitución / «preferencia por la variedad» en la NGE (3.B.40) | $\sigma_t$ (siempre con subíndice) solo para la dispersión de $\ln y$; la elasticidad de sustitución de la NGE sigue siendo $\sigma$, como en comercio, y 3.B.40 avisa del doble uso | Conflicto real dentro de 3.B.40 |
 | $\mu$ | Margen sobre el coste marginal en la NGE, $\mu=\sigma/(\sigma-1)$ | 3.B.40 dice que $\mu$ crece con $\sigma$ (error: decrece) | Corregir en 3.B.40; notación del área de comercio | Error de contenido |
 | $\beta_0,\beta_1$ | Coeficientes de la regresión de β-convergencia | igual en 3.B.40 y 4.A.17 | Los de la ficha `convergencia-beta-sigma` (3.A.45) | Un solo canon |
 | $s^{e}$, $\tilde y$, $\varepsilon$ | Saldo estructural, brecha de producción, semielasticidad del saldo | sin símbolos (texto) | Los del área de sector público (4.B.4) | Reglas fiscales se formalizan allí |

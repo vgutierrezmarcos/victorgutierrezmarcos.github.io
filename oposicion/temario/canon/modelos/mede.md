@@ -3,6 +3,7 @@
 - **Área:** union-europea · **Tema de referencia:** 3.B.45 (gobernanza económica de la UE y la zona euro; lo tiene en el título) — **tema sin fuente**: hoy el contenido está en 3.B.36 (como «institución») y 3.B.37 (como instrumento extrapresupuestario)
 - **Temas que lo usan:** 3.B.45 (desarrollo previsto), 3.B.36 (resumen → mención), 3.B.37 (resumen), 4.B.26 (resumen), 4.A.18 (mención: préstamo de 2012 a España), 4.A.28 (mención), 4.A.30 (mención: flujos extrapresupuestarios), 3.B.21 y 3.B.22 (mención), 3.B.44 (mención: respaldo común del FUR)
 - **Manuales de referencia:** Tratado MEDE (2012) y Tratado de reforma (2021); informes anuales del MEDE; Baldwin y Wyplosz, *The Economics of European Integration*, caps. de gobernanza; De Grauwe, *Economics of Monetary Union*
+- **Decisión D093 (13/10/2026):** ¿Dónde se desarrolla el MEDE? 3.B.45, a partir de la descripción de 3.B.37; 3.B.36 y 3.B.37 en mención o resumen
 
 ## Presentación de referencia
 Qué es: organización intergubernamental (fuera del ordenamiento de la UE) de los Estados de la zona euro, con sede en Luxemburgo, que presta a sus miembros con dificultades de financiación bajo estricta condicionalidad (MoU). Base: art. 136.3 TFUE (añadido en 2011).
@@ -28,7 +29,7 @@ Reforma del Tratado (firmada en 2021): respaldo común (*backstop*) al Fondo Ún
 | 4.A.30 | Relaciones financieras España-UE | Mención | Como flujo extrapresupuestario | — |
 
 ## Divergencias encontradas en el temario actual
-- **MEDE asignado a 3.B.45, que no tiene fuente**: hoy hay dos descripciones paralelas, en 3.B.36 y 3.B.37. **[decidir]** Propuesta: escribir el desarrollo en 3.B.45 a partir de 3.B.37 (la más completa) y dejar 3.B.36 y 3.B.37 en mención/resumen.
+- **MEDE asignado a 3.B.45, que no tiene fuente**: hoy hay dos descripciones paralelas, en 3.B.36 y 3.B.37. Reparto: el desarrollo se escribe en 3.B.45 a partir de 3.B.37 (la más completa); 3.B.36 y 3.B.37 en mención o resumen.
 - 3.B.37: el MEEF permite endeudarse «hasta 60 millones de euros» → **60.000 millones**.
 - 3.B.37: «creado por el Consejo Europeo en marzo de 2011» (es la decisión política; el Tratado es de 2012).
 - Capacidad de préstamo «410.000 M€» (3.B.36 y 3.B.37): es la capacidad *disponible* en 2019-2020; la capacidad total es 500.000 M€. Capital «700.000 M€» (≈708.000 tras Croacia y Bulgaria).

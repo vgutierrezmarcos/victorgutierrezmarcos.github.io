@@ -1,8 +1,11 @@
 # Descomposición contable del PIB per cápita (y convergencia real de España)
 
-- **Área:** economia-espanola · **Tema de referencia:** **[decidir]** el mapa propone 4.A.29, pero con el título nuevo la convergencia real con la UE es de **4.A.30** («La convergencia real de España con la Unión Europea») y el bloque del antiguo 4.A.29 debe trasladarse allí. Propuesta: **4.A.30** (desarrollo con tres factores), **4.A.17** (aplicación regional)
+- **Área:** economia-espanola · **Tema de referencia:** **4.A.30** (convergencia real con la UE; el bloque del antiguo 4.A.29 se traslada allí), con la descomposición de cuatro factores; **4.A.17** la aplica a las regiones.
 - **Temas que lo usan:** 4.A.17 (desarrollo, dos factores), 4.A.29 (hoy desarrollo, tres factores; sobra con el título nuevo), 4.A.30 (desarrollo previsto), 4.A.16 y 4.A.2 (mención: tasas de actividad y empleo), 3.B.40 (mención: convergencia real en la UE)
 - **Manuales de referencia:** Comisión Europea y BdE (informes de convergencia real); De la Fuente; Moral, Vázquez y Pampillón, *Manual de economía española* (Funcas, 2022)
+- **Decisión D034 (13/10/2026):** ¿Cómo se escribe la dispersión de la renta en la σ-convergencia si σ es también la elasticidad de sustitución? σ_t (desviación típica de ln y, como Sala i Martín), siempre con subíndice t; en 3.B.40, que mezcla ambas, se avisa
+- **Decisión D048 (13/10/2026):** ¿Qué símbolo lleva la población total en la descomposición del PIB per cápita? N, con la descomposición de cuatro factores Y/N = (Y/L)(L/A)(A/P_16)(P_16/N)
+- **Decisión D097 (13/10/2026):** ¿Cuál es el tema de referencia de la descomposición del PIB per cápita? 4.A.30 (convergencia real con la UE), con aplicación regional en 4.A.17
 
 ## Presentación de referencia
 Pregunta: ¿qué explica la brecha de renta per cápita de España (o de una región) frente a la UE (o a España)?
@@ -23,10 +26,10 @@ Convergencia β y σ: ficha `convergencia-beta-sigma` (área de crecimiento, tem
 | 4.A.16 | Mercado de trabajo | Mención | Definiciones EPA de las tasas | — |
 
 ## Divergencias encontradas en el temario actual
-- **Notación distinta**: 4.A.17 usa $Y/POB=(Y/L)(L/POB)$; el antiguo 4.A.29 (futuro 4.A.30) usa $Y/N=(Y/L)(L/A)(A/N)$. **[decidir]** Propuesta: la forma de cuatro factores de arriba con $N$ para la población (no $POB$).
+- **Notación distinta**: 4.A.17 usa $Y/POB=(Y/L)(L/POB)$; el antiguo 4.A.29 (futuro 4.A.30) usa $Y/N=(Y/L)(L/A)(A/N)$. Canon: la forma de cuatro factores de arriba con $N$ para la población (no $POB$).
 - 4.A.29: llama a $A/N$ «tasa de actividad» en la fórmula y «población en edad de trabajar/población total» en el texto; ninguna de las dos es la tasa de actividad de la EPA ($A/P_{16}$). Separar el factor demográfico.
 - 4.A.17: llama «tasa de ocupación» a $L/POB$.
 - 4.A.17 y 4.A.29 dan la tasa de actividad como activos/población de 16-64 con un valor (≈59 %) que es el de 16 y más (con 16-64 ronda el 75 %).
-- **Convergencia β/σ con notación distinta**: 4.A.17 y 3.B.40 usan $\gamma_{t,t-1}^{y}=\beta_0+\beta_1\ln y_{t-1}+u_t$ y $\sigma^2_{y,t-1}>\sigma^2_{y,t}$; en 3.B.40 $\sigma$ es además la elasticidad de sustitución (NGE), y en 4.A.22 $\beta_i$ son las ponderaciones del ITC. **[decidir]** Propuesta: la notación de 3.A.45 para la regresión, con $\sigma_t$ solo para la dispersión (de $\ln y$) y otra letra para la elasticidad de sustitución y las ponderaciones del ITC.
+- **Convergencia β/σ con notación distinta**: 4.A.17 y 3.B.40 usan $\gamma_{t,t-1}^{y}=\beta_0+\beta_1\ln y_{t-1}+u_t$ y $\sigma^2_{y,t-1}>\sigma^2_{y,t}$; en 3.B.40 $\sigma$ es además la elasticidad de sustitución (NGE), y en 4.A.22 $\beta_i$ son las ponderaciones del ITC. Canon: la notación de 3.A.45 para la regresión, $\sigma_t$ (siempre con subíndice) para la dispersión de $\ln y$, $\omega_i$ para las ponderaciones del ITC; en 3.B.40, que usa también la elasticidad de sustitución $\sigma$ de la NGE, se avisa.
 - 4.A.17: «la variable dependiente sea el crecimiento… y la variable dependiente sea el PIB per cápita» (la segunda es la independiente).
 - Datos de 4.A.17 (2017-2020, UE-28) y 4.A.29 (2018 y 2022-2023): actualizar con la misma fecha en ambos.

@@ -1,10 +1,11 @@
 # Pánicos bancarios (Diamond y Dybvig, 1983)
 
-- **Área:** finanzas-empresa · **Tema de referencia:** **[decidir]**
-  - **3.B.26** (Crisis financieras y pánicos bancarios) — *propuesta*: lo tiene en el título, pero **no tiene fuente**; al escribirlo, se toma como base la presentación de 4.A.20 (la más completa: cuatro gráficos y ecuaciones) y la de 3.B.27.
-  - Mientras tanto, el desarrollo está en **3.B.27** (Regulación financiera), que lo usa para justificar el seguro de depósitos y el prestamista de última instancia; si se prefiere no esperar a 3.B.26, 3.B.27 puede quedar como referencia y 3.B.26 lo resume.
+- **Área:** finanzas-empresa · **Tema de referencia:** **3.B.26** (crisis y pánicos bancarios; sin fuente), escrito con la presentación de 4.A.20; 3.B.27 y 4.A.20 en resumen (4.A.20 con lo imprescindible para cantarse sin el 3.B.26). Mientras 3.B.26 no se escriba, el desarrollo de trabajo está en 3.B.27.
 - **Temas que lo usan:** 3.B.26 (previsto, sin fuente), 3.B.27 (desarrollo → resumen), 4.A.20 (desarrollo → resumen aplicado), 3.B.17 (resumen → mención), 3.A.10 (mención)
 - **Manuales de referencia:** Diamond y Dybvig (1983, *JPE*); Freixas y Rochet, *Microeconomics of Banking*, cap. 7; Allen y Gale, *Understanding Financial Crises* (2007), cap. 3; Mishkin, *Economics of Money, Banking and Financial Markets*.
+- **Decisión D017 (13/10/2026):** ¿Qué letra llevan las probabilidades en micro (estados de la naturaleza, accidente, éxito con esfuerzo, impacientes en Diamond-Dybvig)? π (π_s, π, π(e)), como Varian y MWG cap. 19; p queda para los precios
+- **Decisión D042 (13/10/2026):** ¿Cuál es el tema de referencia de Diamond-Dybvig? 3.B.26 (crisis y pánicos bancarios), escribiéndolo con la presentación de 4.A.20; 3.B.27 y 4.A.20 en resumen
+- **Decisión D064 (13/10/2026):** ¿Qué notación se usa en Diamond-Dybvig? La de Freixas-Rochet: π fracción de impacientes, R rendimiento a largo, L valor de liquidación, c_1 y c_2 consumos
 
 ## Presentación de referencia
 **Pregunta:** ¿por qué los bancos, que mejoran el reparto del riesgo de liquidez, son vulnerables a pánicos?
@@ -30,7 +31,7 @@ El depósito ofrece $(c_1^*, c_2^*)$; si los pacientes esperan que los demás re
 
 ## Divergencias encontradas en el temario actual
 - **Referencia rota**: el mapa asigna 3.B.26 (sin fuente) mientras el único desarrollo completo está en 3.B.27 y otro en 4.A.20.
-- **Notación**: fracción de impacientes $\tau$ en 4.A.20 (choca con $\tau$ coste iceberg y tipos impositivos); rendimientos del activo ilíquido $r_1 < 1 < r_2$ y del depósito $r_1^d, r_2^d$ en 4.A.20; consumo $c$ en 3.A.10 y $c_1, c_2$ en 4.A.20. Propuesta: $\pi$, $R$, $L$, $c_1$, $c_2$ (Freixas-Rochet; Allen-Gale) **[decidir]**.
+- **Notación**: fracción de impacientes $\tau$ en 4.A.20 (choca con $\tau$ coste iceberg y tipos impositivos); rendimientos del activo ilíquido $r_1 < 1 < r_2$ y del depósito $r_1^d, r_2^d$ en 4.A.20; consumo $c$ en 3.A.10 y $c_1, c_2$ en 4.A.20. Canon: $\pi$ (fracción de impacientes), $R$ (rendimiento a largo), $L$ (valor de liquidación), $c_1$, $c_2$ (Freixas-Rochet; Allen-Gale).
 - 3.B.27 tiene la errata «modelo de Corunot» en un título de gráfico (es el de Cournot bancario, otro modelo).
 
 Autor: Víctor Gutiérrez Marcos

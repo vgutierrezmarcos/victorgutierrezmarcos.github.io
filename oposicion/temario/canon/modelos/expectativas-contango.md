@@ -1,8 +1,9 @@
 # Hipótesis de expectativas, normal backwardation y contango
 
-- **Área:** macro-abierta (comparte con finanzas) · **Tema de referencia:** 3.B.25 (Instrumentos y mercados de derivados) **[decidir]** — el mapa lo asigna hoy a 3.B.13 porque ninguno lo desarrolla, pero es una teoría del precio de los futuros (Keynes, 1930; Hicks, 1939) y encaja en el título de 3.B.25; 3.B.13 solo necesita su versión para el *forward* de divisas.
+- **Área:** macro-abierta (comparte con finanzas) · **Tema de referencia:** 3.B.25 (Instrumentos y mercados de derivados): el mapa lo asignaba a 3.B.13 porque ninguno lo desarrolla, pero es una teoría del precio de los futuros (Keynes, 1930; Hicks, 1939) y encaja en el título de 3.B.25; 3.B.13 solo necesita su versión para el *forward* de divisas.
 - **Temas que lo usan:** 3.B.13 (resumen → mención), 3.B.25 (resumen → desarrollo); relacionado con 3.B.24 (teoría de expectativas de la ETTI)
 - **Manuales de referencia:** Hull, *Options, Futures and Other Derivatives*, cap. 5 (*Futures prices and expected future spot prices*); Keynes, *Treatise on Money* (1930); Hicks, *Value and Capital* (1939); Bodie, Kane y Marcus, *Investments*, cap. 22.
+- **Decisión D116 (13/10/2026):** ¿Cuál es el tema de referencia de la teoría de las expectativas y el contango (Keynes, Hicks)? 3.B.25 (derivados), con mención en 3.B.13 y el anexo duplicado solo en 3.B.25
 
 ## Presentación de referencia
 **Pregunta:** ¿es el precio futuro un predictor insesgado del precio de contado esperado?
@@ -25,7 +26,7 @@ Aviso de terminología: en el uso de mercado, *contango* y *backwardation* se re
 | 3.B.24 | Renta fija y ETTI | mención | Analogía con la teoría de expectativas y la prima de liquidez de la ETTI | — |
 
 ## Divergencias encontradas en el temario actual
-- **Anexo duplicado** literalmente en 3.B.13 y 3.B.25 (mismo título y gráficos). Propuesta: un único desarrollo en 3.B.25 y mención en 3.B.13 **[decidir]**.
+- **Anexo duplicado** literalmente en 3.B.13 y 3.B.25 (mismo título y gráficos). Reparto: un único desarrollo en 3.B.25 y mención en 3.B.13.
 - Los anexos no fijan si comparan $F$ con $S_0$ o con $E^e(S_T)$; el canon exige decirlo.
 - En 3.B.25 el *forward* de divisas se escribe $f_t$ y el spot $s_t$ (heredado de 3.B.13); canon de área: $F$ y $E$ (ver `_notacion/macro-abierta.md`) y, dentro de derivados genéricos, $F_0$ y $S_0$ como en Hull.
 

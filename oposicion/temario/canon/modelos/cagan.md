@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.41 (La inflación… Hiperinflación y deflación) — la hiperinflación está en el título.
 - **Temas que lo usan:** 3.A.41 (desarrollo), 3.A.35 (resumen: demanda de dinero con inflación esperada; hoy desarrollo), 3.A.39 (resumen: señoreaje como financiación; hoy desarrollo). Bloque copiado casi literal en los tres.
 - **Manuales de referencia:** Cagan (1956), en Friedman (ed.), *Studies in the Quantity Theory of Money*; Sargent (1982), «The Ends of Four Big Inflations»; Romer (2019), cap. 11.8; Walsh (2017), cap. 4; Blanchard y Fischer (1989), cap. 4.
+- **Decisión D061 (13/10/2026):** ¿Cómo se escriben los parámetros de la demanda de dinero de Cagan? α semielasticidad respecto a la inflación esperada y ζ constante de escala
 
 ## Presentación de referencia
 
@@ -12,7 +13,7 @@
 
 **Ecuaciones:**
 
-$$\frac{M^D_t}{P_t} = \zeta\, e^{-\alpha\, E_t[\pi_{t+1}]},\qquad \alpha > 0$$
+$$\frac{M^D_t}{P_t} = \zeta\, e^{-\alpha\, \mathbb{E}_t[\pi_{t+1}]},\qquad \alpha > 0$$
 
 Señoreaje en estado estacionario (γ_M = π = π^e):
 
@@ -34,6 +35,6 @@ $$S = \frac{\Delta M}{P} = \pi\,\frac{M}{P} = \pi\,\zeta\,e^{-\alpha\pi},\qquad 
 
 - **Copia literal** del bloque en 3.A.35, 3.A.39 y 3.A.41: desarrollo solo en 3.A.41.
 - **Inflación ϑ** en el señoreaje y π en la demanda (3.A.35, dentro del mismo tema): canon **π**.
-- **Constante de escala γ** (3.A.35, 3.A.39, 3.A.41) choca con γ = tasas de crecimiento y peso de la inflación en Barro-Gordon: propuesta **ζ** **[decidir]**.
+- **Constante de escala γ** (3.A.35, 3.A.39, 3.A.41) choca con γ = tasas de crecimiento y peso de la inflación en Barro-Gordon: canon **ζ** (α queda para la semielasticidad).
 
 Autor: Víctor Gutiérrez Marcos

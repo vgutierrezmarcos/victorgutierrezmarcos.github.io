@@ -1,8 +1,10 @@
 # Gasto público productivo y crecimiento endógeno (Barro 1990)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.38 (política fiscal: efectos sobre el crecimiento y el ahorro) **[decidir]** — los efectos de la política fiscal sobre el crecimiento son su título; alternativa: 3.A.44 (crecimiento endógeno con rendimientos constantes del capital ampliado), que es el único tema del bloque A que hoy lo desarrolla con ecuaciones.
+- **Área:** macro cerrada · **Tema de referencia:** 3.A.38 (política fiscal: efectos sobre el crecimiento y el ahorro), escrito con ecuaciones: los efectos de la política fiscal sobre el crecimiento son su título. 3.A.44 lo resume como caso de crecimiento endógeno con rendimientos constantes del capital ampliado.
 - **Temas que lo usan:** 3.A.38 (desarrollo, sin ecuaciones), 3.A.44 (desarrollo), 4.B.1 (desarrollo), 4.B.5 (desarrollo), 4.A.11 (mención)
 - **Manuales de referencia:** Barro (1990), *JPE*; Barro y Sala i Martín, *Economic Growth* (2.ª ed., 2004), cap. 4; Sala i Martín, *Apuntes de crecimiento económico* (2000), cap. 3.
+- **Decisión D050 (13/10/2026):** ¿Qué versión de Barro (1990) es la de referencia? La de optimización (θ, ρ), como AK y Uzawa-Lucas; la de ahorro exógeno solo como simplificación
+- **Decisión D053 (13/10/2026):** ¿Cuál es el tema de referencia de Barro (1990)? 3.A.38 (efectos de la política fiscal sobre el crecimiento), escribiéndolo con ecuaciones
 
 ## Presentación de referencia
 Pregunta: ¿puede el gasto público productivo generar crecimiento sostenido y cuál es el tamaño del Estado que lo maximiza? Supuestos: Y = A K^α G^{1−α} (rendimientos constantes en K y G conjuntamente); G financiado con un impuesto proporcional τ sobre la renta y presupuesto equilibrado G = τY; hogares con CRRA (θ) y descuento ρ; población constante (o n).
@@ -24,9 +26,9 @@ Gráfico de referencia: γ frente a τ, en U invertida con máximo en τ* = 1−
 | 4.A.11 | Obra civil | mención | Efecto de oferta del gasto en infraestructuras | — |
 
 ## Divergencias encontradas en el temario actual
-- 3.A.44, 4.B.1 y 4.B.5 lo presentan con **ahorro exógeno s** (Solow), mientras AK y Uzawa-Lucas en 3.A.44 usan optimización (θ, ρ): propuesta, versión con optimización como referencia y la de ahorro exógeno solo como simplificación **[decidir]**.
+- 3.A.44, 4.B.1 y 4.B.5 lo presentan con **ahorro exógeno s** (Solow), mientras AK y Uzawa-Lucas en 3.A.44 usan optimización (θ, ρ): canon: la versión con optimización es la de referencia y la de ahorro exógeno solo se usa como simplificación, diciéndolo.
 - 4.B.1 y 4.B.5 son copia literal (mismas ecuaciones y gráfico).
-- Desarrollado en cuatro temas; 3.A.38 lo desarrolla sin ecuaciones. Elegir tema de referencia (3.A.38 o 3.A.44) **[decidir]**.
+- Desarrollado en cuatro temas; 3.A.38 lo desarrollaba sin ecuaciones: se escribe allí con ecuaciones y los demás lo resumen (4.B.1 y 4.B.5 con lo imprescindible para cantarse sin el 3.A.38).
 - g = gasto público por trabajador choca con g = progreso técnico (3.A.43): en este modelo escribir **G/L** o g con definición explícita.
 
 Autor: Víctor Gutiérrez Marcos

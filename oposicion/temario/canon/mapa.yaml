@@ -3,6 +3,7 @@
 # modelos (ids canónicos, ver _inventario/alias.json) y fecha de revisión.
 # Generado en el paso 1 de la consolidación (13 oct. 2026) a partir de _inventario/*.json.
 # fuente_disponible: si | parcial (incompleta o con restos del título anterior) | renumerado (el contenido está en el Word de otro número del temario antiguo) | otro-titulo (Word del título antiguo, se aprovecha lo que encaja) | no.
+# tema_referencia: un tema, o una lista de dos cuando es doble (uno del 3.er ejercicio y otro del 4.º, cada uno completo para su examen). decision: id de decisiones.json que lo fijó (aprobadas el 13/10/2026). En temas, el papel es el objetivo; «(hoy …)» indica lo que hay ahora en la fuente.
 # Autor: Víctor Gutiérrez Marcos
 modelos:
   ces:
@@ -16,15 +17,17 @@ modelos:
       3.A.18: resumen
       3.A.44: mencion
   cobb-douglas:
-    nombre: Utilidad Cobb-Douglas
+    nombre: Función Cobb-Douglas (producción y utilidad)
     area: consumidor-produccion
-    tema_referencia: 3.A.8
-    motivo: Lo tiene en el título (utilidad) y lo trata como resumen.
+    tema_referencia: 3.A.11
+    motivo: 'Función de producción: rendimientos a escala y elasticidad de sustitución en el título de 3.A.11; 3.A.8 es la
+      referencia de la variante de utilidad.'
     temas:
       3.A.6: mencion
-      3.A.8: resumen
+      3.A.8: resumen (referencia de la variante de utilidad)
       3.A.9: resumen
-      3.A.11: resumen
+      3.A.11: desarrollo (hoy resumen)
+    decision: D005 (13/10/2026)
   indices-precios:
     nombre: Índices de coste de vida (basados en VC y VE) y aproximaciones de Laspeyres y Paasche
     area: consumidor-produccion
@@ -59,10 +62,11 @@ modelos:
     nombre: Función de coeficientes fijos (Leontief)
     area: consumidor-produccion
     tema_referencia: 3.A.11
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    motivo: La paradoja de Leontief (3.B.5) es otro contenido, con id propio `paradoja-leontief`.
     temas:
+      3.A.8: resumen (límite de la CES)
       3.A.11: resumen
-      3.B.5: resumen
+    decision: D087 (13/10/2026)
   pmu:
     nombre: Problema de maximización de la utilidad (consumidor neoclásico)
     area: consumidor-produccion
@@ -171,12 +175,13 @@ modelos:
       4.B.6: resumen
   falvey:
     nombre: 'Falvey: diferenciación vertical en comercio'
-    area: mercados-informacion-juegos
-    tema_referencia: 3.A.18
-    motivo: Lo tiene en el título (diferenciacion) y lo trata como mencion.
+    area: comercio
+    tema_referencia: 3.B.6
+    motivo: Único que lo resume con ecuación y gráfico; comercio intraindustrial vertical.
     temas:
       3.A.18: mencion
-      3.B.6: resumen
+      3.B.6: desarrollo (hoy resumen)
+    decision: D113 (13/10/2026)
   laffont-tirole:
     nombre: Menú de contratos de Laffont y Tirole (1986)
     area: mercados-informacion-juegos
@@ -188,12 +193,15 @@ modelos:
   mercados-impugnables:
     nombre: Mercados contestables (Baumol, 1982)
     area: mercados-informacion-juegos
-    tema_referencia: 3.A.19
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    tema_referencia: 3.A.15
+    motivo: Barreras de entrada y tamaño de la empresa (3.A.15, sin fuente); mientras no se redacte, el desarrollo está en
+      3.A.19.
     temas:
+      3.A.15: desarrollo (previsto, sin fuente)
       3.A.17: mencion
-      3.A.19: desarrollo
+      3.A.19: resumen (hoy desarrollo)
       4.B.15: mencion
+    decision: D071 (13/10/2026)
   monopolio-natural:
     nombre: Monopolio natural (subaditividad y sostenibilidad, Baumol)
     area: mercados-informacion-juegos
@@ -227,16 +235,16 @@ modelos:
     nombre: Racionamiento del crédito (Stiglitz y Weiss, 1981)
     area: mercados-informacion-juegos
     tema_referencia: 3.A.13
-    motivo: Es una aplicación de la selección adversa y el riesgo moral, título de 3.A.13; 3.B.27 y 4.A.20 lo desarrollan
-      como fundamento de la regulación y del crédito (conviene que 3.A.13 lo cuente entero).
+    motivo: Selección adversa y riesgo moral a la vez, el título de 3.A.13; se amplía allí con ecuaciones y los dos gráficos.
     temas:
       3.A.7: mencion
-      3.A.13: resumen
-      3.B.27: desarrollo
+      3.A.13: desarrollo (hoy resumen)
+      3.B.27: resumen aplicado (hoy desarrollo)
       3.B.28: mencion
-      4.A.20: desarrollo
+      4.A.20: resumen aplicado (hoy desarrollo)
       4.A.24: mencion
       4.A.25: mencion
+    decision: D070 (13/10/2026)
   subastas:
     nombre: Subastas (primer y segundo precio, holandesa, inglesa, valores comunes; equivalencia de ingresos)
     area: mercados-informacion-juegos
@@ -265,26 +273,35 @@ modelos:
     nombre: Teorema de imposibilidad de Arrow (1951)
     area: equilibrio-general-bienestar
     tema_referencia: 3.A.24
-    motivo: Lo tiene en el título (arrow, imposibilidad) y lo trata como desarrollo.
+    motivo: Desarrollo en 3.A.24; 4.B.2 lo resume aplicado a la votación.
     temas:
       3.A.24: desarrollo
-      4.B.2: desarrollo
+      4.B.2: resumen (hoy desarrollo)
+    decision: D121 (13/10/2026)
   atkinson-indice:
     nombre: Índice de Atkinson
     area: equilibrio-general-bienestar
-    tema_referencia: 3.A.24
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (mencion).
+    tema_referencia:
+    - 3.A.24
+    - 4.B.3
+    motivo: 'Doble, uno por ejercicio (Víctor): 4.B.3 en el 4.º (más propio de él) y 3.A.24 en el 3.º, lo bastante para entenderlo
+      sin el 4.º.'
     temas:
-      3.A.24: mencion
-      4.B.3: mencion
+      3.A.24: desarrollo (hoy mencion)
+      4.B.3: desarrollo (hoy mencion)
+    decision: D094 (13/10/2026)
   borda:
     nombre: Regla de Borda y otras reglas (segunda vuelta, D'Hondt)
     area: equilibrio-general-bienestar
-    tema_referencia: 3.A.24
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia:
+    - 3.A.24
+    - 4.B.2
+    motivo: 'Doble, uno por ejercicio (Víctor): 4.B.2 en el 4.º (reglas de votación) y 3.A.24 en el 3.º, lo bastante para
+      entenderlo sin el 4.º.'
     temas:
-      3.A.24: resumen
-      4.B.2: mencion
+      3.A.24: desarrollo (hoy resumen)
+      4.B.2: desarrollo (hoy mencion)
+    decision: D120 (13/10/2026)
   cap-and-trade:
     nombre: Mercado de derechos de emisión (cap and trade)
     area: equilibrio-general-bienestar
@@ -419,16 +436,16 @@ modelos:
     nombre: Modelo IS-LM (Hicks 1937, Modigliani 1944)
     area: pensamiento
     tema_referencia: 3.A.5
-    motivo: IS-LM es el modelo de la síntesis neoclásica (título de 3.A.5); el Word de 3.A.4 lo desarrolla porque sigue el
-      reparto anterior al temario de 2023.
+    motivo: IS-LM y Phillips (síntesis) pasan del Word de 3.A.4 a 3.A.5.
     temas:
-      3.A.4: desarrollo
-      3.A.5: mencion
+      3.A.4: mencion (hoy desarrollo)
+      3.A.5: desarrollo (bloque trasladado desde 3.A.4)
       3.A.28: resumen
       3.A.37: resumen
       3.A.38: resumen
       3.A.39: resumen
       4.B.4: resumen
+    decision: D031 (13/10/2026)
   lucas-islas:
     nombre: Modelo de información imperfecta de Lucas (1972), islas de Phelps
     area: pensamiento
@@ -441,21 +458,23 @@ modelos:
       3.A.42: mencion
   lucas-rapping:
     nombre: 'Lucas y Rapping (1969): oferta de trabajo intertemporal'
-    area: pensamiento
-    tema_referencia: 3.A.6
-    motivo: Lo tiene en el título (lucas) y lo trata como resumen.
+    area: macro-cerrada
+    tema_referencia: 3.A.25
+    motivo: Análisis intertemporal de la oferta de trabajo en el título de 3.A.25; es el único que lo desarrolla.
     temas:
       3.A.6: resumen
       3.A.25: desarrollo
       3.A.42: mencion
+    decision: D068 (13/10/2026)
   malinvaud:
     nombre: Teoría del desequilibrio (Barro-Grossman, Malinvaud)
     area: pensamiento
     tema_referencia: 3.A.4
-    motivo: Lo tiene en el título (desequilibrio) y lo trata como mencion.
+    motivo: El desequilibrio pasa del Word de 3.A.5 a 3.A.4.
     temas:
-      3.A.4: mencion
-      3.A.5: resumen
+      3.A.4: desarrollo (bloque trasladado desde 3.A.5)
+      3.A.5: mencion (hoy resumen)
+    decision: D031 (13/10/2026)
   marshall-equilibrio-parcial:
     nombre: 'Marshall: equilibrio parcial y periodos de mercado'
     area: pensamiento
@@ -482,11 +501,13 @@ modelos:
   patinkin:
     nombre: 'Patinkin (1956): efecto saldos reales'
     area: pensamiento
-    tema_referencia: 3.A.5
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    tema_referencia: 3.A.4
+    motivo: Antecedente del desequilibrio y debate con Keynes; el bloque del Word de 3.A.5 pasa a 3.A.4 (D031).
     temas:
-      3.A.5: desarrollo
+      3.A.4: desarrollo (bloque trasladado desde 3.A.5)
+      3.A.5: resumen (efecto Pigou-Patinkin)
       3.A.21: resumen
+    decision: D111 (13/10/2026)
   sargent-wallace-inefectividad:
     nombre: Inefectividad de la política sistemática (Sargent y Wallace 1976)
     area: pensamiento
@@ -507,10 +528,11 @@ modelos:
     nombre: Colonial Origins (Acemoglu, Johnson y Robinson, 2001)
     area: macro-cerrada
     tema_referencia: 3.A.45
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    motivo: Estimación en 3.A.45; enfoque de política del desarrollo en 3.B.28.
     temas:
       3.A.45: desarrollo
-      3.B.28: desarrollo
+      3.B.28: resumen (enfoque de política; hoy desarrollo)
+    decision: D125 (13/10/2026)
   aritmetica-monetarista:
     nombre: Aritmética monetarista desagradable
     area: macro-cerrada
@@ -524,14 +546,15 @@ modelos:
     nombre: Política fiscal y crecimiento endógeno (Barro, 1990)
     area: macro-cerrada
     tema_referencia: 3.A.38
-    motivo: Los efectos de la política fiscal sobre el crecimiento son el título de 3.A.38; 3.A.44 lo cuenta como modelo AK
-      y 4.B.1/4.B.5 como gasto productivo.
+    motivo: Efectos de la política fiscal sobre el crecimiento en el título; se escribe con ecuaciones y en la versión con
+      optimización (D050).
     temas:
-      3.A.38: desarrollo
-      3.A.44: desarrollo
+      3.A.38: desarrollo (con ecuaciones; hoy sin ellas)
+      3.A.44: resumen (hoy desarrollo)
       4.A.11: mencion
-      4.B.1: desarrollo
-      4.B.5: desarrollo
+      4.B.1: mencion (se suprime el comodín, D127)
+      4.B.5: resumen (hoy desarrollo)
+    decision: D053 (13/10/2026)
   barro-gordon:
     nombre: Inconsistencia temporal (Kydland-Prescott 1977; Barro-Gordon 1983)
     area: macro-cerrada
@@ -611,14 +634,16 @@ modelos:
     nombre: Estancamiento secular (Hansen, Summers, Rachel-Summers 2019; debate Blanchard-Summers)
     area: macro-cerrada
     tema_referencia: 3.A.40
-    motivo: Las políticas desde la Gran Recesión (r<g, tipo natural negativo) son el título de 3.A.40 (tema sin fuente); 4.B.1,
-      4.B.4 y 4.B.5 lo usan como comodín.
+    motivo: Su título (políticas desde la Gran Recesión) pide el tipo natural negativo y el ELB; se traslada allí el epígrafe
+      de 3.A.39.
     temas:
+      3.A.39: resumen (hoy desarrollo, se traslada a 3.A.40)
       3.A.40: previsto (tema sin fuente)
       4.A.11: mencion
       4.B.1: resumen
       4.B.4: resumen
       4.B.5: resumen
+    decision: D051 (13/10/2026)
   fischer-taylor-contratos:
     nombre: Contratos escalonados (Fischer 1977, Taylor 1980)
     area: macro-cerrada
@@ -631,13 +656,13 @@ modelos:
     nombre: Elección intertemporal de Fisher (dos periodos)
     area: macro-cerrada
     tema_referencia: 3.A.33
-    motivo: La elección intertemporal de consumo de dos periodos es la base de las teorías del consumo (3.A.33); 4.B.9-4.B.10
-      le añaden impuestos y 3.A.29 la usa para la modelización dinámica.
+    motivo: 'Fisher con impuestos: desarrollo en 4.B.10 (efectos incentivo sobre el ahorro); 4.B.9 lo resume.'
     temas:
       3.A.29: desarrollo
       3.A.33: desarrollo
-      4.B.9: desarrollo
+      4.B.9: resumen (hoy desarrollo)
       4.B.10: desarrollo
+    decision: D099 (13/10/2026)
   ftpl:
     nombre: Teoría fiscal del nivel de precios
     area: macro-cerrada
@@ -666,11 +691,13 @@ modelos:
   input-output:
     nombre: Marco input-output (tablas de origen y destino)
     area: macro-cerrada
-    tema_referencia: 3.A.30
-    motivo: El marco input-output es parte de la contabilidad nacional (título de 3.A.30); 4.A.1 lo cita como fuente estadística.
+    tema_referencia: 3.A.31
+    motivo: Lo tiene en el título (sin fuente).
     temas:
       3.A.30: resumen
+      3.A.31: desarrollo (previsto, sin fuente)
       4.A.1: resumen
+    decision: D112 (13/10/2026)
   jorgenson:
     nombre: Modelo neoclásico (Jorgenson, 1963)
     area: macro-cerrada
@@ -719,14 +746,14 @@ modelos:
     nombre: Curva de Phillips original, Lipsey, Samuelson-Solow, ampliada (Phelps-Friedman)
     area: macro-cerrada
     tema_referencia: 3.A.28
-    motivo: La curva de Phillips aumentada y la tasa natural son el título de 3.A.28; 3.A.4 y 3.A.5 la cuentan como historia
-      y 3.A.41 la aplica a la inflación.
+    motivo: Desarrollo en 3.A.28; resumen en 3.A.5 y, como mucho, mención en 3.A.4.
     temas:
-      3.A.4: desarrollo
-      3.A.5: mencion
+      3.A.4: mencion (hoy desarrollo)
+      3.A.5: resumen (hoy mencion)
       3.A.28: desarrollo
       3.A.37: resumen
       3.A.41: resumen
+    decision: D031 (13/10/2026)
   q-tobin:
     nombre: q de Tobin con costes de ajuste (Summers, Abel, Hayashi)
     area: macro-cerrada
@@ -814,20 +841,21 @@ modelos:
     nombre: Solow aumentado con capital humano (Mankiw, Romer y Weil, 1992)
     area: macro-cerrada
     tema_referencia: 3.A.43
-    motivo: Lo tiene en el título (aumentado, humano, solow) y lo trata como mencion.
+    motivo: El modelo está en el título de 3.A.43; estimación y evidencia en 3.A.45.
     temas:
-      3.A.43: mencion
-      3.A.45: desarrollo
+      3.A.43: desarrollo (hoy mencion)
+      3.A.45: resumen (estimación y evidencia)
+    decision: D090 (13/10/2026)
   suavizacion-impositiva-barro:
     nombre: Suavización impositiva (Barro 1979)
     area: macro-cerrada
     tema_referencia: 3.A.39
-    motivo: Es una teoría de la financiación óptima del déficit (título de 3.A.39); 4.B.9 y 4.B.11 la usan como imposición
-      óptima en el tiempo.
+    motivo: Financiación óptima del déficit; 3.A.39 se escribe con la versión con ecuaciones de 4.B.11, que pasa a resumen.
     temas:
-      3.A.39: desarrollo
+      3.A.39: desarrollo (con ecuaciones)
       4.B.9: resumen
-      4.B.11: desarrollo
+      4.B.11: resumen (hoy desarrollo)
+    decision: D089 (13/10/2026)
   taylor:
     nombre: Regla de Taylor
     area: macro-cerrada
@@ -912,11 +940,12 @@ modelos:
   expectativas-contango:
     nombre: Expectations hypothesis, normal backwardation y contango (anexo)
     area: macro-abierta
-    tema_referencia: 3.B.13
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia: 3.B.25
+    motivo: Teoría del precio de los futuros (Keynes, Hicks); el anexo duplicado queda solo en 3.B.25.
     temas:
-      3.B.13: resumen
-      3.B.25: resumen
+      3.B.13: mencion (hoy resumen)
+      3.B.25: desarrollo (hoy resumen)
+    decision: D116 (13/10/2026)
   flujo-especie:
     nombre: Mecanismo flujo-especie (Hume, 1752)
     area: macro-abierta
@@ -939,15 +968,17 @@ modelos:
   mundell-fleming:
     nombre: Modelo IS-LM-BP (Mundell-Fleming)
     area: macro-abierta
-    tema_referencia: 3.B.15
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    tema_referencia: 3.A.32
+    motivo: 'OA-DA en economía abierta (sin fuente): se escribe a partir de 3.B.15, que pasa a resumen.'
     temas:
-      3.A.37: desarrollo
-      3.A.38: resumen
+      3.A.32: desarrollo (previsto, sin fuente)
+      3.A.37: resumen (hoy desarrollo)
+      3.A.38: mencion (hoy resumen)
       3.B.14: mencion
-      3.B.15: desarrollo
+      3.B.15: resumen (hoy desarrollo)
       3.B.19: desarrollo
       4.B.4: resumen
+    decision: D014 (13/10/2026)
   paridad-intereses:
     nombre: Paridad cubierta de intereses
     area: macro-abierta
@@ -988,10 +1019,12 @@ modelos:
     nombre: Mercados recíprocos con arancel (Brander, 1981)
     area: comercio
     tema_referencia: 3.B.8
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    motivo: Versión con arancel (Brander, 1981) en 3.B.8; el dumping recíproco como explicación del comercio intraindustrial,
+      resumido en 3.B.6.
     temas:
       3.B.6: resumen
       3.B.8: desarrollo
+    decision: D115 (13/10/2026)
   brander-spencer:
     nombre: 'Tercer mercado con Cournot: Brander-Krugman (1983) y Brander-Spencer (1985)'
     area: comercio
@@ -1049,11 +1082,12 @@ modelos:
   haberler:
     nombre: 'Haberler/Meade: curvas de oferta neta e indiferencia comercial'
     area: comercio
-    tema_referencia: 3.B.7
-    motivo: Lo tiene en el título (comercial) y lo trata como resumen.
+    tema_referencia: 3.B.5
+    motivo: Determinación de la RRI en el título y lo desarrolla; 3.B.7 lo resume para el arancel.
     temas:
       3.B.5: desarrollo
       3.B.7: resumen
+    decision: D114 (13/10/2026)
   industria-naciente:
     nombre: Industria naciente con economías de escala
     area: comercio
@@ -1152,14 +1186,14 @@ modelos:
     nombre: Pánicos bancarios (Diamond y Dybvig, 1983)
     area: finanzas-empresa
     tema_referencia: 3.B.26
-    motivo: 'El título de 3.B.26 son las crisis financieras y los pánicos bancarios (tema sin fuente: hay que escribirlo);
-      hasta entonces el desarrollo más completo está en 3.B.27 y 4.A.20.'
+    motivo: Crisis y pánicos bancarios en el título (sin fuente); se escribe con la presentación de 4.A.20.
     temas:
       3.A.10: mencion
-      3.B.17: resumen
+      3.B.17: mencion (hoy resumen)
       3.B.26: previsto (tema sin fuente)
-      3.B.27: desarrollo
-      4.A.20: desarrollo
+      3.B.27: resumen (hoy desarrollo)
+      4.A.20: resumen aplicado (hoy desarrollo)
+    decision: D042 (13/10/2026)
   emh:
     nombre: Hipótesis de mercados eficientes y behavioral finance
     area: finanzas-empresa
@@ -1246,40 +1280,48 @@ modelos:
   cbam:
     nombre: Mecanismo de Ajuste en Frontera por Carbono
     area: union-europea
-    tema_referencia: 3.B.37
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia: 3.B.31
+    motivo: Economía del instrumento en el tema de cambio climático (sin fuente); 3.B.37 (recurso propio) y 3.B.41 en resumen.
     temas:
+      3.B.31: desarrollo (previsto, sin fuente)
       3.B.37: resumen
+      3.B.41: resumen
       4.B.18: mencion
+    decision: D072 (13/10/2026)
   mede:
     nombre: Mecanismo Europeo de Estabilidad (y FEEF, MEEF)
     area: union-europea
     tema_referencia: 3.B.45
-    motivo: El MEDE está en el título de 3.B.45 (tema sin fuente); 3.B.36-3.B.37 lo citan como institución y fuente de financiación.
+    motivo: Se escribe en 3.B.45 a partir de 3.B.37; 3.B.36 y 3.B.37 en mención o resumen.
     temas:
-      3.B.36: resumen
+      3.B.36: mencion (hoy resumen)
       3.B.37: resumen
       3.B.45: previsto (tema sin fuente)
       4.B.26: resumen
+    decision: D093 (13/10/2026)
   next-generation-eu:
     nombre: Next Generation EU y Mecanismo de Recuperación y Resiliencia
     area: union-europea
-    tema_referencia: 3.B.37
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    tema_referencia: 3.B.45
+    motivo: Lógica de la política fiscal común en 3.B.45; financiación en 3.B.37; PRTR en 4.A.29.
     temas:
-      3.B.37: desarrollo
+      3.B.37: resumen (financiación; hoy desarrollo)
+      3.B.45: desarrollo (previsto, sin fuente)
+      4.A.29: resumen aplicado (PRTR)
       4.B.21: mencion
       4.B.26: mencion
+    decision: D032 (13/10/2026)
   pec:
     nombre: PEC y PEC reforzado (Six-pack, Two-pack, Fiscal Compact), PDE, criterio de deuda (1/20)
     area: union-europea
     tema_referencia: 3.B.45
-    motivo: Las reglas fiscales de la UE están en el título de 3.B.45 (tema sin fuente); 4.B.21-4.B.26 las aplican a España.
+    motivo: Desarrollo con el marco de 2024 en 3.B.45; los 4.B lo aplican a España.
     temas:
       3.B.45: previsto (tema sin fuente)
       4.B.21: mencion
       4.B.22: mencion
       4.B.26: resumen
+    decision: D033 (13/10/2026)
   recursos-propios-ue:
     nombre: 'Decisión de Recursos Propios (2020): RPT, IVA, RNB, plásticos y nuevos recursos'
     area: union-europea
@@ -1292,26 +1334,33 @@ modelos:
     nombre: Semestre Europeo
     area: union-europea
     tema_referencia: 3.B.45
-    motivo: El Semestre Europeo está en el título de 3.B.45 (tema sin fuente).
+    motivo: Diseño en 3.B.45; aplicación a España en 4.A.29.
     temas:
       3.B.45: previsto (tema sin fuente)
+      4.A.29: resumen aplicado (PDM)
       4.B.26: resumen
+    decision: D118 (13/10/2026)
   descomposicion-pib-per-capita:
     nombre: Descomposición contable de la renta per cápita
     area: economia-espanola
-    tema_referencia: 4.A.29
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    tema_referencia: 4.A.30
+    motivo: Convergencia real con la UE (el bloque del antiguo 4.A.29 se traslada a 4.A.30); aplicación regional en 4.A.17.
     temas:
-      4.A.17: desarrollo
-      4.A.29: desarrollo
+      4.A.17: resumen aplicado (hoy desarrollo)
+      4.A.29: mencion (hoy desarrollo)
+      4.A.30: desarrollo (bloque trasladado desde 4.A.29)
+    decision: D097 (13/10/2026)
   doom-loop:
     nombre: Círculo vicioso deuda soberana-deuda bancaria
     area: economia-espanola
-    tema_referencia: 4.A.20
-    motivo: Lo tiene en el título (bancaria) y lo trata como resumen.
+    tema_referencia: 4.A.18
+    motivo: Explica la crisis de 2010-2012 en España; teoría general en 3.B.26 y solución institucional en 3.B.44.
     temas:
-      4.A.18: resumen
+      3.B.26: resumen (previsto, sin fuente)
+      3.B.44: mencion (previsto, sin fuente)
+      4.A.18: desarrollo (hoy resumen)
       4.A.20: resumen
+    decision: D078 (13/10/2026)
   airef:
     nombre: AIReF (2013-2014)
     area: sector-publico
@@ -1324,12 +1373,15 @@ modelos:
     nombre: Armonización de la imposición indirecta en la UE (1967/1977, Cockfield 1987, régimen transitorio 1993, tipos mínimos,
       IIEE 1992 y 2003)
     area: sector-publico
-    tema_referencia: 4.B.13
-    motivo: Lo tiene en el título (imposicion, indirecta) y lo trata como resumen.
+    tema_referencia: 3.B.39
+    motivo: Historia y estrategias en 3.B.39; IVA e impuestos especiales en 4.B.20 y directa (IS, BEFIT, pilar 2) en 4.B.18,
+      en resumen.
     temas:
-      4.B.13: resumen
-      4.B.18: desarrollo
-      4.B.20: desarrollo (previsto, sin fuente)
+      3.B.39: desarrollo (previsto)
+      4.B.13: mencion (hoy resumen)
+      4.B.18: resumen (imposición directa; hoy desarrollo)
+      4.B.20: resumen (IVA e impuestos especiales; previsto, sin fuente)
+    decision: D074 (13/10/2026)
   baumol-enfermedad-costes:
     nombre: Enfermedad de los costes de Baumol (1967)
     area: sector-publico
@@ -1357,11 +1409,13 @@ modelos:
   captura-regulador:
     nombre: Teoría de la captura del regulador (Stigler, 1971)
     area: sector-publico
-    tema_referencia: 4.B.2
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia: 3.A.20
+    motivo: Teoría positiva de la regulación (3.A.20, sin fuente); grupos de interés en 4.B.2.
     temas:
-      4.B.2: resumen
+      3.A.20: desarrollo (previsto, sin fuente)
+      4.B.2: resumen (grupos de interés)
       4.B.15: mencion
+    decision: D092 (13/10/2026)
   ciclo-politico-nordhaus:
     nombre: Ciclo político-económico de Nordhaus
     area: sector-publico
@@ -1374,29 +1428,35 @@ modelos:
   clasificaciones-presupuestarias:
     nombre: Clasificación orgánica, económica (capítulos I-IX) y funcional/por programas (4 áreas, 27 políticas, 400 programas)
     area: sector-publico
-    tema_referencia: 4.B.22
-    motivo: Lo tiene en el título (organica, politicas) y lo trata como desarrollo.
+    tema_referencia: 4.B.21
+    motivo: Definiciones y marco en 4.B.21; cifras de los PGE en 4.B.22.
     temas:
       4.B.5: resumen
-      4.B.21: resumen
-      4.B.22: desarrollo
+      4.B.21: desarrollo (hoy resumen)
+      4.B.22: resumen (cifras; hoy desarrollo)
+    decision: D055 (13/10/2026)
   cofog:
     nombre: cofog
     area: sector-publico
     tema_referencia: 4.B.23
-    motivo: 'Lo tiene en el título (cofog) y lo trata como desarrollo. (Tema sin fuente: hay que escribirlo.)'
+    motivo: COFOG y finanzas de las AAPP en contabilidad nacional en 4.B.23 (el bloque de 4.B.22 se traslada allí).
     temas:
       4.B.5: resumen
-      4.B.22: desarrollo
+      4.B.22: mencion (hoy desarrollo, se traslada)
       4.B.23: desarrollo (previsto, sin fuente)
+    decision: D055 (13/10/2026)
   competencia-fiscal:
     nombre: Competencia fiscal como dilema del prisionero
     area: sector-publico
-    tema_referencia: 4.B.12
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (mencion).
+    tema_referencia: 4.B.14
+    motivo: 'Federalismo fiscal: la competencia entre jurisdicciones es teoría central; aplicaciones internacional en 4.B.18
+      y entre CCAA en 4.B.25.'
     temas:
       4.B.12: mencion
+      4.B.14: desarrollo (previsto, sin fuente)
       4.B.18: mencion
+      4.B.25: resumen (previsto, sin fuente)
+    decision: D076 (13/10/2026)
   consolidacion-fiscal-espana:
     nombre: Evolución del saldo y procesos de consolidación en España (1975-2023)
     area: sector-publico
@@ -1434,11 +1494,17 @@ modelos:
   curva-lorenz:
     nombre: Curva de Lorenz antes y después de impuestos
     area: sector-publico
-    tema_referencia: 4.B.3
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia:
+    - 3.A.24
+    - 4.B.3
+    motivo: 'Doble, uno por ejercicio (Víctor): 4.B.3 en el 4.º (antes y después de impuestos; 4.A.3 la usa con datos) y 3.A.24
+      en el 3.º, lo bastante para entenderla sin el 4.º.'
     temas:
+      3.A.24: desarrollo (hoy mencion)
       4.A.3: previsto
-      4.B.3: resumen
+      4.B.3: desarrollo (hoy resumen)
+      4.B.9: mencion
+    decision: D075 (13/10/2026)
   downs-hotelling:
     nombre: Modelo de competencia electoral de Downs-Hotelling
     area: sector-publico
@@ -1453,19 +1519,26 @@ modelos:
       2 factores)
     area: sector-publico
     tema_referencia: 4.B.9
-    motivo: Lo tiene en el título (sustitucion) y lo trata como desarrollo.
+    motivo: La versión propia de 4.B.9 (1×2×2×2); el consumo-ocio de la copiada pasa a 4.B.10.
     temas:
       4.B.9: desarrollo
       4.B.10: desarrollo
+    decision: D098 (13/10/2026)
   efectos-no-keynesianos:
     nombre: Efectos no keynesianos de la política fiscal (Giavazzi-Pagano, Alesina)
     area: sector-publico
-    tema_referencia: 4.B.4
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia:
+    - 3.A.39
+    - 4.B.4
+    motivo: 'Doble, uno por ejercicio (Víctor): 3.A.39 en el 3.º (3.A.40 lo aplica a 2010-2013) y 4.B.4 en el 4.º (una sola
+      vez); aplicación a España en 4.B.26.'
     temas:
+      3.A.39: desarrollo (previsto)
+      3.A.40: resumen (previsto, sin fuente)
       4.A.28: mencion
-      4.B.4: resumen
+      4.B.4: desarrollo (hoy resumen, expuesto dos veces)
       4.B.26: mencion
+    decision: D069 (13/10/2026)
   efp:
     nombre: efp
     area: sector-publico
@@ -1497,20 +1570,22 @@ modelos:
     nombre: Exceso de gravamen (concepto y medición en equilibrio parcial)
     area: sector-publico
     tema_referencia: 4.B.9
-    motivo: Lo tiene en el título (concepto, exceso, gravamen, medicion) y lo trata como desarrollo.
+    motivo: Desarrollo solo en 4.B.9; en 4.B.11 resumen de media página.
     temas:
       4.B.7: resumen
       4.B.8: mencion
       4.B.9: desarrollo
-      4.B.11: desarrollo
+      4.B.11: resumen (hoy desarrollo)
+    decision: D079 (13/10/2026)
   financiacion-autonomica:
     nombre: financiacion-autonomica
     area: sector-publico
-    tema_referencia: 4.B.14
-    motivo: 'Lo tiene en el título (financiacion) y lo trata como desarrollo. (Tema sin fuente: hay que escribirlo.)'
+    tema_referencia: 4.B.25
+    motivo: El sistema español está en el título de 4.B.25; 4.B.14 es la teoría general.
     temas:
-      4.B.14: desarrollo (previsto, sin fuente)
+      4.B.14: resumen (teoría general; previsto, sin fuente)
       4.B.25: desarrollo (previsto, sin fuente)
+    decision: D122 (13/10/2026)
   fla-ffpp:
     nombre: fla-ffpp
     area: sector-publico
@@ -1524,10 +1599,11 @@ modelos:
     nombre: Modelo bisectorial de Harberger (1962)
     area: sector-publico
     tema_referencia: 4.B.8
-    motivo: Lo tiene en el título (incidencia) y lo trata como desarrollo.
+    motivo: 4.B.9 lo menciona (3-4 líneas) y remite.
     temas:
       4.B.8: desarrollo
-      4.B.9: resumen
+      4.B.9: mencion (hoy resumen copiado)
+    decision: D126 (13/10/2026)
   ibi:
     nombre: ibi
     area: sector-publico
@@ -1548,11 +1624,12 @@ modelos:
   impuesto-dual:
     nombre: impuesto-dual
     area: sector-publico
-    tema_referencia: 4.B.16
-    motivo: 'Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan. (Tema sin fuente: hay que escribirlo.)'
+    tema_referencia: 4.B.12
+    motivo: Teoría de la imposición directa; aplicación española (base del ahorro) en 4.B.16.
     temas:
-      4.B.12: resumen
-      4.B.16: desarrollo (previsto, sin fuente)
+      4.B.12: desarrollo (hoy resumen)
+      4.B.16: resumen aplicado (previsto, sin fuente)
+    decision: D123 (13/10/2026)
   impuesto-patrimonio:
     nombre: impuesto-patrimonio
     area: sector-publico
@@ -1612,18 +1689,20 @@ modelos:
       déficit y deuda'
     area: sector-publico
     tema_referencia: 4.B.5
-    motivo: Lo tiene en el título (tamano) y lo trata como desarrollo.
+    motivo: Desarrollo solo en 4.B.5.
     temas:
-      4.B.1: desarrollo
+      4.B.1: mencion (hoy desarrollo)
       4.B.5: desarrollo
+    decision: D127 (13/10/2026)
   ingreso-minimo-vital:
     nombre: ingreso-minimo-vital
     area: sector-publico
     tema_referencia: 4.B.24
-    motivo: 'Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan. (Tema sin fuente: hay que escribirlo.)'
+    motivo: El IMV como prestación no contributiva en 4.B.24; el diseño teórico de las rentas mínimas en 4.B.3.
     temas:
-      4.B.3: resumen
+      4.B.3: desarrollo (diseño teórico de las rentas mínimas)
       4.B.24: desarrollo (previsto, sin fuente)
+    decision: D124 (13/10/2026)
   irpf:
     nombre: irpf
     area: sector-publico
@@ -1646,11 +1725,12 @@ modelos:
   itf:
     nombre: Impuesto sobre transacciones financieras (ITF, 0,2 %)
     area: sector-publico
-    tema_referencia: 4.B.13
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia: 4.B.18
+    motivo: Fiscalidad internacional, junto al impuesto sobre servicios digitales.
     temas:
-      4.B.13: resumen
-      4.B.18: mencion
+      4.B.13: mencion (hoy resumen)
+      4.B.18: desarrollo (hoy mencion)
+    decision: D096 (13/10/2026)
   itpajd:
     nombre: itpajd
     area: sector-publico
@@ -1673,11 +1753,13 @@ modelos:
   leviatan-brennan-buchanan:
     nombre: Descentralización y gasto (Buchanan y Oates, 1980; Leviatán)
     area: sector-publico
-    tema_referencia: 4.B.5
-    motivo: Lo tiene en el título (gasto) y lo trata como mencion.
+    tema_referencia: 4.B.2
+    motivo: Límite normativo al Estado; 4.B.5 lo menciona como causa del gasto y 4.B.14 trata la hipótesis de la descentralización.
     temas:
-      4.B.2: resumen
+      4.B.2: desarrollo (hoy resumen)
       4.B.5: mencion
+      4.B.14: mencion (previsto, sin fuente)
+    decision: D095 (13/10/2026)
   loepsf:
     nombre: Reforma del art. 135 CE (2011)
     area: sector-publico
@@ -1694,12 +1776,15 @@ modelos:
   multiplicadores-fiscales:
     nombre: Multiplicadores fiscales
     area: sector-publico
-    tema_referencia: 4.B.4
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    tema_referencia: 3.A.40
+    motivo: Teoría (keynesiano, IS-LM, NEK en el límite inferior) en 3.A.40; definiciones empíricas y evidencia en 4.B.4,
+      que resume la teoría para su examen.
     temas:
-      3.A.38: desarrollo
+      3.A.38: resumen (hoy desarrollo)
+      3.A.40: desarrollo (previsto, sin fuente)
       4.A.11: mencion
-      4.B.4: desarrollo
+      4.B.4: desarrollo (evidencia y definiciones empíricas)
+    decision: D052 (13/10/2026)
   musgrave-funciones:
     nombre: musgrave-funciones
     area: sector-publico
@@ -1713,12 +1798,13 @@ modelos:
     nombre: Modelo de burocracia maximizadora del presupuesto de Niskanen (1971)
     area: sector-publico
     tema_referencia: 4.B.2
-    motivo: Lo tiene en el título (burocracia) y lo trata como desarrollo.
+    motivo: Desarrollo en 4.B.2; resumen en 4.B.5.
     temas:
       3.A.23: mencion
       3.A.24: mencion
       4.B.2: desarrollo
-      4.B.5: desarrollo
+      4.B.5: resumen (hoy desarrollo)
+    decision: D128 (13/10/2026)
   oates-descentralizacion:
     nombre: oates-descentralizacion
     area: sector-publico
@@ -1732,10 +1818,11 @@ modelos:
     nombre: Paradoja de Condorcet y manipulación de agenda
     area: sector-publico
     tema_referencia: 4.B.2
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    motivo: Desarrollo en 4.B.2 (agenda y voto estratégico); 3.A.24 la resume como antesala de Arrow.
     temas:
-      3.A.24: desarrollo
+      3.A.24: resumen (hoy desarrollo)
       4.B.2: desarrollo
+    decision: D121 (13/10/2026)
   pensiones:
     nombre: pensiones
     area: sector-publico
@@ -1782,14 +1869,15 @@ modelos:
     nombre: Medidas de progresividad local (elasticidad de la cuota, tipo medio y marginal)
     area: sector-publico
     tema_referencia: 4.B.9
-    motivo: Lo tiene en el título (medidas, progresividad) y lo trata como mencion.
+    motivo: Medidas de progresividad en el título de 4.B.9 (epígrafe que hay que escribir); 4.B.3, 4.B.7 y 4.B.12 remiten.
     temas:
       4.B.3: resumen
       4.B.4: resumen
       4.B.7: resumen
-      4.B.9: mencion
+      4.B.9: desarrollo (hoy mencion)
       4.B.12: resumen
       4.B.16: desarrollo (previsto, sin fuente)
+    decision: D054 (13/10/2026)
   ramsey:
     nombre: Regla de Ramsey (imposición óptima de bienes)
     area: sector-publico
@@ -1801,11 +1889,13 @@ modelos:
   rbc-sims:
     nombre: Modelo de ciclo real con gasto público (Sims 2015; Baxter-King 1993)
     area: sector-publico
-    tema_referencia: 4.B.4
-    motivo: Varios temas lo desarrollan; este es el que lo hace con más supuestos, ecuaciones y gráficos según los inventarios.
+    tema_referencia: 3.A.38
+    motivo: 'Elegido por Víctor (opción c): modelo completo en 3.A.38; RBC base en 3.A.42; 4.B.4 lo resume para su examen.'
     temas:
       3.A.38: desarrollo
-      4.B.4: desarrollo
+      3.A.42: mencion
+      4.B.4: resumen (hoy desarrollo)
+    decision: D088 (13/10/2026)
   rct:
     nombre: Experimentos aleatorizados (Duflo, Banerjee, Kremer) y cuasi-naturales (Card y Krueger)
     area: sector-publico
@@ -1844,11 +1934,12 @@ modelos:
   reynolds-smolensky:
     nombre: Índice de Reynolds-Smolensky
     area: sector-publico
-    tema_referencia: 4.B.3
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (mencion).
+    tema_referencia: 4.B.9
+    motivo: Medidas de progresividad en el título de 4.B.9 (epígrafe que hay que escribir); 4.B.3, 4.B.7 y 4.B.12 remiten.
     temas:
-      4.B.3: mencion
-      4.B.9: mencion
+      4.B.3: resumen (hoy mencion)
+      4.B.9: desarrollo (hoy mencion)
+    decision: D054 (13/10/2026)
   saldo-estructural:
     nombre: 'Descomposición del saldo: cíclico, cíclicamente ajustado y estructural (método indirecto de la Comisión Europea)'
     area: sector-publico
@@ -1871,11 +1962,14 @@ modelos:
   sec-2010-impuestos:
     nombre: Clasificación de impuestos en el SEC-2010
     area: sector-publico
-    tema_referencia: 4.B.12
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    tema_referencia: 4.B.7
+    motivo: Ingresos públicos y clases de impuestos; remisión desde 4.B.12 y 4.B.13; cifras de España en 4.B.23.
     temas:
+      4.B.7: desarrollo
       4.B.12: resumen
       4.B.13: resumen
+      4.B.23: resumen (cifras; previsto, sin fuente)
+    decision: D077 (13/10/2026)
   separacion-vertical:
     nombre: Liberalización y privatización de industrias red (acceso regulado, separación vertical, club, partes recíprocas)
     area: sector-publico
@@ -1889,10 +1983,11 @@ modelos:
     nombre: 'Tamaño óptimo: igualación CMg social = BMg social'
     area: sector-publico
     tema_referencia: 4.B.5
-    motivo: Lo tiene en el título (tamano) y lo trata como resumen.
+    motivo: Desarrollo solo en 4.B.5; se suprime de 4.B.1 el comodín.
     temas:
-      4.B.1: resumen
-      4.B.5: resumen
+      4.B.1: nada (se suprime el comodín)
+      4.B.5: desarrollo
+    decision: D127 (13/10/2026)
   tiebout:
     nombre: tiebout
     area: sector-publico
@@ -1915,11 +2010,12 @@ modelos:
   yardstick:
     nombre: Competencia por comparación (Shleifer, 1985) y mecanismo de Loeb-Magat
     area: sector-publico
-    tema_referencia: 4.B.15
-    motivo: Lo tiene en el título (comparacion) y lo trata como mencion.
+    tema_referencia: 3.A.17
+    motivo: Regulación del monopolio natural, junto a Averch-Johnson, price cap y Laffont-Tirole.
     temas:
-      3.A.17: mencion
-      4.B.15: mencion
+      3.A.17: desarrollo (hoy mencion)
+      4.B.15: resumen (hoy mencion)
+    decision: D091 (13/10/2026)
 temas:
   3.A.1:
     titulo: Objeto y métodos de la ciencia económica. Cuestiones y debates actuales, con especial referencia a la economía
@@ -2209,6 +2305,7 @@ temas:
     - malinvaud
     - marshall-equilibrio-parcial
     - modelo-clasico-neoclasico
+    - patinkin
     - phillips
     - postkeynesianos
     revisado: null
@@ -2714,6 +2811,7 @@ temas:
     - gorman-agregacion
     - identidad-roy
     - lancaster
+    - leontief
     - marshall-cardinal
     - pmu
     - precios-hedonicos
@@ -2772,6 +2870,9 @@ temas:
     - a: 3.A.8
       por_que: Los índices de Laspeyres y Paasche y el axioma débil de la preferencia revelada (KMS 1976, Introducción) se
         apoyan en III.1 de 3.A.8; también la identidad de Roy y Slutsky enunciados allí.
+    - a: 3.A.11
+      por_que: Usa Utilidad Cobb-Douglas (resumen); su tema de referencia es 3.A.11 (decisión D005). Remitir para ampliar,
+        sin depender de él.
     modelos:
     - cobb-douglas
     - dualidad-consumidor
@@ -3182,7 +3283,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - mercados-impugnables
     revisado: null
   3.A.16:
     titulo: 'Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo;
@@ -3567,7 +3669,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - captura-regulador
     revisado: null
   3.A.21:
     titulo: La teoría del equilibrio general.
@@ -3640,6 +3743,9 @@ temas:
       por_que: Unicidad mediante el axioma débil de la preferencia revelada.
     - a: 3.A.16
       por_que: 'Estabilidad walrasiana/marshalliana se trata también en ''dinámicas de ajuste y estabilidad'' de 3.A.16: coordinar.'
+    - a: 3.A.4
+      por_que: 'Usa Patinkin (1956): efecto saldos reales (resumen); su tema de referencia es 3.A.4 (decisión D111). Remitir
+        para ampliar, sin depender de él.'
     modelos:
     - arrow-debreu-incertidumbre
     - caja-edgeworth
@@ -3908,6 +4014,7 @@ temas:
     - borda
     - buchanan-tullock-mayoria-optima
     - clarke-groves
+    - curva-lorenz
     - downs-hotelling
     - fbs-rawlsiana
     - fbs-utilitarista
@@ -4252,7 +4359,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - input-output
     revisado: null
   3.A.32:
     titulo: 'El modelo de oferta y demanda agregada: determinación de renta e inflación en una economía abierta. Análisis
@@ -4261,7 +4369,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - mundell-fleming
     revisado: null
   3.A.33:
     titulo: 'Teorías de la demanda de consumo corriente: ciclo vital y renta permanente. La demanda de bienes de consumo duradero.
@@ -4473,6 +4582,15 @@ temas:
       por_que: Mundell-Fleming y transmisión por el tipo de cambio.
     - a: 3.A.42
       por_que: Ciclo financiero y acelerador financiero.
+    - a: 3.A.32
+      por_que: Usa Modelo IS-LM-BP (Mundell-Fleming) (resumen (hoy desarrollo)); su tema de referencia es 3.A.32 (decisión
+        D014). Remitir para ampliar, sin depender de él.
+    - a: 3.A.5
+      por_que: Usa Modelo IS-LM (Hicks 1937, Modigliani 1944) (resumen); su tema de referencia es 3.A.5 (decisión D031). Remitir
+        para ampliar, sin depender de él.
+    - a: 3.A.28
+      por_que: Usa Curva de Phillips original, Lipsey, Samuelson-Solow, ampliada (Phelps-Friedman) (resumen); su tema de referencia
+        es 3.A.28 (decisión D031). Remitir para ampliar, sin depender de él.
     modelos:
     - bernanke-gertler
     - blinder-stiglitz
@@ -4544,6 +4662,12 @@ temas:
       por_que: Mundell-Fleming en economía abierta.
     - a: 3.A.43
       por_que: Modelo de Ramsey con impuestos (extensión de 3.A.43).
+    - a: 3.A.32
+      por_que: Usa Modelo IS-LM-BP (Mundell-Fleming) (mencion (hoy resumen)); su tema de referencia es 3.A.32 (decisión D014).
+        Remitir para ampliar, sin depender de él.
+    - a: 3.A.5
+      por_que: Usa Modelo IS-LM (Hicks 1937, Modigliani 1944) (resumen); su tema de referencia es 3.A.5 (decisión D031). Remitir
+        para ampliar, sin depender de él.
     modelos:
     - barro-1990
     - equivalencia-ricardiana
@@ -4587,10 +4711,18 @@ temas:
       por_que: Cagan y señoreaje, también en 3.A.35.
     - a: 3.A.6
       por_que: Sargent y Wallace (1981); el autor anota «Coordinar en temas 3.A.6 y 3.A.39».
+    - a: 3.A.40
+      por_que: Usa Estancamiento secular (Hansen, Summers, Rachel-Summers 2019; debate Blanchard-Summers) (resumen (hoy desarrollo,
+        se traslada a 3.A.40)); su tema de referencia es 3.A.40 (decisión D051). Remitir para ampliar, sin depender de él.
+    - a: 3.A.5
+      por_que: Usa Modelo IS-LM (Hicks 1937, Modigliani 1944) (resumen); su tema de referencia es 3.A.5 (decisión D031). Remitir
+        para ampliar, sin depender de él.
     modelos:
     - aritmetica-monetarista
     - cagan
+    - efectos-no-keynesianos
     - equivalencia-ricardiana
+    - estancamiento-secular
     - ftpl
     - is-lm
     - restriccion-gobierno
@@ -4602,9 +4734,14 @@ temas:
     bloque: ciclo-economico-y-politicas-de-demanda
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 3.A.39
+      por_que: Usa Efectos no keynesianos de la política fiscal (Giavazzi-Pagano, Alesina) (resumen (previsto, sin fuente));
+        su tema de referencia es 3.A.39 (decisión D069). Remitir para ampliar, sin depender de él.
     modelos:
+    - efectos-no-keynesianos
     - estancamiento-secular
+    - multiplicadores-fiscales
     revisado: null
   3.A.41:
     titulo: 'La inflación: causas y efectos sobre la eficiencia económica y el bienestar. Hiperinflación y deflación.'
@@ -4743,6 +4880,7 @@ temas:
     - nek-3-ecuaciones
     - ramsey-cass-koopmans
     - rbc
+    - rbc-sims
     revisado: null
   3.A.43:
     titulo: Crecimiento económico (I). Acumulación de capital y progreso técnico exógeno. El modelo de Solow. El modelo de
@@ -5395,7 +5533,7 @@ temas:
     - haberler
     - heckscher-ohlin
     - hov
-    - leontief
+    - paradoja-leontief
     - ricardo
     revisado: null
   3.B.6:
@@ -6151,7 +6289,7 @@ temas:
       contexto: en rules of thumb para simplificar la complejidad de la realidad [ver tema 3.A.10 ]. - Relevancia. - Los modelos
         de behavioral finance ofrecen
     - a: 3.B.13
-      estado: ok
+      estado: corregir -> 3.B.25
       contexto: 'p. 395. Anexo 2: Expectations Hypothesis, Normal Backwardation y Contango Coordinar en temas 3.B.13 y 3.B.25
         - Expectations Hypothesis: - The expectations hypothesis is'
     - a: 3.B.25
@@ -6848,6 +6986,7 @@ temas:
     faltan: []
     modelos:
     - diamond-dybvig
+    - doom-loop
     revisado: null
   3.B.27:
     titulo: Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.
@@ -6989,7 +7128,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - cbam
     revisado: null
   3.B.32:
     titulo: Perspectivas económicas mundiales. Estructura sectorial y geográfica de los flujos comerciales y financieros internacionales.
@@ -7378,6 +7518,7 @@ temas:
     - a: 4.A.15
       por_que: políticas de liberalización y Directiva de servicios
     modelos:
+    - armonizacion-fiscal-ue
     - directiva-servicios
     - feldstein-horioka
     - ineficiencia-x
@@ -7507,11 +7648,15 @@ temas:
       por_que: Mercosur y otros procesos de integración no comunitarios
     - a: 3.B.39
       por_que: unión aduanera como base del mercado interior
+    - a: 3.B.31
+      por_que: Usa Mecanismo de Ajuste en Frontera por Carbono (resumen); su tema de referencia es 3.B.31 (decisión D072).
+        Remitir para ampliar, sin depender de él.
     modelos:
     - acuerdos-comerciales-ue
     - arancel-exterior-comun
     - arancel-optimo
     - brander-spencer
+    - cbam
     - defensa-comercial-ue
     - gravedad
     - industria-naciente
@@ -7593,7 +7738,8 @@ temas:
     fuente_disponible: 'no'
     referencias: []
     faltan: []
-    modelos: []
+    modelos:
+    - doom-loop
     revisado: null
   3.B.45:
     titulo: La gobernanza económica de la Unión Europea y de la zona euro. El Semestre Europeo. Las reglas fiscales y el Procedimiento
@@ -7605,6 +7751,7 @@ temas:
     faltan: []
     modelos:
     - mede
+    - next-generation-eu
     - pec
     - semestre-europeo
     revisado: null
@@ -7637,6 +7784,9 @@ temas:
       por_que: Sesgos del IPC como medida del coste de la vida (efecto sustitución) e inflación subyacente.
     - a: 4.A.17
       por_que: Contabilidad Regional de España, base de los datos de convergencia regional.
+    - a: 3.A.31
+      por_que: Usa Marco input-output (tablas de origen y destino) (resumen); su tema de referencia es 3.A.31 (decisión D112).
+        Remitir para ampliar, sin depender de él.
     modelos:
     - identidad-balanza-pagos
     - indices-precios
@@ -7660,7 +7810,10 @@ temas:
     bloque: 4a-desigualdad
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 4.B.3
+      por_que: Usa Curva de Lorenz antes y después de impuestos (previsto); su tema de referencia es 4.B.3 (decisión D075).
+        Remitir para ampliar, sin depender de él.
     modelos:
     - curva-lorenz
     - kuznets
@@ -8558,7 +8711,9 @@ temas:
     modelos:
     - dafo
     - descomposicion-pib-per-capita
+    - next-generation-eu
     - rbc
+    - semestre-europeo
     - uzawa-lucas
     revisado: null
   4.A.30:
@@ -8600,6 +8755,7 @@ temas:
       por_que: Convergencia real (desarrollada hoy en el antiguo 4.A.29) y NGEU.
     modelos:
     - areas-monetarias-optimas
+    - descomposicion-pib-per-capita
     revisado: null
   4.B.1:
     titulo: 'El sector público: delimitación, operaciones y cuentas principales según el Sistema Europeo de Cuentas.'
@@ -8913,6 +9069,12 @@ temas:
       por_que: Reforma laboral de 2012 y su efecto sobre la NAWRU; prestaciones por desempleo.
     - a: 4.B.1
       por_que: Definiciones de saldo total, primario, cíclicamente ajustado y estructural ya dadas en 4.B.1.
+    - a: 4.B.9
+      por_que: Usa Medidas de progresividad local (elasticidad de la cuota, tipo medio y marginal) (resumen); su tema de referencia
+        es 4.B.9 (decisión D054). Remitir para ampliar, sin depender de él.
+    - a: 3.A.5
+      por_que: Usa Modelo IS-LM (Hicks 1937, Modigliani 1944) (resumen); su tema de referencia es 3.A.5 (decisión D031). Remitir
+        para ampliar, sin depender de él.
     modelos:
     - efectos-no-keynesianos
     - equivalencia-ricardiana
@@ -8976,6 +9138,9 @@ temas:
       por_que: Estancamiento secular y política fiscal (Summers, Blanchard)
     - a: 3.B.45
       por_que: Reglas fiscales europeas (Maastricht, PEC) citadas en 1980–2008 y soluciones
+    - a: 4.B.21
+      por_que: Usa Clasificación orgánica, económica (capítulos I-IX) y funcional/por programas (4 áreas, 27 políticas, 400
+        programas) (resumen); su tema de referencia es 4.B.21 (decisión D055). Remitir para ampliar, sin depender de él.
     modelos:
     - barro-1990
     - baumol-enfermedad-costes
@@ -9107,6 +9272,7 @@ temas:
     - progresividad
     - residuo-fiscal
     - sec-2010
+    - sec-2010-impuestos
     - seligman-clasificacion
     - teoremas-bienestar
     - tributos-lgt
@@ -9223,8 +9389,15 @@ temas:
       por_que: Modelo de dos periodos para el ahorro
     - a: 3.A.33
       por_que: Consumo intertemporal y efecto del tipo de interés sobre el ahorro
+    - a: 3.A.39
+      por_que: Usa Suavización impositiva (Barro 1979) (resumen); su tema de referencia es 3.A.39 (decisión D089). Remitir
+        para ampliar, sin depender de él.
+    - a: 4.B.8
+      por_que: Usa Modelo bisectorial de Harberger (1962) (mencion (hoy resumen copiado)); su tema de referencia es 4.B.8
+        (decisión D126). Remitir para ampliar, sin depender de él.
     modelos:
     - corlett-hague
+    - curva-lorenz
     - efecto-renta-sustitucion-impuesto
     - equivalencia-iva-irpf
     - exceso-gravamen
@@ -9370,6 +9543,9 @@ temas:
     - a: 3.A.29
       por_que: Chamley-Judd usa un modelo de horizonte infinito; la crítica de Piketty-Saez a vidas finitas remite a generaciones
         solapadas.
+    - a: 4.B.9
+      por_que: Usa Exceso de gravamen (concepto y medición en equilibrio parcial) (resumen (hoy desarrollo)); su tema de referencia
+        es 4.B.9 (decisión D079). Remitir para ampliar, sin depender de él.
     modelos:
     - atkinson-stiglitz
     - chamley-judd
@@ -9448,6 +9624,9 @@ temas:
       por_que: Clasificación de impuestos del SEC-2010 (D.5, D.91) y renta Haig-Simons.
     - a: 4.B.1
       por_que: Las operaciones del SEC (cuenta de distribución secundaria de la renta, cuenta de capital) se definen en 4.B.1.
+    - a: 4.B.7
+      por_que: Usa Clasificación de impuestos en el SEC-2010 (resumen); su tema de referencia es 4.B.7 (decisión D077). Remitir
+        para ampliar, sin depender de él.
     modelos:
     - beneficios-fiscales
     - beps
@@ -9524,6 +9703,9 @@ temas:
       por_que: Comparación imposición directa/indirecta y el debate renta frente a consumo.
     - a: 4.B.3
       por_que: Regresividad de la imposición indirecta y medición del impacto redistributivo.
+    - a: 4.B.7
+      por_que: Usa Clasificación de impuestos en el SEC-2010 (resumen); su tema de referencia es 4.B.7 (decisión D077). Remitir
+        para ampliar, sin depender de él.
     modelos:
     - aranceles
     - armonizacion-fiscal-ue
@@ -9547,11 +9729,19 @@ temas:
     bloque: 4b-federalismo-fiscal-y-haciendas-territoriales
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 4.B.2
+      por_que: Usa Descentralización y gasto (Buchanan y Oates, 1980; Leviatán) (mencion (previsto, sin fuente)); su tema
+        de referencia es 4.B.2 (decisión D095). Remitir para ampliar, sin depender de él.
+    - a: 4.B.25
+      por_que: Usa financiacion-autonomica (resumen (teoría general; previsto, sin fuente)); su tema de referencia es 4.B.25
+        (decisión D122). Remitir para ampliar, sin depender de él.
     modelos:
+    - competencia-fiscal
     - efecto-papel-matamoscas
     - federalismo-fiscal
     - financiacion-autonomica
+    - leviatan-brennan-buchanan
     - musgrave-funciones
     - oates-descentralizacion
     - restriccion-presupuestaria-blanda
@@ -9635,7 +9825,13 @@ temas:
     bloque: 4b-impuestos
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 4.B.9
+      por_que: Usa Medidas de progresividad local (elasticidad de la cuota, tipo medio y marginal) (desarrollo (previsto,
+        sin fuente)); su tema de referencia es 4.B.9 (decisión D054). Remitir para ampliar, sin depender de él.
+    - a: 4.B.12
+      por_que: Usa impuesto-dual (resumen aplicado (previsto, sin fuente)); su tema de referencia es 4.B.12 (decisión D123).
+        Remitir para ampliar, sin depender de él.
     modelos:
     - impuesto-dual
     - irpf
@@ -9734,7 +9930,11 @@ temas:
     bloque: 4b-impuestos
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 3.B.39
+      por_que: Usa Armonización de la imposición indirecta en la UE (1967/1977, Cockfield 1987, régimen transitorio 1993,
+        tipos mínimos, IIEE 1992 y 2003) (resumen (IVA e impuestos especiales; previsto, sin fuente)); su tema de referencia
+        es 3.B.39 (decisión D074). Remitir para ampliar, sin depender de él.
     modelos:
     - armonizacion-fiscal-ue
     - impuestos-especiales
@@ -9846,13 +10046,17 @@ temas:
     bloque: 4b-gastos-y-presupuestos
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 4.B.7
+      por_que: Usa Clasificación de impuestos en el SEC-2010 (resumen (cifras; previsto, sin fuente)); su tema de referencia
+        es 4.B.7 (decisión D077). Remitir para ampliar, sin depender de él.
     modelos:
     - cofog
     - efp
     - presion-fiscal
     - programa-estabilidad
     - sec-2010
+    - sec-2010-impuestos
     - subsectores-aapp
     revisado: null
   4.B.24:
@@ -9876,8 +10080,12 @@ temas:
     bloque: 4b-federalismo-fiscal-y-haciendas-territoriales
     fuente_disponible: 'no'
     referencias: []
-    faltan: []
+    faltan:
+    - a: 4.B.14
+      por_que: Usa Competencia fiscal como dilema del prisionero (resumen (previsto, sin fuente)); su tema de referencia es
+        4.B.14 (decisión D076). Remitir para ampliar, sin depender de él.
     modelos:
+    - competencia-fiscal
     - financiacion-autonomica
     - financiacion-local
     - fla-ffpp

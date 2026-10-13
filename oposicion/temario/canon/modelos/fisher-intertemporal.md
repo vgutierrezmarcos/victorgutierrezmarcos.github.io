@@ -3,6 +3,8 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.33 (teorías del consumo) — es la base microeconómica de ciclo vital y renta permanente.
 - **Temas que lo usan:** 3.A.33 (desarrollo), 3.A.29 (desarrollo → resumen), 4.B.9 (desarrollo: impuestos y ahorro), 4.B.10 (desarrollo: impuestos)
 - **Manuales de referencia:** Fisher, *The Theory of Interest* (1930); Romer (2019), cap. 8; Heijdra (2017); Mas-Colell, Whinston y Green (1995), cap. 20; Rosen y Gayer (imposición del ahorro).
+- **Decisión D001 (13/10/2026):** ¿Qué letra lleva el coeficiente de aversión relativa al riesgo (CRRA) de u(c)=c^{1−θ}/(1−θ), y cómo se escribe la elasticidad de sustitución intertemporal? θ para la CRRA en todo el temario y la ESI como 1/θ, sin símbolo propio; σ queda para la elasticidad de sustitución intratemporal (CES, Dixit-Stiglitz) y la desviación típica
+- **Decisión D099 (13/10/2026):** ¿Dónde se desarrolla el modelo de Fisher con impuestos (consumo-ahorro)? En 4.B.10 (efectos incentivo sobre el ahorro); 4.B.9 lo resume
 
 ## Presentación de referencia
 Pregunta: ¿cómo reparte un hogar el consumo entre hoy y mañana? Supuestos: dos periodos; rentas Y_1, Y_2; mercado de capitales perfecto (presta y pide prestado al tipo real r); preferencias U(C_1, C_2) = u(C_1) + β u(C_2), con β ≡ 1/(1+ρ).
@@ -23,7 +25,7 @@ Gráfico de referencia: plano (C_1, C_2); restricción presupuestaria con pendie
 
 ## Divergencias encontradas en el temario actual
 - Desarrollado en cuatro temas con notaciones distintas: c_t, r_t (3.A.29); C_1, C_2, r (4.B.9, 4.B.10). Propuesta: **C_1, C_2, r** en el modelo de dos periodos; C_t en la generalización.
-- 3.A.29 llama σ a la ESI («ESI ≡ σ = 1/θ»): propuesta **1/θ** sin símbolo propio **[decidir]**.
-- 4.B.9 y 4.B.10 desarrollan el mismo bloque casi igual: decidir cuál lo desarrolla y cuál remite.
+- 3.A.29 llama σ a la ESI («ESI ≡ σ = 1/θ»): canon **1/θ** sin símbolo propio (σ queda para la elasticidad de sustitución intratemporal).
+- 4.B.9 y 4.B.10 desarrollan el mismo bloque casi igual: el desarrollo (efectos incentivo sobre el ahorro) va en 4.B.10 y 4.B.9 lo resume.
 
 Autor: Víctor Gutiérrez Marcos

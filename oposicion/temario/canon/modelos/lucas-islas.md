@@ -3,6 +3,7 @@
 - **Área:** pensamiento · **Tema de referencia:** 3.A.6 (La nueva macroeconomía clásica) — es el modelo fundacional de la NMC y combina expectativas racionales con neutralidad del dinero anticipado.
 - **Temas que lo usan:** 3.A.6 (desarrollo), 3.A.37 (resumen: neutralidad del dinero anticipado; hoy desarrollo), 3.A.41 (mención; hoy desarrollo), 3.A.42 (resumen: ciclos nominales de equilibrio; hoy mención).
 - **Manuales de referencia:** Lucas (1972), *JET* 4; Lucas (1973), *AER* 63; Phelps (1970); Romer (2019), cap. 6.9; Blanchard y Fischer (1989), cap. 7; Heijdra (2017), cap. 3; De Vroey (2016), cap. 9.
+- **Decisión D036 (13/10/2026):** ¿Cómo se escriben el coeficiente de extracción de señal y la respuesta de la producción en el modelo de islas de Lucas? ω = σ²_z/(σ²_z+σ²_p) y ψ ≡ ω·ε_S en y_t = y^n_t + ψ(p_t − p^e_t)
 
 ## Presentación de referencia
 
@@ -33,8 +34,8 @@ $$y_t = y^n_t + \psi\,(p_t - p^e_t),\qquad \psi = \omega\,\varepsilon_S,\quad p^
 
 ## Divergencias encontradas en el temario actual
 
-- **θ** como coeficiente de extracción de señal (3.A.6, 3.A.37) choca con la CRRA θ que usan los mismos temas (RBC en 3.A.6, IS dinámica en 3.A.37): propuesta **ω** **[decidir]**.
-- **β** como respuesta de la producción (3.A.6, 3.A.37, 3.A.41) choca con el factor de descuento: propuesta **ψ = ω·ε_S** **[decidir]**.
+- **θ** como coeficiente de extracción de señal (3.A.6, 3.A.37) choca con la CRRA θ que usan los mismos temas (RBC en 3.A.6, IS dinámica en 3.A.37): canon **ω** = σ²_z/(σ²_z+σ²_p).
+- **β** como respuesta de la producción (3.A.6, 3.A.37, 3.A.41) choca con el factor de descuento: canon **ψ ≡ ω·ε_S** en y_t = y^n_t + ψ(p_t − p^e_t).
 - **y_TNP** (3.A.6, 3.A.37, 3.A.41) para la producción natural: canon **y^n_t**.
 - **3.A.6** escribe ω con varianzas «σ²_{p_i}» y «σ²_p» (varianza del precio de la isla y del nivel general), mientras que el resultado estándar usa la varianza del shock relativo σ²_z en el numerador: aclarar.
 - **Desarrollo en tres temas** (3.A.6, 3.A.37, 3.A.41) con la misma ecuación: propuesta, desarrollo solo en 3.A.6.

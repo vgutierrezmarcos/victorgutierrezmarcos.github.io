@@ -3,6 +3,7 @@
 - **Área:** finanzas-empresa · **Tema de referencia:** 3.B.23 (… Teoría de la elección de cartera) — lo tiene en el título.
 - **Temas que lo usan:** 3.B.23 (desarrollo), 3.A.10 (mención: aplicación de la elección con incertidumbre)
 - **Manuales de referencia:** Markowitz (1952, *JF*); Bodie, Kane y Marcus, caps. 7-8; Elton, Gruber, Brown y Goetzmann, caps. 4-6; Mas-Colell, Whinston y Green, cap. 6 (fundamento de utilidad esperada).
+- **Decisión D063 (13/10/2026):** ¿Mayúsculas o minúsculas para las rentabilidades (r_f, r_M, r_i)? Minúsculas r_f, r_M, r_i (Bodie-Kane-Marcus; coherente con r_E, r_D)
 
 ## Presentación de referencia
 **Pregunta:** ¿cómo elige cartera un inversor averso al riesgo?
@@ -23,6 +24,6 @@ $$E(r_p) = \sum_i w_i E(r_i), \qquad \sigma_p^2 = \sum_i\sum_j w_i w_j \sigma_{i
 
 ## Divergencias encontradas en el temario actual
 - Pesos $X_i$ (Markowitz), $w$ (Tobin) y $w_i$ (Sharpe) dentro de 3.B.23. Canon: $w_i$ en todo el tema.
-- Rendimientos $R_i$ en 3.B.23: canon $r_i$ (ver `capm`) **[decidir]**.
+- Rendimientos $R_i$ en 3.B.23: canon $r_i$ (ver `capm`).
 
 Autor: Víctor Gutiérrez Marcos

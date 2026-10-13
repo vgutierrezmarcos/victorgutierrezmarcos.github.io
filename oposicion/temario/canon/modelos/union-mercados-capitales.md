@@ -3,6 +3,7 @@
 - **Área:** union-europea · **Tema de referencia:** 3.B.44 (lo tiene en el título; **sin fuente**). Hoy está en 3.B.39 (resumen, dentro de la libre circulación de capitales)
 - **Temas que lo usan:** 3.B.44 (desarrollo previsto), 3.B.39 (resumen → mención), 4.A.20 (resumen: financiación no bancaria en España), 4.A.19 y 4.A.18 (mención)
 - **Manuales de referencia:** Comisión Europea, Plan de acción de la UMC (2015 y 2020) y comunicación sobre la Unión de Ahorros e Inversiones (19-3-2025); informes Letta (2024) y Draghi (2024)
+- **Decisión D073 (13/10/2026):** ¿Dónde van la Unión Bancaria y la Unión de Mercados de Capitales? Diseño de las dos en 3.B.44 (UMC trasladada desde 3.B.39); aplicación a España en 4.A.19
 
 ## Presentación de referencia
 Pregunta: por qué la financiación de la UE depende tanto de la banca y cómo integrar los mercados de capitales.
@@ -17,6 +18,6 @@ Argumento económico: diversificación de la financiación, reparto privado de r
 | 4.A.20 | Financiación no bancaria en España | Resumen | Efectos en España (BME Growth, MARF, titulización) | Arquitectura europea |
 
 ## Divergencias encontradas en el temario actual
-- **Desplazada a 3.B.39** (sección «Unión de Mercados de Capitales» con código normativo único y Basilea III). **[decidir]** Propuesta: llevarla a 3.B.44 y dejar en 3.B.39 una remisión.
+- **Desplazada a 3.B.39** (sección «Unión de Mercados de Capitales» con código normativo único y Basilea III). Reparto: pasa a 3.B.44 y 3.B.39 remite.
 - 4.A.18-4.A.20: «se completará en 2019» (desactualizado); 4.A.19 la atribuye a Juncker (correcto, 2014) sin la UAI de 2025.
 - «Unión de Mercados de Capitales» / «Unión del Mercado de Capitales»: usar la primera (denominación oficial en español).

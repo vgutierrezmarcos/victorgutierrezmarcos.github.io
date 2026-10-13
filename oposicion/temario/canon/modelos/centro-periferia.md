@@ -3,6 +3,8 @@
 - **Área:** comercio · **Tema de referencia:** 3.B.6 (Nueva teoría del comercio: competencia imperfecta, rendimientos crecientes) — el modelo es la extensión de Krugman (1980) con movilidad de factores y comparte con él Dixit-Stiglitz y los costes iceberg, que 3.B.6 ya desarrolla.
 - **Temas que lo usan:** 3.B.6 (desarrollo), 3.B.9 (desarrollo → resumen), 3.B.10 (resumen → mención), 3.B.16 (desarrollo → resumen del resultado), 3.B.35 (resumen), 3.B.40 (desarrollo → resumen aplicado), 4.A.12 (mención), 4.A.17 (resumen)
 - **Manuales de referencia:** Krugman (1991), «Increasing Returns and Economic Geography», *JPE*; Fujita, Krugman y Venables, *The Spatial Economy* (1999), caps. 4-5; Baldwin, Forslid, Martin, Ottaviano y Robert-Nicoud, *Economic Geography and Public Policy* (2003); Combes, Mayer y Thisse, *Economic Geography* (2008); Feenstra, *Advanced International Trade*, cap. 5.
+- **Decisión D019 (13/10/2026):** ¿Cómo se escriben en la NEG el peso del gasto en manufacturas y el margen? μ para el peso de las manufacturas (Krugman 1991, FKV) y el margen como σ/(σ−1) sin símbolo; utilidad U = X^{1−μ}V^{μ}
+- **Decisión D041 (13/10/2026):** ¿Se mantiene un solo id para la familia de la nueva geografía económica? Sí: `centro-periferia` con un apartado «familia NEG»; la hipótesis de especialización de Krugman (1993) va en `areas-monetarias-optimas`
 
 ## Presentación de referencia
 **Pregunta:** ¿por qué y cuándo la industria se concentra en unas regiones dejando a otras como periferia, sin diferencias exógenas entre ellas?
@@ -30,9 +32,9 @@ $$\omega_i = \frac{w_i}{P_X^{1-\gamma}P_i^{\gamma}}, \qquad \dot\lambda_A = \ome
 
 ## Divergencias encontradas en el temario actual
 - **Copia literal** del bloque completo (siete ecuaciones y el tomahawk) en 3.B.6, 3.B.9 y 3.B.10, y versión reducida pero propia en 3.B.16 y 3.B.40.
-- **Fusión de ids** (`krugman-centro-periferia`, `nueva-geografia-economica` → `centro-periferia`): correcta para el modelo de Krugman (1991), que es la presentación canónica de la NEG en el temario, pero **no del todo** para (i) la hipótesis de especialización de Krugman (1993) que usa 3.B.16 (es un argumento de AMO; va en `areas-monetarias-optimas`), (ii) las determinantes de primera naturaleza de 4.A.12 y (iii) los vínculos verticales de Venables (1996) y Fujita-Krugman-Venables de 3.B.40/4.A.17. Propuesta: mantener un solo id con un apartado «familia NEG» en la ficha y no crear fichas nuevas **[decidir]**.
+- **Fusión de ids** (`krugman-centro-periferia`, `nueva-geografia-economica` → `centro-periferia`): correcta para el modelo de Krugman (1991), que es la presentación canónica de la NEG en el temario, pero **no del todo** para (i) la hipótesis de especialización de Krugman (1993) que usa 3.B.16 (es un argumento de AMO; va en `areas-monetarias-optimas`), (ii) las determinantes de primera naturaleza de 4.A.12 y (iii) los vínculos verticales de Venables (1996) y Fujita-Krugman-Venables de 3.B.40/4.A.17. Canon: un solo id con un apartado «familia NEG» en la ficha, sin fichas nuevas; la hipótesis de especialización de Krugman (1993) va en `areas-monetarias-optimas`.
 - La utilidad del inventario se escribe $u = X^{\alpha}[\dots]$ mientras el gasto en manufacturas es $\gamma$: canon $U = X^{1-\gamma}V^{\gamma}$.
-- Choques de símbolos: $\gamma$ (peso de manufacturas) frente a $\gamma$ tasa de variación en macro abierta; $\mu$ markup aquí frente a $\mu$ peso de manufacturas en Krugman (1991) y FKV. Propuesta en `_notacion/comercio.md` **[decidir]**.
+- Choques de símbolos: $\gamma$ (peso de manufacturas) frente a $\gamma$ tasa de variación en macro abierta; $\mu$ markup aquí frente a $\mu$ peso de manufacturas en Krugman (1991) y FKV. Canon (`_notacion/comercio.md`): $\mu$ = peso de las manufacturas (Krugman 1991, FKV) y el margen escrito $\sigma/(\sigma-1)$, sin símbolo; utilidad $U=X^{1-\mu}V^{\mu}$.
 - La libertad comercial se escribe $\zeta$ en 3.B.6; canon $\phi_\tau = \tau^{1-\sigma}$ (Baldwin et al.) o $\zeta$, pero uno solo.
 
 Autor: Víctor Gutiérrez Marcos

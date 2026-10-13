@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.5 (debate sobre el tamaño del sector público, en lo referente al gasto) — está en el título.
 - **Temas que lo usan:** 4.B.5 (resumen; debería ser desarrollo), 4.B.1 (resumen como «comodín»; debería ser mención o desaparecer), 3.A.38/3.A.44 (Barro, 1990: tamaño que maximiza el crecimiento, ficha `barro-1990`)
 - **Manuales de referencia:** Stiglitz y Rosengard, cap. 1 y 4; Musgrave (1959); Barro (1990), *JPE*; Tanzi y Schuknecht, *Public Spending in the 20th Century* (2000); Armey (1995) y Scully (curva de Armey).
+- **Decisión D127 (13/10/2026):** ¿Qué se hace con los indicadores de tamaño del sector público y el «comodín» del tamaño óptimo en 4.B.1? Desarrollo solo en 4.B.5 y suprimir de 4.B.1 el comodín (Barro 1990, BMg = CMg), que no pide su título
 
 ## Presentación de referencia
 **Pregunta:** ¿hay un tamaño óptimo del sector público?
@@ -17,8 +18,8 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 4.B.5 | Debate sobre el tamaño | Desarrollo | Criterio marginal, FPP, Barro/Armey, evidencia | — |
-| 4.B.1 | SEC | Mención o nada | Quitar el «comodín» (no lo pide el título) **[decidir]** | Los dos gráficos |
+| 4.B.1 | SEC | Mención o nada | Se quita el «comodín» (no lo pide el título) | Los dos gráficos |
 
 ## Divergencias encontradas en el temario actual
-- 4.B.1 desarrolla el «comodín» del tamaño óptimo con Barro (1990) y la fórmula $BMg=CMg$ como imagen vacía; no lo pide su título y duplica 4.B.5. **Propuesta [decidir]:** suprimirlo de 4.B.1.
+- 4.B.1 desarrolla el «comodín» del tamaño óptimo con Barro (1990) y la fórmula $BMg=CMg$ como imagen vacía; no lo pide su título y duplica 4.B.5. Canon: se suprime de 4.B.1; desarrollo solo en 4.B.5.
 - En 4.B.5 $\alpha$ es la elasticidad del capital en Barro y en 4.B.6 la proporción de inversión desplazada: ver `_notacion/sector-publico.md`.

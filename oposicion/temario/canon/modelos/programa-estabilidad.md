@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.23 — título («situación actual y perspectivas según el Programa de Estabilidad»); tema **sin fuente**.
 - **Temas que lo usan:** 4.B.23 (desarrollo previsto), 4.B.21 (mención: fase preliminar del ciclo presupuestario), 4.B.22 (resumen: perspectivas del gasto), 4.B.26 (resumen: perspectivas del saldo), 3.B.45 (marco europeo: Semestre Europeo)
 - **Manuales de referencia:** Reglamento (CE) 1466/97 (Programas de Estabilidad, hasta 2024); Reglamento (UE) 2024/1263 (planes fiscales-estructurales nacionales de medio plazo e informes anuales de progreso); Plan fiscal-estructural de medio plazo de España 2025-2028 (octubre de 2024) [comprobar]; informes anuales de progreso (abril); AIReF.
+- **Decisión D086 (13/10/2026):** ¿Cómo se interpreta «Programa de Estabilidad» en el título de 4.B.23, si con el marco de 2024 ya no existe con ese nombre? Como el plan fiscal-estructural de medio plazo y su informe anual de progreso, explicándolo en una frase
 
 ## Presentación de referencia
 **Qué es:** hasta 2024, documento anual (abril) con la senda de saldo y deuda a 3-4 años dentro del Semestre Europeo. **Desde el marco de 2024**, lo sustituyen el **plan fiscal-estructural de medio plazo** (4 años, ampliable a 7 con reformas e inversiones; senda de gasto primario neto acordada con el Consejo) y el **informe anual de progreso** (abril), que integra también el antiguo Programa Nacional de Reformas.
@@ -18,4 +19,4 @@
 
 ## Divergencias encontradas en el temario actual
 - 4.B.22 y 4.B.26 citan el **Programa de Estabilidad 2019-2022** y 4.B.4 el 2023-2026; 4.B.13 presenta como futuras medidas de 2019-2022 (ITF, IDSD) que ya están en vigor desde 2021.
-- **[decidir]:** el título de 4.B.23 dice «Programa de Estabilidad», que ya no existe con ese nombre; propuesta: interpretarlo como el plan fiscal-estructural de medio plazo y su informe anual de progreso, explicándolo en una frase.
+- El título de 4.B.23 dice «Programa de Estabilidad», que ya no existe con ese nombre: se interpreta como el plan fiscal-estructural de medio plazo y su informe anual de progreso, y se explica en una frase.

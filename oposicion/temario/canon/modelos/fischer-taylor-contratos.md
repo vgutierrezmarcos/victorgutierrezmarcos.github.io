@@ -13,7 +13,7 @@
 **Ecuaciones:**
 
 - **Fischer** (salario predeterminado, puede variar entre periodos): w^j_t = E_{t−j}[p_t], j = 1, 2; p_t = ½(w^1_t + w^2_t). Resultado: y_t depende de la parte de m_t no anticipada en t−2, y una regla que responde a shocks de t−1 estabiliza la producción.
-- **Taylor** (salario fijo durante el contrato): x_t = ½(p_t + E_t p_{t+1}) + (a/2)(y_t + E_t y_{t+1}), p_t = ½(x_t + x_{t−1}). Resultado: persistencia de los efectos de un shock monetario más allá de la duración del contrato.
+- **Taylor** (salario fijo durante el contrato): x_t = ½(p_t + 𝔼_t p_{t+1}) + (a/2)(y_t + 𝔼_t y_{t+1}), p_t = ½(x_t + x_{t−1}). Resultado: persistencia de los efectos de un shock monetario más allá de la duración del contrato.
 
 **Resultado:** la política sistemática es efectiva; la inflación tiene inercia; base de Calvo (1983) y de la NKPC (`nek-3-ecuaciones`).
 

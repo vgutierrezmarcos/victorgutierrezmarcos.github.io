@@ -3,6 +3,7 @@
 - **Área:** finanzas-empresa · **Tema de referencia:** 3.B.4 (Métodos de valoración de empresas) — es un método de valoración; 3.B.3 lo usa para la política de dividendos y 3.B.2 da la perpetuidad creciente.
 - **Temas que lo usan:** 3.B.4 (desarrollo), 3.B.3 (desarrollo → resumen orientado a dividendos), 3.B.2 (resumen → mención)
 - **Manuales de referencia:** Gordon y Shapiro (1956); Gordon (1959, 1962); Brealey, Myers y Allen, cap. 4; Bodie, Kane y Marcus, cap. 18.
+- **Decisión D084 (13/10/2026):** ¿Cómo se escriben el crecimiento del dividendo y la rentabilidad de la reinversión en Gordon-Shapiro? g = b·ROE (g crecimiento, b tasa de retención)
 
 ## Presentación de referencia
 **Pregunta:** ¿cuánto vale una acción si el dividendo crece a tasa constante?
@@ -24,7 +25,7 @@ $$PER = \frac{P_0}{BPA_1} = \frac{1-b}{r_E - b\,ROE}, \qquad \frac{\partial P_0}
 | 3.B.2 | Coste del capital | mención | Perpetuidad creciente $VP = FC_1/(k-g)$ y $r_E = D_1/P_0 + g$ | — |
 
 ## Divergencias encontradas en el temario actual
-- **Tasa de crecimiento con tres letras**: $g$ en 3.B.2, $d$ en 3.B.4 e $y$ (rentabilidad de la reinversión) en 3.B.3. Canon: $g$ crecimiento, $ROE$ rentabilidad de la reinversión, $b$ retención (Brealey-Myers, Bodie-Kane-Marcus) **[decidir]**.
+- **Tasa de crecimiento con tres letras**: $g$ en 3.B.2, $d$ en 3.B.4 e $y$ (rentabilidad de la reinversión) en 3.B.3. Canon: $g$ crecimiento, $ROE$ rentabilidad de la reinversión, $b$ retención (Brealey-Myers, Bodie-Kane-Marcus): $g=b\cdot ROE$.
 - Tasa de descuento $k$ (3.B.4) frente a $r_E$ (3.B.3): canon $r_E$.
 - Beneficio $B_0$ (3.B.3) frente a $BPA$ (3.B.4): canon $BPA$ por acción y $B$ para el total.
 

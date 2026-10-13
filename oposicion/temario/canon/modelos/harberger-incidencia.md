@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.8 (traslación e incidencia) — el título pide el «enfoque de equilibrio general» y es su modelo canónico.
 - **Temas que lo usan:** 4.B.8 (desarrollo), 4.B.9 (hoy resumen duplicado; debe quedar en mención), 4.B.12/4.B.17 (mención: incidencia del IS)
 - **Manuales de referencia:** Harberger (1962), «The incidence of the corporation income tax», *JPE*; Atkinson y Stiglitz, *Lectures*, lección 6; Rosen y Gayer, cap. 14; Fullerton y Metcalf (2002), «Tax incidence», *Handbook of Public Economics* IV; McLure (1975). Base de equilibrio general: [ver tema 3.A.21] y la caja de Edgeworth de producción (3.A.22).
+- **Decisión D126 (13/10/2026):** ¿Se suprime el Harberger (incidencia) copiado en 4.B.9? Sí: mención de 3-4 líneas en 4.B.9 y remisión a 4.B.8
 
 ## Presentación de referencia
 **Pregunta:** ¿quién soporta, en último término, un impuesto sobre un bien o sobre un factor en un sector, cuando los factores se mueven entre sectores?
@@ -25,7 +26,7 @@ Impuesto general sobre ambos bienes al mismo tipo: $\frac{p_X(1+t)}{p_Y(1+t)}=\f
 | 4.B.12 / 4.B.17 | Incidencia del IS | Mención | Harberger (1962): en economía cerrada lo soporta el capital; en economía abierta, el trabajo (Gravelle, Arulampalam et al.) | — |
 
 ## Divergencias encontradas en el temario actual
-- **Duplicación:** el apartado 1.4 de 4.B.9 copia casi literal el Harberger de 4.B.8 (supuestos, ecuaciones, caja de Edgeworth). **Propuesta [decidir]:** suprimirlo en 4.B.9 y remitir.
+- **Duplicación:** el apartado 1.4 de 4.B.9 copia casi literal el Harberger de 4.B.8 (supuestos, ecuaciones, caja de Edgeworth). Canon: en 4.B.9 queda una mención de 3-4 líneas con remisión a 4.B.8.
 - **Notación:** $W$, $R$ en el modelo unisectorial de 4.B.8 y en 4.B.9; $w$, $r$ en el Harberger de 4.B.8; $t$ ad valorem aquí frente a $t$ unitario en el parcial. Propuesta: $w$, $r$; decir si $t$ es *ad valorem*.
 - 4.B.8 deja notas del autor sin resolver («¿la FPP se hace más pequeña? ¿¿??»: no, el impuesto general sobre el consumo no la mueve; uno parcial sobre un factor lleva a un punto interior) y anuncia «modelos de equilibrio general computable» y «n sectores» con el apartado vacío.
 - Mismo nombre que el **triángulo de Harberger (1964)** de 4.B.9: nombrarlos siempre distinto (ver `exceso-gravamen.md`).

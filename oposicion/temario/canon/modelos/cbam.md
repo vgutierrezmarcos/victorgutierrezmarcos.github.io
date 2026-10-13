@@ -1,8 +1,9 @@
 # Mecanismo de Ajuste en Frontera por Carbono (MAFC / CBAM)
 
-- **Área:** union-europea · **Tema de referencia:** **[decidir]** 3.B.31 (cambio climático y medidas adoptadas; sin fuente) para la economía del instrumento, o 3.B.37 (hoy el único que lo trata, como nuevo recurso propio). Propuesta: 3.B.31 desarrollo; 3.B.37 y 3.B.41 resumen
+- **Área:** union-europea · **Tema de referencia:** 3.B.31 (cambio climático y medidas adoptadas; sin fuente) para la economía del instrumento; 3.B.37 (nuevo recurso propio) y 3.B.41 en resumen.
 - **Temas que lo usan:** 3.B.37 (resumen), 4.B.18 (mención), 3.B.31 (desarrollo previsto), 3.B.41 (mención posible: dimensión comercial y compatibilidad OMC), 4.A.6 (mención prevista)
 - **Manuales de referencia:** Reglamento (UE) 2023/956; Reglamento Ómnibus de simplificación (2025); Nordhaus (2015), «Climate Clubs»; teoría de la fuga de carbono
+- **Decisión D072 (13/10/2026):** ¿Cuál es el tema de referencia del mecanismo de ajuste en frontera por carbono (MAFC/CBAM)? 3.B.31 (cambio climático) para la economía del instrumento; 3.B.37 (recurso propio) y 3.B.41 en resumen
 
 ## Presentación de referencia
 Pregunta: cómo evitar la **fuga de carbono** cuando la UE pone precio al CO₂ (RCDE) y sus socios no.

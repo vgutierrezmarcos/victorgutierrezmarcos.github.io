@@ -1,8 +1,9 @@
 # Racionamiento del crédito (Stiglitz y Weiss, 1981)
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** **[decidir]** hoy 3.A.13 (Economía de la información) en `mapa.yaml`, que solo lo resume (dos gráficos, sin ecuaciones), mientras 3.B.27 y 4.A.20 lo desarrollan. **Propuesta: mantener 3.A.13 como referencia y ampliarlo allí** (supuestos, ecuaciones y los dos gráficos, con la versión de 3.B.27/4.A.20), porque el modelo es la aplicación canónica de selección adversa *y* riesgo moral a la vez, que es justo el título de 3.A.13; 3.B.27 y 4.A.20 pasan a resumen y lo aplican (regulación bancaria; financiación de pymes). Alternativa: hacer 3.B.27 tema de referencia (ya lo desarrolla), con 3.A.13 en resumen; peor, porque 3.B.27 lo necesita solo como fundamento.
+- **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.13** (Economía de la información), ampliándolo allí con supuestos, ecuaciones y los dos gráficos (con la versión de 3.B.27/4.A.20): el modelo es la aplicación canónica de selección adversa *y* riesgo moral a la vez, que es justo el título de 3.A.13. 3.B.27 y 4.A.20 pasan a resumen aplicado (regulación bancaria; financiación de pymes); 4.A.20 con lo imprescindible para cantarse sin el 3.A.13.
 - **Temas que lo usan:** 3.A.13 (resumen → desarrollo), 3.B.27 (desarrollo → resumen), 4.A.20 (desarrollo → resumen), 3.A.7, 3.B.28, 4.A.24, 4.A.25 (mención); 3.B.26 (crisis financieras) debería citarlo.
 - **Manuales de referencia:** Stiglitz y Weiss (1981), *AER*; Freixas y Rochet, *Microeconomics of Banking*, cap. 5; Mas-Colell, Whinston y Green, cap. 13 (selección adversa); Jaffee y Russell (1976).
+- **Decisión D070 (13/10/2026):** ¿Cuál es el tema de referencia de Stiglitz-Weiss (racionamiento del crédito)? 3.A.13, ampliándolo con supuestos, ecuaciones y los dos gráficos; 3.B.27 y 4.A.20 pasan a resumen aplicado
 
 ## Presentación de referencia
 Pregunta: ¿por qué el mercado de crédito puede quedar en equilibrio con exceso de demanda, sin que el tipo de interés suba?

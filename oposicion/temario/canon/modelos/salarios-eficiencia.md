@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.27 (determinación de salarios) — lo tiene en el título.
 - **Temas que lo usan:** 3.A.27 (desarrollo), 3.A.7 (desarrollo → resumen), 3.A.13 (mención)
 - **Manuales de referencia:** Romer (2019), cap. 11; Cahuc, Carcillo y Zylberberg (2014), cap. 6; Shapiro y Stiglitz (1984).
+- **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
 
 ## Presentación de referencia
 Pregunta: ¿por qué las empresas pagan por encima del salario que vacía el mercado? Supuestos (Solow): el esfuerzo e depende del salario real, e = e(w), con e' > 0 y tramo inicial convexo; producción Y = F(e(w)L).
@@ -23,6 +24,6 @@ Gráfico de referencia: plano (L, w): demanda de trabajo y curva de no escaqueo 
 
 ## Divergencias encontradas en el temario actual
 - En el inventario 3.A.27 lo trata en dos bloques (Solow; Shapiro-Stiglitz) y 3.A.7 vuelve a desarrollar ambos: duplicación.
-- En Shapiro-Stiglitz la notación de la tasa de separación debe ser la misma que en DMP (**s** **[decidir]**); el artículo original la llama b.
+- En Shapiro-Stiglitz la notación de la tasa de separación debe ser la misma que en DMP (**s**); el artículo original la llama b.
 
 Autor: Víctor Gutiérrez Marcos

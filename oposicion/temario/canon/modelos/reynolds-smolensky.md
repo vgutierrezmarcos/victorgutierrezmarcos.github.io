@@ -1,8 +1,9 @@
 # Índice de Reynolds-Smolensky
 
-- **Área:** sector público · **Tema de referencia:** 4.B.9 **[decidir]** (el mapa propone 4.B.3 porque hoy es el único que lo nombra, con el epígrafe vacío; pero las medidas de progresividad están en el título de 4.B.9 y 4.B.3 solo las aplica).
+- **Área:** sector público · **Tema de referencia:** 4.B.9, que tiene en el título las medidas de progresividad y donde se escribe el epígrafe que falta; 4.B.3 las aplica (el mapa proponía 4.B.3, que hoy solo lo nombra, con el epígrafe vacío).
 - **Temas que lo usan:** 4.B.3 (mención; debería ser resumen aplicado), 4.B.9 (hoy ausente; debería ser desarrollo dentro de `progresividad`), 4.A.3 (mención prevista)
 - **Manuales de referencia:** Reynolds y Smolensky (1977), *Public Expenditures, Taxes, and the Distribution of Income*; Lambert (2001), cap. 7; Kakwani (1977).
+- **Decisión D054 (13/10/2026):** ¿Dónde se desarrollan las medidas de progresividad (Reynolds-Smolensky, Kakwani)? 4.B.9, escribiendo el epígrafe que falta («Medidas de progresividad impositiva»); 4.B.3, 4.B.7 y 4.B.12 remiten
 
 ## Presentación de referencia
 **Pregunta:** ¿cuánto reduce la desigualdad un impuesto o una transferencia?
@@ -20,4 +21,4 @@
 
 ## Divergencias encontradas en el temario actual
 - 4.B.3: el epígrafe existe pero está vacío («Ver Juan Luis»). 4.B.9: no aparece.
-- **[decidir]** tema de referencia: 4.B.9 (propuesta) o 4.B.3 (mapa).
+- Tema de referencia fijado: 4.B.9 (4.B.3, 4.B.7 y 4.B.12 remiten).

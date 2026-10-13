@@ -1,8 +1,10 @@
 # Estancamiento secular (Hansen, 1939; Summers, 2014; Rachel y Summers, 2019) y el debate r < g (Blanchard, 2019)
 
-- **Área:** macro cerrada · **Tema de referencia:** 3.A.40 (Efectividad e interrelación de las políticas monetaria y fiscal desde la Gran Recesión) **[decidir]** — el tipo natural negativo, el ELB y el papel de la política fiscal con r < g son el núcleo de ese título. 3.A.40 **no tiene fuente**, pero el material existe: **3.A.39 lo desarrolla** (epígrafe «Summers: Estancamiento secular», Rachel-Summers 2019 y el criterio de Blanchard), cosa que el inventario no recogió, y 3.A.33 cita la tesis original de Hansen. Propuesta: referencia en 3.A.40, trasladando allí el bloque de 3.A.39 y el resumen de 4.B.1; alternativa: 3.A.42 (ciclos y tendencia) o 3.A.39 (deuda con r < g).
+- **Área:** macro cerrada · **Tema de referencia:** 3.A.40 (Efectividad e interrelación de las políticas monetaria y fiscal desde la Gran Recesión): el tipo natural negativo, el ELB y el papel de la política fiscal con $r<\gamma_Y$ son el núcleo de ese título. 3.A.40 **no tiene fuente**; se escribe trasladando allí el epígrafe de 3.A.39 («Summers: Estancamiento secular», Rachel-Summers 2019 y el criterio de Blanchard) y el resumen de 4.B.1. 3.A.39 lo resume (deuda con $r<\gamma_Y$) y 3.A.33 cita la tesis original de Hansen.
 - **Temas que lo usan:** 3.A.40 (previsto: desarrollo), 3.A.39 (hoy desarrollo; pasaría a resumen: sostenibilidad con r < g), 3.A.33 (mención: Hansen y el consumo), 4.B.1 (resumen), 4.B.4 (resumen), 4.B.5 (resumen), 4.A.11 (mención: caída de r natural y vivienda).
 - **Manuales de referencia:** Hansen (1939), *AER*; Summers (2014), *Business Economics*; Teulings y Baldwin (eds., 2014), VoxEU; Eggertsson, Mehrotra y Robbins (2019), *AEJ: Macro*; Rachel y Summers (2019), *BPEA*; Holston, Laubach y Williams (2017); Blanchard (2019), *AER* 109(4); Blanchard (2023), *Fiscal Policy under Low Interest Rates*.
+- **Decisión D010 (13/10/2026):** ¿Qué letras llevan la tasa de progreso técnico, el crecimiento del PIB y el gasto público en ratio? g = progreso técnico (regla de oro n+g+δ); γ_Y = crecimiento del PIB (también en las ecuaciones de deuda: r − γ_Y, y «r − g» solo como nombre del debate de Blanchard); g = G/Y en sector público
+- **Decisión D051 (13/10/2026):** ¿Cuál es el tema de referencia del estancamiento secular? 3.A.40 (políticas desde la Gran Recesión), trasladando allí el epígrafe de 3.A.39
 
 ## Presentación de referencia
 
@@ -34,8 +36,8 @@ $$d^{ee} = \frac{(1+\gamma_Y)\,(g-\tau-s)}{\gamma_Y - r} \quad (r < \gamma_Y)$$
 
 ## Divergencias encontradas en el temario actual
 
-- **Sin tema de referencia con fuente:** el inventario lo da por ausente, pero 3.A.39 tiene un epígrafe propio y 3.A.33 cita a Hansen. Propuesta arriba **[decidir]**.
-- **«r < g»:** en el canon g es la tasa de progreso técnico o el gasto público sobre el PIB; la tasa de crecimiento del PIB es γ_Y. Propuesta: escribir **r < γ_Y** en las ecuaciones y citar la expresión de Blanchard «r − g» como nombre del debate **[decidir]**.
+- **Tema de referencia sin fuente:** el inventario lo daba por ausente, pero 3.A.39 tiene un epígrafe propio y 3.A.33 cita a Hansen; ese material es la base de 3.A.40.
+- **«r < g»:** en el canon g es la tasa de progreso técnico o el gasto público sobre el PIB; la tasa de crecimiento del PIB es γ_Y. Canon: **r < γ_Y** en las ecuaciones; «r − g» solo como nombre del debate (Blanchard).
 - Tratado como comodín en tres temas del cuarto ejercicio (4.B.1, 4.B.4, 4.B.5) con textos parecidos: unificar con remisión.
 
 Autor: Víctor Gutiérrez Marcos

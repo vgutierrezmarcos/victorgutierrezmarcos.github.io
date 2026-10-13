@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.9 — el título pide «medidas de progresividad impositiva» (hoy ausentes en la fuente). 4.B.16 la aplica a la tarifa del IRPF.
 - **Temas que lo usan:** 4.B.9 (debería ser desarrollo; hoy falta), 4.B.3 (resumen: impacto redistributivo), 4.B.7 (resumen: clases de impuestos), 4.B.4 (resumen: elasticidad de la recaudación), 4.B.12 (resumen), 4.B.16 (desarrollo previsto, sin fuente: tarifa del IRPF), 4.A.3 (mención: distribución de la renta en España)
 - **Manuales de referencia:** Lambert, *The Distribution and Redistribution of Income* (3.ª ed., 2001), cap. 7-8; Musgrave y Thin (1948), *JPE*; Kakwani (1977), *EJ*; Reynolds y Smolensky (1977); Suits (1977), *AER*; Rosen y Gayer, cap. 14; Albi et al., *Economía pública I*.
+- **Decisión D054 (13/10/2026):** ¿Dónde se desarrollan las medidas de progresividad (Reynolds-Smolensky, Kakwani)? 4.B.9, escribiendo el epígrafe que falta («Medidas de progresividad impositiva»); 4.B.3, 4.B.7 y 4.B.12 remiten
 
 ## Presentación de referencia
 **Pregunta:** ¿cómo se mide si un impuesto (o un sistema) es progresivo y cuánto redistribuye?
@@ -31,7 +32,7 @@ Ejemplo de referencia: impuesto lineal con mínimo exento o con deducción fija 
 | 4.B.16 | IRPF en España | Desarrollo previsto | Tarifa estatal y autonómica, mínimos, base del ahorro; índices calculados por la AEAT/IEF | — |
 
 ## Divergencias encontradas en el temario actual
-- **Falta el epígrafe en 4.B.9** («Medidas de progresividad impositiva» no aparece ni en el Word ni en el PDF); hoy lo poco que hay está en 4.B.7 (local) y 4.B.3 (Reynolds-Smolensky, epígrafe vacío). **Propuesta [decidir]:** escribirlo en 4.B.9 y que 4.B.3, 4.B.7 y 4.B.12 remitan.
+- **Falta el epígrafe en 4.B.9** («Medidas de progresividad impositiva» no aparece ni en el Word ni en el PDF); hoy lo poco que hay está en 4.B.7 (local) y 4.B.3 (Reynolds-Smolensky, epígrafe vacío). Reparto: se escribe en 4.B.9 y 4.B.3, 4.B.7 y 4.B.12 remiten.
 - 4.B.3 y 4.B.12 escriben la elasticidad sobre la base ($\varepsilon_{T,BI}$) y 4.B.7 la mezcla con la elasticidad base-renta («$\varepsilon_{T,Y}>1$ por el mínimo exento»). Propuesta: progresividad = $\varepsilon_{T,BI}$ (tarifa); $\varepsilon_{BI,Y}$ es otra cosa (amplitud de la base).
 - 4.B.3 usa $T/Y$ y $BI$ indistintamente; $R$ es «reducción» en 4.B.3 y «deducción en cuota» en 4.B.7: con $T=tY-R$, $R$ es una **deducción en la cuota**.
 - 4.B.12 dice que el IRPF es progresivo porque «se aplicará un mayor porcentaje de retención»: confunde tipo de gravamen con retención.

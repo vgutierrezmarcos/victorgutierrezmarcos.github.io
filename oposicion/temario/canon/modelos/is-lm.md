@@ -3,6 +3,8 @@
 - **Área:** pensamiento · **Tema de referencia:** 3.A.5 (La síntesis neoclásica. El monetarismo) — es el modelo de la síntesis. Hoy lo desarrolla el Word de 3.A.4, que sigue el reparto anterior al temario vigente.
 - **Temas que lo usan:** 3.A.5 (desarrollo; hoy mención con epígrafe vacío), 3.A.4 (resumen: la interpretación de Hicks de la *Teoría general*; hoy desarrollo), 3.A.28 (resumen), 3.A.37 (resumen: transmisión keynesiana), 3.A.38 (resumen: efectividad de la política fiscal), 3.A.39 (resumen: financiación del déficit, Blinder-Solow), 4.B.4 (resumen). En economía abierta, Mundell-Fleming (ref. 3.B.15) y OA-DA (3.A.32).
 - **Manuales de referencia:** Hicks (1937), *Econometrica*; Modigliani (1944); Dornbusch, Fischer y Startz, *Macroeconomía*, caps. 10-12; Blanchard, *Macroeconomics*, cap. 6; Heijdra (2017), cap. 1; De Vroey (2016), caps. 1-3.
+- **Decisión D009 (13/10/2026):** ¿Cómo se escribe la sensibilidad de la inversión al tipo de interés en IS-LM y Mundell-Fleming? b (I = Ī − b·i), como Dornbusch-Fischer-Startz; v queda solo para la relación capital-producto (acelerador, Harrod-Domar)
+- **Decisión D031 (13/10/2026):** ¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5? Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4
 
 ## Presentación de referencia
 
@@ -36,8 +38,8 @@ Multiplicador fiscal en IS-LM: ∂Y/∂Ḡ = 1/[1 − c(1−t) + bk/h], menor qu
 
 ## Divergencias encontradas en el temario actual
 
-- **Cruce entre 3.A.4 y 3.A.5:** el Word de 3.A.4 desarrolla IS-LM y la curva de Phillips (síntesis), que con el título vigente son de 3.A.5; el de 3.A.5 tiene el epígrafe vacío y, a cambio, desarrolla el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud), que ahora es de 3.A.4. Propuesta: **trasladar IS-LM y Phillips a 3.A.5 y el desequilibrio a 3.A.4** (ver `malinvaud`, `patinkin`, `phillips`) **[decidir]**.
-- **Sensibilidad de la inversión v** (3.A.4, 3.A.37, 3.A.38, 4.B.4) choca con v = relación capital-producto (acelerador, 3.A.34; Harrod-Domar, 3.A.43): propuesta **b** **[decidir]**; coordinar con Mundell-Fleming (macro abierta).
+- **Cruce entre 3.A.4 y 3.A.5:** el Word de 3.A.4 desarrolla IS-LM y la curva de Phillips (síntesis), que con el título vigente son de 3.A.5; el de 3.A.5 tiene el epígrafe vacío y, a cambio, desarrolla el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud), que ahora es de 3.A.4. Reparto: **IS-LM y Phillips (en resumen; desarrollo en 3.A.28) a 3.A.5 y el desequilibrio a 3.A.4** (ver `malinvaud`, `patinkin`, `phillips`).
+- **Sensibilidad de la inversión v** (3.A.4, 3.A.37, 3.A.38, 4.B.4) choca con v = relación capital-producto (acelerador, 3.A.34; Harrod-Domar, 3.A.43): canon **b** (I = Ī − b·i, Dornbusch-Fischer-Startz), también en Mundell-Fleming.
 - **3.A.4** usa r en la inversión e i en la demanda de dinero sin decir que con π^e = 0 coinciden.
 - **3.A.37** incluye XN en la IS de una economía cerrada: quitarlo o remitir a Mundell-Fleming.
 - **Signo de la LM:** M/P = kY − h·i (4.B.4) e i = (1/h)(kY − M/P) (3.A.37, 3.A.38) son equivalentes; usar ambas formas como arriba.

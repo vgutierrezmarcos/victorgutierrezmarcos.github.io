@@ -7,7 +7,7 @@
 ## Presentación de referencia
 Pregunta: ¿qué implica la renta permanente con expectativas racionales para la dinámica del consumo? Supuestos: horizonte infinito (o largo), utilidad cuadrática u(C) = C − (a/2)C², tipo de interés igual a la tasa de descuento (r = ρ), expectativas racionales, sin restricciones de liquidez.
 
-$$u'(C_t) = E_t[u'(C_{t+1})]\;\Rightarrow\;E_t[C_{t+1}] = C_t\;\Rightarrow\;C_{t+1} = C_t + \varepsilon_{t+1},\quad E_t[\varepsilon_{t+1}] = 0$$
+$$u'(C_t) = \mathbb{E}_t[u'(C_{t+1})]\;\Rightarrow\;\mathbb{E}_t[C_{t+1}] = C_t\;\Rightarrow\;C_{t+1} = C_t + \varepsilon_{t+1},\quad \mathbb{E}_t[\varepsilon_{t+1}] = 0$$
 Resultado: el consumo sigue un paseo aleatorio; ninguna variable conocida en t ayuda a predecir ΔC_{t+1}; el consumo solo cambia por noticias sobre la renta permanente. Contrastes: exceso de sensibilidad (Flavin 1981; Campbell-Mankiw 1989, fracción λ de consumidores que consumen su renta corriente) y exceso de suavidad (Deaton). Con utilidad con prudencia (u''' > 0) aparece el ahorro precautorio (3.A.10).
 Gráfico de referencia: no imprescindible.
 

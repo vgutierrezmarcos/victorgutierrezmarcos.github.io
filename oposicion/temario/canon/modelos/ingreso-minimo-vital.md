@@ -1,8 +1,9 @@
 # Ingreso Mínimo Vital y programas de rentas mínimas
 
-- **Área:** sector público · **Tema de referencia:** 4.B.24 (prestaciones de la Seguridad Social) **[decidir]** — el mapa lo pone en 4.B.24 (sin fuente); 4.B.3 (Estado del bienestar: instrumentos) lo trata hoy y su inventario lo propone como desarrollo allí. Propuesta: diseño teórico de las rentas mínimas (impuesto negativo, renta básica, tipos marginales implícitos) en 4.B.3; el IMV como prestación no contributiva de la Seguridad Social en 4.B.24.
+- **Área:** sector público · **Tema de referencia:** 4.B.24 (prestaciones de la Seguridad Social; sin fuente) para el IMV; 4.B.3 (Estado del bienestar: instrumentos) para el diseño teórico. Reparto: diseño teórico de las rentas mínimas (impuesto negativo, renta básica, tipos marginales implícitos) en 4.B.3; el IMV como prestación no contributiva de la Seguridad Social en 4.B.24.
 - **Temas que lo usan:** 4.B.3 (resumen), 4.B.24 (desarrollo previsto), 4.B.10 (efectos incentivo, mención)
 - **Manuales de referencia:** RDL 20/2020 y Ley 19/2021, de 20 de diciembre; AIReF, opiniones sobre el IMV (2022, 2023) [comprobar las más recientes]; Friedman (1962) sobre el impuesto negativo; Atkinson (2015), *Inequality*; Hoynes y Rothstein (2019) sobre renta básica.
+- **Decisión D124 (13/10/2026):** ¿Dónde se desarrollan las rentas mínimas y el ingreso mínimo vital? Diseño teórico (impuesto negativo, renta básica, tipos marginales implícitos) en 4.B.3; el IMV como prestación no contributiva en 4.B.24
 
 ## Presentación de referencia
 **Teoría (notación canónica):** renta garantizada $y_M$, transferencia $TR=\max\{0,\,y_M-(1-t_r)y\}$: con tasa de retirada $t_r=100\,\%$ el tipo marginal implícito es del 100 % (trampa de la pobreza); con $t_r<1$ (impuesto negativo sobre la renta, Friedman) se suaviza el desincentivo a costa de un mayor coste. Renta básica universal: sin prueba de medios.

@@ -1,8 +1,9 @@
 # Paradoja de Condorcet y manipulación de la agenda
 
-- **Área:** sector público · **Tema de referencia:** 4.B.2 **[decidir]** (mapa: 4.B.2, que añade la manipulación de agenda). Alternativa: 3.A.24 (elección social), que la usa como antesala del teorema de Arrow. Los dos la desarrollan hoy. Propuesta: desarrollo en 4.B.2 (reglas de votación, con agenda y voto estratégico) y en 3.A.24 resumen como ejemplo de intransitividad.
+- **Área:** sector público · **Tema de referencia:** 4.B.2 (reglas de votación, con la manipulación de la agenda y el voto estratégico). 3.A.24 (elección social) la resume como ejemplo de intransitividad y antesala del teorema de Arrow, con lo imprescindible para cantarse sin el 4.B.2.
 - **Temas que lo usan:** 4.B.2 (desarrollo), 3.A.24 (desarrollo)
 - **Manuales de referencia:** Condorcet (1785); Mueller, *Public Choice III*, cap. 5; Mas-Colell, Whinston y Green, cap. 21.
+- **Decisión D121 (13/10/2026):** ¿Cómo se reparten la paradoja de Condorcet y el teorema de Arrow entre 3.A.24 y 4.B.2? Condorcet en desarrollo en 4.B.2 (con agenda y voto estratégico) y en resumen en 3.A.24; Arrow en desarrollo en 3.A.24 y en resumen aplicado a la votación en 4.B.2
 
 ## Presentación de referencia
 **Ejemplo canónico:** tres votantes y tres alternativas: $1: A\succ B\succ C$; $2: B\succ C\succ A$; $3: C\succ A\succ B$. Por mayoría $A\succ_G B$, $B\succ_G C$ y $C\succ_G A$: la preferencia social es **intransitiva** (ciclo). **Manipulación de agenda:** quien fija el orden de las votaciones por pares decide el ganador. La paradoja desaparece si las preferencias son unimodales (ficha `votante-mediano`): el votante 3 tiene preferencias multimodales.

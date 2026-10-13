@@ -1,8 +1,9 @@
 # Marco input-output (tablas de origen, destino y simétricas; modelo de Leontief)
 
-- **Área:** macro cerrada · **Tema de referencia:** **3.A.31** (Análisis de las tablas «input-output») **[decidir]** — lo tiene en el título; el mapa lo asigna hoy a 3.A.30 porque 3.A.31 no tiene fuente, pero 3.A.30 remite cuatro veces a 3.A.31 y dice que allí «no hay que explayarse».
+- **Área:** macro cerrada · **Tema de referencia:** **3.A.31** (Análisis de las tablas «input-output»): lo tiene en el título; el mapa lo asignaba a 3.A.30 porque 3.A.31 no tiene fuente, pero 3.A.30 remite cuatro veces a 3.A.31 y dice que allí «no hay que explayarse».
 - **Temas que lo usan:** 3.A.31 (desarrollo, previsto: sin fuente), 3.A.30 (resumen), 4.A.1 (resumen)
 - **Manuales de referencia:** Eurostat, *Manual of Supply, Use and Input-Output Tables* (2008); SEC 2010, cap. 9; Miller y Blair, *Input-Output Analysis* (2.ª ed., 2009); Leontief (1936, 1941).
+- **Decisión D112 (13/10/2026):** ¿Cuál es el tema de referencia de las tablas input-output? 3.A.31 (lo tiene en el título; sin fuente)
 
 ## Presentación de referencia
 Pregunta: ¿cómo se relacionan las ramas productivas entre sí y cómo se propaga un cambio de la demanda final? Supuestos (modelo abierto de Leontief): n ramas; cada rama produce un único producto con coeficientes técnicos fijos a_{ij} = x_{ij}/X_j (rendimientos constantes, sin sustitución); demanda final exógena.
@@ -21,7 +22,7 @@ Gráfico de referencia: esquema de las tablas de origen (productos × ramas, pro
 | 4.A.1 | Fuentes estadísticas de la economía española | resumen | Tablas de origen, destino y simétrica del INE como fuente estructural; retraso en su publicación | Idem |
 
 ## Divergencias encontradas en el temario actual
-- Tema de referencia: el mapa lo pone en 3.A.30, pero el título que lo pide es el de 3.A.31 (sin fuente): propuesta **3.A.31** **[decidir]**.
+- Tema de referencia: 3.A.31 (sin fuente), que lo tiene en el título; el mapa lo ponía en 3.A.30.
 - 4.A.1 escribe la identidad VA = RA + EBE + RX (RX sin definir; debe ser impuestos netos sobre la producción y, si se quiere, renta mixta dentro del EBE).
 - El modelo de Leontief de coeficientes fijos tiene ficha propia en el área consumidor-producción (`leontief`, función de producción): no confundir ambos usos.
 

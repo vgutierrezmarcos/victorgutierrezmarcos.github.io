@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.39 (Déficit público: financiación, dominación monetaria y fiscal, dinámica y sostenibilidad de la deuda) — lo tiene en el título.
 - **Temas que lo usan:** 3.A.39 (desarrollo), 4.B.26 (desarrollo aplicado a España: descomposición de la variación de la deuda), 3.A.35 y 3.A.41 (resumen dentro del señoreaje), 4.B.4 (mención en el NEK con gasto).
 - **Manuales de referencia:** Walsh (2017), cap. 4; Blanchard y Fischer (1989), cap. 10; Sargent y Wallace (1981); Blanchard, *Macroeconomics* (8.ª ed.), cap. 22; Blanchard (2019), «Public Debt and Low Interest Rates», *AER*; Esteve y Prats (2023).
+- **Decisión D028 (13/10/2026):** ¿Cómo se escriben los intereses de la deuda en la restricción del gobierno? i_{t−1}D_{t−1} (Walsh: la deuda emitida en t−1 paga el tipo pactado al emitirla); i_t D_{t−1} solo si i_t se define como tipo implícito pagado en t
 
 ## Presentación de referencia
 
@@ -40,7 +41,7 @@ Si r < γ_Y la deuda se estabiliza sola con déficit primario constante (Blancha
 
 ## Divergencias encontradas en el temario actual
 
-- **Intereses i_{t−1}D_{t−1} frente a i_t D_{t−1}:** 3.A.39 (restricción principal) y 4.B.26 usan i_{t−1}D_{t−1}; 3.A.35, 3.A.41 y la sección de señoreaje de 3.A.39 usan i_t D_{t−1}. Propuesta: **i_{t−1}D_{t−1}** (Walsh; la deuda emitida en t−1 paga el tipo pactado en t−1). La forma i_t D_{t−1} solo es correcta si i_t se define como tipo implícito pagado en t (así en la descomposición de 4.B.26, que debe decirlo) **[decidir]**.
+- **Intereses i_{t−1}D_{t−1} frente a i_t D_{t−1}:** 3.A.39 (restricción principal) y 4.B.26 usan i_{t−1}D_{t−1}; 3.A.35, 3.A.41 y la sección de señoreaje de 3.A.39 usan i_t D_{t−1}. Canon: **i_{t−1}D_{t−1}** (Walsh; la deuda emitida en t−1 paga el tipo pactado en t−1). La forma i_t D_{t−1} solo es correcta si i_t se define como tipo implícito pagado en t (así en la descomposición de 4.B.26, que debe decirlo).
 - **3.A.39** define γ^Y como crecimiento **nominal** del PIB pero lo combina con r (real) en (r_{t−1} − γ^Y_t)/(1+γ^Y_t): o i con nominal o r con real. 4.B.26 lo hace bien (real con real).
 - **3.A.39** escribe los impuestos con T latina y con Τ (tau mayúscula griega): uniformar a **T_t**.
 - **Señoreaje:** «Señoreaje» sin símbolo (3.A.35), s_t (4.B.26): canon **S_t** en nivel real y **s_t** en % del PIB.

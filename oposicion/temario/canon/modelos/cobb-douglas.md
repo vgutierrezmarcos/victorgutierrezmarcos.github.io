@@ -1,8 +1,9 @@
 # Función Cobb-Douglas (producción y utilidad)
 
-- **Área:** consumidor-producción · **Tema de referencia:** **[decidir]** hoy 3.A.8 en `mapa.yaml`; **propuesta: 3.A.11** (Teoría de la producción). Motivo: la Cobb-Douglas que se usa en el resto del temario es casi siempre la *función de producción* (Solow 3.A.43, RBC 3.A.6 y 3.A.42, crecimiento endógeno 3.A.44, emparejamiento 3.A.26, PIB potencial 4.B.4, formas funcionales empíricas 3.A.12), y 3.A.11 tiene en el título rendimientos a escala y elasticidad de sustitución, las dos propiedades que la definen. 3.A.8 sigue siendo el tema de referencia de la **variante de utilidad** (demandas con participaciones constantes), que ya está revisada y no hay que tocar.
+- **Área:** consumidor-producción · **Tema de referencia:** **3.A.11** (Teoría de la producción). La Cobb-Douglas que se usa en el resto del temario es casi siempre la *función de producción* (Solow 3.A.43, RBC 3.A.6 y 3.A.42, crecimiento endógeno 3.A.44, emparejamiento 3.A.26, PIB potencial 4.B.4, formas funcionales empíricas 3.A.12), y 3.A.11 tiene en el título rendimientos a escala y elasticidad de sustitución, las dos propiedades que la definen. 3.A.8 es el tema de referencia de la **variante de utilidad** (demandas con participaciones constantes) y remite a 3.A.11 cuando habla de la función de producción.
 - **Temas que lo usan:** 3.A.11 (resumen, debe pasar a desarrollo), 3.A.8 (resumen), 3.A.9 (resumen), 3.A.6 (mención); también, con otros ids, 3.A.12, 3.A.18, 3.A.26, 3.A.42-3.A.44 y 4.B.4.
 - **Manuales de referencia:** Cobb y Douglas (1928); Varian, cap. 1 y 7; Mas-Colell, Whinston y Green, cap. 3 (utilidad) y 5 (producción); Romer, *Advanced Macroeconomics*, cap. 1.
+- **Decisión D005 (13/10/2026):** ¿Cuál es el tema de referencia de la Cobb-Douglas? 3.A.11 (función de producción: rendimientos y elasticidad de sustitución), con 3.A.8 como referencia de la variante de utilidad
 
 ## Presentación de referencia
 Pregunta: la forma funcional más sencilla con buen comportamiento (Inada, isocuantas convexas) y σ=1.

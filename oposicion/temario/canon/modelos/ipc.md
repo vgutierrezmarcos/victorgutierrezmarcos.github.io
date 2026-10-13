@@ -3,6 +3,7 @@
 - **Área:** economia-espanola · **Tema de referencia:** 4.A.1 (fuentes estadísticas) para la metodología; la teoría de los índices, en 3.A.9 [ficha `indices-precios`]
 - **Temas que lo usan:** 4.A.1 (desarrollo), 3.A.9 (teoría), 3.A.41 (mención: sesgos e inflación), 4.A.22 (resumen: deflactores del ITC), 4.A.29 (resumen: inflación reciente), 4.A.16 (mención: indexación salarial), 3.B.22 (mención)
 - **Manuales de referencia:** INE, metodología del IPC base 2021; Reglamento (UE) 2016/792 (IPCA); Informe Boskin (1996)
+- **Decisión D044 (13/10/2026):** ¿Qué letra llevan las ponderaciones de los índices (IPC, tipos de cambio efectivos, ITC)? ω_i (ω_{i,t−1} en el IPC; media geométrica con pesos ω_i en los tipos efectivos)
 
 ## Presentación de referencia
 Mide la evolución de los precios de los bienes y servicios que consume la población residente en viviendas familiares. Mensual (con indicador adelantado), por CC. AA. y provincias. **Base 2021**; **Laspeyres encadenado** con ponderaciones actualizadas cada año (ecuación en la ficha `indices-precios`, notación $\omega_{i,t-1}$ para ponderaciones). Cesta de ≈1.000 artículos (verificar la cifra de la base vigente).
@@ -22,4 +23,4 @@ Mide la evolución de los precios de los bienes y servicios que consume la pobla
 - 4.A.1 lo presenta a la vez como Laspeyres de base fija ($w_{i0}$) y encadenado: usar encadenado con ponderaciones del año anterior.
 - 4.A.1: «casi 500 artículos» y «nueva base (2001)»: actualizar a la base 2021.
 - 4.A.1: subyacente «excluyendo los productos energéticos y los alimentos»: son los alimentos **no elaborados**.
-- 4.A.1 usa $w_{i0}$ para ponderaciones (choca con $w$ salario): ver la ficha `indices-precios` **[decidir]**.
+- 4.A.1 usa $w_{i0}$ para ponderaciones (choca con $w$ salario): canon $\omega_{i,t-1}$ (ficha `indices-precios`).

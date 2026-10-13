@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.5 (gasto público; debate sobre el tamaño) — está en el título; 4.B.1 lo desarrolla hoy igual de extenso.
 - **Temas que lo usan:** 4.B.5 (desarrollo), 4.B.1 (hoy desarrollo; debería ser mención), 4.B.7 (mención: presión fiscal), 4.B.23 (aplicación a España prevista: ficha `presion-fiscal`)
 - **Manuales de referencia:** Frank (1959), «Measuring state tax burdens», *National Tax Journal* 12(2); Albi et al., *Economía pública I*; OCDE, *Government at a Glance* (bienal) y *Revenue Statistics* (anual); Eurostat, *Taxation trends in the EU*.
+- **Decisión D127 (13/10/2026):** ¿Qué se hace con los indicadores de tamaño del sector público y el «comodín» del tamaño óptimo en 4.B.1? Desarrollo solo en 4.B.5 y suprimir de 4.B.1 el comodín (Barro 1990, BMg = CMg), que no pide su título
 
 ## Presentación de referencia
 **Pregunta:** ¿cómo se mide el tamaño del sector público y cómo se compara entre países?
@@ -30,4 +31,4 @@
 - **Error de atribución (4.B.1 y 4.B.5):** «índice de Frank, en honor al economista inglés Frank Ramsey». El índice es de **Henry J. Frank (1959)** y no tiene relación con Frank Ramsey (regla de Ramsey, 1927). **Corregir en los dos.**
 - 4.B.1: fórmulas (tamaño, esfuerzo fiscal) como imágenes vacías en el Word; $P$ como gasto total y $g$ como gasto per cápita. Propuesta: $G$, $g=G/Y$.
 - 4.B.5: presión fiscal «35 %» y previsión «37 % en 2022» junto a déficit y deuda de 2022: mezcla años. Actualizar con una sola fuente y año.
-- **Duplicación (4.B.1 y 4.B.5):** **[decidir]** desarrollo solo en 4.B.5.
+- **Duplicación (4.B.1 y 4.B.5):** Desarrollo solo en 4.B.5; se suprime de 4.B.1 el «comodín» del tamaño óptimo.

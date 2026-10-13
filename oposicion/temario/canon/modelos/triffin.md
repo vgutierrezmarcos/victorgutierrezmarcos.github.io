@@ -3,6 +3,7 @@
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.20 (SEI hasta la ruptura de Bretton Woods) — es donde explica la ruptura de 1971
 - **Temas que lo usan:** 3.B.20 (resumen → debe ser desarrollo), 3.B.21 (resumen, hoy copiado de 3.B.20 → mención), 3.B.22 (mención: DEG), 3.B.42/3.B.43 (mención posible: «nuevo dilema de Triffin» y papel internacional del euro; sin fuente en 3.B.43), 3.B.15 (mención: régimen cambiario)
 - **Manuales de referencia:** Triffin, *Gold and the Dollar Crisis* (1960); Eichengreen, *Globalizing Capital*, cap. 4; Krugman-Obstfeld-Melitz, cap. del sistema monetario internacional; Farhi, Gourinchas y Rey (2011) para la versión moderna
+- **Decisión D025 (13/10/2026):** ¿Cómo se reparte Bretton Woods, cuyo texto se repite en seis temas? Desarrollo solo en 3.B.20; en 3.B.21 un resumen de la ruptura (1971-1976); una frase con el pilar monetario en 3.B.22 y con el comercial en 3.B.33-3.B.34; nada en 3.B.35
 
 ## Presentación de referencia
 Pregunta: ¿puede una moneda nacional ser a la vez el activo de reserva mundial y mantener una paridad fija con el oro?

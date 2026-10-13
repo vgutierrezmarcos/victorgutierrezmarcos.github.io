@@ -3,6 +3,7 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.28 (La tasa natural de paro y la NAIRU. La persistencia del desempleo) — la persistencia está en el título.
 - **Temas que lo usan:** 3.A.28 (desarrollo), 3.A.7 (resumen: persistencia en la NEK), 4.A.16 (mención: paro de larga duración y desplazamiento de la curva de Beveridge en España).
 - **Manuales de referencia:** Blanchard y Summers (1986), *NBER Macroeconomics Annual*; Lindbeck y Snower (1988), *The Insider-Outsider Theory*; Layard, Nickell y Jackman (1991); Ball (2009); Cahuc, Carcillo y Zylberberg (2014), cap. 9.
+- **Decisión D020 (13/10/2026):** ¿Se reserva λ para multiplicadores y precios sombra? Sí: factor de escala t (3.A.11), tasas de búsqueda f(θ) y q(θ) (DMP), persistencia de la histéresis λ_h con subíndice; se admite λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky
 
 ## Presentación de referencia
 
@@ -28,6 +29,6 @@ con λ_h = 1 histéresis pura (el paro sigue un paseo aleatorio) y λ_h < 1 pers
 
 ## Divergencias encontradas en el temario actual
 
-- Sin ecuaciones en el inventario. El coeficiente de persistencia se escribe λ_h para no chocar con λ = precio sombra **[decidir]** (alternativa: φ_h).
+- Sin ecuaciones en el inventario. El coeficiente de persistencia se escribe λ_h (con subíndice) para no chocar con λ = precio sombra.
 
 Autor: Víctor Gutiérrez Marcos

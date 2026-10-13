@@ -3,6 +3,8 @@
 - **Área:** economia-espanola · **Tema de referencia:** 4.A.21 (evolución de la BP y la PII desde el euro; posición del BdE frente al Eurosistema). Los conceptos (MBP6, identidad) son de la ficha `identidad-balanza-pagos` (área macro-abierta, tema de referencia 3.B.11); la metodología de la fuente, de 4.A.1
 - **Temas que lo usan:** 4.A.21 (desarrollo), 4.A.1 (resumen metodológico), 4.A.22 (resumen: bienes y servicios), 4.A.23 (resumen: inversión directa y en cartera), 4.A.29 (mención: capacidad de financiación y PIIN), 4.A.30 (mención: flujos con la UE), 4.A.13 (mención: turismo)
 - **Manuales de referencia:** FMI, MBP6 (2009; MBP7 aprobado en 2025, verificar calendario de aplicación); Banco de España, *La balanza de pagos y la posición de inversión internacional de España* (anual); Reglamento (UE) 2016/1013 del BCE
+- **Decisión D039 (13/10/2026):** ¿Cómo se escribe la cuenta financiera con y sin el Banco de España en la identidad de la balanza de pagos? CF^{exc. BdE} y CF^{BdE} (incluye TARGET2)
+- **Decisión D043 (13/10/2026):** ¿Dónde va la introducción a la balanza de pagos de España? Solo en 4.A.21 (conceptos en 3.B.11); la historia 1959-1998 en 4.A.27; 4.A.22 y 4.A.23 remiten
 
 ## Presentación de referencia
 Elaboración: Banco de España (con INE para servicios y turismo). Identidad canónica (misma forma en 4.A.1, 4.A.21, 4.A.22 y 4.A.23):
@@ -21,7 +23,7 @@ Gráfico de referencia: capacidad/necesidad de financiación por componentes (ba
 | 4.A.23 | Inversión exterior | Mención | ID y cartera; flujos frente a stocks; ETVE | La identidad completa y la historia |
 
 ## Divergencias encontradas en el temario actual
-- **«Breve introducción a la BP» y evolución 1939-2019 copiadas en 4.A.21, 4.A.22 y 4.A.23** (212 líneas idénticas entre 4.A.21 y 4.A.22; 72 entre 4.A.21 y 4.A.23; 67 entre 4.A.22 y 4.A.23). **[decidir]** Propuesta: introducción solo en 4.A.21 (y conceptos en 3.B.11); 1959-1998 en 4.A.27; 4.A.22 y 4.A.23 remiten.
-- La identidad se escribe con $SNC^{*}+\Delta R$ (variación de reservas) como única parte del BdE; en la UEM la partida relevante es la posición frente al Eurosistema. 4.A.1 lee $SNC/SNC^{*}$ como «con y sin Banco de España» y 4.A.21 como «con y sin reservas». **[decidir]** Propuesta: la forma de arriba con $CF^{\text{exc. BdE}}$ y $CF^{\text{BdE}}$.
+- **«Breve introducción a la BP» y evolución 1939-2019 copiadas en 4.A.21, 4.A.22 y 4.A.23** (212 líneas idénticas entre 4.A.21 y 4.A.22; 72 entre 4.A.21 y 4.A.23; 67 entre 4.A.22 y 4.A.23). Reparto: introducción solo en 4.A.21, que resume los conceptos que necesita (desarrollados en 3.B.11) sin depender de él; la historia 1959-1998 en 4.A.27; 4.A.22 y 4.A.23 remiten.
+- La identidad se escribe con $SNC^{*}+\Delta R$ (variación de reservas) como única parte del BdE; en la UEM la partida relevante es la posición frente al Eurosistema. 4.A.1 lee $SNC/SNC^{*}$ como «con y sin Banco de España» y 4.A.21 como «con y sin reservas». Canon: la forma de arriba con $CF^{\text{exc. BdE}}$ y $CF^{\text{BdE}}$ (incluye TARGET2).
 - Cifras incompatibles entre temas: saldo de bienes «superávit del 2,1 % en 2017» y «déficit del 0,7 % en 2017» (4.A.22) frente a «déficit del 2 % en 2019» (4.A.21); «Balanza de pagos (2022)» con datos de 2021 (4.A.23).
 - «Posición Inversora Internacional» y «Posición de Inversión Internacional»: usar la segunda (BdE).

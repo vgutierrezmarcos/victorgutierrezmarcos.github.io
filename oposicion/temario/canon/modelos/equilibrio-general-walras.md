@@ -3,6 +3,7 @@
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.21 (Teoría del equilibrio general) — construcción, existencia, unicidad, estabilidad. Las **condiciones de óptimo de Pareto** (FPP, FPU, GFPU) son de 3.A.22.
 - **Temas que lo usan:** 3.A.21 (desarrollo), 3.A.22 (desarrollo de la eficiencia), 3.A.23 (desarrollo: **copia** del de 3.A.22, sobra con el título vigente), 3.A.3 (desarrollo histórico: Walras), 4.B.11 (resumen: versión 1×2×2×2 con ocio)
 - **Manuales de referencia:** Walras (1874); Arrow y Debreu (1954); Mas-Colell, Whinston y Green, cap. 15-17; Varian, cap. 17-18; Gandolfo; Bator (1957) para la presentación gráfica 2×2×2×2.
+- **Decisión D035 (13/10/2026):** ¿Cómo se escriben las relaciones marginales en el equilibrio general? RMS^A_{XY}, RMST^X_{LK} y RMT_{XY}, positivas y sin barras (paralelas a RMS_{12} de 3.A.8)
 
 ## Presentación de referencia
 Economía: dos bienes $X,Y$, producidos por dos empresas con dos factores $L,K$ (dotaciones $\bar L,\bar K$) y consumidos por dos consumidores $A,B$; competencia perfecta en todos los mercados; preferencias y tecnologías neoclásicas, sin externalidades.
@@ -23,7 +24,7 @@ Gráficos de referencia: caja de Edgeworth de la producción y curva de contrato
 
 ## Divergencias encontradas en el temario actual
 - Orden de los factores: $F_X(K_X,L_X)$ y $F_X(L_X,K_X)$ en 3.A.22; $K,L$ en 3.A.21: canon **$(L,K)$** y $RMST_{LK}$.
-- Escritura de las relaciones marginales: $|RMS_X^Y|_A$ (3.A.22, 3.A.23, en valor absoluto) frente a $RMS_{12}=U_1/U_2>0$ (3.A.8 revisado): canon $RMS^A_{XY}=\frac{\partial U_A/\partial X}{\partial U_A/\partial Y}$ (positiva, sin barras; consumidor arriba, bienes abajo); igual $RMST^X_{LK}$ y $RMT_{XY}$. **[decidir]**
+- Escritura de las relaciones marginales: $|RMS_X^Y|_A$ (3.A.22, 3.A.23, en valor absoluto) frente a $RMS_{12}=U_1/U_2>0$ (3.A.8 revisado): canon $RMS^A_{XY}=\frac{\partial U_A/\partial X}{\partial U_A/\partial Y}$ (positiva, sin barras; consumidor arriba, bienes abajo); igual $RMST^X_{LK}$ y $RMT_{XY}$.
 - Bienes: $X,Y$ (3.A.21-3.A.23) y $X_1,X_2$ (4.B.11); 3.A.21 mezcla $x_h,y_h$ y $p_x/p_X$: canon $X_h,Y_h$ y $p_X,p_Y$.
 - Precios de factores: $w_K,w_L$ (3.A.21) frente a $w,r$ (3.A.23) y $W,R$ (3.A.11): canon $w_L,w_K$.
 - 3.A.21: «la convexidad estricta del conjunto de producción implica rendimientos decrecientes» y el 1TFEB pide rendimientos no crecientes (el 1TFEB no necesita convexidad).

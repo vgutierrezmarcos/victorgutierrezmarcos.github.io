@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.16 (el IRPF en España) — título; tema **sin fuente**. Hoy el material está en 4.B.12 (viejo 4.B.13), apartado 1, organizado como liquidación del impuesto español.
 - **Temas que lo usan:** 4.B.16 (desarrollo previsto), 4.B.12 (hoy desarrollo; debe quedar en teoría y comparación internacional), 4.B.7 (mención: ejemplo de impuesto directo, personal, progresivo), 4.B.10 (mención: efectos incentivo), 4.B.9 (aplicación de las medidas de progresividad), 4.B.25 (cesión del 50 % a las CCAA)
 - **Manuales de referencia:** Ley 35/2006, de 28 de noviembre, del IRPF, y RD 439/2007 (Reglamento); Albi et al., *Sistema fiscal español* (última edición); AEAT, *Informe anual de recaudación tributaria* y *Estadística de los declarantes del IRPF*; Informe Mirrlees (2011); Comisión de expertos para la reforma tributaria (Libro Blanco, 2022).
+- **Decisión D022 (13/10/2026):** ¿Qué se hace con la normativa española de los impuestos que hoy está en 4.B.12 y 4.B.13? Usarla como semilla de los temas sin fuente (IRPF → 4.B.16, IS → 4.B.17, patrimonio → 4.B.19, IVA → 4.B.20) y reorientar 4.B.12 y 4.B.13 a la teoría y la comparación internacional
 
 ## Presentación de referencia
 **Teoría (4.B.12):** renta extensiva de Haig-Simons frente a renta fiscal; personalidad y progresividad; unidad contribuyente (individual o conjunta); impuesto **dual** (ficha `impuesto-dual`) frente a sintético; *flat tax*; efectos de la inflación (progresividad en frío); historia (Pitt 1799; EE. UU. 1913; reformas de los ochenta).
@@ -21,6 +22,6 @@
 | 4.B.25 | Financiación autonómica | Mención | Cesión y capacidad normativa | — |
 
 ## Divergencias encontradas en el temario actual
-- **4.B.12 lleno de normativa española del IRPF** (liquidación completa) que en el temario nuevo corresponde a 4.B.16, sin fuente. **Propuesta [decidir]:** usar ese material como semilla de 4.B.16 y reorientar 4.B.12 a la teoría y la comparación internacional.
+- **4.B.12 lleno de normativa española del IRPF** (liquidación completa) que en el temario nuevo corresponde a 4.B.16, sin fuente. Canon: ese material es semilla de 4.B.16 y 4.B.12 se reorienta a la teoría y la comparación internacional.
 - 4.B.12: renta fiscal escrita $Y_t=IC_t+GD_t$ (los gastos deducibles se restan); progresividad confundida con retenciones; deducción por doble imposición «económica»/«jurídica» invertida (jurídica: mismo contribuyente gravado dos veces; económica: misma renta en contribuyentes distintos); cifras de recaudación distintas en texto (113.123 M€, 43 %) y anexo (110.000 M€, ~40 %).
 - 4.B.12 no recoge el Impuesto Temporal de Solidaridad de las Grandes Fortunas (ver `impuesto-patrimonio.md`).

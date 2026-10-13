@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.17 (el IS en España) — título; tema **sin fuente**. Hoy el material está en 4.B.12, apartado 2.
 - **Temas que lo usan:** 4.B.17 (desarrollo previsto), 4.B.12 (hoy desarrollo; debe quedar en teoría y comparación), 4.B.10 (resumen: efectos sobre financiación e inversión), 4.B.7 (mención), 4.B.18 (fiscalidad internacional: pilares, BEPS, directivas)
 - **Manuales de referencia:** Ley 27/2014, de 27 de noviembre, del IS; Ley 7/2024 (impuesto complementario y otras medidas) [comprobar]; Albi et al., *Sistema fiscal español*; Auerbach (2002), «Taxation and corporate financial policy», *Handbook of Public Economics* III; Informe Mirrlees (2011), cap. 17-18 (ACE); OCDE, *Corporate Tax Statistics*.
+- **Decisión D022 (13/10/2026):** ¿Qué se hace con la normativa española de los impuestos que hoy está en 4.B.12 y 4.B.13? Usarla como semilla de los temas sin fuente (IRPF → 4.B.16, IS → 4.B.17, patrimonio → 4.B.19, IVA → 4.B.20) y reorientar 4.B.12 y 4.B.13 a la teoría y la comparación internacional
 
 ## Presentación de referencia
 **Teoría (4.B.12):** justificación del IS (retención a cuenta del IRPF, beneficio por personalidad jurídica, renta económica), integración con el IRPF (clásico, imputación, exención de dividendos), neutralidad financiera (deducibilidad de intereses frente a fondos propios; ACE y CBIT), incidencia (Harberger en economía cerrada; trabajo en economía abierta), efectos sobre inversión (coste de uso del capital [ver tema 3.A.34]) y localización (IDE, traslado de beneficios: 4.B.18).
@@ -20,5 +21,5 @@
 | 4.B.18 | Fiscalidad internacional | Aplicación | Pilares, BEPS, directivas | Liquidación |
 
 ## Divergencias encontradas en el temario actual
-- **4.B.12 lleno de normativa del IS español** (liquidación, reservas, regímenes) que corresponde a 4.B.17. **[decidir]** igual que en `irpf.md`.
+- **4.B.12 lleno de normativa del IS español** (liquidación, reservas, regímenes) que corresponde a 4.B.17. Como en `irpf.md`: ese material es semilla de 4.B.17 y 4.B.12 se reorienta a la teoría y la comparación internacional.
 - 4.B.12: tipos internacionales desfasados (EE. UU. 40 % → 21 % federal desde 2018; Irlanda 12,5 % → 15 % para grandes grupos desde 2024); dice que el tipo es «único» y luego enumera varios.

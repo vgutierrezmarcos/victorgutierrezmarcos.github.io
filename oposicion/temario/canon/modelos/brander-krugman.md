@@ -1,8 +1,10 @@
 # Dumping recíproco y mercados recíprocos (Brander, 1981; Brander y Krugman, 1983)
 
-- **Área:** comercio · **Tema de referencia:** 3.B.8 (Política comercial estratégica) para la versión con arancel (Brander, 1981) **[decidir]**; el modelo sin política (dumping recíproco como explicación del comercio intraindustrial en bienes homogéneos) se resume en 3.B.6.
+- **Área:** comercio · **Tema de referencia:** 3.B.8 (Política comercial estratégica) para la versión con arancel (Brander, 1981) ; el modelo sin política (dumping recíproco como explicación del comercio intraindustrial en bienes homogéneos) se resume en 3.B.6.
 - **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.6 (resumen)
 - **Manuales de referencia:** Brander (1981, *JIE*); Brander y Krugman (1983, *JIE*); Feenstra, cap. 7; Helpman y Krugman, *Trade Policy and Market Structure* (1989).
+- **Decisión D016 (13/10/2026):** ¿Se reserva φ para la productividad de Melitz (y la inversa de Frisch en macro) y se cambian sus otros usos en comercio y macro abierta? Sí: función de reacción R_A(q_B), coeficiente técnico de la protección efectiva a_ij, sensibilidad del saldo comercial al tipo real ν
+- **Decisión D115 (13/10/2026):** ¿Dónde se desarrolla Brander-Krugman (dumping recíproco)? 3.B.8 la versión con arancel (Brander, 1981) y 3.B.6 resume el dumping recíproco como explicación del comercio intraindustrial
 
 ## Presentación de referencia
 **Pregunta:** ¿por qué se exporta e importa el mismo bien homogéneo, y puede un arancel trasladar beneficios?
@@ -25,6 +27,6 @@ Funciones de reacción $R_A(q_B)$, $R_B(q_A)$ en cada mercado.
 
 ## Divergencias encontradas en el temario actual
 - 3.B.8 llama «modelo de Brander y Krugman (1983)» al duopolio Cournot en un **tercer mercado** de partida de Brander-Spencer: Brander-Krugman (1983) es el de mercados recíprocos (dumping recíproco). Corregir la atribución (ver `brander-spencer`).
-- Función de reacción $\varphi_A(q_B)$ en 3.B.8; canon $R_A(q_B)$ **[decidir]**, coherente con `cournot` del área de mercados.
+- Función de reacción $\varphi_A(q_B)$ en 3.B.8; canon $R_A(q_B)$, coherente con `cournot` del área de mercados.
 
 Autor: Víctor Gutiérrez Marcos

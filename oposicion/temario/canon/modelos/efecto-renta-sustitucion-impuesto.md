@@ -3,6 +3,7 @@
 - **Área:** sector público · **Tema de referencia:** 4.B.9 — está en el título («Efecto renta y efecto sustitución de los impuestos»).
 - **Temas que lo usan:** 4.B.9 (desarrollo: modelo 1×2×2×2 de eficiencia), 4.B.10 (desarrollo: descomposición con dotación en trabajo y ahorro), 4.B.11 (hoy desarrollo duplicado; debe ser resumen)
 - **Manuales de referencia:** Atkinson y Stiglitz, *Lectures*, lecciones 2 y 3; Rosen y Gayer, cap. 15 y 17-18; Stiglitz y Rosengard, cap. 19 y 22; Albi et al., *Economía pública I*. Base: Slutsky [ver tema 3.A.9] y equilibrio general [ver tema 3.A.21].
+- **Decisión D098 (13/10/2026):** ¿Qué versión del efecto renta y sustitución de los impuestos se queda en 4.B.9? La propia (1.2, modelo 1×2×2×2); lo que aporta la copiada (1.3, consumo-ocio) va a 4.B.10
 
 ## Presentación de referencia
 **Pregunta:** ¿qué impuestos rompen cada condición de eficiencia paretiana, y por qué solo el efecto sustitución genera pérdida de bienestar?
@@ -25,7 +26,7 @@ condiciones de eficiencia: $RMS_{12}=\frac{p_1}{p_2}=RMT_{12}$; $\lvert RMST_{L,
 | 4.B.11 | Imposición óptima | Resumen | Solo la idea: el EG nace del ES; «[ver tema 4.B.9]» | Todo el apartado 1 actual |
 
 ## Divergencias encontradas en el temario actual
-- 4.B.9 tiene dos versiones del mismo modelo: la propia (1.2, 1×2×2×2) y otra «copiada de María Palacios Carrere» (1.3, 1×2×1×1) que repite la anterior. **Propuesta [decidir]:** quedarse con 1.2 y llevar a 4.B.10 lo que 1.3 aporta del consumo-ocio.
+- 4.B.9 tiene dos versiones del mismo modelo: la propia (1.2, 1×2×2×2) y otra «copiada de María Palacios Carrere» (1.3, 1×2×1×1) que repite la anterior. Canon: se queda la versión 1.2 (1×2×2×2) y lo que aporta la 1.3 (consumo-ocio) pasa a 4.B.10.
 - 4.B.9 deja una nota «No entiendo, algo tiene que haber mal…» en el impuesto general sobre un factor (con dotaciones fijas, un impuesto general sobre un factor fijo es como una suma fija: no distorsiona).
 - Notación de los impuestos sobre factores: «$z_m$», «$\tau_{z_m}^{X_i}$». Propuesta: $t_{L}$, $t_{K}$, $t_{KX}$.
 - 4.B.10 escribe la restricción «$C^*+wO^*=w O_0+O$» (debe ser $+M$, renta no laboral; canon: $\overline{W}$) y con impuesto sobre salarios no aplica $w(1-t)$ al ocio en el lado izquierdo.

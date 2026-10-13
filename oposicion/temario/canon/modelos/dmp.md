@@ -3,6 +3,10 @@
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.26 (desempleo friccional, curva de Beveridge, DMP) — lo tiene en el título.
 - **Temas que lo usan:** 3.A.26 (desarrollo), 3.A.28 (resumen), 3.A.7 (mención)
 - **Manuales de referencia:** Pissarides, *Equilibrium Unemployment Theory* (2.ª ed., 2000), cap. 1; Cahuc, Carcillo y Zylberberg (2014), cap. 9; Romer (2019), cap. 11.
+- **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
+- **Decisión D020 (13/10/2026):** ¿Se reserva λ para multiplicadores y precios sombra? Sí: factor de escala t (3.A.11), tasas de búsqueda f(θ) y q(θ) (DMP), persistencia de la histéresis λ_h con subíndice; se admite λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky
+- **Decisión D023 (13/10/2026):** ¿Se reserva M para el dinero (y las importaciones) y se cambian sus otros usos? Sí: número de variedades de Romer (1990) N_t, función de emparejamiento m(U,V), renta no laboral W̄
+- **Decisión D056 (13/10/2026):** ¿Se mantiene θ ≡ V/U para la tensión del mercado de trabajo aunque θ sea la CRRA? Sí, avisándolo: es la notación universal de la búsqueda (Pissarides, Cahuc) y 3.A.26 y 3.A.28 no usan la CRRA
 
 ## Presentación de referencia
 Pregunta: ¿por qué hay paro y vacantes a la vez en equilibrio? Supuestos: fricciones de búsqueda; función de emparejamiento con rendimientos constantes; trabajadores y empresas idénticos; libre entrada de vacantes; salario por negociación de Nash; tasa exógena de separación.
@@ -23,9 +27,9 @@ Gráficos de referencia: (1) plano (θ, w): curva de creación de empleo decreci
 | 3.A.7 | Fricciones en el mercado de trabajo en la NEK | mención | Citar como fuente de rigidez real en los EGDE con fricciones | Ecuaciones |
 
 ## Divergencias encontradas en el temario actual
-- 3.A.26 usa δ para la tasa de separación (choca con δ = depreciación): propuesta **s** **[decidir]**.
-- λ(θ) y μ(θ) para las tasas de encontrar empleo y cubrir vacantes: propuesta **f(θ)** y **q(θ)** (λ es precio sombra en 3.A.29 y 3.A.43; μ es margen) **[decidir]**.
+- 3.A.26 usa δ para la tasa de separación (choca con δ = depreciación): canon **s** (igual en Shapiro-Stiglitz).
+- λ(θ) y μ(θ) para las tasas de encontrar empleo y cubrir vacantes: canon **f(θ)** y **q(θ)** (λ es precio sombra en 3.A.29 y 3.A.43; μ es margen).
 - M para la función de emparejamiento: propuesta **m(U,V)** (M es dinero).
-- θ = tensión choca con θ = CRRA: se mantiene por ser universal en la literatura de búsqueda, avisándolo **[decidir]**.
+- θ = tensión choca con θ = CRRA: se mantiene por ser universal en la literatura de búsqueda (Pissarides, Cahuc), avisándolo; 3.A.26 y 3.A.28 no usan la CRRA.
 
 Autor: Víctor Gutiérrez Marcos

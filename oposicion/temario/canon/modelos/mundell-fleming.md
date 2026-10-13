@@ -1,10 +1,10 @@
 # Modelo IS-LM-BP (Mundell-Fleming)
 
-- **Área:** macro-abierta · **Tema de referencia:** **[decidir]** entre
-  - **3.A.32** (OA-DA en economía abierta: renta, inflación, políticas monetaria y fiscal) — *propuesta*: es su sitio natural en el temario de 2023 (hereda el antiguo 3.A.28, como recuerda la nota de 3.B.12) y es donde se analizan las políticas en economía abierta con carácter general; pero **no tiene fuente** y hay que escribirlo.
-  - **3.B.15** (Regímenes cambiarios) — es hoy el desarrollo más completo (ecuaciones, tres casos de $\beta$, políticas con tipo fijo y flexible). Si se elige 3.A.32, el texto de 3.B.15 es la base para escribirlo y 3.B.15 pasa a resumen.
+- **Área:** macro-abierta · **Tema de referencia:** **3.A.32** (OA-DA en economía abierta: renta, inflación, políticas monetaria y fiscal; sin fuente): es su sitio natural en el temario de 2023 (hereda el antiguo 3.A.28, como recuerda la nota de 3.B.12) y es donde se analizan las políticas en economía abierta con carácter general. Se escribe a partir de 3.B.15, hoy el desarrollo más completo (ecuaciones, tres casos de $\beta$, políticas con tipo fijo y flexible), que pasa a resumen.
 - **Temas que lo usan:** 3.A.32 (desarrollo, sin fuente), 3.B.15 (desarrollo → resumen), 3.B.19 (desarrollo → variante de dos países), 3.A.37 (desarrollo → resumen), 3.A.38 (resumen → mención), 3.B.14 (borrador → mención), 4.B.4 (resumen)
 - **Manuales de referencia:** Mundell (1963), Fleming (1962); Krugman, Obstfeld y Melitz, cap. 17 (modelo $DD$-$AA$, equivalente); Blanchard, *Macroeconomía*, caps. 19-20; Gandolfo, *International Finance…*, caps. 10-11; Dornbusch, Fischer y Startz, *Macroeconomía*, cap. 12.
+- **Decisión D014 (13/10/2026):** ¿Cuál es el tema de referencia de Mundell-Fleming (IS-LM-BP)? 3.A.32 (OA-DA en economía abierta), escribiéndolo a partir de 3.B.15, que pasa a resumen
+- **Decisión D016 (13/10/2026):** ¿Se reserva φ para la productividad de Melitz (y la inversa de Frisch en macro) y se cambian sus otros usos en comercio y macro abierta? Sí: función de reacción R_A(q_B), coeficiente técnico de la protección efectiva a_ij, sensibilidad del saldo comercial al tipo real ν
 
 ## Presentación de referencia
 **Pregunta:** ¿qué eficacia tienen las políticas fiscal y monetaria según el régimen cambiario y la movilidad del capital?
@@ -12,10 +12,10 @@
 **Supuestos:** precios fijos ($P = P^* = 1$, luego $i = r$ y $q = E$), expectativas estáticas ($\gamma E^e = 0$), condición de Marshall-Lerner, país pequeño (salvo en la versión de dos países), movilidad del capital $\beta \in [0, \infty]$.
 
 **Ecuaciones (notación canónica):**
-$$IS:\; Y = \frac{\bar C + \bar I - v\,i + \bar G + x Y^* + \nu q}{1 - c(1-t) + m}$$
+$$IS:\; Y = \frac{\bar C + \bar I - b\,i + \bar G + x Y^* + \nu q}{1 - c(1-t) + m}$$
 $$LM:\; \frac{M^S}{P} = kY - h\,i$$
 $$BP:\; \underbrace{xY^* - mY + \nu q}_{\text{balanza comercial}} + \beta\,(i - i^*) = 0 \;\;\Rightarrow\;\; \left.\frac{\partial i}{\partial Y}\right|_{BP} = \frac{m}{\beta}$$
-($\nu$ = sensibilidad del saldo comercial al tipo real; símbolo **[decidir]**, hoy $\phi$/$\varphi$). Casos: $\beta = 0$ movilidad **nula** (BP vertical); $0<\beta<\infty$ imperfecta (BP creciente); $\beta \to \infty$ movilidad **perfecta** (BP horizontal en $i = i^*$).
+($\nu$ = sensibilidad del saldo comercial al tipo real; antes $\phi$/$\varphi$). Casos: $\beta = 0$ movilidad **nula** (BP vertical); $0<\beta<\infty$ imperfecta (BP creciente); $\beta \to \infty$ movilidad **perfecta** (BP horizontal en $i = i^*$).
 
 **Resultado:** con movilidad perfecta, la política monetaria es ineficaz con tipo fijo y máxima con flexible; la fiscal, al revés.
 

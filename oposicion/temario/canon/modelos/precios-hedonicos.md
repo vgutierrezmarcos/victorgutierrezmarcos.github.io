@@ -3,6 +3,8 @@
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.8 (Demanda I) — revisado; lo tiene en el título y lo desarrolla con el modelo de Rosen.
 - **Temas que lo usan:** 3.A.8 (desarrollo), 4.B.6 (resumen: valoración de bienes sin mercado en el ACB); 4.A.1 y 3.A.30 podrían citarlo para el ajuste por calidad del IPC.
 - **Manuales de referencia:** Rosen (1974), *JPE*; Griliches (1971); Triplett (2006), *Handbook on Hedonic Indexes*; Boardman et al., *Cost-Benefit Analysis* (4.B.6).
+- **Decisión D003 (13/10/2026):** ¿Qué letra lleva el beneficio de la empresa? B (B_j, B(p,w)); π queda para la inflación y las probabilidades
+- **Decisión D006 (13/10/2026):** ¿Cómo se escriben las funciones de puja y de oferta del modelo de precios hedónicos de Rosen (1974)? Θ(z;Ū,W̄) para la puja y φ(z;B) para la oferta (si se aprueban θ = CRRA y B = beneficio)
 
 ## Presentación de referencia
 Pregunta: ¿cuánto valoran los consumidores cada característica de un bien diferenciado?
@@ -19,4 +21,4 @@ Gráfico de referencia: `oposicion/temario/fuentes/3A08/graficos/funcion-hedonic
 
 ## Divergencias encontradas en el temario actual
 - Atribución: 4.B.6 lo atribuye a Griliches (1971); canon: Court (1939) acuña, Griliches (1961) lo hace método, Rosen (1974) lo fundamenta.
-- Notación de 3.A.8: $\theta$ (puja) choca con el parámetro CRRA si se adopta $\theta$ (ver `_notacion/consumidor-produccion.md`) y $\pi$ (beneficio) con la propuesta de $B$ para el beneficio. **[decidir]** (propuesta: $\Theta(z;\overline U,\overline W)$ y $\phi(z;B)$).
+- Notación de 3.A.8: la puja $\theta(\cdot)$ chocaba con la CRRA $\theta$ y el beneficio $\pi$ con el canon $B$. Canon: $\Theta(z;\overline U,\overline W)$ para la puja y $\phi(z;B)$ para la oferta (cambio pendiente en 3.A.8: `pendientes-coherencia.md`).

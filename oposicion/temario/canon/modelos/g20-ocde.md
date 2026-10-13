@@ -3,6 +3,7 @@
 - **Área:** historia-organismos · **Tema de referencia:** 3.B.19 (coordinación internacional de políticas, según el título del temario nuevo) — **hoy vacío**: el desarrollo está en 3.B.35 (sección IV «Organismos de cooperación»), que con el título nuevo no lo pide
 - **Temas que lo usan:** 3.B.35 (desarrollo, fuera de sitio), 3.B.21 (resumen: G-20 tras 2008, FSB, DSSI), 3.B.42 (resumen: la UE en la OCDE y el G-20), 3.B.22 (mención: cumbre de Londres de 2009), 4.A.24 (mención: Consenso OCDE de crédito a la exportación), 3.B.29 (mención: CAD de la OCDE; sin fuente), 4.B.17/4.B.18 (mención: BEPS y pilares OCDE)
 - **Manuales de referencia:** documentos oficiales (g20.org, oecd.org); Krugman-Obstfeld-Melitz, cap. de coordinación internacional; Bayne y Woolcock, *The New Economic Diplomacy*
+- **Decisión D119 (13/10/2026):** ¿Se traslada el G-20 y la OCDE de 3.B.35 a 3.B.19? Sí: la sección IV de 3.B.35 pasa a 3.B.19 (lo pide su título) y 3.B.35 remite
 
 ## Presentación de referencia
 **OCDE.** Origen en la OECE (1948, Plan Marshall); Convenio de París de 14-12-1960, en vigor en 1961. **38 miembros** (último, Costa Rica en 2021; procesos de adhesión abiertos con Argentina, Brasil, Bulgaria, Croacia, Perú, Rumanía, Indonesia y Tailandia: verificar). España, fundadora. Órganos: Consejo, comités, Secretaría (secretario general Mathias Cormann; verificar). Instrumentos: estudios económicos por país, Consenso sobre créditos a la exportación con apoyo oficial, Directrices para empresas multinacionales, Marco Inclusivo BEPS (Pilar 1 y Pilar 2, tipo mínimo del 15 %), CAD y definición de AOD.
@@ -21,7 +22,7 @@ Sin ecuaciones ni gráfico.
 | 4.A.24 | Instrumentos financieros de apoyo | Mención | Consenso OCDE (CIRR, primas mínimas) | — |
 
 ## Divergencias encontradas en el temario actual
-- **3.B.19 sin G-20 ni OCDE; el contenido está en 3.B.35**. **[decidir]** Propuesta: mover la sección IV de 3.B.35 a 3.B.19 (donde la pide el título) y dejar en 3.B.35 una remisión.
+- **3.B.19 sin G-20 ni OCDE; el contenido está en 3.B.35**. Reparto: se mueve la sección IV de 3.B.35 a 3.B.19 (donde la pide el título) y 3.B.35 remite.
 - Peso del G-20 distinto en cada tema: «90 % del PIB y 80 % del comercio» (3.B.35), «más del 90 % del PIB» (3.B.21), «más del 85 % del PIB, casi el 80 % del comercio y 65 % de la población» (3.B.42). Propuesta: la cifra oficial actual (≈85 %, ≈75 %, ≈2/3).
 - Ningún tema recoge la entrada de la **Unión Africana (2023)**; 3.B.21 y 3.B.35 enumeran el «G-8» con Rusia sin decir que está suspendida del G-8 desde 2014.
 - 3.B.35 cita como fuente «Wikipedia (2021)»: sustituir por g20.org.
