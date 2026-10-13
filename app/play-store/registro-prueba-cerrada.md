@@ -160,6 +160,8 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Cronogramas del preparador**: el preparador hace un cronograma para su alumno y se lo manda; el alumno decide si lo usa.
 - **Alumnos con varios preparadores**: cada preparador ve qué temas no ha cantado el alumno, cuándo cantó cada uno y con quién (sin la valoración de los otros), quiénes son los demás preparadores (LinkedIn y WhatsApp si lo comparten) y notas entre ellos.
 
+- **1.15.10 (34) publicada en la prueba cerrada** (13 oct.) y el APK de la web actualizado.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»
