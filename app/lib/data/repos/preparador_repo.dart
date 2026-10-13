@@ -663,6 +663,7 @@ class PreparadorRepo {
     try {
       final lote = _db!.batch()
         ..delete(_docUsuario!.collection('preparadores').doc(preparador))
+        ..delete(_docUsuario!.collection('contactosPreparadores').doc(preparador))
         ..delete(oposicion.red(_db, 'preparadores').doc(preparador).collection('alumnos').doc(uid));
       await lote.commit().timeout(_esperaNube);
     } catch (_) {}
@@ -691,6 +692,8 @@ class PreparadorRepo {
         try {
           final suyo = await oposicion.red(_db!, 'preparadores').doc(v.uid).collection('alumnos').doc(uid).get(const GetOptions(source: Source.server));
           if (suyo.exists) aceptado = suyo.data()?['aceptado'] as bool? ?? true;
+          // Lo anota en su lado, para que sus otros preparadores sepan que lo es.
+          if (aceptado && d.data()['aceptado'] == false) await d.reference.update({'aceptado': true});
         } catch (_) {}
         ahora.add(v.conAceptado(aceptado));
       }
@@ -900,7 +903,13 @@ class PreparadorRepo {
       return ProgresoAlumno(
         estudiados: estudiados,
         enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
-        cantes: [for (final d in cantes.docs) Cante.fromJson({...d.data(), 'id': d.id})].where((c) => !c.borrado).toList()..sort((x, y) => x.fecha.compareTo(y.fecha)),
+        // De las clases con otros preparadores se ve el tema, la fecha y con
+        // quién, no su valoración, sus comentarios ni sus indicaciones.
+        cantes: [
+          for (final d in cantes.docs)
+            if (Cante.fromJson({...d.data(), 'id': d.id}) case final c when !c.borrado)
+              c.preparador != null && c.preparador != uid ? c.copyWith(notas: '', resultado: c.resultado?.copyWith(valoracion: 0, comentarios: '')) : c,
+        ]..sort((x, y) => x.fecha.compareTo(y.fecha)),
       );
     } catch (_) {
       return null;
@@ -925,6 +934,63 @@ class PreparadorRepo {
   Future<void> proponerCambios(Alumno a, Cronograma c, PropuestaCronograma p) async {
     if (!conSesion || !a.enlazado) return;
     await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramas').doc(c.id).update({'propuesta': p.toJson(), 'updatedAt': DateTime.now().toIso8601String()});
+  }
+
+  // ------------------------------------- Otros preparadores del mismo alumno
+
+  /// Los demás preparadores (aceptados) del alumno, con su LinkedIn y, si lo
+  /// comparten, su WhatsApp.
+  Future<List<OtroPreparador>> otrosPreparadoresDe(Alumno a) async {
+    if (!conSesion || !a.enlazado) return const [];
+    final raiz = oposicion.raizUsuario(_db!, a.uid!);
+    final docs = (await raiz.collection('preparadores').get()).docs.where((d) => d.id != uid && d.data()['aceptado'] != false).toList();
+    if (docs.isEmpty) return const [];
+    final contactos = {for (final d in (await raiz.collection('contactosPreparadores').get()).docs) d.id: d.data()};
+    final out = <OtroPreparador>[];
+    for (final d in docs) {
+      var linkedin = '', nombre = (d.data()['nombre'] as String?) ?? '';
+      try {
+        final v = (await oposicion.red(_db, 'preparadoresVerificados').doc(d.id).get()).data();
+        linkedin = v?['linkedin'] as String? ?? '';
+        if (nombre.isEmpty) nombre = v?['nombre'] as String? ?? '';
+      } catch (_) {}
+      out.add(OtroPreparador(uid: d.id, nombre: nombre.isEmpty ? 'Otro preparador' : nombre, linkedin: linkedin, telefono: contactos[d.id]?['telefono'] as String? ?? ''));
+    }
+    return out;
+  }
+
+  /// Si este preparador comparte su WhatsApp con los otros preparadores del alumno.
+  Future<bool> comparteContacto(Alumno a) async {
+    if (!conSesion || !a.enlazado) return false;
+    return (await oposicion.raizUsuario(_db!, a.uid!).collection('contactosPreparadores').doc(uid).get()).exists;
+  }
+
+  Future<void> compartirContacto(Alumno a, bool si) async {
+    final doc = oposicion.raizUsuario(_db!, a.uid!).collection('contactosPreparadores').doc(uid);
+    si ? await doc.set({'uid': uid, 'nombre': perfil().nombre, 'telefono': perfil().telefono}).timeout(_esperaNube) : await doc.delete().timeout(_esperaNube);
+  }
+
+  /// Notas entre los preparadores del alumno, de la más reciente a la más antigua.
+  Future<List<NotaEntrePreparadores>> notasPreparadores(Alumno a) async {
+    if (!conSesion || !a.enlazado) return const [];
+    final snap = await oposicion.raizUsuario(_db!, a.uid!).collection('notasPreparadores').get();
+    return [for (final d in snap.docs) NotaEntrePreparadores.fromJson({...d.data(), 'id': d.id})]..sort((x, y) => y.fecha.compareTo(x.fecha));
+  }
+
+  Future<void> anadirNotaPreparadores(Alumno a, String texto) async {
+    final n = NotaEntrePreparadores(id: nuevoId(), de: uid!, deNombre: perfil().nombre.isNotEmpty ? perfil().nombre : (_auth!.currentUser?.displayName ?? ''), texto: texto, fecha: DateTime.now());
+    await oposicion.raizUsuario(_db!, a.uid!).collection('notasPreparadores').doc(n.id).set(n.toJson()).timeout(_esperaNube);
+  }
+
+  Future<void> borrarNotaPreparadores(Alumno a, NotaEntrePreparadores n) =>
+      oposicion.raizUsuario(_db!, a.uid!).collection('notasPreparadores').doc(n.id).delete().timeout(_esperaNube);
+
+  /// El preparador manda a su alumno un cronograma hecho para él: queda en sus
+  /// datos como recibido hasta que lo acepta o lo rechaza.
+  Future<void> enviarCronograma(Alumno a, Cronograma c, {String nota = ''}) async {
+    if (!conSesion || !a.enlazado) throw StateError('El alumno no tiene la app enlazada');
+    final r = CronogramaRecibido(cronograma: c, de: uid!, deNombre: perfil().nombre.isNotEmpty ? perfil().nombre : (_auth!.currentUser?.displayName ?? ''), enviado: DateTime.now(), nota: nota);
+    await oposicion.raizUsuario(_db!, a.uid!).collection('cronogramasRecibidos').doc(c.id).set(r.toJson()).timeout(_esperaNube);
   }
 
   /// El preparador deja de llevar a un alumno enlazado: pierde el acceso a su progreso.

@@ -16,6 +16,7 @@ import '../plan/cantes_util.dart';
 import '../cronograma/propuesta_page.dart';
 import 'materiales_page.dart';
 import 'preparador_page.dart';
+import 'otros_preparadores.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
 
@@ -207,7 +208,17 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => MapaCalorPage(alumno: progreso!.value, nombreAlumno: a.nombre))),
                 ),
               ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: FilaEnlace(
+                icono: Icons.history_edu_outlined,
+                titulo: 'Temas cantados',
+                subtitulo: 'Cuáles no ha cantado, cuándo cantó cada uno y si fue contigo',
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemasCantadosPage(alumno: a, hechos: hechos, mias: idsMias))),
+              ),
+            ),
             CronogramaDelAlumno(alumno: a),
+            SeccionOtrosPreparadores(alumno: a),
             TituloSeccion('Clases fijas', accion: TextButton.icon(onPressed: () => _nuevaClaseFija(a), icon: const Icon(Icons.add, size: 18), label: const Text('Clase fija'))),
             if (a.clasesFijas.isEmpty)
               Padding(
@@ -295,10 +306,11 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                     child: ListTile(
                       title: Text(c.resultado?.temaCantado == null ? tituloCante(c) : '${c.resultado!.temaCantado} · ${titulo(c.resultado!.temaCantado!)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                       subtitle: Text(
-                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · por su cuenta'}',
+                        '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}',
                         style: context.textos.labelSmall,
                       ),
-                      trailing: Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
+                      // De las clases con otros preparadores no se ve la valoración.
+                      trailing: !idsMias.contains(c.id) && c.preparador != null && c.preparador != ref.read(usuarioActualProvider)?.uid ? null : Estrellas(valor: c.resultado?.valoracion ?? 0, tamano: 14),
                     ),
                   ),
                 ),
@@ -327,7 +339,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
       builder: (_) => Padding(
         padding: const EdgeInsets.all(16),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Cante por su cuenta · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
+          Text('${c.preparador == null ? 'Cante por su cuenta' : 'Clase ${conQuienCanto(c, yo: null, mia: false)}'} · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
           const SizedBox(height: 8),
           for (final t in r?.temasCantados ?? const <String>[]) Text('$t · ${titulo(t)}', style: context.textos.titleSmall),
           const SizedBox(height: 6),

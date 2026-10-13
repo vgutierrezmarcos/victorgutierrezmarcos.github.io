@@ -19,15 +19,30 @@ import 'pizarra_trazos.dart';
 Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, FirebaseFirestore? db}) =>
     Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, db: db)));
 
+/// Abre la pizarra para practicar sola (sin clase): no se comparte ni se guarda.
+Future<void> abrirPizarraIndividual(BuildContext context) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => const PizarraPage.individual()));
+
 /// Pizarra compartida de una clase: un lienzo en blanco en el que dibujan el
 /// preparador y el alumno, cada uno con su color, y lo que pinta uno le llega
 /// al otro al instante. Solo se comparte lo que se dibuja aquí, nada más del
 /// móvil. Sirve en el móvil, la tableta y el ordenador (versión web).
 class PizarraPage extends ConsumerStatefulWidget {
-  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db});
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db}) : individual = false;
+
+  /// Para practicar el cante sola: los trazos se quedan en el móvil, en
+  /// memoria, y se pierden al cerrarla.
+  const PizarraPage.individual({super.key})
+      : alumnoUid = '',
+        canteId = '',
+        otroNombre = '',
+        db = null,
+        individual = true;
+
   final String alumnoUid;
   final String canteId;
   final String otroNombre;
+  final bool individual;
 
   /// Base de datos (por defecto, la de Firebase; en las capturas, una simulada).
   final FirebaseFirestore? db;
@@ -37,7 +52,7 @@ class PizarraPage extends ConsumerStatefulWidget {
 }
 
 class _PizarraPageState extends ConsumerState<PizarraPage> {
-  PizarraCompartida? _pizarra;
+  FuentePizarra? _pizarra;
   StreamSubscription<List<PaginaPizarra>>? _escucha;
   List<PaginaPizarra> _paginas = const [];
   int _pagina = 0;
@@ -56,7 +71,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   // Trazos que ya se han borrado aquí y aún no ha confirmado el servidor.
   final Set<String> _borrados = {};
   Point<double>? _ultimoBorrado;
-  late final String _miUid = ref.read(usuarioActualProvider)?.uid ?? '';
+  late final String _miUid = widget.individual ? 'yo' : (ref.read(usuarioActualProvider)?.uid ?? '');
 
   // Geometría del lienzo en pantalla (la calcula el LayoutBuilder).
   double _escala = 1;
@@ -86,7 +101,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
       WakelockPlus.enable().catchError((_) {});
     }
-    if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
+    if (widget.individual) {
+      _pizarra = PizarraLocal();
+      _escucha = _pizarra!.escuchar().listen(_alLlegar);
+    } else if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
       _pizarra = PizarraCompartida.deClase(widget.db ?? FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
       _escucha = _pizarra!.escuchar().listen(_alLlegar, onError: (Object e) {
         if (mounted) setState(() => _sinAcceso = true);
@@ -261,7 +279,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       context: context,
       builder: (d) => AlertDialog(
         title: const Text('¿Vaciar esta página?'),
-        content: Text('Se borra lo escrito en esta página para los dos (también para ${widget.otroNombre}); la página se queda, en blanco.'),
+        content: Text(widget.individual ? 'Se borra lo escrito en esta página; la página se queda, en blanco.' : 'Se borra lo escrito en esta página para los dos (también para ${widget.otroNombre}); la página se queda, en blanco.'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Borrar')),
@@ -283,7 +301,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       context: context,
       builder: (d) => AlertDialog(
         title: Text('¿Eliminar la página ${_pagina + 1}?'),
-        content: Text('Desaparece la página entera, con lo escrito, para los dos (también para ${widget.otroNombre}).'),
+        content: Text(widget.individual ? 'Desaparece la página entera, con lo escrito.' : 'Desaparece la página entera, con lo escrito, para los dos (también para ${widget.otroNombre}).'),
         actions: [
           TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Cancelar')),
           FilledButton(style: FilledButton.styleFrom(backgroundColor: Theme.of(d).colorScheme.error), onPressed: () => Navigator.pop(d, true), child: const Text('Eliminar la página')),
@@ -382,9 +400,13 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               child: Row(children: [
                 IconButton(tooltip: 'Salir', icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()),
                 const SizedBox(width: 4),
-                _Leyenda(color: _miColor, texto: 'Tú'),
-                const SizedBox(width: 8),
-                _Leyenda(color: _colorOtro, texto: widget.otroNombre),
+                if (widget.individual)
+                  const Text('Para practicar: no se guarda', style: TextStyle(color: Colors.white70, fontSize: 12))
+                else ...[
+                  _Leyenda(color: _miColor, texto: 'Tú'),
+                  const SizedBox(width: 8),
+                  _Leyenda(color: _colorOtro, texto: widget.otroNombre),
+                ],
                 const SizedBox(width: 12),
                 // Colores a un toque (azul, negro, rojo, verde) y la paleta con todos.
                 for (var i = 0; i < coloresRapidos.length; i++)
@@ -427,7 +449,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                   onPressed: _sinAcceso ? null : () => setState(() => _borrador = !_borrador),
                 ),
                 const SizedBox(width: 8),
-                IconButton(tooltip: 'Deshacer mi último trazo', icon: const Icon(Icons.undo, color: Colors.white), onPressed: puedeDeshacer && !_sinAcceso ? _deshacer : null),
+                IconButton(tooltip: widget.individual ? 'Deshacer el último trazo' : 'Deshacer mi último trazo', icon: const Icon(Icons.undo, color: Colors.white), onPressed: puedeDeshacer && !_sinAcceso ? _deshacer : null),
                 IconButton(tooltip: 'Vaciar la página (borrar lo escrito)', icon: const Icon(Icons.layers_clear_outlined, color: Colors.white), onPressed: _sinAcceso ? null : _borrarTodo),
                 IconButton(tooltip: 'Eliminar la página', icon: const Icon(Icons.delete_outline, color: Colors.white), onPressed: _sinAcceso || _actual == null ? null : _eliminarPagina),
                 const SizedBox(width: 8),

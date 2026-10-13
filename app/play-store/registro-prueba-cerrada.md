@@ -156,6 +156,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Más seguridad al conectar con el preparador**: tras escribir su código, la conexión queda pendiente hasta que el preparador la acepta; hasta entonces no ve nada del opositor. Vídeos de ayuda actualizados.
 - **Modo noche de DCE** con los colores del de la web de Manuel Cabado García.
 
+- **Pizarra para practicar el cante** sin estar en una clase (Cantar → Pizarra; no se guarda).
+- **Cronogramas del preparador**: el preparador hace un cronograma para su alumno y se lo manda; el alumno decide si lo usa.
+- **Alumnos con varios preparadores**: cada preparador ve qué temas no ha cantado el alumno, cuándo cantó cada uno y con quién (sin la valoración de los otros), quiénes son los demás preparadores (LinkedIn y WhatsApp si lo comparten) y notas entre ellos.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

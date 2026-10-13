@@ -513,6 +513,14 @@ class RedRepo {
         final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
         out.add(AvisoRed(id: 'enl-ok:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} ha aceptado tu conexión', texto: 'Ya ve tus temas y tus cantes, y puede programarte clases.', ruta: '/mas/mi-preparador'));
       }
+      // Al alumno: cronogramas que le acaba de mandar un preparador.
+      final recibidos = await oposicion.raizUsuario(_db, uid!).collection('cronogramasRecibidos').get().then((q) => q.docs, onError: (_) => <QueryDocumentSnapshot<Map<String, dynamic>>>[]);
+      for (final d in recibidos) {
+        final enviado = DateTime.tryParse(d.data()['enviado'] as String? ?? '');
+        if (enviado == null || enviado.isBefore(reciente)) continue;
+        final nombre = (d.data()['deNombre'] as String?)?.trim() ?? '';
+        out.add(AvisoRed(id: 'crono:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} te ha mandado un cronograma', texto: 'Toca para verlo y decidir si lo usas.', ruta: '/organizacion/cronograma'));
+      }
       // Al alumno: clases que su preparador acaba de cancelar, programar o mover.
       final cantes = await oposicion.raizUsuario(_db, uid!).collection('cantes').where('preparador', isNull: false).get();
       for (final d in cantes.docs) {
