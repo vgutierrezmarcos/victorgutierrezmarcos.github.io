@@ -144,6 +144,9 @@ Al permitir los avisos, el diálogo del sistema para que la batería no restrinj
 - [ ] Probar en el móvil: el diálogo del sistema, el paso del fabricante y Más → Ajustes («La batería restringe la app» desaparece al permitirlo).
 - [ ] Si Google Play pone pegas al permiso en la revisión: quitarlo del manifiesto (ver README, «Avisos y permisos del sistema»).
 
+**Próxima versión: aviso de versión nueva por Play (13 oct.)**
+Al tocar la notificación «Hay una versión nueva», la app actualiza por Play si viene de Play y solo abre el APK si se instaló desde la web (antes abría siempre el APK, porque `urlPlayStore` no está puesta). En `main` y en la versión web; va en el próximo `.aab`. Mientras tanto, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy.
+
 **Versión 1.15.9 (33): primeros pasos (10 oct.)**
 Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.
 - [x] Víctor: subir el `.aab` **1.15.9 (33)** (`Escritorio\oposicion-tcee-dce-1.15.9.aab`, lleva también la 32) a la prueba cerrada.
