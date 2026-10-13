@@ -134,6 +134,13 @@ el texto original y lo que se hizo.
 - Se usan para detectar huecos, errores y enfoques mejores. Se puede tomar una
   idea, un orden o un gráfico, pero **redactado de nuevo y citando al autor**
   cuando la aportación sea suya. No se copia texto.
+- **Temas sin original de Víctor** (33 según `canon/informe-repaso.md`): la
+  estructura y el guion de contenidos salen, por este orden, de los temas de
+  **Miquel Tebar**; si no los hay, de los de **manuelcabadogarcia.es** (son de
+  DCE: hay que completar lo que el título de TCEE pida y ellos no cubran), y en
+  su defecto de los apuntes de **Marta Ramírez**
+  (https://sites.google.com/view/apuntes-tcee/). Siempre redactado de nuevo,
+  con las fichas del canon y citando al autor de la estructura en `revision.md`.
 
 ## 6. Coherencia con el resto del temario
 
