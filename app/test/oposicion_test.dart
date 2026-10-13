@@ -78,7 +78,9 @@ void main() {
     });
 
     test('contacto: su correo, no el de TCEE', () {
-      expect(d.correo, 'mcabag26@gmail.com');
+      expect(d.correo, 'contacto@manuelcabadogarcia.es');
+      expect(d.urlComoCantarUnTema, 'https://manuelcabadogarcia.es/como-cantar-un-tema.html');
+      expect(Oposiciones.tcee.urlComoCantarUnTema, endsWith('/oposicion/organizacion/como_cantar_un_tema.pdf'));
       expect(Oposiciones.tcee.correo, 'contacto@victorgutierrezmarcos.es');
     });
 

@@ -43,7 +43,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
   Future<void> _conectar() async {
     final messenger = ScaffoldMessenger.of(context);
     setState(() => _conectando = true);
-    final error = await ref.read(misPreparadoresProvider.notifier).enlazar(_codigo.text);
+    final error = await ref.read(vinculosPreparadorProvider.notifier).enlazar(_codigo.text);
     if (!mounted) return;
     setState(() {
       _conectando = false;
@@ -52,7 +52,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
         _otroPreparador = false;
       }
     });
-    messenger.showSnackBar(SnackBar(content: Text(error ?? 'Conectado. Tu preparador ya puede ver tu progreso.')));
+    messenger.showSnackBar(SnackBar(content: Text(error ?? 'Petición enviada. Cuando tu preparador la acepte, verá tu progreso y te llegará un aviso.')));
   }
 
   /// Clases pendientes de un preparador en la agenda.
@@ -73,9 +73,11 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
       context: context,
       builder: (d) => StatefulBuilder(
         builder: (d, set) => AlertDialog(
-          title: const Text('¿Dejar de compartir?'),
+          title: Text(v.aceptado ? '¿Dejar de compartir?' : '¿Retirar la petición?'),
           content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'),
+            Text(v.aceptado
+                ? '${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} dejará de ver tus temas y tus cantes. Los cantes que ya te haya valorado se quedan en tu diario.'
+                : '${v.nombre.isEmpty ? 'Tu preparador' : v.nombre} aún no ha aceptado la conexión y no ve nada tuyo. La petición se borra.'),
             if (pendientes.isNotEmpty)
               CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
@@ -86,14 +88,14 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
           ]),
           actions: [
             TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
-            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Dejar de compartir')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: Text(v.aceptado ? 'Dejar de compartir' : 'Retirar')),
           ],
         ),
       ),
     );
     if (ok != true) return;
     if (cancelar && pendientes.isNotEmpty) await _cancelarPendientes(pendientes, 'Has dejado de compartir con tu preparador');
-    await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+    await ref.read(vinculosPreparadorProvider.notifier).desenlazar(v.uid);
   }
 
   /// Quitar a un preparador que te cogió clases sueltas: pierde el acceso a
@@ -163,7 +165,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
   Widget build(BuildContext context) {
     final firebase = ref.watch(serviciosProvider).firebaseDisponible;
     final usuario = ref.watch(usuarioActualProvider);
-    final vinculos = ref.watch(misPreparadoresProvider);
+    final vinculos = ref.watch(vinculosPreparadorProvider);
     final ahora = DateTime.now();
     final misPeticiones = (ref.watch(misPeticionesProvider).valueOrNull ?? const <Sustitucion>[]).where((s) => s.vigente(ahora) && s.estado != EstadoSustitucion.cancelada).toList();
     final materiales = ref.watch(materialesParaMiProvider).valueOrNull ?? const <MaterialCompartido>[];
@@ -191,12 +193,19 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
                       Expanded(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(v.nombre.isEmpty ? 'Tu preparador' : v.nombre, style: context.textos.titleMedium),
-                          Text('Conectado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes. En tu agenda, sus clases llevan este color.', style: context.textos.bodySmall),
+                          Text(
+                            v.aceptado
+                                ? 'Conectado${v.desde == null ? '' : ' desde el ${fechaCorta(v.desde!)}'}. Ve tus temas y tus cantes. En tu agenda, sus clases llevan este color.'
+                                : 'Pendiente de que acepte la conexión. Hasta entonces no ve nada tuyo; cuando la acepte te llegará un aviso.',
+                            style: context.textos.bodySmall,
+                          ),
                         ]),
                       ),
-                      TextButton(onPressed: () => _desconectar(v), child: const Text('Quitar')),
+                      TextButton(onPressed: () => _desconectar(v), child: Text(v.aceptado ? 'Quitar' : 'Retirar')),
                     ]),
-                    if (ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false)
+                    if (!v.aceptado)
+                      const Padding(padding: EdgeInsets.only(top: 6), child: Etiqueta('Pendiente de aceptar'))
+                    else if (ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false)
                       Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: OutlinedButton.icon(onPressed: () => ir(ReservarPage(preparador: v)), icon: const Icon(Icons.event_available_outlined, size: 18), label: const Text('Reservar clase')),
@@ -210,7 +219,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text('Conecta con tu preparador', style: context.textos.titleMedium),
                   const SizedBox(height: 4),
-                  Text('Pídele su código de seis caracteres. Las clases que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.', style: context.textos.bodySmall),
+                  Text('Pídele su código de seis caracteres. Cuando acepte la conexión, las clases que te programe aparecerán en tu agenda y sus valoraciones, en tu diario.', style: context.textos.bodySmall),
                   const SizedBox(height: 12),
                   if (!firebase)
                     Text('Esta versión no se conecta a la red de preparadores.', style: context.textos.labelSmall)
@@ -268,7 +277,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               ),
             ],
             const TituloSeccion('Qué ve tu preparador'),
-            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.bodySmall),
+            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores. Si tienes varios preparadores, cada uno ve qué tema cantaste, cuándo y con quién, pero no la valoración ni los comentarios de los otros; saben quiénes son los demás, pueden dejarse notas sobre tu preparación y, si quieren, compartirse el WhatsApp. Si te mandan un cronograma, decides tú si lo usas.', style: context.textos.bodySmall),
             const SizedBox(height: 18),
             FilaEnlace(
               icono: Icons.groups_outlined,

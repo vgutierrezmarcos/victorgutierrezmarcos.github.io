@@ -442,7 +442,9 @@ class Notificaciones {
             channelDescription: 'Aviso de que hay una versión nueva de la app', importance: Importance.defaultImportance),
         iOS: DarwinNotificationDetails(),
       ),
-      payload: 'url:$url',
+      // Al tocarla se abre la app, que actualiza por Play si viene de Play
+      // (así los testers siguen en Play) y si no abre la descarga del APK.
+      payload: 'actualizar:$url',
     );
   }
 

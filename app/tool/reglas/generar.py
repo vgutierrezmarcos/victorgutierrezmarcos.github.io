@@ -81,16 +81,28 @@ service cloud.firestore {
         && get(enRed(op, 'preparadoresVerificados/' + request.auth.uid)).data.activo == true;
     }
 
-    // Un preparador lo es de un alumno cuando el alumno ha creado, en sus datos
-    // de esa oposición, el documento preparadores/{preparador}, y sigue
-    // verificado en ella: si se le retira la verificación, pierde el acceso.
-    function esPreparadorDe(op, uid) {
-      return esVerificado(op) && exists(deUsuario(op, uid, 'preparadores/' + request.auth.uid));
+    // El preparador ha aceptado la conexión del alumno: su ficha en
+    // preparadores/{preparador}/alumnos/{alumno} no dice aceptado == false
+    // (los enlaces de antes de pedir la aceptación no tienen el campo).
+    function aceptado(op, alumno, preparador) {
+      let ficha = enRed(op, 'preparadores/' + preparador + '/alumnos/' + alumno);
+      return exists(ficha) && get(ficha).data.get('aceptado', true) == true;
     }
 
-    // El usuario ha enlazado su app con ese preparador en esa oposición.
+    // Un preparador lo es de un alumno cuando el alumno ha creado, en sus datos
+    // de esa oposición, el documento preparadores/{preparador}, el preparador
+    // ha aceptado la conexión y sigue verificado: si se le retira la
+    // verificación, pierde el acceso.
+    function esPreparadorDe(op, uid) {
+      return esVerificado(op) && exists(deUsuario(op, uid, 'preparadores/' + request.auth.uid))
+        && aceptado(op, uid, request.auth.uid);
+    }
+
+    // El usuario ha enlazado su app con ese preparador en esa oposición y el
+    // preparador lo ha aceptado.
     function tengoDePreparador(op, preparador) {
-      return conSesionEn(op) && exists(deUsuario(op, request.auth.uid, 'preparadores/' + preparador));
+      return conSesionEn(op) && exists(deUsuario(op, request.auth.uid, 'preparadores/' + preparador))
+        && aceptado(op, request.auth.uid, preparador);
     }
 
     // Perfil de LinkedIn: vacío o https://www.linkedin.com/in/… (lo ven todos los usuarios con cuenta).
@@ -229,9 +241,36 @@ USUARIO = """
           && soloCambia(['propuesta', 'updatedAt'])
           && request.resource.data.propuesta.de == request.auth.uid;
       }
-      // El preparador puede leer su propio permiso y renunciar a él.
+      // Cronograma que el preparador hace para su alumno y le manda: solo lo
+      // escribe firmado por él; el alumno (dueño de su subárbol) lo acepta o lo
+      // borra. El preparador ve y retira los que mandó.
+      match /cronogramasRecibidos/{id} {
+        allow create, update: if esPreparadorDe(%OP%, uid) && request.resource.data.de == request.auth.uid;
+        allow read, delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
+      }
+      // El preparador puede leer su propio permiso y renunciar a él; los
+      // preparadores aceptados del alumno ven quiénes son los demás.
       match /preparadores/{preparador} {
         allow get, delete: if conSesionEn(%OP%) && request.auth.uid == preparador;
+        allow read: if esPreparadorDe(%OP%, uid);
+      }
+      // Entre los preparadores de un mismo alumno: el WhatsApp que cada uno
+      // decide compartir con los demás y las notas que se dejan. Solo los
+      // preparadores aceptados del alumno; cada uno escribe lo suyo.
+      match /contactosPreparadores/{preparador} {
+        allow read: if esPreparadorDe(%OP%, uid);
+        allow create, update: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador
+          && request.resource.data.keys().hasOnly(['uid', 'nombre', 'telefono'])
+          && request.resource.data.uid == preparador
+          && request.resource.data.get('telefono', '') is string && request.resource.data.get('telefono', '').size() <= 30;
+        allow delete: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador;
+      }
+      match /notasPreparadores/{id} {
+        allow read: if esPreparadorDe(%OP%, uid);
+        allow create: if esPreparadorDe(%OP%, uid) && request.resource.data.de == request.auth.uid
+          && request.resource.data.texto is string && request.resource.data.texto.size() > 0 && request.resource.data.texto.size() <= 2000;
+        allow update: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid && request.resource.data.de == request.auth.uid;
+        allow delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
       }
 """
 
@@ -249,12 +288,20 @@ RED = """
         allow delete: if conSesionEn(%OP%) && resource.data.uid == request.auth.uid;
       }
 
-      // Alumnos enlazados con un preparador: los escribe el alumno al enlazar y
-      // los lee el preparador para saber quién se ha enlazado. Cualquiera de los
-      // dos puede romper el enlace.
+      // Alumnos enlazados con un preparador: los escribe el alumno al escribir su
+      // código, siempre con aceptado == false, y el preparador los acepta
+      // (aceptado == true): hasta entonces no ve nada del alumno. El alumno no
+      // puede aceptarse a sí mismo. Cualquiera de los dos puede romper el enlace.
       match /preparadores/{preparador}/alumnos/{alumno} {
         allow read: if conSesionEn(%OP%) && (request.auth.uid == preparador || request.auth.uid == alumno);
-        allow create, update: if conSesionEn(%OP%) && request.auth.uid == alumno && request.resource.data.uid == alumno;
+        allow create: if conSesionEn(%OP%) && request.auth.uid == alumno && request.resource.data.uid == alumno
+          && request.resource.data.get('aceptado', true) == false;
+        allow update: if conSesionEn(%OP%) && (
+          (request.auth.uid == alumno && request.resource.data.uid == alumno
+            && (request.resource.data.get('aceptado', true) == false
+              || request.resource.data.get('aceptado', true) == resource.data.get('aceptado', true)))
+          || (request.auth.uid == preparador && esVerificado(%OP%)
+            && soloCambia(['aceptado', 'aceptadoEn']) && request.resource.data.aceptado == true));
         allow delete: if conSesionEn(%OP%) && (request.auth.uid == preparador || request.auth.uid == alumno);
       }
 

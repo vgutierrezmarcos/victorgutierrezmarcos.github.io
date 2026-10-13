@@ -883,12 +883,14 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
               TituloSeccion(
                 'Cronómetro',
                 accion: Wrap(spacing: 2, children: [
-                  if (destino != null)
-                    TextButton.icon(
-                      onPressed: () => abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro),
-                      icon: const Icon(Icons.draw_outlined, size: 20),
-                      label: const Text('Pizarra'),
-                    ),
+                  // En una clase, la compartida; si no, una para practicar sola.
+                  TextButton.icon(
+                    onPressed: () => destino != null
+                        ? abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro)
+                        : abrirPizarraIndividual(context),
+                    icon: const Icon(Icons.draw_outlined, size: 20),
+                    label: const Text('Pizarra'),
+                  ),
                   TextButton.icon(
                     onPressed: () => Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: this))),
                     icon: const Icon(Icons.fullscreen, size: 20),
@@ -1034,7 +1036,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       appBar: BarraWeb(
         title: Text(sesion.alumno.nombre),
         subtitulo: 'Sortear y cronómetro',
-        actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
+        actions: [IconButton(tooltip: 'Cómo cantar un tema', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,
     );

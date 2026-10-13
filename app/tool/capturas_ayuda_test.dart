@@ -110,7 +110,7 @@ void main() {
   // ------------------------------------------------------------ Opositor
   testWidgets('reservar-clase', (tester) async {
     final (demo, r) = await arrancar(tester,
-        extra: [misPreparadoresProvider.overrideWith(() => _Vinculos([paula]))],
+        extra: [vinculosPreparadorProvider.overrideWith(() => _Vinculos([paula]))],
         antes: (d) => d.dbRed.doc('huecos/paula').set(const HuecosPublicos(preparador: 'paula', nombre: 'Paula Pérez', activo: true, huecos: [
               Hueco(diaSemana: 2, minutoDelDia: 17 * 60),
               Hueco(diaSemana: 2, minutoDelDia: 19 * 60 + 30),
@@ -164,17 +164,26 @@ void main() {
     await v.escribir(find.byType(TextField), 'P4UL4X');
     await v.foto('codigo');
     await v.toque(find.text('Conectar'));
+    await tester.pump(const Duration(seconds: 5)); // que se vaya el aviso de abajo
+    await tester.pumpAndSettle();
+    await v.foto('pendiente');
+    // Paula acepta la conexión: el alumno lo ve al sincronizar.
+    for (final d in (await demo.dbRed.collection('preparadores/paula/alumnos').get()).docs) {
+      await d.reference.update({'aceptado': true, 'aceptadoEn': DateTime.now().toIso8601String()});
+    }
+    await demo.preparador.sincronizarTodo();
+    r.container.invalidate(vinculosPreparadorProvider);
     demo.materialesParaMi = materiales;
     r.container.invalidate(materialesParaMiProvider);
     await v.foto('conectado');
     await r.buscar(find.text('QUÉ VE TU PREPARADOR'));
     await v.foto('que-ve');
     v.terminar();
-    expect(demo.preparador.misPreparadores().map((p) => p.nombre), ['Paula Pérez']);
+    expect(demo.preparador.misPreparadores().map((p) => (p.nombre, p.aceptado)), [('Paula Pérez', true)]);
   });
 
   testWidgets('clase-suelta', (tester) async {
-    final (demo, r) = await arrancar(tester, extra: [misPreparadoresProvider.overrideWith(() => _Vinculos([paula]))]);
+    final (demo, r) = await arrancar(tester, extra: [vinculosPreparadorProvider.overrideWith(() => _Vinculos([paula]))]);
     final v = Video('clase-suelta', tester);
     await r.subpestana('Agenda');
     await r.tocar(find.byTooltip('Entendido'));
@@ -261,7 +270,7 @@ void main() {
   });
 
   testWidgets('clase', (tester) async {
-    final (demo, r) = await arrancar(tester, extra: [misPreparadoresProvider.overrideWith(() => _Vinculos([paula]))]);
+    final (demo, r) = await arrancar(tester, extra: [vinculosPreparadorProvider.overrideWith(() => _Vinculos([paula]))]);
     final v = Video('clase', tester);
     await r.abrir(const CantePage(id: 'pt'));
     await v.foto('clase');

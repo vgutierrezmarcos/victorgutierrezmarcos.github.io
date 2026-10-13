@@ -219,8 +219,15 @@ class _TceeAppState extends ConsumerState<TceeApp> {
 
   /// Al tocar una notificación: `url:` abre esa página (p. ej. la del proceso
   /// selectivo o la descarga de la versión nueva); `ruta:` lleva a la pantalla
-  /// de la app que corresponde (la clase, el tablón, la semana, el test…).
+  /// de la app que corresponde (la clase, el tablón, la semana, el test…);
+  /// `actualizar:` actualiza por Play si se puede y, si no, abre esa descarga.
   void _alTocarNotificacion(String contenido) {
+    if (contenido.startsWith('actualizar:')) {
+      _router.go('/hoy');
+      final ctx = _router.routerDelegate.navigatorKey.currentContext;
+      if (ctx != null) actualizar(ctx, contenido.substring(11));
+      return;
+    }
     if (contenido.startsWith('url:')) {
       launchUrl(Uri.parse(contenido.substring(4)), mode: LaunchMode.externalApplication).catchError((_) => false);
       return;

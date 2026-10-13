@@ -200,8 +200,20 @@ Future<({bool dentro, String? error})> entrarConGoogle() async {
           return (dentro: false, error: 'Google no ha dado acceso a la app. Si has retirado el acceso desde tu cuenta de Google, espera unos minutos y vuelve a intentarlo.');
         }
       }
-      final cred = GoogleAuthProvider.credential(accessToken: auth.accessToken, idToken: auth.idToken);
-      final r = await FirebaseAuth.instance.signInWithCredential(cred);
+      // Con el token de identidad basta; el de acceso solo si no lo hay (el de
+      // acceso que guarda el móvil puede estar revocado: «Invalid Value»).
+      AuthCredential credencial(GoogleSignInAuthentication a) =>
+          GoogleAuthProvider.credential(idToken: a.idToken, accessToken: a.idToken == null ? a.accessToken : null);
+      UserCredential r;
+      try {
+        r = await FirebaseAuth.instance.signInWithCredential(credencial(auth));
+      } on FirebaseAuthException {
+        // Tokens caducados o revocados en la caché del móvil: se borran y se
+        // piden otros una vez.
+        if (auth.accessToken != null) await google.clearAuthCache();
+        auth = await google.authentication;
+        r = await FirebaseAuth.instance.signInWithCredential(credencial(auth));
+      }
       // La foto y el nombre de la cuenta, los de Google de ahora (Firebase
       // guarda los del primer inicio de sesión y no los renueva solo).
       final u = r.user;
@@ -293,7 +305,7 @@ Future<void> borrarTodosMisDatos(WidgetRef ref) async {
   await ref.read(planRepoProvider).borrarDatosLocales();
   await ref.read(preparadorRepoProvider).borrarDatosLocales();
   await ref.read(sesionProvider.notifier).cerrarSesion();
-  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
+  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider]) {
     ref.invalidate(p);
   }
 }
@@ -336,7 +348,7 @@ Future<String?> eliminarMiCuenta(WidgetRef ref) async {
     return e.message ?? e.code;
   }
   await ref.read(sesionProvider.notifier).cerrarSesion();
-  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, misPreparadoresProvider]) {
+  for (final p in <ProviderOrFamily>[cronogramaProvider, leitnerProvider, ajustesProvider, historialProvider, cantesProvider, planProvider, agendasProvider, perfilPreparadorProvider, alumnosProvider, sesionesProvider, vinculosPreparadorProvider, solicitudesEnlaceProvider]) {
     ref.invalidate(p);
   }
   return null;
@@ -370,6 +382,12 @@ Future<void> avisarCambiosDeLaRed(PreparadorRepo preparador) async {
         .catchError((_) {});
   }
   preparador.preparadoresQueSeFueron.clear();
+  for (final nombre in List.of(preparador.preparadoresQueRechazaron)) {
+    await Notificaciones.avisoRed('rechaza-prep:$nombre:${DateTime.now().millisecondsSinceEpoch ~/ 60000}', '$nombre no ha aceptado tu conexión',
+            'Si es tu preparador, revisa con él el código y vuelve a escribirlo en Más → Mi preparador.', ruta: '/mas/mi-preparador')
+        .catchError((_) {});
+  }
+  preparador.preparadoresQueRechazaron.clear();
 }
 
 /// Sincroniza todos los datos del usuario con la nube y refresca la interfaz.
@@ -394,7 +412,8 @@ Future<bool> sincronizarTodo(Ref ref, {bool delServidor = false}) async {
   ref.invalidate(perfilPreparadorProvider);
   ref.invalidate(alumnosProvider);
   ref.invalidate(sesionesProvider);
-  ref.invalidate(misPreparadoresProvider);
+  ref.invalidate(vinculosPreparadorProvider);
+  ref.invalidate(solicitudesEnlaceProvider);
   ref.invalidate(cronogramaProvider);
   await ref.read(cantesProvider.notifier).reprogramarAvisos();
   await ref.read(sesionesProvider.notifier).reprogramarAvisos();
@@ -716,8 +735,8 @@ class PerfilPreparadorNotifier extends Notifier<PerfilPreparador> {
   Future<void> fijarPapel(Papel papel) async {
     final repo = ref.read(preparadorRepoProvider);
     if (papel == Papel.preparador) {
-      for (final v in ref.read(misPreparadoresProvider)) {
-        await ref.read(misPreparadoresProvider.notifier).desenlazar(v.uid);
+      for (final v in ref.read(vinculosPreparadorProvider)) {
+        await ref.read(vinculosPreparadorProvider.notifier).desenlazar(v.uid);
       }
       if (!state.activo) await activar();
     } else if (state.activo) {
@@ -865,12 +884,77 @@ class MisPreparadoresNotifier extends Notifier<List<VinculoPreparador>> {
   }
 }
 
-/// Preparadores con los que el usuario comparte su progreso.
-final misPreparadoresProvider = NotifierProvider<MisPreparadoresNotifier, List<VinculoPreparador>>(MisPreparadoresNotifier.new);
+/// Preparadores con los que el usuario ha conectado, también los que aún no
+/// han aceptado la conexión.
+final vinculosPreparadorProvider = NotifierProvider<MisPreparadoresNotifier, List<VinculoPreparador>>(MisPreparadoresNotifier.new);
+
+/// Preparadores con los que el usuario comparte su progreso (los que han
+/// aceptado la conexión).
+final misPreparadoresProvider = Provider<List<VinculoPreparador>>((ref) => ref.watch(vinculosPreparadorProvider).where((v) => v.aceptado).toList());
+
+/// Opositores que esperan a que el preparador acepte su conexión.
+class SolicitudesEnlaceNotifier extends Notifier<List<SolicitudEnlace>> {
+  @override
+  List<SolicitudEnlace> build() {
+    ref.watch(alumnosProvider); // al sincronizar alumnos se renuevan
+    return ref.read(preparadorRepoProvider).solicitudesEnlace();
+  }
+
+  /// Devuelve el error, o null si ha ido bien.
+  Future<String?> responder(SolicitudEnlace s, {required bool aceptar}) async {
+    final repo = ref.read(preparadorRepoProvider);
+    try {
+      aceptar ? await repo.aceptarEnlace(s) : await repo.rechazarEnlace(s);
+    } catch (e) {
+      return 'No se pudo (${e is TimeoutException ? 'sin conexión' : 'inténtalo de nuevo'}).';
+    }
+    ref.invalidate(alumnosProvider);
+    state = repo.solicitudesEnlace();
+    return null;
+  }
+}
+
+final solicitudesEnlaceProvider = NotifierProvider<SolicitudesEnlaceNotifier, List<SolicitudEnlace>>(SolicitudesEnlaceNotifier.new);
 
 /// Progreso que comparte un alumno enlazado (null si no lo está o no hay red).
 final progresoAlumnoProvider = FutureProvider.autoDispose.family<ProgresoAlumno?, String>((ref, idAlumno) async {
   final repo = ref.watch(preparadorRepoProvider);
   final alumno = repo.alumno(idAlumno);
   return alumno == null ? null : repo.progreso(alumno);
+});
+
+/// Los demás preparadores del alumno [idAlumno] (lado del preparador).
+final otrosPreparadoresProvider = FutureProvider.autoDispose.family<List<OtroPreparador>, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return const [];
+  try {
+    return await repo.otrosPreparadoresDe(a);
+  } catch (_) {
+    return const [];
+  }
+});
+
+/// Si comparto mi WhatsApp con los otros preparadores de [idAlumno].
+final comparteContactoProvider = FutureProvider.autoDispose.family<bool, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return false;
+  try {
+    return await repo.comparteContacto(a);
+  } catch (_) {
+    return false;
+  }
+});
+
+/// Notas entre los preparadores de [idAlumno].
+final notasPreparadoresProvider = FutureProvider.autoDispose.family<List<NotaEntrePreparadores>, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return const [];
+  try {
+    return await repo.notasPreparadores(a);
+  } catch (_) {
+    return const [];
+  }
 });

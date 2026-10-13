@@ -44,6 +44,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late TipoBolsa _bolsa = widget.cante?.bolsa ?? TipoBolsa.estudiados;
   late List<String> _temas = widget.cante?.temas ?? const [];
   bool _repetir = false;
+  int _cadaSemanas = 1;
   DateTime? _hasta;
   late final Set<String> _alumnos = {...widget.alumnosIniciales, if (widget.cante?.alumno != null) widget.cante!.alumno!};
 
@@ -92,6 +93,23 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
     if (min != null && min > 0 && min <= 240) setState(() => exposicion ? _exposicion = min : _minutos = min);
   }
 
+  /// Hasta cuándo se repite (al activar «Repetir» o al cambiarlo).
+  Future<void> _elegirHasta() async {
+    final h = await showDatePicker(
+      context: context,
+      initialDate: _hasta ?? _fecha.add(const Duration(days: 7 * 12)),
+      firstDate: _fecha,
+      lastDate: _fecha.add(const Duration(days: 7 * 103)),
+      helpText: 'Repetir hasta',
+    );
+    if (h != null) {
+      setState(() {
+        _repetir = true;
+        _hasta = h;
+      });
+    }
+  }
+
   Future<void> _elegirTemas() async {
     final temario = ref.read(temarioProvider).valueOrNull;
     if (temario == null) return;
@@ -126,19 +144,19 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
       plataforma: _modalidad == Modalidad.online && _sesion ? _plataforma : '',
     );
     if (_sesion) {
-      // Una sesión por alumno, cada una con su repetición semanal si se pidió.
+      // Una sesión por alumno, cada una con su repetición si se pidió.
       final sesiones = <Cante>[
         for (final (i, alumno) in _alumnos.indexed)
           ...() {
             final suya = (i == 0 ? base : Cante.fromJson({...base.toJson(), 'id': nuevoId()})).copyWith(alumno: alumno);
-            return !_edicion && _repetir && _hasta != null ? serieSemanal(suya, _hasta!) : [suya];
+            return !_edicion && _repetir && _hasta != null ? serieSemanal(suya, _hasta!, cadaSemanas: _cadaSemanas) : [suya];
           }(),
       ];
       await ref.read(sesionesProvider.notifier).guardarVarias(sesiones);
       nav.pop();
       return;
     }
-    final lista = !_edicion && _repetir && _hasta != null ? serieSemanal(base, _hasta!) : [base];
+    final lista = !_edicion && _repetir && _hasta != null ? serieSemanal(base, _hasta!, cadaSemanas: _cadaSemanas) : [base];
     await ref.read(cantesProvider.notifier).guardarVarios(lista);
     // La primera vez que se programa un cante se pide permiso para avisar.
     try {
@@ -188,26 +206,19 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
           if (!_edicion) ...[
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
-              title: const Text('Repetir cada semana'),
-              subtitle: Text(_repetir && _hasta != null ? 'Hasta el ${fechaCorta(_hasta!)}' : 'Mismo día y hora', style: context.textos.labelSmall),
+              title: const Text('Repetir'),
+              subtitle: Text(_repetir && _hasta != null ? '${_sesion ? 'Una clase' : 'Un cante'} ${textoCadaSemanas(_cadaSemanas)} hasta el ${fechaCorta(_hasta!)}' : 'Mismo día y hora, cada pocas semanas', style: context.textos.labelSmall),
               value: _repetir,
               onChanged: (v) async {
                 if (!v) return setState(() => _repetir = false);
-                final h = await showDatePicker(
-                  context: context,
-                  initialDate: _hasta ?? _fecha.add(const Duration(days: 7 * 12)),
-                  firstDate: _fecha,
-                  lastDate: _fecha.add(const Duration(days: 7 * 103)),
-                  helpText: 'Repetir hasta',
-                );
-                if (h != null) {
-                  setState(() {
-                    _repetir = true;
-                    _hasta = h;
-                  });
-                }
+                await _elegirHasta();
               },
             ),
+            if (_repetir)
+              Wrap(crossAxisAlignment: WrapCrossAlignment.center, spacing: 8, children: [
+                SelectorCadaSemanas(valor: _cadaSemanas, onCambio: (n) => setState(() => _cadaSemanas = n)),
+                TextButton.icon(onPressed: _elegirHasta, icon: const Icon(Icons.event_outlined, size: 18), label: Text('Hasta el ${fechaCorta(_hasta!)}')),
+              ]),
           ],
           TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
           TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Simulacro, repaso del bloque A… (opcional)' : 'Preparador, simulacro… (opcional)')),

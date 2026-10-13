@@ -134,7 +134,12 @@ class Oposicion {
     this.autor,
     this.lanzada = true,
     this.correo,
+    this.comoCantarUnTema = 'organizacion/como_cantar_un_tema.pdf',
   });
+
+  /// Guía «Cómo cantar un tema»: ruta dentro de [rutaContenido] o dirección
+  /// completa (DCE la tiene como página de la web de Manuel).
+  final String comoCantarUnTema;
 
   /// Identificador estable ('tcee', 'dce'): va en Firestore y en Hive.
   final String id;
@@ -258,7 +263,8 @@ class Oposicion {
   /// Documentos del proceso selectivo de todas las oposiciones: un único
   /// fichero en la web de TCEE (ver scripts/leer-proceso.py).
   String get urlProceso => '${Oposiciones.tcee._base}/proceso.json';
-  String get urlComoCantarUnTema => '$_base/organizacion/como_cantar_un_tema.pdf';
+  String get urlComoCantarUnTema => comoCantarUnTema.startsWith('http') ? comoCantarUnTema : '$_base/$comoCantarUnTema';
+  bool get comoCantarEsPdf => comoCantarUnTema.toLowerCase().endsWith('.pdf');
 
   // ------------------------------------------------------------ Persistencia
 
@@ -339,7 +345,8 @@ class Oposiciones {
     testDe: 'tcee',
     notaProbabilidad: 'Supone pasar los idiomas y las preguntas prácticas del 4.º.',
     autor: ('Manuel Cabado García', 'DCE', 'https://manuelcabadogarcia.es'),
-    correo: 'mcabag26@gmail.com',
+    correo: 'contacto@manuelcabadogarcia.es',
+    comoCantarUnTema: 'https://manuelcabadogarcia.es/como-cantar-un-tema.html',
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),

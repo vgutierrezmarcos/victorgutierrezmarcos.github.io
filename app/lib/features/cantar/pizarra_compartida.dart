@@ -11,6 +11,72 @@ class SinAccesoPizarra implements Exception {
   const SinAccesoPizarra();
 }
 
+/// Lo que necesita la pizarra para guardar y recibir los trazos: la de una
+/// clase ([PizarraCompartida], en la nube) o la de practicar ([PizarraLocal]).
+abstract class FuentePizarra {
+  Stream<List<PaginaPizarra>> escuchar();
+  void encolar(String pagina, int n, Trazo t);
+  bool quitarDeCola(String id);
+  Future<void> vaciar();
+  Future<void> deshacer(String pagina, Map<String, dynamic> elementoExacto);
+  Future<void> borrarTodo(String pagina);
+  Future<void> eliminarPagina(String pagina);
+  Future<void> nuevaPagina(int n);
+}
+
+/// Pizarra para practicar sola (sin clase): los trazos se quedan en memoria,
+/// no van a ningún sitio y se pierden al cerrarla.
+class PizarraLocal implements FuentePizarra {
+  final Map<String, (int, List<Map<String, dynamic>>)> _paginas = {};
+  final _cambios = StreamController<List<PaginaPizarra>>.broadcast();
+
+  List<PaginaPizarra> get _lista {
+    final ids = _paginas.keys.toList()..sort((a, b) => _paginas[a]!.$1.compareTo(_paginas[b]!.$1));
+    return [for (final id in ids) PaginaPizarra.fromJson(id, {'n': _paginas[id]!.$1, 'trazos': _paginas[id]!.$2})];
+  }
+
+  void _avisar() => Future.microtask(() => _cambios.add(_lista));
+
+  @override
+  Stream<List<PaginaPizarra>> escuchar() => _cambios.stream;
+
+  @override
+  void encolar(String pagina, int n, Trazo t) {
+    _paginas.putIfAbsent(pagina, () => (n, [])).$2.add(t.toJson());
+    _avisar();
+  }
+
+  @override
+  bool quitarDeCola(String id) => false;
+
+  @override
+  Future<void> vaciar() async {}
+
+  @override
+  Future<void> deshacer(String pagina, Map<String, dynamic> elementoExacto) async {
+    _paginas[pagina]?.$2.removeWhere((t) => t['i'] == elementoExacto['i']);
+    _avisar();
+  }
+
+  @override
+  Future<void> borrarTodo(String pagina) async {
+    _paginas[pagina]?.$2.clear();
+    _avisar();
+  }
+
+  @override
+  Future<void> eliminarPagina(String pagina) async {
+    _paginas.remove(pagina);
+    _avisar();
+  }
+
+  @override
+  Future<void> nuevaPagina(int n) async {
+    _paginas.putIfAbsent(PizarraCompartida.idPagina(n), () => (n, []));
+    _avisar();
+  }
+}
+
 /// Pizarra de una clase compartida entre el alumno y su preparador: los dos
 /// dibujan y cada trazo llega al otro al instante. Vive en
 /// `cantes/{id}/pizarra/{p1, p2…}` dentro de los datos del alumno (una
@@ -18,7 +84,7 @@ class SinAccesoPizarra implements Exception {
 ///
 /// Para no gastar una escritura por punto, los trazos terminados se encolan
 /// y se suben juntos cada 300 ms (una escritura por ráfaga).
-class PizarraCompartida {
+class PizarraCompartida implements FuentePizarra {
   PizarraCompartida(this._col, {required this.miUid});
 
   /// Pizarra de una clase del alumno [alumnoUid].
@@ -32,6 +98,7 @@ class PizarraCompartida {
 
   /// Las páginas, con sus trazos, cada vez que cambian (de los dos). Vacío si
   /// aún no hay ninguna. Da [SinAccesoPizarra] si el servidor no deja leerla.
+  @override
   Stream<List<PaginaPizarra>> escuchar() => _col.orderBy('n').snapshots().map((snap) => [for (final d in snap.docs) PaginaPizarra.fromJson(d.id, d.data())]).handleError(
         (Object e) => throw const SinAccesoPizarra(),
         test: (e) => e is FirebaseException && e.code == 'permission-denied',
@@ -50,17 +117,21 @@ class PizarraCompartida {
 
   /// Quita un trazo: [elementoExacto] es el mapa tal como vino en el último
   /// snapshot (arrayRemove exige igualdad exacta).
+  @override
   Future<void> deshacer(String pagina, Map<String, dynamic> elementoExacto) => _col.doc(pagina).update({
         'trazos': FieldValue.arrayRemove([elementoExacto]),
         'borradoPor': FieldValue.delete(),
         'updatedAt': FieldValue.serverTimestamp(),
       });
 
+  @override
   Future<void> borrarTodo(String pagina) => _col.doc(pagina).set({'trazos': <Map<String, dynamic>>[], 'borradoPor': miUid, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   /// Quita la página entera (no solo lo escrito), para los dos.
+  @override
   Future<void> eliminarPagina(String pagina) => _col.doc(pagina).delete();
 
+  @override
   Future<void> nuevaPagina(int n) => _col.doc(idPagina(n)).set({'n': n, 'trazos': <Map<String, dynamic>>[], 'creado': DateTime.now().toIso8601String(), 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   // ------------------------------------------------------------- Cola
@@ -72,12 +143,14 @@ class PizarraCompartida {
   bool get conPendientes => _cola.values.any((e) => e.$2.isNotEmpty);
 
   /// Encola un trazo terminado: se sube con los demás de la ráfaga.
+  @override
   void encolar(String pagina, int n, Trazo t) {
     _cola.putIfAbsent(pagina, () => (n, [])).$2.add(t);
     _temporizador ??= Timer(const Duration(milliseconds: 300), vaciar);
   }
 
   /// Quita de la cola un trazo que aún no se ha subido. Devuelve si estaba.
+  @override
   bool quitarDeCola(String id) {
     var quitado = false;
     for (final e in _cola.values) {
@@ -87,6 +160,7 @@ class PizarraCompartida {
   }
 
   /// Sube lo encolado (una escritura por página).
+  @override
   Future<void> vaciar() async {
     _temporizador?.cancel();
     _temporizador = null;

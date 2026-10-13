@@ -67,7 +67,7 @@ class _TarjetaParaEmpezarState extends ConsumerState<TarjetaParaEmpezar> {
     final descargas = ref.watch(descargasProvider);
     final fecha = ref.watch(fechasEjerciciosProvider).isNotEmpty;
     final tests = ref.watch(historialProvider).valueOrNull?.isNotEmpty ?? ref.read(usuarioRepoProvider).resultadosLocales().isNotEmpty;
-    final preparador = ref.watch(misPreparadoresProvider).isNotEmpty || ref.watch(miBusquedaProvider).valueOrNull != null;
+    final preparador = ref.watch(vinculosPreparadorProvider).isNotEmpty || ref.watch(miBusquedaProvider).valueOrNull != null;
     final avisos = ref.watch(avisosProcesoActivosProvider).valueOrNull ?? false;
     return [
       if (conCuenta) cuenta,

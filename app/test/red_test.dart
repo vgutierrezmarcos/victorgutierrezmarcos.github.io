@@ -33,6 +33,8 @@ void main() {
       final quincena = ClaseFija(id: 'q', diaSemana: 2, minutoDelDia: 18 * 60, cadaSemanas: 2, desde: DateTime(2026, 10, 1));
       // Las fechas no dependen de desde cuándo se miren: el ritmo empieza en «desde».
       expect(quincena.fechasEntre(DateTime(2026, 10, 10), DateTime(2026, 11, 10)), [DateTime(2026, 10, 20, 18), DateTime(2026, 11, 3, 18)]);
+      final tres = ClaseFija(id: 't', diaSemana: 2, minutoDelDia: 18 * 60, cadaSemanas: 3, desde: DateTime(2026, 10, 1));
+      expect(tres.fechasEntre(DateTime(2026, 10, 1), DateTime(2026, 11, 30)), [DateTime(2026, 10, 6, 18), DateTime(2026, 10, 27, 18), DateTime(2026, 11, 17, 18)]);
     });
 
     test('huecos libres: quita los ocupados, los pedidos y los ya pasados', () {
@@ -425,7 +427,11 @@ void main() {
     await db.doc('codigos/PAULA2').set({'uid': 'paula', 'nombre': 'Paula'});
     final alu = await prepRepo(db, sesion('alu', 'Álex'));
     await alu.enlazarConCodigo('PAULA2');
+    expect(alu.misPreparadores().single.aceptado, isFalse);
+    // La preparadora acepta: el alumno lo ve al sincronizar.
+    await db.doc('preparadores/paula/alumnos/alu').update({'aceptado': true});
     await alu.sincronizarTodo();
+    expect(alu.misPreparadores().single.aceptado, isTrue);
     expect(alu.preparadoresQueSeFueron, isEmpty);
     // La preparadora le quita: al alumno se le avisa.
     await db.doc('users/alu/preparadores/paula').delete();
@@ -712,6 +718,7 @@ void main() {
     final alumno = await prepRepo(db, authAlu);
     await alumno.enlazarConCodigo((await prep.activar()).codigo!);
     await prep.sincronizarTodo();
+    await prep.aceptarEnlace(prep.solicitudesEnlace().single);
     final a = prep.alumnos().single;
 
     final c = crearCronograma(id: 'c1', ejercicio: 3, temas: [for (var i = 1; i <= 9; i++) '3.A.$i'], inicio: DateTime.now(), porSemana: 3);

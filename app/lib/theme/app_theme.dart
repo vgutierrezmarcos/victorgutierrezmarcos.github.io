@@ -38,6 +38,9 @@ class PaletaMarca {
     required this.dBordeClaro,
     required this.dDorado,
     required this.dDoradoClaro,
+    required this.dCabecera,
+    required this.dCabeceraOscura,
+    this.dSobreRelleno = const Color(0xFFFFFFFF),
     required this.serif,
     required this.sans,
   });
@@ -73,6 +76,11 @@ class PaletaMarca {
   final Color dBordeClaro;
   final Color dDorado;
   final Color dDoradoClaro;
+  /// Degradado de la cabecera en oscuro (y de los bloques que la imitan).
+  final Color dCabecera;
+  final Color dCabeceraOscura;
+  /// Texto e iconos sobre [dRelleno] (botones, pestaña activa…).
+  final Color dSobreRelleno;
   /// Familias de assets/fonts para títulos y texto, y para la interfaz.
   final String serif;
   final String sans;
@@ -112,12 +120,17 @@ class PaletaMarca {
     dBordeClaro: Color(0xFF2E2E4A),
     dDorado: Color(0xFFD4A520),
     dDoradoClaro: Color(0xFFE0B840),
+    dCabecera: Color(0xFF6A3596),
+    dCabeceraOscura: Color(0xFF4A2370),
     serif: 'Pagella',
     sans: 'SourceSans3',
   );
 
-  // En oscuro, el granate es para texto e iconos ([dPrimario], más claro) y los
-  // rellenos con texto blanco usan [dRelleno] (contraste de 7:1 o más).
+  // En oscuro, como el modo noche de su web (bootstrap-dark de
+  // manuelcabadogarcia.es): fondo carbón #1e1d1b, texto crema #e6e0d2, bordes
+  // #3b3934 y un solo acento, el verde menta #3ee6a8, para enlaces, iconos,
+  // la línea de la cabecera y los botones (con el texto oscuro encima, como
+  // sus .btn-primary). La cabecera es carbón, como su barra de navegación.
   static const dce = PaletaMarca(
     primario: Color(0xFF7A1F4B),
     primarioOscuro: Color(0xFF5C1638),
@@ -133,12 +146,12 @@ class PaletaMarca {
     bordeClaro: Color(0xFFE9E3D6),
     dorado: Color(0xFF234A6B),
     doradoClaro: Color(0xFF3A6A93),
-    dPrimario: Color(0xFFD98BB0),
-    dPrimarioOscuro: Color(0xFFB56A90),
-    dPrimarioClaro: Color(0xFFE8B3CC),
-    dPrimarioPalido: Color(0xFF3A2230),
-    dRelleno: Color(0xFF8A2F5C),
-    dRellenoOscuro: Color(0xFF5C1638),
+    dPrimario: Color(0xFF3EE6A8),
+    dPrimarioOscuro: Color(0xFF31B886),
+    dPrimarioClaro: Color(0xFFA6F7D2),
+    dPrimarioPalido: Color(0xFF213129),
+    dRelleno: Color(0xFF3EE6A8),
+    dRellenoOscuro: Color(0xFF31B886),
     dFondo: Color(0xFF1E1D1B),
     dFondoClaro: Color(0xFF24221F),
     dCrema: Color(0xFF2A2825),
@@ -149,7 +162,10 @@ class PaletaMarca {
     dBorde: Color(0xFF3B3934),
     dBordeClaro: Color(0xFF34322E),
     dDorado: Color(0xFF3EE6A8),
-    dDoradoClaro: Color(0xFF7FF0C6),
+    dDoradoClaro: Color(0xFFA6F7D2),
+    dCabecera: Color(0xFF2E2C28),
+    dCabeceraOscura: Color(0xFF262522),
+    dSobreRelleno: Color(0xFF1E1D1B),
     // Latin Modern Roman, la de LaTeX, en toda la web de Manuel.
     serif: 'LMRoman',
     sans: 'LMRoman',
@@ -213,6 +229,9 @@ class Paleta {
   static Color get dBordeClaro => _m.dBordeClaro;
   static Color get dDorado => _m.dDorado;
   static Color get dDoradoClaro => _m.dDoradoClaro;
+  static Color get dCabecera => _m.dCabecera;
+  static Color get dCabeceraOscura => _m.dCabeceraOscura;
+  static Color get dSobreRelleno => _m.dSobreRelleno;
 
   // Semánticos (simulador): tono oscuro para texto e iconos…
   static const acierto = Color(0xFF2E7D32);
@@ -311,11 +330,12 @@ extension ThemeX on BuildContext {
   LinearGradient get degradadoPrimario => LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: temaOscuro ? [Paleta.dRelleno, Paleta.dRellenoOscuro] : [Paleta.primario, Paleta.primarioOscuro],
+        colors: temaOscuro ? [Paleta.dCabecera, Paleta.dCabeceraOscura] : [Paleta.primario, Paleta.primarioOscuro],
       );
 
-  /// Color de los rellenos con texto blanco encima (en claro, el morado de la web).
+  /// Color de los rellenos (en claro, el morado de la web) y del texto encima.
   Color get relleno => temaOscuro ? Paleta.dRelleno : Paleta.primario;
+  Color get sobreRelleno => temaOscuro ? Paleta.dSobreRelleno : Colors.white;
 
   /// Línea dorada que cierra la cabecera de la web (.site-header::after).
   LinearGradient get degradadoDorado {
@@ -362,17 +382,19 @@ class AppTheme {
     final extra = oscuro ? ColoresExtra.oscuro : ColoresExtra.claro;
     final primario = oscuro ? Paleta.dPrimario : Paleta.primario;
     final relleno = oscuro ? Paleta.dRelleno : Paleta.primario;
+    final sobre = oscuro ? Paleta.dSobreRelleno : Colors.white;
+    final cabecera = oscuro ? Paleta.dCabecera : Paleta.primario;
     final fondo = oscuro ? Paleta.dFondo : Paleta.fondo;
     final texto = oscuro ? Paleta.dTexto : Paleta.texto;
 
     final esquema = ColorScheme(
       brightness: brillo,
       primary: primario,
-      onPrimary: Colors.white,
+      onPrimary: sobre,
       primaryContainer: extra.primarioPalido,
       onPrimaryContainer: oscuro ? Paleta.dPrimarioClaro : Paleta.primarioOscuro,
       secondary: extra.dorado,
-      onSecondary: Colors.white,
+      onSecondary: sobre,
       secondaryContainer: extra.primarioPalido,
       onSecondaryContainer: oscuro ? Paleta.dPrimarioClaro : Paleta.primarioOscuro,
       error: Paleta.fallo,
@@ -398,9 +420,9 @@ class AppTheme {
       // Cabecera morada con el título en blanco y serif, como .site-header.
       // El degradado y la línea dorada los pone BarraWeb (widgets/comunes.dart).
       appBarTheme: AppBarTheme(
-        backgroundColor: relleno,
-        // La cabecera es siempre morada: hora y batería en blanco.
-        systemOverlayStyle: estiloBarrasSistema(arriba: relleno, abajo: extra.superficie),
+        backgroundColor: cabecera,
+        // La cabecera es siempre oscura: hora y batería en blanco.
+        systemOverlayStyle: estiloBarrasSistema(arriba: cabecera, abajo: extra.superficie),
         foregroundColor: Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -434,7 +456,7 @@ class AppTheme {
           ),
         ),
         iconTheme: WidgetStateProperty.resolveWith(
-          (s) => IconThemeData(size: 22, color: s.contains(WidgetState.selected) ? Colors.white : extra.textoSuave),
+          (s) => IconThemeData(size: 22, color: s.contains(WidgetState.selected) ? sobre : extra.textoSuave),
         ),
       ),
       // En pantallas anchas (ordenador) el mismo menú va en un raíl a la izquierda.
@@ -443,7 +465,7 @@ class AppTheme {
         elevation: 0,
         indicatorColor: relleno,
         indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        selectedIconTheme: const IconThemeData(size: 22, color: Colors.white),
+        selectedIconTheme: IconThemeData(size: 22, color: sobre),
         unselectedIconTheme: IconThemeData(size: 22, color: extra.textoSuave),
         selectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 0.7, color: primario),
         unselectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w500, letterSpacing: 0.7, color: texto),
@@ -452,7 +474,7 @@ class AppTheme {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: relleno,
-          foregroundColor: Colors.white,
+          foregroundColor: sobre,
           textStyle: textos.labelLarge?.copyWith(fontSize: 14.5),
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           elevation: 1,
@@ -478,7 +500,7 @@ class AppTheme {
           shape: WidgetStatePropertyAll(forma6),
           side: WidgetStatePropertyAll(BorderSide(color: extra.borde)),
           backgroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? relleno : extra.superficie),
-          foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? Colors.white : texto),
+          foregroundColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? sobre : texto),
           textStyle: WidgetStatePropertyAll(textos.labelLarge?.copyWith(fontSize: 13)),
         ),
       ),
@@ -502,8 +524,8 @@ class AppTheme {
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: relleno,
-        foregroundColor: Colors.white,
-        extendedTextStyle: textos.labelLarge?.copyWith(color: Colors.white),
+        foregroundColor: sobre,
+        extendedTextStyle: textos.labelLarge?.copyWith(color: sobre),
         shape: forma6,
       ),
       dialogTheme: DialogThemeData(
@@ -521,13 +543,13 @@ class AppTheme {
       listTileTheme: ListTileThemeData(iconColor: extra.textoSuave, titleTextStyle: textos.titleSmall, subtitleTextStyle: textos.labelSmall),
       checkboxTheme: CheckboxThemeData(
         fillColor: WidgetStateProperty.resolveWith((s) => s.contains(WidgetState.selected) ? relleno : null),
-        checkColor: const WidgetStatePropertyAll(Colors.white),
+        checkColor: WidgetStatePropertyAll(sobre),
       ),
-      badgeTheme: BadgeThemeData(backgroundColor: extra.dorado, textColor: Colors.white),
+      badgeTheme: BadgeThemeData(backgroundColor: extra.dorado, textColor: sobre),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: primario, linearTrackColor: extra.fondoClaro),
       dividerTheme: DividerThemeData(color: extra.bordeClaro),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: oscuro ? Paleta.dRellenoOscuro : Paleta.primarioOscuro,
+        backgroundColor: oscuro ? Paleta.dCabeceraOscura : Paleta.primarioOscuro,
         contentTextStyle: textos.bodySmall?.copyWith(color: Colors.white, fontSize: 14),
         behavior: SnackBarBehavior.floating,
         shape: forma6,

@@ -8,6 +8,7 @@ import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import 'cronograma_form_page.dart';
+import 'cronograma_recibido.dart';
 import 'cronograma_manual_page.dart';
 import 'importar_cronograma.dart';
 import '../../widgets/selector_temas.dart';
@@ -51,6 +52,7 @@ class CronogramaPage extends ConsumerWidget {
         appBar: BarraWeb(title: const Text('Cronograma'), actions: const [BotonVideoAyuda('cronograma')]),
         body: ListaAdaptable(children: [
           const SizedBox(height: 10),
+          const TarjetasCronogramasRecibidos(),
           Tarjeta(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Planifica una vuelta al temario', style: context.textos.titleMedium),
@@ -116,6 +118,7 @@ class CronogramaPage extends ConsumerWidget {
       ),
       body: ListaAdaptable(children: [
         const SizedBox(height: 10),
+        const TarjetasCronogramasRecibidos(),
         ResumenCronograma(c: c, estado: estado),
         if (p != null) ...[
           const SizedBox(height: 10),

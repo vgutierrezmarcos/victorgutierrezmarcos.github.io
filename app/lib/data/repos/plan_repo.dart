@@ -234,6 +234,32 @@ class PlanRepo {
     await guardarCronograma(c);
   }
 
+  /// Cronogramas que le han mandado sus preparadores y aún no ha aceptado ni
+  /// rechazado (solo con cuenta y red).
+  Future<List<CronogramaRecibido>> cronogramasRecibidos() async {
+    final doc = _docUsuario;
+    if (doc == null) return const [];
+    try {
+      final snap = await doc.collection('cronogramasRecibidos').get();
+      return [for (final d in snap.docs) CronogramaRecibido.fromJson({...d.data(), 'id': d.id})]..sort((a, b) => b.enviado.compareTo(a.enviado));
+    } catch (_) {
+      return const [];
+    }
+  }
+
+  /// Acepta un cronograma recibido: pasa a ser el activo (el anterior se
+  /// archiva), compartido con el preparador que lo mandó.
+  Future<Cronograma> aceptarCronogramaRecibido(CronogramaRecibido r) async {
+    final c = Cronograma.fromJson({...r.cronograma.toJson(), 'id': nuevoId(), 'archivado': false, 'compartir': true, 'creado': DateTime.now().toIso8601String(), 'updatedAt': DateTime.now().toIso8601String()});
+    await empezarCronograma(c);
+    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).delete();
+    return c;
+  }
+
+  Future<void> rechazarCronogramaRecibido(CronogramaRecibido r) async {
+    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).delete();
+  }
+
   Future<void> sincronizarCronogramas() async {
     final doc = _docUsuario;
     if (doc == null) return;

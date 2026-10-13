@@ -132,3 +132,21 @@ final cronogramaAlumnoProvider = FutureProvider.autoDispose.family<Cronograma?, 
   final Alumno? a = repo.alumno(idAlumno);
   return a == null ? null : repo.cronogramaDe(a);
 });
+
+/// Cronogramas que le han mandado sus preparadores, pendientes de aceptar.
+final cronogramasRecibidosProvider = FutureProvider<List<CronogramaRecibido>>((ref) async {
+  ref.watch(usuarioActualProvider);
+  return ref.read(planRepoProvider).cronogramasRecibidos();
+});
+
+/// Acepta (pasa a ser el activo) o rechaza un cronograma recibido.
+Future<void> responderCronogramaRecibido(WidgetRef ref, CronogramaRecibido r, {required bool aceptar}) async {
+  final repo = ref.read(planRepoProvider);
+  if (aceptar) {
+    await repo.aceptarCronogramaRecibido(r);
+    ref.read(cronogramaProvider.notifier).recargar();
+  } else {
+    await repo.rechazarCronogramaRecibido(r);
+  }
+  ref.invalidate(cronogramasRecibidosProvider);
+}

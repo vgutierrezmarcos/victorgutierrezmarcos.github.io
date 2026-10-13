@@ -148,6 +148,23 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
   - En los móviles con ahorro de batería propio (Xiaomi, Huawei, Honor, Samsung, OPPO, realme, OnePlus, vivo), indica qué tocar y abre esos ajustes.
   - A quien ya tenía la app se le pide una vez.
 
+### 12 oct. 2026 (para la 1.15.10)
+- **Clases y cantes que se repiten cada N semanas**: en vez de solo «cada semana», se elige cada cuántas semanas (de 1 a 12) al programar una clase o un cante y en las clases fijas de un alumno (antes, cada semana o cada 15 días).
+
+### 13 oct. 2026 (para la 1.15.10)
+- **Entrar con Google tras retirar el acceso**: si se había quitado el acceso de la app desde la cuenta de Google, el móvil daba un token revocado y la entrada fallaba con «Invalid Value»; ahora la app pide uno nuevo.
+- **Más seguridad al conectar con el preparador**: tras escribir su código, la conexión queda pendiente hasta que el preparador la acepta; hasta entonces no ve nada del opositor. Vídeos de ayuda actualizados.
+- **Modo noche de DCE** con los colores del de la web de Manuel Cabado García.
+
+- **Pizarra para practicar el cante** sin estar en una clase (Cantar → Pizarra; no se guarda).
+- **Cronogramas del preparador**: el preparador hace un cronograma para su alumno y se lo manda; el alumno decide si lo usa.
+- **Alumnos con varios preparadores**: cada preparador ve qué temas no ha cantado el alumno, cuándo cantó cada uno y con quién (sin la valoración de los otros), quiénes son los demás preparadores (LinkedIn y WhatsApp si lo comparten) y notas entre ellos.
+
+- **1.15.10 (34) publicada en la prueba cerrada** (13 oct.) y el APK de la web actualizado.
+
+### 13 oct. 2026 (para la próxima versión)
+- **Aviso de versión nueva por Play**: al tocar la notificación «Hay una versión nueva», la app actualiza por Google Play si se instaló desde Play (los testers siguen actualizando desde Play) y solo abre la descarga del APK si se instaló desde la web. Hasta ahora la notificación abría siempre el APK.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

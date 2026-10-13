@@ -316,5 +316,5 @@ String origenDeCante(Cante c) => c.sustitucion != null ? 'sustitucion' : (c.prep
 final pendientesPreparadorProvider = Provider<int>((ref) {
   final ahora = DateTime.now();
   final reservas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).length;
-  return reservas + (ref.watch(tablonProvider).valueOrNull?.length ?? 0) + (ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0) + (ref.watch(busquedasProvider).valueOrNull?.where((b) => !b.$3 && b.$2 > 0).length ?? 0);
+  return reservas + ref.watch(solicitudesEnlaceProvider).length + (ref.watch(tablonProvider).valueOrNull?.length ?? 0) + (ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0) + (ref.watch(busquedasProvider).valueOrNull?.where((b) => !b.$3 && b.$2 > 0).length ?? 0);
 });

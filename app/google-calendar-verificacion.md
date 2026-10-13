@@ -46,6 +46,8 @@ Grabar la pantalla del móvil (o la del ordenador con la versión web, `https://
 
 Consejos: grabar en horizontal si es con el ordenador, sin música, sin cortes bruscos; que se lea bien la pantalla de consentimiento (es lo que más miran). Subir a YouTube como **No listado** y pegar el enlace en el formulario.
 
+Vídeos enviados: `https://youtu.be/1U4rrKdOzrU` (9 oct.) y, tras pedir Google el flujo de consentimiento entero, `https://youtu.be/1WmPutIwKz8` (13 oct., paso 2 regrabado con el móvil en inglés). Tercera versión, con los permisos desplegados, la invitación al alumno y por qué hace falta el calendario principal (disponibilidad): `https://youtu.be/HyrSX2RJNT4` (13 oct., `scripts/montar-video-calendar-v3.py`; cuenta de revisión `tcee.revision@gmail.com`).
+
 ## Qué contestar si Google pide más
 
 - *"Why not `calendar.app.created`?"* → Because that scope cannot add attendees (the student's invitation) nor a Google Meet conference, both of which are the purpose of the feature.

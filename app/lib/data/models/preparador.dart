@@ -127,7 +127,7 @@ class ClaseFija {
   /// Hora de inicio en minutos desde medianoche.
   final int minutoDelDia;
   final int minutos;
-  /// 1 = cada semana, 2 = cada quince días.
+  /// Cada cuántas semanas (1 = todas, 2 = cada quince días…).
   final int cadaSemanas;
   final DateTime desde;
 
@@ -348,16 +348,35 @@ class Hueco {
 /// Preparador con el que el usuario (alumno) ha enlazado su app
 /// (documento users/{uid}/preparadores/{uidPreparador}).
 class VinculoPreparador {
-  const VinculoPreparador({required this.uid, required this.nombre, this.codigo, this.desde});
+  const VinculoPreparador({required this.uid, required this.nombre, this.codigo, this.desde, this.aceptado = true});
   final String uid;
   final String nombre;
   final String? codigo;
   final DateTime? desde;
+  /// El preparador ha aceptado la conexión (hasta entonces no ve nada del
+  /// alumno). Los enlaces de antes de pedir la aceptación cuentan como aceptados.
+  final bool aceptado;
 
-  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'codigo': codigo, 'desde': (desde ?? DateTime.now()).toIso8601String()};
+  VinculoPreparador conAceptado(bool a) => VinculoPreparador(uid: uid, nombre: nombre, codigo: codigo, desde: desde, aceptado: a);
+
+  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'codigo': codigo, 'desde': (desde ?? DateTime.now()).toIso8601String(), 'aceptado': aceptado};
 
   factory VinculoPreparador.fromJson(Map<dynamic, dynamic> j) =>
-      VinculoPreparador(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', codigo: j['codigo'] as String?, desde: _fecha(j['desde']));
+      VinculoPreparador(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', codigo: j['codigo'] as String?, desde: _fecha(j['desde']), aceptado: j['aceptado'] as bool? ?? true);
+}
+
+/// Opositor que ha escrito el código del preparador y espera a que lo acepte.
+class SolicitudEnlace {
+  const SolicitudEnlace({required this.uid, required this.nombre, this.email = '', this.desde});
+  final String uid;
+  final String nombre;
+  final String email;
+  final DateTime? desde;
+
+  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'email': email, 'desde': desde?.toIso8601String()};
+
+  factory SolicitudEnlace.fromJson(Map<dynamic, dynamic> j) =>
+      SolicitudEnlace(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', email: j['email'] as String? ?? '', desde: _fecha(j['desde']));
 }
 
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
@@ -407,4 +426,31 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],
   ];
   return lineas.join('\n');
+}
+
+/// Otro preparador del mismo alumno (lo ve cada preparador en la ficha del
+/// alumno): su nombre, su LinkedIn del directorio y su WhatsApp si ha decidido
+/// compartirlo con los demás preparadores de ese alumno.
+class OtroPreparador {
+  const OtroPreparador({required this.uid, required this.nombre, this.linkedin = '', this.telefono = ''});
+  final String uid;
+  final String nombre;
+  final String linkedin;
+  final String telefono;
+}
+
+/// Nota que se dejan entre sí los preparadores de un mismo alumno
+/// (`notasPreparadores/{id}` en sus datos). El alumno no la ve en la app.
+class NotaEntrePreparadores {
+  const NotaEntrePreparadores({required this.id, required this.de, this.deNombre = '', required this.texto, required this.fecha});
+  final String id;
+  final String de;
+  final String deNombre;
+  final String texto;
+  final DateTime fecha;
+
+  Map<String, dynamic> toJson() => {'id': id, 'de': de, 'deNombre': deNombre, 'texto': texto, 'fecha': fecha.toIso8601String()};
+
+  factory NotaEntrePreparadores.fromJson(Map<dynamic, dynamic> j) =>
+      NotaEntrePreparadores(id: j['id'].toString(), de: j['de'] as String? ?? '', deNombre: j['deNombre'] as String? ?? '', texto: j['texto'] as String? ?? '', fecha: _fecha(j['fecha']) ?? DateTime(2026));
 }
