@@ -29,10 +29,13 @@ Además:
 1. Lee `.claude/skills/revisartema/CRITERIOS.md` entero (manda sobre todo lo
    demás) y el **canon**: `oposicion/temario/canon/LEEME.md`, `notacion.md`,
    las fichas de `modelos/` de los modelos que salen en el tema y `mapa.yaml`.
-2. Comprueba que estás en el worktree de la rama:
-   `git rev-parse --abbrev-ref HEAD` debe dar `revision-temario` y la carpeta
-   debe ser `…/victorgutierrezmarcos.github.io-revision`. Si no, para y dile a
-   Víctor que abra Claude Code en esa carpeta. **Nunca** trabajes en `main`.
+2. Víctor lanza la orden desde la carpeta principal del repositorio (que está
+   en `main`): **no** le pidas que abra otra carpeta. Todo el trabajo se hace
+   en el worktree de la rama, `R = /mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io-revision`
+   (si no existe, créalo con `git worktree add ../victorgutierrezmarcos.github.io-revision revision-temario`),
+   con rutas absolutas y `git -C R …`. Comprueba que `git -C R rev-parse --abbrev-ref HEAD`
+   da `revision-temario`. **Nunca** cambies de rama la carpeta principal ni
+   trabajes en `main`.
 3. Pasa a todos los agentes **rutas absolutas** del worktree. Llamamos `R` a la
    raíz del worktree, `T` al código del tema (3A08) y `D = R/oposicion/temario/fuentes/T`.
 4. Fusiona lo último de main en la rama: `git fetch origin && git merge --no-edit origin/main`

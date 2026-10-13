@@ -473,4 +473,4 @@ A petición de Víctor, los cuatro gráficos 3D (`superficie-utilidad`, `superfi
 ## Decisiones de Víctor (13/10/2026)
 
 - El anexo de Thaler («Psicología y economía») se mantiene.
-- LyX: configurado para ver el PDF desde LyX (preferencias de LyX 2.4: `\\texinputs_prefix ".;./../../latex"` y biber como programa de bibliografía).
+- LyX: configurado para ver el PDF desde LyX (preferencias de LyX 2.4: `\texinputs_prefix ".;./../../latex"` y biber como programa de bibliografía).
