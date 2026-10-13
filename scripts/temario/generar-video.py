@@ -101,8 +101,13 @@ Salida (fuera de git, en oposicion/temario/videos/, que está en .gitignore):
   videos/<tema>.srt          subtítulos (para YouTube)
   videos/<tema>-youtube.txt  título, descripción y capítulos para YouTube
 
-Voces (voz.motor): «edge» (Edge TTS neural, gratis) o «xtts» (voz clonada a
-partir de una grabación, con scripts/temario/voz-xtts.py en ~/.venvs/voz).
+Voces (voz.motor): «edge» (Edge TTS neural, gratis), «xtts» (voz clonada a
+partir de una grabación, con scripts/temario/voz-xtts.py en ~/.venvs/voz) o
+«voicestudio» (VoiceStudio con su backend en marcha; motor_tts: omnivoice por
+defecto; referencia: WAV corto de la voz con su transcripción en un .txt al
+lado; velocidad; pasos). Ejemplo:
+    voz: {motor: voicestudio, motor_tts: omnivoice, velocidad: 1.15,
+          referencia: /mnt/c/Users/vgutierrez/Documents/voz/referencia-12s.wav}
 Los audios, gráficos y fórmulas se guardan en fuentes/<tema>/_trabajo/video/
 y solo se rehacen si cambia su texto.
 
@@ -305,6 +310,35 @@ def sintetizar_todos(textos, voz, carpeta, ffmpeg):
                            env={**os.environ, 'COQUI_TOS_AGREED': '1'})
         for _, destino in pendientes:
             a_pcm(ffmpeg, destino[:-4] + '.wav', destino)
+    elif motor == 'voicestudio':
+        # VoiceStudio (github.com/debpalash/VoiceStudio) con su backend en marcha; por defecto
+        # su motor OmniVoice, clonando la voz de una referencia corta con su transcripción
+        import requests
+        url = os.environ.get('VOICESTUDIO_URL', 'http://127.0.0.1:3900')
+        try:
+            requests.get(f'{url}/engines/tts', timeout=10).raise_for_status()
+        except Exception:
+            raise RuntimeError(f'VoiceStudio no responde en {url}: arranca su backend (p. ej. ~/src/arrancar-voicestudio.sh)')
+        referencia = os.path.expanduser(voz['referencia'])
+        texto_ref = voz.get('referencia_texto') or open(os.path.splitext(referencia)[0] + '.txt', encoding='utf-8').read().strip()
+        for i, (texto, destino) in enumerate(pendientes, 1):
+            wav = destino[:-4] + '.wav'
+            if not os.path.exists(wav):
+                datos = {'text': texto, 'language': 'Spanish', 'engine': voz.get('motor_tts', 'omnivoice'),
+                         'ref_text': texto_ref, 'speed': str(voz.get('velocidad', 1.0)),
+                         'num_step': str(voz.get('pasos', 32))}
+                for intento in range(3):
+                    with open(referencia, 'rb') as f:
+                        r = requests.post(f'{url}/generate', data=datos, files={'ref_audio': ('ref.wav', f, 'audio/wav')},
+                                          timeout=36000)
+                    if r.status_code == 200:
+                        break
+                    if intento == 2:
+                        raise RuntimeError(f'VoiceStudio falló ({r.status_code}): {r.text[:300]}')
+                    time.sleep(30)
+                open(wav, 'wb').write(r.content)
+            a_pcm(ffmpeg, wav, destino)
+            print(f'  voz {i}/{len(pendientes)}', flush=True)
     else:
         raise RuntimeError(f'Motor de voz desconocido: {motor}')
     return pcm

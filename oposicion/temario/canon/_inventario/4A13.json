@@ -1,0 +1,69 @@
+{
+  "tema": "4.A.13",
+  "titulo": "El turismo en España: evolución, retos y política turística.",
+  "fuente": "M/oposicion/temario/cuarto-ejercicio/4A13.docx (oculto/Tema 4.A.13.docx es la versión con notas internas)",
+  "aviso_fuente": "El documento es el 4.A.13 ANTIGUO: «El turismo en España. Evolución, problemas del sector y política turística». Coincide casi literalmente con el título nuevo («retos» en lugar de «problemas del sector»), así que cubre todos los epígrafes. Apartados vacíos: distribución sectorial, evolución histórica de la política, fundamentos jurídicos. Datos mezclados de 2018-2022; el bloque de Brexit y RDL 2019 está desfasado y la política (Plan Horizonte 2020) debería sustituirse por la Estrategia de Turismo Sostenible 2030 y el PRTR componente 14.",
+  "estructura": [
+    "Introducción",
+    "I. Análisis descriptivo estático",
+    "I.1. ¿Qué? Delimitación (actividad transversal definida por la demanda), características (modo 2 GATS, elasticidad-renta, intensidad en trabajo, prociclicidad, estacionalidad), clasificación, fuentes estadísticas (FRONTUR, FAMILITUR, EGATUR, ocupación hotelera, CST, BP)",
+    "I.2. ¿Por qué? Relevancia cuantitativa (8 % VAB 2021, 11,4 % empleo), cualitativa y competitividad (índices IET y WEF)",
+    "I.3. ¿Cómo? Distribución geográfica (zonas turísticas)",
+    "I.4. ¿Quién? Demanda interna, demanda externa (FRONTUR, balanza de pagos, índice de especialización) y oferta (factores de atracción, establecimientos, operadores, transporte, productos)",
+    "II. Perspectiva dinámica",
+    "II.1. Evolución histórica (años 20, 1936-50, años 50, 60, 70-80, Libro blanco 1990, años 90, desde 2000)",
+    "II.2. Situación actual y retos (nuevas tecnologías, economía colaborativa y viviendas turísticas, turismo prestado, gasto medio, Brexit, atomización, medio ambiente, formación, concentración, estacionalidad)",
+    "III. Política turística en España",
+    "III.1. Justificación (externalidades, promoción, preservación de recursos) y marco jurídico-institucional (competencias CCAA, órganos: Turespaña, SEGITTUR…)",
+    "III.2. Instrumentos: planes (Horizonte 2020, Estrategia de Turismo Sostenible 2030, modernización, Plan de Marketing 2018-2020) e instrumentos financieros (Emprendetur, FOMIT)",
+    "IV. Otras consideraciones recientes (impacto de la pandemia, BP 2021, PRTR componentes 14, 24 y 26, PERTE)",
+    "Conclusión"
+  ],
+  "referencias": [],
+  "faltan_referencias": [
+    {"a": "4.A.1", "por_que": "Cuenta Satélite del Turismo, FRONTUR, EGATUR: la metodología se describe en ambos temas."},
+    {"a": "4.A.22", "por_que": "Turismo como principal partida de la balanza de servicios e índice de especialización/ventaja comparativa revelada."},
+    {"a": "4.A.21", "por_que": "Superávit turístico en la cuenta corriente."},
+    {"a": "4.A.12", "por_que": "Transporte aéreo, AENA y conectividad como factor del turismo."},
+    {"a": "4.A.11", "por_que": "Viviendas de uso turístico y su efecto sobre el alquiler; urbanización del litoral."},
+    {"a": "4.A.14", "por_que": "Comercio electrónico y desintermediación en la venta de viajes."},
+    {"a": "4.A.15", "por_que": "Posición de la CNMC sobre economía colaborativa y regulación eficiente de pisos turísticos."},
+    {"a": "4.A.16", "por_que": "Temporalidad y estacionalidad del empleo turístico."},
+    {"a": "4.A.25", "por_que": "Turespaña y la promoción exterior."},
+    {"a": "3.A.23", "por_que": "Externalidades negativas como justificación de la política turística."},
+    {"a": "4.A.27", "por_que": "Boom turístico de los 60 y su papel en la financiación del desarrollo tras el Plan de Estabilización."}
+  ],
+  "modelos": [
+    {"id": "indice-especializacion-vcr", "nombre": "Índice de especialización de las exportaciones (ventaja comparativa revelada de Balassa)", "papel": "resumen", "para_que": "Medir la especialización turística de España frente a la UE (IE ≈ 2)", "supuestos": "", "ecuaciones": ["IE=\\frac{X^{Esp}_{turismo}/X^{Esp}_{total}}{X^{UE}_{turismo}/X^{UE}_{total}}"], "graficos": [], "notacion": {"exportaciones": "X"}, "tema_3er": "3.B.5"},
+    {"id": "externalidades", "nombre": "Externalidades negativas y bienes comunes (sobreexplotación)", "papel": "mencion", "para_que": "Justificar la intervención pública en turismo", "supuestos": "", "ecuaciones": [], "graficos": [], "notacion": {}, "tema_3er": "3.A.23"},
+    {"id": "elasticidad-renta", "nombre": "Turismo como bien de lujo o normal según su elasticidad-renta", "papel": "mencion", "para_que": "Explicar la prociclicidad de la demanda turística", "supuestos": "", "ecuaciones": [], "graficos": [], "notacion": {}, "tema_3er": "3.A.8"}
+  ],
+  "notacion": [
+    {"simbolo": "IE", "significado": "índice de especialización de las exportaciones"}
+  ],
+  "datos_indicadores": [
+    {"id": "cuenta-satelite-turismo", "nombre": "Cuenta Satélite del Turismo de España", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "4.A.13 (datos) / 4.A.1 (metodología)"},
+    {"id": "frontur-egatur", "nombre": "FRONTUR, EGATUR, FAMILITUR (ETR), Encuesta de ocupación hotelera", "fuente": "INE (antes IET)", "papel": "resumen", "desarrollo_candidato": "4.A.13"},
+    {"id": "balanza-pagos", "nombre": "Ingresos y pagos por turismo y viajes en la balanza de servicios", "fuente": "BdE", "papel": "mencion", "desarrollo_candidato": "4.A.22"},
+    {"id": "indice-especializacion-vcr", "nombre": "Índice de especialización / ventaja comparativa revelada", "fuente": "elaboración propia", "papel": "resumen", "desarrollo_candidato": "4.A.22"},
+    {"id": "competitividad-turistica", "nombre": "Índice de Tendencia de Competitividad Turística (IET) e Índice de Competitividad en Viajes y Turismo (WEF)", "fuente": "IET / Foro Económico Mundial", "papel": "mencion", "desarrollo_candidato": "4.A.13"},
+    {"id": "epa", "nombre": "Empleo y temporalidad en turismo", "fuente": "INE", "papel": "mencion", "desarrollo_candidato": "4.A.16"}
+  ],
+  "politicas_instituciones": [
+    {"id": "politica-turistica", "nombre": "Política turística (Estrategia de Turismo Sostenible 2030, Plan Horizonte 2020, planes de calidad)", "papel": "desarrollo", "desarrollo_candidato": "4.A.13"},
+    {"id": "turespana-segittur", "nombre": "Turespaña, SEGITTUR, Paradores, Secretaría de Estado de Turismo", "papel": "resumen", "desarrollo_candidato": "4.A.13"},
+    {"id": "ngeu-prtr", "nombre": "PRTR componente 14 (modernización y competitividad del turismo), 24 y 26; PERTE", "papel": "resumen", "desarrollo_candidato": "4.A.29"},
+    {"id": "viviendas-uso-turistico", "nombre": "Regulación de viviendas de uso turístico y economía colaborativa (CNMC 2014-2016, CCAA)", "papel": "resumen", "desarrollo_candidato": "4.A.13 / 4.A.15"},
+    {"id": "ley-costas", "nombre": "Ley de Costas 1988", "papel": "mencion", "desarrollo_candidato": "4.A.6"},
+    {"id": "planes-futures", "nombre": "Libro blanco 1990 y Planes FUTURES", "papel": "mencion", "desarrollo_candidato": "4.A.13"},
+    {"id": "brexit", "nombre": "Brexit y planes de contingencia (RDL 2019)", "papel": "mencion", "desarrollo_candidato": "4.A.22"},
+    {"id": "emprendetur-fomit", "nombre": "Emprendetur y Fondo Financiero para la Modernización de Infraestructuras Turísticas", "papel": "mencion", "desarrollo_candidato": "4.A.13"}
+  ],
+  "conceptos": ["turismo como actividad transversal definida por la demanda", "exportación de servicios modo 2 (GATS)", "estacionalidad", "turismo prestado", "desintermediación", "economía colaborativa", "sol y playa", "sobreexplotación", "gasto medio por turista", "eslabonamientos hacia atrás"],
+  "incoherencias_internas": [
+    "Los datos de llegadas de pasajeros y aeropuertos usan cifras distintas que en 4.A.12 (≈200 millones vs 264 millones de pasajeros).",
+    "La política turística aparece dos veces: en «Política turística en España» y en «Otras consideraciones recientes» (PRTR), sin integrar.",
+    "El apartado «Evolución histórica» de la política está vacío, pero la evolución de la política se cuenta dentro de la perspectiva dinámica del sector."
+  ],
+  "observaciones": "Bloque 4a-servicios (con 4.A.12 y 4.A.14). El índice de especialización / VCR debería unificarse con el de 4.A.22 (indicadores de competitividad), que es donde corresponde desarrollarlo. La CST y FRONTUR/EGATUR se describen también en 4.A.1: aquí bastan los datos. Ninguna referencia «[ver tema …]» en todo el documento."
+}

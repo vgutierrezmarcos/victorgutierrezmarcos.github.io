@@ -1,0 +1,308 @@
+{
+  "tema": "4.A.17",
+  "titulo": "Economía de las regiones españolas: especialización regional, convergencia real y política de desarrollo regional.",
+  "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/cuarto-ejercicio/4A17.docx",
+  "aviso_fuente": "Word y PDF coinciden y el título antiguo es idéntico al nuevo, así que la fuente corresponde. Nota del autor: «El apartado 3.4 mirar por lo de Juan Luis y coordinarlo con lo más actual». Apartados vacíos: Planes de acción de la política regional actual. Datos regionales de 2017-2020; marco 2021-2027.",
+  "estructura": [
+    "Introducción",
+    "I. Análisis estático de la especialización regional",
+    "I.1. Delimitación y relevancia",
+    "I.2. Desequilibrios territoriales: renta total; renta per cápita y factores (PAT × tasa de ocupación); resultados",
+    "I.3. Patrón de especialización sectorial y determinantes (apertura, capital humano, I+D)",
+    "II. Perspectiva dinámica: evolución y convergencia real",
+    "II.1. Evolución de la especialización (hasta 1959; 1960-1973; 1973-1989; 1990-2007; 2008-2019; COVID-19)",
+    "II.2. Convergencia real: indicadores β y σ; resultados; factores explicativos (productividad, migraciones, Nueva Geografía Económica); situación actual (BdE 2023); perspectivas; comparación con la UE",
+    "III. Política de desarrollo regional",
+    "III.1. Evolución: Planes de Desarrollo (polos), reconversión y reindustrialización; post-adhesión",
+    "III.2. Justificación",
+    "III.3. Marco jurídico-institucional (art. 2 y 158 CE; arts. 174-178 TFUE)",
+    "III.4. Política actual: fondos estructurales (FEDER, FSE+), Fondo de Cohesión, FEADER, FEMPA, FTJ, REACT-EU; FCI; política de cohesión 2021-2027; Acuerdo de Asociación; reto demográfico; incentivos regionales; PRTR",
+    "Conclusión"
+  ],
+  "referencias": [
+    {
+      "original": "[ver tema 3.B.40]",
+      "apunta_a": "3.B.40",
+      "contexto": "espacio sin fronteras interiores en el que la libre circulación de mercancías, servicios, personas y capitales estará garantizada [ver tema 3.B.40]",
+      "correcta": false,
+      "deberia": "3.B.39",
+      "motivo": "La frase (nota sobre el mercado interior, art. 26 TFUE) trata del mercado único, que en el temario nuevo es 3.B.39; 3.B.40 es la cohesión económica y social (sí sería la referencia correcta para la política regional europea en general)."
+    }
+  ],
+  "faltan_referencias": [
+    {
+      "a": "3.B.40",
+      "por_que": "La política de cohesión de la UE (FEDER, FSE+, Fondo de Cohesión, MFP 2021-2027) se describe en detalle y es el tema donde se desarrolla; no se remite."
+    },
+    {
+      "a": "3.A.43",
+      "por_que": "Modelo de Solow como base teórica de la convergencia condicional."
+    },
+    {
+      "a": "3.A.45",
+      "por_que": "Convergencia β y σ (evidencia empírica de crecimiento); el modelo de Solow que fundamenta la convergencia condicional está en 3.A.43."
+    },
+    {
+      "a": "3.B.6",
+      "por_que": "Nueva Geografía Económica de Krugman (rendimientos crecientes, aglomeración) dentro de la nueva teoría del comercio internacional."
+    },
+    {
+      "a": "4.A.30",
+      "por_que": "Convergencia real de España con la UE (epígrafe del título de 4.A.30)."
+    },
+    {
+      "a": "4.B.14",
+      "por_que": "Fondo de Compensación Interterritorial y financiación territorial."
+    },
+    {
+      "a": "4.A.27",
+      "por_que": "Planes de Desarrollo y polos de los años 60."
+    },
+    {
+      "a": "4.A.9",
+      "por_que": "Reconversión y reindustrialización (política industrial)."
+    },
+    {
+      "a": "4.A.16",
+      "por_que": "Diferencias regionales en tasas de ocupación y movilidad laboral."
+    },
+    {
+      "a": "4.A.2",
+      "por_que": "Reto demográfico y despoblación."
+    }
+  ],
+  "modelos": [
+    {
+      "id": "convergencia-beta-sigma",
+      "nombre": "Convergencia β y σ (Sala-i-Martín 1990)",
+      "papel": "desarrollo",
+      "para_que": "Medir la convergencia real entre CCAA desde 1955",
+      "supuestos": "regresión de crecimiento sobre el nivel inicial; varianza de log renta per cápita",
+      "ecuaciones": [
+        "\\gamma^{y}_{t,t-1}=\\beta_0+\\beta_1\\ln(y_{t-1})+u_t,\\ \\beta_1<0",
+        "\\sigma^2_{y,t-1}>\\sigma^2_{y,t}",
+        "\\sigma\\text{-convergencia}\\Rightarrow\\beta\\text{-convergencia};\\ \\beta\\not\\Rightarrow\\sigma"
+      ],
+      "graficos": [
+        "Tipos de convergencia (del Río Casasola 2018)",
+        "Relación entre β y σ con dos economías A y B (elaboración propia)",
+        "Evolución de β y σ entre regiones españolas (Auciello y Puente, BdE 2023)"
+      ],
+      "notacion": {
+        "crecimiento": "γ",
+        "renta per cápita": "y",
+        "dispersión": "σ²"
+      },
+      "tema_3er": "3.A.45"
+    },
+    {
+      "id": "pib-per-capita-descomposicion",
+      "nombre": "Descomposición del PIB per cápita en productividad aparente y tasa de ocupación",
+      "papel": "desarrollo",
+      "para_que": "Explicar los desequilibrios regionales y los factores de la convergencia",
+      "supuestos": "identidad contable",
+      "ecuaciones": [
+        "\\frac{Y}{POB}=\\frac{Y}{L}\\times\\frac{L}{POB}"
+      ],
+      "graficos": [],
+      "notacion": {
+        "producción": "Y",
+        "población": "POB",
+        "ocupados": "L",
+        "productividad aparente": "PAT"
+      },
+      "tema_3er": null
+    },
+    {
+      "id": "nueva-geografia-economica",
+      "nombre": "Nueva Geografía Económica (Krugman 1991; Fujita, Venables)",
+      "papel": "resumen",
+      "para_que": "Explicar la divergencia en PIB total y la concentración de actividad (fuerzas centrípetas vs. centrífugas)",
+      "supuestos": "economías de escala externas, costes de transporte",
+      "ecuaciones": [],
+      "graficos": [],
+      "notacion": {},
+      "tema_3er": "3.B.6"
+    },
+    {
+      "id": "baumol-cost-disease",
+      "nombre": "Enfermedad de costes de Baumol",
+      "papel": "mencion",
+      "para_que": "Productividad de servicios en la especialización regional",
+      "supuestos": "",
+      "ecuaciones": [],
+      "graficos": [],
+      "notacion": {},
+      "tema_3er": null
+    },
+    {
+      "id": "difusion-tecnologica-catch-up",
+      "nombre": "Fases de desigualdad regional por difusión tecnológica (catch-up)",
+      "papel": "mencion",
+      "para_que": "Perspectivas de convergencia futura",
+      "supuestos": "",
+      "ecuaciones": [],
+      "graficos": [],
+      "notacion": {},
+      "tema_3er": null
+    }
+  ],
+  "notacion": [
+    {
+      "simbolo": "Y",
+      "significado": "PIB (renta total)"
+    },
+    {
+      "simbolo": "POB",
+      "significado": "población"
+    },
+    {
+      "simbolo": "L",
+      "significado": "número de ocupados"
+    },
+    {
+      "simbolo": "PAT",
+      "significado": "productividad aparente del trabajo Y/L"
+    },
+    {
+      "simbolo": "γ",
+      "significado": "tasa de crecimiento de la renta per cápita"
+    },
+    {
+      "simbolo": "y",
+      "significado": "renta per cápita"
+    },
+    {
+      "simbolo": "σ²",
+      "significado": "varianza de la renta per cápita"
+    }
+  ],
+  "datos_indicadores": [
+    {
+      "id": "contabilidad-regional",
+      "nombre": "Contabilidad Regional de España (PIB y PIB per cápita por CCAA y provincias)",
+      "fuente": "INE",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.1"
+    },
+    {
+      "id": "pib-per-capita-descomposicion",
+      "nombre": "PIB per cápita = PAT × tasa de ocupación",
+      "fuente": "INE",
+      "papel": "desarrollo",
+      "desarrollo_candidato": "4.A.17 (también 4.A.30)"
+    },
+    {
+      "id": "convergencia-beta-sigma",
+      "nombre": "Indicadores de convergencia β y σ",
+      "fuente": "BdE (Auciello y Puente 2023), FEDEA",
+      "papel": "desarrollo",
+      "desarrollo_candidato": "4.A.17 (teoría en 3.er ejercicio; aplicación UE en 4.A.30)"
+    },
+    {
+      "id": "pib-pc-pps-ue",
+      "nombre": "PIB per cápita en PPS respecto a la UE por CCAA",
+      "fuente": "Eurostat",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.30"
+    },
+    {
+      "id": "empleo-stem-tic",
+      "nombre": "Peso del empleo STEM/TIC por CCAA",
+      "fuente": "—",
+      "papel": "mencion",
+      "desarrollo_candidato": "4.A.7"
+    },
+    {
+      "id": "especializacion-relativa",
+      "nombre": "Índice de especialización relativa (peso sectorial regional / nacional)",
+      "fuente": "INE",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.17"
+    }
+  ],
+  "politicas_instituciones": [
+    {
+      "id": "feder-fondos-estructurales",
+      "nombre": "FEDER, FSE+, Fondo de Cohesión, FEADER, FEMPA, Fondo de Transición Justa, REACT-EU",
+      "papel": "desarrollo",
+      "desarrollo_candidato": "3.B.40 (UE) / 4.A.17 (aplicación en España)"
+    },
+    {
+      "id": "politica-cohesion-2021-2027",
+      "nombre": "Nueva política regional 2021-2027 (5 objetivos, reparto de fondos) y Acuerdo de Asociación de España 2021-2027",
+      "papel": "desarrollo",
+      "desarrollo_candidato": "3.B.40 / 4.A.17"
+    },
+    {
+      "id": "fci",
+      "nombre": "Fondo de Compensación Interterritorial (art. 158 CE)",
+      "papel": "desarrollo",
+      "desarrollo_candidato": "4.A.17 / 4.B.14"
+    },
+    {
+      "id": "incentivos-regionales",
+      "nombre": "Incentivos regionales (Ley 50/1985; PGE 2023)",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.17"
+    },
+    {
+      "id": "planes-desarrollo",
+      "nombre": "Planes de Desarrollo 1964-1975 (polos de promoción y desarrollo)",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.27"
+    },
+    {
+      "id": "reconversion-industrial",
+      "nombre": "Reconversión y reindustrialización (ZUR)",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.9 / 4.A.27"
+    },
+    {
+      "id": "reto-demografico",
+      "nombre": "Reto demográfico, España vaciada, Secretaría General para el Reto Demográfico",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.2 / 4.A.17"
+    },
+    {
+      "id": "ngeu-prtr",
+      "nombre": "PRTR: Palancas I-III (C4, C7-C10, Estrategia de Transición Justa)",
+      "papel": "resumen",
+      "desarrollo_candidato": "4.A.29"
+    },
+    {
+      "id": "mfp",
+      "nombre": "Marco Financiero Plurianual 2021-2027 (reparto de fondos de cohesión)",
+      "papel": "mencion",
+      "desarrollo_candidato": "4.A.30 / 3.B.37"
+    },
+    {
+      "id": "bonos-verdes",
+      "nombre": "Bonos verdes",
+      "papel": "mencion",
+      "desarrollo_candidato": "4.A.6 / 4.A.20"
+    }
+  ],
+  "conceptos": [
+    "especialización regional relativa",
+    "desequilibrios territoriales",
+    "convergencia real (β, σ)",
+    "productividad aparente del trabajo",
+    "tasa de ocupación (L/POB)",
+    "componente sectorial vs. regional de la productividad",
+    "éxodo rural",
+    "divergencia en PIB total vs. convergencia en PIB per cápita",
+    "fuerzas centrípetas y centrífugas",
+    "economías de aglomeración",
+    "despoblación / España vaciada",
+    "política de cohesión"
+  ],
+  "incoherencias_internas": [
+    "En la regresión de β-convergencia dice que «la variable dependiente sea el crecimiento … y la variable dependiente sea el PIB per cápita»: la segunda es la variable independiente.",
+    "Llama «tasa de ocupación» a L/POB (ocupados/población total); en 4.A.16 y en la EPA la tasa de empleo/ocupación se refiere a la población de 16 y más años.",
+    "Datos de PIB per cápita regional mezclan 2017, 2020 y valores redondeados distintos para Madrid (32.332 € y 32.000 €) y Canarias (17.199 € y 17.000 €).",
+    "Comparación con la UE usa UE-28 (dato anterior al Brexit) junto a datos de 2020-2023.",
+    "Frase truncada: «contribuirían a la convergencia-inmovilidad del factor trabajo»."
+  ],
+  "observaciones": "Tema de desarrollo candidato para la convergencia β/σ aplicada a España y para la descomposición PIB per cápita = PAT × L/POB, que también usa 4.A.30 (convergencia real con la UE): unificar notación (aquí Y, POB, L, PAT). La teoría (Solow, Sala-i-Martín) y la NGE deberían remitir al 3.er ejercicio. La descripción de los fondos de la UE se solapa con 3.B.40 y 4.A.30: aquí debería centrarse en la aplicación a España (Acuerdo de Asociación, FCI, incentivos regionales)."
+}

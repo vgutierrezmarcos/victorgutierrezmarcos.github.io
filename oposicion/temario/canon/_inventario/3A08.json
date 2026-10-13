@@ -1,0 +1,819 @@
+{
+ "tema": "3.A.8",
+ "titulo": "Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.",
+ "fuente": "R/oposicion/temario/fuentes/3A08/3A08.tex (revisado, fuente principal); contraste con M/oposicion/temario/tercer-ejercicio/oculto/Tema 3.A.8.docx",
+ "aviso_fuente": "",
+ "estructura": [
+  "Introducción",
+  "I. Fundamentos de la teoría de la elección racional",
+  "I.1. Ingredientes: conjunto de elección, preferencias (axiomas 1-7 y 6′) y función de utilidad; restricción presupuestaria",
+  "I.2. Problema de maximización de la utilidad: Kuhn-Tucker, solución interior y de esquina",
+  "I.3. Solución: demanda marshalliana, función indirecta de utilidad, demanda de mercado (agregación, Gorman, efecto renta nulo)",
+  "II. Estática comparativa",
+  "II.1. Variaciones en la renta: curva renta-consumo, curva de Engel, elasticidad-renta, agregación de Engel",
+  "II.2. Variaciones en los precios: curva precio-consumo, elasticidades, ecuación de Slutsky (enunciada), agregación de Cournot y restricciones",
+  "II.3. Valoración",
+  "III. Otros desarrollos",
+  "III.1. Teoría de la preferencia revelada (ADPR, AFPR, aplicaciones)",
+  "III.2. Producción doméstica (Becker)",
+  "III.3. Precios hedónicos (Rosen, estimación, aplicaciones, limitaciones)",
+  "Conclusión",
+  "Anexos: PMU en 3D; derivaciones (Euler, Engel, Cournot, Roy, Slutsky, matriz de Slutsky, ADPR, Cobb-Douglas, CES); formas de la utilidad; sistemas de demanda; enfoque cardinal de Marshall; Lancaster; Thaler; test"
+ ],
+ "referencias": [
+  {
+   "original": "\\vertema{3.A.16} (l. 19)",
+   "apunta_a": "3.A.16",
+   "contexto": "describe la actividad económica al nivel de los agentes individuales. Estudia el comportamiento de los mercados desde la óptica del equilibrio parcial",
+   "correcta": true,
+   "deberia": "3.A.16",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.21} (l. 19)",
+   "apunta_a": "3.A.21",
+   "contexto": "al nivel de los agentes individuales. Estudia el comportamiento de los mercados desde la óptica del equilibrio parcial y del equilibrio general",
+   "correcta": true,
+   "deberia": "3.A.21",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.16} (l. 26)",
+   "apunta_a": "3.A.16",
+   "contexto": "se observan. enditemize item emphRelevancia: beginitemize item A nivel microeconómico, la demanda es un paso previo para determinar el equilibrio de mercado",
+   "correcta": true,
+   "deberia": "3.A.16",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 34)",
+   "apunta_a": "3.A.10",
+   "contexto": "primera vez la utilidad marginal decreciente para resolver la paradoja de San Petersburgo, que el criterio de la ganancia esperada no resolvía",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 48)",
+   "apunta_a": "3.A.9",
+   "contexto": "erso, de la demanda a las preferencias por la vía de la integrabilidad Antonelli1886Teoria,HurwiczUzawa1971Integrability,KihlstromMasColellSonnenschein1976, se estudia junto a la dualidad",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 117)",
+   "apunta_a": "3.A.10",
+   "contexto": "ma-ingredientes fuenteelaboración propia. endfigure beginitemize item El análisis se apoya en estos supuestos: beginenumerate item contexto estático y sin incertidumbre",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.25} (l. 120)",
+   "apunta_a": "3.A.25",
+   "contexto": "cualquier cantidad (bienes perfectamente divisibles, sin costes de transacción); item la decisión de consumo se separa de la de oferta de trabajo",
+   "correcta": true,
+   "deberia": "3.A.25",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.29} (l. 120)",
+   "apunta_a": "3.A.29",
+   "contexto": "sin costes de transacción); item la decisión de consumo se separa de la de oferta de trabajo y de las decisiones intertemporales",
+   "correcta": true,
+   "deberia": "3.A.29",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.33} (l. 134)",
+   "apunta_a": "3.A.33",
+   "contexto": "bienes de consumo final: no se analiza la demanda de bienes de inversión ni de bienes duraderos, que requiere un enfoque dinámico",
+   "correcta": true,
+   "deberia": "3.A.33",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.25} (l. 134)",
+   "apunta_a": "3.A.25",
+   "contexto": "bienes de inversión ni de bienes duraderos, que requiere un enfoque dinámico . Tampoco se analiza la elección entre ocio y trabajo",
+   "correcta": true,
+   "deberia": "3.A.25",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 194)",
+   "apunta_a": "3.A.9",
+   "contexto": "sus propiedades (creciente y cuasicóncava), que se usan para resolver el problema del consumidor y para desarrollar la teoría de la dualidad",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.24} (l. 218)",
+   "apunta_a": "3.A.24",
+   "contexto": "el caso de la paradoja de autorCondorcet: aunque cada individuo tenga preferencias transitivas, la preferencia colectiva obtenida por mayoría puede no serlo",
+   "correcta": true,
+   "deberia": "3.A.24",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.22} (l. 249)",
+   "apunta_a": "3.A.22",
+   "contexto": "competitivo con transferencias) y para la existencia del equilibrio general, pero no para el primero, al que le basta la insaciabilidad local",
+   "correcta": true,
+   "deberia": "3.A.22",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 275)",
+   "apunta_a": "3.A.10",
+   "contexto": "utilidad es cardinal si también importan las diferencias (solo admite transformaciones afines positivas), como la utilidad esperada de von Neumann y Morgenstern",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 386)",
+   "apunta_a": "3.A.9",
+   "contexto": "y la restricción reflejar los recursos de toda la vida del agente. Aquí usaremos siempre overlineW y la llamaremos renta, como en",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.21} (l. 509)",
+   "apunta_a": "3.A.21",
+   "contexto": "no es sino la suma de las restricciones presupuestarias de todos los consumidores: en el agregado también se agotan todos los recursos",
+   "correcta": true,
+   "deberia": "3.A.21",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 534)",
+   "apunta_a": "3.A.9",
+   "contexto": "mismo equilibrio y aparecen nuevas relaciones entre las funciones de ambos enfoques, primal y dual, que enriquecen la teoría: es la dualidad",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.24} (l. 557)",
+   "apunta_a": "3.A.24",
+   "contexto": "Para que además tenga sentido normativo hace falta una regla de reparto de la renta que maximice una función de bienestar social",
+   "correcta": true,
+   "deberia": "3.A.24",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 557)",
+   "apunta_a": "3.A.9",
+   "contexto": "PIGL y PIGLOG, en las que la demanda agregada depende de un nivel «representativo» de renta; es la base del sistema AIDS",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 572)",
+   "apunta_a": "3.A.9",
+   "contexto": "marshalliana coincide con la hicksiana (la que mantiene constante la utilidad), y el excedente del consumidor es una medida exacta del bienestar",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.16} (l. 572)",
+   "apunta_a": "3.A.16",
+   "contexto": "marshalliana coincide con la hicksiana (la que mantiene constante la utilidad), y el excedente del consumidor es una medida exacta del bienestar",
+   "correcta": true,
+   "deberia": "3.A.16",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.21} (l. 581)",
+   "apunta_a": "3.A.21",
+   "contexto": "puede ser la función de exceso de demanda agregada de alguna economía: no se garantizan la unicidad ni la estabilidad del equilibrio",
+   "correcta": true,
+   "deberia": "3.A.21",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 597)",
+   "apunta_a": "3.A.9",
+   "contexto": "cantan por categorías, sin leerlas. La derivación de la ecuación de Slutsky y las propiedades de la matriz de Slutsky corresponden a",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 734)",
+   "apunta_a": "3.A.9",
+   "contexto": "para mantenerle en el mismo nivel de utilidad overlineU. Es la solución del problema de minimización del gasto, el dual del PMU",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 735)",
+   "apunta_a": "3.A.9",
+   "contexto": "teSe obtiene derivando respecto a p_i la identidad h_i(p,overlineU)=x_ibig(p,E(p,overlineU)big), donde E(p,overlineU) es la función de gasto, y aplicando el lema de Shephard",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 741)",
+   "apunta_a": "3.A.9",
+   "contexto": "un bien, el consumidor lo sustituye por los que se han abaratado relativamente.footnoteSe debe a la concavidad de la función de gasto",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 891)",
+   "apunta_a": "3.A.9",
+   "contexto": "conjunto presupuestario no cambie. La simetría y la negatividad de los efectos sustitución, en cambio, exigen que el consumidor maximice la utilidad",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 907)",
+   "apunta_a": "3.A.10",
+   "contexto": "sin explicar cómo se valoran su calidad y sus características: los precios hedónicos (III.3); item el análisis es estático y sin incertidumbre",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.29} (l. 907)",
+   "apunta_a": "3.A.29",
+   "contexto": "sin explicar cómo se valoran su calidad y sus características: los precios hedónicos (III.3); item el análisis es estático y sin incertidumbre",
+   "correcta": true,
+   "deberia": "3.A.29",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 925)",
+   "apunta_a": "3.A.9",
+   "contexto": "fuerte. No hay que confundirla con la integrabilidad, que plantea Antonelli (1886): reconstruir la utilidad a partir de las funciones de demanda",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 964)",
+   "apunta_a": "3.A.9",
+   "contexto": "con dos bienes, sí Rose1958Consistency. KihlstromMasColellSonnenschein1976 estudian qué parte de la teoría de la demanda se sostiene solo con el axioma débil",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 988)",
+   "apunta_a": "3.A.9",
+   "contexto": "fig:preferencia-revelada-indiferencia). item Índices de precios: las comparaciones de bienestar con índices de Laspeyres y de Paasche se basan en este mismo razonamiento",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.18} (l. 1011)",
+   "apunta_a": "3.A.18",
+   "contexto": "depende de las características. Su modelo, revisado, está en el anexo~refanexo:lancaster, y su papel en la diferenciación de productos se estudia en",
+   "correcta": true,
+   "deberia": "3.A.18",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.25} (l. 1026)",
+   "apunta_a": "3.A.25",
+   "contexto": "tareas domésticas; el reparto del tiempo entre trabajo de mercado, trabajo doméstico y ocio se estudia desde la oferta de trabajo en",
+   "correcta": true,
+   "deberia": "3.A.25",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{4.B.6} (l. 1089)",
+   "apunta_a": "4.B.6",
+   "contexto": "por las características del barrio. Esa diferencia muestra cuánto se valora vivir frente al Retiro. Es una herramienta habitual del análisis coste-beneficio",
+   "correcta": true,
+   "deberia": "4.B.6",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1120)",
+   "apunta_a": "3.A.9",
+   "contexto": "la teoría económica: de las preferencias se llega a la demanda, y por la preferencia revelada (teorema de Houthakker) y la integrabilidad",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1133)",
+   "apunta_a": "3.A.9",
+   "contexto": "sistemas completos de demanda que se estiman empíricamente (sistema lineal de gasto de Stone-Geary, translog, AIDS de Deaton y Muellbauer; anexo~refanexo:sistemas)",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 1134)",
+   "apunta_a": "3.A.10",
+   "contexto": "en 2015 «por su análisis del consumo, la pobreza y el bienestar» Nobel2015Deaton. item La elección en condiciones de riesgo e incertidumbre",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.29} (l. 1134)",
+   "apunta_a": "3.A.29",
+   "contexto": "consumo, la pobreza y el bienestar» Nobel2015Deaton. item La elección en condiciones de riesgo e incertidumbre y las decisiones intertemporales",
+   "correcta": true,
+   "deberia": "3.A.29",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.33} (l. 1134)",
+   "apunta_a": "3.A.33",
+   "contexto": "en condiciones de riesgo e incertidumbre y las decisiones intertemporales , con su aplicación al consumo agregado y a los bienes duraderos",
+   "correcta": true,
+   "deberia": "3.A.33",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.16} (l. 1135)",
+   "apunta_a": "3.A.16",
+   "contexto": "su aplicación al consumo agregado y a los bienes duraderos . item La demanda de mercado es una pieza del equilibrio parcial",
+   "correcta": true,
+   "deberia": "3.A.16",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.21} (l. 1135)",
+   "apunta_a": "3.A.21",
+   "contexto": "al consumo agregado y a los bienes duraderos . item La demanda de mercado es una pieza del equilibrio parcial y general",
+   "correcta": true,
+   "deberia": "3.A.21",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.25} (l. 1135)",
+   "apunta_a": "3.A.25",
+   "contexto": "es una pieza del equilibrio parcial y general ; la asignación del tiempo entre trabajo y ocio, de la oferta de trabajo",
+   "correcta": true,
+   "deberia": "3.A.25",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.18} (l. 1135)",
+   "apunta_a": "3.A.18",
+   "contexto": "tiempo entre trabajo y ocio, de la oferta de trabajo , y la demanda de características (anexo~refanexo:lancaster), de la diferenciación de productos",
+   "correcta": true,
+   "deberia": "3.A.18",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.11} (l. 1136)",
+   "apunta_a": "3.A.11",
+   "contexto": "de productos . item La teoría de la producción reproduce la misma estructura (isocuantas, relación técnica de sustitución, elasticidad de sustitución, CES)",
+   "correcta": true,
+   "deberia": "3.A.11",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1175)",
+   "apunta_a": "3.A.9",
+   "contexto": "el gasto, varepsilon_x_i,p_j y varepsilon_x_i,overlineW las elasticidades de la demanda marshalliana, h_i(p,overlineU) la demanda hicksiana y E(p,overlineU) la función de gasto",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1355)",
+   "apunta_a": "3.A.9",
+   "contexto": "sigma=1. el sistema AIDS de DeatonMuellbauer1980AIDS parte de preferencias PIGLOG. Su uso empírico se resume en el anexo~refanexo:sistemas y se estudia en",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 1360)",
+   "apunta_a": "3.A.10",
+   "contexto": "aversión relativa al riesgo constante (igual a eta) y un caso particular de las HARA; su elasticidad de sustitución intertemporal es 1/eta",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.29} (l. 1360)",
+   "apunta_a": "3.A.29",
+   "contexto": "aversión relativa al riesgo constante (igual a eta) y un caso particular de las HARA; su elasticidad de sustitución intertemporal es 1/eta",
+   "correcta": true,
+   "deberia": "3.A.29",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.29} (l. 1361)",
+   "apunta_a": "3.A.29",
+   "contexto": "el límite cuando etato 1 sea ln C. item Preferencias entre consumo y trabajo en macroeconomía (para el test; se desarrollan en",
+   "correcta": true,
+   "deberia": "3.A.29",
+   "motivo": "Correcta por título; comprobar al revisar 3.A.29 que allí estén las preferencias KPR, GHH y JR (si no, llevarlas)."
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1385)",
+   "apunta_a": "3.A.9",
+   "contexto": "completos de ecuaciones de demandalabelanexo:sistemas beginnotaopositor Este anexo no se canta: es una aplicación empírica de la teoría que se desarrolla en",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.9} (l. 1411)",
+   "apunta_a": "3.A.9",
+   "contexto": "elasticidades y se contrastan las restricciones que la forma funcional no impone (homogeneidad, simetría, negatividad), es decir, la integrabilidad de la demanda",
+   "correcta": true,
+   "deberia": "3.A.9",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 1426)",
+   "apunta_a": "3.A.10",
+   "contexto": "son comparables, pero es un supuesto distinto: la utilidad esperada de von Neumann y Morgenstern es cardinal y no permite comparaciones interpersonales",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.18} (l. 1468)",
+   "apunta_a": "3.A.18",
+   "contexto": "«tecnología del consumo» (III.2) y como fundamento de los precios hedónicos (III.3). Su papel en la diferenciación de productos se estudia en",
+   "correcta": true,
+   "deberia": "3.A.18",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.18} (l. 1490)",
+   "apunta_a": "3.A.18",
+   "contexto": "la combinación de características (estrategias de segmentación o de nicho) y la publicidad, en informar sobre ellas o influir en su valoración",
+   "correcta": true,
+   "deberia": "3.A.18",
+   "motivo": ""
+  },
+  {
+   "original": "\\vertema{3.A.10} (l. 1495)",
+   "apunta_a": "3.A.10",
+   "contexto": "media y varianza de Markowitz1952Portfolio sitúa al inversor en la tangencia de su curva de indiferencia con la frontera eficiente de carteras",
+   "correcta": true,
+   "deberia": "3.A.10",
+   "motivo": "Correcta (la media-varianza se resume en el anexo de 3.A.10), pero la teoría de carteras de Markowitz se desarrolla en 3.B.23: conviene añadir \\vertema{3.B.23}."
+  }
+ ],
+ "faltan_referencias": [
+  {
+   "a": "3.A.1",
+   "por_que": "La Conclusión (l. 1125) y el anexo de Thaler tratan la economía conductual (Simon, Kahneman y Tversky, Thaler, nudges), que es parte del título de 3.A.1; no se remite a él."
+  },
+  {
+   "a": "3.B.23",
+   "por_que": "Markowitz y la frontera eficiente de carteras (l. 1495) se desarrollan en 3.B.23; solo se remite a 3.A.10."
+  },
+  {
+   "a": "3.A.12",
+   "por_que": "La l. 1136 remite a 3.A.11 por el paralelismo con la producción; la dualidad de la empresa (análoga a la del consumidor) está en 3.A.12. Opcional."
+  }
+ ],
+ "modelos": [
+  {
+   "id": "pmu",
+   "nombre": "Problema de maximización de la utilidad (consumidor neoclásico)",
+   "papel": "desarrollo",
+   "para_que": "Obtener la demanda marshalliana y la función indirecta de utilidad a partir de los axiomas",
+   "supuestos": "Preferencias completas, transitivas, reflexivas, continuas, monótonas, convexas (6′ estricta), insaciabilidad local; precios dados; renta W̄; estática y certidumbre",
+   "ecuaciones": [
+    "\\max U(x) \\text{ s.a. } p\\cdot x\\le\\overline{W}, x\\ge0",
+    "U_i-\\lambda p_i\\le0, x_i(U_i-\\lambda p_i)=0",
+    "U_1/p_1=\\dots=U_n/p_n=\\lambda",
+    "RMS_{12}=U_1/U_2=p_1/p_2",
+    "V(p,\\overline{W})=U(x(p,\\overline{W}))"
+   ],
+   "graficos": [
+    "Solución interior (tangencia) y de esquina",
+    "PMU en 3D con λ=0 y λ>0 (anexo)",
+    "Conjunto presupuestario walrasiano"
+   ],
+   "notacion": {
+    "renta": "W̄",
+    "precios": "p",
+    "cantidades": "x",
+    "utilidad": "U(x), U_i",
+    "multiplicador": "λ",
+    "FIU": "V(p,W̄)"
+   }
+  },
+  {
+   "id": "axiomas-preferencias",
+   "nombre": "Axiomas sobre las preferencias y teorema de representación de Debreu",
+   "papel": "desarrollo",
+   "para_que": "Garantizar la existencia y propiedades de la función de utilidad",
+   "supuestos": "Axiomas 1-4 (completitud, reflexividad, transitividad, continuidad) bastan para la representación; 5 monotonía, 6 convexidad, 6′ convexidad estricta, 7 insaciabilidad local",
+   "ecuaciones": [
+    "x^1\\succcurlyeq x^2 \\Leftrightarrow U(x^1)\\ge U(x^2)"
+   ],
+   "graficos": [
+    "Venn de preferencia débil/indiferencia/estricta",
+    "Conjuntos de contorno",
+    "Esquema de axiomas por capas",
+    "Propiedades de las curvas de indiferencia"
+   ],
+   "notacion": {
+    "preferencia": "≽, ≻, ∼",
+    "conjunto de elección": "S"
+   }
+  },
+  {
+   "id": "ces",
+   "nombre": "Función CES de utilidad",
+   "papel": "resumen",
+   "para_que": "Ilustrar la elasticidad de sustitución y sus casos límite (Leontief, Cobb-Douglas, lineal)",
+   "supuestos": "σ constante",
+   "ecuaciones": [
+    "U=A[\\sum a_i x_i^{(\\sigma-1)/\\sigma}]^{\\sigma/(\\sigma-1)}",
+    "\\sigma=d\\ln(x_2/x_1)/d\\ln RMS_{12}"
+   ],
+   "graficos": [
+    "Curvas de indiferencia CES para distintos σ"
+   ],
+   "notacion": {
+    "pesos": "a_i",
+    "elasticidad de sustitución": "σ"
+   }
+  },
+  {
+   "id": "cobb-douglas",
+   "nombre": "Utilidad Cobb-Douglas",
+   "papel": "resumen",
+   "para_que": "Ejemplo de demandas con participaciones de gasto constantes",
+   "supuestos": "",
+   "ecuaciones": [
+    "x=\\frac{\\alpha}{\\alpha+\\beta}\\frac{\\overline{W}}{p_x}"
+   ],
+   "graficos": [
+    "Superficie U=√(x1x2) y mapa de indiferencia"
+   ],
+   "notacion": {
+    "parámetros": "α, β"
+   }
+  },
+  {
+   "id": "identidad-roy",
+   "nombre": "Identidad de Roy",
+   "papel": "resumen",
+   "para_que": "Recuperar la demanda marshalliana desde la FIU",
+   "supuestos": "FIU diferenciable",
+   "ecuaciones": [
+    "x_i=-\\frac{\\partial V/\\partial p_i}{\\partial V/\\partial\\overline{W}}"
+   ],
+   "graficos": [],
+   "notacion": {}
+  },
+  {
+   "id": "gorman-agregacion",
+   "nombre": "Forma polar de Gorman y agregación de la demanda",
+   "papel": "desarrollo",
+   "para_que": "Condiciones para que exista un consumidor representativo",
+   "supuestos": "Curvas de Engel lineales y paralelas",
+   "ecuaciones": [
+    "X_i=\\sum_h x_{hi}(p,\\overline{W}_h)",
+    "V_h=a_h(p)+b(p)\\overline{W}_h"
+   ],
+   "graficos": [
+    "Curvas de Engel rectas y paralelas de dos consumidores"
+   ],
+   "notacion": {
+    "consumidor": "h",
+    "renta del consumidor": "W̄_h"
+   }
+  },
+  {
+   "id": "slutsky",
+   "nombre": "Ecuación de Slutsky (enunciado y clasificación)",
+   "papel": "resumen",
+   "para_que": "Descomponer el efecto precio en sustitución y renta; clasificar bienes (normales, inferiores, Giffen)",
+   "supuestos": "Derivación remitida a 3.A.9",
+   "ecuaciones": [
+    "\\partial x_i/\\partial p_j=\\partial h_i/\\partial p_j - x_j\\,\\partial x_i/\\partial\\overline{W}"
+   ],
+   "graficos": [
+    "Descomposición sustitución (A→B) y renta",
+    "Clasificación de bienes por elasticidades"
+   ],
+   "notacion": {
+    "demanda hicksiana": "h_i(p,Ū)",
+    "función de gasto": "E(p,Ū)"
+   }
+  },
+  {
+   "id": "elasticidades-demanda",
+   "nombre": "Elasticidades y agregaciones de Engel y Cournot",
+   "papel": "desarrollo",
+   "para_que": "Estática comparativa y restricciones de la demanda (homogeneidad, agregación)",
+   "supuestos": "",
+   "ecuaciones": [
+    "\\varepsilon_{x_i,\\overline{W}}",
+    "\\sum s_i\\varepsilon_{x_i,\\overline{W}}=1",
+    "\\sum_i s_i\\varepsilon_{x_i,p_j}=-s_j",
+    "\\sum_j\\varepsilon_{x_i,p_j}+\\varepsilon_{x_i,\\overline{W}}=0"
+   ],
+   "graficos": [
+    "Curva renta-consumo y de Engel",
+    "Ley de Engel en España (EPF 2025)",
+    "Curva precio-consumo y demanda"
+   ],
+   "notacion": {
+    "participación en el gasto": "s_i=p_ix_i/W̄"
+   }
+  },
+  {
+   "id": "preferencia-revelada",
+   "nombre": "Teoría de la preferencia revelada (Samuelson, Houthakker, Afriat)",
+   "papel": "desarrollo",
+   "para_que": "Fundamentar la demanda en comportamiento observable",
+   "supuestos": "Demanda única, presupuesto agotado",
+   "ecuaciones": [
+    "p^0x^1\\le p^0x^0, x^1\\ne x^0\\Rightarrow p^1x^0>p^1x^1",
+    "(p^1-p^0)(x^1-x^0)\\le0"
+   ],
+   "graficos": [
+    "ADPR y signo del efecto sustitución",
+    "AFPR (preferencia indirecta)",
+    "Obtención de una curva de indiferencia por preferencia revelada"
+   ],
+   "notacion": {
+    "situaciones": "superíndices 0,1,2"
+   }
+  },
+  {
+   "id": "becker-produccion-domestica",
+   "nombre": "Producción doméstica y asignación del tiempo (Becker)",
+   "papel": "resumen",
+   "para_que": "Extender la demanda a la asignación del tiempo y la renta completa",
+   "supuestos": "",
+   "ecuaciones": [
+    "\\sum p_ix_i=wt_w+V",
+    "\\sum(p_ix_i+wt_i)=wT+V"
+   ],
+   "graficos": [],
+   "notacion": {
+    "salario": "w",
+    "tiempo total": "T",
+    "renta no laboral": "V (choca con V de la FIU)"
+   }
+  },
+  {
+   "id": "rosen-hedonicos",
+   "nombre": "Modelo de precios hedónicos de Rosen (1974)",
+   "papel": "desarrollo",
+   "para_que": "Valorar bienes por sus características",
+   "supuestos": "Mercado competitivo de productos diferenciados",
+   "ecuaciones": [
+    "\\frac{\\partial U/\\partial z_j}{\\partial U/\\partial y}=\\frac{\\partial p(z)}{\\partial z_j}"
+   ],
+   "graficos": [
+    "Función hedónica como envolvente de curvas de puja y de oferta"
+   ],
+   "notacion": {
+    "características": "z",
+    "numerario": "y",
+    "puja": "θ(z;Ū,W̄)",
+    "oferta": "φ(z;π)"
+   }
+  },
+  {
+   "id": "lancaster",
+   "nombre": "Demanda de características de Lancaster",
+   "papel": "resumen",
+   "para_que": "Antecedente de hedónicos y diferenciación (anexo)",
+   "supuestos": "",
+   "ecuaciones": [
+    "\\max U(z) \\text{ s.a. } \\sum p_ix_i\\le\\overline{W}, z_j=\\sum b_{ji}x_i"
+   ],
+   "graficos": [
+    "Frontera de eficiencia de características"
+   ],
+   "notacion": {
+    "coeficientes": "b_ji"
+   }
+  },
+  {
+   "id": "crra",
+   "nombre": "Utilidad CRRA y preferencias macro (KPR, GHH, Jaimovich-Rebelo)",
+   "papel": "mencion",
+   "para_que": "Anexo para el test",
+   "supuestos": "",
+   "ecuaciones": [
+    "u(C)=(C^{1-\\eta}-1)/(1-\\eta)",
+    "u(C,N)=\\frac{C^{1-\\sigma}}{1-\\sigma}v(1-N)"
+   ],
+   "graficos": [],
+   "notacion": {
+    "aversión relativa": "η",
+    "inverso EIS en preferencias macro": "σ",
+    "horas": "N"
+   }
+  },
+  {
+   "id": "marshall-cardinal",
+   "nombre": "Enfoque cardinal de Marshall",
+   "papel": "mencion",
+   "para_que": "Anexo histórico",
+   "supuestos": "Utilidad aditiva, UMg del dinero constante",
+   "ecuaciones": [
+    "u_i'(x_i)=p_i"
+   ],
+   "graficos": [
+    "Demanda en el enfoque cardinal"
+   ],
+   "notacion": {}
+  }
+ ],
+ "notacion": [
+  {
+   "simbolo": "W̄",
+   "significado": "renta (siempre, como en 3.A.9)"
+  },
+  {
+   "simbolo": "x_i(p,W̄)",
+   "significado": "demanda marshalliana"
+  },
+  {
+   "simbolo": "h_i(p,Ū)",
+   "significado": "demanda hicksiana"
+  },
+  {
+   "simbolo": "E(p,Ū)",
+   "significado": "función de gasto"
+  },
+  {
+   "simbolo": "V(p,W̄)",
+   "significado": "función indirecta de utilidad"
+  },
+  {
+   "simbolo": "U_i",
+   "significado": "utilidad marginal del bien i"
+  },
+  {
+   "simbolo": "RMS_12=U_1/U_2",
+   "significado": "relación marginal de sustitución, positiva"
+  },
+  {
+   "simbolo": "σ",
+   "significado": "elasticidad de sustitución (en el anexo macro, inverso de la EIS)"
+  },
+  {
+   "simbolo": "a_i",
+   "significado": "pesos de la CES"
+  },
+  {
+   "simbolo": "s_i",
+   "significado": "participación en el gasto"
+  },
+  {
+   "simbolo": "ε_{x_i,W̄}, ε_{x_i,p_j}",
+   "significado": "elasticidades renta y precio"
+  },
+  {
+   "simbolo": "η",
+   "significado": "aversión relativa al riesgo en la CRRA"
+  },
+  {
+   "simbolo": "λ",
+   "significado": "multiplicador (utilidad marginal de la renta)"
+  }
+ ],
+ "conceptos": [
+  "insaciabilidad local (fundamento de la ley de Walras)",
+  "ley de Walras",
+  "demanda marshalliana / SCEDM",
+  "función indirecta de utilidad",
+  "forma polar de Gorman / consumidor representativo",
+  "teorema SMD (Sonnenschein-Mantel-Debreu)",
+  "ecuación de Slutsky",
+  "efecto sustitución / efecto renta",
+  "bien Giffen, bien de Veblen",
+  "curva de Engel / ley de Engel",
+  "axioma débil y fuerte de la preferencia revelada",
+  "teorema de Afriat",
+  "renta completa (Becker)",
+  "precio implícito o hedónico",
+  "excedente del consumidor",
+  "elasticidad de sustitución",
+  "CES, Cobb-Douglas, Stone-Geary, AIDS, translog"
+ ],
+ "incoherencias_internas": [
+  "V se usa para la FIU y para la renta no laboral en la restricción de Becker (eq:becker-restricciones).",
+  "σ es elasticidad de sustitución en el cuerpo y parámetro de curvatura (inverso de la EIS) en el anexo de preferencias macro; se avisa en el texto."
+ ],
+ "observaciones": "Tema ya revisado (10/10/2026). Todas las \\vertema del .tex apuntan bien con los títulos actuales; las del Word original (3.A.10 cardinal, 3.A.9 dualidad e índices, 3.A.18 Lancaster, 3.A.10/3.A.29 valoración, 3.A.16, 3.A.25) también. Fija la notación del bloque: W̄, RMS positiva, CES con a_i, h_i(p,Ū), E(p,Ū). Diferencias a vigilar en otros temas: 3.A.10 (Word) usa θ para la CRRA y r_α/r_r para los coeficientes de Arrow-Pratt frente a η aquí; 3.A.11 (Word) usa s_i como pesos de la CES (aquí a_i, s_i son participaciones en el gasto); 3.A.9 (Word) repite la Introducción y las tablas de Slutsky de 3.A.8 y atribuye la ley de Walras a la «estricta monotonía» (debe ser insaciabilidad local). Slutsky: enunciado aquí, derivación y matriz en 3.A.9."
+}

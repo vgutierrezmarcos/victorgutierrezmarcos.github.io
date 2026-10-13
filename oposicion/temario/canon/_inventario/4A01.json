@@ -1,0 +1,99 @@
+{
+  "tema": "4.A.1",
+  "titulo": "Fuentes estadísticas españolas. Metodologías y limitaciones.",
+  "fuente": "M/oposicion/temario/cuarto-ejercicio/4A01.docx (igual contenido en oculto/Tema 4.A.1.docx, versión con notas internas)",
+  "aviso_fuente": "El Word y el PDF corresponden al tema 4.A.1 del temario ANTIGUO: «Fuentes estadísticas españolas. Características, limitaciones y armonización en el ámbito comunitario». El contenido coincide en lo esencial con el título nuevo («Metodologías y limitaciones»), pero: (1) dedica un bloque entero (III.2) a la armonización en la UE, que el título nuevo ya no pide y debería reducirse o integrarse en metodologías; (2) el epígrafe «Metodologías» no existe como tal: la metodología está dispersa por fuente (PIB encadenado, IPC Laspeyres encadenado, IPI, ICLA, EPA) y conviene agruparla. Varias fuentes quedan vacías o marcadas «Convendría desarrollar esto» (comercio, transporte, encuesta de estructura salarial, sector servicios). Datos desactualizados: base 2010 de CNE/IPI (hoy base 2021), PEN 2021-2024, Visión 2020, ministerio MINECO.",
+  "estructura": [
+    "Introducción",
+    "I. Sistema estadístico español",
+    "I.1. Introducción (definición, directrices SCN-2008 y MBP6, esfuerzo armonizador SEC-2010)",
+    "I.2. Marco legal (comunitario, nacional: CE art. 149.1.31 y LFEP 12/1989, PEN; CCAA)",
+    "I.3. Marco institucional (Consejo Superior de Estadística, INE, servicios ministeriales, CIME, CITE, BdE; privados)",
+    "II. Principales estadísticas",
+    "II.1. Estadísticas estructurales (sociodemográficas: censo, padrón, MNP, migraciones; económicas: DIRCE, censo agrario, encuestas industriales y de servicios, Central de Balances)",
+    "II.2. Contabilidad nacional y balanza de pagos (CNE, CNTR, CRE, CST, PIB encadenado; TIO; BP y PII y sus fuentes)",
+    "II.3. Estadísticas coyunturales (demanda; oferta por sectores: IPI, ICI, construcción, servicios, turismo; mercado de trabajo: EPA, paro registrado, afiliación, ETCL/ICLA; monetario y financiero; precios: IPC, IPCA, subyacente, deflactor; sector público: saldos; ODS)",
+    "III. Limitaciones y armonización en el ámbito de la UE",
+    "III.1. Limitaciones (calidad e independencia; errores de muestreo y ajenos; metodología, errores, retrasos, EPA, manipulación, servicios, actividades ilegales)",
+    "III.2. Armonización en la UE (justificación, SEE, armonización de outputs, Visión 2020)",
+    "Conclusión"
+  ],
+  "referencias": [
+    {"original": "[ver tema 3.A.26]", "apunta_a": "3.A.26", "contexto": "### Contabilidad Nacional [ver tema 3.A.26]", "correcta": false, "deberia": "3.A.30", "motivo": "Numeración antigua. Hoy 3.A.26 es «Desempleo friccional…»; la contabilidad nacional está en 3.A.30 «Magnitudes macroeconómicas y contabilidad nacional»."},
+    {"original": "[ver tema 3.A.27]", "apunta_a": "3.A.27", "contexto": "### Tablas input-output (TIO) [ver tema 3.A.27]", "correcta": false, "deberia": "3.A.31", "motivo": "Numeración antigua. Hoy 3.A.27 es «Determinación de salarios…»; las TIO están en 3.A.31 «Análisis de las tablas input-output»."},
+    {"original": "[ver tema 3.B.12]", "apunta_a": "3.B.12", "contexto": "### Sector Exterior [ver tema 3.B.12] ... Balanza de Pagos: concepto", "correcta": false, "deberia": "3.B.11", "motivo": "Se describe el concepto y estructura contable de la BP/PII, que es 3.B.11 «Balanza de pagos: concepto, medición e interpretación»; 3.B.12 trata los mecanismos de ajuste. Para datos de España, además 4.A.21."}
+  ],
+  "faltan_referencias": [
+    {"a": "4.A.16", "por_que": "Desarrolla EPA, paro registrado, afiliación y sus limitaciones, que se usan en el análisis del mercado de trabajo."},
+    {"a": "4.A.21", "por_que": "Explica BP, PII y activos del BdE frente al Eurosistema (TARGET2), núcleo de 4.A.21."},
+    {"a": "4.B.1", "por_que": "Delimitación del sector AAPP y papel de la IGAE en contabilidad nacional."},
+    {"a": "4.B.4", "por_que": "Define saldo cíclicamente ajustado, estructural y primario sin remitir al tema donde se desarrollan."},
+    {"a": "4.A.13", "por_que": "Cuenta Satélite del Turismo, FRONTUR/EGATUR."},
+    {"a": "3.A.41", "por_que": "Sesgos del IPC como medida del coste de la vida (efecto sustitución) e inflación subyacente."},
+    {"a": "4.A.17", "por_que": "Contabilidad Regional de España, base de los datos de convergencia regional."}
+  ],
+  "modelos": [
+    {"id": "indice-laspeyres", "nombre": "Índice de precios de Laspeyres (IPC encadenado, IPI, ICLA)", "papel": "resumen", "para_que": "Explicar la metodología del IPC, el IPI y el ICLA y su sesgo de sobreestimación del coste de la vida", "supuestos": "Cesta y ponderaciones del periodo base (actualizadas anualmente en el IPC desde 2002)", "ecuaciones": ["IPC_t=\\sum_i w_{i0}\\,\\frac{p_{it}}{p_{i0}}", "IPI_t=\\sum_i w_{i,2010}\\frac{Q_{i,t}p_{i,2010}-\\sum_j d_{j,t}a_{j,2010}}{Q_{i,2010}p_{i,2010}-\\sum_j d_{j,2010}a_{j,2010}}"], "graficos": [], "notacion": {"ponderaciones": "w_{i0}", "precios": "p_{it}", "cantidades": "Q_{i,t}"}, "tema_3er": "3.A.30"},
+    {"id": "indice-paasche", "nombre": "Deflactor del PIB (índice de Paasche)", "papel": "mencion", "para_que": "Comparar con el IPC para distinguir inflación importada o interna", "supuestos": "", "ecuaciones": [], "graficos": [], "notacion": {}, "tema_3er": "3.A.30"},
+    {"id": "pib-encadenado", "nombre": "Volumen encadenado del PIB (índices de base móvil)", "papel": "resumen", "para_que": "Metodología de la CNE: evitar el sesgo del año base fijo", "supuestos": "Media de crecimientos a precios de t y t+1 encadenada", "ecuaciones": ["Y^{real}_{z+1}=Y^{nom}_z(1+g)"], "graficos": [], "notacion": {"crecimiento medio": "g"}, "tema_3er": "3.A.30"},
+    {"id": "tablas-input-output", "nombre": "Tablas de origen, destino y simétrica (SEC-2010)", "papel": "resumen", "para_que": "Describir las TIO como fuente estructural y su limitación por retraso", "supuestos": "", "ecuaciones": ["VA=RA+EBE+RX", "X=CI+VA", "TO=X+M"], "graficos": ["Esquemas de tabla de origen, de destino y simétrica"], "notacion": {"producción": "X", "importaciones": "M", "valor añadido": "VA"}, "tema_3er": "3.A.31"},
+    {"id": "identidad-balanza-pagos", "nombre": "Identidad contable de la balanza de pagos", "papel": "resumen", "para_que": "Mostrar que CC+CK+EO = CF (capacidad/necesidad de financiación)", "supuestos": "Registro por partida doble MBP6", "ecuaciones": ["CC+CK+EO=CF", "CF=ID+IC+\\text{Otra inversión}+\\text{Derivados}+\\Delta R"], "graficos": ["Panorama de las cuentas internacionales (BdE)"], "notacion": {"cuenta corriente": "CC", "cuenta de capital": "CK", "cuenta financiera": "CF", "errores y omisiones": "EO", "reservas": "ΔR", "saldo neto": "SNC"}, "tema_3er": "3.B.11"}
+  ],
+  "notacion": [
+    {"simbolo": "CC", "significado": "cuenta corriente"},
+    {"simbolo": "CK", "significado": "cuenta de capital"},
+    {"simbolo": "CF", "significado": "cuenta financiera"},
+    {"simbolo": "EO", "significado": "errores y omisiones"},
+    {"simbolo": "SNC / SNC*", "significado": "saldo de la cuenta financiera con y sin Banco de España"},
+    {"simbolo": "w_{i0}", "significado": "ponderación del bien i en el periodo base"},
+    {"simbolo": "RA, EBE, RX", "significado": "remuneración de asalariados, excedente bruto de explotación, rentas mixtas"}
+  ],
+  "datos_indicadores": [
+    {"id": "contabilidad-nacional", "nombre": "Contabilidad Nacional de España (CNE, CNTR, CRE), SEC-2010", "fuente": "INE (IGAE para AAPP, BdE para cuentas financieras)", "papel": "desarrollo", "desarrollo_candidato": "4.A.1"},
+    {"id": "cuenta-satelite-turismo", "nombre": "Cuenta Satélite del Turismo", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "4.A.13"},
+    {"id": "tablas-input-output", "nombre": "Tablas origen-destino y simétricas", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "3.A.31"},
+    {"id": "balanza-pagos", "nombre": "Balanza de pagos y PII (MBP6)", "fuente": "BdE", "papel": "resumen", "desarrollo_candidato": "4.A.21"},
+    {"id": "piin", "nombre": "Posición de Inversión Internacional neta", "fuente": "BdE", "papel": "mencion", "desarrollo_candidato": "4.A.21"},
+    {"id": "target2-bde-eurosistema", "nombre": "Activos/pasivos del BdE frente al Eurosistema", "fuente": "BdE", "papel": "mencion", "desarrollo_candidato": "4.A.21"},
+    {"id": "comercio-exterior-aduanas", "nombre": "Estadísticas de comercio exterior (Aduanas, Intrastat)", "fuente": "AEAT / Secretaría de Estado de Comercio", "papel": "resumen", "desarrollo_candidato": "4.A.22"},
+    {"id": "frontur-egatur", "nombre": "FRONTUR, EGATUR, FAMILITUR", "fuente": "INE", "papel": "mencion", "desarrollo_candidato": "4.A.13"},
+    {"id": "registro-inversiones-exteriores", "nombre": "Registro de Inversiones Exteriores (DataInvex)", "fuente": "Secretaría de Estado de Comercio", "papel": "mencion", "desarrollo_candidato": "4.A.23"},
+    {"id": "epa", "nombre": "Encuesta de Población Activa", "fuente": "INE", "papel": "desarrollo", "desarrollo_candidato": "4.A.1 (metodología) / 4.A.16 (datos)"},
+    {"id": "paro-registrado", "nombre": "Paro registrado SEPE", "fuente": "SEPE", "papel": "resumen", "desarrollo_candidato": "4.A.16"},
+    {"id": "afiliacion-ss", "nombre": "Afiliación a la Seguridad Social", "fuente": "Ministerio de Inclusión, Seguridad Social y Migraciones", "papel": "resumen", "desarrollo_candidato": "4.A.16"},
+    {"id": "etcl-icla", "nombre": "Encuesta Trimestral de Coste Laboral e Índice de Coste Laboral Armonizado", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "4.A.16"},
+    {"id": "ipc-iapc", "nombre": "IPC, IPCA, inflación subyacente, deflactor del PIB", "fuente": "INE", "papel": "desarrollo", "desarrollo_candidato": "4.A.1"},
+    {"id": "epf", "nombre": "Encuesta de Presupuestos Familiares", "fuente": "INE", "papel": "mencion", "desarrollo_candidato": "4.A.3"},
+    {"id": "ipi", "nombre": "Índice de Producción Industrial e índices de pedidos y cifra de negocios", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "4.A.9"},
+    {"id": "clima-industrial", "nombre": "Encuesta de Coyuntura Industrial / Indicador de Clima Industrial", "fuente": "Ministerio de Industria", "papel": "mencion", "desarrollo_candidato": "4.A.9"},
+    {"id": "clima-construccion", "nombre": "Encuesta Coyuntural de la Construcción / ICC", "fuente": "Ministerio de Transportes", "papel": "mencion", "desarrollo_candidato": "4.A.11"},
+    {"id": "iass", "nombre": "Indicadores de Actividad del Sector Servicios; Encuesta Anual de Servicios", "fuente": "INE", "papel": "mencion", "desarrollo_candidato": "4.A.14"},
+    {"id": "dirce", "nombre": "Directorio Central de Empresas", "fuente": "INE", "papel": "mencion", "desarrollo_candidato": "4.A.8"},
+    {"id": "central-balances", "nombre": "Central de Balances", "fuente": "BdE", "papel": "mencion", "desarrollo_candidato": "4.A.8"},
+    {"id": "censo-agrario", "nombre": "Censo agrario y estadísticas del MAPA", "fuente": "INE / MAPA", "papel": "mencion", "desarrollo_candidato": "4.A.4"},
+    {"id": "estadisticas-energeticas", "nombre": "Balances energéticos", "fuente": "MITECO", "papel": "mencion", "desarrollo_candidato": "4.A.5"},
+    {"id": "censo-padron", "nombre": "Censo de población, padrón continuo, MNP, migraciones", "fuente": "INE", "papel": "resumen", "desarrollo_candidato": "4.A.2"},
+    {"id": "saldo-estructural", "nombre": "Saldo público total, cíclicamente ajustado, estructural y primario", "fuente": "IGAE / Tesoro / Comisión", "papel": "resumen", "desarrollo_candidato": "4.B.4"},
+    {"id": "deuda-publica", "nombre": "Deuda y déficit públicos (PDE)", "fuente": "IGAE / BdE / Tesoro", "papel": "mencion", "desarrollo_candidato": "4.B.26"},
+    {"id": "isae", "nombre": "Indicador sintético de actividad económica", "fuente": "Ministerio de Economía", "papel": "mencion", "desarrollo_candidato": "4.A.1"}
+  ],
+  "politicas_instituciones": [
+    {"id": "ine", "nombre": "Instituto Nacional de Estadística", "papel": "desarrollo", "desarrollo_candidato": "4.A.1"},
+    {"id": "lfep-plan-estadistico", "nombre": "Ley 12/1989 de la Función Estadística Pública y Plan Estadístico Nacional", "papel": "desarrollo", "desarrollo_candidato": "4.A.1"},
+    {"id": "sistema-estadistico-europeo", "nombre": "Sistema Estadístico Europeo, Eurostat, Código de Buenas Prácticas", "papel": "desarrollo", "desarrollo_candidato": "4.A.1"},
+    {"id": "sec-2010", "nombre": "SEC-2010 / SCN-2008 / MBP6", "papel": "resumen", "desarrollo_candidato": "3.A.30"},
+    {"id": "bde", "nombre": "Banco de España como productor estadístico", "papel": "mencion", "desarrollo_candidato": "4.A.19"},
+    {"id": "igae", "nombre": "IGAE", "papel": "mencion", "desarrollo_candidato": "4.B.1"},
+    {"id": "pacto-estabilidad", "nombre": "Pacto de Estabilidad y Crecimiento (armonización de cuentas públicas)", "papel": "mencion", "desarrollo_candidato": "4.B.26"},
+    {"id": "pac", "nombre": "Política Agrícola Común", "papel": "mencion", "desarrollo_candidato": "4.A.4"},
+    {"id": "ods-agenda-2030", "nombre": "Objetivos de Desarrollo Sostenible", "papel": "mencion", "desarrollo_candidato": "4.A.26"}
+  ],
+  "conceptos": ["sistema estadístico español", "estadísticas estructurales vs coyunturales", "PIB encadenado", "capacidad/necesidad de financiación", "PII", "economía sumergida y actividades ilegales en el PIB", "tasa de paro, tasa de temporalidad", "inflación subyacente", "sesgo de sustitución del IPC", "saldo estructural", "errores de muestreo y ajenos al muestreo"],
+  "incoherencias_internas": [
+    "La EPF se describe como «trimestral» en el título y «anual» en el texto.",
+    "El IPC se presenta como índice de Laspeyres de base fija (fórmula con w_{i0}) y a la vez como encadenado con ponderaciones anuales.",
+    "Se dice que la EPA, al no considerar la economía sumergida, sobreestima la tasa de paro, pero la nota matiza que no sobreestima el número de parados: conviene unificar.",
+    "Ministerios citados con nombres de distintas legislaturas (MINECO, Ministerio de Asuntos Económicos y Transformación Digital, Ministerio de Empleo y Seguridad Social, Ministerio de Fomento)."
+  ],
+  "observaciones": "Tema de referencia natural para la metodología de todas las fuentes que usan los demás temas del 4.A (EPA, CN, BP/PII, IPC, IPI, CST, comercio exterior, IED). Conviene que los demás temas remitan aquí para la metodología y que aquí no se den datos coyunturales. Bloque 4a-fuentes-estadisticas (tema único). Las bases (2010) y planes (PEN 2021-2024, Visión 2020) deben actualizarse (CN base 2019/2021, IPC base 2021, PEN 2025-2028, Estrategia del SEE)."
+}

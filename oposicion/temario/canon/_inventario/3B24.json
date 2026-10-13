@@ -1,0 +1,167 @@
+{
+ "tema": "3.B.24",
+ "titulo": "Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura temporal de los tipos de interés. Valoración del riesgo y del rendimiento de los bonos: duración y convexidad.",
+ "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/tercer-ejercicio/oculto/Tema 3.B.24.docx",
+ "aviso_fuente": "ninguno: el Word corresponde al título oficial (nota inicial: «con lo escrito en este documento estaría actualizado» tras el cambio de temario de 2023)",
+ "estructura": [
+  "0. ANÁLISIS DE LOS INSTRUMENTOS FINANCIEROS DE RENTA FIJA",
+  "0.1. Definición de instrumentos de renta fija (Diferencias entre renta fija y renta variable)",
+  "0.2. Elementos de un bono",
+  "0.3. Tipos de bono",
+  "1. VALORACIÓN: DETERMINACIÓN DEL PRECIO Y RENDIMIENTO DE LOS BONOS",
+  "1.1. Determinación del precio de los bonos",
+  "1.2. Determinación del rendimiento de los bonos",
+  "2. LA ESTRUCTURA TEMPORAL DE LOS TIPOS DE INTERÉS",
+  "2.1. Definición",
+  "2.2. Teorías explicativas de la estructura temporal de los tipos de interés",
+  "2.3. Interpretación de las diferentes formas y movimientos de la curva de tipos de interés",
+  "3. VALORACIÓN DEL RIESGO Y DEL RENDIMIENTO DE LOS BONOS: DURACIÓN Y CONVEXIDAD",
+  "3.1. Riesgos asociados a la inversión en bonos",
+  "3.2. Riesgo de tipo de interés"
+ ],
+ "referencias": [
+  {
+   "original": "[3.B.23]",
+   "apunta_a": "3.B.23",
+   "contexto": "distinguimos 3 tipos de activos financieros: - Activos financieros de renta variable [ 3.B.23 ]: Conllevan derechos de propiedad y su remuneración depende de",
+   "correcta": true,
+   "deberia": "3.B.23"
+  },
+  {
+   "original": "[3.B.24]",
+   "apunta_a": "3.B.24",
+   "contexto": "de la evolución económico-financiera del emisor. - Activos financieros de renta fija [ 3.B.24 ]: No conllevan derechos de propiedad y su remuneración no",
+   "correcta": true,
+   "deberia": "3.B.24",
+   "motivo": "nota de coordinación o enumeración que incluye el propio tema"
+  },
+  {
+   "original": "[3.B.25]",
+   "apunta_a": "3.B.25",
+   "contexto": "del emisor, sino que viene especificada por una fórmula. - Instrumentos derivados [ 3.B.25 ]: Son instrumentos financieros cuyo valor está en función (se",
+   "correcta": true,
+   "deberia": "3.B.25"
+  },
+  {
+   "original": "[ver tema 3.B.3]",
+   "apunta_a": "3.B.3",
+   "contexto": "estará muy relacionado con su visión sobre estructura óptima de capital [ver tema 3.B.3 ]. - Inversores: Les ofrece una forma de obtener rentabilidad",
+   "correcta": true,
+   "deberia": "3.B.3"
+  },
+  {
+   "original": "[ver tema 3.B.25]",
+   "apunta_a": "3.B.25",
+   "contexto": "3 tipos de bonos según las opciones que incluyan los bonos [ver tema 3.B.25 ]: - Callable bonds: Se trata de bonos que incluyen",
+   "correcta": true,
+   "deberia": "3.B.25"
+  }
+ ],
+ "faltan_referencias": [
+  {
+   "a": "3.A.36",
+   "por_que": "curva de tipos y política monetaria/expectativas de tipos"
+  },
+  {
+   "a": "3.A.37",
+   "por_que": "transmisión de la política monetaria vía estructura temporal"
+  },
+  {
+   "a": "3.B.2",
+   "por_que": "la TIR de un proyecto equivale a la YTM"
+  }
+ ],
+ "modelos": [
+  {
+   "id": "precio-bono",
+   "nombre": "Precio y rendimiento de un bono (current yield, YTM)",
+   "papel": "desarrollo",
+   "para_que": "valoración",
+   "supuestos": "",
+   "ecuaciones": [
+    "Precio = Σ Cupón_t/(1 + r_t/m)^t + VF/(1+r_T/m)^{T·m}",
+    "CY = Cupón/P",
+    "YTM: Precio = Σ Cupón/(1+YTM/m)^t + …"
+   ],
+   "graficos": [
+    "flujos de un bono",
+    "senda del precio",
+    "precio limpio y sucio",
+    "callable y putable bonds"
+   ],
+   "notacion": {}
+  },
+  {
+   "id": "ett-expectativas",
+   "nombre": "Teorías de la estructura temporal (expectativas, preferencia por la liquidez, sustitución del dinero, segmentación, hábitat preferido)",
+   "papel": "desarrollo",
+   "para_que": "forma de la curva de tipos",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [
+    "ETTI España y EE. UU.",
+    "preferencia por la liquidez de Hicks",
+    "formas y movimientos de la curva"
+   ],
+   "notacion": {}
+  },
+  {
+   "id": "duracion-convexidad",
+   "nombre": "Duración de Macaulay, modificada y convexidad",
+   "papel": "desarrollo",
+   "para_que": "riesgo de tipo de interés",
+   "supuestos": "",
+   "ecuaciones": [
+    "D_Mac = −dP/d(1+r)·(1+r)/P = Σ t·w_t",
+    "D_mod = D_Mac/(1+r)",
+    "ΔP/P ≈ −D_mod·Δr + ½·Convexidad·Δr²"
+   ],
+   "graficos": [
+    "precio frente a tipo",
+    "duración como fiel de la balanza",
+    "duración modificada y convexidad"
+   ],
+   "notacion": {}
+  }
+ ],
+ "notacion": [
+  {
+   "simbolo": "r_t",
+   "significado": "tipo de descuento al plazo t"
+  },
+  {
+   "simbolo": "m",
+   "significado": "número de pagos al año"
+  },
+  {
+   "simbolo": "VF / VN",
+   "significado": "valor facial o nominal"
+  },
+  {
+   "simbolo": "YTM",
+   "significado": "rentabilidad a vencimiento"
+  },
+  {
+   "simbolo": "w_t",
+   "significado": "peso del flujo t en la duración"
+  },
+  {
+   "simbolo": "i",
+   "significado": "tipo del cupón (en CY = i·VN/P)"
+  }
+ ],
+ "conceptos": [
+  "yield-to-maturity",
+  "ETTI",
+  "prima de liquidez",
+  "duración",
+  "convexidad",
+  "inmunización",
+  "cash-flow matching"
+ ],
+ "incoherencias_internas": [
+  "«duración en unidades monetarias = Precio · r · Duración modificada» (sobra r: la dollar duration es Precio · D_mod)",
+  "i denota el cupón aquí mientras en el resto del bloque i es el tipo de interés"
+ ],
+ "observaciones": "Tema autocontenido. La teoría de expectativas de la ETTI se relaciona con el anexo de 3.B.13/3.B.25 (backwardation, contango)."
+}

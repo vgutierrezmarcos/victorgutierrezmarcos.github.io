@@ -20,7 +20,12 @@ Lee todos los `C/_inventario/*.json` y escribe:
    Krugman, Stiglitz…), la que más temas usan, sin choques entre áreas que se
    mezclan (si una letra significa dos cosas en temas que se citan entre sí,
    se cambia una). La notación del 3.A.8 ya revisado es el punto de partida
-   de su área (W̄ renta, p, x, U, V, x⁰/x¹ y p⁰/p¹ para dos situaciones).
+   de su área (W̄ renta, p, x, U, V, x⁰/x¹ y p⁰/p¹ para dos situaciones). Manuales: recopila los que citan todos los temas (bibliografías
+   del inventario y de los originales) y toma como base Mas-Colell, Whinston
+   y Green; Varian; Romer y Blanchard; Krugman y Obstfeld, y Feenstra;
+   consulta también Gandolfo y otras fuentes de referencia que aparezcan.
+   Cada elección se marca **[decidir]** para que Víctor la apruebe antes de
+   aplicarla a los temas.
 2. `C/modelos/<id>.md`, una ficha por modelo, escuela, política o institución
    que salga en dos o más temas: qué es; **tema de referencia** (donde se
    desarrolla en extenso; normalmente el que lo tiene en el título o lo

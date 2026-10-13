@@ -1,0 +1,244 @@
+{
+ "tema": "3.B.25",
+ "titulo": "Análisis de los instrumentos y de los mercados de derivados.",
+ "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/tercer-ejercicio/oculto/Tema 3.B.25.docx",
+ "aviso_fuente": "ninguno: el Word corresponde al título oficial (nota inicial: «con lo escrito en este documento estaría actualizado» tras el cambio de temario de 2023)",
+ "estructura": [
+  "0. CONCEPTOS GENERALES: ¿QUÉ SON LOS INSTRUMENTOS DERIVADOS?",
+  "0.1. Definición",
+  "0.2. Tipos",
+  "0.3. Estrategias",
+  "0.4. Mercados",
+  "1. MERCADOS DE FUTUROS Y FORWARDS",
+  "1.1. Definición y características",
+  "1.2. Tipos",
+  "1.3. Pago del futuro a vencimiento",
+  "1.4. Estrategias",
+  "1.5. Valoración – Ausencia de arbitraje [La paridad spot-futuros]",
+  "2. MERCADOS DE OPCIONES",
+  "2.1. Definición",
+  "2.2. Tipos",
+  "2.3. Pago de la opción a vencimiento y beneficios obtenidos",
+  "2.4. Estrategias",
+  "2.5. Valoración",
+  "3. MERCADOS DE SWAPS",
+  "3.1. Definición",
+  "3.2. Tipos",
+  "3.3. Pago del swap a vencimiento",
+  "3.4. Estrategias",
+  "3.5. Valoración"
+ ],
+ "referencias": [
+  {
+   "original": "[3.B.23]",
+   "apunta_a": "3.B.23",
+   "contexto": "distinguimos 3 tipos de activos financieros: - Activos financieros de renta variable [ 3.B.23 ]: Conllevan derechos de propiedad y su remuneración depende de",
+   "correcta": true,
+   "deberia": "3.B.23"
+  },
+  {
+   "original": "[3.B.24]",
+   "apunta_a": "3.B.24",
+   "contexto": "de la evolución económico-financiera del emisor. - Activos financieros de renta fija [ 3.B.24 ]: No conllevan derechos de propiedad y su remuneración no",
+   "correcta": true,
+   "deberia": "3.B.24"
+  },
+  {
+   "original": "[3.B.25]",
+   "apunta_a": "3.B.25",
+   "contexto": "del emisor, sino que viene especificada por una fórmula. - Instrumentos derivados [ 3.B.25 ]: Son instrumentos financieros cuyo valor está en función (se",
+   "correcta": true,
+   "deberia": "3.B.25",
+   "motivo": "nota de coordinación o enumeración que incluye el propio tema"
+  },
+  {
+   "original": "[ver tema 3.B.11]",
+   "apunta_a": "3.B.11",
+   "contexto": "variación neta de activos (VNA) y variación neta de pasivos (VNP)[9] [ver tema 3.B.11 ]. Tipos - Como veremos más en detalle a lo",
+   "correcta": true,
+   "deberia": "3.B.11"
+  },
+  {
+   "original": "Coordinar en temas 3.B.13",
+   "apunta_a": "3.B.13",
+   "contexto": "condición posibilita el arbitraje[18]. Expectations Hypothesis, Normal Backwardation y Contango Coordinar en temas 3.B.13 [anexo] y 3.B.25 - Expectations Hypothesis: - The expectations hypothesis",
+   "correcta": true,
+   "deberia": "3.B.13"
+  },
+  {
+   "original": "3.B.25",
+   "apunta_a": "3.B.25",
+   "contexto": "arbitraje[18]. Expectations Hypothesis, Normal Backwardation y Contango Coordinar en temas 3.B.13 [anexo] y 3.B.25 - Expectations Hypothesis: - The expectations hypothesis is the simplest",
+   "correcta": true,
+   "deberia": "3.B.25",
+   "motivo": "nota de coordinación o enumeración que incluye el propio tema"
+  },
+  {
+   "original": "[ver tema 3.B.14]",
+   "apunta_a": "3.B.14",
+   "contexto": "es lo que se conoce como Paridad Cubierta de Intereses (PCI)[19] [ver tema 3.B.14 ], y es un ejemplo, de la más general paridad",
+   "correcta": true,
+   "deberia": "3.B.14"
+  },
+  {
+   "original": "[ver tema 3.B.13]",
+   "apunta_a": "3.B.13",
+   "contexto": "Se trata del instrumento más utilizado en el mercado de divisas [ver tema 3.B.13 ]. Son instrumentos que se utilizan cuando al menos una",
+   "correcta": true,
+   "deberia": "3.B.13"
+  },
+  {
+   "original": "[ver tema 3.B.24]",
+   "apunta_a": "3.B.24",
+   "contexto": "temporal de los tipos de interés (los pagos variables son desconocidos) [ver tema 3.B.24 ]. CONCLUSIÓN - Recapitulación (Ideas clave): - En la presente",
+   "correcta": true,
+   "deberia": "3.B.24"
+  },
+  {
+   "original": "[ver tema 3.B.24]",
+   "apunta_a": "3.B.24",
+   "contexto": "de vencimiento estipulada, por lo que cobra importancia el elemento temporal [ver tema 3.B.24 ]. [7] Al igual que en el caso de la",
+   "correcta": true,
+   "deberia": "3.B.24"
+  }
+ ],
+ "faltan_referencias": [
+  {
+   "a": "3.B.2",
+   "por_que": "opciones reales se valoran como opciones financieras"
+  },
+  {
+   "a": "3.B.26",
+   "por_que": "CDS y derivados en la crisis de 2008"
+  },
+  {
+   "a": "3.B.27",
+   "por_que": "regulación de derivados OTC (G-20 2009, EMIR)"
+  }
+ ],
+ "modelos": [
+  {
+   "id": "spot-futuros",
+   "nombre": "Paridad spot-futuros (ausencia de arbitraje)",
+   "papel": "desarrollo",
+   "para_que": "valoración de futuros",
+   "supuestos": "",
+   "ecuaciones": [
+    "F_0 = S_0 − coste neto de mantenimiento…",
+    "PCI: (1+i) = (1+i*)·f/s"
+   ],
+   "graficos": [
+    "pago del futuro a vencimiento"
+   ],
+   "notacion": {}
+  },
+  {
+   "id": "expectativas-contango",
+   "nombre": "Expectations hypothesis, normal backwardation y contango",
+   "papel": "resumen",
+   "para_que": "",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [
+    "expectation hypothesis, backwardation y contango"
+   ],
+   "notacion": {}
+  },
+  {
+   "id": "put-call",
+   "nombre": "Paridad put-call",
+   "papel": "desarrollo",
+   "para_que": "relación call/put",
+   "supuestos": "",
+   "ecuaciones": [
+    "C_0 + X·e^{−r_f T} = P_0 + S_0"
+   ],
+   "graficos": [],
+   "notacion": {}
+  },
+  {
+   "id": "binomial",
+   "nombre": "Valoración binomial (Sharpe; Cox, Ross y Rubinstein)",
+   "papel": "desarrollo",
+   "para_que": "valoración de opciones",
+   "supuestos": "",
+   "ecuaciones": [
+    "C_0 = E_0[C_1]·(1 − r_f) (ejemplo)"
+   ],
+   "graficos": [],
+   "notacion": {}
+  },
+  {
+   "id": "black-scholes",
+   "nombre": "Black y Scholes (1973)",
+   "papel": "desarrollo",
+   "para_que": "valoración de opciones europeas",
+   "supuestos": "",
+   "ecuaciones": [
+    "C_0 = S_0·N(d_1) − X·e^{−r_f T}·N(d_2)",
+    "d_1 = [ln(S_0/X) + (r_f + σ²/2)T]/(σ√T)",
+    "d_2 = d_1 − σ√T"
+   ],
+   "graficos": [],
+   "notacion": {}
+  },
+  {
+   "id": "estrategias-opciones",
+   "nombre": "Pagos y estrategias con opciones y swaps",
+   "papel": "desarrollo",
+   "para_que": "especulación y cobertura",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [
+    "pagos de call/put compradas y vendidas",
+    "estrategias simples",
+    "protective put",
+    "valor intrínseco y temporal",
+    "interest rate swap"
+   ],
+   "notacion": {}
+  }
+ ],
+ "notacion": [
+  {
+   "simbolo": "S_0, S_T",
+   "significado": "precio del subyacente hoy y al vencimiento"
+  },
+  {
+   "simbolo": "F_0",
+   "significado": "precio futuro"
+  },
+  {
+   "simbolo": "X / P_ejercicio",
+   "significado": "precio de ejercicio (dos notaciones)"
+  },
+  {
+   "simbolo": "C_0, P_0",
+   "significado": "prima de call y put"
+  },
+  {
+   "simbolo": "r_f",
+   "significado": "tipo libre de riesgo"
+  },
+  {
+   "simbolo": "s_t, f_t",
+   "significado": "spot y forward de divisas"
+  }
+ ],
+ "conceptos": [
+  "futuros y forwards",
+  "opciones",
+  "swaps",
+  "CDS",
+  "PCI",
+  "paridad put-call",
+  "valor intrínseco",
+  "cobertura"
+ ],
+ "incoherencias_internas": [
+  "precio de ejercicio como P_ejercicio y como X; P_0 es a la vez prima de la put",
+  "el pago del futuro se escribe S_T − P_ejercicio (debería ser S_T − F_0, precio pactado)",
+  "en el ejemplo binomial se descuenta multiplicando por (1 − r_f) en vez de dividir por (1 + r_f)"
+ ],
+ "observaciones": "La PCI se repite en 3.B.13 y 3.B.14; el anexo de backwardation/contango está duplicado en 3.B.13."
+}

@@ -1,0 +1,372 @@
+{
+ "tema": "4.B.6",
+ "titulo": "Evaluación de las políticas públicas. Técnicas de evaluación de impacto. Análisis coste-beneficio, análisis coste-eficacia y otras técnicas de evaluación.",
+ "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/cuarto-ejercicio/oculto/Tema 4.B.7.docx (contrastado con /mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/cuarto-ejercicio/4B06.pdf)",
+ "aviso_fuente": "El Word público 4B06.docx NO es este tema: contiene el viejo 4.B.6 (gasto público, hoy 4.B.5). El contenido aprovechable es el viejo 4.B.7 (ACB; Word oculto «Tema 4.B.7.docx»); el PDF público 4B06.pdf lleva la cabecera «4.B.7». El tema viejo solo cubre ACB y ACE: faltan por completo los epígrafes nuevos «Evaluación de las políticas públicas» (ciclo de evaluación, tipos ex ante/intermedia/ex post, institucionalización: AIReF, spending review, Ley 27/2022 de evaluación) y «Técnicas de evaluación de impacto» (contrafactual, RCT, diferencias en diferencias, regresión discontinua, variables instrumentales, emparejamiento/propensity score, control sintético), y apenas hay «otras técnicas» (análisis multicriterio, coste-utilidad/AVAC…). Conclusión con huecos (relevancia, extensiones, opinión vacías).",
+ "estructura": [
+  "1. Análisis coste-beneficio (ACB)",
+  "1.1. Introducción: definición, objetivos, quién lo utiliza",
+  "1.2. Etapas típicas (9 fases): 1 objetivo; 2 alternativas; 3 regla de decisión (RBC, VAN, TIR); 4 valoración de costes y beneficios sociales (excedentes, precios sombra con impuestos, externalidades y trabajo, coste de los fondos públicos, valoración sin mercado: experimentos, valoración contingente, VC/VE, precios hedónicos, valor del tiempo y de la vida); 5 duración; 6 tasa social de descuento (TRI, TPT, Harberger); 7 riesgo e incertidumbre; 8 efectos distributivos; 9 aplicación y elección",
+  "1.3. Valoración del ACB",
+  "2. Análisis coste-eficacia (ACE)",
+  "2.1. Idea",
+  "2.2. Elección del indicador de eficacia",
+  "2.3. Criterios de elección (ratio E/C, máxima eficacia para un gasto, mínimo coste para una eficacia)"
+ ],
+ "referencias": [
+  {
+   "original": "[ver tema 3.B.2]",
+   "apunta_a": "3.B.2",
+   "contexto": "Fase 3: Elección de una regla de decisión. Existen varias posibilidades: ratio beneficio-coste, VAN, TIR",
+   "correcta": true,
+   "deberia": "3.B.2",
+   "motivo": "Correcta: criterios de valoración de proyectos de inversión."
+  },
+  {
+   "original": "[ver tema 3.A.7]",
+   "apunta_a": "3.A.7",
+   "contexto": "Siguiendo a FRANK KNIGHT, podemos distinguir entre situaciones de riesgo y situaciones de incertidumbre",
+   "correcta": false,
+   "deberia": "3.A.10",
+   "motivo": "Numeración vieja: 3.A.7 es hoy la nueva economía keynesiana; riesgo e incertidumbre (Knight, criterios de decisión) están en 3.A.10."
+  }
+ ],
+ "faltan_referencias": [
+  {
+   "a": "3.A.9",
+   "por_que": "Variación compensatoria y equivalente y excedente del consumidor como medidas de bienestar"
+  },
+  {
+   "a": "3.A.22",
+   "por_que": "Principio de compensación (Kaldor-Hicks) y second best para precios sombra"
+  },
+  {
+   "a": "3.A.23",
+   "por_que": "Externalidades e impuestos pigouvianos en la valoración a precios sombra"
+  },
+  {
+   "a": "4.B.9",
+   "por_que": "Coste marginal de los fondos públicos / exceso de gravamen de los impuestos que financian el proyecto"
+  },
+  {
+   "a": "3.B.31",
+   "por_que": "Tasa de descuento social en el cambio climático (Stern vs Nordhaus)"
+  },
+  {
+   "a": "3.B.28",
+   "por_que": "Evaluación de impacto experimental (RCT, Banerjee-Duflo-Kremer) se cita en el título de 3.B.28"
+  },
+  {
+   "a": "4.B.21",
+   "por_que": "Evaluación de políticas y revisión del gasto (spending review de la AIReF) en el marco presupuestario español"
+  },
+  {
+   "a": "3.A.10",
+   "por_que": "Equivalente de certeza y criterios bajo incertidumbre (Wald, Hurwicz, Laplace, Savage)"
+  }
+ ],
+ "modelos": [
+  {
+   "papel": "desarrollo",
+   "para_que": "Evaluar monetariamente costes y beneficios sociales de proyectos públicos",
+   "supuestos": "Utilitarismo (igual ponderación), principio de compensación potencial",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "acb",
+   "nombre": "Análisis coste-beneficio"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Regla de decisión de referencia",
+   "supuestos": "",
+   "ecuaciones": [
+    "VAN=\\sum_{t=0}^{T}\\frac{B_t-C_t}{(1+\\delta)^t}"
+   ],
+   "graficos": [],
+   "notacion": {
+    "beneficios": "B_t",
+    "costes": "C_t",
+    "tasa social de descuento": "δ"
+   },
+   "id": "van",
+   "nombre": "Valor actual neto"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Regla de decisión (RBC>1)",
+   "supuestos": "",
+   "ecuaciones": [
+    "RBC=\\frac{\\sum_t B_t/(1+\\delta)^t}{\\sum_t C_t/(1+\\delta)^t}"
+   ],
+   "graficos": [],
+   "notacion": {},
+   "id": "ratio-beneficio-coste",
+   "nombre": "Ratio beneficio-coste"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Regla de decisión; problemas de escala, TIR múltiples, punto de Fisher, TIR modificada",
+   "supuestos": "",
+   "ecuaciones": [
+    "\\sum_t\\frac{B_t-C_t}{(1+TIR)^t}=0"
+   ],
+   "graficos": [],
+   "notacion": {},
+   "id": "tir",
+   "nombre": "Tasa interna de retorno"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Valorar el coste de insumos del proyecto en mercado sin distorsiones",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [
+    "Mercado de asfalto: desplazamiento de D a D+G, pérdida de excedente privado (área verde) y nueva producción (área azul)"
+   ],
+   "notacion": {},
+   "id": "excedente-consumidor",
+   "nombre": "Excedentes del consumidor y del productor como medida de costes y beneficios"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Valorar insumos en mercados distorsionados",
+   "supuestos": "Impuesto τ recaudatorio; η proporción satisfecha con producción nueva",
+   "ecuaciones": [
+    "P_G=\\eta P+(1-\\eta)(P+\\tau)=P+(1-\\eta)\\tau",
+    "\\text{coste del desempleado involuntario}=w_0-\\tau-B"
+   ],
+   "graficos": [
+    "Mercado de asfalto con impuesto τ",
+    "Mercado de trabajo: desempleo voluntario e involuntario, oferta perfectamente elástica a w₀"
+   ],
+   "notacion": {
+    "proporción producción nueva": "η",
+    "impuesto": "τ",
+    "subsidio de desempleo": "B"
+   },
+   "id": "precios-sombra",
+   "nombre": "Precios sombra (impuestos, externalidades, trabajo)"
+  },
+  {
+   "papel": "mencion",
+   "para_que": "Incluir el coste de financiación del proyecto",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "coste-fondos-publicos",
+   "nombre": "Coste de los fondos públicos (impuestos, deuda, tesorería)"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Valorar bienes sin mercado (disposición a pagar/aceptar)",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "valoracion-contingente",
+   "nombre": "Valoración contingente y métodos experimentales"
+  },
+  {
+   "papel": "mencion",
+   "para_que": "Valor del coste/beneficio para el afectado manteniendo la utilidad inicial",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "variacion-compensatoria",
+   "nombre": "Variación compensatoria"
+  },
+  {
+   "papel": "mencion",
+   "para_que": "Disposición a pagar por el proyecto a precios iniciales",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "variacion-equivalente",
+   "nombre": "Variación equivalente"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Valorar ruido, parques u otros atributos sin mercado",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "precios-hedonicos",
+   "nombre": "Precios hedónicos (Griliches, 1971)"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Valorar vidas salvadas y tiempo ahorrado",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "valor-vida-estadistica",
+   "nombre": "Valor de la vida (Thaler y Rosen, 1976) y del tiempo"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Descontar flujos según el origen de los fondos (desplazamiento de inversión o de consumo)",
+   "supuestos": "Competencia perfecta: RMT=RMS ⇒ TRI=TPT; con distorsiones TRI>TPT",
+   "ecuaciones": [
+    "1+TRI=RMT=RMS=1+TPT",
+    "\\delta=\\alpha\\,TRI+(1-\\alpha)\\,TPT",
+    "\\delta=\\alpha(TRI-\\gamma)+(1-\\alpha)TPT"
+   ],
+   "graficos": [
+    "FPP intertemporal (consumo presente/futuro) con curva de indiferencia social tangente en E",
+    "Financiación del proyecto con menor inversión privada y mayor ahorro (gráfico vacío en el Word)"
+   ],
+   "notacion": {
+    "proporción que desplaza inversión": "α",
+    "prima de riesgo": "γ"
+   },
+   "id": "tasa-descuento-social",
+   "nombre": "Tasa social de descuento: TRI, TPT y tasa ponderada de Harberger (1969)"
+  },
+  {
+   "papel": "mencion",
+   "para_que": "Tasa de descuento en proyectos intergeneracionales",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "stern-nordhaus-descuento",
+   "nombre": "Debate Stern–Nordhaus sobre la tasa de descuento"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Ajustar el ACB por riesgo e incertidumbre",
+   "supuestos": "",
+   "ecuaciones": [
+    "E(B)-E(C)-K",
+    "TRI_{aj}=TRI-\\gamma"
+   ],
+   "graficos": [],
+   "notacion": {
+    "prima de riesgo": "K"
+   },
+   "id": "knight-riesgo-incertidumbre",
+   "nombre": "Riesgo frente a incertidumbre (Knight); equivalente de certeza; criterios maximin (Wald), maximax, Hurwicz, Laplace, Savage"
+  },
+  {
+   "papel": "mencion",
+   "para_que": "Argumento para ignorar el riesgo en proyectos públicos",
+   "supuestos": "No cita a Arrow y Lind (1970) por su nombre",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "arrow-lind",
+   "nombre": "Diversificación y dilución del riesgo público (risk pooling / risk spreading, Arrow-Lind)"
+  },
+  {
+   "papel": "resumen",
+   "para_que": "Incorporar la equidad al ACB",
+   "supuestos": "",
+   "ecuaciones": [],
+   "graficos": [],
+   "notacion": {},
+   "id": "ponderaciones-distributivas",
+   "nombre": "Efectos distributivos en el ACB (ponderaciones, restricciones, información adicional)"
+  },
+  {
+   "papel": "desarrollo",
+   "para_que": "Evaluar cuando los beneficios no son monetizables",
+   "supuestos": "",
+   "ecuaciones": [
+    "\\max E/C"
+   ],
+   "graficos": [
+    "Curvas eficacia-coste de dos programas de hepatitis C (A y B) con puntos C₁,E₁, C₂, E₃"
+   ],
+   "notacion": {},
+   "id": "coste-eficacia",
+   "nombre": "Análisis coste-eficacia"
+  }
+ ],
+ "notacion": [
+  {
+   "simbolo": "B_t, C_t",
+   "significado": "beneficios y costes sociales del periodo t"
+  },
+  {
+   "simbolo": "δ",
+   "significado": "tasa social de descuento"
+  },
+  {
+   "simbolo": "TRI",
+   "significado": "tasa social de rendimiento de la inversión"
+  },
+  {
+   "simbolo": "TPT",
+   "significado": "tasa social de preferencia temporal"
+  },
+  {
+   "simbolo": "α",
+   "significado": "proporción de fondos que desplaza inversión privada (Harberger)"
+  },
+  {
+   "simbolo": "η",
+   "significado": "proporción del insumo cubierta con producción nueva"
+  },
+  {
+   "simbolo": "τ",
+   "significado": "impuesto indirecto/sobre el trabajo"
+  },
+  {
+   "simbolo": "γ, K",
+   "significado": "prima de riesgo (en la tasa, en los flujos)"
+  },
+  {
+   "simbolo": "E, C",
+   "significado": "eficacia y coste en el ACE"
+  }
+ ],
+ "conceptos": [
+  "evaluación de proyectos",
+  "ACB",
+  "ACE",
+  "VAN",
+  "TIR",
+  "punto de Fisher",
+  "TIR modificada",
+  "costes y beneficios sociales",
+  "beneficios pecuniarios vs reales",
+  "costes hundidos",
+  "efectos directos e indirectos",
+  "principio de compensación",
+  "excedente del consumidor y del productor",
+  "precio sombra",
+  "coste de los fondos públicos",
+  "valoración contingente",
+  "preferencia revelada",
+  "variación compensatoria",
+  "variación equivalente",
+  "precios hedónicos",
+  "valor de la vida estadística",
+  "valor del tiempo",
+  "tasa social de descuento",
+  "TRI",
+  "TPT",
+  "tasa ponderada de Harberger",
+  "Informe Stern",
+  "riesgo e incertidumbre knightianos",
+  "equivalente de certeza",
+  "criterios de decisión bajo incertidumbre",
+  "análisis de sensibilidad",
+  "efectos distributivos",
+  "índice de Gini",
+  "indicador de eficacia"
+ ],
+ "incoherencias_internas": [
+  "La tasa de descuento se denota δ, igual que la depreciación en otros temas (y que la TPT en modelos macro).",
+  "α se usa para la proporción de inversión desplazada (Harberger), mientras que en 4.B.5 α es la elasticidad del capital en Barro.",
+  "Riesgo e incertidumbre se definen dos veces seguidas (introducción de la fase 7 y «Ajustes por riesgo»).",
+  "Habla de «9 fases típicas» con una sola fuente; la fase 5 (duración) va dentro del encabezado de tasa de descuento («Introducción»)."
+ ],
+ "observaciones": "Tema muy desfasado respecto al título nuevo: hay que escribir de cero la parte de evaluación de políticas públicas y evaluación de impacto. Contenidos compartidos y tema de desarrollo candidato: van/tir/ratio-beneficio-coste → 3.B.2 (aquí solo la versión social); variacion-compensatoria/variacion-equivalente/excedente-consumidor → 3.A.9; knight-riesgo-incertidumbre y criterios de decisión → 3.A.10; precios-sombra, tasa-descuento-social, valoracion-contingente, precios-hedonicos, coste-eficacia, acb → este tema (4.B.6); stern-nordhaus-descuento → 3.B.31; evaluacion-impacto (rct, diferencias-en-diferencias, regresion-discontinua) → este tema, con mención en 3.B.28 y técnicas econométricas en 5.B; airef/spending-review → 4.B.21 (mención en 4.B.6). El viejo 4.B.5/4.B.6 propone «separar el diseño de la ejecución y encargar el ACB a una agencia independiente» como solución al crecimiento del gasto: enlazar con este tema."
+}

@@ -1,0 +1,191 @@
+{
+  "tema": "3.B.17",
+  "titulo": "Teorías explicativas de las crisis de balanza de pagos.",
+  "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/tercer-ejercicio/oculto/Tema 3.B.17.docx",
+  "aviso_fuente": "",
+  "estructura": [
+    "Introducción",
+    "I. MODELOS DE PRIMERA GENERACIÓN (Flood, Garber y Krugman, 1980s): CRISIS MONETARIAS DE LOS FUNDAMENTALES",
+    "I.1. Idea",
+    "I.2. Modelo (Flood y Garber, 1984)",
+    "I.3. Evidencia empírica y ejemplos prácticos",
+    "I.4. Valoración (limitaciones del modelo que dan lugar al desarrollo de modelos posteriores)",
+    "II. MODELOS DE SEGUNDA GENERACIÓN (Obstfeld, Calvo y Jeanne, 1990s): CRISIS MONETARIAS DE EXPECTATIVAS AUTOCUMPLIDAS",
+    "II.1. Idea",
+    "II.2. Modelo (Jeanne, 2000)",
+    "II.3. Evidencia empírica y ejemplos prácticos",
+    "II.4. Valoración (limitaciones del modelo que dan lugar al desarrollo de modelos posteriores)",
+    "III. MODELOS DE TERCERA GENERACIÓN (Krugman, 1999): CRISIS GEMELAS (INTERACCIÓN DE CRISIS MONETARIAS Y FINANCIERAS)",
+    "III.1. Idea",
+    "III.2. Modelos",
+    "III.3. Evidencia empírica y ejemplos prácticos",
+    "III.4. Valoración (limitaciones del modelo que dan lugar al desarrollo de modelos posteriores)",
+    "IV. CONTAGIO",
+    "IV.1. Idea",
+    "IV.2. Contagio basado en fundamentos",
+    "IV.3. Contagio puro",
+    "Conclusión"
+  ],
+  "referencias": [
+    {
+      "original": "[ver tema 3.A.36]",
+      "apunta_a": "3.A.36",
+      "contexto": "suponemos que el multiplicador monetario es igual a uno, por lo que la base monetaria se iguala a la oferta monetaria  [ver tema 3.A.36]",
+      "correcta": true,
+      "deberia": "3.A.36"
+    },
+    {
+      "original": "[ver tema 3.A.6]",
+      "apunta_a": "3.A.6",
+      "contexto": "las restricciones, - La primera, Y = Y_(TNP) + (π − π^(e)) + z, es la curva de oferta de Lucas  [ver tema 3.A.6]",
+      "correcta": true,
+      "deberia": "3.A.6"
+    },
+    {
+      "original": "[ver tema 3.A.6]",
+      "apunta_a": "3.A.6",
+      "contexto": "generación son una manifestación del modelo básico de inconsistencia dinámica desarrollado por KYDLAND y PRESCOTT (1977) y BARRO y GORDON (1983)  [ver tema 3.A.6]",
+      "correcta": true,
+      "deberia": "3.A.6"
+    },
+    {
+      "original": "[ver tema 3.A.10]",
+      "apunta_a": "3.A.10",
+      "contexto": "el individuo sea averso al riesgo y tenga un incentivo para suavizar el consumo entre los diferentes estados de la naturaleza  [ver tema 3.A.10]",
+      "correcta": true,
+      "deberia": "3.A.10"
+    }
+  ],
+  "faltan_referencias": [
+    {
+      "a": "3.B.26",
+      "por_que": "el anexo desarrolla Diamond y Dybvig (1983) y las crisis gemelas sin remitir a crisis financieras y pánicos bancarios"
+    },
+    {
+      "a": "3.B.14",
+      "por_que": "usa PPA relativa y tipo de cambio sombra sin remitir a determinación del tipo de cambio"
+    },
+    {
+      "a": "3.B.15",
+      "por_que": "trilema y elección de régimen cambiario"
+    },
+    {
+      "a": "3.B.21",
+      "por_que": "ejemplos de crisis (SME 1992, Tequila, Asia, Argentina) que se narran en 3.B.21"
+    },
+    {
+      "a": "3.B.22",
+      "por_que": "papel del FMI como prestamista en la solución de crisis"
+    }
+  ],
+  "modelos": [
+    {
+      "id": "flood-garber",
+      "nombre": "Crisis de primera generación (Krugman, 1979; Flood y Garber, 1984)",
+      "papel": "desarrollo",
+      "para_que": "crisis por fundamentos: déficit monetizado con tipo fijo",
+      "supuestos": "país pequeño, PPA relativa con P* constante, PNCI, multiplicador = 1, crédito interno crece a tasa μ",
+      "ecuaciones": [
+        "M^S=M_0=CI+R",
+        "\\gamma E=\\pi"
+      ],
+      "graficos": [
+        "tipo de cambio sombra ẽ frente al tipo fijo ē; momento T del ataque"
+      ],
+      "notacion": {
+        "tipo de cambio": "E (PPA) y e (sombra ẽ, fijo ē)",
+        "crecimiento del crédito": "μ"
+      }
+    },
+    {
+      "id": "obstfeld-segunda-generacion",
+      "nombre": "Crisis de segunda generación (Obstfeld; Jeanne, 2000)",
+      "papel": "desarrollo",
+      "para_que": "crisis por expectativas autocumplidas",
+      "supuestos": "oferta de Lucas, función de pérdidas del gobierno",
+      "ecuaciones": [
+        "Y=Y_{TNP}+(\\pi-\\pi^e)+z",
+        "L_{fijo}=(K+\\pi^e-z)^2",
+        "L_{flex}=\\frac{\\alpha+\\alpha^2}{(1+\\alpha)^2}(K+\\pi^e-z)^2+C(\\phi)"
+      ],
+      "graficos": [
+        "pérdidas frente a π^e: equilibrios múltiples"
+      ],
+      "notacion": {
+        "objetivo de PIB": "Y*",
+        "coste de abandono": "C(ϕ)"
+      }
+    },
+    {
+      "id": "krugman-hojas-balance",
+      "nombre": "Crisis de tercera generación: riesgo moral (Hausmann y Eichengreen) y hojas de balance (Krugman, 1999)",
+      "papel": "desarrollo",
+      "para_que": "crisis gemelas cambiaria-bancaria",
+      "supuestos": "empresarios endeudados en divisa; préstamo máximo θ veces la riqueza",
+      "ecuaciones": [
+        "\\partial I_F/\\partial I=\\frac{(1+\\theta)(1-\\beta)D^*}{XN}"
+      ],
+      "graficos": [
+        "equilibrios múltiples de inversión y tipo de cambio"
+      ],
+      "notacion": {
+        "apalancamiento": "θ",
+        "deuda en divisa": "D*"
+      }
+    },
+    {
+      "id": "diamond-dybvig",
+      "nombre": "Pánicos bancarios (Diamond y Dybvig, 1983)",
+      "papel": "resumen",
+      "para_que": "anexo: pánico bancario en crisis gemelas",
+      "supuestos": "utilidad cóncava",
+      "ecuaciones": [],
+      "graficos": [],
+      "notacion": {}
+    },
+    {
+      "id": "barro-gordon",
+      "nombre": "Inconsistencia dinámica (Kydland-Prescott, Barro-Gordon)",
+      "papel": "mencion",
+      "para_que": "base de la segunda generación",
+      "supuestos": "",
+      "ecuaciones": [],
+      "graficos": [],
+      "notacion": {}
+    }
+  ],
+  "notacion": [
+    {
+      "simbolo": "ẽ, ē",
+      "significado": "tipo de cambio sombra y fijo"
+    },
+    {
+      "simbolo": "μ",
+      "significado": "crecimiento del crédito interno"
+    },
+    {
+      "simbolo": "Y*",
+      "significado": "PIB objetivo del gobierno"
+    },
+    {
+      "simbolo": "θ",
+      "significado": "apalancamiento máximo"
+    }
+  ],
+  "conceptos": [
+    "tipo de cambio sombra",
+    "ataque especulativo",
+    "expectativas autocumplidas",
+    "crisis gemelas",
+    "pecado original",
+    "contagio",
+    "sudden stop"
+  ],
+  "incoherencias_internas": [
+    "el tipo de cambio es E en la PPA y e (ẽ, ē) en el tipo sombra",
+    "Y* es el PIB deseado por el Gobierno, mientras en 3.B.15/3.B.19 Y* es la renta extranjera",
+    "el multiplicador monetario se escribe (e+1)/(e+q) con e = coeficiente de efectivo, chocando con e tipo de cambio",
+    "α es el peso de la inflación en la pérdida (Jeanne) y la participación del capital en Krugman (1999)"
+  ],
+  "observaciones": "El encabezado de la introducción está mal convertido (texto de una imagen de «This time is different»)."
+}

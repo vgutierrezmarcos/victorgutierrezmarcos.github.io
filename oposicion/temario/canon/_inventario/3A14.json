@@ -1,0 +1,181 @@
+{
+  "tema": "3.A.14",
+  "titulo": "Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.",
+  "fuente": "/mnt/c/Users/vgutierrez/Documents/src/victorgutierrezmarcos.github.io/oposicion/temario/tercer-ejercicio/oculto/Tema 3.A.14 (Begoña Molina Muros).docx",
+  "aviso_fuente": "Esquema de Begoña Molina Muros (384 líneas, sin desarrollo completo ni bibliografía). Corresponde al título («TEMA 14A») y sí cubre subastas (2.º precio, 1.er precio, holandesa, inglesa, valores comunes, equivalencia de ingresos). No hay 3A14.pdf/docx en tercer-ejercicio/. Las figuras son imágenes sin texto («Descripción generada automáticamente»). Numeración incompleta (aparecen III y IV pero no I y II).",
+  "estructura": [
+    "Introducción",
+    "Introducción a la teoría de juegos: elementos (acciones, estrategias puras/mixtas, pagos, representación extensiva/normal) y tipos (cooperativos/no cooperativos, estáticos/dinámicos, repetidos)",
+    "Juegos no cooperativos",
+    "— Juegos simultáneos: estrategia dominante (dilema del prisionero), eliminación de estrategias dominadas, equilibrio de Nash",
+    "— Juegos secuenciales: inducción hacia atrás, equilibrio de Nash perfecto en subjuegos",
+    "— Información incompleta: equilibrio bayesiano, equilibrio bayesiano perfecto (señalización)",
+    "III. Teoría de juegos cooperativa: función característica, núcleo, valor de Shapley",
+    "IV. Diseño de mecanismos: subastas (segundo precio y primer precio a sobre cerrado, valores privados independientes con información imperfecta, holandesa, inglesa, valores comunes; equivalencia de ingresos)",
+    "Conclusión (Milgrom y Wilson, Nobel 2020)"
+  ],
+  "referencias": [],
+  "faltan_referencias": [
+    {
+      "a": "3.A.19",
+      "por_que": "la introducción cita oligopolios como aplicación (Cournot, Bertrand, Stackelberg, colusión en juegos repetidos) sin remitir"
+    },
+    {
+      "a": "3.A.13",
+      "por_que": "juegos de señalización con trabajadores buenos/malos y educación (Spence) y diseño de mecanismos con información asimétrica"
+    },
+    {
+      "a": "3.A.20",
+      "por_que": "diseño de mecanismos y regulación con información asimétrica"
+    },
+    {
+      "a": "3.A.27",
+      "por_que": "modelos de negociación (Nash, Rubinstein) como aplicación"
+    },
+    {
+      "a": "3.B.8",
+      "por_que": "política comercial estratégica (Brander-Spencer) como aplicación de juegos"
+    },
+    {
+      "a": "3.A.21",
+      "por_que": "el núcleo de la economía y su relación con el equilibrio competitivo"
+    },
+    {
+      "a": "4.A.5",
+      "por_que": "subastas eléctricas en España citadas en la conclusión"
+    },
+    {
+      "a": "3.A.24",
+      "por_que": "valor de Shapley / elección colectiva y diseño de mecanismos (Gibbard-Satterthwaite)"
+    }
+  ],
+  "modelos": [
+    {
+      "id": "dilema-prisionero",
+      "nombre": "Dilema del prisionero",
+      "papel": "resumen",
+      "para_que": "ilustrar la estrategia dominante y la ineficiencia del EN",
+      "supuestos": "juego simultáneo 2×2",
+      "ecuaciones": [],
+      "graficos": [
+        "matriz de pagos (imagen)"
+      ],
+      "notacion": {}
+    },
+    {
+      "id": "equilibrio-nash",
+      "nombre": "Equilibrio de Nash y refinamientos (ENPS, EB, EBP)",
+      "papel": "desarrollo",
+      "para_que": "conceptos de solución para juegos simultáneos, secuenciales y con información incompleta",
+      "supuestos": "jugadores racionales",
+      "ecuaciones": [
+        "u_i(S_i^*,S_{-i}) > u_i(S_i',S_{-i})\\ \\forall S_{-i} (dominante)",
+        "u_i(S_i^*,S_{-i}^*) > u_i(S_i',S_{-i}^*) (Nash)"
+      ],
+      "graficos": [
+        "árboles de juego para inducción hacia atrás, ENPS, juego bayesiano y señalización (imágenes)"
+      ],
+      "notacion": {
+        "estrategia": "S_i",
+        "pagos": "u_i"
+      }
+    },
+    {
+      "id": "nucleo-shapley",
+      "nombre": "Núcleo y valor de Shapley (juegos cooperativos)",
+      "papel": "desarrollo",
+      "para_que": "soluciones de juegos cooperativos con utilidad transferible",
+      "supuestos": "coaliciones vinculantes, pagos transferibles",
+      "ecuaciones": [
+        "v: P(I)\\to\\mathbb R, v(\\emptyset)=0",
+        "\\sum_{i\\in S} x_i \\ge v(S)",
+        "\\varphi_i = \\sum_S q(S)[v(S)-v(S\\setminus\\{i\\})], q(S)=\\frac{(s-1)!(n-s)!}{n!}"
+      ],
+      "graficos": [],
+      "notacion": {
+        "jugadores": "I",
+        "valor coalición": "v(S)",
+        "pagos": "x_i"
+      }
+    },
+    {
+      "id": "subastas",
+      "nombre": "Subastas (primer y segundo precio, holandesa, inglesa, valores comunes; equivalencia de ingresos)",
+      "papel": "desarrollo",
+      "para_que": "aplicación especial del título",
+      "supuestos": "un objeto, valoraciones v_1>…>v_n, empate a favor del subíndice menor; luego valores privados uniformes en [0,1]",
+      "ecuaciones": [
+        "\\pi = v_i - b_j (segundo precio)",
+        "\\max_{b_1}(v_1-b_1)\\Pr(b_2(v_2)\\le b_1)",
+        "b_1 = v_1/2 si v_1/2\\le\\alpha_2"
+      ],
+      "graficos": [],
+      "notacion": {
+        "valoración": "v_i (también θ_1)",
+        "puja": "b_i",
+        "pendiente de la puja rival": "α_2"
+      }
+    }
+  ],
+  "notacion": [
+    {
+      "simbolo": "S_i, S_{-i}",
+      "significado": "estrategia del jugador i y de los demás"
+    },
+    {
+      "simbolo": "u_i",
+      "significado": "pagos"
+    },
+    {
+      "simbolo": "v(S)",
+      "significado": "función característica (valor de la coalición S)"
+    },
+    {
+      "simbolo": "x_i",
+      "significado": "pago asignado en el juego cooperativo"
+    },
+    {
+      "simbolo": "v_i",
+      "significado": "valoración en subastas (choca con v(S))"
+    },
+    {
+      "simbolo": "b_i",
+      "significado": "puja"
+    },
+    {
+      "simbolo": "α_2",
+      "significado": "coeficiente de la función de puja lineal del rival (no definido en el texto)"
+    },
+    {
+      "simbolo": "α",
+      "significado": "probabilidad del tipo del jugador 2 (juego bayesiano)"
+    }
+  ],
+  "conceptos": [
+    "interdependencia estratégica",
+    "estrategias puras y mixtas",
+    "forma normal y extensiva",
+    "estrategia dominante",
+    "equilibrio de Nash",
+    "inducción hacia atrás",
+    "amenazas no creíbles",
+    "equilibrio de Nash perfecto en subjuegos",
+    "equilibrio bayesiano",
+    "equilibrio bayesiano perfecto",
+    "núcleo",
+    "valor de Shapley",
+    "diseño de mecanismos",
+    "subastas",
+    "equivalencia de ingresos",
+    "maldición del ganador"
+  ],
+  "incoherencias_internas": [
+    "La definición de EN usa desigualdad estricta (>) en lugar de ≥",
+    "En el problema de puja aparece θ_1 donde antes era v_1, y α_2 sin definir; α también es la probabilidad del tipo",
+    "v se usa para la función característica y para las valoraciones",
+    "«Equilibrio de Bayes Perfecto en Subjuegos (EBPS)»: denominación no estándar (equilibrio bayesiano perfecto)",
+    "Racionalidad para coaliciones se escribe con ≤ en la definición y con ≥ en el ejemplo (lo correcto es ≥)",
+    "En segundo precio el pago se escribe π = v_i − b_j sin definir j (segunda puja más alta)"
+  ],
+  "observaciones": "Es un esquema breve: habrá que redactarlo casi entero. Fija el vocabulario (EN, ENPS, EBP, señalización) que usan 3.A.13 (Spence, juegos bayesianos), 3.A.19 (oligopolio) y 3.B.8; conviene acordar las siglas en todo el bloque."
+}
