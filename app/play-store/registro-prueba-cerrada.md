@@ -151,6 +151,9 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 ### 12 oct. 2026 (para la 1.15.10)
 - **Clases y cantes que se repiten cada N semanas**: en vez de solo «cada semana», se elige cada cuántas semanas (de 1 a 12) al programar una clase o un cante y en las clases fijas de un alumno (antes, cada semana o cada 15 días).
 
+### 13 oct. 2026 (para la 1.15.10)
+- **Entrar con Google tras retirar el acceso**: si se había quitado el acceso de la app desde la cuenta de Google, el móvil daba un token revocado y la entrada fallaba con «Invalid Value»; ahora la app pide uno nuevo.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»
