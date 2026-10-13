@@ -9,7 +9,7 @@
 ## Presentación de referencia
 **Pregunta:** ¿cuánto bienestar pierde la sociedad, por encima de lo recaudado, cuando un impuesto altera los precios relativos?
 
-**Concepto.** El exceso de gravamen es la pérdida de bienestar que excede la recaudación: $EG=VE-T$, donde $VE$ es la variación equivalente del impuesto y $T$ lo recaudado. Nace solo del **efecto sustitución** (el de renta lo tendría igual un impuesto de suma fija que recaudara lo mismo); por eso se mide con la demanda **compensada** $h(p,\bar U)$ [ver tema 3.A.9].
+**Concepto.** El exceso de gravamen es la pérdida de bienestar que excede la recaudación: $\mathrm{EG}=-\mathrm{VE}-T\ge 0$, donde $\mathrm{VE}$ es la variación equivalente del impuesto (negativa, con la convención de signo de la ficha `vc-ve` y del 3.A.9: positiva si el bienestar mejora) y $T$ lo recaudado; $-\mathrm{VE}$ es lo máximo que el consumidor pagaría por evitar el impuesto. Si un tema prefiere hablar de la pérdida en valor absoluto, lo dice: $\mathrm{EG}=|\mathrm{VE}|-T$. (Corregido el 13/10/2026: antes decía $EG=VE-T$, a raíz del 3.A.9.) Nace solo del **efecto sustitución** (el de renta lo tendría igual un impuesto de suma fija que recaudara lo mismo); por eso se mide con la demanda **compensada** $h(p,\bar U)$ [ver tema 3.A.9].
 
 **Supuestos (equilibrio parcial):** un consumidor representativo, bien gravado $x$ y numerario; oferta perfectamente elástica (coste marginal constante $p$); competencia perfecta; impuesto *ad valorem* $t$; demanda compensada aproximadamente lineal en el tramo relevante; sin distorsiones previas.
 

@@ -25,7 +25,13 @@ Convenciones: minúsculas para precios y cantidades de micro ($p$, $x$, $q$, $w$
 | $\rho=(\sigma-1)/\sigma$ | Parámetro de la CES | $\rho$ tasa de descuento (macro), prima de riesgo (3.A.10) | **$\rho$** dentro de la CES, avisando | Arrow et al. (1961); los temas no mezclan ambas |
 | $s_i=p_ix_i/\overline W$ | Participación en el gasto | — | **$s_i$** | 3.A.8 |
 | $\varepsilon_{x_i,p_j}$, $\varepsilon_{x_i,\overline W}$ | Elasticidades precio y renta | — | **$\varepsilon$** con dos subíndices | 3.A.8 |
-| $VC$, $VE$, $\Delta EC$ | Variaciones compensatoria y equivalente, excedente | «VEC» (3.A.9) | **$VC$, $VE$, $\Delta EC$** | Ficha `vc-ve` |
+| $\mathrm{VC}$, $\mathrm{VE}$, $\Delta\mathrm{EC}$ | Variaciones compensatoria y equivalente, excedente | «VEC» (3.A.9 original) | **$\mathrm{VC}$, $\mathrm{VE}$, $\Delta\mathrm{EC}$**, en redonda también en las fórmulas | Ficha `vc-ve`; 3.A.9 revisado |
+| $\lambda^E$ | Multiplicador del dual (coste marginal de la utilidad), $\lambda^{E*}=1/\lambda^*$ | μ (3.A.9 original; MWG usa μ) | **[decidir]** $\lambda^E$ | μ es el margen y las creencias en el canon; lo usa el 3.A.9 revisado |
+| $S_{ij}=\partial h_i/\partial p_j$ | Término de Slutsky | $s_{ij}$ (3.A.8, anexo `der:matriz-slutsky`; 3.A.9 original) | **$S_{ij}$** | $s_i$ es la participación en el gasto |
+| $\varepsilon^h_{i,p_j}$ | Elasticidad compensada | $\varepsilon^c_{ij}$ (3.A.9 original) | **$\varepsilon^h_{i,p_j}$** | 3.A.8 y 3.A.9 revisados |
+| $m(\bar p;p,\overline W)$ | Métrica monetaria indirecta | μ (MWG) | **$m$** | μ es el margen |
+| $L$, $P$; $I_K$, $I_L$, $I_P$, $I_F$, $I_T$ | Variaciones de Laspeyres y Paasche; índices de Konüs, Laspeyres, Paasche, Fisher y Törnqvist | $q$ para las cantidades y superíndice $t$ (3.A.9 original) | **$x^0,x^1$, $p^0,p^1$**; $L$ y $P$ locales del 3.A.9 | 3.A.9 revisado |
+| $\gamma_i$; $b_i$, $c_{ij}$; $\gamma_{ij}$, $\beta_i$, $a(p)$, $b(p)$; $\vartheta_i$ | Letras locales de los sistemas de demanda: LES; Rotterdam; AIDS; QUAIDS | $\beta_i$ (LES), $\theta_i$, $\pi_{ij}$ (Rotterdam), $\lambda_i$ (QUAIDS) | Las de la izquierda | θ CRRA, π inflación, λ multiplicador (`notacion.md` § 2) |
 | $\Theta(z;\overline U,\overline W)$, $\phi(z;B)$ | Funciones de puja y de oferta (Rosen) | $\theta(\cdot)$ y $\phi(z;\pi)$ (3.A.8) | **$\Theta(z;\overline U,\overline W)$** para la puja y **$\phi(z;B)$** para la oferta ($\theta$ es la CRRA y $B$ el beneficio) | Ficha `precios-hedonicos` |
 
 ## Consumidor (riesgo e incertidumbre, 3.A.10; seguros en 3.A.13)

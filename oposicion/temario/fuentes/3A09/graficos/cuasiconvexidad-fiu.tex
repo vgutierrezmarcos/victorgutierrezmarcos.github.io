@@ -1,0 +1,31 @@
+% Cuasiconvexidad de la función indirecta de utilidad en los precios (W fija).
+% Curva de nivel V(p,W) = v: p1·p2 = 4 (Cobb-Douglas, V = W^2/(4 p1 p2)).
+% El conjunto {V <= v} = {p1·p2 >= 4} queda por encima de la curva y es convexo:
+% p = (1,4), p' = (4,1); el punto medio (2,5; 2,5) da p1·p2 = 6,25 >= 4.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$p_1$}{$p_2$}{5.6}{5.4}}
+  \capa{1}{\node[etiqueta,anchor=north east,text=tceegris] at (5.6,5.4) {$\overline{W}$ fija};}
+  % 3 (se pinta antes para quedar debajo): conjunto {V <= v}
+  \capa{3}{\fill[area] plot[domain=0.8:5.2,samples=60,smooth] (\x,{4/\x}) -- (5.2,5) -- (0.8,5) -- cycle;}
+  \capa{3}{\node[etiqueta,align=center] at (3.9,3.9) {$\{p:\ V(p,\overline{W})\leq\bar v\}$\\ convexo};}
+  % 2: curva de nivel
+  \capa{2}{\draw[curva1] plot[domain=0.8:5.2,samples=60,smooth] (\x,{4/\x}) node[etiqueta,right] {$V(p,\overline{W})=\bar v$};}
+  % 4: dos puntos de la curva, segmento y punto medio
+  \capa{4}{
+    \draw[thick] (1,4) -- (4,1);
+    \node[punto] at (1,4) {};
+    \node[etiqueta,left] at (1,4) {$p$};
+    \node[punto] at (4,1) {};
+    \node[etiqueta,below left] at (4,1) {$p'$};
+    \node[punto] at (2.5,2.5) {};
+    \node[etiqueta,above right] at (2.5,2.5) {$\lambda p+(1-\lambda)p'$};
+  }
+  % 5: hacia el origen la utilidad aumenta
+  \capa{5}{\draw[flecha] (1.95,1.95) -- (1.1,1.1) node[etiqueta,anchor=north west,text=tceerojo,xshift=2pt] {$V$ aumenta};}
+\end{tikzpicture}
+\end{document}

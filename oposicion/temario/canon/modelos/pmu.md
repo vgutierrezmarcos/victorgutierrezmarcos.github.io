@@ -15,11 +15,11 @@ Gráficos de referencia: `oposicion/temario/fuentes/3A08/graficos/solucion-inter
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.8 | De los axiomas a la demanda | desarrollo | Todo lo anterior | — |
-| 3.A.9 | Dualidad | resumen | Enunciado del primal, FIU y sus propiedades, Roy; enlace con el PMG | Los axiomas y la solución de esquina |
+| 3.A.9 | Dualidad | resumen (hecho, 13/10/2026) | Enunciado del primal con remisión a 3.A.8, FIU y sus propiedades en una frase (cuasiconvexidad en nota y gráfico `cuasiconvexidad-fiu`), Roy; Kuhn-Tucker del primal y del dual lado a lado en el anexo A; enlace con el PMG (ficha `dualidad-consumidor`) | Los axiomas, la solución de esquina y la caja de teoremas (3.A.8) |
 | 3.A.16 | Demanda en equilibrio parcial | resumen | Variante cuasilineal $u_m=n_m+\varphi_m(x_m)$, $\varphi_m'(x_m)=p$ | Kuhn-Tucker general |
 | 3.A.21 | Consumidor del EG | resumen | Renta = valor de la dotación $p\cdot\omega_h$ | — |
 
 ## Divergencias encontradas en el temario actual
-- 3.A.9 atribuye la ley de Walras a la «estricta monotonía»: es la insaciabilidad local (3.A.8 revisado).
+- 3.A.9 atribuía la ley de Walras a la «estricta monotonía»: es la insaciabilidad local (resuelto en la revisión del 13/10/2026, como 3.A.8).
 - 3.A.16 llama «walrasiana» a la demanda: canon «marshalliana» (título de 3.A.8); «walrasiana» solo como sinónimo una vez (3.A.8 ya lo hace) y para el **conjunto presupuestario walrasiano**.
 - 3.A.8 usa $V$ también para la renta no laboral de Becker (incoherencia interna anotada; ya revisado: comprobar).

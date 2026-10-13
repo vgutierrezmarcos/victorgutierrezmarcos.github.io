@@ -25,11 +25,10 @@ Gráfico de referencia: superficie de producción en $\mathbb{R}^3$ con isocuant
 |---|---|---|---|---|
 | 3.A.11 | Tecnología, rendimientos, σ | desarrollo (hecho, 13/10/2026) | Párrafo propio en I.3: productividades e Inada, RMST y σ=1, escala α+β, distribución y Euler, coincidencia de las neutralidades, origen (Cobb y Douglas, 1928, con la estimación $z_K^{1/4}z_L^{3/4}$); superficie de producción; límite de la CES; macro $Y=AK^{\alpha}L^{1-\alpha}$ con remisión a 3.A.43 y 3.A.45 | Las demandas del consumidor (3.A.8) |
 | 3.A.8 | Demanda marshalliana | resumen | Variante de utilidad y demandas (anexo der:cobb-douglas) | Rendimientos |
-| 3.A.9 | Sistemas de demanda | resumen | Primera forma funcional empírica: participaciones constantes, $\ln x_i=\ln\frac{\alpha_i}{\sum\alpha}+\ln\overline W-\ln p_i$ | Volver a derivar las demandas (remitir a 3.A.8) |
+| 3.A.9 | Sistemas de demanda | resumen (hecho, 13/10/2026) | Primera forma funcional empírica (II.2, `eq:cobb-douglas`): $U(x)=\sum_i\alpha_i\ln x_i$ con $\sum_i\alpha_i=1$ (normalización), participaciones constantes $s_i=\alpha_i$, $\ln x_i=\ln\alpha_i+\ln\overline W-\ln p_i$; ejemplo de inversión de $V$ en $E$ (I.3); nota con el origen (estimación de 1928, 3/4 y 1/4; Douglas senador de 1949 a 1967) y remisión a 3.A.11 | Volver a derivar las demandas (remitir a 3.A.8) |
 | 3.A.6 | RBC | mención | Tecnología del RBC; remitir a 3.A.11 | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.11: resuelta en la revisión del 13/10/2026 (antes era una línea dentro de la CES, como caso exacto con α, β libres).
-- 3.A.9 escribe precios en mayúscula $P_x$ en la Cobb-Douglas y $p$ en el resto: usar $p$.
-- 3.A.9 llama a la Cobb-Douglas «lineal en logaritmos» y a la Stone-Geary «log-lineal»: precisar (la Cobb-Douglas es log-lineal en el sentido de que las demandas son lineales en logaritmos).
+- 3.A.9: resueltas en la revisión del 13/10/2026 ($P_x$ → $p$; «homogénea de grado α+β» con $\sum\alpha_i=1$; Stone-Geary «log-lineal»; historia con «70 % y 30 %» y senador «1949-1966»).
 - Exponentes: α, β en consumo (3.A.8, 3.A.9) y α, 1−α en macro: ambos válidos; en producción general usar α, β y decir «con rendimientos constantes, β=1−α».

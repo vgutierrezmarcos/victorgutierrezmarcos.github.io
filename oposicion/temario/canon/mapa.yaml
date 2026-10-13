@@ -37,8 +37,40 @@ modelos:
     tema_referencia: 3.A.9
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
+      3.A.8: mencion
       3.A.9: desarrollo
+      3.A.30: mencion
       4.A.1: resumen
+  dualidad-consumidor:
+    nombre: Dualidad en la teoría del consumidor (minimización del gasto, función de gasto, Shephard, Roy)
+    area: consumidor-produccion
+    tema_referencia: 3.A.9
+    motivo: Lo tiene en el título (dualidad) y lo desarrolla (revisado el 13/10/2026); incluye el id minimizacion-gasto.
+    temas:
+      3.A.8: resumen
+      3.A.9: desarrollo
+      3.A.12: resumen
+      4.B.9: mencion
+      4.B.11: mencion
+  integrabilidad:
+    nombre: Integrabilidad de la demanda (recuperar las preferencias)
+    area: consumidor-produccion
+    tema_referencia: 3.A.9
+    motivo: Lo tiene en el título (integrabilidad de las preferencias) y lo desarrolla (revisado el 13/10/2026).
+    temas:
+      3.A.8: mencion
+      3.A.9: desarrollo
+      3.A.12: mencion
+  sistemas-demanda:
+    nombre: Sistemas completos de demanda (Cobb-Douglas, LES, Rotterdam, translog, AIDS, QUAIDS)
+    area: consumidor-produccion
+    tema_referencia: 3.A.9
+    motivo: Lo tiene en el título (sistemas de demanda en estudios empíricos) y lo desarrolla (revisado el 13/10/2026).
+    temas:
+      3.A.8: resumen
+      3.A.9: desarrollo
+      3.A.12: mencion
+      4.B.11: mencion
   ineficiencia-x:
     nombre: Ineficiencia X de Leibenstein (1966)
     area: consumidor-produccion
@@ -191,6 +223,7 @@ modelos:
     tema_referencia: 3.A.16
     motivo: Lo tiene en el título (bienestar) y lo trata como desarrollo.
     temas:
+      3.A.9: resumen
       3.A.16: desarrollo
       4.B.6: resumen
   falvey:
@@ -2854,15 +2887,19 @@ temas:
     - ces
     - cobb-douglas
     - crra
+    - dualidad-consumidor
     - elasticidades-demanda
     - gorman-agregacion
     - identidad-roy
+    - indices-precios
+    - integrabilidad
     - lancaster
     - leontief
     - marshall-cardinal
     - pmu
     - precios-hedonicos
     - preferencia-revelada
+    - sistemas-demanda
     - slutsky
     revisado: 2026-10-11
   3.A.9:
@@ -2871,66 +2908,110 @@ temas:
     bloque: modelo-neoclasico-basico
     fuente_disponible: si
     referencias:
-    - a: 3.A.10
-      estado: ok
-      contexto: Bernoulli realiza el primer análisis riguroso de la toma de decisiones en ausencia de certidumbre, respuesta
-        a la paradoja de San Petersburgo
     - a: 3.A.8
       estado: ok
-      contexto: el enfoque dual requiere la misma especificación del conjunto de elección, preferencias y conjunto presupuestario
-        que el primal
-    - a: 3.A.8
+      contexto: 'Primal, axiomas (insaciabilidad local), solución de esquina, caja de teoremas y demandas de la Cobb-Douglas
+        (I.1-I.3); historia del ordinalismo (introducción); agregación de Gorman y consumidor representativo (II.1); anexo
+        de sistemas con las mismas ecuaciones (II.2); preferencia revelada y contrastes no paramétricos (II.2, III.1); gráfico
+        de la descomposición de Slutsky y tablas de clasificación (III.2); cuasiconcavidad como propiedad ordinal (anexo C).
+        19 remisiones.'
+    - a: 3.A.11
       estado: ok
-      contexto: Preferencias neoclásicas de buen comportamiento representables mediante una función de utilidad de buen comportamiento
-    - a: 3.A.8
-      estado: ok
-      contexto: 'pueden existir 2 tipos de soluciones: interior y de esquina'
-    - a: 3.A.16
-      estado: ok
-      contexto: análisis de bienestar en equilibrio parcial con productores, habitual en organización industrial
-    - a: 3.A.22, 3.A.23, 3.A.24
-      estado: ok
-      contexto: análisis de bienestar en equilibrio general, que agrega a todos los agentes de una economía
-    - a: 3.A.16
-      estado: ok
-      contexto: la microeconomía trata los mercados desde la óptica del equilibrio parcial
-    - a: 3.A.21
-      estado: ok
-      contexto: y del equilibrio general
+      contexto: 'Nota de la Cobb-Douglas: estimación de 1928 (3/4 trabajo, 1/4 capital) y Douglas senador de 1949 a 1967;
+        la función de producción se estudia allí (D005)'
     - a: 3.A.12
       estado: ok
-      contexto: dualidad entre el problema de minimización del coste y las funciones de coste/beneficio y la tecnología subyacente
-    - a: 3.A.21
+      contexto: 'Dualidad en sentido amplio en la empresa (minimización de costes y tecnología; maximización del beneficio
+        no es dual estricto); la misma dualidad en la conclusión (función de costes, Shephard, demandas condicionadas);
+        la función de costes tiene las mismas propiedades que la de gasto (anexo C)'
+    - a: 3.A.16
       estado: ok
-      contexto: 'Ley de Walras p·z(p)=0: agregación de las restricciones presupuestarias de todos los consumidores'
-    - a: 3.A.8, 3.A.12
+      contexto: 'Bienestar en equilibrio parcial con productores (III.3, idea); excedente exacto con efecto renta nulo
+        (cuasilineal); Willig justifica usar el excedente en equilibrio parcial; conclusión'
+    - a: 3.A.22
       estado: ok
-      contexto: Relación entre la matriz hessiana y la concavidad o convexidad de una función (nota de trabajo)
-    faltan:
-    - a: 4.B.6
-      por_que: La Conclusión cita el análisis coste-beneficio con VC y VE como aplicación principal y no remite al tema donde
-        se estudia.
-    - a: 4.B.9
-      por_que: La Conclusión cita la medición del exceso de gravamen como aplicación de la dualidad; se desarrolla en 4.B.9.
+      contexto: 'Bienestar en equilibrio general (III.3, idea); VC para diseñar compensaciones como en el criterio de Kaldor-Hicks;
+        criterios de compensación (conclusión)'
+    - a: 3.A.24
+      estado: ok
+      contexto: 'Bienestar agregado y funciones de bienestar social (III.3, idea; conclusión)'
+    - a: 3.A.3
+      estado: ok
+      contexto: 'Nota: Walras trata el precio como variable independiente y Marshall lo dibuja en el eje vertical (III.2)'
+    - a: 3.A.10
+      estado: ok
+      contexto: 'Elección con riesgo como extensión (conclusión)'
+    - a: 3.A.29
+      estado: ok
+      contexto: 'Decisiones intertemporales como extensión (conclusión)'
     - a: 3.A.30
-      por_que: El deflactor del PIB como índice de Paasche pertenece a la contabilidad nacional (3.A.30).
-    - a: 3.A.8
-      por_que: Los índices de Laspeyres y Paasche y el axioma débil de la preferencia revelada (KMS 1976, Introducción) se
-        apoyan en III.1 de 3.A.8; también la identidad de Roy y Slutsky enunciados allí.
-    - a: 3.A.11
-      por_que: Usa Utilidad Cobb-Douglas (resumen); su tema de referencia es 3.A.11 (decisión D005). Remitir para ampliar,
-        sin depender de él.
+      estado: ok
+      contexto: 'Deflactor del PIB como Paasche encadenado (caja del deflactor; conclusión)'
+    - a: 3.A.33
+      estado: ok
+      contexto: 'Límite del marco estático: hábitos, bienes duraderos, expectativas y restricciones de liquidez (II.3, valoración)'
+    - a: 4.A.1
+      estado: ok
+      contexto: 'Sistemas de demanda para construir índices de precios (relevancia); metodología del IPC (caja del IPC); IPC
+        y deflactor (caja del deflactor; conclusión)'
+      uso: ampliar
+      nota: 'Metodología estadística; la teoría de los índices se desarrolla entera en el 3.A.9 (D138).'
+    - a: 4.B.6
+      estado: ok
+      contexto: 'VC y VE como base del análisis coste-beneficio (relevancia, III.3, conclusión)'
+      uso: ampliar
+      nota: 'Aplicación; el 3.A.9 define VC y VE como disposición a pagar y a aceptar sin depender de él (D138).'
+    - a: 4.B.9
+      estado: ok
+      contexto: 'Exceso de gravamen EG = −VE − T (relevancia, nota al opositor de III.3, conclusión)'
+      uso: ampliar
+      nota: 'Aplicación; la nota da la definición completa con MWG §3.I (D138).'
+    - a: 4.B.11
+      estado: ok
+      contexto: 'Elasticidades de los sistemas de demanda para la imposición indirecta óptima y la reforma del IVA (relevancia,
+        II.1, usos de II.2)'
+      uso: ampliar
+      nota: 'Aplicación de los sistemas de demanda (D138).'
+    faltan: []
+    contradicciones:
+    - tema: 3.A.8
+      que: 'Anexo der:matriz-slutsky (3A08.tex, l. 1268-1281): escribe s_{ij} (choca con la participación s_i); canon y 3.A.9:
+        S_{ij}. En pendientes-coherencia.md.'
+    - tema: 3.A.8
+      que: 'Anexo anexo:sistemas (l. 1394-1395): utilidad en minúscula, u(x)=Σα_i ln x_i y u(x)=Σα_i ln(x_i−γ_i) (canon U(x);
+        u es la de Bernoulli); el LES «no admite bienes inferiores ni complementarios»: son complementarios netos (con γ_j>0
+        puede haber complementariedad bruta). En pendientes-coherencia.md.'
+    - tema: 3.A.8
+      que: 'Hessiana, concavidad y cuasiconcavidad: el anexo C de 3.A.9 (anexo:hessiana) se propone como versión común;
+        la nota de la cuasiconcavidad del 3.A.8 (l. 301) puede remitir a él. En pendientes-coherencia.md.'
+    - tema: 3.A.12
+      que: 'Sus anexos tienen las mismas capturas en inglés sobre hessiana y concavidad que tenía el 3.A.9 («Coordinar en
+        temas 3.A.8, 3.A.9 y 3.A.12»): sustituirlas por la versión del anexo C de 3.A.9 adaptada a C(w,q) (concavidad en
+        w, Shephard). Notación de la matriz de sustitución de factores con mayúscula (no s_{ij}) y efecto «escala» siempre
+        igual (ficha slutsky). Aplicaciones empíricas: misma translog que la ficha sistemas-demanda.'
+    - tema: 4.A.1
+      que: 'IPC: base 2025 desde enero de 2026 (dice «nueva base (2001)»), Laspeyres encadenado con precios de diciembre
+        del año anterior y ponderaciones anuales (no de base fija con w_{i0}: canon ω_{i,t−1}); EPF anual desde 2006 (la
+        presenta como trimestral en el título y anual en el texto; la trimestral era la ECPF, 1985-2005); deflactor del PIB
+        como Paasche encadenado. Fichas ipc e indices-precios.'
+    - tema: 4.B.9
+      que: 'Signo de VC y VE: convención de MWG (positivas si mejora); EG = −VE − T (ficha exceso-gravamen corregida); VC y
+        VE de Hicks (1939-1943, sistematizadas en 1956) y Willig (1976), no «Willings»; «Haussman» → Hausman.'
+    - tema: 4.B.11
+      que: 'Misma convención de signo de VE y EG que 3.A.9 y 4.B.9; las elasticidades compensadas cruzadas salen de sistemas
+        de demanda (AIDS): remitir a 3.A.9.'
     modelos:
     - cobb-douglas
     - dualidad-consumidor
+    - excedentes-bienestar
     - indices-precios
     - integrabilidad
-    - minimizacion-gasto
+    - ipc
     - pmu
     - sistemas-demanda
     - slutsky
     - vc-ve
-    revisado: null
+    revisado: 2026-10-13
   3.A.10:
     titulo: Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre.
     bloque: informacion-y-poder-de-mercado
@@ -3121,7 +3202,8 @@ temas:
         (ficha rendimientos-escala). Sus remisiones a 3.A.11 (isoclina, proporciones variables, rendimientos) son válidas.'
     - tema: 3.A.9
       que: 'Nota 26: historia de la Cobb-Douglas («70 % y 30 %», Douglas senador «1949-1966», fue hasta 1967). Según D005 va
-        en 3.A.11 (estimación de 1928, q ≈ 1,01 z_K^{1/4} z_L^{3/4}); una línea y \vertema{3.A.11}.'
+        en 3.A.11 (estimación de 1928, q ≈ 1,01 z_K^{1/4} z_L^{3/4}); una línea y \vertema{3.A.11}.
+        Resuelto en la revisión del 3.A.9 (13/10/2026).'
     - tema: 3.A.43
       que: 'Remite a 3.A.11 para la indeterminación del tamaño con rendimientos constantes: ya está (II.2). La remisión «3.A.10
         y 3.A.11» sigue siendo corregir -> 3.A.11, 3.A.12.'
@@ -3247,11 +3329,14 @@ temas:
     modelos:
     - costes-corto-largo-plazo
     - curva-aprendizaje
+    - dualidad-consumidor
     - dualidad-produccion
     - ineficiencia-x
+    - integrabilidad
     - maximizacion-beneficio-empresa
     - minimizacion-costes
     - monopolio-natural
+    - sistemas-demanda
     - slutsky
     - stigler-costes
     revisado: null
@@ -4430,6 +4515,7 @@ temas:
       por_que: Al hablar del PIB como medida de bienestar/crecimiento podría remitir a la contabilidad del crecimiento.
     modelos:
     - identidades-contabilidad-nacional
+    - indices-precios
     - input-output
     revisado: null
   3.A.31:
@@ -9491,6 +9577,7 @@ temas:
     modelos:
     - corlett-hague
     - curva-lorenz
+    - dualidad-consumidor
     - efecto-renta-sustitucion-impuesto
     - equivalencia-iva-irpf
     - exceso-gravamen
@@ -9647,6 +9734,7 @@ temas:
     - ciclo-politico-nordhaus
     - corlett-hague
     - diamond-1975
+    - dualidad-consumidor
     - elasticidad-inversa
     - eleccion-excluyente
     - equilibrio-general-walras
@@ -9661,6 +9749,7 @@ temas:
     - regla-friedman
     - saez-tipo-optimo
     - second-best
+    - sistemas-demanda
     - slutsky
     - suavizacion-impositiva-barro
     - tipo-optimo-lineal-sheshinski

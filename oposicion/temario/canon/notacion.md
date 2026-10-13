@@ -2,7 +2,7 @@
 
 Un símbolo, un significado, en todo el temario. Consolidación inicial del canon (13 oct. 2026) a partir de las doce tablas de `_notacion/<área>.md`, que conservan el detalle (alternativas encontradas tema a tema y motivos). Este fichero manda: cuando difiere de una tabla de área es porque aquí se ha resuelto un choque entre áreas.
 
-**Estado.** Notación **definitiva**. Víctor aprobó el 13/10/2026 todas las decisiones de `decisiones.json` (las de notación, con la opción recomendada); el id `Dnnn` de cada fila indica la decisión que la fijó. Lo que no lleva id es canon desde la consolidación: o es la notación del 3.A.8 revisado o es unánime en el temario y en los manuales. Los temas que se revisen la aplican tal cual; si un tema necesita un símbolo nuevo o cambiar uno, se propone el cambio al canon (`cambios.md`), no se inventa en el tema. Los cambios que el 3.A.8 ya revisado debe recoger están en `pendientes-coherencia.md`.
+**Estado.** Notación **definitiva**. Víctor aprobó el 13/10/2026 todas las decisiones de `decisiones.json` (las de notación, con la opción recomendada); el id `Dnnn` de cada fila indica la decisión que la fijó. Lo que no lleva id es canon desde la consolidación: o es la notación del 3.A.8 revisado o es unánime en el temario y en los manuales. Los temas que se revisen la aplican tal cual; si un tema necesita un símbolo nuevo o cambiar uno, se propone el cambio al canon (`cambios.md`), no se inventa en el tema. Los cambios que el 3.A.8 ya revisado debe recoger están en `pendientes-coherencia.md`. Única marca pendiente: **[decidir]** λ^E (multiplicador del dual, 3.A.9; § 0 y § 2).
 
 Manuales de referencia por área: Mas-Colell, Whinston y Green (MWG); Varian; Jehle y Reny (consumidor, producción, equilibrio general); Tirole, Gibbons (mercados y juegos); Romer, Blanchard y Fischer, Galí, Walsh, Sala i Martín, Acemoglu (macro); Krugman, Obstfeld y Melitz, Obstfeld y Rogoff, Gandolfo, Sarno y Taylor (macro abierta); Feenstra, Fujita-Krugman-Venables (comercio); Brealey-Myers, Bodie-Kane-Marcus, Hull, Freixas-Rochet (finanzas); Stiglitz, Rosen, Atkinson-Stiglitz, Mueller (sector público).
 
@@ -17,7 +17,8 @@ Autor: Víctor Gutiérrez Marcos
 - Esperanza: **𝔼[·]** (𝔼_t[x_{t+1}]); expectativa de x_t formada en t−1: x^e_t ≡ 𝔼_{t−1}[x_t]. La E latina queda para la función de gasto y el tipo de cambio.
 - Elasticidades: **ε** con dos subíndices y con su signo; |ε| en las reglas de margen (D047). ϵ (lunada) solo para la aversión a la desigualdad de Atkinson (D081).
 - Multiplicadores de Lagrange y precios sombra: **λ** (λ_k si hay varios) (D020). Uso local admitido: **λ ∈ [0,1] como peso de una combinación convexa**, λy + (1−λ)y′, en las definiciones de convexidad y cuasiconcavidad (3.A.11, como MWG); no se usa como factor de escala (→ t).
-- Siglas de magnitudes en castellano y en redonda: CMg, CMe, IMg, PMg, RMS, EC, EP, ET, EG, VC, VE.
+- Siglas de magnitudes en castellano y en redonda: CMg, CMe, IMg, PMg, RMS, EC, EP, ET, EG, VC, VE, ΔEC. **También dentro de las fórmulas**: en LaTeX, `\mathrm{VC}`, `\mathrm{VE}`, `\Delta\mathrm{EC}`, `\mathrm{EG}` (no $VC$ en cursiva, que se lee como el producto V·C); fijado con el 3.A.9 (13/10/2026).
+- **[decidir] Multiplicador del problema dual del consumidor (minimización del gasto): λ^E**, con λ^{E*} = ∂E/∂Ū = 1/λ* en el óptimo común (coste marginal de la utilidad). Lo usa el 3.A.9 revisado (13/10/2026), que lo necesita para escribir las dos lagrangianas lado a lado (λ ya es el del primal). Se descarta μ, que en el canon es el margen y las creencias. Si Víctor elige otra letra, se cambia en `3A09.tex` (y en `pendientes-coherencia.md`); si lo aprueba, la empresa (3.A.12) usará la misma idea si necesita distinguir dos multiplicadores.
 
 ## 1. Choques entre áreas resueltos
 
@@ -33,7 +34,7 @@ Autor: Víctor Gutiérrez Marcos
 | **M** | Cantidad nominal de dinero (M^S, M^D); importaciones en contabilidad nacional y macro abierta (no conviven con el dinero en la misma ecuación) | Renta no laboral → W̄; variedades de Romer → N_t; emparejamientos → m(U,V); multiplicador monetario → la notación de la ficha `multiplicador-monetario` | D023, D002 |
 | **B / π** | B: beneficio (B_j, B(p,w)); π: inflación (macro) y probabilidad (micro: π_s, π(e)); B(p,W̄): conjunto presupuestario (con argumentos); B, B*: bonos en Branson (local); B(G): beneficio social del gasto (4.B, local) | Beneficio π o Π → B; probabilidades p_s → π_s; saldo presupuestario B → b | D003, D017, D029 |
 | **e** | Logaritmo del tipo de cambio nominal (e = ln E); esfuerzo e (información asimétrica) | Dotación → ω; coeficiente de efectivo → notación de `multiplicador-monetario`; tipo de cambio real → q; tipo sombra o fijo → Ẽ, Ē | D013, D045, D015 |
-| **λ** | Multiplicador y precio sombra; λ ∈ [0,1] peso de una combinación convexa (definiciones de convexidad, local); λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
+| **λ** | Multiplicador y precio sombra (λ^E el del dual del consumidor, **[decidir]**, § 2); λ ∈ [0,1] peso de una combinación convexa (definiciones de convexidad, local); λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
 | **β** | Factor de descuento β ≡ 1/(1+ρ); coeficientes de regresión (β_0, β_1, con subíndice); β_i del CAPM; β movilidad del capital en la BP; β de MRW (elasticidad del capital humano) | Respuesta de la producción en Lucas → ψ; ponderaciones del ITC → ω_i; grado de apertura (3.B.9) → (X+M)/Y, sin símbolo | D036, D044, D107 |
 | **γ** | Tasa de variación γ_X; peso de la inflación en la pérdida de Barro-Gordon; poder negociador (Nash, 3.A.27) | Peso de las manufacturas en la NEG → μ; constante de Cagan → ζ | D012, D019, D061, D106 |
 | **g** | Tasa de progreso técnico; g = G/Y en sector público | Crecimiento del PIB → γ_Y («r − g» solo como nombre del debate); tasa m del anexo de 3.A.43 → g | D010 |
@@ -64,13 +65,21 @@ Autor: Víctor Gutiérrez Marcos
 | x(p,W̄) | Demanda marshalliana («también llamada ordinaria o walrasiana», una vez) | — |
 | h(p,Ū) | Demanda hicksiana | — |
 | V(p,W̄), E(p,Ū) | Función indirecta de utilidad y función de gasto | — |
-| λ | Multiplicador (utilidad marginal de la renta) | — |
+| λ | Multiplicador del primal (utilidad marginal de la renta), λ* = ∂V/∂W̄ | — |
+| λ^E | Multiplicador del dual (coste marginal de la utilidad), λ^{E*} = ∂E/∂Ū = 1/λ*; lagrangianas 𝓛^P = U(x) + λ(W̄ − p·x) y 𝓛^D = p·x + λ^E(Ū − U(x)) | **[decidir]** (3.A.9, 13/10/2026) |
 | RMS_{12} = U_1/U_2 | Relación marginal de sustitución, positiva | — |
 | s_i = p_ix_i/W̄ | Participación en el gasto | — |
 | σ, a_i, ρ = (σ−1)/σ | Elasticidad de sustitución, pesos y parámetro de la CES | — |
 | ε_{x_i,p_j}, ε_{x_i,W̄} | Elasticidades precio y renta | — |
-| S_{ij} = ∂h_i/∂p_j | Término de Slutsky | — |
-| VC, VE, ΔEC | Variaciones compensatoria y equivalente, excedente | — |
+| S_{ij} = ∂h_i/∂p_j; S(p,Ū) = [S_{ij}] = D²_pE(p,Ū) | Término y matriz de Slutsky (nunca s_{ij}, que choca con la participación s_i). Construida con observables: S_{ij}(p,W̄) = ∂x_i/∂p_j + x_j ∂x_i/∂W̄ (integrabilidad) | 3.A.9 (13/10/2026) |
+| ε^h_{i,p_j} | Elasticidad-precio compensada (hicksiana): ε_{x_i,p_j} = ε^h_{i,p_j} − s_j ε_{x_i,W̄} | 3.A.8, 3.A.9 |
+| k (en h(kp,Ū), E(kp,Ū)) | Factor de homogeneidad en los precios (nunca θ, que es la CRRA, ni t, que es la escala de la producción) | 3.A.9 (13/10/2026) |
+| VC, VE, ΔEC | Variaciones compensatoria y equivalente, excedente; en redonda también en las fórmulas (§ 0). Convención de MWG: VC = W̄ − E(p¹,Ū⁰), VE = E(p⁰,Ū¹) − W̄, positivas si el bienestar mejora | — |
+| m(p̄; p, W̄) ≡ E(p̄, V(p,W̄)) | Función de utilidad métrica monetaria (indirecta); VE y VC son sus diferencias con p̄ = p⁰ y p̄ = p¹ (μ en MWG: aquí no, μ es el margen) | 3.A.9 (13/10/2026) |
+| EG = −VE − T | Exceso de gravamen (≥ 0) con la convención de signo de VE; T recaudación | 3.A.9, ficha `exceso-gravamen` |
+| L ≡ W̄ − p¹·x⁰, P ≡ p⁰·x¹ − W̄ | Variaciones de Laspeyres y de Paasche (compensaciones de cesta fija): L ≤ VC y VE ≤ P. **Local** del 3.A.9 (L es trabajo y P el nivel de precios en otras áreas; no conviven) | 3.A.9 (13/10/2026) |
+| I_K(p⁰,p¹;Ū) = E(p¹,Ū)/E(p⁰,Ū); I_L, I_P, I_F = √(I_L I_P), I_T | Índices de Konüs (verdadero; I_K(Ū⁰) versión VC, I_K(Ū¹) versión VE), Laspeyres, Paasche, Fisher y Törnqvist (ln I_T = Σ_i ½(s_i⁰ + s_i¹) ln(p_i¹/p_i⁰)). Ponderaciones de los índices estadísticos: ω_i (D044) | 3.A.9 (13/10/2026) |
+| **Sistemas de demanda (letras locales del 3.A.9)** | LES (Stone-Geary): U(x) = Σα_i ln(x_i − γ_i), Σα_i = 1, γ_i mínimos de subsistencia. Rotterdam: s̄_i d ln x_i = b_i d ln Q + Σ_j c_{ij} d ln p_j, con b_i = p_i ∂x_i/∂W̄ y c_{ij} = p_ip_jS_{ij}/W̄ (no θ_i, π_{ij} de Theil: θ es la CRRA y π la inflación). Translog indirecta: ln V = α_0 + Σα_i ln(p_i/W̄) + ½ΣΣβ_{ij} ln(p_i/W̄) ln(p_j/W̄). AIDS: ln E = (1−Ū) ln a(p) + Ū ln b(p); s_i = α_i + Σ_jγ_{ij} ln p_j + β_i ln(W̄/P), ln P = ln a(p) (índice translog), P* índice de Stone (LA-AIDS). QUAIDS: término ϑ_i/b(p)·[ln(W̄/a(p))]², b(p) = Π p_k^{β_k}, Σϑ_i = 0 (ϑ, no λ_i de Banks-Blundell-Lewbel: λ es el multiplicador). Las letras α, β, γ son locales de cada sistema; P (índice de precios del AIDS) y P (variación de Paasche) no se mezclan en el mismo apartado | 3.A.9 (13/10/2026) |
 | Θ(z;Ū,W̄), φ(z;B) | Funciones de puja y de oferta de Rosen | D006 |
 | x̃ (ỹ) | Lotería o renta aleatoria | — |
 | π_s | Probabilidad del estado s | D017 |
