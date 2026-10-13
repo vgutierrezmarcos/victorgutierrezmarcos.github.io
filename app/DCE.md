@@ -78,7 +78,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 - [x] Víctor: descargar el **APK universal firmado** de la versión 23 (8 oct.). Comprobado: 1.14.2 (23), firmado por Google (SHA-1 `11:1D:E2:24:6D:64:C0:62:E9:20:37:DD:1D:42:C2:6A:33:4C:3D:88`). Guardado en el Escritorio como `oposicion-tcee-1.14.2-google.apk`.
 - [x] Víctor: probar la 1.14.2 en el móvil (8 oct.): va bien.
 - [ ] Víctor: probar **Google Calendar** (ver abajo, «Google Calendar y Meet»): la tarjeta dice «Todavía en pruebas: tu cuenta no está en la lista de prueba» → falta el documento `pruebasCalendario/{tu Gmail en minúsculas}` en la raíz de Firestore (TCEE).
-- [ ] Manuel (se lo ha dicho Víctor; lo lleva él): su web pública con `oposicion/temario/temario.json`, `app-config.json` y `enlaces.json`; `manuelcabadogarcia.es` en Firebase → Authentication → Dominios autorizados; su administrador en `oposiciones/dce/admins/{su Gmail}`.
+- [x] Manuel: su web pública con `oposicion/temario/temario.json` (99 temas, 44 con enlace, todos responden), `app-config.json` y `enlaces.json` (comprobado el 13 oct.; enlaza a /app/ desde la barra). Su web no usa el inicio de sesión de Firebase, así que no hace falta el dominio autorizado. Su `app-config.json` no lleva `email`: el contacto de DCE en la app cae en `contacto@victorgutierrezmarcos.es`.
+- [ ] Su administrador en `oposiciones/dce/admins/{su Gmail}` (consola de Firestore) si va a verificar preparadores de DCE.
 - [x] 12 testers apuntados a la prueba cerrada desde el 8 oct. a las 11:30 (enlace: `https://play.google.com/apps/testing/es.victorgutierrezmarcos.tcee_app`). Conviene llegar a 15-20 por si alguien se sale.
 
 **Desde el 9 oct. todo se trabaja en `main`** (por decisión de Víctor): la rama `dce` quedó igual que `main` (`ba0d78c`) y ya no se usa. Las referencias a `dce` de abajo son históricas.
