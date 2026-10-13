@@ -133,7 +133,7 @@ class OrganizacionHubPage extends ConsumerWidget {
                 FilaEnlace(
                   icono: Icons.record_voice_over_outlined,
                   titulo: 'Cómo cantar un tema',
-                  subtitulo: 'Guía en PDF',
+                  subtitulo: oposicion.comoCantarEsPdf ? 'Guía en PDF' : 'Guía en la web',
                   onTap: () => abrirUrl(context, oposicion.urlComoCantarUnTema),
                 ),
               for (final r in documentos)
