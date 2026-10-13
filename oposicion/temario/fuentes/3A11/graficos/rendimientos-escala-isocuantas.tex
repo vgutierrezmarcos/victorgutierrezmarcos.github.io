@@ -3,28 +3,41 @@
 % Rendimientos a escala con isocuantas (tema 3.A.11). Elaboración propia basada en
 % Maté García y Pérez Domínguez (2007) y Pérez Domínguez (2004).
 % Funciones homogéneas de grado k: q = (z_L z_K)^(k/2). Isocuanta de nivel n·q:
-% z_K = t_n^2 / z_L, que corta el rayo z_K = z_L en t_n = t_1 n^(1/k).
-%   (a) k = 2:   t = 1,4; 1,980; 2,425 (cada vez más juntas)
-%   (b) k = 1:   t = 1; 2; 3           (equidistantes)
-%   (c) k = 0,7: t = 0,8; 2,153; 3,842 (cada vez más separadas)
+% z_K = lambda_n^2 / z_L, que corta el rayo z_K = z_L en lambda_n = lambda_1 n^(1/k).
+%   (a) k = 2:   lambda = 1,4; 1,980; 2,425 (cada vez más juntas)
+%   (b) k = 1:   lambda = 1; 2; 3           (equidistantes)
+%   (c) k = 0,7: lambda = 0,8; 2,153; 3,842 (cada vez más separadas)
 % En las tres la pendiente de las isocuantas sobre el rayo es la misma (-1): homotéticas.
-\newcommand{\panel}[5]{% #1 capa, #2 t1, #3 t2, #4 t3, #5 rótulo
+%   (d) homotética no homogénea «en S», q = G(z_L z_K) con G creciente en S (como
+%   kappa/(1 + z_L^{-a} z_K^{-b})): mismas isocuantas, otra numeración. Esquemática:
+%   lambda = 1,2; 1,95; 2,45; 3,4 (huecos 0,75 > 0,5 < 0,95): primero más juntas
+%   (rendimientos locales crecientes) y después más separadas (decrecientes); a lo largo
+%   del rayo q(lambda) pasa por (1,2; q), (1,95; 2q), (2,45; 3q), (3,4; 4q): en S.
+% \isocuanta{capa}{lambda_n}{rótulo}{estilo}: z_K = lambda_n^2 / z_L y su punto en el rayo
+\newcommand{\isocuanta}[4]{%
+  \capa{#1}{\draw[#4] plot[domain={#2*#2/4.9}:4.8,samples=80] (\x,{#2*#2/\x})
+    node[etiqueta,right] {#3};}
+  \capa{#1}{\node[punto] at (#2,#2) {};}}
+% \panel{capa}{lambda_1}{lambda_2}{lambda_3}{rótulo}
+\newcommand{\panel}[5]{%
   \capa{#1}{\ejes{$z_L$}{$z_K$}{5.4}{5.2}}
   \capa{#1}{\draw[guia] (0,0) -- (4.9,4.9);}
-  \foreach \t/\n/\c in {#2/$q$/curva1,#3/$2q$/curva2,#4/$3q$/curva3}{
-    \capa{#1}{\draw[\c] plot[domain={\t*\t/4.9}:4.8,samples=80] (\x,{\t*\t/\x})
-      node[etiqueta,right] {\n};}
-    \capa{#1}{\node[punto] at (\t,\t) {};}
-  }
+  \isocuanta{#1}{#2}{$q$}{curva1}
+  \isocuanta{#1}{#3}{$2q$}{curva2}
+  \isocuanta{#1}{#4}{$3q$}{curva3}
   \capa{#1}{\node[etiqueta,align=center,anchor=north] at (2.6,-0.9) {#5};}}
 \begin{document}
 \begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
   \panel{1}{1.4}{1.980}{2.425}{(a) Crecientes ($k>1$):\\ isocuantas cada vez más juntas}
-  \begin{scope}[xshift=5.2cm]
+  \begin{scope}[xshift=5.6cm]
     \panel{2}{1}{2}{3}{(b) Constantes ($k=1$):\\ isocuantas equidistantes}
   \end{scope}
-  \begin{scope}[xshift=10.4cm]
+  \begin{scope}[yshift=-6.6cm]
     \panel{3}{0.8}{2.153}{3.842}{(c) Decrecientes ($k<1$):\\ isocuantas cada vez más separadas}
+  \end{scope}
+  \begin{scope}[xshift=5.6cm,yshift=-6.6cm]
+    \panel{4}{1.2}{1.95}{2.45}{(d) Variables: crecientes\\ y después decrecientes}
+    \isocuanta{4}{3.4}{$4q$}{curva4}
   \end{scope}
 \end{tikzpicture}
 \end{document}

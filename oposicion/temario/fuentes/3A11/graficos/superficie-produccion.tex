@@ -1,23 +1,24 @@
-% Superficie de producción q = z_K^(1/2) z_L^(1/2) en perspectiva caballera:
+% Superficie de producción q = z_K^(1/2) z_L^(1/2) en la vista por defecto de pgfplots
+% (acimut 30°, elevación 28°; origen a la izquierda, z_L a la derecha, z_K en profundidad):
 % cortes horizontales (isocuantas), corte con z_K = 3 (corto plazo) y corte por
 % el rayo z_K = z_L/2 (largo plazo: recta, rendimientos constantes).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \pgfplotsset{
-  superficie/.style={surf,shader=faceted,fill opacity=0.45,draw=tceemorado!40,line width=0.15pt,
+  superficie/.style={surf,shader=faceted,fill opacity=0.45,z buffer=sort,draw=tceemorado!40,line width=0.15pt,
     colormap={tcee}{rgb255=(226,239,217) rgb255=(167,137,189)}},
   corte/.style={curvanueva,line width=1.1pt},
   proyeccion/.style={curva1,line width=1.1pt},
 }
 \begin{document}
 \begin{tikzpicture}[tcee]
-  % perspectiva caballera: z_L a la derecha, q vertical, z_K en profundidad a 45° con coeficiente 0,5
-  \begin{axis}[x={(1.3cm,0cm)},y={(0.46cm,0.46cm)},z={(0cm,1.3cm)},axis lines=none,
+  % vista por defecto de pgfplots (acimut 30°, elevación 28°), escalada a 0,85
+  \begin{axis}[x={(1.02cm,-0.28cm)},y={(0.587cm,0.476cm)},z={(0cm,1.037cm)},axis lines=none,
       xmin=0,xmax=4.4,ymin=0,ymax=4.4,zmin=0,zmax=4.4,clip=false]
     % 1: ejes
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.7,0,0) node[below] {$z_L$};}
-    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.2,0) node[right] {$z_K$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.2,0) coordinate (zK);}
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.4) node[above] {$q$};}
     % 2: superficie de producción
     \capa{2}{\addplot3[superficie,domain=0:4,y domain=0:4,samples=9,samples y=9] {sqrt(x*y)};}
@@ -36,13 +37,15 @@
     % 4: plano z_K = 3 y función de producción a corto plazo
     \capa{4}{\addplot3[area2,draw=tceedorado,thin,domain=0:4,samples=60,samples y=0] (x,3,{sqrt(3*x)}) -- (axis cs:4,3,0) -- (axis cs:0,3,0) -- cycle;}
     \capa{4}{\addplot3[curva4,line width=1.4pt,domain=0:4,samples=60,samples y=0] (x,3,{sqrt(3*x)});}
-    \capa{4}{\node[etiqueta,left] at (axis cs:0,3,0) {$\bar z_K$};}
+    \capa{4}{\node[etiqueta,fill=white,fill opacity=0.85,text opacity=1,inner sep=1pt,left=3pt] at (axis cs:0,3,0) {$\bar z_K$};}
     \capa{4}{\node[etiqueta,text=tceedorado,anchor=south east] at (axis cs:1.2,3,2.2) {corto plazo};}
     % 5: rayo z_K = z_L/2 en la base, plano vertical y producción a lo largo del rayo
     \capa{5}{\addplot3[curva3,thick,dashed] coordinates {(0,0,0) (4,2,0)};}
     \capa{5}{\addplot3[fill=tceeverde,fill opacity=0.18,draw=none] coordinates {(0,0,0) (4,2,0) (4,2,2.828) (0,0,0)};}
     \capa{5}{\addplot3[curva3,line width=1.4pt] coordinates {(0,0,0) (4,2,2.828)};}
     \capa{5}{\node[etiqueta,text=tceeverde,anchor=west,align=left] at (axis cs:4.05,2,2.6) {largo plazo:\\ rayo $z_K/z_L$ fijo};}
+    % rótulo del eje z_K, al final para que quede encima de la superficie y de los planos
+    \capa{1}{\node[etiqueta,fill=white,fill opacity=0.85,text opacity=1,inner sep=1pt,above left=1pt and -2pt] at (zK) {$z_K$};}
   \end{axis}
 \end{tikzpicture}
 \end{document}

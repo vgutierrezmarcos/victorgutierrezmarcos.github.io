@@ -1,5 +1,5 @@
 % Conjunto de posibilidades de producción en el plano de los netputs (y1, y2)
-% y axioma que da cada rasgo de su forma (rehace la imagen de Segura, pág. 85).
+% con un rótulo y una capa por axioma (rehace la imagen de Segura, pág. 85).
 % Frontera: y2 = f(y1) = -0,9 y1 - 0,1 y1^2, decreciente y cóncava en [-4,4; 2,6],
 % que pasa por el origen. Plan y0 en y1 = -1,2 (y2 = 0,936); y1 con más factor.
 % Autor: Víctor Gutiérrez Marcos
@@ -16,18 +16,19 @@
     \draw[eje] (0,-3.3) -- (0,3.2) node[left] {$y_2$};
     \node[below left] at (0,0) {$0$};
   }
-  % 2: frontera de Y por los cuadrantes II y IV y el origen
+  % 2: frontera de Y (cuadrantes II y IV y origen), conjunto sombreado; axioma 1
   \capa{2}{
-    \draw[curva1] plot[domain=-4.4:2.6,samples=60] (\x,{f(\x)});
-  }
-  % 3: conjunto Y sombreado; la frontera pertenece al conjunto (cerrado)
-  \capa{3}{
     \fill[area] plot[domain=-4.4:2.6,samples=60] (\x,{f(\x)}) -- (2.6,-3.3) -- (-4.4,-3.3) -- cycle;
-    \node[font=\large,text=tceemorado] at (-2.6,-2.4) {$\mathcal{Y}$};
-    \node[rotulo] (cer) at (-2.3,2.75) {frontera incluida\\ (cerrado)};
+    \draw[curva1] plot[domain=-4.4:2.6,samples=60] (\x,{f(\x)});
+    \node[font=\large,text=tceemorado] at (-2.95,-2.5) {$\mathcal{Y}$};
+    \node[rotulo,anchor=west] at (-2.7,-2.5) {\textbf{Axioma 1}\\ (no vacío): $\mathcal{Y}$\\ tiene al menos\\ un punto};
+  }
+  % 3: axioma 2: la frontera pertenece al conjunto
+  \capa{3}{
+    \node[rotulo] (cer) at (-1.85,2.7) {\textbf{Axioma 2} (cerrado):\\ la frontera\\ pertenece a $\mathcal{Y}$};
     \draw[senala] (cer.south) -- (-2.1,{f(-2.1)+0.05});
   }
-  % 4: planes y0 e y1 y eliminación gratuita
+  % 4: planes y0 e y1; axioma 3 (eliminación gratuita)
   \capa{4}{
     \draw[guia] (-2.4,0) -- (-2.4,0.936) -- (0,0.936) node[right,text=black] {$y_2^0$};
     \draw[guia] (-1.2,0) -- (-1.2,0.936);
@@ -36,25 +37,28 @@
     \draw[flecha,shorten <=3pt,shorten >=3pt] (-1.2,0.936) -- (-2.4,0.936);
     \node[punto] at (-1.2,0.936) {};
     \node[punto] at (-2.4,0.936) {};
-    \node[etiqueta,above right] at (-1.2,0.936) {$y^0$};
-    \node[etiqueta,above left] at (-2.4,0.936) {$y^1$};
-    \node[rotulo] at (-1.6,-1.1) {sudoeste posible\\ (eliminación gratuita)};
+    \node[etiqueta,above right] at (-1.2,0.936) {$\vect{y}^{\,0}$};
+    \node[etiqueta,above left] at (-2.4,0.936) {$\vect{y}^{\,1}$};
+    \node[rotulo] at (-1.65,-1.2) {\textbf{Axioma 3} (eliminación\\ gratuita): sudoeste\\ posible};
   }
-  % 5: primer cuadrante excluido y origen
+  % 5: axioma 4: primer cuadrante excluido
   \capa{5}{
-    \node[rotulo] at (1.8,2.0) {1.\textsuperscript{er} cuadrante excluido\\ (imposibilidad de\\ producción gratuita)};
+    \node[rotulo] at (1.85,2.05) {\textbf{Axioma 4} (imposibilidad\\ de producción gratuita):\\ 1.\textsuperscript{er} cuadrante excluido};
+  }
+  % 6: origen: posibilidad de inacción
+  \capa{6}{
     \node[punto] at (0,0) {};
-    \node[rotulo,anchor=west] (ina) at (0.8,0.7) {$0\in\mathcal{Y}$ (inacción)};
+    \node[rotulo,anchor=west] (ina) at (0.8,0.7) {\textbf{Inacción}: $\vect{0}\in\mathcal{Y}$};
     \draw[senala] (ina.west) -- (0.1,0.08);
   }
-  % 6: cuarto cuadrante: desaparece si el bien 1 solo puede ser factor
-  \capa{6}{
+  % 7: cuarto cuadrante: desaparece si el bien 1 solo puede ser factor
+  \capa{7}{
     \fill[pattern=north east lines,pattern color=tceegris]
       plot[domain=0:2.6,samples=30] (\x,{f(\x)}) -- (2.6,-3.3) -- (0,-3.3) -- cycle;
     \node[rotulo,anchor=west] at (2.75,-1.9) {desaparece si el\\ bien 1 solo\\ es factor};
   }
-  % 7: dotación del factor
-  \capa{7}{
+  % 8: dotación del factor: a su izquierda, no factible
+  \capa{8}{
     \draw[thick,tceerojo] (-3.4,-3.3) -- (-3.4,3.0);
     \node[below left] at (-3.4,0) {$-\overline{y}_1$};
     \node[rotulo,text=tceerojo] at (-4.1,-1.1) {no\\ factible};

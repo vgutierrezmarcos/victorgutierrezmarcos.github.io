@@ -245,15 +245,16 @@ el texto original y lo que se hizo.
   p. ej., la curva de indiferencia como frontera de los conjuntos «al menos
   tan bueno como» y «no mejor que», o el mapa de indiferencia como proyección
   de la superficie de utilidad.
-- Las representaciones en tres dimensiones, en la **perspectiva de los
-  gráficos de Jehle y Reny** (la que Víctor llama «caballera»; 14/10/2026):
-  eje vertical (q, U) hacia arriba y los dos ejes de la base abriéndose a la
-  derecha desde el origen, que queda a la izquierda: el primero (z_L, x_1)
-  hacia abajo a la derecha (unos −25°) y el segundo (z_K, x_2) hacia la
-  derecha y algo hacia arriba (unos +12°), con longitudes parecidas. En
-  pgfplots: `x={(1.0cm,-0.47cm)}, y={(1.15cm,0.24cm)}, z={(0cm,1.2cm)}` y
-  `z buffer=sort` en las superficies (escalar los tres vectores si hace
-  falta). **No** el eje de profundidad a 45° hacia atrás.
+- Las representaciones en tres dimensiones, en la **perspectiva del gráfico 4
+  del 3.A.8 del 10/10/2026** (cuasiconcavidad; la que Víctor llama
+  «caballera», 14/10/2026): la vista por defecto de pgfplots, acimut 30° y
+  elevación 28°. Origen a la izquierda, eje vertical hacia arriba, el primer
+  eje de la base (x_1, z_L) hacia la derecha y algo hacia abajo (≈ −15°) y el
+  segundo (x_2, z_K) hacia la derecha y hacia arriba, en profundidad
+  (≈ +40°). En pgfplots: `x={(1.2cm,-0.33cm)}, y={(0.69cm,0.56cm)},
+  z={(0cm,1.22cm)}` (o `view={30}{28}`) y `z buffer=sort` en las superficies.
+  **No** el eje de profundidad a 45° con el primer eje horizontal, ni los
+  ejes de Jehle y Reny.
 - Los gráficos de datos (series) se hacen con pgfplots a partir de
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las

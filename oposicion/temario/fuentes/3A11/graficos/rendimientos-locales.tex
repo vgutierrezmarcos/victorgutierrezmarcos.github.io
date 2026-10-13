@@ -1,9 +1,9 @@
 % Rendimientos locales: q = kappa/(1 + z_L^{-a} z_K^{-b}) con a = b = 1, kappa = 1 y
-% z = t(1,1): q(t) = t^2/(1+t^2), curva en S con asíntota q = 1.
-% Producto por unidad de escala q/t = t/(1+t^2), máximo en t = 1 (q = 1/2): allí el
-% rayo desde el origen es tangente (pendiente 1/2 = q'(1)) y eps_{q,t} = 1.
+% z = lambda(1,1): q(lambda) = lambda^2/(1+lambda^2), curva en S con asíntota q = 1.
+% Producto por unidad de escala q/lambda = lambda/(1+lambda^2), máximo en lambda = 1 (q = 1/2): allí el
+% rayo desde el origen es tangente (pendiente 1/2 = q'(1)) y eps_{q,lambda} = 1.
 % Elasticidad de escala local: eps = (a+b)(1 - q/kappa) = 2(1-q); eps = 1 en q* = 1/2.
-% Escalas: panel izquierdo t -> 1,2 cm por unidad, q -> 3,4 cm por unidad;
+% Escalas: panel izquierdo lambda -> 1,2 cm por unidad, q -> 3,4 cm por unidad;
 % panel derecho q -> 4 cm por unidad, eps -> 1,6 cm por unidad.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -12,27 +12,27 @@
 \begin{tikzpicture}[tcee]
   % ---------------- Panel izquierdo: producción a lo largo del rayo ----------------
   \begin{scope}[x=1.2cm,y=3.4cm]
-    \capa{1}{\draw[eje] (0,0) -- (4.4,0) node[below left=2pt and 0pt] {$t$};}
-    \capa{1}{\draw[eje] (0,0) -- (0,1.25) node[left] {$q=F(t\bar z)$};}
+    \capa{1}{\draw[eje] (0,0) -- (4.4,0) node[below left=2pt and 0pt] {$\lambda$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,1.25) node[left] {$q=F(\lambda\overline{\vect{z}})$};}
     \capa{1}{\node[below left] at (0,0) {$0$};}
     \capa{2}{\draw[guia] (0,1) -- (4.2,1);}
     \capa{2}{\node[etiqueta,left] at (0,1) {$\kappa$};}
     \capa{2}{\draw[curva1] plot[domain=0:4.2,samples=100] (\x,{\x^2/(1+\x^2)});}
-    \capa{2}{\node[etiqueta,text=tceemorado,below] at (3.6,0.92) {$F(t\bar z)$};}
+    \capa{2}{\node[etiqueta,text=tceemorado,below] at (3.6,0.92) {$F(\lambda\overline{\vect{z}})$};}
     \capa{3}{\draw[curva2,thick] (0,0) -- (2.2,1.1);}
     \capa{3}{\node[punto] (P) at (1,0.5) {};}
-    \capa{3}{\proyeccion{(1,0.5)}{$t^*$}{$q^*$}}
-    \capa{3}{\node[etiqueta,above left] at (P) {$\varepsilon_{q,t}=1$};}
+    \capa{3}{\proyeccion{(1,0.5)}{$\lambda^*$}{$q^*$}}
+    \capa{3}{\node[etiqueta,above left] at (P) {$\varepsilon_{q,\lambda}=1$};}
   \end{scope}
   % ---------------- Panel derecho: elasticidad de escala local ----------------
   \begin{scope}[xshift=7.2cm,x=4cm,y=1.6cm]
     \capa{4}{\draw[eje] (0,0) -- (1.2,0) node[below left=2pt and 0pt] {$q$};}
-    \capa{4}{\draw[eje] (0,0) -- (0,2.6) node[left] {$\varepsilon_{q,t}$};}
+    \capa{4}{\draw[eje] (0,0) -- (0,2.6) node[left] {$\varepsilon_{q,\lambda}$};}
     \capa{4}{\node[below left] at (0,0) {$0$};}
     \capa{5}{\draw[curva1] (0,2) -- (1,0);}
     \capa{5}{\node[etiqueta,left] at (0,2) {$a+b$};}
     \capa{5}{\node[etiqueta,below] at (1,0) {$\kappa$};}
-    \capa{5}{\node[etiqueta,text=tceemorado,anchor=west,font=\footnotesize] at (0.5,1.75) {$\varepsilon_{q,t}=(a+b)\left(1-\dfrac{q}{\kappa}\right)$};}
+    \capa{5}{\node[etiqueta,text=tceemorado,anchor=west,font=\footnotesize] at (0.5,1.75) {$\varepsilon_{q,\lambda}=(a+b)\left(1-\dfrac{q}{\kappa}\right)$};}
     \capa{6}{\draw[guia] (0,1) -- (1.1,1);}
     \capa{6}{\node[etiqueta,left] at (0,1) {$1$};}
     \capa{6}{\node[punto] at (0.5,1) {};}

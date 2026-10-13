@@ -1,0 +1,96 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Rendimientos globales y locales a escala en tres dimensiones (tema 3.A.11).
+% Elaboración propia a partir de Fuleky (2006) y del ejemplo «en S» del tema.
+%   (a) Homogénea de grado 1: q = (z_L z_K)^(1/2). Rayo z_K = z_L con zbar = (1,1):
+%       F(lambda zbar) = lambda = lambda F(zbar): eps_{q,lambda} = 1 en todo punto.
+%   (b) q = kappa/(1 + z_L^{-a} z_K^{-b}) con a = b = 1, kappa = 1: q = z_L z_K/(1 + z_L z_K),
+%       meseta a la altura kappa. A lo largo del rayo, q(lambda) = lambda^2/(1+lambda^2), en S.
+%       q/lambda = lambda/(1+lambda^2) es máximo en lambda* = 1 (q* = 1/2): el rayo desde el
+%       origen q = lambda/2 es tangente allí (pendiente q'(1) = 1/2) y eps_{q,lambda} = 1;
+%       eps = (a+b)(1 - q/kappa) = 2(1-q) > 1 si lambda < 1 y < 1 si lambda > 1.
+% Vista por defecto de pgfplots (acimut 30°, elevación 28°): origen a la izquierda, q vertical,
+% z_L a la derecha algo hacia abajo, z_K en profundidad. La superficie se parte por el plano
+% vertical que contiene el rayo: mitad de detrás, rayo, plano (hasta el corte), mitad de
+% delante y, encima, el corte.
+\definecolor{tceenaranja}{HTML}{E07B28}
+\pgfplotsset{
+  superficie/.style={surf,shader=faceted,fill opacity=0.5,draw=tceemorado!35,line width=0.15pt,z buffer=sort,
+    colormap={tcee}{rgb255=(226,239,217) rgb255=(196,176,212)}},
+  tresd/.style={axis lines=none,clip=false,anchor=origin,xmin=0,ymin=0,zmin=0},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- (a) superficie homogénea de grado 1 ----------------
+  \begin{axis}[tresd,at={(0,0)},x={(0.96cm,-0.264cm)},y={(0.552cm,0.448cm)},z={(0cm,0.976cm)},
+      xmax=2.5,ymax=2.5,zmax=2.8]
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:3,0,0) node[below] {$z_L$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,3.2,0) coordinate (zKa);}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,3) node[left] {$q$};}
+    \capa{1}{\addplot3[superficie,domain=0:2.5,y domain=0:1,samples=11,samples y=6]
+      ({x},{x+y*(2.5-x)},{sqrt(x*(x+y*(2.5-x)))});}
+    \capa{1}{\draw[guia,tceeazul,thick] (axis cs:0,0,0) -- (axis cs:2.9,2.9,0)
+      node[etiqueta,right,text=tceeazul] {$\lambda\overline{\vect{z}}$};}
+    \capa{1}{\fill[tceeazul,fill opacity=0.22,draw=tceeazul,thin] (axis cs:0,0,0) -- (axis cs:2.5,2.5,2.5)
+      -- (axis cs:2.5,2.5,0) -- cycle;}
+    \capa{1}{\addplot3[superficie,domain=0:2.5,y domain=0:1,samples=11,samples y=6]
+      ({x+y*(2.5-x)},{x},{sqrt(x*(x+y*(2.5-x)))});}
+    \capa{1}{\addplot3[curva2,domain=0:2.5,samples=2,samples y=0] (x,x,x);}
+    \capa{1}{\node[etiqueta,fill=white,fill opacity=0.85,text opacity=1,inner sep=1pt,above left=1pt and -2pt] at (zKa) {$z_K$};}
+  \end{axis}
+  \capa{1}{\node[etiqueta,align=center,anchor=south] at (2.1,3.5)
+    {(a) Rendimientos globales constantes\\ $q=(z_Lz_K)^{1/2}$};}
+  % ---------------- (a) corte: recta por el origen ----------------
+  \begin{scope}[shift={(0,-4.3)},x=1.2cm,y=0.8cm]
+    \capa{2}{\draw[eje] (0,0) -- (3,0) node[below left=2pt and 0pt] {$\lambda$};}
+    \capa{2}{\draw[eje] (0,0) -- (0,3) node[left] {$q$};}
+    \capa{2}{\node[below left] at (0,0) {$0$};}
+    \capa{2}{\draw[curva2] (0,0) -- (2.6,2.6);}
+    \capa{2}{\node[etiqueta,align=left,anchor=west,text=tceeazul] at (2.65,2.6)
+      {$F(\lambda\overline{\vect{z}})$\\ $=\lambda F(\overline{\vect{z}})$};}
+    \capa{2}{\node[etiqueta,anchor=north,text=tceeazul] at (1.5,-0.55)
+      {$\varepsilon_{q,\lambda}=1$ en todo punto (global)};}
+  \end{scope}
+  % ---------------- (b) superficie «en S» ----------------
+  \begin{axis}[tresd,at={(7.6cm,0)},x={(0.84cm,-0.231cm)},y={(0.483cm,0.392cm)},z={(0cm,2cm)},
+      xmax=3,ymax=3,zmax=1.3]
+    \capa{3}{\draw[eje] (axis cs:0,0,0) -- (axis cs:3.5,0,0) node[below] {$z_L$};}
+    \capa{3}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,3.7,0) coordinate (zKb);}
+    \capa{3}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,1.35) node[left] {$q$};}
+    \capa{3}{\addplot3[superficie,domain=0:3,y domain=0:1,samples=13,samples y=7]
+      ({x},{x+y*(3-x)},{x*(x+y*(3-x))/(1+x*(x+y*(3-x)))});}
+    \capa{3}{\draw[guia,tceemorado,thick] (axis cs:0,0,0) -- (axis cs:3.4,3.4,0)
+      node[etiqueta,right,text=tceemorado] {$\lambda\overline{\vect{z}}$};}
+    \capa{3}{\addplot3[fill=tceemorado,fill opacity=0.18,draw=tceemorado,thin,domain=0:3,samples=60,samples y=0]
+      (x,x,{x*x/(1+x*x)}) -- (axis cs:3,3,0) -- (axis cs:0,0,0) -- cycle;}
+    \capa{3}{\addplot3[superficie,domain=0:3,y domain=0:1,samples=13,samples y=7]
+      ({x+y*(3-x)},{x},{x*(x+y*(3-x))/(1+x*(x+y*(3-x)))});}
+    \capa{3}{\draw[guia] (axis cs:0,0,1) node[left,text=black] {$\kappa$} -- (axis cs:3,3,1);}
+    \capa{3}{\addplot3[curva1,domain=0:3,samples=60,samples y=0] (x,x,{x*x/(1+x*x)});}
+    \capa{3}{\node[etiqueta,fill=white,fill opacity=0.85,text opacity=1,inner sep=1pt,above left=1pt and -2pt] at (zKb) {$z_K$};}
+  \end{axis}
+  \capa{3}{\node[etiqueta,align=center,anchor=south] at (9.7,3.5)
+    {(b) Rendimientos locales variables\\ $q=\kappa/(1+z_L^{-1}z_K^{-1})$};}
+  % ---------------- (b) corte: curva en S ----------------
+  \begin{scope}[shift={(7.6,-4.3)},x=1.4cm,y=2.4cm]
+    \capa{4}{\draw[eje] (0,0) -- (3.6,0) node[below left=2pt and 0pt] {$\lambda$};}
+    \capa{4}{\draw[eje] (0,0) -- (0,1.25) node[left] {$q$};}
+    \capa{4}{\node[below left] at (0,0) {$0$};}
+    \capa{4}{\draw[curva1] plot[domain=0:3.4,samples=80] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{4}{\node[etiqueta,text=tceemorado,below=2pt] at (3.1,{3.1*3.1/(1+3.1*3.1)}) {$F(\lambda\overline{\vect{z}})$};}
+    \capa{5}{\draw[thick,tceeazul] (0,0) -- (1.9,0.95);}
+    \capa{5}{\node[punto] (E) at (1,0.5) {};}
+    \capa{5}{\proyeccion{(E)}{$\lambda^*$}{$q^*$}}
+    \capa{5}{\node[etiqueta,above left] at (E) {$\varepsilon_{q,\lambda}=1$};}
+    \capa{6}{\draw[guia] (0,1) node[left,text=black] {$\kappa$} -- (3.4,1);}
+    \capa{6}{\draw[very thick,tceeverde] plot[domain=0:1,samples=40] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{6}{\draw[very thick,tceenaranja] plot[domain=1:3.4,samples=60] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceeverde]
+      (0.03,-0.25) -- (0.97,-0.25) node[midway,below=4pt,align=center,font=\footnotesize]
+      {crecientes\\ ($\varepsilon_{q,\lambda}>1$)};}
+    \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceenaranja]
+      (1.03,-0.25) -- (3.4,-0.25) node[midway,below=4pt,align=center,font=\footnotesize]
+      {decrecientes\\ ($\varepsilon_{q,\lambda}<1$)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

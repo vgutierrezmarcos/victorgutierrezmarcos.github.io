@@ -22,7 +22,7 @@
   }
   % 3: función de producción
   \capa{3}{
-    \node[clave,right=of A] (F) {Función de producción\\ $q=F(z)$\\ (un solo producto)};
+    \node[clave,right=of A] (F) {Función de producción\\ $q=F(\vect{z})$\\ (un solo producto)};
     \draw[une] (A) -- (F);
   }
   % 4: isocuantas, RMST y elasticidad de sustitución
@@ -32,13 +32,13 @@
   }
   % 5: rama de varios productos
   \capa{5}{
-    \node[rama,below=of Y] (T) {Varios productos:\\ función de transformación\\ $T(y)\leq 0$ (apartado III)};
+    \node[rama,below=of Y] (T) {Varios productos:\\ función de transformación\\ $T(\vect{y})\leq 0$ (apartado III)};
     \draw[uneopc] (Y) -- (T);
   }
   % 6: hacia los costes
   \capa{6}{
     \node[rama,below=of I] (C) {Costes y dualidad\\ \textrm{[3.A.12]}};
-    \draw[uneopc] (I) -- node[etiqueta,right,align=left,text=black] {$+$ precios de\\ los factores $w$} (C);
+    \draw[uneopc] (I) -- node[etiqueta,right,align=left,text=black] {$+$ precios de\\ los factores $\vect{w}$} (C);
   }
 \end{tikzpicture}
 \end{document}

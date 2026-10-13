@@ -1,0 +1,62 @@
+% Función de producción con 2 factores: superficie q = F(z_L,z_K), un vector de factores y su producción máxima.
+% Superficie genérica (no Cobb-Douglas), la misma en funcion-produccion-3d y
+% plazos-3d*: F(z_L,z_K) = 4p/(1+p), p = (z_L z_K/4)^{1,5}: creciente,
+% isocuantas convexas (z_L z_K constante) y rendimientos locales crecientes
+% y luego decrecientes. Perspectiva del gráfico de cuasiconcavidad del 3.A.8
+% (vista por defecto de pgfplots, acimut 30° y elevación 28°): origen a la
+% izquierda, q vertical, z_L a la derecha algo hacia abajo y z_K en
+% profundidad hacia arriba a la derecha.
+% Generado con el mismo esquema en los 5 ficheros: si se cambia la superficie,
+% cambiarla en todos.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\pgfplotsset{
+  superficie/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.45,draw=tceemorado!40,line width=0.15pt,
+    colormap={tcee}{rgb255=(226,239,217) rgb255=(167,137,189)}},
+  superficietenue/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.22,draw=tceemorado!25,line width=0.15pt,
+    colormap={tcee}{rgb255=(236,244,231) rgb255=(205,190,216)}},
+  superficienueva/.style={surf,z buffer=sort,shader=faceted,fill opacity=0.18,draw=tceerojo!55,dashed,line width=0.25pt,
+    colormap={rojo}{rgb255=(248,228,228) rgb255=(222,160,160)}},
+  superficienuevatenue/.style={mesh,draw=tceegris!40,dashed,line width=0.2pt},
+}
+\tikzset{
+  fondo/.style={fill=white,fill opacity=0.75,text opacity=1,inner sep=1.5pt},
+  cpplano/.style={fill=tceegris,fill opacity=0.06,draw=tceegris!40,very thin},
+  cpcorte/.style={tceegris!70,thin},
+  isosup/.style={tceegris!60,thin},
+  isobase/.style={tceegris!60,thin},
+  rayo/.style={tceegris!60,thin,dashed},
+  lpplano/.style={fill=tceegris,fill opacity=0.05,draw=none},
+  lpcorte/.style={tceegris!70,thin},
+  lpguia/.style={tceegris!40,very thin,dashed},
+  mlflecha/.style={->,tceegris!60,thin},
+}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[x={(1.2cm,-0.33cm)},y={(0.69cm,0.56cm)},z={(0cm,1.22cm)},axis lines=none,
+      xmin=0,xmax=4,ymin=0,ymax=4,zmin=0,zmax=4.6,clip=false,
+      declare function={F(\zl,\zk)=4*((\zl*\zk/4)^1.5)/(1+(\zl*\zk/4)^1.5);}]
+    % 1: ejes
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.7,0,0) node[below right=-2pt] {$z_L$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.0,0) node[above right=-2pt,fondo] {$z_K$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.9) node[left] {$q$};}
+    \capa{1}{\node[left] at (axis cs:0,0,0) {$0$};}
+    % 2: superficie de producción
+    \capa{2}{\addplot3[superficie,domain=0:4,y domain=0:4,samples=13,samples y=13] {F(x,y)};}
+    \capa{2}{\node[etiqueta,anchor=west] at (axis cs:4,4,{F(4,4)}) {$q=F(z_L,z_K)$};}
+    % 3: vector de factores \vect{z}^0 en la base y sus proyecciones
+    \capa{3}{\draw[guia] (axis cs:2.5,0,0) node[below] {$z_L^0$} -- (axis cs:2.5,1.5,0) -- (axis cs:0,1.5,0) node[left,fondo] {$z_K^0$};}
+    \capa{3}{\node[punto] at (axis cs:2.5,1.5,0) {};}
+    \capa{3}{\node[etiqueta,anchor=north west] at (axis cs:2.5,1.5,0) {$\vect{z}^{\,0}$};}
+    % 4: vertical hasta la superficie, F(\vect{z}^0) y su proyección al eje q
+    \capa{4}{\draw[guia,tceemorado] (axis cs:2.5,1.5,0) -- (axis cs:2.5,1.5,{F(2.5,1.5)});}
+    \capa{4}{\draw[guia] (axis cs:2.5,1.5,{F(2.5,1.5)}) -- (axis cs:0,1.5,{F(2.5,1.5)}) -- (axis cs:0,0,{F(2.5,1.5)});}
+    \capa{4}{\node[punto,fill=tceemorado] at (axis cs:2.5,1.5,{F(2.5,1.5)}) {};}
+    \capa{4}{\node[etiqueta,anchor=east] at (axis cs:0,0,{F(2.5,1.5)}) {$F(\vect{z}^{\,0})$};}
+    % 5: planes posibles debajo de la superficie e imposibles encima
+    \capa{5}{\node[etiqueta,text=tceegris,align=center] at (axis cs:4,2.6,1.0) {planes\\ posibles ($\mathcal{Y}$)};}
+    \capa{5}{\node[etiqueta,text=tceegris] at (axis cs:1.2,3.2,3.6) {imposible};}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

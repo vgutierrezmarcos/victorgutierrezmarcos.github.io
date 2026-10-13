@@ -1,6 +1,6 @@
 % Conjunto de producción convexo: combinación convexa de dos planes posibles.
 % Frontera: y2 = f(y1) = -0,9 y1 - 0,1 y1^2 (cóncava). a en y1 = -3,4; b en y1 = -0,8;
-% c = 0,5 a + 0,5 b queda por debajo de la frontera.
+% c = 0,5 a + 0,5 b (peso tau = 0,5) queda por debajo de la frontera.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -21,15 +21,15 @@
   % 3: planes a y b de la frontera
   \capa{3}{
     \node[punto] (a) at (-3.4,{f(-3.4)}) {};
-    \node[etiqueta,above left] at (a) {$a$};
+    \node[etiqueta,above left] at (a) {$\vect{a}$};
     \node[punto] (b) at (-0.8,{f(-0.8)}) {};
-    \node[etiqueta,above right] at (b) {$b$};
+    \node[etiqueta,above right] at (b) {$\vect{b}$};
   }
   % 4: segmento ab y combinación convexa c
   \capa{4}{
     \draw[curva2] (-3.4,{f(-3.4)}) -- (-0.8,{f(-0.8)});
     \node[circle,fill=tceeazul,inner sep=1.5pt] (c) at (-2.1,{(f(-3.4)+f(-0.8))/2}) {};
-    \node[etiqueta,below left=4pt and -6pt,text=tceeazul] at (c) {$c=\lambda a+(1-\lambda)b$};
+    \node[etiqueta,below left=4pt and -6pt,text=tceeazul] at (c) {$\vect{c}=\tau\vect{a}+(1-\tau)\vect{b}$};
   }
 \end{tikzpicture}
 \end{document}
