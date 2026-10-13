@@ -1036,7 +1036,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       appBar: BarraWeb(
         title: Text(sesion.alumno.nombre),
         subtitulo: 'Sortear y cronómetro',
-        actions: [IconButton(tooltip: 'Cómo cantar un tema (PDF)', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
+        actions: [IconButton(tooltip: 'Cómo cantar un tema', icon: const Icon(Icons.help_outline), onPressed: () => abrirUrl(context, ref.read(oposicionProvider).urlComoCantarUnTema))],
       ),
       body: cuerpo,
     );
