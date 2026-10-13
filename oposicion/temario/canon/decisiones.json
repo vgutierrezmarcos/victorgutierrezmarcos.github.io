@@ -1,0 +1,4141 @@
+{
+ "_comentario": "Decisiones pendientes del canon para Víctor (consolidación inicial, 13 oct. 2026). Ordenadas por impacto (primero las que cambian el 3.A.8 ya revisado y las que afectan a más temas). La primera opción es la recomendada. Al decidir: poner estado = aprobada | rechazada y elegida = id de opción. Autor: Víctor Gutiérrez Marcos.",
+ "fecha": "2026-10-13",
+ "total": 132,
+ "decisiones": [
+  {
+   "id": "D001",
+   "clave": "crra",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el coeficiente de aversión relativa al riesgo (CRRA) de u(c)=c^{1−θ}/(1−θ), y cómo se escribe la elasticidad de sustitución intertemporal?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "θ para la CRRA en todo el temario y la ESI como 1/θ, sin símbolo propio; σ queda para la elasticidad de sustitución intratemporal (CES, Dixit-Stiglitz) y la desviación típica"
+    },
+    {
+     "id": "b",
+     "texto": "σ para la CRRA (como Galí, 2015) y otra letra para la elasticidad de sustitución de la CES"
+    },
+    {
+     "id": "c",
+     "texto": "Mantener cada tema como está (η en 3.A.8, θ en macro, σ en 3.A.42)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la letra de Romer, Blanchard-Fischer, Barro-Sala i Martín y Acemoglu, y la que ya usan nueve temas; libera σ para la CES. Obliga a cambiar en 3.A.8 la CRRA (η→θ) y las preferencias KPR/GHH/JR (σ→θ).",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.6",
+    "3.A.7",
+    "3.A.10",
+    "3.A.29",
+    "3.A.33",
+    "3.A.36",
+    "3.A.37",
+    "3.A.38",
+    "3.A.42",
+    "3.A.43",
+    "3.A.44",
+    "4.B.4",
+    "4.B.10"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "_notacion/consumidor-produccion.md",
+    "_notacion/sector-publico.md",
+    "modelos/nek-3-ecuaciones.md",
+    "modelos/rbc.md",
+    "modelos/fisher-intertemporal.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D002",
+   "clave": "renta-exogena",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué símbolo lleva la renta o riqueza exógena del consumidor, incluida la renta no laboral y la riqueza inicial en los modelos de riesgo y seguros?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "W̄ siempre (renta del consumidor, riqueza inicial en riesgo y seguros, renta no laboral en Becker y en la oferta de trabajo); M solo dinero (e importaciones)"
+    },
+    {
+     "id": "b",
+     "texto": "W̄ para la renta y la riqueza, y M para la renta no laboral (3.A.25, 4.B.10)"
+    },
+    {
+     "id": "c",
+     "texto": "Mantener V para la renta no laboral en 3.A.8"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La renta no laboral es la renta monetaria exógena que 3.A.8 ya llama W̄; M es el dinero en todo el bloque monetario y V es la FIU en el mismo 3.A.8. En 3.A.8, Becker pasa de V a W̄ (renta completa wT + W̄).",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.10",
+    "3.A.13",
+    "3.A.25",
+    "4.B.9",
+    "4.B.10",
+    "4.B.11"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md",
+    "_notacion/macro-cerrada.md",
+    "_notacion/sector-publico.md",
+    "modelos/oferta-trabajo.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D003",
+   "clave": "beneficio",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el beneficio de la empresa?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "B (B_j, B(p,w)); π queda para la inflación y las probabilidades"
+    },
+    {
+     "id": "b",
+     "texto": "π como Mas-Colell y Tirole, cambiando de letra la inflación en los temas de empresa e inflación (NEK)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La mayoría de los temas y los manuales en castellano usan B, y π choca con la inflación en los temas que mezclan empresa e inflación (3.A.7, 3.A.36). En 3.A.8 cambia la función de oferta de Rosen, φ(z;π) → φ(z;B).",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.12",
+    "3.A.16",
+    "3.A.17",
+    "3.A.18",
+    "3.A.19",
+    "3.A.21",
+    "4.B.10",
+    "4.B.13",
+    "3.B.8"
+   ],
+   "fichas": [
+    "_notacion/mercados-informacion-juegos.md",
+    "_notacion/consumidor-produccion.md",
+    "_notacion/equilibrio-general-bienestar.md",
+    "modelos/precios-hedonicos.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D004",
+   "clave": "frisch",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los parámetros de la oferta de trabajo en las preferencias macro (inversa de la elasticidad de Frisch y peso de la desutilidad del trabajo)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "φ para la inversa de la elasticidad de Frisch y χ para el peso de la desutilidad del trabajo (Galí, Walsh)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener la notación de cada tema (θ y ψ en 3.A.8; φ y ζ en 3.A.6)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con θ reservada para la CRRA, la Frisch de GHH (θ en 3.A.8) tiene que cambiar; φ y χ son las de la literatura EGDE y ψ queda libre para la respuesta de la producción en Lucas.",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.6",
+    "3.A.42"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/rbc.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D005",
+   "clave": "cobb-douglas-ref",
+   "area": "consumidor-produccion",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la Cobb-Douglas?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.11 (función de producción: rendimientos y elasticidad de sustitución), con 3.A.8 como referencia de la variante de utilidad"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.8, como está hoy en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La Cobb-Douglas que se usa en el resto del temario es casi siempre la de producción (Solow, RBC, crecimiento endógeno, emparejamiento, PIB potencial). En 3.A.8 solo cambiaría la remisión a 3.A.11 al hablar de producción.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.A.8",
+    "3.A.9",
+    "3.A.6",
+    "3.A.12",
+    "3.A.26",
+    "3.A.42",
+    "3.A.43",
+    "3.A.44",
+    "4.B.4"
+   ],
+   "fichas": [
+    "modelos/cobb-douglas.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D006",
+   "clave": "rosen",
+   "area": "consumidor-produccion",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben las funciones de puja y de oferta del modelo de precios hedónicos de Rosen (1974)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Θ(z;Ū,W̄) para la puja y φ(z;B) para la oferta (si se aprueban θ = CRRA y B = beneficio)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener θ(z;Ū,W̄) y φ(z;π) como en el 3.A.8 revisado"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Solo cambia si se aprueban las dos decisiones anteriores; la mayúscula mantiene la letra reconocible del artículo original.",
+   "temas_afectados": [
+    "3.A.8",
+    "4.B.6"
+   ],
+   "fichas": [
+    "modelos/precios-hedonicos.md",
+    "_notacion/consumidor-produccion.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D007",
+   "clave": "t-tau",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el tipo impositivo?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "t en la imposición micro (4.B.7-4.B.13, 3.A.16) y en IS-LM, con subíndice del objeto gravado (t_L, t_K, t_c…); τ en los modelos macro dinámicos (RBC, Barro, Chamley-Judd, OLG) y como ratio T/Y; la recaudación siempre T"
+    },
+    {
+     "id": "b",
+     "texto": "τ en todo el temario (Auerbach-Hines, Salanié)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la letra de Stiglitz, Rosen y Atkinson-Stiglitz y la de los manuales intermedios; hoy 4.B.11 da a τ tres sentidos (instrumentos, recaudación y tipo).",
+   "temas_afectados": [
+    "3.A.16",
+    "3.A.37",
+    "3.A.38",
+    "3.A.39",
+    "3.A.44",
+    "4.B.1",
+    "4.B.4",
+    "4.B.5",
+    "4.B.6",
+    "4.B.7",
+    "4.B.8",
+    "4.B.9",
+    "4.B.10",
+    "4.B.11",
+    "4.B.13"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md",
+    "_notacion/pensamiento.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D008",
+   "clave": "delta",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener δ como pendiente de la NKPC y como separación dentro de sus modelos, avisándolo"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "δ es depreciación en todos los manuales de crecimiento; κ es la letra de Galí, Clarida-Galí-Gertler, Walsh y Woodford, y s la de Blanchard y Shimer para la separación.",
+   "temas_afectados": [
+    "3.A.7",
+    "3.A.26",
+    "3.A.27",
+    "3.A.36",
+    "3.A.37",
+    "3.A.41",
+    "3.A.43",
+    "3.A.44",
+    "4.B.6",
+    "4.B.4"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "_notacion/pensamiento.md",
+    "_notacion/sector-publico.md",
+    "modelos/nek-3-ecuaciones.md",
+    "modelos/dmp.md",
+    "modelos/salarios-eficiencia.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D009",
+   "clave": "v-b",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la sensibilidad de la inversión al tipo de interés en IS-LM y Mundell-Fleming?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "b (I = Ī − b·i), como Dornbusch-Fischer-Startz; v queda solo para la relación capital-producto (acelerador, Harrod-Domar)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener v y escribir la relación capital-producto K/Y sin abreviar"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.34 usa v con los dos sentidos en el mismo tema y 4.B.4 mezcla v y b.",
+   "temas_afectados": [
+    "3.A.4",
+    "3.A.5",
+    "3.A.34",
+    "3.A.37",
+    "3.A.38",
+    "3.A.43",
+    "3.B.15",
+    "3.B.19",
+    "4.B.4"
+   ],
+   "fichas": [
+    "_notacion/pensamiento.md",
+    "_notacion/macro-cerrada.md",
+    "modelos/is-lm.md",
+    "modelos/jorgenson.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D010",
+   "clave": "g-gamma",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letras llevan la tasa de progreso técnico, el crecimiento del PIB y el gasto público en ratio?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "g = progreso técnico (regla de oro n+g+δ); γ_Y = crecimiento del PIB (también en las ecuaciones de deuda: r − γ_Y, y «r − g» solo como nombre del debate de Blanchard); g = G/Y en sector público"
+    },
+    {
+     "id": "b",
+     "texto": "γ_A para el progreso técnico (todas las tasas con γ) y g solo para G/Y"
+    },
+    {
+     "id": "c",
+     "texto": "g para el crecimiento del PIB en las ecuaciones de deuda («r < g») y γ_A para el progreso técnico"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "n+g+δ es la fórmula más conocida (Romer); las ecuaciones de deuda ya usan γ en 3.A.39 y 4.B.26, y no conviven con el progreso técnico.",
+   "temas_afectados": [
+    "3.A.39",
+    "3.A.40",
+    "3.A.43",
+    "3.A.44",
+    "3.A.45",
+    "4.B.1",
+    "4.B.5",
+    "4.B.26",
+    "3.B.17"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "_notacion/sector-publico.md",
+    "modelos/solow.md",
+    "modelos/ramsey-cass-koopmans.md",
+    "modelos/estancamiento-secular.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D011",
+   "clave": "precios-factores",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los precios de los factores?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "w_L, w_K en la teoría de la producción y el equilibrio general (3.A.11-3.A.12, 3.A.21-3.A.23); w y r (renta del capital) en los modelos 2×2 de comercio e incidencia (H-O-S, Stolper-Samuelson, Falvey, Harberger), diciendo que r no es el tipo de interés"
+    },
+    {
+     "id": "b",
+     "texto": "w_L, w_K en todo el temario, también en comercio y en 4.B"
+    },
+    {
+     "id": "c",
+     "texto": "w, r en todo el temario"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "w_L, w_K es la notación vectorial de MWG que necesita la dualidad; w, r es la de Feenstra, Rosen y Stiglitz en los modelos de dos factores, que no conviven con el tipo de interés.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.A.12",
+    "3.A.21",
+    "3.A.22",
+    "3.A.23",
+    "3.B.5",
+    "3.B.6",
+    "4.B.8",
+    "4.B.9",
+    "4.B.11",
+    "4.B.15"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md",
+    "_notacion/equilibrio-general-bienestar.md",
+    "_notacion/sector-publico.md",
+    "modelos/falvey.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D012",
+   "clave": "gamma-tasas",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Se mantiene γ para las tasas de variación (γ_X, γE^e) en macro abierta, crecimiento y deuda?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí, γ_X con subíndice (convención del temario)"
+    },
+    {
+     "id": "b",
+     "texto": "X̂ (Dornbusch-Fischer, Feenstra) para las tasas de variación"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la convención que ya siguen 3.A.39, 3.A.44, 3.A.45, 3.B.12-3.B.14 y 4.A.17; el choque con el peso de las manufacturas en la NEG se resuelve en la decisión sobre la NEG.",
+   "temas_afectados": [
+    "3.A.39",
+    "3.A.44",
+    "3.A.45",
+    "3.B.12",
+    "3.B.13",
+    "3.B.14",
+    "3.B.16",
+    "4.A.17",
+    "4.A.22",
+    "4.B.26"
+   ],
+   "fichas": [
+    "_notacion/macro-abierta.md",
+    "_notacion/macro-cerrada.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D013",
+   "clave": "tipo-cambio",
+   "area": "macro-abierta",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el tipo de cambio nominal en niveles, a plazo, en logaritmos y esperado?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "E (directo, ↑E = depreciación), F a plazo, minúsculas e, f para logaritmos, E^e_{t+1} para el esperado; la esperanza se escribe 𝔼_t[·]"
+    },
+    {
+     "id": "b",
+     "texto": "s_t y f_t en las paridades (Sarno-Taylor) y E en el resto"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "E es la letra de Krugman-Obstfeld y de la mayoría de temas; s_t obliga a cambiar de letra a mitad de 3.B.13 y 3.B.14.",
+   "temas_afectados": [
+    "3.B.12",
+    "3.B.13",
+    "3.B.14",
+    "3.B.15",
+    "3.B.17",
+    "3.B.19",
+    "3.B.25",
+    "4.A.21"
+   ],
+   "fichas": [
+    "_notacion/macro-abierta.md",
+    "modelos/paridad-intereses.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D014",
+   "clave": "ref-mundell-fleming",
+   "area": "macro-abierta",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Mundell-Fleming (IS-LM-BP)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.32 (OA-DA en economía abierta), escribiéndolo a partir de 3.B.15, que pasa a resumen"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.15 (regímenes cambiarios), que hoy lo desarrolla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.32 hereda el antiguo tema de políticas en economía abierta; pero no tiene fuente y hay que escribirlo.",
+   "temas_afectados": [
+    "3.A.32",
+    "3.B.15",
+    "3.B.19",
+    "3.A.37",
+    "3.A.38",
+    "3.B.14",
+    "4.B.4"
+   ],
+   "fichas": [
+    "modelos/mundell-fleming.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D015",
+   "clave": "tipo-cambio-real",
+   "area": "macro-abierta",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el tipo de cambio real?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "q = EP*/P (↑q = depreciación real), como Krugman-Obstfeld y Obstfeld-Rogoff; κ queda libre (desutilidad del trabajo en Corsetti-Pesenti)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener ϰ"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "ϰ no está en los manuales y se confunde con κ en 3.B.19; 3.B.19 usa además e para el tipo real.",
+   "temas_afectados": [
+    "3.B.12",
+    "3.B.13",
+    "3.B.14",
+    "3.B.15",
+    "3.B.17",
+    "3.B.19",
+    "4.B.4",
+    "4.A.22"
+   ],
+   "fichas": [
+    "_notacion/macro-abierta.md",
+    "modelos/tipo-cambio-real.md",
+    "modelos/corsetti-pesenti.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D016",
+   "clave": "phi",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Se reserva φ para la productividad de Melitz (y la inversa de Frisch en macro) y se cambian sus otros usos en comercio y macro abierta?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: función de reacción R_A(q_B), coeficiente técnico de la protección efectiva a_ij, sensibilidad del saldo comercial al tipo real ν"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener φ en cada uso, definida en cada tema"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy φ tiene cuatro significados entre 3.B.6, 3.B.7, 3.B.8 y 3.B.15; R_A es la notación de Tirole y del área de mercados (Cournot).",
+   "temas_afectados": [
+    "3.B.6",
+    "3.B.7",
+    "3.B.8",
+    "3.B.15",
+    "3.B.19",
+    "4.B.4"
+   ],
+   "fichas": [
+    "_notacion/comercio.md",
+    "_notacion/macro-abierta.md",
+    "modelos/melitz.md",
+    "modelos/brander-krugman.md",
+    "modelos/brander-spencer.md",
+    "modelos/mundell-fleming.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D017",
+   "clave": "prob",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra llevan las probabilidades en micro (estados de la naturaleza, accidente, éxito con esfuerzo, impacientes en Diamond-Dybvig)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "π (π_s, π, π(e)), como Varian y MWG cap. 19; p queda para los precios"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener p_s y p como hoy"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "p son los precios en toda el área y π queda libre en micro si el beneficio pasa a B.",
+   "temas_afectados": [
+    "3.A.10",
+    "3.A.13",
+    "4.B.10",
+    "3.B.27",
+    "4.A.20",
+    "3.B.26"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md",
+    "_notacion/mercados-informacion-juegos.md",
+    "modelos/diamond-dybvig.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D018",
+   "clave": "historia-espana",
+   "area": "economia-espanola",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparte la historia económica de España entre los temas?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Periodización única: 4.A.27 (1959-1999), 4.A.28 (1999-2019), 4.A.29 (desde 2020); los demás temas solo su tramo o una mención"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener la historia completa en cada tema sectorial"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy la historia 1939-2019 está copiada en 4.A.21-4.A.23 y 4.A.27, 4.A.28 y 4.A.30 comparten bloques literales.",
+   "temas_afectados": [
+    "4.A.21",
+    "4.A.22",
+    "4.A.23",
+    "4.A.27",
+    "4.A.28",
+    "4.A.29",
+    "4.A.30"
+   ],
+   "fichas": [
+    "modelos/historia-economica-espana.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D019",
+   "clave": "neg-mu",
+   "area": "comercio",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben en la NEG el peso del gasto en manufacturas y el margen?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "μ para el peso de las manufacturas (Krugman 1991, FKV) y el margen como σ/(σ−1) sin símbolo; utilidad U = X^{1−μ}V^{μ}"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener γ para el peso y μ para el margen, aceptando el choque con γ = tasa de variación (3.B.16 los junta)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la notación de los artículos originales y evita el choque de γ con las tasas de variación en 3.B.16.",
+   "temas_afectados": [
+    "3.B.6",
+    "3.B.9",
+    "3.B.10",
+    "3.B.16",
+    "3.B.40",
+    "4.A.17"
+   ],
+   "fichas": [
+    "_notacion/comercio.md",
+    "modelos/centro-periferia.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D020",
+   "clave": "lambda",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Se reserva λ para multiplicadores y precios sombra?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: factor de escala t (3.A.11), tasas de búsqueda f(θ) y q(θ) (DMP), persistencia de la histéresis λ_h con subíndice; se admite λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener λ(θ) y μ(θ) en DMP y λ como escala en 3.A.11"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "λ es el multiplicador de 3.A.8 y el precio sombra de 3.A.29 y 3.A.43; f(θ) y q(θ) son las de Pissarides y Shimer.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.A.26",
+    "3.A.28",
+    "3.A.17",
+    "3.A.29",
+    "3.A.43"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md",
+    "_notacion/macro-cerrada.md",
+    "modelos/dmp.md",
+    "modelos/histeresis.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D021",
+   "clave": "taylor-forma",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Qué forma de la regla de Taylor se usa en los modelos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La canónica i_t = r^n + φ_π π_t + φ_x x_t (+ suavización ν i_{t−1} con (1−ν) en la respuesta) en todos los modelos; la original de 1993 solo como cita histórica en 3.A.36, con la equivalencia φ_π = 1 + 0,5"
+    },
+    {
+     "id": "b",
+     "texto": "La original de Taylor (1993) en todos los temas"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con la canónica el principio de Taylor es φ_π > 1; hoy hay temas sin coeficiente en x_t y sin (1−ν), y el principio queda mal enunciado.",
+   "temas_afectados": [
+    "3.A.7",
+    "3.A.36",
+    "3.A.37",
+    "3.A.38",
+    "3.A.42",
+    "4.B.4"
+   ],
+   "fichas": [
+    "modelos/taylor.md",
+    "modelos/nek-3-ecuaciones.md",
+    "_notacion/macro-cerrada.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D022",
+   "clave": "impuestos-normativa",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Qué se hace con la normativa española de los impuestos que hoy está en 4.B.12 y 4.B.13?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Usarla como semilla de los temas sin fuente (IRPF → 4.B.16, IS → 4.B.17, patrimonio → 4.B.19, IVA → 4.B.20) y reorientar 4.B.12 y 4.B.13 a la teoría y la comparación internacional"
+    },
+    {
+     "id": "b",
+     "texto": "Dejarla en 4.B.12 y 4.B.13"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con el temario nuevo, la liquidación de cada impuesto español tiene su propio tema.",
+   "temas_afectados": [
+    "4.B.12",
+    "4.B.13",
+    "4.B.16",
+    "4.B.17",
+    "4.B.19",
+    "4.B.20"
+   ],
+   "fichas": [
+    "modelos/irpf.md",
+    "modelos/impuesto-sociedades.md",
+    "modelos/impuesto-patrimonio.md",
+    "modelos/iva.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D023",
+   "clave": "m-dinero",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Se reserva M para el dinero (y las importaciones) y se cambian sus otros usos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: número de variedades de Romer (1990) N_t, función de emparejamiento m(U,V), renta no laboral W̄"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener M para las variedades en 3.A.44 y para el emparejamiento en 3.A.26"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "M es dinero en 3.A.35-3.A.41; Romer y Acemoglu usan N para las variedades y Pissarides m(·) para el emparejamiento.",
+   "temas_afectados": [
+    "3.A.25",
+    "3.A.26",
+    "3.A.44",
+    "3.B.9",
+    "4.B.10"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/romer-1990.md",
+    "modelos/dmp.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D024",
+   "clave": "cargos-ue",
+   "area": "union-europea",
+   "tipo": "otro",
+   "pregunta": "¿Se citan los nombres de los titulares de cargos en los temas?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Solo los imprescindibles, fechados con la tabla de la ficha `instituciones-ue`"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerlos y actualizarlos tema a tema"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy hay cargos desactualizados en 3.B.36, 3.B.37, 3.B.39, 3.B.41, 3.B.42, 4.A.16 y 4.A.18.",
+   "temas_afectados": [
+    "3.B.36",
+    "3.B.37",
+    "3.B.39",
+    "3.B.41",
+    "3.B.42",
+    "4.A.16",
+    "4.A.18"
+   ],
+   "fichas": [
+    "modelos/instituciones-ue.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D025",
+   "clave": "bretton-woods-dup",
+   "area": "historia-organismos",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparte Bretton Woods, cuyo texto se repite en seis temas?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Desarrollo solo en 3.B.20; en 3.B.21 un resumen de la ruptura (1971-1976); una frase con el pilar monetario en 3.B.22 y con el comercial en 3.B.33-3.B.34; nada en 3.B.35"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener el párrafo de contexto en todos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El párrafo de los «tres pilares» está copiado literalmente en seis temas y 3.B.21 repite la sección entera de 3.B.20.",
+   "temas_afectados": [
+    "3.B.20",
+    "3.B.21",
+    "3.B.22",
+    "3.B.33",
+    "3.B.34",
+    "3.B.35"
+   ],
+   "fichas": [
+    "modelos/bretton-woods.md",
+    "modelos/triffin.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D026",
+   "clave": "w-salario",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se distinguen el salario real y el nominal en macro?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "w real y W nominal en todo el temario (como en WS-PS)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener W_t para el salario real del RBC y de 3.A.43"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.43 y el RBC de 3.A.6 usan W_t para el salario real, mientras 3.A.25 y 3.A.29 usan w.",
+   "temas_afectados": [
+    "3.A.6",
+    "3.A.25",
+    "3.A.27",
+    "3.A.29",
+    "3.A.43"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/ramsey-cass-koopmans.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D027",
+   "clave": "renta-4b",
+   "area": "sector-publico",
+   "tipo": "notacion",
+   "pregunta": "¿Cuándo se escribe la renta como W̄ y cuándo como Y en el sector público?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "W̄ en los modelos de consumidor (4.B.9-4.B.11, como 3.A.8); Y para la base del IRPF en progresividad, T(Y), y para el PIB"
+    },
+    {
+     "id": "b",
+     "texto": "Y en todo el bloque 4.B"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Mantiene el canon de 3.A.8 en los modelos de consumidor y la notación de Lambert en progresividad.",
+   "temas_afectados": [
+    "4.B.3",
+    "4.B.7",
+    "4.B.9",
+    "4.B.10",
+    "4.B.11",
+    "4.B.12"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D028",
+   "clave": "intereses-deuda",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los intereses de la deuda en la restricción del gobierno?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "i_{t−1}D_{t−1} (Walsh: la deuda emitida en t−1 paga el tipo pactado al emitirla); i_t D_{t−1} solo si i_t se define como tipo implícito pagado en t"
+    },
+    {
+     "id": "b",
+     "texto": "i_t D_{t−1}"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 3.A.39 usa las dos formas en el mismo tema.",
+   "temas_afectados": [
+    "3.A.35",
+    "3.A.39",
+    "3.A.41",
+    "4.B.4",
+    "4.B.26"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/restriccion-gobierno.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D029",
+   "clave": "saldo",
+   "area": "sector-publico",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben el saldo presupuestario y sus componentes?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "b (% PIB, positivo = superávit); b^c cíclico, b^{ca} cíclicamente ajustado, b^e estructural, b^p primario; semielasticidad ε (b^c = ε·OG); brecha OG"
+    },
+    {
+     "id": "b",
+     "texto": "Las siglas de la Comisión (CAB, SB, PB)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy B choca con bonos y beneficio, y η (sensibilidad) con la rigidez de Calvo.",
+   "temas_afectados": [
+    "4.B.4",
+    "4.B.1",
+    "4.B.21",
+    "4.B.26",
+    "3.B.45"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md",
+    "modelos/saldo-estructural.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D030",
+   "clave": "pilares",
+   "area": "historia-organismos",
+   "tipo": "otro",
+   "pregunta": "¿Se reserva «pilares» para las instituciones de Bretton Woods y BEPS?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí; los del SEI se llaman «planos» y los de la Unión Bancaria, «pilares de la Unión Bancaria» con su nombre completo"
+    },
+    {
+     "id": "b",
+     "texto": "Dejarlo como está"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy «pilares» designa cuatro cosas distintas.",
+   "temas_afectados": [
+    "3.B.20",
+    "3.B.21",
+    "3.B.22",
+    "3.B.33",
+    "3.B.34",
+    "3.B.35",
+    "3.B.44"
+   ],
+   "fichas": [
+    "_notacion/historia-organismos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D031",
+   "clave": "cruce-3a4-3a5",
+   "area": "pensamiento",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Se deshace el cruce de contenidos entre los Word de 3.A.4 y 3.A.5?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: IS-LM y la curva de Phillips (síntesis) a 3.A.5 (Phillips en resumen; desarrollo en 3.A.28); el desequilibrio (Patinkin, Clower, Leijonhufvud, Malinvaud) a 3.A.4"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener cada Word como está"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Los dos Word son del título anterior: 3.A.4 desarrolla lo que hoy pide 3.A.5 y al revés.",
+   "temas_afectados": [
+    "3.A.4",
+    "3.A.5",
+    "3.A.28"
+   ],
+   "fichas": [
+    "modelos/is-lm.md",
+    "modelos/malinvaud.md",
+    "modelos/patinkin.md",
+    "modelos/phillips.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D032",
+   "clave": "respuesta-covid",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde van NGEU y SURE?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.45 la lógica de la política fiscal común; 3.B.37 su financiación (endeudamiento de la Comisión, techo de recursos propios); el PRTR en 4.A.29"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerlos en 3.B.36-3.B.37 y 3.B.40"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El título de 3.B.45 pide «la respuesta común de política fiscal a partir de la covid-19».",
+   "temas_afectados": [
+    "3.B.45",
+    "3.B.36",
+    "3.B.37",
+    "3.B.40",
+    "4.A.29",
+    "4.A.30"
+   ],
+   "fichas": [
+    "modelos/next-generation-eu.md",
+    "modelos/sure.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D033",
+   "clave": "ref-pec",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde se desarrolla el Pacto de Estabilidad y Crecimiento (con el marco de 2024)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.45; los temas 4.B solo lo aplican a España"
+    },
+    {
+     "id": "b",
+     "texto": "Repartido como hoy"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy solo hay menciones dispersas, ninguna con el marco de 2024.",
+   "temas_afectados": [
+    "3.B.45",
+    "4.A.28",
+    "4.A.30",
+    "4.B.21",
+    "4.B.22",
+    "4.B.26"
+   ],
+   "fichas": [
+    "modelos/pec.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D034",
+   "clave": "sigma-dispersion",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la dispersión de la renta en la σ-convergencia si σ es también la elasticidad de sustitución?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "σ_t (desviación típica de ln y, como Sala i Martín), siempre con subíndice t; en 3.B.40, que mezcla ambas, se avisa"
+    },
+    {
+     "id": "b",
+     "texto": "D_t o «dispersión» sin símbolo para la convergencia"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La dispersión es una desviación típica (mismo uso estadístico de σ); el nombre «σ-convergencia» es universal.",
+   "temas_afectados": [
+    "3.A.45",
+    "3.B.40",
+    "4.A.17",
+    "4.A.30"
+   ],
+   "fichas": [
+    "_notacion/union-europea.md",
+    "_notacion/economia-espanola.md",
+    "modelos/descomposicion-pib-per-capita.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D035",
+   "clave": "rms-eg",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben las relaciones marginales en el equilibrio general?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "RMS^A_{XY}, RMST^X_{LK} y RMT_{XY}, positivas y sin barras (paralelas a RMS_{12} de 3.A.8)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener |RMS_X^Y|_A en valor absoluto"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Así se lee igual que en el 3.A.8 revisado (RMS positiva).",
+   "temas_afectados": [
+    "3.A.21",
+    "3.A.22",
+    "3.A.23",
+    "4.B.2",
+    "4.B.13"
+   ],
+   "fichas": [
+    "_notacion/equilibrio-general-bienestar.md",
+    "modelos/equilibrio-general-walras.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D036",
+   "clave": "lucas-senal",
+   "area": "pensamiento",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben el coeficiente de extracción de señal y la respuesta de la producción en el modelo de islas de Lucas?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ω = σ²_z/(σ²_z+σ²_p) y ψ ≡ ω·ε_S en y_t = y^n_t + ψ(p_t − p^e_t)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener θ y β"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "θ es la CRRA y β el factor de descuento, que conviven con Lucas en 3.A.6 y 3.A.37.",
+   "temas_afectados": [
+    "3.A.6",
+    "3.A.37",
+    "3.A.41",
+    "3.A.42"
+   ],
+   "fichas": [
+    "_notacion/pensamiento.md",
+    "modelos/lucas-islas.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D037",
+   "clave": "tipo-natural",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el tipo de interés real natural?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "r^n_t en la NEK y r* solo en la regla de Taylor original; se dice una vez que sin perturbaciones r^n = ρ"
+    },
+    {
+     "id": "b",
+     "texto": "r* en todos los temas"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy conviven r^n, r* y ρ para lo mismo.",
+   "temas_afectados": [
+    "3.A.7",
+    "3.A.36",
+    "3.A.37",
+    "3.A.40",
+    "4.B.4"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D038",
+   "clave": "y-extranjera",
+   "area": "macro-abierta",
+   "tipo": "notacion",
+   "pregunta": "¿Se reserva Y* para la renta extranjera?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí; el objetivo del Gobierno en 3.B.17 pasa a Y^{obj} y la producción natural a Y_n"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener Y* como objetivo en 3.B.17"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El asterisco marca «extranjero» en todo el bloque (i*, P*, Y*).",
+   "temas_afectados": [
+    "3.B.17",
+    "3.B.14",
+    "3.B.15",
+    "3.B.19",
+    "4.B.4"
+   ],
+   "fichas": [
+    "_notacion/macro-abierta.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D039",
+   "clave": "cf-bde",
+   "area": "economia-espanola",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la cuenta financiera con y sin el Banco de España en la identidad de la balanza de pagos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "CF^{exc. BdE} y CF^{BdE} (incluye TARGET2)"
+    },
+    {
+     "id": "b",
+     "texto": "SNC* / SNC y ΔR"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "En la UEM la partida del BdE no son solo reservas; hoy 4.A.1 y 4.A.21 la leen distinto.",
+   "temas_afectados": [
+    "4.A.1",
+    "4.A.21",
+    "4.A.22",
+    "4.A.23",
+    "3.B.11"
+   ],
+   "fichas": [
+    "_notacion/economia-espanola.md",
+    "modelos/balanza-pagos-espana.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D040",
+   "clave": "regla-oro-fiscal",
+   "area": "sector-publico",
+   "tipo": "otro",
+   "pregunta": "¿Cómo se citan los límites del déficit estructural y qué se llama «regla de oro»?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Citar siempre las dos normas (0,5 % del TECG y 0,4 % de la LOEPSF) y el marco de la UE de 2024; «regla de oro» solo para la que excluye la inversión neta"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener «regla de oro» para el equilibrio estructural, explicando el uso alemán (Schuldenbremse)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "No hay contradicción entre 4.B.21 y 4.B.26: son dos normas; el nombre «regla de oro» sí induce a error.",
+   "temas_afectados": [
+    "4.B.2",
+    "4.B.21",
+    "4.B.26",
+    "4.A.30",
+    "3.B.45"
+   ],
+   "fichas": [
+    "modelos/loepsf.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D041",
+   "clave": "centro-periferia-id",
+   "area": "comercio",
+   "tipo": "otro",
+   "pregunta": "¿Se mantiene un solo id para la familia de la nueva geografía económica?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: `centro-periferia` con un apartado «familia NEG»; la hipótesis de especialización de Krugman (1993) va en `areas-monetarias-optimas`"
+    },
+    {
+     "id": "b",
+     "texto": "Crear fichas separadas (vínculos verticales, primera naturaleza)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Krugman (1991) es la presentación canónica; las variantes son adaptaciones del mismo modelo.",
+   "temas_afectados": [
+    "3.B.6",
+    "3.B.10",
+    "3.B.16",
+    "3.B.40",
+    "4.A.12",
+    "4.A.17"
+   ],
+   "fichas": [
+    "modelos/centro-periferia.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D042",
+   "clave": "ref-diamond-dybvig",
+   "area": "finanzas-empresa",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Diamond-Dybvig?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.26 (crisis y pánicos bancarios), escribiéndolo con la presentación de 4.A.20; 3.B.27 y 4.A.20 en resumen"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.27, que hoy lo desarrolla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Lo tiene en el título, pero 3.B.26 no tiene fuente.",
+   "temas_afectados": [
+    "3.B.26",
+    "3.B.27",
+    "4.A.20",
+    "3.B.17",
+    "3.A.10"
+   ],
+   "fichas": [
+    "modelos/diamond-dybvig.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D043",
+   "clave": "bp-espana-dup",
+   "area": "economia-espanola",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde va la introducción a la balanza de pagos de España?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Solo en 4.A.21 (conceptos en 3.B.11); la historia 1959-1998 en 4.A.27; 4.A.22 y 4.A.23 remiten"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerla en los tres"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hay 212 líneas idénticas entre 4.A.21 y 4.A.22.",
+   "temas_afectados": [
+    "4.A.21",
+    "4.A.22",
+    "4.A.23",
+    "4.A.27",
+    "3.B.11"
+   ],
+   "fichas": [
+    "modelos/balanza-pagos-espana.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D044",
+   "clave": "ponderaciones-omega",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra llevan las ponderaciones de los índices (IPC, tipos de cambio efectivos, ITC)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ω_i (ω_{i,t−1} en el IPC; media geométrica con pesos ω_i en los tipos efectivos)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener w_{i0} y β_i"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "w es salario o precio de factores y β el factor de descuento y los coeficientes de regresión.",
+   "temas_afectados": [
+    "3.A.9",
+    "4.A.1",
+    "4.A.22",
+    "3.B.13"
+   ],
+   "fichas": [
+    "_notacion/economia-espanola.md",
+    "modelos/indices-precios.md",
+    "modelos/ipc.md",
+    "_notacion/macro-abierta.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D045",
+   "clave": "dotacion",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la dotación inicial del consumidor?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ω_i (y ω′), como MWG"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener e, e′"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "e es el esfuerzo en 3.A.13 y E la función de gasto.",
+   "temas_afectados": [
+    "3.A.21",
+    "3.A.22",
+    "4.B.3",
+    "4.B.7"
+   ],
+   "fichas": [
+    "_notacion/equilibrio-general-bienestar.md",
+    "modelos/teoremas-bienestar.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D046",
+   "clave": "precios-impuesto",
+   "area": "sector-publico",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los precios con impuesto (consumidor y vendedor)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "p_c y p_v (p_c = p_v + t o (1 + t)p_v); en 4.B.11 se admite q_i = p_i + t_i diciendo que q es el precio al consumidor"
+    },
+    {
+     "id": "b",
+     "texto": "P_C y P_V"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Coherente con p minúscula en micro; hoy 3.A.16 usa p̂_m, p̂_i.",
+   "temas_afectados": [
+    "3.A.16",
+    "4.B.8",
+    "4.B.9",
+    "4.B.11"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md",
+    "modelos/incidencia-equilibrio-parcial.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D047",
+   "clave": "elasticidad-signo",
+   "area": "sector-publico",
+   "tipo": "notacion",
+   "pregunta": "¿Las elasticidades precio se escriben con su signo?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: ε_D < 0 con su signo y |ε_D| en las fórmulas (ε^h si es compensada); EG ≥ 0 siempre"
+    },
+    {
+     "id": "b",
+     "texto": "Elasticidades positivas (η_d, η_s)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.8 ya las define con su signo; así desaparece el error de signo del exceso de gravamen en 4.B.11.",
+   "temas_afectados": [
+    "4.B.7",
+    "4.B.9",
+    "4.B.11",
+    "3.A.17"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md",
+    "modelos/exceso-gravamen.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D048",
+   "clave": "poblacion-n",
+   "area": "economia-espanola",
+   "tipo": "notacion",
+   "pregunta": "¿Qué símbolo lleva la población total en la descomposición del PIB per cápita?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "N, con la descomposición de cuatro factores Y/N = (Y/L)(L/A)(A/P_16)(P_16/N)"
+    },
+    {
+     "id": "b",
+     "texto": "POB y la forma de dos o tres factores de hoy"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Manuales y área macro; POB no es un símbolo, y 4.A.17 y 4.A.29 usan formas distintas.",
+   "temas_afectados": [
+    "4.A.17",
+    "4.A.29",
+    "4.A.30",
+    "4.A.16"
+   ],
+   "fichas": [
+    "_notacion/economia-espanola.md",
+    "modelos/descomposicion-pib-per-capita.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D049",
+   "clave": "tasa-actividad",
+   "area": "economia-espanola",
+   "tipo": "otro",
+   "pregunta": "¿Qué definición de la tasa de actividad se usa?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La de la EPA (activos / población de 16 y más años) en todo el temario; si se usa 16-64, decirlo y dar su valor (≈ 75 %)"
+    },
+    {
+     "id": "b",
+     "texto": "Activos / población de 16 a 64 años"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 4.A.16 y 4.A.29 la definen con 16-64 pero dan el valor de 16 y más.",
+   "temas_afectados": [
+    "4.A.16",
+    "4.A.17",
+    "4.A.29",
+    "4.A.2"
+   ],
+   "fichas": [
+    "modelos/epa.md",
+    "_notacion/economia-espanola.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D050",
+   "clave": "barro-1990-version",
+   "area": "macro-cerrada",
+   "tipo": "otro",
+   "pregunta": "¿Qué versión de Barro (1990) es la de referencia?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La de optimización (θ, ρ), como AK y Uzawa-Lucas; la de ahorro exógeno solo como simplificación"
+    },
+    {
+     "id": "b",
+     "texto": "La de ahorro exógeno s"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 3.A.44, 4.B.1 y 4.B.5 usan ahorro exógeno mientras el resto de 3.A.44 optimiza.",
+   "temas_afectados": [
+    "3.A.38",
+    "3.A.44",
+    "4.B.1",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/barro-1990.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D051",
+   "clave": "ref-estancamiento",
+   "area": "macro-cerrada",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del estancamiento secular?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.40 (políticas desde la Gran Recesión), trasladando allí el epígrafe de 3.A.39"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.39, que hoy lo desarrolla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El tipo natural negativo, el límite inferior y la política fiscal con r < γ son el núcleo del título de 3.A.40.",
+   "temas_afectados": [
+    "3.A.40",
+    "3.A.39",
+    "3.A.33",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/estancamiento-secular.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D052",
+   "clave": "ref-multiplicadores",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de los multiplicadores fiscales?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.40 para la teoría (keynesiano, IS-LM, NEK en el límite inferior) y 4.B.4 para las definiciones empíricas y la evidencia"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.4 para todo, como en el mapa"
+    },
+    {
+     "id": "c",
+     "texto": "3.A.38"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La efectividad de la política fiscal es el título de 3.A.40; 4.B.4 la aplica al presupuesto compensador.",
+   "temas_afectados": [
+    "3.A.40",
+    "4.B.4",
+    "3.A.38",
+    "3.A.37"
+   ],
+   "fichas": [
+    "modelos/multiplicadores-fiscales.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D053",
+   "clave": "ref-barro-1990",
+   "area": "macro-cerrada",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Barro (1990)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.38 (efectos de la política fiscal sobre el crecimiento), escribiéndolo con ecuaciones"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.44 (crecimiento endógeno), que hoy es el único del bloque A que lo desarrolla con ecuaciones"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Lo pide el título de 3.A.38; hoy está desarrollado en cuatro temas.",
+   "temas_afectados": [
+    "3.A.38",
+    "3.A.44",
+    "4.B.1",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/barro-1990.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D054",
+   "clave": "ref-reynolds",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Dónde se desarrollan las medidas de progresividad (Reynolds-Smolensky, Kakwani)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.9, escribiendo el epígrafe que falta («Medidas de progresividad impositiva»); 4.B.3, 4.B.7 y 4.B.12 remiten"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.3"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Están en el título de 4.B.9, que hoy no tiene el epígrafe.",
+   "temas_afectados": [
+    "4.B.9",
+    "4.B.3",
+    "4.B.7",
+    "4.B.12"
+   ],
+   "fichas": [
+    "modelos/reynolds-smolensky.md",
+    "modelos/progresividad.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D055",
+   "clave": "pge-cifras",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparten el marco presupuestario, las cifras de los PGE y la clasificación funcional entre 4.B.21, 4.B.22 y 4.B.23?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Definiciones y marco en 4.B.21; cifras de los PGE en 4.B.22; COFOG y finanzas de las AAPP en contabilidad nacional en 4.B.23; suprimir en 4.B.22 la historia de la consolidación (va en 4.B.26)"
+    },
+    {
+     "id": "b",
+     "texto": "Dejarlo como está"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Las fuentes son de los viejos 4.B.23-4.B.24 y las secciones están cruzadas.",
+   "temas_afectados": [
+    "4.B.21",
+    "4.B.22",
+    "4.B.23",
+    "4.B.26"
+   ],
+   "fichas": [
+    "modelos/clasificaciones-presupuestarias.md",
+    "modelos/cofog.md",
+    "modelos/consolidacion-fiscal-espana.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D056",
+   "clave": "theta-tension",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Se mantiene θ ≡ V/U para la tensión del mercado de trabajo aunque θ sea la CRRA?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí, avisándolo: es la notación universal de la búsqueda (Pissarides, Cahuc) y 3.A.26 y 3.A.28 no usan la CRRA"
+    },
+    {
+     "id": "b",
+     "texto": "Escribir V/U sin símbolo propio"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Cambiarla alejaría el tema de toda la literatura de búsqueda.",
+   "temas_afectados": [
+    "3.A.26",
+    "3.A.28",
+    "4.A.16"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/dmp.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D057",
+   "clave": "u-individuo",
+   "area": "transversal",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la utilidad del individuo i en la elección social, si en 3.A.8 U_i es la utilidad marginal del bien i?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "U_i en la FBS W(U_1,…,U_I) y en las reglas de votación (no convive con utilidades marginales); se avisa en 3.A.24 y 4.B.2"
+    },
+    {
+     "id": "b",
+     "texto": "U^h (superíndice) para el individuo en 3.A.24 y 4.B.2"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la notación de MWG y de Arrow; los dos usos no aparecen en las mismas ecuaciones.",
+   "temas_afectados": [
+    "3.A.24",
+    "4.B.2",
+    "3.A.22"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md",
+    "_notacion/equilibrio-general-bienestar.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D058",
+   "clave": "consumidores-eg",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se numeran los consumidores y las participaciones en beneficios en el equilibrio general?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "A, B en el 2×2×2×2 e i = 1,…,I en general; participaciones θ_ij (dos subíndices, como MWG)"
+    },
+    {
+     "id": "b",
+     "texto": "Consumidores 1, 2 en el 2×2×2×2 y participaciones s_ij"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "MWG; los dos subíndices evitan la confusión con la CRRA.",
+   "temas_afectados": [
+    "3.A.21",
+    "3.A.22",
+    "3.A.24",
+    "4.B.2"
+   ],
+   "fichas": [
+    "_notacion/equilibrio-general-bienestar.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D059",
+   "clave": "lerner",
+   "area": "mercados-informacion-juegos",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el índice de Lerner?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "𝓛 = (p − CMg)/p"
+    },
+    {
+     "id": "b",
+     "texto": "L"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "L es trabajo y pérdida.",
+   "temas_afectados": [
+    "3.A.17",
+    "3.A.18",
+    "3.A.19",
+    "4.B.15"
+   ],
+   "fichas": [
+    "_notacion/mercados-informacion-juegos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D060",
+   "clave": "phillips-a",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva la pendiente de la curva de Phillips ampliada π_t = π^e_t − a(U_t − U^n)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "a (y α = 1/a en Barro-Gordon)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener h"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "h es la sensibilidad de la demanda de dinero al tipo en la LM.",
+   "temas_afectados": [
+    "3.A.41",
+    "3.A.28",
+    "3.A.36"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/phillips.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D061",
+   "clave": "cagan",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los parámetros de la demanda de dinero de Cagan?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "α semielasticidad respecto a la inflación esperada y ζ constante de escala"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener α y γ"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "γ se libera para las tasas de crecimiento y el peso de la inflación en Barro-Gordon.",
+   "temas_afectados": [
+    "3.A.35",
+    "3.A.39",
+    "3.A.41"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/cagan.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D062",
+   "clave": "roa",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se define la rentabilidad económica (ROA) y la fórmula del apalancamiento?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ROA = EBIT/AT (BAII/AT, Suárez Suárez) y ROE = [ROA + (ROA − r_D)V_D/V_E](1 − t)"
+    },
+    {
+     "id": "b",
+     "texto": "ROA = EBIAT/AT y ROE = ROA + [ROA − r_D(1 − t)]V_D/V_E"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La fórmula de apalancamiento de 3.B.1 solo es exacta con el ROA antes de impuestos; (a) es la definición española habitual.",
+   "temas_afectados": [
+    "3.B.1",
+    "3.B.2",
+    "3.B.3"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D063",
+   "clave": "rentabilidades",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Mayúsculas o minúsculas para las rentabilidades (r_f, r_M, r_i)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Minúsculas r_f, r_M, r_i (Bodie-Kane-Marcus; coherente con r_E, r_D)"
+    },
+    {
+     "id": "b",
+     "texto": "Mayúsculas R_f, R_M, R_i"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Un solo criterio en el bloque.",
+   "temas_afectados": [
+    "3.B.2",
+    "3.B.3",
+    "3.B.23",
+    "3.B.25"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md",
+    "modelos/capm.md",
+    "modelos/markowitz.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D064",
+   "clave": "diamond-dybvig-not",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Qué notación se usa en Diamond-Dybvig?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La de Freixas-Rochet: π fracción de impacientes, R rendimiento a largo, L valor de liquidación, c_1 y c_2 consumos"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener τ, r_1, r_2 de 4.A.20"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "τ choca con el coste iceberg y con los tipos impositivos.",
+   "temas_afectados": [
+    "4.A.20",
+    "3.B.26",
+    "3.B.27",
+    "3.A.10"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md",
+    "modelos/diamond-dybvig.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D065",
+   "clave": "activos-a",
+   "area": "economia-espanola",
+   "tipo": "notacion",
+   "pregunta": "¿Se mantiene A para la población activa en el 4.A aunque sea la PTF en crecimiento?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí; cuando aparezcan juntas, la PTF se escribe PTF"
+    },
+    {
+     "id": "b",
+     "texto": "Activos con otra letra"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la notación de los manuales de economía española.",
+   "temas_afectados": [
+    "4.A.16",
+    "4.A.17",
+    "4.A.29",
+    "4.A.30"
+   ],
+   "fichas": [
+    "_notacion/economia-espanola.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D066",
+   "clave": "impugnables",
+   "area": "mercados-informacion-juegos",
+   "tipo": "otro",
+   "pregunta": "¿Cómo se llaman los mercados de Baumol, Panzar y Willig (1982)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "«Mercados impugnables (contestables)»"
+    },
+    {
+     "id": "b",
+     "texto": "«Mercados contestables»"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 3.A.17 dice impugnables y 3.A.19 y 4.B.15 contestables.",
+   "temas_afectados": [
+    "3.A.15",
+    "3.A.17",
+    "3.A.19",
+    "4.B.15"
+   ],
+   "fichas": [
+    "modelos/mercados-impugnables.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D067",
+   "clave": "consolidacion-etapas",
+   "area": "sector-publico",
+   "tipo": "otro",
+   "pregunta": "¿Qué periodización de la política fiscal española se adopta?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "1975-1982, 1982-1989, 1989-1995, 1996-2007, 2008-2012, 2012-2019, 2020-2023 y desde 2024"
+    },
+    {
+     "id": "b",
+     "texto": "La de cada tema (1990-1995, 2012-2018…)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 4.B.22 y 4.B.26 dan fechas distintas para las mismas etapas.",
+   "temas_afectados": [
+    "4.B.22",
+    "4.B.26",
+    "4.A.28",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/consolidacion-fiscal-espana.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D068",
+   "clave": "ref-lucas-rapping",
+   "area": "macro-cerrada",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Lucas-Rapping (oferta de trabajo intertemporal)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.25 (lo pide su título y es el único que lo desarrolla)"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.6, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El mapa lo asignó a 3.A.6 por el nombre de Lucas.",
+   "temas_afectados": [
+    "3.A.25",
+    "3.A.6",
+    "3.A.42"
+   ],
+   "fichas": [
+    "modelos/lucas-rapping.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D069",
+   "clave": "ref-efectos-no-keynesianos",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de los efectos no keynesianos de la consolidación fiscal?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.4, como en el mapa (aplicación en 4.B.26)"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.39 o 3.A.40"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es el que más lo trata; además 4.B.4 lo expone dos veces y hay que dejarlo en una.",
+   "temas_afectados": [
+    "4.B.4",
+    "3.A.39",
+    "3.A.40",
+    "4.B.26"
+   ],
+   "fichas": [
+    "modelos/efectos-no-keynesianos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D070",
+   "clave": "ref-stiglitz-weiss",
+   "area": "mercados-informacion-juegos",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Stiglitz-Weiss (racionamiento del crédito)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.13, ampliándolo con supuestos, ecuaciones y los dos gráficos; 3.B.27 y 4.A.20 pasan a resumen aplicado"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.27, que hoy lo desarrolla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la aplicación canónica de selección adversa y riesgo moral a la vez, que es el título de 3.A.13.",
+   "temas_afectados": [
+    "3.A.13",
+    "3.B.27",
+    "4.A.20"
+   ],
+   "fichas": [
+    "modelos/stiglitz-weiss.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D071",
+   "clave": "ref-impugnables",
+   "area": "mercados-informacion-juegos",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de los mercados impugnables?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.15 (tamaño de la empresa y barreras), cuando se redacte; mientras tanto 3.A.19"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.19"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El inventario de 3.A.19 dice que el contenido pertenece a 3.A.15.",
+   "temas_afectados": [
+    "3.A.15",
+    "3.A.17",
+    "3.A.19",
+    "4.B.15"
+   ],
+   "fichas": [
+    "modelos/mercados-impugnables.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D072",
+   "clave": "ref-cbam",
+   "area": "union-europea",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del mecanismo de ajuste en frontera por carbono (MAFC/CBAM)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.31 (cambio climático) para la economía del instrumento; 3.B.37 (recurso propio) y 3.B.41 en resumen"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.37, hoy el único que lo trata"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.B.31 no tiene fuente.",
+   "temas_afectados": [
+    "3.B.31",
+    "3.B.37",
+    "3.B.41",
+    "4.A.6"
+   ],
+   "fichas": [
+    "modelos/cbam.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D073",
+   "clave": "ref-union-bancaria",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde van la Unión Bancaria y la Unión de Mercados de Capitales?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Diseño de las dos en 3.B.44 (UMC trasladada desde 3.B.39); aplicación a España en 4.A.19"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener la UMC en 3.B.39 y la Unión Bancaria en 4.A.18"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.B.44 las tiene en el título y no tiene fuente.",
+   "temas_afectados": [
+    "3.B.44",
+    "3.B.39",
+    "4.A.18",
+    "4.A.19"
+   ],
+   "fichas": [
+    "modelos/union-bancaria.md",
+    "modelos/union-mercados-capitales.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D074",
+   "clave": "ref-armonizacion",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la armonización fiscal en la UE?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.39: historia y estrategias; IVA e impuestos especiales en resumen en 4.B.20; imposición directa (IS, BEFIT, pilar 2) en 4.B.18"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.13, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El viejo 4.B.18 desaparece y su nota lo destina al nuevo 3.B.39.",
+   "temas_afectados": [
+    "3.B.39",
+    "4.B.13",
+    "4.B.18",
+    "4.B.20"
+   ],
+   "fichas": [
+    "modelos/armonizacion-fiscal-ue.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D075",
+   "clave": "ref-lorenz",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Dónde se define la curva de Lorenz?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.3 (antes y después de impuestos); 4.A.3 la usa con datos"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.24"
+    },
+    {
+     "id": "c",
+     "texto": "4.A.3"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Un solo lugar para la definición.",
+   "temas_afectados": [
+    "4.B.3",
+    "3.A.24",
+    "4.A.3",
+    "4.B.9"
+   ],
+   "fichas": [
+    "modelos/curva-lorenz.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D076",
+   "clave": "ref-competencia-fiscal",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la competencia fiscal?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.14 (federalismo fiscal), con aplicaciones internacional en 4.B.18 y entre CCAA en 4.B.25"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.12, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La competencia entre jurisdicciones es teoría central del federalismo; 4.B.12 solo la menciona.",
+   "temas_afectados": [
+    "4.B.14",
+    "4.B.12",
+    "4.B.18",
+    "4.B.25"
+   ],
+   "fichas": [
+    "modelos/competencia-fiscal.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D077",
+   "clave": "ref-sec-impuestos",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Dónde va la clasificación SEC 2010 de los impuestos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.7 (ingresos públicos y clases de impuestos), con remisión desde 4.B.12 y 4.B.13 y las cifras de España en 4.B.23"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.12, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "4.B.12 solo la resume.",
+   "temas_afectados": [
+    "4.B.7",
+    "4.B.12",
+    "4.B.13",
+    "4.B.23"
+   ],
+   "fichas": [
+    "modelos/sec-2010-impuestos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D078",
+   "clave": "ref-doom-loop",
+   "area": "economia-espanola",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del bucle diabólico banca-soberano?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.A.18 (crisis de 2008 en España), con la teoría general en 3.B.26 y la solución institucional en 3.B.44"
+    },
+    {
+     "id": "b",
+     "texto": "4.A.20, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es donde el mecanismo explica lo ocurrido en 2010-2012.",
+   "temas_afectados": [
+    "4.A.18",
+    "4.A.20",
+    "3.B.26",
+    "3.B.44"
+   ],
+   "fichas": [
+    "modelos/doom-loop.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D079",
+   "clave": "exceso-gravamen-dup",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparte el exceso de gravamen entre 4.B.9 y 4.B.11?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Desarrollo solo en 4.B.9; en 4.B.11 resumen de media página con remisión"
+    },
+    {
+     "id": "b",
+     "texto": "Equilibrio parcial en 4.B.9 y equilibrio general (sistema con S_ij, antesala de Ramsey) en 4.B.11"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El apartado 1 de 4.B.11 repite el núcleo de 4.B.9 con los mismos tres gráficos.",
+   "temas_afectados": [
+    "4.B.9",
+    "4.B.11",
+    "4.B.7"
+   ],
+   "fichas": [
+    "modelos/exceso-gravamen.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D080",
+   "clave": "ue-intro-dup",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Qué se hace con la introducción común repetida en los temas de la UE?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Enganche propio en cada tema; la historia general solo en 3.B.36"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Cita de Monnet y párrafos idénticos en 3.B.36, 3.B.39, 3.B.40, 3.B.41 y otros.",
+   "temas_afectados": [
+    "3.B.36",
+    "3.B.39",
+    "3.B.40",
+    "3.B.41"
+   ],
+   "fichas": [
+    "modelos/tratados-ue.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D081",
+   "clave": "atkinson-epsilon",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva la aversión a la desigualdad del índice de Atkinson?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ϵ (épsilon lunada, como Atkinson 1970), distinta de ε elasticidad"
+    },
+    {
+     "id": "b",
+     "texto": "e"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la del artículo; los dos glifos se distinguen en la tipografía del temario.",
+   "temas_afectados": [
+    "3.A.24",
+    "4.B.3",
+    "4.A.3"
+   ],
+   "fichas": [
+    "_notacion/equilibrio-general-bienestar.md",
+    "modelos/atkinson-indice.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D082",
+   "clave": "pnci",
+   "area": "macro-abierta",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se llama la paridad de intereses sin cobertura?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Paridad no cubierta de intereses (PNCI), citando PDI («descubierta») como sinónimo"
+    },
+    {
+     "id": "b",
+     "texto": "PDI"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 3.B.13 dice PDI y 3.B.14 PNCI.",
+   "temas_afectados": [
+    "3.B.13",
+    "3.B.14",
+    "3.B.17"
+   ],
+   "fichas": [
+    "_notacion/macro-abierta.md",
+    "modelos/paridad-intereses.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D083",
+   "clave": "libertad-comercial",
+   "area": "comercio",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva la libertad comercial τ^{1−σ} en la NEG?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "φ_τ"
+    },
+    {
+     "id": "b",
+     "texto": "ζ (evita otro uso de φ)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Una sola letra en todo el bloque; φ_τ es la de Baldwin et al.",
+   "temas_afectados": [
+    "3.B.6",
+    "3.B.10",
+    "3.B.40"
+   ],
+   "fichas": [
+    "_notacion/comercio.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D084",
+   "clave": "gordon",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben el crecimiento del dividendo y la rentabilidad de la reinversión en Gordon-Shapiro?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "g = b·ROE (g crecimiento, b tasa de retención)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener d (3.B.4) e y (3.B.3)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Brealey-Myers y Bodie-Kane-Marcus; hoy hay tres letras en tres temas.",
+   "temas_afectados": [
+    "3.B.2",
+    "3.B.3",
+    "3.B.4"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md",
+    "modelos/gordon-shapiro.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D085",
+   "clave": "flujos",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben el desembolso inicial y los flujos de caja?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "I_0 y FC_t (FCL_t si es libre)"
+    },
+    {
+     "id": "b",
+     "texto": "A y Q_t como en 3.B.2"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Coherencia entre 3.B.2 y 3.B.4.",
+   "temas_afectados": [
+    "3.B.2",
+    "3.B.4",
+    "4.B.6"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D086",
+   "clave": "programa-estabilidad",
+   "area": "sector-publico",
+   "tipo": "otro",
+   "pregunta": "¿Cómo se interpreta «Programa de Estabilidad» en el título de 4.B.23, si con el marco de 2024 ya no existe con ese nombre?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Como el plan fiscal-estructural de medio plazo y su informe anual de progreso, explicándolo en una frase"
+    },
+    {
+     "id": "b",
+     "texto": "Tratarlo como el antiguo Programa de Estabilidad, con la historia hasta 2024"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El título es anterior a la reforma de la gobernanza de 2024.",
+   "temas_afectados": [
+    "4.B.23",
+    "3.B.45",
+    "4.B.26"
+   ],
+   "fichas": [
+    "modelos/programa-estabilidad.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D087",
+   "clave": "leontief-id",
+   "area": "consumidor-produccion",
+   "tipo": "otro",
+   "pregunta": "¿Se separa la paradoja de Leontief de la función de coeficientes fijos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: id propio `paradoja-leontief` (comercio) en `alias.json`; la tabla input-output con otro id"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener un solo id"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Son tres contenidos distintos con el mismo nombre propio.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.B.5",
+    "3.A.31"
+   ],
+   "fichas": [
+    "modelos/leontief.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D088",
+   "clave": "ref-rbc-fiscal",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del RBC con política fiscal?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.4, como en el mapa"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.42 (ciclos reales), dejando en 4.B.4 el resultado"
+    },
+    {
+     "id": "c",
+     "texto": "3.A.38"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es el único que lo desarrolla con ecuaciones; el modelo base está en 3.A.42.",
+   "temas_afectados": [
+    "4.B.4",
+    "3.A.38",
+    "3.A.42"
+   ],
+   "fichas": [
+    "modelos/rbc-sims.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D089",
+   "clave": "ref-suavizacion",
+   "area": "macro-cerrada",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la suavización impositiva de Barro (1979)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.39 (financiación del déficit), con la versión con ecuaciones de 4.B.11"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.11 (imposición óptima), que hoy la desarrolla mejor"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es una teoría de la financiación óptima del déficit.",
+   "temas_afectados": [
+    "3.A.39",
+    "4.B.11",
+    "4.B.9"
+   ],
+   "fichas": [
+    "modelos/suavizacion-impositiva-barro.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D090",
+   "clave": "ref-solow-mrw",
+   "area": "macro-cerrada",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparte Mankiw-Romer-Weil entre 3.A.43 y 3.A.45?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Modelo teórico en 3.A.43 (con Harrod-Domar como antecedente breve) y estimación y evidencia en 3.A.45"
+    },
+    {
+     "id": "b",
+     "texto": "Dejarlo en 3.A.45, como hoy"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El modelo está en el título de 3.A.43; la nota inicial del propio tema ya pedía sustituir Harrod-Domar por MRW.",
+   "temas_afectados": [
+    "3.A.43",
+    "3.A.45"
+   ],
+   "fichas": [
+    "modelos/solow-mrw.md",
+    "modelos/solow.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D091",
+   "clave": "ref-yardstick",
+   "area": "mercados-informacion-juegos",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la competencia referencial (yardstick)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.17, junto a Averch-Johnson, price cap y Laffont-Tirole"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.20 (regulación óptima)"
+    },
+    {
+     "id": "c",
+     "texto": "4.B.15, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es teoría de la regulación del monopolio natural; hoy nadie la desarrolla.",
+   "temas_afectados": [
+    "3.A.17",
+    "3.A.20",
+    "4.B.15"
+   ],
+   "fichas": [
+    "modelos/yardstick.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D092",
+   "clave": "ref-captura",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la teoría de la captura del regulador?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.20 (regulación: teoría positiva) y los grupos de interés (Olson, Becker 1983) en 4.B.2"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.2, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la teoría positiva de la regulación; 3.A.20 no tiene fuente.",
+   "temas_afectados": [
+    "3.A.20",
+    "4.B.2",
+    "4.B.15"
+   ],
+   "fichas": [
+    "modelos/captura-regulador.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D093",
+   "clave": "ref-mede",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde se desarrolla el MEDE?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.45, a partir de la descripción de 3.B.37; 3.B.36 y 3.B.37 en mención o resumen"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.37"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy hay dos descripciones paralelas y el tema de referencia no tiene fuente.",
+   "temas_afectados": [
+    "3.B.45",
+    "3.B.36",
+    "3.B.37"
+   ],
+   "fichas": [
+    "modelos/mede.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D094",
+   "clave": "ref-atkinson",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del índice de Atkinson?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.3 (medición del impacto redistributivo, con Gini y Theil); 3.A.24 lo menciona como FBS implícita"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.24"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es donde se mide la desigualdad con índices.",
+   "temas_afectados": [
+    "4.B.3",
+    "3.A.24",
+    "4.A.3"
+   ],
+   "fichas": [
+    "modelos/atkinson-indice.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D095",
+   "clave": "ref-leviatan",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del Leviatán de Brennan y Buchanan?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.2 (límite normativo); 4.B.5 lo menciona como causa del gasto y 4.B.14 la hipótesis de la descentralización"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.5, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El modelo como límite constitucional es de 4.B.2.",
+   "temas_afectados": [
+    "4.B.2",
+    "4.B.5",
+    "4.B.14"
+   ],
+   "fichas": [
+    "modelos/leviatan-brennan-buchanan.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D096",
+   "clave": "ref-itf",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del impuesto sobre transacciones financieras?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.18 (fiscalidad internacional), junto al impuesto sobre servicios digitales"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.13"
+    },
+    {
+     "id": "c",
+     "texto": "Mención en 4.B.20"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Encaja en la fiscalidad internacional y los recursos propios de la UE.",
+   "temas_afectados": [
+    "4.B.18",
+    "4.B.13",
+    "4.B.20"
+   ],
+   "fichas": [
+    "modelos/itf.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D097",
+   "clave": "ref-descomposicion-pib",
+   "area": "economia-espanola",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la descomposición del PIB per cápita?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.A.30 (convergencia real con la UE), con aplicación regional en 4.A.17"
+    },
+    {
+     "id": "b",
+     "texto": "4.A.29, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con el título nuevo la convergencia real es de 4.A.30 y el bloque del antiguo 4.A.29 debe trasladarse allí.",
+   "temas_afectados": [
+    "4.A.30",
+    "4.A.29",
+    "4.A.17"
+   ],
+   "fichas": [
+    "modelos/descomposicion-pib-per-capita.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D098",
+   "clave": "renta-sustitucion-4b9",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Qué versión del efecto renta y sustitución de los impuestos se queda en 4.B.9?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La propia (1.2, modelo 1×2×2×2); lo que aporta la copiada (1.3, consumo-ocio) va a 4.B.10"
+    },
+    {
+     "id": "b",
+     "texto": "Las dos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La 1.3 repite la 1.2 con otro modelo.",
+   "temas_afectados": [
+    "4.B.9",
+    "4.B.10",
+    "4.B.11"
+   ],
+   "fichas": [
+    "modelos/efecto-renta-sustitucion-impuesto.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D099",
+   "clave": "fisher-4b9-4b10",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde se desarrolla el modelo de Fisher con impuestos (consumo-ahorro)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "En 4.B.10 (efectos incentivo sobre el ahorro); 4.B.9 lo resume"
+    },
+    {
+     "id": "b",
+     "texto": "En 4.B.9; 4.B.10 lo resume"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 4.B.9 y 4.B.10 desarrollan el mismo bloque casi igual.",
+   "temas_afectados": [
+    "4.B.9",
+    "4.B.10",
+    "3.A.33"
+   ],
+   "fichas": [
+    "modelos/fisher-intertemporal.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D100",
+   "clave": "sf-espana-dup",
+   "area": "economia-espanola",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde va la introducción común del sistema financiero español?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Solo en 4.A.18; 4.A.19 y 4.A.20 con enganche propio y remisión"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerla en los tres"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Se repite casi literalmente en 4.A.18, 4.A.19 y 4.A.20.",
+   "temas_afectados": [
+    "4.A.18",
+    "4.A.19",
+    "4.A.20"
+   ],
+   "fichas": [
+    "modelos/sistema-financiero-espanol.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D101",
+   "clave": "escala",
+   "area": "consumidor-produccion",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el factor de escala en los rendimientos a escala?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "t (F(tz) = t^k F(z)); λ solo multiplicador"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener λ"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "MWG usa t o α para la escala; λ es el multiplicador del 3.A.8.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.A.12"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D102",
+   "clave": "conjunto-produccion",
+   "area": "consumidor-produccion",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el conjunto de posibilidades de producción?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "𝒴 (caligráfica)"
+    },
+    {
+     "id": "b",
+     "texto": "Y como MWG"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Y es también uno de los bienes del 2×2×2×2 y la producción agregada.",
+   "temas_afectados": [
+    "3.A.11",
+    "3.A.21"
+   ],
+   "fichas": [
+    "_notacion/consumidor-produccion.md",
+    "_notacion/equilibrio-general-bienestar.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D103",
+   "clave": "coste-fijo",
+   "area": "mercados-informacion-juegos",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el coste fijo en Dixit-Stiglitz y competencia monopolística?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "CF, con C(q) = CF + cq"
+    },
+    {
+     "id": "b",
+     "texto": "F, como en el comercio (Krugman 1979, Melitz)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "F(·) es la función de producción en micro; en comercio se admite F (F^d, F^x en Melitz) por ser la notación de los artículos.",
+   "temas_afectados": [
+    "3.A.18",
+    "3.B.6"
+   ],
+   "fichas": [
+    "_notacion/mercados-informacion-juegos.md",
+    "_notacion/comercio.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D104",
+   "clave": "tipos-jugador",
+   "area": "mercados-informacion-juegos",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escriben los tipos de jugador y las creencias en los juegos bayesianos?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "t_i ∈ 𝒯_i y creencias μ (Gibbons); valoraciones v_i y pujas b_i en subastas"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener θ_i"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "θ es la CRRA y α se usa en la puja.",
+   "temas_afectados": [
+    "3.A.14",
+    "3.A.13"
+   ],
+   "fichas": [
+    "_notacion/mercados-informacion-juegos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D105",
+   "clave": "laibson",
+   "area": "pensamiento",
+   "tipo": "notacion",
+   "pregunta": "¿Se mantiene la notación β-δ del descuento cuasihiperbólico de Laibson aunque δ sea la depreciación?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí, como excepción avisada (es el nombre del modelo)"
+    },
+    {
+     "id": "b",
+     "texto": "Escribir β y un factor exponencial con otra letra"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El modelo se conoce como «β-δ» y no convive con la depreciación.",
+   "temas_afectados": [
+    "3.A.1",
+    "3.A.29"
+   ],
+   "fichas": [
+    "_notacion/pensamiento.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D106",
+   "clave": "nash-gamma",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el poder negociador del trabajador en la negociación de Nash?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "γ, dentro de 3.A.27 (no convive con las tasas de crecimiento)"
+    },
+    {
+     "id": "b",
+     "texto": "β_N"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Pissarides usa β, que choca con el descuento.",
+   "temas_afectados": [
+    "3.A.26",
+    "3.A.27"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D107",
+   "clave": "mrw-beta",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva la elasticidad del capital humano en Mankiw-Romer-Weil?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "β, como el artículo (no convive con el factor de descuento en 3.A.43-3.A.45)"
+    },
+    {
+     "id": "b",
+     "texto": "Otra letra, p. ej. α_h"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la notación del artículo y de los manuales; α_H ya se propone para Uzawa-Lucas.",
+   "temas_afectados": [
+    "3.A.43",
+    "3.A.45"
+   ],
+   "fichas": [
+    "modelos/solow-mrw.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D108",
+   "clave": "hull",
+   "area": "finanzas-empresa",
+   "tipo": "notacion",
+   "pregunta": "¿Qué notación se usa para los derivados?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La de Hull (S_0, S_T, F_0, K, c, p, C, P, r, T), avisando de que para divisas S_0 ≡ E_0"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener X y P_ejercicio para el precio de ejercicio"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Manual de referencia; hoy P_0 es a la vez prima de la put y precio de la acción.",
+   "temas_afectados": [
+    "3.B.25",
+    "3.B.13"
+   ],
+   "fichas": [
+    "_notacion/finanzas-empresa.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D109",
+   "clave": "desplazamiento",
+   "area": "sector-publico",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva la proporción de inversión privada desplazada en el precio sombra del capital (4.B.6)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "ϕ; α solo para la elasticidad del capital"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener α"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Choque con la Cobb-Douglas de Barro (1990) en 4.B.5.",
+   "temas_afectados": [
+    "4.B.6",
+    "4.B.5"
+   ],
+   "fichas": [
+    "_notacion/sector-publico.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D110",
+   "clave": "trampas-pobreza",
+   "area": "macro-cerrada",
+   "tipo": "otro",
+   "pregunta": "¿Se sustituye el ejemplo formal de trampa de pobreza de 3.A.43?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí, por un ejemplo con un tramo de rendimientos crecientes que genere dos estados estacionarios"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerlo corrigiendo el texto"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El ejemplo actual (AK hasta un umbral y producción constante después) no genera dos estados estacionarios.",
+   "temas_afectados": [
+    "3.A.43",
+    "3.B.28"
+   ],
+   "fichas": [
+    "modelos/trampas-pobreza.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D111",
+   "clave": "ref-patinkin",
+   "area": "pensamiento",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Patinkin?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.4 (antecedente del desequilibrio y debate con Keynes)"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.5 (efecto Pigou-Patinkin dentro de la síntesis)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con el título vigente entra como antecedente del desequilibrio, que es de 3.A.4.",
+   "temas_afectados": [
+    "3.A.4",
+    "3.A.5"
+   ],
+   "fichas": [
+    "modelos/patinkin.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D112",
+   "clave": "ref-input-output",
+   "area": "macro-cerrada",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de las tablas input-output?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.A.31 (lo tiene en el título; sin fuente)"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.30, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.30 remite cuatro veces a 3.A.31 y dice que allí «no hay que explayarse».",
+   "temas_afectados": [
+    "3.A.31",
+    "3.A.30"
+   ],
+   "fichas": [
+    "modelos/input-output.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D113",
+   "clave": "ref-falvey",
+   "area": "comercio",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Falvey (comercio intraindustrial vertical)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.6 (el único que lo resume con ecuación y gráfico); pasa al área de comercio"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.18, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "En 3.B.6 responde a su pregunta; 3.A.18 solo lo menciona.",
+   "temas_afectados": [
+    "3.B.6",
+    "3.A.18"
+   ],
+   "fichas": [
+    "modelos/falvey.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D114",
+   "clave": "ref-haberler",
+   "area": "comercio",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de Haberler (determinación de la RRI)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.5 (lo tiene en el título y lo desarrolla); corregir el mapa"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.7, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El mapa lo asignó por una coincidencia de palabras.",
+   "temas_afectados": [
+    "3.B.5",
+    "3.B.7"
+   ],
+   "fichas": [
+    "modelos/haberler.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D115",
+   "clave": "ref-brander-krugman",
+   "area": "comercio",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Dónde se desarrolla Brander-Krugman (dumping recíproco)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.8 la versión con arancel (Brander, 1981) y 3.B.6 resume el dumping recíproco como explicación del comercio intraindustrial"
+    },
+    {
+     "id": "b",
+     "texto": "Todo en 3.B.6"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "La política comercial estratégica es el título de 3.B.8.",
+   "temas_afectados": [
+    "3.B.8",
+    "3.B.6"
+   ],
+   "fichas": [
+    "modelos/brander-krugman.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D116",
+   "clave": "ref-contango",
+   "area": "finanzas-empresa",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la teoría de las expectativas y el contango (Keynes, Hicks)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.25 (derivados), con mención en 3.B.13 y el anexo duplicado solo en 3.B.25"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.13, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es una teoría del precio de los futuros.",
+   "temas_afectados": [
+    "3.B.25",
+    "3.B.13"
+   ],
+   "fichas": [
+    "modelos/expectativas-contango.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D117",
+   "clave": "ref-papel-euro",
+   "area": "union-europea",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del papel internacional del euro?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "3.B.43 (euro) en desarrollo y 3.B.42 en resumen"
+    },
+    {
+     "id": "b",
+     "texto": "3.B.42, que hoy lo desarrolla"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es una dimensión de la moneda; 3.B.43 no tiene fuente.",
+   "temas_afectados": [
+    "3.B.43",
+    "3.B.42"
+   ],
+   "fichas": [
+    "modelos/papel-internacional-euro.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D118",
+   "clave": "ref-semestre",
+   "area": "union-europea",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde van el Semestre Europeo y el procedimiento de desequilibrios macroeconómicos (PDM)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Diseño en 3.B.45; aplicación a España en 4.A.29"
+    },
+    {
+     "id": "b",
+     "texto": "Solo en 3.B.45"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "4.A.29 no desarrolla el PDM aunque lo pide su título.",
+   "temas_afectados": [
+    "3.B.45",
+    "4.A.29"
+   ],
+   "fichas": [
+    "modelos/semestre-europeo.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D119",
+   "clave": "ref-g20-ocde",
+   "area": "historia-organismos",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Se traslada el G-20 y la OCDE de 3.B.35 a 3.B.19?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: la sección IV de 3.B.35 pasa a 3.B.19 (lo pide su título) y 3.B.35 remite"
+    },
+    {
+     "id": "b",
+     "texto": "No"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.B.19 tiene el apartado vacío.",
+   "temas_afectados": [
+    "3.B.19",
+    "3.B.35"
+   ],
+   "fichas": [
+    "modelos/g20-ocde.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D120",
+   "clave": "ref-borda",
+   "area": "equilibrio-general-bienestar",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del recuento de Borda?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.2 (reglas de votación); 3.A.24 lo usa como renuncia a la independencia de alternativas irrelevantes"
+    },
+    {
+     "id": "b",
+     "texto": "3.A.24"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "4.B.2 tiene las reglas de votación en el título.",
+   "temas_afectados": [
+    "4.B.2",
+    "3.A.24"
+   ],
+   "fichas": [
+    "modelos/borda.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D121",
+   "clave": "ref-condorcet-arrow",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparten la paradoja de Condorcet y el teorema de Arrow entre 3.A.24 y 4.B.2?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Condorcet en desarrollo en 4.B.2 (con agenda y voto estratégico) y en resumen en 3.A.24; Arrow en desarrollo en 3.A.24 y en resumen aplicado a la votación en 4.B.2"
+    },
+    {
+     "id": "b",
+     "texto": "Dejar los dos desarrollados en ambos temas"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy los dos temas los desarrollan casi igual.",
+   "temas_afectados": [
+    "3.A.24",
+    "4.B.2"
+   ],
+   "fichas": [
+    "modelos/paradoja-condorcet.md",
+    "modelos/arrow-imposibilidad.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D122",
+   "clave": "ref-financiacion-autonomica",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la financiación autonómica?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.25 (sistemas de financiación de las administraciones territoriales); 4.B.14 la teoría general"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.14, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El sistema español está en el título de 4.B.25; los dos temas están sin fuente.",
+   "temas_afectados": [
+    "4.B.25",
+    "4.B.14"
+   ],
+   "fichas": [
+    "modelos/financiacion-autonomica.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D123",
+   "clave": "ref-impuesto-dual",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia del impuesto dual?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.12 (teoría de la imposición directa) y su aplicación española (base del ahorro) en 4.B.16"
+    },
+    {
+     "id": "b",
+     "texto": "4.B.16, como en el mapa"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es teoría; 4.B.16 no tiene fuente.",
+   "temas_afectados": [
+    "4.B.12",
+    "4.B.16"
+   ],
+   "fichas": [
+    "modelos/impuesto-dual.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D124",
+   "clave": "ref-imv",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Dónde se desarrollan las rentas mínimas y el ingreso mínimo vital?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Diseño teórico (impuesto negativo, renta básica, tipos marginales implícitos) en 4.B.3; el IMV como prestación no contributiva en 4.B.24"
+    },
+    {
+     "id": "b",
+     "texto": "Todo en 4.B.24"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy lo trata 4.B.3; 4.B.24 no tiene fuente.",
+   "temas_afectados": [
+    "4.B.3",
+    "4.B.24"
+   ],
+   "fichas": [
+    "modelos/ingreso-minimo-vital.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D125",
+   "clave": "ref-ajr",
+   "area": "crecimiento",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Cómo se reparte el enfoque institucional (Acemoglu-Johnson-Robinson) entre 3.A.45 y 3.B.28?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "La estimación en 3.A.45 y el enfoque de política del desarrollo en 3.B.28"
+    },
+    {
+     "id": "b",
+     "texto": "Dejarlo desarrollado en los dos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy el bloque se repite casi igual.",
+   "temas_afectados": [
+    "3.A.45",
+    "3.B.28"
+   ],
+   "fichas": [
+    "modelos/ajr-instituciones.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D126",
+   "clave": "harberger-dup",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Se suprime el Harberger (incidencia) copiado en 4.B.9?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: mención de 3-4 líneas en 4.B.9 y remisión a 4.B.8"
+    },
+    {
+     "id": "b",
+     "texto": "No"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El apartado 1.4 de 4.B.9 copia casi literal el de 4.B.8.",
+   "temas_afectados": [
+    "4.B.8",
+    "4.B.9"
+   ],
+   "fichas": [
+    "modelos/harberger-incidencia.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D127",
+   "clave": "tamano-sp-dup",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Qué se hace con los indicadores de tamaño del sector público y el «comodín» del tamaño óptimo en 4.B.1?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Desarrollo solo en 4.B.5 y suprimir de 4.B.1 el comodín (Barro 1990, BMg = CMg), que no pide su título"
+    },
+    {
+     "id": "b",
+     "texto": "Mantenerlos en los dos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 4.B.1 duplica 4.B.5.",
+   "temas_afectados": [
+    "4.B.1",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/indicadores-tamano-sector-publico.md",
+    "modelos/tamano-optimo-sector-publico.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D128",
+   "clave": "niskanen-dup",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Dónde se desarrolla Niskanen?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "En 4.B.2; resumen en 4.B.5"
+    },
+    {
+     "id": "b",
+     "texto": "En los dos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 4.B.2 y 4.B.5 lo desarrollan con el mismo gráfico.",
+   "temas_afectados": [
+    "4.B.2",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/niskanen.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D129",
+   "clave": "educacion-spence",
+   "area": "mercados-informacion-juegos",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe la educación en el modelo de señalización de Spence?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "y (como Spence, 1973); E queda para la función de gasto y la esperanza se escribe 𝔼[·]"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener E"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "En 3.A.13 E es a la vez educación y «éxito», y choca con la función de gasto.",
+   "temas_afectados": [
+    "3.A.13"
+   ],
+   "fichas": [
+    "_notacion/mercados-informacion-juegos.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D130",
+   "clave": "coste-ajuste",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se escribe el coste de ajuste de la inversión (q de Tobin)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Φ(I_t, K_t)"
+    },
+    {
+     "id": "b",
+     "texto": "C(I), como Romer"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "C es consumo en el resto del bloque.",
+   "temas_afectados": [
+    "3.A.34"
+   ],
+   "fichas": [
+    "_notacion/macro-cerrada.md",
+    "modelos/q-tobin.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D131",
+   "clave": "uzawa-eta",
+   "area": "macro-cerrada",
+   "tipo": "notacion",
+   "pregunta": "¿Cómo se distinguen en Uzawa-Lucas la externalidad del capital humano y la participación del capital en Ḣ?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "η para la externalidad y α_H para la participación del capital físico en la producción de capital humano"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener η para las dos"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Hoy 3.A.44 usa η con los dos sentidos.",
+   "temas_afectados": [
+    "3.A.44"
+   ],
+   "fichas": [
+    "modelos/uzawa-lucas.md",
+    "_notacion/macro-cerrada.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D132",
+   "clave": "elasticidad-inversa",
+   "area": "sector-publico",
+   "tipo": "otro",
+   "pregunta": "¿Se suprime «regla de Pigou» para la regla de la elasticidad inversa?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Sí: «regla de la elasticidad inversa» (Ramsey 1927; Baumol-Bradford 1970)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener las dos denominaciones"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "«Regla de Pigou» se confunde con el impuesto pigouviano.",
+   "temas_afectados": [
+    "4.B.11"
+   ],
+   "fichas": [
+    "modelos/elasticidad-inversa.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  },
+  {
+   "id": "D133",
+   "area": "orden de revisión",
+   "tipo": "otro",
+   "pregunta": "¿En qué orden se revisan los temas de microeconomía?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Seguir las dependencias: 3.A.10 antes que 3.A.13 y 3.A.14, y 3.A.22 antes que 3.A.23 (3.A.9, 3.A.11, 3.A.12, 3.A.21, 3.A.16, 3.A.17, 3.A.10, 3.A.13, 3.A.14, 3.A.18, …, 3.A.22, 3.A.23)"
+    },
+    {
+     "id": "b",
+     "texto": "El orden por uso de los modelos que propone el informe (3.A.9, 3.A.11, 3.A.12, 3.A.21, 3.A.16, 3.A.17, 3.A.13, 3.A.14, 3.A.10, 3.A.18, …, 3.A.23 antes que 3.A.22)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "El 3.A.13 usa los seguros del 3.A.10 y el 3.A.23 se apoya en los teoremas del bienestar del 3.A.22: revisar antes el tema del que se depende evita rehacer.",
+   "temas_afectados": [
+    "3.A.10",
+    "3.A.13",
+    "3.A.14",
+    "3.A.22",
+    "3.A.23"
+   ],
+   "fichas": [],
+   "afecta_revisados": false,
+   "estado": "pendiente"
+  }
+ ]
+}
