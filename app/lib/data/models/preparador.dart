@@ -427,3 +427,30 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
   ];
   return lineas.join('\n');
 }
+
+/// Otro preparador del mismo alumno (lo ve cada preparador en la ficha del
+/// alumno): su nombre, su LinkedIn del directorio y su WhatsApp si ha decidido
+/// compartirlo con los demás preparadores de ese alumno.
+class OtroPreparador {
+  const OtroPreparador({required this.uid, required this.nombre, this.linkedin = '', this.telefono = ''});
+  final String uid;
+  final String nombre;
+  final String linkedin;
+  final String telefono;
+}
+
+/// Nota que se dejan entre sí los preparadores de un mismo alumno
+/// (`notasPreparadores/{id}` en sus datos). El alumno no la ve en la app.
+class NotaEntrePreparadores {
+  const NotaEntrePreparadores({required this.id, required this.de, this.deNombre = '', required this.texto, required this.fecha});
+  final String id;
+  final String de;
+  final String deNombre;
+  final String texto;
+  final DateTime fecha;
+
+  Map<String, dynamic> toJson() => {'id': id, 'de': de, 'deNombre': deNombre, 'texto': texto, 'fecha': fecha.toIso8601String()};
+
+  factory NotaEntrePreparadores.fromJson(Map<dynamic, dynamic> j) =>
+      NotaEntrePreparadores(id: j['id'].toString(), de: j['de'] as String? ?? '', deNombre: j['deNombre'] as String? ?? '', texto: j['texto'] as String? ?? '', fecha: _fecha(j['fecha']) ?? DateTime(2026));
+}

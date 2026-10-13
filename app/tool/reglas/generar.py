@@ -241,9 +241,36 @@ USUARIO = """
           && soloCambia(['propuesta', 'updatedAt'])
           && request.resource.data.propuesta.de == request.auth.uid;
       }
-      // El preparador puede leer su propio permiso y renunciar a él.
+      // Cronograma que el preparador hace para su alumno y le manda: solo lo
+      // escribe firmado por él; el alumno (dueño de su subárbol) lo acepta o lo
+      // borra. El preparador ve y retira los que mandó.
+      match /cronogramasRecibidos/{id} {
+        allow create, update: if esPreparadorDe(%OP%, uid) && request.resource.data.de == request.auth.uid;
+        allow read, delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
+      }
+      // El preparador puede leer su propio permiso y renunciar a él; los
+      // preparadores aceptados del alumno ven quiénes son los demás.
       match /preparadores/{preparador} {
         allow get, delete: if conSesionEn(%OP%) && request.auth.uid == preparador;
+        allow read: if esPreparadorDe(%OP%, uid);
+      }
+      // Entre los preparadores de un mismo alumno: el WhatsApp que cada uno
+      // decide compartir con los demás y las notas que se dejan. Solo los
+      // preparadores aceptados del alumno; cada uno escribe lo suyo.
+      match /contactosPreparadores/{preparador} {
+        allow read: if esPreparadorDe(%OP%, uid);
+        allow create, update: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador
+          && request.resource.data.keys().hasOnly(['uid', 'nombre', 'telefono'])
+          && request.resource.data.uid == preparador
+          && request.resource.data.get('telefono', '') is string && request.resource.data.get('telefono', '').size() <= 30;
+        allow delete: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador;
+      }
+      match /notasPreparadores/{id} {
+        allow read: if esPreparadorDe(%OP%, uid);
+        allow create: if esPreparadorDe(%OP%, uid) && request.resource.data.de == request.auth.uid
+          && request.resource.data.texto is string && request.resource.data.texto.size() > 0 && request.resource.data.texto.size() <= 2000;
+        allow update: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid && request.resource.data.de == request.auth.uid;
+        allow delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
       }
 """
 

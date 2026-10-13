@@ -393,6 +393,31 @@ await caso('la preparadora la rechaza (borra la petición en los dos lados)', ()
 });
 await caso('un retirado no puede aceptar', () => assertFails(updateDoc(doc(db('retirado'), 'preparadores/retirado/alumnos/alu'), { aceptado: true })));
 
+console.log('Varios preparadores del mismo alumno; cronogramas que manda el preparador');
+await env.withSecurityRulesDisabled(async (c) => {
+  const d = c.firestore();
+  await setDoc(doc(d, 'users/alu/preparadores/olga'), { uid: 'olga', nombre: 'Olga', aceptado: true });
+  await setDoc(doc(d, 'preparadores/olga/alumnos/alu'), { uid: 'alu', aceptado: true });
+});
+await caso('su preparadora ve quiénes son los otros', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/preparadores'))));
+await caso('una verificada que no le prepara, no', () => assertFails(getDocs(collection(db('admin'), 'users/alu/preparadores'))));
+await caso('comparte su WhatsApp con los otros', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/contactosPreparadores/paula'), { uid: 'paula', nombre: 'Paula', telefono: '600123456' })));
+await caso('…pero no en nombre de otra', () => assertFails(setDoc(doc(db('paula'), 'users/alu/contactosPreparadores/olga'), { uid: 'olga', nombre: 'Olga', telefono: '600' })));
+await caso('…ni con otros campos', () => assertFails(setDoc(doc(db('paula'), 'users/alu/contactosPreparadores/paula'), { uid: 'paula', nombre: 'Paula', telefono: '6', email: 'x' })));
+await caso('la otra preparadora lo ve', () => assertSucceeds(getDoc(doc(db('olga'), 'users/alu/contactosPreparadores/paula'))));
+await caso('otro opositor no', () => assertFails(getDoc(doc(db('pepe'), 'users/alu/contactosPreparadores/paula'))));
+await caso('deja una nota a los otros preparadores', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/notasPreparadores/n1'), { id: 'n1', de: 'paula', deNombre: 'Paula', texto: 'Flojea el 3.A.9', fecha: 'x' })));
+await caso('…no firmada por otra', () => assertFails(setDoc(doc(db('paula'), 'users/alu/notasPreparadores/n2'), { id: 'n2', de: 'olga', texto: 'x', fecha: 'x' })));
+await caso('la otra preparadora la lee', () => assertSucceeds(getDocs(collection(db('olga'), 'users/alu/notasPreparadores'))));
+await caso('…pero no la borra', () => assertFails(deleteDoc(doc(db('olga'), 'users/alu/notasPreparadores/n1'))));
+await caso('quien la escribió la borra', () => assertSucceeds(deleteDoc(doc(db('paula'), 'users/alu/notasPreparadores/n1'))));
+await caso('un pendiente de aceptar no lee las notas', () => assertFails(getDocs(collection(db('paula'), 'users/rosa/notasPreparadores'))));
+await caso('la preparadora manda un cronograma a su alumno', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/cronogramasRecibidos/c1'), { id: 'c1', de: 'paula', temas: ['3.A.1'], enviado: 'x' })));
+await caso('…no en nombre de otra', () => assertFails(setDoc(doc(db('paula'), 'users/alu/cronogramasRecibidos/c2'), { id: 'c2', de: 'olga', temas: [] })));
+await caso('…ni a quien no es su alumno', () => assertFails(setDoc(doc(db('paula'), 'users/pepe/cronogramasRecibidos/c3'), { id: 'c3', de: 'paula', temas: [] })));
+await caso('la otra preparadora no ve el que mandó Paula', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cronogramasRecibidos/c1'))));
+await caso('el alumno lo lee y lo borra al responder', () => assertSucceeds(deleteDoc(doc(db('alu'), 'users/alu/cronogramasRecibidos/c1'))));
+
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();
 process.exit(mal ? 1 : 0);

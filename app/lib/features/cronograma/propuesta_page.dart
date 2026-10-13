@@ -7,6 +7,7 @@ import '../../data/models/cronograma.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import 'cronograma_form_page.dart';
 import 'cronograma_widgets.dart';
 import 'planificador.dart';
 
@@ -18,12 +19,24 @@ class CronogramaDelAlumno extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (!alumno.enlazado) return const SizedBox();
+    void hacerle() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CronogramaFormPage(para: alumno)));
     final c = ref.watch(cronogramaAlumnoProvider(alumno.id)).value;
-    if (c == null) return const SizedBox();
+    if (c == null) {
+      return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        const TituloSeccion('Su cronograma'),
+        Tarjeta(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('No comparte ningún cronograma contigo. Puedes hacerle uno (temas, ritmo y día de cante) y mandárselo: decide él si lo usa.', style: context.textos.bodySmall),
+            const SizedBox(height: 10),
+            OutlinedButton.icon(onPressed: hacerle, icon: const Icon(Icons.event_note, size: 18), label: const Text('Hacerle un cronograma')),
+          ]),
+        ),
+      ]);
+    }
     final estado = estadoDe(c, DateTime.now());
     final s = estado.semanaActual;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-      const TituloSeccion('Su cronograma'),
+      TituloSeccion('Su cronograma', accion: TextButton.icon(onPressed: hacerle, icon: const Icon(Icons.send_outlined, size: 18), label: const Text('Mandarle otro'))),
       Tarjeta(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PropuestaCronogramaPage(alumno: alumno, c: c))),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

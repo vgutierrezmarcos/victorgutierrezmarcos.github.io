@@ -277,7 +277,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               ),
             ],
             const TituloSeccion('Qué ve tu preparador'),
-            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores.', style: context.textos.bodySmall),
+            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores. Si tienes varios preparadores, cada uno ve qué tema cantaste, cuándo y con quién, pero no la valoración ni los comentarios de los otros; saben quiénes son los demás, pueden dejarse notas sobre tu preparación y, si quieren, compartirse el WhatsApp. Si te mandan un cronograma, decides tú si lo usas.', style: context.textos.bodySmall),
             const SizedBox(height: 18),
             FilaEnlace(
               icono: Icons.groups_outlined,

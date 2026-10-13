@@ -922,3 +922,39 @@ final progresoAlumnoProvider = FutureProvider.autoDispose.family<ProgresoAlumno?
   final alumno = repo.alumno(idAlumno);
   return alumno == null ? null : repo.progreso(alumno);
 });
+
+/// Los demás preparadores del alumno [idAlumno] (lado del preparador).
+final otrosPreparadoresProvider = FutureProvider.autoDispose.family<List<OtroPreparador>, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return const [];
+  try {
+    return await repo.otrosPreparadoresDe(a);
+  } catch (_) {
+    return const [];
+  }
+});
+
+/// Si comparto mi WhatsApp con los otros preparadores de [idAlumno].
+final comparteContactoProvider = FutureProvider.autoDispose.family<bool, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return false;
+  try {
+    return await repo.comparteContacto(a);
+  } catch (_) {
+    return false;
+  }
+});
+
+/// Notas entre los preparadores de [idAlumno].
+final notasPreparadoresProvider = FutureProvider.autoDispose.family<List<NotaEntrePreparadores>, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  if (a == null) return const [];
+  try {
+    return await repo.notasPreparadores(a);
+  } catch (_) {
+    return const [];
+  }
+});

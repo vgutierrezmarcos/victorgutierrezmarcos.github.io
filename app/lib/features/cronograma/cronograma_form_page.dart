@@ -7,6 +7,7 @@ import '../../data/models/oposicion.dart';
 import '../../data/models/cronograma.dart';
 import '../../data/models/frecuencia_test.dart';
 import '../../data/models/plan.dart';
+import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
@@ -16,8 +17,12 @@ import 'planificador.dart';
 /// Crear un cronograma: qué ejercicio, qué temas, a qué ritmo o
 /// hasta cuándo, si se intercalan Mixto (3.º) o las dos partes (4.º), y la
 /// vista previa de las primeras semanas.
+///
+/// Con [para], es el preparador quien lo hace para ese alumno y se lo manda:
+/// el alumno lo acepta o lo rechaza en su app.
 class CronogramaFormPage extends ConsumerStatefulWidget {
-  const CronogramaFormPage({super.key});
+  const CronogramaFormPage({super.key, this.para});
+  final Alumno? para;
   @override
   ConsumerState<CronogramaFormPage> createState() => _CronogramaFormPageState();
 }
@@ -32,7 +37,19 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
   bool _estaSemana = true;
   /// Día de la semana en que canta (null = semanas de lunes a domingo). Por
   /// defecto, el de su próximo cante programado.
-  late int? _diaCante = ref.read(cantesProvider).where((c) => !c.borrado && !c.hecho && c.fecha.isAfter(DateTime.now())).firstOrNull?.fecha.weekday;
+  late int? _diaCante = (widget.para == null
+          ? ref.read(cantesProvider).where((c) => !c.borrado && !c.hecho && c.fecha.isAfter(DateTime.now()))
+          : ref.read(sesionesProvider).where((s) => s.alumno == widget.para!.id && !s.borrado && s.pendiente && s.fecha.isAfter(DateTime.now())))
+      .firstOrNull
+      ?.fecha
+      .weekday;
+  final _nota = TextEditingController();
+
+  @override
+  void dispose() {
+    _nota.dispose();
+    super.dispose();
+  }
   /// Primer cante de la vuelta (con día de cante).
   DateTime? _primerCante;
 
@@ -53,7 +70,9 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     final temario = ref.watch(temarioProvider).valueOrNull;
     final estructura = ref.watch(estructuraProvider).valueOrNull;
     final vinculos = ref.watch(misPreparadoresProvider);
-    if (temario == null || estructura == null) return Scaffold(appBar: BarraWeb(title: const Text('Nuevo cronograma')), body: const Cargando());
+    final para = widget.para;
+    final titulo = para == null ? 'Nuevo cronograma' : 'Cronograma para ${para.nombre}';
+    if (temario == null || estructura == null) return Scaffold(appBar: BarraWeb(title: Text(titulo)), body: const Cargando());
 
     final delEjercicio = {for (final t in temario.todosLosTemas.where((t) => t.ejercicio == _ejercicio)) t.codigo};
     final temas = _todos ? delEjercicio : _elegidos.where(delEjercicio.contains).toSet();
@@ -66,6 +85,18 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     final c = crearCronograma(id: nuevoId(), ejercicio: _ejercicio, temas: orden, inicio: inicio, porSemana: _porSemana, fin: _porFecha ? _fin : null, intercalar: _intercalar && !_porTest, cadaN: _cadaN, compartir: _compartir, diaCante: dia);
     final estado = estadoDe(c, DateTime.now());
     final auto = unoDeCada(estructura, _ejercicio, orden);
+
+    Future<void> enviar() async {
+      final nav = Navigator.of(context);
+      final messenger = ScaffoldMessenger.of(context);
+      try {
+        await ref.read(preparadorRepoProvider).enviarCronograma(para!, c, nota: _nota.text.trim());
+        messenger.showSnackBar(SnackBar(content: Text('Enviado. A ${para.nombre} le llega un aviso; cuando lo acepte, lo verás en su ficha.')));
+        nav.pop();
+      } catch (_) {
+        messenger.showSnackBar(const SnackBar(content: Text('No se pudo enviar. Revisa la conexión.')));
+      }
+    }
 
     Future<void> crear() async {
       final nav = Navigator.of(context);
@@ -88,7 +119,7 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
     }
 
     return Scaffold(
-      appBar: BarraWeb(title: const Text('Nuevo cronograma')),
+      appBar: BarraWeb(title: Text(titulo)),
       body: ListaAdaptable(children: [
         const TituloSeccion('Qué vuelta'),
         SegmentedButton<int>(
@@ -241,7 +272,10 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
             ),
           ]),
         ),
-        if (vinculos.isNotEmpty)
+        if (para != null) ...[
+          const TituloSeccion('Nota para el alumno'),
+          TextField(controller: _nota, minLines: 2, maxLines: 4, maxLength: 1000, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Por qué este orden, qué priorizar… (opcional)')),
+        ] else if (vinculos.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Tarjeta(
@@ -257,7 +291,15 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
         const TituloSeccion('Primeras semanas'),
         if (temas.isNotEmpty) SemanasCronograma(c: c.copyWith(semanas: c.semanas.take(3).toList()), estado: estado),
         const SizedBox(height: 10),
-        FilledButton.icon(onPressed: temas.isEmpty ? null : crear, icon: const Icon(Icons.event_note), label: const Text('Crear el cronograma')),
+        if (para == null)
+          FilledButton.icon(onPressed: temas.isEmpty ? null : crear, icon: const Icon(Icons.event_note), label: const Text('Crear el cronograma'))
+        else ...[
+          FilledButton.icon(onPressed: temas.isEmpty ? null : enviar, icon: const Icon(Icons.send_outlined), label: Text('Mandárselo a ${para.nombre}')),
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text('Le llega un aviso y decide si lo usa. Si lo acepta, lo compartirá contigo: lo verás en su ficha y podrás proponerle cambios.', style: context.textos.labelSmall),
+          ),
+        ],
       ]),
     );
   }

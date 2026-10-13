@@ -249,3 +249,27 @@ class Cronograma {
     });
   }
 }
+
+/// Cronograma que un preparador ha hecho para su alumno y le ha mandado: está
+/// en `cronogramasRecibidos/{id}` de los datos del alumno hasta que este lo
+/// acepta (pasa a ser su cronograma, compartido con ese preparador) o lo
+/// rechaza.
+class CronogramaRecibido {
+  const CronogramaRecibido({required this.cronograma, required this.de, this.deNombre = '', required this.enviado, this.nota = ''});
+  final Cronograma cronograma;
+  /// uid del preparador.
+  final String de;
+  final String deNombre;
+  final DateTime enviado;
+  final String nota;
+
+  Map<String, dynamic> toJson() => {...cronograma.toJson(), 'de': de, 'deNombre': deNombre, 'enviado': enviado.toIso8601String(), 'nota': nota};
+
+  factory CronogramaRecibido.fromJson(Map<dynamic, dynamic> j) => CronogramaRecibido(
+        cronograma: Cronograma.fromJson(j),
+        de: j['de'] as String? ?? '',
+        deNombre: j['deNombre'] as String? ?? '',
+        enviado: _fecha(j['enviado']) ?? DateTime(2026),
+        nota: j['nota'] as String? ?? '',
+      );
+}
