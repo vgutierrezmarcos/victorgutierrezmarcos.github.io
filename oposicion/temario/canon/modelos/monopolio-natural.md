@@ -1,7 +1,7 @@
 # Monopolio natural: subaditividad y sostenibilidad
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (Monopolio; monopolio natural)
-- **Temas que lo usan:** 3.A.17 (desarrollo), 3.A.12 (resumen: subaditividad y economías de alcance), 4.A.12, 4.A.15, 4.B.15 (mención), 4.A.5 (previsto)
+- **Temas que lo usan:** 3.A.17 (desarrollo), 3.A.12 (resumen: subaditividad y economías de alcance), 4.A.12, 4.A.15, 4.B.15 (resumen; hoy mención), 4.A.5 (previsto)
 - **Manuales de referencia:** Baumol (1977), *AER*; Baumol, Panzar y Willig (1982); Sharkey (1982); Viscusi, Harrington y Vernon, cap. 11.
 
 ## Presentación de referencia
@@ -17,7 +17,8 @@ Gráfico de referencia: CMe en U con demanda que corta en el tramo decreciente; 
 | 3.A.17 | Monopolio natural | desarrollo | Subaditividad, sostenibilidad, multiproducto, regulación | — |
 | 3.A.12 | Costes y estructura de mercado | resumen | Subaditividad y economías de alcance como propiedades de $C(w,q)$ | Regulación |
 | 4.A.12, 4.A.5 | Industrias de red | mención | Separación red/servicios; cambio técnico que acaba con el monopolio natural | Teoría |
-| 4.A.15, 4.B.15 | Competencia, empresa pública | mención | Justificación de regulación o propiedad pública | Teoría |
+| 4.A.15 | Competencia | mención | Justificación de la regulación | Teoría |
+| 4.B.15 | Empresa pública y regulación | resumen (hoy mención; D139 (13/10/2026)) | Subaditividad, pérdidas con precio igual al CMg y el dilema regulación o propiedad pública, con un gráfico sencillo; remite a 3.A.17 | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.15 escribe la condición de rendimientos crecientes $C(\lambda x_1,\lambda x_2)<\lambda C(x_1,x_2)$ con $x$ para el output: canon $q$.

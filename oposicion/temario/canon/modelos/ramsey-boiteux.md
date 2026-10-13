@@ -1,7 +1,7 @@
 # Precios de Ramsey-Boiteux
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (monopolio natural multiproducto) — único que lo desarrolla. Es la misma regla que la imposición óptima de Ramsey (4.B.11, id `ramsey`): conviene remitir entre ambos.
-- **Temas que lo usan:** 3.A.17 (desarrollo), 4.B.15 (mención con ecuaciones)
+- **Temas que lo usan:** 3.A.17 (desarrollo), 4.B.15 (resumen; hoy mención con ecuaciones)
 - **Manuales de referencia:** Ramsey (1927); Boiteux (1956); Baumol y Bradford (1970); Viscusi, Harrington y Vernon, cap. 11.
 
 ## Presentación de referencia
@@ -14,7 +14,7 @@ Resultado: regla de la elasticidad inversa: margen mayor en los bienes con deman
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.17 | Regulación second best | desarrollo | Programa, derivación, interpretación, problemas de equidad e información | — |
-| 4.B.15 | Precios públicos | mención | Regla y su interpretación | Derivación |
+| 4.B.15 | Precios públicos | resumen (hoy mención; D139 (13/10/2026)) | Regla y su interpretación (margen inverso a la elasticidad con restricción de beneficio nulo) | Derivación |
 | 4.B.11 | Imposición óptima | mención | Equivalencia formal con la regla de Ramsey | — |
 
 ## Divergencias encontradas en el temario actual

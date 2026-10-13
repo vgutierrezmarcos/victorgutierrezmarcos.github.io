@@ -1,7 +1,7 @@
 # Regla de Taylor (Taylor, 1993) y principio de Taylor
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.36 (Política monetaria I: diseño e instrumentación) — es una regla de instrumentación y el título pide el diseño; 3.A.7 la usa para cerrar el modelo NEK.
-- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.7 (resumen: cierre del modelo; hoy desarrollo), 3.A.37, 3.A.38, 3.A.42 (dentro del modelo NEK), 4.B.4 (mención).
+- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.7 (resumen: cierre del modelo; hoy desarrollo), 3.A.37, 3.A.38, 3.A.42 (dentro del modelo NEK), 4.B.4 (resumen; hoy mención).
 - **Manuales de referencia:** Taylor (1993), *Carnegie-Rochester Conference Series* 39; Clarida, Galí y Gertler (1999, 2000); Galí (2015), cap. 4; Walsh (2017), cap. 8; Woodford (2003), cap. 4.
 - **Decisión D021 (13/10/2026):** ¿Qué forma de la regla de Taylor se usa en los modelos? La canónica i_t = r^n + φ_π π_t + φ_x x_t (+ suavización ν i_{t−1} con (1−ν) en la respuesta) en todos los modelos; la original de 1993 solo como cita histórica en 3.A.36, con la equivalencia φ_π = 1 + 0,5
 
@@ -30,7 +30,7 @@ Las dos son la misma regla: φ_π = 1 + 0,5 = 1,5 y φ_x = 0,5. En el modelo NEK
 | 3.A.36 | Diseño e instrumentación | Desarrollo | Las dos formas y su equivalencia; principio de Taylor; reglas frente a discreción; reglas instrumentales frente a reglas objetivo (Svensson); problemas (r* no observable, datos en tiempo real, ELB); evidencia (Clarida-Galí-Gertler 2000: φ_π < 1 antes de Volcker) | — |
 | 3.A.7 | NEK de 2.ª generación | Resumen | Forma canónica como cierre del modelo y el principio de Taylor como condición de determinación | La forma original y el debate reglas/discreción |
 | 3.A.37, 3.A.38, 3.A.42 | Transmisión, política fiscal, ciclos | Mención | Forma canónica (con ν si interesa la persistencia) | — |
-| 4.B.4 | Multiplicadores fiscales | Mención | El multiplicador es mayor si el banco central no sube el tipo (ELB, φ_π bajo) | — |
+| 4.B.4 | Multiplicadores fiscales | Resumen (hoy mención; D139 (13/10/2026)) | Forma canónica $i_t=r^n_t+\phi_\pi\pi_t+\phi_x x_t$ y principio de Taylor ($\phi_\pi>1$); el multiplicador es mayor si el banco central no sube el tipo (ELB, φ_π bajo) | — |
 
 ## Divergencias encontradas en el temario actual
 

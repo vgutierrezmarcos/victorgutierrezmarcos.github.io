@@ -1,7 +1,7 @@
 {
  "_comentario": "Decisiones pendientes del canon para Víctor (consolidación inicial, 13 oct. 2026). Ordenadas por impacto (primero las que cambian el 3.A.8 ya revisado y las que afectan a más temas). La primera opción es la recomendada. Al decidir: poner estado = aprobada | rechazada y elegida = id de opción. Autor: Víctor Gutiérrez Marcos.",
  "fecha": "2026-10-13",
- "total": 132,
+ "total": 139,
  "decisiones": [
   {
    "id": "D001",
@@ -4274,7 +4274,203 @@
    "afecta_revisados": false,
    "estado": "aprobada",
    "elegida": "a"
+  },
+  {
+   "id": "D134",
+   "clave": "ref-incidencia",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la incidencia impositiva en equilibrio parcial?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Doble: 3.A.16 (3.º: incidencia y pérdida de eficiencia en competencia perfecta) y 4.B.8 (4.º: con monopolio, capitalización, Harberger y evidencia), cada uno completo para su examen"
+    },
+    {
+     "id": "b",
+     "texto": "Referencia en 3.A.16 y 4.B.8 con un resumen suficiente para su examen"
+    },
+    {
+     "id": "c",
+     "texto": "Mantener 4.B.8"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "3.A.16 ya la desarrolla como estática comparativa y no puede depender de 4.B.8.",
+   "temas_afectados": [
+    "3.A.16",
+    "4.B.8"
+   ],
+   "fichas": [
+    "modelos/incidencia-equilibrio-parcial.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Aprobada la doble. Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D135",
+   "clave": "ref-condorcet",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de la paradoja de Condorcet? (Sustituye la parte de Condorcet de D121; Arrow sigue igual.)",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Doble, como Borda (D120): 3.A.24 (antesala de Arrow) y 4.B.2 (con agenda, voto estratégico y logrolling)"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener D121: desarrollo en 4.B.2 y resumen en 3.A.24 con el ciclo y su ejemplo"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "En 3.A.24 es la antesala del teorema de Arrow y no puede depender de 4.B.2.",
+   "temas_afectados": [
+    "3.A.24",
+    "4.B.2"
+   ],
+   "fichas": [
+    "modelos/paradoja-condorcet.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Aprobada la doble. Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D136",
+   "clave": "ref-doom-loop",
+   "area": "economia-espanola",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cómo se reparte el bucle banca-soberano (doom loop) entre el 3.º y el 4.º? (Completa D078.)",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Doble: el mecanismo teórico en 3.B.26 (crisis financieras) y el caso español de 2010-2012 en 4.A.18; la solución institucional en 3.B.44"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener D078: referencia en 4.A.18 y resumen en 3.B.26"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Con D078 el 3.º solo tendría un resumen de algo cuyo desarrollo está en el 4.º.",
+   "temas_afectados": [
+    "3.B.26",
+    "4.A.18",
+    "3.B.44"
+   ],
+   "fichas": [
+    "modelos/doom-loop.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Aprobada: el mecanismo en 3.B.26 y el caso español en 4.A.18. Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D137",
+   "clave": "ref-votante-mediano",
+   "area": "sector-publico",
+   "tipo": "tema-referencia",
+   "pregunta": "¿Cuál es el tema de referencia de las preferencias unimodales de Black y el teorema del votante mediano?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Doble: 3.A.24 (salida a Arrow restringiendo el dominio, con gráfico y la ineficiencia frente a Samuelson) y 4.B.2 (además Downs-Hotelling, multidimensionalidad y agenda); 4.B.5 lo aplica al gasto"
+    },
+    {
+     "id": "b",
+     "texto": "Mantener 4.B.2 con un resumen suficiente en 3.A.24"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Comprobado en el inventario: 3.A.24 ya desarrolla la unimodalidad con su gráfico y es la salida clásica a Arrow («desarrollos posteriores» del título). Buchanan-Tullock, Downs-Hotelling y Niskanen siguen con referencia en 4.B.2 y resumen o mención en 3.A.24.",
+   "temas_afectados": [
+    "3.A.24",
+    "4.B.2",
+    "4.B.5"
+   ],
+   "fichas": [
+    "modelos/votante-mediano.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Pidió comprobarlo y hacerlo doble si procedía: procede. Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D138",
+   "clave": "remisiones-3-a-4",
+   "area": "transversal",
+   "tipo": "otro",
+   "pregunta": "¿Qué se hace con las seis remisiones de temas del 3.º a temas del 4.º?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Ninguna es necesaria para entender el tema del 3.º: 3.A.8 → 4.B.6, 3.A.24 → 4.B.2, 3.B.3 → 4.A.20, 3.B.8 → 4.A.25 y 3.B.41 → 4.A.25 quedan solo para ampliar (uso: ampliar en mapa.yaml); 3.B.27 → 4.A.20 (pánicos) pasa a 3.B.26, con 4.A.19 solo para el marco español. Las que faltan de 3.A.16 a 4.B.8 y 4.B.9 y de 3.A.24 a 4.B.2, también solo para ampliar"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Un tema del 3.º no remite al 4.º para algo que necesite: o se cambia la remisión o el 3.º incorpora lo imprescindible.",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.16",
+    "3.A.24",
+    "3.B.3",
+    "3.B.8",
+    "3.B.27",
+    "3.B.41"
+   ],
+   "fichas": [],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Aprobado revisarlas. El 3.A.8 no cambia: la remisión a 4.B.6 ya era de ampliación. Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D139",
+   "clave": "resumenes-4",
+   "area": "sector-publico",
+   "tipo": "reparto-contenido",
+   "pregunta": "¿Qué deben resumir los temas del 4.º que hoy solo mencionan modelos del 3.º que necesitan?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "4.B.15 resume la regulación del monopolio natural (monopolio natural, Ramsey-Boiteux, price cap, Averch-Johnson, Laffont-Tirole, tarifa en dos partes, yardstick, impugnables, captura); 4.B.10 y 4.B.11, Slutsky, Pigou y equivalencia ricardiana (y 4.B.11 el segundo óptimo); 4.B.4, la regla de Taylor en forma canónica"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Un tema del 4.º resume lo imprescindible del modelo aunque esté desarrollado en el 3.º.",
+   "temas_afectados": [
+    "4.B.15",
+    "4.B.10",
+    "4.B.11",
+    "4.B.4"
+   ],
+   "fichas": [
+    "modelos/monopolio-natural.md",
+    "modelos/ramsey-boiteux.md",
+    "modelos/price-cap.md",
+    "modelos/averch-johnson.md",
+    "modelos/laffont-tirole.md",
+    "modelos/tarifa-dos-partes.md",
+    "modelos/yardstick.md",
+    "modelos/mercados-impugnables.md",
+    "modelos/captura-regulador.md",
+    "modelos/slutsky.md",
+    "modelos/pigou.md",
+    "modelos/second-best.md",
+    "modelos/equivalencia-ricardiana.md",
+    "modelos/taylor.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Aprobado para 4.B.15, 4.B.10, 4.B.11 y 4.B.4 (4.A.24 y 4.A.25 quedan como estaban en la propuesta: una frase de resultado al revisarlos). Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
   }
  ],
- "aprobacion": "13/10/2026: Víctor aprueba las recomendadas salvo D088 (c) y D069, D075, D094, D120 (desarrollo en los dos ejercicios). Criterio: 3.er y 4.º ejercicio son exámenes distintos; referencia teórica en el 3.º siempre que se pueda."
+ "aprobacion": "13/10/2026: Víctor aprueba las recomendadas salvo D088 (c) y D069, D075, D094, D120 (desarrollo en los dos ejercicios). Criterio: 3.er y 4.º ejercicio son exámenes distintos; referencia teórica en el 3.º siempre que se pueda. 13/10/2026 (2.ª tanda): Víctor aprueba D134-D139, propuestas por el criterio del 3.er y el 4.º ejercicio (informe § 12)."
 }

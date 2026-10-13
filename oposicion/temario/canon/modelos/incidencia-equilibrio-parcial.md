@@ -1,8 +1,9 @@
 # Incidencia impositiva en equilibrio parcial
 
-- **Área:** sector público · **Tema de referencia:** 4.B.8 (traslación e incidencia) — lo tiene en el título («mercados competitivos y monopolistas; enfoque de equilibrio parcial»). 3.A.16 hace la estática comparativa del impuesto en competencia perfecta.
-- **Temas que lo usan:** 4.B.8 (desarrollo), 3.A.16 (desarrollo como ejercicio de estática comparativa), 4.B.13 (mención: IVA), 4.A.11 (mención: subvención a la vivienda), 4.B.20 (mención prevista: traslación del IVA)
+- **Área:** sector público · **Tema de referencia:** doble, uno por ejercicio. **3.A.16** (3.er ejercicio): incidencia y pérdida de eficiencia de un impuesto en competencia perfecta (cuña fiscal, fórmula de reparto, ley de Dalton, casos extremos, unitario frente a *ad valorem*, triángulo de exceso de gravamen), completa para quien solo estudia el 3.º. **4.B.8** (4.º ejercicio; lo tiene en el título, «mercados competitivos y monopolistas; enfoque de equilibrio parcial»): todo lo anterior más monopolio, oligopolio, capitalización, el enlace con Harberger y la evidencia.
+- **Temas que lo usan:** 3.A.16 (desarrollo, 3.er ejercicio), 4.B.8 (desarrollo, 4.º ejercicio), 4.B.13 (mención: IVA), 4.A.11 (mención: subvención a la vivienda), 4.B.20 (mención prevista: traslación del IVA)
 - **Manuales de referencia:** Rosen y Gayer, cap. 14; Stiglitz y Rosengard, cap. 18; Gruber, cap. 19; Fullerton y Metcalf (2002); Mas-Colell, Whinston y Green, cap. 10.C (impuesto en equilibrio parcial). Evidencia: Benzarti, Carloni, Harju y Kosonen (2020) sobre la asimetría del IVA.
+- **Decisión D134 (13/10/2026):** referencia doble: 3.A.16 en el 3.er ejercicio y 4.B.8 en el 4.º, cada uno completo para su examen (criterio de `CRITERIOS.md` § 6).
 - **Decisión D046 (13/10/2026):** ¿Cómo se escriben los precios con impuesto (consumidor y vendedor)? p_c y p_v (p_c = p_v + t o (1 + t)p_v); en 4.B.11 se admite q_i = p_i + t_i diciendo que q es el precio al consumidor
 
 ## Presentación de referencia
@@ -21,8 +22,8 @@ Proporción soportada por los consumidores: $\varepsilon_S/(\varepsilon_S+\lvert
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 4.B.8 | Incidencia | Desarrollo | Todo lo anterior, monopolio, oligopolio, capitalización y evidencia | — |
-| 3.A.16 | Competencia perfecta: estática comparativa | Desarrollo (como ejercicio) | Desplazamiento del equilibrio por $t$ y fórmula de reparto; «[ver tema 4.B.8]» para la incidencia | Monopolio, capitalización, evidencia |
+| 3.A.16 | Competencia perfecta: estática comparativa y bienestar | Desarrollo (referencia del 3.º) | Desplazamiento del equilibrio por $t$, cuña fiscal, fórmula de reparto, ley de Dalton, casos extremos, unitario frente a *ad valorem* y triángulo de exceso de gravamen, con el gráfico de referencia; «[ver tema 4.B.8]» solo para ampliar | Monopolio, capitalización, Harberger, evidencia |
+| 4.B.8 | Incidencia | Desarrollo (referencia del 4.º) | Todo lo anterior (sin depender del 3.A.16, al que remite), monopolio, oligopolio, capitalización y evidencia | — |
 | 4.B.13 / 4.B.20 | Quién soporta el IVA | Mención | Traslación según elasticidades; asimetría subidas/bajadas (Benzarti et al.) | Gráficos |
 | 4.A.11 | Vivienda | Mención | Con oferta inelástica a corto plazo, la deducción por vivienda se traslada al precio | — |
 

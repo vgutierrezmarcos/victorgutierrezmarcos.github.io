@@ -1,8 +1,8 @@
 # Informe del repaso general del temario (consolidación del canon)
 
-Para Víctor. 13 oct. 2026. Resultado de la consolidación inicial del canon (`/revisartema --canon`): inventario de los 146 temas, fichas de modelos, notación por áreas y mapa de conexiones. Las decisiones están en `decisiones.json` (ids `D001`…`D133`); aquí se agrupan por áreas y se remite a esos ids.
+Para Víctor. 13 oct. 2026. Resultado de la consolidación inicial del canon (`/revisartema --canon`): inventario de los 146 temas, fichas de modelos, notación por áreas y mapa de conexiones. Las decisiones están en `decisiones.json` (ids `D001`…`D139`); aquí se agrupan por áreas y se remite a esos ids.
 
-**Estado (13/10/2026): Víctor ha aprobado las 133 decisiones**, todas con la opción recomendada salvo **D088** (RBC con política fiscal: tema de referencia **3.A.38**, no 4.B.4) y **D069, D075, D094 y D120**, que se desarrollan **en los dos ejercicios** (efectos no keynesianos: 3.A.39 y 4.B.4; curva de Lorenz e índice de Atkinson: 3.A.24 y 4.B.3; recuento de Borda: 3.A.24 y 4.B.2), cada tema completo para su examen. Con ellas entra un criterio nuevo (`CRITERIOS.md` § 6): **el 3.er y el 4.º ejercicio son exámenes distintos**; el tema de referencia de un modelo teórico es, siempre que se pueda, del 3.º; los del 4.º lo aplican y resumen lo imprescindible, y ningún tema depende de estudiar el otro ejercicio. Ya están aplicadas al canon (`notacion.md`, `_notacion/`, `modelos/`, `mapa.yaml`; resumen en `cambios.md`). Lo que queda marcado **[decidir]** en este informe son propuestas nuevas (§ 12).
+**Estado (13/10/2026): Víctor ha aprobado las 133 decisiones**, todas con la opción recomendada salvo **D088** (RBC con política fiscal: tema de referencia **3.A.38**, no 4.B.4) y **D069, D075, D094 y D120**, que se desarrollan **en los dos ejercicios** (efectos no keynesianos: 3.A.39 y 4.B.4; curva de Lorenz e índice de Atkinson: 3.A.24 y 4.B.3; recuento de Borda: 3.A.24 y 4.B.2), cada tema completo para su examen. Con ellas entra un criterio nuevo (`CRITERIOS.md` § 6): **el 3.er y el 4.º ejercicio son exámenes distintos**; el tema de referencia de un modelo teórico es, siempre que se pueda, del 3.º; los del 4.º lo aplican y resumen lo imprescindible, y ningún tema depende de estudiar el otro ejercicio. Ya están aplicadas al canon (`notacion.md`, `_notacion/`, `modelos/`, `mapa.yaml`; resumen en `cambios.md`). Las propuestas nuevas de la § 12 (D134-D139) también están **aprobadas** (13/10/2026) y aplicadas al canon.
 
 Autor: Víctor Gutiérrez Marcos
 
@@ -22,7 +22,7 @@ Autor: Víctor Gutiérrez Marcos
 | Referencias que faltan (sobre todo al tema de referencia de cada modelo) | 731 |
 | Incoherencias internas detectadas en los inventarios | 357 |
 | Marcas [decidir] en fichas y tablas de notación | ≈ 250, deduplicadas en **133 decisiones** (la 133, el orden de revisión): **todas aprobadas el 13/10/2026** y aplicadas al canon |
-| Decisiones por tipo | notación 61 · tema de referencia 36 · reparto de contenido 23 · otras 13 |
+| Decisiones por tipo | notación 61 · tema de referencia 36 · reparto de contenido 23 · otras 13 (más D134-D139, aprobadas después: tema de referencia 4, reparto 1, otras 1) |
 | Decisiones que cambian el 3.A.8 ya revisado | 6 (D001-D006), aprobadas: 19 cambios concretos en `pendientes-coherencia.md` |
 
 ## 2. Decisiones aprobadas (13/10/2026), por área (detalle en `decisiones.json`)
@@ -71,6 +71,9 @@ Todas aprobadas; las seis primeras son las únicas que obligan a volver sobre el
 - Notación: D027 W̄ / Y · D046 p_c, p_v · D047 ε con signo · D029 b, b^c, b^{ca}, b^e, b^p y ε · D109 ϕ · D132 «regla de la elasticidad inversa» · D040 0,5 % y 0,4 % · D086 «Programa de Estabilidad» · D067 etapas.
 - Reparto: D022 normativa de 4.B.12/4.B.13 como semilla de 4.B.16, 4.B.17, 4.B.19 y 4.B.20 · D079 exceso de gravamen en 4.B.9 · D098 versión 1×2×2×2 · D099 Fisher en 4.B.10 · D126 Harberger solo en 4.B.8 · D127 tamaño del sector público en 4.B.5 · D128 Niskanen en 4.B.2 · D055 4.B.21/4.B.22/4.B.23 · D121 Condorcet y Arrow.
 - Temas de referencia: D054 progresividad en **4.B.9** · D094 Atkinson y D075 Lorenz: **dobles**, 4.B.3 (4.º) y 3.A.24 (3.º) · D120 Borda: **doble**, 4.B.2 (4.º) y 3.A.24 (3.º) · D095 Leviatán en **4.B.2** · D076 competencia fiscal en **4.B.14** · D122 financiación autonómica en **4.B.25** · D123 impuesto dual en **4.B.12** · D096 ITF en **4.B.18** · D077 SEC de impuestos en **4.B.7** · D124 rentas mínimas en 4.B.3 e IMV en 4.B.24 · D074 armonización fiscal en **3.B.39** · D069 efectos no keynesianos: **doble**, 3.A.39 (3.º; 3.A.40 lo aplica a 2010-2013) y 4.B.4 (4.º; aplicación a España en 4.B.26) · D088 RBC fiscal en **3.A.38** (elegida por Víctor; la recomendada era 4.B.4), con resumen en 4.B.4.
+
+### 2.9. Segunda tanda, por el criterio del 3.er y el 4.º ejercicio (13/10/2026; § 12)
+- **D134** incidencia en equilibrio parcial: **doble**, 3.A.16 y 4.B.8 · **D135** Condorcet: **doble**, 3.A.24 y 4.B.2 (sustituye esa parte de D121) · **D136** bucle banca-soberano: **doble**, mecanismo en 3.B.26 y caso español en 4.A.18 (completa D078) · **D137** votante mediano: **doble**, 3.A.24 y 4.B.2 · **D138** remisiones del 3.º al 4.º solo para ampliar (3.B.27 pasa a 3.B.26) · **D139** resúmenes propios en 4.B.15, 4.B.10, 4.B.11 y 4.B.4.
 
 ## 3. Referencias «[ver tema …]» erróneas, por tema
 
@@ -400,30 +403,30 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 
 ## 12. Propuestas nuevas por el criterio del 3.er y el 4.º ejercicio (13/10/2026)
 
-Al aplicar las decisiones aprobadas se ha repasado todo `mapa.yaml` con el criterio nuevo de `CRITERIOS.md` § 6. No se ha cambiado nada de esto en el canon: son propuestas.
+Al aplicar las decisiones aprobadas se ha repasado todo `mapa.yaml` con el criterio nuevo de `CRITERIOS.md` § 6. **Aprobadas por Víctor el 13/10/2026 (D134-D139) y aplicadas** a las fichas, `mapa.yaml` y `decisiones.json` (resumen en `cambios.md`). Ninguna afecta al 3.A.8 revisado.
 
 **Modelos teóricos cuyo tema de referencia está solo en el 4.º y que usa algún tema del 3.º**
 
 | Modelo | Referencia hoy | Uso en el 3.º | Propuesta |
 |---|---|---|---|
-| `incidencia-equilibrio-parcial` (incidencia de un impuesto con elasticidades) | 4.B.8 | 3.A.16, **desarrollo** | **[decidir]** Doble, como Lorenz o Borda: 3.A.16 (3.º: incidencia y pérdida de eficiencia en competencia perfecta) y 4.B.8 (4.º: con Harberger). Alternativa: referencia en 3.A.16 y 4.B.8 en resumen suficiente para su examen. |
-| `paradoja-condorcet` | 4.B.2 (D121) | 3.A.24, resumen | **[decidir]** Hacerla doble (3.A.24 y 4.B.2), igual que Borda (D120): en 3.A.24 es la antesala de Arrow y no puede depender de 4.B.2. Si se mantiene D121 tal cual, el resumen de 3.A.24 debe incluir el ciclo de votaciones con su ejemplo. |
-| `doom-loop` (bucle banca-soberano) | 4.A.18 (D078) | 3.B.26, resumen (sin fuente); 3.B.44, mención | **[decidir]** Doble: el mecanismo teórico en 3.B.26 (crisis financieras, 3.º) y el caso español de 2010-2012 en 4.A.18 (4.º). Hoy el 3.º solo tendría un resumen de algo cuyo desarrollo está en el 4.º. |
-| `votante-mediano`, `buchanan-tullock-mayoria-optima`, `downs-hotelling`, `niskanen` | 4.B.2 | 3.A.24 (resumen o mención), 3.A.18 y 3.A.23 (mención) | Mantener la referencia en 4.B.2 (la elección pública es materia del 4.º) y comprobar al revisar 3.A.24 que su resumen del votante mediano y de la mayoría óptima se entiende sin 4.B.2. No requiere decisión salvo que prefieras hacer doble el votante mediano **[decidir]**. |
+| `incidencia-equilibrio-parcial` (incidencia de un impuesto con elasticidades) | 4.B.8 | 3.A.16, **desarrollo** | **Aprobada (D134): doble.** Propuesta: doble, como Lorenz o Borda: 3.A.16 (3.º: incidencia y pérdida de eficiencia en competencia perfecta) y 4.B.8 (4.º: con Harberger). Alternativa: referencia en 3.A.16 y 4.B.8 en resumen suficiente para su examen. |
+| `paradoja-condorcet` | 4.B.2 (D121) | 3.A.24, resumen | **Aprobada (D135): doble.** Propuesta: hacerla doble (3.A.24 y 4.B.2), igual que Borda (D120): en 3.A.24 es la antesala de Arrow y no puede depender de 4.B.2. Si se mantiene D121 tal cual, el resumen de 3.A.24 debe incluir el ciclo de votaciones con su ejemplo. |
+| `doom-loop` (bucle banca-soberano) | 4.A.18 (D078) | 3.B.26, resumen (sin fuente); 3.B.44, mención | **Aprobada (D136): doble.** Propuesta: doble: el mecanismo teórico en 3.B.26 (crisis financieras, 3.º) y el caso español de 2010-2012 en 4.A.18 (4.º). Hoy el 3.º solo tendría un resumen de algo cuyo desarrollo está en el 4.º. |
+| `votante-mediano`, `buchanan-tullock-mayoria-optima`, `downs-hotelling`, `niskanen` | 4.B.2 | 3.A.24 (resumen o mención), 3.A.18 y 3.A.23 (mención) | Mantener la referencia en 4.B.2 (la elección pública es materia del 4.º) y comprobar al revisar 3.A.24 que su resumen del votante mediano y de la mayoría óptima se entiende sin 4.B.2. No requiere decisión salvo que prefieras hacer doble el votante mediano. **Aprobada (D137): el votante mediano, doble (3.A.24 y 4.B.2)**: comprobado que 3.A.24 ya desarrolla la unimodalidad con su gráfico como salida a Arrow. Buchanan-Tullock, Downs-Hotelling y Niskanen siguen en 4.B.2, con resumen o mención autosuficiente en 3.A.24. |
 | `rct` (ensayos aleatorizados) | 4.B.6 | 3.A.1, resumen | Sin cambio: 3.A.1 lo usa como método y basta un resumen propio. |
 
-**Remisiones de temas del 3.º a temas del 4.º** (6 en el inventario). Ninguna debe ser necesaria para entender el tema del 3.º; se dejan solo como «para ampliar»:
+**Remisiones de temas del 3.º a temas del 4.º** (6 en el inventario). Ninguna debe ser necesaria para entender el tema del 3.º; se dejan solo como «para ampliar». **Aprobado (D138)**: en `mapa.yaml` llevan `uso: ampliar` y una `nota`; la de 3.B.27 sobre pánicos pasa a `corregir -> 3.B.26`, y las que faltan de 3.A.16 a 4.B.8/4.B.9 y de 3.A.24 a 4.B.2 también quedan como ampliación:
 
 - 3.A.8 → 4.B.6 (valoración hedónica en el análisis coste-beneficio, ejemplo del Retiro): es una aplicación; el 3.A.8 ya se entiende sin ella. Sin cambio.
 - 3.A.24 → 4.B.2 (nota bajo el criterio de Pareto): con Borda y, si se aprueba, Condorcet desarrollados en 3.A.24, la remisión pasa a ser de ampliación.
-- 3.B.3 → 4.A.20 y 3.B.27 → 4.A.19/4.A.20 (financiación no bancaria, pánicos): el contenido teórico va en 3.B.26 (Diamond-Dybvig) y 3.B.27; remitir al 4.A solo para el caso español.
+- 3.B.3 → 4.A.20 y 3.B.27 → 4.A.19/4.A.20 (financiación no bancaria, pánicos): el contenido teórico va en 3.B.26 (Diamond-Dybvig) y 3.B.27; remitir al 4.A solo para el caso español. (La de 3.B.27 sobre pánicos se corrige a 3.B.26.)
 - 3.B.8 → 4.A.24/4.A.25 y 3.B.41 → 4.A.25 (instrumentos españoles de apoyo a la internacionalización): ejemplos de aplicación; sin cambio.
 
-**Temas del 4.º que hoy solo mencionan modelos del 3.º que necesitan para cantarse** (comprobar al revisarlos; no hace falta decisión, es la regla «un tema del 4.º resume lo imprescindible»):
+**Temas del 4.º que hoy solo mencionan modelos del 3.º que necesitan para cantarse** (comprobar al revisarlos; es la regla «un tema del 4.º resume lo imprescindible»). **Aprobado (D139) para 4.B.15, 4.B.10, 4.B.11 y 4.B.4**: en `mapa.yaml` y en las fichas su papel pasa a «resumen (hoy mencion)» y se añaden las referencias que faltan a 3.A.15, 3.A.9 y 3.A.36:
 
 - **4.B.15** (empresas públicas y regulación): menciona nueve modelos de 3.A.15, 3.A.17 y 3.A.20 (monopolio natural, Ramsey-Boiteux, *price cap*, Averch-Johnson, Laffont-Tirole, tarifa en dos partes, yardstick, impugnables, captura). Necesita un resumen propio de la regulación del monopolio natural.
 - **4.B.10 y 4.B.11**: Slutsky, segundo óptimo, Pigou y equivalencia ricardiana solo mencionados; la imposición óptima necesita al menos el enunciado del segundo óptimo y la descomposición de Slutsky.
 - **4.A.24 y 4.A.25** (sector exterior): Melitz, gravedad, Stiglitz-Weiss mencionados; basta una frase de resultado de cada uno.
 - **4.B.4**: la regla de Taylor solo se menciona; con el NEK fiscal hace falta su forma canónica.
 
-**Idea para la organización** (§ 11): marcar en el PowerPoint los modelos con referencia doble (efectos no keynesianos, Lorenz, Atkinson, Borda y los que se aprueben aquí) con un enlace 3.º ↔ 4.º, para que se vea que cada examen tiene su desarrollo completo.
+**Idea para la organización** (§ 11): marcar en el PowerPoint los modelos con referencia doble (efectos no keynesianos, Lorenz, Atkinson, Borda y, desde D134-D137, incidencia en equilibrio parcial, Condorcet, bucle banca-soberano y votante mediano) con un enlace 3.º ↔ 4.º, para que se vea que cada examen tiene su desarrollo completo.

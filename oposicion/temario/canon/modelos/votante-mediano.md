@@ -1,8 +1,9 @@
 # Preferencias unimodales de Black y teorema del votante mediano
 
-- **Área:** sector público · **Tema de referencia:** 4.B.2 (reglas de votación) — es donde se desarrolla con el gráfico; 3.A.24 lo resume como salida a Arrow y 4.B.5 lo aplica al gasto.
-- **Temas que lo usan:** 4.B.2 (desarrollo), 3.A.24 (resumen), 4.B.5 (resumen: gasto redistributivo), 3.A.18 (mención con Hotelling)
+- **Área:** sector público · **Tema de referencia:** doble, uno por ejercicio. **3.A.24** (3.er ejercicio): las preferencias unimodales de Black y el teorema del votante mediano son la salida clásica a Arrow restringiendo el dominio («desarrollos posteriores» del título); el 3.A.24 actual ya desarrolla la unimodalidad con su gráfico y resume el teorema con la ineficiencia frente a Samuelson. **4.B.2** (4.º ejercicio; reglas de votación): además Downs-Hotelling, multidimensionalidad y agenda. 4.B.5 lo aplica al gasto.
+- **Temas que lo usan:** 3.A.24 (desarrollo, 3.er ejercicio; hoy resumen), 4.B.2 (desarrollo, 4.º ejercicio), 4.B.5 (resumen: gasto redistributivo), 3.A.18 (mención con Hotelling)
 - **Manuales de referencia:** Black (1948), *JPE*, y *The Theory of Committees and Elections* (1958); Mueller, *Public Choice III*, cap. 5; Persson y Tabellini, *Political Economics*, cap. 2; Meltzer y Richard (1981), *JPE*; Romer (1975) y Roberts (1977).
+- **Decisión D137 (13/10/2026):** referencia doble, 3.A.24 y 4.B.2, cada uno completo para su examen (comprobado en el inventario de 3.A.24: la unimodalidad con gráfico ya está desarrollada allí).
 
 ## Presentación de referencia
 **Pregunta:** ¿cuándo la mayoría simple da una ordenación transitiva y qué alternativa gana?
@@ -16,8 +17,8 @@
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 4.B.2 | Reglas de votación | Desarrollo | Teorema, gráfico, eficiencia, multidimensionalidad (Plott, McKelvey) | — |
-| 3.A.24 | Elección social | Resumen | Escapatoria a Arrow restringiendo el dominio | El gráfico |
+| 3.A.24 | Elección social | Desarrollo (referencia del 3.º) | Unimodalidad, teorema y gráfico como escapatoria a Arrow restringiendo el dominio; ganador de Condorcet; ineficiencia frente a la condición de Samuelson [ver tema 3.A.23] | Downs-Hotelling (mención), Plott-McKelvey, Meltzer-Richard |
+| 4.B.2 | Reglas de votación | Desarrollo (referencia del 4.º) | Teorema, gráfico, eficiencia, multidimensionalidad (Plott, McKelvey), Downs-Hotelling | — |
 | 4.B.5 | Crecimiento del gasto | Resumen | Meltzer-Richard | El teorema |
 
 ## Divergencias encontradas en el temario actual

@@ -1,7 +1,7 @@
 # Menú de contratos de Laffont y Tirole (1986)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (Monopolio natural y su regulación) — anexo 2; 4.B.15 (Word del viejo 4.B.16) trae la formalización, que debe pasar a 3.A.17.
-- **Temas que lo usan:** 3.A.17 (resumen), 4.B.15 (mención con ecuaciones)
+- **Temas que lo usan:** 3.A.17 (resumen), 4.B.15 (resumen; hoy mención con ecuaciones)
 - **Manuales de referencia:** Laffont y Tirole (1986), *JPE*; Laffont y Tirole (1993), *A Theory of Incentives in Procurement and Regulation*.
 
 ## Presentación de referencia
@@ -13,7 +13,7 @@ Menú de contratos lineales: $t(C^a,C)=a(C^a)-b(C^a)\,(C-C^a)$, con $b\in[0,1]$ 
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.17 | Regulación con información asimétrica | resumen | Supuestos, menú, dilema rentas-incentivos; enlace con 3.A.13 (principal-agente) | — |
-| 4.B.15 | Empresa pública y regulación | mención | Precio fijo frente a coste incrementado; $p=bF+(1-b)C$ | La formalización |
+| 4.B.15 | Empresa pública y regulación | resumen (hoy mención; D139 (13/10/2026)) | Precio fijo frente a coste incrementado; $p=bF+(1-b)C$ | La formalización |
 
 ## Divergencias encontradas en el temario actual
 - Signo de la transferencia: 4.B.15 escribe $t=a+b(C-C^a)$; con $b$ como poder de los incentivos debe restarse (la empresa soporta el sobrecoste). Comprobar con la fuente.
