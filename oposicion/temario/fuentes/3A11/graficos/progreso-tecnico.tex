@@ -1,0 +1,26 @@
+% Progreso técnico: desplazamiento hacia arriba de la función de producción a corto
+% plazo y hacia el origen de la isocuanta.
+% (a) F_0(z_L) = 0,45 (1,2 z_L^2 - 0,2 z_L^3) (con z_K fijo), F_1 = 1,4 F_0.
+% (b) Isocuanta z_K z_L = 2,4 antes y z_K z_L = 2,4/1,4^2 después (Cobb-Douglas
+%     q = A (z_K z_L)^{1/2}: con A_1 = 1,4 A_0 basta 1/1,4 de cada factor).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel (a) ----------------
+  \capa{1}{\ejes{$z_L$}{$q$}{4.8}{4.6}}
+  \capa{1}{\draw[curva1] plot[domain=0:4,samples=80] (\x,{0.45*(1.2*\x^2-0.2*\x^3)}) node[etiqueta,right] {$F_0(z_L;\bar z_K)$};}
+  \capa{2}{\draw[curvanueva] plot[domain=0:4,samples=80] (\x,{1.4*0.45*(1.2*\x^2-0.2*\x^3)}) node[etiqueta,right] {$F_1(z_L;\bar z_K)$};}
+  \capa{2}{\draw[flecha] (2.8,2.1) -- ++(0,0.75);}
+  \node[etiqueta,anchor=north west] at (-0.3,-0.55) {(a) Función de producción a corto plazo};
+  % ---------------- Panel (b) ----------------
+  \begin{scope}[xshift=7.6cm]
+    \capa{3}{\ejes{$z_L$}{$z_K$}{4.8}{4.6}}
+    \capa{3}{\draw[curva1] plot[domain=0.57:3.9,samples=80] (\x,{2.4/\x}) node[etiqueta,above right=1pt and 0pt] {$\bar q\,(A_0)$};}
+    \capa{4}{\draw[curvanueva] plot[domain=0.3:3.9,samples=80] (\x,{2.4/1.96/\x}) node[etiqueta,right] {$\bar q\,(A_1)$};}
+    \capa{4}{\draw[flecha] (1.55,1.55) -- ++(-0.45,-0.45);}
+    \node[etiqueta,anchor=north west] at (-0.3,-0.55) {(b) Isocuanta $\bar q$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

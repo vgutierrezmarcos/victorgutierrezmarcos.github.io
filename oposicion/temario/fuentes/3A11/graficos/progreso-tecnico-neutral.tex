@@ -1,0 +1,51 @@
+% Tipos de progreso técnico neutral (basado en Acemoglu, 2009, cap. 2).
+% Isocuanta inicial: (z_K - 0,4)(z_L - 0,3) = 2, es decir, z_K = 0,4 + 2/(z_L - 0,3).
+% Progreso técnico con A_1/A_0 = 1/0,72 (las cantidades necesarias se multiplican por 0,72):
+%   Hicks:  (z_L, z_K) -> (0,72 z_L, 0,72 z_K)  (radial; pendientes iguales en cada rayo)
+%   Solow:  (z_L, z_K) -> (z_L, 0,72 z_K)        (solo se contrae en el eje z_K)
+%   Harrod: (z_L, z_K) -> (0,72 z_L, z_K)        (solo se contrae en el eje z_L)
+% Pendientes calculadas: dz_K/dz_L = -2/(z_L - 0,3)^2 (Hicks: igual en el punto
+% correspondiente; Solow: x0,72; Harrod: /0,72).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% \tangente{x}{y}{pendiente}: segmento tangente corto centrado en (x,y)
+\newcommand{\tangente}[3]{\draw[thin,black] ({#1-0.42/sqrt(1+(#3)^2)},{#2-0.42*(#3)/sqrt(1+(#3)^2)}) -- ({#1+0.42/sqrt(1+(#3)^2)},{#2+0.42*(#3)/sqrt(1+(#3)^2)});}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Panel A: Hicks ----------------
+  \capa{1}{\ejes{$z_L$}{$z_K$}{4.6}{4.6}}
+  \capa{1}{\draw[curva1] plot[domain=0.82:4.1,samples=80] (\x,{0.4+2/(\x-0.3)}) node[etiqueta,right] {$\bar q\,(A_0)$};}
+  \capa{1}{\draw[guia] (0,0) -- (1.55,4.03);}
+  \capa{1}{\draw[guia] (0,0) -- (4.3,3.225);}
+  \capa{2}{\draw[curvanueva] plot[domain=0.82:4.1,samples=80] ({0.72*\x},{0.72*(0.4+2/(\x-0.3))}) node[etiqueta,below right=-2pt and 0pt] {$\bar q\,(A_1)$};}
+  \capa{2}{\tangente{1.107}{2.878}{-3.071}}
+  \capa{2}{\tangente{0.797}{2.072}{-3.071}}
+  \capa{2}{\tangente{2.054}{1.540}{-0.650}}
+  \capa{2}{\tangente{1.479}{1.109}{-0.650}}
+  \capa{2}{\draw[flecha] (2.6,2.1) -- ++(-0.45,-0.34);}
+  \node[etiqueta,anchor=north west,align=left] at (-0.3,-0.55) {(A) Hicks: $A\,F(z_K,z_L)$};
+  % ---------------- Panel B: Solow ----------------
+  \begin{scope}[xshift=6.4cm]
+    \capa{3}{\ejes{$z_L$}{$z_K$}{4.6}{4.6}}
+    \capa{3}{\draw[curva1] plot[domain=0.82:4.1,samples=80] (\x,{0.4+2/(\x-0.3)}) node[etiqueta,right] {$\bar q\,(A_0)$};}
+    \capa{3}{\draw[curvanueva] plot[domain=0.82:4.1,samples=80] (\x,{0.72*(0.4+2/(\x-0.3))}) node[etiqueta,below right=0pt and -6pt] {$\bar q\,(A_1)$};}
+    \capa{3}{\draw[guia] (1.4,0) -- (1.4,3.2);}
+    \capa{3}{\tangente{1.4}{2.218}{-1.653}}
+    \capa{3}{\tangente{1.4}{1.597}{-1.190}}
+    \capa{3}{\draw[flecha] (1.62,2.15) -- ++(0,-0.45);}
+    \node[etiqueta,anchor=north west,align=left] at (-0.3,-0.55) {(B) Solow: $F(A\,z_K,z_L)$};
+  \end{scope}
+  % ---------------- Panel C: Harrod ----------------
+  \begin{scope}[xshift=12.8cm]
+    \capa{4}{\ejes{$z_L$}{$z_K$}{4.6}{4.6}}
+    \capa{4}{\draw[curva1] plot[domain=0.82:4.1,samples=80] (\x,{0.4+2/(\x-0.3)}) node[etiqueta,right] {$\bar q\,(A_0)$};}
+    \capa{4}{\draw[curvanueva] plot[domain=0.82:4.1,samples=80] ({0.72*\x},{0.4+2/(\x-0.3)}) node[etiqueta,below=2pt] {$\bar q\,(A_1)$};}
+    \capa{4}{\draw[guia] (0,1.6) -- (3.0,1.6);}
+    \capa{4}{\tangente{1.967}{1.6}{-0.72}}
+    \capa{4}{\tangente{1.416}{1.6}{-1.0}}
+    \capa{4}{\draw[flecha] (2.0,1.85) -- ++(-0.5,0);}
+    \node[etiqueta,anchor=north west,align=left] at (-0.3,-0.55) {(C) Harrod: $F(z_K,A\,z_L)$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

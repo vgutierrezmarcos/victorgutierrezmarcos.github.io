@@ -1,7 +1,7 @@
 # Función de coeficientes fijos (Leontief)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.11 (Teoría de la producción) — caso σ→0 de la CES.
-- **Temas que lo usan:** 3.A.11 (resumen), 3.A.8 (resumen, como límite de la CES; sin id propio); **3.B.5 no**: allí es la *paradoja* de Leontief (1953), que es otro contenido. Canon: id propio `paradoja-leontief` (área comercio) en `alias.json`; este id queda en 3.A.11 y 3.A.8, y la tabla input-output (Leontief, 1941) va con su id (`input-output`).
+- **Temas que lo usan:** 3.A.11 (resumen; revisado el 13/10/2026), 3.A.31 (mención: tecnología de las tablas *input-output*, que tienen su id `input-output`), 3.A.8 (resumen, como límite de la CES; sin id propio); **3.B.5 no**: allí es la *paradoja* de Leontief (1953), que es otro contenido. Canon: id propio `paradoja-leontief` (área comercio) en `alias.json`; este id queda en 3.A.11 y 3.A.8, y la tabla input-output (Leontief, 1941) va con su id (`input-output`).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, cap. 5; Varian, cap. 1.
 - **Decisión D087 (13/10/2026):** ¿Se separa la paradoja de Leontief de la función de coeficientes fijos? Sí: id propio `paradoja-leontief` (comercio) en `alias.json`; la tabla input-output con otro id
 
@@ -13,10 +13,11 @@ Gráfico de referencia: isocuantas en L (el mismo que el caso σ=0 de `oposicion
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.11 | Tecnología y σ | resumen | Forma, σ=0, límite de la CES, rendimientos constantes | — |
+| 3.A.11 | Tecnología y σ | resumen (hecho, 13/10/2026) | Forma como límite σ→0 de la CES, vértices sobre el rayo $z_K/z_L=a/b$, sin sustitución, rendimientos constantes; fila en la tabla de formas funcionales; remisión a 3.A.31 | Las demandas condicionadas y el coste (3.A.12) |
+| 3.A.31 | Input-output | mención | Coeficientes técnicos fijos como supuesto del modelo; remitir a 3.A.11 | La función como límite de la CES |
 | 3.A.8 | Elasticidad de sustitución | mención | Complementarios perfectos; preferencias solo débilmente convexas | — |
 | 3.B.5 | H-O | — | No es este modelo (paradoja de Leontief) | — |
 
 ## Divergencias encontradas en el temario actual
 - Falso emparejamiento en el inventario: 3.B.5 (paradoja de Leontief).
-- 3.A.11 lo presenta como caso exacto de la CES con σ=0: es un límite.
+- 3.A.11 lo presentaba como caso exacto de la CES con σ=0: resuelto (límite) en la revisión del 13/10/2026.

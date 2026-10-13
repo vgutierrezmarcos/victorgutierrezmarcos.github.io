@@ -16,7 +16,7 @@ Autor: Víctor Gutiérrez Marcos
 - Tasas de crecimiento: γ_X ≡ Ẋ/X (D012). Tiempo discreto con subíndice t; continuo con punto.
 - Esperanza: **𝔼[·]** (𝔼_t[x_{t+1}]); expectativa de x_t formada en t−1: x^e_t ≡ 𝔼_{t−1}[x_t]. La E latina queda para la función de gasto y el tipo de cambio.
 - Elasticidades: **ε** con dos subíndices y con su signo; |ε| en las reglas de margen (D047). ϵ (lunada) solo para la aversión a la desigualdad de Atkinson (D081).
-- Multiplicadores de Lagrange y precios sombra: **λ** (λ_k si hay varios) (D020).
+- Multiplicadores de Lagrange y precios sombra: **λ** (λ_k si hay varios) (D020). Uso local admitido: **λ ∈ [0,1] como peso de una combinación convexa**, λy + (1−λ)y′, en las definiciones de convexidad y cuasiconcavidad (3.A.11, como MWG); no se usa como factor de escala (→ t).
 - Siglas de magnitudes en castellano y en redonda: CMg, CMe, IMg, PMg, RMS, EC, EP, ET, EG, VC, VE.
 
 ## 1. Choques entre áreas resueltos
@@ -24,7 +24,7 @@ Autor: Víctor Gutiérrez Marcos
 | Letra | Significado canónico | Otros usos que se eliminan o se acotan | Decisión |
 |---|---|---|---|
 | **W** | W̄: renta o riqueza exógena del consumidor (también riqueza inicial en riesgo y seguros, y renta no laboral); W(·): función de bienestar social, siempre con argumentos; W: salario nominal en macro (WS-PS); W = M + B + EB*: riqueza en Branson (local) | Salario en micro → w_L; bienestar del regulador → ET; renta no laboral M o V → W̄ | D002, D026 |
-| **V** | V(p,W̄): función indirecta de utilidad; V: vacantes (mercado de trabajo); V: velocidad del dinero; V_E, V_D: valores en finanzas (con subíndice) | Utilidad esperada → U; renta no laboral → W̄ | D002 |
+| **V** | V(p,W̄): función indirecta de utilidad; V(q): conjunto de requerimientos de factores (producción, siempre con argumento q; 3.A.11); V: vacantes (mercado de trabajo); V: velocidad del dinero; V_E, V_D: valores en finanzas (con subíndice) | Utilidad esperada → U; renta no laboral → W̄ | D002 |
 | **E** | E(p,Ū): función de gasto (micro); E: tipo de cambio nominal directo (macro abierta). No conviven | Esperanza → 𝔼; educación (Spence) → y; éxito → π(e); puntos de equilibrio en gráficos (E₀, E₁: se admiten) | D013, D129 |
 | **σ** | Elasticidad de sustitución (CES, Dixit-Stiglitz, NEG); desviación típica (finanzas, Lucas); σ_t dispersión en la σ-convergencia | CRRA y ESI → θ y 1/θ | D001, D034 |
 | **θ** | Coeficiente de aversión relativa al riesgo (CRRA); ESI = 1/θ. Excepciones avisadas: θ ≡ V/U (búsqueda, 3.A.26, 3.A.28) y θ_ij participaciones en beneficios (dos subíndices) | η (3.A.8), σ (3.A.42, KPR/GHH), Frisch (GHH) → φ, puja de Rosen → Θ, tipos de jugador → t_i, extracción de señal de Lucas → ω, tipo impositivo (4.B.11) → t | D001, D056, D006, D104, D036 |
@@ -33,7 +33,7 @@ Autor: Víctor Gutiérrez Marcos
 | **M** | Cantidad nominal de dinero (M^S, M^D); importaciones en contabilidad nacional y macro abierta (no conviven con el dinero en la misma ecuación) | Renta no laboral → W̄; variedades de Romer → N_t; emparejamientos → m(U,V); multiplicador monetario → la notación de la ficha `multiplicador-monetario` | D023, D002 |
 | **B / π** | B: beneficio (B_j, B(p,w)); π: inflación (macro) y probabilidad (micro: π_s, π(e)); B(p,W̄): conjunto presupuestario (con argumentos); B, B*: bonos en Branson (local); B(G): beneficio social del gasto (4.B, local) | Beneficio π o Π → B; probabilidades p_s → π_s; saldo presupuestario B → b | D003, D017, D029 |
 | **e** | Logaritmo del tipo de cambio nominal (e = ln E); esfuerzo e (información asimétrica) | Dotación → ω; coeficiente de efectivo → notación de `multiplicador-monetario`; tipo de cambio real → q; tipo sombra o fijo → Ẽ, Ē | D013, D045, D015 |
-| **λ** | Multiplicador y precio sombra; λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
+| **λ** | Multiplicador y precio sombra; λ ∈ [0,1] peso de una combinación convexa (definiciones de convexidad, local); λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
 | **β** | Factor de descuento β ≡ 1/(1+ρ); coeficientes de regresión (β_0, β_1, con subíndice); β_i del CAPM; β movilidad del capital en la BP; β de MRW (elasticidad del capital humano) | Respuesta de la producción en Lucas → ψ; ponderaciones del ITC → ω_i; grado de apertura (3.B.9) → (X+M)/Y, sin símbolo | D036, D044, D107 |
 | **γ** | Tasa de variación γ_X; peso de la inflación en la pérdida de Barro-Gordon; poder negociador (Nash, 3.A.27) | Peso de las manufacturas en la NEG → μ; constante de Cagan → ζ | D012, D019, D061, D106 |
 | **g** | Tasa de progreso técnico; g = G/Y en sector público | Crecimiento del PIB → γ_Y («r − g» solo como nombre del debate); tasa m del anexo de 3.A.43 → g | D010 |
@@ -49,7 +49,7 @@ Autor: Víctor Gutiérrez Marcos
 | **U** | U(x): utilidad; U(x̃) = 𝔼[u(x̃)] utilidad esperada; u: utilidad de Bernoulli; U_i: utilidad marginal del bien i (3.A.8) y utilidad del individuo i en la elección social (no conviven); U_t, U^n: tasa de paro | — | D057 |
 | **A** | A_t: productividad / PTF (macro); A: población activa (economía española; PTF escrita PTF si conviven); A, B: consumidores del 2×2×2×2 y países en comercio | — | D065 |
 | **C** | C(w,q): función de costes (micro); C_t: consumo (macro); C: prima de la call (Hull); C(G) coste social del gasto | Coste de ajuste C(I) → Φ(I,K) | D130 |
-| **Y / 𝒴** | Y: producción o renta agregada; Y: segundo bien del 2×2; Y*: renta extranjera; 𝒴: conjunto de posibilidades de producción | Y* como objetivo del Gobierno → Y^{obj} | D102, D038 |
+| **Y / 𝒴 / y** | Y: producción o renta agregada; Y: segundo bien del 2×2; Y*: renta extranjera; 𝒴: conjunto de posibilidades de producción; y ∈ 𝒴: vector *netput* (micro de la producción; en macro, y es producción por trabajador; no conviven) | Y* como objetivo del Gobierno → Y^{obj} | D102, D038 |
 
 ## 2. Consumidor (3.A.8-3.A.10)
 
@@ -87,17 +87,23 @@ Autor: Víctor Gutiérrez Marcos
 |---|---|---|
 | z = (z_L, z_K) | Factores (orden L, K) | — |
 | q, Q = Σq_j | Producción de la empresa y de la industria | — |
-| F(z) | Función de producción (f intensiva en macro) | — |
+| F(z) | Función de producción (f intensiva en macro); F(z) ≡ max{q : (q,−z) ∈ 𝒴} | — |
 | 𝒴 | Conjunto de posibilidades de producción | D102 |
+| y = (y_1,…,y_S) ∈ 𝒴 ⊂ ℝ^S | Vector de producción neta (*netput*): componentes negativos, factores; positivos, productos; S bienes (no L, que es el trabajo) | 3.A.11 (13/10/2026) |
+| V(q) = {z ≥ 0 : (q,−z) ∈ 𝒴} | Conjunto de requerimientos de factores (su frontera, la isocuanta) | 3.A.11 (13/10/2026) |
+| T(y) ≤ 0; RMT_{12} = (∂T/∂q_1)/(∂T/∂q_2) | Función de transformación de la empresa multiproducto (frontera T(y) = 0) y su relación marginal de transformación, positiva. MWG la llama F; aquí F es la función de producción. Mismo sentido que T(X,G) = 0 en §5 | 3.A.11 (13/10/2026) |
 | w = (w_L, w_K) | Precios de los factores | D011 |
 | t | Factor de escala: F(tz) = t^k F(z) | D101 |
-| ε_{q,t} | Elasticidad de escala | — |
+| k | Grado de homogeneidad (nunca t, que es la escala); κ para un parámetro que chocaría con k | 3.A.11 (13/10/2026) |
+| ε_{q,t} | Elasticidad de escala (global: ε_{q,t} = k en las homogéneas) | — |
+| ε_{q,t}(z) ≡ d ln F(tz)/d ln t \|_{t=1} = Σ_i ε_{q,z_i} | Elasticidad de escala local (μ(z) en Jehle y Reny, que se cita solo en nota); = CMe/CMg a lo largo de la senda de mínimo coste | 3.A.11 (13/10/2026) |
+| ε_{q,z_i} = PMg_i/PMe_i | Elasticidad-producto del factor i | 3.A.11 (13/10/2026) |
 | PMg_L, PMe_L; RMST_{LK} = PMg_L/PMg_K | Productividades y relación técnica, positiva | — |
 | C(w,q), C(q) | Función de costes (C(q) si w fijo) | — |
 | z(w,q), z(p,w) | Demandas condicionadas y no condicionadas de factores | — |
 | B, B(p,w) | Beneficio y función de beneficio | D003 |
 | CMg, CMe, CVMe, CF | Costes marginal, medio, variable medio y fijo | — |
-| A_t | Nivel tecnológico | — |
+| A_t | Nivel tecnológico. Neutralidades (ficha `progreso-tecnico-neutral`): Hicks A_tF(z_K,z_L), Solow F(A_tz_K,z_L), Harrod F(z_K,A_tz_L) (orden (K, L) solo en estas tres fórmulas, como Romer y Acemoglu) | — |
 
 ## 4. Mercados, información y juegos (3.A.13-3.A.20)
 

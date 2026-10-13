@@ -13,7 +13,7 @@ Errores (el tema no está terminado):
   - el PDF tiene referencias o citas sin definir;
   - el HTML tiene LaTeX sin convertir o imágenes que no existen;
   - el Word no se abre;
-  - faltan revision.md, guion-cante.md o video/escenas.yaml.
+  - falta revision.md (el guion y las escenas del vídeo son de la entrega 3: solo avisa).
 
 Avisos (para que los mire el control de calidad):
   - párrafos con cifras (%, millones, años recientes) sin cita en ese párrafo;
@@ -134,7 +134,7 @@ def verificar(tema):
                 errores.append(f'revision.md sin la sección «{s}»')
     guion = leer(os.path.join(tema.dir, 'guion-cante.md'))
     if guion is None:
-        errores.append('Falta guion-cante.md')
+        avisos.append('Aún no hay guion-cante.md (entrega 3, --fase video)')
     else:
         # Solo lo que se dice: fuera títulos, el esquema de pizarra y las notas [Pizarra: …]
         hablado = re.sub(r'^## Esquema de pizarra.*?(?=^## )', '', guion, flags=re.M | re.S)
@@ -147,7 +147,7 @@ def verificar(tema):
             avisos.append(f'El guion da {palabras / PALABRAS_POR_MINUTO:.1f} min a {PALABRAS_POR_MINUTO} palabras/min')
     escenas = leer(os.path.join(tema.dir, 'video', 'escenas.yaml'))
     if escenas is None:
-        errores.append('Falta video/escenas.yaml')
+        avisos.append('Aún no hay video/escenas.yaml (entrega 3, --fase video)')
     else:
         import yaml
         try:

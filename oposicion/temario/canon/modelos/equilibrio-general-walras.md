@@ -1,7 +1,7 @@
 # Equilibrio general competitivo walrasiano (modelo 2×2×2×2)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.21 (Teoría del equilibrio general) — construcción, existencia, unicidad, estabilidad. Las **condiciones de óptimo de Pareto** (FPP, FPU, GFPU) son de 3.A.22.
-- **Temas que lo usan:** 3.A.21 (desarrollo), 3.A.22 (desarrollo de la eficiencia), 3.A.23 (desarrollo: **copia** del de 3.A.22, sobra con el título vigente), 3.A.3 (desarrollo histórico: Walras), 4.B.11 (resumen: versión 1×2×2×2 con ocio)
+- **Temas que lo usan:** 3.A.11 (resumen de la parte de producción, revisado el 13/10/2026), 3.A.21 (desarrollo), 3.A.22 (desarrollo de la eficiencia), 3.A.23 (desarrollo: **copia** del de 3.A.22, sobra con el título vigente), 3.A.3 (desarrollo histórico: Walras), 4.B.11 (resumen: versión 1×2×2×2 con ocio)
 - **Manuales de referencia:** Walras (1874); Arrow y Debreu (1954); Mas-Colell, Whinston y Green, cap. 15-17; Varian, cap. 17-18; Gandolfo; Bator (1957) para la presentación gráfica 2×2×2×2.
 - **Decisión D035 (13/10/2026):** ¿Cómo se escriben las relaciones marginales en el equilibrio general? RMS^A_{XY}, RMST^X_{LK} y RMT_{XY}, positivas y sin barras (paralelas a RMS_{12} de 3.A.8)
 
@@ -19,10 +19,12 @@ Gráficos de referencia: caja de Edgeworth de la producción y curva de contrato
 | 3.A.21 | ¿Existe, es único y estable el EGC? | desarrollo | Modelo con precios, excesos de demanda, ley de Walras, existencia (Brouwer/Kakutani), unicidad (sustitutivos brutos), estabilidad | Condiciones de Pareto en detalle |
 | 3.A.22 | ¿Es eficiente? | desarrollo | Tres condiciones, FPP, FPU, GFPU, 1TFEB/2TFEB | Existencia y estabilidad |
 | 3.A.23 | Fallos de mercado | resumen (propuesto) | Recordar las condiciones y ver cuál rompe cada fallo | El modelo completo (sobra: remitir a 3.A.22) |
+| 3.A.11 | Producción de varios bienes: eficiencia técnica | resumen (hecho, 13/10/2026) | III.2: caja de Edgeworth de la producción, curva de contrato, FPP y $RMT_{XY}=PMg^Y_L/PMg^X_L=CMg_X/CMg_Y$, con la notación §5 ($L_X$, $K_X$, $\bar L$, $\bar K$, avisada); caja de optimalidad con $RMST^X_{LK}=RMST^Y_{LK}=w_L/w_K$. Gráficos `fuentes/3A11/graficos/caja-edgeworth-fpp.tex` y `formacion-caja.tex` | Precios de equilibrio, consumidores, FPU (3.A.21, 3.A.22) |
 | 3.A.3 | Neoclásicos | resumen | Walras: interdependencia, contar ecuaciones e incógnitas, tâtonnement | Formalización moderna |
 | 4.B.11 | Imposición óptima | resumen | Variante 1×2×2×2 con ocio: los impuestos rompen $RMS=RMT$ | 2 consumidores |
 
 ## Divergencias encontradas en el temario actual
+- La caja de Edgeworth de la producción y la FPP están tres veces con texto casi idéntico (3.A.11, 3.A.21, 3.A.22: «punto I», «entre G y H», nota «no necesariamente una isoclina»). 3.A.11 ya la resume (13/10/2026); al revisar 3.A.21 y 3.A.22, que una la desarrolle (la construcción, en 3.A.21; la eficiencia, en 3.A.22) y la otra remita.
 - Orden de los factores: $F_X(K_X,L_X)$ y $F_X(L_X,K_X)$ en 3.A.22; $K,L$ en 3.A.21: canon **$(L,K)$** y $RMST_{LK}$.
 - Escritura de las relaciones marginales: $|RMS_X^Y|_A$ (3.A.22, 3.A.23, en valor absoluto) frente a $RMS_{12}=U_1/U_2>0$ (3.A.8 revisado): canon $RMS^A_{XY}=\frac{\partial U_A/\partial X}{\partial U_A/\partial Y}$ (positiva, sin barras; consumidor arriba, bienes abajo); igual $RMST^X_{LK}$ y $RMT_{XY}$.
 - Bienes: $X,Y$ (3.A.21-3.A.23) y $X_1,X_2$ (4.B.11); 3.A.21 mezcla $x_h,y_h$ y $p_x/p_X$: canon $X_h,Y_h$ y $p_X,p_Y$.

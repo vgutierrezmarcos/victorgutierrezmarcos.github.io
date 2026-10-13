@@ -1,0 +1,28 @@
+% Productividad frente a rendimientos a escala. Isocuantas de q = (z_K z_L)^{1/2}
+% (rendimientos constantes): z_K z_L = 1, 2, 3, 4 (q = 1, sqrt2, sqrt3, 2).
+% Horizontal z_K = 1: cortes en z_L = 1, 2, 3, 4 (más z_L para cada aumento de q).
+% Rayo z_K = z_L: cortes en t = 1, sqrt2, sqrt3, 2 (doblar factores dobla q).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.3]
+  % 1: ejes e isocuantas
+  \capa{1}{\ejes{$z_L$}{$z_K$}{5.3}{4.3}}
+  \capa{1}{\draw[curva1] plot[domain=0.26:2.9,samples=60] (\x,{1/\x}) node[etiqueta,right] {$q_0$};}
+  \capa{1}{\draw[curva1] plot[domain=0.52:4.0,samples=60] (\x,{2/\x}) node[etiqueta,right] {$q_1$};}
+  \capa{1}{\draw[curva1] plot[domain=0.78:4.6,samples=60] (\x,{3/\x}) node[etiqueta,right] {$q_2$};}
+  \capa{1}{\draw[curva1] plot[domain=1.05:4.9,samples=60] (\x,{4/\x}) node[etiqueta,right] {$q_3$};}
+  % 2: productividad: varía un factor
+  \capa{2}{\draw[curva2] (0,1) -- (4.9,1);}
+  \capa{2}{\draw[flecha,tceeazul] (4.3,1) -- (5.1,1);}
+  \capa{2}{\node[etiqueta,left] at (0,1) {$\bar z_K$};}
+  \capa{2}{\foreach \l in {1,2,3,4} {\node[punto] at (\l,1) {};}}
+  \capa{2}{\node[etiqueta,text=tceeazul,align=left,anchor=south west,font=\footnotesize] at (4.15,1.08) {Productividad\\(corto plazo):\\varía un solo factor};}
+  % 3: rendimientos a escala: varían todos en la misma proporción
+  \capa{3}{\draw[curva3] (0,0) -- (3.3,3.3);}
+  \capa{3}{\draw[flecha,tceeverde] (2.9,2.9) -- (3.6,3.6);}
+  \capa{3}{\foreach \t in {1,1.4142,1.7321,2} {\node[punto] at (\t,\t) {};}}
+  \capa{3}{\node[etiqueta,text=tceeverde,align=left,anchor=south west,font=\footnotesize] at (3.5,3.6) {Rendimientos a escala (largo plazo):\\varían todos los factores\\en la misma proporción};}
+\end{tikzpicture}
+\end{document}

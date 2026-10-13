@@ -1,0 +1,44 @@
+% Del conjunto de posibilidades de producción a la función de producción y las
+% isocuantas (sustituye a la tabla-esquema del original)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,node distance=0.9cm and 0.7cm,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
+                 minimum height=1.9cm,inner sep=5pt},
+    clave/.style={caja,fill=tceemorado!12,very thick},
+    rama/.style={caja,dashed,fill=white,minimum height=1.3cm},
+    une/.style={->,thick,tceemorado},
+    uneopc/.style={une,dashed}]
+  % 1: conjunto de posibilidades de producción
+  \capa{1}{
+    \node[clave] (Y) {Conjunto de posibilidades\\ de producción\\ $\mathcal{Y}\subset\mathbb{R}^S$};
+  }
+  % 2: axiomas
+  \capa{2}{
+    \node[caja,right=of Y] (A) {Axiomas: no vacío, cerrado,\\ eliminación gratuita,\\ imposibilidad de producción\\ gratuita; inacción};
+    \draw[une] (Y) -- (A);
+  }
+  % 3: función de producción
+  \capa{3}{
+    \node[clave,right=of A] (F) {Función de producción\\ $q=F(z)$\\ (un solo producto)};
+    \draw[une] (A) -- (F);
+  }
+  % 4: isocuantas, RMST y elasticidad de sustitución
+  \capa{4}{
+    \node[caja,right=of F] (I) {Isocuantas\\ $RMST_{LK}$\\ y $\sigma$};
+    \draw[une] (F) -- (I);
+  }
+  % 5: rama de varios productos
+  \capa{5}{
+    \node[rama,below=of Y] (T) {Varios productos:\\ función de transformación\\ $T(y)\leq 0$ (apartado III)};
+    \draw[uneopc] (Y) -- (T);
+  }
+  % 6: hacia los costes
+  \capa{6}{
+    \node[rama,below=of I] (C) {Costes y dualidad\\ \textrm{[3.A.12]}};
+    \draw[uneopc] (I) -- node[etiqueta,right,align=left,text=black] {$+$ precios de\\ los factores $w$} (C);
+  }
+\end{tikzpicture}
+\end{document}

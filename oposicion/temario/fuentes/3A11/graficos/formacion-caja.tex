@@ -1,0 +1,53 @@
+% Formación de la caja de Edgeworth de la producción: el mapa de isocuantas
+% de Y se gira 180° y se superpone al de X hasta cerrar un rectángulo L̄ × K̄.
+% Isocuantas Cobb-Douglas simétricas: K = c/L desde cada origen.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: mapa de isocuantas de X
+  \capa{1}{
+    \begin{scope}[shift={(0,4.6)}]
+      \draw[eje] (0,0) -- (4.2,0) node[below] {$L_X$};
+      \draw[eje] (0,0) -- (0,3.2) node[left] {$K_X$};
+      \node[below left,text=tceemorado] at (0,0) {$O_X$};
+      \foreach \c in {1,2,3.2}
+        \draw[curva1] plot[domain={\c/2.8}:3.8,samples=60] (\x,{\c/\x});
+      \node[etiqueta,text=tceemorado] at (2,-0.75) {(a) isocuantas de $X$};
+    \end{scope}
+  }
+  % 2: mapa de Y y su giro de 180°
+  \capa{2}{
+    \begin{scope}[shift={(6.6,4.6)}]
+      \draw[eje] (0,0) -- (4.2,0) node[below] {$L_Y$};
+      \draw[eje] (0,0) -- (0,3.2) node[left] {$K_Y$};
+      \node[below left,text=tceeverde] at (0,0) {$O_Y$};
+      \foreach \c in {1,2,3.2}
+        \draw[curva3] plot[domain={\c/2.8}:3.8,samples=60] (\x,{\c/\x});
+      \node[etiqueta,text=tceeverde] at (2,-0.75) {(b) isocuantas de $Y$};
+    \end{scope}
+  }
+  \capa{2}{\draw[flecha] (9,3.4) to[out=-90,in=0] node[pos=0.35,right,etiqueta,text=tceerojo] {giro de $180^\circ$} (7.6,1.6);}
+  \capa{2}{\draw[flecha] (2,3.4) to[out=-90,in=180] (3.2,1.6);}
+  % 3: superposición: la caja
+  \capa{3}{
+    \begin{scope}[shift={(3.4,-2.6)}]
+      \draw[eje] (0,0) -- (4.6,0) node[below] {$L_X$};
+      \draw[eje] (0,0) -- (0,3.4) node[left] {$K_X$};
+      \draw[eje,tceeverde] (4,2.8) -- (-0.6,2.8) node[above] {$L_Y$};
+      \draw[eje,tceeverde] (4,2.8) -- (4,-0.6) node[right] {$K_Y$};
+      \node[below left,text=tceemorado] at (0,0) {$O_X$};
+      \node[above right,text=tceeverde] at (4,2.8) {$O_Y$};
+      \foreach \c in {0.8,1.6,2.6}
+        \draw[curva1] plot[domain={\c/2.7}:3.9,samples=60] (\x,{\c/\x});
+      \foreach \c in {0.8,1.6,2.6}
+        \draw[curva3] plot[domain={\c/2.7}:3.9,samples=60] ({4-\x},{2.8-\c/\x});
+      \draw[llave] (4,-0.85) -- (0,-0.85) node[midway,below=5pt,text=black] {$\bar L=L_X+L_Y$};
+      \draw[llave] (-0.75,0) -- (-0.75,2.8) node[midway,left=5pt,text=black] {$\bar K=K_X+K_Y$};
+      \node[etiqueta] at (2,-1.75) {(c) caja de Edgeworth $\bar L\times\bar K$};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,45 @@
+% Tres funciones cuasicóncavas con las mismas isocuantas y rendimientos distintos
+% (rehace media/image4.png en dos dimensiones). Producción a lo largo de un rayo
+% desde el origen, q(t) = F(t·z̄): tipo 1, q = t (constantes); tipo 2, q = (3t)^{1/2}
+% (decrecientes, cóncava); tipo 3, q = t^2/3 (crecientes). Abajo a la derecha, el
+% mapa de isocuantas común (zL·zK = 1,2 y 2,7) y el rayo zK = zL a lo largo del que
+% se mide t. Paneles en 2×2 para que se lean a 0,8\textwidth.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,titulo/.style={etiqueta,font=\bfseries,align=center}]
+  % 1: tipo 1, rendimientos constantes
+  \capa{1}{
+  \begin{scope}
+    \ejes{$t$}{$q=F(t\overline{z})$}{3.4}{3.3}
+    \draw[curva1] plot[domain=0:3,samples=2] (\x,\x);
+    \node[titulo] at (1.7,-1) {Tipo 1\\ \mdseries rendimientos constantes};
+  \end{scope}}
+  % 2: tipo 2, rendimientos decrecientes
+  \capa{2}{
+  \begin{scope}[xshift=5.6cm]
+    \ejes{$t$}{$q=F(t\overline{z})$}{3.4}{3.3}
+    \draw[curva2] plot[domain=0:3,samples=80] (\x,{sqrt(3*\x)});
+    \draw[guia] (0,0) -- (3,3);
+    \node[titulo] at (1.7,-1) {Tipo 2\\ \mdseries rendimientos decrecientes};
+  \end{scope}}
+  % 3: tipo 3, rendimientos crecientes
+  \capa{3}{
+  \begin{scope}[yshift=-5.8cm]
+    \ejes{$t$}{$q=F(t\overline{z})$}{3.4}{3.3}
+    \draw[curva3] plot[domain=0:3,samples=60] (\x,{\x*\x/3});
+    \draw[guia] (0,0) -- (3,3);
+    \node[titulo] at (1.7,-1) {Tipo 3\\ \mdseries rendimientos crecientes};
+  \end{scope}}
+  % 4: el mismo mapa de isocuantas convexas para las tres
+  \capa{4}{
+  \begin{scope}[xshift=5.6cm,yshift=-5.8cm]
+    \ejes{$z_L$}{$z_K$}{3.4}{3.3}
+    \draw[guia] (0,0) -- (3,3) node[etiqueta,above,text=black] {$t\overline{z}$};
+    \draw[curva4] plot[domain=0.4:3.1,samples=60] (\x,{1.2/\x}) node[etiqueta,right,text=black] {$q^0$};
+    \draw[curva4] plot[domain=0.9:2.5,samples=60] (\x,{2.7/\x}) node[etiqueta,right,text=black] {$q^1>q^0$};
+    \node[titulo] at (1.7,-1) {Mismas isocuantas convexas\\ \mdseries las tres son cuasicóncavas};
+  \end{scope}}
+\end{tikzpicture}
+\end{document}

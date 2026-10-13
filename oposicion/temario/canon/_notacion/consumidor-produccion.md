@@ -65,6 +65,13 @@ Convenciones: minúsculas para precios y cantidades de micro ($p$, $x$, $q$, $w$
 | $CMg$, $CMe$, $CVMe$, $CF$ | Costes marginal, medio, variable medio, fijo | — | Igual | Unánime |
 | $A_t$ | Nivel tecnológico | — | **$A_t$** | Unánime |
 | $\varepsilon_{q,t}$ | Elasticidad de escala | — | **$\varepsilon_{q,t}=\frac{dq/q}{dt/t}$** | Corrige la errata de 3.A.11 ($dz_L/dz_L$) |
+| $y=(y_1,\dots,y_S)\in\mathcal Y\subset\mathbb R^S$ | Vector *netput* | $Z$, $z$ con signo (3.A.11 original) | **$y$**, $S$ bienes | MWG §5.B; añadido al revisar 3.A.11 (13/10/2026) |
+| $V(q)$ | Conjunto de requerimientos de factores | — | **$V(q)$**, siempre con argumento | Varian, cap. 1; 3.A.11 revisado |
+| $T(y)\le 0$, $RMT_{12}$ | Función de transformación de la empresa y RMT, positiva | $F(y)$ (MWG) | **$T$** | $F$ es la función de producción; mismo sentido que $T(X,G)=0$; 3.A.11 revisado |
+| $k$ | Grado de homogeneidad, $F(tz)=t^kF(z)$ | $t$ (3.A.11 original, choca con la escala) | **$k$** ($\kappa$ si choca con otro $k$) | 3.A.11 revisado |
+| $\varepsilon_{q,z_i}=PMg_i/PMe_i$ | Elasticidad-producto del factor $i$ | $\varepsilon_{Q,L}$ (3.A.11, 3.A.12) | **$\varepsilon_{q,z_i}$** | 3.A.11 revisado |
+| $\varepsilon_{q,t}(z)=\sum_i\varepsilon_{q,z_i}$ | Elasticidad de escala local | $\mu(z)$ (Jehle y Reny) | **$\varepsilon_{q,t}(z)$** | Mismo símbolo que la global, con argumento; 3.A.11 revisado |
+| $\lambda\in[0,1]$ | Peso de una combinación convexa | — | **$\lambda$**, uso local en definiciones de convexidad | Como MWG; no choca con el multiplicador (no conviven en la misma ecuación); 3.A.11 revisado |
 
 ## Choques con otras áreas que se mezclan
 - **$W$**: renta $\overline W$ (con barra, siempre) frente a FBS $W(\cdot)$ (equilibrio general) y bienestar del regulador $W$ (3.A.17 → $ET$). 3.A.11 usa $W$ para el salario: pasa a $w_L$.

@@ -1,0 +1,42 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Rendimientos a escala de la Cobb-Douglas q = z_L^beta z_K^alpha en R^3 (tema 3.A.11).
+% Elaboración propia basada en Fuleky (2006), «Anatomy of C-D Production/Utility
+% Functions in Three Dimensions». Cada panel corta la superficie por el plano vertical
+% que contiene la diagonal z_L = z_K: a lo largo del rayo q(t,t) = t^(alpha+beta),
+% convexa si alpha+beta > 1 (0,75 + 0,75), recta si = 1 (0,5 + 0,5) y cóncava si < 1
+% (0,25 + 0,25).
+\pgfplotsset{
+  superficie/.style={surf,shader=faceted,fill opacity=0.45,draw=tceemorado!40,line width=0.15pt,
+    colormap={tcee}{rgb255=(226,239,217) rgb255=(167,137,189)}},
+  % perspectiva caballera: z_L a la derecha, q vertical, z_K en profundidad a 45° con coeficiente 0,5
+  tresd/.style={x={(1cm,0cm)},y={(0.354cm,0.354cm)},z={(0cm,0.9cm)},axis lines=none,
+    xmin=0,xmax=2.5,ymin=0,ymax=2.5,zmin=0,zmax=4,clip=false},
+}
+% \panelcd{capa}{exponente de cada factor}{nombre}{rótulo}
+\newcommand{\panelcd}[4]{%
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:3,0,0) node[below] {$z_L$};}
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,4.2,0);}
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.4) node[left] {$q$};}
+  \capa{#1}{\addplot3[superficie,domain=0:2.5,y domain=0:2.5,samples=11,samples y=11]
+    {x^#2*y^#2};}
+  \capa{#1}{\addplot3[guia,domain=0:2.5,samples=2,samples y=0] (x,x,0);}
+  \capa{#1}{\addplot3[area2,domain=0:2.5,samples=40,samples y=0]
+    (x,x,{x^(2*#2)}) -- (axis cs:2.5,2.5,0) -- (axis cs:0,0,0) -- cycle;}
+  \capa{#1}{\addplot3[curvanueva,domain=0:2.5,samples=40,samples y=0] (x,x,{x^(2*#2)});}
+  \capa{#1}{\node[etiqueta,fill=white,fill opacity=0.8,text opacity=1,above left=0pt and -2pt] at (axis cs:0,4.2,0) {$z_K$};}
+  \coordinate (pie-#3) at (axis cs:1.6,0,0);
+  \capa{#1}{\node[font=\small,align=center,anchor=north] at ($(pie-#3)+(0,-0.6)$) {#4};}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{axis}[tresd,name=a]
+    \panelcd{1}{0.75}{a}{(a) $\alpha+\beta>1$: corte convexo,\\ rendimientos crecientes}
+  \end{axis}
+  \begin{axis}[tresd,name=b,at={(a.east)},anchor=west,xshift=1.4cm]
+    \panelcd{2}{0.5}{b}{(b) $\alpha+\beta=1$: corte recto,\\ rendimientos constantes}
+  \end{axis}
+  \begin{axis}[tresd,name=c,at={(b.east)},anchor=west,xshift=1.4cm]
+    \panelcd{3}{0.25}{c}{(c) $\alpha+\beta<1$: corte cóncavo,\\ rendimientos decrecientes}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

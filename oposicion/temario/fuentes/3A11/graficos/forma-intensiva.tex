@@ -1,0 +1,38 @@
+% Función de producción en forma intensiva y reparto del producto por trabajador.
+% y = f(k) = 1,6·sqrt(k); en k* = 4: f = 3,2 y r = f'(k*) = 0,4.
+% Tangente: y = 1,6 + 0,4k, que corta el eje y en C (w = 1,6) y el eje k en
+% B = -w/r = -4. CD = r·k* = 1,6. Eje k comprimido (x = 0,6 cm) para que la
+% figura quepa a 0,8\textwidth; la pendiente visual es 0,4/0,6 (33,7°).
+% Rehace la figura del anexo IV de ICEX-CECO como elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,declare function={f(\x)=1.6*sqrt(\x);},
+    llave/.style={decorate,decoration={brace,amplitude=4pt},thin}]
+  % 1: ejes (el de k con tramo negativo)
+  \capa{1}{
+    \draw[eje] (-5,0) -- (7.6,0) node[below left=2pt and 0pt] {$k=K/L$};
+    \draw[eje] (0,-0.2) -- (0,4.8) node[left] {$y=Y/L$};
+    \node[below right] at (0,0) {$O$};
+  }
+  % 2: función de producción
+  \capa{2}{\draw[curva1] plot[domain=0:7,samples=150] (\x,{f(\x)})
+    node[etiqueta,right] {$y=f(k)$};}
+  % 3: punto A en k* y proyecciones (D)
+  \capa{3}{\node[punto,label={[etiqueta]above left:$A$}] (A) at (4,3.2) {};}
+  \capa{3}{\draw[guia] (4,0) node[below,text=black] {$k^*$} -- (4,3.2) -- (0,3.2);}
+  \capa{3}{\node[punto,label={[etiqueta]left:$D$}] at (0,3.2) {};}
+  % 4: tangente en A y sus cortes C y B
+  \capa{4}{\draw[curva2] (-4.5,-0.2) -- (6.6,4.24);}
+  \capa{4}{\node[punto,label={[etiqueta]left:$C$}] at (0,1.6) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$B$}] at (-4,0) {};}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=south,rotate=33.7,align=center] at (-2.1,0.85) {pendiente\\ $r=f'(k^*)$};}
+  % 5: rótulos de las distancias
+  \capa{5}{\draw[llave] (-0.12,0.05) -- (-0.12,1.55) node[midway,left=4pt,etiqueta] {$w$};}
+  \capa{5}{\draw[llave] (-0.12,1.65) -- (-0.12,3.15) node[midway,left=4pt,etiqueta] {$rk^*$};}
+  \capa{5}{\draw[llave] (-0.08,-0.55) -- (-3.92,-0.55) node[midway,below=4pt,etiqueta] {$w/r$};}
+  \capa{5}{\node[etiqueta,align=left,anchor=north west] at (0.8,-0.75)
+    {$OC=w=f(k^*)-k^*f'(k^*)$\\ $CD=rk^*$\qquad $OB=w/r$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,43 @@
+% Región económica de la producción. Isocuantas circulares de centro (c,c) y radio r:
+%   q1: c=3, r=2,2; q2: c=3,6, r=1,7; q3: c=4,1, r=1,2 (no se cortan en los tramos dibujados).
+% Tangentes verticales (PMg_K = 0) en (c-r, c); horizontales (PMg_L = 0) en (c, c-r).
+% Isoclina de RMST = 2: puntos (c - 0,894 r, c - 0,447 r).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.15]
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$z_K$}{6.2}{6}}
+  % 2: isocuantas (arcos de 145° a 305°)
+  \capa{2}{\draw[curva1] (3,3) ++(145:2.2) arc[start angle=145,end angle=305,radius=2.2] node[etiqueta,right] {$q_1$};}
+  \capa{2}{\draw[curva1] (3.6,3.6) ++(145:1.7) arc[start angle=145,end angle=305,radius=1.7] node[etiqueta,right] {$q_2$};}
+  \capa{2}{\draw[curva1] (4.1,4.1) ++(145:1.2) arc[start angle=145,end angle=305,radius=1.2] node[etiqueta,right] {$q_3$};}
+  % 3: línea de contorno superior (tangentes verticales)
+  \capa{3}{\foreach \c/\r in {3/2.2,3.6/1.7,4.1/1.2} \draw[thick] ({\c-\r},{\c-0.25}) -- ({\c-\r},{\c+0.25});}
+  \capa{3}{\draw[curva2] plot[smooth,tension=0.6] coordinates {(0,0) (0.25,1.5) (0.8,3) (1.9,3.6) (2.9,4.1)};}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=south east,align=right] at (1.3,4.3) {$\mathrm{PMg}_K=0$\\ ($\mathrm{RMST}=\infty$)};}
+  \capa{3}{\draw[tceeazul,thin] (1.2,4.3) -- (1.35,3.38);}
+  % 4: línea de contorno inferior (tangentes horizontales)
+  \capa{4}{\foreach \c/\r in {3/2.2,3.6/1.7,4.1/1.2} \draw[thick] ({\c-0.25},{\c-\r}) -- ({\c+0.25},{\c-\r});}
+  \capa{4}{\draw[curva2] plot[smooth,tension=0.6] coordinates {(0,0) (1.5,0.25) (3,0.8) (3.6,1.9) (4.1,2.9)};}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=north west,align=left] at (4.4,0.75) {$\mathrm{PMg}_L=0$\\ ($\mathrm{RMST}=0$)};}
+  \capa{4}{\draw[tceeazul,thin] (4.4,0.6) -- (3.3,1.25);}
+  % 5: región económica sombreada
+  \capa{5}{\begin{pgfonlayer}{background}
+    \fill[area] plot[smooth,tension=0.6] coordinates {(0,0) (0.25,1.5) (0.8,3) (1.9,3.6) (2.9,4.1)}
+      arc[start angle=180,end angle=270,radius=1.2]
+      -- plot[smooth,tension=0.6] coordinates {(4.1,2.9) (3.6,1.9) (3,0.8) (1.5,0.25) (0,0)} -- cycle;
+  \end{pgfonlayer}}
+  \capa{5}{\node[etiqueta,text=tceemorado,align=center] at (1.75,1.4) {región\\ económica};}
+  % 6: capital fijo en z_K = 2,9 y punto A (máxima producción con ese capital)
+  \capa{6}{\draw[guia] (0,2.9) node[left,text=black] {$\bar z_K$} -- (5.6,2.9);}
+  \capa{6}{\node[punto,label={[etiqueta]above right:$A$}] at (4.1,2.9) {};}
+  % 7: isoclina de RMST = 2 (une puntos de igual pendiente), discontinua
+  \capa{7}{\foreach \x/\y in {1.03/2.02,2.08/2.84,3.03/3.56}
+    \draw[guia,tceedorado,thick] ({\x-0.3},{\y+0.6}) -- ({\x+0.3},{\y-0.6});}
+  \capa{7}{\draw[curva4,desplazada] plot[smooth,tension=0.6] coordinates {(0,0) (1.03,2.02) (2.08,2.84) (3.03,3.56)}
+    ;}
+  \capa{7}{\node[etiqueta,text=tceedorado,anchor=west] at (3.45,3.62) {isoclina};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,30 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Rendimientos a escala con isocuantas (tema 3.A.11). Elaboración propia basada en
+% Maté García y Pérez Domínguez (2007) y Pérez Domínguez (2004).
+% Funciones homogéneas de grado k: q = (z_L z_K)^(k/2). Isocuanta de nivel n·q:
+% z_K = t_n^2 / z_L, que corta el rayo z_K = z_L en t_n = t_1 n^(1/k).
+%   (a) k = 2:   t = 1,4; 1,980; 2,425 (cada vez más juntas)
+%   (b) k = 1:   t = 1; 2; 3           (equidistantes)
+%   (c) k = 0,7: t = 0,8; 2,153; 3,842 (cada vez más separadas)
+% En las tres la pendiente de las isocuantas sobre el rayo es la misma (-1): homotéticas.
+\newcommand{\panel}[5]{% #1 capa, #2 t1, #3 t2, #4 t3, #5 rótulo
+  \capa{#1}{\ejes{$z_L$}{$z_K$}{5.4}{5.2}}
+  \capa{#1}{\draw[guia] (0,0) -- (4.9,4.9);}
+  \foreach \t/\n/\c in {#2/$q$/curva1,#3/$2q$/curva2,#4/$3q$/curva3}{
+    \capa{#1}{\draw[\c] plot[domain={\t*\t/4.9}:4.8,samples=80] (\x,{\t*\t/\x})
+      node[etiqueta,right] {\n};}
+    \capa{#1}{\node[punto] at (\t,\t) {};}
+  }
+  \capa{#1}{\node[etiqueta,align=center,anchor=north] at (2.6,-0.9) {#5};}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  \panel{1}{1.4}{1.980}{2.425}{(a) Crecientes ($k>1$):\\ isocuantas cada vez más juntas}
+  \begin{scope}[xshift=5.2cm]
+    \panel{2}{1}{2}{3}{(b) Constantes ($k=1$):\\ isocuantas equidistantes}
+  \end{scope}
+  \begin{scope}[xshift=10.4cm]
+    \panel{3}{0.8}{2.153}{3.842}{(c) Decrecientes ($k<1$):\\ isocuantas cada vez más separadas}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

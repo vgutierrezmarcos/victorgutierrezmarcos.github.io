@@ -1,0 +1,202 @@
+# Revisión del tema 3.A.11 (13/10/2026)
+
+Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.
+
+Las referencias «C», «V», «K» y «P» remiten a `_trabajo/propuestas-contenido.md`, `propuestas-datos.md`, `propuestas-coherencia.md` y `pendientes.md`; «l. NNN», a `_trabajo/original.md`.
+
+## Resumen
+
+- Tema reescrito con la estructura de bloques del original: Introducción (cinco bloques, antes con la Estructura vacía), I (I.1-I.3), II (II.1-II.3), III (nuevo segundo nivel: III.1 producción conjunta y III.2 caja de Edgeworth), Conclusión y siete anexos; cante de 30 minutos (3 + 9 + 11 + 4 + 3).
+- Cubiertos los epígrafes del título que faltaban o estaban cubiertos poco: rendimientos locales y globales a escala (II.2) y producción conjunta (III.1); Cobb-Douglas, CES, Leontief y progreso técnico neutral desarrollados como tema de referencia del canon, con su notación.
+- 48 errores corregidos (σ, CES, neutralidades, cronología, etapas, errata de la escala, controversia del capital, entre otros) y todas las marcas resueltas; las capturas de ICEX-CECO y el texto copiado de Feás se sustituyen por redacción propia con fuentes primarias. Nada privado pasa a la fuente.
+- Datos nuevos con doble comprobación: estimación de Cobb y Douglas (1928), evidencia sobre σ y sobre los rendimientos a escala y participación salarial en España en 2025 (serie en `datos/participacion-salarial-es.csv`).
+- 20 gráficos TikZ/pgfplots y 4 tablas (dos de clasificación con color); `construir-tema.py 3A11` genera PDF (42 páginas), HTML y Word sin errores ni referencias sin definir.
+
+Gráficos: `esquema-tecnologia`, `conjunto-produccion`, `convexidad-conjunto`, `cuasiconcavidad-rendimientos`, `isocuantas-rmst`, `ces-isocuantas`, `superficie-produccion`, `region-economica`, `corto-plazo`, `rendimientos-decrecientes-origen`, `rendimientos-escala-isocuantas`, `rendimientos-escala-r3`, `productividad-rendimientos`, `rendimientos-locales`, `progreso-tecnico`, `progreso-tecnico-neutral`, `transformacion-empresa`, `caja-edgeworth-fpp`, `formacion-caja`, `forma-intensiva`.
+
+## Errores corregidos
+
+| Dónde (original) | Decía | Dice ahora | Propuesta |
+|---|---|---|---|
+| Introducción, restricciones (l. 55-59) | Teoría de la producción «[tema 3.A.9]», costes «[tema 3.A.10]», empresa y mercados «[temas 3.A.11 y 3.A.14-3.A.17]» (numeración antigua) | «Esta exposición»; \vertema{3.A.12}; \vertema{3.A.15} y \vertema{3.A.16-3.A.19} | C2, K14, P31-P33 |
+| Introducción, contextualización (l. 79) | Walras y Pareto inician el estudio «a mediados del siglo XIX» | Último cuarto del siglo XIX: Walras (1874), Pareto (1896, 1906) | C4, V2, P42 |
+| Introducción (l. 81) | Pareto, Wicksteed, Wicksell y Clark sin fechas | Wicksteed (1894), Clark (1899), Wicksell (1901), citados | V3 |
+| Introducción (l. 83) | Viner, Hotelling, Hicks y Samuelson «en la década de 1930» | «En los años treinta y cuarenta»: Viner (1931), Hotelling (1932), Hicks (1939), Samuelson (1947) | V4 |
+| Introducción (l. 85) | Dualidad de Shephard y Uzawa, sin fechas | Shephard (1953) y Uzawa (1964), con remisión a 3.A.12 | V5 |
+| Introducción (l. 87) | Cournot (1838) y Marshall «a mediados del siglo XIX» | Cournot (1838) y, después, Marshall (1890) | V6, P42 |
+| Introducción (l. 93-95) | Koopmans y Debreu sin fechas; Stigler después de ellos | Stigler (1941) antes; Koopmans (1951) y Debreu (1959) | V8 |
+| Nota 2 | «Kevin Lancaster»; cita entre comillas de Ekelund y Hébert no comprobada | «Kelvin» (por la entrada `Lancaster1966New`); paráfrasis sin comillas, como en el 3.A.8 | V14, V25, C41 |
+| I.1 (l. 173) y nota 6 | La imposibilidad de producción gratuita como $\mathcal{Y}\cap\mathbb{R}^S_+=\{0\}$, que «lleva implícita» la inacción; la nota 6 cuenta la inacción como axioma aparte | Imposibilidad de producción gratuita $\mathcal{Y}\cap\mathbb{R}^S_+\subseteq\{0\}$ e inacción $0\in\mathcal{Y}$ por separado (MWG §5.B); juntas dan la igualdad | C7, K4 |
+| I.1 (l. 201) | Dotación $\overline{y}_1$: «solo los puntos situados a la izquierda… no serán factibles» | El factor tiene signo negativo: la dotación limita en $-\overline{y}_1$; conjunto factible $\mathcal{Y}\cap\{y: y_1\geq-\overline{y}_1\}$ | C29 |
+| I.2 (l. 215) | La función de producción «fue propuesta inicialmente por Wicksteed en 1894» | Wicksteed (1894) es el primero en escribir la forma general; von Thünen ya usó formas concretas antes de 1850 (Humphrey, 1997) | C8, V9 |
+| I.2 (l. 239) | «Si imponemos que el conjunto de producción Z sea convexo… será cóncava (para lo cual son necesarios los rendimientos no crecientes y la complementariedad)» | $\mathcal{Y}$ convexo ⇔ $F$ cóncava; concavidad con $F(0)=0$ ⇒ rendimientos no crecientes; la cuasiconcavidad (complementariedad) no impone rendimientos | C9, K5, P48 |
+| I.2 (l. 241-245) | Concavidad estricta y rendimientos constantes como rasgos de la misma función «de buen comportamiento» | La función neoclásica de buen comportamiento tiene rendimientos constantes y es cóncava, pero no estrictamente | C9 |
+| Nota 9 | En la Cobb-Douglas «la productividad marginal del capital aumenta cuanto aumenta el capital» (atribuido a Adam Smith) | La complementariedad es la derivada cruzada $\partial PMg_L/\partial z_K>0$; la $PMg_K$ disminuye con el capital si $\alpha<1$. Sin la atribución a Smith | C10 |
+| I.3 (l. 295) | Las isocuantas no se cortan «por el axioma de eliminación gratuita» | Porque $F$ es una función (un solo máximo por cada $z$) | C11, K6, P45 |
+| I.3 (l. 305) | Pendiente negativa por la eliminación gratuita | La eliminación gratuita da pendiente no positiva; estrictamente negativa si las PMg son positivas | C11 |
+| I.3 (l. 313) y nota 13 | $\left|RMST_L^K\right|$ con barras y una nota para justificar el valor absoluto | $RMST_{LK}=PMg_L/PMg_K$, positiva por definición (canon D035); la nota sobra | K3, K6 |
+| Nota 14 | La elasticidad de sustitución «la introduce Joan Robinson en el contexto de la controversia del capital» | Hicks (1932) y Robinson (1933), de forma independiente, para estudiar la distribución; sin relación con la controversia (años cincuenta a setenta) | C12, V12, P43 |
+| I.3 (l. 344-358) | CES con pesos $s_i$; σ = 0 y σ = 1 como casos exactos; Leontief sin $A$; Cobb-Douglas con α y β libres como caso de una CES de grado uno; «linear» | Pesos $a_i$, $\rho\equiv(\sigma-1)/\sigma$, grado $\nu$; Leontief, Cobb-Douglas y lineal como **límites**; Cobb-Douglas límite con exponentes $\nu a_K$, $\nu a_L$; «lineal» | C13, K7, P40 |
+| Nota 15 | La CES «fue introducida por Robert Solow (1956) y popularizada por Arrow, Chenery, Minhas y Solow (1961)» | Solow (1956) la usa como ejemplo; la formalizan y estiman Arrow, Chenery, Minhas y Solow (1961) | C13, V13, P44 |
+| II (l. 390) | Los horizontes de Marshall «se han mantenido prácticamente inalterados» | Marshall distingue cuatro periodos (mercado, corto, largo y secular); los tres plazos de la producción son los tres últimos | C23 |
+| II.1 (l. 454, 459, 536) | Etapas «desarrolladas por Gustav Cassel en 1918» | Sin autor: «el análisis por etapas es anterior a la axiomática moderna»; Cassel (1918) usa coeficientes fijos y la atribución no se ha podido comprobar (ver Dudas) | C14, V10, P7 |
+| Nota 16 | La ley de rendimientos decrecientes «surgió al observar las explotaciones agrarias inglesas en el siglo XVIII» | Turgot (1767), en Francia; los clásicos ingleses (West, Malthus, Ricardo, Torrens) en 1815 | C15, V11 |
+| Nota 17 | Condiciones de Inada mezcladas con límites de $F$; $\partial F/\partial L_t$ | Las cuatro condiciones de los límites de las PMg (Inada, 1963), en el cuerpo de I.2 como ecuación | C16, P49 |
+| II.1 (l. 518-548) | $Q$ y $L$ en $PMe_L=Q/L$, $PMg_L=dQ/dL$, $\varepsilon_{Q,L}$ | $q$, $z_L$: $PMe_L=q/z_L$, $PMg_L=\partial F/\partial z_L$, $\varepsilon_{q,z_L}$ | C17, K3, P37 |
+| II.1 (l. 528) | «punto de inflación» | «punto de inflexión» | C17, P41 |
+| II.1, etapa I (l. 538) | La etapa I «implica una productividad marginal negativa del factor fijo» | Solo con rendimientos constantes (Euler: $PMe_L=PMg_L+PMg_K z_K/z_L$) | C18, P47 |
+| II.1, etapa II (l. 540) | «Es donde se debe producir… se da el equilibrio… las cantidades son las óptimas» | Es donde produce una empresa que maximiza el beneficio; el punto concreto depende de los precios (3.A.12, 3.A.16) | C18, K10 |
+| II.2 (l. 622) | $\frac{dz_L}{dz_L}=\frac{dz_K}{dz_K}=\frac{d\lambda}{d\lambda}$ | $dz_L/z_L=dz_K/z_K=dt/t$; escala $t$ (λ queda para multiplicadores, D020/D101) | C19, P39 |
+| II.2 (l. 630-634) | «rendimiento decrecientes/constantes/crecientes»; $\varepsilon_{Q,\lambda}$ | «rendimientos»; $\varepsilon_{q,t}$ | C19, K3 |
+| Caja de homotéticas (l. 673-697) | Grado de homogeneidad $t$ (choca con la escala); «constante u excluyen»; homotéticas «porque la pendiente de las líneas de contorno es igual» | Grado $k$, $F(tz)=t^kF(z)$; texto nuevo; es la pendiente de las **isocuantas** la que es igual a lo largo de un rayo | C21, K9, P22 |
+| II.3 (l. 752-757) | Hicks: «la cantidad de factores utilizados disminuye»; Solow: «la relación producto-capital no es constante»; Harrod sin criterio; notación $\breve F$, $z_{K_t}$ | Criterio de cada neutralidad (qué proporción se mantiene: $z_K/z_L$, $z_L/q$, $z_K/q$), notación de la ficha del canon; coincidencia en la Cobb-Douglas; teorema de Uzawa | C25, K11 |
+| II.3 | Sin distinguir «aumentador» de «sesgado» | Con σ < 1, el progreso aumentador del capital está sesgado hacia el trabajo (Acemoglu, 2009, cap. 15) | K11 |
+| III (l. 775) | «Si en la **economía** existe más de un producto…» bajo un título de empresa | Se distingue la empresa multiproducto (III.1) de la asignación entre procesos separables o empresas (III.2) | C26, C27, K12 |
+| III (l. 814) | «las isocuantas ya no son necesariamente puntos que reflejen asignaciones eficientes» | Estar sobre la isocuanta de cada producto no garantiza la eficiencia: en $A$ las RMST son distintas | C27 |
+| III (l. 830) | La FPP se desplaza «hacia la derecha» | «Hacia fuera» | C27, P46 |
+| III, caja de optimalidad (l. 855-859) | $\pi_j$, $P_j$, $W$, $R$ y luego $w/r$ | $B_j$, $p_j$, $w_L$, $w_K$; $RMST^X_{LK}=RMST^Y_{LK}=w_L/w_K$ | C27, K3, P23 |
+| III | Notación $z^X_K$, $\overline{z_K}$ | Notación del equilibrio general (canon §5): $L_X$, $K_X$, $\overline{L}$, $\overline{K}$, avisada en el texto | K3 |
+| Nota 25 | «linear» | «lineal» | C28, P40 |
+| Nota 26 | RMT y RMST «son la pendiente de la función de producción en la frontera» | Pendientes de dos fronteras técnicas distintas (isocuanta y frontera de transformación) | C27 |
+| Conclusión (l. 878-880) | Recapitulación genérica («la oferta», «otras cuestiones»); relevancia idéntica a la de la introducción; «para si producción»; [Tema 3.A.23] | Recapitulación en tres pasos; relevancia propia con dato; \vertema{3.A.22} | C30, K15, P34, P51 |
+| Anexo 1 | Mezcla formas de utilidad (Gorman, cuasilineal, Stone-Geary) con formas de producción, sin expresiones | Tabla con expresión, σ y rendimientos; las de utilidad remiten al 3.A.8 | C33, P62 |
+| Anexo 2 (l. 969) | Artículo de Robinson «de 1954» | 1953-1954 | V15 |
+| Anexo 2 (l. 1003) | Controversia «de los 50 a los 60»; «Massachussets» | De los años cincuenta a los setenta; Massachusetts | V16, C39 |
+| Anexo 2 (l. 1009) | «incapacidad de los neokeynesianos» | Los críticos eran los postkeynesianos de Cambridge (Inglaterra); se reescribe | C39 |
+| Nota 28 | Referencia incompleta a Baqaee y Farhi | Baqaee y Farhi (2019), *JEEA* 17(5) | V17 |
+| Anexo 3 | «La incertidumbre (que suponemos negativa debido a la aversión al riesgo de las empresas)» | Supuesto estándar de neutralidad; con aversión, Sandmo (1971) | C35, P63 |
+| II.3, sesgo de Hicks (corrección del control de calidad) | «Si la RMST sube (baja)… el progreso es ahorrador de trabajo (de capital)» (al revés en la primera versión) | Con $RMST_{LK}=PMg_L/PMg_K$, si la RMST sube para $z_K/z_L$ dado, el progreso es ahorrador de capital (utilizador de trabajo) | Control de calidad |
+
+## Marcas resueltas
+
+| Marca | Texto original | Qué se ha hecho |
+|---|---|---|
+| P2, rojo (l. 590) | «menor… decrecientes» | Correcto: integrado en negro (II.2, «Rendimientos a escala»). |
+| P3, nota al opositor (l. 1-11) | Aviso del cambio de temario de 2023 | Nota de trabajo: desaparece. |
+| P4 y P8, notas al opositor (l. 10, 565-577) y capturas de Jehle y Reny (`image13`, `image14`) | «Lo único que faltaría sería la distinción entre rendimientos locales y globales» | Resuelto con un epígrafe nuevo en II.2 (definiciones de Jehle y Reny, def. 3.3-3.4, elasticidad de escala local como suma de elasticidades-producto, ejemplo con rendimientos variables, homotéticas). Las capturas no se publican. El enlace a JSTOR 4101869 no se ha podido identificar (V29) y no se cita. |
+| P5, nota al opositor (l. 14) | Captura de la ficha del tribunal | No se publica; se ha usado solo para detectar huecos (producción conjunta y problema del productor). |
+| P6 y P7, notas al opositor (l. 417, 421) | Meter la región económica con el *disclaimer* de la eliminación gratuita y justificarlo por Cassel (1918) | Consejo útil para el cante: reescrito en una `notaopositor` en II.1, sin la atribución a Cassel (ver Dudas). |
+| P9 y P12, nota y comentarios (l. 28, 863-871) | Meter el problema del productor (comodín o anexo) | La caja de I.2 explica la acotación del beneficio según los rendimientos y remite al anexo del problema del productor. |
+| P10, P11, P13, P15, P16, P18 (comentarios) | Clases con Juan Luis y Juan Carlos, «copiar notas del tema de Juan Luis», «ver anexos de ICEX-CECO», opiniones sobre la ley de proporciones variables | No se publican. Lo que pedían se resuelve con fuentes primarias (MWG, Varian, Jehle y Reny). |
+| P14, comentario (l. 36) | Entender por qué con rendimientos crecientes no se puede maximizar el beneficio | Explicado en la caja de I.2 (rendimientos constantes: $B(tz)=tB(z)$; crecientes: el ingreso crece más que el coste; estrictamente decrecientes: CPO suficientes). |
+| P17, comentario (l. 719) | Coordinar la clasificación del progreso técnico con 3.B.9 | II.3 da las definiciones de referencia (ficha del canon) y la distinción aumentador/sesgado, con remisión a 3.B.9. Las contradicciones de 3.B.9 y 3.A.45, en «Coherencia». |
+| P19, cajas de anotaciones con enlaces (l. 113-121, 689) | Policonomics (tres enlaces), YouTube (funciones homotéticas) | Conservados en `anotaciones` (I y II.2): responden (V, L1-L3, L7). El de Fuleky estaba roto: se usa la copia de Internet Archive (L6). |
+| P20 y P60, caja «Sobre concavidad y cuasiconcavidad» (l. 247-281) | Paráfrasis casi literal del anexo 0 de ICEX-CECO, con dos imágenes sin fuente | Redactada de nuevo con MWG §5.C y Varian cap. 2; `image4` rehecha como gráfico (elaboración propia, fuente no identificada); `image5` («Figure A1.35», en inglés) convertida en la tabla «Concavidad y cuasiconcavidad» citando Jehle y Reny, cap. A1. |
+| P21, caja «Relación entre elasticidad-producto y elasticidad-escala» (l. 636-658) | Caja con `image18` sin fuente | Pasa al cuerpo de II.2 (ecuación de la elasticidad de escala local) con gráfico propio. |
+| P22, caja «Funciones homotéticas y homogéneas» (l. 660-714) | Capturas de Pérez Domínguez (2004) y texto con erratas | Texto propio en el cuerpo de II.2; las capturas no se publican; el gráfico de las tres homogéneas se funde con el de rendimientos a escala. |
+| P24.1-P24.10, P24.13, P24.15, P24.17-P24.20, P24.22, P24.23 | Imágenes y tablas de la Introducción, I y II | Todas pedidas como gráficos TikZ/pgfplots o pasadas a LaTeX (lista en el Resumen). La tabla de l. 136-142, que mezclaba tecnología y costes, se sustituye por un esquema. |
+| P24.16, P24.24 (parte) | Texto escaneado de Pérez Domínguez; anexo II de ICEX-CECO (elasticidad de escala como suma de elasticidades-producto) | No se publican; la demostración, de una línea, está en el cuerpo de II.2. |
+| Salto marcado en amarillo (l. 107-108) y tabla vacía de la Estructura | — | La Estructura está redactada (K2) con el esquema de pizarra y una `notaopositor` con el reparto de minutos. |
+| P1, texto oculto y amarillo (l. 880) | «el problema del productor» en la recapitulación | No se publica tal cual: como el problema del productor va a un anexo, la conclusión lo nombra en las Extensiones. |
+| P23, caja de optimalidad (l. 846-860) | Notación incoherente | Caja `anotaciones` en III.2 con la notación del canon y remisión a 3.A.22 y 3.A.21. |
+| P24.11, P24.12, P24.21 | Imágenes 11-12 y nota 24 | Gráficos `caja-edgeworth-fpp` (fusiona las dos imágenes) y `formacion-caja`. |
+| P24.24, P59, anexos 4-6 (capturas de ICEX-CECO) | Capturas de texto ajeno | No se publican. Lo útil está redactado de nuevo: acotación del beneficio (caja de I.2), propiedades del conjunto (I.1), elasticidad de escala (II.2) y función agregada en forma intensiva (anexo, con el gráfico `forma-intensiva` rehecho). |
+| P58, anexo 2 (l. 964-982) | Cuatro párrafos copiados literalmente de Feás (2017) | Resumen propio con fuentes primarias (Robinson, 1953-54; Sraffa, 1960; Levhari, 1965; Pasinetti, 1966; Samuelson, 1966; Cohen y Harcourt, 2003); Feás citado como lectura divulgativa. Las citas entre comillas de Samuelson y Robinson, no comprobadas (V19, V26), se quitan. |
+| P52, P61, bibliografía (l. 916-926) | ICEX-CECO, HET y «Tema Juan Luis Cordero Tarifa» | Bibliografía generada con `\bibliografia` desde `3A11.bib`; sin los apuntes de preparadores (no son fuente citable, CRITERIOS §5). |
+| P53, «Preguntas de otros exámenes» vacío | — | Se suprime. |
+| P54, enlace a quia.com (destino roto, L11) | — | Enlace genérico al simulador en el anexo de test. |
+| P63, anexo 3 | Tres líneas | Ampliado (Sandmo, Stigler) con remisión a 3.A.10. |
+
+## Datos actualizados
+
+El tema es teórico. Cambian fechas, atribuciones y referencias, y se añaden cinco datos empíricos (V30-V34). Todos se consultaron el 13/10/2026.
+
+| Dato | Valor anterior | Valor nuevo | Fuente | URL | Consulta | Segunda comprobación |
+|---|---|---|---|---|---|---|
+| Fábrica de alfileres (enganche, nuevo) | — | 10 operarios, unas 18 operaciones, más de 48.000 alfileres al día (4.800 por persona); por separado, ni 20 | Smith (1776), libro I, cap. I | https://www.gutenberg.org/cache/epub/3300/pg3300.txt | 13/10/2026 | Texto leído en Project Gutenberg; coincide con la cita de K2 |
+| Cronología de la contextualización | «Mediados del siglo XIX» (Walras, Pareto, Cournot); sin fechas | Fechas de V2-V8 | HET, *Neoclassical Theories of Production* | https://www.hetwebsite.net/het/essays/product/prodintro.htm | 13/10/2026 | Pies de imprenta y Crossref (V2-V8) |
+| Autoría de σ | Robinson, en la controversia del capital | Hicks (1932, p. 117) y Robinson (1933) | HET, *The Elasticity of Substitution* | https://hetwebsite.net/het/essays/product/elastic.htm | 13/10/2026 | V12 |
+| Autoría de la CES | Solow (1956) | Arrow, Chenery, Minhas y Solow (1961); Solow (1956) como ejemplo | Crossref | https://doi.org/10.2307/1927286 | 13/10/2026 | Klump y Preissler (2000) (V13) |
+| Ley de rendimientos decrecientes | Inglaterra, siglo XVIII | Turgot (1767); West, Malthus, Ricardo y Torrens (1815) | Humphrey (1997) | https://www.richmondfed.org/publications/research/economic_quarterly/1997/winter/humphrey | 13/10/2026 | V11 |
+| Estimación de Cobb y Douglas (V30, nuevo) | — | Manufacturas de EE. UU., 1899-1922: $q\approx1{,}01\,z_K^{1/4}z_L^{3/4}$ | Cobb y Douglas (1928) | https://www.jstor.org/stable/1811556 | 13/10/2026 | Douglas (1976), *JPE* 84(5) |
+| σ capital-trabajo (V31, nuevo) | — | 0,4-0,6 (Chirinko); en torno a 0,3 corregido el sesgo de publicación (Gechert *et al.*) | Chirinko (2008); Gechert *et al.* (2022); Knoblach *et al.* (2020) | https://doi.org/10.1016/j.red.2021.05.003 | 13/10/2026 | Resúmenes en Crossref, CESifo WP 2234 y nota del Banco Nacional Checo (V31). La cifra de 0,3 sale del resumen del documento de trabajo |
+| σ agregada (V32, nuevo) | — | 0,5-0,7 en la industria manufacturera de EE. UU. | Oberfield y Raval (2021) | https://doi.org/10.3982/ECTA12807 | 13/10/2026 | Resumen en Crossref |
+| Rendimientos a escala (V33, nuevo) | — | Industria típica de EE. UU.: constantes o ligeramente decrecientes; aumentan al agregar | Basu y Fernald (1997) | https://www.federalreserve.gov/econres/ifdp/returns-to-scale-in-us-production-estimates-and-implications.htm | 13/10/2026 | Crossref (V33). Periodo de la muestra sin comprobar en el texto: no se da |
+| Participación salarial en España (V34, conclusión) | — | 48,4 % del PIB en 2025 (817.261 / 1.690.012 M€); ajustada, 56,6 % | Eurostat `nama_10_gdp` (act. 9/10/2026); AMECO ALCD0 (act. 3/6/2026) | https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table?lang=en | 13/10/2026 | INE, CNTR, tabla 67825 (suma de trimestres, coincide). Serie en `datos/participacion-salarial-es.csv`. Caída mundial: Karabarbounis y Neiman (2014) |
+
+## Contenido añadido
+
+- **Enganche** nuevo: la fábrica de alfileres de Smith (1776), comprobada en el texto original (K2). Plantea a la vez tecnología y escala y se retoma en las causas de los rendimientos crecientes (II.2).
+- **Relevancia** con cuatro planos (micro, macro, comercio, política económica) en lugar de la misma frase de la conclusión (C3).
+- **Problemática** con cuatro preguntas que recorren todos los epígrafes del título y **Estructura** con la justificación del orden, esquema de pizarra y reparto de minutos (C5, K2).
+- **I.1**: nombre oficial del epígrafe, vector *netput*, conjunto de requerimientos $V(q)$, axiomas con la inacción separada y propiedades de escala del conjunto (divisibilidad, aditividad, cono, convexidad, irreversibilidad; proposición 5.B.2 de MWG) (C6, C7, K4). Gráfico de convexidad (nota 10).
+- **I.2**: definición como máximo, $F(z)\equiv\max\{q:(q,-z)\in\mathcal{Y}\}$; métodos técnicamente eficientes; propiedades y curvatura distinguiendo cuasiconcavidad y concavidad; función neoclásica de buen comportamiento con las condiciones de Inada; caja sobre la acotación del beneficio y tabla de concavidad (C8, C9, C16, K5).
+- **I.3**: propiedades de las isocuantas con su motivo; RMST; elasticidad de sustitución con autoría, interpretación por precios y efecto sobre la distribución; anuncio de las elasticidades con $n$ factores (anexo); **Cobb-Douglas desarrollada** (productividades, RMST, σ = 1, escala, distribución y Euler, progreso técnico, origen) y **CES** con $\nu$, sus tres límites y σ > 1 (crecimiento, Dixit-Stiglitz); evidencia empírica sobre σ (C11-C13, K6-K8, V30-V32).
+- **II**: los cuatro periodos de Marshall (C23); el corto plazo como restricción del conjunto de producción y la envolvente (C24).
+- **II.1**: advertencia sobre la eliminación gratuita con `notaopositor`; región económica con isoclinas; tabla de las etapas con color (C14, C17, C18, K10).
+- **II.2**: causas de los rendimientos (C22); funciones homogéneas y homotéticas y teorema de Euler (C21); **rendimientos globales y locales** con la elasticidad de escala local, el ejemplo de Jehle y Reny con rendimientos variables, la ley *ultra passum* de Frisch, la relación $\varepsilon_{q,t}=CMe/CMg$ (Hanoch, 1975), la indeterminación del tamaño con rendimientos constantes y la evidencia de Basu y Fernald (C20, K9, V33); tabla de rendimientos con color.
+- **II.3**: criterios de neutralidad, coincidencia en la Cobb-Douglas, teorema de Uzawa y distinción entre progreso aumentador y sesgado (C25, K11).
+- Recapitulación y enlace al final de I y de II, y «En el cante» al principio de cada uno (CRITERIOS §2).
+
+- **III.1** (nuevo): función de transformación $T(y)\leq 0$, curva de transformación y $RMT_{12}$ de la empresa, producción conjunta en proporciones fijas y variables (ejemplos de Marshall, libro V, cap. VI), economías de alcance (Panzar y Willig, 1981), subaditividad y elección con precios (C26, K12).
+- **III.2**: caja de Edgeworth resumida con remisión a 3.A.21 y 3.A.22, $RMT_{XY}$ como cociente de productividades y de costes marginales (C27).
+- **Conclusión** con los cinco bloques; relevancia con la participación salarial (V34) e idea final que responde a la problemática (C30, K15).
+- **Anexos**: derivaciones (CES y sus límites, Euler y homogéneas, Cobb-Douglas), problema del productor con agregación (C34, K16), formas funcionales con translog y Leontief generalizada (C33), σ de Allen-Uzawa y Morishima (C40), incertidumbre (C35), función agregada en forma intensiva y controversia de Cambridge (C38, C39) y aspectos para el test (K17).
+
+### Estado de las propuestas: Introducción, I y II
+
+**Contenido (C).** Aplicadas: C1, C3, C4, C5, C6, C8, C9, C10, C11, C12, C15, C16 (en el cuerpo de I.2 como ecuación, no en nota), C17, C18, C19, C20, C21, C22, C23, C24, C25, C29, C41, C42, C43, C44 y C45 (en lo que toca a esta parte). Aplicadas con cambios:
+- C2: se conserva el bloque de restricciones y el individualismo metodológico en una frase, pero **no** la cita de Marshall: el enganche cambia a Smith (K2, criterio de resolución de Víctor), porque el 3.A.8 ya abre con Marshall.
+- C7: las propiedades de escala van en el cuerpo, como propone C7, y no en un anexo (K4/K17), porque los rendimientos globales de II.2 las necesitan; la irreversibilidad pasa a esa lista.
+- C13: la derivación de los límites se deja para el anexo con la etiqueta `der:ces` (K17, como en el 3.A.8) en lugar de `anexo:ces-limites`.
+- C14: se aplica todo salvo la atribución a Cassels (1936): las etapas quedan sin autor (criterio de resolución; ver Dudas).
+- C20: se usa $\varepsilon_{q,t}(z)$ (símbolo del canon, K3) en vez de $\mu(z)$, que se menciona en nota.
+- C32: se conservan también el vídeo de Policonomics y el de YouTube (l. 689), que C32 y C21 proponían quitar, porque CRITERIOS §3 manda conservar las cajas de anotaciones con los enlaces comprobados (responden: L3, L7).
+- C46: hechos los gráficos de las notas 10, 18 y 20 (el de la nota 20 dentro del gráfico de la región económica) y el de la nota 24 (`formacion-caja`).
+
+C26-C28, C30-C31 y C33-C40: ver el apartado siguiente.
+
+**Datos (V).** Aplicadas: V2-V9, V11-V14, V20, V27 (se quita Hesíodo y Jenofonte), V30-V33. V1 queda sin uso al cambiar el enganche. V10: sin autor para las etapas, como propone. V18, V21, V22: confirmados y usados. V23 (Segura, 3.ª ed. de 1996) y V25 (cita de Ekelund y Hébert): ver Dudas y Errores. V29: no se cita. Enlaces L1-L7 resueltos como se dice en Marcas. V15-V17, V19, V24, V26, V28, V34 y L8-L11: ver el apartado siguiente.
+
+**Coherencia (K).** Aplicadas: K1, K2, K3 (con una excepción: ver Coherencia), K4, K5, K6, K7, K8, K9, K10, K14. Con cambios:
+- K11: en lugar de un solo gráfico de capas se piden dos (progreso técnico como desplazamiento de la función y de la isocuanta, y los tres paneles de neutralidad), que corresponden a las Imágenes 9 y 10 del original.
+- K13: etiquetas usadas: `fig:productividad-rendimientos` (no `productividad-escala`), `fig:cuasiconcavidad-rendimientos` (no `cuasiconcavidad-tipos`), `eq:pme`, `eq:pmg` (no `eq:pme-pmg`), `eq:neutralidad` (no `eq:hicks`, `eq:harrod`, `eq:solow`), más `eq:inada`, `eq:isocuanta`, `eq:netput`, `eq:neutralidad-cobb-douglas` y `eq:ejemplo-rendimientos-locales`.
+- K16: la caja sobre la acotación del beneficio se queda en I.2 (como C9) y remite a `anexo:productor`; el anexo debe remitir a ella, no repetirla.
+- K17: anexos creados con estas etiquetas: `der:ces` (dentro de un anexo de derivaciones), `anexo:productor`, `anexo:formas` y `anexo:sigma-n` (C40). No se cita `anexo:conjunto`: su contenido está en el cuerpo de I.1.
+
+K12, K15, K16 (anexo) y K17: ver el apartado siguiente.
+
+### Estado de las propuestas: III, Conclusión y anexos
+
+- **Aplicadas**: C26, C27, C28, C30, C31 (sin la entrada de ICEX-CECO: material de preparación, no citable), C33, C34, C35, C36, C37, C38, C39, C40, C46 (nota 24); K12, K15, K16, K17; V15, V16, V17, V34.
+- **Con cambios**: C26 proponía titular el bloque «Empresa multiproducto y producción conjunta»; se mantiene el título de primer nivel del original («Empresa multiproducto: curva de contrato», con dos puntos en vez de flecha), según el criterio de resolución, y la producción conjunta va en el título de III.1. III.2 se resume (no se repite el desarrollo de 3.A.21 y 3.A.22) y usa la notación del equilibrio general del canon (§5), no la $z$ que proponía C44. K17: el anexo de propiedades del conjunto no se crea (está en el cuerpo de I.1); la etiqueta del anexo de la controversia es `anexo:cambridge` (K) y no `anexo:controversia` (C). C34: la acotación del beneficio no se repite; el anexo remite al recuadro de I.2. C39: sin las citas literales de Samuelson y Robinson (V19, V26, no comprobadas).
+- **No aplicadas**: V19 y V26 (citas no comprobadas: se quitan las comillas y las frases), V24 (Pérez Domínguez solo aparecía en capturas), V28 (ICEX-CECO y el tema de Cordero no se citan), V29 (enlace de JSTOR sin identificar).
+
+## Coherencia
+
+- **Notación del canon** aplicada en la Introducción, I y II (`canon/notacion.md` §1, §3; D003, D011, D020, D035, D101, D102): $\mathcal{Y}$, $y\in\mathbb{R}^S$, $F(z)$ con $z=(z_L,z_K)$, $q$, $PMg_L$, $PMe_L$, $RMST_{LK}$ positiva, $\sigma\equiv d\ln(z_K/z_L)/d\ln RMST_{LK}$ (la misma forma que en el 3.A.8), pesos $a_i$ y $\rho$ en la CES, $t$ para la escala, $k$ para el grado de homogeneidad, $\varepsilon_{q,t}$, $\varepsilon_{q,z_i}$, $w_L$, $w_K$, $B$.
+- **Excepción a K3**: las neutralidades del progreso técnico se escriben con el orden de argumentos de la ficha vigente `progreso-tecnico-neutral` ($F(z_K,z_L)$: Hicks $A_tF(z_K,z_L)$, Solow $F(A_tz_K,z_L)$, Harrod $F(z_K,A_tz_L)$), como C25, y no con el orden $(z_L,z_K)$ que K3/K §4.4.2 proponen cambiar en la ficha. Si `tema-canon` aplica ese cambio, hay que reordenar la ecuación `eq:neutralidad`.
+- **Símbolos nuevos que se proponen al canon** (K §4.4.1, los aplica `tema-canon`): $y\in\mathcal{Y}\subset\mathbb{R}^S$ (*netput*), $\varepsilon_{q,z_i}=PMg_i/PMe_i$ y $\varepsilon_{q,t}(z)$ (elasticidad de escala local). $\kappa$ en el ejemplo de rendimientos variables, para no chocar con $k$. $T(y)\leq 0$ (función de transformación, III.1).
+- **Modelos frente a sus fichas**: Cobb-Douglas (D005), CES, Leontief y progreso técnico neutral, con 3.A.11 como tema de referencia, se cuentan en desarrollo con la presentación de referencia de cada ficha (forma, σ, límites de la CES, Inada, Euler y participaciones, coincidencia de las neutralidades, Uzawa). El gráfico de la CES reutiliza el del 3.A.8 reetiquetado y la superficie de producción adapta la superficie de utilidad del 3.A.8, para que se reconozca el mismo gráfico.
+- **Referencias cruzadas** corregidas y añadidas: 3.A.12 (costes, envolvente, senda de expansión, economías de escala, costes medios en U), 3.A.15 y 3.A.16-3.A.19, 3.A.16 (tamaño indeterminado con rendimientos constantes), 3.A.17 (monopolio natural), 3.A.18 (Dixit-Stiglitz, competencia imperfecta), 3.A.2 (clásicos y rendimientos decrecientes), 3.A.8 (σ, cuasiconcavidad, isocuantas e isoclinas), 3.A.25 (remuneración según la productividad marginal), 3.A.31 (Leontief e *input-output*), 3.A.42, 3.A.43 (Cobb-Douglas, Uzawa, tamaño indeterminado), 3.A.44 (σ > 1), 3.A.45 (participaciones, PTF), 3.B.5, 3.B.6 y 3.B.9 (sesgo del progreso técnico). Ninguna apunta al 4.º ejercicio.
+- **Bibliografía**: se reutilizan las claves del 3.A.8 (`Marshall1890Principles`, `Walras1874Elements`, `Pareto1896Cours`, `Pareto1906Manuale`, `Debreu1959Theory`, `CobbDouglas1928Theory`, `ArrowEtAl1961Capital`, `MasColellWhinstonGreen1995`, `JehleReny2011Advanced`, `Varian1992Microeconomic`, `BesankoBraeutigamGibbs2020`, `Segura1986Analisis`, `GravelleRees2004Microeconomics`, `EkelundHebert2013History`, `Lancaster1966New`, `Becker1965Allocation`, `Gronau1977Leisure`, `Stigler1961Information`, `FulekyAnatomy`, `MatePerez2007Microeconomia`, `Perez2004Microeconomia`, `Eurostat2026Nama10gdp`), copiadas tal cual de `3A08.bib`. Por eso no se usan las claves duplicadas de `bib-datos.bib` (`MateGarciaPerezDominguez2007`, `PerezDominguez2004Microeconomia`, `Fuleky2006Anatomy`, `Eurostat2026nama10gdp`). Entre las dos propuestas había claves distintas para la misma obra: se usan `HET2026Production` (no `HETNeoclassicalProduction`) y `Feas2017Robinson` (no `Feas2017Brindo`). La entrada de Turgot se rehace con el año de escritura (1767) y la reimpresión de 1844 en nota, para que la cita salga «Turgot (1767)».
+- **Contradicciones con otros temas** (no se tocan; para `canon/pendientes-coherencia.md` cuando se cierre la revisión):
+  1. **3.B.9** (l. 552-558) y **3.A.45** (nota 13): copian las definiciones antiguas de neutralidad («en Hicks… la cantidad de factores utilizados disminuye») y confunden progreso aumentador del capital con sesgado hacia el capital. Deben adoptar las de II.3.
+  2. **3.A.12**: copia la elasticidad de escala del 3.A.11 con la notación vieja ($\varepsilon_{Q,\lambda}$, λ, $Q$, $f(\vec z)$). Remite a 3.A.11 para la isoclina, la ley de proporciones variables y los rendimientos: las tres están (II.1 y II.2).
+  3. **3.A.9** (nota 26): cuenta la historia de la Cobb-Douglas («70 % y 30 %», Douglas senador «1949-1966», que fue hasta 1967). Según D005 va en 3.A.11 (ya está en I.3, con la estimación de 1928, $z_K^{1/4}z_L^{3/4}$); el 3.A.9 debería dejar una línea y remitir.
+  4. **3.A.43** remite a 3.A.11 para la indeterminación del tamaño de la empresa con rendimientos constantes: ya está en II.2.
+  5. **3.A.2** (nota 38) fecha la ley de Turgot en 1765; aquí se usa 1767 (*Observations sur le mémoire de M. de Saint-Péravy*, según Humphrey, 1997).
+  6. **3.A.8**: ya no comparten enganche (3.A.8, Marshall; 3.A.11, Smith).
+  7. **3.A.16** remite a 3.A.11 para la oferta individual, que sale del problema del productor (3.A.12; aquí, solo en anexo).
+
+- **Partes 2 y 3, coherencia**: III.2 y la caja de optimalidad repiten, en resumen, la caja de Edgeworth de 3.A.21 y 3.A.22 (hoy con textos casi idénticos en los tres temas). Se propone al canon (K §4.4.4) una fila 3.A.11 en la ficha `equilibrio-general-walras` («resumen: caja, curva de contrato, FPP y $RMT_{XY}$ con la notación §5; sin precios ni FPU»). 3.A.17 incluye «Producción conjunta» en su título: III.1 trata la tecnología y remite allí para el monopolio multiproducto. El anexo de Cambridge es hoy el único desarrollo de la controversia del capital en el temario (3.A.5 y 3.A.43 solo la mencionan); si Víctor quiere tema de referencia, el natural es 3.A.4.
+
+- **Control de calidad**: en `3A11.bib` se han quitado las notas de trabajo que se imprimían (Wicksell, Viner, Turgot, Wicksteed, Hicks) y los datos sin comprobar (editorial de Wicksell; entrada de von Thünen, que no se cita). `FulekyAnatomy` lleva ahora `year = {2006}`; como 3.A.8 usa la misma clave sin año, queda anotado en `canon/pendientes-coherencia.md`. Las fórmulas de cabecera de las tablas de etapas y de rendimientos pasan a ecuaciones encima de cada tabla (en HTML y Word la fila combinada se perdía), la ecuación de la elasticidad-producto se escribe sin `\underbrace` (Word no lo convertía) y la combinación convexa usa $\lambda$ en el texto, igual que en el gráfico.
+
+## Dudas abiertas
+
+Criterios de resolución aplicados mientras Víctor no diga otra cosa:
+
+1. **Orden del título (D1).** Se mantiene el orden del original (tecnología → plazos → producción conjunta), aunque el título enuncia antes el corto y largo plazo y después la elasticidad de sustitución; se justifica en la Estructura. ¿De acuerdo?
+2. **Segundo nivel en III (D2).** El III se divide en III.1 (empresa multiproducto y producción conjunta) y III.2 (la caja de Edgeworth), manteniendo el título de primer nivel del original. Ya se anuncia así en la Estructura y en el esquema de pizarra. (El título de 3.A.17 también incluye «Producción conjunta»: III.1 remite allí para el monopolio multiproducto.)
+3. **Problema del productor (D3).** Va a un anexo con remisión a 3.A.12; desde I.2 ya se remite a `anexo:productor`. ¿De acuerdo?
+4. **Enganche (D4).** Se cambia la cita de Marshall, que ya usa el 3.A.8, por la fábrica de alfileres de Smith (1776), comprobada en el texto. ¿De acuerdo?
+5. **Región económica (D5).** Se queda en el documento y en el cante, pero es lo primero que se recorta si falta tiempo (lo dice la nota «En el cante» de II). ¿De acuerdo?
+6. **Etapas de la producción sin autor.** El original las atribuye a Gustav Cassel (1918); según Humphrey (1997), Cassel usa funciones de coeficientes fijos, en las que no caben las etapas, y la alternativa (John M. Cassels, 1936, «On the Law of Variable Proportions») solo está apoyada en un catálogo y en los apuntes de Cabado, sin haber leído el texto. Se dejan sin autor. Si Víctor tiene la fuente (por ejemplo, Ferguson, 1969, o el tema de ICEX-CECO), se puede restituir.
+7. **Segura.** El pie de la Imagen 1 citaba la 3.ª ed. (1996), pág. 85, que no se ha podido comprobar; se cita `Segura1986Analisis` (la entrada del 3.A.8), sin página.
+8. **Fuleky.** Se reutiliza la clave `FulekyAnatomy` del 3.A.8 (título «Convex, Concave, Quasiconcave, or What? (Anatomy of a Function)»), aunque `bib-datos.bib` da como título de la página «Anatomy of a Cobb-Douglas Type Production/Utility Function in Three Dimensions». Conviene unificar el título en los dos temas cuando se compruebe la página archivada.
+9. **Elasticidad de sustitución de 0,3** (Gechert *et al.*, 2022): la cifra procede del resumen del documento de trabajo; el artículo publicado da una media corregida en el rango 0-0,6. Se dice «en torno a 0,3».
+10. **Orden de los argumentos en las neutralidades**: se sigue la ficha vigente $(z_K,z_L)$ (ver Coherencia).
+11. **Título de III.** Se mantiene «Empresa multiproducto: curva de contrato» (primer nivel del original). Si Víctor prefiere «Empresa multiproducto: producción conjunta y curva de contrato», basta cambiar el `\section`.
+12. **Anexo de la controversia.** Se ha reescrito entero (el original copiaba a Feás) y se han quitado las citas literales de Samuelson (1966) y Robinson que no se han podido comprobar. Si Víctor tiene el texto de Samuelson, se puede recuperar una cita breve.
+13. **Nombres de preparadores en este informe (control de calidad, 13/10/2026).** `revision.md` se sube a la rama pública y, en «Marcas resueltas», cita comentarios privados del original (clases con Juan Luis y Juan Carlos, «copiar notas del tema de Juan Luis», anexos de ICEX-CECO, apuntes de Cabado), igual que el informe del 3.A.8. El tema publicado no los contiene. ¿Se dejan así o se resumen como «comentarios internos de clases y preparadores» en los informes?

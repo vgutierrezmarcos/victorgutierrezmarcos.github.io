@@ -5,6 +5,8 @@
 # fuente_disponible: si | parcial (incompleta o con restos del título anterior) | renumerado (el contenido está en el Word de otro número del temario antiguo) | otro-titulo (Word del título antiguo, se aprovecha lo que encaja) | no.
 # tema_referencia: un tema, o una lista de dos cuando es doble (uno del 3.er ejercicio y otro del 4.º, cada uno completo para su examen). decision: id de decisiones.json que lo fijó (aprobadas el 13/10/2026). En temas, el papel es el objetivo; «(hoy …)» indica lo que hay ahora en la fuente.
 # uso: ampliar (en una referencia o una que falta de un tema del 3.er ejercicio a uno del 4.º): remisión solo para ampliar; el tema del 3.º no depende de ella (D138). nota: aclaración de la referencia.
+# contradicciones (en temas revisados): errores o desajustes que la revisión del tema ha detectado en OTROS temas; no se tocan
+#   esos temas, se corrigen cuando se revisen (o con --fase coherencia si ya están revisados; ver pendientes-coherencia.md).
 # Autor: Víctor Gutiérrez Marcos
 modelos:
   ces:
@@ -27,7 +29,7 @@ modelos:
       3.A.6: mencion
       3.A.8: resumen (referencia de la variante de utilidad)
       3.A.9: resumen
-      3.A.11: desarrollo (hoy resumen)
+      3.A.11: desarrollo
     decision: D005 (13/10/2026)
   indices-precios:
     nombre: Índices de coste de vida (basados en VC y VE) y aproximaciones de Laspeyres y Paasche
@@ -67,6 +69,7 @@ modelos:
     temas:
       3.A.8: resumen (límite de la CES)
       3.A.11: resumen
+      3.A.31: mencion
     decision: D087 (13/10/2026)
   pmu:
     nombre: Problema de maximización de la utilidad (consumidor neoclásico)
@@ -91,6 +94,8 @@ modelos:
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
       3.A.11: desarrollo
+      3.A.43: mencion
+      3.A.45: mencion
       3.B.9: resumen
   prospect-theory:
     nombre: Teoría de las perspectivas (Kahneman y Tversky, 1979)
@@ -100,6 +105,18 @@ modelos:
     temas:
       3.A.1: resumen
       3.A.10: desarrollo
+  rendimientos-escala:
+    nombre: Rendimientos a escala globales y locales (elasticidad de escala, homogéneas y homotéticas)
+    area: consumidor-produccion
+    tema_referencia: 3.A.11
+    motivo: Lo tiene en el título («Rendimientos locales y globales a escala») y lo desarrolla en II.2 (revisado el 13/10/2026).
+    temas:
+      3.A.11: desarrollo
+      3.A.12: resumen
+      3.A.16: mencion
+      3.A.43: mencion
+      3.A.44: mencion
+      3.B.6: mencion
   slutsky:
     nombre: Ecuación y matriz de Slutsky (derivación)
     area: consumidor-produccion
@@ -351,6 +368,7 @@ modelos:
       y los fallos de mercado y 3.A.3 lo cuenta como historia.
     temas:
       3.A.3: desarrollo
+      3.A.11: resumen (caja de Edgeworth de la producción, curva de contrato, FPP y RMT_XY; sin precios ni FPU)
       3.A.21: desarrollo
       3.A.22: desarrollo
       3.A.23: desarrollo
@@ -3027,85 +3045,112 @@ temas:
     bloque: modelo-neoclasico-basico
     fuente_disponible: si
     referencias:
-    - a: 3.A.9
-      estado: corregir -> 3.A.11
-      contexto: 'Técnicos: este área corresponde a la teoría de la producción, que estudia cómo se combinan de manera eficiente
-        los factores'
-    - a: 3.A.10
-      estado: corregir -> 3.A.12
-      contexto: 'De costes: este área corresponde a la teoría de los costes, que minimiza los costes de producción'
-    - a: 3.A.11, 3.A.14-3.A.17
-      estado: corregir -> 3.A.15, 3.A.16, 3.A.19
-      contexto: 'Organizativos: este área corresponde a la teoría de la empresa y de los mercados'
-    - a: 3.B.9
+    - a: 3.A.8
       estado: ok
-      contexto: clasificación del progreso técnico neutral (Hicks, Solow, Harrod)
-    - a: 3.A.22
-      estado: ok
-      contexto: en los puntos de la curva de contrato se cumple la eficiencia en el sentido de Pareto en la producción
-    - a: 3.A.22
-      estado: ok
-      contexto: Optimalidad en la producción con competencia perfecta
+      contexto: 'Misma metodología que la teoría del consumidor; σ con la misma definición, cuasiconcavidad, propiedades de las isocuantas, isoclinas como la curva renta-consumo, producción doméstica (Becker) y formas funcionales de utilidad (anexo)'
     - a: 3.A.12
       estado: ok
-      contexto: complementado posteriormente con los costes de los inputs
+      contexto: 'Costes y dualidad (Shephard, Uzawa); envolvente de corto y largo plazo, senda de expansión, minimización de costes RMST_LK = w_L/w_K, economías de escala y costes medios en U, subaditividad, problema del productor (anexo)'
+    - a: 3.A.15
+      estado: ok
+      contexto: 'Organización de la empresa y sus límites (economías de alcance, caja de la empresa)'
     - a: 3.A.16-3.A.19
       estado: ok
-      contexto: y con la estructura de mercado
-    - a: 3.A.23
-      estado: corregir -> 3.A.22
-      contexto: 'empresa multiproducto: cuando las empresas no producen en el óptimo, el bienestar se verá disminuido'
-    - a: 3.A.44
+      contexto: 'Cuánto producir y a qué precio según la estructura de mercado; la oferta con la estructura de mercado (Conclusión)'
+    - a: 3.A.16
       estado: ok
-      contexto: si dentro del capital incluimos o no el capital humano, como en crecimiento endógeno
-    - a: 3.B.5, 3.B.6
+      contexto: 'Oferta de la empresa y de la industria; con rendimientos constantes el tamaño queda indeterminado; p = CMg (anexo del productor)'
+    - a: 3.A.17
       estado: ok
-      contexto: la modelización de las tecnologías de producción da lugar a conclusiones distintas en comercio internacional
+      contexto: 'Rendimientos a escala y monopolio natural; monopolio natural multiproducto'
+    - a: 3.A.18
+      estado: ok
+      contexto: 'Competencia imperfecta de Robinson y Chamberlin; agregador CES de Dixit-Stiglitz con σ > 1'
+    - a: 3.A.25
+      estado: ok
+      contexto: 'Remuneración de cada factor según su productividad marginal'
+    - a: 3.A.2
+      estado: ok
+      contexto: 'Ley de rendimientos decrecientes de la tierra en los clásicos (West, Malthus, Ricardo, Torrens)'
+    - a: 3.A.4
+      estado: ok
+      contexto: 'Controversia del capital de los dos Cambridge (anexo)'
     - a: 3.A.10
       estado: ok
-      contexto: La incertidumbre (negativa por la aversión al riesgo de las empresas) se reduce con métodos de producción
-        más flexibles
-    - a: 3.A.8
+      contexto: 'Empresa con incertidumbre en el precio (Sandmo, 1971), anexo'
+    - a: 3.A.21
       estado: ok
-      contexto: como el axioma de preferencias estrictamente convexas (utilidad estrictamente cuasicóncava), aquí la cuasiconcavidad
-        implica complementariedad
+      contexto: 'Caja de Edgeworth de la producción, FPP y RMT_XY = CMg_X/CMg_Y = p_X/p_Y (III.2)'
+    - a: 3.A.22
+      estado: ok
+      contexto: 'Curva de contrato de la producción, optimalidad con competencia perfecta y pérdida de bienestar fuera de ella (III.2, Conclusión)'
+    - a: 3.A.31
+      estado: ok
+      contexto: 'Leontief: tecnología de las tablas input-output'
+    - a: 3.A.42
+      estado: ok
+      contexto: 'Cobb-Douglas como tecnología de los ciclos reales'
     - a: 3.A.43
       estado: ok
-      contexto: La CES fue introducida por Robert Solow en 'A contribution to the theory of economic growth' (1956)
-    - a: 3.A.8
+      contexto: 'Cobb-Douglas macro Y = AK^α L^(1−α); Solow (1956) usa ya una CES; neutralidad de Harrod y Uzawa; tamaño indeterminado con rendimientos constantes; forma intensiva y = f(k) (anexo)'
+    - a: 3.A.44
       estado: ok
-      contexto: isoclina recta en funciones homotéticas, como la curva renta-consumo en la teoría de la demanda
-    faltan:
-    - a: 3.A.21
-      por_que: La caja de Edgeworth de la producción, la curva de contrato y la FPP son piezas del equilibrio general (2x2);
-        solo se remite a 3.A.22.
-    - a: 3.A.12
-      por_que: El problema de maximización del beneficio/minimización del coste y la dualidad tecnología-costes (se apunta
-        como pendiente en una nota) se desarrollan en 3.A.12; remitir al definir la función de producción y al cerrar la Conclusión.
+      contexto: 'Crecimiento endógeno: CES con σ > 1 y rendimientos crecientes; definición del capital'
     - a: 3.A.45
-      por_que: El progreso técnico neutral en sentido de Hicks es la base de la PTF/residuo de Solow de la contabilidad del
-        crecimiento.
-    - a: 3.A.31
-      por_que: La función de Leontief de coeficientes fijos es la base del modelo input-output; opcional.
-    - a: 3.A.15
-      por_que: Producción conjunta y empresa multiproducto enlazan con el tamaño eficiente y los límites de la empresa (economías
-        de alcance).
-    - a: 3.A.2
-      por_que: La controversia del capital de Cambridge (anexo 2) y la ley de rendimientos decrecientes enlazan con los clásicos;
-        opcional.
+      estado: ok
+      contexto: 'Participaciones factoriales, PTF con neutralidad de Hicks, caída de la participación salarial'
+    - a: 3.B.5
+      estado: ok
+      contexto: 'Ricardo y Heckscher-Ohlin: diferencias de tecnología e intensidad factorial'
+    - a: 3.B.6
+      estado: ok
+      contexto: 'Rendimientos crecientes y comercio intraindustrial; FPP convexa con rendimientos crecientes'
+    - a: 3.B.9
+      estado: ok
+      contexto: 'Sesgo del progreso técnico por sectores y sus efectos sobre el comercio y la RRI (II.3)'
+    faltan: []
+    contradicciones:
+    - tema: 3.B.9
+      que: 'Definiciones antiguas de neutralidad (l. 552-558: «en Hicks… la cantidad de factores utilizados disminuye»; Harrod
+        «la relación capital-producto permanece constante») y confusión de progreso aumentador del capital con sesgado hacia
+        el capital. Adoptar las de 3.A.11 II.3 y la ficha progreso-tecnico-neutral.'
+    - tema: 3.A.45
+      que: 'Nota 13: copia las definiciones antiguas de neutralidad del 3.A.11; mismas correcciones que 3.B.9.'
+    - tema: 3.A.12
+      que: 'Copia la elasticidad de escala con la notación vieja (ε_{Q,λ}, λ, Q, f(z)): usar t, q, F(z), ε_{q,t} y ε_{q,t}(z)
+        (ficha rendimientos-escala). Sus remisiones a 3.A.11 (isoclina, proporciones variables, rendimientos) son válidas.'
+    - tema: 3.A.9
+      que: 'Nota 26: historia de la Cobb-Douglas («70 % y 30 %», Douglas senador «1949-1966», fue hasta 1967). Según D005 va
+        en 3.A.11 (estimación de 1928, q ≈ 1,01 z_K^{1/4} z_L^{3/4}); una línea y \vertema{3.A.11}.'
+    - tema: 3.A.43
+      que: 'Remite a 3.A.11 para la indeterminación del tamaño con rendimientos constantes: ya está (II.2). La remisión «3.A.10
+        y 3.A.11» sigue siendo corregir -> 3.A.11, 3.A.12.'
+    - tema: 3.A.2
+      que: 'Nota 38: ley de Turgot fechada en 1765; 3.A.11 usa 1767 (Observations sur le mémoire de M. de Saint-Péravy, Humphrey,
+        1997).'
+    - tema: 3.A.16
+      que: 'Remite a 3.A.11 para la curva de oferta individual y de mercado: es 3.A.12 (problema del productor); ya marcado
+        corregir -> 3.A.12.'
+    - tema: 3.A.21, 3.A.22
+      que: 'La caja de Edgeworth de la producción está tres veces con texto casi idéntico (3.A.11, 3.A.21, 3.A.22); 3.A.22 usa
+        |RMST_L^K| (canon RMST^X_{LK} positiva); 3.A.21 dice que la convexidad estricta del conjunto implica rendimientos decrecientes.
+        Repartir según la ficha equilibrio-general-walras.'
+    - tema: 3.A.8
+      que: 'Bibliografía: la clave FulekyAnatomy no lleva año en 3A08.bib (en 3A11.bib, 2006). Ver pendientes-coherencia.md.'
     modelos:
     - cambridge-capital
     - ces
     - cobb-douglas
     - conjunto-tecnologico
     - edgeworth-produccion
+    - equilibrio-general-walras
     - funcion-produccion
     - isocuantas-rmst
     - leontief
     - productividad-corto-plazo
     - progreso-tecnico-neutral
     - rendimientos-escala
-    revisado: null
+    revisado: 2026-10-13
   3.A.12:
     titulo: Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.
     bloque: modelo-neoclasico-basico

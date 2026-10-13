@@ -1,0 +1,46 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Análisis de corto plazo (tema 3.A.11): producto total, productividad media y
+% marginal del factor variable z_L con z_K fijo. Elaboración propia basada en
+% Policonomics, «Production II: Short run production».
+% Producto total q = -z^3 + 6 z^2 (z = z_L):
+%   PMg = -3 z^2 + 12 z (máximo en z = 2, punto de inflexión; nula en z = 4, máximo de q)
+%   PMe = -z^2 + 6 z    (máximo en z = 3, donde PMe = PMg = 9; rayo q = 9 z tangente)
+% Escalas: z_L 1,6 cm por unidad; q 0,1 cm por unidad; PMe y PMg 0,25 cm por
+% unidad, con el eje horizontal del panel inferior en y = -5,2 cm.
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \def\yb{-5.2}
+  % ---------- panel superior: producto total ----------
+  \capa{1}{\ejes{$z_L$}{$q$}{7.9}{3.8}}
+  \capa{2}{\draw[curva1] plot[domain=0:4.6,samples=80] ({1.6*\x},{0.1*(-\x^3+6*\x^2)})
+    node[etiqueta,right] {$q=F(z_L,\bar z_K)$};}
+  \capa{3}{\draw[curva2,thick] ({1.6*1},{0.1*4}) -- ({1.6*3},{0.1*28});}
+  \capa{3}{\node[punto,label={[etiqueta]right:inflexión}] (I) at ({1.6*2},{0.1*16}) {};}
+  \capa{4}{\draw[curva3,thick] (0,0) -- ({1.6*3.5},{0.1*31.5});}
+  \capa{4}{\node[etiqueta,text=tceeverde,anchor=south east,align=right] at ({1.6*1.8},{0.1*16.2})
+    {rayo tangente:\\ máximo de $PMe_L$};}
+  \capa{4}{\node[punto] (M) at ({1.6*3},{0.1*27}) {};}
+  \capa{5}{\node[punto,label={[etiqueta]above:máximo de $q$}] (Q) at ({1.6*4},{0.1*32}) {};}
+  % ---------- panel inferior: productividades media y marginal ----------
+  \capa{6}{\draw[eje] (0,\yb) -- (7.9,\yb) node[below left=2pt and 0pt] {$z_L$};}
+  \capa{6}{\draw[eje] (0,{\yb-1.9}) -- (0,{\yb+4.1}) node[left,align=right] {$PMe_L$\\ $PMg_L$};}
+  \capa{6}{\node[below left] at (0,\yb) {$0$};}
+  \capa{7}{\draw[curva4] plot[domain=0:4.5,samples=80] ({1.6*\x},{\yb+0.25*(-3*\x^2+12*\x)})
+    node[etiqueta,right] {$PMg_L$};}
+  \capa{7}{\draw[guia] (I) -- ({1.6*2},{\yb+0.25*12});}
+  \capa{8}{\draw[curvanueva] plot[domain=0:4.85,samples=80] ({1.6*\x},{\yb+0.25*(-\x^2+6*\x)})
+    node[etiqueta,above right=0pt and -2pt] {$PMe_L$};}
+  \capa{8}{\node[punto] at ({1.6*3},{\yb+0.25*9}) {};}
+  % ---------- márgenes y etapas ----------
+  \capa{9}{\draw[guia] (M) -- ({1.6*3},{\yb-1.9});}
+  \capa{9}{\draw[guia] (Q) -- ({1.6*4},{\yb-1.9});}
+  \capa{9}{\node[etiqueta,font=\footnotesize,align=center,anchor=north] at ({1.6*3},{\yb-1.95})
+    {margen\\ extensivo};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,align=center,anchor=north] at ({1.6*4},{\yb-1.95})
+    {margen\\ intensivo};}
+  \capa{10}{\node[etiqueta] at ({1.6*1.1},{\yb+3.7}) {Etapa I};}
+  \capa{10}{\node[etiqueta] at ({1.6*3.5},{\yb+3.7}) {Etapa II};}
+  \capa{10}{\node[etiqueta] at ({1.6*4.55},{\yb+3.7}) {Etapa III};}
+\end{tikzpicture}
+\end{document}

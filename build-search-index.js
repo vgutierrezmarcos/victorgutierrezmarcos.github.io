@@ -82,7 +82,7 @@ const tercerEjercicioParteA = [
   { num: 8, titulo: 'Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.', disponible: true, file: '3A08.html' },
   { num: 9, titulo: 'Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar.', disponible: true, file: '3A09.pdf' },
   { num: 10, titulo: 'Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre.', disponible: true, file: '3A10.pdf' },
-  { num: 11, titulo: 'Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.', disponible: true, file: '3A11.pdf' },
+  { num: 11, titulo: 'Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.', disponible: true, file: '3A11.html' },
   { num: 12, titulo: 'Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.', disponible: true, file: '3A12.pdf' },
   { num: 13, titulo: 'Economía de la información y teoría de la agencia: selección adversa y riesgo moral.', disponible: true, file: '3A13.pdf' },
   { num: 14, titulo: 'Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.', disponible: false },

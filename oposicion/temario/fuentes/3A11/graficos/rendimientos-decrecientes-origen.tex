@@ -1,0 +1,25 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Dónde empiezan los rendimientos marginales decrecientes (nota del tema 3.A.11).
+% Elaboración propia. (a) q = -z^3 + 6 z^2 (inflexión en z = 2, q = 16);
+% (b) q = 12,8 sqrt(z) (cóncava desde el origen). Escalas: 0,9 cm por unidad de z_L
+% y 0,1 cm por unidad de q.
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------- (a) con punto de inflexión ----------
+  \capa{1}{\ejes{$z_L$}{$q$}{4.3}{3.6}}
+  \capa{1}{\draw[curva1] plot[domain=0:3.9,samples=60] ({0.9*\x},{0.1*(-\x^3+6*\x^2)});}
+  \capa{1}{\node[punto] (I) at ({0.9*2},{0.1*16}) {};}
+  \capa{1}{\proyeccion{(I)}{}{}}
+  \capa{1}{\node[etiqueta,below right] at (I) {inflexión};}
+  \capa{1}{\node[etiqueta,align=center,anchor=north] at (2,-0.55)
+    {(a) Rendimientos marginales\\ decrecientes desde la inflexión};}
+  % ---------- (b) cóncava desde el origen ----------
+  \begin{scope}[xshift=6cm]
+    \capa{2}{\ejes{$z_L$}{$q$}{4.3}{3.6}}
+    \capa{2}{\draw[curva2] plot[domain=0:3.9,samples=80] ({0.9*\x},{0.1*12.8*sqrt(\x)});}
+    \capa{2}{\node[etiqueta,align=center,anchor=north] at (2,-0.55)
+      {(b) Rendimientos marginales\\ decrecientes desde el origen};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

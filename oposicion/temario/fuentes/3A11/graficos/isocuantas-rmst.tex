@@ -1,0 +1,26 @@
+% Isocuanta estrictamente convexa z_L·z_K = 4 y RMST decreciente:
+% en A = (1,4) la tangente tiene pendiente -4 y en B = (4,1), -1/4.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.95]
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$z_K$}{6.4}{6.2}}
+  % 2: la isocuanta
+  \capa{2}{\draw[curva1] plot[domain=0.68:5.9,samples=80,smooth] (\x,{4/\x})
+    node[etiqueta,above right] {$q=\bar q$};}
+  % 3: punto A, su tangente (pendiente -4) y el triángulo
+  \capa{3}{\draw[curva2] (0.65,5.4) -- (1.45,2.2);}
+  \capa{3}{\node[punto,label={[etiqueta]right:$A$}] (A) at (1,4) {};}
+  \capa{3}{\draw[guia,thick,tceerojo] (1,4) -- (1,2) node[midway,left,etiqueta,text=tceerojo] {$-\Delta z_K$}
+    -- (2,2) node[midway,below,etiqueta,text=tceerojo] {$\Delta z_L=1$};}
+  \capa{3}{\node[punto] at (2,2) {};}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west] at (1.15,4.6) {RMST alta};}
+  \capa{3}{\node[etiqueta,anchor=west] at (2.8,3.6) {$\mathrm{RMST}_{LK}=-\dfrac{\mathrm d z_K}{\mathrm d z_L}=\dfrac{\mathrm{PMg}_L}{\mathrm{PMg}_K}$};}
+  % 4: punto B y su tangente (pendiente -1/4)
+  \capa{4}{\draw[curva2] (2.2,1.45) -- (5.8,0.55);}
+  \capa{4}{\node[punto,label={[etiqueta]above:$B$}] (B) at (4,1) {};}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=north] at (4.6,0.55) {RMST baja};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,35 @@
+% Conjunto de producción convexo: combinación convexa de dos planes posibles.
+% Frontera: y2 = f(y1) = -0,9 y1 - 0,1 y1^2 (cóncava). a en y1 = -3,4; b en y1 = -0,8;
+% c = 0,5 a + 0,5 b queda por debajo de la frontera.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={f(\x)=-0.9*\x-0.1*\x*\x;}]
+  % 1: ejes
+  \capa{1}{
+    \draw[eje] (-4.2,0) -- (1.4,0) node[below left=2pt and 0pt] {$y_1$};
+    \draw[eje] (0,-1.4) -- (0,2.8) node[left] {$y_2$};
+    \node[below left] at (0,0) {$0$};
+  }
+  % 2: frontera y conjunto convexo
+  \capa{2}{
+    \fill[area] plot[domain=-4:1,samples=50] (\x,{f(\x)}) -- (1,-1.4) -- (-4,-1.4) -- cycle;
+    \draw[curva1] plot[domain=-4:1,samples=50] (\x,{f(\x)});
+    \node[font=\large,text=tceemorado] at (-3.2,-0.8) {$\mathcal{Y}$};
+  }
+  % 3: planes a y b de la frontera
+  \capa{3}{
+    \node[punto] (a) at (-3.4,{f(-3.4)}) {};
+    \node[etiqueta,above left] at (a) {$a$};
+    \node[punto] (b) at (-0.8,{f(-0.8)}) {};
+    \node[etiqueta,above right] at (b) {$b$};
+  }
+  % 4: segmento ab y combinación convexa c
+  \capa{4}{
+    \draw[curva2] (-3.4,{f(-3.4)}) -- (-0.8,{f(-0.8)});
+    \node[circle,fill=tceeazul,inner sep=1.5pt] (c) at (-2.1,{(f(-3.4)+f(-0.8))/2}) {};
+    \node[etiqueta,below left=4pt and -6pt,text=tceeazul] at (c) {$c=\lambda a+(1-\lambda)b$};
+  }
+\end{tikzpicture}
+\end{document}

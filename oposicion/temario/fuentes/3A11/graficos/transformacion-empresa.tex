@@ -1,0 +1,32 @@
+% Curva de transformación de la empresa multiproducto con factores dados:
+% q2 = 4·sqrt(1-(q1/5)^2), cóncava. En A = (3; 3,2) la pendiente es -0,6
+% (RMT_12 = 0,6 = p1/p2), y la recta de isobeneficio es tangente en A.
+% Con más factores o progreso técnico: q2 = 5·sqrt(1-(q1/6,2)^2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+]
+  % 1: ejes
+  \capa{1}{\ejes{$q_1$}{$q_2$}{7.4}{5.9}}
+  % 2: curva de transformación y conjunto de producción
+  \capa{2}{\fill[area] (0,0) -- plot[domain=0:90,samples=80] ({5*cos(\x)},{4*sin(\x)}) -- cycle;}
+  \capa{2}{\draw[curva1] plot[domain=0:90,samples=120] ({5*cos(\x)},{4*sin(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado] at (2.1,2.3) {$T(q_1,q_2,-\bar z)=0$};}
+  \capa{2}{\node[etiqueta,text=tceemorado,align=center] at (1.6,1.0) {conjunto de\\ producción};}
+  % 3: punto A, su tangente y el triángulo de la RMT
+  \capa{3}{\draw[curva2] (1.6,4.04) -- (4.6,2.24);}
+  \capa{3}{\node[punto,label={[etiqueta]below left:$A$}] (A) at (3,3.2) {};}
+  \capa{3}{\draw[guia,thick,tceerojo] (3,3.2) -- (4,3.2) node[midway,above,etiqueta,text=tceerojo] {$\Delta q_1$}
+    -- (4,2.6) node[midway,right,etiqueta,text=tceerojo] {$-\Delta q_2$};}
+  \capa{3}{\node[etiqueta,anchor=west] at (4.7,4.9) {$\mathrm{RMT}_{12}=-\dfrac{\mathrm d q_2}{\mathrm d q_1}$};}
+  % 4: recta de isobeneficio tangente en A
+  \capa{4}{\draw[curva4,dashed] (0.6,4.64) -- (6.4,1.16)
+    node[etiqueta,right,text=tceedorado] {$p_1q_1+p_2q_2=\bar\pi$};}
+  \capa{4}{\node[etiqueta,text=tceedorado,anchor=west] at (4.7,4.15) {$\mathrm{RMT}_{12}=\dfrac{p_1}{p_2}$ en $A$};}
+  % 5: más factores o progreso técnico
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=0:90,samples=120] ({6.2*cos(\x)},{5*sin(\x)});}
+  \capa{5}{\node[etiqueta,text=tceerojo,align=left,anchor=west] at (6.3,0.45) {más factores o\\ progreso técnico};}
+\end{tikzpicture}
+\end{document}
