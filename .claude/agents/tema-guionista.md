@@ -36,7 +36,7 @@ Lee antes:
 ...
 ```
 
-- Unas **5.500 palabras** de narración (se ajusta con `--medir`, abajo).
+- Unas **4.700 palabras** de narración (se ajusta con `--medir`, abajo).
 - Empieza leyendo el título y entra directamente en el enganche: **sin**
   «Señores miembros del tribunal».
 - Introducción con sus cinco bloques en orden (enganche, relevancia,

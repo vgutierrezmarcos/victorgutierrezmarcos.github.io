@@ -294,8 +294,8 @@ el texto original y lo que se hizo.
 
 - Esquema de pizarra y texto del cante apartado a apartado, con minutos.
 - Ritmo algo más rápido que el de una lectura pausada para que quepa más
-  contenido: unas **5.500 palabras** de narración para 30 minutos (≈185 por
-  minuto con la voz del vídeo). La medida buena es la del vídeo:
+  contenido: unas **4.700 palabras** de narración para 30 minutos (≈158 por
+  minuto, contando pausas y cambios de escena). La medida buena es la del vídeo:
   `generar-video.py T --medir` dice cuántas palabras sobran o faltan.
 
 ### Vídeo (`video/escenas.yaml`, formato en `scripts/temario/generar-video.py`)

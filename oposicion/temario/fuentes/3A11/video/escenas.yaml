@@ -1,0 +1,570 @@
+# Guion de escenas del vídeo del cante del tema 3.A.11 (formato en scripts/temario/generar-video.py).
+# Dice lo mismo que guion-cante.md: el texto de cada «di» es el del cante.
+# Autor: Víctor Gutiérrez Marcos
+tema: 3.A.11
+duracion: 1800
+voz: {motor: voicestudio, motor_tts: omnivoice, velocidad: 1.0, referencia: /mnt/c/Users/vgutierrez/Documents/voz/referencia-12s.wav}   # voz clonada de Víctor con OmniVoice (VoiceStudio)
+pronunciacion:
+  Cassels: Cásels
+  Cassel: Kásel
+  Koopmans: Kúpmans
+  Wicksteed: Uíksted
+  Wicksell: Víksel
+  Turgot: Turgó
+  Harrod: Járod
+  Solow: Sólou
+  Inada: Ináda
+  Euler: Óiler
+  Sraffa: Sráfa
+  Robinson: Róbinson
+  Malthus: Máltus
+  Torrens: Tórens
+  West: Güest
+  Chenery: Chéneri
+  Minhas: Mínjas
+  Chirinko: Chirínko
+  Gechert: Guéjert
+  Frisch: Frish
+  Basu: Básu
+  Fernald: Férnald
+  Hanoch: Jánok
+  Jehle: Yéle
+  Reny: Réni
+  Panzar: Pánsar
+  Willig: Uílig
+  Douglas: Dáglas
+  Cobb: Cob
+  netput: nétput
+  input-output: ínput áutput
+  passum: pásum
+  RMST: erre eme ese te
+  RMT: erre eme te
+bloques:
+  - {nombre: Introducción, minutos: 2.5}
+  - {nombre: "I. La tecnología", minutos: 10}
+  - {nombre: "II. Leyes temporales de la producción", minutos: 11.5}
+  - {nombre: "III. Empresa multiproducto", minutos: 4.5}
+  - {nombre: Conclusión, minutos: 1.5}
+
+escenas:
+
+
+  # ==================================================================== INTRODUCCIÓN
+  - bloque: Introducción
+    titulo: Introducción
+    modo: guion
+    estructura: [Enganche, Relevancia, Contextualización, Problemática, Estructura]
+    pasos:
+      - di: "¿Puede una sola función resumir todo lo que una empresa sabe hacer? [pausa 800] Adam Smith abre La riqueza de las naciones con una fábrica de alfileres: 10 operarios que se repartían 18 operaciones hacían 48.000 alfileres al día, 4.800 por persona, cuando cada uno, solo, no habría hecho ni 20. La organización y la escala multiplican lo que se produce."
+        parte: Enganche
+        guion: ["¿Puede una sola función resumir todo lo que una empresa sabe hacer?", "Smith (1776): la fábrica de alfileres", "> 10 operarios, 18 operaciones: 48.000 alfileres al día, 4.800 por persona (ni 20 por separado)"]
+      - di: "Detrás está la pregunta de esta exposición: ¿qué puede producir una empresa con unos recursos y unos conocimientos dados, y cómo cambia cuando cambian sus factores, su tamaño o su tecnología? Nos ocupamos, por tanto, de sus restricciones técnicas."
+        guion: ["¿Qué puede producir una empresa, y cómo cambia con sus factores, su tamaño y su tecnología?", "> Teoría de la producción: las restricciones técnicas"]
+      - di: "¿Por qué importa? [pausa] La tecnología es la base de los costes y de la oferta; la función agregada, del crecimiento; las diferencias de tecnología explican el comercio, y la elasticidad de sustitución decide si la automatización reduce la participación del trabajo en la renta."
+        parte: Relevancia
+        guion: ["Micro: costes y oferta · Macro: crecimiento", "Comercio: diferencias de tecnología", "Política: σ y la participación del trabajo en la renta"]
+      - di: "La reflexión es antigua: Hesíodo ve en el trabajo la respuesta a la escasez y Jenofonte elogia la división del trabajo. Turgot formula en 1767 la ley de las proporciones variables, base de los rendimientos decrecientes de los clásicos, y Wicksteed, Clark y Wicksell, la función de producción."
+        parte: Contextualización
+        guion: ["Hesíodo y Jenofonte: escasez y división del trabajo", "Turgot (1767): proporciones variables · clásicos (1815)", "Wicksteed (1894), Clark (1899), Wicksell (1901): la función de producción"]
+      - di: "Marshall ordena el análisis por plazos; Cobb y Douglas estiman la primera función de producción en 1928; Hicks y Joan Robinson definen la elasticidad de sustitución, y Koopmans y Debreu dan a la tecnología su enfoque axiomático."
+        guion: ["Marshall (1890): plazos · Cobb y Douglas (1928)", "Hicks (1932), Robinson (1933): σ", "Koopmans (1951), Debreu (1959): enfoque axiomático"]
+      - di: "De ahí, las preguntas clave. ¿Cómo se representa lo que una empresa puede producir? ¿Cómo responde la producción cuando cambia un factor, cuando cambian todos o cuando cambia la tecnología? ¿Cómo se miden la sustitución y la escala? Y ¿qué cambia con varios productos?"
+        parte: Problemática
+        guion: ["¿Cómo se representa lo que se puede producir?", "¿Cómo responde a un factor, a todos y a la tecnología?", "¿Cómo se miden la sustitución y la escala? ¿Y con varios productos?"]
+      - di: "La exposición sigue tres bloques: la tecnología, con el conjunto de posibilidades de producción, la función de producción y sus isocuantas; las leyes temporales de la producción, del corto al muy largo plazo, y la empresa multiproducto. De lo posible, a cómo varía con el plazo y con varios productos."
+        parte: Estructura
+        guion: ["I. La tecnología: conjunto, función de producción, isocuantas y σ", "II. Leyes temporales: corto, largo y muy largo plazo", "III. Empresa multiproducto: caja de Edgeworth y producción conjunta"]
+
+  # ==================================================================== I
+  - bloque: "I. La tecnología"
+    titulo: "I. La tecnología: definición y propiedades de la función de producción"
+    modo: pizarra
+    rejilla: "100"
+    pasos:
+      - di: "Paso al primer bloque: la tecnología. Adelanto la conclusión: [pausa] unos pocos axiomas dan una función de producción, y sus isocuantas miden con un solo número cuánto se pueden sustituir los factores."
+        borrar: true
+        guion: "Conclusión anticipada: de los axiomas a la función de producción; las isocuantas y σ miden la sustitución"
+      - di: "Seguiremos el método de la teoría del consumidor, en tres pasos. Primero, el conjunto de posibilidades de producción y sus axiomas."
+        pizarra: [{grafico: esquema-tecnologia, capa: 2, zona: "1", alto: 0.8}]
+        guion: "1. Conjunto de posibilidades de producción y sus axiomas"
+      - di: "Segundo, con un solo producto, la función de producción. Tercero, sus curvas de nivel, las isocuantas, con la relación marginal de sustitución técnica y la elasticidad de sustitución."
+        pizarra: [{grafico: esquema-tecnologia, capa: 4}]
+        guion: "2. Función de producción · 3. Isocuantas, RMST y σ"
+      - di: "Con varios productos, la frontera será una función de transformación, en el tercer bloque. Y con los precios de los factores llegaríamos a los costes y a la dualidad, que quedan fuera de esta exposición."
+        pizarra: [{grafico: esquema-tecnologia, capa: 6}]
+        guion: "Varios productos: función de transformación · con precios: costes y dualidad"
+
+  - bloque: "I. La tecnología"
+    titulo: "I.1. Conjunto tecnológico: el conjunto de posibilidades de producción"
+    modo: pizarra
+    rejilla: "36|64"
+    pasos:
+      - di: "Empiezo por lo más general. Con ese bienes, cada plan de producción es un vector de producción neta, un netput: sus componentes negativos son factores empleados, y los positivos, productos obtenidos."
+        borrar: true
+        pizarra: [{formula: '\vec{y}=(y_1,\dots,y_S)\in\mathbb{R}^S', zona: "1", tam: 0.8}]
+        guion: "Netput: negativos, factores; positivos, productos"
+        apunte: "Conjunto de posibilidades de producción (Mas-Colell, Whinston y Green, 1995, cap. 5): todos los planes que permite la tecnología"
+      - di: "El conjunto de posibilidades de producción, i griega caligráfica, reúne todos los planes posibles. Lo dibujo con dos bienes, i griega uno e i griega dos."
+        pizarra:
+          - {formula: '\mathcal{Y}\subset\mathbb{R}^S', zona: "1", tam: 0.8}
+          - {grafico: conjunto-produccion, capa: 1, zona: "2"}
+        guion: "Dos bienes: y₁ e y₂"
+      - di: "Trazo su frontera, que baja del segundo cuadrante al cuarto pasando por el origen, y sombreo el conjunto. Primer axioma, que escribo: no vacío, hay al menos un plan posible; si no, no habría actividad productiva."
+        pizarra:
+          - {grafico: conjunto-produccion, capa: 2}
+          - {formula: '(1)\ \ \mathcal{Y}\neq\varnothing', zona: "1", tam: 0.8, alinear: izquierda}
+        guion: "Axioma 1: no vacío"
+      - di: "Segundo: el conjunto es cerrado, incluye su frontera, como señala la flecha. El límite de una sucesión de planes posibles también es posible, y eso garantiza un máximo de producción para cada vector de factores: [pausa] de ahí saldrá la función de producción."
+        pizarra:
+          - {grafico: conjunto-produccion, capa: 3}
+          - {formula: '(2)\ \ \mathcal{Y}\ \text{cerrado}', zona: "1", tam: 0.8, alinear: izquierda}
+        guion: "Axioma 2: cerrado (existe un máximo)"
+      - di: "Tercero, la eliminación gratuita: si un plan es posible, también lo es cualquiera que use más factores u obtenga menos productos. En el gráfico, si con la cantidad de factor del plan i griega cero se produce i griega dos cero, la misma producción puede lograrse con más factor, en el plan i griega uno. Todo el sudoeste de un plan posible es posible, [pausa] y por eso la frontera es no creciente."
+        pizarra:
+          - {grafico: conjunto-produccion, capa: 4}
+          - {formula: '(3)\ \ \vec{y}\in\mathcal{Y},\ \vec{y}\,''\leq\vec{y}\ \Rightarrow\ \vec{y}\,''\in\mathcal{Y}', zona: "1", tam: 0.8, alinear: izquierda}
+        guion: "Axioma 3: eliminación gratuita (el «sudoeste» es posible)"
+      - di: "Cuarto, la imposibilidad de producción gratuita: no se obtiene nada sin emplear algún factor. Formalmente, la intersección del conjunto con el ortante positivo se reduce, como mucho, al vector cero. En el gráfico, el primer cuadrante, donde todos los componentes son positivos, queda excluido: [pausa] ningún plan da productos sin usar factores. Como los dos primeros, es un axioma poco discutible, y junto con el tercero da forma a la frontera: decreciente y apoyada en el origen."
+        pizarra:
+          - {grafico: conjunto-produccion, capa: 5}
+          - {formula: '(4)\ \ \mathcal{Y}\cap\mathbb{R}^S_+\subseteq\{\vec{0}\}', zona: "1", tam: 0.8, alinear: izquierda}
+        guion: "Axioma 4: imposibilidad de producción gratuita"
+      - di: "Se suele añadir la posibilidad de inacción: el vector cero pertenece al conjunto, la empresa puede no producir. Con costes hundidos no se cumple."
+        pizarra:
+          - {grafico: conjunto-produccion, capa: 6}
+          - {formula: '\vec{0}\in\mathcal{Y}', zona: "1", tam: 0.8, alinear: izquierda}
+        guion: "Inacción: la empresa puede no producir (no con costes hundidos)"
+      - di: "Si el bien uno solo pudiera ser factor y el dos solo producto, el cuarto cuadrante, que rayo, desaparecería, y el conjunto quedaría en el segundo y el tercero."
+        pizarra: [{grafico: conjunto-produccion, capa: 7}]
+      - di: "Y con una dotación dada del bien uno, lo que queda a la izquierda de esa vertical no es factible; fijar un factor recorta igual el conjunto a corto plazo."
+        pizarra: [{grafico: conjunto-produccion, capa: 8}]
+        guion: "Dotación dada: a su izquierda, no factible"
+      - di: "En suma, la frontera reúne los planes técnicamente eficientes, y [pausa] estos cuatro axiomas bastan para que exista la función de producción; su curvatura exigirá supuestos adicionales."
+        guion: "Frontera: planes técnicamente eficientes"
+        apunte: "Los 4 axiomas bastan para la función de producción; la curvatura exige supuestos adicionales"
+
+  - bloque: "I. La tecnología"
+    titulo: "I.2. La función de producción: definición y propiedades"
+    modo: pizarra
+    rejilla: "38|62"
+    pasos:
+      - di: "Paso a la función de producción. Con un solo producto, asigna a cada vector de factores, zeta, la máxima producción que permite la tecnología. Ese máximo existe porque el conjunto es cerrado."
+        borrar: true
+        pizarra: [{formula: 'q=F(\vec{z})\equiv\max\{q\geq 0:\ (q,-\vec{z})\in\mathcal{Y}\}', zona: "1", tam: 0.8}]
+        apunte: "Función de producción: relación técnica entre los factores y la máxima producción; solo recoge los métodos técnicamente eficientes"
+      - di: "Con trabajo y capital, la vemos en tres dimensiones: en la base, zeta ele y zeta ka; en vertical, la producción, q."
+        pizarra: [{grafico: funcion-produccion-3d, capa: 1, zona: "2"}]
+        guion: "Dos factores: trabajo y capital"
+      - di: "Sobre el plano de los factores se levanta la superficie de producción, que voy trazando malla a malla. Fíjense en su forma. Sale del origen, porque sin factores no se produce nada; sube con cualquiera de los dos factores, porque más factores nunca reducen la producción, y se aplana arriba, porque cada unidad adicional aporta menos. La altura de cada punto es la producción máxima con esa combinación. [pausa] Esta superficie será el mapa de toda la exposición."
+        pizarra: [{grafico: funcion-produccion-3d, capa: 2}]
+        guion: "Superficie de producción: la altura es la producción máxima"
+      - di: "Tomo un vector de factores, zeta cero, y subo en vertical hasta la superficie: esa altura, efe de zeta cero, es lo máximo que se produce con él."
+        pizarra: [{grafico: funcion-produccion-3d, capa: 4}]
+        guion: "F(z⁰): la producción máxima con z⁰"
+      - di: "Debajo de la superficie quedan los planes posibles; encima, los imposibles. Por construcción, la función solo recoge los métodos de producción técnicamente eficientes."
+        pizarra: [{grafico: funcion-produccion-3d, capa: 5}]
+        guion: "Debajo, planes posibles; encima, imposibles"
+      - di: "De los axiomas salen sus propiedades: es cardinal, porque el producto se mide en unidades físicas; efe de cero es cero, y es no decreciente: las productividades marginales no son negativas. Además, se supone continua y diferenciable."
+        pizarra: [{formula: 'F(\vec{0})=0,\qquad PMg_i\equiv\frac{\partial F}{\partial z_i}\geq 0', zona: "1", tam: 0.8}]
+        guion: "Cardinal · F(0) = 0 · no decreciente · continua y diferenciable"
+        apunte: "Wicksteed (1894): la producción como función general de los factores"
+      - di: "Los axiomas no dicen nada de su curvatura: hacen falta propiedades de escala del conjunto, sobre todo la convexidad. Dibujo un conjunto convexo: si los planes a y be son posibles, también cualquier combinación, como ce."
+        pizarra: [{grafico: convexidad-conjunto, capa: 4, zona: "1"}]
+        guion: "Propiedades de escala: divisibilidad, aditividad, convexidad, irreversibilidad"
+      - di: "Y aquí hay que distinguir dos cosas. [pausa] Si la función es cuasicóncava, las isocuantas son convexas, pero eso no dice nada de la escala. El conjunto es convexo si y solo si la función es cóncava, con rendimientos no crecientes. La concavidad implica la cuasiconcavidad, pero no al revés."
+        guion: "F cuasicóncava: isocuantas convexas · conjunto convexo si y solo si F es cóncava"
+        apunte: "Una Cobb-Douglas con α + β > 1 es cuasicóncava, pero no cóncava: rendimientos crecientes"
+      - di: "Y la diferencia importa: [pausa] con rendimientos constantes o crecientes, maximizar el beneficio no es un problema acotado; minimizar costes solo exige cuasiconcavidad."
+        guion: "Buen comportamiento: rendimientos constantes, PMg > 0 y decrecientes, Inada"
+        apunte: "Buen comportamiento: rendimientos constantes, PMg positivas y decrecientes e Inada (1963)"
+
+  - bloque: "I. La tecnología"
+    titulo: "I.3. Las curvas isocuantas: RMST y elasticidad de sustitución"
+    modo: pizarra
+    rejilla: "40|60"
+    pasos:
+      - di: "Paso a las isocuantas: las combinaciones de factores que, usadas eficientemente, dan la misma producción. Son las curvas de nivel de la superficie: el corte a la altura q barra, proyectado sobre la base."
+        borrar: true
+        pizarra: [{formula: '\{\vec{z}:\ F(\vec{z})=\overline{q}\}', zona: "1", tam: 0.8}]
+        apunte: "Isocuanta: curva de nivel de la superficie de producción"
+      - di: "Como las curvas de indiferencia, hay infinitas, las más alejadas dan más producto, no se cortan, decrecen y son convexas si la función es cuasicóncava; pero son cardinales."
+        guion: "Infinitas · más lejos, más producto · no se cortan · pendiente negativa · convexas · cardinales"
+      - di: "Dibujo una isocuanta convexa en el plano del trabajo y el capital, con sus dos ejes."
+        pizarra: [{grafico: isocuantas-rmst, capa: 2, zona: "2"}]
+      - di: "Su pendiente, en valor absoluto, es la relación marginal de sustitución técnica: menos de zeta ka entre de zeta ele, con la producción constante, igual al cociente de las productividades marginales. En el punto A trazo la tangente y su triángulo: es el capital que puede dejar de usarse al emplear una unidad más de trabajo, sin que cambie la producción. [pausa] Es una tasa técnica de intercambio entre factores."
+        pizarra:
+          - {formula: 'RMST_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{PMg_L}{PMg_K}', zona: "1", tam: 0.8}
+          - {grafico: isocuantas-rmst, capa: 3}
+        guion: "RMST: capital que libera una unidad más de trabajo"
+      - di: "En be, con más trabajo y menos capital, la tangente es más plana: la relación marginal de sustitución técnica decrece. Pero depende de las unidades."
+        pizarra: [{grafico: isocuantas-rmst, capa: 4}]
+        guion: "RMST decreciente; depende de las unidades"
+      - di: "Las curvas que unen puntos de igual pendiente en distintas isocuantas son las isoclinas: rectas por el origen si la función es homotética."
+        guion: "Isoclinas: igual RMST; rectas por el origen si F es homotética"
+      - di: "Para medir la sustituibilidad sin depender de las unidades, Hicks y Joan Robinson definen la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre capital y trabajo ante una variación porcentual de la relación marginal de sustitución técnica. [pausa] Mide la curvatura de la isocuanta."
+        pizarra: [{formula: '\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln RMST_{LK}}\geq 0', zona: "1", tam: 0.8}]
+        apunte: "Hicks (1932): «una medida de la facilidad con la que el factor variable puede sustituirse por otros»"
+      - di: "Cuanto mayor es sigma, más fácil es sustituir. Y decide el reparto: si sigma es menor que uno, una subida del salario relativo aumenta la participación del trabajo en la renta; si es mayor, la reduce."
+        guion: "Con σ < 1, una subida del salario relativo aumenta la participación del trabajo"
+
+  - bloque: "I. La tecnología"
+    titulo: "I.3. Las curvas isocuantas: la función Cobb-Douglas"
+    modo: pizarra
+    rejilla: "48|52"
+    pasos:
+      - di: "Sigma ordena las formas funcionales. La primera, la Cobb-Douglas: A por zeta ka elevado a alfa por zeta ele elevado a beta, con A el nivel tecnológico y alfa y beta, las elasticidades-producto. Cobb y Douglas la estiman en 1928."
+        borrar: true
+        pizarra: [{formula: 'q=A\,z_K^{\alpha}z_L^{\beta},\qquad A,\alpha,\beta>0', zona: "1", tam: 0.85}]
+        apoyo: {grafico: superficie-produccion, capa: 5, zona: "2"}
+        apunte: "Cobb y Douglas (1928): exponentes de 1/4 (capital) y 3/4 (trabajo) en la industria de EE. UU., 1899-1922"
+      - di: "Cada productividad marginal es el exponente por la productividad media. La relación marginal de sustitución técnica depende solo de la proporción de factores, y de ahí sale una sigma igual a uno en todo punto."
+        pizarra: [{formula: 'PMg_L=\beta\,\frac{q}{z_L},\quad RMST_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1', zona: "1", tam: 0.85}]
+        guion: "PMg = exponente × PMe · σ = 1"
+      - di: "Es homogénea de grado alfa más beta: rendimientos crecientes, constantes o decrecientes según esa suma supere, iguale o no alcance uno. La superficie de apoyo lo resume: sus curvas de nivel son las isocuantas, y sus cortes, los plazos."
+        pizarra: [{formula: 'F(\lambda\vec{z})=\lambda^{\alpha+\beta}F(\vec{z})', zona: "1", tam: 0.85}]
+        guion: "Homogénea de grado α + β"
+      - di: "Con rendimientos constantes y factores pagados por su productividad marginal, el teorema de Euler agota el producto, y las participaciones son constantes, alfa y uno menos alfa. [pausa] El precio de esa sencillez es imponer sigma igual a uno."
+        guion: "Euler: el producto se agota · participaciones constantes α y 1 − α"
+        apunte: "Teorema de Euler: con rendimientos constantes, pagar a cada factor su PMg agota el producto"
+
+  - bloque: "I. La tecnología"
+    titulo: "I.3. Las curvas isocuantas: la función CES y la de Leontief"
+    modo: pizarra
+    rejilla: "48|52"
+    pasos:
+      - di: "Para estimar sigma hace falta la CES, de elasticidad de sustitución constante, de Arrow, Chenery, Minhas y Solow: A por la suma ponderada de los factores elevados a ro, todo elevado a nu entre ro. Su elasticidad de sustitución, uno entre uno menos ro, es constante."
+        borrar: true
+        pizarra: [{formula: 'q=A\Big[\sum_{i}a_i\,z_i^{\rho}\Big]^{\nu/\rho},\qquad \sigma=\frac{1}{1-\rho}', zona: "1", tam: 0.85}]
+        apunte: "Arrow, Chenery, Minhas y Solow (1961): la CES generaliza la Cobb-Douglas a cualquier σ constante"
+      - di: "Lo vemos con sus isocuantas. Trazo los ejes, un punto común a todas y el rayo en el que capital y trabajo guardan la proporción a entre be."
+        pizarra: [{grafico: ces-isocuantas, capa: 1, zona: "2"}]
+      - di: "Cuando sigma tiende a cero, obtenemos la de coeficientes fijos de Leontief, el mínimo de zeta ka entre a y zeta ele entre be: isocuantas en ángulo recto."
+        pizarra:
+          - {grafico: ces-isocuantas, capa: 2}
+          - {formula: '\sigma\to 0:\ \ q=\min\{z_K/a;\ z_L/b\}', zona: "1", tam: 0.85}
+        guion: "σ = 0: Leontief (ángulo recto)"
+      - di: "Con sigmas intermedias, las isocuantas son más o menos curvas; con sigma uno, la Cobb-Douglas que ya conocemos."
+        pizarra: [{grafico: ces-isocuantas, capa: 4}]
+        guion: "σ = 1: Cobb-Douglas"
+      - di: "Y con sigma infinita, la lineal, de sustitutivos perfectos: isocuantas rectas. [pausa] Son límites, no casos exactos."
+        pizarra: [{grafico: ces-isocuantas, capa: 5}]
+        guion: "σ infinita: lineal (sustitutivos perfectos)"
+      - di: "La de Leontief, que anticipaba Cassel en 1918, es la tecnología de las tablas input-output: la proporción eficiente no depende de los precios."
+        guion: "Leontief: proporción eficiente independiente de los precios; coste lineal"
+        apunte: "Cassel (1918): coeficientes técnicos fijos · Leontief (1936): tablas input-output"
+      - di: "¿Y los datos? [pausa] Sigma entre capital y trabajo se estima por debajo de uno: entre cero coma cuatro y cero coma seis según Chirinko."
+        guion: "Evidencia: σ < 1"
+        apunte: "Chirinko (2008): σ entre 0,4 y 0,6 · Gechert et al. (2022): ≈ 0,3"
+      - di: "Recapitulando, los axiomas dan la función de producción, y sus isocuantas y sigma miden la sustitución. La superficie es ahora nuestro mapa: [pausa] cada plazo será un corte de ella."
+        guion: "Recapitulación: axiomas, función de producción, isocuantas, RMST y σ"
+
+  # ==================================================================== II
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II. Análisis de la función de producción: las leyes temporales de la producción"
+    modo: pizarra
+    rejilla: "100"
+    pasos:
+      - di: "Paso al segundo bloque: las leyes temporales de la producción. Adelanto la conclusión: [pausa] los tres plazos de Marshall son tres cortes de la misma superficie, con tres leyes: rendimientos decrecientes, rendimientos a escala y progreso técnico."
+        borrar: true
+        guion: "Conclusión anticipada: tres plazos, tres cortes de la superficie"
+      - di: "Los plazos de Marshall no son periodos de calendario, sino grados de libertad de la empresa. Trazo los ejes del trabajo, del capital y de la producción."
+        pizarra: [{grafico: plazos-3d, capa: 1, zona: "1"}]
+        apunte: "Marshall (1890), libro V, cap. V: los plazos son grados de libertad, no periodos de calendario"
+      - di: "Encima, la superficie de producción, a sub cero por efe de zeta, la misma de antes: sale del origen, sube con los dos factores y se aplana arriba. Cada punto de la base es una combinación de factores, y su altura, la producción máxima. [pausa] Lo que cambia de un plazo a otro es qué puede mover la empresa sobre ella."
+        pizarra: [{grafico: plazos-3d, capa: 2}]
+        guion: "Superficie A₀F(z)"
+      - di: "A corto plazo, el capital es fijo. Cortamos la superficie por el plano zeta ka barra: la curva dorada es la producción a corto plazo, que solo depende del trabajo."
+        pizarra: [{grafico: plazos-3d, capa: 3}]
+        guion: "Corto plazo: corte con el capital fijo"
+      - di: "A largo plazo, todo es variable. Los cortes horizontales, proyectados sobre la base, son las isocuantas."
+        pizarra: [{grafico: plazos-3d, capa: 4}]
+        guion: "Largo plazo: isocuantas"
+      - di: "Si aumentamos todos los factores en la misma proporción, nos movemos por un rayo desde el origen. Trazo el rayo, su plano vertical y el corte, la curva verde, efe de lambda zeta barra, que cruza las isocuantas en lambda uno, dos y tres. [pausa] Mide los rendimientos a escala."
+        pizarra: [{grafico: plazos-3d, capa: 5}]
+        guion: "Largo plazo: corte por un rayo desde el origen"
+      - di: "Y el muy largo plazo, los movimientos seculares de Marshall, en los que cambian el conocimiento, la población y el capital. Aquí ya no nos movemos sobre la superficie: [pausa] es la superficie la que se mueve. Dibujo la nueva, a sub uno por efe de zeta, por encima de la anterior, y las flechas rojas del desplazamiento. Es el progreso técnico: con los mismos factores se produce más, y la misma producción se consigue con menos factores, de modo que cada isocuanta se acerca al origen y el conjunto de posibilidades de producción se amplía. Puede ser de proceso, si permite producir más con lo mismo, o de producto, si mejora los bienes o crea otros nuevos. Fíjense en la diferencia: a corto y a largo plazo la tecnología está dada y elegimos un punto de la superficie; a muy largo plazo cambia el mapa entero. Retengan esta imagen: [pausa] cada apartado del bloque vuelve a ella."
+        pizarra: [{grafico: plazos-3d, capa: 6}]
+        guion: "Muy largo plazo: la superficie se desplaza hacia arriba (A₁ > A₀)"
+        apunte: "Progreso técnico de proceso (más con los mismos factores) o de producto (bienes nuevos o mejores)"
+
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II.1. Corto plazo: región económica de la producción"
+    modo: pizarra
+    rejilla: "45|55"
+    pasos:
+      - di: "Empiezo por el corto plazo, el corte por el plano del capital fijo, que resalto en la superficie. Como el factor fijo elimina planes posibles, el coste a largo plazo es la envolvente de los de corto."
+        borrar: true
+        apoyo: {grafico: plazos-3d-corto, capa: 5, zona: "1"}
+        guion: "El factor fijo elimina planes: coste a largo plazo, envolvente de los de corto"
+      - di: "Una advertencia al tribunal: [pausa] la función que uso, pasado un máximo, decrece, e incumple la eliminación gratuita. Se mantiene por un motivo histórico, porque las etapas las sistematiza Cassels en 1936, antes de la axiomática, y por otro didáctico: delimita dónde es eficiente producir."
+        guion: "Se relaja la eliminación gratuita: motivo histórico y didáctico"
+        apunte: "Cassels (1936), «On the Law of Variable Proportions»: las etapas de la producción"
+      - di: "Lo muestra su mapa de isocuantas. Arriba, las tangentes son verticales: la línea de contorno superior, con productividad marginal del capital nula; abajo, horizontales: la inferior, con la del trabajo nula. Las dos son isoclinas. [pausa] Entre ellas, sombreada, está la región económica de la producción, con las dos productividades marginales positivas. Con el capital fijo en zeta ka barra, la producción crece hasta el punto A y después cae."
+        apoyo: {grafico: region-economica, capa: 7, zona: "2"}
+        guion: "Líneas de contorno (isoclinas): PMg del capital o del trabajo nula · región económica: las dos PMg positivas"
+
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II.1. Corto plazo: productividad y etapas de la producción"
+    modo: pizarra
+    rejilla: "45|55"
+    pasos:
+      - di: "Con el capital fijo, el producto total crece primero a ritmo creciente, después decreciente, hasta un máximo, y luego cae: es la ley de Turgot."
+        borrar: true
+        pizarra: [{grafico: corto-plazo, capa: 2, zona: "2"}]
+        apunte: "Turgot (1767): proporciones variables · West, Malthus, Ricardo y Torrens (1815): rendimientos decrecientes de la tierra"
+      - di: "La productividad marginal es la derivada del producto total respecto al trabajo, con el capital constante: la pendiente de la tangente, máxima en el punto de inflexión."
+        pizarra:
+          - {formula: 'PMg_L=\frac{\partial F(z_L,\overline{z}_K)}{\partial z_L}', zona: "1", tam: 0.85}
+          - {grafico: corto-plazo, capa: 3}
+        guion: "PMg: pendiente de la tangente; máxima en la inflexión"
+      - di: "La productividad media es el producto total entre el trabajo: la pendiente del rayo desde el origen. Es máxima donde ese rayo es tangente al producto total, en el punto que marco."
+        pizarra:
+          - {formula: 'PMe_L=\frac{q}{z_L}', zona: "1", tam: 0.85}
+          - {grafico: corto-plazo, capa: 4}
+        guion: "PMe: pendiente del rayo; máxima donde el rayo es tangente"
+      - di: "El producto total alcanza su máximo donde la productividad marginal se anula."
+        pizarra: [{grafico: corto-plazo, capa: 5}]
+      - di: "Debajo, en el segundo panel, trazo las productividades. La marginal sube hasta la inflexión y después cae, hasta hacerse negativa."
+        pizarra: [{grafico: corto-plazo, capa: 7}]
+      - di: "La media corta a la marginal en su máximo. ¿Por qué? [pausa] Mientras la marginal supera a la media, la media crece; cuando queda por debajo, la media cae."
+        pizarra: [{grafico: corto-plazo, capa: 8}]
+        guion: "PMg = PMe en el máximo de la PMe"
+      - di: "Quedan dos márgenes: el extensivo, u óptimo técnico, en el máximo de la productividad media, y el intensivo, o máximo técnico, donde el producto total es máximo."
+        pizarra: [{grafico: corto-plazo, capa: 9}]
+        guion: "Margen extensivo (óptimo técnico) e intensivo (máximo técnico)"
+      - di: "Y las tres etapas de Cassels. En la primera sobra factor fijo y se produce extensivamente; en la tercera sobra factor variable y su productividad marginal es negativa. [pausa] La empresa que maximiza el beneficio produce en la segunda."
+        pizarra: [{grafico: corto-plazo, capa: 10}]
+        guion: "Se produce en la etapa II"
+        apunte: "Etapa I: PMg > PMe · Etapa II: 0 < PMg < PMe · Etapa III: PMg < 0"
+      - di: "Las ordena la elasticidad-producto, el cociente entre la productividad marginal y la media: mayor que uno en la primera etapa, entre cero y uno en la segunda y negativa en la tercera."
+        pizarra: [{formula: '\varepsilon_{q,z_L}\equiv\frac{\partial q}{\partial z_L}\,\frac{z_L}{q}=\frac{PMg_L}{PMe_L}', zona: "1", tam: 0.85}]
+        guion: "ε > 1 (I) · 0 < ε < 1 (II) · ε < 0 (III)"
+      - di: "En suma, a corto plazo los rendimientos decrecientes delimitan las etapas. [pausa] ¿Y si la empresa ajusta todos sus factores?"
+        guion: "Recapitulación del corto plazo"
+
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II.2. Largo plazo: rendimientos a escala"
+    modo: pizarra
+    rejilla: "40|60"
+    pasos:
+      - di: "Paso al largo plazo, el corte por un rayo desde el origen, que resalto en la superficie. ¿Cómo responde la producción cuando todos los factores varían en la misma proporción, lambda? Son los rendimientos a escala."
+        borrar: true
+        apoyo: {grafico: plazos-3d-largo, capa: 5, zona: "1"}
+        guion: "Variación equiproporcional de todos los factores: λ"
+      - di: "Lo vemos primero en el plano, con isocuantas de niveles q, dos q y tres q sobre un rayo. Si al multiplicar los factores la producción crece en mayor proporción, los rendimientos son crecientes: en el primer panel, las isocuantas están cada vez más juntas, porque cada unidad más exige menos factores."
+        pizarra: [{grafico: rendimientos-escala-isocuantas, capa: 1, zona: "2"}]
+        guion: "Crecientes: isocuantas cada vez más juntas"
+      - di: "Si crece en la misma proporción, los rendimientos son constantes y las isocuantas, equidistantes: duplicar los factores duplica la producción. Es lo que ocurre cuando la empresa puede replicar sus plantas sin estorbarse: el conjunto de producción es un cono, y la función, homogénea de grado uno."
+        pizarra: [{grafico: rendimientos-escala-isocuantas, capa: 2}]
+        guion: "Constantes: equidistantes (el conjunto es un cono)"
+      - di: "Y si crece en menor proporción, los rendimientos son decrecientes, y las isocuantas, cada vez más separadas. ¿Por qué ocurre cada caso? [pausa] Los crecientes se deben a la especialización, como en la fábrica de alfileres, y a las indivisibilidades; los decrecientes, a las dificultades de dirección y a los factores que no se pueden ampliar."
+        pizarra: [{grafico: rendimientos-escala-isocuantas, capa: 3}]
+        guion: "Decrecientes: cada vez más separadas"
+        apunte: "Crecientes: especialización, indivisibilidades · Decrecientes: dirección, factores no ampliables"
+      - di: "En el último panel, las isocuantas primero se juntan y después se separan: los rendimientos cambian con la escala, porque ninguna empresa crece sin límite con la misma eficiencia. [pausa] Volveremos a este caso, que es sin duda el más realista."
+        pizarra: [{grafico: rendimientos-escala-isocuantas, capa: 4}]
+        guion: "Variables: primero más juntas, después más separadas"
+      - di: "Ahora en tres dimensiones. Comparo tres funciones con las mismas isocuantas y distinta escala. La primera, zeta ele por zeta ka elevado a cero coma ocho: trazo su superficie, el rayo y el plano vertical que lo contiene. Su corte, la curva verde, se empina cada vez más: [pausa] rendimientos crecientes, porque la producción crece más que la escala."
+        rejilla: "38|62"
+        pizarra: [{grafico: rendimientos-escala-tipos-3d, capa: 1, zona: "2"}]
+        guion: "(a) Exponente 0,8: el corte se empina"
+      - di: "La segunda, el mismo producto elevado a cero coma cinco. Trazo de nuevo la superficie, el rayo y su plano vertical. Ahora el corte, la recta azul, sube en línea recta: duplicar los factores duplica la producción, ni más ni menos. Rendimientos constantes: es una función homogénea de grado uno."
+        pizarra: [{grafico: rendimientos-escala-tipos-3d, capa: 2}]
+        guion: "(b) Exponente 0,5: el corte es una recta"
+      - di: "La tercera, elevada a cero coma tres. Trazo de nuevo su superficie, que se aplana enseguida, y su rayo con el plano vertical. El corte, la curva naranja, se curva hacia abajo: cada aumento de escala rinde menos que el anterior, porque la producción crece menos que los factores. [pausa] Rendimientos decrecientes."
+        pizarra: [{grafico: rendimientos-escala-tipos-3d, capa: 3}]
+        guion: "(c) Exponente 0,3: el corte se aplana"
+      - di: "Debajo saco cada corte al plano: la producción frente a lambda, con la recta lambda por efe de zeta barra como referencia. La primera curva queda por encima de la recta a partir de lambda uno; la segunda coincide con ella; la tercera, por debajo. Esa es la definición, que escribo: para lambda mayor que uno, efe de lambda zeta mayor, igual o menor que lambda por efe de zeta."
+        pizarra:
+          - {grafico: rendimientos-escala-tipos-3d, capa: 6}
+          - {formula: '\lambda>1:\ \ F(\lambda\vec{z})\gtreqless\lambda F(\vec{z})', zona: "1", tam: 0.8}
+        guion: "Cada corte frente a la recta de referencia"
+      - di: "Y abajo, el mapa de isocuantas común a las tres, con el rayo y las isocuantas que pasan por lambda uno, dos y tres: las mismas para las tres funciones."
+        pizarra: [{grafico: rendimientos-escala-tipos-3d, capa: 7}]
+        guion: "Mismas isocuantas"
+      - di: "Lo que cambia es su número. En lambda dos, la primera produce más del doble; la segunda, el doble, y la tercera, menos. [pausa] La cuasiconcavidad no dice nada de los rendimientos."
+        pizarra: [{grafico: rendimientos-escala-tipos-3d, capa: 8}]
+        guion: "Distinta escala: la cuasiconcavidad no fija los rendimientos"
+      - di: "Formalmente, se miden con la elasticidad de escala: la variación porcentual de la producción ante una variación porcentual de todos los factores, mayor, igual o menor que uno."
+        pizarra: [{formula: '\varepsilon_{q,\lambda}\equiv\frac{dq/q}{d\lambda/\lambda}', zona: "1", tam: 0.8}]
+        guion: "Elasticidad de escala mayor, igual o menor que 1: crecientes, constantes, decrecientes"
+      - di: "El caso más sencillo, las funciones homogéneas de grado ka: su elasticidad de escala es ka en todo punto. Con grado uno, el teorema de Euler agota el producto."
+        pizarra: [{formula: 'F(\lambda\vec{z})=\lambda^kF(\vec{z})', zona: "1", tam: 0.8}]
+        guion: "Homogénea de grado k: ε = k en todo punto"
+        apunte: "Homotética: transformación creciente de una homogénea de grado 1; isoclinas rectas por el origen"
+
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II.2. Largo plazo: rendimientos globales y locales a escala"
+    modo: pizarra
+    rejilla: "38|62"
+    pasos:
+      - di: "Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. [pausa] Une el corto y el largo plazo."
+        borrar: true
+        pizarra: [{formula: '\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_iPMg_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}', zona: "1", tam: 0.8}]
+        apunte: "Jehle y Reny (2011), cap. 3 · en la Cobb-Douglas, la elasticidad de escala es α + β"
+      - di: "Lo vemos en tres dimensiones. A la izquierda, una función homogénea de grado uno, la raíz de zeta ele por zeta ka. Trazo los ejes, la superficie, el rayo, el plano vertical que lo contiene y el corte, la recta azul. No importa desde qué punto partamos: por mucho que ampliemos la escala, el corte sigue siendo una recta. [pausa] Los rendimientos son constantes en todos los puntos del rayo y en todos los rayos: son globales."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 1, zona: "2"}]
+        guion: "(a) Homogénea de grado 1: rendimientos globales constantes"
+      - di: "Debajo, el corte frente a lambda: una recta por el origen, con elasticidad de escala igual a uno en todo punto. En las funciones homogéneas, los rendimientos globales y locales coinciden siempre."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 2}]
+        guion: "ε = 1 en todo punto"
+      - di: "A la derecha, otra tecnología: kappa entre uno más la inversa de zeta ele por zeta ka, el ejemplo de Jehle y Reny. Trazo la superficie: sale del origen muy plana, se empina y después se aplana hasta una meseta, a la altura kappa. Con el rayo y su plano vertical, el corte, la curva morada, tiene forma de ese. [pausa] Es la ley de los rendimientos a escala variables, la ley ultra passum de Frisch: crecientes cuando la empresa es pequeña, por las indivisibilidades, y decrecientes cuando es grande, por las dificultades de dirección."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 3}]
+        guion: "(b) Tecnología «en S»: rendimientos locales variables"
+        apunte: "Frisch (1965): regular ultra passum law · rendimientos «wicksellianos»"
+      - di: "Debajo, su corte frente a lambda: una curva en ese, que se acerca a kappa sin alcanzarla."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 4}]
+      - di: "El rayo desde el origen es tangente a la curva en lambda asterisco: ahí la elasticidad de escala local es exactamente uno."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 5}]
+        guion: "En λ*, ε = 1"
+      - di: "Antes, en verde, la producción crece más que la escala: rendimientos locales crecientes. Después, en naranja, crece menos: decrecientes. [pausa] Una misma tecnología tiene rendimientos distintos según el tamaño: es la que está detrás de los costes medios en forma de U."
+        pizarra: [{grafico: rendimientos-globales-locales-3d, capa: 6}]
+        guion: "Crecientes antes de λ*, decrecientes después"
+        apunte: "La elasticidad de escala local cae al aumentar la producción"
+      - di: "Consecuencias: los rendimientos no son las economías de escala, que son una propiedad de los costes, aunque coinciden con tecnologías homotéticas; y con rendimientos constantes, el tamaño de la empresa queda indeterminado."
+        guion: "Rendimientos (tecnología) ≠ economías de escala (costes) · con rendimientos constantes, tamaño indeterminado"
+        apunte: "Hanoch (1975): elasticidad de escala = CMe/CMg a lo largo de la senda de mínimo coste"
+      - di: "Basu y Fernald encuentran en la industria estadounidense rendimientos constantes o algo decrecientes. Recapitulando: [pausa] la elasticidad de escala, global o local, mide la respuesta al tamaño."
+        guion: "Evidencia: rendimientos constantes o ligeramente decrecientes"
+        apunte: "Basu y Fernald (1997): industria de EE. UU."
+
+  - bloque: "II. Leyes temporales de la producción"
+    titulo: "II.3. Muy largo plazo: progreso técnico"
+    modo: pizarra
+    rejilla: "38(55/45)|62"
+    pasos:
+      - di: "Paso al muy largo plazo: la superficie sube y cada isocuanta se acerca al origen. Desde Hicks, el progreso técnico se clasifica por su efecto sobre el reparto de la renta: [pausa] es neutral si no altera una relación concreta entre las productividades marginales."
+        borrar: true
+        apoyo: {grafico: plazos-3d-muy-largo, capa: 4, zona: "1a"}
+        guion: "Neutral o sesgado (ahorrador de trabajo o de capital)"
+      - di: "Hay tres criterios. El de Hicks: q igual a a sub te por efe de zeta ka y zeta ele, un progreso aumentador del producto, el más intuitivo. Trazo una isocuanta y dos rayos desde el origen. Con este progreso, para una proporción de factores dada, la relación marginal de sustitución técnica no cambia en absoluto."
+        pizarra:
+          - {formula: '\text{Hicks: }q=A_t\,F(z_K,z_L)', zona: "1b", tam: 0.75, alinear: izquierda}
+          - {grafico: progreso-tecnico-neutral, capa: 1, zona: "2"}
+        guion: "Hicks: aumentador del producto; RMST constante para una proporción de factores dada"
+      - di: "La nueva isocuanta se acerca al origen por cada rayo con la misma pendiente. Es el supuesto con el que se mide la productividad total de los factores."
+        pizarra: [{grafico: progreso-tecnico-neutral, capa: 2}]
+      - di: "El de Solow: efe de a sub te por zeta ka y zeta ele, aumentador del capital. La isocuanta se contrae solo en la dirección del capital; con trabajo por unidad de producto dado, las participaciones no cambian."
+        pizarra:
+          - {formula: '\text{Solow: }q=F(A_tz_K,\,z_L)', zona: "1b", tam: 0.75, alinear: izquierda}
+          - {grafico: progreso-tecnico-neutral, capa: 3}
+        guion: "Solow: aumentador del capital"
+      - di: "El de Harrod: efe de zeta ka y a sub te por zeta ele, aumentador del trabajo, un trabajo que aprende. La isocuanta se contrae en la dirección del trabajo; con capital por unidad de producto dado, las participaciones no cambian."
+        pizarra:
+          - {formula: '\text{Harrod: }q=F(z_K,\,A_tz_L)', zona: "1b", tam: 0.75, alinear: izquierda}
+          - {grafico: progreso-tecnico-neutral, capa: 4}
+        guion: "Harrod: aumentador del trabajo"
+      - di: "Son tres criterios distintos, no una jerarquía. [pausa] Con una Cobb-Douglas coinciden: el mismo progreso puede escribirse como aumentador del capital o del trabajo, cambiando el exponente de a sub te."
+        pizarra: [{formula: 'A_t\,z_K^{\alpha}z_L^{\beta}=\big(A_t^{1/\alpha}z_K\big)^{\alpha}z_L^{\beta}=z_K^{\alpha}\big(A_t^{1/\beta}z_L\big)^{\beta}', zona: "2", tam: 0.75}]
+        guion: "Con Cobb-Douglas, las tres neutralidades coinciden"
+      - di: "¿Por qué importa? Por el teorema de Uzawa: el crecimiento equilibrado exige progreso aumentador del trabajo, neutral en sentido de Harrod, y por eso el modelo de Solow lo supone."
+        guion: "Uzawa: el crecimiento equilibrado exige neutralidad de Harrod"
+        apunte: "Uzawa (1961): una senda de crecimiento equilibrado exige progreso aumentador del trabajo"
+      - di: "Recapitulando el bloque: cada plazo es un corte de la superficie, con su ley. Hasta aquí, un solo producto. [pausa] ¿Qué cambia cuando se obtienen varios con los mismos factores?"
+        guion: "Recapitulación: tres plazos, tres cortes"
+
+  # ==================================================================== III
+  - bloque: "III. Empresa multiproducto"
+    titulo: "III.1. La caja de Edgeworth: curva de contrato y frontera de posibilidades de producción"
+    modo: pizarra
+    rejilla: "40|60"
+    pasos:
+      - di: "Paso al tercer bloque: la empresa multiproducto. Adelanto la conclusión: [pausa] con varios productos hay que asignar bien los factores, en la curva de contrato, y la frontera es una función de transformación."
+        borrar: true
+        guion: "Conclusión anticipada: curva de contrato y función de transformación"
+      - di: "Empiezo por dos bienes, equis e i griega, producidos con trabajo y capital en procesos separados y con dotaciones fijas: lo que usa uno no lo usa el otro."
+        pizarra: [{formula: '\begin{array}{l}X=F_X(L_X,K_X),\quad Y=F_Y(L_Y,K_Y)\\[4pt] L_X+L_Y=\overline{L},\quad K_X+K_Y=\overline{K}\end{array}', zona: "2", tam: 0.8}]
+        guion: "Dos bienes, dos factores, dotaciones fijas"
+      - di: "Para construir la caja de Edgeworth, dibujo el mapa de isocuantas de equis, con su origen abajo a la izquierda."
+        pizarra: [{grafico: formacion-caja, capa: 1, zona: "1"}]
+      - di: "Al lado, el mapa de isocuantas de i griega, que giro ciento ochenta grados para que su origen quede arriba, a la derecha, frente al otro."
+        pizarra: [{grafico: formacion-caja, capa: 2}]
+        guion: "Giro de 180° del mapa de Y"
+      - di: "Y los superpongo: los ejes cierran un rectángulo de lados ele barra y ka barra, las dotaciones de trabajo y de capital. Cada punto de la caja es un reparto de los factores entre los dos bienes: lo que no va a equis, va a i griega."
+        pizarra: [{grafico: formacion-caja, capa: 3}]
+        guion: "La caja: cada punto, un reparto de los factores"
+      - di: "Borro y dibujo la caja con sus orígenes, o equis y o i griega. Dentro, las isocuantas de equis, que crecen hacia arriba a la derecha, y las de i griega, que crecen hacia abajo a la izquierda."
+        rejilla: "100(72/28)"
+        pizarra: [{grafico: caja-edgeworth-fpp, capa: 3, zona: "1a"}]
+      - di: "En el punto A, donde las isocuantas se cortan, se emplean todos los factores, pero [pausa] estar sobre la isocuanta de cada bien ya no garantiza la eficiencia."
+        pizarra: [{grafico: caja-edgeworth-fpp, capa: 4}]
+        guion: "A: ineficiente"
+      - di: "Reasignando factores podemos ir a be, con más equis y la misma i griega, o a ce, con más i griega y la misma equis. En be y en ce las isocuantas son tangentes."
+        pizarra: [{grafico: caja-edgeworth-fpp, capa: 5}]
+        guion: "B y C: tangencias"
+      - di: "La asignación es técnicamente eficiente cuando las relaciones marginales de sustitución técnica de los dos bienes son iguales. El lugar geométrico de esas tangencias es la curva de contrato, que une los dos orígenes."
+        pizarra:
+          - {formula: 'RMST^X_{LK}=RMST^Y_{LK}', zona: "1b", tam: 0.75}
+          - {grafico: caja-edgeworth-fpp, capa: 6}
+        guion: "Curva de contrato: RMST iguales"
+      - di: "Llevando cada punto de la curva de contrato al plano de los productos, obtenemos la frontera de posibilidades de producción, con be y ce sobre ella. A, ineficiente, queda dentro."
+        pizarra: [{grafico: caja-edgeworth-fpp, capa: 8}]
+        guion: "FPP: combinaciones técnicamente eficientes"
+      - di: "Su pendiente es la relación marginal de transformación, menos de i griega entre de equis: el coste de oportunidad de una unidad más de equis, igual al cociente de costes marginales. [pausa] Es la análoga de la relación marginal de sustitución técnica."
+        borrar: ["1b"]
+        pizarra:
+          - {formula: 'RMT_{XY}\equiv-\frac{dY}{dX}=\frac{CMg_X}{CMg_Y}', zona: "1b", tam: 0.75}
+          - {grafico: caja-edgeworth-fpp, capa: 9}
+        guion: "RMT: coste de oportunidad de X"
+      - di: "El progreso técnico y más dotaciones desplazan la frontera hacia fuera, y la competencia perfecta, al igualar los precios de los factores, lleva a la curva de contrato."
+        pizarra: [{grafico: caja-edgeworth-fpp, capa: 10}]
+        guion: "FPP′: progreso técnico o más dotaciones"
+        apunte: "FPP estrictamente cóncava con rendimientos decrecientes; lineal con rendimientos constantes e intensidades iguales"
+      - di: "Pero la caja supone procesos separables. [pausa] No recoge un proceso que da varios productos a la vez."
+        guion: "Límite: procesos separables"
+
+  - bloque: "III. Empresa multiproducto"
+    titulo: "III.2. La empresa multiproducto y la producción conjunta"
+    modo: pizarra
+    rejilla: "40|60"
+    pasos:
+      - di: "Con varios productos ya no sirve la función de producción: la frontera se describe con una función de transformación, te de i griega, menor o igual que cero, e igual a cero en los planes eficientes."
+        borrar: true
+        pizarra: [{formula: '\mathcal{Y}=\{\vec{y}:\ T(\vec{y})\leq 0\}', zona: "1", tam: 0.8}]
+        apunte: "La función de producción es el caso de un solo producto: T(q, −z) = q − F(z)"
+      - di: "Con dos productos y unos factores dados, es la curva de transformación de la empresa. Trazo los ejes de los dos productos y la curva, cóncava si el conjunto es convexo; debajo, sombreados, los planes posibles de la empresa."
+        pizarra: [{grafico: transformacion-empresa, capa: 2, zona: "2"}]
+        guion: "Curva de transformación de la empresa"
+      - di: "Su pendiente es la relación marginal de transformación de la empresa: lo que hay que dejar de producir del bien dos para obtener una unidad más del uno, con los mismos factores. En A trazo la tangente y su triángulo. Crece al especializarse."
+        pizarra:
+          - {formula: 'RMT_{12}\equiv-\left.\frac{dq_2}{dq_1}\right|_{T=0}=\frac{\partial T/\partial q_1}{\partial T/\partial q_2}', zona: "1", tam: 0.8}
+          - {grafico: transformacion-empresa, capa: 3}
+        guion: "RMT₁₂: coste de oportunidad del bien 1"
+      - di: "Con precios dados, la empresa elige el punto de la frontera en el que la relación marginal de transformación iguala el precio relativo de los productos: la recta de isobeneficio es tangente a la curva en A."
+        pizarra:
+          - {formula: 'RMT_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}
+          - {grafico: transformacion-empresa, capa: 4}
+        guion: "Óptimo: RMT = p₁/p₂"
+      - di: "Y con más factores o progreso técnico, la curva se desplaza hacia fuera, como la frontera de la economía, y se produce más de los dos bienes."
+        pizarra: [{grafico: transformacion-empresa, capa: 5}]
+      - di: "Hay producción conjunta cuando un proceso da varios productos a la vez: en proporciones fijas, como la carne y el cuero de Marshall, o variables, como en el refino del petróleo."
+        guion: "Proporciones fijas (carne y cuero) o variables (refino del petróleo)"
+        apunte: "Marshall (1890), libro V, cap. VI: oferta conjunta"
+      - di: "¿Por qué producir juntos? [pausa] Por los factores compartidos, como instalaciones o marca: son la base de las economías de alcance de Panzar y Willig: producir los dos juntos cuesta menos que por separado."
+        pizarra: [{formula: 'C(q_1,q_2)<C(q_1,0)+C(0,q_2)', zona: "1", tam: 0.8}]
+        guion: "Economías de alcance: factores compartidos"
+        apunte: "Panzar y Willig (1981): economías de alcance"
+      - di: "Recapitulando: con varios productos, la eficiencia exige la curva de contrato, y la frontera es una función de transformación. Después vendrían los precios."
+        guion: "Recapitulación: curva de contrato y función de transformación"
+
+  # ==================================================================== CONCLUSIÓN
+  - bloque: Conclusión
+    titulo: Conclusión
+    modo: guion
+    estructura: [Recapitulación, Relevancia, Extensiones, Opinión, Idea final]
+    pasos:
+      - di: "En conclusión, unos pocos axiomas resumen la tecnología en una función de producción, cuyas isocuantas y sigma miden la sustitución; los plazos de Marshall son tres cortes de su superficie, y con varios productos la eficiencia exige además la curva de contrato."
+        parte: Recapitulación
+        guion: ["I. Axiomas, función de producción, isocuantas y σ", "II. Corto, largo y muy largo plazo: tres cortes de la superficie", "III. Curva de contrato y función de transformación"]
+      - di: "Su relevancia es grande: la forma de la tecnología decide resultados. En España, los asalariados recibieron el 48,4 por ciento del PIB en 2025, y la caída de esa participación desde los años 80 es difícil de explicar con sigma igual a uno."
+        parte: Relevancia
+        guion: ["Remuneración de los asalariados: 48,4 % del PIB (España, 2025)", "> Caída desde los años 80: difícil con σ = 1"]
+      - di: "La exposición abre varias puertas: los costes y la dualidad, la oferta según la estructura de mercado, la controversia de los dos Cambridge sobre el capital y el crecimiento endógeno con rendimientos crecientes."
+        parte: Extensiones
+        guion: ["Costes y dualidad · oferta y estructura de mercado", "Controversia de los dos Cambridge · crecimiento endógeno"]
+      - di: "En mi opinión, la función de producción es una idealización poderosa, pero trata a la empresa como una caja negra que transforma factores en productos."
+        parte: Opinión
+        guion: ["Idealización poderosa: la empresa como caja negra"]
+      - di: "Volvamos a la pregunta del principio: ¿puede una sola función resumir todo lo que una empresa sabe hacer? [pausa 800] Puede resumir lo que es capaz de producir, no lo que decidirá producir ni cómo se organiza por dentro. Es el mapa de lo técnicamente posible, sobre el que los precios, los costes y los mercados trazan después la elección; y lo que la caja negra deja fuera, los contratos, los incentivos o el conocimiento que se acumula, es lo que la organización industrial y el crecimiento endógeno vienen a abrir."
+        parte: Idea final
+        guion: ["¿Una función resume lo que una empresa sabe hacer? Lo que puede, no lo que hará", "> El mapa de lo posible; dentro de la caja negra, otras teorías"]
