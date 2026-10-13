@@ -16,7 +16,9 @@ Autor: Víctor Gutiérrez Marcos
 - Tasas de crecimiento: γ_X ≡ Ẋ/X (D012). Tiempo discreto con subíndice t; continuo con punto.
 - Esperanza: **𝔼[·]** (𝔼_t[x_{t+1}]); expectativa de x_t formada en t−1: x^e_t ≡ 𝔼_{t−1}[x_t]. La E latina queda para la función de gasto y el tipo de cambio.
 - Elasticidades: **ε** con dos subíndices y con su signo; |ε| en las reglas de margen (D047). ϵ (lunada) solo para la aversión a la desigualdad de Atkinson (D081).
-- Multiplicadores de Lagrange y precios sombra: **λ** (λ_k si hay varios) (D020). Uso local admitido: **λ ∈ [0,1] como peso de una combinación convexa**, λy + (1−λ)y′, en las definiciones de convexidad y cuasiconcavidad (3.A.11, como MWG); no se usa como factor de escala (→ t).
+- Multiplicadores de Lagrange y precios sombra: **λ** (λ_k si hay varios) (D020). **Excepción en la teoría de la producción: λ es el factor de escala**, F(λz) = λ^k F(z), y ε_{q,λ} la elasticidad de escala (Víctor, 13/10/2026: es la notación a la que están acostumbrados los opositores y t se confunde con el tiempo, que en el mismo tema sale en A_t). Donde conviven escala y multiplicador (empresa, 3.A.12), el multiplicador del problema de costes es **λ^C** (como λ^E en el dual del consumidor). Peso de una combinación convexa en las definiciones de convexidad y cuasiconcavidad: **τ ∈ [0,1]**, τy + (1−τ)y′.
+- **Vectores con flecha** (Víctor, 13/10/2026): x⃗, p⃗, z⃗, y⃗, w⃗, h⃗(p⃗,Ū) (`\vect{x}` en LaTeX = `\vec{x}`). Sus componentes y los escalares, sin flecha (x_i, p_1, W̄, Ū). Se aplica a todos los temas, empezando por los ya revisados.
+- **Marshalliana y hicksiana** (Víctor, 13/10/2026): x⃗(p⃗,W̄) es siempre la marshalliana y h⃗(p⃗,Ū) la hicksiana; nunca x^h ni x^c. Cuando se derivan, se escriben con sus argumentos para que no se mezclen: ∂x_i(p⃗,W̄)/∂p_j = ∂h_i(p⃗,Ū)/∂p_j − x_j(p⃗,W̄)·∂x_i(p⃗,W̄)/∂W̄, y la identidad h⃗(p⃗,Ū) ≡ x⃗(p⃗,E(p⃗,Ū)). En los gráficos, la marshalliana en morado y la hicksiana en verde, rotuladas x_i(·) y h_i(·).
 - Siglas de magnitudes en castellano y en redonda: CMg, CMe, IMg, PMg, RMS, EC, EP, ET, EG, VC, VE, ΔEC. **También dentro de las fórmulas**: en LaTeX, `\mathrm{VC}`, `\mathrm{VE}`, `\Delta\mathrm{EC}`, `\mathrm{EG}` (no $VC$ en cursiva, que se lee como el producto V·C); fijado con el 3.A.9 (13/10/2026).
 - **[decidir] Multiplicador del problema dual del consumidor (minimización del gasto): λ^E**, con λ^{E*} = ∂E/∂Ū = 1/λ* en el óptimo común (coste marginal de la utilidad). Lo usa el 3.A.9 revisado (13/10/2026), que lo necesita para escribir las dos lagrangianas lado a lado (λ ya es el del primal). Se descarta μ, que en el canon es el margen y las creencias. Si Víctor elige otra letra, se cambia en `3A09.tex` (y en `pendientes-coherencia.md`); si lo aprueba, la empresa (3.A.12) usará la misma idea si necesita distinguir dos multiplicadores.
 
@@ -34,7 +36,7 @@ Autor: Víctor Gutiérrez Marcos
 | **M** | Cantidad nominal de dinero (M^S, M^D); importaciones en contabilidad nacional y macro abierta (no conviven con el dinero en la misma ecuación) | Renta no laboral → W̄; variedades de Romer → N_t; emparejamientos → m(U,V); multiplicador monetario → la notación de la ficha `multiplicador-monetario` | D023, D002 |
 | **B / π** | B: beneficio (B_j, B(p,w)); π: inflación (macro) y probabilidad (micro: π_s, π(e)); B(p,W̄): conjunto presupuestario (con argumentos); B, B*: bonos en Branson (local); B(G): beneficio social del gasto (4.B, local) | Beneficio π o Π → B; probabilidades p_s → π_s; saldo presupuestario B → b | D003, D017, D029 |
 | **e** | Logaritmo del tipo de cambio nominal (e = ln E); esfuerzo e (información asimétrica) | Dotación → ω; coeficiente de efectivo → notación de `multiplicador-monetario`; tipo de cambio real → q; tipo sombra o fijo → Ẽ, Ē | D013, D045, D015 |
-| **λ** | Multiplicador y precio sombra (λ^E el del dual del consumidor, **[decidir]**, § 2); λ ∈ [0,1] peso de una combinación convexa (definiciones de convexidad, local); λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → t; tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
+| **λ** | Multiplicador y precio sombra (λ^E el del dual del consumidor, **[decidir]**, § 2); λ ∈ [0,1] peso de una combinación convexa (definiciones de convexidad, local); λ local en Laffont-Tirole (coste de los fondos públicos) y en Kahneman-Tversky (aversión a las pérdidas); λ_i cuota de manufacturas en la NEG (FKV) | Escala → λ en producción (D101′); tasa de encontrar empleo → f(θ); persistencia de la histéresis → λ_h | D020 |
 | **β** | Factor de descuento β ≡ 1/(1+ρ); coeficientes de regresión (β_0, β_1, con subíndice); β_i del CAPM; β movilidad del capital en la BP; β de MRW (elasticidad del capital humano) | Respuesta de la producción en Lucas → ψ; ponderaciones del ITC → ω_i; grado de apertura (3.B.9) → (X+M)/Y, sin símbolo | D036, D044, D107 |
 | **γ** | Tasa de variación γ_X; peso de la inflación en la pérdida de Barro-Gordon; poder negociador (Nash, 3.A.27) | Peso de las manufacturas en la NEG → μ; constante de Cagan → ζ | D012, D019, D061, D106 |
 | **g** | Tasa de progreso técnico; g = G/Y en sector público | Crecimiento del PIB → γ_Y («r − g» solo como nombre del debate); tasa m del anexo de 3.A.43 → g | D010 |
@@ -73,7 +75,7 @@ Autor: Víctor Gutiérrez Marcos
 | ε_{x_i,p_j}, ε_{x_i,W̄} | Elasticidades precio y renta | — |
 | S_{ij} = ∂h_i/∂p_j; S(p,Ū) = [S_{ij}] = D²_pE(p,Ū) | Término y matriz de Slutsky (nunca s_{ij}, que choca con la participación s_i). Construida con observables: S_{ij}(p,W̄) = ∂x_i/∂p_j + x_j ∂x_i/∂W̄ (integrabilidad) | 3.A.9 (13/10/2026) |
 | ε^h_{i,p_j} | Elasticidad-precio compensada (hicksiana): ε_{x_i,p_j} = ε^h_{i,p_j} − s_j ε_{x_i,W̄} | 3.A.8, 3.A.9 |
-| k (en h(kp,Ū), E(kp,Ū)) | Factor de homogeneidad en los precios (nunca θ, que es la CRRA, ni t, que es la escala de la producción) | 3.A.9 (13/10/2026) |
+| k (en h(kp,Ū), E(kp,Ū)) | Factor de homogeneidad en los precios (nunca θ, que es la CRRA, ni λ, que es la escala de la producción y el multiplicador) | 3.A.9 (13/10/2026) |
 | VC, VE, ΔEC | Variaciones compensatoria y equivalente, excedente; en redonda también en las fórmulas (§ 0). Convención de MWG: VC = W̄ − E(p¹,Ū⁰), VE = E(p⁰,Ū¹) − W̄, positivas si el bienestar mejora | — |
 | m(p̄; p, W̄) ≡ E(p̄, V(p,W̄)) | Función de utilidad métrica monetaria (indirecta); VE y VC son sus diferencias con p̄ = p⁰ y p̄ = p¹ (μ en MWG: aquí no, μ es el margen) | 3.A.9 (13/10/2026) |
 | EG = −VE − T | Exceso de gravamen (≥ 0) con la convención de signo de VE; T recaudación | 3.A.9, ficha `exceso-gravamen` |
@@ -102,10 +104,10 @@ Autor: Víctor Gutiérrez Marcos
 | V(q) = {z ≥ 0 : (q,−z) ∈ 𝒴} | Conjunto de requerimientos de factores (su frontera, la isocuanta) | 3.A.11 (13/10/2026) |
 | T(y) ≤ 0; RMT_{12} = (∂T/∂q_1)/(∂T/∂q_2) | Función de transformación de la empresa multiproducto (frontera T(y) = 0) y su relación marginal de transformación, positiva. MWG la llama F; aquí F es la función de producción. Mismo sentido que T(X,G) = 0 en §5 | 3.A.11 (13/10/2026) |
 | w = (w_L, w_K) | Precios de los factores | D011 |
-| t | Factor de escala: F(tz) = t^k F(z) | D101 |
-| k | Grado de homogeneidad (nunca t, que es la escala); κ para un parámetro que chocaría con k | 3.A.11 (13/10/2026) |
-| ε_{q,t} | Elasticidad de escala (global: ε_{q,t} = k en las homogéneas) | — |
-| ε_{q,t}(z) ≡ d ln F(tz)/d ln t \|_{t=1} = Σ_i ε_{q,z_i} | Elasticidad de escala local (μ(z) en Jehle y Reny, que se cita solo en nota); = CMe/CMg a lo largo de la senda de mínimo coste | 3.A.11 (13/10/2026) |
+| λ | Factor de escala: F(λz⃗) = λ^k F(z⃗) (antes t, D101; cambiado por Víctor el 13/10/2026) | D101′ |
+| k | Grado de homogeneidad (nunca λ, que es la escala); κ para un parámetro que chocaría con k | 3.A.11 (13/10/2026) |
+| ε_{q,λ} | Elasticidad de escala (global: ε_{q,λ} = k en las homogéneas) | D101′ |
+| ε_{q,λ}(z⃗) ≡ d ln F(λz⃗)/d ln λ \|_{λ=1} = Σ_i ε_{q,z_i} | Elasticidad de escala local (μ(z) en Jehle y Reny, que se cita solo en nota); = CMe/CMg a lo largo de la senda de mínimo coste | 3.A.11 (13/10/2026) |
 | ε_{q,z_i} = PMg_i/PMe_i | Elasticidad-producto del factor i | 3.A.11 (13/10/2026) |
 | PMg_L, PMe_L; RMST_{LK} = PMg_L/PMg_K | Productividades y relación técnica, positiva | — |
 | C(w,q), C(q) | Función de costes (C(q) si w fijo) | — |

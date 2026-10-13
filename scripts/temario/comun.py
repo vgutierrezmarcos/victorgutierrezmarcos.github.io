@@ -167,3 +167,20 @@ def copiar_si_cambia(origen, destino):
         return False
     shutil.copyfile(origen, destino)
     return True
+
+
+def guardar_pdf_anterior(tema):
+    """Guarda una vez el PDF del tema tal como está en main antes de revisarlo
+    (<tema>-anterior.pdf), para que en la web se pueda consultar la versión
+    antigua. Devuelve la ruta si existe."""
+    destino = os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.pdf')
+    if os.path.exists(destino):
+        return destino
+    relativa = os.path.relpath(os.path.join(tema.dir_publico, f'{tema.archivo}.pdf'), RAIZ).replace(os.sep, '/')
+    for rama in ('origin/main', 'main'):
+        r = subprocess.run(['git', '-C', RAIZ, 'show', f'{rama}:{relativa}'], capture_output=True)
+        if r.returncode == 0 and r.stdout.startswith(b'%PDF'):
+            with open(destino, 'wb') as f:
+                f.write(r.stdout)
+            return destino
+    return None

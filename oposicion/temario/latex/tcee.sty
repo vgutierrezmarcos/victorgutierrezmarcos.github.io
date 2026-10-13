@@ -74,7 +74,7 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\RequirePackage[hang,flushmargin]{footmisc}
+\RequirePackage[hang,flushmargin,bottom]{footmisc}% bottom: las notas siempre al pie, aunque la página tenga hueco
 \RequirePackage{needspace}
 \RequirePackage{etoolbox}
 \renewcommand{\footnotelayout}{\footnotesize}
@@ -154,15 +154,18 @@
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 \titleformat{\section}[block]{\normalfont}{}{0pt}{\tcee@banda}
+% Si el título no cabe en una línea, la segunda va sangrada bajo el texto (no
+% bajo el número) y sin justificar; para cortar en un sitio concreto: \newline.
 \newcommand{\tcee@banda}[1]{%
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-    \large\bfseries\color{white}\strut
-    \thesection.\ \MakeUppercase{#1}\strut}}}
+    \large\bfseries\color{white}\raggedright
+    \setbox0\hbox{\thesection.\ }\hangindent=\wd0\hangafter=1
+    \strut\box0\MakeUppercase{#1}\strut}}}
 % Introducción y Conclusión: \section*{Introducción}, banda sin número
 \titleformat{name=\section,numberless}[block]{\normalfont}{}{0pt}{\tcee@bandasin}
 \newcommand{\tcee@bandasin}[1]{%
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
-    \large\bfseries\color{white}\strut\MakeUppercase{#1}\strut}}}
+    \large\bfseries\color{white}\raggedright\strut\MakeUppercase{#1}\strut}}}
 \titlespacing*{\section}{0pt}{1.4em}{0.8em}
 \titleformat{\subsection}{\normalfont\large\bfseries\color{tceemorado}}{\thesubsection.}{0.5em}{}
   [\vspace{-0.15em}{\color{tceemorado}\titlerule[0.5pt]}]
@@ -171,10 +174,18 @@
 \titlespacing*{\subsubsection}{1.2em}{0.9em}{0.3em}
 \titleformat{\paragraph}{\normalfont\itshape\color{tceemoradooscuro}}{}{0pt}{}
 \titlespacing*{\paragraph}{2.4em}{0.7em}{0.2em}
+% Niveles 4 y 5 para la estructura de cada modelo (CRITERIOS, «Estructura de un
+% modelo»): \paragraph{a) Idea}, \paragraph{b) Modelo} y dentro
+% \subparagraph{i) Supuestos}, \subparagraph{ii) Desarrollo}… (letras a mano,
+% para que salgan igual en la web y en Word).
+\setcounter{secnumdepth}{3}
+\titleformat{\subparagraph}{\normalfont\small\bfseries\color{tceemoradooscuro}}{}{0pt}{}
+\titlespacing*{\subparagraph}{3.6em}{0.5em}{0.15em}
 \preto\section{\Needspace{8\baselineskip}}
 \preto\subsection{\Needspace{6\baselineskip}}
 \preto\subsubsection{\Needspace{5\baselineskip}}
 \preto\paragraph{\Needspace{4\baselineskip}}
+\preto\subparagraph{\Needspace{3\baselineskip}}
 
 
 % Minutos del cante: \minutos{6} justo después del título del apartado
@@ -191,7 +202,12 @@
 \setlist[enumerate,2]{label={\color{tceemorado}\roman*.},leftmargin=1.6em}
 
 % --- Énfasis propios ----------------------------------------------------------
-\newcommand{\autor}[1]{\textsc{#1}}                        % ALFRED MARSHALL
+% Personas: apellido en versalitas SIEMPRE que se nombra a alguien en el texto
+% (\autor{Marshall}); el nombre de pila y el año van en redonda. Las citas
+% (\textcite, \parencite) ya ponen el apellido en versalitas (abajo).
+\newcommand{\autor}[1]{\textsc{#1}}                        % \autor{Marshall} (1890)
+% Vectores: flecha encima (\vect{x}, \vect{p}); los escalares sin flecha.
+\providecommand{\vect}[1]{\vec{#1}}
 \newcommand{\concepto}[1]{\textbf{#1}}                     % término clave
 \newcommand{\vertema}[1]{{\color{tceegris}[ver tema #1]}}  % referencia cruzada
 
@@ -237,6 +253,8 @@
   uniquelist=false,dashed=false,autocite=inline,sorting=nyt]{biblatex}
 \DeclareFieldFormat{urldate}{(consulta: #1)}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
+% Apellidos en versalitas en las citas del texto (no en la bibliografía)
+\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textsc{##1}}}
 % La bibliografía va al final, después de los anexos, en página nueva
 \newcommand{\bibliografia}{\clearpage\printbibliography[heading=bibintoc,title={Bibliografía}]}
 

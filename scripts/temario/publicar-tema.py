@@ -29,7 +29,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar  # noqa: E402
+from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar, guardar_pdf_anterior  # noqa: E402
 
 
 def linea_tema(tema, titulo_html, video):
@@ -44,6 +44,9 @@ def linea_tema(tema, titulo_html, video):
     if os.path.exists(os.path.join(tema.dir_publico, f'{a}-repaso.pdf')):
         partes.append(f'<a class="tema-item-docx tema-item-repaso" href="{c}/{a}-repaso.pdf" target="_blank" '
                       f'title="Ficha de repaso del tema en dos páginas">REPASO</a>')
+    if os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.pdf')):
+        partes.append(f'<a class="tema-item-docx tema-item-anterior" href="{c}/{a}-anterior.pdf" target="_blank" '
+                      f'title="Versión anterior del tema, antes de revisarlo">PDF ANTERIOR</a>')
     if video:
         partes.append(f'<a class="tema-item-docx tema-item-video" href="{video}" target="_blank" '
                       f'rel="noopener" title="Vídeo del cante del tema">VÍDEO</a>')
@@ -55,6 +58,7 @@ def main():
         print(__doc__)
         sys.exit(2)
     tema = Tema(sys.argv[1])
+    guardar_pdf_anterior(tema)
     for ext in ('pdf', 'html', 'docx'):
         if not os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}.{ext}')):
             print(f'Falta {tema.archivo}.{ext}: ejecuta antes construir-tema.py')

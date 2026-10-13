@@ -41,15 +41,30 @@ Cada tema revisado debe quedar:
     se añade donde encaje y se anota en el informe.
   - Apartados numerados **I., II., III.** con subapartados **I.1., I.1.1.**
     Cada apartado empieza anunciando su conclusión y termina con una
-    recapitulación y el enlace con el siguiente. Los modelos siguen el orden
-    idea, supuestos, desarrollo (analítico y gráfico), implicaciones,
-    extensiones/evidencia y valoración. Cada concepto importante: definición,
-    interpretación analítica e interpretación gráfica.
+    recapitulación y el enlace con el siguiente. Cada concepto importante:
+    definición, interpretación analítica e interpretación gráfica.
+  - **Estructura de un modelo** (Víctor, 13/10/2026; para memorizar). Cada
+    modelo se cuenta con estos bloques, con **títulos propios** de nivel 4 y 5
+    (`\paragraph{a) Idea}`, `\subparagraph{i) Supuestos}`; letras a mano).
+    Si un bloque no procede, se salta:
+    a) **Idea**: contexto y por qué contamos este modelo.
+    b) **Modelo**: i) **Supuestos**; ii) **Desarrollo** (en el cante importan
+       sobre todo los resultados; analítico, gráfico o de palabra);
+       iii) **Implicaciones**.
+    c) **Extensiones**.
+    d) **Evidencia empírica**: cómo se ve en los datos.
+    e) **Valoración**: críticas y limitaciones, que abren la puerta al
+       desarrollo siguiente (el tema tiene que tener **hilo conductor**).
   - **Conclusión**, con sus bloques: **Recapitulación** (ideas clave, sin
     repetir el tema), **Relevancia**, **Extensiones** (otros enfoques y
     partes del temario, para «lanzar la caña» al tribunal), **Opinión** (si
     procede) e **Idea final** (p. ej., la respuesta a la problemática).
-  - Introducción y conclusión, unos 3 minutos cada una en el cante.
+  - **Reparto de minutos** (Víctor, 13/10/2026): introducción
+    **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
+    minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
+    intro 2,5 + cuerpo 26,5 + conclusión 1 = 30; se admiten medios minutos:
+    `\minutos{2,5}`). Cada bloque recibe tiempo según su peso real en el
+    título y en el examen.
 - Orden del final del documento: **anexos** (con `\appendix`) y después la
   **bibliografía**. Salto de página (`\clearpage`) tras la conclusión, antes
   de los anexos (no tras la introducción); el de antes de la bibliografía lo
@@ -73,7 +88,32 @@ Cada tema revisado debe quedar:
 - Mantener el estilo esquemático de los temas actuales: viñetas jerárquicas
   (■, –, ○), conceptos clave en **negrita** (`\concepto{}`), autores en
   versalitas (`\autor{}`) con el año de la obra.
-- Referencias a otros temas con `\vertema{3.A.9}` (salen en gris).
+- **Personas en versalitas** (regla fija, para memorizar y distinguir
+  autores): el **apellido** de toda persona que se nombra va en versalitas,
+  siempre, en el texto, gráficos y cajas: `\autor{Marshall}` (1890); el
+  nombre de pila y el año, en redonda; con varios apellidos, todos
+  (`\autor{Mas-Colell}`). Las citas (`\textcite`, `\parencite`) ya salen así
+  en PDF, web y Word. La bibliografía final no.
+- **Décadas y números en cifras**: «en los años 30», «los 70», «3 rasgos»
+  cuando son datos o cantidades; nunca «los años treinta».
+- **Preguntas entre signos**: si el texto plantea una pregunta («detrás está
+  la pregunta…»), se escribe como pregunta: ¿…?
+- **Vectores con flecha** encima (`\vect{x}`, `\vect{p}`, `\vect{z}`) en
+  todas las fórmulas; los escalares (x_i, W̄, p_1) sin flecha.
+- **Títulos de primer nivel** (bandas moradas): que quepan en una línea; si
+  no, cortar donde tenga sentido con `\newline` (la segunda línea queda
+  sangrada bajo el texto) y nunca dejar una palabra sola.
+- **Recuadros grises** (`anotaciones` o una `tcolorbox` gris) para
+  definiciones de apoyo y resultados técnicos que se consultan (p. ej.,
+  funciones homogéneas y homotéticas).
+- Referencias a otros temas con `\vertema{3.A.9}` (salen en gris). **Cada
+  tema se canta solo**: se puede remitir con `\vertema{}`, pero **nunca** se
+  dice en el texto que algo «se ha estudiado / visto / desarrollado en el
+  tema …»; se cuenta lo necesario (aunque sea resumido) y se remite.
+- Las notas al pie salen **siempre al pie de la página** (`footmisc` con
+  `bottom`), aunque la página tenga hueco.
+- Lecturas de clases y preparadores (ICEX-CECO…) se citan **como en el tema
+  original**, sin añadir «no publicado».
 - Cada apartado lleva sus minutos de cante con `\minutos{n}` tras el título.
   La suma debe ser 30.
 - No inventar citas textuales: una cita entre comillas debe estar en la fuente

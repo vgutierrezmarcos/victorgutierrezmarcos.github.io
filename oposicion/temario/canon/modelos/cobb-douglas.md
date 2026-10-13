@@ -11,7 +11,7 @@ Pregunta: la forma funcional más sencilla con buen comportamiento (Inada, isocu
 Producción (canon, desarrollo de referencia en 3.A.11, I.3, `eq:cobb-douglas`): $$q=A\,z_K^{\alpha}z_L^{\beta},\qquad A,\alpha,\beta>0$$
 - Productividades: $PMg_K=\alpha q/z_K$, $PMg_L=\beta q/z_L$ (exponente × productividad media); elasticidades-producto constantes $\varepsilon_{q,z_K}=\alpha$, $\varepsilon_{q,z_L}=\beta$; con $\alpha,\beta<1$ cumple Inada y está entera en la región económica.
 - Sustitución: $RMST_{LK}=\frac{\beta}{\alpha}\frac{z_K}{z_L}$; $\ln(z_K/z_L)=\ln RMST_{LK}+\ln(\alpha/\beta)$, luego $\sigma=1$.
-- Escala: $F(tz)=t^{\alpha+\beta}F(z)$, homogénea de grado $k=\alpha+\beta$ ($\varepsilon_{q,t}=\alpha+\beta$).
+- Escala: $F(\lambda z)=\lambda^{\alpha+\beta}F(z)$, homogénea de grado $k=\alpha+\beta$ ($\varepsilon_{q,\lambda}=\alpha+\beta$).
 - Distribución: con $\beta=1-\alpha$ y pago según la PMg, Euler $q=PMg_Kz_K+PMg_Lz_L$; participaciones constantes $\alpha$ y $1-\alpha$.
 - Progreso técnico: las neutralidades de Hicks, Solow y Harrod coinciden, $A_tz_K^{\alpha}z_L^{\beta}=(A_t^{1/\alpha}z_K)^{\alpha}z_L^{\beta}=z_K^{\alpha}(A_t^{1/\beta}z_L)^{\beta}$ (ficha `progreso-tecnico-neutral`).
 - Límite de la CES cuando σ→1: $q=A\,z_K^{\nu a_K}z_L^{\nu a_L}$ (ficha `ces`).
