@@ -230,7 +230,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
                 todayDecoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: context.esquema.primary)),
                 todayTextStyle: context.textos.bodySmall!.copyWith(color: context.esquema.primary, fontWeight: FontWeight.w700),
                 selectedDecoration: BoxDecoration(shape: BoxShape.circle, color: context.esquema.primary),
-                selectedTextStyle: context.textos.bodySmall!.copyWith(color: Colors.white, fontWeight: FontWeight.w700),
+                selectedTextStyle: context.textos.bodySmall!.copyWith(color: context.esquema.onPrimary, fontWeight: FontWeight.w700),
                 markerDecoration: BoxDecoration(shape: BoxShape.circle, color: context.colores.dorado),
                 markersMaxCount: 3,
               ),

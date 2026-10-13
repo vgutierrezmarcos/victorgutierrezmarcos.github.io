@@ -348,16 +348,35 @@ class Hueco {
 /// Preparador con el que el usuario (alumno) ha enlazado su app
 /// (documento users/{uid}/preparadores/{uidPreparador}).
 class VinculoPreparador {
-  const VinculoPreparador({required this.uid, required this.nombre, this.codigo, this.desde});
+  const VinculoPreparador({required this.uid, required this.nombre, this.codigo, this.desde, this.aceptado = true});
   final String uid;
   final String nombre;
   final String? codigo;
   final DateTime? desde;
+  /// El preparador ha aceptado la conexión (hasta entonces no ve nada del
+  /// alumno). Los enlaces de antes de pedir la aceptación cuentan como aceptados.
+  final bool aceptado;
 
-  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'codigo': codigo, 'desde': (desde ?? DateTime.now()).toIso8601String()};
+  VinculoPreparador conAceptado(bool a) => VinculoPreparador(uid: uid, nombre: nombre, codigo: codigo, desde: desde, aceptado: a);
+
+  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'codigo': codigo, 'desde': (desde ?? DateTime.now()).toIso8601String(), 'aceptado': aceptado};
 
   factory VinculoPreparador.fromJson(Map<dynamic, dynamic> j) =>
-      VinculoPreparador(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', codigo: j['codigo'] as String?, desde: _fecha(j['desde']));
+      VinculoPreparador(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', codigo: j['codigo'] as String?, desde: _fecha(j['desde']), aceptado: j['aceptado'] as bool? ?? true);
+}
+
+/// Opositor que ha escrito el código del preparador y espera a que lo acepte.
+class SolicitudEnlace {
+  const SolicitudEnlace({required this.uid, required this.nombre, this.email = '', this.desde});
+  final String uid;
+  final String nombre;
+  final String email;
+  final DateTime? desde;
+
+  Map<String, dynamic> toJson() => {'uid': uid, 'nombre': nombre, 'email': email, 'desde': desde?.toIso8601String()};
+
+  factory SolicitudEnlace.fromJson(Map<dynamic, dynamic> j) =>
+      SolicitudEnlace(uid: j['uid'].toString(), nombre: j['nombre'] as String? ?? '', email: j['email'] as String? ?? '', desde: _fecha(j['desde']));
 }
 
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
