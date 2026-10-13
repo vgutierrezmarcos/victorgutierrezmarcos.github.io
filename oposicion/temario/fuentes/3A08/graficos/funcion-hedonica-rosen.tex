@@ -11,14 +11,14 @@
       node[etiqueta,right] {$p(z)$};}
   \capa{3}{
     \draw[curva2] plot[domain=0.6:3.1,samples=40] (\x,{1.48+0.48*(\x-2)-0.15*(\x-2)^2});
-    \node[etiqueta,text=tceeazul,anchor=west] at (0.15,0.3) {$\theta_1(z;U_1)$};
+    \node[etiqueta,text=tceeazul,anchor=west] at (0.15,0.3) {$\Theta_1(z;U_1)$};
   }
   \capa{4}{\draw[curva2] plot[domain=3.4:6.0,samples=40] (\x,{3.43+1.08*(\x-4.5)-0.15*(\x-4.5)^2})
-      node[etiqueta,below right=0pt and -2pt] {$\theta_2(z;U_2)$};}
+      node[etiqueta,below right=0pt and -2pt] {$\Theta_2(z;U_2)$};}
   \capa{5}{\draw[curva3] plot[domain=1.5:3.1,samples=40] (\x,{1.48+0.48*(\x-2)+0.45*(\x-2)^2})
-      node[etiqueta,above left=0pt and -2pt] {$\phi_1(z;\pi_1)$};}
+      node[etiqueta,above left=0pt and -2pt] {$\phi_1(z;B_1)$};}
   \capa{6}{\draw[curva3] plot[domain=3.4:5.4,samples=40] (\x,{3.43+1.08*(\x-4.5)+0.45*(\x-4.5)^2})
-      node[etiqueta,above left=0pt and -2pt] {$\phi_2(z;\pi_2)$};}
+      node[etiqueta,above left=0pt and -2pt] {$\phi_2(z;B_2)$};}
   \capa{7}{
     \node[punto] (A) at (2,1.48) {};
     \node[punto] (B) at (4.5,3.43) {};

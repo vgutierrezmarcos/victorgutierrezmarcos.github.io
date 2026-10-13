@@ -315,7 +315,7 @@ No hay cifras nuevas. Se comprueban referencias: Jaimovich y Rebelo (2009), *AER
 **Parte 3 (Conclusión, Bibliografía y anexos)**
 
 - **Minutos**: `\minutos{3}` en la Conclusión; la suma de todos los `\minutos` del `.tex` es 30 (3 + 10 + 7 + 7 + 3), y `construir-tema.py` lo confirma. Los anexos no llevan minutos.
-- **Notación (K3)** en los anexos: renta $\overline{W}$; CES con pesos $a_i$ (se remite a la ecuación del tema en lugar de repetirla con $s_i$, que chocaba con las participaciones en el gasto); la RMS del anexo de test se da con signo ($m=dy/dx$) y en valor absoluto, como en el resto del tema. En las preferencias macro, $\sigma$ es el inverso de la elasticidad de sustitución intertemporal, como en 3.A.10 y 3.A.29, y $N$ las horas trabajadas (el original mezclaba $L$ como trabajo y como ocio).
+- **Notación (K3)** en los anexos: renta $\overline{W}$; CES con pesos $a_i$ (se remite a la ecuación del tema en lugar de repetirla con $s_i$, que chocaba con las participaciones en el gasto); la RMS del anexo de test se da con signo ($m=dy/dx$) y en valor absoluto, como en el resto del tema. En las preferencias macro, la aversión relativa al riesgo es $\theta$ (inversa de la elasticidad de sustitución intertemporal; antes $\sigma$, cambiado el 13/10/2026 por D001, véase «Coherencia con el canon»), y $N$ las horas trabajadas (el original mezclaba $L$ como trabajo y como ocio).
 - **Etiquetas nuevas**: `anexo:cardinal`, `anexo:formas`, `anexo:test`, `eq:cardinal`, `eq:demanda-cardinal`, `eq:demandas-cobb-douglas`, `eq:crra`, `eq:kpr`, `eq:ghh`, `eq:jr`, `fig:demanda-cardinal`, `tab:bienes-males`, `tab:curvatura`. No queda ninguna referencia sin resolver («??»).
 - **Contradicciones con otros temas** (no se tocan): además de las de las partes 1 y 2 (K «Contradicciones», puntos 1, 3, 4, 5, 6, 7 y 8):
   - punto 2: **3.A.9, sistemas completos de demanda** tiene el mismo texto que salía de 3.A.8, con sus errores («sencillez y rigidez», «comparará», el signo de la translog, la Cobb-Douglas con $\sum\alpha_i=1$ y grado $\alpha+\beta$; las homotéticas como «translaciones paralelas»; la translog como desarrollo de la CES). Al revisar 3.A.9, corregirlos según C49;
@@ -469,6 +469,18 @@ A petición de Víctor, los cuatro gráficos 3D (`superficie-utilidad`, `superfi
 - Víctor vio que el gráfico del axioma débil mezclaba dos fuentes con notación distinta (Jehle y Reny en el panel izquierdo: $p^0$, $p^1$; Mas-Colell et al. en el derecho: $p$, $p'$, con $x^0$ y $x^1$ con otro significado). Ahora todo el tema usa la misma: situación 0 ($p^0$, $\overline{W}^0$, se elige $x^0$) y situación 1 ($p^1$, $\overline{W}^1$, se elige $x^1$), en los dos paneles, en la ley de la demanda compensada, $(p^1-p^0)\cdot(x^1-x^0)\leq 0$, en su demostración (anexo), en el guion y en la pizarra del vídeo. Las rectas tienen el mismo color en los tres gráficos de preferencia revelada ($p^0$ morada, $p^1$ azul, $p^2$ verde).
 - Las fuentes de todos los gráficos y tablas propios dicen «elaboración propia basada en …» (antes, «elaboración propia a partir de …»).
 - Control de líneas viudas y huérfanas en PDF, Word y web.
+
+## Coherencia con el canon (13/10/2026)
+
+Aplicadas las decisiones D001-D006 que Víctor aprobó el 13/10/2026 (los 19 cambios de `canon/pendientes-coherencia.md`, ya borrados de allí):
+
+- **D001, CRRA = $\theta$** (`canon/notacion.md`): en la CRRA (`eq:crra`), su texto y su nota, $\eta\to\theta$ (aversión relativa $\theta$, ESI $1/\theta$); en KPR (`eq:kpr`), GHH (`eq:ghh`) y JR (`eq:jr`), el exponente $\sigma\to\theta$. $\sigma$ queda solo para la elasticidad de sustitución de la CES.
+- **D004, Frisch $\varphi$ y $\chi$** (ficha `rbc`, como en 3.A.6 y 3.A.42): en GHH, $\psi N^{1+\theta}/(1+\theta)\to\chi N^{1+\varphi}/(1+\varphi)$ y la oferta de trabajo $\chi N^{\varphi}=w$, con la explicación de $\varphi$ y $\chi$ la primera vez; en JR, $\psi N_t^{\theta}\to\chi N_t^{1+\varphi}$, con una nota que avisa de que Jaimovich y Rebelo escriben $\theta$ donde aquí va $1+\varphi$.
+- **D002, renta no laboral $\overline{W}$** en Becker (`eq:becker-restricciones`, su texto y `eq:renta-completa`): $V$ queda solo para la función indirecta de utilidad. También en la pizarra de `video/escenas.yaml`, en `guion-cante.md` y en la ficha de repaso.
+- **D006 y D003, Rosen**: función de puja $\Theta(z;\overline{U},\overline{W})$ (antes $\theta$) y función de oferta $\phi(z;B)$ con beneficio $B$ (antes $\pi$), en el texto y en `graficos/funcion-hedonica-rosen.tex` ($\Theta_1$, $\Theta_2$, $\phi_1(z;B_1)$, $\phi_2(z;B_2)$), recompilado (PDF, PNG y SVG). La locución del vídeo y el guion dicen «theta mayúscula».
+- **D005**: `\vertema{3.A.11}` en la nota de la Cobb-Douglas como función de producción (tema de referencia de esa variante); el 3.A.8 sigue siendo la referencia de la variante de utilidad.
+- Se mantienen, por ser locales o ya canon: $\pi_i$ (precio sombra de Becker), $\tau_i$, $N$ (horas) y $\sigma$ de la CES.
+- Comprobado con grep que no queda $\eta$, $\psi$, $\theta$ de Rosen, $\pi$ de beneficio ni $V$ de renta en el `.tex`, los gráficos, el vídeo, el guion y el repaso. Reconstruidos el tema (`.lyx` regenerado, PDF de 62 páginas, HTML y Word), la ficha de repaso (dos páginas, 8,5 pt), `verificar-tema.py` (0 errores) y el borrador del vídeo (0 avisos de pizarra).
 
 ## Decisiones de Víctor (13/10/2026)
 

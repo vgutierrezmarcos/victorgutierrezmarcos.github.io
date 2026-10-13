@@ -495,7 +495,7 @@ escenas:
         guion: "Dos restricciones: la de renta y la de tiempo"
       - di: "Ambas se funden en la renta completa: lo que ganaría el hogar si dedicara todo su tiempo al mercado. Cada bien final tiene un precio sombra, pi, que suma el precio de los bienes y el coste del tiempo: [pausa] el salario es también un precio del consumo."
         pizarra:
-          - {formula: '\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+V', zona: "1"}
+          - {formula: '\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+\overline{W}', zona: "1"}
           - {formula: '\pi_i=p_ib_i+w\,\tau_i', zona: "1"}
         guion: "Renta completa; precio sombra: bienes + coste del tiempo"
       - di: "Si sube el salario, se encarecen las actividades intensivas en tiempo, y los hogares sustituyen tiempo por bienes: comida preparada, guarderías, electrodomésticos."
@@ -522,7 +522,7 @@ escenas:
           - {grafico: funcion-hedonica-rosen, capa: 2, zona: "2"}
         guion: "Función hedónica y precio implícito"
         apunte: ""
-      - di: "En el modelo de Rosen, el consumidor iguala la relación marginal de sustitución entre cada característica y un bien numerario a su precio implícito. Cada consumidor tiene una curva de puja, theta: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores."
+      - di: "En el modelo de Rosen, el consumidor iguala la relación marginal de sustitución entre cada característica y un bien numerario a su precio implícito. Cada consumidor tiene una curva de puja, theta mayúscula: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores."
         pizarra:
           - {formula: '\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p}{\partial z_j}', zona: "1"}
           - {grafico: funcion-hedonica-rosen, capa: 4}

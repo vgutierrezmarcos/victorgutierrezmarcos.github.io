@@ -1012,11 +1012,11 @@ En el cante: preferencia revelada (unos 3 minutos), producción doméstica (1,5)
   \end{itemize}
 \item \textbf{\emph{El modelo de \autor{Becker}}}: el hogar maximiza $U(Z_1,\dots,Z_m)$, donde cada \emph{commodity} se produce con bienes de mercado y tiempo, $Z_i=f_i(x_i,t_i)$, sujeto a dos restricciones:
   \begin{equation}
-  \sum_i p_i x_i=w\,t_w+V,\qquad \sum_i t_i+t_w=T, \label{eq:becker-restricciones}
+  \sum_i p_i x_i=w\,t_w+\overline{W},\qquad \sum_i t_i+t_w=T, \label{eq:becker-restricciones}
   \end{equation}
-  donde $t_w$ es el tiempo de trabajo en el mercado, $w$ el salario, $V$ la renta no laboral y $T$ el tiempo total disponible. Sustituyendo $t_w$, las dos se funden en una sola restricción de \concepto{renta completa}:
+  donde $t_w$ es el tiempo de trabajo en el mercado, $w$ el salario, $\overline{W}$ la renta no laboral (exógena) y $T$ el tiempo total disponible. Sustituyendo $t_w$, las dos se funden en una sola restricción de \concepto{renta completa}:
   \begin{equation}
-  \sum_i\left(p_i x_i+w\,t_i\right)=w\,T+V. \label{eq:renta-completa}
+  \sum_i\left(p_i x_i+w\,t_i\right)=w\,T+\overline{W}. \label{eq:renta-completa}
   \end{equation}
   \begin{itemize}
   \item La renta completa es la que obtendría el hogar si dedicara todo su tiempo al mercado. Con coeficientes fijos ($x_i=b_iZ_i$, $t_i=\tau_iZ_i$), cada \emph{commodity} tiene un \concepto{precio sombra} $\pi_i=p_ib_i+w\,\tau_i$, que incluye el precio de los bienes y el \emph{coste de oportunidad del tiempo}. El salario pasa a ser también un precio del consumo.
@@ -1065,7 +1065,7 @@ En el cante: preferencia revelada (unos 3 minutos), producción doméstica (1,5)
     \frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(z)}{\partial z_j}: \label{eq:hedonico}
     \end{equation}
     la relación marginal de sustitución entre la característica y el numerario se iguala a su precio implícito. Es la misma condición de tangencia del apartado~I.2 (ecuación~\eqref{eq:tangencia}), ahora sobre una «restricción presupuestaria» no lineal, $p(z)$.
-  \item \emph{Curvas de puja y de oferta}: cada consumidor tiene una \concepto{función de puja} $\theta(z;\overline{U},\overline{W})$, lo máximo que pagaría por cada $z$ manteniendo su utilidad $\overline{U}$. Cada productor tiene una \concepto{función de oferta} $\phi(z;\pi)$, lo mínimo que aceptaría por cada $z$ obteniendo un beneficio $\pi$.
+  \item \emph{Curvas de puja y de oferta}: cada consumidor tiene una \concepto{función de puja} $\Theta(z;\overline{U},\overline{W})$, lo máximo que pagaría por cada $z$ manteniendo su utilidad $\overline{U}$. Cada productor tiene una \concepto{función de oferta} $\phi(z;B)$, lo mínimo que aceptaría por cada $z$ obteniendo un beneficio $B$.
   \item \emph{Equilibrio}: la función hedónica $p(z)$ es la \concepto{envolvente} de las curvas de puja de los consumidores y de las de oferta de los productores. En cada variedad que se compra, la curva de puja del comprador y la de oferta del vendedor son tangentes a $p(z)$ (gráfico~\ref{fig:funcion-hedonica-rosen}). Por eso $p(z)$ no es una curva de demanda ni de oferta, sino un lugar geométrico de equilibrios.
   \end{itemize}
 \end{itemize}
@@ -1337,7 +1337,7 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
     \begin{itemize}
     \item $\sigma\to 0$: \emph{Leontief}, $U=\min\{x/a;\,y/b\}$;
     \item $\sigma\to\infty$: \emph{lineal}, $U=a\,x+b\,y$;
-    \item $\sigma\to 1$: \emph{Cobb-Douglas}, $U=A\,x^{\alpha}y^{\beta}$, con $A,\alpha,\beta>0$.\footnote{El límite se obtiene aplicando la regla de \autor{L'Hôpital} al logaritmo de la CES \parencite{ArrowEtAl1961Capital}; véase el anexo~\ref{der:ces}. La función toma su nombre de \textcite{CobbDouglas1928Theory}, que la usaron como función de producción.} Sus propiedades:
+    \item $\sigma\to 1$: \emph{Cobb-Douglas}, $U=A\,x^{\alpha}y^{\beta}$, con $A,\alpha,\beta>0$.\footnote{El límite se obtiene aplicando la regla de \autor{L'Hôpital} al logaritmo de la CES \parencite{ArrowEtAl1961Capital}; véase el anexo~\ref{der:ces}. La función toma su nombre de \textcite{CobbDouglas1928Theory}, que la usaron como función de producción \vertema{3.A.11}.} Sus propiedades:
       \begin{itemize}
       \item es monótona y estrictamente cuasicóncava (curvas estrictamente convexas), y sus curvas de indiferencia son asintóticas a los ejes, de modo que no hay soluciones de esquina con precios y renta positivos;
       \item es homogénea de grado $\alpha+\beta$ y, por tanto, homotética: las curvas de \autor{Engel} son rectas que parten del origen, los bienes son normales y, por tanto, ordinarios;
@@ -1355,26 +1355,26 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
 \item \concepto{Formas flexibles}: aproximaciones de segundo orden a una función cualquiera, que no imponen \emph{a priori} las elasticidades. La \emph{translog} \parencite{ChristensenJorgensonLau1975Utility} es una aproximación de segundo orden en logaritmos;\footnote{No hay que confundirla con la aproximación de \autor{Kmenta} (1967), un desarrollo de \autor{Taylor} de la CES alrededor de $\sigma=1$.} el sistema AIDS de \textcite{DeatonMuellbauer1980AIDS} parte de preferencias PIGLOG. Su uso empírico se resume en el anexo~\ref{anexo:sistemas} y se estudia en \vertema{3.A.9}.
 \item \concepto{Utilidad isoelástica o CRRA}: es una función de \emph{una sola} variable, que se usa en la elección con riesgo y en la intertemporal, no una forma de preferencias sobre varios bienes:
   \begin{equation}
-  u(C)=\begin{cases}\dfrac{C^{1-\eta}-1}{1-\eta} & \text{si } \eta\geq 0,\ \eta\neq 1,\\[6pt] \ln C & \text{si } \eta=1.\end{cases} \label{eq:crra}
+  u(C)=\begin{cases}\dfrac{C^{1-\theta}-1}{1-\theta} & \text{si } \theta\geq 0,\ \theta\neq 1,\\[6pt] \ln C & \text{si } \theta=1.\end{cases} \label{eq:crra}
   \end{equation}
-  Es la única con aversión relativa al riesgo constante (igual a $\eta$) y un caso particular de las HARA; su elasticidad de sustitución intertemporal es $1/\eta$ \vertema{3.A.10} \vertema{3.A.29}.\footnote{Como las constantes aditivas no afectan a las decisiones, el $-1$ del numerador suele omitirse; se mantiene para que el límite cuando $\eta\to 1$ sea $\ln C$.}
+  Es la única con aversión relativa al riesgo constante (igual a $\theta$) y un caso particular de las HARA; su elasticidad de sustitución intertemporal es $1/\theta$ \vertema{3.A.10} \vertema{3.A.29}.\footnote{Como las constantes aditivas no afectan a las decisiones, el $-1$ del numerador suele omitirse; se mantiene para que el límite cuando $\theta\to 1$ sea $\ln C$.}
 \item \concepto{Preferencias entre consumo y trabajo en macroeconomía} (para el test; se desarrollan en \vertema{3.A.29}). Con $C$ el consumo y $N$ las horas trabajadas:
   \begin{itemize}
   \item Preferencias \emph{KPR}, de \textcite{KingPlosserRebelo1988Production} (con el apéndice de \textcite{KingPlosserRebelo2002Appendix}):
     \begin{equation}
-    u(C,N)=\frac{C^{1-\sigma}}{1-\sigma}\,v(1-N)\ \text{ si }\sigma\neq 1,\qquad u(C,N)=\ln C+v(1-N)\ \text{ si }\sigma=1, \label{eq:kpr}
+    u(C,N)=\frac{C^{1-\theta}}{1-\theta}\,v(1-N)\ \text{ si }\theta\neq 1,\qquad u(C,N)=\ln C+v(1-N)\ \text{ si }\theta=1, \label{eq:kpr}
     \end{equation}
-    donde $v$ es función del ocio, $1-N$: creciente y cóncava si $\sigma<1$, decreciente y convexa si $\sigma>1$ (para que la utilidad crezca con el ocio). Son las preferencias compatibles con el crecimiento equilibrado: ante un aumento permanente del salario real, los efectos renta y sustitución sobre las horas se compensan y estas no tienen tendencia. Por eso se usan en los modelos de equilibrio general dinámico estocástico derivados del modelo de crecimiento neoclásico.
+    donde $v$ es función del ocio, $1-N$: creciente y cóncava si $\theta<1$, decreciente y convexa si $\theta>1$ (para que la utilidad crezca con el ocio). Son las preferencias compatibles con el crecimiento equilibrado: ante un aumento permanente del salario real, los efectos renta y sustitución sobre las horas se compensan y estas no tienen tendencia. Por eso se usan en los modelos de equilibrio general dinámico estocástico derivados del modelo de crecimiento neoclásico.
   \item Preferencias \emph{GHH}, de \textcite{GreenwoodHercowitzHuffman1988}:
     \begin{equation}
-    u(C,N)=\frac{1}{1-\sigma}\left(C-\psi\,\frac{N^{1+\theta}}{1+\theta}\right)^{1-\sigma}. \label{eq:ghh}
+    u(C,N)=\frac{1}{1-\theta}\left(C-\chi\,\frac{N^{1+\varphi}}{1+\varphi}\right)^{1-\theta}. \label{eq:ghh}
     \end{equation}
-    Consumo y trabajo no son separables, pero la condición de oferta de trabajo, $\psi N^{\theta}=w$, no depende del consumo: \emph{no hay efecto riqueza} sobre las horas, que dependen solo del salario real. (El artículo, sobre la inversión específica y la utilización de la capacidad, es el que introduce estas preferencias.)
+    Consumo y trabajo no son separables, pero la condición de oferta de trabajo, $\chi N^{\varphi}=w$ ($\varphi$ es la inversa de la elasticidad de Frisch y $\chi$ el peso de la desutilidad del trabajo), no depende del consumo: \emph{no hay efecto riqueza} sobre las horas, que dependen solo del salario real. (El artículo, sobre la inversión específica y la utilización de la capacidad, es el que introduce estas preferencias.)
   \item Preferencias \emph{JR}, de \textcite{JaimovichRebelo2009News}:
     \begin{equation}
-    u(C_t,N_t)=\frac{\left(C_t-\psi N_t^{\theta}X_t\right)^{1-\sigma}-1}{1-\sigma},\qquad X_t=C_t^{\gamma}X_{t-1}^{1-\gamma},\quad\gamma\in[0,1]. \label{eq:jr}
+    u(C_t,N_t)=\frac{\left(C_t-\chi N_t^{1+\varphi}X_t\right)^{1-\theta}-1}{1-\theta},\qquad X_t=C_t^{\gamma}X_{t-1}^{1-\gamma},\quad\gamma\in[0,1]. \label{eq:jr}
     \end{equation}
-    El parámetro $\gamma$ regula la intensidad del efecto riqueza a corto plazo sobre la oferta de trabajo, y la forma anida las dos anteriores: con $\gamma=1$, $X_t=C_t$ y se obtienen las KPR; con $\gamma=0$, $X_t$ es constante y se obtienen las GHH.
+    El parámetro $\gamma$ regula la intensidad del efecto riqueza a corto plazo sobre la oferta de trabajo, y la forma anida las dos anteriores: con $\gamma=1$, $X_t=C_t$ y se obtienen las KPR; con $\gamma=0$, $X_t$ es constante y se obtienen las GHH.\footnote{\textcite{JaimovichRebelo2009News} escriben el exponente de las horas como $\theta$; aquí es $1+\varphi$, para que $\varphi$ sea también la inversa de la elasticidad de Frisch y $\theta$ quede para la aversión relativa al riesgo.}
   \end{itemize}
 \end{itemize}
 

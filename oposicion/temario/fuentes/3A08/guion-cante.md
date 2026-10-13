@@ -363,7 +363,7 @@ En esta lógica se basan los índices de Laspeyres y Paasche. Su crítica princi
 
 [Pizarra 1: fórmula `\max\ U(Z_1,\dots,Z_m),\ \ Z_i=f_i(x_i,t_i)`] El hogar maximiza una utilidad sobre esos bienes finales, zeta, cada uno producido con bienes, equis, y con tiempo, te, sujeto a dos restricciones: la de renta y la de tiempo.
 
-[Pizarra 1: fórmula `\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+V`] [Pizarra 1: fórmula `\pi_i=p_ib_i+w\,\tau_i`] Ambas se funden en la renta completa: lo que ganaría el hogar si dedicara todo su tiempo al mercado. Cada bien final tiene un precio sombra, pi, que suma el precio de los bienes y el coste del tiempo: el salario es también un precio del consumo.
+[Pizarra 1: fórmula `\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+\overline{W}`] [Pizarra 1: fórmula `\pi_i=p_ib_i+w\,\tau_i`] Ambas se funden en la renta completa: lo que ganaría el hogar si dedicara todo su tiempo al mercado. Cada bien final tiene un precio sombra, pi, que suma el precio de los bienes y el coste del tiempo: el salario es también un precio del consumo.
 
 [Pizarra 1: fórmula `w\uparrow\ \Rightarrow\ t_i\downarrow,\ x_i\uparrow`] Si sube el salario, se encarecen las actividades intensivas en tiempo, y los hogares sustituyen tiempo por bienes: comida preparada, guarderías, electrodomésticos.
 
@@ -381,7 +381,7 @@ Y el enfoque recuerda que el PIB omite la producción del hogar.
 
 [Pizarra 1: fórmula `p(z),\ \ \frac{\partial p}{\partial z_j}`] [Pizarra 2: gráfico `funcion-hedonica-rosen` hasta la capa 2] El precio de un bien con características zeta es la función hedónica, pe de zeta, y su derivada respecto a cada característica es el precio implícito. En el gráfico, la función hedónica, creciente con zeta.
 
-[Pizarra 1: fórmula `\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p}{\partial z_j}`] [Pizarra: gráfico `funcion-hedonica-rosen` hasta la capa 4] En el modelo de Rosen, el consumidor iguala la relación marginal de sustitución entre cada característica y un bien numerario a su precio implícito. Cada consumidor tiene una curva de puja, theta: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores.
+[Pizarra 1: fórmula `\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p}{\partial z_j}`] [Pizarra: gráfico `funcion-hedonica-rosen` hasta la capa 4] En el modelo de Rosen, el consumidor iguala la relación marginal de sustitución entre cada característica y un bien numerario a su precio implícito. Cada consumidor tiene una curva de puja, theta mayúscula: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores.
 
 [Pizarra: gráfico `funcion-hedonica-rosen` hasta la capa 6] Y cada productor, una curva de oferta, fi: lo mínimo que aceptaría sin cambiar su beneficio. Dibujo dos.
 
