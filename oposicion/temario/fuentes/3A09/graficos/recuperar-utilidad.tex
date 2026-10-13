@@ -13,28 +13,28 @@
   \capa{1}{
     \ejes{$x_1$}{$x_2$}{10.4}{8.4}
     \node[punto] (X0) at (2,1.5) {};
-    \node[etiqueta,below left] at (X0) {$x^0$};
+    \node[etiqueta,below left] at (X0) {$\vect{x}^0$};
   }
   \capa{2}{
-    \draw[curva2] (0,3) -- (4,0) node[etiqueta,below] {$(p^0,\overline{W}^0)$};
-    \draw[curva1] plot[domain=0.45:8.8,samples=120,smooth] (\x,{3/\x}) node[etiqueta,right] {$U(x^0)$};
+    \draw[curva2] (0,3) -- (4,0) node[etiqueta,below] {$(\vect{p}^0,\overline{W}^0)$};
+    \draw[curva1] plot[domain=0.45:8.8,samples=120,smooth] (\x,{3/\x}) node[etiqueta,right] {$U(\vect{x}^0)$};
   }
   \capa{3}{
-    \draw[curva3] (0,7.5) -- (2.5,0);
-    \node[etiqueta,anchor=south west,text=tceeverde] at (0.05,7.55) {$(p',\overline{W}')$};
-    \draw[curva3,desplazada] plot[domain=0.7:8.8,samples=120,smooth] (\x,{4.6875/\x});
+    \draw[curvanueva] (0,7.5) -- (2.5,0);
+    \node[etiqueta,anchor=south west,text=tceerojo] at (0.05,7.55) {$(\vect{p}\,',\overline{W}')$};
+    \draw[curvanueva,desplazada] plot[domain=0.7:8.8,samples=120,smooth] (\x,{4.6875/\x});
     \node[punto] (X1) at (1.25,3.75) {};
   }
   \capa{4}{
-    \draw[curva4] (0,2) -- (8,0) node[etiqueta,below] {$(p'',\overline{W}'')$};
+    \draw[curva4] (0,2) -- (8,0) node[etiqueta,below] {$(\vect{p}\,'',\overline{W}'')$};
     \draw[curva4,desplazada] plot[domain=0.6:8.8,samples=120,smooth] (\x,{4/\x});
     \node[punto] (X2) at (4,1) {};
   }
   \capa{5}{
-    \node[etiqueta,anchor=west] at (3.2,5.9) {$V(p',\overline{W}')>U(x^0)$, \ $V(p'',\overline{W}'')>U(x^0)$};
+    \node[etiqueta,anchor=west] at (3.2,5.9) {$V(\vect{p}\,',\overline{W}')>U(\vect{x}^0)$, \ $V(\vect{p}\,'',\overline{W}'')>U(\vect{x}^0)$};
     \draw[guia,solid] (3.8,5.55) -- (1.4,3.85);
     \draw[guia,solid] (4.3,5.55) -- (4.05,1.2);
-    \node[etiqueta,anchor=west,text=tceemorado] at (4.6,3.4) {$U(x^0)=V(p^0,\overline{W}^0)=\min V$};
+    \node[etiqueta,anchor=west,text=tceemorado] at (4.6,3.4) {$U(\vect{x}^0)=V(\vect{p}^0,\overline{W}^0)=\min V$};
     \draw[guia,solid] (4.7,3.15) -- (2.15,1.6);
   }
 \end{tikzpicture}

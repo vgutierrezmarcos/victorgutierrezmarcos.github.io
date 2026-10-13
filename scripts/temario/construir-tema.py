@@ -113,11 +113,12 @@ def datos_documento(tex):
     texto = open(tex, encoding='utf-8').read()
     m = re.search(r'\\tcetema(?:\[[^\]]*\])?\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto)
     f = re.search(r'\\tcefecha\{([^}]*)\}', texto)
-    minutos = [int(x) for x in re.findall(r'\\minutos\{(\d+)\}', texto)]
+    # Se admiten medios minutos: \minutos{2,5}
+    minutos = [float(x.replace(',', '.')) for x in re.findall(r'\\minutos\{(\d+(?:[.,]\d+)?)\}', texto)]
     return {
         'titulo': m.group(2).strip() if m else '',
         'fecha': f.group(1) if f else datetime.date.today().strftime('%d/%m/%Y'),
-        'duracion': sum(minutos) if minutos else None,
+        'duracion': (f'{sum(minutos):g}'.replace('.', ',')) if minutos else None,
     }
 
 
@@ -238,7 +239,16 @@ def preparar_pandoc(tema, tex, formato):
     # pierde lo que va en {\footnotesize …}. Se dejan como marcas de color
     # (\textcolor{tcee…}) que tcee.lua convierte en celdas combinadas, saltos de
     # línea y fondos.
-    cuerpo = re.sub(r'\\multirow\{(\d+)\}\{[^}]*\}\{', r'\\textcolor{tceefilas\1}{', cuerpo)
+    # \multirow[c]{n}[bigstruts]{ancho}[desplazamiento]{texto}: solo cuenta n
+    cuerpo = re.sub(r'\\multirow(?:\[[^\]]*\])?\{(\d+)\}(?:\[[^\]]*\])?\{[^}]*\}(?:\[[^\]]*\])?\{',
+                    r'\\textcolor{tceefilas\1}{', cuerpo)
+    # Columnas centradas (>{\centering\arraybackslash}m{…} o p{…}): pandoc las lee
+    # como alineadas a la izquierda; como «c» salen centradas (y tcee.lua las
+    # centra también en vertical)
+    cuerpo = re.sub(r'>\{\\centering(?:\\arraybackslash)?\}[mpb]\{[^{}]*\}', 'c', cuerpo)
+    # Con columnas «c», pandoc deja el argumento de \cline como texto («1-2»): las
+    # rayas parciales no hacen falta en la web ni en Word
+    cuerpo = re.sub(r'\\cline\{[^}]*\}', '', cuerpo)
     cuerpo = re.sub(r'\\newline\b\s*', r'\\textcolor{tceesalto}{.}', cuerpo)
     cuerpo = re.sub(r'\\cellcolor\{(\w+)\}', r'\\textcolor{tceefondo\1}{.}', cuerpo)
     cuerpo = re.sub(r'\\rowcolor\{(\w+)\}', r'\\textcolor{tceefilafondo\1}{.}', cuerpo)
@@ -303,7 +313,35 @@ def generar_docx(tema, tex_pandoc, datos):
              '--resource-path', ruta_windows(tema.dir), '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)
     ejecutar(orden, timeout=600)
+    centrar_celdas_docx(destino)
     return destino
+
+
+def centrar_celdas_docx(ruta):
+    """En las tablas con alguna celda centrada (columnas >{\\centering}m{…} del
+    LaTeX), centra todas las celdas también en vertical (w:vAlign), como en el
+    PDF: pandoc no lo escribe."""
+    import zipfile
+    with zipfile.ZipFile(ruta) as z:
+        partes = {n: z.read(n) for n in z.namelist()}
+        infos = {i.filename: i for i in z.infolist()}
+    xml = partes['word/document.xml'].decode('utf-8')
+
+    def tabla(m):
+        t = m.group(0)
+        if '<w:jc w:val="center"' not in t:
+            return t
+        t = t.replace('<w:tcPr />', '<w:tcPr><w:vAlign w:val="center" /></w:tcPr>')
+        return re.sub(r'<w:tcPr>((?:(?!</w:tcPr>).)*?)</w:tcPr>',
+                      lambda c: c.group(0) if 'w:vAlign' in c.group(1)
+                      else f'<w:tcPr>{c.group(1)}<w:vAlign w:val="center" /></w:tcPr>', t, flags=re.S)
+    nuevo = re.sub(r'<w:tbl>.*?</w:tbl>', tabla, xml, flags=re.S)
+    if nuevo == xml:
+        return
+    partes['word/document.xml'] = nuevo.encode('utf-8')
+    with zipfile.ZipFile(ruta, 'w', zipfile.ZIP_DEFLATED) as z:
+        for nombre, datos in partes.items():
+            z.writestr(infos[nombre], datos)
 
 
 def main():

@@ -31,10 +31,13 @@ Para cada gráfico:
      indiferencia, tangencias reales, cortes en el punto que se dice). Calcula
      las coordenadas: si dos curvas son tangentes o se cortan en un punto, que
      lo hagan de verdad (usa funciones con `plot` o `intersections`).
-   - Las representaciones en tres dimensiones, en perspectiva caballera: eje
-     vertical hacia arriba, uno horizontal a la derecha y el de profundidad a
-     45° con coeficiente 0,5 (en pgfplots, `x={(1cm,0cm)}, y={(0.354cm,0.354cm)},
-     z={(0cm,1cm)}` en lugar de `view`; sin `width`/`height`).
+   - Las representaciones en tres dimensiones, en la perspectiva de los
+     gráficos de Jehle y Reny (la «caballera» de Víctor): origen a la
+     izquierda, eje vertical hacia arriba, el primer factor o bien hacia abajo
+     a la derecha (≈ −25°) y el segundo hacia la derecha y algo hacia arriba
+     (≈ +12°). En pgfplots, `x={(1.0cm,-0.47cm)}, y={(1.15cm,0.24cm)},
+     z={(0cm,1.2cm)}` y `z buffer=sort` (escalables), en lugar de `view`; sin
+     `width`/`height`. Nunca el eje de profundidad a 45° hacia atrás.
    - Etiquetas en matemáticas (`$x_1$`, `$U_0$`) y en castellano.
    - **Orden y capas** (el vídeo dibuja el gráfico trazo a trazo en el orden
      del código): escribe el código en el orden en que el opositor lo

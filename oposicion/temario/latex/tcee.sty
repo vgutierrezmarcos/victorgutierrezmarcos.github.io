@@ -52,11 +52,16 @@
 \definecolor{tceegris}{HTML}{767171}
 \definecolor{tceegrisclaro}{HTML}{E7E6E6}
 \definecolor{tceecrema}{HTML}{FAF9F6}
-% Colores de las tablas de clasificación (como en los temas en Word)
-\definecolor{tceeverde}{HTML}{2E8B3A}
-\definecolor{tceeazul}{HTML}{1C8FC9}
+% Colores de las tablas de clasificación (como en los temas en Word). Verde,
+% azul, rojo y dorado son los mismos de los gráficos (latex/tikz-tcee.tex), para
+% que una categoría salga igual en las tablas y en los gráficos: normal y
+% sustitutivos en verde, inferior y complementarios en dorado, ordinario en
+% azul y Giffen en rojo. Si se cambian, cambiar también tcee.lua y
+% scripts/temario/crear-reference-docx.py.
+\definecolor{tceeverde}{HTML}{3C7D3A}
+\definecolor{tceeazul}{HTML}{1F5F99}
 \definecolor{tceenaranja}{HTML}{E07B28}
-\definecolor{tceerojo}{HTML}{D11F1F}
+\definecolor{tceerojo}{HTML}{B22222}
 \definecolor{tceeazulpalido}{HTML}{DDEBF7}
 \definecolor{tceesalmon}{HTML}{FBE4D5}
 
@@ -77,6 +82,12 @@
 \RequirePackage[hang,flushmargin,bottom]{footmisc}% bottom: las notas siempre al pie, aunque la página tenga hueco
 \RequirePackage{needspace}
 \RequirePackage{etoolbox}
+% En las celdas de las tablas, \newline empieza una línea nueva sin el \hfil que
+% lleva normalmente, para que en las columnas centradas
+% (>{\centering\arraybackslash}m{…}) y en \multirow{n}{=}{\centering …} cada
+% línea quede centrada. En las columnas p{} y m{} sin centrar es lo mismo.
+\newcommand{\tcee@saltocelda}{\ifhmode\par\fi}
+\AtBeginEnvironment{tabular}{\let\newline\tcee@saltocelda}
 \renewcommand{\footnotelayout}{\footnotesize}
 \renewcommand{\thefootnote}{\arabic{footnote}}
 
@@ -254,7 +265,7 @@
 \DeclareFieldFormat{urldate}{(consulta: #1)}
 \renewcommand*{\nameyeardelim}{\addcomma\space}
 % Apellidos en versalitas en las citas del texto (no en la bibliografía)
-\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textsc{##1}}}
+\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}}
 % La bibliografía va al final, después de los anexos, en página nueva
 \newcommand{\bibliografia}{\clearpage\printbibliography[heading=bibintoc,title={Bibliografía}]}
 

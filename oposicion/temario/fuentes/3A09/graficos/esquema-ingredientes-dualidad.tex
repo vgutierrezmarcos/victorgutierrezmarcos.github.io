@@ -1,0 +1,41 @@
+% Ingredientes comunes del primal y del dual (rehace el esquema de la p. 6 del
+% tema anterior, con el estilo de 3A08/graficos/esquema-ingredientes.tex):
+% la utilidad es objetivo en el primal y restricción en el dual; el gasto, al revés.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
+                 minimum height=1.1cm,inner sep=5pt},
+    cajap/.style={caja,fill=tceemorado!10,very thick,minimum width=3.9cm},
+    cajad/.style={caja,draw=tceeverde,fill=tceeverde!10,very thick,minimum width=3.9cm},
+    une/.style={->,thick,tceemorado},
+    uned/.style={->,thick,tceeverde},
+    papel/.style={font=\scriptsize,inner sep=1pt,fill=white}]
+  % 1: conjunto de elección y preferencias
+  \capa{1}{\node[caja] (S) at (0,2.1) {Conjunto de elección\\ $S\subseteq\mathbb{R}^n_+$};}
+  \capa{1}{\node[caja] (P) at (0,0) {Preferencias\\ $\succcurlyeq$};}
+  \capa{1}{\draw[une] (S) -- (P);}
+  % 2: axiomas y las dos cajas Utilidad y Gasto
+  \capa{2}{\draw[decorate,decoration={brace,amplitude=6pt},thick,tceemorado] (3.3,-2.0) -- (3.3,2.0);}
+  \capa{2}{\draw[une] (P.east) -- node[above,font=\footnotesize] {axiomas} (3.05,0);}
+  \capa{2}{\node[caja,minimum width=2.9cm] (U) at (5.1,1.1) {Utilidad\\ $U(\vect{x})$};}
+  \capa{2}{\node[caja,minimum width=2.9cm] (G) at (5.1,-1.1) {Gasto\\ $\vect{p}\cdot\vect{x}$ \ ($\vect{p}\gg\vect{0}$)};}
+  % 3: problema primal (la utilidad es el objetivo; el gasto, la restricción)
+  \capa{3}{\node[cajap] (PR) at (10,2.1) {\textcolor{tceemorado}{\textbf{Problema primal}}\\ $\max\limits_{\vect{x}}\ U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$};}
+  \capa{3}{\draw[une] (U.east) -- node[papel,pos=0.5,sloped,above] {objetivo} ([yshift=3mm]PR.west);}
+  \capa{3}{\draw[une,dashed] (G.east) -- node[papel,pos=0.66,sloped,above] {restricción} ([yshift=-3mm]PR.west);}
+  % 4: demanda marshalliana
+  \capa{4}{\node[cajap,minimum width=3.4cm] (X) at (14.6,2.1) {Demanda ordinaria\\ o marshalliana\\ \textcolor{tceemorado}{$\vect{x}(\vect{p},\overline{W})$}};}
+  \capa{4}{\draw[une] (PR) -- (X);}
+  % 5: problema dual (la utilidad es la restricción; el gasto, el objetivo)
+  \capa{5}{\draw[tceegris,thick,dashed] (7.6,0) -- (16.5,0);}
+  \capa{5}{\node[cajad] (DU) at (10,-2.1) {\textcolor{tceeverde}{\textbf{Problema dual}}\\ $\min\limits_{\vect{h}}\ \vect{p}\cdot\vect{h}$ s.a.\ $U(\vect{h})\geq\overline{U}$};}
+  \capa{5}{\draw[uned,dashed] (U.east) -- node[papel,pos=0.66,sloped,below] {restricción} ([yshift=3mm]DU.west);}
+  \capa{5}{\draw[uned] (G.east) -- node[papel,pos=0.5,sloped,above] {objetivo} ([yshift=-3mm]DU.west);}
+  % 6: demanda hicksiana
+  \capa{6}{\node[cajad,minimum width=3.4cm] (H) at (14.6,-2.1) {Demanda compensada\\ o hicksiana\\ \textcolor{tceeverde}{$\vect{h}(\vect{p},\overline{U})$}};}
+  \capa{6}{\draw[uned] (DU) -- (H);}
+\end{tikzpicture}
+\end{document}

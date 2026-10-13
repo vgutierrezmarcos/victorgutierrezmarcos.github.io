@@ -43,6 +43,11 @@
 \definecolor{tceedorado}{HTML}{B8860B}
 \definecolor{tceegris}{HTML}{767171}
 \definecolor{tceegrisclaro}{HTML}{E7E6E6}
+% Clasificación de los bienes (los de tikz-tcee.tex): normal/sustitutivos en
+% verde, inferior/complementarios en dorado, ordinario en azul, Giffen en rojo
+\definecolor{tceeverde}{HTML}{3C7D3A}
+\definecolor{tceeazul}{HTML}{1F5F99}
+\definecolor{tceerojo}{HTML}{B22222}
 \RequirePackage{mathtools}
 \RequirePackage{graphicx}
 \RequirePackage{booktabs,tabularx,array}
@@ -119,6 +124,8 @@
 % --- Énfasis -------------------------------------------------------------------------------
 \newcommand{\autor}[1]{\textsc{#1}}
 \newcommand{\concepto}[1]{\textbf{#1}}
+% Vectores con flecha, como en tcee.sty
+\providecommand{\vect}[1]{\vec{#1}}
 \newcommand{\vertema}[1]{{\color{tceegris}[#1]}}
 \newcommand{\dato}[2]{\textbf{#1}{\color{tceegris}\,(#2)}}   % \dato{54,1 \% del PIB}{INE, 2025}
 

@@ -78,9 +78,13 @@ Cada tema revisado debe quedar:
   la ecuación de Slutsky): fila de la ecuación sobre fondo salvia
   (`\cellcolor{tceesalvia}`), banda del título en `tceeazulpalido` o
   `tceesalmon` (`\rowcolor`), celdas combinadas (`\multirow`) y el texto de
-  cada categoría en su color (`\textcolor{tceeverde}` normal/sustitutivos,
-  `tceenaranja` inferior/complementarios, `tceeazul` ordinario, `tceerojo`
-  Giffen). construir-tema.py lo pasa también a la web y a Word.
+  cada categoría en su color, el mismo que en los gráficos
+  (`\textcolor{tceeverde}` normal/sustitutivos, `tceedorado`
+  inferior/complementarios, `tceeazul` ordinario, `tceerojo` Giffen; Víctor,
+  13/10/2026). Texto centrado en horizontal y en vertical: columnas
+  `>{\centering\arraybackslash}m{…}` y `\multirow{n}{=}[desplazamiento]{\centering …}`,
+  con filas de la misma altura (2 líneas con `\newline`).
+  construir-tema.py lo pasa también a la web y a Word.
 - Las derivaciones que no se cantan (agregaciones de Engel y Cournot,
   homogeneidad, simetría, identidades…) **no se borran**: van a un anexo.
 - Enlace a preguntas de test: nunca a quia.com; un único enlace genérico al
@@ -114,6 +118,9 @@ Cada tema revisado debe quedar:
   `bottom`), aunque la página tenga hueco.
 - Lecturas de clases y preparadores (ICEX-CECO…) se citan **como en el tema
   original**, sin añadir «no publicado».
+- **Sin nombres de preparadores** en el tema (ni «cantado en clase con…», ni
+  nombres de profesores): solo se citan obras. `revision.md` no es público y
+  puede llevarlos.
 - Cada apartado lleva sus minutos de cante con `\minutos{n}` tras el título.
   La suma debe ser 30.
 - No inventar citas textuales: una cita entre comillas debe estar en la fuente
@@ -238,10 +245,15 @@ el texto original y lo que se hizo.
   p. ej., la curva de indiferencia como frontera de los conjuntos «al menos
   tan bueno como» y «no mejor que», o el mapa de indiferencia como proyección
   de la superficie de utilidad.
-- Las representaciones en tres dimensiones, en perspectiva caballera (eje
-  vertical hacia arriba, uno horizontal a la derecha y el de profundidad a
-  45° con coeficiente 0,5; en pgfplots, `x={(1cm,0cm)}, y={(0.354cm,0.354cm)},
-  z={(0cm,1cm)}` en lugar de `view`).
+- Las representaciones en tres dimensiones, en la **perspectiva de los
+  gráficos de Jehle y Reny** (la que Víctor llama «caballera»; 14/10/2026):
+  eje vertical (q, U) hacia arriba y los dos ejes de la base abriéndose a la
+  derecha desde el origen, que queda a la izquierda: el primero (z_L, x_1)
+  hacia abajo a la derecha (unos −25°) y el segundo (z_K, x_2) hacia la
+  derecha y algo hacia arriba (unos +12°), con longitudes parecidas. En
+  pgfplots: `x={(1.0cm,-0.47cm)}, y={(1.15cm,0.24cm)}, z={(0cm,1.2cm)}` y
+  `z buffer=sort` en las superficies (escalar los tres vectores si hace
+  falta). **No** el eje de profundidad a 45° hacia atrás.
 - Los gráficos de datos (series) se hacen con pgfplots a partir de
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
@@ -373,6 +385,14 @@ el texto original y lo que se hizo.
   una sola cosa, sin rayas. Cambiar de rejilla borra la pizarra. Planifica
   la pizarra como en el examen: qué va en cada celda, cuándo se borra y que
   nunca se llene ni se salga (el script avisa).
+- **Construir el gráfico final por partes** (Víctor, 13/10/2026, 3.A.9): cuando
+  un gráfico conjunto resume varios problemas (p. ej., primal y dual), la
+  pizarra cuenta el primero en la mitad izquierda, el segundo en la derecha
+  y después las relaciones entre ambos hasta completar el gráfico conjunto.
+  Se pueden pintar y borrar gráficos intermedios; las propiedades salen como
+  nota de apoyo; **al final la pizarra queda lo más limpia posible**, con el
+  gráfico conjunto. Las instrucciones concretas de cada tema están en su
+  `revision.md` («Instrucciones para el vídeo»).
 - Los gráficos se dibujan con las capas del TikZ (`capa:` creciente, justo
   cuando la narración lo nombra) y el script los traza en el orden del código.
 - Imágenes (retratos, portadas) solo de dominio público o con licencia libre,

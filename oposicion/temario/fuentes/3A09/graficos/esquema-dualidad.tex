@@ -1,15 +1,17 @@
 % Esquema de dualidad: problemas primal y dual, soluciones, funciones valor y
 % relaciones entre ellas (rehecho a partir del cuadro resumen del original, con
 % el lema de Shephard sin signo menos y las identidades inversas bien escritas).
+% Notación del canon: vectores con flecha; primal (marshalliana) en morado y
+% dual (hicksiana, variable de elección h) en verde.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \usetikzlibrary{fit}
 \begin{document}
 \begin{tikzpicture}[tcee,
-    cajap/.style={draw=tceeverde,very thick,fill=tceeverde!8,rounded corners=3pt,align=center,
+    cajap/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=3pt,align=center,
                   minimum width=4.2cm,minimum height=1.2cm,inner sep=5pt},
-    cajad/.style={cajap,draw=tceerojo,fill=tceerojo!7},
+    cajad/.style={cajap,draw=tceeverde,fill=tceeverde!8},
     une/.style={->,thick},
     rel/.style={->,thick,tceegris},
     nota/.style={font=\footnotesize,inner sep=2pt},
@@ -17,20 +19,20 @@
   % columnas: primal en x = 0, dual en x = 13; filas en y = 0, -3,6, -7,2
   % 1: problema primal
   \capa{1}{
-    \node[text=tceeverde,align=center] at (0,1.65) {\textbf{Problema primal}\\ \footnotesize maximización de la utilidad};
-    \node[inner sep=2pt,anchor=base west] (PU) at (0.05,0.3) {$U(x)$};
-    \node[inner sep=2pt,anchor=base east] (Pmax) at (0,0.3) {$\max\limits_{x}$};
-    \node[inner sep=2pt,anchor=base] (Psa) at (0,-0.45) {s.a.\ $p\cdot x\leq\overline{W},\ x\geq0$};
+    \node[text=tceemorado,align=center] at (0,1.65) {\textbf{Problema primal}\\ \footnotesize maximización de la utilidad};
+    \node[inner sep=2pt,anchor=base west] (PU) at (0.05,0.3) {$U(\vect{x})$};
+    \node[inner sep=2pt,anchor=base east] (Pmax) at (0,0.3) {$\max\limits_{\vect{x}}$};
+    \node[inner sep=2pt,anchor=base] (Psa) at (0,-0.45) {s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}$};
     \begin{scope}[on background layer]
       \node[cajap,fit=(Pmax)(PU)(Psa)] (P) {};
     \end{scope}
   }
-  % 2: problema dual (la variable de elección es x)
+  % 2: problema dual (la variable de elección es h)
   \capa{2}{
-    \node[text=tceerojo,align=center] at (13,1.65) {\textbf{Problema dual}\\ \footnotesize minimización del gasto};
-    \node[inner sep=2pt,anchor=base west] (DU) at (13.05,0.3) {$p\cdot x$};
-    \node[inner sep=2pt,anchor=base east] (Dmin) at (13,0.3) {$\min\limits_{x}$};
-    \node[inner sep=2pt,anchor=base] (Dsa) at (13,-0.45) {s.a.\ $U(x)\geq\overline{U},\ x\geq0$};
+    \node[text=tceeverde,align=center] at (13,1.65) {\textbf{Problema dual}\\ \footnotesize minimización del gasto};
+    \node[inner sep=2pt,anchor=base west] (DU) at (13.05,0.3) {$\vect{p}\cdot\vect{h}$};
+    \node[inner sep=2pt,anchor=base east] (Dmin) at (13,0.3) {$\min\limits_{\vect{h}}$};
+    \node[inner sep=2pt,anchor=base] (Dsa) at (13,-0.45) {s.a.\ $U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}$};
     \begin{scope}[on background layer]
       \node[cajad,fit=(Dmin)(DU)(Dsa)] (D) {};
     \end{scope}
@@ -39,51 +41,51 @@
   \capa{3}{
     \draw[tceegris,thick,dashed,rounded corners=4pt] (2.45,1.25) rectangle (10.55,-8.75);
     \node[notag] at (6.5,-8.5) {\itshape Relaciones de dualidad};
-    \draw[<->,very thick] (P.east) -- node[above,align=center] {$\overline{W}=E^*,\ \overline{U}=U^*$} node[below,nota] {teorema básico de la dualidad} (D.west);
+    \draw[<->,very thick] (P.east) -- node[above,align=center] {$\overline{W}=E^*,\ \overline{U}=U^*$} node[below,nota] {teorema básico de la dualidad} (P.east -| D.west);
   }
   % 4: demanda marshalliana
   \capa{4}{
-    \node[cajap] (X) at (0,-3.6) {\textbf{SCEDM}\\ $x^*=x(p,\overline{W})$};
+    \node[cajap] (X) at (0,-3.6) {\textbf{SCEDM}\\ $\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};
     \draw[une] (P.south) -- node[right,nota] {resolviendo} (X.north);
   }
   % 5: función indirecta de utilidad
   \capa{5}{
-    \node[cajap] (V) at (0,-7.2) {\textbf{FIU}\\ $U^*=V(p,\overline{W})=U(x^*)$};
+    \node[cajap] (V) at (0,-7.2) {\textbf{FIU}\\ $U^*=V(\vect{p},\overline{W})=U(\vect{x}^*)$};
     \draw[une] (X.south) -- node[right,nota,align=left] {función\\ valor} (V.north);
   }
   % 6: identidad de Roy
   \capa{6}{
-    \draw[une,tceeverde] ([xshift=-1.1cm]V.north) -- node[left,nota,align=right,text=tceeverde] {Identidad de \textsc{Roy}\\ $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$} ([xshift=-1.1cm]X.south);
+    \draw[une,tceemorado] ([xshift=-1.1cm]V.north) -- node[left,nota,align=right,text=tceemorado] {Identidad de \textsc{Roy}\\ $x_i(\vect{p},\overline{W})=-\dfrac{\partial V(\vect{p},\overline{W})/\partial p_i}{\partial V(\vect{p},\overline{W})/\partial\overline{W}}$} ([xshift=-1.1cm]X.south);
   }
   % 7: demanda hicksiana
   \capa{7}{
-    \node[cajad] (H) at (13,-3.6) {\textbf{SCEDC}\\ $h^*=h(p,\overline{U})$};
+    \node[cajad] (H) at (13,-3.6) {\textbf{SCEDC}\\ $\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};
     \draw[une] (D.south) -- node[left,nota] {resolviendo} (H.north);
   }
   % 8: función de gasto
   \capa{8}{
-    \node[cajad] (E) at (13,-7.2) {\textbf{FG}\\ $E^*=E(p,\overline{U})=p\cdot h^*$};
+    \node[cajad] (E) at (13,-7.2) {\textbf{FG}\\ $E^*=E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}^*$};
     \draw[une] (H.south) -- node[left,nota,align=right] {función\\ valor} (E.north);
   }
   % 9: lema de Shephard (sin signo menos)
   \capa{9}{
-    \draw[une,tceerojo] ([xshift=1.1cm]E.north) -- node[right,nota,align=left,text=tceerojo] {Lema de \textsc{Shephard}\\ $h_i=\dfrac{\partial E}{\partial p_i}$} ([xshift=1.1cm]H.south);
+    \draw[une,tceeverde] ([xshift=1.1cm]E.north) -- node[right,nota,align=left,text=tceeverde] {Lema de \textsc{Shephard}\\ $h_i(\vect{p},\overline{U})=\dfrac{\partial E(\vect{p},\overline{U})}{\partial p_i}$} ([xshift=1.1cm]H.south);
   }
   % 10: las funciones valor son inversas
   \capa{10}{
-    \draw[rel,black] ([yshift=3mm]E.west) -- node[above,nota] {$V\big(p,E(p,\overline{U})\big)=\overline{U}$} ([yshift=3mm]V.east);
-    \draw[rel,black] ([yshift=-3mm]V.east) -- node[below,nota] {$E\big(p,V(p,\overline{W})\big)=\overline{W}$} ([yshift=-3mm]E.west);
+    \draw[rel,black] ([yshift=3mm]E.west) -- node[above,nota] {$V\big(\vect{p},E(\vect{p},\overline{U})\big)\equiv\overline{U}$} ([yshift=3mm]V.east);
+    \draw[rel,black] ([yshift=-3mm]V.east) -- node[below,nota] {$E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W}$} ([yshift=-3mm]E.west);
     \node[notag] at (6.5,-7.2) {inversas (dualidad entre funciones valor)};
   }
   % 11: relaciones entre demandas (diagonales)
   \capa{11}{
-    \draw[rel,dashed] (V.north east) -- node[pos=0.78,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$x(p,\overline{W})=h\big(p,V(p,\overline{W})\big)$} (H.south west);
-    \draw[rel,dashed,<-] (X.south east) -- node[pos=0.22,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$h(p,\overline{U})=x\big(p,E(p,\overline{U})\big)$} (E.north west);
+    \draw[rel,dashed] (V.north east) -- node[pos=0.78,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$\vect{x}(\vect{p},\overline{W})\equiv\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big)$} (H.south west);
+    \draw[rel,dashed,<-] (X.south east) -- node[pos=0.22,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$\vect{h}(\vect{p},\overline{U})\equiv\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)$} (E.north west);
   }
   % 12: ecuación de Slutsky
   \capa{12}{
     \draw[<->,thick] (X.east) -- (H.west);
-    \node[nota,above] at (6.5,-3.55) {$\underbrace{\dfrac{\partial x_i(p,\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\dfrac{\partial h_i(p,\overline{U})}{\partial p_j}}_{\text{efecto sustitución}}\underbrace{-\,x_j\dfrac{\partial x_i(p,\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$};
+    \node[nota,above] at (6.5,-3.55) {$\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustitución}}\underbrace{-\,x_j(\vect{p},\overline{W})\,\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$};
     \node[notag,below] at (6.5,-3.65) {ecuación de \textsc{Slutsky}};
   }
   % 13: integrabilidad: de la demanda marshalliana a la utilidad

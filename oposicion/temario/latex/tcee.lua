@@ -100,10 +100,10 @@ local function Image(img)
   return img
 end
 
--- Colores de tcee.sty ---------------------------------------------------------
+-- Colores de tcee.sty (los mismos de los gráficos, latex/tikz-tcee.tex) ---------
 local COLORES = {
-  tceemorado = '5F2987', tceeverde = '2E8B3A', tceeazul = '1C8FC9', tceenaranja = 'E07B28',
-  tceerojo = 'D11F1F', tceedorado = 'B8860B', tceegris = '767171', tceesalvia = 'E2EFD9',
+  tceemorado = '5F2987', tceeverde = '3C7D3A', tceeazul = '1F5F99', tceenaranja = 'E07B28',
+  tceerojo = 'B22222', tceedorado = 'B8860B', tceegris = '767171', tceesalvia = 'E2EFD9',
   tceeazulpalido = 'DDEBF7', tceesalmon = 'FBE4D5', tceemoradopalido = 'F3EEF7',
 }
 -- Estilos de carácter de reference.docx para el texto en color
@@ -111,6 +111,29 @@ local ESTILO_COLOR = {
   tceemorado = 'Texto morado', tceeverde = 'Texto verde', tceeazul = 'Texto azul',
   tceenaranja = 'Texto naranja', tceerojo = 'Texto rojo', tceedorado = 'Texto dorado',
 }
+
+-- Fórmulas sencillas ($<0$, $\leq 0$, $i$) como texto, para que en Word tomen
+-- el color del estilo de carácter. Las demás se dejan como fórmula.
+local SIMBOLOS = { ['\\leq'] = '≤', ['\\geq'] = '≥', ['\\neq'] = '≠', ['\\,'] = ' ', ['\\;'] = ' ',
+                   ['{'] = '', ['}'] = '', ['-'] = '−' }
+local RELACIONES = { '<', '>', '=', '≤', '≥', '≠' }
+local function math_a_texto(m)
+  if m.mathtype ~= 'InlineMath' then return nil end
+  local t = m.text
+  if t:match('^%s*%a%s*$') then return pandoc.Emph({ pandoc.Str((t:gsub('%s', ''))) }) end
+  for k, v in pairs(SIMBOLOS) do t = t:gsub(k:gsub('%p', '%%%0'), v) end
+  t = t:gsub('%s+', ' '):gsub('^ ', ''):gsub(' $', '')
+  -- Solo relaciones, signos y números (≤ ≥ ≠ − ocupan tres bytes en UTF-8)
+  local resto = t:gsub('≤', ''):gsub('≥', ''):gsub('≠', ''):gsub('−', '')
+  if not resto:match('^[<>=%d%., ]*$') then return nil end
+  for _, r in ipairs(RELACIONES) do
+    if t:sub(1, #r) == r and t:sub(#r + 1, #r + 1) ~= ' ' and #t > #r then
+      t = r .. ' ' .. t:sub(#r + 1)
+      break
+    end
+  end
+  return pandoc.Str(t)
+end
 
 -- Spans ----------------------------------------------------------------------
 local function Span(s)
@@ -128,7 +151,12 @@ local function Span(s)
   elseif color and COLORES[color] then
     if es_docx then
       s.attributes['style'] = nil
-      if ESTILO_COLOR[color] then s.attributes['custom-style'] = ESTILO_COLOR[color] end
+      if ESTILO_COLOR[color] then
+        s.attributes['custom-style'] = ESTILO_COLOR[color]
+        -- Word no colorea las fórmulas con el estilo de carácter: las fórmulas
+        -- sencillas de las tablas ($<0$, $\leq 0$, $i$) pasan a texto
+        s.content = s.content:walk({ Math = math_a_texto })
+      end
     else
       s.attributes['style'] = 'color: #' .. COLORES[color]
     end
@@ -172,7 +200,19 @@ local function pintar_celda(celda, color)
   end
 end
 
+-- Celdas de las columnas centradas (en LaTeX >{\centering\arraybackslash}m{…},
+-- que construir-tema.py deja como «c»): centradas también en vertical, como el
+-- PDF. En Word lo hace construir-tema.py después (w:vAlign), porque pandoc no
+-- lo escribe.
+local function centrar_vertical(celda)
+  if es_docx then return end
+  local estilo = celda.attributes['style']
+  celda.attributes['style'] = (estilo and (estilo .. '; ') or '') .. 'vertical-align: middle'
+end
+
 local function Table(t)
+  local centradas = {}
+  for c, spec in ipairs(t.colspecs) do centradas[c] = (spec[1] == 'AlignCenter') end
   local filas = {}
   for _, f in ipairs(t.head.rows) do filas[#filas + 1] = f end
   for _, cuerpo in ipairs(t.bodies) do
@@ -192,11 +232,18 @@ local function Table(t)
           ocupada[c] = n - 1
         end
         if fondo and COLORES[fondo] then pintar_celda(celda, fondo) end
+        if centradas[c] then celda.alignment = 'AlignCenter'; celda.attributes['data-centrada'] = '1' end
         nuevas:insert(celda)
       end
     end
     if fondo_de_fila and COLORES[fondo_de_fila] then
       for _, celda in ipairs(nuevas) do pintar_celda(celda, fondo_de_fila) end
+    end
+    for _, celda in ipairs(nuevas) do
+      if celda.attributes['data-centrada'] then
+        celda.attributes['data-centrada'] = nil
+        centrar_vertical(celda)
+      end
     end
     fila.cells = nuevas
   end
@@ -264,6 +311,13 @@ function Pandoc(doc)
     while i <= #bloques do
       local b = bloques[i]
       if b.t == 'Header' then
+        -- \newline en un título (corte de un título largo): salto de línea en
+        -- Word, espacio en la web (el navegador ya corta la línea)
+        b.content = b.content:walk({ Span = function(sp)
+          if (sp.attributes['style'] or ''):match('tceesalto') then
+            return es_docx and pandoc.LineBreak() or pandoc.Space()
+          end
+        end })
         local numero = nil
         if not b.classes:includes('unnumbered') then
           if b.level == 1 then s = s + 1; ss = 0; sss = 0; numero = romano(s) .. '.'

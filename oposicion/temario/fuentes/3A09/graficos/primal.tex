@@ -1,0 +1,32 @@
+% Problema primal: maximización de la utilidad (panel izquierdo del antiguo primal-dual).
+% Mismo mapa que la solución interior de 3.A.8: U = x1·x2, p1/p2 = 0,75.
+% Recta x2 = 3 - 0,75 x1 (W/p2 = 3, W/p1 = 4), tangente a U* = 3 en x* = (2; 1,5).
+% Mismos números, ejes y estilos que dual.tex y primal-dual.tex.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes y planteamiento
+  \capa{1}{\ejes{$x_1$}{$x_2$}{6.2}{4.2}}
+  \capa{1}{\node[align=center,text=tceemorado] at (2.6,4.8) {\textbf{Problema primal}\\ $\max\limits_{\vect{x}}\ U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$};}
+  % 2: recta de balance y conjunto presupuestario
+  \capa{2}{\fill[area] (0,0) -- (0,3) -- (4,0) -- cycle;}
+  \capa{2}{\draw[curva1] (0,3) -- (4,0);}
+  \capa{2}{\node[etiqueta,left,text=tceemorado] at (0,3) {$\overline{W}/p_2$};}
+  \capa{2}{\node[etiqueta,below,text=tceemorado] at (4,0) {$\overline{W}/p_1$};}
+  \capa{2}{\node[etiqueta,text=tceemorado] at (0.85,0.55) {$\vect{p}\cdot\vect{x}\leq\overline{W}$};}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (3.15,0.75) {$-p_1/p_2$};}
+  % 3: mapa de indiferencia U^0 < U* < U^2
+  \capa{3}{\draw[curva2,thick] plot[domain=0.45:5.6,samples=80,smooth] (\x,{1.6/\x}) node[etiqueta,right] {$U^0$};}
+  \capa{3}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$U^*$};}
+  \capa{3}{\draw[curva2,thick] plot[domain=1.35:5.6,samples=80,smooth] (\x,{5/\x}) node[etiqueta,right] {$U^2$};}
+  % 4: tangencia x*, proyecciones y valor de la FIU
+  \capa{4}{\node[punto,fill=tceemorado] (X) at (2,1.5) {};}
+  \capa{4}{\proyeccion{(X)}{$x_1^*$}{$x_2^*$}}
+  \capa{4}{\node[etiqueta,anchor=south west,text=tceemorado] (Xl) at (2.75,2.15) {$\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};}
+  \capa{4}{\draw[guia,solid] (Xl.south west) -- (X);}
+  \capa{4}{\node[etiqueta,anchor=west,text=tceeazul] (Vl) at (2.9,3.2) {$U^*=V(\vect{p},\overline{W})$};}
+  \capa{4}{\draw[guia,solid] (Vl.west) -- (1.2,2.5);}
+\end{tikzpicture}
+\end{document}

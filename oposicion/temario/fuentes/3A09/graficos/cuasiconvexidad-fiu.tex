@@ -1,31 +1,44 @@
-% Cuasiconvexidad de la función indirecta de utilidad en los precios (W fija).
-% Curva de nivel V(p,W) = v: p1·p2 = 4 (Cobb-Douglas, V = W^2/(4 p1 p2)).
-% El conjunto {V <= v} = {p1·p2 >= 4} queda por encima de la curva y es convexo:
-% p = (1,4), p' = (4,1); el punto medio (2,5; 2,5) da p1·p2 = 6,25 >= 4.
+% Cuasiconvexidad de la función indirecta de utilidad (MWG, fig. 3.D.5; antigua Imagen 2).
+% U = x1·x2. Curva Ū^1: x1·x2 = 4.
+%   Extremo empinado (p, W) = (4, 1; 8): 4x1 + x2 = 8, tangente a Ū^1 en (1, 4).
+%   Extremo plano (p', W') = (1, 4; 8):  x1 + 4x2 = 8, tangente a Ū^1 en (4, 1).
+%   Se cortan en (1,6; 1,6).
+%   Promedio con τ = 0,7: (p'', W'') = (3,1, 1,9; 8): 3,1x1 + 1,9x2 = 8, pasa por
+%   (1,6; 1,6); cortes (2,581; 0) y (0; 4,211); óptimo Cobb-Douglas
+%   (8/6,2; 8/3,8) = (1,290; 2,105), Ū^0 = 2,716 < 4.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee]
+\begin{tikzpicture}[tcee,scale=0.68]
   % 1: ejes
-  \capa{1}{\ejes{$p_1$}{$p_2$}{5.6}{5.4}}
-  \capa{1}{\node[etiqueta,anchor=north east,text=tceegris] at (5.6,5.4) {$\overline{W}$ fija};}
-  % 3 (se pinta antes para quedar debajo): conjunto {V <= v}
-  \capa{3}{\fill[area] plot[domain=0.8:5.2,samples=60,smooth] (\x,{4/\x}) -- (5.2,5) -- (0.8,5) -- cycle;}
-  \capa{3}{\node[etiqueta,align=center] at (3.9,3.9) {$\{p:\ V(p,\overline{W})\leq\bar v\}$\\ convexo};}
-  % 2: curva de nivel
-  \capa{2}{\draw[curva1] plot[domain=0.8:5.2,samples=60,smooth] (\x,{4/\x}) node[etiqueta,right] {$V(p,\overline{W})=\bar v$};}
-  % 4: dos puntos de la curva, segmento y punto medio
-  \capa{4}{
-    \draw[thick] (1,4) -- (4,1);
-    \node[punto] at (1,4) {};
-    \node[etiqueta,left] at (1,4) {$p$};
-    \node[punto] at (4,1) {};
-    \node[etiqueta,below left] at (4,1) {$p'$};
-    \node[punto] at (2.5,2.5) {};
-    \node[etiqueta,above right] at (2.5,2.5) {$\lambda p+(1-\lambda)p'$};
-  }
-  % 5: hacia el origen la utilidad aumenta
-  \capa{5}{\draw[flecha] (1.95,1.95) -- (1.1,1.1) node[etiqueta,anchor=north west,text=tceerojo,xshift=2pt] {$V$ aumenta};}
+  \capa{1}{\ejes{$x_1$}{$x_2$}{9.4}{9}}
+  % 4 (se pinta antes para quedar debajo): unión de los dos conjuntos presupuestarios
+  \capa{4}{\fill[tceegris,fill opacity=0.16] (0,0) -- (0,8) -- (1.6,1.6) -- (8,0) -- cycle;}
+  % 2: rectas de balance extremas
+  \capa{2}{\draw[curva1] (0,8) -- (2,0);}
+  \capa{2}{\node[etiqueta,left,text=tceemorado] at (0,8) {$B(\vect{p},\overline{W})$};}
+  \capa{2}{\draw[curva1] (0,2) -- (8,0);}
+  \capa{2}{\node[etiqueta,left,text=tceemorado] at (0,2) {$B(\vect{p}\,',\overline{W}')$};}
+  \capa{2}{\draw[curva1] (3.4,8.6) -- (4.4,8.6) node[etiqueta,right,text=black] {presupuestos extremos};}
+  % 3: curva Ū^1 tangente a las dos, en (1, 4) y (4, 1)
+  \capa{3}{\draw[curva2] plot[domain=0.5:8.6,samples=150,smooth] (\x,{4/\x}) node[etiqueta,right] {$\overline{U}^1$};}
+  \capa{3}{\node[punto] at (1,4) {};}
+  \capa{3}{\node[punto] at (4,1) {};}
+  % 4: leyenda de la unión
+  \capa{4}{\fill[tceegris,fill opacity=0.16] (3.4,6.85) rectangle (4.4,7.25);}
+  \capa{4}{\node[etiqueta,right] at (4.4,7.05) {$B(\vect{p},\overline{W})\cup B(\vect{p}\,',\overline{W}')$};}
+  % 5: recta promedio por el corte de las extremas
+  \capa{5}{\draw[curva4,desplazada] (0,4.2105) -- (2.5806,0);}
+  \capa{5}{\node[etiqueta,left,text=tceedorado] at (0,4.2105) {$B(\vect{p}\,'',\overline{W}'')$};}
+  \capa{5}{\node[punto,fill=tceegris,inner sep=1pt] at (1.6,1.6) {};}
+  \capa{5}{\draw[curva4,desplazada] (3.4,7.85) -- (4.4,7.85) node[etiqueta,right,text=black] {presupuesto promedio};}
+  \capa{5}{\node[etiqueta,anchor=west,font=\footnotesize] at (3.4,6.25) {$(\vect{p}\,'',\overline{W}'')=\tau(\vect{p},\overline{W})+(1-\tau)(\vect{p}\,',\overline{W}')$};}
+  % 6: curva Ū^0 y óptimo con el promedio; desigualdad
+  \capa{6}{\draw[curva2] plot[domain=0.36:8.2,samples=150,smooth] (\x,{2.716/\x});}
+  \capa{6}{\node[etiqueta,below,text=tceeazul,yshift=-2pt] at (4.2,0.647) {$\overline{U}^0$};}
+  \capa{6}{\node[punto] at (1.290,2.105) {};}
+  \capa{6}{\node[etiqueta,anchor=west] at (3.4,5.2) {$V(\vect{p}\,'',\overline{W}'')=\overline{U}^0<\overline{U}^1$};}
+  \capa{6}{\node[etiqueta,anchor=west] at (3.4,4.4) {$V(\vect{p}\,'',\overline{W}'')\leq\max\{V(\vect{p},\overline{W}),\,V(\vect{p}\,',\overline{W}')\}$};}
 \end{tikzpicture}
 \end{document}

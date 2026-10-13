@@ -251,8 +251,8 @@ def main():
     except KeyError:
         pass
     # Texto en color de las tablas de clasificación (\textcolor{tceeverde}{…})
-    for nombre, rgb in (('Texto morado', '5F2987'), ('Texto verde', '2E8B3A'), ('Texto azul', '1C8FC9'),
-                        ('Texto naranja', 'E07B28'), ('Texto rojo', 'D11F1F'), ('Texto dorado', 'B8860B')):
+    for nombre, rgb in (('Texto morado', '5F2987'), ('Texto verde', '3C7D3A'), ('Texto azul', '1F5F99'),
+                        ('Texto naranja', 'E07B28'), ('Texto rojo', 'B22222'), ('Texto dorado', 'B8860B')):
         try:
             e = estilos[nombre]
         except KeyError:

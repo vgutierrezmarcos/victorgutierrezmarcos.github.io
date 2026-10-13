@@ -2,6 +2,7 @@
 % E(p1) = 2,4·sqrt(p1) (Cobb-Douglas con p2 y U fijos); en p1^0 = 2,25,
 % E = 3,6 y pendiente h1 = 0,8. Recta del gasto con la cesta fija:
 % E = 0,8 p1 + 1,8 (la ordenada en el origen es p2·h2).
+% Función de gasto en verde (dual); recta de la cesta fija en azul.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -13,18 +14,18 @@
   % 2: gasto si se mantiene la cesta h(p^0,U)
   \capa{2}{
     \draw[curva2] (0,1.8) -- (6.2,6.76);
-    \node[etiqueta,text=tceeazul,align=right,anchor=south east] at (4.5,5.85) {$p_1h_1(p^0,\overline{U})+p_2h_2(p^0,\overline{U})$\\ gasto si no se sustituye};
+    \node[etiqueta,text=tceeazul,align=right,anchor=south east] at (4.5,5.85) {$\vect{p}\,'\cdot\vect{h}(\vect{p}^0,\overline{U})$\\ gasto si no se sustituye};
   }
   % 3: función de gasto, cóncava y por debajo de la recta
-  \capa{3}{\draw[curva1] plot[domain=0.05:6.2,samples=100,smooth] (\x,{2.4*sqrt(\x)}) node[etiqueta,right] {$E(p_1,\overline{U})$};}
+  \capa{3}{\draw[curva3] plot[domain=0.05:6.2,samples=100,smooth] (\x,{2.4*sqrt(\x)}) node[etiqueta,right,text=tceeverde] {$E(\vect{p},\overline{U})$};}
   % 4: tangencia
   \capa{4}{
     \node[punto] (T) at (2.25,3.6) {};
-    \proyeccion{(T)}{$p_1^0$}{$E(p^0,\overline{U})$}
+    \proyeccion{(T)}{$p_1^0$}{$E(\vect{p}^0,\overline{U})$}
   }
   % 5: pendiente = h1 (Shephard)
   \capa{5}{
-    \node[etiqueta,anchor=west,align=left] (S) at (2.9,2.3) {pendiente $=h_1(p^0,\overline{U})$\\ (\textsc{Shephard})};
+    \node[etiqueta,anchor=west,align=left] (S) at (2.9,2.3) {pendiente $=h_1(\vect{p}^0,\overline{U})$\\ (\textsc{Shephard})};
     \draw[guia,solid] (S.north west) ++(0.2,0) -- (2.32,3.5);
   }
   % 6: ahorro por sustitución

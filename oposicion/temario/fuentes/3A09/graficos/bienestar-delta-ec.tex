@@ -1,0 +1,35 @@
+% Variación del excedente del consumidor ante una bajada de p1 (2 -> 1).
+% Panel inferior de bienestar-vc-ve (mismos números, colores y rótulos):
+%   marshalliana x1 = 3,6/p1 (U = x1^0,6 · x2^0,4, W = 6); x1^0 = 1,8 y x1^1 = 3,6;
+%   ΔEC = 3,6·ln 2 = 2,495.
+% Escala vertical 1,5.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\tikzset{areaec/.style={fill=tceedorado!30!white,draw=none}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{scope}[yscale=1.5]
+    % Ejes
+    \capa{1}{\ejes{$x_1$}{$p_1$}{7.4}{2.9}}
+    % Demanda marshalliana
+    \capa{2}{\draw[curva1] plot[domain=1.45:4.8,samples=80,smooth] (\x,{3.6/\x}) node[etiqueta,right,text=tceemorado] {$x_1(p_1,\overline{\vect{p}}_{-1},\overline{W})$};}
+    % Precios y cantidades
+    \capa{3}{\draw[guia] (0,2) -- (4,2);}
+    \capa{3}{\node[left] at (0,2) {$p_1^0$};}
+    \capa{3}{\draw[guia] (0,1) -- (4,1);}
+    \capa{3}{\node[left] at (0,1) {$p_1^1$};}
+    \capa{3}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (-0.55,2) -- (-0.55,1) node[midway,left=5pt,align=center,font=\footnotesize] {caída\\del precio};}
+    \capa{3}{\node[punto] at (1.8,2) {};}
+    \capa{3}{\draw[guia] (1.8,2) -- (1.8,0);}
+    \capa{3}{\node[below] at (1.8,0) {$x_1^0$};}
+    \capa{3}{\node[punto] at (3.6,1) {};}
+    \capa{3}{\draw[guia] (3.6,1) -- (3.6,0);}
+    \capa{3}{\node[below] at (3.6,0) {$x_1^1$};}
+    % Área ΔEC
+    \capa{4}{\fill[areaec] (0.02,1) -- plot[domain=1:2,samples=40,smooth] ({3.6/\x},\x) -- (0.02,2) -- cycle;}
+    \capa{4}{\draw[curva1] plot[domain=1:2,samples=40,smooth] ({3.6/\x},\x);}
+    \capa{4}{\node[etiqueta] at (1.3,1.4) {$\Delta\mathrm{EC}$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

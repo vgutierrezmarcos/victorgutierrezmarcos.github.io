@@ -29,12 +29,15 @@
 \definecolor{tceeverde}{HTML}{3C7D3A}
 \definecolor{tceeazul}{HTML}{1F5F99}
 \definecolor{tceerojo}{HTML}{B22222}
+\definecolor{tceenaranja}{HTML}{E07B28}
 \definecolor{tceegris}{HTML}{767171}
 \definecolor{tceesalvia}{HTML}{E2EFD9}
 
 % Capas para el vídeo: \capa{n}{…} dibuja su contenido solo a partir del paso n.
 % En el PDF, la web y Word se ve todo; generar-video.py compila el gráfico una
 % vez por paso con \def\tceepaso{k} para que cada elemento aparezca al narrarlo.
+% Vectores con flecha encima, como en el texto (tcee.sty): \vect{x}, \vect{p}
+\providecommand{\vect}[1]{\vec{#1}}
 \providecommand{\tceepaso}{1000}
 \newcommand{\capa}[2]{\ifnum#1>\tceepaso\relax\else#2\fi}
 

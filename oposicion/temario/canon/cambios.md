@@ -56,3 +56,5 @@ Autor: Víctor Gutiérrez Marcos
 - **Vectores con flecha** en todos los temas (x⃗, p⃗, z⃗, h⃗…).
 - **x⃗(p⃗,W̄) marshalliana, h⃗(p⃗,Ū) hicksiana**, siempre con argumentos al derivar; colores morado y verde en los gráficos.
 - Aplicar a 3.A.8, 3.A.9 y 3.A.11 (en curso).
+- Multiplicador del dual del consumidor: **μ** (como en el original), no λ^E.
+- 3.A.8: el coeficiente de tiempo de Becker pasa de τ_i a ℓ_i (τ queda para el peso de la combinación convexa).

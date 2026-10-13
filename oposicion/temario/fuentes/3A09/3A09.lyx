@@ -119,7 +119,7 @@ IntroducciÃ³n
 status collapsed
 
 \begin_layout Plain Layout
-3
+2
 \end_layout
 
 \end_inset
@@ -336,11 +336,31 @@ ContextualizaciÃ³n
 
 \begin_deeper
 \begin_layout Itemize
-La teorÃ­a de la demanda construida a partir de las preferencias, con el 
+La moderna teorÃ­a de la demanda busca ligar dos conceptos: las 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+preferencias
+\end_layout
+
+\end_inset
+
+, que no se observan, y la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+demanda
+\end_layout
+
+\end_inset
+
+, que sÃ­ se observa. El camino directo, de las preferencias a la demanda, es el 
 \emph on
 problema primal
 \emph default
- de maximizaciÃ³n de la utilidad, se ha estudiado en 
+: maximizar la utilidad con una renta dada 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -350,7 +370,21 @@ status collapsed
 
 \end_inset
 
-, junto con la historia del paso de la utilidad cardinal a la ordinal. Esta exposiciÃ³n la completa con cuatro lÃ­neas de trabajo que tienen un origen distinto: 
+. El 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+anÃ¡lisis de dualidad
+\end_layout
+
+\end_inset
+
+ se hace una pregunta en apariencia anecdÃ³tica: si se Â«da la vueltaÂ» a ese problema y el consumidor minimiza el gasto necesario para alcanzar un nivel de utilidad, Â¿cambian sus decisiones? La respuesta resulta de enorme utilidad, porque por el camino aparecen unas relaciones y propiedades del problema del consumidor que enriquecen la teorÃ­a neoclÃ¡sica de la demanda y permiten contestar preguntas como estas: Â¿quÃ© demandas observadas son compatibles con la maximizaciÃ³n de unas preferencias?, Â¿son tambiÃ©n suficientes las condiciones necesarias para esa compatibilidad?, Â¿quÃ© tipo de preferencias genera una clase particular de demandas? El anÃ¡lisis de dualidad ha sido determinante para responderlas. 
+\end_layout
+
+\begin_layout Itemize
+Esas preguntas se han abordado desde cuatro lÃ­neas de trabajo con un origen distinto: 
 \end_layout
 
 \begin_deeper
@@ -537,16 +571,6 @@ Slutsky
 
 \end_inset
 
- 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.8
-\end_layout
-
-\end_inset
-
 . 
 \end_layout
 
@@ -677,12 +701,12 @@ textcite{DeatonMuellbauer1980AIDS}
 
 \end_inset
 
-, la estimaciÃ³n de la demanda se apoya en la dualidad: se parte de una funciÃ³n de gasto o de utilidad indirecta y las demandas se obtienen derivando. 
+, la estimaciÃ³n de la demanda se apoya en la dualidad: se parte de una funciÃ³n de gasto o de utilidad indirecta y las demandas se obtienen derivando. Angus 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Angus Deaton
+Deaton
 \end_layout
 
 \end_inset
@@ -810,7 +834,7 @@ I. AnÃ¡lisis teÃ³rico de la dualidad
 
 \end_inset
 
-: partiremos de los ingredientes comunes a los dos enfoques (I.1); plantearemos el problema primal, que resumimos, y el dual, la minimizaciÃ³n del gasto, con su demanda hicksiana, su funciÃ³n de gasto y el lema de 
+: partiremos de los ingredientes comunes a los dos enfoques (I.1); plantearemos el problema primal, con la demanda marshalliana y la funciÃ³n indirecta de utilidad, y el dual, la minimizaciÃ³n del gasto, con la demanda hicksiana, la funciÃ³n de gasto y el lema de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -834,7 +858,27 @@ II. Desarrollos empÃ­ricos
 
 \end_inset
 
-: veremos para quÃ© se estiman los sistemas completos de demanda (II.1) y los pasos que sigue la literatura, desde la elecciÃ³n de la forma funcional (de la Cobb-Douglas y el sistema lineal de gasto hasta el AIDS de 
+: veremos para quÃ© se estiman los sistemas completos de demanda (II.1) y los pasos que sigue la literatura, desde la elecciÃ³n de la forma funcional (de la 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cobb
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Douglas
+\end_layout
+
+\end_inset
+
+ y el sistema lineal de gasto hasta el AIDS de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -878,7 +922,7 @@ Slutsky
 
 \end_inset
 
- y la clasificaciÃ³n de los bienes en sustitutivos y complementarios netos y brutos (III.2), y la mediciÃ³n de los cambios en el bienestar, con la mÃ©trica monetaria, las variaciones compensatoria y equivalente, el excedente del consumidor y los Ã­ndices de coste de la vida (III.3). 
+ y la clasificaciÃ³n de los bienes, propia y cruzada, neta y bruta (III.2), y la mediciÃ³n de los cambios en el bienestar, con el excedente del consumidor, la mÃ©trica monetaria, las variaciones compensatoria y equivalente y los Ã­ndices de coste de la vida (III.3). 
 \end_layout
 
 \end_deeper
@@ -934,20 +978,28 @@ status collapsed
 \length 1.5em
 \end_inset
 
-2. Primal (max 
-\begin_inset Formula $U$
-\end_inset
-
-) y dual (min 
-\begin_inset Formula $p\cdot x$
+2. Primal (
+\begin_inset Formula $\max U$
 \end_inset
 
 ): 
-\begin_inset Formula $h(p,\overline{U})$
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
 \end_inset
 
 , 
-\begin_inset Formula $E(p,\overline{U})$
+\begin_inset Formula $V$
+\end_inset
+
+; dual (
+\begin_inset Formula $\min \vect{p}\cdot\vect{h}$
+\end_inset
+
+): 
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
+\end_inset
+
+, 
+\begin_inset Formula $E$
 \end_inset
 
 
@@ -959,7 +1011,27 @@ status collapsed
 \length 1.5em
 \end_inset
 
-3. Relaciones de dualidad (Roy, Shephard)
+3. Relaciones de dualidad (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Roy
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+)
 \begin_inset Newline newline
 \end_inset
 
@@ -981,7 +1053,7 @@ status collapsed
 \length 1.5em
 \end_inset
 
-2. Pasos: forma funcional (LES, translog, AIDS), sistema, datos, estimaciÃ³n
+2. Pasos: forma funcional (LES, Rotterdam, translog, AIDS), sistema, datos, estimaciÃ³n
 \begin_inset Newline newline
 \end_inset
 
@@ -1003,7 +1075,37 @@ status collapsed
 \length 1.5em
 \end_inset
 
-1. Integrabilidad (Antonelli; Hurwicz y Uzawa)
+1. Integrabilidad (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Antonelli
+\end_layout
+
+\end_inset
+
+; 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Hurwicz
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Uzawa
+\end_layout
+
+\end_inset
+
+)
 \begin_inset Newline newline
 \end_inset
 
@@ -1012,7 +1114,17 @@ status collapsed
 \length 1.5em
 \end_inset
 
-2. EcuaciÃ³n de Slutsky y clasificaciÃ³n de los bienes
+2. EcuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+ y clasificaciÃ³n de los bienes
 \begin_inset Newline newline
 \end_inset
 
@@ -1043,11 +1155,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-La exposiciÃ³n va de las herramientas (I) a su estimaciÃ³n (II) y a sus aplicaciones (III). Reparto orientativo del cante: I, 7 minutos (I.1, 1; I.2, 3,5; I.3, 2,5); II, 5 (II.1, 0,5; II.2, 3,5; II.3, 1); III, 12 (III.1, 3; III.2, 2,5; III.3, 6,5). Los grÃ¡ficos imprescindibles son el doble primal-dual, el esquema de dualidad, el de la VC, el 
-\begin_inset Formula $\Delta\mathrm{EC}$
-\end_inset
-
- y la VE, y el del Ã­ndice de 
+La exposiciÃ³n va de las herramientas (I) a su estimaciÃ³n (II) y a sus aplicaciones (III). Reparto del cante: introducciÃ³n, 2 minutos; I, 10 (I.1, 2; I.2, 5; I.3, 3); II, 5 (II.1, 0,5; II.2, 3,5; II.3, 1); III, 12 (III.1, 2,5; III.2, 3,5; III.3, 6), y conclusiÃ³n, 1. El bloque I es el que mÃ¡s tiempo recibe porque de Ã©l sale todo lo demÃ¡s. Los grÃ¡ficos imprescindibles son el del primal, el del dual y el conjunto de los dos, el esquema de dualidad, los de la variaciÃ³n del excedente, la VC y la VE (uno por concepto y, despuÃ©s, el que los reÃºne) y el del Ã­ndice de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1087,7 +1195,7 @@ Tucker
 
 \end_inset
 
-, las propiedades de la funciÃ³n indirecta de utilidad una a una, la translog, la recuperaciÃ³n de la utilidad y la ordenaciÃ³n de las medidas de bienestar con las de 
+, la translog, la recuperaciÃ³n de la utilidad y la ordenaciÃ³n de las medidas de bienestar con las de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1143,7 +1251,7 @@ AnÃ¡lisis teÃ³rico de la dualidad en la decisiÃ³n de consumo
 status collapsed
 
 \begin_layout Plain Layout
-7
+10
 \end_layout
 
 \end_inset
@@ -1157,7 +1265,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: los ingredientes, en una frase con remisiÃ³n al primal (1 minuto); el primal, solo planteado, y el dual, desarrollado: planteamiento, tangencia, demanda hicksiana y funciÃ³n de gasto con sus propiedades clave y el lema de 
+En el cante: los ingredientes, con el esquema que lleva de las preferencias a las dos demandas (2 minutos); el primal y el dual, cada uno con su planteamiento, su grÃ¡fico y su soluciÃ³n, con las propiedades de la demanda marshalliana, la funciÃ³n indirecta de utilidad, la demanda hicksiana y la funciÃ³n de gasto, el lema de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1167,39 +1275,17 @@ Shephard
 
 \end_inset
 
- (3,5), y las relaciones de dualidad con el esquema (2,5). Se dibujan el grÃ¡fico doble (grÃ¡fico
-\begin_inset space ~
+ y la matriz de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
 
 \end_inset
 
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:primal-dual"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-) y el esquema de dualidad (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:esquema-dualidad"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-), que es el grÃ¡fico central del bloque. 
+ (5), y las relaciones de dualidad, que culminan en el grÃ¡fico conjunto y el esquema de dualidad (3). En la pizarra: el primal en la mitad izquierda, el dual en la derecha y, al final, el grÃ¡fico conjunto. 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1219,7 +1305,7 @@ Tucker
 
 \end_inset
 
-, las condiciones de segundo orden (anexo
+ completo y las condiciones de segundo orden (anexo
 \begin_inset space ~
 
 \end_inset
@@ -1228,22 +1314,6 @@ Tucker
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "anexo:kt"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-) y la cuasiconvexidad de la funciÃ³n indirecta de utilidad (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:cuasiconvexidad-fiu"
 plural "false"
 caps "false"
 noprefix "false"
@@ -1332,7 +1402,290 @@ problema de minimizaciÃ³n del gasto
 
 \end_deeper
 \begin_layout Itemize
-Ambos parten de los mismos ingredientes 
+Por eso, 
+\emph on
+los dos enfoques parten del mismo conjunto de hipÃ³tesis y elementos
+\emph default
+: el problema de fondo es el mismo y solo cambia la manera de abordarlo. El enfoque dual requiere exactamente la misma especificaciÃ³n del conjunto de elecciÃ³n, de las preferencias y de los precios que el primal (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:esquema-ingredientes-dualidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+De las preferencias a las dos demandas: los mismos ingredientes, con los papeles cambiados
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:esquema-ingredientes-dualidad"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.95
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+esquema-ingredientes-dualidad
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Recorremos el esquema parte por parte: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Conjunto de elecciÃ³n
+\end_layout
+
+\end_inset
+
+: el conjunto 
+\begin_inset Formula $S\subseteq\mathbb{R}^n_+$
+\end_inset
+
+, no vacÃ­o, cerrado y convexo, de las cestas o vectores de consumo 
+\begin_inset Formula $\vect{x}=(x_1,\dots,x_n)$
+\end_inset
+
+ sobre las que el consumidor tiene preferencias. Normalmente, 
+\begin_inset Formula $S=\mathbb{R}^n_+$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Preferencias
+\end_layout
+
+\end_inset
+
+: una relaciÃ³n binaria 
+\begin_inset Formula $\succcurlyeq$
+\end_inset
+
+ que permite al consumidor comparar las cestas. Para que dÃ© lugar a una ordenaciÃ³n coherente y manejable analÃ­ticamente, se le exigen unos 
+\emph on
+axiomas
+\emph default
+ sobre el comportamiento: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+completitud
+\emph default
+: dos cestas cualesquiera pueden compararse; 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+reflexividad
+\emph default
+: cada cesta es al menos tan buena como sÃ­ misma; 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+transitividad
+\emph default
+: las comparaciones son coherentes entre sÃ­; 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+continuidad
+\emph default
+: los conjuntos Â«al menos tan bueno comoÂ» y Â«no mejor queÂ» son cerrados (con los cuatro primeros axiomas, las preferencias pueden representarse con una funciÃ³n de utilidad continua, por el teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Debreu
+\end_layout
+
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+insaciabilidad local
+\emph default
+: cerca de cada cesta hay otra preferida (la monotonÃ­a estricta, mÃ¡s fuerte, tambiÃ©n la garantiza); 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+convexidad estricta
+\emph default
+: las combinaciones de cestas indiferentes se prefieren a los extremos; 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+diferenciabilidad
+\emph default
+: que la funciÃ³n de utilidad tenga derivadas, para poder usar el cÃ¡lculo diferencial. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+FunciÃ³n de utilidad
+\end_layout
+
+\end_inset
+
+: si se cumplen los axiomas, las preferencias son 
+\emph on
+de buen comportamiento
+\emph default
+ y pueden representarse con una funciÃ³n 
+\begin_inset Formula $U(\vect{x})$
+\end_inset
+
+ continua, creciente y estrictamente cuasicÃ³ncava, con la que el problema del consumidor se plantea como un problema de optimizaciÃ³n 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -1342,19 +1695,118 @@ status collapsed
 
 \end_inset
 
-: un conjunto de elecciÃ³n 
-\begin_inset Formula $S=\mathbb{R}^n_+$
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En el problema primal, la utilidad es la 
+\emph on
+funciÃ³n objetivo
+\emph default
+ que se maximiza. 
+\end_layout
+
+\begin_layout Itemize
+En el problema dual, da lugar a una 
+\emph on
+restricciÃ³n de utilidad
+\emph default
+: 
+\begin_inset Formula $U(\vect{x})\geq\overline{U}$
 \end_inset
 
-; unas preferencias completas, reflexivas, transitivas, continuas, localmente insaciables y estrictamente convexas, representables por una funciÃ³n de utilidad 
-\begin_inset Formula $U(x)$
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Gasto
+\end_layout
+
 \end_inset
 
- continua, creciente y estrictamente cuasicÃ³ncava, y unos precios 
-\begin_inset Formula $p\gg 0$
+: el consumidor se enfrenta a unos precios 
+\begin_inset Formula $\vect{p}\gg\vect{0}$
 \end_inset
 
- que el consumidor toma como dados. Los supuestos son tambiÃ©n los mismos: contexto estÃ¡tico y sin incertidumbre, informaciÃ³n perfecta, bienes homogÃ©neos y consumidor precio-aceptante. Lo Ãºnico que cambia es quÃ© se toma como objetivo y quÃ© como restricciÃ³n (tabla
+ que toma como dados, de modo que cada cesta le supone un gasto 
+\begin_inset Formula $\vect{p}\cdot\vect{x}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+En el problema primal, el gasto da lugar a la 
+\emph on
+restricciÃ³n presupuestaria
+\emph default
+: 
+\begin_inset Formula $\vect{p}\cdot\vect{x}\leq\overline{W}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+En el problema dual, el gasto es la 
+\emph on
+funciÃ³n objetivo
+\emph default
+ que se minimiza. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Funciones de demanda
+\end_layout
+
+\end_inset
+
+: cada problema da su soluciÃ³n. El primal, la 
+\emph on
+demanda ordinaria o marshalliana
+\emph default
+, 
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
+\end_inset
+
+; el dual, la 
+\emph on
+demanda compensada o hicksiana
+\emph default
+, 
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Los 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+supuestos
+\end_layout
+
+\end_inset
+
+ son tambiÃ©n los mismos: contexto estÃ¡tico y sin incertidumbre, informaciÃ³n perfecta, bienes homogÃ©neos y consumidor precio-aceptante. Lo Ãºnico que cambia es quÃ© se toma como objetivo y quÃ© como restricciÃ³n (tabla
 \begin_inset space ~
 
 \end_inset
@@ -1370,7 +1822,7 @@ nolink "false"
 
 \end_inset
 
-): la utilidad es el objetivo del primal y la restricciÃ³n del dual, y el gasto, la restricciÃ³n del primal y el objetivo del dual. 
+). 
 \end_layout
 
 \begin_layout Standard
@@ -1499,7 +1951,7 @@ FunciÃ³n objetivo
 
 \size small
 utilidad 
-\begin_inset Formula $U(x)$
+\begin_inset Formula $U(\vect{x})$
 \end_inset
 
  (se maximiza) 
@@ -1514,7 +1966,7 @@ utilidad
 
 \size small
 gasto 
-\begin_inset Formula $p\cdot x$
+\begin_inset Formula $\vect{p}\cdot\vect{h}$
 \end_inset
 
  (se minimiza)
@@ -1542,7 +1994,7 @@ RestricciÃ³n
 
 \size small
 presupuestaria: 
-\begin_inset Formula $p\cdot x\leq\overline{W}$
+\begin_inset Formula $\vect{p}\cdot\vect{x}\leq\overline{W}$
 \end_inset
 
  
@@ -1557,7 +2009,7 @@ presupuestaria:
 
 \size small
 de utilidad: 
-\begin_inset Formula $U(x)\geq\overline{U}$
+\begin_inset Formula $U(\vect{h})\geq\overline{U}$
 \end_inset
 
 
@@ -1585,7 +2037,7 @@ ParÃ¡metros
 
 \size small
 precios 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
  y renta 
@@ -1604,7 +2056,7 @@ precios
 
 \size small
 precios 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
  y utilidad 
@@ -1636,7 +2088,7 @@ SoluciÃ³n
 
 \size small
 demanda marshalliana 
-\begin_inset Formula $x(p,\overline{W})$
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
 \end_inset
 
  
@@ -1651,7 +2103,7 @@ demanda marshalliana
 
 \size small
 demanda hicksiana 
-\begin_inset Formula $h(p,\overline{U})$
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
 
@@ -1679,7 +2131,7 @@ FunciÃ³n valor
 
 \size small
 funciÃ³n indirecta de utilidad 
-\begin_inset Formula $V(p,\overline{W})$
+\begin_inset Formula $V(\vect{p},\overline{W})$
 \end_inset
 
  
@@ -1694,7 +2146,7 @@ funciÃ³n indirecta de utilidad
 
 \size small
 funciÃ³n de gasto 
-\begin_inset Formula $E(p,\overline{U})$
+\begin_inset Formula $E(\vect{p},\overline{U})$
 \end_inset
 
 
@@ -1775,12 +2227,12 @@ Problemas primal y dual
 Problema primal: maximizaciÃ³n de la utilidad
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
+a) Idea
+\end_layout
 
-\emph on
-Idea
-\emph default
-: conjugar unas necesidades ilimitadas con unos recursos escasos. El problema primal, desarrollado en 
+\begin_layout Itemize
+El enfoque primal, como el dual, resuelve un problema econÃ³mico: conjugar unas necesidades en principio ilimitadas con unos recursos escasos. Especificados ya sus componentes, necesidades (preferencias) y recursos (presupuesto), lo planteamos y resolvemos, porque es el punto de partida de la dualidad 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -1790,11 +2242,31 @@ status collapsed
 
 \end_inset
 
-, se resume aquÃ­ porque es el punto de partida de la dualidad. 
+. 
+\end_layout
+
+\begin_layout Paragraph
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
 \end_layout
 
 \begin_layout Itemize
-El 
+Los de I.1: contexto estÃ¡tico, informaciÃ³n perfecta, preferencias de buen comportamiento representables con una funciÃ³n de utilidad de buen comportamiento, bienes homogÃ©neos y consumidor precio-aceptante. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+AnalÃ­tico
+\emph default
+. El 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -1806,25 +2278,50 @@ problema de maximizaciÃ³n de la utilidad
 
  (PMU) es 
 \begin_inset Formula \begin{equation}
-  \max_{x}\ U(x)\quad\text{s.a.}\quad p\cdot x\leq\overline{W},\quad x\geq 0. \label{eq:pmu}
+  \max_{\vect{x}}\ U(\vect{x})\quad\text{s.a.}\quad \vect{p}\cdot\vect{x}\leq\overline{W},\quad \vect{x}\geq\vect{0}. \label{eq:pmu}
   \end{equation}
 \end_inset
 
-Las condiciones de existencia, unicidad y suficiencia son las del PMU 
-\begin_inset Flex Ver tema
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Con una funciÃ³n de utilidad continua y un conjunto presupuestario no vacÃ­o, cerrado, acotado (porque 
+\begin_inset Formula $\vect{p}\gg\vect{0}$
+\end_inset
+
+) y convexo, el Ã³ptimo 
+\emph on
+existe
+\emph default
+ (teorema de 
+\begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-3.A.8
+Weierstrass
 \end_layout
 
 \end_inset
 
-. Con la lagrangiana 
-\begin_inset Formula $\mathcal{L}=U(x)+\lambda\,(\overline{W}-p\cdot x)$
+), es 
+\emph on
+global
+\emph default
+ y, con 
+\begin_inset Formula $U$
 \end_inset
 
-, en una soluciÃ³n interior las condiciones de 
+ estrictamente cuasicÃ³ncava, 
+\emph on
+Ãºnico
+\emph default
+. 
+\end_layout
+
+\begin_layout Itemize
+Como hay restricciones de desigualdad, se resuelve por el mÃ©todo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1844,33 +2341,39 @@ Tucker
 
 \end_inset
 
- dan 
+, con la lagrangiana 
+\begin_inset Formula $\mathcal{L}=U(\vect{x})+\lambda\,(\overline{W}-\vect{p}\cdot\vect{x})$
+\end_inset
+
+. El multiplicador 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ es el precio sombra de la renta: lo que aumenta la utilidad mÃ¡xima cuando la renta aumenta marginalmente, es decir, la 
+\emph on
+utilidad marginal de la renta
+\emph default
+. 
+\end_layout
+
+\begin_layout Itemize
+En una soluciÃ³n interior, las condiciones de primer orden dan la segunda ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Gossen
+\end_layout
+
+\end_inset
+
+ (igualdad de las utilidades marginales ponderadas por los precios): 
 \begin_inset Formula \begin{equation}
-  \frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda,\qquad RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}, \label{eq:tangencia-primal}
-  \end{equation}
+    \frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda,\qquad RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}: \label{eq:tangencia-primal}
+    \end{equation}
 \end_inset
 
-donde 
-\begin_inset Formula $\lambda>0$
-\end_inset
-
- es la utilidad marginal de la renta: la curva de indiferencia mÃ¡s alta alcanzable es tangente a la recta de balance (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:primal-dual"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-, panel izquierdo). Las condiciones completas, con la soluciÃ³n de esquina, y las de segundo orden estÃ¡n en el anexo
+la tasa subjetiva a la que el consumidor intercambia los bienes se iguala a la tasa objetiva del mercado. Las condiciones completas, con la soluciÃ³n de esquina, y las de segundo orden estÃ¡n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -1886,43 +2389,367 @@ nolink "false"
 
 \end_inset
 
-; la soluciÃ³n de esquina se estudia en 
-\begin_inset Flex Ver tema
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+GrÃ¡fico
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:primal"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), con dos bienes y soluciÃ³n interior: se dibuja la recta de balance, 
+\begin_inset Formula $\vect{p}\cdot\vect{x}=\overline{W}$
+\end_inset
+
+, con pendiente 
+\begin_inset Formula $-p_1/p_2$
+\end_inset
+
+, y el mapa de curvas de indiferencia; el equilibrio estÃ¡ en la curva de indiferencia mÃ¡s alta que toca el conjunto presupuestario, tangente a la recta de balance. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-3.A.8
+
+\backslash
+centering
 \end_layout
 
 \end_inset
 
-. 
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Problema primal: la curva de indiferencia mÃ¡s alta alcanzable con la renta 
+\begin_inset Formula $\overline{W}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:primal"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+primal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{MatePerez2007Microeconomia}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[fig.~3.D.1]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones: la demanda marshalliana y la funciÃ³n indirecta de utilidad
 \end_layout
 
 \begin_layout Itemize
-La soluciÃ³n es la 
+La soluciÃ³n del PMU es la cesta que da la mayor utilidad con un presupuesto dado. Por las caracterÃ­sticas del sistema de condiciones de primer orden, sus cantidades pueden expresarse como funciones de los parÃ¡metros, lo que permite el anÃ¡lisis de estÃ¡tica comparativa: es el 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-demanda marshalliana
+sistema completo de ecuaciones de demanda marshalliana
 \end_layout
 
 \end_inset
 
- (tambiÃ©n llamada ordinaria o walrasiana) 
-\begin_inset Formula $x(p,\overline{W})$
+ u ordinaria (tambiÃ©n llamada walrasiana) (SCEDM), 
+\begin_inset Formula \begin{equation}
+  \vect{x}^*=\vect{x}(\vect{p},\overline{W})=\begin{pmatrix} x_1(p_1,\dots,p_n,\overline{W})\\ \vdots\\ x_n(p_1,\dots,p_n,\overline{W})\end{pmatrix}. \label{eq:marshalliana}
+  \end{equation}
 \end_inset
 
-: homogÃ©nea de grado cero en 
-\begin_inset Formula $(p,\overline{W})$
+
+\end_layout
+
+\begin_layout Itemize
+Sus 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+propiedades
+\end_layout
+
 \end_inset
 
- (no hay ilusiÃ³n monetaria) y con la restricciÃ³n saturada, 
-\begin_inset Formula $p\cdot x(p,\overline{W})=\overline{W}$
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencites
+\end_layout
+
 \end_inset
 
- (
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+prop.
+\begin_inset space ~
+
+\end_inset
+
+3.D.2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+MasColellWhinstonGreen1995
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+[cap.
+\begin_inset space ~
+
+\end_inset
+
+1]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+JehleReny2011Advanced
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+existe, es global y es Ãºnica
+\emph default
+, por los teoremas de la optimizaciÃ³n condicionada que acabamos de ver; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+continua
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+, por el teorema del mÃ¡ximo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Berge
+\end_layout
+
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+homogÃ©nea de grado cero
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+: 
+\begin_inset Formula $\vect{x}(k\vect{p},k\overline{W})=\vect{x}(\vect{p},\overline{W})$
+\end_inset
+
+ para todo 
+\begin_inset Formula $k>0$
+\end_inset
+
+. Si todos los precios y la renta se multiplican por la misma constante, el conjunto presupuestario no cambia y tampoco la cesta elegida: el consumidor 
+\emph on
+no tiene ilusiÃ³n monetaria
+\emph default
+. Por eso puede tomarse cualquier bien como numerario y trabajar con precios relativos y renta real; 
+\end_layout
+
+\begin_layout Enumerate
+cumple la 
 \emph on
 ley de 
 \begin_inset Flex Autor
@@ -1936,11 +2763,44 @@ Walras
 
 
 \emph default
-), por la insaciabilidad local. 
+: 
+\begin_inset Formula $\vect{p}\cdot\vect{x}(\vect{p},\overline{W})=\overline{W}$
+\end_inset
+
+. En el Ã³ptimo, la restricciÃ³n presupuestaria se satura: por la insaciabilidad local, no es racional dejar renta sin gastar; 
 \end_layout
 
+\begin_layout Enumerate
+es, con cierta generalidad, 
+\emph on
+diferenciable
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+: basta, en una soluciÃ³n interior, que 
+\begin_inset Formula $U$
+\end_inset
+
+ sea dos veces diferenciable, que alguna utilidad marginal sea positiva y que el determinante del hessiano orlado sea distinto de cero en el Ã³ptimo 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[cap.~1]{JehleReny2011Advanced}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
-Su funciÃ³n valor es la 
+El primal da, ademÃ¡s, una herramienta adicional: el valor que toma la funciÃ³n objetivo en el equilibrio. Sustituyendo las demandas Ã³ptimas en la utilidad se obtiene la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -1952,37 +2812,150 @@ funciÃ³n indirecta de utilidad
 
  (FIU), la utilidad mÃ¡xima que se alcanza con unos precios y una renta, 
 \begin_inset Formula \begin{equation}
-  V(p,\overline{W})=U\big(x(p,\overline{W})\big). \label{eq:fiu}
+  V(\vect{p},\overline{W})=U\big(\vect{x}(\vect{p},\overline{W})\big)=\max_{\vect{x}}\left\{U(\vect{x})\ :\ \vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}\right\}. \label{eq:fiu}
   \end{equation}
 \end_inset
 
-Es continua, homogÃ©nea de grado cero en 
-\begin_inset Formula $(p,\overline{W})$
+Da el nivel de utilidad Ã³ptimo para cada combinaciÃ³n de parÃ¡metros sin volver a resolver el problema. De ahÃ­ su nombre: la utilidad depende 
+\emph on
+indirectamente
+\emph default
+ de los precios y la renta, a travÃ©s de la maximizaciÃ³n, mientras que en 
+\begin_inset Formula $U(\vect{x})$
 \end_inset
 
-, estrictamente creciente en 
+ depende directamente de las cantidades. 
+\end_layout
+
+\begin_layout Itemize
+Sus 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+propiedades
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[prop.~3.D.3]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+, que serÃ¡n de gran utilidad mÃ¡s adelante: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+existe
+\emph default
+, porque existe la demanda; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+continua
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+homogÃ©nea de grado cero
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+: un cambio equiproporcional de todos los precios y la renta no altera el equilibrio (por la homogeneidad de la demanda) y, por tanto, tampoco el bienestar; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+estrictamente creciente en la renta
+\emph default
+ 
 \begin_inset Formula $\overline{W}$
 \end_inset
 
-, no creciente en 
-\begin_inset Formula $p$
+: mÃ¡s renta siempre aumenta el bienestar, por la insaciabilidad local; 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+no creciente en los precios
+\emph default
+ 
+\begin_inset Formula $\vect{p}$
 \end_inset
 
- y cuasiconvexa en 
-\begin_inset Formula $(p,\overline{W})$
+ (decreciente, pero no estrictamente): una subida de precios nunca puede aumentar el bienestar; como mucho lo deja igual, si sube el precio de un bien que no se compra (soluciÃ³n de esquina); 
+\end_layout
+
+\begin_layout Enumerate
+es 
+\emph on
+cuasiconvexa
+\emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
-,
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-El conjunto 
-\begin_inset Formula $\{(p,\overline{W}): V(p,\overline{W})\leq\bar v\}$
+: el conjunto 
+\begin_inset Formula $\{(\vect{p},\overline{W}): V(\vect{p},\overline{W})\leq\overline{U}^1\}$
 \end_inset
 
- es convexo (grÃ¡fico
+ es convexo. Si dos presupuestos Â«extremosÂ», 
+\begin_inset Formula $(\vect{p},\overline{W})$
+\end_inset
+
+ y 
+\begin_inset Formula $(\vect{p}\,',\overline{W}')$
+\end_inset
+
+, dan como mucho 
+\begin_inset Formula $\overline{U}^1$
+\end_inset
+
+, tambiÃ©n lo da su presupuesto Â«promedioÂ», 
+\begin_inset Formula $(\vect{p}\,'',\overline{W}'')=\tau(\vect{p},\overline{W})+(1-\tau)(\vect{p}\,',\overline{W}')$
+\end_inset
+
+ con 
+\begin_inset Formula $\tau\in[0,1]$
+\end_inset
+
+. La razÃ³n es que toda cesta asequible con el promedio es asequible con al menos uno de los extremos: si 
+\begin_inset Formula $\vect{p}\cdot\vect{x}>\overline{W}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}\,'\cdot\vect{x}>\overline{W}'$
+\end_inset
+
+, ponderando, 
+\begin_inset Formula $\vect{p}\,''\cdot\vect{x}>\overline{W}''$
+\end_inset
+
+. GrÃ¡ficamente (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -1998,28 +2971,11 @@ nolink "false"
 
 \end_inset
 
-). Toda cesta asequible con un presupuesto promedio 
-\begin_inset Formula $\big(\lambda p+(1-\lambda)p',\ \lambda\overline{W}+(1-\lambda)\overline{W}'\big)$
-\end_inset
-
- es asequible con al menos uno de los dos presupuestos extremos, de modo que la utilidad alcanzable con el promedio no supera la mayor de las dos. No depende de la convexidad de las preferencias 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite[prop.~3.D.3]{MasColellWhinstonGreen1995}
+), la recta de balance promedio pasa por el corte de las dos extremas y queda dentro de la uniÃ³n de sus conjuntos presupuestarios, asÃ­ que la utilidad mÃ¡xima con el promedio no supera la mayor de las alcanzables con los extremos. No depende de la convexidad de las preferencias; 
 \end_layout
 
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- y de ella se obtienen las demandas derivando, con la 
+\begin_layout Enumerate
+cumple la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2051,13 +3007,17 @@ parencite{Roy1947Distribution}
 
 \end_inset
 
-: 
-\begin_inset Formula \begin{equation}
-  x_i(p,\overline{W})=-\frac{\partial V(p,\overline{W})/\partial p_i}{\partial V(p,\overline{W})/\partial\overline{W}},\qquad i=1,\dots,n. \label{eq:roy}
-  \end{equation}
+: si 
+\begin_inset Formula $V$
 \end_inset
 
-La demostraciÃ³n, con el teorema de la envolvente, estÃ¡ en el anexo
+ es diferenciable, 
+\begin_inset Formula \begin{equation}
+    x_i(\vect{p},\overline{W})=-\frac{\partial V(\vect{p},\overline{W})/\partial p_i}{\partial V(\vect{p},\overline{W})/\partial\overline{W}},\qquad i=1,\dots,n. \label{eq:roy}
+    \end{equation}
+\end_inset
+
+Las demandas ordinarias se obtienen directamente de la FIU derivando (demostraciÃ³n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -2073,17 +3033,10 @@ nolink "false"
 
 \end_inset
 
-. 
+). 
 \end_layout
 
-\begin_layout Itemize
-Como 
-\begin_inset Formula $V$
-\end_inset
-
- se mide en Â«ÃºtilesÂ», que solo ordenan, no sirve por sÃ­ sola para cuantificar cambios de bienestar. Cabe entonces preguntarse: si con los mismos ingredientes se da la vuelta al problema y se minimiza el gasto necesario para alcanzar un nivel de utilidad, Â¿se llega al mismo equilibrio? Responder a esta pregunta, en apariencia inocente, descubre una serie de relaciones entre los dos enfoques que enriquecen mucho la teorÃ­a de la demanda. 
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -2110,11 +3063,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cuasiconvexidad de la funciÃ³n indirecta de utilidad en los precios (con 
-\begin_inset Formula $\overline{W}$
-\end_inset
-
- fija)
+Cuasiconvexidad de la funciÃ³n indirecta de utilidad: con el presupuesto promedio no se alcanza mÃ¡s utilidad que con el mejor de los extremos
 \end_layout
 
 \end_inset
@@ -2148,7 +3097,7 @@ status collapsed
 
 \end_inset
 
-0.5
+0.6
 \begin_inset ERT
 status collapsed
 
@@ -2220,24 +3169,52 @@ textcite[fig.~3.D.5]{MasColellWhinstonGreen1995}
 
 \end_layout
 
+\begin_layout Paragraph
+e) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+Como 
+\begin_inset Formula $V$
+\end_inset
+
+ se mide en Â«ÃºtilesÂ», que solo ordenan, no sirve por sÃ­ sola para cuantificar cambios de bienestar. AdemÃ¡s, estos resultados proceden de un planteamiento particular del problema. Cabe entonces preguntarse: si con los mismos ingredientes se da la vuelta al problema y se minimiza el gasto necesario para alcanzar un nivel de utilidad, Â¿se llega al mismo equilibrio? Responder a esta pregunta, en apariencia inocente, descubre una serie de relaciones entre los dos enfoques que enriquecen mucho la teorÃ­a de la demanda. 
+\end_layout
+
 \begin_layout Subsubsection
 Problema dual: minimizaciÃ³n del gasto
 \end_layout
 
 \begin_layout Paragraph
-Idea y supuestos
+a) Idea
 \end_layout
 
 \begin_layout Itemize
-En lugar de preguntar cuÃ¡nta utilidad compra una renta, preguntamos cuÃ¡l es la forma mÃ¡s barata de alcanzar un nivel de utilidad. Los supuestos son los mismos que en el primal: solo cambia la formulaciÃ³n del problema. 
+En lugar de preguntar cuÃ¡nta utilidad compra una renta, preguntamos cuÃ¡l es la forma mÃ¡s barata de alcanzar un nivel de utilidad. Es el problema de optimizaciÃ³n alternativo que propone la teorÃ­a de la dualidad. 
 \end_layout
 
 \begin_layout Paragraph
-Desarrollo analÃ­tico
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
 \end_layout
 
 \begin_layout Itemize
-El 
+Son idÃ©nticos a los del primal: solo cambia la formulaciÃ³n del problema. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+AnalÃ­tico
+\emph default
+. El 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2249,32 +3226,32 @@ problema de minimizaciÃ³n del gasto
 
  (PMG) es 
 \begin_inset Formula \begin{equation}
-  \min_{x}\ p\cdot x\quad\text{s.a.}\quad U(x)\geq\overline{U},\quad x\geq 0, \label{eq:pmg}
+  \min_{\vect{h}}\ \vect{p}\cdot\vect{h}\quad\text{s.a.}\quad U(\vect{h})\geq\overline{U},\quad \vect{h}\geq\vect{0}, \label{eq:pmg}
   \end{equation}
 \end_inset
 
 con 
-\begin_inset Formula $\overline{U}>U(0)$
+\begin_inset Formula $\overline{U}>U(\vect{0})$
 \end_inset
 
  y 
-\begin_inset Formula $p\gg 0$
+\begin_inset Formula $\vect{p}\gg\vect{0}$
 \end_inset
 
 : se busca alcanzar al menos el nivel de utilidad 
 \begin_inset Formula $\overline{U}$
 \end_inset
 
- de la forma mÃ¡s barata posible. La variable de elecciÃ³n es la cesta 
-\begin_inset Formula $x$
+ de la forma mÃ¡s barata posible. La variable de elecciÃ³n es otra vez una cesta de bienes, que escribimos 
+\begin_inset Formula $\vect{h}$
 \end_inset
 
-, igual que en el primal; su soluciÃ³n serÃ¡ la demanda 
-\begin_inset Formula $h(p,\overline{U})$
+ para no confundir las dos demandas: su soluciÃ³n serÃ¡ la demanda hicksiana 
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
 . Existe soluciÃ³n: aunque el conjunto 
-\begin_inset Formula $\{x: U(x)\geq\overline{U}\}$
+\begin_inset Formula $\{\vect{h}: U(\vect{h})\geq\overline{U}\}$
 \end_inset
 
  no estÃ¡ acotado, basta buscarla entre las cestas que no cuestan mÃ¡s que una cesta cualquiera que alcance 
@@ -2296,8 +3273,9 @@ parencite[prop.~3.E.1]{MasColellWhinstonGreen1995}
 . 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Como hay restricciones de desigualdad, se resuelve con el mÃ©todo de 
+Se resuelve con el mÃ©todo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -2319,18 +3297,17 @@ Tucker
 
 , a partir de la lagrangiana 
 \begin_inset Formula \begin{equation}
-  \mathcal{L}=p\cdot x+\lambda^{E}\big(\overline{U}-U(x)\big). \label{eq:lagrangiana-dual}
-  \end{equation}
+    \mathcal{L}=\vect{p}\cdot\vect{h}+\mu\big(\overline{U}-U(\vect{h})\big). \label{eq:lagrangiana-dual}
+    \end{equation}
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 En una soluciÃ³n interior, las condiciones de primer orden dan 
 \begin_inset Formula \begin{equation}
-    \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\lambda^{E},\qquad RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}: \label{eq:tangencia-dual}
+    \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\mu,\qquad RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}: \label{eq:tangencia-dual}
     \end{equation}
 \end_inset
 
@@ -2359,19 +3336,19 @@ nolink "false"
 
 \begin_layout Itemize
 El multiplicador 
-\begin_inset Formula $\lambda^{E}$
+\begin_inset Formula $\mu$
 \end_inset
 
- es el 
+ es el precio sombra de la utilidad exigida, el 
 \emph on
 coste marginal de la utilidad
 \emph default
 : por el teorema de la envolvente, 
-\begin_inset Formula $\lambda^{E*}=\partial E(p,\overline{U})/\partial\overline{U}$
+\begin_inset Formula $\mu^*=\partial E(\vect{p},\overline{U})/\partial\overline{U}$
 \end_inset
 
 . En la cesta comÃºn a los dos problemas, 
-\begin_inset Formula $\lambda^{E*}=1/\lambda^*$
+\begin_inset Formula $\mu^*=1/\lambda^*$
 \end_inset
 
 : si una unidad monetaria mÃ¡s compra 
@@ -2393,7 +3370,7 @@ Se obtiene derivando respecto a
 \end_inset
 
  la identidad 
-\begin_inset Formula $E\big(p,V(p,\overline{W})\big)=\overline{W}$
+\begin_inset Formula $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$
 \end_inset
 
  del apartado
@@ -2406,7 +3383,7 @@ I.3:
 \end_inset
 
 , es decir, 
-\begin_inset Formula $\lambda^{E*}\lambda^*=1$
+\begin_inset Formula $\mu^*\lambda^*=1$
 \end_inset
 
 .
@@ -2419,7 +3396,7 @@ I.3:
 
 \begin_layout Itemize
 La restricciÃ³n se satura, 
-\begin_inset Formula $U(x^*)=\overline{U}$
+\begin_inset Formula $U(\vect{h}^*)=\overline{U}$
 \end_inset
 
 , por la continuidad de 
@@ -2462,12 +3439,12 @@ nolink "false"
 \end_layout
 
 \end_deeper
-\begin_layout Paragraph
-Desarrollo grÃ¡fico
-\end_layout
-
 \begin_layout Itemize
-El grÃ¡fico procede al revÃ©s que el del primal (grÃ¡fico
+
+\emph on
+GrÃ¡fico
+\emph default
+ (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -2475,7 +3452,7 @@ El grÃ¡fico procede al revÃ©s que el del primal (grÃ¡fico
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:primal-dual"
+reference "fig:dual"
 plural "false"
 caps "false"
 noprefix "false"
@@ -2483,7 +3460,7 @@ nolink "false"
 
 \end_inset
 
-, panel derecho): se dibuja la curva de indiferencia del nivel exigido, 
+): se procede al revÃ©s que en el primal. Se dibuja la curva de indiferencia del nivel exigido, 
 \begin_inset Formula $\overline{U}$
 \end_inset
 
@@ -2492,7 +3469,7 @@ nolink "false"
 rectas isogasto
 \emph default
  
-\begin_inset Formula $p\cdot x=e$
+\begin_inset Formula $\vect{p}\cdot\vect{h}=e$
 \end_inset
 
 , paralelas entre sÃ­, que unen las cestas con el mismo gasto, y se desplazan hacia el origen hasta la mÃ¡s baja que toca la curva. El equilibrio estÃ¡ en la tangencia: la isogasto mÃ¡s baja que alcanza 
@@ -2528,7 +3505,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Problema primal (izquierda) y problema dual (derecha): la misma tangencia
+Problema dual: la recta isogasto mÃ¡s baja que alcanza la utilidad 
+\begin_inset Formula $\overline{U}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2536,7 +3517,7 @@ Problema primal (izquierda) y problema dual (derecha): la misma tangencia
 
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:primal-dual"
+name "fig:dual"
 
 \end_inset
 
@@ -2562,7 +3543,7 @@ status collapsed
 
 \end_inset
 
-0.95
+0.5
 \begin_inset ERT
 status collapsed
 
@@ -2594,7 +3575,7 @@ status collapsed
 
 \end_inset
 
-primal-dual
+dual
 \begin_inset ERT
 status collapsed
 
@@ -2646,8 +3627,8 @@ textcite[fig.~3.E.1]{MasColellWhinstonGreen1995}
 
 \end_layout
 
-\begin_layout Paragraph
-SoluciÃ³n: la demanda compensada o hicksiana
+\begin_layout Subparagraph
+iii) Implicaciones: la demanda hicksiana y la funciÃ³n de gasto
 \end_layout
 
 \begin_layout Itemize
@@ -2667,7 +3648,7 @@ sistema completo de ecuaciones de demanda compensada o hicksiana
 
  (SCEDC): 
 \begin_inset Formula \begin{equation}
-  h(p,\overline{U})=\begin{pmatrix} h_1(p_1,\dots,p_n,\overline{U})\\ \vdots\\ h_n(p_1,\dots,p_n,\overline{U})\end{pmatrix}. \label{eq:hicksiana}
+  \vect{h}^*=\vect{h}(\vect{p},\overline{U})=\begin{pmatrix} h_1(p_1,\dots,p_n,\overline{U})\\ \vdots\\ h_n(p_1,\dots,p_n,\overline{U})\end{pmatrix}. \label{eq:hicksiana}
   \end{equation}
 \end_inset
 
@@ -2675,7 +3656,7 @@ Se llama
 \emph on
 compensada
 \emph default
- porque, cuando cambian los precios, el gasto se ajusta para mantener constante la utilidad: el consumidor recibe justo la compensaciÃ³n que necesita para seguir en 
+ porque el gasto ya no es fijo: cuando cambian los precios, se ajusta para mantener constante la utilidad, de modo que el consumidor recibe justo la compensaciÃ³n que necesita para seguir en 
 \begin_inset Formula $\overline{U}$
 \end_inset
 
@@ -2710,14 +3691,22 @@ parencite[prop.~3.E.3 y 3.E.4]{MasColellWhinstonGreen1995}
 
 \begin_deeper
 \begin_layout Enumerate
-es 
+
 \emph on
-Ãºnica
+existe, es global y es Ãºnica
 \emph default
-, con preferencias estrictamente convexas, y 
+, con preferencias estrictamente convexas; 
+\end_layout
+
+\begin_layout Enumerate
+es 
 \emph on
 continua
 \emph default
+ en 
+\begin_inset Formula $(\vect{p},\overline{U})$
+\end_inset
+
 ; 
 \end_layout
 
@@ -2725,13 +3714,13 @@ continua
 es 
 \emph on
 homogÃ©nea de grado cero en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
 \emph default
 : 
-\begin_inset Formula $h(kp,\overline{U})=h(p,\overline{U})$
+\begin_inset Formula $\vect{h}(k\vect{p},\overline{U})=\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
  para todo 
@@ -2755,10 +3744,10 @@ homogÃ©nea de grado cero en
 no hay exceso de utilidad
 \emph default
 : 
-\begin_inset Formula $U\big(h(p,\overline{U})\big)=\overline{U}$
+\begin_inset Formula $U\big(\vect{h}(\vect{p},\overline{U})\big)=\overline{U}$
 \end_inset
 
-; 
+; el consumidor alcanza exactamente el nivel exigido y no mÃ¡s; 
 \end_layout
 
 \begin_layout Enumerate
@@ -2773,11 +3762,11 @@ ley de la demanda compensada
 \end_inset
 
 : 
-\begin_inset Formula $(p'-p)\cdot\big(h(p',\overline{U})-h(p,\overline{U})\big)\leq 0$
+\begin_inset Formula $(\vect{p}\,'-\vect{p})\cdot\big(\vect{h}(\vect{p}\,',\overline{U})-\vect{h}(\vect{p},\overline{U})\big)\leq 0$
 \end_inset
 
  y, en particular, 
-\begin_inset Formula $\partial h_i/\partial p_i\leq 0$
+\begin_inset Formula $\partial h_i(\vect{p},\overline{U})/\partial p_i\leq 0$
 \end_inset
 
 . Precio y cantidad compensada nunca se mueven en el mismo sentido: un bien 
@@ -2824,7 +3813,7 @@ no es observable
 \begin_inset Formula $\overline{U}$
 \end_inset
 
-, que no se ve, y no puede estimarse directamente. La dualidad (I.3) y la ecuaciÃ³n de 
+, que no se ve, y no puede estimarse directamente. Las relaciones de dualidad (I.3) y la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -2837,12 +3826,8 @@ Slutsky
  (III.2) permiten recuperar sus derivadas a partir de la demanda marshalliana, que sÃ­ se observa. 
 \end_layout
 
-\begin_layout Paragraph
-FunciÃ³n valor: la funciÃ³n de gasto
-\end_layout
-
 \begin_layout Itemize
-Sustituyendo la demanda hicksiana en la funciÃ³n objetivo se obtiene la 
+Sustituyendo la demanda hicksiana en la funciÃ³n objetivo se obtiene la funciÃ³n valor del dual, la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2857,12 +3842,12 @@ funciÃ³n de gasto
 \end_inset
 
  a los precios 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 , 
 \begin_inset Formula \begin{equation}
-  E(p,\overline{U})=p\cdot h(p,\overline{U})=\min_{x}\left\{p\cdot x\ :\ U(x)\geq\overline{U},\ x\geq 0\right\}. \label{eq:fg}
+  E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}(\vect{p},\overline{U})=\min_{\vect{h}}\left\{\vect{p}\cdot\vect{h}\ :\ U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}\right\}. \label{eq:fg}
   \end{equation}
 \end_inset
 
@@ -2870,7 +3855,7 @@ Es el concepto central de la exposiciÃ³n: mide la utilidad en
 \emph on
 unidades monetarias
 \emph default
-. Sus 
+, sin volver a resolver el problema cada vez que cambian los parÃ¡metros. Sus 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2897,12 +3882,16 @@ parencite[prop.~3.E.2]{MasColellWhinstonGreen1995}
 
 \begin_deeper
 \begin_layout Enumerate
-es 
+
+\emph on
+existe
+\emph default
+ y es 
 \emph on
 continua
 \emph default
  en 
-\begin_inset Formula $(p,\overline{U})$
+\begin_inset Formula $(\vect{p},\overline{U})$
 \end_inset
 
 ; 
@@ -2912,7 +3901,7 @@ continua
 es 
 \emph on
 homogÃ©nea de grado uno en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
@@ -2937,7 +3926,11 @@ estrictamente creciente en
 
 
 \emph default
- y 
+: exigir mÃ¡s utilidad siempre cuesta mÃ¡s; 
+\end_layout
+
+\begin_layout Enumerate
+es 
 \emph on
 no decreciente en cada 
 \begin_inset Formula $p_i$
@@ -2945,28 +3938,28 @@ no decreciente en cada
 
 
 \emph default
- (estrictamente creciente en los precios de los bienes que se consumen; en una soluciÃ³n de esquina, la subida del precio de un bien que no se compra no altera el gasto); 
+: una subida de precios nunca reduce el gasto mÃ­nimo (lo deja igual si sube el precio de un bien que no se compra, en una soluciÃ³n de esquina); 
 \end_layout
 
 \begin_layout Enumerate
 es 
 \emph on
 cÃ³ncava en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
 \emph default
 . Si los precios pasan de 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
  a 
-\begin_inset Formula $p'$
+\begin_inset Formula $\vect{p}\,'$
 \end_inset
 
- y el consumidor mantuviera la cesta inicial 
-\begin_inset Formula $h(p,\overline{U})$
+ y el consumidor se comportara de forma Â«pasivaÂ», manteniendo la cesta inicial 
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
 , su gasto variarÃ­a 
@@ -2974,12 +3967,12 @@ cÃ³ncava en
 linealmente
 \emph default
  con los precios, 
-\begin_inset Formula $p'\cdot h(p,\overline{U})$
+\begin_inset Formula $\vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
 . Como puede reoptimizar y sustituir los bienes que se encarecen por los que se abaratan, gasta como mucho eso: 
 \begin_inset Formula \begin{equation}
-    E(p',\overline{U})\leq p'\cdot h(p,\overline{U})=E(p,\overline{U})+h(p,\overline{U})\cdot(p'-p). \label{eq:concavidad-fg}
+    E(\vect{p}\,',\overline{U})\leq \vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})=E(\vect{p},\overline{U})+\vect{h}(\vect{p},\overline{U})\cdot(\vect{p}\,'-\vect{p}). \label{eq:concavidad-fg}
     \end{equation}
 \end_inset
 
@@ -3049,12 +4042,12 @@ parencite{Shephard1953Cost,McKenzie1957Demand}
 \end_inset
 
  es diferenciable en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 , 
 \begin_inset Formula \begin{equation}
-    h_i(p,\overline{U})=\frac{\partial E(p,\overline{U})}{\partial p_i},\qquad i=1,\dots,n. \label{eq:shephard}
+    h_i(\vect{p},\overline{U})=\frac{\partial E(\vect{p},\overline{U})}{\partial p_i},\qquad i=1,\dots,n. \label{eq:shephard}
     \end{equation}
 \end_inset
 
@@ -3082,12 +4075,11 @@ nolink "false"
 
 \end_inset
 
-. 
+; 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-De las propiedades 4 y 5 se sigue la 
+\begin_layout Enumerate
+las dos propiedades anteriores dan la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -3107,22 +4099,36 @@ Slutsky
 
 \end_inset
 
- o de sustituciÃ³n: la matriz hessiana de 
-\begin_inset Formula $E$
+ o de sustituciÃ³n, 
+\begin_inset Formula $S$
 \end_inset
 
- respecto a los precios, es decir, de 
-\emph on
-primeras
-\emph default
- derivadas de las demandas hicksianas y 
+: la matriz hessiana de 
+\begin_inset Formula $E(\vect{p},\overline{U})$
+\end_inset
+
+ respecto a todos los precios, es decir, de 
 \emph on
 segundas
 \emph default
- de la funciÃ³n de gasto, 
+ derivadas de la funciÃ³n de gasto y, por el lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+, de 
+\emph on
+primeras
+\emph default
+ derivadas de las demandas hicksianas: 
 \begin_inset Formula \begin{equation}
-  S(p,\overline{U})=\big[S_{ij}\big]=D^2_pE(p,\overline{U}),\qquad S_{ij}=\frac{\partial h_i(p,\overline{U})}{\partial p_j}=\frac{\partial^2E(p,\overline{U})}{\partial p_j\,\partial p_i}. \label{eq:matriz-slutsky}
-  \end{equation}
+    S=\begin{pmatrix} S_{11} & \cdots & S_{1n}\\ \vdots & \ddots & \vdots\\ S_{n1} & \cdots & S_{nn}\end{pmatrix},\qquad\text{donde}\quad S_{ij}\equiv\frac{\partial^2E(\vect{p},\overline{U})}{\partial p_i\,\partial p_j}\ \underset{\text{Shephard}}{=}\ \frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j},\qquad i,j=1,\dots,n. \label{eq:matriz-slutsky}
+    \end{equation}
 \end_inset
 
 
@@ -3174,20 +4180,20 @@ semidefinida negativa
 \begin_inset Formula $E$
 \end_inset
 
- es cÃ³ncava; en particular, los elementos de su diagonal son no positivos, 
-\begin_inset Formula $S_{ii}=\partial h_i/\partial p_i\leq 0$
+ es cÃ³ncava: los elementos de su diagonal principal son no positivos, 
+\begin_inset Formula $S_{ii}=\partial h_i(\vect{p},\overline{U})/\partial p_i\leq 0$
 \end_inset
 
-, que es la ley de la demanda compensada. 
+. Si sube el precio de un bien, su demanda hicksiana disminuye o se mantiene, pero nunca aumenta: es la ley de la demanda compensada. 
 \end_layout
 
 \begin_layout Itemize
 Cumple 
-\begin_inset Formula $S(p,\overline{U})\,p=0$
+\begin_inset Formula $S\,\vect{p}=\vect{0}$
 \end_inset
 
 , por la homogeneidad de grado cero de 
-\begin_inset Formula $h$
+\begin_inset Formula $\vect{h}$
 \end_inset
 
  (teorema de 
@@ -3200,7 +4206,7 @@ Euler
 
 \end_inset
 
-). Sus propiedades se explotan en el apartado
+). Sus consecuencias se explotan en el apartado
 \begin_inset space ~
 
 \end_inset
@@ -3208,6 +4214,7 @@ Euler
 III.2. 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 
@@ -3235,7 +4242,17 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Concavidad de la funciÃ³n de gasto y lema de Shephard
+Concavidad de la funciÃ³n de gasto y lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3434,11 +4451,11 @@ rowcolor{tceeazulpalido}
 
 \series bold
 Primal: 
-\begin_inset Formula $x(p,\overline{W})$
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
 \end_inset
 
  y 
-\begin_inset Formula $V(p,\overline{W})$
+\begin_inset Formula $V(\vect{p},\overline{W})$
 \end_inset
 
 
@@ -3457,11 +4474,11 @@ Primal:
 
 \series bold
 Dual: 
-\begin_inset Formula $h(p,\overline{U})$
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
  y 
-\begin_inset Formula $E(p,\overline{U})$
+\begin_inset Formula $E(\vect{p},\overline{U})$
 \end_inset
 
 
@@ -3480,11 +4497,11 @@ Dual:
 
 \size small
 
-\begin_inset Formula $x$
+\begin_inset Formula $\vect{x}$
 \end_inset
 
  homogÃ©nea de grado 0 en 
-\begin_inset Formula $(p,\overline{W})$
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
  
@@ -3499,11 +4516,11 @@ Dual:
 
 \size small
 
-\begin_inset Formula $h$
+\begin_inset Formula $\vect{h}$
 \end_inset
 
  homogÃ©nea de grado 0 en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
@@ -3530,7 +4547,7 @@ Walras
 \end_inset
 
 : 
-\begin_inset Formula $p\cdot x(p,\overline{W})=\overline{W}$
+\begin_inset Formula $\vect{p}\cdot\vect{x}(\vect{p},\overline{W})=\overline{W}$
 \end_inset
 
  
@@ -3545,7 +4562,7 @@ Walras
 
 \size small
 No exceso de utilidad: 
-\begin_inset Formula $U\big(h(p,\overline{U})\big)=\overline{U}$
+\begin_inset Formula $U\big(\vect{h}(\vect{p},\overline{U})\big)=\overline{U}$
 \end_inset
 
 
@@ -3566,7 +4583,7 @@ No exceso de utilidad:
 \end_inset
 
  homogÃ©nea de grado 0 en 
-\begin_inset Formula $(p,\overline{W})$
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
  
@@ -3585,7 +4602,7 @@ No exceso de utilidad:
 \end_inset
 
  homogÃ©nea de grado 1 en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
@@ -3610,7 +4627,7 @@ No exceso de utilidad:
 \end_inset
 
  y no creciente en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
  
@@ -3633,7 +4650,7 @@ No exceso de utilidad:
 \end_inset
 
  y no decreciente en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
@@ -3654,7 +4671,7 @@ No exceso de utilidad:
 \end_inset
 
  cuasiconvexa en 
-\begin_inset Formula $(p,\overline{W})$
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
  
@@ -3673,7 +4690,7 @@ No exceso de utilidad:
 \end_inset
 
  cÃ³ncava en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 
@@ -3700,7 +4717,7 @@ Roy
 \end_inset
 
 : 
-\begin_inset Formula $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$
+\begin_inset Formula $x_i(\vect{p},\overline{W})=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$
 \end_inset
 
  
@@ -3725,7 +4742,7 @@ Shephard
 \end_inset
 
 : 
-\begin_inset Formula $h_i=\dfrac{\partial E}{\partial p_i}$
+\begin_inset Formula $h_i(\vect{p},\overline{U})=\dfrac{\partial E}{\partial p_i}$
 \end_inset
 
 
@@ -3779,11 +4796,11 @@ Slutsky
 \end_inset
 
 : 
-\begin_inset Formula $S=\big[\partial h_i/\partial p_j\big]=D^2_pE(p,\overline{U})$
+\begin_inset Formula $S=\big[\partial h_i(\vect{p},\overline{U})/\partial p_j\big]=D^2_{\vect{p}}E(\vect{p},\overline{U})$
 \end_inset
 
 , simÃ©trica y semidefinida negativa, con 
-\begin_inset Formula $S\,p=0$
+\begin_inset Formula $S\,\vect{p}=\vect{0}$
 \end_inset
 
 .
@@ -3818,12 +4835,12 @@ textcite[prop.~3.D.2, 3.D.3, 3.E.2, 3.E.3 y 3.G.1]{MasColellWhinstonGreen1995}
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
+e) ValoraciÃ³n
+\end_layout
 
-\series bold
-RecapitulaciÃ³n
-\series default
-: el problema dual tiene la misma condiciÃ³n de tangencia que el primal y produce dos funciones nuevas, la demanda hicksiana, que no es observable pero cumple siempre la ley de la demanda, y la funciÃ³n de gasto, que mide la utilidad en dinero y de la que se obtienen las demandas hicksianas derivando. Falta ver cÃ³mo se relacionan con las del primal. 
+\begin_layout Itemize
+El problema dual tiene la misma condiciÃ³n de tangencia que el primal y produce dos funciones nuevas: la demanda hicksiana, que no es observable pero cumple siempre la ley de la demanda, y la funciÃ³n de gasto, que mide la utilidad en dinero y de la que se obtienen las demandas hicksianas derivando. Para poder usarlas falta ver cÃ³mo se relacionan con las del primal, que sÃ­ se observan. 
 \end_layout
 
 \begin_layout Standard
@@ -3859,7 +4876,7 @@ relaciones de dualidad
 
 \end_inset
 
- que afectan a las soluciones (las cestas), a las funciones de demanda y a las funciones valor. 
+ que afectan a las soluciones (las cestas), a las funciones de demanda y a las funciones valor, y que se revelarÃ¡n muy Ãºtiles en la prÃ¡ctica. 
 \end_layout
 
 \begin_layout Paragraph
@@ -3894,7 +4911,7 @@ parencite[prop.~3.E.1]{MasColellWhinstonGreen1995}
 \end_inset
 
  continua, preferencias localmente insaciables y 
-\begin_inset Formula $p\gg 0$
+\begin_inset Formula $\vect{p}\gg\vect{0}$
 \end_inset
 
 : 
@@ -3903,7 +4920,7 @@ parencite[prop.~3.E.1]{MasColellWhinstonGreen1995}
 \begin_deeper
 \begin_layout Enumerate
 si 
-\begin_inset Formula $x^*$
+\begin_inset Formula $\vect{x}^*$
 \end_inset
 
  resuelve el PMU con renta 
@@ -3911,7 +4928,7 @@ si
 \end_inset
 
 , entonces resuelve el PMG con 
-\begin_inset Formula $\overline{U}=U(x^*)$
+\begin_inset Formula $\overline{U}=U(\vect{x}^*)$
 \end_inset
 
 , y el gasto mÃ­nimo es exactamente 
@@ -3923,15 +4940,15 @@ si
 
 \begin_layout Enumerate
 si 
-\begin_inset Formula $h^*$
+\begin_inset Formula $\vect{h}^*$
 \end_inset
 
  resuelve el PMG con 
-\begin_inset Formula $\overline{U}>U(0)$
+\begin_inset Formula $\overline{U}>U(\vect{0})$
 \end_inset
 
 , entonces resuelve el PMU con renta 
-\begin_inset Formula $\overline{W}=p\cdot h^*$
+\begin_inset Formula $\overline{W}=\vect{p}\cdot\vect{h}^*$
 \end_inset
 
 , y la utilidad mÃ¡xima es exactamente 
@@ -3943,7 +4960,11 @@ si
 
 \end_deeper
 \begin_layout Itemize
-Es decir, con el intercambio de informaciÃ³n adecuado (
+Es decir, la cesta del primal y la del dual 
+\emph on
+coinciden
+\emph default
+ si se hace el adecuado trasvase de informaciÃ³n sobre los niveles de utilidad y de renta (
 \begin_inset Formula $\overline{W}=E^*$
 \end_inset
 
@@ -3951,11 +4972,7 @@ Es decir, con el intercambio de informaciÃ³n adecuado (
 \begin_inset Formula $\overline{U}=U^*$
 \end_inset
 
-), los dos problemas dan la 
-\emph on
-misma cesta
-\emph default
-: en el grÃ¡fico
+). GrÃ¡ficamente (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -3971,7 +4988,159 @@ nolink "false"
 
 \end_inset
 
-, la recta de balance del primal es la isogasto tangente del dual y la curva de indiferencia alcanzada en el primal es la curva exigida en el dual. 
+), se superponen los dos grÃ¡ficos anteriores: la recta de balance del primal es la isogasto tangente del dual y la curva de indiferencia alcanzada en el primal es la curva exigida en el dual. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Teorema bÃ¡sico de la dualidad: con 
+\begin_inset Formula $\overline{W}=E^*$
+\end_inset
+
+ y 
+\begin_inset Formula $\overline{U}=U^*$
+\end_inset
+
+, el primal y el dual eligen la misma cesta
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:primal-dual"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+primal-dual
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{MatePerez2007Microeconomia}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[fig.~3.E.1]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -3987,12 +5156,12 @@ El resultado se refiere a las cestas Ã³ptimas, no a las funciones: la demanda 
 \end_layout
 
 \begin_layout Paragraph
-Dualidad entre funciones valor y entre funciones de demanda
+Dualidad entre funciones de demanda y entre funciones valor
 \end_layout
 
 \begin_layout Itemize
 Para cualesquiera 
-\begin_inset Formula $p\gg 0$
+\begin_inset Formula $\vect{p}\gg\vect{0}$
 \end_inset
 
 , 
@@ -4000,7 +5169,7 @@ Para cualesquiera
 \end_inset
 
  y 
-\begin_inset Formula $\overline{U}>U(0)$
+\begin_inset Formula $\overline{U}>U(\vect{0})$
 \end_inset
 
  se cumplen cuatro 
@@ -4015,13 +5184,13 @@ identidades
 
 : 
 \begin_inset Formula \begin{equation}
-  E\big(p,V(p,\overline{W})\big)=\overline{W},\qquad V\big(p,E(p,\overline{U})\big)=\overline{U}, \label{eq:dual-valor}
+  \vect{x}(\vect{p},\overline{W})\equiv\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big),\qquad \vect{h}(\vect{p},\overline{U})\equiv\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big), \label{eq:dual-demanda}
   \end{equation}
 \end_inset
 
 
 \begin_inset Formula \begin{equation}
-  x(p,\overline{W})=h\big(p,V(p,\overline{W})\big),\qquad h(p,\overline{U})=x\big(p,E(p,\overline{U})\big). \label{eq:dual-demanda}
+  E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W},\qquad V\big(\vect{p},E(\vect{p},\overline{U})\big)\equiv\overline{U}. \label{eq:dual-valor}
   \end{equation}
 \end_inset
 
@@ -4032,32 +5201,40 @@ identidades
 \begin_layout Itemize
 
 \emph on
+Entre funciones de demanda
+\emph default
+: la marshalliana se obtiene de la hicksiana sustituyendo la utilidad por la FIU, y la hicksiana de la marshalliana sustituyendo la renta por la FG. Es la extensiÃ³n natural del teorema bÃ¡sico a las funciones de demanda. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Entre funciones valor
 \emph default
 : para unos precios dados, la FIU y la FG son 
 \emph on
 inversas
 \emph default
- respecto a su segundo argumento: a cada utilidad mÃ¡xima le corresponde un gasto mÃ­nimo, y viceversa. Hallada una de ellas, la otra se obtiene despejando, sin resolver su problema.
+ respecto a su segundo argumento: a cada utilidad mÃ¡xima le corresponde un gasto mÃ­nimo, y viceversa. Hallada una de ellas, la otra se obtiene con una sustituciÃ³n y despejando, sin resolver su problema.
 \begin_inset Foot
 status collapsed
 
 
 \begin_layout Standard
 Â«InvertirÂ» significa aquÃ­ manipular la ecuaciÃ³n para despejar una variable independiente, que pasa a ser funciÃ³n de las demÃ¡s: de 
-\begin_inset Formula $E\big(p,V(p,\overline{W})\big)=\overline{W}$
+\begin_inset Formula $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$
 \end_inset
 
  se despeja 
-\begin_inset Formula $V(p,\overline{W})=E^{-1}(p,\overline{W})$
+\begin_inset Formula $V(\vect{p},\overline{W})=E^{-1}(\vect{p},\overline{W})$
 \end_inset
 
 , y de 
-\begin_inset Formula $V\big(p,E(p,\overline{U})\big)=\overline{U}$
+\begin_inset Formula $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$
 \end_inset
 
 , 
-\begin_inset Formula $E(p,\overline{U})=V^{-1}(p,\overline{U})$
+\begin_inset Formula $E(\vect{p},\overline{U})=V^{-1}(\vect{p},\overline{U})$
 \end_inset
 
 .
@@ -4068,25 +5245,37 @@ status collapsed
  
 \end_layout
 
-\begin_layout Itemize
-
-\emph on
-Entre funciones de demanda
-\emph default
-: la marshalliana se obtiene de la hicksiana sustituyendo la utilidad por la FIU, y la hicksiana de la marshalliana sustituyendo la renta por la FG. Es la extensiÃ³n natural del teorema bÃ¡sico a las funciones de demanda. 
-\end_layout
-
 \end_deeper
 \begin_layout Itemize
 
 \emph on
 Ejemplo
 \emph default
- (Cobb-Douglas, 
+ (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cobb
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Douglas
+\end_layout
+
+\end_inset
+
+, 
 \begin_inset Formula $U=x_1^{\alpha}x_2^{1-\alpha}$
 \end_inset
 
-, cuyas demandas se derivan en 
+ 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -4097,15 +5286,15 @@ status collapsed
 \end_inset
 
 ): 
-\begin_inset Formula $x_1=\alpha\overline{W}/p_1$
+\begin_inset Formula $x_1(\vect{p},\overline{W})=\alpha\overline{W}/p_1$
 \end_inset
 
  y 
-\begin_inset Formula $V(p,\overline{W})=\overline{W}\,\big(\tfrac{\alpha}{p_1}\big)^{\alpha}\big(\tfrac{1-\alpha}{p_2}\big)^{1-\alpha}$
+\begin_inset Formula $V(\vect{p},\overline{W})=\overline{W}\,\big(\tfrac{\alpha}{p_1}\big)^{\alpha}\big(\tfrac{1-\alpha}{p_2}\big)^{1-\alpha}$
 \end_inset
 
 . Invirtiendo, 
-\begin_inset Formula $E(p,\overline{U})=\overline{U}\,\big(\tfrac{p_1}{\alpha}\big)^{\alpha}\big(\tfrac{p_2}{1-\alpha}\big)^{1-\alpha}$
+\begin_inset Formula $E(\vect{p},\overline{U})=\overline{U}\,\big(\tfrac{p_1}{\alpha}\big)^{\alpha}\big(\tfrac{p_2}{1-\alpha}\big)^{1-\alpha}$
 \end_inset
 
  y, por 
@@ -4119,7 +5308,7 @@ Shephard
 \end_inset
 
 , 
-\begin_inset Formula $h_1=\alpha E/p_1$
+\begin_inset Formula $h_1(\vect{p},\overline{U})=\alpha E(\vect{p},\overline{U})/p_1$
 \end_inset
 
 : la misma forma que la marshalliana, con el gasto en lugar de la renta. 
@@ -4311,7 +5500,17 @@ textcite{MatePerez2007Microeconomia}
 status collapsed
 
 \begin_layout Standard
-Maximizar la utilidad con una renta y minimizar el gasto con una utilidad son el mismo problema visto desde dos lados. Su valor estÃ¡ en las funciones que produce: la funciÃ³n de gasto mide la utilidad en dinero, sus derivadas son las demandas compensadas (Shephard) y su concavidad da la ley de la demanda compensada. 
+Maximizar la utilidad con una renta y minimizar el gasto con una utilidad son el mismo problema visto desde dos lados. Su valor estÃ¡ en las funciones que produce: la funciÃ³n de gasto mide la utilidad en dinero, sus derivadas son las demandas compensadas (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+) y su concavidad da la ley de la demanda compensada. 
 \end_layout
 
 \end_inset
@@ -4335,11 +5534,11 @@ Slutsky
 \end_inset
 
  sale de derivar 
-\begin_inset Formula $h_i(p,\overline{U})=x_i\big(p,E(p,\overline{U})\big)$
+\begin_inset Formula $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$
 \end_inset
 
  (III.2); la integrabilidad recorre el esquema en sentido contrario, de 
-\begin_inset Formula $x$
+\begin_inset Formula $\vect{x}$
 \end_inset
 
  a 
@@ -4364,7 +5563,7 @@ Slutsky
 \end_inset
 
 II, veremos cÃ³mo se estima en la prÃ¡ctica la caja de la que parte todo: el sistema de demandas 
-\begin_inset Formula $x(p,\overline{W})$
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
 \end_inset
 
 . 
@@ -4389,7 +5588,11 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Desarrollos empÃ­ricos: estimaciÃ³n de sistemas completos de ecuaciones de demanda
+Desarrollos empÃ­ricos:
+\begin_inset Newline newline
+\end_inset
+
+estimaciÃ³n de sistemas completos de ecuaciones de demanda
 \end_layout
 
 \begin_layout Standard
@@ -4412,7 +5615,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: la idea (0,5 minutos); las formas funcionales con las ecuaciones del sistema lineal de gasto y del AIDS (con sus restricciones de homogeneidad, simetrÃ­a y agregaciÃ³n) y el resto de los pasos (3,5), y la valoraciÃ³n (1). La translog, el modelo de Rotterdam, el QUAIDS (basta nombrarlo) y los detalles economÃ©tricos son de profundizaciÃ³n. 
+En el cante: la idea (0,5 minutos); las formas funcionales, cada una con su idea, su ecuaciÃ³n, su evidencia y su lÃ­mite, que lleva a la siguiente (del sistema lineal de gasto al AIDS, con sus restricciones de homogeneidad, simetrÃ­a y agregaciÃ³n), y el resto de los pasos (3,5), y la valoraciÃ³n (1). La translog, el modelo de Rotterdam, el QUAIDS (basta nombrarlo) y los detalles economÃ©tricos son de profundizaciÃ³n. 
 \end_layout
 
 \end_inset
@@ -4669,7 +5872,7 @@ Pasos que sigue la literatura
 \end_layout
 
 \begin_layout Itemize
-La estimaciÃ³n sigue cinco pasos, que reproducen el camino de la teorÃ­a, de las preferencias a la demanda: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo economÃ©trico y (5) estimar y contrastar. 
+La estimaciÃ³n sigue cinco pasos, que reproducen el camino de la teorÃ­a, de las preferencias a la demanda ordinaria: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo economÃ©trico y (5) estimar y contrastar. 
 \end_layout
 
 \begin_layout Subsubsection
@@ -4709,7 +5912,7 @@ sencillez
 \emph on
 flexibilidad
 \emph default
-: las formas mÃ¡s fÃ¡ciles de manejar son las mÃ¡s rÃ­gidas, porque predeterminan los resultados (tabla
+: las formas mÃ¡s fÃ¡ciles de manejar son las mÃ¡s rÃ­gidas, porque predeterminan los resultados. Cada sistema nace para superar el lÃ­mite del anterior (tabla
 \begin_inset space ~
 
 \end_inset
@@ -4725,16 +5928,36 @@ nolink "false"
 
 \end_inset
 
-).
+). 
 \end_layout
 
 \begin_layout Itemize
-
+El punto de partida es la 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Cobb-Douglas
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cobb
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Douglas
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4757,12 +5980,12 @@ textcite{CobbDouglas1928Theory}
 
 \end_inset
 
-, que la estimaron como funciÃ³n de producciÃ³n y obtuvieron un exponente de 3/4 para el trabajo y de 1/4 para el capital; 
+, que la estimaron como funciÃ³n de producciÃ³n y obtuvieron un exponente de 3/4 para el trabajo y de 1/4 para el capital; Paul 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Paul Douglas
+Douglas
 \end_layout
 
 \end_inset
@@ -4783,7 +6006,7 @@ status collapsed
 \end_inset
 
 : 
-\begin_inset Formula $U(x)=\sum_i\alpha_i\ln x_i$
+\begin_inset Formula $U(\vect{x})=\sum_i\alpha_i\ln x_i$
 \end_inset
 
 , con 
@@ -4800,21 +6023,11 @@ status collapsed
 
 , es decir, 
 \begin_inset Formula \begin{equation}
-  \ln x_i=\ln\alpha_i+\ln\overline{W}-\ln p_i, \label{eq:cobb-douglas}
+  \ln x_i(\vect{p},\overline{W})=\ln\alpha_i+\ln\overline{W}-\ln p_i, \label{eq:cobb-douglas}
   \end{equation}
 \end_inset
 
-lineal en logaritmos y trivial de estimar (las demandas se derivan en 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.8
-\end_layout
-
-\end_inset
-
-). Pero es demasiado rÃ­gida: todas las elasticidades-renta valen uno, las elasticidades-precio propias, 
+lineal en logaritmos y trivial de estimar. Pero es demasiado rÃ­gida: todas las elasticidades-renta valen uno, las elasticidades-precio propias, 
 \begin_inset Formula $-1$
 \end_inset
 
@@ -4828,21 +6041,45 @@ Engel
 
 \end_inset
 
-.
+. 
+\end_layout
+
+\begin_layout Paragraph
+Sistema lineal de gasto (LES)
+\end_layout
+
+\begin_layout Subparagraph
+a) Idea
 \end_layout
 
 \begin_layout Itemize
-
-\begin_inset Flex Concepto
+Recoger la ley de 
+\begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Sistema lineal de gasto
+Engel
 \end_layout
 
 \end_inset
 
- (LES), de la utilidad de 
+ con la forma mÃ¡s sencilla posible: que haya bienes necesarios y de lujo sin perder la linealidad. 
+\end_layout
+
+\begin_layout Subparagraph
+b) Modelo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+i) Supuestos
+\emph default
+
+\series default
+: utilidad de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4863,7 +6100,7 @@ Geary
 \end_inset
 
 , 
-\begin_inset Formula $U(x)=\sum_i\alpha_i\ln(x_i-\gamma_i)$
+\begin_inset Formula $U(\vect{x})=\sum_i\alpha_i\ln(x_i-\gamma_i)$
 \end_inset
 
 , con 
@@ -4950,17 +6187,24 @@ status collapsed
 
 \end_inset
 
-: 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+ii) Desarrollo
+\emph default
+
+\series default
+: maximizando, el gasto en cada bien es 
 \begin_inset Formula \begin{equation}
-  p_ix_i=p_i\gamma_i+\alpha_i\Big(\overline{W}-\sum_jp_j\gamma_j\Big). \label{eq:les}
+  p_ix_i(\vect{p},\overline{W})=p_i\gamma_i+\alpha_i\Big(\overline{W}-\sum_jp_j\gamma_j\Big). \label{eq:les}
   \end{equation}
 \end_inset
 
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
 El consumidor compra primero unas cantidades mÃ­nimas o de subsistencia, 
 \begin_inset Formula $\gamma_i$
 \end_inset
@@ -4973,7 +6217,19 @@ supernumeraria
 \begin_inset Formula $\alpha_i$
 \end_inset
 
-. El gasto en cada bien es lineal en los precios y en la renta, y las curvas de 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+iii) Implicaciones
+\emph default
+
+\series default
+: el gasto en cada bien es lineal en los precios y en la renta, y las curvas de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4986,22 +6242,44 @@ Engel
  son rectas que no pasan por el origen, de modo que distingue bienes necesarios y de lujo. 
 \end_layout
 
+\begin_layout Subparagraph
+d) Evidencia empÃ­rica
+\end_layout
+
 \begin_layout Itemize
-Es sencillo de manejar, en la teorÃ­a y en la econometrÃ­a, y fue el primer sistema completo estimado con datos reales (
-\begin_inset Flex Autor
+Fue el primer sistema completo estimado con datos reales: 
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Stone
+
+\backslash
+textcite{Stone1954Linear}
 \end_layout
 
 \end_inset
 
-, para el Reino Unido). 
+, para el Reino Unido. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Deaton1974Analysis}
+\end_layout
+
+\end_inset
+
+, con datos agregados del Reino Unido, rechaza la aditividad que impone. 
+\end_layout
+
+\begin_layout Subparagraph
+e) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
-Su lÃ­mite: las preferencias son 
+Es sencillo de manejar, en la teorÃ­a y en la econometrÃ­a. Su lÃ­mite: las preferencias son 
 \emph on
 aditivas
 \emph default
@@ -5009,34 +6287,29 @@ aditivas
 \begin_inset Formula $\alpha_i>0$
 \end_inset
 
-) ni complementarios netos, y las elasticidades-precio quedan prÃ¡cticamente ligadas a las elasticidades-renta, algo que los datos rechazan 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{Deaton1974Analysis}
+) ni complementarios netos, y las elasticidades-precio quedan prÃ¡cticamente ligadas a las elasticidades-renta, algo que los datos rechazan. Hace falta mÃ¡s flexibilidad. 
 \end_layout
 
-\end_inset
-
-. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\begin_layout Paragraph
 Modelo de Rotterdam
 \end_layout
 
+\begin_layout Subparagraph
+a) Idea
+\end_layout
+
+\begin_layout Itemize
+Ganar flexibilidad sin partir de una utilidad concreta: trabajar directamente con la ecuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
 \end_inset
 
- 
+, cuyas propiedades son las restricciones de la teorÃ­a 
 \begin_inset ERT
 status collapsed
 
@@ -5088,7 +6361,23 @@ status collapsed
 
 \end_inset
 
-: no parte de una utilidad concreta, sino de la ecuaciÃ³n de 
+. 
+\end_layout
+
+\begin_layout Subparagraph
+b) Modelo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+i) Supuestos
+\emph default
+
+\series default
+: la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5098,7 +6387,19 @@ Slutsky
 
 \end_inset
 
- en diferencias logarÃ­tmicas, 
+ en diferencias logarÃ­tmicas, con coeficientes constantes. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+ii) Desarrollo
+\emph default
+
+\series default
+: 
 \begin_inset Formula \begin{equation}
   \bar s_i\,d\ln x_i=b_i\,d\ln Q+\sum_jc_{ij}\,d\ln p_j,\qquad d\ln Q\equiv\sum_k\bar s_k\,d\ln x_k, \label{eq:rotterdam}
   \end{equation}
@@ -5109,7 +6410,7 @@ donde
 \end_inset
 
  es la participaciÃ³n media en el gasto, 
-\begin_inset Formula $b_i=p_i\,\partial x_i/\partial\overline{W}$
+\begin_inset Formula $b_i=p_i\,\partial x_i(\vect{p},\overline{W})/\partial\overline{W}$
 \end_inset
 
  es la propensiÃ³n marginal a gastar en el bien 
@@ -5130,7 +6431,19 @@ Slutsky
 
 \end_inset
 
- en participaciones. La teorÃ­a se traduce en restricciones lineales sobre los parÃ¡metros, que se imponen o contrastan directamente: 
+ en participaciones. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+iii) Implicaciones
+\emph default
+
+\series default
+: la teorÃ­a se traduce en restricciones lineales sobre los parÃ¡metros, que se imponen o contrastan directamente: 
 \begin_inset Formula $\sum_ib_i=1$
 \end_inset
 
@@ -5150,7 +6463,35 @@ Slutsky
 \begin_inset Formula $[c_{ij}]$
 \end_inset
 
- semidefinida negativa. Su lÃ­mite es que, al tomar 
+ semidefinida negativa. 
+\end_layout
+
+\begin_layout Subparagraph
+d) Evidencia empÃ­rica
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Barten1967Slutsky,Barten1969Maximum}
+\end_layout
+
+\end_inset
+
+, con datos de los PaÃ­ses Bajos, rechaza con frecuencia la homogeneidad. 
+\end_layout
+
+\begin_layout Subparagraph
+e) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+Al tomar 
 \begin_inset Formula $b_i$
 \end_inset
 
@@ -5158,47 +6499,77 @@ Slutsky
 \begin_inset Formula $c_{ij}$
 \end_inset
 
- como constantes, es una aproximaciÃ³n local, sin una funciÃ³n de gasto explÃ­cita con la que valorar el bienestar.
+ como constantes, es una aproximaciÃ³n local, sin una funciÃ³n de gasto explÃ­cita con la que valorar el bienestar. Las formas flexibles posteriores recuperan esa funciÃ³n. 
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\begin_layout Paragraph
 Translog
 \end_layout
 
-\end_inset
+\begin_layout Subparagraph
+a) Idea
+\end_layout
 
+\begin_layout Itemize
+Una forma 
+\emph on
+flexible
+\emph default
  (
 \emph on
 transcendental logarithmic
 \emph default
-) de 
+): una aproximaciÃ³n de segundo orden, en logaritmos, a una funciÃ³n cualquiera 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-textcite{ChristensenJorgensonLau1975Utility}
+parencite{ChristensenJorgensonLau1975Utility}
 \end_layout
 
 \end_inset
 
-: una aproximaciÃ³n de segundo orden, en logaritmos, a una funciÃ³n cualquiera. Se estima en su versiÃ³n 
+. 
+\end_layout
+
+\begin_layout Subparagraph
+b) Modelo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+i) Supuestos
+\emph default
+
+\series default
+: se especifica la FIU (versiÃ³n 
 \emph on
 indirecta
 \emph default
-, 
+), 
 \begin_inset Formula \begin{equation}
-  \ln V(p,\overline{W})=\alpha_0+\sum_i\alpha_i\ln\frac{p_i}{\overline{W}}+\frac12\sum_i\sum_j\beta_{ij}\ln\frac{p_i}{\overline{W}}\ln\frac{p_j}{\overline{W}},\qquad\beta_{ij}=\beta_{ji}, \label{eq:translog}
+  \ln V(\vect{p},\overline{W})=\alpha_0+\sum_i\alpha_i\ln\frac{p_i}{\overline{W}}+\frac12\sum_i\sum_j\beta_{ij}\ln\frac{p_i}{\overline{W}}\ln\frac{p_j}{\overline{W}},\qquad\beta_{ij}=\beta_{ji}. \label{eq:translog}
   \end{equation}
 \end_inset
 
-de la que la identidad de 
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+ii) Desarrollo
+\emph default
+
+\series default
+: la identidad de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5218,29 +6589,71 @@ Roy
   \end{equation}
 \end_inset
 
-Es muy flexible y condiciona poco los resultados, pero las participaciones no son lineales en los parÃ¡metros (hay que normalizarlos, por ejemplo con 
-\begin_inset Formula $\sum_k\alpha_k=-1$
-\end_inset
 
-, y estimar por mÃ©todos no lineales) y la concavidad no estÃ¡ garantizada lejos del punto de aproximaciÃ³n.
 \end_layout
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
+\series bold
+
+\emph on
+iii) Implicaciones
+\emph default
+
+\series default
+: es muy flexible y condiciona poco los resultados; la simetrÃ­a se impone con 
+\begin_inset Formula $\beta_{ij}=\beta_{ji}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subparagraph
+d) Evidencia empÃ­rica
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Sistema casi ideal de demanda
+
+\backslash
+textcite{ChristensenJorgensonLau1975Utility}
 \end_layout
 
 \end_inset
 
- (AIDS, 
+, con datos agregados de Estados Unidos, la usan para contrastar la aditividad y la homoteticidad de las preferencias, que los datos rechazan. 
+\end_layout
+
+\begin_layout Subparagraph
+e) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+Las participaciones no son lineales en los parÃ¡metros (hay que normalizarlos, por ejemplo con 
+\begin_inset Formula $\sum_k\alpha_k=-1$
+\end_inset
+
+, y estimar por mÃ©todos no lineales), no agrega bien y la concavidad no estÃ¡ garantizada lejos del punto de aproximaciÃ³n. El AIDS conserva la flexibilidad y resuelve la agregaciÃ³n y la linealidad. 
+\end_layout
+
+\begin_layout Paragraph
+Sistema casi ideal de demanda (AIDS)
+\end_layout
+
+\begin_layout Subparagraph
+a) Idea
+\end_layout
+
+\begin_layout Itemize
+Reunir a la vez los cuatro requisitos: flexibilidad, coherencia con la teorÃ­a, agregaciÃ³n exacta y estimaciÃ³n lineal. Es el 
 \emph on
 Almost Ideal Demand System
 \emph default
-) de 
+ de 
 \begin_inset ERT
 status collapsed
 
@@ -5252,7 +6665,23 @@ textcite{DeatonMuellbauer1980AIDS}
 
 \end_inset
 
-. Parte de una funciÃ³n de gasto de la clase 
+. 
+\end_layout
+
+\begin_layout Subparagraph
+b) Modelo
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+i) Supuestos
+\emph default
+
+\series default
+: una funciÃ³n de gasto de la clase 
 \emph on
 PIGLOG
 \emph default
@@ -5284,18 +6713,18 @@ status collapsed
 
 : 
 \begin_inset Formula \begin{equation}
-  \ln E(p,\overline{U})=(1-\overline{U})\ln a(p)+\overline{U}\ln b(p), \label{eq:aids-e}
+  \ln E(\vect{p},\overline{U})=(1-\overline{U})\ln a(\vect{p})+\overline{U}\ln b(\vect{p}), \label{eq:aids-e}
   \end{equation}
 \end_inset
 
 con 
 \begin_inset Formula \begin{equation*}
-  \ln a(p)=\alpha_0+\sum_k\alpha_k\ln p_k+\frac12\sum_k\sum_j\gamma^*_{kj}\ln p_k\ln p_j,\qquad \ln b(p)=\ln a(p)+\beta_0\prod_kp_k^{\beta_k},
+  \ln a(\vect{p})=\alpha_0+\sum_k\alpha_k\ln p_k+\frac12\sum_k\sum_j\gamma^*_{kj}\ln p_k\ln p_j,\qquad \ln b(\vect{p})=\ln a(\vect{p})+\beta_0\prod_kp_k^{\beta_k},
   \end{equation*}
 \end_inset
 
 donde 
-\begin_inset Formula $a(p)$
+\begin_inset Formula $a(\vect{p})$
 \end_inset
 
  es el coste de la subsistencia (
@@ -5303,14 +6732,26 @@ donde
 \end_inset
 
 ) y 
-\begin_inset Formula $b(p)$
+\begin_inset Formula $b(\vect{p})$
 \end_inset
 
 , el de la saciedad (
 \begin_inset Formula $\overline{U}=1$
 \end_inset
 
-). Por 
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+ii) Desarrollo
+\emph default
+
+\series default
+: por 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5339,17 +6780,29 @@ Shephard
 \end_inset
 
 con 
-\begin_inset Formula $\ln P=\ln a(p)$
+\begin_inset Formula $\ln P=\ln a(\vect{p})$
 \end_inset
 
 , un Ã­ndice de precios translog. 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+
+\emph on
+iii) Implicaciones
+\emph default
+
+\series default
+: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \emph on
-Restricciones
+restricciones
 \emph default
 : agregaciÃ³n, 
 \begin_inset Formula $\sum_i\alpha_i=1$
@@ -5375,13 +6828,13 @@ Restricciones
 \emph on
 lineales
 \emph default
- en los parÃ¡metros y fÃ¡ciles de imponer o contrastar. La negatividad no se impone globalmente: se comprueba con los datos. 
+ en los parÃ¡metros y fÃ¡ciles de imponer o contrastar. La negatividad no se impone globalmente: se comprueba con los datos; 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Curvas de 
+curvas de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5439,13 +6892,13 @@ Engel
 
 \end_inset
 
-. 
+; 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Elasticidades
+elasticidades
 \emph default
  (con 
 \begin_inset Formula $\delta_{ij}=1$
@@ -5475,13 +6928,13 @@ Slutsky
 
 \end_inset
 
- en elasticidades (III.2). 
+ en elasticidades (III.2); 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-AgregaciÃ³n exacta
+agregaciÃ³n exacta
 \emph default
 : por ser PIGLOG, la participaciÃ³n media de muchos hogares tiene la misma forma, evaluada en un gasto Â«representativoÂ» que depende de la distribuciÃ³n del gasto (a travÃ©s de un Ã­ndice de desigualdad), sin exigir curvas de 
 \begin_inset Flex Autor
@@ -5496,12 +6949,13 @@ Engel
  rectas y paralelas. 
 \end_layout
 
-\begin_layout Itemize
+\end_deeper
+\begin_layout Subparagraph
+c) Extensiones
+\end_layout
 
-\emph on
-EstimaciÃ³n
-\emph default
-: si 
+\begin_layout Itemize
+Si 
 \begin_inset Formula $P$
 \end_inset
 
@@ -5523,7 +6977,31 @@ Stone
 \emph on
 LA-AIDS
 \emph default
-, AIDS lineal aproximado) es lineal y se estima ecuaciÃ³n a ecuaciÃ³n por mÃ­nimos cuadrados. 
+, AIDS lineal aproximado) es lineal y se estima ecuaciÃ³n a ecuaciÃ³n por mÃ­nimos cuadrados. La extensiÃ³n mÃ¡s usada es el QUAIDS, que se ve a continuaciÃ³n. 
+\end_layout
+
+\begin_layout Subparagraph
+d) Evidencia empÃ­rica
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{DeatonMuellbauer1980AIDS}
+\end_layout
+
+\end_inset
+
+, con datos agregados del Reino Unido, rechazan la homogeneidad, y lo atribuyen a la especificaciÃ³n dinÃ¡mica mÃ¡s que a la teorÃ­a. 
+\end_layout
+
+\begin_layout Subparagraph
+e) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -5540,31 +7018,16 @@ Engel
  es restrictiva. 
 \end_layout
 
-\end_deeper
+\begin_layout Paragraph
+AIDS cuadrÃ¡tico (QUAIDS)
+\end_layout
+
+\begin_layout Subparagraph
+a) Idea
+\end_layout
+
 \begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-QUAIDS
-\end_layout
-
-\end_inset
-
- (AIDS cuadrÃ¡tico) de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{BanksBlundellLewbel1997Quadratic}
-\end_layout
-
-\end_inset
-
-: con microdatos britÃ¡nicos, las curvas de 
+Con microdatos britÃ¡nicos, las curvas de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5574,9 +7037,29 @@ Engel
 
 \end_inset
 
- de algunos bienes (ropa, alcohol) se curvan, y un bien puede ser de lujo para los hogares de renta baja y necesario para los de renta alta. Se aÃ±ade un tÃ©rmino cuadrÃ¡tico en el logaritmo del gasto: 
+ de algunos bienes (ropa, alcohol) se curvan, y un bien puede ser de lujo para los hogares de renta baja y necesario para los de renta alta 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BanksBlundellLewbel1997Quadratic}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subparagraph
+b) Modelo
+\end_layout
+
+\begin_layout Itemize
+Se aÃ±ade al AIDS un tÃ©rmino cuadrÃ¡tico en el logaritmo del gasto: 
 \begin_inset Formula \begin{equation}
-  s_i=\alpha_i+\sum_j\gamma_{ij}\ln p_j+\beta_i\ln\frac{\overline{W}}{a(p)}+\frac{\vartheta_i}{b(p)}\Big[\ln\frac{\overline{W}}{a(p)}\Big]^2,\qquad b(p)=\prod_kp_k^{\beta_k},\quad\sum_i\vartheta_i=0. \label{eq:quaids}
+  s_i=\alpha_i+\sum_j\gamma_{ij}\ln p_j+\beta_i\ln\frac{\overline{W}}{a(\vect{p})}+\frac{\vartheta_i}{b(\vect{p})}\Big[\ln\frac{\overline{W}}{a(\vect{p})}\Big]^2,\qquad b(\vect{p})=\prod_kp_k^{\beta_k},\quad\sum_i\vartheta_i=0. \label{eq:quaids}
   \end{equation}
 \end_inset
 
@@ -5593,6 +7076,24 @@ parencite{Gorman1981Engel}
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Subparagraph
+e) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+Gana realismo en las curvas de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Engel
+\end_layout
+
+\end_inset
+
+ a cambio de mÃ¡s parÃ¡metros y de una estimaciÃ³n no lineal. 
 \end_layout
 
 \begin_layout Standard
@@ -5775,7 +7276,27 @@ LÃ­mite principal
 \begin_layout Standard
 
 \size small
-Cobb-Douglas 
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cobb
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Douglas
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -6419,12 +7940,12 @@ conjuntamente
 \emph default
  y deben recoger todo el gasto: 
 \begin_inset Formula \begin{equation}
-  x_i=x_i(p,\overline{W}),\quad i=1,\dots,n,\qquad\text{con}\quad \sum_{i=1}^{n}p_ix_i=\overline{W}, \label{eq:sistema-completo}
+  x_i=x_i(\vect{p},\overline{W}),\quad i=1,\dots,n,\qquad\text{con}\quad \sum_{i=1}^{n}p_ix_i=\overline{W}, \label{eq:sistema-completo}
   \end{equation}
 \end_inset
 
 o, en participaciones en el gasto, 
-\begin_inset Formula $s_i=s_i(p,\overline{W})$
+\begin_inset Formula $s_i=s_i(\vect{p},\overline{W})$
 \end_inset
 
 , con 
@@ -7171,7 +8692,7 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: integrabilidad (3 minutos), ecuaciÃ³n de 
+En el cante: integrabilidad (2,5 minutos); ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7181,11 +8702,81 @@ Slutsky
 
 \end_inset
 
- y relaciones netas y brutas (2,5) y medidas de bienestar (6,5). Se dibujan el grÃ¡fico de la VC, el 
-\begin_inset Formula $\Delta\mathrm{EC}$
+, con su derivaciÃ³n completa, la matriz de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
 \end_inset
 
- y la VE (grÃ¡fico
+ y la clasificaciÃ³n de los bienes con las dos tablas (3,5), y medidas de bienestar (6). En el bienestar, los grÃ¡ficos se dibujan por partes: el problema (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-problema"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), la variaciÃ³n del excedente (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-delta-ec"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), la VC (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-vc"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) y la VE (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-ve"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), y al final el que los reÃºne (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -7201,7 +8792,7 @@ nolink "false"
 
 \end_inset
 
-) y el del Ã­ndice de 
+); despuÃ©s, el del Ã­ndice de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7237,7 +8828,7 @@ nolink "false"
 
 \end_inset
 
-). La recuperaciÃ³n de la utilidad a partir de la FIU (grÃ¡fico
+). Las tablas de clasificaciÃ³n se cantan por categorÃ­as, sin leerlas. La recuperaciÃ³n de la utilidad a partir de la FIU (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -7489,7 +9080,7 @@ status collapsed
 \end_inset
 
 . Una funciÃ³n de demanda 
-\begin_inset Formula $x(p,\overline{W})$
+\begin_inset Formula $\vect{x}(\vect{p},\overline{W})$
 \end_inset
 
  continuamente diferenciable es la demanda de alguna funciÃ³n de utilidad creciente y cuasicÃ³ncava 
@@ -7516,7 +9107,7 @@ Walras
 
 \emph default
  (el sistema es exhaustivo): 
-\begin_inset Formula $p\cdot x(p,\overline{W})=\overline{W}$
+\begin_inset Formula $\vect{p}\cdot\vect{x}(\vect{p},\overline{W})=\overline{W}$
 \end_inset
 
 ; 
@@ -7539,7 +9130,7 @@ Slutsky
 
 , construida con observables, 
 \begin_inset Formula \begin{equation}
-    S_{ij}(p,\overline{W})=\frac{\partial x_i(p,\overline{W})}{\partial p_j}+x_j(p,\overline{W})\,\frac{\partial x_i(p,\overline{W})}{\partial\overline{W}}=S_{ji}(p,\overline{W}); \label{eq:slutsky-observable}
+    S_{ij}(\vect{p},\overline{W})=\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}+x_j(\vect{p},\overline{W})\,\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}=S_{ji}(\vect{p},\overline{W}); \label{eq:slutsky-observable}
     \end{equation}
 \end_inset
 
@@ -7552,7 +9143,7 @@ la
 negatividad
 \emph default
 : 
-\begin_inset Formula $S(p,\overline{W})$
+\begin_inset Formula $S(\vect{p},\overline{W})$
 \end_inset
 
  es semidefinida negativa. 
@@ -7565,7 +9156,7 @@ Son
 \emph on
 necesarias
 \emph default
-: toda demanda que procede de maximizar una utilidad localmente insaciable las cumple (apartado
+: toda demanda que procede de maximizar una utilidad localmente insaciable las cumple (apartados
 \begin_inset space ~
 
 \end_inset
@@ -7603,11 +9194,11 @@ Walras
 \end_inset
 
  da 
-\begin_inset Formula $p^{\top}S=0$
+\begin_inset Formula $\vect{p}^{\top}S=\vect{0}$
 \end_inset
 
  y la homogeneidad, 
-\begin_inset Formula $Sp=0$
+\begin_inset Formula $S\vect{p}=\vect{0}$
 \end_inset
 
 , de donde 
@@ -7694,12 +9285,12 @@ Una ecuaciÃ³n en derivadas parciales relaciona las derivadas parciales de una 
 
  
 \begin_inset Formula \begin{equation}
-    \frac{\partial E(p,\overline{U})}{\partial p_i}=x_i\big(p,E(p,\overline{U})\big),\quad i=1,\dots,n,\qquad\text{es decir,}\quad\nabla_pE(p,\overline{U})=x\big(p,E(p,\overline{U})\big), \label{eq:edp-integrabilidad}
+    \frac{\partial E(\vect{p},\overline{U})}{\partial p_i}=x_i\big(\vect{p},E(\vect{p},\overline{U})\big),\quad i=1,\dots,n,\qquad\text{es decir,}\quad\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big), \label{eq:edp-integrabilidad}
     \end{equation}
 \end_inset
 
 con una condiciÃ³n inicial, 
-\begin_inset Formula $E(p^0,\overline{U})=\overline{W}^0$
+\begin_inset Formula $E(\vect{p}^0,\overline{U})=\overline{W}^0$
 \end_inset
 
 , que fija el nivel de utilidad. Por el 
@@ -7777,7 +9368,7 @@ parencite[Â§3.H]{MasColellWhinstonGreen1995}
 Que sea una verdadera funciÃ³n de gasto
 \emph default
 . La soluciÃ³n es homogÃ©nea de grado uno y creciente en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
  por construcciÃ³n; le falta la 
@@ -7811,7 +9402,7 @@ De la funciÃ³n de gasto a las preferencias
 \end_inset
 
  se obtiene la FIU invirtiendo la relaciÃ³n 
-\begin_inset Formula $E(p,V)=\overline{W}$
+\begin_inset Formula $E(\vect{p},V)=\overline{W}$
 \end_inset
 
  (ecuaciÃ³n
@@ -7831,7 +9422,7 @@ nolink "false"
 \end_inset
 
 ), y de ahÃ­ la utilidad directa: el nivel de utilidad de una cesta 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  es el 
@@ -7839,29 +9430,29 @@ nolink "false"
 mÃ­nimo
 \emph default
  de la utilidad indirecta entre todos los presupuestos con los que 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  es asequible, 
 \begin_inset Formula \begin{equation}
-    U(x^0)=\min_{(p,\overline{W})}\ V(p,\overline{W})\quad\text{s.a.}\quad p\cdot x^0\leq\overline{W}, \label{eq:u-desde-v}
+    U(\vect{x}^0)=\min_{(\vect{p},\overline{W})}\ V(\vect{p},\overline{W})\quad\text{s.a.}\quad \vect{p}\cdot\vect{x}^0\leq\overline{W}, \label{eq:u-desde-v}
     \end{equation}
 \end_inset
 
 porque con cualquiera de esos presupuestos puede comprarse 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
 , de modo que se alcanza al menos 
-\begin_inset Formula $U(x^0)$
+\begin_inset Formula $U(\vect{x}^0)$
 \end_inset
 
 , y con el presupuesto en el que 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  es la cesta elegida se alcanza exactamente 
-\begin_inset Formula $U(x^0)$
+\begin_inset Formula $U(\vect{x}^0)$
 \end_inset
 
  (grÃ¡fico
@@ -7885,7 +9476,7 @@ nolink "false"
 \end_inset
 
  es la frontera del conjunto 
-\begin_inset Formula $\{x: p\cdot x\geq E(p,\overline{U})\ \text{para todo}\ p\gg 0\}$
+\begin_inset Formula $\{\vect{x}: \vect{p}\cdot\vect{x}\geq E(\vect{p},\overline{U})\ \text{para todo}\ \vect{p}\gg\vect{0}\}$
 \end_inset
 
  
@@ -8206,11 +9797,35 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-La ecuaciÃ³n de Slutsky y la clasificaciÃ³n de los bienes
+La ecuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+ y la clasificaciÃ³n de los bienes
+\end_layout
+
+\begin_layout Paragraph
+DerivaciÃ³n de la ecuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+ por dualidad
 \end_layout
 
 \begin_layout Itemize
-La dualidad entre demandas da la 
+La dualidad entre funciones de demanda da la 
 \emph on
 demostraciÃ³n
 \emph default
@@ -8226,11 +9841,7 @@ textcite{Slutsky1915Bilancio}
 
 \end_inset
 
-. Partimos de la identidad 
-\begin_inset Formula $h_i(p,\overline{U})\equiv x_i\big(p,E(p,\overline{U})\big)$
-\end_inset
-
- (ecuaciÃ³n
+. Por el teorema bÃ¡sico, en el Ã³ptimo las demandas coinciden: si la renta del primal coincide con el gasto mÃ­nimo del dual para el nivel de utilidad maximizado, se cumple la identidad (ecuaciÃ³n
 \begin_inset space ~
 
 \end_inset
@@ -8246,15 +9857,43 @@ nolink "false"
 
 \end_inset
 
-), que se cumple para todo 
-\begin_inset Formula $p$
+) 
+\begin_inset Formula \begin{equation*}
+  h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big).
+  \end{equation*}
 \end_inset
 
-, y derivamos respecto a 
+
+\end_layout
+
+\begin_layout Itemize
+Como se cumple para todo 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+, podemos derivar los dos lados respecto a 
 \begin_inset Formula $p_j$
 \end_inset
 
-. Por el lema de 
+, aplicando la regla de la cadena en el derecho: 
+\begin_inset Formula \begin{align*}
+  \frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}&=\frac{\partial x_i\big(\vect{p},E(\vect{p},\overline{U})\big)}{\partial p_j}+\frac{\partial x_i\big(\vect{p},E(\vect{p},\overline{U})\big)}{\partial\overline{W}}\cdot\frac{\partial E(\vect{p},\overline{U})}{\partial p_j}.
+  \end{align*}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Evaluamos en 
+\begin_inset Formula $\overline{U}=V(\vect{p},\overline{W})$
+\end_inset
+
+ y usamos las relaciones de dualidad: 
+\begin_inset Formula $E(\vect{p},\overline{U})=\overline{W}$
+\end_inset
+
+ y, por el lema de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8265,22 +9904,36 @@ Shephard
 \end_inset
 
 , 
-\begin_inset Formula $\partial E/\partial p_j=h_j=x_j$
+\begin_inset Formula $\dfrac{\partial E(\vect{p},\overline{U})}{\partial p_j}=h_j(\vect{p},\overline{U})=h_j\big(\vect{p},V(\vect{p},\overline{W})\big)=x_j(\vect{p},\overline{W})$
+\end_inset
+
+. Despejando, llegamos a la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+ecuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 : 
 \begin_inset Formula \begin{equation}
-  \frac{\partial h_i}{\partial p_j}=\frac{\partial x_i}{\partial p_j}+\frac{\partial x_i}{\partial\overline{W}}\cdot\frac{\partial E(p,\overline{U})}{\partial p_j}
-  \quad\Longrightarrow\quad
-  \underbrace{\frac{\partial x_i(p,\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\frac{\partial h_i(p,\overline{U})}{\partial p_j}}_{\text{efecto sustituciÃ³n}}\ \underbrace{-\,x_j\,\frac{\partial x_i(p,\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}, \label{eq:slutsky}
+  \underbrace{\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustituciÃ³n}}\ \underbrace{-\,x_j(\vect{p},\overline{W})\,\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}},\qquad\forall\,i,j. \label{eq:slutsky}
   \end{equation}
 \end_inset
 
-evaluada en 
-\begin_inset Formula $\overline{U}=V(p,\overline{W})$
-\end_inset
-
-. Vale para el precio propio (
+Vale para el precio propio (
 \begin_inset Formula $i=j$
 \end_inset
 
@@ -8288,17 +9941,7 @@ evaluada en
 \begin_inset Formula $i\neq j$
 \end_inset
 
-). Es la misma derivaciÃ³n del anexo de 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.8
-\end_layout
-
-\end_inset
-
-. 
+). 
 \end_layout
 
 \begin_deeper
@@ -8339,7 +9982,7 @@ En elasticidades
 
 : 
 \begin_inset Formula \begin{equation}
-    \varepsilon_{x_i,p_j}=\varepsilon^{h}_{i,p_j}-s_j\,\varepsilon_{x_i,\overline{W}}. \label{eq:slutsky-elasticidades}
+    \underbrace{\varepsilon_{x_i,p_j}}_{\text{ET}}=\underbrace{\varepsilon^{h}_{i,p_j}}_{\text{ES}}\ \underbrace{-\,s_j\,\varepsilon_{x_i,\overline{W}}}_{\text{ER}}. \label{eq:slutsky-elasticidades}
     \end{equation}
 \end_inset
 
@@ -8434,15 +10077,23 @@ Slutsky
 
 \end_inset
 
-, 
-\begin_inset Formula $S=[S_{ij}]$
+ (ecuaciÃ³n
+\begin_inset space ~
+
 \end_inset
 
- con 
-\begin_inset Formula $S_{ij}=\partial h_i/\partial p_j=\partial^2E/\partial p_j\partial p_i$
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:matriz-slutsky"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
-: 
+): 
 \end_layout
 
 \begin_deeper
@@ -8492,11 +10143,11 @@ semidefinida negativa
 
 \begin_layout Itemize
 
-\begin_inset Formula $S\,p=0$
+\begin_inset Formula $S\,\vect{p}=\vect{0}$
 \end_inset
 
 , por la homogeneidad de grado cero de 
-\begin_inset Formula $h$
+\begin_inset Formula $\vect{h}$
 \end_inset
 
  (teorema de 
@@ -8531,41 +10182,37 @@ Hicks
 \end_layout
 
 \end_deeper
+\begin_layout Paragraph
+ClasificaciÃ³n de los bienes segÃºn el precio propio
+\end_layout
+
 \begin_layout Itemize
+Como 
+\begin_inset Formula $S_{ii}\leq 0$
+\end_inset
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-ClasificaciÃ³n de los bienes
-\end_layout
+, el signo del efecto total depende del efecto renta (tabla
+\begin_inset space ~
 
 \end_inset
 
-. Las tablas completas, con sus colores, estÃ¡n en 
-\begin_inset Flex Ver tema
-status collapsed
 
-\begin_layout Plain Layout
-3.A.8
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:slutsky-propio"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-; lo esencial que aporta la dualidad es: 
+): 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\emph on
-Precio propio
-\emph default
-: como 
-\begin_inset Formula $S_{ii}\leq 0$
-\end_inset
-
-, un bien 
+un bien 
 \emph on
 normal
 \emph default
@@ -8573,7 +10220,15 @@ normal
 \emph on
 ordinario
 \emph default
-; un bien 
+: los dos efectos van en el mismo sentido (
+\emph on
+ley de la demanda
+\emph default
+); 
+\end_layout
+
+\begin_layout Itemize
+un bien 
 \emph on
 inferior
 \emph default
@@ -8601,7 +10256,12 @@ Giffen
 
 \end_inset
 
- es, por tanto, un bien inferior; no al revÃ©s. El efecto 
+ es, por tanto, un bien inferior; no al revÃ©s. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+El efecto 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8646,12 +10306,630 @@ status collapsed
 . 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\emph on
-Precios cruzados
-\emph default
-: la relaciÃ³n 
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\size small
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EcuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+ obtenida por dualidad: clasificaciÃ³n de los bienes ante una variaciÃ³n de su propio precio
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:slutsky-propio"
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\arraystretch}{1.6}
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="27text%">
+<column alignment="center" valignment="middle" width="29text%">
+<column alignment="center" valignment="middle" width="29text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle\underbrace{\frac{\partial h_i(\vect{p},\overline{U})}{\partial p_i}}_{\text{efecto sustituciÃ³n}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle\underbrace{-\,x_i(\vect{p},\overline{W})\,\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle=\ \underbrace{\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_i}}_{\text{efecto total}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\shape italic
+Efecto sustituciÃ³n propio
+\shape default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\shape italic
+Efecto renta propio
+\shape default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\shape italic
+Efecto total propio
+\shape default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: bien normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeazul}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+: bien ordinario
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $=0$
+\end_inset
+
+: bien frontera 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: bien inferior
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $\leq 0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: bien 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Giffen
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset VSpace 2pt
+\end_inset
+
+
+\size footnotesize
+El efecto sustituciÃ³n es siempre no positivo por la concavidad de la funciÃ³n de gasto. El efecto renta lleva el signo contrario al de 
+\begin_inset Formula $\partial x_i/\partial\overline{W}$
+\end_inset
+
+, porque una subida de 
+\begin_inset Formula $p_i$
+\end_inset
+
+ reduce la renta real. Un bien inferior es ordinario si el efecto sustituciÃ³n domina (|ES| 
+\begin_inset Formula $\geq$
+\end_inset
+
+ ER) y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Giffen
+\end_layout
+
+\end_inset
+
+ si domina el efecto renta (ER 
+\begin_inset Formula $>$
+\end_inset
+
+ |ES|). Colores de la clasificaciÃ³n: normal, inferior, ordinario y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Giffen
+\end_layout
+
+\end_inset
+
+, como en el grÃ¡fico de clasificaciÃ³n de los bienes de 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.8
+\end_layout
+
+\end_inset
+
+.
+\size small
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§2.E y Â§3.G]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+ClasificaciÃ³n de los bienes segÃºn los precios cruzados
+\end_layout
+
+\begin_layout Itemize
+La relaciÃ³n 
 \emph on
 neta
 \emph default
@@ -8680,7 +10958,7 @@ textcite{HicksAllen1934Reconsideration}
 bruta
 \emph default
  (signo de 
-\begin_inset Formula $\partial x_i/\partial p_j$
+\begin_inset Formula $\partial x_i(\vect{p},\overline{W})/\partial p_j$
 \end_inset
 
 ) no lo es, porque el efecto renta de 
@@ -8706,19 +10984,1211 @@ bruta
 . Un par de bienes puede ser sustitutivo neto y complementario bruto. 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
+No todas las combinaciones son posibles (tabla
+\begin_inset space ~
 
-\begin_inset Flex Concepto
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:slutsky-cruzado"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): si los bienes son sustitutivos netos y el bien 
+\begin_inset Formula $i$
+\end_inset
+
+ es inferior, solo pueden ser sustitutivos brutos; si son complementarios netos y el bien 
+\begin_inset Formula $i$
+\end_inset
+
+ es normal, solo pueden ser complementarios brutos. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Pendientes de las demandas
+
+\backslash
+centering
 \end_layout
 
 \end_inset
 
-. El efecto renta explica por quÃ© las demandas marshalliana y hicksiana tienen pendientes distintas en el plano 
+
+\size small
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EcuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+ obtenida por dualidad: relaciones netas y brutas ante una variaciÃ³n de un precio cruzado (
+\begin_inset Formula $i\neq j$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:slutsky-cruzado"
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\arraystretch}{1.6}
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="11" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="27text%">
+<column alignment="center" valignment="middle" width="27text%">
+<column alignment="center" valignment="middle" width="31text%">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle\underbrace{\frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustituciÃ³n}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle\underbrace{-\,x_j(\vect{p},\overline{W})\,\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\displaystyle=\ \underbrace{\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceesalmon}
+\end_layout
+
+\end_inset
+
+
+\shape italic
+Efecto sustituciÃ³n cruzado
+\shape default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\shape italic
+Efecto renta cruzado
+\shape default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\shape italic
+Efecto total cruzado
+\shape default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: sustitutivos netos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+ambiguo: signo de ES 
+\begin_inset Formula $+$
+\end_inset
+
+ ER
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $=0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ frontera 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: sustitutivos brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ inferior
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: sustitutivos brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $=0$
+\end_inset
+
+: independientes netos
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: complementarios brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $=0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ frontera 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $=0$
+\end_inset
+
+: independientes brutos
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ inferior
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: sustitutivos brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: complementarios netos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ normal
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: complementarios brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset Formula $=0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ frontera 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $<0$
+\end_inset
+
+: complementarios brutos
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $>0$
+\end_inset
+
+: 
+\begin_inset Formula $i$
+\end_inset
+
+ inferior
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\size small
+ambiguo: signo de ES 
+\begin_inset Formula $+$
+\end_inset
+
+ ER
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+\begin_inset VSpace 2pt
+\end_inset
+
+
+\size footnotesize
+Con 
+\begin_inset Formula $x_j>0$
+\end_inset
+
+. En los casos ambiguos, los bienes son sustitutivos brutos si domina el efecto positivo y complementarios brutos si domina el negativo. Las relaciones netas son simÃ©tricas (
+\begin_inset Formula $\partial h_i/\partial p_j=\partial h_j/\partial p_i$
+\end_inset
+
+); las brutas, no, porque el efecto renta de 
+\begin_inset Formula $i$
+\end_inset
+
+ ante 
+\begin_inset Formula $p_j$
+\end_inset
+
+ (
+\begin_inset Formula $-x_j\,\partial x_i/\partial\overline{W}$
+\end_inset
+
+) no tiene por quÃ© coincidir con el de 
+\begin_inset Formula $j$
+\end_inset
+
+ ante 
+\begin_inset Formula $p_i$
+\end_inset
+
+ (
+\begin_inset Formula $-x_i\,\partial x_j/\partial\overline{W}$
+\end_inset
+
+).
+\size small
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§3.G]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Pendientes de las demandas marshalliana y hicksiana
+\end_layout
+
+\begin_layout Itemize
+El efecto renta explica por quÃ© las demandas marshalliana y hicksiana tienen pendientes distintas en el plano 
 \begin_inset Formula $(x_i,p_i)$
 \end_inset
 
@@ -8771,11 +12241,7 @@ normal
 \emph on
 inferior
 \emph default
-, mÃ¡s inclinada, y sin efecto renta coinciden. Es el puente con la medida del bienestar: para un bien normal, ante una bajada del precio, 
-\begin_inset Formula $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$
-\end_inset
-
-. El grÃ¡fico de la descomposiciÃ³n en los dos planos es el de 
+, mÃ¡s inclinada, y sin efecto renta coinciden 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -8783,6 +12249,10 @@ status collapsed
 3.A.8
 \end_layout
 
+\end_inset
+
+. Es el puente con la medida del bienestar: para un bien normal, ante una bajada del precio, 
+\begin_inset Formula $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$
 \end_inset
 
 . 
@@ -8909,11 +12379,35 @@ El
 \emph on
 problema
 \emph default
-: si baja 
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-problema"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): si baja 
 \begin_inset Formula $p_1$
 \end_inset
 
-, el consumidor pasa de 
+, la recta de balance gira hacia fuera, el consumidor cambia su cesta Ã³ptima de 
+\begin_inset Formula $\vect{x}^0$
+\end_inset
+
+ a 
+\begin_inset Formula $\vect{x}^1$
+\end_inset
+
+ y pasa de la curva de indiferencia 
 \begin_inset Formula $\overline{U}^0$
 \end_inset
 
@@ -8921,7 +12415,7 @@ problema
 \begin_inset Formula $\overline{U}^1>\overline{U}^0$
 \end_inset
 
-, pero, como la utilidad es 
+. Ha mejorado, pero Â¿cuÃ¡nto? Como la utilidad es 
 \emph on
 ordinal
 \emph default
@@ -8929,7 +12423,7 @@ ordinal
 \begin_inset Formula $\overline{U}^1-\overline{U}^0$
 \end_inset
 
- no significa nada. Â¿CuÃ¡nto ha mejorado? Hace falta una medida en 
+ no significa nada: carece de sentido calcular la magnitud del cambio en Ãºtiles. Hace falta una medida en 
 \emph on
 unidades monetarias
 \emph default
@@ -8938,11 +12432,11 @@ unidades monetarias
 
 \begin_layout Itemize
 NotaciÃ³n: los precios pasan de 
-\begin_inset Formula $p^0$
+\begin_inset Formula $\vect{p}^0$
 \end_inset
 
  a 
-\begin_inset Formula $p^1$
+\begin_inset Formula $\vect{p}^1$
 \end_inset
 
 , con renta 
@@ -8950,19 +12444,19 @@ NotaciÃ³n: los precios pasan de
 \end_inset
 
  constante; 
-\begin_inset Formula $\overline{U}^0=V(p^0,\overline{W})$
+\begin_inset Formula $\overline{U}^0=V(\vect{p}^0,\overline{W})$
 \end_inset
 
  y 
-\begin_inset Formula $\overline{U}^1=V(p^1,\overline{W})$
+\begin_inset Formula $\overline{U}^1=V(\vect{p}^1,\overline{W})$
 \end_inset
 
 , y 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  y 
-\begin_inset Formula $x^1$
+\begin_inset Formula $\vect{x}^1$
 \end_inset
 
  son las cestas elegidas. Si solo cambia 
@@ -8970,10 +12464,134 @@ NotaciÃ³n: los precios pasan de
 \end_inset
 
 , el resto de precios se mantiene en 
-\begin_inset Formula $\bar p_{-1}$
+\begin_inset Formula $\overline{\vect{p}}_{-1}$
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El problema de medir el bienestar: la bajada de 
+\begin_inset Formula $p_1$
+\end_inset
+
+ lleva al consumidor a una curva de indiferencia mÃ¡s alta, pero Â¿cuÃ¡nto ha mejorado?
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bienestar-problema"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+bienestar-problema
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -9019,14 +12637,180 @@ textcite{Marshall1890Principles}
 
 \end_inset
 
-. El 
+. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+El 
 \emph on
-excedente
+excedente del consumidor
 \emph default
- es la diferencia entre lo que el consumidor estÃ¡ dispuesto a pagar y lo que paga: el Ã¡rea bajo la demanda marshalliana y sobre el precio. Su variaciÃ³n es el Ã¡rea a la izquierda de la demanda marshalliana entre los dos precios: 
+ es la diferencia entre lo que el consumidor estÃ¡ dispuesto a pagar por cada unidad del bien y lo que paga: el Ã¡rea bajo la demanda marshalliana y sobre el precio. 
+\end_layout
+
+\begin_layout Itemize
+Su 
+\emph on
+variaciÃ³n
+\emph default
+ es el Ã¡rea a la izquierda de la demanda marshalliana entre el precio inicial y el final (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-delta-ec"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): 
 \begin_inset Formula \begin{equation}
-  \Delta\mathrm{EC}=\int_{p_1^1}^{p_1^0}x_1(p_1,\bar p_{-1},\overline{W})\,dp_1. \label{eq:delta-ec}
-  \end{equation}
+    \Delta\mathrm{EC}=\int_{p_1^1}^{p_1^0}x_1(p_1,\overline{\vect{p}}_{-1},\overline{W})\,dp_1. \label{eq:delta-ec}
+    \end{equation}
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VariaciÃ³n del excedente del consumidor ante una bajada de 
+\begin_inset Formula $p_1$
+\end_inset
+
+: el Ã¡rea a la izquierda de la demanda marshalliana
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bienestar-delta-ec"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+bienestar-delta-ec
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§3.I]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
 \end_inset
 
 
@@ -9037,7 +12821,7 @@ Solo necesita la demanda, que es observable, pero tiene un
 \emph on
 problema
 \emph default
-: a lo largo de la demanda marshalliana cambia la utilidad, asÃ­ que mezcla el efecto sustituciÃ³n con el efecto renta. 
+: a lo largo de la demanda marshalliana cambia la utilidad, asÃ­ que mezcla el efecto sustituciÃ³n con el efecto renta y no es un anÃ¡lisis puro del efecto de los precios sobre el bienestar. 
 \end_layout
 
 \begin_deeper
@@ -9206,21 +12990,21 @@ status collapsed
 \end_inset
 
 : fijado un vector de precios de referencia 
-\begin_inset Formula $\bar p$
+\begin_inset Formula $\bar{\vect{p}}$
 \end_inset
 
 , 
 \begin_inset Formula \begin{equation}
-  m(\bar p;p,\overline{W})\equiv E\big(\bar p,V(p,\overline{W})\big) \label{eq:money-metric}
+  m(\bar{\vect{p}};\vect{p},\overline{W})\equiv E\big(\bar{\vect{p}},V(\vect{p},\overline{W})\big) \label{eq:money-metric}
   \end{equation}
 \end_inset
 
 es lo que costarÃ­a, a los precios 
-\begin_inset Formula $\bar p$
+\begin_inset Formula $\bar{\vect{p}}$
 \end_inset
 
 , alcanzar la utilidad que se obtiene con el presupuesto 
-\begin_inset Formula $(p,\overline{W})$
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
 . Como 
@@ -9257,7 +13041,7 @@ Hicks
 
 \end_inset
 
- son la variaciÃ³n de la mÃ©trica monetaria con dos elecciones de los precios de referencia:
+ son la variaciÃ³n de la mÃ©trica monetaria con dos elecciones de los precios de referencia.
 \begin_inset Foot
 status collapsed
 
@@ -9316,26 +13100,252 @@ textcite{Willig1976Surplus}
 
 \end_inset
 
- 
-\begin_inset Formula \begin{equation}
-  \mathrm{VE}=m(p^0;p^1,\overline{W})-m(p^0;p^0,\overline{W})=E(p^0,\overline{U}^1)-\overline{W}, \label{eq:ve}
-  \end{equation}
-\end_inset
+ Las dos son positivas si el bienestar mejora, y por el lema de 
+\begin_inset Flex Autor
+status collapsed
 
-
-\begin_inset Formula \begin{equation}
-  \mathrm{VC}=m(p^1;p^1,\overline{W})-m(p^1;p^0,\overline{W})=\overline{W}-E(p^1,\overline{U}^0), \label{eq:vc}
-  \end{equation}
-\end_inset
-
-porque 
-\begin_inset Formula $m(p;p,\overline{W})=E\big(p,V(p,\overline{W})\big)=\overline{W}$
-\end_inset
-
-. 
+\begin_layout Plain Layout
+Shephard
 \end_layout
 
-\begin_deeper
+\end_inset
+
+, como 
+\begin_inset Formula $E$
+\end_inset
+
+ es la integral de la demanda hicksiana, pueden leerse como Ã¡reas a la izquierda de una hicksiana. Si solo cambia 
+\begin_inset Formula $p_1$
+\end_inset
+
+, y como 
+\begin_inset Formula $E(\vect{p}^0,\overline{U}^0)=E(\vect{p}^1,\overline{U}^1)=\overline{W}$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Separator plain
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+La 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+variaciÃ³n compensatoria
+\end_layout
+
+\end_inset
+
+ (VC) es el cambio de renta que, 
+\emph on
+a los precios finales
+\emph default
+, devolverÃ­a al consumidor a la utilidad 
+\emph on
+inicial
+\emph default
+: lo que habrÃ­a que quitarle (si mejora) o darle (si empeora) para compensar el cambio. Si baja un precio, es lo 
+\emph on
+mÃ¡ximo que pagarÃ­a
+\emph default
+ por la bajada; si sube, 
+\begin_inset Formula $-\mathrm{VC}$
+\end_inset
+
+ es la compensaciÃ³n mÃ­nima que aceptarÃ­a. 
+\begin_inset Formula \begin{equation}
+  \mathrm{VC}=m(\vect{p}^1;\vect{p}^1,\overline{W})-m(\vect{p}^1;\vect{p}^0,\overline{W})=\underbrace{E(\vect{p}^1,\overline{U}^1)}_{=\overline{W}}-E(\vect{p}^1,\overline{U}^0)=\int_{p_1^1}^{p_1^0}h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)\,dp_1. \label{eq:vc}
+  \end{equation}
+\end_inset
+
+GrÃ¡ficamente (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-vc"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), en el panel de las cestas es la distancia vertical, medida en unidades del bien 2 con 
+\begin_inset Formula $p_2=1$
+\end_inset
+
+, entre la nueva recta de balance y su paralela tangente a la curva inicial 
+\begin_inset Formula $\overline{U}^0$
+\end_inset
+
+ (la cesta compensada 
+\begin_inset Formula $\vect{h}(\vect{p}^1,\overline{U}^0)$
+\end_inset
+
+); en el panel de la demanda, es el Ã¡rea a la izquierda de la hicksiana 
+\emph on
+inicial
+\emph default
+, 
+\begin_inset Formula $h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)$
+\end_inset
+
+, entre los dos precios. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VariaciÃ³n compensatoria ante una bajada de 
+\begin_inset Formula $p_1$
+\end_inset
+
+: a los precios finales, la renta que devuelve al consumidor a 
+\begin_inset Formula $\overline{U}^0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bienestar-vc"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+bienestar-vc
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§3.I]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 La 
 \begin_inset Flex Concepto
@@ -9355,49 +13365,15 @@ a los precios iniciales
 \emph on
 final
 \emph default
-: lo que el cambio de precios Â«equivaleÂ» en dinero. 
-\end_layout
-
-\begin_layout Itemize
-La 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-variaciÃ³n compensatoria
-\end_layout
-
-\end_inset
-
- (VC) es el cambio de renta que, 
-\emph on
-a los precios finales
-\emph default
-, lo devolverÃ­a a la utilidad 
-\emph on
-inicial
-\emph default
-: lo que habrÃ­a que quitarle (si mejora) o darle (si empeora) para compensar el cambio. 
-\end_layout
-
-\begin_layout Itemize
-Con esta convenciÃ³n, las dos son positivas si el bienestar mejora. Si baja un precio, la VC es lo 
-\emph on
-mÃ¡ximo que pagarÃ­a
-\emph default
- por la bajada y la VE, lo 
+: lo que el cambio de precios Â«equivaleÂ» en dinero. Si baja un precio, es lo 
 \emph on
 mÃ­nimo que aceptarÃ­a
 \emph default
- por renunciar a ella; si sube, 
-\begin_inset Formula $-\mathrm{VC}$
-\end_inset
-
- es la compensaciÃ³n mÃ­nima que aceptarÃ­a y 
+ por renunciar a la bajada; si sube, 
 \begin_inset Formula $-\mathrm{VE}$
 \end_inset
 
-, lo mÃ¡ximo que pagarÃ­a por evitar la subida 
+ es lo mÃ¡ximo que pagarÃ­a por evitarla 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -9408,58 +13384,189 @@ status collapsed
 \end_inset
 
 . 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Como Ã¡reas
-\end_layout
-
-\end_inset
-
-. Por el lema de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Shephard
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Formula $E$
-\end_inset
-
- es la integral de la demanda hicksiana. Si solo cambia 
-\begin_inset Formula $p_1$
-\end_inset
-
-, y como 
-\begin_inset Formula $E(p^0,\overline{U}^0)=E(p^1,\overline{U}^1)=\overline{W}$
-\end_inset
-
-, 
 \begin_inset Formula \begin{equation}
-  \mathrm{VC}=\int_{p_1^1}^{p_1^0}h_1(p_1,\bar p_{-1},\overline{U}^0)\,dp_1,\qquad \mathrm{VE}=\int_{p_1^1}^{p_1^0}h_1(p_1,\bar p_{-1},\overline{U}^1)\,dp_1: \label{eq:vc-ve-areas}
+  \mathrm{VE}=m(\vect{p}^0;\vect{p}^1,\overline{W})-m(\vect{p}^0;\vect{p}^0,\overline{W})=E(\vect{p}^0,\overline{U}^1)-\underbrace{E(\vect{p}^0,\overline{U}^0)}_{=\overline{W}}=\int_{p_1^1}^{p_1^0}h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^1)\,dp_1. \label{eq:ve}
   \end{equation}
 \end_inset
 
-el Ã¡rea a la izquierda de la hicksiana 
-\emph on
-inicial
-\emph default
- (VC) o 
+GrÃ¡ficamente (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bienestar-ve"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), es la distancia vertical entre la recta de balance inicial y su paralela tangente a la curva final 
+\begin_inset Formula $\overline{U}^1$
+\end_inset
+
+ (la cesta 
+\begin_inset Formula $\vect{h}(\vect{p}^0,\overline{U}^1)$
+\end_inset
+
+), y el Ã¡rea a la izquierda de la hicksiana 
 \emph on
 final
 \emph default
- (VE) entre los dos precios. Con varios precios son integrales de lÃ­nea de las hicksianas, que no dependen del camino porque 
-\begin_inset Formula $h$
+, 
+\begin_inset Formula $h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^1)$
+\end_inset
+
+, entre los dos precios. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VariaciÃ³n equivalente ante una bajada de 
+\begin_inset Formula $p_1$
+\end_inset
+
+: a los precios iniciales, la renta que lleva al consumidor a 
+\begin_inset Formula $\overline{U}^1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bienestar-ve"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+bienestar-ve
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§3.I]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Con varios precios, la VC y la VE son integrales de lÃ­nea de las hicksianas, que no dependen del camino porque 
+\begin_inset Formula $\vect{h}$
 \end_inset
 
  es el gradiente de 
@@ -9475,7 +13582,7 @@ final
 status collapsed
 
 \begin_layout Plain Layout
-GrÃ¡ficamente
+Las tres medidas juntas
 \end_layout
 
 \end_inset
@@ -9496,25 +13603,13 @@ nolink "false"
 
 \end_inset
 
-), para una bajada del precio de un bien normal: en el panel superior, con 
-\begin_inset Formula $p_2=1$
-\end_inset
-
-, la VC es la distancia vertical entre la nueva recta de balance y su paralela tangente a 
-\begin_inset Formula $\overline{U}^0$
-\end_inset
-
-, y la VE, la distancia entre la recta inicial y su paralela tangente a 
-\begin_inset Formula $\overline{U}^1$
-\end_inset
-
-; en el panel inferior, la hicksiana inicial es mÃ¡s inclinada que la marshalliana y la final queda a su derecha, de modo que 
+): para un bien normal, la hicksiana inicial es mÃ¡s inclinada que la marshalliana y la final queda a su derecha, de modo que, ante una bajada del precio, 
 \begin_inset Formula \begin{equation}
   \mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE} \qquad\text{(bien normal; con efecto renta nulo, las tres coinciden).} \label{eq:orden-normal}
   \end{equation}
 \end_inset
 
-Para un bien inferior, el orden se invierte. La ordenaciÃ³n completa para cada tipo de bien estÃ¡ en el anexo
+Para un bien inferior, el orden se invierte, y si el precio sube, el orden en valor absoluto tambiÃ©n se invierte. La ordenaciÃ³n completa para cada tipo de bien estÃ¡ en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -9535,7 +13630,130 @@ nolink "false"
 
 \begin_layout Standard
 
-\begin_inset Separator plain
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VariaciÃ³n compensatoria, variaciÃ³n del excedente del consumidor y variaciÃ³n equivalente ante una bajada del precio de un bien normal
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bienestar-vc-ve"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.62
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+bienestar-vc-ve
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia basada en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§3.I]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
 
 \end_inset
 
@@ -9685,7 +13903,7 @@ ordenar varias polÃ­ticas
 VE
 \emph default
 : todas se valoran con los mismos precios de referencia, 
-\begin_inset Formula $p^0$
+\begin_inset Formula $\vect{p}^0$
 \end_inset
 
 , de modo que es una mÃ©trica monetaria con base fija y ordena las alternativas igual que la utilidad; la VC usa como referencia los precios finales de cada alternativa, distintos en cada caso, y puede ordenarlas mal 
@@ -9754,138 +13972,6 @@ En ambos casos, el obstÃ¡culo prÃ¡ctico es que hacen falta la funciÃ³n de 
 \end_deeper
 \begin_layout Standard
 
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VariaciÃ³n compensatoria, variaciÃ³n del excedente del consumidor y variaciÃ³n equivalente ante una bajada del precio de un bien normal
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:bienestar-vc-ve"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.62
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-bienestar-vc-ve
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia basada en 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[Â§3.I]{MasColellWhinstonGreen1995}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \begin_inset Flex Nota al opositor
 status collapsed
 
@@ -9914,7 +14000,7 @@ parencite[Â§3.I]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. Con la VC se llega a la misma conclusiÃ³n cualitativa con otra cifra. Se estudia en 
+. Con la VC se llega a la misma conclusiÃ³n cualitativa con otra cifra. Es una aplicaciÃ³n directa de la funciÃ³n de gasto 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -9924,7 +14010,7 @@ status collapsed
 
 \end_inset
 
-; aquÃ­ basta saber que es una aplicaciÃ³n directa de la funciÃ³n de gasto. 
+. 
 \end_layout
 
 \end_inset
@@ -9938,16 +14024,16 @@ AnÃ¡lisis mediante variaciones: informaciÃ³n incompleta
 
 \begin_layout Itemize
 Si no se conoce la funciÃ³n de gasto ni la demanda, sino solo las cestas observadas 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  y 
-\begin_inset Formula $x^1$
+\begin_inset Formula $\vect{x}^1$
 \end_inset
 
 , pueden calcularse dos compensaciones Â«de cesta fijaÂ»: 
 \begin_inset Formula \begin{equation}
-  L\equiv\overline{W}-p^1\cdot x^0=(p^0-p^1)\cdot x^0,\qquad P\equiv p^0\cdot x^1-\overline{W}=(p^0-p^1)\cdot x^1. \label{eq:var-laspeyres-paasche}
+  L\equiv\overline{W}-\vect{p}^1\cdot\vect{x}^0=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^0,\qquad P\equiv\vect{p}^0\cdot\vect{x}^1-\overline{W}=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^1. \label{eq:var-laspeyres-paasche}
   \end{equation}
 \end_inset
 
@@ -10026,11 +14112,11 @@ Acotan las medidas exactas, para cualquier nÃºmero de precios y tipo de bien:
 \end_inset
 
 porque mantener la cesta inicial a los precios nuevos cuesta al menos el gasto mÃ­nimo, 
-\begin_inset Formula $p^1\cdot x^0\geq E(p^1,\overline{U}^0)$
+\begin_inset Formula $\vect{p}^1\cdot\vect{x}^0\geq E(\vect{p}^1,\overline{U}^0)$
 \end_inset
 
 , y lo mismo con la final, 
-\begin_inset Formula $p^0\cdot x^1\geq E(p^0,\overline{U}^1)$
+\begin_inset Formula $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$
 \end_inset
 
 . La diferencia es el 
@@ -10141,12 +14227,12 @@ parencite{Konus1939Problem}
 
 : 
 \begin_inset Formula \begin{equation}
-  I_K(p^0,p^1;\overline{U})=\frac{E(p^1,\overline{U})}{E(p^0,\overline{U})}. \label{eq:konus}
+  I_K(\vect{p}^0,\vect{p}^1;\overline{U})=\frac{E(\vect{p}^1,\overline{U})}{E(\vect{p}^0,\overline{U})}. \label{eq:konus}
   \end{equation}
 \end_inset
 
 Con la utilidad inicial, 
-\begin_inset Formula $I_K(\overline{U}^0)=E(p^1,\overline{U}^0)/\overline{W}$
+\begin_inset Formula $I_K(\overline{U}^0)=E(\vect{p}^1,\overline{U}^0)/\overline{W}$
 \end_inset
 
  es la versiÃ³n de la VC: por cuÃ¡nto hay que multiplicar la renta para mantener 
@@ -10154,7 +14240,7 @@ Con la utilidad inicial,
 \end_inset
 
 . Con la final, 
-\begin_inset Formula $I_K(\overline{U}^1)=\overline{W}/E(p^0,\overline{U}^1)$
+\begin_inset Formula $I_K(\overline{U}^1)=\overline{W}/E(\vect{p}^0,\overline{U}^1)$
 \end_inset
 
 , la de la VE. Exige conocer la funciÃ³n de gasto. 
@@ -10225,7 +14311,7 @@ status collapsed
 
 : 
 \begin_inset Formula \begin{equation}
-  I_L=\frac{p^1\cdot x^0}{p^0\cdot x^0}\geq I_K(\overline{U}^0),\qquad I_P=\frac{p^1\cdot x^1}{p^0\cdot x^1}\leq I_K(\overline{U}^1). \label{eq:laspeyres-paasche}
+  I_L=\frac{\vect{p}^1\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\geq I_K(\overline{U}^0),\qquad I_P=\frac{\vect{p}^1\cdot\vect{x}^1}{\vect{p}^0\cdot\vect{x}^1}\leq I_K(\overline{U}^1). \label{eq:laspeyres-paasche}
   \end{equation}
 \end_inset
 
@@ -10249,11 +14335,11 @@ Laspeyres
 
 \emph default
  es la aproximaciÃ³n de primer orden de 
-\begin_inset Formula $E(p^1,\overline{U}^0)$
+\begin_inset Formula $E(\vect{p}^1,\overline{U}^0)$
 \end_inset
 
  en torno a 
-\begin_inset Formula $p^0$
+\begin_inset Formula $\vect{p}^0$
 \end_inset
 
  (por 
@@ -10266,8 +14352,12 @@ Shephard
 
 \end_inset
 
+ y porque 
+\begin_inset Formula $\vect{h}(\vect{p}^0,\overline{U}^0)=\vect{x}^0$
+\end_inset
+
 , 
-\begin_inset Formula $E(p^0,\overline{U}^0)+h(p^0,\overline{U}^0)\cdot(p^1-p^0)=p^1\cdot x^0$
+\begin_inset Formula $E(\vect{p}^0,\overline{U}^0)+\vect{h}(\vect{p}^0,\overline{U}^0)\cdot(\vect{p}^1-\vect{p}^0)=\vect{p}^1\cdot\vect{x}^0$
 \end_inset
 
 ) y, por la concavidad de 
@@ -10303,11 +14393,11 @@ nolink "false"
 \end_inset
 
 , la distancia entre la recta de precios 
-\begin_inset Formula $p^1$
+\begin_inset Formula $\vect{p}^1$
 \end_inset
 
  que pasa por 
-\begin_inset Formula $x^0$
+\begin_inset Formula $\vect{x}^0$
 \end_inset
 
  y su paralela tangente a 
@@ -10420,7 +14510,27 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ãndice verdadero de coste de la vida (KonÃ¼s) frente al Ã­ndice de Laspeyres: el sesgo de sustituciÃ³n
+Ãndice verdadero de coste de la vida (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+KonÃ¼s
+\end_layout
+
+\end_inset
+
+) frente al Ã­ndice de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Laspeyres
+\end_layout
+
+\end_inset
+
+: el sesgo de sustituciÃ³n
 \end_layout
 
 \end_inset
@@ -10781,22 +14891,65 @@ status collapsed
 \begin_layout Standard
 
 \series bold
-El IPC es un Ã­ndice de tipo Laspeyres encadenado
+El IPC es un Ã­ndice de tipo Laspeyres
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
- El IPC del INE es un 
+ El IPC 
 \emph on
-Ã­ndice de Laspeyres encadenado
+compara
 \emph default
-: cada aÃ±o se compara con los precios de diciembre del aÃ±o anterior y se encadenan los eslabones. Las ponderaciones se actualizan cada aÃ±o con la Contabilidad Nacional y la Encuesta de Presupuestos Familiares (las de 2026, con datos de 2024) y por completo en cada cambio de base. La base vigente es la 2025, desde el Ã­ndice de enero de 2026, y adopta la clasificaciÃ³n ECOICOP versiÃ³n
-\begin_inset space ~
+ el coste de una cesta representativa de bienes y servicios valorada a los precios del periodo actual 
+\emph on
+con
+\emph default
+ el coste de esa misma cesta valorada a los precios de un periodo de referencia. Para ello hay que ponderar los precios de las distintas categorÃ­as de bienes y servicios de modo que reflejen bien el gasto de los hogares. La fÃ³rmula de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Laspeyres
+\end_layout
 
 \end_inset
 
-2 
+ divide los precios actuales ponderados por las cantidades del periodo base entre los precios del periodo base ponderados por esas mismas cantidades: 
+\begin_inset Formula \begin{equation*}
+I_L=\frac{\displaystyle\sum_{i=1}^{n}p_i^t\,x_i^0}{\displaystyle\sum_{i=1}^{n}p_i^0\,x_i^0}\times 100=\frac{\vect{p}^t\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\times 100.
+\end{equation*}
+\end_inset
+
+Se asigna al Ã­ndice un valor de 100 en el periodo base, y sus valores en los demÃ¡s periodos indican el cambio porcentual medio de los precios respecto a Ã©l.
+\begin_inset Newline newline
+\end_inset
+
+ En la prÃ¡ctica, el IPC es un 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Ã­ndice de tipo Laspeyres
+\end_layout
+
+\end_inset
+
+: uno puro exigirÃ­a que la cesta fuera la comprada en el periodo de referencia de los precios, y en el IPC la cesta se refiere a un periodo distinto. En concreto, el IPC del INE es un 
+\emph on
+Ã­ndice de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Laspeyres
+\end_layout
+
+\end_inset
+
+ encadenado
+\emph default
+: cada aÃ±o se compara con los precios de diciembre del aÃ±o anterior y se encadenan los eslabones; las ponderaciones se actualizan cada aÃ±o (las de 2026, con datos de 2024) y por completo en cada cambio de base. La base vigente es la 2025, desde el Ã­ndice de enero de 2026 
 \begin_inset ERT
 status collapsed
 
@@ -10808,22 +14961,7 @@ parencite[5, 8 y 16]{INE2026IPCMetodologia}
 
 \end_inset
 
-. Su cesta tiene 487 artÃ­culos repartidos en 196 subclases y 13 grupos; los que mÃ¡s pesan en 2026 son los alimentos y bebidas no alcohÃ³licas (17,4
-\begin_inset space \thinspace{}
-
-\end_inset
-
-%), la restauraciÃ³n y el alojamiento (17,0
-\begin_inset space \thinspace{}
-
-\end_inset
-
-%) y el transporte (15,5
-\begin_inset space \thinspace{}
-
-\end_inset
-
-%) 
+; su cesta tiene 487 artÃ­culos repartidos en 196 subclases y 13 grupos 
 \begin_inset ERT
 status collapsed
 
@@ -10889,11 +15027,15 @@ Laspeyres
 
 \end_inset
 
-, tiene 
+, tiene un 
 \emph on
 sesgo de sustituciÃ³n
 \emph default
-: con el tiempo, unos precios suben mÃ¡s que otros y los consumidores compran menos de los bienes que se encarecen relativamente y mÃ¡s de los que se abaratan; como el Ã­ndice mantiene la cesta del periodo de referencia, da demasiado peso a los bienes que mÃ¡s se encarecen y muestra mÃ¡s inflaciÃ³n de la que sufren los consumidores. Actualizar las ponderaciones cada aÃ±o reduce el sesgo, pero no lo elimina, porque dentro de cada aÃ±o la cesta es fija. Su metodologÃ­a se estudia en 
+ que 
+\emph on
+sobrevalora
+\emph default
+ los incrementos de precios: con el tiempo, unos precios suben mÃ¡s que otros y los consumidores compran menos de los bienes que se encarecen relativamente y mÃ¡s de los que se abaratan; como el Ã­ndice mantiene la cesta del periodo de referencia, da demasiado peso a los bienes que mÃ¡s se encarecen y muestra mÃ¡s inflaciÃ³n de la que sufren los consumidores. Actualizar las ponderaciones cada aÃ±o reduce el sesgo, pero no lo elimina, porque dentro de cada aÃ±o la cesta es fija 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10925,16 +15067,30 @@ El deflactor del PIB es un Ã­ndice de tipo Paasche
 \begin_inset Newline newline
 \end_inset
 
- El deflactor implÃ­cito del PIB es el cociente entre el PIB a precios corrientes y el PIB en volumen, 
-\begin_inset Formula $\frac{\sum_ip_i^1x_i^1}{\sum_ip_i^0x_i^1}$
+ El deflactor del PIB 
+\emph on
+compara
+\emph default
+ el valor total de la producciÃ³n de bienes y servicios del periodo actual 
+\emph on
+con
+\emph default
+ el de esa misma producciÃ³n valorada a los precios del periodo de referencia. Pondera, por tanto, los precios con las cantidades del periodo 
+\emph on
+corriente
+\emph default
+: 
+\begin_inset Formula \begin{equation*}
+\text{Deflactor del PIB}=\frac{\overbrace{\text{PIB nominal}}^{\text{a precios corrientes}}}{\underbrace{\text{PIB real}}_{\text{en volumen}}}\times 100=\frac{\displaystyle\sum_{i=1}^{n}p_i^t\,x_i^t}{\displaystyle\sum_{i=1}^{n}p_i^0\,x_i^t}\times 100\equiv I_P.
+\end{equation*}
 \end_inset
 
-: pondera los precios con las cantidades del periodo corriente, como un Ã­ndice de 
-\begin_inset Flex Autor
+Es un 
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Paasche
+Ã­ndice de precios de Paasche
 \end_layout
 
 \end_inset
@@ -10951,7 +15107,17 @@ Laspeyres
 
  encadenados, con los precios del aÃ±o anterior, asÃ­ que su deflactor implÃ­cito es un 
 \emph on
-Ã­ndice de Paasche encadenado
+Ã­ndice de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Paasche
+\end_layout
+
+\end_inset
+
+ encadenado
 \emph default
 , no uno de base fija 
 \begin_inset ERT
@@ -10982,7 +15148,11 @@ parencite{INE2026CNA2025}
 
 \end_inset
 
-. Al ser de tipo 
+.
+\begin_inset Newline newline
+\end_inset
+
+ Al ser de tipo 
 \begin_inset Flex Autor
 status collapsed
 
@@ -10992,7 +15162,11 @@ Paasche
 
 \end_inset
 
-, tiende a infravalorar las subidas de precios 
+, 
+\emph on
+infravalora
+\emph default
+ los incrementos de precios: usa la cesta final, en la que ya pesan menos los bienes que mÃ¡s se han encarecido 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -11026,7 +15200,37 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-La funciÃ³n de gasto traduce la utilidad a euros. La VC y la VE miden exactamente el cambio de bienestar; el excedente marshalliano las aproxima tanto mejor cuanto menor es el efecto renta (Willig), y las cestas fijas de Laspeyres y Paasche las acotan, con un sesgo de sustituciÃ³n que sigue presente en los Ã­ndices de precios oficiales. 
+La funciÃ³n de gasto traduce la utilidad a euros. La VC y la VE miden exactamente el cambio de bienestar; el excedente marshalliano las aproxima tanto mejor cuanto menor es el efecto renta (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Willig
+\end_layout
+
+\end_inset
+
+), y las cestas fijas de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Laspeyres
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Paasche
+\end_layout
+
+\end_inset
+
+ las acotan, con un sesgo de sustituciÃ³n que sigue presente en los Ã­ndices de precios oficiales. 
 \end_layout
 
 \end_inset
@@ -11070,7 +15274,7 @@ ConclusiÃ³n
 status collapsed
 
 \begin_layout Plain Layout
-3
+1
 \end_layout
 
 \end_inset
@@ -11438,12 +15642,12 @@ textcite{AguilarMateos2015Deaton}
 
 \end_inset
 
-: resumen en castellano de la obra de 
+: resumen en castellano de la obra de Angus 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Angus Deaton
+Deaton
 \end_layout
 
 \end_inset
@@ -11452,7 +15656,23 @@ Angus Deaton
 \end_layout
 
 \begin_layout Itemize
-J. L. RodrÃ­guez LÃ³pez (2018): tema sobre la dualidad en la teorÃ­a de la demanda del consumidor y sus aplicaciones, material del curso de preparaciÃ³n del ICEX-CECO (no publicado). 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{RodriguezLopez2018Dualidad}
+\end_layout
+
+\end_inset
+
+: 
+\emph on
+Tema 3.A.8: La dualidad en la teorÃ­a de la demanda del consumidor y sus aplicaciones
+\emph default
+. ICEX-CECO. 
 \end_layout
 
 \end_inset
@@ -11498,7 +15718,31 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: condiciones de Kuhn-Tucker de los problemas primal y dual
+Anexo: condiciones de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Kuhn
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Tucker
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+de los problemas primal y dual
 \end_layout
 
 \begin_layout Standard
@@ -11514,11 +15758,11 @@ name "anexo:kt"
 
 \begin_layout Itemize
 Las condiciones de primer orden de los dos problemas, con las lagrangianas 
-\begin_inset Formula $\mathcal{L}^{P}=U(x)+\lambda(\overline{W}-p\cdot x)$
+\begin_inset Formula $\mathcal{L}^{P}=U(\vect{x})+\lambda(\overline{W}-\vect{p}\cdot\vect{x})$
 \end_inset
 
  y 
-\begin_inset Formula $\mathcal{L}^{D}=p\cdot x+\lambda^{E}\big(\overline{U}-U(x)\big)$
+\begin_inset Formula $\mathcal{L}^{D}=\vect{p}\cdot\vect{h}+\mu\big(\overline{U}-U(\vect{h})\big)$
 \end_inset
 
 , son simÃ©tricas: 
@@ -11609,11 +15853,11 @@ rowcolor{tceeazulpalido}
 
 \series bold
 Primal: 
-\begin_inset Formula $\max U(x)$
+\begin_inset Formula $\max U(\vect{x})$
 \end_inset
 
  s.a. 
-\begin_inset Formula $p\cdot x\leq\overline{W}$
+\begin_inset Formula $\vect{p}\cdot\vect{x}\leq\overline{W}$
 \end_inset
 
 
@@ -11632,11 +15876,11 @@ Primal:
 
 \series bold
 Dual: 
-\begin_inset Formula $\min p\cdot x$
+\begin_inset Formula $\min \vect{p}\cdot\vect{h}$
 \end_inset
 
  s.a. 
-\begin_inset Formula $U(x)\geq\overline{U}$
+\begin_inset Formula $U(\vect{h})\geq\overline{U}$
 \end_inset
 
 
@@ -11681,7 +15925,7 @@ Estacionariedad
 
 \size small
 
-\begin_inset Formula $p_i-\lambda^{E}U_i\geq 0\ \Rightarrow\ \dfrac{p_i}{U_i}\geq\lambda^{E}$
+\begin_inset Formula $p_i-\mu U_i\geq 0\ \Rightarrow\ \dfrac{p_i}{U_i}\geq\mu$
 \end_inset
 
 
@@ -11709,7 +15953,7 @@ Estacionariedad
 
 \size small
 
-\begin_inset Formula $\overline{W}-p\cdot x\geq 0$
+\begin_inset Formula $\overline{W}-\vect{p}\cdot\vect{x}\geq 0$
 \end_inset
 
 , 
@@ -11717,7 +15961,7 @@ Estacionariedad
 \end_inset
 
 , 
-\begin_inset Formula $\lambda(\overline{W}-p\cdot x)=0$
+\begin_inset Formula $\lambda(\overline{W}-\vect{p}\cdot\vect{x})=0$
 \end_inset
 
  
@@ -11732,15 +15976,15 @@ Estacionariedad
 
 \size small
 
-\begin_inset Formula $U(x)-\overline{U}\geq 0$
+\begin_inset Formula $U(\vect{h})-\overline{U}\geq 0$
 \end_inset
 
 , 
-\begin_inset Formula $\lambda^{E}\geq 0$
+\begin_inset Formula $\mu\geq 0$
 \end_inset
 
 , 
-\begin_inset Formula $\lambda^{E}\big(U(x)-\overline{U}\big)=0$
+\begin_inset Formula $\mu\big(U(\vect{h})-\overline{U}\big)=0$
 \end_inset
 
 
@@ -11783,7 +16027,7 @@ No negatividad
 
 \size small
 
-\begin_inset Formula $x_i\geq 0$
+\begin_inset Formula $h_i\geq 0$
 \end_inset
 
 
@@ -11826,7 +16070,7 @@ Holgura complementaria
 
 \size small
 
-\begin_inset Formula $x_i\,(p_i-\lambda^{E}U_i)=0$
+\begin_inset Formula $h_i\,(p_i-\mu U_i)=0$
 \end_inset
 
 
@@ -11869,7 +16113,7 @@ SoluciÃ³n interior
 
 \size small
 
-\begin_inset Formula $\dfrac{p_1}{U_1}=\dots=\dfrac{p_n}{U_n}=\lambda^{E}$
+\begin_inset Formula $\dfrac{p_1}{U_1}=\dots=\dfrac{p_n}{U_n}=\mu$
 \end_inset
 
 
@@ -11922,7 +16166,7 @@ En ambos:
 \end_inset
 
  y, en el Ã³ptimo comÃºn, 
-\begin_inset Formula $\lambda^{E*}=1/\lambda^*$
+\begin_inset Formula $\mu^*=1/\lambda^*$
 \end_inset
 
 .
@@ -11977,7 +16221,7 @@ Gossen
 \end_inset
 
  si el bien se consume); en el dual, el precio de cada bien no puede ser menor que el coste en dinero de la utilidad que aporta, 
-\begin_inset Formula $\lambda^{E}U_i$
+\begin_inset Formula $\mu U_i$
 \end_inset
 
 . 
@@ -12007,7 +16251,7 @@ Walras
 \end_inset
 
 , 
-\begin_inset Formula $\lambda^{E}>0$
+\begin_inset Formula $\mu>0$
 \end_inset
 
  y se alcanza exactamente 
@@ -12022,19 +16266,21 @@ Walras
 \emph on
 Holgura complementaria
 \emph default
-: para cada bien, o se consume (
-\begin_inset Formula $x_i>0$
-\end_inset
-
-) y la estacionariedad se cumple con igualdad, o no se consume (
-\begin_inset Formula $x_i=0$
-\end_inset
-
-, soluciÃ³n de esquina) y la desigualdad puede ser estricta; si se cumplen ambas igualdades, la esquina es degenerada. 
+: para cada bien, o se consume (cantidad positiva) y la estacionariedad se cumple con igualdad, o no se consume (soluciÃ³n de esquina) y la desigualdad puede ser estricta; si se cumplen ambas igualdades, la esquina es degenerada. 
 \end_layout
 
 \begin_layout Subsection
-Condiciones de segundo orden: hessiano orlado y regla de Sarrus
+Condiciones de segundo orden: hessiano orlado y regla de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Sarrus
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -12160,11 +16406,11 @@ Dual
 \end_inset
 
  y bloque 
-\begin_inset Formula $-\lambda^{E}U_{ij}$
+\begin_inset Formula $-\mu U_{ij}$
 \end_inset
 
 , el determinante es 
-\begin_inset Formula $-\lambda^{E}|\overline{H}|$
+\begin_inset Formula $-\mu|\overline{H}|$
 \end_inset
 
 , que debe ser negativo. Es la 
@@ -12225,7 +16471,31 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: teorema de la envolvente, identidad de Roy y lema de Shephard
+Anexo: teorema de la envolvente,
+\begin_inset Newline newline
+\end_inset
+
+identidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Roy
+\end_layout
+
+\end_inset
+
+ y lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12254,7 +16524,17 @@ Teorema de la envolvente
 \end_layout
 
 \begin_layout Subsection
-Identidad de Roy
+Identidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Roy
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12273,23 +16553,13 @@ name "der:roy"
 \emph on
 Por la envolvente
 \emph default
- (la misma demostraciÃ³n que en 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.8
-\end_layout
-
-\end_inset
-
-). Con 
-\begin_inset Formula $\mathcal{L}=U(x)+\lambda(\overline{W}-p\cdot x)$
+. Con 
+\begin_inset Formula $\mathcal{L}=U(\vect{x})+\lambda(\overline{W}-\vect{p}\cdot\vect{x})$
 \end_inset
 
 : 
 \begin_inset Formula \begin{equation*}
-  \frac{\partial V}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{x^*,\lambda^*}=-\lambda^*x_i(p,\overline{W}),\qquad\frac{\partial V}{\partial\overline{W}}=\frac{\partial\mathcal{L}}{\partial\overline{W}}\bigg|_{x^*,\lambda^*}=\lambda^*.
+  \frac{\partial V(\vect{p},\overline{W})}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{\vect{x}^*,\lambda^*}=-\lambda^*x_i(\vect{p},\overline{W}),\qquad\frac{\partial V(\vect{p},\overline{W})}{\partial\overline{W}}=\frac{\partial\mathcal{L}}{\partial\overline{W}}\bigg|_{\vect{x}^*,\lambda^*}=\lambda^*.
   \end{equation*}
 \end_inset
 
@@ -12338,7 +16608,7 @@ Por dualidad
 \end_inset
 
  la identidad 
-\begin_inset Formula $V\big(p,E(p,\overline{U})\big)=\overline{U}$
+\begin_inset Formula $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$
 \end_inset
 
  y usando el lema de 
@@ -12353,16 +16623,16 @@ Shephard
 
 : 
 \begin_inset Formula \begin{equation*}
-  \frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\cdot\frac{\partial E}{\partial p_i}=0\quad\Longrightarrow\quad\frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\,h_i(p,\overline{U})=0.
+  \frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\cdot\frac{\partial E(\vect{p},\overline{U})}{\partial p_i}=0\quad\Longrightarrow\quad\frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\,h_i(\vect{p},\overline{U})=0.
   \end{equation*}
 \end_inset
 
 Evaluando en 
-\begin_inset Formula $\overline{U}=V(p,\overline{W})$
+\begin_inset Formula $\overline{U}=V(\vect{p},\overline{W})$
 \end_inset
 
 , donde 
-\begin_inset Formula $h_i=x_i(p,\overline{W})$
+\begin_inset Formula $h_i\big(\vect{p},V(\vect{p},\overline{W})\big)=x_i(\vect{p},\overline{W})$
 \end_inset
 
 , y despejando, se obtiene de nuevo la identidad de 
@@ -12391,7 +16661,17 @@ parencite[prop.~3.G.4]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Subsection
-Lema de Shephard
+Lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -12411,12 +16691,12 @@ name "der:shephard"
 Por la envolvente
 \emph default
 . Con 
-\begin_inset Formula $\mathcal{L}=p\cdot x+\lambda^{E}\big(\overline{U}-U(x)\big)$
+\begin_inset Formula $\mathcal{L}=\vect{p}\cdot\vect{h}+\mu\big(\overline{U}-U(\vect{h})\big)$
 \end_inset
 
 : 
 \begin_inset Formula \begin{equation*}
-  \frac{\partial E(p,\overline{U})}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{x=h(p,\overline{U})}=h_i(p,\overline{U}),\qquad\frac{\partial E(p,\overline{U})}{\partial\overline{U}}=\lambda^{E*}.
+  \frac{\partial E(\vect{p},\overline{U})}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{\vect{h}^*,\mu^*}=h_i(\vect{p},\overline{U}),\qquad\frac{\partial E(\vect{p},\overline{U})}{\partial\overline{U}}=\frac{\partial\mathcal{L}}{\partial\overline{U}}\bigg|_{\vect{h}^*,\mu^*}=\mu^*.
   \end{equation*}
 \end_inset
 
@@ -12429,11 +16709,11 @@ Por la envolvente
 Sin cÃ¡lculo diferencial
 \emph default
 , por la concavidad. Para cualquier 
-\begin_inset Formula $p'$
+\begin_inset Formula $\vect{p}\,'$
 \end_inset
 
 , la cesta 
-\begin_inset Formula $h(p,\overline{U})$
+\begin_inset Formula $\vect{h}(\vect{p},\overline{U})$
 \end_inset
 
  sigue alcanzando 
@@ -12441,11 +16721,11 @@ Sin cÃ¡lculo diferencial
 \end_inset
 
 , asÃ­ que 
-\begin_inset Formula $g(p')\equiv p'\cdot h(p,\overline{U})-E(p',\overline{U})\geq 0$
+\begin_inset Formula $g(\vect{p}\,')\equiv\vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})-E(\vect{p}\,',\overline{U})\geq 0$
 \end_inset
 
 , con 
-\begin_inset Formula $g(p)=0$
+\begin_inset Formula $g(\vect{p})=0$
 \end_inset
 
 . La funciÃ³n 
@@ -12453,11 +16733,11 @@ Sin cÃ¡lculo diferencial
 \end_inset
 
  tiene un mÃ­nimo en 
-\begin_inset Formula $p'=p$
+\begin_inset Formula $\vect{p}\,'=\vect{p}$
 \end_inset
 
  y su gradiente se anula allÃ­: 
-\begin_inset Formula $h_i(p,\overline{U})-\partial E(p,\overline{U})/\partial p_i=0$
+\begin_inset Formula $h_i(\vect{p},\overline{U})-\partial E(\vect{p},\overline{U})/\partial p_i=0$
 \end_inset
 
  
@@ -12540,7 +16820,7 @@ vector gradiente
 \end_inset
 
  
-\begin_inset Formula $\nabla f(a)$
+\begin_inset Formula $\nabla f(\vect{a})$
 \end_inset
 
  recoge las primeras derivadas y su 
@@ -12554,7 +16834,7 @@ matriz hessiana
 \end_inset
 
  
-\begin_inset Formula $H_f(a)=\big[\partial^2f/\partial x_i\partial x_j\big]$
+\begin_inset Formula $H_f(\vect{a})=\big[\partial^2f/\partial x_i\partial x_j\big]$
 \end_inset
 
 , las segundas; es simÃ©trica (teorema de 
@@ -12595,15 +16875,15 @@ Concavidad y convexidad
 convexa
 \emph default
  si y solo si 
-\begin_inset Formula $H_f(a)$
+\begin_inset Formula $H_f(\vect{a})$
 \end_inset
 
  es semidefinida positiva para todo 
-\begin_inset Formula $a\in A$
+\begin_inset Formula $\vect{a}\in A$
 \end_inset
 
 ; si es definida positiva para todo 
-\begin_inset Formula $a$
+\begin_inset Formula $\vect{a}$
 \end_inset
 
 , 
@@ -12623,15 +16903,15 @@ convexa
 cÃ³ncava
 \emph default
  si y solo si 
-\begin_inset Formula $H_f(a)$
+\begin_inset Formula $H_f(\vect{a})$
 \end_inset
 
  es semidefinida negativa para todo 
-\begin_inset Formula $a\in A$
+\begin_inset Formula $\vect{a}\in A$
 \end_inset
 
 ; si es definida negativa para todo 
-\begin_inset Formula $a$
+\begin_inset Formula $\vect{a}$
 \end_inset
 
 , 
@@ -12734,7 +17014,7 @@ Cuasiconcavidad
 cuasicÃ³ncava
 \emph default
  si sus conjuntos de nivel superior, 
-\begin_inset Formula $\{x: f(x)\geq c\}$
+\begin_inset Formula $\{\vect{x}: f(\vect{x})\geq c\}$
 \end_inset
 
 , son convexos para todo 
@@ -12816,7 +17096,7 @@ Slutsky
 \end_inset
 
  sea semidefinida negativa; la cuasiconcavidad de la utilidad, a la convexidad de las preferencias, y la cuasiconvexidad de la FIU, a que el conjunto 
-\begin_inset Formula $\{(p,\overline{W}): V(p,\overline{W})\leq\bar v\}$
+\begin_inset Formula $\{(\vect{p},\overline{W}): V(\vect{p},\overline{W})\leq\overline{U}^1\}$
 \end_inset
 
  sea convexo. La funciÃ³n de costes de la empresa tiene las mismas propiedades que la de gasto 
@@ -12951,7 +17231,7 @@ VC,
 \end_inset
 
 , asÃ­ que 
-\begin_inset Formula $h_1(\cdot,\overline{U}^0)\leq x_1\leq h_1(\cdot,\overline{U}^1)$
+\begin_inset Formula $h_1(\cdot,\overline{U}^0)\leq x_1(\cdot,\overline{W})\leq h_1(\cdot,\overline{U}^1)$
 \end_inset
 
  y 
@@ -12983,7 +17263,7 @@ VC,
 \end_inset
 
  (bien ordinario), 
-\begin_inset Formula $x_1^0\leq x_1(p_1)\leq x_1^1$
+\begin_inset Formula $x_1^0\leq x_1(p_1,\overline{W})\leq x_1^1$
 \end_inset
 
  y 
@@ -13096,7 +17376,7 @@ name "tab:ordenacion"
 <features tabularvalignment="middle" tabularwidth="0pt">
 <column alignment="center" valignment="middle" width="22text%">
 <column alignment="center" valignment="middle" width="40text%">
-<column alignment="left" valignment="middle" width="26text%">
+<column alignment="center" valignment="middle" width="26text%">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
@@ -13140,7 +17420,7 @@ OrdenaciÃ³n (con signo)
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -13227,7 +17507,7 @@ cellcolor{tceesalvia}
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -13278,7 +17558,7 @@ Frontera (efecto renta nulo)
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -13304,7 +17584,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcolor{tceenaranja}
+textcolor{tceedorado}
 \end_layout
 
 \end_inset
@@ -13377,7 +17657,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -13470,7 +17750,7 @@ status collapsed
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -13565,7 +17845,17 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: la aproximaciÃ³n de Willig
+Anexo: la aproximaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Willig
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13598,7 +17888,7 @@ Por la dualidad entre demandas,
 
 , de modo que, por el efecto renta, 
 \begin_inset Formula \begin{equation*}
-  x_1(p_1,\overline{W})-h_1(p_1,\overline{U}^0)\approx\frac{\partial x_1}{\partial\overline{W}}\,x_1^0\,(p_1^0-p_1).
+  x_1(p_1,\overline{W})-h_1(p_1,\overline{U}^0)\approx\frac{\partial x_1(p_1,\overline{W})}{\partial\overline{W}}\,x_1^0\,(p_1^0-p_1).
   \end{equation*}
 \end_inset
 
@@ -13616,7 +17906,7 @@ Integrando entre
 
 : 
 \begin_inset Formula \begin{equation*}
-  \Delta\mathrm{EC}-\mathrm{VC}\approx\frac{\partial x_1}{\partial\overline{W}}\,x_1^0\,\frac{\Delta^2}{2}.
+  \Delta\mathrm{EC}-\mathrm{VC}\approx\frac{\partial x_1(p_1,\overline{W})}{\partial\overline{W}}\,x_1^0\,\frac{\Delta^2}{2}.
   \end{equation*}
 \end_inset
 
@@ -13751,11 +18041,11 @@ Homogeneidad:
 uno
 \emph default
  en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 ; 
-\begin_inset Formula $h$
+\begin_inset Formula $\vect{h}$
 \end_inset
 
 , de grado 
@@ -13763,7 +18053,7 @@ uno
 cero
 \emph default
  en 
-\begin_inset Formula $p$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
 ; 
@@ -13771,7 +18061,7 @@ cero
 \end_inset
 
  y 
-\begin_inset Formula $x$
+\begin_inset Formula $\vect{x}$
 \end_inset
 
 , de grado 
@@ -13779,7 +18069,7 @@ cero
 cero
 \emph default
  en 
-\begin_inset Formula $(p,\overline{W})$
+\begin_inset Formula $(\vect{p},\overline{W})$
 \end_inset
 
 . 
@@ -13811,7 +18101,7 @@ Roy
 
 \begin_layout Itemize
 Multiplicadores: 
-\begin_inset Formula $\lambda^{E*}=1/\lambda^*$
+\begin_inset Formula $\mu^*=1/\lambda^*$
 \end_inset
 
 ; 
@@ -13819,7 +18109,7 @@ Multiplicadores:
 \end_inset
 
  y 
-\begin_inset Formula $\lambda^{E*}=\partial E/\partial\overline{U}$
+\begin_inset Formula $\mu^*=\partial E/\partial\overline{U}$
 \end_inset
 
 . 
@@ -13841,7 +18131,7 @@ Slutsky
 primeras
 \emph default
  derivadas de 
-\begin_inset Formula $h$
+\begin_inset Formula $\vect{h}$
 \end_inset
 
  y de 
@@ -13853,7 +18143,7 @@ segundas
 \end_inset
 
 : simÃ©trica, semidefinida negativa y con 
-\begin_inset Formula $Sp=0$
+\begin_inset Formula $S\vect{p}=\vect{0}$
 \end_inset
 
 . Todo bien tiene al menos un sustitutivo neto. 
@@ -13945,7 +18235,7 @@ TÃ¶rnqvist
 
 \begin_layout Itemize
 AIDS: participaciones lineales en 
-\begin_inset Formula $\ln p$
+\begin_inset Formula $\ln p_j$
 \end_inset
 
  y en 
@@ -13994,7 +18284,27 @@ Frobenius
 
 \end_inset
 
-, no de RouchÃ©-Frobenius. 
+, no de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+RouchÃ©
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Frobenius
+\end_layout
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Standard
