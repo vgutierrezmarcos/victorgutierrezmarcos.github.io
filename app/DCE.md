@@ -148,6 +148,12 @@ Al permitir los avisos, el diálogo del sistema para que la batería no restrinj
 **Próxima versión: aviso de versión nueva por Play (13 oct.)**
 Al tocar la notificación «Hay una versión nueva», la app actualiza por Play si viene de Play y solo abre el APK si se instaló desde la web (antes abría siempre el APK, porque `urlPlayStore` no está puesta). En `main` y en la versión web; va en el próximo `.aab`. Mientras tanto, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy.
 
+**Red: invitar y estadísticas privadas (14 oct.)**
+- Botón «Invitar a mis alumnos por WhatsApp» en la tarjeta del código y «Invitar a … a la app» en la ficha de un alumno sin la app (con teléfono). En `main` y en la web; en el móvil, con el próximo `.aab`.
+- `scripts/estadisticas-red.py`: recuentos agregados de las cuatro partes de la red (opositores y preparadores de TCEE y DCE), sin nombres; fotos diarias en `~/.local/share/oposicion-red/`. No se publican. Política de privacidad: fila «Estadísticas agregadas de la app» (interés legítimo).
+- [ ] Víctor: crear la cuenta de servicio de solo lectura (papel «Cloud Datastore Viewer») y dejar su clave JSON en Descargas para moverla a `~/.config/oposicion-red/clave.json`.
+- [ ] Post de LinkedIn el día que salga en Play (sin cifras: «ya la usan varios preparadores y opositores»).
+
 **Versión 1.15.9 (33): primeros pasos (10 oct.)**
 Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.
 - [x] Víctor: subir el `.aab` **1.15.9 (33)** (`Escritorio\oposicion-tcee-dce-1.15.9.aab`, lleva también la 32) a la prueba cerrada.

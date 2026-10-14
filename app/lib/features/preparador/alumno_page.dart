@@ -6,6 +6,7 @@ import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
+import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../organizacion/mapa_calor_page.dart';
@@ -189,6 +190,16 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             else if (a.enlazado && progreso?.value == null)
               Padding(padding: const EdgeInsets.only(top: 10), child: Text('Sin conexión con su app: se muestran los últimos datos guardados.', style: context.textos.labelSmall)),
             if (a.telefono.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 10), child: BotonWhatsApp(telefono: a.telefono, texto: 'Escribir a ${a.nombre}')),
+            // Sin la app: invitarle en un toque con el código.
+            if (!a.enlazado && telefonoWhatsApp(a.telefono) != null && ref.watch(perfilPreparadorProvider).codigo != null)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: () => abrirUrl(context, enlaceWhatsApp(a.telefono, mensajeInvitacion(ref.read(perfilPreparadorProvider).codigo!))!),
+                  icon: const Icon(Icons.person_add_alt, size: 18),
+                  label: Text('Invitar a ${a.nombre} a la app'),
+                ),
+              ),
             if (a.enlazado && (ref.watch(estadoRedProvider).valueOrNull?.verificado ?? false))
               Align(
                 alignment: Alignment.centerLeft,
