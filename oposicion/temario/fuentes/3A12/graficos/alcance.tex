@@ -1,0 +1,31 @@
+% Economías de alcance con q_1 fijo en \bar q_1. Elaboración propia a partir de
+% Baumol, Panzar y Willig (1982).
+% Juntos:      C(\bar q_1, q_2) = 2 + 0,5 q_2 + 0,05 q_2^2 (continua desde C(\bar q_1,0) = 2).
+% Por separado: C(\bar q_1,0) + C(0,q_2) = 2 + 1,2 + 0,5 q_2 + 0,05 q_2^2 si q_2 > 0:
+%   salta 1,2 en q_2 = 0 por el coste fijo de la segunda empresa (los factores
+%   compartidos que la producción conjunta no duplica).
+% Ahorro en q_2^0 = 4: 6,0 - 4,8 = 1,2 (economías de alcance).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.55cm,
+    declare function={cj(\q)=2+0.5*\q+0.05*\q^2;}]
+  % 1: ejes
+  \capa{1}{\ejes{$q_2$}{$C$}{7.2}{8.8}}
+  \capa{1}{\node[etiqueta,anchor=west] at (0.25,8.6) {$q_1=\bar q_1$ fijo};}
+  % 2: coste por separado, con el salto del coste fijo de la segunda empresa
+  \capa{2}{\node[punto] (A) at (0,2) {};}
+  \capa{2}{\node[etiqueta,left] at (A) {$C(\bar q_1,0)$};}
+  \capa{2}{\draw[curva2] plot[domain=0:5.8,samples=80,smooth] (\x,{cj(\x)+1.2}) node[etiqueta,above] {$C(\bar q_1,0)+C(0,q_2)$};}
+  \capa{2}{\node[circle,draw=tceeazul,fill=white,thick,inner sep=1.4pt] at (0,3.2) {};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=south east] at (2.2,{cj(2.2)+1.35}) {por separado};}
+  % 3: coste conjunto, continuo y por debajo
+  \capa{3}{\draw[curva1] plot[domain=0:6.6,samples=80,smooth] (\x,{cj(\x)}) node[etiqueta,right] {$C(\bar q_1,q_2)$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceemorado,anchor=north west] at (2.6,{cj(2.6)-0.15}) {juntos};}
+  % 4: llave del ahorro (economías de alcance)
+  \capa{4}{\draw[guia] (4,{cj(4)}) -- (4,0) node[below,text=black] {$q_2^0$};}
+  \capa{4}{\draw[decorate,decoration={brace,amplitude=5pt},thick,tceerojo] (3.92,{cj(4)}) -- (3.92,{cj(4)+1.2})
+    node[midway,left=6pt,yshift=0.55cm,etiqueta,font=\footnotesize,text=tceerojo,align=right] {economías\\ de alcance};}
+\end{tikzpicture}
+\end{document}

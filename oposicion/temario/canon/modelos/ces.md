@@ -1,7 +1,7 @@
 # Función CES (elasticidad de sustitución constante)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.11 (Teoría de la producción) — el título incluye «elasticidad de sustitución» y es donde se desarrolla la forma funcional con sus casos límite; 3.A.8 la presenta como utilidad (ya revisado, sirve de modelo de redacción).
-- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.18 (resumen), 3.A.44 (mención)
+- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.18 (resumen), 3.A.44 (mención), 3.A.12 (mención: su función de costes en el anexo `anexo:formas-costes`; hecho, 14/10/2026)
 - **Manuales de referencia:** Arrow, Chenery, Minhas y Solow (1961); Mas-Colell, Whinston y Green (1995), cap. 3 y 5; Varian, *Análisis microeconómico*, cap. 1; Dixit y Stiglitz (1977) para el agregador de variedades.
 
 ## Presentación de referencia
@@ -20,6 +20,7 @@ Gráfico de referencia: isocuantas (curvas de indiferencia en 3.A.8) para σ=0, 
 | 3.A.11 | Caracterizar la tecnología; elasticidad de sustitución | desarrollo (hecho, 13/10/2026) | Forma general con ν, σ, tres límites (derivación en el anexo `der:ces`), regla de Hicks, σ > 1 (remisión a 3.A.44 y 3.A.18), autoría (Solow, 1956; ACMS, 1961), evidencia empírica sobre σ; anexo de σ con n factores (Allen-Uzawa, Morishima) | Las demandas de la versión de utilidad (3.A.8) |
 | 3.A.8 | Elasticidad de sustitución en el consumo | resumen | Versión de utilidad $U(x)$ con pesos $a_i$; tres casos y gráfico; derivación en anexo | La discusión de rendimientos a escala |
 | 3.A.18 | Preferencia por la variedad (Dixit-Stiglitz) | resumen | Agregador simétrico $y=[\sum_i x_i^{\rho}]^{1/\rho}$, σ>1 entre variedades, mark-up σ/(σ−1) | Los casos límite |
+| 3.A.12 | Función de costes | mención (hecho, 14/10/2026) | Función de costes dual en `tab:formas-costes`: $C=(q/A)^{1/\nu}[a_K^{\sigma}w_K^{1-\sigma}+a_L^{\sigma}w_L^{1-\sigma}]^{1/(1-\sigma)}$ | La forma de producción (3.A.11) |
 | 3.A.44 | Crecimiento endógeno (Jones-Manuelli) | mención | σ>1 permite crecimiento sostenido sin progreso técnico; remitir a 3.A.11 | La forma funcional completa |
 
 ## Divergencias encontradas en el temario actual

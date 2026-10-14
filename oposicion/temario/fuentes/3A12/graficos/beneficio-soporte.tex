@@ -1,0 +1,38 @@
+% La función de beneficio como función soporte del conjunto de posibilidades
+% de producción (un factor). Frontera q = F(z) = 1,9 sqrt(z).
+% Isobeneficio q = B/p + (w/p) z tangentes a la frontera:
+%   (p',w'):   z' = 0,6, w'/p' = 1,2265, q' = 1,472, B'/p' = 0,736.
+%   (p'',w''): z'' = 5,  w''/p'' = 0,4249, q'' = 4,249, B''/p'' = 2,124.
+% (la ordenada en el origen de cada isobeneficio es B/p = F(z) - F'(z) z = F(z)/2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$z$}{$q$}{6.6}{5.4}}
+  % 2: conjunto Y y su frontera q = F(z)
+  \capa{2}{\fill[area] plot[domain=0:6,samples=100,smooth] (\x,{1.9*sqrt(\x)}) -- (6,0) -- cycle;}
+  \capa{2}{\draw[curva1] plot[domain=0:6,samples=100,smooth] (\x,{1.9*sqrt(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado] at (3.85,3.3) {$q=F(z)$};}
+  \capa{2}{\node[text=tceemorado,font=\large] at (3.6,1.6) {$\mathcal{Y}$};}
+  % 3: isobeneficio tangente a precios (p',w')
+  \capa{3}{\draw[curva2] (0,0.736) -- (3.477,5) node[etiqueta,above] {$p'q-w'z=B(p',w')$};}
+  \capa{3}{\node[punto,fill=tceeazul] (E1) at (0.6,1.472) {};}
+  \capa{3}{\node[etiqueta,above left] at (E1) {$E'$};}
+  \capa{3}{\proyeccion{(E1)}{$z(p',w')$}{$q(p',w')$}}
+  \capa{3}{\node[punto,fill=tceeazul,inner sep=1pt] at (0,0.736) {};}
+  \capa{3}{\node[etiqueta,left,text=tceeazul] at (0,0.736) {$B(p',w')/p'$};}
+  % 4: isobeneficio tangente a precios (p'',w'')
+  \capa{4}{\draw[curva3] (0,2.124) -- (6.3,4.801) node[etiqueta,right] {$p''q-w''z=B(p'',w'')$};}
+  \capa{4}{\node[punto,fill=tceeverde] (E2) at (5,4.249) {};}
+  \capa{4}{\node[etiqueta,above left] at (E2) {$E''$};}
+  \capa{4}{\proyeccion{(E2)}{$z(p'',w'')$}{$q(p'',w'')$}}
+  \capa{4}{\node[punto,fill=tceeverde,inner sep=1pt] at (0,2.124) {};}
+  \capa{4}{\node[etiqueta,left,text=tceeverde] at (0,2.124) {$B(p'',w'')/p''$};}
+  % 5: semiespacios p q - w z <= B(p,w) y la frontera como envolvente
+  \capa{5}{\draw[flecha,tceeazul] (2.2,3.434) -- ++(-39.2:0.65);}
+  \capa{5}{\draw[flecha,tceeverde] (5.7,4.546) -- ++(-67:0.65);}
+  \capa{5}{\node[draw=tceerojo,thick,rounded corners=2pt,fill=white,inner sep=3pt,anchor=north,align=center] at (3.6,-0.75) {$\mathcal{Y}$ queda en todos los semiespacios $\ p\,q-w\,z\leq B(p,w)$:\\ la frontera es la envolvente de las isobeneficio máximas};}
+\end{tikzpicture}
+\end{document}

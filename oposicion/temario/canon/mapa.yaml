@@ -17,6 +17,7 @@ modelos:
     temas:
       3.A.8: resumen
       3.A.11: desarrollo
+      3.A.12: mencion
       3.A.18: resumen
       3.A.44: mencion
   cobb-douglas:
@@ -30,6 +31,7 @@ modelos:
       3.A.8: resumen (referencia de la variante de utilidad)
       3.A.9: resumen
       3.A.11: desarrollo
+      3.A.12: mencion
     decision: D005 (13/10/2026)
   indices-precios:
     nombre: Índices de coste de vida (basados en VC y VE) y aproximaciones de Laspeyres y Paasche
@@ -69,15 +71,62 @@ modelos:
     temas:
       3.A.8: resumen
       3.A.9: desarrollo
-      3.A.12: mencion
+      3.A.12: resumen
       4.B.11: mencion
+  dualidad-produccion:
+    nombre: Dualidad en la teoría de la empresa (maximización del beneficio, minimización del coste, Hotelling, Shephard)
+    area: consumidor-produccion
+    tema_referencia: 3.A.12
+    motivo: Lo tiene en el título (análisis de dualidad en el ámbito de la empresa) y lo desarrolla (revisado el 14/10/2026);
+      incluye los ids maximizacion-beneficio-empresa y minimizacion-costes.
+    temas:
+      3.A.9: mencion
+      3.A.11: resumen
+      3.A.12: desarrollo
+      3.A.16: resumen
+      3.A.21: mencion
+      3.A.23: mencion
+      3.A.25: mencion
+  costes-corto-largo-plazo:
+    nombre: 'Función de costes: economías de escala, corto y largo plazo (envolvente de Viner, Le Châtelier-Samuelson)'
+    area: consumidor-produccion
+    tema_referencia: 3.A.12
+    motivo: Lo tiene en el título (teoría de los costes) y lo desarrolla en su bloque II y en IV.2 (revisado el 14/10/2026).
+    temas:
+      3.A.11: mencion
+      3.A.12: desarrollo
+      3.A.16: resumen
+      3.A.17: mencion
+  eficiencia-frontera:
+    nombre: 'Medición de la eficiencia: Farrell, frontera estocástica y DEA'
+    area: consumidor-produccion
+    tema_referencia: 3.A.12
+    motivo: Aplicación empírica de la función de costes como frontera (título, «aplicaciones empíricas»); desarrollada en
+      IV.3 (revisado el 14/10/2026). Los demás temas, menciones previstas.
+    temas:
+      3.A.12: desarrollo
+      3.A.17: mencion (prevista)
+      3.A.20: mencion (prevista)
+      3.A.45: mencion (prevista)
+      4.A.5: mencion (prevista)
+      4.B.15: mencion (prevista)
+  curva-aprendizaje:
+    nombre: Curva de aprendizaje (economías dinámicas, Wright 1936)
+    area: consumidor-produccion
+    tema_referencia: 3.A.12
+    motivo: Propiedad de la función de costes en el tiempo; desarrollada en III.4.3 e IV.2 (revisado el 14/10/2026).
+    temas:
+      3.A.12: desarrollo
+      3.A.44: mencion
+      3.B.8: resumen
   ineficiencia-x:
     nombre: Ineficiencia X de Leibenstein (1966)
     area: consumidor-produccion
     tema_referencia: 3.A.12
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    motivo: Es donde se cuestiona la minimización del coste; lo desarrolla con a)-e) y lo mide en IV.3 (revisado el 14/10/2026).
     temas:
-      3.A.12: resumen
+      3.A.12: desarrollo
+      3.A.17: mencion
       3.B.39: mencion
       4.A.14: mencion
       4.A.15: mencion
@@ -101,6 +150,7 @@ modelos:
     temas:
       3.A.8: resumen (límite de la CES)
       3.A.11: resumen
+      3.A.12: mencion
       3.A.31: mencion
     decision: D087 (13/10/2026)
   pmu:
@@ -167,9 +217,9 @@ modelos:
     nombre: Costes de Stigler y reserva de capacidad
     area: consumidor-produccion
     tema_referencia: 3.A.12
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (resumen).
+    motivo: Crítica a la forma en U del coste medio; lo desarrolla con a)-e) y gráfico propio (revisado el 14/10/2026).
     temas:
-      3.A.12: resumen
+      3.A.12: desarrollo
       3.B.4: resumen
   vc-ve:
     nombre: Variación compensatoria y variación equivalente
@@ -205,6 +255,7 @@ modelos:
     tema_referencia: 3.A.16
     motivo: Lo tiene en el título (competencia, perfecta) y lo trata como desarrollo.
     temas:
+      3.A.12: mencion
       3.A.16: desarrollo
       4.A.15: mencion
   dilema-prisionero:
@@ -323,10 +374,11 @@ modelos:
     nombre: Estabilidad walrasiana (precios) y marshalliana (cantidades)
     area: mercados-informacion-juegos
     tema_referencia: 3.A.16
-    motivo: Lo tiene en el título (estabilidad) y lo trata como desarrollo.
+    motivo: Lo tiene en el título (estabilidad) y lo trata como desarrollo. El tanteo multimercado (equilibrio general) lo desarrolla
+      3.A.21 (revisado el 14/10/2026), que pasa el ajuste en un mercado a su anexo D.
     temas:
       3.A.16: desarrollo
-      3.A.21: resumen
+      3.A.21: resumen (ajuste en un mercado, anexo D); desarrollo del tanteo multimercado (II.1.3)
   arrow-imposibilidad:
     nombre: Teorema de imposibilidad de Arrow (1951)
     area: equilibrio-general-bienestar
@@ -386,25 +438,60 @@ modelos:
       3.A.23: desarrollo
       4.A.6: previsto
   egc:
-    nombre: Modelos de equilibrio general computable (Scarf)
+    nombre: Modelos de equilibrio general computable (MEGC; Scarf)
     area: equilibrio-general-bienestar
     tema_referencia: 3.A.21
-    motivo: Ningún tema lo desarrolla; este es el que más lo trata (mencion).
+    motivo: Es el que más lo trata (III.5 del 3.A.21 revisado el 14/10/2026, resumen con metodología y ejemplos). Sigla MEGC; EGC
+      es el equilibrio general competitivo.
     temas:
-      3.A.21: mencion
+      3.A.21: resumen
+      4.B.8: mencion
+  nucleo:
+    nombre: Intercambio de Edgeworth y núcleo de una economía (Debreu y Scarf, 1963)
+    area: equilibrio-general-bienestar
+    tema_referencia: 3.A.21
+    motivo: Lo desarrolla con estructura a)-e) (III.1-III.2 del 3.A.21 revisado el 14/10/2026) como fundamento del equilibrio walrasiano
+      sin subastador. 3.A.14 desarrolla el núcleo de los juegos cooperativos con utilidad transferible (id nucleo-shapley).
+    temas:
+      3.A.14: mencion
+      3.A.21: desarrollo
+  arrow-debreu-incertidumbre:
+    nombre: Equilibrio general con incertidumbre (bienes contingentes, títulos de Arrow, Radner, mercados incompletos)
+    area: equilibrio-general-bienestar
+    tema_referencia: 3.A.21
+    motivo: Lo desarrolla (III.4 del 3.A.21 revisado el 14/10/2026); la elección individual ante estados (preferencia por el estado)
+      es de 3.A.10 (id preferencia-por-el-estado).
+    temas:
+      3.A.10: resumen
+      3.A.21: desarrollo
+      3.A.29: mencion
+  heckscher-ohlin:
+    nombre: Heckscher-Ohlin-Samuelson y sus teoremas (H-O, igualación del precio de los factores, Stolper-Samuelson, Rybczynski)
+    area: comercio
+    tema_referencia: 3.B.5
+    motivo: Lo tiene en el título y lo desarrolla. 3.A.21 (revisado el 14/10/2026) fija en su anexo E la estática comparativa del
+      2×2 cerrado con el álgebra de Jones; incluye el id rybczynski (3.B.9).
+    temas:
+      3.A.21: resumen (anexo E, estática comparativa)
+      3.B.5: desarrollo
+      3.B.7: mencion
+      3.B.8: mencion
+      3.B.9: resumen (Rybczynski y crecimiento)
+      3.B.10: mencion
       4.B.8: mencion
   equilibrio-general-walras:
     nombre: Equilibrio general walrasiano (2×2×2×2)
     area: equilibrio-general-bienestar
     tema_referencia: 3.A.21
-    motivo: El título de 3.A.21 es la teoría del equilibrio general; 3.A.22-3.A.23 lo reutilizan para los teoremas del bienestar
-      y los fallos de mercado y 3.A.3 lo cuenta como historia.
+    motivo: El título de 3.A.21 es la teoría del equilibrio general (revisado el 14/10/2026); 3.A.22-3.A.23 lo reutilizan para los
+      teoremas del bienestar y los fallos de mercado y 3.A.3 lo cuenta como historia. Incluye los ids ley-walras, existencia-brouwer,
+      sustitutivos-brutos y caja-edgeworth.
     temas:
       3.A.3: desarrollo
       3.A.11: resumen (caja de Edgeworth de la producción, curva de contrato, FPP y RMT_XY; sin precios ni FPU)
       3.A.21: desarrollo
-      3.A.22: desarrollo
-      3.A.23: desarrollo
+      3.A.22: desarrollo (eficiencia)
+      3.A.23: resumen (hoy desarrollo)
       4.B.11: resumen
   fbs-rawlsiana:
     nombre: FBS rawlsiana (maximin)
@@ -468,11 +555,12 @@ modelos:
     nombre: Primer y Segundo Teorema Fundamental de la Economía del Bienestar
     area: equilibrio-general-bienestar
     tema_referencia: 3.A.22
-    motivo: Los teoremas fundamentales del bienestar están en el título de 3.A.22.
+    motivo: Los teoremas fundamentales del bienestar están en el título de 3.A.22. Papeles de 3.A.22 y 3.A.23 corregidos el 14/10/2026
+      (estaban al revés que la ficha).
     temas:
       3.A.21: resumen
-      3.A.22: resumen
-      3.A.23: desarrollo
+      3.A.22: desarrollo (hoy resumen)
+      3.A.23: resumen (hoy desarrollo)
       4.A.24: mencion
       4.B.2: resumen
       4.B.3: resumen
@@ -567,7 +655,8 @@ modelos:
     temas:
       3.A.4: desarrollo (bloque trasladado desde 3.A.5)
       3.A.5: resumen (efecto Pigou-Patinkin)
-      3.A.21: resumen
+      3.A.21: resumen (dinero en el equilibrio general, problema de Hahn)
+      3.A.35: mencion
     decision: D111 (13/10/2026)
   sargent-wallace-inefectividad:
     nombre: Inefectividad de la política sistemática (Sargent y Wallace 1976)
@@ -1157,6 +1246,7 @@ modelos:
     tema_referencia: 3.B.8
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
+      3.A.12: mencion
       3.B.8: desarrollo
       3.B.41: mencion
   kemp-wan:
@@ -2091,6 +2181,7 @@ modelos:
     tema_referencia: 3.A.17
     motivo: Regulación del monopolio natural, junto a Averch-Johnson, price cap y Laffont-Tirole.
     temas:
+      3.A.12: mencion
       3.A.17: desarrollo (hoy mencion)
       4.B.15: resumen (hoy mencion)
     decision: D091 (13/10/2026); D139 (13/10/2026)
@@ -3003,6 +3094,7 @@ temas:
     modelos:
     - cobb-douglas
     - dualidad-consumidor
+    - dualidad-produccion
     - excedentes-bienestar
     - indices-precios
     - integrabilidad
@@ -3105,6 +3197,7 @@ temas:
       por_que: Diamond-Dybvig (anexo 3) se estudia en 3.B.26 (crisis financieras y pánicos bancarios).
     modelos:
     - allais
+    - arrow-debreu-incertidumbre
     - aversion-riesgo-arrow-pratt
     - demanda-seguros
     - diamond-dybvig
@@ -3198,8 +3291,9 @@ temas:
     - tema: 3.A.45
       que: 'Nota 13: copia las definiciones antiguas de neutralidad del 3.A.11; mismas correcciones que 3.B.9.'
     - tema: 3.A.12
-      que: 'Copia la elasticidad de escala con la notación vieja (ε_{Q,λ}, λ, Q, f(z)): usar t, q, F(z), ε_{q,t} y ε_{q,t}(z)
-        (ficha rendimientos-escala). Sus remisiones a 3.A.11 (isoclina, proporciones variables, rendimientos) son válidas.'
+      que: 'Copia la elasticidad de escala con la notación vieja (ε_{Q,λ}, Q, f(z)): usar λ, q, F(z⃗), ε_{q,λ} y ε_{q,λ}(z⃗)
+        (D101′, ficha rendimientos-escala; la «t» que pedía esta entrada quedó derogada el 13/10/2026). Sus remisiones a
+        3.A.11 (isoclina, proporciones variables, rendimientos) son válidas. Resuelto en la revisión del 3.A.12 (14/10/2026).'
     - tema: 3.A.9
       que: 'Nota 26: historia de la Cobb-Douglas («70 % y 30 %», Douglas senador «1949-1966», fue hasta 1967). Según D005 va
         en 3.A.11 (estimación de 1928, q ≈ 1,01 z_K^{1/4} z_L^{3/4}); una línea y \vertema{3.A.11}.
@@ -3215,8 +3309,11 @@ temas:
         corregir -> 3.A.12.'
     - tema: 3.A.21, 3.A.22
       que: 'La caja de Edgeworth de la producción está tres veces con texto casi idéntico (3.A.11, 3.A.21, 3.A.22); 3.A.22 usa
-        |RMST_L^K| (canon RMST^X_{LK} positiva); 3.A.21 dice que la convexidad estricta del conjunto implica rendimientos decrecientes.
-        Repartir según la ficha equilibrio-general-walras.'
+        |RMST_L^K| (canon RMST^X_{LK} positiva); 3.A.21 supone a la vez convexidad estricta del conjunto (que con la inacción sí
+        implica rendimientos decrecientes) y rendimientos no crecientes, y usa después rendimientos constantes (McKenzie, FPP,
+        Stolper-Samuelson): canon, conjunto convexo (rendimientos no crecientes, que incluyen los constantes). Repartir según
+        la ficha equilibrio-general-walras. Resuelto en 3.A.21 (revisión del 14/10/2026: usa el gráfico caja-edgeworth-fpp con
+        las capas de precios); queda 3.A.22.'
     - tema: 3.A.8
       que: 'Bibliografía: la clave FulekyAnatomy no lleva año en 3A08.bib (en 3A11.bib, 2006). Ver pendientes-coherencia.md.'
     modelos:
@@ -3224,6 +3321,8 @@ temas:
     - ces
     - cobb-douglas
     - conjunto-tecnologico
+    - costes-corto-largo-plazo
+    - dualidad-produccion
     - edgeworth-produccion
     - equilibrio-general-walras
     - funcion-produccion
@@ -3236,110 +3335,110 @@ temas:
   3.A.12:
     titulo: Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.
     bloque: modelo-neoclasico-basico
-    fuente_disponible: parcial
+    fuente_disponible: si
     referencias:
-    - a: 3.A.11
-      estado: ok
-      contexto: 'Técnicos: este área corresponde a la teoría de la producción'
-    - a: 3.A.12
-      estado: ok
-      contexto: 'De costes: este área corresponde a la teoría de los costes (autorreferencia)'
-    - a: 3.A.15; 3.A.16-3.A.19
-      estado: ok
-      contexto: 'Organizativos: teoría de la empresa y de los mercados'
-    - a: 3.A.11
-      estado: ok
-      contexto: isocuantas como fronteras del conjunto de combinaciones técnicamente factibles
-    - a: 3.A.9
-      estado: ok
-      contexto: nota de trabajo antes del problema de maximización del beneficio (dualidad)
-    - a: 3.A.11
-      estado: ok
-      contexto: Tecnología con sus propiedades representable mediante una función de producción (supuestos del primal)
-    - a: 3.A.11
-      estado: ok
-      contexto: Tecnología con sus propiedades (supuestos del problema dual)
-    - a: 3.A.11
-      estado: ok
-      contexto: 'cuasiconcavidad de f: isocuantas convexas, complementariedad de inputs'
-    - a: 3.A.9
-      estado: ok
-      contexto: demostraciones idénticas a las de la función de gasto y demandas hicksianas
-    - a: 3.A.9
-      estado: ok
-      contexto: Al igual que hicimos en la teoría del consumo (dualidad)
-    - a: 3.A.9
-      estado: ok
-      contexto: existe una función de utilidad de la que podrían haberse obtenido dichas demandas (integrabilidad)
-    - a: 3.A.9
-      estado: ok
-      contexto: recuperar la función de producción a partir de la de costes, análogo a la teoría del consumo
     - a: 3.A.8
       estado: ok
-      contexto: 2.1. Estática comparativa (análogo a 3.A.8) — nota de estructura
+      contexto: 'Individualismo metodológico (introducción); convexidad estricta de las preferencias como análoga de las isocuantas
+        convexas (nota); no hay factores Giffen, a diferencia de los bienes; esquema de la estática comparativa de la demanda (II.1)'
+    - a: 3.A.9
+      estado: ok
+      contexto: 'Dualidad del consumidor: sentido estricto y amplio (I.1), μ* análogo al coste marginal de la utilidad, demandas
+        condicionadas análogas a las hicksianas, demostraciones de la función de gasto y la matriz de Slutsky, relaciones de dualidad
+        (I.3), integrabilidad (I.3.1), ecuación de Slutsky de los factores (II.1.2; antes marcada corregir -> 3.A.8, desfasado
+        por D139), translog del consumidor (IV.1), hessiano orlado y anexos; conclusión'
     - a: 3.A.11
       estado: ok
-      contexto: la trayectoria de expansión óptima es una isoclina
-    - a: 3.A.12; 3.A.11
+      contexto: 'Restricciones técnicas, isocuantas, axiomas de 𝒴 y convexidad, netputs (I.3.2), elasticidad de sustitución,
+        ejemplos Leontief y Cobb-Douglas, isoclina, elasticidad de escala local, tecnología en S, ley de proporciones variables,
+        producción conjunta y alcance (III.4.2)'
+    - a: 3.A.15
       estado: ok
-      contexto: economías de escala no pueden confundirse con rendimientos de escala
-    - a: 3.A.9
-      estado: corregir -> 3.A.8
-      contexto: Equivalente a la obtención de la ecuación de Slutsky en el problema del consumidor
+      contexto: 'Organización de la empresa (introducción); críticas desde la organización industrial (III.3); agencia y contratos
+        incompletos (Leibenstein); tamaño eficiente y economías de alcance (III.4.2); causas de la ineficiencia (IV.3); conclusión'
+    - a: 3.A.16-3.A.19
+      estado: ok
+      contexto: 'Cuánto producir y a qué precio según la estructura del mercado (introducción)'
+    - a: 3.A.16
+      estado: ok
+      contexto: 'Oferta competitiva desde los costes (relevancia, I.3), tamaño indeterminado con rendimientos constantes (II.1.1,
+        III.1.2), mínimos de explotación (II.2), competencia perfecta (III.1); conclusión'
+    - a: 3.A.17
+      estado: ok
+      contexto: 'Subaditividad y número de empresas (relevancia), monopolio natural uni y multiproducto (III.1), Harberger e ineficiencia
+        X (III.3.2), separación generación-redes (IV.2), monopsonio (opinión), tecnologías con rendimientos crecientes (anexo
+        de geometría)'
+    - a: 3.A.19
+      estado: ok
+      contexto: 'Oligopolio (conclusión)'
+    - a: 3.A.20
+      estado: ok
+      contexto: 'Regulación del monopolio natural (III.1.2, IV.2); regulación por comparación de Shleifer con DEA y frontera estocástica
+        (IV.3, conclusión)'
+      nota: 'El tema de referencia del yardstick es 3.A.17 (D091): añadir \vertema{3.A.17} junto a esta en IV.3 (pendientes-coherencia.md).'
+    - a: 3.A.21
+      estado: ok
+      contexto: 'Precios de los factores endógenos en equilibrio general (opinión de la conclusión)'
+    - a: 3.A.25
+      estado: ok
+      contexto: 'Demanda derivada de trabajo: demandas no condicionadas y Hotelling (I.2.1); conclusión'
     - a: 3.B.6
       estado: ok
-      contexto: economías de escala internas y externas en la teoría del comercio internacional
-    - a: 3.A.15
+      contexto: 'Economías de escala internas y externas y comercio intraindustrial (relevancia, III.2, conclusión)'
+    - a: 3.B.8
       estado: ok
-      contexto: nota de trabajo en extensiones desde la Organización Industrial
-    - a: 3.A.11
-      estado: ok
-      contexto: 'Anexo 1: elasticidad de escala como suma de elasticidades-producto'
-    - a: 3.A.8; 3.A.9; 3.A.12
-      estado: ok
-      contexto: nota de trabajo en Anexo 1
-    - a: 3.A.11
-      estado: ok
-      contexto: 'Anexo idea de estructura: tecnología con sus propiedades (primal)'
-    - a: 3.A.11
-      estado: ok
-      contexto: 'Anexo idea de estructura: tecnología con sus propiedades (dual)'
-    - a: 3.A.8
-      estado: ok
-      contexto: 'nota 5: preferencias estrictamente convexas, utilidad estrictamente cuasicóncava'
-    - a: 3.A.11
-      estado: ok
-      contexto: 'nota 22: grado de sustituibilidad, elasticidad de sustitución'
-    faltan:
-    - a: 3.A.16
-      por_que: apartado «Competencia perfecta en el mercado de bienes» (implicaciones sobre la estructura de mercado) y Anexo
-        3 (curva de oferta) sin remitir al tema de competencia perfecta
-    - a: 3.A.17
-      por_que: monopolio natural uni y multiproducto, subaditividad y economías de alcance (producción conjunta) se desarrollan
-        allí
-    - a: 3.A.20
-      por_que: monopolio natural y su regulación óptima
-    - a: 3.A.15
-      por_que: Stigler, ineficiencia X, tamaño eficiente, mercados impugnables (Baumol-Panzar-Willig) sólo como nota «Coordinar»,
-        no como referencia
-    - a: 3.A.11
-      por_que: producción conjunta y economías de alcance (empresa multiproducto) también figuran en el título del 3.A.11
-    - a: 3.A.21
-      por_que: nota sobre precios de factores endógenos (conclusión) remite implícitamente al equilibrio general
+      contexto: 'Industria naciente: economías externas y de aprendizaje (III.2, III.4.3, conclusión)'
+    faltan: []
+    contradicciones:
+    - tema: 3.A.11
+      que: 'Anexo anexo:productor: «B(p,w⃗) creciente en p, decreciente en w⃗»; es no decreciente en p (estrictamente creciente
+        si q > 0) y no creciente en w⃗ (MWG prop. 5.C.1). Siglas PMg, PMe, RMST, CMg en cursiva en las fórmulas (canon: redonda,
+        notacion.md § 0). Ver pendientes-coherencia.md.'
+    - tema: 3.A.16
+      que: 'Escribe C_i(q̄_i,w⃗) y C_i(w⃗,q_i) (canon C(w⃗,q)); la matriz de sustitución de la función de costes sin letra (S(w⃗,q));
+        duda entre F estrictamente cóncava y cuasicóncava (cóncava para la MB; para los costes basta la cuasiconcavidad); remite
+        a 3.A.11 para la oferta (corregir -> 3.A.12, ya marcado). Mismo enganche que el 3.A.12 original (aspectos técnicos,
+        de costes y organizativos): necesita uno propio.'
+    - tema: 3.A.17
+      que: 'Monopolio natural multiproducto: «el concepto clave no sería la subaditividad, sino las economías de alcance»; la
+        definición sigue siendo la subaditividad (alcance necesario, no suficiente; Baumol, Panzar y Willig, 1982). Captura de
+        Policonomics de la subaditividad: usar el gráfico subaditividad del 3.A.12. Menciona la ineficiencia X sin el rectángulo
+        de costes inflados. Mismo enganche que el 3.A.12 original.'
+    - tema: 3.A.18, 3.A.19
+      que: 'Mismo enganche que el 3.A.12 original (aspectos técnicos, de costes y organizativos, con «[tema 3.A.12]»): cada
+        uno necesita el suyo.'
+    - tema: 3.B.4
+      que: 'Stigler (1939) con la captura de Policonomics y la nota «Coordinar en temas 3.A.11, 3.A.12 y 3.B.4»: remitir a 3.A.12
+        y usar su gráfico stigler (ficha stigler-costes). Policonomics no se enlaza (spam oculto inyectado).'
+    - tema: 3.A.43
+      que: 'La remisión «3.A.10 y 3.A.11» para el tamaño indeterminado con rendimientos constantes debe ser 3.A.11 y 3.A.12:
+        ya tiene destino en 3.A.12 II.1.1.'
+    - tema: 3.A.21, 3.A.23
+      que: 'Citan la maximización del beneficio en dos etapas con remisión a 3.A.12: destino en I.3 (eq:mb-dos-etapas). 3.A.21
+        resuelto en su revisión (14/10/2026), salvo C(q,w⃗) en su anexo A (pendientes-coherencia.md); queda 3.A.23.'
+    - tema: 3.A.8, 3.A.9
+      que: 'RMS_{12} en cursiva en las fórmulas (15 veces en 3.A.8, 1 en 3.A.9); canon: \mathrm{RMS}_{12} (notacion.md § 0).
+        Ver pendientes-coherencia.md.'
     modelos:
+    - ces
+    - cobb-douglas
+    - competencia-perfecta-equilibrio-parcial
     - costes-corto-largo-plazo
     - curva-aprendizaje
     - dualidad-consumidor
     - dualidad-produccion
+    - eficiencia-frontera
+    - industria-naciente
     - ineficiencia-x
     - integrabilidad
-    - maximizacion-beneficio-empresa
-    - minimizacion-costes
+    - leontief
     - monopolio-natural
+    - rendimientos-escala
     - sistemas-demanda
     - slutsky
     - stigler-costes
-    revisado: null
+    - yardstick
+    revisado: 2026-10-14
   3.A.13:
     titulo: 'Economía de la información y teoría de la agencia: selección adversa y riesgo moral.'
     bloque: informacion-y-poder-de-mercado
@@ -3432,6 +3531,7 @@ temas:
     modelos:
     - dilema-prisionero
     - equilibrio-nash
+    - nucleo
     - nucleo-shapley
     - subastas
     revisado: null
@@ -3537,6 +3637,8 @@ temas:
       por_que: modelo de la telaraña con expectativas adaptativas (Anexo 2) — o 3.A.6 para expectativas racionales
     modelos:
     - competencia-perfecta-equilibrio-parcial
+    - costes-corto-largo-plazo
+    - dualidad-produccion
     - excedentes-bienestar
     - incidencia-equilibrio-parcial
     - marshall-equilibrio-parcial
@@ -3644,8 +3746,11 @@ temas:
       por_que: Uso del excedente del consumidor como medida de bienestar (pérdida irrecuperable).
     modelos:
     - averch-johnson
+    - costes-corto-largo-plazo
     - discriminacion-precios
+    - eficiencia-frontera
     - indice-lerner
+    - ineficiencia-x
     - laffont-tirole
     - loeb-magat
     - mercados-impugnables
@@ -3832,94 +3937,145 @@ temas:
     faltan: []
     modelos:
     - captura-regulador
+    - eficiencia-frontera
     revisado: null
   3.A.21:
     titulo: La teoría del equilibrio general.
     bloque: modelo-neoclasico-basico
     fuente_disponible: si
     referencias:
-    - a: 3.A.16
-      estado: ok
-      contexto: el análisis de equilibrio general es complementario del equilibrio parcial marshalliano
     - a: 3.A.8
       estado: ok
-      contexto: funciones de utilidad neoclásicas que cumplen la axiomática de Debreu (1959)
+      contexto: 'Individualismo metodológico (introducción); axiomas de las preferencias (I.1); demandas y ley de Walras individual
+        (I.2.2); axioma débil que la demanda agregada no hereda (II.1.2, anexo B)'
     - a: 3.A.16
       estado: ok
-      contexto: hay que meterle dinamismo... [Coordinar con tema 3.A.16]
-    - a: 3.A.14
+      contexto: 'Equilibrio parcial frente a general (introducción, conclusión); precio-aceptación (I.1); exceso de demanda en
+        un mercado (nota de I.2.3); estabilidad en un mercado, ajuste walrasiano y marshalliano (II.1.3, anexo D)'
+    - a: 3.A.2
       estado: ok
-      contexto: juegos cooperativos, valor de Shapley
-    - a: 3.A.16
+      contexto: 'Quesnay y Smith, sin modelo cerrado (contextualización); ley de Say frente a ley de Walras (nota de I.2.4)'
+    - a: 3.A.3
       estado: ok
-      contexto: 'enfoque complementario: estudio de los mercados bajo equilibrio parcial'
-    - a: 3.A.16
-      estado: ok
-      contexto: competencia perfecta con equilibrio parcial
-    - a: 3.A.21
-      estado: ok
-      contexto: competencia perfecta con equilibrio general
+      contexto: 'Walras y la escuela de Lausana (contextualización)'
     - a: 3.A.22
       estado: ok
-      contexto: optimalidad global de Pareto y EGC como óptimo
+      contexto: 'Teoremas del bienestar (relevancia, estructura); eficiencia en la producción (I.2.1); Pareto y los dos teoremas
+        resumidos (II.2, anexo C)'
     - a: 3.A.23
       estado: ok
-      contexto: si hay imperfecciones, el EGC no será óptimo
-    - a: 3.A.24
+      contexto: 'Fallos de mercado como justificación de la intervención (relevancia); externalidades y bienes públicos (nota
+        de I.1; antes 3.A.22); el equilibrio deja de ser eficiente (II.2, anexo C, conclusión)'
+    - a: 3.A.11
       estado: ok
-      contexto: eficiencia frente a maximización del bienestar social
-    - a: 3.A.16
+      contexto: 'Tecnología convexa y rendimientos (I.1); caja de la producción, curva de contrato y FPP con el gráfico
+        caja-edgeworth-fpp (I.2.1); isocuantas estrictamente convexas sin rendimientos y z⃗ de factores (notas); netputs (anexo
+        A); formas funcionales de los MEGC (III.5)'
+    - a: 3.A.12
       estado: ok
-      contexto: 'nota 5: equilibrio parcial marshalliano, mercado a mercado'
-    - a: 3.A.22
-      estado: corregir -> 3.A.23
-      contexto: 'nota 17: con externalidades los precios dejan de ser señales válidas y el EGC no es eficiente'
-    - a: 3.A.12, 3.A.16
+      contexto: 'Maximización del beneficio en dos etapas y Hotelling (I.2.1, anexo A); función de beneficios (anexo A); Shephard
+        en los requerimientos unitarios (anexo E)'
+    - a: 3.B.6
       estado: ok
-      contexto: 'nota 20: maximización del beneficio en dos etapas'
-    - a: 3.A.22
+      contexto: 'FPP convexa con rendimientos crecientes (nota de I.2.1); competencia imperfecta con no convexidades (III.2)'
+    - a: 3.A.9
       estado: ok
-      contexto: 'nota 21: condición de eficiencia en la producción'
+      contexto: 'Propiedades de la demanda individual (Slutsky) que la agregación borra (nota del teorema SMD, II.1.2)'
     - a: 3.A.14
       estado: ok
-      contexto: 'nota 35: Nash (1950) usó el teorema del punto fijo en teoría de juegos'
+      contexto: 'Nash y el punto fijo (nota de II.1.1); poder negociador en el intercambio de Edgeworth (III.1); núcleo de los
+        juegos cooperativos (III.2); diseño de mecanismos (recuadro de III.2)'
+    - a: 3.A.4
+      estado: ok
+      contexto: 'Ley de Say y Keynes (nota de I.2.4); procesos sin tanteo y desequilibrio (II.1.3); efecto saldos reales en
+        el desequilibrio (III.3); críticas de Clower y Leijonhufvud (conclusión)'
+    - a: 3.A.13
+      estado: ok
+      contexto: 'Información asimétrica como fallo (II.2, conclusión); diseño de mecanismos (recuadro de III.2); mercados
+        que faltan (III.4)'
     - a: 3.A.24
       estado: ok
-      contexto: óptimo social y equilibrio competitivo no necesariamente coinciden
-    faltan:
-    - a: 3.A.22
-      por_que: 'El apartado II.2 desarrolla 1TFEB y 2TFEB con supuestos de Mas-Colell: es el título de 3.A.22; debería resumirse
-        y remitir.'
-    - a: 3.A.11
-      por_que: Axiomas del conjunto de producción y función de producción del problema del productor.
-    - a: 3.A.10
-      por_que: Equilibrio general con incertidumbre (Arrow-Debreu, mercados contingentes) usa la elección bajo incertidumbre.
+      contexto: 'Óptimo social, FBS e incompletitud de Pareto (II.2, anexo C, conclusión)'
+    - a: 3.A.19
+      estado: ok
+      contexto: 'Equilibrio de Cournot-Walras (III.2, comportamiento estratégico)'
+    - a: 3.A.17
+      estado: ok
+      contexto: 'Rendimientos crecientes y monopolio natural (III.2, no convexidades)'
     - a: 3.A.35
-      por_que: Introducción del dinero (Patinkin, efecto saldos reales) enlaza con la demanda de dinero.
-    - a: 3.B.5
-      por_que: Anexo 1 de estática comparativa (Stolper-Samuelson, Rybczynski en 2×2×2) es base del modelo H-O-S.
+      estado: ok
+      contexto: 'Demanda de dinero tipo Cambridge (III.3)'
+    - a: 3.A.29
+      estado: ok
+      contexto: 'Dinero como depósito de valor en generaciones solapadas (III.3); ineficiencia dinámica (III.4)'
+    - a: 3.A.10
+      estado: ok
+      contexto: 'Preferencia por el estado (III.4)'
     - a: 3.A.31
-      por_que: Modelos de EG computable y tablas input-output (matrices de contabilidad social).
-    - a: 3.A.8
-      por_que: Unicidad mediante el axioma débil de la preferencia revelada.
-    - a: 3.A.16
-      por_que: 'Estabilidad walrasiana/marshalliana se trata también en ''dinámicas de ajuste y estabilidad'' de 3.A.16: coordinar.'
-    - a: 3.A.4
-      por_que: 'Usa Patinkin (1956): efecto saldos reales (resumen); su tema de referencia es 3.A.4 (decisión D111). Remitir
-        para ampliar, sin depender de él.'
+      estado: ok
+      contexto: 'Matrices de contabilidad social en la calibración de los MEGC (III.5)'
+    - a: 3.B.31
+      estado: ok
+      contexto: 'Modelo DICE de Nordhaus (III.5); economía del clima (conclusión)'
+    - a: 3.A.6
+      estado: ok
+      contexto: 'DSGE como versión agregada e intertemporal (III.5, conclusión)'
+    - a: 3.A.42
+      estado: ok
+      contexto: 'Macroeconomía de equilibrio general dinámico y estocástico (conclusión)'
+    - a: 3.B.5
+      estado: ok
+      contexto: 'Heckscher-Ohlin como equilibrio general (relevancia, conclusión); Stolper-Samuelson y Rybczynski (nota de II.1.2,
+        anexo E)'
+    faltan: []
+    contradicciones:
+    - tema: 3.A.22
+      que: 'Criterio de Pareto (ventajas y cinco críticas) y 1TFEB idénticos al 3.A.21 original; supuestos del 1TFEB de equilibrio
+        parcial (MWG, «bien no numerario»); «modelo 2×2×2» con 10 incógnitas; |RMST|; su anexo 3 atribuye el 2TFEB a 3.A.24. Al
+        revisarlo: desarrollar los TFEB con la notación D035/D045 (ω⃗), la versión de equilibrio general y la especificación del
+        anexo A del 3.A.21 (I, J, n); reutilizar los gráficos caja-intercambio-teoremas y caja-produccion-precios del 3.A.21.'
+    - tema: 3.A.23
+      que: 'Copia el modelo 2×2×2×2 y los TFEB; usa w, r; su introducción («nos vamos a centrar en la intervención por eficiencia…»)
+        estaba pegada al final del II.2.2 del 3.A.21; su anexo 1 atribuye el 2TFEB a 3.A.24. Remitir a 3.A.21 y 3.A.22.'
+    - tema: 3.A.24
+      que: 'Su anexo 3 atribuye el 2TFEB a 3.A.24: es de 3.A.22 (ya corregir -> 3.A.22).'
+    - tema: 3.A.16
+      que: 'Misma estabilidad que el 3.A.21 original (idea, Musgrave, ajustes, imágenes 8-9, tabla, nota del tanteo; «exceso
+        de oferta negativo») y una imagen con fuente «Tema 3A-21» de otro opositor. Al revisarlo: desarrollar los dos ajustes
+        con el gráfico estabilidad-parcial y la tabla de color del anexo D del 3.A.21 (ficha tatonnement), p^D(q), p^S(q), y acortar
+        la nota histórica del tanteo, que va completa en 3.A.21 (I.1).'
+    - tema: 3.A.10
+      que: 'Mismo texto de los bienes contingentes y el paraguas (comentario «Coordinar en temas 3.A.10 y 3.A.21»): quedarse con
+        la elección individual y remitir a 3.A.21 para el equilibrio (ficha arrow-debreu-incertidumbre).'
+    - tema: 3.A.25
+      que: '«Se cumplen las propiedades de existencia, unicidad y estabilidad por trabajar con supuestos competitivos [ver tema
+        3.A.14]»: la competencia no garantiza unicidad ni estabilidad (SMD) y la remisión es a 3.A.21 (ya corregir -> 3.A.21).'
+    - tema: 3.A.35
+      que: 'Fecha a Patinkin en 1951; canon Money, Interest and Prices (1956; 2.ª ed. 1965) o, si se citan los artículos previos,
+        1948-1949 (ficha patinkin).'
+    - tema: 3.A.4
+      que: 'La historia de Patinkin en cuatro pasos (desequilibrio) estaba en el 3.A.21 original: es materia de 3.A.4 (D111),
+        que debe desarrollarla; 3.A.21 solo da la versión de equilibrio general (dicotomía inválida, problema de Hahn).'
+    - tema: 3.A.14
+      que: 'Define el núcleo como «vector de pagos» con utilidad transferible y lo mezcla con el valor de Shapley; falta la remisión
+        al núcleo de una economía (3.A.21; ficha nucleo, coalición T ⊆ N en juegos y 𝒮 en la economía).'
+    - tema: 3.A.3
+      que: '«Walras caracterizó las condiciones de existencia y estabilidad»: decir que Walras planteó el problema contando
+        ecuaciones y que la primera demostración de la existencia es de Wald (1935-1936), como 3.A.21.'
+    - tema: 3.B.5
+      que: 'Usa la caja de Edgeworth y el equilibrio general sin remitir a 3.A.21; al revisarlo, álgebra de Jones con s_{Lj}, ℓ_{Lj}
+        y x̂ (notacion.md § 10) y los gráficos costes-unitarios y rybczynski del 3.A.21 (ficha heckscher-ohlin).'
     modelos:
     - arrow-debreu-incertidumbre
-    - caja-edgeworth
+    - dualidad-produccion
     - egc
     - equilibrio-general-walras
-    - existencia-brouwer
-    - ley-walras
+    - heckscher-ohlin
     - nucleo
     - patinkin
-    - sustitutivos-brutos
     - tatonnement
     - teoremas-bienestar
-    revisado: null
+    revisado: 2026-10-14
   3.A.22:
     titulo: Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best».
     bloque: economia-del-bienestar-e-intervencion-del-sector-publico
@@ -4108,6 +4264,7 @@ temas:
     - clarke-groves
     - coase
     - dilema-prisionero
+    - dualidad-produccion
     - equilibrio-general-walras
     - externalidades-equilibrio-general
     - lindahl
@@ -4232,6 +4389,7 @@ temas:
     modelos:
     - becker-capital-humano
     - demanda-trabajo
+    - dualidad-produccion
     - lucas-rapping
     - mincer
     - oaxaca-blinder
@@ -4463,6 +4621,7 @@ temas:
     - a: 3.A.42
       por_que: Los modelos RBC son la aplicación macro principal del agente representativo.
     modelos:
+    - arrow-debreu-incertidumbre
     - fisher-intertemporal
     - hamiltoniano
     - olg-samuelson-diamond
@@ -4657,6 +4816,7 @@ temas:
     - kiyotaki-wright
     - miu-sidrauski
     - olg-samuelson-diamond
+    - patinkin
     - preferencia-liquidez
     - teoria-cuantitativa
     - tobin-cartera
@@ -5239,6 +5399,7 @@ temas:
     - arrow-romer-spillovers
     - barro-1990
     - ces
+    - curva-aprendizaje
     - romer-1990
     - sobelow
     - uzawa-lucas
@@ -5275,6 +5436,7 @@ temas:
     - ajr-instituciones
     - contabilidad-crecimiento
     - convergencia-beta-sigma
+    - eficiencia-frontera
     - regresiones-barro
     - solow-mrw
     revisado: null
@@ -5906,6 +6068,7 @@ temas:
     - arancel-optimo
     - cuotas
     - haberler
+    - heckscher-ohlin
     - johnson-guerra-comercial
     - metzler-lerner
     - proteccion-efectiva
@@ -6024,9 +6187,11 @@ temas:
     - arancel-optimo
     - brander-krugman
     - brander-spencer
+    - curva-aprendizaje
     - eaton-grossman
     - eaton-kierzkowski
     - grossman-helpman
+    - heckscher-ohlin
     - industria-naciente
     revisado: null
   3.B.9:
@@ -6147,10 +6312,10 @@ temas:
     - crecimiento-comercio-pais-pequeno
     - difusion-tecnologica
     - grossman-helpman
+    - heckscher-ohlin
     - prebisch-singer
     - progreso-tecnico-neutral
     - romer-1990
-    - rybczynski
     - uzawa-lucas
     revisado: null
   3.B.10:
@@ -6278,6 +6443,7 @@ temas:
     - cooper-massell
     - corden-1972
     - gravedad
+    - heckscher-ohlin
     - kemp-wan
     - meade-lipsey
     - viner
@@ -8009,6 +8175,7 @@ temas:
     referencias: []
     faltan: []
     modelos:
+    - eficiencia-frontera
     - monopolio-natural
     revisado: null
   4.A.6:
@@ -9503,6 +9670,7 @@ temas:
     - equivalencias-impositivas
     - exceso-gravamen
     - harberger-incidencia
+    - heckscher-ohlin
     - incidencia-equilibrio-parcial
     - incidencia-monopolio
     - incidencia-oligopolio
@@ -9990,6 +10158,7 @@ temas:
     - accion-de-oro
     - averch-johnson
     - captura-regulador
+    - eficiencia-frontera
     - empresa-publica
     - fallos-de-mercado
     - feldstein-1972

@@ -1,7 +1,7 @@
 # Integrabilidad de la demanda (recuperar las preferencias)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: «Dualidad e integrabilidad de las preferencias»; revisado el 13/10/2026, III.1) — lo tiene en el título y lo desarrolla. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (mención: la vía de la preferencia revelada, ADPR y ADFPR, y la integrabilidad en la introducción; hecho), 3.A.12 (mención: recuperar la tecnología a partir de la función de costes).
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (mención: la vía de la preferencia revelada, ADPR y ADFPR, y la integrabilidad en la introducción; hecho), 3.A.12 (mención: recuperar la tecnología a partir de la función de costes; hecho).
 - **Manuales de referencia:** Antonelli (1886); Hurwicz y Uzawa (1971); Mas-Colell, Whinston y Green, §3.H (prop. 3.H.1); Jehle y Reny (2011), teorema 2.6; Houthakker (1950); Kihlstrom, Mas-Colell y Sonnenschein (1976); Afriat (1967); Hausman (1981).
 
 ## Presentación de referencia
@@ -22,7 +22,7 @@ Gráfico de referencia: `oposicion/temario/fuentes/3A09/graficos/recuperar-utili
 |---|---|---|---|---|
 | 3.A.9 | Integrabilidad de las preferencias | desarrollo (hecho, 13/10/2026) | Todo lo anterior (3 minutos en el cante) | La preferencia revelada en detalle (3.A.8) |
 | 3.A.8 | Fundamentos y otros desarrollos | mención (hecho) | Preferencia revelada (ADPR, ADFPR, Afriat) como versión sin derivadas; la integrabilidad se estudia en 3.A.9 | El teorema |
-| 3.A.12 | Dualidad de la empresa | mención | Recuperar la tecnología a partir de $C(w,q)$ (Shephard, McFadden): mismas condiciones, con $C$ cóncava en $w$ | El teorema del consumidor |
+| 3.A.12 | Dualidad de la empresa | mención (hecho, 14/10/2026: I.3.1, $V^*(q)$ y caja de anotaciones; ficha `dualidad-produccion`) | Recuperar la tecnología a partir de $C(w,q)$ (Shephard, McFadden): mismas condiciones, con $C$ cóncava en $w$ | El teorema del consumidor |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.9 original: «teorema de Rouché-Frobenius» (con un vídeo sobre sistemas lineales), «si y solo si» frente a «condición suficiente, pero no necesaria», Antonelli «de la Escuela de Lausana». Resuelto en la revisión.

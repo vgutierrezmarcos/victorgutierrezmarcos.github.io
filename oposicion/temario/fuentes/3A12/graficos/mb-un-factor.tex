@@ -1,0 +1,29 @@
+% Maximización del beneficio con un factor (rehace la imagen 1 del tema
+% original, de Pérez Domínguez, 2004). F(z) = 2,2·sqrt(z); w/p = 0,778.
+% Isobeneficio tangente en z* = 2: q = 1,556 + 0,778 z, con E = (2; 3,111).
+% Isobeneficio más baja, B^0/p = 0,8: corta F en z = 0,184 y z = 5,76.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$z$}{$q$}{7.4}{6.6}}
+  % 2: función de producción
+  \capa{2}{\draw[curva1] plot[domain=0:6.8,samples=120,smooth] (\x,{2.2*sqrt(\x)}) node[etiqueta,below right] {$F(z)$};}
+  % 3: isobeneficio secante IB^0
+  \capa{3}{\draw[curva2,desplazada] (0,0.8) -- (6.8,{0.8+0.778*6.8}) node[etiqueta,right,text=tceeazul] {$\mathit{IB}^0$};}
+  \capa{3}{\node[etiqueta,left,text=tceeazul] at (0,0.8) {$B^0/p$};}
+  % 4: isobeneficio tangente IB^* de pendiente w/p
+  \capa{4}{\draw[curva2] (0,1.556) -- (5.8,{1.556+0.778*5.8}) node[etiqueta,right,text=tceeazul] {$\mathit{IB}^*$};}
+  \capa{4}{\node[etiqueta,text=tceeazul] (P) at (2.6,5.4) {pendiente $=\dfrac{w}{p}$};}
+  \capa{4}{\draw[guia,solid,->] (P.south east) ++(-0.3,0) -- (4.0,4.75);}
+  % 5: punto E y proyecciones
+  \capa{5}{\node[punto] (E) at (2,3.111) {};}
+  \capa{5}{\node[etiqueta,above left] at (E) {$E$};}
+  \capa{5}{\proyeccion{(E)}{$z(p,w)$}{$q(p,w)$}}
+  % 6: beneficio máximo en la ordenada en el origen
+  \capa{6}{\node[punto,fill=tceeazul] at (0,1.556) {};}
+  \capa{6}{\node[etiqueta,left,text=tceeazul] at (0,1.556) {$B(p,w)/p$};}
+\end{tikzpicture}
+\end{document}

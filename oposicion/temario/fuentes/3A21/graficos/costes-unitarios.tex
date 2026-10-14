@@ -1,0 +1,39 @@
+% Curvas de coste unitario y Stolper-Samuelson (3.A.21, anexo E).
+% Costes unitarios Cobb-Douglas: c_X = w_L^0,6 w_K^0,4 (X intensivo en trabajo) y
+%   c_Y = w_L^0,4 w_K^0,6. Precios iniciales p_X = p_Y = 2: corte A = (2, 2).
+% c_X = p_X: w_K = 5,657 w_L^-1,5; c_Y = p_Y: w_K = 3,175 w_L^-0,667.
+% Pendientes en A (-a_Lj/a_Kj): -1,5 en X (más inclinada) y -0,667 en Y.
+% Sube p_X a p'_X = 2,3 (+13,98 % en logaritmos): c_X = p'_X: w_K = 8,02 w_L^-1,5.
+%   Nuevo corte B: ln w_L sube 3·0,1398 = 0,419 (w_L = 3,041) y ln w_K baja
+%   2·0,1398 = 0,280 (w_K = 1,512): w_L sube más que p_X y w_K baja.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={cx(\w)=5.6569*\w^(-1.5); cxn(\w)=8.0203*\w^(-1.5); cy(\w)=3.1748*\w^(-2/3);}]
+  % 1: ejes
+  \capa{1}{\ejes{$w_L$}{$w_K$}{6}{5.4}}
+  % 2: c_X = p_X y su pendiente
+  \capa{2}{\draw[curva1] plot[domain=1.1:5.5,samples=100] (\x,{cx(\x)})
+    node[etiqueta,right] {$c_X(w_L,w_K)=p_X$};}
+  \capa{2}{\node[etiqueta,text=tceemorado,below=5pt] at (4.0,{cx(4.0)}) {$-a_{LX}/a_{KX}$};}
+  % 3: c_Y = p_Y y su pendiente
+  \capa{3}{\draw[curva3] plot[domain=0.5:5.5,samples=100] (\x,{cy(\x)})
+    node[etiqueta,right] {$c_Y(w_L,w_K)=p_Y$};}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=south west] at (3.9,{cy(3.9)+0.2}) {$-a_{LY}/a_{KY}$};}
+  % 4: equilibrio A y proyecciones
+  \capa{4}{\node[punto,label={[etiqueta]below left:$A$}] (A) at (2,2) {};}
+  \capa{4}{\proyeccion{(A)}{$w_L^0$}{$w_K^0$}}
+  % 5: sube p_X: c_X = p'_X se desplaza hacia fuera
+  \capa{5}{\draw[curvanueva,desplazada] plot[domain=5.5:1.42,samples=100] (\x,{cxn(\x)})
+    node[etiqueta,above right=0pt and -8pt] {$c_X(w_L,w_K)=p'_X$};}
+  \capa{5}{\draw[flecha] (1.6,2.9) -- (1.93,2.9);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (2.15,2.95) {$\Delta p_X$};}
+  % 6: nuevo equilibrio B, proyecciones y cambios en w_L (sube) y w_K (baja)
+  \capa{6}{\node[punto,label={[etiqueta]above=2pt:$B$}] (B) at (3.0412,1.5120) {};}
+  \capa{6}{\proyeccion{(B)}{$w_L^1$}{$w_K^1$}}
+  \capa{6}{\draw[flecha] (2,-0.75) -- (3.0412,-0.75);}
+  \capa{6}{\draw[flecha] (-0.8,2) -- (-0.8,1.512);}
+\end{tikzpicture}
+\end{document}

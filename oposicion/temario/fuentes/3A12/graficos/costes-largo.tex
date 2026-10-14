@@ -1,0 +1,52 @@
+% Costes a largo plazo con w fijo: C(q) = 3q - 1,2q^2 + 0,2q^3 (S invertida).
+% CMe = 3 - 1,2q + 0,2q^2 (mínimo en q = 3, CMe = 1,2);
+% CMg = 3 - 2,4q + 0,6q^2 (mínimo en q = 2, CMg = 0,6; inflexión de C);
+% CMg(3) = CMe(3) = 1,2: el rayo de pendiente 1,2 es tangente a C en q = 3.
+% En q^0 = 1,2: CMe = 1,848 (rayo) y CMg = 0,984 (tangente).
+% Panel de arriba: ordenadas 0,7·C, desplazado 5,6 hacia arriba.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.2cm,y=1cm]
+  \begin{scope}[yshift=5.6cm]
+    % 1: ejes del panel de arriba
+    \capa{1}{\ejes{$q$}{$C$}{5.6}{5.0}}
+    % 2: curva C(q)
+    \capa{2}{\draw[curva1] plot[domain=0:4.3,samples=100,smooth] (\x,{0.7*(3*\x-1.2*\x*\x+0.2*\x*\x*\x)}) node[etiqueta,right] {$C(\vect{w},q)$};}
+    % 3: rayo desde el origen en q^0 (pendiente = CMe)
+    \capa{3}{\node[punto] (Q0) at (1.2,{0.7*2.2176}) {};}
+    \capa{3}{\draw[guia] (Q0) -- (1.2,0) node[below,text=black] {$q^0$};}
+    \capa{3}{\draw[curva2,thick] (0,0) -- (1.6,{0.7*1.848*1.6});}
+    \capa{3}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=west] (Mel) at (0.1,2.75) {pendiente $\mathrm{CMe}(q^0)$};}
+    \capa{3}{\draw[thin,tceegris] (Mel.south) -- (1.45,{0.7*1.848*1.45});}
+    % 4: tangente en q^0 (pendiente = CMg)
+    \capa{4}{\draw[curva4,thick] (0.3,{0.7*(2.2176-0.984*0.9)}) -- (2.3,{0.7*(2.2176+0.984*1.1)});}
+    \capa{4}{\node[etiqueta,font=\footnotesize,text=tceedorado,anchor=west] (Mgl) at (2.5,0.9) {pendiente $\mathrm{CMg}(q^0)$};}
+    \capa{4}{\draw[thin,tceegris] (Mgl.west) -- (1.8,{0.7*(2.2176+0.984*0.6)});}
+    % 5: punto de inflexión (mínimo del CMg) y tangencia del rayo (mínimo del CMe)
+    \capa{5}{\node[punto,fill=tceedorado] (I) at (2,{0.7*2.8}) {};}
+    \capa{5}{\node[etiqueta,font=\footnotesize,anchor=south] (Il) at (2.6,3.4) {inflexión};}
+    \capa{5}{\draw[thin,tceegris] (Il.south) -- (I);}
+    \capa{5}{\draw[guia,tceeazul] (0,0) -- (4.6,{0.7*1.2*4.6});}
+    \capa{5}{\node[punto,fill=tceeazul] (T) at (3,{0.7*3.6}) {};}
+    \capa{5}{\node[etiqueta,font=\footnotesize,anchor=south] (Tl) at (3.3,4.1) {rayo tangente};}
+    \capa{5}{\draw[thin,tceegris] (Tl.south) -- (T);}
+  \end{scope}
+  % 6: ejes del panel de abajo
+  \capa{6}{\ejes{$q$}{$\mathrm{CMe},\ \mathrm{CMg}$}{5.6}{4.3}}
+  % 7: curva CMg
+  \capa{7}{\draw[curva4] plot[domain=0.25:4.4,samples=100,smooth] (\x,{3-2.4*\x+0.6*\x*\x}) node[etiqueta,left] {$\mathrm{CMg}$};}
+  % 8: curva CMe, cortada por el CMg en su mínimo
+  \capa{8}{\draw[curva2] plot[domain=0.25:5.3,samples=100,smooth] (\x,{3-1.2*\x+0.2*\x*\x}) node[etiqueta,right] {$\mathrm{CMe}$};}
+  \capa{8}{\node[punto,fill=tceeazul] (M) at (3,1.2) {};}
+  % 9: proyecciones verticales y economías y deseconomías de escala
+  \capa{9}{\node[punto,fill=tceedorado] (Mg) at (2,0.6) {};}
+  \capa{9}{\draw[guia] (I) -- (2,0);}
+  \capa{9}{\draw[guia] (T) -- (3,0);}
+  \capa{9}{\draw[<-,thick,tceeverde] (0.3,-0.45) -- (2.95,-0.45);}
+  \capa{9}{\node[etiqueta,below,align=center,font=\footnotesize,text=tceeverde] at (1.6,-0.5) {economías de escala\\ $(\varepsilon_{C,q}<1)$};}
+  \capa{9}{\draw[->,thick,tceerojo] (3.05,-0.45) -- (5.3,-0.45);}
+  \capa{9}{\node[etiqueta,below,align=center,font=\footnotesize,text=tceerojo] at (4.2,-0.5) {deseconomías de escala\\ $(\varepsilon_{C,q}>1)$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,35 @@
+# Función de costes: economías de escala, corto y largo plazo (envolvente de Viner, Le Châtelier-Samuelson)
+
+- **Área:** consumidor-producción · **Tema de referencia:** **3.A.12** (Teoría de los costes; revisado el 14/10/2026, bloque II e IV.2) — lo tiene en el título («Teoría de los costes») y lo desarrolla. Ficha creada a raíz de esa revisión.
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.11 (mención: los plazos de la tecnología, la ley de proporciones variables y la tecnología «en S» detrás del CMe en U; hecho), 3.A.16 (resumen: oferta de la empresa a corto y largo plazo, mínimos de explotación, oferta de la industria), 3.A.17 (mención: costes del monopolio y del monopolio natural).
+- **Manuales de referencia:** Varian (1992), cap. 5-6; Mas-Colell, Whinston y Green (1995), §5.D; Jehle y Reny (2011), cap. 3; Gravelle y Rees (2004), cap. 5; Viner (1931); Samuelson (1947), cap. III; Hanoch (1975); Marshall (1890). Evidencia: Nerlove (1963); Christensen y Greene (1976); Caves, Christensen y Tretheway (1984); Johnston (1960); Walters (1963); Stigler (1958).
+
+## Presentación de referencia
+Pregunta: ¿cómo responden los costes y la demanda de factores a la producción, a los precios de los factores y al plazo, y qué forma tienen las curvas de costes?
+
+- **Cambios en q** (largo plazo): senda de expansión (isoclina; análoga a la curva renta-consumo; recta si F es homotética), curva de Engel del factor, factor **normal** (∂z_i(w⃗,q)/∂q > 0) o **inferior** (al menos uno es normal); Σ_i s_i ε_{z_i,q} = ε_{C,q}. Costes C(q), CMe y CMg, dCMe/dq = (CMg − CMe)/q; **ε_{C,q} = CMg/CMe**: < 1 economías de escala, > 1 deseconomías.
+- **Economías frente a rendimientos de escala** (Hanoch, 1975), en la combinación de mínimo coste y **para cualquier tecnología**:
+$$\varepsilon_{q,\lambda}\big(\vec z(\vec w,q)\big)=\frac{\mathrm{CMe}}{\mathrm{CMg}}=\frac{1}{\varepsilon_{C,q}}$$
+Demostración: w_i = μ·PMg_i con μ = CMg, luego C = CMg·Σ_iPMg_iz_i = CMg·q·ε_{q,λ}(z⃗). La homoteticidad solo la extiende a toda la senda (que es un rayo); con rendimientos globales, implicaciones en un solo sentido (tabla `tab:rendimientos-economias`, en el formato de color: crecientes en verde, constantes en azul, decrecientes en rojo). Con homogéneas de grado k, C = q^{1/k}c(w⃗) y CMe monótono; con rendimientos constantes, CMe = CMg constantes y tamaño indeterminado (3.A.16).
+- **CMe a largo plazo en U** por rendimientos a escala variables (tecnología «en S», 3.A.11), **no** por la ley de proporciones variables, que explica el corto plazo.
+- **Cambios en w⃗**: demanda condicionada no creciente en su precio (la isocuanta fija; la isocoste gira y se desplaza para seguir tangente); ε_{z_i,w_j} y Allen-Uzawa (ε_{z_i,w_j} = s_jσ_{ij}); ε_{C,w_i} = s_i; ∂CMg/∂w_i = ∂z_i(w⃗,q)/∂q (un factor inferior abarata el CMg al encarecerse). **Ecuación de Slutsky de los factores** (ficha `slutsky`): efecto total = efecto sustitución + **efecto escala**; el efecto escala propio es −(∂z_i(w⃗,q)/∂q)²·∂q/∂p ≤ 0: refuerza al de sustitución, no hay factores Giffen y la demanda no condicionada es más elástica que la condicionada.
+- **Corto plazo** (Marshall: algún factor fijo): min w_Lz_L + w_Kz̄_K s.a. F(z_L,z̄_K) ≥ q;
+$$C(\vec w,q;\overline z_K)=\underbrace{w_L\,z_L(\vec w,q;\overline z_K)}_{\mathrm{CV}(q)}+\underbrace{w_K\,\overline z_K}_{\mathrm{CF}}\ \geq\ C(\vec w,q)$$
+CMg = w_L/PMg_L y CVMe = w_L/PMe_L (imágenes invertidas de las productividades); CFMe = w_Kz̄_K/q decreciente; el CMg corta al CVMe y al CMe en sus mínimos (mínimo de explotación y óptimo de explotación, 3.A.16). Las fases del CMe a corto **no** son economías de escala.
+- **Largo plazo**: el CMe a largo plazo es la **envolvente** de los de corto; la tangencia está en el tramo decreciente a la izquierda del mínimo del CMe_LP (exceso de capacidad) y en el creciente a la derecha; solo en el mínimo, CMe_CP = CMe_LP = CMg_CP = CMg_LP (el **error de Viner**, 1931, fue dibujarla por los mínimos). En la tangencia, el CMg_CP corta al CMg_LP y es más inclinado.
+- **Principio de Le Châtelier-Samuelson** (Samuelson, 1947; Le Châtelier, 1884): ∂z_i^LP/∂w_i ≤ ∂z_i^CP/∂w_i ≤ 0 y ∂q^LP/∂p ≥ ∂q^CP/∂p ≥ 0 (superíndices en redonda).
+- **Evidencia** (IV.2 del 3.A.12): métodos estadístico, de ingeniería y del superviviente (Stigler, 1958); Nerlove (1963), 145 eléctricas de 1955, economías que se agotan con el tamaño; Christensen y Greene (1976): en 1970 el grueso de la generación estaba en el tramo plano del CMe (gráfico de datos); densidad frente a escala (Caves, Christensen y Tretheway, 1984); costes en L hasta una escala mínima eficiente (Johnston, 1960; Walters, 1963), como sostenía Stigler (ficha `stigler-costes`).
+
+Gráficos de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/senda-expansion.tex` (imprescindible), `curva-engel-factor.tex`, `costes-largo.tex` (C, CMe y CMg en dos paneles, imprescindible), `demanda-condicionada-w.tex`, `demanda-factor-precio.tex`, `corto-largo-senda.tex`, `costes-corto.tex`, `envolvente.tex` (por capas, imprescindible), `geometria-costes.tex` (seis casos, anexo), `christensen-greene-1970.tex` (pgfplots con `datos/christensen-greene-1970.csv`). Tabla: `tab:rendimientos-economias`.
+
+## Cómo se adapta en cada tema
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.12 | Teoría de los costes | desarrollo (hecho, 14/10/2026) | Todo lo anterior (bloque II, 8,5 minutos, y IV.2) | La definición de rendimientos y la elasticidad de escala como suma de elasticidades-producto (3.A.11, con remisión) |
+| 3.A.11 | Tecnología a corto y largo plazo | mención (hecho) | Plazos de la tecnología, ley de proporciones variables, tecnología en S detrás del CMe en U, ε_{q,λ} = CMe/CMg en la senda de mínimo coste; remite a 3.A.12 | Las curvas de costes |
+| 3.A.16 | Competencia perfecta | resumen | Oferta a corto (CMg por encima del mínimo del CVMe) y a largo (mínimo del CMe), Le Châtelier en la oferta, tamaño indeterminado con rendimientos constantes; remitir a 3.A.12 | La envolvente y la derivación de los costes |
+| 3.A.17 | Monopolio y monopolio natural | mención | CMe decreciente en el tramo relevante de la demanda; con la ficha `monopolio-natural` | — |
+
+## Divergencias encontradas en el temario actual
+- 3.A.12 original: ε_{C,Q} = 1/ε_{Q,λ} solo con homotéticas; U del CMe a largo plazo por la ley de proporciones variables; «a corto plazo los rendimientos a escala se estudian con la elasticidad-coste»; envolvente sin decir dónde toca; Gibbs «con base en» Le Châtelier. Resuelto en la revisión (14/10/2026).
+- 3.A.16 (sin revisar): remite a 3.A.11 para la curva de oferta individual y de mercado (debe ser 3.A.12; ya en `mapa.yaml`).

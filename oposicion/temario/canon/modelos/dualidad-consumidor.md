@@ -1,7 +1,7 @@
 # Dualidad en la teoría del consumidor (minimización del gasto, función de gasto, Shephard y Roy)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: «Dualidad e integrabilidad de las preferencias»; revisado el 13/10/2026, bloque I) — lo tiene en el título y lo desarrolla. Ficha creada a raíz de esa revisión; recoge también el id `minimizacion-gasto` (problema de minimización del gasto), que solo aparece en 3.A.9.
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen: anuncia el dual, Roy por la envolvente y Shephard en la derivación de Slutsky; hecho), 3.A.12 (resumen: la misma dualidad en la empresa, $C(w,q)$ y demandas condicionadas), 4.B.9 y 4.B.11 (mención: la función de gasto mide el exceso de gravamen).
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen: anuncia el dual, Roy por la envolvente y Shephard en la derivación de Slutsky; hecho), 3.A.12 (resumen: la misma dualidad en la empresa, $C(\vec w,q)$ y demandas condicionadas; hecho; ficha propia `dualidad-produccion`), 4.B.9 y 4.B.11 (mención: la función de gasto mide el exceso de gravamen).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, §3.D-§3.G; Jehle y Reny (2011), cap. 1-2; Varian, cap. 7; Deaton y Muellbauer (1980), cap. 2. Historia: Hotelling (1932), Hicks (1939), Roy (1947), Shephard (1953), McKenzie (1957), Uzawa (1964), Diewert (1974).
 
 ## Presentación de referencia
@@ -25,9 +25,9 @@ Gráficos de referencia (3.A.9): `oposicion/temario/fuentes/3A09/graficos/primal
 |---|---|---|---|---|
 | 3.A.9 | Dualidad | desarrollo (hecho, 13/10/2026) | Todo lo anterior: primal en resumen, dual desarrollado, tablas de ingredientes y pares duales, esquema, ejemplo Cobb-Douglas de inversión de $V$ en $E$; anexos A-C | Axiomas, solución de esquina y teoremas de existencia del primal (3.A.8) |
 | 3.A.8 | Demanda marshalliana | resumen (hecho) | Anuncio del dual; Roy por la envolvente; Shephard y $E$ en la derivación de Slutsky (anexo) | El desarrollo del dual (remitir a 3.A.9) |
-| 3.A.12 | Dualidad de la empresa | resumen | Misma estructura: $C(w,q)$ cóncava y homogénea de grado uno en $w$, Shephard $z_i(w,q)=\partial C/\partial w_i$, recuperar la tecnología; remitir a 3.A.9 para las demostraciones idénticas | Las demostraciones del consumidor |
+| 3.A.12 | Dualidad de la empresa | resumen (hecho, 14/10/2026; desarrollo en la ficha `dualidad-produccion`) | Misma estructura (tablas de ingredientes y de pares, gráfico conjunto, esquema por capas; μ como multiplicador de la MC, propuesto): $C(w,q)$ cóncava y homogénea de grado uno en $w$, Shephard $z_i(w,q)=\partial C/\partial w_i$, recuperar la tecnología; remitir a 3.A.9 para las demostraciones idénticas | Las demostraciones del consumidor |
 | 4.B.9, 4.B.11 | Exceso de gravamen | mención | La función de gasto y la VE miden el EG ($\mathrm{EG}=-\mathrm{VE}-T$) | La dualidad |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.9 original: variable de elección $h$ y multiplicador μ en el PMG; λ y μ «relacionados de forma inversa»; $h(\theta p,\overline U)$; «matriz de primeras derivadas»; concavidad de $E$ explicada como subida «menos que proporcional»; $RMS$ negativa; cuadro resumen con errores (Shephard con signo menos). Resuelto en la revisión.
-- 3.A.12 tiene en sus anexos las mismas capturas en inglés sobre hessiana y concavidad que tenía el 3.A.9: usar la versión del anexo C de 3.A.9 adaptada a $C(w,q)$ (ver `mapa.yaml`, contradicciones de 3.A.9).
+- 3.A.12 original: capturas en inglés sobre hessiana y concavidad. Resuelto en la revisión (14/10/2026): anexo `anexo:hessiana` con el anexo C del 3.A.9 adaptado a $C(\vec w,q)$ y $B(p,\vec w)$.

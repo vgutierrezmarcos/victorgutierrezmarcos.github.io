@@ -1,0 +1,36 @@
+% Demandas de trabajo condicionada y no condicionada en función del salario.
+% Elaboración propia a partir de Varian (1992, cap. 2 y 5).
+% Formas: z_L^c(w_L) = 3 (w_L/2,6)^(-0,5) (condicionada, menos elástica) y
+%         z_L(w_L)   = 3 (w_L/2,6)^(-1,2) (no condicionada, más elástica);
+% se cortan en E_0 = (3; 2,6). Subida a w_L^1 = 4: E' = (2,42; 4) sobre la
+% condicionada y E_1 = (1,79; 4) sobre la no condicionada. Abscisas a 1,3 cm.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.3cm,
+    declare function={zc(\w)=3*(\w/2.6)^(-0.5); zu(\w)=3*(\w/2.6)^(-1.2);}]
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$w_L$}{4.9}{5.2}}
+  % 2: demanda condicionada
+  \capa{2}{\draw[curva1] plot[domain=4.8:1.1,samples=60,smooth] ({zc(\x)},\x)
+    node[etiqueta,right,align=left] (cond) {$z_L(\vect{w},q)$\\[-1pt] {\footnotesize condicionada}};}
+  % 3: demanda no condicionada, más plana, cortando en el punto inicial
+  \capa{3}{\draw[curva2] plot[domain=4.8:1.95,samples=60,smooth] ({zu(\x)},\x)
+    node[etiqueta,right,align=left] {$z_L(p,\vect{w})$\\[-1pt] {\footnotesize no condicionada}};}
+  \capa{3}{\node[punto,label={[etiqueta]right:$E_0$}] (E) at (3,2.6) {};}
+  \capa{3}{\proyeccion{(E)}{$z_L^0$}{$w_L^0$}}
+  % 4: subida del salario
+  \capa{4}{\draw[guia] (0,4) node[left] {$w_L^1$} -- (3,4) -- (E);}
+  \capa{4}{\draw[flecha] (-0.45,2.75) -- (-0.45,3.85);}
+  % 5: efecto sustitución, sobre la condicionada
+  \capa{5}{\node[punto,label={[etiqueta]below right:$E'$}] (B) at ({zc(4)},4) {};}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceemorado] ({zc(4)},4.08) -- ++({3-zc(4)},0)
+    node[midway,above=4pt,etiqueta,anchor=south west,xshift=-6pt] {efecto sustitución};}
+  % 6: efecto escala, hasta la no condicionada
+  \capa{6}{\node[punto,label={[etiqueta]above left:$E_1$}] (Cn) at ({zu(4)},4) {};}
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceeazul] ({zu(4)},3.92) -- ({zc(4)},3.92)
+    coordinate[midway,yshift=-6pt] (esc);}
+  \capa{6}{\draw[thin,tceeazul] (esc) -- (1.25,3.25) node[etiqueta,anchor=north,text=tceeazul] {efecto escala};}
+\end{tikzpicture}
+\end{document}

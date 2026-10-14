@@ -1,7 +1,7 @@
 # Competencia perfecta en equilibrio parcial
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.16 (Mercados I: competencia perfecta)
-- **Temas que lo usan:** 3.A.16 (desarrollo, con corto y largo plazo y libre entrada), 4.A.15 (mención: referencia de eficiencia); lo usan como punto de partida 3.A.17, 4.B.8 (incidencia) y 3.B.7 (arancel en equilibrio parcial).
+- **Temas que lo usan:** 3.A.16 (desarrollo, con corto y largo plazo y libre entrada), 4.A.15 (mención: referencia de eficiencia), 3.A.12 (mención: p = CMg y la oferta desde los costes; hecho, 14/10/2026); lo usan como punto de partida 3.A.17, 4.B.8 (incidencia) y 3.B.7 (arancel en equilibrio parcial).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, cap. 10; Varian, cap. 13; Marshall (1890).
 
 ## Presentación de referencia
@@ -16,6 +16,7 @@ Gráficos de referencia: agregación horizontal de la demanda; maximización del
 |---|---|---|---|---|
 | 3.A.16 | Equilibrio, ajuste y bienestar | desarrollo | Todo; enlaza con `excedentes-bienestar` y `tatonnement` | — |
 | 4.A.15 | Defensa de la competencia | mención | Competencia perfecta como benchmark (1TFEB) | Modelo |
+| 3.A.12 | Costes y estructura de mercado | mención (hecho, 14/10/2026) | p = CMg en el tramo creciente por encima del mínimo del CVMe (corto) o del CMe (largo); tamaño indeterminado con rendimientos constantes; remite a 3.A.16 | El equilibrio de mercado |
 | 3.A.17 | Monopolio | mención | Comparación $p=CMg$ frente a $IMg=CMg$ | — |
 
 ## Divergencias encontradas en el temario actual

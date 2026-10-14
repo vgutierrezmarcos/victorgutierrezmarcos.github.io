@@ -1,0 +1,72 @@
+% Costes a corto plazo: totales, variables y fijos (arriba); marginal, medio,
+% variable medio y fijo medio (abajo). Elaboración propia a partir de Varian
+% (1992, cap. 5).
+% CV(q) = q^3 - 6 q^2 + 15 q, CF = 15, C = CV + CF:
+%   CMg  = 3 q^2 - 12 q + 15 (mínimo en q = 2: inflexión de CV y de C);
+%   CVMe = q^2 - 6 q + 15    (mínimo en q = 3, CVMe = CMg = 6: mínimo de explotación;
+%                             el rayo desde el origen de pendiente 6 es tangente a CV);
+%   CMe  = CVMe + 15/q       (mínimo en q = 3,584, CMe = CMg = 10,53: óptimo de
+%                             explotación; rayo de pendiente 10,53 tangente a C);
+%   CFMe = 15/q.
+% q a 1,4 cm por unidad; arriba 0,065 cm por euro; abajo 0,25 cm por euro, con el
+% eje horizontal en y = -5,4 cm.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={CV(\q)=\q^3-6*\q^2+15*\q; CMg(\q)=3*\q^2-12*\q+15;
+      CVMe(\q)=\q^2-6*\q+15; CMe(\q)=\q^2-6*\q+15+15/\q;},
+    arriba/.style={x=1.4cm,y=0.065cm}, abajo/.style={x=1.4cm,y=0.25cm,yshift=-5.4cm}]
+  \def\qm{3.5840}
+  % ---------- panel de arriba: costes totales ----------
+  \begin{scope}[arriba]
+    % 1: ejes
+    \capa{1}{\draw[eje] (0,0) -- (5.3,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,66) node[left] {$C$, CV, CF};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    % 2: costes fijos
+    \capa{2}{\draw[curva4] (0,15) -- (4.9,15) node[etiqueta,right] {CF};}
+    % 3: costes variables, en S invertida desde el origen
+    \capa{3}{\draw[curva2] plot[domain=0:4.8,samples=80,smooth] (\x,{CV(\x)})
+      node[etiqueta,right] {CV};}
+    % 4: costes totales, CV desplazados en CF
+    \capa{4}{\draw[curva1] plot[domain=0:4.8,samples=80,smooth] (\x,{CV(\x)+15})
+      node[etiqueta,right] {$C=\mathrm{CV}+\mathrm{CF}$};}
+    \capa{4}{\draw[flecha,thin] (0.25,{CV(0.25)+0.8}) -- (0.25,{CV(0.25)+14.2})
+      node[etiqueta,midway,right,text=tceerojo,font=\footnotesize] {CF};}
+  \end{scope}
+  % ---------- panel de abajo: costes unitarios ----------
+  \begin{scope}[abajo]
+    % 5: ejes
+    \capa{5}{\draw[eje] (0,0) -- (5.3,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{5}{\draw[eje] (0,0) -- (0,17) node[left,align=right] {CMg, CMe\\ CVMe, CFMe};}
+    \capa{5}{\node[below left] at (0,0) {$0$};}
+    % 6: coste fijo medio
+    \capa{6}{\draw[curva4] plot[domain=0.88:4.8,samples=80,smooth] (\x,{15/\x})
+      node[etiqueta,right] {CFMe};}
+    % 7: coste variable medio
+    \capa{7}{\draw[curva2] plot[domain=0:4.8,samples=80,smooth] (\x,{CVMe(\x)})
+      node[etiqueta,right] {CVMe};}
+    % 8: coste medio
+    \capa{8}{\draw[curva1] plot[domain=1.65:4.75,samples=80,smooth] (\x,{CMe(\x)})
+      node[etiqueta,right] {CMe};}
+    % 9: coste marginal, que corta al CVMe y al CMe en sus mínimos
+    \capa{9}{\draw[curvanueva] plot[domain=0.42:4.05,samples=80,smooth] (\x,{CMg(\x)})
+      node[etiqueta,above] {CMg};}
+    \capa{9}{\node[punto] (MinE) at (3,6) {};}
+    \capa{9}{\node[punto] (OptE) at (\qm,{CMe(\qm)}) {};}
+  \end{scope}
+  % 9: el mínimo del CMg es el punto de inflexión de CV y de C
+  \capa{9}{\draw[guia] ([arriba]2,{CV(2)+15}) -- ([abajo]2,3);}
+  \capa{9}{\node[punto,label={[etiqueta,font=\footnotesize]above left:inflexión}] at ([arriba]2,{CV(2)+15}) {};}
+  \capa{9}{\node[punto] at ([abajo]2,3) {};}
+  % 10: mínimo y óptimo de explotación (rayos tangentes arriba)
+  \capa{10}{\draw[guia] ([arriba]0,0) -- ([arriba]3.6,21.6);}
+  \capa{10}{\draw[guia] ([arriba]0,0) -- ([arriba]4.0,42.1);}
+  \capa{10}{\draw[guia] ([arriba]3,{CV(3)}) -- ([abajo]3,0);}
+  \capa{10}{\draw[guia] ([arriba]\qm,{CV(\qm)+15}) -- ([abajo]\qm,0);}
+  \capa{10}{\node[etiqueta,font=\footnotesize,align=right,anchor=north east] at ([abajo]3.04,-0.6) {mínimo de\\ explotación};}
+  \capa{10}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at ([abajo]3.54,-0.6) {óptimo de\\ explotación};}
+\end{tikzpicture}
+\end{document}

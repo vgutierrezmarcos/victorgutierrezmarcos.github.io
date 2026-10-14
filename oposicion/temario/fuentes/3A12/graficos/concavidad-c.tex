@@ -1,0 +1,29 @@
+% Concavidad de la función de costes en w1 y lema de Shephard (MWG, §5.C;
+% adaptación de 3A09/graficos/concavidad-fg.tex). C(w1) = 2,4·sqrt(w1)
+% (Cobb-Douglas con w_{-1} y q fijos); en w1^0 = 2,25, C = 3,6 y pendiente
+% z1 = 0,8. Coste de la combinación fija: C = 0,8 w1 + 1,8 (ordenada w2·z2).
+% Función de costes en verde (dual); recta de la combinación fija en azul.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$w_1$}{$C$}{6.8}{7.2}}
+  \capa{1}{\node[etiqueta,anchor=south east,text=tceegris] at (6.8,0.15) {$\vect{w}_{-1}$ y $q$ fijos};}
+  % 2: función de costes, cóncava
+  \capa{2}{\draw[curva3] plot[domain=0.05:6.2,samples=100,smooth] (\x,{2.4*sqrt(\x)}) node[etiqueta,right,text=tceeverde] {$C(\vect{w},q)$};}
+  % 3: precio inicial y su coste
+  \capa{3}{\node[punto] (T) at (2.25,3.6) {};}
+  \capa{3}{\proyeccion{(T)}{$w_1^0$}{$C(\vect{w}^0,q)$}}
+  % 4: coste si se mantiene la combinación z(w^0,q): recta tangente, por encima
+  \capa{4}{\draw[curva2] (0,1.8) -- (6.2,6.76);}
+  \capa{4}{\node[etiqueta,text=tceeazul,align=right,anchor=south east] at (4.5,5.85) {$\vect{w}\,'\cdot\vect{z}(\vect{w}^0,q)$\\ coste si no se sustituye};}
+  % 5: pendiente = z1 (Shephard)
+  \capa{5}{\node[etiqueta,anchor=west,align=left] (S) at (2.9,2.3) {pendiente $=z_1(\vect{w}^0,q)=\dfrac{\partial C}{\partial w_1}$\\ (\textsc{Shephard})};}
+  \capa{5}{\draw[guia,solid] (S.north west) ++(0.2,0) -- (2.32,3.5);}
+  % 6: ahorro por sustitución
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (5.6,6.28) -- (5.6,{2.4*sqrt(5.6)});}
+  \capa{6}{\node[etiqueta,anchor=west,align=left,text=tceerojo] at (5.75,5.5) {ahorro por\\ sustitución};}
+\end{tikzpicture}
+\end{document}

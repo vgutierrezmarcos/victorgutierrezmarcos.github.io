@@ -1,0 +1,28 @@
+% Curva de Engel del factor trabajo en el plano (q, z_L), coherente con la
+% senda de expansión: z_L (los mismos valores que A, B y C en la senda) crece hasta q^2 (B), baja entre q^2 y q^3
+% (de B a C: trabajo inferior) y vuelve a crecer desde q^3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$z_L$}{6.6}{4.8}}
+  % 2: tramo normal (hasta q^2)
+  \capa{2}{\draw[curva1] (0,0) .. controls (0.6,0.9) and (1.0,1.35) .. (1.5,1.6)
+    .. controls (2.0,1.85) and (2.4,3.3) .. (3,3.3);}
+  \capa{2}{\node[punto,label={[etiqueta]above left:$A$}] at (1.5,1.6) {};}
+  \capa{2}{\node[punto,label={[etiqueta]above:$B$}] (B) at (3,3.3) {};}
+  \capa{2}{\proyeccion{(B)}{$q^2$}{$z_L^B$}}
+  % 3: tramo inferior (de q^2 a q^3)
+  \capa{3}{\draw[curva1] (3,3.3) .. controls (3.5,3.3) and (3.7,2.7) .. (4.2,2.7);}
+  \capa{3}{\node[punto,label={[etiqueta]below:$C$}] (C) at (4.2,2.7) {};}
+  \capa{3}{\proyeccion{(C)}{$q^3$}{$z_L^C$}}
+  % 4: tramo normal final y rótulos
+  \capa{4}{\draw[curva1] (4.2,2.7) .. controls (4.7,2.7) and (5.2,3.6) .. (5.8,4.4)
+    node[etiqueta,right,text=tceemorado] {$z_L(\vect{w},q)$};}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize] at (1.75,0.75) {normal};}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize,text=tceerojo] at (3.6,0.75) {inferior};}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize] at (5.3,0.75) {normal};}
+\end{tikzpicture}
+\end{document}

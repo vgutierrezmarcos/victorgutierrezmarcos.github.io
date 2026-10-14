@@ -1,0 +1,40 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Equilibrios múltiples y estabilidad del tanteo (3.A.21, II.1.2 y II.1.3).
+% 2 bienes, p_Y = 1: z_X(p_X,1) = -0,33 (p_X - 1)(p_X - 3)(p_X - 5,5), dibujada en [0,4; 6,1].
+% Cortes: p^1 = 1 (pendiente -2,97, índice +1, estable), p^2 = 3 (pendiente +1,65,
+% índice -1, inestable) y p^3 = 5,5 (pendiente -3,71, índice +1, estable); suma de índices +1.
+% Tanteo: dp_X/dt = kappa z_X: sube donde z_X > 0 y baja donde z_X < 0.
+% Elaboración propia a partir de Mas-Colell, Whinston y Green (1995, 17.D y 17.H).
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes (el horizontal en z_X = 0)
+  \capa{1}{\draw[eje] (0,0) -- (6.9,0) node[below left=2pt and 0pt] {$p_X$};}
+  \capa{1}{\draw[eje] (0,-3.2) -- (0,3.4) node[left] {$z_X$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: exceso de demanda
+  \capa{2}{\draw[curva1,domain=0.4:6.1,samples=100]
+    plot (\x,{-0.33*(\x-1)*(\x-3)*(\x-5.5)}) node[etiqueta,right] {$z_X(p_X,1)$};}
+  % 3: los 3 equilibrios
+  \capa{3}{\node[punto] at (1,0) {};}
+  \capa{3}{\node[etiqueta,below left] at (1,0) {$p_X^1$};}
+  \capa{3}{\node[punto] at (3,0) {};}
+  \capa{3}{\node[etiqueta,below right] at (3,0) {$p_X^2$};}
+  \capa{3}{\node[punto] at (5.5,0) {};}
+  \capa{3}{\node[etiqueta,below left] at (5.5,0) {$p_X^3$};}
+  % 4: índices
+  \capa{4}{\node[etiqueta,text=tceeazul,above right] at (1.05,0.05) {$+1$};}
+  \capa{4}{\node[etiqueta,text=tceeazul,above left] at (2.95,0.05) {$-1$};}
+  \capa{4}{\node[etiqueta,text=tceeazul,above right] at (5.55,0.05) {$+1$};}
+  % 5: flechas del tanteo sobre el eje
+  \capa{5}{\draw[flecha,line width=1.6pt] (0.15,0) -- (0.8,0);}
+  \capa{5}{\draw[flecha,line width=1.6pt] (2.8,0) -- (1.2,0);}
+  \capa{5}{\draw[flecha,line width=1.6pt] (3.2,0) -- (5.3,0);}
+  \capa{5}{\draw[flecha,line width=1.6pt] (6.5,0) -- (5.7,0);}
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west] at (3.9,2.9) {$\dot p_X=\kappa\,z_X(p_X,1)$};}
+  % 6: estable / inestable / estable
+  \capa{6}{\node[etiqueta,font=\footnotesize,anchor=north east] at (1.0,-0.6) {estable};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,anchor=north west] at (3.0,-0.6) {inestable};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,anchor=north east] at (5.5,-0.6) {estable};}
+\end{tikzpicture}
+\end{document}

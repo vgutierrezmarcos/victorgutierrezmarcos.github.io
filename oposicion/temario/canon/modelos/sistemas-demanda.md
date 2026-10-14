@@ -1,7 +1,7 @@
 # Sistemas completos de demanda (Cobb-Douglas, LES, Rotterdam, translog, AIDS, QUAIDS)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: «Sistemas de demanda utilizados en estudios empíricos»; revisado el 13/10/2026, bloque II) — lo tiene en el título y lo desarrolla. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen: anexo `anexo:sistemas` con las mismas ecuaciones, y la agregación PIGLOG en I.3; hecho), 3.A.12 (mención: formas funcionales empíricas de costes, translog y Christensen-Greene, por analogía), 4.B.11 (mención: elasticidades compensadas cruzadas para la imposición indirecta óptima y la reforma del IVA).
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 3.A.8 (resumen: anexo `anexo:sistemas` con las mismas ecuaciones, y la agregación PIGLOG en I.3; hecho), 3.A.12 (resumen: la translog de costes con sus ecuaciones de participación es el IV.1; hecho), 4.B.11 (mención: elasticidades compensadas cruzadas para la imposición indirecta óptima y la reforma del IVA).
 - **Manuales de referencia:** Deaton y Muellbauer (1980a, *AER*; 1980b, *Economics and Consumer Behavior*); Deaton (1997); Stone (1954); Klein y Rubin (1947); Geary (1950); Barten (1964, 1967, 1969); Theil (1965); Christensen, Jorgenson y Lau (1975); Banks, Blundell y Lewbel (1997); Strotz (1957), Gorman (1959); Aguilar y Mateos (2015, BICE 3070).
 
 ## Presentación de referencia
@@ -28,7 +28,7 @@ Tabla de referencia: `tab:sistemas` de 3.A.9 (punto de partida, flexibilidad, ag
 |---|---|---|---|---|
 | 3.A.9 | Sistemas de demanda en estudios empíricos | desarrollo (hecho, 13/10/2026) | Todo lo anterior (5 minutos en el cante) | Las demandas de la Cobb-Douglas (3.A.8) y su historia (3.A.11) |
 | 3.A.8 | Demanda marshalliana | resumen (hecho) | Anexo `anexo:sistemas` (no se canta) con las mismas ecuaciones; agregación PIGLOG y consumidor representativo (I.3) | El desarrollo (remitir a 3.A.9) |
-| 3.A.12 | Aplicaciones empíricas de costes | mención | Las mismas formas flexibles (translog) aplicadas a $C(w,q)$, Christensen y Greene (1976); remitir a 3.A.9 para la idea | Los sistemas del consumidor |
+| 3.A.12 | Aplicaciones empíricas de costes | resumen (hecho, 14/10/2026) | La misma translog aplicada a $C(\vec w,q)$ (Christensen, Jorgenson y Lau, 1973; Christensen y Greene, 1976): $\ln C=\alpha_0+\alpha_q\ln q+\tfrac12\beta_{qq}(\ln q)^2+\sum_i\alpha_i\ln w_i+\tfrac12\sum_i\sum_j\beta_{ij}\ln w_i\ln w_j+\sum_i\beta_{iq}\ln w_i\ln q$; participaciones por Shephard $s_i=\alpha_i+\sum_j\beta_{ij}\ln w_j+\beta_{iq}\ln q$; restricciones de homogeneidad y simetría; Allen-Uzawa; casos anidados; Leontief generalizada (Diewert, 1971); Berndt y Wood (1975). Remite a 3.A.9 | Los sistemas del consumidor |
 | 4.B.11 | Imposición óptima | mención | De dónde salen las elasticidades compensadas que piden Ramsey y la elasticidad inversa | La estimación |
 
 ## Divergencias encontradas en el temario actual

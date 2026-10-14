@@ -11,7 +11,7 @@ Autor: Víctor Gutiérrez Marcos
 | Concepto | Cifra |
 |---|---|
 | Temas del temario | 146 (3.A: 45; 3.B: 45; 4.A: 30; 4.B: 26) |
-| Temas revisados | 1 (3.A.8) |
+| Temas revisados | 5 (3.A.8, 3.A.9 y 3.A.11 el 13/10/2026; 3.A.12 y 3.A.21 el 14/10/2026) |
 | Temas con fuente que corresponde al título | 72 |
 | Temas con fuente parcial (incompleta o con restos del título anterior) | 5 (3.A.12, 3.A.14, 3.A.22, 3.A.23, 4.A.16) |
 | Temas cuyo Word es de otro número (renumerados en el 4.º) | 20 |
@@ -87,13 +87,13 @@ Formato: `apunta a → debería apuntar a` (×n si se repite). La mayoría viene
 | 3.A.7 | 2 | 3.A.38→3.A.40; 3.A.41→3.A.37 | — |
 | 3.A.10 | 2 | 3.B.24→3.A.1, 3.B.23; 3.B.17, 3.B.27→3.B.26, 3.B.27 | 3.A.10 (×2) |
 | 3.A.11 | 4 | 3.A.9→3.A.11; 3.A.10→3.A.12; 3.A.11, 3.A.14-3.A.17→3.A.15, 3.A.16, 3.A.19; 3.A.23→3.A.22 | — |
-| 3.A.12 | 1 | 3.A.9→3.A.8 | — |
+| 3.A.12 | 0 | ~~3.A.9→3.A.8~~: desfasada, la remisión de Slutsky a 3.A.9 es la correcta (D139); revisado el 14/10/2026 | — |
 | 3.A.13 | 1 | 3.A.7→3.A.10 | — |
 | 3.A.16 | 4 | 3.A.14→3.A.16 (×2); 3.A.11→3.A.12 (×2) | — |
 | 3.A.17 | 3 | 3.B.4→3.A.15; 3.B.4→3.B.39; 3.A.14→3.A.16 | — |
 | 3.A.18 | 2 | 3.A.6→3.A.8; 3.A.10→3.A.14 | — |
 | 3.A.19 | 4 | 3.A.10→3.A.14 (×2); 3.A.23→3.A.22; 3.B.4→3.B.39 | — |
-| 3.A.21 | 1 | 3.A.22→3.A.23 | — |
+| 3.A.21 | 0 | ~~3.A.22→3.A.23~~ (nota de las externalidades): corregida; revisado el 14/10/2026 | — |
 | 3.A.22 | 4 | 3.B.8, 3.B.17→3.B.7, 3.B.28; 3.A.23→3.A.22; 3.A.23→3.A.22, 3.A.21, 3.A.16; 3.A.21, 3.A.22, 3.A.23→3.A.21, 3.A.22 | — |
 | 3.A.23 | 5 | 3.A.15, 3.A.16, 3.A.17→3.A.17, 3.A.18, 3.A.19, 3.A.20; 3.A.17, 3.A.19→3.A.15, 3.A.16; 3.A.22→3.A.8; 3.A.27→3.A.14; 3.A.16, 3.A.21, 3.A.22, 3.A.23, 3.A.24→3.A.22 | 3.A.23; 3.A.22 |
 | 3.A.24 | 1 | 3.A.16, 3.A.21, 3.A.22, 3.A.23, 3.A.24→3.A.22 | — |
@@ -166,9 +166,9 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | 3.A.9 | Ley de Walras atribuida a la «estricta monotonía» (es la insaciabilidad local); Cobb-Douglas α, β llamada «lineal en logaritmos» |
 | 3.A.10 | El modelo básico de demanda de seguros con información simétrica se atribuye a Rothschild-Stiglitz (1976); nota 6 confunde certidumbre con competencia perfecta |
 | 3.A.11 | Fórmula de la proporcionalidad de escala mal escrita (dz_L/dz_L); σ = 0 y σ = 1 presentados como casos exactos de la CES (son límites) |
-| 3.A.12 | Falta el epígrafe de aplicaciones empíricas del título |
+| 3.A.12 | Falta el epígrafe de aplicaciones empíricas del título (resuelto el 14/10/2026: bloque IV nuevo) |
 | 3.A.14 | Equilibrio de Nash con desigualdad estricta; racionalidad de coaliciones con ≤; pago del segundo precio sin definir j; «EBPS» |
-| 3.A.21 | La convexidad estricta del conjunto de producción no implica rendimientos decrecientes; propiedades de las demandas netas copiadas de la oferta |
+| 3.A.21 | Supone a la vez convexidad estricta del conjunto de producción (que con la inacción sí implica rendimientos decrecientes) y rendimientos no crecientes, y usa después rendimientos constantes; propiedades de las demandas netas copiadas de la oferta; núcleo definido en la caja de la producción (resuelto el 14/10/2026: conjunto convexo, no estricto; núcleo en la caja de intercambio) |
 | 3.A.22 | Utilidades «ordinales» con utilidad marginal decreciente; atribuye a Debreu propiedades de la función de utilidad; «2×2×2» con 10 incógnitas |
 | 3.A.23 | Bienes públicos: X fijo y a la vez FPP T(X,G) = 0; externalidad en consumo (analítica) y en producción (gráfica) sin enlazar; Clarke-Groves sin terminar |
 | 3.A.24 | Mezcla cardinalidad y comparabilidad interpersonal; problema del planificador vacío; «ley D'Hont» |
@@ -338,7 +338,7 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 
 **Fase 1. Microeconomía (3.A)** (D133)
 
-- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5) · 5. 3.A.16 (3)
+- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5; revisado el 14/10/2026) · 5. 3.A.16 (3)
 - *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick) · 7. **3.A.10** (antes que 3.A.13 y 3.A.14, que usan sus seguros y la utilidad esperada) · 8. 3.A.13 (6; Stiglitz-Weiss en desarrollo) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
 - *Economía del Bienestar e Intervención del Sector Público*: 13. **3.A.22** (antes que 3.A.23, que se apoya en los teoremas del bienestar) · 14. 3.A.23 (12) · 15. 3.A.24 (referencia del 3.º de Lorenz, Atkinson y Borda, además de Arrow) · 16. 3.A.20 (sin fuente; referencia de la captura del regulador) · 17. 3.B.31 (sin fuente; referencia del MAFC)
 

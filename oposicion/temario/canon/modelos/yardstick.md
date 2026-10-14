@@ -1,7 +1,7 @@
 # Competencia por comparación (Shleifer, 1985) y mecanismo de Loeb-Magat (1979)
 
 - **Área:** sector público · **Tema de referencia:** 3.A.17, junto a Averch-Johnson, *price cap* y Laffont-Tirole: es teoría de la regulación del monopolio natural (el mapa proponía 4.B.15, donde solo se menciona y que lo resume para las empresas públicas).
-- **Temas que lo usan:** 3.A.17 (mención), 4.B.15 (resumen; hoy mención), 3.A.20 (mención prevista), 4.A.5/4.A.12 (aplicación prevista: distribución eléctrica, aeropuertos)
+- **Temas que lo usan:** 3.A.17 (mención), 4.B.15 (resumen; hoy mención), 3.A.20 (mención prevista), 3.A.12 (mención: la medición de la eficiencia con DEA y frontera estocástica como base de la regulación por comparación; hecho, 14/10/2026), 4.A.5/4.A.12 (aplicación prevista: distribución eléctrica, aeropuertos)
 - **Manuales de referencia:** Shleifer (1985), «A theory of yardstick competition», *RAND Journal*; Loeb y Magat (1979), *Journal of Law and Economics*; Laffont y Tirole, *A Theory of Incentives in Procurement and Regulation* (1993).
 - **Decisión D091 (13/10/2026):** ¿Cuál es el tema de referencia de la competencia referencial (yardstick)? 3.A.17, junto a Averch-Johnson, price cap y Laffont-Tirole
 
@@ -12,6 +12,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.17 / 3.A.20 | Regulación del monopolio natural | Desarrollo (propuesta) | Mecanismos y condiciones | — |
+| 3.A.12 | Medición de la eficiencia (IV.3) | mención (hecho, 14/10/2026) | Shleifer (1985) como uso de las fronteras de eficiencia; caso alemán (Bundesnetzagentur: DEA y SFA, el valor más favorable, mínimo del 60 %); ficha `eficiencia-frontera` | El mecanismo (remite hoy a 3.A.20; debe remitir también a 3.A.17, tema de referencia) |
 | 4.B.15 | Empresa pública | Resumen (hoy mención; D091, D139 (13/10/2026)) | Precio fijado por el coste medio de las demás empresas comparables: alternativa a la propiedad pública | El desarrollo |
 
 ## Divergencias encontradas en el temario actual

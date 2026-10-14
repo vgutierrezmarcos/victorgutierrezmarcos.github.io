@@ -1,0 +1,35 @@
+% Minimización del coste (rehace la imagen 2 del tema original, de Maté y
+% Pérez, 2007, con el dibujo de 3A09/graficos/dual.tex). Isocuanta
+% z_K = 3/z_L; w_L/w_K = 0,75. Isocostes 0,75 z_L + z_K = C/w_K con
+% C/w_K = 2 (no alcanza: el mínimo de 0,75 z_L + 3/z_L es 3),
+% 3 (tangente en z* = (2; 1,5)) y 4 (corta en z' = (0,903; 3,323) y z'' = (4,430; 0,677)).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$z_K$}{6.2}{4.4}}
+  % 2: isocuanta fija q y conjunto de requerimientos V(q)
+  \capa{2}{\fill[area,fill=tceeverde] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) -- (5.6,3.75) -- (0.8,3.75) -- cycle;}
+  \capa{2}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$q$};}
+  \capa{2}{\node[etiqueta,text=tceeverde] at (4.0,3.0) {$V(q)$};}
+  % 3: isocoste C^0, que no alcanza la producción q
+  \capa{3}{\draw[curva3,desplazada] (0,2) node[etiqueta,left,font=\footnotesize,text=tceeverde] {$C^0/w_K$} -- (2.67,0);}
+  % 4: isocoste C^1, que corta la isocuanta en z' y z''
+  \capa{4}{\draw[curva3,desplazada] (0,4) node[etiqueta,left,font=\footnotesize,text=tceeverde] {$C^1/w_K$} -- (5.33,0);}
+  \capa{4}{\node[punto,fill=tceegris] (Z1) at (0.903,3.323) {};}
+  \capa{4}{\node[etiqueta,above right] at (Z1) {$\vect{z}\,'$};}
+  \capa{4}{\node[punto,fill=tceegris] (Z2) at (4.430,0.677) {};}
+  \capa{4}{\node[etiqueta,above right] at (Z2) {$\vect{z}\,''$};}
+  % 5: isocoste tangente C^* y óptimo z* con sus proyecciones
+  \capa{5}{\draw[curva3] (0,3) -- (4,0);}
+  \capa{5}{\node[etiqueta,left,font=\footnotesize,text=tceeverde] at (0,3) {$C^*/w_K$};}
+  \capa{5}{\node[punto,fill=tceeverde] (Z) at (2,1.5) {};}
+  \capa{5}{\node[etiqueta,above right] at (Z) {$\vect{z}^*$};}
+  \capa{5}{\proyeccion{(Z)}{$z_L^*$}{$z_K^*$}}
+  % 6: condición de tangencia
+  \capa{6}{\node[etiqueta,anchor=west,fill=white,fill opacity=0.8,text opacity=1] (R) at (3.0,2.2) {$\mathrm{RMST}_{LK}=\dfrac{w_L}{w_K}$};}
+  \capa{6}{\draw[guia,solid] (R.west) -- (2.08,1.58);}
+\end{tikzpicture}
+\end{document}

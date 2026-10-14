@@ -1,0 +1,92 @@
+% Geometría de los costes y curva de oferta con un solo producto: seis casos.
+% Elaboración propia a partir de Mas-Colell, Whinston y Green (1995, §5.D,
+% figuras 5.D.1 a 5.D.6). Oferta resaltada en rojo translúcido.
+% (1) C = 0,75 q^1,6: CMe = 0,75 q^0,6, CMg = 1,2 q^0,6 (ambos desde 0).
+% (2) C = c q, c = 1,3: CMe = CMg = c.
+% (3) C = 2 q - 1,2 q^2 + 0,3 q^3: CMe = 2 - 1,2 q + 0,3 q^2 (mínimo en
+%     q = 2, CMe = 0,8), CMg = 2 - 2,4 q + 0,9 q^2 (CMg(2) = 0,8).
+% (4) C = 1,6 + 0,4 q^2 si q > 0 (coste fijo evitable): CMe = 1,6/q + 0,4 q
+%     (mínimo en q = 2, CMe = 1,6), CMg = 0,8 q.
+% (5) C = 1 + 0,9 q si q > 0: CMe = 0,9 + 1/q, CMg = c = 0,9.
+% (6) C = 0,8 + 1,4 q - 0,6 q^2 + 0,15 q^3 con el 0,8 hundido:
+%     CVMe = 1,4 - 0,6 q + 0,15 q^2 (mínimo en q = 2, CVMe = 0,8),
+%     CMg = 1,4 - 1,2 q + 0,45 q^2, CMe = CVMe + 0,8/q (mínimo en
+%     q = 2,446, CMe = 1,157). MWG usa aquí costes variables estrictamente
+%     convexos (CVMe mínimo en q = 0); se dibuja el CVMe en U para que se vea
+%     el mínimo de explotación del texto.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    oferta/.style={line width=4.5pt,tceerojo,opacity=0.35,line cap=butt},
+    titulo/.style={etiqueta,anchor=south,align=center,font=\footnotesize\bfseries},
+    rotulo/.style={etiqueta,font=\footnotesize},
+    declare function={
+      cmeA(\q)=0.75*\q^0.6; cmgA(\q)=1.2*\q^0.6;
+      cmeC(\q)=2-1.2*\q+0.3*\q^2; cmgC(\q)=2-2.4*\q+0.9*\q^2;
+      cmeD(\q)=1.6/\q+0.4*\q; cmgD(\q)=0.8*\q;
+      cmeE(\q)=0.9+1/\q;
+      cvmeF(\q)=1.4-0.6*\q+0.15*\q^2; cmgF(\q)=1.4-1.2*\q+0.45*\q^2;
+      cmeF(\q)=cvmeF(\q)+0.8/\q;}]
+  % ---------- 1: costes estrictamente convexos ----------
+  \capa{1}{\node[titulo] at (1.9,3.15) {1. Costes estrictamente\\ convexos};}
+  \capa{1}{\ejes{$q$}{€/u}{3.9}{3.0}}
+  \capa{1}{\draw[curva2] plot[domain=0:3.4,samples=60,smooth] (\x,{cmeA(\x)}) node[rotulo,right] {CMe};}
+  \capa{1}{\draw[curva1] plot[domain=0:3.3,samples=60,smooth] (\x,{cmgA(\x)}) node[rotulo,right] {CMg};}
+  \capa{1}{\draw[oferta] plot[domain=0:3.3,samples=60,smooth] (\x,{cmgA(\x)});}
+  \capa{1}{\node[rotulo,text=tceerojo] at (1.0,1.75) {$q(p)$};}
+  % ---------- 2: rendimientos constantes ----------
+  \begin{scope}[xshift=6.0cm]
+    \capa{2}{\node[titulo] at (1.9,3.15) {2. Rendimientos\\ constantes};}
+    \capa{2}{\ejes{$q$}{€/u}{3.9}{3.0}}
+    \capa{2}{\draw[curva1] (0,1.3) node[rotulo,left] {$c$} -- (3.5,1.3);}
+    \capa{2}{\node[rotulo,above] at (2.3,1.3) {$\mathrm{CMe}=\mathrm{CMg}=c$};}
+    \capa{2}{\draw[oferta] (0,0) -- (0,1.3) -- (3.5,1.3);}
+    \capa{2}{\node[rotulo,text=tceerojo] at (1.0,0.75) {$q(p)$};}
+  \end{scope}
+  % ---------- 3: costes no convexos ----------
+  \begin{scope}[xshift=12.0cm]
+    \capa{3}{\node[titulo] at (1.9,3.15) {3. Costes no convexos};}
+    \capa{3}{\ejes{$q$}{€/u}{3.9}{3.0}}
+    \capa{3}{\draw[curva2] plot[domain=0:3.4,samples=60,smooth] (\x,{cmeC(\x)}) node[rotulo,right] {CMe};}
+    \capa{3}{\draw[curva1] plot[domain=0:2.86,samples=60,smooth] (\x,{cmgC(\x)}) node[rotulo,above] {CMg};}
+    \capa{3}{\proyeccion{(2,0.8)}{$\bar q$}{$\mathrm{CMe}(\bar q)$}}
+    \capa{3}{\draw[oferta] (0,0) -- (0,0.8);}
+    \capa{3}{\draw[oferta] plot[domain=2:2.86,samples=30,smooth] (\x,{cmgC(\x)});}
+    \capa{3}{\node[rotulo,text=tceerojo] at (2.95,1.75) {$q(p)$};}
+  \end{scope}
+  % ---------- 4: coste fijo evitable y coste variable convexo ----------
+  \begin{scope}[yshift=-4.6cm]
+    \capa{4}{\node[titulo] at (1.9,3.15) {4. Coste fijo evitable\\ y variable convexo};}
+    \capa{4}{\ejes{$q$}{€/u}{3.9}{3.0}}
+    \capa{4}{\draw[curva2] plot[domain=0.68:3.4,samples=60,smooth] (\x,{cmeD(\x)}) node[rotulo,right] {CMe};}
+    \capa{4}{\draw[curva1] plot[domain=0:3.3,samples=60,smooth] (\x,{cmgD(\x)}) node[rotulo,above] {CMg};}
+    \capa{4}{\proyeccion{(2,1.6)}{$\bar q$}{$\mathrm{CMe}(\bar q)$}}
+    \capa{4}{\draw[oferta] (0,0) -- (0,1.6);}
+    \capa{4}{\draw[oferta] (2,1.6) -- (3.3,2.64);}
+    \capa{4}{\node[rotulo,text=tceerojo] at (2.3,2.4) {$q(p)$};}
+  \end{scope}
+  % ---------- 5: rendimientos constantes con coste fijo evitable ----------
+  \begin{scope}[xshift=6.0cm,yshift=-4.6cm]
+    \capa{5}{\node[titulo] at (1.9,3.15) {5. Rendimientos constantes\\ y coste fijo evitable};}
+    \capa{5}{\ejes{$q$}{€/u}{3.9}{3.0}}
+    \capa{5}{\draw[curva2] plot[domain=0.58:3.4,samples=60,smooth] (\x,{cmeE(\x)}) node[rotulo,above] {CMe};}
+    \capa{5}{\draw[curva1] (0,0.9) node[rotulo,left] {$c$} -- (3.5,0.9) node[rotulo,below left] {CMg};}
+    \capa{5}{\draw[oferta] (0,0) -- (0,0.9);}
+    \capa{5}{\node[rotulo,text=tceerojo,align=center] at (1.85,0.3) {si $p>c$, sin oferta finita};}
+  \end{scope}
+  % ---------- 6: coste hundido ----------
+  \begin{scope}[xshift=12.0cm,yshift=-4.6cm]
+    \capa{6}{\node[titulo] at (1.9,3.15) {6. Coste hundido\\ (corto plazo)};}
+    \capa{6}{\ejes{$q$}{€/u}{3.9}{3.0}}
+    \capa{6}{\draw[curva2] plot[domain=0.6:3.4,samples=60,smooth] (\x,{cmeF(\x)}) node[rotulo,anchor=south west] {CMe};}
+    \capa{6}{\draw[curva4] plot[domain=0:3.4,samples=60,smooth] (\x,{cvmeF(\x)}) node[rotulo,anchor=north west] {CVMe};}
+    \capa{6}{\draw[curva1] plot[domain=0:3.4,samples=60,smooth] (\x,{cmgF(\x)}) node[rotulo,above] {CMg};}
+    \capa{6}{\proyeccion{(2,0.8)}{$\bar q$}{$\mathrm{CVMe}(\bar q)$}}
+    \capa{6}{\draw[oferta] (0,0) -- (0,0.8);}
+    \capa{6}{\draw[oferta] plot[domain=2:3.4,samples=30,smooth] (\x,{cmgF(\x)});}
+    \capa{6}{\node[rotulo,text=tceerojo,anchor=east] at (2.75,2.15) {$q(p)$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

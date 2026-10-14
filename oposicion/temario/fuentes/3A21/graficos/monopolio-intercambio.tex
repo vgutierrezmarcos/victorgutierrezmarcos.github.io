@@ -1,0 +1,61 @@
+% Monopolio en la caja de Edgeworth del intercambio (3.A.21, III.2, recuadro).
+% Mismas cifras que caja-intercambio.tex: X̄ = 10, Ȳ = 6; ω = (1,5; 5);
+% U_A = X_A^0,4 Y_A^0,6 (desde O_A); U_B = X_B^0,6 Y_B^0,4 (desde O_B).
+% Equilibrio competitivo: p* = 0,6047, E = (3,908; 3,544).
+% B fija p = p_X/p_Y para maximizar U_B sobre la curva de oferta-demanda de A
+%   (X_A = 0,4 (1,5p + 5)/p, Y_A = 0,6 (1,5p + 5)): p^M = 0,9796,
+%   M = (2,642; 3,882), U_B(M) = 4,4717 > U_B(E) = 4,236;
+%   U_A(M) = 3,328 < U_A(E) = 3,685.
+% Mapa de B: U_B^0 = 3,611 (por ω), U_B^M = 4,4717 (tangente a OD_A en M), U_B^1 = 5,4.
+% En M: RMS^A_XY = p^M = 0,980 y RMS^B_XY = 0,432: las curvas se cortan, M no
+%   está en la curva de contrato (que en X_A = 2,642 pasa por Y_A = 2,68).
+% Recta de precios del monopolio: por ω y M, corta Y_A = 0 en X_A = 6,604.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.1cm,
+    declare function={
+      ua(\x,\u)=(\u/\x^0.4)^(1/0.6);
+      ub(\x,\v)=6-(\v/(10-\x)^0.6)^(1/0.4);
+      cc(\x)=9*\x/((2/3)*(10-\x)+1.5*\x);
+      odax(\p)=0.4*(1.5*\p+5)/\p;  oday(\p)=0.6*(1.5*\p+5);},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja, sus orígenes, los ejes de cada consumidor y la dotación
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (10,6);
+    \node[below left,text=tceemorado] at (0,0) {$O_A$};
+    \node[above right,text=tceeverde] at (10,6) {$O_B$};
+    \draw[->,thin,tceemorado] (0.4,-0.3) -- (1.4,-0.3) node[right,etiqueta] {$X_A$};
+    \draw[->,thin,tceemorado] (-0.3,0.4) -- (-0.3,1.4) node[above,etiqueta] {$Y_A$};
+    \draw[->,thin,tceeverde] (9.6,6.3) -- (8.6,6.3) node[left,etiqueta] {$X_B$};
+    \draw[->,thin,tceeverde] (10.3,5.6) -- (10.3,4.6) node[below,etiqueta] {$Y_B$};
+    \draw[llave] (10,-0.75) -- (0,-0.75) node[midway,below=5pt,text=black] {$\bar X$};
+    \draw[llave] (-0.95,0) -- (-0.95,6) node[midway,left=5pt,text=black] {$\bar Y$};
+  }
+  \capa{1}{\node[punto,label={[etiqueta]below left:$\vect{\omega}$}] (w) at (1.5,5) {};}
+  % 2: curva de contrato y equilibrio competitivo E con su recta de precios
+  \capa{2}{\draw[curva2] plot[domain=0:10,samples=150] (\x,{cc(\x)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=east] at (7.9,5.75) {curva de contrato};}
+  \capa{2}{\draw[curva4] (0.6,5.5442) -- (9.7686,0) node[etiqueta,below] {$p^*_X/p^*_Y$};}
+  \capa{2}{\node[punto] (E) at (3.9077,3.5442) {};}
+  \capa{2}{\draw[thin,tceegris,shorten <=3pt] (E) -- (7.0,4.35)
+    node[etiqueta,right,text=black] {$E$ (competencia)};}
+  % 3: curva de oferta-demanda de A
+  \capa{3}{\draw[curva1,desplazada,thick] plot[domain=2.2222:0.3,samples=150,variable=\p]
+    ({odax(\p)},{oday(\p)}) node[etiqueta,right] {$\mathrm{OD}_A$};}
+  % 4: mapa de curvas de indiferencia de B (más utilidad cuanto más lejos de O_B)
+  \capa{4}{\draw[curva3] plot[domain=0.2:7.32,samples=120] (\x,{ub(\x,3.6112)})
+    node[etiqueta,right] {$U_B^0$};}
+  \capa{4}{\draw[curva3] plot[domain=0.2:6.32,samples=120] (\x,{ub(\x,4.4717)})
+    node[etiqueta,anchor=north east,xshift=-1pt] {$U_B^M$};}
+  \capa{4}{\draw[curva3] plot[domain=0.2:4.97,samples=120] (\x,{ub(\x,5.4)})
+    node[etiqueta,below] {$U_B^1$};}
+  % 5: punto M (tangencia de U_B^M con OD_A) y recta de precios del monopolista
+  \capa{5}{\node[punto,label={[etiqueta,label distance=2pt]left:$M$ (monopolio)}] (M) at (2.6416,3.8816) {};}
+  \capa{5}{\draw[curva4] (w) -- (6.6042,0) node[etiqueta,anchor=north west,xshift=1pt] {$p^M_X/p^M_Y$};}
+  % 6: curva de indiferencia de A por M: corta a U_B^M (M fuera de la curva de contrato)
+  \capa{6}{\draw[curva1] plot[domain=1.4:9.3,samples=120] (\x,{ua(\x,3.3278)})
+    node[etiqueta,right] {$U_A^M$};}
+\end{tikzpicture}
+\end{document}

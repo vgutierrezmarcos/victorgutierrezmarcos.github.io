@@ -1,0 +1,43 @@
+% Eficiencia técnica, asignativa y económica de Farrell (1957). Elaboración
+% propia a partir de Farrell (1957) y Coelli et al. (2005).
+% Isocuanta unitaria eficiente SS': (z_K/q) = 2,25/(z_L/q).
+% Empresa P = (2,2; 3,6); rayo OP de pendiente 1,636, que corta SS' en
+%   Q = (1,173; 1,919).
+% Isocoste AA' de pendiente -w_L/w_K = -0,5, tangente a SS' en
+%   Q' = (2,121; 1,061): z_K/q = 2,121 - 0,5 z_L/q; corta el rayo OP en
+%   R = (0,993; 1,625).
+% EfT = OQ/OP = 0,533; EfA = OR/OQ = 0,846; EfE = OR/OP = 0,451.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.25cm,y=1.25cm]
+  % 1: ejes (factores por unidad de producto)
+  \capa{1}{\draw[eje] (0,0) -- (5.4,0) node[below left=2pt and 0pt] {$z_L/q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.3) node[left] {$z_K/q$};}
+  \capa{1}{\node[below left] at (0,0) {$O$};}
+  % 2: isocuanta unitaria eficiente SS'
+  \capa{2}{\draw[curva2] plot[domain=0.56:4.6,samples=100,smooth] (\x,{2.25/\x});}
+  \capa{2}{\node[etiqueta,above] at (0.56,{2.25/0.56}) {$S$};}
+  \capa{2}{\node[etiqueta,right] at (4.6,{2.25/4.6}) {$S'$};}
+  % 3: empresa observada P, por encima de la frontera
+  \capa{3}{\node[punto] (P) at (2.2,3.6) {};}
+  \capa{3}{\node[etiqueta,right] at (P) {$P$};}
+  % 4: rayo OP y punto Q de la isocuanta (eficiencia técnica)
+  \capa{4}{\draw[thin] (0,0) -- (P);}
+  \capa{4}{\node[punto,fill=tceeazul] (Q) at (1.1726,1.9188) {};}
+  \capa{4}{\node[etiqueta,right] at (Q) {$Q$};}
+  % 5: isocoste AA' tangente en Q' y punto R del rayo (eficiencia asignativa)
+  \capa{5}{\draw[curva3] (0,2.1213) -- (4.2426,0);}
+  \capa{5}{\node[etiqueta,left] at (0,2.1213) {$A$};}
+  \capa{5}{\node[etiqueta,below] at (4.2426,0) {$A'$};}
+  \capa{5}{\node[punto,fill=tceeverde] (Qp) at (2.1213,1.0607) {};}
+  \capa{5}{\node[etiqueta,above right] at (Qp) {$Q'$};}
+  \capa{5}{\node[punto,fill=tceeverde] (R) at (0.9925,1.6240) {};}
+  \capa{5}{\node[etiqueta,left] at (R) {$R$};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceeverde] at (1.65,0.8) {$-\dfrac{w_L}{w_K}$};}
+  % 6: medidas de eficiencia como cocientes de segmentos del rayo
+  \capa{6}{\node[etiqueta,anchor=north west,align=left] at (2.75,4.2)
+    {$\mathrm{EfT}=\dfrac{OQ}{OP}$\\[4pt] $\mathrm{EfA}=\dfrac{OR}{OQ}$\\[4pt] $\mathrm{EfE}=\dfrac{OR}{OP}$};}
+\end{tikzpicture}
+\end{document}

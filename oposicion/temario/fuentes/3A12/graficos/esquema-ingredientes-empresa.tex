@@ -1,0 +1,43 @@
+% Ingredientes comunes de la maximización del beneficio (MB) y de la
+% minimización del coste (MC) de la empresa (rehace la tabla-esquema de la p. 5
+% del tema original sin la fila del primal de Segura, con el estilo de
+% 3A09/graficos/esquema-ingredientes-dualidad.tex): la tecnología está dentro
+% del objetivo en la MB y es la restricción en la MC; el coste es parte del
+% objetivo en la MB y el objetivo en la MC.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=3pt,align=center,
+                 minimum height=1.1cm,inner sep=5pt},
+    cajap/.style={caja,fill=tceemorado!10,very thick,minimum width=4.4cm},
+    cajad/.style={caja,draw=tceeverde,fill=tceeverde!10,very thick,minimum width=4.4cm},
+    une/.style={->,thick,tceemorado},
+    uned/.style={->,thick,tceeverde},
+    papel/.style={font=\scriptsize,inner sep=1pt,fill=white}]
+  % 1: conjunto tecnológico y axiomas
+  \capa{1}{\node[caja] (Y) at (0,0) {Conjunto\\ tecnológico\\ $\mathcal{Y}$};}
+  \capa{1}{\draw[une] (Y.east) -- node[above,font=\footnotesize] {axiomas} (3.0,0);}
+  % 2: función de producción, costes e ingresos
+  \capa{2}{\node[caja,minimum width=3.0cm] (F) at (4.95,0) {Función de producción\\ $q=F(\vect{z})$};}
+  \capa{2}{\node[caja,minimum width=3.0cm] (I) at (4.7,2.3) {Ingresos\\ $p\,q$ \ ($p>0$)};}
+  \capa{2}{\node[caja,minimum width=3.0cm] (C) at (4.7,-2.3) {Costes\\ $\vect{w}\cdot\vect{z}$ \ ($\vect{w}\gg\vect{0}$)};}
+  % 3: maximización del beneficio (los tres ingredientes forman el objetivo)
+  \capa{3}{\node[cajap] (MB) at (10.4,2.1) {\textcolor{tceemorado}{\textbf{Maximización del beneficio}}\\ $\max\limits_{\vect{z}}\ p\,F(\vect{z})-\vect{w}\cdot\vect{z}$};}
+  \capa{3}{\draw[une] (I.east) -- node[papel,pos=0.5,above] {objetivo} ([yshift=3.5mm]MB.west);}
+  \capa{3}{\draw[une] (F.east) -- node[papel,pos=0.42,sloped,above] {objetivo} (MB.west);}
+  \capa{3}{\draw[une] (C.east) -- node[papel,pos=0.22,sloped,above] {objetivo} ([yshift=-3.5mm]MB.west);}
+  % 4: demandas no condicionadas y oferta
+  \capa{4}{\node[cajap,minimum width=3.6cm] (Z) at (15.3,2.1) {Demandas no condicionadas\\ \textcolor{tceemorado}{$\vect{z}(p,\vect{w})$}\\ y oferta \textcolor{tceemorado}{$q(p,\vect{w})$}};}
+  \capa{4}{\draw[une] (MB) -- (Z);}
+  % 5: minimización del coste (la tecnología es la restricción; el coste, el objetivo)
+  \capa{5}{\draw[tceegris,thick,dashed] (8.0,0) -- (17.4,0);}
+  \capa{5}{\node[cajad] (MC) at (10.4,-2.1) {\textcolor{tceeverde}{\textbf{Minimización del coste}}\\ $\min\limits_{\vect{z}}\ \vect{w}\cdot\vect{z}$ s.a.\ $F(\vect{z})\geq q$};}
+  \capa{5}{\draw[uned,dashed] (F.east) -- node[papel,pos=0.62,sloped,below] {restricción} ([yshift=3mm]MC.west);}
+  \capa{5}{\draw[uned] (C.east) -- node[papel,pos=0.5,above] {objetivo} ([yshift=-3mm]MC.west);}
+  % 6: demandas condicionadas
+  \capa{6}{\node[cajad,minimum width=3.6cm] (H) at (15.3,-2.1) {Demandas\\ condicionadas\\ \textcolor{tceeverde}{$\vect{z}(\vect{w},q)$}};}
+  \capa{6}{\draw[uned] (MC) -- (H);}
+\end{tikzpicture}
+\end{document}

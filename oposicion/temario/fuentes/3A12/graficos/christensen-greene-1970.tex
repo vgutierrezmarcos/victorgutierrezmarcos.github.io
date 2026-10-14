@@ -1,0 +1,27 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Coste medio frente a producción de las 123 empresas de generación eléctrica de
+% EE. UU. en 1970 (Christensen y Greene, 1976; datos de Greene, tabla F4.4).
+% Datos en ../datos/christensen-greene-1970.csv.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/christensen-greene-1970.csv}\cg
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=10cm, height=6.5cm,
+      xmode=log, log basis x=10,
+      xmin=5, xmax=100000,
+      ymin=0, ymax=40,
+      xlabel={Producción (millones de kWh, escala logarítmica)},
+      ylabel={Coste medio (dólares por MWh)},
+      axis lines*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      /pgf/number format/.cd, use comma, 1000 sep={.},
+    ]
+    \capa{1}{
+      \addplot[only marks, mark=*, mark size=1.6pt, tceemorado, fill opacity=0.6, draw opacity=0.8]
+        table[x=produccion_mkwh, y=cme_usd_mwh] {\cg};
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

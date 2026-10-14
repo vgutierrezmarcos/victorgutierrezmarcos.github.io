@@ -1,0 +1,33 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Teorema del punto fijo de Brouwer en una dimensión (3.A.21, II.1.1).
+% Escala: 1 = 4 cm.
+% f(p) = 0,6 - 0,5 p + 0,6 p^2: f(0) = 0,6 > 0 y f(1) = 0,7 < 1; continua de
+% [0,1] en [0,1] (mínimo 0,496); f(p) - p = 0,6 (p - 0,5)(p - 2): punto fijo único p* = 0,5.
+% g(p) = p - 8 (p - 0,15)(p - 0,4)(p - 0,8): g(0) = 0,38, g(1) = 0,18, valores en
+% [0,1]; 3 puntos fijos (0,15, 0,4 y 0,8): el punto fijo existe, pero no tiene por qué ser único.
+% Elaboración propia a partir de Delgado Toral (2014).
+\begin{document}
+\begin{tikzpicture}[tcee,x=4cm,y=4cm]
+  % 1: ejes y cuadrado [0,1]x[0,1]
+  \capa{1}{\draw[eje] (0,0) -- (1.18,0) node[below left=2pt and 0pt] {$p$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.18) node[left] {$f(p)$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[thick] (1,0) node[below] {$1$} -- (1,1) -- (0,1) node[left] {$1$};}
+  % 2: diagonal
+  \capa{2}{\draw[guia,thick] (0,0) -- (1,1) node[etiqueta,above right,text=tceegris] {$f(p)=p$};}
+  % 3: función continua f
+  \capa{3}{\draw[curva1,domain=0:1,samples=60] plot (\x,{0.6-0.5*\x+0.6*\x*\x})
+    node[etiqueta,right] {$f$};}
+  \capa{3}{\node[punto,fill=tceemorado] at (0,0.6) {};}
+  \capa{3}{\node[punto,fill=tceemorado] at (1,0.7) {};}
+  % 4: punto fijo
+  \capa{4}{\node[punto] (P) at (0.5,0.5) {};}
+  \capa{4}{\proyeccion{(P)}{$p^*$}{$f(p^*)$}}
+  \capa{4}{\node[etiqueta,fill=white,inner sep=1pt] at (0.62,0.3) {$f(p^*)=p^*$};}
+  % 5: segunda función con 3 puntos fijos
+  \capa{5}{\draw[curva2,dashed,domain=0:1,samples=80]
+    plot (\x,{\x-8*(\x-0.15)*(\x-0.4)*(\x-0.8)}) node[etiqueta,right] {$g$};}
+  \capa{5}{\foreach \q in {0.15,0.4,0.8} \node[circle,draw=tceeazul,fill=white,thick,inner sep=1.3pt] at (\q,\q) {};}
+\end{tikzpicture}
+\end{document}

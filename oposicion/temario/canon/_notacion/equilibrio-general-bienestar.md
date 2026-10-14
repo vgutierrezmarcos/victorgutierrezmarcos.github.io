@@ -8,10 +8,10 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A21…3A24.json`, `resum
 | $L$, $K$; $\bar L$, $\bar K$ | Trabajo y capital; dotaciones | orden $(K,L)$ en 3.A.21 y en los supuestos de 3.A.22 | **orden $(L,K)$**: $F_X(L_X,K_X)$ | Quita la incoherencia interna de 3.A.22; coherente con $z=(z_L,z_K)$ |
 | $w_L$, $w_K$ | Precios de los factores | $w,r$ (3.A.23), $W,R$ (3.A.11) | **$w_L$, $w_K$** | 3.A.21; $r$ es el tipo de interés |
 | $A$, $B$ (o $i=1,\dots,I$) | Consumidores | $h$ (3.A.21), $1,\dots,I$ (3.A.24), $1,\dots,N$ (4.B.2) | **$A,B$** en el 2×2×2×2; **$i=1,\dots,I$** en general | MWG ($i$ consumidores, $j$ empresas); $N$ es el número de alternativas en Arrow |
-| $\omega_i$ | Dotación inicial del consumidor $i$ | $e$, $e'$ (3.A.22, 4.B.3, 4.B.7) | **$\omega$, $\omega'$** | MWG; $e$ es esfuerzo (3.A.13) |
+| $\omega_i$ | Dotación inicial del consumidor $i$ | $e$, $e'$ (3.A.22, 4.B.3, 4.B.7) | **$\vec\omega_i$, $\vec\omega'$** (vector, con flecha; 3.A.21) | MWG; $e$ es esfuerzo (3.A.13) |
 | $\overline W_i$ | Renta del consumidor: $p\cdot\omega_i+\sum_j\theta_{ij}B_j$ | $\overline W_h$ (3.A.21), $\overline W=w_LO_0+M$ (4.B.11) | **$\overline W_i$** | 3.A.8; participaciones $\theta_{ij}$ como MWG (dos subíndices: no se confunden con la CRRA) |
 | $B_j$ | Beneficio de la empresa $j$ | $B_i$ (3.A.21) | **$B_j$** | Ver mercados |
-| $z_k(p)$ | Exceso de demanda del bien $k$ | $z_i$ (3.A.21) | **$z_k(p)$**; ley de Walras $p\cdot z(p)\equiv 0$ | MWG |
+| $z_k(p)$ | Exceso de demanda del bien $k$ | $z_i$ (3.A.21) | **$z_k(\vec p)$**; ley de Walras $\vec p\cdot\vec z(\vec p)\equiv 0$ | MWG; 3.A.21 revisado |
 | $RMS^A_{XY}$ | Relación marginal de sustitución de $A$, positiva | $|RMS_X^Y|_A$ (3.A.22, 3.A.23), $RMS^A$ (4.B.2) | **$RMS^A_{XY}=\frac{\partial U_A/\partial X_A}{\partial U_A/\partial Y_A}$** | Paralela a $RMS_{12}$ de 3.A.8 (positiva, sin barras) |
 | $RMST^X_{LK}$ | Relación marginal de sustitución técnica en $X$ | $|RMST_L^K|_X$ | **$RMST^X_{LK}$** | Igual |
 | $RMT_{XY}$ | Relación marginal de transformación | $|RMT_X^Y|$; $RMT_G^X$ (3.A.23) | **$RMT_{XY}=\frac{CMg_X}{CMg_Y}$** | Igual |
@@ -35,3 +35,8 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A21…3A24.json`, `resum
 - **$r$**: precio del capital en 3.A.23 frente a tipo de interés (macro) → $w_K$.
 - **$\theta_{ij}$** (participaciones en beneficios) frente a CRRA $\theta$ → aceptable por los dos subíndices; alternativa $s_{ij}$ (pero $s_i$ es la participación en el gasto).
 - **Modelo 2×2×2×2**: 3.A.23 lo copia de 3.A.22 (sobra con el título vigente) y 3.A.21 lo cuenta con otra notación; ver ficha `equilibrio-general-walras`.
+
+## Añadido con el 3.A.21 revisado (14/10/2026)
+
+Detalle en `notacion.md` § 5 (manda). Símbolos nuevos del tema: símplice $\Delta$; aplicación del subastador $f_k(\vec p)$; velocidad del tanteo $\kappa_k$ ($\dot p_k=\kappa_kz_k(\vec p)$; $k$ es el índice de los bienes); factor de homogeneidad $\alpha$ (local); $\vec p=(p_X,p_Y,w_L,w_K)$ y $\vec p^0,\vec p^1$ para dos vectores de precios (antes $\vec p^A,\vec p^B$, que chocaban con los consumidores); $\theta_{ij}$ y $\overline W_i=\vec p\cdot\vec\omega_i+\sum_j\theta_{ij}B_j$; curvas de oferta-demanda $\mathrm{OD}_A$, $\mathrm{OD}_B$; coalición $\mathcal S$ y réplicas $r$; bienes y precios contingentes $x_{ks}$, $p_{ks}$ (con un bien, $x_{is}$, $p_s$); dinero $\overline M_i$, $M^D$, proporción de Cambridge $\varphi$ (local); álgebra de Jones $c_j$, $a_{Lj}$, $s_{Lj}$, $\ell_{Lj}$ y $\hat x$. Siglas: EGC (competitivo) y MEGC (computables); nunca «EG», que es el exceso de gravamen.
+

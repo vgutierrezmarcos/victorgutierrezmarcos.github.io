@@ -1,7 +1,7 @@
 # Función Cobb-Douglas (producción y utilidad)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.11** (Teoría de la producción). La Cobb-Douglas que se usa en el resto del temario es casi siempre la *función de producción* (Solow 3.A.43, RBC 3.A.6 y 3.A.42, crecimiento endógeno 3.A.44, emparejamiento 3.A.26, PIB potencial 4.B.4, formas funcionales empíricas 3.A.12), y 3.A.11 tiene en el título rendimientos a escala y elasticidad de sustitución, las dos propiedades que la definen. 3.A.8 es el tema de referencia de la **variante de utilidad** (demandas con participaciones constantes) y remite a 3.A.11 cuando habla de la función de producción.
-- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.9 (resumen), 3.A.6 (mención); también, con otros ids, 3.A.12, 3.A.18, 3.A.26, 3.A.42-3.A.44 y 4.B.4.
+- **Temas que lo usan:** 3.A.11 (desarrollo; revisado el 13/10/2026), 3.A.8 (resumen), 3.A.9 (resumen), 3.A.6 (mención), 3.A.12 (mención: su función de costes; hecho, 14/10/2026); también, con otros ids, 3.A.18, 3.A.26, 3.A.42-3.A.44 y 4.B.4.
 - **Manuales de referencia:** Cobb y Douglas (1928); Varian, cap. 1 y 7; Mas-Colell, Whinston y Green, cap. 3 (utilidad) y 5 (producción); Romer, *Advanced Macroeconomics*, cap. 1.
 - **Decisión D005 (13/10/2026):** ¿Cuál es el tema de referencia de la Cobb-Douglas? 3.A.11 (función de producción: rendimientos y elasticidad de sustitución), con 3.A.8 como referencia de la variante de utilidad
 
@@ -26,6 +26,7 @@ Gráfico de referencia: superficie de producción en $\mathbb{R}^3$ con isocuant
 | 3.A.11 | Tecnología, rendimientos, σ | desarrollo (hecho, 13/10/2026) | Párrafo propio en I.3: productividades e Inada, RMST y σ=1, escala α+β, distribución y Euler, coincidencia de las neutralidades, origen (Cobb y Douglas, 1928, con la estimación $z_K^{1/4}z_L^{3/4}$); superficie de producción; límite de la CES; macro $Y=AK^{\alpha}L^{1-\alpha}$ con remisión a 3.A.43 y 3.A.45 | Las demandas del consumidor (3.A.8) |
 | 3.A.8 | Demanda marshalliana | resumen | Variante de utilidad y demandas (anexo der:cobb-douglas) | Rendimientos |
 | 3.A.9 | Sistemas de demanda | resumen (hecho, 13/10/2026) | Primera forma funcional empírica (II.2, `eq:cobb-douglas`): $U(x)=\sum_i\alpha_i\ln x_i$ con $\sum_i\alpha_i=1$ (normalización), participaciones constantes $s_i=\alpha_i$, $\ln x_i=\ln\alpha_i+\ln\overline W-\ln p_i$; ejemplo de inversión de $V$ en $E$ (I.3); nota con el origen (estimación de 1928, 3/4 y 1/4; Douglas senador de 1949 a 1967) y remisión a 3.A.11 | Volver a derivar las demandas (remitir a 3.A.8) |
+| 3.A.12 | Función de costes y estimación | mención (hecho, 14/10/2026) | Función de costes dual $C=k(q/A)^{1/k}(w_K/\alpha)^{\alpha/k}(w_L/\beta)^{\beta/k}$, $k=\alpha+\beta$; en logaritmos, la forma de Nerlove (1963); caso anidado de la translog | La función de producción (3.A.11) |
 | 3.A.6 | RBC | mención | Tecnología del RBC; remitir a 3.A.11 | — |
 
 ## Divergencias encontradas en el temario actual

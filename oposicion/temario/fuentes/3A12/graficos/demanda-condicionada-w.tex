@@ -1,0 +1,28 @@
+% Subida de w_L con q fija: isocuanta z_L·z_K = 4, w_K = 1.
+% w_L^0 = 1/2: tangencia en A = (2√2, √2) ≈ (2,83; 1,41), isocoste z_K = 2,83 - 0,5 z_L.
+% w_L^1 = 3/2: tangencia en B = (1,633; 2,449), isocoste z_K = 4,899 - 1,5 z_L.
+% (Rehace la Imagen 8, que hacía rotar la isocoste sobre un eje: aquí la
+% producción queda fija y la isocoste se desplaza para seguir tangente.)
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.9]
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$z_K$}{6.6}{6.2}}
+  % 2: isocuanta q fija
+  \capa{2}{\draw[curva1] plot[domain=0.68:6.2,samples=100,smooth] (\x,{4/\x}) node[etiqueta,above right] {$q$};}
+  % 3: isocoste inicial y tangencia A con proyecciones
+  \capa{3}{\draw[curva3] (0,2.828) -- (5.657,0) node[etiqueta,above right,text=tceeverde] {$-w_L^0/w_K$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$A$}] (A) at (2.828,1.414) {};}
+  \capa{3}{\proyeccion{(A)}{$z_L^A$}{$z_K^A$}}
+  % 4: isocoste tras subir w_L, desplazada para seguir tangente; tangencia B
+  \capa{4}{\draw[curvanueva] (0.2,4.599) -- (3.266,0);}
+  \capa{4}{\node[etiqueta,text=tceerojo,anchor=west] at (3.3,0.25) {$-w_L^1/w_K$};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$B$}] (B) at (1.633,2.449) {};}
+  \capa{4}{\proyeccion{(B)}{$z_L^B$}{$z_K^B$}}
+  % 5: menos trabajo y más capital
+  \capa{5}{\draw[flecha] (2.75,-0.95) -- (1.72,-0.95);}
+  \capa{5}{\draw[flecha] (-0.75,1.5) -- (-0.75,2.4);}
+\end{tikzpicture}
+\end{document}

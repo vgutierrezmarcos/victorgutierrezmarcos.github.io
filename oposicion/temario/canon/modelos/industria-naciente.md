@@ -1,7 +1,7 @@
 # Industria naciente
 
 - **Área:** comercio · **Tema de referencia:** 3.B.8 (Política comercial (II)) — único desarrollo, con economías de escala dinámicas.
-- **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.41 (mención); relacionado con 3.B.9 (ISI)
+- **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.41 (mención), 3.A.12 (mención: curvas de aprendizaje; hecho, 14/10/2026); relacionado con 3.B.9 (ISI)
 - **Manuales de referencia:** Hamilton (1791), List (1841), Mill (1848) y criterios de Mill-Bastable-Kemp; Krugman, Obstfeld y Melitz, cap. 11; Baldwin (1969); Melitz (2005, *JIE*) «When and How Should Infant Industries Be Protected?».
 
 ## Presentación de referencia
@@ -17,6 +17,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.8 | Política comercial (II) | desarrollo | Argumento, criterios, crítica (instrumento de primer óptimo) | — |
+| 3.A.12 | Curvas de aprendizaje | mención (hecho, 14/10/2026) | El aprendizaje como fundamento del argumento (III.4.3); ficha `curva-aprendizaje` | El argumento |
 | 3.B.41 | Política comercial común | mención | Excepción al librecambio | — |
 | 3.B.9 | Comercio y crecimiento | mención | Vínculo con la industrialización por sustitución de importaciones (`prebisch-singer`) | — |
 

@@ -1,0 +1,58 @@
+% Senda de expansión a corto y a largo plazo (izquierda) y costes totales a
+% corto frente a largo plazo (derecha). Elaboración propia a partir de Varian
+% (1992, cap. 5).
+% Tecnología q = (z_L z_K)^(1/3) (rendimientos decrecientes a escala), w_L = w_K = 1:
+%   isocuanta q: z_L z_K = q^3; senda de expansión de largo plazo z_K = z_L;
+%   largo plazo  C(w,q) = 2 q^(3/2);
+%   corto plazo con z̄_K = 3: z_L = q^3/3, C(w,q;z̄_K) = q^3/3 + 3 (CF = 3).
+%   q^1 = 1,2: A = (1,315; 1,315), coste 2,63; B = (0,576; 3), coste 3,576.
+%   q^2 = 3^(2/3) = 2,08: D = (3; 3), coste 6 en los dos plazos (tangencia).
+% Panel derecho desplazado 8,6 cm; q a 2 cm por unidad y C a 0,6 cm por unidad.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={qa=1.2; qb=2.080084; CL(\q)=2*\q^1.5; CS(\q)=\q^3/3+3;}]
+  % ---------- panel izquierdo: espacio de factores ----------
+  % 1: ejes
+  \capa{1}{\ejes{$z_L$}{$z_K$}{5.9}{5.9}}
+  % 2: senda de expansión de largo plazo
+  \capa{2}{\draw[curva1] (0,0) -- (5.3,5.3) node[etiqueta,above,align=center,text=tceemorado]
+    {senda de expansión\\[-1pt] (largo plazo)};}
+  % 3: recta del factor fijo (corto plazo)
+  \capa{3}{\draw[curva4] (0,3) node[left,text=black] {$\overline{z}_K$} -- (5.6,3)
+    node[etiqueta,above left,text=tceedorado] {corto plazo};}
+  % 4-6: isocuanta q^1, A (largo plazo) y B (corto plazo) con sus isocostes
+  \capa{4}{\draw[curva2] plot[domain=0.36:5.4,samples=80,smooth] (\x,{1.728/\x})
+    node[etiqueta,right] {$q^1$};}
+  \capa{5}{\draw[guia,solid,thick] (0,2.630) -- (2.630,0);}
+  \capa{5}{\node[punto,label={[etiqueta]below left:$A$}] (A) at (1.315,1.315) {};}
+  \capa{6}{\draw[guia,solid,thick] (0,3.576) -- (3.576,0);}
+  \capa{6}{\node[punto,label={[etiqueta]above right:$B$}] (B) at (0.576,3) {};}
+  % 7-8: isocuanta q^2 y D, tangencia sobre la recta del factor fijo
+  \capa{7}{\draw[curva3] plot[domain=1.58:5.6,samples=80,smooth] (\x,{9/\x})
+    node[etiqueta,right] {$q^2$};}
+  \capa{8}{\draw[guia,solid,thick] (0.4,5.6) -- (5.6,0.4);}
+  \capa{8}{\node[punto,label={[etiqueta]22:$D$}] (D) at (3,3) {};}
+  % ---------- panel derecho: costes totales ----------
+  \begin{scope}[xshift=8.6cm,x=2cm,y=0.6cm]
+    % 9: ejes
+    \capa{9}{\draw[eje] (0,0) -- (3.1,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{9}{\draw[eje] (0,0) -- (0,9.9) node[left] {$C$};}
+    \capa{9}{\node[below left] at (0,0) {$0$};}
+    % 10: coste a largo plazo
+    \capa{10}{\draw[curva1] plot[domain=0:2.95,samples=80,smooth] (\x,{CL(\x)})
+      node[etiqueta,right] {$C(\vect{w},q)$};}
+    % 11-13: coste a corto plazo, desde CF, por encima y tangente en q^2
+    \capa{11}{\draw[curva4] plot[domain=0:2.62,samples=80,smooth] (\x,{CS(\x)})
+      node[etiqueta,above] {$C(\vect{w},q;\overline{z}_K)$};}
+    \capa{11}{\node[etiqueta,left] at (0,3) {$\mathrm{CF}=w_K\overline{z}_K$};}
+    \capa{12}{\node[punto,label={[etiqueta]below right:$A$}] (A2) at (qa,{CL(qa)}) {};}
+    \capa{12}{\node[punto,label={[etiqueta]above left:$B$}] (B2) at (qa,{CS(qa)}) {};}
+    \capa{12}{\draw[guia] (B2) -- (qa,0) node[below] {$q^1$};}
+    \capa{13}{\node[punto,label={[etiqueta]right:$D$}] (D2) at (qb,{CL(qb)}) {};}
+    \capa{13}{\draw[guia] (D2) -- (qb,0) node[below] {$q^2$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

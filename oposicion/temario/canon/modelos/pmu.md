@@ -17,7 +17,7 @@ Gráficos de referencia: `oposicion/temario/fuentes/3A08/graficos/solucion-inter
 | 3.A.8 | De los axiomas a la demanda | desarrollo | Todo lo anterior | — |
 | 3.A.9 | Dualidad | resumen (hecho, 13/10/2026) | Enunciado del primal con remisión a 3.A.8, FIU y sus propiedades en una frase (cuasiconvexidad en nota y gráfico `cuasiconvexidad-fiu`), Roy; Kuhn-Tucker del primal y del dual lado a lado en el anexo A; enlace con el PMG (ficha `dualidad-consumidor`) | Los axiomas, la solución de esquina y la caja de teoremas (3.A.8) |
 | 3.A.16 | Demanda en equilibrio parcial | resumen | Variante cuasilineal $u_m=n_m+\varphi_m(x_m)$, $\varphi_m'(x_m)=p$ | Kuhn-Tucker general |
-| 3.A.21 | Consumidor del EG | resumen | Renta = valor de la dotación $p\cdot\omega_h$ | — |
+| 3.A.21 | Consumidor del equilibrio general | resumen (hecho, 14/10/2026) | max $U_i(X_i,Y_i)$ s.a. $p_XX_i+p_YY_i=\overline W_i$, renta = valor de la dotación más participaciones, $\overline W_i=\vec p\cdot\vec\omega_i+\sum_j\theta_{ij}B_j$; RMS igual al precio relativo; demandas que dependen solo de $\vec p$ | Las propiedades de la demanda (3.A.8) |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.9 atribuía la ley de Walras a la «estricta monotonía»: es la insaciabilidad local (resuelto en la revisión del 13/10/2026, como 3.A.8).

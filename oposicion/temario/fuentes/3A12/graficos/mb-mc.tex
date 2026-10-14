@@ -1,0 +1,46 @@
+% Maximización del beneficio en dos etapas (gráfico conjunto).
+% Derecha: CMg(q) = 0,45 (q - 1,5)^2 + 1, que sale de
+%   C(q) = 0,15 (q - 1,5)^3 + q + 2,50625 (coste fijo 2), CMe = C/q;
+%   el CMg corta al CMe en su mínimo (q = 2,99; 2,00). Con p = 3,6,
+%   p = CMg en q* = 3,904 y CMe(q*) = 2,176: B = (3,6 - 2,176) q*.
+% Izquierda: isocuanta q*: z_K = 3/z_L; isocoste tangente w_L/w_K = 0,75
+%   (0,75 z_L + z_K = 3), tangencia en z* = (2; 1,5).
+% Se construye por partes como 3A09/graficos/primal-dual.tex: primero la
+% elección de q (derecha) y luego la de factores (izquierda).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \begin{scope}[xshift=8.6cm]
+    % 1: ejes del panel derecho
+    \capa{1}{\ejes{$q$}{$\mathrm{CMg},\ \mathrm{CMe},\ p$}{6.4}{5.6}}
+    % 2: curvas de costes medio y marginal
+    \capa{2}{\draw[curva2] plot[domain=0.55:5.4,samples=100,smooth] (\x,{(0.15*(\x-1.5)^3+\x+2.50625)/\x}) node[etiqueta,right] {$\mathrm{CMe}(\vect{w},q)$};}
+    \capa{2}{\draw[curva1] plot[domain=0.2:4.6,samples=100,smooth] (\x,{0.45*(\x-1.5)^2+1}) node[etiqueta,above] {$\mathrm{CMg}(\vect{w},q)$};}
+    % 3: precio
+    \capa{3}{\draw[curva4] (0,3.6) node[etiqueta,left,text=black] {$p$} -- (5.8,3.6);}
+    % 4: q* donde p = CMg (tramo creciente)
+    \capa{4}{\node[punto] (E) at (3.904,3.6) {};}
+    \capa{4}{\node[etiqueta,above left] at (E) {$E$};}
+    \capa{4}{\draw[guia] (E) -- (3.904,0) node[below,text=black] (qs) {$q^*=q(p,\vect{w})$};}
+    \capa{4}{\node[etiqueta,right,font=\footnotesize] at (4.0,3.25) {$p=\mathrm{CMg}$};}
+    % 5: beneficio máximo
+    \capa{5}{\fill[area] (0,2.176) rectangle (3.904,3.6);}
+    \capa{5}{\node[punto,fill=tceeazul] (A) at (3.904,2.176) {};}
+    \capa{5}{\draw[guia] (A) -- (0,2.176) node[left,text=black] {$\mathrm{CMe}(\vect{w},q^*)$};}
+    \capa{5}{\node[etiqueta,text=tceemorado] at (2.55,3.0) {$B(p,\vect{w})$};}
+  \end{scope}
+  % 6: ejes del panel izquierdo
+  \capa{6}{\ejes{$z_L$}{$z_K$}{6.0}{4.6}}
+  % 7: isocuanta de q*, que viene del panel derecho
+  \capa{7}{\draw[curva1] plot[domain=0.7:5.0,samples=100,smooth] (\x,{3/\x}) node[etiqueta,right] (Iq) {$q^*$};}
+  \capa{7}{\draw[flecha,dashed,tceegris] (12.504,-0.75) to[out=190,in=-20] (5.55,0.4);}
+  % 8: isocoste tangente y z*
+  \capa{8}{\draw[curva3] (0,3) node[etiqueta,left,text=tceeverde] {$C(\vect{w},q^*)/w_K$} -- (4,0) node[etiqueta,below,text=tceeverde] {$C(\vect{w},q^*)/w_L$};}
+  \capa{8}{\node[punto] (Z) at (2,1.5) {};}
+  \capa{8}{\proyeccion{(Z)}{$z_L^*$}{$z_K^*$}}
+  \capa{8}{\node[etiqueta,anchor=south west,fill=white,fill opacity=0.85,text opacity=1] (Zl) at (2.3,2.9) {$\vect{z}^*=\vect{z}(p,\vect{w})=\vect{z}(\vect{w},q^*)$};}
+  \capa{8}{\draw[guia,solid] (Zl.south west) -- (Z);}
+\end{tikzpicture}
+\end{document}

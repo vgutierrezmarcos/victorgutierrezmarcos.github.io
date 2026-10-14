@@ -1,0 +1,31 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Bienes económicos y bienes libres (3.A.21, I.2.3).
+% Mercado del bien k dados los demás precios, en el plano (q_k, p_k).
+% Izquierda: D_k: p = 4,2 - 0,9 q; S_k: p = 0,8 + 0,6 q; corte en q* = 2,27, p* = 2,16.
+% Derecha: D_k corta el eje de cantidades en q = 1,4 y S_k empieza en q = 2,8:
+% a precio nulo hay exceso de oferta (z_k < 0) y el bien es libre.
+% Elaboración propia a partir de Gravelle y Rees (2004).
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % --- Panel izquierdo: bien económico ---
+  \capa{1}{\ejes{$q_k$}{$p_k$}{5}{4.6}}
+  \capa{1}{\node[font=\small\bfseries] at (2.5,5.1) {Bien económico};}
+  \capa{2}{\draw[curva1] (0.4,3.84) -- (4.0,0.6) node[etiqueta,right] {$D_k$};}
+  \capa{2}{\draw[curva3] (0.4,1.04) -- (4.4,3.44) node[etiqueta,right] {$S_k$};}
+  \capa{3}{\node[punto] (E) at (2.267,2.16) {};}
+  \capa{3}{\proyeccion{(E)}{$q^*_k$}{$p^*_k$}}
+  \capa{3}{\node[etiqueta,align=center] at (2.5,-1.0) {$p^*_k>0,\quad z_k(\vect{p}^*)=0$};}
+  % --- Panel derecho: bien libre ---
+  \begin{scope}[xshift=6.6cm]
+    \capa{4}{\ejes{$q_k$}{$p_k$}{5}{4.6}}
+    \capa{4}{\node[font=\small\bfseries] at (2.5,5.1) {Bien libre};}
+    \capa{5}{\draw[curva1] (0.3,3.8) -- (1.4,0) node[etiqueta,above right=1pt and -1pt,pos=0] {$D_k$};}
+    \capa{5}{\draw[curva3] (2.8,0) -- (4.5,3.8) node[etiqueta,right] {$S_k$};}
+    \capa{6}{\draw[curvanueva,line width=2.2pt] (1.4,0) -- (2.8,0);}
+    \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thin] (1.4,-0.12) -- (2.8,-0.12)
+      node[midway,below=4pt,etiqueta,text=tceerojo] {$z_k<0$};}
+    \capa{6}{\node[etiqueta,align=center] at (2.5,-1.0) {$p^*_k=0,\quad z_k(\vect{p}^*)\leq 0$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

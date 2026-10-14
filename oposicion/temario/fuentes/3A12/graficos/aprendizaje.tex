@@ -1,0 +1,53 @@
+% Curva de aprendizaje (izquierda) y economías de escala frente a economías
+% de aprendizaje (derecha). Elaboración propia a partir de Wright (1936) y
+% Lieberman (1984).
+% Izquierda: c(Q^ac) = c_1 (Q^ac)^(-b) con c_1 = 3 y b = 0,5 (cada duplicación
+%   multiplica el coste por 2^(-b) = 0,707): Q_0 = 1,2 -> c_0 = 2,739;
+%   2Q_0 = 2,4 -> 2^(-b) c_0 = 1,936.
+% Derecha: CMe_t(q) = 2 + 0,3 (q - 3,2)^2 (mínimo en q = 3,2) y
+%   CMe_{t+1} = 0,7 CMe_t. A = (1,4; 2,972) y B = (3,2; 2) en CMe_t
+%   (escala: a lo largo de la curva); C = (1,4; 2,080) en CMe_{t+1}
+%   (aprendizaje: la curva baja con la misma q).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={ca(\Q)=3*\Q^(-0.5); cme(\q)=2+0.3*(\q-3.2)^2;}]
+  % ---------- panel izquierdo: curva de aprendizaje ----------
+  % 1: ejes
+  \capa{1}{\ejes{$Q^{\mathrm{ac}}$}{$c$}{5.6}{4.6}}
+  % 2: curva de aprendizaje, decreciente y convexa
+  \capa{2}{\draw[curva1] plot[domain=0.45:5.2,samples=100,smooth] (\x,{ca(\x)});}
+  \capa{2}{\node[etiqueta,anchor=south west,text=tceemorado] at (3.0,1.85) {$c(Q^{\mathrm{ac}})=c_1\,(Q^{\mathrm{ac}})^{-b}$};}
+  % 3: al duplicar la producción acumulada, el coste se multiplica por 2^{-b}
+  \capa{3}{\node[punto] (P1) at (1.2,{ca(1.2)}) {};}
+  \capa{3}{\proyeccion{(P1)}{$Q_0$}{$c_0$}}
+  \capa{3}{\node[punto] (P2) at (2.4,{ca(2.4)}) {};}
+  \capa{3}{\proyeccion{(P2)}{$2Q_0$}{$2^{-b}c_0$}}
+  \capa{3}{\draw[flecha] (1.3,{ca(1.2)+0.12}) to[bend left=25]
+    node[etiqueta,above right,text=tceerojo,font=\footnotesize] {$\times\,2^{-b}$} (2.45,{ca(2.4)+0.18});}
+  % ---------- panel derecho: escala frente a aprendizaje ----------
+  \begin{scope}[xshift=7.6cm]
+    % 4: ejes
+    \capa{4}{\ejes{$q$}{$\mathrm{CMe}$}{6.0}{4.6}}
+    % 5: CMe_t y movimiento a lo largo de la curva (economías de escala)
+    \capa{5}{\draw[curva2] plot[domain=0.3:5.7,samples=100,smooth] (\x,{cme(\x)})
+      node[etiqueta,right] {$\mathrm{CMe}_t$};}
+    \capa{5}{\node[punto] (A) at (1.4,{cme(1.4)}) {};}
+    \capa{5}{\node[etiqueta,above right] at (A) {$A$};}
+    \capa{5}{\node[punto] (B) at (3.2,{cme(3.2)}) {};}
+    \capa{5}{\node[etiqueta,above] at (B) {$B$};}
+    \capa{5}{\draw[flecha] plot[domain=1.65:2.95,samples=30,smooth] (\x,{cme(\x)+0.22});}
+    \capa{5}{\node[etiqueta,text=tceerojo,font=\footnotesize,align=center] at (3.0,3.05) {economías\\ de escala};}
+    % 6: CMe_{t+1}, más baja, y desplazamiento de la curva (aprendizaje)
+    \capa{6}{\draw[curvanueva] plot[domain=0.3:5.7,samples=100,smooth] (\x,{0.7*cme(\x)})
+      node[etiqueta,right] {$\mathrm{CMe}_{t+1}$};}
+    \capa{6}{\node[punto] (C) at (1.4,{0.7*cme(1.4)}) {};}
+    \capa{6}{\node[etiqueta,below left] at (C) {$C$};}
+    \capa{6}{\draw[flecha] (1.4,{cme(1.4)-0.12}) -- (1.4,{0.7*cme(1.4)+0.12});}
+    \capa{6}{\node[etiqueta,text=tceerojo,font=\footnotesize,align=left,anchor=west] at (1.45,0.95) {economías de\\ aprendizaje};}
+    \capa{6}{\draw[guia] (C) -- (1.4,0) node[below,text=black] {$q_A$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

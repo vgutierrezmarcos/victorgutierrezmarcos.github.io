@@ -1,0 +1,34 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usepackage{pgfplotstable}
+\begin{document}
+% Ratio de eficiencia (gastos de explotación / margen bruto, %) de las entidades
+% significativas: España frente al conjunto de la supervisión bancaria europea,
+% 2T 2015 - 2T 2026 (BCE, Supervisory Banking Statistics). Datos en ../datos/.
+\pgfplotstableread[col sep=comma,comment chars={\#}]{../datos/ratio-eficiencia-bancos.csv}\ratio
+\begin{tikzpicture}[tcee]
+  \begin{axis}[
+      width=11cm, height=6cm,
+      xmin=0, xmax=44,
+      xtick={3,7,...,43},
+      xticklabels={2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026},
+      xticklabel style={font=\footnotesize},
+      ymin=35, ymax=75,
+      ylabel={\% del margen bruto},
+      axis lines*=left, tick align=outside,
+      ymajorgrids, grid style={tceegris!25},
+      legend style={draw=none, fill=none, font=\footnotesize, at={(0.98,0.98)}, anchor=north east},
+      legend cell align=left,
+      /pgf/number format/.cd, use comma,
+    ]
+    \capa{1}{
+      \addplot[curva2, thick, mark=none] table[x expr=\coordindex, y=union_bancaria] {\ratio};
+      \addlegendentry{Supervisión bancaria europea}
+    }
+    \capa{2}{
+      \addplot[curvanueva, thick, mark=none] table[x expr=\coordindex, y=espana] {\ratio};
+      \addlegendentry{España}
+    }
+  \end{axis}
+\end{tikzpicture}
+\end{document}

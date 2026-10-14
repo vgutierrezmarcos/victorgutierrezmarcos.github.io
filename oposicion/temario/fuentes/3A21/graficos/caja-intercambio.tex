@@ -1,0 +1,99 @@
+% Caja de Edgeworth del intercambio puro (3.A.21): gráfico maestro que crece por
+% capas desde I.3 hasta III.2. Las variantes del PDF (caja-intercambio-equilibrio,
+% caja-intercambio-teoremas…) fijan \cajacapas con las capas que muestran y
+% cargan este fichero: mismo código y mismas cifras.
+%
+% Dotaciones totales X̄ = 10, Ȳ = 6; dotación ω = (1,5; 5) para A y (8,5; 1) para B.
+% U_A = X_A^0,4 Y_A^0,6 (desde O_A); U_B = X_B^0,6 Y_B^0,4 (desde O_B).
+% RMS^A_XY = (2/3) Y_A/X_A; RMS^B_XY = 1,5 Y_B/X_B. En ω: 2,22 y 0,18 (lente).
+% Demandas (p_Y = 1, p = p_X): X_A = 0,4 (1,5p + 5)/p, Y_A = 0,6 (1,5p + 5);
+%   X_B = 0,6 (8,5p + 1)/p, Y_B = 0,4 (8,5p + 1) (en la caja, X̄ - X_B, Ȳ - Y_B).
+% Curvas de oferta-demanda: esos puntos al variar p.
+% Equilibrio: p* = (0,4·5 + 0,6·1)/(0,6·1,5 + 0,4·8,5) = 0,6047;
+%   E = (3,908; 3,544); U_A(E) = 3,685; U_B(E) = 4,236.
+% Desequilibrio p = 0,23: A elige (9,296; 3,207) y B (2,291; 4,818) en la caja:
+%   exceso de demanda de X = 7,004 y exceso de oferta de Y = 1,611 (0,23·7,004).
+% Curva de contrato: Y_A = 9 X_A / ((2/3)(10 - X_A) + 1,5 X_A).
+% Lente: U_A = U_A(ω) = 3,090 y U_B = U_B(ω) = 3,610; se cortan en X_A = 1,5 y 6,713.
+% CC' (curva de contrato dentro de la lente): C = (3,148; 3,050), C' = (4,675; 3,983).
+% 2TFEB: E' = (2,2; 2,329) en la curva de contrato, RMS = 0,706; la recta de
+%   precios tangente en E' pasa por ω' = (1,5; 2,824): A cede 2,18 de Y a B.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Variantes: \def\cajacapas{1,2,6} antes de \input{caja-intercambio} muestra solo
+% esas capas (en el vídeo, \tceepaso sigue mandando).
+\makeatletter
+\ifdefined\cajacapas
+  \let\capamaestro\capa
+  \renewcommand{\capa}[2]{\edef\cajaesta{\noexpand\in@{,#1,}{,\cajacapas,}}\cajaesta
+    \ifin@\capamaestro{#1}{#2}\fi}
+\fi
+\makeatother
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.1cm,
+    declare function={
+      ua(\x,\u)=(\u/\x^0.4)^(1/0.6);
+      ub(\x,\v)=6-(\v/(10-\x)^0.6)^(1/0.4);
+      cc(\x)=9*\x/((2/3)*(10-\x)+1.5*\x);
+      odax(\p)=0.4*(1.5*\p+5)/\p;  oday(\p)=0.6*(1.5*\p+5);
+      odbx(\p)=10-0.6*(8.5*\p+1)/\p; odby(\p)=6-0.4*(8.5*\p+1);},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja, sus orígenes, los ejes de cada consumidor y la dotación
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (10,6);
+    \node[below left,text=tceemorado] at (0,0) {$O_A$};
+    \node[above right,text=tceeverde] at (10,6) {$O_B$};
+    \draw[->,thin,tceemorado] (0.4,-0.3) -- (1.4,-0.3) node[right,etiqueta] {$X_A$};
+    \draw[->,thin,tceemorado] (-0.3,0.4) -- (-0.3,1.4) node[above,etiqueta] {$Y_A$};
+    \draw[->,thin,tceeverde] (9.6,6.3) -- (8.6,6.3) node[left,etiqueta] {$X_B$};
+    \draw[->,thin,tceeverde] (10.3,5.6) -- (10.3,4.6) node[below,etiqueta] {$Y_B$};
+    \draw[llave] (10,-0.75) -- (0,-0.75) node[midway,below=5pt,text=black] {$\bar X$};
+    \draw[llave] (-0.95,0) -- (-0.95,6) node[midway,left=5pt,text=black] {$\bar Y$};
+  }
+  \capa{1}{\node[punto,label={[etiqueta]below left:$\vect{\omega}$}] (w) at (1.5,5) {};}
+  % 2: curvas de indiferencia que pasan por ω y la lente
+  \capa{2}{\draw[curva1] plot[domain=1.2:9.3,samples=120] (\x,{ua(\x,3.09017)})
+    node[etiqueta,right] {$U_A^0$};}
+  \capa{2}{\draw[curva3] plot[domain=0.2:7.38,samples=120] (\x,{ub(\x,3.60986)})
+    node[etiqueta,right] {$U_B^0$};}
+  \capa{2}{\fill[area,fill opacity=0.12] plot[domain=1.5:6.7133,samples=100] (\x,{ua(\x,3.09017)})
+    -- plot[domain=6.7133:1.5,samples=100] (\x,{ub(\x,3.60986)}) -- cycle;}
+  % 3: precios de desequilibrio (p_X/p_Y = 0,23): lo que elige cada uno y los excesos
+  \capa{3}{\draw[curva4,desplazada] (0.5,5.23) -- (9.6,3.137) node[etiqueta,anchor=north east] {$p_X/p_Y$};}
+  \capa{3}{\node[punto,label={[etiqueta]above left:$\vect{x}_A$}] at (9.2957,3.207) {};}
+  \capa{3}{\node[punto,label={[etiqueta,label distance=3pt]above:$\vect{x}_B$}] at (2.2913,4.818) {};}
+  \capa{3}{\draw[curvanueva] (2.2913,4.818) -- (9.2957,4.818) node[midway,above,etiqueta] {$z_X>0$};}
+  \capa{3}{\draw[curvanueva] (9.2957,4.818) -- (9.2957,3.207) node[pos=0.3,left,etiqueta] {$z_Y<0$};}
+  % 4: curva de oferta-demanda de A
+  \capa{4}{\draw[curva1,desplazada,thick] plot[domain=2.2222:0.23,samples=150,variable=\p]
+    ({odax(\p)},{oday(\p)});}
+  \capa{4}{\node[etiqueta,text=tceemorado,above] at (6.66,3.297) {$\mathrm{OD}_A$};}
+  % 5: curva de oferta-demanda de B
+  \capa{5}{\draw[curva3,desplazada,thick] plot[domain=0.17647:1.25,samples=150,variable=\p]
+    ({odbx(\p)},{odby(\p)}) node[etiqueta,below] {$\mathrm{OD}_B$};}
+  % 6: equilibrio E, recta de precios de equilibrio y curvas tangentes en E
+  \capa{6}{\node[punto,label={[etiqueta]above:$E$}] (E) at (3.9077,3.5442) {};}
+  \capa{6}{\draw[curva4] (0.6,5.5442) -- (9.7686,0) node[etiqueta,below] {$p^*_X/p^*_Y$};}
+  \capa{6}{\draw[curva1] plot[domain=1.9:9.3,samples=120] (\x,{ua(\x,3.68534)})
+    node[etiqueta,right] {$U_A^*$};}
+  \capa{6}{\draw[curva3] plot[domain=0.2:6.6,samples=120] (\x,{ub(\x,4.23592)})
+    node[etiqueta,right] {$U_B^*$};}
+  % 7: curva de contrato (1TFEB: E está en ella)
+  \capa{7}{\draw[curva2] plot[domain=0:10,samples=150] (\x,{cc(\x)});}
+  \capa{7}{\node[etiqueta,text=tceeazul,anchor=east] at (7.9,5.75) {curva de contrato};}
+  % 8: 2TFEB: otro óptimo E', su recta de precios y la redistribución ω → ω'
+  \capa{8}{\node[punto,label={[etiqueta]right:$E'$}] at (2.2,2.3294) {};}
+  \capa{8}{\draw[curva4] (0.9,3.2471) -- (5.5,0) ;}
+  \capa{8}{\node[punto,label={[etiqueta]left:$\vect{\omega}'$}] (w2) at (1.5,2.8235) {};}
+  \capa{8}{\draw[flecha,shorten <=3pt,shorten >=3pt] (w) -- (w2);}
+  % 9: Edgeworth: el tramo CC' de la curva de contrato dentro de la lente
+  \capa{9}{\draw[curva2,line width=5pt,opacity=0.35] plot[domain=3.1484:4.6748,samples=40] (\x,{cc(\x)});}
+  \capa{9}{\node[punto,label={[etiqueta]left:$C$}] at (3.1484,3.0500) {};}
+  \capa{9}{\node[punto,label={[etiqueta]right:$C'$}] at (4.6748,3.9834) {};}
+  % 10: el núcleo se encoge hacia E al replicar la economía
+  \capa{10}{\draw[flecha] plot[domain=3.2:3.78,samples=20] (\x,{cc(\x)});}
+  \capa{10}{\draw[flecha] plot[domain=4.6:4.04,samples=20] (\x,{cc(\x)});}
+  \capa{10}{\node[etiqueta,text=tceerojo] at (3.5,2.45) {$r\to\infty$};}
+\end{tikzpicture}
+\end{document}

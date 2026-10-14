@@ -1,0 +1,37 @@
+% Subaditividad de costes con un producto. Elaboración propia a partir de
+% Baumol, Panzar y Willig (1982).
+% Una empresa: C(q) = F + d q^4 con F = 1,8 y d = 0,0375:
+%   CMe_1(q) = 1,8/q + 0,0375 q^3, mínimo en q^0 = (F/3d)^(1/4) = 2 (CMe = 1,2).
+% Dos empresas a partes iguales: CMe_{1+2}(q) = 2 C(q/2)/q = CMe_1(q/2),
+%   la misma U estirada al doble (mínimo en 2 q^0 = 4).
+% Corte: (7/8) d q^4 = F, q^1 = (8F/7d)^(1/4) = 2,7108 (CMe = 1,4144).
+% Entre q^0 y q^1 una sola empresa es más barata aunque su CMe ya crezca.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=1cm,
+    declare function={cme(\q)=1.8/\q+0.0375*\q^3;}]
+  \def\qa{2.7108}
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$\mathrm{CMe}$}{10.4}{5}}
+  % 2: CMe de una sola empresa y su mínimo q^0
+  \capa{2}{\draw[curva1] plot[domain=0.4:4.75,samples=120,smooth] (\x,{cme(\x)}) node[etiqueta,above] {$\mathrm{CMe}_{1}$};}
+  \capa{2}{\node[punto,fill=tceemorado] (M) at (2,1.2) {};}
+  \capa{2}{\draw[guia] (M) -- (2,0) node[below,text=black] {$q^0$};}
+  % 3: CMe con dos empresas a partes iguales
+  \capa{3}{\draw[curva2] plot[domain=0.8:9.5,samples=160,smooth] (\x,{cme(\x/2)}) node[etiqueta,above] {$\mathrm{CMe}_{1+2}$};}
+  % 4: corte en q^1
+  \capa{4}{\node[punto] (Q1) at (\qa,{cme(\qa)}) {};}
+  \capa{4}{\draw[guia] (Q1) -- (\qa,0) node[below,text=black] {$q^1$};}
+  % 5: tramo sombreado (q^0, q^1) y rótulos
+  \capa{5}{\fill[area] plot[domain=2:\qa,samples=40,smooth] (\x,{cme(\x)})
+    -- plot[domain=\qa:2,samples=40,smooth] (\x,{cme(\x/2)}) -- cycle;}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=west] (S) at (5.3,0.6) {subaditividad con\\ $\mathrm{CMe}$ creciente};}
+  \capa{5}{\draw[thin,tceegris] (S.west) -- (2.4,1.42);}
+  \capa{5}{\draw[|-|,thick,tceeverde] (0,-0.75) -- (2,-0.75);}
+  \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceeverde] at (1,-0.8) {economías de escala};}
+  \capa{5}{\draw[|-|,thick,tceemorado] (0,-1.35) -- (\qa,-1.35);}
+  \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceemorado] at ({\qa/2},-1.4) {subaditividad};}
+\end{tikzpicture}
+\end{document}

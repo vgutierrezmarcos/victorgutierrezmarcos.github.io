@@ -1,0 +1,80 @@
+% Esquema de dualidad de la empresa: maximización del beneficio en una etapa
+% (izquierda, morado), minimización del coste (derecha, verde), maximización
+% en dos etapas que las une (arriba, centro) y tecnología recuperable a partir
+% de las funciones valor (abajo). Rehecho a partir del cuadro resumen del
+% original, sin la columna del «primal» de maximización de la producción,
+% con el estilo de 3A09/graficos/esquema-dualidad.tex.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cajap/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=3pt,align=center,
+                  minimum width=4.4cm,minimum height=1.2cm,inner sep=5pt},
+    cajad/.style={cajap,draw=tceeverde,fill=tceeverde!8},
+    cajac/.style={cajap,draw=black,fill=tceesalvia},
+    une/.style={->,thick},
+    rel/.style={->,thick,tceegris},
+    rec/.style={->,thick,dotted,tceerojo},
+    nota/.style={font=\footnotesize,inner sep=2pt},
+    notag/.style={nota,text=tceegris}]
+  % columnas: MB en una etapa en x = 0, MC en x = 13; filas en y = 0, -3,6, -7,2;
+  % MB en dos etapas arriba, en el centro; tecnología abajo, en el centro.
+  % 1: maximización del beneficio en una etapa
+  \capa{1}{
+    \node[text=tceemorado,align=center] at (0,1.65) {\textbf{Maximización del beneficio}\\ \footnotesize en una etapa};
+    \node[cajap] (P) at (0,0) {$\max\limits_{\vect{z}\geq\vect{0}}\ p\,F(\vect{z})-\vect{w}\cdot\vect{z}$};
+  }
+  % 2: demandas no condicionadas y oferta
+  \capa{2}{
+    \node[cajap] (X) at (0,-3.6) {\textbf{Demandas no condicionadas y oferta}\\ $\vect{z}^*=\vect{z}(p,\vect{w})$\\ $q^*=q(p,\vect{w})=F\big(\vect{z}(p,\vect{w})\big)$};
+    \draw[une] (P.south) -- node[right,nota] {resolviendo} (X.north);
+  }
+  % 3: función de beneficio y lema de Hotelling
+  \capa{3}{
+    \node[cajap] (V) at (0,-7.2) {\textbf{Función de beneficio}\\ $B(p,\vect{w})=p\,q(p,\vect{w})-\vect{w}\cdot\vect{z}(p,\vect{w})$};
+    \draw[une] ([xshift=0.6cm]X.south) -- node[right,nota,align=left] {función\\ valor} ([xshift=0.6cm]V.north);
+    \draw[une,tceemorado] ([xshift=-1.1cm]V.north) -- node[left,nota,align=right,text=tceemorado] {Lema de \textsc{Hotelling}\\ $q(p,\vect{w})=\dfrac{\partial B(p,\vect{w})}{\partial p}$\\[2pt] $z_i(p,\vect{w})=-\dfrac{\partial B(p,\vect{w})}{\partial w_i}$} ([xshift=-1.1cm]X.south);
+  }
+  % 4: minimización del coste
+  \capa{4}{
+    \node[text=tceeverde,align=center] at (13,1.65) {\textbf{Minimización del coste}\\ \footnotesize producción $q$ dada};
+    \node[inner sep=2pt,anchor=base west] (DO) at (13.05,0.3) {$\vect{w}\cdot\vect{z}$};
+    \node[inner sep=2pt,anchor=base east] (Dmin) at (13,0.3) {$\min\limits_{\vect{z}\geq\vect{0}}$};
+    \node[inner sep=2pt,anchor=base] (Dsa) at (13,-0.45) {s.a.\ $F(\vect{z})\geq q$};
+    \begin{scope}[on background layer]
+      \node[cajad,fit=(Dmin)(DO)(Dsa)] (D) {};
+    \end{scope}
+  }
+  % 5: demandas condicionadas
+  \capa{5}{
+    \node[cajad] (H) at (13,-3.6) {\textbf{Demandas condicionadas}\\ $\vect{z}^*=\vect{z}(\vect{w},q)$};
+    \draw[une] (D.south) -- node[left,nota] {resolviendo} (H.north);
+  }
+  % 6: función de costes y lema de Shephard
+  \capa{6}{
+    \node[cajad] (E) at (13,-7.2) {\textbf{Función de costes}\\ $C(\vect{w},q)=\vect{w}\cdot\vect{z}(\vect{w},q)$};
+    \draw[une] ([xshift=-0.6cm]H.south) -- node[left,nota,align=right] {función\\ valor} ([xshift=-0.6cm]E.north);
+    \draw[une,tceeverde] ([xshift=1.1cm]E.north) -- node[right,nota,align=left,text=tceeverde] {Lema de \textsc{Shephard}\\ $z_i(\vect{w},q)=\dfrac{\partial C(\vect{w},q)}{\partial w_i}$} ([xshift=1.1cm]H.south);
+  }
+  % 7: maximización del beneficio en dos etapas: usa C(w,q) y da q(p,w) con p = CMg
+  \capa{7}{
+    \node[text=black,align=center] at (6.5,4.25) {\textbf{Maximización del beneficio}\\ \footnotesize en dos etapas};
+    \node[cajac] (M2) at (6.5,2.75) {$\max\limits_{q\geq 0}\ p\,q-C(\vect{w},q)$};
+    \draw[une,rounded corners=8pt] (E.east) -- ++(1.7,0) |- node[pos=0.75,above,nota] {la función de costes, en el objetivo} (M2.east);
+    \draw[une] (M2.south west) -- node[pos=0.5,right,nota,align=left,xshift=4pt] {$p=\mathrm{CMg}(\vect{w},q)$\\ da $q(p,\vect{w})$} ([xshift=-0.5cm]X.north east);
+  }
+  % 8: identidades entre demandas y entre funciones valor
+  \capa{8}{
+    \draw[rel,black] (X.east) -- node[above,nota] {$\vect{z}(p,\vect{w})=\vect{z}\big(\vect{w},q(p,\vect{w})\big)$} node[below,notag] {la de mínimo coste para $q(p,\vect{w})$} (H.west);
+    \draw[rel,black] (E.west) -- node[above,nota] {$B(p,\vect{w})=p\,q(p,\vect{w})-C\big(\vect{w},q(p,\vect{w})\big)$} node[below,notag] {sin volver a minimizar} (V.east);
+  }
+  % 9: tecnología y su recuperación a partir de C y de B
+  \capa{9}{
+    \node[cajac] (T) at (6.5,-10.6) {\textbf{Tecnología}\\ $\mathcal{Y}$, \ $F(\vect{z})$, \ $V(q)$};
+    \draw[rec] (E.south) |- node[pos=0.25,right,nota,align=left,text=tceerojo] {recuperar $V(q)$\\ (\textsc{Shephard}-\textsc{Uzawa})} (T.east);
+    \draw[rec] (V.south) |- node[pos=0.25,left,nota,align=right,text=tceerojo] {recuperar $\mathcal{Y}$\\ (función soporte)} (T.west);
+  }
+\end{tikzpicture}
+\end{document}

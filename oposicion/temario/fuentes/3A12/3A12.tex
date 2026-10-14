@@ -1,0 +1,1480 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A12.bib}
+% Permite cortar las URL largas de la bibliografía en cualquier letra o número
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\tcetema[Teoría de los costes. Dualidad en la empresa]{3.A.12}{Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.}
+\tcefecha{14/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item En los años 70, ¿hacía falta un monopolio para producir electricidad barata en Estados Unidos? Laurits \autor{Christensen} y William \autor{Greene} estimaron la función de costes de las eléctricas estadounidenses y encontraron que en 1955 casi todas tenían economías de escala por aprovechar, pero que en 1970 el grueso de la electricidad lo producían empresas situadas en el tramo prácticamente plano del coste medio \parencite{ChristensenGreene1976Economies}. Su conclusión: fomentar la competencia en la generación no obligaba a renunciar a las economías de escala.
+  \item Detrás está la pregunta de esta exposición: ¿qué nos dicen los costes de una empresa sobre su tecnología, sobre su conducta y sobre el mercado en que opera, y cómo se miden?
+  \item La teoría neoclásica responde desde el \concepto{individualismo metodológico} \vertema{3.A.8}: la empresa es un agente que optimiza sometido a 3 tipos de restricciones:
+    \begin{itemize}
+    \item \emph{técnicas}: qué combinaciones de factores y productos son posibles; es la teoría de la producción \vertema{3.A.11};
+    \item \emph{económicas}: de entre las combinaciones técnicamente eficientes, cuál es la más barata dados los precios de los factores; es la \concepto{teoría de los costes}, objeto de esta exposición;
+    \item \emph{de mercado y organizativas}: cuánto producir y a qué precio según la estructura del mercado, y cómo se organiza la empresa \vertema{3.A.15} \vertema{3.A.16-3.A.19}.
+    \end{itemize}
+  \item Dos definiciones básicas. El \concepto{coste económico} de un factor es su \emph{coste de oportunidad}: el valor de la mejor alternativa a la que se renuncia al usar una unidad más. Si la empresa no la tiene, ha de comprarla o alquilarla a su precio de mercado; si ya la tiene, podría venderla o alquilarla a ese mismo precio. En ambos casos, con mercados competitivos, el coste de oportunidad es el precio de mercado, a diferencia del \emph{coste contable}, que solo recoge los desembolsos. La \concepto{función de costes}, $C(\vect{w},q)$, da el coste mínimo de producir $q$ unidades a los precios de los factores $\vect{w}$: supone \emph{eficiencia técnica} (se produce sobre la función de producción) y \emph{eficiencia económica} (se elige la combinación más barata).
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: la función de costes es el puente entre la tecnología y el mercado. De ella sale la oferta de la empresa competitiva (el tramo creciente del coste marginal) y, por agregación, la del mercado \vertema{3.A.16}, y su forma (economías de escala, subaditividad, economías de alcance) condiciona cuántas empresas caben en un mercado \vertema{3.A.17}.
+  \item \emph{Empírica}: gracias a la dualidad, la tecnología puede estudiarse a partir de costes y precios, que se observan, sin especificar la función de producción. Es la base de la estimación de las economías de escala y de la medición de la eficiencia de empresas y sectores.
+  \item \emph{De política económica}: los reguladores de redes fijan los ingresos permitidos comparando la eficiencia en costes de las empresas \vertema{3.A.20}; las autoridades de competencia usan los costes para juzgar si un precio es predatorio \parencite{AreedaTurner1975Predatory}, y las economías de escala explican buena parte del comercio intraindustrial \vertema{3.B.6}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item El germen de la teoría de los costes está en la segunda generación de marginalistas, hacia 1890. \textcite{Marshall1890Principles} distingue las economías \emph{internas}, que dependen de la organización y la gestión de cada empresa, de las \emph{externas}, que dependen del desarrollo general de la industria, y analiza los plazos de ajuste. Knut \autor{Wicksell} propone funciones de producción con tramos de rendimientos crecientes, constantes y decrecientes, que dan una curva de coste medio a largo plazo en forma de U: la libre entrada lleva a cada empresa a su mínimo, con beneficio nulo, idea que comparte con \autor{Barone} y \autor{Walras} \parencites{Wicksell1901Forelasningar}{Humphrey1997Algebraic}. \textcite{Viner1931Cost} construye las curvas de coste a corto y a largo plazo que hoy se dibujan.
+  \item El problema de minimización del coste se formaliza en los años 30 y 40 \parencites{Viner1931Cost}{Hicks1939Value}{Samuelson1947Foundations}. La \concepto{teoría de la dualidad} arranca con \textcite{Hotelling1932Edgeworth}, que obtiene la oferta y las demandas de factores derivando la función de beneficio; \textcite{Shephard1953Cost} demuestra que la función de costes y la de producción contienen la misma información y obtiene las demandas de factores derivando la de costes, y la generalizan \textcite{Uzawa1964Duality}, \textcite{Diewert1971Application,Diewert1974Applications} y \textcite{McFadden1978Cost}.
+  \item La dualidad abre la puerta a la estimación: \textcite{Nerlove1963Returns} estima una función de costes para la electricidad, \textcite{ChristensenJorgensonLau1973Transcendental} proponen la forma translogarítmica y \textcite{ChristensenGreene1976Economies} la aplican a los costes. En paralelo, \textcite{Farrell1957Measurement} define la eficiencia técnica y la asignativa, que medirán la frontera estocástica \parencites{AignerLovellSchmidt1977Formulation}{MeeusenVandenBroeck1977Efficiency} y el análisis envolvente de datos \parencite{CharnesCooperRhodes1978Measuring}.
+  \item Desde la organización industrial, \textcite{Stigler1939Production} cuestiona la forma en U del coste medio y \textcite{Leibenstein1966Allocative}, que las empresas minimicen el coste.
+  \item Un aviso sobre el término \concepto{dual}. En sentido estricto, designa la relación entre dos problemas que intercambian la función objetivo y la restricción: minimizar el coste de producir una cantidad dada y maximizar la producción con un coste dado. En sentido amplio se aplica a cualquier par de problemas o conceptos formalmente parecidos salvo por el papel invertido de objetivo y restricción, de cantidades y precios o de máximo y mínimo \parencites{MasColellWhinstonGreen1995}{Blume2008Duality}. En la teoría de la empresa es más habitual el sentido amplio: se habla de «dualidad» entre la maximización del beneficio y la minimización del coste, aunque no son duales en sentido estricto, porque el primero incorpora los ingresos, y entre la función de costes y la tecnología que se recupera a partir de ella. Por eso aquí se escribe «dualidad» entre comillas cuando se trata del primer par.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Cómo elige la empresa la forma más barata de producir y qué información contiene la función de costes que resulta?
+  \item ¿Qué relación hay entre maximizar el beneficio, minimizar el coste y la tecnología? ¿En qué sentido son «duales»? ¿Basta conocer los costes para conocer la tecnología?
+  \item ¿Cómo responden los costes y la demanda de factores a la producción, a los precios de los factores y al plazo?
+  \item ¿Son los costes medios en U? ¿Minimizan costes las empresas?
+  \item ¿Cómo se estiman los costes y se mide la eficiencia con datos?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición sigue cuatro bloques.
+  \begin{itemize}
+  \item \concepto{I. «Dualidad» entre maximización del beneficio y minimización del coste}: partiremos de los ingredientes comunes (I.1); plantearemos la maximización del beneficio y, sobre todo, la minimización del coste, de la que sale la función de costes, con sus propiedades y el lema de \autor{Shephard} (I.2), y estableceremos las relaciones de «dualidad» entre los dos problemas y con la tecnología (I.3).
+  \item \concepto{II. Estática comparativa y análisis de plazos}: veremos cómo responden las demandas de factores y la función de costes a cambios en la producción y en los precios de los factores (II.1), y pasaremos del largo al corto plazo (II.2).
+  \item \concepto{III. Extensiones a la teoría neoclásica de los costes}: qué implica la forma de los costes para la estructura del mercado, las economías externas, las críticas de la organización industrial a sus supuestos y otras extensiones.
+  \item \concepto{IV. Aplicaciones empíricas}: cómo la dualidad permite estimar funciones de costes y economías de escala y medir la eficiencia de las empresas.
+  \end{itemize}
+  Vamos de la herramienta a su uso y de la teoría a los datos: las dos preguntas del bloque III (¿son los costes en U?, ¿minimizan costes las empresas?) son empíricas, y las responde el IV.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.12. Teoría de los costes. Dualidad en la empresa. Aplicaciones empíricas}\\[2pt]
+Introducción\\
+I. «Dualidad» MB--MC. Función de costes (largo plazo)\\
+\hspace*{1.5em}1. Ingredientes: $\mathcal{Y}$, $F(\vect{z})$, $p$, $\vect{w}$ (papeles cambiados)\\
+\hspace*{1.5em}2. MB $\to\vect{z}(p,\vect{w})$, $q(p,\vect{w})$, $B(p,\vect{w})$ \;|\; MC $\to\vect{z}(\vect{w},q)$, $C(\vect{w},q)$\\
+\hspace*{1.5em}3. \autor{Hotelling} · \autor{Shephard} · $p=\mathrm{CMg}$ · $C\leftrightarrow F$ · $B\leftrightarrow\mathcal{Y}$\\
+II. Estática comparativa y plazos\\
+\hspace*{1.5em}1. $\Delta q$: senda de expansión, $\varepsilon_{C,q}$, economías de escala; $\Delta\vect{w}$: efecto sustitución + efecto escala\\
+\hspace*{1.5em}2. Corto y largo plazo: envolvente, \autor{Le Châtelier}-\autor{Samuelson}\\
+III. Extensiones: estructura de mercado, economías externas, \autor{Stigler}, \autor{Leibenstein}, otras\\
+IV. Aplicaciones empíricas: estimación por dualidad, economías de escala, eficiencia\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+La exposición va de los dos problemas de la empresa y su «dualidad» (I) a cómo cambian los costes (II), a las extensiones y críticas (III) y a su estimación (IV). Reparto del cante: introducción, 2,5 minutos; I, 9 (I.1, 1,5; I.2, 5; I.3, 2,5); II, 8,5 (II.1, 4; II.2, 4,5); III, 3,5; IV, 5,5, y conclusión, 1. El bloque I se centra en la minimización del coste, porque el título solo pide costes; el II va rápido hasta los plazos. Conviene escribir este esquema en la pizarra al empezar.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{«Dualidad» entre maximización de beneficios\newline y minimización de costes. Obtención de la función de costes.\newline Análisis de largo plazo}
+\minutos{9}
+
+\begin{notaopositor}
+En el cante: los ingredientes comunes, con la tabla de papeles cambiados (1,5 minutos); la maximización del beneficio en una etapa, solo el planteamiento, la condición $p\,\mathrm{PMg}_i=w_i$ y las tres funciones que da (1,5), y la minimización del coste, con su gráfico, la función de costes, sus propiedades, el lema de \autor{Shephard} y la matriz de sustitución (3,5); las relaciones de «dualidad», que culminan en el gráfico conjunto y el esquema de la empresa, y la recuperación de la tecnología (2,5). En la pizarra, el esquema de dualidad se construye por capas a lo largo de todo el bloque; la función de costes se escribe y no se borra, porque el bloque~II empieza por ella. Las condiciones de \autor{Kuhn}-\autor{Tucker} completas y las de segundo orden (anexo~\ref{anexo:kt}), las demostraciones de los lemas de \autor{Hotelling} y \autor{Shephard} (anexo~\ref{anexo:envolvente}) y el problema dual en sentido estricto (anexo~\ref{anexo:segura}) son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item Este bloque responde a las dos primeras preguntas. Su conclusión anticipada: minimizar el coste de cada nivel de producción y elegir después ese nivel es lo mismo que maximizar el beneficio, y la función de costes que resulta contiene toda la información económicamente relevante de la tecnología.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Ingredientes comunes del problema primal y el problema dual}
+
+\begin{itemize}
+\item La \concepto{eficiencia técnica} no basta para decidir. La teoría de la producción descarta los métodos técnicamente ineficientes,\footnote{Un proceso es técnicamente eficiente si no hay otro que obtenga la misma producción con menos de algún factor (y no más de ninguno) o más producción con los mismos factores.} pero deja muchos eficientes: todos los puntos de una isocuanta \vertema{3.A.11}. Para elegir entre ellos hace falta \emph{información económica}, los precios de los factores: dentro de una isocuanta, resultan más atractivas las combinaciones más intensivas en el factor relativamente más barato. La teoría de los costes introduce así la \concepto{eficiencia económica}: producir cada nivel de producto de la forma más barata.
+\item Para ello partimos de un productor que actúa como \emph{optimizador condicionado} y que contrata los factores en mercados competitivos, a precios dados. Su problema puede abordarse con dos enfoques que parten de los mismos ingredientes: la \concepto{maximización del beneficio} (MB) y la \concepto{minimización del coste} (MC). El enfoque dual requiere exactamente la misma especificación del conjunto tecnológico, de la función de producción y de los precios que el problema del beneficio (gráfico~\ref{fig:esquema-ingredientes-empresa}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{De la tecnología a las demandas de factores: los mismos ingredientes, con los papeles cambiados}\label{fig:esquema-ingredientes-empresa}
+\grafico[0.95\textwidth]{esquema-ingredientes-empresa}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item Recorremos el esquema parte por parte:
+  \begin{itemize}
+  \item \concepto{Conjunto tecnológico}: el conjunto de posibilidades de producción $\mathcal{Y}$, que reúne los planes de producción que permite la tecnología. Se le exigen los axiomas de \emph{no vacío}, \emph{cerrado}, \emph{eliminación gratuita}, \emph{imposibilidad de producción gratuita} y \emph{posibilidad de inacción}, y, para que la función de producción sea de buen comportamiento, \emph{convexidad} \vertema{3.A.11}.
+  \item \concepto{Función de producción}: con un solo producto, la frontera de $\mathcal{Y}$ es la función de producción $q=F(\vect{z})$, con $\vect{z}=(z_L,z_K)$, y para cada $q$ el \concepto{conjunto de requerimientos de factores} $V(q)=\{\vect{z}\geq\vect{0}:\ F(\vect{z})\geq q\}$ tiene por frontera la isocuanta \parencite[cap.~1]{Varian1992Microeconomic}. Sus propiedades:
+    \begin{enumerate}
+    \item recoge solo las combinaciones \emph{técnicamente eficientes} y es cardinal;
+    \item pasa por el origen, $F(\vect{0})=0$, por la imposibilidad de producción gratuita y la posibilidad de inacción;
+    \item es \emph{no decreciente} en los factores, por la eliminación gratuita;
+    \item se supone \emph{continua y dos veces diferenciable}, para poder usar el cálculo diferencial;\footnote{Es un supuesto instrumental: exige que los factores sean sustituibles de forma continua, que haya infinitas técnicas y que el producto sea perfectamente divisible.}
+    \item se supone \emph{estrictamente cuasicóncava}: las isocuantas son estrictamente convexas, porque los factores son en cierto grado complementarios.\footnote{Como la convexidad estricta de las preferencias en el consumidor \vertema{3.A.8}. Si dos factores son en cierto grado complementarios, con poco de uno se produce poco aunque el otro abunde, y la media de dos combinaciones extremas produce más que al menos una de ellas \parencite[cap.~3]{JehleReny2011Advanced}. En la Cobb-Douglas $q=A\,z_K^{\alpha}z_L^{\beta}$, la productividad marginal del capital aumenta con el trabajo, $\partial^2F/\partial z_K\partial z_L=\alpha\beta\,q/(z_Kz_L)>0$, y disminuye con el propio capital si $\alpha<1$.}
+    \end{enumerate}
+    Para el problema del beneficio hace falta, además, que $F$ sea \emph{estrictamente cóncava} (rendimientos estrictamente decrecientes a escala); para el del coste basta la cuasiconcavidad, y por eso la función de costes existe con cualquier tipo de rendimientos (I.2).
+  \item \concepto{Precios}: la empresa es precio-aceptante en los mercados de factores, con precios $\vect{w}=(w_L,w_K)\gg\vect{0}$, y el coste de un plan es $\vect{w}\cdot\vect{z}$. En el problema del beneficio, también lo es en el del producto, a un precio $p>0$, y sus ingresos son $p\,q$.
+  \end{itemize}
+\item Los \concepto{supuestos} son también comunes: contexto estático, información perfecta, producto homogéneo, una sola planta y un solo producto, y \emph{largo plazo}: todos los factores son variables. Lo único que cambia es el papel de cada ingrediente (tabla~\ref{tab:ingredientes}).
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Los mismos ingredientes, con los papeles cambiados}\label{tab:ingredientes}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|>{\raggedright\arraybackslash}p{0.35\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido} & \textbf{Maximización del beneficio} & \textbf{Minimización del coste}\\
+\hline
+Función objetivo & beneficio $p\,F(\vect{z})-\vect{w}\cdot\vect{z}$ (se maximiza) & coste $\vect{w}\cdot\vect{z}$ (se minimiza)\\
+\hline
+Restricción & la tecnología, dentro de la función objetivo: $q=F(\vect{z})$; $\vect{z}\geq\vect{0}$ & de producción: $F(\vect{z})\geq q$\\
+\hline
+Parámetros & precios del producto $p$ y de los factores $\vect{w}$ & precios de los factores $\vect{w}$ y producción $q$\\
+\hline
+Mercado del producto & precio-aceptante & cualquier estructura (no aparece $p$)\\
+\hline
+Solución & demandas no condicionadas $\vect{z}(p,\vect{w})$ y oferta $q(p,\vect{w})$ & demandas condicionadas $\vect{z}(\vect{w},q)$\\
+\hline
+Función valor & función de beneficio $B(p,\vect{w})$ & función de costes $C(\vect{w},q)$\\
+\hline
+\end{tabular}
+\fuente{elaboración propia basada en \textcite[cap.~5]{MasColellWhinstonGreen1995} y \textcite[cap.~7]{MatePerez2007Microeconomia}.}
+\end{table}
+
+\begin{itemize}
+\item A diferencia del consumidor \vertema{3.A.9}, los dos problemas no son un primal y su dual en sentido estricto: el del beneficio contiene más información (los ingresos). En sentido estricto, el dual de minimizar el coste de un nivel de producción es maximizar la producción con un coste dado, el par que replica exactamente la dualidad del consumidor \parencite{Segura1986Analisis}; es correcto, pero poco habitual, y se resume en el anexo~\ref{anexo:segura}. En la teoría de la empresa es más habitual, y más útil, la «dualidad» en sentido amplio entre maximizar el beneficio y minimizar el coste. Es la que seguimos.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Problemas primal y dual}
+
+\subsubsection{Problema de maximización del beneficio en una etapa}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El objetivo último de la empresa es el beneficio, $B\equiv$ ingresos $-$ costes. Empezamos por él porque contiene toda la información (ingresos y costes), aunque sea el caso menos general: solo vale para la empresa precio-aceptante en todos sus mercados, el del producto y los de los factores. Al pasar después a la minimización del coste se pierde información (los ingresos), que depende de la estructura del mercado del producto, pero se gana generalidad. Como el título solo pide costes, este problema se presenta de forma compacta.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los ingredientes de I.1, con la empresa precio-aceptante en el mercado del producto ($p$) y en los de factores ($\vect{w}$), y $F$ estrictamente cóncava.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Analítico}. La empresa elige directamente los factores, \emph{en una etapa}:
+  \begin{equation}
+  \max_{\vect{z}\geq\vect{0}}\ p\,F(\vect{z})-\vect{w}\cdot\vect{z}. \label{eq:mb}
+  \end{equation}
+  \begin{itemize}
+  \item Como hay restricciones de no negatividad, se resuelve por el método de \autor{Kuhn}-\autor{Tucker}: $p\,F_i(\vect{z}^*)-w_i\leq 0$, $z_i^*\geq 0$ y $z_i^*\big(p\,F_i(\vect{z}^*)-w_i\big)=0$ para cada factor (anexo~\ref{anexo:kt}). En una solución interior,
+    \begin{equation}
+    p\,\mathrm{PMg}_i=w_i\quad\forall i\qquad\Longrightarrow\qquad \mathrm{RMST}_{LK}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}=\frac{w_L}{w_K}: \label{eq:cpo-mb}
+    \end{equation}
+    cada factor se contrata hasta que el \emph{valor de su producto marginal} iguala su precio, y la relación marginal de sustitución técnica, la cantidad de un factor a la que puede renunciarse por una unidad más del otro sin cambiar la producción, iguala el precio relativo de los factores. En el óptimo, a la empresa le da igual contratar una unidad más de capital o de trabajo, porque la productividad marginal por euro gastado es la misma.
+  \item \emph{Condiciones de segundo orden}: la matriz hessiana del beneficio respecto a $\vect{z}$ es $p\,D^2F(\vect{z}^*)=\big(p\,F_{ij}\big)$, que debe ser semidefinida negativa en el óptimo. Como $p>0$, depende solo de $D^2F$: con $F$ cóncava las condiciones de primer orden son suficientes, y con $F$ estrictamente cóncava la solución es única (anexo~\ref{anexo:hessiana}).
+  \item \emph{Por qué se exige concavidad}: si hubiera rendimientos crecientes a escala y un plan con beneficio positivo, ampliarlo proporcionalmente multiplicaría el beneficio y el problema no tendría solución; con rendimientos constantes, el beneficio máximo es nulo y la escala queda indeterminada \parencite[§5.C]{MasColellWhinstonGreen1995}. La maximización del beneficio de una empresa precio-aceptante exige, por tanto, rendimientos decrecientes, al menos a partir de cierta escala.
+  \end{itemize}
+\item \emph{Gráfico}, con un solo factor (gráfico~\ref{fig:mb}).
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Interpretación gráfica con un solo factor.} Con $q=F(z)$ y $F''<0$, las \emph{rectas de isobeneficio} $B^0=p\,q-w\,z$, es decir, $q=B^0/p+(w/p)\,z$, tienen pendiente $w/p$ y cortan el eje vertical en $B^0/p$: cuanto más arriba, más beneficio. El óptimo $E$ está en la isobeneficio más alta que toca la función de producción, donde $F'(z^*)=w/p$. El punto $E$ determina la demanda del factor $z(p,w)$, la oferta $q(p,w)=F\big(z(p,w)\big)$ y el beneficio máximo $B(p,w)$, que se lee en la ordenada en el origen de esa isobeneficio, $B(p,w)/p$.
+\end{anotaciones}
+
+\begin{figure}[H]
+\centering
+\caption{Maximización del beneficio con un factor: la isobeneficio más alta que toca la función de producción}\label{fig:mb}
+\grafico[0.5\textwidth]{mb-un-factor}
+\fuente{elaboración propia a partir de \textcite[23]{Perez2004Microeconomia}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones: demandas no condicionadas, oferta y función de beneficio}
+
+\begin{itemize}
+\item La solución da las \concepto{demandas no condicionadas de factores} y la \concepto{función de oferta}:
+  \begin{equation}
+  \vect{z}^*=\vect{z}(p,\vect{w})=\begin{pmatrix} z_1(p,w_1,\dots,w_n)\\ \vdots\\ z_n(p,w_1,\dots,w_n)\end{pmatrix},\qquad q(p,\vect{w})=F\big(\vect{z}(p,\vect{w})\big). \label{eq:no-condicionadas}
+  \end{equation}
+  Sus \concepto{propiedades} \parencites[prop.~5.C.1]{MasColellWhinstonGreen1995}[26]{Perez2004Microeconomia}:
+  \begin{enumerate}
+  \item \emph{existen y son únicas}, con $F$ estrictamente cóncava;
+  \item son \emph{continuas} en $(p,\vect{w})$, por el teorema del máximo de \autor{Berge}, y, con cierta generalidad, diferenciables (teorema de la función implícita);
+  \item son \emph{homogéneas de grado cero} en $(p,\vect{w})$: $\vect{z}(\kappa p,\kappa\vect{w})=\vect{z}(p,\vect{w})$ y $q(\kappa p,\kappa\vect{w})=q(p,\vect{w})$ para todo $\kappa>0$. Si todos los precios se multiplican por la misma constante, el plan óptimo no cambia.
+  \end{enumerate}
+\item Sustituyéndolas en el objetivo se obtiene la función valor del problema, la \concepto{función de beneficio}:
+  \begin{equation}
+  B(p,\vect{w})=p\,q(p,\vect{w})-\vect{w}\cdot\vect{z}(p,\vect{w})=\max_{\vect{z}\geq\vect{0}}\ \big\{p\,F(\vect{z})-\vect{w}\cdot\vect{z}\big\}. \label{eq:funcion-beneficio}
+  \end{equation}
+  Sus \concepto{propiedades} \parencites[prop.~5.C.1]{MasColellWhinstonGreen1995}[24]{Perez2004Microeconomia}:
+  \begin{enumerate}
+  \item es \emph{continua} en $(p,\vect{w})$;
+  \item es \emph{homogénea de grado uno} en $(p,\vect{w})$: $B(\kappa p,\kappa\vect{w})=\kappa\,B(p,\vect{w})$;
+  \item es \emph{no decreciente en $p$} (estrictamente creciente si $q(p,\vect{w})>0$) y \emph{no creciente en cada $w_i$};
+  \item es \emph{convexa} en $(p,\vect{w})$: si la empresa mantuviera el plan inicial, su beneficio variaría linealmente con los precios; como puede reoptimizar, gana al menos eso;
+  \item cumple el \concepto{lema de \autor{Hotelling}} \parencite{Hotelling1932Edgeworth}: si $B$ es diferenciable,
+    \begin{equation}
+    \frac{\partial B(p,\vect{w})}{\partial p}=q(p,\vect{w}),\qquad \frac{\partial B(p,\vect{w})}{\partial w_i}=-z_i(p,\vect{w}). \label{eq:hotelling}
+    \end{equation}
+    La oferta y las demandas no condicionadas se obtienen derivando la función de beneficio. Es el análogo en la empresa de la identidad de \autor{Roy} (demostración en el anexo~\ref{anexo:envolvente});
+  \item las dos propiedades anteriores dan la matriz $D^2B(p,\vect{w})$ de segundas derivadas de $B$, que por \autor{Hotelling} reúne las derivadas de la oferta y de las demandas (con signo menos) respecto a los precios:
+    \begin{itemize}
+    \item es \emph{simétrica} (teorema de \autor{Schwarz} o de \autor{Young}):
+      \begin{equation*}
+      \frac{\partial z_i(p,\vect{w})}{\partial w_j}=\frac{\partial z_j(p,\vect{w})}{\partial w_i},\qquad \frac{\partial q(p,\vect{w})}{\partial w_i}=-\frac{\partial z_i(p,\vect{w})}{\partial p}.
+      \end{equation*}
+      El efecto del precio de un factor sobre la oferta es igual, y de signo contrario, al del precio del producto sobre la demanda de ese factor;
+    \item es \emph{semidefinida positiva}, por la convexidad de $B$, y los elementos de su diagonal son no negativos:
+      \begin{equation}
+      \frac{\partial q(p,\vect{w})}{\partial p}\geq 0,\qquad \frac{\partial z_i(p,\vect{w})}{\partial w_i}\leq 0. \label{eq:ley-oferta}
+      \end{equation}
+      La oferta nunca tiene pendiente negativa (\emph{ley de la oferta}) y las demandas no condicionadas nunca crecen con su propio precio. Como la empresa no tiene restricción presupuestaria, no hay efecto renta: \emph{no existen factores \autor{Giffen}}, a diferencia de los bienes del consumidor \vertema{3.A.8}. Estas demandas son la base de la demanda derivada de trabajo \vertema{3.A.25}.
+    \end{itemize}
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El problema del beneficio da en un paso la oferta, las demandas de factores y sus propiedades, pero solo para la empresa precio-aceptante y con rendimientos decrecientes. Para estudiar los costes de cualquier empresa, sea cual sea su mercado, conviene aislar la parte del problema que no depende de los ingresos: la minimización del coste.
+\end{itemize}
+
+\subsubsection{Problema dual: minimización del coste}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Fijada la producción $q$, ¿cuál es la combinación de factores más barata para obtenerla? Es el problema central de la teoría de los costes: no depende de los ingresos y, por tanto, vale para la empresa competitiva, para el monopolista o para el oligopolista, siempre que sean precio-aceptantes en los mercados de factores. Su función valor, la función de costes, y la relación de esta con la tecnología las desarrolla \textcite{Shephard1953Cost}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los ingredientes de I.1: tecnología con $F$ estrictamente cuasicóncava (no hace falta concavidad) y precio-aceptación en los mercados de factores. La estructura del mercado del producto es irrelevante, porque el precio del producto no aparece en el problema.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Analítico}. El \concepto{problema de minimización del coste} es
+  \begin{equation}
+  \min_{\vect{z}}\ \vect{w}\cdot\vect{z}\quad\text{s.a.}\quad F(\vect{z})\geq q,\quad \vect{z}\geq\vect{0}, \label{eq:mc}
+  \end{equation}
+  con $q>0$ y $\vect{w}\gg\vect{0}$. Existe solución: aunque $V(q)$ no está acotado, basta buscarla entre las combinaciones que no cuestan más que una cualquiera que produzca $q$, que forman un conjunto compacto.
+  \begin{itemize}
+  \item Se resuelve con el método de \autor{Kuhn}-\autor{Tucker}, a partir de la lagrangiana
+    \begin{equation}
+    \mathcal{L}=\vect{w}\cdot\vect{z}+\mu\big(q-F(\vect{z})\big). \label{eq:lagrangiana-mc}
+    \end{equation}
+  \item Condiciones de primer orden: $w_i-\mu F_i(\vect{z}^*)\geq 0$, $z_i^*\geq 0$ y $z_i^*\big(w_i-\mu F_i(\vect{z}^*)\big)=0$ para cada factor, y $F(\vect{z}^*)=q$: la restricción se satura, porque si sobrara producción podría usarse algo menos de un factor y ahorrar. En una solución interior,
+    \begin{equation}
+    \frac{w_L}{\mathrm{PMg}_L}=\frac{w_K}{\mathrm{PMg}_K}=\mu,\qquad \mathrm{RMST}_{LK}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}=\frac{w_L}{w_K}: \label{eq:cpo-mc}
+    \end{equation}
+    el coste de obtener una unidad más de producto con cualquier factor ($w_i/\mathrm{PMg}_i$, el precio del factor dividido por su productividad marginal) es el mismo, y la RMST iguala el precio relativo de los factores, la \emph{misma} condición de tangencia que en la maximización del beneficio.
+  \item El multiplicador $\mu$ es el precio sombra de la producción exigida: lo que aumenta el coste mínimo cuando se exige producir marginalmente más. Por el teorema de la envolvente, $\mu^*=\partial C(\vect{w},q)/\partial q$: es el \concepto{coste marginal}. Es el análogo del multiplicador del problema dual del consumidor, el coste marginal de la utilidad \vertema{3.A.9}.
+  \item \emph{Condiciones de segundo orden}: con dos factores, el hessiano orlado de $F$,
+    \begin{equation*}
+    \overline{H}=\begin{pmatrix}0&F_L&F_K\\F_L&F_{LL}&F_{LK}\\F_K&F_{KL}&F_{KK}\end{pmatrix},
+    \end{equation*}
+    debe cumplir $|\overline{H}|>0$ en el óptimo, lo que equivale a isocuantas estrictamente convexas en ese punto; con $F$ estrictamente cuasicóncava se cumple y la solución es única. Es la misma condición que en el problema del consumidor (anexo~\ref{anexo:kt}).
+  \end{itemize}
+\item \emph{Gráfico} (gráfico~\ref{fig:mc}): se dibuja la isocuanta del nivel exigido, $q$, que queda fija, y las \emph{rectas isocoste} $w_Lz_L+w_Kz_K=\overline{C}$, paralelas entre sí, de pendiente $-w_L/w_K$, que unen las combinaciones con el mismo coste. Se desplazan hacia el origen hasta la más baja que toca la isocuanta. El óptimo $\vect{z}^*$ está en la tangencia: la pendiente de la isocuanta (la RMST) iguala la de la isocoste (el precio relativo). En puntos como $\vect{z}'$ o $\vect{z}''$, de la misma isocuanta, se produce lo mismo con un coste mayor.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Minimización del coste: la isocoste más baja que alcanza la producción $q$}\label{fig:mc}
+\grafico[0.5\textwidth]{mc}
+\fuente{elaboración propia basada en \textcite[cap.~7]{MatePerez2007Microeconomia} y \textcite[§5.C]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones: demandas condicionadas y función de costes}
+
+\begin{itemize}
+\item La solución da las \concepto{demandas condicionadas de factores}, condicionadas a producir $q$:
+  \begin{equation}
+  \vect{z}^*=\vect{z}(\vect{w},q)=\begin{pmatrix} z_1(w_1,\dots,w_n,q)\\ \vdots\\ z_n(w_1,\dots,w_n,q)\end{pmatrix}. \label{eq:condicionadas}
+  \end{equation}
+  Son las análogas de las demandas \emph{hicksianas} del consumidor, no de las marshallianas \vertema{3.A.9}: el parámetro es la producción, como allí la utilidad. Las demandas condicionadas y las no condicionadas se distinguen por sus argumentos, que se escriben siempre. Sus \concepto{propiedades} \parencites[prop.~5.C.2]{MasColellWhinstonGreen1995}[15]{Perez2004Microeconomia}:
+  \begin{enumerate}
+  \item \emph{existen y son únicas}, con $F$ estrictamente cuasicóncava;
+  \item son \emph{continuas} en $(\vect{w},q)$ y, con cierta generalidad, diferenciables;
+  \item son \emph{homogéneas de grado cero en $\vect{w}$}: $\vect{z}(\kappa\vect{w},q)=\vect{z}(\vect{w},q)$ para todo $\kappa>0$. Si todos los precios de los factores se multiplican por $\kappa$, la combinación más barata no cambia. No lo son en $q$: para producir el doble hacen falta más factores;
+  \item \emph{no hay exceso de producción}: $F\big(\vect{z}(\vect{w},q)\big)=q$;
+  \item cumplen la \concepto{ley de la demanda condicionada}: $(\vect{w}'-\vect{w})\cdot\big(\vect{z}(\vect{w}',q)-\vect{z}(\vect{w},q)\big)\leq 0$ y, en particular, $\partial z_i(\vect{w},q)/\partial w_i\leq 0$. Se debe a la concavidad de la función de costes, como veremos enseguida.
+  \end{enumerate}
+\item Sustituyéndolas en la función objetivo se obtiene la función valor del problema, la \concepto{función de costes}: el coste mínimo de producir $q$ a los precios $\vect{w}$,
+  \begin{equation}
+  \boxed{C(\vect{w},q)=\vect{w}\cdot\vect{z}(\vect{w},q)=\min_{\vect{z}\geq\vect{0}}\big\{\vect{w}\cdot\vect{z}:\ F(\vect{z})\geq q\big\}} \label{eq:funcion-costes}
+  \end{equation}
+  Es el concepto central de la exposición: supone eficiencia técnica (se produce sobre $F$) y económica (con la combinación más barata). Sus \concepto{propiedades} \parencite[prop.~5.C.2]{MasColellWhinstonGreen1995}:
+  \begin{enumerate}
+  \item es \emph{continua} en $(\vect{w},q)$, y $C(\vect{w},0)=0$ a largo plazo, por la posibilidad de inacción;
+  \item es \emph{homogénea de grado uno en $\vect{w}$}: $C(\kappa\vect{w},q)=\kappa\,C(\vect{w},q)$. Si todos los precios de los factores se multiplican por $\kappa>0$, la combinación óptima no cambia y su coste se multiplica por $\kappa$;
+  \item es \emph{estrictamente creciente en $q$}: producir más siempre cuesta más;
+  \item es \emph{no decreciente en cada $w_i$}: el encarecimiento de un factor nunca abarata la producción (la deja igual si el factor no se usa);
+  \item es \emph{cóncava en $\vect{w}$}. Si los precios pasan de $\vect{w}$ a $\vect{w}'$ y la empresa se comportara de forma «pasiva», manteniendo la combinación inicial $\vect{z}(\vect{w},q)$, su coste variaría \emph{linealmente} con los precios, $\vect{w}'\cdot\vect{z}(\vect{w},q)$. Como puede sustituir el factor que se encarece por el que se abarata, gasta como mucho eso:
+    \begin{equation}
+    C(\vect{w}',q)\leq\vect{w}'\cdot\vect{z}(\vect{w},q)=C(\vect{w},q)+\vect{z}(\vect{w},q)\cdot(\vect{w}'-\vect{w}). \label{eq:concavidad-c}
+    \end{equation}
+    La función de costes queda siempre por debajo de su plano tangente, y eso es la concavidad (gráfico~\ref{fig:concavidad-c}). No significa que el coste suba menos que proporcionalmente cuando suben \emph{todos} los precios en la misma proporción (entonces sube exactamente en esa proporción, por la propiedad~2), sino que, cuando cambian los precios relativos, la sustitución abarata la combinación respecto a la inicial; cuanto mayor es la elasticidad de sustitución entre los factores, más se separa la función de su plano tangente \vertema{3.A.11};
+  \item cumple el \concepto{lema de \autor{Shephard}} \parencite{Shephard1953Cost}: si $C$ es diferenciable en $\vect{w}$,
+    \begin{equation}
+    \boxed{z_i(\vect{w},q)=\frac{\partial C(\vect{w},q)}{\partial w_i},\qquad i=1,\dots,n.} \label{eq:shephard}
+    \end{equation}
+    Las demandas condicionadas se obtienen derivando la función de costes. Intuición: si $w_i$ sube un euro, la combinación óptima apenas cambia en primer orden (teorema de la envolvente) y el coste sube $z_i$ euros. La demostración está en el anexo~\ref{anexo:envolvente};
+  \item las dos propiedades anteriores dan la \concepto{matriz de sustitución de factores}, $S(\vect{w},q)$: la matriz hessiana de $C(\vect{w},q)$ respecto a los precios de los factores, es decir, de \emph{segundas} derivadas de la función de costes y, por el lema de \autor{Shephard}, de \emph{primeras} derivadas de las demandas condicionadas:
+    \begin{equation}
+    S(\vect{w},q)=\begin{pmatrix} S_{11} & \cdots & S_{1n}\\ \vdots & \ddots & \vdots\\ S_{n1} & \cdots & S_{nn}\end{pmatrix},\qquad S_{ij}\equiv\frac{\partial^2C(\vect{w},q)}{\partial w_i\,\partial w_j}\ \underset{\text{Shephard}}{=}\ \frac{\partial z_i(\vect{w},q)}{\partial w_j},\qquad i,j=1,\dots,n. \label{eq:matriz-sustitucion}
+    \end{equation}
+    \begin{itemize}
+    \item Es \emph{simétrica}, $S_{ij}=S_{ji}$, porque el orden de derivación no importa (teorema de \autor{Schwarz} o de \autor{Young}): el efecto del precio de un factor sobre la demanda condicionada de otro es igual al efecto recíproco.
+    \item Es \emph{semidefinida negativa}, porque $C$ es cóncava en $\vect{w}$: los elementos de su diagonal principal son \emph{no positivos}, $S_{ii}=\partial z_i(\vect{w},q)/\partial w_i\leq 0$. Si sube el precio de un factor, su demanda condicionada disminuye o se mantiene, pero nunca aumenta: es la ley de la demanda condicionada.
+    \item Cumple $S(\vect{w},q)\,\vect{w}=\vect{0}$, por la homogeneidad de grado cero de $\vect{z}(\vect{w},q)$ en $\vect{w}$ (teorema de \autor{Euler}). Con dos factores, la consecuencia es que son necesariamente \emph{sustitutivos netos}: $\partial z_L(\vect{w},q)/\partial w_K\geq 0$.
+    \end{itemize}
+    Las demostraciones son las mismas que las de la función de gasto y la matriz de \autor{Slutsky} \vertema{3.A.9}.
+  \end{enumerate}
+\item \emph{Ejemplos} \vertema{3.A.11}: con \autor{Leontief}, $q=\min\{z_K/a;\,z_L/b\}$, la empresa usa siempre las proporciones fijas y $C(\vect{w},q)=(a\,w_K+b\,w_L)\,q$; con Cobb-Douglas, $q=A\,z_K^{\alpha}z_L^{\beta}$ y $k\equiv\alpha+\beta$ el grado de homogeneidad,
+  \begin{equation}
+  C(\vect{w},q)=k\left(\frac{q}{A}\right)^{1/k}\left(\frac{w_K}{\alpha}\right)^{\alpha/k}\left(\frac{w_L}{\beta}\right)^{\beta/k}, \label{eq:coste-cobb-douglas}
+  \end{equation}
+  y por \autor{Shephard} $w_Kz_K(\vect{w},q)/C(\vect{w},q)=\alpha/k$: la participación de cada factor en el coste es constante. Si $F$ es \emph{homotética}, la función de costes es separable, $C(\vect{w},q)=\phi(q)\,c(\vect{w})$, con $c(\vect{w})$ el coste de una unidad; si es homogénea de grado $k$, $C(\vect{w},q)=q^{1/k}c(\vect{w})$ \parencite[cap.~5]{Varian1992Microeconomic}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Concavidad de la función de costes en el precio de un factor y lema de \autor{Shephard}}\label{fig:concavidad-c}
+\grafico[0.55\textwidth]{concavidad-c}
+\fuente{elaboración propia basada en \textcite[§5.C]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item Las propiedades de los dos problemas forman pares (tabla~\ref{tab:pares-duales}): cada propiedad de la función de beneficio tiene su correspondiente en la función de costes.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Propiedades de las funciones de beneficio y de costes}\label{tab:pares-duales}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.44\textwidth}|>{\raggedright\arraybackslash}p{0.44\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido}\textbf{Maximización del beneficio: $B(p,\vect{w})$} & \textbf{Minimización del coste: $C(\vect{w},q)$}\\
+\hline
+$\vect{z}(p,\vect{w})$ y $q(p,\vect{w})$ homogéneas de grado 0 en $(p,\vect{w})$ & $\vect{z}(\vect{w},q)$ homogénea de grado 0 en $\vect{w}$\\
+\hline
+$B$ homogénea de grado 1 en $(p,\vect{w})$ & $C$ homogénea de grado 1 en $\vect{w}$\\
+\hline
+$B$ no decreciente en $p$ y no creciente en $\vect{w}$ & $C$ estrictamente creciente en $q$ y no decreciente en $\vect{w}$\\
+\hline
+$B$ convexa en $(p,\vect{w})$ & $C$ cóncava en $\vect{w}$\\
+\hline
+Lema de \autor{Hotelling}: $q(p,\vect{w})=\dfrac{\partial B}{\partial p}$, \ $z_i(p,\vect{w})=-\dfrac{\partial B}{\partial w_i}$ & Lema de \autor{Shephard}: $z_i(\vect{w},q)=\dfrac{\partial C}{\partial w_i}$\\[8pt]
+\hline
+$D^2B(p,\vect{w})$ simétrica y semidefinida positiva: $\partial q/\partial p\geq 0$ (ley de la oferta) y $\partial z_i(p,\vect{w})/\partial w_i\leq 0$ & $S(\vect{w},q)=D^2_{\vect{w}}C$ simétrica y semidefinida negativa, con $S\,\vect{w}=\vect{0}$: $\partial z_i(\vect{w},q)/\partial w_i\leq 0$\\
+\hline
+\end{tabular}
+\fuente{elaboración propia basada en \textcite[prop.~5.C.1 y 5.C.2]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item La minimización del coste tiene la misma condición de tangencia que la maximización del beneficio y produce dos funciones nuevas: las demandas condicionadas, que cumplen siempre la ley de la demanda, y la función de costes, de la que se obtienen derivando. Sirve para cualquier empresa que compre los factores a precios dados. Falta ver cómo se relaciona con el problema del beneficio y con la tecnología.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{«Dualidad» entre los problemas de maximización de beneficio\newline y minimización de coste}
+
+\begin{itemize}
+\item Como en la teoría del consumidor \vertema{3.A.9}, entre los dos problemas se dan unas relaciones que permiten obtener cualquier función de comportamiento de la empresa a partir de otra, sin volver a resolver ningún problema.
+\item La clave es que la maximización del beneficio puede resolverse en \concepto{dos etapas}: primero se minimiza el coste de cada nivel de producción, lo que da $C(\vect{w},q)$, y después se elige el nivel que maximiza el beneficio:
+  \begin{equation}
+  B(p,\vect{w})=\max_{q\geq 0}\ \big\{p\,q-C(\vect{w},q)\big\}. \label{eq:mb-dos-etapas}
+  \end{equation}
+  \begin{itemize}
+  \item Con solución interior, la condición de primer orden es $p=\partial C(\vect{w},q)/\partial q=\mathrm{CMg}$,\footnote{En general, $p\leq\mathrm{CMg}$, con igualdad si $q>0$.} y la de segundo orden, $\partial^2C(\vect{w},q)/\partial q^2\geq 0$: la empresa produce en el tramo creciente del coste marginal. Además, solo produce si el precio cubre el coste medio que puede evitar; si no, prefiere la inacción.
+  \item La oferta de la empresa precio-aceptante es, por tanto, la inversa del tramo creciente del coste marginal por encima del mínimo del coste medio: la teoría de los costes, sin mirar los ingresos, ya contiene la oferta competitiva \vertema{3.A.16}. Los casos según la forma de los costes están en el anexo~\ref{anexo:geometria}.
+  \end{itemize}
+\item De ahí salen las \concepto{relaciones de «dualidad»} entre los dos problemas \parencites[§5.C]{MasColellWhinstonGreen1995}[cap.~7]{MatePerez2007Microeconomia}:
+  \begin{equation}
+  \vect{z}(p,\vect{w})\equiv\vect{z}\big(\vect{w},q(p,\vect{w})\big),\qquad p=\frac{\partial C\big(\vect{w},q(p,\vect{w})\big)}{\partial q}, \label{eq:dual-demanda}
+  \end{equation}
+  \begin{equation}
+  B(p,\vect{w})\equiv p\,q(p,\vect{w})-C\big(\vect{w},q(p,\vect{w})\big). \label{eq:dual-valor}
+  \end{equation}
+  \begin{itemize}
+  \item \emph{Entre demandas}: la demanda no condicionada es la condicionada evaluada en la producción que maximiza el beneficio. Por eso, como en el consumidor, sus derivadas se relacionan con una ecuación de tipo \autor{Slutsky} (apartado~II.1.2).
+  \item \emph{Entre funciones valor}: la función de beneficio se obtiene de la de costes maximizando en $q$, sin volver a resolver la minimización. Y los lemas son coherentes: por el teorema de la envolvente, $\partial B/\partial w_i=-\partial C/\partial w_i$, es decir, $-z_i(p,\vect{w})=-z_i\big(\vect{w},q(p,\vect{w})\big)$.
+  \end{itemize}
+\item Gráficamente (gráfico~\ref{fig:mb-mc}), se unen los dos problemas: en el panel de la derecha, la empresa elige la producción donde el precio iguala al coste marginal; en el de la izquierda, la isocuanta de esa producción y la isocoste tangente dan la combinación de factores, que es a la vez la que maximiza el beneficio y la de mínimo coste para esa producción.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La maximización del beneficio en dos etapas: la combinación que maximiza el beneficio es la de mínimo coste para la producción con $p=\mathrm{CMg}$}\label{fig:mb-mc}
+\grafico[0.95\textwidth]{mb-mc}
+\fuente{elaboración propia basada en \textcite[§5.C y 5.D]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item La relación no es simétrica. La función de costes existe con cualquier tipo de rendimientos, mientras que la de beneficio solo está bien definida si los rendimientos son decrecientes: con rendimientos constantes o crecientes, el beneficio máximo es nulo o no está acotado. Por eso la función de costes es el instrumento más general.
+\item \emph{Ejemplo}. Con $F$ homogénea de grado $k<1$, $C(\vect{w},q)=q^{1/k}c(\vect{w})$. La condición $p=\mathrm{CMg}=\tfrac{1}{k}\,q^{(1-k)/k}c(\vect{w})$ da la oferta $q(p,\vect{w})=\big(k\,p/c(\vect{w})\big)^{k/(1-k)}$ y, como $C=k\,p\,q$ en el óptimo, la función de beneficio es $B(p,\vect{w})=(1-k)\,p\,q(p,\vect{w})$. Puede comprobarse que $\partial B/\partial p=q(p,\vect{w})$, como dice el lema de \autor{Hotelling}. En la Cobb-Douglas, $c(\vect{w})$ es la ecuación~\eqref{eq:coste-cobb-douglas} con $q=1$.
+\item Todas estas relaciones se resumen en el gráfico~\ref{fig:esquema-dualidad}: la maximización del beneficio en una etapa a la izquierda, la minimización del coste a la derecha, la maximización en dos etapas que las une y, abajo, la tecnología, que puede recuperarse a partir de las funciones valor (I.3.1 y I.3.2).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Esquema de dualidad de la empresa: problemas, soluciones, funciones valor y relaciones entre ellas}\label{fig:esquema-dualidad}
+\grafico[\textwidth]{esquema-dualidad-empresa}
+\fuente{elaboración propia a partir de \textcite[cap.~7]{MatePerez2007Microeconomia} y \textcite[§5.C]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\subsubsection{Dualidad entre la función de costes y la función de producción}
+
+\begin{itemize}
+\item Una aplicación muy útil de la teoría de la dualidad es que garantiza que la función de costes contiene esencialmente la \emph{misma información} que la tecnología: dada $C(\vect{w},q)$, puede recuperarse el conjunto de requerimientos de factores \parencites{Shephard1953Cost}{McFadden1978Cost}
+  \begin{equation}
+  V^*(q)=\big\{\vect{z}\geq\vect{0}:\ \vect{w}\cdot\vect{z}\geq C(\vect{w},q)\ \ \text{para todo }\vect{w}\gg\vect{0}\big\}, \label{eq:recuperar-v}
+  \end{equation}
+  y con él la función de producción, $F(\vect{z})=\max\{q:\ \vect{z}\in V^*(q)\}$.
+  \begin{itemize}
+  \item \emph{Intuición}: cada vector de precios $\vect{w}$ define un semiplano, el de las combinaciones que cuestan al menos el mínimo $C(\vect{w},q)$. La tecnología está dentro de todos ellos, y su intersección es la envolvente de las isocostes tangentes a la isocuanta (gráfico~\ref{fig:recuperar-isocuanta}).
+  \item Si $V(q)$ es convexo y cumple la eliminación gratuita, $V^*(q)=V(q)$: la tecnología se recupera exactamente. Si no lo es, se recupera su envoltura convexa, que es la que importa para la conducta, porque una empresa que minimiza costes nunca elige un punto de un tramo no convexo de la isocuanta \parencite[§5.C]{MasColellWhinstonGreen1995}.
+  \end{itemize}
+\item ¿Qué funciones pueden ser funciones de costes? Toda función $C(\vect{w},q)$ continua, no decreciente, homogénea de grado uno y cóncava en $\vect{w}$, y creciente en $q$, es la función de costes de alguna tecnología \parencites{Shephard1953Cost}{Uzawa1964Duality}.
+\item Es la base de las aplicaciones empíricas (apartado~IV): basta especificar una función de costes con esas propiedades y estimarla, o estimar las demandas que da el lema de \autor{Shephard}, sin escribir nunca la función de producción \parencites{Diewert1971Application}{Diewert1974Applications}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Un procedimiento equivalente al de la integrabilidad de la demanda} \vertema{3.A.9}. En el consumidor, si un sistema de demandas marshallianas cumple la ley de \autor{Walras} y su matriz de \autor{Slutsky} es simétrica y semidefinida negativa, existe una función de utilidad de buen comportamiento de la que podrían haberse obtenido maximizando. En la empresa, si un sistema de demandas de factores es homogéneo de grado cero en $\vect{w}$ y su matriz de sustitución $S(\vect{w},q)$ es simétrica y semidefinida negativa, existe una tecnología de la que proceden minimizando el coste, y puede recuperarse con~\eqref{eq:recuperar-v}.
+\end{anotaciones}
+
+\begin{figure}[H]
+\centering
+\caption{Recuperación de la isocuanta a partir de la función de costes: la tecnología es la envolvente de las isocostes mínimas}\label{fig:recuperar-isocuanta}
+\grafico[0.5\textwidth]{recuperar-isocuanta}
+\fuente{elaboración propia a partir de \textcite[§5.C]{MasColellWhinstonGreen1995} y \textcite[cap.~6]{Varian1992Microeconomic}.}
+\end{figure}
+
+\subsubsection{Dualidad entre la función de beneficio y la de producción}
+
+\begin{itemize}
+\item La tecnología también se describe con el conjunto de posibilidades de producción $\mathcal{Y}$, cuyos planes son vectores de producción neta $\vect{y}=(q,-\vect{z})$: el producto con signo positivo y los factores con signo negativo \vertema{3.A.11}. Con un producto, $\mathcal{Y}=\{(q,-\vect{z}):\ \vect{z}\geq\vect{0},\ q\leq F(\vect{z})\}$, y el beneficio de un plan es $p\,q-\vect{w}\cdot\vect{z}$. La función de beneficio es
+  \begin{equation}
+  B(p,\vect{w})=\max_{(q,-\vect{z})\in\mathcal{Y}}\ \big\{p\,q-\vect{w}\cdot\vect{z}\big\}. \label{eq:beneficio-soporte}
+  \end{equation}
+  Geométricamente, para cada vector de precios indica hasta dónde puede desplazarse la recta (el hiperplano) de isobeneficio sin salir de $\mathcal{Y}$: es la \concepto{función soporte} del conjunto de posibilidades de producción (gráfico~\ref{fig:beneficio-soporte}).
+\item Por eso puede recorrerse el camino inverso: la tecnología queda dentro de todos los semiespacios limitados por las isobeneficio máximas,
+  \begin{equation}
+  \mathcal{Y}^*=\big\{(q,-\vect{z}):\ p\,q-\vect{w}\cdot\vect{z}\leq B(p,\vect{w})\ \ \text{para todo }(p,\vect{w})\gg\vect{0}\big\}, \label{eq:recuperar-y}
+  \end{equation}
+  y si $\mathcal{Y}$ es convexo y cerrado y cumple la eliminación gratuita, $\mathcal{Y}^*=\mathcal{Y}$ \parencite[§5.C]{MasColellWhinstonGreen1995}. Toda función $B$ continua, homogénea de grado uno y convexa en $(p,\vect{w})$ es la función de beneficio de alguna tecnología convexa.
+\item Las dos dualidades dicen lo mismo con instrumentos distintos: tecnología, costes y beneficio son tres descripciones equivalentes de la empresa cuando la tecnología es convexa. La de costes es más general (no necesita rendimientos decrecientes ni precio-aceptación en el mercado del producto), y por eso es la que se estima.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La función de beneficio como función soporte del conjunto de posibilidades de producción}\label{fig:beneficio-soporte}
+\grafico[0.55\textwidth]{beneficio-soporte}
+\fuente{elaboración propia a partir de \textcite[§5.C]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{ideaclave}
+Minimizar el coste de cada producción y elegir después la producción con $p=\mathrm{CMg}$ es lo mismo que maximizar el beneficio. La función de costes es cóncava y homogénea de grado uno en los precios de los factores, sus derivadas son las demandas condicionadas (\autor{Shephard}) y contiene la misma información que la tecnología: basta conocer los costes para conocer la empresa.
+\end{ideaclave}
+
+\begin{itemize}
+\item \textbf{Recapitulación}: basta resolver uno de los problemas para obtener todas las funciones de la empresa; la de costes, que no depende del mercado del producto, es la más general, y de ella se recupera la tecnología. Con la función de costes ya obtenida, el bloque siguiente estudia cómo cambia con la producción, con los precios de los factores y con el plazo.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Análisis de estática comparativa de la demanda\newline de factores productivos y de la función de costes}
+\minutos{8,5}
+
+\begin{notaopositor}
+En el cante: los cambios en $q$ (senda de expansión, curva de costes, $\varepsilon_{C,q}$ y economías de escala, con su relación con los rendimientos a escala, 2,5 minutos) y en $\vect{w}$ (demanda condicionada decreciente, efecto sustitución y efecto escala de palabra, sin factores \autor{Giffen}, 1,5); el corto plazo y la envolvente, con su gráfico, y el principio de \autor{Le Châtelier}-\autor{Samuelson} (4,5). La curva de \autor{Engel} del factor, la demanda del factor en función de su precio, las elasticidades una a una y la derivación de la ecuación de \autor{Slutsky} de los factores (anexo~\ref{anexo:estatica}) son de profundización. Las demandas condicionadas son las análogas de las \emph{hicksianas} del consumidor, no de las marshallianas: conviene decirlo una vez para evitar la pregunta del tribunal.
+\end{notaopositor}
+
+\begin{itemize}
+\item Este bloque responde a la tercera pregunta. Su conclusión anticipada: la demanda condicionada de un factor nunca crece con su precio; a largo plazo, la forma de los costes refleja los rendimientos a escala de la tecnología y, a corto, los rendimientos del factor variable; y a largo plazo la empresa responde más que a corto.
+\item Partimos de la función de costes del bloque~I, con 2 factores:
+  \begin{equation}
+  C(\vect{w},q)=w_L\,z_L(\vect{w},q)+w_K\,z_K(\vect{w},q), \label{eq:costes-dos-factores}
+  \end{equation}
+  y vemos cómo responden ella y las demandas condicionadas cuando cambian sus parámetros, gráfica y analíticamente: el nivel de producción $q$ (II.1.1) y los precios $\vect{w}$ (II.1.2). Empezamos por $q$ porque es la base del análisis de plazos (II.2).
+\item El análisis sigue el esquema de la estática comparativa de la demanda \vertema{3.A.8}, pero sobre las demandas \emph{condicionadas}, análogas a las hicksianas \vertema{3.A.9}: el parámetro que cambia es $q$, no la renta, y no hay efecto renta.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de estática comparativa}
+
+\subsubsection{Análisis de estática comparativa ante variaciones en el nivel de producción ($q$)}
+
+\paragraph{Sobre las demandas de factores}
+
+\begin{itemize}
+\item La \concepto{senda de expansión} es el lugar geométrico de las combinaciones de factores de mínimo coste que se obtienen al aumentar la producción con los precios de los factores constantes (gráfico~\ref{fig:senda-expansion}).
+  \begin{itemize}
+  \item A lo largo de ella, la RMST es igual al precio relativo de los factores y, como este no cambia, la RMST permanece constante: la senda de expansión es una \emph{isoclina} \vertema{3.A.11}. Indica cómo cambian las proporciones de los factores al cambiar la producción. Es el análogo formal de la curva renta-consumo del consumidor.
+  \item Si la función de producción es \emph{homotética}, la RMST depende solo de la proporción entre los factores, y la senda de expansión es un rayo desde el origen: las proporciones no cambian con la escala.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Senda de expansión: combinaciones de mínimo coste al aumentar la producción, con un tramo en el que el trabajo es inferior}\label{fig:senda-expansion}
+\grafico[0.55\textwidth]{senda-expansion}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\begin{itemize}
+\item Representando la cantidad de un factor frente a la producción se obtiene la \concepto{curva de \autor{Engel} del factor}: pasamos del plano $(z_L,z_K)$ al plano $(q,z_L)$ (gráfico~\ref{fig:curva-engel-factor}).
+  \begin{itemize}
+  \item Un factor $i$ es \concepto{normal} en $(\vect{w},q)$ si $\partial z_i(\vect{w},q)/\partial q>0$: su demanda condicionada crece con la producción y su curva de \autor{Engel} tiene pendiente positiva.
+  \item Es \concepto{inferior} si $\partial z_i(\vect{w},q)/\partial q<0$: al producir más se usa menos de él (por ejemplo, trabajo poco cualificado cuando la empresa pasa a una técnica automatizada). La senda de expansión se vuelve entonces hacia atrás.
+  \item Un factor puede ser normal en unos tramos e inferior en otros. Pero no todos los factores pueden ser inferiores a la vez: derivando $F\big(\vect{z}(\vect{w},q)\big)=q$, $\sum_iF_i\,\partial z_i(\vect{w},q)/\partial q=1>0$, así que al menos uno ha de ser normal. Con una función homotética, todos los factores son normales.
+  \end{itemize}
+\item Analíticamente, la \concepto{elasticidad de la demanda condicionada respecto a la producción},
+  \begin{equation}
+  \varepsilon_{z_i,q}\equiv\frac{\partial z_i(\vect{w},q)}{\partial q}\,\frac{q}{z_i(\vect{w},q)}, \label{eq:elasticidad-factor-q}
+  \end{equation}
+  clasifica los factores en normales ($\varepsilon_{z_i,q}>0$) e inferiores ($\varepsilon_{z_i,q}<0$); con $\varepsilon_{z_i,q}=0$, la demanda no cambia con la producción. Ponderadas por las participaciones de cada factor en el coste, $s_i\equiv w_iz_i/C(\vect{w},q)$, suman la elasticidad del coste respecto a la producción: $\sum_is_i\,\varepsilon_{z_i,q}=\varepsilon_{C,q}$ (anexo~\ref{anexo:estatica}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Curva de \autor{Engel} del factor trabajo, con tramos en los que es normal y un tramo en el que es inferior}\label{fig:curva-engel-factor}
+\grafico[0.45\textwidth]{curva-engel-factor}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\paragraph{Sobre la función de costes}
+
+\begin{itemize}
+\item Al aumentar $q$, la isocuanta exigida se aleja del origen y el coste total aumenta; la forma que adopte depende de los rendimientos a escala de la tecnología. Con $\vect{w}$ fijo, $C(\vect{w},q)$ se dibuja como $C(q)$ en dos dimensiones (gráfico~\ref{fig:costes-largo}, arriba).
+\item El \concepto{coste medio}, $\mathrm{CMe}(q)=C(\vect{w},q)/q$, es la pendiente del rayo que va del origen a la curva de costes; el \concepto{coste marginal}, $\mathrm{CMg}(q)=\partial C(\vect{w},q)/\partial q$, el coste de producir una unidad más, es la pendiente de la tangente. El CMe baja mientras $\mathrm{CMg}<\mathrm{CMe}$ y sube cuando $\mathrm{CMg}>\mathrm{CMe}$, de modo que el CMg corta al CMe en su mínimo (gráfico~\ref{fig:costes-largo}, abajo):
+  \begin{equation}
+  \frac{d\,\mathrm{CMe}}{dq}=\frac{\mathrm{CMg}-\mathrm{CMe}}{q}. \label{eq:cme-cmg}
+  \end{equation}
+\item Hay \concepto{economías de escala} cuando el coste medio a largo plazo decrece con la producción, es decir, cuando los costes crecen menos que proporcionalmente; \concepto{deseconomías de escala}, cuando crece. Se miden con la \concepto{elasticidad del coste respecto a la producción}:
+  \begin{equation}
+  \varepsilon_{C,q}\equiv\frac{\partial C(\vect{w},q)}{\partial q}\,\frac{q}{C(\vect{w},q)}=\frac{\mathrm{CMg}}{\mathrm{CMe}}. \label{eq:elasticidad-coste}
+  \end{equation}
+  \begin{itemize}
+  \item $\varepsilon_{C,q}<1$: $\mathrm{CMg}<\mathrm{CMe}$, CMe decreciente, \emph{economías de escala};
+  \item $\varepsilon_{C,q}=1$: $\mathrm{CMg}=\mathrm{CMe}$, CMe constante (en su mínimo, la \emph{escala mínima eficiente} si la curva es en U);
+  \item $\varepsilon_{C,q}>1$: $\mathrm{CMg}>\mathrm{CMe}$, CMe creciente, \emph{deseconomías de escala}.
+  \end{itemize}
+  El grado de economías de escala suele medirse como $1-\varepsilon_{C,q}$ (apartado~IV).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes a largo plazo: coste total (arriba) y costes medio y marginal (abajo), obtenidos como pendientes del rayo y de la tangente}\label{fig:costes-largo}
+\grafico[0.6\textwidth]{costes-largo}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\begin{notaopositor}
+Trampa típica del test: $\varepsilon_{C,q}<1$ son economías de escala (el coste crece menos que la producción) y $\varepsilon_{C,q}>1$, deseconomías; con la elasticidad de escala es al revés ($\varepsilon_{q,\lambda}>1$, rendimientos crecientes). La relación $\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ vale en la combinación que minimiza el coste para cualquier tecnología, no solo para las homotéticas.
+\end{notaopositor}
+
+\begin{itemize}
+\item \concepto{Economías de escala y rendimientos a escala}. Aunque es tentador identificarlos, son conceptos distintos. Los \emph{rendimientos a escala} son una propiedad de la tecnología: cómo responde la producción si \emph{todos} los factores varían en la misma proporción $\lambda$, medidos por la elasticidad de escala local $\varepsilon_{q,\lambda}(\vect{z})=\sum_i\varepsilon_{q,z_i}=\sum_i\mathrm{PMg}_i/\mathrm{PMe}_i$ \vertema{3.A.11}. Las \emph{economías de escala} son una propiedad de los costes: cómo responde el coste cuando la producción crece por la senda de expansión, donde las proporciones pueden cambiar. Aun así, en cada punto de la senda de mínimo coste las dos medidas son inversas \parencite{Hanoch1975Elasticity}:
+  \begin{equation}
+  \boxed{\varepsilon_{q,\lambda}\big(\vect{z}(\vect{w},q)\big)=\frac{\mathrm{CMe}}{\mathrm{CMg}}=\frac{1}{\varepsilon_{C,q}}} \label{eq:escala-coste}
+  \end{equation}
+  \begin{itemize}
+  \item \emph{Demostración}: por la condición de primer orden~\eqref{eq:cpo-mc}, $w_i=\mu\,\mathrm{PMg}_i$, con $\mu=\mathrm{CMg}$; luego $C=\sum_iw_iz_i=\mathrm{CMg}\sum_i\mathrm{PMg}_i\,z_i=\mathrm{CMg}\cdot q\,\varepsilon_{q,\lambda}(\vect{z})$, y dividiendo por $q$, $\mathrm{CMe}=\mathrm{CMg}\cdot\varepsilon_{q,\lambda}(\vect{z})$.
+  \item No hace falta homoteticidad: vale para cualquier tecnología, siempre que los rendimientos se midan \emph{localmente} en la combinación que minimiza el coste. Rendimientos locales crecientes en el óptimo equivalen a economías de escala, y decrecientes, a deseconomías.
+  \item Lo que añade la homoteticidad es que la senda de expansión es un rayo: crecer por la senda y ampliar todos los factores en la misma proporción son el mismo movimiento, y la relación se cumple a lo largo de toda la senda. Fuera de ese caso, los rendimientos medidos sobre \emph{otro} rayo (por ejemplo, el que pasa por la combinación inicial) pueden diferir de las economías de escala que la empresa aprovecha al cambiar las proporciones.
+  \item Con rendimientos \emph{globales} solo se cumplen implicaciones en un sentido (tabla~\ref{tab:rendimientos-economias}): rendimientos crecientes en todo punto dan economías de escala para todo $q$, pero una función de costes con economías de escala en un tramo no implica rendimientos crecientes globales.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Rendimientos a escala y economías de escala}\label{tab:rendimientos-economias}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\centering\arraybackslash}m{0.2\textwidth}|>{\centering\arraybackslash}m{0.33\textwidth}|>{\centering\arraybackslash}m{0.33\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido}\textbf{Rendimientos a escala} & \textbf{Locales, en la combinación de mínimo coste} & \textbf{Globales (en todo punto)}\\
+\hline
+\multicolumn{3}{|c|}{\cellcolor{tceesalvia}$\varepsilon_{q,\lambda}\big(\vect{z}(\vect{w},q)\big)=\mathrm{CMe}/\mathrm{CMg}=1/\varepsilon_{C,q}$}\\
+\hline
+\textcolor{tceeverde}{Crecientes}\newline\textcolor{tceeverde}{$\varepsilon_{q,\lambda}>1$} & \textcolor{tceeverde}{$\Longleftrightarrow$ economías de escala}\newline\textcolor{tceeverde}{en ese $q$} & \textcolor{tceeverde}{$\Longrightarrow$ economías de escala}\newline\textcolor{tceeverde}{en todo $q$ (no al revés)}\\
+\hline
+\textcolor{tceeazul}{Constantes}\newline\textcolor{tceeazul}{$\varepsilon_{q,\lambda}=1$} & \textcolor{tceeazul}{$\Longleftrightarrow$ CMe constante}\newline\textcolor{tceeazul}{en ese $q$} & \textcolor{tceeazul}{$\Longrightarrow$ $C(\vect{w},q)=q\,c(\vect{w})$,}\newline\textcolor{tceeazul}{CMe $=$ CMg constantes}\\
+\hline
+\textcolor{tceerojo}{Decrecientes}\newline\textcolor{tceerojo}{$\varepsilon_{q,\lambda}<1$} & \textcolor{tceerojo}{$\Longleftrightarrow$ deseconomías de escala}\newline\textcolor{tceerojo}{en ese $q$} & \textcolor{tceerojo}{$\Longrightarrow$ deseconomías de escala}\newline\textcolor{tceerojo}{en todo $q$ (no al revés)}\\
+\hline
+\end{tabular}
+\par\vspace{2pt}{\footnotesize Con tecnología homotética, la equivalencia de la columna central vale a lo largo de toda la senda de expansión, que es un rayo.}
+\fuente{elaboración propia a partir de \textcite{Hanoch1975Elasticity} y \textcite[cap.~3]{JehleReny2011Advanced}.}
+\end{table}
+
+\begin{itemize}
+\item La curva de coste medio a largo plazo en forma de U responde, por tanto, a una tecnología con \emph{rendimientos a escala variables}: crecientes a escala baja (indivisibilidades, especialización) y decrecientes a escala alta (dificultades de dirección y coordinación), la tecnología «en S» \vertema{3.A.11}. No se debe a la ley de proporciones variables, que es de corto plazo (apartado~II.2).
+\item Con funciones homogéneas, en cambio, el CMe a largo plazo es monótono: $C(\vect{w},q)=q^{1/k}c(\vect{w})$ da CMe decreciente si $k>1$, constante si $k=1$ y creciente si $k<1$. Con rendimientos constantes, CMe y CMg son constantes e iguales, y el tamaño de la empresa competitiva queda \emph{indeterminado}: lo deciden la demanda o la entrada \vertema{3.A.16}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{¿Por qué tiene forma de S invertida la curva de costes totales?} A largo plazo, porque la tecnología tiene rendimientos a escala crecientes y después decrecientes (CMe en U). A corto plazo, con un factor fijo, porque el factor variable tiene primero productividad marginal creciente y después decreciente (ley de proporciones variables), de modo que el CMg, $w_L/\mathrm{PMg}_L$, baja y después sube (apartado~II.2). Son dos explicaciones distintas de dos curvas distintas. Con una tecnología cóncava en todos sus tramos (por ejemplo, una Cobb-Douglas con $\alpha+\beta\leq 1$), la curva de costes a largo plazo es lineal o convexa desde el origen y no hay tramo de economías de escala.
+\end{anotaciones}
+
+\subsubsection{Análisis de variaciones en el precio de los factores productivos ($\vect{w}$)}
+
+\paragraph{Sobre las demandas de factores}
+
+\begin{itemize}
+\item \emph{Gráficamente} (gráfico~\ref{fig:demanda-condicionada-w}), la isocuanta de $q$ queda fija. Si sube $w_L$, las isocostes se vuelven más inclinadas y la nueva tangencia está más arriba y a la izquierda sobre la misma isocuanta: se usa menos trabajo y más capital para producir lo mismo. Representando $z_L$ frente a $w_L$ se obtiene la \concepto{demanda condicionada de trabajo}, $z_L(\vect{w},q)$, siempre de pendiente no positiva (gráfico~\ref{fig:demanda-factor-precio}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Efecto de una subida del salario sobre la combinación de mínimo coste, con la producción constante}\label{fig:demanda-condicionada-w}
+\grafico[0.5\textwidth]{demanda-condicionada-w}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Analíticamente}, las elasticidades de la demanda condicionada respecto a los precios,
+  \begin{equation}
+  \varepsilon_{z_i,w_j}\equiv\frac{\partial z_i(\vect{w},q)}{\partial w_j}\,\frac{w_j}{z_i(\vect{w},q)}, \label{eq:elasticidad-factor-w}
+  \end{equation}
+  propia ($j=i$, siempre no positiva) y cruzada ($j\neq i$). Por la homogeneidad de grado cero en $\vect{w}$, $\sum_j\varepsilon_{z_i,w_j}=0$; con dos factores, $\varepsilon_{z_L,w_K}=-\varepsilon_{z_L,w_L}\geq 0$: son sustitutivos netos. Se relacionan con la elasticidad de sustitución de \autor{Allen}-\autor{Uzawa}, $\sigma_{ij}=C\,C_{ij}/(C_iC_j)$, mediante $\varepsilon_{z_i,w_j}=s_j\,\sigma_{ij}$ \parencite{Uzawa1962Production}.
+\item \concepto{¿Hay factores \autor{Giffen}?} No. La demanda condicionada cumple $\partial z_i(\vect{w},q)/\partial w_i\leq 0$ por la concavidad de $C$, y la no condicionada de la empresa precio-aceptante, $\partial z_i(p,\vect{w})/\partial w_i\leq 0$ por la convexidad de $B$ (I.2). Un factor sí puede ser inferior.
+\item La relación entre las dos demandas se obtiene derivando respecto a $w_j$ la identidad $z_i(p,\vect{w})\equiv z_i\big(\vect{w},q(p,\vect{w})\big)$ de~\eqref{eq:dual-demanda}. Es la \concepto{ecuación de \autor{Slutsky} de los factores} \vertema{3.A.9}:
+  \begin{equation}
+  \underbrace{\frac{\partial z_i(p,\vect{w})}{\partial w_j}}_{\text{efecto total}}=\underbrace{\frac{\partial z_i(\vect{w},q)}{\partial w_j}}_{\text{efecto sustitución}}+\underbrace{\frac{\partial z_i(\vect{w},q)}{\partial q}\,\frac{\partial q(p,\vect{w})}{\partial w_j}}_{\text{efecto escala}},\qquad q=q(p,\vect{w}). \label{eq:slutsky-factores}
+  \end{equation}
+  \begin{itemize}
+  \item El \concepto{efecto sustitución} recoge el cambio de la combinación óptima con la producción constante; el \concepto{efecto escala} (también llamado efecto producción), el cambio de la producción que maximiza el beneficio. En la empresa sustituye al efecto renta del consumidor, que aquí no existe.
+  \item Para el precio propio, de $p=\partial C(\vect{w},q)/\partial q$ y del lema de \autor{Shephard} se obtiene $\partial q(p,\vect{w})/\partial w_i=-\big(\partial z_i(\vect{w},q)/\partial q\big)\big/\big(\partial^2C(\vect{w},q)/\partial q^2\big)$, de modo que el efecto escala es
+    \begin{equation*}
+    -\frac{\big(\partial z_i(\vect{w},q)/\partial q\big)^2}{\partial^2C(\vect{w},q)/\partial q^2}\leq 0
+    \end{equation*}
+    con coste marginal creciente. Los dos efectos van siempre en el mismo sentido, sea el factor normal o inferior: el efecto escala \emph{refuerza} al de sustitución, la demanda no condicionada es \emph{más elástica} que la condicionada (una forma del principio de \autor{Le Châtelier}-\autor{Samuelson}, II.2) y no hay factores \autor{Giffen} \parencites[cap.~2 y 5]{Varian1992Microeconomic}[cap.~5]{GravelleRees2004Microeconomics}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Demandas de trabajo en función del salario: la no condicionada es más elástica que la condicionada}\label{fig:demanda-factor-precio}
+\grafico[0.45\textwidth]{demanda-factor-precio}
+\fuente{elaboración propia a partir de \textcite[cap.~2 y 5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\begin{notaopositor}
+Pregunta habitual del tribunal: ¿puede haber factores \autor{Giffen}? No: ni la demanda condicionada (concavidad de $C$) ni la no condicionada de la empresa precio-aceptante (convexidad de $B$) pueden crecer con su propio precio, porque la empresa no tiene restricción presupuestaria ni, por tanto, efecto renta. Sí puede haber factores inferiores, y entonces encarecerlos \emph{reduce} el coste marginal.
+\end{notaopositor}
+
+\paragraph{Sobre la función de costes}
+
+\begin{itemize}
+\item Si todos los precios de los factores suben en la misma proporción, el coste sube en esa proporción (homogeneidad de grado uno). Si sube uno solo, por el lema de \autor{Shephard}, la \concepto{elasticidad del coste respecto al precio de un factor} es su participación en el coste:
+  \begin{equation}
+  \varepsilon_{C,w_i}\equiv\frac{\partial C(\vect{w},q)}{\partial w_i}\,\frac{w_i}{C(\vect{w},q)}=\frac{w_i\,z_i(\vect{w},q)}{C(\vect{w},q)}=s_i, \label{eq:elasticidad-coste-precio}
+  \end{equation}
+  que, con $q$ constante, es también la elasticidad del coste medio. Si el trabajo supone el 30\,\% del coste, una subida del 10\,\% del salario eleva el coste en torno a un 3\,\%. Gráficamente, las curvas de coste total y de coste medio se desplazan hacia arriba para todo nivel de producción, no necesariamente en paralelo, porque $s_i$ puede variar con $q$.
+\item El \concepto{coste marginal} también se desplaza, y en un sentido que depende del factor. Por el lema de \autor{Shephard} y el teorema de \autor{Young},
+  \begin{equation}
+  \frac{\partial\,\mathrm{CMg}}{\partial w_i}=\frac{\partial^2C(\vect{w},q)}{\partial q\,\partial w_i}=\frac{\partial z_i(\vect{w},q)}{\partial q}: \label{eq:cmg-precio}
+  \end{equation}
+  si el factor es normal, su encarecimiento eleva el coste marginal y la empresa competitiva produce menos; si es inferior, el coste marginal \emph{baja} y la producción aumenta \parencite[cap.~5]{GravelleRees2004Microeconomics}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Análisis de plazos}
+
+\begin{itemize}
+\item La teoría económica distingue, siguiendo a \textcite{Marshall1890Principles}, dos plazos:
+  \begin{itemize}
+  \item \concepto{corto plazo}: algún factor es fijo (normalmente el capital, el tamaño de la planta);
+  \item \concepto{largo plazo}: periodo suficientemente largo para variar todos los factores. Sus costes son costes \emph{planeados} (\emph{ex ante}).
+  \end{itemize}
+\item Antes de invertir, el empresario está en el largo plazo y puede elegir el tamaño de la planta; una vez invertido, los fondos quedan inmovilizados en capital fijo y opera en el corto plazo. Hasta aquí hemos estudiado el largo plazo; ahora estudiamos la forma de los costes a corto plazo y su relación con los de largo.
+\end{itemize}
+
+\paragraph{Análisis de corto plazo}
+
+\begin{itemize}
+\item El problema es el mismo de antes con una restricción adicional, el factor fijo $\overline{z}_K$:
+  \begin{equation}
+  \min_{z_L\geq 0}\ \underbrace{w_L\,z_L}_{\text{costes variables}}+\underbrace{w_K\,\overline{z}_K}_{\text{costes fijos}}\quad\text{s.a.}\quad F(z_L,\overline{z}_K)\geq q. \label{eq:mc-corto}
+  \end{equation}
+  Con el capital fijo, la demanda condicionada de trabajo, $z_L(\vect{w},q;\overline{z}_K)$, la da la propia función de producción: es la cantidad de trabajo que resuelve $F(z_L,\overline{z}_K)=q$, sin elección de proporciones. La función de costes a corto plazo es la suma de los costes variables y los fijos:
+  \begin{equation}
+  \boxed{C(\vect{w},q;\overline{z}_K)=\underbrace{w_L\,z_L(\vect{w},q;\overline{z}_K)}_{\mathrm{CV}(q)}+\underbrace{w_K\,\overline{z}_K}_{\mathrm{CF}}} \label{eq:costes-corto}
+  \end{equation}
+\item \emph{Relación entre corto y largo plazo} (gráfico~\ref{fig:corto-largo-senda}). Por la restricción del factor fijo, el coste a corto plazo de cualquier producción no puede ser menor que el de largo: $C(\vect{w},q;\overline{z}_K)\geq C(\vect{w},q)$.
+  \begin{itemize}
+  \item Para producir $q^1$, lo ideal es situarse en $A$, en la senda de expansión; con el capital fijo en $\overline{z}_K$, hay que situarse en $B$, sobre una isocoste más alta.
+  \item Para producir $q^2$, lo ideal es $D$, cuya dotación de capital coincide con $\overline{z}_K$: los costes a corto y a largo plazo coinciden y la planta tiene el tamaño óptimo para esa producción.
+  \item Por tanto, la empresa produce siempre de forma técnicamente eficiente, y a largo plazo también de forma económicamente eficiente; a corto plazo, solo cuando el factor fijo coincide con el que elegiría si pudiera variarlo, $\overline{z}_K=z_K(\vect{w},q)$. La curva de costes totales a largo plazo es la \concepto{envolvente} de las de corto plazo, una por cada tamaño de planta.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Senda de expansión a corto y a largo plazo (izquierda) y costes totales a corto plazo frente a los de largo (derecha)}\label{fig:corto-largo-senda}
+\grafico[0.95\textwidth]{corto-largo-senda}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Costes a corto plazo} (gráfico~\ref{fig:costes-corto}):
+  \begin{itemize}
+  \item los \concepto{costes fijos} (CF) no pueden alterarse a corto plazo ni dependen de la producción (alquileres, equipo, gran parte de los costes indirectos): son una recta horizontal;
+  \item los \concepto{costes variables} (CV) dependen de la producción (materias primas, mano de obra no fija) y los \concepto{costes totales}, $C=\mathrm{CV}+\mathrm{CF}$, tienen la misma forma que los variables, desplazada en CF.
+  \end{itemize}
+\item Como la demanda de trabajo la fija la función de producción, $dz_L/dq=1/\mathrm{PMg}_L$, y
+  \begin{equation}
+  \mathrm{CMg}=\frac{w_L}{\mathrm{PMg}_L},\qquad \mathrm{CVMe}=\frac{\mathrm{CV}(q)}{q}=\frac{w_L}{\mathrm{PMe}_L}: \label{eq:cmg-corto}
+  \end{equation}
+  el coste marginal es la imagen invertida de la productividad marginal del trabajo, y el coste variable medio, la de su productividad media. Mientras la $\mathrm{PMg}_L$ crece, el CMg baja; cuando, por la \concepto{ley de proporciones variables} (o de rendimientos marginales decrecientes), la $\mathrm{PMg}_L$ empieza a caer, el CMg sube \vertema{3.A.11}. De ahí la forma de U del CMg y la de S invertida de los costes variables: primero crecen cada vez más despacio, alcanzan un punto de inflexión (el mínimo del CMg) y después crecen cada vez más deprisa. El CMg corta al CVMe y al CMe en sus mínimos.
+\item El CMe a corto plazo baja al principio por dos razones: el reparto del coste fijo entre más unidades (el coste fijo medio, $\mathrm{CFMe}=w_K\overline{z}_K/q$, decrece siempre) y la productividad creciente del trabajo; sube cuando el CMg lo supera. Estas fases \emph{no} son economías y deseconomías de escala, que son un concepto de largo plazo (todos los factores variables): a corto plazo no hay escala que cambiar.
+\item Dos puntos que usa la teoría de los mercados \vertema{3.A.16}: el mínimo del CVMe (\emph{mínimo de explotación}: por debajo de ese precio, la empresa competitiva cierra a corto plazo) y el mínimo del CMe (\emph{óptimo de explotación}: por encima, hay beneficio).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes a corto plazo: costes total, variable y fijo (arriba); costes marginal, medio, variable medio y fijo medio (abajo)}\label{fig:costes-corto}
+\grafico[0.65\textwidth]{costes-corto}
+\fuente{elaboración propia a partir de \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\paragraph{Análisis de largo plazo}
+
+\begin{itemize}
+\item A largo plazo, la curva de costes totales es la envolvente de las de corto plazo y, del mismo modo, la de \concepto{coste medio a largo plazo} es la \concepto{envolvente} de las de coste medio a corto plazo: cada una la toca en un punto, aquel en el que el tamaño de planta es el óptimo para esa producción (gráfico~\ref{fig:envolvente}).
+  \begin{itemize}
+  \item A la izquierda del mínimo del CMe a largo plazo, la tangencia se produce en el tramo \emph{decreciente} de la curva de corto plazo: la planta óptima para esa producción se usa por debajo de su mínimo, con exceso de capacidad. A la derecha, en el tramo \emph{creciente}: se usa con sobrecarga.
+  \item Solo en el mínimo del CMe a largo plazo coinciden los mínimos: $\mathrm{CMe}_{\mathrm{CP}}=\mathrm{CMe}_{\mathrm{LP}}=\mathrm{CMg}_{\mathrm{CP}}=\mathrm{CMg}_{\mathrm{LP}}$. La envolvente no pasa por los mínimos de las curvas de corto plazo: es el error del dibujo original de \textcite{Viner1931Cost}, que la trazó pasando por todos ellos, cosa imposible salvo en ese punto.
+  \item En la producción en la que el coste medio a corto plazo es tangente al de largo, el CMg a corto plazo corta al de largo, porque las curvas de coste total son tangentes: $\partial C(\vect{w},q;\overline{z}_K)/\partial q=\partial C(\vect{w},q)/\partial q$ con $\overline{z}_K=z_K(\vect{w},q)$ (teorema de la envolvente).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El coste medio a largo plazo como envolvente de los costes medios a corto plazo}\label{fig:envolvente}
+\grafico[0.65\textwidth]{envolvente}
+\fuente{elaboración propia a partir de \textcite{Viner1931Cost} y \textcite[cap.~5]{Varian1992Microeconomic}.}
+\end{figure}
+
+\paragraph{Comparación entre corto plazo y largo plazo. Principio de \autor{Le Châtelier}-\autor{Samuelson}}
+
+\begin{itemize}
+\item En el gráfico~\ref{fig:envolvente} se ve además que, en el punto de tangencia, el CMg a corto plazo es más inclinado que el de largo. Importa porque en competencia perfecta el tramo creciente del CMg, por encima del umbral de cierre, es la curva de oferta de la empresa.
+\item Lo explica el \concepto{principio de \autor{Le Châtelier}-\autor{Samuelson}} \parencite[cap.~III]{Samuelson1947Foundations}: cuantas más restricciones tiene la empresa, menos responde a los precios. A largo plazo, las demandas de factores y la oferta son más elásticas que a corto,
+  \begin{equation}
+  \frac{\partial z_i^{\mathrm{LP}}}{\partial w_i}\leq\frac{\partial z_i^{\mathrm{CP}}}{\partial w_i}\leq 0,\qquad \frac{\partial q^{\mathrm{LP}}}{\partial p}\geq\frac{\partial q^{\mathrm{CP}}}{\partial p}\geq 0, \label{eq:le-chatelier}
+  \end{equation}
+  y la respuesta es tanto menor cuantos más factores estén fijos, porque la empresa tiene menos margen para adaptarse. \autor{Samuelson} trasladó a la economía el principio que el químico Henry \autor{Le Châtelier} enunció en 1884 para los equilibrios químicos \parencite{LeChatelier1884Enonce}: un sistema con menos variables libres responde menos a una perturbación.\footnote{Paul \autor{Samuelson} generalizó en sus \emph{Fundamentos del análisis económico} (1947) el método de la estática comparativa y la aplicación de modelos matemáticos a la economía; recibió el Premio Nobel de Economía en 1970 \parencite{Nobel1970Samuelson}.}
+\end{itemize}
+
+\begin{ideaclave}
+A largo plazo, la forma de los costes refleja los rendimientos a escala de la tecnología ($\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ en el óptimo); a corto, los rendimientos del factor variable. La curva de largo plazo envuelve a las de corto, y la empresa responde más a los precios cuantos menos factores tenga fijos.
+\end{ideaclave}
+
+\begin{itemize}
+\item \textbf{Recapitulación}: la demanda condicionada de un factor nunca crece con su precio, y la no condicionada responde todavía más; los costes medios a largo plazo son en U si la tecnología tiene rendimientos a escala primero crecientes y después decrecientes, y los de corto plazo, por la ley de proporciones variables. La teoría supone, pues, costes en U y empresas que minimizan costes: veamos qué implica la forma de los costes para el mercado y quién discute esos supuestos.
+\end{itemize}
+
+% ==========================================================================
+\section{Extensiones a la teoría neoclásica de los costes}
+\minutos{3,5}
+
+\begin{notaopositor}
+En el cante: la forma de los costes y la estructura del mercado en una frase con remisión (0,5 minutos), las economías externas (0,5), \autor{Stigler} con su gráfico y \autor{Leibenstein} (2), y una enumeración de las otras extensiones (0,5). El resto del bloque (la competencia perfecta en detalle, el gráfico de la subaditividad, la empresa multiplanta y multiproducto y las curvas de aprendizaje) es de profundización, pero conviene conocerlo porque reaparece en el monopolio natural y en la nueva teoría del comercio.
+\end{notaopositor}
+
+\begin{itemize}
+\item Este bloque responde a la cuarta pregunta. Su conclusión anticipada: la forma de los costes condiciona la estructura del mercado y el tamaño de la empresa, y sus dos supuestos más discutidos, el coste medio en U y la minimización del coste, son en el fondo cuestiones empíricas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Implicaciones sobre la estructura de mercado}
+
+\begin{itemize}
+\item La estructura de costes, junto con el tamaño de la demanda, predetermina cuántas empresas caben en un mercado y, con ello, su configuración. Aquí se recogen solo las propiedades de $C(\vect{w},q)$ que lo deciden; los mercados se estudian en su lugar \vertema{3.A.16} \vertema{3.A.17}.
+\end{itemize}
+
+\subsubsection{Competencia perfecta en el mercado de bienes}
+
+\begin{itemize}
+\item La empresa precio-aceptante produce donde $p=\mathrm{CMg}$,\footnote{Con $q>0$; en general, $p\leq\mathrm{CMg}$.} en el tramo creciente del coste marginal, siempre que el precio cubra el CVMe a corto plazo o el CMe a largo (I.3 y anexo~\ref{anexo:geometria}). Para que haya muchas empresas, las deseconomías de escala tienen que aparecer pronto, a un tamaño pequeño respecto al mercado; con rendimientos constantes, el tamaño de cada empresa queda indeterminado \vertema{3.A.16}.
+\end{itemize}
+
+\subsubsection{Monopolio natural uniproducto}
+
+\begin{itemize}
+\item Un mercado es un \concepto{monopolio natural} si la función de costes es \concepto{subaditiva} en la producción relevante: para todo reparto de $q$ entre varias empresas,
+  \begin{equation}
+  C\Big(\sum_{j=1}^{n}q_j\Big)<\sum_{j=1}^{n}C(q_j), \label{eq:subaditividad}
+  \end{equation}
+  es decir, es más barato que toda la producción la haga una sola empresa: la eficiencia productiva exige un único productor. Es la definición de monopolio natural, no un supuesto adicional \parencite{Baumol1977Proper}.
+\item Con un producto, las economías de escala en todo el tramo son condición \emph{suficiente} pero no necesaria: puede haber subaditividad con el coste medio ya creciente, entre el mínimo del CMe ($q^0$) y el punto en que dos empresas empiezan a ser más baratas que una ($q^1$) (gráfico~\ref{fig:subaditividad}). La regulación del monopolio natural queda fuera de esta exposición \vertema{3.A.17} \vertema{3.A.20}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Subaditividad de costes con un producto: entre $q^0$ y $q^1$ una sola empresa produce más barato aunque su coste medio crezca}\label{fig:subaditividad}
+\grafico[0.55\textwidth]{subaditividad}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable}.}
+\end{figure}
+
+\subsubsection{Monopolio natural multiproducto}
+
+\begin{itemize}
+\item Con varios productos, la definición sigue siendo la subaditividad de $C(\vect{w},\vect{q})$. Las economías de alcance (III.4.2) son una condición \emph{necesaria}, no suficiente: una condición suficiente es que, además, el coste incremental medio de cada producto sea decreciente (economías de escala específicas de cada producto) \parencite{BaumolPanzarWillig1982Contestable} \vertema{3.A.17}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Economías de escala}
+
+\begin{itemize}
+\item Las economías de escala estudiadas hasta aquí son \emph{internas}: dependen de la producción de la propia empresa y están en su función de costes. \textcite{Marshall1890Principles} distingue las \concepto{economías externas}: el coste medio de cada empresa baja cuando crece la producción de toda la industria, aunque la de la empresa no cambie. No mueven a la empresa a lo largo de su curva de costes, sino que desplazan la curva hacia abajo.
+\item Sus fuentes son las de la aglomeración que describe \autor{Marshall}: un mercado de trabajo especializado, proveedores de factores especializados y la difusión de conocimientos entre empresas cercanas (\emph{clusters} industriales).
+\item Las \emph{economías de aprendizaje} son otra cosa: dependen de la producción \emph{acumulada}, son dinámicas y, sobre todo, internas a la empresa que aprende (III.4.3). Solo son externas en la medida en que lo aprendido se difunde a las demás empresas de la industria.
+\item Las economías externas son compatibles con la competencia perfecta (cada empresa sigue siendo pequeña) y explican la especialización y el comercio entre países parecidos \vertema{3.B.6}; junto con el aprendizaje, se han usado para justificar la protección de la industria naciente \vertema{3.B.8}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Críticas y extensiones a la teoría neoclásica de los costes\newline desde la Teoría de la Organización Industrial}
+
+\begin{itemize}
+\item La teoría expuesta ha sido cuestionada en sus fundamentos y en sus implicaciones empíricas, sobre todo desde la organización industrial \vertema{3.A.15}. Dos críticas atacan sus dos supuestos centrales: la forma en U del coste medio y la minimización del coste.
+\end{itemize}
+
+\subsubsection{La teoría de los costes de \autor{Stigler} y la reserva de capacidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Stigler1939Production} cuestiona, en lo teórico y en lo empírico, que el coste medio tenga forma de U, con un único tamaño óptimo. Si la demanda es incierta, a la empresa le conviene una planta \emph{flexible}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\begin{itemize}
+\item La empresa puede elegir entre una planta con un coste medio mínimo muy bajo en un nivel de producción (una U cerrada) y otra con un coste medio algo mayor en el mínimo pero casi constante en un intervalo amplio. Si el factor «fijo» es divisible en la práctica (más o menos máquinas, turnos o líneas en uso), se ajusta con el variable y la proporción entre ambos no cambia: el CVMe y el CMg son constantes e iguales en ese tramo, la \concepto{reserva de capacidad}, y solo suben al agotarla (gráfico~\ref{fig:stigler}).
+\item Con la demanda fluctuante, la planta flexible tiene un coste esperado menor aunque su mínimo sea mayor. No hay un tamaño óptimo, sino una horquilla de tamaños óptimos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes según \autor{Stigler}: la planta flexible, con reserva de capacidad, frente a la planta de coste mínimo en U}\label{fig:stigler}
+\grafico[0.55\textwidth]{stigler}
+\fuente{elaboración propia a partir de \textcite{Stigler1939Production}.}
+\end{figure}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los estudios estadísticos y de ingeniería encuentran a menudo costes medios a largo plazo en forma de L: decrecientes hasta una escala mínima eficiente y casi constantes después (apartado~IV.2).
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item La crítica no discute que la empresa minimice costes, sino la forma de la curva. La de \autor{Leibenstein} va más lejos.
+\end{itemize}
+
+\subsubsection{Ineficiencia X de \autor{Leibenstein} (1966)}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Producen las empresas sobre su función de costes? \textcite{Leibenstein1966Allocative} sostiene que, sin presión competitiva, no: los costes observados están por encima de $C(\vect{w},q)$, porque ciertos factores no dan la producción que podrían. Llama \concepto{ineficiencia X} a esa distancia, para distinguirla de la \emph{ineficiencia asignativa} (precio distinto del coste marginal, o combinación de factores inadecuada a sus precios).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los contratos de trabajo son \emph{incompletos}: fijan el salario, pero no el esfuerzo, la carga de trabajo ni todas las tareas.
+\item El \emph{esfuerzo} lo eligen los trabajadores y directivos, les resulta costoso y responde a la presión externa: con poca presión se relajan.
+\item La función de producción no está completamente especificada ni es conocida por la empresa, y no todos los factores (por ejemplo, la capacidad de dirección) se compran en mercados.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Una forma sencilla de recogerlo: el coste observado es
+  \begin{equation}
+  C^{\mathrm{obs}}(\vect{w},q)=(1+\chi)\,C(\vect{w},q),\qquad \chi\geq 0, \label{eq:ineficiencia-x}
+  \end{equation}
+  con $\chi$ decreciente en la intensidad de la competencia.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con competencia intensa, la amenaza de cierre disciplina el esfuerzo; en el monopolio o en la empresa protegida, la «vida tranquila» eleva los costes, y la pérdida de bienestar del monopolio es mayor que el triángulo de \autor{Harberger} \vertema{3.A.17}. \autor{Leibenstein} estima que la ineficiencia X puede ser mucho mayor que la asignativa \parencite{Leibenstein1982CitationClassic}.
+\item Una subida del precio del producto debida a menos competencia puede traducirse en más costes, y no en más beneficio, si los trabajadores se relajan.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \textcite{Nickell1996Competition} encuentra que la competencia se asocia a un mayor crecimiento de la productividad de las empresas británicas, y las encuestas de prácticas de gestión muestran grandes diferencias entre empresas, con peores prácticas donde hay menos competencia \parencite{BloomVanReenen2007Measuring}. Las fronteras de eficiencia del apartado~IV.3 miden precisamente la distancia al coste mínimo.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item \textcite{Stigler1976Xistence} replica que lo que \autor{Leibenstein} llama ineficiencia es minimización de costes con otros argumentos (el ocio de los trabajadores, el coste de supervisarlos): vigilar el esfuerzo solo compensa hasta que su coste marginal iguala su beneficio marginal. El debate desemboca en la teoría de la agencia y de los contratos incompletos \vertema{3.A.15}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Otras extensiones a la teoría neoclásica de los costes}
+
+\subsubsection{Análisis de costes de la empresa multiplanta}
+
+\begin{itemize}
+\item Si la empresa tiene $J$ plantas con costes $C_j(q_j)$ y quiere producir $q$ al mínimo coste, resuelve $\min\sum_jC_j(q_j)$ s.a. $\sum_jq_j=q$. En las plantas que producen, $\mathrm{CMg}_1(q_1)=\dots=\mathrm{CMg}_J(q_J)$: el reparto iguala los costes marginales, y el coste marginal de la empresa es la suma horizontal de los de sus plantas. Si alguno es constante, la empresa llena antes las plantas más baratas y añade las demás por orden de coste \parencite[cap.~5]{GravelleRees2004Microeconomics}.
+\end{itemize}
+
+\subsubsection{Análisis de la empresa multiproducto}
+
+\begin{itemize}
+\item Con varios productos, $C(\vect{w},\vect{q})$ con $\vect{q}=(q_1,q_2)$, aparecen conceptos nuevos \parencite{BaumolPanzarWillig1982Contestable}:
+  \begin{itemize}
+  \item \concepto{economías de alcance}: $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$, producir juntos es más barato que por separado (gráfico~\ref{fig:alcance}). Surgen de factores compartidos o «cuasipúblicos» (una red, una marca, un conocimiento) que, adquiridos para un producto, sirven para otro sin coste o con poco \parencite{PanzarWillig1981Economies};
+  \item \concepto{complementariedad de costes}: $\partial^2C/\partial q_1\partial q_2<0$, el coste marginal de un producto baja al producir más del otro; si se cumple en todo el tramo, implica economías de alcance;
+  \item \concepto{economías de escala multiproducto}: el coste medio a lo largo de un rayo, $C(\lambda\,\vect{q}^0)/\lambda$, decrece al aumentar $\lambda$, con las proporciones de los productos fijas.
+  \end{itemize}
+\item Explican la diversificación y el tamaño eficiente de la empresa, que abarca más o menos actividades según la intensidad de las economías de alcance \vertema{3.A.11} \vertema{3.A.15}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Economías de alcance: coste de producir los dos bienes juntos frente a por separado}\label{fig:alcance}
+\grafico[0.5\textwidth]{alcance}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable}.}
+\end{figure}
+
+\subsubsection{Análisis dinámico: curvas de aprendizaje}
+
+\begin{itemize}
+\item Las empresas aprenden produciendo: el coste unitario baja con la \emph{producción acumulada}, $Q^{\mathrm{ac}}_t=\sum_{\tau\leq t}q_\tau$, no con la corriente. La \concepto{curva de aprendizaje} suele especificarse como $c(Q^{\mathrm{ac}})=c_1\,(Q^{\mathrm{ac}})^{-b}$, con $b>0$: cada vez que se duplica la producción acumulada, el coste unitario se multiplica por $2^{-b}$. \textcite{Wright1936Factors} la documentó en la fabricación de aviones.
+\item Son economías \emph{dinámicas}: la escala mueve a la empresa a lo largo de su curva de costes; el aprendizaje desplaza la curva hacia abajo para cualquier producción corriente (gráfico~\ref{fig:aprendizaje}). Dan ventaja a quien entra primero, pueden justificar precios iniciales por debajo del coste para aprender antes y fundamentan el argumento de la industria naciente \vertema{3.B.8}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Curva de aprendizaje (izquierda) y diferencia entre economías de escala y de aprendizaje (derecha)}\label{fig:aprendizaje}
+\grafico[0.85\textwidth]{aprendizaje}
+\fuente{elaboración propia a partir de \textcite{Wright1936Factors} y \textcite{Lieberman1984Learning}.}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{Recapitulación}: la forma de los costes decide cuántas empresas caben en un mercado, y la teoría se completa con las economías externas, la empresa con varias plantas o productos y el aprendizaje. Pero \autor{Stigler} y \autor{Leibenstein} plantean dos preguntas que la teoría no puede responder sola: ¿son los costes en U? ¿Minimizan costes las empresas? Se responden con datos.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Aplicaciones empíricas: estimación de costes\newline y medición de la eficiencia}
+\minutos{5,5}
+
+\begin{notaopositor}
+En el cante: la idea (la dualidad hace estimable la teoría) y la translog de costes con sus ecuaciones de participación (2 minutos); dos resultados sobre economías de escala, \autor{Christensen} y \autor{Greene} y la densidad frente a la escala (1,5); y la frontera de eficiencia de \autor{Farrell}, con su gráfico y la comparación entre frontera estocástica y análisis envolvente de datos (2). Las tablas de estimaciones por sectores, las series del BCE y los detalles econométricos son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item Este bloque responde a la última pregunta. Su conclusión anticipada: gracias a la dualidad basta estimar la función de costes, con datos de precios, costes y producción, para conocer la tecnología, las economías de escala y la eficiencia de cada empresa; la evidencia apoya costes medios en L más que en U y muestra diferencias de eficiencia persistentes entre empresas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Estimación de funciones de costes por dualidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Estimar directamente la función de producción exige medir las cantidades de factores y supone que la empresa las elige; si los precios de los factores le vienen dados y la producción también (una eléctrica regulada debe atender la demanda), lo natural es estimar la función de costes, cuyos argumentos son exógenos para ella \parencite{Nerlove1963Returns}. Por la dualidad (I.3.1), una función de costes bien comportada contiene toda la información relevante de la tecnología, y por el lema de \autor{Shephard} da a la vez las demandas de factores.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item La empresa minimiza costes, es precio-aceptante en los mercados de factores y su producción es exógena; los datos son de corte transversal o de panel de empresas del mismo sector.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Forma Cobb-Douglas}. De~\eqref{eq:coste-cobb-douglas}, en logaritmos,
+  \begin{equation}
+  \ln C=\beta_0+\frac{1}{k}\ln q+\sum_i\frac{\alpha_i}{k}\ln w_i, \label{eq:coste-cd-log}
+  \end{equation}
+  lineal en los parámetros: la homogeneidad de grado uno en los precios exige que sus coeficientes sumen 1, y el de $\ln q$ es la inversa del grado de rendimientos a escala. Es la que estima \textcite{Nerlove1963Returns}. Impone una elasticidad de sustitución unitaria y el mismo grado de economías de escala a cualquier tamaño.
+\item \emph{Formas flexibles}. Son aproximaciones de segundo orden a una función de costes cualquiera: no imponen a priori ni la elasticidad de sustitución ni los rendimientos. La más usada es la \concepto{función de costes translogarítmica} \parencites{ChristensenJorgensonLau1973Transcendental}{ChristensenGreene1976Economies}:
+  \begin{equation}
+  \ln C=\alpha_0+\alpha_q\ln q+\tfrac12\beta_{qq}(\ln q)^2+\sum_i\alpha_i\ln w_i+\tfrac12\sum_i\sum_j\beta_{ij}\ln w_i\ln w_j+\sum_i\beta_{iq}\ln w_i\ln q, \label{eq:translog-costes}
+  \end{equation}
+  con simetría, $\beta_{ij}=\beta_{ji}$, y homogeneidad de grado uno en $\vect{w}$: $\sum_i\alpha_i=1$, $\sum_i\beta_{ij}=0$ para todo $j$ y $\sum_i\beta_{iq}=0$. Es la misma forma cuadrática en logaritmos que la translog del consumidor \vertema{3.A.9}, aplicada a $C(\vect{w},q)$.
+  \begin{itemize}
+  \item Por el lema de \autor{Shephard}, las \emph{participaciones en el coste} son lineales en los parámetros:
+    \begin{equation}
+    s_i=\frac{\partial\ln C}{\partial\ln w_i}=\alpha_i+\sum_j\beta_{ij}\ln w_j+\beta_{iq}\ln q,\qquad\sum_is_i=1. \label{eq:translog-participaciones}
+    \end{equation}
+    Se estima el sistema formado por la función de costes y las participaciones (quitando una, porque suman 1), con las restricciones entre ecuaciones.
+  \item \emph{Economías de escala}: $\varepsilon_{C,q}=\partial\ln C/\partial\ln q=\alpha_q+\beta_{qq}\ln q+\sum_i\beta_{iq}\ln w_i$, que varía con la producción: la translog admite un coste medio en U o en L. El grado de economías de escala se mide con $1-\varepsilon_{C,q}$.
+  \item \emph{Sustitución}: las elasticidades de \autor{Allen}-\autor{Uzawa} son $\sigma_{ij}=(\beta_{ij}+s_is_j)/(s_is_j)$ para $i\neq j$ y $\sigma_{ii}=(\beta_{ii}+s_i^2-s_i)/s_i^2$, y las de las demandas condicionadas, $\varepsilon_{z_i,w_j}=s_j\,\sigma_{ij}$.
+  \item \emph{Casos anidados}: con todos los $\beta=0$ es la Cobb-Douglas; con $\beta_{iq}=0$, homotética; con además $\beta_{qq}=0$, homogénea.
+  \end{itemize}
+\item Otra forma flexible es la \concepto{\autor{Leontief} generalizada}, $C(\vect{w},q)=q\sum_i\sum_jb_{ij}\,(w_iw_j)^{1/2}$ con $b_{ij}=b_{ji}$, que \textcite{Diewert1971Application} propone precisamente como aplicación del teorema de dualidad de \autor{Shephard}. Las funciones de costes de las formas funcionales habituales están en el anexo~\ref{anexo:formas-costes}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Las restricciones de la teoría (homogeneidad, simetría y concavidad, es decir, $S(\vect{w},q)$ semidefinida negativa) son \emph{contrastables}: son las condiciones de integrabilidad de I.3.1. Y las estimaciones dan lo que interesa a la política económica: economías de escala, elasticidades de sustitución y costes marginales.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Con una translog de capital, trabajo, energía y materiales para las manufacturas de Estados Unidos, \textcite{BerndtWood1975Technology} encuentran que la energía y el capital son complementarios, y la energía y el trabajo, sustitutivos: un resultado que una Cobb-Douglas no puede dar, por construcción.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Las formas flexibles son aproximaciones locales: con muchos factores tienen muchos parámetros, y la concavidad estimada puede fallar lejos del punto de aproximación. Además, la estimación supone que la empresa minimiza costes: si no lo hace, la función estimada es una media de comportamientos, no la frontera. Medir esa distancia es el objeto del apartado~IV.3.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Economías de escala y forma de los costes en los datos}
+
+\begin{itemize}
+\item \concepto{Métodos}. La forma de la curva de costes a largo plazo se ha estudiado de tres maneras \parencite{Stigler1958Economies}:
+  \begin{itemize}
+  \item \emph{estadístico}: estimar funciones de costes con datos de empresas o plantas (IV.1);
+  \item \emph{de ingeniería}: calcular, con los datos técnicos de los procesos, el coste de plantas de distinto tamaño;
+  \item \emph{del superviviente}: \textcite{Stigler1958Economies} clasifica las empresas de una industria por tamaños y observa cómo evoluciona la cuota de producción de cada clase; los tamaños que ganan cuota son los eficientes. No necesita datos de costes, pero supone que solo sobrevive lo eficiente (y no, por ejemplo, lo que tiene poder de mercado) y da la forma de la curva, no su nivel.
+  \end{itemize}
+\item \concepto{Resultados}.
+  \begin{itemize}
+  \item \textcite{Nerlove1963Returns} estima, con 145 empresas eléctricas estadounidenses de 1955, una función de costes derivada de una Cobb-Douglas: es una de las primeras aplicaciones empíricas del teorema de dualidad de \autor{Shephard}. Encuentra economías de escala que se reducen al crecer el tamaño de las empresas.
+  \item \textcite{ChristensenGreene1976Economies}, con una translog de costes y datos de 1955 y 1970, encuentran que en 1955 casi todas las empresas tenían economías de escala por aprovechar, pero que en 1970 el grueso de la generación lo hacían empresas en el tramo prácticamente plano del coste medio (gráfico~\ref{fig:christensen-greene}). Concluyen que no hacen falta unas pocas empresas muy grandes para producir con eficiencia: la competencia en la generación no exige sacrificar economías de escala. Es uno de los fundamentos empíricos de la separación entre la generación, abierta a la competencia, y las redes, monopolio natural regulado \vertema{3.A.17} \vertema{3.A.20}.
+  \item En el transporte aéreo, \textcite{CavesChristensenTretheway1984Density} muestran que los mayores costes de las aerolíneas pequeñas no se deben a la escala, sino a la menor densidad de tráfico de su red: hay que distinguir las \emph{economías de densidad} (más tráfico en la misma red) de las \emph{economías de escala} (una red más grande). La medida de la «producción» decide el resultado.
+  \item Los repasos clásicos de la evidencia estadística \parencites{Johnston1960Statistical}{Walters1963Production} y los estudios del superviviente encuentran con frecuencia costes medios a largo plazo decrecientes hasta una \concepto{escala mínima eficiente} y casi constantes después: costes en L, más que en U, como sostenía \autor{Stigler} (III.3.1).
+  \item Las economías de aprendizaje suelen pesar más que las de escala estáticas: en 37 productos químicos, el coste baja con la producción acumulada de la industria y con la inversión acumulada, no con el paso del tiempo, y las economías de escala convencionales son significativas pero pequeñas en comparación \parencite{Lieberman1984Learning}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Coste medio y producción de las empresas eléctricas de Estados Unidos en 1970}\label{fig:christensen-greene}
+\grafico[0.65\textwidth]{christensen-greene-1970}
+\fuente{elaboración propia con los datos de \textcite{ChristensenGreene1976Economies} publicados por \textcite{Greene2026TablaF44}; 123 empresas (sin los grupos de empresas).}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Medición de la eficiencia:\newline frontera estocástica frente a análisis envolvente de datos}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La función de costes es una \emph{frontera}: el coste mínimo. Las empresas reales pueden estar por encima, como sostenía \autor{Leibenstein}. \textcite{Farrell1957Measurement} propone medir la eficiencia como la distancia a la frontera construida con las mejores prácticas observadas, y la descompone en dos partes (gráfico~\ref{fig:farrell}). Con la isocuanta unitaria eficiente $SS'$ (las combinaciones de factores por unidad de producto, $z_L/q$ y $z_K/q$, más pequeñas posibles), una empresa que produce en $P$ y la isocoste tangente en $Q'$:
+  \begin{equation}
+  \mathrm{EfT}=\frac{OQ}{OP},\qquad \mathrm{EfA}=\frac{OR}{OQ},\qquad \mathrm{EfE}=\frac{OR}{OP}=\mathrm{EfT}\cdot\mathrm{EfA}, \label{eq:farrell}
+  \end{equation}
+  donde $Q$ es el punto de la isocuanta en el rayo $OP$ y $R$, el de la isocoste tangente en ese rayo.
+  \begin{itemize}
+  \item La \concepto{eficiencia técnica} (EfT) mide en qué proporción podría la empresa reducir todos sus factores sin producir menos: es la ineficiencia X de \autor{Leibenstein}.
+  \item La \concepto{eficiencia asignativa} (EfA) mide si la combinación de factores es la adecuada a sus precios ($\mathrm{RMST}_{LK}=w_L/w_K$).
+  \item La \concepto{eficiencia económica} o en costes (EfE) es el producto de las dos: el cociente entre el coste mínimo y el observado, $C(\vect{w},q)/C^{\mathrm{obs}}=1/(1+\chi)$. Las tres van de 0 a 1.
+  \end{itemize}
+\item La frontera no se conoce: hay que estimarla con las propias observaciones, y hay dos familias de métodos.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Eficiencia técnica, asignativa y económica de \autor{Farrell}}\label{fig:farrell}
+\grafico[0.5\textwidth]{farrell}
+\fuente{elaboración propia a partir de \textcite{Farrell1957Measurement} y \textcite{CoelliEtAl2005Introduction}.}
+\end{figure}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Frontera estocástica (paramétrica)}
+
+\begin{itemize}
+\item \textcite{AignerLovellSchmidt1977Formulation} y \textcite{MeeusenVandenBroeck1977Efficiency} proponen una frontera con un \emph{error compuesto}. En su versión de costes, para cada empresa $j$:
+  \begin{equation}
+  \ln C_j^{\mathrm{obs}}=\ln C(\vect{w}_j,q_j)+v_j+u_j,\qquad v_j\sim N(0,\sigma_v^2),\quad u_j\geq 0, \label{eq:sfa}
+  \end{equation}
+  donde $v_j$ es ruido (perturbaciones fuera del control de la empresa, errores de medida) y $u_j=\ln(1+\chi_j)$, la ineficiencia, con una distribución asimétrica (seminormal o exponencial). Se estima por máxima verosimilitud, con una translog como $C(\cdot)$, y la eficiencia en costes de cada empresa, $\mathrm{EfE}_j=e^{-u_j}$, se predice a partir de su residuo \parencite{JondrowEtAl1982Estimation}. Con datos de panel puede explicarse la ineficiencia con características de la empresa \parencite{BatteseCoelli1995Model}.
+\end{itemize}
+
+\subparagraph{ii) Análisis envolvente de datos (no paramétrico)}
+
+\begin{itemize}
+\item \textcite{CharnesCooperRhodes1978Measuring} hacen operativa la idea de \autor{Farrell} con programación lineal. Para cada empresa $0$, con factores $\vect{z}_0$ y producción $q_0$, se busca la combinación de empresas observadas que produce al menos $q_0$ con la menor proporción $e$ de sus factores:
+  \begin{equation}
+  \mathrm{EfT}_0=\min_{e,\,\vect{\tau}}\ e\quad\text{s.a.}\quad\sum_j\tau_j\,\vect{z}_j\leq e\,\vect{z}_0,\qquad\sum_j\tau_j\,q_j\geq q_0,\qquad\tau_j\geq 0. \label{eq:dea}
+  \end{equation}
+  La frontera es la envolvente lineal por tramos de los datos: no hay forma funcional ni error aleatorio, y toda distancia a la frontera se atribuye a ineficiencia. Con rendimientos constantes es el modelo CCR; añadiendo $\sum_j\tau_j=1$ se admiten rendimientos variables \parencite{BankerCharnesCooper1984Some}, y la comparación entre ambos separa la ineficiencia técnica pura de la de escala. Con los precios de los factores, minimizando $\vect{w}_0\cdot\vect{z}$ se obtiene la eficiencia en costes y, por cociente, la asignativa.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Frontera estocástica frente a análisis envolvente de datos}\label{tab:sfa-dea}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\raggedright\arraybackslash}p{0.34\textwidth}|>{\raggedright\arraybackslash}p{0.34\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido} & \textbf{Frontera estocástica (SFA)} & \textbf{Análisis envolvente de datos (DEA)}\\
+\hline
+Método & econométrico, paramétrico & programación lineal, no paramétrico\\
+\hline
+Forma funcional & hay que elegirla (Cobb-Douglas, translog) & ninguna; solo convexidad y eliminación gratuita\\
+\hline
+Ruido & lo separa de la ineficiencia & no: toda desviación es ineficiencia\\
+\hline
+Varios productos & más difícil (función de costes o de distancia) & inmediato\\
+\hline
+Inferencia & errores típicos y contrastes & sin inferencia directa (\emph{bootstrap})\\
+\hline
+Punto débil & supuestos de forma funcional y de distribución de $u_j$ & sensible a observaciones atípicas y al número de variables\\
+\hline
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{CoelliEtAl2005Introduction} y \textcite{KumbhakarLovell2000Stochastic}.}
+\end{table}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Con datos de panel, el crecimiento de la productividad puede descomponerse en cambio técnico (desplazamiento de la frontera) y cambio en la eficiencia (acercamiento a ella), con el índice de \autor{Malmquist} \parencite{CoelliEtAl2005Introduction}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Banca}. Una revisión de 130 estudios de frontera sobre entidades financieras de 21 países concluye que DEA y frontera estocástica no siempre ordenan igual a las entidades \parencite{BergerHumphrey1997Efficiency}. El BCE estima con una frontera estocástica y una translog de costes que el banco mediano de la zona del euro podría producir lo mismo con alrededor del 84\,\% de sus costes (2006-2017); la mayor parte de la ineficiencia es persistente, las entidades grandes son menos eficientes y las pequeñas tienen más economías de escala por aprovechar \parencites{BCE2019EficienciaBancos}{BCE2018FSRRecuadro6}. En España, las economías de escala de la banca aumentaron tras la reestructuración posterior a 2012 \parencite{CarboRodriguez2014Tamano}.
+\item Los indicadores contables dan solo una idea aproximada: en el segundo trimestre de 2026 los gastos de explotación absorbían el 42,9\,\% del margen bruto de los grandes bancos españoles, frente al 53,1\,\% del conjunto de la supervisión europea (gráfico~\ref{fig:ratio-eficiencia}) \parencites{BCE2026SBSNota}{BCE2026SBS2T}. Pero esta ratio depende del modelo de negocio y del coste del trabajo, y por eso el BCE prefiere las fronteras de costes.
+\item \emph{Regulación de redes}. Estas técnicas se usan para fijar los ingresos permitidos según la eficiencia comparada de las empresas, la \emph{competencia por comparación} (\emph{yardstick competition}) de \textcite{Shleifer1985Theory} \vertema{3.A.17} \vertema{3.A.20}. En Alemania, el regulador fija los ingresos máximos de las distribuidoras eléctricas comparando su eficiencia con DEA y con frontera estocástica, se queda con el valor más favorable de los dos (con un mínimo del 60\,\%) y exige eliminar la ineficiencia durante el periodo regulatorio \parencites{BNetzA2026Effizienzvergleich}{ARegV2007}; \textcite{JamasbPollitt2001Benchmarking} repasan la experiencia internacional en electricidad.
+\item \emph{Sector público}. La Comisión Europea aplica frontera estocástica y DEA al gasto en educación y sanidad de los Estados miembros (2000-2022): casi todos están cerca de la frontera en los indicadores de cantidad y lejos en los de calidad, el gasto muestra rendimientos decrecientes a escala y España está entre los más eficientes en la proporción de titulados superiores \parencite{ComisionEuropea2024EficienciaGasto}. En España se han medido así la eficiencia de los puertos de contenedores, cuyas reformas de los 90 impulsaron más el progreso técnico que la eficiencia \parencite{GonzalezTrujillo2008Reforms}, y la de los ayuntamientos valencianos, con DEA \parencite{BalaguerCollPriorTortosa2007Determinants}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Ratio de eficiencia (gastos de explotación sobre margen bruto) de las entidades significativas: España frente al conjunto de la supervisión bancaria europea}\label{fig:ratio-eficiencia}
+\grafico[0.7\textwidth]{ratio-eficiencia-bancos}
+\fuente{elaboración propia con datos de \textcite{BCE2026SBSDatos}; último dato, segundo trimestre de 2026.}
+\end{figure}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Las dos técnicas miden la eficiencia \emph{relativa} a las mejores prácticas de la muestra, no la absoluta; sus resultados dependen de cómo se definan los factores y los productos y de la heterogeneidad no observada (una red rural no es ineficiente por ser más cara que una urbana). Tampoco explican por qué una empresa es ineficiente: para eso hacen falta modelos de incentivos y de organización \vertema{3.A.15}. Aun así, han convertido la ineficiencia X de una hipótesis en una magnitud medible y útil para la regulación.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Algunas aplicaciones empíricas de la teoría de los costes}\label{tab:ejemplos-sectores}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\raggedright\arraybackslash}p{0.3\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido}\textbf{Sector} & \textbf{Pregunta} & \textbf{Método} & \textbf{Resultado}\\
+\hline
+Generación eléctrica (EE.\,UU.) & ¿Hay economías de escala? & Cobb-Douglas de costes \parencite{Nerlove1963Returns}; translog \parencite{ChristensenGreene1976Economies} & Economías de escala que se agotan con el tamaño; en 1970, la mayor parte de la producción en el tramo plano del coste medio\\
+\hline
+Manufacturas (EE.\,UU.) & ¿Se sustituyen energía y capital? & Translog de capital, trabajo, energía y materiales \parencite{BerndtWood1975Technology} & Energía y capital, complementarios; energía y trabajo, sustitutivos\\
+\hline
+Transporte aéreo (EE.\,UU.) & ¿Escala o densidad? & Translog \parencite{CavesChristensenTretheway1984Density} & Los costes dependen de la densidad de tráfico, no del tamaño de la red\\
+\hline
+Banca (zona del euro y España) & ¿Qué eficiencia y qué escala? & Frontera estocástica con translog \parencite{BCE2019EficienciaBancos} & Eficiencia en costes del 84\,\% en el banco mediano; más economías de escala en las entidades pequeñas\\
+\hline
+Redes eléctricas (Alemania) & ¿Cuánto debe reducir costes cada distribuidora? & DEA y frontera estocástica en la regulación \parencite{BNetzA2026Effizienzvergleich} & Objetivos de eficiencia individuales en los ingresos permitidos\\
+\hline
+Gasto público (UE) & ¿Es eficiente el gasto en educación y sanidad? & DEA y frontera estocástica \parencite{ComisionEuropea2024EficienciaGasto} & Cerca de la frontera en cantidad, lejos en calidad; rendimientos decrecientes\\
+\hline
+Química & ¿Aprenden las empresas? & Curvas de aprendizaje \parencite{Lieberman1984Learning} & El coste baja con la producción acumulada; las economías de escala estáticas son menores\\
+\hline
+\end{tabular}
+\fuente{elaboración propia a partir de las obras citadas.}
+\end{table}
+
+\begin{ideaclave}
+La dualidad convierte la teoría de los costes en un instrumento empírico: con costes, precios y producción se estiman las economías de escala y la sustitución entre factores sin conocer la tecnología, y con fronteras se mide cuánto se aleja cada empresa del coste mínimo. La evidencia matiza la teoría (costes en L, ineficiencias persistentes) y la pone al servicio de la regulación y de la competencia.
+\end{ideaclave}
+
+\begin{itemize}
+\item \textbf{Recapitulación}: la translog de costes y las ecuaciones de participación hacen estimable la teoría; los datos responden a \autor{Stigler} (costes en L, economías de escala que se agotan pronto en muchos sectores) y a \autor{Leibenstein} (diferencias de eficiencia grandes y persistentes, menores con más competencia).
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación (ideas clave)}}:
+  \begin{itemize}
+  \item La función de costes resume la elección de la combinación de factores más barata: es cóncava y homogénea de grado uno en los precios de los factores, sus derivadas son las demandas condicionadas (\autor{Shephard}) y contiene la misma información que la tecnología. Con la función de beneficio (\autor{Hotelling}) y el problema en dos etapas ($p=\mathrm{CMg}$), cierra el triángulo entre tecnología, costes y oferta (I).
+  \item Su forma depende del plazo: a largo plazo, de los rendimientos a escala ($\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ en el óptimo); a corto, de la productividad del factor variable; y la curva de largo plazo envuelve a las de corto (II).
+  \item La forma de los costes decide la estructura del mercado, y \autor{Stigler} y \autor{Leibenstein} discuten la U del coste medio y la minimización del coste (III); la evidencia empírica, construida sobre la dualidad, apoya costes medios en L y muestra diferencias de eficiencia persistentes entre empresas (IV).
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: la estructura de costes decide cuántas empresas caben en un mercado y si conviene regularlo; los costes son la referencia de los reguladores (ingresos permitidos, comparación de eficiencias) y de las autoridades de competencia, y la base de la medición de la productividad.
+\item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
+  \begin{itemize}
+  \item la función de costes y la estructura del mercado dan la oferta: en competencia perfecta \vertema{3.A.16}, en monopolio y monopolio natural \vertema{3.A.17} y en oligopolio \vertema{3.A.19};
+  \item el tamaño eficiente y los límites de la empresa \vertema{3.A.15} y la regulación del poder de mercado, donde la medición de la eficiencia sirve para regular por comparación \vertema{3.A.20};
+  \item la misma dualidad del consumidor \vertema{3.A.9}, y la demanda derivada de factores en el mercado de trabajo \vertema{3.A.25};
+  \item las economías de escala internas y externas en el comercio internacional \vertema{3.B.6} y las de aprendizaje en la protección de la industria naciente \vertema{3.B.8}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}: el supuesto más frágil no es la forma de la curva, sino la precio-aceptación en los mercados de factores. Con poder de monopsonio, el precio de un factor depende de la cantidad que se compra y las isocostes dejan de ser rectas \vertema{3.A.17}; en equilibrio general, los precios de los factores dejan de ser datos \vertema{3.A.21}. Y la ineficiencia X recuerda que el coste mínimo es un objetivo que la competencia ayuda a alcanzar, no un dato.
+\item \textbf{\emph{Idea final}}: volviendo a la pregunta del principio, ¿hacía falta un monopolio para producir electricidad barata? La función de costes, estimada gracias a la dualidad, respondió que no en la generación, donde las economías de escala estaban casi agotadas, y que sí en las redes, que siguen siendo monopolios naturales. Esa es la utilidad de la teoría de los costes: decirnos qué parte de la estructura de un mercado impone la tecnología y qué parte puede dejarse a la competencia.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Lecturas complementarias}
+\begin{itemize}
+\item \textcite[cap.~5]{MasColellWhinstonGreen1995}: apartados 5.C (maximización del beneficio y minimización del coste) y 5.D (geometría de los costes y oferta).
+\item \textcite[cap.~4-6]{Varian1992Microeconomic}: costes, geometría de los costes y dualidad.
+\item \textcite{CoelliEtAl2005Introduction}: introducción a la medición de la eficiencia y la productividad (DEA, frontera estocástica e índices de \autor{Malmquist}).
+\item Tema ICEX-CECO de teoría de los costes y dualidad, que sigue el enfoque de \textcite{Segura1986Analisis} (el primal del anexo~\ref{anexo:segura}).
+\end{itemize}
+\end{anotaciones}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: condiciones de \autor{Kuhn}-\autor{Tucker}\newline de la maximización del beneficio y la minimización del coste}\label{anexo:kt}
+
+\begin{itemize}
+\item Las condiciones de primer orden de los dos problemas, con $\max_{\vect{z}\geq\vect{0}}\ p\,F(\vect{z})-\vect{w}\cdot\vect{z}$ y la lagrangiana $\mathcal{L}=\vect{w}\cdot\vect{z}+\mu\big(q-F(\vect{z})\big)$, son las de la tabla~\ref{tab:kt}.
+\end{itemize}
+
+\begin{table}[H]
+\centering\small
+\caption{Condiciones de primer orden de la maximización del beneficio y de la minimización del coste}\label{tab:kt}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{0.2\textwidth}|>{\centering\arraybackslash}p{0.33\textwidth}|>{\centering\arraybackslash}p{0.33\textwidth}|}
+\hline
+\rowcolor{tceeazulpalido} & \textbf{MB: $\max p\,F(\vect{z})-\vect{w}\cdot\vect{z}$} & \textbf{MC: $\min\vect{w}\cdot\vect{z}$ s.a. $F(\vect{z})\geq q$}\\
+\hline
+Estacionariedad & $p\,F_i-w_i\leq 0\ \Rightarrow\ p\,F_i\leq w_i$ & $w_i-\mu F_i\geq 0\ \Rightarrow\ \dfrac{w_i}{F_i}\geq\mu$\\[6pt]
+\hline
+Restricción & --- & $F(\vect{z})-q\geq 0$, $\mu\geq 0$, $\mu\big(F(\vect{z})-q\big)=0$\\
+\hline
+No negatividad & $z_i\geq 0$ & $z_i\geq 0$\\
+\hline
+Holgura complementaria & $z_i\,(p\,F_i-w_i)=0$ & $z_i\,(w_i-\mu F_i)=0$\\
+\hline
+Solución interior & $p\,\mathrm{PMg}_i=w_i$ & $\dfrac{w_1}{\mathrm{PMg}_1}=\dots=\dfrac{w_n}{\mathrm{PMg}_n}=\mu$\\[6pt]
+\hline
+\end{tabular}
+\par\vspace{2pt}{\footnotesize En ambos: $\mathrm{RMST}_{LK}=\mathrm{PMg}_L/\mathrm{PMg}_K=w_L/w_K$. En la combinación común (producción $q=q(p,\vect{w})$), $\mu^*=\mathrm{CMg}=p$.}
+\fuente{elaboración propia basada en \textcite[§5.C]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Estacionariedad}: en la MB, el valor del producto marginal de cada factor no puede superar su precio; si el factor se usa, lo iguala. En la MC, el precio de cada factor no puede ser menor que el coste de la producción que aporta, $\mu F_i$.
+\item \emph{Restricción}: en la MC, por la continuidad y la monotonía de $F$, $\mu>0$ y se produce exactamente $q$.
+\item \emph{Holgura complementaria}: para cada factor, o se usa y la estacionariedad se cumple con igualdad, o no se usa (solución de esquina) y la desigualdad puede ser estricta.
+\end{itemize}
+
+\subsection{Condiciones de segundo orden}
+
+\begin{itemize}
+\item \emph{Maximización del beneficio} (sin restricciones de igualdad): la hessiana del beneficio, $p\,D^2F(\vect{z}^*)$, debe ser semidefinida negativa. Con dos factores, si es definida negativa, $F_{LL}<0$ y $F_{LL}F_{KK}-F_{LK}^2>0$: cada factor tiene productividad marginal decreciente y, además, los rendimientos son decrecientes. No basta, pues, la ley de los rendimientos decrecientes de cada factor.
+\item \emph{Minimización del coste} (una restricción): con dos factores y solución interior, se comprueba con el \concepto{hessiano orlado} de la función de producción, como el de la utilidad en el consumidor \vertema{3.A.9}:
+  \begin{equation*}
+  \overline{H}=\begin{pmatrix}0&F_L&F_K\\F_L&F_{LL}&F_{LK}\\F_K&F_{KL}&F_{KK}\end{pmatrix},\qquad |\overline{H}|=2F_LF_KF_{LK}-F_K^2F_{LL}-F_L^2F_{KK}
+  \end{equation*}
+  (regla de \autor{Sarrus}). La hessiana orlada de la lagrangiana, con orla $-F_i$ y bloque $-\mu F_{ij}$, tiene determinante $-\mu|\overline{H}|$, que en un mínimo debe ser negativo: basta $|\overline{H}|>0$, que equivale a isocuantas estrictamente convexas en el óptimo, porque a lo largo de una isocuanta $\frac{d^2z_K}{dz_L^2}=\frac{|\overline{H}|}{F_K^3}$.
+\item Con $n$ factores, los menores principales directores orlados de orden $k+1$ ($k=2,\dots,n$) deben ser todos negativos en el mínimo \parencite[cap.~3]{SydsaeterEtAl2008Further}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: teorema de la envolvente,\newline lemas de \autor{Hotelling} y de \autor{Shephard}}\label{anexo:envolvente}
+
+\begin{itemize}
+\item \concepto{Teorema de la envolvente}: la derivada de la función valor de un problema de optimización respecto a un parámetro es la derivada parcial de la función objetivo (o de la lagrangiana) respecto a ese parámetro, evaluada en el óptimo. El ajuste de las variables de elección no altera el valor en primer orden, porque ya eran óptimas.
+\end{itemize}
+
+\subsection{Lema de \autor{Hotelling}}
+
+\begin{itemize}
+\item \emph{Por la envolvente}. Con $B(p,\vect{w})=p\,F\big(\vect{z}(p,\vect{w})\big)-\vect{w}\cdot\vect{z}(p,\vect{w})$:
+  \begin{equation*}
+  \frac{\partial B(p,\vect{w})}{\partial p}=F\big(\vect{z}(p,\vect{w})\big)=q(p,\vect{w}),\qquad\frac{\partial B(p,\vect{w})}{\partial w_i}=-z_i(p,\vect{w}).
+  \end{equation*}
+\item \emph{Sin cálculo diferencial}, por la convexidad. Para cualesquiera precios $(p',\vect{w}')$, el plan $\big(q(p,\vect{w}),\vect{z}(p,\vect{w})\big)$ sigue siendo posible, así que $g(p',\vect{w}')\equiv B(p',\vect{w}')-\big(p'\,q(p,\vect{w})-\vect{w}'\cdot\vect{z}(p,\vect{w})\big)\geq 0$, con $g(p,\vect{w})=0$. La función $g$ tiene un mínimo en $(p,\vect{w})$ y su gradiente se anula allí, que es el lema \parencite[prop.~5.C.1]{MasColellWhinstonGreen1995}.
+\end{itemize}
+
+\subsection{Lema de \autor{Shephard}}
+
+\begin{itemize}
+\item \emph{Por la envolvente}. Con $\mathcal{L}=\vect{w}\cdot\vect{z}+\mu\big(q-F(\vect{z})\big)$:
+  \begin{equation*}
+  \frac{\partial C(\vect{w},q)}{\partial w_i}=\frac{\partial\mathcal{L}}{\partial w_i}\bigg|_{\vect{z}^*,\mu^*}=z_i(\vect{w},q),\qquad\frac{\partial C(\vect{w},q)}{\partial q}=\frac{\partial\mathcal{L}}{\partial q}\bigg|_{\vect{z}^*,\mu^*}=\mu^*.
+  \end{equation*}
+  La segunda igualdad es la interpretación del multiplicador como coste marginal.
+\item \emph{Sin cálculo diferencial}, por la concavidad. Para cualquier $\vect{w}'$, la combinación $\vect{z}(\vect{w},q)$ sigue produciendo $q$, así que $g(\vect{w}')\equiv\vect{w}'\cdot\vect{z}(\vect{w},q)-C(\vect{w}',q)\geq 0$, con $g(\vect{w})=0$. La función $g$ tiene un mínimo en $\vect{w}'=\vect{w}$ y su gradiente se anula allí: $z_i(\vect{w},q)-\partial C(\vect{w},q)/\partial w_i=0$ \parencite[prop.~5.C.2]{MasColellWhinstonGreen1995}.
+\item Intuición: si $w_i$ sube un euro, el efecto directo es pagar $z_i$ euros más; la reoptimización de la combinación no altera el coste en primer orden.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: matriz hessiana, concavidad y cuasiconcavidad}\label{anexo:hessiana}
+
+\begin{itemize}
+\item Sea $A\subseteq\mathbb{R}^n$ un conjunto abierto y convexo y $f:A\to\mathbb{R}$ una función con segundas derivadas parciales continuas. Su \concepto{vector gradiente} $\nabla f(\vect{a})$ recoge las primeras derivadas y su \concepto{matriz hessiana} $H_f(\vect{a})=\big[\partial^2f/\partial x_i\partial x_j\big]$, las segundas; es simétrica (teorema de \autor{Schwarz}).
+\item \concepto{Concavidad y convexidad}:
+  \begin{enumerate}
+  \item $f$ es \emph{convexa} si y solo si $H_f(\vect{a})$ es semidefinida positiva para todo $\vect{a}\in A$; si es definida positiva para todo $\vect{a}$, $f$ es estrictamente convexa, y cualquier punto en el que se anulan todas las derivadas parciales es un mínimo;
+  \item $f$ es \emph{cóncava} si y solo si $H_f(\vect{a})$ es semidefinida negativa para todo $\vect{a}\in A$; si es definida negativa para todo $\vect{a}$, $f$ es estrictamente cóncava, y cualquier punto en el que se anulan todas las derivadas parciales es un máximo.
+  \end{enumerate}
+  Los recíprocos de las condiciones estrictas no se cumplen: $f(x)=-x^4$ es estrictamente cóncava y su hessiana se anula en $x=0$.
+\item \concepto{Criterio de los menores}. Una matriz simétrica es \emph{definida positiva} si todos sus menores principales directores son positivos, y \emph{definida negativa} si alternan en signo empezando por negativo ($|H_1|<0$, $|H_2|>0$, …). Para la \emph{semidefinición} hay que mirar \emph{todos} los menores principales, no solo los directores: es semidefinida negativa si los de orden $k$ tienen signo $(-1)^k$ o son nulos, y semidefinida positiva si todos son no negativos \parencite[cap.~1]{SydsaeterEtAl2008Further}.
+\item \concepto{Cuasiconcavidad}. $f$ es \emph{cuasicóncava} si sus conjuntos de nivel superior, $\{\vect{x}: f(\vect{x})\geq c\}$, son convexos para todo $c$; con dos factores, si sus isocuantas son convexas. Toda función cóncava es cuasicóncava, pero no al revés. Se comprueba con la \emph{hessiana orlada} con el gradiente (anexo~\ref{anexo:kt}): con dos variables, $f$ es estrictamente cuasicóncava si $|\overline{H}|>0$.
+\item \concepto{Uso en la teoría de la empresa}:
+  \begin{itemize}
+  \item \emph{Maximización del beneficio}: la hessiana del beneficio respecto a los factores es $p\,D^2F(\vect{z})$; la condición de segundo orden exige que sea semidefinida negativa en el óptimo, y con $F$ cóncava las condiciones de primer orden bastan (I.2.1).
+  \item \emph{Minimización del coste}: basta la cuasiconcavidad de $F$ (isocuantas convexas), que con dos factores se comprueba con $|\overline{H}|>0$ (I.2.2).
+  \item \emph{Función de costes}: su concavidad en $\vect{w}$ equivale a que la matriz de sustitución $S(\vect{w},q)=D^2_{\vect{w}}C(\vect{w},q)$ sea semidefinida negativa, de donde $\partial z_i(\vect{w},q)/\partial w_i\leq 0$; es la misma propiedad que la de la función de gasto y la matriz de \autor{Slutsky} del consumidor \vertema{3.A.9}.
+  \item \emph{Función de beneficio}: su convexidad en $(p,\vect{w})$ equivale a que $D^2B(p,\vect{w})$ sea semidefinida positiva, de donde $\partial q(p,\vect{w})/\partial p\geq 0$ y $\partial z_i(p,\vect{w})/\partial w_i\leq 0$.
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la dualidad en sentido estricto:\newline maximizar la producción con un coste dado}\label{anexo:segura}
+
+Este anexo no se canta. Algún manual plantea la dualidad de la empresa como la del consumidor, con un «primal» que maximiza la producción con un coste dado \parencite{Segura1986Analisis}:
+\begin{equation*}
+\max_{\vect{z}\geq\vect{0}}\ F(\vect{z})\quad\text{s.a.}\quad\vect{w}\cdot\vect{z}\leq\overline{C}.
+\end{equation*}
+\begin{itemize}
+\item Tiene la misma tangencia, $\mathrm{RMST}_{LK}=w_L/w_K$. Su solución son unas demandas de factores $\vect{z}(\vect{w},\overline{C})$, y su función valor, la \emph{función de producción indirecta} $\chi(\vect{w},\overline{C})$, la máxima producción que permite un presupuesto $\overline{C}$; son las análogas de la demanda marshalliana y de la función indirecta de utilidad.
+\item Las relaciones son las del consumidor \vertema{3.A.9}: $C\big(\vect{w},\chi(\vect{w},\overline{C})\big)=\overline{C}$ y $\chi\big(\vect{w},C(\vect{w},q)\big)=q$ (inversas en su segundo argumento), y $\vect{z}(\vect{w},q)=\vect{z}\big(\vect{w},C(\vect{w},q)\big)$. La tecnología se recupera con $F(\vect{z}^0)=\min_{\vect{w}}\chi(\vect{w},\vect{w}\cdot\vect{z}^0)$, como la utilidad a partir de la función indirecta.
+\item Derivando respecto a $w_j$ la identidad entre las demandas y aplicando el lema de \autor{Shephard} sale una descomposición formalmente igual a la de \autor{Slutsky}:
+  \begin{equation*}
+  \frac{\partial z_i(\vect{w},\overline{C})}{\partial w_j}=\frac{\partial z_i(\vect{w},q)}{\partial w_j}-z_j\,\frac{\partial z_i(\vect{w},\overline{C})}{\partial\overline{C}},
+  \end{equation*}
+  en la que el segundo término mide el efecto de la pérdida de «poder de compra» del presupuesto de la empresa.
+\item Es correcto, pero poco habitual: la empresa no tiene un presupuesto fijo que la obligue a producir lo máximo posible con él, sus demandas $\vect{z}(\vect{w},\overline{C})$ no tienen nombre propio en la literatura y no hay una restricción presupuestaria que dé un efecto renta. Los manuales de referencia \parencites[cap.~5]{MasColellWhinstonGreen1995}[cap.~3]{JehleReny2011Advanced} estudian, en su lugar, la minimización del coste (dual de la tecnología) y la maximización del beneficio, cuya descomposición tiene un efecto escala (apartado~II.1.2).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: estática comparativa de las demandas de factores\newline y de la función de costes}\label{anexo:estatica}
+
+\begin{itemize}
+\item \concepto{Elasticidades de las demandas condicionadas}:
+  \begin{itemize}
+  \item respecto a la producción, $\varepsilon_{z_i,q}$: derivando $C=\sum_iw_iz_i(\vect{w},q)$ respecto a $q$ y multiplicando por $q/C$,
+    \begin{equation*}
+    \varepsilon_{C,q}=\sum_i\frac{w_iz_i}{C}\,\frac{\partial z_i}{\partial q}\,\frac{q}{z_i}=\sum_is_i\,\varepsilon_{z_i,q};
+    \end{equation*}
+    con una tecnología homogénea de grado $k$, todas son iguales a $\varepsilon_{C,q}=1/k$;
+  \item respecto a los precios, $\varepsilon_{z_i,w_j}$: por la homogeneidad de grado cero en $\vect{w}$ (teorema de \autor{Euler}), $\sum_j\varepsilon_{z_i,w_j}=0$; y por $S(\vect{w},q)\,\vect{w}=\vect{0}$ y la simetría, $\sum_is_i\,\varepsilon_{z_i,w_j}=0$.
+  \end{itemize}
+\item \concepto{Curva de \autor{Engel} del factor y demanda del factor en función de su precio}: la primera relaciona $z_i(\vect{w},q)$ con $q$, a precios dados (gráfico~\ref{fig:curva-engel-factor}); la segunda, $z_i$ con $w_i$, con la producción (demanda condicionada) o con el precio del producto (no condicionada) constantes (gráfico~\ref{fig:demanda-factor-precio}). Si el salario sube de $w_L^0$ a $w_L^1$, la empresa pasa de $E_0$ a $E'$ por el efecto sustitución (sobre la demanda condicionada) y de $E'$ a $E_1$ por el efecto escala (hasta la no condicionada).
+\item \concepto{Ecuación de \autor{Slutsky} de los factores}. Se parte de la identidad~\eqref{eq:dual-demanda}, $z_i(p,\vect{w})\equiv z_i\big(\vect{w},q(p,\vect{w})\big)$, y se deriva respecto a $w_j$ con la regla de la cadena, lo que da~\eqref{eq:slutsky-factores}. Para el efecto de $w_j$ sobre la producción, se deriva la condición $p=\partial C\big(\vect{w},q(p,\vect{w})\big)/\partial q$:
+  \begin{equation*}
+  0=\frac{\partial^2C}{\partial q\,\partial w_j}+\frac{\partial^2C}{\partial q^2}\,\frac{\partial q(p,\vect{w})}{\partial w_j}\quad\Longrightarrow\quad\frac{\partial q(p,\vect{w})}{\partial w_j}=-\frac{\partial z_j(\vect{w},q)/\partial q}{\partial^2C/\partial q^2},
+  \end{equation*}
+  porque $\partial^2C/\partial q\,\partial w_j=\partial z_j(\vect{w},q)/\partial q$ (\autor{Shephard} y \autor{Young}). Sustituyendo,
+  \begin{equation*}
+  \frac{\partial z_i(p,\vect{w})}{\partial w_j}=\frac{\partial z_i(\vect{w},q)}{\partial w_j}-\frac{\dfrac{\partial z_i(\vect{w},q)}{\partial q}\,\dfrac{\partial z_j(\vect{w},q)}{\partial q}}{\partial^2C/\partial q^2},
+  \end{equation*}
+  que es simétrica en $i$ y $j$, como exige \autor{Hotelling}. Con $j=i$ y coste marginal creciente, el segundo término es no positivo: refuerza al primero. Del mismo modo, derivando la condición respecto a $p$, $\partial q(p,\vect{w})/\partial p=1/(\partial^2C/\partial q^2)\geq 0$.
+\item \concepto{Coste marginal y precios de los factores}: $\partial\mathrm{CMg}/\partial w_i=\partial z_i(\vect{w},q)/\partial q$; sumando con los precios como pesos, $\sum_iw_i\,\partial\mathrm{CMg}/\partial w_i=\mathrm{CMg}$ (el CMg es homogéneo de grado uno en $\vect{w}$), así que no todos los factores pueden ser inferiores.
+\item \concepto{Principio de \autor{Le Châtelier}-\autor{Samuelson} para las demandas condicionadas}. Sea $\overline{z}_K=z_K(\vect{w}^0,q)$, el capital óptimo a los precios $\vect{w}^0$. Para cualquier $\vect{w}$, el coste a corto plazo no es menor que el de largo, $g(\vect{w})\equiv C(\vect{w},q;\overline{z}_K)-C(\vect{w},q)\geq 0$, con $g(\vect{w}^0)=0$: $g$ tiene un mínimo en $\vect{w}^0$, de modo que $\partial^2g/\partial w_L^2\geq 0$ allí. Por \autor{Shephard}, $\partial z_L^{\mathrm{CP}}/\partial w_L-\partial z_L^{\mathrm{LP}}/\partial w_L\geq 0$: la demanda a largo plazo responde más que la de corto \parencite[cap.~III]{Samuelson1947Foundations}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: geometría de los costes\newline y curva de oferta con un solo producto}\label{anexo:geometria}
+
+Este anexo no se canta. Con los precios de los factores fijos, $C(q)\equiv C(\overline{\vect{w}},q)$, $\mathrm{CMe}(q)=C(q)/q$ y $\mathrm{CMg}(q)=C'(q)$. La empresa precio-aceptante produce donde $p=\mathrm{CMg}$, con el CMg creciente, si el precio cubre el coste medio que puede evitar (I.3). Según la forma de $C(q)$ \parencite[§5.D]{MasColellWhinstonGreen1995} (gráfico~\ref{fig:geometria-costes}):
+\begin{enumerate}
+\item \emph{Costes estrictamente convexos} (rendimientos decrecientes): la oferta es toda la curva de CMg.
+\item \emph{Rendimientos constantes}: $C(q)=c\,q$ y $\mathrm{CMe}=\mathrm{CMg}=c$; con $p<c$ no se produce, con $p=c$ cualquier cantidad (tamaño indeterminado) y con $p>c$ el problema no tiene solución.
+\item \emph{Costes no convexos} (rendimientos crecientes y después decrecientes): la oferta es el tramo del CMg por encima del mínimo del CMe; por debajo, cero, con un salto en ese mínimo.
+\item \emph{Coste fijo evitable} (no hundido) más un coste variable convexo: la empresa puede no producir y evitar el coste fijo, así que la oferta es el CMg por encima del mínimo del CMe total.
+\item \emph{Rendimientos constantes con coste fijo evitable}: el CMe decrece siempre hacia $c$; con $p>c$, cuanto más se produce más se gana, y la empresa competitiva no tiene un tamaño finito. Estas tecnologías llevan a pocas empresas (monopolio natural) \vertema{3.A.17}.
+\item \emph{Coste hundido} (corto plazo): se paga aunque no se produzca, y la inacción no lo evita, así que la decisión depende solo de los costes variables. El gráfico dibuja costes variables primero cóncavos y después convexos (CVMe en U): la oferta es el CMg por encima del mínimo del CVMe (mínimo de explotación), y por debajo de ese precio, cero. \textcite[§5.D]{MasColellWhinstonGreen1995} toman costes variables convexos, con el CVMe creciente desde el origen, y entonces la oferta es toda la curva de CMg, como en el caso~1.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\caption{Geometría de los costes y curva de oferta con un solo producto: seis casos}\label{fig:geometria-costes}
+\grafico[0.95\textwidth]{geometria-costes}
+\fuente{elaboración propia a partir de \textcite[§5.D]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: funciones de costes\newline de las formas funcionales habituales}\label{anexo:formas-costes}
+
+\begin{table}[H]
+\centering\footnotesize
+\caption{Funciones de costes duales de las funciones de producción habituales}\label{tab:formas-costes}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{4.3cm}>{\raggedright\arraybackslash}p{6.9cm}>{\raggedright\arraybackslash}p{1.7cm}@{}}
+\toprule
+\textbf{Tecnología} & \textbf{Producción} & \textbf{Función de costes} & \textbf{CMe a largo plazo}\\
+\midrule
+\autor{Leontief} & $q=\min\{z_K/a;\,z_L/b\}$ & $C=(a\,w_K+b\,w_L)\,q$ & constante\\
+\addlinespace
+Lineal & $q=a_Kz_K+a_Lz_L$ & $C=q\,\min\{w_K/a_K;\,w_L/a_L\}$ & constante\\
+\addlinespace
+Cobb-Douglas & $q=A\,z_K^{\alpha}z_L^{\beta}$, $k=\alpha+\beta$ & $C=k\,(q/A)^{1/k}(w_K/\alpha)^{\alpha/k}(w_L/\beta)^{\beta/k}$ & según $k\gtrless 1$\\
+\addlinespace
+CES & $q=A\big[a_Kz_K^{\rho}+a_Lz_L^{\rho}\big]^{\nu/\rho}$,\newline con $\sigma=1/(1-\rho)$ & $C=(q/A)^{1/\nu}\big[a_K^{\sigma}w_K^{1-\sigma}+a_L^{\sigma}w_L^{1-\sigma}\big]^{1/(1-\sigma)}$ & según $\nu\gtrless 1$\\
+\addlinespace
+Homotética & $q=g\big(h(\vect{z})\big)$ & $C=\phi(q)\,c(\vect{w})$ & según $\phi$\\
+\addlinespace
+Translog de costes & --- & ecuación~\eqref{eq:translog-costes} & U, L o monótono\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~1 y 5]{Varian1992Microeconomic} y \textcite{ArrowEtAl1961Capital}.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: aspectos relevantes para el test}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{anotaciones}
+
+\begin{itemize}
+\item Homogeneidad: $C$ es homogénea de grado \emph{uno} en $\vect{w}$ (no en $q$); $\vect{z}(\vect{w},q)$, de grado \emph{cero} en $\vect{w}$ (no en $q$); $B$, de grado uno, y $\vect{z}(p,\vect{w})$ y $q(p,\vect{w})$, de grado cero, en $(p,\vect{w})$.
+\item El lema de \autor{Shephard} no lleva signo menos; el de \autor{Hotelling}, sí en las demandas de factores ($z_i=-\partial B/\partial w_i$) y no en la oferta ($q=\partial B/\partial p$).
+\item $C$ es \emph{cóncava} en $\vect{w}$; $B$ es \emph{convexa} en $(p,\vect{w})$. La matriz de sustitución $S(\vect{w},q)$ es simétrica y semidefinida negativa: su diagonal es \emph{no positiva}.
+\item El multiplicador de la minimización del coste es el coste marginal: $\mu^*=\partial C/\partial q=\mathrm{CMg}$.
+\item $\varepsilon_{C,q}<1$ son \emph{economías} de escala (el coste crece menos que la producción); $\varepsilon_{q,\lambda}>1$ son rendimientos \emph{crecientes}. En la combinación de mínimo coste, $\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ para cualquier tecnología, no solo las homotéticas.
+\item No hay factores \autor{Giffen} en la empresa precio-aceptante; sí puede haber factores inferiores, y encarecerlos baja el coste marginal.
+\item La envolvente de los CMe a corto plazo no pasa por sus mínimos salvo en el mínimo del CMe a largo (error de \autor{Viner}).
+\item A corto plazo no hay economías de escala: la U del CMe a corto se debe a la ley de proporciones variables; la del CMe a largo, a los rendimientos a escala variables.
+\item Monopolio natural: subaditividad; las economías de escala son suficientes, no necesarias; las de alcance, necesarias, no suficientes, con varios productos.
+\item \autor{Farrell}: eficiencia económica = técnica $\times$ asignativa. DEA: no paramétrico, sin ruido; frontera estocástica: paramétrico, separa ruido e ineficiencia.
+\end{itemize}
+
+\bibliografia
+
+\end{document}
