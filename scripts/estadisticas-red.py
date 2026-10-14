@@ -53,7 +53,7 @@ def token():
     ahora = int(time.time())
     cabecera = _b64(json.dumps({'alg': 'RS256', 'typ': 'JWT'}).encode())
     cuerpo = _b64(json.dumps({
-        'iss': c['client_email'], 'scope': 'https://www.googleapis.com/auth/datastore',
+        'iss': c['client_email'], 'scope': 'https://www.googleapis.com/auth/datastore https://www.googleapis.com/auth/cloud-platform',
         'aud': c['token_uri'], 'iat': ahora, 'exp': ahora + 3600,
     }).encode())
     with tempfile.NamedTemporaryFile('w', suffix='.pem', delete=False) as f:
@@ -104,6 +104,19 @@ class Firestore:
             if not pagina:
                 return docs
 
+    def cuentas(self):
+        """Cuentas de Firebase Authentication (rol «Visor de Firebase
+        Authentication»): uid, nombre, correo y fechas. Solo en memoria."""
+        url = f'https://identitytoolkit.googleapis.com/v1/projects/{PROYECTO}/accounts:batchGet'
+        cuentas, pagina = [], None
+        while True:
+            q = {'maxResults': 1000, **({'nextPageToken': pagina} if pagina else {})}
+            r = self._pedir(f'{url}?{urllib.parse.urlencode(q)}')
+            cuentas += r.get('users', [])
+            pagina = r.get('nextPageToken')
+            if not pagina:
+                return cuentas
+
     def recorrer(self, ruta=''):
         """Todos los documentos, con su ruta relativa, campos y fechas."""
         for col in self.colecciones(ruta):
@@ -149,7 +162,7 @@ def oposicion_y_resto(partes):
     return 'tcee', partes
 
 
-def recontar(docs, ahora):
+def recontar(docs, ahora, auth=()):
     hace7, hace30 = ahora - timedelta(days=7), ahora - timedelta(days=30)
     en7, en14 = ahora + timedelta(days=7), ahora + timedelta(days=14)
     s = {op: defaultdict(Counter) for op in OPOSICIONES}
@@ -167,6 +180,7 @@ def recontar(docs, ahora):
     # uid → nombres con los que aparece (para ver cuentas repetidas). Solo se
     # usan aquí, en memoria: no salen ni se guardan.
     nombres = defaultdict(set)
+    de_app = set()
 
     for ruta, campos, creado, cambiado in docs:
         partes = ruta.split('/')
@@ -185,6 +199,9 @@ def recontar(docs, ahora):
         if p[0] == 'users' and len(p) >= 3:
             uid, col = p[1], p[2]
             alta[op][uid] = min(alta[op].get(uid, creado), creado)
+            if op != 'tcee' or col != 'exam_results':
+                # La web solo escribe exam_results en TCEE: lo demás es de la app.
+                de_app.add(uid)
             ultima[op][uid] = max(ultima[op].get(uid, cambiado), cambiado)
             if len(p) == 4:
                 c['documentos'][col] += 1
@@ -273,14 +290,22 @@ def recontar(docs, ahora):
         c['red']['alumnos con 2 o más preparadores'] = sum(1 for p in preparadores_de[op].values() if len(p) >= 2)
         foto[op] = {k: dict(sorted(v.items())) for k, v in sorted(c.items()) if k != 'documentos'}
         foto[op]['red']['alumnos por preparador (de mayor a menor)'] = tam
-    foto['global'] = personas(alta, preparadores, ultima, nombres, hace7)
+    foto['global'] = personas(alta, preparadores, ultima, nombres, hace7, hace30, de_app, auth)
     return foto
 
 
-def personas(alta, preparadores, ultima, nombres, hace7):
+def personas(alta, preparadores, ultima, nombres, hace7, hace30, de_app, auth):
     """Personas reales: une las cuentas con el mismo nombre (alguien con dos
-    Gmail) y aparta las de prueba. Solo devuelve recuentos."""
-    cuentas = set().union(*(set(alta[op]) for op in OPOSICIONES))
+    Gmail), aparta las de prueba y separa quien usa la app de quien solo usa
+    la web (el simulador de test). Solo devuelve recuentos."""
+    # createdAt y lastLoginAt vienen en milisegundos; lastRefreshAt, en ISO.
+    ms = lambda v: None if not v else datetime.fromtimestamp(int(v) / 1000, timezone.utc) if str(v).isdigit() else _fecha(v)
+    datos = {u['localId']: u for u in auth}
+    for u, d in datos.items():
+        if d.get('displayName'):
+            nombres[u].add(normalizar(d['displayName']))
+    correo = lambda u: (datos.get(u, {}).get('email') or '').lower()
+    cuentas = set(datos) | set().union(*(set(alta[op]) for op in OPOSICIONES))
     padre = {u: u for u in cuentas}
 
     def raiz(u):
@@ -300,27 +325,43 @@ def personas(alta, preparadores, ultima, nombres, hace7):
     grupos = defaultdict(set)
     for u in cuentas:
         grupos[raiz(u)].add(u)
-    prueba = lambda g: any(any(w in n for w in PRUEBA) for u in g for n in nombres.get(u, ()))
+
+    def ultimo(u):
+        fechas = [ultima[op].get(u) for op in OPOSICIONES] + [ms(datos.get(u, {}).get(k)) for k in ('lastLoginAt', 'lastRefreshAt')]
+        return max((f for f in fechas if f), default=None)
+
+    def creada(u):
+        fechas = [alta[op].get(u) for op in OPOSICIONES] + [ms(datos.get(u, {}).get('createdAt'))]
+        return min((f for f in fechas if f), default=None)
+
+    prueba = lambda g: any(any(w in n for w in PRUEBA) for u in g for n in nombres.get(u, ())) or any(any(w in correo(u) for w in PRUEBA) for u in g)
     reales = [g for g in grupos.values() if not prueba(g)]
-    es_prep = lambda g: any(u in preparadores[op] for op in OPOSICIONES for u in g)
+    app = [g for g in reales if g & de_app]
+    es_prep = lambda g, ops=OPOSICIONES: any(u in preparadores[op] for op in ops for u in g)
     en = lambda g, op: any(u in alta[op] for u in g)
-    activa = lambda g: any(t >= hace7 for op in OPOSICIONES for u in g for t in [ultima[op].get(u)] if t)
+    desde = lambda g, t: any((ultimo(u) or datetime.min.replace(tzinfo=timezone.utc)) >= t for u in g)
+    nueva = lambda g, t: min((creada(u) for u in g if creada(u)), default=datetime.min.replace(tzinfo=timezone.utc)) >= t
     r = {
-        'cuentas': {
-            'cuentas distintas (las dos oposiciones)': len(cuentas),
-            'cuentas en las dos oposiciones': sum(1 for u in cuentas if all(u in alta[op] for op in OPOSICIONES)),
-            'cuentas sin nombre conocido': sum(1 for u in cuentas if not nombres.get(u)),
-            'cuentas que repiten el nombre de otra': len(cuentas) - len(grupos),
-            'cuentas de prueba (por el nombre)': sum(len(g) for g in grupos.values() if prueba(g)),
-        },
         'personas': {
-            'personas reales': len(reales),
-            'preparadores': sum(1 for g in reales if es_prep(g)),
-            'opositores': sum(1 for g in reales if not es_prep(g)),
-            'activas últimos 7 días': sum(1 for g in reales if activa(g)),
-            **{f'en {op.upper()}': sum(1 for g in reales if en(g, op)) for op in OPOSICIONES},
-            **{f'preparadores en {op.upper()}': sum(1 for g in reales if en(g, op) and any(u in preparadores[op] for u in g)) for op in OPOSICIONES},
-            **{f'opositores en {op.upper()}': sum(1 for g in reales if en(g, op) and not any(u in preparadores[op] for u in g)) for op in OPOSICIONES},
+            'personas reales (app o web)': len(reales),
+            'usan la app': len(app),
+            'solo la web (simulador)': sum(1 for g in reales if not g & de_app and any(u in alta['tcee'] for u in g)),
+            'han entrado pero sin datos': sum(1 for g in reales if not any(en(g, op) for op in OPOSICIONES)),
+            'app: preparadores': sum(1 for g in app if es_prep(g)),
+            'app: opositores': sum(1 for g in app if not es_prep(g)),
+            'app: activas últimos 7 días': sum(1 for g in app if desde(g, hace7)),
+            'app: activas últimos 30 días': sum(1 for g in app if desde(g, hace30)),
+            'app: nuevas últimos 7 días': sum(1 for g in app if nueva(g, hace7)),
+            'app: nuevas últimos 30 días': sum(1 for g in app if nueva(g, hace30)),
+            **{f'app: preparadores en {op.upper()}': sum(1 for g in app if es_prep(g, [op])) for op in OPOSICIONES},
+            **{f'app: opositores en {op.upper()}': sum(1 for g in app if en(g, op) and not es_prep(g, [op])) for op in OPOSICIONES},
+            'app: en las dos oposiciones': sum(1 for g in app if all(en(g, op) for op in OPOSICIONES)),
+        },
+        'cuentas': {
+            'cuentas de Google (app y web)': len(cuentas),
+            'cuentas de prueba': sum(len(g) for g in grupos.values() if prueba(g)),
+            'cuentas que repiten el nombre de otra': len(cuentas) - len(grupos),
+            'cuentas sin nombre': sum(1 for u in cuentas if not nombres.get(u)),
         },
     }
     return r
@@ -355,7 +396,12 @@ def main():
     if not CLAVE.exists():
         sys.exit(f'Falta la clave de la cuenta de servicio en {CLAVE} (ver la ayuda del script).')
     ahora = datetime.now(timezone.utc)
-    foto = recontar(Firestore().recorrer(), ahora)
+    fs = Firestore()
+    try:
+        auth = fs.cuentas()
+    except urllib.error.HTTPError:
+        auth = []  # sin el rol de Authentication: solo lo de Firestore
+    foto = recontar(fs.recorrer(), ahora, auth)
     FOTOS.mkdir(parents=True, exist_ok=True)
     anteriores = sorted(p for p in FOTOS.glob('*.json') if p.stem != ahora.date().isoformat())
     anterior = json.loads(anteriores[-1].read_text()) if anteriores else None
