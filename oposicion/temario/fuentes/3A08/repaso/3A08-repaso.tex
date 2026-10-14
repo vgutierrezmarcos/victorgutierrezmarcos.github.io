@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la demanda del consumidor (I)]{3.A.8}{Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.}
-\tcefecha{13/10/2026}
+\tcefecha{14/10/2026}
 % Colores de la clasificación de los bienes (los del tema)
 \newcommand{\bnormal}[1]{\textcolor{tceeverde}{#1}}
 \newcommand{\binferior}[1]{\textcolor{tceedorado}{#1}}
@@ -57,14 +57,19 @@ Anexos (no se cantan): PMU en 3D, derivaciones, formas funcionales, sistemas de 
 \item \concepto{Teorema de \autor{Debreu}}: 1-4 $\Rightarrow$ existe $U$ continua. \concepto{Lexicográficas}: racionales, no continuas, sin utilidad. Deseabilidad: monot.\ estricta $\Rightarrow$ monot.\ $\Rightarrow$ insaciab.\ local $\Rightarrow$ no saturación.
 \item \concepto{Función de utilidad}: $\vect{x}^1\succcurlyeq\vect{x}^2\Leftrightarrow U(\vect{x}^1)\geq U(\vect{x}^2)$; «numera» los conjuntos de indiferencia; \concepto{ordinal} (transf.\ monótonas). \concepto{Curvas de indiferencia} = conjuntos de nivel de $U(\vect{x})$: no se cortan (3), pendiente negativa (5), convexas (6).
 \end{itemize}
-\graficorepaso[0.72\linewidth]{superficie-utilidad-repaso}{Superficie de utilidad cortada a $U=1,2,3$: su proyección es el mapa de curvas de indiferencia}
+\graficorepaso[0.85\linewidth]{propiedades-curvas-indiferencia}{Propiedades de las curvas de indiferencia y el axioma del que sale cada una}
+\graficorepaso[0.65\linewidth]{superficie-utilidad-repaso}{Superficie de utilidad cortada a $U=1,2,3$: su proyección es el mapa de curvas de indiferencia}
 \begin{formula}
 \centering $RMS_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$\\[1pt] $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln RMS_{12}}$
 \end{formula}
 \begin{itemize}
 \item \concepto{CES}: $\sigma\to0$ \autor{Leontief}, $\sigma\to1$ \autor{Cobb}-\autor{Douglas}, $\sigma\to\infty$ lineal.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{ces-curvas-indiferencia}{Curvas de indiferencia CES por $(1,1)$ según $\sigma$}
+\begin{itemize}
 \item \concepto{Conjunto presupuestario} $B(\vect{p},\overline{W})=\{\vect{x}\in S: \vect{p}\cdot\vect{x}\leq\overline{W}\}$: compacto si $\vect{p}\gg\vect{0}$, convexo. Recta de balance, pendiente $-p_1/p_2$.
 \end{itemize}
+\graficorepaso{conjunto-presupuestario}{Conjunto presupuestario; $\vect{p}$, perpendicular a la recta; si $p_1\uparrow$, gira hacia dentro}
 
 \sub{I.2. PMU: el equilibrio}
 \begin{itemize}
@@ -74,13 +79,16 @@ Anexos (no se cantan): PMU en 3D, derivaciones, formas funcionales, sistemas de 
 \begin{formula}
 Interior (\autor{Gossen}): $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$\\ $\Rightarrow RMS_{12}=p_1/p_2$.\ \ Esquina ($x_2^*=0$): $RMS_{12}\geq p_1/p_2$
 \end{formula}
-\graficorepaso{solucion-interior-esquina-repaso}{Solución interior (tangencia) y de esquina}
+\graficorepaso{solucion-interior-esquina}{Solución interior (tangencia) y de esquina ($x_2^*=0$)}
 
 \sub{I.3. Solución: demanda y mercado}
 \begin{itemize}
 \item \concepto{Demanda marshalliana} $\vect{x}(\vect{p},\overline{W})$: única, continua (\autor{Berge}), \textbf{homogénea de grado 0} (sin ilusión monetaria), \textbf{ley de \autor{Walras}} $\vect{p}\cdot\vect{x}=\overline{W}$, diferenciable.
 \item \concepto{FIU} $V(\vect{p},\overline{W})$: homogénea de grado 0, creciente en $\overline{W}$, no creciente en $\vect{p}$, cuasiconvexa. \autor{Roy}: \mbox{$x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$}.
 \item \concepto{Demanda de mercado}: suma horizontal; depende de la distribución de la renta. Solo de $\sum_h\overline{W}_h$ $\Leftrightarrow$ \concepto{forma polar de \autor{Gorman}} $V_h=a_h(\vect{p})+b(\vect{p})\overline{W}_h$ $\Leftrightarrow$ curvas de \autor{Engel} \textbf{rectas y paralelas} $\Rightarrow$ consumidor representativo. Casos: homotéticas idénticas; cuasilineales (\textbf{efecto renta nulo}: excedente exacto, pero sin inferiores ni \autor{Giffen}).
+\end{itemize}
+\graficorepaso[0.6\linewidth]{engel-gorman}{\autor{Gorman}: misma pendiente $\Rightarrow$ redistribuir la renta no cambia la demanda agregada}
+\begin{itemize}
 \item Se heredan homogeneidad y ley de \autor{Walras}, no el ADPR ni \autor{Slutsky}: \concepto{SMD} $\Rightarrow$ ni unicidad ni estabilidad \vertema{3.A.21}.
 \end{itemize}
 
@@ -94,7 +102,7 @@ Comparar óptimos sin el ajuste; \concepto{elasticidades}: números puros y medi
 \item $\varepsilon_{x_i,\overline{W}}$: $<0$ \binferior{inferior}; $=0$ independiente; $(0,1)$ \bnormal{normal necesario}; $>1$ \bnormal{normal de lujo}.
 \item \concepto{Ley de \autor{Engel}} (1857): alimentos \dato{19,6\,\% (Q1) frente a 12,3\,\% (Q5)}{INE, EPF 2025}.
 \end{itemize}
-\graficorepaso[0.85\linewidth]{renta-consumo-engel}{CRC y curva de \autor{Engel}: \bnormal{normal} hasta cierta renta, \binferior{inferior} después}
+\graficorepaso{renta-consumo-engel}{CRC y curva de \autor{Engel}: \bnormal{normal} hasta cierta renta, \binferior{inferior} después}
 \begin{formula}
 Agregación de \autor{Engel}: $\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1$,\ \ $s_i=p_ix_i/\overline{W}$
 \end{formula}
@@ -109,11 +117,12 @@ Agregación de \autor{Engel}: $\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1$,\ \
 $\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{ET}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{ES\,=\,S_{ij}}\underbrace{-\,x_j(\vect{p},\overline{W})\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{ER}$\\[1pt]
 Con $j=i$: $S_{ii}\leq0$.
 \end{formula}
+\graficorepaso[0.8\linewidth]{slutsky-propio}{Signos de \autor{Slutsky} con $j=i$}
 \begin{itemize}
 \item \bnormal{Normal} $\Rightarrow$ \bordinario{ordinario} (\emph{ley de la demanda}). \binferior{Inferior}: \bordinario{ordinario} si domina ES; \bgiffen{\concepto{\autor{Giffen}}} si domina ER (arroz en Hunan, \autor{Jensen}-\autor{Miller}, 2008). \concepto{\autor{Veblen}}: precio en las preferencias, fuera del modelo.
 \end{itemize}
 \graficorepaso{elasticidades-renta-precio-repaso}{Todo \bnormal{normal} es \bordinario{ordinario}; todo \bgiffen{\autor{Giffen}} es \binferior{inferior}}
-\graficorepaso[0.62\linewidth]{efecto-sustitucion-renta}{ES ($A\to B$) y ER ($B\to C$); hicksiana por $A$ y $B$}
+\graficorepaso[0.55\linewidth]{efecto-sustitucion-renta}{ES ($A\to B$) y ER ($B\to C$); hicksiana por $A$ y $B$}
 \begin{itemize}
 \item $\varepsilon_{x_i,p_j}>0$ \bnormal{\concepto{sustitutivo bruto}}, $<0$ \binferior{\concepto{complementario bruto}}: \textbf{no simétricas}. Netos según $S_{ij}=\partial h_i/\partial p_j$: \textbf{simétricos} ($S_{ij}=S_{ji}$); todo bien tiene un \bnormal{sustitutivo neto} (con 2 bienes, ambos lo son).
 \end{itemize}
@@ -137,8 +146,12 @@ Con $j=i$: $S_{ii}\leq0$.
 \end{formula}
 \begin{itemize}
 \item ADPR $\Rightarrow$ homogeneidad; \concepto{ley de la demanda compensada} (ES $\leq0$ sin utilidad); matriz de \autor{Slutsky} $[S_{ij}]$ semidefinida negativa, \emph{no} simétrica (con 2 bienes basta, \autor{Rose}).
+\end{itemize}
+\graficorepaso{adpr-efecto-sustitucion}{ADPR y ley de la demanda compensada: si baja $p_1$ y se compensa la renta, $x_1$ no baja}
+\begin{itemize}
 \item \concepto{AFPR} (\autor{Houthakker}, 1950): transitividad; AFPR $\Leftrightarrow$ preferencias racionales. \concepto{\autor{Afriat}} (1967): datos finitos, GARP. \autor{Varian} (1982): contraste no paramétrico práctico (hogares, experimentos). Crítica: elección $\neq$ bienestar (\autor{Sen}).
 \end{itemize}
+\graficorepaso[0.75\linewidth]{afpr}{AFPR: la preferencia revelada indirecta (transitividad)}
 \graficorepaso[0.6\linewidth]{preferencia-revelada-indiferencia}{Curva de indiferencia acotada por la preferencia revelada}
 
 \sub{III.2. Producción doméstica}
@@ -159,7 +172,7 @@ Renta completa: $\sum_i(p_ix_i+w\,t_i)=wT+\overline{W}$\\ $x_i=b_iZ_i$, $t_i=\el
 \item \concepto{\autor{Rosen}}: $\dfrac{U_{z_j}}{U_y}=\dfrac{\partial p(\vect{z})}{\partial z_j}$; $p(\vect{z})$, \textbf{envolvente} de curvas de puja $\Theta$ y de oferta $\phi$ (no es demanda ni oferta).
 \item Estimación en 2 etapas; la 2.ª, mal identificada. Aplicaciones: IPC con ajuste de calidad (\autor{Boskin}: sesgo \dato{1,1 p.p./año}{EE.\,UU., 1996}), \textbf{IPV} del INE (desde 2008), bienes sin mercado \vertema{4.B.6}, salarios hedónicos.
 \end{itemize}
-\graficorepaso[0.55\linewidth]{funcion-hedonica-rosen}{$p(\vect{z})$, envolvente de pujas y ofertas}
+\graficorepaso[0.65\linewidth]{funcion-hedonica-rosen}{$p(\vect{z})$, envolvente de pujas y ofertas}
 \begin{ideaclave}
 Los 3 desarrollos acercan la teoría a lo observable: elecciones, coste del tiempo y valor de cada característica.
 \end{ideaclave}
@@ -228,13 +241,12 @@ Los 3 desarrollos acercan la teoría a lo observable: elecciones, coste del tiem
 \item La \textbf{convexidad} no exige UMg decrecientes ni estas la garantizan; la UMg decreciente no es ordinal ($x_1x_2$ y $(x_1x_2)^2$): importa la RMS decreciente.
 \item Cuasiconcavidad y RMS son ordinales; concavidad y signo de $U_{ii}$, cardinales.
 \item Para que exista $U$ \emph{no} hacen falta monotonía, convexidad ni diferenciabilidad.
-\item Lexicográficas: preorden completo y monotonía estricta, generan demanda, pero \emph{sin} función de utilidad.
 \item Insaciabilidad local basta para la ley de \autor{Walras} ($\lambda>0$).
 \item Signo de \autor{Slutsky}: ER $=-x_i\,\partial x_i/\partial\overline{W}$, opuesto al de $\partial x_i/\partial\overline{W}$. Todo \bgiffen{\autor{Giffen}} es \binferior{inferior}, no al revés. \autor{Veblen} $\neq$ \autor{Giffen}.
 \item ADPR $\Rightarrow$ \autor{Slutsky} semidefinida negativa, \emph{no} simétrica.
 \item La agregación conserva homogeneidad y ley de \autor{Walras}, no el ADPR.
-\item La «ley de la escasez» no la formula \autor{Gossen}.
 \item Esquina: $RMS_{12}\geq p_1/p_2$, no igualdad.
+\item La «ley de la escasez» no la formula \autor{Gossen}.
 \item La clasificación de un bien es \emph{local}: normal a una renta, inferior a otra.
 \item \autor{Gorman}: curvas de \autor{Engel} rectas y \emph{paralelas}; que pasen por el origen solo en las homotéticas.
 \item Bienes, males y neutrales: se mira el signo de la UMg, que no dice nada de la \emph{curvatura}. Con 2 males, curvas decrecientes, mejores hacia el origen.

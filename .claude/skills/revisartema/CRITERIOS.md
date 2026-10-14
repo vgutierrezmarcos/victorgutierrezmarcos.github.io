@@ -417,16 +417,18 @@ el texto original y lo que se hizo.
   YouTube como **no listado** y anota el enlace en
   `oposicion/temario/videos.json`.
 
-## 8 bis. Ficha de repaso (dos páginas)
+## 8 bis. Ficha de repaso (cuatro páginas)
 
-- Cada tema tiene una ficha de repaso en **exactamente dos páginas** (A4, tres
-  columnas, estética del tema: `tcee-repaso.sty`), para repasar antes del
+- Cada tema tiene una ficha de repaso en **exactamente cuatro páginas** (A4,
+  **dos columnas**, estética del tema: `tcee-repaso.sty`; Víctor, 14/10/2026:
+  antes eran dos páginas a tres columnas), para repasar antes del
   examen: esquema del cante con minutos, introducción, ideas clave,
   definiciones, fórmulas y 2-4 gráficos por apartado, conclusión, autores y
   fechas, datos clave, preguntas probables del tribunal y trampas del test.
 - Solo resume el tema: nada que no esté en él.
-- Letra de 7 puntos o más y la segunda página llena (`construir-repaso.py`
-  elige la letra y avisa).
+- Letra de 8 puntos o más (mejor 9-10) y la cuarta página llena
+  (`construir-repaso.py` elige la letra y avisa). Con más sitio, los gráficos
+  van más grandes y legibles y se puede incluir alguno más por apartado.
 - Se publica como `<ejercicio>/<tema>-repaso.pdf`, con botón en el índice y en
   la página del tema.
 

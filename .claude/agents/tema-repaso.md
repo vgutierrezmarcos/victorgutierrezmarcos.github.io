@@ -1,6 +1,6 @@
 ---
 name: tema-repaso
-description: Fase de repaso de /revisartema. Sintetiza un tema TCEE ya revisado en una ficha de repaso de exactamente dos páginas (tcee-repaso.sty) para que los opositores repasen.
+description: Fase de repaso de /revisartema. Sintetiza un tema TCEE ya revisado en una ficha de repaso de exactamente cuatro páginas a dos columnas (tcee-repaso.sty) para que los opositores repasen.
 tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
@@ -70,11 +70,11 @@ python3 R/scripts/temario/construir-repaso.py T
 
 El script elige la letra (de 9 a 6,5 pt) para que quepa en **exactamente dos
 páginas**. Ajusta el contenido hasta que:
-- quepa con **7 pt o más** (si no, recorta lo menos importante);
-- la segunda página quede llena (sin el aviso de sitio sobrante): si sobra,
+- quepa con **8 pt o más** (mejor 9-10) (si no, recorta lo menos importante);
+- la cuarta página quede llena (sin el aviso de sitio sobrante): si sobra,
   añade contenido útil del tema (más definiciones, otro gráfico, más
   preguntas).
 
-Mira las dos páginas (`D/_trabajo/repaso/T-repaso-p1.png` y `-p2.png`): nada
+Mira las cuatro páginas (`D/_trabajo/repaso/T-repaso-p1.png` … `-p4.png`): nada
 cortado ni solapado, gráficos legibles, ningún título de bloque al pie de una
 columna. Termina con el tamaño de letra elegido y lo que has incluido.

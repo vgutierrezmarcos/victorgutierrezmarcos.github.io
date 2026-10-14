@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-Compila la ficha de repaso de un tema (exactamente dos páginas) y la publica
+Compila la ficha de repaso de un tema (exactamente cuatro páginas, a dos columnas) y la publica
 junto al tema.
 
     python3 scripts/temario/construir-repaso.py 3A08 [--no-publicar]
 
 La fuente es fuentes/<tema>/repaso/<tema>-repaso.tex (estilo tcee-repaso.sty,
-la escribe el agente tema-repaso). El script prueba tamaños de letra de 9 a
-6,5 puntos y se queda con el mayor con el que la ficha cabe en dos páginas.
-Avisa si sobra mucho sitio en la segunda (conviene añadir contenido) y falla
-si ni con 6,5 puntos cabe (hay que recortar).
+la escribe el agente tema-repaso). El script prueba tamaños de letra de 10,5 a
+8 puntos y se queda con el mayor con el que la ficha cabe en cuatro páginas.
+Avisa si sobra mucho sitio en la última (conviene añadir contenido) y falla
+si ni con 8 puntos cabe (hay que recortar).
 
 Salida: oposicion/temario/<ejercicio>/<tema>-repaso.pdf y, para revisarla,
-fuentes/<tema>/_trabajo/repaso/<tema>-repaso-p1.png y -p2.png.
+fuentes/<tema>/_trabajo/repaso/<tema>-repaso-p1.png … -p4.png.
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -26,8 +26,9 @@ import fitz  # PyMuPDF
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log, ruta_windows  # noqa: E402
 
-TAMANOS = (9, 8.5, 8, 7.5, 7.25, 7, 6.75, 6.5)
-LLENADO_MINIMO = 0.80      # parte de la segunda página que debe estar ocupada
+TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
+PAGINAS = 4
+LLENADO_MINIMO = 0.80      # parte de la última página que debe estar ocupada
 
 
 def compilar(tema, tam, salida):
@@ -47,14 +48,14 @@ def compilar(tema, tam, salida):
 
 
 # Márgenes y columnas de tcee-repaso.sty (en puntos PostScript)
-MARGEN_SUP, MARGEN_INF, MARGEN_LAT, SEP_COL, COLUMNAS = 0.9 * 28.35, 1.0 * 28.35, 0.9 * 28.35, 0.45 * 28.35, 3
+MARGEN_SUP, MARGEN_INF, MARGEN_LAT, SEP_COL, COLUMNAS = 1.1 * 28.35, 1.2 * 28.35, 1.2 * 28.35, 0.6 * 28.35, 2
 
 
 def ocupacion(pagina):
-    """Parte ocupada de las tres columnas de una página (media de las columnas).
+    """Parte ocupada de las columnas de una página (media de las columnas).
 
     Como multicols* llena las columnas de una en una, la media mide de verdad el
-    sitio que queda: una tercera columna vacía da 67 %, no 100 %. Se descartan el
+    sitio que queda: una segunda columna vacía da 50 %, no 100 %. Se descartan el
     pie y las rayas verticales entre columnas, que ocupan toda la altura."""
     ancho, alto = pagina.rect.width, pagina.rect.height
     arriba, abajo = MARGEN_SUP, alto - MARGEN_INF
@@ -89,22 +90,22 @@ def main():
         pdf = compilar(tema, tam, salida)
         paginas = len(fitz.open(pdf))
         print(f'  {tam} pt: {paginas} páginas', flush=True)
-        if paginas <= 2:
+        if paginas <= PAGINAS:
             elegido = (tam, pdf, paginas)
             break
     if not elegido:
-        print(f'ERROR: ni con {TAMANOS[-1]} pt cabe en dos páginas: hay que recortar la ficha')
+        print(f'ERROR: ni con {TAMANOS[-1]} pt cabe en {PAGINAS} páginas: hay que recortar la ficha')
         sys.exit(1)
     tam, pdf, paginas = elegido
     doc = fitz.open(pdf)
-    if paginas < 2:
-        print('AVISO: la ficha ocupa una sola página: hay que añadir contenido hasta llenar dos')
+    if paginas < PAGINAS:
+        print(f'AVISO: la ficha ocupa {paginas} páginas: hay que añadir contenido hasta llenar {PAGINAS}')
     else:
-        lleno, columnas = ocupacion(doc[1])
-        print(f'Letra de {tam} pt; segunda página ocupada al {lleno:.0%} '
+        lleno, columnas = ocupacion(doc[PAGINAS - 1])
+        print(f'Letra de {tam} pt; última página ocupada al {lleno:.0%} '
               f'(columnas: {", ".join(f"{c:.0%}" for c in columnas)})')
         if lleno < LLENADO_MINIMO:
-            print(f'AVISO: sobra sitio en la segunda página ({lleno:.0%}): conviene añadir contenido')
+            print(f'AVISO: sobra sitio en la última página ({lleno:.0%}): conviene añadir contenido')
     for i, pagina in enumerate(doc, 1):
         pagina.get_pixmap(dpi=110).save(os.path.join(salida, f'{tema.archivo}-repaso-p{i}.png'))
     final = os.path.join(salida, f'{tema.archivo}-repaso.pdf')

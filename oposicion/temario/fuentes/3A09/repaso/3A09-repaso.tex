@@ -1,7 +1,11 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la demanda del consumidor (II)]{3.A.9}{Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar.}
-\tcefecha{13/10/2026}
+\tcefecha{14/10/2026}
+% Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
+\newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -16,7 +20,7 @@
 \subcante{3. Relaciones de dualidad}{3}
 \apartadocante{II. Sistemas completos de demanda}{5}
 \subcante{1. Idea}{0,5}
-\subcante{2. Pasos: forma funcional (LES$\to$AIDS), datos}{3,5}
+\subcante{2. Pasos: forma funcional (LES $\to$ AIDS), datos}{3,5}
 \subcante{3. Valoración}{1}
 \apartadocante{III. Aplicaciones de la dualidad}{12}
 \subcante{1. Integrabilidad}{2,5}
@@ -28,91 +32,127 @@ Anexos (no se cantan): \autor{Kuhn}-\autor{Tucker} y CSO, envolvente (\autor{Roy
 % ==========================================================================
 \bloque[2]{Introducción}
 \begin{itemize}
-\item \textbf{Enganche}: pensiones revalorizadas con el IPC (\dato{+2,7\,\% en 2026}{LGSS}): ¿basta para quedar igual? Importa cuánto cuesta \emph{volver a estar igual de bien} $\Rightarrow$ \concepto{función de gasto}.
-\item \textbf{Relevancia}: teórica (\autor{Slutsky} en dos líneas, integrabilidad); empírica (elasticidades para IVA, IPC, pobreza); normativa (VC y VE: coste-beneficio, exceso de gravamen).
-\item \textbf{Contexto}: dualidad (\autor{Hotelling} 1932 $\to$ \autor{McKenzie} 1957, \autor{Diewert}); integrabilidad (\autor{Antonelli} 1886 $\to$ \autor{Hurwicz}-\autor{Uzawa} 1971); bienestar (\autor{Dupuit} 1844 $\to$ \autor{Hicks}, \autor{Willig}); sistemas (\autor{Stone} 1954 $\to$ AIDS 1980).
-\item \textbf{Problemática}: ¿qué se gana al «dar la vuelta» al problema? ¿Cómo se estiman las demandas? ¿Qué demandas son racionales? ¿Cómo medir el bienestar en euros?
-\item \textbf{Estructura}: I. dualidad; II. sistemas de demanda; III. aplicaciones (integrabilidad, \autor{Slutsky}, bienestar).
+\item \textbf{Enganche}: pensiones revalorizadas con el IPC (\dato{+2,7\,\% en 2026}{LGSS}): ¿basta para quedar igual? Si los precios suben de forma desigual, se sustituye: importa cuánto cuesta \emph{volver a estar igual de bien}. Utilidad ordinal $\Rightarrow$ hay que traducirla a euros: \concepto{función de gasto} $\Rightarrow$ \concepto{dualidad}.
+\item \textbf{Relevancia}: \emph{teórica} (\autor{Slutsky} en dos líneas, integrabilidad); \emph{empírica} (elasticidades para IVA, IPC, pobreza); \emph{normativa} (VC y VE: coste-beneficio, exceso de gravamen).
+\item \textbf{Contexto}: preferencias (no se ven) $\leftrightarrow$ demanda (se ve). Cuatro líneas: dualidad (\autor{Hotelling} 1932 $\to$ \autor{McKenzie} 1957, \autor{Diewert}); integrabilidad (\autor{Antonelli} 1886 $\to$ \autor{Hurwicz}-\autor{Uzawa} 1971); bienestar (\autor{Dupuit} 1844 $\to$ \autor{Hicks}, \autor{Willig}); sistemas (\autor{Stone} 1954 $\to$ AIDS 1980; Nobel a \autor{Deaton}, 2015).
+\item \textbf{Problemática}: ¿qué se gana al «dar la vuelta» al problema? ¿Cómo se estiman las demandas? ¿Qué demandas son racionales? ¿Cómo medir el bienestar en euros y qué error cometen el excedente y los índices?
+\item \textbf{Estructura}: I. dualidad (herramientas); II. sistemas de demanda (estimación); III. aplicaciones (integrabilidad, \autor{Slutsky}, bienestar).
 \end{itemize}
 
 % ==========================================================================
 \bloque[10]{I. Análisis teórico de la dualidad}
 \sub{I.1. Ingredientes comunes}
 \begin{itemize}
-\item Mismos ingredientes, papeles cambiados: $S\subseteq\mathbb{R}^n_+$; preferencias (completas, reflexivas, transitivas, continuas $\Rightarrow$ $U$ continua, \autor{Debreu}; insaciab.\ local; convexidad estricta; diferenciab.); precios $\vect{p}\gg\vect{0}$. Estático, info.\ perfecta, precio-aceptante.
-\item \concepto{Primal}: objetivo $U$, restricción $\vect{p}\cdot\vect{x}\leq\overline{W}$. \concepto{Dual}: objetivo $\vect{p}\cdot\vect{h}$, restricción $U(\vect{h})\geq\overline{U}$.
+\item $S\subseteq\mathbb{R}^n_+$ no vacío, cerrado, convexo. Axiomas: completitud, reflexividad, transitividad, continuidad ($\Rightarrow$ $U$ continua, \autor{Debreu}); insaciab.\ local; convexidad estricta; diferenciabilidad. Precios $\vect{p}\gg\vect{0}$.
+\item Supuestos: estático, sin incertidumbre, info.\ perfecta, bienes homogéneos, precio-aceptante.
 \end{itemize}
 
+
 \sub{I.2. Primal y dual}
+\begin{figure*}[t]
+\centering\includegraphics[width=0.68\textwidth]{esquema-dualidad}\par
+{\color{tceegris}\scriptsize\itshape Esquema de dualidad: problemas, soluciones, funciones valor y relaciones entre ellas (I.3)}
+\end{figure*}
 \begin{formula}
-PMU: $\max_{\vect{x}} U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$\ \ $\Rightarrow\dfrac{U_i}{p_i}=\lambda$\\
-PMG: $\min_{\vect{h}}\vect{p}\cdot\vect{h}$ s.a.\ $U(\vect{h})\geq\overline{U}$\ \ $\Rightarrow\dfrac{p_i}{U_i}=\mu$\\
-Ambos: $RMS_{12}=U_1/U_2=p_1/p_2$;\ \ $\mu^*=1/\lambda^*$
+\[\text{PMU: }\max_{\vect{x}} U(\vect{x})\ \text{s.a.}\ \vect{p}\cdot\vect{x}\leq\overline{W}\ \Rightarrow\ \frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\]
+\[\text{PMG: }\min_{\vect{h}}\vect{p}\cdot\vect{h}\ \text{s.a.}\ U(\vect{h})\geq\overline{U}\ \Rightarrow\ \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\mu\]
+\[\text{Ambos: } RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2};\qquad \mu^*=\frac{1}{\lambda^*}\]
 \end{formula}
 \begin{itemize}
 \item $\lambda$ = UMg de la renta $=\partial V/\partial\overline{W}$; $\mu$ = coste marginal de la utilidad $=\partial E/\partial\overline{U}$.
-\item \concepto{Marshalliana} $\vect{x}(\vect{p},\overline{W})$: existe, única, continua (\autor{Berge}), homog.\ grado 0 en $(\vect{p},\overline{W})$, ley de \autor{Walras}. \concepto{FIU} $V(\vect{p},\overline{W})$: homog.\ 0, estr.\ creciente en $\overline{W}$, no creciente en $\vect{p}$, \textbf{cuasiconvexa}; \autor{Roy} (1947).
-\item \concepto{Hicksiana} $\vect{h}(\vect{p},\overline{U})$: homog.\ 0 en $\vect{p}$, sin exceso de utilidad, \concepto{ley de la demanda compensada} $\partial h_i/\partial p_i\leq0$ (no hay \autor{Giffen}). \textbf{No observable} (depende de $\overline{U}$).
-\item \concepto{Función de gasto} $E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}$: homog.\ \textbf{grado 1} en $\vect{p}$, estr.\ creciente en $\overline{U}$, no decreciente en $\vect{p}$, \textbf{cóncava} en $\vect{p}$ (sustituir abarata respecto a la cesta fija). Mide la utilidad en \emph{euros}.
+\item \concepto{Marshalliana} $\vect{x}(\vect{p},\overline{W})$: existe, única (\autor{Weierstrass}), continua (\autor{Berge}), homog.\ grado 0 en $(\vect{p},\overline{W})$ (sin ilusión monetaria), ley de \autor{Walras}.
+\item \concepto{FIU} $V(\vect{p},\overline{W})=U(\vect{x}(\vect{p},\overline{W}))$: homog.\ 0, estr.\ creciente en $\overline{W}$, no creciente en $\vect{p}$, \textbf{cuasiconvexa} (no depende de la convexidad de las preferencias); identidad de \autor{Roy} (1947).
+\end{itemize}
+\pareja{primal}{Primal: la CI más alta alcanzable con $\overline{W}$}{dual}{Dual: la isogasto más baja que alcanza $\overline{U}$}
+\begin{itemize}
+\item \concepto{Hicksiana} $\vect{h}(\vect{p},\overline{U})$: homog.\ 0 en $\vect{p}$, sin exceso de utilidad, \concepto{ley de la demanda compensada} $\partial h_i/\partial p_i\leq0$ (no hay \autor{Giffen}: no tiene ER). \textbf{No observable} (depende de $\overline{U}$).
+\item \concepto{Función de gasto} $E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}(\vect{p},\overline{U})$: homog.\ \textbf{grado 1} en $\vect{p}$, estr.\ creciente en $\overline{U}$, no decreciente en $\vect{p}$, \textbf{cóncava} en $\vect{p}$. Mide la utilidad en \emph{euros}.
+\item Concavidad: $E(\vect{p}\,',\overline{U})\leq\vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})$: reoptimizar (sustituir) abarata respecto a la cesta fija.
 \end{itemize}
 \begin{formula}
-\autor{Roy}: $x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}$\qquad \autor{Shephard}: $h_i=\dfrac{\partial E}{\partial p_i}$\\
-\autor{Slutsky}: $S_{ij}=\dfrac{\partial^2E}{\partial p_i\partial p_j}=\dfrac{\partial h_i}{\partial p_j}$
+\[\text{\autor{Roy}: } x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}\qquad \text{\autor{Shephard}: } h_i=\frac{\partial E}{\partial p_i}\]
+\[\text{\autor{Slutsky}: } S_{ij}=\frac{\partial^2E}{\partial p_i\,\partial p_j}=\frac{\partial h_i}{\partial p_j}\]
 \end{formula}
 \begin{itemize}
 \item $S$: \textbf{simétrica} (\autor{Schwarz}), \textbf{semidefinida negativa} ($E$ cóncava), $S\vect{p}=\vect{0}$ (\autor{Euler}).
 \end{itemize}
-\graficorepaso[0.7\linewidth]{concavidad-fg}{$E$ cóncava: siempre bajo su plano tangente (pendiente $h_i$, \autor{Shephard})}
+\graficorepaso[0.46\linewidth]{concavidad-fg}{$E$ cóncava: siempre bajo su plano tangente, de pendiente $h_i$ (\autor{Shephard})}
 
 \sub{I.3. Relaciones de dualidad}
 \begin{itemize}
-\item \concepto{Teorema básico} (MWG 3.E.1): con $U$ continua, insaciab.\ local y $\vect{p}\gg\vect{0}$, la cesta del PMU resuelve el PMG con $\overline{U}=U^*$, y viceversa con $\overline{W}=E^*$.
+\item \concepto{Teorema básico} (MWG 3.E.1): con $U$ continua, insaciab.\ local y $\vect{p}\gg\vect{0}$, la cesta del PMU con $\overline{W}$ resuelve el PMG con $\overline{U}=U^*$ (gasto mínimo $=\overline{W}$), y la del PMG resuelve el PMU con $\overline{W}=E^*$ (utilidad máx.\ $=\overline{U}$).
+\item Coinciden las \emph{cestas}, no las funciones: $\vect{x}$ y $\vect{h}$ dependen de variables distintas.
 \end{itemize}
-\graficorepaso[0.72\linewidth]{primal-dual}{Misma cesta: $\vect{x}^*=\vect{h}^*$ con $\overline{W}=E^*$, $\overline{U}=U^*$}
+\graficorepaso[0.52\linewidth]{primal-dual}{Misma cesta: $\vect{x}^*=\vect{h}^*$ con $\overline{W}=E^*$, $\overline{U}=U^*$}
 \begin{formula}
-\raggedright Demandas: $\vect{x}(\vect{p},\overline{W})\equiv\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big)$\\ \phantom{Demandas: }$\vect{h}(\vect{p},\overline{U})\equiv\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)$\\
-Valor: $E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W}$\\ \phantom{Valor: }$V\big(\vect{p},E(\vect{p},\overline{U})\big)\equiv\overline{U}$
+\[\vect{x}(\vect{p},\overline{W})\equiv\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big)\qquad \vect{h}(\vect{p},\overline{U})\equiv\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)\]
+\[E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W}\qquad V\big(\vect{p},E(\vect{p},\overline{U})\big)\equiv\overline{U}\]
 \end{formula}
 \begin{itemize}
-\item $V$ y $E$ \textbf{inversas} en su 2.º argumento. Basta resolver \emph{un} problema para las cuatro funciones.
-\item \emph{Cobb-Douglas}: $x_1=\alpha\overline{W}/p_1$;\\ $E=\overline{U}(p_1/\alpha)^{\alpha}(p_2/(1-\alpha))^{1-\alpha}$; $h_1=\alpha E/p_1$.
+\item $V$ y $E$ \textbf{inversas} en su 2.º argumento. Basta resolver \emph{un} problema para tener las cuatro funciones (esquema de dualidad, arriba).
+\item \emph{Cobb-Douglas} $U=x_1^{\alpha}x_2^{1-\alpha}$: $x_1=\alpha\overline{W}/p_1$, $V=\overline{W}\big(\frac{\alpha}{p_1}\big)^{\alpha}\big(\frac{1-\alpha}{p_2}\big)^{1-\alpha}$; invirtiendo, $E=\overline{U}\big(\frac{p_1}{\alpha}\big)^{\alpha}\big(\frac{p_2}{1-\alpha}\big)^{1-\alpha}$; \autor{Shephard}: $h_1=\alpha E/p_1$.
 \end{itemize}
 \begin{ideaclave}
-Primal y dual son el mismo problema visto desde dos lados; $E$ mide la utilidad en dinero, sus derivadas son las hicksianas y su concavidad da la ley de la demanda compensada.
+Primal y dual son el mismo problema visto desde dos lados; $E$ mide la utilidad en dinero, sus derivadas son las hicksianas (\autor{Shephard}) y su concavidad da la ley de la demanda compensada.
 \end{ideaclave}
 
 % ==========================================================================
 \bloque[5]{II. Sistemas completos de demanda}
 \sub{II.1. Idea}
 \begin{itemize}
-\item Explican a la vez el gasto en \emph{todos} los bienes. Fines: \textbf{medir} elasticidades, \textbf{contrastar} la teoría, \textbf{valorar} el bienestar.
-\item Dualidad: se especifica $E$ o $V$ y se deriva (\autor{Shephard}/\autor{Roy}) $\Rightarrow$ coherente con la maximización \emph{por construcción}.
-\item \concepto{Requisitos}: coherencia teórica, flexibilidad, agregación, sencillez (lineal).
+\item Explican a la vez el gasto en \emph{todos} los bienes en función de precios y gasto total. Fines: \textbf{medir} elasticidades, \textbf{contrastar} la teoría (integrabilidad), \textbf{valorar} el bienestar.
+\item Dualidad: se especifica $E$ o $V$ y se deriva (\autor{Shephard}/\autor{Roy}) $\Rightarrow$ coherente con la maximización \emph{por construcción}, sin resolver ningún problema.
+\item \concepto{Requisitos} (tiran en sentidos opuestos): coherencia teórica, flexibilidad, agregación, sencillez (lineal).
 \end{itemize}
 
 \sub{II.2. Pasos}
 \begin{itemize}
-\item (1) forma funcional; (2) sistema completo; (3) datos; (4) econometría; (5) estimar y contrastar.
-\item \concepto{Cobb-Douglas}: $s_i=\alpha_i$ constantes; $\varepsilon_W=1$, $\varepsilon_{ii}=-1$, cruzadas 0; no recoge \autor{Engel}.
-\item \concepto{LES} (\autor{Stone}-\autor{Geary}, 1954): $U=\sum\alpha_i\ln(x_i-\gamma_i)$; $p_ix_i=p_i\gamma_i+\alpha_i(\overline{W}-\sum p_j\gamma_j)$: subsistencia + renta supernumeraria. \autor{Engel} rectas sin pasar por el origen. Límite: \emph{aditivo} (sin inferiores ni complementarios netos).
-\item \concepto{Rotterdam} (\autor{Barten}, \autor{Theil}): \autor{Slutsky} en diferencias log.; restricciones lineales; sin $E$ explícita.
-\item \concepto{Translog} (\autor{Christensen}-\autor{Jorgenson}-\autor{Lau}, 1975): $\ln V$ de 2.º orden, flexible; no lineal, no agrega.
-\item \concepto{AIDS} (\autor{Deaton}-\autor{Muellbauer}, 1980): $E$ \textbf{PIGLOG}, $\ln E=(1-\overline{U})\ln a(\vect{p})+\overline{U}\ln b(\vect{p})$.
+\item (1) forma funcional; (2) sistema completo; (3) datos; (4) econometría; (5) estimar y contrastar. Cada forma supera el límite de la anterior.
+\item \concepto{Cobb-Douglas}: $s_i=\alpha_i$ constantes; $\varepsilon_W=1$, $\varepsilon_{ii}=-1$, cruzadas 0; homotética: no recoge \autor{Engel}.
+\item \concepto{LES} (\autor{Stone}-\autor{Geary}, 1954): $U=\sum\alpha_i\ln(x_i-\gamma_i)$:
 \end{itemize}
 \begin{formula}
-\raggedright $s_i=\alpha_i+\sum_j\gamma_{ij}\ln p_j+\beta_i\ln(\overline{W}/P)$\\
-Agregación: $\sum_i\alpha_i=1$, $\sum_i\gamma_{ij}=\sum_i\beta_i=0$\\ Homog.: $\sum_j\gamma_{ij}=0$;\ simetría: $\gamma_{ij}=\gamma_{ji}$;\ $\varepsilon_{x_i,\overline{W}}=1+\dfrac{\beta_i}{s_i}$
+\[p_ix_i=p_i\gamma_i+\alpha_i\Big(\overline{W}-\sum_jp_j\gamma_j\Big)\]
 \end{formula}
 \begin{itemize}
-\item $\beta_i>0$ lujo, $\beta_i<0$ necesario (\autor{Working}-\autor{Leser}). Agregación exacta; \emph{LA-AIDS} con índice de \autor{Stone}, MCO. Negatividad no garantizada (\emph{casi} ideal). \concepto{QUAIDS} (\autor{Banks}-\autor{Blundell}-\autor{Lewbel}, 1997): término cuadrático, rango 3.
-\item \concepto{Sistema completo}: $\sum s_i=1$; agrupación por \concepto{separabilidad débil} y presupuestación en dos etapas (\autor{Strotz}, \autor{Gorman}).
-\item \concepto{Datos}: EPF del INE (\dato{24.000 hogares}{anual desde 2006}); precios: años y regiones, o valores unitarios (\autor{Deaton}). \concepto{Econometría}: covarianzas singulares $\Rightarrow$ se quita una ecuación (MV: invariante, \autor{Barten}); gasto endógeno; ceros; demografía.
-\item \concepto{Resultados}: con datos agregados se rechaza la \textbf{homogeneidad} (\autor{Barten}, \autor{Deaton} 1974, AIDS); \autor{Deaton}: agregación, dinámica $\Rightarrow$ microdatos. España: AIDS con EPF para reformas del IVA (\autor{Sanz}-\autor{Romero}, 2012).
+\item Subsistencia + renta supernumeraria en proporciones fijas. \autor{Engel} rectas sin pasar por el origen. Límite: \emph{aditivo} (sin inferiores ni complementarios netos); \autor{Deaton} (1974) lo rechaza.
+\item \concepto{Rotterdam} (\autor{Barten}, \autor{Theil}): \autor{Slutsky} en diferencias log.\ con coef.\ constantes; restricciones lineales; sin $E$ explícita.
+\item \concepto{Translog} (\autor{Christensen}-\autor{Jorgenson}-\autor{Lau}, 1975): $\ln V$ de 2.º orden en $\ln(p_i/\overline{W})$, flexible; no lineal, no agrega, concavidad no garantizada.
+\item \concepto{AIDS} (\autor{Deaton}-\autor{Muellbauer}, 1980): $E$ \textbf{PIGLOG} (\autor{Muellbauer}): $a(\vect{p})$ subsistencia, $b(\vect{p})$ saciedad.
+\end{itemize}
+\begin{formula}
+\[\ln E=(1-\overline{U})\ln a(\vect{p})+\overline{U}\ln b(\vect{p})\]
+\[s_i=\alpha_i+\sum_j\gamma_{ij}\ln p_j+\beta_i\ln\frac{\overline{W}}{P}\]
+Agregación: $\sum_i\alpha_i=1$, $\sum_i\gamma_{ij}=\sum_i\beta_i=0$; homog.: $\sum_j\gamma_{ij}=0$; simetría: $\gamma_{ij}=\gamma_{ji}$.
+\[\varepsilon_{x_i,\overline{W}}=1+\frac{\beta_i}{s_i}\]
+\end{formula}
+\begin{itemize}
+\item $\beta_i>0$ lujo, $\beta_i<0$ necesario (\autor{Working}-\autor{Leser}). Agregación exacta (PIGLOG); \emph{LA-AIDS} con índice de \autor{Stone} $\ln P^*=\sum s_k\ln p_k$: MCO. Negatividad no garantizada (\emph{casi} ideal).
+\item \concepto{QUAIDS} (\autor{Banks}-\autor{Blundell}-\autor{Lewbel}, 1997): término cuadrático en $\ln\overline{W}$, rango 3 (\autor{Gorman}): un bien puede ser de lujo para renta baja y necesario para renta alta.
+\end{itemize}
+\par\vspace{2pt}{\centering\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2pt}\small%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\centering\arraybackslash}p{0.09\linewidth}>{\centering\arraybackslash}p{0.09\linewidth}>{\centering\arraybackslash}p{0.09\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}@{}}
+\toprule
+\textit{Sistema} & \textit{Parte de} & \textit{Flex.} & \textit{Agreg.} & \textit{Lineal} & \textit{Límite}\\\midrule
+C-D & $U$ directa & no & sí & sí (log) & $s_i$ constantes\\
+LES & $U$ directa & no & sí & no & aditiva\\
+Rotterdam & \autor{Slutsky} & local & no & sí & sin $E$ explícita\\
+Translog & FIU & sí & no & no & no lineal\\
+\rowcolor{tceesalvia}AIDS & $E$ PIGLOG & sí & exacta & LA & \autor{Engel} lineal en $\ln\overline{W}$\\
+QUAIDS & $E$ & sí & sí & no & más parámetros\\\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \concepto{Sistema completo}: $\sum p_ix_i=\overline{W}$ ($\sum s_i=1$). Agrupar ($\sim n^2$ parámetros): \concepto{separabilidad débil} y presupuestación en dos etapas (\autor{Strotz}, \autor{Gorman}).
+\item \concepto{Datos}: microdatos de la EPF (INE); precios: años y regiones, o valores unitarios (\autor{Deaton}).
+\item \concepto{Econometría}: covarianzas singulares $\Rightarrow$ se quita una ecuación (MV: invariante, \autor{Barten}); gasto endógeno (instrumento: renta); ceros (censura); demografía (\autor{Pollak}-\autor{Wales}).
+\item \concepto{Resultados}: con datos agregados se rechaza sobre todo la \textbf{homogeneidad} (\autor{Barten}, \autor{Deaton} 1974, AIDS 1980); \autor{Deaton}: rigidez, dinámica y \emph{agregación} $\Rightarrow$ microdatos; con microdatos, mejor panorama; contrastes no paramétricos de preferencia revelada (\autor{Blundell} et al., 2003).
+\item \concepto{Usos}: IVA (elasticidades compensadas cruzadas), incidencia distributiva, índices por hogar, pobreza. España: AIDS con EPF para reformas del IVA (\autor{Sanz}-\autor{Romero}, 2012).
 \end{itemize}
 
 \sub{II.3. Valoración}
 \begin{itemize}
-\item \textbf{Aportes}: teoría $\to$ instrumento de medida; restricciones contrastables. \textbf{Límites}: flexibilidad vs.\ parsimonia ($n(n+1)/2$ parámetros); agregación (SMD); marco estático.
+\item \textbf{Aportes}: la teoría pasa a ser instrumento de medida; restricciones contrastables; AIDS y QUAIDS concilian flexibilidad, agregación y sencillez.
+\item \textbf{Límites}: flexibilidad vs.\ parsimonia ($n(n+1)/2$ términos cruzados; flexibilidad solo local); agregación (forma polar de \autor{Gorman}, PIGLOG; SMD); marco estático (hábitos, duraderos, liquidez).
 \end{itemize}
 
 % ==========================================================================
@@ -123,93 +163,118 @@ Agregación: $\sum_i\alpha_i=1$, $\sum_i\gamma_{ij}=\sum_i\beta_i=0$\\ Homog.: $
 \item \concepto{Teorema}: $\vect{x}$ $C^1$ es demanda de una $U$ creciente y cuasicóncava $\Leftrightarrow$ (1) ley de \autor{Walras}, (2) $S$ \textbf{simétrica}, (3) $S$ \textbf{semidef.\ negativa} (+ homogeneidad, necesaria). Necesarias y suficientes.
 \end{itemize}
 \begin{formula}
-\raggedright $S_{ij}=\dfrac{\partial x_i}{\partial p_j}+x_j\dfrac{\partial x_i}{\partial\overline{W}}$\ \ (observable)\\ EDP: $\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)$
+\[S_{ij}=\frac{\partial x_i}{\partial p_j}+x_j\frac{\partial x_i}{\partial\overline{W}}\quad\text{(observable)}\]
+\[\text{EDP: }\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big),\quad E(\vect{p}^0,\overline{U})=\overline{W}^0\]
+\[U(\vect{x}^0)=\min_{(\vect{p},\overline{W})}V(\vect{p},\overline{W})\ \text{s.a.}\ \vect{p}\cdot\vect{x}^0\leq\overline{W}\]
 \end{formula}
 \begin{itemize}
-\item Demostración: EDP con solución $\Leftrightarrow$ simetría (\concepto{\autor{Frobenius}}); negatividad $\Rightarrow$ $E$ cóncava; $U(\vect{x}^0)=\min V(\vect{p},\overline{W})$ s.a.\ $\vect{p}\cdot\vect{x}^0\leq\overline{W}$.
-\item Con 2 bienes, simetría automática. Preferencia revelada: ADPR $\Rightarrow$ $S$ semidef.\ neg., no simétrica; AFPR (\autor{Houthakker}) sí; \autor{Afriat} (datos finitos).
-\item Relevancia: cierra el círculo; contraste sin hallar $U$; bienestar exacto (\autor{Hausman}, 1981).
+\item Demostración (por dualidad): (1) EDP con solución $\Leftrightarrow$ simetría (\concepto{teorema de \autor{Frobenius}}); (2) que sea función de gasto: falta la concavidad, y su hessiana es $S$ $\Rightarrow$ negatividad; (3) invertir $E$ $\to$ $V$ $\to$ $U$.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{recuperar-utilidad}{Recuperar $U$ desde $V$: el mínimo de $V$ entre los presupuestos con los que se compra $\vect{x}^0$}
+\begin{itemize}
+\item Con 2 bienes, simetría automática (\autor{Walras} + homogeneidad): solo restringe con $\geq3$.
+\item Preferencia revelada: ADPR $\Rightarrow$ $S$ semidef.\ neg., \emph{no} simétrica; AFPR (\autor{Houthakker}) sí; \autor{Kihlstrom}-\autor{Mas-Colell}-\autor{Sonnenschein} los unen; \autor{Afriat} (datos finitos).
+\item Relevancia: cierra el círculo (teórica); contraste sin hallar $U$ (empírica); bienestar exacto (\autor{Hausman}, 1981) (normativa).
 \end{itemize}
 
 \sub{III.2. Ecuación de \autor{Slutsky}}
 \begin{itemize}
-\item Derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ respecto a $p_j$ + \autor{Shephard} ($\partial E/\partial p_j=x_j$):
+\item Derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ respecto a $p_j$; evaluar en $\overline{U}=V$ y usar \autor{Shephard} ($\partial E/\partial p_j=h_j=x_j$):
 \end{itemize}
 \begin{formula}
-\centering $\underbrace{\dfrac{\partial x_i}{\partial p_j}}_{ET}=\underbrace{\dfrac{\partial h_i}{\partial p_j}}_{ES}\ \underbrace{-\,x_j\dfrac{\partial x_i}{\partial\overline{W}}}_{ER}$\\[1pt] Elasticidades: $\varepsilon_{x_i,p_j}=\varepsilon^h_{i,p_j}-s_j\,\varepsilon_{x_i,\overline{W}}$
+\[\underbrace{\frac{\partial x_i}{\partial p_j}}_{\text{ET}}=\underbrace{\frac{\partial h_i}{\partial p_j}}_{\text{ES}}\ \underbrace{-\,x_j\frac{\partial x_i}{\partial\overline{W}}}_{\text{ER}}\]
+\[\varepsilon_{x_i,p_j}=\varepsilon^h_{i,p_j}-s_j\,\varepsilon_{x_i,\overline{W}}\]
 \end{formula}
 \begin{itemize}
-\item ES inobservable; ET y ER observables $\Rightarrow$ $S$ calculable. Compensación de \autor{Hicks} (utilidad) $\approx$ de \autor{Slutsky} (poder adquisitivo) en el margen.
-\item \textbf{Propio}: ES $\leq0$; \textcolor{tceeverde}{\textbf{normal}} $\Rightarrow$ \textcolor{tceeazul}{\textbf{ordinario}}; \textcolor{tceedorado}{\textbf{inferior}}: ordinario si domina ES, \textcolor{tceerojo}{\textbf{\autor{Giffen}}} si domina ER ($s_i$ alto). \autor{Veblen} fuera.
-\item \textbf{Cruzado}: neto (signo de $S_{ij}$) \textbf{simétrico} (\autor{Hicks}-\autor{Allen}, 1934); bruto no. \textcolor{tceeverde}{Sustitutivos netos} + $i$ inferior $\Rightarrow$ \textcolor{tceeverde}{sustitutivos brutos}; \textcolor{tceedorado}{complementarios netos} + $i$ normal $\Rightarrow$ \textcolor{tceedorado}{complementarios brutos}.
-\item $S\vect{p}=\vect{0}\Rightarrow$ todo bien tiene un \concepto{sustitutivo neto}; con 2 bienes, sustitutivos netos.
-\item Bien normal: marshalliana más plana que la hicksiana.
+\item ES inobservable; ET y ER observables $\Rightarrow$ $S$ calculable. El ER pesa más cuanto mayor es $s_j$. Compensación de \autor{Hicks} (utilidad) $=$ de \autor{Slutsky} (poder adquisitivo) en el margen.
+\item \textbf{Propio}: ES $\leq0$; \textcolor{tceeverde}{\textbf{normal}} $\Rightarrow$ \textcolor{tceeazul}{\textbf{ordinario}} (ley de la demanda); \textcolor{tceedorado}{\textbf{inferior}}: ordinario si domina ES, \textcolor{tceerojo}{\textbf{\autor{Giffen}}} si domina ER ($s_i$ alto). \autor{Giffen} $\Rightarrow$ inferior, no al revés. \autor{Veblen} fuera (precio en las preferencias).
+\end{itemize}
+\par\vspace{2pt}{\centering\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}ccl@{}}
+\toprule
+\textbf{ES propio} & \textbf{ER propio} & \textbf{ET propio}\\\midrule
+$\leq0$ & \textcolor{tceeverde}{$<0$: normal} & \textcolor{tceeazul}{$\leq0$: ordinario}\\
+$\leq0$ & $=0$: frontera & \textcolor{tceeazul}{$\leq0$: ordinario}\\
+$\leq0$ & \textcolor{tceedorado}{$>0$: inferior} & \textcolor{tceeazul}{ordinario} si |ES|$\,\geq\,$ER\\
+ & & \textcolor{tceerojo}{$>0$: \autor{Giffen}} si ER$\,>\,$|ES|\\\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \textbf{Cruzado}: neto (signo de $S_{ij}$) \textbf{simétrico} (\autor{Hicks}-\autor{Allen}, 1934); bruto no (ER cruzados distintos). \textcolor{tceeverde}{Sustitutivos netos} + $i$ inferior $\Rightarrow$ \textcolor{tceeverde}{sustitutivos brutos}; \textcolor{tceedorado}{complementarios netos} + $i$ normal $\Rightarrow$ \textcolor{tceedorado}{complementarios brutos}; sustitutivos netos + $i$ normal, o complementarios netos + $i$ inferior: ambiguo. Puede haber sustitutivos netos y complementarios brutos.
+\item $S\vect{p}=\vect{0}\Rightarrow\sum_{j\neq i}p_jS_{ij}=-p_iS_{ii}\geq0$: todo bien tiene un \concepto{sustitutivo neto}; con 2 bienes, sustitutivos netos.
+\item Pendientes en $(x_i,p_i)$: bien normal, marshalliana más plana (más elástica) que la hicksiana; inferior, más inclinada; sin ER, coinciden.
 \end{itemize}
 
 \sub{III.3. Bienestar}
 \begin{itemize}
-\item Utilidad ordinal: $\overline{U}^1-\overline{U}^0$ no significa nada $\Rightarrow$ medida en euros.
-\item \concepto{$\Delta$EC} (\autor{Dupuit}, \autor{Marshall}): $\int_{p_1^1}^{p_1^0}x_1\,dp_1$, observable pero mezcla ES y ER; exacta con ER nulo (cuasilineal); con varios precios depende del camino.
-\item \concepto{Métrica monetaria} (\autor{McKenzie}, \autor{Samuelson}): $m(\bar{\vect{p}};\vect{p},\overline{W})\equiv E\big(\bar{\vect{p}},V(\vect{p},\overline{W})\big)$: transformación creciente de $V$ medida en euros; VC y VE son su variación con $\bar{\vect{p}}=\vect{p}^1$ y $\bar{\vect{p}}=\vect{p}^0$.
+\item Un consumidor y cambios de precios (caso particular del equilibrio parcial). Utilidad ordinal: $\overline{U}^1-\overline{U}^0$ no significa nada $\Rightarrow$ medida en euros.
+\item Notación: $\vect{p}^0\to\vect{p}^1$, $\overline{W}$ fija; $\overline{U}^k=V(\vect{p}^k,\overline{W})$; cestas $\vect{x}^0$, $\vect{x}^1$.
+\end{itemize}
+\pareja{bienestar-problema}{Baja $p_1$: de $\overline{U}^0$ a $\overline{U}^1$, pero ¿cuánto?}{bienestar-delta-ec}{$\Delta$EC: área a la izquierda de la marshalliana}
+\begin{itemize}
+\item \concepto{$\Delta$EC} (\autor{Dupuit}, \autor{Marshall}): $\displaystyle\int_{p_1^1}^{p_1^0}x_1(p_1,\overline{\vect{p}}_{-1},\overline{W})\,dp_1$. Observable, pero mezcla ES y ER; exacta si el ER es nulo (cuasilineal); con varios precios, depende del camino (salvo homotéticas o ER nulos).
+\item \concepto{Métrica monetaria} (\autor{McKenzie}, \autor{Samuelson}): $m(\bar{\vect{p}};\vect{p},\overline{W})\equiv E\big(\bar{\vect{p}},V(\vect{p},\overline{W})\big)$: transformación creciente de $V$ en euros. VC: referencia $\vect{p}^1$; VE: referencia $\vect{p}^0$.
 \end{itemize}
 \begin{formula}
-$\mathrm{VC}=\overline{W}-E(\vect{p}^1,\overline{U}^0)=\int h_1(\cdot,\overline{U}^0)\,dp_1$\\
-$\mathrm{VE}=E(\vect{p}^0,\overline{U}^1)-\overline{W}=\int h_1(\cdot,\overline{U}^1)\,dp_1$
+\[\mathrm{VC}=\overline{W}-E(\vect{p}^1,\overline{U}^0)=\int_{p_1^1}^{p_1^0}h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^0)\,dp_1\]
+\[\mathrm{VE}=E(\vect{p}^0,\overline{U}^1)-\overline{W}=\int_{p_1^1}^{p_1^0}h_1(p_1,\overline{\vect{p}}_{-1},\overline{U}^1)\,dp_1\]
 \end{formula}
 \begin{itemize}
-\item \concepto{VC}: precios \emph{finales}, utilidad \emph{inicial}; si baja $p$, máximo que pagaría. \concepto{VE}: precios \emph{iniciales}, utilidad \emph{final}; mínimo que aceptaría por renunciar.
-\item Bien \textcolor{tceeverde}{normal}, bajada de precio: $L\leq\mathrm{VC}\leq\Delta\mathrm{EC}\leq\mathrm{VE}\leq P$; inferior: se invierte; ER nulo: VC $=\Delta$EC $=$ VE.
+\item \concepto{VC}: precios \emph{finales}, utilidad \emph{inicial}; si baja $p$, lo máximo que pagaría; si sube, $-$VC es la compensación mínima. Área bajo la hicksiana \emph{inicial}.
+\item \concepto{VE}: precios \emph{iniciales}, utilidad \emph{final}; si baja $p$, lo mínimo que aceptaría por renunciar; si sube, $-$VE es lo máximo que pagaría por evitarla. Área bajo la hicksiana \emph{final}.
 \end{itemize}
-\graficorepaso[0.78\linewidth]{bienestar-vc-ve}{VC, $\Delta$EC y VE (y $L$, $P$) ante una bajada de $p_1$ de un bien normal}
+\graficorepaso[0.7\linewidth]{bienestar-vc-ve}{VC, $\Delta$EC y VE (y $L$, $P$) ante una bajada de $p_1$ de un bien normal}
+\begin{formula}
+\[L\leq\mathrm{VC}\leq\Delta\mathrm{EC}\leq\mathrm{VE}\leq P\quad\text{(bien normal, baja }p_1\text{)}\]
+\end{formula}
 \begin{itemize}
-\item \concepto{\autor{Willig}} (1976): $\mathrm{VC}\approx\Delta\mathrm{EC}-\dfrac{\varepsilon_{x_1,\overline{W}}(\Delta\mathrm{EC})^2}{2\overline{W}}$; error $\approx|\varepsilon|\,|\Delta\mathrm{EC}|/2\overline{W}$ (5\,\% de la renta y $\varepsilon=1$: 2,5\,\%). \autor{Hausman} (1981): falla en la pérdida irrecuperable.
-\item \textbf{¿Cuál?} Ordenar políticas: \textbf{VE} (base fija $\vect{p}^0$). Compensar (\autor{Kaldor}-\autor{Hicks}): \textbf{VC}. Exceso de gravamen: $\mathrm{EG}=-\mathrm{VE}-T>0$.
-\item \concepto{Info.\ incompleta}: $L=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^0\leq\mathrm{VC}$, $\mathrm{VE}\leq P=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^1$: \emph{sesgo de sustitución}.
+\item Inferior: el orden se invierte; si sube el precio, se invierte en valor absoluto; ER nulo: VC $=\Delta$EC $=$ VE.
+\item \concepto{\autor{Willig}} (1976): error relativo de usar $\Delta$EC $\approx|\varepsilon_{x_1,\overline{W}}|\,|\Delta\mathrm{EC}|/2\overline{W}$ (5\,\% de la renta y $\varepsilon=1$: 2,5\,\%):
 \end{itemize}
 \begin{formula}
-\autor{Konüs}: $I_K=\dfrac{E(\vect{p}^1,\overline{U})}{E(\vect{p}^0,\overline{U})}$;\ \ $I_L=\dfrac{\vect{p}^1\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\geq I_K(\overline{U}^0)$,\ \ $I_P=\dfrac{\vect{p}^1\cdot\vect{x}^1}{\vect{p}^0\cdot\vect{x}^1}\leq I_K(\overline{U}^1)$
+\[\mathrm{VC}\approx\Delta\mathrm{EC}-\frac{\varepsilon_{x_1,\overline{W}}(\Delta\mathrm{EC})^2}{2\overline{W}},\qquad \mathrm{VE}\approx\Delta\mathrm{EC}+\frac{\varepsilon_{x_1,\overline{W}}(\Delta\mathrm{EC})^2}{2\overline{W}}\]
 \end{formula}
-\graficorepaso[\linewidth]{indice-konus-laspeyres}{\autor{Laspeyres} sobrestima: sesgo de sustitución}
 \begin{itemize}
-\item \autor{Laspeyres}: aprox.\ de 1.er orden de $E$, cota superior (concavidad). Solo con homotéticas $I_P\leq I_K\leq I_L$. \concepto{Superlativos} (\autor{Diewert}, 1976): \autor{Fisher} $\sqrt{I_LI_P}$, \autor{Törnqvist} (translog).
-\item IPC: \autor{Laspeyres} encadenado (base 2025); deflactor del PIB: \autor{Paasche} encadenado.
+\item Justifica el excedente en equilibrio parcial y coste-beneficio. \autor{Hausman} (1981): falla en la pérdida irrecuperable $\Rightarrow$ $E$ exacta resolviendo la EDP.
+\item \textbf{¿Cuál?} Ordenar políticas: \textbf{VE} (base fija $\vect{p}^0$; la VC puede ordenar mal). Compensar (\autor{Kaldor}-\autor{Hicks}): \textbf{VC} (precios que regirán). Exceso de gravamen: $\mathrm{EG}=-\mathrm{VE}-T>0$.
+\item \concepto{Info.\ incompleta} (solo $\vect{x}^0$, $\vect{x}^1$): $L=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^0\leq\mathrm{VC}$, $\mathrm{VE}\leq P=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^1$, para cualquier bien: \emph{sesgo de sustitución}.
+\end{itemize}
+\begin{formula}
+\[I_K(\overline{U})=\frac{E(\vect{p}^1,\overline{U})}{E(\vect{p}^0,\overline{U})}\ \ \text{(\autor{Konüs}, 1924)}\]
+\[I_L=\frac{\vect{p}^1\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\geq I_K(\overline{U}^0),\qquad I_P=\frac{\vect{p}^1\cdot\vect{x}^1}{\vect{p}^0\cdot\vect{x}^1}\leq I_K(\overline{U}^1)\]
+\end{formula}
+\graficorepaso[0.72\linewidth]{indice-konus-laspeyres}{\autor{Laspeyres} sobrestima: el sesgo de sustitución}
+\begin{itemize}
+\item $I_K(\overline{U}^0)$: versión de la VC; $I_K(\overline{U}^1)$: de la VE. \autor{Laspeyres}: aprox.\ de 1.er orden de $E(\vect{p}^1,\overline{U}^0)$ $\Rightarrow$ cota superior (concavidad). Solo con homotéticas $I_P\leq I_K\leq I_L$; igualdades solo con \autor{Leontief}.
+\item \concepto{Superlativos} (\autor{Diewert}, 1976): \autor{Fisher} $\sqrt{I_LI_P}$ (exacto para $E$ cuadrática homogénea); \autor{Törnqvist} $\ln I_T=\sum\tfrac12(s_i^0+s_i^1)\ln(p_i^1/p_i^0)$ (translog).
+\item IPC del INE: \autor{Laspeyres} encadenado (base 2025; ponderaciones anuales: reducen el sesgo, no lo eliminan) $\Rightarrow$ sobrevalora. Deflactor del PIB: \autor{Paasche} encadenado $\Rightarrow$ infravalora.
 \end{itemize}
 \begin{ideaclave}
-$E$ traduce la utilidad a euros: VC y VE exactas; $\Delta$EC las aproxima (\autor{Willig}); \autor{Laspeyres} y \autor{Paasche} las acotan con sesgo de sustitución.
+$E$ traduce la utilidad a euros: VC y VE exactas; $\Delta$EC las aproxima tanto mejor cuanto menor es el ER (\autor{Willig}); \autor{Laspeyres} y \autor{Paasche} las acotan con un sesgo de sustitución que sigue en los índices oficiales.
 \end{ideaclave}
 
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
 \item \textbf{Recapitulación}: hicksiana, $E$ y relaciones de dualidad (I); sistemas de demanda, AIDS y microdatos (II); integrabilidad, \autor{Slutsky} y bienestar (III).
-\item \textbf{Relevancia}: de lo inobservable (utilidad) a restricciones sobre lo observable y bienestar en euros.
-\item \textbf{Extensiones}: empresa \vertema{3.A.12}; equilibrio parcial \vertema{3.A.16}; bienestar \vertema{3.A.22}\vertema{3.A.24}; coste-beneficio \vertema{4.B.6}; exceso de gravamen \vertema{4.B.9}; IPC \vertema{4.A.1}; riesgo \vertema{3.A.10}.
-\item \textbf{Opinión}: teoría abstracta muy útil; límite: consumidor estático y agregación; herencia: \autor{Deaton} (microdatos, heterogeneidad).
-\item \textbf{Idea final}: la pensión con IPC sobrecompensa algo si la cesta se parece a la del IPC (\autor{Laspeyres}); la compensación exacta es la VC.
+\item \textbf{Relevancia}: de lo inobservable (utilidad) a restricciones sobre lo observable y bienestar en euros: elasticidades fiscales, exceso de gravamen, coste-beneficio, sesgo del IPC.
+\item \textbf{Extensiones}: empresa \vertema{3.A.12}; equilibrio parcial \vertema{3.A.16}; bienestar \vertema{3.A.22}\vertema{3.A.24}; coste-beneficio \vertema{4.B.6}; exceso de gravamen \vertema{4.B.9}; IPC y deflactor \vertema{3.A.30}\vertema{4.A.1}; riesgo \vertema{3.A.10}; intertemporal \vertema{3.A.29}.
+\item \textbf{Opinión}: teoría abstracta muy útil; límite: consumidor estático y agregación (sumar exige juicios de valor); herencia: \autor{Deaton} (microdatos, heterogeneidad).
+\item \textbf{Idea final}: la pensión con IPC sobrecompensa algo si la cesta se parece a la del IPC (\autor{Laspeyres}); si es distinta, puede quedarse corta. La compensación exacta es la VC.
 \end{itemize}
 
 % ==========================================================================
 \bloque{Autores y fechas}
 \hito{1844}{\autor{Dupuit}: excedente del consumidor}
-\hito{1886}{\autor{Antonelli}: integrabilidad}
-\hito{1890}{\autor{Marshall}: excedente como área}
 \hito{1915}{\autor{Slutsky}: ecuación ES + ER}
 \hito{1924}{\autor{Konüs}: índice verdadero de coste de la vida}
-\hito{1932}{\autor{Hotelling}: derivar la función de beneficio}
-\hito{1934}{\autor{Hicks}-\autor{Allen}: relaciones netas}
 \hito{1939}{\autor{Hicks}: demanda compensada; VC y VE (1941-43)}
 \hito{1947}{\autor{Roy}: identidad de Roy}
-\hito{1950}{\autor{Houthakker}: AFPR}
-\hito{1953}{\autor{Shephard}: lema}
-\hito{1954}{\autor{Stone}: LES}
+\hito{1953}{\autor{Shephard}: lema; 1954, \autor{Stone}: LES}
 \hito{1957}{\autor{McKenzie}: función de gasto}
 \hito{1971}{\autor{Hurwicz}-\autor{Uzawa}: integrabilidad}
-\hito{1975}{\autor{Christensen}-\autor{Jorgenson}-\autor{Lau}: translog}
 \hito{1976}{\autor{Willig}: aproximación; \autor{Diewert}: superlativos}
-\hito{1980}{\autor{Deaton}-\autor{Muellbauer}: AIDS}
-\hito{1981}{\autor{Hausman}: bienestar exacto}
+\hito{1980}{\autor{Deaton}-\autor{Muellbauer}: AIDS; 1981, \autor{Hausman}: bienestar exacto}
 \hito{1996}{Comisión \autor{Boskin}: sesgo del IPC}
-\hito{1997}{\autor{Banks}-\autor{Blundell}-\autor{Lewbel}: QUAIDS}
 \hito{2015}{Nobel a \autor{Deaton}}
 
 \bloque{Datos clave}
@@ -218,8 +283,25 @@ $E$ traduce la utilidad a euros: VC y VE exactas; $\Delta$EC las aproxima (\auto
 \item EPF: \dato{unos 24.000 hogares}{INE}, anual desde 2006; gasto medio \dato{35.101 €/hogar}{INE, EPF 2025}.
 \item IPC base 2025: \dato{487 artículos, 196 subclases, 13 grupos}{INE, 2026}.
 \item Deflactor del PIB: \dato{+3,0\,\%}{INE, 2025}.
-\item Sesgo del IPC de EE.\,UU.: \dato{1,1 p.p./año, 0,4 de sustitución}{\autor{Boskin}, 1996}; \dato{0,18 p.p.}{\autor{Manser}-\autor{McDonald}, 1959-85}; IPC encadenado \autor{Törnqvist} \dato{0,25 p.p. menos/año}{BLS, 2005-24}.
+\item Sesgo del IPC de EE.\,UU.: \dato{1,1 p.p./año, 0,4 de sustitución}{\autor{Boskin}, 1996}; \dato{0,18 p.p./año}{\autor{Manser}-\autor{McDonald}, 1959-85}; IPC encadenado \autor{Törnqvist} \dato{0,25 p.p. menos/año}{BLS, 2005-24}.
 \end{itemize}
+
+\begin{trampa}
+\begin{itemize}
+\item $E$: homog.\ de grado \emph{1} en $\vect{p}$; $\vect{h}$: grado \emph{0} en $\vect{p}$; $V$ y $\vect{x}$: grado 0 en $(\vect{p},\overline{W})$.
+\item \autor{Shephard} sin signo menos; \autor{Roy}, con signo menos.
+\item $S$: \emph{primeras} derivadas de $\vect{h}$, \emph{segundas} de $E$.
+\item $V$ es \emph{cuasiconvexa} (no cuasicóncava) y no depende de la convexidad de las preferencias; $E$ es \emph{cóncava} en $\vect{p}$.
+\item ER nulo: VC $=\Delta$EC $=$ VE, pero $L\neq P$ si hay sustitución.
+\item \autor{Laspeyres} y \autor{Paasche} acotan índices verdaderos \emph{distintos}; $I_P\leq I_K\leq I_L$ solo con homotéticas.
+\item Con datos agregados se rechaza sobre todo la \emph{homogeneidad}, no la simetría.
+\item $\lambda^*=\partial V/\partial\overline{W}$; $\mu^*=\partial E/\partial\overline{U}$; $\mu^*=1/\lambda^*$.
+\item ADPR $\Rightarrow$ $S$ semidef.\ neg., \emph{no} simétrica.
+\item Teorema de \autor{Frobenius}, no de \autor{Rouché}-\autor{Frobenius}.
+\item El LES no admite bienes inferiores ($\alpha_i>0$) ni complementarios netos.
+\item \autor{Giffen} $\Rightarrow$ inferior; inferior $\not\Rightarrow$ \autor{Giffen}.
+\end{itemize}
+\end{trampa}
 
 % ==========================================================================
 \bloque{Preguntas del tribunal}
@@ -229,33 +311,14 @@ $E$ traduce la utilidad a euros: VC y VE exactas; $\Delta$EC las aproxima (\auto
 \item \textbf{¿Por qué $S$ es simétrica?} Son segundas derivadas de $E$ (\autor{Schwarz}); las brutas no, porque el ER cruzado difiere.
 \item \textbf{¿Qué condiciones da la integrabilidad?} Ley de \autor{Walras}, simetría y negatividad de $S$; con 2 bienes la simetría es automática.
 \item \textbf{¿Por qué es «casi ideal» el AIDS?} Flexible, coherente, agrega exactamente y es lineal (LA-AIDS), pero la negatividad no está garantizada y las curvas de \autor{Engel} son restrictivas.
-\item \textbf{¿VC o VE?} VE para ordenar políticas (base fija); VC para compensar a los perjudicados.
-\item \textbf{¿Cuándo vale el excedente marshalliano?} Si el ER es pequeño (\autor{Willig}): bien que pesa poco en la renta.
-\item \textbf{¿Por qué el IPC sobrestima el coste de la vida?} \autor{Laspeyres} fija la cesta e ignora la sustitución; la concavidad de $E$ lo hace cota superior.
 \item \textbf{¿Cómo se demuestra la ecuación de \autor{Slutsky} por dualidad?} Derivando $h_i(\vect{p},\overline{U})\equiv x_i(\vect{p},E(\vect{p},\overline{U}))$ respecto a $p_j$ y usando \autor{Shephard}.
+\item \textbf{¿VC o VE?} VE para ordenar políticas (base fija); VC para compensar a los perjudicados.
 \item \textbf{¿Cómo se mide el exceso de gravamen?} Con la VE: $\mathrm{EG}=-\mathrm{VE}-T>0$; el consumidor pagaría más de $T$ por un impuesto de suma fija equivalente.
-\item \textbf{¿Qué aporta la dualidad a la estimación?} Especificar $E$ o $V$ y derivar: demandas coherentes con la maximización sin resolver ningún problema; restricciones contrastables.
+\item \textbf{¿Cuándo vale el excedente marshalliano?} Si el ER es pequeño (\autor{Willig}): bien que pesa poco en la renta.
+\item \textbf{¿Por qué se rechazaba la homogeneidad con datos agregados?} Según \autor{Deaton}, por especificaciones rígidas, la dinámica y sobre todo la agregación: de ahí los microdatos.
+\item \textbf{¿Por qué el IPC sobrestima el coste de la vida?} \autor{Laspeyres} fija la cesta e ignora la sustitución; la concavidad de $E$ lo hace cota superior.
 \end{enumerate}
 
-\begin{trampa}
-\begin{itemize}
-\item $E$: homog.\ de grado \emph{1} en $\vect{p}$; $\vect{h}$: grado \emph{0} en $\vect{p}$; $V$ y $\vect{x}$: grado 0 en $(\vect{p},\overline{W})$.
-\item \autor{Shephard} sin signo menos; \autor{Roy}, con signo menos.
-\item $\lambda^*=\partial V/\partial\overline{W}$; $\mu^*=\partial E/\partial\overline{U}$; $\mu^*=1/\lambda^*$.
-\item $S$: \emph{primeras} derivadas de $\vect{h}$, \emph{segundas} de $E$.
-\item $V$ es \emph{cuasiconvexa} (no cuasicóncava) y no depende de la convexidad de las preferencias; $E$ es \emph{cóncava} en $\vect{p}$.
-\item VC: utilidad inicial, precios finales; VE: utilidad final, precios iniciales. $L$ acota la VC por abajo; $P$, la VE por arriba.
-\item ER nulo: VC $=\Delta$EC $=$ VE, pero $L\neq P$ si hay sustitución.
-\item \autor{Laspeyres} y \autor{Paasche} acotan índices verdaderos \emph{distintos}; $I_P\leq I_K\leq I_L$ solo con homotéticas.
-\item AIDS: $\beta_i>0$ lujo, $\beta_i<0$ necesario.
-\item Teorema de \autor{Frobenius}, no de \autor{Rouché}-\autor{Frobenius}.
-\item ADPR $\Rightarrow$ $S$ semidef.\ neg., \emph{no} simétrica.
-\item El LES no admite bienes inferiores ($\alpha_i>0$) ni complementarios netos.
-\item Con datos agregados se rechaza sobre todo la \emph{homogeneidad}, no la simetría.
-\item Integrabilidad: la homogeneidad es necesaria, pero el teorema se enuncia con \autor{Walras}, simetría y negatividad.
-\item Bien normal: la marshalliana es \emph{más plana} (más elástica) que la hicksiana.
-\end{itemize}
-\end{trampa}
 
 \end{columnas}
 \end{document}

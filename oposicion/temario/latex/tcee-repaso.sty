@@ -1,12 +1,12 @@
 % ==========================================================================
-% tcee-repaso.sty — Ficha de repaso de un tema en exactamente dos páginas
+% tcee-repaso.sty — Ficha de repaso de un tema en exactamente cuatro páginas
 % Oposición a Técnico Comercial y Economista del Estado
 % Autor: Víctor Gutiérrez Marcos
 %
 % Misma estética que los temas (tcee.sty): Palatino, morado #5F2987 y
-% salvia #E2EFD9, pero en A4 a tres columnas y letra pequeña. El tamaño lo
+% salvia #E2EFD9, pero en A4 a dos columnas (Víctor, 14/10/2026; antes, dos páginas a tres). El tamaño lo
 % elige scripts/temario/construir-repaso.py (\tceetam) para que la ficha
-% ocupe exactamente dos páginas.
+% ocupe exactamente cuatro páginas.
 %
 % Uso (fuentes/<tema>/repaso/<tema>-repaso.tex):
 %   \documentclass{article}
@@ -32,7 +32,7 @@
 \RequirePackage{newpxtext}
 \RequirePackage{newpxmath}
 \RequirePackage[protrusion=true,expansion=true]{microtype}
-\RequirePackage[a4paper,top=0.9cm,bottom=1.0cm,left=0.9cm,right=0.9cm,
+\RequirePackage[a4paper,top=1.1cm,bottom=1.2cm,left=1.2cm,right=1.2cm,
   headheight=0pt,headsep=0pt,footskip=0.45cm]{geometry}
 \RequirePackage[dvipsnames,table]{xcolor}
 \definecolor{tceemorado}{HTML}{5F2987}
@@ -64,7 +64,7 @@
 \AtBeginDocument{\tcee@tamano}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.15em}
-\setlength{\columnsep}{0.45cm}
+\setlength{\columnsep}{0.6cm}
 \setlength{\columnseprule}{0.3pt}
 \renewcommand{\columnseprulecolor}{\color{tceesalviaoscuro}}
 \setlength{\abovedisplayskip}{2pt}\setlength{\belowdisplayskip}{2pt}
@@ -92,7 +92,7 @@
     {\color{white}\bfseries\normalsize\tcee@titulo}\vspace{2pt}}}\par\vspace{3pt}}
 
 % --- Columnas ---------------------------------------------------------------------------
-\newenvironment{columnas}{\begin{multicols*}{3}\raggedcolumns}{\end{multicols*}}
+\newenvironment{columnas}{\begin{multicols*}{2}\raggedcolumns}{\end{multicols*}}
 
 % --- Bloques (equivalen a los apartados del tema) ----------------------------------------
 % \bloque[minutos]{título}: barra morada con el título y, si se da, los minutos del cante

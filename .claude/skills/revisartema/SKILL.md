@@ -1,6 +1,6 @@
 ---
 name: revisartema
-description: Revisa de principio a fin un tema del 3.er o 4.º ejercicio de la oposición TCEE (p. ej. /revisartema 3A08), coherente con el resto del temario (canon común de notación y modelos, referencias «[ver tema …]»). En tres entregas que Víctor aprueba por separado: el tema (LyX/LaTeX con gráficos TikZ → PDF, HTML y Word), la ficha de repaso de dos páginas y el vídeo del cante de 30 minutos. Todo en la rama revision-temario.
+description: Revisa de principio a fin un tema del 3.er o 4.º ejercicio de la oposición TCEE (p. ej. /revisartema 3A08), coherente con el resto del temario (canon común de notación y modelos, referencias «[ver tema …]»). En tres entregas que Víctor aprueba por separado: el tema (LyX/LaTeX con gráficos TikZ → PDF, HTML y Word), la ficha de repaso de cuatro páginas y el vídeo del cante de 30 minutos. Todo en la rama revision-temario.
 argument-hint: "<tema> [--fase extraer|revisar|integrar|graficos|construir|calidad|canon|publicar|repaso|video|coherencia] | --canon | --organizacion"
 ---
 
@@ -11,7 +11,7 @@ tema** revisado, coherente con el resto del temario, en tres entregas que
 Víctor aprueba una a una:
 
 1. **El tema** (HTML, PDF y Word) → **parada**: Víctor lo revisa.
-2. **La ficha de repaso** de dos páginas, solo con el tema aprobado → **parada**.
+2. **La ficha de repaso** de cuatro páginas a dos columnas, solo con el tema aprobado → **parada**.
 3. **El vídeo** del cante, solo con el tema y la ficha aprobados → **parada**.
 
 Argumentos: `$ARGUMENTS`. El primero es el código del tema (3A08, 3.A.8,
@@ -130,7 +130,7 @@ anota en `canon/pendientes-coherencia.md` con qué hay que cambiar.
 
 ## Entrega 2: la ficha de repaso (`--fase repaso`, con el tema aprobado)
 
-Agente `tema-repaso`: escribe `D/repaso/T-repaso.tex` (dos páginas) y la
+Agente `tema-repaso`: escribe `D/repaso/T-repaso.tex` (cuatro páginas a dos columnas) y la
 compila con `construir-repaso.py T`; luego
 `construir-tema.py T --solo html` (para que la página enlace la ficha) y
 `publicar-tema.py T`. Commit y push como arriba. **Parada**.
