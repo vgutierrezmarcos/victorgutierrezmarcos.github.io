@@ -345,12 +345,19 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             icon: const Icon(Icons.ios_share),
             onPressed: () => compartirTexto(
               context,
-              'Conecta tu app ${Creditos.nombreApp} conmigo: abre Más → Mi preparador y escribe el código $codigo. Así verás en tu agenda las clases que te programe y mis valoraciones en tu diario. También funciona en el navegador: ${Urls.appWeb}',
+              mensajeInvitacion(codigo),
               asunto: 'Código de preparador',
             ),
           ),
         ]),
         Text('El alumno lo escribe en Más → Mi preparador.', style: context.textos.bodySmall),
+        const SizedBox(height: 10),
+        FilledButton.icon(
+          style: FilledButton.styleFrom(backgroundColor: const Color(0xFF1F8F4E)),
+          onPressed: () => abrirWhatsAppConMensaje(context, mensajeInvitacion(codigo)),
+          icon: const Icon(Icons.chat_outlined, size: 18),
+          label: const Text('Invitar a mis alumnos por WhatsApp'),
+        ),
       ]),
     );
   }

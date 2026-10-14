@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/red.dart';
@@ -15,6 +16,17 @@ class PuntoPersona extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(width: tamano, height: tamano, decoration: BoxDecoration(color: Color(colorDePersona(clave)), shape: BoxShape.circle));
 }
+
+/// Mensaje con el que el preparador invita a un alumno a la app y a
+/// conectarse con él: dónde descargarla y su código.
+String mensajeInvitacion(String codigo) =>
+    'Te invito a ${Creditos.nombreApp}, donde organizo las clases: verás en tu agenda las que te programe, '
+    'los temas antes de cada clase y mis valoraciones. Descárgala aquí (Android, o en el navegador en iPhone y ordenador): ${Urls.paginaApp}\n\n'
+    'Después, en Más → Mi preparador, escribe mi código: $codigo';
+
+/// Abre WhatsApp con [mensaje] para elegir a quién mandarlo (un contacto o
+/// un grupo).
+Future<void> abrirWhatsAppConMensaje(BuildContext context, String mensaje) => abrirUrl(context, 'https://wa.me/?text=${Uri.encodeComponent(mensaje)}');
 
 /// Botón que abre WhatsApp con ese teléfono y un mensaje.
 class BotonWhatsApp extends StatelessWidget {
