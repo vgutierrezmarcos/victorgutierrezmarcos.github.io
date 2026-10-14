@@ -264,3 +264,10 @@ Criterios aplicados mientras Víctor no diga otra cosa:
 10. **Colores de las tablas**: se ha seguido el gráfico del 3.A.8 (inferior y complementarios en dorado), que es también lo que dice hoy `tcee.sty`; CRITERIOS.md § 2 todavía dice `tceenaranja` para inferior y complementarios: conviene actualizarlo.
 
 Resueltas el 13/10/2026: clasificación de los bienes (ahora con las dos tablas en III.2), Rodríguez López (citado como en el original), multiplicador del dual (**μ**, decisión de Víctor: $\mathcal L=\vec p\cdot\vec h+\mu(\overline U-U(\vec h))$, $\mu^*=\partial E/\partial\overline U=1/\lambda^*$; hay que pasarlo al canon, que hoy dice $\lambda^E$ [decidir]) y el enganche (se mantiene el de las pensiones).
+
+## Comprobaciones del 14/10/2026 (pedidas por Víctor)
+
+- **Christensen, Jorgenson y Lau (1975)**, leído en el artículo (AER 65(3), pp. 380-382): rechazan la teoría de la demanda (igualdad y simetría) al 1 %; dándola por válida, rechazan la homoteticidad y la aditividad de la utilidad directa, pero aceptan la de la indirecta. La frase decía que «rechazan la aditividad y la homoteticidad»: corregida en el tema y en el vídeo.
+- **Deaton y Muellbauer (1980)**: rechazan la homogeneidad y lo atribuyen a una especificación dinámica deficiente (autocorrelación de los residuos al imponerla), según las fuentes secundarias consultadas; se mantiene.
+- **Boskin (1996)**: sesgo de sustitución de 0,4 puntos (0,15 entre categorías y 0,25 dentro de ellas): correcto. **IPC encadenado**: la CBO estima unos 0,25 puntos menos al año de media (0,27 en 2000-2012 según el CRS); se escribe «de media» en lugar de «hoy».
+- **Opinión de la conclusión**: aprobada por Víctor.

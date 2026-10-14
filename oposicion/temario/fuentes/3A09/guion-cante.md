@@ -166,7 +166,7 @@ Fue el primer sistema estimado con datos reales, y sus curvas de Engel no pasan 
 
 [Pizarra 1: fórmula `\bar{s}_i\,d\ln x_i=b_i\,d\ln Q+\sum_jc_{ij}\,d\ln p_j`] El modelo de Rotterdam, de Barten y Theil, la gana sin partir de una utilidad: escribe la ecuación de Slutsky en diferencias logarítmicas con coeficientes constantes, y la teoría pasa a ser restricciones lineales, como la simetría de los ce sub i jota. Barten, con datos de los Países Bajos, rechaza a menudo la homogeneidad. Y su límite es que es local y no tiene una función de gasto con la que valorar el bienestar.
 
-[Apoyo 1, no se escribe: fórmula `\ln V=\alpha_0+\sum_i\alpha_i\ln\frac{p_i}{\overline{W}}+\frac{1}{2}\sum_i\sum_j\beta_{ij}\ln\frac{p_i}{\overline{W}}\ln\frac{p_j}{\overline{W}}`] La translog de Christensen, Jorgenson y Lau recupera esa función: aproxima en segundo orden una función indirecta cualquiera, y con Roy da las participaciones. Es muy flexible y sirvió para rechazar la aditividad y la homoteticidad con datos de Estados Unidos, pero no es lineal en los parámetros, no agrega bien y la concavidad no está garantizada lejos del punto de aproximación.
+[Apoyo 1, no se escribe: fórmula `\ln V=\alpha_0+\sum_i\alpha_i\ln\frac{p_i}{\overline{W}}+\frac{1}{2}\sum_i\sum_j\beta_{ij}\ln\frac{p_i}{\overline{W}}\ln\frac{p_j}{\overline{W}}`] La translog de Christensen, Jorgenson y Lau recupera esa función: aproxima en segundo orden una función indirecta cualquiera, y con Roy da las participaciones. Es muy flexible y, con datos de Estados Unidos, sirvió para rechazar la propia teoría de la demanda y la homoteticidad, pero no es lineal en los parámetros, no agrega bien y la concavidad no está garantizada lejos del punto de aproximación.
 
 [Pizarra 2: fórmula `\ln E(\vec{p},\overline{U})=(1-\overline{U})\ln a(\vec{p})+\overline{U}\ln b(\vec{p})`] Y llegamos al sistema casi ideal, el AIDS de Deaton y Muellbauer, que reúne los cuatro requisitos. Parte de una función de gasto de la clase PIGLOG, compatible con la agregación: su logaritmo pondera, con la utilidad, el coste de subsistencia, a, y el de saciedad, be.
 
@@ -330,7 +330,7 @@ Hausman matiza que no basta para la pérdida irrecuperable de un impuesto. ¿Cu�
 
 [Pizarra: gráfico `indice-konus-laspeyres` hasta la capa 5] La distancia entre las dos rectas es el sesgo de sustitución, que marco con una llave. Y escribo la comparación: el índice de Laspeyres, la cesta inicial a los precios nuevos entre su coste inicial, es mayor o igual que el de Konüs. Laspeyres sobrestima el coste de la vida, porque supone que no se sustituye lo que se encarece; Paasche, en cambio, subestima el índice verdadero con la utilidad final.
 
-Los índices superlativos de Diewert, como el de Fisher o el de Törnqvist, lo corrigen. ¿Cuánto pesa? La Comisión Boskin le atribuyó 0,4 puntos al año en Estados Unidos, donde hoy el IPC encadenado crece unos 0,25 puntos menos.
+Los índices superlativos de Diewert, como el de Fisher o el de Törnqvist, lo corrigen. ¿Cuánto pesa? La Comisión Boskin le atribuyó 0,4 puntos al año en Estados Unidos, donde el IPC encadenado crece de media unos 0,25 puntos menos.
 
 > Apunte: IPC del INE: Laspeyres encadenado, base 2025; deflactor del PIB: Paasche encadenado
 
