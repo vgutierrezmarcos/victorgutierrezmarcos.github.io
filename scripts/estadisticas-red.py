@@ -174,6 +174,10 @@ def recontar(docs, ahora):
                         if ahora <= fecha < en14:
                             con_clases[op].add(uid)
                     c['clases']['creadas últimos 7 días'] += creado >= hace7
+                if col == 'alumnos':
+                    # Fichas de alumnos que lleva el preparador: con la app
+                    # (uid) o apuntados a mano, sin ella.
+                    c['red']['fichas de alumnos con la app' if f('uid') else 'fichas de alumnos sin la app'] += 1
                 if col == 'cronogramasRecibidos':
                     c['red']['cronogramas mandados'] += 1
                 if col == 'notasPreparadores':
