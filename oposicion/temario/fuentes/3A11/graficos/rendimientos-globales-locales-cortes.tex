@@ -1,0 +1,49 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Rendimientos globales y locales a escala en el plano (tema 3.A.11), para la pizarra del
+% vídeo del cante: los cortes a lo largo del rayo de rendimientos-globales-locales-3d, sin
+% superficies.
+%   Capa 1: (a) homogénea de grado 1, q = (z_L z_K)^(1/2): F(lambda zbar) = lambda F(zbar), recta.
+%   Capas 2-4: (b) q = kappa/(1 + z_L^{-1} z_K^{-1}): q(lambda) = lambda^2/(1+lambda^2), en S;
+%   capa 3, el rayo desde el origen tangente en lambda* = 1 (eps = 1); capa 4, tramos de
+%   rendimientos locales crecientes (verde) y decrecientes (naranja).
+% Autor: Víctor Gutiérrez Marcos
+\definecolor{tceenaranja}{HTML}{E07B28}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  \capa{1}{\node[etiqueta,align=center,anchor=south,text=tceeazul] at (1.8,2.75) {(a) Homogénea de grado 1};}
+  \capa{2}{\node[etiqueta,align=center,anchor=south,text=tceemorado] at (10.1,3.25) {(b) Tecnología «en S»};}
+  % ---------------- (a) corte: recta por el origen ----------------
+  \begin{scope}[shift={(0,0)},x=1.2cm,y=0.8cm]
+    \capa{1}{\draw[eje] (0,0) -- (3,0) node[below left=2pt and 0pt] {$\lambda$};}
+    \capa{1}{\draw[eje] (0,0) -- (0,3) node[left] {$q$};}
+    \capa{1}{\node[below left] at (0,0) {$0$};}
+    \capa{1}{\draw[curva2] (0,0) -- (2.6,2.6);}
+    \capa{1}{\node[etiqueta,align=left,anchor=west,text=tceeazul] at (2.65,2.6)
+      {$F(\lambda\overline{\vect{z}})$\\ $=\lambda F(\overline{\vect{z}})$};}
+    \capa{1}{\node[etiqueta,anchor=north,text=tceeazul] at (1.5,-0.55)
+      {$\varepsilon_{q,\lambda}=1$ en todo punto (global)};}
+  \end{scope}
+  % ---------------- (b) corte: curva en S ----------------
+  \begin{scope}[shift={(7.6,0)},x=1.4cm,y=2.4cm]
+    \capa{2}{\draw[eje] (0,0) -- (3.6,0) node[below left=2pt and 0pt] {$\lambda$};}
+    \capa{2}{\draw[eje] (0,0) -- (0,1.25) node[left] {$q$};}
+    \capa{2}{\node[below left] at (0,0) {$0$};}
+    \capa{2}{\draw[curva1] plot[domain=0:3.4,samples=80] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{2}{\node[etiqueta,text=tceemorado,below=2pt] at (3.1,{3.1*3.1/(1+3.1*3.1)}) {$F(\lambda\overline{\vect{z}})$};}
+    \capa{3}{\draw[thick,tceeazul] (0,0) -- (1.9,0.95);}
+    \capa{3}{\node[punto] (E) at (1,0.5) {};}
+    \capa{3}{\proyeccion{(E)}{$\lambda^*$}{$q^*$}}
+    \capa{3}{\node[etiqueta,above left] at (E) {$\varepsilon_{q,\lambda}=1$};}
+    \capa{4}{\draw[guia] (0,1) node[left,text=black] {$\kappa$} -- (3.4,1);}
+    \capa{4}{\draw[very thick,tceeverde] plot[domain=0:1,samples=40] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{4}{\draw[very thick,tceenaranja] plot[domain=1:3.4,samples=60] (\x,{\x*\x/(1+\x*\x)});}
+    \capa{4}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceeverde]
+      (0.03,-0.25) -- (0.97,-0.25) node[midway,below=4pt,align=center,font=\footnotesize]
+      {crecientes\\ ($\varepsilon_{q,\lambda}>1$)};}
+    \capa{4}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceenaranja]
+      (1.03,-0.25) -- (3.4,-0.25) node[midway,below=4pt,align=center,font=\footnotesize]
+      {decrecientes\\ ($\varepsilon_{q,\lambda}<1$)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

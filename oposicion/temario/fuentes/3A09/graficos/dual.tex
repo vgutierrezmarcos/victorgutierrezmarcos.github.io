@@ -9,7 +9,7 @@
 \begin{tikzpicture}[tcee]
   % 1: ejes y planteamiento
   \capa{1}{\ejes{$x_1$}{$x_2$}{6.2}{4.2}}
-  \capa{1}{\node[align=center,text=tceeverde] at (2.6,4.8) {\textbf{Problema dual}\\ $\min\limits_{\vect{h}}\ \vect{p}\cdot\vect{h}$ s.a.\ $U(\vect{h})\geq\overline{U}$};}
+  \capa{5}{\node[align=center,text=tceeverde] at (2.6,4.8) {\textbf{Problema dual}\\ $\min\limits_{\vect{h}}\ \vect{p}\cdot\vect{h}$ s.a.\ $U(\vect{h})\geq\overline{U}$};}
   % 2: curva de indiferencia fija y conjunto U(h) >= Ū
   \capa{2}{\fill[area,fill=tceeverde] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) -- (5.6,3.75) -- (0.8,3.75) -- cycle;}
   \capa{2}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$\overline{U}$};}
@@ -20,14 +20,15 @@
   \capa{3}{\draw[curva3,desplazada] (0,2) node[etiqueta,left,font=\footnotesize,text=tceeverde] {$e_2/p_2$} -- (2.67,0);}
   \capa{3}{\draw[flecha] (4.1,2.1) -- (3.5,1.3);}
   \capa{3}{\node[etiqueta,text=tceerojo,anchor=south west] at (4.0,2.1) {$e_1>E^*>e_2$};}
-  % 4: tangencia h*, proyecciones y valor de la FG
+  % 4: tangencia h* y proyecciones; 5: planteamiento y etiquetas h* = h(p,Ū), E* = E(p,Ū)
+  % (el vídeo dibuja hasta la 4: el problema y las funciones están en el esquema de dualidad)
   \capa{4}{\node[punto,fill=tceeverde] (H) at (2,1.5) {};}
   \capa{4}{\proyeccion{(H)}{$h_1^*$}{$h_2^*$}}
   \capa{4}{\node[etiqueta,below,font=\footnotesize,text=tceeverde] at (4,0) {$E^*/p_1$};}
   \capa{4}{\node[etiqueta,left,font=\footnotesize,text=tceeverde] at (0,3) {$E^*/p_2$};}
-  \capa{4}{\node[etiqueta,anchor=south west,text=tceeverde,fill=white,fill opacity=0.8,text opacity=1] (Hl) at (2.15,2.45) {$\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};}
-  \capa{4}{\draw[guia,solid] (Hl.south west) -- (H);}
-  \capa{4}{\node[etiqueta,anchor=west,text=tceeverde] (El) at (4.3,1.0) {$E^*=E(\vect{p},\overline{U})$};}
-  \capa{4}{\draw[guia,solid] (El.west) -- (3.4,0.45);}
+  \capa{5}{\node[etiqueta,anchor=south west,text=tceeverde,fill=white,fill opacity=0.8,text opacity=1] (Hl) at (2.15,2.45) {$\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};}
+  \capa{5}{\draw[guia,solid] (Hl.south west) -- (H);}
+  \capa{5}{\node[etiqueta,anchor=west,text=tceeverde] (El) at (4.3,1.0) {$E^*=E(\vect{p},\overline{U})$};}
+  \capa{5}{\draw[guia,solid] (El.west) -- (3.4,0.45);}
 \end{tikzpicture}
 \end{document}

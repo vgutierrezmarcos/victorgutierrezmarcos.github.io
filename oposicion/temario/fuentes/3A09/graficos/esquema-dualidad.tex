@@ -16,6 +16,7 @@
     rel/.style={->,thick,tceegris},
     nota/.style={font=\footnotesize,inner sep=2pt},
     notag/.style={nota,text=tceegris}]
+  % Capas (vídeo): primal y sus funciones (1-3), dual y las suyas (4-6), relaciones (7-13).
   % columnas: primal en x = 0, dual en x = 13; filas en y = 0, -3,6, -7,2
   % 1: problema primal
   \capa{1}{
@@ -27,8 +28,8 @@
       \node[cajap,fit=(Pmax)(PU)(Psa)] (P) {};
     \end{scope}
   }
-  % 2: problema dual (la variable de elección es h)
-  \capa{2}{
+  % 4: problema dual (la variable de elección es h)
+  \capa{4}{
     \node[text=tceeverde,align=center] at (13,1.65) {\textbf{Problema dual}\\ \footnotesize minimización del gasto};
     \node[inner sep=2pt,anchor=base west] (DU) at (13.05,0.3) {$\vect{p}\cdot\vect{h}$};
     \node[inner sep=2pt,anchor=base east] (Dmin) at (13,0.3) {$\min\limits_{\vect{h}}$};
@@ -37,33 +38,33 @@
       \node[cajad,fit=(Dmin)(DU)(Dsa)] (D) {};
     \end{scope}
   }
-  % 3: teorema básico de la dualidad
-  \capa{3}{
+  % 7: teorema básico de la dualidad
+  \capa{7}{
     \draw[tceegris,thick,dashed,rounded corners=4pt] (2.45,1.25) rectangle (10.55,-8.75);
     \node[notag] at (6.5,-8.5) {\itshape Relaciones de dualidad};
     \draw[<->,very thick] (P.east) -- node[above,align=center] {$\overline{W}=E^*,\ \overline{U}=U^*$} node[below,nota] {teorema básico de la dualidad} (P.east -| D.west);
   }
-  % 4: demanda marshalliana
-  \capa{4}{
+  % 2: demanda marshalliana
+  \capa{2}{
     \node[cajap] (X) at (0,-3.6) {\textbf{SCEDM}\\ $\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};
     \draw[une] (P.south) -- node[right,nota] {resolviendo} (X.north);
   }
-  % 5: función indirecta de utilidad
-  \capa{5}{
+  % 3: función indirecta de utilidad
+  \capa{3}{
     \node[cajap] (V) at (0,-7.2) {\textbf{FIU}\\ $U^*=V(\vect{p},\overline{W})=U(\vect{x}^*)$};
     \draw[une] (X.south) -- node[right,nota,align=left] {función\\ valor} (V.north);
   }
-  % 6: identidad de Roy
-  \capa{6}{
+  % 8: identidad de Roy
+  \capa{8}{
     \draw[une,tceemorado] ([xshift=-1.1cm]V.north) -- node[left,nota,align=right,text=tceemorado] {Identidad de \textsc{Roy}\\ $x_i(\vect{p},\overline{W})=-\dfrac{\partial V(\vect{p},\overline{W})/\partial p_i}{\partial V(\vect{p},\overline{W})/\partial\overline{W}}$} ([xshift=-1.1cm]X.south);
   }
-  % 7: demanda hicksiana
-  \capa{7}{
+  % 5: demanda hicksiana
+  \capa{5}{
     \node[cajad] (H) at (13,-3.6) {\textbf{SCEDC}\\ $\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};
     \draw[une] (D.south) -- node[left,nota] {resolviendo} (H.north);
   }
-  % 8: función de gasto
-  \capa{8}{
+  % 6: función de gasto
+  \capa{6}{
     \node[cajad] (E) at (13,-7.2) {\textbf{FG}\\ $E^*=E(\vect{p},\overline{U})=\vect{p}\cdot\vect{h}^*$};
     \draw[une] (H.south) -- node[left,nota,align=right] {función\\ valor} (E.north);
   }

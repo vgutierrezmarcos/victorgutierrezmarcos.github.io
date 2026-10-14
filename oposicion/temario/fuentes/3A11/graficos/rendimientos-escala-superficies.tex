@@ -1,0 +1,75 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% Tres funciones cuasicóncavas con las mismas isocuantas y rendimientos a escala
+% distintos: solo las superficies (fila 1 de rendimientos-escala-tipos-3d), para el
+% apoyo del vídeo del cante (tema 3.A.11). Una capa por superficie.
+% Autor: Víctor Gutiérrez Marcos
+% Tres funciones cuasicóncavas con las mismas isocuantas y rendimientos a escala
+% distintos (tema 3.A.11). Elaboración propia a partir del gráfico del tema anterior
+% (tipos 1, 2 y 3 con la isocuanta común) y de Fuleky (2006).
+%   F_k(z_L,z_K) = (z_L z_K)^(k/2), con k = 1,6 (crecientes), 1 (constantes), 0,6 (decrecientes).
+%   Las tres son funciones crecientes de z_L z_K: mismas isocuantas z_L z_K = cte.
+%   Rayo z_K = z_L con zbar = (1,1): F(lambda zbar) = lambda^k, y lambda F(zbar) = lambda.
+%   Fila 1: superficies en la vista por defecto de pgfplots (acimut 30°, elevación 28°):
+%   origen a la izquierda, q vertical, z_L a la derecha algo hacia abajo, z_K en profundidad. La superficie se
+%   parte por el plano vertical que contiene el rayo: primero la mitad de detrás (z_K >= z_L),
+%   luego el rayo y el plano, y encima la mitad de delante (z_K <= z_L), cuyo borde superior
+%   es el corte, que se dibuja al final.
+\definecolor{tceenaranja}{HTML}{E07B28}
+\tikzset{
+  crec/.style={very thick,tceeverde},
+  cons/.style={very thick,tceeazul},
+  decr/.style={very thick,tceenaranja},
+}
+\pgfplotsset{
+  superficie/.style={surf,shader=faceted,fill opacity=0.5,draw=tceemorado!35,line width=0.15pt,
+    z buffer=sort,colormap={tcee}{rgb255=(226,239,217) rgb255=(196,176,212)}},
+  % vista por defecto de pgfplots (acimut 30°, elevación 28°), escalada a 0,9
+  tresd/.style={x={(1.08cm,-0.297cm)},y={(0.621cm,0.504cm)},z={(0cm,1.098cm)},axis lines=none,
+    xmin=0,xmax=2.5,ymin=0,ymax=2.5,zmin=0,zmax=3.6,clip=false,anchor=origin},
+}
+% \superficie{capa}{k}{estilo}{color}{título}{sin uso}
+% El plano vertical que contiene el rayo se dibuja hasta el corte (la parte que corta la superficie).
+% Mitad de detrás: (z_L, z_K) = (x, x + y(2 - x)); mitad de delante: (x + y(2 - x), x),
+% con x en [0,2] e y en [0,1].
+\newcommand{\superficie}[6]{%
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:2.6,0,0) node[below] {$z_L$};}
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,2.9,0) coordinate (zK#1);}
+  \capa{#1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,3.5) node[left] {$q$};}
+  \capa{#1}{\node[etiqueta,align=center,anchor=south] at (axis cs:1.1,1.1,3.55) {#5};}
+  \capa{#1}{\addplot3[superficie,domain=0:2,y domain=0:1,samples=11,samples y=6]
+    ({x},{x+y*(2-x)},{(x*(x+y*(2-x)))^(#2/2)});}
+  \capa{#1}{\draw[guia,#4,thick] (axis cs:0,0,0) -- (axis cs:2.4,2.4,0)
+    node[etiqueta,right,text=#4] {$\lambda\overline{\vect{z}}$};}
+  \capa{#1}{\addplot3[fill=#4,fill opacity=0.22,draw=#4,thin,domain=0:2,samples=40,samples y=0]
+    (x,x,{x^#2}) -- (axis cs:2,2,0) -- (axis cs:0,0,0) -- cycle;}
+  \capa{#1}{\addplot3[superficie,domain=0:2,y domain=0:1,samples=11,samples y=6]
+    ({x+y*(2-x)},{x},{(x*(x+y*(2-x)))^(#2/2)});}
+  \capa{#1}{\addplot3[#3,domain=0:2,samples=40,samples y=0] (x,x,{x^#2});}
+  % el rótulo de z_K, encima de la superficie (el eje queda detrás)
+  \capa{#1}{\node[etiqueta,fill=white,fill opacity=0.85,text opacity=1,inner sep=1pt,above left=1pt and -2pt] at (zK#1) {$z_K$};}}
+% \corte{capa}{k}{estilo}{color}{rótulo de la curva}{elasticidad}
+\newcommand{\corte}[6]{%
+  \capa{#1}{\draw[eje] (0,0) -- (2.5,0) node[below left=2pt and 0pt] {$\lambda$};}
+  \capa{#1}{\draw[eje] (0,0) -- (0,3.6) node[left] {$q$};}
+  \capa{#1}{\node[below left] at (0,0) {$0$};}
+  \capa{#1}{\draw[guia,thick] (0,0) -- (2.25,2.25) node[etiqueta,right,text=tceegris] {$\lambda F(\overline{\vect{z}})$};}
+  \capa{#1}{\draw[#3] plot[domain=0:2.1,samples=60] (\x,{\x^#2});}
+  \capa{#1}{#5}
+  \capa{#1}{\node[punto] at (1,1) {};}
+  \capa{#1}{\draw[guia] (1,0) node[below] {$1$} -- (1,1);}
+  \capa{#1}{\node[etiqueta,anchor=north,text=#4] at (1.25,-0.55) {#6};}}
+\begin{document}
+\begin{tikzpicture}[tcee]
+  % ---------------- Fila 1: superficies ----------------
+  \begin{axis}[tresd,at={(0,0)}]
+    \superficie{1}{1.6}{crec}{tceeverde}{(a) Crecientes\\ $q=(z_Lz_K)^{0{,}8}$}{3.3}
+  \end{axis}
+  \begin{axis}[tresd,at={(5.4cm,0)}]
+    \superficie{2}{1}{cons}{tceeazul}{(b) Constantes\\ $q=(z_Lz_K)^{0{,}5}$}{2.3}
+  \end{axis}
+  \begin{axis}[tresd,at={(10.8cm,0)}]
+    \superficie{3}{0.6}{decr}{tceenaranja}{(c) Decrecientes\\ $q=(z_Lz_K)^{0{,}3}$}{1.8}
+  \end{axis}
+  \end{tikzpicture}
+\end{document}

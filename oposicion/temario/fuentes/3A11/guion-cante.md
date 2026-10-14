@@ -6,19 +6,19 @@ Teoría de la producción. Caracterización de la tecnología de la empresa a co
 
 ## Plan de pizarra
 
-> La pizarra se divide en celdas (rejilla de `escenas.yaml`, en porcentaje del ancho y, entre paréntesis, del alto); cambiar de rejilla la borra. Introducción y conclusión se cantan sin pizarra. Los títulos de apartado no se escriben (están en la cabecera del vídeo). El material de apoyo sale en una tarjeta azulada y no se escribe.
+> Ninguna superficie 3D se dibuja a mano: salen como apoyo (tarjeta azulada) y avanzan con la narración; en la pizarra solo se dibujan sus cortes en el plano. La pizarra se divide en celdas (rejilla de `escenas.yaml`, en porcentaje del ancho y, entre paréntesis, del alto); cambiar de rejilla la borra. Introducción y conclusión se cantan sin pizarra. Los títulos de apartado no se escriben (están en la cabecera del vídeo). El material de apoyo sale en una tarjeta azulada y no se escribe.
 >
 > - **I (apertura)**. Una celda (100): `esquema-tecnologia` (capas 1-6). Se borra.
 > - **I.1**. Columnas 36 | 64. Columna 1: el *netput*, 𝒴 ⊂ ℝ^S y los axiomas (1)-(4) y la inacción, uno debajo de otro. Columna 2: `conjunto-produccion` (capas 1-8, un axioma por capa). Se borra.
-> - **I.2**. Columnas 38 | 62. Columna 1: definición de F(z) y propiedades (F(0) = 0, PMg ≥ 0); debajo, `convexidad-conjunto` (capas 1-4). Columna 2: `funcion-produccion-3d` (capas 1-5). Se borra.
+> - **I.2**. Columnas 38 | 62. Columna 1: definición de F(z) y propiedades (F(0) = 0, PMg ≥ 0); debajo, `convexidad-conjunto` (capas 1-4). Columna 2: apoyo con `funcion-produccion-3d`, que avanza con la narración (capa 2, superficie; capa 4, el vector z⁰ y F(z⁰); capa 5, planes posibles e imposibles). Se borra.
 > - **I.3, isocuantas**. Columnas 40 | 60. Columna 1: isocuanta, RMST y σ. Columna 2: `isocuantas-rmst` (capas 1-4). Se borra.
 > - **I.3, Cobb-Douglas**. Columnas 48 | 52. Columna 1: la función, PMg, RMST y σ = 1, homogeneidad de grado α + β. Columna 2: apoyo con `superficie-produccion` completa. Se borra.
 > - **I.3, CES y Leontief**. Columnas 48 | 52. Columna 1: la CES con σ = 1/(1 − ρ) y el límite de Leontief. Columna 2: `ces-isocuantas` (capas 1-5). Se borra al pasar a II.
-> - **II (apertura)**. Una celda (100): `plazos-3d` (capas 1-6): ejes, superficie, corte de corto plazo, isocuantas, rayo y corte de largo plazo, superficie desplazada del muy largo plazo. Se borra.
+> - **II (apertura)**. Columnas 62 | 38. Columna 1: apoyo que avanza con la narración, un estado cada vez: la superficie sola (`plazos-3d`, capa 2), el corte de corto plazo (`plazos-3d-corto`), las isocuantas y después el rayo (`plazos-3d-largo`, capas 3 y 5) y el desplazamiento de la superficie y después de la isocuanta (`plazos-3d-muy-largo`, capas 3 y 4). Columna 2: la fórmula de cada plazo cuando se nombra. Se borra.
 > - **II.1, región económica**. Columnas 45 | 55. Columna 1: apoyo con `plazos-3d-corto`. Columna 2: apoyo con `region-economica` (se dice brevemente, como pide la nota del tema). Se borra.
 > - **II.1, productividad**. Columnas 45 | 55. Columna 1: PMg, PMe y elasticidad-producto. Columna 2: `corto-plazo` (capas 1-10: producto total, productividades, márgenes y etapas). Se borra.
-> - **II.2, rendimientos a escala**. Columnas 40 | 60. Columna 1: apoyo con `plazos-3d-largo`. Columna 2: `rendimientos-escala-isocuantas` (paneles a-d). Pinta y borra: nueva rejilla 38 | 62. Columna 1: definición F(λz) frente a λF(z), elasticidad de escala y homogeneidad. Columna 2: `rendimientos-escala-tipos-3d` (capas 1-8: tres superficies, sus cortes y las isocuantas comunes). Se borra.
-> - **II.2, globales y locales**. Columnas 38 | 62. Columna 1: elasticidad de escala local. Columna 2: `rendimientos-globales-locales-3d` (capas 1-6). Se borra.
+> - **II.2, rendimientos a escala**. Columnas 40 | 60. Columna 1: apoyo con `plazos-3d-largo`. Columna 2: `rendimientos-escala-isocuantas` (paneles a-d). Pinta y borra: nueva rejilla 50(45/55) | 50. Arriba a la izquierda, apoyo con `rendimientos-escala-superficies`, que añade una superficie cada vez (capas 1-3); debajo, la definición F(λz) frente a λF(z), la elasticidad de escala y la homogeneidad. Columna 2: `rendimientos-escala-cortes` (capas 1-3, el corte de cada función por el rayo; capas 4-5, las isocuantas comunes y su numeración). Se borra.
+> - **II.2, globales y locales**. Columnas 50(48/52) | 50. Arriba a la izquierda, apoyo con `rendimientos-globales-locales-superficies` (capa 1, homogénea de grado 1; capa 2, tecnología «en S»); debajo, la elasticidad de escala local. Columna 2: `rendimientos-globales-locales-cortes` (capas 1-4: la recta, la curva en S, la tangente en λ* y los tramos crecientes y decrecientes). Se borra.
 > - **II.3**. Columna 1 en dos filas (55/45) y columna 2. Arriba a la izquierda, apoyo con `plazos-3d-muy-largo`; debajo, las neutralidades de Hicks, Solow y Harrod. Columna 2: `progreso-tecnico-neutral` (paneles A-C) y, debajo, la coincidencia con la Cobb-Douglas. Se borra al pasar a III.
 > - **III.1**. Columnas 40 | 60. Columna 1: `formacion-caja` (capas 1-3). Columna 2: los supuestos (funciones y dotaciones). Pinta y borra: nueva rejilla de una columna en dos filas (72/28). Arriba, `caja-edgeworth-fpp` (capas 1-10); abajo, la igualdad de las RMST, que se borra para escribir la RMT. Se borra.
 > - **III.2**. Columnas 40 | 60. Columna 1: T(y) ≤ 0, RMT de la empresa, RMT = p₁/p₂ y economías de alcance. Columna 2: `transformacion-empresa` (capas 1-5). Así queda hasta la conclusión.
@@ -93,13 +93,11 @@ En suma, la frontera reúne los planes técnicamente eficientes, y estos cuatro 
 
 > Apunte: Función de producción: relación técnica entre los factores y la máxima producción; solo recoge los métodos técnicamente eficientes
 
-[Pizarra 2: gráfico `funcion-produccion-3d` hasta la capa 1] Con trabajo y capital, la vemos en tres dimensiones: en la base, zeta ele y zeta ka; en vertical, la producción, q.
+[Apoyo 2, no se escribe: gráfico `funcion-produccion-3d` hasta la capa 2] Con trabajo y capital, la vemos en tres dimensiones, en el apoyo: en la base, zeta ele y zeta ka; en vertical, la producción, q. Sobre el plano de los factores se levanta la superficie de producción. Fíjense en su forma. Sale del origen, porque sin factores no se produce nada; sube con cualquiera de los dos factores, porque más factores nunca reducen la producción, y se aplana arriba, porque cada unidad adicional aporta menos. Esta superficie será el mapa de toda la exposición.
 
-[Pizarra: gráfico `funcion-produccion-3d` hasta la capa 2] Sobre el plano de los factores se levanta la superficie de producción, que voy trazando malla a malla. Fíjense en su forma. Sale del origen, porque sin factores no se produce nada; sube con cualquiera de los dos factores, porque más factores nunca reducen la producción, y se aplana arriba, porque cada unidad adicional aporta menos. La altura de cada punto es la producción máxima con esa combinación. Esta superficie será el mapa de toda la exposición.
+[Borrar la zona 2] [Apoyo 2, no se escribe: gráfico `funcion-produccion-3d` hasta la capa 4] Tomo un vector de factores, zeta cero, y subo en vertical hasta la superficie: esa altura, efe de zeta cero, es lo máximo que se produce con él.
 
-[Pizarra: gráfico `funcion-produccion-3d` hasta la capa 4] Tomo un vector de factores, zeta cero, y subo en vertical hasta la superficie: esa altura, efe de zeta cero, es lo máximo que se produce con él.
-
-[Pizarra: gráfico `funcion-produccion-3d` hasta la capa 5] Debajo de la superficie quedan los planes posibles; encima, los imposibles. Por construcción, la función solo recoge los métodos de producción técnicamente eficientes.
+[Borrar la zona 2] [Apoyo 2, no se escribe: gráfico `funcion-produccion-3d` hasta la capa 5] Debajo de la superficie quedan los planes posibles; encima, los imposibles. Por construcción, la función solo recoge los métodos de producción técnicamente eficientes.
 
 [Pizarra 1: fórmula `F(\vec{0})=0,\qquad PMg_i\equiv\frac{\partial F}{\partial z_i}\geq 0`] De los axiomas salen sus propiedades: es cardinal, porque el producto se mide en unidades físicas; efe de cero es cero, y es no decreciente: las productividades marginales no son negativas. Además, se supone continua y diferenciable.
 
@@ -139,13 +137,13 @@ Cuanto mayor es sigma, más fácil es sustituir. Y decide el reparto: si sigma e
 
 ### I.3. Las curvas isocuantas: la función Cobb-Douglas
 
-[Borrar la pizarra] [Pizarra 1: fórmula `q=A\,z_K^{\alpha}z_L^{\beta},\qquad A,\alpha,\beta>0`] [Apoyo 2, no se escribe: gráfico `superficie-produccion` hasta la capa 5] Sigma ordena las formas funcionales. La primera, la Cobb-Douglas: A por zeta ka elevado a alfa por zeta ele elevado a beta, con A el nivel tecnológico y alfa y beta, las elasticidades-producto. Cobb y Douglas la estiman en 1928.
+[Borrar la pizarra] [Pizarra 1: fórmula `q=A\,z_K^{\alpha}z_L^{\beta},\qquad A,\alpha,\beta>0`] Sigma ordena las formas funcionales. La primera, la Cobb-Douglas: A por zeta ka elevado a alfa por zeta ele elevado a beta, con A el nivel tecnológico y alfa y beta, las elasticidades-producto. Cobb y Douglas la estiman en 1928.
 
 > Apunte: Cobb y Douglas (1928): exponentes de 1/4 (capital) y 3/4 (trabajo) en la industria de EE. UU., 1899-1922
 
 [Pizarra 1: fórmula `PMg_L=\beta\,\frac{q}{z_L},\quad RMST_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1`] Cada productividad marginal es el exponente por la productividad media. La relación marginal de sustitución técnica depende solo de la proporción de factores, y de ahí sale una sigma igual a uno en todo punto.
 
-[Pizarra 1: fórmula `F(\lambda\vec{z})=\lambda^{\alpha+\beta}F(\vec{z})`] Es homogénea de grado alfa más beta: rendimientos crecientes, constantes o decrecientes según esa suma supere, iguale o no alcance uno. La superficie de apoyo lo resume: sus curvas de nivel son las isocuantas, y sus cortes, los plazos.
+[Pizarra 1: fórmula `F(\lambda\vec{z})=\lambda^{\alpha+\beta}F(\vec{z})`] [Apoyo 2, no se escribe: gráfico `superficie-produccion` hasta la capa 5] Es homogénea de grado alfa más beta: rendimientos crecientes, constantes o decrecientes según esa suma supere, iguale o no alcance uno. La superficie de apoyo lo resume: sus curvas de nivel son las isocuantas, y sus cortes, los plazos.
 
 Con rendimientos constantes y factores pagados por su productividad marginal, el teorema de Euler agota el producto, y las participaciones son constantes, alfa y uno menos alfa. El precio de esa sencillez es imponer sigma igual a uno.
 
@@ -181,19 +179,25 @@ Recapitulando, los axiomas dan la función de producción, y sus isocuantas y si
 
 [Borrar la pizarra] Paso al segundo bloque: las leyes temporales de la producción. Adelanto la conclusión: los tres plazos de Marshall son tres cortes de la misma superficie, con tres leyes: rendimientos decrecientes, rendimientos a escala y progreso técnico.
 
-[Pizarra 1: gráfico `plazos-3d` hasta la capa 1] Los plazos de Marshall no son periodos de calendario, sino grados de libertad de la empresa. Trazo los ejes del trabajo, del capital y de la producción.
+[Apoyo 1, no se escribe: gráfico `plazos-3d` hasta la capa 2] Los plazos de Marshall no son periodos de calendario, sino grados de libertad de la empresa. Volvemos a la superficie de producción, a sub cero por efe de zeta: sale del origen, sube con los dos factores y se aplana arriba. Cada punto de la base es una combinación de factores, y su altura, la producción máxima. Lo que cambia de un plazo a otro es qué puede mover la empresa sobre ella.
 
 > Apunte: Marshall (1890), libro V, cap. V: los plazos son grados de libertad, no periodos de calendario
 
-[Pizarra: gráfico `plazos-3d` hasta la capa 2] Encima, la superficie de producción, a sub cero por efe de zeta, la misma de antes: sale del origen, sube con los dos factores y se aplana arriba. Cada punto de la base es una combinación de factores, y su altura, la producción máxima. Lo que cambia de un plazo a otro es qué puede mover la empresa sobre ella.
+[Borrar la zona 1] [Apoyo 1, no se escribe: gráfico `plazos-3d-corto` hasta la capa 5] A corto plazo, el capital es fijo. Cortamos la superficie por el plano zeta ka barra: la curva dorada es la producción a corto plazo.
 
-[Pizarra: gráfico `plazos-3d` hasta la capa 3] A corto plazo, el capital es fijo. Cortamos la superficie por el plano zeta ka barra: la curva dorada es la producción a corto plazo, que solo depende del trabajo.
+[Pizarra 2: fórmula `\text{Corto: }q=F(z_L,\overline{z}_K)`] Lo escribo: q igual a efe de zeta ele y zeta ka barra, que solo depende del trabajo.
 
-[Pizarra: gráfico `plazos-3d` hasta la capa 4] A largo plazo, todo es variable. Los cortes horizontales, proyectados sobre la base, son las isocuantas.
+[Borrar la zona 1] [Apoyo 1, no se escribe: gráfico `plazos-3d-largo` hasta la capa 3] A largo plazo, todo es variable. Los cortes horizontales de la superficie, proyectados sobre la base, son las isocuantas.
 
-[Pizarra: gráfico `plazos-3d` hasta la capa 5] Si aumentamos todos los factores en la misma proporción, nos movemos por un rayo desde el origen. Trazo el rayo, su plano vertical y el corte, la curva verde, efe de lambda zeta barra, que cruza las isocuantas en lambda uno, dos y tres. Mide los rendimientos a escala.
+[Borrar la zona 1] [Apoyo 1, no se escribe: gráfico `plazos-3d-largo` hasta la capa 5] Y si aumentamos todos los factores en la misma proporción, nos movemos por un rayo desde el origen. Su plano vertical corta la superficie en la curva verde, que cruza las isocuantas en lambda uno, dos y tres.
 
-[Pizarra: gráfico `plazos-3d` hasta la capa 6] Y el muy largo plazo, los movimientos seculares de Marshall, en los que cambian el conocimiento, la población y el capital. Aquí ya no nos movemos sobre la superficie: es la superficie la que se mueve. Dibujo la nueva, a sub uno por efe de zeta, por encima de la anterior, y las flechas rojas del desplazamiento. Es el progreso técnico: con los mismos factores se produce más, y la misma producción se consigue con menos factores, de modo que cada isocuanta se acerca al origen y el conjunto de posibilidades de producción se amplía. Puede ser de proceso, si permite producir más con lo mismo, o de producto, si mejora los bienes o crea otros nuevos. Fíjense en la diferencia: a corto y a largo plazo la tecnología está dada y elegimos un punto de la superficie; a muy largo plazo cambia el mapa entero. Retengan esta imagen: cada apartado del bloque vuelve a ella.
+[Pizarra 2: fórmula `\text{Largo: }q=F(\lambda\overline{\vec{z}})`] Ese corte es efe de lambda por zeta barra, y mide los rendimientos a escala.
+
+[Borrar la zona 1] [Apoyo 1, no se escribe: gráfico `plazos-3d-muy-largo` hasta la capa 3] Y el muy largo plazo, los movimientos seculares de Marshall, en los que cambian el conocimiento, la población y el capital. Aquí ya no nos movemos sobre la superficie: es la superficie la que se mueve. La nueva superficie queda por encima de la anterior, como señalan las flechas. Es el progreso técnico: con los mismos factores se produce más, y el conjunto de posibilidades de producción se amplía.
+
+[Pizarra 2: fórmula `\text{Muy largo: }A_1F(\vec{z}),\ A_1>A_0`] Lo escribo: a sub uno por efe de zeta, con a sub uno mayor que a sub cero.
+
+[Borrar la zona 1] [Apoyo 1, no se escribe: gráfico `plazos-3d-muy-largo` hasta la capa 4] Y la misma producción se consigue con menos factores: en la base, la isocuanta se acerca al origen. El progreso puede ser de proceso, si permite producir más con lo mismo, o de producto, si mejora los bienes o crea otros nuevos. Fíjense en la diferencia: a corto y a largo plazo la tecnología está dada y elegimos un punto de la superficie; a muy largo plazo cambia el mapa entero. Retengan esta imagen: cada apartado del bloque vuelve a ella.
 
 > Apunte: Progreso técnico de proceso (más con los mismos factores) o de producto (bienes nuevos o mejores)
 
@@ -247,43 +251,49 @@ En suma, a corto plazo los rendimientos decrecientes delimitan las etapas. ¿Y s
 
 [Pizarra: gráfico `rendimientos-escala-isocuantas` hasta la capa 4] En el último panel, las isocuantas primero se juntan y después se separan: los rendimientos cambian con la escala, porque ninguna empresa crece sin límite con la misma eficiencia. Volveremos a este caso, que es sin duda el más realista.
 
-[Nueva rejilla: se borra la pizarra] [Pizarra 2: gráfico `rendimientos-escala-tipos-3d` hasta la capa 1] Ahora en tres dimensiones. Comparo tres funciones con las mismas isocuantas y distinta escala. La primera, zeta ele por zeta ka elevado a cero coma ocho: trazo su superficie, el rayo y el plano vertical que lo contiene. Su corte, la curva verde, se empina cada vez más: rendimientos crecientes, porque la producción crece más que la escala.
+[Nueva rejilla: se borra la pizarra] [Apoyo 1a, no se escribe: gráfico `rendimientos-escala-superficies` hasta la capa 1] Ahora, tres funciones con las mismas isocuantas y distinta escala, que muestro en tres dimensiones. La primera, zeta ele por zeta ka elevado a cero coma ocho: su superficie se empina a lo largo del rayo.
 
-[Pizarra: gráfico `rendimientos-escala-tipos-3d` hasta la capa 2] La segunda, el mismo producto elevado a cero coma cinco. Trazo de nuevo la superficie, el rayo y su plano vertical. Ahora el corte, la recta azul, sube en línea recta: duplicar los factores duplica la producción, ni más ni menos. Rendimientos constantes: es una función homogénea de grado uno.
+[Pizarra 2: gráfico `rendimientos-escala-cortes` hasta la capa 1] En la pizarra dibujo su corte por el rayo frente a lambda: la curva verde se empina y queda por encima de la recta lambda por efe de zeta barra a partir de lambda uno. Rendimientos crecientes.
 
-[Pizarra: gráfico `rendimientos-escala-tipos-3d` hasta la capa 3] La tercera, elevada a cero coma tres. Trazo de nuevo su superficie, que se aplana enseguida, y su rayo con el plano vertical. El corte, la curva naranja, se curva hacia abajo: cada aumento de escala rinde menos que el anterior, porque la producción crece menos que los factores. Rendimientos decrecientes.
+[Borrar la zona 1a] [Apoyo 1a, no se escribe: gráfico `rendimientos-escala-superficies` hasta la capa 2] La segunda, el mismo producto elevado a cero coma cinco.
 
-[Pizarra: gráfico `rendimientos-escala-tipos-3d` hasta la capa 6] [Pizarra 1: fórmula `\lambda>1:\ \ F(\lambda\vec{z})\gtreqless\lambda F(\vec{z})`] Debajo saco cada corte al plano: la producción frente a lambda, con la recta lambda por efe de zeta barra como referencia. La primera curva queda por encima de la recta a partir de lambda uno; la segunda coincide con ella; la tercera, por debajo. Esa es la definición, que escribo: para lambda mayor que uno, efe de lambda zeta mayor, igual o menor que lambda por efe de zeta.
+[Pizarra: gráfico `rendimientos-escala-cortes` hasta la capa 2] Su corte, la recta azul, coincide con la recta de referencia: duplicar los factores duplica la producción, ni más ni menos. Rendimientos constantes: una función homogénea de grado uno.
 
-[Pizarra: gráfico `rendimientos-escala-tipos-3d` hasta la capa 7] Y abajo, el mapa de isocuantas común a las tres, con el rayo y las isocuantas que pasan por lambda uno, dos y tres: las mismas para las tres funciones.
+[Borrar la zona 1a] [Apoyo 1a, no se escribe: gráfico `rendimientos-escala-superficies` hasta la capa 3] La tercera, elevada a cero coma tres: su superficie se aplana enseguida.
 
-[Pizarra: gráfico `rendimientos-escala-tipos-3d` hasta la capa 8] Lo que cambia es su número. En lambda dos, la primera produce más del doble; la segunda, el doble, y la tercera, menos. La cuasiconcavidad no dice nada de los rendimientos.
+[Pizarra: gráfico `rendimientos-escala-cortes` hasta la capa 3] Y su corte, la curva naranja, queda por debajo de la recta de referencia a partir de lambda uno: cada aumento de escala rinde menos que el anterior. Rendimientos decrecientes.
 
-[Pizarra 1: fórmula `\varepsilon_{q,\lambda}\equiv\frac{dq/q}{d\lambda/\lambda}`] Formalmente, se miden con la elasticidad de escala: la variación porcentual de la producción ante una variación porcentual de todos los factores, mayor, igual o menor que uno.
+[Pizarra 1b: fórmula `\lambda>1:\ \ F(\lambda\vec{z})\gtreqless\lambda F(\vec{z})`] Esa es la definición, que escribo: para lambda mayor que uno, efe de lambda zeta mayor, igual o menor que lambda por efe de zeta, según los rendimientos sean crecientes, constantes o decrecientes.
 
-[Pizarra 1: fórmula `F(\lambda\vec{z})=\lambda^kF(\vec{z})`] El caso más sencillo, las funciones homogéneas de grado ka: su elasticidad de escala es ka en todo punto. Con grado uno, el teorema de Euler agota el producto.
+[Pizarra: gráfico `rendimientos-escala-cortes` hasta la capa 4] Debajo dibujo el mapa de isocuantas común a las tres funciones: los ejes del trabajo y del capital, el rayo desde el origen y las isocuantas que pasan por lambda uno, dos y tres. Son exactamente las mismas para las tres, porque todas dependen solo del producto de los dos factores.
+
+[Pizarra: gráfico `rendimientos-escala-cortes` hasta la capa 5] Lo que cambia es su número. En lambda dos, la primera produce más del doble; la segunda, el doble, y la tercera, menos. La cuasiconcavidad no dice nada de los rendimientos.
+
+[Pizarra 1b: fórmula `\varepsilon_{q,\lambda}\equiv\frac{dq/q}{d\lambda/\lambda}`] Formalmente, se miden con la elasticidad de escala: la variación porcentual de la producción ante una variación porcentual de todos los factores, mayor, igual o menor que uno.
+
+[Pizarra 1b: fórmula `F(\lambda\vec{z})=\lambda^kF(\vec{z})`] El caso más sencillo, las funciones homogéneas de grado ka: su elasticidad de escala es ka en todo punto, y las tres del apoyo lo son. Con grado uno, el teorema de Euler agota el producto.
 
 > Apunte: Homotética: transformación creciente de una homogénea de grado 1; isoclinas rectas por el origen
 
 ### II.2. Largo plazo: rendimientos globales y locales a escala
 
-[Borrar la pizarra] [Pizarra 1: fórmula `\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_iPMg_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}`] Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. Une el corto y el largo plazo.
+[Borrar la pizarra] [Pizarra 1b: fórmula `\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_iPMg_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}`] Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. Une el corto y el largo plazo.
 
 > Apunte: Jehle y Reny (2011), cap. 3 · en la Cobb-Douglas, la elasticidad de escala es α + β
 
-[Pizarra 2: gráfico `rendimientos-globales-locales-3d` hasta la capa 1] Lo vemos en tres dimensiones. A la izquierda, una función homogénea de grado uno, la raíz de zeta ele por zeta ka. Trazo los ejes, la superficie, el rayo, el plano vertical que lo contiene y el corte, la recta azul. No importa desde qué punto partamos: por mucho que ampliemos la escala, el corte sigue siendo una recta. Los rendimientos son constantes en todos los puntos del rayo y en todos los rayos: son globales.
+[Apoyo 1a, no se escribe: gráfico `rendimientos-globales-locales-superficies` hasta la capa 1] Lo vemos con dos tecnologías. La primera, en el apoyo, es homogénea de grado uno, la raíz de zeta ele por zeta ka: por mucho que ampliemos la escala, su corte por el rayo sigue siendo una recta.
 
-[Pizarra: gráfico `rendimientos-globales-locales-3d` hasta la capa 2] Debajo, el corte frente a lambda: una recta por el origen, con elasticidad de escala igual a uno en todo punto. En las funciones homogéneas, los rendimientos globales y locales coinciden siempre.
+[Pizarra 2: gráfico `rendimientos-globales-locales-cortes` hasta la capa 1] En la pizarra dibujo ese corte frente a lambda: una recta que sale del origen, con elasticidad de escala igual a uno en todo punto. Los rendimientos son constantes en todos los puntos y en todos los rayos: son globales, y coinciden con los locales.
 
-[Pizarra: gráfico `rendimientos-globales-locales-3d` hasta la capa 3] A la derecha, otra tecnología: kappa entre uno más la inversa de zeta ele por zeta ka, el ejemplo de Jehle y Reny. Trazo la superficie: sale del origen muy plana, se empina y después se aplana hasta una meseta, a la altura kappa. Con el rayo y su plano vertical, el corte, la curva morada, tiene forma de ese. Es la ley de los rendimientos a escala variables, la ley ultra passum de Frisch: crecientes cuando la empresa es pequeña, por las indivisibilidades, y decrecientes cuando es grande, por las dificultades de dirección.
+[Borrar la zona 1a] [Apoyo 1a, no se escribe: gráfico `rendimientos-globales-locales-superficies` hasta la capa 2] La segunda, kappa entre uno más la inversa de zeta ele por zeta ka, el ejemplo de Jehle y Reny. Su superficie sale del origen muy plana, se empina y se aplana hasta una meseta, a la altura kappa.
+
+[Pizarra: gráfico `rendimientos-globales-locales-cortes` hasta la capa 2] Su corte frente a lambda, que dibujo, es una curva en ese. Es la ley de los rendimientos a escala variables, la ley ultra passum de Frisch: crecientes cuando la empresa es pequeña, por las indivisibilidades, y decrecientes cuando es grande, por las dificultades de dirección.
 
 > Apunte: Frisch (1965): regular ultra passum law · rendimientos «wicksellianos»
 
-[Pizarra: gráfico `rendimientos-globales-locales-3d` hasta la capa 4] Debajo, su corte frente a lambda: una curva en ese, que se acerca a kappa sin alcanzarla.
+[Pizarra: gráfico `rendimientos-globales-locales-cortes` hasta la capa 3] El rayo desde el origen es tangente a la curva en lambda asterisco: ahí la elasticidad de escala local es exactamente uno.
 
-[Pizarra: gráfico `rendimientos-globales-locales-3d` hasta la capa 5] El rayo desde el origen es tangente a la curva en lambda asterisco: ahí la elasticidad de escala local es exactamente uno.
-
-[Pizarra: gráfico `rendimientos-globales-locales-3d` hasta la capa 6] Antes, en verde, la producción crece más que la escala: rendimientos locales crecientes. Después, en naranja, crece menos: decrecientes. Una misma tecnología tiene rendimientos distintos según el tamaño: es la que está detrás de los costes medios en forma de U.
+[Pizarra: gráfico `rendimientos-globales-locales-cortes` hasta la capa 4] Antes, en verde, la producción crece más que la escala: rendimientos locales crecientes. Después, en naranja, crece menos: decrecientes. Una misma tecnología tiene rendimientos distintos según el tamaño: es la que está detrás de los costes medios en forma de U.
 
 > Apunte: La elasticidad de escala local cae al aumentar la producción
 

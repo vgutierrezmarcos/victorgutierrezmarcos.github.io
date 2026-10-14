@@ -386,6 +386,21 @@ el texto original y lo que se hizo.
   una sola cosa, sin rayas. Cambiar de rejilla borra la pizarra. Planifica
   la pizarra como en el examen: qué va en cada celda, cuándo se borra y que
   nunca se llene ni se salga (el script avisa).
+- **Los gráficos 3D no se dibujan trazo a trazo en la pizarra** (Víctor,
+  14/10/2026): nadie dibuja a mano una superficie con malla ni paneles 3D en
+  un cante. O van como **apoyo** o, si hacen falta en la pizarra, como
+  **boceto a mano** (ejes y pocas líneas: un corte, una isocuanta, un rayo),
+  con la estética de los gráficos de líneas de Jehle y Reny del 3.A.11
+  antiguo. En el apoyo el gráfico puede **«moverse»**: se muestran estados
+  sucesivos (p. ej., la superficie sola, luego el corte de corto plazo, luego
+  el rayo, luego el desplazamiento) a medida que la narración los nombra, en
+  lugar de enseñarlo todo a la vez.
+- **Nunca se escribe dos veces lo mismo** (Víctor, 14/10/2026, 3.A.9): si un
+  esquema o gráfico de síntesis recoge lo que se va contando, se empieza a
+  construir desde el principio y crece capa a capa con la exposición; cuando
+  se habla de un objeto (p. ej., las propiedades de una función de valor),
+  ese objeto ya está escrito en la pizarra tal y como sale en el esquema
+  final. Nada de escribir algo aparte y luego copiarlo en el esquema.
 - **Construir el gráfico final por partes** (Víctor, 13/10/2026, 3.A.9): cuando
   un gráfico conjunto resume varios problemas (p. ej., primal y dual), la
   pizarra cuenta el primero en la mitad izquierda, el segundo en la derecha

@@ -63,6 +63,10 @@ escenas:
         guion: ["I. Dualidad: ingredientes, primal y dual, relaciones", "II. Sistemas completos de demanda", "III. Integrabilidad, Slutsky y bienestar"]
 
   # ==================================================================== I
+  # El esquema de dualidad se construye a lo largo de todo el bloque, a la derecha: el primal
+  # y sus funciones (capas 1-3) en I.2, el dual y las suyas (4-6) en I.2, y las relaciones
+  # (7-13) en I.3. Nada se escribe dos veces: los gráficos primal, dual y primal-dual se
+  # dibujan sin las etiquetas que ya están en el esquema; lagrangianas y CPO, en 1b, que se borra.
   - bloque: "I. Análisis teórico de la dualidad"
     titulo: "I.1. Ingredientes comunes del problema primal y el dual"
     modo: pizarra
@@ -71,58 +75,56 @@ escenas:
       - di: "Paso al primer bloque: el análisis teórico de la dualidad. Adelanto la conclusión: [pausa] maximizar la utilidad con una renta dada y minimizar el gasto para alcanzar una utilidad dada llevan a la misma cesta, y de ahí salen unas relaciones para pasar de unas funciones a otras sin resolver nada más."
         borrar: true
         guion: "Conclusión anticipada: los dos problemas eligen la misma cesta; las relaciones de dualidad conectan sus funciones"
-      - di: "Los ingredientes son comunes a los dos enfoques. Partimos del conjunto de elección, las cestas de bienes, y de las preferencias sobre él, que permiten compararlas."
+      - di: "Los ingredientes son comunes a los dos enfoques. Partimos del conjunto de elección, las cestas de bienes, no vacío, cerrado y convexo, y de las preferencias sobre él, que permiten compararlas."
         pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 1, zona: "1"}]
-        guion: "Conjunto de elección no vacío, cerrado y convexo"
-      - di: "Con los axiomas, de la completitud a la convexidad estricta, las preferencias se representan con una utilidad continua, creciente y estrictamente cuasicóncava. A su lado, el gasto: pe por equis, con precios dados."
+        guion: ""
+      - di: "Con los axiomas, de la completitud a la convexidad estricta, las preferencias se representan con una utilidad continua, creciente y estrictamente cuasicóncava. Y a su lado, el gasto: pe por equis, con unos precios dados y positivos."
         pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 2}]
+        guion: ""
         apunte: "Debreu: racionalidad y continuidad bastan para una U continua; con insaciabilidad local se gasta toda la renta"
-        guion: ""
-      - di: "Con ellos se plantea el problema primal: la utilidad es el objetivo que se maximiza, y el gasto, la restricción presupuestaria."
-        pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 3}]
-        guion: "Primal: la utilidad es el objetivo; el gasto, la restricción"
-      - di: "Su solución es la demanda ordinaria o marshalliana, que depende de los precios y de la renta."
-        pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 4}]
-        guion: ""
-      - di: "Ahora damos la vuelta: en el problema dual el gasto pasa a ser el objetivo, que se minimiza, y la utilidad, la restricción: alcanzar al menos un nivel, u barra."
-        pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 5}]
-        guion: "Dual: el gasto es el objetivo; la utilidad, la restricción"
-      - di: "Su solución es la demanda compensada o hicksiana, que depende de los precios y de la utilidad exigida. Los supuestos son los mismos: estático, sin incertidumbre, información perfecta, precio-aceptante. [pausa] Solo cambia qué es objetivo y qué es restricción."
-        pizarra: [{grafico: esquema-ingredientes-dualidad, capa: 6}]
+      - di: "Con estas dos piezas caben dos enfoques del mismo problema. El primal toma la renta como dada y busca la mayor utilidad: la utilidad es el objetivo y el gasto, la restricción. El dual le da la vuelta: fija un nivel de utilidad y busca el menor gasto para alcanzarlo, de modo que el gasto pasa a ser el objetivo y la utilidad, la restricción."
+        guion: "Primal: utilidad objetivo, gasto restricción · Dual: al revés"
+      - di: "Los supuestos son los mismos: contexto estático y sin incertidumbre, información perfecta, bienes homogéneos y consumidor precio-aceptante. [pausa] Solo cambia qué es objetivo y qué es restricción. Y cada enfoque dará una demanda y una función valor, que iremos escribiendo en un mismo esquema."
+        guion: "Mismos supuestos"
         apunte: "Mismos ingredientes, papeles cambiados: el objetivo pasa a ser la restricción, y al revés"
-        guion: ""
 
   - bloque: "I. Análisis teórico de la dualidad"
     titulo: "I.2. Problemas primal y dual: maximización de la utilidad"
     modo: pizarra
-    rejilla: {columnas: [50, 50], filas: {1: [52, 48], 2: [52, 48]}, lineas: true}
+    rejilla: {columnas: [36, 64], filas: {1: [58, 42]}}
     pasos:
-      - di: "Paso al segundo apartado: los dos problemas, primero el primal, en la mitad izquierda. Trazo los ejes, con las cantidades de los dos bienes, equis uno y equis dos, y encima escribo el problema: maximizar la utilidad, u de equis, sujeto a que el gasto, pe por equis, no supere la renta."
-        borrar: true
-        pizarra: [{grafico: primal, capa: 1, zona: "1a"}]
+      - di: "Paso al segundo apartado: los dos problemas, primero el primal. A la derecha empiezo el esquema de dualidad, que iremos completando en todo el bloque. Arriba a la izquierda escribo el problema primal: maximizar la utilidad, u de equis, sujeto a que el gasto no supere la renta y a que las cantidades no sean negativas."
+        pizarra: [{grafico: esquema-dualidad, capa: 1, zona: "2"}]
+        guion: "El esquema de dualidad se construye a lo largo del bloque"
         apunte: "PMU: el óptimo existe (Weierstrass) y, con U estrictamente cuasicóncava, es único"
-        guion: ""
-      - di: "Dibujo la recta de balance, que corta los ejes en la renta entre cada precio, con pendiente menos pe uno entre pe dos, y debajo, sombreado, el conjunto presupuestario."
-        pizarra: [{grafico: primal, capa: 2}]
+      - di: "Su gráfico, a la izquierda: los ejes, con las cantidades de los dos bienes, y la recta de balance, con pendiente menos pe uno entre pe dos y, debajo, el conjunto presupuestario."
+        pizarra: [{grafico: primal, capa: 2, zona: "1a"}]
         guion: "Pendiente −p₁/p₂: el coste de oportunidad que fija el mercado"
       - di: "Encima, el mapa de indiferencia: u cero, u estrella y u dos, que queda fuera de alcance."
         pizarra: [{grafico: primal, capa: 3}]
         guion: ""
-      - di: "El equilibrio está en la curva más alta que toca el conjunto presupuestario: la tangencia, equis estrella. Sus cantidades son la demanda marshalliana, equis de pe y la renta, y la utilidad que alcanza, u estrella, es la función indirecta de utilidad."
+      - di: "El equilibrio está en la curva más alta que toca el conjunto presupuestario: la tangencia, equis estrella, cuyas cantidades proyecto sobre los ejes."
         pizarra: [{grafico: primal, capa: 4}]
-        guion: "x* = x(p, W); U* = V(p, W)"
-      - di: "Analíticamente se resuelve por Kuhn-Tucker. Escribo la lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta, su utilidad marginal."
-        pizarra: [{formula: '\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)', zona: "1b", tam: 0.8}]
+        guion: "Tangencia: la curva de indiferencia más alta alcanzable"
+      - di: "Analíticamente se resuelve por Kuhn-Tucker. Debajo escribo la lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta, su utilidad marginal."
+        pizarra: [{formula: '\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)', zona: "1b", tam: 0.75}]
         guion: "λ: precio sombra de la renta (utilidad marginal de la renta)"
       - di: "En una solución interior, las condiciones de primer orden dan la segunda ley de Gossen: u sub i entre pe sub i igual a lambda para todos los bienes. [pausa] Y la relación marginal de sustitución se iguala al cociente de precios."
-        pizarra: [{formula: '\frac{U_i}{p_i}=\lambda\ \ \Rightarrow\ \ RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}', zona: "1b", tam: 0.8}]
+        pizarra: [{formula: '\frac{U_i}{p_i}=\lambda\ \ \Rightarrow\ \ RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}', zona: "1b", tam: 0.75}]
         guion: "La tasa subjetiva se iguala a la objetiva"
-      - di: "Sus propiedades conviene tenerlas a la vista. La marshalliana es única, continua, homogénea de grado cero, porque no hay ilusión monetaria, y cumple la ley de Walras. La indirecta es homogénea de grado cero, creciente en la renta, no creciente en los precios y cuasiconvexa, y de ella sale la demanda con la identidad de Roy."
+      - di: "Resolviendo el problema, las cantidades óptimas se expresan en función de los parámetros. Las escribo en el esquema, debajo del problema: equis estrella igual a equis de pe y la renta, el sistema completo de ecuaciones de demanda marshalliana, u ordinaria."
+        pizarra: [{grafico: esquema-dualidad, capa: 2}]
+        guion: "Sistema completo de ecuaciones de demanda marshalliana"
+      - di: "Y sustituyéndolas en la utilidad, la función valor del primal: la función indirecta de utilidad, u estrella igual a uve de pe y la renta. Es la utilidad máxima con cada presupuesto, sin volver a resolver el problema."
+        pizarra: [{grafico: esquema-dualidad, capa: 3}]
+        guion: "Función indirecta de utilidad: depende indirectamente de precios y renta"
+      - di: "Ya escritas las dos funciones, sus propiedades. Borro las condiciones y las dejo a la vista. La marshalliana es única, continua, homogénea de grado cero, porque no hay ilusión monetaria, y cumple la ley de Walras. La indirecta es homogénea de grado cero, creciente en la renta, no creciente en los precios y cuasiconvexa."
+        borrar: ["1b"]
         apoyo:
-          formula: '\begin{array}{l}\vec{x}(\vec{p},\overline{W}):\ \text{única, continua, homogénea de grado 0 en }(\vec{p},\overline{W})\\[4pt]\text{Ley de Walras: }\vec{p}\cdot\vec{x}(\vec{p},\overline{W})=\overline{W}\\[10pt]V(\vec{p},\overline{W})=U\big(\vec{x}(\vec{p},\overline{W})\big):\ \text{homogénea de grado 0}\\[4pt]\text{creciente en }\overline{W},\ \text{no creciente en }\vec{p},\ \text{cuasiconvexa}\\[6pt]\text{Identidad de Roy: }x_i=-\dfrac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}\end{array}'
-          zona: "2"
-        apunte: "Cuasiconvexidad de V: con un presupuesto «promedio» no se alcanza más que con el mejor de los extremos"
+          formula: '\begin{array}{l}\vec{x}(\vec{p},\overline{W}):\ \text{única, continua, homogénea de grado 0 en }(\vec{p},\overline{W});\\ \text{ley de Walras}\\[8pt]V(\vec{p},\overline{W}):\ \text{homogénea de grado 0; creciente en }\overline{W};\\ \text{no creciente en }\vec{p};\ \text{cuasiconvexa}\end{array}'
+          zona: "1b"
         guion: "Propiedades de la marshalliana y de la función indirecta"
+        apunte: "Cuasiconvexidad de V: con un presupuesto «promedio» no se alcanza más que con el mejor de los extremos"
       - di: "¿Basta con esto? [pausa] No: la utilidad indirecta se mide en útiles, que solo ordenan. ¿Y si, con los mismos ingredientes, damos la vuelta al problema? ¿Llegamos al mismo equilibrio?"
         guion: "V solo ordena: no cuantifica el bienestar"
 
@@ -130,50 +132,49 @@ escenas:
     titulo: "I.2. Problemas primal y dual: minimización del gasto"
     modo: pizarra
     pasos:
-      - di: "Lo vemos en la mitad derecha. Borro, trazo los mismos ejes y escribo el problema dual: minimizar el gasto, pe por hache, sujeto a que la utilidad alcance al menos u barra. Llamo hache a la cesta para no confundir las dos demandas."
-        borrar: ["2"]
-        pizarra: [{grafico: dual, capa: 1, zona: "2a"}]
+      - di: "Lo vemos con el dual. Borro el gráfico del primal y, en el esquema, arriba a la derecha, escribo el problema dual: minimizar el gasto, pe por hache, sujeto a que la utilidad alcance al menos u barra. Llamo hache a la cesta para no confundir las dos demandas."
+        borrar: ["1"]
+        pizarra: [{grafico: esquema-dualidad, capa: 4}]
         guion: "Llamamos h a la cesta del dual"
-      - di: "Ahora se procede al revés. La curva u barra queda fija, y por encima sombreo las cestas que alcanzan al menos esa utilidad."
-        pizarra: [{grafico: dual, capa: 2}]
+      - di: "Su gráfico se construye al revés. Trazo los ejes y la curva u barra, que queda fija, y por encima sombreo las cestas que alcanzan al menos esa utilidad."
+        pizarra: [{grafico: dual, capa: 2, zona: "1a"}]
         guion: "La curva Ū queda fija"
       - di: "Trazo las rectas isogasto, paralelas: la de gasto e uno corta la curva, así que puede gastarse menos; la de e dos no la alcanza. Las desplazo hacia el origen mientras toquen la curva."
         pizarra: [{grafico: dual, capa: 3}]
         guion: "Isogastos: cestas con el mismo gasto"
-      - di: "El mínimo está en la tangencia, hache estrella: la isogasto más baja que alcanza u barra. Es la demanda hicksiana, y el gasto mínimo, e estrella, es la función de gasto."
+      - di: "El mínimo está en la tangencia, hache estrella: la isogasto más baja que alcanza u barra, con sus cantidades y el gasto mínimo en los ejes."
         pizarra: [{grafico: dual, capa: 4}]
-        guion: "h* = h(p, Ū); E* = E(p, Ū)"
+        guion: "La isogasto más baja que alcanza Ū"
       - di: "Analíticamente, la lagrangiana es el gasto más mu por u barra menos la utilidad de la cesta. Mu es el coste marginal de la utilidad."
-        pizarra: [{formula: '\mathcal{L}=\vec{p}\cdot\vec{h}+\mu\big(\overline{U}-U(\vec{h})\big)', zona: "2b", tam: 0.72}]
+        pizarra: [{formula: '\mathcal{L}=\vec{p}\cdot\vec{h}+\mu\big(\overline{U}-U(\vec{h})\big)', zona: "1b", tam: 0.75}]
         guion: "μ: coste marginal de la utilidad"
       - di: "Las condiciones de primer orden dan pe sub i entre u sub i igual a mu: [pausa] la misma tangencia que en el primal. Y en la cesta común, mu estrella es uno entre lambda estrella: si un euro compra lambda útiles, un útil cuesta uno entre lambda euros."
-        pizarra: [{formula: '\frac{p_i}{U_i}=\mu\ \ \Rightarrow\ \ RMS_{12}=\frac{p_1}{p_2},\quad\mu^*=\frac{1}{\lambda^*}', zona: "2b", tam: 0.72}]
-        guion: ""
-      - di: "La función de gasto es el concepto central: mide la utilidad en euros. Y cumple el lema de Shephard: hache sub i es la derivada del gasto respecto a pe sub i, porque si un precio sube un euro, la cesta apenas cambia y el gasto sube hache sub i euros."
-        pizarra: [{formula: 'h_i(\vec{p},\overline{U})=\frac{\partial E(\vec{p},\overline{U})}{\partial p_i}', zona: "2b", tam: 0.72}]
-        apunte: "Shephard (1953), McKenzie (1957): las hicksianas se obtienen derivando la función de gasto"
+        pizarra: [{formula: '\frac{p_i}{U_i}=\mu\ \ \Rightarrow\ \ RMS_{12}=\frac{p_1}{p_2},\quad\mu^*=\frac{1}{\lambda^*}', zona: "1b", tam: 0.75}]
+        guion: "La misma condición de tangencia"
+      - di: "Su solución, en el esquema bajo el dual: hache estrella igual a hache de pe y u barra, el sistema de demandas compensadas o hicksianas. Compensadas porque, si cambian los precios, el gasto se ajusta para mantener la utilidad."
+        pizarra: [{grafico: esquema-dualidad, capa: 5}]
+        guion: "Sistema completo de ecuaciones de demanda compensada"
+      - di: "Y sustituida en el objetivo, su función valor: la función de gasto, e estrella igual a e de pe y u barra, igual a pe por hache estrella. Es el concepto central de la exposición: [pausa] mide la utilidad en euros."
+        pizarra: [{grafico: esquema-dualidad, capa: 6}]
         guion: "La función de gasto mide la utilidad en euros"
-      - di: "Sus propiedades forman pares duales con las del primal, y las resumo abajo. La hicksiana es homogénea de grado cero solo en los precios; el gasto, de grado uno, creciente en la utilidad y, sobre todo, cóncavo: [pausa] si el consumidor mantuviera su cesta, el gasto variaría linealmente; como sustituye lo que se encarece, gasta como mucho eso."
-        borrar: ["1b", "2b"]
+      - di: "Sus propiedades forman pares duales con las del primal. Borro las condiciones y las dejo a la vista. La hicksiana es homogénea de grado cero solo en los precios, no deja exceso de utilidad y cumple la ley de la demanda compensada. El gasto es homogéneo de grado uno en los precios, creciente en la utilidad y, sobre todo, cóncavo: si el consumidor mantuviera su cesta, el gasto variaría linealmente; como sustituye lo que se encarece, gasta como mucho eso."
+        borrar: ["1b"]
         apoyo:
-          formula: '\begin{array}{l|l}\vec{x}\ \text{homogénea de grado 0 en }(\vec{p},\overline{W}) & \vec{h}\ \text{homogénea de grado 0 en }\vec{p}\\[2pt]\vec{p}\cdot\vec{x}=\overline{W}\ \text{(Walras)} & U(\vec{h})=\overline{U}\ \text{(sin exceso de utilidad)}\\[2pt]V\ \text{creciente en }\overline{W},\ \text{no creciente en }\vec{p} & E\ \text{creciente en }\overline{U},\ \text{homogénea de grado 1 en }\vec{p}\\[2pt]V\ \text{cuasiconvexa} & E\ \text{cóncava en }\vec{p}\\[2pt]x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}\ \text{(Roy)} & h_i=\frac{\partial E}{\partial p_i}\ \text{(Shephard)}\end{array}'
-          zona: "1b-2b"
+          formula: '\begin{array}{l}\vec{h}(\vec{p},\overline{U}):\ \text{homogénea de grado 0 en }\vec{p};\ U(\vec{h})=\overline{U};\\ \text{ley de la demanda compensada}\\[8pt]E(\vec{p},\overline{U}):\ \text{homogénea de grado 1 en }\vec{p};\ \text{creciente en }\overline{U};\\ \text{no decreciente en }\vec{p};\ \text{cóncava en }\vec{p}\end{array}'
+          zona: "1b"
         guion: "Pares duales; E cóncava: la sustitución abarata"
-      - di: "De ahí sale la matriz de Slutsky, las segundas derivadas del gasto: simétrica y semidefinida negativa. Su diagonal es no positiva: es la ley de la demanda compensada, [pausa] y un bien Giffen es imposible en la hicksiana. Pero no se observa: depende de una utilidad que no se ve."
-        apunte: "Matriz de Slutsky: segundas derivadas de E(p, Ū) en los precios; simétrica, semidefinida negativa y S·p = 0"
-        guion: "La hicksiana cumple siempre la ley de la demanda, pero no se observa"
+      - di: "Un bien Giffen es, por tanto, imposible en la hicksiana. Su inconveniente es que no se observa: [pausa] depende de una utilidad que no se ve. Para usar estas funciones falta ver cómo se relacionan con las del primal, que sí se observan."
+        guion: "La hicksiana no se observa"
 
   - bloque: "I. Análisis teórico de la dualidad"
     titulo: "I.3. Relaciones de dualidad"
     modo: pizarra
     pasos:
-      - di: "Paso al tercer apartado: las relaciones de dualidad. Fíjense en los dos gráficos: el mismo mapa, la misma pendiente y la misma cesta. ¿Es casualidad? [pausa] No: es el teorema básico de la dualidad."
-        guion: "¿Por qué coinciden las dos cestas?"
-      - di: "Lo veo superponiendo los dos gráficos en uno solo. Borro y, a la izquierda, trazo los ejes y la recta de balance del primal, con su conjunto presupuestario sombreado debajo."
-        rejilla: "34|66"
-        pizarra: [{grafico: primal-dual, capa: 2, zona: "1"}]
+      - di: "Paso al tercer apartado: las relaciones de dualidad. ¿Eligen los dos problemas la misma cesta? Para verlo, borro la izquierda y superpongo los dos gráficos en uno: los ejes y la recta de balance del primal, con su conjunto presupuestario."
+        borrar: ["1"]
+        pizarra: [{grafico: primal-dual, capa: 2, zona: "1a"}]
         guion: "Se superponen el primal y el dual"
-      - di: "Encima, el mapa de indiferencia: u cero y u dos en gris, y u estrella en azul, que es la que nos interesa. Y marco la tangencia del primal, equis estrella, la demanda marshalliana."
+      - di: "Encima, el mapa de indiferencia: u cero y u dos en gris, y u estrella en azul, que es la que nos interesa. Y la tangencia del primal, equis estrella."
         pizarra: [{grafico: primal-dual, capa: 4}]
         guion: ""
       - di: "Ahora el dual, en el mismo gráfico: u estrella es su restricción, u barra; las isogastos que no tocan van en gris, y la isogasto tangente coincide con la recta de balance."
@@ -181,33 +182,24 @@ escenas:
         guion: ""
       - di: "La cesta más barata, hache estrella, cae exactamente sobre equis estrella, y al proyectarla sus coordenadas son las mismas: equis uno estrella es hache uno estrella."
         pizarra: [{grafico: primal-dual, capa: 6}]
-        guion: ""
-      - di: "Es el teorema básico: si equis estrella resuelve el primal, resuelve el dual con la utilidad que alcanza, y el gasto mínimo es la renta; y al revés. [pausa] Misma cesta, con la renta igual a e estrella y u barra igual a u estrella."
-        pizarra: [{grafico: primal-dual, capa: 7}]
-        apunte: "Teorema básico (MWG, prop. 3.E.1): U continua, insaciabilidad local y precios positivos"
+        guion: "Misma cesta"
+      - di: "Es el teorema básico de la dualidad, que escribo en el esquema con una flecha doble entre los dos problemas: si equis estrella resuelve el primal, resuelve el dual con la utilidad que alcanza, y el gasto mínimo es la renta; y al revés. [pausa] La renta es e estrella y u barra es u estrella."
+        pizarra:
+          - {grafico: esquema-dualidad, capa: 7}
+          - {grafico: primal-dual, capa: 7}
         guion: "Teorema básico: misma cesta"
-      - di: "Las dos demandas son funciones distintas, pero del teorema salen relaciones entre ellas, que resumo en el esquema de dualidad. A la derecha escribo los dos problemas. Arriba a la izquierda, el primal: maximizar la utilidad sujeto a la restricción presupuestaria. Y arriba a la derecha, el dual: minimizar el gasto sujeto a la restricción de utilidad."
-        pizarra: [{grafico: esquema-dualidad, capa: 2, zona: "2"}]
-        guion: "Esquema de dualidad: de un problema, las cuatro funciones"
-      - di: "Los une, con una flecha doble, el teorema básico de la dualidad: la renta del primal igual al gasto mínimo del dual, y u barra igual a la utilidad máxima. Todo lo demás, dentro de este recuadro, son relaciones de dualidad."
-        pizarra: [{grafico: esquema-dualidad, capa: 3}]
-        guion: ""
-      - di: "Bajando por la columna del primal: resolviéndolo sale la demanda marshalliana, equis de pe y la renta; y, sustituida en la utilidad, la función indirecta, uve de pe y la renta."
-        pizarra: [{grafico: esquema-dualidad, capa: 5}]
-        guion: ""
-      - di: "Y de la indirecta se vuelve a la demanda, sin resolver nada, con la identidad de Roy, que escribo a la izquierda: equis sub i es igual a menos la derivada de uve respecto a pe sub i, dividida entre la derivada de uve respecto a la renta. [pausa] Intuición: subir un precio un euro equivale a quitar al consumidor equis sub i euros de renta."
-        pizarra: [{grafico: esquema-dualidad, capa: 6}]
-        guion: "Roy: subir un precio un euro equivale a quitar x euros de renta"
-      - di: "En la columna del dual, igual: resolviéndolo sale la demanda hicksiana, hache de pe y u barra, y sustituida en el objetivo, la función de gasto, pe por hache estrella."
+        apunte: "Teorema básico (MWG, prop. 3.E.1): U continua, insaciabilidad local y precios positivos"
+      - di: "Las demandas son funciones distintas, pero del teorema salen relaciones que completan el esquema. De la función indirecta se vuelve a la demanda, sin resolver nada, con la identidad de Roy, que escribo a la izquierda: equis sub i es menos la derivada de uve respecto a pe sub i entre su derivada respecto a la renta. [pausa] Subir un precio un euro equivale a quitar al consumidor equis sub i euros de renta."
         pizarra: [{grafico: esquema-dualidad, capa: 8}]
-        guion: ""
-      - di: "De la función de gasto se vuelve a la hicksiana con el lema de Shephard: la derivada del gasto respecto al precio, [pausa] sin signo menos, a diferencia de Roy."
+        guion: "Roy: subir un precio un euro equivale a quitar x euros de renta"
+      - di: "Y de la función de gasto se vuelve a la hicksiana con el lema de Shephard: la derivada del gasto respecto al precio, sin signo menos, a diferencia de Roy. Si un precio sube un euro, la cesta apenas cambia y el gasto sube hache sub i euros."
         pizarra: [{grafico: esquema-dualidad, capa: 9}]
         guion: "Shephard, sin signo menos; Roy, con él"
-      - di: "Abajo, entre las funciones valor, dos identidades dicen que son inversas: uve evaluada en el gasto mínimo da u barra, y el gasto evaluado en la utilidad indirecta da la renta. Hallada una de ellas, la otra se obtiene despejando, sin resolver su problema."
+        apunte: "Matriz de Slutsky: segundas derivadas de E(p, Ū) en los precios; simétrica, semidefinida negativa y S·p = 0"
+      - di: "Abajo, entre las dos funciones valor, la indirecta y la de gasto, trazo dos flechas con sus identidades, que dicen que son inversas: uve evaluada en el gasto mínimo da u barra, y el gasto evaluado en la utilidad indirecta da la renta. Hallada una de ellas, la otra se obtiene despejando, sin resolver su problema."
         pizarra: [{grafico: esquema-dualidad, capa: 10}]
-        apunte: "Cobb-Douglas: de V = W(α/p₁)^α((1−α)/p₂)^(1−α) se despeja E = Ū(p₁/α)^α(p₂/(1−α))^(1−α)"
         guion: "V y E, inversas en su segundo argumento"
+        apunte: "Cobb-Douglas: de V = W(α/p₁)^α((1−α)/p₂)^(1−α) se despeja E = Ū(p₁/α)^α(p₂/(1−α))^(1−α)"
       - di: "Y entre las demandas, las dos flechas discontinuas que se cruzan en diagonal. Por la primera, la marshalliana es la hicksiana evaluada en la utilidad indirecta, y por la segunda, la hicksiana es la marshalliana evaluada en el gasto mínimo. [pausa] Es la extensión natural del teorema básico, de las cestas a las funciones de demanda."
         pizarra: [{grafico: esquema-dualidad, capa: 11}]
         guion: "Entre demandas: x(p, W) ≡ h(p, V) y h(p, Ū) ≡ x(p, E)"
@@ -216,8 +208,8 @@ escenas:
         guion: "Slutsky: de la identidad entre demandas"
       - di: "Y recorrer el esquema al revés, de la demanda a la utilidad, es la integrabilidad. Recapitulando, [pausa] basta resolver uno de los dos problemas para obtener las cuatro funciones, y la función de gasto mide la utilidad en dinero. Antes de usarla, veamos cómo se estima la caja de la que parte todo: el sistema de demandas."
         pizarra: [{grafico: esquema-dualidad, capa: 13}]
-        apunte: "Idea clave: el mismo problema visto desde dos lados; la función de gasto traduce la utilidad a euros"
         guion: "Basta resolver un problema para tener las cuatro funciones"
+        apunte: "Idea clave: el mismo problema visto desde dos lados; la función de gasto traduce la utilidad a euros"
 
   # ==================================================================== II
   - bloque: "II. Sistemas completos de demanda"

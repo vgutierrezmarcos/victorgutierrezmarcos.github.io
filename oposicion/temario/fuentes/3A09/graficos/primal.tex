@@ -9,7 +9,7 @@
 \begin{tikzpicture}[tcee]
   % 1: ejes y planteamiento
   \capa{1}{\ejes{$x_1$}{$x_2$}{6.2}{4.2}}
-  \capa{1}{\node[align=center,text=tceemorado] at (2.6,4.8) {\textbf{Problema primal}\\ $\max\limits_{\vect{x}}\ U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$};}
+  \capa{5}{\node[align=center,text=tceemorado] at (2.6,4.8) {\textbf{Problema primal}\\ $\max\limits_{\vect{x}}\ U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$};}
   % 2: recta de balance y conjunto presupuestario
   \capa{2}{\fill[area] (0,0) -- (0,3) -- (4,0) -- cycle;}
   \capa{2}{\draw[curva1] (0,3) -- (4,0);}
@@ -21,12 +21,13 @@
   \capa{3}{\draw[curva2,thick] plot[domain=0.45:5.6,samples=80,smooth] (\x,{1.6/\x}) node[etiqueta,right] {$U^0$};}
   \capa{3}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] {$U^*$};}
   \capa{3}{\draw[curva2,thick] plot[domain=1.35:5.6,samples=80,smooth] (\x,{5/\x}) node[etiqueta,right] {$U^2$};}
-  % 4: tangencia x*, proyecciones y valor de la FIU
+  % 4: tangencia x* y proyecciones; 5: planteamiento y etiquetas x* = x(p,W), U* = V(p,W)
+  % (el vídeo dibuja hasta la 4: el problema y las funciones están en el esquema de dualidad)
   \capa{4}{\node[punto,fill=tceemorado] (X) at (2,1.5) {};}
   \capa{4}{\proyeccion{(X)}{$x_1^*$}{$x_2^*$}}
-  \capa{4}{\node[etiqueta,anchor=south west,text=tceemorado] (Xl) at (2.75,2.15) {$\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};}
-  \capa{4}{\draw[guia,solid] (Xl.south west) -- (X);}
-  \capa{4}{\node[etiqueta,anchor=west,text=tceeazul] (Vl) at (2.9,3.2) {$U^*=V(\vect{p},\overline{W})$};}
-  \capa{4}{\draw[guia,solid] (Vl.west) -- (1.2,2.5);}
+  \capa{5}{\node[etiqueta,anchor=south west,text=tceemorado] (Xl) at (2.75,2.15) {$\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};}
+  \capa{5}{\draw[guia,solid] (Xl.south west) -- (X);}
+  \capa{5}{\node[etiqueta,anchor=west,text=tceeazul] (Vl) at (2.9,3.2) {$U^*=V(\vect{p},\overline{W})$};}
+  \capa{5}{\draw[guia,solid] (Vl.west) -- (1.2,2.5);}
 \end{tikzpicture}
 \end{document}

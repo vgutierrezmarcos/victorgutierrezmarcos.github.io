@@ -21,8 +21,8 @@
   \capa{3}{\draw[curva2] plot[domain=0.8:5.6,samples=80,smooth] (\x,{3/\x}) node[etiqueta,right] (Ul) {$U^*$};}
   % 4: primal: tangencia x*
   \capa{4}{\node[punto,fill=tceemorado] (X) at (2,1.5) {};}
-  \capa{4}{\node[etiqueta,anchor=south west,text=tceemorado] (Xl) at (2.6,2.6) {$\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};}
-  \capa{4}{\draw[guia,solid] (Xl.south west) -- (X);}
+  \capa{8}{\node[etiqueta,anchor=south west,text=tceemorado] (Xl) at (2.6,2.6) {$\vect{x}^*=\vect{x}(\vect{p},\overline{W})$};}
+  \capa{8}{\draw[guia,solid] (Xl.south west) -- (X);}
   % 5: dual: la misma curva como restricción Ū e isogastos (las no tangentes, en gris)
   \capa{5}{\node[etiqueta,anchor=west,text=tceeazul,inner sep=0pt] at (Ul.east) {$=\overline{U}$};}
   \capa{5}{\draw[resto,dashed] (0,4) node[etiqueta,left,font=\footnotesize] {$e_1/p_2$} -- (5.33,0);}
@@ -31,10 +31,11 @@
   % 6: dual: tangencia h*
   \capa{6}{\node[punto,fill=tceeverde,inner sep=2.2pt] at (2,1.5) {};}
   \capa{6}{\node[punto,fill=tceemorado,inner sep=1.1pt] at (2,1.5) {};}
-  \capa{6}{\node[etiqueta,anchor=south west,text=tceeverde] at (Xl.north west) {$\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};}
+  \capa{8}{\node[etiqueta,anchor=south west,text=tceeverde] at (Xl.north west) {$\vect{h}^*=\vect{h}(\vect{p},\overline{U})$};}
   \capa{6}{\proyeccion{(X)}{$x_1^*=h_1^*$}{$x_2^*=h_2^*$}}
-  % 7: teorema básico: W = E*, Ū = U*, x* = h*
+  % 7: W = E*; 8: etiquetas x* = x(p,W), h* = h(p,Ū) y recuadro del teorema básico
+  % (el vídeo dibuja hasta la 7: las funciones y el teorema están en el esquema de dualidad)
   \capa{7}{\node[etiqueta,below,text=tceeverde,inner sep=1pt] at (Wp.south) {$=E^*/p_1$};}
-  \capa{7}{\node[draw=tceerojo,thick,rounded corners=2pt,fill=white,inner sep=3pt,anchor=north] at (3.1,-1.15) {\textcolor{tceerojo}{misma cesta:} $\vect{x}^*=\vect{h}^*$ \quad con \quad $\overline{W}=E^*$,\ \ $\overline{U}=U^*$};}
+  \capa{8}{\node[draw=tceerojo,thick,rounded corners=2pt,fill=white,inner sep=3pt,anchor=north] at (3.1,-1.15) {\textcolor{tceerojo}{misma cesta:} $\vect{x}^*=\vect{h}^*$ \quad con \quad $\overline{W}=E^*$,\ \ $\overline{U}=U^*$};}
 \end{tikzpicture}
 \end{document}
