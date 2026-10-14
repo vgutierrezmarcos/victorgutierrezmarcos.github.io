@@ -162,7 +162,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 - **1.15.10 (34) publicada en la prueba cerrada** (13 oct.) y el APK de la web actualizado.
 
-### 13 oct. 2026 (para la próxima versión)
+### 13-14 oct. 2026 (para la 1.15.11)
 - **Aviso de versión nueva por Play**: al tocar la notificación «Hay una versión nueva», la app actualiza por Google Play si se instaló desde Play (los testers siguen actualizando desde Play) y solo abre la descarga del APK si se instaló desde la web. Hasta ahora la notificación abría siempre el APK.
 - **Invitar en un toque** (14 oct.): en la tarjeta del código, «Invitar a mis alumnos por WhatsApp» (mensaje con el enlace de descarga y el código, para un contacto o un grupo); en la ficha de un alumno sin la app y con teléfono, «Invitar a … a la app».
 

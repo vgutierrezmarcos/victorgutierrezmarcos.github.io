@@ -145,14 +145,30 @@ Al permitir los avisos, el diálogo del sistema para que la batería no restrinj
 - [x] Probar en el móvil: el diálogo del sistema, el paso del fabricante y Más → Ajustes («La batería restringe la app» desaparece al permitirlo). — **13 oct.: funciona.**
 - [ ] Si Google Play pone pegas al permiso en la revisión: quitarlo del manifiesto (ver README, «Avisos y permisos del sistema»).
 
-**Próxima versión: aviso de versión nueva por Play (13 oct.)**
-Al tocar la notificación «Hay una versión nueva», la app actualiza por Play si viene de Play y solo abre el APK si se instaló desde la web (antes abría siempre el APK, porque `urlPlayStore` no está puesta). En `main` y en la versión web; va en el próximo `.aab`. Mientras tanto, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy.
+**Versión 1.15.11 (35): invitar, aviso por Play y DCE (14 oct.)**
+- **Invitar en un toque:** «Invitar a mis alumnos por WhatsApp» en la tarjeta del código del preparador, e «Invitar a … a la app» en la ficha de un alumno sin la app que tenga teléfono.
+- **Aviso de versión nueva:** al tocar la notificación se actualiza por Play si la app viene de Play. Solo abre el APK si se instaló desde la web; antes lo abría siempre, porque `urlPlayStore` no está puesta.
+- **DCE:** «Cómo cantar un tema» abre la página de Manuel, y el contacto pasa a `contacto@manuelcabadogarcia.es`.
+- **Estado:** versión web publicada; `.aab` compilado el 14 oct. (`Escritorio\oposicion-tcee-dce-1.15.11.aab`).
+- [ ] Víctor: subir el `.aab` 1.15.11 (35) a la prueba cerrada **antes del 22 oct.**, para que sea la versión que sale a producción.
+- [ ] Publicada en la prueba cerrada: APK universal 35 firmado por Google en `app-latest` (Víctor lo sube desde el navegador, porque la red bloquea la subida desde aquí) y `"versionActual": "1.15.11"`.
+- [ ] Hasta entonces, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy, no con la notificación.
+- [ ] Probar en el móvil: invitar por WhatsApp (a un contacto y a un grupo) y el aviso de versión nueva por Play.
 
-**Red: invitar y estadísticas privadas (14 oct.)**
-- Botón «Invitar a mis alumnos por WhatsApp» en la tarjeta del código y «Invitar a … a la app» en la ficha de un alumno sin la app (con teléfono). En `main` y en la web; en el móvil, con el próximo `.aab`.
-- `scripts/estadisticas-red.py`: recuentos agregados de las cuatro partes de la red (opositores y preparadores de TCEE y DCE), sin nombres; fotos diarias en `~/.local/share/oposicion-red/`. No se publican. Política de privacidad: fila «Estadísticas agregadas de la app» (interés legítimo).
-- [ ] Víctor: crear la cuenta de servicio de solo lectura (papel «Cloud Datastore Viewer») y dejar su clave JSON en Descargas para moverla a `~/.config/oposicion-red/clave.json`.
-- [ ] Post de LinkedIn el día que salga en Play (sin cifras: «ya la usan varios preparadores y opositores»).
+**Red: crecimiento y estadísticas privadas (14 oct.)**
+- **Script:** `scripts/estadisticas-red.py` cuenta, sin nombres, las cuatro partes de la red (opositores y preparadores de TCEE y DCE).
+  - Lee con la cuenta de servicio `estadisticas-lectura@web-vgm.iam.gserviceaccount.com` («Lector de Cloud Datastore»), cuya clave está en `~/.config/oposicion-red/clave.json` (14 oct.).
+  - Guarda una foto diaria en `~/.local/share/oposicion-red/`.
+  - Las cifras no se publican. La política de privacidad tiene la fila «Estadísticas agregadas de la app» (interés legítimo).
+- **Primera foto (14 oct.):**
+  - **TCEE:** 59 cuentas (44 activas en 7 días); 11 preparadores verificados, ninguno con alumnos conectados por código. Las 20 clases y las 12 fichas de alumnos sin la app parecen pruebas, según Víctor.
+  - **DCE:** 23 cuentas y 10 preparadores verificados, con 1 conexión.
+  - **Conclusión:** hay preparadores, pero todavía no se usa para las clases reales.
+- **Prioridad:** que los preparadores que ya están inviten a sus alumnos actuales y programen en la app su próxima clase real.
+- [ ] Víctor: mandar un WhatsApp a los preparadores pidiéndoselo, con el botón «Invitar a mis alumnos por WhatsApp» cuando llegue la 35.
+- [ ] Repetir las estadísticas cada semana (Claude las ejecuta) y fijarse en las conexiones aceptadas y las clases programadas.
+- [ ] Post de LinkedIn el día que salga en Play, sin cifras («ya la usan varios preparadores y opositores»). Pedir a la ATCEE que lo comparta, y a Manuel que lo haga en DCE.
+- [ ] Mostrar la actividad de la red en público solo cuando crezca de verdad (decisión de Víctor).
 
 **Versión 1.15.9 (33): primeros pasos (10 oct.)**
 Bienvenida con entrada con Google, guía de la app con globos (Más → Guía de la app), «Para empezar» en Hoy, Hoy sin tarjetas vacías y «Más herramientas» en Organización. Además, la nota de las preguntas y el contenido nuevo sin cerrar la app. Versión web publicada.

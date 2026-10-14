@@ -144,6 +144,10 @@ def recontar(docs, ahora):
     verificados = {op: set() for op in OPOSICIONES}
     con_clases = {op: set() for op in OPOSICIONES}
     con_huecos = {op: set() for op in OPOSICIONES}
+    # El papel no se guarda en Firestore: es preparador quien tiene algo de
+    # preparador (verificación pedida o hecha, código, huecos, clases o
+    # fichas de alumnos); el resto de cuentas, opositores.
+    preparadores = {op: set() for op in OPOSICIONES}
 
     for ruta, campos, creado, cambiado in docs:
         partes = ruta.split('/')
@@ -158,6 +162,8 @@ def recontar(docs, ahora):
             ultima[op][uid] = max(ultima[op].get(uid, cambiado), cambiado)
             if len(p) == 4:
                 c['documentos'][col] += 1
+                if col in ('sesiones', 'alumnos', 'alumnosSueltos'):
+                    preparadores[op].add(uid)
                 if col == 'exam_results':
                     c['tests']['últimos 7 días'] += creado >= hace7
                     c['tests']['últimos 30 días'] += creado >= hace30
@@ -196,12 +202,17 @@ def recontar(docs, ahora):
                 preparadores_de[op][alumno].add(prep)
         elif len(p) == 2 and p[0] == 'preparadoresVerificados':
             verificados[op].add(p[1])
+            preparadores[op].add(p[1])
         elif len(p) == 2 and p[0] == 'solicitudesPreparador':
             c['preparadores']['solicitudes de verificación'] += 1
+            preparadores[op].add(p[1])
         elif len(p) == 2 and p[0] == 'codigos':
             c['preparadores']['con código'] += 1
+            if f('uid'):
+                preparadores[op].add(f('uid'))
         elif len(p) == 2 and p[0] == 'huecos':
             con_huecos[op].add(p[1])
+            preparadores[op].add(p[1])
         elif len(p) == 2 and p[0] == 'sustituciones':
             c['tablón'][f'clases sueltas {f("estado") or "abierta"}'] += 1
             c['tablón']['clases sueltas últimos 30 días'] += creado >= hace30
@@ -217,6 +228,9 @@ def recontar(docs, ahora):
         c = s[op]
         uids = alta[op]
         c['cuentas']['total'] = len(uids)
+        c['cuentas']['preparadores'] = len(preparadores[op])
+        c['cuentas']['opositores'] = len(set(uids) - preparadores[op])
+        c['cuentas']['opositores activos últimos 7 días'] = sum(1 for u, t in ultima[op].items() if u not in preparadores[op] and t >= hace7)
         c['cuentas']['nuevas últimos 7 días'] = sum(t >= hace7 for t in uids.values())
         c['cuentas']['nuevas últimos 30 días'] = sum(t >= hace30 for t in uids.values())
         c['cuentas']['activas últimos 7 días'] = sum(t >= hace7 for t in ultima[op].values())
