@@ -35,6 +35,12 @@ PROYECTO = 'web-vgm'
 API = f'https://firestore.googleapis.com/v1/projects/{PROYECTO}/databases/(default)/documents'
 OPOSICIONES = ('tcee', 'dce')
 
+# Detrás del proxy del trabajo (intercepta TLS), su raíz junto a las del
+# sistema: cat /etc/ssl/certs/ca-certificates.crt mineco.pem > cas.pem.
+_CAS = Path.home() / '.config/oposicion-red/cas.pem'
+if _CAS.exists() and 'SSL_CERT_FILE' not in os.environ:
+    os.environ['SSL_CERT_FILE'] = str(_CAS)
+
 
 # ------------------------------------------------------------------ Acceso
 
@@ -124,6 +130,16 @@ def valor(v):
 
 # ------------------------------------------------------------------ Recuento
 
+def normalizar(nombre):
+    """Nombre para comparar: sin tildes, minúsculas y espacios simples."""
+    import unicodedata
+    n = unicodedata.normalize('NFKD', nombre or '').encode('ascii', 'ignore').decode().lower()
+    return ' '.join(n.split())
+
+
+# Cuentas de prueba, por su nombre (la de la revisión de Google, demos…).
+PRUEBA = ('prueba', 'test', 'revision', 'demo', 'ejemplo')
+
 def oposicion_y_resto(partes):
     """('tcee'|'dce', partes desde la raíz de esa oposición) de una ruta."""
     if partes[0] == 'users' and len(partes) > 3 and partes[2] == 'oposiciones':
@@ -148,6 +164,9 @@ def recontar(docs, ahora):
     # preparador (verificación pedida o hecha, código, huecos, clases o
     # fichas de alumnos); el resto de cuentas, opositores.
     preparadores = {op: set() for op in OPOSICIONES}
+    # uid → nombres con los que aparece (para ver cuentas repetidas). Solo se
+    # usan aquí, en memoria: no salen ni se guardan.
+    nombres = defaultdict(set)
 
     for ruta, campos, creado, cambiado in docs:
         partes = ruta.split('/')
@@ -156,6 +175,13 @@ def recontar(docs, ahora):
             continue
         c = s[op]
         f = lambda k: valor(campos.get(k))
+        if f('nombre'):
+            if p[0] == 'users' and len(p) == 4 and p[2] == 'progress':
+                nombres[p[1]].add(normalizar(f('nombre')))
+            elif len(p) == 2 and p[0] in ('preparadoresVerificados', 'huecos', 'solicitudesPreparador'):
+                nombres[p[1]].add(normalizar(f('nombre')))
+            elif len(p) == 2 and p[0] == 'codigos' and f('uid'):
+                nombres[f('uid')].add(normalizar(f('nombre')))
         if p[0] == 'users' and len(p) >= 3:
             uid, col = p[1], p[2]
             alta[op][uid] = min(alta[op].get(uid, creado), creado)
@@ -247,7 +273,57 @@ def recontar(docs, ahora):
         c['red']['alumnos con 2 o más preparadores'] = sum(1 for p in preparadores_de[op].values() if len(p) >= 2)
         foto[op] = {k: dict(sorted(v.items())) for k, v in sorted(c.items()) if k != 'documentos'}
         foto[op]['red']['alumnos por preparador (de mayor a menor)'] = tam
+    foto['global'] = personas(alta, preparadores, ultima, nombres, hace7)
     return foto
+
+
+def personas(alta, preparadores, ultima, nombres, hace7):
+    """Personas reales: une las cuentas con el mismo nombre (alguien con dos
+    Gmail) y aparta las de prueba. Solo devuelve recuentos."""
+    cuentas = set().union(*(set(alta[op]) for op in OPOSICIONES))
+    padre = {u: u for u in cuentas}
+
+    def raiz(u):
+        while padre[u] != u:
+            padre[u] = padre[padre[u]]
+            u = padre[u]
+        return u
+
+    por_nombre = defaultdict(list)
+    for u in cuentas:
+        for n in nombres.get(u, ()):
+            if n:
+                por_nombre[n].append(u)
+    for us in por_nombre.values():
+        for u in us[1:]:
+            padre[raiz(u)] = raiz(us[0])
+    grupos = defaultdict(set)
+    for u in cuentas:
+        grupos[raiz(u)].add(u)
+    prueba = lambda g: any(any(w in n for w in PRUEBA) for u in g for n in nombres.get(u, ()))
+    reales = [g for g in grupos.values() if not prueba(g)]
+    es_prep = lambda g: any(u in preparadores[op] for op in OPOSICIONES for u in g)
+    en = lambda g, op: any(u in alta[op] for u in g)
+    activa = lambda g: any(t >= hace7 for op in OPOSICIONES for u in g for t in [ultima[op].get(u)] if t)
+    r = {
+        'cuentas': {
+            'cuentas distintas (las dos oposiciones)': len(cuentas),
+            'cuentas en las dos oposiciones': sum(1 for u in cuentas if all(u in alta[op] for op in OPOSICIONES)),
+            'cuentas sin nombre conocido': sum(1 for u in cuentas if not nombres.get(u)),
+            'cuentas que repiten el nombre de otra': len(cuentas) - len(grupos),
+            'cuentas de prueba (por el nombre)': sum(len(g) for g in grupos.values() if prueba(g)),
+        },
+        'personas': {
+            'personas reales': len(reales),
+            'preparadores': sum(1 for g in reales if es_prep(g)),
+            'opositores': sum(1 for g in reales if not es_prep(g)),
+            'activas últimos 7 días': sum(1 for g in reales if activa(g)),
+            **{f'en {op.upper()}': sum(1 for g in reales if en(g, op)) for op in OPOSICIONES},
+            **{f'preparadores en {op.upper()}': sum(1 for g in reales if en(g, op) and any(u in preparadores[op] for u in g)) for op in OPOSICIONES},
+            **{f'opositores en {op.upper()}': sum(1 for g in reales if en(g, op) and not any(u in preparadores[op] for u in g)) for op in OPOSICIONES},
+        },
+    }
+    return r
 
 
 # ------------------------------------------------------------------ Salida
@@ -263,9 +339,9 @@ def diferencia(nuevo, viejo):
 
 def imprimir(foto, anterior):
     print(f'Red de la app — {foto["fecha"]}' + (f'  (cambios desde {anterior["fecha"]})' if anterior else ''))
-    for op in OPOSICIONES:
-        print(f'\n## {op.upper()}')
-        for grupo in ORDEN:
+    for op in ('global', *OPOSICIONES):
+        print(f'\n## {op.upper() if op != "global" else "En total (personas, sin repetir)"}')
+        for grupo in ['personas', *ORDEN]:
             datos = foto[op].get(grupo)
             if not datos:
                 continue
