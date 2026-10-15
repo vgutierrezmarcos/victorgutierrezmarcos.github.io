@@ -1,0 +1,71 @@
+name: Avisar a los buscadores (IndexNow)
+
+# Cuando cambian páginas o PDF publicados, avisa a Bing y a los demás buscadores
+# de IndexNow (Yandex, Seznam, Naver…) para que los vuelvan a rastrear antes.
+# Bing alimenta también el buscador de ChatGPT y DuckDuckGo. Google no usa
+# IndexNow (lo encuentra por el sitemap). Solo se avisan URL que están en
+# sitemap.xml. A mano (workflow_dispatch) se avisa del sitemap entero.
+# La clave es pública por diseño: está en /5bce5e68d082e4c81a8adf372e088cc3.txt.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.html'
+      - '**/*.pdf'
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Esperar a que GitHub Pages publique
+      run: sleep 90
+
+    - name: Avisar
+      env:
+        ANTES: ${{ github.event.before }}
+        DESPUES: ${{ github.sha }}
+        EVENTO: ${{ github.event_name }}
+      run: |
+        python3 - <<'PY'
+        import json, os, re, subprocess, urllib.parse, urllib.request
+        WEB = 'https://www.victorgutierrezmarcos.es'
+        CLAVE = '5bce5e68d082e4c81a8adf372e088cc3'
+        en_sitemap = set(re.findall(r'<loc>([^<]+)</loc>', open('sitemap.xml', encoding='utf-8').read()))
+        if os.environ['EVENTO'] == 'workflow_dispatch' or not os.environ.get('ANTES') or set(os.environ['ANTES']) == {'0'}:
+            urls = sorted(en_sitemap)
+        else:
+            cambiados = subprocess.check_output(['git', 'diff', '--name-only', '--diff-filter=AM',
+                                                 os.environ['ANTES'], os.environ['DESPUES']], text=True).split()
+            urls = []
+            for f in cambiados:
+                if not f.endswith(('.html', '.pdf')):
+                    continue
+                ruta = re.sub(r'(^|/)index\.html$', r'\1', f)
+                url = f'{WEB}/{ruta}'
+                url = '/'.join(p if i < 3 else urllib.parse.quote(p) for i, p in enumerate(url.split('/')))
+                if url in en_sitemap:
+                    urls.append(url)
+        if not urls:
+            print('Nada que avisar')
+            raise SystemExit(0)
+        cuerpo = json.dumps({'host': 'www.victorgutierrezmarcos.es', 'key': CLAVE,
+                             'keyLocation': f'{WEB}/{CLAVE}.txt', 'urlList': urls[:10000]}).encode()
+        r = urllib.request.Request('https://api.indexnow.org/indexnow', cuerpo,
+                                   {'Content-Type': 'application/json; charset=utf-8'})
+        with urllib.request.urlopen(r, timeout=60) as resp:
+            print(resp.status, f'{len(urls)} URL avisadas')
+        for u in urls[:30]:
+            print(' ', u)
+        PY
