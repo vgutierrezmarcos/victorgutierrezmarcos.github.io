@@ -18,7 +18,7 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 
 **Nombre** (máx. 30): `Oposición TCEE · DCE`
 
-**Descripción breve** (máx. 80): `Oposición Técnico Comercial (TCEE) y Diplomado Comercial (DCE): temario y test`
+**Descripción breve** (máx. 80): `Oposición TCEE y DCE (Técnico y Diplomado Comercial): temas, preparadores y más`
 
 **Descripción completa** (máx. 4000):
 
