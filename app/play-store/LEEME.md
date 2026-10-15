@@ -20,6 +20,11 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 
 **Descripción breve** (máx. 80): `Cantes, temario, test y preparadores para las oposiciones de TCEE y DCE`
 
+> **Propuesta para buscar mejor (15 oct. 2026, sin aplicar).** Play busca sobre todo en el nombre y en la descripción breve, y casi nadie busca «TCEE · DCE» con el punto. Opciones:
+> - Nombre: `Oposición TCEE y DCE: temario` (29), o dejar el actual y ganar en la descripción breve. El icono y el nombre del icono en el móvil no cambian (el del móvil es `label` en Android).
+> - Descripción breve: `Oposiciones de Técnico Comercial (TCEE) y DCE: temas, test, cantes, preparadores` (80): incluye «oposiciones», «técnico comercial» y «test», que son lo que la gente escribe.
+> - Descripción completa: cambiar el segundo párrafo por `Para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE, los «TECOs») y a Diplomado Comercial del Estado (DCE), las oposiciones de comercio del Ministerio de Economía, Comercio y Empresa. Gratis, sin anuncios y también en el navegador.` (queda en unos 3.960 caracteres de 4.000).
+
 **Descripción completa** (máx. 4000):
 
 ```
