@@ -38,9 +38,9 @@ searchIndex.pages = [
     id: 'que-es-tcee',
     title: 'Qué es la oposición TCEE',
     url: '/oposicion/que-es-tcee.html',
-    description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: requisitos, plazas, ejercicios, curso selectivo y destinos',
-    keywords: ['qué es', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'sueldo', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE'],
-    content: 'Qué hace el cuerpo, requisitos, convocatoria 2025, los cinco ejercicios, el temario, el curso selectivo, el sueldo, el SOIVRE y preguntas frecuentes'
+    description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: funciones del cuerpo, requisitos, ejercicios, temario y curso selectivo',
+    keywords: ['qué es', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
+    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatorias y plazas, los cinco ejercicios, el temario, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
   },
   {
     id: 'organizacion',
