@@ -2,21 +2,19 @@
 # Materiales para la oposición a Técnico Comercial y Economista del Estado
 
 User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://www.victorgutierrezmarcos.es/sitemap.xml
-
 # Páginas que no necesitan indexarse
-Disallow: /404.html
-Disallow: /oposicion/temario/tema-no-disponible.html
+# 404.html y tema-no-disponible.html no se bloquean: llevan noindex y los
+# buscadores tienen que poder leerlo
 Disallow: /blog/newsletter/
 Disallow: /blog/templates/
 Disallow: /oposicion/organizacion/oculto/
 Disallow: /oposicion/temario/oculto/
 Disallow: /backup/
 Disallow: /scripts/
-
+Disallow: /CLAUDE.md
+Disallow: /AGENTS.md
+Disallow: /firestore.rules
+#
 # Código fuente de la app móvil (no es contenido web). Sí se rastrean su página
 # (/app/), las páginas legales, las imágenes y vídeos de promo y la versión web
 # (/app/abrir/, que lleva noindex)
@@ -31,3 +29,5 @@ Disallow: /app/para-manuel/
 Disallow: /app/play-store/
 Disallow: /app/*.md$
 Disallow: /app/*.yaml$
+
+Sitemap: https://www.victorgutierrezmarcos.es/sitemap.xml

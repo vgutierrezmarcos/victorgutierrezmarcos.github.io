@@ -1,8 +1,9 @@
 /**
  * Enlaces de descarga de la app "Oposición TCEE".
  *
- * El aviso (div#app-banner) está en index.html y en oposicion/index.html y
- * permanece oculto mientras oposicion/app-config.json no tenga ninguna URL:
+ * El aviso (div#app-banner) está en index.html y en oposicion/index.html. Se
+ * ve desde el principio (si apareciera después del fetch empujaría la página:
+ * CLS); este script solo enseña los enlaces según oposicion/app-config.json:
  *
  *   - "urlApk":       descarga directa del APK de Android (publicada como
  *                     release "app-latest" en GitHub).

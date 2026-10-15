@@ -31,16 +31,18 @@ class SearchUI {
         overlay.id = 'search-overlay';
         overlay.className = 'search-overlay';
         overlay.innerHTML = `
-            <div class="search-modal">
+            <div class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar en la web">
                 <div class="search-header">
                     <div class="search-input-container">
-                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"/>
                             <path d="m21 21-4.35-4.35"/>
                         </svg>
                         <input 
                             type="text" 
                             id="search-input" 
+                            aria-label="Buscar temas, ejercicios y recursos" 
+                            aria-controls="search-results" 
                             class="search-input" 
                             placeholder="Buscar temas, ejercicios, recursos..."
                             autocomplete="off"
@@ -58,7 +60,7 @@ class SearchUI {
                     </div>
                 </div>
                 <div class="search-results-container">
-                    <div id="search-results" class="search-results"></div>
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
                 </div>
                 <div class="search-footer">
                     <div class="search-shortcuts">
@@ -82,7 +84,7 @@ class SearchUI {
             const searchLi = document.createElement('li');
             searchLi.className = 'nav-right-item'; // Clase para alineación a la derecha
             searchLi.innerHTML = `
-                <a href="#" id="open-search" class="search-trigger">
+                <a href="#" id="open-search" class="search-trigger" role="button" aria-haspopup="dialog" aria-label="Buscar (Ctrl+K)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.35-4.35"/>

@@ -29,6 +29,11 @@ jobs:
       with:
         fetch-depth: 0
 
+    # El sitemap del commit aún no lleva las páginas o PDF nuevos (lo regenera
+    # después update-sitemap.yml): se genera aquí para poder avisar de ellos
+    - name: Generar el sitemap
+      run: node generate-sitemap.js
+
     - name: Esperar a que GitHub Pages publique
       run: sleep 90
 
