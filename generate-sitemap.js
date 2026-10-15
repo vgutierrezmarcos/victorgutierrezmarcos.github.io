@@ -40,6 +40,8 @@ const EXCLUDE_PATTERNS = [
     /^backup\//,
     /(^|\/)oculto\//,
     /^politica-cookies\.html$/,  // lleva noindex
+    /^temario(\/|\.html$)/,      // páginas puente de direcciones antiguas
+    /^(enlaces|organizacion)\.html$/,
 ];
 
 // Documentos que también van al sitemap (los temas en PDF son lo que más se busca)
