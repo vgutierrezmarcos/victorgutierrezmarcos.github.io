@@ -9,9 +9,25 @@ Sitemap: https://www.victorgutierrezmarcos.es/sitemap.xml
 
 # Páginas que no necesitan indexarse
 Disallow: /404.html
-Disallow: /temario/tema-no-disponible.html
+Disallow: /oposicion/temario/tema-no-disponible.html
 Disallow: /blog/newsletter/
 Disallow: /blog/templates/
+Disallow: /oposicion/organizacion/oculto/
+Disallow: /oposicion/temario/oculto/
+Disallow: /backup/
+Disallow: /scripts/
 
-# Código fuente de la app móvil (no es contenido web)
-Disallow: /app/
+# Código fuente de la app móvil (no es contenido web). Sí se rastrean su página
+# (/app/), las páginas legales, las imágenes y vídeos de promo y la versión web
+# (/app/abrir/, que lleva noindex)
+Disallow: /app/android/
+Disallow: /app/ios/
+Disallow: /app/lib/
+Disallow: /app/test/
+Disallow: /app/tool/
+Disallow: /app/build/
+Disallow: /app/web/
+Disallow: /app/para-manuel/
+Disallow: /app/play-store/
+Disallow: /app/*.md$
+Disallow: /app/*.yaml$

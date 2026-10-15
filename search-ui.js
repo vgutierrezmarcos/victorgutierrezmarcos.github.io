@@ -243,6 +243,15 @@ class SearchUI {
         this.renderResults(results, query);
     }
 
+    // Las URL del índice son relativas a /oposicion/ (salvo blog, sobre mí y las absolutas):
+    // se pasan a absolutas para que funcionen desde cualquier página
+    resolverUrl(url) {
+        if (/^(https?:)?\//.test(url)) return url;
+        if (url.startsWith('blog/') || url === 'sobre-mi.html') return '/' + url;
+        if (url === 'index.html') return '/oposicion/';
+        return '/oposicion/' + url;
+    }
+
     renderResults(results, query) {
         const html = results.map((result, index) => {
             const icon = this.getIcon(result);
@@ -253,7 +262,7 @@ class SearchUI {
             const target = result.url.endsWith('.pdf') ? '_blank' : '_self';
             
             // Si no está disponible, no hacer clickeable el enlace al PDF
-            const href = isNoDisponible ? '#' : result.url;
+            const href = isNoDisponible ? '#' : this.resolverUrl(result.url);
             const onClick = isNoDisponible ? 'onclick="event.preventDefault(); alert(\'Este tema aún no está disponible.\')"' : '';
             
             return `
