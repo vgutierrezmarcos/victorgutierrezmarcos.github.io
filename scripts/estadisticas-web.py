@@ -34,7 +34,7 @@ from pathlib import Path
 CLAVE = Path(os.environ.get('ESTADISTICAS_CLAVE', Path.home() / '.config/oposicion-red/clave.json'))
 FOTOS = Path.home() / '.local/share/oposicion-web'
 SITIO = 'sc-domain:victorgutierrezmarcos.es'
-PROPIEDAD_GA = os.environ.get('PROPIEDAD_GA', '521757581')
+PROPIEDAD_GA = os.environ.get('PROPIEDAD_GA', '520890893')
 AMBITOS = 'https://www.googleapis.com/auth/webmasters.readonly https://www.googleapis.com/auth/analytics.readonly'
 
 # Detrás del proxy del trabajo (intercepta TLS): ver estadisticas-red.py
