@@ -8,7 +8,8 @@ enlazados (los temas aún no disponibles se quedan como están). Se añade una
 actualización incremental al final del fichero: el contenido no cambia ni un
 byte y cada PDF crece menos de 2 KB. Si el título ya es el bueno, no se toca.
 
-Hay que pasarlo después de subir o regenerar un tema:
+Lo pasa solo GitHub Actions (.github/workflows/metadatos-pdf.yml) al subir o
+cambiar un PDF o una página de /oposicion/. A mano:
 
     pip install pypdf
     python3 scripts/metadatos-pdf.py           # escribe los que falten
