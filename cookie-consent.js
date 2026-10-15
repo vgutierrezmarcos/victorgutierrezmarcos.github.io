@@ -143,6 +143,10 @@
                             consentimiento, analizar el tráfico mediante Google Analytics. Puedes aceptar, rechazar
                             o configurar tus preferencias.
                         </p>
+                        <p class="cookie-banner-corto">
+                            Usamos cookies para tu sesión y tus preferencias y, si aceptas, para medir las
+                            visitas con Google Analytics.
+                        </p>
                         <a href="/politica-cookies.html" class="cookie-link">Más información sobre cookies y privacidad</a>
                     </div>
 

@@ -13,7 +13,8 @@ app/promo/ayuda/capturas/, con un PNG por pantalla y pasos.json, que dice dónde
 se toca en cada una. Reutiliza el dibujo y los sonidos del vídeo promocional
 (scripts/montar-video-app.py).
 
-Salida, en app/promo/ayuda/: <id>.mp4 y <id>.jpg (póster) de cada vídeo.
+Salida, en app/promo/ayuda/: <id>.mp4, <id>.jpg (póster) y <id>.webp (póster a la
+mitad, el que usa la web) de cada vídeo.
 
 Autor: Víctor Gutiérrez Marcos
 """
@@ -608,7 +609,11 @@ def montar(vid, ffmpeg):
     os.remove(sonido)
     # Póster: el primer paso con el dedo encima.
     t_poster = next(ini + T_TOQUE for tipo, ini, fin, d in tramos if tipo == 'pantalla' and d['toque'])
-    fotograma(vid, tramos, total, t_poster).save(os.path.join(AYUDA, f'{vid}.jpg'), quality=84, optimize=True)
+    poster = fotograma(vid, tramos, total, t_poster)
+    poster.save(os.path.join(AYUDA, f'{vid}.jpg'), quality=84, optimize=True)
+    # La web usa el WebP a la mitad (2,5 MB → 0,4 MB los 15 pósters); el JPG queda para lo demás
+    poster.convert('RGB').resize((poster.width // 2, poster.height // 2), Image.LANCZOS).save(
+        os.path.join(AYUDA, f'{vid}.webp'), 'WEBP', quality=80, method=6)
     promo._cache.clear()
     print(f'{vid}: {total:.1f} s, {os.path.getsize(salida) / 1e6:.1f} MB', flush=True)
 

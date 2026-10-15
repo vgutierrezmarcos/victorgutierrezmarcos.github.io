@@ -78,7 +78,9 @@ function injectLoginButton(auth, provider) {
         li.className = 'nav-right-item';
         const btn = createAuthButton();
         li.appendChild(btn);
-        navList.appendChild(li);
+        // «Acceder» va antes que «Buscar», aunque el buscador se haya puesto antes
+        const buscar = document.getElementById('open-search');
+        navList.insertBefore(li, buscar ? buscar.closest('li') : null);
         loginButton = btn;
         return;
     }
@@ -218,6 +220,22 @@ function showProfileModal(user, auth) {
 }
 
 // Mostrar historial de exámenes desde el perfil (carga Firebase Firestore si es necesario)
+// Firestore (unos 300 KB) solo hace falta para el historial: se carga al
+// abrirlo, no en cada página. El simulador sí lo trae desde el principio.
+function cargarFirestore() {
+    if (firebase.firestore) return Promise.resolve();
+    if (!cargarFirestore.promesa) {
+        cargarFirestore.promesa = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js';
+            script.onload = resolve;
+            script.onerror = () => { cargarFirestore.promesa = null; reject(new Error('No se pudo cargar Firestore')); };
+            document.head.appendChild(script);
+        });
+    }
+    return cargarFirestore.promesa;
+}
+
 async function showUserHistoryFromProfile() {
     const user = firebase.auth().currentUser;
     if (!user) {
@@ -255,6 +273,7 @@ async function showUserHistoryFromProfile() {
     };
 
     try {
+        await cargarFirestore();
         const db = firebase.firestore();
         const snapshot = await docUsuario(db, user.uid).collection('exam_results')
             .orderBy('timestamp', 'desc')
@@ -467,6 +486,7 @@ async function deleteUserHistory(uid) {
     }
 
     try {
+        await cargarFirestore();
         const db = firebase.firestore();
         // Obtener todos los resultados (sin límite)
         const snapshot = await docUsuario(db, uid).collection('exam_results').get();

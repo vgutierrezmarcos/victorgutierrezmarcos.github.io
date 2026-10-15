@@ -14,13 +14,7 @@ class SearchUI {
     }
 
     async initialize() {
-        // Inicializar el motor de búsqueda
-        const initialized = await searchEngine.initialize();
-        if (!initialized) {
-            console.error('No se pudo inicializar el buscador');
-            return;
-        }
-
+        // El botón sale ya; el índice se descarga al abrir el buscador
         this.createSearchUI();
         this.attachEventListeners();
     }
@@ -163,6 +157,10 @@ class SearchUI {
     }
 
     openSearch() {
+        searchEngine.initialize().then(ok => {
+            if (!ok) console.error('No se pudo inicializar el buscador');
+            else if (this.currentQuery) this.performSearch(this.currentQuery);
+        });
         this.searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         this.searchInput.focus();

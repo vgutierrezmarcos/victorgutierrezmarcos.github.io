@@ -1573,7 +1573,9 @@ def main():
     proceso.stdin.close()
     if proceso.wait() != 0:
         sys.exit('ffmpeg ha fallado')
-    fotograma(3.4).save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
+    poster = fotograma(3.4)
+    poster.save(os.path.join(PROMO, 'poster.jpg'), quality=88, optimize=True)
+    poster.convert('RGB').save(os.path.join(PROMO, 'poster.webp'), 'WEBP', quality=82, method=6)  # el de la web
     print(f'{salida}: {os.path.getsize(salida) / 1e6:.1f} MB')
 
 

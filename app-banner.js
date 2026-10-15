@@ -31,13 +31,22 @@
             var nota = document.getElementById('app-banner-note');
             var pronto = document.getElementById('app-play-pronto');
             var alguno = false;
+            // El APK, «Próximamente en Google Play» y su nota se ven desde el
+            // principio (con la dirección del APK fija en el HTML); con Google
+            // Play se cambian por su distintivo
             if (cfg.app.urlPlayStore && play) {
                 play.href = cfg.app.urlPlayStore; play.hidden = false; alguno = true;
+                if (pronto) pronto.hidden = true;
+                if (apk) apk.hidden = true;
+                if (nota) nota.hidden = true;
             } else {
                 if (pronto) pronto.hidden = false;
                 if (cfg.app.urlApk && apk) {
                     apk.href = cfg.app.urlApk; apk.hidden = false; alguno = true;
                     if (nota) nota.hidden = false;
+                } else {
+                    if (apk) apk.hidden = true;
+                    if (nota) nota.hidden = true;
                 }
             }
             if (cfg.app.urlAppStore && ios) { ios.href = cfg.app.urlAppStore; ios.hidden = false; alguno = true; }
