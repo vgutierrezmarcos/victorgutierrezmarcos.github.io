@@ -1,0 +1,59 @@
+name: Metadatos de los PDF
+
+# Pone título, autor, asunto y palabras clave a los PDF del temario que estén
+# enlazados desde /oposicion/ (scripts/metadatos-pdf.py). Se lanza al subir o
+# cambiar un PDF o una página de /oposicion/ (por ejemplo, al pasar un tema de
+# «no disponible» a disponible). Solo toca los PDF a los que les falta.
+
+on:
+  push:
+    paths:
+      - 'oposicion/**/*.pdf'
+      - 'oposicion/**/*.html'
+      - 'scripts/metadatos-pdf.py'
+      - '.github/workflows/metadatos-pdf.yml'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: metadatos-pdf
+  cancel-in-progress: false
+
+jobs:
+  metadatos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install pypdf
+      run: pip install 'pypdf>=6,<7'
+
+    - name: Write PDF metadata
+      run: python3 scripts/metadatos-pdf.py
+
+    - name: Commit and push if changed
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add -- 'oposicion/*.pdf'
+        if git diff --staged --quiet; then
+          echo "Todos los PDF tenían ya sus metadatos."
+          exit 0
+        fi
+        git commit -m "Metadatos de los PDF del temario [skip ci]"
+        # Otros flujos (sitemap, RSS) pueden empujar a la vez: reintentar sobre lo último
+        for intento in 1 2 3; do
+          git pull --rebase origin main && git push && exit 0
+          sleep 10
+        done
+        exit 1
