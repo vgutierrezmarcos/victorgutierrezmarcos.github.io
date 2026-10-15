@@ -46,7 +46,7 @@ Grabar la pantalla del móvil (o la del ordenador con la versión web, `https://
 
 Consejos: grabar en horizontal si es con el ordenador, sin música, sin cortes bruscos; que se lea bien la pantalla de consentimiento (es lo que más miran). Subir a YouTube como **No listado** y pegar el enlace en el formulario.
 
-Vídeos enviados: `https://youtu.be/1U4rrKdOzrU` (9 oct.) y, tras pedir Google el flujo de consentimiento entero, `https://youtu.be/1WmPutIwKz8` (13 oct., paso 2 regrabado con el móvil en inglés). Tercera versión, con los permisos desplegados, la invitación al alumno y por qué hace falta el calendario principal (disponibilidad): `https://youtu.be/HyrSX2RJNT4` (13 oct., `scripts/montar-video-calendar-v3.py`; cuenta de revisión `tcee.revision@gmail.com`).
+Vídeos enviados: `https://youtu.be/1U4rrKdOzrU` (9 oct.) y, tras pedir Google el flujo de consentimiento entero, `https://youtu.be/1WmPutIwKz8` (13 oct., paso 2 regrabado con el móvil en inglés). Tercera versión, con los permisos desplegados, la invitación al alumno y por qué hace falta el calendario principal (disponibilidad): `https://youtu.be/HyrSX2RJNT4` (13 oct., `scripts/montar-video-calendar-v3.py`; cuenta de revisión `tcee.revision@gmail.com`). Ojo: el v3 solo se había reenviado desde la consola y Google siguió revisando el v2 del hilo de correo; el 15 oct. se contestó en el hilo con el enlace del v3 y los minutos (0:52–1:08 consentimiento con «See access details», 1:08–1:26 «See the 3 services»). **Cada vídeo nuevo, también por respuesta en el hilo.**
 
 ## Qué contestar si Google pide más
 
