@@ -132,6 +132,23 @@ def verificar(tema):
         for s in SECCIONES_INFORME:
             if not re.search(rf'^#+\s*{re.escape(s)}', informe, re.M | re.I):
                 errores.append(f'revision.md sin la sección «{s}»')
+    # Buscadores: seo.json (CRITERIOS §9 bis). Solo avisos: la página sale igual sin él
+    seo = leer(os.path.join(tema.dir, 'seo.json'))
+    if seo is None:
+        avisos.append('Falta seo.json (título para buscadores, resumen, palabras clave y materia)')
+    else:
+        try:
+            seo = json.loads(seo)
+        except ValueError as e:
+            errores.append(f'seo.json no es JSON válido: {e}')
+            seo = {}
+        for campo in ('titulo_seo', 'resumen', 'palabras_clave', 'materia'):
+            if not seo.get(campo):
+                avisos.append(f'seo.json sin «{campo}»')
+        if len(seo.get('resumen', '')) > 160:
+            avisos.append(f'El resumen de seo.json tiene {len(seo["resumen"])} caracteres (máximo 160)')
+        if re.search(r'\bTECOs?\b', seo.get('titulo_seo', '') + ' ' + seo.get('resumen', '')):
+            avisos.append('seo.json: «TECO» no puede salir en el título ni en el resumen')
     guion = leer(os.path.join(tema.dir, 'guion-cante.md'))
     if guion is None:
         avisos.append('Aún no hay guion-cante.md (entrega 3, --fase video)')

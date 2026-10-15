@@ -122,6 +122,23 @@ def datos_documento(tex):
     }
 
 
+def datos_seo(tema):
+    """Campos opcionales para buscadores de fuentes/<tema>/seo.json: titulo_seo
+    (el concepto primero: «Teoría del consumidor: preferencias y demanda»),
+    resumen (2-3 frases, ≤160 caracteres; va de meta description y visible bajo
+    el título), palabras_clave (lista: modelos, autores, teoremas) y materia (la
+    asignatura universitaria). Si falta el fichero, la página sale como antes."""
+    ruta = os.path.join(tema.dir, 'seo.json')
+    if not os.path.exists(ruta):
+        return {}
+    with open(ruta, encoding='utf-8') as f:
+        seo = json.load(f)
+    if isinstance(seo.get('palabras_clave'), list):
+        seo['palabras_clave'] = ', '.join(seo['palabras_clave'])
+    # Van dentro de atributos HTML y de JSON-LD: sin comillas rectas ni barras invertidas
+    return {k: str(v).replace('"', '”').replace('\\', '').strip() for k, v in seo.items() if v}
+
+
 # --- 2. Gráficos -------------------------------------------------------------------
 def compilar_graficos(tema, forzar=False, solo=None):
     """Compila cada graficos/*.tex a PDF, SVG y PNG. Devuelve la lista de errores."""
@@ -273,6 +290,13 @@ def comunes_pandoc(tema, datos):
              '-M', 'lang=es-ES', '-M', f'codigo={tema.codigo}', '-M', f'titulo={datos["titulo"]}',
              '-M', f'fecha={datos["fecha"]}', '-M', f'archivo={tema.archivo}',
              '-M', f'carpeta={tema.carpeta}', '-M', f'ejercicio={tema.nombre_ejercicio}']
+    try:
+        dia = datetime.datetime.strptime(datos['fecha'], '%d/%m/%Y').date()
+    except ValueError:
+        dia = datetime.date.today()
+    orden += ['-M', f'fecha-iso={dia.isoformat()}', '-M', f'fecha-cita={dia:%Y/%m/%d}', '-M', f'anio={dia.year}']
+    for campo, valor in datos_seo(tema).items():
+        orden += ['-M', f'{campo.replace("_", "-")}={valor}']
     if os.path.exists(tema.bib):
         orden += ['--bibliography', ruta_windows(tema.bib),
                   '-M', 'link-citations=true', '-M', 'reference-section-title=Bibliografía']

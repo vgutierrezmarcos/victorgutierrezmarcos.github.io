@@ -85,6 +85,11 @@ sencillo y solo las órdenes de `tcee.sty`):
 **`D/T.bib`**: la bibliografía del original (pasada a biblatex) más
 `bib-datos.bib` y las fuentes de las propuestas. Claves únicas.
 
+**`D/seo.json`**: título para buscadores, resumen, palabras clave y materia
+según la sección 9 bis de CRITERIOS.md (el concepto primero, resumen de 160
+caracteres como máximo, nada de «TECO»). Si ya existe, ponlo al día con lo que
+cambie en el tema.
+
 **`D/revision.md`**: el informe para Víctor con las secciones de la sección 9
 de CRITERIOS.md, en este orden: Resumen, Errores corregidos, Marcas
 resueltas, Datos actualizados, Contenido añadido, Coherencia, Dudas abiertas.

@@ -445,6 +445,34 @@ Secciones obligatorias, en este orden:
 6. **Coherencia**: cambios por coherencia y contradicciones con otros temas.
 7. **Dudas abiertas**: lo que necesita la decisión de Víctor. Si no hay, decirlo.
 
+## 9 bis. Buscadores (`seo.json`)
+
+Cada tema lleva `fuentes/<tema>/seo.json`, que `construir-tema.py` pasa a la
+página HTML (título de la pestaña, descripción, Google Académico, datos
+estructurados y un resumen visible bajo el título). La página tiene que atraer
+también a universitarios y a quien aprende economía, sin perder la oposición
+(el pie de la página ya enlaza el ejercicio, el temario, el simulador y la app).
+
+```json
+{"titulo_seo": "Teoría del consumidor: preferencias y demanda",
+ "resumen": "Axiomas de preferencias, función de utilidad, demanda marshalliana, ecuación de Slutsky…",
+ "palabras_clave": ["teoría del consumidor", "ecuación de Slutsky", "…"],
+ "materia": "Microeconomía"}
+```
+
+- **`titulo_seo`**: el concepto primero, como lo buscaría un estudiante
+  («Modelo de Solow y crecimiento exógeno»), no el código ni el título oficial
+  entero: nadie busca «3.A.43». Unos 40-50 caracteres (detrás se añade
+  « | Tema 3.A.43 TCEE»).
+- **`resumen`**: 2-3 frases o una enumeración, **160 caracteres como máximo**,
+  con los modelos y conceptos del tema. Es la descripción que enseña Google.
+- **`palabras_clave`**: 10-18, con los nombres de modelos, autores, teoremas y
+  lemas que aparecen de verdad en el tema, y la materia.
+- **`materia`**: la asignatura universitaria (Microeconomía, Macroeconomía,
+  Economía internacional, Economía financiera, Historia del pensamiento
+  económico, Economía de la Unión Europea, Economía española, Hacienda pública…).
+- Nunca «TECO» en nada visible (título, resumen); tampoco «DCE».
+
 ## 10. Lo que nunca se hace
 
 - Publicar en `main` o fusionar la rama: solo Víctor decide cuándo.

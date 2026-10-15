@@ -3,11 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+$if(titulo-seo)$
+    <title>$titulo-seo$ | Tema $codigo$ TCEE</title>
+$else$
     <title>Tema $codigo$: $titulo-corto$ | Víctor Gutiérrez Marcos</title>
+$endif$
+$if(resumen)$
+    <meta name="description" content="$resumen$">
+$else$
     <meta name="description" content="Tema $codigo$ de la oposición a Técnico Comercial y Economista del Estado: $titulo$">
+$endif$
+$if(palabras-clave)$
+    <meta name="keywords" content="$palabras-clave$">
+$endif$
     <meta name="author" content="Víctor Gutiérrez Marcos">
-    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+$if(titulo-seo)$
+    <meta property="og:title" content="$titulo-seo$ | Tema $codigo$ TCEE">
+$else$
+    <meta property="og:title" content="Tema $codigo$: $titulo-corto$">
+$endif$
+$if(resumen)$
+    <meta property="og:description" content="$resumen$">
+$else$
+    <meta property="og:description" content="Tema $codigo$ de la oposición a Técnico Comercial y Economista del Estado: $titulo$">
+$endif$
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:locale" content="es_ES">
     <meta name="twitter:card" content="summary_large_image">
+    <!-- Google Académico (etiquetas Highwire Press) -->
+    <meta name="citation_title" content="$titulo$">
+    <meta name="citation_author" content="Gutiérrez Marcos, Víctor">
+    <meta name="citation_publication_date" content="$fecha-cita$">
+    <meta name="citation_online_date" content="$fecha-cita$">
+    <meta name="citation_pdf_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.pdf">
+    <meta name="citation_abstract_html_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html">
+    <meta name="citation_language" content="es">
+    <meta name="citation_publisher" content="victorgutierrezmarcos.es">
+$if(palabras-clave)$
+    <meta name="citation_keywords" content="$palabras-clave$">
+$endif$
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -38,11 +75,39 @@
         ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["LearningResource", "Article"],
+        "@id": "https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html#tema",
+        "url": "https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html",
+        "name": "$if(titulo-seo)$$titulo-seo$$else$$titulo-corto$$endif$",
+        "headline": "$titulo$",
+        "description": "$if(resumen)$$resumen$$else$Tema $codigo$ de la oposición a Técnico Comercial y Economista del Estado: $titulo$$endif$",
+        "author": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
+        "datePublished": "$fecha-iso$",
+        "dateModified": "$fecha-iso$",
+        "inLanguage": "es",
+        "educationalLevel": "universitario",
+        "learningResourceType": "apuntes",
+$if(materia)$
+        "about": {"@type": "Thing", "name": "$materia$"},
+$endif$
+$if(palabras-clave)$
+        "keywords": "$palabras-clave$",
+$endif$
+        "isAccessibleForFree": true,
+        "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "image": "https://www.victorgutierrezmarcos.es/social-preview.png",
+        "encoding": {"@type": "MediaObject", "encodingFormat": "application/pdf", "contentUrl": "https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.pdf"},
+        "isPartOf": {"@type": "Course", "name": "Temario de la oposición a Técnico Comercial y Economista del Estado (TCEE)", "url": "https://www.victorgutierrezmarcos.es/oposicion/temario.html", "provider": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos"}}
+    }
+    </script>
 </head>
 <body class="pagina-tema">
     <header class="site-header">
         <div class="header-content">
-            <h1 class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-title"><a href="../../../index.html">Víctor Gutiérrez Marcos</a></p>
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
@@ -80,7 +145,7 @@ $endif$
                 <nav class="breadcrumb"><a href="../../temario.html">Temario</a><span>›</span><a href="../$carpeta$.html">$ejercicio$</a><span>›</span>Tema $codigo$</nav>
                 <header class="tema-cabecera">
                     <p class="tema-codigo">Tema $codigo$</p>
-                    <h2 class="tema-titulo">$titulo$</h2>
+                    <h1 class="tema-titulo">$titulo$</h1>
                     <p class="tema-meta">Última actualización: $fecha$$if(duracion)$ · Cante: $duracion$ minutos$endif$</p>
                     <div class="tema-descargas">
                         <a href="$archivo$.pdf" target="_blank">Descargar PDF</a>
@@ -95,8 +160,22 @@ $if(video)$
                         <a href="$video$" target="_blank" rel="noopener">Vídeo del cante</a>
 $endif$
                     </div>
+$if(resumen)$
+                    <p class="tema-resumen">$resumen$</p>
+$endif$
                 </header>
 $body$
+                <footer class="tema-pie">
+                    <section class="tema-oposicion">
+                        <h2 class="tema-pie-titulo">Tema de la oposición TCEE</h2>
+                        <p>Este tema forma parte del temario de la oposición a Técnico Comercial y Economista del Estado: es el tema $codigo$ del <a href="../$carpeta$.html">$ejercicio$</a>. Tienes el resto del <a href="../../temario.html">temario</a>, el <a href="../primer-ejercicio/test/simulador.html">simulador de test</a> con preguntas de exámenes oficiales, una <a href="../../que-es-tcee.html">guía de la oposición</a> y la <a href="../../../app/">app</a> para organizar el estudio y cantar los temas.</p>
+                    </section>
+                    <section class="tema-cita">
+                        <h2 class="tema-pie-titulo">Cómo citar</h2>
+                        <p>Gutiérrez Marcos, V. ($anio$). <em>$titulo$</em> [Tema $codigo$ del temario de la oposición a Técnico Comercial y Economista del Estado]. https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html</p>
+                        <p class="tema-licencia">Licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="noopener license">CC BY-NC-ND 4.0</a>.</p>
+                    </section>
+                </footer>
             </article>
         </div>
     </main>

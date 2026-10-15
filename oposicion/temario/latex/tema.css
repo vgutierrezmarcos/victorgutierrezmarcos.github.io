@@ -78,6 +78,14 @@
     margin: 0.4rem 0 0.6rem;
     text-align: center;
 }
+.tema-resumen {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin: 1rem auto 0;
+    line-height: 1.5;
+}
 .tema-meta { font-family: var(--font-ui); color: var(--color-text-muted); font-size: 0.85rem; }
 .tema-descargas { margin-top: 0.8rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
 .tema-descargas a {
@@ -93,7 +101,7 @@
 .tema-descargas a:hover { background: var(--color-primary); color: #fff; }
 
 /* Apartados */
-.tema-documento h1 {
+.tema-documento h1:not(.tema-titulo) {
     background: var(--color-primary);
     color: #fff;
     font-family: var(--font-display);
@@ -230,3 +238,20 @@
 
 /* Nota pequeña bajo las tablas */
 .tema-documento .nota-tabla { font-size: 0.85em; color: var(--color-text-muted); }
+
+/* Pie del tema: la oposición y cómo citar */
+.tema-pie { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--color-border); font-size: 0.92rem; }
+.tema-pie section + section { margin-top: 1.2rem; }
+.tema-documento .tema-pie .tema-pie-titulo {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    border: none;
+    margin: 0 0 0.4rem;
+    padding: 0;
+}
+.tema-cita p { overflow-wrap: anywhere; }
+.tema-licencia { color: var(--color-text-muted); font-size: 0.85rem; }

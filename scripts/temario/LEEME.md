@@ -54,6 +54,7 @@ publicar). Sin vídeo: `--sin-video`.
 | `graficos/*.tex` | Un gráfico TikZ por fichero (con sus `.pdf`, `.svg` y `.png` generados). |
 | `datos/*.csv` | Series de los gráficos de datos, con su fuente. |
 | `revision.md` | Informe de la revisión para Víctor. |
+| `seo.json` | Título para buscadores, resumen, palabras clave y materia de la página web (CRITERIOS §9 bis). |
 | `guion-cante.md` | Esquema de pizarra y guion del cante con tiempos. |
 | `video/escenas.yaml` | Guion del vídeo por pasos. |
 | `estado.json` | Fases hechas (para retomar). |

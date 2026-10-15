@@ -18,7 +18,9 @@ Sé exigente: Víctor tiene que poder fiarse del resultado.
    `R`, en segundo plano) y haz capturas con Edge sin ventana (ver la
    memoria del proyecto o `--headless=new --screenshot`) a 1280 px de ancho;
    comprueba índice lateral, gráficos SVG, fórmulas MathJax, notas al pie y
-   bibliografía. Para el modo oscuro, añade `data-theme="dark"` (o comprueba
+   bibliografía; y que el título de la pestaña, el resumen bajo el título y
+   el pie («Tema de la oposición TCEE» y «Cómo citar») salen de `seo.json`
+   (sección 9 bis de CRITERIOS.md). Para el modo oscuro, añade `data-theme="dark"` (o comprueba
    el CSS).
 4. **Word**: conviértelo a PDF con Word
    (`cscript.exe //nologo <ruta Windows de R/scripts/temario/word-a-pdf.vbs> <docx> <pdf>`)
