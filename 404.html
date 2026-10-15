@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Direcciones antiguas (antes de /oposicion/, nombres viejos): se redirigen a la actual -->
+    <script>
+    (function () {
+        var p = decodeURIComponent(location.pathname), n = p;
+        n = n.replace(/^\/oposicion\/temario\/temario\//, '/oposicion/temario/');
+        n = n.replace(/^\/blog\/temario\//, '/oposicion/temario/');
+        n = n.replace(/^\/(temario|organizacion)(\/|\.html$)/, '/oposicion/$1$2');
+        n = n.replace(/^\/enlaces\.html$/, '/oposicion/enlaces.html');
+        n = n.replace(/\/test\/simulacro\.html$/, '/test/simulador.html');
+        n = n.replace(/^\/oposicion\/temario\/$/, '/oposicion/temario.html');
+        n = n.replace(/^\/oposicion\/temario\/([a-z]+-ejercicio)\/?$/, '/oposicion/temario/$1.html');
+        n = n.replace(/^\/blog\/20260128_post_bienvenida\.html$/, '/blog/20260128_articulo_de_bienvenida.html');
+        n = n.replace(/^\/blog\/newsletter\/(index\.html)?$/, '/blog/');
+        if (n !== p) location.replace(n + location.search + location.hash);
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada | Víctor Gutiérrez Marcos</title>
