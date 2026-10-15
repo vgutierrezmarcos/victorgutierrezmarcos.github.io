@@ -426,6 +426,15 @@
             transition: all var(--transition-fast);
             width: 100%;
             text-align: left;
+            /* Es un <button>: que herede la letra como cuando era un div */
+            font: inherit;
+            color: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .opcion-btn:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
         }
         .opcion-btn:hover {
             border-color: var(--color-primary);
@@ -2033,10 +2042,10 @@
                 const seleccionada = respuestasUsuario[indicePreguntaActual] === letra ? 'selected' : '';
                 opcionesHtml += `
                     <li class="opcion-item">
-                        <div class="opcion-btn ${seleccionada}" data-opcion="${letra}">
+                        <button type="button" class="opcion-btn ${seleccionada}" data-opcion="${letra}" aria-pressed="${seleccionada ? 'true' : 'false'}">
                             <span class="opcion-letra">${letra.toUpperCase()}</span>
                             <span class="opcion-texto">${pregunta.opciones[letra]}</span>
-                        </div>
+                        </button>
                     </li>
                 `;
             });
@@ -2063,8 +2072,12 @@
                     const opcion = this.dataset.opcion;
                     respuestasUsuario[indicePreguntaActual] = opcion;
                     
-                    container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
+                    container.querySelectorAll('.opcion-btn').forEach(b => {
+                        b.classList.remove('selected');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
                     this.classList.add('selected');
+                    this.setAttribute('aria-pressed', 'true');
                     
                     actualizarNavegador();
                 });
