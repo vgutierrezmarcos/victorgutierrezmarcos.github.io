@@ -166,6 +166,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Aviso de versión nueva por Play**: al tocar la notificación «Hay una versión nueva», la app actualiza por Google Play si se instaló desde Play (los testers siguen actualizando desde Play) y solo abre la descarga del APK si se instaló desde la web. Hasta ahora la notificación abría siempre el APK.
 - **Invitar en un toque** (14 oct.): en la tarjeta del código, «Invitar a mis alumnos por WhatsApp» (mensaje con el enlace de descarga y el código, para un contacto o un grupo); en la ficha de un alumno sin la app y con teléfono, «Invitar a … a la app».
 
+### 15 oct. 2026 (ficha de Play y web)
+- **Ficha de Play**: descripción breve con los nombres completos de las dos oposiciones («Oposición Técnico Comercial (TCEE) y Diplomado Comercial (DCE): temario y test») y el segundo párrafo de la descripción completa con el Ministerio de Economía, Comercio y Empresa, para que la encuentre quien las busca por su nombre.
+- **Página de la app en la web** (/app/): ya la puede rastrear Google (antes la bloqueaba robots.txt), con título, descripción y datos estructurados de la app y sus preguntas frecuentes.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»
