@@ -104,10 +104,13 @@ def totales(api, desde, hasta):
 
 # ----------------------------------------------------------------- Analytics
 
-def analytics(api, desde, hasta, dimensiones, metricas, filas=15):
+def analytics(api, desde, hasta, dimensiones, metricas, filas=15, contiene=None):
     cuerpo = {'dateRanges': [{'startDate': desde.isoformat(), 'endDate': hasta.isoformat()}],
               'dimensions': [{'name': d} for d in dimensiones], 'metrics': [{'name': m} for m in metricas],
               'limit': filas, 'orderBys': [{'metric': {'metricName': metricas[0]}, 'desc': True}]}
+    if contiene:
+        cuerpo['dimensionFilter'] = {'filter': {'fieldName': dimensiones[0],
+                                                'stringFilter': {'matchType': 'CONTAINS', 'value': contiene}}}
     r = api.post(f'https://analyticsdata.googleapis.com/v1beta/properties/{PROPIEDAD_GA}:runReport', cuerpo)
     return [{**{d: v['value'] for d, v in zip(dimensiones, f.get('dimensionValues', []))},
              **{m: int(float(v['value'])) for m, v in zip(metricas, f['metricValues'])}} for f in r.get('rows', [])]
@@ -142,6 +145,9 @@ def foto(dias):
             'origenes': analytics(api, ga_desde, ga_hasta, ['sessionSource'], ['sessions'], 15),
             'paginas': analytics(api, ga_desde, ga_hasta, ['pagePath'], ['screenPageViews', 'activeUsers'], 25),
             'dispositivos': analytics(api, ga_desde, ga_hasta, ['deviceCategory'], ['activeUsers'], 5),
+            # Temas sin PDF que la gente pincha (los enlaces llevan ?tema=3.A.5 desde el 15 oct. 2026)
+            'temas_pedidos': analytics(api, ga_desde, ga_hasta, ['pagePathPlusQueryString'], ['screenPageViews'], 50,
+                                       'tema-no-disponible.html?tema='),
         }
     except urllib.error.HTTPError as e:
         ga = {'error': f'{e.code}: {e.read().decode()[:200]}'}
@@ -180,6 +186,8 @@ def imprimir(f):
     print('  Canales: ' + ', '.join(f"{x['sessionDefaultChannelGroup']} {x['sessions']}" for x in ga['canales']))
     print('  Orígenes: ' + ', '.join(f"{x['sessionSource']} {x['sessions']}" for x in ga['origenes']))
     print('  Dispositivos: ' + ', '.join(f"{x['deviceCategory']} {x['activeUsers']}" for x in ga['dispositivos']))
+    pedidos = [(x['pagePathPlusQueryString'].split('tema=')[-1], x['screenPageViews']) for x in ga['temas_pedidos']]
+    print('  Temas no disponibles que se piden: ' + (', '.join(f'{t} ({n})' for t, n in pedidos) or 'ninguno todavía'))
     print('  Páginas más vistas:')
     for x in ga['paginas']:
         print(f"    {x['screenPageViews']:>5}  {x['pagePath']}")
