@@ -1,4 +1,4 @@
-# Revisión del tema 3.A.11 (13/10/2026)
+# Revisión del tema 3.A.11 (13/10/2026; criterios del 16/10/2026)
 
 Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.
 
@@ -214,6 +214,28 @@ Víctor leyó el tema revisado y pidió cambios. Se aplican todos; los gráficos
 - **Sin «se ha visto / se estudia en el tema…»**: reescritas las 5 frases que lo decían (sesgo del progreso técnico, economías de alcance y límites de la empresa, problema del productor, formas funcionales de utilidad, construcción del equilibrio general).
 - **Preparadores y clases**: por la instrucción posterior de Víctor (quitar del tema los nombres de preparadores y de clases), no se añaden al .bib ni a la bibliografía el tema de ICEX-CECO ni el de Cordero que listaba el original, y el texto no nombra a ningún preparador. La entrada `CabadoDCE3A5` sigue en el .bib, pero no se cita.
 - **Arreglo en `latex/tcee.sty`** (compartido): `\AtEveryCite{\renewcommand*{\mkbibnamefamily}[1]{\textsc{##1}}}` impedía compilar cualquier tema («Illegal parameter number» en la primera cita); con `#1` compila. Es un cambio de un carácter, necesario para comprobar este tema.
+
+## Cambios del 16/10/2026 (criterios generales y pendientes del canon)
+
+Se aplican al tema ya revisado los criterios generales de Víctor del 16/10/2026 (CRITERIOS.md §2 y «Órdenes de `tcee.sty`») y las 2 entradas del 3.A.11 en `canon/pendientes-coherencia.md`. La estructura no cambia (introducción, I-III, conclusión y 7 anexos; reparto 2′30″ + 10′ + 11′30″ + 4′30″ + 1′30″ = 30′). PDF: 50 páginas (tema 40, anexos 6, bibliografía 4); `verificar-tema.py`: 0 errores, 0 avisos.
+
+1. **Siglas en redonda dentro de las fórmulas** (canon, `notacion.md` § 0): 135 sustituciones en `3A11.tex` (`\mathrm{PMg}_i`, `\mathrm{PMe}_L`, `\mathrm{RMST}_{LK}`, `\mathrm{RMST}^X_{LK}`, `\mathrm{RMT}_{XY}`, `\mathrm{RMT}_{12}`, `\mathrm{CMg}`, `\mathrm{CMe}`, también en las notas, las tablas y los anexos; en las derivadas, `d\mathrm{PMe}_L`). En el texto corrido las siglas ya iban en redonda. Gráficos: `corto-plazo` (rótulos $\mathrm{PMe}_L$, $\mathrm{PMg}_L$ y del rayo tangente) y `esquema-tecnologia` ($\mathrm{RMST}_{LK}$) corregidos; `region-economica` ya los tenía en redonda; los tres recompilados con `--grafico`. Los demás gráficos con siglas (`isocuantas-rmst`, `caja-edgeworth-fpp`, `transformacion-empresa`) ya usaban `\mathrm`. Mismo cambio, mecánico, en las fórmulas de pizarra de `guion-cante.md` (19) y `video/escenas.yaml` (19), y en la ficha `repaso/3A11-repaso.tex` (60).
+2. **Monotonía de la función de beneficio** (canon, anexo `anexo:productor`): «creciente en $p$, decreciente en $\vec{w}$» → «no decreciente en $p$ (estrictamente creciente si $q(p,\vec{w})>0$) y no creciente en $\vec{w}$», como MWG (prop. 5.C.1) y el 3.A.12. El guion y la ficha no lo repetían.
+3. **Problemas de optimización con `\optim`** (objetivo arriba, «s.a.» y cada restricción en su línea): la definición de la función de producción, $F(\vec{z})=\max_{q\geq 0} q$ s.a. $(q,-\vec{z})\in\mathcal{Y}$; el problema del productor del anexo B, $B(\vec{p})$ (s.a. $\vec{y}\in\mathcal{Y}$) y $B(p,\vec{w})$ (s.a. $\vec{z}\geq\vec{0}$), que pasa de fórmula en línea a display; y el recuadro de la optimalidad con competencia perfecta (III.1), sin restricciones. En la ficha de repaso, la misma definición de $F$. `tcee-repaso.sty` aún no tiene `\optim`: la ficha lo define en su preámbulo con `\providecommand` (versión de una restricción), que dejará de actuar cuando se añada al estilo.
+4. **Funciones clave (`\funcionclave`)**: 2, las que se mantienen en la pizarra durante el cante: la función de producción $q=F(\vec{z})$ (ec. 2, I.2) y la elasticidad de sustitución $\sigma$ (ec. 6, I.3). Conservan su número y su etiqueta.
+5. **Notas al pie del original** (29 en el tema antiguo; 12 en la revisión del 13/10/2026; ahora 18). Se recuperan, revisadas, las que estaban bien desarrolladas y se habían perdido:
+   - nota 1 (individualismo metodológico), en el enganche;
+   - nota 2, segunda parte (la microeconomía estudia también otros agentes, como las instituciones financieras o el Estado), añadida a la nota de la separación consumidores-productores;
+   - nota 4 (la inconsistencia de Sraffa), en la Contextualización, desarrollada: economías internas, externas y su propuesta;
+   - nota 6 (axiomas necesarios y deseables), al cerrar los axiomas de I.1; se precisa que la convexidad es la que se supone para el equilibrio competitivo (el original decía «condición indispensable para la competencia perfecta»);
+   - nota 8 (diferenciabilidad como supuesto instrumental), que estaba integrada en la propiedad 4 de $F$ y vuelve a ser nota;
+   - nota 13 (la RMST en valor absoluto), reescrita según el canon (RMST positiva, D035): explica por qué se define con el signo menos;
+   - nota 27 (la translog y la sustitución entre grupos de trabajadores, inmigración), en el anexo de formas funcionales; el paréntesis del texto que lo resumía se acorta.
+   
+   No se recuperan: 3 y 28 (solo referencias: las fuentes ya se citan en el texto); 7 (notación, ya explicada en el texto); 9, segunda parte (atribuye a Smith la complementariedad capital-trabajo sin fuente; la nota actual ya da el ejemplo de la Cobb-Douglas); 10, 12, 20, 24 y 26 (pasaron al texto o a un gráfico por los cambios del 13/10/2026: convexidad, superficie e isocuantas, isoclinas, formación de la caja, analogía RMST-RMT); 11 y 21 (repiten el texto); 14 (error: σ no nace en la controversia del capital; véase «Errores corregidos»); 16, segunda parte (las explotaciones inglesas del XVIII: la nota actual ya da el origen con Turgot y 1815); 23 y 29 (integradas en II.2 y en el anexo B). Siguen como notas las 2, 5, 9, 15, 16, 17, 18, 19, 22 y 25 del original, más 2 de la revisión (la $\mu(\vec{z})$ de Jehle y Reny y la derivada del ejemplo *ultra passum*).
+6. **Viñetas en varios niveles**: los métodos técnicamente eficientes (I.2), las características de escala de la curvatura (I.2), la evidencia sobre $\sigma$ (CES), las causas de los rendimientos a escala (II.2), neutral frente a sesgado (II.3) y la Relevancia de la conclusión pasan de párrafo largo a viñetas de segundo o tercer nivel. Sin cambios de contenido.
+7. **Fórmulas en display y minutos**: ninguna fórmula en display termina en «:» (comprobado); los problemas con `\optim` y las funciones clave no llevan punto final, porque el bloque queda centrado en vertical. Los minutos del texto ya iban con `\tiempo{}` (nota «En el cante»); no hay minutos con decimales en el texto.
+8. **Fecha** del tema y de la ficha: 16/10/2026. `construir-repaso.py 3A11`: 4 páginas con letra de 9 pt.
 
 ## Dudas abiertas
 

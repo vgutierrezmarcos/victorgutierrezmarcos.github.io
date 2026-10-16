@@ -1,7 +1,7 @@
 {
  "_comentario": "Decisiones pendientes del canon para Víctor (consolidación inicial, 13 oct. 2026). Ordenadas por impacto (primero las que cambian el 3.A.8 ya revisado y las que afectan a más temas). La primera opción es la recomendada. Al decidir: poner estado = aprobada | rechazada y elegida = id de opción. Autor: Víctor Gutiérrez Marcos.",
  "fecha": "2026-10-13",
- "total": 139,
+ "total": 142,
  "decisiones": [
   {
    "id": "D001",
@@ -4470,7 +4470,108 @@
    "estado": "aprobada",
    "elegida": "a",
    "nota_victor": "Aprobado para 4.B.15, 4.B.10, 4.B.11 y 4.B.4 (4.A.24 y 4.A.25 quedan como estaban en la propuesta: una frase de resultado al revisarlos). Víctor (13/10/2026), por el criterio de que el 3.er y el 4.º ejercicio son exámenes distintos (CRITERIOS.md § 6)."
+  },
+  {
+   "id": "D140",
+   "clave": "multiplicador-coste",
+   "area": "consumidor-produccion",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el multiplicador de la minimización del coste de la empresa (3.A.12)?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "μ, como el del dual del consumidor (3.A.9): 𝓛 = w⃗·z⃗ + μ(q − F(z⃗)), μ* = ∂C/∂q = CMg"
+    },
+    {
+     "id": "b",
+     "texto": "λ^C, como fijaba la consolidación del 13/10/2026"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Propuesto en la revisión del 3.A.12 (14/10/2026): paralelo exacto con μ* = ∂E/∂Ū del consumidor; en producción λ es la escala. El 3.A.12 ya usa μ.",
+   "temas_afectados": [
+    "3.A.12"
+   ],
+   "fichas": [
+    "notacion.md",
+    "_notacion/consumidor-produccion.md",
+    "modelos/dualidad-produccion.md",
+    "modelos/dualidad-consumidor.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "μ confirmado. Víctor (16/10/2026), en la página de decisiones."
+  },
+  {
+   "id": "D141",
+   "clave": "factor-homogeneidad",
+   "area": "consumidor-produccion",
+   "tipo": "notacion",
+   "pregunta": "¿Qué letra lleva el factor de homogeneidad en los precios (x⃗(·p⃗,·W̄), h⃗(·p⃗,Ū), E(·p⃗,Ū), C(·w⃗,q))?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "κ en todo el temario; k queda solo como grado de homogeneidad"
+    },
+    {
+     "id": "b",
+     "texto": "k en el consumidor y κ en la empresa (donde k es el grado de homogeneidad de F)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Un solo símbolo en los temas de dualidad, que se citan entre sí; k ya es el grado de homogeneidad en producción. Excepción local: α en el 3.A.21, donde κ_k es la velocidad del tanteo.",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.9",
+    "3.A.12",
+    "3.A.21"
+   ],
+   "fichas": [
+    "notacion.md",
+    "_notacion/consumidor-produccion.md",
+    "modelos/dualidad-consumidor.md",
+    "modelos/pmu.md",
+    "modelos/equilibrio-general-walras.md"
+   ],
+   "afecta_revisados": true,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "«κ en todo el temario». Víctor (16/10/2026), en la página de decisiones. El 3.A.21 conserva α (κ_k es allí la velocidad del tanteo)."
+  },
+  {
+   "id": "D142",
+   "clave": "segura-edicion",
+   "area": "consumidor-produccion",
+   "tipo": "otro",
+   "pregunta": "¿Qué edición de Segura, Análisis microeconómico, se cita?",
+   "opciones": [
+    {
+     "id": "a",
+     "texto": "Alianza, 3.ª ed., 1996"
+    },
+    {
+     "id": "b",
+     "texto": "1986 (1.ª ed.)"
+    }
+   ],
+   "recomendacion": "a",
+   "motivo": "Es la edición que maneja Víctor; las entradas .bib (clave Segura1986Analisis, que se conserva) ya están cambiadas en 3.A.8, 3.A.11, 3.A.12 y 3.A.21. El canon ya citaba 1996.",
+   "temas_afectados": [
+    "3.A.8",
+    "3.A.11",
+    "3.A.12",
+    "3.A.21"
+   ],
+   "fichas": [
+    "modelos/dualidad-produccion.md",
+    "modelos/equilibrio-general-walras.md"
+   ],
+   "afecta_revisados": false,
+   "estado": "aprobada",
+   "elegida": "a",
+   "nota_victor": "Segura (1996), Alianza, 3.ª ed. Víctor (16/10/2026)."
   }
  ],
- "aprobacion": "13/10/2026: Víctor aprueba las recomendadas salvo D088 (c) y D069, D075, D094, D120 (desarrollo en los dos ejercicios). Criterio: 3.er y 4.º ejercicio son exámenes distintos; referencia teórica en el 3.º siempre que se pueda. 13/10/2026 (2.ª tanda): Víctor aprueba D134-D139, propuestas por el criterio del 3.er y el 4.º ejercicio (informe § 12)."
+ "aprobacion": "13/10/2026: Víctor aprueba las recomendadas salvo D088 (c) y D069, D075, D094, D120 (desarrollo en los dos ejercicios). Criterio: 3.er y 4.º ejercicio son exámenes distintos; referencia teórica en el 3.º siempre que se pueda. 13/10/2026 (2.ª tanda): Víctor aprueba D134-D139, propuestas por el criterio del 3.er y el 4.º ejercicio (informe § 12). 16/10/2026 (3.ª tanda, página de decisiones): Víctor aprueba D140 (μ multiplicador de la minimización del coste), D141 (κ factor de homogeneidad en los precios en todo el temario) y D142 (Segura, Alianza, 3.ª ed., 1996)."
 }

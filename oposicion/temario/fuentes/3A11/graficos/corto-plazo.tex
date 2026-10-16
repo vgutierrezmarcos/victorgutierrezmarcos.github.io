@@ -19,18 +19,18 @@
   \capa{3}{\node[punto,label={[etiqueta]right:inflexión}] (I) at ({1.6*2},{0.1*16}) {};}
   \capa{4}{\draw[curva3,thick] (0,0) -- ({1.6*3.5},{0.1*31.5});}
   \capa{4}{\node[etiqueta,text=tceeverde,anchor=south east,align=right] at ({1.6*1.8},{0.1*16.2})
-    {rayo tangente:\\ máximo de $PMe_L$};}
+    {rayo tangente:\\ máximo de $\mathrm{PMe}_L$};}
   \capa{4}{\node[punto] (M) at ({1.6*3},{0.1*27}) {};}
   \capa{5}{\node[punto,label={[etiqueta]above:máximo de $q$}] (Q) at ({1.6*4},{0.1*32}) {};}
   % ---------- panel inferior: productividades media y marginal ----------
   \capa{6}{\draw[eje] (0,\yb) -- (7.9,\yb) node[below left=2pt and 0pt] {$z_L$};}
-  \capa{6}{\draw[eje] (0,{\yb-1.9}) -- (0,{\yb+4.1}) node[left,align=right] {$PMe_L$\\ $PMg_L$};}
+  \capa{6}{\draw[eje] (0,{\yb-1.9}) -- (0,{\yb+4.1}) node[left,align=right] {$\mathrm{PMe}_L$\\ $\mathrm{PMg}_L$};}
   \capa{6}{\node[below left] at (0,\yb) {$0$};}
   \capa{7}{\draw[curva4] plot[domain=0:4.5,samples=80] ({1.6*\x},{\yb+0.25*(-3*\x^2+12*\x)})
-    node[etiqueta,right] {$PMg_L$};}
+    node[etiqueta,right] {$\mathrm{PMg}_L$};}
   \capa{7}{\draw[guia] (I) -- ({1.6*2},{\yb+0.25*12});}
   \capa{8}{\draw[curvanueva] plot[domain=0:4.85,samples=80] ({1.6*\x},{\yb+0.25*(-\x^2+6*\x)})
-    node[etiqueta,above right=0pt and -2pt] {$PMe_L$};}
+    node[etiqueta,above right=0pt and -2pt] {$\mathrm{PMe}_L$};}
   \capa{8}{\node[punto] at ({1.6*3},{\yb+0.25*9}) {};}
   % ---------- márgenes y etapas ----------
   \capa{9}{\draw[guia] (M) -- ({1.6*3},{\yb-1.9});}

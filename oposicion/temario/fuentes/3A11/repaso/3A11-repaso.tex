@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la producción]{3.A.11}{Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.}
-\tcefecha{14/10/2026}
+\tcefecha{16/10/2026}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -53,18 +53,18 @@ Hilo: superficie con los 3 plazos. Anexos (no se cantan): CES y límites, \autor
 
 \sub{I.2. Función de producción}
 \begin{formula}
-\centering $q=F(\vect{z})\equiv\max\{q\geq0:\ (q,-\vect{z})\in\mathcal{Y}\}$
+\centering $q=F(\vect{z})\equiv\optim{\max}{q\geq 0}{q}{(q,-\vect{z})\in\mathcal{Y}}$
 \end{formula}
 \begin{itemize}
 \item Solo métodos técnicamente eficientes: máx.\ $q$ para cada $\vect{z}$ = mín.\ factores para cada $q$. Notación general: \autor{Wicksteed} (1894); antes, von~\autor{Thünen}.
-\item \concepto{Propiedades}: \emph{cardinal}; $F(\vect{0})=0$; no decreciente ($PMg_i\geq0$); continua y $C^2$ (instrumental: divisibilidad).
+\item \concepto{Propiedades}: \emph{cardinal}; $F(\vect{0})=0$; no decreciente ($\mathrm{PMg}_i\geq0$); continua y $C^2$ (instrumental: divisibilidad).
 \item \concepto{Propiedades de escala} de $\mathcal{Y}$: \emph{divisibilidad} ($\lambda\vect{y}$, $\lambda\in[0,1]$: rendim.\ no crecientes); \emph{aditividad} ($\vect{y}+\vect{y}'$: no decrecientes); \emph{rendim.\ constantes} ($\mathcal{Y}$ cono); \emph{convexidad} ($\tau\vect{y}+(1-\tau)\vect{y}'\in\mathcal{Y}$); \emph{irreversibilidad}. Aditivo + divisible $\Leftrightarrow$ cono convexo (MWG 5.B.2).
 \item \concepto{Cuasiconcavidad} estricta $\Leftrightarrow$ isocuantas estr.\ convexas (complementariedad: mezclas rinden más que extremos); no impone escala.
 \item \concepto{Concavidad} $\Leftrightarrow$ $\mathcal{Y}$ convexo; con $F(\vect{0})=0$ $\Rightarrow$ rendim.\ no crecientes. Cóncava $\Rightarrow$ cuasicóncava, no al revés (CD con $\alpha+\beta>1$).
-\item \concepto{Neoclásica de buen comportamiento}: RCE + $PMg>0$ decrecientes + \autor{Inada} (1963). Cóncava, no estrictamente (lineal en cada rayo).
+\item \concepto{Neoclásica de buen comportamiento}: RCE + $\mathrm{PMg}>0$ decrecientes + \autor{Inada} (1963). Cóncava, no estrictamente (lineal en cada rayo).
 \end{itemize}
 \begin{formula}
-\centering \autor{Inada}: $\displaystyle\lim_{z_i\to0}PMg_i=+\infty,\qquad \lim_{z_i\to\infty}PMg_i=0$
+\centering \autor{Inada}: $\displaystyle\lim_{z_i\to0}\mathrm{PMg}_i=+\infty,\qquad \lim_{z_i\to\infty}\mathrm{PMg}_i=0$
 \end{formula}
 \begin{itemize}
 \item Beneficio: con RCE o crecientes, problema no acotado; solo concavidad estricta da oferta función. Minimizar costes solo exige cuasiconcavidad $\Rightarrow$ costes con cualquier rendimiento.
@@ -75,8 +75,8 @@ Hilo: superficie con los 3 plazos. Anexos (no se cantan): CES y límites, \autor
 \item \concepto{Isocuanta}: $\{\vect{z}:F(\vect{z})=\overline{q}\}$, curva de nivel de la superficie. Infinitas, más lejos = más $q$, no se cortan ($F$ función), continuas, pendiente $\leq0$, convexas si $F$ cuasicóncava, cardinales.
 \end{itemize}
 \begin{formula}
-\centering $RMST_{LK}\equiv-\left.\dfrac{dz_K}{dz_L}\right|_{\overline{q}}=\dfrac{PMg_L}{PMg_K}$\\[4pt]
-$\sigma\equiv\dfrac{d\ln(z_K/z_L)}{d\ln RMST_{LK}}\geq0$
+\centering $\mathrm{RMST}_{LK}\equiv-\left.\dfrac{dz_K}{dz_L}\right|_{\overline{q}}=\dfrac{\mathrm{PMg}_L}{\mathrm{PMg}_K}$\\[4pt]
+$\sigma\equiv\dfrac{d\ln(z_K/z_L)}{d\ln \mathrm{RMST}_{LK}}\geq0$
 \end{formula}
 \begin{itemize}
 \item RMST $\downarrow$ al $\uparrow z_L$; depende de unidades. \concepto{Isoclinas}: igual RMST (rectas por el origen si homotética; líneas de contorno y senda de expansión lo son).
@@ -84,7 +84,7 @@ $\sigma\equiv\dfrac{d\ln(z_K/z_L)}{d\ln RMST_{LK}}\geq0$
 \item \concepto{Distribución}: $\dfrac{w_Lz_L}{w_Kz_K}=\dfrac{w_L/w_K}{z_K/z_L}$; si $w_L/w_K\uparrow$, participación del trabajo $\uparrow$ si $\sigma<1$, $\downarrow$ si $\sigma>1$, igual si $\sigma=1$.
 \end{itemize}
 \begin{formula}
-\raggedright CD: $q=A\,z_K^{\alpha}z_L^{\beta}$;\quad $PMg_K=\alpha\dfrac{q}{z_K}$;\quad $RMST_{LK}=\dfrac{\beta}{\alpha}\dfrac{z_K}{z_L}$;\quad $\sigma=1$\\[4pt]
+\raggedright CD: $q=A\,z_K^{\alpha}z_L^{\beta}$;\quad $\mathrm{PMg}_K=\alpha\dfrac{q}{z_K}$;\quad $\mathrm{RMST}_{LK}=\dfrac{\beta}{\alpha}\dfrac{z_K}{z_L}$;\quad $\sigma=1$\\[4pt]
 CES: $q=A\Big[\sum_i a_iz_i^{\rho}\Big]^{\nu/\rho}$,\quad $\rho=\dfrac{\sigma-1}{\sigma}$,\quad $\sigma=\dfrac{1}{1-\rho}$\\[4pt]
 \autor{Leontief}: $q=\min\Big\{\dfrac{z_K}{a};\,\dfrac{z_L}{b}\Big\}$,\quad $\sigma=0$
 \end{formula}
@@ -109,27 +109,27 @@ Pocos axiomas sobre $\mathcal{Y}$ dan $F$; sus isocuantas miden la sustitución 
 \begin{itemize}
 \item $\mathcal{Y}(\overline{z}_K)\subseteq\mathcal{Y}$ $\Rightarrow$ $q^{LP}\geq q^{CP}$; coste LP = envolvente; sin inacción si hay coste hundido.
 \item Función con \concepto{rendim.\ marginales mixtos} (ley de proporciones variables, \autor{Turgot}): \emph{incumple eliminación gratuita} (PMg $<0$). El problema no es PMg decreciente, sino negativa. Se mantiene por motivo \emph{histórico} (\autor{Cassels} es anterior a la axiomática) y \emph{didáctico} (delimita la región económica).
-\item \concepto{Líneas de contorno} ($PMg_K=0$ arriba, $PMg_L=0$ abajo): isoclinas con RMST $\infty$ y 0. Entre ellas, \concepto{región económica}: ambas $PMg>0$, zona de sustitución. Con \autor{Inada}, toda la función.
+\item \concepto{Líneas de contorno} ($\mathrm{PMg}_K=0$ arriba, $\mathrm{PMg}_L=0$ abajo): isoclinas con RMST $\infty$ y 0. Entre ellas, \concepto{región económica}: ambas $\mathrm{PMg}>0$, zona de sustitución. Con \autor{Inada}, toda la función.
 \end{itemize}
 \graficorepaso[0.55\linewidth]{region-economica}{Región económica entre las líneas de contorno}
 \begin{formula}
-\centering $PMe_L=\dfrac{q}{z_L}$,\qquad $PMg_L=\dfrac{\partial F}{\partial z_L}$,\qquad $\varepsilon_{q,z_L}=\dfrac{PMg_L}{PMe_L}$\\[4pt]
-$\dfrac{dPMe_L}{dz_L}=\dfrac{PMg_L-PMe_L}{z_L}$\ \ $\Rightarrow$\ \ $PMg=PMe$ en máx.\ PMe
+\centering $\mathrm{PMe}_L=\dfrac{q}{z_L}$,\qquad $\mathrm{PMg}_L=\dfrac{\partial F}{\partial z_L}$,\qquad $\varepsilon_{q,z_L}=\dfrac{\mathrm{PMg}_L}{\mathrm{PMe}_L}$\\[4pt]
+$\dfrac{d\mathrm{PMe}_L}{dz_L}=\dfrac{\mathrm{PMg}_L-\mathrm{PMe}_L}{z_L}$\ \ $\Rightarrow$\ \ $\mathrm{PMg}=\mathrm{PMe}$ en máx.\ PMe
 \end{formula}
 \begin{itemize}
 \item PMe = pendiente del rayo desde el origen; PMg = pendiente de la tangente: máx.\ en la inflexión del PT, 0 en el máx.\ del PT.
-\item \concepto{Etapas} (\autor{Cassels}, 1936): \textbf{I} demasiado factor fijo (con RCE, \autor{Euler}: $PMe_L=PMg_L+PMg_K\,z_K/z_L$ $\Rightarrow$ $PMg_K<0$); \textbf{II} aquí produce la empresa (punto según precios); \textbf{III} demasiado factor variable.
+\item \concepto{Etapas} (\autor{Cassels}, 1936): \textbf{I} demasiado factor fijo (con RCE, \autor{Euler}: $\mathrm{PMe}_L=\mathrm{PMg}_L+\mathrm{PMg}_K\,z_K/z_L$ $\Rightarrow$ $\mathrm{PMg}_K<0$); \textbf{II} aquí produce la empresa (punto según precios); \textbf{III} demasiado factor variable.
 \end{itemize}
 {\centering\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{4pt}%
 \begin{tabular}{@{}lccl@{}}
 \toprule
 \textit{Tramo} & \textit{Productividades} & $\varepsilon_{q,z_L}$ & \textit{Producción}\\
 \midrule
-Etapa I & $PMg_L>PMe_L$ & $>1$ & extensiva\\
-Margen extensivo & $PMg_L=PMe_L$ máx. & $=1$ & óptimo técnico\\
-Etapa II & $0<PMg_L<PMe_L$ & $(0,1)$ & región económica\\
-Margen intensivo & $PMg_L=0$, máx.\ $q$ & $=0$ & máximo técnico\\
-Etapa III & $PMg_L<0$ & $<0$ & intensiva\\
+Etapa I & $\mathrm{PMg}_L>\mathrm{PMe}_L$ & $>1$ & extensiva\\
+Margen extensivo & $\mathrm{PMg}_L=\mathrm{PMe}_L$ máx. & $=1$ & óptimo técnico\\
+Etapa II & $0<\mathrm{PMg}_L<\mathrm{PMe}_L$ & $(0,1)$ & región económica\\
+Margen intensivo & $\mathrm{PMg}_L=0$, máx.\ $q$ & $=0$ & máximo técnico\\
+Etapa III & $\mathrm{PMg}_L<0$ & $<0$ & intensiva\\
 \bottomrule
 \end{tabular}\par}
 \graficorepaso[0.68\linewidth]{corto-plazo}{PT, PMe, PMg y las 3 etapas}
@@ -140,11 +140,11 @@ Etapa III & $PMg_L<0$ & $<0$ & intensiva\\
 \item \concepto{Causas}: crecientes: especialización (\autor{Smith}), indivisibilidades, relaciones físicas (tubería: diámetro $\times2$ $\Rightarrow$ sección $\times4$); decrecientes: coordinación, factores no ampliables.
 \end{itemize}
 \begin{formula}
-\centering $\varepsilon_{q,\lambda}(\vect{z})\equiv\left.\dfrac{d\ln F(\lambda\vect{z})}{d\ln\lambda}\right|_{\lambda=1}=\dfrac{\sum_iPMg_iz_i}{F(\vect{z})}=\sum_i\varepsilon_{q,z_i}$\\[5pt]
-Homogénea: $F(\lambda\vect{z})=\lambda^kF(\vect{z})$;\qquad \autor{Euler}: $\sum_iPMg_iz_i=kF$
+\centering $\varepsilon_{q,\lambda}(\vect{z})\equiv\left.\dfrac{d\ln F(\lambda\vect{z})}{d\ln\lambda}\right|_{\lambda=1}=\dfrac{\sum_i\mathrm{PMg}_iz_i}{F(\vect{z})}=\sum_i\varepsilon_{q,z_i}$\\[5pt]
+Homogénea: $F(\lambda\vect{z})=\lambda^kF(\vect{z})$;\qquad \autor{Euler}: $\sum_i\mathrm{PMg}_iz_i=kF$
 \end{formula}
 \begin{itemize}
-\item \concepto{Globales}: para \emph{todo} $\vect{z}$ (propiedad de $\mathcal{Y}$: cono, divisibilidad, aditividad); homogéneas de grado $k$: $\varepsilon_{q,\lambda}=k$ siempre. $PMg$ de grado $k-1$; RMST de grado 0. Con $k=1$, pagar la PMg agota el producto (\autor{Wicksteed}).
+\item \concepto{Globales}: para \emph{todo} $\vect{z}$ (propiedad de $\mathcal{Y}$: cono, divisibilidad, aditividad); homogéneas de grado $k$: $\varepsilon_{q,\lambda}=k$ siempre. $\mathrm{PMg}$ de grado $k-1$; RMST de grado 0. Con $k=1$, pagar la PMg agota el producto (\autor{Wicksteed}).
 \item \concepto{Locales}: en un punto, $\varepsilon_{q,\lambda}(\vect{z})$. CD: $\alpha+\beta$. Une CP (eje) y LP (rayo).
 \end{itemize}
 \graficorepaso[0.62\linewidth]{rendimientos-escala-isocuantas}{Isocuantas sobre un rayo: crecientes, constantes, decrecientes y variables}
@@ -160,7 +160,7 @@ Homogénea: $F(\lambda\vect{z})=\lambda^kF(\vect{z})$;\qquad \autor{Euler}: $\su
 \graficorepaso[\linewidth]{rendimientos-locales}{Tecnología «en S»: $\varepsilon_{q,\lambda}>1$ a escala baja, $<1$ a escala alta}
 \begin{itemize}
 \item \concepto{Homotética} $F=g(h(\vect{z}))$, $h$ homog.\ grado 1: isoclinas rectas; $\varepsilon_{q,\lambda}$ depende solo de $q$ (igual en cada isocuanta). Homogénea $\Rightarrow$ homotética, no al revés: $\ln(1+z_K^{1/2}z_L^{1/2})$.
-\item Rendim.\ a escala $\neq$ \concepto{economías de escala} (costes); en la senda de mínimo coste $\varepsilon_{q,\lambda}=CMe/CMg$ (\autor{Hanoch}, 1975); coinciden punto a punto si homotética.
+\item Rendim.\ a escala $\neq$ \concepto{economías de escala} (costes); en la senda de mínimo coste $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$ (\autor{Hanoch}, 1975); coinciden punto a punto si homotética.
 \item RCE $\Rightarrow$ tamaño de la empresa indeterminado (lo deciden demanda o entrada).
 \item \emph{Evidencia}: industria de EE.\,UU.\ con rendim.\ constantes o algo decrecientes (\autor{Basu}-\autor{Fernald}, 1997) $\Rightarrow$ avala RCE agregados.
 \end{itemize}
@@ -195,16 +195,16 @@ Cada plazo es un corte de la superficie: CP, rendim.\ decrecientes y etapas; LP,
 \item Procesos separables: $X=F_X(L_X,K_X)$, $Y=F_Y(L_Y,K_Y)$, $L_X+L_Y=\overline{L}$, $K_X+K_Y=\overline{K}$. Caja: mapa de $Y$ girado 180° sobre el de $X$ \vertema{3.A.21}.
 \end{itemize}
 \begin{itemize}
-\item Isocuantas que se cortan ($A$) $\Rightarrow$ ineficiente: reasignando, más $X$ con igual $Y$ ($B$) o más $Y$ con igual $X$ ($C$). \concepto{Eficiencia técnica} (\autor{Pareto} en la producción): $RMST^X_{LK}=RMST^Y_{LK}$; tangencias = \concepto{curva de contrato} \vertema{3.A.22} $\to$ \concepto{FPP}.
+\item Isocuantas que se cortan ($A$) $\Rightarrow$ ineficiente: reasignando, más $X$ con igual $Y$ ($B$) o más $Y$ con igual $X$ ($C$). \concepto{Eficiencia técnica} (\autor{Pareto} en la producción): $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$; tangencias = \concepto{curva de contrato} \vertema{3.A.22} $\to$ \concepto{FPP}.
 \end{itemize}
 \graficorepaso[\linewidth]{caja-edgeworth-fpp}{Caja, curva de contrato y FPP}
 \begin{formula}
-\centering $RMT_{XY}\equiv-\dfrac{dY}{dX}=\dfrac{PMg^Y_L}{PMg^X_L}=\dfrac{PMg^Y_K}{PMg^X_K}=\dfrac{CMg_X}{CMg_Y}$
+\centering $\mathrm{RMT}_{XY}\equiv-\dfrac{dY}{dX}=\dfrac{\mathrm{PMg}^Y_L}{\mathrm{PMg}^X_L}=\dfrac{\mathrm{PMg}^Y_K}{\mathrm{PMg}^X_K}=\dfrac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}$
 \end{formula}
 \begin{itemize}
 \item RMST: pendiente de la isocuanta (2 factores, 1 producto); RMT: de la frontera de transformación (2 productos, factores dados).
 \item FPP decreciente: rendim.\ decrecientes $\Rightarrow$ cóncava; RCE: cóncava si intensidades distintas, lineal si iguales; crecientes: puede ser convexa. Progreso técnico y dotaciones la desplazan hacia fuera.
-\item Competencia perfecta: $RMST^X=RMST^Y=w_L/w_K$ (en la curva de contrato), $RMT=p_X/p_Y$.
+\item Competencia perfecta: $\mathrm{RMST}^X=\mathrm{RMST}^Y=w_L/w_K$ (en la curva de contrato), $\mathrm{RMT}=p_X/p_Y$.
 \end{itemize}
 
 \sub{III.2. Producción conjunta}
@@ -212,7 +212,7 @@ Cada plazo es un corte de la superficie: CP, rendim.\ decrecientes y etapas; LP,
 \item \concepto{Función de transformación}: $\mathcal{Y}=\{\vect{y}:T(\vect{y})\leq0\}$, $T=0$ eficientes; un producto: $T=q-F(\vect{z})$. $\mathcal{Y}$ lo admite sin cambios; lo que no sirve es $F$.
 \end{itemize}
 \begin{formula}
-\centering $RMT_{12}\equiv-\left.\dfrac{dq_2}{dq_1}\right|_{T=0}=\dfrac{\partial T/\partial q_1}{\partial T/\partial q_2}$;\qquad óptimo: $RMT_{12}=\dfrac{p_1}{p_2}$
+\centering $\mathrm{RMT}_{12}\equiv-\left.\dfrac{dq_2}{dq_1}\right|_{T=0}=\dfrac{\partial T/\partial q_1}{\partial T/\partial q_2}$;\qquad óptimo: $\mathrm{RMT}_{12}=\dfrac{p_1}{p_2}$
 \end{formula}
 \graficorepaso[0.6\linewidth]{transformacion-empresa}{Curva de transformación de la empresa y RMT}
 \begin{itemize}
@@ -255,7 +255,7 @@ Con varios productos, estar en cada isocuanta no basta: hay que igualar las RMST
 \hito{1961}{ACMS: CES; \autor{Uzawa}: teorema de neutralidad}
 \hito{1963}{\autor{Inada}: condiciones}
 \hito{1965}{\autor{Frisch}: \emph{regular ultra passum law}}
-\hito{1975}{\autor{Hanoch}: $\varepsilon_{q,\lambda}=CMe/CMg$}
+\hito{1975}{\autor{Hanoch}: $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$}
 \hito{1981}{\autor{Panzar}-\autor{Willig}: economías de alcance}
 
 \bloque{Datos clave}
@@ -273,13 +273,13 @@ Con varios productos, estar en cada isocuanta no basta: hay que igualar las RMST
 \item \textbf{¿Cuasiconcavidad o concavidad?} Cuasiconcavidad: isocuantas convexas, sin escala; concavidad: rendim.\ no crecientes. Para maximizar el beneficio no basta la primera.
 \item \textbf{¿Productividad marginal decreciente y rendimientos crecientes a la vez?} Sí: CD con $\alpha,\beta<1$ y $\alpha+\beta>1$.
 \item \textbf{¿Rendimientos globales y locales?} Globales: todo $\vect{z}$ (homogéneas, $\varepsilon_{q,\lambda}=k$); locales: $\varepsilon_{q,\lambda}(\vect{z})=\sum\varepsilon_{q,z_i}$, pueden cambiar con la escala.
-\item \textbf{¿Rendimientos y economías de escala?} Tecnología frente a costes; $\varepsilon_{q,\lambda}=CMe/CMg$ en la senda de mínimo coste; coinciden con homotéticas.
+\item \textbf{¿Rendimientos y economías de escala?} Tecnología frente a costes; $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$ en la senda de mínimo coste; coinciden con homotéticas.
 \item \textbf{¿Por qué \autor{Leontief} y CD son límites de la CES?} En $\rho=0$ la CES no está definida (\autor{L'Hôpital}); $\rho\to-\infty$ da el mínimo.
 \item \textbf{¿Por qué el modelo de \autor{Solow} supone progreso de \autor{Harrod}?} Teorema de \autor{Uzawa}: lo exige el crecimiento equilibrado.
 \item \textbf{¿Qué determina la forma de la FPP?} Rendimientos e intensidades factoriales.
 \item \textbf{¿Qué pasa con el beneficio con RCE?} Homogéneo de grado 1 $\Rightarrow$ no acotado o máximo 0; escala indeterminada, oferta correspondencia.
 \item \textbf{¿Qué mide $\sigma$ y qué dice de la distribución?} La curvatura de la isocuanta; si $\sigma<1$, al subir $w_L/w_K$ sube la participación del trabajo (\autor{Hicks}, 1932).
-\item \textbf{¿Qué es la región económica?} Zona entre las líneas de contorno ($PMg_K=0$, $PMg_L=0$) con ambas $PMg>0$; coincide con la etapa II. Con \autor{Inada} (CD), toda la función.
+\item \textbf{¿Qué es la región económica?} Zona entre las líneas de contorno ($\mathrm{PMg}_K=0$, $\mathrm{PMg}_L=0$) con ambas $\mathrm{PMg}>0$; coincide con la etapa II. Con \autor{Inada} (CD), toda la función.
 \item \textbf{¿Qué diferencia la caja de \autor{Edgeworth} de la producción conjunta?} La caja supone procesos separables; en la conjunta un mismo proceso da varios productos (función de transformación, economías de alcance).
 \item \textbf{¿Por qué existe la función de costes con cualquier rendimiento?} Minimizar el coste de un $q$ dado es un problema acotado: basta la cuasiconcavidad.
 \item \textbf{¿Qué aporta una función homotética?} RMST independiente de la escala (isoclinas rectas, senda de expansión = rayo) y, a la vez, rendim.\ que cambian con la escala.

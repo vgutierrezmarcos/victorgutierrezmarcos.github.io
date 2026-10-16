@@ -1,7 +1,7 @@
 # Guion de escenas del vídeo del cante del tema 3.A.8 (formato en scripts/temario/generar-video.py).
 # Dice lo mismo que guion-cante.md: el texto de cada «di» es el del cante.
 # Rehecho el 14/10/2026 con la estructura y la notación del tema del 13/10 (modelos en a)-e),
-# minutos 2,5 + 11 + 8 + 7,5 + 1) y los criterios del vídeo de CRITERIOS.md § 8: los 3D, solo
+# minutos 2′30″ + 11′ + 8′ + 7′30″ + 1′) y los criterios del vídeo de CRITERIOS.md § 8: los 3D, solo
 # como apoyo que avanza por estados; nada se escribe dos veces (los esquemas de síntesis son
 # apoyo que crece o se construyen en la pizarra a lo largo del apartado).
 # Autor: Víctor Gutiérrez Marcos
@@ -199,10 +199,10 @@ escenas:
         pizarra: [{grafico: propiedades-curvas-indiferencia-pizarra, capa: 19}]
         guion: "Además: continuas (continuidad) y sin vértices (diferenciabilidad)"
       - di: "Su pendiente en valor absoluto es la relación marginal de sustitución: [pausa] cuánto bien dos cede el consumidor por una unidad más del bien uno sin cambiar su utilidad. Es el cociente de las utilidades marginales y, por la convexidad, decrece."
-        pizarra: [{formula: 'RMS_{12}\equiv-\left.\frac{dx_2}{dx_1}\right|_{U=\overline{U}}=\frac{U_1}{U_2}', zona: "1", tam: 0.85}]
+        pizarra: [{formula: '\mathrm{RMS}_{12}\equiv-\left.\frac{dx_2}{dx_1}\right|_{U=\overline{U}}=\frac{U_1}{U_2}', zona: "1", tam: 0.85}]
         guion: "Teorema de la función implícita; decreciente por la convexidad"
       - di: "Como depende de las unidades, la sustituibilidad se mide con la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre los bienes ante la de la relación marginal de sustitución."
-        pizarra: [{formula: '\sigma\equiv\frac{d\ln(x_2/x_1)}{d\ln RMS_{12}}', zona: "1", tam: 0.85}]
+        pizarra: [{formula: '\sigma\equiv\frac{d\ln(x_2/x_1)}{d\ln\mathrm{RMS}_{12}}', zona: "1", tam: 0.85}]
         guion: "σ: número puro; mide la curvatura"
       - di: "La CES la mantiene constante y anida los casos clásicos: Leontief, con sigma cero; Cobb-Douglas, con sigma uno, y la lineal, con sigma infinita."
         apoyo: {grafico: ces-curvas-indiferencia, capa: 5, zona: "1"}
@@ -258,7 +258,7 @@ escenas:
         pizarra: [{grafico: solucion-interior-esquina, capa: 6}]
         guion: "Tangencia: RMS = p₁/p₂"
       - di: "Analíticamente, la utilidad marginal por euro es la misma en todos los bienes e igual a lambda: [pausa] es la segunda ley de Gossen."
-        pizarra: [{formula: '\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ RMS_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}]
+        pizarra: [{formula: '\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}]
         apunte: "Segunda ley de Gossen (1854): igual utilidad marginal por unidad monetaria en todos los bienes"
       - di: "Pero la solución puede ser de esquina. A la derecha, otra recta y otras tres curvas: la más alta alcanzable toca la recta en el eje, y el bien dos no se consume."
         pizarra: [{grafico: solucion-interior-esquina, capa: 11}]

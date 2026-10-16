@@ -220,6 +220,32 @@ def main():
     pie = estilo_parrafo(doc, 'Pie de imagen')
     fuente(pie, tam=8, cursiva=True, color=RGBColor(0x3B, 0x38, 0x38))
     pie.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    # Función clave (\funcionclave): recuadro morado con fondo muy suave, centrado
+    clave = estilo_parrafo(doc, 'Funcion clave')
+    fuente(clave, tam=11, color=MORADO)
+    clave.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    clave.paragraph_format.left_indent = clave.paragraph_format.right_indent = Cm(2.5)
+    clave.paragraph_format.space_before = clave.paragraph_format.space_after = Pt(6)
+    ppr = clave.element.get_or_add_pPr()
+    bordes(ppr, '5F2987', grosor='8', espacio='4')
+    sombreado(ppr, 'F7F3FA')
+    # Gráfico pequeño en una nota al pie (\graficonota)
+    gnota = estilo_parrafo(doc, 'Grafico nota', base='Footnote Text')
+    gnota.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    # Línea de páginas del PDF bajo el título
+    pags = estilo_parrafo(doc, 'Paginas del tema')
+    fuente(pags, tam=9, color=GRIS, cursiva=True)
+    pags.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    pags.paragraph_format.space_after = Pt(18)
+    # Minutos del cante junto al título del apartado (\minutos)
+    try:
+        minu = estilos['Minutos']
+    except KeyError:
+        minu = estilos.add_style('Minutos', WD_STYLE_TYPE.CHARACTER)
+    minu.font.size = Pt(8)
+    minu.font.italic = True
+    minu.font.bold = False
+    minu.font.all_caps = False
     try:
         ref = estilos['Referencia a tema']
     except KeyError:

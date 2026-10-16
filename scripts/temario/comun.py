@@ -184,3 +184,43 @@ def guardar_pdf_anterior(tema):
                 f.write(r.stdout)
             return destino
     return None
+
+
+# --- Minutos y páginas ---------------------------------------------------------------
+def minutos_texto(valor, primas=('′', '″')):
+    """Minutos decimales sin decimales, como \\tceemmss de tcee.sty:
+    2,5 → 2′30″; 26,5 → 26′30″; 1 → 1′. Acepta '2,5', '2.5' o un número; si no
+    es un número, lo devuelve tal cual."""
+    try:
+        seg = round(float(str(valor).strip().replace(',', '.')) * 60)
+    except ValueError:
+        return str(valor)
+    m, s = divmod(seg, 60)
+    return f'{m}{primas[0]}' + (f'{s:02d}{primas[1]}' if s else '')
+
+
+def segundos_texto(segundos):
+    """Un tiempo en segundos como 17′05″ (o 17′ si son minutos justos)."""
+    return minutos_texto(max(0, int(round(segundos))) / 60)
+
+
+def paginas_partes(aux):
+    """Páginas de cada parte del PDF según el .aux (las escribe tcee.sty):
+    {'tema': 18, 'anexos': 6, 'bib': 2}. Vacío si no hay .aux."""
+    if not os.path.exists(aux):
+        return {}
+    texto = open(aux, encoding='utf-8', errors='replace').read()
+    return {m.group(1): int(m.group(2))
+            for m in re.finditer(r'\\global\s*\\@namedef\s*\{tcee@pags@(\w+)\}\{(\d+)\}', texto)}
+
+
+def linea_paginas(partes):
+    """«Tema: 18 págs. · Anexos: 6 · Bibliografía: 2», como en la portada del PDF."""
+    if 'tema' not in partes:
+        return ''
+    trozos = [f'Tema: {partes["tema"]} págs.']
+    if partes.get('anexos'):
+        trozos.append(f'Anexos: {partes["anexos"]}')
+    if partes.get('bib'):
+        trozos.append(f'Bibliografía: {partes["bib"]}')
+    return ' · '.join(trozos)

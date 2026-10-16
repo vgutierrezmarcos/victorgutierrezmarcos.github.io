@@ -23,7 +23,7 @@ Teoría de la producción. Caracterización de la tecnología de la empresa a co
 > - **III.1**. Columnas 40 | 60. Columna 1: `formacion-caja` (capas 1-3). Columna 2: los supuestos (funciones y dotaciones). Pinta y borra: nueva rejilla de una columna en dos filas (72/28). Arriba, `caja-edgeworth-fpp` (capas 1-10); abajo, la igualdad de las RMST, que se borra para escribir la RMT. Se borra.
 > - **III.2**. Columnas 40 | 60. Columna 1: T(y) ≤ 0, RMT de la empresa, RMT = p₁/p₂ y economías de alcance. Columna 2: `transformacion-empresa` (capas 1-5). Así queda hasta la conclusión.
 
-## Introducción (2,5 min)
+## Introducción (2′30″)
 
 ### Enganche
 
@@ -49,7 +49,7 @@ De ahí, las preguntas clave. ¿Cómo se representa lo que una empresa puede pro
 
 La exposición sigue tres bloques: la tecnología, con el conjunto de posibilidades de producción, la función de producción y sus isocuantas; las leyes temporales de la producción, del corto al muy largo plazo, y la empresa multiproducto. De lo posible, a cómo varía con el plazo y con varios productos.
 
-## I. La tecnología: definición y propiedades de la función de producción (10 min)
+## I. La tecnología: definición y propiedades de la función de producción (10′)
 
 ### I. La tecnología: definición y propiedades de la función de producción
 
@@ -99,7 +99,7 @@ En suma, la frontera reúne los planes técnicamente eficientes, y estos cuatro 
 
 [Borrar la zona 2] [Apoyo 2, no se escribe: gráfico `funcion-produccion-3d` hasta la capa 5] Debajo de la superficie quedan los planes posibles; encima, los imposibles. Por construcción, la función solo recoge los métodos de producción técnicamente eficientes.
 
-[Pizarra 1: fórmula `F(\vec{0})=0,\qquad PMg_i\equiv\frac{\partial F}{\partial z_i}\geq 0`] De los axiomas salen sus propiedades: es cardinal, porque el producto se mide en unidades físicas; efe de cero es cero, y es no decreciente: las productividades marginales no son negativas. Además, se supone continua y diferenciable.
+[Pizarra 1: fórmula `F(\vec{0})=0,\qquad \mathrm{PMg}_i\equiv\frac{\partial F}{\partial z_i}\geq 0`] De los axiomas salen sus propiedades: es cardinal, porque el producto se mide en unidades físicas; efe de cero es cero, y es no decreciente: las productividades marginales no son negativas. Además, se supone continua y diferenciable.
 
 > Apunte: Wicksteed (1894): la producción como función general de los factores
 
@@ -123,13 +123,13 @@ Como las curvas de indiferencia, hay infinitas, las más alejadas dan más produ
 
 [Pizarra 2: gráfico `isocuantas-rmst` hasta la capa 2] Dibujo una isocuanta convexa en el plano del trabajo y el capital, con sus dos ejes.
 
-[Pizarra 1: fórmula `RMST_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{PMg_L}{PMg_K}`] [Pizarra: gráfico `isocuantas-rmst` hasta la capa 3] Su pendiente, en valor absoluto, es la relación marginal de sustitución técnica: menos de zeta ka entre de zeta ele, con la producción constante, igual al cociente de las productividades marginales. En el punto A trazo la tangente y su triángulo: es el capital que puede dejar de usarse al emplear una unidad más de trabajo, sin que cambie la producción. Es una tasa técnica de intercambio entre factores.
+[Pizarra 1: fórmula `\mathrm{RMST}_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}`] [Pizarra: gráfico `isocuantas-rmst` hasta la capa 3] Su pendiente, en valor absoluto, es la relación marginal de sustitución técnica: menos de zeta ka entre de zeta ele, con la producción constante, igual al cociente de las productividades marginales. En el punto A trazo la tangente y su triángulo: es el capital que puede dejar de usarse al emplear una unidad más de trabajo, sin que cambie la producción. Es una tasa técnica de intercambio entre factores.
 
 [Pizarra: gráfico `isocuantas-rmst` hasta la capa 4] En be, con más trabajo y menos capital, la tangente es más plana: la relación marginal de sustitución técnica decrece. Pero depende de las unidades.
 
 Las curvas que unen puntos de igual pendiente en distintas isocuantas son las isoclinas: rectas por el origen si la función es homotética.
 
-[Pizarra 1: fórmula `\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln RMST_{LK}}\geq 0`] Para medir la sustituibilidad sin depender de las unidades, Hicks y Joan Robinson definen la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre capital y trabajo ante una variación porcentual de la relación marginal de sustitución técnica. Mide la curvatura de la isocuanta.
+[Pizarra 1: fórmula `\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln \mathrm{RMST}_{LK}}\geq 0`] Para medir la sustituibilidad sin depender de las unidades, Hicks y Joan Robinson definen la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre capital y trabajo ante una variación porcentual de la relación marginal de sustitución técnica. Mide la curvatura de la isocuanta.
 
 > Apunte: Hicks (1932): «una medida de la facilidad con la que el factor variable puede sustituirse por otros»
 
@@ -141,7 +141,7 @@ Cuanto mayor es sigma, más fácil es sustituir. Y decide el reparto: si sigma e
 
 > Apunte: Cobb y Douglas (1928): exponentes de 1/4 (capital) y 3/4 (trabajo) en la industria de EE. UU., 1899-1922
 
-[Pizarra 1: fórmula `PMg_L=\beta\,\frac{q}{z_L},\quad RMST_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1`] Cada productividad marginal es el exponente por la productividad media. La relación marginal de sustitución técnica depende solo de la proporción de factores, y de ahí sale una sigma igual a uno en todo punto.
+[Pizarra 1: fórmula `\mathrm{PMg}_L=\beta\,\frac{q}{z_L},\quad \mathrm{RMST}_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1`] Cada productividad marginal es el exponente por la productividad media. La relación marginal de sustitución técnica depende solo de la proporción de factores, y de ahí sale una sigma igual a uno en todo punto.
 
 [Pizarra 1: fórmula `F(\lambda\vec{z})=\lambda^{\alpha+\beta}F(\vec{z})`] [Apoyo 2, no se escribe: gráfico `superficie-produccion` hasta la capa 5] Es homogénea de grado alfa más beta: rendimientos crecientes, constantes o decrecientes según esa suma supere, iguale o no alcance uno. La superficie de apoyo lo resume: sus curvas de nivel son las isocuantas, y sus cortes, los plazos.
 
@@ -173,7 +173,7 @@ La de Leontief, que anticipaba Cassel en 1918, es la tecnología de las tablas i
 
 Recapitulando, los axiomas dan la función de producción, y sus isocuantas y sigma miden la sustitución. La superficie es ahora nuestro mapa: cada plazo será un corte de ella.
 
-## II. Análisis de la función de producción: las leyes temporales de la producción (11,5 min)
+## II. Análisis de la función de producción: las leyes temporales de la producción (11′30″)
 
 ### II. Análisis de la función de producción: las leyes temporales de la producción
 
@@ -217,9 +217,9 @@ Una advertencia al tribunal: la función que uso, pasado un máximo, decrece, e 
 
 > Apunte: Turgot (1767): proporciones variables · West, Malthus, Ricardo y Torrens (1815): rendimientos decrecientes de la tierra
 
-[Pizarra 1: fórmula `PMg_L=\frac{\partial F(z_L,\overline{z}_K)}{\partial z_L}`] [Pizarra: gráfico `corto-plazo` hasta la capa 3] La productividad marginal es la derivada del producto total respecto al trabajo, con el capital constante: la pendiente de la tangente, máxima en el punto de inflexión.
+[Pizarra 1: fórmula `\mathrm{PMg}_L=\frac{\partial F(z_L,\overline{z}_K)}{\partial z_L}`] [Pizarra: gráfico `corto-plazo` hasta la capa 3] La productividad marginal es la derivada del producto total respecto al trabajo, con el capital constante: la pendiente de la tangente, máxima en el punto de inflexión.
 
-[Pizarra 1: fórmula `PMe_L=\frac{q}{z_L}`] [Pizarra: gráfico `corto-plazo` hasta la capa 4] La productividad media es el producto total entre el trabajo: la pendiente del rayo desde el origen. Es máxima donde ese rayo es tangente al producto total, en el punto que marco.
+[Pizarra 1: fórmula `\mathrm{PMe}_L=\frac{q}{z_L}`] [Pizarra: gráfico `corto-plazo` hasta la capa 4] La productividad media es el producto total entre el trabajo: la pendiente del rayo desde el origen. Es máxima donde ese rayo es tangente al producto total, en el punto que marco.
 
 [Pizarra: gráfico `corto-plazo` hasta la capa 5] El producto total alcanza su máximo donde la productividad marginal se anula.
 
@@ -233,7 +233,7 @@ Una advertencia al tribunal: la función que uso, pasado un máximo, decrece, e 
 
 > Apunte: Etapa I: PMg > PMe · Etapa II: 0 < PMg < PMe · Etapa III: PMg < 0
 
-[Pizarra 1: fórmula `\varepsilon_{q,z_L}\equiv\frac{\partial q}{\partial z_L}\,\frac{z_L}{q}=\frac{PMg_L}{PMe_L}`] Las ordena la elasticidad-producto, el cociente entre la productividad marginal y la media: mayor que uno en la primera etapa, entre cero y uno en la segunda y negativa en la tercera.
+[Pizarra 1: fórmula `\varepsilon_{q,z_L}\equiv\frac{\partial q}{\partial z_L}\,\frac{z_L}{q}=\frac{\mathrm{PMg}_L}{\mathrm{PMe}_L}`] Las ordena la elasticidad-producto, el cociente entre la productividad marginal y la media: mayor que uno en la primera etapa, entre cero y uno en la segunda y negativa en la tercera.
 
 En suma, a corto plazo los rendimientos decrecientes delimitan las etapas. ¿Y si la empresa ajusta todos sus factores?
 
@@ -277,7 +277,7 @@ En suma, a corto plazo los rendimientos decrecientes delimitan las etapas. ¿Y s
 
 ### II.2. Largo plazo: rendimientos globales y locales a escala
 
-[Borrar la pizarra] [Pizarra 1b: fórmula `\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_iPMg_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}`] Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. Une el corto y el largo plazo.
+[Borrar la pizarra] [Pizarra 1b: fórmula `\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_i\mathrm{PMg}_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}`] Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. Une el corto y el largo plazo.
 
 > Apunte: Jehle y Reny (2011), cap. 3 · en la Cobb-Douglas, la elasticidad de escala es α + β
 
@@ -325,7 +325,7 @@ Basu y Fernald encuentran en la industria estadounidense rendimientos constantes
 
 Recapitulando el bloque: cada plazo es un corte de la superficie, con su ley. Hasta aquí, un solo producto. ¿Qué cambia cuando se obtienen varios con los mismos factores?
 
-## III. Empresa multiproducto: curva de contrato (4,5 min)
+## III. Empresa multiproducto: curva de contrato (4′30″)
 
 ### III.1. La caja de Edgeworth: curva de contrato y frontera de posibilidades de producción
 
@@ -345,11 +345,11 @@ Recapitulando el bloque: cada plazo es un corte de la superficie, con su ley. Ha
 
 [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 5] Reasignando factores podemos ir a be, con más equis y la misma i griega, o a ce, con más i griega y la misma equis. En be y en ce las isocuantas son tangentes.
 
-[Pizarra 1b: fórmula `RMST^X_{LK}=RMST^Y_{LK}`] [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 6] La asignación es técnicamente eficiente cuando las relaciones marginales de sustitución técnica de los dos bienes son iguales. El lugar geométrico de esas tangencias es la curva de contrato, que une los dos orígenes.
+[Pizarra 1b: fórmula `\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}`] [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 6] La asignación es técnicamente eficiente cuando las relaciones marginales de sustitución técnica de los dos bienes son iguales. El lugar geométrico de esas tangencias es la curva de contrato, que une los dos orígenes.
 
 [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 8] Llevando cada punto de la curva de contrato al plano de los productos, obtenemos la frontera de posibilidades de producción, con be y ce sobre ella. A, ineficiente, queda dentro.
 
-[Borrar la zona 1b] [Pizarra 1b: fórmula `RMT_{XY}\equiv-\frac{dY}{dX}=\frac{CMg_X}{CMg_Y}`] [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 9] Su pendiente es la relación marginal de transformación, menos de i griega entre de equis: el coste de oportunidad de una unidad más de equis, igual al cociente de costes marginales. Es la análoga de la relación marginal de sustitución técnica.
+[Borrar la zona 1b] [Pizarra 1b: fórmula `\mathrm{RMT}_{XY}\equiv-\frac{dY}{dX}=\frac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}`] [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 9] Su pendiente es la relación marginal de transformación, menos de i griega entre de equis: el coste de oportunidad de una unidad más de equis, igual al cociente de costes marginales. Es la análoga de la relación marginal de sustitución técnica.
 
 [Pizarra: gráfico `caja-edgeworth-fpp` hasta la capa 10] El progreso técnico y más dotaciones desplazan la frontera hacia fuera, y la competencia perfecta, al igualar los precios de los factores, lleva a la curva de contrato.
 
@@ -365,9 +365,9 @@ Pero la caja supone procesos separables. No recoge un proceso que da varios prod
 
 [Pizarra 2: gráfico `transformacion-empresa` hasta la capa 2] Con dos productos y unos factores dados, es la curva de transformación de la empresa. Trazo los ejes de los dos productos y la curva, cóncava si el conjunto es convexo; debajo, sombreados, los planes posibles de la empresa.
 
-[Pizarra 1: fórmula `RMT_{12}\equiv-\left.\frac{dq_2}{dq_1}\right|_{T=0}=\frac{\partial T/\partial q_1}{\partial T/\partial q_2}`] [Pizarra: gráfico `transformacion-empresa` hasta la capa 3] Su pendiente es la relación marginal de transformación de la empresa: lo que hay que dejar de producir del bien dos para obtener una unidad más del uno, con los mismos factores. En A trazo la tangente y su triángulo. Crece al especializarse.
+[Pizarra 1: fórmula `\mathrm{RMT}_{12}\equiv-\left.\frac{dq_2}{dq_1}\right|_{T=0}=\frac{\partial T/\partial q_1}{\partial T/\partial q_2}`] [Pizarra: gráfico `transformacion-empresa` hasta la capa 3] Su pendiente es la relación marginal de transformación de la empresa: lo que hay que dejar de producir del bien dos para obtener una unidad más del uno, con los mismos factores. En A trazo la tangente y su triángulo. Crece al especializarse.
 
-[Pizarra 1: fórmula `RMT_{12}=\frac{p_1}{p_2}`] [Pizarra: gráfico `transformacion-empresa` hasta la capa 4] Con precios dados, la empresa elige el punto de la frontera en el que la relación marginal de transformación iguala el precio relativo de los productos: la recta de isobeneficio es tangente a la curva en A.
+[Pizarra 1: fórmula `\mathrm{RMT}_{12}=\frac{p_1}{p_2}`] [Pizarra: gráfico `transformacion-empresa` hasta la capa 4] Con precios dados, la empresa elige el punto de la frontera en el que la relación marginal de transformación iguala el precio relativo de los productos: la recta de isobeneficio es tangente a la curva en A.
 
 [Pizarra: gráfico `transformacion-empresa` hasta la capa 5] Y con más factores o progreso técnico, la curva se desplaza hacia fuera, como la frontera de la economía, y se produce más de los dos bienes.
 
@@ -381,7 +381,7 @@ Hay producción conjunta cuando un proceso da varios productos a la vez: en prop
 
 Recapitulando: con varios productos, la eficiencia exige la curva de contrato, y la frontera es una función de transformación. Después vendrían los precios.
 
-## Conclusión (1,5 min)
+## Conclusión (1′30″)
 
 ### Recapitulación
 

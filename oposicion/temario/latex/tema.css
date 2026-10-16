@@ -41,11 +41,16 @@
 .tema-indice li { margin: 0.25rem 0; }
 .tema-indice a { color: var(--color-text); text-decoration: none; }
 .tema-indice a:hover { color: var(--color-primary); }
+/* Los minutos van a la derecha de la primera línea de su propio título (con
+   float, un título largo los empujaba a la línea del apartado siguiente) */
+.tema-indice a:has(.minutos) { display: block; position: relative; padding-right: 2.7rem; }
 .tema-indice .minutos {
-    float: right;
+    position: absolute;
+    top: 0.1em;
+    right: 0;
     color: var(--color-text-light);
     font-size: 0.75rem;
-    margin-left: 0.4rem;
+    white-space: nowrap;
 }
 
 /* Documento */
@@ -166,6 +171,25 @@
 .tema-documento .vertema { color: var(--color-text-light); font-size: 0.92em; }
 .tema-documento a { color: var(--color-primary); }
 
+/* Función clave (\funcionclave): ecuación recuadrada en morado, centrada */
+.tema-documento .funcionclave {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0.9rem auto;
+    padding: 0.15rem 0.9rem;
+    border: 1.5px solid var(--color-primary);
+    border-radius: 4px;
+    background: #F7F3FA;
+    color: var(--color-primary);
+    overflow-x: auto;
+}
+.tema-documento .funcionclave p { margin: 0; }
+.tema-documento .funcionclave mjx-container[display="true"] { margin: 0.5em 0; }
+/* Gráfico pequeño en una nota al pie (\graficonota) */
+.tema-documento .notagrafico { text-align: center; margin: 0.4rem 0; }
+.tema-documento .notagrafico img { width: 45%; min-width: 12rem; height: auto; }
+.tema-paginas { margin-top: 0.1rem; }
+
 /* Cajas */
 .notaopositor, .anotaciones, .ideaclave, .esquema {
     border-radius: 3px;
@@ -197,7 +221,7 @@
     font-size: 0.92rem;
     margin-bottom: 0.4rem;
 }
-.tema-documento figcaption .etiqueta { color: var(--color-primary); font-weight: 700; }
+.tema-documento figcaption .etiqueta, .tema-documento caption .etiqueta { color: var(--color-primary); font-weight: 700; }
 .tema-documento figure img { width: min(100%, 560px); max-width: 100%; height: auto; }
 /* Si el .tex fija el ancho (\grafico[0.85\textwidth]), pandoc lo pone en style: se respeta (hasta 900 px) */
 .tema-documento figure img[style*="width"] { max-width: min(100%, 900px); }
@@ -205,6 +229,7 @@
 
 /* Tablas */
 .tema-documento table { border-collapse: collapse; margin: 1rem auto; font-size: 0.9rem; max-width: 100%; display: block; overflow-x: auto; }
+.tema-documento table caption { font-family: var(--font-body); font-size: 0.92rem; margin-bottom: 0.4rem; text-align: center; }
 .tema-documento th { background: var(--color-primary); color: #fff; padding: 0.35rem 0.6rem; }
 .tema-documento td { border-bottom: 1px solid var(--color-border); padding: 0.35rem 0.6rem; vertical-align: top; }
 

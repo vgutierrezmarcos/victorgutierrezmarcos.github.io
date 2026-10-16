@@ -136,7 +136,7 @@ from scipy import ndimage
 from skimage.morphology import skeletonize
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log  # noqa: E402
+from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto  # noqa: E402
 
 ANCHO, ALTO = 1920, 1080
 FPS = 25
@@ -1250,7 +1250,8 @@ class Pantallas:
         izq = f'Tema {self.tema.codigo}'
         d.text((30, 11), izq, font=F_BARRA, fill='white')
         x = 30 + d.textlength(izq, font=F_BARRA) + 22
-        reloj = f'{mmss(t)} / {mmss(total)}   ·   quedan {mmss(total - t)}'
+        # Sin decimales y con primas, como en el tema (CRITERIOS.md): 12′05″ / 30′ · quedan 17′55″
+        reloj = f'{segundos_texto(t)} / {segundos_texto(total)}   ·   quedan {segundos_texto(total - t)}'
         w_reloj = d.textlength(reloj, font=F_BARRA_L)
         d.text((ANCHO - 30 - w_reloj, 11), reloj, font=F_BARRA_L, fill=(236, 226, 246))
         d.text((x, 11), recortar(d, e.get('titulo') or e['bloque'], F_BARRA_L, ANCHO - 90 - w_reloj - x),
@@ -1270,7 +1271,19 @@ class Pantallas:
             if pasado:
                 marca_hecho(d, xt + 8, 76, 11, LILA)
                 xt += 26
-            d.text((xt, 63), recortar(d, b['nombre'], fnt, x1 - xt - 10), font=fnt, fill=color)
+            # Minutos del bloque a la derecha de la celda (2′30″), si caben sin recortar el nombre
+            ancho_min = 0
+            if b.get('minutos') is not None:
+                etiqueta_min = minutos_texto(b['minutos'])
+                ancho_min = d.textlength(etiqueta_min, font=F_PASO)
+                if d.textlength(b['nombre'], font=fnt) + ancho_min + 24 <= x1 - xt - 10 \
+                        or x1 - xt - 10 - ancho_min - 14 >= 260:
+                    d.text((x1 - 12 - ancho_min, 66), etiqueta_min, font=F_PASO,
+                           fill=(225, 212, 238) if actual else LILA_APAGADO)
+                    ancho_min += 14
+                else:
+                    ancho_min = 0
+            d.text((xt, 63), recortar(d, b['nombre'], fnt, x1 - xt - 10 - ancho_min), font=fnt, fill=color)
         # Fila 3: apartados del bloque actual (o partes de la introducción y la conclusión)
         d.rectangle([0, 98, ANCHO, CAB - 6], fill=(72, 33, 102))
         filas = self._pasos_fila(escena, parte)

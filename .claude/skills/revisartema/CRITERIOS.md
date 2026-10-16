@@ -62,9 +62,16 @@ Cada tema revisado debe quedar:
   - **Reparto de minutos** (Víctor, 13/10/2026): introducción
     **2'00"–2'30"** y conclusión **1'00"–1'30"**; el cuerpo, **26–27
     minutos**. Los `\minutos{}` de los apartados suman exactamente eso (p. ej.
-    intro 2,5 + cuerpo 26,5 + conclusión 1 = 30; se admiten medios minutos:
-    `\minutos{2,5}`). Cada bloque recibe tiempo según su peso real en el
-    título y en el examen.
+    intro 2'30" + cuerpo 26'30" + conclusión 1' = 30'; en la fuente se
+    escriben `\minutos{2,5}`, pero **en el texto nunca se escriben minutos
+    con decimales** (Víctor, 16/10/2026): siempre `2'30"`, `26'30"`, `1'`
+    (el macro ya lo muestra así; en notas y tablas de reparto también, con
+    `\tiempo{2,5}`).
+    Cada bloque recibe tiempo según su peso real en el título y en el
+    examen.
+  - **Tres apartados** siempre que se pueda (Víctor, 16/10/2026): I, II y
+    III. Si el título pide algo que no está en el original, se integra en
+    uno de los tres antes que abrir un cuarto.
 - Orden del final del documento: **anexos** (con `\appendix`) y después la
   **bibliografía**. Salto de página (`\clearpage`) tras la conclusión, antes
   de los anexos (no tras la introducción); el de antes de la bibliografía lo
@@ -91,7 +98,32 @@ Cada tema revisado debe quedar:
   simulador: https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html
 - Mantener el estilo esquemático de los temas actuales: viñetas jerárquicas
   (■, –, ○), conceptos clave en **negrita** (`\concepto{}`), autores en
-  versalitas (`\autor{}`) con el año de la obra.
+  versalitas (`\autor{}`) con el año de la obra. **Varios niveles de
+  sangría** (viñetas de distintos niveles) que hagan el tema fácil de seguir
+  y ayuden a la memoria visual (Víctor, 16/10/2026), y **nunca un salto de
+  página entre un párrafo y el primero de nivel inferior que lo sigue**
+  (lo hace `tcee.sty` y, en Word, «conservar con el siguiente»).
+- **Funciones centrales del tema en morado y recuadradas** (Víctor,
+  16/10/2026) con `\funcionclave{…}`: las que el opositor escribiría en la
+  pizarra y probablemente mantendría durante el cante (p. ej., la función de
+  costes $C(\vect{w},q)$ y la de beneficio $B(p,\vect{w})$ en el 3.A.12).
+  Pocas por tema; no en todos los temas las hay.
+- **Problemas de optimización con las restricciones debajo**, cada una en
+  su línea (Víctor, 16/10/2026), como en los temas antiguos, para que el
+  opositor se acostumbre a ver la función objetivo por un lado y las
+  restricciones aparte: `\optim{\max}{\vect{z}}{pF(\vect{z})-\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}`.
+- **Notas al pie del original**: se mantienen las que estaban bien
+  desarrolladas (Víctor, 16/10/2026), como notas al pie y no integradas en
+  el texto ni borradas: amenizan la lectura, dan curiosidades y material
+  para el cante sin ser centrales. Pueden llevar un gráfico pequeño
+  (`\graficonota{…}`).
+- **Numeración de páginas**: el tema (de la portada a la conclusión) en
+  1…N; los anexos en A-1, A-2…; la bibliografía en B-1… La primera página
+  dice cuántas páginas tiene cada parte (lo hace `tcee.sty`).
+- **Manuales por bloques** (idea de Víctor, 16/10/2026): con las fichas de
+  cuatro páginas se harán manuales por bloques del temario; las fichas de
+  un mismo bloque tienen que poder unirse sin retoques (mismo estilo,
+  notación y orden de secciones).
 - **Personas en versalitas** (regla fija, para memorizar y distinguir
   autores): el **apellido** de toda persona que se nombra va en versalitas,
   siempre, en el texto, gráficos y cajas: `\autor{Marshall}` (1890); el
@@ -125,6 +157,31 @@ Cada tema revisado debe quedar:
   La suma debe ser 30.
 - No inventar citas textuales: una cita entre comillas debe estar en la fuente
   citada.
+
+### Órdenes de `tcee.sty` para estas reglas (cómo se usan)
+
+Funcionan igual en PDF, web y Word (construir-tema.py y tcee.lua las
+convierten); el detalle está en la cabecera de `latex/tcee.sty`.
+
+- `\minutos{2,5}` tras el título de un apartado (entrada decimal, para que
+  los scripts sumen; se ve 2′30″). En el texto, los minutos se escriben con
+  `\tiempo{2,5}` → 2′30″ («introducción, `\tiempo{2,5}`; I, `\tiempo{11}`
+  (I.1, `\tiempo{5,5}`…)», «(unos `\tiempo{3}`)»), nunca «2,5 minutos». En
+  `guion-cante.md`, a mano: «## Introducción (2′30″)».
+- `\funcionclave{C(\vect{w},q)=…}`: función central en display, morada y
+  recuadrada; `\funcionclave[eq:costes]{…}` con número (`\eqref{eq:costes}`).
+  Va sola (fuera de `$$…$$`).
+- `$$\optim{\max}{\vect{z}}{p\,F(\vect{z})-\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}$$`:
+  la variable bajo «max», el objetivo en la primera línea y «s.a.» con cada
+  restricción, separadas por `\\`, en su línea. Dentro de `$$…$$`, `\[…\]`,
+  `equation` o `\funcionclave{…}`.
+- `\footnote{Texto.\graficonota{nombre}}`: gráfico pequeño (0,45 del ancho)
+  centrado en la nota; `\graficonota[0.35]{nombre}` con otro ancho.
+- Listas: no hace falta nada; `tcee.sty` (y el Word) impiden el salto de
+  página entre un párrafo o viñeta y la lista que lo sigue.
+- Páginas: basta con `\appendix` antes de los anexos y `\bibliografia` al
+  final; la numeración (1…N, A-n, B-n) y la línea de la portada salen solas.
+  construir-tema.py y verificar-tema.py dicen las «páginas del tema».
 
 ## 3. Qué hacer con cada marca del Word original
 
@@ -313,6 +370,14 @@ el texto original y lo que se hizo.
   `[pausa 800]` (ms, hasta 2 s) dentro de `di:`, tras una pregunta, antes de la idea
   clave o entre las partes de una enumeración. Sin abusar: una o dos por
   paso como mucho. Las marcas no salen en los subtítulos.
+- **Refranes y dichos populares** (Víctor, 16/10/2026): además de las
+  preguntas, la apertura y el cierre pueden ser un refrán o un dicho
+  popular que el tema explica o matiza; la apertura y el cierre tienen que
+  quedar hilados (el cierre retoma la pregunta o el refrán). Los enganches
+  del documento, mejor con hechos actuales que con datos de hace décadas.
+- **Funciones clave en la pizarra**: entre bloque y bloque se borra toda la
+  pizarra salvo las `\funcionclave` (y algún gráfico central) a las que se
+  va a volver a hacer referencia; se dejan en una esquina de la rejilla.
 - **Pregunta de enganche y cierre (solo en el vídeo; los documentos no
   cambian)**: el vídeo empieza, tras leer el título, con una **pregunta**
   sobre lo que se va a ver, que puede ser muy abierta, incluso

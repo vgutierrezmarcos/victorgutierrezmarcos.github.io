@@ -176,3 +176,69 @@ Dudas nuevas de la integración:
 - El punto fijo de Brouwer se dibuja entero (cuadrado, diagonal, una curva y el punto fijo) mientras se dice el teorema; la aplicación del subastador, ec. `aplicacion-brouwer`, puede ir como apoyo y decirse en palabras.
 - Bienes libres, monopolio en la caja y los gráficos de los anexos: solo como apoyo o fuera del vídeo.
 - Pregunta de enganche sugerida: «¿Cómo es posible que millones de decisiones que nadie coordina encajen sin que sobre ni falte nada?»; la idea final de la conclusión la responde.
+
+## Cambios del 16/10/2026 (criterios nuevos)
+
+Aplicadas las reglas del 16/10/2026 de CRITERIOS.md sin tocar la estructura (mismos apartados, epígrafes, minutos y anexos). El tema sigue en 29 páginas (anexos, 9; bibliografía, 6).
+
+- **Problemas de optimización con `\optim`** (objetivo arriba, cada restricción en su línea): empresa (ec. 2), consumidor (ec. 5), consumidor y empresa del modelo general (anexo A, ecs. 20 y 21) y las 2 etapas de la maximización del beneficio (anexo A.1, que antes iban en línea). En el tema no hay problema del planificador ni de Pareto escrito como optimización.
+- **`\funcionclave`** (3): el vector de excesos de demanda $\vec z(\vec p)$ (ec. 8; la renta $\overline{W}_i(\vec p)$ pasa a la línea siguiente), la ley de Walras $\vec p\cdot\vec z(\vec p)\equiv 0$ (ec. 9; la versión 2×2×2×2 pasa al texto, con lo que desaparece el «:» que había dentro de la fórmula) y la condición de equilibrio $z_k(\vec p^*)\leq 0$, $p_k^*z_k(\vec p^*)=0$ (ec. 10).
+- **Viñetas con más niveles**: rendimientos admitidos por la convexidad (I.1), supuestos del 1TFEB (II.2.2), bloqueo y núcleo (III.2.1), títulos de Arrow y Radner (III.4) y usos de los MEGC (comercio: TLCAN, T-MEC, TTIP, UE-Mercosur; macroeconomía: REMS, EREMS, datos de 2025).
+- **Minutos**: «medio minuto» de la nota al opositor de II → `\tiempo{0,5}`; el resto ya iba con `\tiempo`. Ninguna fórmula en display termina en «:».
+- **Notas al pie**: de 25 a 34. Decisión sobre cada una de las 57 notas del original:
+
+| Nota | Contenido | Decisión |
+|---|---|---|
+| 1 | Individualismo metodológico | **Recuperada** como nota (definición abreviada) en el enganche |
+| 2 | Consumidores/productores, tecnologías del consumo | **Ya estaba** como nota; se recupera lo que faltaba: Stigler (1961) y la economía de la información |
+| 3 | Clasificación de los modelos (competitivos/no; intercambio/producción) | **Recuperada** como nota (estaba integrada en el texto); en el texto queda «nos centramos en el EGC con producción» |
+| 4 | Complejidad matemática | Ya estaba como nota, reescrita (era tautológica, C34) |
+| 5 | Equilibrio parcial como alternativa | Descartada: integrada en el texto (viñeta del equilibrio parcial) |
+| 6 | Cournot intentó el equilibrio general | Descartada: integrada en la contextualización |
+| 7 | Escuela de Estocolmo (Cassel y Wicksell) | **Recuperada corregida**: son precursores, no miembros, de la escuela de Estocolmo (C5) |
+| 8, 9, 33 | Nobel de Arrow (con Hicks) y de Debreu | Ya estaban, fundidas en una nota con la motivación oficial (V23) |
+| 10 | Información perfecta | Ya estaba, reescrita (C8; se quita «la producción antes del intercambio») |
+| 11, 17 | Bienes públicos y externalidades: precios no válidos | Ya estaban, fundidas en la nota de mercados completos (remite a 3.A.23) |
+| 12 | Arrow-Debreu y McKenzie: participaciones en beneficios | Ya estaba, reescrita (C8) |
+| 13 | Definición de función de producción | **Recuperada** como nota (I.1, empresas) |
+| 14 | Tecnologías distintas | Ya estaba |
+| 15 | Formas de la FPP | Ya estaba (con «lineal» y la última frase corregida, C34) |
+| 16 | Tabla de las condiciones de Inada | Descartada: no es supuesto del modelo y está en 3.A.11 (C35) |
+| 18, 30 | Walras no habla de subastador («on»), críticas de Bertrand y Edgeworth, tanteo virtual, Smith | Ya estaba, una sola nota (la cita francesa queda como paráfrasis con su página, V26) |
+| 19, 27 | Problemas de la empresa y del consumidor con $H$, $I$, $S$ | Descartadas como nota: están en el anexo A, ahora con `\optim` |
+| 20 | Maximización en 2 etapas con su gráfico | Ya estaba como nota breve; el desarrollo y el gráfico, en el anexo A.1 (no hace falta `\graficonota`) |
+| 21 | Eficiencia en la producción | Descartada: integrada en el texto |
+| 22 | Vértices de la caja en la curva de contrato | Ya estaba |
+| 23 | Curva de contrato isoclina solo con homotéticas | Corregida (era falsa) dentro de la nota 22 actual |
+| 24 | FPP como equilibrio de las empresas en el espacio de bienes | Descartada: integrada en el texto |
+| 25 | Beneficios positivos y economías de alcance | Descartada: errónea (C, l. 408-411) |
+| 26 | RMT como cociente de costes marginales | **Recuperada** con el signo del canon (RMT positiva) y la intuición de la FPP |
+| 28 | Walras trabaja con demandas empíricas | Descartada: errónea (C10) |
+| 29 | Bienes libres «no es de gran relevancia» | Descartada: opinión; el texto explica para qué sirven |
+| 31 | URL de Liu (2019) | Descartada como nota: está en las lecturas de II.1.1 con su cita |
+| 32 | Rouché-Frobenius y ecuaciones e incógnitas | Ya estaba; se recupera la clasificación de Rouché-Frobenius |
+| 34 | Arrow y Hahn (1971) con oligopolios | Descartada: sin comprobar (V20, C16) |
+| 35 | Nash, pionero del punto fijo | Ya estaba, corregida (von Neumann, 1937, es el primero) |
+| 36 | Velocidad de ajuste $k_i$ | Descartada: integrada en el texto ($\kappa_k$) |
+| 37 | Bienes libres en la regla del subastador | **Recuperada corregida** ($z_k\leq 0$, no $\geq 0$) en II.1.1 |
+| 38 | $z_1<0$ en el ejemplo | Descartada: repite la condición de los bienes libres |
+| 39 | «Equilibrios localmente óptimos» | Descartada: errónea («localmente únicos», ya en el texto) |
+| 40 | SMD y equilibrio parcial | Ya estaba, corregida (C18) |
+| 41, 42 | Estabilidad local y global; sin intercambios fuera del equilibrio | Descartadas: integradas en el texto (C34) |
+| 43 | Tabla de ajuste walrasiano y marshalliano | Descartada como nota: tabla con color en el anexo D |
+| 44 | Cita de Pareto sobre la moral y texto oculto | Descartada: cita sin localizar (P67) y nota privada (P6) |
+| 45 | Asignaciones justas de Foley | **Recuperada** como nota en II.2.1, con Foley (1967) en la bibliografía |
+| 46, 47 | Pareto y la ofelimidad, Wicksell; Feldman y la diana | Ya estaba, una sola nota en el 1TFEB; la GFPU, en el anexo C |
+| 48 | Condiciones marginales del 1TFEB | Descartada: integradas en la ec. 11 |
+| 49, 50 | Historia: Bentham, Mill, Gossen, Launhardt, ofelimidad | **Recuperadas** como nota en II.2.1 (salen del anexo C, que ahora remite a la nota); la mención a Aristóteles, sin fuente, se quita |
+| 51 | Cita inglesa de Wicksell | Descartada: sin obra ni página (V28); queda la paráfrasis |
+| 52 | Nobel de Sen | Descartada como nota: está en el anexo C |
+| 53 | No convexidades y competencia imperfecta | Descartada: integrada en III.2.3 |
+| 54 | Costes de operar los mercados y verificabilidad del estado | **Recuperada** como nota en la valoración de III.4 (estaba integrada) |
+| 55 | MEGC para impuestos y transferencias | Ya estaba |
+| 56 | Observatorio sobre el ciclo (BBVA, Fedea) | Ya estaba: el Observatorio, en el texto; los tipos de perturbación, en nota |
+| 57 | Cita de De Vroey | Descartada: cita no encontrada (V29); paráfrasis en la conclusión |
+
+- **Gráficos en nota**: ninguno. El único gráfico de nota del original (2 etapas, nota 20) ya está como gráfico del anexo A.1; no hay que dibujar nada.
+- **Bibliografía**: nueva entrada `Foley1967Resource` (*Yale Economic Essays*, 7(1), 45-98); `Stigler1961Information` ya estaba en el `.bib`.
+- **Dudas para Víctor**: la nota de la escuela de Estocolmo (Wicksell, 1898, y Cassel, 1918) y la de la historia del criterio de Pareto van sin cita de página (son atribuciones generales de historia del pensamiento); si prefiere, se citan con Ekelund y Hébert (2013).

@@ -12,3 +12,8 @@
 \newcommand{\tcefecha}[1]{}
 \newcommand{\minutos}[1]{\textcolor{tceeminutos}{#1}}
 \newcommand{\vect}[1]{\vec{#1}}
+% \tiempo{2,5} → 2′30″ (lo calcula tcee.lua, como \minutos)
+\newcommand{\tiempo}[1]{\textcolor{tceetiempo}{#1}}
+% Gráfico pequeño en una nota al pie (tcee.lua y tema.css lo centran)
+\newcommand{\graficonota}[2][0.45]{\begin{notagrafico}\includegraphics[width=#1\linewidth]{#2}\end{notagrafico}}
+% \funcionclave y \optim los expande construir-tema.py antes de pandoc

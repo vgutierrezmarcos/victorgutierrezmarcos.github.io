@@ -24,14 +24,14 @@ Lee antes:
 ## Plan de pizarra
 (por apartado: la rejilla —columnas y filas con sus porcentajes—, qué va en cada celda y cuándo se borra)
 
-## Introducción (3 min)
+## Introducción (2′30″)
 ### Enganche
 <texto que se dice>
 ### Relevancia
 ...
-## I. <apartado> (10 min)
+## I. <apartado> (8′30″)
 ...
-## Conclusión (3 min)
+## Conclusión (1′)
 ### Recapitulación
 ...
 ```

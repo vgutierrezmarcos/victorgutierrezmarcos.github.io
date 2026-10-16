@@ -3,8 +3,10 @@
 #DescriptionBegin
 #Órdenes y cajas de tcee.sty para editar en LyX los temas del 3.er y 4.º
 #ejercicio de la oposición TCEE: autor, concepto, referencia a otro tema,
-#fuente, minutos del cante y cajas (nota al opositor, anotaciones, idea
-#clave, esquema). El documento carga tcee.sty en el preámbulo.
+#fuente, minutos del cante (\minutos y \tiempo), gráfico en una nota al
+#pie (\graficonota) y cajas (nota al opositor, anotaciones, idea clave,
+#esquema). \funcionclave y \optim llevan fórmulas como argumento: en LyX
+#van en código TeX (ERT), como las deja tex2lyx. El documento carga tcee.sty en el preámbulo.
 #DescriptionEnd
 # Autor: Víctor Gutiérrez Marcos
 #
@@ -70,6 +72,31 @@ InsetLayout Flex:Minutos
 	  Size                Small
 	EndFont
 	MultiPar              false
+End
+
+InsetLayout Flex:Tiempo
+	LyxType               custom
+	LabelString           "min (texto)"
+	LatexType             command
+	LatexName             tiempo
+	Decoration            conglomerate
+	Font
+	  Color               gray
+	EndFont
+	MultiPar              false
+End
+
+InsetLayout Flex:Grafico_nota
+	LyxType               custom
+	LabelString           "gráfico en nota"
+	LatexType             command
+	LatexName             graficonota
+	Decoration            classic
+	PassThru              true
+	MultiPar              false
+	Font
+	  Family              Typewriter
+	EndFont
 End
 
 InsetLayout Flex:Nota_al_opositor

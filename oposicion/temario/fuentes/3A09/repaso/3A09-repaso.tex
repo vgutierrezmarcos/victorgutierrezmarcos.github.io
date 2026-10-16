@@ -1,11 +1,13 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la demanda del consumidor (II)]{3.A.9}{Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar.}
-\tcefecha{14/10/2026}
+\tcefecha{16/10/2026}
 % Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
 \newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
   \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
   \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
+% Problema de optimización con la restricción debajo (como \optim de tcee.sty;
+% tcee-repaso.sty no la trae): \optim{\max}{\vect{x}}{U(\vect{x})}{restricción}
 \begin{document}
 \cabecerarepaso
 \begin{columnas}
@@ -54,9 +56,9 @@ Anexos (no se cantan): \autor{Kuhn}-\autor{Tucker} y CSO, envolvente (\autor{Roy
 {\color{tceegris}\scriptsize\itshape Esquema de dualidad: problemas, soluciones, funciones valor y relaciones entre ellas (I.3)}
 \end{figure*}
 \begin{formula}
-\[\text{PMU: }\max_{\vect{x}} U(\vect{x})\ \text{s.a.}\ \vect{p}\cdot\vect{x}\leq\overline{W}\ \Rightarrow\ \frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\]
-\[\text{PMG: }\min_{\vect{h}}\vect{p}\cdot\vect{h}\ \text{s.a.}\ U(\vect{h})\geq\overline{U}\ \Rightarrow\ \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\mu\]
-\[\text{Ambos: } RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2};\qquad \mu^*=\frac{1}{\lambda^*}\]
+\[\text{PMU: }\optim{\max}{\vect{x}}{U(\vect{x})}{\vect{p}\cdot\vect{x}\leq\overline{W}}\ \Rightarrow\ \frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\]
+\[\text{PMG: }\optim{\min}{\vect{h}}{\vect{p}\cdot\vect{h}}{U(\vect{h})\geq\overline{U}}\ \Rightarrow\ \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\mu\]
+\[\text{Ambos: } \mathrm{RMS}_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2};\qquad \mu^*=\frac{1}{\lambda^*}\]
 \end{formula}
 \begin{itemize}
 \item $\lambda$ = UMg de la renta $=\partial V/\partial\overline{W}$; $\mu$ = coste marginal de la utilidad $=\partial E/\partial\overline{U}$.
@@ -165,7 +167,7 @@ QUAIDS & $E$ & sí & sí & no & más parámetros\\\bottomrule
 \begin{formula}
 \[S_{ij}=\frac{\partial x_i}{\partial p_j}+x_j\frac{\partial x_i}{\partial\overline{W}}\quad\text{(observable)}\]
 \[\text{EDP: }\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big),\quad E(\vect{p}^0,\overline{U})=\overline{W}^0\]
-\[U(\vect{x}^0)=\min_{(\vect{p},\overline{W})}V(\vect{p},\overline{W})\ \text{s.a.}\ \vect{p}\cdot\vect{x}^0\leq\overline{W}\]
+\[U(\vect{x}^0)=\optim{\min}{(\vect{p},\overline{W})}{V(\vect{p},\overline{W})}{\vect{p}\cdot\vect{x}^0\leq\overline{W}}\]
 \end{formula}
 \begin{itemize}
 \item Demostración (por dualidad): (1) EDP con solución $\Leftrightarrow$ simetría (\concepto{teorema de \autor{Frobenius}}); (2) que sea función de gasto: falta la concavidad, y su hessiana es $S$ $\Rightarrow$ negatividad; (3) invertir $E$ $\to$ $V$ $\to$ $U$.

@@ -27,6 +27,9 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[spanish,es-noshorthands,es-tabla,es-nodecimaldot]{babel}
+% \min, \max, \lim… sin tilde: con newpxmath, la tilde de babel deja «mın» sin
+% punto en la i (y el castellano técnico no la usa en los operadores)
+\unaccentedoperators
 \RequirePackage{csquotes}
 \RequirePackage{amsmath}
 \RequirePackage{newpxtext}
@@ -95,6 +98,35 @@
 \newenvironment{columnas}{\begin{multicols*}{2}\raggedcolumns}{\end{multicols*}}
 
 % --- Bloques (equivalen a los apartados del tema) ----------------------------------------
+% Minutos sin decimales (2,5 → 2′30″), como en tcee.sty: \tceemmss{2,5}; en el
+% texto, \tiempo{2,5}
+\ExplSyntaxOn
+\cs_if_exist:NF \tceemmss
+  {
+    \tl_new:N \l__tcee_mmss_tl
+    \int_new:N \l__tcee_mmss_int
+    \cs_new_protected:Npn \tceemmss #1
+      {
+        \tl_set:Nx \l__tcee_mmss_tl { \tl_trim_spaces:n {#1} }
+        \tl_replace_all:Nnn \l__tcee_mmss_tl { , } { . }
+        \regex_match:nVTF { \A \d+ (\.\d+)? \Z } \l__tcee_mmss_tl
+          {
+            \int_set:Nn \l__tcee_mmss_int { \fp_eval:n { round ( ( \l__tcee_mmss_tl ) * 60 ) } }
+            \int_eval:n { \int_div_truncate:nn { \l__tcee_mmss_int } { 60 } }
+            \ensuremath { \sp { \prime } }
+            \int_compare:nNnF { \int_mod:nn { \l__tcee_mmss_int } { 60 } } = { 0 }
+              {
+                \int_compare:nNnT { \int_mod:nn { \l__tcee_mmss_int } { 60 } } < { 10 } { 0 }
+                \int_eval:n { \int_mod:nn { \l__tcee_mmss_int } { 60 } }
+                \ensuremath { \sp { \prime\prime } }
+              }
+          }
+          { #1 }
+      }
+  }
+\ExplSyntaxOff
+\providecommand{\tiempo}[1]{\mbox{\tceemmss{#1}}}
+
 % \bloque[minutos]{título}: barra morada con el título y, si se da, los minutos del cante
 % Sin \needspace: su pegamento elástico hacía que multicols cortara la columna
 % antes de cada título y dejaba huecos de varias líneas al pie. Los títulos no
@@ -102,7 +134,7 @@
 % empezar (beginpenalty) y \clubpenalty y \widowpenalty prohíben líneas sueltas.
 \newcommand{\bloque}[2][]{\par\vspace{3pt}%
   \noindent\colorbox{tceemorado}{\parbox{\dimexpr\linewidth-2\fboxsep}{%
-    \color{white}\bfseries\strut#2\if\relax\detokenize{#1}\relax\else\hfill{\mdseries\itshape#1 min}\fi}}%
+    \color{white}\bfseries\strut#2\if\relax\detokenize{#1}\relax\else\hfill{\mdseries\itshape\tceemmss{#1}}\fi}}%
   \par\nopagebreak\vspace{1pt}}
 % \sub{título}: subapartado, en morado con raya fina
 \newcommand{\sub}[1]{\par\vspace{2pt}%
@@ -145,12 +177,29 @@
 \newcommand{\esquemacante}[1]{\begin{tcolorbox}[enhanced,colback=tceemoradopalido,colframe=tceemorado,
   boxrule=0.4pt,arc=1pt,left=3pt,right=3pt,top=1pt,bottom=1pt,before skip=2pt,after skip=3pt]#1\end{tcolorbox}}
 % \apartadocante{I. ...}{10} y \subcante{1. ...}{3}; los minutos pueden ir vacíos
-\newcommand{\tcee@minutos}[1]{\if\relax\detokenize{#1}\relax\hfill\else\dotfill{\color{tceemorado}#1'}\fi}
+\newcommand{\tcee@minutos}[1]{\if\relax\detokenize{#1}\relax\hfill\else\dotfill{\color{tceemorado}\tceemmss{#1}}\fi}
 \newcommand{\apartadocante}[2]{\par\noindent\textbf{#1}\tcee@minutos{#2}\par}
 \newcommand{\subcante}[2]{\par\noindent\hspace*{0.8em}#1\tcee@minutos{#2}\par}
 % (si una línea del esquema no cabe, se parte: conviene que los títulos sean cortos)
 % Cronología: \hito{1915}{Slutsky: efecto sustitución y renta}
 \newcommand{\hito}[2]{\par\noindent\makebox[2.4em][l]{\color{tceemorado}\bfseries#1}%
   \parbox[t]{\dimexpr\linewidth-2.4em}{#2}\par}
+
+
+% \optim{\max}{\vect{z}}{objetivo}{restr1\\ restr2}: problema de optimización con
+% el objetivo arriba y «s.a.» con cada restricción en su línea (como en tcee.sty).
+\ExplSyntaxOn
+\seq_new:N \l__tceerep_restr_seq
+\NewDocumentCommand{\optim}{mmmm}
+  {
+    \seq_set_split:Nnn \l__tceerep_restr_seq { \\ } {#4}
+    \seq_remove_all:Nn \l__tceerep_restr_seq { }
+    \begin{array}{@{}r@{\quad}l@{}}
+      \displaystyle #1 \sb { #2 } & \displaystyle #3
+      \seq_if_empty:NF \l__tceerep_restr_seq
+        { \\ [2pt] \text{s.a.} & \seq_use:Nn \l__tceerep_restr_seq { \\ [2pt] & } }
+    \end{array}
+  }
+\ExplSyntaxOff
 
 \endinput

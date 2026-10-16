@@ -20,7 +20,7 @@ Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en
 > - **III.3, VC y VE** (30 | 35 | 35). Columna 1: métrica monetaria, VC y su integral, VE y su integral. Columna 2: `bienestar-vc` (capas 1-5, cestas arriba y demanda abajo). Columna 3: `bienestar-ve` (capas 1-5). Se borra.
 > - **III.3, las tres juntas e índices** (42 | 58). Derecha: `bienestar-vc-ve`, construido por partes (capas 4, 7, 11, 15, 16, 17 y 18: problema, ΔEC, VC, VE, ordenación, Laspeyres y Paasche). Izquierda: Willig, L ≤ VC y VE ≤ P; se borra y se dibuja `indice-konus-laspeyres` (capas 2-5). En la recapitulación se borra la izquierda: **al acabar el bloque III solo queda el gráfico conjunto `bienestar-vc-ve`.**
 
-## Introducción (2 min)
+## Introducción (2′)
 
 ### Enganche
 
@@ -44,7 +44,7 @@ De ahí, cuatro preguntas. ¿Se llega a la misma decisión al dar la vuelta al p
 
 La exposición sigue tres bloques: el análisis teórico de la dualidad; la estimación de sistemas completos de demanda, y tres aplicaciones: la integrabilidad, la ecuación de Slutsky y la medida del bienestar. Vamos de las herramientas a su estimación y a su uso.
 
-## I. Análisis teórico de la dualidad en la decisión de consumo (10 min)
+## I. Análisis teórico de la dualidad en la decisión de consumo (10′)
 
 ### I.1. Ingredientes comunes del problema primal y el dual
 
@@ -76,7 +76,7 @@ Los supuestos son los mismos: contexto estático y sin incertidumbre, informaci�
 
 [Pizarra 1b: fórmula `\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)`] Analíticamente se resuelve por Kuhn-Tucker. Debajo escribo la lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta, su utilidad marginal.
 
-[Pizarra 1b: fórmula `\frac{U_i}{p_i}=\lambda\ \ \Rightarrow\ \ RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}`] En una solución interior, las condiciones de primer orden dan la segunda ley de Gossen: u sub i entre pe sub i igual a lambda para todos los bienes. Y la relación marginal de sustitución se iguala al cociente de precios.
+[Pizarra 1b: fórmula `\frac{U_i}{p_i}=\lambda\ \ \Rightarrow\ \ \mathrm{RMS}_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}`] En una solución interior, las condiciones de primer orden dan la segunda ley de Gossen: u sub i entre pe sub i igual a lambda para todos los bienes. Y la relación marginal de sustitución se iguala al cociente de precios.
 
 [Pizarra: gráfico `esquema-dualidad` hasta la capa 2] Resolviendo el problema, las cantidades óptimas se expresan en función de los parámetros. Las escribo en el esquema, debajo del problema: equis estrella igual a equis de pe y la renta, el sistema completo de ecuaciones de demanda marshalliana, u ordinaria.
 
@@ -100,7 +100,7 @@ Los supuestos son los mismos: contexto estático y sin incertidumbre, informaci�
 
 [Pizarra 1b: fórmula `\mathcal{L}=\vec{p}\cdot\vec{h}+\mu\big(\overline{U}-U(\vec{h})\big)`] Analíticamente, la lagrangiana es el gasto más mu por u barra menos la utilidad de la cesta. Mu es el coste marginal de la utilidad.
 
-[Pizarra 1b: fórmula `\frac{p_i}{U_i}=\mu\ \ \Rightarrow\ \ RMS_{12}=\frac{p_1}{p_2},\quad\mu^*=\frac{1}{\lambda^*}`] Las condiciones de primer orden dan pe sub i entre u sub i igual a mu: la misma tangencia que en el primal. Y en la cesta común, mu estrella es uno entre lambda estrella: si un euro compra lambda útiles, un útil cuesta uno entre lambda euros.
+[Pizarra 1b: fórmula `\frac{p_i}{U_i}=\mu\ \ \Rightarrow\ \ \mathrm{RMS}_{12}=\frac{p_1}{p_2},\quad\mu^*=\frac{1}{\lambda^*}`] Las condiciones de primer orden dan pe sub i entre u sub i igual a mu: la misma tangencia que en el primal. Y en la cesta común, mu estrella es uno entre lambda estrella: si un euro compra lambda útiles, un útil cuesta uno entre lambda euros.
 
 [Pizarra: gráfico `esquema-dualidad` hasta la capa 5] Su solución, en el esquema bajo el dual: hache estrella igual a hache de pe y u barra, el sistema de demandas compensadas o hicksianas. Compensadas porque, si cambian los precios, el gasto se ajusta para mantener la utilidad.
 
@@ -142,7 +142,7 @@ Un bien Giffen es, por tanto, imposible en la hicksiana. Su inconveniente es que
 
 > Apunte: Idea clave: el mismo problema visto desde dos lados; la función de gasto traduce la utilidad a euros
 
-## II. Desarrollos empíricos: estimación de sistemas completos de ecuaciones de demanda (5 min)
+## II. Desarrollos empíricos: estimación de sistemas completos de ecuaciones de demanda (5′)
 
 ### II.1. Idea (sin pizarra)
 
@@ -196,7 +196,7 @@ Sus límites: la tensión entre flexibilidad y parsimonia; la agregación, porqu
 
 Recapitulando: estimar un sistema de demandas no garantiza que proceda de unas preferencias. Saber cuándo lo hace es la primera aplicación de la dualidad: la integrabilidad.
 
-## III. Aplicaciones de la dualidad (12 min)
+## III. Aplicaciones de la dualidad (12′)
 
 ### III.1. El problema de la integrabilidad de las preferencias
 
@@ -338,7 +338,7 @@ Los índices superlativos de Diewert, como el de Fisher o el de Törnqvist, lo c
 
 > Apunte: Idea clave: la función de gasto traduce la utilidad a euros; el excedente aproxima y las cestas fijas acotan
 
-## Conclusión (1 min)
+## Conclusión (1′)
 
 ### Recapitulación
 

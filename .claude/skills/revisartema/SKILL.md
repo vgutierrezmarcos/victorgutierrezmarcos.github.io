@@ -181,6 +181,19 @@ su aprobación.
 
 ## Resumen para Víctor en cada parada
 
+**Dudas en el artifact** (Víctor, 16/10/2026): las «Dudas abiertas» de
+`revision.md`, las del canon y las preguntas que tengas para él se le
+preguntan en la página «Decisiones del temario»
+(https://claude.ai/artifact/LKjSscWVxud6fzSFixPDpt): cada duda es un
+documento de la colección `preguntas` (id `A12-01`, `G01`…; campos `grupo`
+—criterios, web, tema, fuentes, video—, `tema`, `titulo`, `contexto`,
+`opciones` [{id, label, detalle, recomendada}], `multiple`, `orden`,
+`entrega`), que se añade con ArtifactData (`batch`) sin republicar la
+página. Sus respuestas están en `respuestas/<id>` ({opciones, nota,
+fecha}): léelas al empezar la siguiente entrega y aplícalas; mientras no
+conteste, se aplica la recomendada. En el resumen, el enlace a la página y
+cuántas dudas nuevas hay.
+
 Breve, en castellano:
 - qué se ha hecho (cinco líneas como máximo) y las cifras clave;
 - las **dudas abiertas** que necesitan su decisión;

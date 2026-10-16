@@ -17,6 +17,14 @@ Qué hace:
     «saltopagina») a saltos de página en Word, y pone otro antes de la
     bibliografía. En HTML se quitan.
   - En Word reparte el título en líneas de longitud parecida, como el PDF.
+  - Muestra los minutos sin decimales (\minutos{2,5} y \tiempo{2,5} → 2′30″).
+  - \funcionclave (construir-tema.py lo deja como entorno «funcionclave») y
+    \graficonota: recuadro morado y gráfico pequeño centrado (tema.css en la
+    web, estilos «Funcion clave» y «Grafico nota» en Word).
+  - En Word marca el principio de los anexos (\appendix) y de la bibliografía
+    (@@TCEE-SECCION:A@@ y :B@@), que construir-tema.py convierte en secciones
+    con su numeración (A-1…, B-1…), y pone bajo el título la línea de páginas
+    del PDF (-M paginas=…), que en la web va en la cabecera.
 
 Autor: Víctor Gutiérrez Marcos
 ]]
@@ -39,6 +47,21 @@ local function romano(n)
     while n >= v[1] do s = s .. v[2]; n = n - v[1] end
   end
   return s
+end
+
+-- 2,5 → 2′30″; 26,5 → 26′30″; 1 → 1′ (como \tceemmss de tcee.sty)
+local function mmss(texto)
+  local t = texto:gsub('%s', ''):gsub(',', '.')
+  local n = tonumber(t)
+  if not n then return texto end
+  local seg = math.floor(n * 60 + 0.5)
+  local m, s = seg // 60, seg % 60
+  if s == 0 then return string.format('%d′', m) end
+  return string.format('%d′%02d″', m, s)
+end
+
+local function marca_seccion(letra)
+  return pandoc.RawBlock('openxml', '<w:p><w:r><w:t>@@TCEE-SECCION:' .. letra .. '@@</w:t></w:r></w:p>')
 end
 
 local SALTO = pandoc.RawBlock('openxml', '<w:p><w:r><w:br w:type="page"/></w:r></w:p>')
@@ -139,7 +162,9 @@ end
 local function Span(s)
   local estilo = s.attributes['style'] or ''
   local color = estilo:match('color:%s*(tcee%w+)')
-  if color == 'tceenota' then
+  if color == 'tceetiempo' then
+    return pandoc.Str(mmss(pandoc.utils.stringify(s)))
+  elseif color == 'tceenota' then
     -- Notas pequeñas (bajo las tablas): texto normal
     s.attributes['style'] = nil
     s.classes:insert('nota-tabla')
@@ -300,7 +325,7 @@ function Pandoc(doc)
       if el.t == 'Span' and (el.attributes['style'] or ''):match('tceeminutos') then
         table.remove(sig.content, 1)
         if #sig.content == 0 then table.remove(bloques, i + 1) end
-        return pandoc.utils.stringify(el)
+        return mmss(pandoc.utils.stringify(el))
       end
     end
     return nil
@@ -332,8 +357,11 @@ function Pandoc(doc)
         local min = minutos_de(bloques, i)
         if min then
           b.attributes['minutos'] = min
-          if not es_docx then
-            b.content:insert(pandoc.Span({ pandoc.Str(min .. ' min') }, pandoc.Attr('', { 'minutos' })))
+          if es_docx then
+            b.content:insert(pandoc.Space())
+            b.content:insert(pandoc.Span({ pandoc.Str(min) }, pandoc.Attr('', {}, { ['custom-style'] = 'Minutos' })))
+          else
+            b.content:insert(pandoc.Span({ pandoc.Str(min) }, pandoc.Attr('', { 'minutos' })))
           end
         end
       elseif b.t == 'Figure' then
@@ -360,15 +388,48 @@ function Pandoc(doc)
           end
           b.content = dentro
         end
+      elseif b.t == 'Table' then
+        -- \begin{table}…\caption: pandoc lo lee como tabla con título (no como
+        -- figura); lleva «Tabla n.–» como en el PDF (las tablas sin título, no)
+        local cap = b.caption.long[1]
+        if cap and (cap.t == 'Plain' or cap.t == 'Para') and #cap.content > 0 then
+          ntab = ntab + 1
+          cap.content:insert(1, pandoc.Space())
+          cap.content:insert(1, pandoc.Span({ pandoc.Str('Tabla ' .. ntab .. '.–') }, pandoc.Attr('', { 'etiqueta' })))
+        end
       elseif b.t == 'Div' and b.classes:includes('saltopagina') then
         if es_docx then bloques[i] = SALTO else table.remove(bloques, i); i = i - 1 end
+      elseif b.t == 'Div' and b.classes:includes('saltoseccion') then
+        -- \appendix: en Word, sección nueva (A-1…), sin el salto de página de antes
+        if es_docx then
+          local previo = bloques[i - 1]
+          if previo and previo.t == 'RawBlock' and previo.text == SALTO.text then
+            table.remove(bloques, i - 1); i = i - 1
+          end
+          bloques[i] = marca_seccion('A')
+        else
+          table.remove(bloques, i); i = i - 1
+        end
       elseif b.t == 'Div' and b.identifier == 'refs' then
-        -- La bibliografía (citeproc) empieza en página nueva, como en el PDF
+        -- La bibliografía (citeproc) empieza en página nueva (en Word, sección B-1…), como en el PDF
         local previo = bloques[i - 1]
         if es_docx then
           local pos = (previo and previo.t == 'Header') and i - 1 or i
-          table.insert(bloques, pos, SALTO)
+          local antes = bloques[pos - 1]
+          if antes and antes.t == 'RawBlock' and antes.text == SALTO.text then
+            table.remove(bloques, pos - 1); pos = pos - 1; i = i - 1
+          end
+          table.insert(bloques, pos, marca_seccion('B'))
           i = i + 1
+        end
+      elseif b.t == 'Div' and (b.classes:includes('funcionclave') or b.classes:includes('notagrafico')) then
+        if es_docx then
+          local estilo = b.classes:includes('funcionclave') and 'Funcion clave' or 'Grafico nota'
+          -- El estilo solo se aplica a párrafos (Para), no a Plain
+          local bloques2 = pandoc.List()
+          for _, c in ipairs(b.content) do bloques2:insert(c.t == 'Plain' and pandoc.Para(c.content) or c) end
+          b.content = bloques2
+          b.attributes['custom-style'] = estilo
         end
       elseif b.t == 'Div' then
         for clase, estilo in pairs(estilos_docx) do
@@ -393,6 +454,16 @@ function Pandoc(doc)
   end
 
   procesar(doc.blocks)
+  -- \graficonota va dentro de las notas al pie (procesar no entra en ellas)
+  doc = doc:walk({ Note = function(n)
+    procesar(n.content)
+    return n
+  end })
+  -- Línea de páginas del PDF bajo el título (en la web la pone la plantilla)
+  if es_docx and doc.meta.paginas then
+    doc.blocks:insert(1, pandoc.Div({ pandoc.Para({ pandoc.Str(pandoc.utils.stringify(doc.meta.paginas) .. ' (PDF)') }) },
+      pandoc.Attr('', {}, { ['custom-style'] = 'Paginas del tema' })))
+  end
   doc = doc:walk({ Table = Table })
   return doc:walk({ Image = Image, Span = Span })
 end

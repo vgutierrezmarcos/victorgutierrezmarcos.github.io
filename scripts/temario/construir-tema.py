@@ -31,7 +31,7 @@ import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, guardar_pdf_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
-                   errores_log, ruta_windows)
+                   errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
 BIBER = os.path.join(MIKTEX, 'biber.exe')
@@ -119,6 +119,9 @@ def datos_documento(tex):
         'titulo': m.group(2).strip() if m else '',
         'fecha': f.group(1) if f else datetime.date.today().strftime('%d/%m/%Y'),
         'duracion': (f'{sum(minutos):g}'.replace('.', ',')) if minutos else None,
+        # Para la web: 30 → «30 minutos»; 29,5 → «29′30″»
+        'duracion_texto': (f'{sum(minutos):g} minutos' if sum(minutos) == int(sum(minutos))
+                           else minutos_texto(sum(minutos))) if minutos else None,
     }
 
 
@@ -230,7 +233,95 @@ def numerar_anexos(cuerpo):
         sub += 1
         return f'\\subsection*{{{chr(64 + letra)}.{sub}. '
     despues = re.sub(r'\\(section|subsection)\{', cambiar, despues)
-    return antes + despues
+    # En Word, los anexos son otra sección (páginas A-1…; tcee.lua y numerar_paginas_docx)
+    return antes + '\\begin{saltoseccion}\\mbox{}\\end{saltoseccion}' + despues
+
+
+# --- Órdenes con argumentos anidados (\funcionclave, \optim) --------------------------
+def _argumento(texto, i):
+    """Lee el argumento entre llaves que empieza en texto[i] (saltando espacios):
+    devuelve (contenido, posición tras la llave de cierre)."""
+    while i < len(texto) and texto[i] in ' \t\n':
+        i += 1
+    if i >= len(texto) or texto[i] != '{':
+        raise ValueError(f'se esperaba «{{» en: {texto[i:i + 60]!r}')
+    nivel, j = 0, i
+    while j < len(texto):
+        c = texto[j]
+        if c == '\\':
+            j += 2
+            continue
+        if c == '{':
+            nivel += 1
+        elif c == '}':
+            nivel -= 1
+            if nivel == 0:
+                return texto[i + 1:j], j + 1
+        j += 1
+    raise ValueError(f'llave sin cerrar en: {texto[i:i + 60]!r}')
+
+
+def _partir_filas(texto):
+    """Parte por \\\\ en el nivel de llaves superior."""
+    filas, nivel, actual, j = [], 0, '', 0
+    while j < len(texto):
+        if texto.startswith('\\\\', j) and nivel == 0:
+            filas.append(actual)
+            actual = ''
+            j += 2
+            continue
+        c = texto[j]
+        if c == '\\':
+            actual += texto[j:j + 2]
+            j += 2
+            continue
+        nivel += (c == '{') - (c == '}')
+        actual += c
+        j += 1
+    filas.append(actual)
+    return [f.strip() for f in filas if f.strip()]
+
+
+def expandir_optim(cuerpo):
+    """\\optim{\\max}{\\vect{z}}{objetivo}{r1\\\\ r2} → array de dos columnas (lo
+    mismo que hace tcee.sty), que MathJax y el Word de pandoc entienden."""
+    salida, pos = '', 0
+    for m in re.finditer(r'\\optim(?![a-zA-Z])', cuerpo):
+        if m.start() < pos:
+            continue
+        args, j = [], m.end()
+        try:
+            for _ in range(4):
+                a, j = _argumento(cuerpo, j)
+                args.append(a)
+        except ValueError:
+            continue        # p. ej., «\optim» citado en un comentario
+        filas = [f'\\displaystyle {args[0]}_{{{args[1]}}} & \\displaystyle {args[2]}']
+        for k, r in enumerate(_partir_filas(expandir_optim(args[3]))):
+            filas.append(('\\text{s.a.} & ' if k == 0 else ' & ') + r)
+        salida += cuerpo[pos:m.start()] + '\\begin{array}{rl}' + ' \\\\ '.join(filas) + '\\end{array}'
+        pos = j
+    return salida + cuerpo[pos:]
+
+
+def expandir_funcionclave(cuerpo):
+    """\\funcionclave[eq:x]{F} → entorno «funcionclave» (un Div para tcee.lua) con
+    la ecuación dentro; con etiqueta, en equation para que lleve su número."""
+    salida, pos = '', 0
+    for m in re.finditer(r'\\funcionclave(?![a-zA-Z])\s*(?:\[([^\]]*)\])?', cuerpo):
+        if m.start() < pos:
+            continue
+        try:
+            formula, j = _argumento(cuerpo, m.end())
+        except ValueError:
+            continue
+        if m.group(1):
+            ecuacion = f'\\begin{{equation}}{formula}\\label{{{m.group(1)}}}\\end{{equation}}'
+        else:
+            ecuacion = f'\\[{formula}\\]'
+        salida += cuerpo[pos:m.start()] + f'\n\\begin{{funcionclave}}\n{ecuacion}\n\\end{{funcionclave}}\n'
+        pos = j
+    return salida + cuerpo[pos:]
 
 
 def preparar_pandoc(tema, tex, formato):
@@ -240,6 +331,10 @@ def preparar_pandoc(tema, tex, formato):
     macros = open(os.path.join(LATEX, 'pandoc-macros.tex'), encoding='utf-8').read()
     cuerpo = open(tex, encoding='utf-8').read()
     numeros = etiquetas_aux(tema)
+    cuerpo = expandir_funcionclave(expandir_optim(cuerpo))
+    # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
+    # gráfico pequeño en la web; se trata como 1\textwidth
+    cuerpo = re.sub(r'(?<![\d.])\\(textwidth|linewidth|columnwidth)\b', r'1\\\1', cuerpo)
     cuerpo = re.sub(r'\\eqref\{([^}]+)\}', lambda m: f'({numeros.get(m.group(1), "?")})', cuerpo)
     cuerpo = re.sub(r'\\(?:auto|c|C|name)?ref\{([^}]+)\}', lambda m: numeros.get(m.group(1), '?'), cuerpo)
 
@@ -295,6 +390,9 @@ def comunes_pandoc(tema, datos):
     except ValueError:
         dia = datetime.date.today()
     orden += ['-M', f'fecha-iso={dia.isoformat()}', '-M', f'fecha-cita={dia:%Y/%m/%d}', '-M', f'anio={dia.year}']
+    paginas = linea_paginas(paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux')))
+    if paginas:
+        orden += ['-M', f'paginas={paginas}']
     for campo, valor in datos_seo(tema).items():
         orden += ['-M', f'{campo.replace("_", "-")}={valor}']
     if os.path.exists(tema.bib):
@@ -314,7 +412,7 @@ def generar_html(tema, tex_pandoc, datos):
              '-M', f'titulo-corto={corto}', '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)
     if datos['duracion']:
-        orden += ['-M', f'duracion={datos["duracion"]}']
+        orden += ['-M', f'duracion={datos["duracion_texto"]}']
     video = video_de(tema)
     if video:
         orden += ['-M', f'video={video}']
@@ -338,6 +436,7 @@ def generar_docx(tema, tex_pandoc, datos):
     orden += comunes_pandoc(tema, datos)
     ejecutar(orden, timeout=600)
     centrar_celdas_docx(destino)
+    retocar_docx(destino)
     return destino
 
 
@@ -366,6 +465,163 @@ def centrar_celdas_docx(ruta):
     with zipfile.ZipFile(ruta, 'w', zipfile.ZIP_DEFLATED) as z:
         for nombre, datos in partes.items():
             z.writestr(infos[nombre], datos)
+
+
+def _partes_docx(ruta):
+    import zipfile
+    with zipfile.ZipFile(ruta) as z:
+        return {n: z.read(n) for n in z.namelist()}, {i.filename: i for i in z.infolist()}
+
+
+def _guardar_docx(ruta, partes, infos):
+    import zipfile
+    with zipfile.ZipFile(ruta, 'w', zipfile.ZIP_DEFLATED) as z:
+        for nombre, datos in partes.items():
+            if nombre in infos:
+                z.writestr(infos[nombre], datos)
+            else:
+                z.writestr(nombre, datos)
+
+
+_PARRAFO = re.compile(r'<w:p(?: [^>]*)?>.*?</w:p>|<w:p(?: [^>]*)?/>', re.S)
+
+
+def conservar_listas_docx(xml):
+    """«Conservar con el siguiente» (w:keepNext) en cada párrafo seguido de otro
+    de nivel más profundo: una viñeta seguida de una subviñeta y un párrafo
+    normal seguido de una lista, como el beginpenalty=10000 de tcee.sty. Solo
+    en el cuerpo (no dentro de tablas ni notas)."""
+    cuerpo_ini = xml.find('<w:body>')
+    trozos = re.split(r'(<w:tbl>.*?</w:tbl>)', xml[cuerpo_ini:], flags=re.S)
+    salida = [xml[:cuerpo_ini]]
+    for t, trozo in enumerate(trozos):
+        if t % 2:            # tabla
+            salida.append(trozo)
+            continue
+        parrafos = list(_PARRAFO.finditer(trozo))
+
+        def nivel(p):
+            m = re.search(r'<w:ilvl w:val="(\d+)"', p)
+            if m:
+                return int(m.group(1))
+            estilo = re.search(r'<w:pStyle w:val="([^"]+)"', p)
+            if estilo and estilo.group(1) not in ('BodyText', 'FirstParagraph', 'Compact', 'Normal'):
+                return None      # títulos, cajas, figuras…: no cuentan
+            return -1            # párrafo normal
+        niveles = [nivel(p.group(0)) for p in parrafos]
+        nuevo, pos = '', 0
+        for k, p in enumerate(parrafos):
+            texto = p.group(0)
+            sig = niveles[k + 1] if k + 1 < len(parrafos) else None
+            # Solo si los dos párrafos son seguidos (nada entre medias)
+            seguidos = k + 1 < len(parrafos) and not trozo[p.end():parrafos[k + 1].start()].strip()
+            if (niveles[k] is not None and sig is not None and seguidos and sig > niveles[k]
+                    and '<w:keepNext' not in texto):
+                if '<w:pPr>' in texto:
+                    texto = re.sub(r'<w:pPr>((?:<w:pStyle [^>]*/>)?)', r'<w:pPr>\1<w:keepNext />', texto, count=1)
+                elif '<w:pPr />' in texto:
+                    texto = texto.replace('<w:pPr />', '<w:pPr><w:keepNext /></w:pPr>', 1)
+                else:
+                    texto = re.sub(r'^(<w:p(?: [^>]*)?>)', r'\1<w:pPr><w:keepNext /></w:pPr>', texto, count=1)
+            nuevo += trozo[pos:p.start()] + texto
+            pos = p.end()
+        salida.append(nuevo + trozo[pos:])
+    return ''.join(salida)
+
+
+def numerar_paginas_docx(partes):
+    """Secciones de Word como las partes del PDF: el tema en 1…N, los anexos en
+    A-1… y la bibliografía en B-1…, cada una con «página/páginas de la
+    sección» al pie. tcee.lua deja una marca @@TCEE-SECCION:A@@ donde empieza
+    cada parte; aquí cada marca pasa a ser un salto de sección."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    marcas = list(re.finditer(r'<w:p>(?:(?!</w:p>).)*?@@TCEE-SECCION:([A-Z])@@(?:(?!</w:p>).)*?</w:p>', xml, re.S))
+    i = xml.rfind('<w:sectPr')
+    final = re.match(r'<w:sectPr>(.*?)</w:sectPr>', xml[i:], re.S)
+    pie = re.search(r'<w:footerReference r:id="([^"]+)" w:type="default"\s*/>', final.group(1)) if final else None
+    rels = partes['word/_rels/document.xml.rels'].decode('utf-8')
+    destino_pie = re.search(rf'<Relationship[^>]*Id="{pie.group(1)}"[^>]*/>', rels) if pie else None
+    if not (final and pie and destino_pie):
+        return
+    nombre_pie = 'word/' + re.search(r'Target="([^"]+)"', destino_pie.group(0)).group(1)
+    pie_xml = partes[nombre_pie].decode('utf-8').replace(' NUMPAGES ', ' SECTIONPAGES ')
+    partes[nombre_pie] = pie_xml.encode('utf-8')
+    tipos = partes['[Content_Types].xml'].decode('utf-8')
+
+    def pie_con_letra(letra):
+        nombre = f'footerTcee{letra}.xml'
+        if f'word/{nombre}' not in partes:
+            m = re.search(r'<w:r>(<w:rPr>(?:(?!</w:rPr>).)*</w:rPr>)<w:fldChar w:fldCharType="begin"', pie_xml, re.S)
+            rpr = m.group(1) if m else ''
+            texto = re.sub(r'(<w:r>' + re.escape(rpr) + r'<w:fldChar w:fldCharType="begin"\s*/><w:instrText[^>]*> PAGE )',
+                           f'<w:r>{rpr}<w:t>{letra}-</w:t></w:r>' + r'\1', pie_xml, count=1)
+            partes[f'word/{nombre}'] = texto.encode('utf-8')
+        return nombre
+
+    def seccion(rid):
+        interior = re.sub(r'<w:footerReference r:id="[^"]+" w:type="default"\s*/>',
+                          f'<w:footerReference r:id="{rid}" w:type="default" />', final.group(1))
+        interior = interior.replace('w:val="eachSect"', 'w:val="continuous"')
+        interior = re.sub(r'<w:pgNumType[^>]*/>', '', interior)
+        interior = re.sub(r'(<w:pgMar [^>]*/>)', r'\1<w:pgNumType w:start="1" />', interior, count=1)
+        return f'<w:sectPr>{interior}</w:sectPr>'
+
+    rid_actual = pie.group(1)
+    nuevo, pos = '', 0
+    for m in marcas:
+        letra = m.group(1)
+        nombre = pie_con_letra(letra)
+        rid = f'rIdTcee{letra}'
+        if rid not in rels:
+            rels = rels.replace('</Relationships>', f'<Relationship Id="{rid}" Target="{nombre}" Type="http://schemas.'
+                                'openxmlformats.org/officeDocument/2006/relationships/footer" /></Relationships>')
+            tipos = tipos.replace('</Types>', f'<Override PartName="/word/{nombre}" ContentType="application/vnd.'
+                                  'openxmlformats-officedocument.wordprocessingml.footer+xml" /></Types>')
+        # Párrafo mínimo que cierra la sección anterior
+        cierre = ('<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="20" w:lineRule="exact" />'
+                  f'{seccion(rid_actual)}</w:pPr></w:p>')
+        nuevo += xml[pos:m.start()] + cierre
+        pos = m.end()
+        rid_actual = rid
+    resto = xml[pos:]
+    j = resto.rfind('<w:sectPr')
+    resto = resto[:j] + re.sub(r'<w:sectPr>.*?</w:sectPr>', lambda _: seccion(rid_actual), resto[j:], count=1, flags=re.S)
+    partes['word/document.xml'] = (nuevo + resto).encode('utf-8')
+    partes['word/_rels/document.xml.rels'] = rels.encode('utf-8')
+    partes['[Content_Types].xml'] = tipos.encode('utf-8')
+
+
+def retocar_docx(ruta):
+    """Postproceso del Word: listas que no se separan de lo que las introduce y
+    numeración de páginas por partes."""
+    partes, infos = _partes_docx(ruta)
+    partes['word/document.xml'] = conservar_listas_docx(partes['word/document.xml'].decode('utf-8')).encode('utf-8')
+    numerar_paginas_docx(partes)
+    imagenes_notas_docx(partes)
+    _guardar_docx(ruta, partes, infos)
+
+
+def imagenes_notas_docx(partes):
+    """pandoc deja la relación de las imágenes de las notas al pie
+    (\\graficonota) en document.xml.rels y Word no las encuentra: se copian a
+    footnotes.xml.rels."""
+    notas = partes.get('word/footnotes.xml', b'').decode('utf-8')
+    nombre_rels = 'word/_rels/footnotes.xml.rels'
+    rels_notas = partes.get(nombre_rels, b'').decode('utf-8')
+    rels_doc = partes['word/_rels/document.xml.rels'].decode('utf-8')
+    if not rels_notas:
+        rels_notas = ('<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/'
+                      'package/2006/relationships"></Relationships>')
+    cambiado = False
+    for rid in set(re.findall(r'r:embed="([^"]+)"', notas)):
+        if f'Id="{rid}"' in rels_notas:
+            continue
+        rel = re.search(rf'<Relationship [^>]*Id="{rid}"[^>]*/>', rels_doc)
+        if rel:
+            rels_notas = rels_notas.replace('</Relationships>', rel.group(0) + '</Relationships>')
+            cambiado = True
+    if cambiado:
+        partes[nombre_rels] = rels_notas.encode('utf-8')
 
 
 def main():
@@ -398,7 +654,11 @@ def main():
         resultados['pdf'] = pdf
         for a in avisos:
             print('AVISO LaTeX:', a)
-        print('PDF:', pdf, f'({fitz.open(pdf).page_count} páginas)')
+        partes = paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux'))
+        print('PDF:', pdf, f'({fitz.open(pdf).page_count} páginas en total)')
+        if partes:
+            print(f'Páginas del tema: {partes.get("tema", "?")} (anexos: {partes.get("anexos", 0)}; '
+                  f'bibliografía: {partes.get("bib", 0)})')
     if args.solo in (None, 'html', 'docx'):
         if args.solo in (None, 'html'):
             resultados['html'] = generar_html(tema, preparar_pandoc(tema, tex, 'html'), datos)

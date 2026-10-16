@@ -8,7 +8,7 @@
 Supuestos: preferencias completas, transitivas, reflexivas, continuas, monótonas (insaciabilidad local), convexas (6′ estricta para unicidad), diferenciables; precios dados; renta $\overline W$; estática y certidumbre.
 $$\max_{x}U(x)\quad\text{s.a.}\quad p\cdot x\le\overline W,\ x\ge 0$$
 Kuhn-Tucker: $U_i-\lambda p_i\le 0$, $x_i(U_i-\lambda p_i)=0$. Solución interior: $\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda$, $RMS_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}$.
-Solución: demanda marshalliana $x(p,\overline W)$ (homogénea de grado 0, ley de Walras) y FIU $V(p,\overline W)=U(x(p,\overline W))$; identidad de Roy $x_k=-\frac{\partial V/\partial p_k}{\partial V/\partial\overline W}$.
+Solución: demanda marshalliana $x(p,\overline W)$ (homogénea de grado 0, $x(\kappa p,\kappa\overline W)=x(p,\overline W)$ para todo $\kappa>0$, con κ como factor de homogeneidad en todo el temario; ley de Walras) y FIU $V(p,\overline W)=U(x(p,\overline W))$; identidad de Roy $x_k=-\frac{\partial V/\partial p_k}{\partial V/\partial\overline W}$.
 Gráficos de referencia: `oposicion/temario/fuentes/3A08/graficos/solucion-interior-esquina.tex`, `pmu-r3.tex`, `conjunto-presupuestario.tex`.
 
 ## Cómo se adapta en cada tema

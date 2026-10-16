@@ -30,7 +30,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema  # noqa: E402
+from comun import Tema, paginas_partes  # noqa: E402
 
 PALABRAS_POR_MINUTO = 158  # borrador de generar-video.py (≈2,75 palabras/s) con las pausas
 SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos actualizados',
@@ -69,7 +69,7 @@ def verificar(tema):
     datos['figuras'] = len(figuras)
     datos['citas'] = len(re.findall(r'\\(?:foot|auto|text|paren)?cite\b', tex))
     datos['notas_al_pie'] = len(re.findall(r'\\footnote\b', tex)) + len(re.findall(r'\\footcite\b', tex))
-    graficos_usados = set(re.findall(r'\\(?:grafico|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))
+    graficos_usados = set(re.findall(r'\\(?:grafico|graficonota|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))
     for g in graficos_usados:
         base = os.path.join(tema.graficos, os.path.splitext(g)[0])
         if not any(os.path.exists(base + ext) for ext in ('.tex', '.png', '.jpg', '.jpeg', '.pdf', '.svg')):
@@ -104,6 +104,19 @@ def verificar(tema):
         for m in set(re.findall(r'(?:Reference|Citation) [`\']([^\']+)\' on page \d+ undefined', log)):
             errores.append(f'Referencia o cita sin definir en el PDF: {m}')
         datos['avisos_overfull'] = len(re.findall(r'Overfull \\hbox \((\d{2,})', log))
+    # Páginas de cada parte (las escribe tcee.sty en el .aux): tema 1…N, anexos A-n, bibliografía B-n
+    partes = paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux'))
+    if partes:
+        datos['paginas_tema'] = partes.get('tema')
+        datos['paginas_anexos'] = partes.get('anexos', 0)
+        datos['paginas_bibliografia'] = partes.get('bib', 0)
+    pdf = os.path.join(tema.dir_publico, f'{tema.archivo}.pdf')
+    if os.path.exists(pdf):
+        try:
+            import fitz
+            datos['paginas_total'] = fitz.open(pdf).page_count
+        except Exception:
+            pass
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
     if html:
         sin_math = re.sub(r'\\\(.*?\\\)|\\\[.*?\\\]', '', html, flags=re.S)
@@ -220,6 +233,9 @@ def main():
                          ensure_ascii=False, indent=2))
     else:
         print(f'Tema {tema}: {len(errores)} errores, {len(avisos)} avisos')
+        if datos.get('paginas_tema'):
+            print(f'  páginas del tema: {datos["paginas_tema"]} (anexos: {datos.get("paginas_anexos", 0)}; '
+                  f'bibliografía: {datos.get("paginas_bibliografia", 0)}; total: {datos.get("paginas_total", "?")})')
         for e in errores:
             print('  ERROR', e)
         for a in avisos:

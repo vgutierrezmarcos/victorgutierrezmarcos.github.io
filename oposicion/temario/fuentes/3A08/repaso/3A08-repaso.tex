@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la demanda del consumidor (I)]{3.A.8}{Teoría de la demanda del consumidor (I). Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.}
-\tcefecha{14/10/2026}
+\tcefecha{16/10/2026}
 % Colores de la clasificación de los bienes (los del tema)
 \newcommand{\bnormal}[1]{\textcolor{tceeverde}{#1}}
 \newcommand{\binferior}[1]{\textcolor{tceedorado}{#1}}
@@ -60,7 +60,7 @@ Anexos (no se cantan): PMU en 3D, derivaciones, formas funcionales, sistemas de 
 \graficorepaso[0.85\linewidth]{propiedades-curvas-indiferencia}{Propiedades de las curvas de indiferencia y el axioma del que sale cada una}
 \graficorepaso[0.65\linewidth]{superficie-utilidad-repaso}{Superficie de utilidad cortada a $U=1,2,3$: su proyección es el mapa de curvas de indiferencia}
 \begin{formula}
-\centering $RMS_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$\\[1pt] $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln RMS_{12}}$
+\centering $\mathrm{RMS}_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$\\[1pt] $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln\mathrm{RMS}_{12}}$
 \end{formula}
 \begin{itemize}
 \item \concepto{CES}: $\sigma\to0$ \autor{Leontief}, $\sigma\to1$ \autor{Cobb}-\autor{Douglas}, $\sigma\to\infty$ lineal.
@@ -72,12 +72,15 @@ Anexos (no se cantan): PMU en 3D, derivaciones, formas funcionales, sistemas de 
 \graficorepaso{conjunto-presupuestario}{Conjunto presupuestario; $\vect{p}$, perpendicular a la recta; si $p_1\uparrow$, gira hacia dentro}
 
 \sub{I.2. PMU: el equilibrio}
+\begin{formula}
+\centering $\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vect{x}} & U(\vect{x})\\[1pt] \text{s.a.} & \vect{p}\cdot\vect{x}\leq\overline{W}\\[1pt] & \vect{x}\geq\vect{0}\end{array}$
+\end{formula}
 \begin{itemize}
-\item $\max U(\vect{x})$ s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W}$, $\vect{x}\geq\vect{0}$: existe (\autor{Weierstrass}), única (estr.\ cuasiconcavidad), CPO suficientes (\autor{Arrow}-\autor{Enthoven}).
+\item Existe (\autor{Weierstrass}), única (estr.\ cuasiconcavidad), CPO suficientes (\autor{Arrow}-\autor{Enthoven}).
 \item \concepto{\autor{Kuhn}-\autor{Tucker}}: $U_i-\lambda p_i\leq0$, $x_i\geq0$, holgura complementaria. $\lambda$ = UMg de la renta; $\lambda>0$ por insaciabilidad local (con saturación interior, $\lambda=0$).
 \end{itemize}
 \begin{formula}
-Interior (\autor{Gossen}): $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$\\ $\Rightarrow RMS_{12}=p_1/p_2$.\ \ Esquina ($x_2^*=0$): $RMS_{12}\geq p_1/p_2$
+Interior (\autor{Gossen}): $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$\\ $\Rightarrow \mathrm{RMS}_{12}=p_1/p_2$.\ \ Esquina ($x_2^*=0$): $\mathrm{RMS}_{12}\geq p_1/p_2$
 \end{formula}
 \graficorepaso{solucion-interior-esquina}{Solución interior (tangencia) y de esquina ($x_2^*=0$)}
 
@@ -114,7 +117,7 @@ Agregación de \autor{Engel}: $\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1$,\ \
 \end{itemize}
 \begin{formula}
 \centering \autor{Slutsky}, con $\overline{U}=V(\vect{p},\overline{W})$:\\[1pt]
-$\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{ET}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{ES\,=\,S_{ij}}\underbrace{-\,x_j(\vect{p},\overline{W})\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{ER}$\\[1pt]
+$\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\mathrm{ET}}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\mathrm{ES}\,=\,S_{ij}}\underbrace{-\,x_j(\vect{p},\overline{W})\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\mathrm{ER}}$\\[1pt]
 Con $j=i$: $S_{ii}\leq0$.
 \end{formula}
 \graficorepaso[0.8\linewidth]{slutsky-propio}{Signos de \autor{Slutsky} con $j=i$}
@@ -245,7 +248,7 @@ Los 3 desarrollos acercan la teoría a lo observable: elecciones, coste del tiem
 \item Signo de \autor{Slutsky}: ER $=-x_i\,\partial x_i/\partial\overline{W}$, opuesto al de $\partial x_i/\partial\overline{W}$. Todo \bgiffen{\autor{Giffen}} es \binferior{inferior}, no al revés. \autor{Veblen} $\neq$ \autor{Giffen}.
 \item ADPR $\Rightarrow$ \autor{Slutsky} semidefinida negativa, \emph{no} simétrica.
 \item La agregación conserva homogeneidad y ley de \autor{Walras}, no el ADPR.
-\item Esquina: $RMS_{12}\geq p_1/p_2$, no igualdad.
+\item Esquina: $\mathrm{RMS}_{12}\geq p_1/p_2$, no igualdad.
 \item La «ley de la escasez» no la formula \autor{Gossen}.
 \item La clasificación de un bien es \emph{local}: normal a una renta, inferior a otra.
 \item \autor{Gorman}: curvas de \autor{Engel} rectas y \emph{paralelas}; que pasen por el origen solo en las homotéticas.

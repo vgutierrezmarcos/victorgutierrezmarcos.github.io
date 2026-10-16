@@ -271,3 +271,37 @@ Resueltas el 13/10/2026: clasificación de los bienes (ahora con las dos tablas 
 - **Deaton y Muellbauer (1980)**: rechazan la homogeneidad y lo atribuyen a una especificación dinámica deficiente (autocorrelación de los residuos al imponerla), según las fuentes secundarias consultadas; se mantiene.
 - **Boskin (1996)**: sesgo de sustitución de 0,4 puntos (0,15 entre categorías y 0,25 dentro de ellas): correcto. **IPC encadenado**: la CBO estima unos 0,25 puntos menos al año de media (0,27 en 2000-2012 según el CRS); se escribe «de media» en lugar de «hoy».
 - **Opinión de la conclusión**: aprobada por Víctor.
+
+## Cambios del 16/10/2026 (criterios generales nuevos y pendientes del canon)
+
+Sin cambios de estructura (mismos apartados, minutos y etiquetas). El tema pasa de 39 a 40 páginas (49 en total, con 5 de anexos y 4 de bibliografía); la ficha de repaso sigue en 4 páginas (9 pt, última al 94 %).
+
+**Problemas de optimización con `\optim`** (objetivo arriba, «s.a.» y cada restricción en su línea): el PMU (`eq:pmu`), la función indirecta de utilidad (`eq:fiu`), el PMG (`eq:pmg`), la función de gasto (`eq:fg`) y la recuperación de la utilidad (`eq:u-desde-v`). En la ficha de repaso, el PMU, el PMG y la recuperación de la utilidad; como `tcee-repaso.sty` no trae `\optim`, la ficha la define en su preámbulo con `\providecommand` (si se añade al estilo, se usará la del estilo). Las cabeceras de la tabla `tab:kt` y los títulos de los gráficos `primal` y `dual` siguen en una línea: no son fórmulas en display.
+
+**Funciones clave (`\funcionclave`)**: 2, la función de gasto como problema de minimización (`eq:fg`) y la ecuación de Slutsky (`eq:slutsky`), con su número.
+
+**Siglas en redonda** (canon, `pendientes-coherencia.md`, marcado [hecho: 16/10/2026]): $\mathrm{RMS}_{12}$ en `eq:tangencia-primal`, `eq:tangencia-dual` y la nota de `tab:kt` (eran 3, no 1), en la ficha de repaso, el guion y `video/escenas.yaml`; superíndices de las lagrangianas del anexo A, $\mathcal{L}^{\mathrm{P}}$ y $\mathcal{L}^{\mathrm{D}}$. Los gráficos ya las tenían en redonda. Las fórmulas sueltas de `_trabajo/video/f-*.tex` son caché del vídeo y se regeneran.
+
+**Fórmulas que acababan en «:»**: `eq:tangencia-primal` y `eq:tangencia-dual` terminan ahora en punto y el texto siguiente empieza frase. Los minutos del texto ya iban con `\tiempo`.
+
+**Viñetas en varios niveles**: la cuasiconvexidad de $V$ (qué dice, por qué, gráficamente), la concavidad de $E$ (consumidor pasivo frente a reoptimización), el planteamiento del PMG (la variable $\vect{h}$ y la existencia pasan a la lista de debajo) y la separabilidad débil y la presupuestación en dos etapas (II.2).
+
+**Notas al pie del original** (42 en el original; el tema tenía 9 y ahora 16). Recuperadas y revisadas:
+
+| Nota del original | Dónde va | Revisión |
+|---|---|---|
+| 9 (λ y la teoría cardinal) | I.2.1, multiplicador del PMU | Reescrita: λ* depende de la representación de la utilidad ($f'\big(U(\vect{x}^*)\big)\lambda^*$ con $f$ creciente), a diferencia de la utilidad marginal del dinero constante de Marshall; lo ordinal es la tangencia |
+| 15 (nombre de la ley de Walras) | I.2.1, propiedad 4 de la marshalliana | Con $\vect{p}\cdot\vect{z}(\vect{p})=0$ (flechas del canon) y remisión a 3.A.21 |
+| 17 (argmax) | I.2.1, SCEDM | $\vect{x}=\arg\max$ y $V=\max$; se añade que sin convexidad estricta la demanda es una correspondencia |
+| 21 (argmin) | I.2.2, SCEDC | $\vect{h}=\arg\min$ y $E=\min$; el original escribía la restricción $u(h)=\overline U$: corregida a $U(\vect{h})\geq\overline{U}$, explicando por qué se escribe con desigualdad |
+| 26 (Cobb y Douglas) | II.2, Cobb-Douglas (ampliada) | Historia de la consulta de Douglas a Cobb y participaciones constantes con $\mathrm{PMg}_K z_K=\alpha q$, en la notación del 3.A.11; se mantiene la estimación canónica de 1928 ($z_K^{1/4}z_L^{3/4}$, no el «70/30» del original), senador de 1949 a 1967 (no 1966), cita de `Douglas1976Once` (añadida a `3A09.bib`) y remisión de las propiedades a 3.A.11 (la lista del original decía «estrictamente convexa», y es cuasicóncava) |
+| 34 (Slutsky en elasticidades) | III.2 | Derivación paso a paso con $\varepsilon_{x_i,p_j}$, $\varepsilon^h_{i,p_j}$, $s_j$ y $\varepsilon_{x_i,\overline W}$ del canon (el original usaba $\varepsilon_{ij}^c$) |
+| 38 y 42 (Konüs frente a Laspeyres y Paasche) | III.3, índices (dos notas) | Sobrecompensación con $I_L$ y demostración de $I_P\leq I_K(\overline U^1)$ con la cesta final; la igualdad «con independientes netos» del original se mantiene, pero explicando que equivale a $S=0$ (Leontief) por $S\vect{p}=\vect{0}$ |
+
+No se recuperan:
+
+- **1-6** (individualismo metodológico, microeconomía, tecnologías del consumo, teoría subjetiva del valor, «Ysidro» Edgeworth, Jevons): son de la introducción del 3.A.8, que no está en la de este tema, y el 3.A.8 ya las tiene.
+- **8, 11, 13, 14, 16, 19, 22, 23, 24, 27, 28, 30, 39, 40, 41**: su contenido ya está en el texto (o en las cajas del IPC y del deflactor) desde la revisión del 13/10/2026; repetirlo como nota sería redundante.
+- **10** (marcador vacío de Sarrus, en el anexo A), **12** («por el teorema de las funciones implícitas», atribución errónea de la existencia: es Weierstrass, ya en el texto), **18** (sustituida por la nota con la derivación de $\mu^*\lambda^*=1$), **29** (copia literal del BICE, ya reescrita en II.2), **32** (enlace a un vídeo sobre Rouché-Frobenius, que no es el teorema que se usa), **33** (contradecía el «si y solo si»).
+- **37** (exceso de gravamen con la VE y la VC): ya está en la `notaopositor` de III.3; una nota al pie dentro de una caja no se compone bien.
+- Se mantienen las que ya estaban: 7, 20, 25, 31, 35 y 36 (revisadas el 13/10/2026), además de las dos nuevas de entonces ($\mu^*=1/\lambda^*$ y la simetría automática con dos bienes).

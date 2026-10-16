@@ -21,35 +21,35 @@
   % ---------- panel izquierdo: restricción no operativa ----------
   \begin{axis}[tresd,name=a]
     % 1: ejes
-    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below,font=\Large] {$x_1$};}
     \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.6,0) coordinate (finx2a);}
-    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(\vect{x})$};}
+    \capa{1}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above,font=\Large] {$U(\vect{x})$};}
     % 2: conjunto presupuestario en el suelo
     \capa{2}{\addplot3[presupuesto] coordinates {(0,0,0) (3.5,0,0) (0,3.5,0) (0,0,0)};}
     % 3: utilidad con un máximo absoluto (punto de saturación)
     \capa{3}{\addplot3[superficie,domain=0:3.5,y domain=0:3.5,samples=12,samples y=12]
       {3*exp(-((x-1.2)^2+(y-1.2)^2)/2.5)};}
     % el rótulo de x2 (paso 1) va después de la superficie para que no quede tapado
-    \capa{1}{\node[right] at (finx2a) {$x_2$};}
+    \capa{1}{\node[right,font=\Large] at (finx2a) {$x_2$};}
     % 4: el máximo, dentro del conjunto presupuestario
     \capa{4}{\draw[guia] (axis cs:1.2,1.2,3) -- (axis cs:1.2,1.2,0);}
     \capa{4}{\node[punto] at (axis cs:1.2,1.2,3) {};}
     \capa{4}{\node[punto] at (axis cs:1.2,1.2,0) {};}
-    \capa{4}{\node[etiqueta,below] at (axis cs:1.2,1.2,0) {$\vect{x}^*$};}
+    \capa{4}{\node[etiqueta,below,font=\Large] at (axis cs:1.2,1.2,0) {$\vect{x}^*$};}
   \end{axis}
-  \capa{4}{\node[font=\small,align=center,anchor=north] at ([yshift=-0.45cm]a.south)
-    {(a) Máximo absoluto dentro\\ del conjunto presupuestario:\\ $\vect{p}\cdot \vect{x}^*<\overline{W}$, \ $\lambda=0$};}
+  \capa{4}{\node[font=\Large,align=center,anchor=north] at ([yshift=-0.45cm]a.south)
+    {(a) Saciedad dentro\\ del presupuesto:\\ $\vect{p}\cdot \vect{x}^*<\overline{W}$, \ $\lambda=0$};}
   % ---------- panel derecho: restricción operativa ----------
   \begin{axis}[tresd,name=b,at={(a.east)},anchor=west,xshift=1.0cm]
     % 5: ejes
-    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below] {$x_1$};}
+    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:4.2,0,0) node[below,font=\Large] {$x_1$};}
     \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,5.6,0) coordinate (finx2b);}
-    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above] {$U(\vect{x})$};}
+    \capa{5}{\draw[eje] (axis cs:0,0,0) -- (axis cs:0,0,4.6) node[above,font=\Large] {$U(\vect{x})$};}
     % 6: conjunto presupuestario
     \capa{6}{\addplot3[presupuesto] coordinates {(0,0,0) (3.5,0,0) (0,3.5,0) (0,0,0)};}
     % 7: utilidad monótona (siempre crece: no hay máximo absoluto)
     \capa{7}{\addplot3[superficie,domain=0:3.5,y domain=0:3.5,samples=12,samples y=12] {sqrt(x*y)};}
-    \capa{5}{\node[right] at (finx2b) {$x_2$};}
+    \capa{5}{\node[right,font=\Large] at (finx2b) {$x_2$};}
     % 8: utilidad a lo largo de la recta de balance (corte vertical)
     \capa{8}{\addplot3[curvanueva,domain=0:3.5,samples=40,samples y=0] (x,{3.5-x},{sqrt(x*(3.5-x))});}
     \capa{8}{\addplot3[guia,domain=0:3.5,samples=2,samples y=0] (x,{3.5-x},0);}
@@ -57,9 +57,9 @@
     \capa{9}{\draw[guia] (axis cs:1.75,1.75,1.75) -- (axis cs:1.75,1.75,0);}
     \capa{9}{\node[punto] at (axis cs:1.75,1.75,1.75) {};}
     \capa{9}{\node[punto] at (axis cs:1.75,1.75,0) {};}
-    \capa{9}{\node[etiqueta,below] at (axis cs:1.75,1.75,0) {$\vect{x}^*$};}
+    \capa{9}{\node[etiqueta,below,font=\Large] at (axis cs:1.75,1.75,0) {$\vect{x}^*$};}
   \end{axis}
-  \capa{9}{\node[font=\small,align=center,anchor=north] at ([yshift=-0.45cm]b.south)
-    {(b) Utilidad monótona: máximo\\ condicionado sobre la recta de balance:\\ $\vect{p}\cdot \vect{x}^*=\overline{W}$, \ $\lambda>0$};}
+  \capa{9}{\node[font=\Large,align=center,anchor=north] at ([yshift=-0.45cm]b.south)
+    {(b) Utilidad monótona:\\ máximo en la recta\\ $\vect{p}\cdot \vect{x}^*=\overline{W}$, \ $\lambda>0$};}
 \end{tikzpicture}
 \end{document}

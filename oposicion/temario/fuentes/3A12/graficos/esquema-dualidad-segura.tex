@@ -1,0 +1,128 @@
+% Cuadro resumen completo de la dualidad en la producción, con la columna del
+% «primal» de Segura (maximizar la producción con un coste dado), para el
+% anexo de la dualidad en sentido estricto (anexo:segura). Rehace la Imagen 3
+% del tema antiguo (media/image9.jpg, elaboración propia a partir de Maté y
+% Pérez, 2007, p. 108) con el estilo de esquema-dualidad-empresa.tex.
+% Cuatro columnas: primal de Segura (azul), «problemas duales» (franja gris
+% con las relaciones entre las dos primeras), minimización del coste (verde) y
+% maximización del beneficio, en dos etapas (salvia) y en una (morado).
+% Equivalencias con la notación del original:
+%   v (demanda de factores de Segura) -> z(w, C barra);  h (SCEDIC) -> z(w, q);
+%   f -> F;  Q barra, Q* -> q;  C* -> C(w, q);  chi* -> chi(w, C barra);
+%   B* -> B(p, w);  z*(p, w) (SCEDINC) -> z(p, w);  q*(p, w) -> q(p, w).
+% Erratas del original corregidas: lema de Shephard sin el signo menos;
+%   «w·h» en el beneficio -> w·z; las identidades entre funciones valor
+%   (en el original, «chi(w,C) = chi(p, chi(w,C))» y «C(w,Q) = chi(w, C(w,Q))»)
+%   son C(w, chi(w,C)) = C barra y chi(w, C(w,q)) = q; y los rótulos de las
+%   dos flechas cruzadas entre demandas, que estaban intercambiados, van con
+%   la flecha que llega a la demanda que definen.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cajap/.style={draw=tceemorado,very thick,fill=tceemorado!8,rounded corners=3pt,align=center,
+                  minimum width=4.2cm,minimum height=1.25cm,inner sep=5pt},
+    cajas/.style={cajap,draw=tceeazul,fill=tceeazul!8},
+    cajad/.style={cajap,draw=tceeverde,fill=tceeverde!8},
+    cajac/.style={cajap,draw=black,fill=tceesalvia},
+    une/.style={->,thick},
+    dob/.style={<->,thick},
+    rel/.style={->,thick,dashed,tceegris},
+    cur/.style={->,thin,dashed,tceegris,rounded corners=10pt},
+    nota/.style={font=\footnotesize,inner sep=2pt},
+    notas/.style={font=\scriptsize,inner sep=1.5pt,text=tceegris}]
+  % columnas: Segura en x = 0, minimización del coste en x = 10,2, beneficio en
+  % dos etapas en x = 16,6 y en una etapa en x = 22,2; filas en y = 0; -3,9; -7,8.
+  % 1: primal de Segura
+  \capa{1}{
+    \node[text=tceeazul,align=center] at (0,1.75) {\textbf{Problema primal de \textsc{Segura}}\\ \footnotesize maximización de la producción};
+    \node[cajas] (S) at (0,0) {$\max\limits_{\vect{z}\geq\vect{0}}\ F(\vect{z})$\\[1pt] s.a.\ $\vect{w}\cdot\vect{z}\leq\overline{C}$};
+  }
+  % 2: demandas de factores con un coste dado
+  \capa{2}{
+    \node[cajas] (X) at (0,-3.9) {\textbf{Demandas de factores}\\ $\vect{z}^*=\vect{z}(\vect{w},\overline{C})$};
+    \draw[une] (S.south) -- node[right,nota] {resolviendo} (X.north);
+  }
+  % 3: función indirecta de producción e identidad de Roy
+  \capa{3}{
+    \node[cajas] (VX) at (0,-7.8) {\textbf{Función indirecta de producción}\\ $\chi(\vect{w},\overline{C})=F\big(\vect{z}(\vect{w},\overline{C})\big)$};
+    \draw[une] ([xshift=0.3cm]X.south) -- node[right,nota,align=left] {función\\ valor} ([xshift=0.3cm]VX.north);
+    \draw[une,tceeazul] ([xshift=-1.1cm]VX.north) -- node[left,nota,align=right,text=tceeazul] {Identidad de \textsc{Roy}\\ $z_i(\vect{w},\overline{C})=-\dfrac{\partial\chi(\vect{w},\overline{C})/\partial w_i}{\partial\chi(\vect{w},\overline{C})/\partial\overline{C}}$} ([xshift=-1.1cm]X.south);
+  }
+  % 4: minimización del coste y la franja de los problemas duales
+  \capa{4}{
+    \node[text=tceeverde,align=center] at (10.2,1.75) {\textbf{Problema dual}\\ \footnotesize minimización del coste};
+    \node[cajad] (D) at (10.2,0) {$\min\limits_{\vect{z}\geq\vect{0}}\ \vect{w}\cdot\vect{z}$\\[1pt] s.a.\ $F(\vect{z})\geq q$};
+    \begin{scope}[on background layer]
+      \draw[very thick,dashed,tceegris] (2.35,1.35) rectangle (7.85,-8.75);
+    \end{scope}
+    \node[text=tceegris,font=\footnotesize\itshape] at (5.1,1.05) {problemas duales};
+    \draw[dob] (S.east) -- node[above,nota,text=tceegris] {$\overline{C}=C(\vect{w},q)$} node[below,nota,text=tceegris] {$q=\chi(\vect{w},\overline{C})$} (D.west);
+  }
+  % 5: demandas condicionadas
+  \capa{5}{
+    \node[cajad] (H) at (10.2,-3.9) {\textbf{Demandas condicionadas}\\ $\vect{z}^*=\vect{z}(\vect{w},q)$};
+    \draw[une] (D.south) -- node[left,nota] {resolviendo} (H.north);
+  }
+  % 6: función de costes y lema de Shephard
+  \capa{6}{
+    \node[cajad] (E) at (10.2,-7.8) {\textbf{Función de costes}\\ $C(\vect{w},q)=\vect{w}\cdot\vect{z}(\vect{w},q)$};
+    \draw[une] ([xshift=-0.3cm]H.south) -- node[left,nota,align=right] {función\\ valor} ([xshift=-0.3cm]E.north);
+    \draw[une,tceeverde] ([xshift=1.1cm]E.north) -- node[right,nota,align=left,text=tceeverde] {Lema de \textsc{Shephard}\\ $z_i(\vect{w},q)=\dfrac{\partial C(\vect{w},q)}{\partial w_i}$} ([xshift=1.1cm]H.south);
+  }
+  % 7: relación entre las demandas (descomposición a lo Slutsky)
+  \capa{7}{
+    \draw[dob] (X.east) -- (H.west);
+    \node[notas,anchor=south,align=center] at (5.1,-3.75) {$\underbrace{\dfrac{\partial z_i(\vect{w},\overline{C})}{\partial w_j}}_{\text{efecto total}}=$\\[1pt]
+      $\underbrace{\dfrac{\partial z_i(\vect{w},q)}{\partial w_j}}_{\text{efecto sustitución}}\underbrace{-\,z_j\,\dfrac{\partial z_i(\vect{w},\overline{C})}{\partial\overline{C}}}_{\text{efecto «renta»}}$\quad $\forall i,j$};
+  }
+  % 8: relación entre las funciones valor (inversas en su segundo argumento)
+  \capa{8}{
+    \draw[dob] (VX.east) -- node[above,notas] {$C\big(\vect{w},\chi(\vect{w},\overline{C})\big)=\overline{C}$} node[below,notas] {$\chi\big(\vect{w},C(\vect{w},q)\big)=q$} (E.west);
+  }
+  % 9: cada demanda a partir de la otra y de la función valor del otro problema
+  \capa{9}{
+    \draw[rel] (H.south west) -- node[pos=0.19,sloped,below,notas] {$\vect{z}(\vect{w},\overline{C})=\vect{z}\big(\vect{w},\chi(\vect{w},\overline{C})\big)$} ([xshift=-0.15cm]VX.north east) -- ([xshift=1.7cm]X.south);
+    \draw[rel] (X.south east) -- node[pos=0.19,sloped,below,notas] {$\vect{z}(\vect{w},q)=\vect{z}\big(\vect{w},C(\vect{w},q)\big)$} ([xshift=0.15cm]E.north west) -- ([xshift=-1.7cm]H.south);
+  }
+  % 10: maximización del beneficio en una etapa
+  \capa{10}{
+    \node[text=tceemorado,align=center] at (19.4,2.55) {\textbf{Problema «primal» más habitual en la literatura}\\ \footnotesize maximización del beneficio};
+    \node[text=tceemorado,font=\footnotesize] at (22.2,1.05) {en una etapa};
+    \node[cajap] (P) at (22.2,0) {$\max\limits_{\vect{z}\geq\vect{0}}\ p\,F(\vect{z})-\vect{w}\cdot\vect{z}$};
+  }
+  % 11: demandas no condicionadas
+  \capa{11}{
+    \node[cajap] (Z) at (22.2,-3.9) {\textbf{Demandas no condicionadas}\\ $\vect{z}^*=\vect{z}(p,\vect{w})$};
+    \draw[une] (P.south) -- node[right,nota] {resolviendo} (Z.north);
+  }
+  % 12: maximización del beneficio en dos etapas y oferta del producto
+  \capa{12}{
+    \node[font=\footnotesize] at (16.6,1.05) {en dos etapas};
+    \node[cajac] (M2) at (16.6,0) {$\max\limits_{q\geq 0}\ p\,q-C(\vect{w},q)$};
+    \node[cajac] (Q) at (16.6,-3.9) {\textbf{Oferta del producto}\\ $q^*=q(p,\vect{w})$};
+    \draw[une] (M2.south) -- node[right,nota,pos=0.3] {resolviendo} (Q.north);
+    \draw[dob] (Q.east) -- node[above,nota] {$q=F(\vect{z})$} (Z.west);
+  }
+  % 13: función de beneficio y lemas de Hotelling
+  \capa{13}{
+    \node[cajap,minimum width=9.6cm] (V) at (19.4,-7.8) {\textbf{Función de beneficio}\\ $B(p,\vect{w})=p\,F\big(\vect{z}(p,\vect{w})\big)-\vect{w}\cdot\vect{z}(p,\vect{w})$};
+    \draw[une] (Q.south) -- node[pos=0.4,right,nota,align=left,xshift=3pt] {función\\ valor} ([xshift=-0.5cm]V.north);
+    \draw[une] (Z.south) -- node[pos=0.4,left,nota,align=right,xshift=-3pt] {función\\ valor} ([xshift=0.5cm]V.north);
+    \draw[une,tceemorado] (15,-7.15) -- node[pos=0.5,right,nota,align=left,text=tceemorado] {Lema de\\ \textsc{Hotelling}\\ $q=\dfrac{\partial B(p,\vect{w})}{\partial p}$} (15,-4.55);
+    \draw[une,tceemorado] (23.7,-7.15) -- node[pos=0.5,right,nota,align=left,text=tceemorado] {Lema de \textsc{Hotelling}\\ $z_i=-\dfrac{\partial B(p,\vect{w})}{\partial w_i}$} (23.7,-4.55);
+  }
+  % 14: enlaces entre columnas: la función de costes en el objetivo de las dos
+  % etapas, la demanda no condicionada como condicionada, la producción y la
+  % recuperación de la tecnología a partir de la función de beneficio
+  \capa{14}{
+    \draw[cur] (E.east) -- (13.6,-7.8) -- node[pos=0.8,sloped,above,notas] {en el objetivo} (13.6,0) -- (M2.west);
+    \draw[cur] ([xshift=-1cm]Z.north) -- ++(0,0.75) -| (13.1,-3.9) -- (H.east);
+    \node[notas,anchor=south] at (19.4,-2.5) {$\vect{z}(p,\vect{w})=\vect{z}\big(\vect{w},q(p,\vect{w})\big)$};
+    \draw[cur] (VX.south) -- (0,-9.35) -- (14.1,-9.35) -- (14.1,-3.9) -- (Q.west);
+    \draw[cur] (V.south) -- (19.4,-10.0) -- node[below,notas,pos=0.5] {recuperabilidad de la tecnología} (-4.6,-10.0) -- (-4.6,0) -- (S.west);
+  }
+\end{tikzpicture}
+\end{document}

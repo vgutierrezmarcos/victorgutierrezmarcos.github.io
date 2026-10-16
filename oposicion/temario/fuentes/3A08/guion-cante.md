@@ -22,7 +22,7 @@ Axiomas sobre las preferencias, función de utilidad y función de demanda marsh
 > - **III.2** (100). Modelo de Becker: utilidad y producción doméstica, restricciones de renta y de tiempo, renta completa, precio sombra y efecto del salario (en rojo).
 > - **III.3** (44 | 56). 1: función hedónica y precio implícito, condición de Rosen y regresión hedónica. 2: `funcion-hedonica-rosen` (capas 1-9). Al acabar, la pizarra solo tiene el modelo de Rosen.
 
-## Introducción (2,5 min)
+## Introducción (2′30″)
 
 ### Enganche
 
@@ -44,7 +44,7 @@ De ahí, tres preguntas. ¿Cómo se obtiene la demanda de las preferencias y del
 
 La exposición sigue tres bloques: los fundamentos de la elección racional, hasta la demanda de mercado; la estática comparativa, con la ecuación de Slutsky en el centro, y tres desarrollos que acercan la teoría a lo observable. Del modelo a sus implicaciones y, por último, a los datos.
 
-## I. Análisis de la teoría neoclásica de la demanda del consumidor (I): fundamentos de la teoría de la elección racional (11 min)
+## I. Análisis de la teoría neoclásica de la demanda del consumidor (I): fundamentos de la teoría de la elección racional (11′)
 
 ### I. Fundamentos de la teoría de la elección racional
 
@@ -142,9 +142,9 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 [Pizarra: gráfico `propiedades-curvas-indiferencia-pizarra` hasta la capa 19] Las uno con un segmento: cualquier combinación de las dos es al menos tan buena, así que el segmento queda en la zona sombreada, por encima de la curva. Y son continuas y sin vértices.
 
-[Pizarra 1: fórmula `RMS_{12}\equiv-\left.\frac{dx_2}{dx_1}\right|_{U=\overline{U}}=\frac{U_1}{U_2}`] Su pendiente en valor absoluto es la relación marginal de sustitución: cuánto bien dos cede el consumidor por una unidad más del bien uno sin cambiar su utilidad. Es el cociente de las utilidades marginales y, por la convexidad, decrece.
+[Pizarra 1: fórmula `\mathrm{RMS}_{12}\equiv-\left.\frac{dx_2}{dx_1}\right|_{U=\overline{U}}=\frac{U_1}{U_2}`] Su pendiente en valor absoluto es la relación marginal de sustitución: cuánto bien dos cede el consumidor por una unidad más del bien uno sin cambiar su utilidad. Es el cociente de las utilidades marginales y, por la convexidad, decrece.
 
-[Pizarra 1: fórmula `\sigma\equiv\frac{d\ln(x_2/x_1)}{d\ln RMS_{12}}`] Como depende de las unidades, la sustituibilidad se mide con la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre los bienes ante la de la relación marginal de sustitución.
+[Pizarra 1: fórmula `\sigma\equiv\frac{d\ln(x_2/x_1)}{d\ln\mathrm{RMS}_{12}}`] Como depende de las unidades, la sustituibilidad se mide con la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre los bienes ante la de la relación marginal de sustitución.
 
 [Apoyo 1, no se escribe: gráfico `ces-curvas-indiferencia` hasta la capa 5] La CES la mantiene constante y anida los casos clásicos: Leontief, con sigma cero; Cobb-Douglas, con sigma uno, y la lineal, con sigma infinita.
 
@@ -182,7 +182,7 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 [Pizarra: gráfico `solucion-interior-esquina` hasta la capa 6] En una solución interior el óptimo, equis asterisco, es la tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, iguala el cociente de precios, lo que exige el mercado.
 
-[Pizarra 1: fórmula `\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ RMS_{12}=\frac{p_1}{p_2}`] Analíticamente, la utilidad marginal por euro es la misma en todos los bienes e igual a lambda: es la segunda ley de Gossen.
+[Pizarra 1: fórmula `\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}`] Analíticamente, la utilidad marginal por euro es la misma en todos los bienes e igual a lambda: es la segunda ley de Gossen.
 
 > Apunte: Segunda ley de Gossen (1854): igual utilidad marginal por unidad monetaria en todos los bienes
 
@@ -222,7 +222,7 @@ Lo cumplen las homotéticas idénticas y las cuasilineales, con efecto renta nul
 
 Recapitulando: de las preferencias y el presupuesto sale una demanda homogénea de grado cero que agota la renta y, con condiciones exigentes, la de mercado. Falta ver cómo responde a la renta y a los precios.
 
-## II. Análisis de la teoría neoclásica de la demanda del consumidor (II): estática comparativa (análisis gráfico y de elasticidades) (8 min)
+## II. Análisis de la teoría neoclásica de la demanda del consumidor (II): estática comparativa (análisis gráfico y de elasticidades) (8′)
 
 ### II.1. Variaciones en la renta
 
@@ -318,7 +318,7 @@ Valoro el bloque. La teoría da una demanda con restricciones contrastables, per
 
 Recapitulando: la ley de la demanda vale siempre para la compensada, y para la marshalliana solo si el efecto renta no domina. ¿Podemos llegar a esto desde lo observable?
 
-## III. Otros desarrollos de la teoría de la demanda (7,5 min)
+## III. Otros desarrollos de la teoría de la demanda (7′30″)
 
 ### III.1. La teoría de la preferencia revelada
 
@@ -402,7 +402,7 @@ Su valoración: depende de la forma funcional, la segunda etapa está mal identi
 
 > Apunte: Idea clave: los tres desarrollos acercan la teoría de la demanda a lo observable
 
-## Conclusión (1 min)
+## Conclusión (1′)
 
 ### Recapitulación
 

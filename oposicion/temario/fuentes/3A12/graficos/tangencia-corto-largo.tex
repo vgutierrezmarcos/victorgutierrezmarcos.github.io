@@ -1,0 +1,44 @@
+% Detalle ampliado de la tangencia entre el corto y el largo plazo (nota al
+% pie junto al gráfico «envolvente»): en q_1, donde el coste total a corto de
+% la planta 1 es tangente al de largo, el CMe a corto es tangente al CMe a
+% largo y el CMg a corto corta al CMg a largo con más pendiente (en sentido
+% algebraico: crece mientras el de largo aún decrece; Le Châtelier-Samuelson).
+% Mismas funciones que envolvente.tex, ampliadas alrededor de q_1 = 2,2:
+%   G(q) = 3q + 0,15 q (q - 5)^2, CMe_LP = G/q, CMg_LP = G'(q),
+%   C_1(q) = (G_1/4) [3 + (G/G_1)^4], G_1 = G(2,2) = 9,1872,
+%   CMe_CP = C_1/q, CMg_CP = G' (G/G_1)^3.
+%   En q_1: CMe = 4,18 y CMg = 2,33. Ventana: q en [1,5; 3,2], €/u desde 1,2.
+% Fuente: elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3.2cm,y=1.3cm,font=\normalsize,
+    declare function={G(\q)=3*\q+0.15*\q*(\q-5)^2; Gp(\q)=3+0.15*(\q-5)^2+0.3*\q*(\q-5);
+      CT(\q,\g)=\g/4*(3+(G(\q)/\g)^4); SAC(\q,\g)=CT(\q,\g)/\q; SMC(\q,\g)=Gp(\q)*(G(\q)/\g)^3;
+      LAC(\q)=G(\q)/\q;},
+    every node/.append style={font=\normalsize}]
+  \def\gA{9.1872}
+  % origen de la ventana ampliada: (q, €/u) = (1,4; 1,2)
+  \def\qo{1.4}\def\co{1.2}
+  % 1: ejes (detalle, sin origen)
+  \capa{1}{\draw[eje] (0,0) -- (2.0,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.5) node[left] {€/u};}
+  % 2: coste medio a largo plazo
+  \capa{2}{\draw[curva1] plot[domain=1.5:3.2,samples=60,smooth] ({\x-\qo},{LAC(\x)-\co})
+    node[etiqueta,right] {$\mathrm{CMe}_{\mathrm{LP}}$};}
+  % 3: coste medio a corto plazo, tangente en q_1
+  \capa{3}{\draw[curva2] plot[domain=1.58:3.2,samples=60,smooth] ({\x-\qo},{SAC(\x,\gA)-\co});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west] at ({1.6-\qo},{SAC(1.58,\gA)-\co}) {$\mathrm{CMe}_{\mathrm{CP}}$};}
+  \capa{3}{\node[punto] (T) at ({2.2-\qo},{LAC(2.2)-\co}) {};}
+  % 4: coste marginal a largo plazo
+  \capa{4}{\draw[curvanueva] plot[domain=1.5:3.2,samples=60,smooth] ({\x-\qo},{Gp(\x)-\co})
+    node[etiqueta,right] {$\mathrm{CMg}_{\mathrm{LP}}$};}
+  % 5: coste marginal a corto plazo, que corta al de largo en q_1
+  \capa{5}{\draw[curva4] plot[domain=1.5:3.2,samples=60,smooth] ({\x-\qo},{SMC(\x,\gA)-\co})
+    node[etiqueta,right,text=tceedorado] {$\mathrm{CMg}_{\mathrm{CP}}$};}
+  \capa{5}{\node[punto] at ({2.2-\qo},{Gp(2.2)-\co}) {};}
+  % 6: el nivel de producción común
+  \capa{6}{\draw[guia] (T) -- ({2.2-\qo},0) node[below,text=black] {$q_1$};}
+\end{tikzpicture}
+\end{document}

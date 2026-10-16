@@ -162,7 +162,7 @@ escenas:
         borrar: ["2"]
         apoyo: {grafico: funcion-produccion-3d, capa: 5, zona: "2"}
       - di: "De los axiomas salen sus propiedades: es cardinal, porque el producto se mide en unidades físicas; efe de cero es cero, y es no decreciente: las productividades marginales no son negativas. Además, se supone continua y diferenciable."
-        pizarra: [{formula: 'F(\vec{0})=0,\qquad PMg_i\equiv\frac{\partial F}{\partial z_i}\geq 0', zona: "1", tam: 0.8}]
+        pizarra: [{formula: 'F(\vec{0})=0,\qquad \mathrm{PMg}_i\equiv\frac{\partial F}{\partial z_i}\geq 0', zona: "1", tam: 0.8}]
         guion: "Cardinal · F(0) = 0 · no decreciente · continua y diferenciable"
         apunte: "Wicksteed (1894): la producción como función general de los factores"
       - di: "Los axiomas no dicen nada de su curvatura: hacen falta propiedades de escala del conjunto, sobre todo la convexidad. Dibujo un conjunto convexo: si los planes a y be son posibles, también cualquier combinación, como ce."
@@ -190,7 +190,7 @@ escenas:
         pizarra: [{grafico: isocuantas-rmst, capa: 2, zona: "2"}]
       - di: "Su pendiente, en valor absoluto, es la relación marginal de sustitución técnica: menos de zeta ka entre de zeta ele, con la producción constante, igual al cociente de las productividades marginales. En el punto A trazo la tangente y su triángulo: es el capital que puede dejar de usarse al emplear una unidad más de trabajo, sin que cambie la producción. [pausa] Es una tasa técnica de intercambio entre factores."
         pizarra:
-          - {formula: 'RMST_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{PMg_L}{PMg_K}', zona: "1", tam: 0.8}
+          - {formula: '\mathrm{RMST}_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}', zona: "1", tam: 0.8}
           - {grafico: isocuantas-rmst, capa: 3}
         guion: "RMST: capital que libera una unidad más de trabajo"
       - di: "En be, con más trabajo y menos capital, la tangente es más plana: la relación marginal de sustitución técnica decrece. Pero depende de las unidades."
@@ -199,7 +199,7 @@ escenas:
       - di: "Las curvas que unen puntos de igual pendiente en distintas isocuantas son las isoclinas: rectas por el origen si la función es homotética."
         guion: "Isoclinas: igual RMST; rectas por el origen si F es homotética"
       - di: "Para medir la sustituibilidad sin depender de las unidades, Hicks y Joan Robinson definen la elasticidad de sustitución, sigma: la variación porcentual de la proporción entre capital y trabajo ante una variación porcentual de la relación marginal de sustitución técnica. [pausa] Mide la curvatura de la isocuanta."
-        pizarra: [{formula: '\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln RMST_{LK}}\geq 0', zona: "1", tam: 0.8}]
+        pizarra: [{formula: '\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln \mathrm{RMST}_{LK}}\geq 0', zona: "1", tam: 0.8}]
         apunte: "Hicks (1932): «una medida de la facilidad con la que el factor variable puede sustituirse por otros»"
       - di: "Cuanto mayor es sigma, más fácil es sustituir. Y decide el reparto: si sigma es menor que uno, una subida del salario relativo aumenta la participación del trabajo en la renta; si es mayor, la reduce."
         guion: "Con σ < 1, una subida del salario relativo aumenta la participación del trabajo"
@@ -214,7 +214,7 @@ escenas:
         pizarra: [{formula: 'q=A\,z_K^{\alpha}z_L^{\beta},\qquad A,\alpha,\beta>0', zona: "1", tam: 0.85}]
         apunte: "Cobb y Douglas (1928): exponentes de 1/4 (capital) y 3/4 (trabajo) en la industria de EE. UU., 1899-1922"
       - di: "Cada productividad marginal es el exponente por la productividad media. La relación marginal de sustitución técnica depende solo de la proporción de factores, y de ahí sale una sigma igual a uno en todo punto."
-        pizarra: [{formula: 'PMg_L=\beta\,\frac{q}{z_L},\quad RMST_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1', zona: "1", tam: 0.85}]
+        pizarra: [{formula: '\mathrm{PMg}_L=\beta\,\frac{q}{z_L},\quad \mathrm{RMST}_{LK}=\frac{\beta}{\alpha}\,\frac{z_K}{z_L}\ \Rightarrow\ \sigma=1', zona: "1", tam: 0.85}]
         guion: "PMg = exponente × PMe · σ = 1"
       - di: "Es homogénea de grado alfa más beta: rendimientos crecientes, constantes o decrecientes según esa suma supere, iguale o no alcance uno. La superficie de apoyo lo resume: sus curvas de nivel son las isocuantas, y sus cortes, los plazos."
         pizarra: [{formula: 'F(\lambda\vec{z})=\lambda^{\alpha+\beta}F(\vec{z})', zona: "1", tam: 0.85}]
@@ -323,12 +323,12 @@ escenas:
         apunte: "Turgot (1767): proporciones variables · West, Malthus, Ricardo y Torrens (1815): rendimientos decrecientes de la tierra"
       - di: "La productividad marginal es la derivada del producto total respecto al trabajo, con el capital constante: la pendiente de la tangente, máxima en el punto de inflexión."
         pizarra:
-          - {formula: 'PMg_L=\frac{\partial F(z_L,\overline{z}_K)}{\partial z_L}', zona: "1", tam: 0.85}
+          - {formula: '\mathrm{PMg}_L=\frac{\partial F(z_L,\overline{z}_K)}{\partial z_L}', zona: "1", tam: 0.85}
           - {grafico: corto-plazo, capa: 3}
         guion: "PMg: pendiente de la tangente; máxima en la inflexión"
       - di: "La productividad media es el producto total entre el trabajo: la pendiente del rayo desde el origen. Es máxima donde ese rayo es tangente al producto total, en el punto que marco."
         pizarra:
-          - {formula: 'PMe_L=\frac{q}{z_L}', zona: "1", tam: 0.85}
+          - {formula: '\mathrm{PMe}_L=\frac{q}{z_L}', zona: "1", tam: 0.85}
           - {grafico: corto-plazo, capa: 4}
         guion: "PMe: pendiente del rayo; máxima donde el rayo es tangente"
       - di: "El producto total alcanza su máximo donde la productividad marginal se anula."
@@ -346,7 +346,7 @@ escenas:
         guion: "Se produce en la etapa II"
         apunte: "Etapa I: PMg > PMe · Etapa II: 0 < PMg < PMe · Etapa III: PMg < 0"
       - di: "Las ordena la elasticidad-producto, el cociente entre la productividad marginal y la media: mayor que uno en la primera etapa, entre cero y uno en la segunda y negativa en la tercera."
-        pizarra: [{formula: '\varepsilon_{q,z_L}\equiv\frac{\partial q}{\partial z_L}\,\frac{z_L}{q}=\frac{PMg_L}{PMe_L}', zona: "1", tam: 0.85}]
+        pizarra: [{formula: '\varepsilon_{q,z_L}\equiv\frac{\partial q}{\partial z_L}\,\frac{z_L}{q}=\frac{\mathrm{PMg}_L}{\mathrm{PMe}_L}', zona: "1", tam: 0.85}]
         guion: "ε > 1 (I) · 0 < ε < 1 (II) · ε < 0 (III)"
       - di: "En suma, a corto plazo los rendimientos decrecientes delimitan las etapas. [pausa] ¿Y si la empresa ajusta todos sus factores?"
         guion: "Recapitulación del corto plazo"
@@ -418,7 +418,7 @@ escenas:
     pasos:
       - di: "Esto lleva a los dos conceptos del título. Los rendimientos globales son una propiedad de toda la tecnología; los locales se miden en un punto, con la elasticidad de escala local: la suma de las elasticidades-producto de los factores. [pausa] Une el corto y el largo plazo."
         borrar: true
-        pizarra: [{formula: '\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_iPMg_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}', zona: "1b", tam: 0.8}]
+        pizarra: [{formula: '\varepsilon_{q,\lambda}(\vec{z})=\frac{\sum_i\mathrm{PMg}_i\,z_i}{F(\vec{z})}=\sum_i\varepsilon_{q,z_i}', zona: "1b", tam: 0.8}]
         apunte: "Jehle y Reny (2011), cap. 3 · en la Cobb-Douglas, la elasticidad de escala es α + β"
       - di: "Lo vemos con dos tecnologías. La primera, en el apoyo, es homogénea de grado uno, la raíz de zeta ele por zeta ka: por mucho que ampliemos la escala, su corte por el rayo sigue siendo una recta."
         apoyo: {grafico: rendimientos-globales-locales-superficies, capa: 1, zona: "1a"}
@@ -514,7 +514,7 @@ escenas:
         guion: "B y C: tangencias"
       - di: "La asignación es técnicamente eficiente cuando las relaciones marginales de sustitución técnica de los dos bienes son iguales. El lugar geométrico de esas tangencias es la curva de contrato, que une los dos orígenes."
         pizarra:
-          - {formula: 'RMST^X_{LK}=RMST^Y_{LK}', zona: "1b", tam: 0.75}
+          - {formula: '\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}', zona: "1b", tam: 0.75}
           - {grafico: caja-edgeworth-fpp, capa: 6}
         guion: "Curva de contrato: RMST iguales"
       - di: "Llevando cada punto de la curva de contrato al plano de los productos, obtenemos la frontera de posibilidades de producción, con be y ce sobre ella. A, ineficiente, queda dentro."
@@ -523,7 +523,7 @@ escenas:
       - di: "Su pendiente es la relación marginal de transformación, menos de i griega entre de equis: el coste de oportunidad de una unidad más de equis, igual al cociente de costes marginales. [pausa] Es la análoga de la relación marginal de sustitución técnica."
         borrar: ["1b"]
         pizarra:
-          - {formula: 'RMT_{XY}\equiv-\frac{dY}{dX}=\frac{CMg_X}{CMg_Y}', zona: "1b", tam: 0.75}
+          - {formula: '\mathrm{RMT}_{XY}\equiv-\frac{dY}{dX}=\frac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}', zona: "1b", tam: 0.75}
           - {grafico: caja-edgeworth-fpp, capa: 9}
         guion: "RMT: coste de oportunidad de X"
       - di: "El progreso técnico y más dotaciones desplazan la frontera hacia fuera, y la competencia perfecta, al igualar los precios de los factores, lleva a la curva de contrato."
@@ -547,12 +547,12 @@ escenas:
         guion: "Curva de transformación de la empresa"
       - di: "Su pendiente es la relación marginal de transformación de la empresa: lo que hay que dejar de producir del bien dos para obtener una unidad más del uno, con los mismos factores. En A trazo la tangente y su triángulo. Crece al especializarse."
         pizarra:
-          - {formula: 'RMT_{12}\equiv-\left.\frac{dq_2}{dq_1}\right|_{T=0}=\frac{\partial T/\partial q_1}{\partial T/\partial q_2}', zona: "1", tam: 0.8}
+          - {formula: '\mathrm{RMT}_{12}\equiv-\left.\frac{dq_2}{dq_1}\right|_{T=0}=\frac{\partial T/\partial q_1}{\partial T/\partial q_2}', zona: "1", tam: 0.8}
           - {grafico: transformacion-empresa, capa: 3}
         guion: "RMT₁₂: coste de oportunidad del bien 1"
       - di: "Con precios dados, la empresa elige el punto de la frontera en el que la relación marginal de transformación iguala el precio relativo de los productos: la recta de isobeneficio es tangente a la curva en A."
         pizarra:
-          - {formula: 'RMT_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}
+          - {formula: '\mathrm{RMT}_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}
           - {grafico: transformacion-empresa, capa: 4}
         guion: "Óptimo: RMT = p₁/p₂"
       - di: "Y con más factores o progreso técnico, la curva se desplaza hacia fuera, como la frontera de la economía, y se produce más de los dos bienes."
