@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
@@ -93,7 +94,7 @@ class _SemanaPageState extends ConsumerState<SemanaPage> {
                           final messenger = ScaffoldMessenger.of(context);
                           final notifier = ref.read(sesionesProvider.notifier);
                           await notifier.borrar(s);
-                          messenger.showSnackBar(SnackBar(
+                          messenger.mostrar(SnackBar(
                             content: const Text('Clase cancelada borrada'),
                             action: SnackBarAction(label: 'Deshacer', onPressed: () => notifier.guardar(s.copyWith(borrado: false))),
                           ));

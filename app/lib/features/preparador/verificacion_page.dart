@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
@@ -46,9 +47,9 @@ class VerificarPreparadoresPage extends ConsumerWidget {
       final red = ref.read(redRepoProvider);
       try {
         aprobar ? await red.aprobar(s, avalNombre: perfil.nombre.isEmpty ? null : perfil.nombre) : await red.rechazar(s);
-        messenger.showSnackBar(SnackBar(content: Text(aprobar ? '${s.nombre} ya está verificado.' : 'Solicitud rechazada.')));
+        messenger.mostrar(SnackBar(content: Text(aprobar ? '${s.nombre} ya está verificado.' : 'Solicitud rechazada.')));
       } catch (e) {
-        messenger.showSnackBar(SnackBar(content: Text('No se pudo ${aprobar ? 'verificar' : 'rechazar'} (${textoError(e)}).')));
+        messenger.mostrar(SnackBar(content: Text('No se pudo ${aprobar ? 'verificar' : 'rechazar'} (${textoError(e)}).')));
       } finally {
         _resolviendo.remove(s.uid);
       }
@@ -145,7 +146,7 @@ class AdminRedPage extends ConsumerWidget {
       final n = await red.cambiarActivo(v, activo: false, cascada: cascada);
       ref.invalidate(verificadosConRetiradosProvider);
       ref.invalidate(verificadosProvider);
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(n == 1 ? 'Verificación retirada' : 'Verificación retirada a $n personas')));
+      if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text(n == 1 ? 'Verificación retirada' : 'Verificación retirada a $n personas')));
     }
 
     return Scaffold(

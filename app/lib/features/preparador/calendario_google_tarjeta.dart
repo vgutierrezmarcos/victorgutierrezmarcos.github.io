@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
@@ -53,13 +54,13 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
     final repo = ref.read(preparadorRepoProvider);
     if (!si) {
       await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: false));
-      messenger.showSnackBar(const SnackBar(content: Text('Las clases nuevas ya no irán a tu calendario. Las que ya están se quedan.')));
+      messenger.mostrar(const SnackBar(content: Text('Las clases nuevas ya no irán a tu calendario. Las que ya están se quedan.')));
       return;
     }
     setState(() => _ocupado = true);
     try {
       if (!await pedirPermisoCalendario()) {
-        messenger.showSnackBar(const SnackBar(content: Text('Google no ha dado acceso a tu calendario. Si sale «aplicación no verificada», entra en «Configuración avanzada» y continúa.')));
+        messenger.mostrar(const SnackBar(content: Text('Google no ha dado acceso a tu calendario. Si sale «aplicación no verificada», entra en «Configuración avanzada» y continúa.')));
         return;
       }
       final cal = repo.calendario;
@@ -74,12 +75,12 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
             await cal.comprobar();
           } catch (e2) {
             cal.ultimoError = e2.toString();
-            messenger.showSnackBar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e2')));
+            messenger.mostrar(SnackBar(content: Text('Google no deja usar tu calendario desde la app todavía: $e2')));
             return;
           }
         } else {
           cal.ultimoError = e.toString();
-          messenger.showSnackBar(SnackBar(content: Text(permisoRetirado(e) ? 'Google ha retirado el permiso del calendario y no se ha podido volver a pedir. Prueba otra vez.' : 'Google no deja usar tu calendario desde la app todavía: $e')));
+          messenger.mostrar(SnackBar(content: Text(permisoRetirado(e) ? 'Google ha retirado el permiso del calendario y no se ha podido volver a pedir. Prueba otra vez.' : 'Google no deja usar tu calendario desde la app todavía: $e')));
           return;
         }
       }
@@ -87,7 +88,7 @@ class _TarjetaCalendarioGoogleState extends ConsumerState<TarjetaCalendarioGoogl
       await notifier.guardar(ref.read(perfilPreparadorProvider).copyWith(calendarioGoogle: true));
       final n = await repo.llevarClasesAlCalendario();
       ref.invalidate(sesionesProvider);
-      messenger.showSnackBar(SnackBar(content: Text(n == 0 ? 'Conectado. Las clases que programes irán a tu Google Calendar.' : 'Conectado: $n ${n == 1 ? 'clase' : 'clases'} en tu Google Calendar.')));
+      messenger.mostrar(SnackBar(content: Text(n == 0 ? 'Conectado. Las clases que programes irán a tu Google Calendar.' : 'Conectado: $n ${n == 1 ? 'clase' : 'clases'} en tu Google Calendar.')));
     } finally {
       if (mounted) setState(() => _ocupado = false);
     }

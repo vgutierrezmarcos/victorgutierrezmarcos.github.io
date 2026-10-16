@@ -1,11 +1,22 @@
 name: Leer el proceso selectivo
 
-# Lee las páginas del Ministerio de cada proceso (TCEE y DCE) y actualiza
-# oposicion/proceso.json, del que la app saca los avisos de novedades.
+# Lee las páginas del Ministerio de cada proceso (TCEE y DCE), actualiza
+# oposicion/proceso.json y, si hay documentos nuevos, los manda por push a los
+# móviles con los avisos de esa oposición (scripts/enviar-push-proceso.py).
+#
+# La lanza cada 2 minutos un disparador externo (cron-job.org) con
+# workflow_dispatch: el cron de GitHub se salta muchas ejecuciones. El de
+# aquí queda de respaldo, cada hora. Lee en cada disparo en horario de
+# oficina (lunes a viernes, de 8:00 a 20:59, hora de Madrid), que es cuando
+# publica el Ministerio, y cada media hora el resto del tiempo: fuera de ese
+# horario, los disparos de los demás minutos acaban sin leer nada.
+# Cada media hora la lectura es completa (busca convocatorias de otros años);
+# las demás solo piden las páginas ya conocidas. Si el portal nos frena o
+# falla, el lector se pausa solo (ver scripts/leer-proceso.py), y si lleva un
+# día sin poder leerlo se abre una incidencia (y se cierra al recuperarse).
 on:
   schedule:
-    # Cada 2 horas entre las 7:00 y las 23:00 (hora de España).
-    - cron: '0 5-21/2 * * *'
+    - cron: '23 * * * *'
   push:
     paths:
       - 'scripts/leer-proceso.py'
@@ -13,6 +24,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      siempre:
+        description: 'Leer aunque sea fuera de horario (a mano)'
+        type: boolean
+        default: false
 
 concurrency:
   group: leer-proceso
@@ -23,17 +39,56 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
 
     steps:
+    - name: ¿Toca leer ahora?
+      id: toca
+      run: |
+        # Hora de Madrid. Lanzada a mano o por el cron de respaldo, siempre.
+        dia=$(TZ=Europe/Madrid date +%u); hora=$(TZ=Europe/Madrid date +%-H); minuto=$(TZ=Europe/Madrid date +%-M)
+        completa=no
+        if [ "$GITHUB_EVENT_NAME" != "workflow_dispatch" ] || [ "${{ github.event.inputs.siempre }}" = "true" ]; then toca=si; completa=si
+        elif [ $((minuto % 30)) -le 1 ]; then toca=si; completa=si
+        elif [ "$dia" -le 5 ] && [ "$hora" -ge 8 ] && [ "$hora" -le 20 ]; then toca=si
+        else toca=no; fi
+        echo "toca=$toca" >> "$GITHUB_OUTPUT"
+        echo "completa=$completa" >> "$GITHUB_OUTPUT"
+        echo "Madrid: día $dia, $hora:$minuto → leer: $toca (completa: $completa)"
+
     - name: Checkout code
+      if: steps.toca.outputs.toca == 'si'
       uses: actions/checkout@v4
 
     - name: Leer las páginas del proceso
-      run: python3 scripts/leer-proceso.py
+      if: steps.toca.outputs.toca == 'si'
+      run: python3 scripts/leer-proceso.py --novedades "$RUNNER_TEMP/novedades.json" ${{ steps.toca.outputs.completa == 'si' && '--completa' || '' }}
 
     - name: Commit and push if changed
+      if: steps.toca.outputs.toca == 'si'
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
         git add oposicion/proceso.json
         git diff --staged --quiet || (git commit -m "Novedades del proceso selectivo [skip ci]" && git pull --rebase && git push)
+
+    - name: Avisar por push de lo nuevo
+      if: steps.toca.outputs.toca == 'si'
+      env:
+        FCM_CUENTA_SERVICIO: ${{ secrets.FCM_CUENTA_SERVICIO }}
+      run: python3 scripts/enviar-push-proceso.py "$RUNNER_TEMP/novedades.json"
+
+    - name: Abrir o cerrar el aviso de que no se puede leer el portal
+      if: steps.toca.outputs.toca == 'si'
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        titulo="El lector del proceso selectivo no puede leer el portal del Ministerio"
+        if [ -f "$RUNNER_TEMP/alerta.txt" ]; then
+          gh issue create --title "$titulo" --body-file "$RUNNER_TEMP/alerta.txt"
+        fi
+        if [ -f "$RUNNER_TEMP/recuperado.txt" ]; then
+          for n in $(gh issue list --state open --search "in:title $titulo" --json number -q '.[].number'); do
+            gh issue close "$n" --comment "$(cat "$RUNNER_TEMP/recuperado.txt")"
+          done
+        fi

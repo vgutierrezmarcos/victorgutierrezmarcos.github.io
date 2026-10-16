@@ -1,7 +1,7 @@
 name: tcee_app
 description: "Oposición TCEE · DCE, de Víctor Gutiérrez Marcos y Manuel Cabado García: agenda de cantes, sorteos, temario, test y preparadores para las oposiciones a Técnico Comercial y Economista del Estado y a Diplomado Comercial del Estado."
 publish_to: "none"
-version: 1.15.11+35
+version: 1.16.0+36
 
 environment:
   sdk: ^3.5.0
@@ -21,6 +21,8 @@ dependencies:
   firebase_auth: ^5.3.4
   google_sign_in: ^6.2.2
   cloud_firestore: ^5.6.0
+  # Avisos push de las novedades del proceso (los manda la acción leer-proceso)
+  firebase_messaging: ^15.2.10
 
   # Datos y caché
   hive_flutter: ^1.1.0
@@ -34,6 +36,8 @@ dependencies:
   flutter_math_fork: ^0.7.4
   table_calendar: ^3.3.0
   pdfx: ^2.8.0
+  # El tema con las anotaciones, para descargarlo
+  pdf: ^3.12.0
   url_launcher: ^6.3.1
   share_plus: ^13.3.1
   intl: ^0.20.2

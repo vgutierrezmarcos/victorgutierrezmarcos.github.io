@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -21,6 +22,7 @@ import '../plan/modalidad.dart';
 import '../plan/resultado_sheet.dart';
 import 'alumno_page.dart';
 import 'calendario_google_tarjeta.dart';
+import 'coordinacion.dart';
 import 'red_widgets.dart';
 import 'tema_anticipado.dart';
 import '../mas/ayuda_videos.dart';
@@ -97,7 +99,7 @@ class SesionPage extends ConsumerWidget {
       await notifier.guardar(nuevo);
       final estado = repo.estadoCopia(nuevo.id);
       if (mensaje != null || (conUid && estado != EstadoCopia.enviada)) {
-        messenger.showSnackBar(SnackBar(content: Text([
+        messenger.mostrar(SnackBar(content: Text([
           if (mensaje != null) mensaje,
           if (conUid) estado == EstadoCopia.enviada ? 'El alumno ya lo ve en su agenda.' : 'Aún no le ha llegado al alumno: se reintenta al sincronizar.',
         ].join(' '))));
@@ -144,6 +146,12 @@ class SesionPage extends ConsumerWidget {
       final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(s.fecha), helpText: 'Nueva hora');
       if (t == null) return;
       final nueva = DateTime(d.year, d.month, d.day, t.hour, t.minute);
+      // Con el alumno: sus clases con otros preparadores y sus cantes con hora
+      // (lo que deja ver), antes de moverla.
+      if (s.alumno != null) {
+        final choques = choquesEnAgenda(await agendaDeAlumno(ref, s.alumno!), nueva, s.minutos, excluir: s.id);
+        if (!context.mounted || !await confirmarChoques(context, choques, yo: repo.uid, quien: ref.read(preparadorRepoProvider).alumno(s.alumno!)?.nombre ?? 'el alumno')) return;
+      }
       final choca = ref.read(sesionesProvider).where((x) => x.id != s.id && !x.cancelado && !x.borrado && seSolapan(x.fecha, x.fecha.add(Duration(minutes: x.minutos)), nueva, nueva.add(Duration(minutes: s.minutos))));
       // El envío del tema, si era relativo a la clase (menos de un día antes), se mueve con ella.
       DateTime? temaA = s.temaA;
@@ -310,7 +318,7 @@ class SesionPage extends ConsumerWidget {
                         final messenger = ScaffoldMessenger.of(context);
                         final e = await repo.reintentarCopia(s.id);
                         ref.invalidate(sesionesProvider);
-                        messenger.showSnackBar(SnackBar(content: Text(e == EstadoCopia.enviada ? 'Ya la tiene el alumno en su agenda.' : 'Sigue sin poder enviarse.')));
+                        messenger.mostrar(SnackBar(content: Text(e == EstadoCopia.enviada ? 'Ya la tiene el alumno en su agenda.' : 'Sigue sin poder enviarse.')));
                       },
                       child: const Text('Reintentar'),
                     ),
@@ -460,7 +468,7 @@ class _FilaCalendario extends ConsumerWidget {
         final cambio = await repo.llevarAlCalendario(s.id);
         ref.invalidate(sesionesProvider);
         final e = repo.calendario?.ultimoError;
-        messenger.showSnackBar(SnackBar(content: Text(e != null ? 'Google ha respondido con un error: $e' : (cambio || s.eventoGoogle.isNotEmpty ? 'La clase está en tu Google Calendar.' : 'No había nada que enviar.'))));
+        messenger.mostrar(SnackBar(content: Text(e != null ? 'Google ha respondido con un error: $e' : (cambio || s.eventoGoogle.isNotEmpty ? 'La clase está en tu Google Calendar.' : 'No había nada que enviar.'))));
       },
     );
   }

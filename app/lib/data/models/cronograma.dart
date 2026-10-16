@@ -92,6 +92,11 @@ class Cronograma {
     this.compartir = false,
     this.propuesta,
     this.propuestaResuelta,
+    this.propuestas = const {},
+    this.resueltas = const {},
+    this.respuestas = const {},
+    this.autor,
+    this.autorNombre = '',
     this.creado,
     this.updatedAt,
     this.diaCante,
@@ -134,9 +139,30 @@ class Cronograma {
   final bool archivado;
   /// El preparador enlazado puede verlo y proponer cambios (desactivado por defecto).
   final bool compartir;
+  /// Propuesta de las versiones anteriores (una sola para todos). Las nuevas
+  /// van en [propuestas], una por preparador.
   final PropuestaCronograma? propuesta;
-  /// Cuándo se aceptó o rechazó la última propuesta.
+  /// Cuándo se aceptó o rechazó la última propuesta (la de [propuesta]).
   final DateTime? propuestaResuelta;
+  /// Propuesta de cada preparador (por su uid): con varios, la de uno no
+  /// pisa la del otro.
+  final Map<String, PropuestaCronograma> propuestas;
+  /// Cuándo resolvió el opositor la última propuesta de cada preparador.
+  final Map<String, DateTime> resueltas;
+  /// Qué contestó a la última de cada preparador ('aceptada' o 'rechazada'),
+  /// para avisarle.
+  final Map<String, String> respuestas;
+  /// Quién lo hizo, si se lo mandó un preparador (uid y nombre); null = el opositor.
+  final String? autor;
+  final String autorNombre;
+
+  /// Las propuestas pendientes, de la más antigua a la más reciente.
+  List<PropuestaCronograma> get pendientes {
+    final out = [...propuestas.values];
+    final vieja = propuesta;
+    if (vieja != null && !propuestas.containsKey(vieja.de)) out.add(vieja);
+    return out..sort((a, b) => a.fecha.compareTo(b.fecha));
+  }
   final DateTime? creado;
   final DateTime? updatedAt;
 
@@ -158,6 +184,9 @@ class Cronograma {
     PropuestaCronograma? propuesta,
     bool quitarPropuesta = false,
     DateTime? propuestaResuelta,
+    Map<String, PropuestaCronograma>? propuestas,
+    Map<String, DateTime>? resueltas,
+    Map<String, String>? respuestas,
     bool? manual,
   }) =>
       Cronograma(
@@ -177,6 +206,11 @@ class Cronograma {
         compartir: compartir ?? this.compartir,
         propuesta: quitarPropuesta ? null : (propuesta ?? this.propuesta),
         propuestaResuelta: propuestaResuelta ?? this.propuestaResuelta,
+        propuestas: propuestas ?? this.propuestas,
+        resueltas: resueltas ?? this.resueltas,
+        respuestas: respuestas ?? this.respuestas,
+        autor: autor,
+        autorNombre: autorNombre,
         creado: creado,
         updatedAt: DateTime.now(),
         diaCante: diaCante,
@@ -200,6 +234,11 @@ class Cronograma {
         'compartir': compartir,
         'propuesta': propuesta?.toJson(),
         'propuestaResuelta': propuestaResuelta?.toIso8601String(),
+        if (propuestas.isNotEmpty) 'propuestas': propuestas.map((k, v) => MapEntry(k, v.toJson())),
+        if (resueltas.isNotEmpty) 'resueltas': resueltas.map((k, v) => MapEntry(k, v.toIso8601String())),
+        if (respuestas.isNotEmpty) 'respuestas': respuestas,
+        if (autor != null) 'autor': autor,
+        if (autorNombre.isNotEmpty) 'autorNombre': autorNombre,
         'creado': (creado ?? DateTime.now()).toIso8601String(),
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         if (diaCante != null) 'diaCante': diaCante,
@@ -226,6 +265,17 @@ class Cronograma {
         compartir: j['compartir'] as bool? ?? false,
         propuesta: j['propuesta'] is Map ? PropuestaCronograma.fromJson(j['propuesta'] as Map) : null,
         propuestaResuelta: _fecha(j['propuestaResuelta']),
+        propuestas: {
+          for (final e in ((j['propuestas'] as Map?) ?? const {}).entries)
+            if (e.value is Map) e.key.toString(): PropuestaCronograma.fromJson(e.value as Map),
+        },
+        resueltas: {
+          for (final e in ((j['resueltas'] as Map?) ?? const {}).entries)
+            if (_fecha(e.value) != null) e.key.toString(): _fecha(e.value)!,
+        },
+        respuestas: {for (final e in ((j['respuestas'] as Map?) ?? const {}).entries) e.key.toString(): e.value.toString()},
+        autor: j['autor'] as String?,
+        autorNombre: j['autorNombre'] as String? ?? '',
         creado: _fecha(j['creado']),
         updatedAt: _fecha(j['updatedAt']),
         diaCante: (j['diaCante'] as num?)?.toInt(),
@@ -242,10 +292,29 @@ class Cronograma {
     final q = otro.propuesta;
     if (q != null && (p == null || q.fecha.isAfter(p.fecha))) p = q;
     if (p != null && resuelta != null && !p.fecha.isAfter(resuelta)) p = null;
+    // Las de cada preparador: la más reciente de las dos, salvo que el
+    // opositor ya la hubiera resuelto.
+    final resueltas = {...a.resueltas};
+    final respuestas = {...a.respuestas};
+    for (final e in b.resueltas.entries) {
+      if (resueltas[e.key] == null || e.value.isAfter(resueltas[e.key]!)) {
+        resueltas[e.key] = e.value;
+        if (b.respuestas[e.key] != null) respuestas[e.key] = b.respuestas[e.key]!;
+      }
+    }
+    final propuestas = <String, PropuestaCronograma>{};
+    for (final x in [...a.propuestas.entries, ...b.propuestas.entries]) {
+      final previa = propuestas[x.key];
+      if (previa == null || x.value.fecha.isAfter(previa.fecha)) propuestas[x.key] = x.value;
+    }
+    propuestas.removeWhere((k, v) => resueltas[k] != null && !v.fecha.isAfter(resueltas[k]!));
     return Cronograma.fromJson({
       ...reciente.toJson(),
       'propuesta': p?.toJson(),
       'propuestaResuelta': resuelta?.toIso8601String(),
+      'propuestas': propuestas.map((k, v) => MapEntry(k, v.toJson())),
+      'resueltas': resueltas.map((k, v) => MapEntry(k, v.toIso8601String())),
+      'respuestas': respuestas,
     });
   }
 }
@@ -255,7 +324,7 @@ class Cronograma {
 /// acepta (pasa a ser su cronograma, compartido con ese preparador) o lo
 /// rechaza.
 class CronogramaRecibido {
-  const CronogramaRecibido({required this.cronograma, required this.de, this.deNombre = '', required this.enviado, this.nota = ''});
+  const CronogramaRecibido({required this.cronograma, required this.de, this.deNombre = '', required this.enviado, this.nota = '', this.respuesta, this.respondido});
   final Cronograma cronograma;
   /// uid del preparador.
   final String de;
@@ -263,7 +332,21 @@ class CronogramaRecibido {
   final DateTime enviado;
   final String nota;
 
-  Map<String, dynamic> toJson() => {...cronograma.toJson(), 'de': de, 'deNombre': deNombre, 'enviado': enviado.toIso8601String(), 'nota': nota};
+  /// Lo que contestó el opositor ('aceptado' o 'rechazado'; null = sin
+  /// contestar). Se queda anotado para avisar al preparador.
+  final String? respuesta;
+  final DateTime? respondido;
+  bool get pendiente => respuesta == null;
+
+  Map<String, dynamic> toJson() => {
+        ...cronograma.toJson(),
+        'de': de,
+        'deNombre': deNombre,
+        'enviado': enviado.toIso8601String(),
+        'nota': nota,
+        if (respuesta != null) 'respuesta': respuesta,
+        if (respondido != null) 'respondido': respondido!.toIso8601String(),
+      };
 
   factory CronogramaRecibido.fromJson(Map<dynamic, dynamic> j) => CronogramaRecibido(
         cronograma: Cronograma.fromJson(j),
@@ -271,5 +354,7 @@ class CronogramaRecibido {
         deNombre: j['deNombre'] as String? ?? '',
         enviado: _fecha(j['enviado']) ?? DateTime(2026),
         nota: j['nota'] as String? ?? '',
+        respuesta: j['respuesta'] as String?,
+        respondido: _fecha(j['respondido']),
       );
 }

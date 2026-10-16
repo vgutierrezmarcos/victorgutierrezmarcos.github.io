@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/providers.dart';
@@ -159,7 +160,7 @@ class MasPage extends ConsumerWidget {
                 trailing: TextButton(
                   onPressed: () async {
                     await ref.read(descargasProvider).borrarTodo();
-                    if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Descargas eliminadas')));
+                    if (context.mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Descargas eliminadas')));
                   },
                   child: const Text('Liberar'),
                 ),

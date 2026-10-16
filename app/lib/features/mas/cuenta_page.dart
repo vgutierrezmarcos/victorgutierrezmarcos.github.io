@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
@@ -40,7 +41,7 @@ class CuentaPage extends ConsumerWidget {
                       ? null
                       : () async {
                           final err = await ref.read(sesionProvider.notifier).iniciarConGoogle();
-                          if (err != null && context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No se pudo iniciar sesión: $err')));
+                          if (err != null && context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo iniciar sesión: $err')));
                         },
                   icon: ocupado ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)) : const Icon(Icons.login),
                   label: const Text('Iniciar sesión con Google'),
@@ -66,7 +67,7 @@ class CuentaPage extends ConsumerWidget {
               onPressed: () async {
                 final messenger = ScaffoldMessenger.of(context);
                 final ok = await ref.read(sesionProvider.notifier).sincronizar();
-                messenger.showSnackBar(SnackBar(content: Text(ok ? 'Sincronizado con la nube' : 'No se ha podido sincronizar: comprueba la conexión')));
+                messenger.mostrar(SnackBar(content: Text(ok ? 'Sincronizado con la nube' : 'No se ha podido sincronizar: comprueba la conexión')));
               },
               icon: const Icon(Icons.sync),
               label: const Text('Sincronizar ahora'),
@@ -125,7 +126,7 @@ class CuentaPage extends ConsumerWidget {
                     'Se borrarán de la nube y de este dispositivo todos tus datos, de todas las oposiciones (tests, repaso, temas, notas, cantes, planificación, alumnos y sus clases), se romperán los enlaces con tus preparadores y alumnos, y se eliminará tu cuenta en la app. Tu cuenta de Google no se toca. Esta acción no se puede deshacer.',
                     () async {
                       final error = await eliminarMiCuenta(ref);
-                      if (error != null && context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No se ha podido eliminar la cuenta: $error')));
+                      if (error != null && context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se ha podido eliminar la cuenta: $error')));
                     },
                   ),
                 ),
@@ -150,7 +151,7 @@ class CuentaPage extends ConsumerWidget {
     );
     if (ok == true) {
       await accion();
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Hecho')));
+      if (context.mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Hecho')));
     }
   }
 }

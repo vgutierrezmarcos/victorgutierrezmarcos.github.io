@@ -88,20 +88,34 @@ class CronogramaNotifier extends Notifier<Cronograma?> {
     if (c != null) await _guardar(c.copyWith(compartir: si));
   }
 
-  Future<void> aceptarPropuesta() async {
+  /// Acepta la propuesta [p] (de uno de sus preparadores): su orden y su ritmo.
+  Future<void> aceptarPropuesta(PropuestaCronograma p) async {
     final c = state;
-    final p = c?.propuesta;
-    if (c == null || p == null) return;
+    if (c == null) return;
     // Mismo conjunto de temas: los que propone, en su orden, y los que faltaran, al final.
     final orden = [...p.temas.where(c.temas.contains), ...c.temas.where((t) => !p.temas.contains(t))];
     final base = c.copyWith(temas: orden, quitarFin: p.fin == null);
     final nuevo = replanificarCronograma(base, DateTime.now(), porSemana: p.fin == null ? p.temasPorSemana : null, fin: p.fin, vueltas: ref.read(vueltasProvider));
-    await _guardar(nuevo.copyWith(quitarPropuesta: true, propuestaResuelta: DateTime.now()));
+    await _guardar(_resuelta(nuevo, p, 'aceptada'));
   }
 
-  Future<void> rechazarPropuesta() async {
+  Future<void> rechazarPropuesta(PropuestaCronograma p) async {
     final c = state;
-    if (c != null) await _guardar(c.copyWith(quitarPropuesta: true, propuestaResuelta: DateTime.now()));
+    if (c != null) await _guardar(_resuelta(c, p, 'rechazada'));
+  }
+
+  /// Quita [p] de las pendientes y anota la respuesta (para avisar a quien la hizo).
+  Cronograma _resuelta(Cronograma c, PropuestaCronograma p, String respuesta) {
+    final ahora = DateTime.now();
+    // La de `propuesta` (versiones anteriores) se quita si es de ese mismo preparador.
+    final antigua = c.propuesta?.de == p.de;
+    return c.copyWith(
+      quitarPropuesta: antigua,
+      propuestaResuelta: antigua ? ahora : null,
+      propuestas: {...c.propuestas}..remove(p.de),
+      resueltas: {...c.resueltas, p.de: ahora},
+      respuestas: {...c.respuestas, p.de: respuesta},
+    );
   }
 
   Future<void> archivar() async {

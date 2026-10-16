@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -251,7 +252,7 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
     final messenger = ScaffoldMessenger.of(context);
     final nav = Navigator.of(context);
     if (_ejercicios.isEmpty) {
-      messenger.showSnackBar(const SnackBar(content: Text('Elige al menos un ejercicio.')));
+      messenger.mostrar(const SnackBar(content: Text('Elige al menos un ejercicio.')));
       return;
     }
     final red = ref.read(redRepoProvider);
@@ -273,12 +274,12 @@ class _BusquedaFormPageState extends ConsumerState<BusquedaFormPage> {
       await red.guardarBusqueda(b);
       ref.invalidate(miBusquedaProvider);
       ref.invalidate(preparadoresConPlazasProvider);
-      messenger.showSnackBar(const SnackBar(content: Text('Publicada. Los preparadores a los que les interese te dejarán su contacto aquí.')));
+      messenger.mostrar(const SnackBar(content: Text('Publicada. Los preparadores a los que les interese te dejarán su contacto aquí.')));
       nav.pop();
     } on ErrorRed catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text(e.mensaje)));
+      messenger.mostrar(SnackBar(content: Text(e.mensaje)));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo publicar: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo publicar: $e')));
     } finally {
       if (mounted) setState(() => _guardando = false);
     }

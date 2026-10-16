@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../core/red_providers.dart';
@@ -31,8 +32,12 @@ String cuandoSustitucion(Sustitucion s) => '${DateFormat("EEEE d 'de' MMMM", 'es
 /// (o una hora fija) y elige los temas que lleva. Los preparadores ven día,
 /// horas, ejercicio, temas y notas; el nombre y el teléfono, solo quien lo coja.
 class PedirSustitucionPage extends ConsumerStatefulWidget {
-  const PedirSustitucionPage({super.key, this.cante});
+  const PedirSustitucionPage({super.key, this.cante, this.soloPara = const []});
   final Cante? cante;
+
+  /// Pedírsela solo a estos preparadores (p. ej. a los otros del alumno,
+  /// al pasarles una clase cancelada); vacío = a todos.
+  final List<String> soloPara;
   @override
   ConsumerState<PedirSustitucionPage> createState() => _PedirSustitucionPageState();
 }
@@ -53,8 +58,8 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
   late final _notas = TextEditingController(text: widget.cante?.notas ?? '');
   late final _nombre = TextEditingController(text: ref.read(usuarioActualProvider)?.displayName ?? '');
   late final _telefono = TextEditingController(text: ref.read(planProvider).telefono);
-  bool _todos = true;
-  final _elegidos = <String>{};
+  late bool _todos = widget.soloPara.isEmpty;
+  late final _elegidos = <String>{...widget.soloPara};
   bool _enviando = false;
 
   @override
@@ -79,15 +84,15 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
     final messenger = ScaffoldMessenger.of(context);
     final nav = Navigator.of(context);
     if (_franja && !_en(_hasta).isAfter(_en(_desde))) {
-      messenger.showSnackBar(const SnackBar(content: Text('La hora final de la franja tiene que ser posterior a la inicial.')));
+      messenger.mostrar(const SnackBar(content: Text('La hora final de la franja tiene que ser posterior a la inicial.')));
       return;
     }
     if (!_en(_desde).isAfter(DateTime.now()) && !(_franja && _en(_hasta).isAfter(DateTime.now()))) {
-      messenger.showSnackBar(const SnackBar(content: Text('Elige un día y una hora que no hayan pasado.')));
+      messenger.mostrar(const SnackBar(content: Text('Elige un día y una hora que no hayan pasado.')));
       return;
     }
     if (!_todos && _elegidos.isEmpty) {
-      messenger.showSnackBar(const SnackBar(content: Text('Elige al menos un preparador o envíala a todos.')));
+      messenger.mostrar(const SnackBar(content: Text('Elige al menos un preparador o envíala a todos.')));
       return;
     }
     setState(() => _enviando = true);
@@ -113,12 +118,12 @@ class _PedirSustitucionPageState extends ConsumerState<PedirSustitucionPage> {
       // El teléfono se recuerda para la próxima vez (solo en tu cuenta).
       await ref.read(planProvider.notifier).actualizar((p) => p.copyWith(telefono: _telefono.text.trim()));
       ref.invalidate(misPeticionesProvider);
-      messenger.showSnackBar(const SnackBar(content: Text('Petición enviada. Te avisaremos en cuanto alguien la coja.')));
+      messenger.mostrar(const SnackBar(content: Text('Petición enviada. Te avisaremos en cuanto alguien la coja.')));
       nav.pop();
     } on ErrorRed catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text(e.mensaje)));
+      messenger.mostrar(SnackBar(content: Text(e.mensaje)));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo enviar: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo enviar: $e')));
     } finally {
       if (mounted) setState(() => _enviando = false);
     }
@@ -393,12 +398,12 @@ class TablonPage extends ConsumerWidget {
       ref.invalidate(alumnosProvider);
       ref.invalidate(tablonProvider);
       ref.invalidate(cogidasPorMiProvider);
-      messenger.showSnackBar(SnackBar(content: Text('Es tuyo. ${alumno.nombre} ya tiene tu contacto.')));
+      messenger.mostrar(SnackBar(content: Text('Es tuyo. ${alumno.nombre} ya tiene tu contacto.')));
     } on ErrorRed catch (e) {
       ref.invalidate(tablonProvider);
-      messenger.showSnackBar(SnackBar(content: Text(e.mensaje)));
+      messenger.mostrar(SnackBar(content: Text(e.mensaje)));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo coger: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo coger: $e')));
     }
   }
 
@@ -431,7 +436,13 @@ class TablonPage extends ConsumerWidget {
                       child: Tarjeta(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text(cuandoSustitucion(s), style: context.textos.titleMedium),
-                          Text('${s.descripcion}${s.paraTodos ? '' : ' · enviada a ti'}', style: context.textos.labelSmall),
+                          // Si te la pide (solo a ti o a pocos) uno de tus alumnos, se dice:
+                          // suele ser una clase que le ha cancelado su otro preparador.
+                          Text(
+                            '${s.descripcion}${s.paraTodos ? '' : ' · enviada a ti'}'
+                            '${!s.paraTodos && ref.watch(misAlumnosProvider).any((a) => a.uid != null && a.uid == s.alumno) ? ' · de tu alumno ${ref.watch(misAlumnosProvider).firstWhere((a) => a.uid == s.alumno).nombre}' : ''}',
+                            style: context.textos.labelSmall,
+                          ),
                           // Lo que el preparador ya tiene ese día dentro de la franja.
                           ...() {
                             final fin = s.hasta ?? s.fecha.add(const Duration(hours: 2));
@@ -510,7 +521,7 @@ Future<DateTime?> elegirHoraEnFranja(BuildContext context, Sustitucion s) async 
   if (t == null) return null;
   final h = DateTime(desde.year, desde.month, desde.day, t.hour, t.minute);
   if (h.isBefore(desde) || h.isAfter(hasta)) {
-    if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Tiene que ser entre las ${horaDe(desde)} y las ${horaDe(hasta)}.')));
+    if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Tiene que ser entre las ${horaDe(desde)} y las ${horaDe(hasta)}.')));
     return null;
   }
   return h;

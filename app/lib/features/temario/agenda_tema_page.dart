@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/estructura.dart';
@@ -61,7 +62,7 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
     await ref.read(agendasProvider.notifier).actualizar(_codigo, (a) => a.vueltaCompletada());
     final ajustes = ref.read(ajustesProvider);
     if (!ajustes.temasEstudiados.contains(_codigo)) await ref.read(ajustesProvider.notifier).alternarEstudiado(_codigo);
-    messenger.showSnackBar(const SnackBar(content: Text('Vuelta anotada')));
+    messenger.mostrar(const SnackBar(content: Text('Vuelta anotada')));
   }
 
   @override

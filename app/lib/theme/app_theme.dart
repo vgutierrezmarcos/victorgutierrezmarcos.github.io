@@ -553,6 +553,9 @@ class AppTheme {
         contentTextStyle: textos.bodySmall?.copyWith(color: Colors.white, fontSize: 14),
         behavior: SnackBarBehavior.floating,
         shape: forma6,
+        // Una ✕ para quitarlo sin esperar.
+        showCloseIcon: true,
+        closeIconColor: Colors.white70,
       ),
     );
   }

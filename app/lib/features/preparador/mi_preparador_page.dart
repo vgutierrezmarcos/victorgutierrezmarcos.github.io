@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -13,6 +14,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
 import 'buscar_preparador_page.dart';
+import 'coordinacion.dart';
 import 'directorio_page.dart';
 import 'materiales_widgets.dart';
 import 'verificacion_page.dart';
@@ -52,7 +54,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
         _otroPreparador = false;
       }
     });
-    messenger.showSnackBar(SnackBar(content: Text(error ?? 'Petición enviada. Cuando tu preparador la acepte, verá tu progreso y te llegará un aviso.')));
+    messenger.mostrar(SnackBar(content: Text(error ?? 'Petición enviada. Cuando tu preparador la acepte, verá tu progreso y te llegará un aviso.')));
   }
 
   /// Clases pendientes de un preparador en la agenda.
@@ -123,9 +125,9 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
         await notifier.borrar(c);
       }
       ref.invalidate(misPeticionesProvider);
-      messenger.showSnackBar(SnackBar(content: Text('$nombre ya no tiene acceso a tus clases.')));
+      messenger.mostrar(SnackBar(content: Text('$nombre ya no tiene acceso a tus clases.')));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo (${textoError(e)}).')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo (${textoError(e)}).')));
     }
   }
 
@@ -172,6 +174,13 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
     final busqueda = ref.watch(miBusquedaProvider).valueOrNull;
     final interesados = busqueda == null ? 0 : (ref.watch(interesadosProvider(busqueda.id)).valueOrNull?.length ?? 0);
     void ir(Widget w) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => w));
+    final aceptados = vinculos.where((v) => v.aceptado).toList();
+    // Mensajes de los preparadores en el tablón en los dos últimos días.
+    final tablon = usuario == null
+        ? 0
+        : (ref.watch(tablonComunProvider(usuario.uid)).valueOrNull ?? const <NotaEntrePreparadores>[])
+            .where((n) => n.de != usuario.uid && n.fecha.isAfter(ahora.subtract(const Duration(days: 2))))
+            .length;
 
     return Scaffold(
       appBar: const BarraWeb(title: Text('Mi preparador'), actions: [BotonVideoAyuda('conectar-preparador')]),
@@ -244,6 +253,24 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               )
             else
               Align(alignment: Alignment.centerLeft, child: TextButton.icon(onPressed: () => setState(() => _otroPreparador = true), icon: const Icon(Icons.add, size: 18), label: const Text('Conectar con otro preparador'))),
+            // Coordinarse con los preparadores: tablón común, reparto y qué ven.
+            if (usuario != null && aceptados.isNotEmpty) ...[
+              TituloSeccion(aceptados.length > 1 ? 'Coordinación con tus preparadores' : 'Con tu preparador'),
+              FilaEnlace(
+                icono: Icons.forum_outlined,
+                titulo: aceptados.length > 1 ? 'Tablón con tus preparadores' : 'Tablón con tu preparador',
+                subtitulo: aceptados.length > 1 ? 'Para acordar entre todos cambios de clase, quién lleva qué o dudas' : 'Para acordar cambios de clase o dudas',
+                final_: tablon == 0 ? null : globo(context, tablon),
+                onTap: () => ir(TablonComunPage(alumnoUid: usuario.uid, nombreAlumno: usuario.displayName ?? '', soyAlumno: true)),
+              ),
+              FilaEnlace(
+                icono: Icons.visibility_outlined,
+                titulo: 'Qué ven tus preparadores',
+                subtitulo: aceptados.length > 1 ? 'Tus cantes por tu cuenta y si cada uno sabe que tienes otros' : 'Tus cantes por tu cuenta',
+                onTap: () => ir(const QueVenMisPreparadoresPage()),
+              ),
+              if (aceptados.length > 1) SeccionReparto(alumnoUid: usuario.uid, preparadores: [for (final v in aceptados) (v.uid, v.nombre.isEmpty ? 'Preparador' : v.nombre)]),
+            ],
             if (materiales.isNotEmpty) ...[
               TituloSeccion(vinculos.length > 1 ? 'Materiales de tus preparadores' : 'Materiales de tu preparador'),
               for (final m in materiales) TarjetaMaterial(material: m, subtitulo: vinculos.length > 1 && m.preparadorNombre.isNotEmpty ? 'De ${m.preparadorNombre}' : null),
@@ -277,7 +304,7 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
               ),
             ],
             const TituloSeccion('Qué ve tu preparador'),
-            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores. Si tienes varios preparadores, cada uno ve qué tema cantaste, cuándo y con quién, pero no la valoración ni los comentarios de los otros; saben quiénes son los demás, pueden dejarse notas sobre tu preparación y, si quieren, compartirse el WhatsApp. Si te mandan un cronograma, decides tú si lo usas.', style: context.textos.bodySmall),
+            Text('Los temas que marcas como estudiados o en repaso y tus cantes (fecha, tema, tiempo, valoración y comentarios). No ve tus tests, tus notas ni tus grabaciones, y puedes dejar de compartir cuando quieras. En la pizarra de una clase solo se comparte lo que dibujáis en ella, nada más de tu móvil. Nadie más ve nada: ni sus otros alumnos ni otros opositores. Si tienes varios preparadores, cada uno ve qué tema cantaste, cuándo y con quién, y las próximas clases con los demás (para no pisarse), pero no la valoración ni los comentarios de los otros; saben quiénes son los demás, ven los temas que te mandan los otros (para no repetírtelos), pueden dejarse notas sobre tu preparación y, si quieren, compartirse el WhatsApp. Puedes cambiarlo en «Qué ven tus preparadores», también ocultar a alguno que tienes otros. Si te mandan un cronograma, decides tú si lo usas.', style: context.textos.bodySmall),
             const SizedBox(height: 18),
             FilaEnlace(
               icono: Icons.groups_outlined,

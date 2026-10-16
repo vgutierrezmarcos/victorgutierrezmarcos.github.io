@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
@@ -133,7 +134,7 @@ class _MaterialFormPageState extends ConsumerState<MaterialFormPage> {
     if (url != null) {
       setState(() => _url.text = url);
     } else if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No hay ningún enlace copiado.')));
+      ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('No hay ningún enlace copiado.')));
     }
   }
 
@@ -150,11 +151,11 @@ class _MaterialFormPageState extends ConsumerState<MaterialFormPage> {
     final url = enlaceMaterial(_url.text);
     final titulo = _titulo.text.trim();
     if (titulo.isEmpty || url == null) {
-      messenger.showSnackBar(SnackBar(content: Text(titulo.isEmpty ? 'Ponle un título.' : 'El enlace tiene que empezar por http:// o https://.')));
+      messenger.mostrar(SnackBar(content: Text(titulo.isEmpty ? 'Ponle un título.' : 'El enlace tiene que empezar por http:// o https://.')));
       return;
     }
     if (!_todos && _alumnos.isEmpty) {
-      messenger.showSnackBar(const SnackBar(content: Text('Elige al menos un alumno o compártelo con todos.')));
+      messenger.mostrar(const SnackBar(content: Text('Elige al menos un alumno o compártelo con todos.')));
       return;
     }
     final red = ref.read(redRepoProvider);
@@ -173,12 +174,12 @@ class _MaterialFormPageState extends ConsumerState<MaterialFormPage> {
     try {
       await red.guardarMaterial(m);
       ref.invalidate(misMaterialesProvider);
-      messenger.showSnackBar(SnackBar(content: Text(widget.material == null ? 'Compartido. Tus alumnos lo verán en Mi preparador y les llegará un aviso.' : 'Guardado.')));
+      messenger.mostrar(SnackBar(content: Text(widget.material == null ? 'Compartido. Tus alumnos lo verán en Mi preparador y les llegará un aviso.' : 'Guardado.')));
       nav.pop();
     } on ErrorRed catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text(e.mensaje)));
+      messenger.mostrar(SnackBar(content: Text(e.mensaje)));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo guardar: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo guardar: $e')));
     } finally {
       if (mounted) setState(() => _guardando = false);
     }

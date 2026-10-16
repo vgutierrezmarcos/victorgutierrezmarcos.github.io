@@ -11,11 +11,13 @@ import 'package:record/record.dart';
 import 'package:vibration/vibration.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/coordinacion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
@@ -297,7 +299,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (e == null || !_compartiendo || mio) return;
     if (!e.activo) {
       setState(() => _compartiendo = false);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('${e.porNombre} ha dejado de compartir el cronómetro')));
+      ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('${e.porNombre} ha dejado de compartir el cronómetro')));
       return;
     }
     _adoptar(e);
@@ -443,7 +445,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   }
 
   Future<void> _aviso(String texto, {bool largo = false}) async {
-    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(texto)));
+    if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text(texto)));
     try {
       if (await Vibration.hasVibrator()) Vibration.vibrate(pattern: largo ? [0, 400, 200, 400, 200, 600] : [0, 300]);
     } catch (_) {}
@@ -502,7 +504,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       return;
     }
     if (!await _grabadora.hasPermission()) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Sin permiso de micrófono')));
+      if (mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Sin permiso de micrófono')));
       return;
     }
     final nombre = '${_elegido?.codigo.replaceAll('.', '') ?? 'tema'}_${DateTime.now().millisecondsSinceEpoch}.m4a';
@@ -566,7 +568,16 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       // En una clase del preparador se sacan los temas que diga la clase.
       final n = widget.sesion != null && cante != null ? cante.numTemas : ref.read(ajustesProvider).temasExtraidos;
       if (widget.sesion != null && cante != null) {
-        resultado = Sorteo.sortearClase(bolsa, n, unoPorParte: cante.unoPorParte, parte: (x) => x.codigo.split('.').take(2).join('.'));
+        // Sin repetir lo que el alumno ha cantado en las dos últimas semanas
+        // (con quien sea) ni lo ya mandado para otras clases, si queda bastante.
+        String parte(Tema x) => x.codigo.split('.').take(2).join('.');
+        final alumno = widget.sesion!.alumno;
+        final mias = ref.read(sesionesProvider).where((x) => x.alumno == alumno.id).toList();
+        final ids = {for (final x in mias) x.id};
+        final agenda = [...mias, ...?ref.read(progresoAlumnoProvider(alumno.id)).valueOrNull?.cantes.where((c) => !ids.contains(c.id))];
+        final mandados = {...?ref.read(temasMandadosPorOtrosProvider(alumno.id)).valueOrNull};
+        final evitar = temasAEvitar(agenda, mandados: mandados, excluir: cante.id).keys.toSet();
+        resultado = Sorteo.sortearClase(sinRepetir(bolsa, evitar, n, (x) => x.codigo, partes: cante.unoPorParte ? parte : null), n, unoPorParte: cante.unoPorParte, parte: parte);
       } else if (_ponderar) {
         final stats = ref.read(estadisticasCantesProvider);
         resultado = Sorteo.sortearPonderado(bolsa, n, (x) => Sorteo.pesoPractica(veces: stats[x.codigo]?.veces ?? 0, valoracionMedia: stats[x.codigo]?.valoracionMedia ?? 0));
@@ -638,7 +649,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (sesion != null) {
       // Sesión de preparador: se guarda en la ficha del alumno (y en su diario, si está enlazado).
       await ref.read(sesionesProvider.notifier).guardar((cante ?? sesion.cante).copyWith(estado: EstadoCante.hecho, resultado: res));
-      messenger.showSnackBar(const SnackBar(content: Text('Valoración guardada')));
+      messenger.mostrar(const SnackBar(content: Text('Valoración guardada')));
       nav.pop();
       return;
     }
@@ -650,7 +661,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       _limpiarSorteo();
       _nuevoReloj();
     });
-    messenger.showSnackBar(const SnackBar(content: Text('Cante guardado en el diario')));
+    messenger.mostrar(const SnackBar(content: Text('Cante guardado en el diario')));
   }
 
   // ------------------------------------------------------------ UI

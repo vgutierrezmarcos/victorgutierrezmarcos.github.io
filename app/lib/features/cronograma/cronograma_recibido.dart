@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/cronograma_providers.dart';
 import '../../data/models/cronograma.dart';
 import '../../theme/app_theme.dart';
@@ -72,11 +73,11 @@ class _CronogramaRecibidoPageState extends ConsumerState<CronogramaRecibidoPage>
     setState(() => _ocupado = true);
     try {
       await responderCronogramaRecibido(ref, widget.recibido, aceptar: aceptar);
-      messenger.showSnackBar(SnackBar(content: Text(aceptar ? 'Ya es tu cronograma. Lo compartes con tu preparador, que puede proponerte cambios.' : 'Descartado.')));
+      messenger.mostrar(SnackBar(content: Text(aceptar ? 'Ya es tu cronograma. Lo compartes con tus preparadores, que pueden proponerte cambios.' : 'Descartado.')));
       nav.pop();
     } catch (_) {
       if (mounted) setState(() => _ocupado = false);
-      messenger.showSnackBar(const SnackBar(content: Text('No se pudo. Revisa la conexión.')));
+      messenger.mostrar(const SnackBar(content: Text('No se pudo. Revisa la conexión.')));
     }
   }
 

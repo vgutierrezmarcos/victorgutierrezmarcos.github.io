@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/plan.dart';
@@ -36,9 +37,9 @@ class _FilaReservaPedidaState extends ConsumerState<FilaReservaPedida> {
       }
       await ref.read(redRepoProvider).cambiarReserva(r, aceptar ? EstadoReserva.aceptada : EstadoReserva.rechazada);
       ref.invalidate(reservasRecibidasProvider);
-      messenger.showSnackBar(SnackBar(content: Text(aceptar ? 'Reserva aceptada: ya está en tu agenda y en la del alumno' : 'Reserva rechazada')));
+      messenger.mostrar(SnackBar(content: Text(aceptar ? 'Reserva aceptada: ya está en tu agenda y en la del alumno' : 'Reserva rechazada')));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo: $e')));
     } finally {
       if (mounted) setState(() => _ocupado = false);
     }
@@ -102,7 +103,7 @@ class ReservarPage extends ConsumerWidget {
       final red = ref.read(redRepoProvider);
       await red.pedirReserva(Reserva(id: nuevoId(), preparador: preparador.uid, alumno: red.uid!, alumnoNombre: yo?.displayName ?? '', fecha: f, minutos: minutos, nota: nota.text.trim(), creada: DateTime.now()));
       ref.invalidate(misReservasProvider);
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte.')));
+      if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte.')));
     }
 
     return Scaffold(
@@ -118,7 +119,11 @@ class ReservarPage extends ConsumerWidget {
             ...switch (huecos) {
               AsyncData(:final value) when value == null || !value.activo => [Text('$nombre no ofrece reservas ahora mismo.', style: context.textos.bodySmall)],
               AsyncData(:final value) => () {
-                  final libres = value!.libres(desde: DateTime.now(), semanas: 4, pedidos: pedidas);
+                  // Sin los que chocan con mi agenda (clases con otros
+                  // preparadores o cantes con hora).
+                  final agenda = ref.watch(cantesProvider);
+                  int minutosDe(DateTime f) => value!.huecos.where((h) => h.diaSemana == f.weekday && h.minutoDelDia == f.hour * 60 + f.minute).firstOrNull?.minutos ?? 60;
+                  final libres = value!.libres(desde: DateTime.now(), semanas: 4, pedidos: pedidas).where((f) => choquesEnAgenda(agenda, f, minutosDe(f)).isEmpty).toList();
                   if (libres.isEmpty) return [Text('No quedan huecos libres en las próximas cuatro semanas.', style: context.textos.bodySmall)];
                   final porDia = <DateTime, List<DateTime>>{};
                   for (final f in libres) {

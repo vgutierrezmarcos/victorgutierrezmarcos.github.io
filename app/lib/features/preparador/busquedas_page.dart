@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/red.dart';
@@ -100,9 +101,9 @@ class _TarjetaBusqueda extends ConsumerWidget {
     final nombre = perfil.nombre.isNotEmpty ? perfil.nombre : (ref.read(usuarioActualProvider)?.displayName ?? '');
     try {
       await red.interesarme(busqueda.id, Interesado(uid: red.uid!, nombre: nombre, telefono: conTelefono ? telefono : '', linkedin: perfil.linkedin, mensaje: mensaje.text.trim(), creado: DateTime.now()));
-      messenger.showSnackBar(const SnackBar(content: Text('Hecho. Si le interesa, te escribirá.')));
+      messenger.mostrar(const SnackBar(content: Text('Hecho. Si le interesa, te escribirá.')));
     } catch (e) {
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo: $e')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo: $e')));
     }
     ref.invalidate(busquedasProvider);
   }
@@ -167,7 +168,7 @@ class _SeccionPlazasState extends ConsumerState<SeccionPlazas> {
     try {
       await ref.read(redRepoProvider).guardarPlazas(p);
     } catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No se pudo guardar: $e')));
+      if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('No se pudo guardar: $e')));
     }
     ref.invalidate(misPlazasProvider);
     if (mounted) setState(() => _guardando = false);

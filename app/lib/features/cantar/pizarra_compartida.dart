@@ -22,17 +22,25 @@ abstract class FuentePizarra {
   Future<void> borrarTodo(String pagina);
   Future<void> eliminarPagina(String pagina);
   Future<void> nuevaPagina(int n);
+
+  /// Quita de la página los trazos [quitar] (por id) y añade [poner], de una
+  /// vez: mover con el lazo, borrar por partes, deshacer y rehacer.
+  Future<void> reemplazar(String pagina, int n, List<Trazo> quitar, List<Trazo> poner);
+
+  /// Cambia el papel de la página ([fondoBlanco], [fondoRayas]…).
+  Future<void> cambiarFondo(String pagina, int n, String fondo);
 }
 
 /// Pizarra para practicar sola (sin clase): los trazos se quedan en memoria,
 /// no van a ningún sitio y se pierden al cerrarla.
 class PizarraLocal implements FuentePizarra {
   final Map<String, (int, List<Map<String, dynamic>>)> _paginas = {};
+  final Map<String, String> _fondos = {};
   final _cambios = StreamController<List<PaginaPizarra>>.broadcast();
 
   List<PaginaPizarra> get _lista {
     final ids = _paginas.keys.toList()..sort((a, b) => _paginas[a]!.$1.compareTo(_paginas[b]!.$1));
-    return [for (final id in ids) PaginaPizarra.fromJson(id, {'n': _paginas[id]!.$1, 'trazos': _paginas[id]!.$2})];
+    return [for (final id in ids) PaginaPizarra.fromJson(id, {'n': _paginas[id]!.$1, 'trazos': List.of(_paginas[id]!.$2), if (_fondos[id] != null) 'fondo': _fondos[id]})];
   }
 
   void _avisar() => Future.microtask(() => _cambios.add(_lista));
@@ -73,6 +81,23 @@ class PizarraLocal implements FuentePizarra {
   @override
   Future<void> nuevaPagina(int n) async {
     _paginas.putIfAbsent(PizarraCompartida.idPagina(n), () => (n, []));
+    _avisar();
+  }
+
+  @override
+  Future<void> reemplazar(String pagina, int n, List<Trazo> quitar, List<Trazo> poner) async {
+    final ids = {for (final t in [...quitar, ...poner]) t.id};
+    final lista = _paginas.putIfAbsent(pagina, () => (n, [])).$2;
+    lista
+      ..removeWhere((t) => ids.contains(t['i']))
+      ..addAll([for (final t in poner) t.toJson()]);
+    _avisar();
+  }
+
+  @override
+  Future<void> cambiarFondo(String pagina, int n, String fondo) async {
+    _paginas.putIfAbsent(pagina, () => (n, []));
+    _fondos[pagina] = fondo;
     _avisar();
   }
 }
@@ -133,6 +158,29 @@ class PizarraCompartida implements FuentePizarra {
 
   @override
   Future<void> nuevaPagina(int n) => _col.doc(idPagina(n)).set({'n': n, 'trazos': <Map<String, dynamic>>[], 'creado': DateTime.now().toIso8601String(), 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
+
+  /// En una transacción: arrayRemove pide el elemento exacto y no se puede
+  /// combinar con arrayUnion en la misma escritura.
+  @override
+  Future<void> reemplazar(String pagina, int n, List<Trazo> quitar, List<Trazo> poner) async {
+    // Lo encolado sale antes, para que no vuelva después de quitarlo.
+    await vaciar();
+    final ref = _col.doc(pagina);
+    final ids = {for (final t in [...quitar, ...poner]) t.id};
+    await _col.firestore.runTransaction((tx) async {
+      final actual = await tx.get(ref);
+      final quedan = [for (final t in (actual.data()?['trazos'] as List?) ?? const []) if (t is Map && !ids.contains(t['i'])) t];
+      tx.set(ref, {
+        'n': n,
+        'trazos': [...quedan, for (final t in poner) t.toJson()],
+        'borradoPor': FieldValue.delete(),
+        'updatedAt': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+    });
+  }
+
+  @override
+  Future<void> cambiarFondo(String pagina, int n, String fondo) => _col.doc(pagina).set({'n': n, 'fondo': fondo, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   // ------------------------------------------------------------- Cola
 

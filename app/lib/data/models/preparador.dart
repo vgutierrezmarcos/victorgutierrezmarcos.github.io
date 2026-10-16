@@ -1,7 +1,10 @@
 import 'dart:math';
 
+import 'coordinacion.dart';
 import 'oposicion.dart';
 import 'plan.dart';
+
+export 'coordinacion.dart';
 
 /// Modelos de la sección de preparadores. El preparador guarda a sus alumnos
 /// y sus sesiones en local (Hive) y, con sesión, en Firestore bajo
@@ -382,11 +385,17 @@ class SolicitudEnlace {
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
 /// y sus cantes. No incluye tests, notas ni grabaciones.
 class ProgresoAlumno {
-  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.cantes = const []});
+  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
   final Set<String> estudiados;
   final Set<String> enRepaso;
-  /// Cantes del alumno (los suyos y los programados por preparadores).
+  /// Cantes del alumno (los suyos y los programados por preparadores), ya
+  /// filtrados según lo que el alumno deja ver (ver [AjustesCoordinacion]).
   final List<Cante> cantes;
+  final AjustesCoordinacion ajustes;
+  /// Qué lleva cada preparador (vacío si no se han repartido).
+  final Map<String, RepartoPreparador> reparto;
+  /// El alumno no deja que este preparador sepa que tiene otros.
+  final bool yoAislado;
 }
 
 /// Error al enlazar con un preparador, con un mensaje para el usuario.
@@ -442,15 +451,25 @@ class OtroPreparador {
 /// Nota que se dejan entre sí los preparadores de un mismo alumno
 /// (`notasPreparadores/{id}` en sus datos). El alumno no la ve en la app.
 class NotaEntrePreparadores {
-  const NotaEntrePreparadores({required this.id, required this.de, this.deNombre = '', required this.texto, required this.fecha});
+  const NotaEntrePreparadores({required this.id, required this.de, this.deNombre = '', required this.texto, required this.fecha, this.editado});
   final String id;
   final String de;
   final String deNombre;
   final String texto;
   final DateTime fecha;
+  /// Cuándo la cambió quien la escribió (null si no la ha cambiado).
+  final DateTime? editado;
 
-  Map<String, dynamic> toJson() => {'id': id, 'de': de, 'deNombre': deNombre, 'texto': texto, 'fecha': fecha.toIso8601String()};
+  NotaEntrePreparadores conTexto(String t) => NotaEntrePreparadores(id: id, de: de, deNombre: deNombre, texto: t, fecha: fecha, editado: DateTime.now());
 
-  factory NotaEntrePreparadores.fromJson(Map<dynamic, dynamic> j) =>
-      NotaEntrePreparadores(id: j['id'].toString(), de: j['de'] as String? ?? '', deNombre: j['deNombre'] as String? ?? '', texto: j['texto'] as String? ?? '', fecha: _fecha(j['fecha']) ?? DateTime(2026));
+  Map<String, dynamic> toJson() => {'id': id, 'de': de, 'deNombre': deNombre, 'texto': texto, 'fecha': fecha.toIso8601String(), if (editado != null) 'editado': editado!.toIso8601String()};
+
+  factory NotaEntrePreparadores.fromJson(Map<dynamic, dynamic> j) => NotaEntrePreparadores(
+        id: j['id'].toString(),
+        de: j['de'] as String? ?? '',
+        deNombre: j['deNombre'] as String? ?? '',
+        texto: j['texto'] as String? ?? '',
+        fecha: _fecha(j['fecha']) ?? DateTime(2026),
+        editado: _fecha(j['editado']),
+      );
 }

@@ -111,7 +111,7 @@ class InicioPage extends ConsumerWidget {
                       Expanded(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}', style: context.textos.titleMedium),
-                          Text('${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedir una clase suelta.', style: context.textos.bodySmall),
+                          Text('${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedírsela a ${ref.watch(misPreparadoresProvider).length > 1 ? 'tu otro preparador' : 'otro preparador'}.', style: context.textos.bodySmall),
                         ]),
                       ),
                       const Icon(Icons.chevron_right),

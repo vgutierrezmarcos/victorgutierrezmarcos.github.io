@@ -1,9 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../core/avisos_breves.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/temario.dart';
@@ -11,12 +15,16 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/frecuencia_test.dart';
+import '../cantar/pizarra_compartida.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
+import 'anotaciones.dart';
+import 'visor_tema.dart';
 
-/// Visor de un tema: PDF (descargado para offline), estado de estudio y agenda
-/// del tema (apuntes para la próxima vuelta, vueltas y nota libre). Si el tema
-/// no tiene PDF se muestra directamente la agenda.
+/// Visor de un tema: PDF (descargado para offline) con las anotaciones del
+/// usuario (bolígrafo y fosforito, guardadas en su cuenta), estado de estudio
+/// y agenda del tema (apuntes para la próxima vuelta, vueltas y nota libre).
+/// Si el tema no tiene PDF se muestra directamente la agenda.
 class TemaPage extends ConsumerStatefulWidget {
   const TemaPage({super.key, required this.tema, this.esRecurso = false});
   final Tema tema;
@@ -27,10 +35,19 @@ class TemaPage extends ConsumerStatefulWidget {
 
 class _TemaPageState extends ConsumerState<TemaPage> {
   String? _ruta; // fichero descargado (solo en el móvil)
-  PdfControllerPinch? _pdf;
+  PdfDocument? _pdf;
   double _progreso = 0;
   Object? _error;
   int _pagina = 1, _paginas = 0;
+  final _visor = ControladorVisor();
+  bool _anotando = false;
+
+  /// Dónde se guardan las anotaciones de este tema (null sin cuenta).
+  late final FuentePizarra? _anotaciones = () {
+    final yo = ref.read(usuarioActualProvider);
+    if (widget.esRecurso || widget.tema.codigo.isEmpty || yo == null || !ref.read(serviciosProvider).firebaseDisponible) return null;
+    return fuenteAnotaciones(FirebaseFirestore.instance, ref.read(oposicionProvider), uid: yo.uid, codigo: widget.tema.codigo);
+  }();
 
   @override
   void initState() {
@@ -42,7 +59,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
         if (!mounted) return;
         final n = ref.read(agendasProvider.notifier).de(widget.tema.codigo).pendientes.length;
         if (n == 0) return;
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).mostrar(SnackBar(
           content: Text(n == 1 ? 'Tienes 1 apunte pendiente para esta vuelta' : 'Tienes $n apuntes pendientes para esta vuelta'),
           action: SnackBarAction(label: 'Ver', textColor: Colors.white, onPressed: _abrirAgenda),
         ));
@@ -59,10 +76,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
       final pdf = await ref.read(descargasProvider).abrir(url, progreso: (r, t) {
         if (t > 0 && mounted) setState(() => _progreso = r / t);
       });
-      if (!mounted) return;
+      final documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+      if (!mounted) {
+        await documento.close();
+        return;
+      }
       setState(() {
         _ruta = pdf.ruta;
-        _pdf = PdfControllerPinch(document: pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+        _pdf = documento;
       });
     } catch (e) {
       if (mounted) setState(() => _error = e);
@@ -71,8 +92,46 @@ class _TemaPageState extends ConsumerState<TemaPage> {
 
   @override
   void dispose() {
-    _pdf?.dispose();
+    _pdf?.close();
     super.dispose();
+  }
+
+  void _alternarAnotar() {
+    if (_anotaciones == null) {
+      ScaffoldMessenger.of(context).mostrar(SnackBar(
+        content: const Text('Para pintar y subrayar el tema, entra con tu cuenta: tus anotaciones se guardan en ella.'),
+        action: SnackBarAction(label: 'Entrar', textColor: Colors.white, onPressed: () => GoRouter.of(context).go('/mas/cuenta')),
+      ));
+      return;
+    }
+    setState(() => _anotando = !_anotando);
+  }
+
+  /// El tema con las anotaciones, en un PDF nuevo (para imprimirlo o compartirlo).
+  Future<void> _descargarAnotado() async {
+    final pdf = _pdf;
+    if (pdf == null) return;
+    final progreso = ValueNotifier<double>(0);
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (d) => AlertDialog(
+        title: const Text('Preparando el PDF'),
+        content: ValueListenableBuilder<double>(valueListenable: progreso, builder: (_, v, __) => LinearProgressIndicator(value: v == 0 ? null : v)),
+      ),
+    );
+    final nav = Navigator.of(context, rootNavigator: true);
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final bytes = await pdfAnotado(pdf, _visor.anotaciones, progreso: (h, t) => progreso.value = h / t);
+      nav.pop();
+      await guardarBytes(nombre: 'Tema ${widget.tema.codigo} anotado.pdf', bytes: bytes, mime: 'application/pdf', asunto: '${widget.tema.codigo} ${widget.tema.titulo}');
+    } catch (e) {
+      nav.pop();
+      messenger.mostrar(SnackBar(content: Text('No se ha podido preparar el PDF: $e')));
+    } finally {
+      progreso.dispose();
+    }
   }
 
   @override
@@ -101,12 +160,24 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               ),
               onPressed: _abrirAgenda,
             ),
+          if (_pdf != null && !widget.esRecurso)
+            IconButton(
+              tooltip: _anotando ? 'Dejar de anotar' : 'Pintar y subrayar',
+              isSelected: _anotando,
+              icon: const Icon(Icons.draw_outlined),
+              selectedIcon: const Icon(Icons.draw),
+              onPressed: _alternarAnotar,
+            ),
           if (_ruta != null)
             IconButton(tooltip: 'Compartir PDF', icon: const Icon(Icons.share_outlined), onPressed: () => SharePlus.instance.share(ShareParams(files: [XFile(_ruta!)], text: '${widget.tema.codigo} ${widget.tema.titulo}'))),
           if (!sinPdf && !web) PopupMenuButton<String>(
             onSelected: (v) async {
               if (v == 'web') {
                 abrirUrl(context, widget.tema.url);
+                return;
+              }
+              if (v == 'anotado') {
+                await _descargarAnotado();
                 return;
               }
               if (v == 'borrar' && widget.tema.url != null) {
@@ -117,14 +188,15 @@ class _TemaPageState extends ConsumerState<TemaPage> {
             },
             itemBuilder: (_) => [
               PopupMenuItem(value: 'web', child: Text(kIsWeb ? 'Abrir en otra pestaña' : 'Abrir en el navegador')),
+              if (_pdf != null && _anotaciones != null) const PopupMenuItem(value: 'anotado', child: Text('Descargar con mis anotaciones')),
               if (ref.read(descargasProvider).guardaSinConexion) const PopupMenuItem(value: 'borrar', child: Text('Eliminar descarga')),
             ],
           ),
         ],
       ),
       body: Column(children: [
-        if (!widget.esRecurso) _FilaMateriales(codigo: widget.tema.codigo),
-        if (!widget.esRecurso)
+        if (!widget.esRecurso && !_anotando) _FilaMateriales(codigo: widget.tema.codigo),
+        if (!widget.esRecurso && !_anotando)
           Material(
             color: context.colores.superficie,
             child: Padding(
@@ -182,13 +254,18 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                         Text(_progreso == 0 ? (kIsWeb ? 'Cargando PDF…' : 'Descargando PDF…') : 'Descargando ${(100 * _progreso).round()} %', style: context.textos.bodySmall),
                       ]),
                     )
-                  : PdfViewPinch(
-                      controller: _pdf!,
-                      onDocumentLoaded: (d) => setState(() => _paginas = d.pagesCount),
-                      onPageChanged: (p) => setState(() => _pagina = p),
+                  : VisorTema(
+                      documento: _pdf!,
+                      fuente: _anotaciones,
+                      miUid: ref.read(usuarioActualProvider)?.uid ?? '',
+                      controlador: _visor,
+                      anotando: _anotando,
+                      alCargar: (n) => setState(() => _paginas = n),
+                      alCambiarPagina: (p) => setState(() => _pagina = p),
+                      alAcabar: () => setState(() => _anotando = false),
                     ),
         ),
-        if (_paginas > 0)
+        if (_paginas > 0 && !_anotando)
           SafeArea(
             top: false,
             child: Container(
@@ -201,7 +278,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                     value: _pagina.toDouble().clamp(1, _paginas.toDouble()),
                     min: 1,
                     max: _paginas.toDouble(),
-                    onChanged: (v) => _pdf?.jumpToPage(v.round()),
+                    onChanged: (v) => _visor.irAPagina(v.round()),
                   ),
                 ),
               ]),

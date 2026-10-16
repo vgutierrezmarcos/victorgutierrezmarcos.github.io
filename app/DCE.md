@@ -150,10 +150,45 @@ Al permitir los avisos, el diálogo del sistema para que la batería no restrinj
 - **Aviso de versión nueva:** al tocar la notificación se actualiza por Play si la app viene de Play. Solo abre el APK si se instaló desde la web; antes lo abría siempre, porque `urlPlayStore` no está puesta.
 - **DCE:** «Cómo cantar un tema» abre la página de Manuel, y el contacto pasa a `contacto@manuelcabadogarcia.es`.
 - **Estado:** versión web publicada; `.aab` compilado el 14 oct. (`Escritorio\oposicion-tcee-dce-1.15.11.aab`).
-- [ ] Víctor: subir el `.aab` 1.15.11 (35) a la prueba cerrada **antes del 22 oct.**, para que sea la versión que sale a producción.
-- [ ] Publicada en la prueba cerrada: APK universal 35 firmado por Google en `app-latest` (Víctor lo sube desde el navegador, porque la red bloquea la subida desde aquí) y `"versionActual": "1.15.11"`.
+- [x] ~~Subir el `.aab` 1.15.11 (35)~~: no se subió; va dentro de la 1.16.0 (36), ver abajo.
 - [ ] Hasta entonces, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy, no con la notificación.
 - [ ] Probar en el móvil: invitar por WhatsApp (a un contacto y a un grupo) y el aviso de versión nueva por Play.
+
+**Versión 1.16.0 (36): pizarra como Notas, temas anotados, avisos del proceso al momento y coordinación entre preparadores (16 oct.)**
+Lleva también todo lo de la 1.15.11. Lo pidieron Manuel y los testers tras probar la pizarra en el iPad, y Víctor después.
+- **Pizarra como Notas del iPad:**
+  - El trazo no cambia al levantar el lápiz (era el «autocorrector»).
+  - Tinta con presión. Con lápiz, la palma no pinta y los dedos mueven y amplían.
+  - Barra clara: bolígrafo, borrador, colores, deshacer y rehacer.
+  - En «···», las herramientas extra: rotulador, fosforito, lazo, regla, formas al mantener y papel rayado o cuadriculado.
+- **Pintar y subrayar los temas (PDF):**
+  - Bolígrafo, fosforito y borrador, guardados en la cuenta.
+  - «Descargar con mis anotaciones» genera el PDF anotado.
+  - Visor de PDF nuevo: un dedo desplaza, dos amplían; en el ordenador, rueda y Ctrl+rueda.
+- **Avisos que se quitan solos:** respaldo propio y ✕. También los de botón («Ver»), que antes no se iban nunca.
+- **Avisos del proceso:**
+  - TCEE y DCE por separado (probado).
+  - Push al momento: la acción `leer-proceso` lee cada 2 minutos en horario de oficina (cron-job.org) y avisa por Firebase Cloud Messaging.
+  - Ver la memoria del push: pausa y aviso si el portal falla.
+- **Varios preparadores del mismo opositor:**
+  - **Agenda común:** cada preparador ve las próximas clases de los demás. Hay aviso de choque al programar o mover una clase y al apuntar un cante, y las reservas no ofrecen huecos que choquen.
+  - **Temas sin repetir:** el sorteo del tema que se manda y el de la clase dejan fuera lo cantado en dos semanas y lo ya mandado por otros, que los preparadores ven (el alumno no).
+  - **Reparto opcional** de qué lleva cada uno, por ejercicios y con nota.
+  - **Cronograma:** consta quién lo hizo; cada preparador deja su propia propuesta y el opositor las acepta una a una.
+  - **Comunicación:** tablón común opositor-preparadores; notas entre preparadores editables; avisos de nota o mensaje nuevo, de preparador nuevo y de cronograma o propuesta aceptados o rechazados.
+  - **Pasar una clase a otro preparador:** cancelar y pedírsela en un toque, también si la cancela el preparador.
+  - **Qué ven tus preparadores:** el opositor oculta sus cantes por su cuenta o hace que un preparador no sepa que tiene otros. Por defecto, se ve todo lo que ayuda a coordinarse.
+  - **Colores distintos** para cada preparador.
+- **Reglas de Firestore nuevas:** tablón, reparto, ajustes, propuestas por preparador, temas mandados entre preparadores y preparador oculto. 303 casos con el emulador.
+- [ ] Víctor: publicar `firestore.rules` en la consola de Firebase **antes** de subir el `.aab`. Sin ellas no funcionan el tablón, el reparto ni las propuestas de cada preparador.
+- [ ] Víctor: subir el `.aab` 1.16.0 (36) (`Escritorio\oposicion-tcee-dce-1.16.0.aab`) a la prueba cerrada **antes del 22 oct.**, para que sea la versión que sale a producción.
+- [ ] Publicada en la prueba cerrada: APK universal 36 firmado por Google en `app-latest` (Víctor lo sube desde el navegador) y `"versionActual": "1.16.0"`.
+- [ ] Probar en el móvil:
+  - Pizarra con lápiz y palma.
+  - Anotar un tema y descargarlo.
+  - Push del proceso cuando haya una novedad.
+  - Con dos preparadores de prueba: tablón, choques, pasar una clase, propuestas y ocultar a uno.
+- Ojo: con `.aab` de versiones anteriores, el opositor no ve las propuestas nuevas de cada preparador (sí la última, en el campo antiguo).
 
 **Red: crecimiento y estadísticas privadas (14 oct.)**
 - **Script:** `scripts/estadisticas-red.py` cuenta, sin nombres, las cuatro partes de la red (opositores y preparadores de TCEE y DCE).

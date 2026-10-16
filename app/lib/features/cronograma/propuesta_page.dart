@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../data/models/cronograma.dart';
@@ -49,7 +50,8 @@ class CronogramaDelAlumno extends ConsumerWidget {
               '${estado.hechos.length} de ${estado.total} temas · ${c.temasPorSemana} por semana',
               if (s != null && s.temas.isNotEmpty) 'esta semana: ${s.temas.join(', ')}',
               if (estado.atrasados.isNotEmpty) 'va ${estado.atrasados.length} por detrás',
-              if (c.propuesta != null) 'propuesta pendiente de que la vea',
+              if (c.pendientes.isNotEmpty) c.pendientes.length == 1 ? 'una propuesta pendiente de que la vea' : '${c.pendientes.length} propuestas pendientes de que las vea',
+              if (c.autorNombre.isNotEmpty) c.autor == ref.read(preparadorRepoProvider).uid ? 'se lo hiciste tú' : 'se lo hizo ${c.autorNombre}',
             ].join(' · '),
             style: context.textos.bodySmall,
           ),
@@ -84,7 +86,10 @@ class _PropuestaCronogramaPageState extends ConsumerState<PropuestaCronogramaPag
   @override
   Widget build(BuildContext context) {
     final estado = estadoDe(_c, DateTime.now());
-    final pendiente = widget.c.propuesta;
+    final yo = ref.read(preparadorRepoProvider).uid;
+    // La mía (la que sustituiría si mando otra) y las de los demás preparadores.
+    final mia = widget.c.pendientes.where((p) => p.de == yo).firstOrNull;
+    final deOtros = widget.c.pendientes.where((p) => p.de != yo).toList();
 
     Future<void> ritmo() async {
       final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: _c.temasPorSemana, fin: _c.fin, descansos: _c.descansos, diaCante: _c.diaCante);
@@ -125,10 +130,10 @@ class _PropuestaCronogramaPageState extends ConsumerState<PropuestaCronogramaPag
           ),
         );
         ref.invalidate(cronogramaAlumnoProvider(widget.alumno.id));
-        messenger.showSnackBar(SnackBar(content: Text('Propuesta enviada. ${widget.alumno.nombre} la verá en su cronograma.')));
+        messenger.mostrar(SnackBar(content: Text('Propuesta enviada. ${widget.alumno.nombre} la verá en su cronograma.')));
         nav.pop();
       } catch (e) {
-        messenger.showSnackBar(SnackBar(content: Text('No se pudo enviar: $e')));
+        messenger.mostrar(SnackBar(content: Text('No se pudo enviar: $e')));
       } finally {
         if (mounted) setState(() => _enviando = false);
       }
@@ -138,10 +143,19 @@ class _PropuestaCronogramaPageState extends ConsumerState<PropuestaCronogramaPag
       appBar: BarraWeb(title: Text('Cronograma de ${widget.alumno.nombre}')),
       body: ListaAdaptable(children: [
         ResumenCronograma(c: _c, estado: estado),
-        if (pendiente != null)
+        if (mia != null)
           Padding(
             padding: const EdgeInsets.only(top: 8),
-            child: Text('Tiene una propuesta pendiente del ${fechaLargaCrono(pendiente.fecha)}. Si envías otra, sustituye a esa.', style: context.textos.labelSmall),
+            child: Text('Tiene pendiente tu propuesta del ${fechaLargaCrono(mia.fecha)}. Si envías otra, sustituye a esa.', style: context.textos.labelSmall),
+          ),
+        for (final o in deOtros)
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(
+              '${o.nombre.isEmpty ? 'Otro preparador' : o.nombre} también le ha propuesto cambios (${fechaLargaCrono(o.fecha)}): '
+              '${o.fin != null ? 'acabar el ${fechaLargaCrono(o.fin!)}' : '${o.temasPorSemana} temas por semana'}${o.nota.isEmpty ? '' : ' · «${o.nota}»'}. La tuya no la sustituye.',
+              style: context.textos.labelSmall,
+            ),
           ),
         const TituloSeccion('Proponer cambios'),
         Tarjeta(

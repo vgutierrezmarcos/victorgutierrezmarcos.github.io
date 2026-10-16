@@ -487,6 +487,15 @@ class RedRepo {
           }
         }
       }
+      // Al preparador: lo que pasa con cada alumno enlazado y sus otros
+      // preparadores (notas, tablón, preparadores nuevos, respuestas a sus
+      // cronogramas y propuestas).
+      if (verificacion != null) {
+        final alumnos = await oposicion.red(_db!, 'preparadores').doc(uid).collection('alumnos').get();
+        for (final d in alumnos.docs.where((d) => d.data()['aceptado'] != false)) {
+          out.addAll(await _avisosDeCoordinacion(d.id, (d.data()['nombre'] as String?)?.trim() ?? '', reciente));
+        }
+      }
       if (admin || verificacion != null) {
         for (final sol in await solicitudesPendientes(admin: admin)) {
           if (sol.destinatario == uid || (admin && sol.destinatario == null)) {
@@ -513,11 +522,21 @@ class RedRepo {
         final nombre = (d.data()['nombre'] as String?)?.trim() ?? '';
         out.add(AvisoRed(id: 'enl-ok:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} ha aceptado tu conexión', texto: 'Ya ve tus temas y tus cantes, y puede programarte clases.', ruta: '/mas/mi-preparador'));
       }
+      // Al alumno: lo que le escriben sus preparadores en el tablón común.
+      try {
+        final tablon = await oposicion.raizUsuario(_db, uid!).collection('tablon').where('fecha', isGreaterThan: reciente.toIso8601String()).get();
+        for (final d in tablon.docs) {
+          final de = d.data()['de'] as String? ?? '';
+          if (de == uid) continue;
+          final nombre = (d.data()['deNombre'] as String?)?.trim() ?? '';
+          out.add(AvisoRed(id: 'tab:$uid:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} ha escrito en el tablón', texto: _resumen(d.data()['texto']), ruta: '/mas/mi-preparador'));
+        }
+      } catch (_) {}
       // Al alumno: cronogramas que le acaba de mandar un preparador.
       final recibidos = await oposicion.raizUsuario(_db, uid!).collection('cronogramasRecibidos').get().then((q) => q.docs, onError: (_) => <QueryDocumentSnapshot<Map<String, dynamic>>>[]);
       for (final d in recibidos) {
         final enviado = DateTime.tryParse(d.data()['enviado'] as String? ?? '');
-        if (enviado == null || enviado.isBefore(reciente)) continue;
+        if (enviado == null || enviado.isBefore(reciente) || d.data()['respuesta'] != null) continue;
         final nombre = (d.data()['deNombre'] as String?)?.trim() ?? '';
         out.add(AvisoRed(id: 'crono:${d.id}', titulo: '${nombre.isEmpty ? 'Tu preparador' : nombre} te ha mandado un cronograma', texto: 'Toca para verlo y decidir si lo usas.', ruta: '/organizacion/cronograma'));
       }
@@ -574,6 +593,69 @@ class RedRepo {
       // Sin red o sin permiso: se intenta en la próxima.
     }
     return out.where((a) => !vistos.contains(a.id)).toList();
+  }
+
+  String _resumen(Object? texto) {
+    final t = (texto?.toString() ?? '').replaceAll(RegExp(r'\s+'), ' ').trim();
+    return t.length <= 120 ? t : '${t.substring(0, 117)}…';
+  }
+
+  /// Avisos al preparador sobre su alumno [alumno] ([nombre]) desde [reciente].
+  /// Si el alumno le ha ocultado a los demás, las reglas no le dejan leer lo
+  /// de los otros preparadores: esa parte se salta sin más.
+  Future<List<AvisoRed>> _avisosDeCoordinacion(String alumno, String nombre, DateTime reciente) async {
+    final out = <AvisoRed>[];
+    final raiz = oposicion.raizUsuario(_db!, alumno);
+    final quien = nombre.isEmpty ? 'tu alumno' : nombre;
+    final desde = reciente.toIso8601String();
+    Future<void> intentar(Future<void> Function() f) async {
+      try {
+        await f();
+      } catch (_) {}
+    }
+
+    await intentar(() async {
+      for (final d in (await raiz.collection('notasPreparadores').where('fecha', isGreaterThan: desde).get()).docs) {
+        if (d.data()['de'] == uid) continue;
+        final de = (d.data()['deNombre'] as String?)?.trim() ?? '';
+        out.add(AvisoRed(id: 'notaprep:$alumno:${d.id}', titulo: '${de.isEmpty ? 'Otro preparador' : de} te deja una nota sobre $quien', texto: _resumen(d.data()['texto']), ruta: '/mas/preparador'));
+      }
+    });
+    await intentar(() async {
+      for (final d in (await raiz.collection('tablon').where('fecha', isGreaterThan: desde).get()).docs) {
+        final de = d.data()['de'] as String? ?? '';
+        if (de == uid) continue;
+        final deNombre = de == alumno ? quien : ((d.data()['deNombre'] as String?)?.trim() ?? 'Otro preparador');
+        out.add(AvisoRed(id: 'tab:$alumno:${d.id}', titulo: '$deNombre ha escrito en el tablón${de == alumno ? '' : ' de $quien'}', texto: _resumen(d.data()['texto']), ruta: '/mas/preparador'));
+      }
+    });
+    await intentar(() async {
+      // Sin los que el alumno ha ocultado a los demás.
+      final ocultos = {for (final x in ((await raiz.collection('coordinacion').doc('ajustes').get()).data()?['aislados'] as List?) ?? const []) x.toString()};
+      for (final d in (await raiz.collection('preparadores').get()).docs) {
+        final aceptadoEn = DateTime.tryParse(d.data()['aceptadoEn'] as String? ?? '');
+        if (d.id == uid || ocultos.contains(d.id) || d.data()['aceptado'] == false || aceptadoEn == null || aceptadoEn.isBefore(reciente)) continue;
+        final otro = (d.data()['nombre'] as String?)?.trim() ?? '';
+        out.add(AvisoRed(id: 'nuevoprep:$alumno:${d.id}', titulo: '$quien tiene otro preparador', texto: '${otro.isEmpty ? 'Otro preparador' : otro} también le prepara. Os podéis coordinar en su ficha: tablón, notas y quién lleva qué.', ruta: '/mas/preparador'));
+      }
+    });
+    await intentar(() async {
+      for (final d in (await raiz.collection('cronogramasRecibidos').where('de', isEqualTo: uid).get()).docs) {
+        final r = d.data()['respuesta'] as String?;
+        final cuando = DateTime.tryParse(d.data()['respondido'] as String? ?? '');
+        if (r == null || cuando == null || cuando.isBefore(reciente)) continue;
+        out.add(AvisoRed(id: 'cresp:$alumno:${d.id}:$r', titulo: r == 'aceptado' ? '$quien usa el cronograma que le mandaste' : '$quien no usará el cronograma que le mandaste', texto: r == 'aceptado' ? 'Ya es su cronograma: lo ves en su ficha y puedes proponerle cambios.' : 'Lo ha descartado.', ruta: '/mas/preparador'));
+      }
+    });
+    await intentar(() async {
+      for (final d in (await raiz.collection('cronogramas').where('compartir', isEqualTo: true).get()).docs) {
+        final r = ((d.data()['respuestas'] as Map?) ?? const {})[uid] as String?;
+        final cuando = DateTime.tryParse(((d.data()['resueltas'] as Map?) ?? const {})[uid] as String? ?? '');
+        if (r == null || cuando == null || cuando.isBefore(reciente)) continue;
+        out.add(AvisoRed(id: 'presp:$alumno:${d.id}:${cuando.toIso8601String()}', titulo: r == 'aceptada' ? '$quien acepta tu propuesta de cronograma' : '$quien rechaza tu propuesta de cronograma', texto: r == 'aceptada' ? 'Ya va con tu orden y tu ritmo.' : 'Sigue con su cronograma como estaba.', ruta: '/mas/preparador'));
+      }
+    });
+    return out;
   }
 
   /// ¿Tiene activados los avisos de reservas? (lo lee la tarea en segundo plano).

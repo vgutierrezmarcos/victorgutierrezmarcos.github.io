@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/constants.dart';
+import '../../core/avisos_breves.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -258,9 +258,9 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                   await ref.read(redRepoProvider).verificarme(nombre: nombre);
                   refrescarRedDesdeWidget(ref);
                   await ref.read(perfilPreparadorProvider.notifier).reintentarCodigo();
-                  messenger.showSnackBar(const SnackBar(content: Text('Verificado. Ya tienes tu código para alumnos.')));
+                  messenger.mostrar(const SnackBar(content: Text('Verificado. Ya tienes tu código para alumnos.')));
                 } catch (e) {
-                  messenger.showSnackBar(SnackBar(content: Text('No se pudo: $e')));
+                  messenger.mostrar(SnackBar(content: Text('No se pudo: $e')));
                 }
               },
               icon: const Icon(Icons.verified_outlined, size: 18),
@@ -276,7 +276,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 try {
                   await ref.read(redRepoProvider).retirarSolicitud().timeout(const Duration(seconds: 10));
                 } catch (e) {
-                  messenger.showSnackBar(SnackBar(content: Text('No se pudo retirar (${textoError(e)}).')));
+                  messenger.mostrar(SnackBar(content: Text('No se pudo retirar (${textoError(e)}).')));
                 }
                 ref.invalidate(estadoRedProvider);
               },
@@ -314,7 +314,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
                 onPressed: () async {
                   final messenger = ScaffoldMessenger.of(context);
                   await ref.read(perfilPreparadorProvider.notifier).reintentarCodigo();
-                  if (ref.read(perfilPreparadorProvider).codigo != null) messenger.showSnackBar(const SnackBar(content: Text('Código reservado')));
+                  if (ref.read(perfilPreparadorProvider).codigo != null) messenger.mostrar(const SnackBar(content: Text('Código reservado')));
                   setState(() {});
                 },
                 icon: const Icon(Icons.refresh, size: 18),
@@ -337,7 +337,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
             onPressed: () async {
               final messenger = ScaffoldMessenger.of(context);
               await Clipboard.setData(ClipboardData(text: codigo));
-              messenger.showSnackBar(const SnackBar(content: Text('Código copiado')));
+              messenger.mostrar(const SnackBar(content: Text('Código copiado')));
             },
           ),
           IconButton(
@@ -399,7 +399,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
         if (ok != true) return;
       }
       final error = await ref.read(solicitudesEnlaceProvider.notifier).responder(sol, aceptar: aceptar);
-      messenger.showSnackBar(SnackBar(content: Text(error ?? (aceptar ? '${sol.nombre.isEmpty ? 'Alumno' : sol.nombre} ya es alumno tuyo: ves sus temas y sus cantes.' : 'Conexión rechazada.'))));
+      messenger.mostrar(SnackBar(content: Text(error ?? (aceptar ? '${sol.nombre.isEmpty ? 'Alumno' : sol.nombre} ya es alumno tuyo: ves sus temas y sus cantes.' : 'Conexión rechazada.'))));
     }
 
     return Padding(

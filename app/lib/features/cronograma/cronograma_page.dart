@@ -77,7 +77,7 @@ class CronogramaPage extends ConsumerWidget {
     final finObjetivo = c.fin ?? estado.fin ?? DateTime.now();
     final ritmoNecesario = ritmoPara(estado.pendientes, esta, finObjetivo, c.descansos, diaCante: c.diaCante);
     final finConRitmo = finEstimado(estado.pendientes, esta, c.temasPorSemana, c.descansos, diaCante: c.diaCante);
-    final p = c.propuesta;
+    final propuestas = c.pendientes;
 
     Future<void> cambiarRitmo() async {
       final r = await elegirRitmo(context, pendientes: estado.pendientes, porSemana: c.temasPorSemana, fin: c.fin, descansos: c.descansos, diaCante: c.diaCante);
@@ -120,7 +120,13 @@ class CronogramaPage extends ConsumerWidget {
         const SizedBox(height: 10),
         const TarjetasCronogramasRecibidos(),
         ResumenCronograma(c: c, estado: estado),
-        if (p != null) ...[
+        if (c.autor != null && c.autorNombre.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 8, 4, 0),
+            child: Text('Te lo hizo ${c.autorNombre}.', style: context.textos.labelSmall),
+          ),
+        // Una tarjeta por propuesta: con varios preparadores, cada uno la suya.
+        for (final p in propuestas) ...[
           const SizedBox(height: 10),
           Tarjeta(
             color: context.colores.primarioPalido,
@@ -137,8 +143,8 @@ class CronogramaPage extends ConsumerWidget {
               if (p.nota.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('«${p.nota}»', style: context.textos.bodyMedium?.copyWith(fontStyle: FontStyle.italic))),
               const SizedBox(height: 10),
               Wrap(spacing: 10, children: [
-                FilledButton(onPressed: notifier.aceptarPropuesta, child: const Text('Aceptar')),
-                TextButton(onPressed: notifier.rechazarPropuesta, child: const Text('Rechazar')),
+                FilledButton(onPressed: () => notifier.aceptarPropuesta(p), child: const Text('Aceptar')),
+                TextButton(onPressed: () => notifier.rechazarPropuesta(p), child: const Text('Rechazar')),
               ]),
             ]),
           ),
@@ -202,8 +208,8 @@ class CronogramaPage extends ConsumerWidget {
                 secondary: const Icon(Icons.share_outlined),
                 value: c.compartir,
                 onChanged: notifier.compartir,
-                title: const Text('Compartirlo con mi preparador'),
-                subtitle: Text('Lo verá y podrá proponerte cambios. Desactivado, no lo ve nadie.', style: context.textos.labelSmall),
+                title: Text(vinculos.length == 1 ? 'Compartirlo con mi preparador' : 'Compartirlo con mis preparadores'),
+                subtitle: Text(vinculos.length == 1 ? 'Lo verá y podrá proponerte cambios. Desactivado, no lo ve nadie.' : 'Lo verán todos y cada uno podrá proponerte cambios (sin pisar los del otro). Desactivado, no lo ve nadie.', style: context.textos.labelSmall),
               ),
           ]),
         ),
