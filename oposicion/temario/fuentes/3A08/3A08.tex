@@ -12,7 +12,7 @@
 \begin{itemize}
 \item \textbf{\emph{Enganche}}:
   \begin{itemize}
-  \item \textcite[libro~I, cap.~I, §1]{Marshall1890Principles}, en sus \emph{Principios de Economía}, define la economía como «el estudio de la humanidad en los asuntos ordinarios de la vida», que examina «la parte de la acción individual y social más estrechamente relacionada con la obtención y el uso de los requisitos materiales del bienestar».
+  \item \textbf{¿Puede una teoría explicar lo que elegimos sin ver lo que queremos?} \textcite[libro~I, cap.~I, §1]{Marshall1890Principles}, en sus \emph{Principios de Economía}, define la economía como «el estudio de la humanidad en los asuntos ordinarios de la vida», que examina «la parte de la acción individual y social más estrechamente relacionada con la obtención y el uso de los requisitos materiales del bienestar»; y pocas decisiones son más ordinarias que qué comprar.
     \begin{itemize}
     \item Esta definición muestra uno de los principios que subyacen a la reflexión económica, y que la teoría neoclásica subraya especialmente: el \concepto{individualismo metodológico}.\footnote{El \emph{individualismo metodológico} es un método muy utilizado en las ciencias sociales. Sostiene que todos los fenómenos sociales (su estructura y sus cambios) son en principio explicables a partir de elementos individuales, es decir, de las propiedades de los individuos: sus metas, sus creencias y sus acciones. Sus defensores lo ven como un método para explicar la evolución de la sociedad como el agregado de las decisiones de los particulares. En principio es un reduccionismo: explica las grandes entidades a partir de las más pequeñas.} El objeto de la teoría es una realidad social compuesta de individuos que se relacionan en economías descentralizadas.
     \end{itemize}
@@ -506,7 +506,7 @@ En el cante: las propiedades de la demanda marshalliana (homogeneidad de grado c
   \begin{enumerate}
   \item \emph{Existe y es única}.\footnote{Existe por el teorema de \autor{Weierstrass} (utilidad continua y conjunto presupuestario compacto) y es única por la convexidad estricta de las preferencias.}
   \item Es \emph{continua} en $(\vect{p},\overline{W})$.\footnote{Por el teorema del máximo de \autor{Berge}.}
-  \item Es \emph{homogénea de grado cero} en $(\vect{p},\overline{W})$: $\vect{x}(k\vect{p},k\overline{W})=\vect{x}(\vect{p},\overline{W})$ para todo $k>0$.\footnote{Si se multiplican precios y renta por $k>0$, el conjunto presupuestario no cambia: $\{\vect{x}: k\vect{p}\cdot \vect{x}\leq k\overline{W}\}=\{\vect{x}: \vect{p}\cdot \vect{x}\leq\overline{W}\}$. Como el problema es el mismo, la solución también. Aplicando el teorema de \autor{Euler} a una función homogénea de grado cero se obtiene la restricción en elasticidades $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$ para cada bien $i$, que veremos en el apartado~II junto a las agregaciones de \autor{Engel} y \autor{Cournot} (derivación en el anexo~\ref{der:homogeneidad}).} El consumidor no sufre \emph{ilusión monetaria}: solo importan los precios relativos y la renta real, de modo que puede tomarse cualquier bien como \emph{numerario}.
+  \item Es \emph{homogénea de grado cero} en $(\vect{p},\overline{W})$: $\vect{x}(\kappa\vect{p},\kappa\overline{W})=\vect{x}(\vect{p},\overline{W})$ para todo $\kappa>0$.\footnote{Si se multiplican precios y renta por $\kappa>0$, el conjunto presupuestario no cambia: $\{\vect{x}: \kappa\vect{p}\cdot \vect{x}\leq \kappa\overline{W}\}=\{\vect{x}: \vect{p}\cdot \vect{x}\leq\overline{W}\}$. Como el problema es el mismo, la solución también. Aplicando el teorema de \autor{Euler} a una función homogénea de grado cero se obtiene la restricción en elasticidades $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$ para cada bien $i$, que veremos en el apartado~II junto a las agregaciones de \autor{Engel} y \autor{Cournot} (derivación en el anexo~\ref{der:homogeneidad}).} El consumidor no sufre \emph{ilusión monetaria}: solo importan los precios relativos y la renta real, de modo que puede tomarse cualquier bien como \emph{numerario}.
   \item Cumple la \emph{ley de \autor{Walras}}:\footnote{El nombre viene de la ley de \autor{Walras} del equilibrio general, $\vect{p}\cdot\vect{z}(\vect{p})=0$, que no es sino la suma de las restricciones presupuestarias de todos los consumidores: en el agregado también se agotan todos los recursos \vertema{3.A.21}.} $\vect{p}\cdot \vect{x}(\vect{p},\overline{W})=\overline{W}$. Por la insaciabilidad local, el consumidor agota su renta.
   \item Con cierta generalidad, es \emph{diferenciable} en $(\vect{p},\overline{W})$.\footnote{Con solución interior y precios y renta estrictamente positivos, la demanda es diferenciable si (i) la utilidad es continua, estrictamente creciente, estrictamente cuasicóncava y dos veces diferenciable; (ii) $\partial U(\vect{x}^*)/\partial x_i>0$ para algún $i$, y (iii) el determinante del \emph{hessiano orlado} de la utilidad en $\vect{x}^*$ es distinto de cero \parencite[teorema~1.5]{JehleReny2011Advanced}.}
   \end{enumerate}
@@ -977,7 +977,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \begin{itemize}
 \item Del ADPR se deducen las propiedades de la demanda sin hablar de utilidad:
   \begin{enumerate}
-  \item La demanda es \emph{homogénea de grado cero} en precios y renta.\footnote{Si $\vect{p}^1=k\vect{p}^0$ y $\overline{W}^1=k\overline{W}^0$ con $k>0$, el conjunto presupuestario es el mismo. Si las cestas elegidas fueran distintas, cada una sería asequible cuando se eligió la otra, y se violaría el ADPR.}
+  \item La demanda es \emph{homogénea de grado cero} en precios y renta.\footnote{Si $\vect{p}^1=\kappa\vect{p}^0$ y $\overline{W}^1=\kappa\overline{W}^0$ con $\kappa>0$, el conjunto presupuestario es el mismo. Si las cestas elegidas fueran distintas, cada una sería asequible cuando se eligió la otra, y se violaría el ADPR.}
   \item El \emph{efecto sustitución} (en el sentido de \autor{Slutsky}) es \emph{no positivo}: es la \concepto{ley de la demanda compensada}. Si cambian los precios de $\vect{p}^0$ a $\vect{p}^1$ y se compensa la renta para que el consumidor pueda seguir comprando la cesta inicial $\vect{x}^0=\vect{x}(\vect{p}^0,\overline{W}^0)$, con $\overline{W}^1=\vect{p}^1\cdot \vect{x}^0$, y elige $\vect{x}^1=\vect{x}(\vect{p}^1,\overline{W}^1)$, entonces (demostración en el anexo~\ref{der:adpr})\parencite[prop.~2.F.1]{MasColellWhinstonGreen1995}
     \begin{equation}
     (\vect{p}^1-\vect{p}^0)\cdot(\vect{x}^1-\vect{x}^0)\leq 0. \label{eq:ley-demanda-compensada}
@@ -1208,7 +1208,7 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
   \item La \concepto{teoría de la producción} reproduce la misma estructura (isocuantas, relación técnica de sustitución, elasticidad de sustitución, CES) \vertema{3.A.11}.
   \end{itemize}
 
-\item \textbf{\emph{Idea final}}: la teoría de la demanda del consumidor es el primer ladrillo del análisis de los mercados: sin entender cómo eligen los consumidores no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde.
+\item \textbf{\emph{Idea final}}: ¿puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? Sí, con matices: las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar. Por eso la teoría de la demanda es el primer ladrillo del análisis de los mercados: sin ella no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde. Lo que esa coherencia no recoge (el riesgo, el tiempo o los sesgos) es lo que el resto de la teoría económica viene a explicar.
 \end{itemize}
 
 % ==========================================================================
@@ -1250,7 +1250,7 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
 \subsection{Homogeneidad de grado cero: restricción en elasticidades (teorema de \autor{Euler})}\label{der:homogeneidad}
 
 \begin{itemize}
-\item Por la homogeneidad de grado cero (apartado~I.2), $x_i(k\vect{p},k\overline{W})=x_i(\vect{p},\overline{W})$ para todo $k>0$. Derivando respecto a $k$ y evaluando en $k=1$ (teorema de \autor{Euler} para funciones homogéneas de grado cero):
+\item Por la homogeneidad de grado cero (apartado~I.2), $x_i(\kappa\vect{p},\kappa\overline{W})=x_i(\vect{p},\overline{W})$ para todo $\kappa>0$. Derivando respecto a $\kappa$ y evaluando en $\kappa=1$ (teorema de \autor{Euler} para funciones homogéneas de grado cero):
   \begin{equation*}
   \sum_{j=1}^{n}p_j\frac{\partial x_i}{\partial p_j}+\overline{W}\frac{\partial x_i}{\partial\overline{W}}=0.
   \end{equation*}
@@ -1348,7 +1348,7 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
   E(\vect{p}^{\tau},\overline{U})=\tau\,\vect{p}\cdot\vect{h}+(1-\tau)\,\vect{p}'\cdot\vect{h}\geq\tau E(\vect{p},\overline{U})+(1-\tau)E(\vect{p}',\overline{U}),
   \end{equation*}
   porque $\vect{h}$ alcanza $\overline{U}$ y no puede costar menos que la cesta más barata a cada uno de los precios. La hessiana de una función cóncava es semidefinida negativa, y en particular sus elementos diagonales son no positivos: $S_{ii}=\partial h_i(\vect{p},\overline{U})/\partial p_i\leq 0$, el efecto sustitución propio.
-\item \emph{Sustitutivos netos}: la demanda hicksiana es homogénea de grado cero en los precios (si todos se multiplican por $k$, la cesta más barata que da $\overline{U}$ es la misma). Por el teorema de \autor{Euler}, para cada bien $i$:
+\item \emph{Sustitutivos netos}: la demanda hicksiana es homogénea de grado cero en los precios (si todos se multiplican por $\kappa$, la cesta más barata que da $\overline{U}$ es la misma). Por el teorema de \autor{Euler}, para cada bien $i$:
   \begin{equation*}
   \sum_{j=1}^{n}p_j\,S_{ij}=0\quad\Longrightarrow\quad\sum_{j\neq i}p_j\,S_{ij}=-p_i\,S_{ii}\geq 0.
   \end{equation*}

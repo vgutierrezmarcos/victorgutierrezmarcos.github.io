@@ -169,21 +169,32 @@ def copiar_si_cambia(origen, destino):
     return True
 
 
-def guardar_pdf_anterior(tema):
-    """Guarda una vez el PDF del tema tal como está en main antes de revisarlo
-    (<tema>-anterior.pdf), para que en la web se pueda consultar la versión
-    antigua. Devuelve la ruta si existe."""
-    destino = os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.pdf')
+def guardar_anterior(tema, ext, firma):
+    """Guarda una vez el fichero del tema (pdf o docx) tal como está en main
+    antes de revisarlo (<tema>-anterior.<ext>), para que en la web se pueda
+    consultar la versión antigua. Nunca lo sobrescribe: es la versión original.
+    Si en main no hay ese fichero, no crea nada. Devuelve la ruta si existe."""
+    destino = os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.{ext}')
     if os.path.exists(destino):
         return destino
-    relativa = os.path.relpath(os.path.join(tema.dir_publico, f'{tema.archivo}.pdf'), RAIZ).replace(os.sep, '/')
+    relativa = os.path.relpath(os.path.join(tema.dir_publico, f'{tema.archivo}.{ext}'), RAIZ).replace(os.sep, '/')
     for rama in ('origin/main', 'main'):
         r = subprocess.run(['git', '-C', RAIZ, 'show', f'{rama}:{relativa}'], capture_output=True)
-        if r.returncode == 0 and r.stdout.startswith(b'%PDF'):
+        if r.returncode == 0 and r.stdout.startswith(firma):
             with open(destino, 'wb') as f:
                 f.write(r.stdout)
             return destino
     return None
+
+
+def guardar_pdf_anterior(tema):
+    """PDF del tema tal como está en main antes de revisarlo (<tema>-anterior.pdf)."""
+    return guardar_anterior(tema, 'pdf', b'%PDF')
+
+
+def guardar_docx_anterior(tema):
+    """Word del tema tal como está en main antes de revisarlo (<tema>-anterior.docx)."""
+    return guardar_anterior(tema, 'docx', b'PK')
 
 
 # --- Minutos y páginas ---------------------------------------------------------------

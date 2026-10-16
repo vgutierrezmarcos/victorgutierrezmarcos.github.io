@@ -17,11 +17,12 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P72), `p
 | Dónde | Decía | Dice ahora |
 |---|---|---|
 | Intro, enganche (l. 29) | Definición de Marshall entre cursivas como si fuera literal, y el mismo enganche que el 3.A.8 | Enganche de Bastiat (1845), *Sofismas*, 1.ª serie, cap. XVIII (C3) |
-| Intro (l. 71, 81) | Walras «influenciado por Malthus»; modelo construido sobre «los flujos monetarios internacionales de Cournot» | Sin Malthus (sin fuente); Cournot solo como precursor que ve el problema completo (C5) |
+| Intro (l. 71, 81) | Walras «influenciado por Malthus»; modelo construido sobre «los flujos monetarios internacionales de Cournot» | Sin Malthus (sin fuente); Cournot fuera (la frase de que «el problema completo excede el análisis de su tiempo» era de memoria: quitada el 16/10/2026) (C5) |
 | Intro (l. 99) | Walras, «primer autor junto a Marshall que propone una teoría del valor coherente» | Utilidad marginal de Walras, Jevons y Menger (1871-1874); demanda recíproca de Mill (C5) |
 | Intro (l. 107) y II.1.1 (l. 655) | Wald (1951) / Wald (1934) | Wald (1935 y 1936); 1951 es la traducción inglesa (V10) |
 | Intro (l. 109) y l. 1089 | 1TFEB «propuesto por Lerner» / teoremas «formulados por Lerner» | Condiciones marginales de Lerner (1934) y Lange (1942); demostración moderna de Arrow (1951) y Debreu (1951), por separado (V13) |
-| Nota 7 | Cassel y Wicksell «de la Escuela de Estocolmo… seguirán la óptima» | Cassel (1918) simplifica el sistema; Schlesinger y Wald en Viena; von Neumann (1937) (C5) |
+| Nota 7 | Cassel y Wicksell «de la Escuela de Estocolmo… seguirán la óptima» | Cassel (1918) simplifica el sistema; Schlesinger y Wald en Viena; von Neumann (1937) (C5). El 16/10/2026: Wicksell y Cassel, anteriores a la escuela; la escuela se distanció de Cassel; fuera «Wicksell (1898) parte del equilibrio walrasiano» (sin fuente); citas HET y Ekelund y Hébert, cap. 17 |
+| I.2, nota del tanteo | Cita de Walras con «sa demanda ou offre» | Literal en francés con «sa demande ou offre» (§126, p. 127, 1.ª ed., cotejada con 2 escaneos) y traducción propia (16/10/2026) |
 | Notas 8, 9 y 33 | Nobel de Arrow sin Hicks y mal traducido; notas duplicadas | Una sola nota con las motivaciones oficiales (V23, P63) |
 | I.1 (l. 202) | «Libre entrada en el largo plazo» con 2 empresas | Quitado; con rendimientos constantes el beneficio es nulo (P47, K5) |
 | I.1 (l. 220-226, 248-260) | Utilidad «ordinal» y con «UMg positiva pero decreciente»; producción «cardinal», derivadas cruzadas positivas, Inada | Axiomas de las preferencias y utilidad continua, creciente y estrictamente cuasicóncava (nota: la UMg decreciente no es ordinal); tecnología con conjunto convexo (P46, C8, K5) |
@@ -89,7 +90,7 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P72), `p
 | P23i Anexo 1 | Capturas | Anexo E redactado y 2 gráficos pedidos |
 | P30b | «Opinión» y «Preguntas de otros exámenes» vacías | Opinión escrita; preguntas probables del tribunal en el anexo F |
 | P44 / P72 Bibliografía | Enlaces `file:///`, z-lib; temas de preparadores | Enlaces quitados; «Tema Juan Luis Cordero Tarifa» quitado (nombre de preparador); «Tema ICEX-CECO» se mantiene como lectura, como en el original (CRITERIOS §2); `3A21.bib` |
-| P45 Anexo 2 | Relación de temas | No se publica |
+| P45 Anexo 2 | Relación de temas | Publicado corregido (16/10/2026) en 2 `notaopositor`: al final de I.3 (frontera con el 3.A.16) y al final de II.2 (reparto con 3.A.22, 3.A.23 y 3.A.24). Corregido: el 2TFEB es del 3.A.22, no del 3.A.24; numeración y títulos actuales; sin la frase del «sistema tecnocrático» del 3.A.22 |
 | P71 | Enlace a quia.com | Enlace genérico al simulador, en el anexo F |
 | P42-P43 Anexos 3-5 | Correo, estructura de clase, idea de Víctor | No se publican; usados para el reparto de minutos y los huecos |
 
@@ -140,33 +141,34 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P72), `p
 - **Contradicciones con otros temas** (no se tocan; las recoge `propuestas-coherencia.md` §5): 3.A.22 y 3.A.23 copian el criterio de Pareto, el 1TFEB y el modelo 2×2×2×2 con supuestos de equilibrio parcial; 3.A.16 tiene la misma estabilidad copiada y una imagen con fuente «Tema 3A-21» de otro opositor; 3.A.10 repite el texto de los bienes contingentes; 3.A.25 dice que la competencia garantiza existencia, unicidad y estabilidad; 3.A.35 fecha a Patinkin en 1951; 3.A.14 define el núcleo con utilidad transferible.
 - **Canon**: las propuestas de `propuestas-coherencia.md` §4.4 (matizar en la ficha `equilibrio-general-walras` la frase sobre la convexidad estricta; fichas `nucleo` y `arrow-debreu-incertidumbre`; símbolos $\Delta$, $\kappa_k$, $x_{ks}$, $p_{ks}$; siglas EGC/MEGC) quedan para `tema-canon`. Contenido propone además fijar la notación local de Jones ($s_{Lj}$, $\ell_{Lj}$) para el anexo E.
 
+## Decisiones de Víctor (16/10/2026)
+
+Confirmadas las opciones recomendadas; las que piden un cambio, aplicadas el 16/10/2026:
+
+1. **Estructura y minutos**: los de coherencia: introducción 2,5; I, 11 (I.1, 2,5; I.2, 6; I.3, 2,5); II, 9 (II.1, 7; II.2, 2); III, 6,5; conclusión, 1. Se mantienen los bloques y los títulos de segundo nivel del original (el título de I, completo, en 3 líneas); lo que no se canta va a los anexos A-E. Contenido proponía 10/9/7,5 y un II.1.4 de estática comparativa. ¿Te vale o prefieres 12/8,5/6 (D1 de coherencia)? **Confirmada.**
+2. **Enganche**: Bastiat (C3), porque el de Marshall no es literal y repite el del 3.A.8. Coherencia proponía el estaño de Hayek (1945), que queda libre para otro tema o para la conclusión. **Confirmada.**
+3. **Discrepancias contenido/coherencia**: estructura y notación, de coherencia; teoría, de contenido. **Confirmada.**
+4. **Convexidad**: conjunto de producción convexo (no estricto), con rendimientos no crecientes que incluyen los constantes; para las preferencias se mantiene la convexidad estricta (la demanda como función) con una nota que dice qué basta para cada resultado. **Confirmada.**
+5. **Citas no comprobadas**: fuera las comillas de Wicksell (nota 51), Feldman (nota 47), la «tiranía de las minorías» de Baumol y la cita de Pareto de la nota 44; Wicksell y Feldman quedan como paráfrasis. La cita de **Walras** en francés también se da como paráfrasis, aunque datos la ha cotejado con dos escaneos de la 1.ª edición (V26, §126, p. 127): si quieres, se puede recuperar literal corrigiendo «sa demanda» → «sa demande». **Víctor (16/10/2026)**: recuperar la cita literal; hecho (francés corregido y traducción propia, en la nota del tanteo de I.2).
+6. **Sin nombres de preparadores**: la entrada «Tema Juan Luis Cordero Tarifa» de la bibliografía se quita del tema (nombre de preparador). «Tema ICEX-CECO» se mantiene como lectura en la bibliografía, citada como en el original (CRITERIOS §2), con la clave `ICEXCECO3A21` y `\nocite`. Fuera los enlaces `file:///` y el de z-lib; las figuras que citaban a Fabián Salazar o a Policonomics pasan a «Elaboración propia a partir de <manual>». **Confirmada.**
+7. **Anexo 2** del original (relación con los temas vecinos): se propuso no publicarlo por desfasado (atribuía el 2TFEB a 3.A.24). Las notas privadas (anexos 3-5, texto oculto, comentarios) siguen sin publicarse. **Víctor (16/10/2026)**: publicarlo corregido como nota al opositor; hecho (2 cajas, al final de I.3 y de II.2).
+8. **Cournot (1838)**: se dice que «advierte de que el problema completo, con todos los mercados a la vez, excede el análisis matemático de su tiempo» (cap. XI-XII de las *Recherches*). Es de memoria; si no lo ves claro, se quita sin perder nada. **Víctor (16/10/2026)**: quitarla; hecho.
+9. **Condiciones de Inada** (nota 16, con $K_t$, $L_t$): se quitan del tema porque no son un supuesto del modelo (garantizan soluciones interiores en crecimiento) y están en el 3.A.11. Si prefieres conservarlas, irían al anexo A con la notación $F(L,K)$. **Víctor (16/10/2026)**: fuera.
+10. **Nota 34** (Arrow y Hahn, 1971, «equilibrio en mercados oligopolísticos con rendimientos crecientes limitados»): quitada por no comprobada (contenido y datos no la encuentran). En su lugar, III.2 cita Negishi (1961). **Víctor (16/10/2026)**: fuera; queda Negishi (1961).
+11. **Unicidad**: la condición $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ se cita a MWG 17.F y no a Wald, como proponía contenido, por no estar comprobada la atribución. **Confirmada.**
+16. **Diseño de mecanismos y cálculo socialista** (tu idea, «Hurwicz, Myerson»): recuadro de profundización en III.2 y una línea en la conclusión. ¿Basta o quieres que se cante (quitaría tiempo a otro apartado)? Hurwicz (1972) y Myerson (1979) están en el `.bib` de memoria. **Confirmada.**
+17. **Estática comparativa**: anexo E (decisión de coherencia), con una nota en II.1.2 y la mención en III.5. ¿Prefieres un párrafo en el cuerpo (contenido proponía un II.1.4 de 1 minuto)? **Confirmada.**
+19. **Remisión a 3.A.19** (oligopolio) en el comportamiento estratégico: añadida por mí; no estaba en las propuestas. **Confirmada.**
+
 ## Dudas abiertas
 
-Decisiones tomadas al integrar (confírmalas):
-
-1. **Estructura y minutos**: los de coherencia: introducción 2,5; I, 11 (I.1, 2,5; I.2, 6; I.3, 2,5); II, 9 (II.1, 7; II.2, 2); III, 6,5; conclusión, 1. Se mantienen los bloques y los títulos de segundo nivel del original (el título de I, completo, en 3 líneas); lo que no se canta va a los anexos A-E. Contenido proponía 10/9/7,5 y un II.1.4 de estática comparativa. ¿Te vale o prefieres 12/8,5/6 (D1 de coherencia)?
-2. **Enganche**: Bastiat (C3), porque el de Marshall no es literal y repite el del 3.A.8. Coherencia proponía el estaño de Hayek (1945), que queda libre para otro tema o para la conclusión.
-3. **Discrepancias contenido/coherencia**: estructura y notación, de coherencia; teoría, de contenido.
-4. **Convexidad**: conjunto de producción convexo (no estricto), con rendimientos no crecientes que incluyen los constantes; para las preferencias se mantiene la convexidad estricta (la demanda como función) con una nota que dice qué basta para cada resultado.
-5. **Citas no comprobadas**: fuera las comillas de Wicksell (nota 51), Feldman (nota 47), la «tiranía de las minorías» de Baumol y la cita de Pareto de la nota 44; Wicksell y Feldman quedan como paráfrasis. La cita de **Walras** en francés también se da como paráfrasis, aunque datos la ha cotejado con dos escaneos de la 1.ª edición (V26, §126, p. 127): si quieres, se puede recuperar literal corrigiendo «sa demanda» → «sa demande».
-6. **Sin nombres de preparadores**: la entrada «Tema Juan Luis Cordero Tarifa» de la bibliografía se quita del tema (nombre de preparador). «Tema ICEX-CECO» se mantiene como lectura en la bibliografía, citada como en el original (CRITERIOS §2), con la clave `ICEXCECO3A21` y `\nocite`. Fuera los enlaces `file:///` y el de z-lib; las figuras que citaban a Fabián Salazar o a Policonomics pasan a «Elaboración propia a partir de <manual>».
-7. **Anexo 2** del original (relación con los temas vecinos) no se publica (está desfasado: atribuye el 2TFEB a 3.A.24); su idea va a la «Estructura» y a las remisiones. Las notas privadas (anexos 3-5, texto oculto, comentarios) tampoco.
-
-Dudas nuevas de la integración:
-
-8. **Cournot (1838)**: se dice que «advierte de que el problema completo, con todos los mercados a la vez, excede el análisis matemático de su tiempo» (cap. XI-XII de las *Recherches*). Es de memoria; si no lo ves claro, se quita sin perder nada.
-9. **Condiciones de Inada** (nota 16, con $K_t$, $L_t$): se quitan del tema porque no son un supuesto del modelo (garantizan soluciones interiores en crecimiento) y están en el 3.A.11. Si prefieres conservarlas, irían al anexo A con la notación $F(L,K)$.
-10. **Nota 34** (Arrow y Hahn, 1971, «equilibrio en mercados oligopolísticos con rendimientos crecientes limitados»): quitada por no comprobada (contenido y datos no la encuentran). En su lugar, III.2 cita Negishi (1961).
-11. **Unicidad**: la condición $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ se cita a MWG 17.F y no a Wald, como proponía contenido, por no estar comprobada la atribución.
 12. **Edición de Segura**: el original dice 2004 y enlazaba un PDF de 1993; el `.bib` usa `Segura1986Analisis` (Alianza, 1986). ¿Qué edición tienes? (las páginas 282-287 del dinero dependen de ella).
 13. **Entradas del `.bib` dadas de memoria por contenido («(m)»)**, que conviene cotejar (se ha quitado la marca del campo `note` para que no salga en la bibliografía): `Lange1942Say` (páginas), `BeckerBaumol1952Classical` (páginas), `Feldman1987Welfare` (volumen y páginas), `Gillies1959Solutions`, `Shubik1959Edgeworth`, `Hurwicz1972Informationally`, `Myerson1979Incentive`, `Mises1920Wirtschaftsrechnung`, `Lange1936Socialism`, `CooperJohn1988Coordinating`, `Hahn1965Problems` (páginas) y `Clower1967Reconsideration` (páginas). Las 12 se citan en el tema: conviene cotejarlas antes de publicar.
 14. **Gráficos**: los rótulos del texto coinciden con los de las cajas ($OD_A$, $OD_B$, $\vect{x}_A$, $\vect{x}_B$, $U_A^0$, $U_B^0$, $U_A^*$, $U_B^*$, $\overline{X}$, $\overline{Y}$). La caja de intercambio es una sola (`caja-intercambio`, maestro para el vídeo, capas 1-10 de I.3 a III.2) con variantes para el PDF (`caja-intercambio-equilibrio`, `caja-intercambio-teoremas` y `caja-intercambio-nucleo`); el monopolio va aparte (`monopolio-intercambio`), como recuadro; la caja de la producción parte del gráfico del 3.A.11. Ninguno es 3D.
 15. **Dinero (III.3)**: no se ha podido consultar Segura, pp. 282-287. El apartado cuenta la inconsistencia de la dicotomía y el problema de Hahn; coteja si Segura atribuye el «fracaso» de Patinkin a lo mismo. La cita de Hahn (1982, p. 1) va como paráfrasis: si la compruebas en el libro, puede ir literal.
-16. **Diseño de mecanismos y cálculo socialista** (tu idea, «Hurwicz, Myerson»): recuadro de profundización en III.2 y una línea en la conclusión. ¿Basta o quieres que se cante (quitaría tiempo a otro apartado)? Hurwicz (1972) y Myerson (1979) están en el `.bib` de memoria.
-17. **Estática comparativa**: anexo E (decisión de coherencia), con una nota en II.1.2 y la mención en III.5. ¿Prefieres un párrafo en el cuerpo (contenido proponía un II.1.4 de 1 minuto)?
 18. **Arrow (1953)**: los datos de la edición francesa (coloquio del CNRS, pp. 41-47) no se han comprobado en línea; se cita también la traducción de 1964.
-19. **Remisión a 3.A.19** (oligopolio) en el comportamiento estratégico: añadida por mí; no estaba en las propuestas.
 20. **Bibliografía con datos sin comprobar** (control de calidad): se han quitado del campo `note` del `.bib` (salían en la bibliografía pública) los avisos de trabajo de `Wald1936Gleichungssysteme` (página final, 670, sin comprobar), `Arrow1951Extension` (páginas sin comprobar en la edición impresa), `Arrow1953Role` (datos de la edición francesa sin comprobar) y `USITC2019USMCA` (el PDF da 403 a descargas automáticas; cifras tomadas de la nota de Thompson Hine). Conviene cotejarlos antes de publicar.
+21. **Ekelund y Hébert, páginas**: las notas de la escuela de Estocolmo y de Bentham a Pareto (y la de las tecnologías del consumo, cap. 26) citan el capítulo; las páginas no se han podido ver (ejemplar restringido). Si las localizas en tu ejemplar, se añaden. La clave sigue siendo `EkelundHebert2013History` (con `year = {2014}`), común a 3A08, 3A09, 3A11, 3A12 y 3A21.
 
 ## Instrucciones para el vídeo
 
@@ -194,7 +196,7 @@ Aplicadas las reglas del 16/10/2026 de CRITERIOS.md sin tocar la estructura (mis
 | 3 | Clasificación de los modelos (competitivos/no; intercambio/producción) | **Recuperada** como nota (estaba integrada en el texto); en el texto queda «nos centramos en el EGC con producción» |
 | 4 | Complejidad matemática | Ya estaba como nota, reescrita (era tautológica, C34) |
 | 5 | Equilibrio parcial como alternativa | Descartada: integrada en el texto (viñeta del equilibrio parcial) |
-| 6 | Cournot intentó el equilibrio general | Descartada: integrada en la contextualización |
+| 6 | Cournot intentó el equilibrio general | Descartada (la frase de la contextualización, dada de memoria, se quita el 16/10/2026) |
 | 7 | Escuela de Estocolmo (Cassel y Wicksell) | **Recuperada corregida**: son precursores, no miembros, de la escuela de Estocolmo (C5) |
 | 8, 9, 33 | Nobel de Arrow (con Hicks) y de Debreu | Ya estaban, fundidas en una nota con la motivación oficial (V23) |
 | 10 | Información perfecta | Ya estaba, reescrita (C8; se quita «la producción antes del intercambio») |
@@ -204,7 +206,7 @@ Aplicadas las reglas del 16/10/2026 de CRITERIOS.md sin tocar la estructura (mis
 | 14 | Tecnologías distintas | Ya estaba |
 | 15 | Formas de la FPP | Ya estaba (con «lineal» y la última frase corregida, C34) |
 | 16 | Tabla de las condiciones de Inada | Descartada: no es supuesto del modelo y está en 3.A.11 (C35) |
-| 18, 30 | Walras no habla de subastador («on»), críticas de Bertrand y Edgeworth, tanteo virtual, Smith | Ya estaba, una sola nota (la cita francesa queda como paráfrasis con su página, V26) |
+| 18, 30 | Walras no habla de subastador («on»), críticas de Bertrand y Edgeworth, tanteo virtual, Smith | Ya estaba, una sola nota; el 16/10/2026 recupera la cita francesa literal corregida, con traducción (V26) |
 | 19, 27 | Problemas de la empresa y del consumidor con $H$, $I$, $S$ | Descartadas como nota: están en el anexo A, ahora con `\optim` |
 | 20 | Maximización en 2 etapas con su gráfico | Ya estaba como nota breve; el desarrollo y el gráfico, en el anexo A.1 (no hace falta `\graficonota`) |
 | 21 | Eficiencia en la producción | Descartada: integrada en el texto |
@@ -241,4 +243,16 @@ Aplicadas las reglas del 16/10/2026 de CRITERIOS.md sin tocar la estructura (mis
 
 - **Gráficos en nota**: ninguno. El único gráfico de nota del original (2 etapas, nota 20) ya está como gráfico del anexo A.1; no hay que dibujar nada.
 - **Bibliografía**: nueva entrada `Foley1967Resource` (*Yale Economic Essays*, 7(1), 45-98); `Stigler1961Information` ya estaba en el `.bib`.
-- **Dudas para Víctor**: la nota de la escuela de Estocolmo (Wicksell, 1898, y Cassel, 1918) y la de la historia del criterio de Pareto van sin cita de página (son atribuciones generales de historia del pensamiento); si prefiere, se citan con Ekelund y Hébert (2013).
+- **Dudas para Víctor**: la nota de la escuela de Estocolmo y la de la historia del criterio de Pareto se citan desde el 16/10/2026 con Ekelund y Hébert (capítulos 17 y 6), sin páginas (duda 21), y la de Estocolmo además con HET.
+
+## Cambios del 16/10/2026 (respuestas de Víctor)
+
+Sin tocar la estructura, los apartados ni los minutos. Fuente de lo cotejado: `_trabajo/cotejo-16oct.md`.
+
+- **Walras (1874), §126, p. 127**: la nota del tanteo (I.2) recupera la cita literal en francés, corregida («sa demande ou offre»; «liés aux $m-1$ autres»), con su traducción fiel al castellano (traducción propia) y la cita a `Walras1874Elements`. Se mantiene la explicación del impersonal *on* y el resto de la nota (bons, Walker, Smith).
+- **Cournot**: quitada de la contextualización la frase de memoria; `Cournot1838Recherches` queda en el `.bib` sin citar (no sale en la bibliografía). Inada y la nota 34 siguen fuera (Negishi en III.2).
+- **Ekelund y Hébert**: la nota de Bentham a Pareto (II.2.1) cita los caps. 6 (Bentham y el utilitarismo) y 17 (Pareto, equilibrio general y bienestar); la de las tecnologías del consumo (introducción), el cap. 26, según el cotejo. Páginas no disponibles.
+- **Escuela de Estocolmo** (nota de la contextualización): Wicksell, maestro de la escuela, y Cassel, del que la escuela se distanció, como antecesores; miembros (Myrdal, Lindahl, Lundberg, Ohlin) y fechas (1925-1940); fuera «Wicksell (1898) parte del equilibrio walrasiano» (sin fuente); Cassel (1918) con coeficientes fijos y sin utilidad. Citas: `HET2026Swedish`, `HET2026Cassel`, `HET2026Wald` y Ekelund y Hébert, cap. 17. Las 2 entradas HET nuevas, en `3A21.bib`.
+- **Anexo 2 del original**, corregido en 2 `notaopositor`: al final de I.3, qué es de este tema y qué del 3.A.16 (sistema de ecuaciones simultáneas, precios endógenos, recuento de ecuaciones, exceso de demanda, ley de Walras), y al final de II.2, el reparto con 3.A.22 (criterio, condiciones del óptimo, los 2 teoremas y *second best*), 3.A.23 (fallos de mercado e intervención) y 3.A.24 (funciones de bienestar social y elección colectiva). Sin nombres ni notas privadas.
+- **Decisiones confirmadas**: las dudas 1-11, 16, 17 y 19 pasan a «Decisiones de Víctor (16/10/2026)»; quedan abiertas las de cotejo (12-15, 18, 20 y la nueva 21).
+

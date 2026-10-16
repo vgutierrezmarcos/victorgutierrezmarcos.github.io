@@ -378,8 +378,9 @@ el texto original y lo que se hizo.
 - **Funciones clave en la pizarra**: entre bloque y bloque se borra toda la
   pizarra salvo las `\funcionclave` (y algún gráfico central) a las que se
   va a volver a hacer referencia; se dejan en una esquina de la rejilla.
-- **Pregunta de enganche y cierre (solo en el vídeo; los documentos no
-  cambian)**: el vídeo empieza, tras leer el título, con una **pregunta**
+- **Pregunta de enganche y cierre (en el documento y en el vídeo**;
+  Víctor, 16/10/2026: el enganche del tema es esa pregunta o un refrán, y la
+  idea final del documento lo retoma y responde): el vídeo empieza, tras leer el título, con una **pregunta**
   sobre lo que se va a ver, que puede ser muy abierta, incluso
   epistemológica («¿Podemos explicar con una teoría algo tan cotidiano como
   lo que compramos?»), y que hace de enganche. Toda la exposición se orienta

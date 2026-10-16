@@ -16,27 +16,20 @@
     rel/.style={->,thick,tceegris},
     nota/.style={font=\footnotesize,inner sep=2pt},
     notag/.style={nota,text=tceegris}]
-  % Capas (vídeo): primal y sus funciones (1-3), dual y las suyas (4-6), relaciones (7-13).
+  % Capas (vídeo): primal y sus funciones (1-3), dual y las suyas (4-6), relaciones (7-13);
+  % la fórmula de Slutsky va en la 14 (el vídeo la escribe aparte, como función clave).
   % columnas: primal en x = 0, dual en x = 13; filas en y = 0, -3,6, -7,2
   % 1: problema primal
   \capa{1}{
     \node[text=tceemorado,align=center] at (0,1.65) {\textbf{Problema primal}\\ \footnotesize maximización de la utilidad};
-    \node[inner sep=2pt,anchor=base west] (PU) at (0.05,0.3) {$U(\vect{x})$};
-    \node[inner sep=2pt,anchor=base east] (Pmax) at (0,0.3) {$\max\limits_{\vect{x}}$};
-    \node[inner sep=2pt,anchor=base] (Psa) at (0,-0.45) {s.a.\ $\vect{p}\cdot\vect{x}\leq\overline{W},\ \vect{x}\geq\vect{0}$};
-    \begin{scope}[on background layer]
-      \node[cajap,fit=(Pmax)(PU)(Psa)] (P) {};
-    \end{scope}
+    % objetivo arriba y «s.a.» con cada restricción en su línea (como \optim)
+    \node[cajap] (P) at (0,-0.05) {$\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vect{x}} & U(\vect{x})\\[2pt] \text{s.a.} & \vect{p}\cdot\vect{x}\leq\overline{W}\\[2pt] & \vect{x}\geq\vect{0}\end{array}$};
+    \coordinate (PU) at (P.west);
   }
   % 4: problema dual (la variable de elección es h)
   \capa{4}{
     \node[text=tceeverde,align=center] at (13,1.65) {\textbf{Problema dual}\\ \footnotesize minimización del gasto};
-    \node[inner sep=2pt,anchor=base west] (DU) at (13.05,0.3) {$\vect{p}\cdot\vect{h}$};
-    \node[inner sep=2pt,anchor=base east] (Dmin) at (13,0.3) {$\min\limits_{\vect{h}}$};
-    \node[inner sep=2pt,anchor=base] (Dsa) at (13,-0.45) {s.a.\ $U(\vect{h})\geq\overline{U},\ \vect{h}\geq\vect{0}$};
-    \begin{scope}[on background layer]
-      \node[cajad,fit=(Dmin)(DU)(Dsa)] (D) {};
-    \end{scope}
+    \node[cajad] (D) at (13,-0.05) {$\begin{array}{@{}r@{\quad}l@{}}\displaystyle\min_{\vect{h}} & \vect{p}\cdot\vect{h}\\[2pt] \text{s.a.} & U(\vect{h})\geq\overline{U}\\[2pt] & \vect{h}\geq\vect{0}\end{array}$};
   }
   % 7: teorema básico de la dualidad
   \capa{7}{
@@ -83,11 +76,14 @@
     \draw[rel,dashed] (V.north east) -- node[pos=0.78,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$\vect{x}(\vect{p},\overline{W})\equiv\vect{h}\big(\vect{p},V(\vect{p},\overline{W})\big)$} (H.south west);
     \draw[rel,dashed,<-] (X.south east) -- node[pos=0.22,sloped,notag,anchor=south,inner sep=2pt,yshift=6pt] {$\vect{h}(\vect{p},\overline{U})\equiv\vect{x}\big(\vect{p},E(\vect{p},\overline{U})\big)$} (E.north west);
   }
-  % 12: ecuación de Slutsky
+  % 12: ecuación de Slutsky (la flecha y su nombre; la ecuación, en la capa 14: en el
+  % vídeo se escribe aparte, recuadrada en morado, porque se mantiene en la pizarra)
   \capa{12}{
     \draw[<->,thick] (X.east) -- (H.west);
-    \node[nota,above] at (6.5,-3.55) {$\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustitución}}\underbrace{-\,x_j(\vect{p},\overline{W})\,\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$};
     \node[notag,below] at (6.5,-3.65) {ecuación de \textsc{Slutsky}};
+  }
+  \capa{14}{
+    \node[nota,above] at (6.5,-3.55) {$\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustitución}}\underbrace{-\,x_j(\vect{p},\overline{W})\,\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}}$};
   }
   % 13: integrabilidad: de la demanda marshalliana a la utilidad
   \capa{13}{

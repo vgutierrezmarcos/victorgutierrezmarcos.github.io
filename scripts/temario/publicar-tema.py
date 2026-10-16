@@ -29,7 +29,7 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar, guardar_pdf_anterior  # noqa: E402
+from comun import Tema, RAIZ, TEMARIO, DENO, ejecutar, guardar_pdf_anterior, guardar_docx_anterior  # noqa: E402
 
 
 def linea_tema(tema, titulo_html, video):
@@ -47,10 +47,36 @@ def linea_tema(tema, titulo_html, video):
     if os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.pdf')):
         partes.append(f'<a class="tema-item-docx tema-item-anterior" href="{c}/{a}-anterior.pdf" target="_blank" '
                       f'title="Versión anterior del tema, antes de revisarlo">PDF ANTERIOR</a>')
+    if os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.docx')):
+        partes.append(f'<a class="tema-item-docx tema-item-anterior" href="{c}/{a}-anterior.docx" download '
+                      f'title="Versión anterior del tema en Word, antes de revisarlo">WORD ANTERIOR</a>')
     if video:
         partes.append(f'<a class="tema-item-docx tema-item-video" href="{video}" target="_blank" '
                       f'rel="noopener" title="Vídeo del cante del tema">VÍDEO</a>')
     return ''.join(partes) + '</div>'
+
+
+def enlace_word_anterior(tema):
+    """Añade «Versión anterior (Word)» a la página web del tema si existe
+    <tema>-anterior.docx y la página aún no lo enlaza (construir-tema.py ya lo
+    pone al generar la página; esto evita tener que reconstruirla)."""
+    a = tema.archivo
+    if not os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.docx')):
+        return
+    ruta = os.path.join(tema.dir_publico, f'{a}.html')
+    html = open(ruta, encoding='utf-8', newline='').read()  # pandoc la escribe con CRLF
+    if f'href="{a}-anterior.docx"' in html:
+        return
+    m = re.search(r'( *)<a href="' + re.escape(a) + r'-anterior\.pdf"[^>]*>[^<]*</a>(\r?\n)', html)
+    if not m:
+        m = re.search(r'( *)<a href="' + re.escape(a) + r'\.docx" download>[^<]*</a>(\r?\n)', html)
+    if not m:
+        print(f'{a}.html: no encuentro dónde enlazar la versión anterior en Word')
+        return
+    nuevo = f'{m.group(1)}<a href="{a}-anterior.docx" download>Versión anterior (Word)</a>{m.group(2)}'
+    html = html[:m.end()] + nuevo + html[m.end():]
+    open(ruta, 'w', encoding='utf-8', newline='').write(html)
+    print(f'{os.path.relpath(ruta, RAIZ)}: enlace a la versión anterior en Word')
 
 
 def main():
@@ -59,10 +85,12 @@ def main():
         sys.exit(2)
     tema = Tema(sys.argv[1])
     guardar_pdf_anterior(tema)
+    guardar_docx_anterior(tema)
     for ext in ('pdf', 'html', 'docx'):
         if not os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}.{ext}')):
             print(f'Falta {tema.archivo}.{ext}: ejecuta antes construir-tema.py')
             sys.exit(1)
+    enlace_word_anterior(tema)
     videos_ruta = os.path.join(TEMARIO, 'videos.json')
     videos = json.load(open(videos_ruta, encoding='utf-8')) if os.path.exists(videos_ruta) else {}
     video = videos.get(tema.archivo)

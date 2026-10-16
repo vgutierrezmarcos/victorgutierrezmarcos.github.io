@@ -30,7 +30,7 @@ import sys
 import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import (Tema, guardar_pdf_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
+from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
                    errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
@@ -420,6 +420,8 @@ def generar_html(tema, tex_pandoc, datos):
         orden += ['-M', 'repaso=true']
     if os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.pdf')):
         orden += ['-M', 'anterior=true']
+    if os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.docx')):
+        orden += ['-M', 'anterior-docx=true']
     ejecutar(orden, timeout=600)
     return destino
 
@@ -637,6 +639,7 @@ def main():
     args = ap.parse_args()
     tema = Tema(args.tema)
     guardar_pdf_anterior(tema)
+    guardar_docx_anterior(tema)
 
     errores = compilar_graficos(tema, forzar=args.forzar_graficos or bool(args.grafico), solo=args.grafico)
     if errores:
