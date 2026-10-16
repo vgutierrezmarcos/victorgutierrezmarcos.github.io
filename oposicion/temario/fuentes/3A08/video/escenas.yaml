@@ -42,7 +42,7 @@ escenas:
       - di: "¿Por qué importa? En lo micro, la demanda es el paso previo al equilibrio de mercado; en lo macro, la base del consumo: en España, el gasto en consumo final de los hogares fue en 2025 el 54,1 por ciento del PIB."
         parte: Relevancia
         guion: ["Micro: paso previo al equilibrio de mercado", "Macro: consumo de los hogares = 54,1 % del PIB (España, 2025)"]
-      - di: "La teoría parte de la utilidad. Bernoulli la aplica a la paradoja de San Petersburgo y Gossen formula sus dos leyes; con la revolución marginalista, Jevons, Menger y Walras la ponen en el centro del valor, y Marshall la trata como cardinal. Edgeworth idea las curvas de indiferencia y Pareto advierte que solo importa el orden. Slutsky separa en 1915 el efecto sustitución del efecto renta y Debreu da en 1959 a la teoría su forma axiomática. Después se acerca a lo observable: la preferencia revelada de Samuelson, la producción doméstica de Becker y los precios hedónicos de Rosen."
+      - di: "La teoría parte de la utilidad. Bernoulli y Gossen la formalizan; con la revolución marginalista, Jevons, Menger y Walras la ponen en el centro del valor, y Marshall la trata como cardinal. Edgeworth idea las curvas de indiferencia y Pareto advierte que solo importa el orden. Slutsky separa en 1915 el efecto sustitución del efecto renta y Debreu da en 1959 a la teoría su forma axiomática. Después se acerca a lo observable: la preferencia revelada de Samuelson, la producción doméstica de Becker y los precios hedónicos de Rosen."
         parte: Contextualización
         guion: ["Bernoulli (1738), Gossen (1854), Jevons, Menger y Walras; Marshall: cardinal", "Edgeworth (1881), Pareto (1906): utilidad ordinal", "Slutsky (1915), Hicks y Allen (1934), Debreu (1959)", "Hacia lo observable: Samuelson (1938), Becker (1965), Rosen (1974)"]
       - di: "De ahí, tres preguntas. ¿Cómo se obtiene la demanda de las preferencias y del presupuesto, y cuándo hay una demanda de mercado? ¿Cómo varía cuando cambian la renta y los precios? Y [pausa] ¿puede construirse la teoría desde lo que se observa, y no desde unas preferencias que nadie ve?"
@@ -63,15 +63,15 @@ escenas:
         guion: "Conclusión anticipada: pocos axiomas y un presupuesto lineal dan una demanda contrastable; agregarla exige mucho"
       - di: "El camino tiene dos herramientas. La primera: unas preferencias sobre el conjunto de elección que, si cumplen ciertos axiomas, se representan con una función de utilidad."
         apoyo: {grafico: esquema-ingredientes, capa: 2, zona: "1"}
-        guion: "Preferencias → axiomas → función de utilidad"
+        guion: "Preferencias que cumplen unos axiomas: función de utilidad"
       - di: "La segunda, la restricción presupuestaria. Juntas plantean el problema de maximización de la utilidad."
         borrar: ["1"]
         apoyo: {grafico: esquema-ingredientes, capa: 4, zona: "1"}
-        guion: "Restricción presupuestaria → problema de maximización de la utilidad"
+        guion: "Con la restricción presupuestaria: problema de maximización de la utilidad"
       - di: "Su solución es la demanda marshalliana y, sumando, la de mercado. Todo en un mundo estático, sin incertidumbre, con información perfecta y un consumidor precio-aceptante."
         borrar: ["1"]
         apoyo: {grafico: esquema-ingredientes, capa: 6, zona: "1"}
-        guion: "Demanda marshalliana → demanda de mercado"
+        guion: "De la demanda marshalliana a la de mercado"
         apunte: "Supuestos: estático y sin incertidumbre, información perfecta, precio-aceptante, bienes divisibles y homogéneos"
 
   - bloque: "I. Fundamentos de la elección racional"
@@ -93,7 +93,7 @@ escenas:
       - di: "Fuera de las dos elipses, en la esquina, queda un cuarto caso lógico: que no se cumpla ninguna de las dos relaciones. Serían cestas no comparables, [pausa] justo lo que va a excluir el primer axioma, la completitud."
         pizarra: [{grafico: preferencias-venn, capa: 7}]
         guion: "No comparables: lo excluye la completitud"
-      - di: "Para cada cesta, la relación define tres conjuntos. En el plano de los dos bienes trazo los ejes, marco equis cero y sombreo por encima el contorno superior, be de equis cero: el conjunto de cestas equis tales que equis es al menos tan buena como equis cero. Son las cestas al menos tan buenas como ella."
+      - di: "Para cada cesta, la relación define tres conjuntos. En el plano de los dos bienes trazo los ejes, marco equis cero y sombreo por encima el contorno superior, be de equis cero: el conjunto de cestas equis tales que equis es al menos tan buena como equis cero."
         pizarra: [{grafico: conjuntos-contorno, capa: 3, zona: "2"}]
         guion: "Contorno superior: «al menos tan bueno como» x⁰"
       - di: "Por debajo sombreo el contorno inferior, hache de equis cero: el conjunto de cestas equis tales que equis cero es al menos tan buena como ellas. Es decir, las cestas que no son mejores que equis cero."
@@ -152,7 +152,7 @@ escenas:
     pasos:
       - di: "La función de utilidad asigna a cada cesta un número real y representa las preferencias: equis uno es al menos tan buena como equis dos si y solo si su utilidad es mayor o igual."
         pizarra: [{formula: '\vec{x}^1\succcurlyeq\vec{x}^2\ \Leftrightarrow\ U(\vec{x}^1)\geq U(\vec{x}^2)', zona: "1", tam: 0.85}]
-        apunte: "U: S → ℝ representa las preferencias; es una «numeración» de los conjuntos de indiferencia"
+        apunte: "U asigna un número real a cada cesta y representa las preferencias; es una «numeración» de los conjuntos de indiferencia"
       - di: "Ese número no mide nada: [pausa] solo ordena. La utilidad es ordinal, y cualquier transformación creciente representa las mismas preferencias."
         pizarra: [{formula: 'V=f(U),\ \ f\ \text{creciente}', zona: "1", tam: 0.85}]
         guion: "Ordinal: solo ordena; no es única"
@@ -217,7 +217,7 @@ escenas:
       - di: "El segundo ingrediente es la restricción presupuestaria: con precios dados y positivos, una cesta es asequible si su coste no supera la renta, uve doble barra. Son las cestas del conjunto presupuestario walrasiano."
         pizarra: [{formula: 'B(\vec{p},\overline{W})=\{\vec{x}\in S:\ \vec{p}\cdot\vec{x}\leq\overline{W}\}', zona: "1", tam: 0.8}]
         guion: "Precios paramétricos: el consumidor es precio-aceptante"
-        apunte: "B(p, W̄): no vacío, cerrado, acotado si p ≫ 0, y convexo (compacto)"
+        apunte: "Conjunto presupuestario: no vacío, cerrado, acotado si todos los precios son positivos, y convexo (compacto)"
       - di: "Con dos bienes, lo sombreo bajo la recta de balance, que corta cada eje en la renta entre el precio de ese bien: pe uno equis uno más pe dos equis dos igual a la renta."
         pizarra: [{grafico: conjunto-presupuestario, capa: 2, zona: "2"}]
         guion: "Recta de balance"
@@ -228,38 +228,44 @@ escenas:
         pizarra: [{grafico: conjunto-presupuestario, capa: 7}]
         guion: "Sube p₁: la recta gira hacia dentro"
 
+  # Rejilla común de I.2 a III.1 (20|40|40): la columna 1 es la esquina de las funciones clave
+  # (\funcionclave del tema: el PMU y la demanda marshalliana, en morado y recuadradas), que no se
+  # borran entre bloques mientras se vuelve a ellas; las columnas 2 y 3 se borran al cambiar de
+  # apartado. Cambiar de rejilla borraría también la esquina: por eso no cambia hasta III.2.
   - bloque: "I. Fundamentos de la elección racional"
     titulo: "I.2. Problema de maximización de la utilidad: el equilibrio"
     modo: pizarra
-    rejilla: {columnas: [44, 56], filas: {2: [52, 48]}}
+    rejilla: "20|40|40"
     pasos:
-      - di: "Paso al problema de maximización de la utilidad: maximizar u de equis sujeto a que el gasto no supere la renta y a que las cantidades no sean negativas. Con utilidad estrictamente cuasicóncava y un presupuesto compacto y convexo, el óptimo existe y es único."
-        pizarra: [{formula: '\max_{\vec{x}}\ U(\vec{x})\ \ \text{s.a.}\ \ \vec{p}\cdot\vec{x}\leq\overline{W},\ \vec{x}\geq\vec{0}', zona: "1", tam: 0.8}]
+      - di: "Paso al problema de maximización de la utilidad, que escribo recuadrado en la esquina porque volveremos a él: maximizar u de equis, sujeto a que el gasto no supere la renta y a que las cantidades no sean negativas. Con utilidad estrictamente cuasicóncava, el óptimo existe y es único."
+        pizarra: [{formula: '{\setlength{\fboxrule}{1.2pt}\setlength{\fboxsep}{7pt}\boxed{\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vec{x}} & U(\vec{x})\\[3pt] \text{s.a.} & \vec{p}\cdot\vec{x}\leq\overline{W}\\[3pt] & \vec{x}\geq\vec{0}\end{array}}}', zona: "1", tam: 0.8, color: morado}]
+        guion: "Función clave: se queda en la esquina"
         apunte: "Weierstrass: el óptimo existe; con cuasiconcavidad estricta y conjunto convexo, es global y único"
       - di: "Como hay desigualdades, se resuelve con Kuhn y Tucker. La lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta: su utilidad marginal."
-        pizarra: [{formula: '\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)', zona: "1", tam: 0.8}]
+        pizarra: [{formula: '\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)', zona: "2", tam: 0.8}]
         guion: "λ: utilidad marginal de la renta"
         apunte: "Kuhn y Tucker (1951)"
       - di: "Las condiciones: la utilidad marginal de cada bien no supera su coste en utilidad, lambda por pe i; la cantidad no es negativa, y la holgura complementaria: o el bien se consume y vale la igualdad, o no compensa a esos precios y no se compra."
-        pizarra: [{formula: 'U_i-\lambda p_i\leq 0,\ \ x_i\geq 0,\ \ x_i(U_i-\lambda p_i)=0', zona: "1", tam: 0.8}]
+        pizarra: [{formula: 'U_i-\lambda p_i\leq 0,\ \ x_i\geq 0,\ \ x_i(U_i-\lambda p_i)=0', zona: "2", tam: 0.8}]
         guion: "Holgura complementaria: o se consume, o no compensa"
       - di: "Por la insaciabilidad local, lambda es positiva y se gasta toda la renta. En el apoyo, en tres dimensiones: si la colina tuviera la cima dentro del presupuesto, lambda sería cero."
-        pizarra: [{formula: '\lambda>0\ \Rightarrow\ \vec{p}\cdot\vec{x}^*=\overline{W}', zona: "1", tam: 0.8}]
-        apoyo: {grafico: pmu-r3, capa: 4, zona: "2b"}
+        pizarra: [{formula: '\lambda>0\ \Rightarrow\ \vec{p}\cdot\vec{x}^*=\overline{W}', zona: "2", tam: 0.8}]
+        apoyo: {grafico: pmu-r3, capa: 4, zona: "3"}
         guion: "λ > 0: se gasta toda la renta"
       - di: "Con una utilidad monótona, en cambio, el máximo está en el corte de la superficie sobre la recta de balance: [pausa] la restricción opera."
-        borrar: ["2b"]
-        apoyo: {grafico: pmu-r3, capa: 9, zona: "2b"}
+        borrar: ["3"]
+        apoyo: {grafico: pmu-r3, capa: 9, zona: "3"}
         guion: "Utilidad monótona: el óptimo, en la recta de balance"
+      - di: "En una solución interior, la primera condición se cumple con igualdad para todos los bienes: la utilidad marginal por euro es la misma en todos e igual a lambda. [pausa] Es la segunda ley de Gossen. Con dos bienes, la relación marginal de sustitución iguala el cociente de precios."
+        borrar: ["3"]
+        pizarra: [{formula: '\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}', zona: "3", tam: 0.8}]
+        apunte: "Segunda ley de Gossen (1854): igual utilidad marginal por unidad monetaria en todos los bienes"
       - di: "Lo vemos en el plano. Sombreo el conjunto presupuestario y trazo tres curvas: u cero, que se puede mejorar; u asterisco, y u dos, inalcanzable."
-        pizarra: [{grafico: solucion-interior-esquina, capa: 4, zona: "2a"}]
+        pizarra: [{grafico: solucion-interior-esquina, capa: 4, zona: "2-3"}]
         guion: "La curva más baja se puede mejorar; la más alta es inalcanzable"
-      - di: "En una solución interior el óptimo, equis asterisco, es la tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, iguala el cociente de precios, lo que exige el mercado."
+      - di: "El óptimo, equis asterisco, es la tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, iguala el cociente de precios, lo que exige el mercado."
         pizarra: [{grafico: solucion-interior-esquina, capa: 6}]
         guion: "Tangencia: RMS = p₁/p₂"
-      - di: "Analíticamente, la utilidad marginal por euro es la misma en todos los bienes e igual a lambda: [pausa] es la segunda ley de Gossen."
-        pizarra: [{formula: '\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}', zona: "1", tam: 0.8}]
-        apunte: "Segunda ley de Gossen (1854): igual utilidad marginal por unidad monetaria en todos los bienes"
       - di: "Pero la solución puede ser de esquina. A la derecha, otra recta y otras tres curvas: la más alta alcanzable toca la recta en el eje, y el bien dos no se consume."
         pizarra: [{grafico: solucion-interior-esquina, capa: 11}]
         guion: "Esquina: un bien no se consume"
@@ -271,22 +277,23 @@ escenas:
   - bloque: "I. Fundamentos de la elección racional"
     titulo: "I.3. Solución: demanda marshalliana y función indirecta de utilidad"
     modo: pizarra
-    rejilla: {columnas: [46, 54], filas: {2: [42, 58]}}
+    rejilla: "20|40|40"
     pasos:
-      - di: "Paso a la solución. Las cantidades óptimas, como funciones de los precios y de la renta, forman el sistema completo de demandas marshallianas, u ordinarias: equis asterisco igual a equis de pe y la renta."
-        pizarra: [{formula: '\vec{x}^*=\vec{x}(\vec{p},\overline{W})', zona: "1", tam: 0.85}]
+      - di: "Paso a la solución. Las cantidades óptimas, como funciones de los precios y de la renta, forman el sistema completo de demandas marshallianas, u ordinarias: equis asterisco igual a equis de pe y la renta. La recuadro también en la esquina: es la otra función clave."
+        borrar: ["2", "3"]
+        pizarra: [{formula: '{\setlength{\fboxrule}{1.2pt}\setlength{\fboxsep}{7pt}\boxed{\vec{x}^*=\vec{x}(\vec{p},\overline{W})}}', zona: "1", tam: 0.8, color: morado}]
         guion: "Existe, es única y continua"
-      - di: "Dos propiedades son clave. Es homogénea de grado cero: si multiplicamos precios y renta por ka, el conjunto presupuestario no cambia y la cesta tampoco. [pausa] No hay ilusión monetaria."
-        pizarra: [{formula: '\vec{x}(k\vec{p},k\overline{W})=\vec{x}(\vec{p},\overline{W})', zona: "1", tam: 0.85}]
+      - di: "Dos propiedades son clave. Es homogénea de grado cero: si multiplicamos precios y renta por kappa, el conjunto presupuestario no cambia y la cesta tampoco. [pausa] No hay ilusión monetaria."
+        pizarra: [{formula: '\vec{x}(\kappa\vec{p},\kappa\overline{W})=\vec{x}(\vec{p},\overline{W})', zona: "2", tam: 0.85}]
         guion: "Homogénea de grado cero: sin ilusión monetaria"
       - di: "Y cumple la ley de Walras: por la insaciabilidad local, el consumidor gasta toda su renta."
-        pizarra: [{formula: '\vec{p}\cdot\vec{x}(\vec{p},\overline{W})=\overline{W}', zona: "1", tam: 0.85}]
+        pizarra: [{formula: '\vec{p}\cdot\vec{x}(\vec{p},\overline{W})=\overline{W}', zona: "2", tam: 0.85}]
         guion: "Ley de Walras: se agota la renta"
       - di: "Sustituyéndola en la utilidad sale la función indirecta de utilidad, uve de pe y la renta: la utilidad máxima con esos precios y esa renta. Es creciente en la renta, no creciente en los precios y cuasiconvexa."
-        pizarra: [{formula: 'V(\vec{p},\overline{W})=U\big(\vec{x}(\vec{p},\overline{W})\big)', zona: "1", tam: 0.85}]
+        pizarra: [{formula: 'V(\vec{p},\overline{W})=U\big(\vec{x}(\vec{p},\overline{W})\big)', zona: "3", tam: 0.85}]
         guion: "Función indirecta de utilidad: depende indirectamente de precios y renta"
       - di: "Y de ella se recupera la demanda derivando, con la identidad de Roy: menos su derivada respecto al precio, entre su derivada respecto a la renta."
-        pizarra: [{formula: 'x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}', zona: "1", tam: 0.85}]
+        pizarra: [{formula: 'x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}', zona: "3", tam: 0.85}]
         guion: "Identidad de Roy: teorema de la envolvente"
         apunte: "Roy (1947); dar la vuelta al problema (minimizar el gasto) lleva a la dualidad"
 
@@ -295,14 +302,14 @@ escenas:
     modo: pizarra
     pasos:
       - di: "Falta la demanda de mercado: la suma de las individuales, gráficamente una suma horizontal. Primer problema: [pausa] en general depende de toda la distribución de la renta, no solo de su total."
-        pizarra: [{formula: 'X_i=\sum_{h=1}^{H}x_{hi}(\vec{p},\overline{W}_h)', zona: "2a", tam: 0.8}]
+        pizarra: [{formula: 'X_i=\sum_{h=1}^{H}x_{hi}(\vec{p},\overline{W}_h)', zona: "2", tam: 0.8}]
         guion: "¿Depende solo de la renta total?"
       - di: "Gorman demuestra que solo depende de la renta total si la función indirecta de cada consumidor tiene su forma polar: un término propio más un coeficiente de la renta común a todos."
-        pizarra: [{formula: 'V_h=a_h(\vec{p})+b(\vec{p})\,\overline{W}_h', zona: "2a", tam: 0.8}]
+        pizarra: [{formula: 'V_h=a_h(\vec{p})+b(\vec{p})\,\overline{W}_h', zona: "3", tam: 0.8}]
         guion: "Forma polar de Gorman, con b(p) común"
         apunte: "Gorman (1953, 1961): curvas de Engel rectas y paralelas; la economía actúa como un consumidor representativo"
       - di: "Por la identidad de Roy, equivale a curvas de Engel rectas y paralelas, con el mismo efecto renta para todos, como estas dos, una por consumidor. Si pasamos renta del primero al segundo, lo que deja de comprar uno lo compra el otro, y la demanda agregada no cambia."
-        pizarra: [{grafico: engel-gorman, capa: 4, zona: "2b"}]
+        pizarra: [{grafico: engel-gorman, capa: 4, zona: "2"}]
         guion: "Mismo efecto renta: la redistribución no cambia la demanda"
       - di: "Lo cumplen las homotéticas idénticas y las cuasilineales, con efecto renta nulo, cómodo pero sin bienes inferiores. Segundo problema: [pausa] la agregada no hereda la simetría, y por el teorema de Sonnenschein, Mantel y Debreu casi cualquier exceso de demanda es posible."
         guion: "Homotéticas idénticas o cuasilineales · la agregada no hereda todas las propiedades"
@@ -311,18 +318,20 @@ escenas:
         guion: "Idea clave: agregar exige curvas de Engel rectas y paralelas"
 
   # ==================================================================== II
-  # Rejilla común a II.1 y al precio propio de II.2: 1a para los gráficos de cestas, 1b para el
-  # esquema de la clasificación de los bienes (crece de II.1 a II.2) y 2 para fórmulas y gráficos.
+  # La misma rejilla (20|40|40): en la esquina (1) siguen el PMU y la demanda marshalliana, a los que
+  # vuelve todo el bloque. 3: el esquema de la clasificación de los bienes, que crece de II.1 a II.2
+  # (no se borra entre las dos escenas); 2: gráficos y fórmulas de cada paso.
   - bloque: "II. Estática comparativa"
     titulo: "II.1. Variaciones en la renta"
     modo: pizarra
-    rejilla: {columnas: [58, 42], filas: {1: [55, 45]}}
+    rejilla: "20|40|40"
     pasos:
       - di: "Paso al segundo bloque: la estática comparativa. Adelanto la conclusión: [pausa] todo cambio de precio tiene un efecto sustitución, nunca positivo, y un efecto renta de signo variable, y eso explica la clasificación de los bienes. Lo mediremos con elasticidades, que no dependen de las unidades."
+        borrar: ["2", "3"]
         guion: "Conclusión anticipada: efecto sustitución ≤ 0 y efecto renta de signo variable"
         apunte: "Estática comparativa: se comparan óptimos, sin estudiar el ajuste; Marshall (1890) introduce las elasticidades"
       - di: "Empiezo por la renta. Con la recta inicial, el consumidor elige E cero. Si la renta sube y los precios no cambian, la recta se desplaza en paralelo hacia fuera, y el nuevo óptimo es E uno."
-        pizarra: [{grafico: renta-consumo-engel, capa: 4, zona: "1a"}]
+        pizarra: [{grafico: renta-consumo-engel, capa: 4, zona: "2"}]
         guion: "Sube la renta: la recta se desplaza en paralelo"
       - di: "Con más renta, E dos. Uniendo los óptimos sale la curva de renta-consumo, la senda de expansión; con preferencias homotéticas sería una semirrecta desde el origen."
         pizarra: [{grafico: renta-consumo-engel, capa: 7}]
@@ -337,7 +346,7 @@ escenas:
         pizarra: [{formula: '\varepsilon_{x_i,\overline{W}}\equiv\frac{\partial x_i}{\partial\overline{W}}\cdot\frac{\overline{W}}{x_i}', zona: "2", tam: 0.85}]
         guion: "Elasticidad-renta"
       - di: "Con ella clasifico los bienes en un esquema que iremos completando. Sobre un eje, la elasticidad-renta, con el cero y el uno: a la izquierda del cero, los inferiores; a la derecha, los normales."
-        pizarra: [{grafico: elasticidades-renta-precio, capa: 2, zona: "1b"}]
+        pizarra: [{grafico: elasticidades-renta-precio, capa: 2, zona: "3"}]
         guion: "< 0: inferiores · > 0: normales"
       - di: "Y entre los normales, los necesarios, entre cero y uno, cuyo peso en el gasto cae con la renta, y los de lujo, por encima de uno."
         pizarra: [{grafico: elasticidades-renta-precio, capa: 3}]
@@ -346,7 +355,8 @@ escenas:
         pizarra: [{formula: '\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1', zona: "2", tam: 0.85}]
         guion: "Alguno tiene elasticidad-renta ≥ 1"
 
-      - di: "Y la ley de Engel, la regularidad empírica más conocida de la demanda, confirma que los alimentos son un bien necesario: el peso de la alimentación en el gasto cae al subir la renta. Y se sigue cumpliendo: en España, en 2025, el quintil de menor gasto dedicó a alimentos el 19,6 por ciento, y el de mayor gasto, el 12,3."
+      - di: "La ley de Engel lo confirma: los alimentos son un bien necesario, y su peso en el gasto cae al subir la renta. En España, en 2025, el quintil de menor gasto dedicó a alimentos el 19,6 por ciento, y el de mayor gasto, el 12,3."
+        borrar: ["2"]
         apoyo: {grafico: epf-alimentos-quintil, capa: 2, zona: "2"}
         guion: "Ley de Engel (1857): los alimentos, un bien necesario"
         apunte: "INE, Encuesta de Presupuestos Familiares 2025 (tabla 73828): media del 16,0 %"
@@ -354,18 +364,18 @@ escenas:
   - bloque: "II. Estática comparativa"
     titulo: "II.2. Variaciones en los precios: precio propio"
     modo: pizarra
-    rejilla: {columnas: [58, 42], filas: {1: [55, 45]}}
+    rejilla: "20|40|40"
     pasos:
       - di: "Paso a los precios. Si baja el precio del bien uno, la recta gira hacia fuera; los óptimos forman la curva de precio-consumo y, en el plano precio-cantidad, la demanda marshalliana, como en el apoyo."
-        borrar: ["1a", "2"]
+        borrar: ["2"]
         apoyo: {grafico: precio-consumo-demanda, capa: 10, zona: "2"}
         guion: "De la curva de precio-consumo a la curva de demanda"
       - di: "La elasticidad-precio propia mide la respuesta porcentual de la cantidad a su propio precio. Si es negativa, el bien es ordinario, con demanda elástica o inelástica según pase o no de menos uno; si es positiva, es un bien Giffen: [pausa] su demanda sube cuando sube su precio."
         borrar: ["2"]
         pizarra: [{formula: '\varepsilon_{x_i,p_i}\equiv\frac{\partial x_i}{\partial p_i}\cdot\frac{p_i}{x_i}', zona: "2", tam: 0.8}]
         guion: "< 0: ordinario (elástica si < −1) · > 0: Giffen"
-      - di: "¿Cómo puede ser? Un cambio de precio cambia el precio relativo y el poder adquisitivo. La ecuación de Slutsky los separa, y la escribo como cabecera de una tabla: el efecto total, la derivada de la marshalliana respecto a su precio, es el efecto sustitución, la derivada de la demanda compensada o hicksiana, que mantiene la utilidad, más el efecto renta: menos la cantidad por el efecto renta del bien."
-        pizarra: [{grafico: slutsky-propio, capa: 1, zona: "1a"}]
+      - di: "¿Cómo puede ser? Un cambio de precio cambia el precio relativo y el poder adquisitivo. La ecuación de Slutsky los separa, y la escribo como cabecera de una tabla: el efecto total, la derivada de la marshalliana respecto a su precio, es el efecto sustitución, la derivada de la demanda compensada o hicksiana, que mantiene la utilidad dando la vuelta al problema de la esquina, más el efecto renta: menos la cantidad por el efecto renta del bien."
+        pizarra: [{grafico: slutsky-propio, capa: 1, zona: "3"}]
         guion: "Efecto total = efecto sustitución (hicksiana) + efecto renta"
         apunte: "Slutsky (1915); demanda hicksiana: la del problema dual de minimización del gasto"
       - di: "Gráficamente, bajo la fórmula: con la recta inicial y la curva u cero, el óptimo es A."
@@ -401,21 +411,26 @@ escenas:
         guion: "Segundo eje: Giffen y ordinarios"
       - di: "Y lo relaciono con el primero: los dos ceros no coinciden. Todo bien normal es ordinario, todo Giffen es inferior, y entre los dos ceros quedan los inferiores ordinarios. Distinto es el efecto Veblen: [pausa] si el precio entra en las preferencias, Slutsky ya no vale."
         pizarra: [{grafico: elasticidades-renta-precio, capa: 8}]
-        guion: "Normal ⇒ ordinario · Giffen ⇒ inferior"
+        guion: "Todo bien normal es ordinario · todo Giffen es inferior"
         apunte: "Veblen (1899): consumo ostentoso; Leibenstein (1950): efectos arrastre y esnob"
 
   - bloque: "II. Estática comparativa"
     titulo: "II.2. Variaciones en los precios: precio cruzado"
     modo: pizarra
-    rejilla: "38|62"
+    rejilla: "20|40|40"
     pasos:
       - di: "Con el precio de otro bien, la elasticidad cruzada define las relaciones brutas: sustitutivos brutos si es positiva, complementarios si es negativa. Como incluyen efectos renta, [pausa] no son simétricas."
-        pizarra: [{formula: '\varepsilon_{x_i,p_j}\equiv\frac{\partial x_i}{\partial p_j}\cdot\frac{p_j}{x_i}', zona: "1", tam: 0.85}]
+        borrar: ["2", "3"]
+        pizarra: [{formula: '\varepsilon_{x_i,p_j}\equiv\frac{\partial x_i}{\partial p_j}\cdot\frac{p_j}{x_i}', zona: "2", tam: 0.85}]
         guion: "> 0: sustitutivos brutos · < 0: complementarios brutos"
-      - di: "Slutsky también separa aquí los dos efectos, y lo escribo como cabecera de otra tabla: el efecto total cruzado, la derivada de la marshalliana del bien i respecto al precio del bien jota, es el efecto sustitución cruzado, el de la hicksiana, más el efecto renta cruzado: menos la cantidad del bien jota por el efecto renta del bien i. Debajo, tres columnas: el efecto sustitución, que define las relaciones netas; el efecto renta, según sea el bien i, y el efecto total, que da las relaciones brutas."
-        pizarra: [{grafico: slutsky-cruzado, capa: 1, zona: "2"}]
+      - di: "Las elasticidades cumplen dos restricciones que solo exigen el presupuesto. Derivando la ley de Walras respecto a un precio sale la agregación de Cournot: la media ponderada de las elasticidades respecto a pe jota es menos la participación del bien jota. Y de la homogeneidad, que las elasticidades precio y renta de cada bien suman cero."
+        pizarra: [{formula: '\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j\qquad\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0', zona: "3", tam: 0.8}]
+        guion: "Agregación de Cournot · homogeneidad"
+        apunte: "Engel, Cournot y homogeneidad: solo la restricción presupuestaria; simetría y negatividad: maximización"
+      - di: "La simetría y el signo del efecto sustitución exigen, además, que el consumidor maximice, como en el problema de la esquina. Slutsky también separa aquí los dos efectos, y lo escribo como cabecera de otra tabla: el efecto total cruzado, la derivada de la marshalliana del bien i respecto al precio del bien jota, es el efecto sustitución cruzado, el de la hicksiana, más el efecto renta cruzado: menos la cantidad del bien jota por el efecto renta del bien i. Debajo, tres columnas: el efecto sustitución, que define las relaciones netas; el efecto renta, según sea el bien i, y el efecto total, que da las relaciones brutas."
+        pizarra: [{grafico: slutsky-cruzado, capa: 1, zona: "2-3"}]
         guion: "Efecto sustitución cruzado: relaciones netas · efecto total: brutas"
-        apunte: "Bienes sustitutivos netos si ∂hᵢ/∂pⱼ > 0; complementarios netos si ∂hᵢ/∂pⱼ < 0"
+        apunte: "Sustitutivos netos si el efecto sustitución cruzado es positivo; complementarios netos si es negativo"
       - di: "Primera fila: sustitutivos netos, con efecto sustitución positivo. Si el bien i es normal, el efecto renta es negativo y va en contra, así que el efecto total es ambiguo: depende de cuál domine."
         pizarra: [{grafico: slutsky-cruzado, capa: 2}]
         guion: "Sustitutivos netos e i normal: ambiguo"
@@ -432,13 +447,6 @@ escenas:
         pizarra: [{grafico: slutsky-cruzado, capa: 6}]
         guion: "Netas simétricas; brutas, no"
         apunte: "Cada bien tiene al menos un sustitutivo neto; con dos bienes, son sustitutivos netos"
-      - di: "Por último, derivando la ley de Walras respecto a un precio sale la agregación de Cournot: la media ponderada de las elasticidades respecto a pe jota es menos la participación del bien jota."
-        pizarra: [{formula: '\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j', zona: "1", tam: 0.85}]
-        guion: "Agregación de Cournot"
-      - di: "Y de la homogeneidad, que las elasticidades precio y renta de cada bien suman cero. Estas restricciones solo exigen el presupuesto; la simetría y el signo del efecto sustitución exigen, además, que el consumidor maximice."
-        pizarra: [{formula: '\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0', zona: "1", tam: 0.85}]
-        guion: "Homogeneidad · restricciones contrastables"
-        apunte: "Engel, Cournot y homogeneidad: solo la restricción presupuestaria; simetría y negatividad: maximización"
 
   - bloque: "II. Estática comparativa"
     titulo: "II.3. Valoración"
@@ -453,13 +461,14 @@ escenas:
   - bloque: "III. Otros desarrollos"
     titulo: "III.1. La teoría de la preferencia revelada"
     modo: pizarra
-    rejilla: {columnas: [60, 40], filas: {1: [55, 45]}}
+    rejilla: "20|40|40"   # la misma: el PMU y la demanda siguen en la esquina hasta el teorema de Houthakker
     pasos:
-      - di: "Paso al tercer bloque: otros desarrollos. Adelanto la conclusión: [pausa] los tres acercan la teoría a lo observable. El primero, la preferencia revelada de Samuelson. La idea: en lugar de partir de unas preferencias que no vemos, partir de las elecciones. Es un enfoque inductivo frente al deductivo de la teoría ordinal."
+      - di: "Paso al tercer bloque: otros desarrollos. Adelanto la conclusión: [pausa] los tres acercan la teoría a lo observable. El primero, la preferencia revelada de Samuelson. La idea: en lugar de partir de unas preferencias que no vemos y del problema de la esquina, partir de las elecciones, de la propia demanda. Es un enfoque inductivo frente al deductivo de la teoría ordinal."
+        borrar: ["2", "3"]
         guion: "Samuelson (1938): de las elecciones a las preferencias"
         apunte: "Samuelson (1938, 1948): la demanda sin recurrir a la utilidad; Nobel de 1970"
       - di: "Supone un consumidor que, ante cada vector de precios y renta, elige una única cesta y gasta toda su renta. En el gráfico, con los precios pe cero elige equis cero, aunque podía comprar equis uno. Equis cero se revela directamente preferida."
-        pizarra: [{grafico: adpr-efecto-sustitucion, capa: 5, zona: "1a"}]
+        pizarra: [{grafico: adpr-efecto-sustitucion, capa: 5, zona: "2-3", alto: 0.52}]
         guion: "Supuestos: función de demanda y ley de Walras"
       - di: "El axioma débil exige coherencia: si con otros precios, pe uno, se elige equis uno, equis cero no puede ser asequible. [pausa] La nueva recta tiene que dejarla fuera."
         pizarra: [{grafico: adpr-efecto-sustitucion, capa: 7}]
@@ -479,12 +488,12 @@ escenas:
       - di: "Analíticamente, la variación de los precios por la de las cantidades no es positiva. Pero con más de dos bienes el axioma débil no garantiza la simetría."
         pizarra: [{formula: '(\vec{p}^1-\vec{p}^0)\cdot(\vec{x}^1-\vec{x}^0)\leq 0', zona: "2", tam: 0.75}]
         apunte: "El ADPR da una matriz de Slutsky semidefinida negativa, pero no simétrica"
-      - di: "Por eso Houthakker formula el axioma fuerte, la transitividad de las preferencias reveladas, y demuestra que equivale a maximizar unas preferencias racionales: [pausa] los dos enfoques son equivalentes."
+      - di: "Por eso Houthakker formula el axioma fuerte, la transitividad de las preferencias reveladas, y demuestra que equivale a maximizar unas preferencias racionales, como en el problema de la esquina: [pausa] los dos enfoques son equivalentes."
         pizarra: [{formula: '\text{AFPR}\ \Leftrightarrow\ \succcurlyeq\ \text{racionales}', zona: "2", tam: 0.75}]
         guion: "Teorema de Houthakker: equivalencia"
         apunte: "Houthakker (1950): axioma fuerte de la preferencia revelada"
-      - di: "Samuelson muestra además cómo acotar una curva de indiferencia. Debajo, parto de otra elección, equis cero, con los precios pe cero: las cestas de ese presupuesto, que pudo comprar y no compró, se revelan peores que equis cero."
-        pizarra: [{grafico: preferencia-revelada-indiferencia, capa: 4, zona: "1b"}]
+      - di: "Samuelson muestra además cómo acotar una curva de indiferencia. A la derecha, parto de otra elección, equis cero, con los precios pe cero: las cestas de ese presupuesto, que pudo comprar y no compró, se revelan peores que equis cero."
+        pizarra: [{grafico: preferencia-revelada-indiferencia, capa: 4, zona: "3"}]
         guion: "El presupuesto de x⁰: revelado peor"
       - di: "Si con los precios pe uno elige equis uno pudiendo comprar equis cero, equis uno y las cestas con más de todo forman la región revelada mejor. La curva de indiferencia queda entre las dos regiones, y cada nueva observación, como equis dos, la acota más."
         pizarra: [{grafico: preferencia-revelada-indiferencia, capa: 8}]
@@ -498,13 +507,12 @@ escenas:
     modo: pizarra
     rejilla: "100"
     pasos:
-      - di: "El segundo desarrollo es la producción doméstica. La idea, de Becker: el hogar es una pequeña fábrica que combina bienes de mercado y tiempo para producir lo que de verdad le satisface, una comida o el cuidado de los hijos. Maximiza una utilidad sobre esos bienes finales, zeta, cada uno producido con bienes y tiempo."
-        pizarra: [{formula: '\max\ U(Z_1,\dots,Z_m),\quad Z_i=f_i(x_i,t_i)', zona: "1", tam: 0.85}]
+      - di: "El segundo desarrollo es la producción doméstica. La idea, de Becker: el hogar es una pequeña fábrica que combina bienes de mercado y tiempo para producir lo que de verdad le satisface, una comida o el cuidado de los hijos."
         guion: "Becker (1965): el hogar, una pequeña fábrica"
         apunte: "Becker (1965): nueva economía de la familia; Nobel de 1992. Lancaster (1966): características, antecedente de los precios hedónicos"
-      - di: "Tiene dos restricciones: la presupuestaria, con el salario por las horas de trabajo más la renta no laboral, y la de tiempo, que reparte el total entre trabajo y producción en casa."
-        pizarra: [{formula: '\sum_i p_ix_i=w\,t_w+\overline{W},\qquad\sum_i t_i+t_w=T', zona: "1", tam: 0.85}]
-        guion: "Restricción de renta y restricción de tiempo"
+      - di: "El hogar elige los bienes, el tiempo de cada actividad y las horas de trabajo para maximizar una utilidad sobre esos bienes finales, zeta, sujeto a que cada uno se produzca con bienes y tiempo, y a dos restricciones más: la presupuestaria, en la que el gasto iguala el salario por las horas de trabajo más la renta no laboral, y la de tiempo, que reparte el total entre trabajo y producción en casa."
+        pizarra: [{formula: '\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\{x_i,t_i\},\,t_w} & U(Z_1,\dots,Z_m)\\[3pt] \text{s.a.} & Z_i=f_i(x_i,t_i),\quad i=1,\dots,m\\[3pt] & \sum_i p_ix_i=w\,t_w+\overline{W}\\[3pt] & \sum_i t_i+t_w=T\end{array}', zona: "1", tam: 0.85}]
+        guion: "Producción doméstica, restricción de renta y restricción de tiempo"
       - di: "Se funden en una: la renta completa, lo que ganaría el hogar si dedicara todo su tiempo al mercado."
         pizarra: [{formula: '\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+\overline{W}', zona: "1", tam: 0.85}]
         guion: "Renta completa"
@@ -529,8 +537,10 @@ escenas:
           - {formula: 'p(\vec{z}),\qquad\frac{\partial p(\vec{z})}{\partial z_j}', zona: "1", tam: 0.85}
           - {grafico: funcion-hedonica-rosen, capa: 2, zona: "2"}
         guion: "Función hedónica y precio implícito"
-      - di: "El consumidor maximiza su utilidad sobre las características y un bien numerario, i griega, e iguala su relación marginal de sustitución al precio implícito: la tangencia de siempre, sobre una restricción no lineal."
-        pizarra: [{formula: '\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(\vec{z})}{\partial z_j}', zona: "1", tam: 0.85}]
+      - di: "El consumidor maximiza su utilidad sobre las características y un bien numerario, i griega, sujeto a que el precio de la variedad más el numerario agoten su renta. E iguala su relación marginal de sustitución al precio implícito: la tangencia de siempre, sobre una restricción no lineal."
+        pizarra:
+          - {formula: '\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vec{z},\,y} & U(\vec{z},y)\\[3pt] \text{s.a.} & p(\vec{z})+y=\overline{W}\end{array}', zona: "1", tam: 0.8}
+          - {formula: '\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(\vec{z})}{\partial z_j}', zona: "1", tam: 0.85}
         guion: "RMS = precio implícito"
       - di: "Cada consumidor tiene una curva de puja, theta mayúscula: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores."
         pizarra: [{grafico: funcion-hedonica-rosen, capa: 4}]
@@ -563,7 +573,7 @@ escenas:
     pasos:
       - di: "En conclusión, de unos pocos axiomas y un presupuesto sale una demanda homogénea de grado cero que agota la renta; Slutsky explica por qué hay bienes normales, inferiores y Giffen, y tres desarrollos la acercan a los datos."
         parte: Recapitulación
-        guion: ["Axiomas → demanda marshalliana; agregar exige Gorman", "Slutsky: efecto sustitución y efecto renta", "Preferencia revelada, producción doméstica, precios hedónicos"]
+        guion: ["De los axiomas a la demanda marshalliana; agregar exige Gorman", "Slutsky: efecto sustitución y efecto renta", "Preferencia revelada, producción doméstica, precios hedónicos"]
       - di: "Es una de las construcciones más acabadas de la economía, y se usa a diario: de las elasticidades a los índices de precios."
         parte: Relevancia
         guion: ["De las preferencias a la demanda, y vuelta (Houthakker)"]
@@ -573,6 +583,6 @@ escenas:
       - di: "En mi opinión, su lógica es más sólida que su evidencia: la simetría se rechaza a menudo y la economía conductual documenta desviaciones; aun así, la amplía más que sustituirla."
         parte: Opinión
         guion: ["Simon, Kahneman y Tversky, Thaler", "> La amplían más que sustituirla"]
-      - di: "¿Puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? [pausa 800] Sí, con matices: las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar; lo que esa coherencia no recoge, el riesgo, el tiempo o los sesgos, es lo que el resto de la teoría económica viene a explicar."
+      - di: "¿Puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? [pausa 800] Sí, con matices: las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar. Por eso la teoría de la demanda es el primer ladrillo del análisis de los mercados: sin ella no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde. [pausa] Lo que esa coherencia no recoge, el riesgo, el tiempo o los sesgos, es lo que el resto de la teoría económica viene a explicar."
         parte: Idea final
-        guion: ["Sí, con matices: las elecciones delatan las preferencias", "> El resto (riesgo, tiempo, sesgos), otras partes de la teoría"]
+        guion: ["Sí, con matices: las elecciones delatan las preferencias", "> Primer ladrillo: precios, inflación con calidad cambiante, bienestar", "> El resto (riesgo, tiempo, sesgos), otras partes de la teoría"]

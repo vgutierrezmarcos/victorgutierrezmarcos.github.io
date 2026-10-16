@@ -2,25 +2,27 @@
 
 Axiomas sobre las preferencias, función de utilidad y función de demanda marshalliana. La teoría de la preferencia revelada. Precios hedónicos.
 
-> Mismo texto que `video/escenas.yaml` (rehecho el 14/10/2026 con la estructura del tema del 13/10). Entre corchetes, lo que se escribe o se dibuja en la pizarra (los gráficos son los de `graficos/`, dibujados capa a capa mientras se dice lo que dibujan) y el material de apoyo, que se enseña pero no se escribe. Las líneas «Apunte» son la ayuda didáctica de la franja inferior del vídeo, no se dicen. El vídeo empieza leyendo el título del tema y entra directamente en el enganche con una pregunta, que la idea final responde (la pregunta y su respuesta son propias del vídeo).
+> Mismo texto que `video/escenas.yaml` (rehecho el 14/10/2026 con la estructura del tema del 13/10 y puesto al día el 16/10/2026 con los criterios de ese día: funciones clave en la esquina, problemas de optimización en varias líneas, κ e idea final del documento). Entre corchetes, lo que se escribe o se dibuja en la pizarra (los gráficos son los de `graficos/`, dibujados capa a capa mientras se dice lo que dibujan) y el material de apoyo, que se enseña pero no se escribe. Las líneas «Apunte» son la ayuda didáctica de la franja inferior del vídeo, no se dicen. El vídeo empieza leyendo el título del tema y entra directamente en el enganche con la pregunta del documento, que la idea final retoma y responde con las mismas palabras que el tema.
 
 ## Plan de pizarra
 
-> La pizarra se divide en celdas (rejilla de `escenas.yaml`: columnas en %, y entre paréntesis las filas de una columna); cambiar de rejilla la borra. Introducción, II.3 y conclusión se cantan sin pizarra. Los títulos de apartado no se escriben (están en la cabecera del vídeo). Solo se escriben gráficos y fórmulas; el material de apoyo sale en una tarjeta azulada y no se escribe. **Los gráficos 3D nunca se dibujan**: van como apoyo que avanza por estados (se borra la celda y sale el estado siguiente). **Nada se escribe dos veces**: los esquemas de síntesis son apoyo que crece (`esquema-ingredientes`, `esquema-axiomas`) o se construyen en la pizarra a lo largo del apartado (`elasticidades-renta-precio`, de II.1 a II.2).
+> La pizarra se divide en celdas (rejilla de `escenas.yaml`: columnas en %, y entre paréntesis las filas de una columna); cambiar de rejilla la borra entera. Introducción, II.3 y conclusión se cantan sin pizarra. Los títulos de apartado no se escriben (están en la cabecera del vídeo). Solo se escriben gráficos y fórmulas; el material de apoyo sale en una tarjeta azulada y no se escribe. **Los gráficos 3D nunca se dibujan**: van como apoyo que avanza por estados (se borra la celda y sale el estado siguiente). **Nada se escribe dos veces**: los esquemas de síntesis son apoyo que crece (`esquema-ingredientes`, `esquema-axiomas`) o se construyen en la pizarra a lo largo del apartado (`elasticidades-renta-precio`, de II.1 a II.2). **Problemas de optimización en varias líneas** (como `\optim` en el tema): el objetivo con la variable bajo el «max» y, debajo, «s.a.» con cada restricción en su línea (PMU, Becker y Rosen).
+>
+> **Funciones clave en la esquina**: las dos `\funcionclave` del tema, el PMU (`eq:pmu`) y la demanda marshalliana (`eq:scedm`), se escriben en morado y recuadradas en la columna 1 (20 %) de la rejilla 20 | 40 | 40, la misma de I.2 a III.1. Entre apartados y entre bloques solo se borran las columnas 2 y 3, de modo que las dos funciones siguen a la vista mientras la exposición vuelve a ellas: la FIU y la identidad de Roy (I.3), la ecuación de Slutsky y las elasticidades de la marshalliana (II), la demanda hicksiana como problema «dado la vuelta» (II.2), la maximización que exigen la simetría y el signo del efecto sustitución (II.2) y el teorema de Houthakker (III.1). Se borran al pasar a III.2 (cambio de rejilla).
 >
 > - **I (apertura)** (100). Apoyo que crece: `esquema-ingredientes` en las capas 2, 4 y 6 (preferencias y utilidad; restricción y PMU; demandas). No se escribe nada: cada pieza se escribe después en su apartado.
 > - **I.1, conjunto de elección y preferencias** (48 | 52, la columna 1 en filas 22/78). 1a: S y la cesta x⃗. 1b: `preferencias-venn` (capas 1-7; los rótulos de preferencia estricta e indiferencia están en el gráfico y no se escriben aparte). 2: `conjuntos-contorno` (capas 1-5).
 > - **I.1, axiomas** (50 | 50). 1: los axiomas (1)-(6) como fórmulas y, en rojo, el teorema de Debreu. 2: apoyo `esquema-axiomas`, que crece con cada axioma (capas 4, 5, 6, 7, 9 y 12).
 > - **I.1, función de utilidad** (42 | 58). 1: representación, ordinalidad y conjunto de indiferencia. 2: apoyo 3D `superficie-utilidad-repaso` por estados (capa 2, la colina; 3, el corte a U = 1; 5, los tres cortes y sus proyecciones).
-> - **I.1, curvas de indiferencia** (40 | 60). 2: `propiedades-curvas-indiferencia-pizarra` (variante del gráfico del tema sin los pies de texto; capas 2, 5, 7, 9, 13, 14, 17 y 19, un panel por propiedad). 1: el razonamiento del panel (c) como fórmula, la RMS, la elasticidad de sustitución y, debajo, apoyo `ces-curvas-indiferencia`.
+> - **I.1, curvas de indiferencia** (40 | 60). 2: `propiedades-curvas-indiferencia-pizarra` (variante del gráfico del tema sin los pies de texto; capas 2, 5, 7, 9, 13, 17 y 19, un panel por propiedad). 1: el razonamiento del panel (c) como fórmula, la RMS, la elasticidad de sustitución y, debajo, apoyo `ces-curvas-indiferencia`.
 > - **I.1, restricción presupuestaria** (36 | 64). 1: B(p⃗, W̄). 2: `conjunto-presupuestario` (capas 1-7).
-> - **I.2** (44 | 56, la columna 2 en filas 52/48). 1: PMU, lagrangiana, Kuhn-Tucker, λ > 0 y segunda ley de Gossen. 2a: `solucion-interior-esquina` (capas 1-13). 2b: apoyo 3D `pmu-r3` por estados (capa 4, restricción no operativa; capa 9, operativa).
-> - **I.3** (46 | 54, la columna 2 en filas 42/58). 1: demanda marshalliana, homogeneidad, ley de Walras, FIU e identidad de Roy. 2a: demanda de mercado y forma polar de Gorman. 2b: `engel-gorman` (capas 1-4). Se borra al pasar a II.
-> - **II.1 y II.2, precio propio** (58 | 42, la columna 1 en filas 55/45; la misma rejilla en las dos escenas). 1b: **`elasticidades-renta-precio`, construido a lo largo de los dos apartados**: eje de la elasticidad-renta con inferiores, normales, necesarios y de lujo (capas 1-3) en II.1, y eje de la elasticidad-precio con Giffen y ordinarios y sus relaciones (capas 4-8) en II.2. II.1: 1a, `renta-consumo-engel` (capas 1-11); 2, elasticidad-renta, agregación de Engel y apoyo `epf-alimentos-quintil`. II.2: se borran 1a y 2; 2, apoyo `precio-consumo-demanda` (se borra), elasticidad-precio y `efecto-sustitucion-renta` (capas 1-16); 1a, `slutsky-propio` (cabecera con la ecuación de Slutsky y una fila por tipo de bien, capas 1-4).
-> - **II.2, precio cruzado** (38 | 62). 1: elasticidad cruzada, agregación de Cournot y homogeneidad. 2: `slutsky-cruzado` (capas 1-6, cabecera con la ecuación y una fila por caso). Se mantiene durante la valoración (II.3, sin pizarra).
-> - **III.1** (60 | 40, la columna 1 en filas 55/45). 1a: `adpr-efecto-sustitucion` (capas 1-15). 1b: `preferencia-revelada-indiferencia` (capas 1-8). 2: axioma débil, ley de la demanda compensada y axioma fuerte.
-> - **III.2** (100). Modelo de Becker: utilidad y producción doméstica, restricciones de renta y de tiempo, renta completa, precio sombra y efecto del salario (en rojo).
-> - **III.3** (44 | 56). 1: función hedónica y precio implícito, condición de Rosen y regresión hedónica. 2: `funcion-hedonica-rosen` (capas 1-9). Al acabar, la pizarra solo tiene el modelo de Rosen.
+> - **I.2** (20 | 40 | 40). 1 (esquina): **PMU** en morado y recuadrado, en tres líneas. 2: lagrangiana, Kuhn-Tucker y λ > 0. 3: apoyo 3D `pmu-r3` por estados (capa 4, restricción no operativa; capa 9, operativa), que se borra para escribir la segunda ley de Gossen. 2-3 (las dos columnas, debajo): `solucion-interior-esquina` (capas 1-13).
+> - **I.3** (la misma rejilla; se borran 2 y 3). 1 (esquina, bajo el PMU): **demanda marshalliana** en morado y recuadrada. 2: homogeneidad (con κ) y ley de Walras. 3: FIU e identidad de Roy. Demanda de mercado: 2, la suma de las individuales y `engel-gorman` (capas 1-4); 3, la forma polar de Gorman.
+> - **II.1 y II.2, precio propio** (la misma rejilla; al empezar II se borran 2 y 3, y la esquina sigue). 3: **`elasticidades-renta-precio`, construido a lo largo de los dos apartados**: eje de la elasticidad-renta con inferiores, normales, necesarios y de lujo (capas 1-3) en II.1, y eje de la elasticidad-precio con Giffen y ordinarios y sus relaciones (capas 4-8) en II.2. II.1: 2, `renta-consumo-engel` (capas 1-11), elasticidad-renta y agregación de Engel; se borra 2 para el apoyo `epf-alimentos-quintil`. II.2: se borra 2; 2, apoyo `precio-consumo-demanda` (se borra), elasticidad-precio y `efecto-sustitucion-renta` (capas 1-16); 3, bajo el esquema, `slutsky-propio` (cabecera con la ecuación de Slutsky y una fila por tipo de bien, capas 1-4).
+> - **II.2, precio cruzado** (la misma rejilla; se borran 2 y 3). 2: elasticidad cruzada. 3: agregación de Cournot y homogeneidad en una línea. 2-3 (debajo, a lo ancho): `slutsky-cruzado` (capas 1-6, cabecera con la ecuación y una fila por caso). Se mantiene durante la valoración (II.3, sin pizarra).
+> - **III.1** (la misma rejilla; se borran 2 y 3 y la esquina sigue hasta el teorema de Houthakker). 2-3: `adpr-efecto-sustitucion` (capas 1-15). 2, debajo: axioma débil, ley de la demanda compensada y axioma fuerte. 3, debajo: `preferencia-revelada-indiferencia` (capas 1-8).
+> - **III.2** (100; el cambio de rejilla borra también la esquina). Modelo de Becker: el problema en varias líneas (objetivo y, debajo de «s.a.», la producción doméstica y las restricciones de renta y de tiempo, cada una en su línea), renta completa, precio sombra y efecto del salario (en rojo).
+> - **III.3** (44 | 56). 1: función hedónica y precio implícito, problema del consumidor de Rosen en dos líneas, su condición de tangencia y la regresión hedónica. 2: `funcion-hedonica-rosen` (capas 1-9; rótulos del 16/10). Al acabar, la pizarra solo tiene el modelo de Rosen.
 
 ## Introducción (2′30″)
 
@@ -34,7 +36,7 @@ Axiomas sobre las preferencias, función de utilidad y función de demanda marsh
 
 ### Contextualización
 
-La teoría parte de la utilidad. Bernoulli la aplica a la paradoja de San Petersburgo y Gossen formula sus dos leyes; con la revolución marginalista, Jevons, Menger y Walras la ponen en el centro del valor, y Marshall la trata como cardinal. Edgeworth idea las curvas de indiferencia y Pareto advierte que solo importa el orden. Slutsky separa en 1915 el efecto sustitución del efecto renta y Debreu da en 1959 a la teoría su forma axiomática. Después se acerca a lo observable: la preferencia revelada de Samuelson, la producción doméstica de Becker y los precios hedónicos de Rosen.
+La teoría parte de la utilidad. Bernoulli y Gossen la formalizan; con la revolución marginalista, Jevons, Menger y Walras la ponen en el centro del valor, y Marshall la trata como cardinal. Edgeworth idea las curvas de indiferencia y Pareto advierte que solo importa el orden. Slutsky separa en 1915 el efecto sustitución del efecto renta y Debreu da en 1959 a la teoría su forma axiomática. Después se acerca a lo observable: la preferencia revelada de Samuelson, la producción doméstica de Becker y los precios hedónicos de Rosen.
 
 ### Problemática
 
@@ -72,7 +74,7 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 [Pizarra: gráfico `preferencias-venn` hasta la capa 7] Fuera de las dos elipses, en la esquina, queda un cuarto caso lógico: que no se cumpla ninguna de las dos relaciones. Serían cestas no comparables, justo lo que va a excluir el primer axioma, la completitud.
 
-[Pizarra 2: gráfico `conjuntos-contorno` hasta la capa 3] Para cada cesta, la relación define tres conjuntos. En el plano de los dos bienes trazo los ejes, marco equis cero y sombreo por encima el contorno superior, be de equis cero: el conjunto de cestas equis tales que equis es al menos tan buena como equis cero. Son las cestas al menos tan buenas como ella.
+[Pizarra 2: gráfico `conjuntos-contorno` hasta la capa 3] Para cada cesta, la relación define tres conjuntos. En el plano de los dos bienes trazo los ejes, marco equis cero y sombreo por encima el contorno superior, be de equis cero: el conjunto de cestas equis tales que equis es al menos tan buena como equis cero.
 
 [Pizarra: gráfico `conjuntos-contorno` hasta la capa 4] Por debajo sombreo el contorno inferior, hache de equis cero: el conjunto de cestas equis tales que equis cero es al menos tan buena como ellas. Es decir, las cestas que no son mejores que equis cero.
 
@@ -108,7 +110,7 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 [Rejilla: 42|58] [Pizarra 1: fórmula `\vec{x}^1\succcurlyeq\vec{x}^2\ \Leftrightarrow\ U(\vec{x}^1)\geq U(\vec{x}^2)`] La función de utilidad asigna a cada cesta un número real y representa las preferencias: equis uno es al menos tan buena como equis dos si y solo si su utilidad es mayor o igual.
 
-> Apunte: U: S → ℝ representa las preferencias; es una «numeración» de los conjuntos de indiferencia
+> Apunte: U asigna un número real a cada cesta y representa las preferencias; es una «numeración» de los conjuntos de indiferencia
 
 [Pizarra 1: fórmula `V=f(U),\ \ f\ \text{creciente}`] Ese número no mide nada: solo ordena. La utilidad es ordinal, y cualquier transformación creciente representa las mismas preferencias.
 
@@ -154,7 +156,7 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 [Rejilla: 36|64] [Pizarra 1: fórmula `B(\vec{p},\overline{W})=\{\vec{x}\in S:\ \vec{p}\cdot\vec{x}\leq\overline{W}\}`] El segundo ingrediente es la restricción presupuestaria: con precios dados y positivos, una cesta es asequible si su coste no supera la renta, uve doble barra. Son las cestas del conjunto presupuestario walrasiano.
 
-> Apunte: B(p, W̄): no vacío, cerrado, acotado si p ≫ 0, y convexo (compacto)
+> Apunte: Conjunto presupuestario: no vacío, cerrado, acotado si todos los precios son positivos, y convexo (compacto)
 
 [Pizarra 2: gráfico `conjunto-presupuestario` hasta la capa 2] Con dos bienes, lo sombreo bajo la recta de balance, que corta cada eje en la renta entre el precio de ese bien: pe uno equis uno más pe dos equis dos igual a la renta.
 
@@ -164,27 +166,27 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 ### I.2. Problema de maximización de la utilidad: el equilibrio
 
-[Rejilla: {columnas: [44, 56], filas: {2: [52, 48]}}] [Pizarra 1: fórmula `\max_{\vec{x}}\ U(\vec{x})\ \ \text{s.a.}\ \ \vec{p}\cdot\vec{x}\leq\overline{W},\ \vec{x}\geq\vec{0}`] Paso al problema de maximización de la utilidad: maximizar u de equis sujeto a que el gasto no supere la renta y a que las cantidades no sean negativas. Con utilidad estrictamente cuasicóncava y un presupuesto compacto y convexo, el óptimo existe y es único.
+[Rejilla: 20|40|40] [Pizarra 1: fórmula `\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vec{x}} & U(\vec{x})\\[3pt] \text{s.a.} & \vec{p}\cdot\vec{x}\leq\overline{W}\\[3pt] & \vec{x}\geq\vec{0}\end{array}`, en morado y recuadrada: función clave, se queda en la esquina] Paso al problema de maximización de la utilidad, que escribo recuadrado en la esquina porque volveremos a él: maximizar u de equis, sujeto a que el gasto no supere la renta y a que las cantidades no sean negativas. Con utilidad estrictamente cuasicóncava, el óptimo existe y es único.
 
 > Apunte: Weierstrass: el óptimo existe; con cuasiconcavidad estricta y conjunto convexo, es global y único
 
-[Pizarra 1: fórmula `\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)`] Como hay desigualdades, se resuelve con Kuhn y Tucker. La lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta: su utilidad marginal.
+[Pizarra 2: fórmula `\mathcal{L}=U(\vec{x})+\lambda\big(\overline{W}-\vec{p}\cdot\vec{x}\big)`] Como hay desigualdades, se resuelve con Kuhn y Tucker. La lagrangiana: la utilidad más lambda por la renta menos el gasto. Lambda es el precio sombra de la renta: su utilidad marginal.
 
 > Apunte: Kuhn y Tucker (1951)
 
-[Pizarra 1: fórmula `U_i-\lambda p_i\leq 0,\ \ x_i\geq 0,\ \ x_i(U_i-\lambda p_i)=0`] Las condiciones: la utilidad marginal de cada bien no supera su coste en utilidad, lambda por pe i; la cantidad no es negativa, y la holgura complementaria: o el bien se consume y vale la igualdad, o no compensa a esos precios y no se compra.
+[Pizarra 2: fórmula `U_i-\lambda p_i\leq 0,\ \ x_i\geq 0,\ \ x_i(U_i-\lambda p_i)=0`] Las condiciones: la utilidad marginal de cada bien no supera su coste en utilidad, lambda por pe i; la cantidad no es negativa, y la holgura complementaria: o el bien se consume y vale la igualdad, o no compensa a esos precios y no se compra.
 
-[Pizarra 1: fórmula `\lambda>0\ \Rightarrow\ \vec{p}\cdot\vec{x}^*=\overline{W}`] [Apoyo 2b, no se escribe: gráfico `pmu-r3` hasta la capa 4] Por la insaciabilidad local, lambda es positiva y se gasta toda la renta. En el apoyo, en tres dimensiones: si la colina tuviera la cima dentro del presupuesto, lambda sería cero.
+[Pizarra 2: fórmula `\lambda>0\ \Rightarrow\ \vec{p}\cdot\vec{x}^*=\overline{W}`] [Apoyo 3, no se escribe: gráfico `pmu-r3` hasta la capa 4] Por la insaciabilidad local, lambda es positiva y se gasta toda la renta. En el apoyo, en tres dimensiones: si la colina tuviera la cima dentro del presupuesto, lambda sería cero.
 
-[Borrar 2b] [Apoyo 2b, no se escribe: gráfico `pmu-r3` hasta la capa 9] Con una utilidad monótona, en cambio, el máximo está en el corte de la superficie sobre la recta de balance: la restricción opera.
+[Borrar 3] [Apoyo 3, no se escribe: gráfico `pmu-r3` hasta la capa 9] Con una utilidad monótona, en cambio, el máximo está en el corte de la superficie sobre la recta de balance: la restricción opera.
 
-[Pizarra 2a: gráfico `solucion-interior-esquina` hasta la capa 4] Lo vemos en el plano. Sombreo el conjunto presupuestario y trazo tres curvas: u cero, que se puede mejorar; u asterisco, y u dos, inalcanzable.
-
-[Pizarra: gráfico `solucion-interior-esquina` hasta la capa 6] En una solución interior el óptimo, equis asterisco, es la tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, iguala el cociente de precios, lo que exige el mercado.
-
-[Pizarra 1: fórmula `\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}`] Analíticamente, la utilidad marginal por euro es la misma en todos los bienes e igual a lambda: es la segunda ley de Gossen.
+[Borrar 3] [Pizarra 3: fórmula `\frac{U_1}{p_1}=\dots=\frac{U_n}{p_n}=\lambda\ \Rightarrow\ \mathrm{RMS}_{12}=\frac{p_1}{p_2}`] En una solución interior, la primera condición se cumple con igualdad para todos los bienes: la utilidad marginal por euro es la misma en todos e igual a lambda. Es la segunda ley de Gossen. Con dos bienes, la relación marginal de sustitución iguala el cociente de precios.
 
 > Apunte: Segunda ley de Gossen (1854): igual utilidad marginal por unidad monetaria en todos los bienes
+
+[Pizarra 2-3: gráfico `solucion-interior-esquina` hasta la capa 4] Lo vemos en el plano. Sombreo el conjunto presupuestario y trazo tres curvas: u cero, que se puede mejorar; u asterisco, y u dos, inalcanzable.
+
+[Pizarra: gráfico `solucion-interior-esquina` hasta la capa 6] El óptimo, equis asterisco, es la tangencia: la relación marginal de sustitución, lo que el consumidor está dispuesto a intercambiar, iguala el cociente de precios, lo que exige el mercado.
 
 [Pizarra: gráfico `solucion-interior-esquina` hasta la capa 11] Pero la solución puede ser de esquina. A la derecha, otra recta y otras tres curvas: la más alta alcanzable toca la recta en el eje, y el bien dos no se consume.
 
@@ -194,27 +196,27 @@ La exposición sigue tres bloques: los fundamentos de la elección racional, has
 
 ### I.3. Solución: demanda marshalliana y función indirecta de utilidad
 
-[Rejilla: {columnas: [46, 54], filas: {2: [42, 58]}}] [Pizarra 1: fórmula `\vec{x}^*=\vec{x}(\vec{p},\overline{W})`] Paso a la solución. Las cantidades óptimas, como funciones de los precios y de la renta, forman el sistema completo de demandas marshallianas, u ordinarias: equis asterisco igual a equis de pe y la renta.
+[Rejilla: 20|40|40] [Borrar 2, 3] [Pizarra 1: fórmula `\vec{x}^*=\vec{x}(\vec{p},\overline{W})`, en morado y recuadrada: función clave, se queda en la esquina] Paso a la solución. Las cantidades óptimas, como funciones de los precios y de la renta, forman el sistema completo de demandas marshallianas, u ordinarias: equis asterisco igual a equis de pe y la renta. La recuadro también en la esquina: es la otra función clave.
 
-[Pizarra 1: fórmula `\vec{x}(k\vec{p},k\overline{W})=\vec{x}(\vec{p},\overline{W})`] Dos propiedades son clave. Es homogénea de grado cero: si multiplicamos precios y renta por ka, el conjunto presupuestario no cambia y la cesta tampoco. No hay ilusión monetaria.
+[Pizarra 2: fórmula `\vec{x}(\kappa\vec{p},\kappa\overline{W})=\vec{x}(\vec{p},\overline{W})`] Dos propiedades son clave. Es homogénea de grado cero: si multiplicamos precios y renta por kappa, el conjunto presupuestario no cambia y la cesta tampoco. No hay ilusión monetaria.
 
-[Pizarra 1: fórmula `\vec{p}\cdot\vec{x}(\vec{p},\overline{W})=\overline{W}`] Y cumple la ley de Walras: por la insaciabilidad local, el consumidor gasta toda su renta.
+[Pizarra 2: fórmula `\vec{p}\cdot\vec{x}(\vec{p},\overline{W})=\overline{W}`] Y cumple la ley de Walras: por la insaciabilidad local, el consumidor gasta toda su renta.
 
-[Pizarra 1: fórmula `V(\vec{p},\overline{W})=U\big(\vec{x}(\vec{p},\overline{W})\big)`] Sustituyéndola en la utilidad sale la función indirecta de utilidad, uve de pe y la renta: la utilidad máxima con esos precios y esa renta. Es creciente en la renta, no creciente en los precios y cuasiconvexa.
+[Pizarra 3: fórmula `V(\vec{p},\overline{W})=U\big(\vec{x}(\vec{p},\overline{W})\big)`] Sustituyéndola en la utilidad sale la función indirecta de utilidad, uve de pe y la renta: la utilidad máxima con esos precios y esa renta. Es creciente en la renta, no creciente en los precios y cuasiconvexa.
 
-[Pizarra 1: fórmula `x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}`] Y de ella se recupera la demanda derivando, con la identidad de Roy: menos su derivada respecto al precio, entre su derivada respecto a la renta.
+[Pizarra 3: fórmula `x_i=-\frac{\partial V/\partial p_i}{\partial V/\partial\overline{W}}`] Y de ella se recupera la demanda derivando, con la identidad de Roy: menos su derivada respecto al precio, entre su derivada respecto a la renta.
 
 > Apunte: Roy (1947); dar la vuelta al problema (minimizar el gasto) lleva a la dualidad
 
 ### I.3. Solución: curva de demanda de mercado
 
-[Pizarra 2a: fórmula `X_i=\sum_{h=1}^{H}x_{hi}(\vec{p},\overline{W}_h)`] Falta la demanda de mercado: la suma de las individuales, gráficamente una suma horizontal. Primer problema: en general depende de toda la distribución de la renta, no solo de su total.
+[Pizarra 2: fórmula `X_i=\sum_{h=1}^{H}x_{hi}(\vec{p},\overline{W}_h)`] Falta la demanda de mercado: la suma de las individuales, gráficamente una suma horizontal. Primer problema: en general depende de toda la distribución de la renta, no solo de su total.
 
-[Pizarra 2a: fórmula `V_h=a_h(\vec{p})+b(\vec{p})\,\overline{W}_h`] Gorman demuestra que solo depende de la renta total si la función indirecta de cada consumidor tiene su forma polar: un término propio más un coeficiente de la renta común a todos.
+[Pizarra 3: fórmula `V_h=a_h(\vec{p})+b(\vec{p})\,\overline{W}_h`] Gorman demuestra que solo depende de la renta total si la función indirecta de cada consumidor tiene su forma polar: un término propio más un coeficiente de la renta común a todos.
 
 > Apunte: Gorman (1953, 1961): curvas de Engel rectas y paralelas; la economía actúa como un consumidor representativo
 
-[Pizarra 2b: gráfico `engel-gorman` hasta la capa 4] Por la identidad de Roy, equivale a curvas de Engel rectas y paralelas, con el mismo efecto renta para todos, como estas dos, una por consumidor. Si pasamos renta del primero al segundo, lo que deja de comprar uno lo compra el otro, y la demanda agregada no cambia.
+[Pizarra 2: gráfico `engel-gorman` hasta la capa 4] Por la identidad de Roy, equivale a curvas de Engel rectas y paralelas, con el mismo efecto renta para todos, como estas dos, una por consumidor. Si pasamos renta del primero al segundo, lo que deja de comprar uno lo compra el otro, y la demanda agregada no cambia.
 
 Lo cumplen las homotéticas idénticas y las cuasilineales, con efecto renta nulo, cómodo pero sin bienes inferiores. Segundo problema: la agregada no hereda la simetría, y por el teorema de Sonnenschein, Mantel y Debreu casi cualquier exceso de demanda es posible.
 
@@ -226,11 +228,11 @@ Recapitulando: de las preferencias y el presupuesto sale una demanda homogénea 
 
 ### II.1. Variaciones en la renta
 
-[Rejilla: {columnas: [58, 42], filas: {1: [55, 45]}}]  Paso al segundo bloque: la estática comparativa. Adelanto la conclusión: todo cambio de precio tiene un efecto sustitución, nunca positivo, y un efecto renta de signo variable, y eso explica la clasificación de los bienes. Lo mediremos con elasticidades, que no dependen de las unidades.
+[Rejilla: 20|40|40] [Borrar 2, 3] Paso al segundo bloque: la estática comparativa. Adelanto la conclusión: todo cambio de precio tiene un efecto sustitución, nunca positivo, y un efecto renta de signo variable, y eso explica la clasificación de los bienes. Lo mediremos con elasticidades, que no dependen de las unidades.
 
 > Apunte: Estática comparativa: se comparan óptimos, sin estudiar el ajuste; Marshall (1890) introduce las elasticidades
 
-[Pizarra 1a: gráfico `renta-consumo-engel` hasta la capa 4] Empiezo por la renta. Con la recta inicial, el consumidor elige E cero. Si la renta sube y los precios no cambian, la recta se desplaza en paralelo hacia fuera, y el nuevo óptimo es E uno.
+[Pizarra 2: gráfico `renta-consumo-engel` hasta la capa 4] Empiezo por la renta. Con la recta inicial, el consumidor elige E cero. Si la renta sube y los precios no cambian, la recta se desplaza en paralelo hacia fuera, y el nuevo óptimo es E uno.
 
 [Pizarra: gráfico `renta-consumo-engel` hasta la capa 7] Con más renta, E dos. Uniendo los óptimos sale la curva de renta-consumo, la senda de expansión; con preferencias homotéticas sería una semirrecta desde el origen.
 
@@ -240,23 +242,23 @@ Recapitulando: de las preferencias y el presupuesto sale una demanda homogénea 
 
 [Pizarra 2: fórmula `\varepsilon_{x_i,\overline{W}}\equiv\frac{\partial x_i}{\partial\overline{W}}\cdot\frac{\overline{W}}{x_i}`] La elasticidad-renta es la variación porcentual de la cantidad ante una variación porcentual de la renta: la derivada respecto a la renta, por la renta entre la cantidad.
 
-[Pizarra 1b: gráfico `elasticidades-renta-precio` hasta la capa 2] Con ella clasifico los bienes en un esquema que iremos completando. Sobre un eje, la elasticidad-renta, con el cero y el uno: a la izquierda del cero, los inferiores; a la derecha, los normales.
+[Pizarra 3: gráfico `elasticidades-renta-precio` hasta la capa 2] Con ella clasifico los bienes en un esquema que iremos completando. Sobre un eje, la elasticidad-renta, con el cero y el uno: a la izquierda del cero, los inferiores; a la derecha, los normales.
 
 [Pizarra: gráfico `elasticidades-renta-precio` hasta la capa 3] Y entre los normales, los necesarios, entre cero y uno, cuyo peso en el gasto cae con la renta, y los de lujo, por encima de uno.
 
 [Pizarra 2: fórmula `\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1`] Además, derivando la ley de Walras respecto a la renta sale la agregación de Engel: la media de las elasticidades-renta, ponderada por el peso de cada bien en el gasto, es uno. No todos los bienes pueden ser inferiores.
 
-[Apoyo 2, no se escribe: gráfico `epf-alimentos-quintil` hasta la capa 2] Y la ley de Engel, la regularidad empírica más conocida de la demanda, confirma que los alimentos son un bien necesario: el peso de la alimentación en el gasto cae al subir la renta. Y se sigue cumpliendo: en España, en 2025, el quintil de menor gasto dedicó a alimentos el 19,6 por ciento, y el de mayor gasto, el 12,3.
+[Borrar 2] [Apoyo 2, no se escribe: gráfico `epf-alimentos-quintil` hasta la capa 2] La ley de Engel lo confirma: los alimentos son un bien necesario, y su peso en el gasto cae al subir la renta. En España, en 2025, el quintil de menor gasto dedicó a alimentos el 19,6 por ciento, y el de mayor gasto, el 12,3.
 
 > Apunte: INE, Encuesta de Presupuestos Familiares 2025 (tabla 73828): media del 16,0 %
 
 ### II.2. Variaciones en los precios: precio propio
 
-[Rejilla: {columnas: [58, 42], filas: {1: [55, 45]}}] [Borrar 1a, 2] [Apoyo 2, no se escribe: gráfico `precio-consumo-demanda` hasta la capa 10] Paso a los precios. Si baja el precio del bien uno, la recta gira hacia fuera; los óptimos forman la curva de precio-consumo y, en el plano precio-cantidad, la demanda marshalliana, como en el apoyo.
+[Rejilla: 20|40|40] [Borrar 2] [Apoyo 2, no se escribe: gráfico `precio-consumo-demanda` hasta la capa 10] Paso a los precios. Si baja el precio del bien uno, la recta gira hacia fuera; los óptimos forman la curva de precio-consumo y, en el plano precio-cantidad, la demanda marshalliana, como en el apoyo.
 
 [Borrar 2] [Pizarra 2: fórmula `\varepsilon_{x_i,p_i}\equiv\frac{\partial x_i}{\partial p_i}\cdot\frac{p_i}{x_i}`] La elasticidad-precio propia mide la respuesta porcentual de la cantidad a su propio precio. Si es negativa, el bien es ordinario, con demanda elástica o inelástica según pase o no de menos uno; si es positiva, es un bien Giffen: su demanda sube cuando sube su precio.
 
-[Pizarra 1a: gráfico `slutsky-propio` hasta la capa 1] ¿Cómo puede ser? Un cambio de precio cambia el precio relativo y el poder adquisitivo. La ecuación de Slutsky los separa, y la escribo como cabecera de una tabla: el efecto total, la derivada de la marshalliana respecto a su precio, es el efecto sustitución, la derivada de la demanda compensada o hicksiana, que mantiene la utilidad, más el efecto renta: menos la cantidad por el efecto renta del bien.
+[Pizarra 3: gráfico `slutsky-propio` hasta la capa 1] ¿Cómo puede ser? Un cambio de precio cambia el precio relativo y el poder adquisitivo. La ecuación de Slutsky los separa, y la escribo como cabecera de una tabla: el efecto total, la derivada de la marshalliana respecto a su precio, es el efecto sustitución, la derivada de la demanda compensada o hicksiana, que mantiene la utilidad dando la vuelta al problema de la esquina, más el efecto renta: menos la cantidad por el efecto renta del bien.
 
 > Apunte: Slutsky (1915); demanda hicksiana: la del problema dual de minimización del gasto
 
@@ -288,11 +290,15 @@ Recapitulando: de las preferencias y el presupuesto sale una demanda homogénea 
 
 ### II.2. Variaciones en los precios: precio cruzado
 
-[Rejilla: 38|62] [Pizarra 1: fórmula `\varepsilon_{x_i,p_j}\equiv\frac{\partial x_i}{\partial p_j}\cdot\frac{p_j}{x_i}`] Con el precio de otro bien, la elasticidad cruzada define las relaciones brutas: sustitutivos brutos si es positiva, complementarios si es negativa. Como incluyen efectos renta, no son simétricas.
+[Rejilla: 20|40|40] [Borrar 2, 3] [Pizarra 2: fórmula `\varepsilon_{x_i,p_j}\equiv\frac{\partial x_i}{\partial p_j}\cdot\frac{p_j}{x_i}`] Con el precio de otro bien, la elasticidad cruzada define las relaciones brutas: sustitutivos brutos si es positiva, complementarios si es negativa. Como incluyen efectos renta, no son simétricas.
 
-[Pizarra 2: gráfico `slutsky-cruzado` hasta la capa 1] Slutsky también separa aquí los dos efectos, y lo escribo como cabecera de otra tabla: el efecto total cruzado, la derivada de la marshalliana del bien i respecto al precio del bien jota, es el efecto sustitución cruzado, el de la hicksiana, más el efecto renta cruzado: menos la cantidad del bien jota por el efecto renta del bien i. Debajo, tres columnas: el efecto sustitución, que define las relaciones netas; el efecto renta, según sea el bien i, y el efecto total, que da las relaciones brutas.
+[Pizarra 3: fórmula `\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j\qquad\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0`] Las elasticidades cumplen dos restricciones que solo exigen el presupuesto. Derivando la ley de Walras respecto a un precio sale la agregación de Cournot: la media ponderada de las elasticidades respecto a pe jota es menos la participación del bien jota. Y de la homogeneidad, que las elasticidades precio y renta de cada bien suman cero.
 
-> Apunte: Bienes sustitutivos netos si ∂hᵢ/∂pⱼ > 0; complementarios netos si ∂hᵢ/∂pⱼ < 0
+> Apunte: Engel, Cournot y homogeneidad: solo la restricción presupuestaria; simetría y negatividad: maximización
+
+[Pizarra 2-3: gráfico `slutsky-cruzado` hasta la capa 1] La simetría y el signo del efecto sustitución exigen, además, que el consumidor maximice, como en el problema de la esquina. Slutsky también separa aquí los dos efectos, y lo escribo como cabecera de otra tabla: el efecto total cruzado, la derivada de la marshalliana del bien i respecto al precio del bien jota, es el efecto sustitución cruzado, el de la hicksiana, más el efecto renta cruzado: menos la cantidad del bien jota por el efecto renta del bien i. Debajo, tres columnas: el efecto sustitución, que define las relaciones netas; el efecto renta, según sea el bien i, y el efecto total, que da las relaciones brutas.
+
+> Apunte: Sustitutivos netos si el efecto sustitución cruzado es positivo; complementarios netos si es negativo
 
 [Pizarra: gráfico `slutsky-cruzado` hasta la capa 2] Primera fila: sustitutivos netos, con efecto sustitución positivo. Si el bien i es normal, el efecto renta es negativo y va en contra, así que el efecto total es ambiguo: depende de cuál domine.
 
@@ -306,12 +312,6 @@ Recapitulando: de las preferencias y el presupuesto sale una demanda homogénea 
 
 > Apunte: Cada bien tiene al menos un sustitutivo neto; con dos bienes, son sustitutivos netos
 
-[Pizarra 1: fórmula `\sum_i s_i\,\varepsilon_{x_i,p_j}=-s_j`] Por último, derivando la ley de Walras respecto a un precio sale la agregación de Cournot: la media ponderada de las elasticidades respecto a pe jota es menos la participación del bien jota.
-
-[Pizarra 1: fórmula `\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0`] Y de la homogeneidad, que las elasticidades precio y renta de cada bien suman cero. Estas restricciones solo exigen el presupuesto; la simetría y el signo del efecto sustitución exigen, además, que el consumidor maximice.
-
-> Apunte: Engel, Cournot y homogeneidad: solo la restricción presupuestaria; simetría y negatividad: maximización
-
 ### II.3. Valoración
 
 Valoro el bloque. La teoría da una demanda con restricciones contrastables, pero tiene límites que abren el tercer bloque: las preferencias no se observan, consumir no lleva tiempo y los bienes no tienen características.
@@ -322,11 +322,11 @@ Recapitulando: la ley de la demanda vale siempre para la compensada, y para la m
 
 ### III.1. La teoría de la preferencia revelada
 
-[Rejilla: {columnas: [60, 40], filas: {1: [55, 45]}}]  Paso al tercer bloque: otros desarrollos. Adelanto la conclusión: los tres acercan la teoría a lo observable. El primero, la preferencia revelada de Samuelson. La idea: en lugar de partir de unas preferencias que no vemos, partir de las elecciones. Es un enfoque inductivo frente al deductivo de la teoría ordinal.
+[Rejilla: 20|40|40] [Borrar 2, 3] Paso al tercer bloque: otros desarrollos. Adelanto la conclusión: los tres acercan la teoría a lo observable. El primero, la preferencia revelada de Samuelson. La idea: en lugar de partir de unas preferencias que no vemos y del problema de la esquina, partir de las elecciones, de la propia demanda. Es un enfoque inductivo frente al deductivo de la teoría ordinal.
 
 > Apunte: Samuelson (1938, 1948): la demanda sin recurrir a la utilidad; Nobel de 1970
 
-[Pizarra 1a: gráfico `adpr-efecto-sustitucion` hasta la capa 5] Supone un consumidor que, ante cada vector de precios y renta, elige una única cesta y gasta toda su renta. En el gráfico, con los precios pe cero elige equis cero, aunque podía comprar equis uno. Equis cero se revela directamente preferida.
+[Pizarra 2-3: gráfico `adpr-efecto-sustitucion` hasta la capa 5] Supone un consumidor que, ante cada vector de precios y renta, elige una única cesta y gasta toda su renta. En el gráfico, con los precios pe cero elige equis cero, aunque podía comprar equis uno. Equis cero se revela directamente preferida.
 
 [Pizarra: gráfico `adpr-efecto-sustitucion` hasta la capa 7] El axioma débil exige coherencia: si con otros precios, pe uno, se elige equis uno, equis cero no puede ser asequible. La nueva recta tiene que dejarla fuera.
 
@@ -344,11 +344,11 @@ Recapitulando: la ley de la demanda vale siempre para la compensada, y para la m
 
 > Apunte: El ADPR da una matriz de Slutsky semidefinida negativa, pero no simétrica
 
-[Pizarra 2: fórmula `\text{AFPR}\ \Leftrightarrow\ \succcurlyeq\ \text{racionales}`] Por eso Houthakker formula el axioma fuerte, la transitividad de las preferencias reveladas, y demuestra que equivale a maximizar unas preferencias racionales: los dos enfoques son equivalentes.
+[Pizarra 2: fórmula `\text{AFPR}\ \Leftrightarrow\ \succcurlyeq\ \text{racionales}`] Por eso Houthakker formula el axioma fuerte, la transitividad de las preferencias reveladas, y demuestra que equivale a maximizar unas preferencias racionales, como en el problema de la esquina: los dos enfoques son equivalentes.
 
 > Apunte: Houthakker (1950): axioma fuerte de la preferencia revelada
 
-[Pizarra 1b: gráfico `preferencia-revelada-indiferencia` hasta la capa 4] Samuelson muestra además cómo acotar una curva de indiferencia. Debajo, parto de otra elección, equis cero, con los precios pe cero: las cestas de ese presupuesto, que pudo comprar y no compró, se revelan peores que equis cero.
+[Pizarra 3: gráfico `preferencia-revelada-indiferencia` hasta la capa 4] Samuelson muestra además cómo acotar una curva de indiferencia. A la derecha, parto de otra elección, equis cero, con los precios pe cero: las cestas de ese presupuesto, que pudo comprar y no compró, se revelan peores que equis cero.
 
 [Pizarra: gráfico `preferencia-revelada-indiferencia` hasta la capa 8] Si con los precios pe uno elige equis uno pudiendo comprar equis cero, equis uno y las cestas con más de todo forman la región revelada mejor. La curva de indiferencia queda entre las dos regiones, y cada nueva observación, como equis dos, la acota más.
 
@@ -358,11 +358,11 @@ Como extensión, el teorema de Afriat lleva el contraste a datos finitos con el 
 
 ### III.2. La producción doméstica
 
-[Rejilla: 100] [Pizarra 1: fórmula `\max\ U(Z_1,\dots,Z_m),\quad Z_i=f_i(x_i,t_i)`] El segundo desarrollo es la producción doméstica. La idea, de Becker: el hogar es una pequeña fábrica que combina bienes de mercado y tiempo para producir lo que de verdad le satisface, una comida o el cuidado de los hijos. Maximiza una utilidad sobre esos bienes finales, zeta, cada uno producido con bienes y tiempo.
+[Rejilla: 100] El segundo desarrollo es la producción doméstica. La idea, de Becker: el hogar es una pequeña fábrica que combina bienes de mercado y tiempo para producir lo que de verdad le satisface, una comida o el cuidado de los hijos.
 
 > Apunte: Becker (1965): nueva economía de la familia; Nobel de 1992. Lancaster (1966): características, antecedente de los precios hedónicos
 
-[Pizarra 1: fórmula `\sum_i p_ix_i=w\,t_w+\overline{W},\qquad\sum_i t_i+t_w=T`] Tiene dos restricciones: la presupuestaria, con el salario por las horas de trabajo más la renta no laboral, y la de tiempo, que reparte el total entre trabajo y producción en casa.
+[Pizarra 1: fórmula `\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\{x_i,t_i\},\,t_w} & U(Z_1,\dots,Z_m)\\[3pt] \text{s.a.} & Z_i=f_i(x_i,t_i),\quad i=1,\dots,m\\[3pt] & \sum_i p_ix_i=w\,t_w+\overline{W}\\[3pt] & \sum_i t_i+t_w=T\end{array}`] El hogar elige los bienes, el tiempo de cada actividad y las horas de trabajo para maximizar una utilidad sobre esos bienes finales, zeta, sujeto a que cada uno se produzca con bienes y tiempo, y a dos restricciones más: la presupuestaria, en la que el gasto iguala el salario por las horas de trabajo más la renta no laboral, y la de tiempo, que reparte el total entre trabajo y producción en casa.
 
 [Pizarra 1: fórmula `\sum_i\left(p_ix_i+w\,t_i\right)=w\,T+\overline{W}`] Se funden en una: la renta completa, lo que ganaría el hogar si dedicara todo su tiempo al mercado.
 
@@ -374,13 +374,13 @@ Como extensión, el teorema de Afriat lleva el contraste a datos finitos con el 
 
 ### III.3. Precios hedónicos
 
-[Rejilla: 44|56]  El tercer desarrollo son los precios hedónicos. La idea: una vivienda o un coche son paquetes de características que no se venden por separado, y el método descompone su precio en el valor de cada una. Lo que se paga revela cómo se valoran.
+[Rejilla: 44|56] El tercer desarrollo son los precios hedónicos. La idea: una vivienda o un coche son paquetes de características que no se venden por separado, y el método descompone su precio en el valor de cada una. Lo que se paga revela cómo se valoran.
 
 > Apunte: Court (1939): automóviles; Griliches (1961): índices ajustados por calidad; Rosen (1974): la teoría
 
 [Pizarra 1: fórmula `p(\vec{z}),\qquad\frac{\partial p(\vec{z})}{\partial z_j}`] [Pizarra 2: gráfico `funcion-hedonica-rosen` hasta la capa 2] Rosen supone un mercado competitivo de un producto diferenciado, con agentes precio-aceptantes. El precio de una variedad con características zeta es la función hedónica, pe de zeta, y su derivada es el precio implícito de cada característica.
 
-[Pizarra 1: fórmula `\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(\vec{z})}{\partial z_j}`] El consumidor maximiza su utilidad sobre las características y un bien numerario, i griega, e iguala su relación marginal de sustitución al precio implícito: la tangencia de siempre, sobre una restricción no lineal.
+[Pizarra 1: fórmula `\begin{array}{@{}r@{\quad}l@{}}\displaystyle\max_{\vec{z},\,y} & U(\vec{z},y)\\[3pt] \text{s.a.} & p(\vec{z})+y=\overline{W}\end{array}`] [Pizarra 1: fórmula `\frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(\vec{z})}{\partial z_j}`] El consumidor maximiza su utilidad sobre las características y un bien numerario, i griega, sujeto a que el precio de la variedad más el numerario agoten su renta. E iguala su relación marginal de sustitución al precio implícito: la tangencia de siempre, sobre una restricción no lineal.
 
 [Pizarra: gráfico `funcion-hedonica-rosen` hasta la capa 4] Cada consumidor tiene una curva de puja, theta mayúscula: lo máximo que pagaría por cada variedad sin cambiar su utilidad. Dibujo la de dos consumidores.
 
@@ -422,4 +422,4 @@ En mi opinión, su lógica es más sólida que su evidencia: la simetría se rec
 
 ### Idea final
 
-¿Puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? Sí, con matices: las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar; lo que esa coherencia no recoge, el riesgo, el tiempo o los sesgos, es lo que el resto de la teoría económica viene a explicar.
+¿Puede, entonces, una teoría explicar lo que elegimos sin ver lo que queremos? Sí, con matices: las elecciones delatan las preferencias, y basta pedirles coherencia para obtener una demanda que los datos pueden refutar. Por eso la teoría de la demanda es el primer ladrillo del análisis de los mercados: sin ella no puede explicarse cómo se forman los precios, ni medirse la inflación con bienes cuya calidad cambia, ni valorarse el bienestar que una política gana o pierde. Lo que esa coherencia no recoge, el riesgo, el tiempo o los sesgos, es lo que el resto de la teoría económica viene a explicar.
