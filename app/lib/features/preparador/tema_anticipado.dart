@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../core/providers.dart';
+import '../../data/models/coordinacion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
@@ -181,6 +182,8 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
   late final Set<String> _temas = {if (widget.sesion.mandaTema && !widget.sesion.temaSorteado) ...widget.sesion.temasMandados};
   late int _n = widget.sesion.mandaTema ? widget.sesion.temasMandados.length.clamp(1, 2) : widget.sesion.numTemas.clamp(1, 2);
   late bool _unoPorParte = widget.sesion.unoPorParte;
+  /// Al sortear, dejar fuera lo cantado hace poco y lo ya mandado para otras clases.
+  bool _noRepetir = true;
   // Antelación en segundos, o null si es a una hora concreta (_hora).
   int? _antelacion;
   DateTime? _hora;
@@ -230,10 +233,31 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
     });
   }
 
+  /// Temas recientes del alumno (cantados en las dos últimas semanas con
+  /// quien sea, o ya mandados por mí o por sus otros preparadores para otra
+  /// clase), con el motivo.
+  Map<String, String> _recientes() {
+    final s = widget.sesion;
+    final yo = ref.read(preparadorRepoProvider).uid;
+    final mias = ref.watch(sesionesProvider).where((x) => x.alumno == s.alumno && x.alumno != null).toList();
+    final progreso = s.alumno == null ? null : ref.watch(progresoAlumnoProvider(s.alumno!)).valueOrNull;
+    final ids = {for (final x in mias) x.id};
+    final agenda = [...mias, ...?progreso?.cantes.where((c) => !ids.contains(c.id))];
+    final ahora = DateTime.now();
+    final mandados = {
+      for (final x in mias)
+        if (x.mandaTema && x.pendiente && x.fecha.isAfter(ahora)) x.id: x.temasMandados,
+      ...?(s.alumno == null ? null : ref.watch(temasMandadosPorOtrosProvider(s.alumno!)).valueOrNull),
+    };
+    return temasAEvitar(agenda, mandados: mandados, yo: yo, excluir: s.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = widget.sesion;
     final cuando = _cuando;
+    final recientes = _recientes();
+    final evitables = widget.temas.where((t) => recientes.containsKey(t.codigo)).length;
     final ahora = DateTime.now();
     final valida = cuando != null && cuando.isAfter(ahora) && cuando.isBefore(s.fecha);
     final listo = valida && (_sortear ? widget.temas.length >= _n : _temas.length == _n);
@@ -273,6 +297,18 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
             ),
             const SizedBox(height: 8),
             if (_sortear) ...[
+              if (evitables > 0)
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  dense: true,
+                  title: const Text('Sin repetir'),
+                  subtitle: Text(
+                    'Deja fuera ${evitables == 1 ? 'un tema cantado' : '$evitables temas cantados'} en las dos últimas semanas (con quien sea) o ya mandados para otra clase${evitables > widget.temas.length - _n ? ' (si no quedan bastantes, entran todos)' : ''}.',
+                    style: context.textos.labelSmall,
+                  ),
+                  value: _noRepetir,
+                  onChanged: (v) => setState(() => _noRepetir = v),
+                ),
               Text('La app saca ${_n == 1 ? 'una bola' : '$_n bolas'} entre los ${widget.temas.length} temas que lleva el alumno y no ${_n == 1 ? 'la verás tampoco tú' : 'las verás tampoco tú'} hasta la hora en que le ${_n == 1 ? 'llegue' : 'lleguen'}.', style: context.textos.bodySmall),
               if (conPartes)
                 SwitchListTile(
@@ -293,6 +329,8 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
                       dense: true,
                       contentPadding: EdgeInsets.zero,
                       controlAffinity: ListTileControlAffinity.leading,
+                      // Para no repetir: cuándo lo cantó o si ya está mandado.
+                      subtitle: recientes[t.codigo] == null ? null : Text(mayuscula(recientes[t.codigo]!), style: context.textos.labelSmall?.copyWith(color: context.colores.dorado)),
                       value: _temas.contains(t.codigo),
                       onChanged: (v) => setState(() {
                         if (v == true) {
@@ -353,7 +391,12 @@ class _HojaTemaAnticipadoState extends ConsumerState<_HojaTemaAnticipado> {
                   ? null
                   : () {
                       final temas = _sortear
-                          ? Sorteo.sortearClase(widget.temas, _n, unoPorParte: _unoPorParte, parte: parteDeTema).map((t) => t.codigo).toList()
+                          ? Sorteo.sortearClase(
+                              _noRepetir ? sinRepetir(widget.temas, recientes.keys.toSet(), _n, (t) => t.codigo, partes: _unoPorParte && conPartes ? parteDeTema : null) : widget.temas,
+                              _n,
+                              unoPorParte: _unoPorParte,
+                              parte: parteDeTema,
+                            ).map((t) => t.codigo).toList()
                           : _temas.toList();
                       Navigator.pop(context, s.copyWith(temaA: cuando, temasMandados: temas, temaSorteado: _sortear, numTemas: _n, unoPorParte: _unoPorParte));
                     },

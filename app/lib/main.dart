@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +17,7 @@ import 'core/permiso_calendario.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
 import 'core/providers.dart';
+import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
 import 'theme/app_theme.dart';
 import 'data/models/oposicion.dart';
@@ -42,6 +45,8 @@ Future<void> main() async {
       // En el navegador la caché sin conexión puede no estar disponible (p. ej. ventana privada).
     }
     firebaseDisponible = true;
+    // Avisos push de las novedades del proceso (Android).
+    unawaited(iniciarPushProceso());
   } catch (e) {
     debugPrint('Firebase no disponible: $e');
   }

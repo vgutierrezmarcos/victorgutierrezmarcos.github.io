@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_update/in_app_update.dart';
 
 import '../widgets/comunes.dart';
+import 'avisos_breves.dart';
 import 'avisos_navegador.dart';
 
 // Actualizaciones de la app. Instalada desde Google Play, Play la actualiza
@@ -23,7 +24,7 @@ Future<void> comprobarActualizacionDePlay(BuildContext context) async {
     final r = await InAppUpdate.startFlexibleUpdate();
     if (r != AppUpdateResult.success || !context.mounted) return;
     final messenger = ScaffoldMessenger.of(context);
-    messenger.showSnackBar(SnackBar(
+    messenger.mostrar(SnackBar(
       content: const Text('La versión nueva ya está descargada.'),
       duration: const Duration(seconds: 20),
       action: SnackBarAction(label: 'Instalar', onPressed: () => InAppUpdate.completeFlexibleUpdate().catchError((_) {})),

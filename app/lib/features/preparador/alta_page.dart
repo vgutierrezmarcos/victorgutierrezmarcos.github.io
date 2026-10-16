@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -117,7 +118,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
       if (estado.verificado) {
         await _guardarPerfil(linkedin: linkedin, ciudad: ciudad);
         ref.invalidate(estadoRedProvider);
-        messenger.showSnackBar(const SnackBar(content: Text('Ya estabas verificado: tienes otra vez tu sección de preparador.')));
+        messenger.mostrar(const SnackBar(content: Text('Ya estabas verificado: tienes otra vez tu sección de preparador.')));
         navegador.pop();
         return;
       }
@@ -133,7 +134,7 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
           );
       await _guardarPerfil(linkedin: linkedin, ciudad: ciudad);
       ref.invalidate(estadoRedProvider);
-      messenger.showSnackBar(SnackBar(
+      messenger.mostrar(SnackBar(
         content: Text(llegada
             ? (estado.solicitud != null ? 'Solicitud actualizada. Te avisaremos cuando te verifiquen.' : 'Solicitud enviada. Te avisaremos cuando te verifiquen.')
             : 'Sin conexión: la solicitud se enviará sola en cuanto vuelva la red.'),
@@ -141,10 +142,10 @@ class _AltaPreparadorPageState extends ConsumerState<AltaPreparadorPage> {
       navegador.pop();
     } on ErrorRed catch (e) {
       if (mounted) setState(() => _enviando = false);
-      messenger.showSnackBar(SnackBar(content: Text(e.mensaje)));
+      messenger.mostrar(SnackBar(content: Text(e.mensaje)));
     } catch (e) {
       if (mounted) setState(() => _enviando = false);
-      messenger.showSnackBar(SnackBar(content: Text('No se pudo enviar la solicitud (${textoError(e)}). Inténtalo otra vez.')));
+      messenger.mostrar(SnackBar(content: Text('No se pudo enviar la solicitud (${textoError(e)}). Inténtalo otra vez.')));
     }
   }
 

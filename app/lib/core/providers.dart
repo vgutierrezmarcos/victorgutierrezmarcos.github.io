@@ -890,7 +890,12 @@ final vinculosPreparadorProvider = NotifierProvider<MisPreparadoresNotifier, Lis
 
 /// Preparadores con los que el usuario comparte su progreso (los que han
 /// aceptado la conexión).
-final misPreparadoresProvider = Provider<List<VinculoPreparador>>((ref) => ref.watch(vinculosPreparadorProvider).where((v) => v.aceptado).toList());
+final misPreparadoresProvider = Provider<List<VinculoPreparador>>((ref) {
+  final vinculos = ref.watch(vinculosPreparadorProvider);
+  // Cada preparador con un color distinto en la agenda.
+  asignarColoresDistintos([for (final v in vinculos) v.uid]);
+  return vinculos.where((v) => v.aceptado).toList();
+});
 
 /// Opositores que esperan a que el preparador acepte su conexión.
 class SolicitudesEnlaceNotifier extends Notifier<List<SolicitudEnlace>> {
@@ -957,4 +962,36 @@ final notasPreparadoresProvider = FutureProvider.autoDispose.family<List<NotaEnt
   } catch (_) {
     return const [];
   }
+});
+
+// ------------------------------------------------- Coordinación entre preparadores
+
+/// Mensajes del tablón común de un alumno (por su uid) con sus preparadores.
+final tablonComunProvider = FutureProvider.autoDispose.family<List<NotaEntrePreparadores>, String>((ref, alumnoUid) async {
+  try {
+    return await ref.watch(preparadorRepoProvider).mensajes(alumnoUid, PreparadorRepo.tablonComun);
+  } catch (_) {
+    return const [];
+  }
+});
+
+/// Lo que el usuario (como opositor) deja ver a sus preparadores.
+final ajustesCoordinacionProvider = FutureProvider.autoDispose<AjustesCoordinacion>((ref) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final yo = ref.watch(usuarioActualProvider)?.uid;
+  return yo == null ? const AjustesCoordinacion() : repo.ajustesCoordinacionDe(yo);
+});
+
+/// Qué lleva cada preparador de un alumno (por su uid).
+final repartoProvider = FutureProvider.autoDispose.family<Map<String, RepartoPreparador>, String>((ref, alumnoUid) => ref.watch(preparadorRepoProvider).repartoDe(alumnoUid));
+
+/// Temas que los otros preparadores del alumno [idAlumno] ya le han mandado
+/// para sus próximas clases (lado del preparador; para no repetirlos).
+final temasMandadosPorOtrosProvider = FutureProvider.autoDispose.family<Map<String, List<String>>, String>((ref, idAlumno) async {
+  final repo = ref.watch(preparadorRepoProvider);
+  final a = repo.alumno(idAlumno);
+  final progreso = await ref.watch(progresoAlumnoProvider(idAlumno).future);
+  if (a == null || progreso == null) return const {};
+  final ahora = DateTime.now();
+  return repo.temasMandadosPorOtros(a, progreso.cantes.where((c) => c.fecha.isAfter(ahora) && !c.hecho && !c.cancelado));
 });

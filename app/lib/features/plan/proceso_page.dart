@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/avisos_proceso.dart';
 import '../../core/constants.dart';
 import '../../core/providers.dart';
@@ -24,21 +25,18 @@ class ProcesoPage extends ConsumerStatefulWidget {
 
 class _ProcesoPageState extends ConsumerState<ProcesoPage> {
   int _convocatoria = 0;
-  bool _avisos = false;
 
-  @override
-  void initState() {
-    super.initState();
-    avisosProcesoActivados(ref.read(oposicionProvider).id).then((v) {
-      if (mounted) setState(() => _avisos = v);
-    });
-  }
+  /// Lo elegido aquí mientras se guarda (si no, lo guardado de la oposición
+  /// actual: TCEE y DCE tienen cada una sus avisos).
+  bool? _cambiando;
 
   Future<void> _alternarAvisos(bool v) async {
     final messenger = ScaffoldMessenger.of(context);
+    setState(() => _cambiando = v);
     if (v) {
       if (!await asegurarAvisos(context)) {
-        messenger.showSnackBar(const SnackBar(content: Text('Sin permiso para mostrar notificaciones')));
+        messenger.mostrar(const SnackBar(content: Text('Sin permiso para mostrar notificaciones')));
+        if (mounted) setState(() => _cambiando = null);
         return;
       }
     }
@@ -49,9 +47,11 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
       conSesion: ref.read(usuarioActualProvider) != null,
     );
     ref.invalidate(avisosProcesoActivosProvider);
+    // Hasta que se relee, se queda lo elegido (sin parpadeo).
+    await ref.read(avisosProcesoActivosProvider.future);
     if (!mounted) return;
-    setState(() => _avisos = v);
-    messenger.showSnackBar(SnackBar(
+    setState(() => _cambiando = null);
+    messenger.mostrar(SnackBar(
       content: Text(v
           ? (kIsWeb ? 'Te avisaremos cuando haya algo nuevo mientras tengas la web abierta (con la app del móvil, aunque no la abras).' : 'Te avisaremos cuando se publique algo nuevo.')
           : 'Ya no te avisaremos de las novedades del proceso.'),
@@ -120,7 +120,7 @@ class _ProcesoPageState extends ConsumerState<ProcesoPage> {
                           : 'Una notificación cuando aparezca un documento nuevo; al tocarla se abre la página oficial.',
                       style: context.textos.labelSmall,
                     ),
-                    value: _avisos,
+                    value: _cambiando ?? ref.watch(avisosProcesoActivosProvider).valueOrNull ?? false,
                     onChanged: _alternarAvisos,
                   ),
                 ),

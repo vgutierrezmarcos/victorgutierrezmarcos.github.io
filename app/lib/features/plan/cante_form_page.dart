@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -11,6 +12,7 @@ import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
 import 'cantes_util.dart';
 import 'modalidad.dart';
+import '../preparador/coordinacion.dart';
 import '../inicio/permisos_sheet.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
@@ -119,11 +121,11 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
 
   Future<void> _guardar() async {
     if (_ejercicio != 1 && _bolsa == TipoBolsa.lista && _temas.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige al menos un tema para el sorteo')));
+      ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Elige al menos un tema para el sorteo')));
       return;
     }
     if (_sesion && _alumnos.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Elige el alumno')));
+      ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Elige el alumno')));
       return;
     }
     final nav = Navigator.of(context);
@@ -152,11 +154,26 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             return !_edicion && _repetir && _hasta != null ? serieSemanal(suya, _hasta!, cadaSemanas: _cadaSemanas) : [suya];
           }(),
       ];
+      // ¿Choca con otra clase del alumno (conmigo, con sus otros preparadores
+      // o un cante por su cuenta)? Con un solo alumno se dice su nombre.
+      final choques = <Cante>[];
+      for (final idAlumno in _alumnos) {
+        final agenda = await agendaDeAlumno(ref, idAlumno);
+        for (final s in sesiones.where((s) => s.alumno == idAlumno)) {
+          choques.addAll(choquesEnAgenda(agenda, s.fecha, s.minutos, excluir: s.id));
+        }
+      }
+      final nombre = _alumnos.length == 1 ? widget.alumnos!.where((a) => a.id == _alumnos.first).firstOrNull?.nombre : null;
+      if (!mounted || !await confirmarChoques(context, choques, yo: ref.read(usuarioActualProvider)?.uid, quien: nombre ?? 'el alumno')) return;
       await ref.read(sesionesProvider.notifier).guardarVarias(sesiones);
       nav.pop();
       return;
     }
     final lista = !_edicion && _repetir && _hasta != null ? serieSemanal(base, _hasta!, cadaSemanas: _cadaSemanas) : [base];
+    // ¿Choca con una clase con un preparador u otro cante con hora?
+    final agenda = ref.read(cantesProvider);
+    final choques = [for (final c in lista) ...choquesEnAgenda(agenda, c.fecha, c.minutos, excluir: c.id)];
+    if (!mounted || !await confirmarChoques(context, choques)) return;
     await ref.read(cantesProvider.notifier).guardarVarios(lista);
     // La primera vez que se programa un cante se pide permiso para avisar.
     try {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
@@ -91,10 +92,10 @@ class _CronogramaFormPageState extends ConsumerState<CronogramaFormPage> {
       final messenger = ScaffoldMessenger.of(context);
       try {
         await ref.read(preparadorRepoProvider).enviarCronograma(para!, c, nota: _nota.text.trim());
-        messenger.showSnackBar(SnackBar(content: Text('Enviado. A ${para.nombre} le llega un aviso; cuando lo acepte, lo verás en su ficha.')));
+        messenger.mostrar(SnackBar(content: Text('Enviado. A ${para.nombre} le llega un aviso; cuando lo acepte, lo verás en su ficha.')));
         nav.pop();
       } catch (_) {
-        messenger.showSnackBar(const SnackBar(content: Text('No se pudo enviar. Revisa la conexión.')));
+        messenger.mostrar(const SnackBar(content: Text('No se pudo enviar. Revisa la conexión.')));
       }
     }
 

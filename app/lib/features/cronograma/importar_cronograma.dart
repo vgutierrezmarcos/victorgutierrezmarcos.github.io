@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../theme/app_theme.dart';
@@ -34,7 +35,7 @@ class _ImportarCronogramaPageState extends ConsumerState<ImportarCronogramaPage>
 
   void _revisar(CronogramaLeido? leido, {required String origen}) {
     if (leido == null || leido.vacio) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).mostrar(SnackBar(
         duration: const Duration(seconds: 6),
         content: Text(leido == null
             ? 'No he sabido abrir $origen. Prueba a copiar su texto y pegarlo aquí, o hazlo semana a semana.'

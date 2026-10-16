@@ -300,12 +300,31 @@ Future<void> sincronizarRed(Ref ref) async {
 /// Color de una persona (alumno o preparador) para distinguirla en agendas y calendarios.
 const coloresPersonas = [0xFF2E7D9A, 0xFFC0662B, 0xFF3C8D4E, 0xFFB8436A, 0xFF7A5C2E, 0xFF4F5FB5, 0xFF8E8E2B, 0xFF2B8C83];
 
-int colorDePersona(String clave) {
+int colorDePersona(String clave) => _coloresAsignados[clave] ?? coloresPersonas[_hash(clave) % coloresPersonas.length];
+
+int _hash(String clave) {
   var h = 0;
   for (final c in clave.codeUnits) {
     h = (h * 31 + c) & 0x7fffffff;
   }
-  return coloresPersonas[h % coloresPersonas.length];
+  return h;
+}
+
+final Map<String, int> _coloresAsignados = {};
+
+/// Da colores distintos a [claves] (los preparadores de un alumno): cada una
+/// el suyo de siempre salvo que ya lo tenga otra de la lista, y entonces el
+/// siguiente libre. Así dos preparadores del mismo alumno no se confunden.
+void asignarColoresDistintos(List<String> claves) {
+  final usados = <int>{};
+  for (final c in [...claves]..sort()) {
+    var i = _hash(c) % coloresPersonas.length;
+    for (var k = 0; k < coloresPersonas.length && usados.contains(coloresPersonas[i]); k++) {
+      i = (i + 1) % coloresPersonas.length;
+    }
+    usados.add(coloresPersonas[i]);
+    _coloresAsignados[c] = coloresPersonas[i];
+  }
 }
 
 /// Cante del alumno según quién lo da: el preparador (uid), una sustitución o él mismo.

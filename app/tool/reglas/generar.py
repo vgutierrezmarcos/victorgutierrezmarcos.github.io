@@ -105,6 +105,26 @@ service cloud.firestore {
         && aceptado(op, request.auth.uid, preparador);
     }
 
+    // El alumno ha decidido que este preparador no sepa que tiene otros
+    // (coordinacion/ajustes, campo aislados): no ve a los demás, ni sus notas,
+    // ni el tablón común, ni el reparto, ni los temas que mandan.
+    function aisladoDe(op, alumno) {
+      let ajustes = deUsuario(op, alumno, 'coordinacion/ajustes');
+      return exists(ajustes) && request.auth.uid in get(ajustes).data.get('aislados', []);
+    }
+
+    // Preparador del alumno que puede coordinarse con los demás.
+    function coordinaCon(op, alumno) {
+      return esPreparadorDe(op, alumno) && !aisladoDe(op, alumno);
+    }
+
+    // Mensaje de las notas entre preparadores o del tablón común: firmado por
+    // quien lo escribe y con un texto de 1 a 2000 caracteres.
+    function mensajeValido() {
+      return request.resource.data.de == request.auth.uid
+        && request.resource.data.texto is string && request.resource.data.texto.size() > 0 && request.resource.data.texto.size() <= 2000;
+    }
+
     // Perfil de LinkedIn: vacío o https://www.linkedin.com/in/… (lo ven todos los usuarios con cuenta).
     function linkedinValido() {
       let l = request.resource.data.get('linkedin', '');
@@ -234,12 +254,18 @@ USUARIO = """
       // Cronograma: el preparador enlazado lo ve solo si el alumno lo comparte,
       // y solo puede escribir una propuesta firmada por él, que el alumno
       // acepta o rechaza.
+      // Con varios preparadores, cada uno deja la suya en propuestas.{uid}
+      // (y también en propuesta, la de las versiones anteriores de la app).
       match /cronogramas/{id} {
         allow read: if esPreparadorDe(%OP%, uid) && resource.data.compartir == true;
         allow update: if esPreparadorDe(%OP%, uid)
           && resource.data.compartir == true
-          && soloCambia(['propuesta', 'updatedAt'])
-          && request.resource.data.propuesta.de == request.auth.uid;
+          && soloCambia(['propuesta', 'propuestas', 'updatedAt'])
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['propuesta'])
+            || request.resource.data.propuesta.de == request.auth.uid)
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['propuestas'])
+            || (request.resource.data.propuestas.diff(resource.data.get('propuestas', {})).affectedKeys().hasOnly([request.auth.uid])
+              && request.resource.data.propuestas[request.auth.uid].de == request.auth.uid));
       }
       // Cronograma que el preparador hace para su alumno y le manda: solo lo
       // escribe firmado por él; el alumno (dueño de su subárbol) lo acepta o lo
@@ -250,15 +276,19 @@ USUARIO = """
       }
       // El preparador puede leer su propio permiso y renunciar a él; los
       // preparadores aceptados del alumno ven quiénes son los demás.
+      // Al aceptar al alumno, el preparador lo anota también aquí, para que
+      // los demás preparadores lo vean sin esperar a que el alumno abra la app.
       match /preparadores/{preparador} {
         allow get, delete: if conSesionEn(%OP%) && request.auth.uid == preparador;
-        allow read: if esPreparadorDe(%OP%, uid);
+        allow update: if conSesionEn(%OP%) && request.auth.uid == preparador && esPreparadorDe(%OP%, uid)
+          && soloCambia(['aceptado', 'aceptadoEn']) && request.resource.data.aceptado == true;
+        allow read: if coordinaCon(%OP%, uid);
       }
       // Entre los preparadores de un mismo alumno: el WhatsApp que cada uno
       // decide compartir con los demás y las notas que se dejan. Solo los
       // preparadores aceptados del alumno; cada uno escribe lo suyo.
       match /contactosPreparadores/{preparador} {
-        allow read: if esPreparadorDe(%OP%, uid);
+        allow read: if coordinaCon(%OP%, uid);
         allow create, update: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador
           && request.resource.data.keys().hasOnly(['uid', 'nombre', 'telefono'])
           && request.resource.data.uid == preparador
@@ -266,11 +296,28 @@ USUARIO = """
         allow delete: if esPreparadorDe(%OP%, uid) && request.auth.uid == preparador;
       }
       match /notasPreparadores/{id} {
-        allow read: if esPreparadorDe(%OP%, uid);
-        allow create: if esPreparadorDe(%OP%, uid) && request.resource.data.de == request.auth.uid
-          && request.resource.data.texto is string && request.resource.data.texto.size() > 0 && request.resource.data.texto.size() <= 2000;
-        allow update: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid && request.resource.data.de == request.auth.uid;
+        allow read: if coordinaCon(%OP%, uid);
+        allow create: if coordinaCon(%OP%, uid) && mensajeValido();
+        allow update: if coordinaCon(%OP%, uid) && resource.data.de == request.auth.uid && mensajeValido();
         allow delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
+      }
+      // Tablón común del alumno con todos sus preparadores (el alumno, dueño
+      // de su subárbol, lee y escribe todo).
+      match /tablon/{id} {
+        allow read: if coordinaCon(%OP%, uid);
+        allow create: if coordinaCon(%OP%, uid) && mensajeValido();
+        allow update: if coordinaCon(%OP%, uid) && resource.data.de == request.auth.uid && mensajeValido();
+        allow delete: if esPreparadorDe(%OP%, uid) && resource.data.de == request.auth.uid;
+      }
+      // Lo que el alumno deja ver (ajustes: solo él lo cambia) y el reparto
+      // de qué lleva cada preparador (cada preparador cambia solo lo suyo).
+      match /coordinacion/ajustes {
+        allow get: if esPreparadorDe(%OP%, uid);
+      }
+      match /coordinacion/reparto {
+        allow get: if coordinaCon(%OP%, uid);
+        allow create: if coordinaCon(%OP%, uid) && request.resource.data.keys().hasOnly([request.auth.uid]);
+        allow update: if coordinaCon(%OP%, uid) && request.resource.data.diff(resource.data).affectedKeys().hasOnly([request.auth.uid]);
       }
 """
 
@@ -382,9 +429,12 @@ RED = """
       // partir de la hora elegida (visibleDesde), lo comprueba el servidor.
       // Solo se lee de uno en uno, nunca en listas.
       match /temasAnticipados/{id} {
+        // Los demás preparadores del alumno también lo leen (para no mandarle el
+        // mismo tema), salvo que el alumno los haya ocultado.
         allow get: if conSesionEn(%OP%)
           && (resource.data.preparador == request.auth.uid
-            || (resource.data.alumno == request.auth.uid && request.time >= resource.data.visibleDesde));
+            || (resource.data.alumno == request.auth.uid && request.time >= resource.data.visibleDesde)
+            || coordinaCon(%OP%, resource.data.alumno));
         allow create: if (esPreparadorDe(%OP%, request.resource.data.alumno) || esSustitutoDe(%OP%, id))
           && request.resource.data.preparador == request.auth.uid
           && request.resource.data.visibleDesde is timestamp

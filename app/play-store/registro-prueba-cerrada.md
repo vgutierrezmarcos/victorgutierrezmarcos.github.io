@@ -170,6 +170,24 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Ficha de Play**: descripción breve con los nombres completos de las dos oposiciones («Oposición TCEE y DCE (Técnico y Diplomado Comercial): temas, preparadores y más») y el segundo párrafo de la descripción completa con el Ministerio de Economía, Comercio y Empresa, para que la encuentre quien las busca por su nombre.
 - **Página de la app en la web** (/app/): ya la puede rastrear Google (antes la bloqueaba robots.txt), con título, descripción y datos estructurados de la app y sus preguntas frecuentes.
 
+### 16 oct. 2026 (para la 1.16.0)
+- **Pizarra como la de Notas del iPad**, tras las pruebas de un tester con iPad:
+  - El trazo ya no cambia al levantar el lápiz.
+  - Tinta con presión del lápiz, y la palma apoyada no pinta.
+  - Se amplía y se mueve con dos dedos.
+  - Barra clara con las herramientas a la vista y, en un menú, rotulador, fosforito, lazo, regla, formas y papel cuadriculado.
+- **Pintar y subrayar los temas** (bolígrafo y fosforito), guardado en la cuenta, y descargar el tema anotado en PDF.
+- **Avisos del proceso selectivo al momento** (notificación push en cuanto se publica algo en la página oficial) y por separado para cada oposición.
+- **Los avisos de la app se quitan solos** a los pocos segundos.
+- **Opositores con varios preparadores**:
+  - Agenda común con aviso de choques.
+  - Temas que no se repiten entre clases de preparadores distintos.
+  - Reparto opcional del temario.
+  - Propuestas de cronograma de cada preparador.
+  - Tablón común y avisos entre ellos.
+  - Pasar una clase cancelada a otro preparador.
+  - El opositor decide qué ven sus preparadores.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

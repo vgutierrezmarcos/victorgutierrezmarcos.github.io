@@ -5,6 +5,8 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tcee_app/core/red_providers.dart';
+import 'package:tcee_app/data/models/cronograma.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/red.dart';
@@ -139,5 +141,142 @@ void main() {
     await alumno.desenlazar('olga');
     expect((await db.doc('users/alu/contactosPreparadores/olga').get()).exists, isFalse);
     expect(await paula.otrosPreparadoresDe(aPaula), isEmpty);
+  });
+
+  test('coordinación: tablón, notas editables, reparto, propuestas sin pisarse y temas mandados', () async {
+    final db = FakeFirebaseFirestore();
+    final authAlu = sesion('alu', 'Álex');
+    final paula = await repo(db, sesion('paula', 'Paula')), olga = await repo(db, sesion('olga', 'Olga')), alumno = await repo(db, authAlu);
+    await verificar(db, 'paula', 'Paula');
+    await verificar(db, 'olga', 'Olga');
+    final aPaula = await conectar(alumno, paula);
+    final aOlga = await conectar(alumno, olga);
+    // Al aceptar, cada preparadora lo anota también en el lado del alumno.
+    expect((await db.doc('users/alu/preparadores/olga').get()).data()!['aceptadoEn'], isNotNull);
+
+    // Tablón común: escriben el alumno y las dos; cada una cambia lo suyo.
+    await alumno.escribirMensaje('alu', PreparadorRepo.tablonComun, '¿Podemos pasar la del martes al miércoles?');
+    await paula.escribirMensaje('alu', PreparadorRepo.tablonComun, 'Por mí, sí');
+    var tablon = await olga.mensajes('alu', PreparadorRepo.tablonComun);
+    expect(tablon.map((m) => m.de), ['paula', 'alu']);
+    expect(tablon.last.deNombre, 'Álex');
+    await paula.editarMensaje('alu', PreparadorRepo.tablonComun, tablon.first, 'Por mí, sí, a las 18:00');
+    tablon = await alumno.mensajes('alu', PreparadorRepo.tablonComun);
+    expect(tablon.first.texto, 'Por mí, sí, a las 18:00');
+    expect(tablon.first.editado, isNotNull);
+
+    // Notas entre preparadoras, editables.
+    await paula.anadirNotaPreparadores(aPaula, 'Flojea el 3.A.9');
+    final nota = (await olga.notasPreparadores(aOlga)).single;
+    await paula.editarMensaje('alu', PreparadorRepo.notasEntrePreparadores, nota, 'Flojea el 3.A.9 y el 3.B.2');
+    expect((await olga.notasPreparadores(aOlga)).single.texto, 'Flojea el 3.A.9 y el 3.B.2');
+
+    // Reparto: cada una anota lo suyo; el alumno lo ve todo.
+    await paula.guardarReparto('alu', 'paula', const RepartoPreparador(ejercicios: {3}));
+    await olga.guardarReparto('alu', 'olga', const RepartoPreparador(ejercicios: {4}, nota: 'Comercio'));
+    final reparto = await alumno.repartoDe('alu');
+    expect(reparto['paula']!.ejercicios, {3});
+    expect(reparto['olga']!.nota, 'Comercio');
+    expect((await paula.progreso(aPaula))!.reparto['olga']!.ejercicios, {4});
+    await olga.guardarReparto('alu', 'olga', const RepartoPreparador());
+    expect((await alumno.repartoDe('alu')).containsKey('olga'), isFalse);
+
+    // Propuestas de cronograma: cada una la suya, sin pisar la de la otra.
+    final authPlan = PlanRepo(cantes: await caja(), plan: await caja(), agenda: await caja(), cronogramas: await caja(), firestore: db, auth: authAlu);
+    final c = crearCronograma(id: 'cr', ejercicio: 3, temas: [for (var i = 1; i <= 6; i++) '3.A.$i'], inicio: DateTime.now(), porSemana: 2).copyWith(compartir: true);
+    await authPlan.empezarCronograma(c);
+    await authPlan.sincronizarCronogramas();
+    PropuestaCronograma propuesta(String de) => PropuestaCronograma(de: de, nombre: de, fecha: DateTime.now(), temas: c.temas.reversed.toList(), temasPorSemana: 3);
+    await paula.proponerCambios(aPaula, c, propuesta('paula'));
+    await olga.proponerCambios(aOlga, c, propuesta('olga'));
+    final enNube = Cronograma.fromJson((await db.doc('users/alu/cronogramas/cr').get()).data()!);
+    expect(enNube.pendientes.map((p) => p.de).toSet(), {'paula', 'olga'});
+    // Al fusionar con la copia local, siguen las dos; resuelta la de Paula, queda la de Olga.
+    final resuelta = enNube.copyWith(propuestas: {...enNube.propuestas}..remove('paula'), resueltas: {'paula': DateTime.now()}, respuestas: {'paula': 'aceptada'}, quitarPropuesta: enNube.propuesta?.de == 'paula');
+    final fusion = Cronograma.fusionar(resuelta, enNube);
+    expect(fusion.pendientes.map((p) => p.de), ['olga']);
+    expect(fusion.respuestas['paula'], 'aceptada');
+
+    // El cronograma que manda una preparadora: al responder queda anotado (para avisarla).
+    await paula.enviarCronograma(aPaula, crearCronograma(id: 'c9', ejercicio: 3, temas: const ['3.A.1'], inicio: DateTime.now()));
+    await authPlan.rechazarCronogramaRecibido((await authPlan.cronogramasRecibidos()).single);
+    expect((await db.doc('users/alu/cronogramasRecibidos/c9').get()).data()!['respuesta'], 'rechazado');
+    expect(await authPlan.cronogramasRecibidos(), isEmpty);
+
+    // Temas mandados: Olga ve el que Paula ya ha mandado para su próxima clase.
+    final manana = DateTime.now().add(const Duration(days: 1));
+    final clase = Cante(id: 'k3', fecha: manana, preparador: 'paula', preparadorNombre: 'Paula', updatedAt: DateTime.now());
+    await db.doc('users/alu/cantes/k3').set(clase.toJson());
+    await db.doc('temasAnticipados/k3').set({'alumno': 'alu', 'preparador': 'paula', 'temas': ['3.A.4'], 'visibleDesde': manana.toIso8601String()});
+    expect(await olga.temasMandadosPorOtros(aOlga, [clase]), {'k3': ['3.A.4']});
+  });
+
+  test('el alumno decide qué ven: un preparador oculto no ve a los demás ni ellos a él', () async {
+    final db = FakeFirebaseFirestore();
+    final paula = await repo(db, sesion('paula', 'Paula')), olga = await repo(db, sesion('olga', 'Olga')), alumno = await repo(db, sesion('alu', 'Álex'));
+    await verificar(db, 'paula', 'Paula');
+    await verificar(db, 'olga', 'Olga');
+    final aPaula = await conectar(alumno, paula);
+    final aOlga = await conectar(alumno, olga);
+    final ayer = DateTime.now().subtract(const Duration(days: 1));
+    await db.doc('users/alu/cantes/dePaula').set(Cante(id: 'dePaula', fecha: ayer, preparador: 'paula', preparadorNombre: 'Paula', estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.A.2', valoracion: 3), updatedAt: ayer).toJson());
+    await db.doc('users/alu/cantes/deOlga').set(Cante(id: 'deOlga', fecha: ayer, preparador: 'olga', preparadorNombre: 'Olga', estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.A.3', valoracion: 2), updatedAt: ayer).toJson());
+    await db.doc('users/alu/cantes/propio').set(Cante(id: 'propio', fecha: ayer, estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.A.1', valoracion: 4), updatedAt: ayer).toJson());
+
+    // Oculta a Olga que tiene otros preparadores, y sus cantes por su cuenta a todos.
+    await alumno.guardarAjustesCoordinacion(const AjustesCoordinacion(aislados: {'olga'}, verCantesPropios: false));
+    expect(await olga.otrosPreparadoresDe(aOlga), isEmpty);
+    expect(await paula.otrosPreparadoresDe(aPaula), isEmpty, reason: 'Paula tampoco ve a Olga');
+    final deOlga = (await olga.progreso(aOlga))!;
+    expect(deOlga.yoAislado, isTrue);
+    expect(deOlga.cantes.map((c) => c.id), ['deOlga'], reason: 'ni las clases con Paula ni los cantes por su cuenta');
+    final dePaula = (await paula.progreso(aPaula))!;
+    final otra = dePaula.cantes.firstWhere((c) => c.id == 'deOlga');
+    expect(otra.preparador, preparadorOculto);
+    expect(otra.preparadorNombre, isEmpty);
+    expect(conQuienEs(otra, yo: 'paula'), 'otra clase');
+    expect(otra.resultado!.valoracion, 0);
+    expect(dePaula.cantes.any((c) => c.id == 'propio'), isFalse);
+
+    // Al quitar a un preparador, su marca de oculto, su reparto y sus notas se van.
+    await olga.anadirNotaPreparadores(aOlga, 'nota');
+    await alumno.desenlazar('olga');
+    expect((await alumno.ajustesCoordinacionDe('alu')).aislados, isEmpty);
+    expect((await db.collection('users/alu/notasPreparadores').get()).docs, isEmpty);
+  });
+
+  test('choques en la agenda, temas que no repetir y colores distintos', () {
+    final base = DateTime(2026, 10, 20, 18);
+    final agenda = [
+      Cante(id: 'olga', fecha: base, minutos: 120, preparador: 'olga', preparadorNombre: 'Olga'),
+      Cante(id: 'propio', fecha: base.add(const Duration(hours: 3)), minutos: 30),
+      Cante(id: 'sinHora', fecha: DateTime(2026, 10, 20), minutos: 30),
+      Cante(id: 'cancelada', fecha: base, minutos: 120, preparador: 'olga', estado: EstadoCante.cancelado),
+    ];
+    expect(choquesEnAgenda(agenda, base.add(const Duration(hours: 1)), 120).map((c) => c.id), ['olga']);
+    expect(choquesEnAgenda(agenda, base.add(const Duration(hours: 2)), 60), isEmpty, reason: 'empieza justo al acabar');
+    expect(choquesEnAgenda(agenda, base.add(const Duration(hours: 3, minutes: 15)), 60).map((c) => c.id), ['propio']);
+    expect(choquesEnAgenda(agenda, base, 120, excluir: 'olga'), isEmpty);
+    expect(conQuienEs(agenda.first, yo: 'paula'), 'con Olga');
+    expect(conQuienEs(agenda[1]), 'por tu cuenta');
+
+    final ahora = DateTime(2026, 10, 20, 12);
+    final hechos = [
+      Cante(id: 'h1', fecha: ahora.subtract(const Duration(days: 3)), preparador: 'olga', preparadorNombre: 'Olga', estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.A.1')),
+      Cante(id: 'h2', fecha: ahora.subtract(const Duration(days: 30)), estado: EstadoCante.hecho, resultado: const ResultadoCante(temaCantado: '3.A.2')),
+      Cante(id: 'p1', fecha: ahora.add(const Duration(days: 2)), preparador: 'olga', preparadorNombre: 'Olga'),
+    ];
+    final evitar = temasAEvitar(hechos, mandados: {'p1': ['3.A.3']}, ahora: ahora, yo: 'paula');
+    expect(evitar.keys.toSet(), {'3.A.1', '3.A.3'});
+    expect(evitar['3.A.1'], 'cantado hace 3 días con Olga');
+    expect(evitar['3.A.3'], contains('con Olga'));
+    final bolsa = ['3.A.1', '3.A.2', '3.A.3', '3.A.4'];
+    expect(sinRepetir(bolsa, evitar.keys.toSet(), 2, (t) => t), ['3.A.2', '3.A.4']);
+    expect(sinRepetir(bolsa, evitar.keys.toSet(), 3, (t) => t), bolsa, reason: 'si no quedan bastantes, entran todos');
+
+    // Tres preparadores, tres colores distintos, aunque su clave coincida.
+    final claves = ['paula', 'olga', 'marta', 'luis', 'ana'];
+    asignarColoresDistintos(claves);
+    expect({for (final c in claves) colorDePersona(c)}.length, claves.length);
   });
 }

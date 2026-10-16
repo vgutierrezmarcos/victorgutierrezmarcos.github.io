@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../core/avisos_breves.dart';
 import '../data/models/oposicion.dart';
 import '../core/constants.dart';
 import '../core/providers.dart';
@@ -423,13 +424,13 @@ class Estadistica extends StatelessWidget {
 
 Future<void> abrirUrl(BuildContext context, String? url, {bool enApp = false}) async {
   if (url == null || url.isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Enlace no disponible todavía')));
+    ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Enlace no disponible todavía')));
     return;
   }
   final uri = Uri.parse(url);
   final ok = await launchUrl(uri, mode: enApp ? LaunchMode.inAppBrowserView : LaunchMode.externalApplication);
   if (!ok && context.mounted) {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No se pudo abrir el enlace')));
+    ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('No se pudo abrir el enlace')));
   }
 }
 
