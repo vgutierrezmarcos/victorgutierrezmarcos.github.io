@@ -207,7 +207,7 @@
 % \paragraph     → sangrado 2,4 em, cursiva gris oscura, sin número
 % Ningún título puede quedar al pie de una página: antes de cada uno se pide
 % sitio para el título y unas líneas de texto (\needspace) y los minutos del
-% cante no permiten salto.
+% cante no permiten salto. Tampoco puede haber salto entre dos títulos seguidos.
 \setcounter{secnumdepth}{3}
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
@@ -226,25 +226,33 @@
   \colorbox{tceemorado}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
     \large\bfseries\color{white}\raggedright\strut\MakeUppercase{#1}\strut}}}
 \titlespacing*{\section}{0pt}{1.4em}{0.8em}
-\titleformat{\subsection}{\normalfont\large\bfseries\color{tceemorado}}{\thesubsection.}{0.5em}{}
-  [\vspace{-0.15em}{\color{tceemorado}\titlerule[0.5pt]}]
+\titleformat{\subsection}{\normalfont\large\bfseries\color{tceemorado}\nobreak}{\thesubsection.}{0.5em}{}
+  [\nobreak\vspace{-0.15em}{\color{tceemorado}\nobreak\titlerule[0.5pt]}\nobreak]
 \titlespacing*{\subsection}{0pt}{1.3em}{0.5em}
-\titleformat{\subsubsection}{\normalfont\itshape\color{tceemorado}}{\upshape\thesubsubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\itshape\color{tceemorado}\nobreak}{\upshape\thesubsubsection.}{0.5em}{}
 \titlespacing*{\subsubsection}{1.2em}{0.9em}{0.3em}
-\titleformat{\paragraph}{\normalfont\itshape\color{tceemoradooscuro}}{}{0pt}{}
+\titleformat{\paragraph}{\normalfont\itshape\color{tceemoradooscuro}\nobreak}{}{0pt}{}
 \titlespacing*{\paragraph}{2.4em}{0.7em}{0.2em}
 % Niveles 4 y 5 para la estructura de cada modelo (CRITERIOS, «Estructura de un
 % modelo»): \paragraph{a) Idea}, \paragraph{b) Modelo} y dentro
 % \subparagraph{i) Supuestos}, \subparagraph{ii) Desarrollo}… (letras a mano,
 % para que salgan igual en la web y en Word).
 \setcounter{secnumdepth}{3}
-\titleformat{\subparagraph}{\normalfont\small\bfseries\color{tceemoradooscuro}}{}{0pt}{}
+\titleformat{\subparagraph}{\normalfont\small\bfseries\color{tceemoradooscuro}\nobreak}{}{0pt}{}
 \titlespacing*{\subparagraph}{3.6em}{0.5em}{0.15em}
-\preto\section{\Needspace{8\baselineskip}}
-\preto\subsection{\Needspace{6\baselineskip}}
-\preto\subsubsection{\Needspace{5\baselineskip}}
-\preto\paragraph{\Needspace{4\baselineskip}}
-\preto\subparagraph{\Needspace{3\baselineskip}}
+% Un título que sigue directamente a otro (\if@nobreak) no pide sitio: el
+% \Needspace forzaría el salto justo entre los dos. Así nunca hay salto de
+% página entre un título y lo que le sigue, aunque sea otro título: si el
+% bloque de títulos y sus primeras líneas no cabe, pasa entero a la página
+% siguiente. Por lo mismo, cada \color de un título va seguido de \nobreak: el
+% cambio de color deja en la lista vertical un nodo tras el que TeX podría
+% cortar (y como la página no estira, a igual coste elige el último corte).
+\newcommand{\tcee@sitio}[1]{\if@nobreak\else\Needspace{#1\baselineskip}\fi}
+\preto\section{\tcee@sitio{8}}
+\preto\subsection{\tcee@sitio{6}}
+\preto\subsubsection{\tcee@sitio{5}}
+\preto\paragraph{\tcee@sitio{4}}
+\preto\subparagraph{\tcee@sitio{3}}
 
 
 % Minutos del cante: \minutos{6} justo después del título del apartado. La

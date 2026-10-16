@@ -102,7 +102,10 @@ Cada tema revisado debe quedar:
   sangría** (viñetas de distintos niveles) que hagan el tema fácil de seguir
   y ayuden a la memoria visual (Víctor, 16/10/2026), y **nunca un salto de
   página entre un párrafo y el primero de nivel inferior que lo sigue**
-  (lo hace `tcee.sty` y, en Word, «conservar con el siguiente»).
+  (lo hace `tcee.sty` y, en Word, «conservar con el siguiente»). Tampoco
+  **entre un título y lo que le sigue, aunque sea otro título** (Víctor,
+  17/10/2026): si el bloque de títulos no cabe, pasa entero a la página
+  siguiente (`tcee.sty`; `verificar-tema.py` da error si un título queda al pie).
 - **Funciones centrales del tema en morado y recuadradas** (Víctor,
   16/10/2026) con `\funcionclave{…}`: las que el opositor escribiría en la
   pizarra y probablemente mantendría durante el cante (p. ej., la función de

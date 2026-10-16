@@ -114,7 +114,20 @@ def verificar(tema):
     if os.path.exists(pdf):
         try:
             import fitz
-            datos['paginas_total'] = fitz.open(pdf).page_count
+            doc = fitz.open(pdf)
+            datos['paginas_total'] = doc.page_count
+            # Ningún título puede ser lo último de una página (ni seguido de otro
+            # título: CRITERIOS.md); se mira la última línea de texto de cada una.
+            titulo = re.compile(r'([IVX]+\.\d+(\.\d+)?\.\s|[a-e]\)\s|[ivx]+\)\s)')
+            for n, pag in enumerate(doc, 1):
+                alto = pag.rect.height
+                lineas = sorted(
+                    (l['bbox'][3], ''.join(s['text'] for s in l['spans']).strip())
+                    for b in pag.get_text('dict')['blocks'] for l in b.get('lines', [])
+                    if 60 < l['bbox'][1] and l['bbox'][3] < alto - 60)
+                lineas = [t for _, t in lineas if t]
+                if lineas and titulo.match(lineas[-1]):
+                    errores.append(f'Título al pie de la página {n} del PDF: «{lineas[-1][:60]}»')
         except Exception:
             pass
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
