@@ -37,7 +37,8 @@ Cómo es el vídeo (CRITERIOS.md, «Vídeo»):
   - La pizarra se divide en una rejilla de 1 a 3 columnas, y cada columna en
     1 o 2 filas, con el ancho y el alto que se quiera; las rayas que separan
     las celdas solo se pintan si se pide (lineas: true), cuando ayudan a
-    seguir la exposición. Cambiar de rejilla borra la pizarra.
+    seguir la exposición. Cambiar de rejilla borra la pizarra, salvo las zonas
+    que se pidan conservar (las funciones clave: ver «Conservar» abajo).
   - Pausa entre pasos, más larga entre escenas y más aún entre apartados y
     bloques.
   - Dura exactamente lo que diga «duracion» (1800 s): se ajusta el ritmo de
@@ -83,6 +84,11 @@ Formato de escenas.yaml:
           - di: "…"
             rejilla: {columnas: [40, 60], filas: {2: [55, 45]}, lineas: true}
             pizarra: [{grafico: axiomas, capa: 3}]    # mismo gráfico: dibuja lo nuevo
+          - di: "…"
+            rejilla: "25|75"
+            conservar: ["2a"]          # lo de 2a (rejilla vieja) se queda donde está
+            pizarra:
+              - {formula: '\\funcionclave{\\optim{\\max}{\\vect{x}}{U(\\vect{x})}{\\vect{p}\\cdot\\vect{x}\\leq W}}'}
 
 Apoyo (`apoyo:` en un paso, uno o una lista): gráficos, fórmulas ({formula: …}),
 texto ({texto: [..]}) o imágenes que ayudan a seguir la exposición pero que el
@@ -95,6 +101,27 @@ columna con dos filas del 55 % y 45 %) o {columnas: [...], filas: {col:
 [a, b]}, lineas: true}. Zonas: "1" (columna entera), "2a" y "2b" (filas de la
 columna 2), "1-2" (columnas 1 y 2) y "1a-2a". Cada cosa va debajo de lo último
 escrito en su zona.
+
+Conservar (funciones clave que se quedan en la pizarra entre apartados y
+bloques): `conservar: [zonas]` junto a `rejilla:` (en el paso o en la escena)
+o junto a `borrar: true`. Lo escrito en esas zonas (zonas de la rejilla de
+ANTES del cambio) no se borra ni se mueve: se queda donde está y pasa a ser
+de la celda de la rejilla nueva que lo contiene; lo demás se borra. Lo nuevo
+de esa celda se escribe debajo de lo conservado (o encima, si lo conservado
+está abajo y deja sitio). La rejilla nueva tiene que tener una celda que lo
+contenga entero (si no, aviso). P. ej., con "20|40|40" y la función clave en
+1, `rejilla: "25|75"` + `conservar: [1]`; o, sin cambiar de rejilla,
+`borrar: true` + `conservar: [1]` (equivale a `borrar: [2, 3]`).
+
+Fórmulas (`formula:`): LaTeX en modo matemático con los macros de tcee.sty
+(se leen del propio tcee.sty): \\vect, \\optim{\\max}{\\vect{x}}{U(\\vect{x})}{restr.
+\\\\ restr.}, \\funcionclave{…} (morada y recuadrada, con el fondo morado
+pálido, como en el tema), \\tiempo{2,5}, \\autor, \\concepto, \\text, \\mathrm{RMS}
+y los colores tcee*. Los recuadros (\\funcionclave, \\boxed) se trazan al final,
+después de su contenido, como a mano.
+
+Franjas y guion: lo que no tenga Palatino (→ ⇒ ≫ ℝ ∈ ᵢ ⱼ…) sale con Cambria,
+Cambria Math o Segoe UI Symbol; si ninguna lo tiene, el script avisa.
 
 Salida (fuera de git, en oposicion/temario/videos/, que está en .gitignore):
   videos/<tema>.mp4          el vídeo
@@ -136,7 +163,7 @@ from scipy import ndimage
 from skimage.morphology import skeletonize
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto  # noqa: E402
+from comun import Tema, LATEX, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto  # noqa: E402
 
 ANCHO, ALTO = 1920, 1080
 FPS = 25
@@ -217,6 +244,87 @@ F_TARJETA_T = fuente('segoeuib.ttf', 20)
 F_TARJETA_B = fuente('palab.ttf', 38)
 F_TARJETA_A = fuente('pala.ttf', 33)
 F_TARJETA_S = fuente('palai.ttf', 28)
+
+
+# --- Texto con fuente de respaldo ----------------------------------------------------------------
+# Palatino (y Segoe Print) no tienen → ⇒ ≫ ℝ ᵢ ⱼ…: esos caracteres se escriben con Cambria,
+# Cambria Math o Segoe UI Symbol, del mismo tamaño y en la misma línea base. Si ninguna los
+# tiene, se avisa (saldrían como cajas).
+RESPALDO = [('cambria.ttc', 0), ('cambria.ttc', 1), ('seguisym.ttf', 0)]
+RESPALDO_CURSIVA = [('cambriai.ttf', 0)] + RESPALDO
+_GLIFOS, _FUENTES = {}, {}
+
+
+def glifos(fnt):
+    clave = (fnt.path, getattr(fnt, 'index', 0))
+    if clave not in _GLIFOS:
+        from fontTools.ttLib import TTFont
+        _GLIFOS[clave] = set(TTFont(fnt.path, fontNumber=clave[1], lazy=True).getBestCmap())
+    return _GLIFOS[clave]
+
+
+def respaldos(fnt):
+    cursiva = 'italic' in fnt.getname()[1].lower()
+    lista = []
+    for nombre, i in (RESPALDO_CURSIVA if cursiva else RESPALDO):
+        clave = (nombre, i, fnt.size)
+        if clave not in _FUENTES:
+            ruta = os.path.join(FUENTES_WIN, nombre)
+            _FUENTES[clave] = ImageFont.truetype(ruta, fnt.size, index=i) if os.path.exists(ruta) else None
+        if _FUENTES[clave] is not None:
+            lista.append(_FUENTES[clave])
+    return lista
+
+
+def _tramos(texto, fnt):
+    """[(trozo, fuente)]: cada carácter con la primera fuente que lo tiene (la principal si ninguna)."""
+    if all(ord(ch) in glifos(fnt) or ch.isspace() for ch in texto):
+        return [(texto, fnt)]
+    tramos = []
+    for ch in texto:
+        f = fnt
+        if not (ch.isspace() or ord(ch) in glifos(fnt)):
+            f = next((r for r in respaldos(fnt) if ord(ch) in glifos(r)), fnt)
+        if tramos and tramos[-1][1] is f:
+            tramos[-1][0] += ch
+        else:
+            tramos.append([ch, f])
+    return [tuple(t) for t in tramos]
+
+
+def sin_glifo(texto, fnt):
+    """Caracteres que no tiene ni la fuente ni sus respaldos."""
+    return sorted({ch for ch in texto if not ch.isspace() and ord(ch) not in glifos(fnt)
+                   and not any(ord(ch) in glifos(r) for r in respaldos(fnt))})
+
+
+def avisar_glifos(texto, fnt, donde, avisos):
+    faltan = sin_glifo(str(texto), fnt)
+    if faltan:
+        avisos.append(f'Glifos sin fuente en {donde} («{str(texto)[:40]}…»): {" ".join(faltan)} '
+                      f'(saldrían como cajas: cambiarlos por otros)')
+
+
+_MEDIDOR = ImageDraw.Draw(Image.new('L', (1, 1)))
+
+
+def ancho_texto(texto, fnt, d=None):
+    d = d or _MEDIDOR
+    return sum(d.textlength(t, font=f) for t, f in _tramos(texto, fnt))
+
+
+def escribir(d, xy, texto, fnt, fill, anchor='la'):
+    """d.text con fuentes de respaldo (anclas «la», «lm» o «ls»)."""
+    tramos = _tramos(texto, fnt)
+    if len(tramos) == 1 and tramos[0][1] is fnt:
+        d.text(xy, texto, font=fnt, fill=fill, anchor=anchor)
+        return
+    ascenso, descenso = fnt.getmetrics()
+    x, y = xy
+    base = {'la': y + ascenso, 'lm': y + (ascenso - descenso) / 2, 'ls': y}[anchor]
+    for t, f in tramos:
+        d.text((x, base), t, font=f, fill=fill, anchor='ls')
+        x += d.textlength(t, font=f)
 
 
 def huella(*partes):
@@ -730,23 +838,156 @@ class Grafico:
 
 
 # --- Fórmulas y texto de pizarra ------------------------------------------------------------
+def _grupo(s, i):
+    """Índice justo después del grupo {…} o […] que empieza en s[i] (llaves equilibradas)."""
+    abre = s[i]
+    cierra = '}' if abre == '{' else ']'
+    nivel = 0
+    for j in range(i, len(s)):
+        if s[j] == '\\':
+            continue
+        if s[j] == abre and (j == 0 or s[j - 1] != '\\'):
+            nivel += 1
+        elif s[j] == cierra and s[j - 1] != '\\':
+            nivel -= 1
+            if nivel == 0:
+                return j + 1
+    raise ValueError('Llaves sin cerrar en tcee.sty')
+
+
+def _definicion(sty, nombre):
+    """La definición de \\nombre en tcee.sty (\\newcommand, \\providecommand o \\NewDocumentCommand)."""
+    m = re.search(r'\\(newcommand|providecommand|NewDocumentCommand)\s*\{\\' + nombre + r'\}', sty)
+    if not m:
+        raise RuntimeError(f'No encuentro la definición de \\{nombre} en tcee.sty')
+    i = m.end()
+    grupos = 2 if m.group(1) == 'NewDocumentCommand' else None
+    while True:
+        while sty[i] in ' \t\n%':
+            i = sty.index('\n', i) + 1 if sty[i] == '%' else i + 1
+        if grupos is None and sty[i] == '[':
+            i = _grupo(sty, i)
+            continue
+        i = _grupo(sty, i)
+        if grupos is None or grupos == 1:
+            return sty[m.start():i]
+        grupos -= 1
+
+
+_MACROS_TCEE = None
+
+
+def macros_tcee():
+    """Los macros de tcee.sty que pueden salir en una fórmula del vídeo, leídos del propio
+    tcee.sty (así no se desincronizan): colores, \\vect, \\optim, \\tiempo (\\tceemmss),
+    \\autor, \\concepto y el estilo de \\funcionclave. Sin el resto del estilo del documento."""
+    global _MACROS_TCEE
+    if _MACROS_TCEE is None:
+        sty = open(os.path.join(LATEX, 'tcee.sty'), encoding='utf-8').read()
+        sty = re.sub(r'(?<!\\)%[^\n]*', '', sty)
+        partes = re.findall(r'^\\definecolor\{[^}]*\}\{[^}]*\}\{[^}]*\}', sty, re.M)
+        for bloque in re.findall(r'\\ExplSyntaxOn.*?\\ExplSyntaxOff', sty, re.S):
+            if 'tceemmss' in bloque or '{\\optim}' in bloque:
+                partes.append(bloque)
+        partes += [_definicion(sty, n) for n in ('vect', 'tiempo', 'autor', 'concepto')]
+        i = sty.index('\\tcbset{tcee funcion clave')
+        partes.append(sty[i:_grupo(sty, i + len('\\tcbset'))])
+        _MACROS_TCEE = '\n'.join(partes)
+    return _MACROS_TCEE
+
+
+# Colores testigo de los recuadros: se pintan así en LaTeX y luego se separan del resto
+# para trazarlos al final (a mano, primero se escribe la fórmula y después se recuadra).
+TESTIGO_BOXED = (0, 255, 0)
+TESTIGO_CLAVE = (0, 255, 255)
+FONDO_CLAVE = (247, 243, 248)     # tceemoradopalido!70!white, el fondo de \funcionclave en tcee.sty
+
+
+def preambulo_formula(formula, color):
+    rgb = '{:02X}{:02X}{:02X}'.format(*color)
+    p = ['\\documentclass[border=4pt]{standalone}',
+         '\\usepackage{amsmath,amssymb,mathtools}\\usepackage{newpxtext,newpxmath}',
+         '\\usepackage{xcolor}',
+         f'\\definecolor{{tinta}}{{HTML}}{{{rgb}}}',
+         '\\definecolor{{tceetestigoboxed}}{{RGB}}{{{},{},{}}}'.format(*TESTIGO_BOXED),
+         '\\definecolor{{tceetestigoclave}}{{RGB}}{{{},{},{}}}'.format(*TESTIGO_CLAVE)]
+    if 'funcionclave' in formula:
+        p.append('\\usepackage{tcolorbox}\\tcbuselibrary{skins,theorems}')
+    p.append(macros_tcee() if 'funcionclave' in formula
+             else re.sub(r'\\tcbset\{tcee funcion clave.*', '', macros_tcee(), flags=re.S))
+    # \funcionclave como en tcee.sty (morado, recuadrada, fondo morado pálido), pero dentro de la
+    # fórmula (sin \[…\]) y con el marco en el color testigo, sin fondo y algo más grueso (rotulador);
+    # el fondo lo pone el script al final. \boxed: el marco en el color testigo.
+    p.append('\\tcbset{tcee funcion clave video/.style={tcee funcion clave,boxrule=1.2pt,interior hidden,'
+             'frame code={\\draw[tceetestigoclave,line width=1.2pt,rounded corners=2pt]'
+             '([shift={(0.6pt,0.6pt)}]frame.south west) rectangle ([shift={(-0.6pt,-0.6pt)}]frame.north east);}}}'
+             '\\NewDocumentCommand{\\funcionclave}{om}{\\tcbhighmath[tcee funcion clave video]{\\displaystyle #2}}'
+             if 'funcionclave' in formula else '')
+    p.append('\\renewcommand{\\boxed}[1]{{\\colorlet{tceeantes}{.}\\color{tceetestigoboxed}'
+             '\\fbox{\\color{tceeantes}$\\displaystyle #1$}}}')
+    return '\n'.join(p) + '\n'
+
+
 def formula_png(formula, color, carpeta):
-    h = huella(formula, color)
+    """PNG de la fórmula (300 ppp, fondo transparente) con los recuadros ya en su color.
+    Si tiene recuadros (\\boxed, \\funcionclave), deja al lado f-…-capas.png: R, lo escrito;
+    G, los marcos; B, el fondo de las \\funcionclave (para trazar los marcos al final)."""
+    preambulo = preambulo_formula(formula, color)
+    h = huella(formula, color, preambulo)
     png = os.path.join(carpeta, f'f-{h}.png')
     if os.path.exists(png):
         return png
     tex = os.path.join(carpeta, f'f-{h}.tex')
-    rgb = '{:02X}{:02X}{:02X}'.format(*color)
     with open(tex, 'w', encoding='utf-8') as f:
-        f.write('\\documentclass[border=4pt]{standalone}\n\\usepackage{amsmath,amssymb}\\usepackage{newpxtext,newpxmath}\n'
-                f'\\usepackage{{xcolor}}\\definecolor{{tinta}}{{HTML}}{{{rgb}}}\n'
-                f'\\begin{{document}}\\color{{tinta}}$\\displaystyle {formula}$\\end{{document}}\n')
+        f.write(preambulo + f'\\begin{{document}}\\color{{tinta}}$\\displaystyle {formula}$\\end{{document}}\n')
     cod, _ = ejecutar([os.path.join(MIKTEX, 'pdflatex.exe'), '-interaction=nonstopmode', '-halt-on-error',
                        os.path.basename(tex)], cwd=carpeta, env=entorno_tex(), timeout=300, comprobar=False)
     if cod != 0:
         raise RuntimeError(f'Error en la fórmula {formula!r}:\n' + '\n'.join(errores_log(tex[:-4] + '.log')))
-    fitz.open(tex[:-4] + '.pdf')[0].get_pixmap(dpi=300, alpha=True).save(png)
+    pix = fitz.open(tex[:-4] + '.pdf')[0].get_pixmap(dpi=300, alpha=True)
+    img = np.array(Image.open(io.BytesIO(pix.tobytes('png'))).convert('RGBA'))
+    rgb, alfa = img[:, :, :3].astype(int), img[:, :, 3]
+    testigo = (alfa > 0) & (rgb[:, :, 1] > 180) & (rgb[:, :, 0] < 90)
+    if testigo.any():
+        clave = testigo & (rgb[:, :, 2] > 128)
+        boxed = testigo & ~clave
+        img[boxed, :3] = color
+        img[clave, :3] = MORADO
+        marco = np.where(testigo, alfa, 0).astype(np.uint8)
+        fondo = ndimage.binary_fill_holes(clave & (alfa > 40)) & ~(clave & (alfa > 40))
+        tinta = np.where(testigo, 0, alfa).astype(np.uint8)
+        final = Image.new('RGBA', (img.shape[1], img.shape[0]), (0, 0, 0, 0))
+        if fondo.any():
+            capa_fondo = np.zeros_like(img)
+            capa_fondo[fondo] = FONDO_CLAVE + (255,)
+            final = Image.fromarray(capa_fondo, 'RGBA')
+        final.alpha_composite(Image.fromarray(img, 'RGBA'))
+        final.save(png)
+        Image.fromarray(np.dstack([tinta, marco, (fondo * 255).astype(np.uint8)]), 'RGB').save(png[:-4] + '-capas.png')
+    else:
+        Image.fromarray(img, 'RGBA').save(png)
     return png
+
+
+def partes_formula(png, img):
+    """Trazos de una fórmula ya escalada (img): primero lo escrito y, al final, los recuadros
+    (a la velocidad de los trazos de los gráficos) y el fondo de las funciones clave."""
+    capas = png[:-4] + '-capas.png'
+    if not os.path.exists(capas):
+        return trazos_mano(np.asarray(img)[:, :, 3])
+    c = np.asarray(Image.open(capas).resize(img.size, Image.LANCZOS))
+    partes = trazos_mano(c[:, :, 0])
+    for p in trazos_mano(c[:, :, 1]):
+        p['dur'] = min(1.6, max(0.4, p['largo'] / VEL_TRAZO)) + LEVANTAR
+        partes.append(p)
+    fondo = c[:, :, 2] > 127
+    if fondo.any():
+        etiquetas, _ = ndimage.label(fondo)
+        for sl in ndimage.find_objects(etiquetas):
+            if sl is not None:
+                partes.append({'tipo': 'relleno', 'caja': (sl[1].start, sl[0].start, sl[1].stop, sl[0].stop),
+                               'dur': 0.3})
+    return partes
 
 
 # --- Rejilla de la pizarra ---------------------------------------------------------------------
@@ -850,25 +1091,69 @@ class Pizarra:
         self.tema, self.carpeta = tema, carpeta
         self.rejilla = Rejilla(None)
         self.fondo = self.rejilla.fondo()
-        self.elementos = []           # {'celdas': set, 'y_fin': {celda: y}}
+        self.elementos = []           # {'celdas': set, 'y_fin': y, 'caja': (x0, y0, x1, y1)}
         self.graficos = {}
         self.cursor = {}
+        self.tope = {}                # celda → hasta dónde se puede escribir (encima de lo conservado)
         self.avisos = []
         self._reiniciar(self.rejilla.todas())
 
     def _reiniciar(self, celdas):
+        """Cursor de cada celda: arriba si está vacía; si queda algo (lo conservado), debajo de
+        ello o, si está abajo y deja sitio encima, arriba y con tope en lo conservado."""
         for c in celdas:
-            restos = [e['y_fin'] for e in self.elementos if c in e['celdas']]
-            self.cursor[c] = (max(restos) + 16) if restos else self.rejilla.caja_celda(c)[1] + PZ_MARGEN
+            arriba = self.rejilla.caja_celda(c)[1] + PZ_MARGEN
+            restos = [e for e in self.elementos if c in e['celdas']]
+            self.tope.pop(c, None)
+            if not restos:
+                self.cursor[c] = arriba
+                continue
+            y0 = min(e['caja'][1] for e in restos)
+            if y0 - arriba >= 150:
+                self.cursor[c], self.tope[c] = arriba, y0 - 16
+            else:
+                self.cursor[c] = max(e['y_fin'] for e in restos) + 16
 
-    def cambiar_rejilla(self, spec):
+    def _celdas_de(self, zonas):
+        celdas = set()
+        for z in ([] if zonas is None else zonas if isinstance(zonas, list) else [zonas]):
+            celdas |= set(self.rejilla.zona(str(z))[1])
+        return celdas
+
+    def _recolocar(self, rejilla, caja, que):
+        """Celdas de la rejilla nueva que ocupa algo conservado (avisa si no cabe en una)."""
+        celdas = set()
+        for c in rejilla.todas():
+            x0, y0, x1, y1 = rejilla.caja_celda(c)
+            if min(x1, caja[2]) - max(x0, caja[0]) > 4 and min(y1, caja[3]) - max(y0, caja[1]) > 4:
+                celdas.add(c)
+        if len(celdas) != 1:
+            self.avisos.append(f'Lo conservado ({que}) no cabe en una sola celda de la rejilla nueva: '
+                               f'elegir una rejilla cuya celda lo contenga')
+        return celdas
+
+    def cambiar_rejilla(self, spec, conservar=None):
+        """Cambia la rejilla y borra la pizarra, salvo lo escrito en las zonas «conservar» (de la
+        rejilla vieja), que se queda donde está y pasa a la celda de la rejilla nueva que lo contiene."""
         nueva = Rejilla(spec)
         if nueva.clave == self.rejilla.clave:
             return []
+        guardar = self._celdas_de(conservar)
+        quedan = [e for e in self.elementos if e['celdas'] <= guardar] if guardar else []
+        graficos = {n: g for n, g in self.graficos.items() if g['celdas'] <= guardar} if guardar else {}
         ops = []
-        if self.elementos or self.rejilla.lineas:
-            ops.append(op_borrar((0, 0, PZ_W, PZ_H), Image.new('RGB', (PZ_W, PZ_H), PIZARRA)))
-        self.rejilla, self.elementos, self.graficos, self.cursor = nueva, [], {}, {}
+        if len(quedan) < len(self.elementos) or self.rejilla.lineas:
+            op = op_borrar((0, 0, PZ_W, PZ_H), Image.new('RGB', (PZ_W, PZ_H), PIZARRA))
+            if quedan:
+                op['conservar'] = [e['caja'] for e in quedan]
+            ops.append(op)
+        zonas = ', '.join(map(str, conservar if isinstance(conservar, list) else [conservar]))
+        for e in quedan:
+            e['celdas'] = self._recolocar(nueva, e['caja'], f'zona {zonas}')
+        for g in graficos.values():
+            gr = g['g']
+            g['celdas'] = self._recolocar(nueva, (gr.x, gr.y, gr.x + gr.w, gr.y + gr.h), f'gráfico {gr.nombre}')
+        self.rejilla, self.elementos, self.graficos, self.cursor, self.tope = nueva, quedan, graficos, {}, {}
         self._reiniciar(nueva.todas())
         self.fondo = nueva.fondo()
         if nueva.lineas:
@@ -880,7 +1165,7 @@ class Pizarra:
             ops.append({'tipo': 'lineas', 'caja': (0, 0, PZ_W, PZ_H), 'fondo': self.fondo, 'partes': partes})
         return ops
 
-    def borrar(self, cuales):
+    def borrar(self, cuales, conservar=None):
         if cuales is True or cuales == 'todo':
             zonas = None
         else:
@@ -893,6 +1178,8 @@ class Pizarra:
                 caja, cs = self.rejilla.zona(z)
                 cajas.append(caja)
                 celdas |= set(cs)
+        guardar = self._celdas_de(conservar)
+        celdas -= guardar
         tocados = [e for e in self.elementos if e['celdas'] & celdas]
         self.elementos = [e for e in self.elementos if not e['celdas'] & celdas]
         for nombre, g in list(self.graficos.items()):
@@ -901,22 +1188,27 @@ class Pizarra:
         self._reiniciar(celdas)
         if not tocados:
             return []
-        return [op_borrar(tuple(int(round(v)) for v in caja), self.fondo) for caja in cajas]
+        ops = [op_borrar(tuple(int(round(v)) for v in caja), self.fondo) for caja in cajas]
+        if guardar:
+            for op in ops:
+                op['conservar'] = [e['caja'] for e in self.elementos]
+        return ops
 
     def _sitio(self, zona, alto_min):
         caja, celdas = self.rejilla.zona(zona)
         x0, x1 = caja[0] + PZ_MARGEN, caja[2] - PZ_MARGEN
         y = max(self.cursor[c] for c in celdas)
-        if y + alto_min > caja[3] - 8:
+        limite = min([caja[3] - 8] + [self.tope[c] for c in celdas if c in self.tope])
+        if y + alto_min > limite:
             self.avisos.append(f'La pizarra se llena en la zona {zona}: hay que borrar antes o cambiar la rejilla')
-        return x0, x1, y, caja[3] - 8, celdas
+        return x0, x1, y, limite, celdas
 
-    def _ocupar(self, celdas, y_fin, limite, zona):
+    def _ocupar(self, celdas, y_fin, limite, zona, caja):
         if y_fin > limite + 2:
             self.avisos.append(f'Lo escrito en la zona {zona} se sale de la pizarra: borrar antes o reducir')
         for c in celdas:
             self.cursor[c] = y_fin + 16
-        self.elementos.append({'celdas': set(celdas), 'y_fin': y_fin})
+        self.elementos.append({'celdas': set(celdas), 'y_fin': y_fin, 'caja': tuple(int(round(v)) for v in caja)})
 
     def anadir(self, accion):
         """Coloca un elemento y devuelve la operación que lo dibuja."""
@@ -933,17 +1225,19 @@ class Pizarra:
             color = color or (ROTULADOR['rojo'] if titulo else ROTULADOR['azul'])
             x0, x1, y, limite, celdas = self._sitio(zona, 60)
             sangria = 40 * nivel
+            avisar_glifos(texto, f, 'pizarra', self.avisos)
             lineas = partir(('– ' if nivel else '') + texto, f, x1 - x0 - sangria)
             alto = 58 * len(lineas) + (12 if titulo else 0)
             img = Image.new('RGBA', (max(1, int(x1 - x0)), alto), (0, 0, 0, 0))
             d = ImageDraw.Draw(img)
             for i, l in enumerate(lineas):
-                d.text((sangria, i * 58), l, font=f, fill=color + (255,))
+                escribir(d, (sangria, i * 58), l, f, color + (255,))
             if titulo:
-                largo = max(d.textlength(l, font=f) for l in lineas)
+                largo = max(ancho_texto(l, f) for l in lineas)
                 d.line([(sangria, alto - 9), (sangria + largo, alto - 6)], fill=color + (255,), width=4)
             pos = (int(x0), int(y))
-            self._ocupar(celdas, y + alto, limite, zona)
+            ancho_t = max(ancho_texto(l, f) for l in lineas) if lineas else 0
+            self._ocupar(celdas, y + alto, limite, zona, (x0 + sangria, y, x0 + sangria + ancho_t, y + alto))
             return op_dibujo(pos, img, False, self.fondo, trazos_mano(np.asarray(img)[:, :, 3]))
         if 'formula' in accion:
             png = formula_png(accion['formula'], color or ROTULADOR['negro'], self.carpeta)
@@ -953,8 +1247,8 @@ class Pizarra:
             img = img.resize((max(1, int(img.width * escala)), max(1, int(img.height * escala))), Image.LANCZOS)
             izquierda = accion.get('alinear') == 'izquierda' or accion.get('centrar') is False
             pos = (int(x0) if izquierda else int(x0 + (x1 - x0 - img.width) / 2), int(y))
-            self._ocupar(celdas, y + img.height, limite, zona)
-            return op_dibujo(pos, img, False, self.fondo, trazos_mano(np.asarray(img)[:, :, 3]))
+            self._ocupar(celdas, y + img.height, limite, zona, (pos[0], pos[1], pos[0] + img.width, pos[1] + img.height))
+            return op_dibujo(pos, img, False, self.fondo, partes_formula(png, img))
         if 'imagen' in accion:
             img = Image.open(os.path.join(self.tema.dir, accion['imagen'])).convert('RGBA')
             x0, x1, y, limite, celdas = self._sitio(zona, 200)
@@ -962,7 +1256,7 @@ class Pizarra:
             escala = min((x1 - x0) / img.width, alto / img.height)
             img = img.resize((max(1, int(img.width * escala)), max(1, int(img.height * escala))), Image.LANCZOS)
             pos = (int(x0 + (x1 - x0 - img.width) / 2), int(y))
-            self._ocupar(celdas, y + img.height, limite, zona)
+            self._ocupar(celdas, y + img.height, limite, zona, (pos[0], pos[1], pos[0] + img.width, pos[1] + img.height))
             return op_dibujo(pos, img, False, self.fondo,
                              [{'tipo': 'relleno', 'caja': (0, 0, img.width, img.height), 'dur': 0.8}])
         if 'grafico' in accion:
@@ -972,7 +1266,7 @@ class Pizarra:
                 x0, x1, y, limite, celdas = self._sitio(zona, 300)
                 alto = (limite - y) * float(accion.get('alto', 1.0))
                 g = Grafico(self.tema, nombre, self.carpeta, (x0, y, x1, y + alto))
-                self._ocupar(celdas, y + g.h, limite, zona)
+                self._ocupar(celdas, y + g.h, limite, zona, (g.x, g.y, g.x + g.w, g.y + g.h))
                 self.graficos[nombre] = {'g': g, 'celdas': set(celdas)}
             g = self.graficos[nombre]['g']
             partes = g.nuevos(g.capa, capa)
@@ -1002,11 +1296,12 @@ class Pizarra:
         else:
             lineas = []
             for t in ([accion['texto']] if isinstance(accion.get('texto'), str) else accion.get('texto', [])):
+                avisar_glifos(str(t), F_APOYO, 'apoyo', self.avisos)
                 lineas += partir(str(t), F_APOYO, caja_util[0])
             dentro = Image.new('RGBA', (caja_util[0], max(1, 44 * len(lineas))), (0, 0, 0, 0))
             dd = ImageDraw.Draw(dentro)
             for i, l in enumerate(lineas):
-                dd.text((0, i * 44), l, font=F_APOYO, fill=TINTA + (255,))
+                escribir(dd, (0, i * 44), l, F_APOYO, TINTA + (255,))
         alto = min(int(alto_max), dentro.height + cab + margen)
         tarjeta = Image.new('RGBA', (ancho, alto), (0, 0, 0, 0))
         d = ImageDraw.Draw(tarjeta)
@@ -1014,7 +1309,7 @@ class Pizarra:
         d.text((margen, 9), 'APOYO  ·  no se escribe en la pizarra', font=F_MARCO, fill=APOYO_BORDE)
         tarjeta.alpha_composite(dentro, ((ancho - dentro.width) // 2, cab))
         pos = (int(x0), int(y))
-        self._ocupar(celdas, y + alto, limite, zona)
+        self._ocupar(celdas, y + alto, limite, zona, (x0, y, x0 + ancho, y + alto))
         return op_dibujo(pos, tarjeta, False, self.fondo,
                          [{'tipo': 'relleno', 'caja': (0, 0, ancho, alto), 'dur': 0.3}])
 
@@ -1047,8 +1342,18 @@ class Tablero:
             base = (op['fondo'].crop(op['caja']) if op['reemplaza'] else antes).convert('RGBA')
             base.alpha_composite(op['img'])
             final = base.convert('RGB')
+        elif op['tipo'] == 'lineas':          # solo cambian las rayas: lo que hubiera (lo conservado) sigue
+            m = Image.new('L', antes.size, 0)
+            for p in op['partes']:
+                dibujar_mascara(m, p, 1.0)
+            final = Image.composite(op['fondo'].crop(op['caja']), antes, m)
         else:
             final = op['fondo'].crop(op['caja'])
+            x0, y0, x1, y1 = op['caja']
+            for c in op.get('conservar', []):        # lo conservado no se borra
+                r = (max(x0, c[0]), max(y0, c[1]), min(x1, c[2]), min(y1, c[3]))
+                if r[2] > r[0] and r[3] > r[1]:
+                    final.paste(antes.crop((r[0] - x0, r[1] - y0, r[2] - x0, r[3] - y0)), (r[0] - x0, r[1] - y0))
         op['antes'], op['final'] = antes, final
         op['mascara'] = Image.new('L', antes.size, 0)
         op['k'] = 0
@@ -1134,7 +1439,7 @@ def partir(texto, fuente_, ancho):
     medidor = ImageDraw.Draw(Image.new('L', (1, 1)))
     for p in palabras:
         prueba = (actual + ' ' + p).strip()
-        if medidor.textlength(prueba, font=fuente_) <= ancho or not actual:
+        if ancho_texto(prueba, fuente_, medidor) <= ancho or not actual:
             actual = prueba
         else:
             lineas.append(actual)
@@ -1155,9 +1460,9 @@ def suave(u):
 
 
 def recortar(d, texto, fnt, ancho):
-    if d.textlength(texto, font=fnt) <= ancho:
+    if ancho_texto(texto, fnt, d) <= ancho:
         return texto
-    while len(texto) > 3 and d.textlength(texto + '…', font=fnt) > ancho:
+    while len(texto) > 3 and ancho_texto(texto + '…', fnt, d) > ancho:
         texto = texto[:-1]
     return texto.rstrip(' .,:;') + '…'
 
@@ -1469,11 +1774,10 @@ def pintar_franja(img, dice, apunte):
         d.text((50, y + alto / 2), etiqueta, font=F_ETIQUETA, fill=color_e, anchor='lm')
         lineas = partir(texto, fnt, ANCHO - 230)
         if len(filas) == 1 and len(lineas) > 1:
-            d.text((170, y + alto / 2 - 18), lineas[0], font=fnt, fill=tinta, anchor='lm')
-            d.text((170, y + alto / 2 + 18), recortar(d, ' '.join(lineas[1:]), fnt, ANCHO - 230), font=fnt,
-                   fill=tinta, anchor='lm')
+            escribir(d, (170, y + alto / 2 - 18), lineas[0], fnt, tinta, 'lm')
+            escribir(d, (170, y + alto / 2 + 18), recortar(d, ' '.join(lineas[1:]), fnt, ANCHO - 230), fnt, tinta, 'lm')
         else:
-            d.text((170, y + alto / 2), recortar(d, texto, fnt, ANCHO - 230), font=fnt, fill=tinta, anchor='lm')
+            escribir(d, (170, y + alto / 2), recortar(d, texto, fnt, ANCHO - 230), fnt, tinta, 'lm')
         y += alto
 
 
@@ -1529,7 +1833,7 @@ def pintar_guion(img, escena, estado):
         if tipo == 'parte':
             color = MORADO if est == 'actual' else ((150, 120, 175) if est == 'hecha' else (190, 186, 196))
             d.rectangle([x0, y + 16, x0 + 14, y + 30], fill=color)
-            d.text((x0 + 30, y), texto, font=F_GUION_N, fill=color)
+            escribir(d, (x0 + 30, y), texto, F_GUION_N, color)
             y += 56
         else:
             nivel = len(texto) - len(texto.lstrip('>'))
@@ -1541,7 +1845,7 @@ def pintar_guion(img, escena, estado):
                                     fill=MORADO_PALIDO)
             d.text((xi, y), '–' if nivel == 0 else '·', font=F_GUION_N, fill=MORADO)
             for fila in filas:
-                d.text((xi + 32, y), fila, font=F_GUION, fill=TINTA)
+                escribir(d, (xi + 32, y), fila, F_GUION, TINTA)
                 y += 48
             y += 6
 
@@ -1752,6 +2056,7 @@ def main():
                     nuevas = [nuevas]
                 destino = next((x for x in estado_guion['partes'] if x['estado'] == 'actual'), estado_guion['partes'][-1])
                 for linea in nuevas:
+                    avisar_glifos(str(linea).lstrip('> '), F_GUION, 'el guion', avisos)
                     destino['lineas'].append(str(linea))
                     estado_guion['ultima'] = str(linea)
                 p['guion'] = copy.deepcopy(estado_guion)
@@ -1766,14 +2071,19 @@ def main():
                 if paso.get('apunte') is not None:
                     apunte = paso.get('apunte') or None
                 p['dice'], p['apunte'] = dice, apunte
+                if paso.get('guion') is not None and dice:
+                    avisar_glifos(dice, F_FRANJA, '«Se dice»', avisos)
+                if paso.get('apunte') is not None and apunte:
+                    avisar_glifos(apunte, F_FRANJA_I, '«Apunte»', avisos)
                 nuevos = []
                 spec = paso.get('rejilla', e.get('rejilla') if nueva else None)
+                conservar = paso.get('conservar', e.get('conservar') if nueva and 'rejilla' not in paso else None)
                 if spec is not None and Rejilla(spec).clave != pizarra.rejilla.clave or paso.get('borrar'):
                     barrera(t0)
                 if spec is not None:
-                    nuevos += pizarra.cambiar_rejilla(spec)
+                    nuevos += pizarra.cambiar_rejilla(spec, conservar)
                 if paso.get('borrar'):
-                    nuevos += pizarra.borrar(paso['borrar'])
+                    nuevos += pizarra.borrar(paso['borrar'], conservar)
                 acciones = paso.get('pizarra') or []
                 if isinstance(acciones, dict):
                     acciones = [acciones]

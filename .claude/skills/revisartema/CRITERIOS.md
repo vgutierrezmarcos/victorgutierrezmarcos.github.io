@@ -378,6 +378,19 @@ el texto original y lo que se hizo.
 - **Funciones clave en la pizarra**: entre bloque y bloque se borra toda la
   pizarra salvo las `\funcionclave` (y algún gráfico central) a las que se
   va a volver a hacer referencia; se dejan en una esquina de la rejilla.
+  En `escenas.yaml` se escriben con el mismo macro que en el tema
+  (`formula: '\funcionclave{\optim{\max}{\vect{x}}{U(\vect{x})}{\vect{p}\cdot\vect{x}\leq\overline{W}\\ \vect{x}\geq\vect{0}}}'`:
+  morada, recuadrada y con fondo morado pálido; el recuadro se traza al
+  final, como a mano) y se mantienen con **`conservar:`** aunque cambie la
+  rejilla: `rejilla: "25|75"` + `conservar: [1]` (zonas de la rejilla de
+  antes) borra todo menos lo escrito en la columna 1, que se queda donde
+  está y pasa a la celda de la rejilla nueva que lo contiene (tiene que
+  caber entero en una; si no, aviso). Sin cambiar de rejilla: `borrar: true`
+  + `conservar: [1]`. Así cada apartado puede tener su rejilla sin perder la
+  esquina. Las fórmulas admiten los macros de `tcee.sty` (`\vect`,
+  `\optim`, `\funcionclave`, `\tiempo`, `\autor`, `\concepto`, colores
+  `tcee*`); en las franjas y el guion, `→ ⇒ ≫ ℝ ∈ ᵢ ⱼ` salen con una fuente
+  de respaldo (si un carácter no lo tiene ninguna, el script avisa).
 - **Pregunta de enganche y cierre (en el documento y en el vídeo**;
   Víctor, 16/10/2026: el enganche del tema es esa pregunta o un refrán, y la
   idea final del documento lo retoma y responde): el vídeo empieza, tras leer el título, con una **pregunta**
@@ -449,7 +462,8 @@ el texto original y lo que se hizo.
   celda ("100", "40|60", "35|65(55/45)", "30|40|30"). Las rayas de
   separación solo cuando ayudan a seguir la exposición (`lineas: true`, p. ej.
   fórmulas a un lado y gráfico al otro con dos apartados distintos); si hay
-  una sola cosa, sin rayas. Cambiar de rejilla borra la pizarra. Planifica
+  una sola cosa, sin rayas. Cambiar de rejilla borra la pizarra, salvo las
+  zonas de `conservar:` (funciones clave, arriba). Planifica
   la pizarra como en el examen: qué va en cada celda, cuándo se borra y que
   nunca se llene ni se salga (el script avisa).
 - **Los gráficos 3D no se dibujan trazo a trazo en la pizarra** (Víctor,
