@@ -3,14 +3,15 @@
 Preparación para traducir más adelante (con IA y revisión de Víctor) los temas
 revisados del 3.er y 4.º ejercicio de la oposición TCEE al inglés, para
 publicarlos en la web (`/en/`) y, quizá, en un libro con todo el temario.
-**Todavía no se ha traducido ningún tema.** Este fichero fija las reglas antes
+**Todavía no se ha traducido ningún tema**; sí están traducidos los 146
+títulos oficiales del 3.er y 4.º ejercicio (`temario-en.json`, § 1.2). Este fichero fija las reglas antes
 de empezar, para que todos los temas salgan con el mismo inglés, igual que el
 canon (`notacion.md`, `modelos/`, `mapa.yaml`) los hace coherentes en castellano.
 
 Lo leen el agente o el script que traduzca y quien revise. Si una regla de
 aquí choca con `notacion.md`, manda `notacion.md` en la notación (los símbolos
-no se tocan) y este fichero en todo lo demás. Lo pendiente de decidir lleva
-**[decidir]**.
+no se tocan) y este fichero en todo lo demás. Las decisiones de Víctor del
+16/10/2026 están en § 3.7; ya no queda ningún **[decidir]** abierto.
 
 Fuentes de esta primera versión (16/10/2026): `canon/notacion.md`, los nombres
 de las fichas de `canon/modelos/`, los temas revisados 3.A.8, 3.A.9, 3.A.11,
@@ -25,7 +26,7 @@ Autor: Víctor Gutiérrez Marcos
 
 ### 1.1. Variante: inglés americano
 
-Se propone **inglés americano** (ortografía de Merriam-Webster; puntuación del
+**Inglés americano** (decidido por Víctor el 16/10/2026) (ortografía de Merriam-Webster; puntuación del
 *Chicago Manual of Style*):
 
 - Es el de los manuales de referencia del canon: Mas-Colell, Whinston y Green;
@@ -79,32 +80,50 @@ Reglas de estilo derivadas:
 
   > **Topic 3.A.21. General equilibrium theory.**
 
+  > **Topic 4.B.19. Wealth taxation in Spain:** the wealth tax, the
+  > inheritance and gift tax, the transfer and stamp duty, and the property
+  > tax.
+
 - En la portada, bajo el título inglés, el **título oficial en castellano** en
   cursiva y gris, con la etiqueta «Official title (Spanish)». La traducción es
   nuestra, no oficial, y la portada lo dice una vez: «Unofficial translation of
-  the syllabus of the Spanish competitive examination for State Trade
-  Experts and Economists (TCEE)».
+  the syllabus of the Spanish competitive examination for entry into the
+  High Corps of Spanish State Economists and Trade Experts (TCEE)».
 - El título corto de `\tcetema[…]` (cabeceras) se traduce igual de fiel:
   «Cost theory. Duality in the firm».
 - Los títulos ingleses se guardan en un solo sitio, `temario-en.json` (mismo
   esquema que `temario.json`: código → título), para que portada, índice web,
-  libro y buscador digan lo mismo. **[decidir]** si se traducen de golpe los
-  146 títulos del 3.er y 4.º ejercicio antes de empezar (recomendado: sí; son
-  una tarde de revisión y fijan muchos términos del glosario).
+  libro y buscador digan lo mismo. **Hecho (16/10/2026)**: están traducidos
+  los 146 títulos del 3.er y 4.º ejercicio, con los nombres de las partes y de
+  los ejercicios (`oposicion/temario/temario-en.json`; mismo esquema y mismas
+  claves que `temario.json`, pero solo `codigo` y `titulo` en cada tema). Los
+  términos nuevos que fijaron están en § 2.13. Víctor los revisa; si cambia
+  uno, se cambia allí y en el glosario a la vez.
+- Criterios aplicados a los títulos: el orden y la puntuación del castellano
+  (punto entre epígrafes, dos puntos y punto y coma donde los hay); las
+  comillas del castellano desaparecen («second-best» → *the second best*;
+  «input-output» → *input-output*); las erratas del oficial se corrigen en
+  inglés sin nota (*Hecksher* → **Heckscher**; *Bretton-Woods* → **Bretton
+  Woods**; *G-20* → **G20**); los nombres oficiales de la UE y de los
+  organismos internacionales, con su mayúscula y grafía oficial
+  (*Macroeconomic Imbalance Procedure*, *Common Fisheries Policy*, *Stability
+  Programme*, *Financial Assistance Programme*); las siglas del título
+  castellano se conservan donde están (PGE, CAPM, APT) y no se añaden otras.
 
 ### 1.3. La oposición, el examen y sus palabras
 
 | Castellano | Inglés | Nota |
 |---|---|---|
 | oposición | competitive civil-service examination; *the oposición* | La primera vez, glosa: «the *oposición*, Spain's competitive examination for entry into the civil service». Después, *the exam* o *the oposición* (cursiva). |
-| Técnico Comercial y Economista del Estado (TCEE) | State Trade Experts and Economists (TCEE) | **[decidir]** la glosa; las siglas TCEE se conservan siempre. |
+| Cuerpo Superior de Técnicos Comerciales y Economistas del Estado (TCEE) | High Corps of Spanish State Economists and Trade Experts (TCEE) | Nombre que da Víctor (16/10/2026); se usa tal cual. Las siglas TCEE se conservan siempre. «Un TCEE» (la persona) → *a State Economist and Trade Expert* o *a TCEE*. |
+| Ministerio de Economía, Comercio y Empresa | Ministry of Economy, Trade and Enterprise | Nombre que da Víctor (16/10/2026); sin coma serial (es nombre propio). |
 | opositor | candidate | Nunca *opponent* ni *oppositor*. |
 | tribunal | examining board; *the board* | Nunca *tribunal* (en inglés es un órgano judicial). «Preguntas del tribunal» → *the board's questions*. |
 | ejercicio (1.º, 2.º, 3.º…) | exam (first, second, third…) | «Tercer ejercicio» → *the third exam (oral)*. *Exercise* es falso amigo. |
 | cantar un tema; el cante | to present a topic orally; the oral presentation | El verbo *sing* nunca. «Guion del cante» → *presentation script*; «vídeo del cante» → *presentation video*; «se canta en 30 minutos» → *is presented in 30 minutes*. |
 | no cantar | not for the oral presentation | Marca de material de consulta. |
 | pizarra | whiteboard | |
-| ficha de repaso | review sheet (four pages) | |
+| ficha de repaso | review sheet (four pages) | Las fichas **no se traducen** (§ 3.7): solo se nombran («review sheet, in Spanish»). |
 | Nota al opositor (caja `notaopositor`) | Note for candidates | |
 | Caja de anotaciones (`anotaciones`) | Further reading | |
 | Idea clave (`ideaclave`) | Key idea | |
@@ -941,7 +960,7 @@ script (columna 1 → columna 2) para comprobar la coherencia.
 | mercado único; libre circulación | single market; free movement | |
 | Comisión Europea; Consejo; Parlamento Europeo | European Commission; Council of the EU; European Parliament | *Council of the EU* ≠ *European Council*. |
 | Banco de España | Banco de España | Nombre propio; glosa *Spain's central bank*. |
-| Ministerio de Economía, Comercio y Empresa | Ministry of Economy, Trade and Enterprise | **[decidir]**: comprobar el nombre inglés que usa el Ministerio. |
+| Ministerio de Economía, Comercio y Empresa | Ministry of Economy, Trade and Enterprise | Decidido por Víctor (16/10/2026). |
 | Secretaría de Estado de Comercio | Secretary of State for Trade | |
 | sistema de Bretton Woods; patrón oro | Bretton Woods system; gold standard | |
 | mecanismo de flujo especie-precio | price-specie flow mechanism | |
@@ -950,6 +969,175 @@ script (columna 1 → columna 2) para comprobar la coherencia.
 | instituciones extractivas / inclusivas | extractive / inclusive institutions | |
 | Plan de Estabilización (1959) | Stabilization Plan | |
 
+### 2.13. Términos fijados con los títulos oficiales (16/10/2026)
+
+Salen de traducir los 146 títulos (`temario-en.json`). Se usan igual en los
+temas.
+
+| Castellano | Inglés | Nota |
+|---|---|---|
+| objeto (de la ciencia económica) | subject matter | |
+| ciencia económica | economic science; economics | *Economic science* en el título de 3.A.1; en prosa, *economics*. |
+| economía conductual | behavioral economics | |
+| pensamiento económico | economic thought | |
+| desequilibrio (escuela) | disequilibrium (disequilibrium economics) | |
+| nueva macroeconomía clásica | new classical macroeconomics | |
+| nueva economía keynesiana | New Keynesian economics | *New Keynesian* con mayúscula (adjetivo de Keynes). |
+| síntesis neoclásica; monetarismo | neoclassical synthesis; monetarism | |
+| economía de la información; teoría de la agencia | economics of information; agency theory | |
+| teoría de la organización industrial | industrial organization theory | |
+| economía de los costes de transacción | transaction cost economics | |
+| análisis de mercados | market analysis | |
+| mercado relevante | relevant market | |
+| monopolio bilateral | bilateral monopoly | |
+| soluciones cooperativas / no cooperativas | cooperative / noncooperative solutions | *Noncooperative* sin guion (americano). |
+| óptimo económico; second best | economic optimum; the second best | |
+| fallos del sector público | government failures | No *public sector failures*: el término asentado es *government failure*. |
+| teoría de la elección colectiva | collective choice theory | Fiel al título; *social choice* en prosa cuando sea Arrow-Sen. |
+| función de ingresos de capital humano (Mincer) | human capital earnings function | |
+| búsqueda y emparejamiento | search and matching | |
+| demanda de trabajo | labor demand | |
+| modelización dinámica; toma de decisiones | dynamic modeling; decision-making | |
+| horizonte infinito | infinite horizon (infinite-horizon models) | |
+| magnitudes macroeconómicas | macroeconomic aggregates | |
+| modelo de oferta y demanda agregada | aggregate supply and demand model (AD-AS) | Orden del título castellano; en prosa, *AD-AS model*. |
+| shocks y políticas de oferta | supply shocks and supply-side policies | |
+| consumo corriente; bienes de consumo duradero | current consumption; consumer durables | |
+| bienes de equipo | capital goods | También en 4.A.10 (*capital goods manufacturing*). |
+| irreversibilidad de la inversión | irreversibility of investment | |
+| diseño e instrumentación (de la política monetaria) | design and implementation | |
+| política monetaria convencional / no convencional | conventional / unconventional monetary policy | |
+| fricciones financieras | financial frictions | |
+| déficit público | public deficit | Igual que *public debt* (§ 2.8). En prosa, *government deficit* vale. |
+| dominación (dominancia) monetaria / fiscal | monetary / fiscal dominance | El título dice «dominación»; en inglés solo *dominance*. |
+| economías desarrolladas | developed economies | *Advanced economies* solo cuando la fuente es el FMI. |
+| Gran Recesión | Great Recession | |
+| valor de los multiplicadores fiscales | size of fiscal multipliers | Término de la literatura (*the size of the multiplier*). |
+| ciclo financiero; ciclo real | financial cycle; real cycle | |
+| progreso técnico exógeno | exogenous technical progress | |
+| distribución de la renta entre los factores de producción | distribution of income among factors of production; factor (functional) distribution of income | 3.A.45 y 4.A.3. |
+| convergencia económica internacional | international economic convergence | |
+| información financiera (de las empresas) | financial reporting | |
+| estados de situación / de circulación | statements of financial position / flow statements | |
+| criterios de valoración de proyectos | project appraisal criteria | **Ojo**: *valuation* solo para valorar un activo o una empresa (*firm valuation*). |
+| financiación propia / ajena | equity / debt financing | |
+| política de dividendos | dividend policy | |
+| valoración de empresas | firm valuation | |
+| fusiones, adquisiciones y alianzas estratégicas | mergers, acquisitions, and strategic alliances | |
+| modelo de factores específicos | specific factors model | |
+| barreras arancelarias / no arancelarias | tariff / nontariff barriers | *Nontariff* sin guion (Krugman-Obstfeld). |
+| mercado de divisas; mercado de cambios | foreign exchange market | |
+| operaciones (de divisas) | transactions | |
+| régimen cambiario | exchange rate regime | |
+| integración monetaria / económica | monetary / economic integration | |
+| movimientos internacionales de factores | international factor movements | |
+| movilidad de trabajadores | labor mobility | |
+| inversión de cartera / directa | portfolio / direct investment | |
+| coordinación internacional de políticas económicas | international coordination of economic policies | |
+| foros internacionales | international forums | Plural americano (no *fora*). |
+| ruptura / desaparición del sistema de Bretton Woods | breakdown / end of the Bretton Woods system | |
+| prevención y solución de crisis | crisis prevention and resolution | |
+| renta variable / renta fija | equity / fixed income (fixed-income instruments) | |
+| análisis fundamental / técnico | fundamental / technical analysis | |
+| teoría de la elección de cartera | portfolio choice theory | |
+| teoría de valoración por arbitraje | arbitrage pricing theory (APT) | |
+| rendimiento (de un bono) | yield (precio y rendimiento); return (riesgo y rendimiento) | **Ojo**: depende del par. |
+| valoración (del riesgo y del rendimiento) | assessment | No *valuation*. |
+| duración y convexidad | duration and convexity | |
+| gestión de riesgos | risk management | |
+| regulación bancaria y no bancaria | bank and nonbank (financial) regulation | |
+| aproximación experimental | experimental approach | |
+| deuda externa; ayuda al desarrollo | external debt; development aid | |
+| Grupo del Banco Mundial; bancos regionales de desarrollo | World Bank Group; regional development banks | |
+| modelos integrados de evaluación | integrated assessment models (IAMs) | |
+| perspectivas económicas mundiales | global economic outlook | No *World Economic Outlook* (es la publicación del FMI). |
+| áreas emergentes | emerging areas | |
+| Acuerdos sobre el comercio de mercancías (OMC) | agreements on trade in goods | |
+| procesos de integración no comunitarios | non-EU integration processes | «Comunitario» → *EU* (o *Community* si es antes de 2009). |
+| orden jurídico (de la UE) | legal order | |
+| presupuesto comunitario | EU budget | |
+| política pesquera común | Common Fisheries Policy (CFP) | |
+| libre circulación de mercancías, servicios, personas y capitales | free movement of goods, services, persons, and capital | |
+| política de competencia | competition policy | |
+| cohesión económica y social | economic and social cohesion | |
+| relaciones económicas exteriores | external economic relations | |
+| política de cooperación al desarrollo | development cooperation policy | |
+| Sistema Monetario Europeo | European Monetary System (EMS) | |
+| zona euro; Eurozona | euro area | Término del BCE; no *eurozone* en el texto. |
+| Unión Bancaria: pilares y código normativo único | Banking Union: pillars and the single rulebook | |
+| Unión de Mercados de Capitales | Capital Markets Union (CMU) | |
+| gobernanza económica | economic governance | |
+| Procedimiento de Desequilibrios Macroeconómicos | Macroeconomic Imbalance Procedure (MIP) | Singular, como la UE. |
+| covid-19 | COVID-19 | |
+| recursos humanos; estructura demográfica | human resources; demographic structure | |
+| proyecciones de población | population projections | |
+| sectores agrario y pesquero | agriculture and fisheries sectors | |
+| sistema eléctrico / gasista; productos petrolíferos | electricity / gas system; petroleum products | |
+| mitigación y adaptación | mitigation and adaptation | |
+| vinculación con (la política de la UE) | relationship with | |
+| I+D; I+D+i | R&D; research, development, and innovation (R&D&I) | |
+| buenas prácticas internacionales | international good practice | Singular incontable, como la OCDE. |
+| empresa industrial / de servicios | industrial firm / service firm | |
+| clima de negocio | business climate | |
+| sector público empresarial; empresa pública | public enterprise sector; public enterprise | *State-owned enterprise (SOE)* en prosa cuando se hable de la OCDE. |
+| industria (sector) | industry; manufacturing | *Manufacturing* cuando se opone a servicios o en las clasificaciones. |
+| contenido tecnológico | technological content | |
+| industria agroalimentaria / automovilística / química y farmacéutica | agri-food / automotive / chemical and pharmaceutical industry | |
+| política de vivienda y suelo | housing and land policy | |
+| transportes | transportation | Americano (no *transport*), salvo nombres oficiales UE. |
+| distribución comercial | distribution sector (wholesale and retail trade) | |
+| comercio electrónico | e-commerce | |
+| defensa / promoción de la competencia | competition enforcement / advocacy | |
+| garantía de unidad de mercado | guarantee of market unity | Ley 20/2013: *Law on Guaranteeing Market Unity*. |
+| políticas de empleo | employment policies | |
+| entidades de crédito | credit institutions | |
+| Programa de Asistencia Financiera (2012) | Financial Assistance Programme | Nombre oficial del MEDE (grafía británica). |
+| mercados de valores | securities markets | |
+| financiación no bancaria | nonbank financing | |
+| posición frente al Eurosistema | position vis-à-vis the Eurosystem | |
+| sostenibilidad externa | external sustainability | |
+| balanza de bienes y servicios | goods and services account | MBP6. |
+| indicadores de competitividad | competitiveness indicators | |
+| inversión exterior; inversión en el exterior | investment abroad | |
+| política de internacionalización | internationalization policy | |
+| promoción comercial; organismos | trade promotion; bodies | |
+| cooperación técnica y financiera | technical and financial cooperation | |
+| Comunidades Europeas; adhesión | European Communities; accession | |
+| constitución de la zona euro | creation of the euro area | |
+| evolución | evolution (de una economía a lo largo de años); trends (de una magnitud); recent developments («evolución reciente» de un sistema) | |
+| flujos presupuestarios / extrapresupuestarios; saldo financiero | budgetary / off-budget flows; net financial balance | |
+| Marco Financiero Plurianual 2021-2027 | 2021–2027 Multiannual Financial Framework | Mayúsculas con el período (nombre propio); en minúscula el genérico. |
+| delimitación (del sector público, SEC) | delimitation | Término del SEC 2010 y del MGDD. |
+| operaciones (SEC) | transactions | |
+| reglas de votación; democracia representativa | voting rules; representative democracy | |
+| producción pública; burocracia | public production; bureaucracy | |
+| límites normativos | legal limits | «Normativo» = de normas, no *normative*. |
+| presupuesto como elemento de redistribución / compensador | budget as an instrument of redistribution / as a compensatory (stabilizing) instrument | |
+| Estado de bienestar | welfare state | |
+| componentes discrecionales y automáticos; esfuerzo fiscal | discretionary and automatic components; fiscal effort | |
+| evaluación de políticas públicas; evaluación de impacto | public policy evaluation; impact evaluation | |
+| análisis coste-eficacia | cost-effectiveness analysis | |
+| elementos definidores (de los impuestos); clases de impuestos | defining elements; types of taxes | |
+| principios impositivos | principles of taxation | |
+| efecto incentivo | incentive effect | |
+| compromiso entre eficiencia y equidad | efficiency-equity trade-off | |
+| haciendas territoriales; Administraciones Territoriales | subnational governments (teoría); regional and local governments (España) | |
+| competencias (de las Administraciones) | powers | |
+| política de privatizaciones | privatization policy | |
+| impuesto sobre la renta de no residentes | non-resident income tax | |
+| convenios de doble imposición; modelo de la OCDE | double taxation conventions; OECD Model Tax Convention | |
+| erosión de bases imponibles | base erosion | |
+| imposición patrimonial | wealth taxation | IBI → *property tax* (§ 1.8). |
+| principios presupuestarios; modificaciones presupuestarias | budgetary principles; budget amendments | |
+| elaboración, aprobación, ejecución y control (del presupuesto) | preparation, approval, execution, and control | |
+| clasificación por políticas de gasto | spending-policy classification | |
+| visión consolidada | consolidated view | |
+| en términos de contabilidad nacional | in national accounts terms | |
+| gasto por funciones (COFOG) | expenditure by function | |
+| subsectores de las Administraciones Públicas | general government subsectors | |
+| Seguridad Social; sistema público de pensiones | Social Security; public pension system | |
+| política de financiación del Tesoro | Treasury funding policy | |
+
 ---
 
 ## 3. Plan
@@ -957,9 +1145,9 @@ script (columna 1 → columna 2) para comprobar la coherencia.
 ### 3.1. Cómo se haría
 
 1. **Antes de empezar** (una vez):
-   - Víctor revisa y cierra los **[decidir]** de este fichero y traduce (o
-     aprueba) los títulos de los 146 temas del 3.er y 4.º ejercicio en
-     `temario-en.json`.
+   - Decisiones de Víctor cerradas (16/10/2026, § 3.7) y títulos de los 146
+     temas del 3.er y 4.º ejercicio traducidos en `temario-en.json`
+     (pendiente de que Víctor los revise).
    - Se pasa el glosario a `canon/traduccion/glosario.tsv` (lo genera un
      script desde las tablas de § 2) para que el traductor y el verificador lo
      lean igual.
@@ -993,8 +1181,9 @@ script (columna 1 → columna 2) para comprobar la coherencia.
      corrección final de un nativo con formación económica (*copy-editing*),
      por bloques.
    - **Publicación** en `/en/` (§ 3.5).
-   - La ficha de repaso se traduce igual (después, cuando el tema esté
-     aprobado); el guion y el vídeo del cante **no** se traducen por ahora.
+   - La ficha de repaso **no se traduce** (decisión de Víctor, 16/10/2026):
+     la página inglesa del tema la enlaza como «Review sheet (in Spanish)».
+     El guion y el vídeo del cante tampoco se traducen por ahora.
 3. **Mantenimiento**: `estado.json` de cada tema guarda, por apartado, la
    huella (hash) de la fuente castellana que se tradujo. Si el tema castellano
    cambia, se retraducen solo los apartados cuya huella ha cambiado y se
@@ -1002,8 +1191,11 @@ script (columna 1 → columna 2) para comprobar la coherencia.
 4. **Libro**: una clase o plantilla `tcee-libro` que incluya los temas en
    inglés (o en castellano) como capítulos con `\include`, con numeración de
    páginas continua (la 1…N, A-n, B-n de cada tema pasa a numeración del
-   libro y los anexos quedan al final de cada capítulo), bibliografía por
-   capítulo (`refsection`) o común **[decidir]**, la nota de notación (§ 1.7)
+   libro y los anexos quedan al final de cada capítulo), **bibliografía por
+   capítulo** como en los temas (decisión de Víctor, 16/10/2026: un
+   `refsection` por tema y su `\printbibliography` al final del capítulo,
+   tras los anexos, con el título *References*; sin bibliografía común), la
+   nota de notación (§ 1.7)
    y la `notacion.md` como apéndice de notación, y este glosario como apéndice
    bilingüe (útil para el lector). Se hace cuando haya un bloque entero
    revisado (CRITERIOS.md ya prevé manuales por bloques con las fichas).
@@ -1102,13 +1294,22 @@ el mismo `.tex`, sin duplicar ficheros:
 `scripts/temario/publicar-tema.py`
 - Con `--idioma en`: no toca `oposicion/temario/<ejercicio>.html`; añade la
   línea del tema a la portada inglesa `en/topics/index.html` (título de
-  `temario-en.json`, botones PDF, DOCX y, cuando exista, REVIEW SHEET); copia
+  `temario-en.json`, botones PDF, DOCX y, cuando exista, «REVIEW SHEET (ES)»,
+  que enlaza la ficha castellana: las fichas no se traducen); copia
   a `en/topics/` el HTML, PDF, DOCX y los gráficos.
 - `build-app-data.js`: añadir `urlHtmlEn`/`urlEn` al tema en `temario.json`
   (la app puede ofrecer el enlace; no se traduce la app).
 - `generate-sitemap.js`: incluir `/en/` con alternativas `hreflang`.
-- `build-search-index.js`: índice aparte para `/en/` o dejar el buscador solo
-  en castellano por ahora **[decidir]**.
+- `build-search-index.js`: **buscador también en inglés** (decisión de
+  Víctor, 16/10/2026). Genera un segundo índice, `en/search-index.json`, con
+  los títulos de `temario-en.json` (los 146, desde ya, para encontrar el
+  tema aunque solo exista en castellano: el resultado lleva «(in Spanish)» y
+  enlaza a la versión castellana) y el texto de los temas traducidos en
+  `en/topics/`. `search-ui.js` elige el índice según `<html lang>` (o la ruta
+  `/en/`) y traduce sus textos fijos (placeholder, «Sin resultados», atajo
+  Ctrl/Cmd+K). `search-engine.js` no cambia (la búsqueda difusa no depende
+  del idioma; quitar tildes sigue valiendo). Las páginas de `/en/` cargan
+  los mismos scripts, en el mismo orden que el resto del sitio.
 
 Nuevo: `scripts/temario/traducir-tema.py`
 - Trocea la fuente por `\section`, monta el contexto fijo (este LEEME,
@@ -1122,7 +1323,10 @@ Nuevo: `scripts/temario/traducir-tema.py`
 
 - Rutas: `/en/` (portada inglesa breve: qué es la oposición TCEE y qué hay en
   inglés), `/en/topics/` (índice de temas traducidos por ejercicio y bloque) y
-  `/en/topics/3A12.html` (+ `.pdf`, `.docx`). **[decidir]** las rutas.
+  `/en/topics/3A12.html` (+ `.pdf`, `.docx`). **Decidido** (Víctor,
+  16/10/2026): la web inglesa va en **/en/**, con el buscador en inglés
+  (§ 3.4, `build-search-index.js`). La página de cada tema traducido enlaza la
+  ficha de repaso castellana.
 - Navegación: la página castellana de un tema traducido enseña «English
   version»; la inglesa, «Versión en castellano». Las páginas generales del
   sitio (inicio, comunidad, cookies) no se traducen por ahora; la inglesa
@@ -1154,11 +1358,20 @@ TikZ, unos 20-110 rótulos).
   publicación. Para el libro, la corrección por un nativo economista es aparte
   (presupuesto por palabra a pedir; unas 20.000 palabras por tema).
 
-### 3.7. Pendiente de decidir antes del piloto
+### 3.7. Decisiones de Víctor (16/10/2026)
 
-1. Inglés americano (propuesta) o británico.
-2. Glosa de «TCEE» y nombre inglés del Ministerio.
-3. Traducir antes los 146 títulos (`temario-en.json`).
-4. Rutas de `/en/` y si el buscador indexa la versión inglesa.
-5. Bibliografía del libro por capítulo o común.
-6. Si la ficha de repaso se traduce con el tema o más tarde.
+1. **Inglés americano** (§ 1.1), con la grafía oficial británica solo en los
+   nombres propios de la UE, el Reino Unido y organismos internacionales.
+2. La oposición: **«High Corps of Spanish State Economists and Trade
+   Experts»** (TCEE); el Ministerio: **«Ministry of Economy, Trade and
+   Enterprise»**. Nombres que da Víctor; se usan tal cual (§ 1.2, § 1.3,
+   § 2.12).
+3. **Títulos traducidos ya**: los 146 del 3.er y 4.º ejercicio en
+   `oposicion/temario/temario-en.json` (§ 1.2), fieles frase a frase, con el
+   glosario y los términos nuevos en § 2.13. Falta la revisión de Víctor.
+4. **Web en /en/ con el buscador también en inglés** (§ 3.4 y § 3.5):
+   `en/search-index.json` con los títulos ingleses desde que se publique
+   `/en/`, y el texto de cada tema según se traduzca.
+5. **Bibliografía del libro por capítulo**, como en los temas (§ 3.1, punto
+   4).
+6. **Fichas de repaso solo en español**: no se traducen (§ 1.3, § 3.1).
