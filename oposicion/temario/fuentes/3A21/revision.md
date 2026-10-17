@@ -296,3 +296,7 @@ Introducción, bloque III, conclusión y anexo E, con las reglas de CRITERIOS.md
 - **Página de Robinson (1962)**: p. 33 según Víctor; no cotejada (ejemplar de préstamo). La traducción al castellano es la que dio Víctor; si procede de una traducción española publicada, convendría citarla también (no se ha comprobado cuál).
 - **Patinkin, referencia de tema**: el canon fija el 3.A.4 como tema de referencia de Patinkin (D111) y el 3.A.35 lo fecha en 1951 (pendiente en la ficha `patinkin`). Aquí se remite a 3.A.4 y 3.A.5 para la versión macroeconómica y a 3.A.35 para la demanda de dinero.
 - **Kiyotaki y Wright**: el tema cita el artículo de 1989 (*JPE*), que es el original; el 3.A.35 cita el de 1993 (*AER*). No es una contradicción, pero conviene que el 3.A.35 cite también el de 1989 al revisarse.
+
+## Cambio del 17/10/2026 (tarde)
+
+- Víctor prefiere guardar la frase de Joan Robinson (mapa a escala 1:1) para otro tema donde encaje mejor: quitada del bloque I, de la conclusión, de la nota al opositor y del .bib.
