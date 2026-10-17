@@ -44,6 +44,11 @@ Además:
    (`"aprobado": {"tema": "2026-10-20", "repaso": null, "video": null}`).
    Al acabar cada fase, márcala con fecha y hora en `"fases"`. Las
    aprobaciones solo las anotas cuando Víctor las da explícitamente.
+   **Cuando Víctor apruebe el tema o la ficha**: anota la fecha, haz commit
+   de `estado.json` y ejecuta `python3 R/scripts/temario/manifiesto-app.py`
+   (regenera `oposicion/temario/app/revisados.json`, el manifiesto con el que
+   la app ofrece lo revisado, en exclusiva); commit `Manifiesto de la app: …`
+   y push. Lo mismo si se reconstruye un tema o una ficha ya aprobados.
 6. Crea una lista de tareas (TodoWrite) con las fases, para que Víctor vea el avance.
 7. Si el tema tiene entradas en `canon/pendientes-coherencia.md` (cambios del
    canon posteriores a su revisión), aplícalas en la fase de integrar.
@@ -125,6 +130,9 @@ anota en `canon/pendientes-coherencia.md` con qué hay que cambiar.
    `git -c credential.helper= -c 'credential.helper=!f(){ echo username=x-access-token; echo password=$(gh auth token -u vgutierrezmarcos); }; f' push origin revision-temario`.
    **Nunca** hagas push a `main` ni fusiones la rama: pasar a `main` (lo que
    ven los usuarios) lo decide Víctor, por tandas.
+5. Si el tema ya estaba aprobado (se ha rehecho), regenera el manifiesto de
+   la app tras el commit: `python3 R/scripts/temario/manifiesto-app.py`,
+   commit y push (`--comprobar` dice si está al día).
 
 **Parada**: resumen para Víctor y espera a que apruebe el tema (o pida cambios).
 
@@ -133,7 +141,10 @@ anota en `canon/pendientes-coherencia.md` con qué hay que cambiar.
 Agente `tema-repaso`: escribe `D/repaso/T-repaso.tex` (cuatro páginas a dos columnas) y la
 compila con `construir-repaso.py T`; luego
 `construir-tema.py T --solo html` (para que la página enlace la ficha) y
-`publicar-tema.py T`. Commit y push como arriba. **Parada**.
+`publicar-tema.py T`. Commit y push como arriba (si la ficha ya estaba
+aprobada, regenera también el manifiesto de la app con `manifiesto-app.py`).
+**Parada**. Cuando Víctor la apruebe, `aprobado.repaso` en `estado.json` y
+`manifiesto-app.py` (paso 5 del principio).
 
 ## Entrega 3: el vídeo (`--fase video`, con tema y ficha aprobados)
 
