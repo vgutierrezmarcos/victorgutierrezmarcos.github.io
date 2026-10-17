@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:js_interop';
+import 'dart:typed_data';
 
 import 'package:web/web.dart' as web;
 
@@ -15,6 +16,19 @@ Future<void> guardarFichero({required String nombre, required String contenido, 
   a.click();
   a.remove();
   // Algunos navegadores leen el blob después del clic: se libera más tarde.
+  Future.delayed(const Duration(seconds: 30), () => web.URL.revokeObjectURL(url));
+}
+
+/// Descarga un fichero binario (un PDF) desde el navegador.
+Future<void> guardarBytes({required String nombre, required List<int> bytes, required String mime, String? asunto}) async {
+  final blob = web.Blob([Uint8List.fromList(bytes).toJS].toJS, web.BlobPropertyBag(type: mime));
+  final url = web.URL.createObjectURL(blob);
+  final a = web.HTMLAnchorElement()
+    ..href = url
+    ..download = nombre;
+  web.document.body?.append(a);
+  a.click();
+  a.remove();
   Future.delayed(const Duration(seconds: 30), () => web.URL.revokeObjectURL(url));
 }
 

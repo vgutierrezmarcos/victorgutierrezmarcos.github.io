@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
@@ -65,7 +66,7 @@ class _SelectorModalidadState extends State<SelectorModalidad> {
     final url = enlaceReunion(texto);
     if (url == null || plataformaDeEnlace(url).isEmpty || !mounted) return;
     widget.enlace.text = url;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Enlace de la reunión pegado del portapapeles')));
+    ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Enlace de la reunión pegado del portapapeles')));
   }
 
   Future<void> _pegar(BuildContext context) async {
@@ -74,7 +75,7 @@ class _SelectorModalidadState extends State<SelectorModalidad> {
     if (url != null) {
       widget.enlace.text = url;
     } else if (context.mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No hay ningún enlace copiado. Crea la reunión, copia su enlace y vuelve a pegarlo.')));
+      ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('No hay ningún enlace copiado. Crea la reunión, copia su enlace y vuelve a pegarlo.')));
     }
   }
 
@@ -244,7 +245,7 @@ class TarjetaModalidad extends StatelessWidget {
               label: const Text('Copiar enlace'),
               onPressed: () async {
                 await Clipboard.setData(ClipboardData(text: c.enlace));
-                if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Enlace copiado')));
+                if (context.mounted) ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Enlace copiado')));
               },
             ),
             if (whatsapp != null) OutlinedButton.icon(icon: const Icon(Icons.chat_outlined, size: 18), label: const Text('Enviar por WhatsApp'), onPressed: () => abrirUrl(context, whatsapp)),

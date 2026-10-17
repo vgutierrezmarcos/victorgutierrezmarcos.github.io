@@ -14,13 +14,7 @@ class SearchUI {
     }
 
     async initialize() {
-        // Inicializar el motor de búsqueda
-        const initialized = await searchEngine.initialize();
-        if (!initialized) {
-            console.error('No se pudo inicializar el buscador');
-            return;
-        }
-
+        // El botón sale ya; el índice se descarga al abrir el buscador
         this.createSearchUI();
         this.attachEventListeners();
     }
@@ -31,16 +25,18 @@ class SearchUI {
         overlay.id = 'search-overlay';
         overlay.className = 'search-overlay';
         overlay.innerHTML = `
-            <div class="search-modal">
+            <div class="search-modal" role="dialog" aria-modal="true" aria-label="Buscar en la web">
                 <div class="search-header">
                     <div class="search-input-container">
-                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"/>
                             <path d="m21 21-4.35-4.35"/>
                         </svg>
                         <input 
                             type="text" 
                             id="search-input" 
+                            aria-label="Buscar temas, ejercicios y recursos" 
+                            aria-controls="search-results" 
                             class="search-input" 
                             placeholder="Buscar temas, ejercicios, recursos..."
                             autocomplete="off"
@@ -58,7 +54,7 @@ class SearchUI {
                     </div>
                 </div>
                 <div class="search-results-container">
-                    <div id="search-results" class="search-results"></div>
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
                 </div>
                 <div class="search-footer">
                     <div class="search-shortcuts">
@@ -82,7 +78,7 @@ class SearchUI {
             const searchLi = document.createElement('li');
             searchLi.className = 'nav-right-item'; // Clase para alineación a la derecha
             searchLi.innerHTML = `
-                <a href="#" id="open-search" class="search-trigger">
+                <a href="#" id="open-search" class="search-trigger" role="button" aria-haspopup="dialog" aria-label="Buscar (Ctrl+K)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.35-4.35"/>
@@ -161,6 +157,10 @@ class SearchUI {
     }
 
     openSearch() {
+        searchEngine.initialize().then(ok => {
+            if (!ok) console.error('No se pudo inicializar el buscador');
+            else if (this.currentQuery) this.performSearch(this.currentQuery);
+        });
         this.searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         this.searchInput.focus();
@@ -243,6 +243,15 @@ class SearchUI {
         this.renderResults(results, query);
     }
 
+    // Las URL del índice son relativas a /oposicion/ (salvo blog, sobre mí y las absolutas):
+    // se pasan a absolutas para que funcionen desde cualquier página
+    resolverUrl(url) {
+        if (/^(https?:)?\//.test(url)) return url;
+        if (url.startsWith('blog/') || url === 'sobre-mi.html') return '/' + url;
+        if (url === 'index.html') return '/oposicion/';
+        return '/oposicion/' + url;
+    }
+
     renderResults(results, query) {
         const html = results.map((result, index) => {
             const icon = this.getIcon(result);
@@ -253,7 +262,7 @@ class SearchUI {
             const target = result.url.endsWith('.pdf') ? '_blank' : '_self';
             
             // Si no está disponible, no hacer clickeable el enlace al PDF
-            const href = isNoDisponible ? '#' : result.url;
+            const href = isNoDisponible ? '#' : this.resolverUrl(result.url);
             const onClick = isNoDisponible ? 'onclick="event.preventDefault(); alert(\'Este tema aún no está disponible.\')"' : '';
             
             return `

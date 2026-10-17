@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
-import '../plan/cantes_util.dart';
+import '../../data/repos/preparador_repo.dart';
+import 'coordinacion.dart';
 import 'red_widgets.dart';
 
 /// Con quién cantó el alumno [c] visto por el preparador [yo]: «contigo»,
@@ -14,6 +16,7 @@ import 'red_widgets.dart';
 String conQuienCanto(Cante c, {required String? yo, required bool mia}) {
   if (mia || (c.preparador != null && c.preparador == yo)) return 'contigo';
   if (c.preparador == null) return 'por su cuenta';
+  if (c.preparador == preparadorOculto) return 'en otra clase';
   final n = (c.preparadorNombre ?? '').trim();
   return n.isEmpty ? 'con otro preparador' : 'con $n';
 }
@@ -146,37 +149,13 @@ class SeccionOtrosPreparadores extends ConsumerStatefulWidget {
 }
 
 class _SeccionOtrosPreparadoresState extends ConsumerState<SeccionOtrosPreparadores> {
-  final _nota = TextEditingController();
-  bool _enviando = false;
-
-  @override
-  void dispose() {
-    _nota.dispose();
-    super.dispose();
-  }
-
-  Future<void> _anadir() async {
-    final texto = _nota.text.trim();
-    if (texto.isEmpty) return;
-    final messenger = ScaffoldMessenger.of(context);
-    setState(() => _enviando = true);
-    try {
-      await ref.read(preparadorRepoProvider).anadirNotaPreparadores(widget.alumno, texto);
-      _nota.clear();
-      ref.invalidate(notasPreparadoresProvider(widget.alumno.id));
-    } catch (_) {
-      messenger.showSnackBar(const SnackBar(content: Text('No se pudo guardar la nota. Revisa la conexión.')));
-    }
-    if (mounted) setState(() => _enviando = false);
-  }
-
   Future<void> _compartir(bool si) async {
     final messenger = ScaffoldMessenger.of(context);
     try {
       await ref.read(preparadorRepoProvider).compartirContacto(widget.alumno, si);
       ref.invalidate(comparteContactoProvider(widget.alumno.id));
     } catch (_) {
-      messenger.showSnackBar(const SnackBar(content: Text('No se pudo. Revisa la conexión.')));
+      messenger.mostrar(const SnackBar(content: Text('No se pudo. Revisa la conexión.')));
     }
   }
 
@@ -187,7 +166,6 @@ class _SeccionOtrosPreparadoresState extends ConsumerState<SeccionOtrosPreparado
     final otros = ref.watch(otrosPreparadoresProvider(a.id)).valueOrNull ?? const <OtroPreparador>[];
     final notas = ref.watch(notasPreparadoresProvider(a.id)).valueOrNull ?? const <NotaEntrePreparadores>[];
     if (otros.isEmpty && notas.isEmpty) return const SizedBox();
-    final yo = ref.watch(usuarioActualProvider)?.uid;
     final comparto = ref.watch(comparteContactoProvider(a.id)).valueOrNull ?? false;
     final telefono = ref.watch(perfilPreparadorProvider).telefono;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
@@ -216,39 +194,15 @@ class _SeccionOtrosPreparadoresState extends ConsumerState<SeccionOtrosPreparado
           subtitle: Text(telefono.isEmpty ? 'Pon tu teléfono en Ajustes de preparador para poder compartirlo.' : 'Solo los otros preparadores de ${a.nombre}.', style: context.textos.labelSmall),
         ),
       const TituloSeccion('Notas entre preparadores'),
-      Text('Las leéis los preparadores de ${a.nombre}; él no las ve en la app. Para coordinaros: qué temas lleváis, qué flojea…', style: context.textos.labelSmall),
+      Text('Solo las leéis los preparadores de ${a.nombre}; él no las ve en la app (para lo que queráis hablar con él, el tablón). Para coordinaros: qué temas lleváis, qué flojea…', style: context.textos.labelSmall),
       const SizedBox(height: 8),
-      Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        Expanded(child: TextField(controller: _nota, minLines: 1, maxLines: 4, maxLength: 2000, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Escribe una nota', counterText: ''))),
-        const SizedBox(width: 8),
-        IconButton.filled(tooltip: 'Guardar la nota', onPressed: _enviando ? null : _anadir, icon: const Icon(Icons.send)),
-      ]),
-      const SizedBox(height: 8),
-      for (final n in notas)
-        Padding(
-          padding: const EdgeInsets.only(bottom: 6),
-          child: Tarjeta(
-            padding: const EdgeInsets.fromLTRB(12, 8, 4, 8),
-            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Expanded(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('${n.de == yo ? 'Tú' : (n.deNombre.isEmpty ? 'Otro preparador' : n.deNombre)} · ${fechaCorta(n.fecha)}', style: context.textos.labelSmall),
-                  const SizedBox(height: 2),
-                  Text(n.texto, style: context.textos.bodyMedium),
-                ]),
-              ),
-              if (n.de == yo)
-                IconButton(
-                  tooltip: 'Borrar mi nota',
-                  icon: const Icon(Icons.delete_outline, size: 20),
-                  onPressed: () async {
-                    await ref.read(preparadorRepoProvider).borrarNotaPreparadores(a, n);
-                    ref.invalidate(notasPreparadoresProvider(a.id));
-                  },
-                ),
-            ]),
-          ),
-        ),
+      ListaMensajes(
+        alumnoUid: a.uid!,
+        coleccion: PreparadorRepo.notasEntrePreparadores,
+        mensajes: notas,
+        pista: 'Escribe una nota',
+        alCambiar: () => ref.invalidate(notasPreparadoresProvider(a.id)),
+      ),
     ]);
   }
 }

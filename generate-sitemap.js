@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs');
+const { execFileSync } = require('child_process');
 const path = require('path');
 
 const BASE_URL = 'https://www.victorgutierrezmarcos.es';
@@ -18,6 +19,7 @@ const PAGE_CONFIG = {
     'politica-cookies.html': { priority: '0.3', changefreq: 'yearly' },
     'oposicion/index.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/temario.html': { priority: '0.9', changefreq: 'monthly' },
+    'oposicion/que-es-tcee.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/organizacion.html': { priority: '0.8', changefreq: 'monthly' },
     'oposicion/enlaces.html': { priority: '0.8', changefreq: 'monthly' },
     'blog/index.html': { priority: '0.8', changefreq: 'weekly' },
@@ -29,12 +31,23 @@ const EXCLUDE_PATTERNS = [
     /^blog\/newsletter\//,
     /^blog\/templates\//,
     /^blog\/.*_files\//,
-    /^\.github\//,
+    /(^|\/)\./,   // carpetas ocultas (.github, .Rproj.user…)
     /^app\/.+\//,   // de la app móvil solo se publica su página (app/index.html)
     /^node_modules\//,
     /404\.html$/,
     /tema-no-disponible\.html$/,
+    /^scripts\//,
+    /^backup\//,
+    /(^|\/)oculto\//,
+    /^politica-cookies\.html$/,  // lleva noindex
+    /^temario(\/|\.html$)/,      // páginas puente de direcciones antiguas
+    /^(enlaces|organizacion)\.html$/,
+    /^oposicion\/temario\/index\.html$/,  // página puente de /oposicion/temario/
 ];
+
+// Documentos que también van al sitemap (los temas en PDF son lo que más se busca)
+const DOC_EXTENSIONS = ['.pdf'];
+const DOC_DIRS = ['oposicion/'];
 
 function shouldExclude(relativePath) {
     return EXCLUDE_PATTERNS.some(pattern => pattern.test(relativePath));
@@ -53,7 +66,11 @@ function getHtmlFiles(dir, base) {
             if (!shouldExclude(relativePath + '/')) {
                 results.push(...getHtmlFiles(fullPath, base));
             }
-        } else if (entry.name.endsWith('.html') && !shouldExclude(relativePath)) {
+        } else if (shouldExclude(relativePath)) {
+            continue;
+        } else if (entry.name.endsWith('.html')) {
+            results.push(relativePath);
+        } else if (DOC_EXTENSIONS.includes(path.extname(entry.name).toLowerCase()) && DOC_DIRS.some(d => relativePath.startsWith(d))) {
             results.push(relativePath);
         }
     }
@@ -62,6 +79,12 @@ function getHtmlFiles(dir, base) {
 }
 
 function getLastModDate(filePath) {
+    // Fecha del último commit que tocó el fichero (en GitHub Actions la fecha de
+    // modificación del disco es siempre la del checkout)
+    try {
+        const fecha = execFileSync('git', ['log', '-1', '--format=%cs', '--', filePath], { cwd: ROOT_DIR, encoding: 'utf-8' }).trim();
+        if (fecha) return fecha;
+    } catch { /* sin git: se usa la fecha del disco */ }
     try {
         const stats = fs.statSync(filePath);
         return stats.mtime.toISOString().split('T')[0];
@@ -81,8 +104,25 @@ function fileToUrl(relativePath) {
     return BASE_URL + '/' + relativePath;
 }
 
+// PDF enlazados desde alguna página publicada: los que no se enlazan (temas aún no
+// disponibles, borradores) no se anuncian en el sitemap
+function pdfsEnlazados(paginas) {
+    const enlazados = new Set();
+    for (const pagina of paginas) {
+        const html = fs.readFileSync(path.join(ROOT_DIR, pagina), 'utf-8');
+        for (const [, href] of html.matchAll(/href="([^"#?]+\.pdf)"/gi)) {
+            if (/^[a-z]+:/i.test(href)) continue;
+            const destino = href.startsWith('/') ? href.slice(1) : path.posix.join(path.posix.dirname(pagina), href);
+            enlazados.add(path.posix.normalize(decodeURIComponent(destino)));
+        }
+    }
+    return enlazados;
+}
+
 function generateSitemap() {
-    const htmlFiles = getHtmlFiles(ROOT_DIR, ROOT_DIR);
+    const todos = getHtmlFiles(ROOT_DIR, ROOT_DIR);
+    const enlazados = pdfsEnlazados(todos.filter(f => f.endsWith('.html')));
+    const htmlFiles = todos.filter(f => f.endsWith('.html') || enlazados.has(f));
 
     // Ordenar: principales primero, luego oposición, luego blog
     htmlFiles.sort((a, b) => {
@@ -93,20 +133,22 @@ function generateSitemap() {
             if (f.startsWith('blog/')) return 3;
             return 4;
         };
-        return order(a) - order(b) || a.localeCompare(b);
+        const docs = (f) => (f.endsWith('.html') ? 0 : 1);
+        return docs(a) - docs(b) || order(a) - order(b) || a.localeCompare(b);
     });
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
     for (const file of htmlFiles) {
-        const url = fileToUrl(file);
+        const url = fileToUrl(file).split('/').map((p, i) => (i < 3 ? p : encodeURIComponent(p))).join('/');
         const fullPath = path.join(ROOT_DIR, file);
         const lastmod = getLastModDate(fullPath);
 
         const config = PAGE_CONFIG[file] || {};
-        const priority = config.priority || (file.startsWith('blog/') && file !== 'blog/index.html' ? '0.6' : '0.7');
-        const changefreq = config.changefreq || (file.startsWith('blog/') && file !== 'blog/index.html' ? 'yearly' : 'monthly');
+        const esDoc = !file.endsWith('.html');
+        const priority = config.priority || (esDoc ? '0.5' : file.startsWith('blog/') && file !== 'blog/index.html' ? '0.6' : '0.7');
+        const changefreq = config.changefreq || (esDoc || (file.startsWith('blog/') && file !== 'blog/index.html') ? 'yearly' : 'monthly');
 
         xml += '  <url>\n';
         xml += `    <loc>${url}</loc>\n`;

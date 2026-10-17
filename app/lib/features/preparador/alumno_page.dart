@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -17,6 +18,7 @@ import '../plan/cantes_util.dart';
 import '../cronograma/propuesta_page.dart';
 import 'materiales_page.dart';
 import 'preparador_page.dart';
+import 'coordinacion.dart';
 import 'otros_preparadores.dart';
 import 'red_widgets.dart';
 import 'sesion_page.dart';
@@ -90,7 +92,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     await ref.read(alumnosProvider.notifier).guardar(a.copyWith(clasesFijas: [...a.clasesFijas, c]));
     final n = await ref.read(preparadorRepoProvider).generarClasesFijas();
     ref.invalidate(sesionesProvider);
-    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Clase fija añadida: $n ${n == 1 ? 'clase creada' : 'clases creadas'} para las próximas seis semanas')));
+    if (mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Clase fija añadida: $n ${n == 1 ? 'clase creada' : 'clases creadas'} para las próximas seis semanas')));
   }
 
   Future<void> _quitarClaseFija(Alumno a, ClaseFija c) async {
@@ -123,7 +125,18 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
     final idsMias = {for (final s in mias) s.id};
     final suyos = (progreso?.value?.cantes ?? const <Cante>[]).where((c) => !idsMias.contains(c.id)).toList();
     final hechos = [...mias, ...suyos].where((c) => c.hecho).toList()..sort((x, y) => y.fecha.compareTo(x.fecha));
-    final proximas = mias.where((s) => s.pendiente && s.fecha.isAfter(DateTime.now().subtract(const Duration(hours: 2)))).toList();
+    final desde = DateTime.now().subtract(const Duration(hours: 2));
+    // Las próximas: las mías y, para no pisarse, las de sus otros preparadores
+    // y sus cantes por su cuenta con hora (las que el alumno deja ver).
+    final proximas = [
+      ...mias.where((s) => s.pendiente && s.fecha.isAfter(desde)),
+      ...suyos.where((c) => !c.hecho && !c.cancelado && c.fecha.isAfter(desde) && (c.preparador != null || c.fecha.hour != 0 || c.fecha.minute != 0)),
+    ]..sort((x, y) => x.fecha.compareTo(y.fecha));
+    final yo = ref.watch(usuarioActualProvider)?.uid;
+    final otros = a.enlazado ? (ref.watch(otrosPreparadoresProvider(a.id)).valueOrNull ?? const <OtroPreparador>[]) : const <OtroPreparador>[];
+    final coordina = a.enlazado && progreso?.value != null && !progreso!.value!.yoAislado;
+    // Colores distintos para mí y sus otros preparadores.
+    if (yo != null && otros.isNotEmpty) asignarColoresDistintos([yo, for (final o in otros) o.uid]);
     final stats = EstadisticaTema.desde(hechos);
     final valorados = hechos.where((c) => (c.resultado?.valoracion ?? 0) > 0).toList();
     final media = valorados.isEmpty ? 0.0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracion) / valorados.length;
@@ -229,6 +242,18 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               ),
             ),
             CronogramaDelAlumno(alumno: a),
+            if (coordina)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: FilaEnlace(
+                  icono: Icons.forum_outlined,
+                  titulo: otros.isEmpty ? 'Tablón con ${a.nombre}' : 'Tablón con ${a.nombre} y sus preparadores',
+                  subtitulo: 'Para acordar cambios de clase, quién lleva qué o dudas',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TablonComunPage(alumnoUid: a.uid!, nombreAlumno: a.nombre))),
+                ),
+              ),
+            if (coordina && otros.isNotEmpty && yo != null)
+              SeccionReparto(alumnoUid: a.uid!, preparadores: [(yo, 'Tú'), for (final o in otros) (o.uid, o.nombre)], soloYo: yo),
             SeccionOtrosPreparadores(alumno: a),
             TituloSeccion('Clases fijas', accion: TextButton.icon(onPressed: () => _nuevaClaseFija(a), icon: const Icon(Icons.add, size: 18), label: const Text('Clase fija'))),
             if (a.clasesFijas.isEmpty)
@@ -252,20 +277,36 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
               ),
             if (proximas.isNotEmpty) ...[
               const TituloSeccion('Próximas clases'),
-              for (final s in proximas.take(4))
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Tarjeta(
-                    padding: EdgeInsets.zero,
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
-                    child: ListTile(
-                      leading: Icon(Icons.event_outlined, color: context.esquema.primary),
-                      title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)}', style: context.textos.titleSmall),
-                      subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
-                      trailing: Etiqueta(cuentaAtras(s.fecha)),
+              for (final s in proximas.take(6))
+                if (idsMias.contains(s.id))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Tarjeta(
+                      padding: EdgeInsets.zero,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: s.id))),
+                      child: ListTile(
+                        leading: Icon(Icons.event_outlined, color: context.esquema.primary),
+                        title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)}', style: context.textos.titleSmall),
+                        subtitle: Text('${s.titulo.isEmpty ? '' : '${s.titulo} · '}${detalleCante(s)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.labelSmall),
+                        trailing: Etiqueta(cuentaAtras(s.fecha)),
+                      ),
+                    ),
+                  )
+                else
+                  // De otro preparador o por su cuenta: solo cuándo y con quién.
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Tarjeta(
+                      padding: EdgeInsets.zero,
+                      color: context.colores.superficie,
+                      child: ListTile(
+                        leading: s.preparador == null || s.preparador == preparadorOculto ? Icon(Icons.event_outlined, color: context.colores.textoClaro) : PuntoPersona(s.preparador!, tamano: 14),
+                        title: Text('${fechaCorta(s.fecha)} · ${horaDe(s.fecha)}–${horaDe(s.fecha.add(Duration(minutes: s.minutos)))}', style: context.textos.titleSmall?.copyWith(color: context.colores.textoClaro)),
+                        subtitle: Text(mayuscula(conQuienEs(s, yo: yo)), style: context.textos.labelSmall),
+                        trailing: Etiqueta(cuentaAtras(s.fecha)),
+                      ),
                     ),
                   ),
-                ),
             ],
             TituloSeccion('Temas que lleva (${a.temas.length})', accion: a.enlazado ? null : TextButton(onPressed: editarTemas, child: Text(a.temas.isEmpty ? 'Apuntar' : 'Editar'))),
             if (a.temas.isEmpty)
@@ -391,6 +432,6 @@ Future<Alumno?> unirAlumnoDialogo(BuildContext context, WidgetRef ref, Alumno a)
   final unido = await ref.read(preparadorRepoProvider).unirAlumnos(sinApp, enlazado);
   ref.invalidate(alumnosProvider);
   ref.invalidate(sesionesProvider);
-  if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Fichas unidas: ahora ${unido.nombre} tiene todas sus clases.')));
+  if (context.mounted) ScaffoldMessenger.of(context).mostrar(SnackBar(content: Text('Fichas unidas: ahora ${unido.nombre} tiene todas sus clases.')));
   return unido;
 }

@@ -44,6 +44,34 @@ void main() {
     expect(novedadesProceso('tcee', ProcesoSelectivo.deOposicion(mas, 'tcee'), r2.vistos).nuevos, isEmpty);
   });
 
+  test('TCEE y DCE van por separado: seguir una no marca nada de la otra', () {
+    // El mismo documento (mismo id) en las dos oposiciones.
+    final dos = {
+      'tcee': json['tcee'],
+      'dce': {
+        'procesos': [
+          {
+            'convocatoria': '2025',
+            'url': 'https://portal/OEP2025DIPLOS.aspx',
+            'documentos': [
+              {'id': 'a', 'seccion': 'Convocatoria', 'titulo': 'Resolución', 'url': 'https://portal/a.pdf'},
+            ],
+          },
+        ],
+      },
+    };
+    final tcee = novedadesProceso('tcee', ProcesoSelectivo.deOposicion(dos, 'tcee'), {});
+    expect(tcee.vistos.where((v) => v.startsWith('dce:')), isEmpty);
+    // DCE empieza de cero aunque TCEE ya hubiera visto ese documento.
+    final dce = novedadesProceso('dce', ProcesoSelectivo.deOposicion(dos, 'dce'), tcee.vistos);
+    expect(dce.nuevos, isEmpty, reason: 'la primera vez es la base');
+    expect(dce.vistos, containsAll(['dce:base', 'dce:a', 'tcee:a']));
+    final mas = Map<String, dynamic>.from(jsonDecode(jsonEncode(dos)) as Map);
+    (((mas['dce'] as Map)['procesos'] as List).first['documentos'] as List).add({'id': 'z', 'seccion': 'Primer ejercicio', 'titulo': 'Convocatoria', 'url': 'https://portal/z.pdf'});
+    expect(novedadesProceso('dce', ProcesoSelectivo.deOposicion(mas, 'dce'), dce.vistos).nuevos.map((d) => d.id), ['z']);
+    expect(novedadesProceso('tcee', ProcesoSelectivo.deOposicion(mas, 'tcee'), dce.vistos).nuevos, isEmpty);
+  });
+
   test('el JSON publicado se lee entero', () {
     final j = jsonDecode(File('../oposicion/proceso.json').readAsStringSync()) as Map<String, dynamic>;
     for (final op in ['tcee', 'dce']) {

@@ -29,10 +29,18 @@ searchIndex.pages = [
   {
     id: 'temario',
     title: 'Temario',
-    url: 'temario/index.html',
+    url: 'temario.html',
     description: 'Temario completo para la preparación a la Oposición',
     keywords: ['temario', 'temas', 'ejercicios', 'contenidos'],
     content: 'Materiales organizados por ejercicios según el programa oficial OEP 2025'
+  },
+  {
+    id: 'que-es-tcee',
+    title: 'Qué es la oposición TCEE',
+    url: '/oposicion/que-es-tcee.html',
+    description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: funciones del cuerpo, requisitos, ejercicios, temario y curso selectivo',
+    keywords: ['qué es', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
+    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatorias y plazas, los cinco ejercicios, el temario, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
   },
   {
     id: 'organizacion',
@@ -360,7 +368,7 @@ searchIndex.temas.push({
   id: 'ej1-test-simulacro',
   ejercicio: 'Primer ejercicio',
   title: 'Simulacro de Test',
-  url: 'temario/primer-ejercicio/test/simulacro.html',
+  url: 'temario/primer-ejercicio/test/simulador.html',
   keywords: ['test', 'simulacro', 'ejercicio 1', 'primer ejercicio'],
   type: 'subtema',
   parent: 'Primer ejercicio',
@@ -506,7 +514,7 @@ searchIndex.recursos = [
     id: 'estrategia',
     title: 'Estrategia y organización',
     description: 'Excel con probabilidades, simulador de sorteos y cronogramas',
-    url: 'organizacion/Estrategia y organización.zip',
+    url: 'organizacion/preparacion_oposicion_tcee.xlsm',
     category: 'organización',
     keywords: ['estrategia', 'organización', 'cronograma', 'probabilidades', 'excel', 'horarios'],
     type: 'excel'
@@ -515,7 +523,7 @@ searchIndex.recursos = [
     id: 'estructura',
     title: 'Estructura del temario',
     description: 'Presentación PowerPoint sobre cómo estructurar el temario',
-    url: 'organizacion/ver-presentacion.html',
+    url: 'organizacion/estructura_temario.ppsx',
     category: 'organización',
     keywords: ['estructura', 'temario', 'presentación', 'powerpoint', 'visión global'],
     type: 'presentacion'
@@ -533,7 +541,7 @@ searchIndex.recursos = [
     id: 'plantillas',
     title: 'Plantillas para elaborar temas',
     description: 'Plantillas de Word para temas largos y cortos',
-    url: 'organizacion/Plantillas.zip',
+    url: 'organizacion.html',
     category: 'organización',
     keywords: ['plantillas', 'word', 'elaborar', 'temas', 'esquemas'],
     type: 'word'

@@ -98,6 +98,36 @@ class CantePage extends ConsumerWidget {
       await notifier.guardar(c.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim(), canceladoPor: yo));
     }
 
+    // Los otros preparadores del alumno: a ellos se les puede pasar la clase.
+    final otros = ref.watch(misPreparadoresProvider).where((v) => v.uid != c.preparador).toList();
+    final aQuienes = otros.length == 1 ? (otros.first.nombre.isEmpty ? 'tu otro preparador' : otros.first.nombre) : 'tus otros preparadores';
+    void pedirAOtros() => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c, soloPara: [for (final o in otros) o.uid])));
+
+    /// Cancelar la clase con este preparador y pedírsela a los otros: les
+    /// llega como clase suelta y la tiene quien la coja primero.
+    Future<void> pasarAOtro() async {
+      final motivo = TextEditingController();
+      final quien = (c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre!;
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: Text('¿Pasársela a $aQuienes?'),
+          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Se cancela la clase con $quien (le llega un aviso) y se la pides a $aQuienes. Si la coge, la tendréis los dos en la agenda.'),
+            const SizedBox(height: 10),
+            TextField(controller: motivo, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(labelText: 'Motivo (opcional)')),
+          ]),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(d, false), child: const Text('Volver')),
+            FilledButton(onPressed: () => Navigator.pop(d, true), child: const Text('Cancelar y pedírsela')),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      await notifier.guardar(c.copyWith(estado: EstadoCante.cancelado, motivo: motivo.text.trim(), canceladoPor: yo));
+      if (context.mounted) pedirAOtros();
+    }
+
     /// Quitar de la agenda una clase del preparador ya cancelada: solo de la
     /// del alumno (el preparador la sigue viendo).
     Future<void> quitarDeLaAgenda() async {
@@ -211,6 +241,15 @@ class CantePage extends ConsumerWidget {
                 label: Text('No puedo ir: cancelar la clase', style: TextStyle(color: context.esquema.error)),
               ),
             ),
+          if (c.pendiente && c.dePreparador && c.preparador != null && otros.isNotEmpty && usuario != null)
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: pasarAOtro,
+                icon: const Icon(Icons.swap_horiz, size: 18),
+                label: Text('Pasársela a $aQuienes'),
+              ),
+            ),
           if (c.cancelado && c.dePreparador && !laCanceleYo && c.fecha.isAfter(DateTime.now()) && peticion == null)
             Padding(
               padding: const EdgeInsets.only(top: 10),
@@ -220,11 +259,19 @@ class CantePage extends ConsumerWidget {
                   Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado este cante', style: context.textos.titleSmall),
                   if (c.motivo.isNotEmpty) Text('Motivo: ${c.motivo}', style: context.textos.bodySmall),
                   const SizedBox(height: 8),
-                  FilledButton.icon(
-                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
-                    icon: const Icon(Icons.campaign_outlined, size: 18),
-                    label: const Text('Pedir una clase suelta'),
-                  ),
+                  Wrap(spacing: 8, runSpacing: 6, children: [
+                    if (otros.isNotEmpty)
+                      FilledButton.icon(
+                        onPressed: pedirAOtros,
+                        icon: const Icon(Icons.swap_horiz, size: 18),
+                        label: Text('Pedírsela a $aQuienes'),
+                      ),
+                    (otros.isEmpty ? FilledButton.icon : OutlinedButton.icon)(
+                      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PedirSustitucionPage(cante: c))),
+                      icon: const Icon(Icons.campaign_outlined, size: 18),
+                      label: Text(otros.isEmpty ? 'Pedir una clase suelta' : 'A cualquier preparador'),
+                    ),
+                  ]),
                 ]),
               ),
             ),

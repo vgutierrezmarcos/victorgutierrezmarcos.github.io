@@ -17,8 +17,8 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ## Pendiente
 
-- Formulario **Seguridad de los datos**: se dejó como estaba (6 oct. 2026). Antes de pedir producción, revisarlo con lo nuevo: en *Información personal → Otra información*, la modalidad, la ciudad y la disponibilidad de los preparadores y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos, nota; sin nombre ni teléfono); en *Actividad en la app → Otro contenido generado por el usuario*, las notas, los materiales (enlaces) y los trazos de la pizarra; en *Calendario*, el acceso a Google Calendar (opcional, solo preparadores).
-- Cuando Google verifique el permiso de Calendar, abrirlo a todos los preparadores (hoy, lista de prueba).
+- Formulario **Seguridad de los datos**: **actualizado y enviado a revisión el 17 oct. 2026** (Mensajes, Calendario, Otro contenido generado por el usuario e Identificadores del dispositivo; lista en `LEEME.md`). Lo que se añadió: en *Información personal → Otra información*, la modalidad, la ciudad y la disponibilidad de los preparadores y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos, nota; sin nombre ni teléfono); en *Actividad en la app → Otro contenido generado por el usuario*, las notas, los materiales (enlaces) y los trazos de la pizarra; en *Calendario*, el acceso a Google Calendar (opcional, solo preparadores).
+- ~~Cuando Google verifique el permiso de Calendar, abrirlo a todos los preparadores~~: hecho el 17 oct. (ver abajo).
 
 ## Versiones subidas
 
@@ -35,6 +35,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (pendiente) | 1.15.6 (30) | La 1.15.5 más: cancelar y borrar clases desde los dos lados, quitar relaciones, cantar los dos temas mandados sin elegir y «Simulación de examen real», cronómetro del alumno visible para el preparador (con notificación) y pizarra con cualquier color. |
 | (pendiente) | 1.15.7 (31) | La 1.15.6 más: avisos al momento con la app abierta y los temas a su hora exacta con ella cerrada, aviso cuando el otro rompe la relación, eliminar páginas de la pizarra, cronómetro compartido en la ficha de la clase y clases de 2 h en todas partes. |
 | (pendiente) | 1.15.8 (32) | La 1.15.7 más: calculadora «Probabilidad de aprobar el test» (al azar, pregunta a pregunta con dudas entre 2, 3…, con los temas estudiados y qué estudiar después), lo que cae de cada tema en el test (ficha del tema, mapa de calor, simulador y cronograma) y 8 exámenes oficiales más en el simulador (2002-2009). |
+| 16 oct. 2026 | 1.16.0 (36) | Enviada a revisión. Lleva todo lo de las 1.15.x sin publicar (hasta la 1.15.11) más: pizarra como Notas del iPad (trazo fiel, presión, palma, zoom, fosforito, lazo, regla y formas), temas anotados con descarga en PDF, avisos del proceso al momento por push y por oposición, avisos que se quitan solos y coordinación entre varios preparadores (agenda común, temas sin repetir, reparto, tablón, pasar una clase y qué ven los preparadores). |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -165,6 +166,32 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 ### 13-14 oct. 2026 (para la 1.15.11)
 - **Aviso de versión nueva por Play**: al tocar la notificación «Hay una versión nueva», la app actualiza por Google Play si se instaló desde Play (los testers siguen actualizando desde Play) y solo abre la descarga del APK si se instaló desde la web. Hasta ahora la notificación abría siempre el APK.
 - **Invitar en un toque** (14 oct.): en la tarjeta del código, «Invitar a mis alumnos por WhatsApp» (mensaje con el enlace de descarga y el código, para un contacto o un grupo); en la ficha de un alumno sin la app y con teléfono, «Invitar a … a la app».
+
+### 15 oct. 2026 (ficha de Play y web)
+- **Ficha de Play**: descripción breve con los nombres completos de las dos oposiciones («Oposición TCEE y DCE (Técnico y Diplomado Comercial): temas, preparadores y más») y el segundo párrafo de la descripción completa con el Ministerio de Economía, Comercio y Empresa, para que la encuentre quien las busca por su nombre.
+- **Página de la app en la web** (/app/): ya la puede rastrear Google (antes la bloqueaba robots.txt), con título, descripción y datos estructurados de la app y sus preguntas frecuentes.
+
+### 16 oct. 2026 (para la 1.16.0)
+- **Pizarra como la de Notas del iPad**, tras las pruebas de un tester con iPad:
+  - El trazo ya no cambia al levantar el lápiz.
+  - Tinta con presión del lápiz, y la palma apoyada no pinta.
+  - Se amplía y se mueve con dos dedos.
+  - Barra clara con las herramientas a la vista y, en un menú, rotulador, fosforito, lazo, regla, formas y papel cuadriculado.
+- **Pintar y subrayar los temas** (bolígrafo y fosforito), guardado en la cuenta, y descargar el tema anotado en PDF.
+- **Avisos del proceso selectivo al momento** (notificación push en cuanto se publica algo en la página oficial) y por separado para cada oposición.
+- **Los avisos de la app se quitan solos** a los pocos segundos.
+- **Opositores con varios preparadores**:
+  - Agenda común con aviso de choques.
+  - Temas que no se repiten entre clases de preparadores distintos.
+  - Reparto opcional del temario.
+  - Propuestas de cronograma de cada preparador.
+  - Tablón común y avisos entre ellos.
+  - Pasar una clase cancelada a otro preparador.
+  - El opositor decide qué ven sus preparadores.
+
+### 17 oct. 2026
+- **Google aprobó la verificación del permiso de Google Calendar** (`calendar.events`, 16 oct.) y la opción se abrió a todos los preparadores verificados, sin versión nueva (`calendarioParaTodos` en la configuración de la web).
+- **Seguridad de los datos actualizada** en Play y enviada a revisión: mensajes (tablón y notas entre preparadores), eventos del calendario, contenido generado por el usuario (pizarra, anotaciones, materiales) y el token de las notificaciones push.
 
 (Seguir añadiendo aquí, con fecha.)
 

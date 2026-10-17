@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Página personal de Víctor Gutiérrez Marcos. Materiales para la oposición TCEE, blog y más.">
+    <title>Víctor Gutiérrez Marcos · Oposición TCEE: temario, test y app</title>
+    <meta name="description" content="Temario gratuito, simulador de test y app para la oposición a Técnico Comercial y Economista del Estado (TCEE). Por Víctor Gutiérrez Marcos, TCEE.">
 
     <!-- SEO: Canonical URL -->
     <link rel="canonical" href="https://www.victorgutierrezmarcos.es/">
@@ -24,8 +24,8 @@
 
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Víctor Gutiérrez Marcos">
-    <meta property="og:description" content="Página personal de Víctor Gutiérrez Marcos. Materiales para la oposición TCEE, blog y más.">
+    <meta property="og:title" content="Víctor Gutiérrez Marcos · Oposición TCEE: temario, test y app">
+    <meta property="og:description" content="Temario gratuito, simulador de test y app para la oposición a Técnico Comercial y Economista del Estado (TCEE). Por Víctor Gutiérrez Marcos, TCEE.">
     <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
     <meta property="og:url" content="https://www.victorgutierrezmarcos.es/">
     <meta property="og:locale" content="es_ES">
@@ -47,17 +47,61 @@
 
     <!-- SEO: Datos estructurados Schema.org -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Víctor Gutiérrez Marcos",
-        "url": "https://www.victorgutierrezmarcos.es",
-        "inLanguage": "es",
-        "author": {
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://www.victorgutierrezmarcos.es/#website",
+            "url": "https://www.victorgutierrezmarcos.es/",
+            "name": "Víctor Gutiérrez Marcos",
+            "alternateName": [
+                "Oposición TCEE · Víctor Gutiérrez Marcos",
+                "victorgutierrezmarcos.es"
+            ],
+            "description": "Temario gratuito, simulador de test y app para preparar la oposición a Técnico Comercial y Economista del Estado (TCEE).",
+            "inLanguage": "es",
+            "publisher": {
+                "@id": "https://www.victorgutierrezmarcos.es/#victor"
+            }
+        },
+        {
             "@type": "Person",
-            "name": "Víctor Gutiérrez Marcos"
+            "@id": "https://www.victorgutierrezmarcos.es/#victor",
+            "name": "Víctor Gutiérrez Marcos",
+            "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html",
+            "image": "https://www.victorgutierrezmarcos.es/profile-photo.jpg",
+            "jobTitle": "Técnico Comercial y Economista del Estado",
+            "worksFor": {
+                "@type": "GovernmentOrganization",
+                "name": "Ministerio de Economía, Comercio y Empresa"
+            },
+            "knowsAbout": [
+                "Oposición a Técnico Comercial y Economista del Estado",
+                "Economía",
+                "Comercio internacional",
+                "Política económica"
+            ],
+            "sameAs": [
+                "https://www.linkedin.com/in/victorgutierrezmarcos",
+                "https://github.com/vgutierrezmarcos"
+            ]
+        },
+        {
+            "@type": "MobileApplication",
+            "@id": "https://www.victorgutierrezmarcos.es/app/#app",
+            "name": "Oposición TCEE · DCE",
+            "url": "https://www.victorgutierrezmarcos.es/app/",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Android, Web",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR"
+            }
         }
-    }
+    ]
+}
     </script>
 </head>
 <body class="portada">
@@ -81,7 +125,7 @@
 
     <main class="main-content home-main">
         <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
-        <div id="app-banner" class="app-banner" hidden>
+        <div id="app-banner" class="app-banner">
             <div class="app-banner-text">
                 <div class="app-banner-cabecera">
                     <img class="app-banner-logo" src="app/favicon/favicon.svg" alt="" width="44" height="44">
@@ -100,14 +144,14 @@
                 </ul>
             </div>
             <div class="app-banner-links">
-                <a id="app-link-apk" class="download-btn" rel="noopener" hidden>Descargar para Android</a>
+                <a id="app-link-apk" class="download-btn" rel="noopener" href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/app-latest/oposicion-tcee.apk">Descargar para Android</a>
                 <a id="app-link-play" class="insignia-play" target="_blank" rel="noopener" hidden><img src="app/promo/google-play-es.png" alt="Disponible en Google Play" width="140" height="54"></a>
-                <span id="app-play-pronto" class="pronto-play" hidden>Próximamente en Google Play</span>
+                <span id="app-play-pronto" class="pronto-play">Próximamente en Google Play</span>
                 <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
                 <a class="download-btn download-btn--sec" href="app/abrir/">Abrir en el navegador</a>
                 <a class="app-banner-more" href="app/instalar.html">Cómo instalarla: Android, iPhone y ordenador →</a>
             </div>
-            <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note" hidden> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
+            <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note"> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
         </div>
 
         <!-- Cards Section -->
@@ -453,7 +497,6 @@
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
     <!-- Configuración y Lógica de Auth -->
     <script src="firebase-config.js"></script>

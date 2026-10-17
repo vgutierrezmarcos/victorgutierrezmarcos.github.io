@@ -418,6 +418,46 @@ await caso('…ni a quien no es su alumno', () => assertFails(setDoc(doc(db('pau
 await caso('la otra preparadora no ve el que mandó Paula', () => assertFails(getDoc(doc(db('olga'), 'users/alu/cronogramasRecibidos/c1'))));
 await caso('el alumno lo lee y lo borra al responder', () => assertSucceeds(deleteDoc(doc(db('alu'), 'users/alu/cronogramasRecibidos/c1'))));
 
+console.log('Coordinación entre preparadores: tablón común, reparto, propuestas, temas mandados y preparadores ocultos');
+await caso('al aceptar, la preparadora lo anota en el lado del alumno', () => assertSucceeds(updateDoc(doc(db('olga'), 'users/alu/preparadores/olga'), { aceptado: true, aceptadoEn: 'x' })));
+await caso('…pero no otros campos', () => assertFails(updateDoc(doc(db('olga'), 'users/alu/preparadores/olga'), { nombre: 'Otra' })));
+await caso('…ni el de otra', () => assertFails(updateDoc(doc(db('olga'), 'users/alu/preparadores/paula'), { aceptado: true })));
+await caso('escribe en el tablón común', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/tablon/t1'), { id: 't1', de: 'paula', deNombre: 'Paula', texto: '¿Cambiamos el martes?', fecha: 'x' })));
+await caso('…firmado por ella', () => assertFails(setDoc(doc(db('paula'), 'users/alu/tablon/t2'), { id: 't2', de: 'olga', texto: 'x', fecha: 'x' })));
+await caso('…y no vacío', () => assertFails(setDoc(doc(db('paula'), 'users/alu/tablon/t3'), { id: 't3', de: 'paula', texto: '', fecha: 'x' })));
+await caso('la otra preparadora lo lee', () => assertSucceeds(getDocs(collection(db('olga'), 'users/alu/tablon'))));
+await caso('…pero no lo cambia', () => assertFails(setDoc(doc(db('olga'), 'users/alu/tablon/t1'), { id: 't1', de: 'olga', texto: 'otro', fecha: 'x' })));
+await caso('quien lo escribió lo cambia', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/tablon/t1'), { id: 't1', de: 'paula', texto: '¿Mejor el miércoles?', fecha: 'x', editado: 'y' })));
+await caso('el alumno escribe en su tablón', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/tablon/t4'), { id: 't4', de: 'alu', texto: 'Me va bien', fecha: 'x' })));
+await caso('otro opositor no lo lee', () => assertFails(getDocs(collection(db('pepe'), 'users/alu/tablon'))));
+await caso('cambia su nota a los otros preparadores', async () => {
+  await assertSucceeds(setDoc(doc(db('paula'), 'users/alu/notasPreparadores/n5'), { id: 'n5', de: 'paula', texto: 'a', fecha: 'x' }));
+  return assertSucceeds(setDoc(doc(db('paula'), 'users/alu/notasPreparadores/n5'), { id: 'n5', de: 'paula', texto: 'b', fecha: 'x', editado: 'y' }));
+});
+await caso('anota en el reparto lo que lleva', () => assertSucceeds(setDoc(doc(db('paula'), 'users/alu/coordinacion/reparto'), { paula: { ejercicios: [3], nota: '' } }, { merge: true })));
+await caso('…y la otra, lo suyo', () => assertSucceeds(setDoc(doc(db('olga'), 'users/alu/coordinacion/reparto'), { olga: { ejercicios: [4], nota: 'Comercio' } }, { merge: true })));
+await caso('…pero no lo de la otra', () => assertFails(setDoc(doc(db('olga'), 'users/alu/coordinacion/reparto'), { paula: { ejercicios: [] } }, { merge: true })));
+await caso('…ni los ajustes del alumno', () => assertFails(setDoc(doc(db('olga'), 'users/alu/coordinacion/ajustes'), { aislados: [] })));
+await caso('el alumno cambia el reparto de cualquiera', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/coordinacion/reparto'), { paula: { ejercicios: [3, 4], nota: '' } }, { merge: true })));
+await caso('la otra preparadora ve el tema que mandó Paula (el alumno aún no)', () => assertSucceeds(getDoc(doc(db('olga'), 'temasAnticipados/futuro'))));
+await caso('…una verificada que no le prepara, no', () => assertFails(getDoc(doc(db('admin'), 'temasAnticipados/futuro'))));
+await caso('cada preparadora deja su propia propuesta de cronograma', () => assertSucceeds(updateDoc(doc(db('paula'), 'users/alu/cronogramas/cc'), { 'propuestas.paula': { de: 'paula', temas: ['3.A.1'] }, propuesta: { de: 'paula', temas: ['3.A.1'] }, updatedAt: 'y' })));
+await caso('…y la otra la suya, sin pisar la de Paula', () => assertSucceeds(updateDoc(doc(db('olga'), 'users/alu/cronogramas/cc'), { 'propuestas.olga': { de: 'olga', temas: ['3.A.1'] }, updatedAt: 'z' })));
+await caso('…pero no puede cambiar la de Paula', () => assertFails(updateDoc(doc(db('olga'), 'users/alu/cronogramas/cc'), { 'propuestas.paula': { de: 'olga', temas: [] }, updatedAt: 'z' })));
+await caso('…ni firmar la suya como otra', () => assertFails(updateDoc(doc(db('olga'), 'users/alu/cronogramas/cc'), { 'propuestas.olga': { de: 'paula', temas: [] }, updatedAt: 'z' })));
+await caso('el alumno oculta a Olga que tiene otros preparadores', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/coordinacion/ajustes'), { aislados: ['olga'], verCantesPropios: true })));
+await caso('Olga lee los ajustes (sabe que está oculta, no quiénes son los demás)', () => assertSucceeds(getDoc(doc(db('olga'), 'users/alu/coordinacion/ajustes'))));
+await caso('…ya no ve quiénes son los otros preparadores', () => assertFails(getDocs(collection(db('olga'), 'users/alu/preparadores'))));
+await caso('…ni su WhatsApp', () => assertFails(getDoc(doc(db('olga'), 'users/alu/contactosPreparadores/paula'))));
+await caso('…ni las notas entre preparadores', () => assertFails(getDocs(collection(db('olga'), 'users/alu/notasPreparadores'))));
+await caso('…ni el tablón común', () => assertFails(getDocs(collection(db('olga'), 'users/alu/tablon'))));
+await caso('…ni el reparto', () => assertFails(getDoc(doc(db('olga'), 'users/alu/coordinacion/reparto'))));
+await caso('…ni los temas que manda Paula', () => assertFails(getDoc(doc(db('olga'), 'temasAnticipados/futuro'))));
+await caso('…pero sigue preparándole: ve su progreso', () => assertSucceeds(getDoc(doc(db('olga'), 'users/alu/progress/settings'))));
+await caso('Paula sí sigue viendo a los demás', () => assertSucceeds(getDocs(collection(db('paula'), 'users/alu/preparadores'))));
+await caso('el alumno lo vuelve a dejar ver', () => assertSucceeds(setDoc(doc(db('alu'), 'users/alu/coordinacion/ajustes'), { aislados: [], verCantesPropios: true })));
+await caso('…y Olga vuelve a ver el tablón', () => assertSucceeds(getDocs(collection(db('olga'), 'users/alu/tablon'))));
+
 console.log(`\n${ok} correctas, ${mal} fallidas`);
 await env.cleanup();
 process.exit(mal ? 1 : 0);

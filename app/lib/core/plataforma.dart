@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
+import 'avisos_breves.dart';
+
 // Lo que cambia entre el móvil y el navegador: guardar ficheros y grabaciones.
 export 'plataforma_io.dart' if (dart.library.js_interop) 'plataforma_web.dart';
 
@@ -15,5 +17,5 @@ Future<void> compartirTexto(BuildContext context, String texto, {String? asunto}
   }
   final messenger = ScaffoldMessenger.of(context);
   await Clipboard.setData(ClipboardData(text: texto));
-  messenger.showSnackBar(const SnackBar(content: Text('Copiado: pégalo donde quieras enviarlo')));
+  messenger.mostrar(const SnackBar(content: Text('Copiado: pégalo donde quieras enviarlo')));
 }

@@ -241,7 +241,8 @@ class PlanRepo {
     if (doc == null) return const [];
     try {
       final snap = await doc.collection('cronogramasRecibidos').get();
-      return [for (final d in snap.docs) CronogramaRecibido.fromJson({...d.data(), 'id': d.id})]..sort((a, b) => b.enviado.compareTo(a.enviado));
+      // Los contestados se quedan para avisar al preparador; aquí, solo los pendientes.
+      return [for (final d in snap.docs) if (CronogramaRecibido.fromJson({...d.data(), 'id': d.id}) case final r when r.pendiente) r]..sort((a, b) => b.enviado.compareTo(a.enviado));
     } catch (_) {
       return const [];
     }
@@ -250,14 +251,28 @@ class PlanRepo {
   /// Acepta un cronograma recibido: pasa a ser el activo (el anterior se
   /// archiva), compartido con el preparador que lo mandó.
   Future<Cronograma> aceptarCronogramaRecibido(CronogramaRecibido r) async {
-    final c = Cronograma.fromJson({...r.cronograma.toJson(), 'id': nuevoId(), 'archivado': false, 'compartir': true, 'creado': DateTime.now().toIso8601String(), 'updatedAt': DateTime.now().toIso8601String()});
+    final c = Cronograma.fromJson({
+      ...r.cronograma.toJson(),
+      'id': nuevoId(),
+      'archivado': false,
+      'compartir': true,
+      // Consta quién lo hizo (con varios preparadores, para saber de quién es).
+      'autor': r.de,
+      'autorNombre': r.deNombre,
+      'creado': DateTime.now().toIso8601String(),
+      'updatedAt': DateTime.now().toIso8601String(),
+    });
     await empezarCronograma(c);
-    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).delete();
+    await _responderRecibido(r, 'aceptado');
     return c;
   }
 
-  Future<void> rechazarCronogramaRecibido(CronogramaRecibido r) async {
-    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).delete();
+  Future<void> rechazarCronogramaRecibido(CronogramaRecibido r) => _responderRecibido(r, 'rechazado');
+
+  /// El recibido se queda con la respuesta (no se borra): así se avisa al
+  /// preparador de que lo ha aceptado o rechazado.
+  Future<void> _responderRecibido(CronogramaRecibido r, String respuesta) async {
+    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).set({'respuesta': respuesta, 'respondido': DateTime.now().toIso8601String()}, SetOptions(merge: true));
   }
 
   Future<void> sincronizarCronogramas() async {

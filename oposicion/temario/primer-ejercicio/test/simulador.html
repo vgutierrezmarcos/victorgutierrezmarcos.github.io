@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de test | Víctor Gutiérrez Marcos</title>
-    <meta name="description" content="Simulador de exámenes tipo test para la oposición a Técnico Comercial y Economista del Estado">
+    <title>Simulador de test TCEE con preguntas de exámenes oficiales</title>
+    <meta name="description" content="Practica el test del primer ejercicio de Técnico Comercial y Economista del Estado con preguntas de exámenes oficiales: por tema y año, corrección e historial.">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Simulador de test | Víctor Gutiérrez Marcos">
-    <meta property="og:description" content="Practica con preguntas de exámenes oficiales de la oposición a TCEE">
-    <meta property="og:image" content="https://victorgutierrezmarcos.es/social-preview.png">
-    <meta property="og:url" content="https://victorgutierrezmarcos.es/temario/primer-ejercicio/test/simulador.html">
+    <meta property="og:title" content="Simulador de test TCEE con preguntas de exámenes oficiales">
+    <meta property="og:description" content="Practica el test del primer ejercicio de Técnico Comercial y Economista del Estado con preguntas de exámenes oficiales: por tema y año, corrección al momento e historial. Gratis.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/temario/primer-ejercicio/test.html">    
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html">    
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
@@ -426,6 +426,15 @@
             transition: all var(--transition-fast);
             width: 100%;
             text-align: left;
+            /* Es un <button>: que herede la letra como cuando era un div */
+            font: inherit;
+            color: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .opcion-btn:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
         }
         .opcion-btn:hover {
             border-color: var(--color-primary);
@@ -1277,11 +1286,35 @@
             color: #ccc;
         }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Simulador de test TCEE",
+        "url": "https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html",
+        "description": "Simulador del test del primer ejercicio de la oposición a Técnico Comercial y Economista del Estado con preguntas de exámenes oficiales: por tema y año, corrección al momento e historial.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "es",
+        "isAccessibleForFree": true,
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "keywords": "test TCEE, simulador test oposición, preguntas de examen, primer ejercicio, Técnico Comercial y Economista del Estado",
+        "author": {
+            "@type": "Person",
+            "@id": "https://www.victorgutierrezmarcos.es/#victor",
+            "name": "Víctor Gutiérrez Marcos"
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="site-header">
         <div class="header-content">
-            <h1 class="site-title"><a href="../../../../index.html">Víctor Gutiérrez Marcos</a></h1>
+            <p class="site-title"><a href="../../../../index.html">Víctor Gutiérrez Marcos</a></p>
             <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
         </div>
     </header>
@@ -1322,7 +1355,7 @@
                         Simulador de test
                     </nav>
                     
-                    <h2 class="section-title">SIMULADOR DE TEST</h2>
+                    <h1 class="section-title">SIMULADOR DE TEST</h1>
 
                     <div id="loading-indicator" class="loading-message">
                         Cargando preguntas...
@@ -2009,10 +2042,10 @@
                 const seleccionada = respuestasUsuario[indicePreguntaActual] === letra ? 'selected' : '';
                 opcionesHtml += `
                     <li class="opcion-item">
-                        <div class="opcion-btn ${seleccionada}" data-opcion="${letra}">
+                        <button type="button" class="opcion-btn ${seleccionada}" data-opcion="${letra}" aria-pressed="${seleccionada ? 'true' : 'false'}">
                             <span class="opcion-letra">${letra.toUpperCase()}</span>
                             <span class="opcion-texto">${pregunta.opciones[letra]}</span>
-                        </div>
+                        </button>
                     </li>
                 `;
             });
@@ -2039,8 +2072,12 @@
                     const opcion = this.dataset.opcion;
                     respuestasUsuario[indicePreguntaActual] = opcion;
                     
-                    container.querySelectorAll('.opcion-btn').forEach(b => b.classList.remove('selected'));
+                    container.querySelectorAll('.opcion-btn').forEach(b => {
+                        b.classList.remove('selected');
+                        b.setAttribute('aria-pressed', 'false');
+                    });
                     this.classList.add('selected');
+                    this.setAttribute('aria-pressed', 'true');
                     
                     actualizarNavegador();
                 });

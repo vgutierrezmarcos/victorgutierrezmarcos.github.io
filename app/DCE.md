@@ -150,10 +150,45 @@ Al permitir los avisos, el diálogo del sistema para que la batería no restrinj
 - **Aviso de versión nueva:** al tocar la notificación se actualiza por Play si la app viene de Play. Solo abre el APK si se instaló desde la web; antes lo abría siempre, porque `urlPlayStore` no está puesta.
 - **DCE:** «Cómo cantar un tema» abre la página de Manuel, y el contacto pasa a `contacto@manuelcabadogarcia.es`.
 - **Estado:** versión web publicada; `.aab` compilado el 14 oct. (`Escritorio\oposicion-tcee-dce-1.15.11.aab`).
-- [ ] Víctor: subir el `.aab` 1.15.11 (35) a la prueba cerrada **antes del 22 oct.**, para que sea la versión que sale a producción.
-- [ ] Publicada en la prueba cerrada: APK universal 35 firmado por Google en `app-latest` (Víctor lo sube desde el navegador, porque la red bloquea la subida desde aquí) y `"versionActual": "1.15.11"`.
+- [x] ~~Subir el `.aab` 1.15.11 (35)~~: no se subió; va dentro de la 1.16.0 (36), ver abajo.
 - [ ] Hasta entonces, decir a los testers que actualicen desde Play o con «Actualizar» en Hoy, no con la notificación.
 - [ ] Probar en el móvil: invitar por WhatsApp (a un contacto y a un grupo) y el aviso de versión nueva por Play.
+
+**Versión 1.16.0 (36): pizarra como Notas, temas anotados, avisos del proceso al momento y coordinación entre preparadores (16 oct.)**
+Lleva también todo lo de la 1.15.11. Lo pidieron Manuel y los testers tras probar la pizarra en el iPad, y Víctor después.
+- **Pizarra como Notas del iPad:**
+  - El trazo no cambia al levantar el lápiz (era el «autocorrector»).
+  - Tinta con presión. Con lápiz, la palma no pinta y los dedos mueven y amplían.
+  - Barra clara: bolígrafo, borrador, colores, deshacer y rehacer.
+  - En «···», las herramientas extra: rotulador, fosforito, lazo, regla, formas al mantener y papel rayado o cuadriculado.
+- **Pintar y subrayar los temas (PDF):**
+  - Bolígrafo, fosforito y borrador, guardados en la cuenta.
+  - «Descargar con mis anotaciones» genera el PDF anotado.
+  - Visor de PDF nuevo: un dedo desplaza, dos amplían; en el ordenador, rueda y Ctrl+rueda.
+- **Avisos que se quitan solos:** respaldo propio y ✕. También los de botón («Ver»), que antes no se iban nunca.
+- **Avisos del proceso:**
+  - TCEE y DCE por separado (probado).
+  - Push al momento: la acción `leer-proceso` lee cada 2 minutos en horario de oficina (cron-job.org) y avisa por Firebase Cloud Messaging.
+  - Ver la memoria del push: pausa y aviso si el portal falla.
+- **Varios preparadores del mismo opositor:**
+  - **Agenda común:** cada preparador ve las próximas clases de los demás. Hay aviso de choque al programar o mover una clase y al apuntar un cante, y las reservas no ofrecen huecos que choquen.
+  - **Temas sin repetir:** el sorteo del tema que se manda y el de la clase dejan fuera lo cantado en dos semanas y lo ya mandado por otros, que los preparadores ven (el alumno no).
+  - **Reparto opcional** de qué lleva cada uno, por ejercicios y con nota.
+  - **Cronograma:** consta quién lo hizo; cada preparador deja su propia propuesta y el opositor las acepta una a una.
+  - **Comunicación:** tablón común opositor-preparadores; notas entre preparadores editables; avisos de nota o mensaje nuevo, de preparador nuevo y de cronograma o propuesta aceptados o rechazados.
+  - **Pasar una clase a otro preparador:** cancelar y pedírsela en un toque, también si la cancela el preparador.
+  - **Qué ven tus preparadores:** el opositor oculta sus cantes por su cuenta o hace que un preparador no sepa que tiene otros. Por defecto, se ve todo lo que ayuda a coordinarse.
+  - **Colores distintos** para cada preparador.
+- **Reglas de Firestore nuevas:** tablón, reparto, ajustes, propuestas por preparador, temas mandados entre preparadores y preparador oculto. 303 casos con el emulador.
+- [x] Víctor: publicar `firestore.rules` en la consola de Firebase **antes** de subir el `.aab` (hecho el 16 oct.). Sin ellas no funcionan el tablón, el reparto ni las propuestas de cada preparador.
+- [x] Víctor: subir el `.aab` 1.16.0 (36) (`Escritorio\oposicion-tcee-dce-1.16.0.aab`) a la prueba cerrada **antes del 22 oct.**: enviado a revisión el 16 oct.
+- [ ] Publicada en la prueba cerrada: APK universal 36 firmado por Google en `app-latest` (Víctor lo sube desde el navegador) y `"versionActual": "1.16.0"`.
+- [ ] Probar en el móvil:
+  - Pizarra con lápiz y palma.
+  - Anotar un tema y descargarlo.
+  - Push del proceso cuando haya una novedad.
+  - Con dos preparadores de prueba: tablón, choques, pasar una clase, propuestas y ocultar a uno.
+- Ojo: con `.aab` de versiones anteriores, el opositor no ve las propuestas nuevas de cada preparador (sí la última, en el campo antiguo).
 
 **Red: crecimiento y estadísticas privadas (14 oct.)**
 - **Script:** `scripts/estadisticas-red.py` cuenta, sin nombres, las cuatro partes de la red (opositores y preparadores de TCEE y DCE).
@@ -185,8 +220,8 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Probar en el móvil (ya conectado): clase online con el enlace vacío → evento en el calendario con su Meet, invitación al alumno y el enlace en la clase; cambiarla de hora y cancelarla. La ficha de la clase muestra el estado en el calendario y el error exacto si lo hay. — **13 oct.: probado.**
 - [x] Marca en Google Auth Platform rellenada (9 oct.) y `victorgutierrezmarcos.es` verificado en Search Console (propiedad de dominio, ya existía). Antes: comprobar `victorgutierrezmarcos.es` en Google Search Console con la cuenta del proyecto; rellenar la marca en Google Auth Platform (nombre, logo, correo, página `https://www.victorgutierrezmarcos.es/app/`, política `https://www.victorgutierrezmarcos.es/politica-cookies.html`, dominio autorizado).
 - [x] Permisos revisados (solo `calendar.events`) y justificación pegada en Acceso a datos (9 oct.); guion y justificación en `app/google-calendar-verificacion.md`.
-- [x] Vídeo montado (`scripts/montar-video-calendar.py`, YouTube no listado `https://youtu.be/1U4rrKdOzrU`) y **verificación enviada** el 9 oct. 2026 (02:55). Google contesta por correo a victorgutierrezmarcos@gmail.com; si pide algo, se responde en el mismo hilo. No cambiar el estado de publicación ni el tipo de usuario del proyecto mientras tanto. El 10 oct. sigue «en proceso de verificación» (Centro de verificación). El 11 oct. Google pidió que la política de privacidad diga a qué datos de Google se accede, cómo se usan y su conservación y eliminación: añadido el apartado «Datos de usuario de Google» (`politica-cookies.html#datos-google`, 12 oct.); Google también pidió que el vídeo muestre el flujo de consentimiento: regrabado en inglés y montado (`Escritorio\google-calendar-demo-v2.mp4`, 12 oct.); subido a YouTube como no listado (`https://youtu.be/1WmPutIwKz8`, 13 oct.) y enviado a Google; a la espera de su respuesta. Google pidió además los permisos desplegados en el vídeo, justificar por qué no vale un permiso más estrecho y credenciales de prueba: grabado con la cuenta `tcee.revision@gmail.com` (en `pruebasCalendario`, preparador verificado) y montado el vídeo v3 (`scripts/montar-video-calendar-v3.py`, `Escritorio\google-calendar-demo-v3.mp4`); subido como no listado (`https://youtu.be/HyrSX2RJNT4`), justificación nueva en Acceso a datos y verificación reenviada desde la consola (13 oct.); en revisión.
-- [ ] Verificado el permiso: poner `"calendarioParaTodos": true` en `oposicion/app-config.json` (bloque `app`) y publicar; la app (desde la 1.15.3) lo lee y abre la opción a todos los preparadores sin versión nueva. Hasta entonces, la lista `pruebasCalendario`. — **13 oct.: lo único pendiente; a la espera de la verificación de Google (Víctor avisa).**
+- [x] Vídeo montado (`scripts/montar-video-calendar.py`, YouTube no listado `https://youtu.be/1U4rrKdOzrU`) y **verificación enviada** el 9 oct. 2026 (02:55). Google contesta por correo a victorgutierrezmarcos@gmail.com; si pide algo, se responde en el mismo hilo. No cambiar el estado de publicación ni el tipo de usuario del proyecto mientras tanto. El 10 oct. sigue «en proceso de verificación» (Centro de verificación). El 11 oct. Google pidió que la política de privacidad diga a qué datos de Google se accede, cómo se usan y su conservación y eliminación: añadido el apartado «Datos de usuario de Google» (`politica-cookies.html#datos-google`, 12 oct.); Google también pidió que el vídeo muestre el flujo de consentimiento: regrabado en inglés y montado (`Escritorio\google-calendar-demo-v2.mp4`, 12 oct.); subido a YouTube como no listado (`https://youtu.be/1WmPutIwKz8`, 13 oct.) y enviado a Google; a la espera de su respuesta. Google pidió además los permisos desplegados en el vídeo, justificar por qué no vale un permiso más estrecho y credenciales de prueba: grabado con la cuenta `tcee.revision@gmail.com` (en `pruebasCalendario`, preparador verificado) y montado el vídeo v3 (`scripts/montar-video-calendar-v3.py`, `Escritorio\google-calendar-demo-v3.mp4`); subido como no listado (`https://youtu.be/HyrSX2RJNT4`), justificación nueva en Acceso a datos y verificación reenviada desde la consola (13 oct.). El 14 oct. Google contestó en el hilo mirando aún el v2 (pedía desplegar «3 services», minuto 1:02): respondido en el hilo el 15 oct. con el enlace del v3 y los minutos (0:52 consentimiento, 1:08–1:26 «See the 3 services»); en revisión.
+- [x] **Google aprobó la verificación el 16 oct.** (correo del 16 oct., 12:40; proyecto en producción): `"calendarioParaTodos": true` puesto el 17 oct. Antes: poner `"calendarioParaTodos": true` en `oposicion/app-config.json` (bloque `app`) y publicar; la app (desde la 1.15.3) lo lee y abre la opción a todos los preparadores sin versión nueva. Hasta entonces, la lista `pruebasCalendario`. — **13 oct.: lo único pendiente; a la espera de la verificación de Google (Víctor avisa).**
 - [ ] Mejora pendiente: si el alumno cambia o cancela la clase desde su app, que el calendario del preparador se actualice sin que este vuelva a guardarla.
 
 **Protección de datos (RGPD y LOPDGDD)**

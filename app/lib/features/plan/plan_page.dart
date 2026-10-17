@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../core/avisos_breves.dart';
 import '../../core/calendario.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
@@ -33,7 +34,7 @@ Future<void> exportarCalendario(BuildContext context, WidgetRef ref) async {
     for (final h in hitos) eventoDeFecha(h.id, '${Oposiciones.actual.siglas} · ${h.titulo}', h.fecha),
   ];
   if (eventos.isEmpty) {
-    messenger.showSnackBar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
+    messenger.mostrar(const SnackBar(content: Text('No hay cantes ni fechas que exportar')));
     return;
   }
   await guardarFichero(nombre: 'oposicion_${Oposiciones.actual.id}.ics', contenido: Calendario.ics(eventos), mime: 'text/calendar', asunto: 'Calendario de la oposición ${Oposiciones.actual.siglas}');
@@ -282,7 +283,7 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
     final notifier = ref.read(cantesProvider.notifier);
     final messenger = ScaffoldMessenger.of(context);
     await notifier.borrar(c);
-    messenger.showSnackBar(SnackBar(
+    messenger.mostrar(SnackBar(
       content: const Text('Clase cancelada quitada de la agenda'),
       action: SnackBarAction(label: 'Deshacer', onPressed: () => notifier.guardar(c.copyWith(borrado: false))),
     ));

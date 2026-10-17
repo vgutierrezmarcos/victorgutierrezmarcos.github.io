@@ -10,7 +10,16 @@ class SearchEngine {
         this.initialized = false;
     }
 
-    async initialize() {
+    // Se llama al abrir el buscador (no al cargar cada página: el índice pesa
+    // unos 190 KB); varias llamadas comparten la misma descarga
+    initialize() {
+        if (!this.cargando) {
+            this.cargando = this._cargar().then(ok => { if (!ok) this.cargando = null; return ok; });
+        }
+        return this.cargando;
+    }
+
+    async _cargar() {
         try {
             const response = await fetch('/search-index.json');
             this.index = await response.json();
