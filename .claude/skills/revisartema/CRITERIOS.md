@@ -328,6 +328,14 @@ el texto original y lo que se hizo.
   4. **Referencias cruzadas** «[ver tema …]»: cada una apunta al tema donde
      de verdad se trata eso, con la numeración actual; se añaden las que
      faltan (sobre todo al tema de referencia de cada modelo que se use).
+- **Estructuras de mercado (3.A.16-3.A.19) con los mismos supuestos**
+  (Víctor, 18/10/2026): al caracterizar cada estructura (competencia perfecta,
+  monopolio, competencia monopolística, oligopolio), los cuatro temas parten de
+  la **misma lista de supuestos**, con el mismo orden y las mismas palabras
+  (la del 3.A.16, ficha `competencia-perfecta-equilibrio-parcial`), y cada
+  tema **marca de forma visible qué supuesto levanta** (p. ej. el supuesto
+  tachado o en color con «se levanta: …», o una tabla con la columna del
+  tema resaltada). Facilita memorizar y ver el bloque como un todo.
 - Si se detecta una contradicción con **otro** tema, no se cambia el otro tema:
   se anota en `revision.md` («Coherencia») y, si es del canon, en
   `canon/pendientes-coherencia.md` para ponerlo al día con
