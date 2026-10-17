@@ -105,8 +105,12 @@ La app enlaza siempre al documento original:
 - ¿Se pueden eliminar los datos? **Sí**: en la app (*Más → Cuenta → Eliminar mi cuenta*) y en https://www.victorgutierrezmarcos.es/app/eliminar-cuenta.html (es la **URL de eliminación de cuenta** que pide el formulario).
 - Datos que recoge (todos **opcionales**, solo si se inicia sesión, para **funcionalidad de la app** y **gestión de la cuenta**; ninguno para publicidad ni analíticas):
   - *Información personal*: **nombre** y **dirección de correo** (de la cuenta de Google); **ID de usuario**; **número de teléfono** (solo si un preparador o un alumno lo escribe para que le contacten al coger una sustitución).
-  - *Información personal*: **otra información**: la modalidad y la ciudad en la que da clase un preparador verificado (opcional; sale en el directorio de preparadores).
+  - *Información personal*: **otra información**: la modalidad, la ciudad y la disponibilidad de un preparador verificado (sale en el directorio de preparadores) y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos y nota; sin nombre ni teléfono).
+  - *Mensajes*: **otros mensajes en la aplicación** (el tablón común entre el opositor y sus preparadores y las notas entre preparadores).
+  - *Calendario*: **eventos del calendario** (solo preparadores que conectan Google Calendar: la app crea, cambia y borra en su calendario los eventos de sus clases; no lee los demás).
   - *Actividad en la app*: **otras acciones** (temas estudiados, resultados de test, cantes, notas, cronogramas, el tema que un preparador manda antes de una clase y el cronómetro compartido de una clase).
+  - *Actividad en la app*: **otro contenido generado por el usuario** (notas, materiales del preparador —enlaces—, trazos de la pizarra y anotaciones sobre los temas).
+  - *Identificadores del dispositivo u otros identificadores*: el **token de Firebase Cloud Messaging**, solo si se activan los avisos del proceso selectivo (para recibir la notificación push; desde la 1.16.0).
   - *Fotos*: la foto de perfil de Google se muestra, no se guarda.
   - *Audio*: **no se recoge**: las grabaciones de los cantes se quedan en el dispositivo.
 - ¿Se tratan de forma efímera? No. ¿Obligatorio? No (opcional).
