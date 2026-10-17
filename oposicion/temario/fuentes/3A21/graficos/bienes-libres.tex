@@ -1,31 +1,68 @@
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 % Bienes económicos y bienes libres (3.A.21, I.2.3).
-% Mercado del bien k dados los demás precios, en el plano (q_k, p_k).
-% Izquierda: D_k: p = 4,2 - 0,9 q; S_k: p = 0,8 + 0,6 q; corte en q* = 2,27, p* = 2,16.
-% Derecha: D_k corta el eje de cantidades en q = 1,4 y S_k empieza en q = 2,8:
-% a precio nulo hay exceso de oferta (z_k < 0) y el bien es libre.
+% Arriba, mercado del bien k dados los demás precios, en el plano (q_k, p_k); debajo,
+% su función de exceso de demanda z_k(p_k) = D_k - S_k en el plano (z_k, p_k), con la
+% misma escala de precios. El eje de precios de abajo (z_k = 0) va bajo q*_k (bien
+% económico) o bajo el punto en que empieza la oferta (bien libre), para que la línea
+% discontinua conecte los 2 paneles.
+% Izquierda: D_k: p = 4,2 - 0,9 q; S_k: p = 0,8 + 0,6 q; corte en q* = 2,267, p* = 2,16.
+%   Para p >= 0,8: z_k(p) = (4,2 - p)/0,9 - (p - 0,8)/0,6 = 6 - 2,778 p; z_k(2,16) = 0.
+% Derecha: D_k: q = 1,4 - 0,2895 p (corta el eje de cantidades en 1,4); S_k: q = 2,8 + 0,4474 p.
+%   z_k(p) = -1,4 - 0,7368 p < 0 para todo p >= 0: a precio nulo hay exceso de oferta
+%   (z_k(0) = -1,4, el tramo rojo de arriba) y el bien es libre.
 % Elaboración propia a partir de Gravelle y Rees (2004).
 \begin{document}
-\begin{tikzpicture}[tcee]
-  % --- Panel izquierdo: bien económico ---
+\begin{tikzpicture}[tcee,
+    declare function={ze(\p)=6-2.778*\p; zl(\p)=-1.4-0.7368*\p;},
+    zona/.style={etiqueta,text=tceegris,font=\footnotesize}]
+  % ===================== Columna izquierda: bien económico =====================
+  % --- Arriba: oferta y demanda ---
   \capa{1}{\ejes{$q_k$}{$p_k$}{5}{4.6}}
   \capa{1}{\node[font=\small\bfseries] at (2.5,5.1) {Bien económico};}
   \capa{2}{\draw[curva1] (0.4,3.84) -- (4.0,0.6) node[etiqueta,right] {$D_k$};}
   \capa{2}{\draw[curva3] (0.4,1.04) -- (4.4,3.44) node[etiqueta,right] {$S_k$};}
   \capa{3}{\node[punto] (E) at (2.267,2.16) {};}
   \capa{3}{\proyeccion{(E)}{$q^*_k$}{$p^*_k$}}
-  \capa{3}{\node[etiqueta,align=center] at (2.5,-1.0) {$p^*_k>0,\quad z_k(\vect{p}^*)=0$};}
-  % --- Panel derecho: bien libre ---
-  \begin{scope}[xshift=6.6cm]
-    \capa{4}{\ejes{$q_k$}{$p_k$}{5}{4.6}}
-    \capa{4}{\node[font=\small\bfseries] at (2.5,5.1) {Bien libre};}
-    \capa{5}{\draw[curva1] (0.3,3.8) -- (1.4,0) node[etiqueta,above right=1pt and -1pt,pos=0] {$D_k$};}
-    \capa{5}{\draw[curva3] (2.8,0) -- (4.5,3.8) node[etiqueta,right] {$S_k$};}
-    \capa{6}{\draw[curvanueva,line width=2.2pt] (1.4,0) -- (2.8,0);}
-    \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thin] (1.4,-0.12) -- (2.8,-0.12)
+  % --- Abajo: exceso de demanda (eje de precios en z_k = 0, bajo q*_k) ---
+  \begin{scope}[yshift=-5.6cm]
+    \capa{4}{\draw[eje] (-0.4,0) -- (5.2,0) node[below left=2pt and 0pt] {$z_k$};}
+    \capa{4}{\draw[eje] (2.267,0) -- (2.267,4.6) node[left] {$p_k$};}
+    \capa{4}{\node[below] at (2.267,0) {$0$};}
+    \capa{4}{\node[zona,above] at (0.5,0) {$z_k<0$};}
+    \capa{4}{\node[zona,above] at (4.3,0) {$z_k>0$};}
+    \capa{5}{\draw[curva1] plot[domain=1.268:3.05,samples=2] ({2.267+ze(\x)},\x)
+      node[etiqueta,above] {$z_k(p_k)$};}
+    \capa{6}{\draw[guia] (2.267,-0.55+5.6) -- (2.267,4.6);}
+    \capa{6}{\node[punto] (Ez) at (2.267,2.16) {};}
+    \capa{6}{\draw[guia] (-0.4,2.16) node[left] {$p^*_k$} -- (Ez);}
+    \capa{7}{\node[etiqueta,align=center] at (2.4,-1.0) {$p^*_k>0,\quad z_k(\vect{p}^*)=0$};}
+  \end{scope}
+  % ======================= Columna derecha: bien libre =======================
+  \begin{scope}[xshift=6.9cm]
+    % --- Arriba: oferta y demanda ---
+    \capa{8}{\ejes{$q_k$}{$p_k$}{5}{4.6}}
+    \capa{8}{\node[font=\small\bfseries] at (2.5,5.1) {Bien libre};}
+    \capa{9}{\draw[curva1] (0.3,3.8) -- (1.4,0) node[etiqueta,above right=1pt and -1pt,pos=0] {$D_k$};}
+    \capa{9}{\draw[curva3] (2.8,0) -- (4.5,3.8) node[etiqueta,right] {$S_k$};}
+    \capa{10}{\draw[curvanueva,line width=2.2pt] (1.4,0) -- (2.8,0);}
+    \capa{10}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thin] (1.4,-0.12) -- (2.8,-0.12)
       node[midway,below=4pt,etiqueta,text=tceerojo] {$z_k<0$};}
-    \capa{6}{\node[etiqueta,align=center] at (2.5,-1.0) {$p^*_k=0,\quad z_k(\vect{p}^*)\leq 0$};}
+    % --- Abajo: exceso de demanda (eje de precios en z_k = 0, bajo el inicio de S_k) ---
+    \begin{scope}[yshift=-5.6cm]
+      \capa{11}{\draw[eje] (-0.4,0) -- (5.2,0) node[below left=2pt and 0pt] {$z_k$};}
+      \capa{11}{\draw[eje] (2.8,0) -- (2.8,4.6) node[left] {$p_k$};}
+      \capa{11}{\node[below] at (2.8,0) {$0$};}
+      \capa{11}{\node[zona,above] at (4.3,0) {$z_k>0$};}
+      \capa{11}{\node[zona,above] at (0.2,0) {$z_k<0$};}
+      \capa{12}{\draw[curva1] plot[domain=0:2.17,samples=2] ({2.8+zl(\x)},\x)
+        node[etiqueta,above] {$z_k(p_k)$};}
+      \capa{13}{\draw[guia] (1.4,-0.85+5.6) -- (1.4,0);}
+      \capa{13}{\draw[guia] (2.8,-0.12+5.6) -- (2.8,4.6);}
+      \capa{13}{\node[circle,fill=tceerojo,inner sep=1.6pt] at (1.4,0) {};}
+      \capa{13}{\node[etiqueta,below,text=tceerojo] at (1.4,0) {$z_k(0)<0$};}
+      \capa{14}{\node[etiqueta,align=center] at (2.4,-1.0) {$p^*_k=0,\quad z_k(\vect{p}^*)\leq 0$};}
+    \end{scope}
   \end{scope}
 \end{tikzpicture}
 \end{document}

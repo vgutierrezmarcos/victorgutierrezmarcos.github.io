@@ -2,7 +2,7 @@
 \usepackage{tcee}
 \addbibresource{3A21.bib}
 \tcetema[La teoría del equilibrio general]{3.A.21}{La teoría del equilibrio general.}
-\tcefecha{16/10/2026}
+\tcefecha{17/10/2026}
 \begin{document}
 \tceetitulo
 
@@ -59,7 +59,7 @@
   \begin{itemize}
   \item \concepto{I. Construcción del modelo}: los supuestos del modelo 2×2×2×2 (I.1); el comportamiento de empresas y consumidores, el exceso de demanda y la ley de \autor{Walras} (I.2), y la definición del equilibrio general competitivo (I.3).
   \item \concepto{II. Análisis positivo y normativo}: si el equilibrio existe, es único y es estable (II.1), y si es eficiente (II.2), que es la puerta de la economía del bienestar \vertema{3.A.22}.
-  \item \concepto{III. Otros desarrollos y aplicaciones}: el intercambio de \autor{Edgeworth} (III.1) y el núcleo, con el comportamiento estratégico y las no convexidades (III.2); el dinero (III.3); el tiempo y la incertidumbre (III.4), y los modelos de equilibrio general computable (III.5).
+  \item \concepto{III. Otros desarrollos y aplicaciones}: el intercambio de \autor{Edgeworth} y la negociación (III.1) y el núcleo, con el comportamiento estratégico y las no convexidades (III.2); el dinero (III.3); el tiempo y la incertidumbre (III.4), y los modelos de equilibrio general computable (III.5).
   \end{itemize}
   El orden responde a la pregunta del enganche y va del modelo a sus propiedades y de estas a sus límites: primero, si la coordinación por precios es \emph{posible} (existencia); después, si es \emph{determinada} y \emph{alcanzable} (unicidad y estabilidad) y \emph{deseable} (eficiencia), y por último, cuán \emph{robusta} es: cada extensión de III relaja un supuesto de I que las propiedades de II necesitaban.
 \end{itemize}
@@ -84,7 +84,7 @@ Conclusión
 \end{esquema}
 
 \begin{notaopositor}
-La exposición va del modelo (I) a sus propiedades (II) y de estas a sus límites (III). Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{2,5}; I.2, \tiempo{6}; I.3, \tiempo{2,5}); II, \tiempo{9} (II.1, \tiempo{7}; II.2, \tiempo{2}); III, \tiempo{6,5} (III.1, \tiempo{1}; III.2, \tiempo{2}; III.3, \tiempo{1}; III.4, \tiempo{1,5}; III.5, \tiempo{1}), y conclusión, \tiempo{1}. El tema es abstracto: conviene privilegiar la intuición y los conceptos clave (exceso de demanda, ley de \autor{Walras}, equilibrio general, punto fijo, distancia al equilibrio y núcleo). Los gráficos imprescindibles son la caja de la producción con la FPP y los precios, la caja de intercambio (que crece desde I.3 hasta III.2), el punto fijo de \autor{Brouwer} y el exceso de demanda con varios equilibrios. La demostración de la existencia, los teoremas del bienestar en detalle, la estabilidad en un mercado y la estática comparativa están en los anexos, para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar.
+La exposición va del modelo (I) a sus propiedades (II) y de estas a sus límites (III). Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{2,5}; I.2, \tiempo{6}; I.3, \tiempo{2,5}); II, \tiempo{9} (II.1, \tiempo{7}; II.2, \tiempo{2}); III, \tiempo{6,5} (III.1, \tiempo{1}; III.2, \tiempo{2}; III.3, \tiempo{1}; III.4, \tiempo{1,5}; III.5, \tiempo{1}), y conclusión, \tiempo{1}. El tema es abstracto: conviene privilegiar la intuición y los conceptos clave (exceso de demanda, ley de \autor{Walras}, equilibrio general, punto fijo, distancia al equilibrio, núcleo, dicotomía clásica y bienes contingentes). Al empezar el bloque~I, la imagen del mapa a escala de uno a uno de Joan \autor{Robinson} justifica en una frase por qué el modelo hace supuestos tan fuertes. Los gráficos imprescindibles son la caja de la producción con la FPP y los precios, la caja de intercambio (que crece desde I.3 hasta III.2), el punto fijo de \autor{Brouwer} y el exceso de demanda con varios equilibrios. Las demostraciones de la existencia, de la unicidad y de la estabilidad, los teoremas del bienestar en detalle, la estabilidad en un mercado y la estática comparativa están en los anexos~A a~E, para las preguntas del tribunal; la teoría de la negociación, el desarrollo técnico de las no convexidades y el del dinero, en notas y cajas grises del bloque~III. Conviene escribir este esquema en la pizarra al empezar.
 \end{notaopositor}
 
 
@@ -94,11 +94,15 @@ La exposición va del modelo (I) a sus propiedades (II) y de estas a sus límite
 
 \begin{itemize}
 \item \emph{Idea}: plantearemos las decisiones de todos los agentes a la vez, obtendremos sus funciones de oferta y de demanda y exigiremos que se vacíen todos los mercados simultáneamente. ¿Es posible modelizar de manera agregada y sencilla el comportamiento de una economía en su conjunto?
+  \begin{itemize}
+  \item Joan \autor{Robinson} lo resume con una imagen: «un modelo que tomara en cuenta toda la diversidad de la realidad sería tan poco útil como un mapa a escala de uno a uno» \parencite[33]{Robinson1962Economic}.\footnote{En el original: «\emph{A model which took account of all the variegation of reality would be of no more use than a map at the scale of one to one}» \parencite[33]{Robinson1962Economic}.}
+  \item Por eso el modelo hace supuestos tan fuertes (2 bienes, 2 factores, 2 consumidores, 2 empresas, competencia perfecta, convexidad): no pretenden ser realistas, sino dejar a la vista el mecanismo que interesa, cómo los precios coordinan a todos los agentes a la vez. El bloque~III comprueba qué queda de ese mecanismo cuando se relajan.
+  \end{itemize}
 \item \emph{Conclusión anticipada}: si cada agente optimiza tomando los precios como dados, todo el sistema se resume en un vector de funciones de exceso de demanda que solo dependen de los precios; el equilibrio es el vector de precios que vacía todos los mercados a la vez, y la ley de \autor{Walras} hace que solo se determinen precios relativos.
 \end{itemize}
 
 \begin{notaopositor}
-En el cante: los supuestos en una lista corta, con la tabla de agentes y mercados (\tiempo{2,5}); las condiciones de primer orden de empresas y consumidores con la caja de la producción, la FPP y los precios (gráfico~\ref{fig:caja-produccion-precios}), el exceso de demanda con sus propiedades y la ley de \autor{Walras} escrita (\tiempo{6}), y la definición del equilibrio con la caja de intercambio, que se queda en la pizarra hasta el bloque~III (\tiempo{2,5}). La lista detallada de supuestos de competencia perfecta, las propiedades de la oferta y de la demanda individuales y la ley de \autor{Say} son de profundización.
+En el cante: los supuestos en una lista corta, con la tabla de agentes y mercados (\tiempo{2,5}); las condiciones de primer orden de empresas y consumidores con la caja de la producción, la FPP y los precios (gráfico~\ref{fig:caja-produccion-precios}), la demanda de mercado y lo que hereda de las individuales, el exceso de demanda con sus propiedades y la ley de \autor{Walras} escrita (\tiempo{6}), y la definición del equilibrio con la caja de intercambio, que se queda en la pizarra hasta el bloque~III (\tiempo{2,5}). La lista detallada de supuestos de competencia perfecta, las propiedades de la oferta y de la demanda individuales y la ley de \autor{Say} son de profundización.
 \end{notaopositor}
 
 \begin{anotaciones}
@@ -112,8 +116,9 @@ En el cante: los supuestos en una lista corta, con la tabla de agentes y mercado
 % --------------------------------------------------------------------------
 \subsection{Supuestos}
 
+Para responder a esa pregunta empezamos por describir la economía que estudiamos: un \concepto{modelo de equilibrio general competitivo 2×2×2×2 estático}, con estos supuestos.
+
 \begin{itemize}
-\item La economía que estudiamos es un \concepto{modelo de equilibrio general competitivo 2×2×2×2 estático} con estos supuestos:
 \item \concepto{Equilibrio general à la \autor{Walras}}: todos los mercados se analizan simultáneamente. Hay tantos mercados como mercancías (bienes y factores), y en cada uno hay una función de demanda, una función de oferta y una condición de vaciado: la cantidad demandada debe igualar a la ofrecida (tabla~\ref{tab:ecuaciones}).
 \end{itemize}
 
@@ -159,16 +164,18 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
     \end{itemize}
   \end{itemize}
 \item \concepto{Variables}: son exógenas las preferencias, las tecnologías, las dotaciones y su reparto; son endógenas los 4 precios (3 relativos) y las cantidades producidas, consumidas y empleadas.
-\item Para explicar cómo se forman los precios, \autor{Walras} recurre a un proceso de \concepto{tanteo} (\emph{tâtonnement}) en el que los precios suben donde hay exceso de demanda y bajan donde hay exceso de oferta hasta vaciar todos los mercados: la variable de ajuste son los precios.\footnote{\autor{Walras} no habla de un subastador: «\emph{[\ldots] supposons qu'\textbf{on} y crie $m(m-1)$ prix des $m$ marchandises les unes en les autres. Ces prix peuvent être criés au hasard ; pour mieux dire, ils ne peuvent être criés qu'au hasard. Et toutefois il est certain qu'on peut faire en sorte qu'il y en ait parmi eux $(m-1)(m-1)=m(m-1)-(m-1)$ qui soient liés aux $m-1$ autres par la condition d'équilibre général. A ces prix, ainsi criés, chaque échangeur détermine sa demande ou offre de (A), (B), (C), (D)\ldots{} Cela se fait après réflexion, sans calcul, mais exactement comme cela se ferait par le calcul en vertu du système des équations d'équivalence des quantités demandées et offertes et de satisfaction maximum complété par la restriction convenue. Il s'agit de fonder sur le fait de cette détermination sans calcul une méthode de résolution par} \textbf{tâtonnement} \emph{des équations d'égalité de l'offre et de la demande totales}» \parencite[§126, 127]{Walras1874Elements}. En castellano: «[\ldots] supongamos que en él \textbf{se} vocean $m(m-1)$ precios de las $m$ mercancías unas en términos de otras. Estos precios pueden vocearse al azar; mejor dicho, solo pueden vocearse al azar. Y, sin embargo, es seguro que se puede hacer que entre ellos haya $(m-1)(m-1)=m(m-1)-(m-1)$ que estén ligados a los otros $m-1$ por la condición de equilibrio general. A estos precios, así voceados, cada participante en el intercambio determina su demanda u oferta de (A), (B), (C), (D)\ldots{} Lo hace tras reflexionar, sin cálculo, pero exactamente como se haría mediante el cálculo en virtud del sistema de ecuaciones de equivalencia de las cantidades demandadas y ofrecidas y de satisfacción máxima, completado con la restricción convenida. Se trata de fundar sobre el hecho de esta determinación sin cálculo un método de resolución por \textbf{tanteo} de las ecuaciones de igualdad de la oferta y la demanda totales» (traducción propia; las negritas son nuestras). El sujeto es el impersonal \emph{on}: nadie vocea los precios en concreto, y la restricción convenida es que nadie ofrezca más de lo que posee. La literatura posterior personifica ese proceso en un subastador walrasiano. En las primeras ediciones de los \emph{Éléments} el tanteo admite producción e intercambios a precios de desequilibrio; tras las críticas de \autor{Bertrand} y \autor{Edgeworth} (con intercambios fuera del equilibrio, la riqueza de los agentes cambia en cada ronda), \autor{Walras} lo sustituye por un tanteo con compromisos escritos («\emph{bons}») que solo se ejecutan en el equilibrio \parencite{Walker1987Tatonnement}. Con ello el tanteo deja de describir cómo se ajustan los mercados reales y pasa a ser un proceso virtual, en tiempo lógico. La idea de un mecanismo que lleva los precios de mercado a los «naturales» está ya en \textcite[libro~I, cap.~VII]{Smith1776Wealth}.}
+\item \concepto{Tanteo} (\emph{tâtonnement}): para explicar cómo se forman los precios, \autor{Walras} recurre a un proceso en el que los precios suben donde hay exceso de demanda y bajan donde hay exceso de oferta hasta vaciar todos los mercados: la variable de ajuste son los precios.\footnote{\autor{Walras} no habla de un subastador: «\emph{[\ldots] supposons qu'\textbf{on} y crie $m(m-1)$ prix des $m$ marchandises les unes en les autres. Ces prix peuvent être criés au hasard ; pour mieux dire, ils ne peuvent être criés qu'au hasard. Et toutefois il est certain qu'on peut faire en sorte qu'il y en ait parmi eux $(m-1)(m-1)=m(m-1)-(m-1)$ qui soient liés aux $m-1$ autres par la condition d'équilibre général. A ces prix, ainsi criés, chaque échangeur détermine sa demande ou offre de (A), (B), (C), (D)\ldots{} Cela se fait après réflexion, sans calcul, mais exactement comme cela se ferait par le calcul en vertu du système des équations d'équivalence des quantités demandées et offertes et de satisfaction maximum complété par la restriction convenue. Il s'agit de fonder sur le fait de cette détermination sans calcul une méthode de résolution par} \textbf{tâtonnement} \emph{des équations d'égalité de l'offre et de la demande totales}» \parencite[§126, 127]{Walras1874Elements}. En castellano: «[\ldots] supongamos que en él \textbf{se} vocean $m(m-1)$ precios de las $m$ mercancías unas en términos de otras. Estos precios pueden vocearse al azar; mejor dicho, solo pueden vocearse al azar. Y, sin embargo, es seguro que se puede hacer que entre ellos haya $(m-1)(m-1)=m(m-1)-(m-1)$ que estén ligados a los otros $m-1$ por la condición de equilibrio general. A estos precios, así voceados, cada participante en el intercambio determina su demanda u oferta de (A), (B), (C), (D)\ldots{} Lo hace tras reflexionar, sin cálculo, pero exactamente como se haría mediante el cálculo en virtud del sistema de ecuaciones de equivalencia de las cantidades demandadas y ofrecidas y de satisfacción máxima, completado con la restricción convenida. Se trata de fundar sobre el hecho de esta determinación sin cálculo un método de resolución por \textbf{tanteo} de las ecuaciones de igualdad de la oferta y la demanda totales» (traducción propia; las negritas son nuestras). El sujeto es el impersonal \emph{on}: nadie vocea los precios en concreto, y la restricción convenida es que nadie ofrezca más de lo que posee. La literatura posterior personifica ese proceso en un subastador walrasiano. En las primeras ediciones de los \emph{Éléments} el tanteo admite producción e intercambios a precios de desequilibrio; tras las críticas de \autor{Bertrand} y \autor{Edgeworth} (con intercambios fuera del equilibrio, la riqueza de los agentes cambia en cada ronda), \autor{Walras} lo sustituye por un tanteo con compromisos escritos («\emph{bons}») que solo se ejecutan en el equilibrio \parencite{Walker1987Tatonnement}. Con ello el tanteo deja de describir cómo se ajustan los mercados reales y pasa a ser un proceso virtual, en tiempo lógico. La idea de un mecanismo que lleva los precios de mercado a los «naturales» está ya en \textcite[libro~I, cap.~VII]{Smith1776Wealth}.}
 \end{itemize}
 
 % --------------------------------------------------------------------------
 \subsection{Desarrollo}
 
+Una vez fijados los supuestos, pasamos a obtener el comportamiento de cada tipo de agente: primero las empresas (oferta de bienes y demanda de factores), después los consumidores (demanda de bienes y oferta de factores) y, por último, cómo se juntan las dos cosas en el exceso de demanda y la ley de \autor{Walras}.
+
 \subsubsection{Productores y oferta}
 
 \begin{itemize}
-\item Con los supuestos de I.1, cada empresa $j=X,Y$ elige los factores que maximizan su beneficio, tomando como dados el precio de su producto y los de los factores:\footnote{El mismo problema puede resolverse en 2 etapas: primero, la forma más barata de producir cada cantidad (la función de costes) y después la cantidad que maximiza el beneficio, $p_j=\mathrm{CMg}_j$ \vertema{3.A.12}. El planteamiento general, con $I$ consumidores, $J$ empresas y $n$ bienes, está en el anexo~\ref{anexo:modelo-general}.}
+\item \emph{Problema}: con los supuestos de I.1, cada empresa $j=X,Y$ elige los factores que maximizan su beneficio, tomando como dados el precio de su producto y los de los factores:\footnote{El mismo problema puede resolverse en 2 etapas: primero, la forma más barata de producir cada cantidad (la función de costes) y después la cantidad que maximiza el beneficio, $p_j=\mathrm{CMg}_j$ \vertema{3.A.12}. El planteamiento general, con $I$ consumidores, $J$ empresas y $n$ bienes, está en el anexo~\ref{anexo:modelo-general}.}
   \begin{equation}
   \optim{\max}{L_j,K_j}{B_j=p_j\,F_j(L_j,K_j)-w_LL_j-w_KK_j}{L_j\geq 0,\ K_j\geq 0} \label{eq:empresa}
   \end{equation}
@@ -199,8 +206,10 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
 
 \subsubsection{Consumidores y demanda}
 
+Una vez obtenida la oferta de las empresas, pasamos al otro lado de los mercados: los consumidores, que demandan los bienes y ofrecen los factores.
+
 \begin{itemize}
-\item Con los supuestos de I.1, cada consumidor $i=A,B$ vende su dotación de factores, recibe su parte de los beneficios y elige la cesta que maximiza su utilidad con la renta~\eqref{eq:renta}:
+\item \emph{Problema}: con los supuestos de I.1, cada consumidor $i=A,B$ vende su dotación de factores, recibe su parte de los beneficios y elige la cesta que maximiza su utilidad con la renta~\eqref{eq:renta}:
   \begin{equation}
   \optim{\max}{X_i,Y_i}{U_i(X_i,Y_i)}{p_XX_i+p_YY_i=\overline{W}_i\\ X_i\geq 0,\ Y_i\geq 0} \label{eq:consumidor}
   \end{equation}
@@ -215,21 +224,50 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
   \item homogéneas de grado 0 en todos los precios: si $\vect{p}$ se multiplica por $\alpha>0$, la renta $\overline{W}_i$ también, y la restricción presupuestaria no cambia. No hay ilusión monetaria: solo importan los precios relativos, y cualquier bien puede servir de numerario;
   \item agotan la renta por la monotonía de las preferencias: es la ley de \autor{Walras} \emph{individual}, $p_XX_i+p_YY_i=\overline{W}_i$ \vertema{3.A.8}; sumada para todos los agentes, da la ley de \autor{Walras} del apartado~I.2.4.
   \end{enumerate}
-\item La demanda de mercado de cada bien es la suma horizontal de las individuales, $X(\vect{p})=X_A(\vect{p})+X_B(\vect{p})$, y conserva esas propiedades. En el modelo básico el ocio no da utilidad, así que la oferta de factores es la dotación.
+\item \emph{Oferta de factores}: en el modelo básico el ocio no da utilidad, así que cada consumidor ofrece toda su dotación, $\overline{L}_i$ y $\overline{K}_i$, sea cual sea su precio.
+\end{itemize}
+
+\paragraph{La demanda de mercado}
+
+Para pasar de cada consumidor al mercado hay que sumar, y la suma no es inocente: conserva unas propiedades de las demandas individuales y pierde otras. Las que conserva son justo las que necesita el exceso de demanda para que el equilibrio exista (II.1.1); las que pierde explican por qué la unicidad y la estabilidad son tan difíciles de garantizar (II.1.2 y II.1.3).
+
+\begin{itemize}
+\item \emph{Cómo se obtiene}: la \concepto{demanda de mercado} de un bien es la \emph{suma horizontal} de las demandas individuales. A cada vector de precios se suman las cantidades que demanda cada consumidor con la renta que obtiene a esos precios:
+  \begin{equation}
+  X(\vect{p})=X_A\big(\vect{p},\overline{W}_A(\vect{p})\big)+X_B\big(\vect{p},\overline{W}_B(\vect{p})\big),\qquad\text{y en general}\quad \vect{x}(\vect{p})=\sum_{i=1}^{I}\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big). \label{eq:demanda-mercado}
+  \end{equation}
+  Gráficamente, en el plano $(X,p_X)$ y con los demás precios fijos, a cada precio se suman en horizontal las cantidades de $A$ y de $B$.
+\item \emph{Qué hereda}: las propiedades que se conservan al sumar:
+  \begin{enumerate}
+  \item la \emph{continuidad}: la suma de funciones continuas es continua;
+  \item la \emph{homogeneidad de grado 0} en todos los precios: si cada sumando no cambia al multiplicar $\vect{p}$ por $\alpha>0$, la suma tampoco;
+  \item la \emph{ley de \autor{Walras}}: sumando las restricciones presupuestarias, el gasto total iguala la renta total, $\vect{p}\cdot\vect{x}(\vect{p})=\sum_i\overline{W}_i(\vect{p})$;
+  \item la \emph{cota inferior}: ningún consumidor demanda cantidades negativas.
+  \end{enumerate}
+\item \emph{Qué no hereda}: las propiedades que dependen de cómo responde cada consumidor a los cambios de su renta:
+  \begin{enumerate}
+  \item la demanda de mercado depende de \emph{cómo se reparte} la renta, no solo de su total: si los precios pasan renta de $A$ a $B$ y estos gastan de forma distinta, la demanda cambia aunque la renta total no cambie. Solo depende de la renta total si todos los consumidores gastan igual cada euro adicional (curvas de \autor{Engel} rectas y paralelas entre consumidores: la forma polar de \autor{Gorman}) \parencite[§4.B]{MasColellWhinstonGreen1995};
+  \item la \emph{ley de la demanda} y la simetría y la semidefinición negativa de la matriz de \autor{Slutsky}, que valen para cada consumidor \vertema{3.A.9}, no tienen por qué valer en el agregado;
+  \item el \emph{axioma débil de la preferencia revelada}: cada consumidor lo cumple \vertema{3.A.8}, pero la demanda de mercado no tiene por qué cumplirlo \parencite[§4.C]{MasColellWhinstonGreen1995}.
+  \end{enumerate}
+\item \emph{Por qué en equilibrio general es más grave}: la renta de cada consumidor no está dada, sino que sale de vender su dotación a los precios de mercado. Si sube el precio de un bien, quien lo vende se enriquece y quien lo compra se empobrece: a los efectos sustitución y renta de siempre se suma un \concepto{efecto renta-dotación}.\footnote{Derivando $x_{ik}\big(\vect{p},\vect{p}\cdot\vect{\omega}_i\big)$ respecto de $p_k$ y usando la ecuación de \autor{Slutsky}, $\frac{d x_{ik}}{d p_k}=S^i_{kk}-\big(x_{ik}-\omega_{ik}\big)\frac{\partial x_{ik}}{\partial \overline{W}_i}$, donde $S^i_{kk}<0$ es el efecto sustitución. Para un \emph{vendedor neto} del bien ($x_{ik}<\omega_{ik}$) y un bien normal, el segundo término es positivo: la subida del precio lo enriquece y su demanda del bien puede aumentar aunque el bien no sea \autor{Giffen}.} Por eso incluso la demanda de un solo consumidor puede aumentar con el precio del bien, y al sumar consumidores con dotaciones distintas los efectos renta no se compensan.
+\item \emph{Por qué importa para el exceso de demanda}: el exceso de demanda de I.2.3 es la demanda de mercado menos la oferta. Hereda de ella la continuidad, la homogeneidad de grado 0 y la ley de \autor{Walras}, que bastan para la existencia, pero no ninguna forma concreta (no tiene por qué ser decreciente en su propio precio): es lo que dice el teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu} (II.1.2).
 \end{itemize}
 
 \subsubsection{Función de exceso de demanda}
 
+Con la oferta de las empresas y la demanda de los consumidores ya podemos juntar los 2 lados de cada mercado en una sola función.
+
 \begin{itemize}
-\item El \concepto{exceso de demanda} de un bien o factor es la diferencia entre lo que se demanda y lo que se ofrece a unos precios dados. En el 2×2×2×2,
+\item \emph{Definición}: el \concepto{exceso de demanda} de un bien o factor es la diferencia entre lo que se demanda y lo que se ofrece a unos precios dados. En el 2×2×2×2,
   \begin{equation}
   z_X(\vect{p})=X_A(\vect{p})+X_B(\vect{p})-q_X(\vect{p}),\qquad z_L(\vect{p})=L_X(\vect{p})+L_Y(\vect{p})-\overline{L}, \label{eq:exceso}
   \end{equation}
   y análogamente $z_Y$ y $z_K$.\footnote{Aquí $z$ es el exceso de demanda, como en el equilibrio parcial \vertema{3.A.16}; no debe confundirse con el vector de factores $\vect{z}=(z_L,z_K)$ de la teoría de la producción \vertema{3.A.11}.} Así, $z_k>0$ si la demanda supera a la oferta y $z_k<0$ si hay exceso de oferta.
-\item En general, con $n$ bienes (los factores son bienes más), $I$ consumidores con dotaciones $\vect{\omega}_i$ y $J$ empresas con planes de producción netos $\vect{y}_j$ (anexo~\ref{anexo:modelo-general}), el vector de excesos de demanda es
+\item \emph{Caso general}: con $n$ bienes (los factores son bienes más), $I$ consumidores con dotaciones $\vect{\omega}_i$ y $J$ empresas con planes de producción netos $\vect{y}_j$ (anexo~\ref{anexo:modelo-general}), el vector de excesos de demanda es
   \funcionclave[eq:exceso-general]{\vect{z}(\vect{p})=\sum_{i=1}^{I}\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big)-\sum_{i=1}^{I}\vect{\omega}_i-\sum_{j=1}^{J}\vect{y}_j(\vect{p})}
   con la renta de cada consumidor $\overline{W}_i(\vect{p})=\vect{p}\cdot\vect{\omega}_i+\sum_{j}\theta_{ij}B_j(\vect{p})$.
-\item Su gran ventaja es que \emph{todo el modelo queda en función de los precios}: basta buscar los precios que anulan $\vect{z}$, sin calcular las cantidades de cada agente.
+\item \emph{Ventaja}: \emph{todo el modelo queda en función de los precios}: basta buscar los precios que anulan $\vect{z}$, sin calcular las cantidades de cada agente.
 \item \emph{Propiedades}, que hereda de la demanda y de la oferta y que son las que se usan en el análisis positivo (II.1):
   \begin{enumerate}
   \item es \emph{continua} (para precios positivos);
@@ -237,41 +275,45 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
   \item cumple la \emph{ley de \autor{Walras}}, $\vect{p}\cdot\vect{z}(\vect{p})\equiv 0$ (I.2.4);
   \item está \emph{acotada inferiormente}, porque nadie puede ofrecer más de lo que tiene, y, si los bienes son deseables, cumple una \emph{condición de frontera}: el exceso de demanda de un bien crece sin límite cuando su precio tiende a 0.
   \end{enumerate}
-\item Según su exceso de demanda en el equilibrio, hay 2 tipos de bienes (gráfico~\ref{fig:bienes-libres}):
+\item \emph{Tipos de bienes}: según su exceso de demanda en el equilibrio, hay 2 (gráfico~\ref{fig:bienes-libres}: arriba, la oferta y la demanda de cada bien; abajo, su función de exceso de demanda $z_k(p_k)$, con los demás precios dados):
   \begin{itemize}
-  \item \concepto{bienes económicos}: escasos; hay un precio positivo que vacía su mercado, $p^*_k>0$ y $z_k(\vect{p}^*)=0$;
-  \item \concepto{bienes libres}: incluso a precio nulo la oferta supera a la demanda, $p^*_k=0$ y $z_k(\vect{p}^*)\leq 0$ (el aire que se respira). Admitirlos permite que el modelo tenga solución también en ese caso: es la aportación de \autor{Schlesinger} (1935) y de \autor{Wald} (1935).
+  \item \concepto{bienes económicos}: escasos; hay un precio positivo que vacía su mercado, $p^*_k>0$ y $z_k(\vect{p}^*)=0$. Su función de exceso de demanda es positiva a precios bajos, negativa a precios altos y corta el eje de precios justo en $p^*_k$;
+  \item \concepto{bienes libres}: incluso a precio nulo la oferta supera a la demanda, $p^*_k=0$ y $z_k(\vect{p}^*)\leq 0$ (el aire que se respira). Su función de exceso de demanda queda por debajo de 0 en todo su recorrido, también en $p_k=0$, así que no corta el eje: el precio no puede bajar más y el bien sigue sobrando. Admitirlos permite que el modelo tenga solución también en ese caso: es la aportación de \autor{Schlesinger} (1935) y de \autor{Wald} (1935).
   \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{Bienes económicos y bienes libres}\label{fig:bienes-libres}
+\caption{Bienes económicos y bienes libres: mercado y función de exceso de demanda}\label{fig:bienes-libres}
 \grafico[0.85\textwidth]{bienes-libres}
 \fuente{elaboración propia a partir de \textcite{GravelleRees2004Microeconomics}.}
 \end{figure}
 
 \subsubsection{Ley de \autor{Walras}}
 
+Las propiedades del exceso de demanda tienen una consecuencia que da forma a todo el modelo: la ley de \autor{Walras}.
+
 \begin{itemize}
-\item \concepto{Ley de \autor{Walras}}: para \emph{cualquier} vector de precios, dentro o fuera del equilibrio, el valor de los excesos de demanda suma 0:
+\item \emph{Enunciado}: la \concepto{ley de \autor{Walras}} dice que, para \emph{cualquier} vector de precios, dentro o fuera del equilibrio, el valor de los excesos de demanda suma 0:
   \funcionclave[eq:ley-walras]{\vect{p}\cdot\vect{z}(\vect{p})\equiv\sum_{k=1}^{n}p_k\,z_k(\vect{p})=0}
   En el 2×2×2×2, $p_Xz_X+p_Yz_Y+w_Lz_L+w_Kz_K\equiv 0$.
-\item \emph{Demostración}: cada consumidor agota su renta, $\vect{p}\cdot\vect{x}_i=\vect{p}\cdot\vect{\omega}_i+\sum_j\theta_{ij}\,\vect{p}\cdot\vect{y}_j$. Sumando para todos los consumidores y usando que los beneficios se reparten enteros, $\sum_i\theta_{ij}=1$, queda $\vect{p}\cdot\big(\sum_i\vect{x}_i-\sum_i\vect{\omega}_i-\sum_j\vect{y}_j\big)=0$. Solo exige que las preferencias sean localmente no saciables, para que las restricciones presupuestarias se saturen.
+\item \emph{Demostración}: cada consumidor agota su renta, $\vect{p}\cdot\vect{x}_i=\vect{p}\cdot\vect{\omega}_i+\sum_j\theta_{ij}\,\vect{p}\cdot\vect{y}_j$. Sumando para todos los consumidores y usando que los beneficios se reparten enteros, $\sum_i\theta_{ij}=1$, queda $\vect{p}\cdot\big(\sum_i\vect{x}_i-\sum_i\vect{\omega}_i-\sum_j\vect{y}_j\big)=0$. Solo exige que las preferencias sean localmente no saciables, para que las restricciones presupuestarias se saturen.\findemo
 \item \emph{Implicaciones}:
   \begin{itemize}
   \item los mercados son \emph{interdependientes}: un exceso de demanda en un mercado tiene su contrapartida en un exceso de oferta de igual valor en otro;
   \item si $n-1$ mercados están en equilibrio y $p_n>0$, el $n$-ésimo también lo está: de las $n$ condiciones de vaciado solo $n-1$ son independientes. En el 2×2×2×2, si se vacían 3 mercados, se vacía el cuarto;
   \item con la homogeneidad de grado 0, el sistema solo determina los $n-1$ \emph{precios relativos}. Hay que fijar una normalización: \autor{Walras} elige un bien como \concepto{numerario} ($p_1=1$); también puede usarse el símplice, $\sum_kp_k=1$ (II.1.1). Los precios absolutos quedan indeterminados porque en el modelo no hay dinero (III.3).
   \end{itemize}
-\item La ley de \autor{Walras} es una \emph{identidad}, no una condición de equilibrio: se cumple a cualquier precio porque se deduce de las restricciones presupuestarias.\footnote{No debe confundirse con la ley de \autor{Say}. La primera es una identidad que incluye todos los mercados, también el del dinero si lo hay; la ley de \autor{Say}, en la formulación de \textcite{Lange1942Say}, afirma que el valor de los excesos de demanda de los bienes, sin contar el dinero, es idénticamente nulo, y por tanto que nunca puede haber un exceso de oferta general de bienes. La crítica de \autor{Keynes} se dirige a la segunda: en una economía monetaria, un exceso de oferta de bienes puede ir acompañado de un exceso de demanda de dinero \parencite{BeckerBaumol1952Classical} \vertema{3.A.2} \vertema{3.A.4}.}
+\item \emph{Naturaleza}: la ley de \autor{Walras} es una \emph{identidad}, no una condición de equilibrio: se cumple a cualquier precio porque se deduce de las restricciones presupuestarias.\footnote{No debe confundirse con la ley de \autor{Say}. La primera es una identidad que incluye todos los mercados, también el del dinero si lo hay; la ley de \autor{Say}, en la formulación de \textcite{Lange1942Say}, afirma que el valor de los excesos de demanda de los bienes, sin contar el dinero, es idénticamente nulo, y por tanto que nunca puede haber un exceso de oferta general de bienes. La crítica de \autor{Keynes} se dirige a la segunda: en una economía monetaria, un exceso de oferta de bienes puede ir acompañado de un exceso de demanda de dinero \parencite{BeckerBaumol1952Classical} \vertema{3.A.2} \vertema{3.A.4}.}
 \end{itemize}
 
 % --------------------------------------------------------------------------
 \subsection{Implicaciones: equilibrio general competitivo}
 
+Una vez obtenidos el comportamiento de todos los agentes y el exceso de demanda, pasamos a definir el objeto central del tema: el equilibrio.
+
 \begin{itemize}
-\item Un \concepto{equilibrio general competitivo} (o walrasiano) es un vector de precios $\vect{p}^*\geq\vect{0}$ y una asignación $(\vect{x}^*_i,\vect{y}^*_j)$ tales que:
+\item \emph{Definición}: un \concepto{equilibrio general competitivo} (o walrasiano) es un vector de precios $\vect{p}^*\geq\vect{0}$ y una asignación $(\vect{x}^*_i,\vect{y}^*_j)$ tales que:
   \begin{enumerate}
   \item cada consumidor maximiza su utilidad a los precios $\vect{p}^*$, dada su renta;
   \item cada empresa maximiza su beneficio a los precios $\vect{p}^*$;
@@ -279,11 +321,11 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
     \funcionclave[eq:egc]{z_k(\vect{p}^*)\leq 0\quad\text{y}\quad p^*_k\,z_k(\vect{p}^*)=0,\qquad k=1,\dots,n}
     es decir, $z_k(\vect{p}^*)=0$ si $p^*_k>0$ (bienes económicos) y $z_k(\vect{p}^*)\leq 0$ si $p^*_k=0$ (bienes libres).
   \end{enumerate}
-\item En el 2×2×2×2 el equilibrio reúne las condiciones de los apartados anteriores, con los 4 mercados vaciados:
+\item \emph{En el 2×2×2×2}: el equilibrio reúne las condiciones de los apartados anteriores, con los 4 mercados vaciados:
   \begin{equation}
   \mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\frac{p_X}{p_Y}=\mathrm{RMT}_{XY},\qquad \mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\frac{w_L}{w_K}. \label{eq:egc-2x2}
   \end{equation}
-\item ¿Cómo se forman los precios? La literatura personifica el tanteo de \autor{Walras} en un \concepto{subastador walrasiano}: anuncia unos precios, cada agente dice cuánto demandaría u ofrecería, y si en algún mercado hay exceso de demanda o de oferta no se realiza ninguna transacción y el subastador vuelve a anunciar precios, más altos donde sobra demanda y más bajos donde sobra oferta, hasta que se vacían todos los mercados. Es un sistema de prueba y error \emph{sin intercambios fuera del equilibrio}.
+\item \emph{Formación de los precios}: ¿quién los fija? La literatura personifica el tanteo de \autor{Walras} en un \concepto{subastador walrasiano}: anuncia unos precios, cada agente dice cuánto demandaría u ofrecería, y si en algún mercado hay exceso de demanda o de oferta no se realiza ninguna transacción y el subastador vuelve a anunciar precios, más altos donde sobra demanda y más bajos donde sobra oferta, hasta que se vacían todos los mercados. Es un sistema de prueba y error \emph{sin intercambios fuera del equilibrio}.
 \end{itemize}
 
 \paragraph{Interpretación gráfica: la caja de \autor{Edgeworth} del intercambio}
@@ -308,7 +350,7 @@ Empresas\newline ($j=X,Y$) & \textcolor{tceedorado}{\textbf{Oferta}}\newline $q_
 \end{itemize}
 
 \begin{notaopositor}
-Qué es de este tema y qué del vecino: la competencia perfecta en un mercado aislado (equilibrio parcial, corto y largo plazo, ajuste y estabilidad de ese mercado) es materia del equilibrio parcial \vertema{3.A.16}. Aquí lo propio es la interdependencia: la economía como un sistema de ecuaciones simultáneas en el que todos los precios son endógenos y se determinan a la vez, el recuento de ecuaciones e incógnitas, el exceso de demanda y la ley de \autor{Walras}. Conviene subrayarlo en el cante para que no parezca el equilibrio parcial con más mercados.
+Qué es de este tema y qué del tema 3.A.16: la competencia perfecta en un mercado aislado (equilibrio parcial, corto y largo plazo, ajuste y estabilidad de ese mercado) es materia del equilibrio parcial \vertema{3.A.16}. Aquí lo propio es la interdependencia: la economía como un sistema de ecuaciones simultáneas en el que todos los precios son endógenos y se determinan a la vez, el recuento de ecuaciones e incógnitas, el exceso de demanda y la ley de \autor{Walras}. Conviene subrayarlo en el cante para que no parezca el equilibrio parcial con más mercados.
 \end{notaopositor}
 
 
@@ -317,23 +359,25 @@ Qué es de este tema y qué del vecino: la competencia perfecta en un mercado ai
 \minutos{9}
 
 \begin{itemize}
+\item \emph{Idea}: una vez construido el modelo y definido el equilibrio (bloque~I), pasamos a estudiar sus propiedades: primero las positivas, qué dice el equilibrio como descripción de una economía de mercado (II.1), y después la normativa, si el resultado es deseable (II.2).
 \item \emph{Conclusión anticipada}: con supuestos razonables el equilibrio \emph{existe}; pero solo con supuestos fuertes es \emph{único} y \emph{estable}, y el teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu} muestra que la racionalidad individual no los garantiza. En cambio, el equilibrio es \emph{eficiente} con muy pocos supuestos.
 \end{itemize}
 
 \begin{notaopositor}
-En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia con la intuición del subastador como aplicación del símplice en sí mismo y el punto fijo de \autor{Brouwer} (gráfico~\ref{fig:brouwer}) (\tiempo{3}); la unicidad con el gráfico de los equilibrios múltiples (gráfico~\ref{fig:equilibrios-multiples}), las economías regulares, los sustitutivos brutos y el teorema SMD (\tiempo{2}); la estabilidad con el tanteo, la distancia al equilibrio, \autor{Arrow}-\autor{Block}-\autor{Hurwicz} y el contraejemplo de \autor{Scarf}, con las flechas en el mismo gráfico (\tiempo{1,5}), y el análisis normativo sobre la caja de intercambio: óptimo de \autor{Pareto} y los 2 teoremas en enunciados (\tiempo{2}). La demostración de la existencia, la unicidad con el axioma débil, la estabilidad en un mercado, la estática comparativa y los teoremas del bienestar en detalle están en los anexos.
+En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia con la intuición del subastador como aplicación del símplice en sí mismo y el punto fijo de \autor{Brouwer} (gráfico~\ref{fig:brouwer}) (\tiempo{3}); la unicidad con el gráfico de los equilibrios múltiples (gráfico~\ref{fig:equilibrios-multiples}), las economías regulares, los sustitutivos brutos y el teorema SMD (\tiempo{2}); la estabilidad con el tanteo, la distancia al equilibrio, \autor{Arrow}-\autor{Block}-\autor{Hurwicz} y el contraejemplo de \autor{Scarf}, con las flechas en el mismo gráfico (\tiempo{1,5}), y el análisis normativo sobre la caja de intercambio: óptimo de \autor{Pareto} y los 2 teoremas fundamentales con su nombre completo, su idea y sus supuestos, en palabras (\tiempo{2}). Las demostraciones de la existencia, de la unicidad (por el axioma débil y por los sustitutivos brutos) y de la estabilidad del tanteo están en el anexo~\ref{anexo:existencia}; la estabilidad en un mercado, en el anexo~\ref{anexo:estabilidad-parcial}; la estática comparativa y los teoremas del bienestar en detalle, en sus anexos.
 \end{notaopositor}
 
 % --------------------------------------------------------------------------
 \subsection{Análisis positivo del equilibrio general competitivo}
 
 \begin{itemize}
-\item Un modelo que pretende explicar los precios tiene que responder a 3 preguntas:
+\item \emph{Las 3 preguntas}: un modelo que pretende explicar los precios tiene que responder a 3:
   \begin{itemize}
   \item \concepto{existencia}: ¿hay algún vector de precios que vacíe todos los mercados? Si no, el modelo no describe nada y no puede servir para valorar el mercado como mecanismo de asignación;
   \item \concepto{unicidad}: ¿hay solo uno? Si hay varios, el modelo no predice cuál se alcanza y la estática comparativa pierde sentido;
   \item \concepto{estabilidad}: si la economía está fuera del equilibrio, ¿la llevan a él las fuerzas del mercado? Un equilibrio inestable es una curiosidad matemática.
   \end{itemize}
+\item \emph{El orden}: cada pregunta presupone la anterior. Primero, si hay algún equilibrio; después, cuántos hay, y por último, si la economía llega a alguno.
 \end{itemize}
 
 \subsubsection{Existencia}
@@ -352,8 +396,8 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Basta con que la función de exceso de demanda sea \emph{continua}, \emph{homogénea de grado 0} y cumpla la \emph{ley de \autor{Walras}} (I.2.3). Detrás están las preferencias y las tecnologías convexas y la no saciedad local: sin convexidad, la demanda o la oferta pueden «saltar» y el exceso de demanda deja de ser continuo.\footnote{La continuidad en los precios nulos plantea un problema: si los bienes son deseables, la demanda de un bien gratuito es infinita. No se resuelve suponiendo saciedad, que contradiría la no saciedad local que piden la ley de \autor{Walras} y el primer teorema del bienestar, sino con la \emph{condición de frontera} de I.2.3: el exceso de demanda crece sin límite cuando un precio tiende a 0, de modo que todos los precios de equilibrio son positivos \parencite[§17.C]{MasColellWhinstonGreen1995}. Los detalles, en el anexo~\ref{anexo:existencia}.}
-\item Herramienta: el \concepto{teorema del punto fijo de \autor{Brouwer}} \parencite{Brouwer1911Abbildung}. Si $\Delta\subset\mathbb{R}^n$ es no vacío, compacto (cerrado y acotado) y convexo, y $\vect{f}:\Delta\to\Delta$ es continua, existe $\vect{p}^*\in\Delta$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$. En una dimensión, la gráfica de una función continua de $[0,1]$ en $[0,1]$ corta necesariamente la diagonal (gráfico~\ref{fig:brouwer}).\footnote{Si la demanda o la oferta son correspondencias (preferencias o tecnologías convexas pero no estrictamente), se usa el teorema de \textcite{Kakutani1941Generalization}, que pide una correspondencia hemicontinua superiormente con valores no vacíos y convexos. Hay también pruebas con topología diferencial.}
+\item \emph{Sobre el exceso de demanda}: basta con que sea \emph{continuo}, \emph{homogéneo de grado 0} y cumpla la \emph{ley de \autor{Walras}} (I.2.3). Detrás están las preferencias y las tecnologías convexas y la no saciedad local: sin convexidad, la demanda o la oferta pueden «saltar» y el exceso de demanda deja de ser continuo.\footnote{La continuidad en los precios nulos plantea un problema: si los bienes son deseables, la demanda de un bien gratuito es infinita. No se resuelve suponiendo saciedad, que contradiría la no saciedad local que piden la ley de \autor{Walras} y el primer teorema del bienestar, sino con la \emph{condición de frontera} de I.2.3: el exceso de demanda crece sin límite cuando un precio tiende a 0, de modo que todos los precios de equilibrio son positivos \parencite[§17.C]{MasColellWhinstonGreen1995}. Los detalles, en el anexo~\ref{anexo:existencia}.}
+\item \emph{Herramienta}: el \concepto{teorema del punto fijo de \autor{Brouwer}} \parencite{Brouwer1911Abbildung}. Si $\Delta\subset\mathbb{R}^n$ es no vacío, compacto (cerrado y acotado) y convexo, y $\vect{f}:\Delta\to\Delta$ es continua, existe $\vect{p}^*\in\Delta$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$. En una dimensión, la gráfica de una función continua de $[0,1]$ en $[0,1]$ corta necesariamente la diagonal (gráfico~\ref{fig:brouwer}).\footnote{Si la demanda o la oferta son correspondencias (preferencias o tecnologías convexas pero no estrictamente), se usa el teorema de \textcite{Kakutani1941Generalization}, que pide una correspondencia hemicontinua superiormente con valores no vacíos y convexos. Hay también pruebas con topología diferencial.}
 \end{itemize}
 
 \begin{figure}[H]
@@ -364,6 +408,8 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \end{figure}
 
 \subparagraph{ii) Desarrollo}
+
+La prueba tiene 3 pasos: un conjunto de precios con las propiedades que pide \autor{Brouwer}, una función continua de ese conjunto en sí mismo que imita al subastador y la comprobación de que su punto fijo es un equilibrio. Aquí va la intuición de cada paso; la demostración completa, en el anexo~\ref{anexo:existencia}.
 
 \begin{itemize}
 \item \emph{El conjunto}: por la homogeneidad de grado 0 se pueden normalizar los precios para que sumen 1. El \concepto{símplice}
@@ -386,11 +432,11 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \item La prueba es \emph{no constructiva}: dice que hay un equilibrio, no cómo encontrarlo ni si el tanteo lleva a él.
 \end{itemize}
 
-\paragraph{e) Valoración}
+\paragraph{c) Valoración}
 
 \begin{itemize}
-\item Los supuestos cruciales son la convexidad y la ausencia de poder de mercado, que el apartado~III.2 relaja.
-\item La existencia no dice nada del número de equilibrios ni de cómo se alcanzan: son las preguntas de los apartados siguientes.
+\item \emph{Supuestos cruciales}: la convexidad y la ausencia de poder de mercado, que el apartado~III.2 relaja.
+\item \emph{Lo que no dice}: nada del número de equilibrios ni de cómo se alcanzan: son las preguntas de los apartados siguientes.
 \end{itemize}
 
 \begin{anotaciones}
@@ -399,9 +445,14 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 
 \subsubsection{Unicidad}
 
+Una vez que sabemos que el equilibrio existe, la pregunta siguiente es cuántos hay.
+
+\paragraph{a) Idea}
+
 \begin{itemize}
-\item \concepto{Existencia no implica unicidad}. Con 2 bienes y $p_Y=1$, el exceso de demanda de $X$, $z_X(p_X,1)$, es positivo para precios muy bajos y negativo para precios muy altos, así que corta el eje un número impar de veces, pero pueden ser 3 o más (gráfico~\ref{fig:equilibrios-multiples}). Con equilibrios múltiples el modelo no predice cuál se alcanza y la estática comparativa\footnote{Cómo cambia el equilibrio cuando cambian los datos (preferencias, dotaciones, tecnología). En el 2×2×2×2 con rendimientos constantes da los teoremas de \autor{Stolper}-\autor{Samuelson} y de \autor{Rybczynski}, base de la teoría del comercio internacional \vertema{3.B.5} (anexo~\ref{anexo:estatica}).} pierde sentido: no se sabe a qué equilibrio irá la economía tras una perturbación.
-\item \concepto{Economías regulares}: \textcite{Debreu1970Economies} prueba que, \emph{salvo en un conjunto de economías de medida nula}, el número de equilibrios es finito y cada uno es localmente único (no hay continuos de equilibrios). Además, el número es impar, por el \concepto{teorema del índice} \parencite{Dierker1972Two}: en el gráfico, los cortes alternan de pendiente negativa (índice $+1$) y positiva (índice $-1$), y la suma de los índices es $+1$.
+\item \emph{Existencia no implica unicidad}: con 2 bienes y $p_Y=1$, el exceso de demanda de $X$, $z_X(p_X,1)$, es positivo para precios muy bajos y negativo para precios muy altos, así que corta el eje un número impar de veces, pero pueden ser 3 o más (gráfico~\ref{fig:equilibrios-multiples}).
+\item \emph{Por qué importa}: con equilibrios múltiples el modelo no predice cuál se alcanza y la estática comparativa\footnote{Cómo cambia el equilibrio cuando cambian los datos (preferencias, dotaciones, tecnología). En el 2×2×2×2 con rendimientos constantes da los teoremas de \autor{Stolper}-\autor{Samuelson} y de \autor{Rybczynski}, base de la teoría del comercio internacional \vertema{3.B.5} (anexo~\ref{anexo:estatica}).} pierde sentido: no se sabe a qué equilibrio irá la economía tras una perturbación, y la política económica no puede anticipar sus efectos.
+\item \emph{Lo que se sabe en general}: \textcite{Debreu1970Economies} prueba que, \emph{salvo en un conjunto de economías de medida nula} (\concepto{economías regulares}), el número de equilibrios es finito y cada uno es localmente único (no hay continuos de equilibrios). Además, el número es impar, por el \concepto{teorema del índice} \parencite{Dierker1972Two}: en el gráfico, los cortes alternan de pendiente negativa (índice $+1$) y positiva (índice $-1$), y la suma de los índices es $+1$. Para que sea \emph{uno solo} hacen falta supuestos adicionales: es el modelo que sigue.
 \end{itemize}
 
 \begin{figure}[H]
@@ -411,31 +462,80 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \fuente{elaboración propia a partir de \textcite[§17.D y §17.H]{MasColellWhinstonGreen1995}.}
 \end{figure}
 
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
 \begin{itemize}
-\item Para la \emph{unicidad global} hacen falta condiciones sobre $\vect{z}$ que se resumen en una:
-  \begin{equation}
-  \vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\text{para todo }\vect{p}\text{ no proporcional a }\vect{p}^*, \label{eq:condicion-unicidad}
-  \end{equation}
-  es decir, valorada a los precios de equilibrio, la cesta de excesos de demanda a cualquier otro precio «no se puede pagar». Si se cumple, no puede haber otro equilibrio $\vect{p}^1$, porque sería $\vect{z}(\vect{p}^1)\leq\vect{0}$ y $\vect{p}^*\cdot\vect{z}(\vect{p}^1)\leq 0$ \parencite[§17.F]{MasColellWhinstonGreen1995}. Hay 2 condiciones suficientes conocidas:
+\item \emph{Los de la existencia}: exceso de demanda continuo, homogéneo de grado 0, que cumple la ley de \autor{Walras} y la condición de frontera, de modo que todos los precios de equilibrio son positivos y en el equilibrio $\vect{z}(\vect{p}^*)=\vect{0}$.
+\item \emph{Una condición sobre la forma del exceso de demanda}, que la teoría del consumidor no garantiza en el agregado (I.2.2). Hay 2 condiciones suficientes conocidas:
   \begin{itemize}
-  \item \concepto{Axioma débil de la preferencia revelada agregado}: si $\vect{z}$ lo cumple, el conjunto de equilibrios es convexo; con equilibrios aislados (economía regular), es un punto. El axioma débil se cumple en cada consumidor \vertema{3.A.8}, pero la demanda agregada no lo hereda: los cambios de precios redistribuyen la renta entre consumidores. Una condición suficiente es que las preferencias sean homotéticas y las dotaciones, proporcionales \parencite[§4.C y §17.F]{MasColellWhinstonGreen1995} (anexo~\ref{anexo:unicidad}).
-  \item \concepto{Sustitutivos brutos}: todos los bienes lo son si el exceso de demanda de cada uno aumenta con el precio de cualquier otro,
+  \item \concepto{sustitutivos brutos}: todos los bienes lo son si el exceso de demanda de cada uno aumenta con el precio de cualquier otro,
     \begin{equation}
     \frac{\partial z_k(\vect{p})}{\partial p_l}>0\qquad\forall\,l\neq k. \label{eq:sustitutivos-brutos}
     \end{equation}
-    Entonces el equilibrio es único. Con 2 bienes: si en el equilibrio $\vect{p}^*$ baja $p_Y$ sin tocar $p_X$, el bien $Y$ se abarata y cae la demanda de $X$, $z_X<0$; por la ley de \autor{Walras}, $p_Xz_X+p_Yz_Y=0$ exige $z_Y>0$: el nuevo vector no es de equilibrio. Con $n$ bienes, la demostración está en el anexo~\ref{anexo:unicidad}.
+    En palabras: cuando un bien se encarece, los agentes se pasan a \emph{todos} los demás, y ningún efecto renta lo contrarresta. «Brutos» porque incluye los efectos renta (también el de la dotación), no solo el de sustitución;
+  \item \concepto{axioma débil de la preferencia revelada agregado}: la demanda de mercado se comporta como la de un único consumidor coherente, que nunca elige una cesta pudiendo pagar otra y la otra pudiendo pagar la primera.
   \end{itemize}
-\item \emph{Valoración}: son condiciones suficientes, no necesarias, y muy restrictivas: la sustitución bruta exige que los efectos sustitución dominen a los efectos renta y excluye los complementarios.
-\item \concepto{Teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu}} (SMD): cualquier función continua, homogénea de grado 0 y que cumpla la ley de \autor{Walras} es, para precios estrictamente positivos, el exceso de demanda agregado de alguna economía de intercambio con consumidores racionales \parencite{Sonnenschein1972Market,Sonnenschein1973Walras,Mantel1974Characterization,Debreu1974Excess}. La racionalidad individual \emph{no impone ninguna restricción adicional} al agregado: cualquier número (impar) de equilibrios y cualquier dinámica son posibles.\footnote{En equilibrio parcial, de la maximización de la utilidad se deducen propiedades de la demanda (la ecuación de \autor{Slutsky}, la ley de la demanda para los bienes normales) \vertema{3.A.9}. El teorema SMD muestra que, al agregar, esas propiedades desaparecen salvo la continuidad, la homogeneidad y la ley de \autor{Walras}, porque los efectos renta de cada consumidor dependen de su dotación y no se compensan.} Unicidad y estabilidad dependen de supuestos sobre la distribución de las preferencias y de las dotaciones, no de la teoría del consumidor \parencite[§17.E]{MasColellWhinstonGreen1995}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Sustitutivos brutos, la intuición}: supongamos que hubiera 2 equilibrios distintos (no proporcionales). Al pasar de uno a otro, algún bien es el que \emph{menos} se encarece en términos relativos. Como solo importan los precios relativos, podemos medir el segundo equilibrio de modo que ese bien cueste lo mismo en los 2: entonces todos los demás bienes están igual o más caros, y alguno estrictamente más caro.
+  \begin{itemize}
+  \item Si todos son sustitutivos de ese bien, los agentes se pasan a él: su demanda neta sube y su exceso de demanda, que era 0 en el primer equilibrio, pasa a ser positivo en el segundo.
+  \item Pero en un equilibrio su exceso de demanda tiene que ser 0: el segundo vector de precios no puede ser de equilibrio. Hay uno solo.
+  \end{itemize}
+\item \emph{Con 2 bienes, en el gráfico}: por la homogeneidad, subir $p_X$ con $p_Y=1$ es lo mismo que abaratar $Y$ frente a $X$, y con sustitutivos brutos abaratar $Y$ reduce la demanda de $X$. Así que $z_X(p_X,1)$ es siempre \emph{decreciente} y corta el eje una sola vez: el tramo creciente del gráfico~\ref{fig:equilibrios-multiples}, que da lugar al equilibrio intermedio y obliga a que haya 3, no puede existir. Con la ley de \autor{Walras}, $p_Xz_X+p_Yz_Y=0$: si $z_X<0$ a la derecha del equilibrio, $z_Y>0$, y ese vector de precios tampoco vacía el mercado de $Y$.
+\item \emph{Axioma débil, la intuición}: si hubiera 2 equilibrios con asignaciones distintas, las empresas, que maximizan el beneficio, harían que en cada uno de ellos la cesta del otro fuera asequible. El «consumidor agregado» habría elegido $A$ pudiendo pagar $B$ y $B$ pudiendo pagar $A$, lo que el axioma débil prohíbe.
+\item \emph{La condición común}: las 2 se resumen en una condición sobre $\vect{z}$ \parencite[§17.F]{MasColellWhinstonGreen1995},
+  \begin{equation}
+  \vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\text{para todo }\vect{p}\text{ no proporcional a }\vect{p}^*, \label{eq:condicion-unicidad}
+  \end{equation}
+  es decir, valorada a los precios de equilibrio, la cesta de excesos de demanda a cualquier otro precio «no se puede pagar». Si se cumple, no puede haber otro equilibrio $\vect{p}^1$, porque sería $\vect{z}(\vect{p}^1)=\vect{0}$ y $\vect{p}^*\cdot\vect{z}(\vect{p}^1)=0$.
+\item \emph{Demostraciones}: las 2, paso a paso y por reducción al absurdo, están en el anexo~\ref{anexo:unicidad}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Unicidad global}: con cualquiera de las 2 condiciones el equilibrio es único (en precios relativos) y la estática comparativa tiene sentido; con sustitutivos brutos se conoce además su signo: un aumento de la demanda de un bien sube su precio relativo frente a todos los demás \parencite[§17.G]{MasColellWhinstonGreen1995}.
+\item \emph{Unicidad y estabilidad van juntas}: la condición~\eqref{eq:condicion-unicidad} es la misma que asegura que el tanteo converge (II.1.3).
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{Condiciones muy restrictivas}: son suficientes, no necesarias. La sustitución bruta exige que los efectos sustitución dominen a los efectos renta en todos los bienes y a todos los precios, y excluye los complementarios; el axioma débil agregado, que los cambios de precios no redistribuyan la renta entre consumidores que gastan de forma distinta (preferencias homotéticas y dotaciones proporcionales) \parencite[§4.C y §17.F]{MasColellWhinstonGreen1995}.
+\item \emph{Teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu}} (SMD): cualquier función continua, homogénea de grado 0 y que cumpla la ley de \autor{Walras} es, para precios estrictamente positivos, el exceso de demanda agregado de alguna economía de intercambio con consumidores racionales \parencite{Sonnenschein1972Market,Sonnenschein1973Walras,Mantel1974Characterization,Debreu1974Excess}. La racionalidad individual \emph{no impone ninguna restricción adicional} al agregado: cualquier número (impar) de equilibrios y cualquier dinámica son posibles.\footnote{En equilibrio parcial, de la maximización de la utilidad se deducen propiedades de la demanda (la ecuación de \autor{Slutsky}, la ley de la demanda para los bienes normales) \vertema{3.A.9}. El teorema SMD muestra que, al agregar, esas propiedades desaparecen salvo la continuidad, la homogeneidad y la ley de \autor{Walras}, porque los efectos renta de cada consumidor dependen de su dotación y no se compensan (I.2.2).}
+\item \emph{Consecuencia}: unicidad y estabilidad dependen de supuestos sobre la distribución de las preferencias y de las dotaciones, no de la teoría del consumidor \parencite[§17.E]{MasColellWhinstonGreen1995}. Es lo que hace tan difícil la pregunta siguiente.
 \end{itemize}
 
 \subsubsection{Estabilidad}
 
+Saber que el equilibrio existe, e incluso que es único, no basta: falta saber si la economía llega a él.
+
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item Un equilibrio es \concepto{estable} si, partiendo de precios distintos, el proceso de ajuste lleva a él: \emph{localmente}, si basta con que el punto de partida esté cerca; \emph{globalmente}, si vale desde cualquier punto. Si el equilibrio es estable, la mano invisible no solo es posible: además, el mercado la encuentra.
-\item En equilibrio general la pregunta es más difícil que en un mercado aislado: un cambio en el precio de un bien desplaza los excesos de demanda de todos los demás. En un solo mercado, el ajuste por precios (\autor{Walras}) y el ajuste por cantidades (\autor{Marshall}) pueden dar resultados distintos \vertema{3.A.16} (anexo~\ref{anexo:estabilidad-parcial}).
+\item \emph{Qué es}: un equilibrio es \concepto{estable} si, cuando la economía está fuera de él, hay fuerzas que la empujan hacia él: los precios (y las cantidades) convergen con el tiempo al equilibrio. Se distinguen 2 grados:
+  \begin{itemize}
+  \item \concepto{estabilidad local}: el equilibrio se restablece tras una perturbación \emph{pequeña}, si el punto de partida está cerca;
+  \item \concepto{estabilidad global}: se restablece tras \emph{cualquier} perturbación, desde cualquier punto de partida.
+  \end{itemize}
+\item \emph{Por qué importa}:
+  \begin{itemize}
+  \item si el equilibrio es estable, es un argumento a favor de la «mano invisible» de \autor{Smith}: el propio mercado, sin intervención pública, tiende a él. La mano invisible no solo es posible: además, el mercado la encuentra;
+  \item si no lo es, la economía puede alejarse del equilibrio y quedarse lejos, y eso puede justificar la intervención pública para reconducirla. \textcite{Musgrave1959Theory} incluye la estabilización entre las 3 funciones del sector público, junto a la asignación y la distribución.
+  \end{itemize}
+\item \emph{2 mecanismos de ajuste}:
+  \begin{itemize}
+  \item \concepto{ajuste walrasiano} (por precios): el precio sube si hay exceso de demanda y baja si hay exceso de oferta; es el tanteo del subastador;
+  \item \concepto{ajuste marshalliano} (por cantidades): la cantidad aumenta si lo que los compradores están dispuestos a pagar supera lo que piden los vendedores.
+  \end{itemize}
+  En un solo mercado los 2 pueden dar resultados opuestos (anexo~\ref{anexo:estabilidad-parcial}) \vertema{3.A.16}. En equilibrio general se estudia el walrasiano, porque en el modelo la variable de ajuste son los precios (I.1).
+\item \emph{Por qué es más difícil en equilibrio general}: un cambio en el precio de un bien desplaza los excesos de demanda de todos los demás, que mueven a su vez sus precios y vuelven a afectar al primero. No basta con mirar la pendiente de cada mercado por separado: hay que estudiar el sistema entero a la vez.
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -443,65 +543,85 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Tanteo walrasiano en tiempo continuo, sin intercambios fuera del equilibrio; el subastador ajusta cada precio según su exceso de demanda, subiéndolo si es positivo y bajándolo si es negativo:
+\item \emph{Tanteo walrasiano} en tiempo continuo, sin intercambios fuera del equilibrio: el subastador ajusta cada precio según su exceso de demanda, subiéndolo si es positivo y bajándolo si es negativo,
   \begin{equation}
-  \dot p_k=\kappa_k\,z_k(\vect{p}),\qquad \kappa_k>0,\quad k=1,\dots,n. \label{eq:tatonnement}
+  \dot p_k=\kappa_k\,z_k(\vect{p}),\qquad \kappa_k>0,\quad k=1,\dots,n, \label{eq:tatonnement}
   \end{equation}
-  El equilibrio $\vect{p}^*$ es \concepto{globalmente estable} si $\vect{p}(t)\to\vect{p}^*$ desde cualquier precio inicial.
+  donde $\kappa_k$ es la velocidad de ajuste del mercado $k$. El equilibrio $\vect{p}^*$ es \concepto{globalmente estable} si $\vect{p}(t)\to\vect{p}^*$ desde cualquier precio inicial.
+\item \emph{Exceso de demanda}: con las propiedades de la existencia y la condición~\eqref{eq:condicion-unicidad} de la unicidad, que se cumple, por ejemplo, si todos los bienes son sustitutivos brutos.
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item Se usa una \concepto{función de distancia al equilibrio} (función de \autor{Liapunov}), que con $\kappa_k=\kappa$ es $\tfrac{1}{2\kappa}\lVert\vect{p}(t)-\vect{p}^*\rVert^2$. Con velocidades distintas se ponderan los cuadrados y, usando~\eqref{eq:tatonnement} y la ley de \autor{Walras},
+\item \emph{Intuición}: se mide en cada momento lo lejos que están los precios del equilibrio. Si esa distancia se reduce siempre que no se está en el equilibrio, los precios acaban llegando a él, aunque no se sepa calcular su trayectoria. Es el método de la \concepto{función de \autor{Liapunov}}.
+\item \emph{La distancia al equilibrio}: con velocidades iguales, $\kappa_k=\kappa$, basta la distancia euclídea, $\tfrac{1}{2\kappa}\lVert\vect{p}(t)-\vect{p}^*\rVert^2$; con velocidades distintas se ponderan los cuadrados. Usando~\eqref{eq:tatonnement} y la ley de \autor{Walras},
   \begin{equation}
   \frac{d}{dt}\Bigg[\frac12\sum_{k=1}^{n}\frac{\big(p_k(t)-p^*_k\big)^2}{\kappa_k}\Bigg]=\sum_{k=1}^{n}\big(p_k-p^*_k\big)\,z_k(\vect{p})=\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0}-\vect{p}^*\cdot\vect{z}(\vect{p}). \label{eq:distancia}
   \end{equation}
-  Si $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ fuera del equilibrio (la condición~\eqref{eq:condicion-unicidad} de la unicidad), la distancia se reduce siempre y los precios convergen a $\vect{p}^*$.
+\item \emph{Interpretación}: la distancia se reduce si $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ fuera del equilibrio, que es exactamente la condición~\eqref{eq:condicion-unicidad} de la unicidad. Entonces la distancia baja sin parar mientras no se esté en el equilibrio y los precios convergen a $\vect{p}^*$ (demostración en el anexo~\ref{anexo:estabilidad}).
+\item \emph{Con 2 bienes, en el gráfico}: con $\dot p_X=\kappa\,z_X(p_X,1)$, el precio sube donde $z_X>0$ y baja donde $z_X<0$ (flechas del gráfico~\ref{fig:equilibrios-multiples}). Los equilibrios donde $z_X$ corta el eje de arriba abajo (índice $+1$) atraen los precios y son estables; los otros los repelen y son inestables. Con varios equilibrios, estables e inestables se alternan.
 \end{itemize}
 
 \subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item \textcite{ArrowBlockHurwicz1959Stability}, tras \autor{Arrow} y \autor{Hurwicz} (1958), prueban que, si todos los bienes son \concepto{sustitutivos brutos}, el equilibrio es \emph{globalmente estable}: la misma condición da a la vez unicidad y estabilidad. Con 2 bienes basta el gráfico de la unicidad: con $\dot p_X=\kappa\,z_X(p_X,1)$, el precio sube donde $z_X>0$ y baja donde $z_X<0$, de modo que los equilibrios donde $z_X$ corta el eje de arriba abajo (índice $+1$) son estables y los otros, inestables: con varios equilibrios, estables e inestables se alternan (gráfico~\ref{fig:equilibrios-multiples}).
+\item \emph{Teorema de \autor{Arrow}, \autor{Block} y \autor{Hurwicz}}: \textcite{ArrowBlockHurwicz1959Stability}, tras \autor{Arrow} y \autor{Hurwicz} (1958), prueban que, si todos los bienes son \concepto{sustitutivos brutos}, el equilibrio es \emph{globalmente estable}: la misma condición da a la vez unicidad y estabilidad.
+\item \emph{Con 2 bienes y sustitutivos brutos}: $z_X(p_X,1)$ es decreciente y el único corte es de arriba abajo: el único equilibrio es estable.
 \end{itemize}
 
-\paragraph{e) Valoración}
+\paragraph{c) Valoración}
 
 \begin{itemize}
-\item \textcite{Scarf1960Examples} construye una economía de 3 consumidores y 3 bienes complementarios (curvas de indiferencia en ángulo recto) con un equilibrio único que el tanteo no alcanza nunca: los precios giran indefinidamente a su alrededor. Y por el teorema SMD cualquier dinámica es posible.
-\item El tanteo es además un proceso ficticio: nadie comercia hasta el final y el subastador no existe. Los procesos «sin tanteo», con intercambios a precios de desequilibrio, cambian las dotaciones por el camino; son estables con más facilidad, pero el equilibrio al que llegan depende del camino \parencite[cap.~21]{Varian1992Microeconomic}. Esta crítica une la teoría con la macroeconomía del desequilibrio (\autor{Clower}, \autor{Leijonhufvud}) \vertema{3.A.4}.
+\item \emph{Contraejemplo de \autor{Scarf}}: \textcite{Scarf1960Examples} construye una economía de 3 consumidores y 3 bienes complementarios (curvas de indiferencia en ángulo recto) con un equilibrio único que el tanteo no alcanza nunca: los precios giran indefinidamente a su alrededor. Y por el teorema SMD cualquier dinámica es posible.
+\item \emph{Un proceso ficticio}: en el tanteo nadie comercia hasta el final y el subastador no existe. Los procesos «sin tanteo», con intercambios a precios de desequilibrio, cambian las dotaciones por el camino; son estables con más facilidad, pero el equilibrio al que llegan depende del camino \parencite[cap.~21]{Varian1992Microeconomic}. Esta crítica une la teoría con la macroeconomía del desequilibrio (\autor{Clower}, \autor{Leijonhufvud}) \vertema{3.A.4}.
 \end{itemize}
 
 % --------------------------------------------------------------------------
 \subsection{Análisis normativo del equilibrio general competitivo}
 
+Una vez estudiado qué dice el equilibrio como descripción de la economía (análisis positivo), pasamos a preguntarnos si es bueno (análisis normativo). Para ello hace falta, primero, un criterio con el que juzgar las asignaciones.
+
 \subsubsection{Optimalidad de \autor{Pareto}}
 
 \begin{itemize}
-\item La pregunta normativa es si la asignación de equilibrio es deseable, que es el objeto de la economía del bienestar. El criterio menos exigente es el de \textcite{Pareto1906Manuale}:\footnote{\autor{Bentham} y los utilitaristas, a finales del siglo XVIII y principios del XIX, definen el óptimo social como la asignación que maximiza la suma de las utilidades («la mayor felicidad para el mayor número»), lo que exige compararlas entre personas y, con utilidad marginal decreciente, aboga por redistribuir hacia la igualdad; J.~S.~\autor{Mill} (1848) defiende redistribuir la renta sin sacrificar la eficiencia. Algunos autores anteriores a la revolución marginalista, como \autor{Gossen}, afirmaron que la competencia lleva al óptimo social, y \autor{Walras} se lo criticó; a su vez, \autor{Launhardt} criticó a \autor{Walras} por sostener que el equilibrio competitivo maximiza la utilidad total tras el intercambio. \autor{Pareto} rompe la alianza entre la economía neoclásica y el utilitarismo: la utilidad es una representación ordinal de las preferencias, que no admite comparaciones interpersonales, y por eso sustituye «utilidad» por «ofelimidad» (\emph{ofelimità}). Sobre \autor{Bentham} y el utilitarismo, \textcite[cap.~6]{EkelundHebert2013History}; sobre \autor{Pareto}, el equilibrio general y el bienestar, \textcite[cap.~17]{EkelundHebert2013History}.} una asignación es \concepto{óptima en el sentido de \autor{Pareto}} (eficiente) si no existe otra factible que mejore a algún agente sin empeorar a ninguno.
-\item Es un criterio ordinal, que no exige comparar utilidades, y basado en pocos juicios de valor, pero \emph{incompleto}: hay infinitos óptimos no comparables entre sí, entre ellos asignaciones muy desiguales\footnote{En respuesta, \textcite{Foley1967Resource} propone las asignaciones \emph{justas}: las que, además de eficientes en el sentido de \autor{Pareto}, son \emph{equitativas}, entendidas como libres de envidia (ningún agente prefiere la cesta de otro a la suya) \vertema{3.A.24}.} \vertema{3.A.22} \vertema{3.A.24} (ventajas y críticas, en el anexo~\ref{anexo:pareto}).
-\item En la caja de intercambio, los óptimos son las tangencias de las curvas de indiferencia, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$: la \concepto{curva de contrato} $O_AO_B$ (gráfico~\ref{fig:caja-intercambio-teoremas}).
+\item \emph{Definición}: la pregunta normativa es si la asignación de equilibrio es deseable, que es el objeto de la economía del bienestar. El criterio menos exigente es el de \textcite{Pareto1906Manuale}:\footnote{\autor{Bentham} y los utilitaristas, a finales del siglo XVIII y principios del XIX, definen el óptimo social como la asignación que maximiza la suma de las utilidades («la mayor felicidad para el mayor número»), lo que exige compararlas entre personas y, con utilidad marginal decreciente, aboga por redistribuir hacia la igualdad; J.~S.~\autor{Mill} (1848) defiende redistribuir la renta sin sacrificar la eficiencia. Algunos autores anteriores a la revolución marginalista, como \autor{Gossen}, afirmaron que la competencia lleva al óptimo social, y \autor{Walras} se lo criticó; a su vez, \autor{Launhardt} criticó a \autor{Walras} por sostener que el equilibrio competitivo maximiza la utilidad total tras el intercambio. \autor{Pareto} rompe la alianza entre la economía neoclásica y el utilitarismo: la utilidad es una representación ordinal de las preferencias, que no admite comparaciones interpersonales, y por eso sustituye «utilidad» por «ofelimidad» (\emph{ofelimità}). Sobre \autor{Bentham} y el utilitarismo, \textcite[cap.~6]{EkelundHebert2013History}; sobre \autor{Pareto}, el equilibrio general y el bienestar, \textcite[cap.~17]{EkelundHebert2013History}.} una asignación es \concepto{óptima en el sentido de \autor{Pareto}} (eficiente) si no existe otra factible que mejore a algún agente sin empeorar a ninguno.
+\item \emph{Ventajas y límites}: es un criterio ordinal, que no exige comparar utilidades, y basado en pocos juicios de valor, pero \emph{incompleto}: hay infinitos óptimos no comparables entre sí, entre ellos asignaciones muy desiguales\footnote{En respuesta, \textcite{Foley1967Resource} propone las asignaciones \emph{justas}: las que, además de eficientes en el sentido de \autor{Pareto}, son \emph{equitativas}, entendidas como libres de envidia (ningún agente prefiere la cesta de otro a la suya) \vertema{3.A.24}.} \vertema{3.A.22} \vertema{3.A.24} (ventajas y críticas, en el anexo~\ref{anexo:pareto}).
+\item \emph{En la caja de intercambio}: los óptimos son las tangencias de las curvas de indiferencia, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$: la \concepto{curva de contrato} $O_AO_B$ (gráfico~\ref{fig:caja-intercambio-teoremas}).
 \end{itemize}
 
 \subsubsection{Teoremas fundamentales de la economía del bienestar}
 
+Con el criterio de \autor{Pareto} ya podemos preguntar si el equilibrio competitivo es eficiente, y al revés, si cualquier asignación eficiente puede alcanzarse con el mercado. La economía del bienestar responde con 2 teoremas, que relacionan los equilibrios competitivos y los óptimos de \autor{Pareto} en los 2 sentidos.
+
 \begin{itemize}
-\item \concepto{Primer teorema} (1TFEB): si las preferencias son localmente no saciables, todo equilibrio general competitivo es óptimo de \autor{Pareto} \parencite{Arrow1951Extension,Debreu1951Coefficient}. No necesita convexidad.
+\item \emph{Origen}: sus condiciones marginales las formula Abba \textcite{Lerner1934Economic,Lerner1944Economics}, a la vez que Oskar \textcite{Lange1942Foundations}, en el marco del debate sobre el cálculo económico en el socialismo (III.2), y los desarrollan formalmente, por separado, Kenneth \textcite{Arrow1951Extension} y Gérard \textcite{Debreu1951Coefficient}, con análisis convexo y sin necesidad de derivadas, de modo que valen también con soluciones de esquina \parencite{Debreu1959Theory}.
+\end{itemize}
+
+\paragraph{Primer teorema fundamental de la economía del bienestar (1TFEB)}
+
+\begin{itemize}
+\item \emph{Enunciado}: si las preferencias son localmente no saciables, \emph{todo equilibrio general competitivo es óptimo de \autor{Pareto}}. No necesita convexidad.
+\item \emph{Idea}: cada agente, buscando solo su interés y mirando solo los precios, iguala su relación marginal (de sustitución o de transformación) al precio relativo. Como todos ven los mismos precios, todas las relaciones marginales acaban iguales entre sí,~\eqref{eq:egc-2x2}, y no queda ningún intercambio ni ninguna reasignación de factores que mejore a alguien sin empeorar a otro. En la caja, el equilibrio $E$ está en la curva de contrato.
+\item \emph{Por qué importa}: es la formalización de la mano invisible de \autor{Smith}: los precios transmiten toda la información necesaria y un sistema descentralizado, sin planificador, no desperdicia recursos.\footnote{\textcite{Feldman1987Welfare} resume la fuerza del teorema con una imagen: si las decisiones de producción y consumo se tomaran lanzando dardos a una diana, la probabilidad de acertar en un óptimo sería nula, así que decir que el mercado lo alcanza es decir mucho.}
+\item \emph{Supuestos}: además de la no saciedad local, los implícitos en el modelo de I:
   \begin{itemize}
-  \item Sí necesita los supuestos implícitos del modelo:
-    \begin{itemize}
-    \item precios para todos los bienes (mercados completos, sin externalidades ni bienes públicos);
-    \item agentes precio-aceptantes;
-    \item precios comunes a todos, sin impuestos que abran cuñas entre ellos.
-    \end{itemize}
-  \item Es la formalización de la mano invisible de \autor{Smith}: los precios transmiten toda la información necesaria y hacen que todos igualen sus relaciones marginales,~\eqref{eq:egc-2x2}. En la caja, el equilibrio $E$ está en la curva de contrato.
-  \item No dice que el equilibrio sea \emph{justo}: depende de las dotaciones, y una asignación en la que uno lo tiene todo también es eficiente.\footnote{\autor{Wicksell}, en sus reseñas de \autor{Pareto} \parencite{Wicksell1958Selected}, le reprocha confundir el máximo de ofelimidad, que la libre competencia alcanza casi por definición, con el máximo de bienestar social, que no tiene por qué alcanzar. \textcite{Feldman1987Welfare} resume la fuerza del teorema con una imagen: si las decisiones de producción y consumo se tomaran lanzando dardos a una diana, la probabilidad de acertar en un óptimo sería nula, así que decir que el mercado lo alcanza es decir mucho.}
+  \item precios para todos los bienes (mercados completos, sin externalidades ni bienes públicos);
+  \item agentes precio-aceptantes (sin poder de mercado);
+  \item precios comunes a todos, sin impuestos que abran cuñas entre ellos.
   \end{itemize}
-\item \concepto{Segundo teorema} (2TFEB): con preferencias y tecnologías \emph{convexas} (además de continuas y localmente no saciables), todo óptimo de \autor{Pareto} puede alcanzarse como equilibrio competitivo tras una redistribución de suma fija de las dotaciones. En la caja, para llevar la economía a otro punto $E'$ de la curva de contrato basta pasar la dotación de $\vect{\omega}$ a un $\vect{\omega}'$ de la recta de precios que es tangente en $E'$.
-  \begin{itemize}
-  \item Separa eficiencia y equidad: el Estado puede redistribuir y dejar que el mercado asigne. Pero las transferencias de suma fija que dependen de las características de cada uno no son factibles (la información es privada) y los impuestos reales distorsionan.
-  \end{itemize}
+  Cuando falla alguno, el equilibrio deja de ser eficiente: son los fallos de mercado \vertema{3.A.23}.
+\item \emph{Lo que no dice}: que el equilibrio sea \emph{justo}. Depende de las dotaciones, y una asignación en la que uno lo tiene todo también es eficiente.\footnote{\autor{Wicksell}, en sus reseñas de \autor{Pareto} \parencite{Wicksell1958Selected}, le reprocha confundir el máximo de ofelimidad, que la libre competencia alcanza casi por definición, con el máximo de bienestar social, que no tiene por qué alcanzar.}
+\end{itemize}
+
+\paragraph{Segundo teorema fundamental de la economía del bienestar (2TFEB)}
+
+\begin{itemize}
+\item \emph{Enunciado}: con preferencias y tecnologías \emph{convexas} (además de continuas y localmente no saciables), \emph{todo óptimo de \autor{Pareto} puede alcanzarse como equilibrio competitivo} tras una redistribución de suma fija de las dotaciones.
+\item \emph{Idea}: es el recíproco del primero. Si la sociedad prefiere otro óptimo, por ejemplo uno más igualitario, no hace falta sustituir el mercado: basta con repartir de otra forma las dotaciones y dejar que el mercado haga el resto. En la caja, para llevar la economía a otro punto $E'$ de la curva de contrato basta pasar la dotación de $\vect{\omega}$ a un $\vect{\omega}'$ de la recta de precios que es tangente en $E'$.
+\item \emph{Por qué importa}: separa eficiencia y equidad. El Estado puede ocuparse de la distribución con transferencias y dejar la asignación al mercado, y justifica la intervención pública también por motivos de equidad.
+\item \emph{Supuestos}: la convexidad es aquí imprescindible, no un supuesto técnico: sin ella puede no haber una recta de precios que deje a cada consumidor en su mejor punto alcanzable. Hacen falta además transferencias de \emph{suma fija}, que no dependan de lo que hace cada agente.
+\item \emph{Lo que no dice}: cómo hacer esas transferencias. Las de suma fija que dependen de las características de cada uno no son factibles (la información es privada) y los impuestos reales distorsionan, de modo que reaparece el dilema entre equidad y eficiencia.
 \end{itemize}
 
 \begin{figure}[H]
@@ -512,12 +632,12 @@ En el cante: las 3 preguntas y por qué importan (\tiempo{0,5}); la existencia c
 \end{figure}
 
 \begin{itemize}
-\item Los 2 teoremas valen para cualquier equilibrio, sea único o no, y su desarrollo y demostración son materia de la economía del bienestar \vertema{3.A.22} (anexo~\ref{anexo:pareto}). Lo que interesa aquí es su papel en la teoría del equilibrio general: dicen qué supuestos del modelo de I hacen falta para que la descentralización funcione. Cuando falla alguno (externalidades, bienes públicos, poder de mercado, información asimétrica), el equilibrio deja de ser eficiente \vertema{3.A.23} \vertema{3.A.13}, y el óptimo de \autor{Pareto} que se alcanza no tiene por qué ser el que maximiza el bienestar social \vertema{3.A.24}.
+\item \emph{Su papel en este tema}: los 2 teoremas valen para cualquier equilibrio, sea único o no, y su desarrollo es materia de la economía del bienestar \vertema{3.A.22} (supuestos, críticas y demostración del 1TFEB, en el anexo~\ref{anexo:pareto}). Lo que interesa aquí es que dicen qué supuestos del modelo de I hacen falta para que la descentralización funcione. Cuando falla alguno (externalidades, bienes públicos, poder de mercado, información asimétrica), el equilibrio deja de ser eficiente \vertema{3.A.23} \vertema{3.A.13}, y el óptimo de \autor{Pareto} que se alcanza no tiene por qué ser el que maximiza el bienestar social \vertema{3.A.24}.
 \item \emph{Recapitulando}: el equilibrio competitivo existe con supuestos razonables, pero su unicidad y su estabilidad exigen condiciones fuertes, y es eficiente si los mercados son completos y competitivos. El bloque~III relaja precisamente esos supuestos: el precio dado, la convexidad, la ausencia de dinero y la de tiempo e incertidumbre.
 \end{itemize}
 
 \begin{notaopositor}
-Reparto con los temas del bienestar. Aquí, el óptimo de \autor{Pareto} y los 2 teoremas van en enunciados y sobre la caja, como propiedades del equilibrio general competitivo. Su desarrollo es de los temas vecinos: el criterio de \autor{Pareto}, las condiciones del óptimo, los 2 teoremas (también el segundo) con sus supuestos y el \emph{second best} \vertema{3.A.22}; los fallos de mercado (externalidades y bienes públicos) por los que el equilibrio competitivo deja de ser eficiente, y la intervención \vertema{3.A.23}, y cómo elegir entre los óptimos con una función de bienestar social, que no tiene por qué coincidir con el equilibrio alcanzado, y la elección colectiva \vertema{3.A.24}.
+Reparto con los temas del bienestar. Aquí, el óptimo de \autor{Pareto} y los 2 teoremas van como propiedades del equilibrio general competitivo: enunciado, idea, supuestos y alcance en palabras, sobre la caja. Su desarrollo corresponde a los temas 3.A.22, 3.A.23 y 3.A.24: el criterio de \autor{Pareto}, las condiciones del óptimo, los 2 teoremas (también el segundo) con sus supuestos y el \emph{second best} \vertema{3.A.22}; los fallos de mercado (externalidades y bienes públicos) por los que el equilibrio competitivo deja de ser eficiente, y la intervención \vertema{3.A.23}, y cómo elegir entre los óptimos con una función de bienestar social, que no tiene por qué coincidir con el equilibrio alcanzado, y la elección colectiva \vertema{3.A.24}. En el cante, cada teorema se nombra completo la primera vez y después con sus siglas.
 \end{notaopositor}
 
 % ==========================================================================
@@ -525,16 +645,18 @@ Reparto con los temas del bienestar. Aquí, el óptimo de \autor{Pareto} y los 2
 \minutos{6,5}
 
 \begin{itemize}
-\item \emph{Idea}: cada desarrollo de este bloque relaja un supuesto del modelo de I que las propiedades de II necesitaban: el subastador y los precios dados (III.1 y III.2), la convexidad (III.2), la ausencia de dinero (III.3) y la de tiempo e incertidumbre (III.4); el último muestra cómo se usa el modelo en la práctica (III.5).
+\item \emph{Idea}: una vez estudiadas las propiedades del equilibrio general competitivo (bloque~II), pasamos a comprobar cuán robusto es. Cada desarrollo de este bloque relaja un supuesto del modelo de I que las propiedades de II necesitaban: el subastador y los precios dados (III.1 y III.2), la convexidad (III.2), la ausencia de dinero (III.3) y la de tiempo e incertidumbre (III.4); el último muestra cómo se usa el modelo en la práctica (III.5).
 \item \emph{Conclusión anticipada}: el equilibrio walrasiano resiste bien cuando se quita el subastador y se deja negociar a muchos agentes (el núcleo converge a él), pero no cuando hay poder de mercado, no convexidades, mercados incompletos o dinero sin valor intrínseco: ahí la teoría necesita supuestos nuevos y la eficiencia deja de estar garantizada.
 \end{itemize}
 
 \begin{notaopositor}
-En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la pizarra, con la lente y el tramo $CC'$ (\tiempo{1}); el núcleo, el teorema de \autor{Debreu} y \autor{Scarf} con el núcleo que se encoge, el comportamiento estratégico y las no convexidades (\tiempo{2}); el dinero con la ley de \autor{Walras} con dinero y la dicotomía inválida (\tiempo{1}); los bienes contingentes, los títulos de \autor{Arrow} y los mercados incompletos (\tiempo{1,5}), y los modelos computables con un ejemplo (\tiempo{1}). El recuadro del monopolio, el diseño de mecanismos, las variantes monetarias y los modelos de las instituciones son de profundización. Si falta tiempo, III.1 se funde con el núcleo en una frase y III.5 se reduce a \autor{Scarf} y un ejemplo.
+En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la pizarra, con la lente, el tramo $CC'$ y una frase sobre la teoría de la negociación, que elige un punto de ese tramo (\tiempo{1}); el núcleo, el teorema de \autor{Debreu} y \autor{Scarf} con el núcleo que se encoge, el comportamiento estratégico y las no convexidades contadas en palabras (\tiempo{2}); el dinero: por qué no tiene sitio en el modelo de \autor{Arrow}-\autor{Debreu}, la dicotomía clásica, la ley de \autor{Walras} con dinero, por qué la dicotomía es inválida y el efecto saldos reales de \autor{Patinkin} (\tiempo{1}); los bienes contingentes con el ejemplo del paraguas, los títulos de \autor{Arrow} y los mercados incompletos (\tiempo{1,5}), y los modelos computables con un ejemplo (\tiempo{1}). Son de profundización la nota de la teoría de la negociación (\autor{Nash} y \autor{Rubinstein}), las cajas grises del desarrollo técnico de las no convexidades y del dinero, el recuadro del monopolio, el diseño de mecanismos, las 4 vías modernas para introducir el dinero (que se desarrollan en el tema 3.A.35) y los modelos de las instituciones. Si falta tiempo, III.1 se funde con el núcleo en una frase y III.5 se reduce a \autor{Scarf} y un ejemplo.
 \end{notaopositor}
 
 % --------------------------------------------------------------------------
 \subsection{Teoría del intercambio de \autor{Edgeworth}}
+
+Empezamos por el supuesto más irreal del bloque~I: el subastador que anuncia los precios.
 
 \paragraph{a) Idea}
 
@@ -560,27 +682,30 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
   \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{Intercambio de \autor{Edgeworth} y núcleo: el tramo $CC'$ de la curva de contrato dentro de la lente y su reducción hacia $E$ al replicar la economía}\label{fig:caja-intercambio-nucleo}
+\grafico[0.62\textwidth]{caja-intercambio-nucleo}
+\fuente{elaboración propia a partir de \textcite[cap.~12]{GravelleRees2004Microeconomics} y \textcite[cap.~18]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
 \subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item El resultado es el tramo $CC'$ de la curva de contrato dentro de la lente. En el modelo walrasiano el precio lo fija el mercado y el resultado no depende del poder negociador; en el de \autor{Edgeworth}, con 2 agentes, el intercambio está \emph{indeterminado}: el punto final depende del poder de negociación de cada uno, y la relación de intercambio implícita es la pendiente de la recta que une $\vect{\omega}$ con ese punto \vertema{3.A.14}. El equilibrio walrasiano $E$ es uno de esos puntos: el único al que se llega con precios dados y comunes.
+\item \emph{Un tramo, no un punto}: el resultado es el tramo $CC'$ de la curva de contrato dentro de la lente. En el modelo walrasiano el precio lo fija el mercado y el resultado no depende del poder negociador; en el de \autor{Edgeworth}, con 2 agentes, el intercambio está \emph{indeterminado}: el punto final depende del poder de negociación de cada uno, y la relación de intercambio implícita es la pendiente de la recta que une $\vect{\omega}$ con ese punto. El equilibrio walrasiano $E$ es uno de esos puntos: el único al que se llega con precios dados y comunes.
+\item \emph{La teoría de la negociación}: la pregunta que \autor{Edgeworth} deja abierta, qué punto del tramo se alcanza, es la que estudia la \concepto{teoría de la negociación}: cómo se reparten 2 partes las ganancias de un acuerdo cuando cada una puede negarse a firmarlo \vertema{3.A.14}.\footnote{\autor{Edgeworth} muestra que la negociación bilateral deja un abanico de acuerdos posibles (el tramo $CC'$) y que el resultado depende del poder de negociación, pero no dice cuál es. La teoría de la negociación lo intenta por 2 caminos. \textcite{Nash1950Bargaining} sigue el camino \emph{axiomático}: pide a la solución 4 propiedades razonables (que sea eficiente, que trate igual a agentes iguales, que no dependa de las unidades en que se mide la utilidad y que no cambie si se quitan alternativas que de todos modos no se habrían elegido) y prueba que solo la cumple el acuerdo que maximiza el producto de las ganancias de cada uno respecto de lo que obtendría sin acuerdo, $\big(U_A-U_A^0\big)\big(U_B-U_B^0\big)$. En la caja, el punto de desacuerdo es la dotación $\vect{\omega}$, y la solución es uno de los puntos del tramo $CC'$. \textcite{Rubinstein1982Perfect} sigue el camino \emph{estratégico}: los 2 agentes se turnan para proponer un reparto, y cada ronda sin acuerdo les cuesta, porque descuentan el futuro. El juego tiene un único equilibrio perfecto en subjuegos, en el que se acuerda en la primera oferta y se lleva más el agente más paciente: el poder de negociación de \autor{Edgeworth} es aquí la paciencia. \textcite{BinmoreRubinsteinWolinsky1986Nash} unen los 2 enfoques: cuando el tiempo entre ofertas tiende a 0, el reparto de \autor{Rubinstein} converge a una solución de \autor{Nash} (asimétrica, con unos pesos que dependen de la paciencia de cada uno). La relación con el núcleo (III.2) es de complemento: el núcleo dice qué acuerdos son posibles (con 2 agentes, todo el tramo $CC'$) y la teoría de la negociación, cuál de ellos se elige. Al crecer el número de agentes el núcleo se encoge hasta el equilibrio walrasiano y el poder de negociación deja de importar \vertema{3.A.14} \vertema{3.A.17}.}
 \end{itemize}
 
-\paragraph{e) Valoración}
+\paragraph{c) Valoración}
 
 \begin{itemize}
 \item \autor{Edgeworth} conjetura que, al aumentar el número de agentes, el tramo se estrecha hasta el equilibrio competitivo. Es el punto de partida del enfoque del núcleo.
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\caption{Intercambio de \autor{Edgeworth} y núcleo: el tramo $CC'$ de la curva de contrato dentro de la lente y su reducción hacia $E$ al replicar la economía}\label{fig:caja-intercambio-nucleo}
-\grafico[0.75\textwidth]{caja-intercambio-nucleo}
-\fuente{elaboración propia a partir de \textcite[cap.~12]{GravelleRees2004Microeconomics} y \textcite[cap.~18]{MasColellWhinstonGreen1995}.}
-\end{figure}
-
 % --------------------------------------------------------------------------
 \subsection{Enfoque del núcleo (\autor{Debreu} y \autor{Scarf}, 1963)}
+
+Una vez visto que con 2 agentes la negociación deja el resultado indeterminado, pasamos a preguntarnos qué ocurre cuando negocian muchos: es el enfoque del núcleo.
 
 \subsubsection{El núcleo de una economía}
 
@@ -592,23 +717,29 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 
 \paragraph{b) Modelo}
 
+\subparagraph{i) Supuestos}
+
 \begin{itemize}
-\item \emph{Supuestos}: economía de intercambio con $I$ consumidores; cualquier grupo (\concepto{coalición}) $\mathcal{S}\subseteq\{1,\dots,I\}$ puede repartirse sus propias dotaciones; los acuerdos son vinculantes y formar coaliciones no cuesta nada.
-\item \emph{Desarrollo}:
-  \begin{itemize}
-  \item una coalición $\mathcal{S}$ \concepto{bloquea} una asignación $(\vect{x}_i)$ si puede, con sus propios recursos, mejorar a alguno de sus miembros sin empeorar a ninguno: existe $(\vect{x}'_i)_{i\in\mathcal{S}}$ con $\sum_{i\in\mathcal{S}}\vect{x}'_i=\sum_{i\in\mathcal{S}}\vect{\omega}_i$, $\vect{x}'_i\succsim_i\vect{x}_i$ para todo $i\in\mathcal{S}$ y $\vect{x}'_i\succ_i\vect{x}_i$ para alguno;
-  \item el \concepto{núcleo} es el conjunto de asignaciones factibles que ninguna coalición bloquea;
-    \begin{itemize}
-    \item con 2 agentes, las coaliciones son cada uno solo (racionalidad individual) y los 2 juntos (eficiencia): el núcleo es el tramo $CC'$.
-    \end{itemize}
-  \end{itemize}
-\item \emph{Implicaciones}:
-  \begin{enumerate}
-  \item \emph{Todo equilibrio walrasiano está en el núcleo} (basta la no saciedad local): si una coalición pudiera mejorar a sus miembros con sus dotaciones, alguno de ellos habría podido comprar a los precios de equilibrio una cesta mejor que la que eligió.
-  \item \concepto{Teorema del límite del núcleo} \parencite{DebreuScarf1963Limit}: si la economía se replica $r$ veces (con $r$ consumidores de cada tipo) y las preferencias son estrictamente convexas, al crecer $r$ el núcleo se encoge hasta coincidir con el conjunto de equilibrios walrasianos (gráfico~\ref{fig:caja-intercambio-nucleo}). Es la conjetura de \autor{Edgeworth}. \textcite{Aumann1964Markets} lo prueba directamente para un continuo de agentes: allí el núcleo \emph{es} el conjunto de equilibrios.
-  \end{enumerate}
-\item La precio-aceptación deja de ser un supuesto y pasa a ser un resultado: en una economía grande ningún grupo puede hacer nada mejor que lo que le da el mercado. No solo los precios son endógenos, sino también el hecho mismo de que los haya.
+\item Economía de intercambio con $I$ consumidores; cualquier grupo (\concepto{coalición}) $\mathcal{S}\subseteq\{1,\dots,I\}$ puede repartirse sus propias dotaciones; los acuerdos son vinculantes y formar coaliciones no cuesta nada.
 \end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Bloqueo}: una coalición $\mathcal{S}$ \concepto{bloquea} una asignación $(\vect{x}_i)$ si puede, con sus propios recursos, mejorar a alguno de sus miembros sin empeorar a ninguno: existe $(\vect{x}'_i)_{i\in\mathcal{S}}$ con $\sum_{i\in\mathcal{S}}\vect{x}'_i=\sum_{i\in\mathcal{S}}\vect{\omega}_i$, $\vect{x}'_i\succsim_i\vect{x}_i$ para todo $i\in\mathcal{S}$ y $\vect{x}'_i\succ_i\vect{x}_i$ para alguno.
+\item \emph{Núcleo}: es el conjunto de asignaciones factibles que ninguna coalición bloquea.
+  \begin{itemize}
+  \item Con 2 agentes, las coaliciones son cada uno solo (racionalidad individual) y los 2 juntos (eficiencia): el núcleo es el tramo $CC'$.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{enumerate}
+\item \emph{El equilibrio walrasiano está en el núcleo} (basta la no saciedad local). La intuición: si una coalición pudiera mejorar a sus miembros con sus propias dotaciones, alguno de ellos habría podido comprar a los precios de equilibrio una cesta mejor que la que eligió, lo que no puede ser.
+\item \emph{Teorema del límite}: el \concepto{teorema del límite del núcleo} \parencite{DebreuScarf1963Limit} dice que, si la economía se replica $r$ veces (con $r$ consumidores de cada tipo) y las preferencias son estrictamente convexas, al crecer $r$ el núcleo se encoge hasta coincidir con el conjunto de equilibrios walrasianos (gráfico~\ref{fig:caja-intercambio-nucleo}). Es la conjetura de \autor{Edgeworth}. \textcite{Aumann1964Markets} lo prueba directamente para un continuo de agentes: allí el núcleo \emph{es} el conjunto de equilibrios.
+\item \emph{Los precios como resultado}: la precio-aceptación deja de ser un supuesto y pasa a ser un resultado: en una economía grande ningún grupo puede hacer nada mejor que lo que le da el mercado. No solo los precios son endógenos, sino también el hecho mismo de que los haya.
+\end{enumerate}
 
 \paragraph{c) Extensiones}
 
@@ -616,13 +747,15 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 \item Otros conceptos de solución llevan al mismo sitio: con un continuo de agentes, las asignaciones del \concepto{valor de \autor{Shapley}} coinciden también con las competitivas \parencite{Aumann1975Values}.
 \end{itemize}
 
-\paragraph{e) Valoración}
+\paragraph{d) Valoración}
 
 \begin{itemize}
-\item La convergencia exige muchos agentes, convexidad y coaliciones sin coste; con pocos agentes la indeterminación de \autor{Edgeworth} sigue ahí. Y el núcleo no dice cómo se llega a él: es un concepto de equilibrio, no un proceso. Con pocos agentes, además, cada uno tiene incentivos a influir en los precios.
+\item La convergencia exige muchos agentes, convexidad y coaliciones sin coste; con pocos agentes la indeterminación de \autor{Edgeworth} sigue ahí. Y el núcleo no dice cómo se llega a él: es un concepto de equilibrio, no un proceso. Con pocos agentes, además, cada uno tiene incentivos a influir en los precios, que es lo que estudia el apartado siguiente.
 \end{itemize}
 
 \subsubsection{Comportamiento estratégico}
+
+El núcleo supone que nadie intenta manipular los precios; pasamos ahora al caso en que alguien puede hacerlo.
 
 \begin{itemize}
 \item \emph{Idea}: la precio-aceptación es razonable con muchos agentes; con pocos, cada uno puede influir en los precios y le interesa hacerlo. ¿Qué queda entonces del equilibrio general?
@@ -648,82 +781,200 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 
 \subsubsection{No convexidades y equilibrios múltiples}
 
+Hasta aquí hemos mantenido la convexidad de preferencias y tecnologías; pasamos ahora a quitarla.
+
 \begin{itemize}
-\item La convexidad de preferencias y tecnologías es el supuesto que sostiene la existencia (II.1.1) y el segundo teorema del bienestar. Sin ella:
+\item \emph{La idea en palabras}: la convexidad dice 2 cosas sencillas. Los consumidores prefieren las mezclas a los extremos (una cesta con algo de todo a otra con mucho de un bien y nada del otro), y en la producción no hay ventajas de tamaño (producir el doble cuesta al menos el doble). Gracias a ella, cuando un precio cambia un poco, lo que cada agente quiere comprar o vender cambia también un poco, sin saltos. Y como la respuesta es suave, siempre hay un precio en el que la oferta y la demanda se encuentran.
+\item \emph{Qué pasa sin ella}: la respuesta a los precios da saltos, y el precio que vacía el mercado puede no existir: a un precio sobra demanda y, al subirlo un poco, sobra oferta, sin pasar por el punto en que se igualan. Ocurre por 2 vías:
   \begin{itemize}
-  \item con \emph{preferencias no convexas}, la demanda salta de una cesta a otra al cambiar los precios, el exceso de demanda es discontinuo y puede no haber ningún precio que vacíe los mercados (en la caja, las curvas de oferta-demanda no se cortan);
-  \item con \emph{rendimientos crecientes} (costes fijos, costes medios en U con un tramo decreciente), una empresa precio-aceptante que produce donde $p=\mathrm{CMg}$ tiene pérdidas, o querría producir sin límite: no hay equilibrio competitivo y aparecen el monopolio natural \vertema{3.A.17} y la competencia imperfecta \vertema{3.B.6}.
+  \item \emph{Preferencias no convexas}: el consumidor pasa de golpe de una cesta a otra muy distinta.
+  \item \emph{Rendimientos crecientes}: si las empresas grandes producen más barato, la competencia perfecta no se sostiene: una empresa que toma el precio como dado o pierde dinero o querría crecer sin límite. El resultado es un monopolio natural \vertema{3.A.17} o la competencia imperfecta \vertema{3.B.6}.
   \end{itemize}
-\item \emph{Economías grandes}: \textcite{Starr1969Quasi}, con el lema de \autor{Shapley} y \autor{Folkman}, muestra que la suma de muchos conjuntos no convexos es «casi» convexa: el error que introducen las no convexidades de las preferencias está acotado con independencia del número de agentes, de modo que por persona tiende a 0 y existen \emph{equilibrios aproximados}. Las no convexidades individuales importan poco si cada agente es pequeño; las de la tecnología, no, porque la escala de las empresas no se reduce \parencite[§17.I]{MasColellWhinstonGreen1995}.
-\item \emph{Equilibrios múltiples}: pueden darse con convexidad (II.1.2), y con rendimientos crecientes o complementariedades estratégicas son la regla. La economía puede quedar atrapada en un equilibrio ineficiente: son los fallos de coordinación, que enlazan la teoría con la macroeconomía keynesiana \parencite{CooperJohn1988Coordinating}.
+\item \emph{Qué se salva}: si los agentes son muchos y pequeños, las no convexidades de los consumidores apenas se notan en el agregado (como los saltos de cada persona se compensan entre sí) y hay equilibrios \emph{casi} exactos \parencite{Starr1969Quasi}. Las de las empresas no se diluyen, porque la escala de una empresa no se reduce al crecer la economía.
+\item \emph{Equilibrios múltiples}: pueden darse incluso con convexidad (II.1.2), y cuando lo que le conviene a cada uno depende de lo que hacen los demás son la regla. La economía puede quedar atrapada en un equilibrio malo: nadie invierte porque nadie compra, y nadie compra porque nadie invierte. Son los \concepto{fallos de coordinación}, que enlazan la teoría con la macroeconomía keynesiana \parencite{CooperJohn1988Coordinating} \vertema{3.A.4}.
+\item \emph{En suma}: la convexidad es lo que hace que los precios coordinen de forma suave y que el equilibrio exista y sea eficiente; sin ella hace falta otra teoría (competencia imperfecta, regulación, coordinación de expectativas).
 \end{itemize}
+
+\begin{anotaciones}
+\textbf{Desarrollo técnico de las no convexidades}.
+\begin{itemize}
+\item \emph{Existencia}: la convexidad sostiene la existencia (II.1.1) y el segundo teorema del bienestar (II.2.2). Con preferencias no convexas, la demanda es una correspondencia que no tiene valores convexos o una función discontinua; el exceso de demanda deja de ser continuo y el teorema de \autor{Brouwer} (o el de \autor{Kakutani}) no se puede aplicar. En la caja de intercambio, las curvas de oferta-demanda dan un salto y pueden no cortarse.
+\item \emph{Rendimientos crecientes}: con costes fijos o costes medios en U con un tramo decreciente, en el tramo en que el coste medio decrece el coste marginal está por debajo del medio, $\mathrm{CMg}<\mathrm{CMe}$. Una empresa precio-aceptante que produce donde $p=\mathrm{CMg}$ tiene pérdidas, $B=(p-\mathrm{CMe})\,q<0$, y si el coste marginal también decrece querría producir sin límite: no hay equilibrio competitivo.
+\item \emph{Lema de \autor{Shapley}-\autor{Folkman}}: dados $I$ conjuntos de $\mathbb{R}^n$, todo punto de la envoltura convexa de su suma puede escribirse como suma de $I$ puntos, uno de la envoltura convexa de cada conjunto, de los que como mucho $n$ no están en el conjunto original. \textcite{Starr1969Quasi} lo usa para mostrar que el error que introducen las no convexidades de las preferencias está acotado con independencia del número de agentes (depende de $n$, no de $I$), de modo que por persona tiende a 0 y existen \emph{equilibrios aproximados} \parencite[§17.I]{MasColellWhinstonGreen1995}.
+\item \emph{Complementariedades estratégicas}: si la mejor respuesta de cada agente aumenta con la acción de los demás, puede haber varios equilibrios ordenados en el sentido de \autor{Pareto}, y el mercado no tiene por qué llevar al mejor \parencite{CooperJohn1988Coordinating}.
+\end{itemize}
+\end{anotaciones}
 
 % --------------------------------------------------------------------------
 \subsection{Introducción del dinero en un modelo de equilibrio general competitivo (\autor{Patinkin})}
 
+Hasta aquí el modelo funciona sin dinero; pasamos ahora a preguntarnos si puede tenerlo y qué cambia si lo tiene.
+
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item En el modelo estudiado hasta aquí el dinero es solo unidad de cuenta: el numerario. Los bienes se intercambian en régimen de trueque, los precios absolutos quedan indeterminados (I.2.4) y el dinero no es ni medio de cambio ni depósito de valor. ¿Se puede introducir un dinero fiduciario, que no da utilidad por sí mismo, sin romper la coherencia del modelo?
-\item El antecedente es \textcite{Mill1844Essays}: en una economía monetaria la ley de \autor{Say} puede fallar, porque un exceso de oferta general de bienes puede ir acompañado de un exceso de demanda de dinero.
+\item \emph{Las funciones del dinero}: el dinero se define por lo que hace: es \emph{medio de cambio} (con él se paga y se evita el trueque), \emph{depósito de valor} (traslada poder de compra al futuro) y \emph{unidad de cuenta} (en él se miden los precios) \vertema{3.A.35}.
+\item \emph{El dinero en el modelo estudiado hasta aquí}: solo cumple la tercera función, y ni siquiera como dinero, sino como numerario: un bien cualquiera en el que se expresan los demás precios (I.2.4). Los bienes se intercambian en régimen de trueque, aunque organizado por el subastador, y los precios absolutos quedan indeterminados.
+\item \emph{Por qué no tiene sitio}: en el modelo de \autor{Arrow}-\autor{Debreu} no hay ninguna razón para querer dinero.
+  \begin{itemize}
+  \item \emph{No da utilidad}: un billete no se consume; solo vale por lo que permite comprar.
+  \item \emph{No hace falta como medio de cambio}: el subastador casa a la vez todas las ofertas y demandas, y cada agente tiene una sola restricción presupuestaria; nadie tiene que buscar a alguien que quiera justo lo que él ofrece.
+  \item \emph{No hace falta como depósito de valor}: todos los intercambios, presentes y futuros, se acuerdan de una vez en el momento inicial (III.4), así que no hay que guardar poder de compra para más adelante.
+  \item \emph{No queda nada que determinar}: el sector real ya fija todos los precios relativos y las cantidades. El dinero solo podría determinar el nivel absoluto de los precios.
+  \end{itemize}
+\item \emph{La pregunta}: ¿se puede introducir un dinero fiduciario, papel sin valor intrínseco, sin romper la coherencia del modelo? ¿Y afecta el dinero a la economía real?
+\item \emph{El antecedente}: \textcite{Mill1844Essays} ya advierte que en una economía monetaria la ley de \autor{Say} puede fallar, porque un exceso de oferta general de bienes puede ir acompañado de un exceso de demanda de dinero.
 \end{itemize}
+
+\begin{anotaciones}
+\textbf{2 conceptos previos}, que se usan en todo el apartado y que la teoría monetaria emplea con el mismo sentido \vertema{3.A.35}:
+\begin{itemize}
+\item \emph{Dicotomía clásica}: la economía se separa en 2 sectores que se resuelven por separado. El \emph{sector real} (bienes y factores) determina los precios relativos y las cantidades; el \emph{sector monetario} (oferta y demanda de dinero) determina solo el nivel absoluto de los precios, según la teoría cuantitativa. El dinero sería un velo: cambia las unidades en que se mide todo, pero no lo que ocurre.
+\item \emph{Neutralidad del dinero}: los cambios en la cantidad de dinero no tienen efectos reales: solo cambian el nivel de precios, no los precios relativos ni las cantidades. La \emph{superneutralidad} va un paso más allá: tampoco los tienen los cambios en la \emph{tasa de crecimiento} de la cantidad de dinero.
+\item \emph{La diferencia}: la dicotomía es una propiedad de la \emph{estructura} del modelo (los 2 sectores se pueden separar); la neutralidad, una propiedad de su \emph{resultado}. \autor{Patinkin} muestra que la primera es insostenible, pero que la segunda se mantiene.
+\end{itemize}
+\end{anotaciones}
 
 \paragraph{b) Modelo}
 
+\subparagraph{i) Supuestos}
+
 \begin{itemize}
-\item \emph{Supuestos}: intercambio puro con $n$ bienes y dinero; el consumidor $i$ tiene dotaciones $\vect{\omega}_i$ y saldos monetarios $\overline{M}_i$ ($\overline{M}=\sum_i\overline{M}_i$); el dinero no da utilidad.
-\item \emph{La ley de \autor{Walras} con dinero}: cada consumidor gasta en bienes y en dinero lo que valen sus bienes y su dinero, $\vect{p}\cdot\vect{x}_i+M^D_i=\vect{p}\cdot\vect{\omega}_i+\overline{M}_i$; sumando,
+\item \emph{Economía}: intercambio puro con $n$ bienes y dinero. El consumidor $i$ tiene unas dotaciones de bienes $\vect{\omega}_i$ y unos saldos monetarios iniciales $\overline{M}_i$; la cantidad total de dinero, $\overline{M}=\sum_i\overline{M}_i$, está dada.
+\item \emph{Precios}: los $p_k$ son precios monetarios (euros por unidad de cada bien); el dinero es la unidad de cuenta y su precio es 1. $P$ es un índice del nivel de precios.
+\item \emph{Dinero}: es fiduciario y, en la versión dicotómica de partida, no da utilidad; cada consumidor desea mantener unos saldos $M^D_i$ al final del periodo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Paso 1. La ley de \autor{Walras} con dinero}: cada consumidor gasta en bienes y en el dinero que quiere conservar lo que valen sus bienes y el dinero que tenía,
+  \begin{equation}
+  \vect{p}\cdot\vect{x}_i+M^D_i=\vect{p}\cdot\vect{\omega}_i+\overline{M}_i .
+  \end{equation}
+  Sumando para todos los consumidores, el valor de los excesos de demanda de los $n$ bienes más el exceso de demanda de dinero es idénticamente nulo:
   \begin{equation}
   \sum_{k=1}^{n}p_k\,z_k(\vect{p})+\big(M^D(\vect{p})-\overline{M}\big)\equiv 0. \label{eq:walras-dinero}
   \end{equation}
-\item \emph{La dicotomía clásica}: los excesos de demanda de bienes dependen solo de los precios relativos (homogéneos de grado 0 en $\vect{p}$), y como el dinero no da utilidad su demanda no sale de la optimización: se fija con una regla institucional de tipo Cambridge \vertema{3.A.35}. Con beneficios nulos, cada consumidor desea mantener en dinero una proporción $\varphi$ del valor de sus dotaciones, $M^D(\vect{p})=\varphi\,\vect{p}\cdot\sum_i\vect{\omega}_i$. El sector real fijaría los precios relativos y el mercado de dinero, el nivel de precios.
-\item \emph{La dicotomía es inválida} \parencite{Lange1942Say,Patinkin1965Money}: si $\vect{p}^*$ es de equilibrio y se multiplican todos los precios por 2, los mercados de bienes siguen vaciándose (homogeneidad de grado 0), así que, por~\eqref{eq:walras-dinero}, el de dinero también; pero la regla de Cambridge dice que la demanda de dinero se ha duplicado. Las 2 cosas no pueden ser ciertas a la vez: con la dicotomía, la ley de \autor{Walras} obliga a que el exceso de demanda de dinero sea nulo a \emph{cualquier} nivel de precios (identidad de \autor{Say}), y el nivel de precios queda indeterminado.
-\item \emph{La solución de \textcite{Patinkin1956Money}}: la demanda de bienes depende de los precios relativos \emph{y de los saldos reales}, $\overline{M}_i/P$, con $P$ un índice de precios (\concepto{efecto saldos reales}). Los excesos de demanda son homogéneos de grado 0 en precios \emph{y} dinero, pero no en los precios solos: si el nivel de precios es demasiado alto, los saldos reales son bajos, cae la demanda de bienes y los precios bajan.
-\item \emph{Implicaciones}: el nivel de precios queda determinado y el dinero es \concepto{neutral}: duplicar $\overline{M}$ duplica todos los precios de equilibrio sin cambiar los relativos ni la asignación real. Hay neutralidad sin dicotomía: el dinero no afecta al equilibrio, pero sí al proceso que lleva a él. Su versión macroeconómica, el ajuste lento hacia el pleno empleo con un efecto saldos reales que actúa en el desequilibrio, es materia del debate sobre el desequilibrio \vertema{3.A.4}.
-\item \textcite{ArchibaldLipsey1958Monetary} precisan que, en el equilibrio estacionario, cuando cada uno ya ha ajustado sus saldos, la dicotomía vuelve a ser válida para los valores de equilibrio: el efecto saldos reales actúa en el ajuste.
+  \begin{itemize}
+  \item \emph{En palabras}: ahora hay $n+1$ mercados, y si en los de bienes sobra oferta por valor de 100 euros, en el de dinero sobra demanda por valor de 100 euros: los agentes venden bienes porque quieren tener más dinero.
+  \item \emph{Diferencia con la ley de \autor{Say}}: la ley de \autor{Walras} no excluye un exceso de oferta general de \emph{bienes}; solo dice que tiene su contrapartida en un exceso de demanda de \emph{dinero} (I.2.4).
+  \end{itemize}
+\item \emph{Paso 2. La dicotomía clásica en el modelo}: se construye con 2 piezas.
+  \begin{itemize}
+  \item \emph{Sector real}: los excesos de demanda de bienes dependen solo de los precios relativos, como en el modelo sin dinero: son homogéneos de grado 0 en $\vect{p}$ (\concepto{postulado de homogeneidad}).
+  \item \emph{Sector monetario}: como el dinero no da utilidad, su demanda no sale de la optimización y se fija con una regla institucional de tipo Cambridge: cada consumidor desea mantener en dinero una proporción $\varphi$ del valor de sus dotaciones (con beneficios nulos),\footnote{En macroeconomía la regla se escribe $M^D=k\,P\,Y$, con $k$ la constante de Cambridge \vertema{3.A.35}; aquí se usa $\varphi$ porque $k$ es el índice de los bienes.}
+    \begin{equation}
+    M^D_i(\vect{p})=\varphi\,\vect{p}\cdot\vect{\omega}_i,\qquad M^D(\vect{p})=\varphi\,\vect{p}\cdot\sum_i\vect{\omega}_i .
+    \end{equation}
+  \item \emph{El reparto de papeles}: el sector real fijaría los precios relativos y el mercado de dinero, con $M^D(\vect{p})=\overline{M}$, el nivel de precios.
+  \end{itemize}
+\item \emph{Paso 3. Por qué la dicotomía es inválida} \parencite{Lange1942Say,Patinkin1965Money}:
+  \begin{itemize}
+  \item \emph{El experimento}: sea $\vect{p}^*$ un equilibrio y multipliquemos todos los precios por 2. Por el postulado de homogeneidad, los mercados de bienes siguen vaciándose; por la ley de \autor{Walras}~\eqref{eq:walras-dinero}, el de dinero también. Pero la regla de Cambridge dice que la demanda de dinero se ha duplicado y la cantidad de dinero no ha cambiado: el mercado de dinero \emph{no} se vacía.
+  \item \emph{La contradicción}: las 2 piezas no pueden ser ciertas a la vez. Si los excesos de demanda de bienes solo dependen de los precios relativos, la ley de \autor{Walras} obliga a que el exceso de demanda de dinero sea nulo a \emph{cualquier} nivel de precios (es la identidad de \autor{Say}), y el mercado de dinero no determina nada: el nivel de precios queda indeterminado.
+  \item \emph{En palabras}: si, cuando los precios se duplican, un consumidor quiere tener el doble de dinero, para conseguirlo tiene que vender más bienes o comprar menos. Su demanda de bienes no puede ser la misma que antes: suponer que lo es resulta contradictorio.
+  \end{itemize}
+\item \emph{Paso 4. La solución de \textcite{Patinkin1956Money}: el efecto saldos reales}. La demanda de bienes depende de los precios relativos \emph{y de los saldos reales}, $\overline{M}_i/P$, el poder de compra del dinero que se tiene (\concepto{efecto saldos reales}).
+  \begin{itemize}
+  \item \emph{En palabras}: si los precios suben, el dinero que tengo compra menos y soy más pobre en términos reales. Para reponer mis saldos, compro menos bienes. Ese exceso de oferta de bienes empuja los precios a la baja hasta que los saldos reales vuelven a ser los deseados. Si los precios son demasiado bajos, ocurre lo contrario.
+  \item \emph{Homogeneidad}: los excesos de demanda son homogéneos de grado 0 en los precios \emph{y} el dinero, pero no en los precios solos. Duplicar a la vez los precios y la cantidad de dinero no cambia nada real; duplicar solo los precios, sí.
+  \end{itemize}
 \end{itemize}
 
-\paragraph{e) Valoración}
+\begin{anotaciones}
+\textbf{Por qué la regla de Cambridge lleva al efecto saldos reales}. Con la regla $M^D_i=\varphi\,\vect{p}\cdot\vect{\omega}_i$, la restricción presupuestaria del paso~1 queda
+\begin{equation*}
+\vect{p}\cdot\vect{x}_i=(1-\varphi)\,\vect{p}\cdot\vect{\omega}_i+\overline{M}_i .
+\end{equation*}
+Dividiendo por el índice de precios $P$, el gasto real en bienes depende del valor real de las dotaciones y de $\overline{M}_i/P$. Si se multiplican los precios por 2 y $\overline{M}_i$ no cambia, el conjunto presupuestario se encoge: la demanda de bienes \emph{no} puede ser homogénea de grado 0 en $\vect{p}$. La propia regla de Cambridge, unida a la restricción presupuestaria, mete los saldos reales en la demanda de bienes: es la inconsistencia del paso~3 vista desde el consumidor. Solo si se duplican a la vez $\vect{p}$ y $\overline{M}_i$ queda el conjunto presupuestario igual, que es la homogeneidad del paso~4 \parencite{Patinkin1965Money}.
+\end{anotaciones}
+
+\subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item \textcite{Hahn1965Problems} muestra el fallo de fondo: si el dinero no da utilidad ni presta ningún servicio en el modelo, siempre existe un equilibrio en el que no vale nada. \autor{Patinkin} lo evita poniendo los saldos reales en la utilidad, que es suponer lo que había que explicar. \textcite{Hahn1982Money} lo resume diciendo que el mayor reto que el dinero plantea al teórico es que el modelo de la economía mejor desarrollado no tiene sitio para él.
-\item La forma rigurosa de introducir el dinero es darle una función que el modelo de \autor{Arrow}-\autor{Debreu}, con todos los mercados abiertos a la vez en el momento inicial, no deja: depósito de valor en una economía de generaciones solapadas \parencite{Samuelson1958Exact} \vertema{3.A.29}, restricción de liquidez previa al gasto \parencite{Clower1967Reconsideration}, medio de cambio que surge de la búsqueda de contrapartes \parencite{KiyotakiWright1989Money} o, como forma reducida, dinero en la función de utilidad \parencite{Sidrauski1967Rational}; un panorama, en \textcite[cap.~2-3]{Walsh2017Monetary}.
+\item \emph{El nivel de precios queda determinado}: es el que hace que los saldos reales que se tienen, $\overline{M}/P$, coincidan con los que se desean.
+\item \emph{El dinero es neutral}: duplicar $\overline{M}$ duplica todos los precios de equilibrio sin cambiar los relativos ni la asignación real, porque los excesos de demanda son homogéneos de grado 0 en precios y dinero: si $(\vect{p}^*,\overline{M})$ es un equilibrio, también lo es $(2\vect{p}^*,2\overline{M})$.
+\item \emph{Neutralidad sin dicotomía}: el dinero no afecta al equilibrio real, pero los sectores real y monetario no se pueden separar: el efecto saldos reales, que actúa sobre la demanda de bienes, es lo que lleva el nivel de precios a su equilibrio. El dinero no importa en el equilibrio, pero sí en el proceso que lleva a él.
+\item \emph{El equilibrio estacionario}: \textcite{ArchibaldLipsey1958Monetary} precisan que, cuando cada uno ya ha ajustado sus saldos, la dicotomía vuelve a ser válida para los valores de equilibrio: el efecto saldos reales actúa en el ajuste.
+\item \emph{La versión macroeconómica}: el efecto saldos reales (o efecto \autor{Pigou}-\autor{Patinkin}) es el que, con precios flexibles, devuelve la economía al pleno empleo cuando cae la demanda, aunque el ajuste sea lento; es materia del debate sobre el desequilibrio y la síntesis neoclásica \vertema{3.A.4} \vertema{3.A.5}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{El problema de \autor{Hahn}}: \textcite{Hahn1965Problems} muestra el fallo de fondo. Si el dinero no da utilidad ni presta ningún servicio en el modelo, solo vale porque los demás lo aceptan; y siempre es posible que nadie lo acepte. Siempre existe, por tanto, un equilibrio en el que el dinero no vale nada y la economía vuelve al trueque. \autor{Patinkin} lo evita poniendo los saldos reales en la utilidad, que es suponer lo que había que explicar.
+\item \emph{El reto}: \textcite{Hahn1982Money} lo resume diciendo que el mayor reto que el dinero plantea al teórico es que el modelo de la economía mejor desarrollado no tiene sitio para él.
+\item \emph{Las 4 vías modernas}: la forma rigurosa de introducir el dinero es darle una función que el modelo de \autor{Arrow}-\autor{Debreu}, con todos los mercados abiertos a la vez en el momento inicial, no deja:
+  \begin{itemize}
+  \item \emph{Depósito de valor entre generaciones} \parencite{Samuelson1958Exact}: en una economía de generaciones solapadas los jóvenes trabajan y los viejos no, y los que aún no han nacido no pueden firmar contratos. Los jóvenes aceptan el dinero de los viejos a cambio de bienes porque esperan que la generación siguiente se lo acepte cuando ellos sean viejos: el dinero hace posible un intercambio que los mercados no pueden hacer \vertema{3.A.29}.
+  \item \emph{Restricción de liquidez previa al gasto} \parencite{Clower1967Reconsideration}: para comprar hay que tener el dinero antes. En la idea de \autor{Clower}, el dinero compra bienes y los bienes compran dinero, pero los bienes no compran bienes; es el origen de los modelos de pago por anticipado (\emph{cash in advance}).
+  \item \emph{Medio de cambio que surge de la búsqueda} \parencite{KiyotakiWright1989Money}: los agentes se encuentran al azar, y el trueque exige una doble coincidencia (que el otro tenga lo que yo quiero y quiera lo que yo tengo). Un objeto que todos aceptan resuelve el problema, y se acepta porque se espera que los demás lo acepten: el dinero descansa en la confianza, y por eso puede haber equilibrios con dinero y sin él.
+  \item \emph{Dinero en la función de utilidad} \parencite{Sidrauski1967Rational}: es una forma reducida. Resume los servicios de liquidez del dinero poniendo los saldos reales en la utilidad; no explica por qué se quiere dinero, pero da una demanda de dinero que crece con el consumo y cae con el tipo de interés nominal, su coste de oportunidad.
+  \end{itemize}
+  Las 4 vías, y lo que cada una implica para la demanda de dinero y la política monetaria, se desarrollan en la teoría de la demanda de dinero \vertema{3.A.35}.
 \end{itemize}
 
 % --------------------------------------------------------------------------
 \subsection{Equilibrio general en condiciones de incertidumbre (\autor{Arrow}, 1953, y \autor{Debreu}, 1959)}
 
+El dinero no encontraba sitio porque en el modelo todo se acuerda en el momento inicial; pasamos ahora a ver cómo ese mismo supuesto permite introducir el tiempo y la incertidumbre.
+
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item El tiempo y la incertidumbre caben en el modelo sin teoría nueva: basta con definir los bienes no solo por sus características físicas, sino también por la fecha y el \emph{estado de la naturaleza} en que se entregan \parencite[cap.~7]{Debreu1959Theory}. Un paraguas cuando llueve y un paraguas cuando no llueve son bienes distintos, con precios distintos: es el enfoque de la preferencia por el estado \vertema{3.A.10}.
+\item \emph{Más bienes, no otra teoría}: el tiempo y la incertidumbre caben en el modelo sin teoría nueva. Basta con definir los bienes no solo por sus características físicas, sino también por la fecha y el \emph{estado de la naturaleza} (lo que puede ocurrir: que llueva o que no llueva) en que se entregan \parencite[cap.~7]{Debreu1959Theory}.
+\item \emph{El ejemplo}: un paraguas cuando llueve y un paraguas cuando no llueve son bienes distintos, porque no se valoran igual, y tienen precios distintos. Es el enfoque de la preferencia por el estado \vertema{3.A.10}.
 \end{itemize}
 
 \paragraph{b) Modelo}
 
+\subparagraph{i) Supuestos}
+
 \begin{itemize}
-\item \emph{Supuestos}: $n$ bienes físicos y $S$ estados posibles mañana, $s=1,\dots,S$, con probabilidades $\pi_s$; un \concepto{bien contingente} es el derecho a recibir una unidad del bien $k$ si ocurre el estado $s$, con cantidad $x_{ks}$ y precio $p_{ks}$. Hay mercados para los $n\cdot S$ bienes contingentes, todos abiertos hoy (\concepto{mercados completos}), información simétrica sobre qué estado ocurre y preferencias convexas sobre planes contingentes. No hace falta la utilidad esperada; si se usa, la aversión al riesgo basta para la convexidad.
-\item \emph{Desarrollo}: formalmente es el mismo modelo, con $n\cdot S$ bienes. Existe el equilibrio, con \concepto{precios de \autor{Arrow}-\autor{Debreu}} $p_{ks}$, y se cumplen los 2 teoremas del bienestar: el riesgo se reparte de forma eficiente. Con utilidad esperada y un solo bien físico, todos los consumidores igualan su relación marginal de sustitución entre estados al cociente de los precios de estado:
+\item \emph{Estados}: $n$ bienes físicos y $S$ estados posibles mañana, $s=1,\dots,S$, con probabilidades $\pi_s$.
+\item \emph{Bienes contingentes}: un \concepto{bien contingente} es el derecho a recibir una unidad del bien $k$ si ocurre el estado $s$, con cantidad $x_{ks}$ y precio $p_{ks}$. Es un contrato del tipo «hoy te pago y mañana me entregas un paraguas si llueve; si no llueve, no me entregas nada». Se paga hoy, ocurra lo que ocurra mañana: funciona como una póliza de seguro.
+\item \emph{Mercados completos}: hay mercados para los $n\cdot S$ bienes contingentes, todos abiertos hoy (\concepto{mercados completos}): se puede comprar o vender cualquier bien para cualquier estado.
+\item \emph{Información y preferencias}: todos saben qué estado ha ocurrido (información simétrica) y las preferencias sobre planes contingentes son convexas. No hace falta la utilidad esperada; si se usa, la aversión al riesgo basta para la convexidad.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{El mismo modelo}: formalmente es el modelo de I con $n\cdot S$ bienes. Todo lo demostrado vale: existe el equilibrio, con \concepto{precios de \autor{Arrow}-\autor{Debreu}} $p_{ks}$, y se cumplen los 2 teoremas del bienestar.
+\item \emph{La condición de equilibrio}: con utilidad esperada y un solo bien físico, todos los consumidores igualan su relación marginal de sustitución entre estados al cociente de los precios de estado:
   \begin{equation}
   \frac{\pi_s\,u_i'(x_{is})}{\pi_{s'}\,u_i'(x_{is'})}=\frac{p_s}{p_{s'}}\qquad\text{para todo consumidor } i. \label{eq:precios-estado}
   \end{equation}
-\item \emph{Implicaciones}:
   \begin{itemize}
-  \item \textcite{Arrow1953Role} muestra que no hacen falta $n\cdot S$ mercados hoy: bastan $S$ \concepto{títulos de \autor{Arrow}} (cada uno paga una unidad de cuenta en un estado) y los $n$ mercados al contado que se abren en el estado que ocurra, $n+S$ mercados en lugar de $n\cdot S$, si los agentes prevén bien los precios futuros \parencite{Arrow1964Role};
-  \item \textcite{Radner1972Existence} formaliza ese \concepto{equilibrio de planes, precios y expectativas de precios} en una sucesión de mercados (al contado y de futuros, que se reabren): con mercados financieramente completos (tantos activos independientes como estados) da las mismas asignaciones que \autor{Arrow}-\autor{Debreu}.
+  \item \emph{En palabras}: cada consumidor valora una unidad más en el estado $s$ frente a una en $s'$ lo mismo que el mercado, y por tanto lo mismo que todos los demás. Ya no quedan ganancias de asegurarse unos a otros: el riesgo está repartido de forma eficiente.
+  \item \emph{Un caso sencillo}: si no hay riesgo agregado (los recursos totales son los mismos en todos los estados), los precios de estado son proporcionales a las probabilidades, $p_s/p_{s'}=\pi_s/\pi_{s'}$, y los consumidores aversos al riesgo consumen lo mismo en todos los estados: se aseguran por completo.
   \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Por qué el modelo sigue valiendo}: con mercados completos, la incertidumbre no cambia nada esencial. Quien quiere protegerse de un estado encuentra a alguien que acepta ese riesgo a un precio, igual que encuentra a quien le venda pan, y el resultado es eficiente.
+\item \emph{Los títulos de \autor{Arrow}}: \textcite{Arrow1953Role} muestra que no hacen falta $n\cdot S$ mercados hoy.
+  \begin{itemize}
+  \item En lugar de comprar hoy un paraguas para el caso de que llueva, basta con comprar hoy un título que paga 1 euro si llueve (un \concepto{título de \autor{Arrow}}) y, si llueve, comprar mañana el paraguas con ese euro en el mercado al contado.
+  \item Bastan $S$ títulos hoy y los $n$ mercados al contado que se abren en el estado que ocurra: $n+S$ mercados en lugar de $n\cdot S$ (con 1.000 bienes y 10 estados, 1.010 mercados en lugar de 10.000), si los agentes prevén bien los precios futuros \parencite{Arrow1964Role}.
+  \end{itemize}
+\item \emph{Mercados que se suceden}: \textcite{Radner1972Existence} formaliza ese \concepto{equilibrio de planes, precios y expectativas de precios} en una sucesión de mercados (al contado y de futuros, que se reabren): con mercados financieramente completos (tantos activos independientes como estados) da las mismas asignaciones que \autor{Arrow}-\autor{Debreu}.
 \end{itemize}
 
 \paragraph{c) Extensiones: mercados incompletos y tiempo}
 
 \begin{itemize}
-\item Si hay menos activos independientes que estados, el equilibrio de \autor{Radner}:
+\item \emph{Mercados incompletos}: si hay menos activos independientes que estados, no es posible asegurarse contra todo lo que puede pasar (por ejemplo, contra perder el empleo o contra una mala cosecha en el propio país). Entonces el equilibrio de \autor{Radner}:
   \begin{itemize}
-  \item en general no es eficiente, ni siquiera \emph{restringidamente}: un planificador que solo pudiera usar los mismos activos podría mejorar a todos \parencite{Hart1975Optimality,GeanakoplosPolemarchakis1986Existence};
-  \item puede no existir con activos reales \parencite{Hart1975Optimality};
-  \item con activos nominales está \emph{indeterminado}: hay un continuo de equilibrios reales cuya dimensión, $S-1$, crece con el número de estados \parencite{BalaskoCass1989Structure,GeanakoplosMasColell1989Real}. Con mercados completos el equilibrio vuelve a ser determinado (un número finito de equilibrios, como en las economías regulares de II.1.2) y eficiente: la universalidad de los mercados juega a favor de la determinación del equilibrio.
+  \item \emph{no es eficiente} en general, ni siquiera \emph{restringidamente}: un planificador que solo pudiera usar los mismos activos podría mejorar a todos, porque los agentes no tienen en cuenta cómo sus decisiones cambian los precios a los que otros pueden asegurarse \parencite{Hart1975Optimality,GeanakoplosPolemarchakis1986Existence};
+  \item \emph{puede no existir} con activos reales (que pagan en bienes) \parencite{Hart1975Optimality};
+  \item \emph{está indeterminado} con activos nominales (que pagan en dinero): lo que un activo compra depende del nivel de precios en cada estado, que nada fija, y hay un continuo de equilibrios reales, de dimensión $S-1$, que crece con el número de estados \parencite{BalaskoCass1989Structure,GeanakoplosMasColell1989Real}.
   \end{itemize}
-\item Con un horizonte infinito y agentes que nacen y mueren (generaciones solapadas), el equilibrio competitivo puede ser ineficiente incluso con mercados completos en cada periodo (ineficiencia dinámica) \vertema{3.A.29}.
+  Con mercados completos el equilibrio vuelve a ser determinado (un número finito de equilibrios, como en las economías regulares de II.1.2) y eficiente: cuantos más mercados, más determinado está el equilibrio.
+\item \emph{Tiempo sin fin}: con un horizonte infinito y agentes que nacen y mueren (generaciones solapadas), el equilibrio competitivo puede ser ineficiente incluso con mercados completos en cada periodo (ineficiencia dinámica) \vertema{3.A.29}.
 \end{itemize}
 
 \paragraph{d) Evidencia empírica}
@@ -740,6 +991,8 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 
 % --------------------------------------------------------------------------
 \subsection{Modelos de equilibrio general computable (\autor{Scarf})}
+
+Una vez vistos los límites teóricos del modelo, pasamos a cómo se usa en la práctica.
 
 \begin{itemize}
 \item Los \concepto{modelos de equilibrio general computable} (MEGC; CGE en inglés) resuelven numéricamente el equilibrio walrasiano de una economía con muchos sectores, factores, hogares y países. Los hacen posibles 2 avances:
@@ -766,6 +1019,7 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
     \end{itemize}
   \end{itemize}
 \item \emph{Valoración}: los resultados dependen de las elasticidades y de los cierres macroeconómicos elegidos, y la unicidad del equilibrio calculado no está garantizada (II.1.2). Aun así, son la forma de llevar la teoría del equilibrio general a la evaluación de políticas.
+\item \emph{Recapitulando}: el equilibrio walrasiano resiste que se quite el subastador si los agentes son muchos (núcleo), pero no el poder de mercado, las no convexidades, el dinero sin valor intrínseco ni los mercados incompletos; aun así, sigue siendo la referencia con la que se evalúan las políticas.
 \end{itemize}
 
 
@@ -778,16 +1032,16 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
   \begin{itemize}
   \item En conclusión, la teoría del equilibrio general responde a la pregunta del principio en 3 pasos. Con agentes precio-aceptantes y preferencias y tecnologías convexas, el sistema de precios puede coordinar todos los mercados a la vez: existe un vector de precios que los vacía (I y II.1).
   \item Ese equilibrio no tiene por qué ser único ni estable, porque la agregación borra casi todas las propiedades de la demanda individual (teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu}), pero es eficiente si los mercados son completos y competitivos (II.2).
-  \item Y el modelo resiste bien que se relajen algunos supuestos (con muchos agentes, el núcleo converge al equilibrio walrasiano) y peor otros: poder de mercado, no convexidades, mercados incompletos y dinero (III). Así, el trabajo de \autor{Walras} puede entenderse como la formalización de la «mano invisible» de \autor{Smith}.
+  \item Y el modelo resiste bien que se relajen algunos supuestos (con muchos agentes, el núcleo converge al equilibrio walrasiano) y peor otros: poder de mercado, no convexidades, mercados incompletos y dinero, que necesita una función que el modelo no le da (III). Así, el trabajo de \autor{Walras} puede entenderse como la formalización de la «mano invisible» de \autor{Smith}.
   \end{itemize}
 \item \textbf{\emph{Relevancia}}: es el lenguaje común de la teoría económica. La macroeconomía actual es equilibrio general dinámico y estocástico \vertema{3.A.6} \vertema{3.A.42}, y \textcite{DeVroey2004History} lee su historia como la sustitución de modelos de equilibrio general simplificados de tipo marshalliano, como el IS-LM, por modelos walrasianos. También lo son la teoría del comercio internacional \vertema{3.B.5} y la economía del clima \vertema{3.B.31}, y los modelos computables se usan para evaluar acuerdos comerciales, impuestos y políticas climáticas.
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
   \begin{itemize}
   \item El equilibrio parcial sigue siendo útil para estudiar un mercado concreto con pocas conexiones con el resto; para fenómenos que afectan a muchos mercados a la vez, como un tratado comercial, hace falta el equilibrio general \vertema{3.A.16}.
-  \item Los fallos de mercado (poder de mercado, externalidades, bienes públicos) \vertema{3.A.23} y la información asimétrica \vertema{3.A.13} parten de los supuestos de este modelo para ver qué pasa cuando no se cumplen; el diseño de mecanismos (\autor{Hurwicz}, \autor{Myerson}) y el debate del cálculo socialista (\autor{Lange}, \autor{Hayek}) preguntan qué mecanismo asigna bien con información dispersa, y la elección del óptimo social, \vertema{3.A.24}.
+  \item Los fallos de mercado (poder de mercado, externalidades, bienes públicos) \vertema{3.A.23} y la información asimétrica \vertema{3.A.13} parten de los supuestos de este modelo para ver qué pasa cuando no se cumplen; el diseño de mecanismos (\autor{Hurwicz}, \autor{Myerson}) y el debate del cálculo socialista (\autor{Lange}, \autor{Hayek}) preguntan qué mecanismo asigna bien con información dispersa, y la elección del óptimo social, \vertema{3.A.24}. La teoría de la negociación (\autor{Nash}, \autor{Rubinstein}) elige entre los acuerdos que \autor{Edgeworth} deja abiertos \vertema{3.A.14}, y la teoría de la demanda de dinero da al dinero la función que aquí le falta \vertema{3.A.35}.
   \item El modelo ha sido criticado: la escuela austriaca ve la competencia como un proceso de descubrimiento y no como un estado; los teóricos del desequilibrio (\autor{Clower}, \autor{Leijonhufvud}) estudian el comercio a precios falsos \vertema{3.A.4}; \textcite{Kirman1992Whom} subraya los problemas de agregación; la economía conductual, con \autor{Thaler} (Premio Nobel de 2017), los límites de la racionalidad \parencite{Nobel2017Thaler}, y la macroeconomía financiera, las restricciones de crédito que el modelo ignora.
   \end{itemize}
-\item \textbf{\emph{Opinión}}: el equilibrio general competitivo no describe ninguna economía real; su valor es servir de referencia exacta, porque dice qué tendría que cumplir una economía para que la mano invisible funcione, y cada supuesto que no se cumple señala dónde puede fallar y, por tanto, dónde puede tener sentido la intervención pública.
+\item \textbf{\emph{Opinión}}: el equilibrio general competitivo no describe ninguna economía real, ni lo pretende: como en la imagen de Joan \autor{Robinson}, un mapa sirve precisamente porque deja cosas fuera. Su valor es servir de referencia exacta, porque dice qué tendría que cumplir una economía para que la mano invisible funcione, y cada supuesto que no se cumple señala dónde puede fallar y, por tanto, dónde puede tener sentido la intervención pública.
 \item \textbf{\emph{Idea final}}: volviendo a \autor{Bastiat}, París se abastece sin que nadie lo planifique porque los precios coordinan. Millones de decisiones descentralizadas pueden encajar sin que sobre ni falte nada, pero solo con supuestos exigentes: lo que el modelo enseña no es que el mercado siempre funcione, sino por qué funciona cuando lo hace.
 \end{itemize}
 
@@ -814,7 +1068,7 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 \subsection{La maximización del beneficio en 2 etapas}
 
 \begin{itemize}
-\item El problema de la empresa~\eqref{eq:empresa} puede resolverse en 2 etapas \vertema{3.A.12}:
+\item \emph{Problema}: el de la empresa~\eqref{eq:empresa} puede resolverse en 2 etapas \vertema{3.A.12}:
   \begin{enumerate}
   \item la forma más barata de obtener cada cantidad $q$, que da la función de costes (eficiencia económica),
     \[
@@ -836,44 +1090,244 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 \end{figure}
 
 % ==========================================================================
-\section{Anexo: existencia y unicidad del equilibrio}\label{anexo:existencia}
+\section{Anexo: existencia, unicidad y estabilidad del equilibrio}\label{anexo:existencia}
+
+Este anexo recoge, paso a paso, las 3 demostraciones cuya intuición se cuenta en el apartado~II.1: la existencia con el teorema de \autor{Brouwer} (B.1), la unicidad por el axioma débil y por los sustitutivos brutos (B.2) y la estabilidad del tanteo con la distancia al equilibrio (B.3).
 
 \subsection{Demostración de la existencia}
 
+\paragraph{Los teoremas del punto fijo}
+
 \begin{itemize}
-\item \emph{Supuestos}: $\vect{z}:\Delta\to\mathbb{R}^n$ continua, homogénea de grado 0 y con $\vect{p}\cdot\vect{z}(\vect{p})=0$ para todo $\vect{p}\in\Delta$.\footnote{Si las preferencias son estrictamente monótonas, el exceso de demanda no está definido cuando un precio es 0 (la demanda de ese bien sería infinita). La prueba se adapta trabajando en subconjuntos compactos del interior del símplice y usando que $\lVert\vect{z}(\vect{p})\rVert\to\infty$ cuando algún $p_k\to 0$; el resultado es un equilibrio con todos los precios positivos (véanse \textcite[§17.C]{MasColellWhinstonGreen1995} y \textcite[teorema~5.3]{JehleReny2011Advanced}). Por eso no hace falta suponer saciedad.}
-\item \emph{El conjunto}: el símplice $\Delta$~\eqref{eq:simplice} es no vacío (contiene, por ejemplo, $(1/n,\dots,1/n)$), acotado ($0\leq p_k\leq 1$), cerrado (incluye su frontera) y convexo (toda combinación convexa de 2 vectores de precios que suman 1 suma 1).
-\item \emph{La aplicación}: con velocidades $\kappa_k>0$, la regla del subastador~\eqref{eq:aplicacion-brouwer},
-  \[
-  f_k(\vect{p})=\frac{\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}}{\sum_{l=1}^{n}\max\{0,\ p_l+\kappa_l\,z_l(\vect{p})\}}.
-  \]
+\item \emph{Qué son}: los \concepto{teoremas del punto fijo} dan condiciones para que una aplicación de un conjunto en sí mismo deje al menos un elemento donde está: un punto $\vect{p}^*$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$.
+\item \emph{Por qué sirven aquí}: si se encuentra una aplicación que imite al subastador (sube los precios con exceso de demanda y baja los de exceso de oferta), un vector de precios que esa aplicación no cambia es uno en el que nadie tiene motivo para cambiar ningún precio: un equilibrio. Probar que existe un punto fijo es probar que existe un equilibrio.
+\item \emph{\autor{Brouwer} frente a \autor{Kakutani}}:
   \begin{itemize}
-  \item El denominador es positivo: si fuera $p_l+\kappa_lz_l(\vect{p})\leq 0$ para todo $l$, multiplicando por $p_l/\kappa_l\geq 0$ y sumando, $\sum_lp_l^2/\kappa_l+\vect{p}\cdot\vect{z}(\vect{p})=\sum_lp_l^2/\kappa_l\leq 0$, imposible porque $\sum_lp_l=1$.
-  \item Por tanto $\vect{f}$ es continua (cociente de funciones continuas con denominador positivo), sus componentes son no negativas y suman 1: $\vect{f}:\Delta\to\Delta$. Por \autor{Brouwer}, existe $\vect{p}^*$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$.
+  \item \concepto{teorema de \autor{Brouwer}} \parencite{Brouwer1911Abbildung}: si $\Delta\subset\mathbb{R}^n$ es \emph{no vacío}, \emph{compacto} (cerrado y acotado) y \emph{convexo}, y $\vect{f}:\Delta\to\Delta$ es \emph{continua}, existe $\vect{p}^*\in\Delta$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$. Sirve cuando las demandas y las ofertas son \emph{funciones} (preferencias y tecnologías estrictamente convexas);
+  \item \concepto{teorema de \autor{Kakutani}} \parencite{Kakutani1941Generalization}: lo generaliza a \emph{correspondencias} (a cada punto le corresponde un conjunto) hemicontinuas superiormente y con valores no vacíos y convexos. Hace falta cuando la convexidad no es estricta y la demanda o la oferta tienen varios valores a unos precios dados (por ejemplo, con rendimientos constantes). Es el que usan \textcite{ArrowDebreu1954Existence}.
   \end{itemize}
-\item \emph{El punto fijo es un equilibrio}. Sea $\mu\equiv\sum_l\max\{0,\ p^*_l+\kappa_lz_l(\vect{p}^*)\}>0$. El punto fijo dice que $\max\{0,\ p^*_k+\kappa_kz_k(\vect{p}^*)\}=\mu\,p^*_k$ para todo $k$.
-  \begin{itemize}
-  \item Si $p^*_k=0$: $\max\{0,\ \kappa_kz_k(\vect{p}^*)\}=0$, luego $z_k(\vect{p}^*)\leq 0$ (bien libre).
-  \item Si $p^*_k>0$: $p^*_k+\kappa_kz_k(\vect{p}^*)=\mu\,p^*_k$, luego $z_k(\vect{p}^*)=(\mu-1)\,p^*_k/\kappa_k$.
-  \item Multiplicando la última igualdad por $p^*_k$ y sumando (los bienes con $p^*_k=0$ no aportan nada a la ley de \autor{Walras}): $\vect{p}^*\cdot\vect{z}(\vect{p}^*)=(\mu-1)\sum_k(p^*_k)^2/\kappa_k$. El primer miembro es 0 por la ley de \autor{Walras} y la suma es positiva, así que $\mu=1$ y $z_k(\vect{p}^*)=0$ para todos los bienes con precio positivo (bienes económicos). Se cumple~\eqref{eq:egc}. $\blacksquare$
-  \end{itemize}
-\item La prueba no dice que el tanteo \emph{converja} a $\vect{p}^*$: solo que hay un vector que el subastador deja donde está. La convergencia es la pregunta de la estabilidad (II.1.3).
+  Aquí se sigue la prueba con \autor{Brouwer}, que es la más sencilla \parencite[§17.C]{MasColellWhinstonGreen1995}.
+\item \emph{Lo que hay que comprobar}: que existe un conjunto de precios no vacío, cerrado, acotado y convexo (paso~1) y una función continua de ese conjunto en sí mismo (paso~2); entonces \autor{Brouwer} da un punto fijo, y queda probar que ese punto fijo es un equilibrio (paso~3).
 \end{itemize}
+
+\paragraph{Supuestos}
+
+\begin{itemize}
+\item \emph{Sobre el exceso de demanda}: $\vect{z}$ continua, homogénea de grado 0 y con $\vect{p}\cdot\vect{z}(\vect{p})=0$ para todo $\vect{p}$ (ley de \autor{Walras}).\footnote{Si las preferencias son estrictamente monótonas, el exceso de demanda no está definido cuando un precio es 0 (la demanda de ese bien sería infinita). La prueba se adapta trabajando en subconjuntos compactos del interior del símplice y usando que $\lVert\vect{z}(\vect{p})\rVert\to\infty$ cuando algún $p_k\to 0$; el resultado es un equilibrio con todos los precios positivos (véanse \textcite[§17.C]{MasColellWhinstonGreen1995} y \textcite[teorema~5.3]{JehleReny2011Advanced}). Por eso no hace falta suponer saciedad, que contradiría la no saciedad local que piden la ley de \autor{Walras} y el primer teorema del bienestar.}
+\item \emph{Velocidades de ajuste}: $\kappa_k>0$ para cada bien $k=1,\dots,n$.
+\end{itemize}
+
+\paragraph{Paso 1: el conjunto de precios}
+
+\begin{itemize}
+\item \emph{La normalización}: los precios solo son no negativos, $p_k\geq 0$: están acotados por abajo, pero no por arriba. Como $\vect{z}$ es homogénea de grado 0, podemos dividir todos los precios por su suma sin cambiar ningún exceso de demanda, $\vect{z}(\vect{p})=\vect{z}\big(\vect{p}/\sum_lp_l\big)$, y trabajar con precios que suman 1: el \concepto{símplice}~\eqref{eq:simplice}, $\Delta=\big\{\vect{p}\in\mathbb{R}^n_+:\ \sum_kp_k=1\big\}$.
+\item \emph{Sus propiedades}:
+  \begin{enumerate}
+  \item \emph{no vacío}: contiene, por ejemplo, $(1/n,\dots,1/n)$;
+  \item \emph{acotado}: $0\leq p_k\leq 1$ para todo $k$;
+  \item \emph{cerrado}: incluye su frontera, los vectores con algún precio nulo (está definido con igualdades y desigualdades no estrictas);
+  \item \emph{convexo}: si $\vect{p}$ y $\vect{p}'$ están en $\Delta$ y $\lambda\in[0,1]$, $\lambda\vect{p}+(1-\lambda)\vect{p}'$ tiene componentes no negativas que suman $\lambda+(1-\lambda)=1$.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{Paso 2: la función del subastador}
+
+\begin{itemize}
+\item \emph{La regla}: el subastador canta unos precios $\vect{p}\in\Delta$, observa los excesos de demanda y propone unos nuevos:
+  \begin{itemize}
+  \item si $z_k(\vect{p})>0$, suma al precio un múltiplo $\kappa_k$ del exceso de demanda y el precio sube;
+  \item si $z_k(\vect{p})=0$, deja el precio como está;
+  \item si $z_k(\vect{p})<0$, el precio baja.
+  \end{itemize}
+  Es decir, $p_k+\kappa_k\,z_k(\vect{p})$.
+\item \emph{Primer arreglo, precios no negativos}: la resta podría dar precios negativos, así que se toma $\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}$. En un bien libre, $z_k\leq 0$ a cualquier precio, y la regla baja su precio ronda tras ronda hasta que el máximo lo detiene en 0.
+\item \emph{Segundo arreglo, volver al símplice}: los nuevos precios no tienen por qué sumar 1, así que se dividen por su suma. Queda la aplicación~\eqref{eq:aplicacion-brouwer},
+  \begin{equation*}
+  f_k(\vect{p})=\frac{\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}}{\sum_{l=1}^{n}\max\{0,\ p_l+\kappa_l\,z_l(\vect{p})\}},\qquad k=1,\dots,n.
+  \end{equation*}
+\item \emph{El denominador es positivo}: si fuera $p_l+\kappa_lz_l(\vect{p})\leq 0$ para todo $l$, multiplicando cada desigualdad por $p_l/\kappa_l\geq 0$ y sumando,
+  \[
+  \sum_l\frac{p_l^2}{\kappa_l}+\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0\ \text{(\autor{Walras})}}=\sum_l\frac{p_l^2}{\kappa_l}\leq 0,
+  \]
+  imposible, porque los precios suman 1 y alguno es positivo. Así que $\vect{f}$ está bien definida en todo $\Delta$.
+\item \emph{$\vect{f}$ es continua}: $\vect{z}$ es continua, el máximo de funciones continuas es continuo y el cociente de funciones continuas con denominador positivo también.
+\item \emph{$\vect{f}$ lleva $\Delta$ en sí mismo}: sus componentes son no negativas (por el máximo) y suman 1 (por la división).
+\item \emph{Aplicación del teorema}: se cumplen todas las condiciones de \autor{Brouwer}, de modo que existe un $\vect{p}^*\in\Delta$ con $\vect{f}(\vect{p}^*)=\vect{p}^*$:
+  \begin{equation}
+  p^*_k=\frac{\max\{0,\ p^*_k+\kappa_k\,z_k(\vect{p}^*)\}}{\mu},\qquad \mu\equiv\sum_{l=1}^{n}\max\{0,\ p^*_l+\kappa_l\,z_l(\vect{p}^*)\}>0,\qquad k=1,\dots,n. \label{eq:punto-fijo}
+  \end{equation}
+\end{itemize}
+
+\paragraph{Paso 3: el punto fijo es un equilibrio}
+
+Hay que comprobar que $\vect{p}^*$ cumple la definición~\eqref{eq:egc}: exceso de demanda no positivo en los bienes con precio nulo y nulo en los de precio positivo. Multiplicando~\eqref{eq:punto-fijo} por $\mu$, $\max\{0,\ p^*_k+\kappa_kz_k(\vect{p}^*)\}=\mu\,p^*_k$ para todo $k$.
+
+\begin{itemize}
+\item \emph{Bienes con precio nulo} ($p^*_k=0$): la igualdad queda $\max\{0,\ \kappa_kz_k(\vect{p}^*)\}=0$, lo que exige $\kappa_kz_k(\vect{p}^*)\leq 0$ y, como $\kappa_k>0$, $z_k(\vect{p}^*)\leq 0$. Es la condición de equilibrio de un \emph{bien libre}.
+\item \emph{Bienes con precio positivo} ($p^*_k>0$): el segundo miembro, $\mu p^*_k$, es positivo, así que el máximo es el segundo término: $p^*_k+\kappa_kz_k(\vect{p}^*)=\mu\,p^*_k$, es decir,
+  \[
+  z_k(\vect{p}^*)=(\mu-1)\,\frac{p^*_k}{\kappa_k}.
+  \]
+  Falta probar que $\mu=1$.
+\item \emph{La ley de \autor{Walras} cierra el argumento}: multiplicando la última igualdad por $p^*_k$ y sumando para los bienes con precio positivo (los de precio nulo no aportan nada a $\vect{p}^*\cdot\vect{z}(\vect{p}^*)$),
+  \[
+  \underbrace{\vect{p}^*\cdot\vect{z}(\vect{p}^*)}_{=0\ \text{(\autor{Walras})}}=(\mu-1)\underbrace{\sum_{k:\,p^*_k>0}\frac{(p^*_k)^2}{\kappa_k}}_{>0}.
+  \]
+  El primer miembro es 0 y la suma es positiva, así que $\mu=1$ y $z_k(\vect{p}^*)=0$ en todos los bienes con precio positivo: son \emph{bienes económicos} con su mercado vaciado.
+\item \emph{Conclusión}: $\vect{p}^*$ cumple~\eqref{eq:egc}: existe un equilibrio general competitivo.\findemo
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Qué no prueba}. La prueba no dice que el tanteo \emph{converja} a $\vect{p}^*$: solo que hay un vector que el subastador deja donde está. Si los precios empiezan en otro sitio, nada asegura que lleguen a él. La convergencia es la pregunta de la estabilidad (II.1.3 y B.3). Tampoco dice cuántos puntos fijos hay (B.2) ni cómo calcularlos: eso lo resuelve el algoritmo de \textcite{Scarf1967Approximation} (III.5).
+\end{anotaciones}
 
 \subsection{Unicidad del equilibrio}\label{anexo:unicidad}
 
+Las 2 condiciones suficientes del apartado~II.1.2 se demuestran por \concepto{reducción al absurdo}: se supone que hay 2 equilibrios distintos y se llega a una contradicción.
+
+\paragraph{Unicidad por el axioma débil de la preferencia revelada}
+
 \begin{itemize}
-\item \emph{Sustitutivos brutos}. Con sustitución bruta~\eqref{eq:sustitutivos-brutos}, todo precio de equilibrio es positivo. Si $\vect{p}^0$ y $\vect{p}^1$ fueran 2 equilibrios no proporcionales, normalicemos $\vect{p}^1$ para que $\min_lp^1_l/p^0_l=1$ y sea $k$ el bien en que se alcanza: entonces $p^1_k=p^0_k$ y $p^1_l\geq p^0_l$ para todo $l$, con alguna desigualdad estricta. Al pasar de $\vect{p}^0$ a $\vect{p}^1$ solo suben (o se quedan igual) los precios de los demás bienes; por la sustitución bruta, $z_k(\vect{p}^1)>z_k(\vect{p}^0)=0$, y $\vect{p}^1$ no es de equilibrio. $\blacksquare$ \parencite[§17.F]{MasColellWhinstonGreen1995}
-\item \emph{Axioma débil de la preferencia revelada agregado}: $\vect{z}$ lo cumple si, para cualesquiera $\vect{p}^0,\vect{p}^1$ con $\vect{z}(\vect{p}^0)\neq\vect{z}(\vect{p}^1)$ y $\vect{p}^0\cdot\vect{z}(\vect{p}^1)\leq 0$, se tiene $\vect{p}^1\cdot\vect{z}(\vect{p}^0)>0$. Con $\vect{p}^1=\vect{p}^*$ de equilibrio ($\vect{z}(\vect{p}^*)=\vect{0}$) y cualquier $\vect{p}^0$ que no lo sea, la premisa se cumple ($\vect{p}^0\cdot\vect{0}=0$) y se obtiene $\vect{p}^*\cdot\vect{z}(\vect{p}^0)>0$, la condición~\eqref{eq:condicion-unicidad}. Si $\vect{p}^0$ es otro equilibrio, el axioma no dice nada: por eso solo asegura que el conjunto de equilibrios es convexo.
-\item \emph{Cuándo se cumple}: cada consumidor cumple el axioma débil, pero la demanda agregada no lo hereda, porque los cambios de precios redistribuyen la renta entre consumidores que gastan de forma distinta. Una condición suficiente es que las preferencias sean homotéticas (curvas de \autor{Engel} rectas por el origen) y las dotaciones, proporcionales, de modo que la distribución relativa de la renta no cambie con los precios \parencite[§4.C y §17.F]{MasColellWhinstonGreen1995} \vertema{3.A.8}.
+\item \emph{Intuición}: si la demanda de mercado se comporta como la de un único consumidor coherente, 2 equilibrios distintos obligarían a ese consumidor a elegir la cesta $A$ pudiendo pagar la $B$ y la $B$ pudiendo pagar la $A$, y eso es justo lo que el axioma débil prohíbe.
+\end{itemize}
+
+\subparagraph{Supuestos}
+
+\begin{itemize}
+\item \emph{Notación}: $\vect{x}(\vect{p})$ es la demanda de mercado de los consumidores~\eqref{eq:demanda-mercado}, $\vect{y}(\vect{p})=\sum_j\vect{y}_j(\vect{p})$ la oferta neta de las empresas y $\vect{\omega}=\sum_i\vect{\omega}_i$ la dotación total. Por la ley de \autor{Walras}, el gasto total de los consumidores es su renta total: $\vect{p}\cdot\vect{x}(\vect{p})=\vect{p}\cdot\big(\vect{\omega}+\vect{y}(\vect{p})\big)$.
+\item \emph{Axioma débil agregado}: la demanda de mercado cumple el axioma débil como si fuera la de un solo consumidor: si $\vect{x}(\vect{p}^A)\neq\vect{x}(\vect{p}^B)$ y $\vect{p}^A\cdot\vect{x}(\vect{p}^B)\leq\vect{p}^A\cdot\vect{x}(\vect{p}^A)$ (a los precios $\vect{p}^A$ se elige la cesta $A$ pudiendo pagar la $B$), entonces $\vect{p}^B\cdot\vect{x}(\vect{p}^A)>\vect{p}^B\cdot\vect{x}(\vect{p}^B)$ (a los precios $\vect{p}^B$ la cesta $A$ no se puede pagar).
+\item \emph{Empresas maximizadoras}: a cada vector de precios, el plan elegido da al menos tanto beneficio como cualquier otro plan posible: $\vect{p}\cdot\vect{y}(\vect{p})\geq\vect{p}\cdot\vect{y}'$ para todo $\vect{y}'$ factible.
+\item \emph{Equilibrios con todos los precios positivos} (condición de frontera): en cada equilibrio, $\vect{x}(\vect{p})=\vect{\omega}+\vect{y}(\vect{p})$.
+\end{itemize}
+
+\subparagraph{Demostración}
+
+\begin{enumerate}
+\item \emph{Hipótesis de partida}: sean $\vect{p}^A$ y $\vect{p}^B$ 2 equilibrios con consumos de mercado distintos, $\vect{x}^A\neq\vect{x}^B$, y producciones $\vect{y}^A$ e $\vect{y}^B$. Por ser equilibrios, $\vect{x}^A=\vect{\omega}+\vect{y}^A$ y $\vect{x}^B=\vect{\omega}+\vect{y}^B$.
+\item \emph{A los precios $\vect{p}^A$, la cesta $B$ era asequible}: como las empresas maximizan el beneficio a los precios $\vect{p}^A$, $\vect{p}^A\cdot\vect{y}^A\geq\vect{p}^A\cdot\vect{y}^B$. Sumando $\vect{p}^A\cdot\vect{\omega}$ a los 2 lados,
+  \[
+  \vect{p}^A\cdot\vect{x}^B=\vect{p}^A\cdot(\vect{\omega}+\vect{y}^B)\leq\vect{p}^A\cdot(\vect{\omega}+\vect{y}^A)=\vect{p}^A\cdot\vect{x}^A .
+  \]
+  Los consumidores eligieron $\vect{x}^A$ pudiendo pagar $\vect{x}^B$: $\vect{x}^A$ se \emph{revela preferida} a $\vect{x}^B$.
+\item \emph{El axioma débil exige que a los precios $\vect{p}^B$ la cesta $A$ no sea asequible}: $\vect{p}^B\cdot\vect{x}^A>\vect{p}^B\cdot\vect{x}^B$.
+\item \emph{Pero las empresas la hacen asequible}: maximizando el beneficio a los precios $\vect{p}^B$, $\vect{p}^B\cdot\vect{y}^B\geq\vect{p}^B\cdot\vect{y}^A$, y sumando $\vect{p}^B\cdot\vect{\omega}$,
+  \[
+  \vect{p}^B\cdot\vect{x}^A=\vect{p}^B\cdot(\vect{\omega}+\vect{y}^A)\leq\vect{p}^B\cdot(\vect{\omega}+\vect{y}^B)=\vect{p}^B\cdot\vect{x}^B ,
+  \]
+  que contradice el paso~3.
+\item \emph{Conclusión}: no puede haber 2 equilibrios con consumos distintos: la asignación de equilibrio es única. Con preferencias diferenciables y una asignación interior, los precios relativos son las RMS comunes de esa asignación~\eqref{eq:egc-2x2}, así que también son únicos.\findemo
+\end{enumerate}
+
+\subparagraph{Versión con el exceso de demanda}
+
+\begin{itemize}
+\item \emph{Enunciado}: $\vect{z}$ cumple el axioma débil si, para cualesquiera $\vect{p}^0,\vect{p}^1$ con $\vect{z}(\vect{p}^0)\neq\vect{z}(\vect{p}^1)$ y $\vect{p}^0\cdot\vect{z}(\vect{p}^1)\leq 0$, se tiene $\vect{p}^1\cdot\vect{z}(\vect{p}^0)>0$ \parencite[§17.F]{MasColellWhinstonGreen1995}.
+\item \emph{Consecuencia}: con $\vect{p}^1=\vect{p}^*$ de equilibrio ($\vect{z}(\vect{p}^*)=\vect{0}$) y cualquier $\vect{p}^0$ que no lo sea, la premisa se cumple ($\vect{p}^0\cdot\vect{0}=0$) y se obtiene $\vect{p}^*\cdot\vect{z}(\vect{p}^0)>0$, la condición~\eqref{eq:condicion-unicidad}. Si $\vect{p}^0$ es otro equilibrio, el axioma no dice nada (los 2 excesos de demanda son $\vect{0}$): por eso, en esta versión, solo asegura que el conjunto de equilibrios es convexo; con equilibrios aislados (economía regular), es un punto.
+\end{itemize}
+
+\subparagraph{Valoración}
+
+\begin{itemize}
+\item \emph{El supuesto es muy fuerte}: cada consumidor cumple el axioma débil \vertema{3.A.8}, pero la demanda de mercado no lo hereda, porque los cambios de precios redistribuyen la renta entre consumidores que gastan de forma distinta (I.2.2).
+\item \emph{Cuándo se cumple}: una condición suficiente es que las preferencias sean homotéticas (curvas de \autor{Engel} rectas por el origen: elasticidad renta unitaria) y las dotaciones, proporcionales, de modo que la distribución relativa de la renta no cambie con los precios \parencite[§4.C y §17.F]{MasColellWhinstonGreen1995}. Es pedir que la economía se comporte como un consumidor representativo.
+\end{itemize}
+
+\paragraph{Unicidad por los sustitutivos brutos}
+
+\begin{itemize}
+\item \emph{Intuición}: si hubiera 2 equilibrios, el bien que \emph{menos} se encarece al pasar de uno a otro vería a todos los demás encarecerse más que él; como todos son sustitutivos suyos, su demanda subiría y su mercado dejaría de vaciarse.
+\end{itemize}
+
+\subparagraph{Supuestos}
+
+\begin{itemize}
+\item \emph{Sobre el exceso de demanda}: continuo, homogéneo de grado 0 y con la ley de \autor{Walras}, con todos los precios de equilibrio positivos (condición de frontera), de modo que en cada equilibrio $\vect{z}=\vect{0}$.
+\item \emph{Sustitutivos brutos}~\eqref{eq:sustitutivos-brutos}: $\partial z_k(\vect{p})/\partial p_l>0$ para todo $l\neq k$ y todo $\vect{p}$. Al cambiar los precios cambian las demandas por los efectos sustitución y renta (también el de la dotación, I.2.2); la condición pide que el resultado neto sea siempre que encarecer un bien aumente la demanda de todos los demás.
+\end{itemize}
+
+\subparagraph{Demostración}
+
+\begin{enumerate}
+\item \emph{Hipótesis de partida}: sean $\vect{p}^A$ y $\vect{p}^B$ 2 equilibrios no proporcionales (si fueran proporcionales, serían el mismo en precios relativos). Los 2 cumplen $\vect{z}(\vect{p}^A)=\vect{z}(\vect{p}^B)=\vect{0}$.
+\item \emph{Elegir el bien que menos se encarece}: sea $k$ el bien con el menor cociente $p^B_l/p^A_l$, y $m=p^B_k/p^A_k$ ese cociente. Por la homogeneidad de grado 0, $\vect{p}'=\vect{p}^B/m$ es también un equilibrio, y cumple:
+  \[
+  p'_k=p^A_k,\qquad p'_l=\frac{p^B_l}{m}\geq p^A_l\quad\text{para todo }l\neq k,
+  \]
+  con alguna desigualdad estricta, porque $\vect{p}^A$ y $\vect{p}^B$ no son proporcionales. Es decir: medido así, el bien $k$ cuesta lo mismo en los 2 equilibrios y todos los demás cuestan igual o más.
+\item \emph{Su exceso de demanda sube}: pasemos de $\vect{p}^A$ a $\vect{p}'$ subiendo uno a uno los precios de los demás bienes, sin tocar $p_k$. Cada subida aumenta $z_k$ (estrictamente si el precio sube de verdad) por la sustitución bruta, y ninguna lo reduce. Por tanto,
+  \[
+  z_k(\vect{p}')>z_k(\vect{p}^A)=0 .
+  \]
+\item \emph{Contradicción}: $\vect{p}'$ es un equilibrio con $p'_k>0$, así que debería ser $z_k(\vect{p}')=0$.
+\item \emph{Conclusión}: no puede haber 2 equilibrios no proporcionales: el vector de precios relativos de equilibrio es único.\findemo
+\end{enumerate}
+
+\begin{anotaciones}
+\textbf{Con 2 bienes}. Sea $\vect{p}^A$ un equilibrio, con $z_X(\vect{p}^A)=z_Y(\vect{p}^A)=0$ y, por la ley de \autor{Walras}, $p^A_X\cdot 0+p^A_Y\cdot 0=0$. Si baja $p_Y$ sin tocar $p_X$, el bien $X$ se encarece en términos relativos y, por la sustitución bruta, cae su demanda: $z_X<0$. La ley de \autor{Walras}, $p_Xz_X+p_Yz_Y=0$, exige entonces $z_Y>0$: el mercado de $Y$ no se vacía y el nuevo vector no es de equilibrio. Lo mismo si sube $p_Y$, con los signos al revés. Es el argumento del gráfico~\ref{fig:equilibrios-multiples}: con sustitutivos brutos, $z_X(p_X,1)$ es siempre decreciente y solo corta el eje una vez.
+\end{anotaciones}
+
+\subparagraph{Valoración}
+
+\begin{itemize}
+\item \emph{Ventaja}: no exige que la economía se comporte como un consumidor representativo, y la misma condición da la estabilidad global del tanteo (B.3) y el signo de la estática comparativa \parencite[§17.F y §17.G]{MasColellWhinstonGreen1995}.
+\item \emph{Límite}: es muy restrictiva. Exige que los efectos sustitución dominen a los efectos renta en todos los bienes y a todos los precios, y excluye los complementarios, que son la regla en muchos mercados (el contraejemplo de \autor{Scarf}, con bienes complementarios, tiene un equilibrio único pero inestable). Y, por el teorema SMD, nada en la teoría del consumidor obliga a que se cumpla.
+\end{itemize}
+
+\subsection{Estabilidad del tanteo}\label{anexo:estabilidad}
+
+\begin{itemize}
+\item \emph{Intuición}: se busca una medida de lo lejos que están los precios del equilibrio que el tanteo reduzca siempre. Si existe, los precios no pueden quedarse dando vueltas ni alejarse: acaban en el equilibrio. Es el segundo método de \autor{Liapunov} para sistemas dinámicos, que no exige resolver las ecuaciones del tanteo.
+\end{itemize}
+
+\paragraph{Supuestos}
+
+\begin{itemize}
+\item \emph{Tanteo}~\eqref{eq:tatonnement}: $\dot p_k=\kappa_k\,z_k(\vect{p})$, con $\kappa_k>0$, desde un vector de precios inicial $\vect{p}(0)$ positivo.
+\item \emph{Exceso de demanda}: continuo, homogéneo de grado 0 y con la ley de \autor{Walras}.
+\item \emph{Condición de estabilidad}: hay un equilibrio $\vect{p}^*$ tal que $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ para todo $\vect{p}$ no proporcional a $\vect{p}^*$, la condición~\eqref{eq:condicion-unicidad}. \textcite{ArrowBlockHurwicz1959Stability} prueban que se cumple si todos los bienes son sustitutivos brutos; también se cumple con el axioma débil agregado \parencite[§17.H]{MasColellWhinstonGreen1995}.
+\end{itemize}
+
+\paragraph{Demostración}
+
+\begin{enumerate}
+\item \emph{El tanteo no cambia el «tamaño» de los precios}: por la ley de \autor{Walras},
+  \[
+  \frac{d}{dt}\Bigg[\frac12\sum_{k}\frac{p_k(t)^2}{\kappa_k}\Bigg]=\sum_k\frac{p_k\,\dot p_k}{\kappa_k}=\sum_kp_k\,z_k(\vect{p})=\vect{p}\cdot\vect{z}(\vect{p})=0 .
+  \]
+  Los precios se mueven sobre una «esfera» (ponderada por los $\kappa_k$) fija: no pueden irse a infinito ni a 0 todos a la vez. Por la homogeneidad, elegimos el $\vect{p}^*$ de equilibrio sobre esa misma esfera; en ella es el único vector proporcional a $\vect{p}^*$.
+\item \emph{La distancia al equilibrio}: sea
+  \[
+  V(\vect{p})=\frac12\sum_{k=1}^{n}\frac{(p_k-p^*_k)^2}{\kappa_k}\geq 0,
+  \]
+  que solo vale 0 en $\vect{p}=\vect{p}^*$.
+\item \emph{Cómo cambia con el tanteo}: derivando y usando~\eqref{eq:tatonnement},
+  \[
+  \frac{dV}{dt}=\sum_k\frac{(p_k-p^*_k)\,\dot p_k}{\kappa_k}=\sum_k(p_k-p^*_k)\,z_k(\vect{p})=\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0}-\vect{p}^*\cdot\vect{z}(\vect{p})=-\vect{p}^*\cdot\vect{z}(\vect{p}),
+  \]
+  que es la ecuación~\eqref{eq:distancia} del cuerpo.
+\item \emph{La distancia baja siempre}: mientras $\vect{p}(t)\neq\vect{p}^*$, $\vect{p}(t)$ no es proporcional a $\vect{p}^*$ (paso~1) y, por la condición de estabilidad, $dV/dt<0$.
+\item \emph{Convergencia}: $V$ es decreciente y está acotada por debajo por 0, así que converge. Si su límite fuera positivo, los precios se quedarían a una distancia mínima de $\vect{p}^*$, donde $dV/dt$ está acotada lejos de 0 (por continuidad), y $V$ seguiría bajando sin límite: imposible. Luego $V\to 0$ y $\vect{p}(t)\to\vect{p}^*$: el equilibrio es globalmente estable (teorema de \autor{Liapunov}).\findemo
+\end{enumerate}
+
+\begin{anotaciones}
+\textbf{Con 2 bienes y sustitutivos brutos}. Por la ley de \autor{Walras}, $z_Y=-\frac{p_X}{p_Y}z_X$, y
+\[
+\vect{p}^*\cdot\vect{z}(\vect{p})=p^*_Xz_X+p^*_Yz_Y=z_X\Big(p^*_X-p^*_Y\frac{p_X}{p_Y}\Big)=p^*_Y\,z_X(\vect{p})\Big(\frac{p^*_X}{p^*_Y}-\frac{p_X}{p_Y}\Big).
+\]
+Con sustitutivos brutos, $z_X$ es decreciente en el precio relativo $p_X/p_Y$ y nulo en $p^*_X/p^*_Y$: es positivo cuando $X$ está más barato que en el equilibrio y negativo cuando está más caro. Los 2 factores tienen siempre el mismo signo y el producto es positivo: se cumple la condición de estabilidad.
+\end{anotaciones}
+
+\paragraph{Valoración}
+
+\begin{itemize}
+\item \emph{Estabilidad local}: si solo se pide que el tanteo vuelva al equilibrio desde precios cercanos, basta estudiar la versión lineal del sistema alrededor de $\vect{p}^*$, con las derivadas de $\vect{z}$. \textcite{Hicks1939Value} propone unas condiciones estáticas de estabilidad «perfecta», mercado a mercado; \textcite{Samuelson1941Stability} muestra que la estabilidad hay que definirla con un proceso dinámico explícito y que las condiciones de \autor{Hicks} no son ni necesarias ni suficientes, y \textcite{Metzler1945Stability} prueba que con sustitutivos brutos las 2 coinciden.
+\item \emph{Límites}: el resultado depende de una condición, la sustitución bruta o el axioma débil agregado, que la teoría no garantiza (SMD). En el contraejemplo de \textcite{Scarf1960Examples} la distancia al equilibrio no disminuye nunca: los precios describen órbitas cerradas a su alrededor sin llegar a él.
 \end{itemize}
 
 % ==========================================================================
 \section{Anexo: el criterio de \autor{Pareto} y los teoremas del bienestar:\newline supuestos, críticas e historia}\label{anexo:pareto}
 
-\begin{itemize}
-\item Su desarrollo completo es materia de la economía del bienestar \vertema{3.A.22}; aquí se recoge lo que el cuerpo resume.
-\end{itemize}
+Su desarrollo completo es materia de la economía del bienestar \vertema{3.A.22}; aquí se recoge lo que el cuerpo resume: el criterio de \autor{Pareto} con sus ventajas y críticas, y los 2 teoremas fundamentales con sus supuestos, la demostración del primero y su historia.
 
 \subsection{El criterio de \autor{Pareto}}
 
@@ -907,22 +1361,33 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
   \item \emph{precios comunes}: todos se enfrentan a los mismos precios; no hay impuestos que abran cuñas entre ellos.
   \end{enumerate}
   Con ellos, todos igualan sus relaciones marginales~\eqref{eq:egc-2x2}: eficiencia en el consumo ($\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$), en la producción ($\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$) y global ($\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}$). Los precios reflejan íntegramente los costes de producir y la utilidad de consumir y coordinan las decisiones descentralizadas. Que el equilibrio maximice además el bienestar social depende de que coincida con el punto en que la gran frontera de posibilidades de utilidad es tangente a la curva de indiferencia social \vertema{3.A.24}.
+\item \emph{Demostración} (por reducción al absurdo, en una economía de intercambio; con producción se añade que las empresas maximizan el beneficio) \parencite[§16.C]{MasColellWhinstonGreen1995}:
+  \begin{enumerate}
+  \item sea $(\vect{x}^*_i)$ la asignación de un equilibrio con precios $\vect{p}^*$, y supongamos que no es óptima: existe otra factible, $(\vect{x}'_i)$ con $\sum_i\vect{x}'_i=\sum_i\vect{\omega}_i$, en la que nadie está peor y alguien está mejor;
+  \item quien está mejor no podía pagar su nueva cesta, porque si hubiera podido la habría elegido: $\vect{p}^*\cdot\vect{x}'_i>\vect{p}^*\cdot\vect{\omega}_i$;
+  \item quien está igual tampoco podía pagarla por menos: si $\vect{p}^*\cdot\vect{x}'_i<\vect{p}^*\cdot\vect{\omega}_i$, por la no saciedad local habría una cesta cercana, más barata que su renta y mejor que $\vect{x}'_i$, y por tanto mejor que $\vect{x}^*_i$, que no habría elegido. Así que $\vect{p}^*\cdot\vect{x}'_i\geq\vect{p}^*\cdot\vect{\omega}_i$;
+  \item sumando para todos, $\vect{p}^*\cdot\sum_i\vect{x}'_i>\vect{p}^*\cdot\sum_i\vect{\omega}_i$, lo que contradice que $(\vect{x}'_i)$ sea factible: el equilibrio es óptimo de \autor{Pareto}.\findemo
+  \end{enumerate}
+  La demostración no usa en ningún momento la convexidad, solo que los precios son comunes y que todos los bienes tienen precio.
 \item \emph{Alcance}: el teorema se ha usado a menudo como argumento del \emph{laissez-faire}, pero su relevancia se limita por la restrictividad de sus supuestos (que da pie al estudio de los fallos de mercado, \vertema{3.A.23}) y porque la eficiencia no es el único objetivo: también importan la equidad y la justicia social.
 \item \emph{Segundo teorema}: con preferencias y tecnologías convexas, todo óptimo de \autor{Pareto} puede alcanzarse como equilibrio competitivo tras una redistribución de las dotaciones con transferencias de suma fija. Su intuición está en la caja (gráfico~\ref{fig:caja-intercambio-teoremas}): para cada punto de la curva de contrato hay una dotación inicial y una recta de precios que lo hacen equilibrio. Aquí la convexidad no es un supuesto técnico, sino necesario: sin ella, el precio que separa los conjuntos de mejora puede no existir.
 \item \emph{Implicaciones}: separa la búsqueda de la eficiencia de la de la equidad, y justifica la intervención pública también por motivos de equidad, para alcanzar el óptimo de \autor{Pareto} que maximice el bienestar social. \emph{Contraargumento}: es prácticamente imposible diseñar impuestos y transferencias de suma fija que no distorsionen las decisiones (la información es privada), y reaparece el dilema entre equidad y eficiencia.
-\item \emph{Atribución}: las condiciones marginales del óptimo las formularon \textcite{Lerner1934Economic} y \textcite{Lange1942Foundations}; la demostración moderna de los 2 teoremas, con análisis convexo y sin diferenciabilidad, se debe a \textcite{Arrow1951Extension} y \textcite{Debreu1951Coefficient}, por separado.
+\item \emph{Atribución}: las condiciones marginales del óptimo las formularon \textcite{Lerner1934Economic,Lerner1944Economics} y \textcite{Lange1942Foundations}; la demostración moderna de los 2 teoremas, con análisis convexo y sin diferenciabilidad, se debe a \textcite{Arrow1951Extension} y \textcite{Debreu1951Coefficient}, por separado.
 \end{itemize}
 
 % ==========================================================================
 \section{Anexo: estabilidad en un mercado:\newline ajuste walrasiano y marshalliano}\label{anexo:estabilidad-parcial}
 
+Este anexo recoge el caso más sencillo de la estabilidad (II.1.3): un solo mercado, con los demás precios dados \vertema{3.A.16}. Sirve para ver que la respuesta depende del mecanismo de ajuste que se suponga.
+
 \begin{itemize}
-\item En un solo mercado \vertema{3.A.16} hay 2 mecanismos de ajuste, con $x(p)$ la demanda y $q(p)$ la oferta:
+\item \emph{Los 2 mecanismos}: con $x(p)$ la demanda y $q(p)$ la oferta,
   \begin{itemize}
   \item \concepto{ajuste walrasiano (por precios)}: el precio sube si hay exceso de demanda, $\dot p=f\big(z(p)\big)$ con $z(p)=x(p)-q(p)$ y $f'>0$. El equilibrio es estable si un precio por encima del de equilibrio genera exceso de oferta: $z'(p)<0$;
-  \item \concepto{ajuste marshalliano (por cantidades)}: la cantidad aumenta si el precio de demanda supera al de oferta, $\dot q=g\big(p^D(q)-p^S(q)\big)$ con $g'>0$. El equilibrio es estable si, a la derecha del equilibrio, el precio de demanda cae por debajo del de oferta: $\frac{d}{dq}\big(p^D(q)-p^S(q)\big)<0$.
+  \item \concepto{ajuste marshalliano (por cantidades)}: la cantidad aumenta si el precio de demanda (lo que los compradores están dispuestos a pagar) supera al de oferta (lo que piden los vendedores), $\dot q=g\big(p^D(q)-p^S(q)\big)$ con $g'>0$. El equilibrio es estable si, a la derecha del equilibrio, el precio de demanda cae por debajo del de oferta: $\frac{d}{dq}\big(p^D(q)-p^S(q)\big)<0$.
   \end{itemize}
-\item Con oferta creciente y demanda decreciente, los 2 ajustes son estables. Si las 2 curvas tienen pendiente negativa (oferta con rendimientos crecientes, o demanda de un bien \autor{Giffen} y oferta creciente), dan resultados opuestos (tabla~\ref{tab:estabilidad-parcial} y gráfico~\ref{fig:estabilidad-parcial}): con pendientes $a=dp^D/dq<0$ y $b=dp^S/dq<0$, el ajuste walrasiano exige $1/a<1/b$ y el marshalliano, $a<b$, que son incompatibles.
+\item \emph{Cuándo coinciden}: con oferta creciente y demanda decreciente, los 2 ajustes son estables (primera columna de la tabla~\ref{tab:estabilidad-parcial} y primer panel del gráfico~\ref{fig:estabilidad-parcial}).
+\item \emph{Cuándo difieren}: si las 2 curvas tienen pendiente negativa (oferta con economías externas o rendimientos crecientes, o demanda de un bien \autor{Giffen} y oferta creciente), dan resultados opuestos (columnas y paneles segundo y tercero): con pendientes $a=dp^D/dq<0$ y $b=dp^S/dq<0$, el ajuste walrasiano exige $1/a<1/b$ y el marshalliano, $a<b$, que son incompatibles.
 \end{itemize}
 
 \begin{table}[H]
@@ -944,17 +1409,20 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
 
 \begin{figure}[H]
 \centering
-\caption{Ajuste walrasiano y marshalliano en un mercado con oferta y demanda decrecientes}\label{fig:estabilidad-parcial}
-\grafico[0.85\textwidth]{estabilidad-parcial}
+\caption{Interpretación gráfica de los 3 casos de la tabla: ajuste walrasiano y marshalliano}\label{fig:estabilidad-parcial}
+\grafico[1.0\textwidth]{estabilidad-parcial}
 \fuente{elaboración propia a partir de \textcite[cap.~21]{Varian1992Microeconomic}.}
 \end{figure}
 
 \begin{itemize}
-\item \emph{Valoración}: si el equilibrio es estable, el propio mercado tiende a él sin intervención; si no, la mano invisible no basta. En equilibrio general la pregunta es la del tanteo multimercado (II.1.3).
+\item \emph{Cómo se lee el gráfico}: cada panel está debajo de la columna de la tabla a la que corresponde, y bajo la primera columna va la leyenda. Las flechas sobre el eje de precios son el ajuste walrasiano (se mueve el precio) y las del eje de cantidades, el marshalliano (se mueve la cantidad); un ajuste es estable si sus flechas apuntan hacia el equilibrio (en verde) e inestable si se alejan (en rojo).
+\item \emph{Valoración}: si el equilibrio es estable, el propio mercado tiende a él sin intervención; si no, la mano invisible no basta. En equilibrio general la pregunta es la del tanteo multimercado (II.1.3 y anexo~\ref{anexo:estabilidad}).
 \end{itemize}
 
 % ==========================================================================
 \section{Anexo: estática comparativa del modelo 2×2×2×2:\newline \autor{Stolper}-\autor{Samuelson} y \autor{Rybczynski}}\label{anexo:estatica}
+
+Una vez estudiadas la existencia y la unicidad del equilibrio (II.1), este anexo recoge cómo cambia cuando cambian los datos: es la estática comparativa que aplican los modelos computables (III.5).
 
 \begin{itemize}
 \item \emph{Idea}: ¿cómo cambia el equilibrio si cambian los datos (preferencias, dotaciones, tecnología, impuestos)? Si $\vect{z}(\vect{p};\alpha)=\vect{0}$ y el equilibrio es regular, el teorema de la función implícita da, con el numerario fijo,
@@ -973,11 +1441,25 @@ En el cante: \autor{Edgeworth} sobre la caja de intercambio que sigue en la piza
   \hat p_X=s_{LX}\hat w_L+s_{KX}\hat w_K,\qquad \hat p_Y=s_{LY}\hat w_L+s_{KY}\hat w_K .
   \end{equation}
   Cada precio es una media ponderada de los precios de los factores. Si $X$ es intensivo en trabajo ($s_{LX}>s_{LY}$) y $\hat p_X>\hat p_Y$, entonces $\hat w_L>\hat p_X>\hat p_Y>\hat w_K$: es el \concepto{efecto magnificación} de \textcite{Jones1965Structure}, que contiene el \concepto{teorema de \autor{Stolper}-\autor{Samuelson}} \parencite{StolperSamuelson1941Protection}: si sube el precio relativo de un bien, sube más que proporcionalmente la remuneración real del factor que usa intensivamente y baja la del otro.
+  \begin{itemize}
+  \item \emph{Demostración}: con beneficio nulo, $p_j=w_La_{Lj}+w_Ka_{Kj}$, así que las participaciones suman 1, $s_{Lj}+s_{Kj}=1$, y cada $\hat p_j$ es una media ponderada, con pesos estrictamente positivos, de $\hat w_L$ y $\hat w_K$: está estrictamente entre los 2 si $\hat w_L\neq\hat w_K$.\footnote{Al diferenciar $p_j=c_j(w_L,w_K)$ no aparecen los cambios de los $a_{ij}$: por el lema de \autor{Shephard}, la empresa ya los ha elegido para minimizar el coste, y su efecto es de segundo orden ($w_L\,da_{Lj}+w_K\,da_{Kj}=0$).} Restando las 2 ecuaciones y usando $s_{Kj}=1-s_{Lj}$,
+    \begin{equation*}
+    \hat p_X-\hat p_Y=(s_{LX}-s_{LY})\,(\hat w_L-\hat w_K).
+    \end{equation*}
+    Si $s_{LX}>s_{LY}$ y $\hat p_X>\hat p_Y$, entonces $\hat w_L>\hat w_K$. Como los 2 precios de los bienes son medias de $\hat w_L$ y $\hat w_K$, quedan entre ellos: $\hat w_L>\hat p_X>\hat p_Y>\hat w_K$.\findemo
+  \end{itemize}
 \item \emph{Del lado de las cantidades} (gráfico~\ref{fig:rybczynski}): a precios de los bienes constantes, los precios de los factores y los $a_{ij}$ no cambian, y las ecuaciones de pleno empleo dan, con $\ell_{Lj}=a_{Lj}q_j/\overline{L}$ la fracción del trabajo empleada en $j$ (con $q_X=X$, $q_Y=Y$),
   \begin{equation}
   \hat{\overline{L}}=\ell_{LX}\hat X+\ell_{LY}\hat Y,\qquad \hat{\overline{K}}=\ell_{KX}\hat X+\ell_{KY}\hat Y .
   \end{equation}
   Si $X$ es intensivo en trabajo y $\hat{\overline{L}}>\hat{\overline{K}}$, entonces $\hat X>\hat{\overline{L}}>\hat{\overline{K}}>\hat Y$: es el \concepto{teorema de \autor{Rybczynski}} \parencite{Rybczynski1955Factor}: a precios constantes, si aumenta la dotación de un factor, aumenta más que proporcionalmente la producción del bien que lo usa intensivamente y cae la del otro.
+  \begin{itemize}
+  \item \emph{Demostración}: las fracciones de cada factor empleadas en los 2 sectores suman 1, $\ell_{LX}+\ell_{LY}=1$ y $\ell_{KX}+\ell_{KY}=1$, así que $\hat{\overline{L}}$ y $\hat{\overline{K}}$ son medias ponderadas de $\hat X$ y $\hat Y$. Restando las 2 ecuaciones,
+    \begin{equation*}
+    \hat{\overline{L}}-\hat{\overline{K}}=(\ell_{LX}-\ell_{KX})\,(\hat X-\hat Y).
+    \end{equation*}
+    Que $X$ sea intensivo en trabajo equivale a que emplee una fracción mayor del trabajo que del capital, $\ell_{LX}>\ell_{KX}$. Si $\hat{\overline{L}}>\hat{\overline{K}}$, entonces $\hat X>\hat Y$, y como las 2 dotaciones son medias de $\hat X$ y $\hat Y$, quedan entre ellas: $\hat X>\hat{\overline{L}}>\hat{\overline{K}}>\hat Y$.\findemo
+  \end{itemize}
 \item \emph{Valoración}: los resultados dependen de que se produzcan los 2 bienes y de que no haya reversión de intensidades factoriales. Con más bienes que factores, o más factores que bienes, solo se mantienen versiones débiles \parencite{Jones1965Structure}.
 \end{itemize}
 

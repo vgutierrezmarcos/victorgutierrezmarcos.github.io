@@ -9,7 +9,7 @@
 \usepackage{tcee}
 
 \tcetema[La teorÃ­a del equilibrio general]{3.A.21}{La teorÃ­a del equilibrio general.}
-\tcefecha{16/10/2026}
+\tcefecha{17/10/2026}
 
 \end_preamble
 \use_default_options false
@@ -1431,7 +1431,7 @@ Edgeworth
 
 \end_inset
 
- (III.1) y el nÃºcleo, con el comportamiento estratÃ©gico y las no convexidades (III.2); el dinero (III.3); el tiempo y la incertidumbre (III.4), y los modelos de equilibrio general computable (III.5). 
+ y la negociaciÃ³n (III.1) y el nÃºcleo, con el comportamiento estratÃ©gico y las no convexidades (III.2); el dinero (III.3); el tiempo y la incertidumbre (III.4), y los modelos de equilibrio general computable (III.5). 
 \end_layout
 
 \end_deeper
@@ -1817,7 +1817,22 @@ Walras
 
 \end_inset
 
-, equilibrio general, punto fijo, distancia al equilibrio y nÃºcleo). Los grÃ¡ficos imprescindibles son la caja de la producciÃ³n con la FPP y los precios, la caja de intercambio (que crece desde I.3 hasta III.2), el punto fijo de 
+, equilibrio general, punto fijo, distancia al equilibrio, nÃºcleo, dicotomÃ­a clÃ¡sica y bienes contingentes). Al empezar el bloque
+\begin_inset space ~
+
+\end_inset
+
+I, la imagen del mapa a escala de uno a uno de Joan 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Robinson
+\end_layout
+
+\end_inset
+
+ justifica en una frase por quÃ© el modelo hace supuestos tan fuertes. Los grÃ¡ficos imprescindibles son la caja de la producciÃ³n con la FPP y los precios, la caja de intercambio (que crece desde I.3 hasta III.2), el punto fijo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1827,7 +1842,22 @@ Brouwer
 
 \end_inset
 
- y el exceso de demanda con varios equilibrios. La demostraciÃ³n de la existencia, los teoremas del bienestar en detalle, la estabilidad en un mercado y la estÃ¡tica comparativa estÃ¡n en los anexos, para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar. 
+ y el exceso de demanda con varios equilibrios. Las demostraciones de la existencia, de la unicidad y de la estabilidad, los teoremas del bienestar en detalle, la estabilidad en un mercado y la estÃ¡tica comparativa estÃ¡n en los anexos
+\begin_inset space ~
+
+\end_inset
+
+A a
+\begin_inset space ~
+
+\end_inset
+
+E, para las preguntas del tribunal; la teorÃ­a de la negociaciÃ³n, el desarrollo tÃ©cnico de las no convexidades y el del dinero, en notas y cajas grises del bloque
+\begin_inset space ~
+
+\end_inset
+
+III. Conviene escribir este esquema en la pizarra al empezar. 
 \end_layout
 
 \end_inset
@@ -1887,6 +1917,70 @@ Idea
 : plantearemos las decisiones de todos los agentes a la vez, obtendremos sus funciones de oferta y de demanda y exigiremos que se vacÃ­en todos los mercados simultÃ¡neamente. Â¿Es posible modelizar de manera agregada y sencilla el comportamiento de una economÃ­a en su conjunto? 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Joan 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Robinson
+\end_layout
+
+\end_inset
+
+ lo resume con una imagen: Â«un modelo que tomara en cuenta toda la diversidad de la realidad serÃ­a tan poco Ãºtil como un mapa a escala de uno a unoÂ» 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[33]{Robinson1962Economic}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+En el original: Â«
+\emph on
+A model which took account of all the variegation of reality would be of no more use than a map at the scale of one to one
+\emph default
+Â» 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[33]{Robinson1962Economic}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Por eso el modelo hace supuestos tan fuertes (2 bienes, 2 factores, 2 consumidores, 2 empresas, competencia perfecta, convexidad): no pretenden ser realistas, sino dejar a la vista el mecanismo que interesa, cÃ³mo los precios coordinan a todos los agentes a la vez. El bloque
+\begin_inset space ~
+
+\end_inset
+
+III comprueba quÃ© queda de ese mecanismo cuando se relajan. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -1937,7 +2031,7 @@ nolink "false"
 
 \end_inset
 
-), el exceso de demanda con sus propiedades y la ley de 
+), la demanda de mercado y lo que hereda de las individuales, el exceso de demanda con sus propiedades y la ley de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -2070,8 +2164,8 @@ status collapsed
 Supuestos
 \end_layout
 
-\begin_layout Itemize
-La economÃ­a que estudiamos es un 
+\begin_layout Standard
+Para responder a esa pregunta empezamos por describir la economÃ­a que estudiamos: un 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2081,7 +2175,7 @@ modelo de equilibrio general competitivo 2Ã2Ã2Ã2 estÃ¡tico
 
 \end_inset
 
- con estos supuestos: 
+, con estos supuestos.
 \end_layout
 
 \begin_layout Itemize
@@ -3034,7 +3128,21 @@ Variables
 \end_layout
 
 \begin_layout Itemize
-Para explicar cÃ³mo se forman los precios, 
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Tanteo
+\end_layout
+
+\end_inset
+
+ (
+\emph on
+tÃ¢tonnement
+\emph default
+): para explicar cÃ³mo se forman los precios, 
 \begin_inset Flex Autor
 status collapsed
 
@@ -3044,21 +3152,7 @@ Walras
 
 \end_inset
 
- recurre a un proceso de 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-tanteo
-\end_layout
-
-\end_inset
-
- (
-\emph on
-tÃ¢tonnement
-\emph default
-) en el que los precios suben donde hay exceso de demanda y bajan donde hay exceso de oferta hasta vaciar todos los mercados: la variable de ajuste son los precios.
+ recurre a un proceso en el que los precios suben donde hay exceso de demanda y bajan donde hay exceso de oferta hasta vaciar todos los mercados: la variable de ajuste son los precios.
 \begin_inset Foot
 status collapsed
 
@@ -3242,12 +3336,30 @@ status collapsed
 Desarrollo
 \end_layout
 
+\begin_layout Standard
+Una vez fijados los supuestos, pasamos a obtener el comportamiento de cada tipo de agente: primero las empresas (oferta de bienes y demanda de factores), despuÃ©s los consumidores (demanda de bienes y oferta de factores) y, por Ãºltimo, cÃ³mo se juntan las dos cosas en el exceso de demanda y la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsubsection
 Productores y oferta
 \end_layout
 
 \begin_layout Itemize
-Con los supuestos de I.1, cada empresa 
+
+\emph on
+Problema
+\emph default
+: con los supuestos de I.1, cada empresa 
 \begin_inset Formula $j=X,Y$
 \end_inset
 
@@ -3795,8 +3907,16 @@ textcite{Bator1957Simple}
 Consumidores y demanda
 \end_layout
 
+\begin_layout Standard
+Una vez obtenida la oferta de las empresas, pasamos al otro lado de los mercados: los consumidores, que demandan los bienes y ofrecen los factores.
+\end_layout
+
 \begin_layout Itemize
-Con los supuestos de I.1, cada consumidor 
+
+\emph on
+Problema
+\emph default
+: con los supuestos de I.1, cada consumidor 
 \begin_inset Formula $i=A,B$
 \end_inset
 
@@ -3955,19 +4075,384 @@ I.2.4.
 
 \end_deeper
 \begin_layout Itemize
-La demanda de mercado de cada bien es la suma horizontal de las individuales, 
-\begin_inset Formula $X(\vect{p})=X_A(\vect{p})+X_B(\vect{p})$
+
+\emph on
+Oferta de factores
+\emph default
+: en el modelo bÃ¡sico el ocio no da utilidad, asÃ­ que cada consumidor ofrece toda su dotaciÃ³n, 
+\begin_inset Formula $\overline{L}_i$
 \end_inset
 
-, y conserva esas propiedades. En el modelo bÃ¡sico el ocio no da utilidad, asÃ­ que la oferta de factores es la dotaciÃ³n. 
+ y 
+\begin_inset Formula $\overline{K}_i$
+\end_inset
+
+, sea cual sea su precio. 
+\end_layout
+
+\begin_layout Paragraph
+La demanda de mercado
+\end_layout
+
+\begin_layout Standard
+Para pasar de cada consumidor al mercado hay que sumar, y la suma no es inocente: conserva unas propiedades de las demandas individuales y pierde otras. Las que conserva son justo las que necesita el exceso de demanda para que el equilibrio exista (II.1.1); las que pierde explican por quÃ© la unicidad y la estabilidad son tan difÃ­ciles de garantizar (II.1.2 y II.1.3).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+CÃ³mo se obtiene
+\emph default
+: la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+demanda de mercado
+\end_layout
+
+\end_inset
+
+ de un bien es la 
+\emph on
+suma horizontal
+\emph default
+ de las demandas individuales. A cada vector de precios se suman las cantidades que demanda cada consumidor con la renta que obtiene a esos precios: 
+\begin_inset Formula \begin{equation}
+  X(\vect{p})=X_A\big(\vect{p},\overline{W}_A(\vect{p})\big)+X_B\big(\vect{p},\overline{W}_B(\vect{p})\big),\qquad\text{y en general}\quad \vect{x}(\vect{p})=\sum_{i=1}^{I}\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big). \label{eq:demanda-mercado}
+  \end{equation}
+\end_inset
+
+GrÃ¡ficamente, en el plano 
+\begin_inset Formula $(X,p_X)$
+\end_inset
+
+ y con los demÃ¡s precios fijos, a cada precio se suman en horizontal las cantidades de 
+\begin_inset Formula $A$
+\end_inset
+
+ y de 
+\begin_inset Formula $B$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© hereda
+\emph default
+: las propiedades que se conservan al sumar: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+la 
+\emph on
+continuidad
+\emph default
+: la suma de funciones continuas es continua; 
+\end_layout
+
+\begin_layout Enumerate
+la 
+\emph on
+homogeneidad de grado 0
+\emph default
+ en todos los precios: si cada sumando no cambia al multiplicar 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+ por 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+, la suma tampoco; 
+\end_layout
+
+\begin_layout Enumerate
+la 
+\emph on
+ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+
+\emph default
+: sumando las restricciones presupuestarias, el gasto total iguala la renta total, 
+\begin_inset Formula $\vect{p}\cdot\vect{x}(\vect{p})=\sum_i\overline{W}_i(\vect{p})$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+la 
+\emph on
+cota inferior
+\emph default
+: ningÃºn consumidor demanda cantidades negativas. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+QuÃ© no hereda
+\emph default
+: las propiedades que dependen de cÃ³mo responde cada consumidor a los cambios de su renta: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+la demanda de mercado depende de 
+\emph on
+cÃ³mo se reparte
+\emph default
+ la renta, no solo de su total: si los precios pasan renta de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $B$
+\end_inset
+
+ y estos gastan de forma distinta, la demanda cambia aunque la renta total no cambie. Solo depende de la renta total si todos los consumidores gastan igual cada euro adicional (curvas de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Engel
+\end_layout
+
+\end_inset
+
+ rectas y paralelas entre consumidores: la forma polar de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Gorman
+\end_layout
+
+\end_inset
+
+) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§4.B]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+la 
+\emph on
+ley de la demanda
+\emph default
+ y la simetrÃ­a y la semidefiniciÃ³n negativa de la matriz de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+, que valen para cada consumidor 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.9
+\end_layout
+
+\end_inset
+
+, no tienen por quÃ© valer en el agregado; 
+\end_layout
+
+\begin_layout Enumerate
+el 
+\emph on
+axioma dÃ©bil de la preferencia revelada
+\emph default
+: cada consumidor lo cumple 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.8
+\end_layout
+
+\end_inset
+
+, pero la demanda de mercado no tiene por quÃ© cumplirlo 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§4.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Por quÃ© en equilibrio general es mÃ¡s grave
+\emph default
+: la renta de cada consumidor no estÃ¡ dada, sino que sale de vender su dotaciÃ³n a los precios de mercado. Si sube el precio de un bien, quien lo vende se enriquece y quien lo compra se empobrece: a los efectos sustituciÃ³n y renta de siempre se suma un 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+efecto renta-dotaciÃ³n
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Derivando 
+\begin_inset Formula $x_{ik}\big(\vect{p},\vect{p}\cdot\vect{\omega}_i\big)$
+\end_inset
+
+ respecto de 
+\begin_inset Formula $p_k$
+\end_inset
+
+ y usando la ecuaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Slutsky
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $\frac{d x_{ik}}{d p_k}=S^i_{kk}-\big(x_{ik}-\omega_{ik}\big)\frac{\partial x_{ik}}{\partial \overline{W}_i}$
+\end_inset
+
+, donde 
+\begin_inset Formula $S^i_{kk}<0$
+\end_inset
+
+ es el efecto sustituciÃ³n. Para un 
+\emph on
+vendedor neto
+\emph default
+ del bien (
+\begin_inset Formula $x_{ik}<\omega_{ik}$
+\end_inset
+
+) y un bien normal, el segundo tÃ©rmino es positivo: la subida del precio lo enriquece y su demanda del bien puede aumentar aunque el bien no sea 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Giffen
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Por eso incluso la demanda de un solo consumidor puede aumentar con el precio del bien, y al sumar consumidores con dotaciones distintas los efectos renta no se compensan. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Por quÃ© importa para el exceso de demanda
+\emph default
+: el exceso de demanda de I.2.3 es la demanda de mercado menos la oferta. Hereda de ella la continuidad, la homogeneidad de grado 0 y la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, que bastan para la existencia, pero no ninguna forma concreta (no tiene por quÃ© ser decreciente en su propio precio): es lo que dice el teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Sonnenschein
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mantel
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Debreu
+\end_layout
+
+\end_inset
+
+ (II.1.2). 
 \end_layout
 
 \begin_layout Subsubsection
 FunciÃ³n de exceso de demanda
 \end_layout
 
+\begin_layout Standard
+Con la oferta de las empresas y la demanda de los consumidores ya podemos juntar los 2 lados de cada mercado en una sola funciÃ³n.
+\end_layout
+
 \begin_layout Itemize
-El 
+
+\emph on
+DefiniciÃ³n
+\emph default
+: el 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -4042,7 +4527,11 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-En general, con 
+
+\emph on
+Caso general
+\emph default
+: con 
 \begin_inset Formula $n$
 \end_inset
 
@@ -4618,7 +5107,11 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Su gran ventaja es que 
+
+\emph on
+Ventaja
+\emph default
+: 
 \emph on
 todo el modelo queda en funciÃ³n de los precios
 \emph default
@@ -4702,7 +5195,11 @@ condiciÃ³n de frontera
 
 \end_deeper
 \begin_layout Itemize
-SegÃºn su exceso de demanda en el equilibrio, hay 2 tipos de bienes (grÃ¡fico
+
+\emph on
+Tipos de bienes
+\emph default
+: segÃºn su exceso de demanda en el equilibrio, hay 2 (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -4718,7 +5215,11 @@ nolink "false"
 
 \end_inset
 
-): 
+: arriba, la oferta y la demanda de cada bien; abajo, su funciÃ³n de exceso de demanda 
+\begin_inset Formula $z_k(p_k)$
+\end_inset
+
+, con los demÃ¡s precios dados): 
 \end_layout
 
 \begin_deeper
@@ -4739,6 +5240,10 @@ bienes econÃ³micos
 
  y 
 \begin_inset Formula $z_k(\vect{p}^*)=0$
+\end_inset
+
+. Su funciÃ³n de exceso de demanda es positiva a precios bajos, negativa a precios altos y corta el eje de precios justo en 
+\begin_inset Formula $p^*_k$
 \end_inset
 
 ; 
@@ -4763,7 +5268,11 @@ bienes libres
 \begin_inset Formula $z_k(\vect{p}^*)\leq 0$
 \end_inset
 
- (el aire que se respira). Admitirlos permite que el modelo tenga soluciÃ³n tambiÃ©n en ese caso: es la aportaciÃ³n de 
+ (el aire que se respira). Su funciÃ³n de exceso de demanda queda por debajo de 0 en todo su recorrido, tambiÃ©n en 
+\begin_inset Formula $p_k=0$
+\end_inset
+
+, asÃ­ que no corta el eje: el precio no puede bajar mÃ¡s y el bien sigue sobrando. Admitirlos permite que el modelo tenga soluciÃ³n tambiÃ©n en ese caso: es la aportaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4813,7 +5322,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Bienes econÃ³micos y bienes libres
+Bienes econÃ³micos y bienes libres: mercado y funciÃ³n de exceso de demanda
 \end_layout
 
 \end_inset
@@ -4933,13 +5442,31 @@ Walras
 
 \end_layout
 
+\begin_layout Standard
+Las propiedades del exceso de demanda tienen una consecuencia que da forma a todo el modelo: la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Itemize
 
+\emph on
+Enunciado
+\emph default
+: la 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Ley de 
+ley de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4954,7 +5481,7 @@ Walras
 
 \end_inset
 
-: para 
+ dice que, para 
 \emph on
 cualquier
 \emph default
@@ -5243,7 +5770,19 @@ DemostraciÃ³n
 \begin_inset Formula $\vect{p}\cdot\big(\sum_i\vect{x}_i-\sum_i\vect{\omega}_i-\sum_j\vect{y}_j\big)=0$
 \end_inset
 
-. Solo exige que las preferencias sean localmente no saciables, para que las restricciones presupuestarias se saturen. 
+. Solo exige que las preferencias sean localmente no saciables, para que las restricciones presupuestarias se saturen.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -5329,7 +5868,11 @@ numerario
 
 \end_deeper
 \begin_layout Itemize
-La ley de 
+
+\emph on
+Naturaleza
+\emph default
+: la ley de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -5453,8 +5996,16 @@ status collapsed
 Implicaciones: equilibrio general competitivo
 \end_layout
 
+\begin_layout Standard
+Una vez obtenidos el comportamiento de todos los agentes y el exceso de demanda, pasamos a definir el objeto central del tema: el equilibrio.
+\end_layout
+
 \begin_layout Itemize
-Un 
+
+\emph on
+DefiniciÃ³n
+\emph default
+: un 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -5694,7 +6245,11 @@ status collapsed
 
 \end_deeper
 \begin_layout Itemize
-En el 2Ã2Ã2Ã2 el equilibrio reÃºne las condiciones de los apartados anteriores, con los 4 mercados vaciados: 
+
+\emph on
+En el 2Ã2Ã2Ã2
+\emph default
+: el equilibrio reÃºne las condiciones de los apartados anteriores, con los 4 mercados vaciados: 
 \begin_inset Formula \begin{equation}
   \mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\frac{p_X}{p_Y}=\mathrm{RMT}_{XY},\qquad \mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\frac{w_L}{w_K}. \label{eq:egc-2x2}
   \end{equation}
@@ -5704,7 +6259,11 @@ En el 2Ã2Ã2Ã2 el equilibrio reÃºne las condiciones de los apartados a
 \end_layout
 
 \begin_layout Itemize
-Â¿CÃ³mo se forman los precios? La literatura personifica el tanteo de 
+
+\emph on
+FormaciÃ³n de los precios
+\emph default
+: Â¿quiÃ©n los fija? La literatura personifica el tanteo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6148,7 +6707,7 @@ II.
 status collapsed
 
 \begin_layout Standard
-QuÃ© es de este tema y quÃ© del vecino: la competencia perfecta en un mercado aislado (equilibrio parcial, corto y largo plazo, ajuste y estabilidad de ese mercado) es materia del equilibrio parcial 
+QuÃ© es de este tema y quÃ© del tema 3.A.16: la competencia perfecta en un mercado aislado (equilibrio parcial, corto y largo plazo, ajuste y estabilidad de ese mercado) es materia del equilibrio parcial 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -6214,6 +6773,19 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Idea
+\emph default
+: una vez construido el modelo y definido el equilibrio (bloque
+\begin_inset space ~
+
+\end_inset
+
+I), pasamos a estudiar sus propiedades: primero las positivas, quÃ© dice el equilibrio como descripciÃ³n de una economÃ­a de mercado (II.1), y despuÃ©s la normativa, si el resultado es deseable (II.2). 
 \end_layout
 
 \begin_layout Itemize
@@ -6408,7 +6980,7 @@ Pareto
 
 \end_inset
 
- y los 2 teoremas en enunciados (
+ y los 2 teoremas fundamentales con su nombre completo, su idea y sus supuestos, en palabras (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -6418,7 +6990,39 @@ status collapsed
 
 \end_inset
 
-). La demostraciÃ³n de la existencia, la unicidad con el axioma dÃ©bil, la estabilidad en un mercado, la estÃ¡tica comparativa y los teoremas del bienestar en detalle estÃ¡n en los anexos. 
+). Las demostraciones de la existencia, de la unicidad (por el axioma dÃ©bil y por los sustitutivos brutos) y de la estabilidad del tanteo estÃ¡n en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:existencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+; la estabilidad en un mercado, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:estabilidad-parcial"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+; la estÃ¡tica comparativa y los teoremas del bienestar en detalle, en sus anexos. 
 \end_layout
 
 \end_inset
@@ -6449,7 +7053,11 @@ AnÃ¡lisis positivo del equilibrio general competitivo
 \end_layout
 
 \begin_layout Itemize
-Un modelo que pretende explicar los precios tiene que responder a 3 preguntas: 
+
+\emph on
+Las 3 preguntas
+\emph default
+: un modelo que pretende explicar los precios tiene que responder a 3: 
 \end_layout
 
 \begin_deeper
@@ -6496,6 +7104,14 @@ estabilidad
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\emph on
+El orden
+\emph default
+: cada pregunta presupone la anterior. Primero, si hay algÃºn equilibrio; despuÃ©s, cuÃ¡ntos hay, y por Ãºltimo, si la economÃ­a llega a alguno. 
+\end_layout
+
 \begin_layout Subsubsection
 Existencia
 \end_layout
@@ -6779,13 +7395,17 @@ i) Supuestos
 \end_layout
 
 \begin_layout Itemize
-Basta con que la funciÃ³n de exceso de demanda sea 
+
 \emph on
-continua
+Sobre el exceso de demanda
+\emph default
+: basta con que sea 
+\emph on
+continuo
 \emph default
 , 
 \emph on
-homogÃ©nea de grado 0
+homogÃ©neo de grado 0
 \emph default
  y cumpla la 
 \emph on
@@ -6858,7 +7478,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Herramienta: el 
+
+\emph on
+Herramienta
+\emph default
+: el 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -7102,6 +7726,36 @@ textcite{DelgadoToral2014Introduccion}
 ii) Desarrollo
 \end_layout
 
+\begin_layout Standard
+La prueba tiene 3 pasos: un conjunto de precios con las propiedades que pide 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+, una funciÃ³n continua de ese conjunto en sÃ­ mismo que imita al subastador y la comprobaciÃ³n de que su punto fijo es un equilibrio. AquÃ­ va la intuiciÃ³n de cada paso; la demostraciÃ³n completa, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:existencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -7260,11 +7914,15 @@ no constructiva
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
-Los supuestos cruciales son la convexidad y la ausencia de poder de mercado, que el apartado
+
+\emph on
+Supuestos cruciales
+\emph default
+: la convexidad y la ausencia de poder de mercado, que el apartado
 \begin_inset space ~
 
 \end_inset
@@ -7273,7 +7931,11 @@ III.2 relaja.
 \end_layout
 
 \begin_layout Itemize
-La existencia no dice nada del nÃºmero de equilibrios ni de cÃ³mo se alcanzan: son las preguntas de los apartados siguientes. 
+
+\emph on
+Lo que no dice
+\emph default
+: nada del nÃºmero de equilibrios ni de cÃ³mo se alcanzan: son las preguntas de los apartados siguientes. 
 \end_layout
 
 \begin_layout Standard
@@ -7362,18 +8024,20 @@ http://math.uchicago.edu/~may/REU2019/REUPapers/Liu,Zhengyang.pdf
 Unicidad
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Existencia no implica unicidad
+\begin_layout Standard
+Una vez que sabemos que el equilibrio existe, la pregunta siguiente es cuÃ¡ntos hay.
 \end_layout
 
-\end_inset
+\begin_layout Paragraph
+a) Idea
+\end_layout
 
-. Con 2 bienes y 
+\begin_layout Itemize
+
+\emph on
+Existencia no implica unicidad
+\emph default
+: con 2 bienes y 
 \begin_inset Formula $p_Y=1$
 \end_inset
 
@@ -7401,7 +8065,15 @@ nolink "false"
 
 \end_inset
 
-). Con equilibrios mÃºltiples el modelo no predice cuÃ¡l se alcanza y la estÃ¡tica comparativa
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Por quÃ© importa
+\emph default
+: con equilibrios mÃºltiples el modelo no predice cuÃ¡l se alcanza y la estÃ¡tica comparativa
 \begin_inset Foot
 status collapsed
 
@@ -7468,20 +8140,14 @@ nolink "false"
 
 \end_inset
 
- pierde sentido: no se sabe a quÃ© equilibrio irÃ¡ la economÃ­a tras una perturbaciÃ³n. 
+ pierde sentido: no se sabe a quÃ© equilibrio irÃ¡ la economÃ­a tras una perturbaciÃ³n, y la polÃ­tica econÃ³mica no puede anticipar sus efectos. 
 \end_layout
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-EconomÃ­as regulares
-\end_layout
-
-\end_inset
-
+\emph on
+Lo que se sabe en general
+\emph default
 : 
 \begin_inset ERT
 status collapsed
@@ -7498,7 +8164,17 @@ textcite{Debreu1970Economies}
 \emph on
 salvo en un conjunto de economÃ­as de medida nula
 \emph default
-, el nÃºmero de equilibrios es finito y cada uno es localmente Ãºnico (no hay continuos de equilibrios). AdemÃ¡s, el nÃºmero es impar, por el 
+ (
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+economÃ­as regulares
+\end_layout
+
+\end_inset
+
+), el nÃºmero de equilibrios es finito y cada uno es localmente Ãºnico (no hay continuos de equilibrios). AdemÃ¡s, el nÃºmero es impar, por el 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -7532,7 +8208,11 @@ parencite{Dierker1972Two}
 \begin_inset Formula $+1$
 \end_inset
 
-. 
+. Para que sea 
+\emph on
+uno solo
+\emph default
+ hacen falta supuestos adicionales: es el modelo que sigue. 
 \end_layout
 
 \begin_layout Standard
@@ -7671,31 +8351,223 @@ textcite[Â§17.D y Â§17.H]{MasColellWhinstonGreen1995}
 
 \end_layout
 
+\begin_layout Paragraph
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
 \begin_layout Itemize
-Para la 
+
 \emph on
-unicidad global
+Los de la existencia
 \emph default
- hacen falta condiciones sobre 
-\begin_inset Formula $\vect{z}$
+: exceso de demanda continuo, homogÃ©neo de grado 0, que cumple la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
 \end_inset
 
- que se resumen en una: 
+ y la condiciÃ³n de frontera, de modo que todos los precios de equilibrio son positivos y en el equilibrio 
+\begin_inset Formula $\vect{z}(\vect{p}^*)=\vect{0}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Una condiciÃ³n sobre la forma del exceso de demanda
+\emph default
+, que la teorÃ­a del consumidor no garantiza en el agregado (I.2.2). Hay 2 condiciones suficientes conocidas: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+sustitutivos brutos
+\end_layout
+
+\end_inset
+
+: todos los bienes lo son si el exceso de demanda de cada uno aumenta con el precio de cualquier otro, 
 \begin_inset Formula \begin{equation}
-  \vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\text{para todo }\vect{p}\text{ no proporcional a }\vect{p}^*, \label{eq:condicion-unicidad}
-  \end{equation}
+    \frac{\partial z_k(\vect{p})}{\partial p_l}>0\qquad\forall\,l\neq k. \label{eq:sustitutivos-brutos}
+    \end{equation}
 \end_inset
 
-es decir, valorada a los precios de equilibrio, la cesta de excesos de demanda a cualquier otro precio Â«no se puede pagarÂ». Si se cumple, no puede haber otro equilibrio 
-\begin_inset Formula $\vect{p}^1$
+En palabras: cuando un bien se encarece, los agentes se pasan a 
+\emph on
+todos
+\emph default
+ los demÃ¡s, y ningÃºn efecto renta lo contrarresta. Â«BrutosÂ» porque incluye los efectos renta (tambiÃ©n el de la dotaciÃ³n), no solo el de sustituciÃ³n; 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+axioma dÃ©bil de la preferencia revelada agregado
+\end_layout
+
 \end_inset
 
-, porque serÃ­a 
-\begin_inset Formula $\vect{z}(\vect{p}^1)\leq\vect{0}$
+: la demanda de mercado se comporta como la de un Ãºnico consumidor coherente, que nunca elige una cesta pudiendo pagar otra y la otra pudiendo pagar la primera. 
+\end_layout
+
+\end_deeper
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sustitutivos brutos, la intuiciÃ³n
+\emph default
+: supongamos que hubiera 2 equilibrios distintos (no proporcionales). Al pasar de uno a otro, algÃºn bien es el que 
+\emph on
+menos
+\emph default
+ se encarece en tÃ©rminos relativos. Como solo importan los precios relativos, podemos medir el segundo equilibrio de modo que ese bien cueste lo mismo en los 2: entonces todos los demÃ¡s bienes estÃ¡n igual o mÃ¡s caros, y alguno estrictamente mÃ¡s caro. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si todos son sustitutivos de ese bien, los agentes se pasan a Ã©l: su demanda neta sube y su exceso de demanda, que era 0 en el primer equilibrio, pasa a ser positivo en el segundo. 
+\end_layout
+
+\begin_layout Itemize
+Pero en un equilibrio su exceso de demanda tiene que ser 0: el segundo vector de precios no puede ser de equilibrio. Hay uno solo. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Con 2 bienes, en el grÃ¡fico
+\emph default
+: por la homogeneidad, subir 
+\begin_inset Formula $p_X$
+\end_inset
+
+ con 
+\begin_inset Formula $p_Y=1$
+\end_inset
+
+ es lo mismo que abaratar 
+\begin_inset Formula $Y$
+\end_inset
+
+ frente a 
+\begin_inset Formula $X$
+\end_inset
+
+, y con sustitutivos brutos abaratar 
+\begin_inset Formula $Y$
+\end_inset
+
+ reduce la demanda de 
+\begin_inset Formula $X$
+\end_inset
+
+. AsÃ­ que 
+\begin_inset Formula $z_X(p_X,1)$
+\end_inset
+
+ es siempre 
+\emph on
+decreciente
+\emph default
+ y corta el eje una sola vez: el tramo creciente del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:equilibrios-multiples"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, que da lugar al equilibrio intermedio y obliga a que haya 3, no puede existir. Con la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $p_Xz_X+p_Yz_Y=0$
+\end_inset
+
+: si 
+\begin_inset Formula $z_X<0$
+\end_inset
+
+ a la derecha del equilibrio, 
+\begin_inset Formula $z_Y>0$
+\end_inset
+
+, y ese vector de precios tampoco vacÃ­a el mercado de 
+\begin_inset Formula $Y$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Axioma dÃ©bil, la intuiciÃ³n
+\emph default
+: si hubiera 2 equilibrios con asignaciones distintas, las empresas, que maximizan el beneficio, harÃ­an que en cada uno de ellos la cesta del otro fuera asequible. El Â«consumidor agregadoÂ» habrÃ­a elegido 
+\begin_inset Formula $A$
+\end_inset
+
+ pudiendo pagar 
+\begin_inset Formula $B$
 \end_inset
 
  y 
-\begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p}^1)\leq 0$
+\begin_inset Formula $B$
+\end_inset
+
+ pudiendo pagar 
+\begin_inset Formula $A$
+\end_inset
+
+, lo que el axioma dÃ©bil prohÃ­be. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La condiciÃ³n comÃºn
+\emph default
+: las 2 se resumen en una condiciÃ³n sobre 
+\begin_inset Formula $\vect{z}$
 \end_inset
 
  
@@ -7710,130 +8582,33 @@ parencite[Â§17.F]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. Hay 2 condiciones suficientes conocidas: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Axioma dÃ©bil de la preferencia revelada agregado
-\end_layout
-
-\end_inset
-
-: si 
-\begin_inset Formula $\vect{z}$
-\end_inset
-
- lo cumple, el conjunto de equilibrios es convexo; con equilibrios aislados (economÃ­a regular), es un punto. El axioma dÃ©bil se cumple en cada consumidor 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.8
-\end_layout
-
-\end_inset
-
-, pero la demanda agregada no lo hereda: los cambios de precios redistribuyen la renta entre consumidores. Una condiciÃ³n suficiente es que las preferencias sean homotÃ©ticas y las dotaciones, proporcionales 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite[Â§4.C y Â§17.F]{MasColellWhinstonGreen1995}
-\end_layout
-
-\end_inset
-
- (anexo
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "anexo:unicidad"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-). 
-\end_layout
-
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Sustitutivos brutos
-\end_layout
-
-\end_inset
-
-: todos los bienes lo son si el exceso de demanda de cada uno aumenta con el precio de cualquier otro, 
+, 
 \begin_inset Formula \begin{equation}
-    \frac{\partial z_k(\vect{p})}{\partial p_l}>0\qquad\forall\,l\neq k. \label{eq:sustitutivos-brutos}
-    \end{equation}
+  \vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\text{para todo }\vect{p}\text{ no proporcional a }\vect{p}^*, \label{eq:condicion-unicidad}
+  \end{equation}
 \end_inset
 
-Entonces el equilibrio es Ãºnico. Con 2 bienes: si en el equilibrio 
-\begin_inset Formula $\vect{p}^*$
+es decir, valorada a los precios de equilibrio, la cesta de excesos de demanda a cualquier otro precio Â«no se puede pagarÂ». Si se cumple, no puede haber otro equilibrio 
+\begin_inset Formula $\vect{p}^1$
 \end_inset
 
- baja 
-\begin_inset Formula $p_Y$
+, porque serÃ­a 
+\begin_inset Formula $\vect{z}(\vect{p}^1)=\vect{0}$
 \end_inset
 
- sin tocar 
-\begin_inset Formula $p_X$
+ y 
+\begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p}^1)=0$
 \end_inset
 
-, el bien 
-\begin_inset Formula $Y$
-\end_inset
-
- se abarata y cae la demanda de 
-\begin_inset Formula $X$
-\end_inset
-
-, 
-\begin_inset Formula $z_X<0$
-\end_inset
-
-; por la ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Walras
+. 
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-, 
-\begin_inset Formula $p_Xz_X+p_Yz_Y=0$
-\end_inset
-
- exige 
-\begin_inset Formula $z_Y>0$
-\end_inset
-
-: el nuevo vector no es de equilibrio. Con 
-\begin_inset Formula $n$
-\end_inset
-
- bienes, la demostraciÃ³n estÃ¡ en el anexo
+\emph on
+Demostraciones
+\emph default
+: las 2, paso a paso y por reducciÃ³n al absurdo, estÃ¡n en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -7852,21 +8627,81 @@ nolink "false"
 . 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-ValoraciÃ³n
-\emph default
-: son condiciones suficientes, no necesarias, y muy restrictivas: la sustituciÃ³n bruta exige que los efectos sustituciÃ³n dominen a los efectos renta y excluye los complementarios. 
+\begin_layout Subparagraph
+iii) Implicaciones
 \end_layout
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
+\emph on
+Unicidad global
+\emph default
+: con cualquiera de las 2 condiciones el equilibrio es Ãºnico (en precios relativos) y la estÃ¡tica comparativa tiene sentido; con sustitutivos brutos se conoce ademÃ¡s su signo: un aumento de la demanda de un bien sube su precio relativo frente a todos los demÃ¡s 
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
+
+\backslash
+parencite[Â§17.G]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Unicidad y estabilidad van juntas
+\emph default
+: la condiciÃ³n
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:condicion-unicidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ es la misma que asegura que el tanteo converge (II.1.3). 
+\end_layout
+
+\begin_layout Paragraph
+c) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Condiciones muy restrictivas
+\emph default
+: son suficientes, no necesarias. La sustituciÃ³n bruta exige que los efectos sustituciÃ³n dominen a los efectos renta en todos los bienes y a todos los precios, y excluye los complementarios; el axioma dÃ©bil agregado, que los cambios de precios no redistribuyan la renta entre consumidores que gastan de forma distinta (preferencias homotÃ©ticas y dotaciones proporcionales) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§4.C y Â§17.F]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Teorema de 
 \begin_inset Flex Autor
 status collapsed
@@ -7898,10 +8733,7 @@ Debreu
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
+\emph default
  (SMD): cualquier funciÃ³n continua, homogÃ©nea de grado 0 y que cumpla la ley de 
 \begin_inset Flex Autor
 status collapsed
@@ -7964,12 +8796,20 @@ Walras
 
 \end_inset
 
-, porque los efectos renta de cada consumidor dependen de su dotaciÃ³n y no se compensan.
+, porque los efectos renta de cada consumidor dependen de su dotaciÃ³n y no se compensan (I.2.2).
 \end_layout
 
 \end_inset
 
- Unicidad y estabilidad dependen de supuestos sobre la distribuciÃ³n de las preferencias y de las dotaciones, no de la teorÃ­a del consumidor 
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Consecuencia
+\emph default
+: unicidad y estabilidad dependen de supuestos sobre la distribuciÃ³n de las preferencias y de las dotaciones, no de la teorÃ­a del consumidor 
 \begin_inset ERT
 status collapsed
 
@@ -7981,11 +8821,15 @@ parencite[Â§17.E]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. 
+. Es lo que hace tan difÃ­cil la pregunta siguiente. 
 \end_layout
 
 \begin_layout Subsubsection
 Estabilidad
+\end_layout
+
+\begin_layout Standard
+Saber que el equilibrio existe, e incluso que es Ãºnico, no basta: falta saber si la economÃ­a llega a Ã©l.
 \end_layout
 
 \begin_layout Paragraph
@@ -7993,7 +8837,11 @@ a) Idea
 \end_layout
 
 \begin_layout Itemize
-Un equilibrio es 
+
+\emph on
+QuÃ© es
+\emph default
+: un equilibrio es 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -8003,49 +8851,128 @@ estable
 
 \end_inset
 
- si, partiendo de precios distintos, el proceso de ajuste lleva a Ã©l: 
+ si, cuando la economÃ­a estÃ¡ fuera de Ã©l, hay fuerzas que la empujan hacia Ã©l: los precios (y las cantidades) convergen con el tiempo al equilibrio. Se distinguen 2 grados: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+estabilidad local
+\end_layout
+
+\end_inset
+
+: el equilibrio se restablece tras una perturbaciÃ³n 
 \emph on
-localmente
+pequeÃ±a
 \emph default
-, si basta con que el punto de partida estÃ© cerca; 
-\emph on
-globalmente
-\emph default
-, si vale desde cualquier punto. Si el equilibrio es estable, la mano invisible no solo es posible: ademÃ¡s, el mercado la encuentra. 
+, si el punto de partida estÃ¡ cerca; 
 \end_layout
 
 \begin_layout Itemize
-En equilibrio general la pregunta es mÃ¡s difÃ­cil que en un mercado aislado: un cambio en el precio de un bien desplaza los excesos de demanda de todos los demÃ¡s. En un solo mercado, el ajuste por precios (
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+estabilidad global
+\end_layout
+
+\end_inset
+
+: se restablece tras 
+\emph on
+cualquier
+\emph default
+ perturbaciÃ³n, desde cualquier punto de partida. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Por quÃ© importa
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si el equilibrio es estable, es un argumento a favor de la Â«mano invisibleÂ» de 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Walras
+Smith
 \end_layout
 
 \end_inset
 
-) y el ajuste por cantidades (
-\begin_inset Flex Autor
+: el propio mercado, sin intervenciÃ³n pÃºblica, tiende a Ã©l. La mano invisible no solo es posible: ademÃ¡s, el mercado la encuentra; 
+\end_layout
+
+\begin_layout Itemize
+si no lo es, la economÃ­a puede alejarse del equilibrio y quedarse lejos, y eso puede justificar la intervenciÃ³n pÃºblica para reconducirla. 
+\begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
-Marshall
+
+\backslash
+textcite{Musgrave1959Theory}
 \end_layout
 
 \end_inset
 
-) pueden dar resultados distintos 
-\begin_inset Flex Ver tema
+ incluye la estabilizaciÃ³n entre las 3 funciones del sector pÃºblico, junto a la asignaciÃ³n y la distribuciÃ³n. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+2 mecanismos de ajuste
+\emph default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-3.A.16
+ajuste walrasiano
 \end_layout
 
 \end_inset
 
- (anexo
+ (por precios): el precio sube si hay exceso de demanda y baja si hay exceso de oferta; es el tanteo del subastador; 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+ajuste marshalliano
+\end_layout
+
+\end_inset
+
+ (por cantidades): la cantidad aumenta si lo que los compradores estÃ¡n dispuestos a pagar supera lo que piden los vendedores. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+En un solo mercado los 2 pueden dar resultados opuestos (anexo
 \begin_inset space ~
 
 \end_inset
@@ -8061,7 +8988,26 @@ nolink "false"
 
 \end_inset
 
-). 
+) 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.16
+\end_layout
+
+\end_inset
+
+. En equilibrio general se estudia el walrasiano, porque en el modelo la variable de ajuste son los precios (I.1). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Por quÃ© es mÃ¡s difÃ­cil en equilibrio general
+\emph default
+: un cambio en el precio de un bien desplaza los excesos de demanda de todos los demÃ¡s, que mueven a su vez sus precios y vuelven a afectar al primero. No basta con mirar la pendiente de cada mercado por separado: hay que estudiar el sistema entero a la vez. 
 \end_layout
 
 \begin_layout Paragraph
@@ -8073,13 +9019,25 @@ i) Supuestos
 \end_layout
 
 \begin_layout Itemize
-Tanteo walrasiano en tiempo continuo, sin intercambios fuera del equilibrio; el subastador ajusta cada precio segÃºn su exceso de demanda, subiÃ©ndolo si es positivo y bajÃ¡ndolo si es negativo: 
+
+\emph on
+Tanteo walrasiano
+\emph default
+ en tiempo continuo, sin intercambios fuera del equilibrio: el subastador ajusta cada precio segÃºn su exceso de demanda, subiÃ©ndolo si es positivo y bajÃ¡ndolo si es negativo, 
 \begin_inset Formula \begin{equation}
-  \dot p_k=\kappa_k\,z_k(\vect{p}),\qquad \kappa_k>0,\quad k=1,\dots,n. \label{eq:tatonnement}
+  \dot p_k=\kappa_k\,z_k(\vect{p}),\qquad \kappa_k>0,\quad k=1,\dots,n, \label{eq:tatonnement}
   \end{equation}
 \end_inset
 
-El equilibrio 
+donde 
+\begin_inset Formula $\kappa_k$
+\end_inset
+
+ es la velocidad de ajuste del mercado 
+\begin_inset Formula $k$
+\end_inset
+
+. El equilibrio 
 \begin_inset Formula $\vect{p}^*$
 \end_inset
 
@@ -8100,22 +9058,45 @@ globalmente estable
  desde cualquier precio inicial. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+Exceso de demanda
+\emph default
+: con las propiedades de la existencia y la condiciÃ³n
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:condicion-unicidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ de la unicidad, que se cumple, por ejemplo, si todos los bienes son sustitutivos brutos. 
+\end_layout
+
 \begin_layout Subparagraph
 ii) Desarrollo
 \end_layout
 
 \begin_layout Itemize
-Se usa una 
+
+\emph on
+IntuiciÃ³n
+\emph default
+: se mide en cada momento lo lejos que estÃ¡n los precios del equilibrio. Si esa distancia se reduce siempre que no se estÃ¡ en el equilibrio, los precios acaban llegando a Ã©l, aunque no se sepa calcular su trayectoria. Es el mÃ©todo de la 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-funciÃ³n de distancia al equilibrio
-\end_layout
-
-\end_inset
-
- (funciÃ³n de 
+funciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8125,15 +9106,28 @@ Liapunov
 
 \end_inset
 
-), que con 
+
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La distancia al equilibrio
+\emph default
+: con velocidades iguales, 
 \begin_inset Formula $\kappa_k=\kappa$
 \end_inset
 
- es 
+, basta la distancia euclÃ­dea, 
 \begin_inset Formula $\tfrac{1}{2\kappa}\lVert\vect{p}(t)-\vect{p}^*\rVert^2$
 \end_inset
 
-. Con velocidades distintas se ponderan los cuadrados y, usando
+; con velocidades distintas se ponderan los cuadrados. Usando
 \begin_inset space ~
 
 \end_inset
@@ -8165,11 +9159,19 @@ Walras
   \end{equation}
 \end_inset
 
-Si 
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+InterpretaciÃ³n
+\emph default
+: la distancia se reduce si 
 \begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p})>0$
 \end_inset
 
- fuera del equilibrio (la condiciÃ³n
+ fuera del equilibrio, que es exactamente la condiciÃ³n
 \begin_inset space ~
 
 \end_inset
@@ -8185,11 +9187,71 @@ nolink "false"
 
 \end_inset
 
- de la unicidad), la distancia se reduce siempre y los precios convergen a 
+ de la unicidad. Entonces la distancia baja sin parar mientras no se estÃ© en el equilibrio y los precios convergen a 
 \begin_inset Formula $\vect{p}^*$
 \end_inset
 
-. 
+ (demostraciÃ³n en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:estabilidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Con 2 bienes, en el grÃ¡fico
+\emph default
+: con 
+\begin_inset Formula $\dot p_X=\kappa\,z_X(p_X,1)$
+\end_inset
+
+, el precio sube donde 
+\begin_inset Formula $z_X>0$
+\end_inset
+
+ y baja donde 
+\begin_inset Formula $z_X<0$
+\end_inset
+
+ (flechas del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:equilibrios-multiples"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Los equilibrios donde 
+\begin_inset Formula $z_X$
+\end_inset
+
+ corta el eje de arriba abajo (Ã­ndice 
+\begin_inset Formula $+1$
+\end_inset
+
+) atraen los precios y son estables; los otros los repelen y son inestables. Con varios equilibrios, estables e inestables se alternan. 
 \end_layout
 
 \begin_layout Subparagraph
@@ -8198,6 +9260,40 @@ iii) Implicaciones
 
 \begin_layout Itemize
 
+\emph on
+Teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Block
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Hurwicz
+\end_layout
+
+\end_inset
+
+
+\emph default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -8243,51 +9339,41 @@ sustitutivos brutos
 \emph on
 globalmente estable
 \emph default
-: la misma condiciÃ³n da a la vez unicidad y estabilidad. Con 2 bienes basta el grÃ¡fico de la unicidad: con 
-\begin_inset Formula $\dot p_X=\kappa\,z_X(p_X,1)$
-\end_inset
-
-, el precio sube donde 
-\begin_inset Formula $z_X>0$
-\end_inset
-
- y baja donde 
-\begin_inset Formula $z_X<0$
-\end_inset
-
-, de modo que los equilibrios donde 
-\begin_inset Formula $z_X$
-\end_inset
-
- corta el eje de arriba abajo (Ã­ndice 
-\begin_inset Formula $+1$
-\end_inset
-
-) son estables y los otros, inestables: con varios equilibrios, estables e inestables se alternan (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:equilibrios-multiples"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-). 
-\end_layout
-
-\begin_layout Paragraph
-e) ValoraciÃ³n
+: la misma condiciÃ³n da a la vez unicidad y estabilidad. 
 \end_layout
 
 \begin_layout Itemize
 
+\emph on
+Con 2 bienes y sustitutivos brutos
+\emph default
+: 
+\begin_inset Formula $z_X(p_X,1)$
+\end_inset
+
+ es decreciente y el Ãºnico corte es de arriba abajo: el Ãºnico equilibrio es estable. 
+\end_layout
+
+\begin_layout Paragraph
+c) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Contraejemplo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Scarf
+\end_layout
+
+\end_inset
+
+
+\emph default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -8303,7 +9389,11 @@ textcite{Scarf1960Examples}
 \end_layout
 
 \begin_layout Itemize
-El tanteo es ademÃ¡s un proceso ficticio: nadie comercia hasta el final y el subastador no existe. Los procesos Â«sin tanteoÂ», con intercambios a precios de desequilibrio, cambian las dotaciones por el camino; son estables con mÃ¡s facilidad, pero el equilibrio al que llegan depende del camino 
+
+\emph on
+Un proceso ficticio
+\emph default
+: en el tanteo nadie comercia hasta el final y el subastador no existe. Los procesos Â«sin tanteoÂ», con intercambios a precios de desequilibrio, cambian las dotaciones por el camino; son estables con mÃ¡s facilidad, pero el equilibrio al que llegan depende del camino 
 \begin_inset ERT
 status collapsed
 
@@ -8370,6 +9460,10 @@ status collapsed
 AnÃ¡lisis normativo del equilibrio general competitivo
 \end_layout
 
+\begin_layout Standard
+Una vez estudiado quÃ© dice el equilibrio como descripciÃ³n de la economÃ­a (anÃ¡lisis positivo), pasamos a preguntarnos si es bueno (anÃ¡lisis normativo). Para ello hace falta, primero, un criterio con el que juzgar las asignaciones.
+\end_layout
+
 \begin_layout Subsubsection
 Optimalidad de 
 \begin_inset Flex Autor
@@ -8385,7 +9479,11 @@ Pareto
 \end_layout
 
 \begin_layout Itemize
-La pregunta normativa es si la asignaciÃ³n de equilibrio es deseable, que es el objeto de la economÃ­a del bienestar. El criterio menos exigente es el de 
+
+\emph on
+DefiniciÃ³n
+\emph default
+: la pregunta normativa es si la asignaciÃ³n de equilibrio es deseable, que es el objeto de la economÃ­a del bienestar. El criterio menos exigente es el de 
 \begin_inset ERT
 status collapsed
 
@@ -8560,7 +9658,11 @@ Pareto
 \end_layout
 
 \begin_layout Itemize
-Es un criterio ordinal, que no exige comparar utilidades, y basado en pocos juicios de valor, pero 
+
+\emph on
+Ventajas y lÃ­mites
+\emph default
+: es un criterio ordinal, que no exige comparar utilidades, y basado en pocos juicios de valor, pero 
 \emph on
 incompleto
 \emph default
@@ -8655,7 +9757,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-En la caja de intercambio, los Ã³ptimos son las tangencias de las curvas de indiferencia, 
+
+\emph on
+En la caja de intercambio
+\emph default
+: los Ã³ptimos son las tangencias de las curvas de indiferencia, 
 \begin_inset Formula $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$
 \end_inset
 
@@ -8696,18 +9802,8 @@ nolink "false"
 Teoremas fundamentales de la economÃ­a del bienestar
 \end_layout
 
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Primer teorema
-\end_layout
-
-\end_inset
-
- (1TFEB): si las preferencias son localmente no saciables, todo equilibrio general competitivo es Ã³ptimo de 
+\begin_layout Standard
+Con el criterio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8717,52 +9813,119 @@ Pareto
 
 \end_inset
 
- 
+ ya podemos preguntar si el equilibrio competitivo es eficiente, y al revÃ©s, si cualquier asignaciÃ³n eficiente puede alcanzarse con el mercado. La economÃ­a del bienestar responde con 2 teoremas, que relacionan los equilibrios competitivos y los Ã³ptimos de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Pareto
+\end_layout
+
+\end_inset
+
+ en los 2 sentidos.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Origen
+\emph default
+: sus condiciones marginales las formula Abba 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencite{Arrow1951Extension,Debreu1951Coefficient}
+textcite{Lerner1934Economic,Lerner1944Economics}
 \end_layout
 
 \end_inset
 
-. No necesita convexidad. 
+, a la vez que Oskar 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Lange1942Foundations}
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-SÃ­ necesita los supuestos implÃ­citos del modelo: 
+\end_inset
+
+, en el marco del debate sobre el cÃ¡lculo econÃ³mico en el socialismo (III.2), y los desarrollan formalmente, por separado, Kenneth 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Arrow1951Extension}
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-precios para todos los bienes (mercados completos, sin externalidades ni bienes pÃºblicos); 
+\end_inset
+
+ y GÃ©rard 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Debreu1951Coefficient}
+\end_layout
+
+\end_inset
+
+, con anÃ¡lisis convexo y sin necesidad de derivadas, de modo que valen tambiÃ©n con soluciones de esquina 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Debreu1959Theory}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Paragraph
+Primer teorema fundamental de la economÃ­a del bienestar (1TFEB)
 \end_layout
 
 \begin_layout Itemize
-agentes precio-aceptantes; 
-\end_layout
 
-\begin_layout Itemize
-precios comunes a todos, sin impuestos que abran cuÃ±as entre ellos. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Es la formalizaciÃ³n de la mano invisible de 
+\emph on
+Enunciado
+\emph default
+: si las preferencias son localmente no saciables, 
+\emph on
+todo equilibrio general competitivo es Ã³ptimo de 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Smith
+Pareto
 \end_layout
 
 \end_inset
 
-: los precios transmiten toda la informaciÃ³n necesaria y hacen que todos igualen sus relaciones marginales,
+
+\emph default
+. No necesita convexidad. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Idea
+\emph default
+: cada agente, buscando solo su interÃ©s y mirando solo los precios, iguala su relaciÃ³n marginal (de sustituciÃ³n o de transformaciÃ³n) al precio relativo. Como todos ven los mismos precios, todas las relaciones marginales acaban iguales entre sÃ­,
 \begin_inset space ~
 
 \end_inset
@@ -8778,7 +9941,7 @@ nolink "false"
 
 \end_inset
 
-. En la caja, el equilibrio 
+, y no queda ningÃºn intercambio ni ninguna reasignaciÃ³n de factores que mejore a alguien sin empeorar a otro. En la caja, el equilibrio 
 \begin_inset Formula $E$
 \end_inset
 
@@ -8786,11 +9949,94 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-No dice que el equilibrio sea 
+
+\emph on
+Por quÃ© importa
+\emph default
+: es la formalizaciÃ³n de la mano invisible de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Smith
+\end_layout
+
+\end_inset
+
+: los precios transmiten toda la informaciÃ³n necesaria y un sistema descentralizado, sin planificador, no desperdicia recursos.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Feldman1987Welfare}
+\end_layout
+
+\end_inset
+
+ resume la fuerza del teorema con una imagen: si las decisiones de producciÃ³n y consumo se tomaran lanzando dardos a una diana, la probabilidad de acertar en un Ã³ptimo serÃ­a nula, asÃ­ que decir que el mercado lo alcanza es decir mucho.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Supuestos
+\emph default
+: ademÃ¡s de la no saciedad local, los implÃ­citos en el modelo de I: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+precios para todos los bienes (mercados completos, sin externalidades ni bienes pÃºblicos); 
+\end_layout
+
+\begin_layout Itemize
+agentes precio-aceptantes (sin poder de mercado); 
+\end_layout
+
+\begin_layout Itemize
+precios comunes a todos, sin impuestos que abran cuÃ±as entre ellos. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Cuando falla alguno, el equilibrio deja de ser eficiente: son los fallos de mercado 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.23
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Lo que no dice
+\emph default
+: que el equilibrio sea 
 \emph on
 justo
 \emph default
-: depende de las dotaciones, y una asignaciÃ³n en la que uno lo tiene todo tambiÃ©n es eficiente.
+. Depende de las dotaciones, y una asignaciÃ³n en la que uno lo tiene todo tambiÃ©n es eficiente.
 \begin_inset Foot
 status collapsed
 
@@ -8828,19 +10074,7 @@ parencite{Wicksell1958Selected}
 
 \end_inset
 
-, le reprocha confundir el mÃ¡ximo de ofelimidad, que la libre competencia alcanza casi por definiciÃ³n, con el mÃ¡ximo de bienestar social, que no tiene por quÃ© alcanzar. 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Feldman1987Welfare}
-\end_layout
-
-\end_inset
-
- resume la fuerza del teorema con una imagen: si las decisiones de producciÃ³n y consumo se tomaran lanzando dardos a una diana, la probabilidad de acertar en un Ã³ptimo serÃ­a nula, asÃ­ que decir que el mercado lo alcanza es decir mucho.
+, le reprocha confundir el mÃ¡ximo de ofelimidad, que la libre competencia alcanza casi por definiciÃ³n, con el mÃ¡ximo de bienestar social, que no tiene por quÃ© alcanzar.
 \end_layout
 
 \end_inset
@@ -8848,23 +10082,22 @@ textcite{Feldman1987Welfare}
  
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Segundo teorema
+\begin_layout Paragraph
+Segundo teorema fundamental de la economÃ­a del bienestar (2TFEB)
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
- (2TFEB): con preferencias y tecnologÃ­as 
+\emph on
+Enunciado
+\emph default
+: con preferencias y tecnologÃ­as 
 \emph on
 convexas
 \emph default
- (ademÃ¡s de continuas y localmente no saciables), todo Ã³ptimo de 
+ (ademÃ¡s de continuas y localmente no saciables), 
+\emph on
+todo Ã³ptimo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8874,7 +10107,17 @@ Pareto
 
 \end_inset
 
- puede alcanzarse como equilibrio competitivo tras una redistribuciÃ³n de suma fija de las dotaciones. En la caja, para llevar la economÃ­a a otro punto 
+ puede alcanzarse como equilibrio competitivo
+\emph default
+ tras una redistribuciÃ³n de suma fija de las dotaciones. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Idea
+\emph default
+: es el recÃ­proco del primero. Si la sociedad prefiere otro Ã³ptimo, por ejemplo uno mÃ¡s igualitario, no hace falta sustituir el mercado: basta con repartir de otra forma las dotaciones y dejar que el mercado haga el resto. En la caja, para llevar la economÃ­a a otro punto 
 \begin_inset Formula $E'$
 \end_inset
 
@@ -8893,12 +10136,34 @@ Pareto
 . 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-Separa eficiencia y equidad: el Estado puede redistribuir y dejar que el mercado asigne. Pero las transferencias de suma fija que dependen de las caracterÃ­sticas de cada uno no son factibles (la informaciÃ³n es privada) y los impuestos reales distorsionan. 
+
+\emph on
+Por quÃ© importa
+\emph default
+: separa eficiencia y equidad. El Estado puede ocuparse de la distribuciÃ³n con transferencias y dejar la asignaciÃ³n al mercado, y justifica la intervenciÃ³n pÃºblica tambiÃ©n por motivos de equidad. 
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+
+\emph on
+Supuestos
+\emph default
+: la convexidad es aquÃ­ imprescindible, no un supuesto tÃ©cnico: sin ella puede no haber una recta de precios que deje a cada consumidor en su mejor punto alcanzable. Hacen falta ademÃ¡s transferencias de 
+\emph on
+suma fija
+\emph default
+, que no dependan de lo que hace cada agente. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Lo que no dice
+\emph default
+: cÃ³mo hacer esas transferencias. Las de suma fija que dependen de las caracterÃ­sticas de cada uno no son factibles (la informaciÃ³n es privada) y los impuestos reales distorsionan, de modo que reaparece el dilema entre equidad y eficiencia. 
+\end_layout
+
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -9070,7 +10335,11 @@ textcite[cap.~16]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Itemize
-Los 2 teoremas valen para cualquier equilibrio, sea Ãºnico o no, y su desarrollo y demostraciÃ³n son materia de la economÃ­a del bienestar 
+
+\emph on
+Su papel en este tema
+\emph default
+: los 2 teoremas valen para cualquier equilibrio, sea Ãºnico o no, y su desarrollo es materia de la economÃ­a del bienestar 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -9080,7 +10349,7 @@ status collapsed
 
 \end_inset
 
- (anexo
+ (supuestos, crÃ­ticas y demostraciÃ³n del 1TFEB, en el anexo
 \begin_inset space ~
 
 \end_inset
@@ -9096,7 +10365,7 @@ nolink "false"
 
 \end_inset
 
-). Lo que interesa aquÃ­ es su papel en la teorÃ­a del equilibrio general: dicen quÃ© supuestos del modelo de I hacen falta para que la descentralizaciÃ³n funcione. Cuando falla alguno (externalidades, bienes pÃºblicos, poder de mercado, informaciÃ³n asimÃ©trica), el equilibrio deja de ser eficiente 
+). Lo que interesa aquÃ­ es que dicen quÃ© supuestos del modelo de I hacen falta para que la descentralizaciÃ³n funcione. Cuando falla alguno (externalidades, bienes pÃºblicos, poder de mercado, informaciÃ³n asimÃ©trica), el equilibrio deja de ser eficiente 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -9168,7 +10437,7 @@ Pareto
 
 \end_inset
 
- y los 2 teoremas van en enunciados y sobre la caja, como propiedades del equilibrio general competitivo. Su desarrollo es de los temas vecinos: el criterio de 
+ y los 2 teoremas van como propiedades del equilibrio general competitivo: enunciado, idea, supuestos y alcance en palabras, sobre la caja. Su desarrollo corresponde a los temas 3.A.22, 3.A.23 y 3.A.24: el criterio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9212,7 +10481,7 @@ status collapsed
 
 \end_inset
 
-. 
+. En el cante, cada teorema se nombra completo la primera vez y despuÃ©s con sus siglas. 
 \end_layout
 
 \end_inset
@@ -9261,7 +10530,12 @@ status collapsed
 \emph on
 Idea
 \emph default
-: cada desarrollo de este bloque relaja un supuesto del modelo de I que las propiedades de II necesitaban: el subastador y los precios dados (III.1 y III.2), la convexidad (III.2), la ausencia de dinero (III.3) y la de tiempo e incertidumbre (III.4); el Ãºltimo muestra cÃ³mo se usa el modelo en la prÃ¡ctica (III.5). 
+: una vez estudiadas las propiedades del equilibrio general competitivo (bloque
+\begin_inset space ~
+
+\end_inset
+
+II), pasamos a comprobar cuÃ¡n robusto es. Cada desarrollo de este bloque relaja un supuesto del modelo de I que las propiedades de II necesitaban: el subastador y los precios dados (III.1 y III.2), la convexidad (III.2), la ausencia de dinero (III.3) y la de tiempo e incertidumbre (III.4); el Ãºltimo muestra cÃ³mo se usa el modelo en la prÃ¡ctica (III.5). 
 \end_layout
 
 \begin_layout Itemize
@@ -9288,11 +10562,11 @@ Edgeworth
 
 \end_inset
 
- sobre la caja de intercambio que sigue en la pizarra, con la lente y el tramo 
+ sobre la caja de intercambio que sigue en la pizarra, con la lente, el tramo 
 \begin_inset Formula $CC'$
 \end_inset
 
- (
+ y una frase sobre la teorÃ­a de la negociaciÃ³n, que elige un punto de ese tramo (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9322,7 +10596,7 @@ Scarf
 
 \end_inset
 
- con el nÃºcleo que se encoge, el comportamiento estratÃ©gico y las no convexidades (
+ con el nÃºcleo que se encoge, el comportamiento estratÃ©gico y las no convexidades contadas en palabras (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9332,7 +10606,27 @@ status collapsed
 
 \end_inset
 
-); el dinero con la ley de 
+); el dinero: por quÃ© no tiene sitio en el modelo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Debreu
+\end_layout
+
+\end_inset
+
+, la dicotomÃ­a clÃ¡sica, la ley de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9342,7 +10636,17 @@ Walras
 
 \end_inset
 
- con dinero y la dicotomÃ­a invÃ¡lida (
+ con dinero, por quÃ© la dicotomÃ­a es invÃ¡lida y el efecto saldos reales de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Patinkin
+\end_layout
+
+\end_inset
+
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9352,7 +10656,7 @@ status collapsed
 
 \end_inset
 
-); los bienes contingentes, los tÃ­tulos de 
+); los bienes contingentes con el ejemplo del paraguas, los tÃ­tulos de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9382,7 +10686,27 @@ status collapsed
 
 \end_inset
 
-). El recuadro del monopolio, el diseÃ±o de mecanismos, las variantes monetarias y los modelos de las instituciones son de profundizaciÃ³n. Si falta tiempo, III.1 se funde con el nÃºcleo en una frase y III.5 se reduce a 
+). Son de profundizaciÃ³n la nota de la teorÃ­a de la negociaciÃ³n (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+), las cajas grises del desarrollo tÃ©cnico de las no convexidades y del dinero, el recuadro del monopolio, el diseÃ±o de mecanismos, las 4 vÃ­as modernas para introducir el dinero (que se desarrollan en el tema 3.A.35) y los modelos de las instituciones. Si falta tiempo, III.1 se funde con el nÃºcleo en una frase y III.5 se reduce a 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9430,6 +10754,15 @@ Edgeworth
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Empezamos por el supuesto mÃ¡s irreal del bloque
+\begin_inset space ~
+
+\end_inset
+
+I: el subastador que anuncia los precios.
 \end_layout
 
 \begin_layout Paragraph
@@ -9538,68 +10871,6 @@ eficiencia
 \end_layout
 
 \end_deeper
-\begin_layout Subparagraph
-iii) Implicaciones
-\end_layout
-
-\begin_layout Itemize
-El resultado es el tramo 
-\begin_inset Formula $CC'$
-\end_inset
-
- de la curva de contrato dentro de la lente. En el modelo walrasiano el precio lo fija el mercado y el resultado no depende del poder negociador; en el de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Edgeworth
-\end_layout
-
-\end_inset
-
-, con 2 agentes, el intercambio estÃ¡ 
-\emph on
-indeterminado
-\emph default
-: el punto final depende del poder de negociaciÃ³n de cada uno, y la relaciÃ³n de intercambio implÃ­cita es la pendiente de la recta que une 
-\begin_inset Formula $\vect{\omega}$
-\end_inset
-
- con ese punto 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.14
-\end_layout
-
-\end_inset
-
-. El equilibrio walrasiano 
-\begin_inset Formula $E$
-\end_inset
-
- es uno de esos puntos: el Ãºnico al que se llega con precios dados y comunes. 
-\end_layout
-
-\begin_layout Paragraph
-e) ValoraciÃ³n
-\end_layout
-
-\begin_layout Itemize
-
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Edgeworth
-\end_layout
-
-\end_inset
-
- conjetura que, al aumentar el nÃºmero de agentes, el tramo se estrecha hasta el equilibrio competitivo. Es el punto de partida del enfoque del nÃºcleo. 
-\end_layout
-
 \begin_layout Standard
 
 \begin_inset Float figure
@@ -9678,7 +10949,7 @@ status collapsed
 
 \end_inset
 
-0.75
+0.62
 \begin_inset ERT
 status collapsed
 
@@ -9762,6 +11033,235 @@ textcite[cap.~18]{MasColellWhinstonGreen1995}
 
 \end_layout
 
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Un tramo, no un punto
+\emph default
+: el resultado es el tramo 
+\begin_inset Formula $CC'$
+\end_inset
+
+ de la curva de contrato dentro de la lente. En el modelo walrasiano el precio lo fija el mercado y el resultado no depende del poder negociador; en el de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+, con 2 agentes, el intercambio estÃ¡ 
+\emph on
+indeterminado
+\emph default
+: el punto final depende del poder de negociaciÃ³n de cada uno, y la relaciÃ³n de intercambio implÃ­cita es la pendiente de la recta que une 
+\begin_inset Formula $\vect{\omega}$
+\end_inset
+
+ con ese punto. El equilibrio walrasiano 
+\begin_inset Formula $E$
+\end_inset
+
+ es uno de esos puntos: el Ãºnico al que se llega con precios dados y comunes. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La teorÃ­a de la negociaciÃ³n
+\emph default
+: la pregunta que 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+ deja abierta, quÃ© punto del tramo se alcanza, es la que estudia la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+teorÃ­a de la negociaciÃ³n
+\end_layout
+
+\end_inset
+
+: cÃ³mo se reparten 2 partes las ganancias de un acuerdo cuando cada una puede negarse a firmarlo 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.14
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+ muestra que la negociaciÃ³n bilateral deja un abanico de acuerdos posibles (el tramo 
+\begin_inset Formula $CC'$
+\end_inset
+
+) y que el resultado depende del poder de negociaciÃ³n, pero no dice cuÃ¡l es. La teorÃ­a de la negociaciÃ³n lo intenta por 2 caminos. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Nash1950Bargaining}
+\end_layout
+
+\end_inset
+
+ sigue el camino 
+\emph on
+axiomÃ¡tico
+\emph default
+: pide a la soluciÃ³n 4 propiedades razonables (que sea eficiente, que trate igual a agentes iguales, que no dependa de las unidades en que se mide la utilidad y que no cambie si se quitan alternativas que de todos modos no se habrÃ­an elegido) y prueba que solo la cumple el acuerdo que maximiza el producto de las ganancias de cada uno respecto de lo que obtendrÃ­a sin acuerdo, 
+\begin_inset Formula $\big(U_A-U_A^0\big)\big(U_B-U_B^0\big)$
+\end_inset
+
+. En la caja, el punto de desacuerdo es la dotaciÃ³n 
+\begin_inset Formula $\vect{\omega}$
+\end_inset
+
+, y la soluciÃ³n es uno de los puntos del tramo 
+\begin_inset Formula $CC'$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Rubinstein1982Perfect}
+\end_layout
+
+\end_inset
+
+ sigue el camino 
+\emph on
+estratÃ©gico
+\emph default
+: los 2 agentes se turnan para proponer un reparto, y cada ronda sin acuerdo les cuesta, porque descuentan el futuro. El juego tiene un Ãºnico equilibrio perfecto en subjuegos, en el que se acuerda en la primera oferta y se lleva mÃ¡s el agente mÃ¡s paciente: el poder de negociaciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+ es aquÃ­ la paciencia. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{BinmoreRubinsteinWolinsky1986Nash}
+\end_layout
+
+\end_inset
+
+ unen los 2 enfoques: cuando el tiempo entre ofertas tiende a 0, el reparto de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+ converge a una soluciÃ³n de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+ (asimÃ©trica, con unos pesos que dependen de la paciencia de cada uno). La relaciÃ³n con el nÃºcleo (III.2) es de complemento: el nÃºcleo dice quÃ© acuerdos son posibles (con 2 agentes, todo el tramo 
+\begin_inset Formula $CC'$
+\end_inset
+
+) y la teorÃ­a de la negociaciÃ³n, cuÃ¡l de ellos se elige. Al crecer el nÃºmero de agentes el nÃºcleo se encoge hasta el equilibrio walrasiano y el poder de negociaciÃ³n deja de importar 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.14
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.17
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+c) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+ conjetura que, al aumentar el nÃºmero de agentes, el tramo se estrecha hasta el equilibrio competitivo. Es el punto de partida del enfoque del nÃºcleo. 
+\end_layout
+
 \begin_layout Standard
 
 \begin_inset ERT
@@ -9802,6 +11302,10 @@ Scarf
 \end_inset
 
 , 1963)
+\end_layout
+
+\begin_layout Standard
+Una vez visto que con 2 agentes la negociaciÃ³n deja el resultado indeterminado, pasamos a preguntarnos quÃ© ocurre cuando negocian muchos: es el enfoque del nÃºcleo.
 \end_layout
 
 \begin_layout Subsubsection
@@ -9878,12 +11382,12 @@ bienes
 b) Modelo
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
 
-\emph on
-Supuestos
-\emph default
-: economÃ­a de intercambio con 
+\begin_layout Itemize
+EconomÃ­a de intercambio con 
 \begin_inset Formula $I$
 \end_inset
 
@@ -9904,17 +11408,16 @@ coaliciÃ³n
  puede repartirse sus propias dotaciones; los acuerdos son vinculantes y formar coaliciones no cuesta nada. 
 \end_layout
 
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Desarrollo
+Bloqueo
 \emph default
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-una coaliciÃ³n 
+: una coaliciÃ³n 
 \begin_inset Formula $\mathcal{S}$
 \end_inset
 
@@ -9952,26 +11455,20 @@ bloquea
 \begin_inset Formula $\vect{x}'_i\succ_i\vect{x}_i$
 \end_inset
 
- para alguno; 
+ para alguno. 
 \end_layout
 
 \begin_layout Itemize
-el 
-\begin_inset Flex Concepto
-status collapsed
 
-\begin_layout Plain Layout
-nÃºcleo
-\end_layout
-
-\end_inset
-
- es el conjunto de asignaciones factibles que ninguna coaliciÃ³n bloquea; 
+\emph on
+NÃºcleo
+\emph default
+: es el conjunto de asignaciones factibles que ninguna coaliciÃ³n bloquea. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-con 2 agentes, las coaliciones son cada uno solo (racionalidad individual) y los 2 juntos (eficiencia): el nÃºcleo es el tramo 
+Con 2 agentes, las coaliciones son cada uno solo (racionalidad individual) y los 2 juntos (eficiencia): el nÃºcleo es el tramo 
 \begin_inset Formula $CC'$
 \end_inset
 
@@ -9979,31 +11476,29 @@ con 2 agentes, las coaliciones son cada uno solo (racionalidad individual) y los
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-Implicaciones
-\emph default
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\emph on
-Todo equilibrio walrasiano estÃ¡ en el nÃºcleo
-\emph default
- (basta la no saciedad local): si una coaliciÃ³n pudiera mejorar a sus miembros con sus dotaciones, alguno de ellos habrÃ­a podido comprar a los precios de equilibrio una cesta mejor que la que eligiÃ³. 
+\begin_layout Subparagraph
+iii) Implicaciones
 \end_layout
 
 \begin_layout Enumerate
 
+\emph on
+El equilibrio walrasiano estÃ¡ en el nÃºcleo
+\emph default
+ (basta la no saciedad local). La intuiciÃ³n: si una coaliciÃ³n pudiera mejorar a sus miembros con sus propias dotaciones, alguno de ellos habrÃ­a podido comprar a los precios de equilibrio una cesta mejor que la que eligiÃ³, lo que no puede ser. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Teorema del lÃ­mite
+\emph default
+: el 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Teorema del lÃ­mite del nÃºcleo
+teorema del lÃ­mite del nÃºcleo
 \end_layout
 
 \end_inset
@@ -10020,7 +11515,7 @@ parencite{DebreuScarf1963Limit}
 
 \end_inset
 
-: si la economÃ­a se replica 
+ dice que, si la economÃ­a se replica 
 \begin_inset Formula $r$
 \end_inset
 
@@ -10077,9 +11572,12 @@ es
  el conjunto de equilibrios. 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-La precio-aceptaciÃ³n deja de ser un supuesto y pasa a ser un resultado: en una economÃ­a grande ningÃºn grupo puede hacer nada mejor que lo que le da el mercado. No solo los precios son endÃ³genos, sino tambiÃ©n el hecho mismo de que los haya. 
+\begin_layout Enumerate
+
+\emph on
+Los precios como resultado
+\emph default
+: la precio-aceptaciÃ³n deja de ser un supuesto y pasa a ser un resultado: en una economÃ­a grande ningÃºn grupo puede hacer nada mejor que lo que le da el mercado. No solo los precios son endÃ³genos, sino tambiÃ©n el hecho mismo de que los haya. 
 \end_layout
 
 \begin_layout Paragraph
@@ -10123,7 +11621,7 @@ parencite{Aumann1975Values}
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -10137,11 +11635,15 @@ Edgeworth
 
 \end_inset
 
- sigue ahÃ­. Y el nÃºcleo no dice cÃ³mo se llega a Ã©l: es un concepto de equilibrio, no un proceso. Con pocos agentes, ademÃ¡s, cada uno tiene incentivos a influir en los precios. 
+ sigue ahÃ­. Y el nÃºcleo no dice cÃ³mo se llega a Ã©l: es un concepto de equilibrio, no un proceso. Con pocos agentes, ademÃ¡s, cada uno tiene incentivos a influir en los precios, que es lo que estudia el apartado siguiente. 
 \end_layout
 
 \begin_layout Subsubsection
 Comportamiento estratÃ©gico
+\end_layout
+
+\begin_layout Standard
+El nÃºcleo supone que nadie intenta manipular los precios; pasamos ahora al caso en que alguien puede hacerlo.
 \end_layout
 
 \begin_layout Itemize
@@ -10672,29 +12174,41 @@ textcite{Hayek1945Use}
 No convexidades y equilibrios mÃºltiples
 \end_layout
 
+\begin_layout Standard
+Hasta aquÃ­ hemos mantenido la convexidad de preferencias y tecnologÃ­as; pasamos ahora a quitarla.
+\end_layout
+
 \begin_layout Itemize
-La convexidad de preferencias y tecnologÃ­as es el supuesto que sostiene la existencia (II.1.1) y el segundo teorema del bienestar. Sin ella: 
+
+\emph on
+La idea en palabras
+\emph default
+: la convexidad dice 2 cosas sencillas. Los consumidores prefieren las mezclas a los extremos (una cesta con algo de todo a otra con mucho de un bien y nada del otro), y en la producciÃ³n no hay ventajas de tamaÃ±o (producir el doble cuesta al menos el doble). Gracias a ella, cuando un precio cambia un poco, lo que cada agente quiere comprar o vender cambia tambiÃ©n un poco, sin saltos. Y como la respuesta es suave, siempre hay un precio en el que la oferta y la demanda se encuentran. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© pasa sin ella
+\emph default
+: la respuesta a los precios da saltos, y el precio que vacÃ­a el mercado puede no existir: a un precio sobra demanda y, al subirlo un poco, sobra oferta, sin pasar por el punto en que se igualan. Ocurre por 2 vÃ­as: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-con 
+
 \emph on
-preferencias no convexas
+Preferencias no convexas
 \emph default
-, la demanda salta de una cesta a otra al cambiar los precios, el exceso de demanda es discontinuo y puede no haber ningÃºn precio que vacÃ­e los mercados (en la caja, las curvas de oferta-demanda no se cortan); 
+: el consumidor pasa de golpe de una cesta a otra muy distinta. 
 \end_layout
 
 \begin_layout Itemize
-con 
-\emph on
-rendimientos crecientes
-\emph default
- (costes fijos, costes medios en U con un tramo decreciente), una empresa precio-aceptante que produce donde 
-\begin_inset Formula $p=\mathrm{CMg}$
-\end_inset
 
- tiene pÃ©rdidas, o querrÃ­a producir sin lÃ­mite: no hay equilibrio competitivo y aparecen el monopolio natural 
+\emph on
+Rendimientos crecientes
+\emph default
+: si las empresas grandes producen mÃ¡s barato, la competencia perfecta no se sostiene: una empresa que toma el precio como dado o pierde dinero o querrÃ­a crecer sin lÃ­mite. El resultado es un monopolio natural 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10704,7 +12218,7 @@ status collapsed
 
 \end_inset
 
- y la competencia imperfecta 
+ o la competencia imperfecta 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10721,9 +12235,178 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
-EconomÃ­as grandes
+QuÃ© se salva
 \emph default
-: 
+: si los agentes son muchos y pequeÃ±os, las no convexidades de los consumidores apenas se notan en el agregado (como los saltos de cada persona se compensan entre sÃ­) y hay equilibrios 
+\emph on
+casi
+\emph default
+ exactos 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Starr1969Quasi}
+\end_layout
+
+\end_inset
+
+. Las de las empresas no se diluyen, porque la escala de una empresa no se reduce al crecer la economÃ­a. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrios mÃºltiples
+\emph default
+: pueden darse incluso con convexidad (II.1.2), y cuando lo que le conviene a cada uno depende de lo que hacen los demÃ¡s son la regla. La economÃ­a puede quedar atrapada en un equilibrio malo: nadie invierte porque nadie compra, y nadie compra porque nadie invierte. Son los 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+fallos de coordinaciÃ³n
+\end_layout
+
+\end_inset
+
+, que enlazan la teorÃ­a con la macroeconomÃ­a keynesiana 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{CooperJohn1988Coordinating}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.4
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En suma
+\emph default
+: la convexidad es lo que hace que los precios coordinen de forma suave y que el equilibrio exista y sea eficiente; sin ella hace falta otra teorÃ­a (competencia imperfecta, regulaciÃ³n, coordinaciÃ³n de expectativas). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Desarrollo tÃ©cnico de las no convexidades
+\series default
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Existencia
+\emph default
+: la convexidad sostiene la existencia (II.1.1) y el segundo teorema del bienestar (II.2.2). Con preferencias no convexas, la demanda es una correspondencia que no tiene valores convexos o una funciÃ³n discontinua; el exceso de demanda deja de ser continuo y el teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+ (o el de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Kakutani
+\end_layout
+
+\end_inset
+
+) no se puede aplicar. En la caja de intercambio, las curvas de oferta-demanda dan un salto y pueden no cortarse. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Rendimientos crecientes
+\emph default
+: con costes fijos o costes medios en U con un tramo decreciente, en el tramo en que el coste medio decrece el coste marginal estÃ¡ por debajo del medio, 
+\begin_inset Formula $\mathrm{CMg}<\mathrm{CMe}$
+\end_inset
+
+. Una empresa precio-aceptante que produce donde 
+\begin_inset Formula $p=\mathrm{CMg}$
+\end_inset
+
+ tiene pÃ©rdidas, 
+\begin_inset Formula $B=(p-\mathrm{CMe})\,q<0$
+\end_inset
+
+, y si el coste marginal tambiÃ©n decrece querrÃ­a producir sin lÃ­mite: no hay equilibrio competitivo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shapley
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Folkman
+\end_layout
+
+\end_inset
+
+
+\emph default
+: dados 
+\begin_inset Formula $I$
+\end_inset
+
+ conjuntos de 
+\begin_inset Formula $\mathbb{R}^n$
+\end_inset
+
+, todo punto de la envoltura convexa de su suma puede escribirse como suma de 
+\begin_inset Formula $I$
+\end_inset
+
+ puntos, uno de la envoltura convexa de cada conjunto, de los que como mucho 
+\begin_inset Formula $n$
+\end_inset
+
+ no estÃ¡n en el conjunto original. 
 \begin_inset ERT
 status collapsed
 
@@ -10735,31 +12418,19 @@ textcite{Starr1969Quasi}
 
 \end_inset
 
-, con el lema de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Shapley
-\end_layout
-
+ lo usa para mostrar que el error que introducen las no convexidades de las preferencias estÃ¡ acotado con independencia del nÃºmero de agentes (depende de 
+\begin_inset Formula $n$
 \end_inset
 
- y 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Folkman
-\end_layout
-
+, no de 
+\begin_inset Formula $I$
 \end_inset
 
-, muestra que la suma de muchos conjuntos no convexos es Â«casiÂ» convexa: el error que introducen las no convexidades de las preferencias estÃ¡ acotado con independencia del nÃºmero de agentes, de modo que por persona tiende a 0 y existen 
+), de modo que por persona tiende a 0 y existen 
 \emph on
 equilibrios aproximados
 \emph default
-. Las no convexidades individuales importan poco si cada agente es pequeÃ±o; las de la tecnologÃ­a, no, porque la escala de las empresas no se reduce 
+ 
 \begin_inset ERT
 status collapsed
 
@@ -10777,9 +12448,19 @@ parencite[Â§17.I]{MasColellWhinstonGreen1995}
 \begin_layout Itemize
 
 \emph on
-Equilibrios mÃºltiples
+Complementariedades estratÃ©gicas
 \emph default
-: pueden darse con convexidad (II.1.2), y con rendimientos crecientes o complementariedades estratÃ©gicas son la regla. La economÃ­a puede quedar atrapada en un equilibrio ineficiente: son los fallos de coordinaciÃ³n, que enlazan la teorÃ­a con la macroeconomÃ­a keynesiana 
+: si la mejor respuesta de cada agente aumenta con la acciÃ³n de los demÃ¡s, puede haber varios equilibrios ordenados en el sentido de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Pareto
+\end_layout
+
+\end_inset
+
+, y el mercado no tiene por quÃ© llevar al mejor 
 \begin_inset ERT
 status collapsed
 
@@ -10792,6 +12473,11 @@ parencite{CooperJohn1988Coordinating}
 \end_inset
 
 . 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -10826,110 +12512,32 @@ Patinkin
 )
 \end_layout
 
+\begin_layout Standard
+Hasta aquÃ­ el modelo funciona sin dinero; pasamos ahora a preguntarnos si puede tenerlo y quÃ© cambia si lo tiene.
+\end_layout
+
 \begin_layout Paragraph
 a) Idea
 \end_layout
 
 \begin_layout Itemize
-En el modelo estudiado hasta aquÃ­ el dinero es solo unidad de cuenta: el numerario. Los bienes se intercambian en rÃ©gimen de trueque, los precios absolutos quedan indeterminados (I.2.4) y el dinero no es ni medio de cambio ni depÃ³sito de valor. Â¿Se puede introducir un dinero fiduciario, que no da utilidad por sÃ­ mismo, sin romper la coherencia del modelo? 
-\end_layout
-
-\begin_layout Itemize
-El antecedente es 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Mill1844Essays}
-\end_layout
-
-\end_inset
-
-: en una economÃ­a monetaria la ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Say
-\end_layout
-
-\end_inset
-
- puede fallar, porque un exceso de oferta general de bienes puede ir acompaÃ±ado de un exceso de demanda de dinero. 
-\end_layout
-
-\begin_layout Paragraph
-b) Modelo
-\end_layout
-
-\begin_layout Itemize
 
 \emph on
-Supuestos
+Las funciones del dinero
 \emph default
-: intercambio puro con 
-\begin_inset Formula $n$
-\end_inset
-
- bienes y dinero; el consumidor 
-\begin_inset Formula $i$
-\end_inset
-
- tiene dotaciones 
-\begin_inset Formula $\vect{\omega}_i$
-\end_inset
-
- y saldos monetarios 
-\begin_inset Formula $\overline{M}_i$
-\end_inset
-
- (
-\begin_inset Formula $\overline{M}=\sum_i\overline{M}_i$
-\end_inset
-
-); el dinero no da utilidad. 
-\end_layout
-
-\begin_layout Itemize
-
+: el dinero se define por lo que hace: es 
 \emph on
-La ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Walras
-\end_layout
-
-\end_inset
-
- con dinero
+medio de cambio
 \emph default
-: cada consumidor gasta en bienes y en dinero lo que valen sus bienes y su dinero, 
-\begin_inset Formula $\vect{p}\cdot\vect{x}_i+M^D_i=\vect{p}\cdot\vect{\omega}_i+\overline{M}_i$
-\end_inset
-
-; sumando, 
-\begin_inset Formula \begin{equation}
-  \sum_{k=1}^{n}p_k\,z_k(\vect{p})+\big(M^D(\vect{p})-\overline{M}\big)\equiv 0. \label{eq:walras-dinero}
-  \end{equation}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
+ (con Ã©l se paga y se evita el trueque), 
 \emph on
-La dicotomÃ­a clÃ¡sica
+depÃ³sito de valor
 \emph default
-: los excesos de demanda de bienes dependen solo de los precios relativos (homogÃ©neos de grado 0 en 
-\begin_inset Formula $\vect{p}$
-\end_inset
-
-), y como el dinero no da utilidad su demanda no sale de la optimizaciÃ³n: se fija con una regla institucional de tipo Cambridge 
+ (traslada poder de compra al futuro) y 
+\emph on
+unidad de cuenta
+\emph default
+ (en Ã©l se miden los precios) 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -10939,219 +12547,23 @@ status collapsed
 
 \end_inset
 
-. Con beneficios nulos, cada consumidor desea mantener en dinero una proporciÃ³n 
-\begin_inset Formula $\varphi$
-\end_inset
-
- del valor de sus dotaciones, 
-\begin_inset Formula $M^D(\vect{p})=\varphi\,\vect{p}\cdot\sum_i\vect{\omega}_i$
-\end_inset
-
-. El sector real fijarÃ­a los precios relativos y el mercado de dinero, el nivel de precios. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-La dicotomÃ­a es invÃ¡lida
-\emph default
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{Lange1942Say,Patinkin1965Money}
-\end_layout
-
-\end_inset
-
-: si 
-\begin_inset Formula $\vect{p}^*$
-\end_inset
-
- es de equilibrio y se multiplican todos los precios por 2, los mercados de bienes siguen vaciÃ¡ndose (homogeneidad de grado 0), asÃ­ que, por
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:walras-dinero"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-, el de dinero tambiÃ©n; pero la regla de Cambridge dice que la demanda de dinero se ha duplicado. Las 2 cosas no pueden ser ciertas a la vez: con la dicotomÃ­a, la ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Walras
-\end_layout
-
-\end_inset
-
- obliga a que el exceso de demanda de dinero sea nulo a 
-\emph on
-cualquier
-\emph default
- nivel de precios (identidad de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Say
-\end_layout
-
-\end_inset
-
-), y el nivel de precios queda indeterminado. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-La soluciÃ³n de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Patinkin1956Money}
-\end_layout
-
-\end_inset
-
-
-\emph default
-: la demanda de bienes depende de los precios relativos 
-\emph on
-y de los saldos reales
-\emph default
-, 
-\begin_inset Formula $\overline{M}_i/P$
-\end_inset
-
-, con 
-\begin_inset Formula $P$
-\end_inset
-
- un Ã­ndice de precios (
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-efecto saldos reales
-\end_layout
-
-\end_inset
-
-). Los excesos de demanda son homogÃ©neos de grado 0 en precios 
-\emph on
-y
-\emph default
- dinero, pero no en los precios solos: si el nivel de precios es demasiado alto, los saldos reales son bajos, cae la demanda de bienes y los precios bajan. 
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Implicaciones
-\emph default
-: el nivel de precios queda determinado y el dinero es 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-neutral
-\end_layout
-
-\end_inset
-
-: duplicar 
-\begin_inset Formula $\overline{M}$
-\end_inset
-
- duplica todos los precios de equilibrio sin cambiar los relativos ni la asignaciÃ³n real. Hay neutralidad sin dicotomÃ­a: el dinero no afecta al equilibrio, pero sÃ­ al proceso que lleva a Ã©l. Su versiÃ³n macroeconÃ³mica, el ajuste lento hacia el pleno empleo con un efecto saldos reales que actÃºa en el desequilibrio, es materia del debate sobre el desequilibrio 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.4
-\end_layout
-
-\end_inset
-
 . 
 \end_layout
 
 \begin_layout Itemize
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{ArchibaldLipsey1958Monetary}
-\end_layout
-
-\end_inset
-
- precisan que, en el equilibrio estacionario, cuando cada uno ya ha ajustado sus saldos, la dicotomÃ­a vuelve a ser vÃ¡lida para los valores de equilibrio: el efecto saldos reales actÃºa en el ajuste. 
-\end_layout
-
-\begin_layout Paragraph
-e) ValoraciÃ³n
+\emph on
+El dinero en el modelo estudiado hasta aquÃ­
+\emph default
+: solo cumple la tercera funciÃ³n, y ni siquiera como dinero, sino como numerario: un bien cualquiera en el que se expresan los demÃ¡s precios (I.2.4). Los bienes se intercambian en rÃ©gimen de trueque, aunque organizado por el subastador, y los precios absolutos quedan indeterminados. 
 \end_layout
 
 \begin_layout Itemize
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Hahn1965Problems}
-\end_layout
-
-\end_inset
-
- muestra el fallo de fondo: si el dinero no da utilidad ni presta ningÃºn servicio en el modelo, siempre existe un equilibrio en el que no vale nada. 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Patinkin
-\end_layout
-
-\end_inset
-
- lo evita poniendo los saldos reales en la utilidad, que es suponer lo que habÃ­a que explicar. 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Hahn1982Money}
-\end_layout
-
-\end_inset
-
- lo resume diciendo que el mayor reto que el dinero plantea al teÃ³rico es que el modelo de la economÃ­a mejor desarrollado no tiene sitio para Ã©l. 
-\end_layout
-
-\begin_layout Itemize
-La forma rigurosa de introducir el dinero es darle una funciÃ³n que el modelo de 
+\emph on
+Por quÃ© no tiene sitio
+\emph default
+: en el modelo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -11171,7 +12583,876 @@ Debreu
 
 \end_inset
 
-, con todos los mercados abiertos a la vez en el momento inicial, no deja: depÃ³sito de valor en una economÃ­a de generaciones solapadas 
+ no hay ninguna razÃ³n para querer dinero. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+No da utilidad
+\emph default
+: un billete no se consume; solo vale por lo que permite comprar. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+No hace falta como medio de cambio
+\emph default
+: el subastador casa a la vez todas las ofertas y demandas, y cada agente tiene una sola restricciÃ³n presupuestaria; nadie tiene que buscar a alguien que quiera justo lo que Ã©l ofrece. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+No hace falta como depÃ³sito de valor
+\emph default
+: todos los intercambios, presentes y futuros, se acuerdan de una vez en el momento inicial (III.4), asÃ­ que no hay que guardar poder de compra para mÃ¡s adelante. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+No queda nada que determinar
+\emph default
+: el sector real ya fija todos los precios relativos y las cantidades. El dinero solo podrÃ­a determinar el nivel absoluto de los precios. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+La pregunta
+\emph default
+: Â¿se puede introducir un dinero fiduciario, papel sin valor intrÃ­nseco, sin romper la coherencia del modelo? Â¿Y afecta el dinero a la economÃ­a real? 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El antecedente
+\emph default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Mill1844Essays}
+\end_layout
+
+\end_inset
+
+ ya advierte que en una economÃ­a monetaria la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Say
+\end_layout
+
+\end_inset
+
+ puede fallar, porque un exceso de oferta general de bienes puede ir acompaÃ±ado de un exceso de demanda de dinero. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+2 conceptos previos
+\series default
+, que se usan en todo el apartado y que la teorÃ­a monetaria emplea con el mismo sentido 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.35
+\end_layout
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DicotomÃ­a clÃ¡sica
+\emph default
+: la economÃ­a se separa en 2 sectores que se resuelven por separado. El 
+\emph on
+sector real
+\emph default
+ (bienes y factores) determina los precios relativos y las cantidades; el 
+\emph on
+sector monetario
+\emph default
+ (oferta y demanda de dinero) determina solo el nivel absoluto de los precios, segÃºn la teorÃ­a cuantitativa. El dinero serÃ­a un velo: cambia las unidades en que se mide todo, pero no lo que ocurre. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Neutralidad del dinero
+\emph default
+: los cambios en la cantidad de dinero no tienen efectos reales: solo cambian el nivel de precios, no los precios relativos ni las cantidades. La 
+\emph on
+superneutralidad
+\emph default
+ va un paso mÃ¡s allÃ¡: tampoco los tienen los cambios en la 
+\emph on
+tasa de crecimiento
+\emph default
+ de la cantidad de dinero. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La diferencia
+\emph default
+: la dicotomÃ­a es una propiedad de la 
+\emph on
+estructura
+\emph default
+ del modelo (los 2 sectores se pueden separar); la neutralidad, una propiedad de su 
+\emph on
+resultado
+\emph default
+. 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Patinkin
+\end_layout
+
+\end_inset
+
+ muestra que la primera es insostenible, pero que la segunda se mantiene. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+EconomÃ­a
+\emph default
+: intercambio puro con 
+\begin_inset Formula $n$
+\end_inset
+
+ bienes y dinero. El consumidor 
+\begin_inset Formula $i$
+\end_inset
+
+ tiene unas dotaciones de bienes 
+\begin_inset Formula $\vect{\omega}_i$
+\end_inset
+
+ y unos saldos monetarios iniciales 
+\begin_inset Formula $\overline{M}_i$
+\end_inset
+
+; la cantidad total de dinero, 
+\begin_inset Formula $\overline{M}=\sum_i\overline{M}_i$
+\end_inset
+
+, estÃ¡ dada. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Precios
+\emph default
+: los 
+\begin_inset Formula $p_k$
+\end_inset
+
+ son precios monetarios (euros por unidad de cada bien); el dinero es la unidad de cuenta y su precio es 1. 
+\begin_inset Formula $P$
+\end_inset
+
+ es un Ã­ndice del nivel de precios. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dinero
+\emph default
+: es fiduciario y, en la versiÃ³n dicotÃ³mica de partida, no da utilidad; cada consumidor desea mantener unos saldos 
+\begin_inset Formula $M^D_i$
+\end_inset
+
+ al final del periodo. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Paso 1. La ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+ con dinero
+\emph default
+: cada consumidor gasta en bienes y en el dinero que quiere conservar lo que valen sus bienes y el dinero que tenÃ­a, 
+\begin_inset Formula \begin{equation}
+  \vect{p}\cdot\vect{x}_i+M^D_i=\vect{p}\cdot\vect{\omega}_i+\overline{M}_i .
+  \end{equation}
+\end_inset
+
+Sumando para todos los consumidores, el valor de los excesos de demanda de los 
+\begin_inset Formula $n$
+\end_inset
+
+ bienes mÃ¡s el exceso de demanda de dinero es idÃ©nticamente nulo: 
+\begin_inset Formula \begin{equation}
+  \sum_{k=1}^{n}p_k\,z_k(\vect{p})+\big(M^D(\vect{p})-\overline{M}\big)\equiv 0. \label{eq:walras-dinero}
+  \end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+En palabras
+\emph default
+: ahora hay 
+\begin_inset Formula $n+1$
+\end_inset
+
+ mercados, y si en los de bienes sobra oferta por valor de 100 euros, en el de dinero sobra demanda por valor de 100 euros: los agentes venden bienes porque quieren tener mÃ¡s dinero. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Diferencia con la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Say
+\end_layout
+
+\end_inset
+
+
+\emph default
+: la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+ no excluye un exceso de oferta general de 
+\emph on
+bienes
+\emph default
+; solo dice que tiene su contrapartida en un exceso de demanda de 
+\emph on
+dinero
+\emph default
+ (I.2.4). 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 2. La dicotomÃ­a clÃ¡sica en el modelo
+\emph default
+: se construye con 2 piezas. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Sector real
+\emph default
+: los excesos de demanda de bienes dependen solo de los precios relativos, como en el modelo sin dinero: son homogÃ©neos de grado 0 en 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+ (
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+postulado de homogeneidad
+\end_layout
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sector monetario
+\emph default
+: como el dinero no da utilidad, su demanda no sale de la optimizaciÃ³n y se fija con una regla institucional de tipo Cambridge: cada consumidor desea mantener en dinero una proporciÃ³n 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ del valor de sus dotaciones (con beneficios nulos),
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+En macroeconomÃ­a la regla se escribe 
+\begin_inset Formula $M^D=k\,P\,Y$
+\end_inset
+
+, con 
+\begin_inset Formula $k$
+\end_inset
+
+ la constante de Cambridge 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.35
+\end_layout
+
+\end_inset
+
+; aquÃ­ se usa 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ porque 
+\begin_inset Formula $k$
+\end_inset
+
+ es el Ã­ndice de los bienes.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \begin{equation}
+    M^D_i(\vect{p})=\varphi\,\vect{p}\cdot\vect{\omega}_i,\qquad M^D(\vect{p})=\varphi\,\vect{p}\cdot\sum_i\vect{\omega}_i .
+    \end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El reparto de papeles
+\emph default
+: el sector real fijarÃ­a los precios relativos y el mercado de dinero, con 
+\begin_inset Formula $M^D(\vect{p})=\overline{M}$
+\end_inset
+
+, el nivel de precios. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 3. Por quÃ© la dicotomÃ­a es invÃ¡lida
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Lange1942Say,Patinkin1965Money}
+\end_layout
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+El experimento
+\emph default
+: sea 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ un equilibrio y multipliquemos todos los precios por 2. Por el postulado de homogeneidad, los mercados de bienes siguen vaciÃ¡ndose; por la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:walras-dinero"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, el de dinero tambiÃ©n. Pero la regla de Cambridge dice que la demanda de dinero se ha duplicado y la cantidad de dinero no ha cambiado: el mercado de dinero 
+\emph on
+no
+\emph default
+ se vacÃ­a. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La contradicciÃ³n
+\emph default
+: las 2 piezas no pueden ser ciertas a la vez. Si los excesos de demanda de bienes solo dependen de los precios relativos, la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+ obliga a que el exceso de demanda de dinero sea nulo a 
+\emph on
+cualquier
+\emph default
+ nivel de precios (es la identidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Say
+\end_layout
+
+\end_inset
+
+), y el mercado de dinero no determina nada: el nivel de precios queda indeterminado. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En palabras
+\emph default
+: si, cuando los precios se duplican, un consumidor quiere tener el doble de dinero, para conseguirlo tiene que vender mÃ¡s bienes o comprar menos. Su demanda de bienes no puede ser la misma que antes: suponer que lo es resulta contradictorio. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Paso 4. La soluciÃ³n de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Patinkin1956Money}
+\end_layout
+
+\end_inset
+
+: el efecto saldos reales
+\emph default
+. La demanda de bienes depende de los precios relativos 
+\emph on
+y de los saldos reales
+\emph default
+, 
+\begin_inset Formula $\overline{M}_i/P$
+\end_inset
+
+, el poder de compra del dinero que se tiene (
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+efecto saldos reales
+\end_layout
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+En palabras
+\emph default
+: si los precios suben, el dinero que tengo compra menos y soy mÃ¡s pobre en tÃ©rminos reales. Para reponer mis saldos, compro menos bienes. Ese exceso de oferta de bienes empuja los precios a la baja hasta que los saldos reales vuelven a ser los deseados. Si los precios son demasiado bajos, ocurre lo contrario. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Homogeneidad
+\emph default
+: los excesos de demanda son homogÃ©neos de grado 0 en los precios 
+\emph on
+y
+\emph default
+ el dinero, pero no en los precios solos. Duplicar a la vez los precios y la cantidad de dinero no cambia nada real; duplicar solo los precios, sÃ­. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Por quÃ© la regla de Cambridge lleva al efecto saldos reales
+\series default
+. Con la regla 
+\begin_inset Formula $M^D_i=\varphi\,\vect{p}\cdot\vect{\omega}_i$
+\end_inset
+
+, la restricciÃ³n presupuestaria del paso
+\begin_inset space ~
+
+\end_inset
+
+1 queda 
+\begin_inset Formula \begin{equation*}
+\vect{p}\cdot\vect{x}_i=(1-\varphi)\,\vect{p}\cdot\vect{\omega}_i+\overline{M}_i .
+\end{equation*}
+\end_inset
+
+Dividiendo por el Ã­ndice de precios 
+\begin_inset Formula $P$
+\end_inset
+
+, el gasto real en bienes depende del valor real de las dotaciones y de 
+\begin_inset Formula $\overline{M}_i/P$
+\end_inset
+
+. Si se multiplican los precios por 2 y 
+\begin_inset Formula $\overline{M}_i$
+\end_inset
+
+ no cambia, el conjunto presupuestario se encoge: la demanda de bienes 
+\emph on
+no
+\emph default
+ puede ser homogÃ©nea de grado 0 en 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+. La propia regla de Cambridge, unida a la restricciÃ³n presupuestaria, mete los saldos reales en la demanda de bienes: es la inconsistencia del paso
+\begin_inset space ~
+
+\end_inset
+
+3 vista desde el consumidor. Solo si se duplican a la vez 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+ y 
+\begin_inset Formula $\overline{M}_i$
+\end_inset
+
+ queda el conjunto presupuestario igual, que es la homogeneidad del paso
+\begin_inset space ~
+
+\end_inset
+
+4 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Patinkin1965Money}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El nivel de precios queda determinado
+\emph default
+: es el que hace que los saldos reales que se tienen, 
+\begin_inset Formula $\overline{M}/P$
+\end_inset
+
+, coincidan con los que se desean. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El dinero es neutral
+\emph default
+: duplicar 
+\begin_inset Formula $\overline{M}$
+\end_inset
+
+ duplica todos los precios de equilibrio sin cambiar los relativos ni la asignaciÃ³n real, porque los excesos de demanda son homogÃ©neos de grado 0 en precios y dinero: si 
+\begin_inset Formula $(\vect{p}^*,\overline{M})$
+\end_inset
+
+ es un equilibrio, tambiÃ©n lo es 
+\begin_inset Formula $(2\vect{p}^*,2\overline{M})$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Neutralidad sin dicotomÃ­a
+\emph default
+: el dinero no afecta al equilibrio real, pero los sectores real y monetario no se pueden separar: el efecto saldos reales, que actÃºa sobre la demanda de bienes, es lo que lleva el nivel de precios a su equilibrio. El dinero no importa en el equilibrio, pero sÃ­ en el proceso que lleva a Ã©l. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El equilibrio estacionario
+\emph default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ArchibaldLipsey1958Monetary}
+\end_layout
+
+\end_inset
+
+ precisan que, cuando cada uno ya ha ajustado sus saldos, la dicotomÃ­a vuelve a ser vÃ¡lida para los valores de equilibrio: el efecto saldos reales actÃºa en el ajuste. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La versiÃ³n macroeconÃ³mica
+\emph default
+: el efecto saldos reales (o efecto 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Pigou
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Patinkin
+\end_layout
+
+\end_inset
+
+) es el que, con precios flexibles, devuelve la economÃ­a al pleno empleo cuando cae la demanda, aunque el ajuste sea lento; es materia del debate sobre el desequilibrio y la sÃ­ntesis neoclÃ¡sica 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.4
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.5
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Paragraph
+c) ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El problema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Hahn
+\end_layout
+
+\end_inset
+
+
+\emph default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Hahn1965Problems}
+\end_layout
+
+\end_inset
+
+ muestra el fallo de fondo. Si el dinero no da utilidad ni presta ningÃºn servicio en el modelo, solo vale porque los demÃ¡s lo aceptan; y siempre es posible que nadie lo acepte. Siempre existe, por tanto, un equilibrio en el que el dinero no vale nada y la economÃ­a vuelve al trueque. 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Patinkin
+\end_layout
+
+\end_inset
+
+ lo evita poniendo los saldos reales en la utilidad, que es suponer lo que habÃ­a que explicar. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El reto
+\emph default
+: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Hahn1982Money}
+\end_layout
+
+\end_inset
+
+ lo resume diciendo que el mayor reto que el dinero plantea al teÃ³rico es que el modelo de la economÃ­a mejor desarrollado no tiene sitio para Ã©l. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Las 4 vÃ­as modernas
+\emph default
+: la forma rigurosa de introducir el dinero es darle una funciÃ³n que el modelo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Debreu
+\end_layout
+
+\end_inset
+
+, con todos los mercados abiertos a la vez en el momento inicial, no deja: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DepÃ³sito de valor entre generaciones
+\emph default
+ 
 \begin_inset ERT
 status collapsed
 
@@ -11183,7 +13464,7 @@ parencite{Samuelson1958Exact}
 
 \end_inset
 
- 
+: en una economÃ­a de generaciones solapadas los jÃ³venes trabajan y los viejos no, y los que aÃºn no han nacido no pueden firmar contratos. Los jÃ³venes aceptan el dinero de los viejos a cambio de bienes porque esperan que la generaciÃ³n siguiente se lo acepte cuando ellos sean viejos: el dinero hace posible un intercambio que los mercados no pueden hacer 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -11193,7 +13474,15 @@ status collapsed
 
 \end_inset
 
-, restricciÃ³n de liquidez previa al gasto 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+RestricciÃ³n de liquidez previa al gasto
+\emph default
+ 
 \begin_inset ERT
 status collapsed
 
@@ -11205,7 +13494,29 @@ parencite{Clower1967Reconsideration}
 
 \end_inset
 
-, medio de cambio que surge de la bÃºsqueda de contrapartes 
+: para comprar hay que tener el dinero antes. En la idea de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Clower
+\end_layout
+
+\end_inset
+
+, el dinero compra bienes y los bienes compran dinero, pero los bienes no compran bienes; es el origen de los modelos de pago por anticipado (
+\emph on
+cash in advance
+\emph default
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Medio de cambio que surge de la bÃºsqueda
+\emph default
+ 
 \begin_inset ERT
 status collapsed
 
@@ -11217,7 +13528,15 @@ parencite{KiyotakiWright1989Money}
 
 \end_inset
 
- o, como forma reducida, dinero en la funciÃ³n de utilidad 
+: los agentes se encuentran al azar, y el trueque exige una doble coincidencia (que el otro tenga lo que yo quiero y quiera lo que yo tengo). Un objeto que todos aceptan resuelve el problema, y se acepta porque se espera que los demÃ¡s lo acepten: el dinero descansa en la confianza, y por eso puede haber equilibrios con dinero y sin Ã©l. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Dinero en la funciÃ³n de utilidad
+\emph default
+ 
 \begin_inset ERT
 status collapsed
 
@@ -11229,14 +13548,18 @@ parencite{Sidrauski1967Rational}
 
 \end_inset
 
-; un panorama, en 
-\begin_inset ERT
+: es una forma reducida. Resume los servicios de liquidez del dinero poniendo los saldos reales en la utilidad; no explica por quÃ© se quiere dinero, pero da una demanda de dinero que crece con el consumo y cae con el tipo de interÃ©s nominal, su coste de oportunidad. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Las 4 vÃ­as, y lo que cada una implica para la demanda de dinero y la polÃ­tica monetaria, se desarrollan en la teorÃ­a de la demanda de dinero 
+\begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
-
-\backslash
-textcite[cap.~2-3]{Walsh2017Monetary}
+3.A.35
 \end_layout
 
 \end_inset
@@ -11244,6 +13567,7 @@ textcite[cap.~2-3]{Walsh2017Monetary}
 . 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \begin_inset ERT
@@ -11286,16 +13610,24 @@ Debreu
 , 1959)
 \end_layout
 
+\begin_layout Standard
+El dinero no encontraba sitio porque en el modelo todo se acuerda en el momento inicial; pasamos ahora a ver cÃ³mo ese mismo supuesto permite introducir el tiempo y la incertidumbre.
+\end_layout
+
 \begin_layout Paragraph
 a) Idea
 \end_layout
 
 \begin_layout Itemize
-El tiempo y la incertidumbre caben en el modelo sin teorÃ­a nueva: basta con definir los bienes no solo por sus caracterÃ­sticas fÃ­sicas, sino tambiÃ©n por la fecha y el 
+
+\emph on
+MÃ¡s bienes, no otra teorÃ­a
+\emph default
+: el tiempo y la incertidumbre caben en el modelo sin teorÃ­a nueva. Basta con definir los bienes no solo por sus caracterÃ­sticas fÃ­sicas, sino tambiÃ©n por la fecha y el 
 \emph on
 estado de la naturaleza
 \emph default
- en que se entregan 
+ (lo que puede ocurrir: que llueva o que no llueva) en que se entregan 
 \begin_inset ERT
 status collapsed
 
@@ -11307,7 +13639,15 @@ parencite[cap.~7]{Debreu1959Theory}
 
 \end_inset
 
-. Un paraguas cuando llueve y un paraguas cuando no llueve son bienes distintos, con precios distintos: es el enfoque de la preferencia por el estado 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El ejemplo
+\emph default
+: un paraguas cuando llueve y un paraguas cuando no llueve son bienes distintos, porque no se valoran igual, y tienen precios distintos. Es el enfoque de la preferencia por el estado 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -11324,10 +13664,14 @@ status collapsed
 b) Modelo
 \end_layout
 
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Supuestos
+Estados
 \emph default
 : 
 \begin_inset Formula $n$
@@ -11345,7 +13689,15 @@ Supuestos
 \begin_inset Formula $\pi_s$
 \end_inset
 
-; un 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bienes contingentes
+\emph default
+: un 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -11371,7 +13723,15 @@ bien contingente
 \begin_inset Formula $p_{ks}$
 \end_inset
 
-. Hay mercados para los 
+. Es un contrato del tipo Â«hoy te pago y maÃ±ana me entregas un paraguas si llueve; si no llueve, no me entregas nadaÂ». Se paga hoy, ocurra lo que ocurra maÃ±ana: funciona como una pÃ³liza de seguro. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Mercados completos
+\emph default
+: hay mercados para los 
 \begin_inset Formula $n\cdot S$
 \end_inset
 
@@ -11385,19 +13745,31 @@ mercados completos
 
 \end_inset
 
-), informaciÃ³n simÃ©trica sobre quÃ© estado ocurre y preferencias convexas sobre planes contingentes. No hace falta la utilidad esperada; si se usa, la aversiÃ³n al riesgo basta para la convexidad. 
+): se puede comprar o vender cualquier bien para cualquier estado. 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Desarrollo
+InformaciÃ³n y preferencias
 \emph default
-: formalmente es el mismo modelo, con 
+: todos saben quÃ© estado ha ocurrido (informaciÃ³n simÃ©trica) y las preferencias sobre planes contingentes son convexas. No hace falta la utilidad esperada; si se usa, la aversiÃ³n al riesgo basta para la convexidad. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El mismo modelo
+\emph default
+: formalmente es el modelo de I con 
 \begin_inset Formula $n\cdot S$
 \end_inset
 
- bienes. Existe el equilibrio, con 
+ bienes. Todo lo demostrado vale: existe el equilibrio, con 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -11431,7 +13803,15 @@ Debreu
 \begin_inset Formula $p_{ks}$
 \end_inset
 
-, y se cumplen los 2 teoremas del bienestar: el riesgo se reparte de forma eficiente. Con utilidad esperada y un solo bien fÃ­sico, todos los consumidores igualan su relaciÃ³n marginal de sustituciÃ³n entre estados al cociente de los precios de estado: 
+, y se cumplen los 2 teoremas del bienestar. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La condiciÃ³n de equilibrio
+\emph default
+: con utilidad esperada y un solo bien fÃ­sico, todos los consumidores igualan su relaciÃ³n marginal de sustituciÃ³n entre estados al cociente de los precios de estado: 
 \begin_inset Formula \begin{equation}
   \frac{\pi_s\,u_i'(x_{is})}{\pi_{s'}\,u_i'(x_{is'})}=\frac{p_s}{p_{s'}}\qquad\text{para todo consumidor } i. \label{eq:precios-estado}
   \end{equation}
@@ -11440,17 +13820,64 @@ Debreu
 
 \end_layout
 
-\begin_layout Itemize
-
-\emph on
-Implicaciones
-\emph default
-: 
-\end_layout
-
 \begin_deeper
 \begin_layout Itemize
 
+\emph on
+En palabras
+\emph default
+: cada consumidor valora una unidad mÃ¡s en el estado 
+\begin_inset Formula $s$
+\end_inset
+
+ frente a una en 
+\begin_inset Formula $s'$
+\end_inset
+
+ lo mismo que el mercado, y por tanto lo mismo que todos los demÃ¡s. Ya no quedan ganancias de asegurarse unos a otros: el riesgo estÃ¡ repartido de forma eficiente. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Un caso sencillo
+\emph default
+: si no hay riesgo agregado (los recursos totales son los mismos en todos los estados), los precios de estado son proporcionales a las probabilidades, 
+\begin_inset Formula $p_s/p_{s'}=\pi_s/\pi_{s'}$
+\end_inset
+
+, y los consumidores aversos al riesgo consumen lo mismo en todos los estados: se aseguran por completo. 
+\end_layout
+
+\end_deeper
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Por quÃ© el modelo sigue valiendo
+\emph default
+: con mercados completos, la incertidumbre no cambia nada esencial. Quien quiere protegerse de un estado encuentra a alguien que acepta ese riesgo a un precio, igual que encuentra a quien le venda pan, y el resultado es eficiente. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Los tÃ­tulos de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+
+\emph default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -11466,16 +13893,17 @@ textcite{Arrow1953Role}
 \begin_inset Formula $n\cdot S$
 \end_inset
 
- mercados hoy: bastan 
-\begin_inset Formula $S$
-\end_inset
+ mercados hoy. 
+\end_layout
 
- 
+\begin_deeper
+\begin_layout Itemize
+En lugar de comprar hoy un paraguas para el caso de que llueva, basta con comprar hoy un tÃ­tulo que paga 1 euro si llueve (un 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-tÃ­tulos de 
+tÃ­tulo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -11490,11 +13918,19 @@ Arrow
 
 \end_inset
 
- (cada uno paga una unidad de cuenta en un estado) y los 
+) y, si llueve, comprar maÃ±ana el paraguas con ese euro en el mercado al contado. 
+\end_layout
+
+\begin_layout Itemize
+Bastan 
+\begin_inset Formula $S$
+\end_inset
+
+ tÃ­tulos hoy y los 
 \begin_inset Formula $n$
 \end_inset
 
- mercados al contado que se abren en el estado que ocurra, 
+ mercados al contado que se abren en el estado que ocurra: 
 \begin_inset Formula $n+S$
 \end_inset
 
@@ -11502,7 +13938,7 @@ Arrow
 \begin_inset Formula $n\cdot S$
 \end_inset
 
-, si los agentes prevÃ©n bien los precios futuros 
+ (con 1.000 bienes y 10 estados, 1.010 mercados en lugar de 10.000), si los agentes prevÃ©n bien los precios futuros 
 \begin_inset ERT
 status collapsed
 
@@ -11514,11 +13950,16 @@ parencite{Arrow1964Role}
 
 \end_inset
 
-; 
+. 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
+\emph on
+Mercados que se suceden
+\emph default
+: 
 \begin_inset ERT
 status collapsed
 
@@ -11563,13 +14004,16 @@ Debreu
 . 
 \end_layout
 
-\end_deeper
 \begin_layout Paragraph
 c) Extensiones: mercados incompletos y tiempo
 \end_layout
 
 \begin_layout Itemize
-Si hay menos activos independientes que estados, el equilibrio de 
+
+\emph on
+Mercados incompletos
+\emph default
+: si hay menos activos independientes que estados, no es posible asegurarse contra todo lo que puede pasar (por ejemplo, contra perder el empleo o contra una mala cosecha en el propio paÃ­s). Entonces el equilibrio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -11584,11 +14028,15 @@ Radner
 
 \begin_deeper
 \begin_layout Itemize
-en general no es eficiente, ni siquiera 
+
+\emph on
+no es eficiente
+\emph default
+ en general, ni siquiera 
 \emph on
 restringidamente
 \emph default
-: un planificador que solo pudiera usar los mismos activos podrÃ­a mejorar a todos 
+: un planificador que solo pudiera usar los mismos activos podrÃ­a mejorar a todos, porque los agentes no tienen en cuenta cÃ³mo sus decisiones cambian los precios a los que otros pueden asegurarse 
 \begin_inset ERT
 status collapsed
 
@@ -11604,7 +14052,11 @@ parencite{Hart1975Optimality,GeanakoplosPolemarchakis1986Existence}
 \end_layout
 
 \begin_layout Itemize
-puede no existir con activos reales 
+
+\emph on
+puede no existir
+\emph default
+ con activos reales (que pagan en bienes) 
 \begin_inset ERT
 status collapsed
 
@@ -11620,15 +14072,15 @@ parencite{Hart1975Optimality}
 \end_layout
 
 \begin_layout Itemize
-con activos nominales estÃ¡ 
+
 \emph on
-indeterminado
+estÃ¡ indeterminado
 \emph default
-: hay un continuo de equilibrios reales cuya dimensiÃ³n, 
+ con activos nominales (que pagan en dinero): lo que un activo compra depende del nivel de precios en cada estado, que nada fija, y hay un continuo de equilibrios reales, de dimensiÃ³n 
 \begin_inset Formula $S-1$
 \end_inset
 
-, crece con el nÃºmero de estados 
+, que crece con el nÃºmero de estados 
 \begin_inset ERT
 status collapsed
 
@@ -11640,12 +14092,22 @@ parencite{BalaskoCass1989Structure,GeanakoplosMasColell1989Real}
 
 \end_inset
 
-. Con mercados completos el equilibrio vuelve a ser determinado (un nÃºmero finito de equilibrios, como en las economÃ­as regulares de II.1.2) y eficiente: la universalidad de los mercados juega a favor de la determinaciÃ³n del equilibrio. 
+. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Con mercados completos el equilibrio vuelve a ser determinado (un nÃºmero finito de equilibrios, como en las economÃ­as regulares de II.1.2) y eficiente: cuantos mÃ¡s mercados, mÃ¡s determinado estÃ¡ el equilibrio. 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Con un horizonte infinito y agentes que nacen y mueren (generaciones solapadas), el equilibrio competitivo puede ser ineficiente incluso con mercados completos en cada periodo (ineficiencia dinÃ¡mica) 
+
+\emph on
+Tiempo sin fin
+\emph default
+: con un horizonte infinito y agentes que nacen y mueren (generaciones solapadas), el equilibrio competitivo puede ser ineficiente incluso con mercados completos en cada periodo (ineficiencia dinÃ¡mica) 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -11749,6 +14211,10 @@ Scarf
 \end_inset
 
 )
+\end_layout
+
+\begin_layout Standard
+Una vez vistos los lÃ­mites teÃ³ricos del modelo, pasamos a cÃ³mo se usa en la prÃ¡ctica.
 \end_layout
 
 \begin_layout Itemize
@@ -12184,6 +14650,14 @@ ValoraciÃ³n
 : los resultados dependen de las elasticidades y de los cierres macroeconÃ³micos elegidos, y la unicidad del equilibrio calculado no estÃ¡ garantizada (II.1.2). Aun asÃ­, son la forma de llevar la teorÃ­a del equilibrio general a la evaluaciÃ³n de polÃ­ticas. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+Recapitulando
+\emph default
+: el equilibrio walrasiano resiste que se quite el subastador si los agentes son muchos (nÃºcleo), pero no el poder de mercado, las no convexidades, el dinero sin valor intrÃ­nseco ni los mercados incompletos; aun asÃ­, sigue siendo la referencia con la que se evalÃºan las polÃ­ticas. 
+\end_layout
+
 \begin_layout Standard
 
 \begin_inset ERT
@@ -12272,7 +14746,7 @@ Debreu
 \end_layout
 
 \begin_layout Itemize
-Y el modelo resiste bien que se relajen algunos supuestos (con muchos agentes, el nÃºcleo converge al equilibrio walrasiano) y peor otros: poder de mercado, no convexidades, mercados incompletos y dinero (III). AsÃ­, el trabajo de 
+Y el modelo resiste bien que se relajen algunos supuestos (con muchos agentes, el nÃºcleo converge al equilibrio walrasiano) y peor otros: poder de mercado, no convexidades, mercados incompletos y dinero, que necesita una funciÃ³n que el modelo no le da (III). AsÃ­, el trabajo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -12458,6 +14932,56 @@ status collapsed
 
 \end_inset
 
+. La teorÃ­a de la negociaciÃ³n (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Nash
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Rubinstein
+\end_layout
+
+\end_inset
+
+) elige entre los acuerdos que 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Edgeworth
+\end_layout
+
+\end_inset
+
+ deja abiertos 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.14
+\end_layout
+
+\end_inset
+
+, y la teorÃ­a de la demanda de dinero da al dinero la funciÃ³n que aquÃ­ le falta 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.35
+\end_layout
+
+\end_inset
+
 . 
 \end_layout
 
@@ -12539,7 +15063,17 @@ OpiniÃ³n
 \emph default
 
 \series default
-: el equilibrio general competitivo no describe ninguna economÃ­a real; su valor es servir de referencia exacta, porque dice quÃ© tendrÃ­a que cumplir una economÃ­a para que la mano invisible funcione, y cada supuesto que no se cumple seÃ±ala dÃ³nde puede fallar y, por tanto, dÃ³nde puede tener sentido la intervenciÃ³n pÃºblica. 
+: el equilibrio general competitivo no describe ninguna economÃ­a real, ni lo pretende: como en la imagen de Joan 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Robinson
+\end_layout
+
+\end_inset
+
+, un mapa sirve precisamente porque deja cosas fuera. Su valor es servir de referencia exacta, porque dice quÃ© tendrÃ­a que cumplir una economÃ­a para que la mano invisible funcione, y cada supuesto que no se cumple seÃ±ala dÃ³nde puede fallar y, por tanto, dÃ³nde puede tener sentido la intervenciÃ³n pÃºblica. 
 \end_layout
 
 \begin_layout Itemize
@@ -12801,7 +15335,11 @@ La maximizaciÃ³n del beneficio en 2 etapas
 \end_layout
 
 \begin_layout Itemize
-El problema de la empresa
+
+\emph on
+Problema
+\emph default
+: el de la empresa
 \begin_inset space ~
 
 \end_inset
@@ -13059,7 +15597,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-Anexo: existencia y unicidad del equilibrio
+Anexo: existencia, unicidad y estabilidad del equilibrio
 \end_layout
 
 \begin_layout Standard
@@ -13073,17 +15611,293 @@ name "anexo:existencia"
 
 \end_layout
 
+\begin_layout Standard
+Este anexo recoge, paso a paso, las 3 demostraciones cuya intuiciÃ³n se cuenta en el apartado
+\begin_inset space ~
+
+\end_inset
+
+II.1: la existencia con el teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+ (B.1), la unicidad por el axioma dÃ©bil y por los sustitutivos brutos (B.2) y la estabilidad del tanteo con la distancia al equilibrio (B.3).
+\end_layout
+
 \begin_layout Subsection
 DemostraciÃ³n de la existencia
+\end_layout
+
+\begin_layout Paragraph
+Los teoremas del punto fijo
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-Supuestos
+QuÃ© son
+\emph default
+: los 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+teoremas del punto fijo
+\end_layout
+
+\end_inset
+
+ dan condiciones para que una aplicaciÃ³n de un conjunto en sÃ­ mismo deje al menos un elemento donde estÃ¡: un punto 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ con 
+\begin_inset Formula $\vect{f}(\vect{p}^*)=\vect{p}^*$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Por quÃ© sirven aquÃ­
+\emph default
+: si se encuentra una aplicaciÃ³n que imite al subastador (sube los precios con exceso de demanda y baja los de exceso de oferta), un vector de precios que esa aplicaciÃ³n no cambia es uno en el que nadie tiene motivo para cambiar ningÃºn precio: un equilibrio. Probar que existe un punto fijo es probar que existe un equilibrio. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+ frente a 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Kakutani
+\end_layout
+
+\end_inset
+
+
 \emph default
 : 
-\begin_inset Formula $\vect{z}:\Delta\to\mathbb{R}^n$
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Brouwer1911Abbildung}
+\end_layout
+
+\end_inset
+
+: si 
+\begin_inset Formula $\Delta\subset\mathbb{R}^n$
+\end_inset
+
+ es 
+\emph on
+no vacÃ­o
+\emph default
+, 
+\emph on
+compacto
+\emph default
+ (cerrado y acotado) y 
+\emph on
+convexo
+\emph default
+, y 
+\begin_inset Formula $\vect{f}:\Delta\to\Delta$
+\end_inset
+
+ es 
+\emph on
+continua
+\emph default
+, existe 
+\begin_inset Formula $\vect{p}^*\in\Delta$
+\end_inset
+
+ con 
+\begin_inset Formula $\vect{f}(\vect{p}^*)=\vect{p}^*$
+\end_inset
+
+. Sirve cuando las demandas y las ofertas son 
+\emph on
+funciones
+\emph default
+ (preferencias y tecnologÃ­as estrictamente convexas); 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Kakutani
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Kakutani1941Generalization}
+\end_layout
+
+\end_inset
+
+: lo generaliza a 
+\emph on
+correspondencias
+\emph default
+ (a cada punto le corresponde un conjunto) hemicontinuas superiormente y con valores no vacÃ­os y convexos. Hace falta cuando la convexidad no es estricta y la demanda o la oferta tienen varios valores a unos precios dados (por ejemplo, con rendimientos constantes). Es el que usan 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ArrowDebreu1954Existence}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+AquÃ­ se sigue la prueba con 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+, que es la mÃ¡s sencilla 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§17.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Lo que hay que comprobar
+\emph default
+: que existe un conjunto de precios no vacÃ­o, cerrado, acotado y convexo (paso
+\begin_inset space ~
+
+\end_inset
+
+1) y una funciÃ³n continua de ese conjunto en sÃ­ mismo (paso
+\begin_inset space ~
+
+\end_inset
+
+2); entonces 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Brouwer
+\end_layout
+
+\end_inset
+
+ da un punto fijo, y queda probar que ese punto fijo es un equilibrio (paso
+\begin_inset space ~
+
+\end_inset
+
+3). 
+\end_layout
+
+\begin_layout Paragraph
+Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sobre el exceso de demanda
+\emph default
+: 
+\begin_inset Formula $\vect{z}$
 \end_inset
 
  continua, homogÃ©nea de grado 0 y con 
@@ -13091,10 +15905,20 @@ Supuestos
 \end_inset
 
  para todo 
-\begin_inset Formula $\vect{p}\in\Delta$
+\begin_inset Formula $\vect{p}$
 \end_inset
 
-.
+ (ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+).
 \begin_inset Foot
 status collapsed
 
@@ -13132,7 +15956,17 @@ textcite[teorema~5.3]{JehleReny2011Advanced}
 
 \end_inset
 
-). Por eso no hace falta suponer saciedad.
+). Por eso no hace falta suponer saciedad, que contradirÃ­a la no saciedad local que piden la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+ y el primer teorema del bienestar.
 \end_layout
 
 \end_inset
@@ -13143,10 +15977,48 @@ textcite[teorema~5.3]{JehleReny2011Advanced}
 \begin_layout Itemize
 
 \emph on
-El conjunto
+Velocidades de ajuste
 \emph default
-: el sÃ­mplice 
-\begin_inset Formula $\Delta$
+: 
+\begin_inset Formula $\kappa_k>0$
+\end_inset
+
+ para cada bien 
+\begin_inset Formula $k=1,\dots,n$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Paragraph
+Paso 1: el conjunto de precios
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La normalizaciÃ³n
+\emph default
+: los precios solo son no negativos, 
+\begin_inset Formula $p_k\geq 0$
+\end_inset
+
+: estÃ¡n acotados por abajo, pero no por arriba. Como 
+\begin_inset Formula $\vect{z}$
+\end_inset
+
+ es homogÃ©nea de grado 0, podemos dividir todos los precios por su suma sin cambiar ningÃºn exceso de demanda, 
+\begin_inset Formula $\vect{z}(\vect{p})=\vect{z}\big(\vect{p}/\sum_lp_l\big)$
+\end_inset
+
+, y trabajar con precios que suman 1: el 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+sÃ­mplice
+\end_layout
+
 \end_inset
 
 
@@ -13165,27 +16037,169 @@ nolink "false"
 
 \end_inset
 
- es no vacÃ­o (contiene, por ejemplo, 
-\begin_inset Formula $(1/n,\dots,1/n)$
+, 
+\begin_inset Formula $\Delta=\big\{\vect{p}\in\mathbb{R}^n_+:\ \sum_kp_k=1\big\}$
 \end_inset
 
-), acotado (
-\begin_inset Formula $0\leq p_k\leq 1$
-\end_inset
-
-), cerrado (incluye su frontera) y convexo (toda combinaciÃ³n convexa de 2 vectores de precios que suman 1 suma 1). 
+. 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-La aplicaciÃ³n
+Sus propiedades
 \emph default
-: con velocidades 
-\begin_inset Formula $\kappa_k>0$
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\emph on
+no vacÃ­o
+\emph default
+: contiene, por ejemplo, 
+\begin_inset Formula $(1/n,\dots,1/n)$
 \end_inset
 
-, la regla del subastador
+; 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+acotado
+\emph default
+: 
+\begin_inset Formula $0\leq p_k\leq 1$
+\end_inset
+
+ para todo 
+\begin_inset Formula $k$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+cerrado
+\emph default
+: incluye su frontera, los vectores con algÃºn precio nulo (estÃ¡ definido con igualdades y desigualdades no estrictas); 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+convexo
+\emph default
+: si 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}'$
+\end_inset
+
+ estÃ¡n en 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ y 
+\begin_inset Formula $\lambda\in[0,1]$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda\vect{p}+(1-\lambda)\vect{p}'$
+\end_inset
+
+ tiene componentes no negativas que suman 
+\begin_inset Formula $\lambda+(1-\lambda)=1$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+Paso 2: la funciÃ³n del subastador
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La regla
+\emph default
+: el subastador canta unos precios 
+\begin_inset Formula $\vect{p}\in\Delta$
+\end_inset
+
+, observa los excesos de demanda y propone unos nuevos: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si 
+\begin_inset Formula $z_k(\vect{p})>0$
+\end_inset
+
+, suma al precio un mÃºltiplo 
+\begin_inset Formula $\kappa_k$
+\end_inset
+
+ del exceso de demanda y el precio sube; 
+\end_layout
+
+\begin_layout Itemize
+si 
+\begin_inset Formula $z_k(\vect{p})=0$
+\end_inset
+
+, deja el precio como estÃ¡; 
+\end_layout
+
+\begin_layout Itemize
+si 
+\begin_inset Formula $z_k(\vect{p})<0$
+\end_inset
+
+, el precio baja. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Es decir, 
+\begin_inset Formula $p_k+\kappa_k\,z_k(\vect{p})$
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Primer arreglo, precios no negativos
+\emph default
+: la resta podrÃ­a dar precios negativos, asÃ­ que se toma 
+\begin_inset Formula $\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}$
+\end_inset
+
+. En un bien libre, 
+\begin_inset Formula $z_k\leq 0$
+\end_inset
+
+ a cualquier precio, y la regla baja su precio ronda tras ronda hasta que el mÃ¡ximo lo detiene en 0. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Segundo arreglo, volver al sÃ­mplice
+\emph default
+: los nuevos precios no tienen por quÃ© sumar 1, asÃ­ que se dividen por su suma. Queda la aplicaciÃ³n
 \begin_inset space ~
 
 \end_inset
@@ -13202,17 +16216,20 @@ nolink "false"
 \end_inset
 
 , 
-\begin_inset Formula \[
-  f_k(\vect{p})=\frac{\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}}{\sum_{l=1}^{n}\max\{0,\ p_l+\kappa_l\,z_l(\vect{p})\}}.
-  \]
+\begin_inset Formula \begin{equation*}
+  f_k(\vect{p})=\frac{\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}}{\sum_{l=1}^{n}\max\{0,\ p_l+\kappa_l\,z_l(\vect{p})\}},\qquad k=1,\dots,n.
+  \end{equation*}
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-El denominador es positivo: si fuera 
+
+\emph on
+El denominador es positivo
+\emph default
+: si fuera 
 \begin_inset Formula $p_l+\kappa_lz_l(\vect{p})\leq 0$
 \end_inset
 
@@ -13220,31 +16237,65 @@ El denominador es positivo: si fuera
 \begin_inset Formula $l$
 \end_inset
 
-, multiplicando por 
+, multiplicando cada desigualdad por 
 \begin_inset Formula $p_l/\kappa_l\geq 0$
 \end_inset
 
  y sumando, 
-\begin_inset Formula $\sum_lp_l^2/\kappa_l+\vect{p}\cdot\vect{z}(\vect{p})=\sum_lp_l^2/\kappa_l\leq 0$
+\begin_inset Formula \[
+  \sum_l\frac{p_l^2}{\kappa_l}+\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0\ \text{(\autor{Walras})}}=\sum_l\frac{p_l^2}{\kappa_l}\leq 0,
+  \]
 \end_inset
 
-, imposible porque 
-\begin_inset Formula $\sum_lp_l=1$
+imposible, porque los precios suman 1 y alguno es positivo. AsÃ­ que 
+\begin_inset Formula $\vect{f}$
+\end_inset
+
+ estÃ¡ bien definida en todo 
+\begin_inset Formula $\Delta$
 \end_inset
 
 . 
 \end_layout
 
 \begin_layout Itemize
-Por tanto 
+
+\emph on
+
 \begin_inset Formula $\vect{f}$
 \end_inset
 
- es continua (cociente de funciones continuas con denominador positivo), sus componentes son no negativas y suman 1: 
-\begin_inset Formula $\vect{f}:\Delta\to\Delta$
+ es continua
+\emph default
+: 
+\begin_inset Formula $\vect{z}$
 \end_inset
 
-. Por 
+ es continua, el mÃ¡ximo de funciones continuas es continuo y el cociente de funciones continuas con denominador positivo tambiÃ©n. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+
+\begin_inset Formula $\vect{f}$
+\end_inset
+
+ lleva 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ en sÃ­ mismo
+\emph default
+: sus componentes son no negativas (por el mÃ¡ximo) y suman 1 (por la divisiÃ³n). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+AplicaciÃ³n del teorema
+\emph default
+: se cumplen todas las condiciones de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -13254,113 +16305,33 @@ Brouwer
 
 \end_inset
 
-, existe 
-\begin_inset Formula $\vect{p}^*$
+, de modo que existe un 
+\begin_inset Formula $\vect{p}^*\in\Delta$
 \end_inset
 
  con 
 \begin_inset Formula $\vect{f}(\vect{p}^*)=\vect{p}^*$
 \end_inset
 
-. 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\emph on
-El punto fijo es un equilibrio
-\emph default
-. Sea 
-\begin_inset Formula $\mu\equiv\sum_l\max\{0,\ p^*_l+\kappa_lz_l(\vect{p}^*)\}>0$
-\end_inset
-
-. El punto fijo dice que 
-\begin_inset Formula $\max\{0,\ p^*_k+\kappa_kz_k(\vect{p}^*)\}=\mu\,p^*_k$
-\end_inset
-
- para todo 
-\begin_inset Formula $k$
-\end_inset
-
-. 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Si 
-\begin_inset Formula $p^*_k=0$
-\end_inset
-
 : 
-\begin_inset Formula $\max\{0,\ \kappa_kz_k(\vect{p}^*)\}=0$
+\begin_inset Formula \begin{equation}
+  p^*_k=\frac{\max\{0,\ p^*_k+\kappa_k\,z_k(\vect{p}^*)\}}{\mu},\qquad \mu\equiv\sum_{l=1}^{n}\max\{0,\ p^*_l+\kappa_l\,z_l(\vect{p}^*)\}>0,\qquad k=1,\dots,n. \label{eq:punto-fijo}
+  \end{equation}
 \end_inset
 
-, luego 
-\begin_inset Formula $z_k(\vect{p}^*)\leq 0$
-\end_inset
 
- (bien libre). 
 \end_layout
 
-\begin_layout Itemize
-Si 
-\begin_inset Formula $p^*_k>0$
-\end_inset
-
-: 
-\begin_inset Formula $p^*_k+\kappa_kz_k(\vect{p}^*)=\mu\,p^*_k$
-\end_inset
-
-, luego 
-\begin_inset Formula $z_k(\vect{p}^*)=(\mu-1)\,p^*_k/\kappa_k$
-\end_inset
-
-. 
+\begin_layout Paragraph
+Paso 3: el punto fijo es un equilibrio
 \end_layout
 
-\begin_layout Itemize
-Multiplicando la Ãºltima igualdad por 
-\begin_inset Formula $p^*_k$
+\begin_layout Standard
+Hay que comprobar que 
+\begin_inset Formula $\vect{p}^*$
 \end_inset
 
- y sumando (los bienes con 
-\begin_inset Formula $p^*_k=0$
-\end_inset
-
- no aportan nada a la ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Walras
-\end_layout
-
-\end_inset
-
-): 
-\begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p}^*)=(\mu-1)\sum_k(p^*_k)^2/\kappa_k$
-\end_inset
-
-. El primer miembro es 0 por la ley de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Walras
-\end_layout
-
-\end_inset
-
- y la suma es positiva, asÃ­ que 
-\begin_inset Formula $\mu=1$
-\end_inset
-
- y 
-\begin_inset Formula $z_k(\vect{p}^*)=0$
-\end_inset
-
- para todos los bienes con precio positivo (bienes econÃ³micos). Se cumple
+ cumple la definiciÃ³n
 \begin_inset space ~
 
 \end_inset
@@ -13376,16 +16347,194 @@ nolink "false"
 
 \end_inset
 
+: exceso de demanda no positivo en los bienes con precio nulo y nulo en los de precio positivo. Multiplicando
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:punto-fijo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ por 
+\begin_inset Formula $\mu$
+\end_inset
+
+, 
+\begin_inset Formula $\max\{0,\ p^*_k+\kappa_kz_k(\vect{p}^*)\}=\mu\,p^*_k$
+\end_inset
+
+ para todo 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bienes con precio nulo
+\emph default
+ (
+\begin_inset Formula $p^*_k=0$
+\end_inset
+
+): la igualdad queda 
+\begin_inset Formula $\max\{0,\ \kappa_kz_k(\vect{p}^*)\}=0$
+\end_inset
+
+, lo que exige 
+\begin_inset Formula $\kappa_kz_k(\vect{p}^*)\leq 0$
+\end_inset
+
+ y, como 
+\begin_inset Formula $\kappa_k>0$
+\end_inset
+
+, 
+\begin_inset Formula $z_k(\vect{p}^*)\leq 0$
+\end_inset
+
+. Es la condiciÃ³n de equilibrio de un 
+\emph on
+bien libre
+\emph default
 . 
-\begin_inset Formula $\blacksquare$
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Bienes con precio positivo
+\emph default
+ (
+\begin_inset Formula $p^*_k>0$
+\end_inset
+
+): el segundo miembro, 
+\begin_inset Formula $\mu p^*_k$
+\end_inset
+
+, es positivo, asÃ­ que el mÃ¡ximo es el segundo tÃ©rmino: 
+\begin_inset Formula $p^*_k+\kappa_kz_k(\vect{p}^*)=\mu\,p^*_k$
+\end_inset
+
+, es decir, 
+\begin_inset Formula \[
+  z_k(\vect{p}^*)=(\mu-1)\,\frac{p^*_k}{\kappa_k}.
+  \]
+\end_inset
+
+Falta probar que 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+ cierra el argumento
+\emph default
+: multiplicando la Ãºltima igualdad por 
+\begin_inset Formula $p^*_k$
+\end_inset
+
+ y sumando para los bienes con precio positivo (los de precio nulo no aportan nada a 
+\begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p}^*)$
+\end_inset
+
+), 
+\begin_inset Formula \[
+  \underbrace{\vect{p}^*\cdot\vect{z}(\vect{p}^*)}_{=0\ \text{(\autor{Walras})}}=(\mu-1)\underbrace{\sum_{k:\,p^*_k>0}\frac{(p^*_k)^2}{\kappa_k}}_{>0}.
+  \]
+\end_inset
+
+El primer miembro es 0 y la suma es positiva, asÃ­ que 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+ y 
+\begin_inset Formula $z_k(\vect{p}^*)=0$
+\end_inset
+
+ en todos los bienes con precio positivo: son 
+\emph on
+bienes econÃ³micos
+\emph default
+ con su mercado vaciado. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ConclusiÃ³n
+\emph default
+: 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ cumple
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:egc"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: existe un equilibrio general competitivo.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
 \end_inset
 
  
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-La prueba no dice que el tanteo 
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+QuÃ© no prueba
+\series default
+. La prueba no dice que el tanteo 
 \emph on
 converja
 \emph default
@@ -13393,7 +16542,24 @@ converja
 \begin_inset Formula $\vect{p}^*$
 \end_inset
 
-: solo que hay un vector que el subastador deja donde estÃ¡. La convergencia es la pregunta de la estabilidad (II.1.3). 
+: solo que hay un vector que el subastador deja donde estÃ¡. Si los precios empiezan en otro sitio, nada asegura que lleguen a Ã©l. La convergencia es la pregunta de la estabilidad (II.1.3 y B.3). Tampoco dice cuÃ¡ntos puntos fijos hay (B.2) ni cÃ³mo calcularlos: eso lo resuelve el algoritmo de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Scarf1967Approximation}
+\end_layout
+
+\end_inset
+
+ (III.5). 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -13411,12 +16577,67 @@ name "anexo:unicidad"
 
 \end_layout
 
+\begin_layout Standard
+Las 2 condiciones suficientes del apartado
+\begin_inset space ~
+
+\end_inset
+
+II.1.2 se demuestran por 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+reducciÃ³n al absurdo
+\end_layout
+
+\end_inset
+
+: se supone que hay 2 equilibrios distintos y se llega a una contradicciÃ³n.
+\end_layout
+
+\begin_layout Paragraph
+Unicidad por el axioma dÃ©bil de la preferencia revelada
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Sustitutivos brutos
+IntuiciÃ³n
 \emph default
-. Con sustituciÃ³n bruta
+: si la demanda de mercado se comporta como la de un Ãºnico consumidor coherente, 2 equilibrios distintos obligarÃ­an a ese consumidor a elegir la cesta 
+\begin_inset Formula $A$
+\end_inset
+
+ pudiendo pagar la 
+\begin_inset Formula $B$
+\end_inset
+
+ y la 
+\begin_inset Formula $B$
+\end_inset
+
+ pudiendo pagar la 
+\begin_inset Formula $A$
+\end_inset
+
+, y eso es justo lo que el axioma dÃ©bil prohÃ­be. 
+\end_layout
+
+\begin_layout Subparagraph
+Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+NotaciÃ³n
+\emph default
+: 
+\begin_inset Formula $\vect{x}(\vect{p})$
+\end_inset
+
+ es la demanda de mercado de los consumidores
 \begin_inset space ~
 
 \end_inset
@@ -13424,7 +16645,7 @@ Sustitutivos brutos
 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:sustitutivos-brutos"
+reference "eq:demanda-mercado"
 plural "false"
 caps "false"
 noprefix "false"
@@ -13432,66 +16653,273 @@ nolink "false"
 
 \end_inset
 
-, todo precio de equilibrio es positivo. Si 
-\begin_inset Formula $\vect{p}^0$
+, 
+\begin_inset Formula $\vect{y}(\vect{p})=\sum_j\vect{y}_j(\vect{p})$
+\end_inset
+
+ la oferta neta de las empresas y 
+\begin_inset Formula $\vect{\omega}=\sum_i\vect{\omega}_i$
+\end_inset
+
+ la dotaciÃ³n total. Por la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, el gasto total de los consumidores es su renta total: 
+\begin_inset Formula $\vect{p}\cdot\vect{x}(\vect{p})=\vect{p}\cdot\big(\vect{\omega}+\vect{y}(\vect{p})\big)$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Axioma dÃ©bil agregado
+\emph default
+: la demanda de mercado cumple el axioma dÃ©bil como si fuera la de un solo consumidor: si 
+\begin_inset Formula $\vect{x}(\vect{p}^A)\neq\vect{x}(\vect{p}^B)$
 \end_inset
 
  y 
-\begin_inset Formula $\vect{p}^1$
+\begin_inset Formula $\vect{p}^A\cdot\vect{x}(\vect{p}^B)\leq\vect{p}^A\cdot\vect{x}(\vect{p}^A)$
 \end_inset
 
- fueran 2 equilibrios no proporcionales, normalicemos 
-\begin_inset Formula $\vect{p}^1$
+ (a los precios 
+\begin_inset Formula $\vect{p}^A$
 \end_inset
 
- para que 
-\begin_inset Formula $\min_lp^1_l/p^0_l=1$
+ se elige la cesta 
+\begin_inset Formula $A$
 \end_inset
 
- y sea 
-\begin_inset Formula $k$
+ pudiendo pagar la 
+\begin_inset Formula $B$
 \end_inset
 
- el bien en que se alcanza: entonces 
-\begin_inset Formula $p^1_k=p^0_k$
+), entonces 
+\begin_inset Formula $\vect{p}^B\cdot\vect{x}(\vect{p}^A)>\vect{p}^B\cdot\vect{x}(\vect{p}^B)$
 \end_inset
 
- y 
-\begin_inset Formula $p^1_l\geq p^0_l$
+ (a los precios 
+\begin_inset Formula $\vect{p}^B$
+\end_inset
+
+ la cesta 
+\begin_inset Formula $A$
+\end_inset
+
+ no se puede pagar). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Empresas maximizadoras
+\emph default
+: a cada vector de precios, el plan elegido da al menos tanto beneficio como cualquier otro plan posible: 
+\begin_inset Formula $\vect{p}\cdot\vect{y}(\vect{p})\geq\vect{p}\cdot\vect{y}'$
 \end_inset
 
  para todo 
-\begin_inset Formula $l$
+\begin_inset Formula $\vect{y}'$
 \end_inset
 
-, con alguna desigualdad estricta. Al pasar de 
-\begin_inset Formula $\vect{p}^0$
+ factible. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrios con todos los precios positivos
+\emph default
+ (condiciÃ³n de frontera): en cada equilibrio, 
+\begin_inset Formula $\vect{x}(\vect{p})=\vect{\omega}+\vect{y}(\vect{p})$
 \end_inset
 
+. 
+\end_layout
+
+\begin_layout Subparagraph
+DemostraciÃ³n
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+HipÃ³tesis de partida
+\emph default
+: sean 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}^B$
+\end_inset
+
+ 2 equilibrios con consumos de mercado distintos, 
+\begin_inset Formula $\vect{x}^A\neq\vect{x}^B$
+\end_inset
+
+, y producciones 
+\begin_inset Formula $\vect{y}^A$
+\end_inset
+
+ e 
+\begin_inset Formula $\vect{y}^B$
+\end_inset
+
+. Por ser equilibrios, 
+\begin_inset Formula $\vect{x}^A=\vect{\omega}+\vect{y}^A$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{x}^B=\vect{\omega}+\vect{y}^B$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+A los precios 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+, la cesta 
+\begin_inset Formula $B$
+\end_inset
+
+ era asequible
+\emph default
+: como las empresas maximizan el beneficio a los precios 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+, 
+\begin_inset Formula $\vect{p}^A\cdot\vect{y}^A\geq\vect{p}^A\cdot\vect{y}^B$
+\end_inset
+
+. Sumando 
+\begin_inset Formula $\vect{p}^A\cdot\vect{\omega}$
+\end_inset
+
+ a los 2 lados, 
+\begin_inset Formula \[
+  \vect{p}^A\cdot\vect{x}^B=\vect{p}^A\cdot(\vect{\omega}+\vect{y}^B)\leq\vect{p}^A\cdot(\vect{\omega}+\vect{y}^A)=\vect{p}^A\cdot\vect{x}^A .
+  \]
+\end_inset
+
+Los consumidores eligieron 
+\begin_inset Formula $\vect{x}^A$
+\end_inset
+
+ pudiendo pagar 
+\begin_inset Formula $\vect{x}^B$
+\end_inset
+
+: 
+\begin_inset Formula $\vect{x}^A$
+\end_inset
+
+ se 
+\emph on
+revela preferida
+\emph default
  a 
-\begin_inset Formula $\vect{p}^1$
+\begin_inset Formula $\vect{x}^B$
 \end_inset
 
- solo suben (o se quedan igual) los precios de los demÃ¡s bienes; por la sustituciÃ³n bruta, 
-\begin_inset Formula $z_k(\vect{p}^1)>z_k(\vect{p}^0)=0$
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+El axioma dÃ©bil exige que a los precios 
+\begin_inset Formula $\vect{p}^B$
 \end_inset
 
-, y 
-\begin_inset Formula $\vect{p}^1$
+ la cesta 
+\begin_inset Formula $A$
 \end_inset
 
- no es de equilibrio. 
-\begin_inset Formula $\blacksquare$
+ no sea asequible
+\emph default
+: 
+\begin_inset Formula $\vect{p}^B\cdot\vect{x}^A>\vect{p}^B\cdot\vect{x}^B$
 \end_inset
 
- 
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Pero las empresas la hacen asequible
+\emph default
+: maximizando el beneficio a los precios 
+\begin_inset Formula $\vect{p}^B$
+\end_inset
+
+, 
+\begin_inset Formula $\vect{p}^B\cdot\vect{y}^B\geq\vect{p}^B\cdot\vect{y}^A$
+\end_inset
+
+, y sumando 
+\begin_inset Formula $\vect{p}^B\cdot\vect{\omega}$
+\end_inset
+
+, 
+\begin_inset Formula \[
+  \vect{p}^B\cdot\vect{x}^A=\vect{p}^B\cdot(\vect{\omega}+\vect{y}^A)\leq\vect{p}^B\cdot(\vect{\omega}+\vect{y}^B)=\vect{p}^B\cdot\vect{x}^B ,
+  \]
+\end_inset
+
+que contradice el paso
+\begin_inset space ~
+
+\end_inset
+
+3. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+ConclusiÃ³n
+\emph default
+: no puede haber 2 equilibrios con consumos distintos: la asignaciÃ³n de equilibrio es Ãºnica. Con preferencias diferenciables y una asignaciÃ³n interior, los precios relativos son las RMS comunes de esa asignaciÃ³n
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:egc-2x2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, asÃ­ que tambiÃ©n son Ãºnicos.
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencite[Â§17.F]{MasColellWhinstonGreen1995}
+findemo
 \end_layout
 
 \end_inset
@@ -13499,16 +16927,20 @@ parencite[Â§17.F]{MasColellWhinstonGreen1995}
  
 \end_layout
 
+\begin_layout Subparagraph
+VersiÃ³n con el exceso de demanda
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Axioma dÃ©bil de la preferencia revelada agregado
+Enunciado
 \emph default
 : 
 \begin_inset Formula $\vect{z}$
 \end_inset
 
- lo cumple si, para cualesquiera 
+ cumple el axioma dÃ©bil si, para cualesquiera 
 \begin_inset Formula $\vect{p}^0,\vect{p}^1$
 \end_inset
 
@@ -13524,7 +16956,27 @@ Axioma dÃ©bil de la preferencia revelada agregado
 \begin_inset Formula $\vect{p}^1\cdot\vect{z}(\vect{p}^0)>0$
 \end_inset
 
-. Con 
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§17.F]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Consecuencia
+\emph default
+: con 
 \begin_inset Formula $\vect{p}^1=\vect{p}^*$
 \end_inset
 
@@ -13564,7 +17016,33 @@ nolink "false"
 \begin_inset Formula $\vect{p}^0$
 \end_inset
 
- es otro equilibrio, el axioma no dice nada: por eso solo asegura que el conjunto de equilibrios es convexo. 
+ es otro equilibrio, el axioma no dice nada (los 2 excesos de demanda son 
+\begin_inset Formula $\vect{0}$
+\end_inset
+
+): por eso, en esta versiÃ³n, solo asegura que el conjunto de equilibrios es convexo; con equilibrios aislados (economÃ­a regular), es un punto. 
+\end_layout
+
+\begin_layout Subparagraph
+ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El supuesto es muy fuerte
+\emph default
+: cada consumidor cumple el axioma dÃ©bil 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.8
+\end_layout
+
+\end_inset
+
+, pero la demanda de mercado no lo hereda, porque los cambios de precios redistribuyen la renta entre consumidores que gastan de forma distinta (I.2.2). 
 \end_layout
 
 \begin_layout Itemize
@@ -13572,7 +17050,7 @@ nolink "false"
 \emph on
 CuÃ¡ndo se cumple
 \emph default
-: cada consumidor cumple el axioma dÃ©bil, pero la demanda agregada no lo hereda, porque los cambios de precios redistribuyen la renta entre consumidores que gastan de forma distinta. Una condiciÃ³n suficiente es que las preferencias sean homotÃ©ticas (curvas de 
+: una condiciÃ³n suficiente es que las preferencias sean homotÃ©ticas (curvas de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -13582,7 +17060,7 @@ Engel
 
 \end_inset
 
- rectas por el origen) y las dotaciones, proporcionales, de modo que la distribuciÃ³n relativa de la renta no cambie con los precios 
+ rectas por el origen: elasticidad renta unitaria) y las dotaciones, proporcionales, de modo que la distribuciÃ³n relativa de la renta no cambie con los precios 
 \begin_inset ERT
 status collapsed
 
@@ -13594,17 +17072,847 @@ parencite[Â§4.C y Â§17.F]{MasColellWhinstonGreen1995}
 
 \end_inset
 
- 
-\begin_inset Flex Ver tema
+. Es pedir que la economÃ­a se comporte como un consumidor representativo. 
+\end_layout
+
+\begin_layout Paragraph
+Unicidad por los sustitutivos brutos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+IntuiciÃ³n
+\emph default
+: si hubiera 2 equilibrios, el bien que 
+\emph on
+menos
+\emph default
+ se encarece al pasar de uno a otro verÃ­a a todos los demÃ¡s encarecerse mÃ¡s que Ã©l; como todos son sustitutivos suyos, su demanda subirÃ­a y su mercado dejarÃ­a de vaciarse. 
+\end_layout
+
+\begin_layout Subparagraph
+Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sobre el exceso de demanda
+\emph default
+: continuo, homogÃ©neo de grado 0 y con la ley de 
+\begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-3.A.8
+Walras
+\end_layout
+
+\end_inset
+
+, con todos los precios de equilibrio positivos (condiciÃ³n de frontera), de modo que en cada equilibrio 
+\begin_inset Formula $\vect{z}=\vect{0}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Sustitutivos brutos
+\emph default
+
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:sustitutivos-brutos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: 
+\begin_inset Formula $\partial z_k(\vect{p})/\partial p_l>0$
+\end_inset
+
+ para todo 
+\begin_inset Formula $l\neq k$
+\end_inset
+
+ y todo 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+. Al cambiar los precios cambian las demandas por los efectos sustituciÃ³n y renta (tambiÃ©n el de la dotaciÃ³n, I.2.2); la condiciÃ³n pide que el resultado neto sea siempre que encarecer un bien aumente la demanda de todos los demÃ¡s. 
+\end_layout
+
+\begin_layout Subparagraph
+DemostraciÃ³n
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+HipÃ³tesis de partida
+\emph default
+: sean 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}^B$
+\end_inset
+
+ 2 equilibrios no proporcionales (si fueran proporcionales, serÃ­an el mismo en precios relativos). Los 2 cumplen 
+\begin_inset Formula $\vect{z}(\vect{p}^A)=\vect{z}(\vect{p}^B)=\vect{0}$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Elegir el bien que menos se encarece
+\emph default
+: sea 
+\begin_inset Formula $k$
+\end_inset
+
+ el bien con el menor cociente 
+\begin_inset Formula $p^B_l/p^A_l$
+\end_inset
+
+, y 
+\begin_inset Formula $m=p^B_k/p^A_k$
+\end_inset
+
+ ese cociente. Por la homogeneidad de grado 0, 
+\begin_inset Formula $\vect{p}'=\vect{p}^B/m$
+\end_inset
+
+ es tambiÃ©n un equilibrio, y cumple: 
+\begin_inset Formula \[
+  p'_k=p^A_k,\qquad p'_l=\frac{p^B_l}{m}\geq p^A_l\quad\text{para todo }l\neq k,
+  \]
+\end_inset
+
+con alguna desigualdad estricta, porque 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}^B$
+\end_inset
+
+ no son proporcionales. Es decir: medido asÃ­, el bien 
+\begin_inset Formula $k$
+\end_inset
+
+ cuesta lo mismo en los 2 equilibrios y todos los demÃ¡s cuestan igual o mÃ¡s. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Su exceso de demanda sube
+\emph default
+: pasemos de 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+ a 
+\begin_inset Formula $\vect{p}'$
+\end_inset
+
+ subiendo uno a uno los precios de los demÃ¡s bienes, sin tocar 
+\begin_inset Formula $p_k$
+\end_inset
+
+. Cada subida aumenta 
+\begin_inset Formula $z_k$
+\end_inset
+
+ (estrictamente si el precio sube de verdad) por la sustituciÃ³n bruta, y ninguna lo reduce. Por tanto, 
+\begin_inset Formula \[
+  z_k(\vect{p}')>z_k(\vect{p}^A)=0 .
+  \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+ContradicciÃ³n
+\emph default
+: 
+\begin_inset Formula $\vect{p}'$
+\end_inset
+
+ es un equilibrio con 
+\begin_inset Formula $p'_k>0$
+\end_inset
+
+, asÃ­ que deberÃ­a ser 
+\begin_inset Formula $z_k(\vect{p}')=0$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+ConclusiÃ³n
+\emph default
+: no puede haber 2 equilibrios no proporcionales: el vector de precios relativos de equilibrio es Ãºnico.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Con 2 bienes
+\series default
+. Sea 
+\begin_inset Formula $\vect{p}^A$
+\end_inset
+
+ un equilibrio, con 
+\begin_inset Formula $z_X(\vect{p}^A)=z_Y(\vect{p}^A)=0$
+\end_inset
+
+ y, por la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $p^A_X\cdot 0+p^A_Y\cdot 0=0$
+\end_inset
+
+. Si baja 
+\begin_inset Formula $p_Y$
+\end_inset
+
+ sin tocar 
+\begin_inset Formula $p_X$
+\end_inset
+
+, el bien 
+\begin_inset Formula $X$
+\end_inset
+
+ se encarece en tÃ©rminos relativos y, por la sustituciÃ³n bruta, cae su demanda: 
+\begin_inset Formula $z_X<0$
+\end_inset
+
+. La ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $p_Xz_X+p_Yz_Y=0$
+\end_inset
+
+, exige entonces 
+\begin_inset Formula $z_Y>0$
+\end_inset
+
+: el mercado de 
+\begin_inset Formula $Y$
+\end_inset
+
+ no se vacÃ­a y el nuevo vector no es de equilibrio. Lo mismo si sube 
+\begin_inset Formula $p_Y$
+\end_inset
+
+, con los signos al revÃ©s. Es el argumento del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:equilibrios-multiples"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: con sustitutivos brutos, 
+\begin_inset Formula $z_X(p_X,1)$
+\end_inset
+
+ es siempre decreciente y solo corta el eje una vez. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Ventaja
+\emph default
+: no exige que la economÃ­a se comporte como un consumidor representativo, y la misma condiciÃ³n da la estabilidad global del tanteo (B.3) y el signo de la estÃ¡tica comparativa 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§17.F y Â§17.G]{MasColellWhinstonGreen1995}
 \end_layout
 
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+LÃ­mite
+\emph default
+: es muy restrictiva. Exige que los efectos sustituciÃ³n dominen a los efectos renta en todos los bienes y a todos los precios, y excluye los complementarios, que son la regla en muchos mercados (el contraejemplo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Scarf
+\end_layout
+
+\end_inset
+
+, con bienes complementarios, tiene un equilibrio Ãºnico pero inestable). Y, por el teorema SMD, nada en la teorÃ­a del consumidor obliga a que se cumpla. 
+\end_layout
+
+\begin_layout Subsection
+Estabilidad del tanteo
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:estabilidad"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+IntuiciÃ³n
+\emph default
+: se busca una medida de lo lejos que estÃ¡n los precios del equilibrio que el tanteo reduzca siempre. Si existe, los precios no pueden quedarse dando vueltas ni alejarse: acaban en el equilibrio. Es el segundo mÃ©todo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Liapunov
+\end_layout
+
+\end_inset
+
+ para sistemas dinÃ¡micos, que no exige resolver las ecuaciones del tanteo. 
+\end_layout
+
+\begin_layout Paragraph
+Supuestos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Tanteo
+\emph default
+
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:tatonnement"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: 
+\begin_inset Formula $\dot p_k=\kappa_k\,z_k(\vect{p})$
+\end_inset
+
+, con 
+\begin_inset Formula $\kappa_k>0$
+\end_inset
+
+, desde un vector de precios inicial 
+\begin_inset Formula $\vect{p}(0)$
+\end_inset
+
+ positivo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Exceso de demanda
+\emph default
+: continuo, homogÃ©neo de grado 0 y con la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+CondiciÃ³n de estabilidad
+\emph default
+: hay un equilibrio 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ tal que 
+\begin_inset Formula $\vect{p}^*\cdot\vect{z}(\vect{p})>0$
+\end_inset
+
+ para todo 
+\begin_inset Formula $\vect{p}$
+\end_inset
+
+ no proporcional a 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+, la condiciÃ³n
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:condicion-unicidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ArrowBlockHurwicz1959Stability}
+\end_layout
+
+\end_inset
+
+ prueban que se cumple si todos los bienes son sustitutivos brutos; tambiÃ©n se cumple con el axioma dÃ©bil agregado 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§17.H]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Paragraph
+DemostraciÃ³n
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+El tanteo no cambia el Â«tamaÃ±oÂ» de los precios
+\emph default
+: por la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula \[
+  \frac{d}{dt}\Bigg[\frac12\sum_{k}\frac{p_k(t)^2}{\kappa_k}\Bigg]=\sum_k\frac{p_k\,\dot p_k}{\kappa_k}=\sum_kp_k\,z_k(\vect{p})=\vect{p}\cdot\vect{z}(\vect{p})=0 .
+  \]
+\end_inset
+
+Los precios se mueven sobre una Â«esferaÂ» (ponderada por los 
+\begin_inset Formula $\kappa_k$
+\end_inset
+
+) fija: no pueden irse a infinito ni a 0 todos a la vez. Por la homogeneidad, elegimos el 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ de equilibrio sobre esa misma esfera; en ella es el Ãºnico vector proporcional a 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+La distancia al equilibrio
+\emph default
+: sea 
+\begin_inset Formula \[
+  V(\vect{p})=\frac12\sum_{k=1}^{n}\frac{(p_k-p^*_k)^2}{\kappa_k}\geq 0,
+  \]
+\end_inset
+
+que solo vale 0 en 
+\begin_inset Formula $\vect{p}=\vect{p}^*$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+CÃ³mo cambia con el tanteo
+\emph default
+: derivando y usando
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:tatonnement"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, 
+\begin_inset Formula \[
+  \frac{dV}{dt}=\sum_k\frac{(p_k-p^*_k)\,\dot p_k}{\kappa_k}=\sum_k(p_k-p^*_k)\,z_k(\vect{p})=\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0}-\vect{p}^*\cdot\vect{z}(\vect{p})=-\vect{p}^*\cdot\vect{z}(\vect{p}),
+  \]
+\end_inset
+
+que es la ecuaciÃ³n
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:distancia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ del cuerpo. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+La distancia baja siempre
+\emph default
+: mientras 
+\begin_inset Formula $\vect{p}(t)\neq\vect{p}^*$
+\end_inset
+
+, 
+\begin_inset Formula $\vect{p}(t)$
+\end_inset
+
+ no es proporcional a 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+ (paso
+\begin_inset space ~
+
+\end_inset
+
+1) y, por la condiciÃ³n de estabilidad, 
+\begin_inset Formula $dV/dt<0$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Convergencia
+\emph default
+: 
+\begin_inset Formula $V$
+\end_inset
+
+ es decreciente y estÃ¡ acotada por debajo por 0, asÃ­ que converge. Si su lÃ­mite fuera positivo, los precios se quedarÃ­an a una distancia mÃ­nima de 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+, donde 
+\begin_inset Formula $dV/dt$
+\end_inset
+
+ estÃ¡ acotada lejos de 0 (por continuidad), y 
+\begin_inset Formula $V$
+\end_inset
+
+ seguirÃ­a bajando sin lÃ­mite: imposible. Luego 
+\begin_inset Formula $V\to 0$
+\end_inset
+
+ y 
+\begin_inset Formula $\vect{p}(t)\to\vect{p}^*$
+\end_inset
+
+: el equilibrio es globalmente estable (teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Liapunov
+\end_layout
+
+\end_inset
+
+).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Con 2 bienes y sustitutivos brutos
+\series default
+. Por la ley de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Walras
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $z_Y=-\frac{p_X}{p_Y}z_X$
+\end_inset
+
+, y 
+\begin_inset Formula \[
+\vect{p}^*\cdot\vect{z}(\vect{p})=p^*_Xz_X+p^*_Yz_Y=z_X\Big(p^*_X-p^*_Y\frac{p_X}{p_Y}\Big)=p^*_Y\,z_X(\vect{p})\Big(\frac{p^*_X}{p^*_Y}-\frac{p_X}{p_Y}\Big).
+\]
+\end_inset
+
+Con sustitutivos brutos, 
+\begin_inset Formula $z_X$
+\end_inset
+
+ es decreciente en el precio relativo 
+\begin_inset Formula $p_X/p_Y$
+\end_inset
+
+ y nulo en 
+\begin_inset Formula $p^*_X/p^*_Y$
+\end_inset
+
+: es positivo cuando 
+\begin_inset Formula $X$
+\end_inset
+
+ estÃ¡ mÃ¡s barato que en el equilibrio y negativo cuando estÃ¡ mÃ¡s caro. Los 2 factores tienen siempre el mismo signo y el producto es positivo: se cumple la condiciÃ³n de estabilidad. 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+ValoraciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Estabilidad local
+\emph default
+: si solo se pide que el tanteo vuelva al equilibrio desde precios cercanos, basta estudiar la versiÃ³n lineal del sistema alrededor de 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+, con las derivadas de 
+\begin_inset Formula $\vect{z}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Hicks1939Value}
+\end_layout
+
+\end_inset
+
+ propone unas condiciones estÃ¡ticas de estabilidad Â«perfectaÂ», mercado a mercado; 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Samuelson1941Stability}
+\end_layout
+
+\end_inset
+
+ muestra que la estabilidad hay que definirla con un proceso dinÃ¡mico explÃ­cito y que las condiciones de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Hicks
+\end_layout
+
+\end_inset
+
+ no son ni necesarias ni suficientes, y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Metzler1945Stability}
+\end_layout
+
+\end_inset
+
+ prueba que con sustitutivos brutos las 2 coinciden. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+LÃ­mites
+\emph default
+: el resultado depende de una condiciÃ³n, la sustituciÃ³n bruta o el axioma dÃ©bil agregado, que la teorÃ­a no garantiza (SMD). En el contraejemplo de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Scarf1960Examples}
+\end_layout
+
+\end_inset
+
+ la distancia al equilibrio no disminuye nunca: los precios describen Ã³rbitas cerradas a su alrededor sin llegar a Ã©l. 
 \end_layout
 
 \begin_layout Standard
@@ -13654,7 +17962,7 @@ name "anexo:pareto"
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Su desarrollo completo es materia de la economÃ­a del bienestar 
 \begin_inset Flex Ver tema
 status collapsed
@@ -13665,7 +17973,17 @@ status collapsed
 
 \end_inset
 
-; aquÃ­ se recoge lo que el cuerpo resume. 
+; aquÃ­ se recoge lo que el cuerpo resume: el criterio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Pareto
+\end_layout
+
+\end_inset
+
+ con sus ventajas y crÃ­ticas, y los 2 teoremas fundamentales con sus supuestos, la demostraciÃ³n del primero y su historia.
 \end_layout
 
 \begin_layout Subsection
@@ -14022,6 +18340,116 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
+DemostraciÃ³n
+\emph default
+ (por reducciÃ³n al absurdo, en una economÃ­a de intercambio; con producciÃ³n se aÃ±ade que las empresas maximizan el beneficio) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[Â§16.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+sea 
+\begin_inset Formula $(\vect{x}^*_i)$
+\end_inset
+
+ la asignaciÃ³n de un equilibrio con precios 
+\begin_inset Formula $\vect{p}^*$
+\end_inset
+
+, y supongamos que no es Ã³ptima: existe otra factible, 
+\begin_inset Formula $(\vect{x}'_i)$
+\end_inset
+
+ con 
+\begin_inset Formula $\sum_i\vect{x}'_i=\sum_i\vect{\omega}_i$
+\end_inset
+
+, en la que nadie estÃ¡ peor y alguien estÃ¡ mejor; 
+\end_layout
+
+\begin_layout Enumerate
+quien estÃ¡ mejor no podÃ­a pagar su nueva cesta, porque si hubiera podido la habrÃ­a elegido: 
+\begin_inset Formula $\vect{p}^*\cdot\vect{x}'_i>\vect{p}^*\cdot\vect{\omega}_i$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+quien estÃ¡ igual tampoco podÃ­a pagarla por menos: si 
+\begin_inset Formula $\vect{p}^*\cdot\vect{x}'_i<\vect{p}^*\cdot\vect{\omega}_i$
+\end_inset
+
+, por la no saciedad local habrÃ­a una cesta cercana, mÃ¡s barata que su renta y mejor que 
+\begin_inset Formula $\vect{x}'_i$
+\end_inset
+
+, y por tanto mejor que 
+\begin_inset Formula $\vect{x}^*_i$
+\end_inset
+
+, que no habrÃ­a elegido. AsÃ­ que 
+\begin_inset Formula $\vect{p}^*\cdot\vect{x}'_i\geq\vect{p}^*\cdot\vect{\omega}_i$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+sumando para todos, 
+\begin_inset Formula $\vect{p}^*\cdot\sum_i\vect{x}'_i>\vect{p}^*\cdot\sum_i\vect{\omega}_i$
+\end_inset
+
+, lo que contradice que 
+\begin_inset Formula $(\vect{x}'_i)$
+\end_inset
+
+ sea factible: el equilibrio es Ã³ptimo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Pareto
+\end_layout
+
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+La demostraciÃ³n no usa en ningÃºn momento la convexidad, solo que los precios son comunes y que todos los bienes tienen precio. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
 Alcance
 \emph default
 : el teorema se ha usado a menudo como argumento del 
@@ -14109,7 +18537,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcite{Lerner1934Economic}
+textcite{Lerner1934Economic,Lerner1944Economics}
 \end_layout
 
 \end_inset
@@ -14190,8 +18618,8 @@ name "anexo:estabilidad-parcial"
 
 \end_layout
 
-\begin_layout Itemize
-En un solo mercado 
+\begin_layout Standard
+Este anexo recoge el caso mÃ¡s sencillo de la estabilidad (II.1.3): un solo mercado, con los demÃ¡s precios dados 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -14201,7 +18629,15 @@ status collapsed
 
 \end_inset
 
- hay 2 mecanismos de ajuste, con 
+. Sirve para ver que la respuesta depende del mecanismo de ajuste que se suponga.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Los 2 mecanismos
+\emph default
+: con 
 \begin_inset Formula $x(p)$
 \end_inset
 
@@ -14209,7 +18645,7 @@ status collapsed
 \begin_inset Formula $q(p)$
 \end_inset
 
- la oferta: 
+ la oferta, 
 \end_layout
 
 \begin_deeper
@@ -14254,7 +18690,7 @@ ajuste marshalliano (por cantidades)
 
 \end_inset
 
-: la cantidad aumenta si el precio de demanda supera al de oferta, 
+: la cantidad aumenta si el precio de demanda (lo que los compradores estÃ¡n dispuestos a pagar) supera al de oferta (lo que piden los vendedores), 
 \begin_inset Formula $\dot q=g\big(p^D(q)-p^S(q)\big)$
 \end_inset
 
@@ -14271,17 +18707,11 @@ ajuste marshalliano (por cantidades)
 
 \end_deeper
 \begin_layout Itemize
-Con oferta creciente y demanda decreciente, los 2 ajustes son estables. Si las 2 curvas tienen pendiente negativa (oferta con rendimientos crecientes, o demanda de un bien 
-\begin_inset Flex Autor
-status collapsed
 
-\begin_layout Plain Layout
-Giffen
-\end_layout
-
-\end_inset
-
- y oferta creciente), dan resultados opuestos (tabla
+\emph on
+CuÃ¡ndo coinciden
+\emph default
+: con oferta creciente y demanda decreciente, los 2 ajustes son estables (primera columna de la tabla
 \begin_inset space ~
 
 \end_inset
@@ -14297,7 +18727,7 @@ nolink "false"
 
 \end_inset
 
- y grÃ¡fico
+ y primer panel del grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -14313,7 +18743,25 @@ nolink "false"
 
 \end_inset
 
-): con pendientes 
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+CuÃ¡ndo difieren
+\emph default
+: si las 2 curvas tienen pendiente negativa (oferta con economÃ­as externas o rendimientos crecientes, o demanda de un bien 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Giffen
+\end_layout
+
+\end_inset
+
+ y oferta creciente), dan resultados opuestos (columnas y paneles segundo y tercero): con pendientes 
 \begin_inset Formula $a=dp^D/dq<0$
 \end_inset
 
@@ -14886,7 +19334,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Ajuste walrasiano y marshalliano en un mercado con oferta y demanda decrecientes
+InterpretaciÃ³n grÃ¡fica de los 3 casos de la tabla: ajuste walrasiano y marshalliano
 \end_layout
 
 \end_inset
@@ -14920,7 +19368,7 @@ status collapsed
 
 \end_inset
 
-0.85
+1.0
 \begin_inset ERT
 status collapsed
 
@@ -14995,9 +19443,33 @@ textcite[cap.~21]{Varian1992Microeconomic}
 \begin_layout Itemize
 
 \emph on
+CÃ³mo se lee el grÃ¡fico
+\emph default
+: cada panel estÃ¡ debajo de la columna de la tabla a la que corresponde, y bajo la primera columna va la leyenda. Las flechas sobre el eje de precios son el ajuste walrasiano (se mueve el precio) y las del eje de cantidades, el marshalliano (se mueve la cantidad); un ajuste es estable si sus flechas apuntan hacia el equilibrio (en verde) e inestable si se alejan (en rojo). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 ValoraciÃ³n
 \emph default
-: si el equilibrio es estable, el propio mercado tiende a Ã©l sin intervenciÃ³n; si no, la mano invisible no basta. En equilibrio general la pregunta es la del tanteo multimercado (II.1.3). 
+: si el equilibrio es estable, el propio mercado tiende a Ã©l sin intervenciÃ³n; si no, la mano invisible no basta. En equilibrio general la pregunta es la del tanteo multimercado (II.1.3 y anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:estabilidad"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Standard
@@ -15065,6 +19537,10 @@ name "anexo:estatica"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Una vez estudiadas la existencia y la unicidad del equilibrio (II.1), este anexo recoge cÃ³mo cambia cuando cambian los datos: es la estÃ¡tica comparativa que aplican los modelos computables (III.5).
 \end_layout
 
 \begin_layout Itemize
@@ -15322,6 +19798,119 @@ parencite{StolperSamuelson1941Protection}
 : si sube el precio relativo de un bien, sube mÃ¡s que proporcionalmente la remuneraciÃ³n real del factor que usa intensivamente y baja la del otro. 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DemostraciÃ³n
+\emph default
+: con beneficio nulo, 
+\begin_inset Formula $p_j=w_La_{Lj}+w_Ka_{Kj}$
+\end_inset
+
+, asÃ­ que las participaciones suman 1, 
+\begin_inset Formula $s_{Lj}+s_{Kj}=1$
+\end_inset
+
+, y cada 
+\begin_inset Formula $\hat p_j$
+\end_inset
+
+ es una media ponderada, con pesos estrictamente positivos, de 
+\begin_inset Formula $\hat w_L$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat w_K$
+\end_inset
+
+: estÃ¡ estrictamente entre los 2 si 
+\begin_inset Formula $\hat w_L\neq\hat w_K$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+Al diferenciar 
+\begin_inset Formula $p_j=c_j(w_L,w_K)$
+\end_inset
+
+ no aparecen los cambios de los 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+: por el lema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Shephard
+\end_layout
+
+\end_inset
+
+, la empresa ya los ha elegido para minimizar el coste, y su efecto es de segundo orden (
+\begin_inset Formula $w_L\,da_{Lj}+w_K\,da_{Kj}=0$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+ Restando las 2 ecuaciones y usando 
+\begin_inset Formula $s_{Kj}=1-s_{Lj}$
+\end_inset
+
+, 
+\begin_inset Formula \begin{equation*}
+    \hat p_X-\hat p_Y=(s_{LX}-s_{LY})\,(\hat w_L-\hat w_K).
+    \end{equation*}
+\end_inset
+
+Si 
+\begin_inset Formula $s_{LX}>s_{LY}$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat p_X>\hat p_Y$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\hat w_L>\hat w_K$
+\end_inset
+
+. Como los 2 precios de los bienes son medias de 
+\begin_inset Formula $\hat w_L$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat w_K$
+\end_inset
+
+, quedan entre ellos: 
+\begin_inset Formula $\hat w_L>\hat p_X>\hat p_Y>\hat w_K$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -15416,6 +20005,86 @@ parencite{Rybczynski1955Factor}
 : a precios constantes, si aumenta la dotaciÃ³n de un factor, aumenta mÃ¡s que proporcionalmente la producciÃ³n del bien que lo usa intensivamente y cae la del otro. 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+DemostraciÃ³n
+\emph default
+: las fracciones de cada factor empleadas en los 2 sectores suman 1, 
+\begin_inset Formula $\ell_{LX}+\ell_{LY}=1$
+\end_inset
+
+ y 
+\begin_inset Formula $\ell_{KX}+\ell_{KY}=1$
+\end_inset
+
+, asÃ­ que 
+\begin_inset Formula $\hat{\overline{L}}$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat{\overline{K}}$
+\end_inset
+
+ son medias ponderadas de 
+\begin_inset Formula $\hat X$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat Y$
+\end_inset
+
+. Restando las 2 ecuaciones, 
+\begin_inset Formula \begin{equation*}
+    \hat{\overline{L}}-\hat{\overline{K}}=(\ell_{LX}-\ell_{KX})\,(\hat X-\hat Y).
+    \end{equation*}
+\end_inset
+
+Que 
+\begin_inset Formula $X$
+\end_inset
+
+ sea intensivo en trabajo equivale a que emplee una fracciÃ³n mayor del trabajo que del capital, 
+\begin_inset Formula $\ell_{LX}>\ell_{KX}$
+\end_inset
+
+. Si 
+\begin_inset Formula $\hat{\overline{L}}>\hat{\overline{K}}$
+\end_inset
+
+, entonces 
+\begin_inset Formula $\hat X>\hat Y$
+\end_inset
+
+, y como las 2 dotaciones son medias de 
+\begin_inset Formula $\hat X$
+\end_inset
+
+ y 
+\begin_inset Formula $\hat Y$
+\end_inset
+
+, quedan entre ellas: 
+\begin_inset Formula $\hat X>\hat{\overline{L}}>\hat{\overline{K}}>\hat Y$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on

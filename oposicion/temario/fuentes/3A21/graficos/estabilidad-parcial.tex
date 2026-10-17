@@ -1,63 +1,89 @@
 % Estabilidad en un mercado: ajuste walrasiano (precios) y marshalliano (cantidades)
-% con oferta y demanda decrecientes (3.A.21, anexo D).
-% Equilibrio en (q*, p*) = (3, 3) en los 2 paneles. Rectas: inclinada p = 3 - 1,5(q - 3),
-%   plana p = 3 - 0,3(q - 3).
-% Izquierda: D inclinada, S plana. En p = 3,6: x = 2,6 > q = 1 (z > 0, p sube:
-%   se aleja); en p = 2,55: x = 3,3 < q = 4,5 (z < 0, p baja: se aleja). Walras inestable.
-%   En q = 0,9: p^D = 6,15 > p^S = 3,63 (q sube); en q = 4,9: p^D = 0,15 < p^S = 2,43
-%   (q baja). Marshall estable.
-% Derecha: S inclinada, D plana: al revés (Walras estable, Marshall inestable).
+% en los 3 casos de la tabla del anexo D (3.A.21), en el mismo orden que sus columnas.
+% El gráfico mide exactamente \textwidth (16,6 cm con el borde de standalone) y va a
+% 1,0\textwidth debajo de la tabla: cada panel queda centrado bajo su columna
+% (columnas de 3,4 cm + 2\tabcolsep, tabla centrada: centros en x = 6,38; 10,20; 14,02 cm).
+% La primera columna de la tabla (rótulos) lleva aquí la leyenda de las flechas.
+% Equilibrio en (q*, p*) = (1,7; 1,6) en los 3 paneles.
+% (1) D: p = 1,6 - 1,1(q - 1,7); S: p = 1,6 + 0,75(q - 1,7).
+% (2) D inclinada p = 1,6 - 1,6(q - 1,7); S plana p = 1,6 - 0,4(q - 1,7).
+%     Por encima de p*, x > q (z > 0): el precio sube y se aleja (Walras inestable);
+%     a la izquierda de q*, p^D > p^S: la cantidad sube hacia q* (Marshall estable).
+% (3) S inclinada y D plana (las mismas rectas cambiadas): al revés.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm,
-    declare function={inc(\q)=3-1.5*(\q-3); pla(\q)=3-0.3*(\q-3);},
+\begin{tikzpicture}[tcee,
+    declare function={pla(\q)=1.6-0.4*(\q-1.7);
+      dem(\q)=1.6-1.1*(\q-1.7); ofe(\q)=1.6+0.75*(\q-1.7);},
     estable/.style={->,thick,tceeverde},
-    inestable/.style={->,thick,tceerojo}]
-  % ---------------- Panel izquierdo: oferta más plana que la demanda ----------------
-  % 1: ejes
-  \capa{1}{\ejes{$q$}{$p$}{6.6}{6.6}}
-  \capa{1}{\node[font=\small\bfseries,align=center] at (3.3,7.4) {Oferta más plana que la demanda};}
-  % 2: demanda (inclinada) y oferta (plana), ambas decrecientes, y el equilibrio
-  \capa{2}{\draw[curva1] (0.9,6.15) node[etiqueta,above] {$D$} -- (5,0);}
-  \capa{2}{\draw[curva3] (0,3.9) -- (6,2.1) node[etiqueta,right] {$S$};}
-  \capa{2}{\node[punto] (E1) at (3,3) {};}
-  \capa{2}{\proyeccion{(E1)}{$q^*$}{$p^*$}}
-  % 3: ajuste walrasiano (por precios): el exceso de demanda aleja el precio
-  \capa{3}{\draw[guia,solid,semithick] (1,3.6) -- (2.6,3.6) node[midway,above,etiqueta,text=black] {$z>0$};}
-  \capa{3}{\draw[guia,solid,semithick] (3.3,2.55) -- (4.5,2.55) node[pos=0.8,below,etiqueta,text=black] {$z<0$};}
-  \capa{3}{\draw[inestable] (0.2,3.1) -- (0.2,3.7);}
-  \capa{3}{\draw[inestable] (0.2,2.9) -- (0.2,2.2);}
-  \capa{3}{\node[etiqueta,text=tceerojo,anchor=west] at (3.2,5.7) {\textsc{Walras}: inestable};}
-  % 4: ajuste marshalliano (por cantidades): la diferencia p^D - p^S acerca la cantidad
-  \capa{4}{\draw[guia,solid,semithick] (0.9,3.63) -- (0.9,6.15);}
-  \capa{4}{\draw[guia,solid,semithick] (4.9,0.15) -- (4.9,2.43);}
-  \capa{4}{\draw[estable] (2.2,0.25) -- (2.85,0.25);}
-  \capa{4}{\draw[estable] (3.8,0.25) -- (3.15,0.25);}
-  \capa{4}{\node[etiqueta,text=tceeverde,anchor=west] at (3.2,5.1) {\textsc{Marshall}: estable};}
-  % ---------------- Panel derecho: oferta más inclinada que la demanda ----------------
-  \begin{scope}[xshift=7.4cm]
+    inestable/.style={->,thick,tceerojo},
+    titulo/.style={font=\small\bfseries,align=center,text width=3.7cm,anchor=south},
+    veredicto/.style={etiqueta,anchor=west}]
+  % Caja fija: 16,6 cm de ancho con el borde (4 pt = 0,141 cm a cada lado)
+  \useasboundingbox (0.141,-1.75) rectangle (16.459,4.75);
+  % ---------------- Leyenda (bajo la columna de rótulos de la tabla) ----------------
+  \capa{1}{\node[etiqueta,align=left,text width=3.4cm,anchor=north west] at (0.85,3.0)
+    {Flechas en el eje $p$:\\ ajuste walrasiano\\[3pt] Flechas en el eje $q$:\\ ajuste marshalliano};}
+  \capa{1}{\draw[estable] (0.9,0.75) -- (1.4,0.75) node[etiqueta,right,text=tceeverde] {converge: estable};}
+  \capa{1}{\draw[inestable] (0.9,0.2) -- (1.4,0.2) node[etiqueta,right,text=tceerojo] {se aleja: inestable};}
+  % ---------------- (1) Oferta creciente, demanda decreciente ----------------
+  \begin{scope}[xshift=4.93cm]
+    % 1: ejes
+    \capa{1}{\ejes{$q$}{$p$}{3.0}{3.4}}
+    \capa{1}{\node[titulo] at (1.45,3.8) {\strut Oferta creciente,\\ \strut demanda decreciente};}
+    % 2: demanda, oferta y equilibrio
+    \capa{2}{\draw[curva1] (0.3,{dem(0.3)}) node[etiqueta,above] {$D$} -- (2.85,{dem(2.85)});}
+    \capa{2}{\draw[curva3] (0.15,{ofe(0.15)}) -- (2.85,{ofe(2.85)}) node[etiqueta,right] {$S$};}
+    \capa{2}{\node[punto] (E1) at (1.7,1.6) {};}
+    \capa{2}{\proyeccion{(E1)}{$q^*$}{$p^*$}}
+    % 3: ajuste walrasiano: el precio vuelve a p*
+    \capa{3}{\draw[estable] (0.14,2.1) -- (0.14,1.72);}
+    \capa{3}{\draw[estable] (0.14,1.1) -- (0.14,1.48);}
+    \capa{3}{\node[veredicto,text=tceeverde] at (0.2,-0.85) {\textsc{Walras}: estable};}
+    % 4: ajuste marshalliano: la cantidad vuelve a q*
+    \capa{4}{\draw[estable] (1.15,0.14) -- (1.58,0.14);}
+    \capa{4}{\draw[estable] (2.25,0.14) -- (1.82,0.14);}
+    \capa{4}{\node[veredicto,text=tceeverde] at (0.2,-1.35) {\textsc{Marshall}: estable};}
+  \end{scope}
+  % ---------------- (2) Ambas decrecientes, oferta más plana ----------------
+  \begin{scope}[xshift=8.75cm]
     % 5: ejes
-    \capa{5}{\ejes{$q$}{$p$}{6.6}{6.6}}
-    \capa{5}{\node[font=\small\bfseries,align=center] at (3.3,7.4) {Oferta más inclinada que la demanda};}
-    % 6: oferta (inclinada) y demanda (plana) y el equilibrio
-    \capa{6}{\draw[curva1] (0,3.9) -- (6,2.1) node[etiqueta,right] {$D$};}
-    \capa{6}{\draw[curva3] (0.9,6.15) node[etiqueta,above] {$S$} -- (5,0);}
-    \capa{6}{\node[punto] (E2) at (3,3) {};}
+    \capa{5}{\ejes{$q$}{$p$}{3.0}{3.4}}
+    \capa{5}{\node[titulo] at (1.45,3.8) {\strut Ambas decrecientes,\\ \strut oferta más plana};}
+    % 6: demanda (inclinada), oferta (plana) y equilibrio
+    \capa{6}{\draw[curva1] (0.575,3.4) node[etiqueta,above] {$D$} -- (2.7,0);}
+    \capa{6}{\draw[curva3] (0,{pla(0)}) -- (2.85,{pla(2.85)}) node[etiqueta,right] {$S$};}
+    \capa{6}{\node[punto] (E2) at (1.7,1.6) {};}
     \capa{6}{\proyeccion{(E2)}{$q^*$}{$p^*$}}
-    % 7: ajuste walrasiano: el exceso de oferta (demanda) baja (sube) el precio hacia p*
-    \capa{7}{\draw[guia,solid,semithick] (1,3.6) -- (2.6,3.6) node[midway,above,etiqueta,text=black] {$z<0$};}
-    \capa{7}{\draw[guia,solid,semithick] (3.3,2.55) -- (4.5,2.55) node[pos=0.8,below,etiqueta,text=black] {$z>0$};}
-    \capa{7}{\draw[estable] (0.2,3.7) -- (0.2,3.1);}
-    \capa{7}{\draw[estable] (0.2,2.2) -- (0.2,2.9);}
-    \capa{7}{\node[etiqueta,text=tceeverde,anchor=west] at (3.2,5.7) {\textsc{Walras}: estable};}
-    % 8: ajuste marshalliano: la cantidad se aleja de q*
-    \capa{8}{\draw[guia,solid,semithick] (0.9,3.63) -- (0.9,6.15);}
-    \capa{8}{\draw[guia,solid,semithick] (4.9,0.15) -- (4.9,2.43);}
-    \capa{8}{\draw[inestable] (2.85,0.25) -- (2.2,0.25);}
-    \capa{8}{\draw[inestable] (3.15,0.25) -- (3.8,0.25);}
-    \capa{8}{\node[etiqueta,text=tceerojo,anchor=west] at (3.2,5.1) {\textsc{Marshall}: inestable};}
+    % 7: ajuste walrasiano: el precio se aleja de p*
+    \capa{7}{\draw[inestable] (0.14,1.72) -- (0.14,2.1);}
+    \capa{7}{\draw[inestable] (0.14,1.48) -- (0.14,1.1);}
+    \capa{7}{\node[veredicto,text=tceerojo] at (0.2,-0.85) {\textsc{Walras}: inestable};}
+    % 8: ajuste marshalliano: la cantidad vuelve a q*
+    \capa{8}{\draw[estable] (1.15,0.14) -- (1.58,0.14);}
+    \capa{8}{\draw[estable] (2.25,0.14) -- (1.82,0.14);}
+    \capa{8}{\node[veredicto,text=tceeverde] at (0.2,-1.35) {\textsc{Marshall}: estable};}
+  \end{scope}
+  % ---------------- (3) Ambas decrecientes, oferta más inclinada ----------------
+  \begin{scope}[xshift=12.57cm]
+    % 9: ejes
+    \capa{9}{\ejes{$q$}{$p$}{3.0}{3.4}}
+    \capa{9}{\node[titulo] at (1.45,3.8) {\strut Ambas decrecientes,\\ \strut oferta más inclinada};}
+    % 10: demanda (plana), oferta (inclinada) y equilibrio
+    \capa{10}{\draw[curva1] (0,{pla(0)}) -- (2.85,{pla(2.85)}) node[etiqueta,right] {$D$};}
+    \capa{10}{\draw[curva3] (0.575,3.4) node[etiqueta,above] {$S$} -- (2.7,0);}
+    \capa{10}{\node[punto] (E3) at (1.7,1.6) {};}
+    \capa{10}{\proyeccion{(E3)}{$q^*$}{$p^*$}}
+    % 11: ajuste walrasiano: el precio vuelve a p*
+    \capa{11}{\draw[estable] (0.14,2.1) -- (0.14,1.72);}
+    \capa{11}{\draw[estable] (0.14,1.1) -- (0.14,1.48);}
+    \capa{11}{\node[veredicto,text=tceeverde] at (0.2,-0.85) {\textsc{Walras}: estable};}
+    % 12: ajuste marshalliano: la cantidad se aleja de q*
+    \capa{12}{\draw[inestable] (1.58,0.14) -- (1.15,0.14);}
+    \capa{12}{\draw[inestable] (1.82,0.14) -- (2.25,0.14);}
+    \capa{12}{\node[veredicto,text=tceerojo] at (0.2,-1.35) {\textsc{Marshall}: inestable};}
   \end{scope}
 \end{tikzpicture}
 \end{document}

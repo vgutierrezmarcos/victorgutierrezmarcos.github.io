@@ -16,7 +16,7 @@ Gráfico de referencia: caja de Edgeworth (de intercambio) con dotación $\vec\o
 |---|---|---|---|---|
 | 3.A.22 | Teoremas fundamentales | desarrollo (propuesto) | Enunciados, supuestos (MWG), demostración del 1TFEB, gráficos | — |
 | 3.A.23 | Fallos de mercado | resumen | Qué supuesto del 1TFEB rompe cada fallo | Demostración y modelo 2×2×2×2 |
-| 3.A.21 | Análisis normativo del EGC | resumen (hecho, 14/10/2026) | Pareto (ordinal, incompleto) y los 2 teoremas en enunciados sobre la caja (gráfico `caja-intercambio-teoremas`); Wicksell y Feldman en paráfrasis; ventajas, críticas e historia de Pareto y supuestos del 1TFEB en el anexo C | Demostración, condiciones de Pareto con FPU/GFPU (3.A.22) |
+| 3.A.21 | Análisis normativo del EGC | resumen (hecho, 14/10/2026) | Pareto (ordinal, incompleto) y los 2 teoremas en enunciados sobre la caja (gráfico `caja-intercambio-teoremas`); Wicksell y Feldman en paráfrasis; ventajas, críticas e historia de Pareto y supuestos del 1TFEB en el anexo C; desde el 17/10/2026, nombres completos, origen (Lerner, Lange, Arrow, Debreu) y la demostración del 1TFEB (MWG §16.C) en el anexo C, porque Víctor quiere que el 3.A.21 se entienda sin haber estudiado 3.A.22 y 3.A.23 | Condiciones de Pareto con FPU/GFPU (3.A.22) |
 | 4.B.2 | Incompletitud de Pareto | resumen | GFPU desde la FPP; necesidad de elegir | — |
 | 4.B.3, 4.B.7 | Redistribución, principios impositivos | resumen | 2TFEB: redistribuir con suma fija; en la práctica, impuestos distorsionantes | — |
 | 4.A.24 | Apoyo a la internacionalización | mención | Compensar a los perdedores de la apertura | — |
