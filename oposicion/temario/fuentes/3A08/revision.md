@@ -548,3 +548,12 @@ Puesta al día con los criterios del 16/10/2026 (CRITERIOS.md § 2 y «Órdenes 
 - Idea final del vídeo igual a la del documento (con el «primer ladrillo del análisis de los mercados»).
 - Textos de las franjas sin glifos que Palatino no tiene (→, ⇒, ≫, ℝ, ᵢ, ⱼ salían como cajas).
 - `guion-cante.md` regenerado desde `escenas.yaml` (mismo texto) con el plan de pizarra nuevo. `--borrador --medir`: 4.900 palabras, ritmo ×1,042, 0 avisos.
+
+## Criterios del 17/10/2026
+
+- **\findemo** (∎) al final de cada demostración: curvas de indiferencia que no se cortan (I.1), homogeneidad por el ADPR (nota de III.1) y las derivaciones del anexo B (homogeneidad, Engel, Cournot, Roy, Slutsky y su versión en elasticidades, negatividad y sustitutivos netos de la matriz de Slutsky, ley de la demanda compensada, Cobb-Douglas y límite de la CES). No había $\blacksquare$ ni \qed. Va siempre fuera de las fórmulas en display: dentro, el macro de pandoc dejaba LaTeX sin convertir en el Word.
+- **Nexos**: frases de enlace al empezar III, I.3 y II.2, y en la valoración de II.3 (I y II ya tenían la suya).
+- **Letras seguidas**: producción doméstica (III.2) y Lancaster (anexo F), c) Extensiones → d) Valoración; enfoque cardinal (anexo E), c) Valoración; Thaler (anexo G), c) Evidencia empírica y d) Valoración. Supuestos, desarrollo e implicaciones ya eran bloques i)–iii) en todos los modelos.
+- **Negrita y cursiva**: los axiomas (1-7 y 6′) con \concepto en lugar de \textbf; pasan a cursiva los rótulos que iban en negrita: los bloques I-III de la Estructura, «Propiedades» (curvas de indiferencia, conjunto presupuestario, demanda marshalliana y FIU), «Primer/Segundo problema», «El efecto renta nulo», «Problemas del efecto renta nulo», «Recapitulación» (I.3), «Gráficamente» (II.2) e «Índices de precios» (III.1). La 7.ª propiedad de las curvas de indiferencia lleva su rótulo en cursiva, como las otras 6.
+- **Temas citados**: no había «tema vecino» ni siglas de otros temas sin desarrollar; todas las referencias ya iban con \vertema.
+- Sin cambios de minutos ni de contenido. `construir-tema.py 3A08` (44 + 16 + 6 páginas) y `verificar-tema.py 3A08`: 0 errores (el aviso de siempre: la cifra «2023» de III.3).

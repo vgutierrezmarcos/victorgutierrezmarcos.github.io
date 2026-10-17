@@ -30,6 +30,7 @@
 %   \footnote{Texto.\graficonota{nombre}}
 %                   gráfico pequeño (0,45 del ancho, centrado) en una nota al
 %                   pie; \graficonota[0.35]{nombre} con otro ancho.
+%   \findemo        ∎ de fin de demostración, a la derecha (fuera de las fórmulas).
 %   \bibliografia   al final (página nueva, numeración B-1…).
 % Páginas: el tema en 1…N, los anexos (tras \appendix) en A-1… y la
 % bibliografía en B-1…; la portada dice cuántas tiene cada parte.
@@ -348,6 +349,10 @@
 % una nota al pie: \footnote{Texto de la nota.\graficonota{curva-aprendizaje}}.
 % Con otro ancho: \graficonota[0.35]{nombre}.
 \newcommand{\graficonota}[2][0.45]{\par\vspace{3pt}{\centering\includegraphics[width=#1\linewidth]{#2}\par}\vspace{1pt}}
+
+% \findemo → ∎ al final de una demostración, alineado a la derecha (Víctor,
+% 17/10/2026). En una fórmula en display va tras un \quad.
+\newcommand{\findemo}{\ifmmode\quad\blacksquare\else\unskip\nobreak\hfill\penalty50\hskip1em\null\nobreak\hfill$\blacksquare$\fi}
 
 % --- Cajas ----------------------------------------------------------------------
 % Nota al opositor: consejo útil para el cante (sustituye a la caja amarilla

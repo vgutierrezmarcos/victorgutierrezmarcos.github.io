@@ -46,7 +46,13 @@ Cada tema revisado debe quedar:
   - **Estructura de un modelo** (Víctor, 13/10/2026; para memorizar). Cada
     modelo se cuenta con estos bloques, con **títulos propios** de nivel 4 y 5
     (`\paragraph{a) Idea}`, `\subparagraph{i) Supuestos}`; letras a mano).
-    Si un bloque no procede, se salta:
+    Si un bloque no procede, se salta y **las letras siguen seguidas** (a, b,
+    c… sin huecos: «a) Idea, b) Modelo, c) Valoración»; el nombre del bloque
+    es lo que se memoriza, no la letra; Víctor, 17/10/2026, G06). Si un modelo tiene supuestos,
+    desarrollo e implicaciones, **van siempre como bloques distinguidos**
+    con su título (i, ii, iii), nunca mezclados en una lista. También la
+    unicidad, la estabilidad y cualquier resultado que se cuente como
+    modelo llevan esta estructura:
     a) **Idea**: contexto y por qué contamos este modelo.
     b) **Modelo**: i) **Supuestos**; ii) **Desarrollo** (en el cante importan
        sobre todo los resultados; analítico, gráfico o de palabra);
@@ -160,6 +166,38 @@ Cada tema revisado debe quedar:
   La suma debe ser 30.
 - No inventar citas textuales: una cita entre comillas debe estar en la fuente
   citada.
+- **Comprensión antes que concisión** (Víctor, 17/10/2026): al cerebro le
+  vienen bien los espacios en blanco y las ideas muy mascadas y
+  estructuradas. Cuando un pasaje es complejo, primero va su
+  **interpretación o implicación en palabras sencillas** y después el
+  desarrollo, que puede ir en una caja (`anotaciones`, gris) o en una nota
+  al pie. Se puede ocupar más espacio si así se entiende mejor.
+- **El lector no ha estudiado aún los temas que se citan**: lo que se toma
+  de otro tema se cuenta con lo necesario para entenderlo aquí (en el
+  cuerpo, en una caja o en una nota), coherente con ese tema, y con los
+  **nombres completos** la primera vez («primer teorema fundamental de la
+  economía del bienestar (1TFEB)»), no solo las siglas.
+- **Nexos entre bloques** (Víctor, 17/10/2026): al empezar cada bloque (y
+  cada subapartado cuando ayude) una frase que lo enlace con el anterior,
+  del tipo «Una vez estudiado …, pasamos a analizar …».
+- **Negrita y cursiva con un patrón fijo** (Víctor, 17/10/2026), para que el
+  lector reconozca la estructura y memorice mejor:
+  - **negrita** (`\concepto{}`): el término que se define o el concepto
+    clave, la primera vez que sale;
+  - *cursiva* (`\emph{}`): el **rótulo** con que empieza una viñeta
+    («*Idea*:», «*Propiedades*:», «*Interpretación gráfica*:»), los títulos
+    de obras y las palabras en otro idioma; y el énfasis puntual, con
+    mesura;
+  - en una misma lista, **todas las viñetas hermanas siguen el mismo
+    patrón**: si una empieza con rótulo en cursiva, todas; si una empieza
+    con el concepto en negrita, todas. Nunca una en negrita y la de al lado
+    en cursiva para lo mismo.
+- **Demostraciones**: terminan con `\findemo` (∎, fin de la demostración).
+  Las que se llevan a los anexos se desarrollan **al menos tanto como en el
+  tema antiguo**, paso a paso; en el cuerpo queda la intuición, bien
+  explicada.
+- En las notas al opositor (y en todo el tema), los demás temas se citan
+  siempre por su número («[ver tema 3.A.22]»), nunca como «temas vecinos».
 
 ### Órdenes de `tcee.sty` para estas reglas (cómo se usan)
 
@@ -178,6 +216,8 @@ convierten); el detalle está en la cabecera de `latex/tcee.sty`.
   la variable bajo «max», el objetivo en la primera línea y «s.a.» con cada
   restricción, separadas por `\\`, en su línea. Dentro de `$$…$$`, `\[…\]`,
   `equation` o `\funcionclave{…}`.
+- `\findemo`: ∎ al final de una demostración (a la derecha), siempre fuera
+  de las fórmulas (dentro de una, el Word no lo convierte).
 - `\footnote{Texto.\graficonota{nombre}}`: gráfico pequeño (0,45 del ancho)
   centrado en la nota; `\graficonota[0.35]{nombre}` con otro ancho.
 - Listas: no hace falta nada; `tcee.sty` (y el Word) impiden el salto de

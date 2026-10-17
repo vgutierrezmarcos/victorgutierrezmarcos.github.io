@@ -2,7 +2,7 @@
 \usepackage{tcee}
 \addbibresource{3A09.bib}
 \tcetema[Teoría de la demanda del consumidor (II)]{3.A.9}{Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empíricos. Medidas de cambio en el bienestar.}
-\tcefecha{16/10/2026}
+\tcefecha{17/10/2026}
 \begin{document}
 \tceetitulo
 
@@ -85,7 +85,7 @@ En el cante: los ingredientes, con el esquema que lleva de las preferencias a la
 \end{notaopositor}
 
 \begin{itemize}
-\item Este bloque responde a la primera pregunta. Su conclusión anticipada: maximizar la utilidad con una renta dada y minimizar el gasto necesario para alcanzar una utilidad dada llevan a la \emph{misma cesta}, y de esa equivalencia salen unas relaciones entre funciones que permiten pasar de unas a otras sin volver a resolver ningún problema.
+\item Una vez planteadas las preguntas, pasamos a construir las herramientas para responderlas. Este bloque responde a la primera. Su conclusión anticipada: maximizar la utilidad con una renta dada y minimizar el gasto necesario para alcanzar una utilidad dada llevan a la \emph{misma cesta}, y de esa equivalencia salen unas relaciones entre funciones que permiten pasar de unas a otras sin volver a resolver ningún problema.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -161,6 +161,10 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
 % --------------------------------------------------------------------------
 \subsection{Problemas primal y dual}
 
+\begin{itemize}
+\item Descritos los ingredientes comunes, pasamos a plantear y resolver cada problema por separado: primero el primal y después el dual.
+\end{itemize}
+
 \subsubsection{Problema primal: maximización de la utilidad}
 
 \paragraph{a) Idea}
@@ -233,7 +237,7 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
   \item es \emph{cuasiconvexa} en $(\vect{p},\overline{W})$: el conjunto $\{(\vect{p},\overline{W}): V(\vect{p},\overline{W})\leq\overline{U}^1\}$ es convexo.
     \begin{itemize}
     \item \emph{Qué dice}: si dos presupuestos «extremos», $(\vect{p},\overline{W})$ y $(\vect{p}\,',\overline{W}')$, dan como mucho $\overline{U}^1$, también lo da su presupuesto «promedio», $(\vect{p}\,'',\overline{W}'')=\tau(\vect{p},\overline{W})+(1-\tau)(\vect{p}\,',\overline{W}')$ con $\tau\in[0,1]$.
-    \item \emph{Por qué}: toda cesta asequible con el promedio es asequible con al menos uno de los extremos; si $\vect{p}\cdot\vect{x}>\overline{W}$ y $\vect{p}\,'\cdot\vect{x}>\overline{W}'$, ponderando, $\vect{p}\,''\cdot\vect{x}>\overline{W}''$.
+    \item \emph{Por qué}: toda cesta asequible con el promedio es asequible con al menos uno de los extremos; si $\vect{p}\cdot\vect{x}>\overline{W}$ y $\vect{p}\,'\cdot\vect{x}>\overline{W}'$, ponderando, $\vect{p}\,''\cdot\vect{x}>\overline{W}''$.\findemo
     \item \emph{Gráficamente} (gráfico~\ref{fig:cuasiconvexidad-fiu}): la recta de balance promedio pasa por el corte de las dos extremas y queda dentro de la unión de sus conjuntos presupuestarios, así que la utilidad máxima con el promedio no supera la mayor de las alcanzables con los extremos.
     \item No depende de la convexidad de las preferencias;
     \end{itemize}
@@ -252,7 +256,7 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
 \fuente{elaboración propia basada en \textcite[fig.~3.D.5]{MasColellWhinstonGreen1995}.}
 \end{figure}
 
-\paragraph{e) Valoración}
+\paragraph{c) Valoración}
 
 \begin{itemize}
 \item Como $V$ se mide en «útiles», que solo ordenan, no sirve por sí sola para cuantificar cambios de bienestar. Además, estos resultados proceden de un planteamiento particular del problema. Cabe entonces preguntarse: si con los mismos ingredientes se da la vuelta al problema y se minimiza el gasto necesario para alcanzar un nivel de utilidad, ¿se llega al mismo equilibrio? Responder a esta pregunta, en apariencia inocente, descubre una serie de relaciones entre los dos enfoques que enriquecen mucho la teoría de la demanda.
@@ -294,7 +298,7 @@ Función valor & función indirecta de utilidad $V(\vect{p},\overline{W})$ & fun
     \frac{p_1}{U_1}=\dots=\frac{p_n}{U_n}=\mu,\qquad \mathrm{RMS}_{12}=\frac{U_1}{U_2}=\frac{p_1}{p_2}. \label{eq:tangencia-dual}
     \end{equation}
     Es la \emph{misma} condición de tangencia que en el primal (las condiciones completas de los dos problemas, lado a lado, están en el anexo~\ref{anexo:kt}).
-  \item El multiplicador $\mu$ es el precio sombra de la utilidad exigida, el \emph{coste marginal de la utilidad}: por el teorema de la envolvente, $\mu^*=\partial E(\vect{p},\overline{U})/\partial\overline{U}$. En la cesta común a los dos problemas, $\mu^*=1/\lambda^*$: si una unidad monetaria más compra $\lambda^*$ útiles, un útil más cuesta $1/\lambda^*$ unidades monetarias.\footnote{Se obtiene derivando respecto a $\overline{W}$ la identidad $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$ del apartado~I.3: $\frac{\partial E}{\partial\overline{U}}\cdot\frac{\partial V}{\partial\overline{W}}=1$, es decir, $\mu^*\lambda^*=1$.}
+  \item El multiplicador $\mu$ es el precio sombra de la utilidad exigida, el \emph{coste marginal de la utilidad}: por el teorema de la envolvente, $\mu^*=\partial E(\vect{p},\overline{U})/\partial\overline{U}$. En la cesta común a los dos problemas, $\mu^*=1/\lambda^*$: si una unidad monetaria más compra $\lambda^*$ útiles, un útil más cuesta $1/\lambda^*$ unidades monetarias.\footnote{Se obtiene derivando respecto a $\overline{W}$ la identidad $E\big(\vect{p},V(\vect{p},\overline{W})\big)=\overline{W}$ del apartado~I.3: $\frac{\partial E}{\partial\overline{U}}\cdot\frac{\partial V}{\partial\overline{W}}=1$, es decir, $\mu^*\lambda^*=1$.\findemo}
   \item La restricción se satura, $U(\vect{h}^*)=\overline{U}$, por la continuidad de $U$: si sobrara utilidad, podría reducirse un poco la cantidad de algún bien comprado y gastar menos sin bajar de $\overline{U}$ \parencite[prop.~3.E.3]{MasColellWhinstonGreen1995}. Con preferencias estrictamente convexas se cumplen las condiciones de segundo orden, que son las mismas que en el primal (anexo~\ref{anexo:kt}).
   \end{itemize}
 \item \emph{Gráfico} (gráfico~\ref{fig:dual}): se procede al revés que en el primal. Se dibuja la curva de indiferencia del nivel exigido, $\overline{U}$, que queda fija; se trazan las \emph{rectas isogasto} $\vect{p}\cdot\vect{h}=e$, paralelas entre sí, que unen las cestas con el mismo gasto, y se desplazan hacia el origen hasta la más baja que toca la curva. El equilibrio está en la tangencia: la isogasto más baja que alcanza $\overline{U}$.
@@ -394,7 +398,7 @@ Identidad de \autor{Roy}: $x_i(\vect{p},\overline{W})=-\dfrac{\partial V/\partia
 \fuente{elaboración propia basada en \textcite[prop.~3.D.2, 3.D.3, 3.E.2, 3.E.3 y 3.G.1]{MasColellWhinstonGreen1995}.}
 \end{table}
 
-\paragraph{e) Valoración}
+\paragraph{c) Valoración}
 
 \begin{itemize}
 \item El problema dual tiene la misma condición de tangencia que el primal y produce dos funciones nuevas: la demanda hicksiana, que no es observable pero cumple siempre la ley de la demanda, y la función de gasto, que mide la utilidad en dinero y de la que se obtienen las demandas hicksianas derivando. Para poder usarlas falta ver cómo se relacionan con las del primal, que sí se observan.
@@ -404,7 +408,7 @@ Identidad de \autor{Roy}: $x_i(\vect{p},\overline{W})=-\dfrac{\partial V/\partia
 \subsection{Relaciones de dualidad}
 
 \begin{itemize}
-\item Como los dos problemas tienen los mismos ingredientes, entre ellos se dan unas \concepto{relaciones de dualidad} que afectan a las soluciones (las cestas), a las funciones de demanda y a las funciones valor, y que se revelarán muy útiles en la práctica.
+\item Resueltos los dos problemas por separado, falta relacionarlos. Como tienen los mismos ingredientes, entre ellos se dan unas \concepto{relaciones de dualidad} que afectan a las soluciones (las cestas), a las funciones de demanda y a las funciones valor, y que se revelarán muy útiles en la práctica.
 \end{itemize}
 
 \paragraph{Dualidad entre soluciones: el teorema básico de la dualidad}
@@ -464,7 +468,7 @@ Maximizar la utilidad con una renta y minimizar el gasto con una utilidad son el
 \end{ideaclave}
 
 \begin{itemize}
-\item \textbf{Recapitulación}: basta resolver uno de los dos problemas para obtener las cuatro funciones. Las flechas del esquema son, además, las herramientas del resto de la exposición: la ecuación de \autor{Slutsky} sale de derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ (III.2); la integrabilidad recorre el esquema en sentido contrario, de $\vect{x}$ a $E$ y de $E$ a $U$ (III.1), y la medida del bienestar usa $E$ para traducir la utilidad a unidades monetarias (III.3). Antes, en el apartado~II, veremos cómo se estima en la práctica la caja de la que parte todo: el sistema de demandas $\vect{x}(\vect{p},\overline{W})$.
+\item \emph{Recapitulación}: basta resolver uno de los dos problemas para obtener las cuatro funciones. Las flechas del esquema son, además, las herramientas del resto de la exposición: la ecuación de \autor{Slutsky} sale de derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ (III.2); la integrabilidad recorre el esquema en sentido contrario, de $\vect{x}$ a $E$ y de $E$ a $U$ (III.1), y la medida del bienestar usa $E$ para traducir la utilidad a unidades monetarias (III.3). Antes, en el apartado~II, veremos cómo se estima en la práctica la caja de la que parte todo: el sistema de demandas $\vect{x}(\vect{p},\overline{W})$.
 \end{itemize}
 
 
@@ -477,7 +481,7 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 \end{notaopositor}
 
 \begin{itemize}
-\item Este bloque responde a la segunda pregunta. Su conclusión anticipada: la dualidad permite elegir una función de gasto o de utilidad indirecta flexible, derivar de ella demandas estimables y contrastar las restricciones de la teoría. El sistema casi ideal (AIDS) de \autor{Deaton} y \autor{Muellbauer} es el punto de equilibrio entre flexibilidad, coherencia con la teoría, agregación y sencillez.
+\item Una vez estudiadas las relaciones de dualidad, pasamos a ver cómo se llevan a los datos. Este bloque responde a la segunda pregunta. Su conclusión anticipada: la dualidad permite elegir una función de gasto o de utilidad indirecta flexible, derivar de ella demandas estimables y contrastar las restricciones de la teoría. El sistema casi ideal (AIDS) de \autor{Deaton} y \autor{Muellbauer} es el punto de equilibrio entre flexibilidad, coherencia con la teoría, agregación y sencillez.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -504,7 +508,7 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 \subsection{Pasos que sigue la literatura}
 
 \begin{itemize}
-\item La estimación sigue cinco pasos, que reproducen el camino de la teoría, de las preferencias a la demanda ordinaria: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo econométrico y (5) estimar y contrastar.
+\item Visto para qué se estiman los sistemas de demanda, pasamos a cómo se estiman. La estimación sigue cinco pasos, que reproducen el camino de la teoría, de las preferencias a la demanda ordinaria: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo econométrico y (5) estimar y contrastar.
 \end{itemize}
 
 \subsubsection{Elección de una función de referencia apropiada}
@@ -528,23 +532,35 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 
 \subparagraph{b) Modelo}
 
+\hspace*{3.6em}\emph{i) Supuestos}
+
 \begin{itemize}
-\item \textbf{\emph{i) Supuestos}}: utilidad de \autor{Stone}-\autor{Geary}, $U(\vect{x})=\sum_i\alpha_i\ln(x_i-\gamma_i)$, con $\alpha_i>0$, $\sum_i\alpha_i=1$ y $x_i>\gamma_i$ \parencites{KleinRubin1947Constant}{Geary1950Note}{Stone1954Linear}.
-\item \textbf{\emph{ii) Desarrollo}}: maximizando, el gasto en cada bien es
+\item Utilidad de \autor{Stone}-\autor{Geary}, $U(\vect{x})=\sum_i\alpha_i\ln(x_i-\gamma_i)$, con $\alpha_i>0$, $\sum_i\alpha_i=1$ y $x_i>\gamma_i$ \parencites{KleinRubin1947Constant}{Geary1950Note}{Stone1954Linear}.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Maximizando, el gasto en cada bien es
   \begin{equation}
   p_ix_i(\vect{p},\overline{W})=p_i\gamma_i+\alpha_i\Big(\overline{W}-\sum_jp_j\gamma_j\Big). \label{eq:les}
   \end{equation}
   El consumidor compra primero unas cantidades mínimas o de subsistencia, $\gamma_i$, y reparte la renta restante (\emph{supernumeraria}) en proporciones fijas $\alpha_i$.
-\item \textbf{\emph{iii) Implicaciones}}: el gasto en cada bien es lineal en los precios y en la renta, y las curvas de \autor{Engel} son rectas que no pasan por el origen, de modo que distingue bienes necesarios y de lujo.
 \end{itemize}
 
-\subparagraph{d) Evidencia empírica}
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item El gasto en cada bien es lineal en los precios y en la renta, y las curvas de \autor{Engel} son rectas que no pasan por el origen, de modo que distingue bienes necesarios y de lujo.
+\end{itemize}
+
+\subparagraph{c) Evidencia empírica}
 
 \begin{itemize}
 \item Fue el primer sistema completo estimado con datos reales: \textcite{Stone1954Linear}, para el Reino Unido. \textcite{Deaton1974Analysis}, con datos agregados del Reino Unido, rechaza la aditividad que impone.
 \end{itemize}
 
-\subparagraph{e) Valoración}
+\subparagraph{d) Valoración}
 
 \begin{itemize}
 \item Es sencillo de manejar, en la teoría y en la econometría. Su límite: las preferencias son \emph{aditivas}, de modo que no admite bienes inferiores (porque $\alpha_i>0$) ni complementarios netos, y las elasticidades-precio quedan prácticamente ligadas a las elasticidades-renta, algo que los datos rechazan. Hace falta más flexibilidad.
@@ -560,23 +576,34 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 
 \subparagraph{b) Modelo}
 
+\hspace*{3.6em}\emph{i) Supuestos}
+
 \begin{itemize}
-\item \textbf{\emph{i) Supuestos}}: la ecuación de \autor{Slutsky} en diferencias logarítmicas, con coeficientes constantes.
-\item \textbf{\emph{ii) Desarrollo}}:
-  \begin{equation}
+\item La ecuación de \autor{Slutsky} en diferencias logarítmicas, con coeficientes constantes.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item \begin{equation}
   \bar s_i\,d\ln x_i=b_i\,d\ln Q+\sum_jc_{ij}\,d\ln p_j,\qquad d\ln Q\equiv\sum_k\bar s_k\,d\ln x_k, \label{eq:rotterdam}
   \end{equation}
   donde $\bar s_i$ es la participación media en el gasto, $b_i=p_i\,\partial x_i(\vect{p},\overline{W})/\partial\overline{W}$ es la propensión marginal a gastar en el bien $i$ y $c_{ij}=p_ip_jS_{ij}/\overline{W}$ son los términos de \autor{Slutsky} en participaciones.
-\item \textbf{\emph{iii) Implicaciones}}: la teoría se traduce en restricciones lineales sobre los parámetros, que se imponen o contrastan directamente: $\sum_ib_i=1$ y $\sum_ic_{ij}=0$ (agregación), $\sum_jc_{ij}=0$ (homogeneidad), $c_{ij}=c_{ji}$ (simetría) y $[c_{ij}]$ semidefinida negativa.
 \end{itemize}
 
-\subparagraph{d) Evidencia empírica}
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item La teoría se traduce en restricciones lineales sobre los parámetros, que se imponen o contrastan directamente: $\sum_ib_i=1$ y $\sum_ic_{ij}=0$ (agregación), $\sum_jc_{ij}=0$ (homogeneidad), $c_{ij}=c_{ji}$ (simetría) y $[c_{ij}]$ semidefinida negativa.
+\end{itemize}
+
+\subparagraph{c) Evidencia empírica}
 
 \begin{itemize}
 \item \textcite{Barten1967Slutsky,Barten1969Maximum}, con datos de los Países Bajos, rechaza con frecuencia la homogeneidad.
 \end{itemize}
 
-\subparagraph{e) Valoración}
+\subparagraph{d) Valoración}
 
 \begin{itemize}
 \item Al tomar $b_i$ y $c_{ij}$ como constantes, es una aproximación local, sin una función de gasto explícita con la que valorar el bienestar. Las formas flexibles posteriores recuperan esa función.
@@ -592,25 +619,37 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 
 \subparagraph{b) Modelo}
 
+\hspace*{3.6em}\emph{i) Supuestos}
+
 \begin{itemize}
-\item \textbf{\emph{i) Supuestos}}: se especifica la FIU (versión \emph{indirecta}),
+\item Se especifica la FIU (versión \emph{indirecta}),
   \begin{equation}
   \ln V(\vect{p},\overline{W})=\alpha_0+\sum_i\alpha_i\ln\frac{p_i}{\overline{W}}+\frac12\sum_i\sum_j\beta_{ij}\ln\frac{p_i}{\overline{W}}\ln\frac{p_j}{\overline{W}},\qquad\beta_{ij}=\beta_{ji}. \label{eq:translog}
   \end{equation}
-\item \textbf{\emph{ii) Desarrollo}}: la identidad de \autor{Roy} en logaritmos, $s_i=-\dfrac{\partial\ln V/\partial\ln p_i}{\partial\ln V/\partial\ln\overline{W}}$, da las participaciones
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item La identidad de \autor{Roy} en logaritmos, $s_i=-\dfrac{\partial\ln V/\partial\ln p_i}{\partial\ln V/\partial\ln\overline{W}}$, da las participaciones
   \begin{equation}
   s_i=\frac{\alpha_i+\sum_j\beta_{ij}\ln(p_j/\overline{W})}{\sum_k\alpha_k+\sum_k\sum_j\beta_{kj}\ln(p_j/\overline{W})}. \label{eq:translog-s}
   \end{equation}
-\item \textbf{\emph{iii) Implicaciones}}: es muy flexible y condiciona poco los resultados; la simetría se impone con $\beta_{ij}=\beta_{ji}$.
 \end{itemize}
 
-\subparagraph{d) Evidencia empírica}
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Es muy flexible y condiciona poco los resultados; la simetría se impone con $\beta_{ij}=\beta_{ji}$.
+\end{itemize}
+
+\subparagraph{c) Evidencia empírica}
 
 \begin{itemize}
 \item \textcite{ChristensenJorgensonLau1975Utility}, con datos agregados de Estados Unidos (1929-1972), la usan para contrastar la teoría de la demanda sin imponer aditividad ni homoteticidad, y la rechazan (al 1~\%). Dando la teoría por válida, rechazan además la homoteticidad, y la aditividad de la función de utilidad directa (no la de la indirecta).
 \end{itemize}
 
-\subparagraph{e) Valoración}
+\subparagraph{d) Valoración}
 
 \begin{itemize}
 \item Las participaciones no son lineales en los parámetros (hay que normalizarlos, por ejemplo con $\sum_k\alpha_k=-1$, y estimar por métodos no lineales), no agrega bien y la concavidad no está garantizada lejos del punto de aproximación. El AIDS conserva la flexibilidad y resuelve la agregación y la linealidad.
@@ -626,8 +665,10 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
 
 \subparagraph{b) Modelo}
 
+\hspace*{3.6em}\emph{i) Supuestos}
+
 \begin{itemize}
-\item \textbf{\emph{i) Supuestos}}: una función de gasto de la clase \emph{PIGLOG} (\emph{price-independent generalized logarithmic}), la que \textcite{Muellbauer1975Aggregation,Muellbauer1976Community} identificó como compatible con la agregación \vertema{3.A.8}:
+\item Una función de gasto de la clase \emph{PIGLOG} (\emph{price-independent generalized logarithmic}), la que \textcite{Muellbauer1975Aggregation,Muellbauer1976Community} identificó como compatible con la agregación \vertema{3.A.8}:
   \begin{equation}
   \ln E(\vect{p},\overline{U})=(1-\overline{U})\ln a(\vect{p})+\overline{U}\ln b(\vect{p}), \label{eq:aids-e}
   \end{equation}
@@ -636,22 +677,29 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
   \ln a(\vect{p})=\alpha_0+\sum_k\alpha_k\ln p_k+\frac12\sum_k\sum_j\gamma^*_{kj}\ln p_k\ln p_j,\qquad \ln b(\vect{p})=\ln a(\vect{p})+\beta_0\prod_kp_k^{\beta_k},
   \end{equation*}
   donde $a(\vect{p})$ es el coste de la subsistencia ($\overline{U}=0$) y $b(\vect{p})$, el de la saciedad ($\overline{U}=1$).
-\item \textbf{\emph{ii) Desarrollo}}: por \autor{Shephard} en logaritmos, $s_i=\partial\ln E/\partial\ln p_i$, y sustituyendo $\overline{U}$ por la FIU que se obtiene al despejar $E=\overline{W}$, salen las participaciones
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Por \autor{Shephard} en logaritmos, $s_i=\partial\ln E/\partial\ln p_i$, y sustituyendo $\overline{U}$ por la FIU que se obtiene al despejar $E=\overline{W}$, salen las participaciones
   \begin{equation}
   s_i=\alpha_i+\sum_{j=1}^{n}\gamma_{ij}\ln p_j+\beta_i\ln\frac{\overline{W}}{P},\qquad\gamma_{ij}=\tfrac12\big(\gamma^*_{ij}+\gamma^*_{ji}\big), \label{eq:aids}
   \end{equation}
   con $\ln P=\ln a(\vect{p})$, un índice de precios translog.
-\item \textbf{\emph{iii) Implicaciones}}:
-  \begin{itemize}
-  \item \emph{restricciones}: agregación, $\sum_i\alpha_i=1$, $\sum_i\gamma_{ij}=0$ y $\sum_i\beta_i=0$; homogeneidad, $\sum_j\gamma_{ij}=0$; simetría, $\gamma_{ij}=\gamma_{ji}$. Todas son \emph{lineales} en los parámetros y fáciles de imponer o contrastar. La negatividad no se impone globalmente: se comprueba con los datos;
-  \item \emph{curvas de \autor{Engel}}: la participación es lineal en $\ln\overline{W}$, la forma de \textcite{Working1943Statistical} y \textcite{Leser1963Forms}. Si $\beta_i>0$, el bien es de lujo y su peso en el gasto crece con la renta; si $\beta_i<0$, es necesario y su peso cae, que es la ley de \autor{Engel};
-  \item \emph{elasticidades} (con $\delta_{ij}=1$ si $i=j$ y $0$ si no):
-    \begin{equation}
-    \varepsilon_{x_i,\overline{W}}=1+\frac{\beta_i}{s_i},\qquad \varepsilon_{x_i,p_j}=-\delta_{ij}+\frac{\gamma_{ij}-\beta_i\big(\alpha_j+\sum_k\gamma_{jk}\ln p_k\big)}{s_i},\qquad \varepsilon^{h}_{i,p_j}=\varepsilon_{x_i,p_j}+s_j\,\varepsilon_{x_i,\overline{W}}, \label{eq:aids-elasticidades}
-    \end{equation}
-    la última por la ecuación de \autor{Slutsky} en elasticidades (III.2);
-  \item \emph{agregación exacta}: por ser PIGLOG, la participación media de muchos hogares tiene la misma forma, evaluada en un gasto «representativo» que depende de la distribución del gasto (a través de un índice de desigualdad), sin exigir curvas de \autor{Engel} rectas y paralelas.
-  \end{itemize}
+\end{itemize}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{restricciones}: agregación, $\sum_i\alpha_i=1$, $\sum_i\gamma_{ij}=0$ y $\sum_i\beta_i=0$; homogeneidad, $\sum_j\gamma_{ij}=0$; simetría, $\gamma_{ij}=\gamma_{ji}$. Todas son \emph{lineales} en los parámetros y fáciles de imponer o contrastar. La negatividad no se impone globalmente: se comprueba con los datos;
+\item \emph{curvas de \autor{Engel}}: la participación es lineal en $\ln\overline{W}$, la forma de \textcite{Working1943Statistical} y \textcite{Leser1963Forms}. Si $\beta_i>0$, el bien es de lujo y su peso en el gasto crece con la renta; si $\beta_i<0$, es necesario y su peso cae, que es la ley de \autor{Engel};
+\item \emph{elasticidades} (con $\delta_{ij}=1$ si $i=j$ y $0$ si no):
+  \begin{equation}
+  \varepsilon_{x_i,\overline{W}}=1+\frac{\beta_i}{s_i},\qquad \varepsilon_{x_i,p_j}=-\delta_{ij}+\frac{\gamma_{ij}-\beta_i\big(\alpha_j+\sum_k\gamma_{jk}\ln p_k\big)}{s_i},\qquad \varepsilon^{h}_{i,p_j}=\varepsilon_{x_i,p_j}+s_j\,\varepsilon_{x_i,\overline{W}}, \label{eq:aids-elasticidades}
+  \end{equation}
+  la última por la ecuación de \autor{Slutsky} en elasticidades (III.2);
+\item \emph{agregación exacta}: por ser PIGLOG, la participación media de muchos hogares tiene la misma forma, evaluada en un gasto «representativo» que depende de la distribución del gasto (a través de un índice de desigualdad), sin exigir curvas de \autor{Engel} rectas y paralelas.
 \end{itemize}
 
 \subparagraph{c) Extensiones}
@@ -690,7 +738,7 @@ En el cante: la idea (\tiempo{0,5}); las formas funcionales, cada una con su ide
   Es un sistema de «rango 3», el máximo que admiten los sistemas cuyas participaciones son lineales en funciones de la renta \parencite{Gorman1981Engel}.
 \end{itemize}
 
-\subparagraph{e) Valoración}
+\subparagraph{c) Valoración}
 
 \begin{itemize}
 \item Gana realismo en las curvas de \autor{Engel} a cambio de más parámetros y de una estimación no lineal.
@@ -763,7 +811,7 @@ QUAIDS \parencite{BanksBlundellLewbel1997Quadratic} & función de gasto & sí & 
   \item \autor{Deaton} atribuyó estos rechazos a especificaciones demasiado rígidas, a la dinámica (hábitos, bienes duraderos, restricciones de crédito) y, sobre todo, a la \emph{agregación}: la teoría es individual y los datos, medias de consumidores heterogéneos. De ahí la búsqueda de formas que agreguen bien, como la PIGLOG, y, después, el paso a los microdatos \parencite{DeatonMuellbauer1980Economics};
   \item con microdatos, formas flexibles y variables demográficas, el panorama es más favorable, y los contrastes no paramétricos de preferencia revelada permiten comprobar la racionalidad sin suponer ninguna forma funcional \parencite{BlundellBrowningCrawford2003Nonparametric} \vertema{3.A.8}.
   \end{itemize}
-\item \concepto{Usos}: la imposición indirecta óptima y la reforma del IVA, que requieren elasticidades compensadas cruzadas \vertema{4.B.11}; la incidencia distributiva de los cambios de precios por tramos de renta; los índices de coste de la vida para cada tipo de hogar (III.3), y las escalas de equivalencia y la medición de la pobreza. En España, por ejemplo, se ha estimado un AIDS con los microdatos de la EPF para obtener las elasticidades con las que simular reformas del IVA \parencite{SanzRomero2012IVA}.
+\item \emph{Usos}: la imposición indirecta óptima y la reforma del IVA, que requieren elasticidades compensadas cruzadas \vertema{4.B.11}; la incidencia distributiva de los cambios de precios por tramos de renta; los índices de coste de la vida para cada tipo de hogar (III.3), y las escalas de equivalencia y la medición de la pobreza. En España, por ejemplo, se ha estimado un AIDS con los microdatos de la EPF para obtener las elasticidades con las que simular reformas del IVA \parencite{SanzRomero2012IVA}.
 \item Las empresas, en cambio, cuando necesitan conocer la demanda de sus productos, recurren a encuestas o a experimentos de precios (por ejemplo, rebajar el precio y observar cómo responde la demanda).
 \end{itemize}
 
@@ -771,20 +819,20 @@ QUAIDS \parencite{BanksBlundellLewbel1997Quadratic} & función de gasto & sí & 
 \subsection{Valoración}
 
 \begin{itemize}
-\item \concepto{Aportaciones}:
+\item \emph{Aportaciones}:
   \begin{itemize}
   \item los sistemas completos de demanda son la principal vía para llevar la teoría a los datos: la dualidad convierte la teoría en un instrumento de medida, porque elegir una función de gasto o una FIU garantiza que las demandas estimadas son coherentes con la maximización, y sus parámetros dan directamente las elasticidades y las medidas de bienestar;
   \item las restricciones de la teoría pasan a ser hipótesis contrastables;
   \item el AIDS y el QUAIDS concilian flexibilidad, agregación y sencillez. Por eso se han aplicado a campos tan variados como la agricultura, los índices de precios de consumo, la medición de la desigualdad y la pobreza o las comparaciones internacionales de bienestar, y se siguen usando para simular reformas del IVA y de los impuestos especiales \parencite{Deaton1997Analysis}.
   \end{itemize}
-\item \concepto{Limitaciones}:
+\item \emph{Limitaciones}:
   \begin{enumerate}
   \item la tensión entre \emph{flexibilidad} y \emph{parsimonia}: las formas flexibles exigen muchos parámetros (del orden de $n(n+1)/2$ términos cruzados con $n$ bienes), lo que obliga a agregar bienes y a suponer separabilidad; además, su flexibilidad es solo local, y la negatividad puede fallar lejos de la media muestral;
   \item la \emph{agregación}: los datos agregados solo son coherentes con un consumidor representativo bajo condiciones fuertes (forma polar de \autor{Gorman}, PIGLOG); con preferencias heterogéneas, las restricciones individuales no tienen por qué cumplirse en la media (teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu}) \vertema{3.A.8}; de ahí el uso creciente de microdatos;
   \item el \emph{marco estático} y sin incertidumbre: deja fuera los hábitos, los bienes duraderos, las expectativas y las restricciones de liquidez \vertema{3.A.33}, y el rechazo de la homogeneidad y la simetría puede deberse a ello más que a la irracionalidad de los consumidores.
   \end{enumerate}
 \item El debate que abrieron esos rechazos, si fallaba la teoría o la especificación, se resolvió en buena parte con la respuesta de \autor{Deaton}: trabajar con microdatos y modelizar la heterogeneidad, lo que marcó la econometría aplicada de la demanda.
-\item \textbf{Recapitulación y enlace}: estimar un sistema de demandas no garantiza que proceda de unas preferencias. Saber cuándo lo hace es la primera aplicación de la dualidad: la integrabilidad.
+\item \emph{Recapitulación y enlace}: estimar un sistema de demandas no garantiza que proceda de unas preferencias. Saber cuándo lo hace es la primera aplicación de la dualidad: la integrabilidad.
 \end{itemize}
 
 % ==========================================================================
@@ -796,7 +844,7 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
 \end{notaopositor}
 
 \begin{itemize}
-\item Este bloque responde a la tercera y la cuarta preguntas. Su conclusión anticipada: conocidas las herramientas, la dualidad tiene una aplicación teórica, la \emph{integrabilidad}, que recorre el esquema de dualidad al revés, de la demanda a las preferencias (III.1), y dos prácticas: la ecuación de \autor{Slutsky}, que se demuestra en dos líneas y separa lo observable de lo que no lo es (III.2), y la medida de los cambios en el bienestar, que usa la función de gasto para expresar la utilidad en unidades monetarias (III.3).
+\item Una vez vistos la teoría de la dualidad y su uso empírico, pasamos a analizar sus aplicaciones. Este bloque responde a la tercera y la cuarta preguntas. Su conclusión anticipada: la dualidad tiene una aplicación teórica, la \emph{integrabilidad}, que recorre el esquema de dualidad al revés, de la demanda a las preferencias (III.1), y dos prácticas: la ecuación de \autor{Slutsky}, que se demuestra en dos líneas y separa lo observable de lo que no lo es (III.2), y la medida de los cambios en el bienestar, que usa la función de gasto para expresar la utilidad en unidades monetarias (III.3).
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -805,7 +853,7 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
 \begin{itemize}
 \item \emph{Pregunta}: la parte inobservable de la teoría son las preferencias. Dado un sistema de demandas marshallianas observado (por ejemplo, estimado como en el apartado~II), ¿qué condiciones debe cumplir para que exista una función de utilidad de la que proceda por maximización? Si las cumple, podemos «integrar» las demandas y recuperar las preferencias. La plantea \textcite{Antonelli1886Teoria} y la respuesta general es de \textcite{HurwiczUzawa1971Integrability}.
 
-\item \concepto{Teorema de integrabilidad} \parencites[§3.H]{MasColellWhinstonGreen1995}[teorema~2.6]{JehleReny2011Advanced}. Una función de demanda $\vect{x}(\vect{p},\overline{W})$ continuamente diferenciable es la demanda de alguna función de utilidad creciente y cuasicóncava \emph{si y solo si} cumple:
+\item \emph{Respuesta}: el \concepto{teorema de integrabilidad} \parencites[§3.H]{MasColellWhinstonGreen1995}[teorema~2.6]{JehleReny2011Advanced}. Una función de demanda $\vect{x}(\vect{p},\overline{W})$ continuamente diferenciable es la demanda de alguna función de utilidad creciente y cuasicóncava \emph{si y solo si} cumple:
   \begin{enumerate}
   \item la \emph{ley de \autor{Walras}} (el sistema es exhaustivo): $\vect{p}\cdot\vect{x}(\vect{p},\overline{W})=\overline{W}$;
   \item la \emph{simetría} de la matriz de \autor{Slutsky}, construida con observables,
@@ -814,9 +862,9 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
     \end{equation}
   \item la \emph{negatividad}: $S(\vect{p},\overline{W})$ es semidefinida negativa.
   \end{enumerate}
-  Son \emph{necesarias}: toda demanda que procede de maximizar una utilidad localmente insaciable las cumple (apartados~I.2 y III.2). Y son \emph{suficientes}: es lo que demuestra el teorema. Los manuales suelen añadir la homogeneidad de grado cero, que también es necesaria \parencite[prop.~3.H.1]{MasColellWhinstonGreen1995}.\footnote{Con dos bienes, la simetría es automática: la ley de \autor{Walras} da $\vect{p}^{\top}S=\vect{0}$ y la homogeneidad, $S\vect{p}=\vect{0}$, de donde $S_{12}=-p_1S_{11}/p_2=S_{21}$. La integrabilidad solo restringe de verdad con tres bienes o más.}
+  Son \emph{necesarias}: toda demanda que procede de maximizar una utilidad localmente insaciable las cumple (apartados~I.2 y III.2). Y son \emph{suficientes}: es lo que demuestra el teorema. Los manuales suelen añadir la homogeneidad de grado cero, que también es necesaria \parencite[prop.~3.H.1]{MasColellWhinstonGreen1995}.\footnote{Con dos bienes, la simetría es automática: la ley de \autor{Walras} da $\vect{p}^{\top}S=\vect{0}$ y la homogeneidad, $S\vect{p}=\vect{0}$, de donde $S_{12}=-p_1S_{11}/p_2=S_{21}$.\findemo La integrabilidad solo restringe de verdad con tres bienes o más.}
 
-\item \concepto{Intuición de la demostración} (por dualidad), siguiendo a \textcite{HurwiczUzawa1971Integrability}. Es una buena muestra de la potencia de la dualidad:
+\item \emph{Intuición de la demostración} (por dualidad), siguiendo a \textcite{HurwiczUzawa1971Integrability}. Es una buena muestra de la potencia de la dualidad:
   \begin{enumerate}
   \item \emph{De la demanda a la función de gasto}. Si las demandas proceden de unas preferencias, por el lema de \autor{Shephard} y la dualidad entre demandas (ecuación~\eqref{eq:dual-demanda}), la función de gasto desconocida debe cumplir el sistema de ecuaciones en derivadas parciales\footnote{Una ecuación en derivadas parciales relaciona las derivadas parciales de una función desconocida, que es la incógnita, con la propia función.}
     \begin{equation}
@@ -841,13 +889,13 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
 
 \begin{itemize}
 \item La integrabilidad tiene una versión sin derivadas: la de la \concepto{preferencia revelada} \vertema{3.A.8}. El axioma débil implica que $S$ es semidefinida negativa, pero no que sea simétrica, y por eso con más de dos bienes no basta; el axioma fuerte de \textcite{Houthakker1950Revealed} sí garantiza que existan unas preferencias que racionalizan la demanda, y \textcite{KihlstromMasColellSonnenschein1976} relacionan los dos enfoques. Con un número finito de observaciones, el teorema de \textcite{Afriat1967Construction} da el contraste.
-\item \concepto{Relevancia}:
+\item \emph{Relevancia}:
   \begin{itemize}
   \item \emph{teórica}: cierra el círculo de la teoría; las preferencias inobservables no añaden nada que no esté ya en unas demandas que cumplen tres propiedades contrastables;
   \item \emph{empírica}: para saber si unas demandas estimadas son racionales basta contrastar esas propiedades (apartado~II.2), sin necesidad de encontrar la función de utilidad, que puede ser muy difícil;
   \item \emph{normativa}: permite recuperar la función de gasto a partir de una demanda estimada y medir el bienestar de forma exacta \parencite{Hausman1981Exact} (III.3).
   \end{itemize}
-\item \textbf{Recapitulación}: las restricciones de simetría y negatividad son el contenido empírico de la teoría: son las que se contrastan al estimar un AIDS. La simetría tiene, además, una lectura económica directa, que es la de la ecuación de \autor{Slutsky}.
+\item \emph{Recapitulación}: las restricciones de simetría y negatividad son el contenido empírico de la teoría: son las que se contrastan al estimar un AIDS. La simetría tiene, además, una lectura económica directa, que es la de la ecuación de \autor{Slutsky}.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -856,6 +904,7 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
 \paragraph{Derivación de la ecuación de \autor{Slutsky} por dualidad}
 
 \begin{itemize}
+\item La integrabilidad nos ha llevado de la demanda a las preferencias; la segunda aplicación usa la dualidad entre demandas para descomponer el efecto de un cambio de precio.
 \item La dualidad entre funciones de demanda da la \emph{demostración} de la ecuación de \textcite{Slutsky1915Bilancio}. Por el teorema básico, en el óptimo las demandas coinciden: si la renta del primal coincide con el gasto mínimo del dual para el nivel de utilidad maximizado, se cumple la identidad (ecuación~\eqref{eq:dual-demanda})
   \begin{equation*}
   h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big).
@@ -866,14 +915,14 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
   \end{align*}
 \item Evaluamos en $\overline{U}=V(\vect{p},\overline{W})$ y usamos las relaciones de dualidad: $E(\vect{p},\overline{U})=\overline{W}$ y, por el lema de \autor{Shephard}, $\dfrac{\partial E(\vect{p},\overline{U})}{\partial p_j}=h_j(\vect{p},\overline{U})=h_j\big(\vect{p},V(\vect{p},\overline{W})\big)=x_j(\vect{p},\overline{W})$. Despejando, llegamos a la \concepto{ecuación de \autor{Slutsky}}:
   \funcionclave[eq:slutsky]{\underbrace{\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\text{efecto total}}=\underbrace{\frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\text{efecto sustitución}}\ \underbrace{-\,x_j(\vect{p},\overline{W})\,\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\text{efecto renta}},\qquad\forall\,i,j.}
-  Vale para el precio propio ($i=j$) y para los cruzados ($i\neq j$).
+  Vale para el precio propio ($i=j$) y para los cruzados ($i\neq j$).\findemo
   \begin{itemize}
   \item El \emph{efecto sustitución} mide la variación de la demanda cuando cambia un precio y se mantiene la utilidad (compensación de \autor{Hicks}); el \emph{efecto renta}, la debida al cambio del poder adquisitivo que provoca el precio.
   \item \emph{En elasticidades}, multiplicando por $p_j/x_i$ y multiplicando y dividiendo el último término por $\overline{W}$,\footnote{Paso a paso, multiplicando los dos lados de~\eqref{eq:slutsky} por $p_j/x_i$:
     \[
     \underbrace{\frac{p_j}{x_i}\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\varepsilon_{x_i,p_j}}=\underbrace{\frac{p_j}{x_i}\frac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\varepsilon^{h}_{i,p_j}}-\underbrace{\frac{p_jx_j}{\overline{W}}}_{s_j}\cdot\underbrace{\frac{\overline{W}}{x_i}\frac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\varepsilon_{x_i,\overline{W}}},
     \]
-    donde en el efecto renta se ha multiplicado y dividido por $\overline{W}$ y, en el óptimo, $h_i(\vect{p},\overline{U})=x_i(\vect{p},\overline{W})$, de modo que la elasticidad compensada puede calcularse con la misma $x_i$.}
+    donde en el efecto renta se ha multiplicado y dividido por $\overline{W}$ y, en el óptimo, $h_i(\vect{p},\overline{U})=x_i(\vect{p},\overline{W})$, de modo que la elasticidad compensada puede calcularse con la misma $x_i$.\findemo}
     \begin{equation}
     \underbrace{\varepsilon_{x_i,p_j}}_{\text{ET}}=\underbrace{\varepsilon^{h}_{i,p_j}}_{\text{ES}}\ \underbrace{-\,s_j\,\varepsilon_{x_i,\overline{W}}}_{\text{ER}}. \label{eq:slutsky-elasticidades}
     \end{equation}
@@ -881,7 +930,7 @@ En el cante: integrabilidad (\tiempo{2,5}); ecuación de \autor{Slutsky}, con su
   \item La compensación puede definirse de dos formas: la de \autor{Hicks} mantiene la utilidad; la de \autor{Slutsky}, el poder adquisitivo (que siga siendo asequible la cesta inicial). Para variaciones infinitesimales coinciden.
   \end{itemize}
 \item Su valor está en que el efecto sustitución, que depende de la demanda hicksiana, es \emph{inobservable}, mientras que el efecto total y el efecto renta son \emph{observables}: la ecuación permite calcular la matriz de \autor{Slutsky} con datos, ecuación~\eqref{eq:slutsky-observable}, y contrastar sus propiedades.
-\item \concepto{Propiedades de la matriz de \autor{Slutsky}} (ecuación~\eqref{eq:matriz-slutsky}):
+\item \emph{Propiedades de la matriz de \autor{Slutsky}} (ecuación~\eqref{eq:matriz-slutsky}):
   \begin{itemize}
   \item \emph{simétrica}, por el teorema de \autor{Schwarz} (o de \autor{Young});
   \item \emph{semidefinida negativa}, por la concavidad de $E$; en particular, $S_{ii}\leq 0$: el efecto sustitución propio es siempre no positivo;
@@ -967,7 +1016,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
 
 \begin{itemize}
 \item El efecto renta explica por qué las demandas marshalliana y hicksiana tienen pendientes distintas en el plano $(x_i,p_i)$, con el precio en el eje vertical (demandas inversas):\footnote{La teoría moderna sigue a \autor{Walras} al tratar el precio como variable independiente y a \autor{Marshall} al representarlo en el eje vertical, aunque lo convencional es poner allí la variable dependiente \vertema{3.A.3}.} para un bien \emph{normal}, la marshalliana es más plana (más elástica) que la hicksiana; para uno \emph{inferior}, más inclinada, y sin efecto renta coinciden \vertema{3.A.8}. Es el puente con la medida del bienestar: para un bien normal, ante una bajada del precio, $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$.
-\item \textbf{Recapitulación}: la dualidad demuestra la ecuación de \autor{Slutsky}, convierte la matriz de sustitución en algo calculable con datos y explica por qué las relaciones netas son simétricas y las brutas no. Las mismas funciones, la hicksiana y la de gasto, sirven para medir en dinero el bienestar.
+\item \emph{Recapitulación}: la dualidad demuestra la ecuación de \autor{Slutsky}, convierte la matriz de sustitución en algo calculable con datos y explica por qué las relaciones netas son simétricas y las brutas no. Las mismas funciones, la hicksiana y la de gasto, sirven para medir en dinero el bienestar.
 \end{itemize}
 
 % --------------------------------------------------------------------------
@@ -976,7 +1025,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
 \subsubsection{Idea}
 
 \begin{itemize}
-\item La \concepto{economía del bienestar} estudia la deseabilidad de distintas asignaciones de recursos. Aquí nos limitamos a un \emph{consumidor} y a cambios de \emph{precios}: es un caso particular del análisis en equilibrio parcial, que incorpora a los productores \vertema{3.A.16}, y mucho más limitado que el análisis en equilibrio general, que agrega a todos los agentes \vertema{3.A.22} \vertema{3.A.24}. La restricción tiene una ventaja: evita las comparaciones de bienestar entre personas, que la naturaleza ordinal de las preferencias complica.
+\item Una vez separados los efectos sustitución y renta, pasamos a la tercera aplicación: medir en dinero cuánto gana o pierde el consumidor. La \concepto{economía del bienestar} estudia la deseabilidad de distintas asignaciones de recursos. Aquí nos limitamos a un \emph{consumidor} y a cambios de \emph{precios}: es un caso particular del análisis en equilibrio parcial, que incorpora a los productores \vertema{3.A.16}, y mucho más limitado que el análisis en equilibrio general, que agrega a todos los agentes \vertema{3.A.22} \vertema{3.A.24}. La restricción tiene una ventaja: evita las comparaciones de bienestar entre personas, que la naturaleza ordinal de las preferencias complica.
 \item El principal usuario es el decisor público. Sus medidas alteran precios y demandas, como efecto buscado (un impuesto sobre un bien con externalidades negativas) o como efecto secundario (un impuesto que financia un bien público). Lo que debería guiarlo no son los cambios en las demandas, sino en el bienestar: \emph{salus populi suprema lex esto}, «el bienestar del pueblo sea la ley suprema» \parencite[III, 8]{CiceronLegibus}.
 \item El \emph{problema} (gráfico~\ref{fig:bienestar-problema}): si baja $p_1$, la recta de balance gira hacia fuera, el consumidor cambia su cesta óptima de $\vect{x}^0$ a $\vect{x}^1$ y pasa de la curva de indiferencia $\overline{U}^0$ a $\overline{U}^1>\overline{U}^0$. Ha mejorado, pero ¿cuánto? Como la utilidad es \emph{ordinal}, $\overline{U}^1-\overline{U}^0$ no significa nada: carece de sentido calcular la magnitud del cambio en útiles. Hace falta una medida en \emph{unidades monetarias}, y la función de gasto la proporciona.
 \item Notación: los precios pasan de $\vect{p}^0$ a $\vect{p}^1$, con renta $\overline{W}$ constante; $\overline{U}^0=V(\vect{p}^0,\overline{W})$ y $\overline{U}^1=V(\vect{p}^1,\overline{W})$, y $\vect{x}^0$ y $\vect{x}^1$ son las cestas elegidas. Si solo cambia $p_1$, el resto de precios se mantiene en $\overline{\vect{p}}_{-1}$.
@@ -996,7 +1045,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
 \begin{itemize}
 \item La medida clásica es la \concepto{variación del excedente del consumidor}. La propone \textcite{Dupuit1844Mesure} para evaluar obras públicas y la formaliza \textcite{Marshall1890Principles}.
   \begin{itemize}
-  \item El \emph{excedente del consumidor} es la diferencia entre lo que el consumidor está dispuesto a pagar por cada unidad del bien y lo que paga: el área bajo la demanda marshalliana y sobre el precio.
+  \item El \concepto{excedente del consumidor} es la diferencia entre lo que el consumidor está dispuesto a pagar por cada unidad del bien y lo que paga: el área bajo la demanda marshalliana y sobre el precio.
   \item Su \emph{variación} es el área a la izquierda de la demanda marshalliana entre el precio inicial y el final (gráfico~\ref{fig:bienestar-delta-ec}):
     \begin{equation}
     \Delta\mathrm{EC}=\int_{p_1^1}^{p_1^0}x_1(p_1,\overline{\vect{p}}_{-1},\overline{W})\,dp_1. \label{eq:delta-ec}
@@ -1023,7 +1072,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
 \paragraph{Análisis mediante variaciones: información completa}
 
 \begin{itemize}
-\item La herramienta que traduce la utilidad a unidades monetarias es la \concepto{función de utilidad métrica monetaria} (\emph{money metric}) \parencites{McKenzie1957Demand}{Samuelson1974Complementarity}[§3.I]{MasColellWhinstonGreen1995}: fijado un vector de precios de referencia $\bar{\vect{p}}$,
+\item Para evitar los problemas del excedente, la herramienta que traduce la utilidad a unidades monetarias es la \concepto{función de utilidad métrica monetaria} (\emph{money metric}) \parencites{McKenzie1957Demand}{Samuelson1974Complementarity}[§3.I]{MasColellWhinstonGreen1995}: fijado un vector de precios de referencia $\bar{\vect{p}}$,
   \begin{equation}
   m(\bar{\vect{p}};\vect{p},\overline{W})\equiv E\big(\bar{\vect{p}},V(\vect{p},\overline{W})\big) \label{eq:money-metric}
   \end{equation}
@@ -1063,7 +1112,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
 
 \begin{itemize}
 \item Con varios precios, la VC y la VE son integrales de línea de las hicksianas, que no dependen del camino porque $\vect{h}$ es el gradiente de $E$.
-\item \concepto{Las tres medidas juntas} (gráfico~\ref{fig:bienestar-vc-ve}): para un bien normal, la hicksiana inicial es más inclinada que la marshalliana y la final queda a su derecha, de modo que, ante una bajada del precio,
+\item \emph{Las tres medidas juntas} (gráfico~\ref{fig:bienestar-vc-ve}): para un bien normal, la hicksiana inicial es más inclinada que la marshalliana y la final queda a su derecha, de modo que, ante una bajada del precio,
   \begin{equation}
   \mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE} \qquad\text{(bien normal; con efecto renta nulo, las tres coinciden).} \label{eq:orden-normal}
   \end{equation}
@@ -1084,7 +1133,7 @@ $\leq 0$ & & \textcolor{tceerojo}{$>0$: bien \autor{Giffen}}\\
   \end{equation}
   de modo que el error relativo de usar el excedente es aproximadamente $\frac{|\varepsilon_{x_1,\overline{W}}|\,|\Delta\mathrm{EC}|}{2\overline{W}}$ (derivación en el anexo~\ref{anexo:willig}). Si la variación del excedente es el 5\,\% de la renta y la elasticidad-renta vale uno, el error es del 2,5\,\%: cuando el bien pesa poco en el presupuesto, el excedente marshalliano es una buena aproximación. Es lo que justifica usarlo en el equilibrio parcial \vertema{3.A.16} y en el análisis coste-beneficio.
 \item \textcite{Hausman1981Exact} matiza el resultado: el error puede ser grande cuando lo que interesa es la \emph{pérdida irrecuperable} de un impuesto, que es un efecto de segundo orden. Propone recuperar la función de gasto exacta a partir de la demanda estimada, resolviendo la ecuación~\eqref{eq:edp-integrabilidad}, y calcular la VC y la VE sin aproximaciones: una aplicación directa de la integrabilidad.
-\item ¿\concepto{Cuál usar}? Depende de la pregunta:
+\item ¿\emph{Cuál usar}? Depende de la pregunta:
   \begin{itemize}
   \item para \emph{ordenar varias políticas} alternativas, la \emph{VE}: todas se valoran con los mismos precios de referencia, $\vect{p}^0$, de modo que es una métrica monetaria con base fija y ordena las alternativas igual que la utilidad; la VC usa como referencia los precios finales de cada alternativa, distintos en cada caso, y puede ordenarlas mal \parencite[§3.I]{MasColellWhinstonGreen1995};
   \item para diseñar una \emph{compensación}, es decir, cuánto hay que dar a los perjudicados por un cambio que se va a producir, como en el criterio de \autor{Kaldor} y \autor{Hicks} \vertema{3.A.22}, la \emph{VC}, que se mide a los precios que de hecho regirán.
@@ -1099,22 +1148,22 @@ Si el tribunal pregunta por aplicaciones: la VE mide la pérdida de bienestar de
 \paragraph{Análisis mediante variaciones: información incompleta}
 
 \begin{itemize}
-\item Si no se conoce la función de gasto ni la demanda, sino solo las cestas observadas $\vect{x}^0$ y $\vect{x}^1$, pueden calcularse dos compensaciones «de cesta fija»:
+\item Las medidas anteriores exigen conocer la función de gasto. Si no se conoce ni ella ni la demanda, sino solo las cestas observadas $\vect{x}^0$ y $\vect{x}^1$, pueden calcularse dos compensaciones «de cesta fija»:
   \begin{equation}
   L\equiv\overline{W}-\vect{p}^1\cdot\vect{x}^0=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^0,\qquad P\equiv\vect{p}^0\cdot\vect{x}^1-\overline{W}=(\vect{p}^0-\vect{p}^1)\cdot\vect{x}^1. \label{eq:var-laspeyres-paasche}
   \end{equation}
-  La \emph{variación de \autor{Laspeyres}} ($L$) valora el cambio de precios con la cesta inicial; la \emph{de \autor{Paasche}} ($P$), con la final. Si solo cambia $p_1$, son los rectángulos $x_1^0\,\Delta p_1$ y $x_1^1\,\Delta p_1$ (gráfico~\ref{fig:bienestar-vc-ve}, últimas capas).
+  La \concepto{variación de \autor{Laspeyres}} ($L$) valora el cambio de precios con la cesta inicial; la \concepto{de \autor{Paasche}} ($P$), con la final. Si solo cambia $p_1$, son los rectángulos $x_1^0\,\Delta p_1$ y $x_1^1\,\Delta p_1$ (gráfico~\ref{fig:bienestar-vc-ve}, últimas capas).
 \item Acotan las medidas exactas, para cualquier número de precios y tipo de bien:
   \begin{equation}
   L\leq \mathrm{VC}\qquad\text{y}\qquad \mathrm{VE}\leq P, \label{eq:cotas-lp}
   \end{equation}
-  porque mantener la cesta inicial a los precios nuevos cuesta al menos el gasto mínimo, $\vect{p}^1\cdot\vect{x}^0\geq E(\vect{p}^1,\overline{U}^0)$, y lo mismo con la final, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$. La diferencia es el \emph{sesgo de sustitución}: las cestas fijas ignoran que el consumidor reoptimiza. Para un bien normal, $L\leq \mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}\leq P$ (tabla~\ref{tab:ordenacion} del anexo~\ref{anexo:ordenacion}, con los demás casos).
+  porque mantener la cesta inicial a los precios nuevos cuesta al menos el gasto mínimo, $\vect{p}^1\cdot\vect{x}^0\geq E(\vect{p}^1,\overline{U}^0)$, y lo mismo con la final, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$.\findemo La diferencia es el \emph{sesgo de sustitución}: las cestas fijas ignoran que el consumidor reoptimiza. Para un bien normal, $L\leq \mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}\leq P$ (tabla~\ref{tab:ordenacion} del anexo~\ref{anexo:ordenacion}, con los demás casos).
 \end{itemize}
 
 \paragraph{El uso de índices de coste de la vida y su comparación con los índices de precios}
 
 \begin{itemize}
-\item Otra forma de medir los cambios de bienestar son los \concepto{índices de coste de la vida}, que miden la variación del poder adquisitivo cuando cambian los precios. Se usan en la negociación colectiva y en la indexación de rentas: por ejemplo, las pensiones contributivas se revalorizan con la media de las tasas interanuales del IPC \parencite{BOE2015LGSS}. Si el índice sobrestima el coste de la vida, la indexación sobrecompensa.
+\item Una vez estudiadas las variaciones, pasamos a otra forma de medir los cambios de bienestar: los los \concepto{índices de coste de la vida}, que miden la variación del poder adquisitivo cuando cambian los precios. Se usan en la negociación colectiva y en la indexación de rentas: por ejemplo, las pensiones contributivas se revalorizan con la media de las tasas interanuales del IPC \parencite{BOE2015LGSS}. Si el índice sobrestima el coste de la vida, la indexación sobrecompensa.
 \item El \concepto{índice verdadero de coste de la vida} de \autor{Konüs} (1924) es el cociente de gastos mínimos para alcanzar una misma utilidad a los precios final e inicial \parencite{Konus1939Problem}:
   \begin{equation}
   I_K(\vect{p}^0,\vect{p}^1;\overline{U})=\frac{E(\vect{p}^1,\overline{U})}{E(\vect{p}^0,\overline{U})}. \label{eq:konus}
@@ -1125,9 +1174,9 @@ Si el tribunal pregunta por aplicaciones: la VE mide la pérdida de bienestar de
   I_L=\frac{\vect{p}^1\cdot\vect{x}^0}{\vect{p}^0\cdot\vect{x}^0}\geq I_K(\overline{U}^0),\qquad I_P=\frac{\vect{p}^1\cdot\vect{x}^1}{\vect{p}^0\cdot\vect{x}^1}\leq I_K(\overline{U}^1). \label{eq:laspeyres-paasche}
   \end{equation}
   \begin{itemize}
-  \item El de \emph{\autor{Laspeyres}} es la aproximación de primer orden de $E(\vect{p}^1,\overline{U}^0)$ en torno a $\vect{p}^0$ (por \autor{Shephard} y porque $\vect{h}(\vect{p}^0,\overline{U}^0)=\vect{x}^0$, $E(\vect{p}^0,\overline{U}^0)+\vect{h}(\vect{p}^0,\overline{U}^0)\cdot(\vect{p}^1-\vect{p}^0)=\vect{p}^1\cdot\vect{x}^0$) y, por la concavidad de $E$, una \emph{cota superior}: \emph{sobrestima} el aumento del coste de la vida porque supone que el consumidor no sustituye los bienes que se encarecen por los que se abaratan (\emph{sesgo de sustitución}).\footnote{Por eso, si la renta se actualiza con $I_L$, el consumidor puede volver a comprar la cesta inicial $\vect{x}^0$ y, sustituyendo los bienes que se han encarecido por los que se han abaratado, alcanzar una utilidad \emph{mayor} que $\overline{U}^0$: queda sobrecompensado. Con $I_P$ ocurre lo contrario: la cesta final valorada a los precios iniciales cuesta al menos lo necesario para alcanzar $\overline{U}^1$ con esos precios, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$, de modo que $I_P=\overline{W}/(\vect{p}^0\cdot\vect{x}^1)\leq\overline{W}/E(\vect{p}^0,\overline{U}^1)=I_K(\overline{U}^1)$: ignorar la sustitución lleva a subestimar el encarecimiento medido con la utilidad final.} En el gráfico~\ref{fig:indice-konus-laspeyres}, la distancia entre la recta de precios $\vect{p}^1$ que pasa por $\vect{x}^0$ y su paralela tangente a $\overline{U}^0$ es ese sesgo.
+  \item El de \emph{\autor{Laspeyres}} es la aproximación de primer orden de $E(\vect{p}^1,\overline{U}^0)$ en torno a $\vect{p}^0$ (por \autor{Shephard} y porque $\vect{h}(\vect{p}^0,\overline{U}^0)=\vect{x}^0$, $E(\vect{p}^0,\overline{U}^0)+\vect{h}(\vect{p}^0,\overline{U}^0)\cdot(\vect{p}^1-\vect{p}^0)=\vect{p}^1\cdot\vect{x}^0$) y, por la concavidad de $E$, una \emph{cota superior}: \emph{sobrestima} el aumento del coste de la vida porque supone que el consumidor no sustituye los bienes que se encarecen por los que se abaratan (\emph{sesgo de sustitución}).\footnote{Por eso, si la renta se actualiza con $I_L$, el consumidor puede volver a comprar la cesta inicial $\vect{x}^0$ y, sustituyendo los bienes que se han encarecido por los que se han abaratado, alcanzar una utilidad \emph{mayor} que $\overline{U}^0$: queda sobrecompensado. Con $I_P$ ocurre lo contrario: la cesta final valorada a los precios iniciales cuesta al menos lo necesario para alcanzar $\overline{U}^1$ con esos precios, $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$, de modo que $I_P=\overline{W}/(\vect{p}^0\cdot\vect{x}^1)\leq\overline{W}/E(\vect{p}^0,\overline{U}^1)=I_K(\overline{U}^1)$: ignorar la sustitución lleva a subestimar el encarecimiento medido con la utilidad final.\findemo} En el gráfico~\ref{fig:indice-konus-laspeyres}, la distancia entre la recta de precios $\vect{p}^1$ que pasa por $\vect{x}^0$ y su paralela tangente a $\overline{U}^0$ es ese sesgo.
   \item El de \emph{\autor{Paasche}} es una \emph{cota inferior} del índice verdadero con la utilidad final: lo \emph{subestima}.
-  \item Atención a una confusión habitual: \autor{Laspeyres} y \autor{Paasche} acotan dos índices verdaderos \emph{distintos}. Solo con preferencias homotéticas $I_K$ no depende de $\overline{U}$, y entonces $I_P\leq I_K\leq I_L$. Las igualdades se dan únicamente si no hay posibilidad de sustitución (preferencias de \autor{Leontief}).\footnote{Es decir, si la matriz de \autor{Slutsky} es nula, $S=0$. Que todos los pares de bienes sean independientes netos lleva a lo mismo: si $S_{ij}=0$ para todo $i\neq j$, la condición $S\,\vect{p}=\vect{0}$ obliga a que también $S_{ii}=0$, y no queda ningún efecto sustitución.}
+  \item Atención a una confusión habitual: \autor{Laspeyres} y \autor{Paasche} acotan dos índices verdaderos \emph{distintos}. Solo con preferencias homotéticas $I_K$ no depende de $\overline{U}$, y entonces $I_P\leq I_K\leq I_L$. Las igualdades se dan únicamente si no hay posibilidad de sustitución (preferencias de \autor{Leontief}).\footnote{Es decir, si la matriz de \autor{Slutsky} es nula, $S=0$. Que todos los pares de bienes sean independientes netos lleva a lo mismo: si $S_{ij}=0$ para todo $i\neq j$, la condición $S\,\vect{p}=\vect{0}$ obliga a que también $S_{ii}=0$, y no queda ningún efecto sustitución.\findemo}
   \end{itemize}
 \end{itemize}
 
@@ -1140,7 +1189,7 @@ Si el tribunal pregunta por aplicaciones: la VE mide la pérdida de bienestar de
 
 \begin{itemize}
 \item \concepto{Índices superlativos}. \textcite{Diewert1976Exact} muestra que algunos índices calculados con datos observables son \emph{exactos} para formas funcionales flexibles: el índice ideal de \autor{Fisher}, $I_F=\sqrt{I_L\,I_P}$, lo es para una función de gasto cuadrática homogénea, y el de \autor{Törnqvist}, $\ln I_T=\sum_i\tfrac12\big(s_i^0+s_i^1\big)\ln\big(p_i^1/p_i^0\big)$, para una translog. Es el puente entre los sistemas de demanda del apartado~II y la medición de los precios.
-\item \concepto{Magnitud del sesgo de sustitución}:
+\item \emph{Magnitud del sesgo de sustitución}:
   \begin{itemize}
   \item la Comisión \autor{Boskin} estimó que el IPC de Estados Unidos sobrestimaba la inflación en 1,1 puntos al año, de los que 0,4 se debían al sesgo de sustitución propio de la fórmula de \autor{Laspeyres}; el resto, sobre todo, a los cambios de calidad y a los productos nuevos \parencites{Boskin1996Toward}{Gordon2006Boskin};
   \item con índices superlativos, \textcite{ManserMcDonald1988Substitution} estiman un sesgo de sustitución de unos 0,18 puntos porcentuales al año para el periodo 1959-1985;
@@ -1174,7 +1223,7 @@ La función de gasto traduce la utilidad a euros. La VC y la VE miden exactament
 \end{ideaclave}
 
 \begin{itemize}
-\item \textbf{Recapitulación}: la dualidad permite pasar de la utilidad, que solo ordena, a medidas monetarias del bienestar con sentido económico, y explica los sesgos de las medidas que se usan en la práctica: el excedente del consumidor y los índices de precios.
+\item \emph{Recapitulación}: la dualidad permite pasar de la utilidad, que solo ordena, a medidas monetarias del bienestar con sentido económico, y explica los sesgos de las medidas que se usan en la práctica: el excedente del consumidor y los índices de precios.
 \end{itemize}
 
 
@@ -1285,12 +1334,12 @@ Solución interior & $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$ & $\dfrac
   \begin{equation*}
   \frac{\partial V(\vect{p},\overline{W})}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{\vect{x}^*,\lambda^*}=-\lambda^*x_i(\vect{p},\overline{W}),\qquad\frac{\partial V(\vect{p},\overline{W})}{\partial\overline{W}}=\frac{\partial\mathcal{L}}{\partial\overline{W}}\bigg|_{\vect{x}^*,\lambda^*}=\lambda^*.
   \end{equation*}
-  Dividiendo la primera entre la segunda ($\lambda^*>0$) se obtiene la ecuación~\eqref{eq:roy}. Intuición: subir $p_i$ en una unidad monetaria equivale a quitar al consumidor $x_i$ unidades de renta, que valen $\lambda^*x_i$ en utilidad.
+  Dividiendo la primera entre la segunda ($\lambda^*>0$) se obtiene la ecuación~\eqref{eq:roy}. Intuición: subir $p_i$ en una unidad monetaria equivale a quitar al consumidor $x_i$ unidades de renta, que valen $\lambda^*x_i$ en utilidad.\findemo
 \item \emph{Por dualidad}. Derivando respecto a $p_i$ la identidad $V\big(\vect{p},E(\vect{p},\overline{U})\big)=\overline{U}$ y usando el lema de \autor{Shephard}:
   \begin{equation*}
   \frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\cdot\frac{\partial E(\vect{p},\overline{U})}{\partial p_i}=0\quad\Longrightarrow\quad\frac{\partial V}{\partial p_i}+\frac{\partial V}{\partial\overline{W}}\,h_i(\vect{p},\overline{U})=0.
   \end{equation*}
-  Evaluando en $\overline{U}=V(\vect{p},\overline{W})$, donde $h_i\big(\vect{p},V(\vect{p},\overline{W})\big)=x_i(\vect{p},\overline{W})$, y despejando, se obtiene de nuevo la identidad de \autor{Roy} \parencite[prop.~3.G.4]{MasColellWhinstonGreen1995}.
+  Evaluando en $\overline{U}=V(\vect{p},\overline{W})$, donde $h_i\big(\vect{p},V(\vect{p},\overline{W})\big)=x_i(\vect{p},\overline{W})$, y despejando, se obtiene de nuevo la identidad de \autor{Roy} \parencite[prop.~3.G.4]{MasColellWhinstonGreen1995}.\findemo
 \end{itemize}
 
 \subsection{Lema de \autor{Shephard}}\label{der:shephard}
@@ -1300,7 +1349,8 @@ Solución interior & $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$ & $\dfrac
   \begin{equation*}
   \frac{\partial E(\vect{p},\overline{U})}{\partial p_i}=\frac{\partial\mathcal{L}}{\partial p_i}\bigg|_{\vect{h}^*,\mu^*}=h_i(\vect{p},\overline{U}),\qquad\frac{\partial E(\vect{p},\overline{U})}{\partial\overline{U}}=\frac{\partial\mathcal{L}}{\partial\overline{U}}\bigg|_{\vect{h}^*,\mu^*}=\mu^*.
   \end{equation*}
-\item \emph{Sin cálculo diferencial}, por la concavidad. Para cualquier $\vect{p}\,'$, la cesta $\vect{h}(\vect{p},\overline{U})$ sigue alcanzando $\overline{U}$, así que $g(\vect{p}\,')\equiv\vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})-E(\vect{p}\,',\overline{U})\geq 0$, con $g(\vect{p})=0$. La función $g$ tiene un mínimo en $\vect{p}\,'=\vect{p}$ y su gradiente se anula allí: $h_i(\vect{p},\overline{U})-\partial E(\vect{p},\overline{U})/\partial p_i=0$ \parencite[prop.~3.G.1]{MasColellWhinstonGreen1995}.
+  \findemo
+\item \emph{Sin cálculo diferencial}, por la concavidad. Para cualquier $\vect{p}\,'$, la cesta $\vect{h}(\vect{p},\overline{U})$ sigue alcanzando $\overline{U}$, así que $g(\vect{p}\,')\equiv\vect{p}\,'\cdot\vect{h}(\vect{p},\overline{U})-E(\vect{p}\,',\overline{U})\geq 0$, con $g(\vect{p})=0$. La función $g$ tiene un mínimo en $\vect{p}\,'=\vect{p}$ y su gradiente se anula allí: $h_i(\vect{p},\overline{U})-\partial E(\vect{p},\overline{U})/\partial p_i=0$ \parencite[prop.~3.G.1]{MasColellWhinstonGreen1995}.\findemo
 \item Intuición: si $p_i$ sube un euro, el efecto directo es pagar $h_i$ euros más; la reoptimización de la cesta no altera el gasto en primer orden.
 \end{itemize}
 
@@ -1317,7 +1367,7 @@ Solución interior & $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$ & $\dfrac
   Los recíprocos de las condiciones estrictas no se cumplen: $f(x)=-x^4$ es estrictamente cóncava y su hessiana se anula en $x=0$.
 \item \concepto{Criterio de los menores}. Una matriz simétrica es \emph{definida positiva} si todos sus menores principales directores son positivos, y \emph{definida negativa} si alternan en signo empezando por negativo ($|H_1|<0$, $|H_2|>0$, …). Para la \emph{semidefinición} hay que mirar \emph{todos} los menores principales, no solo los directores: es semidefinida negativa si los de orden $k$ tienen signo $(-1)^k$ o son nulos, y semidefinida positiva si todos son no negativos \parencite[cap.~1]{SydsaeterEtAl2008Further}.
 \item \concepto{Cuasiconcavidad}. $f$ es \emph{cuasicóncava} si sus conjuntos de nivel superior, $\{\vect{x}: f(\vect{x})\geq c\}$, son convexos para todo $c$; con dos bienes, si sus curvas de indiferencia son convexas. Toda función cóncava es cuasicóncava, pero no al revés: la cuasiconcavidad es una propiedad ordinal, que se conserva con cualquier transformación creciente, y la concavidad no \vertema{3.A.8}. Se comprueba con la \emph{hessiana orlada} con el gradiente (anexo~\ref{anexo:kt}): con dos variables, $f$ es estrictamente cuasicóncava si $|\overline{H}|>0$. Es lo que asegura que las condiciones de primer orden del PMU y del PMG sean suficientes \parencite{ArrowEnthoven1961Quasi}.
-\item \concepto{Uso en la teoría de la demanda}: la concavidad de la función de gasto equivale a que la matriz de \autor{Slutsky} sea semidefinida negativa; la cuasiconcavidad de la utilidad, a la convexidad de las preferencias, y la cuasiconvexidad de la FIU, a que el conjunto $\{(\vect{p},\overline{W}): V(\vect{p},\overline{W})\leq\overline{U}^1\}$ sea convexo. La función de costes de la empresa tiene las mismas propiedades que la de gasto \vertema{3.A.12}.
+\item \emph{Uso en la teoría de la demanda}: la concavidad de la función de gasto equivale a que la matriz de \autor{Slutsky} sea semidefinida negativa; la cuasiconcavidad de la utilidad, a la convexidad de las preferencias, y la cuasiconvexidad de la FIU, a que el conjunto $\{(\vect{p},\overline{W}): V(\vect{p},\overline{W})\leq\overline{U}^1\}$ sea convexo. La función de costes de la empresa tiene las mismas propiedades que la de gasto \vertema{3.A.12}.
 \end{itemize}
 
 % ==========================================================================
@@ -1325,10 +1375,10 @@ Solución interior & $\dfrac{U_1}{p_1}=\dots=\dfrac{U_n}{p_n}=\lambda$ & $\dfrac
 
 \begin{itemize}
 \item Sea una bajada de $p_1$ de $p_1^0$ a $p_1^1$, con $\Delta=p_1^0-p_1^1>0$. Para una subida basta cambiar el sentido de la integración: las desigualdades \emph{con signo} se mantienen.
-\item $L\leq \mathrm{VC}$: como $h_1$ es no creciente en $p_1$, $h_1(p_1,\overline{U}^0)\geq h_1(p_1^0,\overline{U}^0)=x_1^0$ en todo el intervalo; integrando, $\mathrm{VC}\geq x_1^0\Delta=L$.
-\item $\mathrm{VE}\leq P$: del mismo modo, $h_1(p_1,\overline{U}^1)\leq h_1(p_1^1,\overline{U}^1)=x_1^1$; integrando, $\mathrm{VE}\leq x_1^1\Delta=P$.
-\item VC, $\Delta\mathrm{EC}$ y VE: $x_1(p_1,\overline{W})=h_1\big(p_1,V(p_1,\overline{W})\big)$, con $\overline{U}^0\leq V(p_1,\overline{W})\leq\overline{U}^1$ en el intervalo. Para un bien normal, $h_1$ es creciente en $\overline{U}$, así que $h_1(\cdot,\overline{U}^0)\leq x_1(\cdot,\overline{W})\leq h_1(\cdot,\overline{U}^1)$ y $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$. Para un bien inferior, las desigualdades se invierten.
-\item $L$, $P$ y $\Delta\mathrm{EC}$: si $x_1$ es decreciente en $p_1$ (bien ordinario), $x_1^0\leq x_1(p_1,\overline{W})\leq x_1^1$ y $L\leq\Delta\mathrm{EC}\leq P$; si es creciente (\autor{Giffen}), $P\leq\Delta\mathrm{EC}\leq L$.
+\item $L\leq \mathrm{VC}$: como $h_1$ es no creciente en $p_1$, $h_1(p_1,\overline{U}^0)\geq h_1(p_1^0,\overline{U}^0)=x_1^0$ en todo el intervalo; integrando, $\mathrm{VC}\geq x_1^0\Delta=L$.\findemo
+\item $\mathrm{VE}\leq P$: del mismo modo, $h_1(p_1,\overline{U}^1)\leq h_1(p_1^1,\overline{U}^1)=x_1^1$; integrando, $\mathrm{VE}\leq x_1^1\Delta=P$.\findemo
+\item VC, $\Delta\mathrm{EC}$ y VE: $x_1(p_1,\overline{W})=h_1\big(p_1,V(p_1,\overline{W})\big)$, con $\overline{U}^0\leq V(p_1,\overline{W})\leq\overline{U}^1$ en el intervalo. Para un bien normal, $h_1$ es creciente en $\overline{U}$, así que $h_1(\cdot,\overline{U}^0)\leq x_1(\cdot,\overline{W})\leq h_1(\cdot,\overline{U}^1)$ y $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$. Para un bien inferior, las desigualdades se invierten.\findemo
+\item $L$, $P$ y $\Delta\mathrm{EC}$: si $x_1$ es decreciente en $p_1$ (bien ordinario), $x_1^0\leq x_1(p_1,\overline{W})\leq x_1^1$ y $L\leq\Delta\mathrm{EC}\leq P$; si es creciente (\autor{Giffen}), $P\leq\Delta\mathrm{EC}\leq L$.\findemo
 \item Combinando estas desigualdades se obtiene la tabla~\ref{tab:ordenacion}. En el bien \autor{Giffen}, $L$ y $P$ quedan entre las medidas exactas.
 \end{itemize}
 
@@ -1369,7 +1419,7 @@ Frontera (efecto renta nulo) & $L\leq \mathrm{VC}=\Delta\mathrm{EC}=\mathrm{VE}\
   \begin{equation*}
   \Delta\mathrm{EC}-\mathrm{VC}\approx\frac{\varepsilon_{x_1,\overline{W}}\,(\Delta\mathrm{EC})^2}{2\overline{W}},
   \end{equation*}
-  la ecuación~\eqref{eq:willig}; del mismo modo para la VE.
+  la ecuación~\eqref{eq:willig}; del mismo modo para la VE.\findemo
 \item El resultado formal, con las cotas del error, está en \textcite{Willig1976Surplus}; la discusión de su precisión para la pérdida irrecuperable, en \textcite{Hausman1981Exact}.
 \end{itemize}
 

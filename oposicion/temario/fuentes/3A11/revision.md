@@ -255,3 +255,12 @@ Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuel
 10. **Anexo de la controversia.** Se ha reescrito entero (el original copiaba a Feás) y se han quitado las citas literales de Samuelson (1966) y Robinson que no se han podido comprobar. Si Víctor tiene el texto de Samuelson, se puede recuperar una cita breve.
 11. **«Gráfico 11» del punto 14.** Se ha entendido que pedía las dos cosas: un cuarto panel de rendimientos variables en las isocuantas (gráfico 15) y un gráfico 3D nuevo de rendimientos globales frente a locales (gráfico 17). El antiguo gráfico 3D de la Cobb-Douglas con los 3 tipos (`rendimientos-escala-r3`) sale del texto por repetir el nuevo gráfico 5; si Víctor lo quiere también en II.2, basta volver a ponerlo.
 12. **Lowry (1987).** Se cita como fuente general de Hesíodo y Jenofonte sin página: no se ha podido consultar el libro.
+
+## Criterios del 17/10/2026
+
+- **Fin de demostración**: `\findemo` al final de las 8 demostraciones (notas de $\mathrm{PMg}_L=\mathrm{PMe}_L$ y de la elasticidad local del ejemplo «en S»; anexo de derivaciones: límites de la CES, teorema de Euler, productividades marginales homogéneas, elasticidad de escala local, etapas con rendimientos constantes y Cobb-Douglas). No había ∎ ni `\qed` previos.
+- **Nexos**: frase de enlace al empezar I, II y III y en I.2, I.3, II.1, II.2, II.3 y III.2.
+- **Letras seguidas**: Cobb-Douglas y CES pasan de a, b, d, e a a, b, c, d; Leontief, III.1 y III.2, de a, b, c, e a a, b, c, d. Los modelos ya tenían supuestos, desarrollo e implicaciones como bloques i)–iii).
+- **Negrita y cursiva**: rótulos en cursiva en la Estructura (antes en negrita) y en las listas hermanas que mezclaban viñetas con y sin rótulo (σ: Origen, Curvatura; II.2: Definición, Consecuencias; II.3: Clasificación, Relación entre las 3; anexos: Teorema de Euler, Productividades marginales, Problema, Resolución en 2 etapas, Forma intensiva, Distribución); en negrita los términos que se definen (método de producción, neutral, sesgado, economías de escala, formas flexibles).
+- **Otros temas**: no había «temas vecinos»; CMe/CMg (del 3.A.12) se explican la primera vez.
+- Sin cambios de minutos ni de contenido. `verificar-tema.py`: 0 errores.

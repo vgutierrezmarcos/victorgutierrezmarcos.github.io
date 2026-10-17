@@ -1815,7 +1815,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a las dos primeras preguntas. Su conclusiÃ³n anticipada: minimizar el coste de cada nivel de producciÃ³n y elegir despuÃ©s ese nivel es lo mismo que maximizar el beneficio, y la funciÃ³n de costes que resulta contiene toda la informaciÃ³n econÃ³micamente relevante de la tecnologÃ­a. 
+Una vez planteadas las preguntas clave, pasamos a analizar los dos problemas de la empresa. Este bloque responde a las dos primeras preguntas. Su conclusiÃ³n anticipada: minimizar el coste de cada nivel de producciÃ³n y elegir despuÃ©s ese nivel es lo mismo que maximizar el beneficio, y la funciÃ³n de costes que resulta contiene toda la informaciÃ³n econÃ³micamente relevante de la tecnologÃ­a. 
 \end_layout
 
 \begin_layout Standard
@@ -2863,6 +2863,10 @@ status collapsed
 Problemas primal y dual
 \end_layout
 
+\begin_layout Itemize
+Con los ingredientes ya definidos, planteamos primero la maximizaciÃ³n del beneficio y despuÃ©s la minimizaciÃ³n del coste. 
+\end_layout
+
 \begin_layout Subsubsection
 Problema de maximizaciÃ³n del beneficio en una etapa
 \end_layout
@@ -2931,7 +2935,11 @@ en una etapa
 
 \begin_deeper
 \begin_layout Itemize
-Como hay restricciones de no negatividad, se resuelve por el mÃ©todo de 
+
+\emph on
+Condiciones de primer orden
+\emph default
+: como hay restricciones de no negatividad, se resuelve por el mÃ©todo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4434,7 +4442,7 @@ status collapsed
 \end_deeper
 \end_deeper
 \begin_layout Paragraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -4531,7 +4539,11 @@ con
 
 \begin_deeper
 \begin_layout Itemize
-Se resuelve con el mÃ©todo de 
+
+\emph on
+Lagrangiana
+\emph default
+: se resuelve con el mÃ©todo de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -4551,7 +4563,7 @@ Tucker
 
 \end_inset
 
-, a partir de la lagrangiana 
+, a partir de 
 \begin_inset Formula \begin{equation}
     \mathcal{L}=\vect{w}\cdot\vect{z}+\mu\big(q-F(\vect{z})\big). \label{eq:lagrangiana-mc}
     \end{equation}
@@ -4561,7 +4573,11 @@ Tucker
 \end_layout
 
 \begin_layout Itemize
-Condiciones de primer orden: 
+
+\emph on
+Condiciones de primer orden
+\emph default
+: 
 \begin_inset Formula $w_i-\mu F_i(\vect{z}^*)\geq 0$
 \end_inset
 
@@ -4595,7 +4611,11 @@ misma
 \end_layout
 
 \begin_layout Itemize
-El multiplicador 
+
+\emph on
+Multiplicador
+\emph default
+: 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -6979,7 +6999,7 @@ textcite[prop.~5.C.1 y 5.C.2]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -7013,7 +7033,7 @@ y minimizaciÃ³n de coste
 \end_layout
 
 \begin_layout Itemize
-Como en la teorÃ­a del consumidor 
+Resueltos los dos problemas por separado, pasamos a ver cÃ³mo se relacionan. Como en la teorÃ­a del consumidor 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -7023,7 +7043,7 @@ status collapsed
 
 \end_inset
 
-, entre los dos problemas se dan unas relaciones que permiten obtener cualquier funciÃ³n de comportamiento de la empresa a partir de otra, sin volver a resolver ningÃºn problema. 
+, entre ellos se dan unas relaciones que permiten obtener cualquier funciÃ³n de comportamiento de la empresa a partir de otra, sin volver a resolver ningÃºn problema. 
 \end_layout
 
 \begin_layout Itemize
@@ -7418,7 +7438,11 @@ textcite[Â§5.C y 5.D]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Itemize
-La relaciÃ³n no es simÃ©trica. La funciÃ³n de costes existe con cualquier tipo de rendimientos, mientras que la de beneficio solo estÃ¡ bien definida si los rendimientos son decrecientes: con rendimientos constantes o crecientes, el beneficio mÃ¡ximo es nulo o no estÃ¡ acotado. Por eso la funciÃ³n de costes es el instrumento mÃ¡s general. 
+
+\emph on
+AsimetrÃ­a
+\emph default
+: la relaciÃ³n no es simÃ©trica. La funciÃ³n de costes existe con cualquier tipo de rendimientos, mientras que la de beneficio solo estÃ¡ bien definida si los rendimientos son decrecientes: con rendimientos constantes o crecientes, el beneficio mÃ¡ximo es nulo o no estÃ¡ acotado. Por eso la funciÃ³n de costes es el instrumento mÃ¡s general. 
 \end_layout
 
 \begin_layout Itemize
@@ -7496,7 +7520,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Todas estas relaciones se resumen en el grÃ¡fico
+
+\emph on
+Esquema
+\emph default
+: todas estas relaciones se resumen en el grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -7771,7 +7799,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Si 
+
+\emph on
+RecuperaciÃ³n exacta
+\emph default
+: si 
 \begin_inset Formula $V(q)$
 \end_inset
 
@@ -8667,7 +8699,7 @@ hicksianas
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a la tercera y a la cuarta preguntas. Su conclusiÃ³n anticipada: 
+Una vez obtenida la funciÃ³n de costes y sus propiedades, pasamos a analizar cÃ³mo cambia y cÃ³mo se mide. Este bloque responde a la tercera y a la cuarta preguntas. Su conclusiÃ³n anticipada: 
 \end_layout
 
 \begin_deeper
@@ -9125,7 +9157,19 @@ Un factor puede ser normal en unos tramos e inferior en otros. Pero no todos los
 \begin_inset Formula $\sum_iF_i\,\partial z_i(\vect{w},q)/\partial q=1>0$
 \end_inset
 
-, asÃ­ que al menos uno ha de ser normal. 
+, asÃ­ que al menos uno ha de ser normal.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_deeper
@@ -9826,11 +9870,27 @@ nolink "false"
 \begin_inset Formula $\mathrm{CMe}=\mathrm{CMg}\cdot\varepsilon_{q,\lambda}(\vect{z})$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
-No hace falta homoteticidad: vale para cualquier tecnologÃ­a, siempre que los rendimientos se midan 
+
+\emph on
+Sin homoteticidad
+\emph default
+: no hace falta; la relaciÃ³n vale para cualquier tecnologÃ­a, siempre que los rendimientos se midan 
 \emph on
 localmente
 \emph default
@@ -9838,7 +9898,11 @@ localmente
 \end_layout
 
 \begin_layout Itemize
-Lo que aÃ±ade la homoteticidad es que la senda de expansiÃ³n es un rayo: crecer por la senda y ampliar todos los factores en la misma proporciÃ³n son el mismo movimiento, y la relaciÃ³n se cumple a lo largo de toda la senda. Fuera de ese caso, los rendimientos medidos sobre 
+
+\emph on
+Con homoteticidad
+\emph default
+: lo que aÃ±ade es que la senda de expansiÃ³n es un rayo: crecer por la senda y ampliar todos los factores en la misma proporciÃ³n son el mismo movimiento, y la relaciÃ³n se cumple a lo largo de toda la senda. Fuera de ese caso, los rendimientos medidos sobre 
 \emph on
 otro
 \emph default
@@ -9846,11 +9910,11 @@ otro
 \end_layout
 
 \begin_layout Itemize
-Con rendimientos 
+
 \emph on
-globales
+Rendimientos globales
 \emph default
- solo se cumplen implicaciones en un sentido (tabla
+: solo se cumplen implicaciones en un sentido (tabla
 \begin_inset space ~
 
 \end_inset
@@ -11081,6 +11145,14 @@ Sobre las demandas de factores
 \end_layout
 
 \begin_layout Itemize
+Una vez vistos los cambios en la producciÃ³n, pasamos a los cambios en los precios de los factores, con 
+\begin_inset Formula $q$
+\end_inset
+
+ fijo. 
+\end_layout
+
+\begin_layout Itemize
 
 \emph on
 GrÃ¡ficamente
@@ -11358,10 +11430,7 @@ parencite{Uzawa1962Production}
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Â¿Hay factores 
 \begin_inset Flex Autor
 status collapsed
@@ -11373,10 +11442,7 @@ Giffen
 \end_inset
 
 ?
-\end_layout
-
-\end_inset
-
+\emph default
  No. La demanda condicionada cumple 
 \begin_inset Formula $\partial z_i(\vect{w},q)/\partial w_i\leq 0$
 \end_inset
@@ -11397,7 +11463,11 @@ Giffen
 \end_layout
 
 \begin_layout Itemize
-La relaciÃ³n entre las dos demandas se obtiene derivando respecto a 
+
+\emph on
+RelaciÃ³n entre las dos demandas
+\emph default
+: se obtiene derivando respecto a 
 \begin_inset Formula $w_j$
 \end_inset
 
@@ -12027,7 +12097,11 @@ AnÃ¡lisis de corto plazo
 \end_layout
 
 \begin_layout Itemize
-El problema es el mismo de antes con una restricciÃ³n adicional, el factor fijo 
+
+\emph on
+Problema
+\emph default
+: es el mismo de antes con una restricciÃ³n adicional, el factor fijo 
 \begin_inset Formula $\overline{z}_K$
 \end_inset
 
@@ -12339,7 +12413,11 @@ costes totales
 
 \end_deeper
 \begin_layout Itemize
-Como la demanda de trabajo la fija la funciÃ³n de producciÃ³n, 
+
+\emph on
+Coste marginal y coste variable medio
+\emph default
+: como la demanda de trabajo la fija la funciÃ³n de producciÃ³n, 
 \begin_inset Formula $dz_L/dq=1/\mathrm{PMg}_L$
 \end_inset
 
@@ -12381,7 +12459,11 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-El CMe a corto plazo baja al principio por dos razones: el reparto del coste fijo entre mÃ¡s unidades (el coste fijo medio, 
+
+\emph on
+Coste medio
+\emph default
+: el CMe a corto plazo baja al principio por dos razones: el reparto del coste fijo entre mÃ¡s unidades (el coste fijo medio, 
 \begin_inset Formula $\mathrm{CFMe}=w_K\overline{z}_K/q$
 \end_inset
 
@@ -12393,7 +12475,11 @@ no
 \end_layout
 
 \begin_layout Itemize
-Dos puntos que usa la teorÃ­a de los mercados 
+
+\emph on
+MÃ­nimo y Ã³ptimo de explotaciÃ³n
+\emph default
+: dos puntos que usa la teorÃ­a de los mercados 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -14451,7 +14537,11 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-Por el lema de 
+
+\emph on
+Participaciones en el coste
+\emph default
+: por el lema de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -14461,11 +14551,7 @@ Shephard
 
 \end_inset
 
-, las 
-\emph on
-participaciones en el coste
-\emph default
- son lineales en los parÃ¡metros: 
+, son lineales en los parÃ¡metros: 
 \begin_inset Formula \begin{equation}
     s_i=\frac{\partial\ln C}{\partial\ln w_i}=\alpha_i+\sum_j\beta_{ij}\ln w_j+\beta_{iq}\ln q,\qquad\sum_is_i=1. \label{eq:translog-participaciones}
     \end{equation}
@@ -14556,7 +14642,11 @@ Casos anidados
 
 \end_deeper
 \begin_layout Itemize
-Otra forma flexible es la 
+
+\emph on
+Otra forma flexible
+\emph default
+: la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -14642,7 +14732,7 @@ contrastables
 \end_layout
 
 \begin_layout Paragraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -14662,7 +14752,7 @@ textcite{BerndtWood1975Technology}
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -14697,17 +14787,15 @@ EconomÃ­as de escala y forma de los costes en los datos
 \end_layout
 
 \begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-MÃ©todos
+Planteado el mÃ©todo de estimaciÃ³n, veamos quÃ© dicen los datos sobre la forma de los costes. 
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-. La forma de la curva de costes a largo plazo se ha estudiado de tres maneras 
+\emph on
+MÃ©todos
+\emph default
+: la forma de la curva de costes a largo plazo se ha estudiado de tres maneras 
 \begin_inset ERT
 status collapsed
 
@@ -14762,16 +14850,10 @@ textcite{Stigler1958Economies}
 \end_deeper
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Resultados
-\end_layout
-
-\end_inset
-
-. 
+\emph default
+: 
 \end_layout
 
 \begin_deeper
@@ -15145,7 +15227,7 @@ a) Idea
 \end_layout
 
 \begin_layout Itemize
-La funciÃ³n de costes es una 
+Hasta aquÃ­ hemos supuesto que la empresa produce sobre su funciÃ³n de costes; ahora medimos cuÃ¡nto se aleja de ella. La funciÃ³n de costes es una 
 \emph on
 frontera
 \emph default
@@ -16121,7 +16203,11 @@ parencite{CarboRodriguez2014Tamano}
 \end_layout
 
 \begin_layout Itemize
-Los indicadores contables dan solo una idea aproximada: en el segundo trimestre de 2026 los gastos de explotaciÃ³n absorbÃ­an el 42,9
+
+\emph on
+Indicadores contables
+\emph default
+: dan solo una idea aproximada: en el segundo trimestre de 2026 los gastos de explotaciÃ³n absorbÃ­an el 42,9
 \begin_inset space \thinspace{}
 
 \end_inset
@@ -17237,7 +17323,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a la Ãºltima pregunta. Su conclusiÃ³n anticipada: la forma de los costes condiciona la estructura del mercado y el tamaÃ±o de la empresa; la teorÃ­a se extiende a las economÃ­as externas, a varias plantas o productos y al aprendizaje, y sus dos supuestos mÃ¡s discutidos, el coste medio en U y la minimizaciÃ³n del coste, son en el fondo cuestiones empÃ­ricas, que los datos del bloque
+Una vez analizados los costes y lo que dicen los datos, pasamos a sus extensiones y a sus crÃ­ticas. Este bloque responde a la Ãºltima pregunta. Su conclusiÃ³n anticipada: la forma de los costes condiciona la estructura del mercado y el tamaÃ±o de la empresa; la teorÃ­a se extiende a las economÃ­as externas, a varias plantas o productos y al aprendizaje, y sus dos supuestos mÃ¡s discutidos, el coste medio en U y la minimizaciÃ³n del coste, son en el fondo cuestiones empÃ­ricas, que los datos del bloque
 \begin_inset space ~
 
 \end_inset
@@ -17636,7 +17722,7 @@ EconomÃ­as de escala
 \end_layout
 
 \begin_layout Itemize
-Las economÃ­as de escala estudiadas hasta aquÃ­ son 
+Una vez vista la forma de los costes de cada empresa, pasamos a los que dependen de la industria. Las economÃ­as de escala estudiadas hasta aquÃ­ son 
 \emph on
 internas
 \emph default
@@ -17801,8 +17887,24 @@ flexible
 b) Modelo
 \end_layout
 
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
 \begin_layout Itemize
-La empresa puede elegir entre una planta con un coste medio mÃ­nimo muy bajo en un nivel de producciÃ³n (una U cerrada) y otra con un coste medio algo mayor en el mÃ­nimo pero casi constante en un intervalo amplio. Si el factor Â«fijoÂ» es divisible en la prÃ¡ctica (mÃ¡s o menos mÃ¡quinas, turnos o lÃ­neas en uso), se ajusta con el variable y la proporciÃ³n entre ambos no cambia: el CVMe y el CMg son constantes e iguales en ese tramo, la 
+La empresa puede elegir entre una planta con un coste medio mÃ­nimo muy bajo en un nivel de producciÃ³n (una U cerrada) y otra con un coste medio algo mayor en el mÃ­nimo pero casi constante en un intervalo amplio. 
+\end_layout
+
+\begin_layout Itemize
+El factor Â«fijoÂ» es divisible en la prÃ¡ctica (mÃ¡s o menos mÃ¡quinas, turnos o lÃ­neas en uso), y la demanda fluctÃºa. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+El factor Â«fijoÂ» se ajusta con el variable y la proporciÃ³n entre ambos no cambia: el CVMe y el CMg son constantes e iguales en ese tramo, la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -17829,6 +17931,10 @@ nolink "false"
 \end_inset
 
 ). 
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones
 \end_layout
 
 \begin_layout Itemize
@@ -17978,7 +18084,7 @@ textcite{Stigler1939Production}
 \end_layout
 
 \begin_layout Paragraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -17991,7 +18097,7 @@ II.4).
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -18161,7 +18267,7 @@ Una subida del precio del producto debida a menos competencia puede traducirse e
 \end_layout
 
 \begin_layout Paragraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -18198,7 +18304,7 @@ II.5 miden precisamente la distancia al coste mÃ­nimo.
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -18257,6 +18363,10 @@ status collapsed
 
 \begin_layout Subsection
 Otras extensiones a la teorÃ­a neoclÃ¡sica de los costes
+\end_layout
+
+\begin_layout Itemize
+MÃ¡s allÃ¡ de las crÃ­ticas, la teorÃ­a se extiende a empresas con varias plantas, con varios productos y que aprenden con el tiempo. 
 \end_layout
 
 \begin_layout Subsubsection
@@ -19935,11 +20045,15 @@ Sarrus
 \end_layout
 
 \begin_layout Itemize
+
+\emph on
 Con 
 \begin_inset Formula $n$
 \end_inset
 
- factores, los menores principales directores orlados de orden 
+ factores
+\emph default
+: los menores principales directores orlados de orden 
 \begin_inset Formula $k+1$
 \end_inset
 
@@ -20062,7 +20176,19 @@ Por la envolvente
   \end{equation*}
 \end_inset
 
+Es el lema.
+\begin_inset ERT
+status collapsed
 
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -20106,7 +20232,19 @@ parencite[prop.~5.C.1]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -20138,7 +20276,19 @@ Por la envolvente
   \end{equation*}
 \end_inset
 
-La segunda igualdad es la interpretaciÃ³n del multiplicador como coste marginal. 
+La segunda igualdad es la interpretaciÃ³n del multiplicador como coste marginal.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -20190,11 +20340,27 @@ parencite[prop.~5.C.2]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
-IntuiciÃ³n: si 
+
+\emph on
+IntuiciÃ³n
+\emph default
+: si 
 \begin_inset Formula $w_i$
 \end_inset
 
@@ -21500,7 +21666,19 @@ Hotelling
 \begin_inset Formula $\partial q(p,\vect{w})/\partial p=1/(\partial^2C/\partial q^2)\geq 0$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -21618,7 +21796,19 @@ parencite[cap.~III]{Samuelson1947Foundations}
 
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard

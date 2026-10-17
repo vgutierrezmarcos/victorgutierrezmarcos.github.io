@@ -9,7 +9,7 @@
 \usepackage{tcee}
 
 \tcetema[TeorÃ­a de la demanda del consumidor (II)]{3.A.9}{TeorÃ­a de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados en estudios empÃ­ricos. Medidas de cambio en el bienestar.}
-\tcefecha{16/10/2026}
+\tcefecha{17/10/2026}
 
 \end_preamble
 \use_default_options false
@@ -1500,7 +1500,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a la primera pregunta. Su conclusiÃ³n anticipada: maximizar la utilidad con una renta dada y minimizar el gasto necesario para alcanzar una utilidad dada llevan a la 
+Una vez planteadas las preguntas, pasamos a construir las herramientas para responderlas. Este bloque responde a la primera. Su conclusiÃ³n anticipada: maximizar la utilidad con una renta dada y minimizar el gasto necesario para alcanzar una utilidad dada llevan a la 
 \emph on
 misma cesta
 \emph default
@@ -2393,6 +2393,10 @@ status collapsed
 Problemas primal y dual
 \end_layout
 
+\begin_layout Itemize
+Descritos los ingredientes comunes, pasamos a plantear y resolver cada problema por separado: primero el primal y despuÃ©s el dual. 
+\end_layout
+
 \begin_layout Subsubsection
 Problema primal: maximizaciÃ³n de la utilidad
 \end_layout
@@ -3249,7 +3253,19 @@ Por quÃ©
 \begin_inset Formula $\vect{p}\,''\cdot\vect{x}>\overline{W}''$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -3477,7 +3493,7 @@ textcite[fig.~3.D.5]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -3702,6 +3718,18 @@ I.3:
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -5820,7 +5848,7 @@ textcite[prop.~3.D.2, 3.D.3, 3.E.2, 3.E.3 y 3.G.1]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Paragraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -5850,7 +5878,7 @@ Relaciones de dualidad
 \end_layout
 
 \begin_layout Itemize
-Como los dos problemas tienen los mismos ingredientes, entre ellos se dan unas 
+Resueltos los dos problemas por separado, falta relacionarlos. Como tienen los mismos ingredientes, entre ellos se dan unas 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6504,9 +6532,9 @@ Shephard
 
 \begin_layout Itemize
 
-\series bold
+\emph on
 RecapitulaciÃ³n
-\series default
+\emph default
 : basta resolver uno de los dos problemas para obtener las cuatro funciones. Las flechas del esquema son, ademÃ¡s, las herramientas del resto de la exposiciÃ³n: la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
@@ -6638,7 +6666,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a la segunda pregunta. Su conclusiÃ³n anticipada: la dualidad permite elegir una funciÃ³n de gasto o de utilidad indirecta flexible, derivar de ella demandas estimables y contrastar las restricciones de la teorÃ­a. El sistema casi ideal (AIDS) de 
+Una vez estudiadas las relaciones de dualidad, pasamos a ver cÃ³mo se llevan a los datos. Este bloque responde a la segunda pregunta. Su conclusiÃ³n anticipada: la dualidad permite elegir una funciÃ³n de gasto o de utilidad indirecta flexible, derivar de ella demandas estimables y contrastar las restricciones de la teorÃ­a. El sistema casi ideal (AIDS) de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6886,7 +6914,7 @@ Pasos que sigue la literatura
 \end_layout
 
 \begin_layout Itemize
-La estimaciÃ³n sigue cinco pasos, que reproducen el camino de la teorÃ­a, de las preferencias a la demanda ordinaria: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo economÃ©trico y (5) estimar y contrastar. 
+Visto para quÃ© se estiman los sistemas de demanda, pasamos a cÃ³mo se estiman. La estimaciÃ³n sigue cinco pasos, que reproducen el camino de la teorÃ­a, de las preferencias a la demanda ordinaria: (1) elegir una forma funcional, (2) especificar un sistema completo, (3) reunir los datos, (4) especificar el modelo economÃ©trico y (5) estimar y contrastar. 
 \end_layout
 
 \begin_layout Subsubsection
@@ -7122,16 +7150,21 @@ Engel
 b) Modelo
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 i) Supuestos
 \emph default
 
-\series default
-: utilidad de 
+\end_layout
+
+\begin_layout Itemize
+Utilidad de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7242,16 +7275,21 @@ status collapsed
 . 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 ii) Desarrollo
 \emph default
 
-\series default
-: maximizando, el gasto en cada bien es 
+\end_layout
+
+\begin_layout Itemize
+Maximizando, el gasto en cada bien es 
 \begin_inset Formula \begin{equation}
   p_ix_i(\vect{p},\overline{W})=p_i\gamma_i+\alpha_i\Big(\overline{W}-\sum_jp_j\gamma_j\Big). \label{eq:les}
   \end{equation}
@@ -7272,16 +7310,21 @@ supernumeraria
 . 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 iii) Implicaciones
 \emph default
 
-\series default
-: el gasto en cada bien es lineal en los precios y en la renta, y las curvas de 
+\end_layout
+
+\begin_layout Itemize
+El gasto en cada bien es lineal en los precios y en la renta, y las curvas de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7295,7 +7338,7 @@ Engel
 \end_layout
 
 \begin_layout Subparagraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -7327,7 +7370,7 @@ textcite{Deaton1974Analysis}
 \end_layout
 
 \begin_layout Subparagraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -7420,16 +7463,21 @@ status collapsed
 b) Modelo
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 i) Supuestos
 \emph default
 
-\series default
-: la ecuaciÃ³n de 
+\end_layout
+
+\begin_layout Itemize
+La ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7442,16 +7490,21 @@ Slutsky
  en diferencias logarÃ­tmicas, con coeficientes constantes. 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 ii) Desarrollo
 \emph default
 
-\series default
-: 
+\end_layout
+
+\begin_layout Itemize
+
 \begin_inset Formula \begin{equation}
   \bar s_i\,d\ln x_i=b_i\,d\ln Q+\sum_jc_{ij}\,d\ln p_j,\qquad d\ln Q\equiv\sum_k\bar s_k\,d\ln x_k, \label{eq:rotterdam}
   \end{equation}
@@ -7486,16 +7539,21 @@ Slutsky
  en participaciones. 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 iii) Implicaciones
 \emph default
 
-\series default
-: la teorÃ­a se traduce en restricciones lineales sobre los parÃ¡metros, que se imponen o contrastan directamente: 
+\end_layout
+
+\begin_layout Itemize
+La teorÃ­a se traduce en restricciones lineales sobre los parÃ¡metros, que se imponen o contrastan directamente: 
 \begin_inset Formula $\sum_ib_i=1$
 \end_inset
 
@@ -7519,7 +7577,7 @@ iii) Implicaciones
 \end_layout
 
 \begin_layout Subparagraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -7539,7 +7597,7 @@ textcite{Barten1967Slutsky,Barten1969Maximum}
 \end_layout
 
 \begin_layout Subparagraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -7590,16 +7648,21 @@ parencite{ChristensenJorgensonLau1975Utility}
 b) Modelo
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 i) Supuestos
 \emph default
 
-\series default
-: se especifica la FIU (versiÃ³n 
+\end_layout
+
+\begin_layout Itemize
+Se especifica la FIU (versiÃ³n 
 \emph on
 indirecta
 \emph default
@@ -7612,16 +7675,21 @@ indirecta
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 ii) Desarrollo
 \emph default
 
-\series default
-: la identidad de 
+\end_layout
+
+\begin_layout Itemize
+La identidad de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7644,16 +7712,21 @@ Roy
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 iii) Implicaciones
 \emph default
 
-\series default
-: es muy flexible y condiciona poco los resultados; la simetrÃ­a se impone con 
+\end_layout
+
+\begin_layout Itemize
+Es muy flexible y condiciona poco los resultados; la simetrÃ­a se impone con 
 \begin_inset Formula $\beta_{ij}=\beta_{ji}$
 \end_inset
 
@@ -7661,7 +7734,7 @@ iii) Implicaciones
 \end_layout
 
 \begin_layout Subparagraph
-d) Evidencia empÃ­rica
+c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
@@ -7686,7 +7759,7 @@ textcite{ChristensenJorgensonLau1975Utility}
 \end_layout
 
 \begin_layout Subparagraph
-e) ValoraciÃ³n
+d) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -7729,16 +7802,21 @@ textcite{DeatonMuellbauer1980AIDS}
 b) Modelo
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 i) Supuestos
 \emph default
 
-\series default
-: una funciÃ³n de gasto de la clase 
+\end_layout
+
+\begin_layout Itemize
+Una funciÃ³n de gasto de la clase 
 \emph on
 PIGLOG
 \emph default
@@ -7799,16 +7877,21 @@ donde
 ). 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 ii) Desarrollo
 \emph default
 
-\series default
-: por 
+\end_layout
+
+\begin_layout Itemize
+Por 
 \begin_inset Flex Autor
 status collapsed
 
@@ -7843,19 +7926,19 @@ con
 , un Ã­ndice de precios translog. 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 
-\series bold
+\begin_inset space \hspace*{}
+\length 3.6em
+\end_inset
+
 
 \emph on
 iii) Implicaciones
 \emph default
 
-\series default
-: 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 
 \emph on
@@ -7971,8 +8054,8 @@ elasticidades
 
  si no): 
 \begin_inset Formula \begin{equation}
-    \varepsilon_{x_i,\overline{W}}=1+\frac{\beta_i}{s_i},\qquad \varepsilon_{x_i,p_j}=-\delta_{ij}+\frac{\gamma_{ij}-\beta_i\big(\alpha_j+\sum_k\gamma_{jk}\ln p_k\big)}{s_i},\qquad \varepsilon^{h}_{i,p_j}=\varepsilon_{x_i,p_j}+s_j\,\varepsilon_{x_i,\overline{W}}, \label{eq:aids-elasticidades}
-    \end{equation}
+  \varepsilon_{x_i,\overline{W}}=1+\frac{\beta_i}{s_i},\qquad \varepsilon_{x_i,p_j}=-\delta_{ij}+\frac{\gamma_{ij}-\beta_i\big(\alpha_j+\sum_k\gamma_{jk}\ln p_k\big)}{s_i},\qquad \varepsilon^{h}_{i,p_j}=\varepsilon_{x_i,p_j}+s_j\,\varepsilon_{x_i,\overline{W}}, \label{eq:aids-elasticidades}
+  \end{equation}
 \end_inset
 
 la Ãºltima por la ecuaciÃ³n de 
@@ -8006,7 +8089,6 @@ Engel
  rectas y paralelas. 
 \end_layout
 
-\end_deeper
 \begin_layout Subparagraph
 c) Extensiones
 \end_layout
@@ -8136,7 +8218,7 @@ parencite{Gorman1981Engel}
 \end_layout
 
 \begin_layout Subparagraph
-e) ValoraciÃ³n
+c) ValoraciÃ³n
 \end_layout
 
 \begin_layout Itemize
@@ -9495,15 +9577,9 @@ status collapsed
 \end_deeper
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Usos
-\end_layout
-
-\end_inset
-
+\emph default
 : la imposiciÃ³n indirecta Ã³ptima y la reforma del IVA, que requieren elasticidades compensadas cruzadas 
 \begin_inset Flex Ver tema
 status collapsed
@@ -9557,15 +9633,9 @@ ValoraciÃ³n
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Aportaciones
-\end_layout
-
-\end_inset
-
+\emph default
 : 
 \end_layout
 
@@ -9597,15 +9667,9 @@ parencite{Deaton1997Analysis}
 \end_deeper
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Limitaciones
-\end_layout
-
-\end_inset
-
+\emph default
 : 
 \end_layout
 
@@ -9723,9 +9787,9 @@ Deaton
 
 \begin_layout Itemize
 
-\series bold
+\emph on
 RecapitulaciÃ³n y enlace
-\series default
+\emph default
 : estimar un sistema de demandas no garantiza que proceda de unas preferencias. Saber cuÃ¡ndo lo hace es la primera aplicaciÃ³n de la dualidad: la integrabilidad. 
 \end_layout
 
@@ -10024,7 +10088,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Este bloque responde a la tercera y la cuarta preguntas. Su conclusiÃ³n anticipada: conocidas las herramientas, la dualidad tiene una aplicaciÃ³n teÃ³rica, la 
+Una vez vistos la teorÃ­a de la dualidad y su uso empÃ­rico, pasamos a analizar sus aplicaciones. Este bloque responde a la tercera y la cuarta preguntas. Su conclusiÃ³n anticipada: la dualidad tiene una aplicaciÃ³n teÃ³rica, la 
 \emph on
 integrabilidad
 \emph default
@@ -10102,11 +10166,15 @@ textcite{HurwiczUzawa1971Integrability}
 
 \begin_layout Itemize
 
+\emph on
+Respuesta
+\emph default
+: el 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Teorema de integrabilidad
+teorema de integrabilidad
 \end_layout
 
 \end_inset
@@ -10314,7 +10382,19 @@ Walras
 \begin_inset Formula $S_{12}=-p_1S_{11}/p_2=S_{21}$
 \end_inset
 
-. La integrabilidad solo restringe de verdad con tres bienes o mÃ¡s.
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ La integrabilidad solo restringe de verdad con tres bienes o mÃ¡s.
 \end_layout
 
 \end_inset
@@ -10325,15 +10405,9 @@ Walras
 \end_deeper
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 IntuiciÃ³n de la demostraciÃ³n
-\end_layout
-
-\end_inset
-
+\emph default
  (por dualidad), siguiendo a 
 \begin_inset ERT
 status collapsed
@@ -10814,15 +10888,9 @@ textcite{Afriat1967Construction}
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Relevancia
-\end_layout
-
-\end_inset
-
+\emph default
 : 
 \end_layout
 
@@ -10871,9 +10939,9 @@ parencite{Hausman1981Exact}
 \end_deeper
 \begin_layout Itemize
 
-\series bold
+\emph on
 RecapitulaciÃ³n
-\series default
+\emph default
 : las restricciones de simetrÃ­a y negatividad son el contenido empÃ­rico de la teorÃ­a: son las que se contrastan al estimar un AIDS. La simetrÃ­a tiene, ademÃ¡s, una lectura econÃ³mica directa, que es la de la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
@@ -10931,6 +10999,10 @@ Slutsky
 \end_inset
 
  por dualidad
+\end_layout
+
+\begin_layout Itemize
+La integrabilidad nos ha llevado de la demanda a las preferencias; la segunda aplicaciÃ³n usa la dualidad entre demandas para descomponer el efecto de un cambio de precio. 
 \end_layout
 
 \begin_layout Itemize
@@ -11901,7 +11973,19 @@ status collapsed
 \begin_inset Formula $i\neq j$
 \end_inset
 
-). 
+).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_deeper
@@ -11985,6 +12069,18 @@ donde en el efecto renta se ha multiplicado y dividido por
 \end_inset
 
 .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -12067,10 +12163,7 @@ nolink "false"
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Propiedades de la matriz de 
 \begin_inset Flex Autor
 status collapsed
@@ -12082,10 +12175,7 @@ Slutsky
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
+\emph default
  (ecuaciÃ³n
 \begin_inset space ~
 
@@ -14269,9 +14359,9 @@ status collapsed
 
 \begin_layout Itemize
 
-\series bold
+\emph on
 RecapitulaciÃ³n
-\series default
+\emph default
 : la dualidad demuestra la ecuaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
@@ -14312,7 +14402,7 @@ Idea
 \end_layout
 
 \begin_layout Itemize
-La 
+Una vez separados los efectos sustituciÃ³n y renta, pasamos a la tercera aplicaciÃ³n: medir en dinero cuÃ¡nto gana o pierde el consumidor. La 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -14652,9 +14742,15 @@ textcite{Marshall1890Principles}
 \begin_deeper
 \begin_layout Itemize
 El 
-\emph on
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
 excedente del consumidor
-\emph default
+\end_layout
+
+\end_inset
+
  es la diferencia entre lo que el consumidor estÃ¡ dispuesto a pagar por cada unidad del bien y lo que paga: el Ã¡rea bajo la demanda marshalliana y sobre el precio. 
 \end_layout
 
@@ -14912,7 +15008,7 @@ AnÃ¡lisis mediante variaciones: informaciÃ³n completa
 \end_layout
 
 \begin_layout Itemize
-La herramienta que traduce la utilidad a unidades monetarias es la 
+Para evitar los problemas del excedente, la herramienta que traduce la utilidad a unidades monetarias es la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -15587,15 +15683,9 @@ Con varios precios, la VC y la VE son integrales de lÃ­nea de las hicksianas, 
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Las tres medidas juntas
-\end_layout
-
-\end_inset
-
+\emph default
  (grÃ¡fico
 \begin_inset space ~
 
@@ -15889,15 +15979,9 @@ nolink "false"
 
 \begin_layout Itemize
 Â¿
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 CuÃ¡l usar
-\end_layout
-
-\end_inset
-
+\emph default
 ? Depende de la pregunta: 
 \end_layout
 
@@ -16032,7 +16116,7 @@ AnÃ¡lisis mediante variaciones: informaciÃ³n incompleta
 \end_layout
 
 \begin_layout Itemize
-Si no se conoce la funciÃ³n de gasto ni la demanda, sino solo las cestas observadas 
+Las medidas anteriores exigen conocer la funciÃ³n de gasto. Si no se conoce ni ella ni la demanda, sino solo las cestas observadas 
 \begin_inset Formula $\vect{x}^0$
 \end_inset
 
@@ -16047,7 +16131,10 @@ Si no se conoce la funciÃ³n de gasto ni la demanda, sino solo las cestas obser
 \end_inset
 
 La 
-\emph on
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
 variaciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
@@ -16059,13 +16146,19 @@ Laspeyres
 \end_inset
 
 
-\emph default
+\end_layout
+
+\end_inset
+
  (
 \begin_inset Formula $L$
 \end_inset
 
 ) valora el cambio de precios con la cesta inicial; la 
-\emph on
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
 de 
 \begin_inset Flex Autor
 status collapsed
@@ -16077,7 +16170,10 @@ Paasche
 \end_inset
 
 
-\emph default
+\end_layout
+
+\end_inset
+
  (
 \begin_inset Formula $P$
 \end_inset
@@ -16128,7 +16224,19 @@ porque mantener la cesta inicial a los precios nuevos cuesta al menos el gasto m
 \begin_inset Formula $\vect{p}^0\cdot\vect{x}^1\geq E(\vect{p}^0,\overline{U}^1)$
 \end_inset
 
-. La diferencia es el 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ La diferencia es el 
 \emph on
 sesgo de sustituciÃ³n
 \emph default
@@ -16176,7 +16284,7 @@ El uso de Ã­ndices de coste de la vida y su comparaciÃ³n con los Ã­ndices 
 \end_layout
 
 \begin_layout Itemize
-Otra forma de medir los cambios de bienestar son los 
+Una vez estudiadas las variaciones, pasamos a otra forma de medir los cambios de bienestar: los los 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -16424,6 +16532,18 @@ mayor
 \end_inset
 
 : ignorar la sustituciÃ³n lleva a subestimar el encarecimiento medido con la utilidad final.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16569,6 +16689,18 @@ Slutsky
 \end_inset
 
 , y no queda ningÃºn efecto sustituciÃ³n.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -16794,15 +16926,9 @@ II y la mediciÃ³n de los precios.
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Magnitud del sesgo de sustituciÃ³n
-\end_layout
-
-\end_inset
-
+\emph default
 : 
 \end_layout
 
@@ -17333,9 +17459,9 @@ Paasche
 
 \begin_layout Itemize
 
-\series bold
+\emph on
 RecapitulaciÃ³n
-\series default
+\emph default
 : la dualidad permite pasar de la utilidad, que solo ordena, a medidas monetarias del bienestar con sentido econÃ³mico, y explica los sesgos de las medidas que se usan en la prÃ¡ctica: el excedente del consumidor y los Ã­ndices de precios. 
 \end_layout
 
@@ -18688,7 +18814,19 @@ nolink "false"
 \begin_inset Formula $\lambda^*x_i$
 \end_inset
 
- en utilidad. 
+ en utilidad.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -18750,7 +18888,19 @@ parencite[prop.~3.G.4]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -18794,6 +18944,18 @@ Por la envolvente
 \end_inset
 
 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -18845,7 +19007,19 @@ parencite[prop.~3.G.1]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -19169,15 +19343,9 @@ parencite{ArrowEnthoven1961Quasi}
 
 \begin_layout Itemize
 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
+\emph on
 Uso en la teorÃ­a de la demanda
-\end_layout
-
-\end_inset
-
+\emph default
 : la concavidad de la funciÃ³n de gasto equivale a que la matriz de 
 \begin_inset Flex Autor
 status collapsed
@@ -19283,7 +19451,19 @@ con signo
 \begin_inset Formula $\mathrm{VC}\geq x_1^0\Delta=L$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -19299,7 +19479,19 @@ con signo
 \begin_inset Formula $\mathrm{VE}\leq x_1^1\Delta=P$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -19331,7 +19523,19 @@ VC,
 \begin_inset Formula $\mathrm{VC}\leq\Delta\mathrm{EC}\leq \mathrm{VE}$
 \end_inset
 
-. Para un bien inferior, las desigualdades se invierten. 
+. Para un bien inferior, las desigualdades se invierten.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -19377,7 +19581,19 @@ Giffen
 \begin_inset Formula $P\leq\Delta\mathrm{EC}\leq L$
 \end_inset
 
-. 
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -20037,7 +20253,19 @@ nolink "false"
 
 \end_inset
 
-; del mismo modo para la VE. 
+; del mismo modo para la VE.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
