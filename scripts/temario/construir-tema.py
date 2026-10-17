@@ -424,7 +424,28 @@ def generar_html(tema, tex_pandoc, datos):
     if os.path.exists(os.path.join(tema.dir_publico, f'{tema.archivo}-anterior.docx')):
         orden += ['-M', 'anterior-docx=true']
     ejecutar(orden, timeout=600)
+    partir_urls_html(destino)
     return destino
+
+
+def partir_urls_html(ruta):
+    """Deja partir las URL que se ven en el texto (cita, bibliografía, notas):
+    <wbr> tras / . - _ ? = & para que no abran huecos en el texto justificado."""
+    with open(ruta, encoding='utf-8') as f:
+        html = f.read()
+    trozos = re.split(r'(<[^>]+>)', html)
+    saltar = 0  # dentro de <head>, <script>, <style> o <title>
+    for i, t in enumerate(trozos):
+        if t.startswith('<'):
+            m = re.match(r'<(/?)(head|script|style|title)\b', t, re.I)
+            if m:
+                saltar += -1 if m.group(1) else 1
+            continue
+        if saltar or 'http' not in t:
+            continue
+        trozos[i] = re.sub(r'(https?://)([^\s<]+)', lambda u: u.group(1) + re.sub(r'(&amp;|[/.\-_?=])(?=.)', r'\1<wbr>', u.group(2)), t)
+    with open(ruta, 'w', encoding='utf-8') as f:
+        f.write(''.join(trozos))
 
 
 def generar_docx(tema, tex_pandoc, datos):
