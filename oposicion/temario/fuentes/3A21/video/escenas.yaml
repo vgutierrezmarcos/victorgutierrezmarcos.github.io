@@ -1,0 +1,497 @@
+# Guion de escenas del vídeo del cante del tema 3.A.21 (formato en scripts/temario/generar-video.py).
+# Dice lo mismo que guion-cante.md: el texto de cada «di» es el del cante.
+# Pizarra: las 3 funciones clave (exceso de demanda, ley de Walras y condición de equilibrio) se
+# recuadran en morado en la esquina 1a y se quedan hasta el final; la caja de intercambio se dibuja
+# en I.3 en la columna 3 y crece sin borrarse hasta III.2 (capas 1-6, 7-8, 9 y 10).
+# Autor: Víctor Gutiérrez Marcos
+tema: 3.A.21
+duracion: 1800
+voz: {motor: voicestudio, motor_tts: omnivoice, velocidad: 1.0, referencia: /mnt/c/Users/vgutierrez/Documents/voz/referencia-12s.wav}   # voz clonada de Víctor con OmniVoice (VoiceStudio)
+pronunciacion:
+  Bastiat: Bastiá
+  Quesnay: Kené
+  Brouwer: Bráuer
+  Sonnenschein: Sónenshain
+  Mantel: Mantél
+  Liapunov: Liapúnov
+  Scarf: Escarf
+  Patinkin: Patínkin
+  Radner: Rádner
+  Schlesinger: Shlésinguer
+  Wald: Vald
+  Bator: Béitor
+  Hahn: Jan
+  Heckscher: Jékser
+  Ohlin: Olín
+  McKenzie: Makénsi
+  Neumann: Nóiman
+  Rubinstein: Rúbinstain
+  Shubik: Shúbik
+  Gillies: Guílis
+  Aumann: Áuman
+  Starr: Estar
+  Negishi: Neguíshi
+  Gabszewicz: Gabshévich
+  Postlewaite: Póstlueit
+  Roberts: Róberts
+  Lange: Lángue
+  Lerner: Lérner
+  Musgrave: Músgreiv
+  Block: Blok
+  Dierker: Dírker
+  Shiller: Shíler
+  Nordhaus: Nórdjaus
+  Kiyotaki: Kiyotáki
+  Wright: Rait
+  Clower: Cláuer
+  Feldman: Féldman
+  Foley: Fóuli
+  Cooper: Cúper
+  John: Yon
+  Shapley: Shápli
+  Folkman: Fólkman
+  Say: Sei
+  Cambridge: Kéimbrich
+  GTAP: ye tap
+  DICE: dáis
+  REMS: rems
+  RMST: erre eme ese te
+  RMT: erre eme te
+bloques:
+  - {nombre: Introducción, minutos: 2.5}
+  - {nombre: "I. Construcción del modelo", minutos: 11}
+  - {nombre: "II. Análisis positivo y normativo", minutos: 9}
+  - {nombre: "III. Otros desarrollos y aplicaciones", minutos: 6.5}
+  - {nombre: Conclusión, minutos: 1}
+
+escenas:
+
+  # ==================================================================== INTRODUCCIÓN
+  - bloque: Introducción
+    titulo: Introducción
+    modo: guion
+    estructura: [Enganche, Relevancia, Contextualización, Problemática, Estructura]
+    pasos:
+      - di: "¿Pueden millones de personas que solo buscan su propio interés, y que solo miran precios, llegar a planes compatibles entre sí, sin que sobre ni falte nada en ningún mercado? [pausa 800] Frédéric Bastiat cuenta en sus Sofismas económicos su llegada a París: una ciudad de un millón de habitantes, que moriría en pocos días si dejaran de llegarle provisiones, se abastece cada día sin que nadie lo organice."
+        parte: Enganche
+        guion: ["¿Pueden millones de agentes que solo miran precios llegar a planes compatibles?", "Bastiat (1845): París se abastece cada día sin que nadie lo organice"]
+      - di: "Es la intuición de la mano invisible de Adam Smith, y Arrow y Hahn la presentan como la pregunta que da sentido a toda esta teoría. Y si lo consiguen, ¿es bueno el resultado? La respuesta parte del individualismo metodológico: lo agregado se explica desde individuos que optimizan."
+        guion: ["Smith (1776): la mano invisible · Arrow y Hahn (1971): la pregunta de la teoría", "> Y si lo consiguen, ¿es bueno el resultado?", "Individualismo metodológico: lo agregado, desde individuos que optimizan"]
+      - di: "Frente al equilibrio parcial de Marshall, que estudia un mercado aislado, el equilibrio general estudia la economía como un sistema de mercados interdependientes, en el que precios y cantidades se determinan a la vez. Nos centramos en el competitivo, con producción."
+        guion: ["Equilibrio parcial (Marshall): un mercado aislado", "Equilibrio general: mercados interdependientes, precios y cantidades a la vez", "> Equilibrio general competitivo con producción"]
+      - di: "¿Por qué importa? [pausa] Es el marco de los teoremas del bienestar y del comercio de Heckscher y Ohlin. Sus versiones computables evalúan acuerdos comerciales, como el de la Unión Europea con Mercosur, que según la Comisión sumará unos 77.600 millones de euros al PIB hasta 2040. Y dice cuándo los precios coordinan bien y cuándo no, que es la base de la intervención pública."
+        parte: Relevancia
+        guion: ["Teórica: teoremas del bienestar, Heckscher-Ohlin, valoración de activos", "Práctica: UE-Mercosur, +77.600 millones de euros de PIB hasta 2040 (CE, 2025)", "Política económica: cuándo coordinan los precios y cuándo no"]
+      - di: "La idea está ya en Quesnay y en Smith, pero es Léon Walras quien la formaliza en 1874: tantos mercados como mercancías, precios y cantidades simultáneos, un tanteo y un numerario. Cuenta ecuaciones e incógnitas, pero eso no prueba que haya una solución."
+        parte: Contextualización
+        guion: ["Quesnay (1758) y Smith (1776): flujos interdependientes", "Walras (1874), Éléments: tanteo, numerario, ecuaciones = incógnitas"]
+      - di: "Pareto da el criterio de eficiencia, y Edgeworth ve el intercambio como una negociación. Wald da en Viena las primeras pruebas de existencia, y en los años 50 Arrow, Debreu y McKenzie la prueban en general con teoremas de punto fijo. Después llegan la estabilidad, el núcleo y el teorema de Sonnenschein, Mantel y Debreu."
+        guion: ["Pareto (1906): eficiencia · Edgeworth (1881): negociación", "Schlesinger y Wald (1935-36) · Von Neumann (1937): punto fijo", "Arrow y Debreu, McKenzie (1954) · Debreu (1959)", "> Estabilidad, núcleo, SMD (1972-74), Radner (1972)"]
+      - di: "De ahí, las preguntas clave. ¿Qué es un equilibrio general competitivo? ¿Existe? ¿Es único? ¿Es estable? ¿Es eficiente, y es justo? ¿Y qué ocurre cuando se relajan sus supuestos?"
+        parte: Problemática
+        guion: ["¿Qué es y cómo se obtiene?", "¿Existe? ¿Es único? ¿Es estable?", "¿Es eficiente? ¿Es justo?", "¿Qué pasa si se relajan sus supuestos?"]
+      - di: "La exposición tiene tres bloques: la construcción del modelo, hasta definir el equilibrio; su análisis positivo y normativo, con la existencia, la unicidad, la estabilidad y la eficiencia; y otros desarrollos, del núcleo al dinero, la incertidumbre y los modelos computables. [pausa] Iremos de si la coordinación por precios es posible, a si es deseable y cuán robusta es."
+        parte: Estructura
+        guion: ["I. Construcción del modelo: supuestos, agentes, z(p), ley de Walras, equilibrio", "II. Análisis positivo y normativo: existencia, unicidad, estabilidad, eficiencia", "III. Otros desarrollos: Edgeworth, núcleo, dinero, incertidumbre, modelos computables", "> ¿Posible? ¿Deseable? ¿Robusta?"]
+
+  # ==================================================================== I
+  - bloque: "I. Construcción del modelo"
+    titulo: "I. Construcción del modelo"
+    modo: guion
+    pasos:
+      - di: "Paso al primer bloque: la construcción del modelo. ¿Se puede modelizar de forma sencilla toda una economía? [pausa] Adelanto la conclusión: si cada agente optimiza con precios dados, todo se resume en unos excesos de demanda que solo dependen de los precios; el equilibrio es el vector de precios que vacía todos los mercados, y la ley de Walras deja solo precios relativos."
+        guion: ["¿Se puede modelizar de forma sencilla toda una economía?", "Conclusión anticipada:", "> Todo se resume en excesos de demanda que solo dependen de los precios", "> Equilibrio: los precios que vacían todos los mercados a la vez", "> Ley de Walras: solo precios relativos"]
+      - di: "Los supuestos son muy fuertes, pero no pretenden ser realistas: dejan a la vista cómo coordinan los precios. El tercer bloque los relajará."
+        guion: ["Supuestos fuertes, no realistas: dejan a la vista el mecanismo", "> El bloque III los relaja"]
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.1. Supuestos: el modelo 2×2×2×2"
+    modo: pizarra
+    rejilla: "40|60"
+    pasos:
+      - di: "Empiezo por los supuestos. Estudiamos el modelo estático de Bator: dos bienes, dos factores, dos consumidores y dos empresas. Lo escribo: dos por dos por dos por dos."
+        pizarra: [{formula: '2\times 2\times 2\times 2', zona: "1", tam: 0.9}]
+        apunte: "Bator (1957): el modelo 2×2×2×2, por sencillez expositiva"
+      - di: "Primero, equilibrio general a la Walras: todos los mercados a la vez, cada uno con su demanda, su oferta y su condición de vaciado. Lo resume el apoyo: los consumidores demandan bienes y ofrecen factores, y las empresas, al revés. [pausa] Cuatro mercados."
+        apoyo: {formula: '\begin{array}{c|c|c} & \text{Bienes } (X,Y) & \text{Factores } (L,K)\\ \hline \text{Consumidores } (A,B) & \text{demanda } X_i(\vect{p}),\ Y_i(\vect{p}) & \text{oferta } \overline{L}_i,\ \overline{K}_i\\ \text{Empresas } (X,Y) & \text{oferta } q_j(p_j,\vect{w}) & \text{demanda } L_j,\ K_j\\ \hline \multicolumn{3}{c}{\text{4 mercados: 3 condiciones independientes, 3 precios relativos}}\end{array}', zona: "2", alto: 0.6}
+        guion: "Walras: tantos mercados como mercancías; en cada uno, demanda, oferta y vaciado"
+      - di: "Segundo, competencia perfecta: agentes racionales, información perfecta, bienes homogéneos y atomicidad. Todos toman como dados los cuatro precios, que escribo: pe equis y pe i griega, de los bienes, y uve doble ele y uve doble ka, de los factores."
+        pizarra: [{formula: '\vect{p}=(p_X,p_Y,w_L,w_K)', zona: "1", tam: 0.9}]
+        guion: "Competencia perfecta: racionalidad, información perfecta, homogeneidad, atomicidad"
+      - di: "Tercero, mercados completos, sin externalidades ni bienes públicos: [pausa] si no, los precios dejarían de ser señales válidas."
+        guion: "Mercados completos: sin externalidades ni bienes públicos"
+      - di: "Cuarto, dos consumidores, A y be, con preferencias completas, transitivas, continuas, monótonas y estrictamente convexas, representadas por una utilidad u sub i. Cada uno posee una dotación, omega sub i, de trabajo y de capital."
+        pizarra: [{formula: 'U_i(X_i,Y_i),\quad \vect{\omega}_i=(\overline{L}_i,\overline{K}_i)', zona: "1", tam: 0.9}]
+        guion: "Preferencias completas, transitivas, continuas, monótonas y convexas"
+      - di: "Su renta depende solo de los precios: el salario por su trabajo, más el precio del capital por su capital, más su participación, theta, en los beneficios de cada empresa."
+        pizarra: [{formula: '\overline{W}_i=w_L\overline{L}_i+w_K\overline{K}_i+\sum_j\theta_{ij}B_j', zona: "1", tam: 0.9}]
+        guion: "La renta depende solo de los precios"
+      - di: "Y dos empresas, cada una con una función de producción neoclásica, que escribo. Sus conjuntos de producción son convexos: rendimientos constantes o decrecientes. [pausa] Los crecientes quedan fuera hasta el tercer bloque."
+        pizarra: [{formula: 'X=F_X(L_X,K_X),\quad Y=F_Y(L_Y,K_Y)', zona: "1", tam: 0.9}]
+        guion: "Conjuntos de producción convexos: rendimientos no crecientes"
+      - di: "Son exógenas las preferencias, las tecnologías y las dotaciones; endógenos, los precios y las cantidades. Y los precios se forman por tanteo: suben donde hay exceso de demanda y bajan donde hay exceso de oferta. [pausa] La variable de ajuste son los precios."
+        guion: "Exógenas: preferencias, tecnologías, dotaciones · endógenos: precios y cantidades"
+        apunte: "Walras (1874), §126-127: los precios «se vocean» (on); la literatura lo personifica en un subastador"
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.2. Desarrollo: productores y oferta"
+    modo: pizarra
+    rejilla: "34|66"
+    pasos:
+      - di: "Una vez fijados los supuestos, pasamos a los agentes, empezando por las empresas. Cada empresa jota maximiza su beneficio: su precio por lo que produce, menos el salario por el trabajo, menos el precio del capital por el capital, sujeto a usar cantidades no negativas de los dos factores."
+        pizarra: [{formula: '\optim{\max}{L_j,K_j}{p_jF_j(L_j,K_j)-w_LL_j-w_KK_j}{L_j,K_j\geq 0}', zona: "1", tam: 0.85}]
+        apunte: "Mismo problema en 2 etapas: primero los costes y después p = CMg"
+      - di: "Cada factor se contrata hasta que el valor de su productividad marginal iguala su precio. Dividiendo, la relación marginal de sustitución técnica de cada empresa iguala uve doble ele entre uve doble ka; y como las dos ven los mismos precios, [pausa] se igualan entre sí."
+        pizarra: [{formula: '\mathrm{RMST}^X_{LK}=\frac{w_L}{w_K}=\mathrm{RMST}^Y_{LK}', zona: "1", tam: 0.85}]
+        guion: "Valor de la PMg = precio del factor"
+      - di: "Resultan la oferta y las demandas de factores de cada empresa, que escribo: homogéneas de grado cero en los precios, porque si todos se duplican nada cambia, y con las pendientes que da el lema de Hotelling."
+        pizarra: [{formula: 'q_j(p_j,\vect{w}),\ \ L_j(p_j,\vect{w}),\ \ K_j(p_j,\vect{w})', zona: "1", tam: 0.85}]
+        guion: "Homogéneas de grado 0 · lema de Hotelling"
+      - di: "Lo vemos en la caja de Edgeworth de la producción. Trazo la caja: de base, el trabajo total; de altura, el capital total. El origen de la empresa equis, abajo a la izquierda, y el de la empresa i griega, arriba a la derecha."
+        pizarra: [{grafico: caja-produccion-precios, capa: 1, zona: "2"}]
+      - di: "Dibujo dos isocuantas de equis, más altas hacia arriba y a la derecha, y dos de i griega, más altas hacia abajo y a la izquierda, porque se miden desde el otro origen."
+        pizarra: [{grafico: caja-produccion-precios, capa: 3}]
+      - di: "En A se cortan: se puede producir más de los dos bienes. En be y en ce son tangentes: [pausa] no se puede producir más de uno sin producir menos del otro."
+        pizarra: [{grafico: caja-produccion-precios, capa: 5}]
+      - di: "Las tangencias forman la curva de contrato, que va de un origen al otro."
+        pizarra: [{grafico: caja-produccion-precios, capa: 6}]
+      - di: "Y aquí entran los precios: la isocoste, de pendiente uve doble ele entre uve doble ka, es tangente a las dos isocuantas en be. [pausa] La competencia lleva, sin que nadie lo coordine, a la curva de contrato: a la eficiencia en la producción."
+        pizarra: [{grafico: caja-produccion-precios, capa: 7}]
+        guion: "Precios comunes: la isocoste es tangente a las dos isocuantas"
+      - di: "Llevando la curva de contrato al plano de los bienes, dibujo a la derecha la frontera de posibilidades de producción, con be y ce: el equilibrio de las empresas en el espacio en que deciden los consumidores."
+        pizarra: [{grafico: caja-produccion-precios, capa: 8}]
+        guion: "FPP: la curva de contrato en el plano de los bienes"
+      - di: "A queda dentro de la frontera: es ineficiente. Los puntos de fuera son inalcanzables."
+        pizarra: [{grafico: caja-produccion-precios, capa: 9}]
+      - di: "¿Qué punto se produce? Como cada empresa iguala su precio a su coste marginal, la relación marginal de transformación, el cociente de los costes marginales, iguala el precio relativo de los bienes. Trazo la recta de precios, tangente en be, y lo escribo: [pausa] el precio relativo elige el punto de la frontera."
+        pizarra: [{grafico: caja-produccion-precios, capa: 10}]
+        guion: "RMT = CMgX/CMgY = pX/pY"
+        apunte: "La pendiente de la FPP es el coste de oportunidad de X en términos de Y"
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.2. Desarrollo: consumidores y demanda"
+    modo: pizarra
+    rejilla: "26(55/45)|34|40"     # la misma hasta III.2: 1a, funciones clave; 3, la caja de intercambio
+    pasos:
+      - di: "Una vez obtenida la oferta, pasamos a los consumidores. Cada uno vende su dotación, recibe su parte de los beneficios y maximiza su utilidad, sujeto a que su gasto, pe equis por equis más pe i griega por i griega, iguale su renta."
+        pizarra: [{formula: '\optim{\max}{X_i,Y_i}{U_i(X_i,Y_i)}{p_XX_i+p_YY_i=\overline{W}_i\\ X_i,Y_i\geq 0}', zona: "2", tam: 0.85}]
+      - di: "En el óptimo, cada uno iguala su relación marginal de sustitución al precio relativo, pe equis entre pe i griega; y como los dos ven los mismos precios, las dos se igualan."
+        pizarra: [{formula: '\mathrm{RMS}^A_{XY}=\frac{p_X}{p_Y}=\mathrm{RMS}^B_{XY}', zona: "2", tam: 0.85}]
+      - di: "Las demandas son únicas y continuas; homogéneas de grado cero, porque si los precios se multiplican por alfa, la renta también; y agotan la renta: [pausa] es la ley de Walras individual."
+        pizarra: [{formula: '\vect{x}_i(\alpha\vect{p})=\vect{x}_i(\vect{p}),\qquad \vect{p}\cdot\vect{x}_i=\overline{W}_i', zona: "2", tam: 0.85}]
+        guion: "Únicas · continuas · homogéneas de grado 0 · agotan la renta"
+      - di: "Para pasar al mercado hay que sumar, y la suma no es inocente. La demanda de mercado es la suma de las individuales, cada una con la renta que su dueño obtiene a esos precios."
+        pizarra: [{formula: '\vect{x}(\vect{p})=\sum_i\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big)', zona: "3", tam: 0.85}]
+      - di: "Hereda la continuidad, la homogeneidad, la ley de Walras y la cota inferior. [pausa] Pero no hereda la ley de la demanda, ni las propiedades de Slutsky, ni el axioma débil: dependen de cómo se reparte la renta, salvo con la forma polar de Gorman."
+        guion: "Hereda: continuidad, homogeneidad, Walras, cota · No hereda: ley de la demanda, Slutsky, axioma débil"
+        apunte: "Mas-Colell, Whinston y Green (1995, §4.B-C): agregación y forma polar de Gorman"
+      - di: "Y en equilibrio general la renta sale de vender la dotación: si sube un precio, quien vende ese bien se enriquece. Es el efecto renta-dotación, [pausa] y la demanda puede subir con el precio aunque el bien no sea Giffen."
+        apoyo: {formula: '\frac{dx_{ik}}{dp_k}=S^i_{kk}-\big(x_{ik}-\omega_{ik}\big)\frac{\partial x_{ik}}{\partial \overline{W}_i}', zona: "3"}
+        guion: "Efecto renta-dotación: el vendedor neto se enriquece"
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.2. Desarrollo: función de exceso de demanda"
+    modo: pizarra
+    pasos:
+      - di: "Ya podemos juntar los dos lados de cada mercado en una sola función, el exceso de demanda: lo que se demanda menos lo que se ofrece. En nuestro modelo, el de equis es lo que demandan A y be menos lo que produce su empresa; el del trabajo, lo que demandan las empresas menos la dotación."
+        borrar: ["2", "3"]
+        pizarra:
+          - {formula: 'z_X=X_A+X_B-q_X', zona: "1b", tam: 0.85}
+          - {formula: 'z_L=L_X+L_Y-\overline{L}', zona: "1b", tam: 0.85}
+        apunte: "Exceso de demanda: positivo si la demanda supera a la oferta; negativo si sobra oferta"
+      - di: "En general, es la primera función clave, que recuadro en esta esquina: zeta de pe es la suma de las demandas, menos la suma de las dotaciones, menos la suma de la producción neta de las empresas. [pausa] Todo depende solo de los precios: basta buscar los que anulan zeta."
+        pizarra: [{formula: '\funcionclave{\vect{z}(\vect{p})=\sum_{i}\vect{x}_i(\vect{p})-\sum_{i}\vect{\omega}_i-\sum_{j}\vect{y}_j(\vect{p})}', zona: "1a", tam: 0.8}]
+        guion: "Primera función clave, en la esquina: todo el modelo en función de los precios"
+      - di: "Hereda cuatro propiedades: es continua; es homogénea de grado cero, zeta de alfa pe es igual a zeta de pe; cumple la ley de Walras; y está acotada inferiormente: [pausa] si un bien deseable es gratis, su exceso de demanda se dispara."
+        pizarra: [{formula: '\vect{z}(\alpha\vect{p})=\vect{z}(\vect{p})\quad\forall\alpha>0', zona: "1b", tam: 0.85}]
+        guion: "Continua · homogénea de grado 0 · ley de Walras · acotada inferiormente"
+      - di: "En el apoyo, dos tipos de bienes: los económicos, escasos, con un precio positivo que vacía su mercado, y los libres, como el aire, que sobran incluso a precio nulo y cuyo exceso de demanda es siempre negativo. [pausa] Admitirlos, como Schlesinger y Wald, da solución también a ese caso."
+        apoyo: {grafico: bienes-libres, zona: "2-3"}
+        guion: "Bienes económicos: p* > 0, z = 0 · bienes libres: p* = 0, z ≤ 0"
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.2. Desarrollo: ley de Walras"
+    modo: pizarra
+    pasos:
+      - di: "De ahí sale la segunda función clave, que recuadro debajo: la ley de Walras. Para cualquier vector de precios, dentro o fuera del equilibrio, el valor de los excesos de demanda suma cero: pe escalar zeta de pe, idénticamente cero."
+        borrar: ["2", "3"]
+        pizarra: [{formula: '\funcionclave{\vect{p}\cdot\vect{z}(\vect{p})\equiv 0}', zona: "1a", tam: 0.8}]
+        guion: "Segunda función clave, en la esquina"
+      - di: "En nuestro modelo: pe equis por zeta equis, más pe i griega por zeta i griega, más uve doble ele por zeta ele, más uve doble ka por zeta ka, idénticamente cero."
+        pizarra: [{formula: 'p_Xz_X+p_Yz_Y+w_Lz_L+w_Kz_K\equiv 0', zona: "2", tam: 0.8}]
+      - di: "¿Por qué se cumple? [pausa] Cada consumidor agota su renta; sumando todas las restricciones presupuestarias, y como los beneficios se reparten enteros, sale la ley. Solo exige no saciedad local."
+        apoyo: {formula: '\vect{p}\cdot\vect{x}_i=\vect{p}\cdot\vect{\omega}_i+\sum_j\theta_{ij}\,\vect{p}\cdot\vect{y}_j\ \ \Longrightarrow\ \ \vect{p}\cdot\Big(\sum_i\vect{x}_i-\sum_i\vect{\omega}_i-\sum_j\vect{y}_j\Big)=0', zona: "3"}
+        guion: "Se suman las restricciones presupuestarias"
+      - di: "Tiene tres implicaciones. Primera, los mercados son interdependientes: un exceso de demanda en uno es un exceso de oferta de igual valor en otro. Segunda, si se vacían ene menos uno mercados, se vacía el último; en nuestro modelo, si se vacían tres, se vacía el cuarto."
+        guion: "Interdependencia · n − 1 condiciones independientes"
+      - di: "Y tercera: con la homogeneidad, solo se determinan precios relativos, y hay que normalizar. Walras elige un numerario, con precio uno, que escribo. [pausa] Los precios absolutos quedan indeterminados porque no hay dinero."
+        pizarra: [{formula: 'p_1=1\ \ (\text{numerario})', zona: "2", tam: 0.8}]
+        guion: "Solo precios relativos: numerario o símplice"
+      - di: "Ojo: es una identidad, no una condición de equilibrio. Y no debe confundirse con la ley de Say, que deja fuera el dinero."
+        guion: "Identidad, no condición de equilibrio · no es la ley de Say"
+        apunte: "Lange (1942): la ley de Say excluye el dinero; la crítica de Keynes va contra ella"
+
+  - bloque: "I. Construcción del modelo"
+    titulo: "I.3. Implicaciones: equilibrio general competitivo"
+    modo: pizarra
+    pasos:
+      - di: "Pasamos al objeto central: el equilibrio general competitivo, o walrasiano. Es un vector de precios y una asignación en los que consumidores y empresas optimizan y todos los mercados se vacían. Esto último es la tercera función clave: zeta ka de pe asterisco, menor o igual que cero, y pe ka asterisco por zeta ka, igual a cero."
+        borrar: ["1b", "2", "3"]
+        pizarra: [{formula: '\funcionclave{z_k(\vect{p}^*)\leq 0,\quad p^*_k\,z_k(\vect{p}^*)=0}', zona: "1a", tam: 0.8}]
+        guion: "Tercera función clave: todos los mercados se vacían"
+      - di: "Es decir, exceso de demanda nulo en los bienes económicos, y no positivo, con precio nulo, en los libres. En nuestro modelo reúne todo lo anterior: las relaciones marginales de sustitución igualan el precio relativo y la de transformación; y las técnicas, el precio relativo de los factores."
+        pizarra:
+          - {formula: '\mathrm{RMS}^A=\mathrm{RMS}^B=\frac{p_X}{p_Y}=\mathrm{RMT}', zona: "1b", tam: 0.8}
+          - {formula: '\mathrm{RMST}^X=\mathrm{RMST}^Y=\frac{w_L}{w_K}', zona: "1b", tam: 0.8}
+        guion: "Bienes económicos: z = 0 · bienes libres: p = 0, z ≤ 0"
+      - di: "¿Quién fija los precios? La literatura personifica el tanteo en un subastador walrasiano, que anuncia precios, recoge las ofertas y las demandas y, si algún mercado no se vacía, anuncia otros. [pausa] Prueba y error, sin intercambios fuera del equilibrio."
+        guion: "Subastador walrasiano: prueba y error, sin intercambios fuera del equilibrio"
+      - di: "Lo vemos en el intercambio puro, en la caja de Edgeworth, que dibujo en esta columna y que irá creciendo con la exposición. Sus lados son las dotaciones totales de los dos bienes; el consumo de A se mide desde o sub A, abajo, y el de be, desde o sub be, arriba. Omega es la dotación inicial."
+        pizarra: [{grafico: caja-intercambio, capa: 1, zona: "3"}]
+        guion: "Caja de Edgeworth del intercambio: se queda hasta el bloque III"
+      - di: "Por omega pasan las curvas de indiferencia de A y de be, u A cero y u be cero. Entre ellas queda la lente: [pausa] las asignaciones que mejoran a los dos."
+        pizarra: [{grafico: caja-intercambio, capa: 2}]
+      - di: "Unos precios son una recta que pasa por omega. A este precio, A quiere equis A, y be, equis be: no coinciden. La diferencia horizontal es el exceso de demanda de equis; la vertical, un exceso de oferta de i griega de igual valor. [pausa] El precio de equis tiene que subir."
+        pizarra: [{grafico: caja-intercambio, capa: 3}]
+        guion: "A un precio cualquiera, los planes no son compatibles"
+      - di: "Si la recta gira alrededor de omega, las tangencias de A dibujan su curva de oferta-demanda: lo que quiere intercambiar a cada precio."
+        pizarra: [{grafico: caja-intercambio, capa: 4}]
+        guion: "Curva de oferta-demanda: lo que se quiere intercambiar a cada precio"
+      - di: "Y lo mismo para be: su curva sale también de omega."
+        pizarra: [{grafico: caja-intercambio, capa: 5}]
+      - di: "El equilibrio, E, está donde se cortan las dos curvas: los dos eligen el mismo punto y se vacían los dos mercados. La recta de precios es tangente a las dos curvas de indiferencia en E, [pausa] dentro de la lente: los dos ganan con el intercambio."
+        pizarra: [{grafico: caja-intercambio, capa: 6}]
+        guion: "E: se cortan las curvas de oferta-demanda; RMS de A = p*X/p*Y = RMS de B"
+      - di: "Recapitulando: con agentes precio-aceptantes y convexidad, todo se reduce a unos excesos de demanda que dependen de los precios relativos, y el equilibrio está bien definido, aunque el subastador sea su pieza más irreal. [pausa] Pero ¿existe?, ¿es único?, ¿se alcanza?, ¿es bueno?"
+        guion: "Recapitulación: z(p), ley de Walras y equilibrio · ¿existe?, ¿es único?, ¿se alcanza?, ¿es bueno?"
+
+  # ==================================================================== II
+  - bloque: "II. Análisis positivo y normativo"
+    titulo: "II. Análisis positivo y normativo"
+    modo: guion
+    pasos:
+      - di: "Paso al segundo bloque: el análisis positivo y normativo del equilibrio. Adelanto la conclusión: [pausa] con supuestos razonables el equilibrio existe; solo con supuestos fuertes es único y estable, porque la racionalidad individual no lo garantiza; y, en cambio, es eficiente con muy pocos supuestos."
+        guion: ["Conclusión anticipada:", "> Existe con supuestos razonables", "> Único y estable, solo con supuestos fuertes", "> Eficiente, con muy pocos supuestos"]
+      - di: "El análisis positivo responde a tres preguntas, y cada una presupone la anterior. ¿Hay algún vector de precios que vacíe todos los mercados? Si no, el modelo no describe nada. ¿Hay solo uno? Si hay varios, no predice cuál se alcanza. ¿Y llegan a él las fuerzas del mercado? [pausa] Un equilibrio inestable es una curiosidad matemática."
+        guion: ["Existencia: ¿hay algún equilibrio?", "Unicidad: ¿cuántos hay?", "Estabilidad: ¿llega a él la economía?"]
+
+  - bloque: "II. Análisis positivo y normativo"
+    titulo: "II.1. Análisis positivo: existencia"
+    modo: pizarra
+    pasos:
+      - di: "Empiezo por la existencia, que no está garantizada a priori. Walras creyó resolverla contando ecuaciones e incógnitas, pero igualarlas no es necesario ni suficiente: con ecuaciones no lineales puede no haber solución, o haber varias, y la solución puede tener precios negativos."
+        borrar: ["1b", "2"]
+        guion: "Contar ecuaciones e incógnitas no basta"
+        apunte: "Rouché-Frobenius: igualar ecuaciones e incógnitas no es necesario ni suficiente"
+      - di: "La solución llega en los años 50 con los teoremas de punto fijo, de Arrow y Debreu y de McKenzie. Los supuestos son pocos: basta que el exceso de demanda sea continuo, homogéneo de grado cero y cumpla la ley de Walras, [pausa] las propiedades de la esquina. Detrás están la convexidad y la no saciedad local."
+        guion: "Supuestos: z continua, homogénea de grado 0 y con ley de Walras"
+        apunte: "Arrow y Debreu (1954), McKenzie (1954) · Debreu (1959), Theory of Value"
+      - di: "La herramienta es el teorema del punto fijo de Brouwer: si delta es no vacío, compacto y convexo, y efe es una función continua de delta en sí mismo, existe un pe asterisco que la función deja donde está: efe de pe asterisco es igual a pe asterisco."
+        pizarra: [{formula: 'f:\Delta\to\Delta\ \text{continua}\ \Rightarrow\ \exists\,\vect{p}^*=f(\vect{p}^*)', zona: "1b", tam: 0.8}]
+        apunte: "Brouwer (1911); con correspondencias, Kakutani (1941)"
+      - di: "En una dimensión se ve enseguida. Trazo los ejes y el cuadrado de cero a uno, y su diagonal, en la que efe de pe es igual a pe."
+        pizarra: [{grafico: brouwer, capa: 2, zona: "2", alto: 0.62}]
+      - di: "Una función continua que empieza por encima de la diagonal y acaba por debajo tiene que cortarla en algún punto: [pausa] ese corte es el punto fijo, pe asterisco."
+        pizarra: [{grafico: brouwer, capa: 4}]
+      - di: "La prueba tiene tres pasos. Primero, el conjunto: por la homogeneidad, normalizo los precios para que sumen uno. Es el símplice, que escribo: no vacío, cerrado, acotado y convexo, como pide Brouwer."
+        pizarra: [{formula: '\Delta=\Big\{\vect{p}\in\mathbb{R}^n_+:\ \sum_k p_k=1\Big\}', zona: "1b", tam: 0.8}]
+        guion: "1. El conjunto: el símplice"
+      - di: "Segundo, la función: el subastador como una regla que, a cada vector de precios, asigna otro, subiendo los precios con exceso de demanda y bajando los de exceso de oferta, sin salir del símplice. Es continua y, por Brouwer, tiene un punto fijo."
+        apoyo: {formula: 'f_k(\vect{p})=\frac{\max\{0,\ p_k+\kappa_k\,z_k(\vect{p})\}}{\sum_{l}\max\{0,\ p_l+\kappa_l\,z_l(\vect{p})\}}', zona: "2"}
+        guion: "2. La función: el subastador"
+      - di: "Y tercero: en un punto fijo, ningún precio tiene motivo para moverse, y por la ley de Walras se cumple la condición de equilibrio de la esquina. [pausa] El punto fijo es un equilibrio."
+        guion: "3. El punto fijo es un equilibrio"
+      - di: "La coordinación por precios es, por tanto, lógicamente posible, con supuestos no más fuertes que los de la teoría del consumidor y de la empresa. Pero la prueba no dice cómo encontrar el equilibrio ni cuántos hay, y descansa en la convexidad y en la ausencia de poder de mercado."
+        guion: "Coordinación lógicamente posible · prueba no constructiva"
+
+  - bloque: "II. Análisis positivo y normativo"
+    titulo: "II.1. Análisis positivo: unicidad"
+    modo: pizarra
+    pasos:
+      - di: "Una vez que sabemos que existe, ¿cuántos hay? En el gráfico de Brouwer, otra función continua corta la diagonal tres veces: [pausa] el punto fijo existe, pero no tiene por qué ser único."
+        pizarra: [{grafico: brouwer, capa: 5}]
+      - di: "Lo vemos con el exceso de demanda. Con dos bienes y pe i griega igual a uno, borro y trazo los ejes: el precio de equis en horizontal y su exceso de demanda en vertical."
+        borrar: ["1b", "2"]
+        pizarra: [{grafico: equilibrios-multiples, capa: 1, zona: "2", alto: 0.62}]
+      - di: "La curva es positiva a precios muy bajos y negativa a precios muy altos, así que corta el eje un número impar de veces. Pero pueden ser tres o más."
+        pizarra: [{grafico: equilibrios-multiples, capa: 2}]
+      - di: "Aquí, tres equilibrios: pe uno, pe dos y pe tres. ¿Por qué importa? [pausa] Con varios, el modelo no predice cuál se alcanza, y la estática comparativa pierde sentido."
+        pizarra: [{grafico: equilibrios-multiples, capa: 3}]
+      - di: "Debreu prueba que, salvo en un conjunto de economías de medida nula, el número de equilibrios es finito; y es impar, por el teorema del índice: los cortes alternan índice más uno y menos uno, [pausa] y los índices suman uno."
+        pizarra: [{grafico: equilibrios-multiples, capa: 4}]
+        apunte: "Debreu (1970): economías regulares · Dierker (1972): teorema del índice"
+      - di: "Para que haya uno solo hacen falta condiciones sobre la forma del exceso de demanda. La primera, los sustitutivos brutos, que escribo: el exceso de demanda de cada bien aumenta con el precio de cualquier otro. Cuando un bien se encarece, los agentes se pasan a todos los demás."
+        pizarra: [{formula: '\frac{\partial z_k(\vect{p})}{\partial p_l}>0\quad\forall\,l\neq k', zona: "1b", tam: 0.8}]
+        guion: "Sustitutivos brutos (incluyen los efectos renta)"
+      - di: "La intuición: si hubiera dos equilibrios, el bien que menos se encarece al pasar de uno a otro atraería demanda de todos los demás, y su exceso de demanda, que era cero, se volvería positivo. [pausa] El segundo no sería un equilibrio. Con dos bienes, la curva sería siempre decreciente: el tramo creciente del gráfico no podría existir."
+        guion: "Si hubiera 2 equilibrios, el bien que menos se encarece tendría z > 0"
+      - di: "La segunda condición es el axioma débil de la preferencia revelada en el agregado: la demanda de mercado se comporta como la de un consumidor coherente. Las dos se resumen en una, que escribo: valorada a los precios de equilibrio, la cesta de excesos de demanda a cualquier otro precio es positiva."
+        pizarra: [{formula: '\vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\forall\,\vect{p}\neq\lambda\vect{p}^*', zona: "1b", tam: 0.8}]
+        guion: "Axioma débil agregado · condición común"
+        apunte: "Mas-Colell, Whinston y Green (1995, §17.F)"
+      - di: "¿Por qué son tan restrictivas? [pausa] Por el teorema de Sonnenschein, Mantel y Debreu: cualquier función continua, homogénea de grado cero y que cumpla la ley de Walras es el exceso de demanda de alguna economía con consumidores racionales. La racionalidad individual no impone nada más al agregado: cualquier número impar de equilibrios y cualquier dinámica son posibles."
+        guion: "Teorema SMD: la racionalidad individual no restringe el agregado"
+        apunte: "Sonnenschein (1972, 1973), Mantel (1974), Debreu (1974)"
+
+  - bloque: "II. Análisis positivo y normativo"
+    titulo: "II.1. Análisis positivo: estabilidad"
+    modo: pizarra
+    pasos:
+      - di: "Saber que el equilibrio existe, e incluso que es único, no basta: ¿llega a él la economía? Es estable si, fuera de él, hay fuerzas que la empujan hacia él: localmente, tras una perturbación pequeña, o globalmente, desde cualquier punto. [pausa] Entonces la mano invisible no solo es posible: el mercado la encuentra."
+        guion: "Estabilidad local y global"
+        apunte: "Musgrave (1959): la estabilización, una de las 3 funciones del sector público"
+      - di: "Estudiamos el tanteo walrasiano en tiempo continuo: el precio de cada bien varía en proporción a su exceso de demanda. Lo escribo en el gráfico: pe punto equis igual a kappa por zeta equis. El precio sube donde el exceso de demanda es positivo y baja donde es negativo, como marcan las flechas sobre el eje."
+        pizarra: [{grafico: equilibrios-multiples, capa: 5}]
+        guion: "Tanteo: el precio sube si z > 0 y baja si z < 0"
+      - di: "Los equilibrios en los que la curva corta de arriba abajo atraen los precios: son estables. El intermedio los repele: es inestable. [pausa] Estables e inestables se alternan."
+        pizarra: [{grafico: equilibrios-multiples, capa: 6}]
+      - di: "¿Y en general? Se mide lo lejos que están los precios del equilibrio: si esa distancia se reduce siempre que no se está en él, los precios acaban llegando. Es el método de Liapunov. Con la ley de Walras, la distancia baja si pe asterisco por zeta de pe es positivo: [pausa] exactamente la condición de unicidad."
+        apoyo: {formula: '\frac{d}{dt}\Bigg[\frac12\sum_{k}\frac{(p_k-p^*_k)^2}{\kappa_k}\Bigg]=\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0}-\vect{p}^*\cdot\vect{z}(\vect{p})', zona: "2"}
+        guion: "Función de Liapunov: la distancia al equilibrio"
+      - di: "De ahí el teorema de Arrow, Block y Hurwicz: si todos los bienes son sustitutivos brutos, el equilibrio es globalmente estable. La misma condición da a la vez unicidad y estabilidad."
+        guion: "Sustitutivos brutos ⇒ estabilidad global"
+        apunte: "Arrow, Block y Hurwicz (1959)"
+      - di: "Pero Scarf construye en 1960 una economía con tres bienes complementarios y un equilibrio único al que el tanteo no llega nunca: los precios giran a su alrededor. Y el tanteo es ficticio, porque nadie comercia hasta el final. [pausa] Con intercambios fuera del equilibrio, el punto de llegada depende del camino."
+        guion: "Contraejemplo de Scarf (1960) · el tanteo es un proceso ficticio"
+        apunte: "Procesos sin tanteo: más estables, pero dependientes de la trayectoria · Clower y Leijonhufvud"
+
+  - bloque: "II. Análisis positivo y normativo"
+    titulo: "II.2. Análisis normativo: óptimo de Pareto y teoremas del bienestar"
+    modo: pizarra
+    pasos:
+      - di: "Una vez visto qué dice el equilibrio como descripción de la economía, pasamos a preguntarnos si es bueno. Hace falta un criterio, el de Pareto: una asignación es óptima si no se puede mejorar a nadie sin empeorar a otro. Es ordinal y exige pocos juicios de valor, pero es incompleto: [pausa] hay infinitos óptimos, algunos muy desiguales."
+        borrar: ["1b", "2"]
+        guion: "Óptimo de Pareto: no se puede mejorar a nadie sin empeorar a otro"
+        apunte: "Pareto (1906): criterio ordinal · Foley (1967): asignaciones justas, sin envidia"
+      - di: "Volvemos a la caja, que sigue en la pizarra. Los óptimos son las tangencias de las curvas de indiferencia, donde las relaciones marginales de sustitución se igualan, como escribo: la curva de contrato, que trazo de un origen al otro."
+        pizarra:
+          - {formula: '\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}', zona: "1b", tam: 0.8}
+          - {grafico: caja-intercambio, capa: 7}
+      - di: "Primer teorema fundamental de la economía del bienestar, que escribo: si las preferencias son localmente no saciables, todo equilibrio general competitivo es un óptimo de Pareto. [pausa] En la caja, E está en la curva de contrato. Y no necesita convexidad."
+        pizarra: [{formula: '\text{1TFEB: EGC}\ \Rightarrow\ \text{óptimo de Pareto}', zona: "2", tam: 0.8}]
+        apunte: "Arrow (1951) y Debreu (1951); condiciones marginales: Lerner (1934) y Lange (1942)"
+      - di: "La idea: como todos ven los mismos precios, todas las relaciones marginales se igualan. Es la mano invisible formalizada. Pero exige mercados completos, precio-aceptación y precios comunes, sin cuñas fiscales; si falla alguno, aparecen los fallos de mercado. [pausa] Y no dice que el equilibrio sea justo: depende de las dotaciones."
+        guion: "La mano invisible formalizada · no dice que sea justo"
+        apunte: "Feldman (1987): con dardos, acertar en un óptimo tendría probabilidad nula"
+      - di: "Segundo teorema, que escribo debajo: con preferencias y tecnologías convexas, todo óptimo de Pareto puede alcanzarse como equilibrio competitivo, tras redistribuir las dotaciones con transferencias de suma fija."
+        pizarra: [{formula: '\text{2TFEB: óptimo de Pareto}\ \Rightarrow\ \text{EGC}', zona: "2", tam: 0.8}]
+      - di: "En la caja: si la sociedad prefiere el óptimo E prima, más igualitario, basta pasar la dotación de omega a omega prima, sobre la recta de precios tangente en E prima, y dejar que el mercado haga el resto. [pausa] Separa la eficiencia de la equidad."
+        pizarra: [{grafico: caja-intercambio, capa: 8}]
+        guion: "Redistribuir las dotaciones y dejar actuar al mercado"
+      - di: "Pero con información privada esas transferencias no son factibles. Recapitulando: el equilibrio existe con supuestos razonables, es único y estable solo con condiciones fuertes, y es eficiente si los mercados son completos y competitivos. [pausa] El tercer bloque relaja precisamente esos supuestos."
+        guion: "Recapitulación: existe; único y estable con condiciones fuertes; eficiente"
+
+  # ==================================================================== III
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III. Otros desarrollos y aplicaciones"
+    modo: guion
+    pasos:
+      - di: "Paso al tercer bloque: otros desarrollos y aplicaciones. Cada uno relaja un supuesto del modelo: el subastador y los precios dados, la convexidad, la ausencia de dinero y la de tiempo e incertidumbre. Adelanto la conclusión: [pausa] el equilibrio walrasiano resiste que se quite el subastador si negocian muchos, pero no el poder de mercado, las no convexidades, los mercados incompletos ni el dinero sin valor intrínseco."
+        guion: ["Cada desarrollo relaja un supuesto", "Conclusión anticipada:", "> Resiste sin subastador si negocian muchos (núcleo)", "> No resiste el poder de mercado, las no convexidades, los mercados incompletos ni el dinero"]
+
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III.1. Teoría del intercambio de Edgeworth"
+    modo: pizarra
+    pasos:
+      - di: "Empiezo por el supuesto más irreal: el subastador. Edgeworth, en 1881, prescinde de él: los agentes negocian libremente y pueden rehacer sus acuerdos hasta que nadie quiera cambiar. Volvemos a la caja."
+        borrar: ["1b", "2"]
+        apunte: "Edgeworth (1881), Mathematical Psychics: recontracting"
+      - di: "Un acuerdo final tiene que cumplir dos condiciones: racionalidad individual, porque nadie acepta quedar peor que con su dotación, así que estará dentro de la lente; y eficiencia, en la curva de contrato. Resalto el tramo ce, ce prima. [pausa] Con dos agentes, el resultado es un tramo, no un punto."
+        pizarra: [{grafico: caja-intercambio, capa: 9}]
+        guion: "Racionalidad individual (lente) + eficiencia (curva de contrato) = tramo CC'"
+      - di: "El punto final depende del poder de negociación de cada uno, y E es solo uno de ellos: el único al que se llega con precios dados y comunes. Qué punto se alcanza lo estudia la teoría de la negociación, con Nash y Rubinstein. Y Edgeworth conjetura que, con más agentes, el tramo se estrecha hasta el equilibrio competitivo."
+        guion: "Indeterminación: depende del poder de negociación"
+        apunte: "Nash (1950): máximo del producto de las ganancias · Rubinstein (1982): gana el más paciente"
+
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III.2. Enfoque del núcleo, comportamiento estratégico y no convexidades"
+    modo: pizarra
+    pasos:
+      - di: "Si con dos agentes el resultado queda indeterminado, ¿qué ocurre cuando negocian muchos? Es el enfoque del núcleo. Una coalición bloquea una asignación si, con sus propios recursos, puede mejorar a alguno de sus miembros sin empeorar a ninguno. El núcleo es el conjunto de asignaciones que ninguna coalición bloquea; con dos agentes, el tramo ce, ce prima."
+        guion: "Núcleo: asignaciones que ninguna coalición bloquea"
+        apunte: "Gillies (1959): el núcleo · Shubik (1959): lo relaciona con la curva de contrato"
+      - di: "El equilibrio walrasiano siempre está en el núcleo. Y el teorema del límite de Debreu y Scarf, de 1963, dice que si la economía se replica erre veces, al crecer erre el núcleo se encoge hasta los equilibrios walrasianos, como marcan las flechas. [pausa] Es la conjetura de Edgeworth."
+        pizarra: [{grafico: caja-intercambio, capa: 10}]
+        guion: "Teorema del límite del núcleo: r → ∞, núcleo → equilibrios walrasianos"
+        apunte: "Debreu y Scarf (1963) · Aumann (1964): con un continuo de agentes, núcleo = equilibrios"
+      - di: "La precio-aceptación deja de ser un supuesto y pasa a ser un resultado. Pero con pocos agentes, cada uno puede influir en los precios. En el apoyo, el caso más simple: be fija el precio y elige el punto eme de la curva de oferta-demanda de A. [pausa] Eme no está en la curva de contrato: es ineficiente."
+        apoyo: {grafico: monopolio-intercambio, zona: "2"}
+        guion: "Monopolio en la caja: M fuera de la curva de contrato"
+      - di: "Con competencia imperfecta, el equilibrio puede depender del numerario y puede no existir; pero el poder de mercado se diluye al crecer la economía."
+        guion: "Competencia imperfecta: depende del numerario y puede no existir"
+        apunte: "Negishi (1961) · Gabszewicz y Vial (1972) · Roberts y Postlewaite (1976)"
+      - di: "Queda la convexidad. Dice que los consumidores prefieren las mezclas a los extremos y que producir más no abarata. Gracias a ella, si un precio cambia un poco, lo que cada uno quiere cambia un poco, sin saltos. Sin ella, con preferencias no convexas o rendimientos crecientes, el precio que vacía el mercado puede no existir."
+        guion: "Convexidad: respuestas suaves a los precios · sin ella, saltos"
+      - di: "Si los agentes son muchos, las no convexidades de los consumidores apenas se notan en el agregado; las de las empresas, sí. Y con complementariedades, la economía puede quedar atrapada en un equilibrio malo: nadie invierte porque nadie compra. [pausa] Son los fallos de coordinación."
+        guion: "Equilibrios casi exactos · fallos de coordinación"
+        apunte: "Starr (1969): lema de Shapley-Folkman · Cooper y John (1988)"
+
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III.3. Introducción del dinero: Patinkin"
+    modo: pizarra
+    rejilla: "26(55/45)|74"
+    conservar: ["1a"]
+    pasos:
+      - di: "Hasta aquí el modelo funciona sin dinero: no da utilidad, el subastador lo casa todo a la vez y todo se acuerda en el momento inicial. ¿Se puede introducir un dinero sin valor intrínseco? [pausa] Con dinero, la ley de Walras de la esquina gana un término: el exceso de demanda de dinero."
+        pizarra: [{formula: '\sum_k p_k\,z_k(\vect{p})+\big(M^D-\overline{M}\big)\equiv 0', zona: "2", tam: 0.9}]
+        guion: "Sin sitio para el dinero: no da utilidad, no hace falta como medio de cambio ni como depósito"
+      - di: "La dicotomía clásica separa un sector real, homogéneo de grado cero en los precios, y un sector monetario que fija el nivel de precios. Pero Lange y Patinkin muestran que es inválida: si se duplican los precios, los mercados de bienes siguen vaciándose y, por la ley de Walras, también el de dinero, aunque su demanda se haya duplicado. [pausa] Es una contradicción."
+        guion: "La dicotomía clásica es inválida"
+        apunte: "Lange (1942), Patinkin (1965): la identidad de Say deja indeterminado el nivel de precios"
+      - di: "La solución de Patinkin es el efecto saldos reales: la demanda de bienes depende también del poder de compra del dinero, que escribo. El nivel de precios queda determinado y el dinero es neutral: neutralidad, sin dicotomía. Pero, como señala Hahn, siempre hay un equilibrio en el que el dinero no vale nada: [pausa] hay que darle una función, como en las generaciones solapadas."
+        pizarra: [{formula: '\vect{x}_i\big(\vect{p},\ \overline{M}_i/P\big)', zona: "2", tam: 0.9}]
+        guion: "Efecto saldos reales · neutralidad sin dicotomía · el problema de Hahn"
+        apunte: "Patinkin (1956) · Hahn (1965) · Samuelson (1958), Clower (1967), Kiyotaki y Wright (1989)"
+
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III.4. Equilibrio general con incertidumbre: Arrow y Debreu"
+    modo: pizarra
+    pasos:
+      - di: "Ese mismo supuesto, que todo se acuerde en el momento inicial, permite introducir el tiempo y la incertidumbre sin una teoría nueva. Basta definir los bienes también por la fecha y por el estado de la naturaleza: [pausa] un paraguas si llueve y un paraguas si no llueve son bienes distintos, con precios distintos."
+        borrar: ["1b", "2"]
+        pizarra: [{formula: 'x_{ks},\ p_{ks}:\ \text{bien } k \text{ en el estado } s', zona: "2", tam: 0.9}]
+        guion: "Bienes contingentes: el bien k en el estado s"
+        apunte: "Arrow (1953) y Debreu (1959, cap. 7)"
+      - di: "Con mercados completos, es el mismo modelo con más bienes: existe el equilibrio, con precios de Arrow-Debreu, y se cumplen los dos teoremas del bienestar. Cada consumidor iguala su relación marginal de sustitución entre estados al cociente de los precios de estado: [pausa] el riesgo se reparte de forma eficiente."
+        pizarra: [{formula: '\frac{\pi_s\,u_i^{\prime}(x_{is})}{\pi_{s^{\prime}}\,u_i^{\prime}(x_{is^{\prime}})}=\frac{p_s}{p_{s^{\prime}}}', zona: "2", tam: 0.9}]
+        guion: "El mismo modelo con n · S bienes"
+      - di: "Arrow muestra que no hacen falta tantos mercados: basta un título que pague un euro si llueve y comprar el paraguas al contado. Ene más ese mercados, en lugar de ene por ese."
+        pizarra: [{formula: 'n\cdot S\ \longrightarrow\ n+S', zona: "2", tam: 0.9}]
+        guion: "Títulos de Arrow: n + S mercados"
+        apunte: "Radner (1972): equilibrio de planes, precios y expectativas de precios"
+      - di: "Pero si los mercados son incompletos, el equilibrio no es eficiente en general, puede no existir y, con activos nominales, está indeterminado. [pausa] Y lo son: apenas hay mercados para asegurar la renta del trabajo, como recuerda Shiller."
+        guion: "Mercados incompletos: ineficiencia, inexistencia, indeterminación"
+        apunte: "Hart (1975) · Geanakoplos y Polemarchakis (1986) · Shiller (1993)"
+
+  - bloque: "III. Otros desarrollos y aplicaciones"
+    titulo: "III.5. Modelos de equilibrio general computable"
+    modo: guion
+    pasos:
+      - di: "Por último, la práctica: los modelos de equilibrio general computable resuelven numéricamente el equilibrio de economías con muchos sectores, hogares y países. Los hace posibles el algoritmo de Scarf, de 1967, que aproxima los puntos fijos que garantiza Brouwer. Se calibran con una matriz de contabilidad social y se simula la política: [pausa] estática comparativa a gran escala."
+        guion: ["Scarf (1967): algoritmo para aproximar puntos fijos", "Formas funcionales, calibración y simulación", "> Estática comparativa a gran escala"]
+      - di: "Se usan en comercio, como en la evaluación del acuerdo con Mercosur; en el clima, con el modelo DICE de Nordhaus; y en macroeconomía, con modelos dinámicos y estocásticos, como el REMS en España."
+        guion: ["Comercio: TLCAN (Kehoe, 2005), UE-Mercosur (GTAP)", "Clima: DICE (Nordhaus, Nobel 2018)", "Macroeconomía: modelos dinámicos y estocásticos (REMS, EREMS)"]
+      - di: "Recapitulando: el equilibrio walrasiano resiste que se quite el subastador si los agentes son muchos, pero no el poder de mercado, las no convexidades, el dinero sin valor intrínseco ni los mercados incompletos. [pausa] Aun así, sigue siendo la referencia con la que se evalúan las políticas."
+        guion: ["Recapitulación: resiste sin subastador, no sin convexidad ni mercados completos", "> Sigue siendo la referencia para evaluar políticas"]
+
+  # ==================================================================== CONCLUSIÓN
+  - bloque: Conclusión
+    titulo: Conclusión
+    modo: guion
+    estructura: [Recapitulación, Relevancia, Extensiones, Opinión, Idea final]
+    pasos:
+      - di: "En conclusión, la teoría del equilibrio general responde a la pregunta del principio en tres pasos: con precio-aceptación y convexidad, el equilibrio existe; no tiene por qué ser único ni estable, pero es eficiente con mercados completos y competitivos; y resiste bien que se relajen unos supuestos, y mal otros."
+        parte: Recapitulación
+        guion: ["I y II.1: existe un vector de precios que vacía todos los mercados", "II: no siempre único ni estable (SMD), pero eficiente", "III: resiste unos supuestos, no otros"]
+      - di: "Es el lenguaje común de la economía: de la macroeconomía dinámica al comercio y al clima."
+        parte: Relevancia
+        guion: ["Macroeconomía dinámica y estocástica · comercio internacional · clima"]
+      - di: "Abre la puerta a los fallos de mercado, al diseño de mecanismos, a la negociación y a la demanda de dinero; y lo critican la escuela austriaca, los teóricos del desequilibrio y la economía conductual."
+        parte: Extensiones
+        guion: ["Fallos de mercado · diseño de mecanismos (Hurwicz) · cálculo socialista (Lange, Hayek)", "Óptimo social · negociación · demanda de dinero", "Críticas: escuela austriaca, desequilibrio, economía conductual"]
+      - di: "En mi opinión, no describe ninguna economía real, ni lo pretende: es una referencia exacta, y cada supuesto que falla señala dónde puede tener sentido la intervención pública."
+        parte: Opinión
+        guion: ["Una referencia exacta, no una descripción", "> Cada supuesto que falla señala dónde intervenir"]
+      - di: "Volvamos a Bastiat y a la pregunta del principio: ¿pueden millones de decisiones que nadie coordina encajar sin que sobre ni falte nada? [pausa 800] París se abastece porque los precios coordinan. Pueden encajar, pero solo con supuestos exigentes: el modelo no enseña que el mercado siempre funcione, sino por qué funciona cuando lo hace. [pausa] Y donde no lo hace empieza la economía del bienestar."
+        parte: Idea final
+        guion: ["¿Pueden millones de decisiones descentralizadas encajar?", "> Sí, porque los precios coordinan, pero solo con supuestos exigentes", "> El modelo enseña por qué funciona el mercado cuando lo hace", "Donde no lo hace: la economía del bienestar"]

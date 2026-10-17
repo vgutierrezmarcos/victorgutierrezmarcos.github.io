@@ -1,0 +1,546 @@
+# Guion de escenas del vídeo del cante del tema 3.A.12 (formato en scripts/temario/generar-video.py).
+# Dice lo mismo que guion-cante.md: el texto de cada «di» es el del cante.
+# Pizarra según las «Instrucciones para el vídeo» de revision.md: en el bloque I, el esquema de
+# dualidad de la empresa crece por capas a la derecha durante todo el bloque; a la izquierda se
+# dibujan y se borran mb-un-factor, mc, concavidad-c, el gráfico conjunto mb-mc y la recuperación
+# de la isocuanta. Funciones clave (\funcionclave del tema, criterios del 16/10/2026): la función de
+# costes como problema de mínimo y el lema de Shephard, recuadrados en morado abajo a la izquierda
+# (celda 1b, 24 % del ancho y 45 % del alto en todas las rejillas desde I.2): se quedan hasta el
+# final con «conservar», porque el bloque II empieza por la función de costes, la translog usa
+# Shephard y la ineficiencia X la multiplica.
+# Autor: Víctor Gutiérrez Marcos
+tema: 3.A.12
+duracion: 1800
+voz: {motor: voicestudio, motor_tts: omnivoice, velocidad: 1.0, referencia: /mnt/c/Users/vgutierrez/Documents/voz/referencia-12s.wav}   # voz clonada de Víctor con OmniVoice (VoiceStudio)
+pronunciacion:
+  Kuhn: Kun
+  Tucker: Táker
+  Châtelier: Shatelié
+  Viner: Váiner
+  Wicksell: Víksel
+  McFadden: Makfáden
+  Nerlove: Nérlof
+  Christensen: Krístensen
+  Jorgenson: Yórguenson
+  Lau: Láu
+  Greene: Grin
+  Farrell: Fárel
+  Leibenstein: Láibenstain
+  Stigler: Estígler
+  Young: Iang
+  Hanoch: Jánok
+  Berndt: Bernt
+  Wood: Gud
+  Caves: Kéivs
+  Tretheway: Trézuei
+  Lieberman: Líberman
+  Aigner: Áigner
+  Lovell: Lóvel
+  Schmidt: Shmit
+  Charnes: Charns
+  Cooper: Kúper
+  Rhodes: Róuds
+  Harberger: Járberguer
+  Nickell: Níkel
+  Bloom: Blum
+  Reenen: Rínen
+  Baumol: Báumol
+  BCE: be ce e
+bloques:
+  - {nombre: Introducción, minutos: 2.5}
+  - {nombre: "I. «Dualidad» y función de costes", minutos: 9}
+  - {nombre: "II. Análisis de los costes", minutos: 14}
+  - {nombre: "III. Extensiones y críticas", minutos: 3.5}
+  - {nombre: Conclusión, minutos: 1}
+
+escenas:
+
+  # ==================================================================== INTRODUCCIÓN
+  - bloque: Introducción
+    titulo: Introducción
+    modo: guion
+    estructura: [Enganche, Relevancia, Contextualización, Problemática, Estructura]
+    pasos:
+      - di: "¿Cuánto del abaratamiento de la energía solar se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores? [pausa 800] Entre 2010 y 2025, el coste nivelado de la electricidad de las plantas fotovoltaicas nuevas bajó un 89 por ciento, y cada vez que se ha duplicado la producción mundial de módulos, su precio ha caído en torno a un 27 por ciento."
+        parte: Enganche
+        guion: ["¿Cuánto del abaratamiento de la solar se debe a la escala, al aprendizaje y a los precios de los factores?", "Coste nivelado de la fotovoltaica nueva: −89 % (2010-2025)", "> ≈ −27 % por cada duplicación de la producción acumulada de módulos"]
+      - di: "Detrás está la pregunta de esta exposición: ¿qué nos dicen los costes de una empresa sobre su tecnología, su conducta y su mercado, y cómo se miden? De sus restricciones técnicas, económicas y de mercado, los costes son las económicas: [pausa] cuál es la combinación posible más barata."
+        guion: ["¿Qué dicen los costes sobre la tecnología, la conducta y el mercado?", "Restricciones técnicas, económicas (los costes) y de mercado"]
+      - di: "Dos definiciones. El coste económico de un factor es su coste de oportunidad, que con mercados competitivos es su precio de mercado. Y la función de costes, ce de uve doble y cu, da el coste mínimo de producir cu a los precios de los factores: supone eficiencia técnica y económica."
+        guion: ["Coste económico = coste de oportunidad", "C(w, q): coste mínimo de producir q a los precios w"]
+      - di: "¿Por qué importa? Es el puente entre la tecnología y el mercado: de ella sale la oferta, y su forma decide cuántas empresas caben. Con la dualidad, la tecnología se estudia con costes y precios, que se observan. Y con ella se regulan las redes y se juzgan los precios predatorios."
+        parte: Relevancia
+        guion: ["Teórica: de la tecnología a la oferta y a la estructura del mercado", "Empírica: la tecnología, a partir de costes y precios", "Política: regulación de redes y precios predatorios"]
+      - di: "Marshall distingue las economías internas de las externas y los plazos; Wicksell da la U del coste medio, y Viner dibuja en 1931 las curvas de corto y de largo plazo. La dualidad arranca con Hotelling en 1932 y con Shephard en 1953, y la generalizan Uzawa, Diewert y McFadden."
+        parte: Contextualización
+        guion: ["Marshall (1890), Wicksell (1901), Viner (1931): costes y plazos", "Hotelling (1932), Shephard (1953), Uzawa, Diewert, McFadden: dualidad"]
+      - di: "De ella salen las estimaciones de Nerlove y la translog de Christensen, Jorgenson y Lau, y Farrell mide la eficiencia. Y Stigler duda de la U, y Leibenstein, de que se minimicen los costes."
+        guion: ["Nerlove (1963), translog (1973), Farrell (1957)", "Stigler (1939) y Leibenstein (1966): críticas"]
+      - di: "De ahí, las preguntas clave. ¿Cómo elige la empresa la forma más barata de producir, y qué información contiene la función de costes? ¿Qué relación hay entre beneficio, coste y tecnología? ¿Cómo responden a la producción, a los precios y al plazo, y cómo se estiman? Y [pausa] ¿son en U, y se minimizan?"
+        parte: Problemática
+        guion: ["¿Cómo se elige lo más barato y qué contiene C(w, q)?", "¿Beneficio, coste y tecnología?", "¿Respuesta a q, w y el plazo? ¿Cómo se estima?", "¿Costes en U? ¿Se minimizan?"]
+      - di: "La exposición sigue tres bloques: la «dualidad» entre maximizar el beneficio y minimizar el coste, de la que sale la función de costes; su análisis, con la estática comparativa, los plazos y las aplicaciones empíricas, que van juntas porque se estima esa misma función, y sus extensiones y críticas."
+        parte: Estructura
+        guion: ["I. «Dualidad» MB-MC: la función de costes", "II. Estática comparativa, plazos y aplicaciones empíricas", "III. Extensiones y críticas"]
+
+  # ==================================================================== I
+  - bloque: "I. «Dualidad» y función de costes"
+    titulo: "I.1. Ingredientes comunes del problema primal y el dual"
+    modo: pizarra
+    rejilla: "100"
+    pasos:
+      - di: "Paso al primer bloque: la «dualidad» entre maximizar el beneficio y minimizar el coste. Adelanto la conclusión: [pausa] minimizar el coste y elegir después cuánto producir es maximizar el beneficio, y la función de costes contiene la tecnología."
+        borrar: true
+        guion: "Conclusión anticipada: dos problemas, la misma elección; C(w, q) contiene la tecnología"
+      - di: "La eficiencia técnica no basta para decidir: deja todos los puntos de una isocuanta. Hace falta información económica, los precios. Los dos problemas parten de los mismos ingredientes. Primero, el conjunto tecnológico, i griega caligráfica, con sus axiomas."
+        pizarra: [{grafico: esquema-ingredientes-empresa, capa: 1, zona: "1", alto: 0.9}]
+        guion: "Eficiencia técnica: no basta; hacen falta los precios"
+      - di: "De él sale la función de producción, cu igual a efe de zeta, estrictamente cuasicóncava. Y los precios: los ingresos, pe por cu, y los costes, uve doble por zeta, con la empresa precio-aceptante."
+        pizarra: [{grafico: esquema-ingredientes-empresa, capa: 2}]
+        guion: "q = F(z); ingresos p·q; costes w·z"
+      - di: "En la maximización del beneficio, los tres ingredientes forman el objetivo: pe por efe de zeta menos uve doble por zeta."
+        pizarra: [{grafico: esquema-ingredientes-empresa, capa: 3}]
+      - di: "Su solución, las demandas no condicionadas de factores y la oferta."
+        pizarra: [{grafico: esquema-ingredientes-empresa, capa: 4}]
+      - di: "En la minimización del coste, los papeles cambian: el coste es el objetivo, y la tecnología, la restricción, producir al menos cu. Su solución, las demandas condicionadas de factores."
+        pizarra: [{grafico: esquema-ingredientes-empresa, capa: 6}]
+        guion: "MC: el coste, objetivo; la tecnología, restricción"
+      - di: "Los supuestos son comunes, con largo plazo. [pausa] Solo cambia el papel de cada ingrediente. No son duales en sentido estricto, porque el beneficio incluye los ingresos: de ahí las comillas. Y el beneficio exige efe cóncava; el coste, solo cuasicóncava."
+        guion: "MB: F cóncava · MC: F cuasicóncava (cualquier tipo de rendimientos)"
+        apunte: "En sentido estricto, el dual de minimizar el coste es maximizar la producción con un coste dado (Segura, 1986)"
+
+  - bloque: "I. «Dualidad» y función de costes"
+    titulo: "I.2. Problemas primal y dual: maximización del beneficio"
+    modo: pizarra
+    rejilla: &R1 {columnas: [24, 20, 56], filas: {1: [55, 45], 2: [55, 45]}}
+    pasos:
+      - di: "Paso al segundo apartado: los dos problemas. A la derecha empiezo el esquema de la dualidad de la empresa, que completaremos en todo el bloque. Arriba a la izquierda, la maximización del beneficio en una etapa: el máximo, eligiendo zeta, de pe por efe de zeta menos uve doble por zeta."
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 1, zona: "3"}]
+        guion: "El esquema de dualidad se construye a lo largo del bloque"
+      - di: "Con un solo factor lo vemos en el gráfico: los ejes, el factor y la producción, y la función de producción, cóncava."
+        pizarra: [{grafico: mb-un-factor, capa: 2, zona: "1a-2a"}]
+      - di: "Las rectas de isobeneficio tienen pendiente uve doble entre pe y cortan el eje vertical en el beneficio entre pe: cuanto más arriba, más beneficio. Esta corta la función de producción: puede ganarse más."
+        pizarra: [{grafico: mb-un-factor, capa: 3}]
+        guion: "Isobeneficio: pendiente w/p; más arriba, más beneficio"
+      - di: "La empresa sube hasta la más alta que toca la función de producción: la tangente, de pendiente uve doble entre pe."
+        pizarra: [{grafico: mb-un-factor, capa: 4}]
+      - di: "En la tangencia, la productividad marginal iguala el salario real. Lo escribo: pe por la productividad marginal de cada factor igual a su precio. [pausa] Cada factor se contrata hasta que el valor de su producto marginal iguala su precio."
+        pizarra: [{formula: 'p\,\mathrm{PMg}_i=w_i\quad\forall i', zona: "1b-2b", tam: 0.75}]
+        guion: "Valor del producto marginal = precio del factor"
+      - di: "El punto E da la demanda del factor y la oferta. Con varios factores, las demandas no condicionadas, zeta de pe y uve doble, y la oferta, cu de pe y uve doble, que escribo en el esquema, debajo del problema."
+        pizarra:
+          - {grafico: mb-un-factor, capa: 5}
+          - {grafico: esquema-dualidad-empresa, capa: 2}
+        guion: "Demandas no condicionadas z(p, w) y oferta q(p, w)"
+      - di: "Sustituidas en el objetivo, dan el beneficio máximo, que en el gráfico se lee en la ordenada en el origen de la isobeneficio tangente: be entre pe."
+        pizarra: [{grafico: mb-un-factor, capa: 6}]
+      - di: "Es la función de beneficio, be de pe y uve doble, que escribo en el esquema debajo de las demandas. Y el camino de vuelta es la flecha morada, el lema de Hotelling: la derivada del beneficio respecto a pe es la oferta, y respecto al precio de cada factor, con signo menos, su demanda no condicionada. [pausa] Basta derivar."
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 3}]
+        guion: "Hotelling (1932): q = ∂B/∂p, zᵢ = −∂B/∂wᵢ"
+      - di: "La función de beneficio es homogénea de grado uno y convexa en los precios: [pausa] de ahí la ley de la oferta, y que no hay factores Giffen."
+        apoyo:
+          formula: '\begin{array}{l}B(\kappa p,\kappa\vec{w})=\kappa B(p,\vec{w});\ \text{convexa}\\[4pt] \dfrac{\partial q}{\partial p}\geq 0,\quad\dfrac{\partial z_i(p,\vec{w})}{\partial w_i}\leq 0\end{array}'
+          zona: "1b-2b"
+        guion: "B convexa: ley de la oferta; sin factores Giffen"
+      - di: "Pero exige empresa precio-aceptante y rendimientos decrecientes. Para estudiar los costes de cualquier empresa, aislamos la parte que no depende de los ingresos."
+        guion: "MB: solo precio-aceptante y con rendimientos decrecientes"
+
+  - bloque: "I. «Dualidad» y función de costes"
+    titulo: "I.2. Problemas primal y dual: minimización del coste"
+    modo: pizarra
+    pasos:
+      - di: "Es la minimización del coste, el problema central de la teoría de los costes. En el esquema, a la derecha, escribo el problema: el mínimo, eligiendo zeta, de uve doble por zeta, sujeto a producir al menos cu. No aparece el precio del producto: [pausa] vale para el monopolista o el oligopolista, siempre que compren los factores a precios dados."
+        borrar: ["1a", "1b", "2a", "2b"]
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 4}]
+        guion: "No depende de p: vale con cualquier estructura del mercado del producto"
+        apunte: "Shephard (1953): la función de costes y su relación con la tecnología"
+      - di: "Gráficamente, trazo los ejes, trabajo y capital, y la isocuanta del nivel exigido, cu, que queda fija; por encima, el conjunto de las combinaciones que la alcanzan."
+        pizarra: [{grafico: mc, capa: 2, zona: "1a-2a"}]
+      - di: "Las isocostes son rectas paralelas de pendiente menos uve doble ele entre uve doble ka. La más baja no alcanza la producción exigida."
+        pizarra: [{grafico: mc, capa: 3}]
+        guion: "Isocostes: pendiente −w_L/w_K"
+      - di: "La siguiente corta la isocuanta en zeta prima y zeta dos primas: se produce cu, pero más caro de lo necesario."
+        pizarra: [{grafico: mc, capa: 4}]
+      - di: "El mínimo está en la isocoste más baja que toca la isocuanta: la tangencia, zeta asterisco, donde la relación marginal de sustitución técnica iguala el precio relativo de los factores."
+        pizarra: [{grafico: mc, capa: 6}]
+        guion: "Tangencia: RMST = w_L/w_K"
+      - di: "Analíticamente, por Kuhn-Tucker, con la lagrangiana: el coste más mu por cu menos efe de zeta."
+        pizarra: [{formula: '\mathcal{L}=\vec{w}\cdot\vec{z}+\mu\big(q-F(\vec{z})\big)', zona: "1b-2b", tam: 0.7}]
+      - di: "En una solución interior, el precio de cada factor entre su productividad marginal es igual a mu: [pausa] la misma tangencia que en el beneficio. Y mu, el precio sombra de la producción, es el coste marginal."
+        pizarra: [{formula: '\frac{w_L}{\mathrm{PMg}_L}=\frac{w_K}{\mathrm{PMg}_K}=\mu=\mathrm{CMg}', zona: "1b-2b", tam: 0.7}]
+        guion: "μ: coste marginal (teorema de la envolvente)"
+      - di: "La solución son las demandas condicionadas, zeta de uve doble y cu, condicionadas a producir cu: [pausa] las análogas de las hicksianas del consumidor, no de las marshallianas. Las escribo en el esquema."
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 5}]
+        guion: "Demandas condicionadas z(w, q): análogas a las hicksianas"
+      - di: "Y sustituidas en el objetivo, la función valor: la función de costes, con el lema de Shephard en verde. Es el concepto central de la exposición, así que la recuadro en morado abajo a la izquierda, donde se quedará hasta el final: ce de uve doble y cu es el mínimo, eligiendo zeta, de uve doble por zeta; sujeto a que efe de zeta sea al menos cu, y a que zeta no sea negativo."
+        borrar: ["1b", "2b"]
+        pizarra:
+          - {grafico: esquema-dualidad-empresa, capa: 6}
+          - {formula: '\funcionclave{C(\vect{w},q)=\optim{\min}{\vect{z}}{\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}}', zona: "1b", tam: 0.55}
+        guion: "Función clave: se queda en la esquina"
+      - di: "Sus propiedades: es homogénea de grado uno en los precios de los factores, creciente en cu, no decreciente en cada precio y, sobre todo, cóncava. Lo vemos en el gráfico: los ejes, el precio del factor uno y el coste, y la función de costes, cóncava."
+        borrar: ["1a", "2a", "2b"]
+        pizarra: [{grafico: concavidad-c, capa: 2, zona: "1a-2a"}]
+        guion: "Homogénea de grado 1 en w, creciente en q, no decreciente y cóncava en w"
+      - di: "En el precio inicial, si la empresa mantuviera su combinación, el coste crecería en línea recta con el precio: la recta azul. Pero puede sustituir el factor que se encarece, [pausa] y gasta como mucho eso."
+        pizarra: [{grafico: concavidad-c, capa: 4}]
+        guion: "Coste si no se sustituye: lineal en w₁"
+      - di: "La diferencia es el ahorro por sustitución. Y la pendiente de la recta tangente es zeta uno: el lema de Shephard. Lo recuadro debajo de la función de costes: la demanda condicionada de cada factor es la derivada del coste respecto a su precio. [pausa] Si un precio sube un euro, la combinación apenas cambia y el coste sube zeta i euros."
+        pizarra:
+          - {grafico: concavidad-c, capa: 6}
+          - {formula: '\funcionclave{z_i(\vect{w},q)=\frac{\partial C(\vect{w},q)}{\partial w_i}}', zona: "1b", tam: 0.55}
+        guion: "Shephard: las demandas condicionadas, derivando C"
+      - di: "Sus segundas derivadas forman la matriz de sustitución de factores: simétrica, por el teorema de Young, y semidefinida negativa, por la concavidad. [pausa] Su diagonal es la ley de la demanda condicionada: si sube el precio de un factor, su demanda condicionada nunca aumenta."
+        pizarra: [{formula: '\begin{array}{c}S_{ij}=\dfrac{\partial^2C}{\partial w_i\,\partial w_j}=\dfrac{\partial z_i(\vec{w},q)}{\partial w_j}\\[6pt] S_{ii}\leq 0\end{array}', zona: "2b", tam: 0.62}]
+        guion: "Matriz de sustitución: simétrica y semidefinida negativa"
+      - di: "En suma, la minimización del coste vale para cualquier empresa que compre sus factores a precios dados. Falta relacionarla con el beneficio y con la tecnología."
+        guion: "MC: cualquier empresa precio-aceptante en los factores"
+        apunte: "Leontief: C lineal en w · Cobb-Douglas: participaciones constantes en el coste"
+
+  - bloque: "I. «Dualidad» y función de costes"
+    titulo: "I.3. «Dualidad» entre maximización del beneficio y minimización del coste"
+    modo: pizarra
+    pasos:
+      - di: "Paso al tercer apartado: la relación entre los dos problemas. La clave es que el beneficio puede maximizarse en dos etapas: primero se minimiza el coste de cada producción, y después se elige la producción. Lo escribo arriba, en el centro del esquema: el máximo, eligiendo cu, de pe por cu menos la función de costes. Su condición de primer orden, pe igual al coste marginal, da la oferta."
+        borrar: ["1a", "2a", "2b"]
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 7}]
+        guion: "MB en dos etapas: p = CMg da q(p, w)"
+      - di: "Lo vemos en el gráfico conjunto. A la derecha, los ejes, la producción y los costes unitarios; el coste medio, en U, y el coste marginal, que lo corta en su mínimo."
+        pizarra: [{grafico: mb-mc, capa: 2, zona: "1a-2a"}]
+      - di: "Con el precio pe, la empresa produce donde el precio iguala al coste marginal, en su tramo creciente: cu asterisco. El rectángulo sombreado es el beneficio máximo."
+        pizarra: [{grafico: mb-mc, capa: 5}]
+        guion: "p = CMg en el tramo creciente"
+      - di: "A la izquierda, la isocuanta de esa producción, cu asterisco, y la isocoste tangente, en zeta asterisco. [pausa] La combinación que maximiza el beneficio es la de mínimo coste para la producción con pe igual al coste marginal."
+        pizarra: [{grafico: mb-mc, capa: 8}]
+        guion: "z(p, w) = z(w, q*)"
+      - di: "De ahí, las relaciones de «dualidad», que trazo en el esquema con dos flechas. Arriba, entre demandas: zeta de pe y uve doble es igual a zeta de uve doble y cu de pe y uve doble. La no condicionada es la condicionada evaluada en la producción que maximiza el beneficio. Abajo, entre funciones valor: be de pe y uve doble es pe por la oferta menos el coste de producirla. [pausa] La de beneficio sale de la de costes maximizando en cu, sin volver a minimizar."
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 8}]
+        guion: "Identidades entre demandas y entre funciones valor"
+      - di: "Fíjense en la asimetría: [pausa] la función de costes existe con cualquier rendimiento; la de beneficio, solo con decrecientes."
+        guion: "C existe siempre; B, solo con rendimientos decrecientes"
+      - di: "¿Basta conocer los costes para conocer la tecnología? Borro y trazo los ejes de los factores. Un vector de precios da una isocoste mínima, y la tecnología queda en el semiplano de las combinaciones que cuestan al menos ese mínimo."
+        borrar: ["1a", "2a"]
+        pizarra: [{grafico: recuperar-isocuanta, capa: 2, zona: "1a-2a"}]
+        guion: "¿Los costes bastan para conocer la tecnología?"
+      - di: "Con otros precios, otra isocoste mínima, más plana, con su semiplano, que también contiene la tecnología."
+        pizarra: [{grafico: recuperar-isocuanta, capa: 3}]
+      - di: "Y con precios relativos cada vez menores, otras dos, todavía más planas, cada una con la flecha de su semiplano."
+        pizarra: [{grafico: recuperar-isocuanta, capa: 5}]
+      - di: "La tecnología está en todos esos semiplanos a la vez, y su intersección es la envolvente de las isocostes, la zona sombreada: [pausa] la isocuanta, que pasa por los puntos de tangencia, y con ella el conjunto de requerimientos de factores. La tecnología se recupera a partir de los costes."
+        pizarra: [{grafico: recuperar-isocuanta, capa: 6}]
+        guion: "V(q): intersección de los semiplanos w·z ≥ C(w, q)"
+      - di: "Es el teorema de dualidad de Shephard y Uzawa: toda función continua, homogénea de grado uno y cóncava en los precios, y creciente en cu, es la función de costes de alguna tecnología. Y la de beneficio es la función soporte del conjunto de posibilidades de producción. Lo cierro en el esquema con las flechas rojas."
+        pizarra: [{grafico: esquema-dualidad-empresa, capa: 9}]
+        guion: "Shephard-Uzawa: C ↔ V(q) · B ↔ 𝒴 (función soporte)"
+        apunte: "Integrabilidad: demandas homogéneas de grado 0 en w y S simétrica y semidefinida negativa ⇒ existe la tecnología"
+      - di: "Recapitulando: basta resolver un problema para obtener todas las funciones de la empresa, y la de costes, la más general, contiene la tecnología. [pausa] Conocer los costes es conocer la empresa. ¿Cómo cambian con la producción, los precios y el plazo?"
+        guion: "Recapitulación: C(w, q), la más general; de ella, la tecnología"
+        apunte: "Idea clave: minimizar el coste y elegir después p = CMg es maximizar el beneficio"
+
+  # ==================================================================== II
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.1. Estática comparativa: variaciones en la producción"
+    modo: pizarra
+    rejilla: &R2 {columnas: [24, 38, 38], filas: {1: [55, 45]}}
+    conservar: ["1b"]
+    pasos:
+      - di: "Paso al segundo bloque: el análisis de los costes. Adelanto la conclusión: [pausa] la demanda condicionada nunca crece con su precio; la forma de los costes refleja la tecnología, según el plazo, y basta estimar la función de costes para medir la escala y la eficiencia."
+        guion: "Conclusión anticipada: ley de la demanda condicionada, forma de los costes y estimación"
+      - di: "Borro todo menos las dos funciones de la esquina, y partimos de la de costes con dos factores. Empezamos por la producción, con los precios fijos: los ejes del trabajo y el capital, la isocuanta cu uno y su isocoste tangente en A."
+        pizarra: [{grafico: senda-expansion, capa: 2, zona: "2"}]
+        guion: "Δq con w constante"
+      - di: "Al aumentar la producción, nuevas isocuantas, cu dos y cu tres, con isocostes paralelas, tangentes en be y en ce."
+        pizarra: [{grafico: senda-expansion, capa: 4}]
+      - di: "Uniendo los puntos de mínimo coste, la senda de expansión: [pausa] una isoclina, porque la relación marginal de sustitución técnica no cambia."
+        pizarra: [{grafico: senda-expansion, capa: 5}]
+        guion: "Senda de expansión: isoclina"
+      - di: "Entre be y ce la senda se vuelve hacia atrás: al producir más se usa menos trabajo. Es un factor inferior, como el trabajo poco cualificado cuando la empresa se automatiza; no todos pueden serlo a la vez. Y si la función es homotética, la senda es un rayo desde el origen."
+        pizarra: [{grafico: senda-expansion, capa: 6}]
+        guion: "Factor inferior: ∂zᵢ/∂q < 0 · homotética: un rayo"
+        apunte: "Curva de Engel del factor: z_L frente a q, creciente si es normal y decreciente si es inferior"
+      - di: "¿Y el coste? A la derecha, arriba, los ejes y la curva de costes totales, en ese invertida."
+        pizarra: [{grafico: costes-largo, capa: 2, zona: "3"}]
+      - di: "En una producción cu cero, el coste medio, ce entre cu, es la pendiente del rayo que va del origen a la curva."
+        pizarra: [{grafico: costes-largo, capa: 3}]
+        guion: "CMe: pendiente del rayo · CMg: pendiente de la tangente"
+      - di: "Y el coste marginal, el de producir una unidad más, es la pendiente de la tangente en ese punto: aquí, menor que el medio."
+        pizarra: [{grafico: costes-largo, capa: 4}]
+      - di: "El mínimo del marginal está en el punto de inflexión, y el del medio, donde el rayo es tangente a la curva."
+        pizarra: [{grafico: costes-largo, capa: 5}]
+      - di: "Debajo, los ejes y el coste marginal, en U, y el coste medio, que el marginal corta en su mínimo: [pausa] mientras el marginal está por debajo del medio, el medio baja; cuando lo supera, sube."
+        pizarra: [{grafico: costes-largo, capa: 8}]
+        guion: "El CMg corta al CMe en su mínimo"
+      - di: "Lo mide la elasticidad del coste respecto a la producción, que escribo arriba a la izquierda: la derivada del coste respecto a cu, por cu entre ce; es decir, el coste marginal entre el medio."
+        pizarra: [{formula: '\varepsilon_{C,q}\equiv\frac{\partial C}{\partial q}\,\frac{q}{C}=\frac{\mathrm{CMg}}{\mathrm{CMe}}', zona: "1a", tam: 0.62}]
+      - di: "Si es menor que uno, el coste medio decrece: hay economías de escala; si es mayor, deseconomías. [pausa] Cuidado con la trampa del test: en los costes, menor que uno son economías."
+        pizarra: [{grafico: costes-largo, capa: 9}]
+        guion: "ε < 1: economías de escala · ε > 1: deseconomías"
+      - di: "¿Son lo mismo que los rendimientos a escala? No: los rendimientos son una propiedad de la tecnología, y las economías, de los costes. Pero en la combinación de mínimo coste son inversas, como muestra Hanoch: la elasticidad de escala es uno entre la elasticidad del coste. [pausa] Y no hace falta homoteticidad."
+        pizarra: [{formula: '\boxed{\varepsilon_{q,\lambda}\big(\vec{z}(\vec{w},q)\big)=\frac{1}{\varepsilon_{C,q}}}', zona: "1a", tam: 0.62}]
+        guion: "Rendimientos (tecnología) ≠ economías de escala (costes)"
+        apunte: "Hanoch (1975): elasticidad de escala = CMe/CMg en la combinación de mínimo coste, con cualquier tecnología"
+      - di: "De ahí la U a largo plazo: rendimientos crecientes a escala baja, por las indivisibilidades, y decrecientes a escala alta, por las dificultades de dirección; no la ley de proporciones variables, que es de corto."
+        guion: "U a largo plazo: rendimientos a escala variables (Wicksell)"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.1. Estática comparativa: variaciones en los precios de los factores"
+    modo: pizarra
+    pasos:
+      - di: "Pasamos a los precios de los factores, con la producción fija. Borro la senda y trazo los ejes, la isocuanta de cu, que no se mueve, y la isocoste inicial, tangente en A."
+        borrar: ["2"]
+        pizarra: [{grafico: demanda-condicionada-w, capa: 3, zona: "2"}]
+      - di: "Si sube el salario, la isocoste se vuelve más inclinada y la nueva tangencia, be, está más arriba y a la izquierda: [pausa] menos trabajo y más capital para producir lo mismo. La demanda condicionada nunca crece con su precio, por la concavidad de la función de costes."
+        pizarra: [{grafico: demanda-condicionada-w, capa: 5}]
+        guion: "Sube w_L: menos trabajo, más capital"
+      - di: "¿Y la no condicionada? Se relaciona con la condicionada por una ecuación de tipo Slutsky, que escribo a la derecha, en lugar de los costes. La derivada de la demanda no condicionada del factor i respecto al precio jota, el efecto total, es la derivada de la condicionada, el efecto sustitución, con la producción constante, más la derivada de la condicionada respecto a cu por la de la oferta respecto a uve doble jota: [pausa] el efecto escala, el cambio de la producción que maximiza el beneficio."
+        borrar: ["3"]
+        pizarra: [{formula: '\underbrace{\frac{\partial z_i(p,\vec{w})}{\partial w_j}}_{\text{total}}=\underbrace{\frac{\partial z_i(\vec{w},q)}{\partial w_j}}_{\text{sustitución}}+\underbrace{\frac{\partial z_i(\vec{w},q)}{\partial q}\,\frac{\partial q(p,\vec{w})}{\partial w_j}}_{\text{escala}}', zona: "3", tam: 0.62}]
+        guion: "Efecto total = sustitución + escala"
+      - di: "No hay efecto renta, y el efecto escala refuerza al de sustitución: [pausa] no hay factores Giffen."
+        guion: "Sin efecto renta; sin factores Giffen"
+        apunte: "Pregunta del tribunal: ¿factores Giffen? No (concavidad de C y convexidad de B); inferiores, sí"
+      - di: "¿Y el coste? Por el lema de Shephard de la esquina, la elasticidad del coste respecto al precio de un factor es su participación en el coste, ese i. Si el trabajo es el 30 por ciento del coste, subir el salario un 10 por ciento lo eleva en torno a un 3."
+        pizarra: [{formula: '\varepsilon_{C,w_i}=\frac{w_i\,z_i(\vec{w},q)}{C(\vec{w},q)}=s_i', zona: "3", tam: 0.62}]
+        guion: "Elasticidad del coste respecto a wᵢ = sᵢ (participación en el coste)"
+      - di: "Y el coste marginal sube si el factor es normal, y baja si es inferior. [pausa] La producción mueve a la empresa por su senda; los precios, por su isocuanta."
+        guion: "∂CMg/∂wᵢ = ∂zᵢ/∂q: sube si es normal, baja si es inferior"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.2. Análisis de plazos: corto plazo"
+    modo: pizarra
+    pasos:
+      - di: "Paso a los plazos. Siguiendo a Marshall, a corto plazo algún factor es fijo, normalmente el capital; a largo, todos son variables. Escribo arriba a la izquierda el problema a corto: el mínimo, eligiendo zeta ele, de los costes variables, uve doble ele por zeta ele, más los fijos, uve doble ka por zeta ka barra, sujeto a producir cu con ese capital."
+        borrar: ["1a", "2", "3"]
+        pizarra: [{formula: '\optim{\min}{z_L}{w_Lz_L+w_K\overline{z}_K}{F(z_L,\overline{z}_K)\geq q}', zona: "1a", tam: 0.58}]
+        guion: "Corto plazo: el capital, fijo"
+      - di: "No hay elección de proporciones. Por eso el coste a corto nunca es menor que el de largo, y solo coinciden cuando el capital fijo es el óptimo para esa producción, como en el apoyo."
+        apoyo: {grafico: corto-largo-senda, zona: "2-3", alto: 0.75}
+        guion: "C(w, q; z̄_K) ≥ C(w, q): iguales solo si z̄_K = z_K(w, q)"
+      - di: "Los costes a corto, en el gráfico. Arriba, los ejes, los costes fijos, una recta horizontal, y los variables, en ese invertida desde el origen."
+        borrar: ["2", "3"]
+        pizarra: [{grafico: costes-corto, capa: 3, zona: "2"}]
+      - di: "Los totales son los variables desplazados hacia arriba en los fijos."
+        pizarra: [{grafico: costes-corto, capa: 4}]
+        guion: "C = CV + CF"
+      - di: "¿Por qué esa forma? Porque el coste marginal es el salario entre la productividad marginal del trabajo, y el variable medio, el salario entre la productividad media: [pausa] son su imagen invertida."
+        pizarra: [{formula: '\mathrm{CMg}=\frac{w_L}{\mathrm{PMg}_L},\quad\mathrm{CVMe}=\frac{w_L}{\mathrm{PMe}_L}', zona: "1a", tam: 0.6}]
+        guion: "Costes: imagen invertida de las productividades"
+      - di: "Abajo, los ejes de los costes unitarios, y el coste fijo medio, siempre decreciente, porque el coste fijo se reparte entre más unidades."
+        pizarra: [{grafico: costes-corto, capa: 6}]
+      - di: "Después, el variable medio, en U, y el medio, que suma los dos y queda por encima."
+        pizarra: [{grafico: costes-corto, capa: 8}]
+      - di: "Y el coste marginal, en U por la ley de proporciones variables, que corta al variable medio y al medio en sus mínimos."
+        pizarra: [{grafico: costes-corto, capa: 9}]
+        guion: "El CMg corta al CVMe y al CMe en sus mínimos"
+      - di: "El mínimo del variable medio es el mínimo de explotación: por debajo de ese precio, la empresa competitiva cierra. Y el mínimo del medio, el óptimo de explotación. [pausa] Estas fases no son economías de escala, que son de largo plazo."
+        pizarra: [{grafico: costes-corto, capa: 10}]
+        guion: "Mínimo de explotación (cierre) · óptimo de explotación"
+      - di: "Las ordena la elasticidad del coste variable, que escribo: el coste marginal entre el variable medio, la inversa de la elasticidad-producto del trabajo. Son las etapas de la producción vistas desde los costes, como resume la tabla de apoyo."
+        pizarra: [{formula: '\varepsilon_{\mathrm{CV},q}=\frac{\mathrm{CMg}}{\mathrm{CVMe}}=\frac{1}{\varepsilon_{q,z_L}}', zona: "1a", tam: 0.6}]
+        apoyo:
+          formula: '\begin{array}{lcc}\text{Tramo} & \varepsilon_{q,z_L} & \varepsilon_{\mathrm{CV},q}\\ \hline \text{Etapa I (CVMe decreciente)} & >1 & <1\\ \text{Mínimo de explotación} & =1 & =1\\ \text{Etapa II (CVMe creciente)} & (0,1) & >1\\ \text{Capacidad máxima} & =0 & \to\infty\\ \text{Etapa III} & <0 & \text{---}\end{array}'
+          zona: "3"
+        guion: "Etapas de la producción vistas desde los costes"
+      - di: "Menor que uno en la etapa uno; mayor que uno en la dos, donde produce la empresa competitiva. [pausa] La tres nunca está en la función de costes."
+        guion: "La empresa competitiva produce en la etapa II"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.2. Análisis de plazos: largo plazo y principio de Le Châtelier-Samuelson"
+    modo: pizarra
+    pasos:
+      - di: "A largo plazo, la empresa elige el tamaño de la planta. Borro y trazo, arriba, los ejes y los costes totales a corto de tres plantas, cada una con su coste fijo."
+        borrar: ["1a", "2", "3"]
+        pizarra: [{grafico: envolvente, capa: 4, zona: "2"}]
+        guion: "Tres tamaños de planta"
+      - di: "La curva de largo plazo es su envolvente: toca a cada una en la producción para la que esa planta es la óptima."
+        pizarra: [{grafico: envolvente, capa: 5}]
+        guion: "C a largo plazo: envolvente de las de corto"
+      - di: "Abajo, lo mismo con los costes medios: los ejes y las tres producciones de tangencia, cu uno, cu dos y cu tres."
+        pizarra: [{grafico: envolvente, capa: 6}]
+      - di: "Y las tres curvas de coste medio a corto plazo, una por planta, cada una en U."
+        pizarra: [{grafico: envolvente, capa: 9}]
+      - di: "Y su envolvente, el coste medio a largo plazo. Fíjense: [pausa] no pasa por los mínimos de las de corto. A la izquierda de su mínimo toca el tramo decreciente de cada planta, con exceso de capacidad; a la derecha, el creciente. Fue el error del dibujo de Viner."
+        pizarra: [{grafico: envolvente, capa: 10}]
+        guion: "La envolvente no pasa por los mínimos (error de Viner)"
+        apunte: "Viner (1931) trazó la envolvente por los mínimos de las curvas de corto: solo es posible en el mínimo del CMe a largo plazo"
+      - di: "El coste marginal a largo plazo y el de corto de la primera planta, que lo corta en la tangencia con más pendiente, como se ve ampliado en el apoyo."
+        pizarra: [{grafico: envolvente, capa: 12}]
+        apoyo: {grafico: tangencia-corto-largo, zona: "3", alto: 0.55}
+        guion: "En la tangencia, el CMg a corto corta al de largo con más pendiente"
+      - di: "Solo en el mínimo del coste medio a largo coinciden los cuatro: los costes medio y marginal, a corto y a largo."
+        pizarra: [{grafico: envolvente, capa: 13}]
+      - di: "Lo explica el principio de Le Châtelier-Samuelson, que escribo debajo: a largo plazo, las demandas de factores y la oferta son más elásticas que a corto. [pausa] Cuantas más restricciones tiene la empresa, menos responde a los precios."
+        pizarra: [{formula: '\begin{array}{l}\dfrac{\partial z_i^{\mathrm{LP}}}{\partial w_i}\leq\dfrac{\partial z_i^{\mathrm{CP}}}{\partial w_i}\leq 0\\[10pt] \dfrac{\partial q^{\mathrm{LP}}}{\partial p}\geq\dfrac{\partial q^{\mathrm{CP}}}{\partial p}\geq 0\end{array}', zona: "3", tam: 0.62}]
+        guion: "Más restricciones, menos respuesta"
+        apunte: "Samuelson (1947) traslada el principio del químico Le Châtelier (1884)"
+      - di: "Recapitulando: a largo plazo, los costes reflejan los rendimientos a escala; a corto, los del factor variable. [pausa] Todo es una sola función, que la dualidad permite estimar."
+        guion: "Recapitulación: una sola función, C(w, q)"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.3. Estimación de funciones de costes por dualidad"
+    modo: pizarra
+    rejilla: &R3 {columnas: [24, 76], filas: {1: [55, 45]}}
+    conservar: ["1b"]
+    pasos:
+      - di: "Paso a las aplicaciones empíricas. ¿Por qué estimar costes y no la producción? Porque si los precios y la producción le vienen dados a la empresa, como a una eléctrica, los argumentos de la función de costes son exógenos. [pausa] Y contiene la tecnología."
+        guion: "Se estima C(w, q): sus argumentos son exógenos"
+        apunte: "Supuestos: la empresa minimiza costes, es precio-aceptante en los factores y su producción es exógena"
+      - di: "Lo más sencillo es la Cobb-Douglas en logaritmos, que escribo arriba a la izquierda: lineal en los parámetros, y el coeficiente del logaritmo de cu es la inversa del grado de rendimientos. Es la que estima Nerlove en 1963. Pero impone una elasticidad de sustitución unitaria."
+        pizarra: [{formula: '\ln C=\beta_0+\frac{1}{k}\ln q+\sum_i\frac{\alpha_i}{k}\ln w_i', zona: "1a", tam: 0.6}]
+        guion: "Cobb-Douglas: σ = 1 impuesta"
+      - di: "Por eso se usan formas flexibles, aproximaciones de segundo orden a cualquier función de costes. La más usada es la translogarítmica, que escribo a la derecha: el logaritmo del coste es una constante, más los términos de primer orden en los logaritmos de cu y de los precios, más todos los de segundo orden y los cruzados."
+        pizarra: [{formula: '\begin{array}{l}\ln C=\alpha_0+\alpha_q\ln q+\tfrac12\beta_{qq}(\ln q)^2+\sum_i\alpha_i\ln w_i\\[4pt] \qquad+\tfrac12\sum_i\sum_j\beta_{ij}\ln w_i\ln w_j+\sum_i\beta_{iq}\ln w_i\ln q\end{array}', zona: "2", tam: 0.72}]
+        guion: "Translog de costes"
+        apunte: "Christensen, Jorgenson y Lau (1973); de costes, Christensen y Greene (1976)"
+      - di: "Debajo, sus restricciones: simetría, beta i jota igual a beta jota i, y homogeneidad de grado uno en los precios: los alfa i suman uno, y las sumas de los beta i jota y de los beta i cu, cero."
+        pizarra: [{formula: '\beta_{ij}=\beta_{ji},\quad\sum_i\alpha_i=1,\quad\sum_i\beta_{ij}=\sum_i\beta_{iq}=0', zona: "2", tam: 0.62}]
+      - di: "Y aquí entra Shephard, el de la esquina: derivando respecto al logaritmo de cada precio, las participaciones en el coste son lineales en los parámetros. [pausa] Se estima el sistema de la función de costes y sus participaciones."
+        pizarra: [{formula: 's_i=\frac{\partial\ln C}{\partial\ln w_i}=\alpha_i+\sum_j\beta_{ij}\ln w_j+\beta_{iq}\ln q', zona: "2", tam: 0.66}]
+        guion: "Participaciones: Shephard en logaritmos"
+      - di: "Y la elasticidad del coste respecto a la producción, que ahora varía con cu: la translog admite un coste medio en U o en L. De los beta salen además las elasticidades de sustitución de Allen-Uzawa."
+        pizarra: [{formula: '\varepsilon_{C,q}=\alpha_q+\beta_{qq}\ln q+\sum_i\beta_{iq}\ln w_i', zona: "2", tam: 0.66}]
+        guion: "Economías de escala: 1 − ε(C, q), variable con q"
+      - di: "Las restricciones de la teoría son contrastables. Berndt y Wood encuentran la energía y el capital complementarios: [pausa] algo que una Cobb-Douglas no puede dar. Su límite: supone que la empresa minimiza costes."
+        guion: "Berndt y Wood (1975): energía y capital, complementarios"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.4. Economías de escala y forma de los costes en los datos"
+    modo: pizarra
+    pasos:
+      - di: "¿Qué dicen los datos? Hay tres métodos: el estadístico, el de ingeniería y el del superviviente de Stigler, que mira qué tamaños ganan cuota."
+        guion: "Métodos: estadístico, de ingeniería y del superviviente"
+      - di: "Nerlove encuentra economías de escala que se agotan al crecer las eléctricas. Christensen y Greene, con la translog, ven en 1970 el grueso de la generación ya en el tramo casi plano del coste medio, como muestra el apoyo. [pausa] La competencia en la generación no exige sacrificar economías de escala."
+        borrar: ["2"]
+        apoyo: {grafico: christensen-greene-1970, zona: "2"}
+        guion: "Christensen y Greene (1976): en 1970, tramo casi plano"
+      - di: "En las aerolíneas, los costes dependen de la densidad de tráfico, no de la escala. Y la evidencia encuentra costes medios decrecientes hasta una escala mínima eficiente y casi constantes después: [pausa] costes en L, más que en U."
+        guion: "Densidad frente a escala · costes en L"
+        apunte: "Caves, Christensen y Tretheway (1984) · Johnston (1960), Walters (1963) · Lieberman (1984): el aprendizaje pesa más"
+
+  - bloque: "II. Análisis de los costes"
+    titulo: "II.5. Medición de la eficiencia: frontera estocástica frente a análisis envolvente de datos"
+    modo: pizarra
+    rejilla: *R2
+    conservar: ["1b"]
+    pasos:
+      - di: "Paso a la eficiencia. Hasta aquí, la empresa producía sobre su función de costes, que es una frontera. Farrell propone en 1957 medir la distancia a la de las mejores prácticas. Trazo los ejes, los factores por unidad de producto, y la isocuanta unitaria eficiente, ese ese prima."
+        pizarra: [{grafico: farrell, capa: 2, zona: "2"}]
+        guion: "La función de costes es una frontera"
+      - di: "Una empresa produce en pe, por encima. Sobre el rayo o pe, cu está en la isocuanta: la eficiencia técnica es o cu entre o pe, la proporción en que podría reducir todos sus factores."
+        pizarra: [{grafico: farrell, capa: 4}]
+        guion: "Eficiencia técnica: OQ/OP"
+      - di: "La isocoste tangente en cu prima corta el rayo en erre: la eficiencia asignativa, o erre entre o cu, mide si la combinación es la adecuada a los precios."
+        pizarra: [{grafico: farrell, capa: 5}]
+        guion: "Eficiencia asignativa: OR/OQ"
+      - di: "Y la eficiencia económica, o erre entre o pe, es su producto: [pausa] el cociente entre el coste mínimo y el observado. Las tres van de cero a uno."
+        pizarra: [{grafico: farrell, capa: 6}]
+        guion: "Eficiencia económica: OR/OP = EfT · EfA"
+      - di: "La frontera no se conoce y hay que estimarla, con dos familias de métodos. La frontera estocástica, que escribo a la derecha: el logaritmo del coste observado es el de la frontera, más un ruido simétrico, uve, más la ineficiencia, u, siempre positiva."
+        pizarra: [{formula: '\ln C_j^{\mathrm{obs}}=\ln C(\vec{w}_j,q_j)+v_j+u_j,\ \ u_j\geq 0', zona: "3", tam: 0.62}]
+        guion: "Frontera estocástica: ruido + ineficiencia"
+        apunte: "Aigner, Lovell y Schmidt (1977); Meeusen y van den Broeck (1977)"
+      - di: "Y el análisis envolvente de datos, con programación lineal: el mínimo de e, la proporción de sus factores con la que una combinación de las empresas observadas produciría al menos lo mismo."
+        pizarra: [{formula: '\optim{\min}{e,\,\vect{\tau}}{e}{\sum_j\tau_j\vect{z}_j\leq e\,\vect{z}_0\\ \sum_j\tau_jq_j\geq q_0}', zona: "3", tam: 0.6}]
+        guion: "DEA: programación lineal"
+        apunte: "Charnes, Cooper y Rhodes (1978); con rendimientos variables, Banker, Charnes y Cooper (1984)"
+      - di: "La frontera estocástica separa el ruido de la ineficiencia, pero exige forma funcional; el análisis envolvente no la necesita, pero atribuye toda desviación a ineficiencia. [pausa] No siempre ordenan igual a las empresas."
+        apoyo: {texto: ["SFA: econométrica; separa ruido e ineficiencia; exige forma funcional", "DEA: programación lineal; sin forma funcional; todo es ineficiencia"], zona: "3"}
+        guion: "SFA frente a DEA"
+      - di: "El BCE estima que el banco mediano del euro podría producir lo mismo con el 84 por ciento de sus costes, y el regulador alemán fija así los ingresos de las distribuidoras eléctricas. [pausa] La ineficiencia se vuelve medible."
+        guion: "Banca y regulación de redes"
+        apunte: "BCE (2019): eficiencia en costes ≈ 84 % (2006-2017) · Alemania: DEA y SFA, el valor más favorable (mínimo 60 %)"
+      - di: "Recapitulando el bloque: la función de costes responde a la producción, a los precios y al plazo, y la dualidad la hace estimable. [pausa] Los datos muestran costes en L e ineficiencias persistentes. ¿Qué implica para el mercado?"
+        guion: "Recapitulación: costes en L, ineficiencias persistentes"
+        apunte: "Idea clave: la dualidad convierte la teoría de los costes en un instrumento empírico"
+
+  # ==================================================================== III
+  - bloque: "III. Extensiones y críticas"
+    titulo: "III.1. Implicaciones sobre la estructura de mercado"
+    modo: pizarra
+    pasos:
+      - di: "Paso al tercer bloque: extensiones y críticas. Adelanto la conclusión: [pausa] la forma de los costes condiciona el mercado, y la U y la minimización del coste son cuestiones empíricas."
+        borrar: true
+        conservar: ["1b"]
+        guion: "Conclusión anticipada: estructura de mercado; la U y la minimización, cuestiones empíricas"
+      - di: "La estructura de costes, con el tamaño de la demanda, decide cuántas empresas caben. En competencia perfecta, las deseconomías tienen que llegar pronto. Y hay monopolio natural si la función de costes es subaditiva, que escribo: producirlo todo en una sola empresa cuesta menos que repartirlo."
+        pizarra: [{formula: 'C\Big(\sum_jq_j\Big)<\sum_jC(q_j)', zona: "1a", tam: 0.6}]
+        guion: "Monopolio natural: costes subaditivos"
+        apunte: "Baumol (1977): la subaditividad es la definición de monopolio natural"
+      - di: "Con un producto, las economías de escala bastan, pero no son necesarias: en el apoyo, entre cu cero y cu uno una sola empresa es más barata aunque su coste medio ya crezca. Con varios productos, las economías de alcance son necesarias."
+        apoyo: {grafico: subaditividad, zona: "2-3", alto: 0.8}
+        guion: "Economías de escala: suficientes, no necesarias"
+
+  - bloque: "III. Extensiones y críticas"
+    titulo: "III.2. Economías de escala externas"
+    modo: pizarra
+    pasos:
+      - di: "Las economías vistas son internas. Marshall distingue las externas: el coste de cada empresa baja cuando crece la industria, por el mercado de trabajo, los proveedores y la difusión del conocimiento. [pausa] No la mueven por su curva: la desplazan hacia abajo."
+        guion: "Economías externas (Marshall): desplazan la curva de costes"
+
+  - bloque: "III. Extensiones y críticas"
+    titulo: "III.3. Críticas desde la organización industrial: Stigler y la reserva de capacidad"
+    modo: pizarra
+    pasos:
+      - di: "Dos críticas atacan los dos supuestos centrales. Primera, la de Stigler en 1939: ¿tiene el coste medio forma de U? Trazo los ejes y la planta A, de coste mínimo, con una U cerrada."
+        borrar: ["1a", "2", "3"]
+        pizarra: [{grafico: stigler, capa: 2, zona: "2-3", alto: 0.8}]
+        guion: "Stigler (1939): ¿coste medio en U?"
+      - di: "Si la demanda es incierta, conviene una planta flexible, be: el factor fijo es divisible en la práctica y se ajusta con el variable, y su coste medio es casi plano en un intervalo amplio."
+        pizarra: [{grafico: stigler, capa: 3}]
+        guion: "Planta flexible: factor «fijo» divisible"
+      - di: "Su coste marginal es constante e igual al variable medio en ese tramo, y solo sube al agotarlo."
+        pizarra: [{grafico: stigler, capa: 4}]
+      - di: "Con la demanda entre cu mínimo y cu máximo, esa reserva de capacidad da un coste esperado menor aunque su mínimo sea mayor: [pausa] no hay un tamaño óptimo, sino una horquilla. Y los datos apoyan los costes en L."
+        pizarra: [{grafico: stigler, capa: 6}]
+        guion: "Reserva de capacidad: una horquilla de tamaños óptimos"
+
+  - bloque: "III. Extensiones y críticas"
+    titulo: "III.3. Críticas desde la organización industrial: la ineficiencia X de Leibenstein"
+    modo: pizarra
+    pasos:
+      - di: "La segunda va más lejos: ¿producen las empresas sobre su función de costes? Leibenstein, en 1966, sostiene que, sin presión competitiva, no: los contratos fijan el salario, pero no el esfuerzo. Escribo el coste observado: uno más ji por la función de costes de la esquina, con ji decreciente en la competencia."
+        pizarra: [{formula: '\begin{array}{c}C^{\mathrm{obs}}(\vec{w},q)=(1+\chi)\,C(\vec{w},q)\\[4pt] \chi\geq 0\end{array}', zona: "1a", tam: 0.6}]
+        guion: "Ineficiencia X: contratos incompletos, esfuerzo"
+      - di: "Con competencia, la amenaza de cierre disciplina el esfuerzo; en el monopolio, la vida tranquila eleva los costes, y la pérdida supera el triángulo de Harberger."
+        guion: "Monopolio: «vida tranquila» y más costes"
+        apunte: "Nickell (1996); Bloom y Van Reenen (2007): peores prácticas de gestión con menos competencia"
+      - di: "Stigler replica que es minimización de costes con otros argumentos, como el coste de vigilar el esfuerzo: [pausa] el debate desemboca en la teoría de la agencia."
+        guion: "Stigler (1976): «XIstence» · teoría de la agencia"
+
+  - bloque: "III. Extensiones y críticas"
+    titulo: "III.4. Otras extensiones"
+    modo: pizarra
+    pasos:
+      - di: "Por último, otras extensiones. Con varias plantas, el reparto iguala los costes marginales. Con varios productos aparecen las economías de alcance, que escribo: producir juntos cuesta menos que por separado."
+        borrar: ["2-3"]
+        pizarra: [{formula: 'C(q_1,q_2)<C(q_1,0)+C(0,q_2)', zona: "1a", tam: 0.52}]
+        guion: "Multiplanta: CMg iguales · multiproducto: economías de alcance"
+      - di: "Y las curvas de aprendizaje: el coste unitario baja con la producción acumulada, que escribo: ce de cu acumulada es ce uno por cu acumulada elevada a menos be. Cada duplicación lo multiplica por dos elevado a menos be. [pausa] En los módulos fotovoltaicos, un 27 por ciento menos por duplicación: be, cerca de cero coma cuarenta y cinco."
+        pizarra: [{formula: 'c(Q^{\mathrm{ac}})=c_1\,(Q^{\mathrm{ac}})^{-b}', zona: "1a", tam: 0.6}]
+        apoyo: {grafico: aprendizaje, zona: "2-3", alto: 0.8}
+        guion: "Fotovoltaica: 2⁻ᵇ ≈ 0,73, b ≈ 0,45"
+        apunte: "Wright (1936): aviones · Fraunhofer ISE (2026): −27 % por duplicación"
+      - di: "Recapitulando: [pausa] la forma de los costes decide la estructura del mercado, y Stigler y Leibenstein cuestionan la U y la minimización, con apoyo en los datos."
+        guion: "Recapitulación: estructura de mercado y críticas"
+
+  # ==================================================================== CONCLUSIÓN
+  - bloque: Conclusión
+    titulo: Conclusión
+    modo: guion
+    estructura: [Recapitulación, Relevancia, Extensiones, Opinión, Idea final]
+    pasos:
+      - di: "En conclusión, la función de costes resume la elección más barata: es cóncava y homogénea de grado uno en los precios, sus derivadas son las demandas condicionadas y contiene la tecnología. Su forma depende del plazo, y los datos matizan la U."
+        parte: Recapitulación
+        guion: ["I. C(w, q): Shephard, Hotelling, p = CMg; recupera la tecnología", "II. Plazos, estimación por dualidad: costes en L, ineficiencias", "III. Estructura de mercado; Stigler y Leibenstein"]
+      - di: "Su relevancia: decide cuántas empresas caben en un mercado, y es la referencia de reguladores y autoridades de competencia."
+        parte: Relevancia
+        guion: ["Estructura de mercado, regulación y competencia"]
+      - di: "Abre la puerta a la oferta en cada mercado, a los límites de la empresa, a la regulación y al comercio."
+        parte: Extensiones
+        guion: ["Oferta y mercados · límites de la empresa", "Regulación por comparación · comercio y economías de escala"]
+      - di: "En mi opinión, el supuesto más frágil no es la U, sino la precio-aceptación en los mercados de factores: con monopsonio, las isocostes dejan de ser rectas."
+        parte: Opinión
+        guion: ["Lo frágil: la precio-aceptación en los factores"]
+      - di: "Volvamos a la fotovoltaica: ¿cuánto de su abaratamiento se debe a la escala, al aprendizaje y a los precios de los factores? [pausa 800] Ha caído sobre todo por el aprendizaje, que desplaza la curva de costes hacia abajo; pero en 2025 no bajó, porque subió el coste del capital. La función de costes recoge las tres cosas, y la dualidad permite separarlas con datos: [pausa] esa es su utilidad, que el equilibrio general completará cuando los precios de los factores dejen de ser datos."
+        parte: Idea final
+        guion: ["¿Escala, aprendizaje o precios de los factores?", "> Sobre todo aprendizaje; en 2025, el coste del capital frenó la caída", "> C(w, q) recoge tecnología, escala y precios; la dualidad los separa", "Equilibrio general: los precios de los factores dejan de ser datos"]
