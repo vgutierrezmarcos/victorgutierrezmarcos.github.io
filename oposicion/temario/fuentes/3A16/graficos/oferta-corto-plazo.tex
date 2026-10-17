@@ -1,0 +1,59 @@
+% Oferta de la empresa a corto plazo: el coste marginal por encima del mínimo del CVMe.
+% Mismas curvas que costes-corto del 3.A.12: CV(q) = q^3 - 6 q^2 + 15 q, CF = 15 (hundido):
+%   CMg  = 3 q^2 - 12 q + 15;
+%   CVMe = q^2 - 6 q + 15      (mínimo en q = 3, CVMe = CMg = 6: mínimo de explotación);
+%   CMe  = CVMe + 15/q         (mínimo en q = 3,584, CMe = CMg = 10,53: óptimo de explotación).
+% Oferta a corto plazo: q = 0 si p < 6; salta a q = 3 en p = 6; después, el CMg.
+% Zonas de precio: p < 6, cierra; 6 <= p < 10,53, produce con pérdidas menores que CF;
+%   p > 10,53, beneficios.
+% q a 1,4 cm por unidad; 0,25 cm por euro.
+% Colores como en oferta-empresa: CMg morado, CMe azul; CVMe dorado.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{decorations.pathreplacing}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.4cm,y=0.25cm,
+    declare function={CMg(\q)=3*\q^2-12*\q+15; CVMe(\q)=\q^2-6*\q+15; CMe(\q)=\q^2-6*\q+15+15/\q;},
+    oferta/.style={curva3,line width=2.6pt,opacity=0.75},
+    zona/.style={decorate,decoration={brace,amplitude=4pt},thick,tceegris},
+    textozona/.style={etiqueta,font=\footnotesize,align=left,anchor=west}]
+  \def\qm{3.5840}
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (5.3,0) node[below left=2pt and 0pt] {$q_j$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,18) node[left] {$p$, CMg$_j$, CMe$_j$, CVMe$_j$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: coste variable medio
+  \capa{2}{\draw[curva4] plot[domain=0.6:4.75,samples=80,smooth] (\x,{CVMe(\x)})
+    node[etiqueta,right] {CVMe$_j$};}
+  % 3: coste medio, por encima del CVMe en el coste fijo medio
+  \capa{3}{\draw[curva2] plot[domain=1.55:4.7,samples=80,smooth] (\x,{CMe(\x)})
+    node[etiqueta,right] {CMe$_j$};}
+  % 4: coste marginal, que corta a los dos en sus mínimos
+  \capa{4}{\draw[curva1] plot[domain=0.45:4.1,samples=80,smooth] (\x,{CMg(\x)})
+    node[etiqueta,above] {CMg$_j$};}
+  % 5: mínimo de explotación (mínimo del CVMe)
+  \capa{5}{\node[punto] (MinE) at (3,6) {};}
+  \capa{5}{\draw[guia] (MinE) -- (0,6) node[left,text=black] {$\min\mathrm{CVMe}_j$};}
+  \capa{5}{\draw[guia] (MinE) -- (3,0);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=right,anchor=north east] at (3.04,-0.5) {mínimo de\\ explotación};}
+  % 6: óptimo de explotación (mínimo del CMe)
+  \capa{6}{\node[punto] (OptE) at (\qm,{CMe(\qm)}) {};}
+  \capa{6}{\draw[guia] (OptE) -- (0,{CMe(\qm)}) node[left,text=black] {$\min\mathrm{CMe}_j$};}
+  \capa{6}{\draw[guia] (OptE) -- (\qm,0);}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (3.54,-0.5) {óptimo de\\ explotación};}
+  % 7: oferta a corto plazo: 0 por debajo del mínimo de explotación y el CMg por encima
+  \capa{7}{\draw[oferta] (0,0) -- (0,6);}
+  \capa{7}{\draw[oferta] plot[domain=3:4.1,samples=50,smooth] (\x,{CMg(\x)});}
+  \capa{7}{\draw[guia,tceeverde,thick] (0,6) -- (3,6);}
+  \capa{7}{\node[etiqueta,text=tceeverde,font=\footnotesize,anchor=north] at (1.9,5.85) {salto};}
+  \capa{7}{\node[etiqueta,text=tceeverde,anchor=east] at (3.65,16.6) {oferta $q_j^{\mathrm{CP}}(p)$};}
+  % 8: las 3 zonas de precio
+  \capa{8}{\draw[zona] (5.55,5.9) -- (5.55,0.1);}
+  \capa{8}{\node[textozona] at (5.68,3) {cierra};}
+  \capa{8}{\draw[zona] (5.55,10.43) -- (5.55,6.1);}
+  \capa{8}{\node[textozona] at (5.68,8.26) {produce con pérdidas\\ (menores que CF$_j$)};}
+  \capa{8}{\draw[zona] (5.55,17) -- (5.55,10.63);}
+  \capa{8}{\node[textozona] at (5.68,13.8) {beneficios};}
+\end{tikzpicture}
+\end{document}

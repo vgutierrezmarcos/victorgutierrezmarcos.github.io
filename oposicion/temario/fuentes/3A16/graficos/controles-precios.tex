@@ -1,0 +1,67 @@
+% Equilibrio con controles de precios (anexo C): manda el lado corto.
+% Mismas curvas que excedentes: demanda inversa p^D(x) = 4,2 - 0,6 x;
+% oferta inversa p^S(q) = 0,6 + 0,9 q; equilibrio x* = q* = 2,4 y p* = 2,76.
+% Precio máximo p^max = 2: q(p^max) = 1,4/0,9 = 1,556 < x(p^max) = 2,2/0,6 = 3,667
+%   (exceso de demanda); se intercambia q(p^max); pérdida: triángulo de vértices
+%   (1,556; p^D = 3,267), (1,556; p^S = 2) y E.
+% Precio mínimo p^min = 3,4: x(p^min) = 0,8/0,6 = 1,333 < q(p^min) = 2,8/0,9 = 3,111
+%   (exceso de oferta); se intercambia x(p^min); pérdida: triángulo de vértices
+%   (1,333; p^D = 3,4), (1,333; p^S = 1,8) y E.
+% Corrección respecto al original (ICEX-CECO, fig. 21): allí el punto sobre la
+% demanda con p mínimo aparece rotulado q(p̄); aquí, x(p^min).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,
+    declare function={pd(\x)=4.2-0.6*\x; ps(\x)=0.6+0.9*\x;},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Precio máximo ----------------
+  \begin{scope}
+    % 1: ejes, D, S y E
+    \capa{1}{\ejes{$x,q$}{$p$}{5.4}{4.8}}
+    \capa{1}{\node[titulo] at (2.7,4.9) {Precio máximo};}
+    \capa{1}{\draw[curva1] (0,{pd(0)}) -- (5.0,{pd(5.0)}) node[etiqueta,right] {$x(p)$};}
+    \capa{1}{\draw[curva3] (0,{ps(0)}) -- (4.2,{ps(4.2)}) node[etiqueta,right] {$q(p)$};}
+    \capa{1}{\node[punto] (E) at (2.4,2.76) {};}
+    \capa{1}{\node[etiqueta,right=2pt] at (E) {$E$};}
+    \capa{1}{\draw[guia] (E) -- (0,2.76) node[left,text=black] {$p^*$};}
+    % 2: precio máximo
+    \capa{2}{\draw[curva4] (0,2.0) -- (4.9,2.0) node[etiqueta,right,text=black] {$p^{\max}$};}
+    % 3: lado corto: se intercambia q(p^max)
+    \capa{3}{\node[punto] (Q) at (1.556,2.0) {};}
+    \capa{3}{\draw[guia] (Q) -- (1.556,0) node[below,text=black] {$q(p^{\max})$};}
+    % 4: exceso de demanda
+    \capa{4}{\node[punto] (X) at (3.667,2.0) {};}
+    \capa{4}{\draw[guia] (X) -- (3.667,0) node[below,text=black] {$x(p^{\max})$};}
+    \capa{4}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (1.556,1.9) -- (3.667,1.9) node[midway,below=5pt,font=\footnotesize] {exceso de demanda};}
+    % 5: pérdida de bienestar
+    \capa{5}{\fill[perdida] (1.556,{pd(1.556)}) -- (2.4,2.76) -- (1.556,2.0) -- cycle;}
+    \capa{5}{\draw[guia,solid,->] (0.7,3.95) node[etiqueta,above,text=tceerojo,font=\footnotesize] {pérdida} -- (1.8,2.75);}
+  \end{scope}
+  % ---------------- Precio mínimo ----------------
+  \begin{scope}[xshift=7.6cm]
+    % 6: ejes, D, S y E
+    \capa{6}{\ejes{$x,q$}{$p$}{5.4}{4.8}}
+    \capa{6}{\node[titulo] at (2.7,4.9) {Precio mínimo};}
+    \capa{6}{\draw[curva1] (0,{pd(0)}) -- (5.0,{pd(5.0)}) node[etiqueta,right] {$x(p)$};}
+    \capa{6}{\draw[curva3] (0,{ps(0)}) -- (4.2,{ps(4.2)}) node[etiqueta,right] {$q(p)$};}
+    \capa{6}{\node[punto] (E2) at (2.4,2.76) {};}
+    \capa{6}{\node[etiqueta,right=2pt] at (E2) {$E$};}
+    \capa{6}{\draw[guia] (E2) -- (0,2.76) node[left,text=black] {$p^*$};}
+    % 7: precio mínimo
+    \capa{7}{\draw[curva4] (0,3.4) -- (4.9,3.4) node[etiqueta,right,text=black] {$p^{\min}$};}
+    % 8: lado corto: se intercambia x(p^min)
+    \capa{8}{\node[punto] (X2) at (1.333,3.4) {};}
+    \capa{8}{\draw[guia] (X2) -- (1.333,0) node[below,text=black] {$x(p^{\min})$};}
+    % 9: exceso de oferta
+    \capa{9}{\node[punto] (Q2) at (3.111,3.4) {};}
+    \capa{9}{\draw[guia] (Q2) -- (3.111,0) node[below,text=black] {$q(p^{\min})$};}
+    \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt},thick] (1.333,3.5) -- (3.111,3.5) node[midway,above=5pt,font=\footnotesize] {exceso de oferta};}
+    % 10: pérdida de bienestar
+    \capa{10}{\fill[perdida] (1.333,3.4) -- (2.4,2.76) -- (1.333,1.8) -- cycle;}
+    \capa{10}{\draw[guia,solid,->] (0.6,0.75) node[etiqueta,below,text=tceerojo,font=\footnotesize] {pérdida} -- (1.6,2.5);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

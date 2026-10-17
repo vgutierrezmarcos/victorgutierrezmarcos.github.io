@@ -12,7 +12,7 @@ Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplica
 >
 > - **I.1**. Una celda (100): `esquema-ingredientes-empresa` (capas 1-6: conjunto tecnológico, F, ingresos y costes; MB y sus soluciones; MC y las suyas). Se borra (cambia la rejilla).
 > - **I.2 e I.3**. Rejilla 24(55/45) | 20(55/45) | 56. Columna 3: el **esquema de dualidad de la empresa** (`esquema-dualidad-empresa`), que crece por capas durante todo el bloque (1-3 en la MB, 4-6 en la MC, 7-8 con la MB en dos etapas y las identidades, 9 con la recuperación de la tecnología) y no se borra hasta el final del bloque. 1a-2a: los gráficos que se dibujan y se borran: `mb-un-factor` (capas 1-6), `mc` (1-6), `concavidad-c` (1-6), el gráfico conjunto `mb-mc` (1-8) y `recuperar-isocuanta` (1-6). 1b-2b: las fórmulas de paso (p·PMgᵢ = wᵢ, el apoyo con las propiedades de B, la lagrangiana y las CPO de la MC), que se borran antes de escribir la función de costes; 1b: desde el final de la MC, las dos funciones clave; 2b: la matriz de sustitución. Al acabar el bloque quedan el esquema completo y la esquina.
-> - **II.1 y II.2**. Rejilla 24(55/45) | 38 | 38 (cambia la rejilla: se borra todo menos 1b). 1a: ε_C,q = CMg/CMe y, recuadrada, ε_q,λ = 1/ε_C,q; 2: `senda-expansion` (capas 1-6); 3: `costes-largo` (capas 1-9). Con Δw⃗: 2, `demanda-condicionada-w` (capas 1-5); 3, la ecuación de Slutsky de los factores y ε_C,wᵢ = sᵢ. Corto plazo: 1a, el problema a corto (mín arriba y «s.a.» debajo), CMg = w_L/PMg_L y CVMe = w_L/PMe_L, y ε_CV,q; 2-3, apoyo con `corto-largo-senda`, que se borra; 2, `costes-corto` (capas 1-10); 3, apoyo con la tabla de fases. Largo plazo: 2, `envolvente` (capas 1-13); 3, apoyo con el detalle `tangencia-corto-largo` y, debajo, el principio de Le Châtelier-Samuelson.
+> - **II.1 y II.2**. Rejilla 24(55/45) | 38 | 38 (cambia la rejilla: se borra todo menos 1b). 1a: ε_C,q = CMg/CMe y, recuadrada, ε_q,λ = 1/ε_C,q; 2: `senda-expansion` (capas 1-6); 3: `costes-largo` (capas 1-9). Con Δw⃗: 2, `demanda-condicionada-w` (capas 1-5); 3, la ecuación de Slutsky de los factores y ε_C,wᵢ = sᵢ. Corto plazo: 1a, el problema a corto (mín arriba y «s.a.» debajo), CMg = w_L/PMg_L y CVMe = w_L/PMe_L, y ε_CV,q; 2-3, apoyo con `corto-largo-senda`, que se borra; 2, `costes-corto` (capas 1-10); 3, apoyo con la tabla de fases. Largo plazo: 2, `envolvente` (capas 1-13); 3, apoyo con el detalle `tangencia-corto-largo` y, debajo, el principio de Le Chatelier-Samuelson.
 > - **II.3 y II.4**. Rejilla 24(55/45) | 76 (se conserva 1b). 1a: la Cobb-Douglas de costes en logaritmos; 2: la translog de costes en dos líneas, sus restricciones, las participaciones sᵢ (Shephard) y ε_C,q; en II.4 se borra la columna 2 para el apoyo con `christensen-greene-1970`.
 > - **II.5**. Rejilla 24(55/45) | 38 | 38 (se conserva 1b). 2: `farrell` (capas 1-6; las tres eficiencias como cocientes de segmentos salen en el propio gráfico, no se escriben aparte); 3: la frontera estocástica, el problema del DEA (mín arriba y restricciones debajo) y apoyo con la comparación SFA-DEA.
 > - **III**. Misma rejilla; al empezar se borra todo menos 1b. III.1: 1a, la subaditividad; 2-3, apoyo con `subaditividad`. III.2, de palabra. III.3: 2-3, `stigler` (capas 1-6); 1a, C^obs = (1 + χ)C(w⃗, q) con χ ≥ 0 debajo, junto a la función de costes de la esquina. III.4: 1a, las economías de alcance y la curva de aprendizaje; 2-3, apoyo con `aprendizaje`. Así queda hasta la conclusión, con las dos funciones clave en la esquina.
@@ -227,7 +227,7 @@ Y el coste marginal sube si el factor es normal, y baja si es inferior. La produ
 
 Menor que uno en la etapa uno; mayor que uno en la dos, donde produce la empresa competitiva. La tres nunca está en la función de costes.
 
-### II.2. Análisis de plazos: largo plazo y principio de Le Châtelier-Samuelson
+### II.2. Análisis de plazos: largo plazo y principio de Le Chatelier-Samuelson
 
 [Borrar las zonas 1a, 2 y 3] [Pizarra 2: gráfico `envolvente` hasta la capa 4] A largo plazo, la empresa elige el tamaño de la planta. Borro y trazo, arriba, los ejes y los costes totales a corto de tres plantas, cada una con su coste fijo.
 
@@ -245,9 +245,9 @@ Menor que uno en la etapa uno; mayor que uno en la dos, donde produce la empresa
 
 [Pizarra: gráfico `envolvente` hasta la capa 13] Solo en el mínimo del coste medio a largo coinciden los cuatro: los costes medio y marginal, a corto y a largo.
 
-[Pizarra 3: fórmula `\begin{array}{l}\dfrac{\partial z_i^{\mathrm{LP}}}{\partial w_i}\leq\dfrac{\partial z_i^{\mathrm{CP}}}{\partial w_i}\leq 0\\[10pt] \dfrac{\partial q^{\mathrm{LP}}}{\partial p}\geq\dfrac{\partial q^{\mathrm{CP}}}{\partial p}\geq 0\end{array}`] Lo explica el principio de Le Châtelier-Samuelson, que escribo debajo: a largo plazo, las demandas de factores y la oferta son más elásticas que a corto. Cuantas más restricciones tiene la empresa, menos responde a los precios.
+[Pizarra 3: fórmula `\begin{array}{l}\dfrac{\partial z_i^{\mathrm{LP}}}{\partial w_i}\leq\dfrac{\partial z_i^{\mathrm{CP}}}{\partial w_i}\leq 0\\[10pt] \dfrac{\partial q^{\mathrm{LP}}}{\partial p}\geq\dfrac{\partial q^{\mathrm{CP}}}{\partial p}\geq 0\end{array}`] Lo explica el principio de Le Chatelier-Samuelson, que escribo debajo: a largo plazo, las demandas de factores y la oferta son más elásticas que a corto. Cuantas más restricciones tiene la empresa, menos responde a los precios.
 
-> Apunte: Samuelson (1947) traslada el principio del químico Le Châtelier (1884)
+> Apunte: Samuelson (1947) traslada el principio del químico Le Chatelier (1884)
 
 Recapitulando: a largo plazo, los costes reflejan los rendimientos a escala; a corto, los del factor variable. Todo es una sola función, que la dualidad permite estimar.
 

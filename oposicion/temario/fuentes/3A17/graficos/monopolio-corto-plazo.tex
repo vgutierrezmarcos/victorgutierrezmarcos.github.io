@@ -1,0 +1,75 @@
+% Monopolio a corto plazo con beneficios (izquierda) y con pérdidas (derecha)
+% (3.A.17, I.2, nota de la condición de viabilidad). Misma planta en los 2
+% paneles; cambia la demanda.
+%   CV(q) = q^3 - 6q^2 + 15q, CF = 15 (las cifras de costes-corto del 3.A.12):
+%   CMg = 3q^2 - 12q + 15; CVMe = q^2 - 6q + 15; CMe = CVMe + 15/q.
+%   Izquierda: p = 22 - 2,5q, IMg = 22 - 5q -> q^M = 3,089; p^M = 14,28;
+%     CMg(q^M) = 6,56; CMe(q^M) = 10,86 < p^M: beneficio.
+%   Derecha: p = 14 - 2q, IMg = 14 - 4q -> q^M = 2,535; p^M = 8,93;
+%     CMg(q^M) = 3,86; CVMe(q^M) = 6,22 < p^M < CMe(q^M) = 12,13: pérdidas
+%     menores que el coste fijo; sigue produciendo.
+% q a 0,6 cm por unidad; p a 0,17 cm por unidad; panel derecho desplazado 6,6 cm.
+% Elaboración propia a partir de Koutsoyiannis (1979, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.17cm,
+    declare function={cmg(\q)=3*\q^2-12*\q+15; cvme(\q)=\q^2-6*\q+15; cme(\q)=\q^2-6*\q+15+15/\q;},
+    perdida/.style={fill=tceerojo,fill opacity=0.2,draw=none},
+    elast/.style={etiqueta,font=\footnotesize}]
+  % ================= panel izquierdo: beneficios =================
+  \def\qM{3.0888}\def\pM{14.2781}\def\cM{6.5562}\def\eM{10.8642}
+  % 1: ejes y título
+  \capa{1}{\draw[eje] (0,0) -- (9.6,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,24) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\node[etiqueta,anchor=base] at (4.8,25.5) {Con beneficios};}
+  % 2: demanda e ingreso marginal
+  \capa{2}{\draw[curva1] (0,22) -- (8.8,0) node[etiqueta,above right] {$p(q)$};}
+  \capa{2}{\draw[curva2] (0,22) -- (4.4,0) node[etiqueta,above right] {IMg};}
+  % 3: costes: marginal y medio
+  \capa{3}{\draw[curvanueva] plot[domain=0.45:4.3,samples=60,smooth] (\x,{cmg(\x)}) node[etiqueta,above] {CMg};}
+  \capa{3}{\draw[curva3] plot[domain=1.15:5.6,samples=60,smooth] (\x,{cme(\x)}) node[etiqueta,right] {CMe};}
+  % 4: equilibrio IMg = CMg y precio en la demanda
+  \capa{4}{\node[punto] (I) at (\qM,\cM) {};}
+  \capa{4}{\node[punto] (M) at (\qM,\pM) {};}
+  \capa{4}{\draw[guia] (M) -- (\qM,0) node[below] {$q^M$};}
+  \capa{4}{\draw[guia] (M) -- (0,\pM) node[left] {$p^M$};}
+  \capa{4}{\draw[guia] (\qM,\eM) -- (0,\eM) node[left] {$\mathrm{CMe}$};}
+  % 5: beneficio
+  \capa{5}{\begin{scope}[on background layer]
+    \fill[area2] (0,\eM) rectangle (\qM,\pM);
+  \end{scope}}
+  \capa{5}{\node[elast] at (1.0,12.6) {$B>0$};}
+  % ================= panel derecho: pérdidas =================
+  \begin{scope}[xshift=6.6cm]
+    \def\qM{2.5352}\def\pM{8.9296}\def\cM{3.8593}\def\vM{6.2161}\def\eM{12.1328}
+    % 6: ejes y título
+    \capa{6}{\draw[eje] (0,0) -- (9.6,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{6}{\draw[eje] (0,0) -- (0,24) node[left] {$p$};}
+    \capa{6}{\node[below left] at (0,0) {$0$};}
+    \capa{6}{\node[etiqueta,anchor=base] at (4.8,25.5) {Con pérdidas};}
+    % 7: demanda más baja e ingreso marginal
+    \capa{7}{\draw[curva1] (0,14) -- (7,0) node[etiqueta,above right] {$p(q)$};}
+    \capa{7}{\draw[curva2] (0,14) -- (3.5,0) node[etiqueta,above right] {IMg};}
+    % 8: los mismos costes, ahora también el variable medio
+    \capa{8}{\draw[curvanueva] plot[domain=0.45:4.3,samples=60,smooth] (\x,{cmg(\x)}) node[etiqueta,above] {CMg};}
+    \capa{8}{\draw[curva3] plot[domain=1.15:5.0,samples=60,smooth] (\x,{cme(\x)}) node[etiqueta,above] {CMe};}
+    \capa{8}{\draw[curva4] plot[domain=0.8:5.6,samples=60,smooth] (\x,{cvme(\x)}) node[etiqueta,right] {CVMe};}
+    % 9: equilibrio
+    \capa{9}{\node[punto] (I2) at (\qM,\cM) {};}
+    \capa{9}{\draw[guia] (\qM,\eM) -- (\qM,0) node[below] {$q^M$};}
+    \capa{9}{\node[punto] (M2) at (\qM,\pM) {};}
+    \capa{9}{\draw[guia] (M2) -- (0,\pM) node[left] {$p^M$};}
+    \capa{9}{\draw[guia] (\qM,\eM) -- (0,\eM) node[left] {$\mathrm{CMe}$};}
+    \capa{9}{\draw[guia] (\qM,\vM) -- (0,\vM) node[left] {$\mathrm{CVMe}$};}
+    % 10: pérdidas, menores que el coste fijo porque p^M > CVMe
+    \capa{10}{\begin{scope}[on background layer]
+      \fill[perdida] (0,\pM) rectangle (\qM,\eM);
+    \end{scope}}
+    \capa{10}{\node[elast,anchor=west] (P) at (2.0,20.3) {$B<0$};}
+    \capa{10}{\draw[->,thin,black,shorten >=1pt] (P.west) .. controls (1.7,17) .. (1.9,11.4);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

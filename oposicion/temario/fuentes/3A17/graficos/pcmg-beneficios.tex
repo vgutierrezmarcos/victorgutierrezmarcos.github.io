@@ -1,0 +1,31 @@
+% Primer óptimo con beneficios (3.A.17, anexo A.2): la demanda corta al CMg en
+% el tramo creciente del CMe. Misma estética que regulacion-monopolio-natural.
+% C(q) = F + c q + d q^2 con F = 4, c = 1, d = 0,25:
+%   CMg(q) = 1 + 0,5 q; CMe(q) = 4/q + 1 + 0,25 q (mínimo en q = 4, CMe = 3).
+% Demanda p = 9 - 0,6 q.
+%   p = CMg: 9 - 0,6 q = 1 + 0,5 q -> q^{CMg} = 7,2727, p = 4,6364 (q > 4: tramo
+%   creciente del CMe); CMe(q^{CMg}) = 3,3682; beneficios (CMg - CMe) q = 9,22.
+% Elaboración propia a partir de Braeutigam (1989).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,
+    declare function={dem(\q)=9-0.6*\q; cmg(\q)=1+0.5*\q; cme(\q)=4/\q+1+0.25*\q;}]
+  \def\qc{7.2727}\def\pc{4.6364}\def\mc{3.3682}
+  % 1: ejes, demanda, coste medio y coste marginal
+  \capa{1}{\ejes{$q$}{$p$}{11.5}{10}}
+  \capa{1}{\draw[curva1] plot[domain=0:10.6,samples=2] (\x,{dem(\x)}) node[etiqueta,right] {$D$};}
+  \capa{1}{\draw[curva2] plot[domain=0.5:10.6,samples=100,smooth] (\x,{cme(\x)}) node[etiqueta,right] {$\mathrm{CMe}$};}
+  \capa{1}{\draw[curvanueva] plot[domain=0:10.6,samples=2] (\x,{cmg(\x)}) node[etiqueta,right] {$\mathrm{CMg}$};}
+  % 2: primer óptimo, p = CMg, en el tramo creciente del CMe
+  \capa{2}{\node[punto] (C) at (\qc,\pc) {};}
+  \capa{2}{\draw[guia] (C) -- (\qc,0) node[below,text=black] {$q^{\mathrm{CMg}}$};}
+  \capa{2}{\draw[guia] (C) -- (0,\pc) node[left,text=black] {$p=\mathrm{CMg}$};}
+  % 3: beneficios (CMg - CMe) q, gravables con un impuesto de suma fija
+  \capa{3}{\fill[area] (0,\mc) rectangle (\qc,\pc);}
+  \capa{3}{\draw[guia] (\qc,\mc) -- (0,\mc) node[left,text=black] {$\mathrm{CMe}(q^{\mathrm{CMg}})$};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=south west] (B) at (5.6,7.0) {beneficios $(\mathrm{CMg}-\mathrm{CMe})\,q$:\\ impuesto de suma fija};}
+  \capa{3}{\draw[thin,tceegris] (B.south west) -- (4.8,4.0);}
+\end{tikzpicture}
+\end{document}

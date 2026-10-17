@@ -1,0 +1,69 @@
+% Tarifa en dos partes con 2 tipos de consumidores (3.A.17, II.1.2, c).
+% Demandas p = t_i (1 - q), es decir q_i(p) = 1 - p/t_i, con t_1 = 3 (tipo bajo)
+% y t_2 = 6 (tipo alto); coste marginal c = 1,2; el mismo número de cada tipo.
+%   i) Cuotas distintas: p = c, A_i = EC_i(c); q_1(c) = 0,6, q_2(c) = 0,8.
+%   ii) Cuota común sin exclusión (Oi): A = EC_1(p) y
+%       p - c = n_2 [q_2(p) - q_1(p)] / [n_1/t_1 + n_2/t_2] = (p/6)/(1/2) = p/3
+%       -> p = 1,8 > c; q_1(p) = 0,4, q_2(p) = 0,7.
+%   iii) Cuota que excluye al tipo bajo: p = c, A = EC_2(c).
+% Elaboración propia a partir de Oi (1971).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=3.4cm,y=0.7cm,
+    declare function={da(\q)=3*(1-\q); db(\q)=6*(1-\q);},
+    titulo/.style={font=\small\bfseries,align=center}]
+  \def\c{1.2}\def\p{1.8}
+  % ============ i) Cuotas distintas: discriminación perfecta ============
+  \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,6.5) node[left] {$p$};}
+  \capa{1}{\node[titulo] at (0.56,7.3) {i) Cuotas distintas};}
+  \capa{2}{\draw[curva1] plot[domain=0:0.86,samples=2] (\x,{da(\x)}) node[etiqueta,right] {$D_1$};}
+  \capa{2}{\draw[curva3] plot[domain=0:0.88,samples=2] (\x,{db(\x)}) node[etiqueta,above right=-1pt and 0pt] {$D_2$};}
+  \capa{2}{\draw[curvanueva] (0,\c) -- (1.08,\c);}
+  \capa{2}{\node[left] at (0,\c) {$p=c$};}
+  \capa{3}{\fill[area2] (0,\c) -- (0,6) -- (0.8,\c) -- cycle;}
+  \capa{3}{\node[punto] at (0.8,\c) {};}
+  \capa{3}{\node[etiqueta,text=tceedorado] at (0.13,3.6) {$A_2$};}
+  \capa{4}{\fill[area] (0,\c) -- (0,3) -- (0.6,\c) -- cycle;}
+  \capa{4}{\node[punto] at (0.6,\c) {};}
+  \capa{4}{\node[etiqueta,text=tceemorado] at (0.13,1.75) {$A_1$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize] at (0.56,-0.9) {$A_i=\mathrm{EC}_i(c)$};}
+  % ============ ii) Cuota común que no excluye ============
+  \begin{scope}[xshift=4.9cm]
+    \capa{5}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{5}{\draw[eje] (0,0) -- (0,6.5) node[left] {$p$};}
+    \capa{5}{\node[titulo] at (0.56,7.3) {ii) Cuota común\\ sin exclusión};}
+    \capa{6}{\draw[curva1] plot[domain=0:0.86,samples=2] (\x,{da(\x)}) node[etiqueta,right] {$D_1$};}
+    \capa{6}{\draw[curva3] plot[domain=0:0.88,samples=2] (\x,{db(\x)}) node[etiqueta,above right=-1pt and 0pt] {$D_2$};}
+    \capa{6}{\draw[curvanueva] (0,\c) -- (1.08,\c);}
+    \capa{6}{\node[left] at (0,\c) {$c$};}
+    \capa{7}{\draw[guia] (0,\p) node[left,text=black] {$p$} -- (0.7,\p);}
+    \capa{7}{\node[punto] at (0.4,\p) {};}
+    \capa{7}{\node[punto] at (0.7,\p) {};}
+    \capa{8}{\fill[area] (0,\p) -- (0,3) -- (0.4,\p) -- cycle;}
+    \capa{8}{\node[etiqueta,text=tceemorado] at (0.1,2.2) {$A$};}
+    \capa{8}{\node[etiqueta,font=\footnotesize] at (0.56,-0.9) {$A=\mathrm{EC}_1(p),\ p>c$};}
+    \capa{9}{\fill[area2] (0,\c) rectangle (0.7,\p);}
+    \capa{9}{\node[etiqueta,font=\footnotesize,anchor=west] (M) at (0.78,3.0) {$(p-c)\,q_2(p)$};}
+    \capa{9}{\draw[thin,tceegris] (M.south west) -- (0.6,1.55);}
+  \end{scope}
+  % ============ iii) Cuota común que excluye al tipo bajo ============
+  \begin{scope}[xshift=9.8cm]
+    \capa{10}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{10}{\draw[eje] (0,0) -- (0,6.5) node[left] {$p$};}
+    \capa{10}{\node[titulo] at (0.56,7.3) {iii) Cuota común\\ que excluye};}
+    \capa{11}{\draw[curva1,dashed] plot[domain=0:0.86,samples=2] (\x,{da(\x)}) node[etiqueta,right] {$D_1$};}
+    \capa{11}{\draw[curva3] plot[domain=0:0.88,samples=2] (\x,{db(\x)}) node[etiqueta,above right=-1pt and 0pt] {$D_2$};}
+    \capa{11}{\draw[curvanueva] (0,\c) -- (1.08,\c);}
+    \capa{11}{\node[left] at (0,\c) {$p=c$};}
+    \capa{12}{\fill[area2] (0,\c) -- (0,6) -- (0.8,\c) -- cycle;}
+    \capa{12}{\node[punto] at (0.8,\c) {};}
+    \capa{12}{\node[etiqueta,text=tceedorado] at (0.13,3.6) {$A$};}
+    \capa{12}{\node[etiqueta,font=\footnotesize] at (0.56,-0.9) {$A=\mathrm{EC}_2(c)$};}
+    \capa{13}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=west] (X) at (0.55,3.4) {tipo bajo\\ excluido};}
+    \capa{13}{\draw[thin,tceegris] (X.south west) -- (0.45,1.7);}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

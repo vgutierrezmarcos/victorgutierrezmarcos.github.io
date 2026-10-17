@@ -1,0 +1,56 @@
+% Salario mínimo con monopsonio. Elaboración propia a partir de
+% Manning (2003).
+% Base común con monopsonio.tex y monopolio-bilateral.tex (mismas curvas y escalas):
+%   oferta inversa   w_L(L)  = 1 + L
+%   gasto marginal   GMg_L   = 1 + 2L   (misma ordenada, doble pendiente)
+%   VPMg_L           = 8 - L/2
+%   Monopsonio: GMg = VPMg -> L^M = 2,8; w^M = w_L(L^M) = 3,8; VPMg(L^M) = 6,6
+%   Competencia: VPMg = w_L -> L^c = 14/3; w^c = 17/3
+% Salario mínimo en el tramo intermedio: \underline w = 4,7 (w^M < 4,7 < w^c):
+%   oferta y GMg horizontales hasta L^S = 3,7; empleo 3,7 > L^M (VPMg(3,7) = 6,15 > 4,7).
+% Salario mínimo alto: \underline w' = 6,35 > w^c: L^D = 3,3 (VPMg), L^S = 5,35: paro.
+% Senda del empleo según \underline w: oferta de M a C y VPMg de C a (L^M, VPMg(L^M)).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={of(\l)=1+\l; gmg(\l)=1+2*\l; vpmg(\l)=8-0.5*\l;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: valor del producto marginal (lo que aporta el trabajo)
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L$};}
+  % 3: oferta de trabajo
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right] {$w_L(L)$};}
+  % 4: gasto marginal
+  \capa{4}{\draw[curva4] plot[domain=0:3.95] (\x,{gmg(\x)}) node[etiqueta,above] {$\mathrm{GMg}_L$};}
+  % 5: equilibrio de monopsonio, GMg = VPMg, y empleo L^M
+  \capa{5}{\node[punto] (G) at (2.8,6.6) {};}
+  \capa{5}{\draw[guia] (G) -- (2.8,0) node[below,text=black] {$L^M$};}
+  % 6: salario sobre la oferta, w^M
+  \capa{6}{\node[punto] (M) at (2.8,3.8) {};}
+  \capa{6}{\node[etiqueta,below right] at (M) {$M$};}
+  \capa{6}{\draw[guia] (M) -- (0,3.8) node[left,text=black] {$w^M$};}
+  % 7: equilibrio competitivo, VPMg = oferta
+  \capa{7}{\node[punto] (C) at ({14/3},{17/3}) {};}
+  \capa{7}{\node[etiqueta,below right] at (C) {$C$};}
+  \capa{7}{\draw[guia] (0,{17/3}) node[left,text=black] {$w^c$} -| ({14/3},0) node[below,text=black] {$L^c$};}
+  % 8: salario mínimo intermedio: la oferta se hace horizontal hasta L^S(w)
+  \capa{8}{\draw[curvanueva] (0,4.7) -- (3.7,4.7);}
+  \capa{8}{\node[etiqueta,left] at (0,4.7) {$\underline{w}$};}
+  % 9: el gasto marginal también es horizontal y salta al GMg en L^S(w)
+  \capa{9}{\draw[curvanueva,desplazada] (3.7,4.7) -- (3.7,{gmg(3.7)});}
+  % 10: nuevo empleo, mayor que el de monopsonio
+  \capa{10}{\node[punto] (E) at (3.7,4.7) {};}
+  \capa{10}{\draw[guia] (E) -- (3.7,0) node[below=0.42cm,text=black] {$L^S(\underline{w})$};}
+  % 11: salario mínimo por encima de w^c: el empleo lo da el VPMg y hay paro
+  \capa{11}{\draw[curvanueva] (0,6.35) -- (5.35,6.35);}
+  \capa{11}{\node[etiqueta,left] at (0,6.35) {$\underline{w}'$};}
+  \capa{11}{\node[punto] at (3.3,6.35) {};}
+  \capa{11}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceerojo] (3.3,6.5) -- (5.35,6.5)
+    node[midway,above=4pt,etiqueta,font=\footnotesize,text=tceerojo] {paro};}
+  % 12: senda del empleo según el salario mínimo
+  \capa{12}{\draw[curva3,line width=5pt,opacity=0.35] (2.8,3.8) -- ({14/3},{17/3}) -- (2.8,6.6);}
+  \capa{12}{\node[etiqueta,font=\footnotesize,text=tceeverde,align=left,anchor=north west] at (3.95,4.3) {empleo según $\underline{w}$};}
+\end{tikzpicture}
+\end{document}

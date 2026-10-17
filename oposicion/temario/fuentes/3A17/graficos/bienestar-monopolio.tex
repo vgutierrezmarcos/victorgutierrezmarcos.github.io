@@ -1,0 +1,72 @@
+% Coste social del monopolio (3.A.17, I.3): transferencia, triángulo de
+% Harberger, rectángulo de Tullock-Posner e ineficiencia X.
+% Misma base que equilibrio-monopolio.tex:
+%   p(q) = 9 - q; IMg = 9 - 2q; CMg = 1 + q/2.
+%   q^M = 3,2; p^M = 5,8; CMg(q^M) = 2,6; q^c = 5,333; p^c = 3,667.
+%   Transferencia (y rectángulo de Tullock-Posner): (p^M - p^c) q^M = 6,83.
+%   Triángulo de Harberger: 1/2 (5,8 - 2,6)(5,333 - 3,2) = 3,41
+%     (parte del EC por encima de p^c y parte del EP por debajo).
+%   Ineficiencia X: chi = 0,3; franja entre CMg y (1 + chi) CMg hasta q^M
+%     ((1 + chi) CMg(q^M) = 3,38 < p^c: no se solapa con el rectángulo).
+% Elaboración propia a partir de Harberger (1954), Posner (1975) y
+% Leibenstein (1966).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.6cm,
+    declare function={dem(\q)=9-\q; img(\q)=9-2*\q; cmg(\q)=1+0.5*\q; cmgx(\q)=1.3*(1+0.5*\q);},
+    areax/.style={fill=tceeverde,fill opacity=0.28,draw=none},
+    rentas/.style={pattern=north east lines,pattern color=tceerojo},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none},
+    llamada/.style={->,thin,black,shorten >=1pt}]
+  \def\qM{3.2}\def\pM{5.8}\def\cM{2.6}\def\qc{5.3333}\def\pc{3.6667}
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,10) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: demanda
+  \capa{2}{\draw[curva1] plot[domain=0:8.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};}
+  % 3: ingreso marginal
+  \capa{3}{\draw[curva2] plot[domain=0:4.5] (\x,{img(\x)});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west] at (4.45,0.55) {IMg};}
+  % 4: coste marginal
+  \capa{4}{\draw[curvanueva] plot[domain=0:8.4] (\x,{cmg(\x)}) node[etiqueta,right] {CMg};}
+  % 5: IMg = CMg da la cantidad de monopolio
+  \capa{5}{\node[punto] (I) at (\qM,\cM) {};}
+  \capa{5}{\draw[guia] (\qM,0) node[below] {$q^M$} -- (I);}
+  % 6: precio de monopolio sobre la demanda
+  \capa{6}{\draw[guia] (I) -- (\qM,\pM);}
+  \capa{6}{\node[punto,label={[etiqueta]above right:$M$}] (M) at (\qM,\pM) {};}
+  \capa{6}{\draw[guia] (M) -- (0,\pM) node[left] {$p^M$};}
+  % 7: equilibrio competitivo
+  \capa{7}{\node[punto,label={[etiqueta]above right:$C$}] (C) at (\qc,\pc) {};}
+  \capa{7}{\proyeccion{(C)}{$q^c$}{$p^c$}}
+  % 8: transferencia de los consumidores al monopolista
+  \capa{8}{\begin{scope}[on background layer]
+    \fill[area2] (0,\pc) rectangle (\qM,\pM);
+  \end{scope}}
+  \capa{8}{\node[etiqueta,anchor=west] (T) at (4.3,8.6) {transferencia};}
+  \capa{8}{\draw[llamada] (T.west) .. controls (3.2,8.4) .. (2.9,5.5);}
+  % 9: triángulo de Harberger (pérdida irrecuperable de eficiencia)
+  \capa{9}{\begin{scope}[on background layer]
+    \fill[perdida] (\qM,\pM) -- (\qc,\pc) -- (\qM,\cM) -- cycle;
+  \end{scope}}
+  \capa{9}{\node[etiqueta,font=\footnotesize] at (3.85,4.0) {PIE};}
+  \capa{9}{\node[etiqueta,align=left,anchor=west] (H) at (6.9,3.1) {triángulo de\\ \textsc{Harberger}};}
+  \capa{9}{\draw[llamada] (H.west) .. controls (5.6,2.6) .. (4.5,3.55);}
+  % 10: búsqueda de rentas: el rectángulo se disipa (Tullock-Posner)
+  \capa{10}{\fill[rentas] (0,\pc) rectangle (\qM,\pM);}
+  \capa{10}{\node[etiqueta,align=left,anchor=west] (R) at (5.0,7.0) {búsqueda de rentas\\ (\textsc{Tullock}-\textsc{Posner})};}
+  \capa{10}{\draw[llamada] (R.west) .. controls (3.4,6.4) .. (2.4,4.3);}
+  % 11: ineficiencia X: el coste marginal sube a (1 + chi) CMg
+  \capa{11}{\draw[curva3,desplazada] plot[domain=0:\qM] (\x,{cmgx(\x)});}
+  \capa{11}{\node[etiqueta,font=\footnotesize,text=tceeverde] at (1.2,3.15) {$(1+\chi)\,\mathrm{CMg}$};}
+  % 12: franja de costes inflados hasta q^M
+  \capa{12}{\begin{scope}[on background layer]
+    \fill[areax] plot[domain=0:\qM] (\x,{cmg(\x)}) -- plot[domain=\qM:0] (\x,{cmgx(\x)}) -- cycle;
+  \end{scope}}
+  \capa{12}{\node[etiqueta,font=\footnotesize,anchor=south west] (X) at (0.15,0.05) {ineficiencia X};}
+  \capa{12}{\draw[llamada] (X.north) ++(0.3,0) -- (2.0,2.3);}
+\end{tikzpicture}
+\end{document}

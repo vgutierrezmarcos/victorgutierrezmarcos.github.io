@@ -1,0 +1,41 @@
+% Discriminación de primer grado (3.A.17, II.1.1): la demanda es el ingreso
+% marginal y todo el excedente es del monopolista.
+% Misma base que equilibrio-monopolio.tex:
+%   p(q) = 9 - q; CMg = 1 + q/2; IMg del monopolio uniforme = 9 - 2q.
+%   Primer grado: p(q*) = CMg(q*) -> q* = q^c = 5,333, p = 3,667.
+%   Beneficio = ET = 1/2 (9 - 1) 5,333 = 21,33 (EC = 0).
+%   Comparación: monopolio uniforme en q^M = 3,2.
+% Elaboración propia a partir de Tirole (1988, cap. 3).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.6cm,
+    declare function={dem(\q)=9-\q; img(\q)=9-2*\q; cmg(\q)=1+0.5*\q;},
+    comparacion/.style={thick,dashed,tceegris},
+    llamada/.style={->,thin,black,shorten >=1pt}]
+  \def\qM{3.2}\def\cM{2.6}\def\qc{5.3333}\def\pc{3.6667}
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,10) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: demanda, que ahora es también el ingreso marginal
+  \capa{2}{\draw[curva1] plot[domain=0:8.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)=\mathrm{IMg}$};}
+  % 3: coste marginal
+  \capa{3}{\draw[curvanueva] plot[domain=0:8.4] (\x,{cmg(\x)}) node[etiqueta,right] {CMg};}
+  % 4: para comparar, el IMg del monopolio con precio uniforme y su q^M
+  \capa{4}{\draw[comparacion] (0,9) -- (4.5,0)
+    node[pos=0.42,sloped,above,etiqueta,text=tceegris,font=\footnotesize] {IMg con precio uniforme};}
+  \capa{4}{\node[punto,fill=tceegris] (I) at (\qM,\cM) {};}
+  \capa{4}{\draw[guia] (\qM,0) node[below] {$q^M$} -- (I);}
+  % 5: produce hasta que la última unidad se vende a su coste marginal
+  \capa{5}{\node[punto] (E) at (\qc,\pc) {};}
+  \capa{5}{\draw[guia] (E) -- (\qc,0) node[below] {$q^{*}=q^c$};}
+  % 6: todo el excedente total es beneficio del monopolista
+  \capa{6}{\begin{scope}[on background layer]
+    \fill[area2] (0,9) -- (\qc,\pc) -- (0,1) -- cycle;
+  \end{scope}}
+  \capa{6}{\node[etiqueta,align=left,anchor=west] (B) at (4.6,7.6) {beneficio $=$ ET\\ ($\mathrm{EC}=0$)};}
+  \capa{6}{\draw[llamada] (B.west) .. controls (3.6,7.4) .. (3.0,5.0);}
+\end{tikzpicture}
+\end{document}

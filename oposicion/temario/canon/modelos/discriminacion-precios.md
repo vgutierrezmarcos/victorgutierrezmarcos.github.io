@@ -1,0 +1,45 @@
+# Discriminación de precios: primer, segundo (autoselección) y tercer grado, e intertemporal
+
+- **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.17** (Análisis de mercados (II): «Discriminación de precios» en el título; revisado el 17/10/2026, II.1) — la desarrolla con a)-e) en cada grado. Ficha creada a raíz de esa revisión.
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.13 (mención prevista: la discriminación de 2.º grado como aplicación del *screening*, con remisión a 3.A.17), 3.B.39 (mención: ventas vinculadas como abuso de posición dominante; precios distintos por país en el mercado único), 3.B.7 (mención prevista: el *dumping* como discriminación internacional de 3.er grado, si lo trata), 4.A.5 y 4.A.12 (mención prevista: tarifas de acceso y de punta y valle, bonos sociales; ficha `tarifa-dos-partes`).
+- **Manuales de referencia:** Pigou (1920); Robinson (1933); Tirole (1988), cap. 3; Varian (1989), «Price Discrimination», *Handbook of IO*; Mussa y Rosen (1978), *JET*; Maskin y Riley (1984), *RAND Journal*; Oi (1971), *QJE*; Adams y Yellen (1976), *QJE*; Schmalensee (1981), *AER*; Varian (1985), *AER*; Coase (1972), *JLE*; Gul, Sonnenschein y Wilson (1986), *JET*; Bulow (1982), *JPE*; Deneckere y McAfee (1996).
+
+## Presentación de referencia (3.A.17, II.1)
+
+Pregunta: ¿qué cambia cuando el monopolista puede cobrar precios distintos por unidades del mismo bien?
+
+**Definición** (Varian, 1989): vender unidades del mismo bien a precios distintos, al mismo o a distintos compradores, sin que la diferencia se deba a costes. **Condiciones**: poder de mercado, información sobre la disposición a pagar (directa, por una señal o por lo que se elige) y ausencia de reventa. Pigou (1920) los 3 grados; hoy se ordenan **por la información del monopolista** (Tirole, cap. 3): 1.º observa la valoración de cada uno; 2.º no la observa, conoce su distribución y ofrece un menú del que cada uno elige (**autoselección**); 3.º observa una característica correlacionada con la valoración y cobra un precio lineal por grupo. La intertemporal **no** es un «cuarto grado» (se dice una vez que algunos manuales la llaman así): es autoselección en el tiempo.
+
+- **1.er grado** (a)-d)): cada unidad a su precio de reserva sin bajar el de las demás ⇒ IMg(q) = p(q) ⇒ p(q*) = CMg(q*), q* = q^c. **Eficiente** (en equilibrio parcial cuasilineal, Pareto = eficiencia asignativa), EC = 0: problema de equidad, no de eficiencia. Cota superior del beneficio. En el cante, una capa más del gráfico central del monopolio.
+- **2.º grado: autoselección en cantidad** (a)-e); Maskin y Riley, 1984). Tipos t_1 < t_2 en proporciones π y 1 − π; utilidad t_iu(q) − T, u(0) = 0, u' > 0, u'' < 0; coste marginal c; menú {(q_1,T_1),(q_2,T_2)}:
+$$\max_{q_1,T_1,q_2,T_2}\ \pi(T_1-cq_1)+(1-\pi)(T_2-cq_2)\ \text{ s.a. } \mathrm{PC}_1,\mathrm{PC}_2,\mathrm{IC}_1,\mathrm{IC}_2$$
+Se saturan PC_1 e IC_2: T_1 = t_1u(q_1); T_2 = t_2u(q_2) − (t_2 − t_1)u(q_1) (**renta informativa** del tipo alto). CPO:
+$$t_2u'(q_2)=c,\qquad t_1u'(q_1)\Big[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\Big]=c\ \Rightarrow\ t_1u'(q_1)>c$$
+«**No hay distorsión arriba**», **distorsión abajo**; se excluye al tipo bajo si πt_1 ≤ (1 − π)(t_2 − t_1). Equivale a descuentos por cantidad o a elegir entre 2 tarifas en dos partes. Bienestar ambiguo frente al precio uniforme. Es la misma lógica que el *screening* (3.A.13) y que el menú de Laffont-Tirole (ficha `laffont-tirole`).
+  - *En calidad* (Mussa y Rosen, 1978): idéntico análisis; calidad degradada a propósito para el tipo bajo (*damaged goods*, Deneckere y McAfee, 1996). La «paradoja de Barbie» de Sala-i-Martín, en nota y sin precios: versiones entre las que se elige.
+  - *Tarifa en dos partes común* T(q) = A + p q (Oi, 1971), 3 casos con 2 tipos: cuotas distintas A_i = EC_i(c) con p = c (= 1.er grado); cuota común sin excluir A = EC_1(p) con
+$$p-c=\frac{n_2\,[q_2(p)-q_1(p)]}{-[n_1q_1'(p)+n_2q_2'(p)]}>0;$$
+  o cuota A = EC_2(c) con p = c excluyendo a los bajos (ficha `tarifa-dos-partes`).
+  - *Venta conjunta* (*bundling*, Adams y Yellen, 1976): no es discriminación por cantidad; con valoraciones correlacionadas negativamente (6 y 4 frente a 4 y 6: por separado 16, paquete a 10, 20); mixta = autoselección; puede ser abuso (ventas vinculadas, 3.B.39).
+- **3.er grado** (a)-d)): grupos k = 1, 2 con demandas inversas p_k(q_k), sin reventa entre grupos, coste C(q_1 + q_2):
+$$\mathrm{IMg}_1(q_1)=\mathrm{IMg}_2(q_2)=\mathrm{CMg}(q_1+q_2)\ \Rightarrow\ \mathcal{L}_k=\frac{p_k-\mathrm{CMg}}{p_k}=\frac{1}{|\varepsilon_{q_k,p_k}|}$$
+precio mayor en el grupo de demanda menos elástica (Robinson, 1933). **Bienestar**: el beneficio no baja; el excedente total solo puede subir si sube la cantidad total (Schmalensee, 1981; Varian, 1985): Σ_k(p_k − c)Δq_k ≤ ΔET ≤ (p^u − c)ΔQ; con demandas lineales y todos los grupos servidos, ΔQ = 0 y ET baja; mejora de Pareto si abre un mercado que con precio uniforme no se atendía (medicamentos en países pobres).
+- **Intertemporal: bienes duraderos y conjetura de Coase** (1972): con revisiones frecuentes del precio y consumidores pacientes, el precio tiende al CMg (Gul, Sonnenschein y Wilson, 1986); inconsistencia temporal (3.A.14); remedios: alquiler, limitar la producción, garantías, obsolescencia y nuevas ediciones (Bulow, 1982).
+- **Lección general**: cuanta más información e instrumentos tiene el monopolista, más excedente extrae, y eso no siempre empeora la eficiencia.
+
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A17/graficos/`): `primer-grado.tex` (capa del central `equilibrio-monopolio.tex`), `autoseleccion.tex` (**imprescindible**: demandas t_iu'(q), c, q_2 eficiente, q_1 distorsionada, renta informativa), `tarifa-dos-partes.tex` (3 paneles, apoyo) y `tercer-grado.tex` (apoyo; en la pizarra, la fórmula junto a la de Lerner). Ejemplo del test: u(q) = [1 − (1 − q)²]/2, demanda p = t_i(1 − q), EC_i(p) = (t_i − p)²/2t_i (anexo `anexo:segundo-grado`).
+
+## Cómo se adapta en cada tema
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.17 | Discriminación de precios | desarrollo (hecho, 17/10/2026) | Todo lo anterior | — |
+| 3.A.13 | Selección adversa y *screening* | mención (prevista) | La discriminación de 2.º grado como aplicación del *screening* con el mismo lenguaje (PC, IC, renta informativa, no distorsión arriba), remitiendo a 3.A.17 II.1.2 | El modelo de 2 tipos con tarifas |
+| 3.B.39 | Mercado único y competencia | mención | Ventas vinculadas como abuso; segmentación de mercados nacionales | La teoría |
+| 3.B.7 | Política comercial | mención (prevista) | *Dumping* como discriminación de 3.er grado entre mercados nacional y extranjero (precio menor donde la demanda es más elástica) | La regla por grupos |
+| 4.A.5, 4.A.12 | Energía, transportes y telecomunicaciones | mención (prevista) | Tarifas de acceso, bonos sociales, periodos de punta y valle | Teoría |
+
+## Divergencias encontradas en el temario actual
+- 3.A.17 original: definiciones de los grados contradictorias entre sí, «descuentos para conjuntos de bienes» como 2.º grado (era *bundling*), 1.er grado «con ineficiencia asignativa», 3.er grado como «mejora en sentido de Pareto», «discriminación de 4.º grado», Mill como iniciador (fue Dupuit, 1849), tipos θ_1, θ_2 con proporción λ. **Resuelto** en la revisión (17/10/2026).
+- 3.A.13 (sin revisar): no menciona la discriminación de 2.º grado como *screening* y remite Laffont-Tirole al 3.A.20 (`mapa.yaml`, contradicciones del 3.A.17).
+
+Autor: Víctor Gutiérrez Marcos

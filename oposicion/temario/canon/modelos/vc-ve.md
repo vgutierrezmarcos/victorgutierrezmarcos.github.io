@@ -1,7 +1,7 @@
 # Variación compensatoria y variación equivalente
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.9** (Demanda II: medidas de cambio en el bienestar; revisado el 13/10/2026, III.3)
-- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 4.B.9 y 4.B.11 (resumen: exceso de gravamen), 4.B.6 y 4.B.7 (mención); 3.A.16 usa el excedente del consumidor (ficha `excedentes-bienestar`) y 3.A.22 los criterios de compensación.
+- **Temas que lo usan:** 3.A.9 (desarrollo; hecho), 4.B.9 y 4.B.11 (resumen: exceso de gravamen), 4.B.6 y 4.B.7 (mención); 3.A.16 usa el excedente del consumidor (ficha `excedentes-bienestar`; con cuasilineales VC = ΔEC = VE, con remisión a 3.A.9; hecho, 17/10/2026) y 3.A.22 los criterios de compensación.
 - **Manuales de referencia:** Hicks (1939, 1941, 1943; sistematizadas en 1956); Mas-Colell, Whinston y Green, §3.I; Varian, cap. 10; Willig (1976); Hausman (1981); McKenzie (1957) y Samuelson (1974) para la métrica monetaria; Rosen y Gayer (4.B.9).
 
 ## Presentación de referencia

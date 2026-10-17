@@ -1,0 +1,58 @@
+% Condición de segundo orden del monopolista (3.A.17, anexo B.1).
+% Izquierda: las curvas de equilibrio-monopolio (CMg creciente):
+%   p(q) = 9 - q; IMg(q) = 9 - 2q; CMg(q) = 1 + q/2 -> q^M = 3,2; p^M = 5,8.
+% Derecha: misma demanda; CMg decreciente CMg(q) = 2 + 6/(q+1), que corta al
+%   IMg con menos pendiente: (7 - 2q)(q + 1) = 6 -> q^M = (5 + sqrt 33)/4 = 2,686;
+%   IMg = CMg = 3,628; p^M = 6,314; CMg' = -6/(q+1)^2 = -0,44 > -2 = IMg'.
+%   En gris, CMg'(q) = 14,7 - 3,5q, más pendiente que el IMg: corta en q = 3,8,
+%   IMg = CMg' = 1,4, y ahí el beneficio es mínimo.
+% Elaboración propia a partir de Varian (1992, cap. 14).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.42cm,
+    declare function={dem(\q)=9-\q; img(\q)=9-2*\q; cmga(\q)=1+0.5*\q;
+                      cmgb(\q)=2+6/(\q+1); cmgc(\q)=14.7-3.5*\q;},
+    titulo/.style={font=\footnotesize,align=center}]
+  % 1: panel izquierdo, CMg creciente
+  \capa{1}{
+    \draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};
+    \draw[eje] (0,0) -- (0,10) node[left] {$p$};
+    \node[below left] at (0,0) {$0$};
+    \draw[curva1] plot[domain=0:8.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};
+    \draw[curva2] plot[domain=0:4.5] (\x,{img(\x)}) node[etiqueta,anchor=west,yshift=0.23cm] {IMg};
+    \draw[curvanueva] plot[domain=0:8.4] (\x,{cmga(\x)}) node[etiqueta,right] {CMg};
+    \node[punto] (I) at (3.2,2.6) {};
+    \draw[guia] (3.2,0) node[below] {$q^M$} -- (I) -- (3.2,5.8);
+    \node[punto] (M) at (3.2,5.8) {};
+    \draw[guia] (M) -- (0,5.8) node[left] {$p^M$};
+    \node[titulo] at (5,-2.4) {CMg creciente: se cumple};
+  }
+  % 2: panel derecho, CMg decreciente que corta al IMg con menos pendiente
+  \capa{2}{
+    \begin{scope}[xshift=7.2cm]
+    \draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};
+    \draw[eje] (0,0) -- (0,10) node[left] {$p$};
+    \node[below left] at (0,0) {$0$};
+    \draw[curva1] plot[domain=0:8.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};
+    \draw[curva2] plot[domain=0:4.5] (\x,{img(\x)}) node[etiqueta,anchor=west,yshift=0.23cm] {IMg};
+    \draw[curvanueva] plot[domain=0.15:9,samples=60] (\x,{cmgb(\x)}) node[etiqueta,above] {CMg};
+    \node[punto] (I2) at (2.686,3.628) {};
+    \draw[guia] (2.686,0) node[below] {$q^M$} -- (I2) -- (2.686,6.314);
+    \node[punto] (M2) at (2.686,6.314) {};
+    \draw[guia] (M2) -- (0,6.314) node[left] {$p^M$};
+    \node[titulo] at (5,-2.4) {CMg decreciente con menos\\ pendiente que el IMg: se cumple};
+    \end{scope}
+  }
+  % 3: en gris, un CMg con más pendiente que el IMg: mínimo del beneficio
+  \capa{3}{
+    \begin{scope}[xshift=7.2cm]
+    \draw[very thick,tceegris,dashed] plot[domain=2.75:4.1] (\x,{cmgc(\x)});
+    \node[circle,draw=tceegris,fill=white,thick,inner sep=1.3pt] (m) at (3.8,1.4) {};
+    \node[etiqueta,font=\footnotesize,text=tceegris,anchor=west,align=left] (tm) at (5.6,6.4) {CMg$'$: mínimo\\ del beneficio};
+    \draw[thin,tceegris] (tm.west) -- (m);
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

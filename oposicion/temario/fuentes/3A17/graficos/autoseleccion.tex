@@ -1,0 +1,53 @@
+% Discriminación de segundo grado con 2 tipos (3.A.17, II.1.2).
+% u(q) = q - q^2/2, u'(q) = 1 - q: demandas t_i u'(q) = t_i (1 - q), con
+% t_1 = 3 (tipo bajo), t_2 = 5 (tipo alto), coste marginal c = 1 y proporción
+% de tipos bajos pi = 0,6 ((1 - pi)/pi = 2/3).
+%   Tipo alto: t_2 u'(q_2) = c -> q_2 = 0,8 (eficiente: no hay distorsión arriba).
+%   Tipo bajo: t_1 u'(q_1) [1 - (2/3)(2/3)] = c -> 3 (1 - q_1)(5/9) = 1 -> q_1 = 0,4,
+%     con t_1 u'(q_1) = 1,8 > c; la cantidad eficiente sería q_1^e = 1 - 1/3 = 0,667.
+%   Pago del tipo bajo T_1 = t_1 u(q_1) (área bajo su demanda hasta q_1).
+%   Renta informativa del alto (t_2 - t_1) u(q_1) = 0,64: área entre las 2 demandas
+%   hasta q_1.
+% Elaboración propia a partir de Maskin y Riley (1984) y Tirole (1988, cap. 3).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=7cm,y=1.1cm,
+    declare function={da(\q)=3*(1-\q); db(\q)=5*(1-\q);}]
+  \def\qa{0.4}\def\pa{1.8}\def\qae{0.6667}\def\qb{0.8}
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,5.6) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: demanda del tipo bajo
+  \capa{2}{\draw[curva1] plot[domain=0:0.97,samples=2] (\x,{da(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.43,1.74) {$t_1u'(q)$};}
+  % 3: demanda del tipo alto
+  \capa{3}{\draw[curva3] plot[domain=0:0.97,samples=2] (\x,{db(\x)});}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=south west] at (0.52,2.45) {$t_2u'(q)$};}
+  % 4: coste marginal constante
+  \capa{4}{\draw[curvanueva] (0,1) -- (1.08,1) node[etiqueta,above left] {$\mathrm{CMg}=c$};}
+  \capa{4}{\node[left] at (0,1) {$c$};}
+  % 5: tipo alto: cantidad eficiente (no hay distorsión arriba)
+  \capa{5}{\node[punto] (B) at (\qb,1) {};}
+  \capa{5}{\draw[guia] (B) -- (\qb,0) node[below,text=black] {$q_2=q_2^{e}$};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,anchor=south west,align=left] at (0.81,1.7) {no hay\\ distorsión arriba};}
+  \capa{5}{\draw[thin,tceegris] (0.83,1.68) -- (0.805,1.12);}
+  % 6: tipo bajo: cantidad eficiente que no se le ofrece
+  \capa{6}{\node[circle,draw=black,fill=white,inner sep=1.3pt] (Ae) at (\qae,1) {};}
+  \capa{6}{\draw[guia] (Ae) -- (\qae,0) node[below,text=black] {$q_1^{e}$};}
+  % 7: cantidad del tipo bajo, menor (distorsión abajo)
+  \capa{7}{\node[punto] (A) at (\qa,\pa) {};}
+  \capa{7}{\draw[guia] (A) -- (\qa,0) node[below,text=black] {$q_1$};}
+  \capa{7}{\draw[guia] (A) -- (0,\pa) node[left,text=black] {$t_1u'(q_1)$};}
+  \capa{7}{\draw[flecha] (0.64,0.7) -- (0.43,0.7);}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=center,below] at (0.535,0.66) {distorsión\\ abajo};}
+  % 8: pago del tipo bajo, todo su excedente bruto
+  \capa{8}{\fill[area] (0,0) -- plot[domain=0:\qa,samples=2] (\x,{da(\x)}) -- (\qa,0) -- cycle;}
+  \capa{8}{\node[etiqueta,text=tceemorado] at (0.2,0.62) {$T_1=t_1u(q_1)$};}
+  % 9: renta informativa del tipo alto
+  \capa{9}{\fill[area2] plot[domain=0:\qa,samples=2] (\x,{da(\x)}) -- plot[domain=\qa:0,samples=2] (\x,{db(\x)}) -- cycle;}
+  \capa{9}{\node[etiqueta,font=\footnotesize,align=center] at (0.15,3.5) {renta\\ informativa};}
+\end{tikzpicture}
+\end{document}

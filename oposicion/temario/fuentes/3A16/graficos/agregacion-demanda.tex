@@ -1,0 +1,51 @@
+% Agregación de la demanda: suma horizontal de 2 demandas individuales.
+% Utilidades cuasilineales con phi_i' lineal (phi_i cuadrática, estrictamente cóncava):
+%   phi_1'(x_1) = 3 - 1,5 x_1  ->  x_1(p) = (3 - p)/1,5   (se anula en p = 3)
+%   phi_2'(x_2) = 2 - 0,8 x_2  ->  x_2(p) = (2 - p)/0,8   (se anula en p = 2)
+% Demanda de mercado: x(p) = x_1(p) para p >= 2 y x_1(p) + x_2(p) = 4,5 - 1,9167 p
+% para p < 2 (quiebro en p = phi_2'(0) = 2, donde entra el consumidor 2).
+% A p = 1,2: x_1 = 1,2; x_2 = 1,0; x = 2,2. Misma escala en los 3 paneles.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Consumidor 1 ----------------
+  % 1: ejes y demanda del consumidor 1
+  \capa{1}{\ejes{$x_1$}{$p$}{2.8}{3.5}}
+  \capa{1}{\node[titulo] at (1.4,3.6) {Consumidor 1};}
+  \capa{2}{\draw[curva2] (0,3) -- (2,0);}
+  \capa{2}{\node[etiqueta,text=tceeazul] at (1.75,0.95) {$x_1(p)$};}
+  % ---------------- Consumidor 2 ----------------
+  \begin{scope}[xshift=4.0cm]
+    % 3: ejes y demanda del consumidor 2
+    \capa{3}{\ejes{$x_2$}{$p$}{3.0}{3.5}}
+    \capa{3}{\node[titulo] at (1.5,3.6) {Consumidor 2};}
+    \capa{4}{\draw[curva4] (0,2) -- (2.5,0);}
+    \capa{4}{\node[etiqueta,text=tceedorado] at (1.85,1.0) {$x_2(p)$};}
+  \end{scope}
+  % ---------------- Mercado ----------------
+  \begin{scope}[xshift=8.2cm]
+    % 5: ejes del mercado
+    \capa{5}{\ejes{$x$}{$p$}{5.0}{3.5}}
+    \capa{5}{\node[titulo] at (2.5,3.6) {Mercado};}
+  \end{scope}
+  % 6: a un precio dado, cada consumidor compra su cantidad
+  \capa{6}{\node[punto] (A1) at (1.2,1.2) {};}
+  \capa{6}{\proyeccion{(A1)}{$x_1(\overline{p})$}{$\overline{p}$}}
+  \begin{scope}[xshift=4.0cm]
+    \capa{6}{\node[punto] (A2) at (1.0,1.2) {};}
+    \capa{6}{\proyeccion{(A2)}{$x_2(\overline{p})$}{$\overline{p}$}}
+  \end{scope}
+  % 7: y en el mercado se suman las cantidades
+  \begin{scope}[xshift=8.2cm]
+    \capa{7}{\node[punto] (A) at (2.2,1.2) {};}
+    \capa{7}{\proyeccion{(A)}{$x_1(\overline{p})+x_2(\overline{p})$}{$\overline{p}$}}
+    % 8: demanda de mercado, con el quiebro donde entra el consumidor 2
+    \capa{8}{\draw[curva1] (0,3) -- (0.6667,2) -- (4.5,0);}
+    \capa{8}{\node[etiqueta,text=tceemorado,anchor=west] at (2.75,1.15) {$x(p)=x_1(p)+x_2(p)$};}
+    \capa{9}{\draw[guia] (0.6667,2) -- (0,2) node[left,text=black] {$\phi_2'(0)$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,98 @@
+% Oferta de la industria a largo plazo: costes constantes, crecientes y decrecientes.
+% Elaboración propia a partir de Marshall (1890, libro IV) y Viner (1931).
+% En los 3 paneles: D_0: p = 3,6 - 0,8 x; D_1: p = 4,6 - 0,8 x (aumento duradero de la demanda).
+% Oferta a corto plazo de las J_0 empresas iniciales: p = 2 + 0,9 (x - 2).
+%   A = (2; 2): equilibrio a largo plazo inicial; B = (2,588; 2,529): equilibrio a corto plazo
+%   con D_1 y las J_0 empresas (beneficios: entran empresas).
+% La entrada desplaza la oferta a corto plazo (misma pendiente) hasta el nuevo equilibrio a
+% largo plazo C, sobre la oferta a largo plazo q^LP, que une A y C:
+%   costes constantes:   q^LP: p = 2;                  C = (3,25; 2);
+%   costes crecientes:   q^LP: p = 2 + 0,25 (x - 2);   C = (2,952; 2,238) (deseconomías externas);
+%   costes decrecientes: q^LP: p = 2 - 0,25 (x - 2);   C = (3,818; 1,545) (economías externas).
+% q^LP es más elástica que la oferta a corto plazo (Le Chatelier-Samuelson).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.68cm,y=0.68cm,
+    declare function={dcero(\x)=3.6-0.8*\x; duno(\x)=4.6-0.8*\x; cpcero(\x)=2+0.9*(\x-2);},
+    oferta/.style={curva3,line width=2.6pt,opacity=0.75},
+    titulo/.style={font=\small\bfseries,anchor=south,align=center},
+    pq/.style={etiqueta,font=\footnotesize}]
+  % ================ Costes constantes ================
+  \begin{scope}[xshift=0.0cm]
+    % 1: ejes y título
+    \capa{1}{\ejes{$x,\ q$}{$p$}{6.0}{4.6}}
+    \capa{1}{\node[titulo] at (3.0,4.85) {Costes constantes\\ {\footnotesize\mdseries (sin economías externas)}};}
+    % 2: demanda inicial, oferta a corto plazo de las J_0 empresas y equilibrio inicial A
+    \capa{2}{\draw[curva1] (0.3,{dcero(0.3)}) -- (4.2,{dcero(4.2)}) node[pq,right] {$D_0$};}
+    \capa{2}{\draw[curva2] (0.889,{cpcero(0.889)}) node[pq,below] {$q^{\mathrm{CP}}_0$} -- (3.778,{cpcero(3.778)});}
+    \capa{2}{\node[punto] (A2) at (2,2) {};}
+    \capa{2}{\node[pq,left=2pt] at (A2) {$A$};}
+    % 3: aumenta la demanda
+    \capa{3}{\draw[curvanueva,desplazada] (0.8,{duno(0.8)}) -- (5.2,{duno(5.2)}) node[pq,right] {$D_1$};}
+    % 4: equilibrio a corto plazo B: sube el precio y hay beneficios
+    \capa{4}{\node[punto] (B4) at (2.588,2.529) {};}
+    \capa{4}{\node[pq,left=2pt] at (B4) {$B$};}
+    % 5: entran empresas: la oferta a corto plazo se desplaza hasta C
+    \capa{5}{\draw[curva2,desplazada] (2.139,{2.0+0.9*(2.139-3.25)}) -- (5.028,{2.0+0.9*(5.028-3.25)}) node[pq,above] {$q^{\mathrm{CP}}_1$};}
+    \capa{5}{\node[punto] (C5) at (3.25,2.0) {};}
+    \capa{5}{\node[pq,below=3pt] at (C5) {$C$};}
+    % 6: la oferta a largo plazo une los equilibrios a largo plazo A y C: horizontal
+    \capa{6}{\draw[oferta] (0.4,2.0000) -- (5.5,2.0000);}
+    \capa{6}{\node[pq,text=tceeverde,anchor=west] at (5.5,2.0000) {$q^{\mathrm{LP}}$};}
+    \capa{6}{\node[punto] at (2,2) {};}
+    \capa{6}{\node[punto] at (3.25,2.0) {};}
+  \end{scope}
+  % ================ Costes crecientes ================
+  \begin{scope}[xshift=6.0cm]
+    % 7: ejes y título
+    \capa{7}{\ejes{$x,\ q$}{$p$}{6.0}{4.6}}
+    \capa{7}{\node[titulo] at (3.0,4.85) {Costes crecientes\\ {\footnotesize\mdseries (deseconomías externas)}};}
+    % 8: demanda inicial, oferta a corto plazo de las J_0 empresas y equilibrio inicial A
+    \capa{8}{\draw[curva1] (0.3,{dcero(0.3)}) -- (4.2,{dcero(4.2)}) node[pq,right] {$D_0$};}
+    \capa{8}{\draw[curva2] (0.889,{cpcero(0.889)}) node[pq,below] {$q^{\mathrm{CP}}_0$} -- (3.778,{cpcero(3.778)});}
+    \capa{8}{\node[punto] (A8) at (2,2) {};}
+    \capa{8}{\node[pq,left=2pt] at (A8) {$A$};}
+    % 9: aumenta la demanda
+    \capa{9}{\draw[curvanueva,desplazada] (0.8,{duno(0.8)}) -- (5.2,{duno(5.2)}) node[pq,right] {$D_1$};}
+    % 10: equilibrio a corto plazo B: sube el precio y hay beneficios
+    \capa{10}{\node[punto] (B10) at (2.588,2.529) {};}
+    \capa{10}{\node[pq,left=2pt] at (B10) {$B$};}
+    % 11: entran empresas: la oferta a corto plazo se desplaza hasta C
+    \capa{11}{\draw[curva2,desplazada] (1.577,{2.2381+0.9*(1.577-2.95238)}) -- (4.466,{2.2381+0.9*(4.466-2.95238)}) node[pq,above] {$q^{\mathrm{CP}}_1$};}
+    \capa{11}{\node[punto] (C11) at (2.95238,2.2381) {};}
+    \capa{11}{\node[pq,below=3pt] at (C11) {$C$};}
+    % 12: la oferta a largo plazo une los equilibrios a largo plazo A y C: creciente
+    \capa{12}{\draw[oferta] (0.4,1.6000) -- (5.5,2.8750);}
+    \capa{12}{\node[pq,text=tceeverde,anchor=west] at (5.5,2.8750) {$q^{\mathrm{LP}}$};}
+    \capa{12}{\node[punto] at (2,2) {};}
+    \capa{12}{\node[punto] at (2.95238,2.2381) {};}
+  \end{scope}
+  % ================ Costes decrecientes ================
+  \begin{scope}[xshift=12.0cm]
+    % 13: ejes y título
+    \capa{13}{\ejes{$x,\ q$}{$p$}{6.0}{4.6}}
+    \capa{13}{\node[titulo] at (3.0,4.85) {Costes decrecientes\\ {\footnotesize\mdseries (economías externas)}};}
+    % 14: demanda inicial, oferta a corto plazo de las J_0 empresas y equilibrio inicial A
+    \capa{14}{\draw[curva1] (0.3,{dcero(0.3)}) -- (4.2,{dcero(4.2)}) node[pq,right] {$D_0$};}
+    \capa{14}{\draw[curva2] (0.889,{cpcero(0.889)}) node[pq,below] {$q^{\mathrm{CP}}_0$} -- (3.778,{cpcero(3.778)});}
+    \capa{14}{\node[punto] (A14) at (2,2) {};}
+    \capa{14}{\node[pq,left=2pt] at (A14) {$A$};}
+    % 15: aumenta la demanda
+    \capa{15}{\draw[curvanueva,desplazada] (0.8,{duno(0.8)}) -- (5.2,{duno(5.2)}) node[pq,right] {$D_1$};}
+    % 16: equilibrio a corto plazo B: sube el precio y hay beneficios
+    \capa{16}{\node[punto] (B16) at (2.588,2.529) {};}
+    \capa{16}{\node[pq,left=2pt] at (B16) {$B$};}
+    % 17: entran empresas: la oferta a corto plazo se desplaza hasta C
+    \capa{17}{\draw[curva2,desplazada] (3.212,{1.54545+0.9*(3.212-3.81818)}) -- (5.6,{1.54545+0.9*(5.6-3.81818)}) node[pq,above] {$q^{\mathrm{CP}}_1$};}
+    \capa{17}{\node[punto] (C17) at (3.81818,1.54545) {};}
+    \capa{17}{\node[pq,below=3pt] at (C17) {$C$};}
+    % 18: la oferta a largo plazo une los equilibrios a largo plazo A y C: decreciente
+    \capa{18}{\draw[oferta] (0.4,2.4000) -- (5.5,1.1250);}
+    \capa{18}{\node[pq,text=tceeverde,anchor=west] at (5.5,1.1250) {$q^{\mathrm{LP}}$};}
+    \capa{18}{\node[punto] at (2,2) {};}
+    \capa{18}{\node[punto] at (3.81818,1.54545) {};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

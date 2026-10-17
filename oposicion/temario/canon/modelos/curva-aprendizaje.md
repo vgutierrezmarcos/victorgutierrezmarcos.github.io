@@ -1,7 +1,7 @@
 # Curva de aprendizaje (economías dinámicas: Wright, 1936)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.12** (Teoría de los costes; revisado el 14/10/2026, III.4.3 e IV.2) — es una propiedad de la función de costes en el tiempo. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.B.8 (resumen: industria naciente y política comercial estratégica con economías dinámicas, ficha `industria-naciente`), 3.A.44 (mención: *learning by doing* de Arrow, 1962, como externalidad del capital, id `arrow-romer-spillovers`).
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.B.8 (resumen: industria naciente y política comercial estratégica con economías dinámicas, ficha `industria-naciente`), 3.A.44 (mención: *learning by doing* de Arrow, 1962, como externalidad del capital, id `arrow-romer-spillovers`), 3.A.17 (mención: el aprendizaje como producción conjunta en el tiempo, nota de II.3.1; hecho, 17/10/2026).
 - **Manuales de referencia:** Wright (1936), *Journal of the Aeronautical Sciences*; Arrow (1962), *RES*; Spence (1981); Lieberman (1984), *RAND Journal*; Tirole, *The Theory of Industrial Organization*.
 
 ## Presentación de referencia
@@ -23,6 +23,7 @@ Gráfico de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/aprend
 | 3.A.12 | Costes en el tiempo | desarrollo (hecho, 14/10/2026) | Todo lo anterior (profundización en el cante: una frase en III.4 y la evidencia en IV.2) | — |
 | 3.B.8 | Industria naciente, política comercial estratégica | resumen | El coste baja con la producción acumulada: la protección temporal permite aprender; remitir a 3.A.12 para la curva | La forma funcional |
 | 3.A.44 | Crecimiento endógeno | mención | Aprendizaje por la práctica de Arrow (1962) como externalidad que da rendimientos crecientes agregados | La curva de la empresa |
+| 3.A.17 | Monopolio multiproducto | mención (hecho, 17/10/2026) | Nota de II.3.1: no es complementariedad de costes en el mismo periodo, sino el mismo bien en 2 periodos; IMg_1(q_1) = c_1 + βc_2'(q_1)q_2 < c_1 (β factor de descuento, c_2' < 0): produce hoy más que un monopolista miope y puede vender bajo el CMg corriente, sin que sea «subsidio cruzado»; Wright (1936); remite a 3.A.12 | La forma funcional |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.12 original: confundía las economías de aprendizaje con las externas (*clusters*). Resuelto en la revisión (14/10/2026).

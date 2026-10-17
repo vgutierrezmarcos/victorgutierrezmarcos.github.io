@@ -1,0 +1,28 @@
+% No convexidades: inexistencia del equilibrio competitivo (una empresa, CMe en U).
+% Costes de oferta-empresa.tex: CMg(q) = 1 - 1,2 q + 0,45 q^2, mínimo del CMe en
+%   q̄ = 2,832 y c̄ = 1,210. Oferta: q = 0 si p < c̄; {0, q̄} en c̄; CMg por encima.
+% Demanda: p^D(x) = 0,1 + 3,1 e^{-0,7 x}; x(c̄) = ln(3,1/1,11)/0,7 = 1,467 < q̄
+%   y p^D(q̄) = 0,54 < c̄: la demanda pasa por el hueco de la oferta.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; dem(\x)=0.1+3.1*exp(-0.7*\x);}]
+  % 1: ejes
+  \capa{1}{\ejes{$x,\ q$}{$p$}{6.0}{5.6}}
+  % 2: oferta: 0 por debajo de c̄ (sobre el eje)…
+  \capa{2}{\draw[curva3] (0,0) -- (0,1.21);}
+  % 3: …salto a la escala mínima eficiente…
+  \capa{3}{\node[punto] (M) at (2.832,1.21) {};}
+  \capa{3}{\proyeccion{(M)}{$\overline{q}$}{$\overline{c}$}}
+  % 4: …y el coste marginal por encima
+  \capa{4}{\draw[curva3] plot[domain=2.832:4.7,samples=60,smooth] (\x,{cmg(\x)}) node[etiqueta,above] {$q(p)$};}
+  % 5: demanda, que pasa por el hueco
+  \capa{5}{\draw[curva1] plot[domain=0:5.6,samples=100,smooth] (\x,{dem(\x)}) node[etiqueta,above] {$x(p)$};}
+  % 6: a c̄ la demanda es menor que q̄: no hay corte
+  \capa{6}{\node[punto,fill=tceemorado] (X) at (1.467,1.21) {};}
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=4pt,raise=3pt},thick,tceegris] (X.center) -- (M.center) node[midway,above=8pt,etiqueta,text=black] {$x(\overline{c})<\overline{q}$};}
+  \capa{6}{\node[etiqueta,align=left,anchor=west,font=\footnotesize] at (0.55,4.3) {sin corte:\\ no hay equilibrio};}
+\end{tikzpicture}
+\end{document}

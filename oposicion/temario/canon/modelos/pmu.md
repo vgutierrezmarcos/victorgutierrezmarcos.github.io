@@ -1,7 +1,7 @@
 # Problema de maximización de la utilidad (PMU)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.8 (Demanda I) — revisado; lo desarrolla y fija la notación.
-- **Temas que lo usan:** 3.A.8 (desarrollo), 3.A.9 (resumen, como primal de la dualidad); lo reutilizan sin id propio 3.A.16 (cuasilineal), 3.A.21 (consumidor del equilibrio general), 3.A.25 (trabajo-ocio) y 3.A.29 (intertemporal).
+- **Temas que lo usan:** 3.A.8 (desarrollo), 3.A.9 (resumen, como primal de la dualidad); lo resume 3.A.16 (variante cuasilineal; hecho, 17/10/2026); lo reutilizan sin id propio 3.A.21 (consumidor del equilibrio general), 3.A.25 (trabajo-ocio) y 3.A.29 (intertemporal).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green, cap. 2-3; Varian, cap. 7; Jehle y Reny (2011), cap. 1.
 
 ## Presentación de referencia
@@ -16,10 +16,10 @@ Gráficos de referencia: `oposicion/temario/fuentes/3A08/graficos/solucion-inter
 |---|---|---|---|---|
 | 3.A.8 | De los axiomas a la demanda | desarrollo | Todo lo anterior | — |
 | 3.A.9 | Dualidad | resumen (hecho, 13/10/2026) | Enunciado del primal con remisión a 3.A.8, FIU y sus propiedades en una frase (cuasiconvexidad en nota y gráfico `cuasiconvexidad-fiu`), Roy; Kuhn-Tucker del primal y del dual lado a lado en el anexo A; enlace con el PMG (ficha `dualidad-consumidor`) | Los axiomas, la solución de esquina y la caja de teoremas (3.A.8) |
-| 3.A.16 | Demanda en equilibrio parcial | resumen | Variante cuasilineal $u_m=n_m+\varphi_m(x_m)$, $\varphi_m'(x_m)=p$ | Kuhn-Tucker general |
+| 3.A.16 | Demanda en equilibrio parcial | resumen (hecho, 17/10/2026) | Variante cuasilineal $U_i(n_i,x_i)=n_i+\phi_i(x_i)$, s.a. $n_i+p\,x_i\le\overline W_i$; $\lambda=1$ y $\phi_i'(x_i)=p$, $x_i(p)=(\phi_i')^{-1}(p)$ (marshalliana sin efecto renta, igual a la hicksiana); nota de la agregación como el 3.A.8 (forma polar de Gorman; cuasilineales y homotéticas idénticas, suficientes) | Kuhn-Tucker general (una nota con remisión a 3.A.8) |
 | 3.A.21 | Consumidor del equilibrio general | resumen (hecho, 14/10/2026) | max $U_i(X_i,Y_i)$ s.a. $p_XX_i+p_YY_i=\overline W_i$, renta = valor de la dotación más participaciones, $\overline W_i=\vec p\cdot\vec\omega_i+\sum_j\theta_{ij}B_j$; RMS igual al precio relativo; demandas que dependen solo de $\vec p$ | Las propiedades de la demanda (3.A.8) |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.9 atribuía la ley de Walras a la «estricta monotonía»: es la insaciabilidad local (resuelto en la revisión del 13/10/2026, como 3.A.8).
-- 3.A.16 llama «walrasiana» a la demanda: canon «marshalliana» (título de 3.A.8); «walrasiana» solo como sinónimo una vez (3.A.8 ya lo hace) y para el **conjunto presupuestario walrasiano**.
+- 3.A.16 llamaba «walrasiana» a la demanda y su nota 14 hacía la cuasilinealidad necesaria para agregar: resuelto (17/10/2026), «marshalliana (ordinaria o walrasiana)» una vez y Gorman como el 3.A.8. Numerario: $n_i$ en el 3.A.16 y $x_0$ en la nota de agregación del 3.A.8 (con bienes indexados; no conviven; D10, a confirmar por Víctor).
 - 3.A.8 usa $V$ también para la renta no laboral de Becker (incoherencia interna anotada; ya revisado: comprobar).

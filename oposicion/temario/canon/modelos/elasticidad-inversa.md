@@ -1,7 +1,7 @@
 # Regla de la elasticidad inversa
 
 - **Área:** sector público · **Tema de referencia:** 4.B.11 (imposición óptima) — caso particular de la regla de Ramsey.
-- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención), 4.B.20 (mención prevista: impuestos especiales)
+- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención), 4.B.20 (mención prevista: impuestos especiales), 3.A.17 (mención: el nombre «regla de la elasticidad inversa» para la regla del monopolista, 𝓛 = 1/|ε_{q,p}|, y su versión amortiguada de Ramsey-Boiteux, hilo conductor del tema; hecho, 17/10/2026)
 - **Manuales de referencia:** Ramsey (1927); Baumol y Bradford (1970), *AER*; Rosen y Gayer, cap. 16; Stiglitz y Rosengard, cap. 20.
 - **Decisión D132 (13/10/2026):** ¿Se suprime «regla de Pigou» para la regla de la elasticidad inversa? Sí: «regla de la elasticidad inversa» (Ramsey 1927; Baumol-Bradford 1970)
 
@@ -23,6 +23,7 @@ Con oferta de elasticidad finita: $\frac{t_i}{q_i}=\theta\left(\frac{1}{\lvert\v
 |---|---|---|---|---|
 | 4.B.11 | Imposición óptima | Desarrollo (dentro de Ramsey) | Derivación y límites (equidad, bienes relacionados) | — |
 | 4.B.13 / 4.B.20 | Impuestos especiales | Mención | Uso como justificación junto a Pigou y equidad | La derivación |
+| 3.A.17 | Monopolio | mención (hecho, 17/10/2026) | La misma lógica en el margen del monopolista (fichas `monopolio`, `discriminacion-precios`, `ramsey-boiteux`); remite a 4.B.11 solo para ampliar | La regla impositiva |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.11 la llama «regla de Pigou»: el nombre habitual es **regla de la elasticidad inversa** (Ramsey, 1927; Baumol-Bradford, 1970). Canon: se suprime «regla de Pigou», que se confunde con el impuesto pigouviano.

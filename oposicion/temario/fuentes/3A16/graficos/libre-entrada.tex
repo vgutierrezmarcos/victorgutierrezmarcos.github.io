@@ -1,0 +1,110 @@
+% Libre entrada según los rendimientos a escala (MWG, § 10.F): 3 columnas x 2 filas.
+% Arriba, la empresa (costes y oferta q(p)); abajo, el mercado (oferta a largo plazo q^LP y
+% demanda x(p)). Misma demanda en las 3 columnas: p = 0,4 + 3,4 e^{-0,4 x}.
+% (a) Rendimientos constantes: C(q) = c q con c = 1,6. CMg = CMe = c. Oferta de la empresa:
+%     0 si p < c, cualquier q si p = c, infinita si p > c. Mercado: q^LP horizontal en c;
+%     equilibrio en x(c) = 2,604 con J* y q* indeterminados.
+% (b) Rendimientos decrecientes: C(q) = 0,8 q + 0,3 q^2: CMg = 0,8 + 0,6 q, CMe = 0,8 + 0,3 q
+%     (siempre por debajo del CMg; ínfimo CMg(0) = 0,8). Mercado: q^LP = 0 si p <= CMg(0) e
+%     infinita si p > CMg(0); x(CMg(0)) > 0: no se cortan, no hay equilibrio.
+% (c) Coste medio en U: las curvas de oferta-empresa (CMg = 1 - 1,2 q + 0,45 q^2,
+%     CMe = 2/q + 1 - 0,6 q + 0,15 q^2; mínimo q̄ = 2,832, c̄ = 1,21). Mercado: a p = c̄ la
+%     industria ofrece J q̄ con J entero (puntos); equilibrio x(c̄) = 3,586 = J* q̄ con J* = 5.
+% Por panel: 0,75 cm por unidad de cantidad y 0,8 cm por unidad de precio.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.8cm,
+    declare function={pd(\x)=0.4+3.4*exp(-0.4*\x);
+      cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;},
+    oferta/.style={curva3,line width=2.6pt,opacity=0.75},
+    titulo/.style={font=\small\bfseries,anchor=south,align=center},
+    fila/.style={font=\small\bfseries,rotate=90,anchor=south},
+    nota/.style={etiqueta,font=\footnotesize,text=tceeverde}]
+  \def\abajo{-4.7}
+  % ---------- títulos de las filas ----------
+  \capa{1}{\node[fila] at (-1.2,2.0) {Empresa};}
+  \capa{1}{\node[fila] at (-1.2,{\abajo+2.0}) {Mercado};}
+  % =============== (a) rendimientos constantes ===============
+  % 1: ejes de la empresa y título
+  \capa{1}{\ejes{$q$}{$p$}{5.0}{4.0}}
+  \capa{1}{\node[titulo] at (2.3,4.35) {Rendimientos\\ constantes};}
+  % 2: coste marginal = coste medio = c
+  \capa{2}{\draw[curva2] (0,1.6) node[left,text=black] {$c$} -- (4.3,1.6);}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south east,font=\footnotesize] at (4.4,1.65) {$\mathrm{CMg}=\mathrm{CMe}$};}
+  % 3: oferta de la empresa: 0 por debajo de c, cualquier q en c
+  \capa{3}{\draw[oferta] (0,0) -- (0,1.6) -- (4.3,1.6);}
+  \capa{3}{\node[nota,anchor=north east] at (4.4,1.5) {$q(p)$};}
+  % 4: ejes del mercado
+  \begin{scope}[yshift=\abajo cm]
+    \capa{4}{\ejes{$x,q$}{$p$}{5.0}{4.0}}
+    % 5: demanda
+    \capa{5}{\draw[curva1] plot[domain=0:4.4,samples=60,smooth] (\x,{pd(\x)}) node[etiqueta,below,font=\footnotesize,text=tceemorado] {$x(p)$};}
+    % 6: oferta a largo plazo: horizontal en c
+    \capa{6}{\draw[oferta] (0,0) -- (0,1.6) -- (4.4,1.6);}
+    \capa{6}{\node[nota,anchor=south east] at (4.5,1.65) {$q^{\mathrm{LP}}$};}
+    \capa{6}{\node[nota,anchor=east] at (4.5,3.6) {$p>c$: $q^{\mathrm{LP}}=\infty$};}
+    % 7: equilibrio: p* = c, x(c); J* y q* indeterminados
+    \capa{7}{\node[punto] (Ea) at (2.6036,1.6) {};}
+    \capa{7}{\draw[guia] (Ea) -- (2.6036,0) node[below,text=black] {$x(c)$};}
+    \capa{7}{\node[left] at (0,1.6) {$p^*=c$};}
+  \end{scope}
+  % =============== (b) rendimientos decrecientes ===============
+  \begin{scope}[xshift=5.9cm]
+    % 8: ejes de la empresa y título
+    \capa{8}{\ejes{$q$}{$p$}{5.0}{4.0}}
+    \capa{8}{\node[titulo] at (2.3,4.35) {Rendimientos\\ decrecientes};}
+    % 9: coste marginal y coste medio, que parten de CMg(0)
+    \capa{9}{\draw[curva1] (0,0.8) -- (4.3,3.38) node[etiqueta,above,font=\footnotesize] {CMg};}
+    \capa{9}{\draw[curva2] (0,0.8) -- (4.4,2.12) node[etiqueta,right,font=\footnotesize] {CMe};}
+    \capa{9}{\node[left] at (0,0.8) {$\mathrm{CMg}(0)$};}
+    % 10: oferta de la empresa
+    \capa{10}{\draw[oferta] (0,0) -- (0,0.8) -- (4.3,3.38);}
+    \capa{10}{\node[nota,anchor=south east] at (2.4,2.35) {$q(p)$};}
+    \begin{scope}[yshift=\abajo cm]
+      % 11: ejes del mercado y demanda
+      \capa{11}{\ejes{$x,q$}{$p$}{5.0}{4.0}}
+      \capa{11}{\draw[curva1] plot[domain=0:4.4,samples=60,smooth] (\x,{pd(\x)}) node[etiqueta,above right,font=\footnotesize,text=tceemorado] {$x(p)$};}
+      % 12: oferta a largo plazo: 0 hasta CMg(0) e infinita por encima
+      \capa{12}{\draw[oferta] (0,0) -- (0,0.8);}
+      \capa{12}{\draw[guia] (0,0.8) node[left,text=black] {$\mathrm{CMg}(0)$} -- (4.4,0.8);}
+      \capa{12}{\node[nota,anchor=east] at (4.5,3.6) {$p>\mathrm{CMg}(0)$: $q^{\mathrm{LP}}=\infty$};}
+      \capa{12}{\node[nota,anchor=west] at (0.1,0.3) {$q^{\mathrm{LP}}=0$};}
+      % 13: la oferta y la demanda no se cortan
+      \capa{13}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west] at (2.0,2.6) {no hay equilibrio};}
+    \end{scope}
+  \end{scope}
+  % =============== (c) coste medio en U ===============
+  \begin{scope}[xshift=11.8cm]
+    % 14: ejes de la empresa y título
+    \capa{14}{\ejes{$q$}{$p$}{5.0}{4.0}}
+    \capa{14}{\node[titulo] at (2.3,4.35) {Coste medio\\ en U};}
+    % 15: coste medio en U y coste marginal, que lo corta en su mínimo
+    \capa{15}{\draw[curva2] plot[domain=0.72:4.45,samples=80,smooth] (\x,{cme(\x)}) node[etiqueta,right,font=\footnotesize] {CMe};}
+    \capa{15}{\draw[curva1] plot[domain=0.2:4.0,samples=80,smooth] (\x,{cmg(\x)}) node[etiqueta,above,font=\footnotesize] {CMg};}
+    \capa{15}{\node[punto] (M) at (2.832,1.21) {};}
+    \capa{15}{\draw[guia] (M) -- (2.832,0) node[below,text=black] {$\overline{q}$};}
+    \capa{15}{\draw[guia] (M) -- (0,1.21) node[left,text=black] {$\overline{c}$};}
+    % 16: oferta de la empresa: salto a q̄ en c̄
+    \capa{16}{\draw[oferta] (0,0) -- (0,1.21);}
+    \capa{16}{\draw[oferta] plot[domain=2.832:4.0,samples=40,smooth] (\x,{cmg(\x)});}
+    \capa{16}{\node[nota,anchor=east] at (3.55,3.0) {$q(p)$};}
+    \begin{scope}[yshift=\abajo cm]
+      % 17: ejes del mercado y demanda
+      \capa{17}{\ejes{$x,q$}{$p$}{5.0}{4.0}}
+      \capa{17}{\draw[curva1] plot[domain=0:4.4,samples=60,smooth] (\x,{pd(\x)}) node[etiqueta,below,font=\footnotesize,text=tceemorado] {$x(p)$};}
+      % 18: oferta a largo plazo: 0 por debajo de c̄; en c̄, múltiplos enteros de q̄
+      \capa{18}{\draw[oferta] (0,0) -- (0,1.21);}
+      \capa{18}{\draw[guia,tceeverde] (0,1.21) -- (4.4,1.21);}
+      \capa{18}{\foreach \k in {1,...,6} {\node[circle,fill=tceeverde,inner sep=1.3pt] at ({0.71725*\k},1.21) {};}}
+      \capa{18}{\node[nota,anchor=south east] at (4.95,1.26) {$q^{\mathrm{LP}}$: $J\,\overline{q}$};}
+      \capa{18}{\node[nota,anchor=east] at (4.5,3.6) {$p>\overline{c}$: $q^{\mathrm{LP}}=\infty$};}
+      % 19: equilibrio: p* = c̄ y J* = x(c̄)/q̄ empresas
+      \capa{19}{\node[punto] (Ec) at (3.5862,1.21) {};}
+      \capa{19}{\draw[guia] (Ec) -- (3.5862,0) node[below,text=black] {$J^*\overline{q}$};}
+      \capa{19}{\node[left] at (0,1.21) {$p^*=\overline{c}$};}
+    \end{scope}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

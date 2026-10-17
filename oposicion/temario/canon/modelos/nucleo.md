@@ -1,7 +1,7 @@
 # Intercambio de Edgeworth y núcleo de una economía (Debreu y Scarf, 1963)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.21** (La teoría del equilibrio general; revisado el 14/10/2026, III.1 y III.2) — lo desarrolla con estructura a)-e) como fundamento del equilibrio walrasiano sin subastador. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.21 (desarrollo; hecho), 3.A.14 (mención: desarrolla el núcleo como concepto de solución de un juego cooperativo con utilidad transferible, «vectores de pagos», id `nucleo-shapley`; el núcleo de una economía, con remisión a 3.A.21 — ya en sus `faltan` de `mapa.yaml`).
+- **Temas que lo usan:** 3.A.21 (desarrollo; hecho), 3.A.17 (mención: el monopolio bilateral como el problema de Edgeworth con 2 agentes, III.2, remitiendo a 3.A.21; hecho, 17/10/2026), 3.A.14 (mención: desarrolla el núcleo como concepto de solución de un juego cooperativo con utilidad transferible, «vectores de pagos», id `nucleo-shapley`; el núcleo de una economía, con remisión a 3.A.21 — ya en sus `faltan` de `mapa.yaml`).
 - **Manuales de referencia:** Edgeworth (1881); Gillies (1959); Shubik (1959); Debreu y Scarf (1963); Aumann (1964, 1975); Hildenbrand y Kirman (1988); Mas-Colell, Whinston y Green (1995), cap. 18; Gravelle y Rees (2004), cap. 12; Varian (1992), cap. 21.
 
 ## Presentación de referencia (3.A.21)
@@ -19,6 +19,7 @@ Gráficos de referencia: `oposicion/temario/fuentes/3A21/graficos/caja-intercamb
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.21 | Fundamentos del equilibrio walrasiano sin subastador | desarrollo (hecho, 14/10/2026) | Todo lo anterior, sobre la caja de intercambio que sigue en la pizarra | El concepto de juego cooperativo con utilidad transferible y el valor de Shapley en detalle (3.A.14) |
+| 3.A.17 | Monopolio bilateral | mención (hecho, 17/10/2026) | Un abanico de acuerdos y ningún precio de mercado que elija uno: la indeterminación de Bowley (1928) es la de Edgeworth con 2 agentes; la elige la negociación (ficha `monopolio-bilateral`) | El núcleo y Debreu-Scarf |
 | 3.A.14 | Juegos cooperativos | mención | Núcleo de un juego (función característica v(T), imputaciones x_i, utilidad transferible); una línea: en una economía de intercambio sin utilidad transferible, el núcleo converge al equilibrio competitivo (Debreu y Scarf, 1963), con remisión a 3.A.21 | La caja y el teorema del límite |
 
 ## Divergencias encontradas en el temario actual

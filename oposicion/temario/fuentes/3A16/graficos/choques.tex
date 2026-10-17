@@ -1,0 +1,58 @@
+% Estática comparativa del equilibrio parcial: dos paneles.
+% Izquierda (preferencias): p^D(x;a0) = 3,8 - 0,7 x sube a p^D(x;a1) = 4,8 - 0,7 x;
+%   oferta p^S(q) = 0,5 + 0,8 q. E0 = (2,2; 2,26), E1 = (2,867; 2,793).
+%   Sombreado: ganancia segura de excedente del productor (entre p0* y p1*, sobre la oferta).
+% Derecha (tecnología): p^S(q;a0) = 0,5 + 0,8 q baja a p^S(q;a1) = -0,4 + 0,8 q;
+%   demanda p^D(x) = 3,8 - 0,7 x. E0 = (2,2; 2,26), E1 = (2,8; 1,84).
+%   Sombreado: ganancia segura de excedente del consumidor (entre p1* y p0*, bajo la demanda).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={pd(\x)=3.8-0.7*\x; pdu(\x)=4.8-0.7*\x; ps(\x)=0.5+0.8*\x; psb(\x)=-0.4+0.8*\x;},
+    titulo/.style={font=\small\bfseries,align=center,anchor=south}]
+  % ---------------- Izquierda: aumento de la demanda ----------------
+  % 1: ejes y título
+  \capa{1}{\ejes{$x,q$}{$p$}{5.0}{5.0}}
+  \capa{1}{\node[titulo] at (2.5,5.3) {\strut Preferencias: la demanda sube};}
+  % 2: demanda y oferta iniciales, equilibrio E0
+  \capa{2}{\draw[curva1] (0.2,{pd(0.2)}) -- (4.6,{pd(4.6)}) node[etiqueta,right] {$p^D(x;\alpha_0)$};}
+  \capa{2}{\draw[curva3] (0,{ps(0)}) -- (4.6,{ps(4.6)}) node[etiqueta,right] {$p^S(q)$};}
+  \capa{2}{\node[punto] (A0) at (2.2,2.26) {};}
+  \capa{2}{\node[etiqueta,below] at (2.2,2.15) {$E_0$};}
+  \capa{2}{\proyeccion{(A0)}{$x_0^*$}{$p_0^*$}}
+  % 3: la demanda se desplaza hacia arriba
+  \capa{3}{\draw[curvanueva,desplazada] (0.6,{pdu(0.6)}) -- (4.6,{pdu(4.6)}) node[etiqueta,right] {$p^D(x;\alpha_1)$};}
+  \capa{3}{\draw[flecha] (1.3,{pd(1.3)+0.1}) -- (1.3,{pdu(1.3)-0.1});}
+  % 4: nuevo equilibrio E1: suben el precio y la cantidad
+  \capa{4}{\node[punto] (A1) at (2.867,2.793) {};}
+  \capa{4}{\node[etiqueta,above] at (2.867,2.88) {$E_1$};}
+  \capa{4}{\proyeccion{(A1)}{$x_1^*$}{$p_1^*$}}
+  % 5: el excedente del productor aumenta
+  \capa{5}{\fill[area2] (0,2.26) -- (2.2,2.26) -- (2.867,2.793) -- (0,2.793) -- cycle;}
+  \capa{5}{\node[etiqueta,text=tceedorado,font=\footnotesize] at (1.0,2.53) {$\Delta\mathrm{EP}>0$};}
+  % ---------------- Derecha: mejora tecnológica ----------------
+  \begin{scope}[xshift=7.6cm]
+    % 6: ejes y título
+    \capa{6}{\ejes{$x,q$}{$p$}{5.0}{5.0}}
+    \capa{6}{\node[titulo] at (2.5,5.3) {\strut Tecnología: la oferta baja};}
+    % 7: demanda y oferta iniciales, equilibrio E0
+    \capa{7}{\draw[curva1] (0.2,{pd(0.2)}) -- (4.6,{pd(4.6)}) node[etiqueta,right] {$p^D(x)$};}
+    \capa{7}{\draw[curva3] (0,{ps(0)}) -- (4.4,{ps(4.4)}) node[etiqueta,right] {$p^S(q;\alpha_0)$};}
+    \capa{7}{\node[punto] (B0) at (2.2,2.26) {};}
+    \capa{7}{\node[etiqueta,above] at (2.2,2.35) {$E_0$};}
+    \capa{7}{\proyeccion{(B0)}{$x_0^*$}{$p_0^*$}}
+    % 8: la oferta se desplaza hacia abajo
+    \capa{8}{\draw[curvanueva,desplazada] (0.5,{psb(0.5)}) -- (4.6,{psb(4.6)}) node[etiqueta,right] {$p^S(q;\alpha_1)$};}
+    \capa{8}{\draw[flecha] (3.8,{ps(3.8)-0.1}) -- (3.8,{psb(3.8)+0.1});}
+    % 9: nuevo equilibrio E1: baja el precio y sube la cantidad
+    \capa{9}{\node[punto] (B1) at (2.8,1.84) {};}
+    \capa{9}{\node[etiqueta,above] at (2.8,1.93) {$E_1$};}
+    \capa{9}{\proyeccion{(B1)}{$x_1^*$}{$p_1^*$}}
+    % 10: el excedente del consumidor aumenta
+    \capa{10}{\fill[area] (0,1.84) -- (2.8,1.84) -- (2.2,2.26) -- (0,2.26) -- cycle;}
+    \capa{10}{\node[etiqueta,text=tceemorado,font=\footnotesize] at (0.6,2.05) {$\Delta\mathrm{EC}>0$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,66 @@
+% Subaditividad y sostenibilidad del monopolio natural uniproducto (3.A.17, II.2.1).
+% Misma base que el gráfico subaditividad del 3.A.12 (mismas funciones y capas 1-5):
+%   C(q) = F + d q^4 con F = 1,8 y d = 0,0375: CMe_1(q) = 1,8/q + 0,0375 q^3,
+%   mínimo en q^0 = 2 (p^0 = 1,2); CMe_{1+2}(q) = CMe_1(q/2) (2 empresas a partes
+%   iguales); corte en q^1 = 2,7108.
+% Para ampliar el tramo (q^0, q^1), el eje vertical está cortado: empieza en 0,8
+%   (las ordenadas se dibujan como valor - 0,8) y con más escala que en el 3.A.12.
+% Se añaden por capas 2 demandas que cortan al CMe_1 entre q^0 y q^1:
+%   D*: p = 4 - 1,2 q, corta al CMe_1 en q* = 2,3 (p* = 1,2389) y queda siempre por
+%       debajo de CMe_{1+2} (distancia mínima 0,18).
+%   D': p = 8,8059 - 3 q, corta al CMe_1 en q' = 2,5 (p' = 1,3059) y supera a
+%       CMe_{1+2} a la izquierda de q = 2,4167: ahí 2 empresas podrían repartirse el
+%       mercado con beneficios.
+% Elaboración propia a partir de Baumol, Panzar y Willig (1982).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=2.3cm,y=4.2cm,
+    declare function={yo=0.8; cme(\q)=1.8/\q+0.0375*\q^3; ds(\q)=4-1.2*\q; dp(\q)=8.8059-3*\q;}]
+  \def\qa{2.7108}\def\pa{1.4110}\def\qs{2.3}\def\ps{1.2389}\def\qp{2.5}\def\pp{1.3059}\def\qA{2.4167}
+  % 1: ejes (el vertical, cortado: empieza en 0,8)
+  \capa{1}{\draw[eje] (0,0) -- (5.6,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,0.07) (0,0.11) -- (0,1.85) node[left] {$\mathrm{CMe}$, $p$};}
+  \capa{1}{\draw[thick] (-0.06,0.05) -- (0.06,0.08) (-0.06,0.09) -- (0.06,0.12);}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: CMe de una sola empresa y su mínimo q^0
+  \capa{2}{\draw[curva1] plot[domain=0.724:3.779,samples=160,smooth] (\x,{cme(\x)-yo}) node[etiqueta,above] {$\mathrm{CMe}_{1}$};}
+  \capa{2}{\node[punto,fill=tceemorado] (M) at (2,1.2-yo) {};}
+  \capa{2}{\draw[guia] (M) -- (2,0) node[below,text=black] {$q^0$};}
+  % 3: CMe con dos empresas a partes iguales
+  \capa{3}{\draw[curva2] plot[domain=1.448:5.4,samples=160,smooth] (\x,{cme(\x/2)-yo}) node[etiqueta,above] {$\mathrm{CMe}_{1+2}$};}
+  % 4: corte en q^1
+  \capa{4}{\node[punto] (Q1) at (\qa,\pa-yo) {};}
+  \capa{4}{\draw[guia] (Q1) -- (\qa,0) node[below,text=black] {$q^1$};}
+  % 5: tramo sombreado (q^0, q^1) y rótulos
+  \capa{5}{\fill[area] plot[domain=2:\qa,samples=40,smooth] (\x,{cme(\x)-yo})
+    -- plot[domain=\qa:2,samples=40,smooth] (\x,{cme(\x/2)-yo}) -- cycle;}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=left,anchor=west] (S) at (3.3,0.17) {subaditividad con\\ $\mathrm{CMe}$ creciente};}
+  \capa{5}{\draw[thin,tceegris] (S.west) -- (2.62,0.6);}
+  \capa{5}{\draw[|-|,thick,tceeverde] (0,-0.19) -- (2,-0.19);}
+  \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceeverde] at (1,-0.2) {economías de escala};}
+  \capa{5}{\draw[|-|,thick,tceemorado] (0,-0.34) -- (\qa,-0.34);}
+  \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceemorado] at ({\qa/2},-0.35) {subaditividad};}
+  % 6: demanda D*: corta al CMe_1 entre q^0 y q^1, siempre por debajo de CMe_{1+2}
+  \capa{6}{\draw[curva3] plot[domain=1.35:2.65,samples=2] (\x,{ds(\x)-yo});}
+  \capa{6}{\node[etiqueta,text=tceeverde,anchor=south] at (1.35,{ds(1.35)-yo}) {$D^{*}$};}
+  % 7: monopolio con beneficio nulo en q*, p*; el mínimo del CMe, p^0
+  \capa{7}{\node[punto] (E) at (\qs,\ps-yo) {};}
+  \capa{7}{\draw[guia] (E) -- (\qs,0) node[below,text=black] {$q^{*}$};}
+  \capa{7}{\draw[guia] (E) -- (0,\ps-yo) node[anchor=east,text=black,inner sep=1pt] {$p^{*}$};}
+  \capa{7}{\draw[guia] (M) -- (0,1.2-yo) node[anchor=north east,text=black,inner sep=1pt,yshift=-1pt] {$p^{0}$};}
+  % 8: demanda D': corta al CMe_1 entre q^0 y q^1, pero en un tramo supera a CMe_{1+2}
+  \capa{8}{\draw[curva4] plot[domain=2.102:2.62,samples=2] (\x,{dp(\x)-yo});}
+  \capa{8}{\node[etiqueta,text=tceedorado,anchor=south] at (2.102,{dp(2.102)-yo}) {$D'$};}
+  % 9: monopolio con beneficio nulo en q', p'
+  \capa{9}{\node[punto] (E') at (\qp,\pp-yo) {};}
+  \capa{9}{\draw[guia] (E') -- (\qp,0) node[below,text=black] {$q'$};}
+  \capa{9}{\draw[guia] (E') -- (0,\pp-yo) node[anchor=south east,text=black,inner sep=1pt] {$p'$};}
+  % 10: tramo en que D' queda por encima de CMe_{1+2}: la entrada se acomoda
+  \capa{10}{\fill[area2] plot[domain=2.102:\qA,samples=2] (\x,{dp(\x)-yo})
+    -- plot[domain=\qA:2.102,samples=30,smooth] (\x,{cme(\x/2)-yo}) -- cycle;}
+  \capa{10}{\node[etiqueta,font=\footnotesize,text=tceedorado,align=left,anchor=west] (A) at (3.75,1.5) {$D'>\mathrm{CMe}_{1+2}$:\\ 2 empresas con beneficios};}
+  \capa{10}{\draw[thin,tceegris] (A.west) -- (2.2,1.05);}
+\end{tikzpicture}
+\end{document}

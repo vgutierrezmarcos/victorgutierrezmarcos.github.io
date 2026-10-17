@@ -1,0 +1,51 @@
+% El monopolista no produce necesariamente en el mínimo del coste medio a
+% largo plazo (3.A.17, I.2, nota): 3 tamaños de mercado con la misma tecnología.
+%   CMe(q) = 4 + 0,4 (q - 4)^2 (mínimo en q = 4, CMe = 4);
+%   CMg(q) = CMe(q) + 0,8 q (q - 4) (corta al CMe en su mínimo).
+%   Izquierda: p = 12 - q -> IMg = CMg en q^M = 4 (mínimo del CMe), p^M = 8.
+%   Centro: p = 13,088 - 2q -> q^M = 2,8 < 4 (tramo decreciente del CMe),
+%     p^M = 7,488, CMe = 4,576: capacidad ociosa.
+%   Derecha: p = 15,808 - 0,6q -> q^M = 5,2 > 4 (tramo creciente del CMe),
+%     p^M = 12,688, CMe = 4,576: deseconomías de escala.
+%   En cada panel el IMg corta al CMg una sola vez (comprobado numéricamente).
+% q a 0,45 cm por unidad; p a 0,22 cm por unidad; paneles cada 5,2 cm.
+% Elaboración propia a partir del gráfico de la nota 24 del original.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+% \panel{capa inicial}{a}{b}{q^M}{p^M}{CMe(q^M)}{CMg(q^M)}{título}
+% demanda p = a - b q; IMg = a - 2 b q.
+\newcommand{\panel}[8]{%
+  % ejes y título
+  \capa{#1}{\draw[eje] (0,0) -- (9.6,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{#1}{\draw[eje] (0,0) -- (0,16.5) node[left] {$p$};}
+  \capa{#1}{\node[below left] at (0,0) {$0$};}
+  \capa{#1}{\node[etiqueta,anchor=base] at (4.8,17.6) {#8};}
+  % costes a largo plazo (los mismos en los 3 paneles)
+  \capa{\numexpr#1+1\relax}{\draw[curva3] plot[domain=0.2:7.6,samples=60,smooth] (\x,{cme(\x)}) node[etiqueta,right] {CMe};}
+  \capa{\numexpr#1+1\relax}{\draw[curvanueva] plot[domain=0.2:5.9,samples=60,smooth] (\x,{cmg(\x)}) node[etiqueta,above] {CMg};}
+  \capa{\numexpr#1+1\relax}{\node[punto,fill=tceeverde] at (4,4) {};}
+  % demanda e ingreso marginal del mercado
+  \capa{\numexpr#1+2\relax}{\draw[curva1] (0,#2) -- ({min(9,#2/#3)},{#2-#3*min(9,#2/#3)}) node[etiqueta,anchor=south west] {$p(q)$};}
+  \capa{\numexpr#1+2\relax}{\draw[curva2] (0,#2) -- ({min(9,#2/(2*#3))},{#2-2*#3*min(9,#2/(2*#3))}) node[etiqueta,anchor=south west] {IMg};}
+  % equilibrio y beneficio
+  \capa{\numexpr#1+3\relax}{\node[punto] at (#4,#7) {};}
+  \capa{\numexpr#1+3\relax}{\node[punto] (M) at (#4,#5) {};}
+  \capa{\numexpr#1+3\relax}{\draw[guia] (M) -- (#4,0) node[below] {$q^M$};}
+  \capa{\numexpr#1+3\relax}{\draw[guia] (M) -- (0,#5) node[left] {$p^M$};}
+  \capa{\numexpr#1+3\relax}{\begin{scope}[on background layer]\fill[area2] (0,#6) rectangle (#4,#5);\end{scope}}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.45cm,y=0.22cm,
+    declare function={cme(\q)=4+0.4*(\q-4)^2; cmg(\q)=4+0.4*(\q-4)^2+0.8*\q*(\q-4);}]
+  % 1-4: mercado en el que IMg = CMg justo en el mínimo del CMe
+  \panel{1}{12}{1}{4}{8}{4}{4}{Escala eficiente}
+  % 5-8: mercado pequeño: tramo decreciente del CMe
+  \begin{scope}[xshift=5.4cm]
+    \panel{5}{13.088}{2}{2.8}{7.488}{4.576}{1.888}{Exceso de capacidad}
+  \end{scope}
+  % 9-12: mercado muy grande: tramo creciente del CMe
+  \begin{scope}[xshift=10.8cm]
+    \panel{9}{15.808}{0.6}{5.2}{12.688}{4.576}{9.568}{Deseconomías de escala}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

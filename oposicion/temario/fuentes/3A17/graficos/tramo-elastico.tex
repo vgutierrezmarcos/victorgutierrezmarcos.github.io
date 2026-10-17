@@ -1,0 +1,57 @@
+% El monopolista produce en el tramo elástico de la demanda (3.A.17, I.2, nota).
+% Misma base que equilibrio-monopolio.tex:
+%   p(q) = 9 - q; IMg = 9 - 2q; CMg = 1 + q/2.
+%   |eps| = p/q: |eps| = 1 en q = 4,5 (p = 4,5), donde IMg = 0 e
+%   I(q) = q (9 - q) alcanza su máximo (20,25).
+%   Monopolio: q^M = 3,2 < 4,5 (|eps| = 5,8/3,2 = 1,81 > 1); I(q^M) = 18,56.
+% Panel de abajo: ingreso total, 0,12 cm por unidad, desplazado 4,3 cm abajo.
+% Elaboración propia a partir del gráfico de la nota 17 del original.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.6cm,
+    declare function={dem(\q)=9-\q; img(\q)=9-2*\q; cmg(\q)=1+0.5*\q; it(\q)=\q*(9-\q);},
+    abajo/.style={y=0.12cm,yshift=-4.3cm},
+    elast/.style={etiqueta,font=\footnotesize}]
+  \def\qM{3.2}\def\pM{5.8}\def\cM{2.6}
+  % ---------- panel de arriba: demanda e ingreso marginal ----------
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,10) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: demanda
+  \capa{2}{\draw[curva1] plot[domain=0:9] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};}
+  % 3: ingreso marginal, que se hace negativo a la derecha de q = 4,5
+  \capa{3}{\draw[curva2] plot[domain=0:5.3] (\x,{img(\x)}) node[etiqueta,right] {IMg};}
+  % 4: tramos de la demanda según la elasticidad
+  \capa{4}{\node[punto] (U) at (4.5,4.5) {};}
+  \capa{4}{\node[elast,anchor=south west] at (4.55,4.55) {$|\varepsilon_{q,p}|=1$};}
+  \capa{4}{\node[elast,anchor=south west] at (1.6,7.5) {$|\varepsilon_{q,p}|>1$};}
+  \capa{4}{\node[elast,anchor=south west] at (6.9,2.2) {$|\varepsilon_{q,p}|<1$};}
+  \capa{4}{\draw[guia] (U) -- (4.5,0);}
+  % 5: coste marginal y equilibrio, en el tramo elástico
+  \capa{5}{\draw[curvanueva] plot[domain=0:8.4] (\x,{cmg(\x)}) node[etiqueta,right] {CMg};}
+  \capa{5}{\node[punto] (I) at (\qM,\cM) {};}
+  \capa{5}{\node[punto] (M) at (\qM,\pM) {};}
+  \capa{5}{\draw[guia] (M) -- (0,\pM) node[left] {$p^M$};}
+  \capa{5}{\draw[guia] (M) -- (\qM,0);}
+  % ---------- panel de abajo: ingreso total ----------
+  \begin{scope}[abajo]
+    % 6: ejes e ingreso total, máximo donde IMg = 0
+    \capa{6}{\draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};}
+    \capa{6}{\draw[eje] (0,0) -- (0,24) node[left] {$I$};}
+    \capa{6}{\node[below left] at (0,0) {$0$};}
+    \capa{6}{\draw[curva4] plot[domain=0:9,samples=60,smooth] (\x,{it(\x)}) node[etiqueta,above right] {$I(q)=p(q)\,q$};}
+    \capa{6}{\node[punto] (Imax) at (4.5,20.25) {};}
+    \capa{6}{\node[elast,anchor=east] at (2.1,15.5) {$|\varepsilon_{q,p}|>1$};}
+    \capa{6}{\node[elast,anchor=west] at (6.9,15.5) {$|\varepsilon_{q,p}|<1$};}
+    % 7: las mismas cantidades en los 2 paneles
+    \capa{7}{\node[punto] (IM) at (\qM,{it(\qM)}) {};}
+    \capa{7}{\draw[guia] (\qM,0) node[below] {$q^M$} -- (IM);}
+    \capa{7}{\draw[guia] (4.5,0) -- (Imax);}
+  \end{scope}
+  \capa{7}{\draw[guia] (\qM,0) -- (IM);}
+  \capa{7}{\draw[guia] (4.5,0) -- (Imax);}
+\end{tikzpicture}
+\end{document}

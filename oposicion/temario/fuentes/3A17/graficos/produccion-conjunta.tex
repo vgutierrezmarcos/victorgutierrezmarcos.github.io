@@ -1,0 +1,44 @@
+% Producción conjunta en proporciones fijas (3.A.17, II.3.2).
+% Cada unidad del proceso da una unidad de cada bien.
+% Demandas p_1 = 10 - x_1 y p_2 = 6 - 1,5 x_2: IMg_1 = 10 - 2q, IMg_2 = 6 - 3q
+% (IMg_2 = 0 en q = 2). Suma vertical de las partes positivas:
+%   16 - 5q para q <= 2; 10 - 2q (= IMg_1) para 2 <= q <= 5.
+% Caso 1: CMg(q) = 4 + 2q: 16 - 5q = 4 + 2q -> q = x_1 = x_2 = 1,7143 (< 2), CMg = 7,4286:
+%   se vende todo lo que se produce de los 2 bienes.
+% Caso 2: CMg'(q) = 1 + 0,5q: 10 - 2q = 1 + 0,5q -> q' = 3,6 (> 2), CMg' = 2,8:
+%   del bien 2 solo se venden x_2 = 2 unidades (IMg_2 = 0) y se desecha q' - x_2 = 1,6.
+% Elaboración propia a partir de Marshall (1890, libro V, cap. 6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.15cm,y=0.3cm]
+  % 1: ejes (con un tramo negativo para el IMg_2)
+  \capa{1}{\draw[eje] (0,0) -- (6.2,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,-3.2) -- (0,17.5) node[left] {$\mathrm{IMg}$, $\mathrm{CMg}$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: ingreso marginal del bien 1
+  \capa{2}{\draw[curva1] (0,10) -- (5,0);}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (4.25,1.5) {$\mathrm{IMg}_1$};}
+  % 3: ingreso marginal del bien 2 (negativo a partir de q = 2)
+  \capa{3}{\draw[curva2] (0,6) -- (2,0);}
+  \capa{3}{\draw[curva2,dashed] (2,0) -- (2.6,-1.8);}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=south west] at (0.12,5.7) {$\mathrm{IMg}_2$};}
+  % 4: suma vertical de las partes positivas
+  \capa{4}{\draw[curva3] (0,16) -- (2,6) -- (5,0);}
+  \capa{4}{\node[etiqueta,text=tceeverde,anchor=west] at (0.75,13.8) {$\sum_i\max\{\mathrm{IMg}_i,0\}$};}
+  % 5: CMg alto: corte en el tramo en que se vende todo
+  \capa{5}{\draw[curvanueva] (0,4) -- (3.4,10.8) node[etiqueta,right] {$\mathrm{CMg}$};}
+  \capa{6}{\node[punto] (E) at (1.7143,7.4286) {};}
+  \capa{6}{\draw[guia] (E) -- (1.7143,0) node[below,text=black] {$q$};}
+  % 7: CMg bajo: corte donde el IMg_2 ya es negativo
+  \capa{7}{\draw[curvanueva,desplazada] (0,1) -- (5.8,3.9) node[etiqueta,above] {$\mathrm{CMg}'$};}
+  \capa{8}{\node[punto] (F) at (3.6,2.8) {};}
+  \capa{8}{\draw[guia] (F) -- (3.6,0) node[below,text=black] {$q'=x_1$};}
+  % 9: del bien 2 solo se vende hasta IMg_2 = 0 y se desecha el resto
+  \capa{9}{\node[punto,fill=tceeazul] at (2,0) {};}
+  \capa{9}{\node[etiqueta,above right,text=tceeazul] at (2,0) {$x_2$};}
+  \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceerojo] (2,-3.6) -- (3.6,-3.6)
+    node[midway,below=4pt,etiqueta,font=\footnotesize,text=tceerojo] {se desecha $q'-x_2$};}
+\end{tikzpicture}
+\end{document}

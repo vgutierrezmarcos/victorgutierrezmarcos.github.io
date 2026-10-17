@@ -11,13 +11,13 @@ Autor: Víctor Gutiérrez Marcos
 | Concepto | Cifra |
 |---|---|
 | Temas del temario | 146 (3.A: 45; 3.B: 45; 4.A: 30; 4.B: 26) |
-| Temas revisados | 5 (3.A.8, 3.A.9 y 3.A.11 el 13/10/2026; 3.A.12 y 3.A.21 el 14/10/2026) |
+| Temas revisados | 7 (3.A.8, 3.A.9 y 3.A.11 el 13/10/2026; 3.A.12 y 3.A.21 el 14/10/2026; 3.A.16 el 17/10/2026, con el que queda revisado todo el bloque del modelo neoclásico básico; 3.A.17 el 17/10/2026, el primero del bloque de información y poder de mercado) |
 | Temas con fuente que corresponde al título | 72 |
 | Temas con fuente parcial (incompleta o con restos del título anterior) | 5 (3.A.12, 3.A.14, 3.A.22, 3.A.23, 4.A.16) |
 | Temas cuyo Word es de otro número (renumerados en el 4.º) | 20 |
 | Temas cuyo Word es del título antiguo | 16 |
 | Temas **sin fuente** (hay que escribirlos) | 33 |
-| Modelos, escuelas, políticas e instituciones compartidos (2+ temas) | 211 en el mapa; 231 fichas en `modelos/` |
+| Modelos, escuelas, políticas e instituciones compartidos (2+ temas) | 211 en el mapa y 231 fichas en la consolidación; hoy (17/10/2026) 228 en el mapa y 248 fichas en `modelos/` (las de los temas revisados, entre ellas `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral` del 3.A.17) |
 | Referencias «[ver tema …]» inventariadas | 1.172: 947 bien, **208 a corregir**, **17 sobran** (en 74 temas) |
 | Referencias que faltan (sobre todo al tema de referencia de cada modelo) | 731 |
 | Incoherencias internas detectadas en los inventarios | 357 |
@@ -89,8 +89,8 @@ Formato: `apunta a → debería apuntar a` (×n si se repite). La mayoría viene
 | 3.A.11 | 4 | 3.A.9→3.A.11; 3.A.10→3.A.12; 3.A.11, 3.A.14-3.A.17→3.A.15, 3.A.16, 3.A.19; 3.A.23→3.A.22 | — |
 | 3.A.12 | 0 | ~~3.A.9→3.A.8~~: desfasada, la remisión de Slutsky a 3.A.9 es la correcta (D139); revisado el 14/10/2026 | — |
 | 3.A.13 | 1 | 3.A.7→3.A.10 | — |
-| 3.A.16 | 4 | 3.A.14→3.A.16 (×2); 3.A.11→3.A.12 (×2) | — |
-| 3.A.17 | 3 | 3.B.4→3.A.15; 3.B.4→3.B.39; 3.A.14→3.A.16 | — |
+| 3.A.16 | 0 | ~~3.A.14→3.A.16 (×2)~~: eran notas privadas, no se publican; ~~3.A.11→3.A.12 (×2)~~: corregidas; la telaraña remitida a 3.A.10 pasa a 3.A.6 y 3.A.5; revisado el 17/10/2026 | — |
+| 3.A.17 | 0 | ~~3.B.4→3.A.15~~ y ~~3.B.4→3.B.39~~: corregidas; ~~3.A.14→3.A.16~~ y la nota de 3.A.23 (von Mises, Lange, Hayek, Hurwicz): eran comentarios privados, no se publican; 13 referencias que faltaban añadidas (3.A.9, 3.A.13, 3.A.14, 3.A.21, 3.A.25, 3.A.27…); revisado el 17/10/2026 | — |
 | 3.A.18 | 2 | 3.A.6→3.A.8; 3.A.10→3.A.14 | — |
 | 3.A.19 | 4 | 3.A.10→3.A.14 (×2); 3.A.23→3.A.22; 3.B.4→3.B.39 | — |
 | 3.A.21 | 0 | ~~3.A.22→3.A.23~~ (nota de las externalidades): corregida; revisado el 14/10/2026 | — |
@@ -172,6 +172,8 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | 3.A.22 | Utilidades «ordinales» con utilidad marginal decreciente; atribuye a Debreu propiedades de la función de utilidad; «2×2×2» con 10 incógnitas |
 | 3.A.23 | Bienes públicos: X fijo y a la vez FPP T(X,G) = 0; externalidad en consumo (analítica) y en producción (gráfica) sin enlazar; Clarke-Groves sin terminar |
 | 3.A.24 | Mezcla cardinalidad y comparabilidad interpersonal; problema del planificador vacío; «ley D'Hont» |
+| 3.A.17 | Resuelto el 17/10/2026 (más de 25 errores): regla de Ramsey-Boiteux con λ al revés («cuanto mayor λ, menor el margen»); Lerner multiproducto con la elasticidad cruzada equivocada; 1.er grado «con ineficiencia asignativa»; 3.er grado como «mejora de Pareto»; economías de alcance como definición del monopolio natural multiproducto; pruebas de subsidios cruzados como condición suficiente; monopsonio con «paro involuntario» y GMg = oferta; tarifa de punta CF/n + CMg·q; Laffont-Tirole mal contado; Mill, Marshall, Olson y Shleifer mal fechados o escritos |
+| 3.A.25 | Su anexo copia el anexo 1 del 3.A.17 original: GMg llamado «curva de oferta de trabajo» y paro involuntario con monopsonio (está sobre la oferta: no hay paro involuntario); W y Π (ficha `monopsonio`) |
 | 3.A.36, 3.A.41 | Misma derivación errónea de Barro-Gordon que 3.A.6 |
 | 3.A.43 | Regla de oro sin g (∂y/∂k = δ + n); ejemplo de trampa de pobreza que no genera dos estados estacionarios (D110) |
 | 3.B.1 | GAO definido sobre el EBIAT (debe ser sobre el EBIT); fórmula de apalancamiento con ROA después de impuestos (D062) |
@@ -210,7 +212,7 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | 4.B.11 | Exceso de gravamen con signo negativo; lista de las «reglas» de Ramsey corrupta |
 | 4.B.12 | Renta fiscal Y = IC + GD (los gastos se restan); progresividad confundida con retenciones; doble imposición económica y jurídica invertidas |
 | 4.B.13 | IVA «real» y con sujeto pasivo «personal»; fechas del IVA en la CEE (1967/1970); periodicidad «instantánea» |
-| 4.B.15 | Laffont-Tirole: b cambia de sentido entre el texto y el anexo; «Ramsey-Boiteaux» |
+| 4.B.15 | Laffont-Tirole: b cambia de sentido entre el texto y el anexo; «Ramsey-Boiteaux»; tarifa de punta CF/n + CMg·q (es p_p = b + β, ya corregido en el 3.A.17); subaditividad remitida a 3.A.10 (es 3.A.17); Averch-Johnson con r y P |
 | 4.B.18 | Base jurídica con artículos del antiguo TCE (hoy arts. 113 y 115 TFUE); tipos del IS anteriores al pilar 2 |
 | 4.B.21 | «4 etapas» del proceso presupuestario con cinco enumeradas; solo clasificación económica de ingresos |
 | 4.B.26 | Signo del «efecto bola de nieve» al revés; mezcla tipo real y crecimiento nominal; dos introducciones y dos conclusiones |
@@ -309,6 +311,9 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | Normativa del IRPF, IS, IP, IVA | 4.B.12, 4.B.13 | 4.B.16, 4.B.17, 4.B.19, 4.B.20 | D022 |
 | Armonización fiscal (viejo 4.B.18) | 4.B.18 | 3.B.39, 4.B.18, 4.B.20 | D074 |
 | Regulación de la empresa pública (viejo 4.B.16) | Word de 4.B.15 | 3.A.17 y 3.A.20 | D092, D091 |
+| Regulación y control del monopolio (bloque 4 del Word) | Cuerpo del 3.A.17 | Anexo A del 3.A.17 (hecho, 17/10/2026); en el cuerpo, solo la regulación básica del monopolio natural (II.2.3) | D1 del 3.A.17 (provisional) |
+| Averch-Johnson, *price cap*, Laffont-Tirole y *yardstick* | Anexo A del 3.A.17 | 3.A.20 cuando se redacte, con el 3.A.17 en mención: **[decidir]** (§ 13) | D1 del 3.A.17 |
+| Monopsonio en el mercado de trabajo (anexo 1 del Word) | Anexo del 3.A.17 y copia en el anexo del 3.A.25 | Cuerpo del 3.A.17 (III.1, hecho); el 3.A.25 lo resume y remite | — |
 | Cifras de los PGE / COFOG | 4.B.21 / 4.B.22 | 4.B.22 / 4.B.23 | D055 |
 | Input-output | 3.A.30 | 3.A.31 | D112 |
 
@@ -338,8 +343,8 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 
 **Fase 1. Microeconomía (3.A)** (D133)
 
-- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5; revisado el 14/10/2026) · 5. 3.A.16 (3)
-- *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick) · 7. **3.A.10** (antes que 3.A.13 y 3.A.14, que usan sus seguros y la utilidad esperada) · 8. 3.A.13 (6; Stiglitz-Weiss en desarrollo) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
+- *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5; revisado el 14/10/2026) · 5. 3.A.16 (3; revisado el 17/10/2026, con la ficha nueva `telarana`)
+- *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick; revisado el 17/10/2026, con 5 fichas nuevas: `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral`) · 7. **3.A.10** (antes que 3.A.13 y 3.A.14, que usan sus seguros y la utilidad esperada) · 8. 3.A.13 (6; Stiglitz-Weiss en desarrollo) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
 - *Economía del Bienestar e Intervención del Sector Público*: 13. **3.A.22** (antes que 3.A.23, que se apoya en los teoremas del bienestar) · 14. 3.A.23 (12) · 15. 3.A.24 (referencia del 3.º de Lorenz, Atkinson y Borda, además de Arrow) · 16. 3.A.20 (sin fuente; referencia de la captura del regulador) · 17. 3.B.31 (sin fuente; referencia del MAFC)
 
 **Fase 2. Macroeconomía (3.A)** (mismo criterio de dependencias que D133; es una propuesta de orden, no una decisión nueva)
@@ -430,3 +435,15 @@ Al aplicar las decisiones aprobadas se ha repasado todo `mapa.yaml` con el crite
 - **4.B.4**: la regla de Taylor solo se menciona; con el NEK fiscal hace falta su forma canónica.
 
 **Idea para la organización** (§ 11): marcar en el PowerPoint los modelos con referencia doble (efectos no keynesianos, Lorenz, Atkinson, Borda y, desde D134-D137, incidencia en equilibrio parcial, Condorcet, bucle banca-soberano y votante mediano) con un enlace 3.º ↔ 4.º, para que se vea que cada examen tiene su desarrollo completo.
+
+## 13. Decisiones abiertas tras la revisión del 3.A.17 (17/10/2026)
+
+El coordinador aplicó la opción recomendada mientras Víctor no conteste en el artifact de dudas; el canon las recoge como provisionales.
+
+- **[decidir] D1 · Referencia de la regulación con información asimétrica.** Hoy Averch-Johnson, *price cap*, Laffont-Tirole y *yardstick* tienen su referencia en el anexo A del 3.A.17 (D091, D139). Propuesta: cuando se redacte el 3.A.20 (sin fuente; su título dice «desarrollos en presencia de información asimétrica»), pasarle esa referencia, con la presentación y los gráficos del anexo A del 3.A.17, y dejar el 3.A.17 en mención; el monopolio natural, Ramsey-Boiteux y la tarifa en dos partes se quedan en el 3.A.17. Si se aprueba, quedan bien las remisiones del 3.A.13 (Laffont-Tirole) y del 4.A.12 (*price cap*) al 3.A.20, que hoy figuran como contradicciones. Alternativa: dejar el anexo A del 3.A.17 como referencia definitiva y que el 3.A.20 la resuma.
+- **[decidir] D8 · Siglas VPMg, IPMg y GMg** (valor e ingreso del producto marginal y gasto marginal del factor, con el subíndice del factor, en redonda): aplicadas en el 3.A.17 y registradas en `notacion.md` § 0. Alternativa: escribir siempre p·PMg_L e IMg·PMg_L (peor para la pizarra). Si se rechaza, solo cambia el 3.A.17; el 3.A.11 y el 3.A.12 lo dicen en palabras.
+- **[decidir] τ o t para el impuesto *ad valorem* en el monopolio.** El canon propone t, como el 3.A.16 (`pendientes-coherencia.md`); la alternativa es dejar τ en la anotación del 3.A.17 y registrarlo como local.
+- Las demás dudas del 3.A.17 (D2-D7: título del bloque I, orden de II, bienestar en I.3, 1.er grado como capa, frase de Joan Robinson, enganche con refrán) no tocan el canon: si Víctor cambia alguna, el canon solo actualiza la fila del 3.A.17 en las fichas.
+- **Propuestas para cuando se revisen otros temas**: ficha `nash-negociacion` con el 3.A.14 como referencia (Nash, Rubinstein, Binmore-Rubinstein-Wolinsky; usuarios 3.A.17, 3.A.21 y 3.A.27) y, si el 3.A.15 la desarrolla, `doble-marginalizacion` (Spengler, 1950).
+
+**Ideas para la organización** (§ 11): el 3.A.17 reparte con el 3.A.20 la regulación del monopolio y con el 3.A.25 y el 3.A.27 el mercado de trabajo con poder de mercado; conviene que en el PowerPoint el 3.A.17 enlace con el 3.A.20 (regulación) y con el bloque del mercado de trabajo (3.A.25 y 3.A.27), y que el 3.A.20 se escriba justo después del 3.A.17 si se aprueba D1, para que la presentación de los 4 modelos se traslade sin cambios.

@@ -1,0 +1,69 @@
+% Viabilidad del monopolista (3.A.17, anexo B.2): la condición se evalúa en q^M.
+% Los 2 paneles tienen la misma demanda y el mismo CMg; solo cambia el coste fijo:
+%   p(q) = 8 - q; IMg(q) = 8 - 2q; C(q) = F + q + 0,15 q^2;
+%   CMg(q) = 1 + 0,3 q; CMe(q) = F/q + 1 + 0,15 q.
+%   IMg = CMg -> q^M = 7/2,3 = 3,043; p^M = 4,957.
+% Izquierda, F = 5: CMe(q^M) = 3,099 < p^M: viable (beneficio sombreado);
+%   mínimo del CMe en q = 5,77, CMe = 2,732.
+% Derecha, F = 13: CMe(q) - p(q) = 13/q + 1,15 q - 7 > 0 para todo q (mínimo
+%   0,73 en q = 3,36): la demanda queda siempre por debajo del CMe.
+%   CMe(q^M) = 5,728 > p^M: no viable, aunque p^M supera al mínimo del CMe
+%   (3,79 en q = 9,31).
+% Elaboración propia a partir de Koutsoyiannis (1979).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.5cm,y=0.48cm,
+    declare function={dem(\q)=8-\q; img(\q)=8-2*\q; cmg(\q)=1+0.3*\q;
+                      cmea(\q)=5/\q+1+0.15*\q; cmeb(\q)=13/\q+1+0.15*\q;},
+    titulo/.style={font=\footnotesize,align=center},
+    nota/.style={etiqueta,font=\footnotesize}]
+  \def\qM{3.043}\def\pM{4.957}
+  % 1: monopolio viable
+  \capa{1}{
+    \draw[eje] (0,0) -- (11.5,0) node[below left=2pt and 0pt] {$q$};
+    \draw[eje] (0,0) -- (0,10.5) node[left] {$p$};
+    \node[below left] at (0,0) {$0$};
+    \draw[curva1] plot[domain=0:7.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};
+    \draw[curva2] plot[domain=0:3.9] (\x,{img(\x)}) node[etiqueta,anchor=west,yshift=0.2cm] {IMg};
+    \draw[curvanueva] plot[domain=0:10.5] (\x,{cmg(\x)}) node[etiqueta,above] {CMg};
+    \draw[curva3] plot[domain=0.55:10.8,samples=80] (\x,{cmea(\x)}) node[etiqueta,right] {CMe};
+    \fill[area] (0,3.099) rectangle (\qM,\pM);
+    \node[punto] at (\qM,{cmg(\qM)}) {};
+    \draw[guia] (\qM,0) node[below] {$q^M$} -- (\qM,\pM);
+    \node[punto,label={[etiqueta]above right:$M$}] (M) at (\qM,\pM) {};
+    \draw[guia] (M) -- (0,\pM) node[left] {$p^M$};
+    \node[punto] (A) at (\qM,3.099) {};
+    \draw[guia] (A) -- (0,3.099) node[left] {$\mathrm{CMe}(q^M)$};
+    \node[nota,font=\scriptsize] at (2.35,4.35) {$B>0$};
+    \node[circle,draw=tceeverde,fill=white,thick,inner sep=1.3pt] (m) at (5.77,2.732) {};
+    \node[nota,text=tceeverde,anchor=north west] at (6.6,2.45) {mín.\ CMe};
+    \node[titulo] at (5.5,-2.4) {Viable: $p(q^M)\geq\mathrm{CMe}(q^M)$};
+  }
+  % 2: monopolio no viable: la demanda queda siempre por debajo del CMe
+  \capa{2}{
+    \begin{scope}[xshift=8.3cm]
+    \draw[eje] (0,0) -- (11.5,0) node[below left=2pt and 0pt] {$q$};
+    \draw[eje] (0,0) -- (0,10.5) node[left] {$p$};
+    \node[below left] at (0,0) {$0$};
+    \draw[curva1] plot[domain=0:7.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};
+    \draw[curva2] plot[domain=0:3.9] (\x,{img(\x)}) node[etiqueta,anchor=west,yshift=0.2cm] {IMg};
+    \draw[curvanueva] plot[domain=0:10.5] (\x,{cmg(\x)}) node[etiqueta,above] {CMg};
+    \draw[curva3] plot[domain=1.45:10.8,samples=80] (\x,{cmeb(\x)}) node[etiqueta,right] {CMe};
+    \fill[area2] (0,\pM) rectangle (\qM,5.728);
+    \node[nota,font=\scriptsize] at (1.95,5.34) {$B<0$};
+    \node[punto] at (\qM,{cmg(\qM)}) {};
+    \draw[guia] (\qM,0) node[below] {$q^M$} -- (\qM,5.728);
+    \node[punto,label={[etiqueta]below left:$M$}] (M2) at (\qM,\pM) {};
+    \draw[guia] (M2) -- (0,\pM) node[left] {$p^M$};
+    \node[punto] (A2) at (\qM,5.728) {};
+    \draw[guia] (A2) -- (0,5.728) node[left] {$\mathrm{CMe}(q^M)$};
+    \node[circle,draw=tceeverde,fill=white,thick,inner sep=1.3pt] (m2) at (9.31,3.79) {};
+    \draw[guia] (m2) -- (\qM,3.79);
+    \node[nota,text=tceeverde,anchor=north] at (8.9,2.9) {mín.\ CMe $<p^M$};
+    \node[titulo] at (5.5,-2.4) {No viable: $p(q^M)<\mathrm{CMe}(q^M)$,\\ aunque $p^M$ supere al mínimo del CMe};
+    \end{scope}
+  }
+\end{tikzpicture}
+\end{document}

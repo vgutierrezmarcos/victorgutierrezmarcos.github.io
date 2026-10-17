@@ -1,0 +1,24 @@
+% Demanda insuficiente: max_i phi_i'(0) < min_j CMg_j(0).
+% Demanda: p^D(x) = 0,3 + e^{-0,6 x} (p^D(0) = 1,3); x = 0 si p >= 1,3.
+% Oferta: p^S(q) = 2,6 + 0,1 q + 0,08 q^2 (p^S(0) = 2,6); q = 0 si p <= 2,6.
+% Cualquier p en [1,3; 2,6] vacía el mercado con x* = q* = 0.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={dem(\x)=0.3+exp(-0.6*\x); ofe(\q)=2.6+0.1*\q+0.08*\q^2;}]
+  % 1: ejes
+  \capa{1}{\ejes{$x,\ q$}{$p$}{6.0}{5.6}}
+  % 2: demanda: el que más valora el bien no paga más de max phi'(0)
+  \capa{2}{\draw[curva1] plot[domain=0:5.5,samples=80,smooth] (\x,{dem(\x)}) node[etiqueta,above] {$x(p)$};}
+  \capa{2}{\node[etiqueta,left] at (0,1.3) {$\max_i\phi_i'(0)$};}
+  % 3: oferta: la empresa más barata no produce por menos de min CMg(0)
+  \capa{3}{\draw[curva3] plot[domain=0:5.0,samples=80,smooth] (\x,{ofe(\x)}) node[etiqueta,right] {$q(p)$};}
+  \capa{3}{\node[etiqueta,left] at (0,2.6) {$\min_j\mathrm{CMg}_j(0)$};}
+  % 4: intervalo de precios de equilibrio, sin intercambio
+  \capa{4}{\draw[curvanueva,line width=2.6pt] (0,1.3) -- (0,2.6);}
+  \capa{4}{\draw[decorate,decoration={brace,amplitude=5pt,mirror,raise=4pt},thick,tceerojo] (0,1.3) -- (0,2.6);}
+  \capa{4}{\node[etiqueta,align=left,anchor=west,text=tceerojo] at (0.45,1.95) {cualquier $p^*$ del intervalo\\ vacía el mercado con\\ $x^*=q^*=0$};}
+\end{tikzpicture}
+\end{document}

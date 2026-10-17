@@ -1,0 +1,87 @@
+% Del corto al largo plazo con libre entrada tras un aumento de la demanda (MWG, § 10.F;
+% Rodríguez Álvarez, 2016, fig. 20). Izquierda, la empresa; derecha, la industria.
+% Empresa: las curvas de oferta-empresa, C(q) = 2 + q - 0,6 q^2 + 0,15 q^3 (q > 0):
+%   CMg = 1 - 1,2 q + 0,45 q^2; CMe = 2/q + 1 - 0,6 q + 0,15 q^2; q̄ = 2,832, c̄ = 1,21.
+%   A corto plazo el coste fijo (2) es hundido: el CMg no cambia y la oferta es el CMg
+%   por encima del mínimo del CVMe (0,4 en q = 2).
+% Industria (cantidad Q): con J empresas, q^CP(p; J) = J q(p). Escala: J_0 q̄ = 2,4 y
+%   J_1 q̄ = 3,8, de modo que Q = s q con s_0 = 2,4/2,832 = 0,84746 y s_1 = 3,8/2,832 = 1,34181.
+%   D_0: p = 1,21 + 0,6 (2,4 - Q); D_1: p = 1,21 + 0,6 (3,8 - Q).
+%   A = (2,4; 1,21): equilibrio a largo plazo inicial con J_0 empresas.
+%   B: D_1 con q^CP(J_0): q_1 = 3,243 por empresa, p_1 = 1,841, Q = 2,748;
+%      CMe(q_1) = 1,248 y beneficio (p_1 - CMe(q_1)) q_1 > 0.
+%   C = (3,8; 1,21): entran empresas hasta J_1 y el precio vuelve a c̄.
+% Empresa: 0,8 cm por unidad de q; industria: 0,75 cm por unidad de Q; 1,1 cm por unidad de p.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,y=1.1cm,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;
+      dcero(\Q)=1.21+0.6*(2.4-\Q); duno(\Q)=1.21+0.6*(3.8-\Q);},
+    oferta/.style={curva3,line width=2.6pt,opacity=0.75},
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Empresa ----------------
+  \begin{scope}[x=0.8cm]
+    % 1: ejes y título
+    \capa{1}{\ejes{$q_j$}{$p$}{5.2}{3.9}}
+    \capa{1}{\node[titulo] at (2.6,4.05) {Empresa};}
+    % 2: coste medio en U
+    \capa{2}{\draw[curva2] plot[domain=0.75:4.9,samples=80,smooth] (\x,{cme(\x)})
+      node[etiqueta,right] {CMe$_j$};}
+    % 3: coste marginal, que corta al coste medio en su mínimo
+    \capa{3}{\draw[curva1] plot[domain=0.2:4.05,samples=80,smooth] (\x,{cmg(\x)})
+      node[etiqueta,above] {CMg$_j$};}
+    % 4: escala mínima eficiente y coste medio mínimo
+    \capa{4}{\node[punto] (M) at (2.832,1.21) {};}
+    \capa{4}{\draw[guia] (M) -- (2.832,0) node[below,text=black] {$\overline{q}$};}
+    \capa{4}{\draw[guia] (M) -- (0,1.21) node[left,text=black] {$\overline{c}$};}
+  \end{scope}
+  % ---------------- Industria ----------------
+  \begin{scope}[xshift=6.6cm,x=0.75cm]
+    % 5: ejes y título
+    \capa{5}{\ejes{$x,\ q$}{$p$}{6.4}{3.9}}
+    \capa{5}{\node[titulo] at (3.2,4.05) {Industria};}
+    % 6: demanda inicial
+    \capa{6}{\draw[curva1] (0.4,{dcero(0.4)}) -- (4.2,{dcero(4.2)}) node[etiqueta,right] {$D_0$};}
+    % 7: oferta a largo plazo: horizontal en c̄
+    \capa{7}{\draw[oferta] (0,1.21) -- (6.1,1.21);}
+    \capa{7}{\node[etiqueta,text=tceeverde,anchor=south east] at (6.3,1.25) {$q^{\mathrm{LP}}$};}
+    % 8: oferta a corto plazo de las J_0 empresas
+    \capa{8}{\draw[curva2] plot[domain=2.2:4.0,samples=60,smooth] ({0.84746*\x},{cmg(\x)})
+      node[etiqueta,above] {$q^{\mathrm{CP}}(J_0)$};}
+    % 9: equilibrio inicial A: J_0 empresas en la escala mínima eficiente
+    \capa{9}{\node[punto] (A) at (2.4,1.21) {};}
+    \capa{9}{\node[etiqueta,below left] at (A) {$A$};}
+    \capa{9}{\draw[guia] (A) -- (2.4,0) node[below,text=black] {$J_0\overline{q}$};}
+    \capa{9}{\node[left] at (0,1.21) {$\overline{c}$};}
+    % 10: aumenta la demanda
+    \capa{10}{\draw[curvanueva,desplazada] (1.6,{duno(1.6)}) -- (5.3,{duno(5.3)}) node[etiqueta,right] {$D_1$};}
+    \capa{10}{\draw[flecha] (1.0,{dcero(1.0)+0.08}) -- (2.0,{duno(2.0)-0.52});}
+    % 11: equilibrio a corto plazo B: sube el precio a p_1
+    \capa{11}{\node[punto] (B) at (2.7483,1.8410) {};}
+    \capa{11}{\node[etiqueta,above right] at (B) {$B$};}
+    \capa{12}{\draw[guia] (B) -- (-3.73,1.8410);}
+  \end{scope}
+  % 12: la empresa, a p_1, produce q_1 > q̄ ...
+  \begin{scope}[x=0.8cm]
+    \capa{12}{\draw[curva4] (0,1.8410) node[left,text=black] {$p_1$} -- (4.75,1.8410);}
+    \capa{12}{\node[punto] (Q1) at (3.243,1.8410) {};}
+    \capa{12}{\draw[guia] (Q1) -- (3.243,0) node[below,text=black] {$q_1$};}
+    % 13: ... y obtiene beneficios
+    \capa{13}{\fill[area] (0,1.2485) rectangle (3.243,1.8410);}
+    \capa{13}{\node[punto,fill=tceeazul] at (3.243,1.2485) {};}
+    \capa{13}{\node[etiqueta,text=tceemorado,font=\footnotesize] at (0.85,1.545) {$B_j>0$};}
+  \end{scope}
+  \begin{scope}[xshift=6.6cm,x=0.75cm]
+    % 14: entran empresas: la oferta a corto plazo se desplaza a la derecha
+    \capa{14}{\draw[curva2,desplazada] plot[domain=2.2:3.9,samples=60,smooth] ({1.34181*\x},{cmg(\x)})
+      node[etiqueta,above] {$q^{\mathrm{CP}}(J_1)$};}
+    \capa{14}{\draw[flecha] (3.25,2.6) -- (4.7,2.6);}
+    % 15: equilibrio a largo plazo C: el precio vuelve a c̄ con J_1 > J_0 empresas
+    \capa{15}{\node[punto] (C) at (3.8,1.21) {};}
+    \capa{15}{\node[etiqueta,inner sep=1pt,anchor=north west] at (3.83,1.05) {$C$};}
+    \capa{15}{\draw[guia] (C) -- (3.8,0) node[below,text=black] {$J_1\overline{q}$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

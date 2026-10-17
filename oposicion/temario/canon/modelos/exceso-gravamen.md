@@ -1,7 +1,7 @@
 # Exceso de gravamen (y triángulo de Harberger)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.9 (efecto renta y sustitución; exceso de gravamen) — lo tiene en el título («concepto y medición del exceso de gravamen»); 4.B.11 lo usa como punto de partida de la imposición óptima y hoy lo repite entero.
-- **Temas que lo usan:** 4.B.9 (desarrollo), 4.B.11 (resumen; hoy desarrollo duplicado), 4.B.7 (resumen), 4.B.8 (mención), 4.B.10 (mención), 4.B.13 (mención)
+- **Temas que lo usan:** 4.B.9 (desarrollo), 4.B.11 (resumen; hoy desarrollo duplicado), 4.B.7 (resumen), 4.B.8 (mención), 4.B.10 (mención), 4.B.13 (mención), 3.A.16 (mención: triángulo de Harberger en la incidencia de un impuesto en competencia, EG = −ΔEC − ΔEP − T ≈ ½t|Δx|, con remisión a 4.B.9 solo para ampliar; hecho, 17/10/2026)
 - **Manuales de referencia:** Rosen y Gayer, *Public Finance*, cap. 15 (*Taxation and efficiency*); Stiglitz y Rosengard, cap. 19; Gruber, cap. 19-20; Auerbach (1985), «The theory of excess burden and optimal taxation», *Handbook of Public Economics* I; Harberger (1964), «The measurement of waste», *AER*; Dupuit (1844); Hausman (1981), *AER*. Base de bienestar: Mas-Colell, Whinston y Green, cap. 3.I (variación equivalente).
 - **Decisión D047 (13/10/2026):** ¿Las elasticidades precio se escriben con su signo? Sí: ε_D < 0 con su signo y |ε_D| en las fórmulas (ε^h si es compensada); EG ≥ 0 siempre
 - **Decisión D079 (13/10/2026):** ¿Cómo se reparte el exceso de gravamen entre 4.B.9 y 4.B.11? Desarrollo solo en 4.B.9; en 4.B.11 resumen de media página con remisión
@@ -31,6 +31,7 @@ $$EG=-\tfrac12\sum_i\sum_j S_{ij}\,t_i t_j\,p_i p_j ,\qquad S_{ij}=\partial h_i/
 | 4.B.11 | Imposición óptima | Resumen (½ página) | Recordar $EG=\tfrac12\lvert\varepsilon\rvert t^2ph$ y $EGMg$ para plantear Ramsey; «[ver tema 4.B.9]» | El desarrollo con los dos gráficos, la VE y el ejemplo de coches nuevos/usados |
 | 4.B.7 | Principio de eficiencia | Resumen breve | Definición y la idea «crece con $t^2$ y con la elasticidad» | Gráficos y fórmulas completas |
 | 4.B.8 | Incidencia | Mención | Señalar el triángulo en el gráfico de incidencia | — |
+| 3.A.16 | Impuesto en competencia perfecta | Mención (hecho, 17/10/2026) | $\mathrm{EG}=-\Delta\mathrm{EC}-\Delta\mathrm{EP}-T\approx\tfrac12 t\lvert\Delta x\rvert=\tfrac12t^2\frac{x^*}{p^*}\frac{\varepsilon_S\lvert\varepsilon_D\rvert}{\varepsilon_S+\lvert\varepsilon_D\rvert}$ con oferta con pendiente (Harberger, 1964); crece con $t^2$ y con las elasticidades; distorsionante aunque se devuelva la recaudación; «[ver tema 4.B.9]» solo para ampliar (D138) | La VE, el sistema con $S_{ij}$ y Hausman (4.B.9) |
 | 4.B.10 | Efectos incentivo | Mención | El EG del impuesto sobre salarios depende de la elasticidad compensada de la oferta de trabajo (no de la no compensada) | Rehacer la medición |
 | 4.B.13 | Imposición indirecta | Mención | Ramsey/elasticidad inversa como justificación de tipos | — |
 

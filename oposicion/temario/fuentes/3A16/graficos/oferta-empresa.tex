@@ -1,0 +1,43 @@
+% Maximización del beneficio y oferta de la empresa competitiva (CMe en U).
+% C_j(q) = 2 + q - 0,6 q^2 + 0,15 q^3 para q > 0: coste fijo evitable de 2
+%   (C_j(0) = 0, sin costes hundidos) y costes variables primero cóncavos y luego convexos.
+%   CMg_j(q) = 1 - 1,2 q + 0,45 q^2; CMe_j = 2/q + 1 - 0,6 q + 0,15 q^2.
+%   Mínimo del CMe (corte con el CMg): q̄ = 2,832, c̄ = 1,210 (escala mínima eficiente).
+% Con p = 4,4: p = CMg_j en q_j* = 4,388; CMe_j(q_j*) = 1,711; B_j = (4,4 - 1,711) q_j*.
+% Oferta: q_j = 0 si p < c̄; salta a q̄ en p = c̄; después, el CMg (tramo creciente).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;},
+    oferta/.style={curva3,line width=2.6pt,opacity=0.75}]
+  % 1: ejes
+  \capa{1}{\ejes{$q_j$}{$\mathrm{CMg}_j,\ \mathrm{CMe}_j,\ p$}{6.4}{5.6}}
+  % 2: coste medio en U
+  \capa{2}{\draw[curva2] plot[domain=0.5:5.6,samples=100,smooth] (\x,{cme(\x)}) node[etiqueta,right] {$\mathrm{CMe}_j$};}
+  % 3: coste marginal, que corta al medio en su mínimo
+  \capa{3}{\draw[curva1] plot[domain=0.2:4.7,samples=100,smooth] (\x,{cmg(\x)}) node[etiqueta,above] {$\mathrm{CMg}_j$};}
+  % 4: mínimo del coste medio: escala mínima eficiente
+  \capa{4}{\node[punto] (M) at (2.832,1.21) {};}
+  \capa{4}{\proyeccion{(M)}{$\overline{q}_j$}{$\overline{c}_j$}}
+  % 5: precio de mercado
+  \capa{5}{\draw[curva4] (0,4.4) node[etiqueta,left,text=black] {$p$} -- (5.8,4.4);}
+  % 6: p = CMg en el tramo creciente
+  \capa{6}{\node[punto] (E) at (4.388,4.4) {};}
+  \capa{6}{\node[etiqueta,above left] at (E) {$E$};}
+  \capa{6}{\draw[guia] (E) -- (4.388,0) node[below,text=black] {$q_j^*$};}
+  \capa{6}{\node[etiqueta,right,font=\footnotesize] at (4.45,3.95) {$p=\mathrm{CMg}_j$};}
+  % 7: beneficio
+  \capa{7}{\fill[area] (0,1.711) rectangle (4.388,4.4);}
+  \capa{7}{\node[punto,fill=tceeazul] (A) at (4.388,1.711) {};}
+  \capa{7}{\draw[guia] (A) -- (0,1.711) node[left,text=black] {$\mathrm{CMe}_j(q_j^*)$};}
+  \capa{7}{\node[etiqueta,text=tceemorado] at (2.2,3.3) {$B_j$};}
+  % 8: curva de oferta: 0 por debajo de c̄, salto a q̄ y el CMg por encima
+  \capa{8}{\draw[oferta] (0,0) -- (0,1.21);}
+  \capa{8}{\draw[oferta] plot[domain=2.832:4.7,samples=60,smooth] (\x,{cmg(\x)});}
+  \capa{8}{\node[etiqueta,text=tceeverde,anchor=west] at (4.85,5.0) {oferta $q_j(p)$};}
+  \capa{9}{\draw[guia,tceeverde,thick] (0,1.21) -- (2.832,1.21);}
+  \capa{9}{\node[etiqueta,text=tceeverde,font=\footnotesize,anchor=north] at (1.42,1.16) {salto};}
+\end{tikzpicture}
+\end{document}

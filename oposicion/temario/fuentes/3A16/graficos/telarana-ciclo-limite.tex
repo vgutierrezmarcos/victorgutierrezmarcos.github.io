@@ -1,0 +1,48 @@
+% Telaraña con curvas no lineales y ciclo límite (anexo E).
+% En desviaciones respecto al equilibrio E = (q*, p*) = (2,6; 2,3), con y = p - p*:
+%   oferta   q = q* + 1,6 tanh(y)        (pendiente dq/dp = 1,6 en E, que se satura lejos de E)
+%   demanda  q = q* - (y + 0,1 y^3)      (pendiente dq/dp = -1 en E)
+% Cerca de E la oferta es más plana que la demanda (1,6 > 1: diverge); lejos se vuelve
+% más inclinada y las oscilaciones dejan de crecer. Expectativas ingenuas:
+% q_t = q(p_{t-1}) sobre la oferta y p_t sobre la demanda; p_0 = p* + 0,3.
+% Ciclo límite (periodo 2): 1,6 tanh(y*) = y* + 0,1 y*^3, y* = 1,157 y U = 1,312:
+%   rectángulo de vértices (q* ± U, p* ± y*) = (1,288 a 3,912; 1,143 a 3,457), con dos
+%   vértices en cada curva. Coordenadas de la telaraña calculadas con un guion de Python.
+% Mismos estilos que telarana: D morada, S verde, telaraña azul.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,
+    camino/.style={->,thick,tceeazul,shorten >=0.6pt},
+    ciclo/.style={curva4,line width=1.8pt,opacity=0.7}]
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{5.4}{4.6}}
+  % 2: demanda no lineal
+  \capa{2}{\draw[curva1] plot[domain=-1.6:1.6,samples=60,variable=\y] ({2.6-(\y+0.1*\y^3)},{2.3+\y}) node[etiqueta,left] {$D$};}
+  % 3: oferta no lineal
+  \capa{3}{\draw[curva3] plot[domain=-1.75:1.75,samples=60,variable=\y] ({2.6+1.6*tanh(\y)},{2.3+\y}) node[etiqueta,right] {$S$};}
+  % 4: equilibrio
+  \capa{4}{\node[punto] (E) at (2.6,2.3) {};}
+  \capa{4}{\proyeccion{(E)}{$q^*$}{$p^*$}}
+  % 5: precio inicial cerca de p*
+  \capa{5}{\node[etiqueta,left] at (0,2.62) {$p_0$};}
+  \capa{5}{\draw[thin] (-0.06,2.6) -- (0.06,2.6);}
+  % 6-11: la telaraña se abre (cerca de E la oferta es más plana)
+    \capa{6}{\draw[camino] (0.000,2.600) -- (3.066,2.600);}
+    \capa{6}{\draw[camino] (3.066,2.600) -- (3.066,1.843);}
+    \capa{7}{\draw[camino] (3.066,1.843) -- (1.916,1.843);}
+    \capa{7}{\draw[camino] (1.916,1.843) -- (1.916,2.956);}
+    \capa{8}{\draw[camino] (1.916,2.956) -- (3.521,2.956);}
+    \capa{8}{\draw[camino] (3.521,2.956) -- (3.521,1.442);}
+    \capa{9}{\draw[camino] (3.521,1.442) -- (1.488,1.442);}
+    \capa{9}{\draw[camino] (1.488,1.442) -- (1.488,3.309);}
+    \capa{10}{\draw[camino] (1.488,3.309) -- (3.825,3.309);}
+    \capa{10}{\draw[camino] (3.825,3.309) -- (3.825,1.206);}
+    \capa{11}{\draw[camino] (3.825,1.206) -- (1.323,1.206);}
+    \capa{11}{\draw[camino] (1.323,1.206) -- (1.323,3.432);}
+  % 12: ciclo límite
+  \capa{12}{\draw[ciclo] (1.288,1.143) rectangle (3.912,3.457);}
+  \capa{12}{\draw[guia,solid,->] (4.75,0.55) node[etiqueta,below,text=tceedorado] {ciclo límite} -- (3.98,1.08);}
+\end{tikzpicture}
+\end{document}

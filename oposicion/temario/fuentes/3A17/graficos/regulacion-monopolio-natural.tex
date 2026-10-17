@@ -1,0 +1,47 @@
+% Regulación del monopolio natural (3.A.17, II.2.3).
+% C(q) = F + a q - (b/2) q^2 con F = 4, a = 3, b = 0,25:
+%   CMg(q) = 3 - 0,25 q; CMe(q) = 4/q + 3 - 0,125 q (decreciente en todo el tramo,
+%   CMe - CMg = 4/q + 0,125 q > 0).
+% Demanda p = 6 - 0,6 q.
+%   p = CMg: 3 - 0,25 q = 6 - 0,6 q -> q^{CMg} = 8,5714, p = 0,8571;
+%     CMe(q^{CMg}) = 2,3952; pérdidas (CMe - CMg) q = 13,18.
+%   p = CMe: 0,475 q^2 - 3 q + 4 = 0 -> q^{CMe} = 4,4035 (raíz mayor), p = 3,3579.
+%   Pérdida de eficiencia de p = CMe: triángulo entre la demanda y el CMg de q^{CMe}
+%   a q^{CMg} (CMg(q^{CMe}) = 1,8991).
+% Elaboración propia a partir de Braeutigam (1989).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm,
+    declare function={dem(\q)=6-0.6*\q; cmg(\q)=3-0.25*\q; cme(\q)=4/\q+3-0.125*\q;},
+    perdida/.style={fill=tceerojo,fill opacity=0.3,draw=none}]
+  \def\qc{8.5714}\def\pc{0.8571}\def\mc{2.3952}
+  \def\qm{4.4035}\def\pm{3.3579}\def\cm{1.8991}
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{11}{7}}
+  % 2: coste medio decreciente
+  \capa{2}{\draw[curva2] plot[domain=1.25:10.4,samples=100,smooth] (\x,{cme(\x)}) node[etiqueta,above] {$\mathrm{CMe}$};}
+  % 3: coste marginal, por debajo del coste medio
+  \capa{3}{\draw[curvanueva] plot[domain=0:10.4,samples=2] (\x,{cmg(\x)}) node[etiqueta,right] {$\mathrm{CMg}$};}
+  % 4: demanda
+  \capa{4}{\draw[curva1] plot[domain=0:9.6,samples=2] (\x,{dem(\x)});}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.7,5.6) {$D$};}
+  % 5: primer óptimo, p = CMg
+  \capa{5}{\node[punto] (C) at (\qc,\pc) {};}
+  \capa{5}{\draw[guia] (C) -- (\qc,0) node[below,text=black] {$q^{\mathrm{CMg}}$};}
+  \capa{5}{\draw[guia] (C) -- (0,\pc) node[left,text=black] {$p=\mathrm{CMg}$};}
+  % 6: pérdidas (CMe - CMg) q
+  \capa{6}{\fill[area] (0,\pc) rectangle (\qc,\mc);}
+  \capa{6}{\draw[guia] (\qc,\pc) -- (\qc,\mc) -- (0,\mc) node[left,text=black] {$\mathrm{CMe}(q^{\mathrm{CMg}})$};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,text=tceemorado,align=center] at (2.4,1.4) {pérdidas\\ $(\mathrm{CMe}-\mathrm{CMg})\,q$};}
+  % 7: segundo óptimo, p = CMe
+  \capa{7}{\node[punto] (A) at (\qm,\pm) {};}
+  \capa{7}{\draw[guia] (A) -- (\qm,0) node[below,text=black] {$q^{\mathrm{CMe}}$};}
+  \capa{7}{\draw[guia] (A) -- (0,\pm) node[left,text=black] {$p=\mathrm{CMe}$};}
+  % 8: pérdida de eficiencia con p = CMe
+  \capa{8}{\fill[perdida] (\qm,\pm) -- (\qc,\pc) -- (\qm,\cm) -- cycle;}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=west] (P) at (6.3,4.2) {pérdida de eficiencia};}
+  \capa{8}{\draw[thin,tceegris] (P.west) -- (5.3,2.5);}
+\end{tikzpicture}
+\end{document}

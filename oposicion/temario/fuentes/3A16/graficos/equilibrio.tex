@@ -1,0 +1,50 @@
+% Oferta de mercado (suma horizontal de las ofertas) y equilibrio competitivo.
+% Izquierda: 2 empresas con costes estrictamente convexos y C_j(0) = 0:
+%   CMg_1(q) = 0,5 + q    ->  q_1(p) = p - 0,5        (p >= 0,5)
+%   CMg_2(q) = 1 + 1,5 q  ->  q_2(p) = (p - 1)/1,5    (p >= 1)
+%   q(p) = q_1 + q_2: p^S(q) = q + 0,5 si q <= 0,5 y p^S(q) = 0,6 q + 0,7 después.
+%   A p̄ = 2,8: q_1 = 2,3; q_2 = 1,2; q = 3,5.
+% Derecha: la oferta de la izquierda y la demanda de mercado de agregacion-demanda.tex:
+%   p^D(x) = 3 - 1,5 x si x <= 2/3 y p^D(x) = (4,5 - x)/1,9167 después.
+%   Corte: 0,6 q + 0,7 = (4,5 - q)/1,9167 -> q* = x* = 1,469; p* = 1,581.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    titulo/.style={font=\small\bfseries,anchor=south}]
+  % ---------------- Agregación de la oferta ----------------
+  % 1: ejes
+  \capa{1}{\ejes{$q_j,\ q$}{$p$}{5.2}{3.8}}
+  \capa{1}{\node[titulo] at (2.6,3.9) {Agregación de la oferta};}
+  % 2: oferta de la empresa 1
+  \capa{2}{\draw[curva2] (0,0.5) -- (2.9,3.4) node[etiqueta,above] {$q_1(p)$};}
+  % 3: oferta de la empresa 2
+  \capa{3}{\draw[curva4] (0,1) -- (1.6,3.4) node[etiqueta,above] {$q_2(p)$};}
+  % 4: a un precio dado, cada empresa ofrece su cantidad
+  \capa{4}{\draw[guia] (0,2.8) node[left,text=black] {$\overline{p}$} -- (3.5,2.8);}
+  \capa{4}{\node[punto] (B2) at (1.2,2.8) {};}
+  \capa{4}{\draw[guia] (B2) -- (1.2,0) node[below,text=black] {$q_2(\overline{p})$};}
+  \capa{4}{\node[punto] (B1) at (2.3,2.8) {};}
+  \capa{4}{\draw[guia] (B1) -- (2.3,0) node[below,text=black] {$q_1(\overline{p})$};}
+  % 5: la oferta de mercado suma las cantidades
+  \capa{5}{\node[punto] (B) at (3.5,2.8) {};}
+  \capa{5}{\draw[guia] (B) -- (3.5,0) node[below,text=black] {$q(\overline{p})$};}
+  % 6: oferta de mercado (quiebro donde entra la empresa 2)
+  \capa{6}{\draw[curva3] (0,0.5) -- (0.5,1) -- (4.5,3.4) node[etiqueta,above] {$q(p)$};}
+  % ---------------- Equilibrio ----------------
+  \begin{scope}[xshift=7.2cm]
+    % 7: ejes
+    \capa{7}{\ejes{$x,\ q$}{$p$}{5.2}{3.8}}
+    \capa{7}{\node[titulo] at (2.6,3.9) {Equilibrio de mercado};}
+    % 8: oferta de mercado (la de la izquierda)
+    \capa{8}{\draw[curva3] (0,0.5) -- (0.5,1) -- (4.5,3.4) node[etiqueta,above] {$S$: $p^S(q)$};}
+    % 9: demanda de mercado
+    \capa{9}{\draw[curva1] (0,3) -- (0.6667,2) -- (4.0,0.2609) node[etiqueta,above right] {$D$: $p^D(x)$};}
+    % 10: equilibrio
+    \capa{10}{\node[punto] (E) at (1.469,1.581) {};}
+    \capa{10}{\node[etiqueta,above=2pt] at (E) {$E$};}
+    \capa{10}{\proyeccion{(E)}{$x^*=q^*$}{$p^*$}}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

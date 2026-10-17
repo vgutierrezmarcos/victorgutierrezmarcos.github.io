@@ -1,7 +1,7 @@
 # Marshall: equilibrio parcial y periodos de mercado (temporal, corto y largo plazo)
 
 - **Área:** pensamiento · **Tema de referencia:** 3.A.3 (Los economistas neoclásicos) — único tema que lo desarrolla, como parte de la obra de Marshall.
-- **Temas que lo usan:** 3.A.3 (desarrollo), 3.A.16 (resumen: competencia perfecta, análisis de plazos), 3.A.4 (resumen: influencia en Keynes, mercado de pescado).
+- **Temas que lo usan:** 3.A.3 (desarrollo), 3.A.16 (resumen: competencia perfecta, apertura del análisis de plazos; hecho, 17/10/2026), 3.A.4 (resumen: influencia en Keynes, mercado de pescado).
 - **Manuales de referencia:** Marshall (1890), *Principles of Economics*, libro V; Landreth y Colander (2010), caps. 9-10; Mas-Colell, Whinston y Green (1995), cap. 10.
 
 ## Presentación de referencia
@@ -16,14 +16,14 @@
 
 Conceptos: excedente del consumidor, elasticidad, economías externas, empresa representativa.
 
-**Gráfico de referencia:** plano (Q, p): demanda decreciente y tres ofertas (vertical, corto plazo, largo plazo más elástica) con sus equilibrios tras un aumento de la demanda. Hoy en 3.A.16 («Imagen 5»).
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A16/graficos/marshall-periodos.tex` (hecho, 17/10/2026; antes «Imagen 5» del 3.A.16): demanda que aumenta, oferta de mercado del día (MS, vertical) y oferta normal (NS, creciente); equilibrio inicial A, temporal B (cuasirrentas) y normal C (elaboración propia a partir de De Vroey, 2016, fig. 1.1, y Marshall, libro V, cap. V). El 3.A.3 debe reutilizarlo. Con rendimientos crecientes en la pesca, Marshall admite una oferta normal decreciente (libro V, cap. V, § 4), que en el 3.A.16 es la industria de costes decrecientes. Tijeras: libro V, cap. III, § 7.
 
 ## Cómo se adapta en cada tema
 
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.3 | Los neoclásicos | Desarrollo | Método (equilibrio parcial, *ceteris paribus*), periodos, tijeras, empresa representativa, excedente | — |
-| 3.A.16 | Competencia perfecta | Resumen | Equilibrio a corto y largo plazo de la industria con el gráfico | El método y la historia |
+| 3.A.16 | Competencia perfecta | Resumen (hecho, 17/10/2026) | Apertura del III: los plazos (periodo de mercado, corto, largo; valor normal) con el pescado y el gráfico `marshall-periodos` en una caja de anotaciones, y la clasificación moderna de MWG 10.F (tabla `tab:plazos`); tijeras en la contextualización; Keynes y los recursos ociosos, una frase con remisión a 3.A.4 | El método y la historia |
 | 3.A.4 | Keynes | Mención | Influencia del método marshalliano (corto plazo, expectativas) en Keynes | El gráfico |
 
 ## Divergencias encontradas en el temario actual

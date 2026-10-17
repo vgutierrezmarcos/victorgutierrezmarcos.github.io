@@ -1,0 +1,40 @@
+% Equilibrio del monopolista (3.A.17, I.2): IMg = CMg y precio sobre la demanda.
+% Base común de equilibrio-monopolio, bienestar-monopolio, primer-grado y
+% tramo-elastico (mismas curvas y escalas):
+%   demanda p(q) = 9 - q; IMg(q) = 9 - 2q; CMg(q) = 1 + q/2.
+%   Monopolio: IMg = CMg -> q^M = 3,2; p^M = 5,8; CMg(q^M) = 2,6.
+%   Competencia: p = CMg -> q^c = 16/3 = 5,333; p^c = 11/3 = 3,667.
+%   Lerner: (5,8 - 2,6)/5,8 = 0,552 = 1/|eps| (|eps| = p/q = 1,8125).
+% Elaboración propia a partir de Tirole (1988, cap. 1).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.6cm,
+    declare function={dem(\q)=9-\q; img(\q)=9-2*\q; cmg(\q)=1+0.5*\q;}]
+  \def\qM{3.2}\def\pM{5.8}\def\cM{2.6}\def\qc{5.3333}\def\pc{3.6667}
+  % 1: ejes
+  \capa{1}{\draw[eje] (0,0) -- (10,0) node[below left=2pt and 0pt] {$q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,10) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: demanda (ingreso medio)
+  \capa{2}{\draw[curva1] plot[domain=0:8.6] (\x,{dem(\x)}) node[etiqueta,above right] {$p(q)$};}
+  % 3: ingreso marginal, con el doble de pendiente
+  \capa{3}{\draw[curva2] plot[domain=0:4.5] (\x,{img(\x)});}
+  \capa{3}{\node[etiqueta,text=tceeazul,anchor=west] at (4.45,0.55) {IMg};}
+  % 4: coste marginal
+  \capa{4}{\draw[curvanueva] plot[domain=0:8.4] (\x,{cmg(\x)}) node[etiqueta,right] {CMg};}
+  % 5: el IMg corta al CMg: cantidad de monopolio
+  \capa{5}{\node[punto] (I) at (\qM,\cM) {};}
+  \capa{5}{\node[etiqueta,font=\footnotesize,anchor=south east] at (2.75,2.65) {$\mathrm{IMg}=\mathrm{CMg}$};}
+  \capa{5}{\draw[guia] (\qM,0) node[below] {$q^M$} -- (I);}
+  \capa{5}{\draw[guia] (I) -- (0,\cM) node[left] {$\mathrm{CMg}(q^M)$};}
+  % 6: el precio se lee en la demanda
+  \capa{6}{\draw[guia] (I) -- (\qM,\pM);}
+  \capa{6}{\node[punto,label={[etiqueta]above right:$M$}] (M) at (\qM,\pM) {};}
+  \capa{6}{\draw[guia] (M) -- (0,\pM) node[left] {$p^M$};}
+  % 7: equilibrio competitivo, donde la demanda corta al CMg
+  \capa{7}{\node[punto,label={[etiqueta]above right:$C$}] (C) at (\qc,\pc) {};}
+  \capa{7}{\proyeccion{(C)}{$q^c$}{$p^c$}}
+\end{tikzpicture}
+\end{document}

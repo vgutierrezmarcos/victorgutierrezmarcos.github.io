@@ -1,0 +1,29 @@
+% Excedentes del consumidor y del productor en el equilibrio competitivo.
+% Demanda inversa p^D(x) = 4,2 - 0,6 x; oferta inversa p^S(q) = 0,6 + 0,9 q.
+% Equilibrio: 3,6 = 1,5 x, x* = q* = 2,4 y p* = 2,76.
+% EC: triángulo bajo la demanda y sobre p*; EP: sobre la oferta y bajo p*.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,declare function={pd(\x)=4.2-0.6*\x; ps(\x)=0.6+0.9*\x;}]
+  % 1: ejes
+  \capa{1}{\ejes{$x,q$}{$p$}{5.2}{4.8}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] (0,{pd(0)}) -- (5.0,{pd(5.0)}) node[etiqueta,right] {$p^D(x)$};}
+  % 3: oferta
+  \capa{3}{\draw[curva3] (0,{ps(0)}) -- (4.2,{ps(4.2)}) node[etiqueta,right] {$p^S(q)$};}
+  % 4: equilibrio y proyecciones
+  \capa{4}{\node[punto] (E) at (2.4,2.76) {};}
+  \capa{4}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{4}{\proyeccion{(E)}{$x^*=q^*$}{$p^*$}}
+  % 5: excedente del consumidor
+  \capa{5}{\fill[area] (0,{pd(0)}) -- (2.4,2.76) -- (0,2.76) -- cycle;}
+  \capa{5}{\node[etiqueta,text=tceemorado] at (0.8,3.25) {EC};}
+  % 6: excedente del productor
+  \capa{6}{\fill[area2] (0,{ps(0)}) -- (2.4,2.76) -- (0,2.76) -- cycle;}
+  \capa{6}{\node[etiqueta,text=tceedorado] at (0.8,2.05) {EP};}
+  % 7: excedente total
+  \capa{7}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick] (-0.75,0.6) -- (-0.75,4.2) node[midway,left=5pt] {ET};}
+\end{tikzpicture}
+\end{document}

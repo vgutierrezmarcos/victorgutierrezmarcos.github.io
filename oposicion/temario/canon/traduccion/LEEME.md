@@ -187,7 +187,7 @@ formato (negrita y cursiva):
   apellidos, todos (`\autor{Mas-Colell}`, `\autor{Sala i Martín}`).
 - Los nombres se escriben como en la literatura en inglés: **Slutsky**,
   **Konüs**, **Tönnies**, **Kantorovich**; tildes y diéresis de los nombres
-  originales se conservan (*Le Châtelier*, *Gutiérrez*, *Törnqvist*).
+  originales se conservan (*Le Chatelier*, *Gutiérrez*, *Törnqvist*).
 - Entre dos autores, **and** («\autor{Christensen} and \autor{Greene}
   (1976)»); con tres o más, *et al.* solo en las citas de biblatex; en el texto
   se nombran como en castellano.
@@ -612,7 +612,7 @@ script (columna 1 → columna 2) para comprobar la coherencia.
 | coste total, fijo, variable | total, fixed, variable cost | |
 | coste marginal, medio, variable medio, fijo medio | marginal, average, average variable, average fixed cost | |
 | curva envolvente (Viner) | envelope curve | |
-| principio de Le Châtelier-Samuelson | Le Châtelier-Samuelson principle | |
+| principio de Le Chatelier-Samuelson | Le Chatelier-Samuelson principle | |
 | economías / deseconomías de escala | economies / diseconomies of scale | |
 | economías de escala multiproducto | multiproduct economies of scale (ray economies) | |
 | economías de alcance | economies of scope | |

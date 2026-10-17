@@ -1,0 +1,41 @@
+# Monopolio bilateral (Bowley, 1928): indeterminación y negociación de Nash
+
+- **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.17** («Monopolio bilateral» en el título; revisado el 17/10/2026, III.2) — lo desarrolla con a)-e) por capas sobre el gráfico del monopsonio. Ficha creada a raíz de esa revisión. Como estructura de mercado, aquí; la negociación salarial (derecho a gestionar, contratos eficientes) se desarrolla en 3.A.27 (id `sindicato-monopolista`) y la solución de Nash y el juego de Rubinstein como conceptos de teoría de juegos, en 3.A.14 (id `nash-negociacion`, sin ficha).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.27 (resumen previsto: el monopolio bilateral como marco del sindicato frente a la empresa; allí desarrollo del sindicato monopolista, la Nash generalizada, el derecho a gestionar y los contratos eficientes), 3.A.21 (mención: Edgeworth con 2 agentes, tramo CC′ indeterminado; Nash simétrico y Rubinstein con remisión a 3.A.14; hecho), 3.A.14 (mención prevista: Nash axiomático y Rubinstein), 3.A.15 (mención prevista: doble marginalización e integración vertical), 4.A.14 (mención: distribución frente a proveedores).
+- **Manuales de referencia:** Bowley (1928), *QJE*; Fellner (1947), *QJE*; Edgeworth (1881); Dunlop (1944); Galbraith (1952); Nash (1950), *Econometrica*; Rubinstein (1982), *Econometrica*; Binmore, Rubinstein y Wolinsky (1986), *RAND Journal*; McDonald y Solow (1981), *AER*; Spengler (1950), *JPE*; Tirole (1988), cap. 4.
+
+## Presentación de referencia (3.A.17, III.2)
+
+Pregunta: ¿qué precio y qué cantidad salen cuando vendedor y comprador tienen poder a la vez? Conclusión: el precio queda **indeterminado** entre los 2 extremos y lo decide la negociación; con negociación eficiente, la cantidad es la competitiva y el poder solo reparte.
+
+- **a) Idea**: un único vendedor frente a un único comprador (sindicato frente a empleador monopsonista; proveedor de componentes frente al único montador; gestor de infraestructura frente a su único usuario). Bowley (1928): la teoría del monopolio y la del monopsonio dan cada una su precio; el resultado lo decide el poder de negociación (Fellner, 1947). Es el problema de Edgeworth (1881) con 2 agentes (3.A.21).
+- **b) Modelo**. i) Supuestos: los del monopsonio (ficha `monopsonio`) con un único oferente de trabajo, el sindicato, que maximiza U_S = wL − v(L), con v(L) desutilidad agregada y v'(L) = w_L(L) (la oferta mide el salario de reserva del último trabajador); la empresa, B = pF(L) − wL. w es el salario negociado (variable) y w_L(·) la oferta inversa. ii) Desarrollo, por capas sobre `monopsonio.tex`:
+  - **extremos**: si manda la empresa, monopsonio (L^M, w^M); si manda el sindicato, **sindicato monopolista** (Dunlop, 1944) frente a la demanda de trabajo w^D(L) = VPMg_L: su ingreso marginal IMg_S iguala la oferta w_L(L) y cobra w^S > w^c sobre la demanda, con **paro involuntario** (anexo `anexo:cuatro-casos`);
+  - **indeterminación**: si se negocia solo el salario y la empresa elige el empleo, w ∈ [w^M, w^S] y el empleo es ineficiente salvo en w^c; un salario entre w^M y w^c **aumenta** el empleo (poder compensatorio, Galbraith, 1952);
+  - **negociación eficiente** (salario y empleo), solución de Nash (1950) generalizada:
+$$\max_{w,L}\ \big(U_S-U_S^0\big)^{\gamma}\big(B-B^0\big)^{1-\gamma}\quad\Rightarrow\quad \mathrm{VPMg}_L(L^*)=w_L(L^*)\ (L^*=L^c),\qquad w^*L^*=v(L^*)+U_S^0+\gamma\,\big[pF(L^*)-v(L^*)-U_S^0-B^0\big]$$
+  con γ ∈ (0,1) el poder de negociación del sindicato (`notacion.md` § 1): la cantidad no depende de γ; el salario reparte el excedente neto (anexo `anexo:nash`, con logaritmos y S ≡ pF(L) − v(L) − U_S^0 − B^0, letra local);
+  - **de dónde sale γ**: ofertas alternadas de Rubinstein (1982), acuerdo en la primera oferta, gana el más paciente; con el tiempo entre ofertas tendiendo a 0, γ = ρ_B/(ρ_S + ρ_B) con las tasas de descuento de cada parte (Binmore, Rubinstein y Wolinsky, 1986; 3.A.14). El 3.A.17 escribe hoy r_S y r_B: `pendientes-coherencia.md`.
+- iii) **Implicaciones**: con negociación eficiente, cantidad competitiva; si se negocia solo el precio, pérdida de eficiencia; el poder de un lado puede compensar el del otro; incentivo a la integración vertical (3.A.15).
+- **c) Extensiones**: **doble marginalización** (Spengler, 1950): con demanda p = a − bQ y coste c, integrados Q = (a − c)/2b y p = (a + c)/2; separados, w = (a + c)/2, Q = (a − c)/4b, p = (3a + c)/4: la cadena vende la mitad; la integración o una tarifa en dos partes entre ellos mejora a todos (misma lógica que los complementarios del multiproducto). **Negociación salarial**: derecho a gestionar (sobre la demanda de trabajo, ineficiente) frente a contratos eficientes (sobre la curva de contratos, más empleo; McDonald y Solow, 1981; 3.A.27).
+- **d) Evidencia**: negociación colectiva; distribuidores frente a fabricantes y productores agrícolas; compra pública de medicamentos con patente: el resultado depende de los puntos de desacuerdo.
+- **e) Valoración**: la teoría de la negociación da respuesta, pero la desplaza al poder de negociación y a las alternativas, que dependen de instituciones que el modelo de mercado toma como datos.
+
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A17/graficos/monopolio-bilateral.tex` (capas sobre `monopsonio.tex`: IMg_S, w^S, intervalo [w^M, w^S] y L* = L^c). En la pizarra, el producto de Nash escrito.
+
+## Cómo se adapta en cada tema
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.17 | Monopolio bilateral | desarrollo (hecho, 17/10/2026) | Todo lo anterior | — |
+| 3.A.27 | Determinación de salarios: negociación | resumen (previsto) del monopolio bilateral; desarrollo de la negociación salarial | Sindicato de Dunlop, Nash generalizada con γ para el sindicato y 1 − γ para la empresa, U_S y v(L) o el salario de reserva, derecho a gestionar y contratos eficientes, con la misma notación; remitir a 3.A.17 para la estructura de mercado y la indeterminación de Bowley | El monopsonio y la doble marginalización |
+| 3.A.21 | Equilibrio general | mención (hecho) | Edgeworth con 2 agentes: tramo CC′, Nash (U_A − U_A^0)(U_B − U_B^0) con la dotación como desacuerdo (γ = ½) y Rubinstein; remite a 3.A.14 | La estructura de mercado |
+| 3.A.14 | Teoría de juegos | mención (prevista) | Nash axiomático y Rubinstein (γ = ρ_B/(ρ_S + ρ_B) en el límite); el monopolio bilateral como aplicación, remitiendo a 3.A.17 | El mercado de trabajo |
+| 3.A.15 | Límites de la empresa | mención (prevista) | Doble marginalización e integración vertical | El modelo del sindicato |
+| 4.A.14 | Distribución comercial | mención | Negociación entre la gran distribución y los proveedores | La teoría |
+
+## Divergencias encontradas en el temario actual
+- 3.A.17 original: monopolio bilateral **vacío** (y la imagen 15 del sindicato, vacía). **Resuelto** en la revisión (17/10/2026).
+- 3.A.27 (sin revisar): desarrolla el sindicato monopolista y la Nash generalizada sin remitir al 3.A.17 para el monopolio bilateral; al revisarlo, usar w, L, γ, U_S, v(L) (o el salario de reserva) como el 3.A.17.
+- Propuesta: cuando se revise el 3.A.14, crear la ficha `nash-negociacion` (Nash, Rubinstein, Binmore-Rubinstein-Wolinsky) con 3.A.14 como referencia y 3.A.17, 3.A.21 y 3.A.27 como usuarios; y, si el 3.A.15 la desarrolla, la ficha `doble-marginalizacion`.
+
+Autor: Víctor Gutiérrez Marcos

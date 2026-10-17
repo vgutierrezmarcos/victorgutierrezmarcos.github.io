@@ -1,0 +1,51 @@
+% Monopolio bilateral sobre el gráfico del monopsonio. Elaboración propia a
+% partir de Bowley (1928).
+% Base común con monopsonio.tex y salario-minimo.tex (mismas curvas y escalas):
+%   oferta inversa   w_L(L)  = 1 + L
+%   gasto marginal   GMg_L   = 1 + 2L   (misma ordenada, doble pendiente)
+%   VPMg_L           = 8 - L/2
+%   Monopsonio: GMg = VPMg -> L^M = 2,8; w^M = w_L(L^M) = 3,8; VPMg(L^M) = 6,6
+%   Competencia: VPMg = w_L -> L^c = 14/3; w^c = 17/3
+%   Curva marginal de la demanda de trabajo (ingreso marginal del sindicato):
+%   IMg_S = 8 - L. Sindicato: IMg_S = w_L -> L^S = 3,5; w^S = VPMg(L^S) = 6,25 > w^c.
+%   Negociación eficiente: L^* = L^c (VPMg = w_L).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.6cm,
+    declare function={imgs(\l)=8-\l; of(\l)=1+\l; gmg(\l)=1+2*\l; vpmg(\l)=8-0.5*\l;}]
+  % 1: ejes
+  \capa{1}{\ejes{$L$}{$w$}{8.2}{9.6}}
+  % 2: valor del producto marginal (lo que aporta el trabajo)
+  \capa{2}{\draw[curva1] plot[domain=0:7.6] (\x,{vpmg(\x)}) node[etiqueta,right] {$\mathrm{VPMg}_L$};}
+  % 3: oferta de trabajo
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{of(\x)}) node[etiqueta,right] {$w_L(L)$};}
+  % 4: gasto marginal
+  \capa{4}{\draw[curva4] plot[domain=0:3.95] (\x,{gmg(\x)}) node[etiqueta,above] {$\mathrm{GMg}_L$};}
+  % 5: equilibrio de monopsonio, GMg = VPMg, y empleo L^M
+  \capa{5}{\node[punto] (G) at (2.8,6.6) {};}
+  \capa{5}{\draw[guia] (G) -- (2.8,0) node[below,text=black] {$L^M$};}
+  % 6: salario sobre la oferta, w^M
+  \capa{6}{\node[punto] (M) at (2.8,3.8) {};}
+  \capa{6}{\node[etiqueta,below right] at (M) {$M$};}
+  \capa{6}{\draw[guia] (M) -- (0,3.8) node[left,text=black] {$w^M$};}
+  % 7: si manda el sindicato: curva marginal de la demanda de trabajo
+  \capa{7}{\draw[curva3] plot[domain=0:6.2] (\x,{imgs(\x)}) node[etiqueta,right] {$\mathrm{IMg}_S$};}
+  % 8: el sindicato iguala su ingreso marginal a la oferta: empleo L^S
+  \capa{8}{\node[punto] (S0) at (3.5,4.5) {};}
+  \capa{8}{\draw[guia] (S0) -- (3.5,0) node[below,text=black] {$L^S$};}
+  % 9: y cobra el salario que da la demanda para ese empleo, w^S
+  \capa{9}{\draw[guia] (S0) -- (3.5,6.25);}
+  \capa{9}{\node[punto] (S) at (3.5,6.25) {};}
+  \capa{9}{\node[etiqueta,above right] at (S) {$S$};}
+  \capa{9}{\draw[guia] (S) -- (0,6.25) node[left,text=black] {$w^S$};}
+  % 10: intervalo de indeterminación de Bowley
+  \capa{10}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceerojo] (-0.75,6.25) -- (-0.75,3.8)
+    node[midway,left=7pt,etiqueta,font=\footnotesize,text=tceerojo,align=right] {intervalo de\\ indeterminación};}
+  % 11: negociación eficiente: la cantidad competitiva
+  \capa{11}{\node[punto] (C) at ({14/3},{17/3}) {};}
+  \capa{11}{\node[etiqueta,below right] at (C) {$C$};}
+  \capa{11}{\draw[guia] (0,{17/3}) node[left,text=black] {$w^c$} -| ({14/3},0) node[below,text=black] {$L^*=L^c$};}
+\end{tikzpicture}
+\end{document}

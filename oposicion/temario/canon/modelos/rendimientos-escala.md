@@ -1,7 +1,7 @@
 # Rendimientos a escala globales y locales
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.11** (Teoría de la producción, II.2) — lo tiene en el título («Rendimientos locales y globales a escala») y lo desarrolla (revisado el 13/10/2026). Ficha creada a raíz de esa revisión: el concepto lo usan al menos seis temas, varios con la notación vieja (λ, $Q$, $\varepsilon_{Q,\lambda}$).
-- **Temas que lo usan:** 3.A.11 (desarrollo), 3.A.12 (resumen: economías de escala), 3.A.16 (mención: tamaño indeterminado y oferta de largo plazo), 3.A.43 (mención: rendimientos constantes y empresa representativa), 3.A.44 (mención: rendimientos crecientes y crecimiento endógeno), 3.B.6 (mención: rendimientos crecientes y comercio intraindustrial); también 3.A.17 (monopolio natural, con id `monopolio-natural`).
+- **Temas que lo usan:** 3.A.11 (desarrollo), 3.A.12 (resumen: economías de escala), 3.A.16 (mención: tamaño indeterminado y oferta de largo plazo; hecho, 17/10/2026), 3.A.43 (mención: rendimientos constantes y empresa representativa), 3.A.44 (mención: rendimientos crecientes y crecimiento endógeno), 3.B.6 (mención: rendimientos crecientes y comercio intraindustrial); también 3.A.17 (monopolio natural, con id `monopolio-natural`).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green (1995), §5.B; Jehle y Reny (2011), cap. 3 (def. 3.3-3.4); Varian, cap. 1; Frisch (1965); Hanoch (1975); evidencia: Basu y Fernald (1997).
 
 ## Presentación de referencia
@@ -26,7 +26,7 @@ Gráficos de referencia (3.A.11): `oposicion/temario/fuentes/3A11/graficos/rendi
 |---|---|---|---|---|
 | 3.A.11 | Tecnología a largo plazo | desarrollo (hecho, 13/10/2026) | Todo lo anterior: elasticidad de escala, homogéneas y homotéticas, Euler, globales y locales, ejemplo en S, causas, indeterminación del tamaño, evidencia | Las economías de escala en detalle (3.A.12) |
 | 3.A.12 | Costes y economías de escala | resumen (hecho, 14/10/2026) | Economías de escala con $\varepsilon_{C,q}$; relación general $\varepsilon_{q,\lambda}(\vec z(\vec w,q))=\mathrm{CMe}/\mathrm{CMg}$ en el óptimo, con demostración y tabla de color; tecnología en S detrás de los costes medios en U a largo plazo (la ley de proporciones variables, a corto); tamaño indeterminado con rendimientos constantes; remite a 3.A.11 (ficha `costes-corto-largo-plazo`) | La definición de rendimientos y la elasticidad de escala como suma de elasticidades-producto (una línea con remisión) |
-| 3.A.16 | Competencia perfecta | mención | Con rendimientos constantes, tamaño indeterminado y oferta de largo plazo horizontal | — |
+| 3.A.16 | Competencia perfecta | mención (hecho, 17/10/2026) | Libre entrada según los rendimientos (gráfico `libre-entrada`): constantes, tamaño indeterminado y oferta horizontal en c; decrecientes, no hay equilibrio; crecientes en todo el dominio, no hay equilibrio competitivo; CMe en U, J* = x(c̄)/q̄. La empresa competitiva no produce nunca en el tramo de economías de escala; la oferta decreciente de la industria es por economías **externas**, no por rendimientos crecientes internos | La definición y la elasticidad de escala (nota con ε_{q,λ} = CMe/CMg y remisión a 3.A.12) |
 | 3.A.43 | Solow | mención | Rendimientos constantes: empresa representativa y forma intensiva $y=f(k)$; remitir a 3.A.11 y 3.A.12 | — |
 | 3.A.44 | Crecimiento endógeno | mención | Rendimientos crecientes (externalidades, AK) | — |
 | 3.B.6 | Nueva teoría del comercio | mención | Rendimientos crecientes internos y comercio intraindustrial; FPP convexa | — |

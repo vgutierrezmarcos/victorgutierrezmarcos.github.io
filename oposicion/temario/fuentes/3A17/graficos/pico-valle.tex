@@ -1,0 +1,34 @@
+% Tarifas de punta y valle con punta firme (3.A.17, anexo A.2; Steiner, 1957).
+% Coste de operación b = 1,5 por unidad; coste de capacidad beta = 2,5.
+%   Punta: D_p: p = 8 - 0,8 q; p_p = b + beta = 4 -> q_p = K = 5 (fija la capacidad).
+%   Valle: D_v: p = 6,27 - 1,3636 q; p_v = b = 1,5 -> q_v = 3,5 < K: capacidad ociosa 1,5.
+% Elaboración propia a partir de Steiner (1957).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.65cm,y=0.65cm,
+    declare function={dp(\q)=8-0.8*\q; dv(\q)=6.27-1.3636*\q;}]
+  \def\b{1.5}\def\bb{4}\def\K{5}\def\qv{3.5}
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{10.5}{9}}
+  % 2: coste de operación b y coste de operación más capacidad b + beta
+  \capa{2}{\draw[curva4] (0,\b) -- (9.6,\b) node[etiqueta,right] {$b$};}
+  \capa{2}{\draw[curvanueva] (0,\bb) -- (9.6,\bb) node[etiqueta,right] {$b+\beta$};}
+  % 3: demanda de punta y capacidad que fija
+  \capa{3}{\draw[curva1] plot[domain=0:9.4,samples=2] (\x,{dp(\x)}) node[etiqueta,right] {$D_p$};}
+  \capa{3}{\node[punto] (P) at (\K,\bb) {};}
+  \capa{3}{\draw[curva3] (\K,0) -- (\K,8.2) node[etiqueta,above] {capacidad $K$};}
+  \capa{3}{\node[below] at (\K,0) {$q_p=K$};}
+  \capa{3}{\node[left] at (0,\bb) {$p_p=b+\beta$};}
+  % 4: demanda de valle y precio p_v = b
+  \capa{4}{\draw[curva2] plot[domain=0:4.4,samples=2] (\x,{dv(\x)});}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=south west] at (1.3,4.6) {$D_v$};}
+  \capa{4}{\node[punto] (V) at (\qv,\b) {};}
+  \capa{4}{\draw[guia] (V) -- (\qv,0) node[below,text=black] {$q_v$};}
+  \capa{4}{\node[left] at (0,\b) {$p_v=b$};}
+  % 5: capacidad ociosa en el valle
+  \capa{5}{\fill[area2] (\qv,0) rectangle (\K,\b);}
+  \capa{5}{\draw[decorate,decoration={brace,mirror,amplitude=5pt},thick,tceedorado] (\qv,-0.75) -- (\K,-0.75) node[midway,below=5pt,etiqueta,font=\footnotesize,text=tceedorado,align=center] {capacidad ociosa\\ en el valle};}
+\end{tikzpicture}
+\end{document}
