@@ -48,7 +48,7 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P72), `p
 | II.1.2 (l. 957, nota 40) | SMD: «cualquier conjunto de precios puede ser el equilibrio»; la demanda «debe cumplir condiciones de monotonía para que el equilibrio exista» | Enunciado correcto (cualquier función continua, homogénea y con ley de Walras) y nota nueva (P55) |
 | II.1.2 (l. 959) | «Debreu, siguiendo el programa de Edgeworth, demostró que el conjunto de equilibrios es finito» | Debreu (1970), economías regulares; índice (Dierker, 1972) (P55, V16) |
 | II.1.3 (l. 993, 1003, 1011-1015) | «Exceso de oferta negativo»; el subastador «canta el precio del numerario»; ecuación discreta y continua mezcladas, $k_i\geq 0$; distancia sin fórmula | Tanteo multimercado $\dot p_k=\kappa_kz_k(\vect{p})$, $\kappa_k>0$, distancia al equilibrio escrita, Arrow-Block-Hurwicz y Scarf (P56, K12, C19) |
-| II.1.3 (l. 977) | Musgrave y la estabilidad del tanteo como justificación de la estabilización macroeconómica | Quitado (es otra cosa; está en 3.A.16) (K10n, C19) |
+| II.1.3 (l. 977) | Musgrave y la estabilidad del tanteo como justificación de la estabilización macroeconómica | Se mantiene con el matiz de que es una analogía (17/10/2026, a raíz del 3.A.16) (K10n, C19) |
 | II.2.2 (l. 1105-1117) | Supuestos del 1TFEB copiados del equilibrio parcial de MWG («bien no numerario») y con rendimientos no crecientes | 1TFEB: no saciedad local, mercados completos, precio-aceptación y precios comunes; no necesita convexidad (P61, C21) |
 | II.2.2 (l. 1153-1157) | Párrafo de la introducción del 3.A.23 («nos vamos a centrar en la intervención por eficiencia…») | Sustituido por el puente al bloque III (K10i) |
 | III.1 (l. 1169) | «En el contexto walrasiano se alcanza un equilibrio único» | El precio walrasiano no depende del poder negociador; el de Edgeworth sí (P57, K10b) |
@@ -300,3 +300,7 @@ Introducción, bloque III, conclusión y anexo E, con las reglas de CRITERIOS.md
 ## Cambio del 17/10/2026 (tarde)
 
 - Víctor prefiere guardar la frase de Joan Robinson (mapa a escala 1:1) para otro tema donde encaje mejor: quitada del bloque I, de la conclusión, de la nota al opositor y del .bib.
+
+## Retoques de coherencia del 17/10/2026
+
+A raíz de la revisión del 3.A.16 y del 3.A.17 (`canon/pendientes-coherencia.md`): Musgrave se mantiene en II.1.3 con el matiz de que la estabilización macroeconómica es una analogía; en el anexo D, la oferta decreciente se atribuye a las economías externas a la empresa (industria de costes decrecientes, 3.A.16) y no a los rendimientos crecientes; la nota de la negociación remite también al 3.A.17 para la solución de Nash generalizada en el monopolio bilateral.

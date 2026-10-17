@@ -309,3 +309,7 @@ El tema es teórico: se comprueban fechas, atribuciones y obras, y se añaden lo
 - **Negrita y cursiva**: rótulos de viñeta en cursiva y homogéneos entre hermanas (condiciones de primer orden, lagrangiana, multiplicador, asimetría, esquema, recuperación exacta, con y sin homoteticidad, rendimientos globales, factores Giffen, relación entre demandas, problema y costes a corto plazo, participaciones, otra forma flexible, métodos y resultados, indicadores contables, intuición, con $n$ factores).
 - **Otros temas**: no había «tema vecino» ni siglas de otros temas sin desarrollar; todos se citan con `\vertema`.
 - Sin cambios en `\minutos` ni en el contenido. `verificar-tema.py`: 0 errores.
+
+## Retoques de coherencia del 17/10/2026
+
+A raíz de la revisión del 3.A.16: la oferta de la empresa es la inversa del coste marginal por encima del mínimo del coste medio «que puede evitar» (CVMe a corto, CMe a largo); grafía «Le Chatelier», sin acento, como firmaba el autor.
