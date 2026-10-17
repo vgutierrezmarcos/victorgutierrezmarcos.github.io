@@ -17,6 +17,7 @@ import '../data/models/oposicion.dart';
 import '../data/models/plan.dart';
 import '../data/models/pregunta.dart';
 import '../data/models/proceso.dart';
+import '../data/models/revisado.dart';
 import '../data/models/preparador.dart';
 import '../data/models/temario.dart';
 import '../data/repos/contenido_repo.dart';
@@ -101,6 +102,11 @@ final frecuenciaTestProvider = FutureProvider<FrecuenciaTest?>((ref) {
 final temarioProvider = FutureProvider<Temario>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).temario();
+});
+/// Temas revisados, exclusivos de la app (manifiesto de la rama revision-temario).
+final revisadosProvider = FutureProvider<ManifiestoRevisados>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).revisados();
 });
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) {
   ref.watch(versionContenidoProvider);
