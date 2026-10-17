@@ -17,7 +17,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ## Pendiente
 
-- Formulario **Seguridad de los datos**: se dejó como estaba (6 oct. 2026). Lista completa al día (17 oct.) en `LEEME.md`, con el token de FCM de la 1.16.0. Antes de pedir producción, revisarlo con lo nuevo: en *Información personal → Otra información*, la modalidad, la ciudad y la disponibilidad de los preparadores y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos, nota; sin nombre ni teléfono); en *Actividad en la app → Otro contenido generado por el usuario*, las notas, los materiales (enlaces) y los trazos de la pizarra; en *Calendario*, el acceso a Google Calendar (opcional, solo preparadores).
+- Formulario **Seguridad de los datos**: **actualizado y enviado a revisión el 17 oct. 2026** (Mensajes, Calendario, Otro contenido generado por el usuario e Identificadores del dispositivo; lista en `LEEME.md`). Lo que se añadió: en *Información personal → Otra información*, la modalidad, la ciudad y la disponibilidad de los preparadores y lo que publica un opositor que busca preparador (ejercicio, modalidad, ciudad, tramos, nota; sin nombre ni teléfono); en *Actividad en la app → Otro contenido generado por el usuario*, las notas, los materiales (enlaces) y los trazos de la pizarra; en *Calendario*, el acceso a Google Calendar (opcional, solo preparadores).
 - ~~Cuando Google verifique el permiso de Calendar, abrirlo a todos los preparadores~~: hecho el 17 oct. (ver abajo).
 
 ## Versiones subidas
@@ -191,6 +191,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 
 ### 17 oct. 2026
 - **Google aprobó la verificación del permiso de Google Calendar** (`calendar.events`, 16 oct.) y la opción se abrió a todos los preparadores verificados, sin versión nueva (`calendarioParaTodos` en la configuración de la web).
+- **Seguridad de los datos actualizada** en Play y enviada a revisión: mensajes (tablón y notas entre preparadores), eventos del calendario, contenido generado por el usuario (pizarra, anotaciones, materiales) y el token de las notificaciones push.
 
 (Seguir añadiendo aquí, con fecha.)
 
