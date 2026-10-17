@@ -21,6 +21,12 @@ Cada tema revisado debe quedar:
    una pizarra. El documento puede ser más largo que el cante (profundiza para
    preguntas del tribunal), pero el guion del cante dura 30 minutos.
 
+Todos los formatos (PDF, web, Word, ficha de repaso y vídeo) llevan la
+licencia **CC BY-NC-ND 4.0** (© año del tema, Víctor Gutiérrez Marcos). La
+ponen las plantillas (`tcee.sty`, `tcee-repaso.sty`, `plantilla-tema.html`) y
+los scripts (`construir-tema.py`, `generar-video.py`); no hay que escribirla
+en cada tema. Ver `LICENSE.md` en la raíz.
+
 ## 2. Estilo de redacción
 
 - Castellano cuidado, con todas las tildes. Términos en inglés en cursiva

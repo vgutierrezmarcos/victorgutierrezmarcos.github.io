@@ -163,7 +163,8 @@ from scipy import ndimage
 from skimage.morphology import skeletonize
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, LATEX, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto  # noqa: E402
+from comun import (Tema, LATEX, MIKTEX, entorno_tex, ejecutar, errores_log, minutos_texto, segundos_texto,  # noqa: E402
+                   anio_tema, licencia_corta, licencia_larga)
 
 ANCHO, ALTO = 1920, 1080
 FPS = 25
@@ -1477,6 +1478,8 @@ def marca_hecho(d, cx, cy, r, color, grosor=3):
 class Pantallas:
     def __init__(self, tema, guion, titulo, corto):
         self.tema, self.titulo, self.corto = tema, titulo, corto
+        # Rótulo de la licencia (portada y cierre): «© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0»
+        self.licencia = licencia_corta(anio_tema(tema))
         self.bloques = guion['bloques']
         self.escenas = guion['escenas']
         total = sum(b.get('minutos', 1) for b in self.bloques)
@@ -1718,6 +1721,7 @@ class Pantallas:
         d.text((ANCHO / 2, ALTO - 150), 'Cante del tema · 30 minutos', font=F_BARRA_L, fill=SALVIA, anchor='mm')
         d.text((ANCHO / 2, ALTO - 100), 'Víctor Gutiérrez Marcos · victorgutierrezmarcos.es', font=F_UI,
                fill=(220, 210, 230), anchor='mm')
+        d.text((ANCHO / 2, ALTO - 42), self.licencia, font=F_MARCO, fill=(176, 150, 200), anchor='mm')
         return img
 
     def cierre(self):
@@ -1729,6 +1733,8 @@ class Pantallas:
         d.text((ANCHO / 2, 640), 'El tema completo (web, PDF y Word) y el resto del temario en',
                font=F_UI, fill=(220, 210, 230), anchor='mm')
         d.text((ANCHO / 2, 690), 'victorgutierrezmarcos.es', font=F_BARRA, fill=SALVIA, anchor='mm')
+        d.text((ANCHO / 2, ALTO - 42), self.licencia + ' · puedes compartirlo citando al autor, sin fines '
+               'comerciales y sin modificarlo', font=F_MARCO, fill=(176, 150, 200), anchor='mm')
         return img
 
 
@@ -2321,7 +2327,12 @@ def main():
             f.write(f'{yt_tiempo(inicio)} {nombre}\n')
         motor = 'voz sintética (Microsoft Edge TTS)' if voz.get('motor') == 'edge' else 'voz sintética clonada'
         f.write(f'\nNarración con {motor}. Material de preparación no oficial.\n'
-                'Víctor Gutiérrez Marcos · victorgutierrezmarcos.es\n')
+                'Víctor Gutiérrez Marcos · victorgutierrezmarcos.es\n\n'
+                f'{licencia_larga(anio_tema(tema))}\n')
+        # Al subirlo: «licencia estándar de YouTube» (YouTube no ofrece CC BY-NC-ND; la que
+        # rige es la de la descripción). Esta nota no es para la descripción.
+        f.write('\n[Al subirlo a YouTube: Licencia → «Licencia estándar de YouTube»; '
+                'no copiar esta línea en la descripción]\n')
     print(f'Vídeo: {mp4} ({mmss(total)}; {len(pasos)} pasos)')
 
 

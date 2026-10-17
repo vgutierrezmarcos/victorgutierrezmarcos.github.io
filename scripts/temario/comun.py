@@ -235,3 +235,36 @@ def linea_paginas(partes):
     if partes.get('bib'):
         trozos.append(f'Bibliografía: {partes["bib"]}')
     return ' · '.join(trozos)
+
+
+# --- Licencia ------------------------------------------------------------------------
+# Todos los formatos del temario (PDF, HTML, Word, ficha de repaso y vídeo) llevan
+# la licencia CC BY-NC-ND 4.0; la ponen las plantillas (tcee.sty, tcee-repaso.sty,
+# plantilla-tema.html) y estos scripts, no cada tema.
+AUTOR = 'Víctor Gutiérrez Marcos'
+LICENCIA = 'CC BY-NC-ND 4.0'
+LICENCIA_URL = 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'
+LICENCIA_URL_LEGAL = 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
+LICENCIA_PERMISOS = 'puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo'
+
+
+def anio_tema(tema):
+    """Año de la última actualización del tema (\\tcefecha{dd/mm/aaaa} de su .tex);
+    si no se encuentra, el año en curso."""
+    import datetime
+    ruta = os.path.join(tema.dir, f'{tema.archivo}.tex')
+    if os.path.exists(ruta):
+        m = re.search(r'\\tcefecha\{[^}]*?(\d{4})\s*\}', open(ruta, encoding='utf-8').read())
+        if m:
+            return int(m.group(1))
+    return datetime.date.today().year
+
+
+def licencia_corta(anio):
+    """«© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0»"""
+    return f'© {anio} {AUTOR} · {LICENCIA}'
+
+
+def licencia_larga(anio):
+    """La línea completa, con el enlace y lo que permite."""
+    return f'© {anio} {AUTOR} · Licencia {LICENCIA} ({LICENCIA_URL}): {LICENCIA_PERMISOS}.'

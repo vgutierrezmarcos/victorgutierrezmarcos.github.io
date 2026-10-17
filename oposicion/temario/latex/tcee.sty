@@ -124,8 +124,23 @@
 % \tcetema[título corto para la cabecera]{código}{título oficial}
 \newcommand{\tcetema}[3][]{\renewcommand{\tcee@codigo}{#2}\renewcommand{\tcee@titulo}{#3}%
   \if\relax\detokenize{#1}\relax\renewcommand{\tcee@corto}{#3}\else\renewcommand{\tcee@corto}{#1}\fi}
-\newcommand{\tcefecha}[1]{\renewcommand{\tcee@fecha}{#1}}
+\newcommand{\tcefecha}[1]{\renewcommand{\tcee@fecha}{#1}\tcee@sacaanno#1////\@nil}
 \newcommand{\tceecodigo}{\tcee@codigo}
+% Año de la licencia: el de \tcefecha{dd/mm/aaaa} (2026 si la fecha no es así)
+\newcommand{\tcee@anno}{2026}
+\def\tcee@sacaanno#1/#2/#3/#4\@nil{\if\relax\detokenize{#3}\relax\else\edef\tcee@anno{\zap@space#3 \@empty}\fi}
+
+% --- Licencia ----------------------------------------------------------------------
+% CC BY-NC-ND 4.0 en todos los temas: una línea pequeña en gris en la portada,
+% bajo las páginas (\tceetitulo), y en los metadatos del PDF (XMP con hyperxmp,
+% al final). Lo mismo en la web (plantilla-tema.html), el Word
+% (construir-tema.py), la ficha (tcee-repaso.sty) y el vídeo (generar-video.py).
+\RequirePackage{ccicons}
+\newcommand{\tcee@licenciaurl}{https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}
+\newcommand{\tcee@linealicencia}{{\fontsize{6.8}{8}\selectfont\itshape\color{tceegris}%
+  \textcopyright\,\tcee@anno\ Víctor Gutiérrez Marcos\ \textperiodcentered\
+  \href{\tcee@licenciaurl}{\color{tceegris}\ccbyncnd\ CC BY-NC-ND 4.0}: puedes
+  compartirlo citando al autor, sin fines comerciales y sin modificarlo.\par}}
 
 % --- Numeración de páginas por partes ------------------------------------------
 % El tema (de la portada a la conclusión) va en 1…N; tras \appendix, los anexos
@@ -195,6 +210,7 @@
     \parbox{\tcee@ancho}{\centering\tcee@formatotitulo\MakeUppercase{\tcee@codigo:\ \tcee@titulo}\par}\par
     \vspace{0.5em}{\color{tceemorado}\rule{0.6\textwidth}{0.8pt}}\par
     \vspace{0.3em}\tcee@lineapaginas
+    \vspace{0.15em}\tcee@linealicencia
   \end{center}
   \endgroup
   \vspace{1.6em}%
@@ -409,5 +425,13 @@
 \RequirePackage[hidelinks,unicode,pdfusetitle]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=tceemorado,urlcolor=tceemoradooscuro,citecolor=tceemoradooscuro}
 \RequirePackage{bookmark}
+% Metadatos de la licencia (XMP: Adobe y los buscadores los leen). El título,
+% el asunto y las palabras clave los pone scripts/metadatos-pdf.py al publicar.
+\RequirePackage{hyperxmp}
+% keeppdfinfo: sin él, hyperxmp quita el autor y las palabras clave del diccionario Info
+\hypersetup{keeppdfinfo,pdfauthor={Víctor Gutiérrez Marcos}}
+\AtBeginDocument{\hypersetup{pdfcopyright={© \tcee@anno\ Víctor Gutiérrez Marcos. Licencia CC BY-NC-ND 4.0: puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo.},
+  pdflicenseurl={https://creativecommons.org/licenses/by-nc-nd/4.0/},
+  pdfcontacturl={https://www.victorgutierrezmarcos.es/}}}
 
 \endinput

@@ -31,7 +31,8 @@ import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
-                   errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas)
+                   errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas,
+                   licencia_corta, licencia_larga, LICENCIA_URL_LEGAL)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
 BIBER = os.path.join(MIKTEX, 'biber.exe')
@@ -434,12 +435,24 @@ def generar_docx(tema, tex_pandoc, datos):
              '-M', f'title={tema.codigo}: {datos["titulo"]}',
              '-M', 'author=Víctor Gutiérrez Marcos',
              '-M', f'date=Última actualización: {datos["fecha"]}',
+             # Licencia en las propiedades del documento (Comentarios y personalizadas)
+             '-M', f'description={licencia_larga(anio_de(datos))}',
+             '-M', f'Licencia={licencia_corta(anio_de(datos))}',
+             '-M', f'URL de la licencia={LICENCIA_URL_LEGAL}',
              '--resource-path', ruta_windows(tema.dir), '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)
     ejecutar(orden, timeout=600)
     centrar_celdas_docx(destino)
-    retocar_docx(destino)
+    retocar_docx(destino, anio_de(datos))
     return destino
+
+
+def anio_de(datos):
+    """Año de la última actualización (\\tcefecha); el de hoy si no se entiende."""
+    try:
+        return datetime.datetime.strptime(datos['fecha'], '%d/%m/%Y').year
+    except ValueError:
+        return datetime.date.today().year
 
 
 def centrar_celdas_docx(ruta):
@@ -593,14 +606,39 @@ def numerar_paginas_docx(partes):
     partes['[Content_Types].xml'] = tipos.encode('utf-8')
 
 
-def retocar_docx(ruta):
-    """Postproceso del Word: listas que no se separan de lo que las introduce y
-    numeración de páginas por partes."""
+def retocar_docx(ruta, anio):
+    """Postproceso del Word: listas que no se separan de lo que las introduce,
+    numeración de páginas por partes y licencia en el pie."""
     partes, infos = _partes_docx(ruta)
     partes['word/document.xml'] = conservar_listas_docx(partes['word/document.xml'].decode('utf-8')).encode('utf-8')
     numerar_paginas_docx(partes)
+    licencia_pie_docx(partes, anio)
     imagenes_notas_docx(partes)
     _guardar_docx(ruta, partes, infos)
+
+
+def licencia_pie_docx(partes, anio):
+    """«© 2026 Víctor Gutiérrez Marcos · CC BY-NC-ND 4.0» a la izquierda del pie,
+    pequeño y en gris, en la misma línea que el número de página (que sigue a la
+    derecha con un tabulador alineado al margen). Va en todos los pies (los de
+    cada parte que crea numerar_paginas_docx incluidos)."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    tam = re.search(r'<w:pgSz [^>]*w:w="(\d+)"', xml)
+    izq = re.search(r'<w:pgMar [^>]*w:left="(\d+)"', xml)
+    der = re.search(r'<w:pgMar [^>]*w:right="(\d+)"', xml)
+    ancho = int(tam.group(1)) - int(izq.group(1)) - int(der.group(1)) if tam and izq and der else 9412
+    texto = licencia_corta(anio)
+    run = ('<w:r><w:rPr><w:i /><w:color w:val="767171" /><w:sz w:val="14" /></w:rPr>'
+           f'<w:t xml:space="preserve">{texto}</w:t></w:r><w:r><w:tab /></w:r>')
+    for nombre in [n for n in partes if re.fullmatch(r'word/footer[^/]*\.xml', n)]:
+        pie = partes[nombre].decode('utf-8')
+        if texto in pie or ' PAGE ' not in pie:
+            continue
+        ppr = (f'<w:pPr><w:pStyle w:val="Footer" /><w:tabs><w:tab w:val="right" w:pos="{ancho}" /></w:tabs>'
+               '<w:jc w:val="left" /></w:pPr>')
+        pie, n = re.subn(r'<w:p>\s*<w:pPr>(?:(?!</w:pPr>).)*</w:pPr>', lambda _: f'<w:p>{ppr}{run}', pie, count=1, flags=re.S)
+        if n:
+            partes[nombre] = pie.encode('utf-8')
 
 
 def imagenes_notas_docx(partes):
