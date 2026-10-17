@@ -930,6 +930,29 @@ body {
     text-decoration: underline;
 }
 
+/* Línea de licencia (CC BY-NC-ND 4.0) al final del pie */
+.footer-content p.footer-licencia,
+.footer-licencia {
+    margin: 0.6rem 0 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    font-style: normal;
+    line-height: 1.4;
+}
+
+.footer-licencia a {
+    color: inherit;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 2px;
+}
+
+.footer-licencia a:hover {
+    color: #ffffff;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .site-header { padding: 1.5rem 1rem; }
@@ -2064,6 +2087,10 @@ body {
 
 [data-theme="dark"] .footer-links a:hover {
     color: #ffffff;
+}
+
+[data-theme="dark"] .footer-content p.footer-licencia {
+    color: rgba(255, 255, 255, 0.55);
 }
 
 [data-theme="dark"] .footer-social a {
