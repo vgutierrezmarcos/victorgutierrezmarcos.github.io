@@ -1,7 +1,7 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
 \tcetema[Teoría de la producción]{3.A.11}{Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución. Producción conjunta.}
-\tcefecha{17/10/2026}
+\tcefecha{18/10/2026}
 % Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
 \newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
   \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
@@ -198,7 +198,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, máx.\ $q$ & $=0$ & máximo técnico\\
 \centering $\varepsilon_{q,\lambda}(\vect{z})\equiv\left.\dfrac{d\ln F(\lambda\vect{z})}{d\ln\lambda}\right|_{\lambda=1}=\dfrac{\sum_i\mathrm{PMg}_iz_i}{F(\vect{z})}=\sum_i\varepsilon_{q,z_i}$\\[5pt]
 Homogénea: $F(\lambda\vect{z})=\lambda^kF(\vect{z})$;\qquad \autor{Euler}: $\sum_i\mathrm{PMg}_iz_i=kF(\vect{z})$
 \end{formula}
-\graficorepaso[0.5\linewidth]{rendimientos-escala-isocuantas}{Isocuantas sobre un rayo: crecientes, constantes, decrecientes y variables}
+\graficorepaso[0.42\linewidth]{rendimientos-escala-isocuantas}{Isocuantas sobre un rayo: crecientes, constantes, decrecientes y variables}
 \begin{itemize}
 \item \concepto{Rendimientos globales}: propiedad de \emph{toda} la tecnología ($\forall\vect{z}$, $\lambda>1$) = propiedad de escala de $\mathcal{Y}$ (cono, divisibilidad, aditividad). Caso: \concepto{homogénea de grado $k$}: $\varepsilon_{q,\lambda}=k$ siempre; PMg de grado $k-1$; RMST de grado 0. Con $k=1$, pagar la PMg agota el producto (\autor{Wicksteed}).
 \item \concepto{Rendimientos locales}: en un punto, con $\varepsilon_{q,\lambda}(\vect{z})$ = suma de elasticidades-producto: une CP (eje) y LP (rayo). CD: $\alpha+\beta$.
@@ -255,7 +255,7 @@ Cada plazo es un corte de la superficie: a CP, la ley de rendimientos decrecient
 \item \emph{Supuestos}: $X=F_X(L_X,K_X)$, $Y=F_Y(L_Y,K_Y)$; $L_X+L_Y=\overline{L}$, $K_X+K_Y=\overline{K}$.
 \item \emph{Desarrollo}: \concepto{caja de \autor{Edgeworth}}: mapa de $Y$ girado 180° sobre el de $X$, lados $\overline{L}$ y $\overline{K}$. Si las isocuantas se cortan ($A$), reasignando: más $X$ con igual $Y$ ($B$) o más $Y$ con igual $X$ ($C$). \concepto{Eficiencia técnica} (de \autor{Pareto} en la producción): tangencia, $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$; lugar de tangencias = \concepto{curva de contrato} \vertema{3.A.22} $\to$ \concepto{frontera de posibilidades de producción} (FPP).
 \end{itemize}
-\graficorepaso[0.72\linewidth]{caja-edgeworth-fpp}{Caja de \autor{Edgeworth}, curva de contrato y FPP}
+\graficorepaso[0.64\linewidth]{caja-edgeworth-fpp}{Caja de \autor{Edgeworth}, curva de contrato y FPP}
 \begin{formula}
 \centering $\mathrm{RMT}_{XY}\equiv-\dfrac{dY}{dX}=\dfrac{\mathrm{PMg}^Y_L}{\mathrm{PMg}^X_L}=\dfrac{\mathrm{PMg}^Y_K}{\mathrm{PMg}^X_K}=\dfrac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}$
 \end{formula}
@@ -275,23 +275,23 @@ Cada plazo es un corte de la superficie: a CP, la ley de rendimientos decrecient
 \begin{formula}
 \centering $\mathrm{RMT}_{12}\equiv-\left.\dfrac{dq_2}{dq_1}\right|_{T=0}=\dfrac{\partial T/\partial q_1}{\partial T/\partial q_2}$;\qquad óptimo: $\mathrm{RMT}_{12}=\dfrac{p_1}{p_2}$
 \end{formula}
-\graficorepaso[0.5\linewidth]{transformacion-empresa}{Curva de transformación de la empresa y RMT}
+\graficorepaso[0.42\linewidth]{transformacion-empresa}{Curva de transformación de la empresa y RMT}
 \begin{itemize}
 \item \emph{Implicaciones}: \concepto{producción conjunta} estricta (un proceso, varios productos): \emph{proporciones fijas} (carne y cuero, trigo y paja: oferta conjunta de \autor{Marshall}; frontera = punto o ángulo recto; sin imputación técnica del coste) o \emph{variables} (refino del petróleo; ganadería de lana o carne). Con precios, isobeneficio tangente: $\mathrm{RMT}_{12}=p_1/p_2$.
 \item \emph{Extensiones}: \concepto{economías de alcance} (\autor{Panzar}-\autor{Willig}, 1981): $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$, por factores compartidos (instalaciones, marca, conocimiento) $\Rightarrow$ con las de escala, subaditividad y monopolio natural multiproducto \vertema{3.A.17}; límites de la empresa \vertema{3.A.15}.
 \item \emph{Valoración}: $T$ generaliza $F$, pero solo dice qué es posible; qué se elige depende de los precios.
 \end{itemize}
 \begin{ideaclave}
-Con varios productos, la eficiencia exige además igualar las RMST (curva de contrato) y situarse en la frontera de transformación, cuya pendiente (RMT) es el coste de oportunidad. Con precios llega la elección: beneficio, oferta y demanda de factores \vertema{3.A.12}.
+Con varios productos, la eficiencia exige además igualar las RMST (curva de contrato); la frontera es $T(\vect{y})=0$ y su pendiente, la RMT, el coste de oportunidad.
 \end{ideaclave}
 
 % ==========================================================================
 \bloque[1,5]{Conclusión}
 \begin{itemize}
 \item \textbf{Recapitulación}: (1) axiomas $\to$ $F$ e isocuantas, RMST y $\sigma$; CD, CES y \autor{Leontief}; (2) plazos de \autor{Marshall}: rendim.\ decrecientes (CP), a escala globales o locales (LP), progreso técnico (muy LP); (3) varios productos: curva de contrato, FPP y función de transformación.
-\item \textbf{Relevancia}: la forma de $F$ decide resultados: con RCE el producto se agota y las participaciones dependen de $\sigma$; caída de la participación del trabajo desde los 80 (\autor{Karabarbounis}-\autor{Neiman}, 2014) difícil con $\sigma=1$ \vertema{3.A.45}; \autor{Harrod} y crecimiento equilibrado \vertema{3.A.43}; rendim.\ crecientes $\to$ crecimiento endógeno \vertema{3.A.44} y nuevo comercio \vertema{3.B.6}.
-\item \textbf{Extensiones}: costes y dualidad \vertema{3.A.12}; oferta \vertema{3.A.16-19}; bienestar fuera de la curva de contrato \vertema{3.A.22}; controversia de los dos Cambridge \vertema{3.A.4}; capital y crecimiento endógeno \vertema{3.A.44}; comercio \vertema{3.B.5}\vertema{3.B.6}.
-\item \textbf{Opinión}: idealización poderosa, pero la empresa como \emph{caja negra}; lo de dentro (contratos, incentivos, límites), organización industrial \vertema{3.A.15}.
+\item \textbf{Relevancia}: la forma de $F$ decide resultados: con RCE el producto se agota y las participaciones dependen de $\sigma$; caída de la del trabajo desde los 80 (\autor{Karabarbounis}-\autor{Neiman}, 2014), difícil con $\sigma=1$; \autor{Harrod} y crecimiento equilibrado; rendim.\ crecientes $\to$ crecimiento endógeno y nuevo comercio.
+\item \textbf{Extensiones}: costes y dualidad \vertema{3.A.12}; oferta \vertema{3.A.16-19}; bienestar \vertema{3.A.22}; controversia de los dos Cambridge \vertema{3.A.4}; comercio \vertema{3.B.5}\vertema{3.B.6}.
+\item \textbf{Opinión}: idealización poderosa, pero la empresa como \emph{caja negra}; lo de dentro, organización industrial \vertema{3.A.15}.
 \item \textbf{Idea final}: ¿una función resume lo que sabe hacer la empresa? Lo que \emph{puede} producir, no lo que producirá ni cómo se organiza: el mapa de lo técnicamente posible sobre el que precios, costes y mercados trazan la elección.
 \end{itemize}
 
@@ -299,8 +299,7 @@ Con varios productos, la eficiencia exige además igualar las RMST (curva de con
 \bloque{Autores y fechas}
 \hito{1767}{\autor{Turgot}: ley de las proporciones variables}
 \hito{1890}{\autor{Marshall}: plazos; oferta conjunta}
-\hito{1894}{\autor{Wicksteed}: $P=f(a,b,c,\dots)$, agotamiento del producto}
-\hito{1899}{J.\,B.\ \autor{Clark}: distribución por productividad marginal; 1901 \autor{Wicksell}}
+\hito{1894}{\autor{Wicksteed}: $P=f(a,b,c,\dots)$; agotamiento del producto}
 \hito{1928}{\autor{Cobb}-\autor{Douglas}: primera estimación}
 \hito{1932}{\autor{Hicks}: $\sigma$ y neutralidad; 1933 \autor{Robinson}: $\sigma$}
 \hito{1936}{\autor{Cassels}: 3 etapas; \autor{Leontief}: \emph{input-output}}
@@ -308,7 +307,6 @@ Con varios productos, la eficiencia exige además igualar las RMST (curva de con
 \hito{1951}{\autor{Koopmans}: análisis de actividades}
 \hito{1959}{\autor{Debreu}: enfoque axiomático}
 \hito{1961}{ACMS: CES; \autor{Uzawa}: teorema de neutralidad}
-\hito{1963}{\autor{Inada}: condiciones}
 \hito{1965}{\autor{Frisch}: \emph{regular ultra passum law}}
 \hito{1975}{\autor{Hanoch}: $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$}
 \hito{1981}{\autor{Panzar}-\autor{Willig}: economías de alcance}
@@ -322,25 +320,21 @@ Con varios productos, la eficiencia exige además igualar las RMST (curva de con
 % ==========================================================================
 \bloque{Preguntas del tribunal}
 \begin{enumerate}
-\item \textbf{¿Por qué una función con PMg negativa si incumple la eliminación gratuita?} Historia (\autor{Cassels} es anterior a la axiomática) y didáctica: delimita la región económica.
+\item \textbf{¿Por qué una función con PMg $<0$?} Historia (\autor{Cassels}, anterior a la axiomática) y didáctica: delimita la región económica.
 \item \textbf{¿Cuasiconcavidad o concavidad?} Cuasiconcavidad: isocuantas convexas, nada de escala; concavidad: rendim.\ no crecientes. Para maximizar el beneficio no basta la primera.
 \item \textbf{¿PMg decrecientes y rendimientos crecientes a la vez?} Sí: CD con $\alpha,\beta<1$ y $\alpha+\beta>1$.
 \item \textbf{¿Rendimientos globales y locales?} Globales: todo $\vect{z}$ (homogéneas, $\varepsilon_{q,\lambda}=k$); locales: $\varepsilon_{q,\lambda}(\vect{z})=\sum\varepsilon_{q,z_i}$, cambian con la escala.
-\item \textbf{¿Rendimientos y economías de escala?} Tecnología frente a costes; $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$ en la senda de mínimo coste; coinciden punto a punto con homotéticas.
-\item \textbf{¿Por qué \autor{Solow} supone progreso de \autor{Harrod}?} Teorema de \autor{Uzawa}: lo exige el crecimiento equilibrado.
+\item \textbf{¿Rendimientos y economías de escala?} Tecnología frente a costes; $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$ en la senda de mínimo coste.
 \item \textbf{¿Qué pasa con el beneficio con RCE?} Homogéneo de grado 1 $\Rightarrow$ no acotado, no producir o máximo 0; escala indeterminada, oferta correspondencia.
 \end{enumerate}
 
 \begin{trampa}
 \begin{itemize}
 \item Imposib.\ de producción gratuita: $\mathcal{Y}\cap\mathbb{R}^S_+\subseteq\{\vect{0}\}$; con inacción, $=\{\vect{0}\}$.
-\item Etapas: \autor{Cassels} (1936), no \autor{Cassel} (1918, coeficientes fijos).
-\item Margen extensivo = máx.\ PMe ($\varepsilon_{q,z_L}=1$); intensivo = máx.\ PT ($\varepsilon_{q,z_L}=0$).
-\item Isocuantas convexas $\Leftarrow$ cuasiconcavidad; rendim.\ no crecientes $\Leftarrow$ concavidad.
-\item $\sigma=0$ \autor{Leontief}, 1 CD, $\infty$ lineal; CES $\sigma=1/(1-\rho)$, $\rho=(\sigma-1)/\sigma$; son \emph{límites}.
-\item \autor{Hicks}: $z_K/z_L$; \autor{Solow}: $z_L/q$; \autor{Harrod}: $z_K/q$. Coinciden en la CD.
-\item Con $\sigma<1$, $w_L/w_K\uparrow$ $\Rightarrow$ participación del trabajo $\uparrow$; aumentador del capital sesgado hacia el trabajo.
-\item Neoclásica con \autor{Inada}: cóncava, pero \emph{no estrictamente} (lineal en cada rayo).
+\item Etapas: \autor{Cassels} (1936), no \autor{Cassel} (1918). Margen extensivo = máx.\ PMe ($\varepsilon_{q,z_L}=1$); intensivo = máx.\ PT ($\varepsilon_{q,z_L}=0$).
+\item Isocuantas convexas $\Leftarrow$ cuasiconcavidad; rendim.\ no crecientes $\Leftarrow$ concavidad. Neoclásica con \autor{Inada}: cóncava, \emph{no estrictamente}.
+\item $\sigma=0$ \autor{Leontief}, 1 CD, $\infty$ lineal: \emph{límites} de la CES, $\sigma=1/(1-\rho)$.
+\item \autor{Hicks}: $z_K/z_L$; \autor{Solow}: $z_L/q$; \autor{Harrod}: $z_K/q$; coinciden en la CD. Con $\sigma<1$, $w_L/w_K\uparrow$ $\Rightarrow$ participación del trabajo $\uparrow$.
 \end{itemize}
 \end{trampa}
 

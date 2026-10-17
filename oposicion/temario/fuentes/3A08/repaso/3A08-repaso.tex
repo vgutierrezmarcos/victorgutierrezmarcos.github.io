@@ -24,7 +24,7 @@
 \apartadocante{I. Fundamentos de la elección racional}{11}
 \subcante{1. Ingredientes: preferencias, $U$, presupuesto}{5,5}
 \subcante{2. Maximización de la utilidad: el equilibrio}{3}
-\subcante{3. Solución: $\vect{x}(\vect{p},\overline{W})$, FIU, demanda de mercado}{2,5}
+\subcante{3. Solución: demanda, función indirecta, mercado}{2,5}
 \apartadocante{II. Estática comparativa}{8}
 \subcante{1. Variaciones en la renta (\autor{Engel})}{2,5}
 \subcante{2. Variaciones en los precios (\autor{Slutsky}, \autor{Cournot})}{4,5}
@@ -48,7 +48,7 @@
 \begin{itemize}
 \item \concepto{Individualismo metodológico}: lo social, explicado desde metas, creencias y acciones de los individuos.
 \item \concepto{Consumidor}: demanda productos, ofrece factores; optimiza sujeto a un presupuesto.
-\item \concepto{Leyes de \autor{Gossen}}: (1) saturación; (2) igualdad de las UMg ponderadas (I.2).
+\item \concepto{Leyes de \autor{Gossen}}: (1) saturación; (2) igualdad de las utilidades marginales (UMg) ponderadas (I.2).
 \end{itemize}
 
 % ==========================================================================
@@ -81,9 +81,9 @@
 \begin{itemize}
 \item \concepto{Función de utilidad}: «numeración» de los conjuntos de indiferencia. \concepto{Ordinal}: vale cualquier transformación creciente; \concepto{cardinal}: solo afines positivas (utilidad esperada \vertema{3.A.10}).
 \item \concepto{Propiedades de $U$} (preferencias regulares): continua (4); creciente (5); cuasicóncava, contornos superiores convexos (6; estrictamente, 6$'$); no única.
-\item \concepto{Curva de indiferencia}: conjunto de nivel de $U$; mapa = cortes de la «colina» proyectados.
+\item \concepto{Curva de indiferencia}: conjunto de nivel de $U$; mapa = cortes de la «colina» proyectados. Propiedades y su axioma: no se cortan (3); continuas (4); más lejos, mejor, y pendiente negativa (5); convexas (6); sin vértices (7).
 \end{itemize}
-\pareja{superficie-utilidad-repaso}{Superficie $\sqrt{x_1x_2}$ cortada a $U=1,2,3$}{propiedades-curvas-indiferencia}{Propiedades y axioma que da cada una}
+\graficorepaso[0.55\linewidth]{superficie-utilidad-repaso}{Superficie $\sqrt{x_1x_2}$ cortada a $U=1,2,3$: su proyección, el mapa de indiferencia}
 \begin{formula}
 \centering $\mathrm{RMS}_{12}\equiv-\left.\dfrac{dx_2}{dx_1}\right|_{\overline{U}}=\dfrac{U_1}{U_2}$,\qquad $\sigma\equiv\dfrac{d\ln(x_2/x_1)}{d\ln\mathrm{RMS}_{12}}$
 \end{formula}
@@ -92,7 +92,7 @@
 \item \concepto{CES} (elasticidad de sustitución constante): $\sigma\to0$ \autor{Leontief} $\min\{x_1/a;x_2/b\}$; $\sigma\to1$ \autor{Cobb}-\autor{Douglas}; $\sigma\to\infty$ lineal $ax_1+bx_2$.
 \item \concepto{Conjunto presupuestario walrasiano} $B(\vect{p},\overline{W})=\{\vect{x}\in S:\vect{p}\cdot\vect{x}\leq\overline{W}\}$: no vacío, compacto si $\vect{p}\gg\vect{0}$, convexo. \concepto{Recta de balance}: pendiente $-p_1/p_2$.
 \end{itemize}
-\pareja{ces-curvas-indiferencia}{Curvas CES según $\sigma$}{conjunto-presupuestario}{$B(\vect{p},\overline{W})$; si $p_1\uparrow$, gira hacia dentro}
+\graficorepaso[0.45\linewidth]{ces-curvas-indiferencia}{Curvas CES por $(1,1)$ según $\sigma$}
 
 \sub{I.2. Maximización de la utilidad: el equilibrio}
 \begin{itemize}
@@ -100,7 +100,7 @@
 \end{itemize}
 \funcionclave{\optim{\max}{x_1,\dots,x_n}{U(x_1,\dots,x_n)}{\textstyle\sum_{i}p_ix_i\leq\overline{W}\\ x_i\geq0,\quad i=1,\dots,n}}
 \begin{itemize}
-\item \emph{Teoremas}: existencia (\autor{Weierstrass}); unicidad (estr.\ cuasiconcavidad); CPO suficientes (\autor{Arrow}-\autor{Enthoven}, 1961).
+\item \emph{Teoremas}: existencia (\autor{Weierstrass}); unicidad (estr.\ cuasiconcavidad); condiciones de primer orden suficientes (\autor{Arrow}-\autor{Enthoven}, 1961).
 \end{itemize}
 \begin{formula}
 \centering $\mathcal{L}=U(\vect{x})+\lambda\big(\overline{W}-\vect{p}\cdot\vect{x}\big)$\\[2pt]
@@ -157,7 +157,7 @@ La demanda de mercado depende solo de precios y renta total, como la de un consu
 \item \emph{Elasticidad-renta} $\varepsilon_{x_i,\overline{W}}=\frac{\partial x_i}{\partial\overline{W}}\frac{\overline{W}}{x_i}$: $<0$ \binferior{inferior}; $=0$ independiente; $(0,1)$ \bnormal{normal necesario} (pierde peso); $>1$ \bnormal{normal de lujo}.
 \item \emph{Evidencia}: \concepto{ley de \autor{Engel}} (1857): el peso de los alimentos cae con la renta (necesarios). España: \dato{19,6\,\% (Q1) frente a 12,3\,\% (Q5)}{INE, EPF 2025}.
 \end{itemize}
-\pareja{renta-consumo-engel}{CRC y curva de \autor{Engel}: \bnormal{normal}, luego \binferior{inferior}}{epf-alimentos-quintil}{Alimentos por quintil de gasto (INE, EPF 2025)}
+\graficorepaso[0.72\linewidth]{renta-consumo-engel}{CRC y curva de \autor{Engel}: \bnormal{normal} hasta cierta renta, \binferior{inferior} después}
 \begin{formula}
 \centering \concepto{Agregación de \autor{Engel}}: $\displaystyle\sum_i s_i\,\varepsilon_{x_i,\overline{W}}=1$,\quad $s_i=\dfrac{p_ix_i}{\overline{W}}$
 \end{formula}
@@ -172,7 +172,7 @@ La demanda de mercado depende solo de precios y renta total, como la de un consu
 \item \emph{Compensar la renta}: \concepto{demanda compensada} (hicksiana) $h_i(\vect{p},\overline{U})$, que mantiene $\overline{U}$; resuelve la minimización del gasto, dual del PMU \vertema{3.A.9}.
 \end{itemize}
 \begin{formula}
-\centering \concepto{Ecuación de \autor{Slutsky}} (1915), con $\overline{U}=V(\vect{p},\overline{W})$:\\[1pt]
+\centering \concepto{Ecuación de \autor{Slutsky}} (1915): efecto total (ET) = ES + ER, con $\overline{U}=V(\vect{p},\overline{W})$:\\[1pt]
 $\underbrace{\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial p_j}}_{\mathrm{ET}}=\underbrace{\dfrac{\partial h_i(\vect{p},\overline{U})}{\partial p_j}}_{\mathrm{ES}}\underbrace{-\,x_j(\vect{p},\overline{W})\dfrac{\partial x_i(\vect{p},\overline{W})}{\partial\overline{W}}}_{\mathrm{ER}}$\\[1pt]
 Elasticidades: $\varepsilon_{x_i,p_j}=\varepsilon^h_{i,p_j}-s_j\,\varepsilon_{x_i,\overline{W}}$
 \end{formula}
@@ -181,7 +181,8 @@ Elasticidades: $\varepsilon_{x_i,p_j}=\varepsilon^h_{i,p_j}-s_j\,\varepsilon_{x_
 \item \concepto{Efecto renta} (ER): poder adquisitivo; propio $<0$ si normal, $>0$ si inferior; crece con el peso $s_i$.
 \item \concepto{Clasificación}: \bnormal{normal} $\Rightarrow$ \bordinario{ordinario} (\emph{ley de la demanda}); \binferior{inferior}: \bordinario{ordinario} si domina el ES, \bgiffen{\autor{Giffen}} si domina el ER (y pesa mucho). Arroz en Hunan (\autor{Jensen}-\autor{Miller}, 2008).
 \end{itemize}
-\pareja{slutsky-propio}{Signos de \autor{Slutsky} con $j=i$}{elasticidades-renta-precio-repaso}{Todo \bnormal{normal} es \bordinario{ordinario}; todo \bgiffen{\autor{Giffen}}, \binferior{inferior}}
+\graficorepaso[0.72\linewidth]{slutsky-propio}{Signos de \autor{Slutsky} con $j=i$}
+\graficorepaso[0.66\linewidth]{elasticidades-renta-precio-repaso}{Todo \bnormal{normal} es \bordinario{ordinario}; todo \bgiffen{\autor{Giffen}} es \binferior{inferior}}
 \begin{itemize}
 \item \emph{Gráficamente} ($p_1\downarrow$): ES $A\to B$ (misma curva, nueva pendiente); ER $B\to C$ (desplazamiento paralelo). Marshalliana por $A$ y $C$; hicksiana por $A$ y $B$, más inclinada si es normal.
 \end{itemize}
@@ -221,12 +222,12 @@ Un cambio de precio tiene un ES, siempre no positivo, y un ER, cuyo signo depend
 \item \emph{Desarrollo}: $\vect{x}^0$ \concepto{directamente preferida} a $\vect{x}^1$ si se eligió pudiendo comprar $\vect{x}^1$.
 \end{itemize}
 \begin{formula}
-\centering \concepto{Axioma débil} (ADPR): $\vect{p}^0\cdot\vect{x}^1\leq\vect{p}^0\cdot\vect{x}^0,\ \vect{x}^1\neq\vect{x}^0\ \Rightarrow\ \vect{p}^1\cdot\vect{x}^0>\vect{p}^1\cdot\vect{x}^1$
+\centering \concepto{Axioma débil de la preferencia revelada} (ADPR): $\vect{p}^0\cdot\vect{x}^1\leq\vect{p}^0\cdot\vect{x}^0,\ \vect{x}^1\neq\vect{x}^0\ \Rightarrow\ \vect{p}^1\cdot\vect{x}^0>\vect{p}^1\cdot\vect{x}^1$
 \end{formula}
 \begin{itemize}
-\item[] Coherencia. \concepto{Indirectamente preferida}: por una cadena. \concepto{Axioma fuerte} (AFPR, \autor{Houthakker}, 1950): transitividad de la revelada; AFPR $\Rightarrow$ ADPR.
+\item[] Coherencia. \concepto{Indirectamente preferida}: por una cadena. \concepto{Axioma fuerte de la preferencia revelada} (AFPR, \autor{Houthakker}, 1950): transitividad de la revelada; AFPR $\Rightarrow$ ADPR.
 \end{itemize}
-\pareja{adpr-efecto-sustitucion}{ADPR y signo del efecto sustitución}{afpr}{AFPR: $\vect{x}^0$ indirectamente preferida a $\vect{x}^2$}
+\graficorepaso[0.72\linewidth]{adpr-efecto-sustitucion}{ADPR (izq.) y signo del efecto sustitución: si baja $p_1$ y se compensa la renta, $x_1$ no baja}
 \begin{itemize}
 \item \emph{Implicaciones} del ADPR, sin utilidad: (1) homogeneidad de grado 0; (2) \concepto{ley de la demanda compensada}, con $\overline{W}^1=\vect{p}^1\cdot\vect{x}^0$:
 \end{itemize}
@@ -294,17 +295,15 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \bloque{De los anexos (para preguntas)}
 \begin{itemize}
 \item \emph{Cardinal} (\autor{Marshall}): $U=\sum_iu_i(x_i)+M$, UMg del dinero constante $\Rightarrow$ $u_i'(x_i)=p_i$: demanda = curva de UMg, sin efecto renta (cuasilineal).
-\item \emph{\autor{Cobb}-\autor{Douglas}}: $x=\frac{\alpha}{\alpha+\beta}\frac{\overline{W}}{p_x}$; gasto fijo; $\varepsilon_{x,p_x}=-1$, $\varepsilon_{x,\overline{W}}=1$, cruzada 0.
-\item \emph{Sistemas de demanda}: lineal de gasto (\autor{Stone}-\autor{Geary}); translog; \concepto{AIDS} (\autor{Deaton}-\autor{Muellbauer}, 1980). \emph{\autor{Lancaster}}: \concepto{frontera de eficiencia}, demanda discontinua.
+\item \emph{\autor{Cobb}-\autor{Douglas}}: gasto fijo; $\varepsilon_{x,p_x}=-1$, $\varepsilon_{x,\overline{W}}=1$, cruzada 0.
+\item \emph{Sistemas de demanda}: lineal de gasto (\autor{Stone}-\autor{Geary}); translog; \concepto{sistema casi ideal} (AIDS; \autor{Deaton}-\autor{Muellbauer}, 1980). \emph{\autor{Lancaster}}: \concepto{frontera de eficiencia}, demanda discontinua.
 \item \emph{\autor{Thaler}} (Nobel 2017): contabilidad mental; \concepto{efecto dotación} (tazas, más del doble; \autor{Kahneman}-\autor{Knetsch}-\autor{Thaler}, 1990).
 \end{itemize}
 
 % ==========================================================================
 \bloque{Autores y fechas}
 \hito{1738}{\autor{Bernoulli}: UMg decreciente (San Petersburgo)}
-\hito{1854}{\autor{Gossen}: sus 2 leyes}
 \hito{1857}{\autor{Engel}: ley de \autor{Engel}}
-\hito{1871}{\autor{Jevons}, \autor{Menger}; \autor{Walras} (1874): marginalismo}
 \hito{1890}{\autor{Marshall}: utilidad cardinal, elasticidades}
 \hito{1915}{\autor{Slutsky}: efecto sustitución y renta}
 \hito{1934}{\autor{Hicks}-\autor{Allen}: RMS, teoría ordinal}
@@ -322,9 +321,9 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 
 \bloque{Datos clave}
 \begin{itemize}
-\item Consumo final de los hogares: \dato{54,1\,\% del PIB}{Eurostat e INE, 2025}; \dato{55,2\,\%}{con ISFLSH}.
+\item Consumo final de los hogares: \dato{54,1\,\% del PIB}{Eurostat e INE, 2025}; \dato{55,2\,\%}{con las instituciones sin fines de lucro}.
 \item Alimentos y bebidas no alcohólicas: \dato{19,6\,\% (Q1), 12,3\,\% (Q5), 16,0\,\% media}{INE, EPF 2025}; solo se rompe, ligeramente, entre Q1 y Q2.
-\item EPF: anual desde 2006, \dato{unos 24.000 hogares}{INE}, 2 años cada uno (panel corto).
+\item Encuesta de Presupuestos Familiares (EPF): anual desde 2006, \dato{unos 24.000 hogares}{INE}, 2 años cada uno (panel corto).
 \item Nobel: \autor{Samuelson} 1970, \autor{Becker} 1992, \autor{Deaton} 2015, \autor{Thaler} 2017.
 \end{itemize}
 
@@ -337,8 +336,7 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \item \textbf{¿Cuándo hay consumidor representativo?} Forma polar de \autor{Gorman}: curvas de \autor{Engel} rectas y paralelas.
 \item \textbf{¿Equivalen preferencia revelada y teoría ordinal?} Sí con el AFPR (\autor{Houthakker}); el ADPR basta solo con 2 bienes.
 \item \textbf{¿Por qué $p(\vect{z})$ no es una curva de demanda?} Es la envolvente de pujas y ofertas: un lugar de equilibrios.
-\item \textbf{¿Por qué es homogénea de grado 0?} Con $\kappa\vect{p},\kappa\overline{W}$ el presupuesto no cambia: sin ilusión monetaria.
-\item \textbf{¿Cuándo es $\lambda=0$?} Con un punto de saturación dentro del presupuesto: la restricción no es operativa.
+\item \textbf{¿Cuándo es $\lambda=0$?} Con saturación dentro del presupuesto.
 \end{enumerate}
 
 \begin{trampa}
@@ -346,11 +344,10 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \item La \emph{convexidad} no exige UMg decrecientes ni estas la garantizan (depende de $U_{12}$); la UMg decreciente no es ordinal ($x_1x_2$ y $(x_1x_2)^2$): importa la RMS decreciente.
 \item ER $=-x_i\,\partial x_i/\partial\overline{W}$, de signo opuesto a $\partial x_i/\partial\overline{W}$. Todo \bgiffen{\autor{Giffen}} es \binferior{inferior}, no al revés. \autor{Veblen} $\neq$ \autor{Giffen}.
 \item ADPR $\Rightarrow$ \autor{Slutsky} semidefinida negativa, \emph{no} simétrica. AFPR $\Rightarrow$ ADPR.
-\item Esquina: $\mathrm{RMS}_{12}\geq p_1/p_2$, no igualdad.
 \item \autor{Gorman}: rectas y \emph{paralelas}; por el origen, solo homotéticas.
-\item Bienes, males y neutrales: signo de la UMg, que no dice nada de la curvatura. 2 males: curvas decrecientes, mejores hacia el origen; neutral: rectas verticales u horizontales.
+\item El signo de la UMg (bien, mal, neutral) no dice nada de la curvatura. 2 males: curvas decrecientes, mejores hacia el origen.
 \item $U=xy$: RMS $y/x$ (convexa); $ax+by$: lineal; $x^2+y^2$: cóncava $\Rightarrow$ esquina.
-\item FIU \emph{cuasiconvexa} en $(\vect{p},\overline{W})$, aunque las preferencias no sean convexas.
+\item FIU \emph{cuasiconvexa} (no cuasicóncava) en $(\vect{p},\overline{W})$.
 \end{itemize}
 \end{trampa}
 
