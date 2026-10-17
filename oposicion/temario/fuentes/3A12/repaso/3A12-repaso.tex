@@ -1,0 +1,361 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Teoría de los costes. Dualidad en la empresa]{3.A.12}{Teoría de los costes. Análisis de dualidad en el ámbito de la empresa. Aplicaciones empíricas.}
+\tcefecha{17/10/2026}
+% Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
+\newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
+% Función clave del tema: morada y recuadrada (como \funcionclave de tcee.sty)
+\newcommand{\funcionclave}[1]{\par\vspace{2pt}{\centering\fcolorbox{tceemorado}{white}{\color{tceemorado}$\displaystyle #1$}\par}\vspace{2pt}}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. «Dualidad» MB--MC. Función de costes}{9}
+\subcante{1. Ingredientes comunes (papeles cambiados)}{1,5}
+\subcante{2. MB $\to B(p,\vect{w})$; MC $\to C(\vect{w},q)$}{5}
+\subcante{3. Relaciones de «dualidad»; $C\leftrightarrow F$, $B\leftrightarrow\mathcal{Y}$}{2,5}
+\apartadocante{II. Estática comparativa, plazos y empírica}{14}
+\subcante{1. $\Delta q$ (escala) y $\Delta\vect{w}$ (sustitución)}{4}
+\subcante{2. Corto y largo plazo; \autor{Le Châtelier}}{4,5}
+\subcante{3. Estimación por dualidad: translog}{2}
+\subcante{4. Economías de escala en los datos}{1,5}
+\subcante{5. Eficiencia: \autor{Farrell}, SFA y DEA}{2}
+\apartadocante{III. Extensiones y críticas}{3,5}
+\subcante{1-2. Estructura de mercado; economías externas}{1}
+\subcante{3. \autor{Stigler} y \autor{Leibenstein}}{2}
+\subcante{4. Multiplanta, multiproducto, aprendizaje}{0,5}
+\apartadocante{Conclusión}{1}}
+Pizarra: esquema de dualidad por capas; $C(\vect{w},q)$ no se borra.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: fotovoltaica: coste nivelado $0{,}41\to0{,}044$ \$/kWh (2010-2025, $-89$\,\%); módulos $-27$\,\% por cada duplicación de la producción acumulada; en España, 1.ª tecnología en potencia. \emph{¿Cuánto de esa caída se debe a la escala, cuánto al aprendizaje y cuánto a los precios de los factores?}
+\item \textbf{Contexto}: ¿qué dicen los costes de la empresa y cómo se miden? 3 restricciones: \emph{técnicas} \vertema{3.A.11}, \emph{económicas} (costes), \emph{de mercado} \vertema{3.A.16-19}.
+\item \textbf{Definiciones}: \concepto{coste económico} = coste de oportunidad (con mercados competitivos, precio de mercado) $\neq$ coste contable; \concepto{función de costes} $C(\vect{w},q)$: coste mínimo de producir $q$ a precios $\vect{w}$ $\Rightarrow$ eficiencia técnica + económica.
+\item \textbf{Relevancia}: \emph{teórica} (puente tecnología--mercado: oferta, cuántas empresas caben); \emph{empírica} (tecnología desde costes y precios); \emph{política} (regulación de redes, predación de \autor{Areeda}-\autor{Turner}).
+\item \textbf{Historia}: \autor{Marshall} (1890), \autor{Wicksell}, \autor{Viner} (1931) $\to$ dualidad (\autor{Hotelling} 1932, \autor{Shephard} 1953, \autor{Uzawa}) $\to$ estimación (\autor{Nerlove}, translog) y eficiencia (\autor{Farrell}); críticas de \autor{Stigler} y \autor{Leibenstein}.
+\item \textbf{«Dual»}: estricto = intercambiar objetivo y restricción (mín.\ coste de $q$ $\leftrightarrow$ máx.\ $q$ con coste dado); amplio = MB--MC (no estricto: el MB lleva ingresos) $\Rightarrow$ «dualidad» entre comillas.
+\item \textbf{Problemática}: ¿qué contiene $C$? ¿Relación MB--MC--tecnología? ¿Respuesta a $q$, $\vect{w}$ y plazo? ¿Estimación y eficiencia? ¿CMe en U? ¿Minimizan costes?
+\item \textbf{Estructura}: I. «dualidad»; II. estática comparativa, plazos y empírica (se estiman las mismas funciones); III. extensiones y críticas.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{I. «Dualidad» MB--MC. Función de costes}
+\begin{itemize}
+\item \emph{Conclusión anticipada}: minimizar el coste de cada $q$ y elegir después $q$ = maximizar el beneficio; $C$ contiene toda la información relevante de la tecnología.
+\end{itemize}
+
+\sub{I.1. Ingredientes comunes}
+\begin{itemize}
+\item \concepto{Eficiencia técnica} (no hay otro proceso con menos factores para igual $q$) no basta: deja toda la isocuanta $\Rightarrow$ hacen falta precios $\Rightarrow$ \concepto{eficiencia económica}: cada $q$ de la forma más barata.
+\item \emph{Ingredientes}: $\mathcal{Y}$, $q=F(\vect{z})$, $V(q)=\{\vect{z}\geq\vect{0}:F(\vect{z})\geq q\}$; $F$ \emph{estr.\ cuasicóncava} (MB exige además \emph{estr.\ cóncava} $\Rightarrow$ $C$ existe con cualquier rendimiento, $B$ no); $\vect{w}\gg\vect{0}$ y, en MB, $p>0$. \emph{Supuestos}: estático, información perfecta, un producto y una planta, \emph{largo plazo}.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}@{}}
+\toprule
+ & \textit{Máx.\ beneficio} & \textit{Mín.\ coste}\\
+\midrule
+Objetivo & $pF(\vect{z})-\vect{w}\cdot\vect{z}$ & $\vect{w}\cdot\vect{z}$\\
+Restricción & $\vect{z}\geq\vect{0}$ ($F$ en el objetivo) & $F(\vect{z})\geq q$\\
+Parámetros & $p$, $\vect{w}$ & $\vect{w}$, $q$\\
+Mercado prod. & precio-aceptante & cualquiera\\
+Solución & $\vect{z}(p,\vect{w})$, $q(p,\vect{w})$ & $\vect{z}(\vect{w},q)$\\
+Función valor & $B(p,\vect{w})$ & $C(\vect{w},q)$\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{I.2. Problemas primal y dual}
+\begin{itemize}
+\item \emph{MB en una etapa}: contiene toda la información, pero solo vale para la empresa precio-aceptante en todo.
+\end{itemize}
+\begin{formula}
+\centering $\optim{\max}{\vect{z}}{p\,F(\vect{z})-\vect{w}\cdot\vect{z}}{\vect{z}\geq\vect{0}}$\qquad $\Rightarrow$\quad $p\,\mathrm{PMg}_i=w_i$,\ \ $\mathrm{RMST}_{LK}=\dfrac{w_L}{w_K}$
+\end{formula}
+\begin{itemize}
+\item Valor del PMg = precio del factor. Con RCE, $B^*=0$ y escala indeterminada; con crecientes, no acotado. \concepto{Demandas no condicionadas} $\vect{z}(p,\vect{w})$ y \concepto{oferta} $q(p,\vect{w})$: únicas, continuas (\autor{Berge}), homog.\ de grado 0 en $(p,\vect{w})$.
+\end{itemize}
+\funcionclave{B(p,\vect{w})=\optim{\max}{\vect{z}}{p\,F(\vect{z})-\vect{w}\cdot\vect{z}}{\vect{z}\geq\vect{0}}}
+\begin{itemize}
+\item \concepto{Propiedades de $B$}: continua; homog.\ de grado 1 en $(p,\vect{w})$; no decreciente en $p$ y no creciente en $w_i$; \emph{convexa} en $(p,\vect{w})$ (reoptimizar gana al menos lo lineal); lema de \autor{Hotelling}.
+\end{itemize}
+\funcionclave{\text{\autor{Hotelling} (1932):}\quad \frac{\partial B}{\partial p}=q(p,\vect{w}),\qquad \frac{\partial B}{\partial w_i}=-z_i(p,\vect{w})}
+\begin{itemize}
+\item $D^2B$ \emph{simétrica} (\autor{Schwarz}/\autor{Young}: $\partial z_i/\partial w_j=\partial z_j/\partial w_i$; $-\partial z_i/\partial p=\partial q/\partial w_i$) y \emph{semidef.\ positiva}: $\partial q/\partial p\geq0$ (\emph{ley de la oferta}), $\partial z_i(p,\vect{w})/\partial w_i\leq0$ $\Rightarrow$ sin factores \autor{Giffen}. Análogo de \autor{Roy}.
+\item \emph{MC}: fijado $q$, ¿combinación más barata? Vale para competencia, monopolio u oligopolio (si precio-aceptantes en factores; \autor{Shephard}, 1953).
+\end{itemize}
+\begin{formula}
+\centering $\optim{\min}{\vect{z}}{\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}$\qquad $\mathcal{L}=\vect{w}\cdot\vect{z}+\mu\big(q-F(\vect{z})\big)$\\[4pt]
+$\dfrac{w_L}{\mathrm{PMg}_L}=\dfrac{w_K}{\mathrm{PMg}_K}=\mu$,\qquad $\mathrm{RMST}_{LK}=\dfrac{w_L}{w_K}$
+\end{formula}
+\begin{itemize}
+\item \emph{Misma} tangencia que en MB. $\mu^*=\partial C/\partial q=$ \concepto{coste marginal} (envolvente). CSO: $|\overline{H}|>0$.
+\item \concepto{Demandas condicionadas} $\vect{z}(\vect{w},q)$, análogas a las \emph{hicksianas}: únicas; continuas; homog.\ de grado 0 en $\vect{w}$ (no en $q$); $F(\vect{z}(\vect{w},q))=q$; $(\vect{w}'-\vect{w})\cdot(\vect{z}'-\vect{z})\leq0$.
+\end{itemize}
+\funcionclave{C(\vect{w},q)=\vect{w}\cdot\vect{z}(\vect{w},q)=\optim{\min}{\vect{z}}{\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}}
+\begin{itemize}
+\item \concepto{Propiedades de $C$}: continua, $C(\vect{w},0)=0$; homog.\ de grado 1 en $\vect{w}$; estr.\ creciente en $q$; no decreciente en $w_i$; \emph{cóncava en $\vect{w}$} (la empresa «pasiva» pagaría un coste lineal; sustituyendo, paga como mucho eso); \autor{Shephard}; matriz de sustitución.
+\end{itemize}
+\funcionclave{\text{\autor{Shephard} (1953):}\quad z_i(\vect{w},q)=\frac{\partial C(\vect{w},q)}{\partial w_i}}
+\begin{itemize}
+\item $S(\vect{w},q)=D^2_{\vect{w}}C$, $S_{ij}=\partial z_i(\vect{w},q)/\partial w_j$: \emph{simétrica}; \emph{semidef.\ negativa} ($S_{ii}\leq0$, ley de la demanda condicionada); $S\vect{w}=\vect{0}$ (\autor{Euler}) $\Rightarrow$ con 2 factores, \emph{sustitutivos netos}.
+\end{itemize}
+\pareja{mc}{MC: isocoste más baja tangente a la isocuanta}{concavidad-c}{$C$ cóncava en $w_i$, pendiente $z_i$ (\autor{Shephard})}
+\begin{formula}
+\raggedright \autor{Leontief}: $C=(a\,w_K+b\,w_L)\,q$ (lineal en $\vect{w}$)\\[3pt]
+CD ($k=\alpha+\beta$): $C=k\Big(\dfrac{q}{A}\Big)^{1/k}\Big(\dfrac{w_K}{\alpha}\Big)^{\alpha/k}\Big(\dfrac{w_L}{\beta}\Big)^{\beta/k}$,\ \ $s_K=\dfrac{\alpha}{k}$\\[3pt]
+Homotética: $C=\phi(q)\,c(\vect{w})$;\ \ homogénea de grado $k$: $C=q^{1/k}c(\vect{w})$
+\end{formula}
+{\centering\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.47\linewidth}>{\raggedright\arraybackslash}p{0.47\linewidth}@{}}
+\toprule
+\textit{Beneficio $B(p,\vect{w})$} & \textit{Costes $C(\vect{w},q)$}\\
+\midrule
+$\vect{z}(p,\vect{w})$, $q(p,\vect{w})$ grado 0 en $(p,\vect{w})$ & $\vect{z}(\vect{w},q)$ grado 0 en $\vect{w}$\\
+grado 1 en $(p,\vect{w})$ & grado 1 en $\vect{w}$\\
+$\uparrow$ en $p$, $\downarrow$ en $\vect{w}$ & estr.\ $\uparrow$ en $q$, $\uparrow$ en $\vect{w}$\\
+convexa & cóncava en $\vect{w}$\\
+\autor{Hotelling} (con $-$ en $z_i$) & \autor{Shephard} (sin signo $-$)\\
+$D^2B$ simétr., semidef.\ positiva & $S$ simétr., semidef.\ negativa, $S\vect{w}=\vect{0}$\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{I.3. Relaciones de «dualidad»}
+\begin{itemize}
+\item \concepto{MB en dos etapas}: 1.º mín.\ coste de cada $q$ $\to C$; 2.º elegir $q$:
+\end{itemize}
+\begin{formula}
+\centering $B(p,\vect{w})=\optim{\max}{q}{p\,q-C(\vect{w},q)}{q\geq0}$\quad$\Rightarrow$\quad $p=\mathrm{CMg}$,\ \ $\dfrac{\partial^2C}{\partial q^2}\geq0$\\[4pt]
+$\vect{z}(p,\vect{w})\equiv\vect{z}\big(\vect{w},q(p,\vect{w})\big)$;\quad $B(p,\vect{w})\equiv p\,q(p,\vect{w})-C\big(\vect{w},q(p,\vect{w})\big)$
+\end{formula}
+\begin{itemize}
+\item Oferta = tramo creciente del CMg sobre el CMe evitable \vertema{3.A.16}. $B$ desde $C$ sin volver a minimizar. \emph{Asimetría}: $C$ con cualquier rendimiento, $B$ no $\Rightarrow$ $C$, más general.
+\end{itemize}
+\graficorepaso[\linewidth]{esquema-dualidad-empresa}{Esquema de dualidad de la empresa: MB (izq.), MC (dcha.), dos etapas (arriba) y tecnología (abajo)}
+\begin{itemize}
+\item \concepto{$C\leftrightarrow F$} (\autor{Shephard} 1953, \autor{McFadden} 1978): $V^*(q)=\{\vect{z}\geq\vect{0}:\vect{w}\cdot\vect{z}\geq C(\vect{w},q)\ \forall\vect{w}\gg\vect{0}\}$ = envolvente de las isocostes mínimas. $V$ convexo + eliminación gratuita $\Rightarrow$ $V^*=V$; si no, su envoltura convexa (la que importa para la conducta).
+\item Toda $C$ con esas propiedades es función de costes de alguna tecnología (\autor{Shephard}-\autor{Uzawa}) $\Rightarrow$ se estima $C$ sin escribir $F$.
+\item \concepto{$B\leftrightarrow\mathcal{Y}$}: $B$ = \concepto{función soporte} de $\mathcal{Y}$; $\mathcal{Y}^*=\{(q,-\vect{z}):pq-\vect{w}\cdot\vect{z}\leq B\ \forall(p,\vect{w})\}$; $=\mathcal{Y}$ si convexo, cerrado y con eliminación gratuita.
+\end{itemize}
+\begin{ideaclave}
+Minimizar el coste de cada $q$ y elegir $p=\mathrm{CMg}$ = maximizar el beneficio. $C$ es cóncava y homogénea de grado 1 en $\vect{w}$, sus derivadas son las demandas condicionadas (\autor{Shephard}) y contiene la misma información que la tecnología: basta conocer los costes para conocer la empresa.
+\end{ideaclave}
+
+% ==========================================================================
+\bloque[14]{II. Estática comparativa, plazos y aplicaciones empíricas}
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la demanda condicionada nunca crece con su precio; a LP la forma de los costes refleja los rendimientos a escala y a CP los del factor variable; a LP se responde más; con la dualidad se estiman escala y eficiencia: costes en L, ineficiencias persistentes.
+\end{itemize}
+
+\sub{II.1. Estática comparativa}
+\begin{itemize}
+\item \emph{$\Delta q$, demandas}: \concepto{senda de expansión}: combinaciones de mínimo coste al $\uparrow q$ con $\vect{w}$ fijo; RMST constante $\Rightarrow$ isoclina (análogo de la curva renta-consumo); homotética $\Rightarrow$ rayo.
+\item Factor \concepto{normal} si $\partial z_i(\vect{w},q)/\partial q>0$; \concepto{inferior} si $<0$ (senda hacia atrás). No todos inferiores: $\sum_iF_i\,\partial z_i/\partial q=1$.
+\end{itemize}
+\pareja{senda-expansion}{Senda de expansión, con trabajo inferior entre $B$ y $C$}{costes-largo}{CMe: pendiente del rayo; CMg: de la tangente}
+\begin{itemize}
+\item \emph{$\Delta q$, costes}: $\mathrm{CMe}=C/q$ (rayo), $\mathrm{CMg}=\partial C/\partial q$ (tangente); CMg corta al CMe en su mínimo.
+\end{itemize}
+\begin{formula}
+\centering $\dfrac{d\,\mathrm{CMe}}{dq}=\dfrac{\mathrm{CMg}-\mathrm{CMe}}{q}$;\qquad $\varepsilon_{C,q}\equiv\dfrac{\partial C}{\partial q}\dfrac{q}{C}=\dfrac{\mathrm{CMg}}{\mathrm{CMe}}$\\[5pt]
+\autor{Hanoch} (1975):\ \ $\boxed{\varepsilon_{q,\lambda}\big(\vect{z}(\vect{w},q)\big)=\dfrac{\mathrm{CMe}}{\mathrm{CMg}}=\dfrac{1}{\varepsilon_{C,q}}}$
+\end{formula}
+\begin{itemize}
+\item $\varepsilon_{C,q}<1$: \concepto{economías de escala} (CMe $\downarrow$); $=1$: CMe mínimo (\emph{escala mínima eficiente}); $>1$: \concepto{deseconomías}. Grado: $1-\varepsilon_{C,q}$.
+\item \emph{Rendimientos} (tecnología, rayo) $\neq$ \emph{economías} (costes, senda). Prueba: $w_i=\mathrm{CMg}\,\mathrm{PMg}_i$ $\Rightarrow$ $C=\mathrm{CMg}\,q\,\varepsilon_{q,\lambda}$. Vale \emph{sin} homoteticidad (locales, en el óptimo); \emph{con}, en toda la senda. \emph{Globales}: solo $\Rightarrow$.
+\item CMe LP en U $\Leftarrow$ rendim.\ \emph{variables} («en S», \autor{Wicksell}), no proporciones variables (CP). Homogéneas: CMe monótono; RCE: tamaño indeterminado.
+\item \emph{$\Delta\vect{w}$, demandas}: $w_L\uparrow$ $\Rightarrow$ menos $z_L$, más $z_K$ en la misma isocuanta. $\varepsilon_{z_i,w_j}=s_j\sigma_{ij}$ (\autor{Allen}-\autor{Uzawa}).
+\end{itemize}
+\begin{formula}
+\centering \autor{Slutsky} de factores:\ \ $\underbrace{\dfrac{\partial z_i(p,\vect{w})}{\partial w_j}}_{\text{total}}=\underbrace{\dfrac{\partial z_i(\vect{w},q)}{\partial w_j}}_{\text{sustitución}}+\underbrace{\dfrac{\partial z_i(\vect{w},q)}{\partial q}\dfrac{\partial q(p,\vect{w})}{\partial w_j}}_{\text{escala}}$\\[4pt]
+propio: efecto escala $=-\dfrac{(\partial z_i/\partial q)^2}{\partial^2C/\partial q^2}\leq0$
+\end{formula}
+\begin{itemize}
+\item \concepto{Efecto escala} sustituye al efecto renta y \emph{refuerza} al de sustitución $\Rightarrow$ no condicionada \emph{más elástica}; \emph{sin factores \autor{Giffen}}.
+\item \emph{$\Delta\vect{w}$, costes}: $\varepsilon_{C,w_i}=s_i$ (trabajo 30\,\%, salario $+10$\,\% $\Rightarrow$ coste $\approx+3$\,\%). $\partial\mathrm{CMg}/\partial w_i=\partial z_i/\partial q$: normal $\Rightarrow$ CMg $\uparrow$; inferior $\Rightarrow$ CMg $\downarrow$.
+\end{itemize}
+
+\sub{II.2. Análisis de plazos}
+\begin{itemize}
+\item \autor{Marshall}: \concepto{corto plazo} (algún factor fijo, la planta) y \concepto{largo plazo} (todos variables; costes \emph{planeados}, \emph{ex ante}).
+\end{itemize}
+\begin{formula}
+\centering $\optim{\min}{z_L}{w_Lz_L+w_K\overline{z}_K}{F(z_L,\overline{z}_K)\geq q\\ z_L\geq0}$\\[4pt]
+$\boxed{C(\vect{w},q;\overline{z}_K)=\underbrace{w_Lz_L(\vect{w},q;\overline{z}_K)}_{\mathrm{CV}(q)}+\underbrace{w_K\overline{z}_K}_{\mathrm{CF}}}\ \geq C(\vect{w},q)$\\[4pt]
+$\mathrm{CMg}=\dfrac{w_L}{\mathrm{PMg}_L}$,\quad $\mathrm{CVMe}=\dfrac{w_L}{\mathrm{PMe}_L}$,\quad $\varepsilon_{\mathrm{CV},q}=\dfrac{\mathrm{CMg}}{\mathrm{CVMe}}=\dfrac{1}{\varepsilon_{q,z_L}}$
+\end{formula}
+\begin{itemize}
+\item Económicamente eficiente solo si $\overline{z}_K=z_K(\vect{w},q)$. CMg = imagen invertida del PMg $\Rightarrow$ U por la \concepto{ley de proporciones variables}; CMe baja por el reparto del CF: \emph{no} son economías de escala.
+\item \emph{Mínimo de explotación} = mín.\ CVMe (cierre a CP); \emph{óptimo de explotación} = mín.\ CMe (beneficio).
+\end{itemize}
+\graficorepaso[0.5\linewidth]{costes-corto}{Costes a CP: CT, CV, CF; CMg, CMe, CVMe, CFMe}
+{\centering\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\textit{Tramo} & \textit{Costes} & $\varepsilon_{q,z_L}$ & $\varepsilon_{\mathrm{CV},q}$\\
+\midrule
+\textcolor{tceedorado}{Etapa I} & CMg $<$ CVMe $\downarrow$ & $>1$ & $(0,1)$\\
+Margen extensivo & mín.\ CVMe (mín.\ explot.) & $=1$ & $=1$\\
+\textcolor{tceeverde}{Etapa II} & CMg $>$ CVMe $\uparrow$ (óptimo expl.) & $(0,1)$ & $>1$\\
+Margen intensivo & CMg $\to\infty$ (capacidad) & $=0$ & $\to\infty$\\
+\textcolor{tceerojo}{Etapa III} & fuera de la función de costes & $<0$ & ---\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{LP}: CT y CMe = \concepto{envolvente} de las de CP. Izq.\ del mín.: exceso de capacidad; dcha.: sobrecarga. Solo en el mín.\ coinciden los cuatro (error de \autor{Viner}, 1931). CMg$_{\mathrm{CP}}$ corta al de LP desde abajo.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{envolvente}{Envolvente: CT (arriba) y CMe, CMg (abajo); tangencias en $q_1,q_2,q_3$}
+\begin{formula}
+\centering \autor{Le Châtelier}-\autor{Samuelson} (1947):\\[2pt] $\dfrac{\partial z_i^{\mathrm{LP}}}{\partial w_i}\leq\dfrac{\partial z_i^{\mathrm{CP}}}{\partial w_i}\leq0$,\qquad $\dfrac{\partial q^{\mathrm{LP}}}{\partial p}\geq\dfrac{\partial q^{\mathrm{CP}}}{\partial p}\geq0$
+\end{formula}
+\begin{itemize}
+\item Más restricciones $\Rightarrow$ menos respuesta (químico \autor{Le Châtelier}, 1884).
+\end{itemize}
+\begin{ideaclave}
+LP: los costes reflejan los rendimientos a escala ($\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ en el óptimo); CP: los del factor variable. La curva de LP envuelve a las de CP, y la empresa responde más cuantos menos factores fijos tenga.
+\end{ideaclave}
+
+\sub{II.3. Estimación por dualidad}
+\begin{itemize}
+\item \emph{Idea}: estimar $F$ exige cantidades elegidas por la empresa; si $\vect{w}$ y $q$ son exógenos (eléctrica regulada) $\Rightarrow$ estimar $C$ (\autor{Nerlove}, 1963) y, por \autor{Shephard}, las demandas.
+\item CD (\autor{Nerlove}): impone $\sigma=1$ y escala igual a todo tamaño.
+\end{itemize}
+\begin{formula}
+\raggedright \concepto{Translog de costes} (\autor{Christensen}-\autor{Jorgenson}-\autor{Lau} 1973):\\[2pt]
+$\ln C=\alpha_0+\alpha_q\ln q+\tfrac12\beta_{qq}(\ln q)^2+\sum_i\alpha_i\ln w_i$\\ \hspace*{2.5em}$+\tfrac12\sum_i\sum_j\beta_{ij}\ln w_i\ln w_j+\sum_i\beta_{iq}\ln w_i\ln q$\\[3pt]
+$s_i=\dfrac{\partial\ln C}{\partial\ln w_i}=\alpha_i+\sum_j\beta_{ij}\ln w_j+\beta_{iq}\ln q$,\quad $\sum_is_i=1$\\[3pt]
+$\varepsilon_{C,q}=\alpha_q+\beta_{qq}\ln q+\sum_i\beta_{iq}\ln w_i$
+\end{formula}
+\begin{itemize}
+\item \concepto{Forma flexible}: 2.º orden, no impone $\sigma$ ni rendimientos; $\varepsilon_{C,q}$ varía con $q$ (U o L). Sistema coste + participaciones. Anidados: $\beta=0$ CD; $\beta_{iq}=0$ homotética. Otra: \autor{Leontief} generalizada (\autor{Diewert}, 1971).
+\item Restricciones \emph{contrastables}. \autor{Berndt}-\autor{Wood} (1975): energía-capital complementarios, energía-trabajo sustitutivos. \emph{Valoración}: locales; si no minimiza, media y no frontera.
+\end{itemize}
+
+\sub{II.4. Economías de escala en los datos}
+\begin{itemize}
+\item \emph{Métodos} (\autor{Stigler}, 1958): estadístico, ingeniería, \emph{superviviente} (tamaños que ganan cuota).
+\item \autor{Nerlove}: economías que se agotan. \autor{Christensen}-\autor{Greene} (1976): en 1970, el grueso en el tramo \emph{plano} $\Rightarrow$ competencia en generación \vertema{3.A.17}.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{christensen-greene-1970}{CMe y producción de las eléctricas de EE.\,UU.\ en 1970 (123 empresas)}
+\begin{itemize}
+\item \autor{Caves} et al.\ (1984): \emph{densidad} $\neq$ escala. \autor{Johnston}, \autor{Walters}: costes en \textbf{L}. \autor{Lieberman} (1984): aprendizaje $>$ escala estática.
+\end{itemize}
+
+\sub{II.5. Medición de la eficiencia}
+\begin{itemize}
+\item \emph{Idea}: $C$ es una \emph{frontera}; \autor{Farrell} (1957): distancia a las mejores prácticas. Isocuanta unitaria $SS'$, empresa en $P$, $Q$ en la isocuanta y $R$ en la isocoste, sobre el rayo $OP$:
+\end{itemize}
+\begin{formula}
+\centering $\mathrm{EfT}=\dfrac{OQ}{OP}$,\quad $\mathrm{EfA}=\dfrac{OR}{OQ}$,\quad $\mathrm{EfE}=\dfrac{OR}{OP}=\mathrm{EfT}\cdot\mathrm{EfA}=\dfrac{1}{1+\chi}$
+\end{formula}
+\begin{itemize}
+\item \concepto{Técnica}: reducir todos los factores (ineficiencia X); \concepto{asignativa}: $\mathrm{RMST}=w_L/w_K$; \concepto{económica}: $C/C^{\mathrm{obs}}$.
+\end{itemize}
+\graficorepaso[0.42\linewidth]{farrell}{Eficiencia técnica, asignativa y económica de \autor{Farrell}}
+\begin{itemize}
+\item \concepto{Frontera estocástica} (SFA, 1977): $\ln C_j^{\mathrm{obs}}=\ln C(\vect{w}_j,q_j)+v_j+u_j$, $v_j$ ruido, $u_j\geq0$ ineficiencia; paramétrica, separa ruido; exige forma y distribución.
+\item \concepto{DEA} (\autor{Charnes}-\autor{Cooper}-\autor{Rhodes}, 1978): programación lineal, envolvente por tramos; sin forma ni ruido (todo es ineficiencia); multiproducto inmediato; sensible a atípicos.
+\item \emph{Evidencia}: BCE: banco mediano, 84\,\% de sus costes; ineficiencia persistente. Regulación por comparación (\autor{Shleifer}, 1985): Alemania, DEA y SFA. \emph{Valoración}: eficiencia \emph{relativa}; no dice \emph{por qué} \vertema{3.A.15}.
+\end{itemize}
+\begin{ideaclave}
+La dualidad convierte la teoría de los costes en un instrumento empírico: con costes, precios y producción se estiman escala y sustitución sin conocer la tecnología, y con fronteras, la distancia al coste mínimo. Los datos matizan: costes en L e ineficiencias persistentes.
+\end{ideaclave}
+
+% ==========================================================================
+\bloque[3,5]{III. Extensiones y críticas}
+\begin{itemize}
+\item \emph{Conclusión anticipada}: la forma de los costes condiciona el mercado; las dos críticas (U y minimización) son cuestiones empíricas que los datos del II matizan.
+\end{itemize}
+\sub{III.1. Estructura de mercado}
+\begin{itemize}
+\item \emph{Competencia perfecta}: $p=\mathrm{CMg}$ creciente si cubre CVMe (CP) o CMe (LP); muchas empresas si las deseconomías llegan pronto \vertema{3.A.16}.
+\item \concepto{Monopolio natural} $\Leftrightarrow$ \concepto{subaditividad}: $C\big(\sum_jq_j\big)<\sum_jC(q_j)$ (\autor{Baumol}, 1977: es la definición). Uniproducto: economías de escala \emph{suficientes}, no necesarias (subaditiva con CMe creciente entre $q^0$ y $q^1$). Multiproducto: economías de alcance \emph{necesarias}, no suficientes (+ coste incremental medio decreciente) \vertema{3.A.17}.
+\end{itemize}
+\sub{III.2. Economías externas}
+\begin{itemize}
+\item \autor{Marshall}: \concepto{economías externas}: CMe $\downarrow$ al crecer la \emph{industria} $\Rightarrow$ desplazan la curva. Fuentes: trabajo especializado, proveedores, conocimiento (\emph{clusters}). Compatibles con competencia perfecta \vertema{3.B.6}.
+\end{itemize}
+\pareja{subaditividad}{Subaditividad con CMe creciente ($q^0$--$q^1$)}{stigler}{\autor{Stigler}: reserva de capacidad frente a la U}
+\sub{III.3. Críticas desde la organización industrial}
+\begin{itemize}
+\item \concepto{\autor{Stigler} (1939)}: con demanda incierta, planta \emph{flexible}: factor «fijo» divisible $\Rightarrow$ CVMe = CMg constantes en la \concepto{reserva de capacidad}; horquilla de tamaños óptimos. Evidencia: costes en L.
+\end{itemize}
+\begin{itemize}
+\item \concepto{\autor{Leibenstein} (1966), ineficiencia X}: contratos incompletos, esfuerzo que responde a la presión $\Rightarrow$ $C^{\mathrm{obs}}=(1+\chi)\,C(\vect{w},q)$, $\chi\geq0$ $\downarrow$ con la competencia; pérdida del monopolio $>$ triángulo de \autor{Harberger}. Evidencia: \autor{Nickell} (1996), \autor{Bloom}-\autor{Van Reenen} (2007). \autor{Stigler} (1976): es minimización con otros argumentos $\to$ agencia \vertema{3.A.15}.
+\end{itemize}
+\sub{III.4. Otras extensiones}
+\begin{itemize}
+\item \concepto{Multiplanta}: $\mathrm{CMg}_1=\dots=\mathrm{CMg}_J$. \concepto{Multiproducto}: \concepto{economías de alcance} $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$ (factores compartidos; \autor{Panzar}-\autor{Willig}, 1981); complementariedad de costes $\partial^2C/\partial q_1\partial q_2<0$.
+\item \concepto{Curva de aprendizaje}: $c=c_1(Q^{\mathrm{ac}})^{-b}$ (\autor{Wright}, 1936); fotovoltaica $2^{-b}\approx0{,}73$ $\Rightarrow$ $b\approx0{,}45$. \emph{Desplaza} la curva; industria naciente \vertema{3.B.8}.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{aprendizaje}{Curva de aprendizaje y diferencia entre escala y aprendizaje}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: $C$ cóncava, homog.\ de grado 1, \autor{Shephard}, = tecnología; forma según el plazo; estimable: costes en L; críticas de \autor{Stigler} y \autor{Leibenstein}.
+\item \textbf{Relevancia}: cuántas empresas caben; referencia de reguladores y de competencia.
+\item \textbf{Extensiones}: \vertema{3.A.15}\vertema{3.A.16}\vertema{3.A.17}\vertema{3.A.20}\vertema{3.A.25}\vertema{3.B.6}.
+\item \textbf{Opinión}: lo frágil es la precio-aceptación en factores (monopsonio, equilibrio general \vertema{3.A.21}).
+\item \textbf{Idea final}: fotovoltaica $-89$\,\% por escala y, sobre todo, aprendizaje; en 2025 equipos $-6$\,\% y el coste nivelado no bajó (coste del capital). $C(\vect{w},q)$ recoge las tres cosas y la dualidad las separa.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1890}{\autor{Marshall}: economías internas y externas; plazos}
+\hito{1901}{\autor{Wicksell}: rendim.\ variables, CMe en U}
+\hito{1931}{\autor{Viner}: curvas de coste CP y LP (envolvente)}
+\hito{1932}{\autor{Hotelling}: función de beneficio y su lema}
+\hito{1939}{\autor{Stigler}: flexibilidad}
+\hito{1947}{\autor{Samuelson}: \emph{Foundations}; \autor{Le Châtelier}-\autor{Samuelson}}
+\hito{1953}{\autor{Shephard}: $C\leftrightarrow F$ y su lema}
+\hito{1957}{\autor{Farrell}: eficiencia técnica y asignativa}
+\hito{1963}{\autor{Nerlove}: costes de la electricidad}
+\hito{1966}{\autor{Leibenstein}: ineficiencia X}
+\hito{1973}{\autor{Christensen}-\autor{Jorgenson}-\autor{Lau}: translog}
+\hito{1975}{\autor{Hanoch}: $\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$; \autor{Berndt}-\autor{Wood}; \autor{Areeda}-\autor{Turner}}
+\hito{1976}{\autor{Christensen}-\autor{Greene}: escala en electricidad}
+\hito{1977}{SFA (\autor{Aigner}-\autor{Lovell}-\autor{Schmidt}); \autor{Baumol}: subaditividad}
+\hito{1978}{DEA (\autor{Charnes}-\autor{Cooper}-\autor{Rhodes}); \autor{McFadden}}
+\hito{1981}{\autor{Panzar}-\autor{Willig}: economías de alcance}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Coste nivelado fotovoltaico: \dato{0,41 $\to$ 0,044 \$/kWh, $-89$\,\%}{IRENA, 2010-2025}; en 2025, equipos \dato{$-6$\,\%}{IRENA} sin bajar el coste nivelado.
+\item Módulos: \dato{$-27$\,\% por duplicación}{Fraunhofer ISE} $\Rightarrow$ $b\approx0{,}45$.
+\item España: fotovoltaica \dato{$>$41.500 MW}{REE}, \dato{18,4\,\% de la electricidad}{REE, 2025}.
+\item Banca: banco mediano \dato{84\,\% de sus costes}{BCE, 2006-2017}; ratio de eficiencia \dato{42,9\,\% España vs 53,1\,\% MUS}{BCE, 2T 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Son MB y MC duales en sentido estricto?} No: MB lleva ingresos; el dual estricto de MC es máx.\ $q$ con coste dado (\autor{Segura}). «Dualidad» en sentido amplio.
+\item \textbf{¿Por qué existe $C$ con cualquier rendimiento y $B$ no?} Minimizar el coste de $q$ dado está acotado (basta cuasiconcavidad); con RCE o crecientes, $B$ es 0 o no acotado.
+\item \textbf{¿Demandas condicionadas: hicksianas o marshallianas?} Hicksianas: el parámetro es $q$, como allí $U$.
+\item \textbf{¿Puede haber factores \autor{Giffen}?} No: concavidad de $C$ y convexidad de $B$; sin restricción presupuestaria no hay efecto renta. Sí inferiores: encarecerlos baja el CMg.
+\item \textbf{¿Rendimientos y economías de escala?} Tecnología frente a costes; $\varepsilon_{q,\lambda}=1/\varepsilon_{C,q}$ en el óptimo, con cualquier tecnología; con homotéticas, en toda la senda.
+\item \textbf{¿Por qué la U del CMe a CP y a LP?} CP: proporciones variables; LP: rendimientos variables (\autor{Wicksell}). Dos explicaciones de dos curvas.
+\item \textbf{¿SFA o DEA?} SFA separa ruido, pero exige forma y distribución; DEA sin forma, pero todo es ineficiencia.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $C$ homog.\ de grado \emph{1} en $\vect{w}$ (no en $q$); $\vect{z}(\vect{w},q)$, grado \emph{0} en $\vect{w}$; $B$ grado 1, y $\vect{z}(p,\vect{w})$, $q(p,\vect{w})$ grado 0, en $(p,\vect{w})$.
+\item \autor{Shephard} sin signo $-$; \autor{Hotelling} con $-$ en $z_i$ y sin él en $q$.
+\item $C$ \emph{cóncava} en $\vect{w}$; $B$ \emph{convexa}. $S$ semidef.\ negativa: diagonal \emph{no positiva}.
+\item $\mu^*=\mathrm{CMg}$. $\varepsilon_{C,q}<1$ = \emph{economías}; $\varepsilon_{q,\lambda}>1$ = rendim.\ \emph{crecientes}.
+\item Con 2 factores, siempre sustitutivos netos ($S\vect{w}=\vect{0}$).
+\item Mín.\ CVMe = mínimo de explotación; mín.\ CMe = óptimo. A CP no hay economías de escala.
+\item EfE = EfT $\times$ EfA (\autor{Farrell}). Escala: \emph{por} la curva; aprendizaje y externas: la \emph{desplazan}.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

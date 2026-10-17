@@ -1,0 +1,342 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+% Funciones clave en morado y recuadradas, como en el tema (tcee.sty)
+\tcbset{tcee funcion clave/.style={enhanced,nobeforeafter,colback=tceemoradopalido!70!white,
+  colframe=tceemorado,colupper=tceemorado,boxrule=0.6pt,arc=1.5pt,left=4pt,right=4pt,top=2pt,bottom=2pt}}
+\providecommand{\funcionclave}[1]{\par\vspace{1pt}{\centering$\tcbhighmath[tcee funcion clave]{\displaystyle #1}$\par}\vspace{2pt}}
+\tcetema[La teoría del equilibrio general]{3.A.21}{La teoría del equilibrio general.}
+\tcefecha{17/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Construcción del modelo}{11}
+\subcante{1. Supuestos: 2×2×2×2 competitivo}{2,5}
+\subcante{2. Empresas, consumidores, $\vect{z}(\vect{p})$, ley de \autor{Walras}}{6}
+\subcante{3. Equilibrio general competitivo}{2,5}
+\apartadocante{II. Análisis positivo y normativo}{9}
+\subcante{1. Existencia, unicidad, estabilidad}{7}
+\subcante{2. Óptimo de \autor{Pareto}: 1TFEB y 2TFEB}{2}
+\apartadocante{III. Otros desarrollos y aplicaciones}{6,5}
+\subcante{1. Intercambio de \autor{Edgeworth}}{1}
+\subcante{2. Núcleo, estrategia, no convexidades}{2}
+\subcante{3. Dinero (\autor{Patinkin})}{1}
+\subcante{4. Incertidumbre (\autor{Arrow}-\autor{Debreu})}{1,5}
+\subcante{5. Modelos computables (\autor{Scarf})}{1}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: ¿es \emph{posible}, \emph{determinada}, \emph{alcanzable}, \emph{deseable} y \emph{robusta} la coordinación por precios? \emph{Pizarra}: caja de la producción, caja de intercambio (de I.3 a III.2), \autor{Brouwer}, $z_X$ con 3 equilibrios.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: \autor{Bastiat} (\emph{Sofismas económicos}, 1845): París, 1 millón de habitantes, se abastece cada día sin que nadie lo organice. ¿Pueden millones de agentes que solo buscan su interés y solo ven precios llegar a planes compatibles, sin que sobre ni falte nada? ¿Y es bueno el resultado? Mano invisible de \autor{Smith} (1776); para \autor{Arrow}-\autor{Hahn} (1971), la pregunta que da sentido a la teoría.
+\item \textbf{Relevancia}: \emph{teórica} (bienestar, H-O, incidencia, precios de estado); \emph{práctica} (MEGC: UE-Mercosur, PIB UE +77.600 M€ hasta 2040); \emph{de política} (cuándo coordinan los precios y cuándo no $\Rightarrow$ intervención \vertema{3.A.23}).
+\item \textbf{Contextualización}: \autor{Quesnay} (1758), \autor{Smith} $\to$ Léon \autor{Walras} (1874), primer modelo completo (\emph{rareté}, tanteo, numerario) $\to$ \autor{Edgeworth} (1881), \autor{Pareto} (1906) $\to$ \autor{Cassel} (1918), \autor{Wald} (1935-36), von~\autor{Neumann} (1937) $\to$ \autor{Arrow}-\autor{Debreu} y \autor{McKenzie} (1954), \autor{Debreu} (1959) $\to$ límites (estabilidad, núcleo, SMD, \autor{Radner}).
+\item \textbf{Problemática}: ¿qué es un EGC y cómo se obtiene? ¿Existe, es único, es estable? ¿Es eficiente, es justo? ¿Qué pasa al relajar supuestos?
+\item \textbf{Estructura}: I. modelo; II. existencia, unicidad, estabilidad y eficiencia; III. cada extensión relaja un supuesto de I que II necesitaba.
+\end{itemize}
+\begin{itemize}
+\item \concepto{Individualismo metodológico}: lo agregado, desde individuos que optimizan.
+\item \concepto{Equilibrio parcial} (\autor{Marshall}): un mercado aislado \vertema{3.A.16}.
+\item \concepto{Equilibrio general}: todos los mercados interdependientes, precios y cantidades a la vez.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{I. Construcción del modelo}
+\begin{ideaclave}
+Si cada agente optimiza a precios dados, todo el sistema se resume en $\vect{z}(\vect{p})$; el equilibrio vacía todos los mercados a la vez y la ley de \autor{Walras} deja solo precios relativos.
+\end{ideaclave}
+
+\sub{I.1. Supuestos}
+\begin{itemize}
+\item \concepto{Equilibrio general à la \autor{Walras}}: tantos mercados como mercancías; en cada uno, demanda, oferta y condición de vaciado.
+\item \concepto{Competencia perfecta}: agentes racionales, información perfecta, bienes homogéneos, atomicidad (precio-aceptantes): $\vect{p}=(p_X,p_Y,w_L,w_K)$.
+\item \concepto{Mercados completos}: sin externalidades ni bienes públicos.
+\item \concepto{2×2×2×2 estático} (\autor{Bator}, 1957): 2 bienes $X,Y$; 2 factores $L,K$ con $\overline{L},\overline{K}$ de los consumidores; 2 consumidores con preferencias completas, transitivas, continuas, estr.\ monótonas y estr.\ convexas; 2 empresas con $\mathcal{Y}_j$ \emph{convexo} $\Rightarrow$ rendim.\ no crecientes (crecientes, fuera: III.2).
+\item \concepto{Tanteo} (\emph{tâtonnement}): precio $\uparrow$ con exceso de demanda, $\downarrow$ con exceso de oferta; ajustan los precios.
+\end{itemize}
+\begin{formula}
+\centering $\overline{W}_i=w_L\overline{L}_i+w_K\overline{K}_i+\sum_j\theta_{ij}B_j$,\quad $\sum_i\theta_{ij}=1$
+\end{formula}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{@{}lcc@{}}
+\toprule
+& \textit{Bienes $X,Y$} & \textit{Factores $L,K$}\\
+\midrule
+Consumidores & \textcolor{tceeverde}{demanda} $X_i(\vect{p})$ & \textcolor{tceedorado}{oferta} $\overline{L}_i,\overline{K}_i$\\
+Empresas & \textcolor{tceedorado}{oferta} $q_j(p_j,\vect{w})$ & \textcolor{tceeverde}{demanda} $L_j,K_j$\\
+\midrule
+\multicolumn{3}{c}{\cellcolor{tceesalvia}4 mercados: 3 independientes (\autor{Walras}), 3 precios relativos}\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{I.2. Desarrollo: agentes, $\vect{z}(\vect{p})$, ley de \autor{Walras}}
+\begin{itemize}
+\item \emph{Empresas}: $p_j\mathrm{PMg}^j_L=w_L$, $p_j\mathrm{PMg}^j_K=w_K$ $\Rightarrow$ tasa subjetiva = objetiva. Demandas de factores y oferta homogéneas de grado 0 en $(p_j,\vect{w})$; oferta función si $F_j$ estr.\ cóncava (con RCE escala indeterminada: la fija el pleno empleo).
+\end{itemize}
+\begin{formula}
+\centering $\optim{\max}{L_j,K_j}{p_jF_j(L_j,K_j)-w_LL_j-w_KK_j}{L_j\geq0,\ K_j\geq0}$\\[3pt]
+$\mathrm{RMST}^X_{LK}=\dfrac{w_L}{w_K}=\mathrm{RMST}^Y_{LK}$;\qquad $\mathrm{RMT}_{XY}=\dfrac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}=\dfrac{p_X}{p_Y}$
+\end{formula}
+\begin{itemize}
+\item \emph{Interpretación gráfica}: isocoste común tangente a las 2 isocuantas $\Rightarrow$ asignación en la \concepto{curva de contrato} (eficiencia en la producción) $\to$ \concepto{FPP}; $p_X/p_Y$ elige el punto de la FPP.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{caja-produccion-precios}{Caja de la producción: isocoste $w_L/w_K$ en la curva de contrato; $p_X/p_Y$ tangente a la FPP}
+\begin{itemize}
+\item \emph{Consumidores}: $\max U_i$ s.a.\ $p_XX_i+p_YY_i=\overline{W}_i$ $\Rightarrow$ $\mathrm{RMS}^A_{XY}=p_X/p_Y=\mathrm{RMS}^B_{XY}$. Demandas únicas, continuas, homogéneas de grado 0 y que agotan la renta; ofrecen toda la dotación.
+\item \emph{Demanda de mercado}: suma horizontal. \emph{Hereda} continuidad, homogeneidad 0, ley de \autor{Walras}, cota inferior. \emph{No hereda}: independencia del reparto de la renta (salvo \autor{Gorman}), ley de la demanda, \autor{Slutsky}, axioma débil.
+\item \emph{Efecto renta-dotación}: la renta sale de vender la dotación; si $p_k\uparrow$, el vendedor neto ($x_{ik}<\omega_{ik}$) se enriquece $\Rightarrow$ su demanda puede $\uparrow$ sin ser \autor{Giffen}.
+\end{itemize}
+\begin{itemize}
+\item \concepto{Exceso de demanda}: demanda $-$ oferta; $z_k>0$ falta, $z_k<0$ sobra. \emph{Ventaja}: todo el modelo en función de los precios.
+\end{itemize}
+\funcionclave{\vect{z}(\vect{p})=\sum_{i}\vect{x}_i\big(\vect{p},\overline{W}_i(\vect{p})\big)-\sum_{i}\vect{\omega}_i-\sum_{j}\vect{y}_j(\vect{p})}
+\begin{itemize}
+\item \emph{Propiedades}: (1) continua; (2) homogénea de grado 0, $\vect{z}(\alpha\vect{p})=\vect{z}(\vect{p})$; (3) ley de \autor{Walras}; (4) acotada inferiormente y, con bienes deseables, \emph{condición de frontera} ($z_k\to\infty$ si $p_k\to0$).
+\item \emph{Tipos de bienes}: \concepto{económicos}, $p^*_k>0$, $z_k(\vect{p}^*)=0$ ($z_k$ corta el eje); \concepto{libres}, $p^*_k=0$, $z_k(\vect{p}^*)\leq0$ (el aire; no corta): \autor{Schlesinger} y \autor{Wald} (1935).
+\end{itemize}
+\begin{itemize}
+\item \concepto{Ley de \autor{Walras}}: a \emph{cualquier} precio, el valor de los excesos de demanda suma 0. En el 2×2×2×2: $p_Xz_X+p_Yz_Y+w_Lz_L+w_Kz_K\equiv0$.
+\end{itemize}
+\funcionclave{\vect{p}\cdot\vect{z}(\vect{p})\equiv\sum_{k=1}^{n}p_k\,z_k(\vect{p})=0}
+\begin{itemize}
+\item \emph{Demostración}: sumar las restricciones presupuestarias saturadas (no saciedad local) con $\sum_i\theta_{ij}=1$.
+\item \emph{Implicaciones}: mercados interdependientes; si $n-1$ se vacían y $p_n>0$, el $n$-ésimo también; con homogeneidad, solo $n-1$ precios relativos: \concepto{numerario} ($p_1=1$) o símplice. Sin dinero, precios absolutos indeterminados.
+\item \emph{Naturaleza}: \emph{identidad}, no condición de equilibrio. $\neq$ ley de \autor{Say} (\autor{Lange}, 1942: excesos de los bienes sin dinero $\equiv0$, objeto de la crítica de \autor{Keynes}).
+\end{itemize}
+
+\graficorepaso[0.68\linewidth]{bienes-libres}{Bien económico y bien libre: mercado y exceso de demanda}
+\sub{I.3. Equilibrio general competitivo}
+\begin{itemize}
+\item \concepto{EGC} (walrasiano): $\vect{p}^*\geq\vect{0}$ y $(\vect{x}^*_i,\vect{y}^*_j)$ con (1) consumidores maximizan $U$; (2) empresas maximizan $B$; (3) todos los mercados se vacían:
+\end{itemize}
+\funcionclave{z_k(\vect{p}^*)\leq0\quad\text{y}\quad p^*_k\,z_k(\vect{p}^*)=0,\quad k=1,\dots,n}
+\begin{formula}
+\centering $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\dfrac{p_X}{p_Y}=\mathrm{RMT}_{XY}$,\quad $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\dfrac{w_L}{w_K}$
+\end{formula}
+\begin{itemize}
+\item \emph{Formación de precios}: \concepto{subastador walrasiano}: anuncia precios, recoge planes, sin transacciones fuera del equilibrio, sube donde falta y baja donde sobra. (\autor{Walras} no habla de subastador: impersonal «\emph{on}»; la literatura lo personifica.)
+\item \emph{Interpretación gráfica}: \concepto{caja de \autor{Edgeworth} del intercambio}: lados $\overline{X},\overline{Y}$; dotación $\vect{\omega}$; recta de precios por $\vect{\omega}$ con pendiente $-p_X/p_Y$; las tangencias al girarla dan las \concepto{curvas de oferta-demanda} $\mathrm{OD}_A$, $\mathrm{OD}_B$. Fuera del equilibrio: exceso de demanda de $X$ = exceso de oferta de $Y$ de igual valor $\Rightarrow$ $p_X/p_Y\uparrow$.
+\item \emph{Equilibrio} $E$: $\mathrm{OD}_A\cap\mathrm{OD}_B$, tangencia de $U^*_A$ y $U^*_B$, dentro de la \concepto{lente}.
+\end{itemize}
+\graficorepaso[0.66\linewidth]{caja-intercambio-equilibrio}{Curvas de oferta-demanda y equilibrio $E$ en la caja de intercambio}
+\begin{itemize}
+\item \emph{Valoración}: el subastador es la pieza más irreal $\Rightarrow$ III busca otros fundamentos.
+\end{itemize}
+
+% ==========================================================================
+\bloque[9]{II. Análisis positivo y normativo}
+\begin{ideaclave}
+Con supuestos razonables el EGC \emph{existe}; solo con supuestos fuertes es \emph{único} y \emph{estable} (SMD); en cambio, es \emph{eficiente} con muy pocos.
+\end{ideaclave}
+\begin{itemize}
+\item 3 preguntas, cada una presupone la anterior: \concepto{existencia} (¿algún $\vect{p}$ vacía todo?), \concepto{unicidad} (¿solo uno? si no, no predice) y \concepto{estabilidad} (¿lo alcanza el mercado?).
+\end{itemize}
+
+\sub{II.1.1. Existencia}
+\begin{itemize}
+\item \emph{Idea}: \autor{Walras} cuenta ecuaciones e incógnitas ($n-1$): ni necesario ni suficiente (precios negativos; $x^2+1=0$). \autor{Schlesinger} (1935) desigualdades; \autor{Wald} (1935-36) primeras pruebas; \autor{Arrow}-\autor{Debreu} y \autor{McKenzie} (1954) punto fijo.
+\item \emph{Supuestos}: $\vect{z}$ continua, homogénea de grado 0 y ley de \autor{Walras} (detrás: convexidad y no saciedad local). \concepto{Teorema de \autor{Brouwer}} (1911): $\Delta$ no vacío, compacto y convexo, $\vect{f}:\Delta\to\Delta$ continua $\Rightarrow$ $\exists\,\vect{p}^*=\vect{f}(\vect{p}^*)$. Correspondencias: \autor{Kakutani} (1941).
+\end{itemize}
+\graficorepaso[0.4\linewidth]{brouwer}{\autor{Brouwer} en 1 dimensión: la gráfica corta la diagonal}
+\begin{itemize}
+\item \emph{Desarrollo (intuición en 3 pasos)}:
+  \begin{itemize}
+  \item \emph{conjunto}: por homogeneidad, \concepto{símplice} $\Delta=\{\vect{p}\geq\vect{0}:\sum_kp_k=1\}$, no vacío, compacto y convexo;
+  \item \emph{función}: el subastador como regla que sube los precios con exceso de demanda y baja los demás sin salir de $\Delta$; continua $\Rightarrow$ punto fijo;
+  \item \emph{punto fijo = equilibrio}: ningún precio tiene motivo para moverse; precio nulo $\Rightarrow$ $z_k\leq0$ (libre); por \autor{Walras}, precio positivo $\Rightarrow$ $z_k=0$.
+  \end{itemize}
+\end{itemize}
+\begin{formula}
+\centering $f_k(\vect{p})=\dfrac{\max\{0,\,p_k+\kappa_kz_k(\vect{p})\}}{\sum_l\max\{0,\,p_l+\kappa_lz_l(\vect{p})\}}$
+\end{formula}
+\begin{itemize}
+\item \emph{Implicaciones}: coordinación por precios \emph{lógicamente posible} con supuestos no más fuertes que los del consumidor y la empresa; prueba \emph{no constructiva}.
+\item \emph{Valoración}: cruciales la convexidad y la ausencia de poder de mercado (III.2); nada dice del número ni de cómo se alcanza.
+\end{itemize}
+
+\sub{II.1.2. Unicidad}
+\begin{itemize}
+\item \emph{Idea}: existencia $\not\Rightarrow$ unicidad. Con $p_Y=1$, $z_X>0$ a precios bajos y $<0$ a altos: corta un nº impar de veces (1, 3…). \concepto{Economías regulares} (\autor{Debreu}, 1970): salvo medida nula, nº finito y localmente únicos; impar por el \concepto{teorema del índice} (\autor{Dierker}, 1972; índices $+1$ y $-1$ suman $+1$).
+\end{itemize}
+\graficorepaso[0.5\linewidth]{equilibrios-multiples}{$z_X$ con 3 equilibrios; flechas del tanteo: extremos estables, intermedio inestable}
+\begin{itemize}
+\item \emph{Supuestos}: los de la existencia + condición de frontera ($\vect{z}(\vect{p}^*)=\vect{0}$) + forma de $\vect{z}$ (2 condiciones suficientes):
+  \begin{itemize}
+  \item \concepto{sustitutivos brutos}: $\partial z_k/\partial p_l>0$ $\forall l\neq k$; «brutos»: con efectos renta y renta-dotación;
+  \item \concepto{axioma débil agregado}: la demanda de mercado como la de un consumidor coherente.
+  \end{itemize}
+\item \emph{Intuición (sustitutivos brutos)}: si hubiera 2 equilibrios, se mide el 2.º para que el bien que \emph{menos} se encarece cueste lo mismo; los demás, igual o más caros $\Rightarrow$ los agentes se pasan a él $\Rightarrow$ su $z_k>0$: no es equilibrio. Con 2 bienes, $z_X(p_X,1)$ siempre decreciente: un solo corte.
+\item \emph{Intuición (axioma débil)}: el «consumidor agregado» elegiría $A$ pudiendo pagar $B$ y viceversa.
+\item \emph{Condición común} (MWG §17.F), base también de la estabilidad:
+\end{itemize}
+\begin{formula}
+\centering $\vect{p}^*\cdot\vect{z}(\vect{p})>0\quad\forall\,\vect{p}\not\propto\vect{p}^*$
+\end{formula}
+\begin{itemize}
+\item \emph{Implicaciones}: único en precios relativos; con sustitutivos brutos, $\uparrow$ demanda de un bien $\Rightarrow$ $\uparrow$ su precio relativo.
+\item \emph{Valoración}: condiciones suficientes, muy restrictivas (excluyen complementarios; el axioma débil, que se redistribuya la renta). \concepto{Teorema SMD} (\autor{Sonnenschein} 1972-73, \autor{Mantel} 1974, \autor{Debreu} 1974): toda función continua, homogénea de grado 0 y con ley de \autor{Walras} es el exceso de demanda de alguna economía (precios $>0$) $\Rightarrow$ la racionalidad individual no impone nada más: cualquier nº impar de equilibrios y cualquier dinámica.
+\end{itemize}
+
+\sub{II.1.3. Estabilidad}
+\begin{itemize}
+\item \emph{Idea}: estable si fuera del equilibrio hay fuerzas que llevan a él; \concepto{local} (perturbación pequeña) o \concepto{global} (cualquiera). Estable: argumento para la mano invisible; si no, estabilización (\autor{Musgrave}, 1959). Ajuste \concepto{walrasiano} (precios), no \concepto{marshalliano} (cantidades).
+\item \emph{Supuestos}: tanteo en tiempo continuo, sin intercambios fuera del equilibrio; $\vect{z}$ con la condición de unicidad.
+\end{itemize}
+\begin{formula}
+\centering $\dot p_k=\kappa_k\,z_k(\vect{p}),\quad\kappa_k>0$\\[3pt]
+$\dfrac{d}{dt}\Big[\tfrac12\sum_k\dfrac{(p_k-p^*_k)^2}{\kappa_k}\Big]=\underbrace{\vect{p}\cdot\vect{z}(\vect{p})}_{=0}-\vect{p}^*\cdot\vect{z}(\vect{p})$
+\end{formula}
+\begin{itemize}
+\item \emph{Intuición}: \concepto{función de \autor{Liapunov}}: si la distancia al equilibrio baja siempre fuera de él, se llega, aunque no se sepa la trayectoria. Baja si $\vect{p}^*\cdot\vect{z}(\vect{p})>0$: la condición de la unicidad. Con 2 bienes: estables los cortes de arriba abajo.
+\item \emph{Implicaciones}: \concepto{\autor{Arrow}-\autor{Block}-\autor{Hurwicz}} (1959; antes \autor{Arrow}-\autor{Hurwicz}, 1958): sustitutivos brutos $\Rightarrow$ \emph{globalmente estable}: la misma condición da unicidad y estabilidad.
+\item \emph{Valoración}: \concepto{contraejemplo de \autor{Scarf}} (1960): 3 consumidores, 3 bienes complementarios, equilibrio único que el tanteo no alcanza (los precios giran). Tanteo ficticio; sin tanteo, estable más fácil pero depende del camino; enlace con desequilibrio (\autor{Clower}, \autor{Leijonhufvud}) \vertema{3.A.4}.
+\end{itemize}
+
+\sub{II.2. Análisis normativo}
+\begin{itemize}
+\item \emph{Criterio}: \concepto{óptimo de \autor{Pareto}} (1906): asignación factible que no admite mejorar a uno sin empeorar a otro. Ordinal, pocos juicios de valor, pero \emph{incompleto} (infinitos óptimos, también muy desiguales). En la caja: $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$, \concepto{curva de contrato} $O_AO_B$.
+\item \emph{Origen}: condiciones marginales de \autor{Lerner} (1934) y \autor{Lange} (1942); prueba con análisis convexo de \autor{Arrow} (1951) y \autor{Debreu} (1951), por separado.
+\end{itemize}
+\graficorepaso[0.66\linewidth]{caja-intercambio-teoremas}{1TFEB: $E$ en la curva de contrato; 2TFEB: de $\vect{\omega}$ a $\vect{\omega}'$ para alcanzar $E'$}
+\begin{itemize}
+\item \emph{1TFEB}: \concepto{primer teorema fundamental de la economía del bienestar}: con no saciedad local, \emph{todo EGC es óptimo de \autor{Pareto}}; no necesita convexidad. \emph{Idea}: todos igualan sus relaciones marginales a los mismos precios. \emph{Supuestos}: mercados completos, precio-aceptantes, precios comunes (sin impuestos); si fallan, fallos de mercado \vertema{3.A.23}. Mano invisible formalizada; no dice que sea \emph{justo}.
+\item \emph{2TFEB}: \concepto{segundo teorema fundamental de la economía del bienestar}: con preferencias y tecnologías \emph{convexas}, \emph{todo óptimo de \autor{Pareto} es alcanzable como EGC} tras una redistribución de suma fija. \emph{Idea}: de $\vect{\omega}$ a $\vect{\omega}'$ en la recta tangente en $E'$. Separa eficiencia y equidad; pero las transferencias de suma fija no son factibles (información privada) $\Rightarrow$ vuelve el dilema.
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Otros desarrollos y aplicaciones}
+\begin{ideaclave}
+El equilibrio walrasiano resiste quitar el subastador con muchos agentes (núcleo), pero no el poder de mercado, las no convexidades, el dinero sin valor intrínseco ni los mercados incompletos.
+\end{ideaclave}
+
+\sub{III.1. Intercambio de \autor{Edgeworth} (1881)}
+\begin{itemize}
+\item \emph{Idea}: sin precios dados; negociación libre con recontratación (\emph{recontracting}).
+\item \emph{Desarrollo}: \emph{racionalidad individual} (dentro de la lente) + \emph{eficiencia} (curva de contrato) $\Rightarrow$ tramo $CC'$.
+\item \emph{Implicaciones}: con 2 agentes, intercambio \emph{indeterminado}: depende del poder de negociación; $E$ es el único punto con precios dados y comunes. Qué punto: \concepto{teoría de la negociación} (\autor{Nash}, 1950; \autor{Rubinstein}, 1982) \vertema{3.A.14}.
+\item \emph{Valoración}: conjetura de \autor{Edgeworth}: con más agentes, el tramo se estrecha hasta $E$.
+\end{itemize}
+
+\sub{III.2. Núcleo, estrategia y no convexidades}
+\begin{itemize}
+\item \emph{Idea}: fundamentar el equilibrio sin subastador con juegos cooperativos: \concepto{núcleo} (\autor{Gillies}, 1959; \autor{Shubik}, 1959); utilidad no transferible.
+\item \emph{Supuestos}: $I$ consumidores; cualquier \concepto{coalición} reparte sus dotaciones; acuerdos vinculantes y sin coste.
+\item \emph{Desarrollo}: una coalición \concepto{bloquea} si con sus recursos mejora a alguno sin empeorar a ninguno. \concepto{Núcleo}: asignaciones factibles no bloqueadas; con 2 agentes, $CC'$.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{caja-intercambio-nucleo}{Núcleo: tramo $CC'$ que se encoge hacia $E$ al replicar la economía}
+\begin{itemize}
+\item \emph{Implicaciones}: (1) el equilibrio walrasiano está en el núcleo (no saciedad local); (2) \concepto{teorema del límite} (\autor{Debreu}-\autor{Scarf}, 1963): replicando $r$ veces con preferencias estr.\ convexas, el núcleo se encoge hasta los equilibrios walrasianos (conjetura de \autor{Edgeworth}); \autor{Aumann} (1964), continuo de agentes: núcleo = equilibrios; (3) precio-aceptación como \emph{resultado}.
+\item \emph{Extensiones}: \concepto{valor de \autor{Shapley}}, mismas asignaciones (\autor{Aumann}, 1975).
+\item \emph{Valoración}: exige muchos agentes, convexidad, coaliciones gratis; no es un proceso.
+\item \emph{Comportamiento estratégico}: con pocos agentes interesa influir en los precios. Monopolio en la caja: $B$ elige $M$ sobre $\mathrm{OD}_A$ $\Rightarrow$ ineficiente. \autor{Negishi} (1961); \autor{Cournot}-\autor{Walras} (\autor{Gabszewicz}-\autor{Vial}, 1972): depende del numerario y puede no existir; el poder se diluye al crecer la economía (\autor{Roberts}-\autor{Postlewaite}, 1976).
+\item \emph{No convexidades}: convexidad = mezclas mejor que extremos y sin ventajas de tamaño $\Rightarrow$ respuestas suaves. Sin ella, saltos: preferencias no convexas o \emph{rendim.\ crecientes} ($\mathrm{CMg}<\mathrm{CMe}$ $\Rightarrow$ pérdidas con $p=\mathrm{CMg}$) $\to$ monopolio natural \vertema{3.A.17}. Con muchos consumidores, equilibrios aproximados (\autor{Starr}, 1969); las de las empresas no se diluyen.
+\item \emph{Equilibrios múltiples}: \concepto{fallos de coordinación} (nadie invierte porque nadie compra; \autor{Cooper}-\autor{John}, 1988) \vertema{3.A.4}.
+\end{itemize}
+
+\sub{III.3. Dinero (\autor{Patinkin}, 1956)}
+\begin{itemize}
+\item \emph{Idea}: funciones: medio de cambio, depósito de valor, unidad de cuenta; en \autor{Arrow}-\autor{Debreu} solo numerario: no da utilidad, no hace falta para cambiar (subastador) ni para guardar valor (todo se acuerda hoy), y el sector real ya fija todo.
+\item \emph{Conceptos}: \concepto{dicotomía clásica}: sector real $\to$ precios relativos; monetario $\to$ nivel de precios (dinero, velo). \concepto{Neutralidad}: $\Delta M$ sin efectos reales.
+\item \emph{Desarrollo}: \emph{paso 1}, \autor{Walras} con dinero; \emph{paso 2}, dicotomía: postulado de homogeneidad + regla de Cambridge $M^D_i=\varphi\,\vect{p}\cdot\vect{\omega}_i$; \emph{paso 3}, inválida (\autor{Lange}, \autor{Patinkin}): duplicar $\vect{p}$ vacía los bienes pero no el dinero; \emph{paso 4}, \concepto{efecto saldos reales} $\overline{M}_i/P$ en la demanda de bienes.
+\end{itemize}
+\begin{formula}
+\centering $\sum_kp_kz_k(\vect{p})+\big(M^D(\vect{p})-\overline{M}\big)\equiv0$
+\end{formula}
+\begin{itemize}
+\item \emph{Implicaciones}: $P$ determinado; homogeneidad 0 en $(\vect{p},\overline{M})$ $\Rightarrow$ \emph{neutralidad sin dicotomía}. \autor{Archibald}-\autor{Lipsey} (1958): dicotomía válida en el estacionario. Efecto \autor{Pigou}-\autor{Patinkin} \vertema{3.A.4}.
+\item \emph{Valoración}: \concepto{problema de \autor{Hahn}} (1965): siempre hay un equilibrio con dinero sin valor. 4 vías: generaciones solapadas, \emph{cash in advance}, búsqueda, dinero en la utilidad \vertema{3.A.35}.
+\end{itemize}
+
+\sub{III.4. Incertidumbre (\autor{Arrow} 1953, \autor{Debreu} 1959)}
+\begin{itemize}
+\item \emph{Idea}: más bienes, no otra teoría: bienes por fecha y \emph{estado de la naturaleza}. Paraguas si llueve $\neq$ paraguas si no llueve.
+\item \emph{Supuestos}: \concepto{bien contingente} $x_{ks}$, precio $p_{ks}$, se paga hoy (póliza); $n\cdot S$ mercados hoy (\concepto{mercados completos}); información simétrica; preferencias convexas.
+\item \emph{Desarrollo}: el modelo de I con $n\cdot S$ bienes: existe, con \concepto{precios de \autor{Arrow}-\autor{Debreu}}, y valen los 2 TFEB. Sin riesgo agregado, $p_s/p_{s'}=\pi_s/\pi_{s'}$ y seguro completo.
+\end{itemize}
+\begin{formula}
+\centering $\dfrac{\pi_s\,u_i'(x_{is})}{\pi_{s'}\,u_i'(x_{is'})}=\dfrac{p_s}{p_{s'}}\quad\forall\,i$
+\end{formula}
+\begin{itemize}
+\item \emph{Implicaciones}: riesgo repartido de forma eficiente. \concepto{Títulos de \autor{Arrow}} (1953): 1 € si ocurre $s$; $n+S$ mercados en vez de $n\cdot S$ (1.000 bienes y 10 estados: 1.010 frente a 10.000). \autor{Radner} (1972): equilibrio de planes, precios y expectativas.
+\item \emph{Extensiones}: \concepto{mercados incompletos}: no eficiente ni restringidamente (\autor{Hart}, 1975), puede no existir (activos reales), indeterminado (activos nominales). Generaciones solapadas: ineficiencia dinámica \vertema{3.A.29}.
+\item \emph{Evidencia y valoración}: faltan mercados (renta del trabajo, PIB; \autor{Shiller}, 1993) por costes de transacción e información asimétrica \vertema{3.A.13}.
+\end{itemize}
+
+\sub{III.5. Modelos computables (\autor{Scarf})}
+\begin{itemize}
+\item \emph{Idea}: \concepto{MEGC} (CGE): equilibrio numérico con muchos sectores, hogares y países. Algoritmo de \autor{Scarf} (1967; con \autor{Hansen}, 1973) + ordenadores.
+\item \emph{Metodología} (\autor{Shoven}-\autor{Whalley}, 1992): formas funcionales, \emph{calibración} a una matriz de contabilidad social, simulación = estática comparativa.
+\item \emph{Usos}: comercio (TLCAN infravaloró el comercio; UE-Mercosur con GTAP); clima (DICE, \autor{Nordhaus}); macro (REMS, EREMS) \vertema{3.A.6}.
+\item \emph{Valoración}: dependen de elasticidades y cierres; unicidad no garantizada.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: con precio-aceptantes y convexidad, existe; no tiene por qué ser único ni estable (SMD), pero es eficiente con mercados completos y competitivos; resiste el núcleo, no el poder de mercado, las no convexidades, los mercados incompletos ni el dinero. \autor{Walras} formaliza la mano invisible.
+\item \textbf{Relevancia}: lenguaje común: macro DSGE \vertema{3.A.6}, comercio \vertema{3.B.5}, clima \vertema{3.B.31}, MEGC.
+\item \textbf{Extensiones}: parcial \vertema{3.A.16}; fallos \vertema{3.A.23}; información \vertema{3.A.13}; negociación \vertema{3.A.14}; dinero \vertema{3.A.35}. Críticas: austriacos, desequilibrio, agregación (\autor{Kirman}, 1992), conductual.
+\item \textbf{Opinión}: no describe ninguna economía real ni lo pretende: es una referencia exacta; cada supuesto incumplido señala dónde puede fallar el mercado y tener sentido la intervención.
+\item \textbf{Idea final}: volviendo a \autor{Bastiat}, París se abastece porque los precios coordinan, pero solo con supuestos exigentes: el modelo enseña por qué el mercado funciona cuando lo hace.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1845}{\autor{Bastiat}: \emph{Sofismas económicos}, el abastecimiento de París}
+\hito{1874}{Léon \autor{Walras}: \emph{Éléments}, primer modelo de EG, tanteo}
+\hito{1881}{\autor{Edgeworth}: intercambio, curva de contrato}
+\hito{1906}{\autor{Pareto}: criterio de eficiencia}
+\hito{1935}{\autor{Schlesinger}: bienes libres; \autor{Wald} (1935-36): primeras pruebas}
+\hito{1942}{\autor{Lange}: ley de \autor{Say}; con \autor{Lerner} (1934), condiciones del óptimo}
+\hito{1951}{\autor{Arrow}; \autor{Debreu}: teoremas del bienestar}
+\hito{1953}{\autor{Arrow}: títulos y bienes contingentes}
+\hito{1954}{\autor{Arrow}-\autor{Debreu}; \autor{McKenzie}: existencia}
+\hito{1956}{\autor{Patinkin}: efecto saldos reales}
+\hito{1959}{\autor{Debreu}: \emph{Theory of Value}; \autor{Arrow}-\autor{Block}-\autor{Hurwicz}: estabilidad}
+\hito{1960}{\autor{Scarf}: contraejemplo de inestabilidad}
+\hito{1963}{\autor{Debreu}-\autor{Scarf}: límite del núcleo; 1964 \autor{Aumann}}
+\hito{1970}{\autor{Debreu}: economías regulares}
+\hito{1972}{SMD (1972-74); \autor{Radner}: mercados secuenciales}
+\hito{1983}{Nobel a \autor{Debreu} (en 1972, a \autor{Hicks} y \autor{Arrow})}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item UE-Mercosur: PIB de la UE \dato{+77.600 M€ hasta 2040}{CE, 2025}; exportaciones a la región \dato{+39 \%}{CE, 2025}.
+\item T-MEC: \dato{+0,35 \% del PIB real de EE.\,UU., 176.000 empleos}{USITC, 2019}.
+\item España, fin de 2025: demanda \dato{+2,6 p.}{EREMS, 2026}; oferta (vivienda) \dato{$-$2,1 p.}{EREMS, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué no basta contar ecuaciones e incógnitas?} Ni necesario ni suficiente: no linealidad (0 o varias soluciones) y precios negativos.
+\item \textbf{¿Papel de la convexidad en la existencia y en el 1TFEB?} Sin ella $\vect{z}$ salta y no se aplica \autor{Brouwer}; el 1TFEB no la necesita (solo no saciedad local); el 2TFEB, sí.
+\item \textbf{¿Qué dice SMD? ¿Contradice la existencia?} Solo continuidad, homogeneidad 0 y \autor{Walras} sobreviven a la agregación: justo lo que basta para existir.
+\item \textbf{¿Por qué la sustitución bruta da unicidad y estabilidad?} Implica $\vect{p}^*\cdot\vect{z}(\vect{p})>0$ fuera de $\vect{p}^*$: impide otro equilibrio y hace bajar la distancia al equilibrio (ABH, 1959).
+\item \textbf{¿Ley de \autor{Walras} o ley de \autor{Say}?} \autor{Walras}: identidad con todos los mercados, también el dinero; \autor{Say}: bienes sin dinero $\equiv0$ (no hay exceso de oferta general).
+\item \textbf{¿Por qué el equilibrio walrasiano está en el núcleo?} Si una coalición mejorara con sus dotaciones, alguno habría comprado algo mejor a $\vect{p}^*$.
+\item \textbf{¿Por qué cuesta meter el dinero en \autor{Arrow}-\autor{Debreu}?} No da utilidad ni hace falta para cambiar o guardar valor; siempre hay un equilibrio en que no vale nada (\autor{Hahn}).
+\item \textbf{¿Eficiente con mercados incompletos?} No, ni restringidamente (\autor{Hart}, 1975; \autor{Geanakoplos}-\autor{Polemarchakis}, 1986).
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Ley de \autor{Walras}: identidad a \emph{cualquier} precio; solo exige no saciedad local.
+\item EGC: $z_k\leq0$ y $p_kz_k=0$; libre: $p^*_k=0$, $z_k\leq0$; económico: $p^*_k>0$, $z_k=0$.
+\item Existencia: \autor{Wald} (1935-36); punto fijo: \autor{Arrow}-\autor{Debreu} y \autor{McKenzie} (1954); \autor{Brouwer} funciones, \autor{Kakutani} correspondencias.
+\item 1TFEB sin convexidad; 2TFEB con convexidad y suma fija.
+\item Sustitutivos brutos: único y \emph{globalmente} estable (ABH, 1959). \autor{Scarf} (1960): 3 bienes \emph{complementarios}, equilibrio \emph{único} pero inestable.
+\item Regulares: nº \emph{finito e impar} (\autor{Debreu}, 1970). Núcleo: réplicas (1963), continuo (1964).
+\item \autor{Patinkin}: neutralidad \emph{sin} dicotomía; homogeneidad 0 en precios \emph{y} dinero.
+\item Títulos de \autor{Arrow}: $n+S$ mercados, no $n\cdot S$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
