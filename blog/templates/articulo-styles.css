@@ -460,6 +460,25 @@ body {
     text-decoration: underline;
 }
 
+/* Línea de licencia (CC BY-NC-ND 4.0) */
+.footer-licencia {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-light);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+}
+
+.footer-licencia a {
+    color: inherit;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.footer-licencia a:hover {
+    color: var(--color-primary);
+}
+
 /* Enlaces */
 .article-body a {
     color: var(--color-primary);
@@ -817,6 +836,10 @@ body {
 
 [data-theme="dark"] .footer-links a:hover {
     color: #5F2987;
+}
+
+[data-theme="dark"] .footer-licencia {
+    color: #666666;
 }
 
 /* Contenido principal */

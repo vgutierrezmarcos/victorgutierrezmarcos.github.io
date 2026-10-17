@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Limpia un .docx para publicarlo: elimina el texto oculto (w:vanish), acepta los
-cambios controlados, borra comentarios, normaliza los metadatos de autoria y
-recomprime las imagenes incrustadas.
+cambios controlados, borra comentarios, normaliza los metadatos de autoria,
+recomprime las imagenes incrustadas y pone la licencia CC BY-NC-ND 4.0 en las
+propiedades del documento (Comentarios y las personalizadas «Licencia» y «URL
+de la licencia»), sin tocar el texto.
 
 Uso:
     python3 scripts/limpiar-docx.py entrada.docx salida.docx
+    python3 scripts/limpiar-docx.py --licencia a.docx b.docx ...   # solo la licencia, en el sitio
 """
 
 import io
@@ -25,6 +28,17 @@ W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 NS = {"w": W}
 
 AUTOR = "Víctor Gutiérrez Marcos"
+
+# Licencia (la misma que LICENSE.md, el pie de la web y los metadatos de los PDF)
+LICENCIA = "CC BY-NC-ND 4.0"
+LICENCIA_URL = "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es"
+LICENCIA_URL_LEGAL = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+PERMISOS = "puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo"
+CUSTOM = "http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+VT = "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"
+REL_CUSTOM = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties"
+TIPO_CUSTOM = "application/vnd.openxmlformats-officedocument.custom-properties+xml"
+FMTID = "{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
 
 # Partes del paquete que pueden contener texto oculto
 PARTES_TEXTO = re.compile(
@@ -181,6 +195,84 @@ def limpiar_core(xml):
     return etree.tostring(raiz, xml_declaration=True, encoding="UTF-8", standalone=True)
 
 
+def _anio_core(xml):
+    m = re.search(rb"<dcterms:created[^>]*>(\d{4})", xml or b"")
+    return m.group(1).decode() if m else ""
+
+
+def licencia_corta(anio):
+    return "© %s%s · %s" % (anio + " " if anio else "", AUTOR, LICENCIA)
+
+
+def licencia_larga(anio):
+    return "© %s%s · Licencia %s (%s): %s." % (anio + " " if anio else "", AUTOR, LICENCIA,
+                                              LICENCIA_URL, PERMISOS)
+
+
+def licencia_core(xml):
+    """dc:description (Comentarios) = la licencia completa."""
+    raiz = etree.fromstring(xml)
+    dc = raiz.nsmap.get("dc", "http://purl.org/dc/elements/1.1/")
+    el = raiz.find("{%s}description" % dc)
+    if el is None:
+        el = etree.SubElement(raiz, "{%s}description" % dc)
+    el.text = licencia_larga(_anio_core(xml))
+    return etree.tostring(raiz, xml_declaration=True, encoding="UTF-8", standalone=True)
+
+
+def licencia_custom(xml, anio):
+    """Propiedades personalizadas «Licencia» y «URL de la licencia»."""
+    if xml:
+        raiz = etree.fromstring(xml)
+    else:
+        raiz = etree.Element("{%s}Properties" % CUSTOM, nsmap={None: CUSTOM, "vt": VT})
+    nombres = ("Licencia", "URL de la licencia")
+    for p in raiz.findall("{%s}property" % CUSTOM):
+        if p.get("name") in nombres:
+            raiz.remove(p)
+    pid = max([int(p.get("pid", "1")) for p in raiz.findall("{%s}property" % CUSTOM)] + [1])
+    for nombre, valor in zip(nombres, (licencia_corta(anio), LICENCIA_URL_LEGAL)):
+        pid += 1
+        p = etree.SubElement(raiz, "{%s}property" % CUSTOM, fmtid=FMTID, pid=str(pid), name=nombre)
+        etree.SubElement(p, "{%s}lpwstr" % VT).text = valor
+    return etree.tostring(raiz, xml_declaration=True, encoding="UTF-8", standalone=True)
+
+
+def poner_licencia(ruta):
+    """Escribe la licencia en las propiedades de un .docx ya hecho (en el sitio).
+    Las demas partes se copian tal cual. Devuelve False si ya la tenia."""
+    with zipfile.ZipFile(ruta) as zin:
+        nombres = zin.namelist()
+        core = zin.read("docProps/core.xml") if "docProps/core.xml" in nombres else None
+        custom = zin.read("docProps/custom.xml") if "docProps/custom.xml" in nombres else None
+        anio = _anio_core(core)
+        if core is not None and custom is not None and licencia_larga(anio).encode() in core \
+                and LICENCIA_URL_LEGAL.encode() in custom:
+            return False
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zout:
+            for info in zin.infolist():
+                datos = zin.read(info.filename)
+                if info.filename == "docProps/core.xml":
+                    datos = licencia_core(datos)
+                elif info.filename == "docProps/custom.xml":
+                    datos = licencia_custom(datos, anio)
+                elif info.filename == "[Content_Types].xml" and b"/docProps/custom.xml" not in datos:
+                    datos = datos.replace(b"</Types>", ('<Override PartName="/docProps/custom.xml" '
+                                                       'ContentType="%s"/></Types>' % TIPO_CUSTOM).encode())
+                elif info.filename == "_rels/.rels" and REL_CUSTOM.encode() not in datos:
+                    ids = [int(i) for i in re.findall(rb'Id="rId(\d+)"', datos)] + [0]
+                    datos = datos.replace(b"</Relationships>", (
+                        '<Relationship Id="rId%d" Type="%s" Target="docProps/custom.xml"/></Relationships>'
+                        % (max(ids) + 1, REL_CUSTOM)).encode())
+                zout.writestr(info, datos)
+            if custom is None:
+                zout.writestr("docProps/custom.xml", licencia_custom(None, anio))
+    with open(ruta, "wb") as fh:
+        fh.write(buf.getvalue())
+    return True
+
+
 def limpiar_app(xml):
     raiz = etree.fromstring(xml)
     for el in raiz:
@@ -261,10 +353,15 @@ def limpiar(entrada, salida):
 
     with open(salida, "wb") as fh:
         fh.write(buf.getvalue())
+    poner_licencia(salida)
     return stats
 
 
 def main():
+    if len(sys.argv) > 2 and sys.argv[1] == "--licencia":
+        for ruta in sys.argv[2:]:
+            print(("✓ " if poner_licencia(ruta) else "= ") + ruta)
+        return 0
     if len(sys.argv) != 3:
         print(__doc__)
         return 1

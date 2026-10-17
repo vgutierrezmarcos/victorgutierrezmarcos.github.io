@@ -1,7 +1,8 @@
 name: Metadatos de los PDF y datos estructurados del temario
 
 # Pone título, autor, asunto y palabras clave a los PDF del temario que estén
-# enlazados desde /oposicion/ (scripts/metadatos-pdf.py). Se lanza al subir o
+# enlazados desde /oposicion/ y la licencia CC BY-NC-ND 4.0 a todos los PDF
+# propios, también los del blog (scripts/metadatos-pdf.py). Se lanza al subir o
 # cambiar un PDF o una página de /oposicion/ (por ejemplo, al pasar un tema de
 # «no disponible» a disponible). Solo toca los PDF a los que les falta. Después
 # regenera el JSON-LD de las páginas de cada ejercicio (datos-estructurados-temario.py).
@@ -10,6 +11,7 @@ on:
   push:
     paths:
       - 'oposicion/**/*.pdf'
+      - 'blog/*.pdf'
       - 'oposicion/**/*.html'
       - 'scripts/metadatos-pdf.py'
       - 'scripts/datos-estructurados-temario.py'
@@ -50,7 +52,7 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add -- 'oposicion/*.pdf' 'oposicion/temario/*-ejercicio.html'
+        git add -- 'oposicion/*.pdf' 'blog/*.pdf' 'oposicion/temario/*-ejercicio.html'
         if git diff --staged --quiet; then
           echo "Todo estaba ya al día."
           exit 0
