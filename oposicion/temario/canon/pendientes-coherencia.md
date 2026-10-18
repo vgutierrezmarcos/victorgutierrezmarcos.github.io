@@ -68,7 +68,7 @@ Cambios del canon a raíz de la revisión del 3.A.16 (`fuentes/3A16/revision.md`
 
 ## Pendiente de la lista canónica de supuestos (18/10/2026)
 
-- **3.A.17 (y 3.A.18-3.A.19 al revisarlos) — misma lista de supuestos que el 3.A.16 (regla de CRITERIOS.md § 6, Víctor, 18/10/2026).** Al caracterizar el monopolio, copiar idéntica la tabla `tab:supuestos` del 3.A.16 (I.1; ficha `competencia-perfecta-equilibrio-parcial`, «Supuestos canónicos de las estructuras de mercado») y marcar de forma visible el supuesto que levanta (el 1, un solo vendedor que fija el precio, normalmente con barreras al 3). *A raíz de:* comentarios de Víctor al 3.A.16 del 18/10/2026.
+- [hecho en el 3.A.17: 18/10/2026; quedan 3.A.18 y 3.A.19 al revisarlos] **3.A.17 (y 3.A.18-3.A.19 al revisarlos) — misma lista de supuestos que el 3.A.16 (regla de CRITERIOS.md § 6, Víctor, 18/10/2026).** Al caracterizar el monopolio, copiar idéntica la tabla `tab:supuestos` del 3.A.16 (I.1; ficha `competencia-perfecta-equilibrio-parcial`, «Supuestos canónicos de las estructuras de mercado») y marcar de forma visible el supuesto que levanta (el 1, un solo vendedor que fija el precio, normalmente con barreras al 3). *A raíz de:* comentarios de Víctor al 3.A.16 del 18/10/2026.
 
 ## Pendiente del 3.A.17 (17/10/2026)
 

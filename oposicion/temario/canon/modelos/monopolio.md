@@ -8,6 +8,8 @@
 
 Pregunta: ¿cómo fija el precio y la cantidad una empresa sin competidores, qué limita su poder y cuánto le cuesta eso a la sociedad?
 
+**Supuestos canónicos (I.1, tabla `tab:supuestos`, Víctor, 18/10/2026)**: la misma tabla de 5 supuestos del 3.A.16 (ficha `competencia-perfecta-equilibrio-parcial`), en el orden del tema antiguo (1 agentes racionales, 2 información, 3 producto homogéneo, 4 mercado atomizado, 5 libre entrada; Víctor, 18/10/2026), con las filas 4 y 5 resaltadas en salmón y «**Se levanta**: un solo vendedor, que fija el precio (precio-decisor)» y «**Se levanta**: barreras de entrada»; debajo, la lista numerada 1-5 con «Se mantiene» (1-3) y «Se levanta» (4-5) y los 2 supuestos propios del escenario base (precio uniforme, una sola planta).
+
 **Escenario base (I.1)**, del que cada desarrollo levanta un supuesto (tabla `tab:escenario-base`): agentes racionales; información completa y simétrica (no «perfecta», que es otra cosa en juegos); un único bien sin sustitutivos cercanos (si los hay, el poder se reduce, no se pierde); un oferente y muchos demandantes precio-aceptantes sin reventa; precio uniforme; barreras de entrada (estratégicas, legales, tecnológicas: subaditividad); una sola planta y factores comprados a precios dados. Poder de mercado: el monopolista elige un punto de la demanda, precio o cantidad, no los 2.
 
 | Supuesto del escenario base | Desarrollo que lo levanta (ficha) |
@@ -20,14 +22,15 @@ Pregunta: ¿cómo fija el precio y la cantidad una empresa sin competidores, qu�
 | Demandantes sin poder | Monopolio bilateral (`monopolio-bilateral`) |
 
 **Equilibrio (I.2, a)-d))**. Supuestos técnicos: demanda de mercado x(p) derivable y decreciente; el monopolista vende q = x(p) y usa la inversa p(q), p'(q) < 0 (de consumidores con utilidad cuasilineal, 3.A.8 y 3.A.16); C(q) = C(w⃗,q) con w⃗ fijo, CMg > 0 (3.A.12).
-$$\max_{q}\ B(q)=p(q)\,q-C(q)\quad\text{s.a. } q\ge 0\qquad(\texttt{\textbackslash optim})$$
+$$\max_{q}\ B(q)=p(q)\,q-C(q)\quad\text{s.a. } q\ge 0,\ \ B(q)\ge 0\qquad(\texttt{\textbackslash optim})$$
+B(q) ≥ 0 es la **condición de participación** (Víctor, 18/10/2026: se mantiene en el problema, explicada en una línea): si tuviera pérdidas no entraría. Es la de largo plazo; a corto plazo basta p ≥ CVMe, porque el coste fijo se paga igual (nota al pie de la viabilidad y anexo `anexo:viabilidad`).
 $$p(q^M)+p'(q^M)\,q^M=\mathrm{IMg}(q^M)=\mathrm{CMg}(q^M),\qquad \mathrm{IMg}=p\Big(1-\frac{1}{|\varepsilon_{q,p}|}\Big)<p$$
 `\funcionclave` (`eq:lerner`), que se queda en una esquina de la pizarra todo el cante del 3.A.17:
 $$\mathrm{IMg}(q^M)=\mathrm{CMg}(q^M)\ \Longleftrightarrow\ \mathcal{L}\equiv\frac{p^M-\mathrm{CMg}(q^M)}{p^M}=\frac{1}{|\varepsilon_{q,p}|}$$
 - **Tramo elástico**: con CMg > 0, |ε_{q,p}| > 1 estricto (con |ε| = 1 tampoco produce, salvo CMg nulo).
 - **Condición de segundo orden**: IMg'(q^M) < CMg'(q^M), pendientes con su signo. Con CMg decreciente también puede maximizar si el CMg **corta al IMg desde abajo** (a la izquierda de q^M, IMg > CMg); si lo corta desde arriba, es un mínimo (anexo `anexo:cso`).
 - **No hay curva de oferta**: la cantidad depende de la elasticidad de la demanda, no solo de su altura.
-- **Viabilidad**, evaluada **en q^M** (no en el mínimo del CMe): a corto plazo p(q^M) ≥ CVMe(q^M); a largo, p(q^M) ≥ CMe(q^M), nunca con pérdidas (anexo `anexo:viabilidad`).
+- **Viabilidad** (la condición de participación evaluada en el óptimo), **en q^M** (no en el mínimo del CMe): a corto plazo p(q^M) ≥ CVMe(q^M), es decir, B(q^M) ≥ B(0) = −CF; a largo, p(q^M) ≥ CMe(q^M), es decir, B(q^M) ≥ 0, nunca con pérdidas (anexo `anexo:viabilidad`).
 - **Implicaciones**: p^M > CMg, q^M < q^c (q^c donde la demanda corta al CMg); beneficios extraordinarios a largo plazo por las barreras; no produce necesariamente en el mínimo del CMe a largo plazo (gráfico `escala-monopolio`).
 - **Impuestos** (anotación de I.2; anexo C): unitario t ⇒ IMg = CMg + t; con demanda lineal y c constante el precio sube t/2; con demanda isoelástica, más que t (la traslación depende de la curvatura: Bulow y Pfleiderer, 1983); *ad valorem*: (1 − t)IMg = CMg (el 3.A.17 escribe hoy τ: `pendientes-coherencia.md`); sobre el beneficio o de suma fija, neutrales.
 

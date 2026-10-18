@@ -17,13 +17,13 @@ $$\mathcal{L}_i=\frac{1}{|\varepsilon_{q_i,p_i}|}+\sum_{j\neq i}\frac{(p_j-\math
   4. los 2 efectos a la vez.
   - El **aprendizaje** no es el caso 3: es el mismo bien en 2 periodos (nota): IMg_1(q_1) = c_1 + βc_2'(q_1)q_2 < c_1, con β el factor de descuento; Wright (1936); ficha `curva-aprendizaje`.
   - Un precio por debajo del CMg corriente (complementarios, aprendizaje) **no** se llama subsidio cruzado: el término se reserva para Faulhaber (1975) (ficha `monopolio-natural`).
-- **Producción conjunta en proporciones fijas** (a)-c); oferta conjunta de Marshall, coque y gas de Mill): cada unidad del proceso, de coste C(q), da una de cada bien; se vende s_i ≤ q (propuesto x_i, `pendientes-coherencia.md`) y se puede desechar el resto:
+- **Producción conjunta en proporciones fijas** (en el cuerpo, II.3.2, un párrafo sin gráfico: idea, carne y piel, IMg_1 + IMg_2 = CMg y el desecho; el modelo completo, a)-b) con su gráfico, en el anexo B, `anexo:proporciones-fijas`, desde el 18/10/2026 por indicación de Víctor; oferta conjunta de Marshall, coque y gas de Mill): cada unidad del proceso, de coste C(q), da una de cada bien; se vende x_i ≤ q y se puede desechar el resto:
 $$\mathrm{IMg}_1(q)+\mathrm{IMg}_2(q)=\mathrm{CMg}(q)\ \text{(suma vertical)};\qquad \text{en general } \sum_i\max\{\mathrm{IMg}_i(q),0\}=\mathrm{CMg}(q)$$
   si en ese punto un IMg es negativo, se vende de ese bien hasta IMg = 0 (elasticidad unitaria) y se desecha el resto. Implicaciones: el reparto del coste conjunto es arbitrario; el monopolista puede destruir producción útil.
 - **Monopolio multiplanta**: max p(q_1+q_2)(q_1+q_2) − C_1(q_1) − C_2(q_2) ⇒ IMg(Q) = CMg_1(q_1) = CMg_2(q_2), Q = q_1 + q_2: cuánto (IMg con la suma horizontal de los CMg) y cómo repartirlo (minimizar el coste, 3.A.12); con CMg constantes y capacidades, orden de mérito; **el cártel resuelve el mismo problema** (3.A.19).
 - **Bienestar**: frente a monopolistas independientes, mejor para los consumidores con complementarios y peor con sustitutivos; el ahorro de costes es eficiencia productiva.
 
-**Gráfico de referencia:** `oposicion/temario/fuentes/3A17/graficos/produccion-conjunta.tex` (suma vertical de los ingresos marginales; apoyo, no pizarra). En la pizarra, solo la estructura de la regla de Lerner con el término cruzado y sus 2 signos.
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A17/graficos/produccion-conjunta.tex` (suma vertical de los ingresos marginales; en el anexo B, no se canta). En la pizarra, solo la estructura de la regla de Lerner con el término cruzado y sus 2 signos.
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
