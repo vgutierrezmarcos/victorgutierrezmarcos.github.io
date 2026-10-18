@@ -16,11 +16,13 @@ Regla de CRITERIOS.md § 6 (Víctor, 18/10/2026). Los cuatro temas de estructura
 
 | N.º | Supuesto | Qué significa |
 |---|---|---|
-| 1 | **Muchos compradores y vendedores (precio-aceptantes)** | cada uno es pequeño respecto al mercado y sus decisiones individuales no mueven el precio: todos son precio-aceptantes, y el precio lo determinan las decisiones de todos juntos, no las de ninguno en particular |
-| 2 | **Producto homogéneo** | los consumidores ven como sustitutivos perfectos las unidades de todas las empresas, de modo que solo les importa el precio |
-| 3 | **Libre entrada y salida** | a largo plazo, si hay beneficios extraordinarios, entran empresas hasta agotarlos, y si hay pérdidas, salen |
-| 4 | **Información perfecta y simétrica** | los consumidores conocen las características del producto y el precio, y las empresas, su tecnología y el precio; nadie sabe más que los demás |
-| 5 | **Agentes racionales** | los consumidores maximizan su utilidad y las empresas, su beneficio |
+| 1 | **Agentes racionales** | los consumidores maximizan su utilidad y las empresas, su beneficio |
+| 2 | **Información perfecta y simétrica** | los consumidores conocen las características del producto y el precio, y las empresas, su tecnología y el precio; nadie sabe más que los demás |
+| 3 | **Producto homogéneo (sin sustitutivos cercanos)** | los consumidores ven como sustitutivos perfectos las unidades de todas las empresas, de modo que solo les importa el precio |
+| 4 | **Mercado atomizado: muchos compradores y vendedores (precio-aceptantes)** | cada uno es pequeño respecto al mercado y sus decisiones individuales no mueven el precio: todos son precio-aceptantes, y el precio lo determinan las decisiones de todos juntos, no las de ninguno en particular |
+| 5 | **Libre entrada y salida (a largo plazo)** | a largo plazo, si hay beneficios extraordinarios, entran empresas hasta agotarlos, y si hay pérdidas, salen |
+
+El orden es el del temario antiguo (Víctor, 18/10/2026): de los agentes y la información al producto, el número de agentes y la entrada.
 
 Qué levanta cada tema (orientativo; lo concreta cada revisión): 3.A.17, el 1 por el lado de la oferta (un solo vendedor, que fija el precio), normalmente con barreras que impiden el 3; 3.A.18, el 2 (producto diferenciado), con el 3 en pie; 3.A.19, el 1 (pocos vendedores, que se saben interdependientes), a menudo con barreras al 3. Levantar el 4 lleva a la economía de la información (3.A.13).
 
