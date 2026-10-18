@@ -130,6 +130,34 @@ def verificar(tema):
                     errores.append(f'Título al pie de la página {n} del PDF: «{lineas[-1][:60]}»')
         except Exception:
             pass
+    # Ficha de repaso: lo mismo al pie de cada columna (CRITERIOS.md, ficha):
+    # ni el título de un bloque (texto blanco sobre morado), ni un \sub (morado
+    # en negrita, salvo los años de la cronología), ni una línea que anuncia con
+    # «:» lo que va en la columna siguiente.
+    repaso = os.path.join(tema.dir_publico, f'{tema.archivo}-repaso.pdf')
+    if os.path.exists(repaso):
+        try:
+            import fitz
+            for n, pag in enumerate(fitz.open(repaso), 1):
+                ancho, alto = pag.rect.width, pag.rect.height
+                lineas = []
+                for b in pag.get_text('dict')['blocks']:
+                    for l in b.get('lines', []):
+                        # sin las viñetas (■, –, ◦), que son moradas
+                        sp = [s for s in l['spans'] if s['text'].strip().strip('■–◦•')]
+                        if sp and l['bbox'][3] < alto - 30:
+                            lineas.append((l['bbox'], ''.join(s['text'] for s in sp).strip(), sp[0]))
+                for c, (x0, x1) in enumerate([(0, ancho / 2), (ancho / 2, ancho)], 1):
+                    col = [x for x in lineas if x0 <= (x[0][0] + x[0][2]) / 2 < x1]
+                    if not col:
+                        continue
+                    caja, texto, s = max(col, key=lambda x: x[0][3])
+                    negrita = 'Bold' in s['font'] or s['flags'] & 16
+                    if (s['color'] == 0xFFFFFF or (s['color'] == 0x5F2987 and negrita and not re.match(r'\d{3,4}\b', texto))
+                            or (texto.endswith(':') and caja[2] - caja[0] < 0.8 * (x1 - x0))):
+                        errores.append(f'Ficha de repaso: título o «:» al pie de la columna {c} de la página {n}: «{texto[:60]}»')
+        except Exception:
+            pass
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
     if html:
         sin_math = re.sub(r'\\\(.*?\\\)|\\\[.*?\\\]', '', html, flags=re.S)

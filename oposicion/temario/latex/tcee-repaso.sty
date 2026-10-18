@@ -176,8 +176,11 @@
 % --- Cajas -----------------------------------------------------------------------------------
 \newtcolorbox{ideaclave}{enhanced,colback=tceesalvia,colframe=tceesalviaoscuro,
   boxrule=0.4pt,arc=1pt,left=3pt,right=3pt,top=1pt,bottom=1pt,fontupper=\itshape,before skip=2pt,after skip=2pt}
+% La fórmula va siempre pegada a la línea que la presenta (no se separa de
+% ella por un salto de columna o de página): before con \nopagebreak.
 \newtcolorbox{formula}{enhanced,colback=tceemoradopalido,colframe=tceemoradopalido,
-  boxrule=0pt,arc=1pt,left=2pt,right=2pt,top=0pt,bottom=0pt,before skip=2pt,after skip=2pt}
+  boxrule=0pt,arc=1pt,left=2pt,right=2pt,top=0pt,bottom=0pt,
+  before={\par\nopagebreak\vspace{2pt}\nopagebreak\noindent},after skip=2pt}
 \newtcolorbox{trampa}{enhanced,breakable,colback=white,colframe=tceedorado,boxrule=0.4pt,leftrule=2pt,
   arc=0pt,left=3pt,right=3pt,top=1pt,bottom=1pt,before skip=2pt,after skip=2pt,
   title={Ojo en el test},fonttitle=\bfseries\color{tceedorado},coltitle=tceedorado,

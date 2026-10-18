@@ -556,6 +556,13 @@ el texto original y lo que se hizo.
 
 ## 8 bis. Ficha de repaso (cuatro páginas)
 
+- **Saltos de columna y de página como en el tema** (Víctor, 18/10/2026):
+  ningún título (`\bloque`, `\sub`) queda al pie de una columna o de una
+  página, ni separado del título o el párrafo del nivel siguiente; tampoco una
+  línea que anuncia con «:» lo que viene (la fórmula va pegada a ella: el
+  entorno `formula` se pone **dentro** de la viñeta que la presenta, no
+  después de `\end{itemize}`). Lo comprueba `verificar-tema.py` (error
+  «Ficha de repaso: título o «:» al pie de la columna…»).
 - Cada tema tiene una ficha de repaso en **exactamente cuatro páginas** (A4,
   **dos columnas**, estética del tema: `tcee-repaso.sty`; Víctor, 14/10/2026:
   antes eran dos páginas a tres columnas), para repasar antes del
