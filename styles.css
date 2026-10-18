@@ -611,7 +611,8 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .home-card-icon svg, .opo-card-icon svg { width: 28px; height: 28px; stroke-width: 1.4; }
 
 /* Rejillas de la portada y de /oposicion/ */
-.home-main { padding: 2.5rem 1.5rem 3rem; }
+.home-main { padding: 2rem 1.5rem 3rem; }
+.home-main .app-banner { margin-bottom: 1.5rem; }
 .home-main .app-banner,
 .home-cards { width: 100%; max-width: var(--max-width); margin-left: auto; margin-right: auto; }
 .home-cards, .opo-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
@@ -643,30 +644,44 @@ h1, h2, h3, h4 { text-wrap: balance; }
     line-height: 1.3;
 }
 
-/* PORTADA: titular, novedades y «¿Qué es la oposición?» */
-.portada-entrada { width: 100%; max-width: var(--max-width); margin: 0 auto 1.75rem; display: grid; gap: 0.9rem; }
+/* PORTADA: el titular va en la cabecera morada (nunca texto directamente
+   sobre el patrón de rosetones); novedades y «¿Qué es la oposición?» van en
+   hojas de papel, como el aviso de la app y las tarjetas. */
+.site-header--portada { padding: 2.25rem 1.5rem 3rem; }
+.site-header--portada .site-title {
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.12em;
+    margin-bottom: 0;
+}
+.site-header--portada .site-title a { color: var(--color-accent-gold-light); }
+.portada-entrada { max-width: 780px; margin: 1.6rem auto 0; display: grid; gap: 1rem; justify-items: center; }
 .portada-titular {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-size: clamp(1.75rem, 4.2vw, 2.65rem);
     font-weight: 700;
-    line-height: 1.2;
-    color: var(--color-text);
-    max-width: 36ch;
+    line-height: 1.18;
+    color: var(--color-on-header);
+    max-width: 30ch;
 }
-.portada-entradilla { font-size: 1.12rem; line-height: 1.6; color: var(--color-text-muted); max-width: 64ch; }
-.portada-botones { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.25rem; }
+.portada-entradilla { font-size: 1.12rem; line-height: 1.6; color: rgba(255, 255, 255, 0.86); max-width: 62ch; }
+.portada-botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.4rem; }
+.site-header--portada .boton:focus-visible { box-shadow: 0 0 0 2px var(--color-header), 0 0 0 4px var(--color-accent-gold); }
 
 .novedades-franja {
     width: 100%;
     max-width: var(--max-width);
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: start;
-    gap: 0.5rem 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-border-strong);
-    border-bottom: 1px solid var(--color-border-strong);
+    gap: 0.5rem 1.75rem;
+    padding: 1.1rem 1.5rem 1.2rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
     position: relative;
     z-index: 1;
 }
@@ -677,20 +692,27 @@ h1, h2, h3, h4 { text-wrap: balance; }
     font-variant-caps: all-small-caps;
     letter-spacing: 0.06em;
     color: var(--color-primary);
-    padding-top: 0.15rem;
+    padding-top: 0.1rem;
 }
 .novedades-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem 1.5rem; }
+.novedades-franja .novedad + .novedad { border-left: 1px solid var(--color-border-light); padding-left: 1.5rem; }
 .novedad a { display: grid; gap: 0.1rem; text-decoration: none; color: var(--color-text); }
 .novedad time { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 600; color: var(--color-accent-gold); font-variant-numeric: tabular-nums; }
 .novedad-seccion { font-family: var(--font-display); font-size: 0.95rem; font-variant-caps: all-small-caps; letter-spacing: 0.05em; color: var(--color-text-muted); }
 .novedad time + .novedad-seccion { margin-top: -0.15rem; }
 .novedad-texto { font-size: 0.98rem; line-height: 1.4; }
 .novedad a:hover .novedad-texto { color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-underline-offset: 3px; }
-.novedades-todas { white-space: nowrap; font-size: 0.9rem; padding-top: 0.15rem; }
+.novedades-todas { white-space: nowrap; font-size: 0.9rem; padding-top: 0.1rem; }
 @media (max-width: 860px) {
-    .novedades-franja { grid-template-columns: 1fr; }
+    .novedades-franja { grid-template-columns: 1fr; padding: 1rem 1.15rem 1.1rem; }
     .novedades-lista { grid-template-columns: 1fr; gap: 0.75rem; }
+    .novedades-franja .novedad + .novedad { border-left: 0; padding-left: 0; border-top: 1px solid var(--color-border-light); padding-top: 0.75rem; }
     .novedades-todas { justify-self: start; }
+}
+@media (max-width: 768px) {
+    .site-header--portada { padding: 1.5rem 1rem 2.25rem; }
+    .portada-entrada { margin-top: 1.1rem; }
+    .portada-entradilla { font-size: 1rem; }
 }
 
 /* Página de novedades: lista completa por meses */
@@ -703,7 +725,21 @@ h1, h2, h3, h4 { text-wrap: balance; }
     .novedades-lista--completa .novedad-texto { grid-column: 1 / -1; }
 }
 
-.portada-tcee { width: 100%; max-width: var(--max-width); margin: 2.5rem auto 0; display: grid; gap: 0.6rem; justify-items: start; position: relative; z-index: 1; }
+.portada-tcee {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 1.5rem auto 0;
+    display: grid;
+    gap: 0.6rem;
+    justify-items: start;
+    padding: 1.6rem 1.75rem 1.7rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+}
 .portada-tcee h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--color-text); }
 .portada-tcee p { max-width: 70ch; line-height: 1.7; }
 

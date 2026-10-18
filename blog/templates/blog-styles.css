@@ -2,7 +2,7 @@
    ÍNDICE DEL BLOG - Víctor Gutiérrez Marcos
    El blog conserva su identidad propia: barra morada compacta con el
    monograma, el nombre, el lema y el menú; franja de la newsletter debajo;
-   tarjetas en sans sobre fondo claro. Se carga después de ../styles.css, del
+   tarjetas en sans sobre el verde salvia de la web. Se carga después de ../styles.css, del
    que toma los tokens (claro y oscuro berenjena), el foco dorado, el pie
    común y los botones flotantes. Colores lisos y nada que salte al pasar el
    ratón.
@@ -10,14 +10,13 @@
 
 /* Fondos propios del blog, a partir de los tokens de la web */
 :root {
-    --blog-fondo: var(--color-bg-cream);      /* casi blanco, como antes */
-    --blog-banda: var(--color-bg);            /* franja verde de la newsletter */
+    --blog-fondo: var(--color-bg);            /* el verde salvia de toda la web */
+    --blog-banda: var(--color-bg-cream);      /* franja de la newsletter, en papel */
     --blog-sans: var(--font-ui);
 }
 
 [data-theme="dark"] {
-    --blog-fondo: var(--color-bg);
-    --blog-banda: var(--color-primary-pale);
+    --blog-banda: var(--color-bg-cream);
 }
 
 body {
