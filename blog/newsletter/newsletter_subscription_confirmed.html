@@ -42,15 +42,14 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            background: var(--color-success-bg, #e6efdf);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: #2e7d32;
-            font-weight: bold;
+            color: var(--color-success, #3f6b3a);
         }
+        .confirmation-icon svg { width: 40px; height: 40px; }
         .confirmation-title {
             font-family: 'Source Sans 3', sans-serif;
             font-size: 1.5rem;
@@ -137,7 +136,7 @@
     <main class="main-content">
         <div class="content-container">
             <div class="confirmation-card">
-                <div class="confirmation-icon">✓</div>
+                <div class="confirmation-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
 
                 <h2 class="confirmation-title">Suscripción confirmada</h2>
 

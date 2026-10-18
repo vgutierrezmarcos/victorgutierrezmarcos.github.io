@@ -1019,7 +1019,7 @@
 
                     <div class="navegacion-btns">
                         <button id="btn-anterior" class="boton boton--secundario btn-nav">← Anterior</button>
-                        <button id="btn-finalizar" class="boton btn-finalizar">✓ Finalizar examen</button>
+                        <button id="btn-finalizar" class="boton btn-finalizar"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Finalizar examen</button>
                         <button id="btn-siguiente" class="boton boton--secundario btn-nav">Siguiente →</button>
                     </div>
                 </div>
@@ -1324,7 +1324,7 @@
                 console.error('Error al cargar datos:', error);
                 loadingIndicator.innerHTML = `
                     <div class="error-message">
-                        <strong>⚠️ Error al cargar las preguntas</strong><br>
+                        <strong><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.8 2.8 19.5h18.4z"/><path d="M12 10v4.2"/><circle cx="12" cy="16.9" r=".6" fill="currentColor"/></svg> Error al cargar las preguntas</strong><br>
                         ${error.message}<br>
                         <small>Asegúrate de que el archivo <code>preguntas.json</code> está en la misma carpeta que este archivo HTML.</small>
                     </div>

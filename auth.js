@@ -154,18 +154,18 @@ function showProfileModal(user, auth) {
             </div>
             <div class="profile-actions">
                 <button id="btn-show-history" class="profile-action-btn">
-                    <span class="btn-icon">📊</span>
+                    <span class="btn-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V7"/><path d="M17 16v-7"/></svg></span>
                     <span class="btn-text">Historial de exámenes</span>
                 </button>
                 <a href="/oposicion/temario/primer-ejercicio/test/simulador.html" class="profile-action-btn">
-                    <span class="btn-icon">📝</span>
+                    <span class="btn-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="m8.5 9.5 1.5 1.5 3-3"/><path d="M8.5 15.5h7"/></svg></span>
                     <span class="btn-text">Ir al simulador</span>
                 </a>
                 <div class="profile-divider"></div>
                 <div id="newsletter-section" class="newsletter-profile-section">
                     ${isSubscribed ? `
                         <div class="newsletter-subscribed">
-                            <span class="subscribed-icon">✅</span>
+                            <span class="subscribed-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg></span>
                             <div class="subscribed-info">
                                 <span class="subscribed-text">Suscrito a la newsletter</span>
                                 <span class="subscribed-thanks">¡Gracias por tu apoyo!</span>
@@ -173,7 +173,7 @@ function showProfileModal(user, auth) {
                         </div>
                     ` : `
                         <button id="btn-subscribe-newsletter" class="profile-action-btn newsletter-btn">
-                            <span class="btn-icon">📬</span>
+                            <span class="btn-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
                             <span class="btn-text">Suscribirse a la newsletter</span>
                         </button>
                     `}
@@ -256,7 +256,7 @@ async function showUserHistoryFromProfile() {
     modal.innerHTML = `
         <div class="profile-content history-content">
             <span class="close-profile" onclick="document.getElementById('history-modal').style.display='none'">&times;</span>
-            <h3 class="history-title">📊 Tu historial de exámenes</h3>
+            <h3 class="history-title">Tu historial de exámenes</h3>
             <div id="history-loading" class="history-loading">
                 <div class="loading-spinner"></div>
                 <p>Cargando datos...</p>
@@ -287,7 +287,7 @@ async function showUserHistoryFromProfile() {
         if (snapshot.empty) {
             listContainer.innerHTML = `
                 <div class="history-empty">
-                    <span class="empty-icon">📋</span>
+                    <span class="empty-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 10h7M8.5 14h5"/></svg></span>
                     <p>Aún no has realizado ningún examen.</p>
                     <a href="/oposicion/temario/primer-ejercicio/test/simulador.html" class="profile-action-btn">Realizar mi primer examen</a>
                 </div>
@@ -343,7 +343,7 @@ async function showUserHistoryFromProfile() {
         html += `
             <div style="margin-top: 2rem; text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border-light);">
                 <button id="btn-delete-history" class="profile-action-btn logout" style="background: #ffebee; color: #d32f2f; border: 1px solid #ffcdd2; width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">
-                    🗑️ Borrar todo el historial
+                    <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7h15"/><path d="M9.5 7V4.5h5V7"/><path d="M6.5 7l.8 12.5h9.4l.8-12.5"/><path d="M10 11v5M14 11v5"/></svg> Borrar todo el historial
                 </button>
             </div>
         `;
@@ -382,7 +382,7 @@ function showNewsletterSubscriptionModal(user, parentModal) {
         <div class="profile-content newsletter-modal-content">
             <span class="close-profile" onclick="document.getElementById('newsletter-modal').style.display='none'">&times;</span>
             <div class="newsletter-header">
-                <span class="newsletter-icon">📬</span>
+                <span class="newsletter-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
                 <h3>Suscríbete a la Newsletter</h3>
                 <p>Recibe los nuevos artículos directamente en tu correo.</p>
             </div>
@@ -398,7 +398,7 @@ function showNewsletterSubscriptionModal(user, parentModal) {
                 <p class="newsletter-privacy">Al suscribirte, aceptas recibir correos electrónicos con novedades del blog.</p>
             </form>
             <div id="newsletter-success" class="newsletter-success" style="display: none;">
-                <span class="success-icon">✅</span>
+                <span class="success-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg></span>
                 <h4>¡Suscripción completada!</h4>
                 <p>Revisa tu correo para confirmar la suscripción.</p>
                 <button onclick="document.getElementById('newsletter-modal').style.display='none'" class="profile-action-btn">Cerrar</button>
