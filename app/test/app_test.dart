@@ -477,7 +477,7 @@ void main() {
     // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
     await tocar(tester, find.textContaining('5.C.4 ·'));
     expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);
-    expect(find.text('Para la próxima vuelta'.toUpperCase()), findsOneWidget);
+    expect(find.text('Para la próxima vuelta'), findsOneWidget);
     expect(find.text('Ver versión anterior'), findsNothing);
     await tocar(tester, find.text('Entrar'));
     expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsNothing);
