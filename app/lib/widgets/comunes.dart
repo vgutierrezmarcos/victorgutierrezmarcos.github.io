@@ -481,7 +481,7 @@ class Etiqueta extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
       decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(4)),
-      child: Text(texto, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11.5, color: c, fontWeight: FontWeight.w600, letterSpacing: 0.3)),
+      child: Text(texto, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 14, height: 1.1, color: c, fontFeatures: versalitas, letterSpacing: 0.5)),
     );
   }
 }
