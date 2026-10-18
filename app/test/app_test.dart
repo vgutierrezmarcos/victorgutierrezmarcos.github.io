@@ -17,6 +17,7 @@ import 'package:tcee_app/data/models/estructura.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/pregunta.dart';
 import 'package:tcee_app/data/models/preparador.dart';
+import 'package:tcee_app/data/models/revisado.dart';
 import 'package:tcee_app/data/models/temario.dart';
 import 'package:tcee_app/data/models/frecuencia_test.dart';
 import 'package:tcee_app/data/repos/contenido_repo.dart';
@@ -460,6 +461,26 @@ void main() {
 
     await tocar(tester, find.byType(BackButton));
     expect(find.text('1 apunte resuelto'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('temario revisado: distintivo en la lista y, sin sesión, invitación a entrar', (tester) async {
+    overrides.add(revisadosProvider.overrideWith((ref) => ManifiestoRevisados.fromJson({
+          'temas': [
+            {'codigo': '5.C.4', 'aprobado': '2026-10-17', 'pdf': {'ruta': 'oposicion/temario/quinto-ejercicio/5C04.pdf', 'sha': 'abc'}},
+          ],
+        })));
+    await arrancar(tester);
+    await estudiar(tester, 'Temas');
+    await tocar(tester, find.textContaining('Parte C: Derecho'));
+    expect(find.text('Revisado · exclusivo de la app'), findsOneWidget);
+    // Sin cuenta: se ve la versión anterior (aquí, la agenda: no tiene PDF) y la invitación.
+    await tocar(tester, find.textContaining('5.C.4 ·'));
+    expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsOneWidget);
+    expect(find.text('Para la próxima vuelta'.toUpperCase()), findsOneWidget);
+    expect(find.text('Ver versión anterior'), findsNothing);
+    await tocar(tester, find.text('Entrar'));
+    expect(find.text('Versión revisada disponible: inicia sesión para leerla'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
