@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Novedades de la web a partir de novedades.json (la más reciente, primero):
-- la franja de la portada (index.html), con las tres últimas;
+- la lista bajo el aviso de la app en la portada (index.html), con las tres últimas;
 - la lista completa de novedades.html, agrupada por meses;
 - el RSS novedades.xml.
 Para añadir una novedad, se pone arriba en novedades.json y se ejecuta:
@@ -61,13 +61,15 @@ def sustituir(ruta, marca, contenido):
 
 def portada(datos):
     filas = '\n'.join('                ' + item(n) for n in datos[:EN_PORTADA])
-    return f'''            <section class="novedades-franja" aria-labelledby="novedades-titulo">
-                <h2 id="novedades-titulo" class="novedades-rotulo">Novedades</h2>
+    # Va dentro del bloque «Novedades» de la portada, debajo del aviso de la app
+    # (la novedad principal).
+    return f'''            <div class="novedades-franja">
+                <p class="novedades-rotulo">Más novedades</p>
                 <ul class="novedades-lista">
 {filas}
                 </ul>
                 <a class="boton boton--texto novedades-todas" href="novedades.html">Todas las novedades</a>
-            </section>'''
+            </div>'''
 
 
 def pagina(datos):
