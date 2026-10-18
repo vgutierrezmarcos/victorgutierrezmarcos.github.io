@@ -644,40 +644,16 @@ h1, h2, h3, h4 { text-wrap: balance; }
     line-height: 1.3;
 }
 
-/* PORTADA: el titular va en la cabecera morada (nunca texto directamente
-   sobre el patrón de rosetones); novedades y «¿Qué es la oposición?» van en
-   hojas de papel, como el aviso de la app y las tarjetas. */
-.site-header--portada { padding: 2.25rem 1.5rem 3rem; }
-.site-header--portada .site-title {
-    font-size: 1.15rem;
-    font-weight: 400;
-    font-variant-caps: all-small-caps;
-    letter-spacing: 0.12em;
-    margin-bottom: 0;
-}
-.site-header--portada .site-title a { color: var(--color-accent-gold-light); }
-.portada-entrada { max-width: 780px; margin: 1.6rem auto 0; display: grid; gap: 1rem; justify-items: center; }
-.portada-titular {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4.2vw, 2.65rem);
-    font-weight: 700;
-    line-height: 1.18;
-    color: var(--color-on-header);
-    max-width: 30ch;
-}
-.portada-entradilla { font-size: 1.12rem; line-height: 1.6; color: rgba(255, 255, 255, 0.86); max-width: 62ch; }
-.portada-botones { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.4rem; }
-.site-header--portada .boton:focus-visible { box-shadow: 0 0 0 2px var(--color-header), 0 0 0 4px var(--color-accent-gold); }
-
-.novedades-franja {
+/* PORTADA: nunca texto directamente sobre el patrón de rosetones. El
+   titular va en una hoja arriba; las novedades, en un solo bloque de papel
+   con el aviso de la app como novedad principal y la lista debajo. */
+.portada-entrada {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto 1.5rem;
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: start;
-    gap: 0.5rem 1.75rem;
-    padding: 1.1rem 1.5rem 1.2rem;
+    gap: 0.6rem;
+    padding: 1.6rem 1.75rem 1.7rem;
     background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-card);
@@ -685,13 +661,56 @@ h1, h2, h3, h4 { text-wrap: balance; }
     position: relative;
     z-index: 1;
 }
+.portada-titular {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    font-weight: 700;
+    line-height: 1.22;
+    color: var(--color-primary);
+    max-width: 38ch;
+}
+.portada-entradilla { font-size: 1.08rem; line-height: 1.6; color: var(--color-text-muted); max-width: 70ch; }
+
+.novedades-portada {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 1.5rem auto 0;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.novedades-portada-titulo {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.07em;
+    color: var(--color-primary);
+    padding: 1rem 1.75rem 0;
+}
+/* El aviso de la app, dentro del bloque: sin marco propio */
+.novedades-portada .app-banner { border: 0; border-radius: 0; box-shadow: none; margin: 0; padding-top: 0.75rem; background: transparent; }
+.novedades-portada .app-banner:hover { border-color: transparent; }
+.novedades-franja {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 0.5rem 1.75rem;
+    padding: 1.1rem 1.75rem 1.25rem;
+    border-top: 1px solid var(--color-border-light);
+    background: var(--color-bg-cream);
+}
 .novedades-rotulo {
     font-family: var(--font-display);
     font-size: 1.05rem;
-    font-weight: 700;
+    font-weight: 400;
     font-variant-caps: all-small-caps;
     letter-spacing: 0.06em;
-    color: var(--color-primary);
+    color: var(--color-text-muted);
     padding-top: 0.1rem;
 }
 .novedades-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem 1.5rem; }
@@ -705,14 +724,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .novedades-todas { white-space: nowrap; font-size: 0.9rem; padding-top: 0.1rem; }
 @media (max-width: 860px) {
     .novedades-franja { grid-template-columns: 1fr; padding: 1rem 1.15rem 1.1rem; }
+    .novedades-portada-titulo { padding: 0.9rem 1.15rem 0; }
+    .portada-entrada { padding: 1.25rem 1.15rem 1.35rem; }
     .novedades-lista { grid-template-columns: 1fr; gap: 0.75rem; }
     .novedades-franja .novedad + .novedad { border-left: 0; padding-left: 0; border-top: 1px solid var(--color-border-light); padding-top: 0.75rem; }
     .novedades-todas { justify-self: start; }
-}
-@media (max-width: 768px) {
-    .site-header--portada { padding: 1.5rem 1rem 2.25rem; }
-    .portada-entrada { margin-top: 1.1rem; }
-    .portada-entradilla { font-size: 1rem; }
 }
 
 /* Página de novedades: lista completa por meses */

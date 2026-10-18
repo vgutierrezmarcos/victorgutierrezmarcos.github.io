@@ -108,17 +108,9 @@
     </script>
 </head>
 <body class="portada">
-    <header class="site-header site-header--portada">
+    <header class="site-header">
         <div class="header-content">
             <p class="site-title"><a href="index.html">Víctor Gutiérrez Marcos</a></p>
-            <div class="portada-entrada">
-                <h1 class="portada-titular">Temario, test y app para la oposición a Técnico Comercial y Economista del Estado</h1>
-                <p class="portada-entradilla">Los temas de los cinco ejercicios en PDF y Word, un simulador con las preguntas de los exámenes oficiales y una app para organizar la preparación, gratis. En el blog, artículos sobre política económica y comercio internacional.</p>
-                <div class="portada-botones sobre-tinta">
-                    <a class="boton boton--principal" href="oposicion/temario.html">Ver el temario</a>
-                    <a class="boton boton--secundario" href="oposicion/por-que-tcee.html">¿Por qué TCEE?</a>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -135,48 +127,11 @@
     </nav>
 
     <main class="main-content home-main">
+        <section class="portada-entrada">
+            <h1 class="portada-titular">Temario, test y app para la oposición a Técnico Comercial y Economista del Estado</h1>
+            <p class="portada-entradilla">Los temas de los cinco ejercicios en PDF y Word, un simulador con las preguntas de los exámenes oficiales y una app para organizar la preparación, gratis. En el blog, artículos sobre política económica y comercio internacional.</p>
+        </section>
 
-        <!-- novedades:portada:inicio -->
-            <section class="novedades-franja" aria-labelledby="novedades-titulo">
-                <h2 id="novedades-titulo" class="novedades-rotulo">Novedades</h2>
-                <ul class="novedades-lista">
-                <li class="novedad"><a href="index.html"><time datetime="2026-10-18">18 oct.</time><span class="novedad-seccion">Web</span><span class="novedad-texto">Nuevo diseño de la web y de la app</span></a></li>
-                <li class="novedad"><a href="oposicion/temario.html"><time datetime="2026-10-17">17 oct.</time><span class="novedad-seccion">Temario</span><span class="novedad-texto">Los temas, los PDF y los Word, con licencia Creative Commons BY-NC-ND 4.0</span></a></li>
-                <li class="novedad"><a href="app/"><time datetime="2026-10-16">16 oct.</time><span class="novedad-seccion">App</span><span class="novedad-texto">App 1.16.0: pizarra, subrayado de los temas y avisos del proceso selectivo al momento</span></a></li>
-                </ul>
-                <a class="boton boton--texto novedades-todas" href="novedades.html">Todas las novedades</a>
-            </section>
-        <!-- novedades:portada:fin -->
-
-        <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
-        <div id="app-banner" class="app-banner">
-            <div class="app-banner-text">
-                <div class="app-banner-cabecera">
-                    <img class="app-banner-logo" src="app/favicon/favicon.svg" alt="" width="44" height="44">
-                    <div>
-                        <h3 class="app-banner-title"><a class="app-banner-enlace" href="app/">Tu oposición, semana a semana</a></h3>
-                        <span class="app-banner-sub">App gratuita para Android, iPhone y ordenador</span>
-                    </div>
-                </div>
-                <p>Abres la app y ves qué temas te tocan antes del próximo cante, cuánto falta para el examen y qué probabilidad llevas de que salga uno que te sabes. Y si tu preparador cancela una clase, la publicas y otro preparador verificado puede cogerla: no pierdes la semana de cante.</p>
-                <ul class="app-banner-chips">
-                    <li>Cronograma de vueltas</li>
-                    <li>Sorteo y cronómetro</li>
-                    <li>Probabilidad de aprobar</li>
-                    <li>Preparador si te cancelan la clase</li>
-                    <li>Test con tu historial</li>
-                </ul>
-            </div>
-            <div class="app-banner-links">
-                <a id="app-link-apk" class="download-btn" rel="noopener" href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/app-latest/oposicion-tcee.apk">Descargar para Android</a>
-                <a id="app-link-play" class="insignia-play" target="_blank" rel="noopener" hidden><img src="app/promo/google-play-es.png" alt="Disponible en Google Play" width="140" height="54"></a>
-                <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
-                <a class="download-btn download-btn--sec" href="app/abrir/">Abrir en el navegador</a>
-                <a class="app-banner-more" href="app/instalar.html">Cómo instalarla: Android, iPhone y ordenador</a>
-                <span id="app-play-pronto" class="pronto-play">Próximamente en Google Play</span>
-            </div>
-            <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note"> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
-        </div>
 
         <!-- Cards Section -->
         <div class="home-cards">
@@ -221,6 +176,51 @@
                 </a>
             </div>
         </div>
+        <section class="novedades-portada" aria-labelledby="novedades-titulo">
+            <h2 id="novedades-titulo" class="novedades-portada-titulo">Novedades</h2>
+        <!-- App móvil: los enlaces se rellenan desde app-config.json (app-banner.js) -->
+        <div id="app-banner" class="app-banner">
+            <div class="app-banner-text">
+                <div class="app-banner-cabecera">
+                    <img class="app-banner-logo" src="app/favicon/favicon.svg" alt="" width="44" height="44">
+                    <div>
+                        <h3 class="app-banner-title"><a class="app-banner-enlace" href="app/">Tu oposición, semana a semana</a></h3>
+                        <span class="app-banner-sub">App gratuita para Android, iPhone y ordenador</span>
+                    </div>
+                </div>
+                <p>Abres la app y ves qué temas te tocan antes del próximo cante, cuánto falta para el examen y qué probabilidad llevas de que salga uno que te sabes. Y si tu preparador cancela una clase, la publicas y otro preparador verificado puede cogerla: no pierdes la semana de cante.</p>
+                <ul class="app-banner-chips">
+                    <li>Cronograma de vueltas</li>
+                    <li>Sorteo y cronómetro</li>
+                    <li>Probabilidad de aprobar</li>
+                    <li>Preparador si te cancelan la clase</li>
+                    <li>Test con tu historial</li>
+                </ul>
+            </div>
+            <div class="app-banner-links">
+                <a id="app-link-apk" class="download-btn" rel="noopener" href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/releases/download/app-latest/oposicion-tcee.apk">Descargar para Android</a>
+                <a id="app-link-play" class="insignia-play" target="_blank" rel="noopener" hidden><img src="app/promo/google-play-es.png" alt="Disponible en Google Play" width="140" height="54"></a>
+                <a id="app-link-ios" class="download-btn" target="_blank" rel="noopener" hidden>App Store</a>
+                <a class="download-btn download-btn--sec" href="app/abrir/">Abrir en el navegador</a>
+                <a class="app-banner-more" href="app/instalar.html">Cómo instalarla: Android, iPhone y ordenador</a>
+                <span id="app-play-pronto" class="pronto-play">Próximamente en Google Play</span>
+            </div>
+            <p class="app-banner-note">Sin anuncios y sin pagar nada. Tus datos solo los ves tú.<span id="app-banner-note"> En Android se descarga un fichero APK: al abrirlo, el móvil pedirá permiso para instalar aplicaciones de origen desconocido.</span></p>
+        </div>
+
+        <!-- novedades:portada:inicio -->
+            <div class="novedades-franja">
+                <p class="novedades-rotulo">Más novedades</p>
+                <ul class="novedades-lista">
+                <li class="novedad"><a href="index.html"><time datetime="2026-10-18">18 oct.</time><span class="novedad-seccion">Web</span><span class="novedad-texto">Nuevo diseño de la web y de la app</span></a></li>
+                <li class="novedad"><a href="app/"><time datetime="2026-10-16">16 oct.</time><span class="novedad-seccion">App</span><span class="novedad-texto">App 1.16.0: pizarra, subrayado de los temas y avisos del proceso selectivo al momento</span></a></li>
+                <li class="novedad"><a href="oposicion/por-que-tcee.html"><time datetime="2026-10-15">15 oct.</time><span class="novedad-seccion">Guía</span><span class="novedad-texto">Guía de la oposición: qué es, requisitos, ejercicios y preguntas frecuentes</span></a></li>
+                </ul>
+                <a class="boton boton--texto novedades-todas" href="novedades.html">Todas las novedades</a>
+            </div>
+        <!-- novedades:portada:fin -->
+        </section>
+
         <section class="portada-tcee" aria-labelledby="portada-tcee-titulo">
             <h2 id="portada-tcee-titulo">¿Qué es la oposición a TCEE?</h2>
             <p>Los Técnicos Comerciales y Economistas del Estado forman el cuerpo de la Administración General del Estado especializado en la elaboración y ejecución de las políticas económica y comercial. La oposición tiene cinco ejercicios: un test y un dictamen de coyuntura, idiomas, dos ejercicios orales de economía y uno de marketing, econometría y derecho.</p>
