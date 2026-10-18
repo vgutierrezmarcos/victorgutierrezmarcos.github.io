@@ -17,7 +17,7 @@
 % construir-tema.py para la web y Word; si se añade una, añadirla allí):
 %   \autor{Marshall}, \concepto{…}, \vertema{3.A.9}, \vect{x}, \fuente{…},
 %   \grafico[ancho]{nombre}; cajas notaopositor, anotaciones, ideaclave y
-%   esquema.
+%   esquema; figuracaja y tablacaja (gráfico o tabla dentro de una caja).
 %   \minutos{2,5}   tras el título de un apartado; entrada decimal, se ve 2′30″.
 %   \tiempo{2,5}    minutos en el texto: «introducción, \tiempo{2,5}» → 2′30″.
 %   \funcionclave{C(\vect{w},q)=\min_{\vect{z}}\{\vect{w}\cdot\vect{z}:F(\vect{z})\geq q\}}
@@ -402,6 +402,19 @@
 \newcommand{\grafico}[2][0.75\textwidth]{%
   \includegraphics[width=#1]{#2}}
 \graphicspath{{graficos/}{../graficos/}}
+% Gráfico o tabla dentro de una caja (anotaciones, ideaclave…): los flotantes
+% (figure, table) no pueden ir dentro de una tcolorbox, así que se usan
+% figuracaja y tablacaja, con lo mismo dentro (\caption, \label, \grafico o
+% tabular, \fuente) y la misma numeración «Gráfico n»/«Tabla n». Van en un
+% bloque que no se parte entre páginas. Para la web y Word, construir-tema.py
+% los convierte en figure y table (pandoc-macros.tex).
+%   \begin{anotaciones} … \begin{figuracaja}\caption{…}\label{fig:x}
+%   \grafico[0.5\textwidth]{x}\fuente{…}\end{figuracaja} … \end{anotaciones}
+\newcommand{\tcee@encaja}[1]{\par\addvspace{6pt}\noindent\begin{minipage}{\linewidth}%
+  \centering\normalsize\captionsetup{type=#1}}
+\newcommand{\tcee@fincaja}{\end{minipage}\par\addvspace{6pt}}
+\newenvironment{figuracaja}{\tcee@encaja{figure}}{\tcee@fincaja}
+\newenvironment{tablacaja}{\tcee@encaja{table}}{\tcee@fincaja}
 
 % --- Notas al pie ---------------------------------------------------------------
 \renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}

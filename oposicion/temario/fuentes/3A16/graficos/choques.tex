@@ -2,7 +2,7 @@
 % Izquierda (preferencias): p^D(x;a0) = 3,8 - 0,7 x sube a p^D(x;a1) = 4,8 - 0,7 x;
 %   oferta p^S(q) = 0,5 + 0,8 q. E0 = (2,2; 2,26), E1 = (2,867; 2,793).
 %   Sombreado: ganancia segura de excedente del productor (entre p0* y p1*, sobre la oferta).
-% Derecha (tecnología): p^S(q;a0) = 0,5 + 0,8 q baja a p^S(q;a1) = -0,4 + 0,8 q;
+% Derecha (tecnología): la curva de oferta se desplaza hacia abajo, de p^S(q;a0) = 0,5 + 0,8 q a p^S(q;a1) = -0,4 + 0,8 q;
 %   demanda p^D(x) = 3,8 - 0,7 x. E0 = (2,2; 2,26), E1 = (2,8; 1,84).
 %   Sombreado: ganancia segura de excedente del consumidor (entre p1* y p0*, bajo la demanda).
 % Autor: Víctor Gutiérrez Marcos
@@ -36,7 +36,7 @@
   \begin{scope}[xshift=7.6cm]
     % 6: ejes y título
     \capa{6}{\ejes{$x,q$}{$p$}{5.0}{5.0}}
-    \capa{6}{\node[titulo] at (2.5,5.3) {\strut Tecnología: la oferta baja};}
+    \capa{6}{\node[titulo] at (2.5,5.3) {\strut Tecnología: la curva de oferta\\\strut se desplaza hacia abajo};}
     % 7: demanda y oferta iniciales, equilibrio E0
     \capa{7}{\draw[curva1] (0.2,{pd(0.2)}) -- (4.6,{pd(4.6)}) node[etiqueta,right] {$p^D(x)$};}
     \capa{7}{\draw[curva3] (0,{ps(0)}) -- (4.4,{ps(4.4)}) node[etiqueta,right] {$p^S(q;\alpha_0)$};}

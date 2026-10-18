@@ -8,7 +8,23 @@
 
 **Pregunta:** ¿cómo se forma el precio en un mercado en el que nadie puede fijarlo, llega el mercado a él por sí solo, es bueno el resultado y qué cambia con el plazo?
 
-**Rasgos** (I.1): racionalidad, información perfecta, producto homogéneo, atomicidad (precio-aceptantes) y libre entrada y salida a largo plazo. Equilibrio parcial: un mercado con los demás precios dados, que resume el numerario (precio 1), y preferencias cuasilineales (sin efecto renta).
+**Supuestos** (I.1, tabla `tab:supuestos`): la lista canónica de abajo. Equilibrio parcial: un mercado con los demás precios dados, que resume el numerario (precio 1), y preferencias cuasilineales (sin efecto renta).
+
+## Supuestos canónicos de las estructuras de mercado
+
+Regla de CRITERIOS.md § 6 (Víctor, 18/10/2026). Los cuatro temas de estructuras de mercado (3.A.16 competencia perfecta, 3.A.17 monopolio, 3.A.18 competencia monopolística y 3.A.19 oligopolio) parten de **esta misma lista**, con este orden y estas palabras (los nombres en negrita son fijos), en una tabla como la `tab:supuestos` del 3.A.16 (columnas «N.º», «Supuesto» y «Qué significa»). Cada tema la repite idéntica y **marca de forma visible el supuesto que levanta** (fila resaltada o con «se levanta: …»); el 3.A.16 la presenta completa y deja en una `notaopositor`: «Los temas 3.A.17 a 3.A.19 parten de esta misma lista y marcan el supuesto que levantan».
+
+| N.º | Supuesto | Qué significa |
+|---|---|---|
+| 1 | **Muchos compradores y vendedores (precio-aceptantes)** | cada uno es pequeño respecto al mercado y sus decisiones individuales no mueven el precio: todos son precio-aceptantes, y el precio lo determinan las decisiones de todos juntos, no las de ninguno en particular |
+| 2 | **Producto homogéneo** | los consumidores ven como sustitutivos perfectos las unidades de todas las empresas, de modo que solo les importa el precio |
+| 3 | **Libre entrada y salida** | a largo plazo, si hay beneficios extraordinarios, entran empresas hasta agotarlos, y si hay pérdidas, salen |
+| 4 | **Información perfecta y simétrica** | los consumidores conocen las características del producto y el precio, y las empresas, su tecnología y el precio; nadie sabe más que los demás |
+| 5 | **Agentes racionales** | los consumidores maximizan su utilidad y las empresas, su beneficio |
+
+Qué levanta cada tema (orientativo; lo concreta cada revisión): 3.A.17, el 1 por el lado de la oferta (un solo vendedor, que fija el precio), normalmente con barreras que impiden el 3; 3.A.18, el 2 (producto diferenciado), con el 3 en pie; 3.A.19, el 1 (pocos vendedores, que se saben interdependientes), a menudo con barreras al 3. Levantar el 4 lleva a la economía de la información (3.A.13).
+
+## Presentación de referencia (3.A.16), continuación
 
 **Supuestos del modelo** (I.2 i): 2 bienes, x y el numerario n; I consumidores i = 1,…,I con dotación de numerario W̄_i (incluye su parte de los beneficios); J empresas j = 1,…,J con costes C_j(w⃗,q_j) y w⃗ fijo; **número de empresas fijo y todos los factores variables** en I y II (es el largo plazo sin libre entrada).
 
@@ -24,13 +40,13 @@ Supuesto: CMg_j creciente en el tramo relevante (no hace falta F estrictamente c
 
 **Estudio del equilibrio** (II): existencia por Bolzano con z(p) = x(p) − q(p) continua (no convexidades: salto de la oferta en c̄); unicidad con curvas normales (sin intercambio y precio indeterminado si max φ_i'(0) < min CMg_j(0)); estabilidad (ficha `tatonnement`) y telaraña (ficha `telarana`); bienestar (ficha `excedentes-bienestar`); estática comparativa con z(p;α) y el principio de correspondencia, dp*/dα = −(∂z/∂α)/z'(p*); impuesto (ficha `incidencia-equilibrio-parcial`).
 
-**Plazos** (III; tabla `tab:plazos`): periodo de mercado, corto y largo plazo de Marshall (ficha `marshall-equilibrio-parcial`) y clasificación moderna (MWG 10.F):
+**Plazos** (III; tabla `tab:plazos`): solo con la terminología moderna (MWG 10.F); los periodos de Marshall (periodo de mercado, valor normal; ficha `marshall-equilibrio-parcial`) van aparte, en una caja de antecedente histórico con el gráfico del pescado dentro, sin mezclarlos con estos (Víctor, 18/10/2026):
 - **corto plazo**: C_j(q_j) = CF_j + CV_j(q_j), CF hundido; oferta sobre el **mínimo de explotación** (min CVMe), pérdidas como mucho CF_j; q^CP(p) = Σ_jq_j^CP(p);
 - **largo plazo sin libre entrada**: todos los factores variables, J fijo; oferta sobre el min CMe; **Le Chatelier-Samuelson**, ∂q^LP_j/∂p ≥ ∂q^CP_j/∂p ≥ 0 (ficha `costes-corto-largo-plazo`); beneficio no negativo, que perdura como renta si la entrada está cerrada (Clark, 1899; cuasirrentas de Marshall);
 - **largo plazo con libre entrada**: (p*, q*, J*) con q* que maximiza p*q − C(q), x(p*) = J*q* y p*q* − C(q*) = 0 ⇒ p* = CMg(q*) = CMe(q*) = min CMe. Casos: rendimientos constantes (p* = c, J* y q* indeterminados con J*q* = x(c)); decrecientes en todo el dominio (no hay equilibrio); crecientes en todo el dominio (no hay equilibrio competitivo: monopolio natural, 3.A.17); **CMe en U** (`\funcionclave` `eq:largo-plazo`): p* = c̄ = min CMe, q* = q̄, J* = x(c̄)/q̄ (entero). Eficiencia productiva y asignativa (1TFEB sin convexidad).
 - **Oferta de la industria a largo plazo** con C(q_j; q): costes **constantes** (horizontal), **crecientes** (deseconomías externas: creciente, más elástica que la de corto) y **decrecientes** (economías externas de Marshall: decreciente). Economías externas pecuniarias y tecnológicas (Viner, 1931; Scitovsky, 1954); solo las tecnológicas causan ineficiencia (3.A.23). Una empresa con rendimientos crecientes **internos** en todo el dominio no es compatible con la competencia.
 
-**Gráficos de referencia** (`oposicion/temario/fuentes/3A16/graficos/`): `agregacion-demanda.tex` (apoyo); `oferta-empresa.tex` (CMg, CMe, salto en c̄; **imprescindible**); `equilibrio.tex` (suma horizontal de las ofertas y equilibrio, D y S; **imprescindible**); `no-convexidad.tex` y `multiplicidad.tex` (apoyo); `choques.tex` (dos paneles; apoyo); `oferta-corto-plazo.tex` (mínimo de explotación); `libre-entrada.tex` (tres casos de rendimientos; profundización); `corto-largo-industria.tex` (empresa | industria, A → B → C tras un aumento de la demanda; **imprescindible**); `oferta-largo-plazo.tex` (costes constantes, crecientes y decrecientes; apoyo). Tablas de color: `tab:plazos`, `tab:beneficio-economico`. Anexo D del 3.A.16: el equilibrio parcial como caso particular del general (numerario, ley de Walras, θ_ij).
+**Gráficos de referencia** (`oposicion/temario/fuentes/3A16/graficos/`): `agregacion-demanda.tex` (apoyo); `oferta-empresa.tex` (CMg, CMe, salto en c̄; **imprescindible**); `equilibrio.tex` (suma horizontal de las ofertas y equilibrio, D y S; **imprescindible**); `no-convexidad.tex` y `multiplicidad.tex` (apoyo); `choques.tex` (dos paneles; apoyo); `oferta-corto-plazo.tex` (mínimo de explotación); `libre-entrada.tex` (tres casos de rendimientos; profundización); `corto-largo-industria.tex` (empresa | industria, A → B → C tras un aumento de la demanda; **imprescindible**); `oferta-largo-plazo.tex` (costes constantes, crecientes y decrecientes; apoyo). Tablas de color: `tab:supuestos` (lista canónica), `tab:plazos`, `tab:beneficio-economico` (dentro de su caja de anotaciones, como el gráfico `marshall-periodos`). Anexo D del 3.A.16: el equilibrio parcial como caso particular del general (numerario, ley de Walras, θ_ij).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |

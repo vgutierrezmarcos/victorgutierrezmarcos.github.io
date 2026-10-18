@@ -435,6 +435,26 @@ function Pandoc(doc)
         for clase, estilo in pairs(estilos_docx) do
           if b.classes:includes(clase) and es_docx then
             b.attributes['custom-style'] = estilo
+            -- Gráficos y tablas dentro de la caja (figuracaja, tablacaja): Word
+            -- les da sus propios estilos (título, imagen, fuente), que no llevan
+            -- el borde ni el fondo de la caja; se marcan para que
+            -- construir-tema.py (cajas_docx) se los ponga
+            local id = estilo:gsub(' ', '')
+            local k = 1
+            while k <= #b.content do
+              local c = b.content[k]
+              local flotante = c.t == 'Figure' or c.t == 'Table'
+              if c.t == 'Div' and c.identifier ~= '' then
+                -- \begin{table}…\label: pandoc lo deja en un Div con la etiqueta
+                c:walk({ Table = function() flotante = true end, Figure = function() flotante = true end })
+              end
+              if flotante then
+                b.content:insert(k, pandoc.RawBlock('openxml', '<!--tcee-caja-ini:' .. id .. '-->'))
+                b.content:insert(k + 2, pandoc.RawBlock('openxml', '<!--tcee-caja-fin-->'))
+                k = k + 2
+              end
+              k = k + 1
+            end
           end
         end
         -- En Word las cajas no tienen título propio (en HTML lo pone el CSS)

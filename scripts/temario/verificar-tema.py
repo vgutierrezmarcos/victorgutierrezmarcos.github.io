@@ -61,7 +61,7 @@ def verificar(tema):
         for m in re.finditer(patron, tex):
             linea = tex.count('\n', 0, m.start()) + 1
             errores.append(f'{texto} en {tema.archivo}.tex:{linea}: {m.group(0)[:60]}')
-    figuras = re.findall(r'\\begin\{figure\}(.*?)\\end\{figure\}', tex, re.S)
+    figuras = [f[1] for f in re.findall(r'\\begin\{(figure|figuracaja)\}(.*?)\\end\{\1\}', tex, re.S)]
     for i, fig in enumerate(figuras, 1):
         if '\\fuente{' not in fig:
             cap = re.search(r'\\caption\{([^}]*)', fig)

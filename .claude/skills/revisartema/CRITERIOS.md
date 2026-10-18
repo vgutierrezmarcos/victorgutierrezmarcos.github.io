@@ -373,6 +373,10 @@ el texto original y lo que se hizo.
   `datos/*.csv` con el último dato y la fuente en la cabecera del CSV.
 - Fotos, logotipos o escaneos que no son gráficos se quedan como imagen. Las
   capturas de tablas se convierten en tablas LaTeX.
+- Si un gráfico o una tabla pertenecen a una caja (anotaciones, ejemplo…),
+  van dentro de ella (Víctor, 18/10/2026): con `figuracaja` o `tablacaja` de
+  `tcee.sty` en lugar de `figure`/`table` (mismo `\caption`, `\label` y
+  `\fuente`, misma numeración; en la web y en Word salen dentro de la caja).
 
 ## 8. Guion del cante y vídeo
 

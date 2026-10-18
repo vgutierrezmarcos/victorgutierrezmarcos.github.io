@@ -333,6 +333,10 @@ def preparar_pandoc(tema, tex, formato):
     cuerpo = open(tex, encoding='utf-8').read()
     numeros = etiquetas_aux(tema)
     cuerpo = expandir_funcionclave(expandir_optim(cuerpo))
+    # Gráfico o tabla dentro de una caja (figuracaja, tablacaja de tcee.sty): en
+    # la web y en Word son figuras y tablas normales dentro del Div de la caja
+    cuerpo = re.sub(r'\\(begin|end)\{figuracaja\}', r'\\\1{figure}', cuerpo)
+    cuerpo = re.sub(r'\\(begin|end)\{tablacaja\}', r'\\\1{table}', cuerpo)
     # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
     # gráfico pequeño en la web; se trata como 1\textwidth
     cuerpo = re.sub(r'(?<![\d.])\\(textwidth|linewidth|columnwidth)\b', r'1\\\1', cuerpo)
@@ -632,10 +636,69 @@ def retocar_docx(ruta, anio):
     numeración de páginas por partes y licencia en el pie."""
     partes, infos = _partes_docx(ruta)
     partes['word/document.xml'] = conservar_listas_docx(partes['word/document.xml'].decode('utf-8')).encode('utf-8')
+    cajas_docx(partes)
     numerar_paginas_docx(partes)
     licencia_pie_docx(partes, anio)
     imagenes_notas_docx(partes)
     _guardar_docx(ruta, partes, infos)
+
+
+def cajas_docx(partes):
+    """Gráficos y tablas dentro de una caja (figuracaja, tablacaja): tcee.lua
+    deja marcas <!--tcee-caja-ini:Estilo--> … <!--tcee-caja-fin--> alrededor;
+    a sus párrafos (título, imagen, fuente) se les pone el borde y el fondo del
+    estilo de la caja, para que Word los una a ella, y a las tablas, el fondo."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    if '<!--tcee-caja-ini:' not in xml:
+        return
+    estilos = partes['word/styles.xml'].decode('utf-8')
+    previos = r'(?:<w:(?:pStyle|keepNext|keepLines|pageBreakBefore|framePr|widowControl|numPr)\b(?:[^<]|<(?!/w:pPr>))*?(?:/>|</w:(?:framePr|numPr)>))*'
+
+    def formato(estilo):
+        m = re.search(rf'w:styleId="{estilo}"[^>]*>(.*?)</w:style>', estilos, re.S)
+        bdr = re.search(r'<w:pBdr>.*?</w:pBdr>', m.group(1), re.S) if m else None
+        shd = re.search(r'<w:shd [^>]*/>', m.group(1)) if m else None
+        return (bdr.group(0) if bdr else '') + (shd.group(0) if shd else ''), shd.group(0) if shd else ''
+
+    def parrafo(p, extra):
+        p = re.sub(r'<w:pBdr>.*?</w:pBdr>|<w:shd [^>]*/>(?=(?:(?!<w:r[ >]).)*</w:pPr>)', '', p, flags=re.S)
+        if '<w:pPr>' in p:
+            return re.sub(r'(<w:pPr>' + previos + ')', lambda m: m.group(1) + extra, p, count=1, flags=re.S)
+        return re.sub(r'^<w:p( [^>]*)?>', lambda m: m.group(0) + f'<w:pPr>{extra}</w:pPr>', p, count=1)
+
+    def zona(m):
+        extra, shd = formato(m.group(1))
+        cuerpo = m.group(2)
+        # Párrafos fuera de las tablas: borde y fondo; tablas: fondo
+        trozos = re.split(r'(<w:tbl>.*?</w:tbl>)', cuerpo, flags=re.S)
+        for i, t in enumerate(trozos):
+            if t.startswith('<w:tbl>'):
+                tblpr = re.search(r'<w:tblPr>.*?</w:tblPr>', t, re.S)
+                if shd and tblpr and '<w:shd' not in tblpr.group(0):
+                    # En tblPr, shd va antes de tblLayout, tblCellMar y tblLook
+                    nuevo = re.sub(r'(?=<w:(?:tblLayout|tblCellMar|tblLook|tblCaption|tblDescription)\b)|(?=</w:tblPr>)',
+                                   lambda _: shd, tblpr.group(0), count=1)
+                    t = t.replace(tblpr.group(0), nuevo, 1)
+                if shd:
+                    # Word no siempre pinta el fondo de la tabla: también en cada celda sin fondo propio
+                    def celda(m):
+                        tcpr = m.group(0)
+                        if '<w:shd' in tcpr:
+                            return tcpr
+                        return re.sub(r'(?=<w:(?:noWrap|tcMar|textDirection|tcFitText|vAlign|hideMark)\b)|(?=</w:tcPr>)',
+                                      lambda _: shd, tcpr, count=1)
+                    t = re.sub(r'<w:tcPr>.*?</w:tcPr>', celda, t, flags=re.S)
+                    t = re.sub(r'<w:tc>(?!<w:tcPr>)', lambda _: f'<w:tc><w:tcPr>{shd}</w:tcPr>', t)
+                trozos[i] = t
+            else:
+                # (los párrafos vacíos, <w:p />, se dejan como están)
+                trozos[i] = re.sub(r'<w:p\s*/>|<w:p(?: [^>]*[^/>])?>.*?</w:p>',
+                                   lambda p: p.group(0) if p.group(0).endswith('/>') and '</w:p>' not in p.group(0)
+                                   else parrafo(p.group(0), extra), t, flags=re.S)
+        return ''.join(trozos)
+
+    xml = re.sub(r'<!--tcee-caja-ini:(\w+)-->(.*?)<!--tcee-caja-fin-->', zona, xml, flags=re.S)
+    partes['word/document.xml'] = xml.encode('utf-8')
 
 
 def licencia_pie_docx(partes, anio):
