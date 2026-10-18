@@ -6,6 +6,7 @@ import '../models/estructura.dart';
 import '../models/frecuencia_test.dart';
 import '../models/oposicion.dart';
 import '../models/pregunta.dart';
+import '../models/revisado.dart';
 import '../models/temario.dart';
 
 /// Acceso al contenido que publica la web de una oposición (con caché offline).
@@ -42,6 +43,17 @@ class ContenidoRepo {
 
   Future<Temario> temario({bool forzar = false}) async =>
       Temario.fromJson(await _http.json(oposicion.urlTemario, preferirCache: !forzar, forzar: forzar));
+
+  /// Temas revisados, exclusivos de la app (solo TCEE). Sin red ni copia, o
+  /// si el manifiesto no se entiende, vacío: la app sigue con el temario de la web.
+  Future<ManifiestoRevisados> revisados({bool forzar = false}) async {
+    if (!oposicion.esPrincipal) return ManifiestoRevisados.vacio;
+    try {
+      return ManifiestoRevisados.fromJson(await _http.json(urlManifiestoRevisados, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return ManifiestoRevisados.vacio;
+    }
+  }
 
   Future<List<CategoriaEnlaces>> enlaces({bool forzar = false}) async =>
       CategoriaEnlaces.listaFromJson(await _http.json(oposicion.urlEnlaces, preferirCache: !forzar, forzar: forzar));
@@ -92,7 +104,7 @@ class ContenidoRepo {
   /// Refresco silencioso de todo el contenido (al arrancar con red).
   Future<void> refrescarTodo() async {
     var hayNuevo = false;
-    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest]) {
+    for (final u in [oposicion.urlPreguntas, oposicion.urlBloques, oposicion.urlTemario, oposicion.urlEnlaces, oposicion.urlEstructura, if (oposicion.esPrincipal) oposicion.urlFrecuenciaTest, if (oposicion.esPrincipal) urlManifiestoRevisados]) {
       if (await _http.refrescar(u)) hayNuevo = true;
     }
     if (hayNuevo) cambios.value++;
