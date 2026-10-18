@@ -69,7 +69,7 @@ class _CantesPageState extends ConsumerState<CantesPage> with TickerProviderStat
             ],
           ),
         ],
-        bottom: barraPestanas(context, controller: pestanas, textos: preparador ? const ['CLASES', 'CANTAR'] : const ['AGENDA', 'CANTAR', 'DIARIO'], onTap: (i) => ref.read(subpestanaCantesProvider.notifier).state = i),
+        bottom: barraPestanas(context, controller: pestanas, textos: preparador ? const ['Clases', 'Cantar'] : const ['Agenda', 'Cantar', 'Diario'], onTap: (i) => ref.read(subpestanaCantesProvider.notifier).state = i),
       ),
       // IndexedStack y no TabBarView: el cronómetro sigue vivo al mirar la agenda o el diario.
       body: IndexedStack(

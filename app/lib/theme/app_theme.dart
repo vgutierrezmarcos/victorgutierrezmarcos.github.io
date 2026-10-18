@@ -92,36 +92,39 @@ class PaletaMarca {
     primario: Color(0xFF5F2987),
     primarioOscuro: Color(0xFF4A1F6B),
     primarioClaro: Color(0xFF7A3CA8),
-    primarioPalido: Color(0xFFF3EEF7),
+    primarioPalido: Color(0xFFF1EBF6),
     fondo: Color(0xFFE2EFD9),
     fondoClaro: Color(0xFFEDF5E7),
-    crema: Color(0xFFFAF9F6),
-    texto: Color(0xFF2D2D2D),
-    textoSuave: Color(0xFF555555),
-    textoClaro: Color(0xFF777777),
+    crema: Color(0xFFFBFAF6),
+    texto: Color(0xFF2A2530),
+    textoSuave: Color(0xFF5E5866),
+    textoClaro: Color(0xFF7A7480),
     borde: Color(0xFFC8D8C0),
     bordeClaro: Color(0xFFDDE8D6),
     dorado: Color(0xFFB8860B),
     doradoClaro: Color(0xFFDAA520),
-    dPrimario: Color(0xFF9B6BC7),
-    dPrimarioOscuro: Color(0xFF7A4FAD),
-    dPrimarioClaro: Color(0xFFB48FDA),
-    dPrimarioPalido: Color(0xFF2A2040),
-    dRelleno: Color(0xFF6A3596),
-    dRellenoOscuro: Color(0xFF4A2370),
-    dFondo: Color(0xFF1A1A2E),
-    dFondoClaro: Color(0xFF1E1E34),
-    dCrema: Color(0xFF222240),
-    dSuperficie: Color(0xFF252545),
-    dTexto: Color(0xFFE0E0E0),
-    dTextoSuave: Color(0xFFB0B0B0),
-    dTextoClaro: Color(0xFF888888),
-    dBorde: Color(0xFF3A3A5C),
-    dBordeClaro: Color(0xFF2E2E4A),
-    dDorado: Color(0xFFD4A520),
-    dDoradoClaro: Color(0xFFE0B840),
-    dCabecera: Color(0xFF6A3596),
-    dCabeceraOscura: Color(0xFF4A2370),
+    // Oscuro: berenjena, como [data-theme="dark"] de la web. Los rellenos
+    // (botones, pestaña activa) son lila claro con el texto oscuro encima.
+    dPrimario: Color(0xFFC3A2E0),
+    dPrimarioOscuro: Color(0xFFA57FCB),
+    dPrimarioClaro: Color(0xFFD4BDEB),
+    dPrimarioPalido: Color(0xFF2E2538),
+    dRelleno: Color(0xFFC3A2E0),
+    dRellenoOscuro: Color(0xFFA57FCB),
+    dFondo: Color(0xFF16131A),
+    dFondoClaro: Color(0xFF1B1820),
+    dCrema: Color(0xFF26212B),
+    dSuperficie: Color(0xFF211D26),
+    dTexto: Color(0xFFECE6EF),
+    dTextoSuave: Color(0xFFB3AABB),
+    dTextoClaro: Color(0xFF8F8698),
+    dBorde: Color(0xFF3A3342),
+    dBordeClaro: Color(0xFF2E2935),
+    dDorado: Color(0xFFD9AE45),
+    dDoradoClaro: Color(0xFFE6C46E),
+    dCabecera: Color(0xFF3E1B5B),
+    dCabeceraOscura: Color(0xFF3E1B5B),
+    dSobreRelleno: Color(0xFF1C1622),
     serif: 'Pagella',
     sans: 'SourceSans3',
   );
@@ -233,15 +236,31 @@ class Paleta {
   static Color get dCabeceraOscura => _m.dCabeceraOscura;
   static Color get dSobreRelleno => _m.dSobreRelleno;
 
-  // Semánticos (simulador): tono oscuro para texto e iconos…
-  static const acierto = Color(0xFF2E7D32);
-  static const fallo = Color(0xFFC62828);
-  static const blanco = Color(0xFF9E9E9E);
+  // Semánticos de la marca (--color-success y --color-error de la web): verde
+  // oliva y granate, con un tono medio que se lee en claro y en oscuro.
+  static const acierto = Color(0xFF4A7D44);
+  static const fallo = Color(0xFFA23A4C);
+  static const blanco = Color(0xFF8F8698);
   // …y los de simulador.html para bordes y fondos de las opciones.
-  static const aciertoWeb = Color(0xFF4CAF50);
-  static const falloWeb = Color(0xFFF44336);
-  static const avisoWeb = Color(0xFFFF9800);
+  static const aciertoWeb = Color(0xFF5E9156);
+  static const falloWeb = Color(0xFFB4485A);
+  static const avisoWeb = Color(0xFFB8860B);
 }
+
+/// Espacios (los de styles.css: --e1 … --e7).
+class Espacio {
+  Espacio._();
+  static const e1 = 4.0, e2 = 8.0, e3 = 12.0, e4 = 16.0, e5 = 24.0, e6 = 32.0;
+}
+
+/// Radios: controles, tarjetas y píldoras (--radius-* de la web).
+class Radios {
+  Radios._();
+  static const control = 4.0, boton = 6.0, tarjeta = 8.0, pildora = 999.0;
+}
+
+/// Versalitas de la serif (Pagella las tiene), en lugar de mayúsculas forzadas.
+const versalitas = [FontFeature.enable('c2sc'), FontFeature.enable('smcp')];
 
 /// Familias incluidas en assets/fonts. La web usa Palatino Linotype, que no
 /// existe en Android ni iOS: TeX Gyre Pagella es su equivalente libre (deriva
@@ -326,27 +345,82 @@ extension ThemeX on BuildContext {
   TextTheme get textos => Theme.of(this).textTheme;
   bool get temaOscuro => Theme.of(this).brightness == Brightness.dark;
 
-  /// Degradado morado de la cabecera, los grupos de temas y los botones de la web.
-  LinearGradient get degradadoPrimario => LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: temaOscuro ? [Paleta.dCabecera, Paleta.dCabeceraOscura] : [Paleta.primario, Paleta.primarioOscuro],
-      );
+  /// Morado liso de la cabecera y de los bloques que la imitan (la web ya no
+  /// usa degradados; se mantiene como degradado de un solo color por la API).
+  LinearGradient get degradadoPrimario {
+    final c = colorCabecera;
+    return LinearGradient(colors: [c, c]);
+  }
+
+  Color get colorCabecera => temaOscuro ? Paleta.dCabecera : Paleta.primario;
 
   /// Color de los rellenos (en claro, el morado de la web) y del texto encima.
   Color get relleno => temaOscuro ? Paleta.dRelleno : Paleta.primario;
   Color get sobreRelleno => temaOscuro ? Paleta.dSobreRelleno : Colors.white;
 
-  /// Línea dorada que cierra la cabecera de la web (.site-header::after).
+  /// Filete dorado liso que cierra la cabecera (border-bottom de .site-header).
   LinearGradient get degradadoDorado {
     final oro = temaOscuro ? Paleta.dDorado : Paleta.dorado;
-    final claro = temaOscuro ? Paleta.dDoradoClaro : Paleta.doradoClaro;
-    return LinearGradient(colors: [oro.withValues(alpha: 0), oro, claro, oro, oro.withValues(alpha: 0)], stops: const [0, 0.2, 0.5, 0.8, 1]);
+    return LinearGradient(colors: [oro, oro]);
   }
 
-  /// Sombra suave de las tarjetas (--shadow-sm).
-  List<BoxShadow> get sombraSuave => [BoxShadow(color: Colors.black.withValues(alpha: temaOscuro ? 0.3 : 0.08), blurRadius: 3, offset: const Offset(0, 1))];
+  /// Sombra de las tarjetas (--shadow-sm): apenas un punto de profundidad.
+  List<BoxShadow> get sombraSuave => [BoxShadow(color: const Color(0xFF2A2530).withValues(alpha: temaOscuro ? 0.0 : 0.05), blurRadius: 2, offset: const Offset(0, 1))];
 }
+
+/// Borde de los botones de la web (.boton): fino alrededor y de 3 px abajo, más
+/// oscuro, que da relieve; al pulsar se queda en 1 px (el botón «se hunde»).
+class BordeImprenta extends OutlinedBorder {
+  const BordeImprenta({this.color = Colors.transparent, this.abajo = 3, this.radio = 6, super.side});
+  final Color color;
+  final double abajo;
+  final double radio;
+
+  RRect _caja(Rect r) => RRect.fromRectAndRadius(r, Radius.circular(radio));
+
+  @override
+  EdgeInsetsGeometry get dimensions => EdgeInsets.only(bottom: abajo);
+
+  @override
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) => Path()..addRRect(_caja(Rect.fromLTRB(rect.left, rect.top, rect.right, rect.bottom - abajo + 1)));
+
+  @override
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) => Path()..addRRect(_caja(rect));
+
+  @override
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
+    if (color.a == 0) return;
+    final exterior = _caja(rect);
+    final interior = RRect.fromRectAndCorners(
+      Rect.fromLTRB(rect.left + 1, rect.top + 1, rect.right - 1, rect.bottom - abajo),
+      topLeft: Radius.circular(radio - 1), topRight: Radius.circular(radio - 1),
+      bottomLeft: Radius.circular(radio - 1), bottomRight: Radius.circular(radio - 1),
+    );
+    canvas.drawDRRect(exterior, interior, Paint()..color = color);
+  }
+
+  @override
+  ShapeBorder scale(double t) => BordeImprenta(color: color, abajo: abajo * t, radio: radio * t);
+
+  @override
+  BordeImprenta copyWith({BorderSide? side, Color? color, double? abajo, double? radio}) =>
+      BordeImprenta(color: color ?? this.color, abajo: abajo ?? this.abajo, radio: radio ?? this.radio);
+
+  @override
+  ShapeBorder? lerpFrom(ShapeBorder? a, double t) =>
+      a is BordeImprenta ? BordeImprenta(color: Color.lerp(a.color, color, t)!, abajo: a.abajo + (abajo - a.abajo) * t, radio: radio) : super.lerpFrom(a, t);
+
+  @override
+  bool operator ==(Object other) => other is BordeImprenta && other.color == color && other.abajo == abajo && other.radio == radio;
+
+  @override
+  int get hashCode => Object.hash(color, abajo, radio);
+}
+
+/// Forma de un botón según su estado: relieve de 3 px, o de 1 px al pulsarlo.
+WidgetStateProperty<OutlinedBorder> formaImprenta(Color borde) => WidgetStateProperty.resolveWith(
+      (s) => BordeImprenta(color: borde, abajo: s.contains(WidgetState.pressed) ? 1 : 3),
+    );
 
 class AppTheme {
   AppTheme._();
@@ -437,63 +511,67 @@ class AppTheme {
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8), side: BorderSide(color: extra.borde)),
       ),
-      // Menú de la web (.main-nav): fondo blanco, etiquetas en mayúsculas y la
-      // sección activa en blanco sobre morado.
+      // Menú (.main-nav de la web): fondo de papel, etiquetas en minúscula y la
+      // sección activa en una píldora lila con el icono morado.
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: extra.superficie,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
-        height: 66,
-        indicatorColor: relleno,
-        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        height: 68,
+        indicatorColor: extra.primarioPalido,
+        indicatorShape: const StadiumBorder(),
         labelTextStyle: WidgetStateProperty.resolveWith(
           (s) => TextStyle(
             fontFamily: Fuentes.sans,
-            fontSize: 10.5,
+            fontSize: 11.5,
             fontWeight: s.contains(WidgetState.selected) ? FontWeight.w700 : FontWeight.w500,
-            letterSpacing: 0.7,
-            color: s.contains(WidgetState.selected) ? primario : texto,
+            letterSpacing: 0,
+            color: s.contains(WidgetState.selected) ? primario : extra.textoSuave,
           ),
         ),
         iconTheme: WidgetStateProperty.resolveWith(
-          (s) => IconThemeData(size: 22, color: s.contains(WidgetState.selected) ? sobre : extra.textoSuave),
+          (s) => IconThemeData(size: 22, color: s.contains(WidgetState.selected) ? primario : extra.textoSuave),
         ),
       ),
       // En pantallas anchas (ordenador) el mismo menú va en un raíl a la izquierda.
       navigationRailTheme: NavigationRailThemeData(
         backgroundColor: extra.superficie,
         elevation: 0,
-        indicatorColor: relleno,
-        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        selectedIconTheme: IconThemeData(size: 22, color: sobre),
+        indicatorColor: extra.primarioPalido,
+        indicatorShape: const StadiumBorder(),
+        selectedIconTheme: IconThemeData(size: 22, color: primario),
         unselectedIconTheme: IconThemeData(size: 22, color: extra.textoSuave),
-        selectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 0.7, color: primario),
-        unselectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 10.5, fontWeight: FontWeight.w500, letterSpacing: 0.7, color: texto),
+        selectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontWeight: FontWeight.w700, color: primario),
+        unselectedLabelTextStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, fontWeight: FontWeight.w500, color: extra.textoSuave),
       ),
-      // Botones de la web (.download-btn, .btn-comenzar): morado, radio 6, sans.
+      // Botones de la web (.boton): principal de tinta y secundario de papel con
+      // borde, los dos con el filete inferior que da relieve (BordeImprenta).
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: relleno,
           foregroundColor: sobre,
-          textStyle: textos.labelLarge?.copyWith(fontSize: 14.5),
-          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
-          elevation: 1,
-          shape: forma6,
-        ),
+          textStyle: textos.labelLarge?.copyWith(fontSize: 15),
+          padding: const EdgeInsets.fromLTRB(20, 11, 20, 13),
+          minimumSize: const Size(64, 44),
+          elevation: 0,
+        ).copyWith(shape: formaImprenta(Color.lerp(relleno, Colors.black, oscuro ? 0.25 : 0.3)!)),
       ),
-      // .btn-nav: borde morado de 2 px.
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: primario,
           backgroundColor: extra.superficie,
-          side: BorderSide(color: primario, width: 2),
-          textStyle: textos.labelLarge?.copyWith(fontSize: 14.5),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-          shape: forma6,
-        ),
+          side: BorderSide.none,
+          textStyle: textos.labelLarge?.copyWith(fontSize: 15),
+          padding: const EdgeInsets.fromLTRB(18, 11, 18, 13),
+          minimumSize: const Size(64, 44),
+        ).copyWith(shape: formaImprenta(oscuro ? const Color(0xFF544A5E) : const Color(0xFFA9BB9E))),
       ),
+      // De texto: morado con el subrayado dorado de la marca.
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: primario, textStyle: textos.labelLarge),
+        style: TextButton.styleFrom(
+          foregroundColor: primario,
+          textStyle: textos.labelLarge?.copyWith(decoration: TextDecoration.underline, decorationColor: extra.dorado, decorationThickness: 2),
+        ),
       ),
       segmentedButtonTheme: SegmentedButtonThemeData(
         style: ButtonStyle(
@@ -512,7 +590,7 @@ class AppTheme {
         showCheckmark: false,
         side: WidgetStateBorderSide.resolveWith((s) => BorderSide(color: s.contains(WidgetState.selected) ? primario : extra.bordeClaro)),
         labelStyle: textos.labelMedium?.copyWith(color: texto, fontSize: 13, letterSpacing: 0.2),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Radios.control)),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -525,7 +603,9 @@ class AppTheme {
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: relleno,
         foregroundColor: sobre,
-        extendedTextStyle: textos.labelLarge?.copyWith(color: sobre),
+        elevation: 2,
+        highlightElevation: 3,
+        extendedTextStyle: textos.labelLarge?.copyWith(color: sobre, fontSize: 15),
         shape: forma6,
       ),
       dialogTheme: DialogThemeData(
@@ -549,7 +629,7 @@ class AppTheme {
       progressIndicatorTheme: ProgressIndicatorThemeData(color: primario, linearTrackColor: extra.fondoClaro),
       dividerTheme: DividerThemeData(color: extra.bordeClaro),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: oscuro ? Paleta.dCabeceraOscura : Paleta.primarioOscuro,
+        backgroundColor: oscuro ? const Color(0xFF2E2538) : Paleta.texto,
         contentTextStyle: textos.bodySmall?.copyWith(color: Colors.white, fontSize: 14),
         behavior: SnackBarBehavior.floating,
         shape: forma6,

@@ -65,10 +65,13 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 - Stores preferences in localStorage (`vgm_cookie_consent`)
 
 ### Design System (CSS Variables in `styles.css`)
-- Primary color: `#5F2987` (purple)
+- «Edición académica»: purple as ink, sage green as paper, gold as a thin rule. No gradients, no hover jumps (`transform`), small caps (`font-variant-caps: all-small-caps`) instead of uppercase, visible gold focus ring
+- Primary color: `#5F2987` (purple); dark theme is aubergine (`[data-theme="dark"]`, set by `search-ui.js`)
 - Background: `#E2EFD9` (sage green)
-- Display/body font: Palatino Linotype, Georgia (serif)
-- UI font: Source Sans 3 (sans-serif)
+- Display/body font: TeX Gyre Pagella served from `fuentes/` (`@font-face` at the top of `styles.css`; same font as the app), falling back to Palatino Linotype
+- UI font: Source Sans 3 (sans-serif), loaded by each page's `<link>`
+- One card style and three buttons: `.boton`, `.boton--secundario`, `.boton--texto` (`.download-btn` and others are aliases); `.sub-nav` for section sub-menus (no inline styles); footer with the CC BY-NC-ND 4.0 licence and `.licencia-fin` at the end of topics and articles
+- The app mirrors these tokens in `app/lib/theme/app_theme.dart` (`Espacio`, `Radios`, `BordeImprenta`) and `app/lib/widgets/comunes.dart` (`Tarjeta`, `Aviso`, `GrupoFilas`, `VacioVista`, `IconoTema`)
 - Max width: `1000px`
 
 ## Commands

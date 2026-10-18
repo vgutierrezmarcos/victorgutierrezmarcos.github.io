@@ -78,73 +78,34 @@ class InicioPage extends ConsumerWidget {
             // Sin temario (sin red la primera vez, o una oposición cuya web aún no
             // publica el contenido): se dice, en lugar de dejar la pantalla vacía.
             if (ref.watch(temarioProvider).hasError && ref.watch(temarioProvider).valueOrNull == null)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Tarjeta(
-                  color: context.colores.primarioPalido,
-                  child: Row(children: [
-                    Icon(Icons.cloud_off_outlined, color: context.esquema.primary, size: 30),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Text(
-                        Oposiciones.actual.lanzada
-                            ? 'No se ha podido descargar el temario de ${Oposiciones.actual.siglas}. Comprueba la conexión y vuelve a intentarlo.'
-                            : 'El contenido de ${Oposiciones.actual.siglas} aún no está publicado: la oposición está sin lanzar. Puedes volver a TCEE en Más → Ajustes → Oposición.',
-                        style: context.textos.bodySmall,
-                      ),
-                    ),
-                    TextButton(onPressed: () => ref.invalidate(temarioProvider), child: const Text('Reintentar')),
-                  ]),
-                ),
+              Aviso(
+                icono: Icons.cloud_off_outlined,
+                titulo: Oposiciones.actual.lanzada ? 'No se ha podido descargar el temario' : 'Contenido aún sin publicar',
+                texto: Oposiciones.actual.lanzada
+                    ? 'Comprueba la conexión y vuelve a intentarlo.'
+                    : 'La oposición ${Oposiciones.actual.siglas} está sin lanzar. Puedes volver a TCEE en Más → Ajustes → Oposición.',
+                accion: TextButton(onPressed: () => ref.invalidate(temarioProvider), child: const Text('Reintentar')),
               ),
             const TarjetaAvisosDesactivados(),
             if (opositor)
               for (final c in canceladas)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Tarjeta(
-                    color: context.esquema.errorContainer.withValues(alpha: 0.35),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
-                    child: Row(children: [
-                      Icon(Icons.event_busy, color: context.esquema.error, size: 30),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Text('${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}', style: context.textos.titleMedium),
-                          Text('${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedírsela a ${ref.watch(misPreparadoresProvider).length > 1 ? 'tu otro preparador' : 'otro preparador'}.', style: context.textos.bodySmall),
-                        ]),
-                      ),
-                      const Icon(Icons.chevron_right),
-                    ]),
-                  ),
+                Aviso(
+                  tipo: TipoAviso.error,
+                  icono: Icons.event_busy,
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: c.id))),
+                  titulo: '${(c.preparadorNombre ?? '').isEmpty ? 'Tu preparador' : c.preparadorNombre} ha cancelado la clase del ${fechaCorta(c.fecha)}',
+                  texto: '${horaDe(c.fecha)}${c.motivo.isEmpty ? '' : ' · ${c.motivo}'}. Toca para verla o pedírsela a ${ref.watch(misPreparadoresProvider).length > 1 ? 'tu otro preparador' : 'otro preparador'}.',
                 ),
             if (versionNueva != null)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Tarjeta(
-                  color: context.colores.primarioPalido,
-                  child: Row(children: [
-                    Icon(Icons.system_update_outlined, color: context.esquema.primary, size: 30),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text('Hay una versión nueva ($versionNueva)', style: context.textos.titleMedium),
-                        Text(kIsWeb ? 'Recarga la página para usarla; tus datos están en tu cuenta.' : 'Se instala encima de la actual, sin perder tus datos.', style: context.textos.bodySmall),
-                      ]),
-                    ),
-                    const SizedBox(width: 8),
-                    FilledButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(kIsWeb ? 'Recargar' : 'Actualizar')),
-                  ]),
-                ),
+              Aviso(
+                icono: Icons.system_update_outlined,
+                titulo: 'Versión $versionNueva disponible',
+                texto: kIsWeb ? 'Recarga la página para usarla; tus datos están en tu cuenta.' : 'Se instala encima de la actual, sin perder tus datos.',
+                accion: TextButton(onPressed: () => actualizar(context, config?.urlPlayStore ?? config?.urlApk), child: Text(kIsWeb ? 'Recargar' : 'Actualizar')),
               ),
             if (config != null && config.avisos.isNotEmpty)
               for (final a in config.avisos)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Tarjeta(
-                      color: context.colores.dorado.withValues(alpha: 0.12),
-                      child: Row(children: [Icon(Icons.campaign_outlined, color: context.colores.dorado), const SizedBox(width: 10), Expanded(child: Text(a, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)))])),
-                ),
+                Aviso(tipo: TipoAviso.aviso, icono: Icons.campaign_outlined, titulo: a),
             const TarjetaNovedadProceso(),
             const TarjetaElegirPapel(),
             const TarjetaParaEmpezar(),
@@ -158,13 +119,13 @@ class InicioPage extends ConsumerWidget {
                 etiqueta: '${dias == 1 ? 'día' : 'días'} para el ${nombreEjercicio(proximo!.key).toLowerCase()}',
                 detalle: DateFormat('d MMM y', 'es').format(fecha),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
             ],
             if (opositor && cante != null) ...[
               Tarjeta(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => CantePage(id: cante.id))),
                 child: Row(children: [
-                  Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 32),
+                  Icon(Icons.record_voice_over_outlined, color: context.esquema.primary, size: 24),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -175,7 +136,7 @@ class InicioPage extends ConsumerWidget {
                   const Icon(Icons.chevron_right),
                 ]),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
             ],
             Tarjeta(
               color: diarioHecho ? null : context.colores.primarioPalido,
@@ -186,7 +147,7 @@ class InicioPage extends ConsumerWidget {
                       context.push('/examen', extra: ConfigTest(idsFijos: ids, minutos: 15, tipo: 'diario'));
                     },
               child: Row(children: [
-                Icon(diarioHecho ? Icons.check_circle : Icons.today, color: diarioHecho ? Paleta.acierto : context.esquema.primary, size: 32),
+                Icon(diarioHecho ? Icons.check_circle : Icons.today, color: diarioHecho ? Paleta.acierto : context.esquema.primary, size: 24),
                 const SizedBox(width: 14),
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -199,7 +160,7 @@ class InicioPage extends ConsumerWidget {
             ),
             if (opositor) TarjetaCronogramaHoy(abrir: () => context.go('/organizacion/cronograma')),
             if (leitner.pendientes().isNotEmpty) ...[
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               Tarjeta(
                 onTap: () => context.push('/examen', extra: ConfigTest(idsFijos: leitner.pendientes(), minutos: 0, tipo: 'repaso')),
                 child: Row(children: [
@@ -211,7 +172,7 @@ class InicioPage extends ConsumerWidget {
               ),
             ],
             if (opositor && prob != null && prob.temasSabidos > 0) ...[
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               Tarjeta(
                 onTap: () => context.go('/organizacion/probabilidades'),
                 child: Row(children: [

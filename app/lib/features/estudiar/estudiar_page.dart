@@ -30,7 +30,7 @@ class _EstudiarPageState extends ConsumerState<EstudiarPage> with SingleTickerPr
     ref.listen(subpestanaEstudiarProvider, (_, i) {
       if (_pestanas.index != i) _pestanas.animateTo(i);
     });
-    TabBar pestanas() => barraPestanas(context, controller: _pestanas, textos: const ['TEMAS', 'TEST'], onTap: (i) => ref.read(subpestanaEstudiarProvider.notifier).state = i);
+    TabBar pestanas() => barraPestanas(context, controller: _pestanas, textos: const ['Temas', 'Test'], onTap: (i) => ref.read(subpestanaEstudiarProvider.notifier).state = i);
     return IndexedStack(
       index: indice,
       children: [TemarioPage(pestanas: pestanas()), ConfigTestPage(pestanas: pestanas())],

@@ -82,7 +82,7 @@ void main() {
   for (final p in ['Hoy', 'Estudiar', 'Cantes', 'Organización', 'Más']) {
     testWidgets('DCE sin contenido: $p', (tester) async {
       await arrancar(tester);
-      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(p.toUpperCase())));
+      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(p)));
       await tester.pumpAndSettle();
       if (p == 'Hoy') expect(find.textContaining(RegExp('aún no está publicado|No se ha podido descargar el temario')), findsOneWidget);
       // Desde la oposición sin lanzar siempre se puede volver a las demás.

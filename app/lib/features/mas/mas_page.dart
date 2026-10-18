@@ -79,10 +79,12 @@ class MasPage extends ConsumerWidget {
             ),
           ],
           const TituloSeccion('Contenido'),
+          GrupoFilas(children: [
           // El simulador web guarda en el historial de su propia oposición.
           if (!ref.read(oposicionProvider).testVoluntario) _fila(context, Icons.public, 'Simulador web', 'La misma cuenta, el mismo historial', () => abrirUrl(context, ref.read(oposicionProvider).urlSimuladorWeb)),
           if (!ref.read(oposicionProvider).esPrincipal) _fila(context, Icons.public, 'Apuntes en la web', ref.read(oposicionProvider).dominio, () => abrirUrl(context, ref.read(oposicionProvider).web)),
           if (config.listaX != null) _fila(context, Icons.tag, 'Lista de X', 'Cuentas de referencia', () => abrirUrl(context, config.listaX)),
+          ]),
           if (enlaces.isNotEmpty) ...[
             const TituloSeccion('Enlaces útiles'),
             for (final c in enlaces)
@@ -92,9 +94,7 @@ class MasPage extends ConsumerWidget {
               ),
           ],
           const TituloSeccion('Ajustes'),
-          Tarjeta(
-            padding: EdgeInsets.zero,
-            child: Column(children: [
+          GrupoFilas(children: [
               if (Notificaciones.disponibles) ListTile(
                 leading: const Icon(Icons.notifications_outlined),
                 title: const Text('Recordatorio diario'),
@@ -143,7 +143,7 @@ class MasPage extends ConsumerWidget {
                 )),
               ),
               ListTile(
-                leading: const Icon(Icons.dark_mode_outlined),
+                leading: IconoTema(oscuro: ajustes.temaOscuro == true),
                 title: const Text('Modo'),
                 subtitle: _segmentos(SegmentedButton<bool>(
                   showSelectedIcon: false,
@@ -165,13 +165,15 @@ class MasPage extends ConsumerWidget {
                   child: const Text('Liberar'),
                 ),
               ),
-            ]),
-          ),
+          ]),
           const TituloSeccion('Ayuda'),
+          GrupoFilas(children: [
           _fila(context, Icons.explore_outlined, 'Guía de la app', 'Dónde está cada cosa, en unos pocos pasos', () => ref.read(guiaProvider.notifier).empezar()),
           _fila(context, Icons.play_circle_outline, 'Ayuda en vídeo', 'Cómo se pide una clase, el cronograma, la pizarra… en un minuto', () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AyudaVideosPage()))),
+          ]),
           const TituloSeccion('Acerca de'),
           const Padding(padding: EdgeInsets.only(bottom: 8), child: AvisoNoOficial()),
+          GrupoFilas(children: [
           _fila(context, Icons.phone_android, kIsWeb ? 'La app en el móvil' : 'La app, explicada', kIsWeb ? 'Descárgala para Android: avisos, grabación y PDF sin conexión' : 'Qué hace, capturas y vídeo', () => abrirUrl(context, Urls.paginaApp)),
           if (!kIsWeb) _fila(context, Icons.computer, 'En el ordenador', 'La misma app en el navegador, con tu cuenta', () => abrirUrl(context, Urls.appWeb)),
           if (ref.read(oposicionProvider).autor case (final nombre, final quien, final url?))
@@ -179,6 +181,7 @@ class MasPage extends ConsumerWidget {
           _fila(context, Icons.privacy_tip_outlined, 'Privacidad', 'Qué datos guarda la app y cómo borrarlos', () => abrirUrl(context, Urls.politicaPrivacidad, enApp: true)),
           _fila(context, Icons.gavel_outlined, 'Condiciones de uso', 'Cómo se usa la app y, si preparas, los datos de tus alumnos', () => abrirUrl(context, Urls.condiciones, enApp: true)),
           _fila(context, Icons.alternate_email, 'Contacto', config.email, () => abrirUrl(context, 'mailto:${config.email}')),
+          ]),
           FutureBuilder(
             future: PackageInfo.fromPlatform(),
             builder: (_, s) => Padding(
@@ -201,13 +204,13 @@ class MasPage extends ConsumerWidget {
   /// Botones de elegir bajo el título de la fila, a todo el ancho.
   Widget _segmentos(Widget botones) => Padding(padding: const EdgeInsets.only(top: 8, bottom: 4), child: SizedBox(width: double.infinity, child: botones));
 
-  Widget _fila(BuildContext context, IconData icono, String titulo, String sub, VoidCallback onTap) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Tarjeta(
-          padding: EdgeInsets.zero,
-          onTap: onTap,
-          child: ListTile(leading: Icon(icono, color: context.esquema.primary), title: Text(titulo, style: context.textos.titleSmall), subtitle: Text(sub, style: context.textos.labelSmall), trailing: const Icon(Icons.chevron_right)),
-        ),
+  /// Fila de un [GrupoFilas]: icono morado, título, descripción y flecha.
+  Widget _fila(BuildContext context, IconData icono, String titulo, String sub, VoidCallback onTap) => ListTile(
+        onTap: onTap,
+        leading: Icon(icono, color: context.esquema.primary),
+        title: Text(titulo, style: context.textos.titleSmall),
+        subtitle: Text(sub, style: context.textos.labelSmall),
+        trailing: Icon(Icons.chevron_right, color: context.colores.textoClaro),
       );
 }
 

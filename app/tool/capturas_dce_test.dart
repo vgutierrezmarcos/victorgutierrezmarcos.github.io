@@ -49,7 +49,7 @@ import 'package:tcee_app/widgets/comunes.dart';
 import 'package:tcee_app/features/temario/tema_page.dart';
 import 'package:tcee_app/theme/app_theme.dart';
 
-import 'demo_comun.dart' show cajaAppSinPrimerosPasos;
+import 'demo_comun.dart' show cajaAppSinPrimerosPasos, versionApp;
 
 Map<String, dynamic> _json(String ruta) => jsonDecode(File(ruta).readAsStringSync()) as Map<String, dynamic>;
 
@@ -69,7 +69,7 @@ void main() {
     await initializeDateFormatting('es');
     await cajaAppSinPrimerosPasos();
     // ignore: invalid_use_of_visible_for_testing_member
-    PackageInfo.setMockInitialValues(appName: 'Oposición TCEE · DCE', packageName: 'es.victorgutierrezmarcos.tcee_app', version: '', buildNumber: '', buildSignature: '');
+    PackageInfo.setMockInitialValues(appName: 'Oposición TCEE · DCE', packageName: 'es.victorgutierrezmarcos.tcee_app', version: versionApp(), buildNumber: '', buildSignature: '');
     await _fuente('Pagella', [for (final v in ['regular', 'italic', 'bold', 'bolditalic']) 'assets/fonts/texgyrepagella-$v.otf']);
     await _fuente('SourceSans3', [for (final v in ['Regular', 'Medium', 'Semibold', 'Bold']) 'assets/fonts/SourceSans3-$v.ttf']);
     await _fuente('LMRoman', [for (final v in ['regular', 'italic', 'bold', 'bolditalic']) 'assets/fonts/lmroman10-$v.otf']);
@@ -162,7 +162,7 @@ void main() {
     await tester.pumpWidget(ProviderScope(overrides: overrides, child: const TceeApp()));
     await tester.pumpAndSettle();
     // La ficha del tema: su PDF lo pone después componer-capturas-temas.py.
-    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
+    tester.state<NavigatorState>(find.byType(Navigator).first).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
     await captura(tester, 'tema-base');
     Navigator.of(tester.element(find.byType(TemaPage))).pop();
     await tester.pumpAndSettle();
@@ -257,7 +257,7 @@ void main() {
 
     Future<void> pestana(String nombre) async {
       for (var i = 0; i < 2; i++) {
-        await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
+        await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
       }
     }
 
@@ -273,7 +273,7 @@ void main() {
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
       await pestana('Estudiar');
-      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
     }
 
     await estudiar('Temas');
@@ -283,7 +283,7 @@ void main() {
     await bajar(350);
     await tocar(parte);
     await captura(tester, 'dce-temario');
-    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
+    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => TemaPage(tema: temario.tema('3.A.9')!)));
     await captura(tester, 'dce-tema');
     Navigator.of(tester.element(find.byType(TemaPage))).pop();
     await tester.pumpAndSettle();
@@ -293,7 +293,7 @@ void main() {
 
     // --------------------------------------------------------------- Cantes
     await pestana('Cantes');
-    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('CANTAR')));
+    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text('Cantar')));
     await tocar(find.text('Sacar 2 bolas de cada parte'));
     // Sin organización por bloques, cada tema sale como «3.A.9 · título».
     await tocar(find.textContaining(RegExp(r'^3\.A\.\d+ ·')));
@@ -301,7 +301,7 @@ void main() {
     await captura(tester, 'dce-cantar');
 
     // ------------------------------------------- Clase cancelada: sustituto
-    Navigator.of(tester.element(find.byType(Scaffold).first)).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
+    Navigator.of(tester.element(find.byType(NavigationBar))).push(MaterialPageRoute(builder: (_) => const CantePage(id: 'dc')));
     await tester.pumpAndSettle();
     await tocar(find.text('Pedir una clase suelta'));
     await captura(tester, 'dce-buscar-preparador');

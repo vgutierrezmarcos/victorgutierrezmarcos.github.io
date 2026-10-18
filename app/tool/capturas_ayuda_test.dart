@@ -134,7 +134,7 @@ void main() {
     await v.toque(find.text('Pedir'));
     await tester.pump(const Duration(seconds: 5)); // que se vaya el aviso de abajo
     await tester.pumpAndSettle();
-    await r.buscar(find.text('MIS RESERVAS'));
+    await r.buscar(find.text('Mis reservas'));
     await r.bajar(400);
     await v.foto('pendiente');
     // Paula la acepta.
@@ -176,7 +176,7 @@ void main() {
     demo.materialesParaMi = materiales;
     r.container.invalidate(materialesParaMiProvider);
     await v.foto('conectado');
-    await r.buscar(find.text('QUÉ VE TU PREPARADOR'));
+    await r.buscar(find.text('Qué ve tu preparador'));
     await v.foto('que-ve');
     v.terminar();
     expect(demo.preparador.misPreparadores().map((p) => (p.nombre, p.aceptado)), [('Paula Pérez', true)]);
@@ -220,19 +220,19 @@ void main() {
     final (demo, r) = await arrancar(tester, antes: (d) async => d.miBusqueda = null);
     final v = Video('buscar-preparador', tester);
     await r.pestana('Más');
-    await r.tocar(find.text('Mi preparador'));
+    await r.tocar(find.widgetWithText(FilaEnlace, 'Mi preparador'));
     await r.buscar(find.text('Buscar preparador'));
     await v.foto('mi-preparador');
     await v.toque(find.text('Buscar preparador'));
     await v.foto('buscar');
-    await r.buscar(find.text('PREPARADORES QUE ADMITEN ALUMNOS'));
+    await r.buscar(find.text('Preparadores que admiten alumnos'));
     await r.bajar(150);
     await v.foto('admiten');
     await r.bajar(-20000);
     await v.foto('cuenta');
     await v.toque(find.text('Cuenta lo que buscas'));
     await v.foto('formulario');
-    await r.buscar(find.text('CUÁNDO PUEDES'));
+    await r.buscar(find.text('Cuándo puedes'));
     await r.bajar(250);
     await v.foto('cuando');
     await v.toque(find.text('Publicar'));
@@ -324,7 +324,7 @@ void main() {
     final (demo, r) = await arrancar(tester, antes: (d) async => d.estadoRed = const EstadoRed());
     final v = Video('empezar-preparador', tester);
     await r.pestana('Más');
-    await r.tocar(find.text('Mi preparador'));
+    await r.tocar(find.widgetWithText(FilaEnlace, 'Mi preparador'));
     await r.buscar(find.text('¿Preparas a opositores?'));
     await v.foto('mi-preparador');
     await v.toque(find.text('¿Preparas a opositores?'));
@@ -368,7 +368,7 @@ void main() {
     await r.bajar(200);
     await v.foto('reservas');
     await v.toque(find.text('Mis alumnos pueden reservar clase'));
-    await r.buscar(find.text('HUECOS SEMANALES'));
+    await r.buscar(find.text('Huecos semanales'));
     await r.bajar(250);
     await v.foto('activadas');
     await v.toque(find.text('Hueco'));
@@ -409,7 +409,7 @@ void main() {
     await v.foto('cuantos');
     await v.toque(find.text('A suerte'));
     await v.foto('suerte');
-    await tester.drag(find.textContaining('CUÁNDO LE LLEGAN'), const Offset(0, -700));
+    await tester.drag(find.textContaining('Cuándo le llegan'), const Offset(0, -700));
     await tester.pumpAndSettle();
     await v.foto('cuando-llegan');
     await v.toque(find.textContaining('programar'));

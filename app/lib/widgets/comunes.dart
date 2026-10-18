@@ -20,8 +20,8 @@ TabBar barraPestanas(BuildContext context, {required TabController controller, r
       indicatorColor: context.colores.dorado,
       indicatorWeight: 3,
       dividerColor: Colors.transparent,
-      labelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w700, letterSpacing: 0.8),
-      unselectedLabelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 13, fontWeight: FontWeight.w500, letterSpacing: 0.8),
+      labelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.2),
+      unselectedLabelStyle: TextStyle(fontFamily: Fuentes.sans, fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.2),
       tabs: [for (final t in textos) Tab(text: t)],
     );
 
@@ -42,7 +42,7 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
   /// pestañas; en las demás pantallas ahí va la flecha de volver).
   final bool conOposicion;
 
-  static const _altoLinea = 4.0;
+  static const _altoLinea = 2.0;
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0) + _altoLinea);
@@ -62,12 +62,12 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
                 if (title != null) title!,
                 Text(subtitulo!, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 13, fontWeight: FontWeight.w400, color: Colors.white.withValues(alpha: 0.9))),
               ]),
-        flexibleSpace: DecoratedBox(decoration: BoxDecoration(gradient: context.degradadoPrimario)),
+        flexibleSpace: ColoredBox(color: context.colorCabecera),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight((bottom?.preferredSize.height ?? 0) + _altoLinea),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             if (bottom != null) bottom!,
-            Container(height: _altoLinea, decoration: BoxDecoration(gradient: context.degradadoDorado)),
+            Container(height: _altoLinea, color: context.temaOscuro ? Paleta.dDorado : Paleta.dorado),
           ]),
         ),
       ),
@@ -75,44 +75,140 @@ class BarraWeb extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-/// Tarjeta con el estilo de la web: degradado de blanco a crema, borde y
-/// esquinas de 8 (.tema-card, .resource-item). Con [color] morado pálido se
-/// pinta como la caja destacada de la web (.highlight-box), con su filete
-/// morado a la izquierda.
+/// Tarjeta con el estilo de la web (.tema-card): papel liso, borde fino y
+/// esquinas de 8. [destacada] (o [color] morado pálido, por compatibilidad) la
+/// pinta como la caja destacada de la web (.highlight-box): fondo lila liso.
 class Tarjeta extends StatelessWidget {
-  const Tarjeta({super.key, required this.child, this.onTap, this.padding = const EdgeInsets.all(16), this.color});
+  const Tarjeta({super.key, required this.child, this.onTap, this.padding = const EdgeInsets.all(16), this.color, this.destacada = false});
   final Widget child;
   final VoidCallback? onTap;
   final EdgeInsets padding;
   final Color? color;
+  final bool destacada;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colores;
-    final destacada = color != null && color == c.primarioPalido;
-    final radio = destacada ? const BorderRadius.horizontal(right: Radius.circular(8)) : BorderRadius.circular(8);
+    final lila = destacada || (color != null && color == c.primarioPalido);
+    final fondo = lila ? c.primarioPalido : (color != null ? Color.alphaBlend(color!, c.superficie) : c.superficie);
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: color != null && !destacada ? Color.alphaBlend(color!, c.superficie) : null,
-        gradient: color != null && !destacada
-            ? null
-            : LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: destacada ? [c.primarioPalido, c.crema] : [c.superficie, c.crema]),
-        border: Border.all(color: c.borde),
-        borderRadius: radio,
+        color: fondo,
+        border: Border.all(color: lila ? Color.lerp(c.primarioPalido, context.esquema.primary, 0.25)! : c.borde),
+        borderRadius: BorderRadius.circular(Radios.tarjeta),
         boxShadow: context.sombraSuave,
       ),
       child: Material(
         type: MaterialType.transparency,
+        child: InkWell(onTap: onTap, child: Padding(padding: padding, child: child)),
+      ),
+    );
+  }
+}
+
+/// Tipos de [Aviso]: información (lila), aviso (dorado) y error (granate).
+enum TipoAviso { info, aviso, error }
+
+/// Aviso breve en la parte alta de una pantalla (versión nueva, clase
+/// cancelada, avisos del administrador…): franja de color liso con icono,
+/// texto y, si hace falta, una acción. No parece una tarjeta más.
+class Aviso extends StatelessWidget {
+  const Aviso({super.key, required this.titulo, this.texto, this.icono, this.tipo = TipoAviso.info, this.accion, this.onTap});
+  final String titulo;
+  final String? texto;
+  final IconData? icono;
+  final TipoAviso tipo;
+  final Widget? accion;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colores;
+    final oscuro = context.temaOscuro;
+    final (fondo, tinta) = switch (tipo) {
+      TipoAviso.info => (c.primarioPalido, context.esquema.primary),
+      TipoAviso.aviso => (oscuro ? const Color(0xFF33291A) : const Color(0xFFF6EED8), c.dorado),
+      TipoAviso.error => (oscuro ? const Color(0xFF3A1E25) : const Color(0xFFF6E4E6), oscuro ? const Color(0xFFE0899A) : const Color(0xFF8E2A3B)),
+    };
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Espacio.e3),
+      child: Material(
+        color: fondo,
+        borderRadius: BorderRadius.circular(Radios.boton),
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
-          child: Container(
-            decoration: destacada ? BoxDecoration(border: Border(left: BorderSide(color: context.esquema.primary, width: 4))) : null,
-            padding: padding,
-            child: child,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
+            child: Row(children: [
+              Icon(icono ?? Icons.info_outline, color: tinta, size: 24),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(titulo, style: context.textos.titleSmall?.copyWith(fontSize: 15, height: 1.3)),
+                  if (texto != null) Padding(padding: const EdgeInsets.only(top: 2), child: Text(texto!, style: context.textos.bodySmall)),
+                ]),
+              ),
+              if (accion != null) ...[const SizedBox(width: 8), accion!] else if (onTap != null) Icon(Icons.chevron_right, color: c.textoClaro),
+            ]),
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Estado vacío de una lista: icono, una frase que dice qué aparecerá ahí y,
+/// si hace falta, la acción para añadir lo primero.
+class VacioVista extends StatelessWidget {
+  const VacioVista({super.key, required this.texto, this.icono = Icons.inbox_outlined, this.accion});
+  final String texto;
+  final IconData icono;
+  final Widget? accion;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: Espacio.e5, horizontal: Espacio.e4),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Icon(icono, size: 32, color: context.colores.textoClaro),
+          const SizedBox(height: Espacio.e2),
+          Text(texto, textAlign: TextAlign.center, style: context.textos.bodySmall),
+          if (accion != null) ...[const SizedBox(height: Espacio.e3), accion!],
+        ]),
+      );
+}
+
+/// Bloque de filas agrupadas con un título en versalitas (pantallas de
+/// ajustes): una sola tarjeta con separadores, en lugar de filas sueltas.
+class GrupoFilas extends StatelessWidget {
+  const GrupoFilas({super.key, this.titulo, required this.children});
+  final String? titulo;
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colores;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Espacio.e4),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        if (titulo != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
+            child: Text(titulo!, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 16, fontFeatures: versalitas, letterSpacing: 0.6, color: c.textoSuave)),
+          ),
+        Material(
+          color: c.superficie,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Radios.tarjeta), side: BorderSide(color: c.borde)),
+          clipBehavior: Clip.antiAlias,
+          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            for (var i = 0; i < children.length; i++) ...[
+              if (i > 0) Divider(height: 1, thickness: 1, color: c.bordeClaro, indent: 16, endIndent: 0),
+              children[i],
+            ],
+          ]),
+        ),
+      ]),
     );
   }
 }
@@ -137,17 +233,17 @@ class TituloSeccion extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: IntrinsicWidth(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: [
-                  Text(texto.toUpperCase(), style: TextStyle(fontFamily: Fuentes.serif, fontSize: 16.5, fontWeight: FontWeight.w700, color: morado, letterSpacing: 0.4, height: 1.25)),
+                  Text(texto, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 19, fontWeight: FontWeight.w700, color: morado, height: 1.25)),
                   const SizedBox(height: 3),
                   SizedBox(
                     height: 12,
                     child: Stack(alignment: Alignment.center, children: [
-                      Container(height: 2, color: morado),
+                      Container(height: 1, color: morado),
                       Container(
                         color: Theme.of(context).scaffoldBackgroundColor,
                         padding: const EdgeInsets.symmetric(horizontal: 6),
                         // El rombo no existe en la serif: se toma de la sans.
-                        child: Text('◆', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 9, height: 1, color: morado)),
+                        child: Text('◆', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 8, height: 1, color: context.colores.dorado)),
                       ),
                     ]),
                   ),
@@ -212,7 +308,7 @@ class _GrupoDesplegableState extends State<GrupoDesplegable> with AutomaticKeepA
       child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Container(
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(6), boxShadow: context.sombraSuave),
+          decoration: BoxDecoration(color: context.colorCabecera, borderRadius: BorderRadius.circular(Radios.boton)),
           child: Material(
             type: MaterialType.transparency,
             child: InkWell(
@@ -223,7 +319,7 @@ class _GrupoDesplegableState extends State<GrupoDesplegable> with AutomaticKeepA
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
                 child: Row(children: [
-                  Text('§', style: TextStyle(fontFamily: Fuentes.serif, fontSize: 21, height: 1, color: Colors.white.withValues(alpha: 0.7))),
+                  Text('§', style: TextStyle(fontFamily: Fuentes.serif, fontSize: 21, height: 1, color: context.temaOscuro ? Paleta.dDoradoClaro : Paleta.doradoClaro)),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -309,7 +405,7 @@ class CasillaTema extends StatelessWidget {
       decoration: BoxDecoration(
         color: apagada ? color.withValues(alpha: 0.12) : color,
         border: Border.all(color: color, width: 1.5),
-        borderRadius: BorderRadius.circular(3),
+        borderRadius: BorderRadius.circular(Radios.control),
       ),
       child: Text(codigo, style: TextStyle(fontFamily: Fuentes.sans, fontSize: grande ? 14 : 12, fontWeight: FontWeight.w600, height: 1.2, color: texto)),
     );
@@ -325,13 +421,13 @@ class Contador extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
-        decoration: BoxDecoration(gradient: context.degradadoPrimario, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
+        decoration: BoxDecoration(color: context.colorCabecera, borderRadius: BorderRadius.circular(Radios.tarjeta)),
         child: Row(children: [
           for (final c in cifras)
             Expanded(
               child: Column(children: [
                 FittedBox(child: Text(c.valor, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 26, fontWeight: FontWeight.w600, color: Colors.white, height: 1.1))),
-                Text(c.etiqueta.toUpperCase(), textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, letterSpacing: 0.6, color: Colors.white.withValues(alpha: 0.9))),
+                Text(c.etiqueta, textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12.5, color: Colors.white.withValues(alpha: 0.88))),
               ]),
             ),
         ]),
@@ -412,9 +508,9 @@ class Estadistica extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 14),
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              FittedBox(child: Text(valor, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 28, fontWeight: FontWeight.w600, height: 1.1, color: color ?? context.esquema.primary))),
+              FittedBox(child: Text(valor, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 40, fontWeight: FontWeight.w700, height: 1.05, color: color ?? context.esquema.primary, fontFeatures: const [FontFeature.liningFigures()]))),
               const SizedBox(height: 4),
-              Text(etiqueta.toUpperCase(), textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11, letterSpacing: 0.6, height: 1.2, color: context.colores.textoSuave)),
+              Text(etiqueta, textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 15, height: 1.25, color: context.esquema.onSurface)),
               if (detalle != null) Padding(padding: const EdgeInsets.only(top: 2), child: Text(detalle!, textAlign: TextAlign.center, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 12, color: context.colores.textoClaro))),
             ]),
           ),
@@ -496,12 +592,12 @@ class FilaEnlace extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(14, 12, 10, 12),
           onTap: onTap,
           child: Row(children: [
-            Icon(icono, color: context.esquema.primary, size: 26),
+            Icon(icono, color: context.esquema.primary, size: 24),
             const SizedBox(width: 14),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(titulo, style: context.textos.titleMedium),
-                if (subtitulo != null) Text(subtitulo!, style: TextStyle(fontFamily: Fuentes.serif, fontStyle: FontStyle.italic, fontSize: 14, height: 1.3, color: context.colores.textoSuave)),
+                if (subtitulo != null) Text(subtitulo!, style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, height: 1.35, color: context.colores.textoSuave)),
               ]),
             ),
             final_ ?? Icon(Icons.chevron_right, color: context.colores.textoClaro),
@@ -576,10 +672,75 @@ class BotonTema extends ConsumerWidget {
     final oscuro = context.temaOscuro;
     return IconButton(
       tooltip: oscuro ? 'Modo claro' : 'Modo oscuro',
-      icon: Icon(oscuro ? Icons.light_mode_outlined : Icons.dark_mode_outlined),
+      icon: IconoTema(oscuro: oscuro),
       onPressed: () => ref.read(ajustesProvider.notifier).actualizar((a) => a.copyWith(temaOscuro: !oscuro)),
     );
   }
+}
+
+/// Luna (en claro: pasar a oscuro) o sol (en oscuro: pasar a claro), de trazo
+/// fino como el botón de la web (search-ui.js); gira un poco al cambiar.
+class IconoTema extends StatelessWidget {
+  const IconoTema({super.key, required this.oscuro, this.tamano = 24});
+  final bool oscuro;
+  final double tamano;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = IconTheme.of(context).color ?? context.esquema.onSurface;
+    return AnimatedSwitcher(
+      duration: MediaQuery.disableAnimationsOf(context) ? Duration.zero : const Duration(milliseconds: 300),
+      transitionBuilder: (hijo, a) => RotationTransition(
+        turns: Tween(begin: -0.125, end: 0.0).animate(a),
+        child: ScaleTransition(scale: Tween(begin: 0.6, end: 1.0).animate(a), child: FadeTransition(opacity: a, child: hijo)),
+      ),
+      child: CustomPaint(
+        key: ValueKey(oscuro),
+        size: Size.square(tamano),
+        painter: _PintorTema(sol: oscuro, color: color),
+      ),
+    );
+  }
+}
+
+class _PintorTema extends CustomPainter {
+  _PintorTema({required this.sol, required this.color});
+  final bool sol;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.scale(size.width / 24);
+    final trazo = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.6
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    if (sol) {
+      canvas.drawCircle(const Offset(12, 12), 4, trazo);
+      const rayos = [
+        (Offset(12, 2.5), Offset(12, 4.5)), (Offset(12, 19.5), Offset(12, 21.5)),
+        (Offset(2.5, 12), Offset(4.5, 12)), (Offset(19.5, 12), Offset(21.5, 12)),
+        (Offset(5.3, 5.3), Offset(6.7, 6.7)), (Offset(17.3, 17.3), Offset(18.7, 18.7)),
+        (Offset(5.3, 18.7), Offset(6.7, 17.3)), (Offset(17.3, 6.7), Offset(18.7, 5.3)),
+      ];
+      for (final (a, b) in rayos) {
+        canvas.drawLine(a, b, trazo);
+      }
+    } else {
+      // Luna creciente: el mismo trazado que el SVG de la web.
+      final luna = Path()
+        ..moveTo(20, 14.5)
+        ..arcToPoint(const Offset(9.5, 4), radius: const Radius.circular(8))
+        ..arcToPoint(const Offset(20, 14.5), radius: const Radius.circular(8), largeArc: true, clockwise: false)
+        ..close();
+      canvas.drawPath(luna, trazo);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_PintorTema old) => old.sol != sol || old.color != color;
 }
 
 /// Foto de la cuenta de Google del usuario; si no tiene, su inicial (como hace
