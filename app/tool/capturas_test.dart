@@ -66,7 +66,7 @@ void main() {
     // ------------------------------------------------------------- Estudiar
     Future<void> estudiar(String nombre) async {
       await pestana('Estudiar');
-      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+      await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
     }
 
     await estudiar('Temas');
@@ -93,6 +93,7 @@ void main() {
     await captura('mapa-calor');
     await pestana('Organización');
     await bajar(-20000);
+    await buscar(find.text('Mapa del temario'));
     await tocar(find.text('Mapa del temario'));
     await captura('organizacion');
     await tocar(find.text('Esquema'));
@@ -205,13 +206,13 @@ void main() {
     // ------------------------------------------------------------------ Más
     await pestana('Más');
     await captura('mas');
-    await tocar(find.text('Mi preparador'));
+    await tocar(find.widgetWithText(FilaEnlace, 'Mi preparador'));
     await captura('mi-preparador');
     // Buscar preparador: quién admite alumnos y a quién le interesa lo que busca Álex.
     await buscar(find.text('Buscar preparador'));
     await tocar(find.text('Buscar preparador'));
     await captura('buscar-preparador');
-    await buscar(find.text('PREPARADORES QUE ADMITEN ALUMNOS'));
+    await buscar(find.text('Preparadores que admiten alumnos'));
     await captura('buscar-preparador-plazas');
     await bajar(-20000);
     await tocar(find.text('Cambiar'));
@@ -274,13 +275,13 @@ void main() {
     await tocar(find.textContaining(RegExp(r'^3\.A\.3$')));
     await captura('tema-programar');
     // El botón queda por debajo del borde de la hoja: se sube la hoja.
-    await tester.drag(find.textContaining('CUÁNDO LE LLEGAN'), const Offset(0, -700));
+    await tester.drag(find.textContaining('Cuándo le llegan'), const Offset(0, -700));
     await tester.pumpAndSettle();
     await tocar(find.text('Programar el envío'));
     await captura('sesion-tema');
     // La ficha de la clase: todo se cambia desde aquí (y la reunión de Teams).
     // Ahora «Temas antes de la clase» va antes: los detalles quedan más abajo.
-    await buscarEn<SesionPage>(find.text('DETALLES DE LA CLASE'));
+    await buscarEn<SesionPage>(find.text('Detalles de la clase'));
     await captura('clase-detalles');
     Navigator.of(tester.element(find.byType(SesionPage))).pop();
     await tester.pumpAndSettle();

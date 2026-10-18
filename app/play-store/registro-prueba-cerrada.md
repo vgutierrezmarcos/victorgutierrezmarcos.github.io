@@ -193,6 +193,17 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - **Google aprobó la verificación del permiso de Google Calendar** (`calendar.events`, 16 oct.) y la opción se abrió a todos los preparadores verificados, sin versión nueva (`calendarioParaTodos` en la configuración de la web).
 - **Seguridad de los datos actualizada** en Play y enviada a revisión: mensajes (tablón y notas entre preparadores), eventos del calendario, contenido generado por el usuario (pizarra, anotaciones, materiales) y el token de las notificaciones push.
 
+### 18 oct. 2026
+- **Repaso estético de la app y de la web** (en `main` y en la versión web `/app/abrir/`; irá en la próxima versión de Play, aún sin número):
+  - Modo oscuro en berenjena en lugar del azul marino.
+  - Botones con relieve; tarjetas lisas, sin degradados.
+  - Avisos (clase cancelada, versión nueva, avisos del administrador) con un componente propio.
+  - Ajustes de «Más» agrupados en bloques.
+  - Menú inferior con las etiquetas en minúscula y la pestaña activa en una píldora.
+  - Títulos de sección sin mayúsculas.
+  - Botón de modo claro u oscuro con una luna y un sol dibujados, iguales que en la web.
+- Las capturas automáticas (`tool/capturas_test.dart`) vuelven a recorrer las 51 pantallas: la demostración no simulaba el reloj compartido de las clases (1.15.7). Las 222 pruebas pasan.
+
 (Seguir añadiendo aquí, con fecha.)
 
 ## Borrador de respuestas para «Solicitar acceso a producción»

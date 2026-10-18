@@ -94,7 +94,7 @@ void main() {
     await tester.pumpAndSettle();
     // El enrutador es global: se vuelve a Hoy por si otra prueba lo dejó en otra pestaña.
     if (find.byType(CapaGuia).evaluate().isEmpty) {
-      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('HOY')));
+      await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Hoy')));
       await tester.pumpAndSettle();
     }
   }
@@ -155,9 +155,9 @@ void main() {
     expect(find.byType(CapaGuia), findsNothing);
 
     // …pero se abre desde Más.
-    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('MÁS')));
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Más')));
     await tester.pumpAndSettle();
-    await tester.ensureVisible(find.text('Guía de la app'));
+    await tester.scrollUntilVisible(find.text('Guía de la app'), 300, scrollable: find.byType(Scrollable).last);
     await tester.pumpAndSettle();
     await tester.tap(find.text('Guía de la app'));
     await tester.pumpAndSettle();
@@ -190,7 +190,7 @@ void main() {
     expect(find.text('Para empezar'), findsOneWidget);
     // Ya tiene fecha: ese paso no sale y la cuenta atrás, sí.
     expect(find.text('Pon la fecha del examen'), findsNothing);
-    expect(find.textContaining('PARA EL PRIMER EJERCICIO'), findsOneWidget);
+    expect(find.textContaining('para el primer ejercicio'), findsOneWidget);
     expect(find.text('Haz tu primer test'), findsOneWidget);
 
     await tester.tap(find.text('Ocultar'));

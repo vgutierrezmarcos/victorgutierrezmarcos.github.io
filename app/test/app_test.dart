@@ -87,24 +87,24 @@ void main() {
   }
 
   Future<void> pestana(WidgetTester tester, String nombre) async {
-    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
     await tester.pumpAndSettle();
     // Segundo toque: vuelve a la raíz de la pestaña si se quedó en una subpágina.
-    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
     await tester.pumpAndSettle();
   }
 
   /// Subpestaña del bloque Cantes: Agenda, Cantar o Diario.
   Future<void> subpestana(WidgetTester tester, String nombre) async {
     await pestana(tester, 'Cantes');
-    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
     await tester.pumpAndSettle();
   }
 
   /// Subpestaña del bloque Estudiar: Temas o Test.
   Future<void> estudiar(WidgetTester tester, String nombre) async {
     await pestana(tester, 'Estudiar');
-    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())).first);
+    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)).first);
     await tester.pumpAndSettle();
   }
 
@@ -134,15 +134,15 @@ void main() {
     expect(find.byType(NavigationBar), findsNothing);
     expect(find.byType(NavigationRail), findsOneWidget);
     expect(tester.getTopLeft(find.byType(NavigationRail)).dx, 0);
-    await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('MÁS')));
+    await tester.tap(find.descendant(of: find.byType(NavigationRail), matching: find.text('Más')));
     await tester.pumpAndSettle();
     // Las secciones de Más se reparten en dos columnas.
-    final izquierda = tester.getTopLeft(find.text('MI PREPARADOR')).dx;
-    final derecha = tester.getTopLeft(find.text('ACERCA DE')).dx;
+    final izquierda = tester.getTopLeft(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Mi preparador'))).dx;
+    final derecha = tester.getTopLeft(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Acerca de'))).dx;
     expect(derecha - izquierda, greaterThan(500));
     await tester.tap(find.text('Iniciar sesión con Google').first);
     await tester.pumpAndSettle();
-    expect(find.text('TUS DATOS SOLO LOS VES TÚ'), findsOneWidget);
+    expect(find.text('Tus datos solo los ves tú'), findsOneWidget);
     expect(find.textContaining('ni otros opositores', findRichText: true), findsOneWidget);
   });
 
@@ -218,7 +218,7 @@ void main() {
     }
 
     await pestana(tester, 'Más');
-    expect(find.text('MI PREPARADOR'), findsOneWidget);
+    expect(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Mi preparador')), findsOneWidget);
     expect(find.text('Cronograma de temas'), findsNothing);
     expect(tester.takeException(), isNull);
   });
@@ -243,12 +243,12 @@ void main() {
     await masHerramientas(tester);
     await tocar(tester, find.text('Probabilidades'));
     // 30 + 30 del tercero; del cuarto y del quinto, nada: probabilidad conjunta 0.
-    expect(find.text('TERCER EJERCICIO'), findsOneWidget);
+    expect(find.text('Tercer ejercicio'), findsOneWidget);
     final p3 = Sorteo.probEjercicio([const ParteSorteo(total: 45, sabidos: 30), const ParteSorteo(total: 45, sabidos: 30)]);
     // Cada probabilidad sale en su ejercicio y otra vez en el resumen del final.
     expect(find.text('${(100 * p3).toStringAsFixed(1).replaceAll('.', ',')} %'), findsWidgets);
     expect(find.text('0,0 %'), findsAtLeastNWidgets(3)); // total, cuarto y quinto
-    await tester.scrollUntilVisible(find.text('En resumen'.toUpperCase()), 400, scrollable: find.byType(Scrollable).last);
+    await tester.scrollUntilVisible(find.text('En resumen'), 400, scrollable: find.byType(Scrollable).last);
     expect(find.textContaining('Total, en los tres ejercicios'), findsOneWidget);
     // Gráfico: por eficiencia y en 3D.
     await tocar(tester, find.descendant(of: find.byType(SegmentedButton<bool>), matching: find.text('Eficiencia')));
@@ -271,7 +271,7 @@ void main() {
     await subpestana(tester, 'Agenda');
     await tocar(tester, find.textContaining('Próximo cante en'));
     expect(find.byType(CantePage), findsOneWidget);
-    expect(find.text('TEMAS QUE ENTRAN (3)'), findsOneWidget);
+    expect(find.text('Temas que entran (3)'), findsOneWidget);
     expect(find.text('• Actualizar los datos del PIB'), findsOneWidget);
 
     await tocar(tester, find.text('Sacar bola y cantar'));
@@ -310,7 +310,7 @@ void main() {
     await tocar(tester, find.text('Todo el ejercicio'));
     // Duración por defecto (30 min) y exposición por tema aparte.
     expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min').first).selected, isTrue);
-    expect(find.text('EXPOSICIÓN POR TEMA'), findsOneWidget);
+    expect(find.text('Exposición por tema'), findsOneWidget);
     await tocar(tester, find.text('Otra'));
     await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), '40');
     await tocar(tester, find.text('Aceptar'));
@@ -362,7 +362,7 @@ void main() {
     expect(c.resultado!.comentarios, 'Me faltó el cierre');
 
     await subpestana(tester, 'Diario');
-    expect(find.text('HISTORIAL'), findsOneWidget);
+    expect(find.text('Historial'), findsOneWidget);
     expect(find.textContaining(c.resultado!.temaCantado!), findsWidgets);
     expect(tester.takeException(), isNull);
   });
@@ -374,9 +374,9 @@ void main() {
     banco = BancoPreguntas(preguntas: [p(1, '3.A.1', 'a'), p(2, '3.A.1', 'b'), p(3, '3.B.2', 'c')], examenes: const [], temas: const {'3.A.1': 'Objeto y métodos', '3.B.2': 'Comercio'});
     await arrancar(tester);
     await estudiar(tester, 'Test');
-    expect(find.text('CONFIGURACIÓN DEL EXAMEN'), findsNothing); // es un subtítulo, no un título de sección
+    expect(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Configuración del examen')), findsNothing); // es un subtítulo, no un título de sección
     expect(find.text('Configuración del examen'), findsOneWidget);
-    expect(find.text('DISPONIBLES'), findsOneWidget);
+    expect(find.text('Disponibles'), findsOneWidget);
     await tocar(tester, find.text('Comenzar test'));
 
     expect(find.text('Pregunta 1 de 3'), findsOneWidget);
@@ -393,8 +393,8 @@ void main() {
     expect(find.text('Has respondido todas las preguntas.'), findsOneWidget);
     await tocar(tester, find.descendant(of: find.byType(AlertDialog), matching: find.text('Finalizar')));
 
-    expect(find.text('CORRECTAS'), findsOneWidget);
-    expect(find.text('REVISIÓN'), findsOneWidget);
+    expect(find.text('Correctas'), findsOneWidget);
+    expect(find.text('Revisión'), findsOneWidget);
     expect(find.text('Tu respuesta'), findsNWidgets(3));
     final r = usuario.resultadosLocales().single;
     expect(r.correctas, 1);
@@ -410,9 +410,9 @@ void main() {
     await pestana(tester, 'Organización');
     await masHerramientas(tester);
     await tocar(tester, find.text('Mapa del temario'));
-    expect(find.text('MICROECONOMÍA'), findsOneWidget);
-    expect(find.text('MACROECONOMÍA'), findsOneWidget);
-    expect(find.text('MIXTO'), findsOneWidget);
+    expect(find.text('Microeconomía'), findsOneWidget);
+    expect(find.text('Macroeconomía'), findsOneWidget);
+    expect(find.text('Mixto'), findsOneWidget);
     expect(find.text('Por dónde seguir'), findsOneWidget);
     expect(find.text('Modelo neoclásico básico'), findsOneWidget);
     expect(find.text('2 / 6'), findsOneWidget); // 3.A.8 y 3.A.9 estudiados
@@ -420,15 +420,15 @@ void main() {
     // Detalle del bloque.
     await tocar(tester, find.text('Modelo neoclásico básico'));
     expect(find.text('2 de 6 temas estudiados'), findsOneWidget);
-    expect(find.text('TEMAS DEL BLOQUE'), findsOneWidget);
+    expect(find.text('Temas del bloque'), findsOneWidget);
     expect(find.text('Teoría de la demanda'), findsOneWidget); // idea clave de 3.A.8
-    expect(find.text('CONEXIONES CON EL RESTO DEL TEMARIO'), findsOneWidget);
+    expect(find.text('Conexiones con el resto del temario'), findsOneWidget);
     await tocar(tester, find.byType(BackButton));
 
     // Cuarto ejercicio: dos categorías, una por parte.
     await tocar(tester, find.text('Cuarto ejercicio'));
-    expect(find.text('ECONOMÍA ESPAÑOLA'), findsOneWidget);
-    expect(find.text('ECONOMÍA DEL SECTOR PÚBLICO'), findsOneWidget);
+    expect(find.text('Economía española'), findsOneWidget);
+    expect(find.text('Economía del sector público'), findsOneWidget);
 
     // Esquema interactivo.
     await tocar(tester, find.text('Esquema'));
@@ -443,7 +443,7 @@ void main() {
     await tocar(tester, find.textContaining('Parte C: Derecho'));
     // Tema sin PDF: se abre directamente su agenda.
     await tocar(tester, find.textContaining('5.C.4 ·'));
-    expect(find.text('Para la próxima vuelta'.toUpperCase()), findsOneWidget);
+    expect(find.text('Para la próxima vuelta'), findsOneWidget);
     await tester.enterText(find.widgetWithText(TextField, 'Añadir apunte…'), 'Repasar los plazos del recurso de alzada');
     await tocar(tester, find.byTooltip('Añadir'));
     expect(find.text('Repasar los plazos del recurso de alzada'), findsOneWidget);
@@ -475,7 +475,7 @@ void main() {
     await tocar(tester, find.text('Empezar sin cuenta')); // sin Firebase
     expect(preparador.perfil().activo, isTrue);
     expect(preparador.perfil().papelElegido, isTrue);
-    expect(find.text('TUS CLASES'), findsOneWidget);
+    expect(find.text('Tus clases'), findsOneWidget);
     expect(find.text('Sin código para alumnos'), findsOneWidget); // sin Firebase no hay código
     expect(find.textContaining('Todavía no tienes alumnos'), findsOneWidget);
 
@@ -487,7 +487,7 @@ void main() {
 
     // Ficha del alumno y cante inmediato: sorteo, cronómetro y valoración.
     await tocar(tester, find.text('Lucía'));
-    expect(find.text('TEMAS QUE LLEVA (0)'), findsOneWidget);
+    expect(find.text('Temas que lleva (0)'), findsOneWidget);
     await tocar(tester, find.text('Cantar ahora'));
     expect(find.textContaining('temas en la bolsa. Al terminar se guarda en su ficha.'), findsOneWidget);
     // En una clase se sacan los temas de la clase (dos, como cerca del examen).
@@ -507,9 +507,9 @@ void main() {
     expect(s.resultado!.valoracion, 2);
     expect(plan.cantes(), isEmpty); // no se mezcla con el diario propio
     // De vuelta en la ficha: un cante y el tema, flojo.
-    expect(find.text('HISTORIAL DE CANTES'), findsOneWidget);
-    expect(find.text('TEMAS FLOJOS'), findsOneWidget);
-    expect(find.text('CANTE'), findsOneWidget);
+    expect(find.text('Historial de cantes'), findsOneWidget);
+    expect(find.text('Temas flojos'), findsOneWidget);
+    expect(find.text('cante'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 
@@ -533,11 +533,11 @@ void main() {
 
     final sesiones = preparador.sesiones();
     expect(sesiones.map((s) => s.alumno).toList(), ['a1']);
-    expect(find.text('TUS CLASES'), findsOneWidget);
+    expect(find.text('Tus clases'), findsOneWidget);
 
     // Detalle de la clase de Lucía: entran los dos temas que lleva.
     await tocar(tester, find.textContaining('· Lucía'));
-    expect(find.text('TEMAS QUE ENTRAN (2)'), findsOneWidget);
+    expect(find.text('Temas que entran (2)'), findsOneWidget);
     expect(find.text('Alumno sin app enlazada'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
@@ -549,8 +549,8 @@ void main() {
     await pestana(tester, 'Organización');
     await masHerramientas(tester);
     await tocar(tester, find.text('Probabilidad de aprobar el test'));
-    expect(find.text('SIN SABER NINGUNA PREGUNTA'), findsOneWidget);
-    expect(find.text('PREGUNTA A PREGUNTA'), findsOneWidget);
+    expect(find.text('Sin saber ninguna pregunta'), findsOneWidget);
+    expect(find.text('Pregunta a pregunta'), findsOneWidget);
     expect(find.textContaining('de aprobar'), findsWidgets);
     expect(tester.takeException(), isNull);
   });
@@ -567,12 +567,12 @@ void main() {
     await preparador.activar();
     await arrancar(tester);
     await pestana(tester, 'Más');
-    expect(find.text('PREPARADOR'), findsOneWidget);
+    expect(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Preparador')), findsOneWidget);
     await tocar(tester, find.descendant(of: find.byType(SegmentedButton<Papel>), matching: find.text('Opositor')));
     await tocar(tester, find.text('Cambiar'));
     expect(preparador.perfil().activo, isFalse);
     expect(preparador.perfil().papelElegido, isTrue);
-    expect(find.text('MI PREPARADOR'), findsOneWidget);
+    expect(find.descendant(of: find.byType(TituloSeccion), matching: find.text('Mi preparador')), findsOneWidget);
     await pestana(tester, 'Hoy');
     expect(find.text('Preparador de TCEE'), findsNothing);
     expect(find.text('¿Cómo usas la app en TCEE?'), findsNothing);
@@ -594,7 +594,7 @@ void main() {
     await tester.pumpAndSettle();
     await tocar(tester, find.text('Leer el texto'));
     expect(find.text('Revisa tu cronograma'), findsOneWidget);
-    expect(find.text('SEMANAS · 3 TEMAS'), findsOneWidget);
+    expect(find.text('Semanas · 3 temas'), findsOneWidget);
     expect(find.text('Líneas que no he entendido (1)'), findsOneWidget);
     await tester.scrollUntilVisible(find.text('Crear el cronograma'), 300, scrollable: find.byType(Scrollable).first);
     await tocar(tester, find.text('Crear el cronograma'));

@@ -17,6 +17,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tcee_app/features/cantar/reloj_compartido.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/core/cache_http.dart';
 import 'package:tcee_app/core/constants.dart';
@@ -267,6 +268,8 @@ class Demo {
     demo.reservasRecibidas = [Reserva(id: 'r1', preparador: 'yo', alumno: 'marta', alumnoNombre: 'Marta', fecha: dia(2, 19, 0), nota: 'Quiero cantar el 4.A.9')];
     demo.overrides = [
       procesoJsonProvider.overrideWith((ref) async => proceso),
+      // El reloj compartido de las clases (1.15.7) también va a la base falsa.
+      firestoreRelojProvider.overrideWithValue(dbRed),
       // Los títulos, los reales del temario (3.A.14: teoría de juegos; 3.B.5: comercio internacional).
       temaAnticipadoProvider.overrideWith((ref, id) async => id == 'pt'
           ? TemaAnticipado(
@@ -370,19 +373,30 @@ class Recorrido {
   }
 
   Future<void> tocar(Finder f) async {
+    // Si no está construido (la lista lo dejó fuera), se sube arriba del todo
+    // y se baja hasta encontrarlo.
+    if (f.evaluate().isEmpty && find.byType(ListView).evaluate().isNotEmpty) {
+      await bajar(-20000);
+      await buscar(f);
+    }
+    // Si está construido pero fuera de la pantalla (arriba o abajo), se trae a la vista.
+    if (f.evaluate().isNotEmpty) {
+      await tester.ensureVisible(f.first);
+      await tester.pumpAndSettle();
+    }
     await tester.tap(f.first);
     await tester.pumpAndSettle();
   }
 
   Future<void> pestana(String nombre) async {
     for (var i = 0; i < 2; i++) {
-      await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre.toUpperCase())));
+      await tocar(find.descendant(of: find.byType(NavigationBar), matching: find.text(nombre)));
     }
   }
 
   Future<void> subpestana(String nombre) async {
     await pestana('Cantes');
-    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre.toUpperCase())));
+    await tocar(find.descendant(of: find.byType(TabBar), matching: find.text(nombre)));
   }
 
   Future<void> bajar(double puntos) async {

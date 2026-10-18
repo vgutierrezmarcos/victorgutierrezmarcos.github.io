@@ -334,11 +334,11 @@ class _Shell extends ConsumerWidget {
   final StatefulNavigationShell shell;
 
   static const _destinos = [
-    (Icons.today_outlined, Icons.today, 'HOY'),
-    (Icons.menu_book_outlined, Icons.menu_book, 'ESTUDIAR'),
-    (Icons.record_voice_over_outlined, Icons.record_voice_over, 'CANTES'),
-    (Icons.event_note_outlined, Icons.event_note, 'ORGANIZACIÓN'),
-    (Icons.more_horiz, Icons.more_horiz, 'MÁS'),
+    (Icons.today_outlined, Icons.today, 'Hoy'),
+    (Icons.menu_book_outlined, Icons.menu_book, 'Estudiar'),
+    (Icons.record_voice_over_outlined, Icons.record_voice_over, 'Cantes'),
+    (Icons.event_note_outlined, Icons.event_note, 'Organización'),
+    (Icons.more_horiz, Icons.more_horiz, 'Más'),
   ];
 
   void _ir(int i) => shell.goBranch(i, initialLocation: i == shell.currentIndex);
@@ -392,16 +392,16 @@ class _Shell extends ConsumerWidget {
         ]),
       );
     }
-    // La etiqueta más larga («ORGANIZACIÓN») cabe en una línea: si con la
+    // La etiqueta más larga («Organización») cabe en una línea: si con la
     // tipografía de la oposición no cabe en el ancho de cada destino, se reduce.
     final tema = NavigationBarTheme.of(context);
     final base = tema.labelTextStyle?.resolve({WidgetState.selected}) ?? const TextStyle(fontSize: 10.5);
-    final medida = (TextPainter(text: TextSpan(text: 'ORGANIZACIÓN', style: base), textDirection: TextDirection.ltr, textScaler: MediaQuery.textScalerOf(context))..layout()).width;
+    final medida = (TextPainter(text: TextSpan(text: 'Organización', style: base), textDirection: TextDirection.ltr, textScaler: MediaQuery.textScalerOf(context))..layout()).width;
     final cabe = MediaQuery.sizeOf(context).width / _destinos.length - 8;
     final factor = medida > cabe ? cabe / medida : 1.0;
     return Scaffold(
       body: shell,
-      // Menú de la web (.main-nav): blanco, con filete superior y etiquetas en mayúsculas.
+      // Menú de la web (.main-nav): papel, con filete superior y etiquetas en minúscula.
       bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(border: Border(top: BorderSide(color: context.colores.borde))),
         child: NavigationBarTheme(
