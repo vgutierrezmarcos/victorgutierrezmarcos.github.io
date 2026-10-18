@@ -1,0 +1,330 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+% Colores de las tablas del tema (tcee.sty)
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+% Funciones clave en morado y recuadradas, como en el tema (tcee.sty)
+\tcbset{tcee funcion clave/.style={enhanced,nobeforeafter,colback=tceemoradopalido!70!white,
+  colframe=tceemorado,colupper=tceemorado,boxrule=0.6pt,arc=1.5pt,left=4pt,right=4pt,top=2pt,bottom=2pt}}
+\providecommand{\funcionclave}[1]{\par\vspace{1pt}{\centering$\tcbhighmath[tcee funcion clave]{\displaystyle #1}$\par}\vspace{2pt}}
+% Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
+\newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
+\tcetema[Análisis de mercados (II): el monopolio]{3.A.17}{Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral.}
+\tcefecha{18/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Teoría del monopolio: equilibrio, eficiencia y bienestar}{8}
+\subcante{1. Escenario base: 1 oferente, barreras}{1}
+\subcante{2. Equilibrio: $\mathrm{IMg}=\mathrm{CMg}$ $\Rightarrow$ $\mathcal{L}=1/|\varepsilon_{q,p}|$}{4}
+\subcante{3. Eficiencia y bienestar: \autor{Harberger}, rentas, X}{3}
+\apartadocante{II. Desarrollos de la teoría del monopolio}{11,5}
+\subcante{1. Discriminación: 1.\textsuperscript{er}, 2.º, 3.\textsuperscript{er} grado, \autor{Coase}}{5,5}
+\subcante{2. Monopolio natural: subaditividad, regulación}{4,5}
+\subcante{3. Producción conjunta: multiproducto, multiplanta}{1,5}
+\apartadocante{III. Otras estructuras relacionadas}{7}
+\subcante{1. Monopsonio: $\mathrm{VPMg}_L=\mathrm{GMg}_L$; salario mínimo}{3,5}
+\subcante{2. Monopolio bilateral: \autor{Bowley} $\to$ \autor{Nash}}{3,5}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: la \concepto{regla de la elasticidad inversa}: por grupos, amortiguada, con elasticidades cruzadas y, en espejo, en los factores. \emph{Pizarra}: $\mathcal{L}=1/|\varepsilon_{q,p}|$ en una esquina todo el cante.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Quien parte y reparte se queda con la mejor parte». 5/8/2024: un juez de EE.\,UU.: «Google es un monopolista» (89,2\,\% de las búsquedas; 94,9\,\% en móviles). \emph{¿Se queda siempre con la mejor parte quien es el único que vende? ¿Qué le limita? ¿Qué le queda al resto?}
+\item \textbf{Relevancia}: \emph{teórica} (caso más sencillo de poder de mercado: IMg, \autor{Lerner}, autoselección); \emph{empírica} (margen sobre CMg en EE.\,UU.: 21\,\% en 1980 $\to$ 61\,\% en 2016; monopsonio apreciable); \emph{de política} (defensa de la competencia \vertema{3.B.39}, regulación \vertema{3.A.20}, salario mínimo \vertema{3.A.25}).
+\item \textbf{Contextualización}: \autor{Smith} (1776), \autor{Ricardo}, \autor{Mill}, \autor{Dupuit} $\to$ \autor{Cournot} (1838) $\to$ \autor{Marshall}, \autor{Pigou}, \autor{Bowley}, \autor{Robinson}, \autor{Lerner} $\to$ \autor{Harberger}, \autor{Coase}, \autor{Boiteux}, \autor{Baumol} $\to$ información asimétrica (\autor{Mussa}-\autor{Rosen}, \autor{Maskin}-\autor{Riley}, \autor{Laffont}-\autor{Tirole}).
+\item \textbf{Problemática}: ¿cómo fija precio y cantidad, qué limita su poder y cuánto cuesta a la sociedad? ¿Qué cambia si discrimina, si la tecnología pide una sola empresa o si vende varios bienes? ¿Y si el poder está en quien compra, o en los 2 lados?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, monopolio básico y su coste social (vara de medir de todo lo demás); \hyperref[rep:II]{II}, desarrollos que levantan de uno en uno los supuestos del escenario base; \hyperref[rep:III]{III}, el poder cambia de lado (monopsonio) y está en los 2 (monopolio bilateral).
+\end{itemize}
+\begin{itemize}
+\item \concepto{Monopolio} (\emph{mónos}, uno; \emph{pōleîn}, vender): único vendedor de un bien sin sustitutivos cercanos, protegido por barreras de entrada.
+\item \concepto{Poder de mercado}: capacidad de fijar $p>\mathrm{CMg}$ sin perder todas las ventas $\Rightarrow$ falla un supuesto del primer teorema fundamental de la economía del bienestar (1TFEB) \vertema{3.A.22}.
+\item \concepto{Monopsonio}: único comprador. \concepto{Monopolio bilateral}: monopolista frente a monopsonista. En \concepto{equilibrio parcial} (\autor{Marshall}): un mercado, sin efectos sobre el resto.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8]{I. Teoría del monopolio: equilibrio, eficiencia y bienestar\label{rep:I}}
+\begin{ideaclave}
+El monopolista produce menos y cobra más que la competencia; el margen sobre el CMg lo limita la elasticidad de la demanda, y la pérdida de bienestar va más allá de las unidades que deja de producir.
+\end{ideaclave}
+
+\sub{I.1. Caracterización: el escenario base\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Lista común} de las estructuras de mercado (\vertema{3.A.16} a \vertema{3.A.19}); el monopolio \emph{levanta el 4} (y el 5).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\centering\arraybackslash}m{0.05\linewidth}>{\raggedright\arraybackslash}m{0.33\linewidth}>{\raggedright\arraybackslash}m{0.56\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{En el monopolio}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & Agentes racionales & se mantiene: máx.\ $U$ y máx.\ $B$\\
+\textcolor{tceemorado}{\textbf{2}} & Información perfecta y simétrica & se mantiene: conoce demanda y tecnología\\
+\textcolor{tceemorado}{\textbf{3}} & Producto homogéneo (sin sustitutivos cercanos) & se mantiene: un bien, elasticidad cruzada pequeña\\
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{4}} & Mercado atomizado (precio-aceptantes) & \textcolor{tceerojo}{\textbf{Se levanta}}: \textbf{un solo vendedor}, \emph{precio-decisor}; compradores muchos y precio-aceptantes, sin reventa\\
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{5}} & Libre entrada y salida (LP) & \textcolor{tceerojo}{\textbf{Se levanta}}: \textbf{barreras de entrada}, que protegen el beneficio también a LP\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Barreras} \vertema{3.A.15}: \emph{estratégicas} (disuasión), \emph{legales} (patentes, licencias, concesiones, aranceles), \emph{tecnológicas} (subaditividad: monopolio natural, \hyperref[rep:II.2]{II.2}).
+\item \emph{Supuestos propios}, que se levantan después: precio uniforme (\hyperref[rep:II.1]{II.1}); costes sin ventajas de tamaño (\hyperref[rep:II.2]{II.2}); un producto y una planta (\hyperref[rep:II.3]{II.3}); precio-aceptante en factores (\hyperref[rep:III.1]{III.1}); demandantes sin poder (\hyperref[rep:III.2]{III.2}).
+\item \emph{Consecuencia}: \concepto{poder de mercado}: afronta toda la demanda, de pendiente negativa; elige \emph{un punto} de ella (precio \emph{o} cantidad, no los 2) y, por las barreras, mantiene beneficios a LP.
+\end{itemize}
+
+\sub{I.2. Equilibrio del monopolio\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Idea}: para vender una unidad más tiene que bajar el precio de \emph{todas}. De ahí sale todo lo demás.
+\item \emph{Supuestos}: los del escenario base; demanda inversa $p(q)$ derivable, $p'(q)<0$ (consumidores con utilidad cuasilineal \vertema{3.A.8}); costes $C(q)$ derivables, $\mathrm{CMg}>0$, que ya recogen la combinación de factores más barata: $C(\vect{w},q)$ con $\vect{w}$ fijo (teoría de los costes \vertema{3.A.12}).
+\item \emph{Desarrollo}: precio endógeno; 2.ª restricción, \concepto{condición de participación}:
+\begin{formula}
+\centering $\optim{\max}{q}{B(q)=p(q)\,q-C(q)}{q\geq0\\ B(q)\geq0}$\\[4pt]
+$\underbrace{p(q^M)+p'(q^M)\,q^M}_{\mathrm{IMg}(q^M)}=\mathrm{CMg}(q^M)$;\quad $\mathrm{IMg}=p\Big(1-\dfrac{1}{|\varepsilon_{q,p}|}\Big)<p$
+\end{formula}
+\item \emph{IMg}: el \concepto{ingreso marginal} es el $p$ de la unidad adicional menos lo que pierde en las demás, $p'(q)\,q<0$ (\autor{Cournot}, 1838). En competencia, $|\varepsilon|\to\infty$ y $\mathrm{IMg}=p$.
+\item \emph{Tramo elástico}: $\mathrm{CMg}>0$ $\Rightarrow$ $\mathrm{IMg}>0$ $\Rightarrow$ $|\varepsilon_{q,p}|>1$: nunca en el tramo inelástico (ni en $|\varepsilon|=1$, salvo $\mathrm{CMg}=0$).
+\item \emph{Índice de \autor{Lerner}} (1934): \concepto{regla de la elasticidad inversa}: margen relativo = inversa de la elasticidad; lo usan las autoridades de competencia:
+\funcionclave{\mathrm{IMg}(q^M)=\mathrm{CMg}(q^M)\ \Longleftrightarrow\ \mathcal{L}\equiv\frac{p^M-\mathrm{CMg}(q^M)}{p^M}=\frac{1}{|\varepsilon_{q,p}|}}
+\item \emph{CSO}: $\mathrm{IMg}'<\mathrm{CMg}'$: también con CMg \emph{decreciente} si corta al IMg desde abajo.
+\item \emph{No hay curva de oferta}: la cantidad depende de la forma de la demanda (elasticidad); 2 demandas dan el mismo $p$ con distinto $q$, o al revés.
+\item \emph{Viabilidad}, evaluada \emph{en $q^M$} (no en el mínimo del CMe): CP, $p(q^M)\geq\mathrm{CVMe}(q^M)$ (pérdidas $\leq$ CF); LP, $p(q^M)\geq\mathrm{CMe}(q^M)$.
+\end{itemize}
+\graficorepaso[0.58\linewidth]{equilibrio-monopolio}{Equilibrio: $\mathrm{IMg}=\mathrm{CMg}$ en $q^M$; precio sobre la demanda; competencia en $q^c$, $p^c$}
+\begin{itemize}
+\item \emph{Implicaciones}: $p^M>\mathrm{CMg}(q^M)$, $q^M<q^c$; \emph{beneficios a LP} (barreras) y \emph{no necesariamente en el mín.\ del CMe LP} (exceso de capacidad o deseconomías).
+\item \emph{Extensión: impuestos}: unitario $t$ $\Rightarrow$ $\mathrm{IMg}=\mathrm{CMg}+t$; traslación según la \emph{curvatura} (\autor{Bulow}-\autor{Pfleiderer}, 1983): lineal, $p$ sube $t/2$; isoelástica, \emph{más} que $t$. Sobre beneficios o de suma fija: no altera $q$.
+\item \emph{Valoración}: una condición lo explica y da una medida práctica; queda la pregunta normativa.
+\end{itemize}
+
+\sub{I.3. Análisis de eficiencia y bienestar\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Idea}: comparar con la competencia, que maximiza el \concepto{excedente total} $\mathrm{ET}=\mathrm{EC}+\mathrm{EP}$ (1TFEB en equilibrio parcial: $p=\mathrm{CMg}$ en la última unidad \vertema{3.A.16}\vertema{3.A.22}).
+\item \emph{Supuestos}: demanda = valoración marginal (cuasilineal: EC exacto \vertema{3.A.9}); CMg = coste de oportunidad; mismos costes en monopolio y competencia (se levanta con la ineficiencia X).
+\item \emph{Desarrollo}: rectángulo $(p^M-p^c)\,q^M$ = \emph{transferencia}, no pérdida; los 2 triángulos entre $q^M$ y $q^c$ = \concepto{pérdida irrecuperable de eficiencia} o \concepto{triángulo de \autor{Harberger}} (unidades valoradas por encima de su coste que no se producen). Con CMg constante:
+\begin{formula}
+\centering $\mathrm{PIE}\approx\tfrac12\,\Delta p\,\Delta q\approx\tfrac12\,|\varepsilon_{q,p}|\,\mathcal{L}^2\,p^Mq^M\ \overset{|\varepsilon|=1/\mathcal{L}}{=}\ \tfrac12\,\mathcal{L}\,p^Mq^M=\tfrac12\,B$
+\end{formula}
+\item[] proporcional al \emph{cuadrado} del margen; exactamente $B/2$ con demanda lineal, CMg constante y sin CF: $\mathrm{PIE}=(a-c)^2/8b$.
+\item \emph{Otras 4 ineficiencias}:
+  \begin{itemize}
+  \item \emph{asignativa en factores}: contrata hasta $\mathrm{IPMg}_i=\mathrm{IMg}\cdot\mathrm{PMg}_i=w_i$, no hasta $\mathrm{VPMg}_i=p\cdot\mathrm{PMg}_i$: \emph{explotación monopolística} (\autor{Robinson}); la combinación sigue siendo la más barata;
+  \item \emph{productiva}: no produce en el mín.\ del CMe LP;
+  \item \emph{ineficiencia X} (\autor{Leibenstein}, 1966): $C^{\mathrm{obs}}=(1+\chi)\,C(q)$, $\chi\geq0$; «el mejor de los beneficios del monopolio es una vida tranquila» (\autor{Hicks}, 1935);
+  \item \emph{búsqueda de rentas} (\autor{Tullock}, 1967): el beneficio es un premio por el que se compite; \autor{Posner} (1975): se disipa entero $\Rightarrow$ todo el rectángulo es pérdida \vertema{4.B.2}.
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.6\linewidth]{bienestar-monopolio}{Coste social: transferencia, triángulo de \autor{Harberger}, búsqueda de rentas e ineficiencia X}
+\begin{itemize}
+\item \emph{Implicaciones}: pérdida entre el triángulo (cota inferior) y triángulo + franja X + rectángulo de rentas (cota superior). Crece con $\mathcal{L}^2$: los más costosos, los de demanda muy inelástica.
+\item \emph{Eficiencia dinámica}: \autor{Schumpeter} (1942): el beneficio financia la innovación (patentes); \autor{Arrow} (1962): \emph{efecto reemplazo}, más incentivo en competencia; evidencia: U invertida (\autor{Aghion} et al., 2005) \vertema{3.A.44}.
+\item \emph{Evidencia}: \autor{Harberger} (1954, manufacturas EE.\,UU.\ 1924-28): $<1/13$ del 1\,\% de la renta nacional; \autor{Posner} y \autor{Cowling}-\autor{Mueller} (1978): muy superiores.
+\item \emph{Valoración}: suele ser ineficiente, pero no siempre hay que desmantelarlo: discriminación perfecta y monopolio natural son eficientes en un sentido; la intervención tiene costes \vertema{3.A.23}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11,5]{II. Desarrollos de la teoría del monopolio\label{rep:II}}
+\begin{ideaclave}
+Al levantar cada supuesto, el monopolista adapta la misma regla de la elasticidad inversa, y el juicio de bienestar puede cambiar de signo: la discriminación puede aumentar la producción y el monopolio natural puede ser la forma más barata de producir.
+\end{ideaclave}
+
+\sub{II.1. Discriminación de precios\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Definición}: \concepto{discriminación de precios}: unidades del mismo bien a precios distintos, sin diferencias de coste (\autor{Varian}, 1989).
+\item \emph{3 condiciones}: \emph{poder de mercado}; \emph{información} sobre la disposición a pagar (directa, por señal o por lo que se elige); \emph{sin reventa} (arbitraje).
+\item \emph{Clasificación}: \autor{Pigou} (1920), hoy por la información del monopolista (\autor{Tirole}, 1988): \concepto{primer grado} (observa cada valoración); \concepto{segundo grado} (conoce la distribución, menú común: \emph{autoselección}); \concepto{tercer grado} (observa una señal: precio lineal por grupo). La intertemporal («cuarto grado») no es un grado más: es autoselección en el tiempo.
+\end{itemize}
+\begin{itemize}
+\item \emph{Primer grado}: cada unidad a su precio de reserva sin bajar el de las demás $\Rightarrow$ $\mathrm{IMg}(q)=p(q)$ $\Rightarrow$ $p(q^*)=\mathrm{CMg}(q^*)$, $q^*=q^c$. \emph{Eficiente}, pero EC nulo: problema de \emph{equidad}. Cota superior del beneficio. Zoco, médico rural; hoy tarificación personalizada.
+\item \emph{Segundo grado} (\concepto{autoselección}, \emph{screening}; selección adversa \vertema{3.A.13}; \autor{Mussa}-\autor{Rosen} 1978, \autor{Maskin}-\autor{Riley} 1984): \concepto{tarifa no lineal}.
+  \begin{itemize}
+  \item \emph{Supuestos}: tipos $t_1<t_2$ en proporciones $\pi$, $1-\pi$; utilidad $t_iu(q)-T$, $u'>0$, $u''<0$; CMg $c$; menú $\{(q_1,T_1),(q_2,T_2)\}$; sin reventa.
+  \item \emph{Desarrollo}: máx.\ $\pi(T_1-cq_1)+(1-\pi)(T_2-cq_2)$ s.a.\ 2 de participación (PC) y 2 de incentivos (IC). Se saturan $\mathrm{PC}_1$ e $\mathrm{IC}_2$: $T_1=t_1u(q_1)$ y
+\begin{formula}
+\centering $T_2=t_2u(q_2)-\underbrace{(t_2-t_1)\,u(q_1)}_{\text{renta informativa}}$\\[3pt]
+$t_2u'(q_2)=c$,\quad $t_1u'(q_1)\Big[1-\dfrac{1-\pi}{\pi}\cdot\dfrac{t_2-t_1}{t_1}\Big]=c\ \Rightarrow\ t_1u'(q_1)>c$
+\end{formula}
+  \item \emph{Implicaciones}: \emph{no hay distorsión arriba} (el alto, cantidad eficiente + \concepto{renta informativa}); \emph{distorsión abajo} (el bajo, menos de lo eficiente, para abaratar la renta del alto); excluir al bajo si $\pi t_1\leq(1-\pi)(t_2-t_1)$. Equivale a descuentos por cantidad o a 2 tarifas en dos partes. ET: ambiguo.
+  \item \emph{Extensión: calidad}: igual; versión baja \emph{degradada} a propósito (tapa blanda, turista; \emph{damaged goods}, \autor{Deneckere}-\autor{McAfee} 1996).
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.55\linewidth]{autoseleccion}{Segundo grado con 2 tipos: eficiente arriba, distorsión abajo, renta informativa}
+\begin{itemize}
+\item \emph{Una tarifa en dos partes para todos}: $T(q)=A+pq$ (\autor{Oi}, 1971, Disneyland): i) cuotas distintas: $p=c$, $A_i=\mathrm{EC}_i(c)$ = primer grado; ii) cuota común sin excluir: $A=\mathrm{EC}_1(p)$ y $p>c$ (renta del alto y pérdida en los 2); iii) excluir a los bajos: $p=c$, $A=\mathrm{EC}_2(c)$.
+\item \emph{Tercer grado} (por grupos):
+  \begin{itemize}
+  \item \emph{Supuestos}: 2 grupos con $p_k(q_k)$, precio lineal en cada uno, sin reventa, coste $C(q_1+q_2)$.
+  \item \emph{Desarrollo}: IMg agregado (suma horizontal) $=$ CMg:
+\begin{formula}
+\centering $\mathrm{IMg}_1(q_1)=\mathrm{IMg}_2(q_2)=\mathrm{CMg}(q_1+q_2)\ \Rightarrow\ \mathcal{L}_k=\dfrac{1}{|\varepsilon_{q_k,p_k}|}$
+\end{formula}
+  \item \emph{Implicaciones}: precio \emph{mayor en el grupo menos elástico}; con elasticidades iguales no compensa. \emph{Bienestar}: $B$ no baja; ET solo sube si \emph{aumenta la cantidad total} (\autor{Schmalensee} 1981, \autor{Varian} 1985): $\sum_k(p_k-c)\Delta q_k\leq\Delta\mathrm{ET}\leq(p^u-c)\Delta Q$. Demandas lineales, todos servidos: $Q$ igual, ET baja (\autor{Robinson}). Favorable: abre un mercado (medicamentos en países pobres).
+  \end{itemize}
+\end{itemize}
+\graficorepaso[0.92\linewidth]{tercer-grado}{Tercer grado: IMg agregado = CMg; precio mayor en el mercado menos elástico}
+\begin{itemize}
+\item \emph{Intertemporal}: \concepto{conjetura de \autor{Coase}} (1972): bien duradero, revisiones frecuentes del precio, consumidores pacientes $\Rightarrow$ $p\to\mathrm{CMg}$, pierde el poder (\autor{Gul}-\autor{Sonnenschein}-\autor{Wilson}, 1986); inconsistencia temporal \vertema{3.A.14}. Salidas: \emph{leasing}, obsolescencia, nuevas ediciones (\autor{Bulow}, 1982).
+\item \emph{Bienestar}: 1.\textsuperscript{er} eficiente sin EC; 2.º distorsiona al bajo; 3.\textsuperscript{er} solo mejora si $\uparrow Q$. Más información $\Rightarrow$ más excedente extraído, no siempre menos eficiencia.
+\end{itemize}
+
+\sub{II.2. Monopolio natural\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Existencia}: \concepto{monopolio natural} $\Leftrightarrow$ costes \concepto{subaditivos} en la producción relevante: es la \emph{definición} (\autor{Baumol}, 1977) \vertema{3.A.12}:
+\begin{formula}
+\centering $C\Big(\textstyle\sum_{j=1}^{n}q_j\Big)<\textstyle\sum_{j=1}^{n}C(q_j)$
+\end{formula}
+\item \emph{Uniproducto}: economías de escala \emph{suficientes, no necesarias} (subaditiva con CMe creciente entre $q^0$, mín.\ del CMe, y $q^1$). Concepto relativo a la \emph{demanda}. Redes (transporte de electricidad, gas, agua, vías), no los servicios que circulan.
+\item \emph{Sostenibilidad}: \concepto{sostenible} si hay un precio que cubre costes atendiendo toda la demanda y al que ningún entrante gana vendiendo una parte (\autor{Panzar}-\autor{Willig} 1977; \autor{Baumol}-\autor{Bailey}-\autor{Willig} 1977). Demanda antes de $q^0$: sostenible; entre $q^0$ y $q^1$ sin reacción del incumbente: \emph{no}; con reacción: sostenible si la demanda queda bajo $\mathrm{CMe}_{1+2}$ (\autor{Segura}, 1986). Mercados impugnables: $p=\mathrm{CMe}$ (\autor{Baumol}-\autor{Panzar}-\autor{Willig}, 1982) \vertema{3.A.15}.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{subaditividad-sostenibilidad}{Subaditividad ($q<q^1$) y sostenibilidad: $\mathrm{CMe}_1$, $\mathrm{CMe}_{1+2}$, $D^*$ y $D'$}
+\begin{itemize}
+\item \emph{Multiproducto}: subaditividad de $C(\vect{w},\vect{q})$; \concepto{economías de alcance} $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$ \emph{necesarias, no suficientes} (+ coste incremental medio decreciente). Sostenibilidad: precios \concepto{libres de subsidios cruzados} (\autor{Faulhaber}, 1975): prueba del \emph{coste aislado} (ningún subconjunto ingresa más de lo que costaría solo) y del \emph{coste incremental} (ninguno ingresa menos de lo que cuesta añadirlo); necesaria, no suficiente.
+\item \emph{Regulación, idea}: ni desmantelar (eficiencia productiva) ni dejar libre; eficiencia asignativa frente a viabilidad financiera.
+\item \emph{Supuestos}: regulador benevolente e informado.
+\item \emph{Desarrollo}: \concepto{primer óptimo}, $p=\mathrm{CMg}$ (\autor{Hotelling}, 1938): en el tramo decreciente del CMe, pérdidas $(\mathrm{CMe}-\mathrm{CMg})\,q$ $\Rightarrow$ subvención de suma fija; cada euro cuesta $1+\lambda$ (\emph{coste sombra de los fondos públicos}), quita incentivos y redistribuye. En el tramo creciente, beneficios gravables.
+\item[] \concepto{Segundos óptimos}, sin subvención: \emph{$p=\mathrm{CMe}$} (beneficio nulo; menos unidades; costes inflados); \emph{tarifa en dos partes} (\autor{Coase}, 1946): $p=\mathrm{CMg}$ y $A=\mathrm{CF}/n$, si no expulsa a nadie (si no, bajar $A$ y $p>\mathrm{CMg}$, o cuotas según renta: bono social); \emph{punta y valle} (\autor{Boiteux} 1949, \autor{Steiner} 1957): $p_v=b$, $p_p=b+\beta$; \emph{\autor{Ramsey}-\autor{Boiteux}} (multiproducto):
+\begin{formula}
+\centering $\optim{\max}{\vect{p}}{\mathrm{EC}(\vect{p})+B(\vect{p})}{B(\vect{p})\geq0}\ \Rightarrow\ \dfrac{p_i-\mathrm{CMg}_i}{p_i}=\dfrac{\lambda}{1+\lambda}\cdot\dfrac{1}{|\varepsilon_{q_i,p_i}|}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.62\linewidth]{regulacion-monopolio-natural}{Regulación: pérdidas con $p=\mathrm{CMg}$; beneficio nulo con $p=\mathrm{CMe}$}
+\begin{itemize}
+\item \emph{Implicaciones}: \emph{\autor{Lerner} amortiguado}; el número de \autor{Ramsey} $\lambda/(1+\lambda)\in[0,1)$ \emph{crece} con $\lambda$: $\lambda=0$ $\Rightarrow$ $p=\mathrm{CMg}$; $\lambda\to\infty$ $\Rightarrow$ monopolio. Recarga más lo inelástico (como el tercer grado), solo lo justo; misma regla que la imposición óptima \vertema{4.B.11}; con transferencias, misma $\lambda$ (\autor{Laffont}-\autor{Tirole}).
+\item \emph{Valoración}: exige conocer costes y elasticidades; puede ser \emph{regresiva}. Con información asimétrica o captura, el anexo del tema (poder de mercado y regulación óptima \vertema{3.A.20}): tasa de rentabilidad (sobrecapitaliza: \autor{Averch}-\autor{Johnson}, 1962), \emph{price cap} $\mathrm{IPC}-X$ (\autor{Littlechild}, 1983), menú de \autor{Laffont}-\autor{Tirole}, comparación (\autor{Shleifer}, 1985), competencia \emph{por} el mercado (\autor{Demsetz}, 1968), captura (\autor{Stigler}, 1971).
+\end{itemize}
+
+\sub{II.3. Producción conjunta\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Idea}: el monopolista multiproducto \emph{internaliza} las relaciones de demanda y de costes entre sus bienes.
+\item \emph{Multiproducto, 4 casos}: i) demandas independientes y costes separables: $\mathcal{L}_i=1/|\varepsilon_{q_i,p_i}|$; ii) demandas dependientes:
+\begin{formula}
+\centering $\mathcal{L}_i=\dfrac{1}{|\varepsilon_{q_i,p_i}|}+\displaystyle\sum_{j\neq i}\dfrac{(p_j-\mathrm{CMg}_j)\,q_j}{p_i\,q_i}\cdot\dfrac{\varepsilon_{q_j,p_i}}{|\varepsilon_{q_i,p_i}|}$
+\end{formula}
+\item[] \emph{sustitutivos} ($\varepsilon_{q_j,p_i}>0$): precios \emph{más altos}; \emph{complementarios} ($<0$): \emph{más bajos}, incluso $\mathcal{L}_i<0$ (consolas, impresoras); iii) costes no separables: \concepto{complementariedad de costes} $\partial^2C/\partial q_1\partial q_2<0$ $\Rightarrow$ produce más de los 2 (aprendizaje: produce hoy más, \autor{Wright} 1936); iv) ambos. No es \emph{subsidio cruzado} (término de \autor{Faulhaber}).
+\item \emph{Proporciones fijas}: \concepto{oferta conjunta} (\autor{Marshall}; carne y piel): $\mathrm{IMg}_1(q)+\mathrm{IMg}_2(q)=\mathrm{CMg}(q)$ (suma vertical); si un IMg es negativo, \emph{desecha} parte.
+\item \emph{Multiplanta}: $\mathrm{IMg}(Q)=\mathrm{CMg}_1(q_1)=\mathrm{CMg}_2(q_2)$: cuánto (suma horizontal de CMg) y cómo repartir (mín.\ coste); orden de mérito; igual que un cártel \vertema{3.A.19}.
+\item \emph{Bienestar}: mejor que monopolistas separados con complementarios, peor con sustitutivos; ahorro de costes = eficiencia productiva.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{III. Otras estructuras relacionadas con el monopolio\label{rep:III}}
+\begin{ideaclave}
+El monopsonio es el espejo del monopolio: compra menos y paga menos de lo que vale el factor. Con poder en los 2 lados, el precio queda indeterminado y lo decide la negociación.
+\end{ideaclave}
+
+\sub{III.1. Monopsonio\label{rep:III.1}}
+\begin{itemize}
+\item \emph{Idea}: \concepto{monopsonio}: único comprador o con poder sobre el precio que paga (\autor{Robinson}, 1933): empresa única de la comarca, hospital público y enfermería, gran distribución. Para comprar más debe \emph{subir} el precio de todo lo que compra.
+\item \emph{Supuestos}: precio-aceptante en el bien ($p$), $q=F(L)$; única demandante de trabajo frente a una oferta $w_L(L)$, $w_L'>0$, $\varepsilon_{L,w_L}>0$; salario único.
+\item \emph{Desarrollo}: contrata hasta $\mathrm{VPMg}_L=p\cdot\mathrm{PMg}_L$ igual al \concepto{gasto marginal} $\mathrm{GMg}_L=w_L+w_L'(L)\,L$; el \concepto{índice de poder de monopsonio}, espejo de \autor{Lerner}:
+\begin{formula}
+\centering $\optim{\max}{L}{B(L)=p\,F(L)-w_L(L)\,L}{L\geq0}$
+\end{formula}
+\funcionclave{\mathrm{VPMg}_L=\mathrm{GMg}_L=w_L\Big(1+\frac{1}{\varepsilon_{L,w_L}}\Big)\ \Longleftrightarrow\ \frac{\mathrm{VPMg}_L-w_L}{w_L}=\frac{1}{\varepsilon_{L,w_L}}}
+\item[] Brecha mayor cuanto \emph{menos elástica} la oferta; con $\varepsilon\to\infty$, $\mathrm{VPMg}_L=w_L$. Gráfico: GMg \emph{sobre} la oferta (lineal: doble pendiente); $L^M$ en $\mathrm{GMg}_L=\mathrm{VPMg}_L$; salario en la \emph{oferta}, $w^M=w_L(L^M)$.
+\item \emph{No hay curva de demanda de trabajo}. \emph{Isocostes curvas}: $\mathrm{RMST}_{LK}=\mathrm{GMg}_L/w_K$. Si además es monopolista: $\mathrm{IPMg}_L=\mathrm{GMg}_L$ (se suman las 2 brechas).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.15}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\centering\arraybackslash}m{0.2\linewidth}>{\centering\arraybackslash}m{0.37\linewidth}>{\centering\arraybackslash}m{0.37\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Trabajo: competencia} & \textbf{Trabajo: monopsonio}\\
+\midrule
+\textbf{Bien: compet.} & \cellcolor{tceesalvia}\textcolor{tceeverde}{\textbf{1.} $\mathrm{VPMg}_L=w_L$}\newline $L$ y $w$ máximos & \textcolor{tceeazul}{\textbf{2.} $\mathrm{VPMg}_L=\mathrm{GMg}_L$}\newline explot.\ monopsonística\\
+\textbf{Bien: monopolio} & \textcolor{tceedorado}{\textbf{3.} $\mathrm{IPMg}_L=w_L$}\newline explot.\ monopolística & \textcolor{tceerojo}{\textbf{4.} $\mathrm{IPMg}_L=\mathrm{GMg}_L$}\newline $L$ y $w$ mínimos\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Implicaciones}: $L^M<L^c$, $w^M<w^c$, \emph{sin paro involuntario} (sobre la oferta; en ninguno de los 4 casos). Pérdida: triángulo entre $\mathrm{VPMg}_L$ y oferta de $L^M$ a $L^c$; $(w^c-w^M)L^M$ pasa a la empresa: \emph{explotación monopsonística}.
+\item \emph{Salario mínimo} $\underline{w}$: oferta y GMg horizontales hasta $L^S(\underline{w})$. $\underline{w}\leq w^M$: nada; $w^M<\underline{w}\leq w^c$: el empleo \emph{sube} (máximo en $w^c$); $\underline{w}>w^c$: $L^D(\underline{w})$, paro, pero más empleo que $L^M$ mientras $\underline{w}\leq\mathrm{VPMg}_L(L^M)$ \vertema{3.A.25}.
+\end{itemize}
+\pareja{monopsonio}{Monopsonio: menos empleo y salario que en competencia}{salario-minimo}{Salario mínimo: el empleo sube hasta $w^c$}
+\begin{itemize}
+\item \emph{Extensiones}: \emph{monopsonio dinámico} (\autor{Manning}, 2003): fricciones $\Rightarrow$ oferta no perfectamente elástica con muchas empresas; en bienes: distribución y cadena alimentaria \vertema{3.B.39}.
+\item \emph{Evidencia}: \autor{Card}-\autor{Krueger} (1994): 410 restaurantes, NJ sube el mínimo de 4,25 a 5,05 \$/h (1992) frente a Pensilvania: sin caída del empleo. \autor{Yeh}-\autor{Macaluso}-\autor{Hershbein} (2022): IPMg 53\,\% sobre el salario. \autor{Deb} et al.\ (2022): salarios estancados, 75\,\% monopolio y 25\,\% monopsonio.
+\item \emph{Valoración}: explica por qué el salario mínimo no siempre destruye empleo; deja fuera la respuesta organizada de los trabajadores.
+\end{itemize}
+
+\sub{III.2. Monopolio bilateral\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Idea}: \concepto{monopolio bilateral}: único vendedor frente a único comprador (sindicato y monopsonista, componente y montador). \autor{Bowley} (1928): resultado \emph{indeterminado} entre los 2 precios; lo decide el \emph{poder de negociación} (\autor{Fellner}, 1947). Como la caja de \autor{Edgeworth} (1881) \vertema{3.A.21}.
+\item \emph{Supuestos}: los del monopsonio + \emph{sindicato} que representa a todos; coste de oportunidad $v(L)$, $v'(L)=w_L(L)$; $U_S=wL-v(L)$; $B=pF(L)-wL$.
+\item \emph{Desarrollo}: \emph{manda la empresa}: $L^M$, $w^M$; \emph{manda el sindicato} (\emph{sindicato monopolista}, \autor{Dunlop} 1944): $\mathrm{IMg}_S=w_L(L)$ sobre la demanda $\mathrm{VPMg}_L$, salario $w^S>w^c$ y paro. Solo salario: $w\in[w^M,w^S]$, ineficiente salvo $w^c$; entre $w^M$ y $w^c$ sube el empleo: \emph{poder compensatorio} (\autor{Galbraith}, 1952). \emph{Negociación eficiente} (\autor{Nash}, 1950), $\gamma$ = poder del sindicato:
+\begin{formula}
+\centering $\optim{\max}{w,\,L}{(U_S-U_S^0)^{\gamma}\,(B-B^0)^{1-\gamma}}{U_S=wL-v(L)\\ B=pF(L)-wL}$\\[4pt]
+$\mathrm{VPMg}_L(L^*)=w_L(L^*)\Rightarrow L^*=L^c$;\quad $w^*L^*=v+U_S^0+\gamma\,S$
+\end{formula}
+\item \emph{Implicaciones}: cantidad \emph{eficiente} y \emph{sin $\gamma$}; el poder solo decide el \emph{reparto} del excedente neto $S$. \autor{Rubinstein} (1982): ofertas alternadas, gana el más paciente; $\gamma=\rho_B/(\rho_S+\rho_B)$ \vertema{3.A.14}. Incentivo a la \emph{integración vertical} \vertema{3.A.15}.
+\end{itemize}
+\graficorepaso[0.7\linewidth]{monopolio-bilateral}{Monopolio bilateral sobre el monopsonio: extremos $w^M$ y $w^S$; cantidad eficiente $L^c$}
+\begin{itemize}
+\item \emph{Extensiones}: \concepto{doble marginalización} (\autor{Spengler}, 1950): 2 márgenes en cadena con precio lineal; lineal: separados $Q=(a-c)/4b$, la mitad que integrados, $p=(3a+c)/4$; la integración o una tarifa en dos partes mejora a todos. \emph{Derecho a gestionar} (sobre la demanda, ineficiente) frente a \emph{contratos eficientes} (\autor{McDonald}-\autor{Solow}, 1981) \vertema{3.A.27}.
+\item \emph{Evidencia}: negociación colectiva, distribución y productores, medicamentos con patente.
+\item \emph{Valoración}: la negociación responde, pero desplaza la pregunta al poder de negociación y a las instituciones.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: $\mathcal{L}=1/|\varepsilon|$ y coste social más allá del triángulo; discriminar extrae excedente; subaditividad $\Rightarrow$ regular (\autor{Lerner} amortiguado); varios bienes: internaliza; monopsonio, espejo sin paro; 2 lados: negociación.
+\item \textbf{Relevancia}: defensa de la competencia \vertema{3.B.39}, industrias de red \vertema{3.A.20}, salario mínimo \vertema{3.A.25}; márgenes crecientes y salarios estancados.
+\item \textbf{Extensiones}: competencia monopolística \vertema{3.A.18}, oligopolio \vertema{3.A.19}, barreras y entrada \vertema{3.A.15}, fallos del sector público \vertema{3.A.23}, teoría de juegos \vertema{3.A.14}, negociación salarial \vertema{3.A.27}.
+\item \textbf{Opinión}: el problema no es el número de empresas, sino la \emph{ausencia de disciplina}: competencia frente a conductas, regulación con incentivos frente al monopolio natural, atención al poder de compra en el trabajo.
+\item \textbf{Idea final}: quien parte y reparte se queda con la mejor parte, pero no con toda: se lo impiden la elasticidad, lo que no sabe de sus clientes, la amenaza de entrada y, si enfrente hay otro que reparte, la negociación. Y lo que se queda no compensa lo que la sociedad pierde.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1838}{\autor{Cournot}: $\mathrm{IMg}=\mathrm{CMg}$ (manantial)}
+\hito{1890}{\autor{Marshall}: excedente; oferta conjunta}
+\hito{1920}{\autor{Pigou}: 3 grados de discriminación}
+\hito{1928}{\autor{Bowley}: monopolio bilateral}
+\hito{1933}{\autor{Robinson}: IMg, 3.\textsuperscript{er} grado, monopsonio}
+\hito{1934}{\autor{Lerner}: índice de poder de mercado}
+\hito{1950}{\autor{Nash}: negociación; \autor{Spengler}: doble marginalización}
+\hito{1954}{\autor{Harberger}: pérdida del monopolio}
+\hito{1956}{\autor{Boiteux}: \autor{Ramsey}-\autor{Boiteux} (\autor{Ramsey}, 1927)}
+\hito{1962}{\autor{Averch}-\autor{Johnson}; \autor{Arrow}: efecto reemplazo}
+\hito{1966}{\autor{Leibenstein}: ineficiencia X}
+\hito{1967}{\autor{Tullock}: búsqueda de rentas (\autor{Posner}, 1975)}
+\hito{1972}{\autor{Coase}: conjetura de los bienes duraderos}
+\hito{1977}{\autor{Baumol}: subaditividad; sostenibilidad}
+\hito{1978}{\autor{Mussa}-\autor{Rosen}: discriminación en calidad}
+\hito{1993}{\autor{Laffont}-\autor{Tirole}: regulación con incentivos}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Margen medio sobre el CMg, cotizadas de EE.\,UU.: \dato{21\,\% (1980) $\to$ 61\,\% (2016)}{\autor{De Loecker} et al., 2020}.
+\item Planta manufacturera media de EE.\,UU.: IPMg \dato{53\,\% sobre el salario: 65 centavos por dólar}{\autor{Yeh} et al., 2022}.
+\item SMI España 2026: \dato{1.221 €/mes en 14 pagas (17.094 €/año), +3,1\,\%}{BOE, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué no hay curva de oferta? ¿Y el tramo inelástico?} $q$ depende de la elasticidad, no solo de la altura de la demanda. Con $\mathrm{CMg}>0$, $\mathrm{IMg}>0$ exige $|\varepsilon|>1$.
+\item \textbf{¿Solo el triángulo de \autor{Harberger}?} No: más ineficiencia X y búsqueda de rentas; con demanda lineal, $\mathrm{PIE}=B/2$.
+\item \textbf{¿Por qué se distorsiona al tipo bajo y no al alto?} Quitarle unidades abarata la renta informativa del alto; al alto no hay a quién imitar.
+\item \textbf{¿Cuándo mejora el bienestar el tercer grado?} Solo si aumenta la cantidad total (abre mercados); con demandas lineales y todos servidos, empeora.
+\item \textbf{¿Economías de escala necesarias para el monopolio natural?} No: suficientes; la subaditividad es la definición. En multiproducto, las de alcance son necesarias.
+\item \textbf{¿Paro con monopsonio?} No; un salario mínimo entre $w^M$ y $w^c$ sube el empleo.
+\item \textbf{¿Depende la cantidad del poder de negociación?} No con negociación eficiente: $L^*=L^c$; $\gamma$ solo reparte.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $\mathcal{L}=1/|\varepsilon|$ en el \emph{equilibrio}; perfectamente elástica $\Rightarrow$ $\mathcal{L}=0$. Lineal: IMg y GMg con \emph{doble pendiente}.
+\item Viabilidad en $q^M$, no en el mín.\ del CMe; a CP basta $p\geq\mathrm{CVMe}$.
+\item Impuesto unitario: lineal, $p$ sube $t/2$; isoelástica, \emph{más} que $t$; sobre beneficios o de suma fija, $q$ no cambia.
+\item Primer grado: \emph{eficiente}, EC $=0$. Segundo: \emph{sin distorsión arriba}. Tercero: más caro el \emph{menos elástico}.
+\item \autor{Ramsey}: $\lambda/(1+\lambda)$ crece con $\lambda$. Escala: suficiente; alcance: necesaria.
+\item Monopsonio: salario en la \emph{oferta}, no en el GMg; sin paro. Bilateral: cantidad sin $\gamma$.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

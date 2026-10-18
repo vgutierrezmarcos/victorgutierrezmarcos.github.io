@@ -1,0 +1,327 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Análisis de mercados (I). Competencia perfecta]{3.A.16}{Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar.}
+\tcefecha{18/10/2026}
+% Colores de las tablas del tema (tcee.sty)
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+% Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
+\newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
+  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
+% Funciones clave en morado y recuadradas, como en el tema (tcee.sty)
+\tcbset{tcee funcion clave/.style={enhanced,nobeforeafter,colback=tceemoradopalido!70!white,
+  colframe=tceemorado,colupper=tceemorado,boxrule=0.6pt,arc=1.5pt,left=4pt,right=4pt,top=2pt,bottom=2pt}}
+\providecommand{\funcionclave}[1]{\par\vspace{1pt}{\centering$\tcbhighmath[tcee funcion clave]{\displaystyle #1}$\par}\vspace{2pt}}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Construcción del modelo ($J$ fijo)}{8,5}
+\subcante{1. Idea: 5 supuestos; equilibrio parcial}{1,5}
+\subcante{2. Modelo: demanda, oferta y equilibrio}{7}
+\apartadocante{II. Estudio del equilibrio competitivo}{12}
+\subcante{1. Existencia, unicidad, estabilidad (telaraña)}{6}
+\subcante{2. Eficiencia y bienestar: excedentes, 1TFEB, 2TFEB}{3}
+\subcante{3. Estática comparativa: choques e impuesto}{3}
+\apartadocante{III. Análisis de plazos}{6}
+\subcante{0. Los 3 plazos}{1}
+\subcante{1. Corto plazo: $p\geq\min\mathrm{CVMe}$}{1,5}
+\subcante{2. Largo plazo sin libre entrada}{0,5}
+\subcante{3. Libre entrada: $p^*=\min\mathrm{CMe}$, $J^*$}{3}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: ¿cómo se forma el precio si nadie puede fijarlo? ¿Se llega a él? ¿Es bueno? ¿Cuánto dura la ganancia en la escasez? \emph{Pizarra}: las 2 funciones clave (equilibrio \hyperref[rep:I.2]{I.2} y máx.\ ET \hyperref[rep:II.2]{II.2}) y el paso del CP al LP (\hyperref[rep:III.3]{III.3}) se quedan hasta el final.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «A río revuelto, ganancia de pescadores». Aceite: sequías $\Rightarrow$ 1,49 Mt (21/22) $\to$ 0,67 (22/23); origen 4,1 $\to$ 9,0 €/kg (ene.\ 2024); cosecha 24/25 de 1,42 Mt $\Rightarrow$ $<$3,6 €/kg (may.\ 2025). \emph{¿Cómo se forma el precio si nadie puede fijarlo? ¿Llega el mercado solo? ¿Cuánto dura la ganancia?}
+\item \textbf{Relevancia}: \emph{teórica} (referencia de las demás estructuras \vertema{3.A.17}\vertema{3.A.18}\vertema{3.A.19}; 1TFEB más sencillo \vertema{3.A.22}); \emph{empírica} (agrarios, materias primas, lonjas, divisas; oferta y demanda cuantifican choques); \emph{normativa} (defensa de la competencia \vertema{4.A.15}, incidencia \vertema{4.B.8}\vertema{4.B.9}).
+\item \textbf{Contextualización}: \autor{Smith} (1776, precios «naturales») $\to$ \autor{Cournot} (1838, demanda), \autor{Dupuit} (1844, excedente), \autor{Jenkin} (1870, curvas) $\to$ \autor{Walras} (1874, todos los mercados), \autor{Marshall} (1890, parcial, \emph{ceteris paribus}, tijeras) $\to$ telaraña (\autor{Kaldor}, \autor{Ezekiel}), correspondencia (\autor{Samuelson}) $\to$ MWG (1995).
+\item \textbf{Problemática}: ¿cómo se forma el precio? ¿Existe, es único, se alcanza? ¿Es eficiente? ¿Qué cambia con el plazo?
+\item \textbf{Estructura}: I. modelo ($J$ fijo); II. propiedades: positivo (existencia, unicidad, estabilidad), normativo (bienestar) y estática comparativa; III. plazos. Del instante al tiempo.
+\end{itemize}
+\begin{itemize}
+\item \concepto{Individualismo metodológico}: lo agregado desde individuos que optimizan. \concepto{Estructuras de mercado}: 2 polares (competencia perfecta, monopolio) y 2 intermedias (competencia monopolística, oligopolio). \concepto{Equilibrio parcial}: un mercado aislado.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{I. Construcción del modelo ($J$ fijo)\label{rep:I}}
+\begin{ideaclave}
+Con utilidad cuasilineal y CMg creciente: demanda = suma horizontal de las utilidades marginales; oferta = suma de los tramos crecientes de los CMg; equilibrio = su corte. Hasta \hyperref[rep:III]{III}, $J$ fijo.
+\end{ideaclave}
+
+\sub{I.1. Idea: supuestos y equilibrio parcial\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Qué es}: ningún agente tiene poder sobre el precio. 5 supuestos = \concepto{lista común de las estructuras de mercado} (\vertema{3.A.17}--\vertema{3.A.19} marcan cuál levantan; tabla).
+\end{itemize}
+{\centering\footnotesize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\centering\arraybackslash}p{0.05\linewidth}>{\raggedright\arraybackslash}p{0.33\linewidth}>{\raggedright\arraybackslash}p{0.56\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{Qué significa}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{Agentes racionales} & consumidores maximizan utilidad; empresas, beneficio\\
+\addlinespace[0.2em]
+\textcolor{tceemorado}{\textbf{2}} & \textbf{Información perfecta y simétrica} & consumidores conocen producto y precio; empresas, tecnología y precio; nadie sabe más\\
+\addlinespace[0.2em]
+\textcolor{tceemorado}{\textbf{3}} & \textbf{Producto homogéneo (sin sustitutivos cercanos)} & unidades de todas las empresas, sustitutivos perfectos: solo importa el precio\\
+\addlinespace[0.2em]
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Mercado atomizado: muchos compradores y vendedores (precio-aceptantes)} & cada uno pequeño; sus decisiones no mueven el precio: \concepto{precio-aceptantes}; el precio lo fijan todos juntos\\
+\addlinespace[0.2em]
+\textcolor{tceemorado}{\textbf{5}} & \textbf{Libre entrada y salida (a largo plazo)} & con beneficios extraordinarios entran empresas hasta agotarlos; con pérdidas, salen\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item 2 + 3 $\Rightarrow$ \emph{un solo precio}. El 5 solo actúa a LP ($J$ fijo hasta \hyperref[rep:III]{III}).
+\item \concepto{Equilibrio parcial}: un mercado que no afecta a los demás ni es afectado (\emph{ceteris paribus}; ya en \autor{Molina}, 1597). \autor{Marshall}: «un corral llamado \emph{Caeteris Paribus}»: ir por pasos. Se justifica si el mercado es pequeño: efectos renta despreciables; efectos sustitución repartidos entre muchos mercados.
+\item \emph{Cómo se modeliza} (MWG §10.B): bien $x$ + \concepto{numerario} $n$ (gasto en todo lo demás, precio 1); preferencias \concepto{cuasilineales} (sin efecto renta); costes en numerario con $\vect{w}$ dado.
+\item \emph{Alternativa}: \concepto{equilibrio general} (\autor{Walras}) \vertema{3.A.21}; con cuasilineal, el general de esta economía coincide con el parcial (ley de \autor{Walras}: basta el mercado del bien).
+\end{itemize}
+
+\sub{I.2. Modelo: demanda, oferta y equilibrio\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Supuestos}: 2 bienes ($x$ y $n$, $p$ igual para todos: 2 y 3); precio-aceptantes (4) que optimizan (1): $I$ consumidores con dotación $\overline{W}_i$ (incluye beneficios) y $J$ empresas con $C_j(\vect{w},q_j)$; \emph{$J$ fijo y todos los factores variables} (= LP sin libre entrada) $\Rightarrow$ oferta no perfectamente elástica.
+\item \emph{Desarrollo, consumidores}: utilidad cuasilineal, $\phi_i'>0$, $\phi_i''<0$, $\phi_i(0)=0$ \vertema{3.A.8}:
+\begin{formula}
+\centering $\optim{\max}{n_i,\,x_i}{n_i+\phi_i(x_i)}{n_i+p\,x_i\leq\overline{W}_i\\ x_i\geq0}$\quad$\Rightarrow$\quad $\boxed{\phi_i'(x_i)=p}$\ \ ($\lambda=1$)
+\end{formula}
+\item La CPO no depende de la renta: \concepto{demanda marshalliana} $x_i(p)=(\phi_i')^{-1}(p)$, solo del precio; = hicksiana \vertema{3.A.9}; demanda inversa = utilidad marginal. Si $\phi_i'(0)\leq p$, $x_i=0$.
+\item \concepto{Demanda de mercado}: suma horizontal, $x(p)=\sum_ix_i(p)$, decreciente; $\varepsilon_D<0$.
+\item \concepto{Demanda inversa} $p^D(x)$ = \concepto{beneficio marginal social} (todos igualan $\phi_i'$ al precio: reparto eficiente).
+\item \emph{Desarrollo, empresas}: \concepto{2 etapas} \vertema{3.A.12}: mín.\ coste $\to C_j(q_j)$; después máx.\ beneficio. \emph{Supuesto}: $\mathrm{CMg}_j$ creciente en el tramo relevante (p.\ ej.\ $F_j$ estr.\ cóncava).
+\begin{formula}
+\centering $\optim{\max}{q_j}{p\,q_j-C_j(q_j)}{q_j\geq0}$\quad$\Rightarrow$\quad $\boxed{p=\mathrm{CMg}_j(q_j)}$,\ \ $C_j''\geq0$
+\end{formula}
+\item IMg = precio (demanda horizontal, $\neq$ monopolio \vertema{3.A.17}); CSO: tramo \emph{creciente} del CMg.
+\item \emph{Inacción}: produce si $p$ cubre el coste medio \emph{evitable}: sin costes hundidos, mín.\ CMe; con hundidos (CP), mín.\ CVMe. CMe en U $\Rightarrow$ oferta salta de 0 a la \concepto{escala mínima eficiente} $\overline{q}_j$ en $\overline{c}_j=\min\mathrm{CMe}_j$.
+\item \concepto{Oferta de la empresa} $q_j(p)$: inversa del tramo creciente del CMg sobre el umbral; 0 debajo; no decreciente (sin efecto renta: ley de la oferta).
+\item \concepto{Oferta de mercado}: $q(p)=\sum_jq_j(p)$, $\varepsilon_S\geq0$; inversa $p^S(q)$ = \concepto{coste marginal de la industria}.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{oferta-empresa}{Oferta de la empresa: $p=\mathrm{CMg}_j$ sobre el mín.\ del CMe}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{equilibrio competitivo}: $p^*$ y $(x_i^*;q_j^*)$ con (1) máx.\ utilidad $x_i^*=x_i(p^*)$; (2) máx.\ beneficio $q_j^*=q_j(p^*)$; (3) vaciado $x(p^*)=q(p^*)$. Interior:
+\funcionclave{\phi_i'(x_i^*)=p^*\ \ \forall i,\qquad p^*=\mathrm{CMg}_j(q_j^*)\ \ \forall j,\qquad \textstyle\sum_ix_i^*=\sum_jq_j^*}
+\item \emph{Interpretación}: decisiones óptimas y compatibles; solo en $p^*$ nadie quiere cambiar el precio. \emph{Gráfico}: corte de las curvas; $p^D(x^*)=p^S(q^*)$: BMgS = CMgS $\Rightarrow$ anticipa la eficiencia.
+\end{itemize}
+\graficorepaso[0.74\linewidth]{equilibrio}{Oferta de mercado (suma horizontal) y equilibrio competitivo}
+
+% ==========================================================================
+\bloque[12]{II. Estudio del equilibrio competitivo\label{rep:II}}
+\begin{ideaclave}
+Con curvas continuas y de pendiente normal existe y es único; la estabilidad depende del ajuste (la telaraña puede no converger aun con curvas normales). Si se alcanza, maximiza el ET (1TFEB); un impuesto se reparte según elasticidades y destruye bienestar.
+\end{ideaclave}
+
+\sub{II.1. Análisis positivo: existencia, unicidad, estabilidad\label{rep:II.1}}
+\begin{itemize}
+\item 3 preguntas encadenadas: \concepto{existencia} (si no, el modelo no describe nada), \concepto{unicidad} (si no, no predice), \concepto{estabilidad} (si no, curiosidad matemática).
+\item \emph{Existencia}. \emph{Idea}: \concepto{exceso de demanda} $z(p)=x(p)-q(p)$; equilibrio: $z(p^*)=0$. \emph{Supuestos}: $\phi_i$ estr.\ cóncavas, costes estr.\ convexos; $\max_i\phi_i'(0)>\min_j\mathrm{CMg}_j(0)$. \emph{Desarrollo}: $z$ continua, $>0$ a precios bajos, $<0$ a altos $\Rightarrow$ \concepto{teorema de \autor{Bolzano}}:
+\begin{formula}
+\centering $z(p')>0,\ z(p'')<0,\ p'<p''\ \Longrightarrow\ \exists\,p^*\in(p',p''):\ z(p^*)=0$
+\end{formula}
+\item \emph{Implicaciones}: existe con la convexidad de preferencias y tecnología (en general, \autor{Brouwer} \vertema{3.A.21}). \emph{Valoración}: falla con \emph{no convexidades}: CMe en U y una empresa $\Rightarrow$ la demanda pasa por el hueco $[0,\overline{q})$ (redes, electricidad: regulación \vertema{3.A.17}\vertema{3.A.20}).
+\item \emph{Unicidad}. Demanda estr.\ decreciente y oferta no decreciente $\Rightarrow$ $z$ estr.\ decreciente: \emph{asignación} única. \emph{Multiplicidad}: \emph{demanda insuficiente} ($\max_i\phi_i'(0)<\min_j\mathrm{CMg}_j(0)$: cualquier precio intermedio, sin intercambio); \emph{CMg constantes} ($p^*=c$, reparto indeterminado); \emph{pendientes anómalas} (oferta decreciente por economías externas, o \autor{Giffen}: varios cortes).
+\item \emph{Estabilidad: dinámicas de ajuste}. \emph{Idea}: \concepto{estable} si fuera del equilibrio hay fuerzas que llevan a él; \concepto{local} (perturbación pequeña) o \concepto{global} (cualquiera). Importa por la estática comparativa (correspondencia), la «mano invisible» y la estabilización (precios agrarios \vertema{3.B.38}).
+\item \emph{Supuestos}: \concepto{ajuste walrasiano} (precios; sin intercambios fuera del equilibrio; \emph{tâtonnement}): $\dot p=f(z(p))$, $f'>0$. \concepto{Ajuste marshalliano} (cantidades; precio de demanda frente a precio de oferta): $\dot q=g(p^D(q)-p^S(q))$, $g'>0$.
+\item \emph{Desarrollo}:
+\begin{formula}
+\centering \autor{Walras}: estable si $z'(p^*)=x'(p^*)-q'(p^*)<0$\\[2pt]
+\autor{Marshall}: estable si $\dfrac{d}{dq}\big(p^D-p^S\big)\Big|_{q^*}<0$
+\end{formula}
+\item \emph{Implicaciones}: oferta creciente y demanda decreciente $\Rightarrow$ ambos estables. Ambas decrecientes ($a=dp^D/dq$, $b=dp^S/dq$): \autor{Walras} exige $a>b$ (oferta \emph{más inclinada}); \autor{Marshall}, $a<b$ (oferta \emph{más plana}): incompatibles.
+\end{itemize}
+{\centering\footnotesize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\centering\arraybackslash}p{0.23\linewidth}>{\centering\arraybackslash}p{0.23\linewidth}>{\centering\arraybackslash}p{0.23\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{$S$ creciente, $D$ decreciente} & \textbf{Ambas $\downarrow$, oferta más plana} & \textbf{Ambas $\downarrow$, oferta más inclinada}\\
+\midrule
+\textbf{Walrasiano} & \textcolor{tceeverde}{\textbf{Estable}} & \textcolor{tceerojo}{\textbf{Inestable}} & \textcolor{tceeverde}{\textbf{Estable}}\\
+\textbf{Marshalliano} & \textcolor{tceeverde}{\textbf{Estable}} & \textcolor{tceeverde}{\textbf{Estable}} & \textcolor{tceerojo}{\textbf{Inestable}}\\
+\bottomrule
+\end{tabular}\par}
+\graficorepaso[0.8\linewidth]{estabilidad-parcial}{Ajuste walrasiano (flechas en $p$) y marshalliano (en $q$) en los 3 casos}
+\begin{itemize}
+\item \autor{Walras}: el precio se ajusta deprisa (subasta, bolsa); \autor{Marshall}: se ajusta la producción (LP, economías externas).
+\item \emph{Extensión: telaraña} (\autor{Ricci}, \autor{Schultz}, \autor{Tinbergen}; nombre de \autor{Kaldor} 1934; \autor{Ezekiel} 1938). \emph{Supuestos}: tiempo discreto; oferta según $p^e_t$; \emph{expectativas ingenuas} $p^e_t=p_{t-1}$; vaciado $x(p_t)=q(p^e_t)$. \emph{Desarrollo}:
+\begin{formula}
+\centering $p_t-p^*\simeq-\dfrac{q'(p^*)}{\lvert x'(p^*)\rvert}\,(p_{t-1}-p^*)$
+\end{formula}
+\item El signo $-$ $\Rightarrow$ el precio \emph{oscila}. $q'<\lvert x'\rvert$: \emph{convergente}; $=$: \emph{continua}; $>$: \emph{divergente}. Converge si $\varepsilon_S<\lvert\varepsilon_D\rvert$ $\Leftrightarrow$ en $(q,p)$ oferta \emph{más inclinada} que la demanda.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{telarana}{Telaraña convergente, continua y divergente}
+\begin{itemize}
+\item \emph{Implicaciones}: la estabilidad depende del ajuste y de las expectativas, no solo de las curvas; los ciclos cuestan.
+\item \emph{Evidencia}: ciclo del porcino (\autor{Ezekiel}); laboratorio (\autor{Hommes} et al., 2007): con equilibrio inestable, volatilidad persistente.
+\item \emph{Valoración}: crítica de \autor{Muth} (1961): errores sistemáticos sin aprender $\to$ \emph{expectativas racionales} \vertema{3.A.6}; adaptativas (\autor{Nerlove}, 1958) amortiguan más \vertema{3.A.5}; no lineal: ciclo límite. El walrasiano, irreal salvo en subastas.
+\end{itemize}
+
+\sub{II.2. Análisis normativo: eficiencia y bienestar\label{rep:II.2}}
+\begin{itemize}
+\item \concepto{Óptimo de \autor{Pareto}} (1906): no hay otra asignación factible en que alguien mejore y nadie empeore; ordinal e incompleto \vertema{3.A.24}.
+\item \concepto{Excedente del consumidor} (EC; \autor{Dupuit} 1844, \autor{Marshall}): área bajo la demanda y sobre el precio; con cuasilineal, medida \emph{exacta} (= VC = VE \vertema{3.A.9}). \concepto{Excedente del productor} (EP): sobre la oferta y bajo el precio; $\mathrm{EP}_j=B_j+\mathrm{CF}_j$. \concepto{Excedente total}: ET = EC + EP.
+\begin{formula}
+\centering $\mathrm{EC}=\displaystyle\int_0^{x^*}p^D(x)\,dx-p^*x^*$,\quad $\mathrm{EP}=p^*q^*-\displaystyle\int_0^{q^*}p^S(q)\,dq$
+\end{formula}
+\item \emph{Por qué basta el ET}: numerario uno a uno $\Rightarrow$ frontera de utilidades de pendiente $-1$: Pareto $\Leftrightarrow$ máx.\ ET (coste-beneficio). $\mathrm{ET}'(x)=p^D-p^S=0$ en $x^*$.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{excedentes}{Excedentes: ET máximo en $x^*$}
+\begin{itemize}
+\item \concepto{1TFEB}. \emph{Enunciado}: precio-aceptantes, un mercado para cada bien (sin externalidades ni bienes públicos) y un solo precio (sin impuestos) $\Rightarrow$ el equilibrio competitivo es Pareto-óptimo. \emph{Demostración}:
+\funcionclave{\optim{\max}{(x_i)_i,\,(q_j)_j}{\textstyle\sum_i\phi_i(x_i)-\sum_jC_j(q_j)}{\textstyle\sum_ix_i=\sum_jq_j\\ x_i\geq0,\ q_j\geq0}}
+\item CPO: $\phi_i'(x_i)=\lambda$, $\mathrm{CMg}_j(q_j)=\lambda$, vaciado: las del equilibrio con $\lambda^*=p^*$ (\emph{precio sombra}).
+\item No hace falta convexidad (libre entrada con CMe en U, también eficiente) ni cuasilineal (solo mide). Falla con poder de mercado ($p>\mathrm{CMg}$ \vertema{3.A.17}), externalidades y bienes públicos \vertema{3.A.23} e impuestos (\hyperref[rep:II.3]{II.3}). «Mano invisible» de \autor{Smith} \vertema{3.A.2}: precios como señales de escasez.
+\item \concepto{2TFEB}: todo óptimo es equilibrio tras transferencias de suma fija. En parcial, inmediato: mismas cantidades, solo cambia el reparto del numerario. En general exige convexidad (hiperplano separador \vertema{3.A.22}). Separa eficiencia y equidad. (\autor{Lerner} 1934, \autor{Lange} 1942; \autor{Arrow}, \autor{Debreu} 1951.)
+\end{itemize}
+
+\sub{II.3. Estática comparativa\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Idea}: comparar equilibrios antes y después de un cambio. \emph{Método}: \concepto{principio de correspondencia} (\autor{Samuelson} 1941, 1947): la estabilidad da el signo:
+\begin{formula}
+\centering $\dfrac{dp^*}{d\alpha}=-\dfrac{\partial z/\partial\alpha}{z'(p^*)}$,\qquad $z'(p^*)<0$
+\end{formula}
+\item \emph{Preferencias} ($\partial\phi_i'/\partial\alpha>0$, calor y helados): $p\uparrow$, $x\uparrow$; EP $\uparrow$, EC ambiguo, ET $\uparrow$. \emph{Tecnología} ($\partial\mathrm{CMg}_j/\partial\alpha<0$): oferta $\downarrow$, $p\downarrow$, $x\uparrow$; EC $\uparrow$, EP ambiguo, ET $\uparrow$.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{choques}{Aumento de la demanda (izq.) y mejora tecnológica (dcha.)}
+\begin{itemize}
+\item \emph{Impuesto}. \emph{Supuestos}: unitario $t$; \concepto{cuña fiscal} $p_c=p_v+t$. \emph{Desarrollo}: da igual quién lo pague legalmente (\emph{incidencia legal} $\neq$ \emph{económica}):
+\begin{formula}
+\centering $x(p_v+t)=q(p_v)$;\quad $\dfrac{dp_c}{dt}=\dfrac{\varepsilon_S}{\varepsilon_S+\lvert\varepsilon_D\rvert}$,\quad $\dfrac{dp_v}{dt}=-\dfrac{\lvert\varepsilon_D\rvert}{\varepsilon_S+\lvert\varepsilon_D\rvert}$
+\end{formula}
+\item \concepto{Ley de \autor{Dalton}} (1922; ya \autor{Jenkin}, 1872): recae más sobre el lado \emph{más inelástico}. $D$ perf.\ inelástica u $S$ perf.\ elástica (LP con libre entrada): consumidores; $D$ perf.\ elástica u $S$ perf.\ inelástica (suelo): vendedores.
+\item \emph{Implicaciones}: recaudación $T=t\,x^*(t)$; se pierden transacciones que valían más de lo que costaban: \concepto{pérdida irrecuperable de eficiencia} o \concepto{exceso de gravamen} (triángulo de \autor{Harberger}, 1964):
+\begin{formula}
+\centering $\mathrm{EG}=-\Delta\mathrm{EC}-\Delta\mathrm{EP}-T\approx\tfrac12\,t^2\,\dfrac{x^*}{p^*}\,\dfrac{\varepsilon_S\lvert\varepsilon_D\rvert}{\varepsilon_S+\lvert\varepsilon_D\rvert}$
+\end{formula}
+\item Crece con $t^2$ y con las elasticidades \vertema{4.B.9}; distorsionante aunque se devuelva lo recaudado.
+\end{itemize}
+\graficorepaso[0.5\linewidth]{incidencia}{Impuesto: cuña, reparto y pérdida irrecuperable}
+
+% ==========================================================================
+\bloque[6]{III. Análisis de plazos\label{rep:III}}
+\begin{ideaclave}
+A CP la oferta es rígida y caben beneficios o pérdidas; a LP con libre entrada $p=\min\mathrm{CMe}$ y beneficio extraordinario nulo; la oferta de la industria es horizontal, creciente o decreciente según las economías externas.
+\end{ideaclave}
+\begin{itemize}
+\item \concepto{Plazo}: no es tiempo de calendario, sino lo que las empresas pueden ajustar (MWG §10.F). Aceite: jornales (CP), olivos y almazara (LP), olivares nuevos (libre entrada).
+\end{itemize}
+{\centering\footnotesize\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\centering\arraybackslash}p{0.17\linewidth}>{\centering\arraybackslash}p{0.1\linewidth}>{\centering\arraybackslash}p{0.27\linewidth}>{\centering\arraybackslash}p{0.24\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Plazo} & \textbf{Factores} & \textbf{$J$} & \textbf{Oferta empresa} & \textbf{Beneficio}\\
+\midrule
+\textbf{CP} & alguno fijo (hundido) & fijo & $p=\mathrm{CMg}$ si $p\geq\min\mathrm{CVMe}$ & \textcolor{tceedorado}{\textbf{$+$, 0 o $-$}} ($\geq-\mathrm{CF}$)\\
+\textbf{LP sin entrada} & todos variables & fijo & $p=\mathrm{CMg}$ si $p\geq\min\mathrm{CMe}$ & \textcolor{tceeazul}{\textbf{no negativo}}\\
+\textbf{LP con entrada} & todos variables & $J^*$ & $p=\mathrm{CMg}=\min\mathrm{CMe}$ & \textcolor{tceeverde}{\textbf{nulo}}\\
+\midrule
+\multicolumn{5}{c}{\cellcolor{tceesalvia}\autor{Le Chatelier}-\autor{Samuelson}: $\partial q^{\mathrm{LP}}/\partial p\geq\partial q^{\mathrm{CP}}/\partial p\geq0$}\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{III.1. Corto plazo\label{rep:III.1}}
+\begin{itemize}
+\item \emph{Supuestos}: $J$ fijo; factor fijo con coste \emph{hundido}: $C_j=\mathrm{CF}_j+\mathrm{CV}_j(q_j)$, $\mathrm{CV}_j(0)=0$ (S invertida: proporciones variables).
+\item \emph{Desarrollo}: el CF no influye. $p=\mathrm{CMg}_j$ si $p$ cubre el CVMe: bajo el \concepto{mínimo de explotación} (mín.\ CVMe) cierra; entre él y el \concepto{óptimo de explotación} (mín.\ CMe) produce con pérdidas $<\mathrm{CF}$; encima, beneficios. Industria: $q^{\mathrm{CP}}(p)=\sum_jq_j^{\mathrm{CP}}(p)$.
+\item \emph{Implicaciones}: beneficios (atraen), cero o pérdidas (expulsan); oferta \emph{rígida}: la demanda se va al precio (ganancia de los pescadores).
+\end{itemize}
+\graficorepaso[0.7\linewidth]{oferta-corto-plazo}{Oferta a CP: CMg sobre el mínimo de explotación}
+
+\sub{III.2. Largo plazo sin libre entrada\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Supuestos}: todos los factores variables, $J$ dado (licencia, recurso escaso) = modelo de \hyperref[rep:I]{I}-\hyperref[rep:II]{II}. \emph{Desarrollo}: $p=\mathrm{CMg}_j$ si $p\geq\min\mathrm{CMe}$; \concepto{\autor{Le Chatelier}-\autor{Samuelson}} (1884, 1947): más restricciones, menos respuesta $\Rightarrow$ más elástica que a CP.
+\item \emph{Implicaciones}: beneficio $\geq0$ y duradero; solo lo elimina la entrada (\autor{Clark}, 1899). Con entrada cerrada: renta del recurso.
+\end{itemize}
+
+\sub{III.3. Largo plazo con libre entrada\label{rep:III.3}}
+\begin{itemize}
+\item \emph{a) Idea}: infinitas empresas potenciales con la misma tecnología entran con beneficios y salen con pérdidas (supuesto 5): $J$ endógeno.
+\item \emph{b) Modelo. Supuestos}: misma $C(q)$, $C(0)=0$ (sin hundidos); $x(p)$ decreciente; equilibrios simétricos ($Jq$).
+\item \emph{Desarrollo}: \concepto{equilibrio a LP con libre entrada}: $p^*,q^*,J^*$ entero con (1) $q^*$ máx.\ $p^*q-C(q)$; (2) $x(p^*)=J^*q^*$; (3) \emph{libre entrada} $p^*q^*-C(q^*)=0$ (nueva ecuación para la nueva incógnita) $\Rightarrow$ $p^*=\mathrm{CMg}(q^*)=\mathrm{CMe}(q^*)=\min\mathrm{CMe}$.
+\item \concepto{Oferta de la industria a LP}: $\infty$ si beneficio $>0$; 0 si $<0$; cualquiera si $=0$. Según los rendimientos:
+\begin{itemize}
+\item \emph{Constantes} $C=cq$: $p^*=c$, oferta horizontal, $J^*$ y $q^*$ \emph{indeterminados} ($J^*q^*=x(c)$).
+\item \emph{Decrecientes en todo el dominio}: ínfimo del CMe en $q\to0$ $\Rightarrow$ entrarían infinitas: \emph{no hay equilibrio}.
+\item \emph{Crecientes en todo el dominio}: sin solución: monopolio natural \vertema{3.A.17}.
+\item \emph{CMe en U} (S invertida o coste fijo evitable: suficiente, no necesario):
+\funcionclave{p^*=\overline{c}=\min\mathrm{CMe},\qquad q^*=\overline{q},\qquad J^*=\frac{x(\overline{c})}{\overline{q}}}
+\end{itemize}
+\end{itemize}
+\graficorepaso[0.66\linewidth]{libre-entrada}{Libre entrada: rendimientos constantes, decrecientes y CMe en U (arriba, empresa; abajo, mercado)}
+\begin{itemize}
+\item \emph{Implicaciones}: \emph{beneficio económico nulo} (cubre el coste de oportunidad; la ganancia dura lo que tarda la entrada); \emph{eficiencia productiva} (escala mínima eficiente, nunca en el tramo de economías de escala: $\mathrm{CMg}<\mathrm{CMe}$); \emph{eficiencia asignativa} (1TFEB sin convexidad).
+\item \emph{Del CP al LP}: $D_0\to D_1$: CP, $p_1>\overline{c}$, $q_1>\overline{q}$, beneficios ($B$); entrada hasta $p=\overline{c}$ con $J_1>J_0$ ($C$). Precio reacciona más a CP; cantidad, a LP.
+\end{itemize}
+\graficorepaso[0.64\linewidth]{corto-largo-industria}{Del CP ($B$) al LP ($C$) con libre entrada: empresa e industria}
+\begin{itemize}
+\item \emph{Matices}: $\overline{q}$ grande $\Rightarrow$ poder de mercado \vertema{3.A.19}; $J^*$ entero; horizontal solo si los costes no dependen de $J$.
+\item \emph{c) Extensiones: oferta de la industria}. \emph{Supuestos}: \autor{Marshall}: \emph{economías internas} (tamaño de la empresa) frente a \concepto{economías externas} (de la industria), $C(q_j;q)$: externas a la empresa, internas a la industria. \emph{Pecuniarias} (precios de factores) o \emph{tecnológicas} (distritos industriales) (\autor{Viner} 1931, \autor{Scitovsky} 1954).
+\item \emph{Desarrollo}: \concepto{costes constantes}: horizontal; \concepto{crecientes} (deseconomías; suelo, trabajo especializado): creciente, más elástica que a CP; \concepto{decrecientes} (economías): decreciente. Compatible con competencia: cada empresa con CMg creciente; baja toda su curva.
+\end{itemize}
+\graficorepaso[0.85\linewidth]{oferta-largo-plazo}{Oferta de la industria a LP: costes constantes, crecientes y decrecientes}
+\begin{itemize}
+\item \emph{Implicaciones}: externas \emph{tecnológicas} $\Rightarrow$ ineficiencia (se produce poco \vertema{3.A.23}); \emph{pecuniarias}, solo trasladan rentas. Oferta decreciente: \autor{Walras} y \autor{Marshall} opuestos (\hyperref[rep:II.1]{II.1}). Concentración geográfica y comercio \vertema{3.B.6}.
+\item \emph{d) Evidencia}: CMe a LP en \textbf{L} (\autor{Johnston} 1960, \autor{Stigler} 1958): tamaño indeterminado sobre la escala mínima eficiente $\Rightarrow$ conviven tamaños distintos \vertema{3.A.12}.
+\item \emph{e) Valoración}: supone entrada sin costes y entrantes idénticos. Hundidos $\Rightarrow$ entrada lenta, barreras; mercados impugnables \vertema{3.A.15}; $\overline{q}$ enorme $\Rightarrow$ monopolio natural \vertema{3.A.17}\vertema{3.A.20}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: demanda = suma de utilidades marginales, oferta = suma de CMg, precio que las iguala (lo forman todos, no lo fija nadie); existe y es único con curvas normales, estable por precios o cantidades, telaraña puede oscilar; maximiza el ET (1TFEB), 2TFEB con suma fija; impuesto según elasticidades, triángulo de \autor{Harberger}; a LP con libre entrada, $p=\min\mathrm{CMe}$ y beneficio nulo.
+\item \textbf{Relevancia}: referencia para juzgar mercados (índice de \autor{Lerner} nulo \vertema{3.A.17}), competencia \vertema{4.A.15}, impuestos y controles \vertema{4.B.8}\vertema{4.B.9}.
+\item \textbf{Extensiones}: equilibrio general \vertema{3.A.21}; bienestar y fallos \vertema{3.A.22}\vertema{3.A.23}; levantar 4 o 3 $\to$ \vertema{3.A.17}\vertema{3.A.18}\vertema{3.A.19}; levantar 2 $\to$ información \vertema{3.A.13}; impugnables \vertema{3.A.15}; \autor{Muth} \vertema{3.A.6}.
+\item \textbf{Opinión}: describe pocos mercados y no lo pretende: aísla cómo coordinan los precios y da una vara de medir. Débil en lo dinámico: estado de reposo, no proceso (\autor{Hayek}, 1948 \vertema{3.A.3}); sin beneficios duraderos, poco incentivo a innovar (\autor{Schumpeter}, 1942).
+\item \textbf{Idea final}: a río revuelto hay ganancia de pescadores, pero solo mientras la oferta no se ajusta; con competencia y entrada libre, la ganancia atrae a otros y el precio vuelve al coste: el mercado puede llegar solo al equilibrio, y eficiente, pero no siempre ni por cualquier camino.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1776}{\autor{Smith}: precios de mercado y «naturales»; mano invisible}
+\hito{1844}{\autor{Dupuit}: excedente del consumidor (no 1884)}
+\hito{1870}{\autor{Jenkin}: curvas de oferta y demanda (1872, incidencia)}
+\hito{1874}{\autor{Walras}: \emph{Éléments}; tanteo, equilibrio general}
+\hito{1890}{\autor{Marshall}: equilibrio parcial, plazos, excedente, economías externas}
+\hito{1906}{\autor{Pareto}: criterio de eficiencia}
+\hito{1922}{\autor{Dalton}: incidencia según elasticidades}
+\hito{1931}{\autor{Viner}: curvas de costes; economías externas}
+\hito{1934}{\autor{Kaldor}: nombre de la telaraña; \autor{Lerner}: condiciones del óptimo}
+\hito{1938}{\autor{Ezekiel}: teorema de la telaraña}
+\hito{1941}{\autor{Samuelson}: principio de correspondencia (1947, \emph{Foundations})}
+\hito{1951}{\autor{Arrow}; \autor{Debreu}: teoremas del bienestar}
+\hito{1958}{\autor{Nerlove}: expectativas adaptativas; \autor{Stigler}: superviviente}
+\hito{1961}{\autor{Muth}: expectativas racionales}
+\hito{1964}{\autor{Harberger}: triángulo de pérdida}
+
+% ==========================================================================
+\bloque{Datos clave}
+\begin{itemize}
+\item Aceite de oliva en España: \dato{1,49 Mt (2021/22) $\to$ 0,67 (2022/23) $\to$ 0,85 (2023/24) $\to$ 1,42 (2024/25)}{CE, 2026}.
+\item Precio en origen del virgen extra: \dato{4,1 €/kg (oct.\ 2022) $\to$ 9,0 (ene.\ 2024) $\to$ $<$3,6 (may.\ 2025)}{CE, 2026}.
+\item IPC de aceites vegetales: \dato{$-45$\,\% (abr.\ 2024-sep.\ 2025)}{INE, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué utilidad cuasilineal? ¿Qué se pierde?} Sin efecto renta: demanda solo del precio, EC exacto, ET mide el bienestar y parcial = general. Se pierde el efecto renta (bienes que pesan en el gasto).
+\item \textbf{¿Por qué la oferta no es toda la curva de CMg?} Solo el tramo creciente sobre el CVMe mínimo (CP) o CMe mínimo (LP): por debajo, cerrar es mejor.
+\item \textbf{¿Economías de escala y competencia perfecta?} Al principio sí (CMe en U): se produce en la escala mínima eficiente, nunca en el tramo de economías; rendimientos crecientes internos en todo el dominio, no. Las externas, sí.
+\item \textbf{¿Crítica de \autor{Muth}?} Errores sistemáticos: con expectativas racionales, $p^e=p^*$ y $p_t=p^*+u_t/a_1$: sin ciclo.
+\item \textbf{¿Por qué no hay equilibrio con libre entrada y rendimientos decrecientes?} El mín.\ del CMe está en $q\to0$: infinitas empresas infinitesimales.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Oferta: CMg \emph{creciente} sobre el mín.\ CVMe (CP) o CMe (LP). Mín.\ CVMe = \emph{mínimo} de explotación; mín.\ CMe = \emph{óptimo}.
+\item Ambas $\downarrow$ y oferta más plana: \autor{Walras} inestable, \autor{Marshall} estable.
+\item Telaraña converge si $\varepsilon_S<\lvert\varepsilon_D\rvert$: oferta \emph{más inclinada} en $(q,p)$. Con curvas normales puede divergir.
+\item \autor{Dalton}: más sobre el lado \emph{más inelástico}; no depende de quién lo pague legalmente. EG crece con $t^2$.
+\item Libre entrada: RCE $\Rightarrow$ $J^*$ indeterminado; U $\Rightarrow$ $J^*=x(\overline{c})/\overline{q}$; S invertida: suficiente, no necesaria.
+\item Costes crecientes = \emph{deseconomías externas} (oferta LP creciente); nunca rendimientos crecientes \emph{internos}.
+\item 1TFEB sin convexidad; 2TFEB (en general) con ella. \autor{Dupuit} 1844, no 1884.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
