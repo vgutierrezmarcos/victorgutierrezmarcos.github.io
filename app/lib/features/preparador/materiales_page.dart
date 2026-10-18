@@ -78,7 +78,7 @@ class MaterialesPage extends ConsumerWidget {
             ] else
               ...switch (materiales) {
                 AsyncData(:final value) => value.isEmpty
-                    ? [Text('Todavía no has compartido nada. Toca «Material» para añadir el primero.', style: context.textos.bodySmall)]
+                    ? [const VacioVista(icono: Icons.link, texto: 'Todavía no has compartido nada. Toca «Material» para añadir el primero.')]
                     : [
                         for (final m in value)
                           TarjetaMaterial(

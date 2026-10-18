@@ -27,8 +27,8 @@ class DiarioVista extends ConsumerWidget {
     return diario.isEmpty
           ? Center(
               child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Text('Aún no hay cantes anotados. Al terminar un cante, guarda el tema, el tiempo y cómo te ha ido para ver aquí tu evolución.', textAlign: TextAlign.center, style: context.textos.bodySmall),
+                padding: const EdgeInsets.all(16),
+                child: const VacioVista(icono: Icons.record_voice_over_outlined, texto: 'Aún no hay cantes anotados. Al terminar un cante, guarda el tema, el tiempo y cómo te ha ido para ver aquí tu evolución.'),
               ),
             )
           : ListView(

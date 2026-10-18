@@ -210,8 +210,8 @@ class _Documento extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 3),
                   child: Wrap(spacing: 6, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
-                    if (nuevo) Etiqueta('NUEVO', color: context.colores.dorado),
-                    if (conSeccion) Text(d.seccion.toUpperCase(), style: context.textos.labelSmall?.copyWith(letterSpacing: 0.4)),
+                    if (nuevo) Etiqueta('Nuevo', color: context.colores.dorado),
+                    if (conSeccion) Text(d.seccion, style: context.textos.labelSmall?.copyWith(fontFamily: Fuentes.serif, fontSize: 13.5, fontFeatures: versalitas, letterSpacing: 0.5)),
                     if (conSeccion && d.desde != null) Text('· ${DateFormat("d MMM", 'es').format(d.desde!)}', style: context.textos.labelSmall),
                   ]),
                 ),

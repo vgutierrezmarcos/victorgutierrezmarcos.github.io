@@ -204,7 +204,7 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         // Cabecera: berenjena con la línea dorada, el logo y el nombre.
         Container(
-          decoration: const BoxDecoration(gradient: LinearGradient(colors: [PaletaNeutra.tinta, PaletaNeutra.tintaClara])),
+          color: PaletaNeutra.tinta,
           child: SafeArea(
             bottom: false,
             child: Padding(
@@ -223,8 +223,8 @@ class _ElegirOposicionPageState extends State<_ElegirOposicionPage> {
           ),
         ),
         Container(
-          height: 4,
-          decoration: const BoxDecoration(gradient: LinearGradient(colors: [PaletaNeutra.dorado, PaletaNeutra.doradoClaro, PaletaNeutra.dorado])),
+          height: 2,
+          color: PaletaNeutra.dorado,
         ),
         Expanded(
           child: _cargando
@@ -275,10 +275,10 @@ class TarjetaOposicion extends StatelessWidget {
       color: Colors.transparent,
       child: Ink(
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [m.primarioClaro, m.primario, m.primarioOscuro]),
+          color: m.primario,
           borderRadius: radio,
           border: elegida ? Border.all(color: PaletaNeutra.doradoClaro, width: 3) : null,
-          boxShadow: [BoxShadow(color: m.primarioOscuro.withValues(alpha: 0.25), blurRadius: 12, offset: const Offset(0, 4))],
+          boxShadow: [BoxShadow(color: m.primarioOscuro.withValues(alpha: 0.18), blurRadius: 4, offset: const Offset(0, 1))],
         ),
         child: InkWell(
           onTap: onTap,
