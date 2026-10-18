@@ -32,7 +32,8 @@ import fitz  # PyMuPDF
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from comun import (Tema, guardar_pdf_anterior, guardar_docx_anterior, LATEX, MIKTEX, PANDOC, LYX, TEX2LYX, TEMARIO, entorno_tex, ejecutar,  # noqa: E402
                    errores_log, ruta_windows, minutos_texto, paginas_partes, linea_paginas,
-                   licencia_corta, licencia_larga, LICENCIA_URL_LEGAL)
+                   licencia_corta, licencia_larga, LICENCIA_URL_LEGAL, destinos_temas, primer_tema,
+                   escribir_destinos_tex)
 
 PDFLATEX = os.path.join(MIKTEX, 'pdflatex.exe')
 BIBER = os.path.join(MIKTEX, 'biber.exe')
@@ -328,10 +329,26 @@ def expandir_funcionclave(cuerpo):
 def preparar_pandoc(tema, tex, formato):
     """LaTeX para pandoc: las equivalencias de pandoc-macros.tex delante, las
     referencias (\\ref, \\eqref) con el número que tienen en el PDF y los anexos
-    con letra. En HTML, las ecuaciones citadas llevan su número (\\tag)."""
+    con letra. En HTML, las ecuaciones citadas llevan su número (\\tag).
+
+    Toda remisión es un enlace, como en el PDF: \\ref y \\eqref pasan a
+    \\hyperref[etiqueta]{número} (pandoc los convierte en enlaces a #etiqueta;
+    las ecuaciones llevan delante un \\hypertarget con su etiqueta) y cada
+    \\vertema va dentro de un \\href al tema citado: en HTML, su página si es un
+    tema revisado y si no su PDF (rutas relativas); en Word, el PDF de la web."""
     macros = open(os.path.join(LATEX, 'pandoc-macros.tex'), encoding='utf-8').read()
     cuerpo = open(tex, encoding='utf-8').read()
     numeros = etiquetas_aux(tema)
+    destinos = destinos_temas(tema.carpeta)
+
+    def enlace_tema(m):
+        d = destinos.get(primer_tema(m.group(1)))
+        if not d:
+            return m.group(0)
+        url = d['html'] if formato == 'html' else d['pdf']
+        # En \href, «#», «%» y «~» se escapan; las rutas de los temas no los llevan
+        return f'\\href{{{url}}}{{{m.group(0)}}}'
+    cuerpo = re.sub(r'\\vertema\{([^{}]*)\}', enlace_tema, cuerpo)
     cuerpo = expandir_funcionclave(expandir_optim(cuerpo))
     # Gráfico o tabla dentro de una caja (figuracaja, tablacaja de tcee.sty): en
     # la web y en Word son figuras y tablas normales dentro del Div de la caja
@@ -340,17 +357,24 @@ def preparar_pandoc(tema, tex, formato):
     # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
     # gráfico pequeño en la web; se trata como 1\textwidth
     cuerpo = re.sub(r'(?<![\d.])\\(textwidth|linewidth|columnwidth)\b', r'1\\\1', cuerpo)
-    cuerpo = re.sub(r'\\eqref\{([^}]+)\}', lambda m: f'({numeros.get(m.group(1), "?")})', cuerpo)
-    cuerpo = re.sub(r'\\(?:auto|c|C|name)?ref\{([^}]+)\}', lambda m: numeros.get(m.group(1), '?'), cuerpo)
+    cuerpo = re.sub(r'\\eqref\{([^}]+)\}',
+                    lambda m: f'(\\hyperref[{m.group(1)}]{{{numeros.get(m.group(1), "?")}}})', cuerpo)
+    cuerpo = re.sub(r'\\(?:auto|c|C|name)?ref\{([^}]+)\}',
+                    lambda m: f'\\hyperref[{m.group(1)}]{{{numeros.get(m.group(1), "?")}}}', cuerpo)
 
     def etiqueta(m):
         n = numeros.get(m.group(1))
         if formato == 'html' and n and m.group(1).startswith('eq'):
             return f'\\tag{{{n}}}'
         return ''
+
+    def formula(m):
+        # Las etiquetas de dentro se quitan (o pasan a \tag) y su ancla va delante
+        anclas = ''.join(f'\\hypertarget{{{e}}}{{}}' for e in re.findall(r'\\label\{([^}]+)\}', m.group(1)))
+        return anclas + re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1))
     # Solo las etiquetas dentro de fórmulas; las de figuras y apartados las usa pandoc
     cuerpo = re.sub(r'(\\begin\{(equation|align|gather|multline)\*?\}.*?\\end\{\2\*?\})',
-                    lambda m: re.sub(r'\\label\{([^}]+)\}', etiqueta, m.group(1)), cuerpo, flags=re.S)
+                    formula, cuerpo, flags=re.S)
     cuerpo = numerar_anexos(cuerpo)
     # Tablas: pandoc no entiende \multirow, \newline, \cellcolor ni \rowcolor y
     # pierde lo que va en {\footnotesize …}. Se dejan como marcas de color
@@ -429,7 +453,34 @@ def generar_html(tema, tex_pandoc, datos):
         orden += ['-M', 'anterior-docx=true']
     ejecutar(orden, timeout=600)
     partir_urls_html(destino)
+    enlaces_app_html(destino, tema)
     return destino
+
+
+def enlaces_app_html(ruta, tema):
+    """data-app en cada enlace de \\vertema: a dónde lleva dentro de la app,
+    que abre la página desde jsDelivr (ver el script de plantilla-tema.html):
+    el PDF del tema en la rama si es un tema revisado o disponible (ruta
+    relativa) y, si no, la página de tema no disponible de la web."""
+    destinos = destinos_temas(tema.carpeta)
+    with open(ruta, encoding='utf-8') as f:
+        html = f.read()
+
+    def poner(m):
+        d = destinos.get(primer_tema(m.group(2)))
+        if not d:
+            return m.group(0)
+        if d['revisado']:
+            app = re.sub(r'\.html$', '.pdf', d['html'])
+        elif d['disponible']:
+            app = d['html']
+        else:
+            app = d['pdf']
+        return m.group(0).replace('<a ', f'<a data-app="{app}" ', 1)
+    html = re.sub(r'(<a href="[^"]*" class="vertema">)\s*<span class="vertema"[^>]*>\[ver tema ([^\]<]*)\]</span>\s*</a>',
+                  poner, html)
+    with open(ruta, 'w', encoding='utf-8') as f:
+        f.write(html)
 
 
 def partir_urls_html(ruta):
@@ -771,6 +822,7 @@ def main():
     if args.solo == 'graficos' or args.grafico:
         return
 
+    escribir_destinos_tex()     # destinos de \vertema para tcee.sty
     tex = exportar_latex(tema)
     datos = datos_documento(tex)
     resultados = {}

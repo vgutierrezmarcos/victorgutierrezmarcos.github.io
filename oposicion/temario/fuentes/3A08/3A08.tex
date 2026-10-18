@@ -60,9 +60,9 @@
 
 \item \textbf{\emph{Estructura}}: la exposición se organiza en 3 partes.
   \begin{itemize}
-  \item \emph{I. Fundamentos de la teoría de la elección racional}: presentaremos los ingredientes del modelo, las preferencias con su representación mediante una función de utilidad y la restricción presupuestaria (I.1); plantearemos el problema de maximización de la utilidad y su equilibrio, interior o de esquina (I.2), y obtendremos su solución: la demanda marshalliana individual, la función indirecta de utilidad y, por agregación, la demanda de mercado (I.3).
-  \item \emph{II. Estática comparativa}: con análisis gráfico y de elasticidades, estudiaremos cómo responde la demanda a las variaciones en la renta (II.1) y en los precios, propio y cruzado, con la ecuación de \autor{Slutsky} (II.2), y valoraremos la teoría para enlazar con sus desarrollos (II.3).
-  \item \emph{III. Otros desarrollos}: la teoría de la preferencia revelada, que parte de la conducta observada y no de preferencias inobservables (III.1); la producción doméstica, que introduce el tiempo y la «tecnología del consumo» (III.2), y los precios hedónicos, que valoran empíricamente los bienes por sus características (III.3).
+  \item \emph{I. Fundamentos de la teoría de la elección racional}: presentaremos los ingredientes del modelo, las preferencias con su representación mediante una función de utilidad y la restricción presupuestaria (\ref{sec:ingredientes}); plantearemos el problema de maximización de la utilidad y su equilibrio, interior o de esquina (\ref{sec:problema-maximizacion-utilidad}), y obtendremos su solución: la demanda marshalliana individual, la función indirecta de utilidad y, por agregación, la demanda de mercado (\ref{sec:solucion-problema-maximizacion}).
+  \item \emph{II. Estática comparativa}: con análisis gráfico y de elasticidades, estudiaremos cómo responde la demanda a las variaciones en la renta (\ref{sec:variaciones-renta}) y en los precios, propio y cruzado, con la ecuación de \autor{Slutsky} (\ref{sec:variaciones-precios}), y valoraremos la teoría para enlazar con sus desarrollos (\ref{sec:valoracion}).
+  \item \emph{III. Otros desarrollos}: la teoría de la preferencia revelada, que parte de la conducta observada y no de preferencias inobservables (\ref{sec:teoria-preferencia-revelada}); la producción doméstica, que introduce el tiempo y la «tecnología del consumo» (\ref{sec:produccion-domestica}), y los precios hedónicos, que valoran empíricamente los bienes por sus características (\ref{sec:precios-hedonicos}).
   \end{itemize}
 \end{itemize}
 
@@ -90,7 +90,7 @@ La exposición sigue el orden lógico de la teoría: I construye la demanda paso
 
 
 % ==========================================================================
-\section{Análisis de la teoría neoclásica de la demanda\newline del consumidor (I): fundamentos de la teoría\newline de la elección racional}
+\section{Análisis de la teoría neoclásica de la demanda\newline del consumidor (I): fundamentos de la teoría\newline de la elección racional}\label{sec:analisis-teoria-neoclasica}
 \minutos{11}
 
 \begin{itemize}
@@ -98,7 +98,7 @@ La exposición sigue el orden lógico de la teoría: I construye la demanda paso
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{Ingredientes}
+\subsection{Ingredientes}\label{sec:ingredientes}
 
 \begin{itemize}
 \item La \concepto{teoría neoclásica ordinal} de la demanda parte de 2 herramientas: las \concepto{preferencias}, con las que se obtiene una \emph{función de utilidad},\footnote{Contar con una función de utilidad permite aplicar las herramientas del cálculo diferencial y, por tanto, plantear y resolver un problema de optimización.} y la \concepto{restricción presupuestaria}, que determina el \emph{conjunto presupuestario}. Combinándolas se resuelve el \concepto{problema de maximización de la utilidad} (PMU) y se obtiene una \concepto{función de demanda} que depende de los precios y de la renta. El gráfico~\ref{fig:esquema-ingredientes} resume el camino que recorre este apartado.
@@ -126,7 +126,7 @@ La exposición sigue el orden lógico de la teoría: I construye la demanda paso
 En el cante: conjunto de elección, relación de preferencia y conjuntos «al menos tan bueno como» y «no mejor que» (gráfico~\ref{fig:conjuntos-contorno}), los 7 axiomas con lo que garantiza cada uno y agrupados por su papel (gráfico~\ref{fig:esquema-axiomas}: con los 4 primeros ya existe la función de utilidad, por el teorema de \autor{Debreu}), la función de utilidad ordinal como superficie cuyos cortes dan las curvas de indiferencia (gráfico~\ref{fig:superficie-utilidad}), las propiedades de las curvas con el axioma que da cada una (gráfico~\ref{fig:propiedades-curvas-indiferencia}), la RMS y la elasticidad de sustitución, nombrando los 3 casos de la CES. El gráfico~\ref{fig:axiomas-curva-indiferencia} puede dibujarse añadiendo un axioma cada vez. Después, el conjunto presupuestario y la recta de balance. Los 4 casos de la relación binaria, las propiedades del conjunto de elección, la cuasiconcavidad en tres dimensiones y el detalle de la CES son de profundización.
 \end{notaopositor}
 
-\subsubsection{Conjunto de elección, preferencias y función de utilidad}
+\subsubsection{Conjunto de elección, preferencias y función de utilidad}\label{sec:conjunto-eleccion-preferencias}
 
 \paragraph{Conjunto de elección}
 
@@ -375,7 +375,7 @@ La convexidad de las curvas de indiferencia \emph{no} exige utilidades marginale
 \fuente{elaboración propia basada en \textcite{BesankoBraeutigamGibbs2020}.}
 \end{figure}
 
-\subsubsection{Restricción presupuestaria}
+\subsubsection{Restricción presupuestaria}\label{sec:restriccion-presupuestaria}
 
 \begin{itemize}
 \item La \concepto{restricción presupuestaria} recoge la limitación que impone al consumidor su renta. Se suponen 2 cosas:
@@ -407,13 +407,13 @@ La convexidad de las curvas de indiferencia \emph{no} exige utilidades marginale
 
 
 % --------------------------------------------------------------------------
-\subsection{Problema de maximización de la utilidad: el equilibrio}
+\subsection{Problema de maximización de la utilidad: el equilibrio}\label{sec:problema-maximizacion-utilidad}
 
 \begin{notaopositor}
 En el cante: el PMU con las condiciones de \autor{Kuhn} y \autor{Tucker}, la solución interior ($\mathrm{RMS}_{12}=p_1/p_2$, segunda ley de \autor{Gossen}) y la de esquina (gráfico~\ref{fig:solucion-interior-esquina}). Los teoremas de optimización son de profundización; el anexo~\ref{anexo:r3} representa el problema en tres dimensiones y muestra por qué la restricción se satura.
 \end{notaopositor}
 
-\subsubsection{Planteamiento y condiciones de \autor{Kuhn}-\autor{Tucker}}
+\subsubsection{Planteamiento y condiciones de \autor{Kuhn}-\autor{Tucker}}\label{sec:planteamiento-condiciones-kuhn}
 
 \begin{itemize}
 \item Con unas preferencias representadas por una función de utilidad y un conjunto presupuestario con las propiedades anteriores, el \concepto{problema de maximización de la utilidad} (o problema \emph{primal}) es
@@ -457,7 +457,7 @@ En el cante: el PMU con las condiciones de \autor{Kuhn} y \autor{Tucker}, la sol
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Solución interior}
+\subsubsection{Solución interior}\label{sec:solucion-interior}
 
 \begin{itemize}
 \item En una \concepto{solución interior} ($x_i^*>0$ para todo $i$), la condición \eqref{eq:kt1} se cumple con igualdad para todos los bienes y, despejando $\lambda$:
@@ -473,7 +473,7 @@ En el cante: el PMU con las condiciones de \autor{Kuhn} y \autor{Tucker}, la sol
   \end{itemize}
 \end{itemize}
 
-\subsubsection{Solución de esquina}
+\subsubsection{Solución de esquina}\label{sec:solucion-esquina}
 
 \begin{itemize}
 \item En una \concepto{solución de esquina}, algún bien no se consume y la tangencia no tiene por qué cumplirse. Si solo se compra el bien 1 ($x_2^*=0$), en el óptimo $\frac{U_1}{p_1}=\lambda\geq\frac{U_2}{p_2}$, es decir, $\mathrm{RMS}_{12}\geq p_1/p_2$: incluso en la esquina, el consumidor valora el bien 1, en términos del bien 2, más de lo que le cuesta en el mercado. Para los bienes que sí se consumen se obtienen igualmente sus funciones de demanda.
@@ -491,7 +491,7 @@ Se trabaja con curvas de indiferencia estrictamente convexas, pero conviene sabe
 \end{notaopositor}
 
 % --------------------------------------------------------------------------
-\subsection{Solución al problema de maximización}
+\subsection{Solución al problema de maximización}\label{sec:solucion-problema-maximizacion}
 
 \begin{itemize}
 \item Una vez planteado el problema y caracterizado su equilibrio, pasamos a estudiar su solución: la demanda marshalliana, la función indirecta de utilidad y, al agregar, la demanda de mercado.
@@ -501,22 +501,22 @@ Se trabaja con curvas de indiferencia estrictamente convexas, pero conviene sabe
 En el cante: las propiedades de la demanda marshalliana (homogeneidad de grado cero, ley de \autor{Walras}, continuidad); de la función indirecta de utilidad, la definición y la identidad de \autor{Roy}, y la demanda de mercado: suma horizontal, dependencia de la distribución de la renta, forma polar de \autor{Gorman} (curvas de \autor{Engel} rectas y paralelas), sus 2 casos (homotéticas idénticas y cuasilineales), el consumidor representativo y las ventajas y problemas del efecto renta nulo, con el teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu} en una frase. Las propiedades de la FIU son de profundización.
 \end{notaopositor}
 
-\subsubsection{Demanda individual marshalliana}
+\subsubsection{Demanda individual marshalliana}\label{sec:demanda-individual-marshalliana}
 
 \begin{itemize}
-\item La solución del PMU es una cesta: el vector de cantidades óptimas (y el valor del multiplicador en el óptimo). Como el sistema de condiciones de primer orden permite expresar esas cantidades como funciones de los parámetros,\footnote{Esto permitirá, en el apartado~II, hacer estática comparativa: estudiar cómo cambian las demandas ante cambios en los parámetros del problema.} se obtiene el \concepto{sistema completo de ecuaciones de demanda marshalliana} (SCEDM), también llamada \emph{ordinaria} o \emph{walrasiana},
+\item La solución del PMU es una cesta: el vector de cantidades óptimas (y el valor del multiplicador en el óptimo). Como el sistema de condiciones de primer orden permite expresar esas cantidades como funciones de los parámetros,\footnote{Esto permitirá, en el apartado~\ref{sec:analisis-teoria-neoclasica-demanda}, hacer estática comparativa: estudiar cómo cambian las demandas ante cambios en los parámetros del problema.} se obtiene el \concepto{sistema completo de ecuaciones de demanda marshalliana} (SCEDM), también llamada \emph{ordinaria} o \emph{walrasiana},
   \funcionclave[eq:scedm]{\vect{x}^*=\vect{x}(\vect{p},\overline{W})=\begin{pmatrix} x_1(p_1,\dots,p_n,\overline{W})\\ \vdots\\ x_n(p_1,\dots,p_n,\overline{W})\end{pmatrix}}
 \item Sus \emph{propiedades}:
   \begin{enumerate}
   \item \emph{Existe y es única}.\footnote{Existe por el teorema de \autor{Weierstrass} (utilidad continua y conjunto presupuestario compacto) y es única por la convexidad estricta de las preferencias.}
   \item Es \emph{continua} en $(\vect{p},\overline{W})$.\footnote{Por el teorema del máximo de \autor{Berge}.}
-  \item Es \emph{homogénea de grado cero} en $(\vect{p},\overline{W})$: $\vect{x}(\kappa\vect{p},\kappa\overline{W})=\vect{x}(\vect{p},\overline{W})$ para todo $\kappa>0$.\footnote{Si se multiplican precios y renta por $\kappa>0$, el conjunto presupuestario no cambia: $\{\vect{x}: \kappa\vect{p}\cdot \vect{x}\leq \kappa\overline{W}\}=\{\vect{x}: \vect{p}\cdot \vect{x}\leq\overline{W}\}$. Como el problema es el mismo, la solución también. Aplicando el teorema de \autor{Euler} a una función homogénea de grado cero se obtiene la restricción en elasticidades $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$ para cada bien $i$, que veremos en el apartado~II junto a las agregaciones de \autor{Engel} y \autor{Cournot} (derivación en el anexo~\ref{der:homogeneidad}).} El consumidor no sufre \emph{ilusión monetaria}: solo importan los precios relativos y la renta real, de modo que puede tomarse cualquier bien como \emph{numerario}.
+  \item Es \emph{homogénea de grado cero} en $(\vect{p},\overline{W})$: $\vect{x}(\kappa\vect{p},\kappa\overline{W})=\vect{x}(\vect{p},\overline{W})$ para todo $\kappa>0$.\footnote{Si se multiplican precios y renta por $\kappa>0$, el conjunto presupuestario no cambia: $\{\vect{x}: \kappa\vect{p}\cdot \vect{x}\leq \kappa\overline{W}\}=\{\vect{x}: \vect{p}\cdot \vect{x}\leq\overline{W}\}$. Como el problema es el mismo, la solución también. Aplicando el teorema de \autor{Euler} a una función homogénea de grado cero se obtiene la restricción en elasticidades $\sum_j\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0$ para cada bien $i$, que veremos en el apartado~\ref{sec:analisis-teoria-neoclasica-demanda} junto a las agregaciones de \autor{Engel} y \autor{Cournot} (derivación en el anexo~\ref{der:homogeneidad}).} El consumidor no sufre \emph{ilusión monetaria}: solo importan los precios relativos y la renta real, de modo que puede tomarse cualquier bien como \emph{numerario}.
   \item Cumple la \emph{ley de \autor{Walras}}:\footnote{El nombre viene de la ley de \autor{Walras} del equilibrio general, $\vect{p}\cdot\vect{z}(\vect{p})=0$, que no es sino la suma de las restricciones presupuestarias de todos los consumidores: en el agregado también se agotan todos los recursos \vertema{3.A.21}.} $\vect{p}\cdot \vect{x}(\vect{p},\overline{W})=\overline{W}$. Por la insaciabilidad local, el consumidor agota su renta.
   \item Con cierta generalidad, es \emph{diferenciable} en $(\vect{p},\overline{W})$.\footnote{Con solución interior y precios y renta estrictamente positivos, la demanda es diferenciable si (i) la utilidad es continua, estrictamente creciente, estrictamente cuasicóncava y dos veces diferenciable; (ii) $\partial U(\vect{x}^*)/\partial x_i>0$ para algún $i$, y (iii) el determinante del \emph{hessiano orlado} de la utilidad en $\vect{x}^*$ es distinto de cero \parencite[teorema~1.5]{JehleReny2011Advanced}.}
   \end{enumerate}
 \end{itemize}
 
-\subsubsection{La función indirecta de utilidad}
+\subsubsection{La función indirecta de utilidad}\label{sec:funcion-indirecta-utilidad}
 
 \begin{itemize}
 \item Sustituyendo la demanda en la función objetivo se obtiene la \emph{función valor} del problema primal, la \concepto{función indirecta de utilidad} (FIU): la utilidad máxima que se alcanza con unos precios y una renta dados, es decir, el valor óptimo del PMU~\eqref{eq:pmu},
@@ -539,7 +539,7 @@ En el cante: las propiedades de la demanda marshalliana (homogeneidad de grado c
 \item Si con los mismos ingredientes se «da la vuelta» al problema (minimizar el gasto necesario para alcanzar un nivel de utilidad), se llega al mismo equilibrio y aparecen nuevas relaciones entre las funciones de ambos enfoques, primal y dual, que enriquecen la teoría: es la \concepto{dualidad} \vertema{3.A.9}.
 \end{itemize}
 
-\subsubsection{Curva de demanda de mercado: agregación y efecto renta nulo}
+\subsubsection{Curva de demanda de mercado: agregación y efecto renta nulo}\label{sec:curva-demanda-mercado}
 
 \begin{itemize}
 \item La \concepto{demanda de mercado} de un bien es la suma de las demandas individuales de los $H$ consumidores:
@@ -600,7 +600,7 @@ La demanda de mercado solo depende de los precios y de la renta total, como la d
 \end{itemize}
 
 % ==========================================================================
-\section{Análisis de la teoría neoclásica de la demanda\newline del consumidor (II): estática comparativa\newline (análisis gráfico y de elasticidades)}
+\section{Análisis de la teoría neoclásica de la demanda\newline del consumidor (II): estática comparativa\newline (análisis gráfico y de elasticidades)}\label{sec:analisis-teoria-neoclasica-demanda}
 \minutos{8}
 
 \begin{notaopositor}
@@ -610,21 +610,21 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
 \begin{itemize}
 \item Hasta aquí hemos respondido a la primera pregunta: qué cesta elige el consumidor. Ahora respondemos a la segunda: \emph{cómo cambia esa elección cuando cambian los parámetros del problema}, es decir, la renta y los precios.
   \begin{itemize}
-  \item Comparar el óptimo antes y después de un cambio en un parámetro, sin estudiar el proceso de ajuste, es la \concepto{estática comparativa}. Como la demanda marshalliana es diferenciable (apartado~I.3), basta estudiar sus derivadas parciales, que suelen expresarse como \concepto{elasticidades}: números puros, que no dependen de las unidades de medida.\footnote{El análisis de elasticidades lo desarrolló de forma pionera \textcite[libro~III, cap.~IV]{Marshall1890Principles}.}
+  \item Comparar el óptimo antes y después de un cambio en un parámetro, sin estudiar el proceso de ajuste, es la \concepto{estática comparativa}. Como la demanda marshalliana es diferenciable (apartado~\ref{sec:solucion-problema-maximizacion}), basta estudiar sus derivadas parciales, que suelen expresarse como \concepto{elasticidades}: números puros, que no dependen de las unidades de medida.\footnote{El análisis de elasticidades lo desarrolló de forma pionera \textcite[libro~III, cap.~IV]{Marshall1890Principles}.}
   \item La elasticidad es una medida \emph{local}: se evalúa en cada combinación de precios y renta. La clasificación de un bien vale, por tanto, en ese punto: un mismo bien puede ser normal a unos niveles de renta e inferior a otros, u ordinario a unos precios y \autor{Giffen} a otros.
   \end{itemize}
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{Variaciones en la renta}
+\subsection{Variaciones en la renta}\label{sec:variaciones-renta}
 
-\subsubsection{Análisis gráfico: curva de renta-consumo y curva de \autor{Engel}}
+\subsubsection{Análisis gráfico: curva de renta-consumo y curva de \autor{Engel}}\label{sec:analisis-grafico-curva}
 
 \begin{itemize}
 \item Al aumentar la renta con los precios constantes, la recta de balance se desplaza en paralelo hacia fuera y se obtiene un nuevo óptimo. Uniendo los óptimos correspondientes a todos los niveles de renta, dados los precios y las preferencias, se obtiene la \concepto{curva de renta-consumo} (CRC) o \emph{senda de expansión de la renta}.
   \begin{itemize}
   \item Si los 2 bienes son normales, tiene pendiente positiva; en el tramo en que uno de ellos es inferior, la pendiente es negativa.
-  \item Con preferencias homotéticas, la CRC es una semirrecta que parte del origen: la proporción en que se consumen los bienes no depende de la renta.\footnote{Es el caso de la forma polar de \autor{Gorman} con $a_h(\vect{p})=0$ (apartado~I.3, ecuación~\eqref{eq:gorman}).}
+  \item Con preferencias homotéticas, la CRC es una semirrecta que parte del origen: la proporción en que se consumen los bienes no depende de la renta.\footnote{Es el caso de la forma polar de \autor{Gorman} con $a_h(\vect{p})=0$ (apartado~\ref{sec:solucion-problema-maximizacion}, ecuación~\eqref{eq:gorman}).}
   \end{itemize}
 \item Llevando cada óptimo a un plano $(\overline{W},x_i)$ se obtiene la \concepto{curva de \autor{Engel}} del bien $i$, que relaciona la cantidad demandada con la renta, dados los precios: $x_i=x_i(\bar{p},\overline{W})$.\footnote{\textcite[§2.E]{MasColellWhinstonGreen1995} llaman a esta función \emph{función de \autor{Engel}}, a la CRC \emph{senda de expansión de la riqueza} y a $\partial x_i/\partial w$ \emph{efecto riqueza}. Aquí hablamos de renta y de efecto renta, como la ficha del tribunal.}
   \begin{itemize}
@@ -640,7 +640,7 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
 \fuente{elaboración propia basada en \textcite[§2.E]{MasColellWhinstonGreen1995}.}
 \end{figure}
 
-\subsubsection{Análisis de elasticidades: elasticidad-renta y ley de \autor{Engel}}
+\subsubsection{Análisis de elasticidades: elasticidad-renta y ley de \autor{Engel}}\label{sec:analisis-elasticidades-elasticidad}
 
 \begin{itemize}
 \item La \concepto{elasticidad-renta} mide la variación porcentual de la cantidad demandada de un bien ante una variación porcentual de la renta:
@@ -670,10 +670,10 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
 \fuente{INE, Encuesta de Presupuestos Familiares 2025, tabla 73828 (consulta: 10/10/2026).}
 \end{figure}
 
-\subsubsection{Agregación de \autor{Engel}}
+\subsubsection{Agregación de \autor{Engel}}\label{sec:agregacion-engel}
 
 \begin{itemize}
-\item Además de ser continua, homogénea de grado cero y cumplir la ley de \autor{Walras} (apartado~I.3), la demanda marshalliana debe cumplir ciertas restricciones que se derivan de la restricción presupuestaria. La primera es la \concepto{agregación de \autor{Engel}}. Partiendo de la ley de \autor{Walras}, $\sum_{i}p_ix_i(\vect{p},\overline{W})=\overline{W}$, que se cumple por la insaciabilidad local, y derivando respecto a la renta:
+\item Además de ser continua, homogénea de grado cero y cumplir la ley de \autor{Walras} (apartado~\ref{sec:solucion-problema-maximizacion}), la demanda marshalliana debe cumplir ciertas restricciones que se derivan de la restricción presupuestaria. La primera es la \concepto{agregación de \autor{Engel}}. Partiendo de la ley de \autor{Walras}, $\sum_{i}p_ix_i(\vect{p},\overline{W})=\overline{W}$, que se cumple por la insaciabilidad local, y derivando respecto a la renta:
   \begin{equation}
   \sum_{i=1}^{n}p_i\frac{\partial x_i}{\partial\overline{W}}=1\quad\Longrightarrow\quad\sum_{i=1}^{n}\underbrace{\frac{p_ix_i}{\overline{W}}}_{s_i}\cdot\underbrace{\frac{\partial x_i}{\partial\overline{W}}\frac{\overline{W}}{x_i}}_{\varepsilon_{x_i,\overline{W}}}=1\quad\Longrightarrow\quad\sum_{i=1}^{n}s_i\,\varepsilon_{x_i,\overline{W}}=1, \label{eq:agregacion-engel}
   \end{equation}
@@ -685,13 +685,13 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{Variaciones en los precios}
+\subsection{Variaciones en los precios}\label{sec:variaciones-precios}
 
 \begin{itemize}
 \item Una vez estudiado cómo responde la demanda a la renta, pasamos a analizar su respuesta a los precios, primero al del propio bien y después al de los demás.
 \end{itemize}
 
-\subsubsection{Análisis gráfico: curva de precio-consumo y curva de demanda}
+\subsubsection{Análisis gráfico: curva de precio-consumo y curva de demanda}\label{sec:analisis-grafico-curva-precio}
 
 \begin{itemize}
 \item Al variar el precio de un bien, \emph{ceteris paribus}, cambia la pendiente de la recta de balance, que gira sobre su corte con el eje del otro bien, y se obtiene un nuevo óptimo. Uniendo los óptimos que corresponden a cada precio se obtiene la \concepto{curva de precio-consumo} (CPC).
@@ -705,7 +705,7 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
 \fuente{elaboración propia basada en \textcite[cap.~6]{Varian2016Intermedia}.}
 \end{figure}
 
-\subsubsection{Análisis de elasticidades}
+\subsubsection{Análisis de elasticidades}\label{sec:analisis-elasticidades}
 
 \paragraph{Elasticidad-precio propio}
 
@@ -752,7 +752,7 @@ Precio propio, $\varepsilon_{x_i,p_i}$ & $>0$ & \textcolor{tceerojo}{\autor{Giff
   \end{equation}
   evaluada en $\overline{U}=V(\vect{p},\overline{W})$.
   \begin{itemize}
-  \item El \concepto{efecto sustitución} mide la variación de la demanda debida solo al cambio del precio relativo, manteniendo constante la utilidad. Es \emph{siempre no positivo}, $\partial h_i(\vect{p},\overline{U})/\partial p_i\leq 0$: al encarecerse un bien, el consumidor lo sustituye por los que se han abaratado relativamente.\footnote{Se debe a la concavidad de la función de gasto \vertema{3.A.9}. En el apartado~III.1 se obtiene el mismo resultado con el axioma débil de la preferencia revelada, sin recurrir a la utilidad.}
+  \item El \concepto{efecto sustitución} mide la variación de la demanda debida solo al cambio del precio relativo, manteniendo constante la utilidad. Es \emph{siempre no positivo}, $\partial h_i(\vect{p},\overline{U})/\partial p_i\leq 0$: al encarecerse un bien, el consumidor lo sustituye por los que se han abaratado relativamente.\footnote{Se debe a la concavidad de la función de gasto \vertema{3.A.9}. En el apartado~\ref{sec:teoria-preferencia-revelada} se obtiene el mismo resultado con el axioma débil de la preferencia revelada, sin recurrir a la utilidad.}
   \item El \concepto{efecto renta} mide la variación de la demanda debida al cambio del poder adquisitivo. Su signo depende del tipo de bien: al subir el precio cae la renta real, y el efecto renta es negativo para un bien normal y positivo para uno inferior. Su tamaño depende de lo que pesa el bien en el gasto.\footnote{En elasticidades, la ecuación de \autor{Slutsky} es $\varepsilon_{x_i,p_j}=\varepsilon^{h}_{i,p_j}-s_j\,\varepsilon_{x_i,\overline{W}}$, donde $\varepsilon^{h}_{i,p_j}$ es la elasticidad de la demanda compensada (anexo~\ref{der:slutsky}). El efecto renta es tanto mayor cuanto mayor es la participación $s_j$ del bien cuyo precio cambia; para un bien que pesa poco en el presupuesto, demanda marshalliana y compensada casi coinciden.}
   \end{itemize}
 \item De la combinación de ambos efectos sale la \concepto{clasificación de los bienes} (tabla~\ref{tab:slutsky-propio}):
@@ -887,7 +887,7 @@ $\leq 0$\newline ($|\mathrm{ES}|<\mathrm{ER}$) & & \textcolor{tceerojo}{$>0$\new
 \fuente{elaboración propia basada en \textcite[§3.G]{MasColellWhinstonGreen1995}.}
 \end{table}
 
-\subsubsection{Agregación de \autor{Cournot} y restricciones de la demanda}
+\subsubsection{Agregación de \autor{Cournot} y restricciones de la demanda}\label{sec:agregacion-cournot-restricciones}
 
 \begin{itemize}
 \item La segunda restricción que impone la restricción presupuestaria es la \concepto{agregación de \autor{Cournot}}. Derivando la ley de \autor{Walras} respecto al precio $p_j$ y multiplicando por $p_j/\overline{W}$:
@@ -898,7 +898,7 @@ $\leq 0$\newline ($|\mathrm{ES}|<\mathrm{ER}$) & & \textcolor{tceerojo}{$>0$\new
   \begin{itemize}
   \item Al subir el precio de un bien, el consumidor ha de reajustar sus compras para seguir gastando exactamente su renta: la media de las elasticidades respecto a $p_j$, ponderada por las participaciones en el gasto, es igual a la participación del bien $j$ cambiada de signo.\footnote{Por ejemplo, con 2 bienes, $s_2\,\varepsilon_{x_2,p_1}=-s_1\,(1+\varepsilon_{x_1,p_1})$: si la demanda del bien 1 es elástica ($|\varepsilon_{x_1,p_1}|>1$), al subir $p_1$ se gasta menos en él y más en el bien 2; si es inelástica, ocurre lo contrario.}
   \end{itemize}
-\item Con la restricción de homogeneidad en elasticidades (apartado~I.3), la demanda marshalliana cumple, para todo $i$ y todo $j$:
+\item Con la restricción de homogeneidad en elasticidades (apartado~\ref{sec:solucion-problema-maximizacion}), la demanda marshalliana cumple, para todo $i$ y todo $j$:
   \begin{equation}
   \underbrace{\sum_{j=1}^{n}\varepsilon_{x_i,p_j}+\varepsilon_{x_i,\overline{W}}=0}_{\text{homogeneidad}},\qquad\underbrace{\sum_{i=1}^{n}s_i\,\varepsilon_{x_i,\overline{W}}=1}_{\text{agregación de \autor{Engel}}},\qquad\underbrace{\sum_{i=1}^{n}s_i\,\varepsilon_{x_i,p_j}=-s_j}_{\text{agregación de \autor{Cournot}}}. \label{eq:restricciones-demanda}
   \end{equation}
@@ -910,20 +910,20 @@ Un cambio de precio tiene un efecto sustitución, siempre no positivo, y un efec
 \end{ideaclave}
 
 % --------------------------------------------------------------------------
-\subsection{Valoración}
+\subsection{Valoración}\label{sec:valoracion}
 
 \begin{itemize}
-\item Con la estática comparativa completamos la teoría ordinal; antes de pasar a sus desarrollos, conviene valorarla. La teoría neoclásica permite derivar la demanda individual con restricciones contrastables (homogeneidad, ley de \autor{Walras}, agregaciones de \autor{Engel} y \autor{Cournot}, signo del efecto sustitución) y, con condiciones exigentes, la demanda de mercado. Sus principales \concepto{limitaciones} motivan los desarrollos del apartado~III:
+\item Con la estática comparativa completamos la teoría ordinal; antes de pasar a sus desarrollos, conviene valorarla. La teoría neoclásica permite derivar la demanda individual con restricciones contrastables (homogeneidad, ley de \autor{Walras}, agregaciones de \autor{Engel} y \autor{Cournot}, signo del efecto sustitución) y, con condiciones exigentes, la demanda de mercado. Sus principales \concepto{limitaciones} motivan los desarrollos del apartado~\ref{sec:otros-desarrollos-teoria}:
   \begin{enumerate}
-  \item las preferencias y la utilidad \emph{no son observables}: la \emph{teoría de la preferencia revelada} parte de las elecciones observadas (III.1);
-  \item el consumidor solo compra bienes y no dedica \emph{tiempo} a consumirlos: la \emph{producción doméstica} incorpora el coste del tiempo (III.2);
-  \item los bienes son homogéneos y se caracterizan solo por su precio, sin explicar cómo se valoran su \emph{calidad} y sus \emph{características}: los \emph{precios hedónicos} (III.3);
+  \item las preferencias y la utilidad \emph{no son observables}: la \emph{teoría de la preferencia revelada} parte de las elecciones observadas (\ref{sec:teoria-preferencia-revelada});
+  \item el consumidor solo compra bienes y no dedica \emph{tiempo} a consumirlos: la \emph{producción doméstica} incorpora el coste del tiempo (\ref{sec:produccion-domestica});
+  \item los bienes son homogéneos y se caracterizan solo por su precio, sin explicar cómo se valoran su \emph{calidad} y sus \emph{características}: los \emph{precios hedónicos} (\ref{sec:precios-hedonicos});
   \item el análisis es estático y sin incertidumbre \vertema{3.A.10} \vertema{3.A.29}.
   \end{enumerate}
 \end{itemize}
 
 % ==========================================================================
-\section{Otros desarrollos de la teoría de la demanda}
+\section{Otros desarrollos de la teoría de la demanda}\label{sec:otros-desarrollos-teoria}
 \minutos{7,5}
 
 \begin{notaopositor}
@@ -935,7 +935,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{La teoría de la preferencia revelada}
+\subsection{La teoría de la preferencia revelada}\label{sec:teoria-preferencia-revelada}
 
 \paragraph{a) Idea}
 
@@ -951,7 +951,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Se parte de un consumidor \emph{individual}\footnote{No del consumidor representativo: la agregación no conserva el axioma débil (apartado~I.3).} que, ante cada vector de precios $\vect{p}\gg\vect{0}$ y cada renta $\overline{W}$, elige una única cesta $\vect{x}(\vect{p},\overline{W})$ (supuesto de \emph{función} de demanda) y gasta toda su renta, $\vect{p}\cdot \vect{x}(\vect{p},\overline{W})=\overline{W}$ (ley de \autor{Walras}).
+\item Se parte de un consumidor \emph{individual}\footnote{No del consumidor representativo: la agregación no conserva el axioma débil (apartado~\ref{sec:solucion-problema-maximizacion}).} que, ante cada vector de precios $\vect{p}\gg\vect{0}$ y cada renta $\overline{W}$, elige una única cesta $\vect{x}(\vect{p},\overline{W})$ (supuesto de \emph{función} de demanda) y gasta toda su renta, $\vect{p}\cdot \vect{x}(\vect{p},\overline{W})=\overline{W}$ (ley de \autor{Walras}).
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
@@ -1034,7 +1034,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{La producción doméstica}
+\subsection{La producción doméstica}\label{sec:produccion-domestica}
 
 \paragraph{a) Idea}
 
@@ -1042,7 +1042,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \item Las \concepto{tecnologías del consumo} aplican la teoría de la producción a las decisiones de consumo. Los bienes comprados en el mercado no dan utilidad por sí mismos: son \emph{insumos} con los que el hogar produce lo que de verdad le satisface.
   \begin{itemize}
   \item \textcite{Becker1965Allocation}\footnote{Gary \autor{Becker} recibió el Premio Nobel de Economía en 1992 por haber extendido el análisis microeconómico a un amplio abanico de conductas e interacciones humanas, incluidas las que no pasan por el mercado \parencite{Nobel1992Becker}.} propone ver el hogar como una pequeña fábrica que combina bienes de mercado y \emph{tiempo} para producir los bienes que realmente se consumen (\emph{commodities}): una comida, una noche de cine, el cuidado de los hijos. Es la base de la llamada \emph{nueva economía de la familia} (\emph{New Home Economics}).
-  \item \textcite{Lancaster1966New} propone la otra tecnología del consumo: los bienes producen \emph{características}, $\vect{z}=B\vect{x}$, y la utilidad depende de las características. Su modelo está en el anexo~\ref{anexo:lancaster} y su papel en la diferenciación de productos, en \vertema{3.A.18}; aquí es el antecedente de los precios hedónicos (III.3).
+  \item \textcite{Lancaster1966New} propone la otra tecnología del consumo: los bienes producen \emph{características}, $\vect{z}=B\vect{x}$, y la utilidad depende de las características. Su modelo está en el anexo~\ref{anexo:lancaster} y su papel en la diferenciación de productos, en \vertema{3.A.18}; aquí es el antecedente de los precios hedónicos (\ref{sec:precios-hedonicos}).
   \end{itemize}
 \end{itemize}
 
@@ -1092,14 +1092,14 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{Precios hedónicos}
+\subsection{Precios hedónicos}\label{sec:precios-hedonicos}
 
 \paragraph{a) Idea}
 
 \begin{itemize}
 \item Muchos bienes son \emph{diferenciados}: una vivienda, un coche o un ordenador son en realidad «paquetes» de características (superficie, ubicación, potencia, memoria\dots) que no se venden por separado. El \concepto{método de los precios hedónicos} descompone el precio observado del bien en el valor implícito de cada característica.
   \begin{itemize}
-  \item Su fundamento es el enfoque de características de \autor{Lancaster} (III.2 y anexo~\ref{anexo:lancaster}): el consumidor no obtiene utilidad de los bienes, sino de sus características. El tribunal sustituyó en el temario de 2023 la demanda de características por este método porque permite medir \emph{empíricamente} el valor que los consumidores dan a cada característica.
+  \item Su fundamento es el enfoque de características de \autor{Lancaster} (\ref{sec:produccion-domestica} y anexo~\ref{anexo:lancaster}): el consumidor no obtiene utilidad de los bienes, sino de sus características. El tribunal sustituyó en el temario de 2023 la demanda de características por este método porque permite medir \emph{empíricamente} el valor que los consumidores dan a cada característica.
   \item Es también un método de \emph{preferencias reveladas}: el precio que se paga por un bien revela cómo se valoran sus características.
   \item \textcite{Court1939Hedonic} acuña el término y estima la primera regresión hedónica, con automóviles \parencite{Goodman1998Court}; \textcite{Griliches1961Hedonic} la convierte en un método para ajustar por calidad los índices de precios \parencite{Griliches1971Price}, y \textcite{Rosen1974Hedonic} le da fundamento teórico.
   \end{itemize}
@@ -1138,7 +1138,7 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
     \begin{equation}
     \frac{\partial U/\partial z_j}{\partial U/\partial y}=\frac{\partial p(\vect{z})}{\partial z_j}, \label{eq:hedonico}
     \end{equation}
-    es decir, la relación marginal de sustitución entre la característica y el numerario se iguala a su precio implícito. Es la misma condición de tangencia del apartado~I.2 (ecuación~\eqref{eq:tangencia}), ahora sobre una «restricción presupuestaria» no lineal, $p(\vect{z})$.
+    es decir, la relación marginal de sustitución entre la característica y el numerario se iguala a su precio implícito. Es la misma condición de tangencia del apartado~\ref{sec:problema-maximizacion-utilidad} (ecuación~\eqref{eq:tangencia}), ahora sobre una «restricción presupuestaria» no lineal, $p(\vect{z})$.
   \item \emph{Curvas de puja y de oferta}: cada consumidor tiene una \concepto{función de puja} $\Theta(\vect{z};\overline{U},\overline{W})$, lo máximo que pagaría por cada $\vect{z}$ manteniendo su utilidad $\overline{U}$. Cada productor tiene una \concepto{función de oferta} $\phi(\vect{z};B)$, lo mínimo que aceptaría por cada $\vect{z}$ obteniendo un beneficio $B$.
   \item \emph{Equilibrio}: la función hedónica $p(\vect{z})$ es la \concepto{envolvente} de las curvas de puja de los consumidores y de las de oferta de los productores. En cada variedad que se compra, la curva de puja del comprador y la de oferta del vendedor son tangentes a $p(\vect{z})$ (gráfico~\ref{fig:funcion-hedonica-rosen}).
   \end{itemize}
@@ -1194,9 +1194,9 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \begin{itemize}
 \item \textbf{\emph{Recapitulación}}:
   \begin{itemize}
-  \item Hemos construido la demanda marshalliana a partir de unos pocos axiomas sobre las preferencias, de su representación mediante una función de utilidad y de la restricción presupuestaria. Sus propiedades (homogeneidad de grado cero, ley de \autor{Walras}, agregaciones de \autor{Engel} y \autor{Cournot}) son restricciones contrastables. Su agregación en una demanda de mercado exige condiciones muy restrictivas: la forma polar de \autor{Gorman} y, en el caso extremo, el efecto renta nulo (I).
-  \item Hemos analizado cómo responde la demanda a la renta y a los precios, y la descomposición de \autor{Slutsky} en efecto sustitución y efecto renta, que explica la clasificación de los bienes y la diferencia entre relaciones brutas y netas (II).
-  \item Y hemos visto 3 desarrollos que acercan la teoría a lo observable: la preferencia revelada, la producción doméstica y los precios hedónicos (III).
+  \item Hemos construido la demanda marshalliana a partir de unos pocos axiomas sobre las preferencias, de su representación mediante una función de utilidad y de la restricción presupuestaria. Sus propiedades (homogeneidad de grado cero, ley de \autor{Walras}, agregaciones de \autor{Engel} y \autor{Cournot}) son restricciones contrastables. Su agregación en una demanda de mercado exige condiciones muy restrictivas: la forma polar de \autor{Gorman} y, en el caso extremo, el efecto renta nulo (\ref{sec:analisis-teoria-neoclasica}).
+  \item Hemos analizado cómo responde la demanda a la renta y a los precios, y la descomposición de \autor{Slutsky} en efecto sustitución y efecto renta, que explica la clasificación de los bienes y la diferencia entre relaciones brutas y netas (\ref{sec:analisis-teoria-neoclasica-demanda}).
+  \item Y hemos visto 3 desarrollos que acercan la teoría a lo observable: la preferencia revelada, la producción doméstica y los precios hedónicos (\ref{sec:otros-desarrollos-teoria}).
   \end{itemize}
 
 \item \textbf{\emph{Valoración}}:
@@ -1204,7 +1204,7 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
   \item Desde el punto de vista lógico, es una de las construcciones más acabadas de la teoría económica: de las preferencias se llega a la demanda, y por la preferencia revelada (teorema de \autor{Houthakker}) y la integrabilidad \vertema{3.A.9} puede recorrerse el camino inverso, de la conducta observada a unas preferencias que la generan.
   \item Su estatus empírico es más discutible:
     \begin{itemize}
-    \item las restricciones de homogeneidad y simetría se han rechazado con frecuencia al estimar sistemas de demanda con datos agregados, en parte por los problemas de agregación (I.3) \parencite{DeatonMuellbauer1980AIDS};
+    \item las restricciones de homogeneidad y simetría se han rechazado con frecuencia al estimar sistemas de demanda con datos agregados, en parte por los problemas de agregación (\ref{sec:solucion-problema-maximizacion}) \parencite{DeatonMuellbauer1980AIDS};
     \item \textcite{Friedman1953Methodology} defendió que una teoría se juzga por sus predicciones y no por el realismo de sus supuestos: basta con que los consumidores se comporten \emph{como si} maximizaran su utilidad;
     \item la \emph{economía conductual} ha documentado desviaciones sistemáticas de los axiomas: la \emph{racionalidad limitada} de \textcite{Simon1955Behavioral}, la \emph{teoría de las perspectivas} de \textcite{KahnemanTversky1979Prospect}, con la aversión a las pérdidas y la dependencia del marco, y el \emph{efecto dotación} y la \emph{contabilidad mental} de \textcite{Thaler1980Positive,Thaler1985Mental};\footnote{\autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía del comportamiento» \parencite{Nobel2017Thaler}. Sus aportaciones a la teoría del consumidor se resumen en el anexo~\ref{anexo:thaler}.}
     \item y \textcite{Sen1977Rational} criticó que reducir la conducta a una sola ordenación de preferencias, que sirve a la vez para describir la elección, el interés propio y el bienestar, convierte al individuo en un «tonto racional».
@@ -1230,7 +1230,7 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
 \section{Anexo: representación gráfica en tres dimensiones del problema de maximización de la utilidad}\label{anexo:r3}
 
 \begin{notaopositor}
-Este anexo no se canta: complementa el apartado~I.2 y el gráfico de la superficie de utilidad (gráfico~\ref{fig:superficie-utilidad}). Sirve para explicar en la pizarra, si lo pide el tribunal, por qué la restricción presupuestaria se satura y qué significa $\lambda$.
+Este anexo no se canta: complementa el apartado~\ref{sec:problema-maximizacion-utilidad} y el gráfico de la superficie de utilidad (gráfico~\ref{fig:superficie-utilidad}). Sirve para explicar en la pizarra, si lo pide el tribunal, por qué la restricción presupuestaria se satura y qué significa $\lambda$.
 \end{notaopositor}
 
 \begin{itemize}
@@ -1262,7 +1262,7 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
 \subsection{Homogeneidad de grado cero: restricción en elasticidades (teorema de \autor{Euler})}\label{der:homogeneidad}
 
 \begin{itemize}
-\item Por la homogeneidad de grado cero (apartado~I.2), $x_i(\kappa\vect{p},\kappa\overline{W})=x_i(\vect{p},\overline{W})$ para todo $\kappa>0$. Derivando respecto a $\kappa$ y evaluando en $\kappa=1$ (teorema de \autor{Euler} para funciones homogéneas de grado cero):
+\item Por la homogeneidad de grado cero (apartado~\ref{sec:problema-maximizacion-utilidad}), $x_i(\kappa\vect{p},\kappa\overline{W})=x_i(\vect{p},\overline{W})$ para todo $\kappa>0$. Derivando respecto a $\kappa$ y evaluando en $\kappa=1$ (teorema de \autor{Euler} para funciones homogéneas de grado cero):
   \begin{equation*}
   \sum_{j=1}^{n}p_j\frac{\partial x_i}{\partial p_j}+\overline{W}\frac{\partial x_i}{\partial\overline{W}}=0.
   \end{equation*}
@@ -1430,7 +1430,7 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
 \section{Anexo: formas comunes de la función de utilidad}\label{anexo:formas}
 
 \begin{itemize}
-\item \concepto{Forma polar de \autor{Gorman}} (FIU $V=a(\vect{p})+b(\vect{p})\,\overline{W}$; apartado~I.3): curvas de \autor{Engel} rectas. Incluye:
+\item \concepto{Forma polar de \autor{Gorman}} (FIU $V=a(\vect{p})+b(\vect{p})\,\overline{W}$; apartado~\ref{sec:solucion-problema-maximizacion}): curvas de \autor{Engel} rectas. Incluye:
   \begin{itemize}
   \item \concepto{Cuasilineales}: $U=\phi(x)+b\,y$, con $b>0$, $\phi'>0$ y $\phi''<0$. Las 2 primeras condiciones hacen las preferencias monótonas y la tercera, las curvas de indiferencia convexas. La RMS, $\phi'(x)/b$, depende solo de $x$: las curvas de indiferencia son traslaciones verticales unas de otras y, en solución interior, la demanda de $x$ depende solo de los precios relativos, no de la renta (\emph{efecto renta nulo}).
   \item \concepto{Homotéticas}: $U=f\big(g(\vect{x})\big)$ con $g$ homogénea de grado uno y $f$ creciente. La RMS es constante a lo largo de cada rayo desde el origen: las curvas de indiferencia son expansiones radiales unas de otras (no traslaciones), las curvas de \autor{Engel} son rectas que parten del origen y las proporciones del gasto no dependen de la renta. Las \emph{homogéneas} son un caso particular, y dentro de ellas la familia \concepto{CES} de la ecuación~\eqref{eq:ces}:
@@ -1508,7 +1508,7 @@ Este anexo no se canta: es una aplicación empírica de la teoría de la demanda
     \begin{equation*}
     s_i=\alpha_i+\sum_j\gamma_{ij}\ln p_j+\beta_i\ln\frac{\overline{W}}{P},
     \end{equation*}
-    donde $P$ es un índice de precios. Es flexible, se estima casi por mínimos cuadrados (con el índice de \autor{Stone}, de forma lineal), la homogeneidad ($\sum_j\gamma_{ij}=0$) y la simetría ($\gamma_{ij}=\gamma_{ji}$) son restricciones lineales fáciles de contrastar y, por ser PIGLOG, se agrega de forma exacta \parencites{Muellbauer1975Aggregation,Muellbauer1976Community} (apartado~I.3).\footnote{Angus \autor{Deaton} recibió el Premio Nobel de Economía en 2015 «por su análisis del consumo, la pobreza y el bienestar» \parencite{Nobel2015Deaton}.}
+    donde $P$ es un índice de precios. Es flexible, se estima casi por mínimos cuadrados (con el índice de \autor{Stone}, de forma lineal), la homogeneidad ($\sum_j\gamma_{ij}=0$) y la simetría ($\gamma_{ij}=\gamma_{ji}$) son restricciones lineales fáciles de contrastar y, por ser PIGLOG, se agrega de forma exacta \parencites{Muellbauer1975Aggregation,Muellbauer1976Community} (apartado~\ref{sec:solucion-problema-maximizacion}).\footnote{Angus \autor{Deaton} recibió el Premio Nobel de Economía en 2015 «por su análisis del consumo, la pobreza y el bienestar» \parencite{Nobel2015Deaton}.}
   \end{itemize}
 \item \emph{Elaboración de un sistema completo}. Como el consumidor decide a la vez cuánto comprar de todos los bienes, las demandas se estiman conjuntamente, con todas las partidas de gasto, de modo que se cumpla la agregación. Hay que elegir el nivel de agregación de los bienes: con muchas partidas se captan mejor las relaciones de sustitución, pero la estimación es más difícil; con pocas, al revés. La agrupación se justifica con la \emph{separabilidad débil} de las preferencias, que permite una presupuestación en 2 etapas: primero se reparte el gasto entre grupos y luego, dentro de cada grupo \parencite[cap.~5]{DeatonMuellbauer1980Economics}.
 \item \emph{Muestra de datos}. Hacen falta microdatos de gasto por partidas, renta y precios de una muestra representativa de hogares. En España, la Encuesta de Presupuestos Familiares del INE, anual desde 2006 y con hogares que colaboran 2 años seguidos, lo que da un panel corto; sustituyó a la Encuesta Continua de Presupuestos Familiares \parencites{INE2008EPFCaracteristicas}{INEEPFMetodologia}. Como en un corte transversal los precios apenas varían, para estimar las elasticidades-precio se combinan varios años o regiones.
@@ -1568,7 +1568,7 @@ Este anexo no se canta. En la Introducción basta una frase: con utilidad cardin
 \subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item La demanda de cada bien depende solo de su propio precio. No hay efecto renta, porque todo cambio de renta lo absorbe el dinero, ni efectos precio cruzados. Es el caso de las preferencias \emph{cuasilineales} en el dinero (apartado~I.3): por eso el excedente del consumidor es en él una medida exacta del bienestar.
+\item La demanda de cada bien depende solo de su propio precio. No hay efecto renta, porque todo cambio de renta lo absorbe el dinero, ni efectos precio cruzados. Es el caso de las preferencias \emph{cuasilineales} en el dinero (apartado~\ref{sec:solucion-problema-maximizacion}): por eso el excedente del consumidor es en él una medida exacta del bienestar.
 \end{itemize}
 
 \paragraph{c) Valoración}
@@ -1587,7 +1587,7 @@ Este anexo no se canta. En la Introducción basta una frase: con utilidad cardin
 \section{Anexo: la teoría de la demanda de características de \autor{Lancaster}}\label{anexo:lancaster}
 
 \begin{notaopositor}
-Este anexo no se canta: en el cuerpo, \autor{Lancaster} aparece como la otra «tecnología del consumo» (III.2) y como fundamento de los precios hedónicos (III.3). Su papel en la diferenciación de productos, en \vertema{3.A.18}.
+Este anexo no se canta: en el cuerpo, \autor{Lancaster} aparece como la otra «tecnología del consumo» (\ref{sec:produccion-domestica}) y como fundamento de los precios hedónicos (\ref{sec:precios-hedonicos}). Su papel en la diferenciación de productos, en \vertema{3.A.18}.
 \end{notaopositor}
 
 \paragraph{a) Idea}
@@ -1634,7 +1634,7 @@ Este anexo no se canta: en el cuerpo, \autor{Lancaster} aparece como la otra «t
 \paragraph{c) Extensiones}
 
 \begin{itemize}
-\item el \emph{método de los precios hedónicos}, que estima cuánto se paga por cada característica de un bien (apartado~III.3);
+\item el \emph{método de los precios hedónicos}, que estima cuánto se paga por cada característica de un bien (apartado~\ref{sec:precios-hedonicos});
 \item la \emph{elección de cartera}: un activo financiero puede verse como un conjunto de 2 características, la rentabilidad esperada y el riesgo, y el modelo de media y varianza de \textcite{Markowitz1952Portfolio} sitúa al inversor en la tangencia de su curva de indiferencia con la frontera eficiente de carteras \vertema{3.A.10}.
 \end{itemize}
 
@@ -1661,7 +1661,7 @@ Este anexo no se canta: amplía la valoración de la Conclusión.
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item Richard \autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía del comportamiento» \parencite{Nobel2017Thaler}. Sus aportaciones a la teoría del consumidor cuestionan los axiomas sobre las preferencias (apartado~I.1).
+\item Richard \autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía del comportamiento» \parencite{Nobel2017Thaler}. Sus aportaciones a la teoría del consumidor cuestionan los axiomas sobre las preferencias (apartado~\ref{sec:ingredientes}).
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -1705,7 +1705,7 @@ Este anexo no se canta: amplía la valoración de la Conclusión.
 Preguntas tipo test: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
 \end{anotaciones}
 
-\subsection{Bienes, males y bienes neutrales}
+\subsection{Bienes, males y bienes neutrales}\label{anexo:bienes-males-bienes}
 
 Se mira el signo de las utilidades marginales:
 \begin{table}[H]
@@ -1727,11 +1727,11 @@ $\partial U/\partial x=0$ & Neutral & Rectas verticales u horizontales \\
 \item El signo de las utilidades marginales no dice nada sobre la \emph{curvatura} de las curvas de indiferencia.
 \end{itemize}
 
-\subsection{Pendiente de la curva de indiferencia}
+\subsection{Pendiente de la curva de indiferencia}\label{anexo:pendiente-curva-indiferencia}
 
 Con signo, $m(x,y)\equiv\left.\dfrac{dy}{dx}\right|_{U}=-\dfrac{\partial U/\partial x}{\partial U/\partial y}$. En el resto del tema se usa la RMS en valor absoluto, $\mathrm{RMS}_{xy}=-m$ (ecuación~\eqref{eq:rms}).
 
-\subsection{Curvatura de las curvas de indiferencia}
+\subsection{Curvatura de las curvas de indiferencia}\label{anexo:curvatura-curvas-indiferencia}
 
 La curva es convexa si su pendiente aumenta a lo largo de ella, $\left.\dfrac{d^2y}{dx^2}\right|_{U}=\dfrac{\partial m}{\partial x}+\dfrac{\partial m}{\partial y}\cdot m>0$; lineal si es nula, y cóncava si es negativa. Con 2 bienes ($m<0$), las condiciones de la tabla~\ref{tab:curvatura} la garantizan, pero \emph{no son necesarias}: lo que decide es la derivada total.
 \begin{table}[H]

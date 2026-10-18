@@ -54,11 +54,11 @@
 
 \item \textbf{\emph{Estructura}}: la exposición se organiza en 3 partes, de lo general a lo particular y del tiempo corto al largo.
   \begin{itemize}
-  \item \emph{I. La tecnología}: definiremos el conjunto de posibilidades de producción y sus axiomas (I.1), obtendremos de él la función de producción, sus propiedades y su curvatura (I.2) y estudiaremos sus curvas de nivel, las isocuantas, con la relación marginal de sustitución técnica, la elasticidad de sustitución y las formas funcionales Cobb-Douglas, CES y de \autor{Leontief} (I.3).
-  \item \emph{II. Las leyes temporales de la producción}: siguiendo los plazos de \autor{Marshall}, caracterizaremos la tecnología a corto plazo, con algún factor fijo: productividades y etapas (II.1); a largo plazo, con todos los factores variables: rendimientos a escala globales y locales (II.2), y a muy largo plazo, cuando cambia la propia tecnología: el progreso técnico y sus tipos neutrales (II.3).
-  \item \emph{III. La empresa multiproducto}: la asignación eficiente de unos factores dados entre varios productos, con la caja de \autor{Edgeworth}, la curva de contrato y la frontera de posibilidades de producción (III.1), y la producción conjunta de varios bienes por una empresa, con su función de transformación (III.2).
+  \item \emph{I. La tecnología}: definiremos el conjunto de posibilidades de producción y sus axiomas (\ref{sec:conjunto-tecnologico-conjunto}), obtendremos de él la función de producción, sus propiedades y su curvatura (\ref{sec:funcion-produccion}) y estudiaremos sus curvas de nivel, las isocuantas, con la relación marginal de sustitución técnica, la elasticidad de sustitución y las formas funcionales Cobb-Douglas, CES y de \autor{Leontief} (\ref{sec:curvas-isocuantas}).
+  \item \emph{II. Las leyes temporales de la producción}: siguiendo los plazos de \autor{Marshall}, caracterizaremos la tecnología a corto plazo, con algún factor fijo: productividades y etapas (\ref{sec:corto-plazo-productividad}); a largo plazo, con todos los factores variables: rendimientos a escala globales y locales (\ref{sec:largo-plazo-rendimientos}), y a muy largo plazo, cuando cambia la propia tecnología: el progreso técnico y sus tipos neutrales (\ref{sec:muy-largo-plazo}).
+  \item \emph{III. La empresa multiproducto}: la asignación eficiente de unos factores dados entre varios productos, con la caja de \autor{Edgeworth}, la curva de contrato y la frontera de posibilidades de producción (\ref{sec:caja-edgeworth-curva}), y la producción conjunta de varios bienes por una empresa, con su función de transformación (\ref{sec:empresa-multiproducto-produccion}).
   \end{itemize}
-  El orden no es el del título oficial, y es deliberado: el corto y el largo plazo, que el título enuncia primero, son el hilo de toda la exposición, y la elasticidad de sustitución se estudia donde se definen las isocuantas, porque mide su curvatura. Primero, qué es posible (I); después, cómo varía lo posible según el plazo (II), y, por último, cómo se generaliza a varios productos (III).
+  El orden no es el del título oficial, y es deliberado: el corto y el largo plazo, que el título enuncia primero, son el hilo de toda la exposición, y la elasticidad de sustitución se estudia donde se definen las isocuantas, porque mide su curvatura. Primero, qué es posible (\ref{sec:tecnologia-definicion-propiedades}); después, cómo varía lo posible según el plazo (\ref{sec:analisis-funcion-produccion}), y, por último, cómo se generaliza a varios productos (\ref{sec:empresa-multiproducto-curva}).
 \end{itemize}
 
 \begin{esquema}
@@ -79,12 +79,12 @@ Conclusión
 \end{esquema}
 
 \begin{notaopositor}
-La exposición va de la tecnología en abstracto (I) a cómo responde la producción en cada plazo (II) y a la producción de varios bienes (III). Reparto orientativo del cante (introducción, \tiempo{2,5}; conclusión, \tiempo{1,5}): I, \tiempo{10} (I.1, \tiempo{3}; I.2, \tiempo{2,5}; I.3, \tiempo{4,5}); II, \tiempo{11,5} (II.1, \tiempo{4}; II.2, \tiempo{5}; II.3, \tiempo{2,5}); III, \tiempo{4,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2}). La superficie de producción con los 3 plazos (gráfico~\ref{fig:plazos-3d}) es el gráfico que une los bloques: sus curvas de nivel son las isocuantas y sus cortes, los plazos. Las derivaciones, el problema del productor, otras formas funcionales, la elasticidad de sustitución con más de 2 factores y la controversia del capital están en los anexos, para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar.
+La exposición va de la tecnología en abstracto (\ref{sec:tecnologia-definicion-propiedades}) a cómo responde la producción en cada plazo (\ref{sec:analisis-funcion-produccion}) y a la producción de varios bienes (\ref{sec:empresa-multiproducto-curva}). Reparto orientativo del cante (introducción, \tiempo{2,5}; conclusión, \tiempo{1,5}): I, \tiempo{10} (I.1, \tiempo{3}; I.2, \tiempo{2,5}; I.3, \tiempo{4,5}); II, \tiempo{11,5} (II.1, \tiempo{4}; II.2, \tiempo{5}; II.3, \tiempo{2,5}); III, \tiempo{4,5} (III.1, \tiempo{2,5}; III.2, \tiempo{2}). La superficie de producción con los 3 plazos (gráfico~\ref{fig:plazos-3d}) es el gráfico que une los bloques: sus curvas de nivel son las isocuantas y sus cortes, los plazos. Las derivaciones, el problema del productor, otras formas funcionales, la elasticidad de sustitución con más de 2 factores y la controversia del capital están en los anexos, para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar.
 \end{notaopositor}
 
 
 % ==========================================================================
-\section{La tecnología:\newline definición y propiedades de la función de producción}
+\section{La tecnología:\newline definición y propiedades de la función de producción}\label{sec:tecnologia-definicion-propiedades}
 \minutos{10}
 
 \begin{itemize}
@@ -121,7 +121,7 @@ En el cante: el conjunto de posibilidades de producción en el plano de los \emp
 \end{anotaciones}
 
 % --------------------------------------------------------------------------
-\subsection{Conjunto tecnológico: el conjunto de posibilidades de producción}
+\subsection{Conjunto tecnológico: el conjunto de posibilidades de producción}\label{sec:conjunto-tecnologico-conjunto}
 
 \paragraph{Definición}
 
@@ -137,10 +137,10 @@ En el cante: el conjunto de posibilidades de producción en el plano de los \emp
   \end{itemize}
 \item Dos casos particulares ordenan la exposición:
   \begin{itemize}
-  \item \emph{un solo producto y varios factores}: la frontera de $\mathcal{Y}$ puede describirse con una \concepto{función de producción} $q=F(\vect{z})$, donde $q$ es el producto y $\vect{z}=(z_L,z_K)$, los factores (apartado~I.2);
-  \item \emph{varios productos}: la frontera se describe con una \concepto{función de transformación}, y se estudia en el apartado~III.
+  \item \emph{un solo producto y varios factores}: la frontera de $\mathcal{Y}$ puede describirse con una \concepto{función de producción} $q=F(\vect{z})$, donde $q$ es el producto y $\vect{z}=(z_L,z_K)$, los factores (apartado~\ref{sec:funcion-produccion});
+  \item \emph{varios productos}: la frontera se describe con una \concepto{función de transformación}, y se estudia en el apartado~\ref{sec:empresa-multiproducto-curva}.
   \end{itemize}
-\item Para cada nivel de producción $q$, el \concepto{conjunto de requerimientos de factores}, $V(q)=\{\vect{z}\geq\vect{0}:\ (q,-\vect{z})\in\mathcal{Y}\}$, reúne las combinaciones de factores que permiten obtener al menos $q$; su frontera es la isocuanta (apartado~I.3) \parencite[cap.~1]{Varian1992Microeconomic}.
+\item Para cada nivel de producción $q$, el \concepto{conjunto de requerimientos de factores}, $V(q)=\{\vect{z}\geq\vect{0}:\ (q,-\vect{z})\in\mathcal{Y}\}$, reúne las combinaciones de factores que permiten obtener al menos $q$; su frontera es la isocuanta (apartado~\ref{sec:curvas-isocuantas}) \parencite[cap.~1]{Varian1992Microeconomic}.
 \end{itemize}
 
 \paragraph{Propiedades (axiomas)}
@@ -153,8 +153,8 @@ En el cante: el conjunto de posibilidades de producción en el plano de los \emp
   \item \emph{Eliminación gratuita}: si $\vect{y}\in\mathcal{Y}$ e $\vect{y}'\leq\vect{y}$, entonces $\vect{y}'\in\mathcal{Y}$. Si un plan es posible, también lo es cualquier otro que emplee iguales o más factores y obtenga iguales o menos productos: se puede desperdiciar capacidad productiva sin coste. Implica que la frontera del conjunto es no creciente.
   \item \emph{Imposibilidad de producción gratuita}: $\mathcal{Y}\cap\mathbb{R}^S_+\subseteq\{\vect{0}\}$. No se obtiene ningún producto sin emplear algún factor.
   \end{enumerate}
-\item A ellos se suele añadir la \emph{posibilidad de inacción}, $\vect{0}\in\mathcal{Y}$: la empresa puede no producir.\footnote{Si hay costes hundidos (decisiones de producción ya tomadas o contratos firmados), la inacción no es posible: es una propiedad del largo plazo. El conjunto de corto plazo, con un factor fijo, no la cumple (apartado~II.1).} Con ella y la imposibilidad de producción gratuita, $\mathcal{Y}\cap\mathbb{R}^S_+=\{\vect{0}\}$: la frontera pasa por el origen.
-\item Estos axiomas bastan para que exista la función de producción y tenga sus propiedades generales (apartado~I.2). Lo que decide su curvatura, como la convexidad del conjunto, son supuestos adicionales que se añaden después.\footnote{Pueden distinguirse así 2 categorías de axiomas. Los \emph{necesarios} (no vacío, cerrado, eliminación gratuita e imposibilidad de producción gratuita) garantizan que la tecnología pueda representarse con una función de producción. Los \emph{deseables} (posibilidad de inacción y convexidad) dan una tecnología de buen comportamiento y, con ella, una función neoclásica de buen comportamiento; son los que se suponen para el equilibrio competitivo. La convexidad se incluye por comodidad analítica: con la inacción implica la divisibilidad de escala y rendimientos no crecientes (los procesos promediados rinden al menos tanto como los extremos), y con un solo producto equivale a que la función de producción sea cóncava, la condición que hace falta para maximizar el beneficio (apartado~I.2).}
+\item A ellos se suele añadir la \emph{posibilidad de inacción}, $\vect{0}\in\mathcal{Y}$: la empresa puede no producir.\footnote{Si hay costes hundidos (decisiones de producción ya tomadas o contratos firmados), la inacción no es posible: es una propiedad del largo plazo. El conjunto de corto plazo, con un factor fijo, no la cumple (apartado~\ref{sec:corto-plazo-productividad}).} Con ella y la imposibilidad de producción gratuita, $\mathcal{Y}\cap\mathbb{R}^S_+=\{\vect{0}\}$: la frontera pasa por el origen.
+\item Estos axiomas bastan para que exista la función de producción y tenga sus propiedades generales (apartado~\ref{sec:funcion-produccion}). Lo que decide su curvatura, como la convexidad del conjunto, son supuestos adicionales que se añaden después.\footnote{Pueden distinguirse así 2 categorías de axiomas. Los \emph{necesarios} (no vacío, cerrado, eliminación gratuita e imposibilidad de producción gratuita) garantizan que la tecnología pueda representarse con una función de producción. Los \emph{deseables} (posibilidad de inacción y convexidad) dan una tecnología de buen comportamiento y, con ella, una función neoclásica de buen comportamiento; son los que se suponen para el equilibrio competitivo. La convexidad se incluye por comodidad analítica: con la inacción implica la divisibilidad de escala y rendimientos no crecientes (los procesos promediados rinden al menos tanto como los extremos), y con un solo producto equivale a que la función de producción sea cóncava, la condición que hace falta para maximizar el beneficio (apartado~\ref{sec:funcion-produccion}).}
 \end{itemize}
 
 \begin{figure}[H]
@@ -173,11 +173,11 @@ En el cante: el conjunto de posibilidades de producción en el plano de los \emp
   \item El axioma 4 (\emph{imposibilidad de producción gratuita}) impide producir sin factores: ningún punto del primer cuadrante distinto del origen pertenece a $\mathcal{Y}$. Con la \emph{posibilidad de inacción}, la frontera pasa por el origen.
   \end{itemize}
 \item La frontera de $\mathcal{Y}$ reúne los planes \concepto{técnicamente eficientes}: aquellos en los que no es posible obtener más de un producto sin emplear más de algún factor u obtener menos de otro producto.
-\item Si la empresa dispone de una dotación $\overline{y}_1$ del bien 1 como factor, los planes que usan más de esa cantidad (a la izquierda de la vertical en $-\overline{y}_1$) no son factibles: el conjunto factible es $\mathcal{Y}\cap\{\vect{y}:\ y_1\geq-\overline{y}_1\}$. Del mismo modo, fijar un factor ($z_K=\overline{z}_K$) restringe el conjunto de producción al de corto plazo (apartado~II.1).
+\item Si la empresa dispone de una dotación $\overline{y}_1$ del bien 1 como factor, los planes que usan más de esa cantidad (a la izquierda de la vertical en $-\overline{y}_1$) no son factibles: el conjunto factible es $\mathcal{Y}\cap\{\vect{y}:\ y_1\geq-\overline{y}_1\}$. Del mismo modo, fijar un factor ($z_K=\overline{z}_K$) restringe el conjunto de producción al de corto plazo (apartado~\ref{sec:corto-plazo-productividad}).
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{La función de producción}
+\subsection{La función de producción}\label{sec:funcion-produccion}
 
 \paragraph{Definición}
 
@@ -216,7 +216,7 @@ En el cante: el conjunto de posibilidades de producción en el plano de los \emp
 \paragraph{Curvatura y propiedades de escala}
 
 \begin{itemize}
-\item Los axiomas básicos no dicen nada de la \concepto{curvatura} de $F$. Para decir algo hay que añadir al conjunto $\mathcal{Y}$ \concepto{propiedades de escala}, que deciden la forma de la frontera y los rendimientos a escala \emph{globales} (apartado~II.2) \parencite[§5.B]{MasColellWhinstonGreen1995}:
+\item Los axiomas básicos no dicen nada de la \concepto{curvatura} de $F$. Para decir algo hay que añadir al conjunto $\mathcal{Y}$ \concepto{propiedades de escala}, que deciden la forma de la frontera y los rendimientos a escala \emph{globales} (apartado~\ref{sec:largo-plazo-rendimientos}) \parencite[§5.B]{MasColellWhinstonGreen1995}:
   \begin{itemize}
   \item \emph{Divisibilidad} (rendimientos no crecientes): si $\vect{y}\in\mathcal{Y}$, entonces $\lambda\vect{y}\in\mathcal{Y}$ para todo $\lambda\in[0,1]$. Todo plan puede reducirse de escala.
   \item \emph{Aditividad} (libre entrada): si $\vect{y},\vect{y}'\in\mathcal{Y}$, entonces $\vect{y}+\vect{y}'\in\mathcal{Y}$. Dos plantas pueden funcionar a la vez sin estorbarse; en particular, todo plan puede replicarse ($\lambda\vect{y}\in\mathcal{Y}$ para todo entero $\lambda\geq 1$): rendimientos no decrecientes.
@@ -290,7 +290,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \end{anotaciones}
 
 % --------------------------------------------------------------------------
-\subsection{Las curvas isocuantas}
+\subsection{Las curvas isocuantas}\label{sec:curvas-isocuantas}
 
 \paragraph{Definición}
 
@@ -315,7 +315,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
   \item son \emph{convexas} si $F$ es cuasicóncava (estrictamente convexas si es estrictamente cuasicóncava);
   \item ordenan los niveles de producción de forma \emph{cardinal}, no ordinal como las curvas de indiferencia.
   \end{enumerate}
-  En el apartado~II.1 se usa una función que relaja la eliminación gratuita, y entonces las isocuantas tienen tramos crecientes: no es una contradicción, sino una forma de delimitar dónde es eficiente producir.
+  En el apartado~\ref{sec:corto-plazo-productividad} se usa una función que relaja la eliminación gratuita, y entonces las isocuantas tienen tramos crecientes: no es una contradicción, sino una forma de delimitar dónde es eficiente producir.
 \item La pendiente de la isocuanta se obtiene diferenciando $F$ con $dq=0$: $dq=\mathrm{PMg}_L\,dz_L+\mathrm{PMg}_K\,dz_K=0$. Su valor absoluto es la \concepto{relación marginal de sustitución técnica}\footnote{La RMST se define en valor absoluto, con el signo menos, para que sea positiva: por la eliminación gratuita la función de producción es no decreciente en los factores, y la pendiente de la isocuanta es negativa (o nula). Algunos manuales la definen como la propia pendiente, con signo negativo; el contenido es el mismo.} (gráfico~\ref{fig:isocuantas-rmst}):
   \begin{equation}
   \mathrm{RMST}_{LK}\equiv-\left.\frac{dz_K}{dz_L}\right|_{q=\overline{q}}=\frac{\mathrm{PMg}_L}{\mathrm{PMg}_K}, \label{eq:rmst}
@@ -325,7 +325,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
   \item Con isocuantas estrictamente convexas, la RMST \emph{disminuye} a lo largo de la isocuanta conforme aumenta $z_L$: cuanto más trabajo y menos capital se usa, menos capital libera una unidad adicional de trabajo.
   \item La RMST mide la sustituibilidad de los factores, pero depende de sus unidades de medida.
   \end{itemize}
-\item Las curvas que unen los puntos de distintas isocuantas con la misma RMST se llaman \concepto{isoclinas}. Pueden tener cualquier forma: si la función es homotética, son rectas que pasan por el origen (apartado~II.2), como la curva de renta-consumo con preferencias homotéticas \vertema{3.A.8}; las líneas de contorno que delimitan la región económica son isoclinas (apartado~II.1), y, con precios de los factores dados, la senda de expansión de la empresa también lo es \vertema{3.A.12}.
+\item Las curvas que unen los puntos de distintas isocuantas con la misma RMST se llaman \concepto{isoclinas}. Pueden tener cualquier forma: si la función es homotética, son rectas que pasan por el origen (apartado~\ref{sec:largo-plazo-rendimientos}), como la curva de renta-consumo con preferencias homotéticas \vertema{3.A.8}; las líneas de contorno que delimitan la región económica son isoclinas (apartado~\ref{sec:corto-plazo-productividad}), y, con precios de los factores dados, la senda de expansión de la empresa también lo es \vertema{3.A.12}.
 \end{itemize}
 
 \begin{figure}[H]
@@ -351,7 +351,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \item La elasticidad de sustitución ordena las \concepto{formas funcionales} más usadas: la Cobb-Douglas ($\sigma=1$), la CES ($\sigma$ constante cualquiera) y, en sus extremos, la de \autor{Leontief} ($\sigma=0$) y la lineal ($\sigma=\infty$). Cada una se presenta como un modelo.
 \end{itemize}
 
-\subsubsection{La función Cobb-Douglas}
+\subsubsection{La función Cobb-Douglas}\label{sec:funcion-cobb-douglas}
 
 \paragraph{a) Idea}
 
@@ -376,9 +376,9 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \begin{itemize}
 \item Sus propiedades resumen lo visto hasta ahora (gráfico~\ref{fig:superficie-produccion}):
   \begin{itemize}
-  \item \emph{Productividades}: $\mathrm{PMg}_K=\alpha\,q/z_K$ y $\mathrm{PMg}_L=\beta\,q/z_L$, es decir, cada productividad marginal es el exponente por la productividad media. Son positivas y, si $\alpha,\beta<1$, decrecientes; se cumplen las condiciones de \autor{Inada}~\eqref{eq:inada}, de modo que toda la función está en la región económica de producción (apartado~II.1). Las elasticidades-producto son constantes e iguales a los exponentes: $\varepsilon_{q,z_K}=\alpha$, $\varepsilon_{q,z_L}=\beta$.
+  \item \emph{Productividades}: $\mathrm{PMg}_K=\alpha\,q/z_K$ y $\mathrm{PMg}_L=\beta\,q/z_L$, es decir, cada productividad marginal es el exponente por la productividad media. Son positivas y, si $\alpha,\beta<1$, decrecientes; se cumplen las condiciones de \autor{Inada}~\eqref{eq:inada}, de modo que toda la función está en la región económica de producción (apartado~\ref{sec:corto-plazo-productividad}). Las elasticidades-producto son constantes e iguales a los exponentes: $\varepsilon_{q,z_K}=\alpha$, $\varepsilon_{q,z_L}=\beta$.
   \item \emph{Sustitución}: $\mathrm{RMST}_{LK}=\dfrac{\beta}{\alpha}\cdot\dfrac{z_K}{z_L}$, que depende solo de la proporción de factores y decrece a lo largo de la isocuanta, convexa y asintótica a los ejes. Tomando logaritmos, $\ln(z_K/z_L)=\ln \mathrm{RMST}_{LK}+\ln(\alpha/\beta)$, luego $\sigma=1$ en todo punto.
-  \item \emph{Escala}: $F(\lambda\vect{z})=\lambda^{\alpha+\beta}F(\vect{z})$. Es homogénea de grado $\alpha+\beta$, con rendimientos crecientes, constantes o decrecientes según $\alpha+\beta$ sea mayor, igual o menor que 1 (apartado~II.2).
+  \item \emph{Escala}: $F(\lambda\vect{z})=\lambda^{\alpha+\beta}F(\vect{z})$. Es homogénea de grado $\alpha+\beta$, con rendimientos crecientes, constantes o decrecientes según $\alpha+\beta$ sea mayor, igual o menor que 1 (apartado~\ref{sec:largo-plazo-rendimientos}).
   \end{itemize}
 \end{itemize}
 
@@ -393,7 +393,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 
 \begin{itemize}
 \item \emph{Distribución}: con rendimientos constantes ($\beta=1-\alpha$) y factores pagados según su productividad marginal, el teorema de \autor{Euler} da $q=\mathrm{PMg}_K\,z_K+\mathrm{PMg}_L\,z_L$: las remuneraciones agotan el producto y las participaciones en la renta son constantes, $\alpha$ para el capital y $1-\alpha$ para el trabajo, sea cual sea la proporción de factores. Por eso, en macroeconomía, $Y=AK^{\alpha}L^{1-\alpha}$, con $\alpha$ igual a la participación del capital en la renta \vertema{3.A.43} \vertema{3.A.45}.
-\item \emph{Progreso técnico}: los progresos técnicos neutrales de \autor{Hicks}, \autor{Harrod} y \autor{Solow} coinciden (apartado~II.3). Es la tecnología de referencia de los modelos de crecimiento \vertema{3.A.43} y de ciclo real \vertema{3.A.42}.
+\item \emph{Progreso técnico}: los progresos técnicos neutrales de \autor{Hicks}, \autor{Harrod} y \autor{Solow} coinciden (apartado~\ref{sec:muy-largo-plazo}). Es la tecnología de referencia de los modelos de crecimiento \vertema{3.A.43} y de ciclo real \vertema{3.A.42}.
 \end{itemize}
 
 \paragraph{c) Evidencia empírica}
@@ -408,7 +408,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \item Su sencillez tiene un precio: impone $\sigma=1$ y, con ella, participaciones de los factores constantes, que no responden a sus precios relativos. Para que la elasticidad de sustitución sea un parámetro que se estima, y no un supuesto, hace falta una forma más general: la CES.
 \end{itemize}
 
-\subsubsection{La función de elasticidad de sustitución constante (CES)}
+\subsubsection{La función de elasticidad de sustitución constante (CES)}\label{sec:funcion-elasticidad-sustitucion}
 
 \paragraph{a) Idea}
 
@@ -435,7 +435,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
   \begin{itemize}
   \item $\sigma\to\infty$ ($\rho\to 1$): función \emph{lineal} o de \emph{sustitutivos perfectos}, $q=A\,(a_Kz_K+a_Lz_L)^{\nu}$: isocuantas rectas y RMST constante;
   \item $\sigma\to 1$ ($\rho\to 0$): \emph{Cobb-Douglas}, $q=A\,z_K^{\nu a_K}z_L^{\nu a_L}$;
-  \item $\sigma\to 0$ ($\rho\to-\infty$): \emph{coeficientes fijos} o de \autor{Leontief}, $q=A\min\{z_K,\,z_L\}^{\nu}$, que con los factores medidos en unidades $z_K/a$ y $z_L/b$ es $q=\min\{z_K/a;\,z_L/b\}$ (apartado~I.3.3).
+  \item $\sigma\to 0$ ($\rho\to-\infty$): \emph{coeficientes fijos} o de \autor{Leontief}, $q=A\min\{z_K,\,z_L\}^{\nu}$, que con los factores medidos en unidades $z_K/a$ y $z_L/b$ es $q=\min\{z_K/a;\,z_L/b\}$ (apartado~\ref{sec:funcion-coeficientes-fijos}).
   \end{itemize}
 \end{itemize}
 
@@ -469,7 +469,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \item La CES deja estimar $\sigma$, pero la supone igual en todos los puntos y entre todos los pares de factores. Las formas flexibles, como la translog, no imponen esa restricción (anexo~\ref{anexo:formas}). En el extremo opuesto a la sustitución perfecta está la ausencia de sustitución: la función de \autor{Leontief}.
 \end{itemize}
 
-\subsubsection{La función de coeficientes fijos (\autor{Leontief})}
+\subsubsection{La función de coeficientes fijos (\autor{Leontief})}\label{sec:funcion-coeficientes-fijos}
 
 \paragraph{a) Idea}
 
@@ -504,7 +504,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 \paragraph{c) Extensiones}
 
 \begin{itemize}
-\item Si la empresa dispone de varias técnicas de coeficientes fijos y puede combinarlas, las isocuantas son poligonales, con un vértice por técnica, y se aproximan a las curvas suaves cuando el número de técnicas crece: es el \emph{análisis de actividades} de \textcite{Koopmans1951Activity}, que enlaza la función de producción con el conjunto de posibilidades de producción del apartado~I.1.
+\item Si la empresa dispone de varias técnicas de coeficientes fijos y puede combinarlas, las isocuantas son poligonales, con un vértice por técnica, y se aproximan a las curvas suaves cuando el número de técnicas crece: es el \emph{análisis de actividades} de \textcite{Koopmans1951Activity}, que enlaza la función de producción con el conjunto de posibilidades de producción del apartado~\ref{sec:conjunto-tecnologico-conjunto}.
 \end{itemize}
 
 \paragraph{d) Valoración}
@@ -519,7 +519,7 @@ $F$ (estrictamente) cuasicóncava & $\Longleftrightarrow$ & $-F$ (estrictamente)
 
 
 % ==========================================================================
-\section{Análisis de la función de producción:\newline las leyes temporales de la producción}
+\section{Análisis de la función de producción:\newline las leyes temporales de la producción}\label{sec:analisis-funcion-produccion}
 \minutos{11,5}
 
 \begin{itemize}
@@ -545,7 +545,7 @@ En el cante: la superficie con los 3 plazos (gráfico~\ref{fig:plazos-3d}), que 
 
 % --------------------------------------------------------------------------
 \Needspace{0.55\textheight}
-\subsection{Corto plazo: productividad}
+\subsection{Corto plazo: productividad}\label{sec:corto-plazo-productividad}
 
 \begin{figure}[H]
 \centering
@@ -558,7 +558,7 @@ En el cante: la superficie con los 3 plazos (gráfico~\ref{fig:plazos-3d}), que 
 \item Empezamos por el plazo más corto, en el que algún factor está fijo. Formalmente, el corto plazo restringe el conjunto de posibilidades de producción a los planes con el factor fijo dado: $\mathcal{Y}(\overline{z}_K)=\{\vect{y}\in\mathcal{Y}:\ z_K=\overline{z}_K\}\subseteq\mathcal{Y}$. Como hay planes del largo plazo que dejan de ser posibles, la producción máxima a largo plazo es siempre al menos tan alta como la de corto, y el coste de largo plazo es la \emph{envolvente} de los de corto plazo \vertema{3.A.12}. El conjunto de corto plazo no cumple la posibilidad de inacción si el factor fijo tiene un coste hundido \parencite[§5.B]{MasColellWhinstonGreen1995}. Sobre la superficie, es el corte por el plano $z_K=\overline{z}_K$ (gráfico~\ref{fig:plazos-3d-corto}).
 \end{itemize}
 
-\subsubsection{Región económica de la producción}
+\subsubsection{Región económica de la producción}\label{sec:region-economica-produccion}
 
 \begin{itemize}
 \item Para estudiar la productividad a corto plazo se usa una función con \concepto{rendimientos marginales mixtos}: al añadir un factor variable ($z_L$) a uno fijo ($z_K=\overline{z}_K$), la producción crece primero a ritmo creciente, después a ritmo decreciente\footnote{Es la \concepto{ley de los rendimientos marginales decrecientes}, así llamada porque la producción se mide en unidades físicas, o \concepto{ley de las proporciones variables}, porque la proporción entre el factor fijo y el variable cambia a lo largo de la función. Exige que haya algún factor fijo. La enuncia \textcite{Turgot1767Observations}, en una respuesta teórica a una memoria fisiócrata sobre la agricultura francesa: pasado cierto punto, los productos siguen aumentando, pero cada vez menos. La recogen en 1815, en el debate sobre las leyes de granos y para explicar la renta de la tierra, \autor{West}, \autor{Malthus}, \autor{Ricardo} y \autor{Torrens}, con la tierra como factor fijo \parencite{Humphrey1997Algebraic} \vertema{3.A.2}.} hasta alcanzar un máximo y, si se sigue añadiendo factor variable, disminuye (gráfico~\ref{fig:corto-plazo}).
@@ -589,7 +589,7 @@ Conviene advertir al tribunal, antes de dibujar la función con tramo decrecient
 \fuente{elaboración propia a partir de \textcite{Policonomics2026RegionEconomica}.}
 \end{figure}
 
-\subsubsection{Productividad}
+\subsubsection{Productividad}\label{sec:productividad}
 
 \begin{itemize}
 \item Con el capital fijo en $\overline{z}_K$, el producto total $q=F(z_L,\overline{z}_K)$ crece primero a ritmo creciente, después a ritmo decreciente hasta un máximo y luego disminuye (gráfico~\ref{fig:corto-plazo}, panel superior).\footnote{Según la función de producción, los rendimientos marginales decrecientes pueden aparecer a partir de un punto de inflexión o desde el origen (gráfico~\ref{fig:rendimientos-decrecientes-origen}). La exposición se centra en el primer caso, que es más general.}
@@ -687,7 +687,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, $q$ máximo & $=0$ & & \\
 
 % --------------------------------------------------------------------------
 \Needspace{0.55\textheight}
-\subsection{Largo plazo: rendimientos a escala}
+\subsection{Largo plazo: rendimientos a escala}\label{sec:largo-plazo-rendimientos}
 
 \begin{figure}[H]
 \centering
@@ -759,7 +759,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, $q$ máximo & $=0$ & & \\
 \item Los rendimientos a escala pueden definirse para \emph{toda} la tecnología o en un punto \parencite[cap.~3]{JehleReny2011Advanced}.
 \item Los \concepto{rendimientos globales a escala} son una propiedad de toda la tecnología: $F$ tiene rendimientos constantes, crecientes o decrecientes si, para \emph{todo} $\vect{z}$ y todo $\lambda>1$, $F(\lambda\vect{z})=\lambda F(\vect{z})$, $F(\lambda\vect{z})>\lambda F(\vect{z})$ o $F(\lambda\vect{z})<\lambda F(\vect{z})$.
   \begin{itemize}
-  \item Son propiedades de escala del conjunto $\mathcal{Y}$ (apartado~I.2): rendimientos constantes si $\mathcal{Y}$ es un cono, no crecientes con divisibilidad y no decrecientes con aditividad \parencite[§5.B]{MasColellWhinstonGreen1995}.
+  \item Son propiedades de escala del conjunto $\mathcal{Y}$ (apartado~\ref{sec:funcion-produccion}): rendimientos constantes si $\mathcal{Y}$ es un cono, no crecientes con divisibilidad y no decrecientes con aditividad \parencite[§5.B]{MasColellWhinstonGreen1995}.
   \item El caso más sencillo son las funciones homogéneas de grado $k$, cuya elasticidad de escala es $k$ en todos los puntos (gráfico~\ref{fig:rendimientos-globales-locales-3d}, panel~a).
   \end{itemize}
 \item Los \concepto{rendimientos locales a escala} se miden en un punto, con la \emph{elasticidad de escala local}:\footnote{\textcite[def.~3.4]{JehleReny2011Advanced} la llaman $\mu(\vect{z})$.}
@@ -842,7 +842,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, $q$ máximo & $=0$ & & \\
 
 % --------------------------------------------------------------------------
 \Needspace{0.55\textheight}
-\subsection{Muy largo plazo: progreso técnico}
+\subsection{Muy largo plazo: progreso técnico}\label{sec:muy-largo-plazo}
 
 \begin{figure}[H]
 \centering
@@ -911,7 +911,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, $q$ máximo & $=0$ & & \\
 \end{itemize}
 
 % ==========================================================================
-\section{Empresa multiproducto: curva de contrato}
+\section{Empresa multiproducto: curva de contrato}\label{sec:empresa-multiproducto-curva}
 \minutos{4,5}
 
 \begin{itemize}
@@ -919,11 +919,11 @@ Margen intensivo & $\mathrm{PMg}_L=0$, $q$ máximo & $=0$ & & \\
 \end{itemize}
 
 \begin{notaopositor}
-En el cante: la caja de \autor{Edgeworth}, que se forma girando el mapa de isocuantas de un bien (gráfico~\ref{fig:formacion-caja}), con la curva de contrato y la FPP en un solo gráfico (gráfico~\ref{fig:caja-edgeworth-fpp}), sin repetir el desarrollo del equilibrio general (unos \tiempo{2,5}); después, la función de transformación y la curva de transformación de la empresa con su RMT (gráfico~\ref{fig:transformacion-empresa}), la producción conjunta en proporciones fijas y variables y las economías de alcance (unos \tiempo{2}). El recuadro sobre la competencia perfecta se dice en una frase. Si falta tiempo, III.2 se reduce a $T(\vect{y})\leq 0$, la RMT y las economías de alcance en una frase.
+En el cante: la caja de \autor{Edgeworth}, que se forma girando el mapa de isocuantas de un bien (gráfico~\ref{fig:formacion-caja}), con la curva de contrato y la FPP en un solo gráfico (gráfico~\ref{fig:caja-edgeworth-fpp}), sin repetir el desarrollo del equilibrio general (unos \tiempo{2,5}); después, la función de transformación y la curva de transformación de la empresa con su RMT (gráfico~\ref{fig:transformacion-empresa}), la producción conjunta en proporciones fijas y variables y las economías de alcance (unos \tiempo{2}). El recuadro sobre la competencia perfecta se dice en una frase. Si falta tiempo, \ref{sec:empresa-multiproducto-produccion} se reduce a $T(\vect{y})\leq 0$, la RMT y las economías de alcance en una frase.
 \end{notaopositor}
 
 % --------------------------------------------------------------------------
-\subsection{La caja de \autor{Edgeworth}: curva de contrato y frontera de posibilidades de producción}
+\subsection{La caja de \autor{Edgeworth}: curva de contrato y frontera de posibilidades de producción}\label{sec:caja-edgeworth-curva}
 
 \paragraph{a) Idea}
 
@@ -999,12 +999,12 @@ Dividiendo, $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=w_L/w_K$. Como en compete
 \end{itemize}
 
 % --------------------------------------------------------------------------
-\subsection{La empresa multiproducto y la producción conjunta}
+\subsection{La empresa multiproducto y la producción conjunta}\label{sec:empresa-multiproducto-produccion}
 
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item Una vez vista la asignación de factores entre procesos separables, pasamos a los procesos que dan varios productos a la vez. Muchas empresas obtienen varios productos con los mismos factores: es la \concepto{empresa multiproducto}. El conjunto de posibilidades de producción del apartado~I.1 la admite sin cambios, porque basta con que más de un componente del vector \emph{netput} sea positivo; lo que ya no sirve es la función de producción.
+\item Una vez vista la asignación de factores entre procesos separables, pasamos a los procesos que dan varios productos a la vez. Muchas empresas obtienen varios productos con los mismos factores: es la \concepto{empresa multiproducto}. El conjunto de posibilidades de producción del apartado~\ref{sec:conjunto-tecnologico-conjunto} la admite sin cambios, porque basta con que más de un componente del vector \emph{netput} sea positivo; lo que ya no sirve es la función de producción.
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -1097,7 +1097,7 @@ Dividiendo, $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=w_L/w_K$. Como en compete
 % ==========================================================================
 \section{Anexo: derivaciones}\label{anexo:derivaciones}
 
-Este anexo no se canta: desarrolla las derivaciones de los apartados I y II por si las pide el tribunal.
+Este anexo no se canta: desarrolla las derivaciones de los apartados \ref{sec:tecnologia-definicion-propiedades} y \ref{sec:analisis-funcion-produccion} por si las pide el tribunal.
 
 \subsection{La CES y sus límites}\label{der:ces}
 
@@ -1145,7 +1145,7 @@ Este anexo no se canta. El problema del productor es el punto de partida de la t
   B(p,\vect{w})=\optim{\max}{\vect{z}}{p\,F(\vect{z})-\vect{w}\cdot\vect{z}}{\vect{z}\geq\vect{0}}
   \]
   Condiciones de primer orden (solución interior): $p\,\mathrm{PMg}_i=w_i$ para cada factor, es decir, el valor del producto marginal iguala el precio del factor. Dividiendo, $\mathrm{RMST}_{LK}=w_L/w_K$. Con varios productos, $\mathrm{RMT}_{12}=p_1/p_2$.
-\item \emph{Condiciones de segundo orden}: la matriz hessiana de $F$ debe ser semidefinida negativa en el óptimo. Si $F$ es estrictamente cóncava, se cumplen y la solución es única; con rendimientos constantes o crecientes el problema puede no estar acotado, como se explica en el recuadro «Concavidad, cuasiconcavidad y maximización del beneficio» del apartado~I.2.
+\item \emph{Condiciones de segundo orden}: la matriz hessiana de $F$ debe ser semidefinida negativa en el óptimo. Si $F$ es estrictamente cóncava, se cumplen y la solución es única; con rendimientos constantes o crecientes el problema puede no estar acotado, como se explica en el recuadro «Concavidad, cuasiconcavidad y maximización del beneficio» del apartado~\ref{sec:funcion-produccion}.
 \item \emph{Función de beneficio} $B(p,\vect{w})$: no decreciente en $p$ (estrictamente creciente si $q(p,\vect{w})>0$) y no creciente en $\vect{w}$, homogénea de grado uno, convexa y continua en precios. Por el \emph{lema de \autor{Hotelling}}, $\partial B/\partial p=q(p,\vect{w})$ (oferta) y $\partial B/\partial w_i=-z_i(p,\vect{w})$ (demandas de factores).
 \item \emph{Oferta y demandas de factores}: $q(p,\vect{w})$ y $\vect{z}(p,\vect{w})$ son homogéneas de grado cero en $(p,\vect{w})$. Por la convexidad de $B$, la matriz de sus derivadas respecto a los precios es simétrica y semidefinida positiva: $\partial q/\partial p\geq 0$ (\emph{ley de la oferta}) y $\partial z_i/\partial w_i\leq 0$. No hay efecto renta, porque la empresa no tiene restricción presupuestaria: la ley de la oferta se cumple siempre, a diferencia de la ley de la demanda \vertema{3.A.8}.
 \item \emph{Agregación}: por la misma razón, la oferta de mercado es la suma de las ofertas individuales. Con $J$ empresas de conjuntos $\mathcal{Y}_1,\dots,\mathcal{Y}_J$, el conjunto de producción agregado es $\mathcal{Y}=\mathcal{Y}_1+\dots+\mathcal{Y}_J=\{\vect{y}:\ \vect{y}=\sum_j\vect{y}_j,\ \vect{y}_j\in\mathcal{Y}_j\}$, y el beneficio máximo de una única empresa que operase $\mathcal{Y}$ es la suma de los beneficios máximos individuales \parencite[prop.~5.E.1]{MasColellWhinstonGreen1995}. La agregación de la producción es sencilla y poderosa, frente a la de la demanda.
@@ -1181,7 +1181,7 @@ Translog & $\ln q=\alpha_0+\sum_i\alpha_i\ln z_i+\tfrac12\sum_i\sum_j\beta_{ij}\
 
 \begin{itemize}
 \item Las \concepto{formas flexibles} (translog y \autor{Leontief} generalizada) son aproximaciones de segundo orden a cualquier tecnología: no imponen a priori el valor de $\sigma$ ni los rendimientos, por lo que se usan para estimar tecnologías y funciones de costes con muchos factores (por ejemplo, la sustitución entre capital, trabajo, energía y materiales) \vertema{3.A.12}.\footnote{La translog admite muchas posibilidades de sustitución entre varios factores, y por eso se ha empleado mucho para estudiar la sustitución entre grupos de trabajadores: entre trabajadores de distinta cualificación o edad y entre los recién llegados y los ya establecidos, que es la pregunta de fondo en los estudios sobre los efectos de la inmigración en los salarios.}
-\item Todas, salvo la translog en general, son homotéticas; la Cobb-Douglas, la CES, la lineal, la de \autor{Leontief} y la \autor{Leontief} generalizada son, además, homogéneas. Un ejemplo de función homotética no homogénea es la del apartado~II.2, $q=\kappa/(1+z_L^{-a}z_K^{-b})$.
+\item Todas, salvo la translog en general, son homotéticas; la Cobb-Douglas, la CES, la lineal, la de \autor{Leontief} y la \autor{Leontief} generalizada son, además, homogéneas. Un ejemplo de función homotética no homogénea es la del apartado~\ref{sec:largo-plazo-rendimientos}, $q=\kappa/(1+z_L^{-a}z_K^{-b})$.
 \item Las formas que se usan como funciones de utilidad (forma polar de \autor{Gorman}, cuasilineal, \autor{Stone}-\autor{Geary}) tienen sus análogas en la producción \vertema{3.A.8}.
 \end{itemize}
 
@@ -1194,7 +1194,7 @@ Translog & $\ln q=\alpha_0+\sum_i\alpha_i\ln z_i+\tfrac12\sum_i\sum_j\beta_{ij}\
   \item \concepto{Elasticidad de \autor{Allen}-\autor{Uzawa}}: $\sigma^{AU}_{ij}=\dfrac{C\,C_{ij}}{C_i\,C_j}=\dfrac{\varepsilon_{z_i,w_j}}{s_j}$, con $s_j$ la participación del factor $j$ en el coste \parencite{Allen1938Mathematical,Uzawa1962Production}. Es simétrica, pero solo informa del signo (sustitutivos si es positiva, complementarios si es negativa), no de la curvatura.
   \item \concepto{Elasticidad de \autor{Morishima}}: $M_{ij}=\varepsilon_{z_i,w_j}-\varepsilon_{z_j,w_j}$, la variación porcentual de $z_i/z_j$ cuando cambia el precio $w_j$. Es la generalización natural de la de \autor{Hicks}: mide la curvatura de las isocuantas y determina cómo cambian las participaciones relativas. En general no es simétrica.
   \end{itemize}
-\item Con 2 factores, las 3 medidas coinciden con la $\sigma$ del apartado~I.3.
+\item Con 2 factores, las 3 medidas coinciden con la $\sigma$ del apartado~\ref{sec:curvas-isocuantas}.
 \end{itemize}
 
 % ==========================================================================
@@ -1213,7 +1213,7 @@ Translog & $\ln q=\alpha_0+\sum_i\alpha_i\ln z_i+\tfrac12\sum_i\sum_j\beta_{ij}\
 % ==========================================================================
 \section{Anexo: la función de producción agregada\newline y la controversia del capital}\label{anexo:cambridge}
 
-\subsection{La función de producción agregada en forma intensiva}
+\subsection{La función de producción agregada en forma intensiva}\label{anexo:funcion-produccion-agregada}
 
 \begin{itemize}
 \item \emph{Forma intensiva}: en macroeconomía se postula una función agregada $Y=F(K,L)$ con productividades marginales positivas y decrecientes y rendimientos constantes a escala. Con $\lambda=1/L$, $Y/L=F(K/L,1)$: en términos por trabajador, $y=f(k)$, con $y\equiv Y/L$, $k\equiv K/L$, $f'>0$ y $f''<0$ \vertema{3.A.43}.
@@ -1228,7 +1228,7 @@ Translog & $\ln q=\alpha_0+\sum_i\alpha_i\ln z_i+\tfrac12\sum_i\sum_j\beta_{ij}\
 \fuente{elaboración propia a partir de \textcite{Solow1956Contribution}.}
 \end{figure}
 
-\subsection{La controversia de los dos Cambridge}
+\subsection{La controversia de los dos Cambridge}\label{anexo:controversia-dos-cambridge}
 
 \begin{itemize}
 \item Entre los años 50 y 70, los economistas de Cambridge (Inglaterra), con Joan~\autor{Robinson}, \autor{Sraffa} y \autor{Pasinetti}, discuten con los de Cambridge (Massachusetts), con \autor{Samuelson} y \autor{Solow}, la validez de la función de producción agregada \parencite{CohenHarcourt2003Whatever}.

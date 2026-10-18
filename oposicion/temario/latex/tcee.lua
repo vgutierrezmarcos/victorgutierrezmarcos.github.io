@@ -12,7 +12,10 @@ Qué hace:
   - Pone «Gráfico n.–» y «Tabla n.–» en los títulos y separa la «Fuente:».
   - Cambia la ruta y la extensión de los gráficos (SVG en HTML, PNG en Word).
   - Convierte las cajas (notaopositor, anotaciones, ideaclave, esquema) en
-    estilos de Word y \vertema en una clase CSS.
+    estilos de Word y \vertema en una clase CSS; el enlace al tema citado
+    (\href que pone construir-tema.py) lleva también la clase «vertema».
+  - En Word, normaliza los nombres de los marcadores (destinos de \ref y
+    \hyperref) para que Word los acepte.
   - Pasa los \clearpage del PDF (construir-tema.py los deja como un entorno
     «saltopagina») a saltos de página en Word, y pone otro antes de la
     bibliografía. En HTML se quitan.
@@ -485,7 +488,60 @@ function Pandoc(doc)
       pandoc.Attr('', {}, { ['custom-style'] = 'Paginas del tema' })))
   end
   doc = doc:walk({ Table = Table })
-  return doc:walk({ Image = Image, Span = Span })
+  return doc:walk({ Image = Image, Span = Span, Link = Link })
 end
 
-return { { Meta = Meta }, { Pandoc = Pandoc } }
+-- Enlaces de \vertema ---------------------------------------------------------
+-- construir-tema.py deja cada \vertema{3.A.12} dentro de un \href al tema
+-- citado; el enlace lleva la clase «vertema» (gris, sin subrayar en tema.css).
+-- El Span de dentro ya tiene la clase (la walk visita antes a los hijos).
+function Link(l)
+  local es_vertema = false
+  l.content:walk({ Span = function(s) if s.classes:includes('vertema') then es_vertema = true end end })
+  if es_vertema and not l.classes:includes('vertema') then
+    l.classes:insert('vertema')
+    return l
+  end
+end
+
+-- Anclas en Word --------------------------------------------------------------
+-- Las remisiones internas (\ref, \eqref, \hyperref) son enlaces a #etiqueta y
+-- pandoc pone un marcador de Word con el mismo nombre en cada destino. Word
+-- solo admite en los marcadores letras, cifras y «_» (hasta 40 caracteres) y
+-- las etiquetas llevan «:», «-» y «.» (sec:I.2, eq:gorman): se normalizan igual
+-- en los destinos y en los enlaces.
+local function marcador(id)
+  if id == nil or id == '' then return id end
+  -- byte a byte: cada byte de una letra con tilde pasa a «_» (%w depende del
+  -- idioma del sistema y partiría los caracteres UTF-8)
+  local m = id:gsub('[^A-Za-z0-9_]', '_')
+  if not m:match('^[A-Za-z]') then m = 'tc_' .. m end
+  if #m > 40 then
+    -- recortado, con una suma de los caracteres para que no coincidan dos
+    local suma = 0
+    for k = 1, #id do suma = (suma * 31 + id:byte(k)) % 99991 end
+    m = m:sub(1, 34) .. '_' .. string.format('%05d', suma)
+  end
+  return m
+end
+
+local function anclas_docx(doc)
+  if not es_docx then return nil end
+  local function con_id(el)
+    if el.identifier and el.identifier ~= '' then
+      el.identifier = marcador(el.identifier)
+      return el
+    end
+  end
+  return doc:walk({
+    Header = con_id, Div = con_id, Span = con_id, Figure = con_id, Table = con_id,
+    Link = function(l)
+      if l.target:sub(1, 1) == '#' then
+        l.target = '#' .. marcador(l.target:sub(2))
+        return l
+      end
+    end,
+  })
+end
+
+return { { Meta = Meta }, { Pandoc = Pandoc }, { Pandoc = anclas_docx } }

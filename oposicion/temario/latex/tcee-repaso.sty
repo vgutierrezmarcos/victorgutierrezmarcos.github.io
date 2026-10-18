@@ -145,12 +145,14 @@
 % quedan huérfanos porque detrás va \nopagebreak, las listas no admiten corte al
 % empezar (beginpenalty) y \clubpenalty y \widowpenalty prohíben líneas sueltas.
 \newcommand{\bloque}[2][]{\par\vspace{3pt}%
-  \noindent\colorbox{tceemorado}{\parbox{\dimexpr\linewidth-2\fboxsep}{%
+  \noindent\phantomsection\colorbox{tceemorado}{\parbox{\dimexpr\linewidth-2\fboxsep}{%
     \color{white}\bfseries\strut#2\if\relax\detokenize{#1}\relax\else\hfill{\mdseries\itshape\tceemmss{#1}}\fi}}%
   \par\nopagebreak\vspace{1pt}}
-% \sub{título}: subapartado, en morado con raya fina
+% \sub{título}: subapartado, en morado con raya fina. Las remisiones a un
+% \bloque o \sub de la ficha son enlaces: \sub{I.2. Título\label{rep:I.2}} y en
+% el texto \hyperref[rep:I.2]{I.2} (\phantomsection pone el ancla)
 \newcommand{\sub}[1]{\par\vspace{2pt}%
-  \noindent{\color{tceemorado}\bfseries#1}\par\nopagebreak\vspace{-0.45em}%
+  \noindent\phantomsection{\color{tceemorado}\bfseries#1}\par\nopagebreak\vspace{-0.45em}%
   \noindent{\color{tceemorado}\rule{\linewidth}{0.3pt}}\par\nopagebreak}
 % Ojo: un \color en modo vertical deja un «whatsit» que convierte el \parskip
 % siguiente en un punto de corte legal; por eso cada línea empieza con \noindent
@@ -170,7 +172,21 @@
 \newcommand{\concepto}[1]{\textbf{#1}}
 % Vectores con flecha, como en tcee.sty
 \providecommand{\vect}[1]{\vec{#1}}
-\newcommand{\vertema}[1]{{\color{tceegris}[#1]}}
+% \vertema{3.A.12} es un enlace al tema citado: al PDF del tema en la web o, si
+% aún no está disponible, a tema-no-disponible.html. Los destinos los escribe
+% scripts/temario (comun.py, escribir_destinos_tex) en latex/tcee-destinos.tex a
+% partir de temario.json: \tceedestino{3.A.12}{https://…/3A12.pdf}. Con un
+% intervalo (\vertema{3.A.16-3.A.19}) enlaza al primer tema. Si el tema no está
+% en la tabla, sale sin enlace (verificar-tema.py lo señala).
+\providecommand{\tceedestino}[2]{\expandafter\gdef\csname tcee@destino@#1\endcsname{#2}}
+\InputIfFileExists{tcee-destinos.tex}{}{}
+\def\tcee@primertema#1-#2\@nil{#1}
+\newcommand{\tcee@enlacetema}[2]{% #1 código citado, #2 texto
+  \begingroup\edef\tcee@vt{\tcee@primertema#1-\@nil}%
+  \@ifundefined{tcee@destino@\tcee@vt}{#2}%
+    {\href{\csname tcee@destino@\tcee@vt\endcsname}{#2}}%
+  \endgroup}
+\newcommand{\vertema}[1]{\tcee@enlacetema{#1}{{\color{tceegris}[#1]}}}
 \newcommand{\dato}[2]{\textbf{#1}{\color{tceegris}\,(#2)}}   % \dato{54,1 \% del PIB}{INE, 2025}
 
 % --- Cajas -----------------------------------------------------------------------------------

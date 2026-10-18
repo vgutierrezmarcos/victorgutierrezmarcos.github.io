@@ -29,7 +29,7 @@
 \subcante{2. Ecuación de \autor{Slutsky} y clasificación}{3,5}
 \subcante{3. Bienestar: $\Delta$EC, VC, VE, índices}{6}
 \apartadocante{Conclusión}{1}}
-\emph{Hilo}: herramientas (I) $\to$ estimación (II) $\to$ uso (III). \emph{Pizarra}: esquema de dualidad por capas; $E(\vect{p},\overline{U})$ y \autor{Slutsky}, recuadradas, no se borran.
+\emph{Hilo}: herramientas (\hyperref[rep:I]{I}) $\to$ estimación (\hyperref[rep:II]{II}) $\to$ uso (\hyperref[rep:III]{III}). \emph{Pizarra}: esquema de dualidad por capas; $E(\vect{p},\overline{U})$ y \autor{Slutsky}, recuadradas, no se borran.
 
 % ==========================================================================
 \bloque[2]{Introducción}
@@ -43,12 +43,12 @@
 \end{itemize}
 
 % ==========================================================================
-\bloque[10]{I. Análisis teórico de la dualidad}
+\bloque[10]{I. Análisis teórico de la dualidad\label{rep:I}}
 \begin{itemize}
 \item \emph{Conclusión anticipada}: máx.\ $U$ con renta dada y mín.\ gasto con utilidad dada $\Rightarrow$ \emph{misma cesta}; de ahí, relaciones para pasar de unas funciones a otras sin resolver más problemas.
 \end{itemize}
 
-\sub{I.1. Ingredientes comunes}
+\sub{I.1. Ingredientes comunes\label{rep:I.1}}
 \begin{itemize}
 \item \emph{Dos enfoques}: \concepto{primal}: recursos dados, máx.\ utilidad; \concepto{dual}: «da la vuelta»: utilidad dada (restricción), mín.\ gasto (objetivo). Mismo problema de fondo.
 \item \emph{Conjunto de elección}: $S\subseteq\mathbb{R}^n_+$ no vacío, cerrado y convexo (normalmente $\mathbb{R}^n_+$).
@@ -69,11 +69,11 @@ Función valor & FIU $V(\vect{p},\overline{W})$ & gasto $E(\vect{p},\overline{U}
 \bottomrule
 \end{tabular}\par}
 
-\sub{I.2. Problemas primal y dual}
+\sub{I.2. Problemas primal y dual\label{rep:I.2}}
 \textbf{Problema primal: maximización de la utilidad (PMU)}
 \begin{itemize}
 \item \emph{a) Idea}: necesidades ilimitadas, recursos escasos; punto de partida de la dualidad \vertema{3.A.8}.
-\item \emph{b.i) Supuestos}: los de I.1.
+\item \emph{b.i) Supuestos}: los de \hyperref[rep:I.1]{I.1}.
 \item \emph{b.ii) Desarrollo}: óptimo que existe (\autor{Weierstrass}), global y único; \autor{Kuhn}-\autor{Tucker} con $\mathcal{L}=U+\lambda(\overline{W}-\vect{p}\cdot\vect{x})$; $\lambda$ = \concepto{utilidad marginal de la renta}:
 \begin{formula}
 \centering $\optim{\max}{\vect{x}}{U(\vect{x})}{\vect{p}\cdot\vect{x}\leq\overline{W}\\ \vect{x}\geq\vect{0}}$\quad$\Rightarrow$\quad $\dfrac{U_i}{p_i}=\lambda$ (\autor{Gossen}),\ \ $\mathrm{RMS}_{12}=\dfrac{p_1}{p_2}$
@@ -131,7 +131,7 @@ $V$ cuasiconvexa & $E$ cóncava en $\vect{p}$\\
 \item \emph{c) Valoración}: misma tangencia y 2 funciones nuevas: $\vect{h}$ (cumple siempre la ley de la demanda, pero inobservable) y $E$ (utilidad en dinero). Falta ligarlas con las del primal, que sí se observan.
 \end{itemize}
 
-\sub{I.3. Relaciones de dualidad}
+\sub{I.3. Relaciones de dualidad\label{rep:I.3}}
 \begin{itemize}
 \item \concepto{Teorema básico de la dualidad}: con $U$ continua, insaciabilidad local y $\vect{p}\gg\vect{0}$: (1) si $\vect{x}^*$ resuelve el PMU con $\overline{W}>0$, resuelve el PMG con $\overline{U}=U(\vect{x}^*)$ y gasto mínimo $\overline{W}$; (2) si $\vect{h}^*$ resuelve el PMG, resuelve el PMU con $\overline{W}=\vect{p}\cdot\vect{h}^*$ y utilidad máx.\ $\overline{U}$.
 \item \concepto{Coinciden las cestas}, no las funciones: $\vect{x}$ y $\vect{h}$ dependen de variables distintas ($\overline{W}$, $\overline{U}$).
@@ -146,24 +146,24 @@ $E\big(\vect{p},V(\vect{p},\overline{W})\big)\equiv\overline{W}$,\qquad $V\big(\
 \end{itemize}
 \graficorepaso[0.92\linewidth]{esquema-dualidad}{Esquema de dualidad: problemas, soluciones, funciones valor y relaciones (\autor{Roy}, \autor{Shephard}, inversas, \autor{Slutsky}, integrabilidad)}
 \begin{ideaclave}
-Maximizar la utilidad con una renta y minimizar el gasto con una utilidad son el mismo problema visto desde dos lados. $E$ mide la utilidad en dinero, sus derivadas son las hicksianas (\autor{Shephard}) y su concavidad da la ley de la demanda compensada. Las flechas del esquema son las herramientas de II y III.
+Maximizar la utilidad con una renta y minimizar el gasto con una utilidad son el mismo problema visto desde dos lados. $E$ mide la utilidad en dinero, sus derivadas son las hicksianas (\autor{Shephard}) y su concavidad da la ley de la demanda compensada. Las flechas del esquema son las herramientas de \hyperref[rep:II]{II} y \hyperref[rep:III]{III}.
 \end{ideaclave}
 
 % ==========================================================================
-\bloque[5]{II. Sistemas completos de demanda}
+\bloque[5]{II. Sistemas completos de demanda\label{rep:II}}
 \begin{itemize}
 \item \emph{Conclusión anticipada}: se elige una $E$ o una $V$ flexible, se derivan demandas estimables y se contrastan las restricciones de la teoría; el AIDS equilibra flexibilidad, coherencia, agregación y sencillez.
 \end{itemize}
 
-\sub{II.1. Idea}
+\sub{II.1. Idea\label{rep:II.1}}
 \begin{itemize}
 \item \emph{Definición}: \concepto{sistema completo de ecuaciones de demanda}: gasto en \emph{todos} los bienes (o grupos) en función de precios y gasto total, derivado de una optimización.
-\item \emph{Fines}: (1) \emph{medir} elasticidades (IVA, índices, pobreza); (2) \emph{contrastar} la teoría (homogeneidad, simetría, negatividad = integrabilidad, III.1); (3) \emph{valorar} el bienestar (VC, VE).
+\item \emph{Fines}: (1) \emph{medir} elasticidades (IVA, índices, pobreza); (2) \emph{contrastar} la teoría (homogeneidad, simetría, negatividad = integrabilidad, \hyperref[rep:III.1]{III.1}); (3) \emph{valorar} el bienestar (VC, VE).
 \item \emph{Papel de la dualidad}: se especifica $E$ o $V$ y se deriva (\autor{Shephard}/\autor{Roy}) $\Rightarrow$ coherente con la maximización \emph{por construcción}, sin resolver ningún problema.
 \item \emph{Requisitos} (tiran en sentidos opuestos): coherencia con la teoría; flexibilidad (no fijar elasticidades); agregación (la media con la forma individual); sencillez (lineal en los parámetros).
 \end{itemize}
 
-\sub{II.2. Pasos que sigue la literatura}
+\sub{II.2. Pasos que sigue la literatura\label{rep:II.2}}
 \begin{itemize}
 \item \emph{Pasos}: (1) forma funcional; (2) sistema completo; (3) datos; (4) especificación econométrica; (5) estimar y contrastar.
 \item \emph{(1) Forma funcional}: compromiso sencillez--flexibilidad; cada sistema supera el límite del anterior. Punto de partida, \concepto{\autor{Cobb}-\autor{Douglas}} $U=\sum_i\alpha_i\ln x_i$: $s_i=\alpha_i$ constantes; $\varepsilon_{\overline{W}}=1$, $\varepsilon_{ii}=-1$, cruzadas 0, $\sigma=1$; homotética $\Rightarrow$ no recoge la ley de \autor{Engel}.
@@ -215,7 +215,7 @@ QUAIDS & $E$ & sí & sí & no & más parámetros\\\bottomrule
 \item \emph{(5) Resultados}: con series agregadas se rechaza sobre todo la \emph{homogeneidad}; \autor{Deaton}: rigidez, dinámica y, sobre todo, \emph{agregación} $\Rightarrow$ microdatos. Usos: IVA, incidencia, índices por hogar, pobreza; España: AIDS con la EPF (\autor{Sanz}-\autor{Romero}, 2012).
 \end{itemize}
 
-\sub{II.3. Valoración}
+\sub{II.3. Valoración\label{rep:II.3}}
 \begin{itemize}
 \item \emph{Aportaciones}: la teoría pasa a ser instrumento de medida; sus restricciones, hipótesis contrastables; AIDS y QUAIDS concilian flexibilidad, agregación y sencillez.
 \item \emph{Limitaciones}: (1) flexibilidad vs.\ parsimonia ($n(n+1)/2$ términos cruzados; flexibilidad local); (2) agregación: consumidor representativo solo con forma polar de \autor{Gorman} o PIGLOG; \concepto{teorema de \autor{Sonnenschein}-\autor{Mantel}-\autor{Debreu}}: las restricciones individuales no tienen por qué cumplirse en la media; (3) marco estático: hábitos, duraderos, liquidez \vertema{3.A.33}.
@@ -223,15 +223,15 @@ QUAIDS & $E$ & sí & sí & no & más parámetros\\\bottomrule
 \end{itemize}
 
 % ==========================================================================
-\bloque[12]{III. Aplicaciones de la dualidad}
+\bloque[12]{III. Aplicaciones de la dualidad\label{rep:III}}
 \begin{itemize}
 \item \emph{Conclusión anticipada}: una aplicación teórica, la \emph{integrabilidad} (el esquema al revés, de la demanda a las preferencias), y dos prácticas: \autor{Slutsky} en dos líneas (separa lo observable de lo que no) y el bienestar en euros con $E$.
 \end{itemize}
 
-\sub{III.1. Integrabilidad de las preferencias}
+\sub{III.1. Integrabilidad de las preferencias\label{rep:III.1}}
 \begin{itemize}
-\item \emph{Pregunta}: dado $\vect{x}(\vect{p},\overline{W})$ observado (estimado en II), ¿existe una $U$ de la que proceda? Si sí, se «integran» las demandas. \autor{Antonelli} (1886); \autor{Hurwicz}-\autor{Uzawa} (1971).
-\item \emph{Respuesta}: \concepto{teorema de integrabilidad}: $\vect{x}$ continuamente diferenciable es demanda de una $U$ creciente y cuasicóncava \emph{si y solo si}: (1) ley de \autor{Walras}; (2) $S$ \emph{simétrica}; (3) $S$ \emph{semidef.\ negativa} (y homogeneidad). Con 2 bienes, simetría automática. Necesarias (I.2, III.2) y suficientes (teorema).
+\item \emph{Pregunta}: dado $\vect{x}(\vect{p},\overline{W})$ observado (estimado en \hyperref[rep:II]{II}), ¿existe una $U$ de la que proceda? Si sí, se «integran» las demandas. \autor{Antonelli} (1886); \autor{Hurwicz}-\autor{Uzawa} (1971).
+\item \emph{Respuesta}: \concepto{teorema de integrabilidad}: $\vect{x}$ continuamente diferenciable es demanda de una $U$ creciente y cuasicóncava \emph{si y solo si}: (1) ley de \autor{Walras}; (2) $S$ \emph{simétrica}; (3) $S$ \emph{semidef.\ negativa} (y homogeneidad). Con 2 bienes, simetría automática. Necesarias (\hyperref[rep:I.2]{I.2}, \hyperref[rep:III.2]{III.2}) y suficientes (teorema).
 \end{itemize}
 \begin{formula}
 \centering $S_{ij}(\vect{p},\overline{W})=\dfrac{\partial x_i}{\partial p_j}+x_j\dfrac{\partial x_i}{\partial\overline{W}}=S_{ji}$\quad (observable)\\[3pt]
@@ -251,7 +251,7 @@ $\nabla_{\vect{p}}E(\vect{p},\overline{U})=\vect{x}\big(\vect{p},E(\vect{p},\ove
 \item \emph{Relevancia}: \emph{teórica} (cierra el círculo: las preferencias no añaden nada a 3 propiedades contrastables); \emph{empírica} (contraste sin hallar $U$); \emph{normativa} ($E$ exacta desde la demanda: \autor{Hausman}, 1981).
 \end{itemize}
 
-\sub{III.2. Ecuación de \autor{Slutsky} y clasificación de los bienes}
+\sub{III.2. Ecuación de \autor{Slutsky} y clasificación de los bienes\label{rep:III.2}}
 \begin{itemize}
 \item \emph{Derivación}: derivar $h_i(\vect{p},\overline{U})\equiv x_i\big(\vect{p},E(\vect{p},\overline{U})\big)$ respecto a $p_j$ (regla de la cadena); evaluar en $\overline{U}=V(\vect{p},\overline{W})$: $E=\overline{W}$ y, por \autor{Shephard}, $\partial E/\partial p_j=h_j=x_j$:
 \end{itemize}
@@ -280,7 +280,7 @@ $\leq0$ & \textcolor{tceedorado}{$>0$: inferior} & \textcolor{tceeazul}{ordinari
 \item \emph{Pendientes} en $(x_i,p_i)$: bien normal, marshalliana más plana (más elástica) que la hicksiana; inferior, más inclinada; sin ER, coinciden $\Rightarrow$ puente con el bienestar: normal y baja el precio, $\mathrm{VC}\leq\Delta\mathrm{EC}\leq\mathrm{VE}$.
 \end{itemize}
 
-\sub{III.3. Análisis de bienestar del consumidor individual}
+\sub{III.3. Análisis de bienestar del consumidor individual\label{rep:III.3}}
 \begin{itemize}
 \item \emph{Idea}: \concepto{economía del bienestar}: deseabilidad de las asignaciones. Aquí, \emph{un} consumidor y cambios de \emph{precios} (equilibrio parcial \vertema{3.A.16}): evita comparar personas. Usuario: el decisor público.
 \item \emph{Problema}: baja $p_1$ $\Rightarrow$ de $\overline{U}^0$ a $\overline{U}^1$. ¿Cuánto mejora? Utilidad ordinal: $\overline{U}^1-\overline{U}^0$ no significa nada $\Rightarrow$ medida en euros con $E$. Notación: $\vect{p}^0\to\vect{p}^1$, $\overline{W}$ fija, $\overline{U}^k=V(\vect{p}^k,\overline{W})$.
@@ -329,7 +329,7 @@ $E$ traduce la utilidad a euros: la VC y la VE miden exactamente el cambio de bi
 % ==========================================================================
 \bloque[1]{Conclusión}
 \begin{itemize}
-\item \textbf{Recapitulación}: $\vect{h}$, $E$ y dualidad: un problema da las 4 funciones (I); AIDS y microdatos (II); integrabilidad, \autor{Slutsky} y bienestar: VC, VE; $\Delta$EC aproxima, \autor{Laspeyres}-\autor{Paasche} acotan (III).
+\item \textbf{Recapitulación}: $\vect{h}$, $E$ y dualidad: un problema da las 4 funciones (\hyperref[rep:I]{I}); AIDS y microdatos (\hyperref[rep:II]{II}); integrabilidad, \autor{Slutsky} y bienestar: VC, VE; $\Delta$EC aproxima, \autor{Laspeyres}-\autor{Paasche} acotan (\hyperref[rep:III]{III}).
 \item \textbf{Relevancia}: de lo inobservable (utilidad) a restricciones sobre lo observable y bienestar en euros.
 \item \textbf{Extensiones}: empresa \vertema{3.A.12}; parcial \vertema{3.A.16}; bienestar \vertema{3.A.22}; coste-beneficio \vertema{4.B.6}; gravamen \vertema{4.B.9}; IPC \vertema{4.A.1}; riesgo \vertema{3.A.10}; intertemporal \vertema{3.A.29}.
 \item \textbf{Opinión}: la teoría más abstracta, muy útil en la práctica; límites: consumidor estático y agregación (sumar exige juicios de valor); herencia de \autor{Deaton}: microdatos y heterogeneidad.

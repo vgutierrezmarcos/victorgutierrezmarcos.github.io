@@ -49,6 +49,11 @@ sencillo y solo las órdenes de `tcee.sty`):
   las que rechaces razonadamente (anótalo en el informe). Mantén el estilo
   esquemático con `itemize` anidados (hasta 4 niveles) y párrafos breves.
 - Fórmulas en `equation`/`align` (con `\label` si se citan) o `$…$`.
+- **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
+  temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
+  ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.
+  Cada apartado numerado lleva `\label{sec:…}` tras el título (`anexo:…` en
+  los anexos). verificar-tema.py da error si queda alguna a mano.
 - Citas en el texto, enlazadas a la bibliografía: `\textcite[pág.]{clave}` si el
   autor se nombra en la frase («\textcite{slutsky1915} descompone…», sin
   repetir nombre ni año) y `\parencite[pág.]{clave}` si no. **Nunca**

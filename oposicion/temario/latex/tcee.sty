@@ -328,7 +328,22 @@
 % Vectores: flecha encima (\vect{x}, \vect{p}); los escalares sin flecha.
 \providecommand{\vect}[1]{\vec{#1}}
 \newcommand{\concepto}[1]{\textbf{#1}}                     % término clave
-\newcommand{\vertema}[1]{{\color{tceegris}[ver tema #1]}}  % referencia cruzada
+% \vertema{3.A.12} es un enlace al tema citado: al PDF del tema en la web o, si
+% aún no está disponible, a tema-no-disponible.html. Los destinos los escribe
+% scripts/temario (comun.py, escribir_destinos_tex) en latex/tcee-destinos.tex a
+% partir de temario.json: \tceedestino{3.A.12}{https://…/3A12.pdf}. Con un
+% intervalo (\vertema{3.A.16-3.A.19}) enlaza al primer tema. Si el tema no está
+% en la tabla, sale sin enlace (verificar-tema.py lo señala).
+\providecommand{\tceedestino}[2]{\expandafter\gdef\csname tcee@destino@#1\endcsname{#2}}
+\InputIfFileExists{tcee-destinos.tex}{}{}
+\def\tcee@primertema#1-#2\@nil{#1}
+\newcommand{\tcee@enlacetema}[2]{% #1 código citado, #2 texto
+  \begingroup\edef\tcee@vt{\tcee@primertema#1-\@nil}%
+  \@ifundefined{tcee@destino@\tcee@vt}{#2}%
+    {\href{\csname tcee@destino@\tcee@vt\endcsname}{#2}}%
+  \endgroup}
+% Gris y sin subrayar (hyperref usa colorlinks; el \color de dentro manda)
+\newcommand{\vertema}[1]{\tcee@enlacetema{#1}{{\color{tceegris}[ver tema #1]}}}  % referencia cruzada
 
 % --- Fórmulas: funciones clave y problemas de optimización ------------------------
 % \funcionclave{C(\vect{w},q)=\min_{\vect{z}}\ \vect{w}\cdot\vect{z}} → ecuación en

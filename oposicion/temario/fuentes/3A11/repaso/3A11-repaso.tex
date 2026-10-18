@@ -28,7 +28,7 @@
 \subcante{1. Caja de \autor{Edgeworth}, curva de contrato, FPP}{2,5}
 \subcante{2. Producción conjunta: $T(\vect{y})\leq0$, RMT}{2}
 \apartadocante{Conclusión}{1,5}}
-\emph{Hilo}: qué es posible (I) $\to$ cómo varía con el plazo (II) $\to$ con varios productos (III). \emph{Pizarra}: $F$ y $\sigma$ recuadradas en la esquina de I.2 al final; la superficie con los 3 plazos une los bloques (curvas de nivel = isocuantas; cortes = plazos).
+\emph{Hilo}: qué es posible (\hyperref[rep:I]{I}) $\to$ cómo varía con el plazo (\hyperref[rep:II]{II}) $\to$ con varios productos (\hyperref[rep:III]{III}). \emph{Pizarra}: $F$ y $\sigma$ recuadradas en la esquina de \hyperref[rep:I.2]{I.2} al final; la superficie con los 3 plazos une los bloques (curvas de nivel = isocuantas; cortes = plazos).
 
 % ==========================================================================
 \bloque[2,5]{Introducción}
@@ -45,27 +45,27 @@
 \end{itemize}
 
 % ==========================================================================
-\bloque[10]{I. La tecnología: definición y propiedades de la función de producción}
+\bloque[10]{I. La tecnología: definición y propiedades de la función de producción\label{rep:I}}
 \begin{itemize}
 \item \emph{Nexo}: planteadas las preguntas, empezamos por la tecnología en sí: cómo se representa lo que la empresa puede producir.
 \item \emph{Conclusión anticipada}: pocos axiomas sobre los planes posibles dan una función de producción; sus isocuantas miden con un solo número, $\sigma$, la facilidad para sustituir factores.
 \item \emph{Método}: el del consumidor \vertema{3.A.8} en 3 pasos: $\mathcal{Y}$ y axiomas $\to$ $F$ (un producto) $\to$ isocuantas y sustitución. Con precios de los factores: costes y dualidad \vertema{3.A.12}.
 \end{itemize}
 
-\sub{I.1. Conjunto tecnológico: el conjunto de posibilidades de producción}
+\sub{I.1. Conjunto tecnológico: el conjunto de posibilidades de producción\label{rep:I.1}}
 \begin{itemize}
 \item \emph{Definición}: \concepto{conjunto de posibilidades de producción} (o \concepto{tecnológico}) $\mathcal{Y}\subset\mathbb{R}^S$: todos los planes que permite la tecnología (\autor{Mas-Colell}-\autor{Whinston}-\autor{Green}, 1995, cap.~5). Forma más general: no presupone cuántos bienes ni cuáles son factores.
 \item \emph{Plan}: \concepto{vector de producción neta} (\emph{netput}) $\vect{y}=(y_1,\dots,y_S)$: negativos = factores; positivos = productos. Un bien puede ser factor en un plan y producto en otro.
-\item \emph{Requerimientos}: \concepto{conjunto de requerimientos de factores} $V(q)=\{\vect{z}\geq\vect{0}:(q,-\vect{z})\in\mathcal{Y}\}$; su frontera, la isocuanta (I.3).
+\item \emph{Requerimientos}: \concepto{conjunto de requerimientos de factores} $V(q)=\{\vect{z}\geq\vect{0}:(q,-\vect{z})\in\mathcal{Y}\}$; su frontera, la isocuanta (\hyperref[rep:I.3]{I.3}).
 \end{itemize}
 \begin{itemize}
 \item \emph{Axiomas básicos} (necesarios para $F$): (1) \concepto{no vacío}; (2) \concepto{cerrado}: incluye su frontera $\Rightarrow$ \emph{máximo} de $q$ para cada $\vect{z}$; (3) \concepto{eliminación gratuita}: $\vect{y}'\leq\vect{y}\in\mathcal{Y}$ $\Rightarrow$ $\vect{y}'\in\mathcal{Y}$: todo el «sudoeste» es posible, frontera no creciente; (4) \concepto{imposibilidad de producción gratuita}: $\mathcal{Y}\cap\mathbb{R}^S_+\subseteq\{\vect{0}\}$.
-\item \emph{Deseables}: \concepto{posibilidad de inacción} $\vect{0}\in\mathcal{Y}$ (no con costes hundidos: propiedad del LP) $\Rightarrow$ $\mathcal{Y}\cap\mathbb{R}^S_+=\{\vect{0}\}$, frontera por el origen; y convexidad (I.2).
+\item \emph{Deseables}: \concepto{posibilidad de inacción} $\vect{0}\in\mathcal{Y}$ (no con costes hundidos: propiedad del LP) $\Rightarrow$ $\mathcal{Y}\cap\mathbb{R}^S_+=\{\vect{0}\}$, frontera por el origen; y convexidad (\hyperref[rep:I.2]{I.2}).
 \item \emph{Eficiencia}: la frontera = planes \concepto{técnicamente eficientes}: no se obtiene más de un producto sin más de algún factor o menos de otro producto.
 \end{itemize}
 \graficorepaso[0.62\linewidth]{conjunto-produccion}{$\mathcal{Y}$ en el plano de los \emph{netputs}: cada rasgo de su forma, un axioma}
 
-\sub{I.2. La función de producción}
+\sub{I.2. La función de producción\label{rep:I.2}}
 \begin{itemize}
 \item \emph{Definición}: definido $\mathcal{Y}$, con un producto, relación técnica que asigna a cada $\vect{z}\geq\vect{0}$ la \emph{máxima} producción posible (existe porque $\mathcal{Y}$ es cerrado):
 \end{itemize}
@@ -88,7 +88,7 @@
 \item \emph{Por qué importa}: el beneficio no tiene renta que lo acote. Con RCE, $B(\lambda\vect{z})=\lambda B(\vect{z})$: no acotado, no producir o máximo 0 con escala indeterminada (oferta = correspondencia); crecientes: no acotado; solo concavidad estricta da oferta función. Minimizar costes solo exige cuasiconcavidad $\Rightarrow$ $C$ existe con cualquier rendimiento \vertema{3.A.12}.
 \end{itemize}
 
-\sub{I.3. Las curvas isocuantas}
+\sub{I.3. Las curvas isocuantas\label{rep:I.3}}
 \begin{itemize}
 \item \emph{Definición}: caracterizada $F$, sus curvas de nivel: \concepto{isocuanta} $\{\vect{z}:F(\vect{z})=\overline{q}\}$: combinaciones que, usadas eficientemente, dan igual $q$; frontera de $V(\overline{q})$; corte horizontal de la superficie proyectado en la base.
 \item \emph{Propiedades} (como las curvas de indiferencia \vertema{3.A.8}): infinitas; más lejos = más $q$ (monotonía); no se cortan ($F$ es función); continuas; pendiente $\leq0$ ($<0$ si $\mathrm{PMg}>0$); convexas si $F$ cuasicóncava; pero \emph{cardinales}.
@@ -98,7 +98,7 @@
 \centering $\mathrm{RMST}_{LK}\equiv-\left.\dfrac{dz_K}{dz_L}\right|_{q=\overline{q}}=\dfrac{\mathrm{PMg}_L}{\mathrm{PMg}_K}$
 \end{formula}
 \begin{itemize}
-\item \emph{Isoclinas}: \concepto{isoclinas}: unen puntos de igual RMST; rectas por el origen si $F$ homotética; lo son las líneas de contorno (II.1) y la senda de expansión \vertema{3.A.12}.
+\item \emph{Isoclinas}: \concepto{isoclinas}: unen puntos de igual RMST; rectas por el origen si $F$ homotética; lo son las líneas de contorno (\hyperref[rep:II.1]{II.1}) y la senda de expansión \vertema{3.A.12}.
 \item \emph{Elasticidad de sustitución}: \concepto{elasticidad de sustitución}: número puro que mide la \emph{curvatura} de la isocuanta (\autor{Hicks} 1932, \autor{Robinson} 1933, por separado):
 \end{itemize}
 \funcionclave{\sigma\equiv\frac{d\ln(z_K/z_L)}{d\ln \mathrm{RMST}_{LK}}\geq 0}
@@ -114,7 +114,7 @@
 \item \emph{Idea}: forma más sencilla con buen comportamiento; nombre por \autor{Cobb}-\autor{Douglas} (1928), que la estiman; la forma, ya en \autor{Wicksell} (1901) y von~\autor{Thünen}.
 \item \emph{Supuestos}: $q=A\,z_K^{\alpha}z_L^{\beta}$, $A,\alpha,\beta>0$; $A$ nivel tecnológico; $\alpha,\beta$ elasticidades-producto.
 \item \emph{Desarrollo}: $\mathrm{PMg}_K=\alpha\,q/z_K$, $\mathrm{PMg}_L=\beta\,q/z_L$ (exponente $\times$ PMe); cumple \autor{Inada} $\Rightarrow$ toda en la región económica; $\mathrm{RMST}_{LK}=\frac{\beta}{\alpha}\frac{z_K}{z_L}$ $\Rightarrow$ $\sigma=1$; homogénea de grado $\alpha+\beta$.
-\item \emph{Implicaciones}: con RCE y pago según PMg (\autor{Euler}), participaciones constantes $\alpha$ y $1-\alpha$ $\Rightarrow$ $Y=AK^{\alpha}L^{1-\alpha}$ \vertema{3.A.43}\vertema{3.A.45}; las 3 neutralidades del progreso técnico coinciden (II.3).
+\item \emph{Implicaciones}: con RCE y pago según PMg (\autor{Euler}), participaciones constantes $\alpha$ y $1-\alpha$ $\Rightarrow$ $Y=AK^{\alpha}L^{1-\alpha}$ \vertema{3.A.43}\vertema{3.A.45}; las 3 neutralidades del progreso técnico coinciden (\hyperref[rep:II.3]{II.3}).
 \item \emph{Evidencia}: industria de EE.\,UU.\ 1899-1922: $q\approx1{,}01\,z_K^{1/4}z_L^{3/4}$: RCE y exponentes $\approx$ participaciones.
 \item \emph{Valoración}: impone $\sigma=1$ y participaciones que no responden a los precios $\Rightarrow$ hace falta la CES.
 \end{itemize}
@@ -139,11 +139,11 @@
 \item \emph{Valoración}: útil si la sustitución es despreciable (CP, intersectorial); a LP sí se sustituye.
 \end{itemize}
 \begin{ideaclave}
-Pocos axiomas sobre $\mathcal{Y}$ dan $F$; sus isocuantas miden la sustitución con la RMST y, sin unidades, con $\sigma$: de 0 (\autor{Leontief}) a $\infty$ (lineal), con la CD en $\sigma=1$. La superficie de producción es el mapa del bloque II: cada plazo, un corte.
+Pocos axiomas sobre $\mathcal{Y}$ dan $F$; sus isocuantas miden la sustitución con la RMST y, sin unidades, con $\sigma$: de 0 (\autor{Leontief}) a $\infty$ (lineal), con la CD en $\sigma=1$. La superficie de producción es el mapa del bloque \hyperref[rep:II]{II}: cada plazo, un corte.
 \end{ideaclave}
 
 % ==========================================================================
-\bloque[11,5]{II. Análisis de la función de producción: las leyes temporales}
+\bloque[11,5]{II. Análisis de la función de producción: las leyes temporales\label{rep:II}}
 \begin{itemize}
 \item \emph{Nexo}: caracterizada la tecnología, pasamos a cómo varía lo posible según el plazo.
 \item \emph{Conclusión anticipada}: los 3 plazos de \autor{Marshall} son 3 cortes de la superficie: CP, rendim.\ decrecientes; LP, rendim.\ a escala globales o locales; muy LP, progreso técnico, cuya neutralidad depende de qué se mantenga constante.
@@ -151,7 +151,7 @@ Pocos axiomas sobre $\mathcal{Y}$ dan $F$; sus isocuantas miden la sustitución 
 \end{itemize}
 \graficorepaso[0.52\linewidth]{plazos-3d}{Los 3 plazos sobre la superficie de producción}
 
-\sub{II.1. Corto plazo: productividad}
+\sub{II.1. Corto plazo: productividad\label{rep:II.1}}
 \begin{itemize}
 \item \emph{Conjunto}: $\mathcal{Y}(\overline{z}_K)=\{\vect{y}\in\mathcal{Y}:z_K=\overline{z}_K\}\subseteq\mathcal{Y}$ $\Rightarrow$ $q^{\mathrm{LP}}\geq q^{\mathrm{CP}}$; coste LP = envolvente de los de CP \vertema{3.A.12}; sin inacción si hay coste hundido.
 \item \emph{Función}: \concepto{rendimientos marginales mixtos}: $q$ crece a ritmo creciente, luego decreciente, máximo y cae (\concepto{ley de las proporciones variables}, \autor{Turgot}).
@@ -187,7 +187,7 @@ Margen intensivo & $\mathrm{PMg}_L=0$, máx.\ $q$ & $=0$ & máximo técnico\\
 \end{tabular}\par}
 \pareja{region-economica}{Región económica entre las líneas de contorno}{corto-plazo}{PT (arriba), PMe y PMg (abajo): etapas}
 
-\sub{II.2. Largo plazo: rendimientos a escala}
+\sub{II.2. Largo plazo: rendimientos a escala\label{rep:II.2}}
 \begin{itemize}
 \item \emph{Nexo}: estudiado el CP, pasamos al LP: todos los factores variables; corte por un rayo desde el origen.
 \item \emph{Definición}: $\vect{z}\to\lambda\vect{z}$, $\lambda$ = \concepto{factor de escala}. Para $\lambda>1$, $F(\lambda\vect{z})\gtreqless\lambda F(\vect{z})$: rendim.\ \emph{crecientes}, \emph{constantes}, \emph{decrecientes}. Isocuantas $q,2q,3q$ en un rayo: cada vez más juntas, equidistantes, más separadas.
@@ -217,7 +217,7 @@ Homogénea: $F(\lambda\vect{z})=\lambda^kF(\vect{z})$;\qquad \autor{Euler}: $\su
 \item \emph{Evidencia}: industria de EE.\,UU.\ (2 dígitos): rendim.\ constantes o algo decrecientes, mayores al agregar (\autor{Basu}-\autor{Fernald}, 1997) $\Rightarrow$ avala RCE agregados.
 \end{itemize}
 
-\sub{II.3. Muy largo plazo: progreso técnico}
+\sub{II.3. Muy largo plazo: progreso técnico\label{rep:II.3}}
 \begin{itemize}
 \item \emph{Nexo}: con la tecnología dada en CP y LP; ahora cambia la propia tecnología.
 \item \emph{Concepto}: \concepto{progreso técnico}: cambios en los métodos; innovaciones de \emph{proceso} (más con lo mismo) y de \emph{producto} (calidad, bienes nuevos). Amplía $\mathcal{Y}$: $F\uparrow$, isocuantas hacia el origen.
@@ -243,13 +243,13 @@ Cada plazo es un corte de la superficie: a CP, la ley de rendimientos decrecient
 \end{ideaclave}
 
 % ==========================================================================
-\bloque[4,5]{III. Empresa multiproducto: curva de contrato}
+\bloque[4,5]{III. Empresa multiproducto: curva de contrato\label{rep:III}}
 \begin{itemize}
 \item \emph{Nexo}: vista la producción de un bien en cada plazo, pasamos a la empresa que obtiene varios.
 \item \emph{Conclusión anticipada}: estar en la isocuanta de cada producto ya no basta: hay que asignar bien los factores (curva de contrato); la frontera es una función de transformación, y su pendiente, la RMT, el coste de oportunidad.
 \end{itemize}
 
-\sub{III.1. Caja de \autor{Edgeworth}: curva de contrato y FPP}
+\sub{III.1. Caja de \autor{Edgeworth}: curva de contrato y FPP\label{rep:III.1}}
 \begin{itemize}
 \item \emph{Idea}: varios productos con procesos \emph{separables} (una planta cada uno, o empresas de una economía): la frontera sale de \emph{asignar} los factores. Construcción del equilibrio general \vertema{3.A.21}, resumida.
 \item \emph{Supuestos}: $X=F_X(L_X,K_X)$, $Y=F_Y(L_Y,K_Y)$; $L_X+L_Y=\overline{L}$, $K_X+K_Y=\overline{K}$.
@@ -266,7 +266,7 @@ Cada plazo es un corte de la superficie: a CP, la ley de rendimientos decrecient
 \item \emph{Valoración}: procesos separables: no recoge un proceso con varios productos.
 \end{itemize}
 
-\sub{III.2. La empresa multiproducto y la producción conjunta}
+\sub{III.2. La empresa multiproducto y la producción conjunta\label{rep:III.2}}
 \begin{itemize}
 \item \emph{Idea}: \concepto{empresa multiproducto}: varios productos con los mismos factores. $\mathcal{Y}$ la admite sin cambios (más de un componente positivo); lo que no sirve es $F$.
 \item \emph{Supuestos}: \concepto{función de transformación}: $\mathcal{Y}=\{\vect{y}:T(\vect{y})\leq0\}$, $T=0$ en los planes eficientes; un producto: $T(q,-\vect{z})=q-F(\vect{z})$.

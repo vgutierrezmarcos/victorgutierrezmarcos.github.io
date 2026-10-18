@@ -25,9 +25,9 @@ disponibles), `D/T.tex` completo y `D/guion-cante.md` si existe.
 \esquemacante{\apartadocante{Introducción}{3} \apartadocante{I. …}{10} …}
 \bloque[3]{Introducción}
 …
-\bloque[10]{I. <apartado>}
-\sub{I.1. <subapartado>}
-…
+\bloque[10]{I. <apartado>\label{rep:I}}
+\sub{I.1. <subapartado>\label{rep:I.1}}
+… (remisión a otro apartado de la ficha: \hyperref[rep:I.1]{I.1}; a otro tema: \vertema{3.A.9})
 \bloque[3]{Conclusión}
 …
 \bloque{Autores y fechas}

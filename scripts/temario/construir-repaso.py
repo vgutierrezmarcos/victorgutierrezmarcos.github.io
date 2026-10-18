@@ -24,7 +24,7 @@ import sys
 import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log, ruta_windows  # noqa: E402
+from comun import Tema, MIKTEX, entorno_tex, ejecutar, errores_log, ruta_windows, escribir_destinos_tex  # noqa: E402
 
 TAMANOS = (10.5, 10, 9.5, 9, 8.75, 8.5, 8.25, 8)
 PAGINAS = 4
@@ -84,6 +84,7 @@ def main():
         sys.exit(1)
     salida = os.path.join(tema.trabajo, 'repaso')
     os.makedirs(salida, exist_ok=True)
+    escribir_destinos_tex()     # destinos de \vertema (tcee-repaso.sty)
 
     elegido = None
     for tam in TAMANOS:

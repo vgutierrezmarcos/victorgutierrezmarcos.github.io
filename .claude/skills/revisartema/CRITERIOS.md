@@ -328,6 +328,21 @@ el texto original y lo que se hizo.
   4. **Referencias cruzadas** «[ver tema …]»: cada una apunta al tema donde
      de verdad se trata eso, con la numeración actual; se añaden las que
      faltan (sobre todo al tema de referencia de cada modelo que se use).
+     **Toda remisión (a un tema, apartado, anexo, gráfico, tabla o ecuación)
+     es un enlace: `\vertema` para temas y `\ref`/`\hyperref` para lo
+     interno; lo comprueba verificar-tema.py** (Víctor, 18/10/2026). En la
+     práctica: nunca «[ver tema …]», «(II.3)», «apartado~I.2», «bloque~III»
+     ni «anexo~B» escritos a mano, sino `\vertema{3.A.12}`,
+     `(\ref{sec:…})`, `apartado~\ref{sec:…}`, `bloque~\ref{sec:…}`,
+     `anexo~\ref{anexo:…}`. Cada apartado numerado lleva su `\label{sec:…}`
+     (en los anexos, `\label{anexo:…}`) justo tras el título. En la ficha de
+     repaso, los números de `\bloque` y `\sub` van a mano: la etiqueta va
+     dentro del título (`\sub{I.2. Título\label{rep:I.2}}`) y la remisión es
+     `\hyperref[rep:I.2]{I.2}`. `\vertema` enlaza en el PDF y en el Word al
+     PDF del tema en la web (o a tema-no-disponible.html) y en la web a la
+     página del tema si está revisado (si no, a su PDF); la tabla de destinos
+     sale de temario.json (`latex/tcee-destinos.tex`, la escriben los scripts).
+     Las listas de tiempos del cante («I.1, `\tiempo{3}`») no son remisiones.
 - **Estructuras de mercado (3.A.16-3.A.19) con los mismos supuestos**
   (Víctor, 18/10/2026): al caracterizar cada estructura (competencia perfecta,
   monopolio, competencia monopolística, oligopolio), los cuatro temas parten de

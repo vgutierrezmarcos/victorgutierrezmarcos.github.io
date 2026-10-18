@@ -197,6 +197,18 @@ $body$
         </div>
     </div>
 </footer>
+    <script>
+    // En la app, la página se abre desde jsDelivr (con <base> en el commit del
+    // manifiesto) y los enlaces a otros temas se abren fuera: jsDelivr da las
+    // páginas HTML como texto, así que cada [ver tema …] lleva al PDF del tema
+    // (data-app, lo pone construir-tema.py).
+    (function () {
+        if (!/^https:\/\/cdn\.jsdelivr\.net\//.test(document.baseURI)) return;
+        document.querySelectorAll('a.vertema[data-app]').forEach(function (a) {
+            a.setAttribute('href', a.getAttribute('data-app'));
+        });
+    })();
+    </script>
     <script src="../../../search-engine.js"></script>
     <script src="../../../search-ui.js"></script>
     <script src="../../../cookie-consent.js"></script>

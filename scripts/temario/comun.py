@@ -197,6 +197,73 @@ def guardar_docx_anterior(tema):
     return guardar_anterior(tema, 'docx', b'PK')
 
 
+# --- Destinos de \vertema ---------------------------------------------------------------
+# Toda remisión a otro tema (\vertema{3.A.12}) es un enlace (Víctor, 18/10/2026):
+#   - PDF y Word: el PDF del tema en la web pública o, si no está disponible,
+#     tema-no-disponible.html?tema=…;
+#   - HTML: la página del tema si es un tema revisado con HTML en la rama
+#     (3A12.html, ../cuarto-ejercicio/4B12.html) y si no, el PDF o la página de
+#     tema no disponible, con rutas relativas.
+WEB = 'https://www.victorgutierrezmarcos.es'
+WEB_TEMARIO = f'{WEB}/oposicion/temario/'
+
+
+def destinos_temas(carpeta_origen=None):
+    """{código: {'pdf': URL absoluta, 'html': ruta relativa desde carpeta_origen
+    (tercer-ejercicio…), 'disponible': bool, 'revisado': bool}} para todos los
+    temas de temario.json."""
+    with open(os.path.join(TEMARIO, 'temario.json'), encoding='utf-8') as f:
+        datos = json.load(f)
+    destinos = {}
+    for ej in datos.get('ejercicios', []):
+        for parte in ej.get('partes', []):
+            for t in parte.get('temas', []):
+                codigo = t.get('codigo')
+                if not codigo:
+                    continue
+                url = t.get('url') if t.get('disponible') else None
+                if url and not url.startswith(WEB_TEMARIO):
+                    url = None
+                pdf = url or f'{WEB_TEMARIO}tema-no-disponible.html?tema={codigo}'
+                relativa = pdf[len(WEB_TEMARIO):]          # tercer-ejercicio/3A13.pdf
+                revisado = False
+                if re.fullmatch(r'[34]\.[AB]\.\d+', codigo):
+                    otro = Tema(codigo)
+                    if (os.path.exists(os.path.join(otro.dir_publico, f'{otro.archivo}.html'))
+                            and os.path.isdir(otro.dir)):
+                        relativa = f'{otro.carpeta}/{otro.archivo}.html'
+                        revisado = True
+                if carpeta_origen and relativa.startswith(carpeta_origen + '/'):
+                    html = relativa[len(carpeta_origen) + 1:]
+                elif carpeta_origen:
+                    html = '../' + relativa
+                else:
+                    html = relativa
+                destinos[codigo] = {'pdf': pdf, 'html': html, 'disponible': bool(url), 'revisado': revisado}
+    return destinos
+
+
+def primer_tema(argumento):
+    """Código del tema al que enlaza \\vertema{…}: «3.A.16-3.A.19» y «3.A.16-19» → 3.A.16."""
+    return argumento.split('-')[0].strip()
+
+
+def escribir_destinos_tex():
+    """latex/tcee-destinos.tex: \\tceedestino{3.A.12}{URL del PDF} para cada tema
+    (lo lee \\vertema en tcee.sty y tcee-repaso.sty). Solo se reescribe si cambia."""
+    lineas = ['% Destinos de \\vertema (URL del PDF de cada tema en la web, o la página de',
+              '% tema no disponible). Lo genera scripts/temario/comun.py (escribir_destinos_tex)',
+              '% a partir de oposicion/temario/temario.json: no editar a mano.']
+    for codigo, d in destinos_temas().items():
+        lineas.append(f'\\tceedestino{{{codigo}}}{{{d["pdf"]}}}')
+    texto = '\n'.join(lineas) + '\n'
+    ruta = os.path.join(LATEX, 'tcee-destinos.tex')
+    if not os.path.exists(ruta) or open(ruta, encoding='utf-8').read() != texto:
+        with open(ruta, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(texto)
+    return ruta
+
+
 # --- Minutos y páginas ---------------------------------------------------------------
 def minutos_texto(valor, primas=('′', '″')):
     """Minutos decimales sin decimales, como \\tceemmss de tcee.sty:
