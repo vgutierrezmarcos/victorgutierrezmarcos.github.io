@@ -136,7 +136,7 @@
             banner.innerHTML = `
                 <div class="cookie-banner-content">
                     <div class="cookie-banner-text">
-                        <h3 id="cookie-banner-title">🍪 Uso de cookies y almacenamiento local</h3>
+                        <h3 id="cookie-banner-title">Uso de cookies y almacenamiento local</h3>
                         <p id="cookie-banner-description">
                             Este sitio web utiliza cookies y tecnologías similares (localStorage) para: gestionar
                             tu sesión de usuario si inicias sesión con Google, almacenar tus preferencias, y con tu
@@ -332,7 +332,7 @@
             button.id = 'cookie-settings-button';
             button.className = 'cookie-settings-floating';
             button.setAttribute('aria-label', 'Configurar cookies');
-            button.innerHTML = '🍪';
+            button.innerHTML = '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 2.6 2.6 0 0 1-3.2-2.6A2.6 2.6 0 0 1 14.6 6 2.6 2.6 0 0 1 12 3z"/><circle cx="8.5" cy="10.5" r=".7" fill="currentColor"/><circle cx="14.5" cy="15" r=".7" fill="currentColor"/><circle cx="9.5" cy="15.5" r=".7" fill="currentColor"/></svg>';
             button.title = 'Configurar cookies';
             
             button.addEventListener('click', function() {

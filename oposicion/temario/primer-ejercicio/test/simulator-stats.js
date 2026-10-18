@@ -48,7 +48,7 @@ async function showStatsPanel() {
         if (snapshot.empty) {
             modal.querySelector('.history-loading').innerHTML =
                 '<div class="history-empty">' +
-                '<span class="empty-icon">📊</span>' +
+                '<span class="empty-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M7 16v-4"/><path d="M12 16V7"/><path d="M17 16v-7"/></svg></span>' +
                 '<p>No hay datos suficientes para mostrar estadísticas.</p>' +
                 '<p>Completa al menos un test para ver tu progreso.</p>' +
                 '</div>';

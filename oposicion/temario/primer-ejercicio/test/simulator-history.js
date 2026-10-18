@@ -32,7 +32,7 @@ function showSaveSuccessMessage() {
     if (header) {
         const msg = document.createElement('div');
         msg.style.cssText = 'background: rgba(255,255,255,0.2); padding: 0.5rem; border-radius: 4px; margin-top: 1rem; font-size: 0.9rem;';
-        msg.innerHTML = '✅ Resultado guardado en tu cuenta';
+        msg.innerHTML = '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg> Resultado guardado en tu cuenta';
         header.appendChild(msg);
     }
 }
@@ -66,7 +66,7 @@ async function showUserHistoryUI() {
     modal.innerHTML = `
         <div class="profile-content" style="max-width: 800px; width: 95%;">
             <span class="close-profile" onclick="document.getElementById('history-modal').style.display='none'">&times;</span>
-            <h3 style="color: var(--color-primary); font-family: var(--font-display); margin-bottom: 1.5rem;">📅 Tu historial de exámenes</h3>
+            <h3 style="color: var(--color-primary); font-family: var(--font-display); margin-bottom: 1.5rem;">Tu historial de exámenes</h3>
             <div id="history-loading">Cargando datos...</div>
             <div id="history-list" style="max-height: 60vh; overflow-y: auto;"></div>
         </div>

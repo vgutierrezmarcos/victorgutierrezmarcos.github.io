@@ -1,3 +1,16 @@
+// Iconos de trazo fino de los resultados (los mismos que el resto de la web)
+const ICONOS_BUSQUEDA = {
+    portapapeles: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 10h7M8.5 14h5"/></svg>',
+    documento: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>',
+    casa: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg>',
+    tabla: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M4 9.5h16M4 14.5h16M10 4v16"/></svg>',
+    pantalla: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8.5 20h7"/></svg>',
+    marcador: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h10v17l-5-3.5-5 3.5z"/></svg>',
+    bandeja: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 13.5 6 5.5h12l2.5 8V19a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1z"/><path d="M3.5 13.5H9l1 2h4l1-2h5.5"/></svg>',
+    prohibido: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>',
+    derecha: '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
+};
+
 /**
  * Interfaz de búsqueda - UI y handlers
  * Actualizado para mostrar estado de disponibilidad
@@ -50,7 +63,7 @@ class SearchUI {
                         </button>
                     </div>
                     <div class="search-tips">
-                        <span class="search-tip">💡 Consejo: Escribe el número del tema (ej: "3.A.5") o palabras clave</span>
+                        <span class="search-tip"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 18h5M10.5 21h3"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg> Consejo: Escribe el número del tema (ej: "3.A.5") o palabras clave</span>
                     </div>
                 </div>
                 <div class="search-results-container">
@@ -183,7 +196,7 @@ class SearchUI {
         const suggestions = `
             <div class="search-suggestions">
                 <div class="suggestion-group">
-                    <h4>🔍 Búsquedas sugeridas:</h4>
+                    <h4>Búsquedas sugeridas</h4>
                     <div class="suggestion-items">
                         <button class="suggestion-btn" data-query="economía internacional">Economía internacional</button>
                         <button class="suggestion-btn" data-query="política monetaria">Política monetaria</button>
@@ -193,7 +206,7 @@ class SearchUI {
                     </div>
                 </div>
                 <div class="suggestion-group">
-                    <h4>📚 Accesos rápidos:</h4>
+                    <h4>Accesos rápidos</h4>
                     <div class="suggestion-items">
                         <button class="suggestion-btn" data-query="tercer ejercicio">Tercer ejercicio</button>
                         <button class="suggestion-btn" data-query="cuarto ejercicio">Cuarto ejercicio</button>
@@ -277,7 +290,7 @@ class SearchUI {
                         ${result.ejercicio ? `<div class="result-ejercicio">${result.ejercicio}${result.grupo ? ' - ' + result.grupo : ''}</div>` : ''}
                         ${description ? `<div class="result-description">${description}</div>` : ''}
                     </div>
-                    <div class="result-arrow">${isNoDisponible ? '⛔' : '→'}</div>
+                    <div class="result-arrow">${isNoDisponible ? ICONOS_BUSQUEDA.prohibido : ICONOS_BUSQUEDA.derecha}</div>
                 </a>
             `;
         }).join('');
@@ -299,19 +312,19 @@ class SearchUI {
     getIcon(result) {
         // Si no está disponible, mostrar icono diferente
         if (result.disponible === false) {
-            return '📭';
+            return ICONOS_BUSQUEDA.bandeja;
         }
         
         const icons = {
-            ejercicio: '📋',
-            tema: '📄',
-            subtema: '📝',
-            page: '🏠',
-            excel: '📊',
-            pdf: '📕',
-            presentacion: '🎯',
-            word: '📄',
-            default: '📌'
+            ejercicio: ICONOS_BUSQUEDA.portapapeles,
+            tema: ICONOS_BUSQUEDA.documento,
+            subtema: ICONOS_BUSQUEDA.documento,
+            page: ICONOS_BUSQUEDA.casa,
+            excel: ICONOS_BUSQUEDA.tabla,
+            pdf: ICONOS_BUSQUEDA.documento,
+            presentacion: ICONOS_BUSQUEDA.pantalla,
+            word: ICONOS_BUSQUEDA.documento,
+            default: ICONOS_BUSQUEDA.marcador
         };
 
         return icons[result.type] || icons.default;

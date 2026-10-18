@@ -69,10 +69,11 @@
             border-color: var(--color-primary);
         }
         .community-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             display: block;
+            color: var(--color-primary);
         }
+        .community-icon .icono { width: 40px; height: 40px; }
         .community-card h3 {
             font-family: var(--font-display);
             font-size: 1.5rem;
@@ -123,14 +124,14 @@
 
                 <div class="community-actions">
                     <div class="community-card">
-                        <span class="community-icon">💬</span>
+                        <span class="community-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10H9.5L4 19.5z"/></svg></span>
                         <h3>Discord / Telegram</h3>
                         <p>Únete a nuestro servidor para chatear en tiempo real, participar en sesiones de estudio y compartir materiales.</p>
                         <a href="#" onclick="alert('El enlace a la comunidad estará disponible próximamente.'); return false;" class="boton join-btn discord">Unirse al Chat</a>
                     </div>
                     
                     <div class="community-card">
-                        <span class="community-icon">📢</span>
+                        <span class="community-icon"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4h3l7 4V6L7 10z"/><path d="M17.5 9a4 4 0 0 1 0 6"/></svg></span>
                         <h3>Newsletter</h3>
                         <p>Recibe las últimas actualizaciones, nuevos artículos del blog y avisos sobre la convocatoria directamente en tu correo.</p>
                         <a href="blog/index.html" class="boton join-btn">Suscribirse</a>
