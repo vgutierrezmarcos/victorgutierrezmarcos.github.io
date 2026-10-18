@@ -94,26 +94,37 @@
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-content">
-            <p class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></p>
-        </div>
+    <!-- Cabecera propia del blog: marca, lema y menú en una sola barra -->
+    <header class="blog-header">
+        <a href="../index.html" class="blog-brand">
+            <svg class="blog-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="32" height="32" rx="4" fill="#E2EFD9"/>
+                <text x="16" y="20.4" font-family="Pagella, Palatino Linotype, Palatino, Georgia, serif" font-size="11.5" font-weight="700" fill="#5F2987" text-anchor="middle" textLength="24" lengthAdjust="spacingAndGlyphs">VGM</text>
+            </svg>
+            <span class="blog-brand-text">
+                <span class="blog-brand-name">Víctor Gutiérrez Marcos</span>
+                <span class="blog-brand-tagline">Análisis Económico y Comercial</span>
+            </span>
+        </a>
+        <nav class="blog-nav" aria-label="Menú principal">
+            <a href="../index.html">Inicio</a>
+            <a href="../oposicion/index.html">Oposición</a>
+            <a href="index.html" class="active" aria-current="page">Blog</a>
+            <a href="../sobre-mi.html">Sobre mí</a>
+            <button id="blog-search-btn" class="blog-search-btn" type="button" aria-label="Buscar (Ctrl+K)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m20 20-4.05-4.05"></path>
+                </svg>
+            </button>
+            <span id="blog-auth-container"></span>
+        </nav>
     </header>
-
-    <nav class="main-nav">
-        <div class="nav-container">
-            <ul class="nav-list">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../oposicion/index.html">Oposición</a></li>
-                <li><a href="index.html" class="active">Blog</a></li>
-                <li><a href="../sobre-mi.html">Sobre mí</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- NEWSLETTER BANNER - Top of page, dismissible -->
     <div id="newsletter-banner" class="newsletter-banner">
         <div class="newsletter-banner-content">
+            <svg class="newsletter-banner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
             <span class="newsletter-banner-text"><strong>Newsletter:</strong> recibe los nuevos artículos en tu correo</span>
             <iframe name="sib-iframe" style="display:none;"></iframe>
             <form id="sib-form" class="newsletter-banner-form" method="POST" action="https://6de5a6a5.sibforms.com/serve/MUIFAHXAnoppQR8yHbmoRtq33MhK50ZI1iOJ-8sBBF8_WXTDC59dhFe2-PVOSw3Hr7WQ0oy3ln_lnCztp1v6uuv0v4YY9WzHdtrRAd-sXrbsadRIFPHVPi06HwxZafAqdvWdtLKM6R80la-Ftjc6CGc56jbrcyzdn4iqrUY-qjSU8q5RF6JD46GYRng3vYmHFi54OZvl_Xw0_udNcg==" target="sib-iframe" data-type="subscription">
