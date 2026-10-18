@@ -103,11 +103,11 @@
 .calc * { box-sizing: border-box }
 .calc .avisos { background: var(--accent-soft); border: 0; border-radius: 6px; padding: 14px 18px }
 .calc .avisos summary { cursor: pointer; font-weight: 600 }
-.calc .avisos ul { margin: 10px 0 0; padding-left: 1.2rem; display: grid; gap: 6px; max-width: 85ch }
+.calc .avisos ul { margin: 10px 0 0; padding-left: 1.2rem; display: grid; gap: 6px }
 
 .calc .envoltorio { max-width: 1180px; margin: 0 auto; display: grid; gap: 20px }
 .calc header h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin: 0; color: var(--accent); text-wrap: balance }
-.calc header p { margin: 6px 0 0; color: var(--muted); max-width: 72ch }
+.calc header p { margin: 6px 0 0; color: var(--muted) }
 .calc .rejilla { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 20px; align-items: start }
 @media (max-width: 860px) { .calc .rejilla { grid-template-columns: minmax(0, 1fr) } .calc .panel { position: static !important } }
 .calc .panel { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 14px }
@@ -127,13 +127,13 @@
 /* Los botones son .boton .boton--secundario .boton--peq de styles.css */
 .calc .resultados { display: grid; gap: 20px; min-width: 0 }
 .calc section { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 14px; min-width: 0 }
-.calc section > p.intro { margin: 0; color: var(--muted); max-width: 75ch }
+.calc section > p.intro { margin: 0; color: var(--muted) }
 .calc .cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px }
 .calc .cifra { background: var(--surface-2); border-radius: 6px; padding: 10px 12px }
 .calc .cifra .v { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.15 }
 .calc .cifra .v.principal { color: var(--accent) }
 .calc .cifra .d { font-size: .82rem; color: var(--muted) }
-.calc .consejo { border-left: 2px solid var(--gold); padding: 4px 0 4px 12px; margin: 0; max-width: 78ch }
+.calc .consejo { border-left: 2px solid var(--gold); padding: 4px 0 4px 12px; margin: 0 }
 .calc .grafico { width: 100%; overflow-x: auto }
 .calc .grafico svg { display: block; width: 100%; height: auto; min-width: 320px }
 .calc .grafico text { fill: var(--muted); font-family: var(--sans); font-size: 11px }

@@ -254,7 +254,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 }
 
 .content-text { font-size: 1.05rem; line-height: 1.8; position: relative; z-index: 1; }
-.content-text p { margin-bottom: 1.25rem; max-width: 72ch; }
+.content-text p { margin-bottom: 1.25rem; }
 @media (min-width: 769px) {
     .content-text p { text-align: justify; hyphens: auto; }
     .highlight-box p, .content-text .highlight-box p { text-align: left; hyphens: manual; }
@@ -454,7 +454,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     line-height: 1.2;
 }
 .app-banner-sub { display: block; margin-top: 0.15rem; font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); }
-.app-banner-text p { font-size: 1rem; line-height: 1.6; color: var(--color-text); margin: 0; max-width: 64ch; }
+.app-banner-text p { font-size: 1rem; line-height: 1.6; color: var(--color-text); margin: 0; }
 .app-banner-chips {
     list-style: none;
     display: grid;
@@ -622,7 +622,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 }
 
 /* /oposicion/: entradilla e índice de los cinco ejercicios */
-.opo-entradilla { font-size: 1.08rem; line-height: 1.65; color: var(--color-text-muted); max-width: 68ch; margin: -0.75rem 0 2rem; position: relative; z-index: 1; }
+.opo-entradilla { font-size: 1.08rem; line-height: 1.65; color: var(--color-text-muted); margin: -0.75rem 0 2rem; position: relative; z-index: 1; }
 .opo-entradilla a { color: var(--color-primary); text-decoration: underline; text-decoration-color: var(--color-accent-gold); text-underline-offset: 3px; }
 .opo-ejercicios { margin: 0.5rem 0 2.25rem; position: relative; z-index: 1; }
 .opo-ejercicios h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; }
@@ -669,7 +669,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     color: var(--color-primary);
     max-width: 38ch;
 }
-.portada-entradilla { font-size: 1.08rem; line-height: 1.6; color: var(--color-text-muted); max-width: 70ch; }
+.portada-entradilla { font-size: 1.08rem; line-height: 1.6; color: var(--color-text-muted); }
 
 .novedades-portada {
     width: 100%;
@@ -757,7 +757,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     z-index: 1;
 }
 .portada-tcee h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--color-text); }
-.portada-tcee p { max-width: 70ch; line-height: 1.7; }
+.portada-tcee p { line-height: 1.7; }
 
 /* Migas de pan visibles */
 .migas { display: flex; flex-wrap: wrap; gap: 0.4rem; font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 1.25rem; position: relative; z-index: 1; }
@@ -1110,7 +1110,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
     font-size: 0.86rem;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.82);
-    max-width: 78ch;
 }
 
 .footer-licencia a:not(.footer-cc),
