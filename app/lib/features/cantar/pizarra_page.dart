@@ -105,6 +105,7 @@ class _Gesto {
 
 const _claveExtras = 'pizarraExtras';
 const _claveFormas = 'pizarraFormas';
+const _claveAvisoScribble = 'pizarraAvisoScribble';
 
 class _PizarraPageState extends ConsumerState<PizarraPage> {
   FuentePizarra? _pizarra;
@@ -500,6 +501,35 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
   }
 
+  /// En el iPad, Scribble se queda con las letras rápidas del Apple Pencil
+  /// antes de que lleguen al navegador y no hay forma de evitarlo desde la
+  /// web: la primera vez que un lápiz toca la pizarra en un navegador de
+  /// Apple se explica cómo desactivarlo (y no se vuelve a decir).
+  void _avisarScribble() {
+    if (!kIsWeb || !navegadorApple()) return;
+    bool visto;
+    try {
+      visto = _caja?.get(_claveAvisoScribble) == true;
+    } catch (_) {
+      visto = true;
+    }
+    if (visto) return;
+    try {
+      _caja?.put(_claveAvisoScribble, true);
+    } catch (_) {}
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      showDialog<void>(
+        context: context,
+        builder: (d) => AlertDialog(
+          title: const Text('Apple Pencil en el navegador'),
+          content: const Text('Si Scribble está activado, el iPad se queda con las letras rápidas y en la pizarra faltan trazos. Desactívalo en Ajustes → Apple Pencil → Scribble.'),
+          actions: [FilledButton(onPressed: () => Navigator.pop(d), child: const Text('Entendido'))],
+        ),
+      );
+    });
+  }
+
   void _cerrarSiSigueAbierto() {
     if (!mounted || _punteroDibujo == null || !_esLapiz(_tipoDibujo!)) return;
     _log('el navegador levantó el lápiz y Flutter no lo dijo: terminar');
@@ -513,6 +543,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (_sinAcceso) return;
     final k = e.kind;
     if (_esLapiz(k) && !_dedoElegido && _dedoDibuja) setState(() => _dedoDibuja = false);
+    if (_esLapiz(k)) _avisarScribble();
     if (k == PointerDeviceKind.touch) {
       _toques[e.pointer] = e.localPosition;
       _toquesInicio[e.pointer] = e.localPosition;

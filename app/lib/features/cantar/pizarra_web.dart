@@ -108,3 +108,7 @@ void Function() engancharPizarraWeb({bool evitarScribble = true, AlEventoDom? al
 }
 
 String agenteNavegador() => web.window.navigator.userAgent;
+
+/// Si el navegador es de Apple (iPad, iPhone o Mac). Safari en el iPad se
+/// presenta como un Mac, por eso se mira también «Macintosh».
+bool navegadorApple() => RegExp(r'iPad|iPhone|Macintosh').hasMatch(web.window.navigator.userAgent);
