@@ -143,9 +143,68 @@ Fuentes de la integración: `_trabajo/original.md`, `pendientes.md` (P1-P58), `p
 
 ## Instrucciones para el vídeo
 
-- Enganche: «Dar gato por liebre» y «el ojo del amo engorda al caballo» con SVB; pregunta: «¿Puede un contrato bien diseñado sustituir al ojo del amo?». La idea final la responde («En parte… alguien pagará por ella»).
-- Introducción y conclusión sin pizarra; la tabla de clasificación, como apoyo.
-- I: `akerlof` como apoyo o una línea en la pizarra; `spence` en la pizarra con la doble desigualdad; la caja de Mossin (`seguro-simetrico`) como apoyo (2 frases); `rothschild-stiglitz` por capas: primero el panel izquierdo (first best → M → descreme) y después el derecho (E_A → S_B), o un solo gráfico que crece, sin escribir dos veces lo mismo.
-- II: rejilla en 2 columnas: a la izquierda el programa `eq:principal-agente` escrito primero **solo con la PC** (caso 2) y con la IC añadida al pasar al caso 4 (sin borrar nada); a la derecha `principal-agente` por capas (caja → certezas → isobeneficio → PC → Z; después IC → T → coste de agencia). Casos 1 y 3 de palabra (apunte). Tabla de los 4 casos como apoyo. Al cambiar de bloque, `conservar:` la columna del programa (función clave) hasta el final.
-- III: `stiglitz-weiss` en 2 paneles (rendimiento del banco → mercado con oferta que se dobla) y la función 𝔼[B_banco] pequeña; se recuerda que la responsabilidad limitada es lo que impide «vender el negocio».
-- Apoyo, no pizarra: `rs-inexistencia` y todo lo de los anexos.
+En este tema la pizarra es el reto: cada modelo se cuenta alternando la parte **analítica (mitad izquierda)** y la **gráfica (mitad derecha)**, y los gráficos se construyen con las capas de su TikZ, en el mismo orden que el texto (los envoltorios `-pasoK` del PDF marcan los cortes). Nunca se escribe dos veces lo mismo: lo que cambia se añade o se borra sobre lo ya escrito.
+
+- **Introducción y conclusión**, sin pizarra. Enganche: «Dar gato por liebre» y «el ojo del amo engorda al caballo», con SVB; pregunta: «¿Puede un contrato bien diseñado sustituir al ojo del amo?». La idea final la responde («En parte… alguien pagará por ella»). La tabla de clasificación, como apoyo. El esquema de 3 bloques, en una franja estrecha arriba del todo, y se queda.
+- **Akerlof (I.2, 2')**: `akerlof` como apoyo o una línea de valoraciones a la derecha (0, 500, 750, 1.000 y las 2 flechas); a la izquierda, solo «calidad privada ⇒ el precio selecciona a los peores». Se borra al acabar I.2.
+- **Spence (I.3.1, 3'30")**, un solo gráfico que crece a la derecha, `spence` por capas:
+  1. capas 1-2 (paso 1): eje vertical con w_A y w_B, w̄ y «los productivos se van»: es Akerlof otra vez, ahora en el mercado de trabajo;
+  2. capas 3-4 (paso 2): eje de la educación y las 2 rectas de coste (c_B más inclinada: cruce único);
+  3. capa 5 (paso 3): recta w_A − w_B y sus cortes y_0 e y_1; a la izquierda se escriben entonces IC_A, IC_B y la doble desigualdad (2), que es lo que la recta y los cortes dibujan;
+  4. capa 6 (paso 4): ŷ con A_0 = B_0, A_ŷ por encima de w_B y B_ŷ por debajo (las flechas c_A(ŷ) y c_B(ŷ) desde w_A);
+  5. capas 7-8: los 3 tramos bajo el eje (B también se educa / separador / nadie se educa) y ŷ* = y_0 con el criterio intuitivo.
+  Al acabar se borra todo menos el esquema.
+- **Rothschild-Stiglitz (I.3.2, 5')**: la caja de Mossin (`seguro-simetrico`) como apoyo, 2 frases. A la derecha, el gráfico base `rothschild-stiglitz` por capas; a la izquierda, solo las 2 ecuaciones del separador (4) cuando se llega a c.i.
+  - a) heterogeneidad: capas 1-5 (ejes, certeza, A, rectas π_A y π_B); frase del cruce único.
+  - a.i) si pudiera distinguir: capas 6-7 (E_A, E_B con sus tangencias).
+  - a.ii) pero no puede: capa 8 (U_A′ por E_B y la flecha «los temerarios prefieren E_B»).
+  - b) prima promedio: aquí se pasa a `rs-agrupador` en el mismo marco. Recomendación: borrar las capas 6-8 del gráfico base (E_B, U_B*, U_A′ y flecha) y dibujar encima las capas 6-11 de `rs-agrupador` (π̄, M, U_B y U_A por M, zona rayada, N con «cream skimming»). Las capas 1-5 son idénticas en los 2 gráficos y no se repiten.
+  - c.i) separador: se borra lo de `rs-agrupador` (capas 6-11) y se vuelve al gráfico base: capas 6, 9 y 10 (E_A con U_A*, S_B con sus guías y U_B); se escriben a la izquierda las 2 ecuaciones de (4). «A todo riesgo» y «con franquicia», de palabra.
+  - c.ii) inexistencia: sobre el separador ya dibujado, se añaden las capas 5-6 de `rs-inexistencia` (recta π̄ con ν alta, que pasa por encima de U_B, y la zona con C). Es el mismo marco y la misma escala.
+  - Al acabar, se borra todo menos el esquema.
+- **Principal-agente (II.2, 8'30")**, la pizarra en 2 columnas desde el principio, con la parte analítica a la izquierda y la gráfica a la derecha, en el orden de Víctor:
+  - *1.1 (izquierda)*: el programa (5) solo con la PC y, debajo, las condiciones de primer orden con la igualación de las RMSE (6).
+  - *1.2 (derecha)*: la caja (`principal-agente`, capas 1-2: caja, orígenes y las 2 líneas de certeza), que ya no se borra. Sobre ella se van dibujando los casos, borrando solo las curvas del caso anterior:
+    - 1.2.1, agente y principal neutrales: capas 3-5 de `pa-neutrales` (isobeneficios; PC = isobeneficio; Z y V); se dice que cualquier punto del tramo vale;
+    - 1.2.2, agente averso y principal neutral: se borra la PC recta y se dibujan las capas 3-5 de `principal-agente` (isobeneficio, PC convexa rotulada «curva de indiferencia U^R», Z); se menciona el poder de negociación (Z sube por la línea de certeza del agente);
+    - 1.2.3, los 2 aversos: se borra la isobeneficio y se dibujan las capas 4-5 de `pa-aversos` (curva del principal, curva de contrato y Z′); la regla de Borch se escribe pequeña bajo la CPO, como variante.
+  - *2.1 (izquierda)*: se añade la IC al programa (que pasa a ser la función clave (8)) y **se borra la CPO de igualación de las RMSE** (y la de Borch); en su lugar, la condición de Holmström-Mirrlees (9).
+  - *2.2 (derecha)*: se vuelve al principal neutral y se dibuja la frontera de la IC con su flecha «cumplen la IC»:
+    - 2.2.1, neutrales: capas 6-7 de `pa-neutrales` sobre la PC recta (la frontera, paralela a las líneas de certeza; Z fuera, el tramo óptimo con V); aún no hay riesgo moral;
+    - 2.2.2, agente averso: se vuelve a la PC convexa y Z (capas 4-5 de `principal-agente`) y se añaden las capas 6-8 (frontera de la IC curva, T, isobeneficio por T y «coste de agencia»).
+  - Al final de II.2 quedan en la pizarra el programa (8) a la izquierda, que se conserva hasta el final del tema, y la caja con T. La tabla de los 4 casos, como apoyo.
+- **III (2'30")**: `stiglitz-weiss` en sus 2 paneles a la derecha (rendimiento del banco con máximo en r̂*; oferta que se dobla) y la función E[B_banco] pequeña a la izquierda; se recuerda, señalando el programa (8), que la responsabilidad limitada impide «vender el negocio». Las implicaciones de detalle, las extensiones y la evidencia no se cantan.
+- **Apoyo, no pizarra**: la tabla de clasificación, `seguro-simetrico`, la tabla de los 4 casos y todo lo de los anexos.
+
+## Comentarios de Víctor del 19/10/2026
+
+1. **Rothschild-Stiglitz paso a paso** (hecho). La caja gris de Mossin se queda al principio. El desarrollo de I.3.2 sigue exactamente los puntos pedidos, cada uno con su gráfico:
+   - a) heterogeneidad (gráfico rs-a);
+   - a.i) si pudiera distinguir, first best (rs-b);
+   - a.ii) pero no puede (rs-c);
+   - b) la prima promedio no es solución, con descreme (rs-d y rs-agrupador);
+   - c.i) contratos diferenciados y autoselección, equilibrio separador (rothschild-stiglitz);
+   - c.ii) según la proporción de prudentes, el separador puede no sostenerse (rs-inexistencia, que pasa del anexo al cuerpo; el anexo B conserva el texto y remite a él).
+   Gráfico base nuevo de un solo panel, `rothschild-stiglitz`, con capas y un marco fijo (`\useasboundingbox`, el mismo mecanismo que `seguros.tex` del 3.A.10) y los envoltorios `rothschild-stiglitz-paso1..3`. Mantiene los mismos parámetros, los ejes x₁/x₂, la línea de certeza, A con W̄ y W̄−L, y la notación γ/π_A/π_B/ν. `rs-agrupador` (nuevo, con `rs-agrupador-paso1`) y `rs-inexistencia` (rehecho con capas separadas) usan el mismo marco y la misma escala. El enlace al vídeo de YouTube va en una nota al pie con `\href` y texto descriptivo.
+2. **Spence paso a paso** (hecho). `spence` está rehecho según la Imagen 3 del original, con todos sus elementos: w_A, w_B, w̄, costes, w_A − w_B, y_0, y_1, ŷ, A_0 = B_0, A_ŷ, B_ŷ, las distancias c_A(ŷ) y c_B(ŷ), los 3 tramos y ŷ*. Se construye por capas y se muestra en 5 pasos (`spence-paso1..4` y el completo), empezando por la Imagen 2 (el problema de Akerlof en el mercado de trabajo: salario medio, los productivos se van). Cada paso va junto al texto que explica lo que se ha pintado.
+   - Una precisión respecto al original: la Imagen 3 rotulaba el punto B_Ê como «w_B − c_B(Ê)»; lo correcto es w_A − c_B(ŷ) (el poco productivo que imita cobra w_A), y así se ha dibujado.
+   - Los tramos fuera del separador se rotulan «B también se educa» y «nadie se educa» en lugar de «equilibrio agrupador». Con ŷ fuera de [y_0, y_1] la educación no separa, pero el salario de un agrupador sería w̄, no w_A.
+3. **Principal-agente en el orden pedido** (hecho). II.2 sigue el orden 1 / 1.1 / 1.2 (1.2.1, 1.2.2, 1.2.3) / 2 / 2.1 / 2.2 (2.2.1, 2.2.2).
+   - 1.1 escribe el programa con solo la PC y la igualación de las RMSE, como la ecuación (6), con las 2 RMSE señaladas.
+   - En 2.1 el programa con la IC es la función clave, y el texto dice que la igualación de las RMSE desaparece y la sustituye Holmström-Mirrlees.
+   - Hay un gráfico para cada caso, en la misma caja con marco fijo:
+     - `pa-neutrales-paso1` (1.2.1) y `pa-neutrales` (2.2.1), nuevo;
+     - `principal-agente-paso1` (1.2.2) y `principal-agente` (2.2.2), sin V, que pasa a `pa-neutrales`;
+     - `pa-aversos` (1.2.3, Borch; nuevo; con raíces para los 2, la curva de contrato es la diagonal de la caja).
+   - En todos se rotulan la PC («curva de indiferencia U^R») y la IC («frontera de la IC», con la flecha «cumplen la IC»).
+   - El caso de los 2 aversos se resume en el cuerpo y la derivación sigue en el anexo A.2.
+   - La tabla de los 4 casos lleva el número de cada apartado, y su fuente añade el caso 1.2.3.
+   - Las notas al opositor ya no dicen que los casos 1 y 3 van «de palabra»: se cantan los 5, en este orden.
+4. **Minutos** (hecho): I 12', II 12', III 2'30". Están cambiados los `\minutos`, el reparto de la nota al opositor de la introducción (I.2, 2'; señalización, 3'30"; autoselección, 5'; II.2, 8'30"; III.2, 2') y las notas de cada bloque. El esquema de pizarra lleva los casos del principal-agente. Stiglitz-Weiss se queda entero en el cuerpo; la nota de III dice qué se canta (más breve) y qué es de profundización (detalle de implicaciones, extensiones, evidencia y valoración).
+5. **Vídeo**: el plan de pizarra por modelo está en «Instrucciones para el vídeo», arriba.
+
+Gráficos nuevos o rehechos, ya compilados:
+- envoltorios: `spence-paso1..4`, `rothschild-stiglitz-paso1..3`, `rs-agrupador-paso1`, `pa-neutrales-paso1` y `principal-agente-paso1`;
+- bases: `spence`, `rothschild-stiglitz`, `rs-agrupador`, `rs-inexistencia`, `pa-neutrales`, `principal-agente` y `pa-aversos`.
+
+El tema pasa de 28 a 36 páginas de cuerpo por los 20 gráficos.

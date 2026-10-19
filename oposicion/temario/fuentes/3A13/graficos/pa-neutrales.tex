@@ -1,0 +1,56 @@
+% El modelo principal-agente con agente y principal neutrales al riesgo, en la misma
+% caja de Edgeworth que principal-agente.tex (12 × 7, pi = 2/3, marco y escala iguales).
+%   Agente neutral, u(w) = w. PC (esfuerzo alto): (2/3) w_E + (1/3) w_F = U^R + v(e^A) = 4,
+%   w_F = 12 - 2 w_E: coincide con la recta de isobeneficio del principal que pasa por
+%   Z = (4, 4) (pendiente -pi/(1 - pi) = -2). Todos sus puntos dan al principal el mismo
+%   beneficio: da igual un fijo (Z) que la venta del negocio, V = (17/3, 2/3), sobre la
+%   línea de certeza del principal (w_F = w_E - 5).
+%   Esfuerzo inobservable: frontera de la IC w_E - w_F = Delta = 3, paralela a las 2
+%   líneas de certeza; la IC se cumple por debajo. Corta la PC en (5, 2): los contratos
+%   de la PC entre (5, 2) y (6, 0) cumplen la IC, entre ellos V; Z ya no.
+% Construcción paso a paso en el PDF: pa-neutrales-paso1.tex (capas 1-5, esfuerzo
+% observable) y este (todas, esfuerzo inobservable).
+% Elaboración propia a partir de Fernández de Castro y Tugores (1992, cap. 8)
+% y Laffont y Martimort (2002, cap. 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={iso(\x)=12-2*\x; icn(\x)=\x-3;}]
+  \def\XE{12}\def\XF{7}
+  % Marco fijo, el mismo en principal-agente.tex y pa-aversos.tex
+  \useasboundingbox (-2.6,-2.0) rectangle (14.2,8.3);
+  % 1: la caja y los 2 orígenes
+  \capa{1}{\draw[thick] (0,0) rectangle (\XE,\XF);}
+  \capa{1}{\node[below left] at (0,0) {$O_{\mathrm{A}}$};}
+  \capa{1}{\draw[eje] (0.3,-0.45) -- (1.8,-0.45) node[right] {$w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (-0.45,0.3) -- (-0.45,1.8) node[above] {$w_{\mathrm{F}}$};}
+  \capa{1}{\node[above right] at (\XE,\XF) {$O_{\mathrm{P}}$};}
+  \capa{1}{\draw[eje] (\XE-0.3,\XF+0.45) -- (\XE-1.8,\XF+0.45) node[left] {$x_{\mathrm{E}}-w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[below] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thin] (0,-1) -- (\XE,-1) node[midway,below=5pt] {$x_{\mathrm{E}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt},thin] (-1.1,0) -- (-1.1,\XF) node[midway,left=5pt] {$x_{\mathrm{F}}$};}
+  % 2: las líneas de certeza del agente y del principal
+  \capa{2}{\draw[thin,tceemorado] (0,0) -- (\XF,\XF) node[pos=0.22,sloped,above,font=\footnotesize] {línea de certeza del agente};}
+  \capa{2}{\draw[thin,tceedorado] (\XE-\XF,0) -- (\XE,\XF) node[pos=0.85,sloped,above,font=\footnotesize] {línea de certeza del principal};}
+  % 3: rectas de isobeneficio del principal, de pendiente -pi/(1-pi)
+  \capa{3}{\draw[curva4,dashed] plot[domain=1.5:5,samples=2] (\x,{iso(\x)-2});}
+  \capa{3}{\draw[curva4,dashed] plot[domain=3.5:7,samples=2] (\x,{iso(\x)+2});}
+  \capa{3}{\node[etiqueta,text=tceedorado,anchor=east,font=\footnotesize] at (1.6,5.4) {$-\dfrac{\pi}{1-\pi}$};}
+  % 4: PC del agente neutral: una recta, la misma que una isobeneficio del principal
+  \capa{4}{\draw[curva1] plot[domain=2.5:6,samples=2] (\x,{iso(\x)});}
+  \capa{4}{\node[etiqueta,anchor=west,align=left,font=\footnotesize,text=tceemorado] at (2.75,6.75) {PC: indiferencia $U^R$\\ $=$ isobeneficio};}
+  % 5: cualquier contrato de la PC es óptimo: el fijo Z o la venta del negocio V
+  \capa{5}{\node[punto] (Z) at (4,4) {};}
+  \capa{5}{\node[etiqueta,left=2pt] at (Z) {$Z$};}
+  \capa{5}{\node[punto] (V) at ({17/3},{2/3}) {};}
+  \capa{5}{\node[etiqueta,below left] at (V) {$V$};}
+  % 6: esfuerzo inobservable: frontera de la IC; la cumplen los contratos de debajo
+  \capa{6}{\draw[curva2] (3,0) -- (10,7) node[pos=0.6,sloped,above,font=\footnotesize,text=tceeazul] {frontera de la IC};}
+  \capa{6}{\draw[->,thick,tceeazul] (8.5,{icn(8.5)}) -- ++(1.7,-1.7) node[etiqueta,below right=-2pt,font=\footnotesize,text=tceeazul] {cumplen la IC};}
+  % 7: contratos óptimos: los de la PC que cumplen la IC (entre ellos, V); Z ya no vale
+  \capa{7}{\draw[curvanueva,line width=2.4pt] (5,2) -- (6,0);}
+  \capa{7}{\draw[thin,tceegris] (5.5,1) -- (8.6,0.5) node[etiqueta,right,align=left,font=\footnotesize,text=tceerojo] {contratos óptimos};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,57 @@
+% Autoselección en el seguro (Rothschild y Stiglitz, 1976): una prima media no es
+% una solución (no hay equilibrio agrupador). Mismos datos, marco y escala que
+% rothschild-stiglitz.tex: W = 10, L = 6, A = (10, 4), temerarios pi_A = 0,5,
+% prudentes pi_B = 0,25, utilidad u = ln.
+%   Proporción de prudentes nu = 0,5 -> riesgo medio pi-barra = 0,375:
+%     recta de isobeneficio nulo con la mezcla x_2 = (7,75 - 0,625 x_1)/0,375
+%     (pendiente -5/3, entre las de los 2 tipos).
+%   Contrato agrupador M = (8,2; 7) sobre ella.
+%     Curva del prudente por M: x_2 = 7 (8,2/x_1)^3 (pendiente -2,56 en M).
+%     Curva del temerario por M: x_2 = 57,4/x_1 (pendiente -0,85 en M).
+%   Zona rayada: por encima de la curva del prudente, por debajo de la del temerario
+%     y de la recta de los prudentes (beneficio con solo prudentes):
+%     8,2 < x_1 < 9,27. N = (8,8; 6,1) dentro de ella (cream skimming).
+% Construcción paso a paso en el PDF: rs-agrupador-paso1.tex (capas 1-7, la prima
+% media y M) y este (todas; en el vídeo, las curvas por M en las capas 8-9).
+% Elaboración propia a partir de Rothschild y Stiglitz (1976) y Fernández de Castro
+% y Tugores (1992, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,y=0.7cm,
+    declare function={
+      ra(\x)=14-\x;                  % isobeneficio nulo con temerarios
+      rb(\x)=34-3*\x;                % isobeneficio nulo con prudentes
+      rm(\x)=(7.75-0.625*\x)/0.375;  % isobeneficio nulo con el riesgo medio
+      prM(\x)=7*(8.2/\x)^3; teM(\x)=57.4/\x;}]
+  % Marco fijo, el mismo que rothschild-stiglitz.tex y rs-inexistencia.tex
+  \useasboundingbox (-2.4,-1.6) rectangle (14.2,12.4);
+  % 1: ejes
+  \capa{1}{\ejes{$x_1$}{$x_2$}{13.5}{12}}
+  % 2: línea de certeza
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (11,11) node[etiqueta,above,font=\footnotesize,text=black] {línea de certeza};}
+  % 3: dotación A
+  \capa{3}{\node[punto] (A) at (10,4) {};}
+  \capa{3}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{3}{\draw[guia] (10,0) node[below,text=black] {$\overline{W}$} |- (0,4) node[left,text=black] {$\overline{W}-L$};}
+  % 4: isobeneficio nulo con los temerarios
+  \capa{4}{\draw[curva4] plot[domain=10:4.8,samples=2] (\x,{ra(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{A}}$};}
+  % 5: isobeneficio nulo con los prudentes, más inclinada
+  \capa{5}{\draw[curva4] plot[domain=10:8,samples=2] (\x,{rb(\x)}) node[etiqueta,above left=0pt and -4pt,text=tceedorado] {$\pi_{\mathrm{B}}$};}
+  % 6: prima media: isobeneficio nulo con la mezcla, entre las 2
+  \capa{6}{\draw[curva4,dashed] plot[domain=10:6.4,samples=2] (\x,{rm(\x)}) node[etiqueta,above,text=tceedorado] {$\overline{\pi}$};}
+  % 7: contrato agrupador M sobre la recta media
+  \capa{7}{\node[punto] (M) at (8.2,7) {};}
+  \capa{7}{\node[etiqueta,left=2pt] at (M) {$M$};}
+  % 8: curva de indiferencia del prudente por M, más inclinada
+  \capa{8}{\draw[curva2] plot[domain=7.2:11.4,samples=50] (\x,{prM(\x)}) node[etiqueta,right] {$U_{\mathrm{B}}$};}
+  % 9: curva de indiferencia del temerario por M, menos inclinada
+  \capa{9}{\draw[curva1] plot[domain=5.5:12,samples=50] (\x,{teM(\x)}) node[etiqueta,right] {$U_{\mathrm{A}}$};}
+  % 10: contratos que solo atraen a los prudentes y dan beneficio
+  \capa{10}{\fill[pattern=north east lines,pattern color=tceeverde] plot[domain=8.2:9.27,samples=30] (\x,{prM(\x)}) -- plot[domain=9.27:8.2,samples=30] (\x,{min(teM(\x),rb(\x))}) -- cycle;}
+  % 11: el contrato N se lleva a los prudentes (cream skimming)
+  \capa{11}{\node[punto,fill=tceerojo] (N) at (8.8,6.1) {};}
+  \capa{11}{\draw[thin,tceegris] (N) -- (11.2,8.2) node[etiqueta,above right=-2pt,text=tceerojo,align=left,font=\footnotesize] {$N$: atrae solo\\ a los prudentes};}
+\end{tikzpicture}
+\end{document}

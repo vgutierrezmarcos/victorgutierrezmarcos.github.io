@@ -1,37 +1,72 @@
-% Señalización en el mercado de trabajo (Spence, 1973): los niveles de educación
-% que separan a los 2 tipos.
-%   Diferencia salarial w_A - w_B = 2 (recta horizontal).
-%   Costes: c_A(y) = 0,5 y (tipo productivo, menos inclinada), c_B(y) = y (más inclinada).
-%   Cortes con la recta: c_B^{-1}(2) = 2 y c_A^{-1}(2) = 4.
-%   Separan los y-gorro en [2, 4]; con el criterio intuitivo, y-gorro* = 2 (corte con c_B).
+% Señalización en el mercado de trabajo (Spence, 1973), construida por capas desde
+% el problema de Akerlof en el mercado de trabajo (Imagen 2 del tema antiguo) hasta
+% el gráfico completo de la señalización (Imagen 3).
+%   Productividades (y salarios con información perfecta): w_A = 6, w_B = 4.
+%   Proporción de productivos nu = 0,5 -> salario medio w-barra = 5.
+%   Costes de la educación y: c_A(y) = 0,5 y (tipo productivo, menos inclinado),
+%   c_B(y) = y (más inclinado).
+%   Diferencia salarial w_A - w_B = 2: cortes y_0 = c_B^{-1}(2) = 2 e y_1 = c_A^{-1}(2) = 4.
+%   Un nivel exigido y-gorro = 3 (entre y_0 e y_1):
+%     A: w_A - c_A(3) = 4,5 > w_B = 4 -> le compensa educarse (IC_A);
+%     B: w_A - c_B(3) = 3 < w_B = 4 -> no le compensa imitar (IC_B).
+%   Por debajo de y_0 también B se educa; por encima de y_1 nadie se educa.
+%   Criterio intuitivo: y-gorro* = y_0.
+% Construcción paso a paso en el PDF: spence-paso1.tex (capas 1-2, el problema),
+% spence-paso2.tex (1-4, los costes), spence-paso3.tex (1-5, la diferencia salarial),
+% spence-paso4.tex (1-6, un nivel y-gorro) y este (todas).
 % Elaboración propia a partir de Spence (1973).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=1.3cm,y=1cm,
+\begin{tikzpicture}[tcee,x=1.3cm,y=0.8cm,
     declare function={ca(\y)=0.5*\y; cb(\y)=\y;}]
-  \def\dw{2}\def\ylo{2}\def\yhi{4}
-  % 1: ejes: educación y euros
-  \capa{1}{\ejes{$y$}{€}{6.6}{4.6}}
-  % 2: diferencia salarial, recta horizontal
-  \capa{2}{\draw[curva4] (0,\dw) -- (6.2,\dw);}
-  \capa{2}{\node[left] at (0,\dw) {$w_{\mathrm{A}}-w_{\mathrm{B}}$};}
-  % 3: coste del tipo productivo, menos inclinado
-  \capa{3}{\draw[curva1] plot[domain=0:6.2,samples=2] (\x,{ca(\x)}) node[etiqueta,right] {$c_{\mathrm{A}}(y)$};}
-  % 4: coste del tipo poco productivo, más inclinado
-  \capa{4}{\draw[curva2] plot[domain=0:4.2,samples=2] (\x,{cb(\x)}) node[etiqueta,above] {$c_{\mathrm{B}}(y)$};}
-  % 5: cortes con la diferencia salarial
-  \capa{5}{\node[punto] (B) at (\ylo,\dw) {};}
-  \capa{5}{\draw[guia] (B) -- (\ylo,0) node[below,text=black,font=\footnotesize] {$c_{\mathrm{B}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})$};}
-  \capa{5}{\node[punto] (A) at (\yhi,\dw) {};}
-  \capa{5}{\draw[guia] (A) -- (\yhi,0) node[below,text=black,font=\footnotesize] {$c_{\mathrm{A}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})$};}
-  % 6: los niveles de educación que separan
-  \capa{6}{\fill[area] (\ylo,0) rectangle (\yhi,\dw);}
-  \capa{6}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick] (\ylo,-0.75) -- (\yhi,-0.75)
-    node[midway,below=6pt,etiqueta,font=\footnotesize,align=center] {$\hat y$ que separan:\\ $c_{\mathrm{A}}(\hat y)\leq w_{\mathrm{A}}-w_{\mathrm{B}}\leq c_{\mathrm{B}}(\hat y)$};}
-  % 7: el separador más barato (criterio intuitivo), en el corte con c_B
-  \capa{7}{\node[circle,draw=tceerojo,very thick,inner sep=2.6pt] at (B) {};}
-  \capa{7}{\node[etiqueta,text=tceerojo,above left] at (B) {$\hat y^*$};}
+  \def\wA{6}\def\wB{4}\def\wm{5}\def\dw{2}\def\ylo{2}\def\yhi{4}\def\yg{3}
+  % Marco fijo, para que todos los pasos salgan del mismo tamaño y a la misma escala
+  \useasboundingbox (-2.3,-3.0) rectangle (8.4,7.9);
+  % 1: el problema de Akerlof en el mercado de trabajo: eje de salarios con las
+  % 2 productividades (Imagen 2 del tema antiguo)
+  \capa{1}{\draw[eje] (0,0) -- (0,7.3) node[above] {$w,\ c$};}
+  \capa{1}{\node[left] at (0,0) {$0$};}
+  \capa{1}{\draw (-0.06,\wA) -- (0.06,\wA) node[at start,left] {$w_{\mathrm{A}}$};}
+  \capa{1}{\draw (-0.06,\wB) -- (0.06,\wB) node[at start,left] {$w_{\mathrm{B}}$};}
+  % 2: sin información, salario medio: los productivos se van
+  \capa{2}{\draw[tceerojo,thick] (-0.06,\wm) -- (0.06,\wm) node[at start,left,text=tceerojo] {$\overline{w}$};}
+  \capa{2}{\node[etiqueta,anchor=west,align=left,font=\footnotesize,text=tceerojo] at (0.15,\wm) {$\overline{w}=\nu w_{\mathrm{A}}+(1-\nu)w_{\mathrm{B}}$:\\ los productivos se van};}
+  % 3: eje de la educación y los 2 salarios como referencia
+  \capa{3}{\draw[eje] (0,0) -- (7.4,0) node[below left=2pt and 0pt] {$y$};}
+  \capa{3}{\draw[guia,tceeverde] (0,\wA) -- (7,\wA);}
+  \capa{3}{\draw[guia,tceeverde] (0,\wB) -- (7,\wB);}
+  % 4: costes de la educación: más inclinado el del poco productivo
+  \capa{4}{\draw[curva2] plot[domain=0:6.6,samples=2] (\x,{cb(\x)}) node[etiqueta,right] {$c_{\mathrm{B}}(y)$};}
+  \capa{4}{\draw[curva1] plot[domain=0:7,samples=2] (\x,{ca(\x)}) node[etiqueta,right] {$c_{\mathrm{A}}(y)$};}
+  % 5: diferencia salarial y sus cortes con los costes: y_0 e y_1
+  \capa{5}{\draw[curva4] (0,\dw) -- (7,\dw);}
+  \capa{5}{\node[left] at (0,\dw) {$w_{\mathrm{A}}-w_{\mathrm{B}}$};}
+  \capa{5}{\draw[guia] (\ylo,\dw) -- (\ylo,0) node[below] {$y_0$};}
+  \capa{5}{\draw[guia] (\yhi,\dw) -- (\yhi,0) node[below] {$y_1$};}
+  \capa{5}{\node[punto] at (\ylo,\dw) {};}
+  \capa{5}{\node[punto] at (\yhi,\dw) {};}
+  % 6: un nivel exigido y-gorro: lo que obtiene cada tipo si se educa
+  \capa{6}{\draw[guia] (\yg,0) node[below] {$\hat y$} -- (\yg,\wA);}
+  \capa{6}{\node[punto] at (\yg,{ca(\yg)}) {};}
+  \capa{6}{\node[punto] at (\yg,{cb(\yg)}) {};}
+  \capa{6}{\draw[<->,thick,tceenaranja] (\yg+0.08,\wA) -- (\yg+0.08,{\wA-ca(\yg)}) node[pos=0.4,right,font=\footnotesize] {$c_{\mathrm{A}}(\hat y)$};}
+  \capa{6}{\draw[<->,thick,tceenaranja] (\yg-0.08,\wA) -- (\yg-0.08,{\wA-cb(\yg)}) node[pos=0.8,left,font=\footnotesize] {$c_{\mathrm{B}}(\hat y)$};}
+  \capa{6}{\node[punto,fill=tceerojo] (Ay) at (\yg,{\wA-ca(\yg)}) {};}
+  \capa{6}{\node[etiqueta,text=tceerojo,right=5pt] at (Ay) {$A_{\hat y}$};}
+  \capa{6}{\node[punto,fill=tceerojo] (By) at (\yg,{\wA-cb(\yg)}) {};}
+  \capa{6}{\node[etiqueta,text=tceerojo,below right=1pt and 3pt] at (By) {$B_{\hat y}$};}
+  \capa{6}{\node[punto,fill=tceerojo] (B0) at (0,\wB) {};}
+  \capa{6}{\node[etiqueta,text=tceerojo,below right=1pt and 1pt,font=\footnotesize] at (B0) {$A_0=B_0$};}
+  \capa{6}{\draw[guia] (0,{\wA-ca(\yg)}) node[left,text=black,font=\footnotesize] {$w_{\mathrm{A}}-c_{\mathrm{A}}(\hat y)$} -- (\yg,{\wA-ca(\yg)});}
+  \capa{6}{\draw[guia] (0,{\wA-cb(\yg)}) node[left,text=black,font=\footnotesize] {$w_{\mathrm{A}}-c_{\mathrm{B}}(\hat y)$} -- (\yg,{\wA-cb(\yg)});}
+  % 7: qué ocurre según el nivel exigido
+  \capa{7}{\draw[<->,thick,tceemorado] (0.03,-1.25) -- (\ylo-0.03,-1.25) node[midway,below,align=center,font=\footnotesize,text=tceemorado] {no separa:\\ $B$ también se educa};}
+  \capa{7}{\draw[<->,thick,tceenaranja] (\ylo+0.03,-1.25) -- (\yhi-0.03,-1.25) node[midway,below,align=center,font=\footnotesize,text=tceenaranja] {equilibrio separador:\\ $A$ se educa, $B$ no};}
+  \capa{7}{\draw[<->,thick,tceemorado] (\yhi+0.03,-1.25) -- (7.2,-1.25) node[midway,below,align=center,font=\footnotesize,text=tceemorado] {no separa:\\ nadie se educa};}
+  % 8: el separador más barato (criterio intuitivo), en y_0
+  \capa{8}{\node[circle,draw=tceerojo,very thick,inner sep=2.6pt] at (\ylo,\dw) {};}
+  \capa{8}{\node[etiqueta,text=tceerojo,above left] at (\ylo,\dw) {$\hat y^*$};}
 \end{tikzpicture}
 \end{document}

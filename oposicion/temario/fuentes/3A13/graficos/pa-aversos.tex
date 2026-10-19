@@ -1,0 +1,44 @@
+% El modelo principal-agente con agente y principal aversos al riesgo y esfuerzo
+% observable (regla de Borch), en la misma caja de Edgeworth que principal-agente.tex
+% (12 × 7, pi = 2/3, marco y escala iguales).
+%   Agente: u(w) = sqrt(w); PC: (2/3) sqrt(w_E) + (1/3) sqrt(w_F) = 2, w_F = (6 - 2 sqrt(w_E))^2.
+%   Principal: u_P(x - w) = sqrt(x - w). Regla de Borch con las 2 raíces:
+%   w_F/w_E = x_F/x_E = 7/12: la curva de contrato es la diagonal de la caja (de O_A a O_P).
+%   Tangencia con la PC: sqrt(w_E) (2/3 + (1/3) sqrt(7/12)) = 2 -> Z' = (4,713; 2,749),
+%   por debajo de la línea de certeza del agente y por encima de la del principal:
+%   ninguno queda asegurado del todo. Pendiente común -2 sqrt(7/12) = -1,5275.
+%   Curva de indiferencia del principal por Z': (2/3) sqrt(12 - w_E) + (1/3) sqrt(7 - w_F) = 2,48687,
+%   w_F = 7 - (7,4606 - 2 sqrt(12 - w_E))^2, de w_E = 2 a 6,2.
+% Elaboración propia a partir de Borch (1962) y Laffont y Martimort (2002, cap. 2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={pc(\x)=(6-2*sqrt(\x))^2; up(\x)=7-(7.4606-2*sqrt(12-\x))^2;}]
+  \def\XE{12}\def\XF{7}
+  % Marco fijo, el mismo en principal-agente.tex y pa-neutrales.tex
+  \useasboundingbox (-2.6,-2.0) rectangle (14.2,8.3);
+  % 1: la caja y los 2 orígenes
+  \capa{1}{\draw[thick] (0,0) rectangle (\XE,\XF);}
+  \capa{1}{\node[below left] at (0,0) {$O_{\mathrm{A}}$};}
+  \capa{1}{\draw[eje] (0.3,-0.45) -- (1.8,-0.45) node[right] {$w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (-0.45,0.3) -- (-0.45,1.8) node[above] {$w_{\mathrm{F}}$};}
+  \capa{1}{\node[above right] at (\XE,\XF) {$O_{\mathrm{P}}$};}
+  \capa{1}{\draw[eje] (\XE-0.3,\XF+0.45) -- (\XE-1.8,\XF+0.45) node[left] {$x_{\mathrm{E}}-w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[below] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thin] (0,-1) -- (\XE,-1) node[midway,below=5pt] {$x_{\mathrm{E}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt},thin] (-1.1,0) -- (-1.1,\XF) node[midway,left=5pt] {$x_{\mathrm{F}}$};}
+  % 2: las líneas de certeza del agente y del principal
+  \capa{2}{\draw[thin,tceemorado] (0,0) -- (\XF,\XF) node[pos=0.22,sloped,above,font=\footnotesize] {línea de certeza del agente};}
+  \capa{2}{\draw[thin,tceedorado] (\XE-\XF,0) -- (\XE,\XF) node[pos=0.8,sloped,below,font=\footnotesize] {línea de certeza del principal};}
+  % 3: PC del agente averso (su curva de indiferencia U^R)
+  \capa{3}{\draw[curva1] plot[domain=2.81:8.6,samples=60] (\x,{pc(\x)}) node[etiqueta,above right,align=left,font=\footnotesize] {PC: curva de\\ indiferencia $U^R$};}
+  % 4: curva de indiferencia del principal averso, convexa vista desde O_P
+  \capa{4}{\draw[curva4] plot[domain=2.0:6.2,samples=60] (\x,{up(\x)}) node[etiqueta,below,text=tceedorado] {$U_P$};}
+  % 5: tangencia Z' fuera de las 2 líneas de certeza, sobre la curva de contrato
+  \capa{5}{\draw[guia,tceerojo] (0,0) -- (\XE,\XF) node[pos=0.72,sloped,above,font=\footnotesize,text=tceerojo] {curva de contrato};}
+  \capa{5}{\node[punto] (Zp) at (4.713,2.749) {};}
+  \capa{5}{\node[etiqueta,above left=0pt and 1pt] at (Zp) {$Z'$};}
+\end{tikzpicture}
+\end{document}
