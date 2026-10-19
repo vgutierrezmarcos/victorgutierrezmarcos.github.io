@@ -95,6 +95,29 @@ void main() {
     expect(trazos(fuente), 1);
   });
 
+  testWidgets('los puntos que el navegador manda dos veces no se añaden dos veces', (tester) async {
+    final fuente = await montar(tester);
+    final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
+    var t = const Duration(seconds: 1);
+    await g.down(_lienzo, timeStamp: t);
+    // Cuatro puntos y, como hace WebKit en el iPad, los mismos cuatro otra vez.
+    for (var vuelta = 0; vuelta < 2; vuelta++) {
+      t = const Duration(seconds: 1);
+      for (var i = 1; i <= 4; i++) {
+        t += const Duration(milliseconds: 4);
+        await g.moveTo(_lienzo + Offset(10.0 * i, 0), timeStamp: t);
+      }
+      await tester.pump(const Duration(milliseconds: 16));
+    }
+    await g.up(timeStamp: t + const Duration(milliseconds: 4));
+    await tester.pump(const Duration(milliseconds: 50));
+    expect(trazos(fuente), 1);
+    // Un trazo recto: cinco puntos, sin ir y volver (simplificado quedan los dos extremos).
+    final puntos = fuente.paginas.first.trazos.first.puntos;
+    expect(puntos.length, 2);
+    expect(puntos.last.x > puntos.first.x, isTrue);
+  });
+
   testWidgets('un cancel guarda el trazo', (tester) async {
     final fuente = await montar(tester);
     final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);

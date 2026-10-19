@@ -780,6 +780,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       return;
     }
     if (_enCurso.isEmpty || _formaHecha) return;
+    // WebKit en el iPad manda muchos puntos del lápiz dos veces (el mismo
+    // instante, los mismos puntos): el tiempo nunca va hacia atrás.
+    if (_esLapiz(e.kind) && e.timeStamp <= _ultimoTiempo) {
+      if (_registro.activo) _log('punto repetido (ts=${(e.timeStamp.inMicroseconds / 1000).toStringAsFixed(1)}): ignorado');
+      return;
+    }
     // Un punto nuevo en cuanto se mueve medio píxel: nada de saltos.
     if ((e.localPosition - _ultimaPantalla).distance < 0.5) return;
     if (_esLapiz(e.kind) && _cantoRegla == null && cortaTrazoLapiz(e.timeStamp - _ultimoTiempo, (e.localPosition - _ultimaPantalla).distance)) {
