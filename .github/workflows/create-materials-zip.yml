@@ -54,6 +54,10 @@ jobs:
         
         # Eliminar carpetas que no deben incluirse
         rm -rf .git .github 2>/dev/null || true
+        # Fuentes LaTeX/LyX de los temas revisados (no son materiales) y versiones anteriores
+        rm -rf temario/fuentes 2>/dev/null || true
+        find . -name "*-anterior.*" -type f -delete 2>/dev/null || true
+        find . \( -name "*.tex" -o -name "*.lyx" -o -name "*.bib" -o -name "*.sty" \) -type f -delete 2>/dev/null || true
         
         cd ..
         

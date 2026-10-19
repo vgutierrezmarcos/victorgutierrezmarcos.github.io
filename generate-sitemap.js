@@ -44,6 +44,7 @@ const EXCLUDE_PATTERNS = [
     /^(enlaces|organizacion)\.html$/,
     /^oposicion\/temario\/index\.html$/,  // página puente de /oposicion/temario/
     /^oposicion\/que-es-tcee\.html$/,   // página puente de la guía (ahora por-que-tcee.html)
+    /^oposicion\/temario\/fuentes\//,   // fuentes LaTeX de los temas revisados (PDF de cada gráfico, etc.)
 ];
 
 // Documentos que también van al sitemap (los temas en PDF son lo que más se busca)

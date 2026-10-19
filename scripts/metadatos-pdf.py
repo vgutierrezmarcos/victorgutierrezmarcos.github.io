@@ -117,7 +117,8 @@ def metadatos(ruta, texto):
 def propios():
     """PDF de Víctor que llevan la licencia: los de /oposicion/ y /blog/, menos AJENOS."""
     rutas = subprocess.check_output(['git', 'ls-files', 'oposicion/*.pdf', 'blog/*.pdf'], text=True, cwd=RAIZ).split()
-    return [r for r in rutas if r not in AJENOS and '/oculto/' not in r]
+    # (sin los PDF de los gráficos y auxiliares de las fuentes de los temas revisados)
+    return [r for r in rutas if r not in AJENOS and '/oculto/' not in r and '/temario/fuentes/' not in r]
 
 
 def anio_de(info):

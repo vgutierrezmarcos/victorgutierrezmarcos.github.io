@@ -21,6 +21,13 @@ Qué hace:
     bibliografía. En HTML se quitan.
   - En Word reparte el título en líneas de longitud parecida, como el PDF.
   - Muestra los minutos sin decimales (\minutos{2,5} y \tiempo{2,5} → 2′30″).
+  - Cada gráfico lleva como texto alternativo (alt en HTML, descripción en
+    Word) el título de su figura; el texto en color va con clases CSS
+    (.tcee-verde…) para que el tema oscuro pueda aclararlo; las celdas con
+    fondo, con clases .celda-…; \findemo (∎) a la derecha.
+  - Numera los apartados a partir del nivel del primer título (en HTML van
+    desplazados un nivel, --shift-heading-level-by=1, para que la página
+    tenga un solo h1) y deja la bibliografía con el ancla #bibliografia.
   - \funcionclave (construir-tema.py lo deja como entorno «funcionclave») y
     \graficonota: recuadro morado y gráfico pequeño centrado (tema.css en la
     web, estilos «Funcion clave» y «Grafico nota» en Word).
@@ -167,6 +174,10 @@ local function Span(s)
   local color = estilo:match('color:%s*(tcee%w+)')
   if color == 'tceetiempo' then
     return pandoc.Str(mmss(pandoc.utils.stringify(s)))
+  elseif color == 'tceefindemo' then
+    -- ∎ de fin de demostración: a la derecha en la web; en Word, tras un espacio ancho
+    if es_docx then return pandoc.Str('\u{2003}∎') end
+    return pandoc.Span({ pandoc.Str('∎') }, pandoc.Attr('', { 'findemo' }))
   elseif color == 'tceenota' then
     -- Notas pequeñas (bajo las tablas): texto normal
     s.attributes['style'] = nil
@@ -186,7 +197,10 @@ local function Span(s)
         s.content = s.content:walk({ Math = math_a_texto })
       end
     else
-      s.attributes['style'] = 'color: #' .. COLORES[color]
+      -- clase en vez de color en línea: tema.css da a cada una su tono en el
+      -- tema oscuro (.tcee-verde, .tcee-morado…)
+      s.attributes['style'] = nil
+      s.classes:insert('tcee-' .. color:sub(5))
     end
   end
   return s
@@ -224,7 +238,7 @@ local function pintar_celda(celda, color)
     end
     celda.contents = { pandoc.Div(bloques, pandoc.Attr('', {}, { ['custom-style'] = 'Celda ' .. color })) }
   else
-    celda.attributes['style'] = 'background: #' .. COLORES[color] .. '; color: #222'
+    celda.classes:insert('celda-' .. color)
   end
 end
 
@@ -319,6 +333,13 @@ end
 function Pandoc(doc)
   local s, ss, sss = 0, 0, 0
   local nfig, ntab = 0, 0
+  -- Nivel del primer título (en HTML, con --shift-heading-level-by=1, los
+  -- apartados son h2; en Word, Heading 1): la numeración cuenta desde ahí
+  local base = 7
+  doc:walk({ Header = function(h)
+    if h.identifier ~= 'bibliography' and h.level < base then base = h.level end
+  end })
+  if base == 7 then base = 1 end
 
   local function minutos_de(bloques, i)
     -- \minutos{n} va en el párrafo justo después del título: lo saca de ahí
@@ -347,10 +368,17 @@ function Pandoc(doc)
           end
         end })
         local numero = nil
+        local nivel = b.level - base + 1
+        if b.identifier == 'bibliography' then
+          -- Título de la bibliografía (citeproc): al nivel de los apartados y con ancla en castellano
+          b.level = base
+          b.identifier = 'bibliografia'
+          nivel = 0
+        end
         if not b.classes:includes('unnumbered') then
-          if b.level == 1 then s = s + 1; ss = 0; sss = 0; numero = romano(s) .. '.'
-          elseif b.level == 2 then ss = ss + 1; sss = 0; numero = romano(s) .. '.' .. ss .. '.'
-          elseif b.level == 3 then sss = sss + 1; numero = romano(s) .. '.' .. ss .. '.' .. sss .. '.'
+          if nivel == 1 then s = s + 1; ss = 0; sss = 0; numero = romano(s) .. '.'
+          elseif nivel == 2 then ss = ss + 1; sss = 0; numero = romano(s) .. '.' .. ss .. '.'
+          elseif nivel == 3 then sss = sss + 1; numero = romano(s) .. '.' .. ss .. '.' .. sss .. '.'
           end
         end
         if numero then
@@ -364,7 +392,8 @@ function Pandoc(doc)
             b.content:insert(pandoc.Space())
             b.content:insert(pandoc.Span({ pandoc.Str(min) }, pandoc.Attr('', {}, { ['custom-style'] = 'Minutos' })))
           else
-            b.content:insert(pandoc.Span({ pandoc.Str(min) }, pandoc.Attr('', { 'minutos' })))
+            -- aria-hidden: el lector de pantalla no lee los minutos dentro del título ni del índice
+            b.content:insert(pandoc.Span({ pandoc.Str(min) }, pandoc.Attr('', { 'minutos' }, { ['aria-hidden'] = 'true' })))
           end
         end
       elseif b.t == 'Figure' then
@@ -377,6 +406,16 @@ function Pandoc(doc)
         if cap then
           cap.content:insert(1, pandoc.Space())
           cap.content:insert(1, pandoc.Span({ pandoc.Str(etiqueta) }, pandoc.Attr('', { 'etiqueta' })))
+        end
+        -- Texto alternativo del gráfico (alt en HTML, descripción en Word): el título de la figura
+        local alt = pandoc.utils.stringify(b.caption.long)
+        if alt ~= '' then
+          b.content = b.content:walk({ Image = function(im)
+            if #im.caption == 0 or pandoc.utils.stringify(im.caption) == 'image' then
+              im.caption = pandoc.Inlines({ pandoc.Str(alt) })
+              return im
+            end
+          end })
         end
         b.content = separar_fuente(b.content)
         if es_docx then
@@ -488,7 +527,11 @@ function Pandoc(doc)
       pandoc.Attr('', {}, { ['custom-style'] = 'Paginas del tema' })))
   end
   doc = doc:walk({ Table = Table })
-  return doc:walk({ Image = Image, Span = Span, Link = Link })
+  doc = doc:walk({ Image = Image, Span = Span, Link = Link })
+  -- La ancla de la bibliografía en castellano también en los enlaces
+  return doc:walk({ Link = function(l)
+    if l.target == '#bibliography' then l.target = '#bibliografia'; return l end
+  end })
 end
 
 -- Enlaces de \vertema ---------------------------------------------------------

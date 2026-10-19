@@ -195,6 +195,7 @@ def compilar_graficos(tema, forzar=False, solo=None):
             errores.append(f'{nombre}:\n' + '\n'.join(errores_log(base + '.log')))
             continue
         ejecutar([PDFTOCAIRO, '-svg', os.path.basename(pdf), os.path.basename(svg)], cwd=tema.graficos)
+        titular_svg(svg)
         doc = fitz.open(pdf)
         doc[0].get_pixmap(dpi=300, alpha=False).save(png)
         doc.close()
@@ -202,6 +203,17 @@ def compilar_graficos(tema, forzar=False, solo=None):
             if os.path.exists(base + ext):
                 os.remove(base + ext)
     return errores
+
+
+def titular_svg(svg):
+    """<title> en el SVG (el nombre del gráfico, con espacios): los lectores de
+    pantalla y los buscadores lo leen; pdftocairo deja el texto como trazos."""
+    nombre = os.path.splitext(os.path.basename(svg))[0].replace('-', ' ').replace('_', ' ')
+    texto = open(svg, encoding='utf-8').read()
+    if '<title>' in texto:
+        return
+    texto = re.sub(r'(<svg\b[^>]*>)', lambda m: m.group(1) + f'<title>Gráfico: {nombre}</title>', texto, count=1)
+    open(svg, 'w', encoding='utf-8', newline='\n').write(texto)
 
 
 # --- 3. PDF ----------------------------------------------------------------------------
@@ -525,7 +537,8 @@ def comunes_pandoc(tema, datos):
         dia = datetime.datetime.strptime(datos['fecha'], '%d/%m/%Y').date()
     except ValueError:
         dia = datetime.date.today()
-    orden += ['-M', f'fecha-iso={dia.isoformat()}', '-M', f'fecha-cita={dia:%Y/%m/%d}', '-M', f'anio={dia.year}']
+    orden += ['-M', f'fecha-iso={dia.isoformat()}', '-M', f'fecha-cita={dia:%Y/%m/%d}', '-M', f'anio={dia.year}',
+              '-M', f'titulo-cita={datos["titulo"].rstrip(". ")}']   # para Google Académico, sin el punto final
     paginas = linea_paginas(paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux')))
     if paginas:
         orden += ['-M', f'paginas={paginas}']
@@ -543,7 +556,8 @@ def generar_html(tema, tex_pandoc, datos):
     # --wrap=none: si pandoc parte una línea dentro de \text{…}, MathJax se come el espacio
     orden = [PANDOC, ruta_windows(tex_pandoc), '-t', 'html5', '-s', '--mathjax', '--wrap=none',
              '--template', ruta_windows(os.path.join(LATEX, 'plantilla-tema.html')),
-             '--toc', '--toc-depth=2', '--section-divs',
+             # Un solo h1 en la página (el título del tema): los apartados empiezan en h2
+             '--shift-heading-level-by=1', '--toc', '--toc-depth=3', '--section-divs',
              '-M', f'graficos-html=../fuentes/{tema.archivo}/graficos',
              '-M', f'titulo-corto={corto}', '-o', ruta_windows(destino)]
     orden += comunes_pandoc(tema, datos)

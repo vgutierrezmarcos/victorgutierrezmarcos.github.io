@@ -103,12 +103,13 @@
     padding: 0.25rem 0.8rem;
     text-decoration: none;
 }
-.tema-descargas a:hover { background: var(--color-primary); color: #fff; }
+.tema-descargas a:hover { background: var(--color-primary); color: var(--color-on-primary); }
 
-/* Apartados */
-.tema-documento h1:not(.tema-titulo) {
+/* Apartados (la página tiene un solo h1, el título del tema: los apartados
+   van de h2 a h6, --shift-heading-level-by=1 en construir-tema.py) */
+.tema-documento h2:not(.tema-pie-titulo) {
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-on-primary);
     font-family: var(--font-display);
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -116,9 +117,9 @@
     margin: 2.2rem 0 1rem;
     text-align: left;
 }
-/* Los niveles se distinguen como en el PDF: banda (h1), subrayado (h2),
-   sangrado en cursiva (h3) y más sangrado (h4) */
-.tema-documento h2:not(.tema-titulo) {
+/* Los niveles se distinguen como en el PDF: banda (h2), subrayado (h3),
+   sangrado en cursiva (h4) y más sangrado (h5, h6) */
+.tema-documento h3 {
     color: var(--color-primary);
     font-size: 1.15rem;
     margin: 1.8rem 0 0.6rem;
@@ -126,7 +127,7 @@
     border-bottom: 1px solid var(--color-primary);
     text-align: left;
 }
-.tema-documento h3 {
+.tema-documento h4 {
     color: var(--color-primary);
     font-style: italic;
     font-weight: normal;
@@ -134,8 +135,8 @@
     margin: 1.3rem 0 0.5rem 1.2em;
     text-align: left;
 }
-.tema-documento h3 .numero { font-style: normal; }
-.tema-documento h4 {
+.tema-documento h4 .numero { font-style: normal; }
+.tema-documento h5 {
     color: var(--color-primary-dark);
     font-style: italic;
     font-weight: normal;
@@ -143,7 +144,7 @@
     margin: 1rem 0 0.4rem 2.4em;
     text-align: left;
 }
-.tema-documento h5 {
+.tema-documento h6 {
     color: var(--color-primary-dark);
     font-weight: 700;
     font-size: 0.95rem;
@@ -151,7 +152,7 @@
     text-align: left;
 }
 .tema-documento .numero { margin-right: 0.45em; }
-.tema-documento h1 .minutos, .tema-documento h2 .minutos {
+.tema-documento h2 .minutos, .tema-documento h3 .minutos {
     float: right;
     font-family: var(--font-ui);
     font-size: 0.75rem;
@@ -183,7 +184,7 @@
     padding: 0.15rem 0.9rem;
     border: 1.5px solid var(--color-primary);
     border-radius: 4px;
-    background: #F7F3FA;
+    background: var(--color-primary-pale);
     color: var(--color-primary);
     overflow-x: auto;
 }
@@ -234,7 +235,7 @@
 /* Tablas */
 .tema-documento table { border-collapse: collapse; margin: 1rem auto; font-size: 0.9rem; max-width: 100%; display: block; overflow-x: auto; }
 .tema-documento table caption { font-family: var(--font-body); font-size: 0.92rem; margin-bottom: 0.4rem; text-align: center; }
-.tema-documento th { background: var(--color-primary); color: #fff; padding: 0.35rem 0.6rem; }
+.tema-documento th { background: var(--color-primary); color: var(--color-on-primary); padding: 0.35rem 0.6rem; }
 .tema-documento td { border-bottom: 1px solid var(--color-border); padding: 0.35rem 0.6rem; vertical-align: top; }
 
 /* Matemáticas */
@@ -255,7 +256,7 @@
     .tema-layout { grid-template-columns: minmax(0, 1fr); padding: 1rem 0.6rem 2rem; }
     .tema-indice { position: static; max-height: none; }
     .tema-documento { padding: 1.4rem 1.1rem 2rem; text-align: left; }
-    .tema-documento h1 .minutos, .tema-documento h2 .minutos { float: none; display: block; }
+    .tema-documento h2 .minutos, .tema-documento h3 .minutos { float: none; display: block; }
 }
 
 /* Impresión */
@@ -279,8 +280,35 @@
     text-transform: uppercase;
     color: var(--color-primary);
     border: none;
+    background: none;
     margin: 0 0 0.4rem;
     padding: 0;
 }
 .tema-cita p { overflow-wrap: anywhere; }
-.tema-licencia { color: var(--color-text-muted); font-size: 0.85rem; }
+.tema-cita .licencia-fin { margin-top: 0.6rem; padding-top: 0; border-top: none; font-size: 0.85rem; }
+
+/* Texto en color (\textcolor{tcee…}): los colores de los gráficos y las tablas
+   de clasificación (tcee-comun.sty), más claros en el tema oscuro */
+.tcee-morado { color: #5F2987; } .tcee-moradooscuro { color: #4A1F6B; }
+.tcee-verde { color: #3C7D3A; } .tcee-azul { color: #1F5F99; } .tcee-naranja { color: #E07B28; }
+.tcee-rojo { color: #B22222; } .tcee-dorado { color: #B8860B; } .tcee-gris { color: #767171; }
+[data-theme="dark"] .tcee-morado, [data-theme="dark"] .tcee-moradooscuro { color: #c3a2e0; }
+[data-theme="dark"] .tcee-verde { color: #86c583; } [data-theme="dark"] .tcee-azul { color: #86b8e8; }
+[data-theme="dark"] .tcee-naranja { color: #f2a56a; } [data-theme="dark"] .tcee-rojo { color: #f08a8a; }
+[data-theme="dark"] .tcee-dorado { color: #e2c46a; } [data-theme="dark"] .tcee-gris { color: #a9a3a3; }
+/* Celdas con fondo (\cellcolor, \rowcolor): fondo claro con texto oscuro también en el tema oscuro */
+.celda-tceesalvia { background: #E2EFD9; color: #222; }
+.celda-tceeazulpalido { background: #DDEBF7; color: #222; }
+.celda-tceesalmon { background: #FBE4D5; color: #222; }
+.celda-tceemoradopalido { background: #F3EEF7; color: #222; }
+.celda-tceegrisclaro { background: #E7E6E6; color: #222; }
+.celda-tceecrema { background: #FAF9F6; color: #222; }
+.celda-tceemorado { background: #5F2987; color: #fff; }
+.celda-tceeverde { background: #3C7D3A; color: #fff; }
+.celda-tceeazul { background: #1F5F99; color: #fff; }
+.celda-tceerojo { background: #B22222; color: #fff; }
+.celda-tceedorado { background: #B8860B; color: #fff; }
+.celda-tceenaranja { background: #E07B28; color: #fff; }
+.celda-tceegris { background: #767171; color: #fff; }
+/* ∎ de fin de demostración, a la derecha como en el PDF */
+.tema-documento .findemo { float: right; color: var(--color-primary); margin-left: 1em; }

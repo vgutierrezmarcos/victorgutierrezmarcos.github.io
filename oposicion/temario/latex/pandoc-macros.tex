@@ -16,8 +16,8 @@
 \newcommand{\tiempo}[1]{\textcolor{tceetiempo}{#1}}
 % Gráfico pequeño en una nota al pie (tcee.lua y tema.css lo centran)
 \newcommand{\graficonota}[2][0.45]{\begin{notagrafico}\includegraphics[width=#1\linewidth]{#2}\end{notagrafico}}
-% Fin de demostración
-\newcommand{\findemo}{\quad$\blacksquare$}
+% Fin de demostración (tcee.lua lo pone a la derecha en la web; fuera de las fórmulas)
+\newcommand{\findemo}{\textcolor{tceefindemo}{$\blacksquare$}}
 % \funcionclave y \optim los expande construir-tema.py antes de pandoc
 % figuracaja y tablacaja (gráfico o tabla dentro de una caja) los convierte
 % construir-tema.py en figure y table antes de pandoc
