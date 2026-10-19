@@ -8,6 +8,9 @@
 %   Esfuerzo inobservable: frontera de la IC w_E - w_F = Delta = 3, paralela a las 2
 %   líneas de certeza; la IC se cumple por debajo. Corta la PC en (5, 2): los contratos
 %   de la PC entre (5, 2) y (6, 0) cumplen la IC, entre ellos V; Z ya no.
+% Como en la versión anterior del tema (Víctor, 19/10/2026): textos explicativos de la PC y
+% de la IC girados a lo largo de la línea, con una flecha hacia el lado que cumple la
+% condición; ángulos de 45° de las líneas de certeza y pendiente -pi(e^A)/(1-pi(e^A)) con su ángulo.
 % Construcción paso a paso en el PDF: pa-neutrales-paso1.tex (capas 1-5, esfuerzo
 % observable) y este (todas, esfuerzo inobservable).
 % Elaboración propia a partir de Fernández de Castro y Tugores (1992, cap. 8)
@@ -31,26 +34,39 @@
   \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[below] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
   \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thin] (0,-1) -- (\XE,-1) node[midway,below=5pt] {$x_{\mathrm{E}}$};}
   \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt},thin] (-1.1,0) -- (-1.1,\XF) node[midway,left=5pt] {$x_{\mathrm{F}}$};}
-  % 2: las líneas de certeza del agente y del principal
+  % 2: las líneas de certeza del agente y del principal, a 45° desde cada origen
   \capa{2}{\draw[thin,tceemorado] (0,0) -- (\XF,\XF) node[pos=0.22,sloped,above,font=\footnotesize] {línea de certeza del agente};}
-  \capa{2}{\draw[thin,tceedorado] (\XE-\XF,0) -- (\XE,\XF) node[pos=0.85,sloped,above,font=\footnotesize] {línea de certeza del principal};}
-  % 3: rectas de isobeneficio del principal, de pendiente -pi/(1-pi)
-  \capa{3}{\draw[curva4,dashed] plot[domain=1.5:5,samples=2] (\x,{iso(\x)-2});}
+  \capa{2}{\draw[thin,tceemorado] (0.8,0) arc[start angle=0,end angle=45,radius=0.8] node[pos=0.5,right=1pt,font=\scriptsize] {$45^{\circ}$};}
+  \capa{2}{\draw[thin,tceedorado] (\XE-\XF,0) -- (\XE,\XF) node[pos=0.8,sloped,below,font=\footnotesize] {línea de certeza del principal};}
+  \capa{2}{\draw[thin,tceedorado] (\XE-0.8,\XF) arc[start angle=180,end angle=225,radius=0.8] node[pos=0.5,left=1pt,font=\scriptsize] {$45^{\circ}$};}
+  % 3: rectas de isobeneficio del principal, de pendiente -pi(e^A)/(1-pi(e^A)), con su ángulo
+  \capa{3}{\draw[curva4,dashed] plot[domain=3.3:5,samples=2] (\x,{iso(\x)-2});}
   \capa{3}{\draw[curva4,dashed] plot[domain=3.5:7,samples=2] (\x,{iso(\x)+2});}
-  \capa{3}{\node[etiqueta,text=tceedorado,anchor=east,font=\footnotesize] at (1.6,5.4) {$-\dfrac{\pi}{1-\pi}$};}
-  % 4: PC del agente neutral: una recta, la misma que una isobeneficio del principal
+  \capa{3}{\draw[thin,tceedorado] (3.725,6.55) -- (4.35,6.55) (4.125,6.55) arc[start angle=0,end angle=-63.43,radius=0.4];}
+  \capa{3}{\node[etiqueta,text=tceedorado,anchor=west,font=\footnotesize] at (4.35,6.45) {$-\dfrac{\pi(e^{\mathrm{A}})}{1-\pi(e^{\mathrm{A}})}$};}
+  % 4: PC del agente neutral: una recta, la misma que una isobeneficio del principal;
+  % valen los contratos de encima
   \capa{4}{\draw[curva1] plot[domain=2.5:6,samples=2] (\x,{iso(\x)});}
-  \capa{4}{\node[etiqueta,anchor=west,align=left,font=\footnotesize,text=tceemorado] at (2.75,6.75) {PC: indiferencia $U^R$\\ $=$ isobeneficio};}
-  % 5: cualquier contrato de la PC es óptimo: el fijo Z o la venta del negocio V
+  \capa{4}{\node[etiqueta,anchor=south,font=\footnotesize,text=tceemorado] at (2.5,7.02) {PC: indiferencia $U^R$ con $e^{\mathrm{A}}$ $=$ isobeneficio};}
+  \capa{4}{\node[rotate=-63.43,anchor=north west,align=left,font=\scriptsize,text=tceemorado,inner sep=0pt] at ($(2.825,6.35)+(206.57:0.33)$) {\textbf{Condición de}\\ \textbf{participación:}\\ el agente obtiene\\ al menos $U^R$ con\\ el esfuerzo alto};}
+  \capa{4}{\draw[->,thick,tceemorado] (3.2,{iso(3.2)}) -- ++(26.57:0.5);}
+  % 5: cualquier contrato de la PC es óptimo: el fijo Z o la venta del negocio V,
+  % que deja al principal k en los 2 estados
   \capa{5}{\node[punto] (Z) at (4,4) {};}
-  \capa{5}{\node[etiqueta,left=2pt] at (Z) {$Z$};}
+  \capa{5}{\node[etiqueta,anchor=south east] at ($(Z)+(-0.05,0.05)$) {$Z$};}
+  \capa{5}{\draw[guia] (0,4) -| (4,0);}
+  \capa{5}{\node[etiqueta,left,font=\footnotesize,text=tceegris] at (0,4) {$w^*$};}
+  \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceegris] at (4,0) {$w^*$};}
   \capa{5}{\node[punto] (V) at ({17/3},{2/3}) {};}
-  \capa{5}{\node[etiqueta,below left] at (V) {$V$};}
+  \capa{5}{\node[etiqueta,anchor=north,inner sep=0pt] at ($(V)+(-0.03,-0.22)$) {$V$};}
+  \capa{5}{\draw[guia] (V) -- (\XE,{2/3});}
+  \capa{5}{\node[etiqueta,right,font=\footnotesize,text=tceegris] at (\XE,{2/3}) {$k$};}
   % 6: esfuerzo inobservable: frontera de la IC; la cumplen los contratos de debajo
-  \capa{6}{\draw[curva2] (3,0) -- (10,7) node[pos=0.6,sloped,above,font=\footnotesize,text=tceeazul] {frontera de la IC};}
-  \capa{6}{\draw[->,thick,tceeazul] (8.5,{icn(8.5)}) -- ++(1.7,-1.7) node[etiqueta,below right=-2pt,font=\footnotesize,text=tceeazul] {cumplen la IC};}
+  \capa{6}{\draw[curva2] (3,0) -- (10,7);}
+  \capa{6}{\node[rotate=45,anchor=north west,align=left,font=\scriptsize,text=tceeazul,inner sep=0pt] at ($(5.95,2.95)+(-45:0.12)$) {\textbf{Condición de incentivos (frontera de la IC):}\\ la mínima diferencia entre $w_{\mathrm{E}}$ y $w_{\mathrm{F}}$\\ que incentiva al agente a hacer el esfuerzo alto};}
+  \capa{6}{\draw[->,thick,tceeazul] (9.75,6.75) -- ++(-45:0.55);}
   % 7: contratos óptimos: los de la PC que cumplen la IC (entre ellos, V); Z ya no vale
   \capa{7}{\draw[curvanueva,line width=2.4pt] (5,2) -- (6,0);}
-  \capa{7}{\draw[thin,tceegris] (5.5,1) -- (8.6,0.5) node[etiqueta,right,align=left,font=\footnotesize,text=tceerojo] {contratos óptimos};}
+  \capa{7}{\draw[thin,tceegris] (5.45,1.1) -- (8.2,1.25) node[etiqueta,right,align=left,font=\footnotesize,text=tceerojo] {contratos óptimos};}
 \end{tikzpicture}
 \end{document}
