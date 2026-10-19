@@ -55,7 +55,8 @@ def _lyx_windows(exe, argumentos, cwd):
     try:
         return ejecutar(['/mnt/c/Windows/System32/cmd.exe', '/c', ruta_windows(bat)], timeout=900, comprobar=False)
     finally:
-        os.remove(bat)
+        if os.path.exists(bat):     # (alguna vez ya no está: otro proceso o el propio LyX lo quitan)
+            os.remove(bat)
 
 
 def _huella_fichero(ruta):

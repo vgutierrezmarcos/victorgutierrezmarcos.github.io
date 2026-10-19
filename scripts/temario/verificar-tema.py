@@ -301,10 +301,15 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     if '\\appendix' in cuerpo and '\\bibliografia' in cuerpo and cuerpo.index('\\bibliografia') < cuerpo.index('\\appendix'):
         errores.append('La bibliografía (\\bibliografia) va antes que los anexos: tiene que ir al final')
     # --- Estructura de los modelos (§2): a), b)… seguidas con \paragraph; i), ii)… con \subparagraph
-    for m in re.finditer(r'^\\paragraph\{([ivx]+)\)', cuerpo, re.M):
-        errores.append(f'Bloque «{m.group(1)})» con \\paragraph (l. {linea(m.start())}): los i), ii), iii) van con \\subparagraph')
-    for m in re.finditer(r'^\\subparagraph\{([a-h])\)', cuerpo, re.M):
-        errores.append(f'Bloque «{m.group(1)})» con \\subparagraph (l. {linea(m.start())}): los a), b), c) van con \\paragraph')
+    # (aviso, no error: temas aprobados antes del 19/10/2026 los tienen al revés o un nivel más abajo)
+    nivel_i = [linea(m.start()) for m in re.finditer(r'^\\paragraph\{[ivx]+\)', cuerpo, re.M)]
+    if nivel_i:
+        avisos.append(f'{len(nivel_i)} bloques i), ii), iii) con \\paragraph (l. {", ".join(map(str, nivel_i[:6]))}…): '
+                      'CRITERIOS §2 los pide con \\subparagraph')
+    nivel_a = [linea(m.start()) for m in re.finditer(r'^\\subparagraph\{[a-h]\)', cuerpo, re.M)]
+    if nivel_a:
+        avisos.append(f'{len(nivel_a)} bloques a), b), c) con \\subparagraph (l. {", ".join(map(str, nivel_a[:6]))}…): '
+                      'CRITERIOS §2 los pide con \\paragraph')
     for trozo in re.split(r'^\\(?:sub)*section\*?\{', cuerpo, flags=re.M):
         letras = re.findall(r'^\\paragraph\{([a-h])\)', trozo, re.M)
         tanda = []
