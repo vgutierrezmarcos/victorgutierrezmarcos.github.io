@@ -214,7 +214,9 @@ def etiquetas_aux(tema):
     if not os.path.exists(aux):
         return {}
     texto = open(aux, encoding='utf-8', errors='replace').read()
-    return {m.group(1): m.group(2) for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{([^}]*)\}', texto)}
+    # Los elementos de una lista (enumitem) guardan el número entre llaves de más:
+    # \newlabel{cond:x}{{{3}}{16}…}; se quitan para que quede «3»
+    return {m.group(1): m.group(2) for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{+([^{}]*)\}', texto)}
 
 
 def numerar_anexos(cuerpo):

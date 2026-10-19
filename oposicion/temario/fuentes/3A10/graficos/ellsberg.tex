@@ -1,0 +1,57 @@
+% La paradoja de Ellsberg (1961), con 2 colores: urna conocida (50 bolas rojas y
+% 50 negras) y urna ambigua (100 bolas rojas y negras en proporción desconocida).
+% Se gana un premio si sale el color apostado. La mayoría prefiere la urna
+% conocida tanto al apostar a «roja» como a «negra»: ninguna distribución de
+% probabilidad subjetiva racionaliza las 2 elecciones.
+% Esquema propio (no reproduce la imagen de Neuroprofiler del original).
+% Elaboración propia a partir de Ellsberg (1961).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    urna/.style={very thick,black,rounded corners=10pt},
+    roja/.style={circle,draw=black,thin,fill=tceerojo,minimum size=5mm,inner sep=0pt},
+    negra/.style={circle,draw=black,thin,fill=black,minimum size=5mm,inner sep=0pt},
+    gris/.style={circle,draw=black,thin,fill=tceegris!45,minimum size=5mm,inner sep=0pt,font=\scriptsize\bfseries},
+    titulo/.style={etiqueta,font=\small\itshape,text=tceemorado},
+    apuesta/.style={draw=tceemorado,thick,rounded corners=3pt,fill=tceesalvia,
+      minimum width=2.9cm,minimum height=0.75cm,font=\footnotesize,align=center},
+    prefiere/.style={font=\large,text=tceemorado}]
+  % ---------- 1: urna conocida ----------
+  \capa{1}{\draw[urna] (0,2.6) -- (0,0) -- (3,0) -- (3,2.6);}
+  \capa{1}{
+    \foreach \x/\c in {0.4/roja,0.95/negra,1.5/roja,2.05/negra,2.6/roja}
+      \node[\c] at (\x,0.32) {};
+    \foreach \x/\c in {0.4/negra,0.95/roja,1.5/negra,2.05/roja,2.6/negra}
+      \node[\c] at (\x,0.86) {};
+    \foreach \x/\c in {0.67/roja,1.22/negra,1.77/negra,2.32/roja}
+      \node[\c] at (\x,1.4) {};
+  }
+  \capa{1}{\node[etiqueta,align=center] at (1.5,3.05) {50 rojas $+$ 50 negras};}
+  \capa{1}{\node[titulo] at (1.5,3.6) {Urna conocida};}
+  % ---------- 2: urna ambigua ----------
+  \capa{2}{\draw[urna] (5,2.6) -- (5,0) -- (8,0) -- (8,2.6);}
+  \capa{2}{
+    \foreach \x in {5.4,5.95,6.5,7.05,7.6}
+      \node[gris] at (\x,0.32) {?};
+    \foreach \x in {5.4,5.95,6.5,7.05,7.6}
+      \node[gris] at (\x,0.86) {?};
+    \foreach \x in {5.67,6.22,6.77,7.32}
+      \node[gris] at (\x,1.4) {?};
+  }
+  \capa{2}{\node[etiqueta,align=center] at (6.5,3.05) {100 rojas y negras, proporción desconocida};}
+  \capa{2}{\node[titulo] at (6.5,3.6) {Urna ambigua};}
+  % ---------- 3: las apuestas (premio si sale el color apostado) ----------
+  \capa{3}{\node[etiqueta,font=\footnotesize,text=tceegris] at (4,-0.55) {premio si sale el color apostado};}
+  \capa{3}{\node[apuesta] at (1.5,-1.3) {apuesta a \textcolor{tceerojo}{\textbf{roja}}};}
+  \capa{3}{\node[apuesta] at (1.5,-2.3) {apuesta a \textbf{negra}};}
+  \capa{3}{\node[apuesta] at (6.5,-1.3) {apuesta a \textcolor{tceerojo}{\textbf{roja}}};}
+  \capa{3}{\node[apuesta] at (6.5,-2.3) {apuesta a \textbf{negra}};}
+  % ---------- 4: la mayoría prefiere la urna conocida en las 2 apuestas ----------
+  \capa{4}{\node[prefiere] at (4,-1.3) {$\succ$};}
+  \capa{4}{\node[prefiere] at (4,-2.3) {$\succ$};}
+  \capa{4}{\node[etiqueta,font=\footnotesize] at (4,-3.1) {en la urna ambigua, $\pi(\text{roja})<\tfrac12$ y $\pi(\text{negra})<\tfrac12$:};}
+  \capa{4}{\node[etiqueta,font=\footnotesize] at (4,-3.55) {suman menos de 1};}
+\end{tikzpicture}
+\end{document}

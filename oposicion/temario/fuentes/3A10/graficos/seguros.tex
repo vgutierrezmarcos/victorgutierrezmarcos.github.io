@@ -1,0 +1,47 @@
+% El seguro con información simétrica (Mas-Colell, Whinston y Green, cap. 6).
+% Riqueza W = 10, pérdida L = 6, probabilidad de accidente pi = 0,4, prima justa gamma = pi.
+%   Dotación A = (W, W - L) = (10, 4).
+%   Recta de aseguramiento: x_2 = W/gamma - L - (1-gamma)/gamma x_1 = 19 - 1,5 x_1.
+%   Corta la línea de certeza en E = (W - pi L, W - pi L) = (7,6; 7,6).
+%   Utilidad u = ln: curva de indiferencia por E,
+%   0,6 ln x_1 + 0,4 ln x_2 = ln 7,6  ->  x_2 = 7,6^{2,5} x_1^{-1,5},
+%   de pendiente -(1-pi)/pi · x_2/x_1 = -1,5 en E: tangente a la recta.
+% Prima recargada gamma = 0,5 > pi (añadido en el 3.A.10; lo anterior es igual que
+% seguro-simetrico.tex del 3.A.13):
+%   Recta: x_2 = 10/0,5 - 6 - x_1 = 14 - x_1 (pendiente -1, más plana; pasa por A).
+%   Con u = ln (Cobb-Douglas en x_1 + x_2 = 14): x_1 = 0,6 · 14 = 8,4, x_2 = 5,6.
+%   E' = (8,4; 5,6), por debajo de la línea de certeza; S = (10 - 8,4)/0,5 = 3,2 < L = 6.
+%   Curva por E': x_2 = 5,6 · 8,4^{1,5} x_1^{-1,5} = 136,33 x_1^{-1,5},
+%   de pendiente -1,5 · 5,6/8,4 = -1 en E': tangente a la nueva recta.
+% Elaboración propia a partir de Mas-Colell, Whinston y Green (1995, cap. 6).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm,
+    declare function={ra(\x)=19-1.5*\x; ci(\x)=159.23/(\x^1.5);
+                   rb(\x)=14-\x; cb(\x)=136.33/(\x^1.5);}]
+  % 1: ejes: riqueza sin accidente y con accidente
+  \capa{1}{\ejes{$x_1$}{$x_2$}{13.5}{12}}
+  % 2: línea de certeza
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (11,11) node[etiqueta,above,font=\footnotesize,text=black,align=center] {línea de certeza};}
+  % 3: dotación A, sin seguro
+  \capa{3}{\node[punto] (A) at (10,4) {};}
+  \capa{3}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{3}{\draw[guia] (10,0) node[below,text=black] {$\overline{W}$} |- (0,4) node[left,text=black] {$\overline{W}-L$};}
+  % 4: recta de aseguramiento con prima justa (gamma = pi), de pendiente -(1-pi)/pi
+  \capa{4}{\draw[curva4] plot[domain=12.67:5.8,samples=2] (\x,{ra(\x)}) node[etiqueta,left,xshift=-3pt,text=tceedorado,font=\footnotesize] {$\gamma=\pi$};}
+  % 5: curva de indiferencia tangente en la línea de certeza (gamma = pi): seguro completo
+  \capa{5}{\draw[curva1] plot[domain=5.8:13,samples=60] (\x,{ci(\x)}) node[etiqueta,right] {$U$};}
+  \capa{5}{\node[punto] (E) at (7.6,7.6) {};}
+  \capa{5}{\node[etiqueta,above right] at (E) {$E$};}
+  \capa{5}{\draw[guia] (E) -- (7.6,0) node[below,text=black] {$\overline{W}-\pi L$};}
+  % 6: prima recargada (gamma > pi): recta más plana que pasa por A
+  \capa{6}{\draw[curvanueva] plot[domain=12.6:6,samples=2] (\x,{rb(\x)}) node[etiqueta,left,text=tceerojo,font=\footnotesize] {$\gamma>\pi$};}
+  % 7: curva de indiferencia tangente a la nueva recta
+  \capa{7}{\draw[curvanueva,desplazada] plot[domain=5.7:13,samples=60] (\x,{cb(\x)}) node[etiqueta,below right] {$U'$};}
+  % 8: nuevo óptimo E', con seguro parcial
+  \capa{8}{\node[punto] (E2) at (8.4,5.6) {};}
+  \capa{8}{\node[etiqueta,below=1pt,xshift=3pt] at (E2) {$E'$};}
+\end{tikzpicture}
+\end{document}

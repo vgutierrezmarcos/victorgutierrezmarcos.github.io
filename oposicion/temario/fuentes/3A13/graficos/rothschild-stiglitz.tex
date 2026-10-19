@@ -1,0 +1,86 @@
+% Autoselección en el seguro (Rothschild y Stiglitz, 1976). 2 paneles.
+% Riqueza W = 10, pérdida L = 6. Temerarios pi_A = 0,5; prudentes pi_B = 0,25;
+% proporción de prudentes nu = 0,5 -> riesgo medio pi-barra = 0,375. Utilidad u = ln.
+%   Dotación A = (10, 4). Rectas de isobeneficio nulo desde A:
+%     (1 - pi_i) x_1 + pi_i x_2 = W - pi_i L, de pendiente -(1 - pi_i)/pi_i:
+%     temerarios -1 (x_2 = 14 - x_1), prudentes -3 (más inclinada), media -5/3 (entre las 2).
+%   First best: E_A = (7, 7) y E_B = (8,5; 8,5) en la línea de certeza.
+% Panel izquierdo (no hay agrupador): M = (8,2; 7) sobre la recta media.
+%     Curva del prudente por M: x_2 = 7 (8,2/x_1)^3 (pendiente -2,56 en M).
+%     Curva del temerario por M: x_2 = 57,4/x_1 (pendiente -0,85 en M).
+%     Zona rayada: por encima de la del prudente, por debajo de la del temerario
+%     y de la recta de los prudentes (beneficio con solo prudentes):
+%     8,2 < x_1 < 9,27 (la recta de los prudentes corta a la del temerario en 9,27).
+%     N = (8,8; 6,1) dentro de ella.
+% Panel derecho (separador): curva del temerario por E_A, x_2 = 49/x_1;
+%     corta la recta de los prudentes, x_2 = 34 - 3 x_1, en S_B = (9,639; 5,084):
+%     x_1 > x_2, seguro parcial. Curva del prudente por S_B: x_2 = 5,0836 (9,6388/x_1)^3.
+%     La recta media queda siempre por debajo de esa curva (holgura mínima 0,48):
+%     el equilibrio existe con estos datos.
+% Elaboración propia a partir de Rothschild y Stiglitz (1976) y Mas-Colell,
+% Whinston y Green (1995, cap. 13).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm,
+    declare function={
+      ra(\x)=14-\x;           % isobeneficio nulo con temerarios
+      rb(\x)=34-3*\x;         % isobeneficio nulo con prudentes
+      rm(\x)=(7.75-0.625*\x)/0.375; % isobeneficio nulo con el riesgo medio
+      prM(\x)=7*(8.2/\x)^3; teM(\x)=57.4/\x;
+      teE(\x)=49/\x; prS(\x)=5.0836*(9.6388/\x)^3;}]
+  % ===================== Panel izquierdo =====================
+  % 1: ejes
+  \capa{1}{\ejes{$x_1$}{$x_2$}{12.5}{11.5}}
+  % 2: línea de certeza
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (10.8,10.8) node[etiqueta,above,font=\footnotesize,text=black] {línea de certeza};}
+  % 3: dotación A
+  \capa{3}{\node[punto] (A) at (10,4) {};}
+  \capa{3}{\node[etiqueta,below right] at (A) {$A$};}
+  % 4: isobeneficio nulo con los temerarios
+  \capa{4}{\draw[curva4] plot[domain=10:4.8,samples=2] (\x,{ra(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{A}}$};}
+  % 5: isobeneficio nulo con los prudentes, más inclinada
+  \capa{5}{\draw[curva4] plot[domain=10:8.2,samples=2] (\x,{rb(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{B}}$};}
+  % 6: isobeneficio nulo con el riesgo medio, entre las 2
+  \capa{6}{\draw[curva4,dashed] plot[domain=10:6.6,samples=2] (\x,{rm(\x)}) node[etiqueta,above,text=tceedorado] {$\overline{\pi}$};}
+  % 7: first best: seguro completo a la prima justa de cada tipo
+  \capa{7}{\node[punto] (EA) at (7,7) {};}
+  \capa{7}{\node[etiqueta,left] at (EA) {$E_{\mathrm{A}}$};}
+  \capa{7}{\node[punto] (EB) at (8.5,8.5) {};}
+  \capa{7}{\node[etiqueta,left] at (EB) {$E_{\mathrm{B}}$};}
+  % 8: contrato agrupador M sobre la recta media
+  \capa{8}{\node[punto] (M) at (8.2,7) {};}
+  \capa{8}{\node[etiqueta,left=2pt] at (M) {$M$};}
+  % 9: curva de indiferencia del prudente por M, más inclinada
+  \capa{9}{\draw[curva2] plot[domain=7.2:11.4,samples=50] (\x,{prM(\x)}) node[etiqueta,right] {$U_{\mathrm{B}}$};}
+  % 10: curva de indiferencia del temerario por M
+  \capa{10}{\draw[curva1] plot[domain=5.5:11.6,samples=50] (\x,{teM(\x)}) node[etiqueta,right] {$U_{\mathrm{A}}$};}
+  % 11: contratos que solo atraen a los prudentes y dan beneficio
+  \capa{11}{\fill[pattern=north east lines,pattern color=tceeverde] plot[domain=8.2:9.27,samples=30] (\x,{prM(\x)}) -- plot[domain=9.27:8.2,samples=30] (\x,{min(teM(\x),rb(\x))}) -- cycle;}
+  % 12: el contrato N se lleva a los prudentes (cream skimming)
+  \capa{12}{\node[punto,fill=tceerojo] (N) at (8.8,6.1) {};}
+  \capa{12}{\draw[thin,tceegris] (N) -- (10.6,7.6) node[etiqueta,above right=-2pt,text=tceerojo] {$N$};}
+  % ===================== Panel derecho =====================
+  \begin{scope}[xshift=9cm]
+  % 13: ejes, línea de certeza, A y las rectas de isobeneficio nulo de cada tipo
+  \capa{13}{\ejes{$x_1$}{$x_2$}{12.5}{11.5}}
+  \capa{13}{\draw[thick,tceegris] (0,0) -- (10.8,10.8) node[etiqueta,above,font=\footnotesize,text=black] {línea de certeza};}
+  \capa{13}{\node[punto] (A2) at (10,4) {};}
+  \capa{13}{\node[etiqueta,below right] at (A2) {$A$};}
+  \capa{13}{\draw[curva4] plot[domain=10:4.8,samples=2] (\x,{ra(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{A}}$};}
+  \capa{13}{\draw[curva4] plot[domain=10:8.2,samples=2] (\x,{rb(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{B}}$};}
+  % 14: los temerarios, seguro completo a su prima justa
+  \capa{14}{\node[punto] (EA2) at (7,7) {};}
+  \capa{14}{\node[etiqueta,right=3pt] at (EA2) {$E_{\mathrm{A}}$};}
+  % 15: curva de indiferencia del temerario por E_A
+  \capa{15}{\draw[curva1] plot[domain=4.7:11.8,samples=50] (\x,{teE(\x)}) node[etiqueta,right] {$U_{\mathrm{A}}$};}
+  % 16: contrato de los prudentes: corte con su recta, seguro parcial
+  \capa{16}{\node[punto] (SB) at (9.639,5.084) {};}
+  \capa{16}{\node[etiqueta,above right] at (SB) {$S_{\mathrm{B}}$};}
+  \capa{16}{\draw[guia] (9.639,0) node[below,text=black] {$x_1^{\mathrm{B}}$} |- (0,5.084) node[left,text=black] {$x_2^{\mathrm{B}}$};}
+  % 17: curva de indiferencia del prudente por S_B
+  \capa{17}{\draw[curva2] plot[domain=7.6:11.8,samples=50] (\x,{prS(\x)}) node[etiqueta,right] {$U_{\mathrm{B}}$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

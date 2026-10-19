@@ -1,0 +1,55 @@
+% Racionamiento del crédito (Stiglitz y Weiss, 1981). 2 paneles.
+% Probabilidad de repago Pr(repago | r) = 1 - r^2 (decreciente).
+% Rendimiento esperado del banco E[B](r) = (1 + r)(1 - r^2):
+%   E'(r) = 1 - 2r - 3r^2 = 0 -> r* = 1/3, E(r*) = 32/27 = 1,185; E(0) = 1.
+% Escalas: horizontal (izquierda) y vertical (derecha) 6 r, así r* = 2 en los 2;
+%   vertical izquierda 8 (E - 0,75) (eje cortado: no empieza en 0).
+% Oferta de crédito, creciente en lo que el banco puede pagar a los depositantes:
+%   L^S(r) = 4 (E(r) - 0,8) + 1,5: 2,3 en r = 0; máximo 3,04 en r*; 1,77 en r = 0,7.
+% Demanda L^D(r) = 7,874 - 10 r: L^D(r*) = 4,54 > L^S(r*) = 3,04 (racionamiento).
+% Se cortan en r_m = 0,5107 (L = 2,767), por encima de r*: no es equilibrio.
+% Elaboración propia a partir de Stiglitz y Weiss (1981) y Freixas y Rochet (2008, cap. 5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={
+      EB(\r)=(1+\r)*(1-\r*\r);
+      LS(\r)=4*(EB(\r)-0.8)+1.5;
+      LD(\r)=7.874-10*\r;}]
+  % ===================== Panel izquierdo =====================
+  % 1: ejes (r, E[B_banco]); el vertical, cortado
+  \capa{1}{\draw[eje] (0,0) -- (5,0) node[below left=2pt and 0pt] {$\hat r$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,4.4) node[left] {$\mathbb{E}[B_{\mathrm{banco}}]$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[thick,fill=white] (-0.15,0.35) -- (0.15,0.45) (-0.15,0.5) -- (0.15,0.6);}
+  % 2: rendimiento esperado del banco (1 + r)·Pr(repago | r)
+  \capa{2}{\draw[curva1] plot[domain=0:0.72,samples=60] ({6*\x},{8*(EB(\x)-0.75)}) node[etiqueta,right] {$(1+\hat r)\Pr(\text{repago}\mid\hat r)$};}
+  % 3: máximo en r* y su proyección
+  \capa{3}{\node[punto] (M) at (2,3.4815) {};}
+  \capa{3}{\draw[guia] (2,0) node[below,text=black] {$\hat r^*$} -- (M);}
+  % ===================== Panel derecho =====================
+  \begin{scope}[xshift=7.8cm,x=0.7cm]
+  % 4: ejes (L, r)
+  \capa{4}{\ejes{$L$}{$\hat r$}{9}{4.8}}
+  % 5: demanda de préstamos
+  \capa{5}{\draw[curva2] plot[domain=0.72:0.04,samples=2] ({LD(\x)},{6*\x}) node[etiqueta,right] {$L^{D}$};}
+  % 6: oferta de préstamos, que se dobla hacia atrás a partir de r*
+  \capa{6}{\draw[curva1] plot[domain=0:0.72,samples=60] ({LS(\x)},{6*\x}) node[etiqueta,above] {$L^{S}$};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=left,text=tceemorado] at (2.3,4.0) [right] {se dobla\\hacia atrás};}
+  % 7: tipo r* y exceso de demanda (racionamiento)
+  \capa{7}{\draw[guia] (0,2) node[left,text=black] {$\hat r^*$} -- (4.54,2);}
+  \capa{7}{\node[punto] at (3.0407,2) {};}
+  \capa{7}{\node[punto] at (4.5407,2) {};}
+  \capa{7}{\draw[very thick,tceerojo] (3.0407,2) -- (4.5407,2);}
+  \capa{7}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceerojo] (3.0407,1.85) -- (4.5407,1.85);}
+  \capa{7}{\node[etiqueta,right,align=left,font=\footnotesize,text=tceerojo] at (5.1,2.15) {exceso de demanda\\(racionamiento)};}
+  \capa{7}{\draw[guia] (3.0407,1.6) -- (3.0407,0) node[below,text=black] {$L^{S}(\hat r^*)$};}
+  \capa{7}{\draw[guia] (4.5407,1.6) -- (4.5407,0) node[below,text=black] {$L^{D}(\hat r^*)$};}
+  % 8: tipo que vaciaría el mercado, que no es equilibrio
+  \capa{8}{\node[circle,draw=black,fill=white,inner sep=1.3pt] (Rm) at (2.7666,3.0645) {};}
+  \capa{8}{\draw[guia] (Rm) -- (0,3.0645) node[left,text=black] {$\hat r_m$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

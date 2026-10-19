@@ -1,0 +1,32 @@
+% El mercado de «limones» (Akerlof, 1970): recta de valoraciones de 0 a 1.000 €.
+% Escala: 1 cm = 100 €. Mitad limones (500 €) y mitad melocotones (1.000 €)
+% para los compradores; los vendedores los valoran algo menos (≈ 450 € y 950 €).
+%   Valor esperado con información asimétrica: 0,5·500 + 0,5·1.000 = 750 €.
+%   A 750 € solo venden los dueños de limones (950 € > 750 €): los melocotones
+%   salen y el precio cae a 500 €, el valor de un limón.
+% Elaboración propia a partir de Akerlof (1970).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  % 1: recta de valoraciones (eje en euros)
+  \capa{1}{\draw[eje] (0,0) -- (11.3,0) node[right] {€};}
+  \capa{1}{\draw[thick] (0,-0.15) -- (0,0.15) node[above=2pt] {$0$~€};}
+  % 2: las 2 calidades: limón (500 €) y melocotón (1.000 €)
+  \capa{2}{\draw[curva4] (5,-0.2) -- (5,0.2);}
+  \capa{2}{\node[etiqueta,above=2pt,text=tceedorado] at (5,0.2) {$500$~€};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,align=center,below=3pt] at (5,-0.2) {limón\\ (coche malo)};}
+  \capa{2}{\draw[curva1] (10,-0.2) -- (10,0.2);}
+  \capa{2}{\node[etiqueta,above=2pt,text=tceemorado] at (10,0.2) {$1.000$~€};}
+  \capa{2}{\node[etiqueta,font=\footnotesize,align=center,below=3pt] at (10,-0.2) {melocotón\\ (coche bueno)};}
+  % 3: con información asimétrica se paga el valor esperado, 750 €
+  \capa{3}{\draw[curva2] (7.5,-0.2) -- (7.5,0.2);}
+  \capa{3}{\node[etiqueta,above=2pt,text=tceeazul] at (7.5,0.2) {$750$~€};}
+  \capa{3}{\node[etiqueta,font=\footnotesize,align=center,below=3pt] at (7.5,-0.2) {valor esperado\\ $\tfrac12\,500+\tfrac12\,1.000$};}
+  % 4: a 750 € los dueños de melocotones no venden: salen del mercado
+  \capa{4}{\draw[flecha] (10,0.85) to[bend left=40] (11,1.9) node[above,etiqueta,font=\footnotesize,text=tceerojo,align=center] {los melocotones\\ salen del mercado};}
+  % 5: los compradores solo pagan 500 €: solo se venden limones
+  \capa{5}{\draw[flecha] (7.5,0.85) to[bend right=40] node[midway,above=2pt,etiqueta,font=\footnotesize,text=tceerojo,align=center] {el precio cae a 500~€:\\ solo se venden limones} (5,0.85);}
+\end{tikzpicture}
+\end{document}

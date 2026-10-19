@@ -45,14 +45,19 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15
 
 | Símbolo | Significado | Alternativas (temas) | Canon | Motivo |
 |---|---|---|---|---|
-| $\overline W$, $L$, $\pi$, $r$, $S$ | Riqueza inicial, pérdida, probabilidad de accidente, prima unitaria, cobertura | $W$, $P$, $p$ (3.A.13) | Como en `consumidor-produccion.md` | Mismo modelo que 3.A.10 |
+| $\overline W$, $L$, $\pi$, $\gamma$, $S$; $A=(\overline W,\overline W-L)$ | Riqueza inicial, pérdida, probabilidad de accidente, prima por euro asegurado, cobertura; dotación sin seguro | $W$, $P$, $p$, $r$, $A=(p_1,p_2;W,W-P)$ (3.A.13 original) | **$\gamma$** (no $r$) y **$A$** (3.A.13 revisado, 19/10/2026, igual que el 3.A.10) | Mismo modelo que 3.A.10; $r$ chocaba con el tipo de interés y con $\hat r$ del mismo tema |
+| $\pi_{\mathrm A}>\pi_{\mathrm B}$, $\nu$, $\overline\pi$ | Rothschild-Stiglitz: riesgo alto y bajo, proporción de prudentes, riesgo medio | $p_A$, $p_B$, sin letra para la proporción (3.A.13 original) | **$\pi_{\mathrm A}$, $\pi_{\mathrm B}$, $\nu$** | $\pi$ probabilidad (D017); $\nu$ como Laffont-Tirole; A/B en redonda, mnemónicos de alto y bajo |
 | $y$ | Educación (Spence) | $E$ (3.A.13) | **$y$** | Spence (1973) usa $y$; $E$ es la función de gasto y en 3.A.13 también «éxito» |
+| $c_{\mathrm A}(y)$, $c_{\mathrm B}(y)$; $w_{\mathrm A}$, $w_{\mathrm B}$; $\nu$ | Spence: coste de la educación y salario de cada tipo; proporción de productivos | $w^R$ en la participación (3.A.13 original) | **Igual** | 3.A.13 revisado (19/10/2026) |
+| $x_{\mathrm E}>x_{\mathrm F}$; $w_{\mathrm E}$, $w_{\mathrm F}$ | Resultado (éxito y fracaso) y pagos del principal-agente | $I_E$, $I_F$, éxito $E$ / fracaso $F$ (3.A.13 original) | **Igual**, E y F en redonda | No chocan con la función de gasto |
 | $e$, $e^A$, $e^B$ | Esfuerzo (alto, bajo) | — | **$e$** | MWG cap. 14 |
 | $\pi(e)$ | Probabilidad de éxito con esfuerzo $e$ | $p_E$, $p_F$ (3.A.13) | **$\pi(e)$** y $1-\pi(e)$ | Coherente con $\pi$ = probabilidad |
 | $w(\cdot)$ | Remuneración del agente | $w(I)$ y $w(e)$ mezcladas (3.A.13) | **$w(x)$**, función del resultado observable $x$ | Quita la incoherencia; solo con esfuerzo observable $w(e)$ |
 | $v(e)$ | Desutilidad del esfuerzo | — | **$v(e)$** | 3.A.13 |
-| $U^R$ | Utilidad de reserva | — | **$U^R$** | $\overline U$ es el nivel de utilidad de la dualidad |
-| $\hat r$, $\hat r^*$ | Tipo del préstamo y el que maximiza el rendimiento del banco (Stiglitz-Weiss) | — | Igual | 3.B.27, 4.A.20 |
+| $U^R$ | Utilidad de reserva | $\overline U_R$, $w^R$ (3.A.13 original) | **$U^R$** | $\overline U$ es el nivel de utilidad de la dualidad |
+| $\lambda_1$, $\lambda_2$ | Multiplicadores de la PC y de la IC | un solo $\lambda$ (3.A.13 original) | **$\lambda_1$, $\lambda_2$** | `notacion.md` § 0 (λ_k si hay varios) |
+| $u_P(\cdot)$ | Utilidad del principal averso | $R[\cdot]$ (3.A.13 original) | **$u_P$, solo en los anexos**; en el cuerpo, principal neutral | MWG, Laffont-Martimort; decisión D7 del 3.A.13 (provisional) |
+| $\hat r$, $\hat r^*$; $\mathbb E[B_{\mathrm{banco}}]=(1+\hat r)\Pr(\text{repago}\mid\hat r)$ | Tipo del préstamo, el que maximiza el rendimiento del banco y ese rendimiento (Stiglitz-Weiss) | $E[B]=\hat r\times\Pr$ (3.A.13 original, 3.B.27, 4.A.20) | Igual, con $1+\hat r$ | 3.A.13 revisado (19/10/2026) |
 | $\mathbb E[\cdot]$ | Esperanza | $E[B]$ (3.B.27, 4.A.20) | **$\mathbb E$** | $E$ es la función de gasto |
 
 ## Choques con otras áreas que se mezclan
@@ -62,7 +67,10 @@ Paso 2 del canon (13 oct. 2026). Fuentes: `_inventario/3A13…3A20.json` (3.A.15
 - **$E$**: educación y éxito (3.A.13) frente a función de gasto y esperanza → $y$, $\pi(e)$, $\mathbb E$.
 - **$\lambda$**: coste sombra de los fondos públicos (Laffont-Tirole) y multiplicador de Ramsey-Boiteux en el mismo tema 3.A.17: **resuelto con el 3.A.17 revisado (17/10/2026)**: λ en los 2, con una nota (es la misma idea y da el mismo número de Ramsey λ/(1+λ)); μ queda para el multiplicador de Averch-Johnson.
 - **$s$**: tasa de rentabilidad permitida (Averch-Johnson) y, en el 3.A.17 revisado, cantidad vendida $s_i$ en la producción conjunta en proporciones fijas: propuesto $x_i$ para esta (`pendientes-coherencia.md`).
-- **$r$**: prima unitaria (seguros), coste del capital (4.B.15 → $w_K$), tipo de interés (macro).
+- **$r$**: prima unitaria (seguros) → **$\gamma$** (3.A.10 y 3.A.13, 19/10/2026), coste del capital (4.B.15 → $w_K$), tipo de interés (macro).
+- **$\pi$ y $\nu$**: en el 3.A.13, $\pi$ es probabilidad (de accidente o de éxito) y la proporción de tipos es $\nu$; en el 2.º grado del 3.A.17, la proporción de tipos bajos es $\pi$ (no hay probabilidades en ese apartado). Unificar en $\nu$ es una propuesta abierta (`informe-repaso.md` § 14).
 - **$v$**: función característica, valoración en subastas, desutilidad del esfuerzo: se distinguen por argumento y subíndice ($v(T)$, $v_i$, $v(e)$); ninguno convive en el mismo apartado.
 
 **Revisión del 3.A.17 (17/10/2026).** Monopolio: $x(p)$ y $q=x(p)\Leftrightarrow p=p(q)$, $q^M$, $p^M$, $q^c$, $p^c$, $\mathrm{IMg}=p(1-1/|\varepsilon_{q,p}|)$, $\mathcal L=1/|\varepsilon_{q,p}|$ como `\funcionclave`, PIE; discriminación con tipos $t_1<t_2$ y proporción $\pi$, $T(q)=A+p\,q$, grupos $k$; punta y valle $p_v=b$, $p_p=b+\beta$; Ramsey-Boiteux con $\mathrm{ET}(\vec p)$ y λ; Averch-Johnson con $z_K$, $z_L$, $w_K$, $s$ y μ; Laffont-Tirole con $C=\beta-e$, ν, $\psi(e)$, $t$, λ y $t(C)=a-b(C-C^a)$; *yardstick* con $\bar c_{-i}$; monopsonio con $w_L(L)$, $\varepsilon_{L,w_L}$, $\mathrm{VPMg}_L$, $\mathrm{IPMg}_L$, $\mathrm{GMg}_L$, $L^M$, $w^M$, $w^c$, $\underline w$; monopolio bilateral con $U_S=wL-v(L)$, $w^S$ y γ. Colores de los gráficos de bienestar. Detalle y motivos en `notacion.md` § 0, § 1, § 4, § 6 y § 14 (manda) y en `cambios.md`.
+
+**Revisión del 3.A.13 (19/10/2026).** Tipos A/B en redonda (alto y bajo) y ν proporción del tipo bueno; Spence con $y$, $\hat y$, $c_{\mathrm A}(y)$, $w_{\mathrm A}$, $w_{\mathrm B}$, $\mathrm{IC}_{\mathrm A}$, $\mathrm{IC}_{\mathrm B}$; Rothschild-Stiglitz con $\pi_{\mathrm A}>\pi_{\mathrm B}$, $\overline\pi$, $\gamma$ y $A$; principal-agente con $x_{\mathrm E}>x_{\mathrm F}$, $w(x)$, $\pi(e)$, $e^{\mathrm A}$, $e^{\mathrm B}$, $v(e)$, $U^R$, $\lambda_1$, $\lambda_2$, principal neutral y $u_P$ solo en anexos; Stiglitz-Weiss con $(1+\hat r)$. Detalle en `notacion.md` § 1, § 2, § 4 y § 14 (manda) y en `cambios.md`.

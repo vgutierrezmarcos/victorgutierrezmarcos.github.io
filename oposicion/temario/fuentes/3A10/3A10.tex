@@ -1,0 +1,1308 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A10.bib}
+\tcetema[Teoría de la demanda del consumidor (III)]{3.A.10}{Teoría de la demanda del consumidor (III). Elección del consumidor en situaciones de riesgo e incertidumbre.}
+\tcefecha{19/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item \textbf{¿Somos prudentes o temerarios ante el riesgo?} El refranero no se pone de acuerdo: «más vale pájaro en mano que ciento volando», pero también «de perdidos, al río». Y la conducta tampoco: en 2025 los hogares y las empresas españolas pagaron unos 86.000 millones de euros en primas de seguro, en torno al 5\,\% del PIB \parencites{Mapfre2026Mercado}{Eurostat2026Nama10gdp}, y en diciembre muchos de ellos compraron un décimo de la Lotería de Navidad, un juego que devuelve en premios menos de lo que recauda. Con el seguro se paga para \emph{librarse} de un riesgo; con el décimo, para \emph{asumirlo}.
+  \item Detrás está la pregunta de esta exposición: ¿cómo elige un consumidor cuando no sabe qué va a pasar, y puede una misma teoría explicar a la vez el seguro y la lotería?
+  \item La teoría neoclásica del consumidor responde desde el \concepto{individualismo metodológico}: el comportamiento se reduce a decisiones de individuos que eligen entre alternativas \vertema{3.A.8}. Hasta ahora, cada alternativa llevaba a un resultado conocido; aquí lleva a varios resultados posibles, y el consumidor elige sin saber cuál ocurrirá. Esa falta de certeza puede ser de 2 tipos:
+    \begin{itemize}
+    \item \concepto{Riesgo}: las probabilidades de cada resultado son conocidas y \emph{objetivas}; dependen de la alternativa (una moneda, un dado, las tablas de mortalidad de una aseguradora), no de quien decide.
+    \item \concepto{Incertidumbre}: no hay probabilidades objetivas; a lo sumo, creencias \emph{subjetivas} de quien decide. En el lenguaje corriente, y en muchos manuales, «incertidumbre» designa los 2 casos.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: la utilidad esperada es el lenguaje de toda la economía con riesgo: los seguros y la información asimétrica \vertema{3.A.13}, los pagos esperados de la teoría de juegos y las subastas \vertema{3.A.14}, el equilibrio general con mercados contingentes \vertema{3.A.21}, el consumo y el ahorro con incertidumbre \vertema{3.A.33}, la demanda de dinero como activo \vertema{3.A.35} y la teoría de carteras \vertema{3.B.23}.
+  \item \emph{Práctica}: las decisiones más importantes de un hogar (asegurarse, ahorrar, invertir, elegir un empleo o una hipoteca a tipo fijo o variable) se toman con riesgo. Y los fallos de la teoría como descripción de la conducta dieron origen a la economía conductual \vertema{3.A.1}, que hoy inspira políticas como la adscripción automática a los planes de pensiones.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La palabra \emph{riesgo} viene del antiguo \emph{riesco}, «risco», por el peligro que suponen las rocas \parencite{RAE2026Riesgo}.
+  \item \textcite{Bernoulli1738Specimen}, con una idea que ya había adelantado Gabriel \autor{Cramer} en 1728, hace el primer análisis riguroso de la decisión con riesgo: para resolver la paradoja de San Petersburgo, que el criterio de la ganancia esperada no resolvía, propone valorar los premios por su utilidad, con utilidad marginal decreciente, y las loterías por la \emph{esperanza de la utilidad} (anexo~\ref{anexo:san-petersburgo}).
+  \item \textcite{Knight1921Risk} distingue el \emph{riesgo}, con probabilidades conocidas, de la \emph{incertidumbre}, que no se puede medir; el mismo año, \textcite{Keynes1921Treatise} defiende que no todas las probabilidades son numéricas.
+  \item \textcite{VonNeumannMorgenstern1944Theory}, en su \emph{Theory of Games and Economic Behavior}, dan a la idea de \autor{Bernoulli} su fundamento: en el apéndice de la 2.ª edición (1947) demuestran que unas preferencias razonables sobre loterías se representan con una utilidad esperada.\footnote{En la obra analizan los gustos de una persona por el café y el té. Para saber cuánto prefiere el café, le preguntan si preferiría una taza de té segura o una lotería que diese café con probabilidad $\tau$ y nada con probabilidad $1-\tau$. Si es indiferente cuando $\tau=0{,}5$ y se fija en 0 la utilidad de «nada», la utilidad del té es la mitad de la del café. El «doble» solo tiene sentido con esa normalización: la escala de utilidad de \autor{von Neumann} y \autor{Morgenstern} es de intervalo, como la de la temperatura (anexo~\ref{anexo:cardinal}).} \textcite{Savage1954Foundations} obtiene la utilidad esperada sin suponer probabilidades objetivas: las probabilidades \emph{subjetivas} salen de las propias elecciones. \textcite{Pratt1964Risk} y \textcite{Arrow1965Aspects} miden la aversión al riesgo.
+  \item Pronto llegan las anomalías: \textcite{Allais1953Comportement}, con riesgo, y \textcite{Ellsberg1961Risk}, con incertidumbre, proponen elecciones habituales que ninguna utilidad esperada racionaliza. De ellas nacen la \concepto{teoría de las perspectivas} de \textcite{KahnemanTversky1979Prospect}, reformulada en \textcite{TverskyKahneman1992Advances}, que valió a Daniel \autor{Kahneman} el Premio Nobel de Economía de 2002,\footnote{«Por haber integrado en la ciencia económica aportaciones de la investigación psicológica, en especial sobre el juicio humano y la toma de decisiones en condiciones de incertidumbre» \parencite{Nobel2002Kahneman}. Lo compartió con Vernon \autor{Smith}, premiado por convertir los experimentos de laboratorio en una herramienta del análisis económico. Amos \autor{Tversky} había fallecido en 1996, y el premio no se concede a título póstumo.} y los modelos de aversión a la \emph{ambigüedad} de \textcite{Schmeidler1989Subjective} y \textcite{GilboaSchmeidler1989Maxmin}.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Cómo se representan las preferencias de un consumidor que elige entre alternativas con riesgo? ¿Qué hay que suponer para que maximice una utilidad \emph{esperada}, y qué dice esa utilidad de su actitud ante el riesgo?
+  \item ¿Qué demanda de seguros y de activos con riesgo se deriva de ella?
+  \item ¿Se comportan así las personas? Si no, ¿qué teoría describe mejor lo que hacen?
+  \item ¿Qué cambia cuando ni siquiera se conocen las probabilidades?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición va de lo conocido a lo desconocido y, en cada caso, del modelo normativo a sus críticas. Tiene 3 partes:
+  \begin{itemize}
+  \item \emph{Riesgo: la teoría de la utilidad esperada} (\ref{sec:utilidad-esperada}). Construiremos la función de utilidad esperada a partir de axiomas sobre las preferencias y estudiaremos sus 2 componentes, la utilidad de \autor{Bernoulli}, que mide la actitud ante el riesgo, y la distribución de probabilidad, que permite comparar loterías (\ref{sec:fundamentos}); derivaremos con ella la demanda de seguros y, como profundización, la de un activo con riesgo y la decisión de la empresa aversa al riesgo (\ref{sec:aplicaciones}), y la extenderemos a la utilidad que depende del estado y a los bienes contingentes (\ref{sec:extensiones}).
+  \item \emph{Riesgo: críticas y enfoques alternativos} (\ref{sec:criticas}). Veremos dónde falla como descripción de la conducta (\ref{sec:limitaciones}) y la alternativa más influyente, la teoría de las perspectivas, junto con otras teorías de la utilidad no esperada (\ref{sec:perspectivas}).
+  \item \emph{Incertidumbre} (\ref{sec:incertidumbre}). Con probabilidades subjetivas, la utilidad esperada subjetiva de \autor{Savage} y su crítica, la paradoja de \autor{Ellsberg} (\ref{sec:probabilidad-subjetiva}); después, los modelos de aversión a la ambigüedad y los criterios clásicos para decidir en ignorancia (\ref{sec:alternativas-incertidumbre}).
+  \end{itemize}
+  Los bloques~\ref{sec:criticas} y~\ref{sec:incertidumbre} siguen la misma lógica: un modelo de utilidad esperada, una paradoja que lo pone en duda (\autor{Allais}, \autor{Ellsberg}) y una alternativa que la acomoda.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.10. Elección con riesgo e incertidumbre}\\[2pt]
+Introducción\\
+I. Riesgo: teoría de la utilidad esperada\\
+\hspace*{1.5em}1. Fundamentos: loterías, axiomas, $U(\tilde{x})=\sum_s\pi_s\,u(x_s)$; $u(\cdot)$: $\xi$, $\rho$, $r_A$, $r_R$; $F(\cdot)$: dominancia\\
+\hspace*{1.5em}2. Aplicaciones: demanda de seguros (\autor{Mossin}); activo con riesgo (\autor{Arrow}); empresa (\autor{Sandmo})\\
+\hspace*{1.5em}3. Extensiones: utilidad dependiente del estado; preferencia por el estado\\
+II. Riesgo: críticas y enfoques alternativos\\
+\hspace*{1.5em}1. \autor{Friedman}-\autor{Savage}, \autor{Markowitz}, \autor{Allais}, efectos marco, \autor{Rabin}\\
+\hspace*{1.5em}2. Teoría de las perspectivas: $V=\sum_s w(\pi_s)\,v(x_s-r)$; otras teorías no esperadas\\
+III. Incertidumbre\\
+\hspace*{1.5em}1. Probabilidad subjetiva (\autor{Savage}, \autor{Anscombe}-\autor{Aumann}); \autor{Ellsberg}\\
+\hspace*{1.5em}2. Ambigüedad (\autor{Schmeidler}, \autor{Gilboa}-\autor{Schmeidler}, KMM); criterios clásicos\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+La exposición va de lo conocido (riesgo) a lo desconocido (incertidumbre) y, en cada caso, del modelo a sus críticas y alternativas. Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{13} (I.1, \tiempo{8}: \tiempo{3,5} + \tiempo{4,5}; I.2, \tiempo{4}; I.3, \tiempo{1}); II, \tiempo{8} (II.1, \tiempo{3,5}; II.2, \tiempo{4,5}); III, \tiempo{5,5} (III.1, \tiempo{3}; III.2, \tiempo{2,5}), y conclusión, \tiempo{1}. Los gráficos imprescindibles son la actitud ante el riesgo (utilidad de \autor{Bernoulli} cóncava con $\mathbb{E}[\tilde{x}]$, $\xi$ y $\rho$), el plano de la riqueza en cada estado con la línea de certeza y la recta de aseguramiento, que se reutiliza en la preferencia por el estado, y la función de valor en S. Los axiomas en detalle, el caso continuo, la prudencia, la demanda de un activo con riesgo, la empresa aversa al riesgo, la tabla de casos del seguro, la caja de finanzas conductuales y los anexos son para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Elección del consumidor en situaciones de riesgo (I):\newline teoría de la utilidad esperada}\label{sec:utilidad-esperada}
+\minutos{13}
+
+\begin{itemize}
+\item Este primer bloque responde a las 2 primeras preguntas. Su conclusión anticipada: si las preferencias sobre loterías cumplen 5 axiomas, el consumidor elige \emph{como si} maximizara la esperanza de una utilidad definida sobre los resultados ciertos; la curvatura de esa utilidad mide su aversión al riesgo y basta para derivar su demanda de seguros (completa si la prima es justa) y de activos con riesgo.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Fundamentos}\label{sec:fundamentos}
+
+\begin{itemize}
+\item Siguiendo a \textcite{Knight1921Risk}, hay \concepto{riesgo} cuando la aleatoriedad se presenta con \concepto{probabilidades objetivas}, dadas de antemano o calculables. Las probabilidades dependen del objeto, no del sujeto: son las mismas para todos los que deciden.
+  \begin{itemize}
+  \item Son pocas las situaciones económicas de riesgo puro (por eso los ejemplos son monedas, dados o ruletas), pero es el punto de partida natural del análisis.
+  \end{itemize}
+\item La \concepto{teoría de la utilidad esperada} (TUE) aplica a la elección con riesgo el método de la teoría del consumidor con certidumbre \vertema{3.A.8}: un \emph{conjunto de elección}, una \emph{relación de preferencia} sobre él, unos \emph{axiomas} que permiten representarla con una \emph{función de utilidad} y un \emph{problema de maximización} del que sale la decisión óptima (gráfico~\ref{fig:esquema-tue}). Sobre ella se construyen las finanzas modernas, el equilibrio general con incertidumbre de \autor{Arrow} y \autor{Debreu} y la economía de la información asimétrica.
+\item Se diferencia de la elección con certidumbre en 2 cosas:
+  \begin{enumerate}
+  \item los \emph{objetos de elección} ya no son cestas de bienes, sino \emph{loterías}: distribuciones de probabilidad sobre resultados;
+  \item la \emph{función de utilidad} tiene una forma concreta: es \emph{lineal en las probabilidades}, y depende tanto de las preferencias del consumidor como de la distribución de probabilidad.
+  \end{enumerate}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{De las loterías a la decisión óptima con riesgo}\label{fig:esquema-tue}
+\grafico[0.9\textwidth]{esquema-tue}
+\fuente{elaboración propia, con el mismo diseño que el esquema de los ingredientes de la teoría del consumidor \vertema{3.A.8}.}
+\end{figure}
+
+\begin{notaopositor}
+En el cante de \ref{sec:fundamentos} (\tiempo{8}): el conjunto de elección con el árbol de una lotería (gráfico~\ref{fig:loteria}), los 5 axiomas nombrados, con la independencia explicada, y el teorema de la utilidad esperada como función clave, que se queda en una esquina de la pizarra hasta el final, con la frase «esperanza de la utilidad y no utilidad de la esperanza» (\tiempo{3,5}); después, el gráfico de la actitud ante el riesgo (gráfico~\ref{fig:actitud-riesgo}) con el equivalente cierto, la prima de riesgo y los coeficientes de \autor{Arrow}-\autor{Pratt}, la CRRA, el teorema de \autor{Pratt} en una frase y la dominancia de primer y segundo orden con su caracterización por las funciones de distribución (\tiempo{4,5}). Los 4 casos de la completitud, el símplex, el caso continuo, la aproximación de la prima, las familias CARA y HARA, la prudencia y la media-varianza son de profundización.
+\end{notaopositor}
+
+\subsubsection{Ingredientes y obtención de la función de utilidad esperada}\label{sec:ingredientes}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El objetivo es convertir una relación de preferencia sobre loterías, difícil de manejar, en una función de variable real con una forma concreta, para poder plantear y resolver problemas de optimización con las herramientas del cálculo. En certidumbre basta con que la función exista; aquí se le pide además una forma: la de una \emph{media ponderada} de utilidades.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Conjunto de elección: las loterías}.
+  \begin{itemize}
+  \item Hay $S$ \concepto{estados de la naturaleza}, $s=1,\dots,S$, \emph{mutuamente excluyentes} (si ocurre uno, no ocurre otro) y \emph{colectivamente exhaustivos} (cubren todas las posibilidades): ocurre uno y solo uno. En cada estado el consumidor obtiene un \concepto{resultado} $x_s$, que tomaremos monetario, su riqueza.\footnote{Es una simplificación sin pérdida de generalidad: dados los precios, cada nivel de riqueza lleva a una cesta óptima y a un nivel de utilidad, el que da la función indirecta de utilidad \vertema{3.A.8}. Por la misma razón, el análisis vale para la empresa si se cambia la utilidad de la riqueza por la del beneficio (\ref{sec:empresa-aversa}).}
+  \item Una \concepto{lotería} es una distribución de probabilidad sobre los resultados:
+    $$\tilde{x}\equiv(x_1,\dots,x_S;\ \pi_1,\dots,\pi_S),\qquad \pi_s\geq 0,\qquad \sum_{s=1}^{S}\pi_s=1 .$$
+    Puede ser:
+    \begin{itemize}
+    \item \emph{simple}, si sus resultados son ciertos (gráfico~\ref{fig:loteria}, izquierda);
+    \item \emph{compuesta}, si sus resultados son, a su vez, loterías. La lotería $\tau\tilde{x}^1+(1-\tau)\tilde{x}^2$, con $\tau\in[0,1]$, da la lotería $\tilde{x}^1$ con probabilidad $\tau$ y la $\tilde{x}^2$ con probabilidad $1-\tau$. Toda lotería compuesta se \emph{reduce} a una simple, multiplicando las probabilidades de cada rama (gráfico~\ref{fig:loteria}, derecha);\footnote{Por ejemplo, un 50\,\% de probabilidad de recibir un billete que da 100 euros con probabilidad del 50\,\% equivale a una lotería simple que da 100 euros con probabilidad del 25\,\%. Algunos manuales lo enuncian como axioma (\emph{reducción de loterías compuestas}): supone que al consumidor solo le importan las probabilidades finales de cada resultado, no el camino por el que se llega a ellas. Es un supuesto \emph{consecuencialista}.}
+    \item \emph{degenerada}, si da un resultado con probabilidad 1: la certidumbre es un caso particular.
+    \end{itemize}
+  \item Con $S$ resultados, cada lotería es un punto del \concepto{símplex} de dimensión $S-1$; con 3 resultados, un triángulo (gráfico~\ref{fig:simplex}).\footnote{En el \emph{triángulo de \autor{Marschak}-\autor{Machina}} se representan solo $\pi_1$ (probabilidad del peor resultado, en abscisas) y $\pi_3$ (la del mejor, en ordenadas), porque $\pi_2=1-\pi_1-\pi_3$. Con utilidad esperada, las curvas de indiferencia son rectas paralelas, más altas hacia arriba y a la izquierda \parencites{Machina1987Choice}{Machina2018Expected}. Sirve después para ver por qué la paradoja de \autor{Allais} contradice la teoría (\ref{sec:limitaciones}).}
+  \item El \concepto{conjunto de elección} $\mathcal{L}$ es el de todas las loterías simples sobre los resultados posibles. La idea clave: \textbf{el consumidor no elige resultados, que son aleatorios, sino loterías}, es decir, distribuciones de probabilidad sobre ellos. Una lotería no da utilidad por sí misma, sino por los resultados a los que da acceso.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Una lotería simple y una lotería compuesta con su reducción}\label{fig:loteria}
+\grafico[0.8\textwidth]{loteria}
+\fuente{elaboración propia a partir de \textcite{MatePerez2007Microeconomia}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{El símplex de probabilidades con 3 resultados y el triángulo de Marschak-Machina}\label{fig:simplex}
+\grafico[0.8\textwidth]{simplex}
+\fuente{elaboración propia a partir de \textcite[§6.B]{MasColellWhinstonGreen1995} y \textcite{Machina1987Choice}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Preferencias sobre loterías y sus axiomas}. Sobre $\mathcal{L}$ se define la relación binaria $\succcurlyeq$, «al menos tan preferida como», de la que salen la preferencia estricta, $\succ$, y la indiferencia, $\sim$, como en certidumbre \vertema{3.A.8}. Se le exigen 5 axiomas, en 2 grupos:
+  \begin{itemize}
+  \item \emph{Axiomas de preorden completo}:
+    \begin{enumerate}
+    \item \concepto{Completitud}: para todo $\tilde{x}^0,\tilde{x}^1\in\mathcal{L}$, $\tilde{x}^0\succcurlyeq\tilde{x}^1$ o $\tilde{x}^1\succcurlyeq\tilde{x}^0$ (o ambas): el consumidor puede comparar 2 loterías cualesquiera.\footnote{De los 4 casos posibles para un par de loterías (la primera es preferida, la segunda es preferida, son indiferentes o no son comparables), la completitud descarta el cuarto. Ni la preferencia estricta ni la indiferencia son completas por sí solas.}
+    \item \concepto{Reflexividad}: $\tilde{x}^0\succcurlyeq\tilde{x}^0$ para toda $\tilde{x}^0\in\mathcal{L}$: toda lotería es al menos tan buena como sí misma (se deduce de la completitud). La indiferencia es reflexiva; la preferencia estricta, no.
+    \item \concepto{Transitividad}: para todo $\tilde{x}^0,\tilde{x}^1,\tilde{x}^2\in\mathcal{L}$, si $\tilde{x}^0\succcurlyeq\tilde{x}^1$ y $\tilde{x}^1\succcurlyeq\tilde{x}^2$, entonces $\tilde{x}^0\succcurlyeq\tilde{x}^2$. También la cumplen $\succ$ y $\sim$.
+    \end{enumerate}
+    Los 3 hacen de $\succcurlyeq$ un \concepto{preorden completo}: todas las loterías (completitud) se clasifican en clases de indiferencia (reflexividad), y cada una pertenece a una y solo una (transitividad).\footnote{\emph{Preorden}, porque es reflexivo y transitivo pero no antisimétrico: 2 loterías distintas pueden ser indiferentes. \emph{Completo}, por el primer axioma.}
+  \item \emph{Axiomas de regularidad}:
+    \begin{enumerate}
+    \setcounter{enumi}{3}
+    \item \concepto{Continuidad}: para todo $\tilde{x}^1,\tilde{x}^2,\tilde{x}^3\in\mathcal{L}$ con $\tilde{x}^1\succcurlyeq\tilde{x}^2\succcurlyeq\tilde{x}^3$, existe $\tau\in[0,1]$ tal que $\tau\tilde{x}^1+(1-\tau)\tilde{x}^3\sim\tilde{x}^2$. Pequeños cambios en las probabilidades no invierten el orden entre 2 loterías: no hay resultados infinitamente buenos ni infinitamente malos.\footnote{Lo violaría quien prefiere 10 euros seguros a 11 euros con un riesgo de muerte de uno entre mil millones, por pequeño que sea ese riesgo \parencite[§6.B]{MasColellWhinstonGreen1995}. En la práctica nadie se comporta así: cruzamos la calle para ganar muy poco.} Con los 3 anteriores, garantiza que existe una función de utilidad $U:\mathcal{L}\rightarrow\mathbb{R}$ que representa las preferencias, $\tilde{x}^1\succcurlyeq\tilde{x}^2\iff U(\tilde{x}^1)\geq U(\tilde{x}^2)$, como en certidumbre.
+    \item \concepto{Axioma de independencia}: para todo $\tilde{x}^1,\tilde{x}^2,\tilde{x}^3\in\mathcal{L}$ y todo $\tau\in(0,1)$,
+      $$\tilde{x}^1\succcurlyeq\tilde{x}^2\iff\tau\tilde{x}^1+(1-\tau)\tilde{x}^3\ \succcurlyeq\ \tau\tilde{x}^2+(1-\tau)\tilde{x}^3 .$$
+      Mezclar 2 loterías con una tercera, en la misma proporción, no cambia el orden entre ellas. Es el axioma propio de la elección con riesgo y no tiene equivalente en la teoría del consumidor: allí 2 bienes se consumen juntos y pueden complementarse; aquí solo ocurre \emph{una} de las ramas de la lotería, así que lo que pase en la rama común, $\tilde{x}^3$, no debería afectar a la comparación.\footnote{No hay que confundirlo con la \emph{independencia de las alternativas irrelevantes} de \autor{Arrow} en la elección social \vertema{3.A.24}, que es otro axioma.}
+    \end{enumerate}
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La continuidad basta para que exista una función de utilidad; la independencia es la que le da la \emph{forma} de utilidad esperada. Es el \concepto{teorema de la utilidad esperada} de \textcite{VonNeumannMorgenstern1944Theory}: si $\succcurlyeq$ sobre $\mathcal{L}$ cumple los 5 axiomas, existe una función $u(\cdot)$ que asigna un número a cada resultado cierto tal que las loterías se ordenan por
+\end{itemize}
+
+\funcionclave[eq:utilidad-esperada]{U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)}
+
+\begin{itemize}
+\item[] es decir, $\tilde{x}^1\succcurlyeq\tilde{x}^2\iff U(\tilde{x}^1)\geq U(\tilde{x}^2)$.
+\item \emph{Interpretación}: el consumidor elige \emph{como si} asignara una utilidad a cada resultado cierto, la \concepto{utilidad de \autor{Bernoulli}} $u(\cdot)$ (en la terminología de \textcite{MasColellWhinstonGreen1995}), y valorara cada lotería por la media de esas utilidades ponderada por las probabilidades: la \concepto{utilidad esperada} o de \autor{von Neumann}-\autor{Morgenstern}, $U(\tilde{x})$. La demostración (en el apéndice de la 2.ª edición, de 1947) construye $u$ con loterías: con el mejor y el peor resultado, la utilidad de cada resultado intermedio es la probabilidad $\tau$ que hace al consumidor indiferente entre ese resultado seguro y la lotería que da el mejor con probabilidad $\tau$ y el peor con $1-\tau$.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Propiedades} de la función de utilidad esperada:
+  \begin{itemize}
+  \item \emph{preserva el orden} de las preferencias sobre loterías;
+  \item es \emph{lineal en las probabilidades} (consecuencia directa de la independencia) y \emph{aditivamente separable entre estados}: lo que ocurre en un estado no altera cómo se valora lo que ocurre en otro;
+  \item $u(\cdot)$ es \emph{única salvo transformaciones afines positivas}: $a\,u(\cdot)+b$, con $a>0$, representa las mismas preferencias, pero una transformación creciente no afín, no. Por eso se dice que la utilidad de \autor{von Neumann}-\autor{Morgenstern} es \emph{cardinal}: las diferencias de utilidad tienen significado, aunque no permite comparaciones entre personas (anexo~\ref{anexo:cardinal});
+  \item $u(\cdot)$ no es un supuesto, sino un \emph{resultado} del teorema: se deduce de las preferencias sobre loterías.
+  \end{itemize}
+\item \emph{Resultados continuos}. Si el resultado es una variable continua con función de distribución $F(x)\equiv\Pr(\tilde{x}\leq x)$, la suma de \eqref{eq:utilidad-esperada} se convierte en una integral de \autor{Riemann}-\autor{Stieltjes} y $u$ en una función de variable real:
+  $$U(\tilde{x})=\int u(x)\,dF(x)\qquad\Big(=\int u(x)\,f(x)\,dx\ \text{ si } F \text{ tiene densidad } f\Big).$$
+\item \textbf{La idea central}: el consumidor no se guía por la \emph{utilidad de la esperanza}, $u\big(\mathbb{E}[\tilde{x}]\big)$, sino por la \emph{esperanza de la utilidad}, $\mathbb{E}\big[u(\tilde{x})\big]$. Por eso la teoría se llama así, y es la solución de \textcite{Bernoulli1738Specimen} a la paradoja de San Petersburgo: un juego de ganancia esperada infinita por el que nadie pagaría más que unas pocas monedas; con $u(x)=\ln x$, su equivalente cierto es de solo 4 ducados (anexo~\ref{anexo:san-petersburgo}).
+\end{itemize}
+
+\begin{notaopositor}
+Conviene decir en voz alta que se pasa al caso continuo, porque lo que sigue (equivalente cierto, coeficientes de aversión, dominancia) se escribe con $F(x)$. San Petersburgo se cuenta en una frase: es la forma más rápida de decir «esperanza de la utilidad y no utilidad de la esperanza», que es la idea que el tribunal espera oír.
+\end{notaopositor}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item El teorema da un fundamento axiomático, y por tanto contrastable, a la forma más sencilla de valorar el riesgo. De los 5 axiomas, el discutido es el de independencia: los experimentos muestran que muchas personas lo violan de forma sistemática (\ref{sec:limitaciones}).
+\end{itemize}
+
+\subsubsection{Componentes de la función de utilidad esperada}\label{sec:componentes}
+
+\begin{itemize}
+\item Una vez obtenida la utilidad esperada, pasamos a estudiar sus 2 componentes:
+  \begin{itemize}
+  \item uno \emph{subjetivo}, la \concepto{utilidad de \autor{Bernoulli}} $u(x)$, propia de cada consumidor: de ella sale su \emph{actitud ante el riesgo};
+  \item otro \emph{objetivo}, la \concepto{distribución de probabilidad} $F(x)$, que viene dada y es la misma para todos: de ella sale la posibilidad de \emph{comparar loterías} sin conocer $u$.
+  \end{itemize}
+\item Se supone que $u$ es continua y creciente, $u'(x)>0$: más riqueza es mejor (el consumidor es \emph{amante de la riqueza}). Cuando hace falta, es 2 o 3 veces derivable. Gran parte del poder analítico de la teoría reposa en su \emph{curvatura}.
+\end{itemize}
+
+\paragraph{Utilidad de Bernoulli: actitud ante el riesgo}
+
+\begin{itemize}
+\item Para calificar la actitud ante el riesgo basta comparar la utilidad esperada de una lotería con la utilidad de su valor esperado. Un consumidor es:
+  \begin{itemize}
+  \item \concepto{averso al riesgo} si, ante cualquier lotería no degenerada, prefiere recibir su valor esperado con certeza: $u\big(\mathbb{E}[\tilde{x}]\big)>\mathbb{E}\big[u(\tilde{x})\big]$. Por la \emph{desigualdad de \autor{Jensen}}, eso ocurre si y solo si $u$ es estrictamente \emph{cóncava}, $u''<0$;
+  \item \concepto{neutral al riesgo} si $u\big(\mathbb{E}[\tilde{x}]\big)=\mathbb{E}\big[u(\tilde{x})\big]$: $u$ es \emph{lineal} y solo le importa la esperanza;
+  \item \concepto{amante del riesgo} si $u\big(\mathbb{E}[\tilde{x}]\big)<\mathbb{E}\big[u(\tilde{x})\big]$: $u$ es estrictamente \emph{convexa}.\footnote{Las 3 actitudes, con 2 resultados igual de probables: con $u$ cóncava la cuerda queda por debajo de la curva (averso); con $u$ lineal, sobre ella (neutral), y con $u$ convexa, por encima (amante).\graficonota[0.85]{actitud-tres-casos}}
+  \end{itemize}
+\item \emph{Intuición}: para el averso, la utilidad marginal de la riqueza es decreciente. Ante una lotería que sube o baja la riqueza en la misma cantidad, el euro perdido le duele más de lo que le alegra el euro ganado.
+\end{itemize}
+
+\paragraph{Utilidad de Bernoulli: equivalente cierto y prima de riesgo}
+
+\begin{itemize}
+\item El \concepto{equivalente cierto} $\xi$ de una lotería es la cantidad cierta que el consumidor valora igual que la lotería:
+  $$u(\xi)=\mathbb{E}\big[u(\tilde{x})\big]=\int u(x)\,dF(x).$$
+  El consumidor es averso si y solo si $\xi<\mathbb{E}[\tilde{x}]$ para toda lotería no degenerada; neutral si $\xi=\mathbb{E}[\tilde{x}]$, y amante si $\xi>\mathbb{E}[\tilde{x}]$. Es una forma equivalente de decir lo mismo que la concavidad.
+\item La \concepto{prima de riesgo} es la diferencia entre el valor esperado y el equivalente cierto:
+  $$\rho\equiv\mathbb{E}[\tilde{x}]-\xi .$$
+  Mide en euros lo que el consumidor sacrificaría, en valor esperado, por librarse del riesgo; dicho al revés, la rentabilidad esperada adicional que exige para asumirlo, que es como se usa en la teoría de carteras. Es positiva si y solo si el consumidor es averso.
+\item \emph{Prima justa y prima máxima: un ejemplo con un seguro} (gráfico~\ref{fig:actitud-riesgo}). Con $u(x)=\sqrt{x}$ y una riqueza de 64, el consumidor pierde 48 con probabilidad $1/2$. Su riqueza es la lotería $(64,16;\ \tfrac12,\tfrac12)$:
+  \begin{itemize}
+  \item $\mathbb{E}[\tilde{x}]=40$ y $\mathbb{E}[u(\tilde{x})]=\tfrac12\cdot 8+\tfrac12\cdot 4=6$, luego $\xi=6^2=36$ y la prima de riesgo es $\rho=40-36=4$;
+  \item la \concepto{prima actuarialmente justa} es la pérdida esperada, $\tfrac12\cdot 48=24$: una aseguradora neutral al riesgo no gana ni pierde cobrándola;
+  \item la \concepto{prima máxima} que pagaría por un seguro completo es la que le deja indiferente con no asegurarse, $64-\xi=28$: la prima justa más la prima de riesgo, $24+4$. Ese margen de 4 es lo que hace posible el negocio asegurador entre un consumidor averso y una aseguradora que diversifica.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Actitud ante el riesgo: equivalente cierto, prima de riesgo, prima justa y prima máxima}\label{fig:actitud-riesgo}
+\grafico[0.7\textwidth]{actitud-riesgo}
+\fuente{elaboración propia a partir de \textcite[§6.C]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\paragraph{Utilidad de Bernoulli: medidas de la aversión al riesgo}
+
+\begin{itemize}
+\item La concavidad dice \emph{si} el consumidor es averso, pero no \emph{cuánto}. Para medirlo, \textcite{Pratt1964Risk} y \textcite{Arrow1965Aspects} proponen la curvatura de $u$ normalizada por su pendiente:
+  \begin{itemize}
+  \item \concepto{coeficiente de aversión absoluta al riesgo}:
+    \begin{equation}\label{eq:aversion-absoluta}
+    r_A(x)\equiv-\frac{u''(x)}{u'(x)} ;
+    \end{equation}
+  \item \concepto{coeficiente de aversión relativa al riesgo}, que mide la aversión ante ganancias y pérdidas proporcionales a la riqueza:
+    \begin{equation}\label{eq:aversion-relativa}
+    r_R(x)\equiv x\,r_A(x)=-\frac{x\,u''(x)}{u'(x)} .
+    \end{equation}
+    Es la elasticidad de la utilidad marginal respecto a la riqueza, cambiada de signo, y no depende de las unidades en que se mida la riqueza.
+  \end{itemize}
+\item \emph{Por qué esa forma}: $u''$ sola no sirve, porque cambia si se multiplica $u$ por una constante, y $u$ solo está definida salvo transformaciones afines positivas; al dividir por $u'$, la medida es la misma para $u$ y para $a\,u+b$ ($a>0$). El signo menos la hace positiva para el averso.
+\item \emph{Por qué mide la aversión}: para un riesgo pequeño de media cero y varianza $\sigma^2$ en torno a una riqueza $\overline{W}$, la prima de riesgo es aproximadamente proporcional a $r_A$ y a la varianza (anexo~\ref{anexo:derivaciones}):
+  \begin{equation}\label{eq:arrow-pratt}
+  \rho\ \approx\ \tfrac{1}{2}\,\sigma^2\,r_A\big(\overline{W}\big).
+  \end{equation}
+  En el ejemplo anterior ($r_A(x)=1/(2x)$, $\sigma=24$, media 40), la aproximación da $\tfrac12\cdot 576/80=3{,}6$, frente a la prima exacta de 4: el riesgo no es pequeño.
+\item \emph{Comparación entre consumidores} (\concepto{teorema de \autor{Pratt}}): para 2 consumidores con utilidades $u_1$ y $u_2$ son equivalentes \parencite{Pratt1964Risk}:
+  \begin{enumerate}
+  \item $r_A^1(x)\geq r_A^2(x)$ para todo $x$;
+  \item $u_1$ es una transformación cóncava de $u_2$: $u_1=\psi(u_2)$ con $\psi$ creciente y cóncava;
+  \item el primero exige una prima mayor por cualquier lotería: $\rho_1\geq\rho_2$, o $\xi_1\leq\xi_2$;
+  \item toda lotería que el primero prefiere a una cantidad cierta, la prefiere también el segundo.
+  \end{enumerate}
+  Así, «más averso» tiene un sentido único y observable: las medidas locales ($r_A$), globales ($\rho$) y de comportamiento (qué apuestas acepta) ordenan igual a los consumidores. Las estimaciones suelen dar una aversión relativa moderada, en torno a 1 \parencite{Chetty2006New}; en el laboratorio, los sujetos son aversos incluso con premios pequeños, y más cuanto mayor es el premio real \parencite{HoltLaury2002Risk}.
+\end{itemize}
+
+\paragraph{Utilidad de Bernoulli: aversión al riesgo y riqueza}
+
+\begin{itemize}
+\item ¿Acepta más riesgo quien es más rico? Según cómo varíen los coeficientes con la riqueza, la aversión absoluta es \emph{constante}, \emph{decreciente} o \emph{creciente} (CARA, DARA e IARA, por sus siglas en inglés), y lo mismo la relativa (CRRA, DRRA e IRRA). La evidencia y la intuición apoyan la \concepto{DARA}: quien es más rico asume más riesgo \emph{en euros}. Sobre la relativa no hay acuerdo; la constante es el supuesto habitual. Las 3 familias más usadas (tabla~\ref{tab:formas-aversion}):
+  \begin{itemize}
+  \item \concepto{CARA} (exponencial), $u(x)=-e^{-ax}$ con $a>0$: $r_A=a$, de modo que la prima que exige por un riesgo no depende de su riqueza.
+  \item \concepto{CRRA} (isoelástica), la misma de la teoría del consumidor \vertema{3.A.8}:
+    \begin{equation}\label{eq:crra}
+    u(x)=\begin{cases}\dfrac{x^{1-\theta}-1}{1-\theta} & \text{si } \theta\geq 0,\ \theta\neq 1,\\[6pt] \ln x & \text{si } \theta=1,\end{cases}
+    \end{equation}
+    con $r_R=\theta$ constante y $r_A=\theta/x$ decreciente (DARA) (anexo~\ref{anexo:derivaciones}). Es la más usada en macroeconomía y finanzas: con ella, las decisiones de cartera y de ahorro en proporción a la riqueza no dependen del nivel de riqueza, lo que es compatible con el crecimiento equilibrado. Con utilidad separable en el tiempo, su elasticidad de sustitución intertemporal es $\mathrm{ESI}=1/\theta$ \vertema{3.A.29}: un mismo parámetro mide 2 cosas distintas, la aversión al riesgo entre estados y la resistencia a sustituir consumo entre periodos.\footnote{Las preferencias de \textcite{EpsteinZin1989Substitution} las separan: la aversión relativa y la elasticidad de sustitución intertemporal son parámetros distintos. El $-1$ del numerador de \eqref{eq:crra} no afecta a las decisiones; se mantiene para que el límite cuando $\theta\to 1$ sea $\ln x$.}
+  \item \concepto{Cuadrática}, $u(x)=x-\tfrac{b}{2}x^2$ con $x<1/b$: es cómoda, porque la utilidad esperada solo depende de la media y la varianza (anexo~\ref{anexo:media-varianza}), pero tiene aversión absoluta \emph{creciente} (IARA), lo que contradice la evidencia, y deja de ser creciente para $x>1/b$.
+  \end{itemize}
+\item Las 3 son casos de la familia \concepto{HARA} (\emph{hyperbolic absolute risk aversion}), cuya tolerancia al riesgo, $1/r_A(x)$, es lineal en la riqueza: $1/r_A(x)=\eta_0+\eta_1x$. Es CARA si $\eta_1=0$; CRRA si $\eta_0=0$ y $\eta_1=1/\theta$, y cuadrática si $\eta_1=-1$.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Formas funcionales de la utilidad de Bernoulli y su aversión al riesgo}\label{tab:formas-aversion}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\centering\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{3.8cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Función} & $u(x)$ & $r_A(x)$ & $r_R(x)$ & \textbf{Tipo}\\
+\midrule
+CARA\newline (exponencial) & $-e^{-ax}$, $a>0$ & $a$ & $a\,x$ & CARA, IRRA\\[4pt]
+\rowcolor{tceesalvia}
+CRRA\newline (isoelástica) & $\dfrac{x^{1-\theta}-1}{1-\theta}$\newline ($\ln x$ si $\theta=1$) & $\theta/x$ & $\theta$ & DARA, CRRA\\[4pt]
+Cuadrática & $x-\tfrac{b}{2}x^2$, $x<1/b$ & $\dfrac{b}{1-bx}$ & $\dfrac{bx}{1-bx}$ & IARA, IRRA\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Gollier2001Economics}.}
+\end{table}
+
+\paragraph{Utilidad de Bernoulli: prudencia y ahorro precautorio}
+
+\begin{notaopositor}
+No se canta: basta una frase si sale el ahorro. La aversión al riesgo ($u''<0$) dice si el consumidor pagaría por librarse de un riesgo; el ahorro precautorio depende de otra cosa, la prudencia ($u'''>0$).
+\end{notaopositor}
+
+\begin{itemize}
+\item La aversión al riesgo dice si el consumidor pagaría por eliminar un riesgo; la \concepto{prudencia} dice cómo \emph{reacciona} ante él: si ahorra más cuando su renta futura se vuelve incierta. Depende de la tercera derivada de $u$.
+\item \emph{Modelo} \parencites{Leland1968Saving}{Sandmo1970Effect}: el consumidor reparte una riqueza $\overline{W}$ entre consumir hoy y ahorrar $s$ para mañana, cuando recibirá además una renta incierta $\tilde{y}$ (con tipo de interés y descuento nulos, para simplificar):
+  $$\optim{\max}{s}{u(\overline{W}-s)+\mathbb{E}\big[u(s+\tilde{y})\big]}{}\qquad\Longrightarrow\qquad u'(\overline{W}-s^*)=\mathbb{E}\big[u'(s^*+\tilde{y})\big].$$
+  Si $u'$ es convexa ($u'''>0$), por la desigualdad de \autor{Jensen}, $\mathbb{E}[u'(s+\tilde{y})]>u'(s+\mathbb{E}[\tilde{y}])$: el riesgo eleva la utilidad marginal esperada de mañana y el consumidor ahorra \emph{más} que si recibiera $\mathbb{E}[\tilde{y}]$ con certeza. Es el \concepto{ahorro precautorio}.
+\item La condición es $u'''>0$, y no la aversión al riesgo: es necesaria y suficiente para que cualquier riesgo de media cero aumente el ahorro, sea cual sea el signo de $u''$. \textcite{Kimball1990Precautionary} la mide con el coeficiente de \emph{prudencia absoluta}, $-u'''(x)/u''(x)$, por analogía con $r_A$.
+  \begin{itemize}
+  \item Con la CRRA, $u'''=\theta(\theta+1)x^{-\theta-2}>0$ y la prudencia es $(\theta+1)/x$: hay ahorro precautorio.
+  \item Con la cuadrática, $u'''=0$: no lo hay, aunque el consumidor sea averso (tabla~\ref{tab:prudencia}). Por eso, con utilidad cuadrática, el consumo de \autor{Hall} sigue un paseo aleatorio sin motivo precaución \vertema{3.A.33}.
+  \item La aversión absoluta es decreciente (DARA) si y solo si la prudencia es mayor que la aversión, lo que exige $u'''>0$ (anexo~\ref{anexo:derivaciones}): la DARA, que es la hipótesis más aceptada, implica ahorro precautorio.
+  \end{itemize}
+\item \emph{Implicación macroeconómica}: un aumento de la incertidumbre eleva el ahorro precautorio; en equilibrio general baja el tipo de interés real, lo que empuja el consumo en sentido contrario, así que el efecto final sobre la actividad es ambiguo \parencite{FernandezVillaverdeGuerron2020Uncertainty}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Aversión al riesgo y prudencia: utilidad cuadrática frente a CRRA}\label{tab:prudencia}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{4.8cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+ & \textbf{Cuadrática} & \textbf{CRRA}\\
+\midrule
+$u(x)$ & $x-\tfrac{b}{2}x^2$ & $\dfrac{x^{1-\theta}-1}{1-\theta}$\\[6pt]
+$u'(x)$ & $1-bx$ & $x^{-\theta}$\\[3pt]
+$u''(x)$ & $-b<0$ (averso) & $-\theta x^{-\theta-1}<0$ (averso)\\[3pt]
+\rowcolor{tceesalvia}
+$u'''(x)$ & $0$ (sin prudencia) & $\theta(\theta+1)x^{-\theta-2}>0$ (prudente)\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[tabla~1]{FernandezVillaverdeGuerron2020Uncertainty}, con la notación del temario ($\theta$ en lugar de $\sigma$).}
+\end{table}
+
+\paragraph{Distribución de probabilidad: dominancia estocástica}
+
+\begin{itemize}
+\item Hasta aquí hemos visto si una lotería es preferida a otra \emph{por un consumidor concreto}. Pero ¿hay loterías que \emph{todos} prefieren, sea cual sea su $u$? La \concepto{dominancia estocástica} responde con condiciones sobre las distribuciones $F$ y $G$, que son objetivas \parencites{HadarRussell1969Rules}{HanochLevy1969Efficiency}.
+\item \concepto{Dominancia estocástica de primer orden}: $F$ domina a $G$ si la prefiere todo consumidor que prefiere más riqueza a menos, sea cual sea su actitud ante el riesgo:
+  \begin{align*}
+  &\int u(x)\,dF(x)\geq\int u(x)\,dG(x)\ \ \text{para toda } u \text{ no decreciente}\\
+  \iff\ &F(x)\leq G(x)\ \ \text{para todo } x .
+  \end{align*}
+  Para cualquier umbral $x$, $F$ da menos probabilidad que $G$ de quedarse por debajo: su función de distribución está siempre por debajo (gráfico~\ref{fig:dominancia}, izquierda). Implica $\mathbb{E}_F[\tilde{x}]\geq\mathbb{E}_G[\tilde{x}]$, pero no al revés.
+\item \concepto{Dominancia estocástica de segundo orden}: compara el \emph{riesgo} de 2 loterías. Para aislarlo, se comparan loterías con la misma media (un averso puede aceptar más riesgo si la ganancia esperada es mayor). Con la misma media, $F$ domina a $G$ si la prefiere todo consumidor \emph{averso}:
+  \begin{align*}
+  &\int u(x)\,dF(x)\geq\int u(x)\,dG(x)\ \ \text{para toda } u \text{ cóncava}\\
+  \iff\ &\int_{-\infty}^{x}F(t)\,dt\leq\int_{-\infty}^{x}G(t)\,dt\ \ \text{para todo } x .
+  \end{align*}
+  Equivale a que $G$ sea una \concepto{dispersión que conserva la media} de $F$: se obtiene de $F$ quitando probabilidad del centro y llevándola a las colas sin cambiar la media (gráfico~\ref{fig:dominancia}, derecha). Es la definición rigurosa de «más arriesgada», más general que «con más varianza» \parencite{RothschildStiglitz1970Increasing}.
+\item \emph{Valoración}: son criterios exigentes, que solo dan un orden \emph{parcial} (muchos pares de loterías no se pueden ordenar así) y no dicen cuánto mejor es una lotería que otra.
+  \begin{itemize}
+  \item Por eso se usa a menudo el criterio de \concepto{media y varianza}, que resume cada lotería en 2 números: la media como un «bien» y la varianza como un «mal». Pierde información \parencite{BikhchandaniHirshleiferRiley2013Analytics}, y solo es coherente con la utilidad esperada si la utilidad es cuadrática o los rendimientos son normales (o, en general, elípticos), no por el teorema central del límite \parencites{Tobin1958Liquidity}{Chamberlain1983Characterization}.\footnote{La media y la varianza son los 2 primeros momentos de la distribución. La utilidad esperada también es sensible a los de orden superior: con $u'''>0$, el consumidor prefiere asimetría positiva (premios grandes y poco probables), y con $u''''<0$ rechaza las colas gruesas (la curtosis).}
+  \item Es la base de la teoría de carteras de \autor{Markowitz}, \autor{Tobin} y \autor{Sharpe} (anexo~\ref{anexo:media-varianza}) \vertema{3.B.23}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Dominancia estocástica de primer orden (izquierda) y de segundo orden (derecha)}\label{fig:dominancia}
+\grafico[0.9\textwidth]{dominancia}
+\fuente{elaboración propia a partir de \textcite[§6.D]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{ideaclave}
+La utilidad esperada separa lo subjetivo de lo objetivo: la curvatura de $u$ mide la actitud ante el riesgo (cuanto más cóncava, mayor la prima que se paga por librarse de él), y la dominancia estocástica permite ordenar algunas loterías para todos los consumidores a la vez.
+\end{ideaclave}
+
+% --------------------------------------------------------------------------
+\subsection{Aplicaciones de la teoría de la utilidad esperada}\label{sec:aplicaciones}
+
+\begin{itemize}
+\item Con la utilidad esperada y la medida de la aversión ya podemos derivar \emph{demandas}. Las decisiones con riesgo más importantes del consumidor son financieras: comprar \concepto{activos}, que son promesas de pagos (casi siempre inciertos) que se diferencian por el estado de la naturaleza en que pagan. Un seguro paga en el estado malo; una acción, más en el bueno.
+\item Veremos 3 aplicaciones: la decisión de aseguramiento, que da la demanda de seguros; la decisión de cartera, que da la demanda de un activo con riesgo, y la decisión de producción de una empresa aversa al riesgo.
+\end{itemize}
+
+\begin{notaopositor}
+En el cante de \ref{sec:aplicaciones} (\tiempo{4}) se desarrolla solo la demanda de seguros, que es la más intuitiva y la base del modelo de \autor{Rothschild} y \autor{Stiglitz} con información asimétrica \vertema{3.A.13}: supuestos, recta de aseguramiento, problema y condición de tangencia, seguro completo con prima justa y parcial con prima recargada, sobre el gráfico~\ref{fig:seguros} construido por capas; la evidencia y la valoración, en una frase cada una. La demanda de un activo con riesgo y la empresa aversa al riesgo se mencionan en una frase cada una. La tabla de casos es de profundización.
+\end{notaopositor}
+
+\subsubsection{Decisión de aseguramiento: demanda de seguros (\autor{Mossin}, 1968)}\label{sec:seguros}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item ¿Cuánto seguro compra un consumidor averso que puede sufrir una pérdida? Es la aplicación más sencilla de la utilidad esperada y la base de toda la economía del seguro \parencites{Mossin1968Aspects}{Smith1968Optimal}. El consumidor busca \emph{reducir su exposición al riesgo} trasladando riqueza del estado bueno al malo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{enumerate}
+\item Un consumidor tiene una riqueza inicial $\overline{W}$. Con probabilidad $\pi$ sufre un accidente y pierde $L$; con probabilidad $1-\pi$ no le ocurre nada. Sin seguro, su riqueza es la lotería $(\overline{W},\,\overline{W}-L;\ 1-\pi,\,\pi)$: el punto $A=(\overline{W},\,\overline{W}-L)$ del plano $(x_1,x_2)$, con la riqueza sin accidente, $x_1$, en abscisas y con accidente, $x_2$, en ordenadas (gráfico~\ref{fig:seguros}).
+\item Su utilidad de \autor{Bernoulli} es continua, creciente y estrictamente cóncava: es averso al riesgo. Su utilidad esperada es $U=(1-\pi)\,u(x_1)+\pi\,u(x_2)$, y sus curvas de indiferencia en el plano $(x_1,x_2)$ son decrecientes, convexas (por la aversión) y representan más utilidad cuanto más se alejan del origen.\footnote{Con $u(x)=\ln x$, la utilidad esperada es $(1-\pi)\ln x_1+\pi\ln x_2$: una función \autor{Cobb}-\autor{Douglas} en logaritmos, con las probabilidades como exponentes \vertema{3.A.8}.}
+\item Puede comprar una cobertura de $S$ euros, que cobra si hay accidente, pagando una prima de $\gamma$ euros por euro asegurado ($\gamma S$ en total, haya o no accidente). La cobertura no puede superar la pérdida, $0\leq S\leq L$ (el seguro no puede enriquecer al asegurado).
+\item Información simétrica: la aseguradora conoce $\pi$ y observa si hay accidente.
+\end{enumerate}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con una cobertura $S$, la riqueza en cada estado es
+  \begin{equation}\label{eq:riqueza-estados}
+  \begin{aligned}
+  x_1&=\overline{W}-\gamma S &&\text{(sin accidente, con probabilidad } 1-\pi),\\
+  x_2&=\overline{W}-L+(1-\gamma)\,S &&\text{(con accidente, con probabilidad } \pi).
+  \end{aligned}
+  \end{equation}
+  Despejando $S$ en la primera y sustituyendo en la segunda se obtiene la \concepto{recta de aseguramiento}, que pasa por el punto sin seguro, $A$, y es la restricción presupuestaria del consumidor entre estados:\footnote{Es la análoga de la recta de balance del consumidor con certidumbre \vertema{3.A.8}.}
+  \begin{equation}\label{eq:recta-seguro}
+  x_2=\frac{\overline{W}}{\gamma}-L-\frac{1-\gamma}{\gamma}\,x_1 .
+  \end{equation}
+  Su pendiente, $-(1-\gamma)/\gamma$, es el precio relativo de trasladar riqueza entre estados: renunciar a $\gamma$ euros en el estado sin accidente da $1-\gamma$ euros netos en el estado con accidente.
+\item El consumidor elige la cobertura que maximiza su utilidad esperada:
+\end{itemize}
+
+\funcionclave[eq:problema-seguro]{\optim{\max}{S}{(1-\pi)\,u\big(\overline{W}-\gamma S\big)+\pi\,u\big(\overline{W}-L+(1-\gamma)S\big)}{0\leq S\leq L}}
+
+\begin{itemize}
+\item[] Con solución interior, la condición de primer orden iguala la pendiente de la curva de indiferencia y la de la recta de aseguramiento (anexo~\ref{anexo:derivaciones}):
+  \begin{equation}\label{eq:cpo-seguro}
+  \mathrm{RMSE}\equiv\frac{(1-\pi)\,u'(x_1)}{\pi\,u'(x_2)}=\frac{1-\gamma}{\gamma} .
+  \end{equation}
+  La \concepto{relación marginal de sustitución estocástica}, o entre estados (RMSE), es el valor absoluto de la pendiente de la curva de indiferencia en el plano $(x_1,x_2)$: cuánta riqueza sin accidente está dispuesto a dar el consumidor por un euro más con accidente. En la \concepto{línea de certeza} ($x_1=x_2$, la bisectriz) vale $(1-\pi)/\pi$, el cociente de probabilidades, sea cual sea $u$. La condición de segundo orden se cumple por la concavidad de $u$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Demanda de seguros con información simétrica}\label{fig:seguros}
+\grafico[0.6\textwidth]{seguros}
+\fuente{elaboración propia a partir de \textcite{Mossin1968Aspects}, \textcite[§6.C]{MasColellWhinstonGreen1995} y \textcite{RodriguezLopez2017Riesgo}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Prima justa}. Si las aseguradoras son neutrales al riesgo y compiten con libre entrada, su beneficio esperado por póliza es nulo: $(1-\pi)\,\gamma S+\pi\,(\gamma S-S)=(\gamma-\pi)\,S=0$, luego $\gamma=\pi$. Es la \concepto{prima actuarialmente justa}, y con ella la recta de aseguramiento tiene la misma pendiente que las curvas de indiferencia en la línea de certeza.
+\item \concepto{Teorema de \autor{Mossin}}:
+  \begin{itemize}
+  \item con prima justa, \eqref{eq:cpo-seguro} da $u'(x_1)=u'(x_2)$, luego $x_1=x_2$ y $S^*=L$: el consumidor averso \textbf{se asegura completamente} y se sitúa en la línea de certeza (punto $E$ del gráfico~\ref{fig:seguros}), mientras la aseguradora tiene beneficio nulo;
+  \item con prima recargada ($\gamma>\pi$), $(1-\gamma)/\gamma<(1-\pi)/\pi$, luego $u'(x_1)<u'(x_2)$, $x_1>x_2$ y $S^*<L$: \textbf{seguro parcial}, como las franquicias que se observan (punto $E'$, entre $A$ y la línea de certeza).
+  \end{itemize}
+\item \emph{Estática comparativa}: la cobertura demandada aumenta con la aversión al riesgo, con la probabilidad de accidente y con la cuantía de la pérdida, y disminuye con la prima. Con prima recargada y aversión absoluta decreciente (DARA), el seguro es un \emph{bien inferior}: quien es más rico se asegura menos \parencite{Mossin1968Aspects}.
+\end{itemize}
+
+\paragraph{c) Extensiones: primas distintas de la justa y otras actitudes ante el riesgo}
+
+\begin{itemize}
+\item La prima puede ser \emph{recargada} ($\gamma>\pi$), que es lo habitual, porque la aseguradora cubre sus gastos y busca un beneficio (con competencia imperfecta, mayor), o \emph{favorable} ($\gamma<\pi$), que solo se da si alguien la subvenciona: entonces la aseguradora pierde en promedio. El resultado depende también de la actitud ante el riesgo (tabla~\ref{tab:seguros-casos}):
+  \begin{itemize}
+  \item el \emph{neutral} solo mira la riqueza esperada, $\overline{W}-\pi L+(\pi-\gamma)\,S$, que es lineal en $S$: se asegura del todo si la prima es favorable, nada si es recargada y le da igual cuánto si es justa;
+  \item el \emph{amante del riesgo} tiene una utilidad esperada convexa en $S$, así que elige un extremo: con prima justa o recargada no se asegura; con prima favorable, se asegura del todo solo si la prima es bastante menor que la justa;
+  \item el \emph{averso} con prima favorable querría sobreasegurarse ($S>L$, más riqueza con accidente que sin él); como no puede, se asegura del todo.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Cobertura óptima según la prima y la actitud ante el riesgo, con $0\leq S\leq L$}\label{tab:seguros-casos}
+\begin{tabular}{>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{3.9cm}>{\centering\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{3.9cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+ & \textbf{Prima favorable}\newline ($\gamma<\pi$) & \textbf{Prima justa}\newline ($\gamma=\pi$) & \textbf{Prima recargada}\newline ($\gamma>\pi$)\\
+\midrule
+\textcolor{tceeverde}{\textbf{Averso}} & Completo, $S^*=L$\newline (se sobreaseguraría si pudiera) & \cellcolor{tceesalvia}Completo, $S^*=L$\newline (teorema de \autor{Mossin}) & Parcial, $S^*<L$\newline (nulo si el recargo es grande)\\[4pt]
+\textcolor{tceeazul}{\textbf{Neutral}} & Completo, $S^*=L$ & Indiferente,\newline $S^*\in[0,L]$ & Ninguno, $S^*=0$\\[4pt]
+\textcolor{tceerojo}{\textbf{Amante}} & Ninguno o completo\newline (completo si $\gamma$ es bastante menor que $\pi$) & Ninguno, $S^*=0$ & Ninguno, $S^*=0$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Mossin1968Aspects}, \textcite[§6.C]{MasColellWhinstonGreen1995} y \textcite[cap.~11]{Varian1992Microeconomic}.}
+\end{table}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La mayoría de las pólizas tienen franquicias o coberturas parciales, como predice el modelo con primas recargadas. Pero los consumidores pagan demasiado por evitar riesgos \emph{pequeños}: en el seguro del hogar eligen franquicias bajas a precios que solo una aversión al riesgo inverosímil justificaría con utilidad esperada \parencite{Sydnor2010Overinsuring}. Es una de las anomalías que estudiaremos en el bloque~\ref{sec:criticas}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo explica con 2 supuestos (aversión y prima justa) por qué existen los seguros y cuánto se demanda, y da la referencia de eficiencia, el seguro completo.\footnote{Del lado de la oferta, la aseguradora puede comportarse como neutral al riesgo porque agrupa muchos riesgos independientes (\emph{risk pooling}: por la ley de los grandes números, la pérdida media por póliza es casi cierta) y porque reparte cada riesgo entre muchos accionistas o reaseguradores (\emph{risk spreading}: \textcite{ArrowLind1970Uncertainty} demuestran que, repartido entre muchos, el coste del riesgo tiende a cero). El reparto óptimo del riesgo entre agentes se estudia en \textcite{GravelleRees2004Microeconomics} y en el equilibrio general con mercados contingentes \vertema{3.A.21}.}
+\item Pero supone información simétrica. Si la aseguradora no conoce el riesgo de cada asegurado aparece la \emph{selección adversa} (\emph{ex ante}), y si no observa su cuidado, el \emph{riesgo moral} (\emph{ex post}): el modelo de \textcite{RothschildStiglitz1976Equilibrium} parte de este mismo gráfico \vertema{3.A.13}. Supone también que el accidente no cambia cómo se valora la riqueza, lo que no siempre es cierto (\ref{sec:extensiones}).
+\end{itemize}
+
+\subsubsection{Decisión de cartera: demanda de un activo con riesgo}\label{sec:cartera}
+
+\begin{notaopositor}
+No se canta: basta mencionar el resultado de \autor{Arrow} (todo consumidor averso compra algo del activo con riesgo si su rentabilidad esperada supera a la del activo seguro). Es el problema inverso del seguro: allí el consumidor parte del riesgo y paga por acercarse a la línea de certeza; aquí parte de la certeza y hay que pagarle, en rentabilidad esperada, para que se aleje de ella.
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Del seguro pasamos a la decisión de cartera: ¿cuánto invierte un consumidor averso en un activo cuya rentabilidad es incierta? Es la otra gran decisión financiera del hogar y la base de la teoría de carteras.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El consumidor reparte una riqueza $\overline{W}$ entre un activo seguro, con rentabilidad $r_f$, y un activo con riesgo, con rentabilidad aleatoria $\tilde{r}$; invierte $\alpha$ euros en el segundo \parencites{Arrow1965Aspects}{Pratt1964Risk}.
+\item Su utilidad de \autor{Bernoulli} es creciente y estrictamente cóncava: es averso al riesgo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Su riqueza final es $\overline{W}(1+r_f)+\alpha\,(\tilde{r}-r_f)$, y elige $\alpha$:
+  $$\optim{\max}{\alpha}{\mathbb{E}\Big[u\big(\overline{W}(1+r_f)+\alpha\,(\tilde{r}-r_f)\big)\Big]}{}\qquad\Longrightarrow\qquad\mathbb{E}\Big[u'\big(\overline{W}(1+r_f)+\alpha^*(\tilde{r}-r_f)\big)\,(\tilde{r}-r_f)\Big]=0 .$$
+\item La derivada de la utilidad esperada en $\alpha=0$ es $u'\big(\overline{W}(1+r_f)\big)\big(\mathbb{E}[\tilde{r}]-r_f\big)$: si la prima de rentabilidad es positiva, $\alpha^*>0$.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Un consumidor averso siempre asume \emph{algo} de un riesgo con esperanza favorable, porque, para riesgos pequeños, el coste de la aversión es de segundo orden (proporcional a $\alpha^2$, como en \eqref{eq:arrow-pratt}) y la ganancia esperada, de primer orden (proporcional a $\alpha$).
+\item Si la aversión absoluta es decreciente (DARA), $\alpha^*$ crece con $\overline{W}$: el activo con riesgo es un \emph{bien normal}. Si la relativa es constante (CRRA), la \emph{proporción} invertida, $\alpha^*/\overline{W}$, no depende de la riqueza.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item Con varios activos, y si la utilidad esperada depende solo de la media y la varianza, se llega a la teoría de carteras de \textcite{Markowitz1952Portfolio} y \textcite{Tobin1958Liquidity} (anexo~\ref{anexo:media-varianza}) \vertema{3.B.23}; con el dinero como activo seguro, a la demanda de dinero por motivo especulación \vertema{3.A.35}.
+\end{itemize}
+
+\subsubsection{Decisión de producción de la empresa aversa al riesgo}\label{sec:empresa-aversa}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item El mismo análisis vale para la empresa si su propietario es averso y valora el beneficio con una utilidad $u(\cdot)$ cóncava: ¿cuánto produce una empresa que no conoce el precio al que venderá?
+\end{itemize}
+
+\begin{notaopositor}
+No se canta: cumple la remisión de la teoría de la producción \vertema{3.A.11}. Basta una frase: con un precio incierto, la empresa aversa al riesgo produce menos que la neutral.
+\end{notaopositor}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Una empresa competitiva no conoce el precio $\tilde{p}$ cuando decide cuánto producir.
+\item Sus costes $C(q)$ son ciertos (a corto plazo y con los precios de los factores dados, $C(\vect{w},q)$ con $\vect{w}$ fijo \vertema{3.A.12}), con coste marginal creciente.
+\item Su propietario es averso al riesgo: $u$ es creciente y estrictamente cóncava.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item La empresa resuelve \parencite{Sandmo1971Theory}:
+  $$\optim{\max}{q}{\mathbb{E}\Big[u\big(\tilde{p}\,q-C(q)\big)\Big]}{q\geq 0}\qquad\Longrightarrow\qquad\mathbb{E}\Big[u'(\tilde{B})\,\big(\tilde{p}-\mathrm{CMg}(q^*)\big)\Big]=0 ,$$
+  con $\tilde{B}=\tilde{p}\,q^*-C(q^*)$ el beneficio aleatorio.
+\item Como $\mathbb{E}[u'(\tilde{B})\,\tilde{p}]=\mathbb{E}[u'(\tilde{B})]\,\mathbb{E}[\tilde{p}]+\mathrm{Cov}\big(u'(\tilde{B}),\tilde{p}\big)$, y la covarianza es negativa (un precio alto da más beneficio y, con $u$ cóncava, menos utilidad marginal), se obtiene
+  $$\mathrm{CMg}(q^*)=\mathbb{E}[\tilde{p}]+\frac{\mathrm{Cov}\big(u'(\tilde{B}),\tilde{p}\big)}{\mathbb{E}[u'(\tilde{B})]}<\mathbb{E}[\tilde{p}] .$$
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Con coste marginal creciente, la empresa aversa produce \emph{menos} que la neutral, que iguala el coste marginal al precio esperado, como con certidumbre \vertema{3.A.11}.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item Por eso la empresa suele modelizarse neutral al riesgo: sus propietarios pueden diversificar, y un mercado de futuros que le permita fijar hoy el precio elimina la distorsión.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Extensiones}\label{sec:extensiones}
+
+\begin{itemize}
+\item Una vez aplicada la utilidad esperada a la demanda, pasamos a 2 extensiones que flexibilizan el modelo básico sin abandonarlo.
+\end{itemize}
+
+\begin{notaopositor}
+En el cante de \ref{sec:extensiones} (\tiempo{1}): la utilidad dependiente del estado con el ejemplo de la salud y su consecuencia para el seguro, y la preferencia por el estado como el mismo gráfico del seguro con otros nombres (la recta de aseguramiento es la recta de precios de 2 bienes contingentes). No hace falta gráfico nuevo.
+\end{notaopositor}
+
+\paragraph{Utilidad dependiente del estado}
+
+\begin{itemize}
+\item Hasta ahora, un euro vale lo mismo en todos los estados: solo importa la riqueza, no \emph{por qué} se tiene. Pero no se disfruta igual una renta con buena salud que enfermo, ni se valora igual el dinero tras perder un bien insustituible. Con \concepto{utilidad dependiente del estado}, $u_s(x_s)$, la utilidad esperada es $\sum_s\pi_s\,u_s(x_s)$; una versión ampliada del teorema de la utilidad esperada la fundamenta \parencite{Karni1985Decision}.
+\item \emph{Consecuencia para los seguros}: la RMSE pasa a ser $(1-\pi)\,u_1'(x_1)/\big(\pi\,u_2'(x_2)\big)$, y con prima justa la condición de primer orden ya no iguala las riquezas, sino las utilidades marginales: $u_1'(x_1)=u_2'(x_2)$. Si el accidente reduce la utilidad marginal de la riqueza (porque se pierde algo que el dinero no repone, como la salud), al consumidor averso le conviene asegurarse \emph{menos} que por completo, aun con prima justa \parencite{CookGraham1977Demand}.
+\end{itemize}
+
+\paragraph{Enfoque de la preferencia por el estado}
+
+\begin{itemize}
+\item Las preferencias sobre loterías alejan la elección con riesgo de la teoría del consumidor, que define las preferencias sobre bienes. \textcite{Arrow1953Role} y \textcite[cap.~7]{Debreu1959Theory} cierran esa distancia: basta definir los bienes no solo por sus propiedades físicas, sino también por el \emph{estado de la naturaleza} en que se entregan. Un paraguas si llueve y un paraguas si no llueve son \concepto{bienes contingentes} distintos, con precios distintos, los \concepto{precios de \autor{Arrow}-\autor{Debreu}}, $p_s$, y cada uno con su mercado (\emph{mercados contingentes}).
+\item El consumidor elige entonces una cesta de consumos contingentes $(x_1,\dots,x_S)$ con la restricción $\sum_s p_s\,x_s\leq\overline{W}$, exactamente como en certidumbre. Con utilidad esperada, la condición de tangencia entre 2 estados $s$ y $s'$ es
+  \begin{equation}\label{eq:precios-estado}
+  \frac{\pi_s\,u'(x_s)}{\pi_{s'}\,u'(x_{s'})}=\frac{p_s}{p_{s'}} :
+  \end{equation}
+  la RMSE entre 2 estados se iguala al cociente de sus precios. Es el gráfico del seguro con otros nombres (gráfico~\ref{fig:seguros}): la recta de aseguramiento es la recta de precios de 2 bienes contingentes, con $p_2/p_1=\gamma/(1-\gamma)$, y la prima justa corresponde a precios proporcionales a las probabilidades, con los que el averso iguala su consumo en todos los estados.
+\item Su valor es que lleva el riesgo al equilibrio general sin teoría nueva: con mercados contingentes completos valen los teoremas del bienestar y el riesgo se reparte de forma eficiente. El equilibrio, los títulos de \autor{Arrow}, que reducen el número de mercados necesarios \parencite{Arrow1964Role}, y lo que ocurre cuando faltan mercados se estudian en el equilibrio general \vertema{3.A.21}.
+\end{itemize}
+
+\begin{ideaclave}
+Con 5 axiomas, el consumidor maximiza una utilidad esperada; la concavidad de $u$ mide su aversión al riesgo, y de ella salen la demanda de seguros (completo con prima justa, parcial con prima recargada) y la de activos con riesgo (siempre algo, si su rentabilidad esperada es favorable).
+\end{ideaclave}
+
+\begin{itemize}
+\item \emph{Recapitulación}: hemos construido la utilidad esperada, medido con ella la actitud ante el riesgo y derivado la demanda de seguros y de activos con riesgo. Pero ¿eligen así las personas? El segundo bloque contrasta la teoría con la conducta observada.
+\end{itemize}
+
+% ==========================================================================
+\section{Elección del consumidor en situaciones de riesgo (II):\newline críticas a la teoría de la utilidad esperada\newline y enfoques alternativos}\label{sec:criticas}
+\minutos{8}
+
+\begin{itemize}
+\item Una vez construida la utilidad esperada y vista su aplicación a los seguros, pasamos a contrastarla con lo que hacen las personas. Este bloque responde a la tercera pregunta. Su conclusión anticipada: la utilidad esperada es una buena guía \emph{normativa} de cómo decidir, pero falla de forma sistemática como \emph{descripción} de la conducta; la teoría de las perspectivas explica esos fallos sustituyendo la riqueza final por ganancias y pérdidas respecto a un punto de referencia, y las probabilidades por pesos de decisión.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Limitaciones y críticas a la teoría de la utilidad esperada}\label{sec:limitaciones}
+
+\begin{notaopositor}
+En el cante de \ref{sec:limitaciones} (\tiempo{3,5}): \autor{Friedman}-\autor{Savage} con el boceto de su función (la pregunta del enganche), \autor{Markowitz} en una frase (cambios de riqueza respecto a un punto de referencia), la paradoja de \autor{Allais} con números y por qué viola la independencia (la tabla, como apoyo), los efectos marco y la inversión de preferencias en una frase cada uno, la calibración de \autor{Rabin} y el valor normativo de la teoría. Las 3 inflexiones de \autor{Markowitz}, el efecto razón común y el abanico de \autor{Machina} son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item La utilidad esperada es la herramienta fundamental para estudiar el riesgo: su conveniencia y su operatividad son innegables. Pero desde muy pronto se le señalaron inconvenientes, primero sobre la \emph{forma} de la utilidad de \autor{Bernoulli} y después, con experimentos, sobre los propios \emph{axiomas}.
+\end{itemize}
+
+\paragraph{La forma de la utilidad: Friedman-Savage y Markowitz}
+
+\begin{itemize}
+\item \textcite{FriedmanSavage1948Utility} plantean la pregunta del enganche: ¿por qué la misma persona compra seguros, que revelan aversión al riesgo, y juega a juegos de azar abiertamente desfavorables, que revelan amor por el riesgo?
+  \begin{itemize}
+  \item Proponen una utilidad de \autor{Bernoulli} \emph{cóncava-convexa-cóncava}, con 2 puntos de inflexión (gráfico~\ref{fig:friedman-savage-markowitz}, izquierda): aversión al riesgo en las rentas bajas y altas y amor por el riesgo en las intermedias. Quien está cerca del tramo convexo, típicamente la clase media, compra seguro contra pérdidas que le hundirían y lotería con premios que le harían cambiar de clase social.
+  \item Pero la solución es incompleta: no explica por qué se juega a todos los niveles de renta, y predice que quien está en el tramo convexo aceptaría grandes apuestas justas a cara o cruz, lo que no se observa.
+  \end{itemize}
+\item \textcite{Markowitz1952Utility}, que había estudiado en Chicago con \autor{Friedman} y \autor{Savage},\footnote{Harry \autor{Markowitz} recibió el Premio Nobel de Economía de 1990, con Merton \autor{Miller} y William \autor{Sharpe}, «por sus trabajos pioneros en la teoría de la economía financiera» \parencite{Nobel1990Markowitz}, pero por su otro artículo de 1952, el de la selección de carteras (anexo~\ref{anexo:media-varianza}) \vertema{3.B.23}. Sobre su formación en Chicago, \textcite{Markowitz1990Biografia}.} les objeta además que, con esa función, los ricos, en el tramo cóncavo final, nunca jugarían; y los casinos de Montecarlo están llenos de ellos. Propone 2 cambios (gráfico~\ref{fig:friedman-savage-markowitz}, derecha):
+  \begin{itemize}
+  \item la utilidad no depende del nivel de riqueza, sino de los \emph{cambios} respecto a la riqueza habitual, que es el origen de la función y un punto de inflexión. Con 3 puntos de inflexión, el individuo es averso a las pérdidas pequeñas y a las ganancias grandes, y amante de las pérdidas grandes y de las ganancias pequeñas. Así se compra lotería (una ganancia pequeña de esperanza negativa con un premio poco probable) y seguro (contra pérdidas grandes) a cualquier nivel de riqueza;
+  \item las pérdidas pesan más que las ganancias del mismo tamaño.
+  \end{itemize}
+  Las 2 ideas, el punto de referencia y la asimetría entre ganancias y pérdidas, reaparecen 27 años después en la teoría de las perspectivas.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Utilidad de Friedman y Savage (izquierda) y de Markowitz (derecha)}\label{fig:friedman-savage-markowitz}
+\grafico[0.9\textwidth]{friedman-savage-markowitz}
+\fuente{elaboración propia a partir de \textcite{FriedmanSavage1948Utility} y \textcite{Markowitz1952Utility}.}
+\end{figure}
+
+\paragraph{Violaciones del axioma de independencia: la paradoja de Allais}
+
+\begin{itemize}
+\item Desde los años 50, los experimentos que observan las elecciones reales ante el riesgo encuentran \concepto{violaciones sistemáticas} de la utilidad esperada. La más conocida es la \concepto{paradoja de \autor{Allais}}. \textcite{Allais1953Comportement} planteó sus preguntas en un coloquio sobre el riesgo celebrado en París en 1952,\footnote{Maurice \autor{Allais} recibió el Premio Nobel de Economía en 1988 «por sus contribuciones pioneras a la teoría de los mercados y a la utilización eficiente de los recursos» \parencite{Nobel1988Allais}: no por la paradoja.} con 2 elecciones entre loterías (tabla~\ref{tab:allais}, premios en millones). La mayoría elige $A_1$ en la primera y $B_2$ en la segunda.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La paradoja de Allais (premios en millones)}\label{tab:allais}
+\begin{tabular}{>{\centering\arraybackslash}m{1.4cm}>{\centering\arraybackslash}m{4.6cm}|>{\centering\arraybackslash}m{1.4cm}>{\centering\arraybackslash}m{4.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+\multicolumn{2}{c|}{\textbf{Elección 1}} & \multicolumn{2}{c}{\textbf{Elección 2}}\\
+\midrule
+\cellcolor{tceesalvia}$A_1$ & \cellcolor{tceesalvia}1 con probabilidad 1 & $A_2$ & 1 con 0,11; 0 con 0,89\\[3pt]
+$B_1$ & 5 con 0,10; 1 con 0,89;\newline 0 con 0,01 & \cellcolor{tceesalvia}$B_2$ & \cellcolor{tceesalvia}5 con 0,10; 0 con 0,90\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Allais1953Comportement} y \textcite[§6.B]{MasColellWhinstonGreen1995}. En sombreado, la elección de la mayoría.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Ninguna utilidad esperada racionaliza ese par de elecciones}:
+  \begin{align*}
+  A_1\succ B_1&\iff 0{,}11\,u(1)>0{,}10\,u(5)+0{,}01\,u(0),\\
+  B_2\succ A_2&\iff 0{,}10\,u(5)+0{,}01\,u(0)>0{,}11\,u(1).
+  \end{align*}
+\item \emph{Por qué viola la independencia} (anexo~\ref{anexo:derivaciones}): en cada elección, las 2 loterías comparten una \emph{consecuencia común}, un 89\,\% de probabilidad de ganar 1 (elección 1) o de ganar 0 (elección 2). Quitada esa parte común, las 2 elecciones son la misma. Según el axioma de independencia, cambiar lo que es común no debería alterar el orden; lo altera el \concepto{efecto certeza}: pasar del 99\,\% al 100\,\% de probabilidad de ganar algo pesa mucho más que pasar del 10\,\% al 11\,\%.
+  \begin{itemize}
+  \item Con números parecidos, en \textcite{KahnemanTversky1979Prospect} el 82\,\% de los sujetos prefirió el pago seguro en el primer par, el 83\,\% la lotería arriesgada en el segundo y el 61\,\% hizo las 2 cosas a la vez.\footnote{Junto al \emph{efecto consecuencia común} de \autor{Allais} está el \emph{efecto razón común}: la mayoría prefiere 3.000 seguros a 4.000 con probabilidad del 80\,\%, pero 4.000 con el 20\,\% a 3.000 con el 25\,\%, aunque el segundo par es el primero con las probabilidades divididas por 4 \parencite[problemas~3 y~4]{KahnemanTversky1979Prospect}. \autor{Savage} cuenta que, cuando \autor{Allais} le planteó el ejemplo, eligió como la mayoría y después revisó su elección para ajustarla a sus axiomas \parencite[cap.~5]{Savage1954Foundations}.}
+  \item En el triángulo de \autor{Marschak}-\autor{Machina} (gráfico~\ref{fig:simplex}), la utilidad esperada da curvas de indiferencia rectas y paralelas; las elecciones de \autor{Allais} piden curvas que se abren en abanico (\emph{fanning out}), más inclinadas cuanto mejor es la lotería \parencite{Machina1982Expected}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Violaciones de la invariancia: efectos marco y de modo de respuesta}
+
+\begin{itemize}
+\item La teoría supone que la elección depende solo de las loterías, no de cómo se presentan (\emph{invariancia descriptiva}) ni de cómo se pregunta por ellas (\emph{invariancia procedimental}). Ninguna se cumple, como han mostrado, entre otros, los trabajos de Richard \autor{Thaler}:\footnote{\autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía del comportamiento» \parencite{Nobel2017Thaler}.}
+  \begin{itemize}
+  \item \concepto{Efecto marco} (\emph{framing effect}): el mismo problema, presentado como ganancias o como pérdidas, lleva a elecciones opuestas \parencite{TverskyKahneman1981Framing}; también influyen la forma de describirlo (una matriz, un árbol, una ruleta) o plantearlo como una apuesta o como un seguro. Ocurre porque las personas valoran los resultados respecto a un punto de referencia, como había sugerido \autor{Markowitz}.
+  \item \concepto{Efecto modo de respuesta} o \emph{inversión de preferencias}: entre una apuesta con probabilidad alta de un premio modesto y otra con probabilidad baja de un premio grande, muchos \emph{eligen} la primera pero \emph{piden un precio mayor} por la segunda \parencite{LichtensteinSlovic1971Reversals}. El resultado se mantiene con incentivos monetarios reales \parencite{GretherPlott1979Economic}, y lo que pone en duda no es solo la independencia, sino la propia idea de un orden de preferencias estable.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Valoración: normativa frente a descriptiva}
+
+\begin{itemize}
+\item Aunque no prediga bien qué deciden las personas concretas, la utilidad esperada sigue siendo la referencia de lo que \emph{debería} decidir quien acepta sus axiomas: tiene un valor \emph{normativo} que va más allá del positivo. Y es razonable pensar que, cuanto mejor informados estén los agentes y más incentivos tengan para corregir sus errores, más se acercarán sus decisiones a las que predice.
+\item Pero hay una crítica que no se resuelve con más información. \textcite{Rabin2000Risk} demuestra que la aversión a riesgos pequeños, la que se observa (por ejemplo, en las franquicias de los seguros), solo cabe en la utilidad esperada con una curvatura que implica una aversión absurda a riesgos grandes: quien rechaza siempre una apuesta al 50\,\% de perder 100 euros o ganar 110 debería rechazar una al 50\,\% de perder 1.000 o ganar \emph{cualquier} cantidad. La aversión a riesgos pequeños no viene de la curvatura de $u$ sobre la riqueza, sino de valorar ganancias y pérdidas respecto a un punto de referencia.
+\item En definitiva, estas regularidades, que contradicen supuestos clave de la teoría, han guiado el desarrollo de enfoques alternativos que puedan acomodarlas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoques alternativos: modelos de utilidad no esperada.\newline Teoría de las perspectivas (\autor{Kahneman} y \autor{Tversky}, 1979)}\label{sec:perspectivas}
+
+\begin{notaopositor}
+En el cante de \ref{sec:perspectivas} (\tiempo{4,5}): la idea y la diferencia con la utilidad esperada en 3 cuestiones (definición, valoración y ponderación); la fase de edición con el punto de referencia; la función clave $V$; la función de valor en S (gráfico~\ref{fig:funcion-valor}), imprescindible, con la aversión a las pérdidas y $\lambda\approx 2{,}25$; la función de ponderación (gráfico~\ref{fig:ponderacion}); el patrón cuádruple, que responde a la pregunta del enganche; la teoría acumulativa y la dependiente del rango en una frase; 2 anomalías (efecto dotación y prima de las acciones), y la valoración. La forma paramétrica, la tabla de teorías no esperadas, la caja de finanzas conductuales y el experimento del efecto marco son de profundización.
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La acumulación de anomalías dio lugar a las \concepto{teorías de la utilidad no esperada} (\emph{non-expected utility theories}), que debilitan el axioma de independencia. La más influyente es la \concepto{teoría de las perspectivas} (\emph{prospect theory}) de los psicólogos Daniel \autor{Kahneman} y Amos \autor{Tversky}.
+  \begin{itemize}
+  \item Su colaboración empezó en 1969, cuando \autor{Kahneman} invitó a \autor{Tversky} a su seminario de la Universidad Hebrea de Jerusalén. En los años 50 ambos habían estado en el ejército israelí, pero no juntos: \autor{Kahneman}, en su rama de psicología; \autor{Tversky}, como oficial paracaidista \parencite{Kahneman2002Biografia}.
+  \item Publicaron la teoría en \emph{Econometrica} en marzo de 1979 \parencite{KahnemanTversky1979Prospect} y la reformularon con probabilidades acumuladas en \textcite{TverskyKahneman1992Advances}. Eligieron a propósito un nombre sin significado preciso, para que fuera fácil de distinguir si la teoría llegaba a conocerse \parencite{Kahneman2002Biografia}.
+  \end{itemize}
+\item Es una teoría \emph{descriptiva} (positiva), con base empírica: no dice cómo debería elegirse, sino cómo se elige. Se diferencia de la utilidad esperada en 3 cuestiones: cómo se \emph{definen} las alternativas (como ganancias o pérdidas respecto a un punto de referencia), cómo se \emph{valoran} (con una función de valor en forma de S) y cómo se \emph{ponderan} (con pesos de decisión, no con probabilidades).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Nuestra limitada capacidad de cálculo nos obliga a simplificar los problemas de decisión, y lo hacemos con reglas heurísticas. Por eso la elección tiene 2 fases:
+  \begin{enumerate}
+  \item \concepto{Fase de edición}: el decisor simplifica el problema.
+    \begin{itemize}
+    \item La operación clave es la \emph{codificación}: los resultados se ven como \emph{ganancias o pérdidas} respecto a un \concepto{punto de referencia} $r$, no como niveles de riqueza final. Suele ser la situación actual (el \emph{statu quo}), pero también puede ser una aspiración o una cifra que sugiere, sin darnos cuenta, quien plantea el problema.
+    \item Otras operaciones son la \emph{combinación} de resultados iguales, la \emph{segregación} de la parte segura, la \emph{cancelación} de lo que es común a 2 alternativas y la eliminación de las alternativas dominadas. Cómo se combinan o se separan las ganancias y las pérdidas sucesivas (¿una ganancia seguida de una pérdida menor se vive como una ganancia neta o como 2 sucesos?) tiene gran importancia.
+    \end{itemize}
+  \item \concepto{Fase de evaluación}: cada alternativa editada se valora con la función de valor y los pesos de decisión.
+  \end{enumerate}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El valor de una alternativa con resultados $x_s$ y probabilidades $\pi_s$ es
+\end{itemize}
+
+\funcionclave[eq:perspectivas]{V=\sum_{s=1}^{S}w(\pi_s)\,v(x_s-r)}
+
+\begin{itemize}
+\item[] donde $v(\cdot)$ es la \concepto{función de valor}, definida sobre ganancias y pérdidas, y $w(\cdot)$ la \concepto{función de ponderación} de las probabilidades. Con $r=0$, $w(\pi)=\pi$ y $v=u$, es la utilidad esperada \eqref{eq:utilidad-esperada}.
+\item \emph{La función de valor} (gráfico~\ref{fig:funcion-valor}) tiene forma de S y 3 propiedades:
+  \begin{itemize}
+  \item \emph{dependencia del punto de referencia}: se valoran cambios, no niveles de riqueza;
+  \item \emph{sensibilidad decreciente}: es \emph{cóncava en las ganancias}, porque cada euro ganado añade menos valor (aversión al riesgo: «más vale pájaro en mano que ciento volando»), y \emph{convexa en las pérdidas}, porque cada euro perdido resta menos (búsqueda del riesgo: «de perdidos, al río»);
+  \item \concepto{aversión a las pérdidas}: es más inclinada en las pérdidas que en las ganancias, con un quiebro en el punto de referencia. Por eso la mayoría rechaza una apuesta al 50\,\% de ganar o perder la misma cantidad: las pérdidas duelen más de lo que alegran las ganancias del mismo importe.
+  \end{itemize}
+  La forma que estiman \textcite{TverskyKahneman1992Advances}, con la misma curvatura para ganancias y pérdidas, es
+  \begin{equation}\label{eq:funcion-valor}
+  v(z)=\begin{cases} z^{\beta} & \text{si } z\geq 0,\\ -\lambda\,(-z)^{\beta} & \text{si } z<0,\end{cases}\qquad \beta\approx 0{,}88,\quad \lambda\approx 2{,}25 ,
+  \end{equation}
+  con $z=x_s-r$: una pérdida duele algo más del doble que una ganancia del mismo tamaño.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Función de valor de la teoría de las perspectivas}\label{fig:funcion-valor}
+\grafico[0.6\textwidth]{funcion-valor}
+\fuente{elaboración propia a partir de \textcite{KahnemanTversky1979Prospect} y \textcite{TverskyKahneman1992Advances}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{La función de ponderación} (gráfico~\ref{fig:ponderacion}). Para recoger la paradoja de \autor{Allais} y nuestra hipersensibilidad a los riesgos pequeños, los resultados no se ponderan con sus probabilidades, sino con \concepto{pesos de decisión} $w(\pi)$, que guardan con ellas una relación no lineal:
+  \begin{itemize}
+  \item $w$ es creciente, con $w(0)=0$ y $w(1)=1$;
+  \item \emph{sobrepondera las probabilidades bajas} e \emph{infrapondera las medias y altas}, y es poco sensible en los tramos centrales;
+  \item recupera la sensibilidad cerca de los extremos, sobre todo al pasar de casi seguro a seguro: es el \emph{efecto certeza} de \autor{Allais}.
+  \end{itemize}
+  La forma estimada por \textcite{TverskyKahneman1992Advances} es
+  \begin{equation}\label{eq:ponderacion}
+  w(\pi)=\frac{\pi^{\delta}}{\big[\pi^{\delta}+(1-\pi)^{\delta}\big]^{1/\delta}},\qquad\delta\approx 0{,}61 \text{ en las ganancias y } 0{,}69 \text{ en las pérdidas}.
+  \end{equation}
+  Con $\delta=0{,}61$, por ejemplo, $w(0{,}01)\approx 0{,}055$ y $w(0{,}9)\approx 0{,}71$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Función de ponderación de las probabilidades}\label{fig:ponderacion}
+\grafico[0.55\textwidth]{ponderacion}
+\fuente{elaboración propia a partir de \textcite{TverskyKahneman1992Advances}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La combinación de $v$ y $w$ da un \concepto{patrón cuádruple} de actitudes ante el riesgo \parencite{TverskyKahneman1992Advances}:
+  \begin{itemize}
+  \item con probabilidades medias y altas, \emph{aversión} al riesgo en las ganancias y \emph{búsqueda} del riesgo en las pérdidas, por la forma de $v$;
+  \item con probabilidades bajas, al revés: búsqueda del riesgo en las ganancias (\textbf{se compra lotería}) y aversión en las pérdidas (\textbf{se compra seguro}), porque $w$ sobrepondera lo poco probable.
+  \end{itemize}
+  Es la respuesta a la pregunta de \autor{Friedman} y \autor{Savage} sin necesidad de una $u$ con tramos: la misma persona sobrepondera tanto el premio improbable como el accidente improbable.
+\item \emph{Efecto marco}: como la función es cóncava en las ganancias y convexa en las pérdidas, cambiar el punto de referencia cambia la elección aunque no cambien los resultados finales (anotación siguiente). Y el \concepto{efecto dotación}, pedir por desprenderse de un bien bastante más de lo que se pagaría por comprarlo, es la aversión a las pérdidas aplicada a los bienes \parencite{KahnemanKnetschThaler1990Endowment} \vertema{3.A.8}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Un experimento de efecto marco} \parencite[problemas~11 y~12]{KahnemanTversky1979Prospect}. A un grupo se le dan 1.000 y se le ofrece elegir entre ganar 500 más seguros o 1.000 más con probabilidad del 50\,\%: el 84\,\% elige los 500 seguros. A otro grupo se le dan 2.000 y se le ofrece elegir entre perder 500 seguros o perder 1.000 con probabilidad del 50\,\%: el 69\,\% elige arriesgarse. En términos de riqueza final las 2 elecciones son idénticas (1.500 seguros frente a 1.000 o 2.000 al 50\,\%). Lo que cambia es el punto de referencia: en el primer marco se eligen ganancias, y la función de valor es cóncava; en el segundo, pérdidas, y es convexa. En el original, las cantidades eran libras israelíes.
+\end{anotaciones}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \concepto{Teoría acumulativa de las perspectivas}. La versión de 1979 ponderaba cada probabilidad por separado y podía llevar a elegir loterías dominadas en primer orden, por lo que necesitaba que la fase de edición las eliminara. \textcite{TverskyKahneman1992Advances} aplican $w$ a las probabilidades \emph{acumuladas} de obtener al menos cada resultado, con una ponderación para las ganancias y otra para las pérdidas: así respetan la dominancia, y la teoría se aplica también a la incertidumbre.
+\item \emph{Otras teorías de la utilidad no esperada} (tabla~\ref{tab:no-esperada}):
+  \begin{itemize}
+  \item \concepto{Utilidad dependiente del rango} \parencite{Quiggin1982Theory}: ordenados los resultados de peor a mejor, $x_1\leq\dots\leq x_S$, cada uno se pondera por la diferencia entre la probabilidad transformada de obtener \emph{al menos} ese resultado y la de obtener uno \emph{mejor}:
+    $$V(\tilde{x})=\sum_{s=1}^{S}u(x_s)\Big[g\big(\pi_s+\dots+\pi_S\big)-g\big(\pi_{s+1}+\dots+\pi_S\big)\Big],$$
+    con $g$ creciente, $g(0)=0$ y $g(1)=1$. Si $g(\pi)=\pi$, es la utilidad esperada; si $g$ es convexa, el decisor es \emph{pesimista} y da más peso a los peores resultados. Respeta la dominancia de primer orden y explica la paradoja de \autor{Allais}. Es la que incorpora la teoría acumulativa.
+  \item \concepto{Teoría del pesar} \parencites{LoomesSugden1982Regret}{Bell1982Regret}: al valorar una alternativa se tiene en cuenta lo que se habría obtenido con la otra en el mismo estado, y el pesar por haber elegido mal pesa más que la satisfacción por haber acertado. Explica \autor{Allais} y las inversiones de preferencias, a costa de admitir preferencias no transitivas.
+  \item \concepto{Utilidad esperada generalizada} \parencite{Machina1982Expected}: sin el axioma de independencia, unas preferencias suaves se comportan \emph{localmente} como una utilidad esperada, y la hipótesis del abanico basta para explicar los efectos consecuencia común y razón común.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Utilidad esperada y principales teorías de la utilidad no esperada}\label{tab:no-esperada}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\centering\arraybackslash}m{4cm}>{\centering\arraybackslash}m{6cm}>{\centering\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Teoría} & \textbf{Valor de una lotería} & \textbf{Qué cambia}\\
+\midrule
+\rowcolor{tceesalvia}
+Utilidad esperada\newline \parencite{VonNeumannMorgenstern1944Theory} & $\sum_s\pi_s\,u(x_s)$ & ---\\[4pt]
+Utilidad subjetivamente ponderada\newline \parencite{Karmarkar1978Subjectively} & $\dfrac{\sum_s w(\pi_s)\,u(x_s)}{\sum_s w(\pi_s)}$ & Pesos de decisión normalizados\\[6pt]
+Perspectivas\newline \parencite{KahnemanTversky1979Prospect} & $\sum_s w(\pi_s)\,v(x_s-r)$ & Punto de referencia y pesos de decisión\\[4pt]
+Dependiente del rango\newline \parencite{Quiggin1982Theory} & $\sum_s u(x_s)\Big[g\big(\sum_{t\geq s}\pi_t\big)-g\big(\sum_{t>s}\pi_t\big)\Big]$ & Pesos que dependen del orden de los resultados\\[6pt]
+Utilidad ponderada\newline \parencite{Chew1983Generalization} & $\dfrac{\sum_s \pi_s\,h(x_s)\,u(x_s)}{\sum_s \pi_s\,h(x_s)}$, $h>0$ & Pesos que dependen del resultado\\[6pt]
+Pesar\newline \parencites{LoomesSugden1982Regret}{Bell1982Regret} & Utilidad del resultado y pesar frente a la otra alternativa en cada estado & Se compara con lo que se habría obtenido\\[4pt]
+Perspectivas acumulativa\newline \parencite{TverskyKahneman1992Advances} & Como la dependiente del rango, sobre $v(x_s-r)$, con un $w$ para ganancias y otro para pérdidas & Las 2 cosas\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de las obras citadas y de \textcite{Starmer2000Developments}.}
+\end{table}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item Los resultados de 1979 se replican: en 2020, una réplica con 4.098 personas de 19 países reprodujo el 94\,\% de ellos, con efectos algo menores que los originales \parencite{Ruggeri2020Replicating}.
+\item La teoría explica regularidades económicas que la utilidad esperada no explica \vertema{3.A.1}:
+  \begin{itemize}
+  \item \emph{rigidez a la baja de los salarios nominales}: un recorte nominal se percibe como una pérdida y se juzga injusto, mientras que no actualizar el salario con la inflación se percibe como renunciar a una ganancia, lo que duele menos \parencite{KahnemanKnetschThaler1986Fairness}. Por eso la inflación y las devaluaciones facilitan ajustar los salarios reales;
+  \item \emph{vivienda}: en las caídas de precios, los propietarios que venderían con pérdida nominal piden precios más altos y tardan más en vender, de modo que el mercado de segunda mano se paraliza en lugar de ajustarse \parencite{GenesoveMayer2001Loss};
+  \item \emph{riesgos nuevos y poco probables}: se sobrevaloran, porque se les da un peso de decisión muy superior a su probabilidad. Tras el 11 de septiembre de 2001, muchos estadounidenses cambiaron el avión por el coche, y en los 3 meses siguientes hubo unas 350 muertes más en carretera de las esperadas \parencite{Gigerenzer2004Dread};
+  \item \emph{felicidad y renta}: según \textcite{Easterlin1974Does}, la felicidad declarada apenas sube cuando crece la renta media de un país, porque se valora la renta respecto a una referencia (la de los demás o la propia pasada). La paradoja sigue en discusión: con más países y más años, \textcite{StevensonWolfers2008Economic} encuentran una relación positiva.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Aplicación a las finanzas conductuales} \vertema{3.A.1} \vertema{3.B.23}. La teoría de las perspectivas explica varios enigmas que la teoría financiera tradicional explica mal:
+\begin{itemize}
+\item \emph{Prima de las acciones} (\emph{equity premium puzzle}): ¿por qué las acciones han rendido en Estados Unidos, a largo plazo, unos 6 puntos al año más que las letras del Tesoro y unos 5 más que los bonos? \textcite{MehraPrescott1985Equity} mostraron que, con una aversión al riesgo razonable, la utilidad esperada solo explica una prima muy inferior (con sus datos de 1889-1978, la prima sobre las letras era de 6,2 puntos; con los de 1928-2025, la media geométrica anual es de unos 6,7 puntos sobre las letras y 5,5 sobre los bonos a 10 años) \parencites{Damodaran2026Historical}{UBS2026Yearbook}. \textcite{BenartziThaler1995Myopic} la explican con \emph{aversión miope a las pérdidas}: si el inversor revisa su cartera con frecuencia y las pérdidas le duelen el doble que las ganancias, las acciones le parecen muy arriesgadas, y exige por ellas una prima alta. Corolario, confirmado en experimentos: la aversión a la renta variable disminuye cuanto más largo es el periodo con el que se evalúa la cartera.
+\item \emph{Exceso de volatilidad}: las cotizaciones oscilan mucho más que los dividendos que, en teoría, descuentan \parencite{Shiller1981Stock}. Tras ganancias, el inversor se siente «jugando con el dinero de la casa» \parencite{ThalerJohnson1990House}, porque una pérdida solo reduciría su ganancia acumulada, y su aversión baja; tras pérdidas, sube. Eso amplifica los movimientos de los precios \parencite{BarberisHuangSantos2001Prospect}.
+\item \emph{Efecto disposición}: se venden demasiado pronto las acciones con plusvalía y se retienen demasiado las que tienen minusvalía \parencite{ShefrinStatman1985Disposition}. Con una ganancia latente de 5 y la misma probabilidad de que llegue a 10 o vuelva a 0, la concavidad de $v$ en las ganancias hace preferir los 5 seguros: se vende. Con una pérdida latente de 5 y la misma probabilidad de llegar a $-10$ o volver a 0, la convexidad en las pérdidas hace preferir arriesgarse: se retiene.
+\item \emph{Dividendos}: ¿por qué las empresas de Estados Unidos pagaban dividendos cuando, hasta 2003, tributaban más que las plusvalías \parencites{Gravelle2003Dividends}{IRS2026Topic404}? Por la concavidad de $v$ en las ganancias, 2 ganancias separadas (un dividendo de 2 y una plusvalía de 8) se valoran más que una de 10; y, por la convexidad en las pérdidas, un dividendo de 2 junto a una pérdida de 12 duele menos que una pérdida neta de 10 \parencites{ShefrinStatman1984Dividends}{Thaler1985Mental}. Es el consejo de \autor{Maquiavelo}: «las injurias deben hacerse todas a la vez, para que, al saborearse menos, ofendan menos; los beneficios deben hacerse poco a poco, para que se saboreen mejor» \parencite[cap.~VIII]{Maquiavelo1532Principe}.
+\end{itemize}
+\end{anotaciones}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Aunque tiene ya casi medio siglo, la teoría de las perspectivas es la descripción de la elección con riesgo que mejor encaja con los experimentos, y ha dado origen a la economía y a las finanzas conductuales, que se aplican hoy en campos tan distintos como el derecho o el diseño de políticas públicas. \textcite{Kahneman2003Maps}, en su conferencia Nobel, la sitúa en el marco de la \concepto{racionalidad limitada} de \textcite{Simon1955Behavioral}: la mente usa atajos que funcionan bien casi siempre y fallan de forma sistemática en algunos casos. \textcite{Thaler2018Cashews} resume cómo esas ideas pasaron de anomalías a políticas, los «empujones» (\emph{nudges}).
+\item Sus límites: el punto de referencia no está determinado por la teoría (¿la riqueza actual, la esperada, la de los demás?), lo que le da muchos grados de libertad; no tiene la fuerza normativa de la utilidad esperada, y sus aplicaciones a los mercados requieren supuestos sobre cómo se agregan los sesgos individuales. Es un \emph{complemento} de la teoría estándar, que hace comprensible lo que parecía anómalo, más que su sustituto.
+\end{itemize}
+
+\begin{ideaclave}
+La utilidad esperada falla al describir la elección con riesgo por el axioma de independencia (\autor{Allais}) y por la invariancia (efectos marco). La teoría de las perspectivas lo explica con un punto de referencia, aversión a las pérdidas y pesos de decisión: por eso la misma persona compra el seguro y el décimo.
+\end{ideaclave}
+
+\begin{itemize}
+\item \emph{Recapitulación}: todas las teorías vistas hasta aquí, la utilidad esperada y sus alternativas, suponen que las probabilidades se conocen. ¿Y si no se conocen? Pasamos a ver qué ocurre cuando ni siquiera se conocen las probabilidades: es el tercer bloque.
+\end{itemize}
+
+% ==========================================================================
+\section{Elección del consumidor en situaciones de incertidumbre}\label{sec:incertidumbre}
+\minutos{5,5}
+
+\begin{itemize}
+\item Hasta aquí las probabilidades eran conocidas; pasamos al caso en que no lo son, que es el más frecuente. Este bloque responde a la última pregunta. Su conclusión anticipada: si las preferencias cumplen los axiomas de \autor{Savage}, el consumidor actúa \emph{como si} tuviera probabilidades subjetivas y maximiza una utilidad esperada con ellas, de modo que riesgo e incertidumbre se tratan igual; pero la paradoja de \autor{Ellsberg} muestra que las personas sí los distinguen, y los modelos de \emph{ambigüedad} recogen esa diferencia.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Teoría de la probabilidad subjetiva}\label{sec:probabilidad-subjetiva}
+
+\begin{notaopositor}
+En el cante de \ref{sec:probabilidad-subjetiva} (\tiempo{3}): la definición de incertidumbre de \autor{Knight}; \autor{Savage} con actos, el principio de la cosa segura y el teorema, sobre la misma fórmula de la esquina de la pizarra (solo se dice que ahora las $\pi_s$ son subjetivas); \autor{Anscombe}-\autor{Aumann} en una frase, y la paradoja de \autor{Ellsberg} con el esquema de las 2 urnas y el razonamiento que muestra que ninguna probabilidad la racionaliza. Los 7 postulados uno a uno, la versión de 3 colores y la evidencia de campo son de profundización.
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Hay \concepto{incertidumbre}, en el sentido de \textcite{Knight1921Risk}, cuando la aleatoriedad no se presenta con probabilidades objetivas, ni dadas ni calculables: una recesión el año próximo, el éxito de un producto nuevo, una pandemia. Es la situación más habitual en la vida económica.
+\item La respuesta de la teoría es la \concepto{probabilidad subjetiva}: no se suponen probabilidades, sino que se deducen de las elecciones. Si alguien prefiere apostar a que llueve mañana antes que a que no llueve, por el mismo premio, revela que cree más probable la lluvia. Con axiomas adecuados, esas creencias se comportan como una probabilidad.
+\end{itemize}
+
+\subsubsection{Desarrollo del teorema de la utilidad esperada subjetiva}\label{sec:teorema-subjetiva}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los objetos de elección son \concepto{actos}: funciones que asignan un resultado a cada estado de la naturaleza, $\vect{x}=(x_1,\dots,x_S)$ (una apuesta, un seguro, una inversión). Sobre ellos, \textcite{Savage1954Foundations} impone 7 postulados (P1-P7). Los esenciales:
+  \begin{itemize}
+  \item P1, \emph{orden}: la relación $\succcurlyeq$ entre actos es completa y transitiva;
+  \item P2, \concepto{principio de la cosa segura} (\emph{sure-thing principle}): si 2 actos dan lo mismo en un suceso, la preferencia entre ellos no depende de qué den allí. Es la versión subjetiva del axioma de independencia;
+  \item P3 y P4: el orden de los resultados no depende del estado en que se reciben, y la apuesta preferida entre 2 sucesos no depende del premio (así se puede leer en ella qué suceso se cree más probable);
+  \item P5 a P7: no todo es indiferente; los sucesos se pueden partir en otros tan poco probables como se quiera (una forma de continuidad), y una condición técnica para infinitos resultados.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \concepto{Teorema de la utilidad esperada subjetiva}: si se cumplen P1-P7, existen una única distribución de probabilidad $(\pi_1,\dots,\pi_S)$ sobre los estados y una utilidad $u$, única salvo transformaciones afines positivas, tales que
+  \begin{equation}\label{eq:subjetiva}
+  \vect{x}\succcurlyeq\vect{x}'\iff\sum_{s=1}^{S}\pi_s\,u(x_s)\geq\sum_{s=1}^{S}\pi_s\,u(x_s') .
+  \end{equation}
+  Es la misma fórmula que la función clave \eqref{eq:utilidad-esperada}; lo que cambia es la lectura de las $\pi_s$: ya no son datos objetivos, sino \emph{creencias} del decisor, que el teorema deriva \emph{a la vez} que la utilidad.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La utilidad esperada de \autor{von Neumann}-\autor{Morgenstern} es el caso particular en que las probabilidades son objetivas y todos las comparten. Riesgo e incertidumbre quedan unificados con el mismo aparato: todo lo visto en el bloque~\ref{sec:utilidad-esperada} (aversión, seguros, carteras) vale con probabilidades subjetivas.
+\item Por lo mismo, la utilidad esperada subjetiva hereda las críticas de la objetiva (\ref{sec:limitaciones}) y añade una propia, la de \autor{Ellsberg}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \textcite{AnscombeAumann1963Definition} simplifican la demostración usando a la vez sucesos sin probabilidad conocida (una carrera de caballos) y loterías objetivas (una ruleta): aplican los axiomas de \autor{von Neumann}-\autor{Morgenstern} a las loterías y añaden la \emph{independencia del estado}. Es la versión de los manuales \parencite[§6.F]{MasColellWhinstonGreen1995}: con una independencia extendida a los actos se obtiene una utilidad que puede depender del estado, $\sum_s u_s(x_s)$, y, si las preferencias son \emph{uniformes entre estados} (el orden de los resultados es el mismo en todos), se escribe $\sum_s\pi_s\,u(x_s)$, con probabilidades subjetivas únicas.\footnote{Si la utilidad depende del estado, las probabilidades subjetivas no quedan identificadas: $\pi_s u_s(x)$ puede repartirse de muchas formas entre «creencia» y «utilidad» \parencite{Karni1985Decision}. Por eso la uniformidad entre estados es imprescindible para hablar de probabilidades subjetivas. Hay otras axiomatizaciones, como la de \textcite{Wakker1989Additive}; difieren en los conjuntos de elección y en los axiomas, pero todas buscan lo mismo: una utilidad que cuantifique los gustos y una probabilidad que cuantifique las creencias \parencite{Karni2018Savage}.}
+\end{itemize}
+
+\subsubsection{Limitaciones y críticas a la teoría de la probabilidad subjetiva}\label{sec:ellsberg}
+
+\paragraph{d) Valoración: la paradoja de Ellsberg}
+
+\begin{itemize}
+\item \textcite{Ellsberg1961Risk}, entonces analista de la RAND Corporation, propone 2 urnas con 100 bolas rojas y negras (gráfico~\ref{fig:ellsberg}): la \emph{urna conocida} tiene 50 de cada color; de la \emph{urna ambigua} no se sabe la proporción. Se gana un premio si sale el color al que se apuesta.
+\item La mayoría prefiere apostar a la urna conocida tanto si se le pide apostar a «roja» como si se le pide apostar a «negra». Con probabilidades subjetivas, preferir la urna conocida para «roja» exige $\pi(\text{roja en la ambigua})<\tfrac12$, y para «negra», $\pi(\text{negra en la ambigua})<\tfrac12$: las 2 suman menos de 1. \textbf{Ninguna distribución de probabilidad} racionaliza esas elecciones.\footnote{En la versión de 3 colores, una urna tiene 30 bolas rojas y 60 negras o amarillas en proporción desconocida. La mayoría prefiere apostar a «roja» que a «negra», pero a «negra o amarilla» que a «roja o amarilla»: lo primero exige $\pi_R>\pi_N$ y lo segundo $\pi_N+\pi_A>\pi_R+\pi_A$, es decir, $\pi_N>\pi_R$. Viola el principio de la cosa segura, porque el suceso «amarilla» da lo mismo en los 2 actos de cada par \parencite{Ellsberg1961Risk}.}
+\item La explicación es la \concepto{aversión a la ambigüedad}: se prefiere el riesgo conocido a la incertidumbre, como si la falta de información fuera un mal en sí misma. No es un error de cálculo: muchos mantienen su elección después de que se les explique, como ocurría con \autor{Allais}. Y no es solo de laboratorio: en una muestra representativa de la población neerlandesa, la aversión a la ambigüedad se asocia a una menor participación en bolsa \parencite{DimmockKouwenbergWakker2016Ambiguity}.
+\item La paradoja muestra que la incertidumbre de \autor{Knight} no se reduce a un riesgo con probabilidades subjetivas: hacen falta modelos que distingan el riesgo de la ambigüedad.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La paradoja de Ellsberg: urna conocida y urna ambigua}\label{fig:ellsberg}
+\grafico[0.55\textwidth]{ellsberg}
+\fuente{elaboración propia a partir de \textcite{Ellsberg1961Risk}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Enfoques alternativos}\label{sec:alternativas-incertidumbre}
+
+\begin{notaopositor}
+En el cante de \ref{sec:alternativas-incertidumbre} (\tiempo{2,5}): la idea; el modelo de múltiples probabilidades con su fórmula y la urna de \autor{Ellsberg} resuelta con números; \autor{Choquet} y la ambigüedad suave en una frase cada uno, y los criterios clásicos de decisión en una frase cada uno, con la tabla como apoyo (no se escribe). La integral de \autor{Choquet}, la fórmula de la ambigüedad suave y los cálculos de la tabla son de profundización.
+\end{notaopositor}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Para recoger la aversión a la ambigüedad hay que abandonar la idea de una sola probabilidad aditiva. Ningún modelo con \emph{sofisticación probabilística}, es decir, que base las elecciones en una probabilidad subjetiva aunque no las valore con la utilidad esperada \parencite{MachinaSchmeidler1992More}, puede explicar a \autor{Ellsberg}, porque no hay ninguna probabilidad compatible con esas elecciones.
+\end{itemize}
+
+\paragraph{b) Modelos de aversión a la ambigüedad}
+
+\begin{itemize}
+\item \concepto{Utilidad esperada con múltiples probabilidades} (\emph{maxmin expected utility}) \parencite{GilboaSchmeidler1989Maxmin}: el decisor no tiene una distribución de probabilidad, sino un \emph{conjunto} $\mathcal{P}$ de distribuciones que considera posibles (\emph{previos múltiples}), y valora cada acto con la peor de ellas:
+  \begin{equation}\label{eq:maxmin}
+  U(\vect{x})=\min_{\vect{\pi}\in\mathcal{P}}\ \sum_{s=1}^{S}\pi_s\,u(x_s) .
+  \end{equation}
+  \begin{itemize}
+  \item \emph{Ellsberg con números}: normalizamos $u(\text{premio})=1$ y $u(0)=0$. En la urna conocida, cada apuesta vale $0{,}5$. En la ambigua, si $\mathcal{P}$ contiene todas las proporciones de rojas entre el 30\,\% y el 70\,\%, apostar a «roja» vale $\min\pi(\text{roja})=0{,}3$ y apostar a «negra», $\min\big(1-\pi(\text{roja})\big)=0{,}3$: las 2 apuestas a la urna ambigua valen menos que las de la conocida, como eligen las personas.
+  \item El tamaño de $\mathcal{P}$ mide cuánta ambigüedad percibe el decisor. Si $\mathcal{P}$ tiene una sola distribución, el modelo es la utilidad esperada subjetiva; si las tiene todas, es el criterio \emph{maximin} de \autor{Wald}, que veremos a continuación.
+  \end{itemize}
+\item \concepto{Utilidad esperada de \autor{Choquet}} \parencite{Schmeidler1989Subjective}: las creencias son una \emph{capacidad} $\nu$, una «probabilidad» que no tiene por qué ser aditiva, y el acto se valora con la integral de \autor{Choquet}. Con $\nu(\text{roja})=\nu(\text{negra})=0{,}3$ y $\nu(\text{roja o negra})=1$ en la urna ambigua, cada apuesta vale $0{,}3$. La aversión a la ambigüedad equivale a que la capacidad sea convexa, $\nu(A\cup B)+\nu(A\cap B)\geq\nu(A)+\nu(B)$, y entonces el modelo coincide con el de múltiples probabilidades.\footnote{Con capacidad convexa, la integral de \autor{Choquet} es el mínimo de las utilidades esperadas sobre el \emph{núcleo} de $\nu$, el conjunto de probabilidades que asignan a cada suceso al menos su capacidad \parencite{Schmeidler1989Subjective}. En el ejemplo, el núcleo es justamente el conjunto de proporciones de rojas entre 0,3 y 0,7. No hay que confundir este modelo con la utilidad dependiente del rango de \textcite{Quiggin1982Theory}, que es para riesgo (\ref{sec:perspectivas}).}
+\item \concepto{Ambigüedad suave} \parencite{KlibanoffMarinacciMukerji2005Smooth}: el decisor tiene una incertidumbre de segundo orden, una distribución $\mu$ sobre qué probabilidad $\vect{\pi}$ es la verdadera, y la valora con una función $\phi$:
+  $$U(\vect{x})=\int\phi\Big(\sum_{s=1}^{S}\pi_s\,u(x_s)\Big)\,d\mu(\vect{\pi}).$$
+  Si $\phi$ es lineal, vuelve a la utilidad esperada subjetiva; si es cóncava, hay aversión a la ambigüedad, igual que la concavidad de $u$ da aversión al riesgo. Separa así la \emph{ambigüedad percibida} ($\mu$) de la \emph{actitud} ante ella ($\phi$); con una $\phi$ infinitamente cóncava se obtiene el modelo de múltiples probabilidades.
+\end{itemize}
+
+\paragraph{c) Criterios clásicos de decisión en ignorancia}
+
+\begin{itemize}
+\item Si el decisor no tiene ninguna información sobre los estados, ni siquiera un conjunto de probabilidades, la teoría de la decisión de los años 50 propone reglas sencillas, que no usan probabilidades \parencite[cap.~13]{LuceRaiffa1957Games}. Con los pagos de la tabla~\ref{tab:criterios}, en la que ninguna acción domina a otra:
+  \begin{itemize}
+  \item \concepto{Criterio de \autor{Wald}} (\emph{maximin}, pesimista) \parencite{Wald1950Statistical}: elegir la acción cuyo peor resultado es el mejor. Elige $B$, cuyo peor resultado es 4.\footnote{El \emph{maximin} es el criterio de la función de bienestar social de \autor{Rawls}, que supone una aversión infinita a la incertidumbre tras el velo de la ignorancia, frente a la utilitarista de \autor{Harsanyi}, que se basa en la utilidad esperada \vertema{3.A.24}.}
+  \item \concepto{Criterio maximax} (optimista): elegir la acción cuyo mejor resultado es el mejor. Elige $C$, que puede dar 13.
+  \item \concepto{Criterio de \autor{Laplace}} (de la razón insuficiente): si no hay motivo para creer un estado más probable que otro, se les da la misma probabilidad y se elige la acción de mayor media. Elige $A$, con media 6.
+  \item \concepto{Criterio de \autor{Hurwicz}}: media ponderada del mejor resultado, con un peso $\alpha\in[0,1]$ (el \emph{coeficiente de optimismo}), y del peor, con peso $1-\alpha$ \parencite{ArrowHurwicz1972Optimality}. Con $\alpha=0$ es el de \autor{Wald} y con $\alpha=1$, el maximax. Aquí elige $B$ si $\alpha<1/7$, $D$ si $1/7<\alpha<1/2$ y $C$ si $\alpha>1/2$.
+  \item \concepto{Criterio de \autor{Savage}} (\emph{minimax regret}) \parencite{Savage1951Theory}: en cada estado, el \emph{pesar} de una acción es lo que se deja de ganar frente a la mejor acción en ese estado; se elige la acción cuyo pesar \emph{máximo} es el menor. No se suman los pesares: se mira el peor de cada acción. Elige $D$, con un pesar máximo de 4.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Criterios de decisión en ignorancia: pagos, pesares y acción elegida}\label{tab:criterios}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\centering\arraybackslash}m{1.3cm}*{3}{>{\centering\arraybackslash}m{0.8cm}}|*{3}{>{\centering\arraybackslash}m{0.8cm}}|*{4}{>{\centering\arraybackslash}m{1.8cm}}}
+\toprule
+\rowcolor{tceeazulpalido}
+ & \multicolumn{3}{c|}{\textbf{Pagos}} & \multicolumn{3}{c|}{\textbf{Pesares}} & \textbf{Peor} & \textbf{Mejor} & \textbf{Media} & \textbf{Pesar máx.}\\
+\rowcolor{tceeazulpalido}
+\textbf{Acción} & $s_1$ & $s_2$ & $s_3$ & $s_1$ & $s_2$ & $s_3$ & (\autor{Wald}) & (maximax) & (\autor{Laplace}) & (\autor{Savage})\\
+\midrule
+$A$ & 8 & 2 & 8 & 5 & 2 & 0 & 2 & 8 & \cellcolor{tceesalvia}6 & 5\\
+$B$ & 4 & 4 & 4 & 9 & 0 & 4 & \cellcolor{tceesalvia}4 & 4 & 4 & 9\\
+$C$ & 13 & 0 & 1 & 0 & 4 & 7 & 0 & \cellcolor{tceesalvia}13 & 4,67 & 7\\
+$D$ & 10 & 3 & 4 & 3 & 1 & 4 & 3 & 10 & 5,67 & \cellcolor{tceesalvia}4\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~13]{LuceRaiffa1957Games}. En sombreado, la acción que elige cada criterio.}
+\end{table}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Cada criterio clásico incumple alguna propiedad razonable \parencite{Milnor1954Games}: \autor{Wald} y maximax solo miran un resultado por acción; \autor{Laplace} depende de cómo se cuenten los estados (partir uno en 2 cambia las probabilidades), y el de \autor{Savage} incumple la \emph{independencia de las alternativas irrelevantes}: añadir una acción que nadie elegiría puede cambiar los pesares y la elección entre las demás. Son reglas prácticas para la ignorancia completa, no una teoría de las preferencias; los modelos de ambigüedad son su versión axiomática.
+\item Los modelos de ambigüedad dan contenido formal a la incertidumbre de \autor{Knight}: ya no es lo que no se puede medir, sino la parte de las creencias que no se resume en una sola probabilidad. Se aplican en macroeconomía y finanzas, por ejemplo para explicar la huida de los inversores en las crisis o para diseñar políticas que funcionen bien aunque el modelo sea incorrecto, la \emph{robustez} de \textcite{HansenSargent2008Robustness}. Su límite es que tienen más parámetros (el conjunto $\mathcal{P}$, la capacidad o la función $\phi$) y menos contrastes empíricos que la utilidad esperada.
+\end{itemize}
+
+\begin{ideaclave}
+Con los axiomas de \autor{Savage}, la incertidumbre se reduce al riesgo con probabilidades subjetivas; la aversión a la ambigüedad de \autor{Ellsberg} rompe esa equivalencia, y los modelos de múltiples probabilidades, de \autor{Choquet} y de ambigüedad suave la recogen.
+\end{ideaclave}
+
+\begin{itemize}
+\item \emph{Recapitulación}: sin probabilidades objetivas, la teoría las sustituye por creencias; cuando las creencias son difusas, el decisor se protege de lo que no sabe. Con esto hemos respondido a las 4 preguntas de la introducción y podemos cerrar la exposición.
+\end{itemize}
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación (ideas clave)}}:
+  \begin{itemize}
+  \item En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de \autor{Bernoulli}: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (\ref{sec:utilidad-esperada}).
+  \item Las personas se apartan de ella de forma sistemática (\autor{Allais}, los efectos marco): valoran ganancias y pérdidas respecto a un punto de referencia y deforman las probabilidades, como recoge la teoría de las perspectivas (\ref{sec:criticas}).
+  \item Cuando las probabilidades no se conocen, \autor{Savage} muestra que se puede actuar como si se tuvieran; \autor{Ellsberg} muestra que la gente rechaza la ambigüedad, y los modelos de previos múltiples lo acomodan (\ref{sec:incertidumbre}).
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: la utilidad esperada es el lenguaje en que se escriben la teoría de carteras \vertema{3.B.23}, la demanda de dinero como activo \vertema{3.A.35}, los seguros y los contratos con información asimétrica \vertema{3.A.13} y los juegos con estrategias mixtas y las subastas \vertema{3.A.14}; y justifica la regulación que protege a quien no puede diversificar, como los seguros obligatorios o la garantía de depósitos (anexo~\ref{anexo:diamond-dybvig}). Sus críticas son el origen de la economía conductual \vertema{3.A.1}.
+\item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
+  \begin{itemize}
+  \item El equilibrio general con bienes contingentes y títulos de \autor{Arrow} reparte el riesgo de forma eficiente si los mercados son completos \vertema{3.A.21}; si faltan mercados o la información es asimétrica, no \vertema{3.A.13}.
+  \item En macroeconomía, la aversión relativa constante fija también la elasticidad de sustitución intertemporal \vertema{3.A.29}; la prudencia explica el ahorro precautorio que el paseo aleatorio de \autor{Hall} excluye \vertema{3.A.33}, y la incertidumbre y la irreversibilidad retrasan la inversión \vertema{3.A.34}. La aversión a la ambigüedad inspira la política monetaria robusta de \autor{Hansen} y \autor{Sargent}.
+  \end{itemize}
+\item \textbf{\emph{Opinión}}: la utilidad esperada y la teoría de las perspectivas no compiten en el mismo terreno. La primera es \emph{normativa}: dice cómo debería elegir un decisor coherente, y por eso sigue siendo la referencia para diseñar seguros, carteras o políticas. La segunda es \emph{positiva}: describe cómo elegimos de verdad, y por eso ayuda a predecir y a corregir los errores, como el ahorro insuficiente para la jubilación o el sobreaseguro de los riesgos pequeños. Un buen análisis necesita las 2.
+\item \textbf{\emph{Idea final}}: volviendo al refranero, los 2 refranes tienen razón, cada uno en su terreno. Ante las ganancias probables somos prudentes («más vale pájaro en mano») y ante las pérdidas probables, temerarios («de perdidos, al río»); pero ante lo poco probable cambiamos de bando: sobreponderamos tanto el premio como el accidente. Es el patrón cuádruple de la teoría de las perspectivas, y por eso la misma persona compra el seguro y el décimo de Navidad: no valora su riqueza final, sino lo que gana o pierde respecto a donde está, y no pesa las probabilidades como las calcula un matemático.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{La función de utilidad de von Neumann y Morgenstern:\newline una utilidad «cardinal que es ordinal» (\autor{Baumol}, 1958)}\label{anexo:cardinal}
+
+Este anexo no se canta: precisa en qué sentido es cardinal la utilidad esperada (\ref{sec:ingredientes}), de forma coherente con la teoría del consumidor \vertema{3.A.8}.
+
+\begin{itemize}
+\item \emph{Escalas de medida} \parencite{Stevens1946Theory}: lo que una escala permite decir depende de las transformaciones que la dejan igual de válida (tabla~\ref{tab:escalas}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Escalas de medida}\label{tab:escalas}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{3.1cm}*{3}{>{\centering\arraybackslash}m{2.05cm}}}
+\toprule
+\rowcolor{tceeazulpalido}
+\textbf{Escala} & \textbf{Ejemplo} & \textbf{Transformaciones}\newline\textbf{admitidas} & \textbf{Orden} & \textbf{Diferencias} & \textbf{Cocientes}\\
+\midrule
+Ordinal & Dureza (escala de Mohs); utilidad con certidumbre & Cualquier creciente & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$}\\
+\rowcolor{tceesalvia}
+De intervalo & Temperatura en grados centígrados; utilidad de \autor{Bernoulli} & Afín positiva, $a\,x+b$ & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$}\\
+De razón & Peso, longitud & Proporcional, $a\,x$ & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+Absoluta & Recuento & Ninguna & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Stevens1946Theory}; la escala absoluta es un añadido posterior a su clasificación.}
+\end{table}
+
+\begin{itemize}
+\item \emph{La utilidad de \autor{Bernoulli} es cardinal}: $u$ es única salvo transformaciones afines positivas. Si $u^*=a\,u+b$ con $a>0$, la utilidad esperada cambia en la misma transformación, $U^*=a\,U+b$, y ordena igual las loterías; con una transformación creciente no afín, como $u^*=u^3$, no. Por eso tiene sentido decir que la diferencia de utilidad entre 2 resultados es el doble que entre otros 2, pero no que la utilidad de uno es el doble que la de otro, igual que con los grados centígrados.
+\item \emph{La utilidad sobre las loterías es ordinal}: si solo se quiere representar el orden de las preferencias sobre las loterías, cualquier transformación creciente de $U$ sirve: $\mathbb{E}[u(\tilde{x})]$ y $24\,\big(\mathbb{E}[u(\tilde{x})]\big)^3$ ordenan igual. Lo que se pierde al transformarla es la \emph{forma} de utilidad esperada, la linealidad en las probabilidades. De ahí la fórmula de \textcite{Baumol1958Cardinal}: una utilidad «cardinal que es ordinal».\footnote{\textcite[pág.~203]{MatePerez2007Microeconomia} lo resumen así: la representación preserva el orden de las preferencias por los axiomas de preorden y de continuidad (carácter ordinal), pero no admite cualquier transformación creciente si se quiere mantener la forma de utilidad esperada, por el axioma de independencia (carácter cardinal).}
+\item \emph{Qué mide y qué no}: la cardinalidad de $u$ no mide la intensidad del placer, sino la \emph{actitud ante el riesgo}: lo que importa es su curvatura. Tampoco permite comparar utilidades entre personas: cada $u$ admite su propia transformación afín. Es lo que dice la teoría del consumidor al llamar cardinal a la utilidad de \autor{von Neumann}-\autor{Morgenstern} \vertema{3.A.8}.\footnote{El debate de los años 50 confundió las 2 cosas: parecía que \autor{von Neumann} y \autor{Morgenstern} devolvían la utilidad cardinal de los marginalistas. Pero las utilidades de \autor{Bernoulli} no son primitivas en el modelo: se deducen de las preferencias sobre loterías, y no al revés \parencite{Machina2018Expected}.}
+\end{itemize}
+
+% ==========================================================================
+\section{La paradoja de San Petersburgo}\label{anexo:san-petersburgo}
+
+Este anexo no se canta: en el cuerpo basta una frase (\ref{sec:ingredientes}).
+
+\begin{itemize}
+\item \emph{Antecedentes}: desde \autor{Pascal} y \autor{Fermat}, en el siglo XVII, se aceptaba que un juego es \emph{justo} si se paga por jugar su valor esperado, su \concepto{precio justo}.
+\item \emph{El problema}: en 1713, el matemático Nicolaus \autor{Bernoulli} lo planteó en una carta a Pierre Rémond de \autor{Montmort}, que la publicó ese año en la 2.ª edición de su \emph{Essay d'analyse sur les jeux de hazard} \parencites{Peterson2023StPetersburg}{MacTutor2026NBernoulli}. En la versión con moneda, se lanza una moneda hasta que sale cruz; si sale en el lanzamiento $k$, se cobran $2^k$ ducados.\footnote{En la versión original se tiraba un dado hasta que salía un 6; la de la moneda es de Gabriel \autor{Cramer} (1728) \parencite{Peterson2023StPetersburg}.} ¿Cuánto pagaría alguien por jugar? Su valor esperado es infinito:
+  $$\mathbb{E}[\tilde{x}]=\sum_{k=1}^{\infty}\frac{1}{2^k}\,2^k=1+1+1+\dots=\infty ,$$
+  pero nadie pagaría más que unos pocos ducados.
+\item \emph{La solución}: Gabriel \autor{Cramer}, en una carta de 1728 a Nicolaus, y su primo Daniel \textcite{Bernoulli1738Specimen}, que llega a la misma idea por su cuenta, proponen valorar los premios por su utilidad, con utilidad marginal decreciente. Como escribe \autor{Cramer} y reproduce \autor{Bernoulli}, los matemáticos valoran el dinero en proporción a su cantidad, y las personas de buen sentido, en proporción al uso que pueden hacer de él \parencite{Peterson2023StPetersburg}. El artículo de \autor{Bernoulli} se publica en las memorias de la Academia de San Petersburgo, de ahí el nombre de la paradoja.
+  \begin{itemize}
+  \item Con $u(x)=\ln x$ (\autor{Bernoulli}): $\mathbb{E}[u(\tilde{x})]=\sum_k\frac{k\ln 2}{2^k}=2\ln 2=\ln 4$, luego el \concepto{equivalente cierto} es $\xi=4$ ducados: lo máximo que pagaría por jugar alguien con utilidad logarítmica y sin otra riqueza. El precio justo es infinito; el equivalente cierto, 4.
+  \item Con $u(x)=\sqrt{x}$ (\autor{Cramer}): $\mathbb{E}[u(\tilde{x})]=\sum_k 2^{-k/2}=\frac{1}{\sqrt2-1}=1+\sqrt2$, luego $\xi=(1+\sqrt2)^2\approx 5{,}83$ ducados.
+  \end{itemize}
+\item \emph{Una salvedad}: la utilidad marginal decreciente no basta si $u$ no está acotada: con premios que crecen lo bastante deprisa (por ejemplo, $e^{2^k}$ con $u=\ln x$), la utilidad esperada vuelve a ser infinita. Solo una utilidad acotada evita todas las versiones de la paradoja \parencite{Menger1934Unsicherheitsmoment}.\footnote{\autor{Bernoulli} aplicaba la utilidad a la riqueza total del jugador, incluida la inicial; aquí se supone nula para simplificar.}
+\end{itemize}
+
+% ==========================================================================
+\section{Aplicación: el seguro de liquidez y los pánicos bancarios\newline (\autor{Diamond} y \autor{Dybvig}, 1983)}\label{anexo:diamond-dybvig}
+
+Este anexo no se canta: es una aplicación de la utilidad esperada a los bancos. El desarrollo completo, la regulación (garantía de depósitos, resolución, recapitalización interna) y los casos recientes se estudian en \vertema{3.B.26} y \vertema{3.B.27}.
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Los depósitos bancarios son un \emph{seguro de liquidez}, y ese mismo seguro hace a los bancos vulnerables a los pánicos \parencite{DiamondDybvig1983Bank}. \autor{Diamond} y \autor{Dybvig} recibieron por ello el Premio Nobel de Economía de 2022, junto con Ben \autor{Bernanke}, «por sus investigaciones sobre los bancos y las crisis financieras» \parencite{Nobel2022Bancos}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Siguiendo a \textcite[cap.~7]{FreixasRochet2008Microeconomics}, hay 3 periodos ($T=0,1,2$) y un continuo de depositantes idénticos con una dotación de 1 en $T=0$. Con probabilidad $\pi$, cada uno resulta \emph{impaciente} (solo valora consumir en $T=1$), y con $1-\pi$, \emph{paciente} (puede esperar a $T=2$); no hay incertidumbre agregada: una fracción $\pi$ será impaciente. Una inversión ilíquida rinde $R>1$ en $T=2$, pero solo $L\leq 1$ si se liquida en $T=1$. Cada depositante maximiza su utilidad esperada, con $u$ cóncava y aversión relativa mayor que 1.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+Se comparan 3 asignaciones (gráfico~\ref{fig:diamond-dybvig}):
+\begin{enumerate}
+  \item En \emph{autarquía}, cada uno invierte por su cuenta y, si resulta impaciente, liquida con pérdida. Con un \emph{mercado} de bonos en $T=1$ se obtiene $(c_1,c_2)=(1,R)$, mejor que la autarquía.
+  \item El \emph{óptimo} reparte el riesgo de ser impaciente, como en el seguro:
+    $$\optim{\max}{c_1,\,c_2}{\pi\,u(c_1)+(1-\pi)\,u(c_2)}{\pi\,c_1+\dfrac{(1-\pi)\,c_2}{R}=1}\qquad\Longrightarrow\qquad u'(c_1^*)=R\,u'(c_2^*),\quad 1<c_1^*<c_2^*<R .$$
+    Se cede riqueza del estado bueno (ser paciente) al malo (ser impaciente).
+  \item Un \emph{banco} que ofrece depósitos retirables $(c_1^*,c_2^*)$ alcanza el óptimo si solo retiran los impacientes. Pero, como $c_1^*>1$, si los pacientes esperan que los demás retiren, el banco tendría que liquidar la inversión y no podría pagar a todos: retirar es también óptimo. Hay 2 equilibrios: el bueno y el \concepto{pánico bancario}, peor incluso que la autarquía.
+  \end{enumerate}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La garantía de depósitos, la suspensión de la convertibilidad y el prestamista de última instancia eliminan el equilibrio malo, a costa de crear riesgo moral \vertema{3.B.26} \vertema{3.B.27}.
+  \begin{itemize}
+  \item En la Unión Europea, los depósitos están garantizados hasta 100.000 euros por depositante y entidad, y los fondos de garantía se financian con aportaciones de las propias entidades, con un objetivo del 0,8\,\% de los depósitos garantizados \parencites[arts.~6 y~10]{UE2014DGSD}{FGD2026Garantia}.
+  \item La Directiva (UE) 2026/804 mantiene los 100.000 euros, protege durante 6 meses saldos mayores de carácter temporal (al menos 500.000 euros, por ejemplo tras vender una vivienda) y permite usar los fondos de garantía en la resolución de bancos \parencite{UE2026Dir804}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item Los pánicos siguen ocurriendo. En Grecia salieron de los bancos unos 40.000 millones de euros en depósitos en el primer semestre de 2015, hasta que a finales de junio el Gobierno cerró los bancos e impuso un control de capitales \parencites{BCE2026BSIGrecia}{BIS2017Stournaras}. Y son cada vez más rápidos: Silicon Valley Bank sufrió el 9 de marzo de 2023 retiradas de unos 42.000 millones de dólares en un solo día y quebró al siguiente \parencite{FED2023SVB}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Autarquía, mercado y óptimo en el modelo de Diamond y Dybvig}\label{fig:diamond-dybvig}
+\grafico[0.6\textwidth]{diamond-dybvig}
+\fuente{elaboración propia a partir de \textcite{DiamondDybvig1983Bank}, \textcite{FreixasRochet2008Microeconomics} y \textcite{Repullo2022Nobel}.}
+\end{figure}
+
+% ==========================================================================
+\section{Aplicación: el modelo de media y varianza (\autor{Markowitz}, 1952)}\label{anexo:media-varianza}
+
+Este anexo no se canta: precisa la frase del cuerpo sobre la media y la varianza (\ref{sec:componentes}). La teoría de carteras se estudia en \vertema{3.B.23}.
+
+\begin{itemize}
+\item \emph{Cuándo la utilidad esperada depende solo de la media y la varianza} \parencite{Tobin1958Liquidity}. Sea $\tilde{W}$ la riqueza final, con media $\mathbb{E}[\tilde{W}]$ y varianza $\sigma^2$:
+  \begin{itemize}
+  \item con utilidad cuadrática, $u(W)=W-\tfrac{b}{2}W^2$: como $\mathbb{E}[\tilde{W}^2]=\mathbb{E}[\tilde{W}]^2+\sigma^2$, $\ \mathbb{E}[u(\tilde{W})]=\mathbb{E}[\tilde{W}]-\tfrac{b}{2}\big(\mathbb{E}[\tilde{W}]^2+\sigma^2\big)$;
+  \item con rendimientos normales (o, en general, elípticos: \textcite{Chamberlain1983Characterization}) y cualquier $u$ cóncava. Con utilidad CARA y riqueza normal, el equivalente cierto es exactamente $\xi=\mathbb{E}[\tilde{W}]-\tfrac{a}{2}\sigma^2$.
+  \end{itemize}
+\item En el plano $(\sigma,\mathbb{E})$, las curvas de indiferencia del inversor averso son crecientes (más riesgo exige más rentabilidad esperada) y convexas, y más inclinadas cuanto mayor es su aversión.
+\item \textcite{Markowitz1952Portfolio} usa ese criterio para elegir carteras: la diversificación reduce el riesgo según las covarianzas entre activos, y el inversor elige, en la \emph{frontera eficiente} de carteras, la cartera en la que su curva de indiferencia es tangente \vertema{3.B.23}. Le valió el Premio Nobel de 1990 \parencite{Nobel1990Markowitz}.
+\item \emph{Límites}: la cuadrática tiene aversión absoluta creciente (tabla~\ref{tab:formas-aversion}) y los rendimientos reales no son normales (tienen asimetría y colas gruesas), de modo que la media y la varianza son una aproximación.
+\end{itemize}
+
+% ==========================================================================
+\section{Derivaciones}\label{anexo:derivaciones}
+
+Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo enuncia, por si el tribunal pregunta por ellas.
+
+\subsection{Aproximación de Arrow-Pratt de la prima de riesgo}\label{anexo:arrow-pratt}
+
+\begin{itemize}
+\item Sea la riqueza $\overline{W}+\tilde{\varepsilon}$, con $\mathbb{E}[\tilde{\varepsilon}]=0$ y $\mathrm{Var}(\tilde{\varepsilon})=\sigma^2$ pequeña. Por definición de la prima de riesgo, el equivalente cierto es $\overline{W}-\rho$:
+  $$u(\overline{W}-\rho)=\mathbb{E}\big[u(\overline{W}+\tilde{\varepsilon})\big].$$
+\item Desarrollando por \autor{Taylor} el lado izquierdo hasta el primer orden en $\rho$ y el derecho hasta el segundo en $\tilde{\varepsilon}$:
+  $$u(\overline{W})-\rho\,u'(\overline{W})\approx\mathbb{E}\Big[u(\overline{W})+\tilde{\varepsilon}\,u'(\overline{W})+\tfrac12\tilde{\varepsilon}^2\,u''(\overline{W})\Big]=u(\overline{W})+\tfrac12\sigma^2\,u''(\overline{W}).$$
+\item Despejando:
+  $$\rho\approx-\frac12\,\sigma^2\,\frac{u''(\overline{W})}{u'(\overline{W})}=\frac12\,\sigma^2\,r_A(\overline{W}).$$
+  \findemo
+\item \emph{Lectura}: la prima es de segundo orden (proporcional a $\sigma^2$), mientras que la ganancia esperada de una apuesta favorable es de primer orden. Por eso el averso siempre acepta algo de un riesgo favorable (\ref{sec:cartera}).
+\end{itemize}
+
+\subsection{Coeficientes de la CRRA y elasticidad de la utilidad marginal}\label{anexo:crra}
+
+\begin{itemize}
+\item Con $u(x)=\frac{x^{1-\theta}-1}{1-\theta}$: $u'(x)=x^{-\theta}$ y $u''(x)=-\theta\,x^{-\theta-1}$. Luego
+  $$r_A(x)=-\frac{u''(x)}{u'(x)}=\frac{\theta x^{-\theta-1}}{x^{-\theta}}=\frac{\theta}{x},\qquad r_R(x)=x\,r_A(x)=\theta .$$
+  La aversión relativa es constante y la absoluta, decreciente (DARA). Con $\theta=1$, $u=\ln x$ y $r_R=1$. \findemo
+\item $r_R$ es la elasticidad de la utilidad marginal cambiada de signo: $\varepsilon_{u'(x),x}=\frac{du'(x)}{dx}\frac{x}{u'(x)}=\frac{x\,u''(x)}{u'(x)}=-r_R(x)$.
+\end{itemize}
+
+\subsection{Teorema de Pratt}\label{anexo:pratt}
+
+\begin{itemize}
+\item \emph{$r_A^1\geq r_A^2$ si y solo si $u_1$ es una transformación cóncava de $u_2$}. Como $u_2$ es creciente, se puede escribir $u_1=\psi(u_2)$ con $\psi=u_1\circ u_2^{-1}$ creciente. Derivando 2 veces, $u_1'=\psi'(u_2)\,u_2'$ y $u_1''=\psi''(u_2)\,u_2'^2+\psi'(u_2)\,u_2''$. Despejando $\psi''$ y usando $\psi'=u_1'/u_2'$:
+  $$\psi''(u_2)=\frac{u_1''-\frac{u_1'}{u_2'}\,u_2''}{u_2'^2}=\frac{u_1'}{u_2'^2}\left(\frac{u_1''}{u_1'}-\frac{u_2''}{u_2'}\right)=\frac{u_1'}{u_2'^2}\big(r_A^2-r_A^1\big).$$
+  Luego $\psi''\leq 0$ si y solo si $r_A^1\geq r_A^2$.
+\item \emph{Si $u_1=\psi(u_2)$ con $\psi$ cóncava, el primero exige más prima}. Por la desigualdad de \autor{Jensen}, $u_1(\xi_1)=\mathbb{E}\big[\psi\big(u_2(\tilde{x})\big)\big]\leq \psi\big(\mathbb{E}[u_2(\tilde{x})]\big)=\psi\big(u_2(\xi_2)\big)=u_1(\xi_2)$, y como $u_1$ es creciente, $\xi_1\leq\xi_2$, es decir, $\rho_1\geq\rho_2$.
+\end{itemize}
+\findemo
+
+\subsection{Demanda de seguros: condición de primer orden y seguro completo}\label{anexo:seguros}
+
+\begin{itemize}
+\item La utilidad esperada en función de la cobertura es $U(S)=(1-\pi)\,u(\overline{W}-\gamma S)+\pi\,u\big(\overline{W}-L+(1-\gamma)S\big)$. Derivando:
+  $$U'(S)=-\gamma\,(1-\pi)\,u'(x_1)+(1-\gamma)\,\pi\,u'(x_2),\qquad U''(S)=\gamma^2(1-\pi)\,u''(x_1)+(1-\gamma)^2\pi\,u''(x_2)<0 .$$
+  Como $U$ es cóncava en $S$ (por la concavidad de $u$), la condición de primer orden basta. Con solución interior, $U'(S^*)=0$ da \eqref{eq:cpo-seguro}.
+\item \emph{RMSE}: a lo largo de una curva de indiferencia, $dU=(1-\pi)\,u'(x_1)\,dx_1+\pi\,u'(x_2)\,dx_2=0$, luego $-\frac{dx_2}{dx_1}=\frac{(1-\pi)\,u'(x_1)}{\pi\,u'(x_2)}$. En la línea de certeza, $x_1=x_2$ y $u'(x_1)=u'(x_2)$: la RMSE vale $(1-\pi)/\pi$, sea cual sea $u$.
+\item \emph{Prima justa} ($\gamma=\pi$): la condición de primer orden queda $\pi(1-\pi)\big[u'(x_2)-u'(x_1)\big]=0$, luego $u'(x_1)=u'(x_2)$ y, como $u'$ es estrictamente decreciente, $x_1=x_2$: $\overline{W}-\pi S=\overline{W}-L+(1-\pi)S$, es decir, $S^*=L$.
+\item \emph{Prima recargada} ($\gamma>\pi$): en $S=L$, $x_1=x_2$ y $U'(L)=u'(\overline{W}-\gamma L)\big[(1-\gamma)\pi-\gamma(1-\pi)\big]=u'(\overline{W}-\gamma L)\,(\pi-\gamma)<0$: reducir la cobertura aumenta la utilidad esperada, luego $S^*<L$.
+\end{itemize}
+\findemo
+
+\subsection{La paradoja de Allais viola el axioma de independencia}\label{anexo:allais}
+
+\begin{itemize}
+\item Sean $\tilde x^1$ la lotería que da 1 con certeza y $\tilde x^2$ la que da 5 con probabilidad $10/11$ y 0 con $1/11$. Las 4 loterías de la tabla~\ref{tab:allais} son mezclas con una consecuencia común:
+  $$A_1=0{,}11\,P+0{,}89\,\delta_1,\quad B_1=0{,}11\,Q+0{,}89\,\delta_1,\quad A_2=0{,}11\,P+0{,}89\,\delta_0,\quad B_2=0{,}11\,Q+0{,}89\,\delta_0 ,$$
+  donde $\delta_1$ y $\delta_0$ dan 1 y 0 con certeza. (Comprobación: $B_1$ da 5 con $0{,}11\cdot10/11=0{,}10$, 0 con $0{,}11\cdot1/11=0{,}01$ y 1 con $0{,}89$.)
+\item Por el axioma de independencia, con $\tau=0{,}11$: $\tilde x^1\succcurlyeq\tilde x^2\iff A_1\succcurlyeq B_1$, y $\tilde x^1\succcurlyeq\tilde x^2\iff A_2\succcurlyeq B_2$. Luego quien elige $A_1$ en la primera elección debe elegir $A_2$ en la segunda. Elegir $A_1$ y $B_2$ viola el axioma, sea cual sea $u$.
+\end{itemize}
+\findemo
+
+\subsection{Prudencia y aversión absoluta decreciente}\label{anexo:prudencia}
+
+\begin{itemize}
+\item Sea $P(x)\equiv-u'''(x)/u''(x)$ el coeficiente de prudencia absoluta. Derivando $r_A=-u''/u'$:
+  $$r_A'(x)=-\frac{u'''u'-u''^2}{u'^2}=-\frac{u'''}{u'}+\left(\frac{u''}{u'}\right)^2=-P(x)\,r_A(x)+r_A(x)^2=r_A(x)\big[r_A(x)-P(x)\big],$$
+  porque $\frac{u'''}{u'}=\frac{u'''}{u''}\cdot\frac{u''}{u'}=P\,r_A$.
+\item Con aversión ($r_A>0$), la aversión absoluta es decreciente, $r_A'<0$, si y solo si $P>r_A>0$, lo que exige $u'''>0$. La DARA implica, por tanto, prudencia y ahorro precautorio.
+\end{itemize}
+\findemo
+
+% ==========================================================================
+\section{Aspectos para el test y preguntas del tribunal}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Preguntas tipo test}: en el \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test del primer ejercicio} \parencite{VGM2026Simulador}.
+\item \emph{Preguntas de otros exámenes}:
+  \begin{itemize}
+  \item ¿Qué relación hay entre el coeficiente de aversión relativa al riesgo de \autor{Arrow}-\autor{Pratt} y la elasticidad de la utilidad marginal? Es esa elasticidad cambiada de signo: $r_R(x)=-\varepsilon_{u'(x),x}$ (\ref{anexo:crra}).
+  \item \autor{Markowitz} se hizo popular por una aplicación de la utilidad esperada que le valió el Premio Nobel. ¿Cuál es? ¿Cómo se relaciona con el tema? La selección de carteras por media y varianza \parencite{Markowitz1952Portfolio}: si la utilidad es cuadrática o los rendimientos son normales, maximizar la utilidad esperada equivale a elegir carteras por su rentabilidad esperada y su varianza, y el inversor averso elige en la frontera eficiente (anexo~\ref{anexo:media-varianza}) \vertema{3.B.23}.
+  \end{itemize}
+\item \emph{Trampas habituales}:
+  \begin{itemize}
+  \item averso $\iff$ $u$ cóncava $\iff$ $\xi<\mathbb{E}[\tilde{x}]$ $\iff$ $\rho>0$, para toda lotería no degenerada;
+  \item el axioma propio de la utilidad esperada es el de \emph{independencia}, no la «independencia de las alternativas irrelevantes» de \autor{Arrow};
+  \item la utilidad de \autor{Bernoulli} es única salvo transformaciones \emph{afines} positivas, no salvo transformaciones crecientes;
+  \item CRRA $\Rightarrow$ DARA; la cuadrática es IARA y no tiene prudencia ($u'''=0$);
+  \item el ahorro precautorio exige $u'''>0$ (prudencia), no basta la aversión;
+  \item con prima justa el averso se asegura por completo; con prima recargada, en parte (\autor{Mossin}); el modelo con información simétrica es el de \autor{Mossin} (1968), no el de \autor{Rothschild} y \autor{Stiglitz} (1976);
+  \item dominancia de primer orden $\iff$ $F(x)\leq G(x)$ para todo $x$; la de segundo orden compara loterías con la misma media;
+  \item \autor{Allais} viola el axioma de independencia; \autor{Ellsberg}, el principio de la cosa segura; \autor{Quiggin} (dependiente del rango) explica \autor{Allais}; \autor{Schmeidler} (\autor{Choquet}) explica \autor{Ellsberg};
+  \item el criterio de \autor{Savage} es el mínimo del pesar \emph{máximo}, no de la suma de pesares;
+  \item Premios Nobel: \autor{Allais}, 1988; \autor{Markowitz}, 1990; \autor{Kahneman}, 2002; \autor{Thaler}, 2017; \autor{Diamond}, \autor{Dybvig} y \autor{Bernanke}, 2022 \parencites{Nobel1988Allais}{Nobel1990Markowitz}{Nobel2002Kahneman}{Nobel2017Thaler}{Nobel2022Bancos}.
+  \end{itemize}
+\end{itemize}
+
+\bibliografia
+\end{document}

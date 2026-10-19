@@ -1,7 +1,7 @@
 # Teorema de Gibbard (1973)-Satterthwaite (1975)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.24 (desarrollos posteriores a Arrow)
-- **Temas que lo usan:** 3.A.24 (resumen), 4.B.2 (mención)
+- **Temas que lo usan:** 3.A.24 (resumen), 4.B.2 (mención). Es el límite del diseño de mecanismos en estrategias dominantes; Gibbard (1973) es además uno de los autores del principio de revelación (ficha `diseno-mecanismos`, 19/10/2026).
 - **Manuales de referencia:** Gibbard (1973); Satterthwaite (1975); Mas-Colell, Whinston y Green, cap. 23.C.
 
 ## Presentación de referencia

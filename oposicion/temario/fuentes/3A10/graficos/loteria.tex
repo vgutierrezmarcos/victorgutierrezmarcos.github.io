@@ -1,0 +1,65 @@
+% Una lotería simple y una lotería compuesta con su reducción (sustituye al árbol
+% de Maté y Pérez del original, con la notación del tema: resultados x_s y
+% probabilidades pi_s). La compuesta tau x^1 + (1 - tau) x^2 se reduce a la simple
+% que da x_s con probabilidad tau pi_s^1 + (1 - tau) pi_s^2 (se multiplican las
+% probabilidades de cada rama y se suman las que llevan al mismo resultado).
+% Elaboración propia a partir de Maté y Pérez (2007).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=1.8pt},
+    rama/.style={thick,tceemorado},
+    prob/.style={etiqueta,font=\footnotesize},
+    titulo/.style={etiqueta,font=\small\itshape,text=tceegris}]
+  % ---------- 1: lotería simple ----------
+  \capa{1}{
+    \node[nodo,label=left:{$\tilde{x}$}] (r) at (0,0) {};
+    \node[nodo,label=right:{$x_1$}] (a1) at (2.2,1.6) {};
+    \node[nodo,label=right:{$x_2$}] (a2) at (2.2,0.55) {};
+    \node[nodo,label=right:{$x_S$}] (aS) at (2.2,-1.6) {};
+    \node at (2.2,-0.45) {$\vdots$};
+    \draw[rama] (r) -- node[prob,above left] {$\pi_1$} (a1);
+    \draw[rama] (r) -- node[prob,above=1pt,pos=0.6] {$\pi_2$} (a2);
+    \draw[rama] (r) -- node[prob,below left] {$\pi_S$} (aS);
+  }
+  % 2: su notación
+  \capa{2}{\node[etiqueta] at (1.1,-2.45) {$\tilde{x}=(x_1,\dots,x_S;\ \pi_1,\dots,\pi_S)$};}
+  \capa{2}{\node[titulo] at (1.1,-3.05) {Lotería simple};}
+  % ---------- 3: lotería compuesta, primera etapa ----------
+  \capa{3}{
+    \node[nodo] (c) at (4.6,0) {};
+    \node[nodo,label={[label distance=1pt]above:{$\tilde{x}^1$}}] (l1) at (6.4,1.2) {};
+    \node[nodo,label={[label distance=1pt]below:{$\tilde{x}^2$}}] (l2) at (6.4,-1.2) {};
+    \draw[rama] (c) -- node[prob,above left] {$\tau$} (l1);
+    \draw[rama] (c) -- node[prob,below left] {$1-\tau$} (l2);
+  }
+  % 4: segunda etapa: cada lotería da los resultados con sus probabilidades
+  \capa{4}{
+    \node[nodo,label=right:{$x_1$}] (b1) at (8.3,1.95) {};
+    \node[nodo,label=right:{$x_S$}] (bS) at (8.3,0.6) {};
+    \node at (8.3,1.38) {$\vdots$};
+    \draw[rama] (l1) -- node[prob,above left=-1pt] {$\pi^1_1$} (b1);
+    \draw[rama] (l1) -- node[prob,below left=-1pt] {$\pi^1_S$} (bS);
+    \node[nodo,label=right:{$x_1$}] (d1) at (8.3,-0.6) {};
+    \node[nodo,label=right:{$x_S$}] (dS) at (8.3,-1.95) {};
+    \node at (8.3,-1.18) {$\vdots$};
+    \draw[rama] (l2) -- node[prob,above left=-1pt] {$\pi^2_1$} (d1);
+    \draw[rama] (l2) -- node[prob,below left=-1pt] {$\pi^2_S$} (dS);
+  }
+  \capa{4}{\node[etiqueta] at (6.5,-2.45) {$\tau\tilde{x}^1+(1-\tau)\,\tilde{x}^2$};}
+  \capa{4}{\node[titulo] at (6.5,-3.05) {Lotería compuesta};}
+  % ---------- 5: reducción a una lotería simple ----------
+  \capa{5}{\node[font=\large] at (9.6,0) {$\Longleftrightarrow$};}
+  \capa{5}{
+    \node[nodo] (s) at (10.4,0) {};
+    \node[nodo,label=right:{$x_1$}] (e1) at (13.7,1.6) {};
+    \node[nodo,label=right:{$x_S$}] (eS) at (13.7,-1.6) {};
+    \node at (13.7,0.1) {$\vdots$};
+    \draw[rama] (s) -- node[prob,above left=-2pt,sloped,anchor=south] {$\tau\pi^1_1+(1-\tau)\,\pi^2_1$} (e1);
+    \draw[rama] (s) -- node[prob,sloped,anchor=north] {$\tau\pi^1_S+(1-\tau)\,\pi^2_S$} (eS);
+  }
+  \capa{5}{\node[titulo] at (12.0,-3.05) {Lotería simple reducida};}
+\end{tikzpicture}
+\end{document}

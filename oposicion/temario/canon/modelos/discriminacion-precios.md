@@ -1,7 +1,7 @@
 # Discriminación de precios: primer, segundo (autoselección) y tercer grado, e intertemporal
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.17** (Análisis de mercados (II): «Discriminación de precios» en el título; revisado el 17/10/2026, II.1) — la desarrolla con a)-e) en cada grado. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.13 (mención prevista: la discriminación de 2.º grado como aplicación del *screening*, con remisión a 3.A.17), 3.B.39 (mención: ventas vinculadas como abuso de posición dominante; precios distintos por país en el mercado único), 3.B.7 (mención prevista: el *dumping* como discriminación internacional de 3.er grado, si lo trata), 4.A.5 y 4.A.12 (mención prevista: tarifas de acceso y de punta y valle, bonos sociales; ficha `tarifa-dos-partes`).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.13 (mención; hecho, 19/10/2026: la discriminación de 2.º grado como la misma lógica que la autoselección de Rothschild-Stiglitz, con remisión a 3.A.17; ficha `rothschild-stiglitz`), 3.B.39 (mención: ventas vinculadas como abuso de posición dominante; precios distintos por país en el mercado único), 3.B.7 (mención prevista: el *dumping* como discriminación internacional de 3.er grado, si lo trata), 4.A.5 y 4.A.12 (mención prevista: tarifas de acceso y de punta y valle, bonos sociales; ficha `tarifa-dos-partes`).
 - **Manuales de referencia:** Pigou (1920); Robinson (1933); Tirole (1988), cap. 3; Varian (1989), «Price Discrimination», *Handbook of IO*; Mussa y Rosen (1978), *JET*; Maskin y Riley (1984), *RAND Journal*; Oi (1971), *QJE*; Adams y Yellen (1976), *QJE*; Schmalensee (1981), *AER*; Varian (1985), *AER*; Coase (1972), *JLE*; Gul, Sonnenschein y Wilson (1986), *JET*; Bulow (1982), *JPE*; Deneckere y McAfee (1996).
 
 ## Presentación de referencia (3.A.17, II.1)
@@ -15,7 +15,7 @@ Pregunta: ¿qué cambia cuando el monopolista puede cobrar precios distintos por
 $$\max_{q_1,T_1,q_2,T_2}\ \pi(T_1-cq_1)+(1-\pi)(T_2-cq_2)\ \text{ s.a. } \mathrm{PC}_1,\mathrm{PC}_2,\mathrm{IC}_1,\mathrm{IC}_2$$
 Se saturan PC_1 e IC_2: T_1 = t_1u(q_1); T_2 = t_2u(q_2) − (t_2 − t_1)u(q_1) (**renta informativa** del tipo alto). CPO:
 $$t_2u'(q_2)=c,\qquad t_1u'(q_1)\Big[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\Big]=c\ \Rightarrow\ t_1u'(q_1)>c$$
-«**No hay distorsión arriba**», **distorsión abajo**; se excluye al tipo bajo si πt_1 ≤ (1 − π)(t_2 − t_1). Equivale a descuentos por cantidad o a elegir entre 2 tarifas en dos partes. Bienestar ambiguo frente al precio uniforme. Es la misma lógica que el *screening* (3.A.13) y que el menú de Laffont-Tirole (ficha `laffont-tirole`).
+«**No hay distorsión arriba**», **distorsión abajo**; se excluye al tipo bajo si πt_1 ≤ (1 − π)(t_2 − t_1). Equivale a descuentos por cantidad o a elegir entre 2 tarifas en dos partes. Bienestar ambiguo frente al precio uniforme. Es la misma lógica que el *screening* (3.A.13, ficha `rothschild-stiglitz`, donde el tipo que querría imitar al otro, el de alto riesgo, no se distorsiona y la distorsión recae en el de bajo riesgo; con competencia nadie se queda una renta informativa) y que el menú de Laffont-Tirole (ficha `laffont-tirole`). La proporción de tipos es aquí π (tipos bajos); en el 3.A.13, donde π es una probabilidad de accidente o de éxito, la proporción es ν (`notacion.md` § 4).
   - *En calidad* (Mussa y Rosen, 1978): idéntico análisis; calidad degradada a propósito para el tipo bajo (*damaged goods*, Deneckere y McAfee, 1996). La «paradoja de Barbie» de Sala-i-Martín, en nota y sin precios: versiones entre las que se elige.
   - *Tarifa en dos partes común* T(q) = A + p q (Oi, 1971), 3 casos con 2 tipos: cuotas distintas A_i = EC_i(c) con p = c (= 1.er grado); cuota común sin excluir A = EC_1(p) con
 $$p-c=\frac{n_2\,[q_2(p)-q_1(p)]}{-[n_1q_1'(p)+n_2q_2'(p)]}>0;$$
@@ -33,13 +33,13 @@ precio mayor en el grupo de demanda menos elástica (Robinson, 1933). **Bienesta
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.17 | Discriminación de precios | desarrollo (hecho, 17/10/2026) | Todo lo anterior | — |
-| 3.A.13 | Selección adversa y *screening* | mención (prevista) | La discriminación de 2.º grado como aplicación del *screening* con el mismo lenguaje (PC, IC, renta informativa, no distorsión arriba), remitiendo a 3.A.17 II.1.2 | El modelo de 2 tipos con tarifas |
+| 3.A.13 | Selección adversa y *screening* | mención (hecho, 19/10/2026) | En las extensiones de Rothschild-Stiglitz (I.3.2 c): la discriminación de 2.º grado con el mismo lenguaje (PC_i, IC_i, renta informativa, no distorsión arriba, distorsión abajo; «allí t_1 < t_2»), Mussa-Rosen y Maskin-Riley, remitiendo a 3.A.17 | El modelo de 2 tipos con tarifas |
 | 3.B.39 | Mercado único y competencia | mención | Ventas vinculadas como abuso; segmentación de mercados nacionales | La teoría |
 | 3.B.7 | Política comercial | mención (prevista) | *Dumping* como discriminación de 3.er grado entre mercados nacional y extranjero (precio menor donde la demanda es más elástica) | La regla por grupos |
 | 4.A.5, 4.A.12 | Energía, transportes y telecomunicaciones | mención (prevista) | Tarifas de acceso, bonos sociales, periodos de punta y valle | Teoría |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: definiciones de los grados contradictorias entre sí, «descuentos para conjuntos de bienes» como 2.º grado (era *bundling*), 1.er grado «con ineficiencia asignativa», 3.er grado como «mejora en sentido de Pareto», «discriminación de 4.º grado», Mill como iniciador (fue Dupuit, 1849), tipos θ_1, θ_2 con proporción λ. **Resuelto** en la revisión (17/10/2026).
-- 3.A.13 (sin revisar): no menciona la discriminación de 2.º grado como *screening* y remite Laffont-Tirole al 3.A.20 (`mapa.yaml`, contradicciones del 3.A.17).
+- 3.A.13 original: no mencionaba la discriminación de 2.º grado como *screening* y remitía Laffont-Tirole al 3.A.20. **Resuelto** en la revisión del 3.A.13 (19/10/2026): mención con el lenguaje del 3.A.17 y Laffont-Tirole remitido al 3.A.17.
 
 Autor: Víctor Gutiérrez Marcos

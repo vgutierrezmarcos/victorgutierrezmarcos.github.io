@@ -1,7 +1,7 @@
 # Mecanismo de Clarke-Groves
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.23 (Fallos de mercado: bienes públicos)
-- **Temas que lo usan:** 3.A.23 (desarrollo), 3.A.24 (mención), 4.B.7 (mención: principio del beneficio)
+- **Temas que lo usan:** 3.A.23 (desarrollo), 3.A.24 (mención), 4.B.7 (mención: principio del beneficio). Es una aplicación del diseño de mecanismos (ficha `diseno-mecanismos`, 19/10/2026).
 - **Manuales de referencia:** Clarke (1971); Groves (1973); Groves y Ledyard (1977); Mas-Colell, Whinston y Green, cap. 23.
 
 ## Presentación de referencia

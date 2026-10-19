@@ -1,0 +1,37 @@
+% Señalización en el mercado de trabajo (Spence, 1973): los niveles de educación
+% que separan a los 2 tipos.
+%   Diferencia salarial w_A - w_B = 2 (recta horizontal).
+%   Costes: c_A(y) = 0,5 y (tipo productivo, menos inclinada), c_B(y) = y (más inclinada).
+%   Cortes con la recta: c_B^{-1}(2) = 2 y c_A^{-1}(2) = 4.
+%   Separan los y-gorro en [2, 4]; con el criterio intuitivo, y-gorro* = 2 (corte con c_B).
+% Elaboración propia a partir de Spence (1973).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.3cm,y=1cm,
+    declare function={ca(\y)=0.5*\y; cb(\y)=\y;}]
+  \def\dw{2}\def\ylo{2}\def\yhi{4}
+  % 1: ejes: educación y euros
+  \capa{1}{\ejes{$y$}{€}{6.6}{4.6}}
+  % 2: diferencia salarial, recta horizontal
+  \capa{2}{\draw[curva4] (0,\dw) -- (6.2,\dw);}
+  \capa{2}{\node[left] at (0,\dw) {$w_{\mathrm{A}}-w_{\mathrm{B}}$};}
+  % 3: coste del tipo productivo, menos inclinado
+  \capa{3}{\draw[curva1] plot[domain=0:6.2,samples=2] (\x,{ca(\x)}) node[etiqueta,right] {$c_{\mathrm{A}}(y)$};}
+  % 4: coste del tipo poco productivo, más inclinado
+  \capa{4}{\draw[curva2] plot[domain=0:4.2,samples=2] (\x,{cb(\x)}) node[etiqueta,above] {$c_{\mathrm{B}}(y)$};}
+  % 5: cortes con la diferencia salarial
+  \capa{5}{\node[punto] (B) at (\ylo,\dw) {};}
+  \capa{5}{\draw[guia] (B) -- (\ylo,0) node[below,text=black,font=\footnotesize] {$c_{\mathrm{B}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})$};}
+  \capa{5}{\node[punto] (A) at (\yhi,\dw) {};}
+  \capa{5}{\draw[guia] (A) -- (\yhi,0) node[below,text=black,font=\footnotesize] {$c_{\mathrm{A}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})$};}
+  % 6: los niveles de educación que separan
+  \capa{6}{\fill[area] (\ylo,0) rectangle (\yhi,\dw);}
+  \capa{6}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick] (\ylo,-0.75) -- (\yhi,-0.75)
+    node[midway,below=6pt,etiqueta,font=\footnotesize,align=center] {$\hat y$ que separan:\\ $c_{\mathrm{A}}(\hat y)\leq w_{\mathrm{A}}-w_{\mathrm{B}}\leq c_{\mathrm{B}}(\hat y)$};}
+  % 7: el separador más barato (criterio intuitivo), en el corte con c_B
+  \capa{7}{\node[circle,draw=tceerojo,very thick,inner sep=2.6pt] at (B) {};}
+  \capa{7}{\node[etiqueta,text=tceerojo,above left] at (B) {$\hat y^*$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,47 @@
+% Inexistencia del equilibrio de Rothschild y Stiglitz (1976).
+% Mismos datos que rothschild-stiglitz.tex: W = 10, L = 6, A = (10, 4),
+% temerarios pi_A = 0,5; prudentes pi_B = 0,25; utilidad u = ln.
+%   Separador: E_A = (7, 7), curva del temerario x_2 = 49/x_1;
+%   S_B = (9,639; 5,084), curva del prudente x_2 = 5,0836 (9,6388/x_1)^3.
+% Ahora la proporción de prudentes es alta, nu = 0,9 -> pi-barra = 0,275:
+%   recta del riesgo medio x_2 = (8,35 - 0,725 x_1)/0,275, muy cerca de la de
+%   los prudentes. Queda por encima de la curva del prudente por S_B entre
+%   x_1 = 7,63 y x_1 = 9,51 (holgura máxima 0,54 en x_1 = 8,5); ahí también
+%   está por encima de la curva del temerario por E_A.
+%   C = (8,5; 7,68): entre la curva del prudente (7,41) y la recta media (7,95),
+%   lo prefieren los 2 tipos y da beneficio positivo con la mezcla.
+% Redibujo propio (sustituye la imagen del original, de fuente desconocida).
+% Elaboración propia a partir de Rothschild y Stiglitz (1976) y Wilson (1977).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.7cm,y=0.7cm,
+    declare function={
+      ra(\x)=14-\x;                 % isobeneficio nulo con temerarios
+      rb(\x)=34-3*\x;               % isobeneficio nulo con prudentes
+      rm(\x)=(8.35-0.725*\x)/0.275; % isobeneficio nulo con el riesgo medio (nu = 0,9)
+      teE(\x)=49/\x; prS(\x)=5.0836*(9.6388/\x)^3;}]
+  % 1: ejes, línea de certeza y dotación A
+  \capa{1}{\ejes{$x_1$}{$x_2$}{12.5}{11.5}}
+  \capa{1}{\draw[thick,tceegris] (0,0) -- (10.8,10.8) node[etiqueta,above,font=\footnotesize,text=black] {línea de certeza};}
+  \capa{1}{\node[punto] (A) at (10,4) {};}
+  \capa{1}{\node[etiqueta,below right] at (A) {$A$};}
+  % 2: rectas de isobeneficio nulo de cada tipo
+  \capa{2}{\draw[curva4] plot[domain=10:4.8,samples=2] (\x,{ra(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{A}}$};}
+  \capa{2}{\draw[curva4] plot[domain=10:8.2,samples=2] (\x,{rb(\x)}) node[etiqueta,above,text=tceedorado] {$\pi_{\mathrm{B}}$};}
+  % 3: separador: E_A con la curva del temerario y S_B con la del prudente
+  \capa{3}{\node[punto] (EA) at (7,7) {};}
+  \capa{3}{\node[etiqueta,left=3pt] at (EA) {$E_{\mathrm{A}}$};}
+  \capa{3}{\draw[curva1] plot[domain=4.7:11.8,samples=50] (\x,{teE(\x)}) node[etiqueta,right] {$U_{\mathrm{A}}$};}
+  \capa{3}{\node[punto] (SB) at (9.639,5.084) {};}
+  \capa{3}{\node[etiqueta,above right] at (SB) {$S_{\mathrm{B}}$};}
+  \capa{3}{\draw[curva2] plot[domain=7.45:11.8,samples=60] (\x,{prS(\x)}) node[etiqueta,right] {$U_{\mathrm{B}}$};}
+  % 4: recta del riesgo medio, muy cerca de la de los prudentes (nu alta)
+  \capa{4}{\draw[curva4,dashed] plot[domain=10:7.4,samples=2] (\x,{rm(\x)}) node[etiqueta,above left=0pt and -2pt,text=tceedorado] {$\overline{\pi}$};}
+  % 5: contratos agrupadores que los 2 tipos prefieren y dan beneficio; C
+  \capa{5}{\fill[area] plot[domain=7.6303:9.5088,samples=40] (\x,{prS(\x)}) -- plot[domain=9.5088:7.6303,samples=2] (\x,{rm(\x)}) -- cycle;}
+  \capa{5}{\node[punto,fill=tceerojo] (C) at (8.5,7.68) {};}
+  \capa{5}{\draw[thin,tceegris] (C) -- (10.6,9.2) node[etiqueta,above right=-2pt,text=tceerojo] {$C$};}
+\end{tikzpicture}
+\end{document}

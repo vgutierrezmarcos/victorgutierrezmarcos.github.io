@@ -1,7 +1,7 @@
 # Subastas
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.14 (Teoría de juegos, con especial referencia a las subastas)
-- **Temas que lo usan:** 3.A.14 (desarrollo), 4.A.19 (resumen: subastas de deuda del Tesoro); 3.B.37 o 4.A.6 (subastas de derechos de emisión) y 4.A.12 (espectro) podrían citarlo.
+- **Temas que lo usan:** 3.A.14 (desarrollo; aplicación central del diseño de mecanismos, ficha `diseno-mecanismos`, 19/10/2026; el 3.A.13 lo remite como extensión en su conclusión), 4.A.19 (resumen: subastas de deuda del Tesoro); 3.B.37 o 4.A.6 (subastas de derechos de emisión) y 4.A.12 (espectro) podrían citarlo.
 - **Manuales de referencia:** Vickrey (1961); Milgrom y Weber (1982); Krishna, *Auction Theory*; Klemperer (2004); Gibbons, cap. 3.
 
 ## Presentación de referencia

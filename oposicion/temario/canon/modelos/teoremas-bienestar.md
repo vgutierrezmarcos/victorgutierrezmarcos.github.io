@@ -1,7 +1,7 @@
 # Teoremas fundamentales de la economía del bienestar (1TFEB y 2TFEB)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.22 (Bienestar I: los teoremas fundamentales en el título). Hoy 3.A.23 los desarrolla más (Word del título anterior a 2023): con el título vigente ese desarrollo pertenece a 3.A.22 y 3.A.23 debe solo recordarlos.
-- **Temas que lo usan:** 3.A.22 (desarrollo; hoy resumen), 3.A.23 (resumen; hoy desarrollo), 3.A.21 (resumen; hecho, 14/10/2026: enunciados sobre la caja en II.2 y anexo C), 4.B.2, 4.B.3, 4.B.7 (resumen), 4.A.24 (mención); 3.A.16 (resumen: versión de equilibrio parcial, maximización del excedente total con λ* = p* y 2TFEB con transferencias de numerario; hecho, 17/10/2026; ficha `excedentes-bienestar`); 3.A.13, 3.A.8 y 4.A.15 los citan.
+- **Temas que lo usan:** 3.A.22 (desarrollo; hoy resumen), 3.A.23 (resumen; hoy desarrollo), 3.A.21 (resumen; hecho, 14/10/2026: enunciados sobre la caja en II.2 y anexo C), 4.B.2, 4.B.3, 4.B.7 (resumen), 4.A.24 (mención); 3.A.16 (resumen: versión de equilibrio parcial, maximización del excedente total con λ* = p* y 2TFEB con transferencias de numerario; hecho, 17/10/2026; ficha `excedentes-bienestar`); 3.A.13 (mención; hecho, 19/10/2026: caja con los supuestos del 1TFEB según MWG prop. 16.C.1, solo no saciedad local, sin convexidad, y el supuesto implícito de que todos observan lo que entra en el intercambio), 3.A.8 y 4.A.15 los citan.
 - **Manuales de referencia:** Arrow (1951); Debreu (1959); Mas-Colell, Whinston y Green, cap. 16; Varian, cap. 17-18; Stiglitz (1991) sobre sus límites con información imperfecta.
 - **Decisión D045 (13/10/2026):** ¿Cómo se escribe la dotación inicial del consumidor? ω_i (y ω′), como MWG
 

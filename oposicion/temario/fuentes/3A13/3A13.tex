@@ -1,0 +1,981 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A13.bib}
+\tcetema[Economía de la información y teoría de la agencia]{3.A.13}{Economía de la información y teoría de la agencia: selección adversa y riesgo moral.}
+\tcefecha{19/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Dar gato por liebre» y «el ojo del amo engorda al caballo»: 2 refranes que resumen esta exposición. El primero advierte de que quien vende puede saber más que quien compra; el segundo, de que quien trabaja para otro se esfuerza menos si nadie le mira.
+  \item Siguen de actualidad. El 12 de marzo de 2023, tras la quiebra de Silicon Valley Bank, el Tesoro, la Reserva Federal y la Corporación Federal de Seguro de Depósitos de Estados Unidos anunciaron que protegerían por completo a \emph{todos} sus depositantes, también a los que superaban el límite asegurado \parencite{TreasuryFedFDIC2023Joint}. Evitaron el pánico, pero reabrieron una pregunta clásica: si los depositantes saben que siempre se les rescatará, ¿quién vigilará a los bancos?
+  \item Detrás está la pregunta de esta exposición: ¿qué ocurre en un mercado cuando una de las partes sabe algo que la otra no sabe, o hace algo que la otra no ve? ¿Puede un contrato bien diseñado sustituir al «ojo del amo»?
+    \begin{itemize}
+    \item La respuesta de la microeconomía parte del \concepto{individualismo metodológico}:\footnote{Es un método muy extendido en las ciencias sociales: sostiene que los fenómenos sociales, su estructura y sus cambios, se explican en principio a partir de los individuos, de sus metas, sus creencias y sus acciones, y ve la evolución de la sociedad como el agregado de las decisiones de los particulares. Es, por tanto, un reduccionismo: explica las entidades grandes a partir de las pequeñas.} explica los fenómenos agregados a partir de las decisiones de individuos que optimizan, \emph{consumidores} y \emph{productores} \vertema{3.A.8}.\footnote{La microeconomía contemporánea considera esta separación estricta entre consumidores y productores una simplificación excesiva \parencite[cap.~26]{EkelundHebert2013History}: lo muestran las «tecnologías del consumo», como el enfoque de características de \autor{Lancaster}, la economía doméstica de \autor{Becker}, la producción doméstica de \autor{Gronau} o la economía de la información de \autor{Stigler}, en la que conocer los precios y las calidades exige una búsqueda costosa que se combina con el bien físico \parencite{Stigler1961Information}. La microeconomía estudia también otros agentes, como el sector público o las instituciones financieras.}
+    \item Su vara de medir normativa es el \concepto{primer teorema fundamental de la economía del bienestar} (1TFEB): bajo ciertos supuestos, el equilibrio competitivo es eficiente en el sentido de \autor{Pareto} \vertema{3.A.22}. Uno de esos supuestos es que todos saben lo relevante para el intercambio.
+    \end{itemize}
+  \item En esta exposición estudiamos qué ocurre cuando ese supuesto falla porque la información es \concepto{asimétrica}: una parte sabe más que la otra, antes de firmar el contrato (\concepto{selección adversa}) o después (\concepto{riesgo moral}), y qué mecanismos, privados y públicos, permiten mitigar el problema.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: la información asimétrica es una de las razones principales por las que falla el 1TFEB y el origen de la teoría de los contratos y del diseño de mecanismos. Lo reconocen 6 premios Nobel:\footnote{Las comillas encierran traducciones propias de las motivaciones oficiales, que están en inglés.}
+    \begin{itemize}
+    \item en 1996, a \autor{Mirrlees} y \autor{Vickrey}, «por sus contribuciones fundamentales a la teoría económica de los incentivos con información asimétrica» \parencite{Nobel1996MirrleesVickrey};
+    \item en 2001, a \autor{Akerlof}, \autor{Spence} y \autor{Stiglitz}, «por sus análisis de los mercados con información asimétrica» \parencite{Nobel2001AkerlofSpenceStiglitz};
+    \item en 2007, a \autor{Hurwicz}, \autor{Maskin} y \autor{Myerson}, «por haber sentado las bases de la teoría del diseño de mecanismos» \parencite{Nobel2007HurwiczMaskinMyerson};
+    \item en 2014, a \autor{Tirole}, «por su análisis del poder de mercado y la regulación» \parencite{Nobel2014Tirole};
+    \item en 2016, a \autor{Hart} y \autor{Holmström}, «por sus contribuciones a la teoría de los contratos» \parencite{Nobel2016HartHolmstrom}, y
+    \item en 2020, a \autor{Milgrom} y \autor{Wilson}, «por sus mejoras de la teoría de las subastas y sus invenciones de nuevos formatos de subasta» \parencite{Nobel2020MilgromWilson} \vertema{3.A.14}.
+    \end{itemize}
+  \item \emph{Empírica}: explica fenómenos que la competencia perfecta no explica, como la retribución variable de directivos y comerciales, las franquicias y los copagos de los seguros, el valor de los títulos educativos o el racionamiento del crédito a las pymes. Y ha generado una literatura que intenta separar en los datos la selección adversa del riesgo moral \parencites{ChiapporiSalanie2000Testing}{EinavFinkelstein2011Selection}.
+  \item \emph{De política económica}: justifica los seguros obligatorios, la información obligatoria al consumidor, la supervisión bancaria \vertema{3.B.27}, la condicionalidad de las prestaciones y de la ayuda financiera internacional y la regulación de los monopolios con información asimétrica \vertema{3.A.17}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Desde un punto de vista histórico}:
+    \begin{itemize}
+    \item Antes de los años 70, los economistas no habían dado a la \concepto{información} un papel central.\footnote{Sin embargo, el fenómeno se conoce desde hace siglos: la ley de \autor{Gresham}, formulada en el siglo XVI, según la cual la moneda «mala» expulsa a la buena, es una de sus primeras expresiones.} \textcite{LaffontMartimort2002Theory} señalan que sorprende que \autor{Schumpeter} (1954) no mencione la palabra «incentivos» en su monumental historia del análisis económico, cuando hoy, para muchos economistas, la economía es en gran medida una cuestión de incentivos: para trabajar duro, producir con calidad, estudiar, invertir o ahorrar. Los manuales del mercado de trabajo, por ejemplo, suponían que el empresario conocía la productividad de cada trabajador \parencite{Economist2016SixBigIdeas}, y la pregunta central de hoy, cómo diseñar instituciones que den a cada uno los incentivos adecuados, apenas se planteaba.
+    \item Cuando George \autor{Akerlof} escribió a finales de los años 60 \emph{The Market for «Lemons»}, 3 de las revistas más prestigiosas lo rechazaron: la \emph{American Economic Review} lo juzgó trivial, la \emph{Review of Economic Studies} tampoco lo aceptó y los evaluadores del \emph{Journal of Political Economy} adujeron que, si el artículo fuera correcto, la economía sería diferente \parencite{Akerlof2001Writing}. Se publicó en 1970 en el \emph{Quarterly Journal of Economics} \parencite{Akerlof1970Market}, le valió el Nobel de 2001 y abrió una literatura que hoy es una de las más fecundas de la economía: \textcite{Spence1973Job}, \textcite{RothschildStiglitz1976Equilibrium}, la teoría de la agencia \parencites{Ross1973Economic}{Holmstrom1979Moral} y, desde los años 80, la teoría de los contratos y del diseño de mecanismos.
+    \end{itemize}
+  \item \emph{Desde un punto de vista teórico}, el punto de partida es el 1TFEB. Uno de sus supuestos, a menudo implícito, es que todos observan lo que afecta a sus decisiones: la \emph{información perfecta y simétrica}, el supuesto~2 de la lista común de las estructuras de mercado \vertema{3.A.16}. La economía de la información estudia qué pasa cuando se levanta, y conviene distinguir 3 situaciones:
+    \begin{itemize}
+    \item \concepto{Información imperfecta} es el término general: alguien no conoce algo relevante. No basta para que la asignación sea ineficiente.
+    \item Con \concepto{información incompleta pero simétrica}, nadie sabe qué estado de la naturaleza ocurrirá, pero todos saben lo mismo.\footnote{Si se conocen las probabilidades de cada estado, hablamos de \emph{riesgo}, y si no, de \emph{incertidumbre} \parencite{Knight1921Risk}; las decisiones con riesgo se estudian con la utilidad esperada \vertema{3.A.10}.} La asignación puede seguir siendo eficiente si hay un mercado para cada bien en cada estado de la naturaleza (\concepto{mercados contingentes completos}): es el modelo de \autor{Arrow} y \autor{Debreu} \parencites{Arrow1953Role}[cap.~7]{Debreu1959Theory} \vertema{3.A.21}, y la base de los seguros \vertema{3.A.10}.
+    \item Con \concepto{información asimétrica}, una parte sabe algo relevante que la otra no sabe. Si además hay \concepto{conflicto de intereses}, la parte informada no tiene interés en revelar lo que sabe: ningún mercado contingente puede cubrir un riesgo cuya existencia o cuya probabilidad depende de lo que solo una parte sabe o hace, algunos mercados no pueden abrirse \parencite{Arrow1963Uncertainty} y el 1TFEB deja de cumplirse. Sin conflicto de intereses, la parte informada revelaría lo que sabe y la asimetría sería inocua.\footnote{En teoría de juegos la terminología es otra \vertema{3.A.14}: un juego es de \emph{información incompleta} si algún jugador no conoce los pagos (el «tipo») de otro, lo que \textcite{Harsanyi1967Games} convierte en un juego bayesiano, y de \emph{información imperfecta} si algún jugador no observa las jugadas anteriores. La selección adversa se modeliza como lo primero y el riesgo moral como lo segundo.}
+    \end{itemize}
+  \item La asimetría puede ser de 2 tipos, según el momento y lo que se oculta (tabla~\ref{tab:clasificacion-informacion}): \concepto{información oculta} antes de firmar el contrato, que da lugar a la \concepto{selección adversa}, y \concepto{acción oculta} después de firmarlo, que da lugar al \concepto{riesgo moral}.
+  \item La \concepto{teoría de la agencia} \parencites{Ross1973Economic}{JensenMeckling1976Theory} da el marco común a los 2. En una \concepto{relación de agencia}, una parte, el \concepto{principal}, delega en otra, el \concepto{agente}, que sabe o hace algo que el principal no ve. El principal diseña el contrato sujeto a 2 tipos de restricciones: la de \concepto{participación} (PC: el agente acepta si obtiene al menos su utilidad de reserva) y la de \concepto{compatibilidad de incentivos} (IC: al agente le conviene revelar su tipo o hacer el esfuerzo que se le pide). Con información oculta es un problema de selección adversa; con acción oculta, de riesgo moral \parencite{LaffontMartimort2002Theory}.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Clasificación de los problemas de información}\label{tab:clasificacion-informacion}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{3.4cm}>{\centering\arraybackslash}m{4.4cm}>{\centering\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Información simétrica} & \textbf{Información oculta}\newline (antes del contrato) & \textbf{Acción oculta}\newline (después del contrato)\\
+\midrule
+\textbf{Problema} & ninguno:\newline \emph{first best} & \cellcolor{tceesalvia}\textcolor{tceeverde}{\textbf{selección adversa}} & \cellcolor{tceesalvia}\textcolor{tceedorado}{\textbf{riesgo moral}}\\
+\addlinespace[0.3em]
+\textbf{Quién mueve primero} & --- & el no informado ofrece un menú (\emph{screening}, \ref{sec:autoseleccion}) o el informado envía una señal (\emph{signalling}, \ref{sec:senalizacion}) & el principal ofrece un pago que depende del resultado (\ref{sec:principal-agente})\\
+\addlinespace[0.3em]
+\textbf{Restricciones} & participación (PC) & $\mathrm{PC}_i$ e $\mathrm{IC}_i$ de cada tipo & PC e IC del esfuerzo\\
+\addlinespace[0.3em]
+\textbf{Ejemplos} & seguro con riesgo conocido & coches usados, seguros, empleo, crédito & empleo, seguros, gestión de empresas, crédito\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{MachoStadlerPerezCastrillo2001Introduction} y \textcite[caps.~13 y~14]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{anotaciones}
+\textbf{Los supuestos del 1TFEB y la información}. El teorema necesita: \emph{mercados completos}, un precio para cada bien, sin externalidades ni bienes públicos; \emph{precios comunes}, todos se enfrentan a los mismos precios, sin impuestos distorsionantes; \emph{precio-aceptación}, nadie tiene poder de mercado, y preferencias \emph{localmente no saciables} \parencite[prop.~16.C.1]{MasColellWhinstonGreen1995}. La convexidad de preferencias y tecnologías no hace falta para el 1TFEB: la necesitan la existencia del equilibrio y el segundo teorema \vertema{3.A.21} \vertema{3.A.22}. Hay además un supuesto implícito: que los agentes observan todo lo que entra en el intercambio (la calidad del bien, el riesgo del cliente, el esfuerzo pactado). Por eso la información asimétrica es, en el fondo, un caso de mercados incompletos.
+\end{anotaciones}
+
+\begin{itemize}
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Por qué la información asimétrica impide que el mercado asigne los recursos de forma eficiente?
+  \item ¿Qué mecanismos (señales, menús de contratos, pagos por resultados) permiten sortearla, y quién paga su coste?
+  \item ¿Qué puede hacer el sector público, y qué no?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición se divide en 3 bloques, los 2 primeros con los mismos 3 pasos: qué es el problema, por qué la asignación competitiva se aparta de la óptima y qué soluciones hay.
+  \begin{itemize}
+  \item \concepto{I. Selección adversa}: su definición (\ref{sec:definicion-sa}), el mercado de «limones» de \autor{Akerlof} (\ref{sec:akerlof}) y sus soluciones (\ref{sec:soluciones-sa}): la señalización de la parte informada (\autor{Spence}), la autoselección que diseña la no informada (\autor{Rothschild} y \autor{Stiglitz}) y otras, privadas y públicas.
+  \item \concepto{II. Problema de agencia y riesgo moral}: su definición (\ref{sec:definicion-rm}), el modelo principal-agente con esfuerzo observable e inobservable (\ref{sec:principal-agente}) y sus soluciones (\ref{sec:soluciones-rm}).
+  \item \concepto{III. Selección adversa y riesgo moral a la vez}: el racionamiento del crédito de \autor{Stiglitz} y \autor{Weiss} (\ref{sec:stiglitz-weiss}), que reúne los 2 problemas en un mismo mercado.
+  \end{itemize}
+  Un mismo hilo recorre los 3 bloques: quien no tiene la información diseña un contrato que cumpla la \concepto{participación} y la \concepto{compatibilidad de incentivos}, y la diferencia con el óptimo de información perfecta es el \emph{precio de la información}, que alguien paga: los buenos que se señalizan o aceptan un seguro parcial, el principal que tiene que pagar por el riesgo que carga al agente y el prestatario que se queda sin crédito.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.13. Economía de la información y teoría de la agencia}\\[2pt]
+Introducción: información oculta (\emph{ex ante}) / acción oculta (\emph{ex post}); $\mathrm{PC}$ e $\mathrm{IC}$\\
+I. Selección adversa\\
+\hspace*{1.5em}1. Definición: información oculta + heterogeneidad + conflicto\\
+\hspace*{1.5em}2. Asignación: limones (\autor{Akerlof}, 1970)\\
+\hspace*{1.5em}3. Soluciones: señalización (\autor{Spence}, 1973); autoselección (\autor{Rothschild}-\autor{Stiglitz}, 1976); otras\\
+II. Problema de agencia y riesgo moral\\
+\hspace*{1.5em}1. Definición: acción oculta + conflicto + riesgo y aversión\\
+\hspace*{1.5em}2. Asignación: principal-agente, $\mathrm{PC}+\mathrm{IC}$ $\Rightarrow$ coste de agencia\\
+\hspace*{1.5em}3. Soluciones: de la teoría de la agencia; otras\\
+III. Selección adversa y riesgo moral a la vez\\
+\hspace*{1.5em}1. Idea: no son excluyentes\\
+\hspace*{1.5em}2. Racionamiento del crédito (\autor{Stiglitz}-\autor{Weiss}, 1981)\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+La exposición va de la información oculta antes del contrato (\ref{sec:seleccion-adversa}) a la acción oculta después del contrato (\ref{sec:agencia-riesgo-moral}) y a los 2 problemas juntos en el mercado de crédito (\ref{sec:sa-rm-a-la-vez}). Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{11} (I.1, \tiempo{1}; I.2, \tiempo{2,5}; I.3, \tiempo{7,5}: señalización, \tiempo{3}; autoselección, \tiempo{4}; otras soluciones, \tiempo{0,5}); II, \tiempo{11} (II.1, \tiempo{1,5}; II.2, \tiempo{7,5}; II.3, \tiempo{2}); III, \tiempo{4,5} (III.1, \tiempo{0,5}; III.2, \tiempo{4}), y conclusión, \tiempo{1}. La tabla de clasificación sirve de apoyo y no se escribe. Los gráficos imprescindibles son la señalización de \autor{Spence}, el seguro de \autor{Rothschild} y \autor{Stiglitz} por capas, la caja del principal-agente y los 2 paneles de \autor{Stiglitz} y \autor{Weiss}. El programa del principal \eqref{eq:principal-agente} se escribe en \ref{sec:principal-agente} y se queda en una esquina de la pizarra hasta el final. Conviene escribir este esquema en la pizarra al empezar.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Selección adversa}\label{sec:seleccion-adversa}
+\minutos{11}
+
+\begin{notaopositor}
+En el cante: la definición y la terna de condiciones, con las aplicaciones en una frase (\tiempo{1}); \autor{Akerlof} con los números del ejemplo y su conclusión de eficiencia (\tiempo{2,5}); la señalización con su gráfico y la doble desigualdad (\tiempo{3}); la autoselección con el resumen del seguro con información simétrica en 2 frases y el gráfico por capas (agrupador que no se sostiene y separador), la discriminación de segundo grado y la inexistencia en una frase cada una (\tiempo{4}), y las otras soluciones en una lista corta (\tiempo{0,5}). Los juegos bayesianos, la versión continua de \autor{Akerlof}, los equilibrios de \autor{Wilson} y \autor{Riley} y la evidencia en detalle son de profundización.
+\end{notaopositor}
+
+\begin{itemize}
+\item Empezamos por la asimetría que surge \emph{antes} del contrato. La \emph{conclusión anticipada} del bloque es que, cuando la calidad es privada, el precio deja de ser una buena señal y el mercado selecciona a los peores; las soluciones (señalizar o filtrar) existen, pero cuestan, y por eso el resultado queda por debajo del óptimo de información perfecta.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definición}\label{sec:definicion-sa}
+
+\begin{itemize}
+\item La \concepto{selección adversa} es un problema de información asimétrica que surge \emph{antes} de la firma del contrato y se debe a \emph{información oculta} de una de las partes en presencia de un \emph{conflicto de intereses}.
+\item Para que haya selección adversa deben darse 3 condiciones:
+  \begin{enumerate}
+  \item \emph{Información oculta}: una característica de una de las partes que la otra no observa (la calidad del coche, la productividad del trabajador, el riesgo del asegurado).
+  \item \emph{Heterogeneidad}: si todos fueran iguales, no habría nada que distinguir, y un trato uniforme no tendría coste de eficiencia.
+  \item \emph{Conflicto de intereses}: la parte informada no tiene interés en revelarlo; si lo tuviera, lo diría y la asimetría desaparecería.
+  \end{enumerate}
+\item La selección adversa se analiza con los \concepto{juegos bayesianos} \parencite{Harsanyi1967Games}: cada agente conoce su tipo y todos conocen la distribución de los tipos, que es \emph{conocimiento común}.\footnote{Según \textcite{Aumann1976Agreeing}, algo es conocimiento común si todos lo saben, todos saben que todos lo saben, todos saben que todos saben que todos lo saben, y así sucesivamente.} El concepto de solución es el equilibrio bayesiano de \autor{Nash} o, si el juego tiene varias etapas, el equilibrio bayesiano perfecto \vertema{3.A.14}.
+  \begin{itemize}
+  \item El supuesto de conocimiento común es exigente, y los resultados dependen mucho de los detalles del juego: es la crítica que se conoce como \emph{doctrina de Wilson} \parencite{Wilson1987Game}. Por eso, a diferencia del riesgo moral, que tiene un modelo canónico (el principal-agente), la selección adversa se ha estudiado con modelos distintos según el mercado.
+  \end{itemize}
+\item \emph{Aplicaciones}. Aparece en muchos mercados:
+  \begin{itemize}
+  \item \emph{Bienes de segunda mano}: el comprador no conoce la calidad \parencite{Akerlof1970Market}.
+  \item \emph{Mercado de trabajo}: la empresa no conoce la productividad del trabajador \parencite{Spence1973Job}.
+  \item \emph{Seguros}: la aseguradora no conoce el riesgo de cada cliente \parencites{RothschildStiglitz1976Equilibrium}{Wilson1977Model}.
+  \item \emph{Dinero}: la moneda de peor ley expulsa a la buena de la circulación (ley de \autor{Gresham}).
+  \item \emph{Finanzas de la empresa}: los dividendos pueden ser una señal de solvencia \parencite{Bhattacharya1979Imperfect}, y la emisión de acciones, una mala señal que lleva a preferir la autofinanciación y la deuda (\emph{teoría del orden jerárquico}, \textcite{MyersMajluf1984Corporate}) \vertema{3.B.3}.
+  \item \emph{Organización industrial}: el entrante potencial no conoce los costes del instalado, que puede fijar un precio bajo para señalizar que sus costes son bajos y disuadir la entrada \parencite{MilgromRoberts1982Limit} \vertema{3.A.15}.
+  \item \emph{Teoría de la regulación}: el regulador no conoce los costes de la empresa regulada, que tiene incentivos a declararlos más altos y a esforzarse poco en reducirlos; el regulador ofrece un menú de contratos que equilibra eficiencia y renta informativa \parencite{LaffontTirole1993Theory} \vertema{3.A.17}.
+  \item \emph{Crédito}: el banco no conoce el riesgo del prestatario \parencite{StiglitzWeiss1981Credit} (bloque~\ref{sec:sa-rm-a-la-vez}).
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Diferencia entre la asignación competitiva y la asignación óptima: \emph{The Market for «Lemons»} (\autor{Akerlof}, 1970)}\label{sec:akerlof}
+
+\begin{itemize}
+\item Una vez definido el problema, vemos con el ejemplo más famoso cómo aleja la asignación competitiva de la óptima.
+\end{itemize}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Akerlof1970Market} se pregunta por qué un coche casi nuevo pierde tanto valor al salir del concesionario. Su respuesta es que el comprador de un coche usado no sabe si es bueno (un «melocotón», \emph{peach}) o malo (un «limón», \emph{lemon}, en la jerga estadounidense), y sospecha de que quien lo vende sabe algo que él no sabe. Es la pregunta de esta exposición en su forma más simple: ¿puede desaparecer un mercado porque el comprador no ve la calidad?
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hay coches usados de 2 calidades, la mitad buenos y la mitad malos. Los compradores valoran los buenos en 1.000~€ y los malos en 500~€; los vendedores los valoran algo menos, de modo que estarían dispuestos a venderlos por esas cantidades.
+\item El vendedor conoce la calidad de su coche; el comprador no, hasta que lo compra y lo usa. Los compradores son neutrales al riesgo y conocen la proporción de cada calidad.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con información simétrica}, si los compradores pudieran distinguir los melocotones de los limones, habría un mercado para cada calidad, a 1.000~€ y a 500~€, y se harían todos los intercambios.
+\item \emph{Con información asimétrica} (gráfico~\ref{fig:akerlof}):
+  \begin{itemize}
+  \item Si los compradores creen que cada coche es bueno o malo con la misma probabilidad, estarán dispuestos a pagar su valor esperado: 750~€.
+  \item Pero a 750~€ solo venden los dueños de limones; los de melocotones, que valoran su coche en casi 1.000~€, se lo quedan.
+  \item Sabiéndolo, los compradores racionales solo pagan 500~€, porque recibirán un limón: \emph{en equilibrio solo se venden limones}.
+  \end{itemize}
+\item Los vendedores de limones reciben lo mismo que con información simétrica, pero los melocotones son expulsados del mercado y se quedan en el garaje: es la \concepto{selección adversa}, porque el precio selecciona a los peores. Y es una pérdida, porque hay compradores dispuestos a pagar por un melocotón más de lo que lo valora su dueño.\footnote{El problema también puede verse como una \emph{externalidad}: cuando los dueños de limones ponen a la venta sus coches, empeoran la percepción que tienen los compradores de la calidad media del mercado y reducen el precio que están dispuestos a pagar por el coche medio, lo que perjudica a los vendedores de coches buenos.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de «limones»: las valoraciones y el desenredo del mercado}\label{fig:akerlof}
+\grafico[0.7\textwidth]{akerlof}
+\fuente{elaboración propia a partir de \textcite{Akerlof1970Market}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Siguiendo la lógica del modelo, la información asimétrica puede:
+  \begin{itemize}
+  \item \emph{acabar con el mercado}, si la calidad se reparte en un continuo y el desenredo llega hasta el final;
+  \item \emph{reducir el número de transacciones} que serían mutuamente beneficiosas, como en el ejemplo, y
+  \item dar lugar a \emph{equilibrios múltiples}, porque el precio ejerce 2 efectos contrapuestos sobre la demanda: el efecto sustitución de siempre y un \emph{efecto calidad}, porque un precio más alto atrae coches mejores.\footnote{Puede haber varios precios que vacíen el mercado, y pueden ordenarse con el criterio de \autor{Pareto}.}
+  \end{itemize}
+\item En todos los casos, \emph{la selección adversa impide que se alcance un óptimo de \autor{Pareto}}.\footnote{En un modelo más general, con compradores heterogéneos, \textcite{Wilson1980Nature} muestra que puede haber varios precios de equilibrio ordenados en el sentido de \autor{Pareto}, y que uno más alto puede beneficiar también a los compradores.}
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Un continuo de calidades}. La calidad $s$ de cada coche se distribuye de forma uniforme en $[\underline{s},\overline{s}]$; el vendedor conoce la de su coche y la valora en $s$; los compradores, neutrales al riesgo, valoran un coche de calidad $s$ en $\alpha s$, con $\alpha>1$, de modo que \emph{todos} los intercambios serían eficientes. Los compradores solo conocen la distribución.
+  \begin{itemize}
+  \item Al precio $p$ solo venden los que tienen $s\leq p$, y la calidad media de lo que se ofrece es $\mathbb{E}[s\mid s\leq p]=(\underline{s}+p)/2$.
+  \item Los compradores pagan, como mucho, lo que vale para ellos esa calidad media, $p=\alpha\,(\underline{s}+p)/2$, de donde
+  \begin{equation}
+  p^*=\frac{\alpha\,\underline{s}}{2-\alpha}\qquad(\text{si }\alpha<2\text{ y }p^*<\overline{s}). \label{eq:akerlof}
+  \end{equation}
+  \item Solo se venden los coches con $s\leq p^*$; los mejores se quedan en el garaje. Si $\underline{s}=0$, como en el ejemplo de \textcite{Akerlof1970Market}, $p^*=0$: \emph{el mercado desaparece}, aunque cada coche valga más para cualquier comprador que para su dueño.
+  \item \emph{Ejemplo}: con $s\in[1,2]$ y $\alpha=1{,}2$, $p^*=1{,}2/0{,}8=1{,}5$ y se vende la mitad de los coches.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La evidencia es más clara en los seguros de salud. Cuando la Universidad de Harvard pasó a pagar a sus empleados una cantidad fija, fuera cual fuera el plan elegido, los más sanos abandonaron el plan más generoso: hubo selección adversa, con una pérdida de bienestar del 2-4~\% del gasto inicial, aunque la competencia redujo las primas un 5-8~\% \parencite{CutlerReber1998Paying}. \textcite{EinavFinkelstein2011Selection} muestran cómo medir esa pérdida con las curvas de demanda y de coste medio.
+\item En otros mercados es más débil o depende del contrato: en las camionetas usadas de Estados Unidos, \textcite{Bond1982Direct} no encuentra más averías en las que cambiaron de dueño, y en las subastas mayoristas de coches \textcite{Genesove1993Adverse} encuentra una selección adversa pequeña.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item El modelo explica por qué un mercado puede no existir aunque todos los intercambios sean eficientes, pero supone que nadie hace nada para resolver el problema. En la realidad, los vendedores de buenos coches dan garantías, se crean marcas y reputaciones, y los compradores pagan inspecciones. Si el problema es que no se distingue, ¿quién puede hacer que se distinga? Es la pregunta de las soluciones.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Soluciones}\label{sec:soluciones-sa}
+
+\begin{itemize}
+\item Una vez establecido que la selección adversa aleja la asignación del óptimo, pasamos a sus soluciones. Las ordenamos según quién mueve ficha: la parte informada, que envía una señal (\ref{sec:senalizacion}); la no informada, que diseña un menú de contratos (\ref{sec:autoseleccion}), y otras soluciones, privadas y públicas (\ref{sec:otras-soluciones-sa}).
+\end{itemize}
+
+\subsubsection{Señalización: solución de la parte informada (\autor{Spence}, 1973)}\label{sec:senalizacion}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La \concepto{señalización} (\emph{signalling}), propuesta formalmente por \textcite{Spence1973Job} en \emph{Job Market Signaling}, es la \emph{transmisión creíble de información privada desde la parte informada a la no informada}, con una acción que cuesta relativamente más a quien tiene la calidad baja.
+  \begin{itemize}
+  \item Es precisamente ese mayor coste para los poco productivos lo que hace creíble la señal.
+  \item Si enviar la señal no costara nada, todos dirían que su calidad es alta, y la parte no informada, racionalmente, no daría ningún valor a esa señal.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hay 2 tipos de trabajadores, de productividad alta ($\mathrm{A}$) y baja ($\mathrm{B}$), en proporciones $\nu$ y $1-\nu$. La empresa no observa la productividad hasta después de contratar.
+\item Las empresas compiten y tienen beneficio nulo: pagan a cada trabajador su productividad esperada. Si supieran quién es quién, pagarían $w_{\mathrm{A}}$ y $w_{\mathrm{B}}$, con $w_{\mathrm{A}}>w_{\mathrm{B}}$; si no, el salario común sería $\overline{w}=\nu\,w_{\mathrm{A}}+(1-\nu)\,w_{\mathrm{B}}$, que expulsa a los productivos si lo que obtendrían fuera supera $\overline{w}$: el problema de \autor{Akerlof} en el mercado de trabajo.
+\item La educación $y\geq 0$ es observable y \emph{no aumenta la productividad}: solo sirve como señal.
+\item Su coste (de matrícula, de oportunidad, de esfuerzo) crece con $y$ y es \emph{mayor para los poco productivos}: $c_{\mathrm{B}}(y)>c_{\mathrm{A}}(y)$ y $c_{\mathrm{B}}'(y)>c_{\mathrm{A}}'(y)$ (condición de \emph{cruce único}, \emph{single crossing}).
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Las empresas creen que quien tiene al menos $\hat y$ es de tipo $\mathrm{A}$, y pagan $w_{\mathrm{A}}$ si $y\geq\hat y$ y $w_{\mathrm{B}}$ si $y<\hat y$. Cada trabajador elige entonces $y=\hat y$ o $y=0$. Para que esas creencias se confirmen (\concepto{equilibrio separador}) deben cumplirse 2 restricciones de compatibilidad de incentivos,
+  \begin{align*}
+  w_{\mathrm{A}}-c_{\mathrm{A}}(\hat y)&\geq w_{\mathrm{B}} && (\mathrm{IC}_{\mathrm{A}}\text{: al tipo A le compensa educarse})\\
+  w_{\mathrm{B}}&\geq w_{\mathrm{A}}-c_{\mathrm{B}}(\hat y) && (\mathrm{IC}_{\mathrm{B}}\text{: al tipo B no le compensa imitarle})
+  \end{align*}
+  y las de participación de cada tipo (que lo que obtiene en el mercado supere lo que obtendría fuera). Las 2 de incentivos juntas dan
+  \begin{equation}
+  c_{\mathrm{A}}(\hat y)\leq w_{\mathrm{A}}-w_{\mathrm{B}}\leq c_{\mathrm{B}}(\hat y). \label{eq:spence}
+  \end{equation}
+\item \emph{Interpretación}: la señal es creíble \emph{porque} cuesta, y cuesta más al que no tiene la cualidad: la diferencia salarial compensa al productivo, pero no al poco productivo.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:spence}): la diferencia salarial $w_{\mathrm{A}}-w_{\mathrm{B}}$ es una recta horizontal y los costes de cada tipo, 2 curvas crecientes, más inclinada la del tipo $\mathrm{B}$. Separan los niveles de educación en los que la recta queda entre las 2 curvas: $c_{\mathrm{B}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})\leq\hat y\leq c_{\mathrm{A}}^{-1}(w_{\mathrm{A}}-w_{\mathrm{B}})$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Señalización en el mercado de trabajo: los niveles de educación que separan a los 2 tipos}\label{fig:spence}
+\grafico[0.6\textwidth]{spence}
+\fuente{elaboración propia a partir de \textcite{Spence1973Job}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Los equilibrios}. Un equilibrio son unas creencias de las empresas, unos salarios y unas decisiones de educación tales que cada trabajador elige lo mejor para él, las empresas tienen beneficio nulo y las creencias se confirman. Hay 2 clases:
+  \begin{itemize}
+  \item \concepto{separadores} (\emph{separating}): cada tipo elige una educación distinta (cualquier $\hat y$ que cumpla \eqref{eq:spence});
+  \item \concepto{agrupadores} (\emph{pooling}): todos eligen la misma educación y cobran $\overline{w}$.\footnote{Si la proporción de trabajadores productivos es muy alta, un equilibrio agrupador (el mismo salario para todos, sea cual sea su productividad) puede dar a todos los trabajadores más utilidad que el separador, porque nadie paga el coste de la señal.}
+  \end{itemize}
+\item Hay, por tanto, \emph{infinitos} equilibrios. \textcite{ChoKreps1987Signaling} proponen el \concepto{criterio intuitivo}: las empresas no deben creer que un trabajador de tipo $\mathrm{B}$ elegiría una educación que no le compensaría ni siquiera si le tomaran por $\mathrm{A}$. Con él solo sobrevive el separador más barato, $\hat y^*$ tal que $c_{\mathrm{B}}(\hat y^*)=w_{\mathrm{A}}-w_{\mathrm{B}}$ \parencite[cap.~13]{MasColellWhinstonGreen1995} \vertema{3.A.14}.
+\end{itemize}
+
+\begin{notaopositor}
+Conviene subrayar que \emph{la empresa no fija el nivel $\hat y$}: lo fijan sus creencias, y lo que caracteriza un equilibrio es que esas creencias se cumplen. Por eso hay tantos equilibrios separadores, y el criterio intuitivo elige entre ellos.
+\end{notaopositor}
+
+\begin{itemize}
+\item Como la educación cuesta y no produce nada, el equilibrio separador es peor que el \emph{first best} de información perfecta, y no se cumple el 1TFEB. Ni siquiera es siempre el mejor resultado posible con esa información: si hay muchos productivos, un agrupador puede dejar mejor a todos, porque nadie paga la señal. El listón con el que se comparan estos equilibrios es el \concepto{óptimo restringido} (\emph{second best} en la teoría de los contratos): el mejor resultado que podría alcanzar quien diseñara los contratos sujeto a las mismas restricciones de información. No es el segundo óptimo de \autor{Lipsey} y \autor{Lancaster}, aunque comparte la idea de un óptimo con una restricción añadida \vertema{3.A.22}.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Educación y salario se correlacionan aunque la educación no aumente la productividad}. Es la diferencia con la teoría del capital humano de \autor{Becker}, en la que la educación eleva la productividad y por eso el salario \vertema{3.A.25}: los datos de salarios por años de estudio no permiten distinguir las 2 explicaciones.\footnote{El modelo de \autor{Spence} se ocupa más de la selección adversa en el mercado de trabajo que de explicar por qué se invierte en capital humano: supone que la educación no aumenta la productividad para aislar el efecto de señal, no porque lo tome como una descripción literal de la realidad.}
+\item \emph{Sobreeducación}: en el equilibrio separador, los productivos invierten en educación más de lo socialmente útil, solo para distinguirse. Es un despilfarro social, porque en el modelo la educación no produce nada.\footnote{Como ilustración, el modelo permite interpretar los efectos de los planes de Bolonia en España: si los grados son menos costosos que las antiguas licenciaturas (aunque solo sea porque son más cortos), el nivel de educación que antes separaba (una carrera) deja de hacerlo y aparece un equilibrio agrupador; para volver a separar hace falta exigir más educación, como un máster.}
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item El \emph{efecto diploma} (\emph{sheepskin effect}): el salario salta al obtener el título, más que con cada año de estudio \parencite{HungerfordSolon1987Sheepskin}. Con un experimento natural, \textcite{TylerMurnaneWillett2000Estimating} encuentran que aprobar el GED, un título de secundaria para adultos de Estados Unidos, eleva los ingresos de los jóvenes blancos sin estudios entre un 10 y un 19~\%, sin cambiar sus conocimientos, lo que apunta a un valor de señal.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Muestra que la parte informada puede resolver el problema, pero con un coste que paga ella. La alternativa es que lo resuelva la parte no informada, diseñando ella el contrato: es la autoselección.
+\end{itemize}
+
+\subsubsection{Autoselección: solución de la parte no informada (\autor{Rothschild} y \autor{Stiglitz}, 1976)}\label{sec:autoseleccion}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item En la \concepto{autoselección} (\emph{screening}) es la parte \emph{no} informada la que mueve ficha: diseña un \concepto{menú de contratos}, uno para cada tipo, de forma que a cada tipo le convenga elegir el suyo y, al elegirlo, revele quién es.
+\item Su lógica es la del \concepto{principio de revelación}: quien diseña el contrato puede limitarse, sin perder nada, a menús en los que a cada uno le conviene elegir la opción pensada para su tipo \parencites{Gibbard1973Manipulation}{DasguptaHammondMaskin1979Implementation}{Myerson1979Incentive}. Por eso basta buscar menús con un contrato por tipo que cumplan las restricciones de participación ($\mathrm{PC}_i$) y de compatibilidad de incentivos ($\mathrm{IC}_i$).\footnote{Formalmente, para todo equilibrio bayesiano de \autor{Nash} de un juego de información incompleta existe un mecanismo directo compatible con los incentivos que tiene un equilibrio en el que todos declaran su tipo verdadero y que da el mismo resultado. Es la base de la teoría del diseño de mecanismos (Nobel de 2007) \vertema{3.A.14} \vertema{3.A.21}.}
+\item Lo ilustramos con el mercado de seguros de \textcite{RothschildStiglitz1976Equilibrium}, que muestran cómo pueden las aseguradoras filtrar a sus clientes.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Cada individuo tiene una riqueza $\overline{W}$ y con probabilidad $\pi_i$ sufre un accidente que le hace perder $L$. Hay 2 tipos: \emph{prudentes}, de riesgo bajo $\pi_{\mathrm{B}}$, en proporción $\nu$, y \emph{temerarios}, de riesgo alto $\pi_{\mathrm{A}}>\pi_{\mathrm{B}}$, en proporción $1-\nu$. Tienen la misma utilidad de \autor{Bernoulli} $u(\cdot)$, con $u''<0$.
+\item Cada individuo conoce su riesgo; las aseguradoras solo conocen $\pi_{\mathrm{A}}$, $\pi_{\mathrm{B}}$ y $\nu$.
+\item Las aseguradoras son neutrales al riesgo, compiten ofreciendo contratos (prima e indemnización) y entran libremente: en equilibrio, cada contrato tiene beneficio esperado nulo. Cada individuo compra un solo contrato (\emph{exclusividad}).
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El seguro con información simétrica} \parencite[cap.~6]{MasColellWhinstonGreen1995} \vertema{3.A.10}. El individuo parte de la lotería $(\overline{W},\,\overline{W}-L;\ 1-\pi,\,\pi)$: punto $A=(\overline{W},\overline{W}-L)$ del gráfico~\ref{fig:seguro-simetrico}, con la riqueza sin accidente, $x_1$, en el eje horizontal y con accidente, $x_2$, en el vertical; la bisectriz es la \concepto{línea de certeza}. Si compra una cobertura $S$ a una prima $\gamma$ por euro asegurado,
+\begin{equation}
+\left.\begin{aligned} x_1&=\overline{W}-\gamma S\\ x_2&=\overline{W}-L+(1-\gamma)\,S\end{aligned}\right\}\ \Longrightarrow\ x_2=\frac{\overline{W}}{\gamma}-L-\frac{1-\gamma}{\gamma}\,x_1, \label{eq:recta-aseguramiento}
+\end{equation}
+la \concepto{recta de aseguramiento}, de pendiente $-(1-\gamma)/\gamma$: cada euro de más con accidente cuesta $\gamma/(1-\gamma)$ euros sin accidente (es el equivalente de la recta de balance del consumidor con certidumbre \vertema{3.A.8}). Con competencia, el beneficio esperado de la aseguradora es nulo, $(1-\pi)\,\gamma S+\pi\,(\gamma S-S)=(\gamma-\pi)\,S=0$, así que $\gamma=\pi$: la prima es \concepto{actuarialmente justa} y la recta de aseguramiento coincide con la \concepto{recta de isobeneficio nulo} de la aseguradora. La pendiente de la curva de indiferencia, en valor absoluto, es la relación marginal de sustitución estocástica, o entre estados, $\mathrm{RMSE}=(1-\pi)\,u'(x_1)/[\pi\,u'(x_2)]$, que en la línea de certeza vale $(1-\pi)/\pi$. Con prima justa, la tangencia se da en la línea de certeza: el individuo averso \emph{se asegura por completo} (punto $E$), como establece el teorema de \autor{Mossin}; con una prima recargada, $\gamma>\pi$, se asegura solo en parte \vertema{3.A.10}.
+\begin{figuracaja}
+\caption{El seguro con información simétrica: dotación, recta de aseguramiento y seguro completo con prima justa}\label{fig:seguro-simetrico}
+\grafico[0.5\textwidth]{seguro-simetrico}
+\fuente{elaboración propia a partir de \textcite[cap.~6]{MasColellWhinstonGreen1995}.}
+\end{figuracaja}
+\end{anotaciones}
+
+\begin{notaopositor}
+Es el modelo de seguros de la elección con riesgo \vertema{3.A.10}, con los 2 lados del mercado y 2 tipos de asegurado. En el cante basta con 2 frases: con prima justa, el averso se asegura por completo en la línea de certeza.
+\end{notaopositor}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Con 2 tipos hay 2 rectas de isobeneficio nulo}, $(1-\pi_i)\,x_1+\pi_i\,x_2=\overline{W}-\pi_iL$, que salen de $A$ con pendiente $-(1-\pi_i)/\pi_i$: la de los prudentes es más inclinada. Si se agrupa a todos al riesgo medio, $\overline{\pi}=\nu\,\pi_{\mathrm{B}}+(1-\nu)\,\pi_{\mathrm{A}}$, la recta queda entre las 2.
+\item \emph{Cruce único}. Por cada punto pasan 2 curvas de indiferencia, y la del prudente es más inclinada, porque su RMSE es mayor ($\pi_{\mathrm{B}}<\pi_{\mathrm{A}}$): las 2 curvas se cortan una sola vez. Es lo que permite separarlos: a igualdad de precio, el temerario quiere más cobertura.\footnote{Por eso la aseguradora sabe que, con las mismas primas, los temerarios querrán contratar más seguro, y puede usarlo para separarlos mediante la autoselección.}
+\item \emph{Si la aseguradora pudiera distinguirlos} (\emph{first best}), ofrecería a cada tipo un seguro completo a su prima justa: $E_{\mathrm{B}}$ y $E_{\mathrm{A}}$ en la línea de certeza (gráfico~\ref{fig:rothschild-stiglitz}, capa inicial). \emph{Pero no puede}: si ofreciera ambos, los temerarios elegirían $E_{\mathrm{B}}$, más barato, y la aseguradora tendría pérdidas.
+\item \emph{No hay equilibrio agrupador} (panel izquierdo). En cualquier contrato común $M$ sobre la recta del riesgo medio, la curva del prudente es más inclinada que la del temerario. Siempre hay contratos con algo menos de cobertura y una prima algo menor (zona rayada) que prefieren los prudentes pero no los temerarios y que, como solo atraen a prudentes, dan beneficio. Una aseguradora que entre ofreciendo uno de ellos, como $N$, se lleva a la «buena clientela» (\emph{cream skimming}), y $M$, que cubría costes con la siniestralidad media, deja de cubrirlos con la de los temerarios: desaparece. Es la selección adversa en acción.
+\item \emph{El equilibrio, si existe, es separador} (panel derecho):
+  \begin{itemize}
+  \item los temerarios reciben un \emph{seguro completo a su prima justa}, $E_{\mathrm{A}}$: $x_1^{\mathrm{A}}=x_2^{\mathrm{A}}=\overline{W}-\pi_{\mathrm{A}}L$;
+  \item los prudentes reciben, sobre su recta de isobeneficio nulo, el contrato con \emph{más} cobertura que no atrae a los temerarios, $S_{\mathrm{B}}$, que deja a estos indiferentes:
+  \begin{equation}
+  \begin{aligned}
+  u(\overline{W}-\pi_{\mathrm{A}}L)&=(1-\pi_{\mathrm{A}})\,u(x_1^{\mathrm{B}})+\pi_{\mathrm{A}}\,u(x_2^{\mathrm{B}}) &&(\mathrm{IC}_{\mathrm{A}}\text{ saturada})\\
+  (1-\pi_{\mathrm{B}})\,x_1^{\mathrm{B}}+\pi_{\mathrm{B}}\,x_2^{\mathrm{B}}&=\overline{W}-\pi_{\mathrm{B}}L &&(\text{beneficio nulo con los prudentes})
+  \end{aligned}\label{eq:rs-separador}
+  \end{equation}
+  con $x_1^{\mathrm{B}}>x_2^{\mathrm{B}}$: un \emph{seguro parcial}, con franquicia.
+  \end{itemize}
+\item En la práctica es el menú de un contrato \emph{a todo riesgo} caro, que eligen los temerarios, y uno \emph{con franquicia} barato, que eligen los prudentes: si hay accidente, con el segundo se habrían arrepentido de no haber contratado el primero, y eso es lo que lo hace poco atractivo para los temerarios.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Autoselección en el seguro: el contrato agrupador no se sostiene (izquierda) y el equilibrio separador da seguro parcial a los prudentes (derecha)}\label{fig:rothschild-stiglitz}
+\grafico[0.95\textwidth]{rothschild-stiglitz}
+\fuente{elaboración propia a partir de \textcite{RothschildStiglitz1976Equilibrium} y \textcite[cap.~13]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{No hay distorsión arriba}: el tipo al que los demás no querrían imitar pero que querría imitar a los demás, el temerario, recibe el contrato eficiente, el seguro completo. \emph{La distorsión recae en el otro tipo}: el prudente solo consigue un seguro parcial.
+\item El coste de la separación lo pagan, por tanto, los buenos conductores: para que su contrato no atraiga a los de alto riesgo, aceptan soportar parte del riesgo, igual que en la señalización los trabajadores productivos pagan el coste de su educación.\footnote{Es una forma de \emph{señalizar} su tipo: los prudentes aceptan algo que sería demasiado caro para los temerarios, un contrato con indemnización menos que plena, y al hacerlo soportan el coste de la asimetría.} El resultado se aparta del \emph{first best} y no se cumple el 1TFEB; ni siquiera es siempre un óptimo restringido, porque un menú con subvenciones cruzadas entre los tipos puede mejorarlo (anexo~\ref{anexo:rothschild-stiglitz}).
+\item \emph{El equilibrio puede no existir}. Si hay muchos prudentes ($\nu$ grande), la recta del riesgo medio pasa por encima de la curva de indiferencia del prudente en $S_{\mathrm{B}}$. Entonces un contrato agrupador lo prefieren los 2 tipos y da beneficio, y rompe el separador; pero, como acabamos de ver, ningún agrupador es un equilibrio. No hay equilibrio en estrategias puras (anexo~\ref{anexo:rothschild-stiglitz}).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Otros conceptos de equilibrio}. Las respuestas a la inexistencia cambian lo que se supone que anticipan las aseguradoras: en el \emph{equilibrio de anticipación} de \textcite{Wilson1977Model}, una aseguradora no ofrece un contrato si prevé que, al retirar las demás los suyos, tendría pérdidas, y entonces el agrupador puede sostenerse; en el \emph{equilibrio reactivo} de \textcite{Riley1979Informational}, prevé que los demás responderán con nuevos contratos, y se sostiene el separador (anexo~\ref{anexo:rothschild-stiglitz}).
+\item \emph{La discriminación de precios de segundo grado} es la misma lógica con un monopolista \vertema{3.A.17}: no sabe quién valora más el bien y ofrece un menú de paquetes o de calidades que cumple las restricciones de participación ($\mathrm{PC}_i$) y de compatibilidad de incentivos ($\mathrm{IC}_i$) de cada tipo (allí, $t_1<t_2$). El tipo alto compra la cantidad eficiente y se queda una \concepto{renta informativa} («no hay distorsión arriba»), y al tipo bajo se le ofrece menos de lo eficiente («distorsión abajo») \parencites{MussaRosen1978Monopoly}{MaskinRiley1984Monopoly}. Aquí ocurre lo mismo con el seguro: el tipo que querría imitar al otro, el de alto riesgo, no se distorsiona, y el de bajo riesgo carga con la distorsión. La diferencia es que, con competencia, nadie se queda una renta informativa: las aseguradoras tienen beneficio nulo y los temerarios obtienen lo mismo que con información completa.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La predicción contrastable es una correlación positiva entre cobertura y siniestralidad. En el seguro de automóvil de los conductores noveles franceses, \textcite{ChiapporiSalanie2000Testing} no la encuentran; en las rentas vitalicias británicas, la mortalidad sí se relaciona con las cláusulas del contrato \parencite{FinkelsteinPoterba2004Adverse}.
+\item La correlación puede deberse tanto a selección adversa como a riesgo moral (quien está más asegurado se cuida menos), y distinguirlos es el gran problema empírico del campo \parencite{EinavFinkelstein2011Selection}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Explica las franquicias y los menús de pólizas, pero su equilibrio es frágil (puede no existir) y supone que las aseguradoras solo compiten en contratos y que cada cliente compra uno. Cuando el mercado no consigue separar, o separa a costa de dejar a los prudentes mal asegurados, hay espacio para otras soluciones, y entre ellas la intervención pública.
+\end{itemize}
+
+\subsubsection{Otras soluciones: privadas y públicas}\label{sec:otras-soluciones-sa}
+
+\begin{itemize}
+\item Las soluciones al problema pueden venir del sector privado y del sector público:
+  \begin{itemize}
+  \item \emph{Privadas}: las \concepto{garantías}, que no le salen a cuenta a quien vende un limón;\footnote{En el mercado de coches de segunda mano, los vendedores de coches buenos pueden ofrecer una garantía postventa que no sería rentable para los vendedores de coches malos. Aunque los compradores no observen la calidad, la deducen del tipo de garantía que se ofrece.} la \concepto{reputación} y las marcas en juegos repetidos, porque el comprador puede castigar en el futuro al vendedor que le defraude; la certificación por terceros (inspecciones, auditorías, agencias de calificación), y los historiales de crédito o de siniestros (sistemas \emph{bonus-malus}).
+  \item \emph{Públicas}:
+    \begin{itemize}
+    \item \emph{información obligatoria y garantías legales}: en España, el vendedor profesional responde de la falta de conformidad del bien durante 3 años y, en los de segunda mano, puede pactarse un plazo menor que no baje de 1 año \parencite{RDL7-2021};
+    \item \emph{seguro obligatorio}, que impide que los de riesgo bajo salgan del mercado, como el de responsabilidad civil del automóvil \parencite{RDLeg8-2004};
+    \item \emph{provisión o aseguramiento público} de quienes el mercado excluye o encarece mucho, como los seguros de salud de las personas mayores, que las aseguradoras privadas solo podrían cubrir subiendo las cuotas de todos y expulsando a los menos propensos a enfermar;
+    \item \emph{límites a la discriminación por características}: desde el 21 de diciembre de 2012, las aseguradoras de la Unión Europea no pueden cobrar primas distintas por sexo \parencite{TJUE2011TestAchats}. Es un objetivo de equidad que puede agravar la selección adversa, porque impide usar información relevante.
+    \end{itemize}
+  \end{itemize}
+\item La información asimétrica es, así, un fallo de mercado que puede justificar la intervención \vertema{3.A.23}, porque explica por qué faltan mercados \parencite{Arrow1963Uncertainty} \vertema{3.A.21}; pero el regulador tampoco conoce el tipo de cada uno, y sus soluciones (obligar a todos a estar en el mercado, obligar a informar) también tienen costes.
+\item \emph{Recapitulando}: cuando la información se oculta antes de firmar, el mercado se desenreda por abajo y solo se reabre si alguien paga por distinguirse, ya sea con una señal costosa o aceptando un contrato peor. Una vez estudiado lo que ocurre antes del contrato, pasamos al problema que surge después de firmarlo, cuando lo que se oculta es una acción.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Problema de agencia y riesgo moral}\label{sec:agencia-riesgo-moral}
+\minutos{11}
+
+\begin{notaopositor}
+En el cante: la definición, las 3 condiciones y el dilema entre incentivos y reparto del riesgo (\tiempo{1,5}). En el modelo principal-agente, los supuestos (\tiempo{1}); el programa del principal \eqref{eq:principal-agente} a la izquierda de la pizarra y la caja a la derecha; el caso~2, con el pago fijo en $Z$ (\tiempo{2}); los casos~1 y~3 de palabra (\tiempo{1}); el caso~4, añadiendo la restricción de incentivos al programa y a la caja, con $w_{\mathrm{E}}>w_{\mathrm{F}}$, el cociente de verosimilitud, el punto $T$ y el coste de agencia (\tiempo{3}), y la tabla de los 4 casos como apoyo (\tiempo{0,5}). Las soluciones, en una lista corta (\tiempo{2}). El programa se queda en una esquina de la pizarra hasta el final. La resolución completa de las condiciones de primer orden, la regla de \autor{Borch} con un principal averso, el esfuerzo continuo y el contrato lineal están en el anexo~\ref{anexo:principal-agente}.
+\end{notaopositor}
+
+\begin{itemize}
+\item Una vez estudiada la información oculta, pasamos a la asimetría que surge \emph{después} del contrato. «El ojo del amo engorda al caballo», decía el refrán del enganche; cuando el amo no puede mirar, tiene que pagar de otra manera. La \emph{conclusión anticipada} del bloque es que, cuando el esfuerzo no se ve, dar incentivos obliga a cargar riesgo sobre quien no quiere soportarlo, y ese coste hace que el contrato óptimo sea un óptimo restringido.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definición}\label{sec:definicion-rm}
+
+\begin{itemize}
+\item El \concepto{riesgo moral} es un problema de información asimétrica que surge \emph{después} de firmar el contrato y se debe a una \emph{acción oculta} (no observable o no verificable) de una de las partes en presencia de un \emph{conflicto de intereses}. Se formaliza con la \concepto{relación de agencia}: un principal delega una tarea en un agente cuya actuación no puede controlar por completo, y el agente realiza la tarea a cambio de una remuneración.\footnote{El \emph{problema de agencia} es el conflicto de intereses entre principal y agente cuando el primero delega una tarea en el segundo; el \emph{riesgo moral} es su forma más estudiada, en la que la asimetría se refiere a una \emph{acción} del agente posterior al contrato. Una relación de agencia puede tener también selección adversa, si el agente tiene información privada antes de firmar, por ejemplo sobre su productividad o sus costes; es el caso de la regulación \vertema{3.A.17}.}
+  \begin{itemize}
+  \item Es un problema antiguo. Adam \textcite{Smith1776Wealth} ya advierte que los directores de las sociedades por acciones, que gestionan el dinero de otros más que el suyo, no lo vigilan con el mismo celo que los socios de una compañía privada, de modo que en ellas «la negligencia y la prodigalidad siempre prevalecerán, en mayor o menor medida» (libro~V, cap.~I, parte~III).
+  \item El término viene de los seguros y lo introducen en la economía \textcite{Arrow1963Uncertainty} y \textcite{Pauly1968Economics}, que muestran que el asegurado demanda más asistencia médica porque no paga su coste marginal. Las bases del análisis las ponen \textcite{Ross1973Economic}, que acuña la expresión \emph{problema del principal}, \textcite{Mirrlees1974Notes} y \textcite{Stiglitz1974Incentives}; \textcite{Holmstrom1979Moral} y \textcite{GrossmanHart1983Analysis} dan la formulación con la que hoy se resuelve.
+  \end{itemize}
+\item Para que haya un problema de riesgo moral deben darse 3 condiciones:
+  \begin{enumerate}[ref=\arabic*]
+  \item\label{cond:rm-accion} \emph{Acción oculta}: el resultado que obtiene el principal depende de una acción del agente (el esfuerzo) que se realiza después de firmar y que no es verificable, por lo que no puede figurar en el contrato.
+  \item\label{cond:rm-conflicto} \emph{Conflicto de intereses}: el esfuerzo cuesta al agente y beneficia al principal. Si no, el agente haría lo que conviene al principal sin necesidad de incentivos.
+  \item\label{cond:rm-riesgo} \emph{Riesgo y aversión al riesgo de alguna de las partes}: el resultado no depende solo del esfuerzo, sino también del azar (si dependiera solo del esfuerzo, el resultado lo revelaría), y alguien es averso al riesgo, porque si no, como veremos, el problema se resuelve sin coste.
+  \end{enumerate}
+\item \emph{La esencia del problema}: un contrato tiene que cumplir a la vez 2 objetivos que aquí chocan, \concepto{dar incentivos} y \concepto{repartir bien el riesgo}.
+  \begin{itemize}
+  \item Repartir bien el riesgo exige que lo soporte quien menos lo teme, normalmente el principal, que puede diversificar. Pero si el agente cobra lo mismo pase lo que pase, no tiene ningún motivo para esforzarse: quitarle todo el riesgo destruye los incentivos.
+  \item Dar incentivos exige que el pago dependa del resultado. Pero el resultado depende también del azar, y entonces el agente soporta un riesgo por el que exigirá una compensación: cargarle todas las consecuencias de sus actos le impone demasiado riesgo.
+  \item El \concepto{contrato óptimo} busca el mejor compromiso (\emph{trade-off}) entre los 2. Su coste respecto a un mundo en el que el esfuerzo se viera es el \concepto{coste de agencia}.
+  \end{itemize}
+\item \emph{Aplicaciones}. Toda relación en la que alguien actúa por cuenta de otro:
+  \begin{itemize}
+  \item \emph{empresa y trabajador}: el esfuerzo del trabajador; los \concepto{salarios de eficiencia} explican el paro involuntario como el precio de disciplinar a quien no se puede vigilar \parencite{ShapiroStiglitz1984Equilibrium} \vertema{3.A.27};
+  \item \emph{accionistas y directivos}: la separación entre propiedad y control. Los directivos pueden perseguir el tamaño, el prestigio o la tranquilidad en vez del valor de la empresa; \textcite{JensenMeckling1976Theory} llaman \concepto{costes de agencia} a la suma de los costes de supervisión, de los compromisos del agente y de la pérdida residual que queda \vertema{3.A.15};
+  \item \emph{aseguradora y asegurado}: el cuidado que pone el asegurado;
+  \item \emph{banco y prestatario}: el riesgo del proyecto que elige el prestatario (\ref{sec:stiglitz-weiss});
+  \item \emph{regulador y empresa regulada}: el esfuerzo en reducir costes \vertema{3.A.17};
+  \item \emph{prestamistas de última instancia y gobiernos o bancos}: el rescate esperado reduce el cuidado, como recuerda el caso de Silicon Valley Bank \vertema{3.B.26};
+  \item \emph{ciudadanos y gobernantes}: el valor que obtenemos al votar a alguien para que resuelva los problemas colectivos depende de lo que haga después.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Diferencia entre la asignación competitiva y la asignación óptima: el modelo principal-agente}\label{sec:principal-agente}
+
+\begin{itemize}
+\item Una vez definido el problema, lo formalizamos con el modelo de referencia del riesgo moral, que es también el núcleo de la teoría de la agencia.
+\end{itemize}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Una editorial (principal) contrata a un vendedor de enciclopedias a domicilio (agente). Las ventas dependen de cuánto se esfuerce el vendedor, pero también de la suerte: de que haya alguien en casa, de que quieran comprar. La editorial ve las ventas, pero no el esfuerzo.
+\item ¿Cómo le paga? Si le paga un fijo, el vendedor no tiene motivos para esforzarse. Si le paga solo a comisión, se esforzará, pero, si es averso al riesgo, exigirá cobrar más de media para aceptar unos ingresos tan inciertos.
+\item El modelo principal-agente responde a esta pregunta. Lo resolvemos primero con esfuerzo \emph{observable}, que es la referencia de eficiencia, y después con esfuerzo \emph{inobservable}, que es el riesgo moral; y, en cada caso, con un agente neutral y con uno averso al riesgo. Así se ve cuánto cuesta no ver, y por qué.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item \emph{Resultados}: el resultado (las ventas) puede ser \emph{éxito}, $x_{\mathrm{E}}$, o \emph{fracaso}, $x_{\mathrm{F}}$, con $x_{\mathrm{E}}>x_{\mathrm{F}}$. Es observable y verificable, así que el pago puede depender de él: $w_{\mathrm{E}}\equiv w(x_{\mathrm{E}})$ y $w_{\mathrm{F}}\equiv w(x_{\mathrm{F}})$.
+\item \emph{Esfuerzo}: alto, $e^{\mathrm{A}}$, o bajo, $e^{\mathrm{B}}$. La probabilidad de éxito es $\pi(e)$, con $\pi(e^{\mathrm{A}})>\pi(e^{\mathrm{B}})$: el esfuerzo ayuda, pero no garantiza el éxito (hay riesgo). Con esfuerzo alto, el ingreso esperado del principal es mayor, $\mathbb{E}[x\mid e^{\mathrm{A}}]>\mathbb{E}[x\mid e^{\mathrm{B}}]$.
+\item \emph{Agente}: su utilidad es $u(w)-v(e)$, con $u'>0$ y $u''\leq 0$ (neutral si $u''=0$, averso si $u''<0$), y la \concepto{desutilidad del esfuerzo} cumple $v(e^{\mathrm{A}})>v(e^{\mathrm{B}})$. Acepta el contrato si su utilidad esperada alcanza su \concepto{utilidad de reserva} $U^R$, la que obtendría en su mejor alternativa.
+\item \emph{Principal}: se queda con el resultado menos el pago, $B=x-w(x)$, y es \emph{neutral al riesgo}: maximiza el beneficio esperado.\footnote{Es lo habitual, porque el principal puede diversificar y, si es una sociedad, repartir el riesgo entre los accionistas. Con un principal averso, de utilidad $u_P(x-w)$, lo que maximiza no es el beneficio esperado, sino la utilidad esperada de ese beneficio; el caso se resuelve en el anexo~\ref{anexo:principal-agente}.}
+\item \emph{Secuencia}: (1) el principal ofrece un contrato $(w_{\mathrm{E}},w_{\mathrm{F}})$ que pide un esfuerzo; (2) el agente lo acepta o lo rechaza; (3) si lo acepta, elige el esfuerzo; (4) la naturaleza decide el resultado y se paga. El principal tiene todo el poder de negociación.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Suponemos que al principal le interesa el esfuerzo alto.\footnote{Para que haya problema de riesgo moral, el esfuerzo que maximiza el beneficio esperado del principal no puede ser el mínimo que puede hacer el agente: en ese caso no habría que incentivarle, porque ya lo haría por sí mismo.} Su programa es maximizar el beneficio esperado sujeto a que el agente acepte (PC) y, si el esfuerzo no se ve, a que le convenga esforzarse (IC):
+  \funcionclave[eq:principal-agente]{\optim{\max}{w_{\mathrm{E}},\,w_{\mathrm{F}}}{\pi(e^{\mathrm{A}})\,(x_{\mathrm{E}}-w_{\mathrm{E}})+\bigl[1-\pi(e^{\mathrm{A}})\bigr](x_{\mathrm{F}}-w_{\mathrm{F}})}{\pi(e^{\mathrm{A}})\,u(w_{\mathrm{E}})+\bigl[1-\pi(e^{\mathrm{A}})\bigr]u(w_{\mathrm{F}})-v(e^{\mathrm{A}})\geq U^R\quad(\mathrm{PC})\\ \bigl[\pi(e^{\mathrm{A}})-\pi(e^{\mathrm{B}})\bigr]\bigl[u(w_{\mathrm{E}})-u(w_{\mathrm{F}})\bigr]\geq v(e^{\mathrm{A}})-v(e^{\mathrm{B}})\quad(\mathrm{IC})}}
+  \begin{itemize}
+  \item La IC está escrita en su forma más intuitiva. Viene de exigir que la utilidad esperada con esfuerzo alto supere a la del bajo, $\mathbb{E}[u(w)\mid e^{\mathrm{A}}]-v(e^{\mathrm{A}})\geq\mathbb{E}[u(w)\mid e^{\mathrm{B}}]-v(e^{\mathrm{B}})$: lo que el esfuerzo sube la probabilidad de éxito, por lo que vale el premio del éxito en utilidad, tiene que compensar la desutilidad adicional del esfuerzo. Exige, por tanto, $w_{\mathrm{E}}>w_{\mathrm{F}}$.
+  \item Llamamos $\lambda_1$ al multiplicador de la PC y $\lambda_2$ al de la IC. Con esfuerzo observable, la IC no hace falta ($\lambda_2=0$).
+  \item \emph{Interpretación gráfica} (gráfico~\ref{fig:principal-agente}): una caja de \autor{Edgeworth} con el pago en caso de éxito en horizontal y en caso de fracaso en vertical, de dimensiones $x_{\mathrm{E}}\times x_{\mathrm{F}}$; el agente mide desde $O_{\mathrm{A}}$ (abajo a la izquierda) y el principal desde $O_{\mathrm{P}}$ (arriba a la derecha). Cada uno tiene su línea de certeza, donde cobra lo mismo en los 2 estados. Las curvas de indiferencia del principal neutral son rectas de pendiente $-\pi/(1-\pi)$, y las del agente averso son convexas, con esa misma pendiente cuando cortan su línea de certeza.\footnote{Es la misma idea que en el seguro: 2 estados, líneas de certeza y pendiente de la curva de indiferencia en la línea de certeza igual al cociente de las probabilidades \vertema{3.A.10}.}
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item Recorremos los 4 casos en el orden del cante: con esfuerzo observable, primero el agente averso (caso~2) y, como contraste, el neutral (caso~1); con esfuerzo inobservable, primero el neutral (caso~3) y después el averso (caso~4), el genuino problema de riesgo moral.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Caso~2: esfuerzo observable y agente averso al riesgo}.
+\begin{itemize}
+\item Si el esfuerzo se ve, el contrato puede exigir $e^{\mathrm{A}}$ y castigar cualquier otro esfuerzo.\footnote{Se penaliza el esfuerzo bajo todo lo que permita la ley, para que no resulte nada atractivo. Si el agente acepta el contrato, solo puede hacer el esfuerzo alto, porque es observable.} El principal solo tiene que convencer al agente de que acepte, y las condiciones de primer orden de \eqref{eq:principal-agente} sin la IC son (anexo~\ref{anexo:principal-agente})
+  \begin{equation}
+  \frac{1}{u'(w_{\mathrm{E}})}=\frac{1}{u'(w_{\mathrm{F}})}=\lambda_1. \label{eq:cpo-observable}
+  \end{equation}
+\item Con un agente averso, $u'(w_{\mathrm{E}})=u'(w_{\mathrm{F}})$ implica $w_{\mathrm{E}}=w_{\mathrm{F}}$: el agente cobra un \emph{salario fijo} y el principal, neutral, soporta todo el riesgo. Como $\lambda_1>0$, la PC se satura y el salario es el mínimo que el agente acepta:
+  \begin{equation}
+  u(w^*)=U^R+v(e^{\mathrm{A}}).
+  \end{equation}
+  El contrato dice: \emph{el principal paga una cantidad fija pase lo que pase y el agente tiene que hacer el esfuerzo alto}.\footnote{Como el agente es averso, su equivalente cierto de cualquier salario arriesgado es menor que la esperanza de ese salario: le basta un salario cierto menor que la esperanza de cualquier pago arriesgado que le dé la misma utilidad. Por eso al principal neutral le sale más barato asegurarle por completo.}
+\item \emph{Gráficamente}, es el punto $Z$ del gráfico~\ref{fig:principal-agente}: la tangencia entre la PC del agente (su curva de indiferencia con esfuerzo alto y utilidad $U^R$) y una recta de isobeneficio del principal, \emph{sobre la línea de certeza del agente}. Las relaciones marginales de sustitución entre estados se igualan y la asignación es eficiente en el sentido de \autor{Pareto} (\emph{first best}).\footnote{Si el principal se conformara con el esfuerzo bajo, le bastaría pagar el fijo $u^{-1}(U^R+v(e^{\mathrm{B}}))$, con un beneficio esperado menor. Si el poder de negociación lo tuviera el agente, cambiaría el reparto de las rentas, no la eficiencia: el agente podría quedarse con todo el excedente y dejar al principal lo mismo que con el esfuerzo bajo, pero seguiría en su línea de certeza.}
+\end{itemize}
+\item \emph{Caso~1: esfuerzo observable y agente neutral al riesgo}. Es la referencia (\emph{benchmark}). Las curvas de indiferencia del agente también son rectas, paralelas a las del principal: cualquier reparto con el pago esperado que cubre $U^R+v(e^{\mathrm{A}})$ es óptimo, y da igual pagar un fijo o una comisión. No hay ni riesgo que repartir (condición~\ref{cond:rm-riesgo}) ni acción oculta (condición~\ref{cond:rm-accion}).
+\item \emph{Caso~3: esfuerzo inobservable y agente neutral al riesgo}. Sirve para demostrar que el verdadero conflicto es entre incentivos y reparto del riesgo.
+\begin{itemize}
+\item Ahora el contrato no puede exigir $e^{\mathrm{A}}$: si el principal pagara un fijo, el agente elegiría $e^{\mathrm{B}}$. Hay que añadir la IC. Pero con $u(w)=w$ las 2 restricciones son lineales en los pagos, y basta un premio suficiente por el éxito, $w_{\mathrm{E}}-w_{\mathrm{F}}\geq[v(e^{\mathrm{A}})-v(e^{\mathrm{B}})]/[\pi(e^{\mathrm{A}})-\pi(e^{\mathrm{B}})]$, con un fijo ajustado para que la PC se sature.
+\item Un contrato que lo consigue es \concepto{vender el negocio} al agente, un contrato de \emph{franquicia}: el principal cobra una cantidad fija $k$ pase lo que pase y el agente se queda con el resto, $w(x)=x-k$, con
+  \begin{equation}
+  k=\mathbb{E}[x\mid e^{\mathrm{A}}]-v(e^{\mathrm{A}})-U^R .
+  \end{equation}
+  El agente es el «propietario residual»: recibe todas las consecuencias de su esfuerzo y elige el que elegiría el dueño, y la IC se cumple justo cuando el esfuerzo alto es eficiente. El principal se queda con $k$, lo mismo que con esfuerzo observable.\footnote{El principal se convierte así en el perceptor de un pago fijo, y el agente asume todo el riesgo: es también el reparto óptimo cuando el principal es averso y el agente neutral (anexo~\ref{anexo:principal-agente}).} En el gráfico, el punto $V$ sobre la línea de certeza del principal.
+\item \emph{Conclusión}: sin aversión al riesgo del agente no hay coste de agencia. El problema no es solo que el esfuerzo no se vea, sino que no se vea \emph{y} el agente tema el riesgo (condición~\ref{cond:rm-riesgo}).\footnote{Si el agente tiene \emph{responsabilidad limitada} (no se le puede pagar menos de un mínimo, ni puede pagar $k$ por adelantado), la venta del negocio puede no ser posible y el principal tiene que dejarle una renta para que se esfuerce, aunque sea neutral \parencite[cap.~4]{LaffontMartimort2002Theory}. Es el supuesto que hará fallar el mercado de crédito en el bloque~\ref{sec:sa-rm-a-la-vez}.}
+\end{itemize}
+\item \emph{Caso~4: esfuerzo inobservable y agente averso al riesgo, el genuino riesgo moral}.
+\begin{itemize}
+\item Ahora se produce el conflicto: el reparto eficiente del riesgo pide que el agente averso esté en su línea de certeza, pero eso elimina todo incentivo. Con las 2 restricciones de \eqref{eq:principal-agente}, las condiciones de primer orden son (anexo~\ref{anexo:principal-agente})
+  \begin{equation}
+  \frac{1}{u'(w_{\mathrm{E}})}=\lambda_1+\lambda_2\left[1-\frac{\pi(e^{\mathrm{B}})}{\pi(e^{\mathrm{A}})}\right],\qquad
+  \frac{1}{u'(w_{\mathrm{F}})}=\lambda_1+\lambda_2\left[1-\frac{1-\pi(e^{\mathrm{B}})}{1-\pi(e^{\mathrm{A}})}\right]. \label{eq:holmstrom-mirrlees}
+  \end{equation}
+  \begin{itemize}
+  \item \emph{Las 2 restricciones se saturan}: $\lambda_1>0$ (si no, el principal podría bajar los 2 pagos) y $\lambda_2>0$ (si fuera nulo, saldría $w_{\mathrm{E}}=w_{\mathrm{F}}$, que incumple la IC).
+  \item \emph{El pago crece con el resultado}: como $\pi(e^{\mathrm{A}})>\pi(e^{\mathrm{B}})$, el corchete es positivo en el éxito y negativo en el fracaso, así que $w_{\mathrm{E}}>w_{\mathrm{F}}$.
+  \item \emph{Interpretación}: el cociente $\pi(e^{\mathrm{B}})/\pi(e^{\mathrm{A}})$ es el \concepto{cociente de verosimilitud}, cuánto más probable es ese resultado con esfuerzo bajo que con alto. El principal no premia ni castiga el resultado en sí, sino lo que el resultado \emph{dice} sobre el esfuerzo: paga más tras los resultados que más delatan un esfuerzo alto. Es la condición de \autor{Holmström}-\autor{Mirrlees} \parencites{Mirrlees1974Notes}{Holmstrom1979Moral}.
+  \end{itemize}
+\item \emph{Solución}. Como las 2 restricciones se saturan, los pagos salen de 2 ecuaciones. Con $\Delta\equiv[v(e^{\mathrm{A}})-v(e^{\mathrm{B}})]/[\pi(e^{\mathrm{A}})-\pi(e^{\mathrm{B}})]$,
+  \begin{equation}
+  u(w_{\mathrm{E}})=U^R+v(e^{\mathrm{A}})+\bigl[1-\pi(e^{\mathrm{A}})\bigr]\Delta,\qquad u(w_{\mathrm{F}})=U^R+v(e^{\mathrm{A}})-\pi(e^{\mathrm{A}})\,\Delta . \label{eq:pagos-segundo-optimo}
+  \end{equation}
+  Es un fijo más una participación en los resultados, con $w_{\mathrm{E}}>w^*>w_{\mathrm{F}}$: el agente gana más que en el caso~2 si hay éxito y menos si hay fracaso.
+\item \emph{Coste de agencia}. El agente queda con la misma utilidad esperada que en el caso~2, pero ahora soporta riesgo y, por ser averso, exige un pago esperado mayor:
+  \begin{equation}
+  \pi(e^{\mathrm{A}})\,w_{\mathrm{E}}+\bigl[1-\pi(e^{\mathrm{A}})\bigr]\,w_{\mathrm{F}}\;>\;w^* , \label{eq:coste-agencia}
+  \end{equation}
+  por la desigualdad de \autor{Jensen} ($u^{-1}$ es convexa). La diferencia es la \concepto{prima de riesgo} que paga el principal: el coste de que el esfuerzo no se vea.
+\item \emph{Gráficamente}, el principal ya no puede ofrecer $Z$. La IC excluye la línea de certeza del agente y deja solo los contratos bastante alejados de ella, por debajo; el mejor para el principal es el punto $T$, donde la PC corta a la frontera de la IC. En $T$ el principal está en una recta de isobeneficio más próxima a su origen que en $Z$: obtiene menos.
+\item \emph{Segundo óptimo}. Falta comprobar que al principal le sigue compensando el esfuerzo alto: compara el beneficio esperado de inducirlo con este contrato con el de conformarse con $e^{\mathrm{B}}$ y un fijo. Puede que ya no le compense, y entonces la ineficiencia es doble: además del coste de agencia, se pide menos esfuerzo del eficiente.
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El modelo principal-agente en una caja de \autor{Edgeworth}: pago fijo con esfuerzo observable ($Z$) y pago según el resultado con esfuerzo inobservable ($T$)}\label{fig:principal-agente}
+\grafico[0.8\textwidth]{principal-agente}
+\fuente{elaboración propia a partir de \textcite[cap.~8]{FernandezCastroTugores1992Fundamentos} y \textcite[cap.~4]{LaffontMartimort2002Theory}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Síntesis}. La tabla~\ref{tab:agencia-casos} recoge los 4 casos con un principal neutral: solo cuando se juntan la acción oculta y la aversión al riesgo del agente (condiciones~\ref{cond:rm-accion} y~\ref{cond:rm-riesgo}) aparece un coste.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El modelo principal-agente con principal neutral: los 4 casos}\label{tab:agencia-casos}
+\begin{tabular}{>{\centering\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{6.0cm}>{\centering\arraybackslash}m{6.0cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Agente neutral} & \textbf{Agente averso}\\
+\midrule
+\textbf{Esfuerzo\newline observable} & \textcolor{tceeverde}{\textbf{Caso~1}: \emph{first best}}\newline cualquier reparto con el mismo pago esperado; da igual un fijo que una comisión & \textcolor{tceeverde}{\textbf{Caso~2}: \emph{first best}}\newline salario fijo $w^*$; el principal soporta todo el riesgo (punto $Z$)\\
+\addlinespace[0.3em]
+\textbf{Esfuerzo\newline inobservable} & \textcolor{tceeverde}{\textbf{Caso~3}: \emph{first best}}\newline venta del negocio (punto $V$); coste de agencia nulo & \cellcolor{tceesalvia}\textcolor{tceerojo}{\textbf{Caso~4}: óptimo restringido}\newline $w_{\mathrm{E}}>w_{\mathrm{F}}$, PC e IC saturadas (punto $T$); coste de agencia positivo\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~4]{LaffontMartimort2002Theory}.}
+\end{table}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{El dilema entre seguro e incentivos}: con un agente averso y esfuerzo inobservable, el contrato óptimo da al agente \emph{algo} de riesgo (incentivos), pero no todo (seguro). Ni el fijo (sin incentivos) ni la venta del negocio (sin seguro) son óptimos. Con riesgo moral, el principal paga en función del resultado porque es la única variable verificable que le informa sobre el comportamiento del agente.\footnote{La gran conclusión es que el agente tiene que jugarse algo al decidir cuánto se esfuerza: es lo que \textcite{Taleb2018Skin} ha popularizado como \emph{skin in the game}.}
+\item \emph{Pérdida de eficiencia}: el resultado es un óptimo restringido, peor en el sentido de \autor{Pareto} que el de información simétrica, y no se cumple el 1TFEB. La ineficiencia se debe a que se traslada riesgo al agente averso, cuando lo óptimo sería que lo soportara entero el neutral. El coste lo soporta el principal, la parte menos informada, que paga más de media, sin que el agente gane nada, porque queda en su utilidad de reserva.\footnote{Para el agente, la esperanza matemática de la lotería que recibe es mayor que su equivalente cierto, pero la utilidad de ambos es la misma, por ser averso al riesgo.}
+\item \emph{Principio de informatividad} \parencite{Holmstrom1979Moral}: cualquier variable que aporte información sobre el esfuerzo, además del resultado, debe entrar en el contrato, y ninguna que no la aporte. Si la correlación entre esfuerzo y resultado es muy imperfecta, la ineficiencia es muy grande, y conviene buscar otras señales del esfuerzo: es la base de la evaluación relativa (\ref{sec:soluciones-agencia}).
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Muchos resultados}: el pago crece con el resultado solo si los resultados altos son relativamente más probables con esfuerzo alto (propiedad del cociente de verosimilitud monótono, \textcite{Milgrom1981Good}); si no, el contrato óptimo puede no ser monótono \parencite{GrossmanHart1983Analysis}.
+\item \emph{Esfuerzo continuo}: la IC se sustituye por la condición de primer orden del agente (\emph{enfoque de primer orden}), y la condición de \autor{Holmström}-\autor{Mirrlees} se generaliza a $1/u'(w(x))=\lambda_1+\lambda_2\,f_e(x\mid e)/f(x\mid e)$; el atajo solo es válido bajo ciertas condiciones \parencite{Rogerson1985FirstOrder} (anexo~\ref{anexo:principal-agente}).
+\item \emph{Contratos lineales} \parencite{HolmstromMilgrom1987Aggregation}: con un resultado $x=e+\varepsilon$, $\varepsilon\sim N(0,\sigma^2)$, utilidad con aversión absoluta al riesgo constante $r_A$, coste del esfuerzo $v(e)=e^2/2$ y pago $w=a+b\,x$, la potencia óptima de los incentivos es
+  \begin{equation}
+  b^*=\frac{1}{1+r_A\,\sigma^2}<1, \label{eq:contrato-lineal}
+  \end{equation}
+  menor cuanto más averso es el agente y más ruidoso el resultado; el esfuerzo inducido, $e^*=b^*$, es menor que el eficiente (anexo~\ref{anexo:principal-agente}).
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Los incentivos funcionan}: cuando la empresa estadounidense Safelite pasó de pagar un salario fijo a sus instaladores de lunas de automóvil a pagarles por pieza, la productividad subió un 44~\%, la mitad por más esfuerzo y la otra mitad por la llegada de trabajadores más productivos \parencite{Lazear2000Performance}.
+\item \emph{El seguro reduce el cuidado}: el experimento de seguros de salud de la RAND asignó al azar planes con distinto copago. Quienes tenían un plan con franquicia alta gastaron en torno a un 31~\% menos que los que tenían atención gratuita, con una elasticidad-precio de la demanda de unos $-0{,}2$ \parencites{Manning1987Health}{AronDineEinavFinkelstein2013RAND}. Es la prueba clásica del riesgo moral \emph{ex post}: el seguro aumenta el consumo de lo asegurado.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Explica la retribución variable, las franquicias, la aparcería y los copagos, y pone precio a no poder vigilar. En macroeconomía, el riesgo moral microfundamenta el paro involuntario con los salarios de eficiencia de la nueva economía keynesiana \vertema{3.A.7} \vertema{3.A.27}; allí la IC se llama \emph{condición de no escaqueo} (\emph{no-shirking condition}).
+\item Sus limitaciones: supone que el principal se compromete y que el resultado es verificable ante un juez; los contratos óptimos son a menudo más complejos que los reales, que suelen ser lineales y sencillos (lo que explican en parte los contratos lineales y la multitarea), y cuando no todo se puede escribir en el contrato toman el relevo la teoría de los contratos incompletos y de los derechos de propiedad (\autor{Hart}, Nobel de 2016) \parencite{Nobel2016HartHolmstrom} \vertema{3.A.15}. Tampoco recoge la motivación intrínseca, que los incentivos explícitos pueden desplazar. Estas limitaciones abren paso a las soluciones prácticas.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Soluciones}\label{sec:soluciones-rm}
+
+\begin{itemize}
+\item Una vez visto el contrato óptimo, pasamos a las soluciones del riesgo moral: las que se derivan de la propia teoría de la agencia (\ref{sec:soluciones-agencia}) y otras que actúan desde fuera del contrato (\ref{sec:otras-soluciones-rm}).
+\end{itemize}
+
+\subsubsection{Soluciones de la teoría de la agencia}\label{sec:soluciones-agencia}
+
+\begin{itemize}
+\item Son formas de ligar el pago a lo observable, como pide el modelo:
+  \begin{itemize}
+  \item \emph{Retribución variable}: comisiones, primas por objetivos, participación en beneficios y opciones sobre acciones para los directivos.
+  \item \emph{Franquicias y aparcería}: el agente se queda con una parte, o con todo, del resultado a cambio de un pago fijo o de una parte de la cosecha \parencite{Stiglitz1974Incentives}.
+  \item \emph{Coaseguro}: franquicias, copagos y \emph{bonus-malus} hacen que el asegurado soporte parte del daño y conserve el incentivo a cuidarse.
+  \item \emph{Evaluación relativa y torneos}: comparar al agente con otros que sufren el mismo azar (otros comerciales de la zona, otras empresas del sector) elimina el ruido común y abarata los incentivos, como pide el principio de informatividad; los torneos, que pagan por la posición relativa, como los ascensos, son su forma extrema \parencite{LazearRosen1981Rank}.
+  \item \emph{Supervisión}: vigilar el esfuerzo directamente (controles, auditorías) acerca el resultado al primer óptimo, y compensa mientras su coste marginal no supere el ahorro en incentivos; los controles aleatorios la abaratan.
+  \item \emph{Pagos diferidos y salarios de eficiencia}: pagar por encima del salario de mercado, o retrasar parte del pago, hace costoso perder el empleo si se descubre al agente escaqueándose \parencite{ShapiroStiglitz1984Equilibrium} \vertema{3.A.27}.
+  \end{itemize}
+\item \emph{Un límite}: con \concepto{multitarea}, si el agente reparte el esfuerzo entre tareas que se miden bien y otras que no (los resultados de un examen frente a la calidad de la enseñanza), pagar mucho por lo medible desvía el esfuerzo de lo demás, y puede ser óptimo un fijo \parencite{HolmstromMilgrom1991Multitask}.
+\end{itemize}
+
+\subsubsection{Otras soluciones}\label{sec:otras-soluciones-rm}
+
+\begin{itemize}
+\item \emph{Competencia}: los comportamientos oportunistas reducen los resultados de la empresa, que puede ser desplazada del mercado; y en el mercado de directivos, los malos resultados se pagan con la carrera.
+\item \emph{Relaciones repetidas y reputación}: con horizontes largos, el interés por labrarse una buena reputación (de trabajador responsable, de conductor prudente, de prestatario serio) desincentiva el oportunismo, aunque no haya contrato explícito \parencite{Holmstrom1999Managerial}.
+\item \emph{Condicionalidad}. 2 ejemplos:
+  \begin{itemize}
+  \item un trabajador que sabe que cobrará la prestación por desempleo en cualquier caso tiene menos incentivos a buscar trabajo: por eso la prestación se condiciona a la búsqueda activa de empleo;
+  \item que existan instituciones financieras multilaterales que actúan como prestamistas de última instancia puede reducir los incentivos de un gobierno a hacer políticas prudentes, y lo mismo ocurre con los bancos que esperan ser rescatados. La solución tradicional es una condicionalidad fuerte, que haga poco atractivo el recurso a esa financiación salvo en situaciones extremas \vertema{3.B.26}, y, en la banca, la regulación y la supervisión \vertema{3.B.27}.
+  \end{itemize}
+\item \emph{Recapitulando}: cuando el esfuerzo no se ve, el contrato óptimo reparte el riesgo entre incentivos y seguro, y el coste de agencia es el precio de no ver. Hasta aquí hemos estudiado los 2 problemas por separado; en muchos mercados aparecen juntos, y el más estudiado es el del crédito.
+\end{itemize}
+
+% ==========================================================================
+\section{Selección adversa y riesgo moral a la vez:\newline \autor{Stiglitz} y \autor{Weiss} (1981)}\label{sec:sa-rm-a-la-vez}
+\minutos{4,5}
+
+\begin{notaopositor}
+En el cante: la idea, con la conclusión anticipada (\tiempo{0,5}); los supuestos (\tiempo{1}); los 3 efectos de subir el tipo y la función del rendimiento esperado del banco con el primer panel (\tiempo{1,5}); el racionamiento en equilibrio con el segundo panel (\tiempo{1}), y las implicaciones en una frase cada una (\tiempo{0,5}). El programa del principal sigue en la esquina: la responsabilidad limitada es justo lo que impide aquí «vender el negocio». La formalización está en el anexo~\ref{anexo:stiglitz-weiss}.
+\end{notaopositor}
+
+\begin{itemize}
+\item Hasta aquí hemos estudiado cada problema por separado; pasamos a un mercado en el que se dan los 2 a la vez. La \emph{conclusión anticipada} del bloque es que, en el crédito, subir el tipo de interés atrae a peores prestatarios y los empuja a proyectos más arriesgados; por eso el banco prefiere racionar a subir el tipo, y el mercado se queda en equilibrio con exceso de demanda.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea}\label{sec:idea-sa-rm}
+
+\begin{itemize}
+\item La selección adversa y el riesgo moral \emph{no son mutuamente excluyentes}: hay muchas situaciones en las que se dan a la vez. En el seguro del automóvil, la aseguradora no conoce el tipo de conductor (selección adversa) ni el cuidado que pondrá al volante una vez asegurado (riesgo moral); en el empleo, la empresa no conoce la productividad del trabajador ni ve su esfuerzo.
+\item El caso más estudiado es el del crédito. El banco no sabe cuán arriesgado es cada prestatario ni controla qué hará con el dinero, y \textcite{StiglitzWeiss1981Credit} muestran que, por eso, el mercado puede quedar en equilibrio con \emph{exceso de demanda} sin que el tipo de interés suba: hay \concepto{racionamiento del crédito}. Es un resultado que la competencia perfecta no admite (un precio que no vacía el mercado y que nadie quiere cambiar), y por eso es una de las bases de la nueva economía keynesiana \vertema{3.A.7} y de la regulación financiera \vertema{3.B.27}.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Modelo: el racionamiento del crédito (\autor{Stiglitz} y \autor{Weiss}, 1981)}\label{sec:stiglitz-weiss}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La pregunta del modelo es por qué el mercado de crédito puede quedar en equilibrio con exceso de demanda, sin que el tipo de interés suba. La respuesta es que el tipo de interés hace 2 papeles a la vez: es el precio del préstamo y, además, cambia \emph{quién} pide prestado y \emph{qué} hace con el dinero.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los empresarios piden prestada una cantidad fija para financiar un proyecto. Los proyectos tienen el \emph{mismo rendimiento medio} y \emph{distinto riesgo}: los más arriesgados rinden más si salen bien y menos si salen mal (uno es una dispersión que conserva la media del otro).
+\item \concepto{Responsabilidad limitada}: si el proyecto fracasa, el empresario no devuelve el préstamo y pierde solo su garantía; si sale bien, devuelve $(1+\hat r)$ por unidad prestada y se queda el resto.
+\item El banco no observa el riesgo de cada prestatario (\emph{selección adversa}) ni qué proyecto elige una vez financiado (\emph{riesgo moral}); solo fija el tipo $\hat r$.
+\item Los bancos son neutrales al riesgo y compiten por los fondos de los depositantes, que ofrecen más cuanto mayor es el rendimiento que el banco puede pagarles.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Por qué el riesgo gusta al prestatario y no al banco}. Por la responsabilidad limitada, el empresario se queda con todo lo que el proyecto rinda por encima de la deuda y, si fracasa, solo pierde la garantía: su beneficio es una función \emph{convexa} del rendimiento, y un proyecto más arriesgado, con la misma media, le gusta más. El banco cobra como mucho la deuda: su cobro es una función \emph{cóncava} del rendimiento, y le pasa lo contrario.
+\item Subir $\hat r$ tiene, por tanto, 3 efectos sobre el rendimiento esperado del banco:
+  \begin{enumerate}
+  \item \emph{Directo}: cobra más a los que pagan.
+  \item \emph{De selección adversa}: los prestatarios más seguros, a los que el préstamo compensa menos, son los primeros en dejar de pedirlo; los que quedan son más arriesgados.
+  \item \emph{De incentivo} (riesgo moral): los que quedan eligen proyectos más arriesgados, porque el tipo alto se lleva buena parte de los buenos resultados y la responsabilidad limitada les protege de los malos.
+  \end{enumerate}
+\item Los 2 últimos reducen la \emph{probabilidad de repago}. Por cada euro prestado, el banco recupera $1+\hat r$ si le pagan, así que su rendimiento esperado es
+  \begin{equation}
+  \mathbb{E}[B_{\mathrm{banco}}]=(1+\hat r)\cdot\Pr(\text{repago}\mid\hat r),\qquad \frac{\partial\Pr(\text{repago}\mid\hat r)}{\partial\hat r}<0 . \label{eq:stiglitz-weiss}
+  \end{equation}
+  Crece con $\hat r$ mientras domina el efecto directo y decrece a partir de $\hat r^*$, cuando la caída de la probabilidad de repago pesa más que el tipo más alto (gráfico~\ref{fig:stiglitz-weiss}, izquierda). Al banco no le interesa prestar a un tipo mayor que $\hat r^*$.
+\item \emph{El mercado} (gráfico~\ref{fig:stiglitz-weiss}, derecha): la demanda de préstamos decrece con $\hat r$. La oferta depende del rendimiento que el banco puede pagar a los depositantes, así que crece hasta $\hat r^*$ y \emph{se dobla hacia atrás} a partir de ahí. Si a $\hat r^*$ la demanda supera a la oferta, el banco no sube el tipo aunque haya prestatarios dispuestos a pagar más: el exceso de demanda persiste y el crédito se \concepto{raciona}, porque unos solicitantes lo reciben y otros, iguales en apariencia, no. El tipo que vaciaría el mercado, más alto, no es un equilibrio. Si la demanda corta a la oferta por debajo de $\hat r^*$, el mercado se vacía como siempre.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Racionamiento del crédito: el rendimiento esperado del banco tiene un máximo en $\hat r^*$ (izquierda) y la oferta de crédito se dobla hacia atrás, con exceso de demanda en equilibrio (derecha)}\label{fig:stiglitz-weiss}
+\grafico[0.95\textwidth]{stiglitz-weiss}
+\fuente{elaboración propia a partir de \textcite{StiglitzWeiss1981Credit} y \textcite[cap.~5]{FreixasRochet2008Microeconomics}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Ineficiencia}: se pierden proyectos rentables que no consiguen financiación, y el tipo de interés no transmite toda la información. Las pymes y los proyectos nuevos, de los que menos se sabe, son los más afectados, lo que frena la inversión y el crecimiento.
+\item \emph{Mecanismos para revelar información}: las garantías y el colateral, el historial de crédito y las relaciones duraderas entre banco y cliente.\footnote{Por ejemplo, para alquilar un inmueble es habitual que se pidan nóminas o declaraciones de la renta que garanticen al arrendador que el arrendatario podrá pagar. Las garantías tienen su propio problema: si son muy altas, pueden atraer a los más ricos, que pueden ser también los que más riesgo asumen \parencite{StiglitzWeiss1981Credit}.}
+\item \emph{Microcréditos}: los préstamos a grupos con responsabilidad conjunta aprovechan que los vecinos saben quién es arriesgado y se vigilan entre sí, y excluyen a quien no paga \parencites{Stiglitz1990Peer}{Ghatak1999Group} \vertema{3.B.28}.
+\item \emph{Política monetaria}: con racionamiento importa no solo el tipo de interés, sino la cantidad de crédito. Más fondos para los bancos desplazan la oferta de préstamos \emph{a la derecha} y reducen el racionamiento, con efectos reales: es el \emph{canal del crédito}. Un ejemplo son las operaciones de financiación a plazo más largo con objetivo específico del Banco Central Europeo (TLTRO), anunciadas el 5 de junio de 2014, que daban liquidez a los bancos en función de lo que prestaran a empresas y hogares \parencite{BCE2014TLTRO}.
+\item \emph{Política pública}: justifica los avales públicos y las líneas de crédito a pymes y exportadores \vertema{4.A.24}, y la regulación bancaria \vertema{3.B.27}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Autoselección en el crédito}: si el banco ofrece un menú de tipo de interés y garantía, los prestatarios seguros, que temen menos perder la garantía, eligen la garantía alta y el tipo bajo, y los arriesgados lo contrario. El banco separa a los tipos y el racionamiento puede desaparecer \parencite{Bester1985Screening}.
+\item \emph{Demasiado crédito}: con otros supuestos (proyectos que difieren en el rendimiento medio y no solo en el riesgo), la información asimétrica puede llevar a lo contrario, a prestar e invertir de más \parencite{DeMezaWebb1987Too}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item La evidencia directa de racionamiento es escasa: con datos de préstamos de Estados Unidos, \textcite{BergerUdell1992Some} encuentran que los tipos se ajustan con retraso, pero no un racionamiento importante. La de restricciones financieras es mayor, sobre todo en las pymes.
+\item Una consecuencia indirecta es que las empresas acumulan liquidez. \textcite{HolmstromTirole1998Private} lo explican así: como los problemas de agencia impiden comprometer como garantía toda la renta futura, el crédito exterior se raciona, y tener fondos propios líquidos es un seguro. Las empresas industriales de Estados Unidos han pasado de tener en efectivo un 10,5~\% de su activo en 1980 a un 23,2~\% en 2006 \parencite{BatesKahleStulz2009Why}; los autores lo atribuyen sobre todo a un motivo de precaución, porque sus flujos de caja son más arriesgados.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Es la aplicación canónica de los 2 problemas a la vez y explica por qué un precio puede dejar de vaciar un mercado sin que nadie quiera cambiarlo. Pero el racionamiento depende de supuestos concretos: contratos de deuda con responsabilidad limitada y un banco que solo fija el tipo; con menús de tipo y garantía puede desaparecer.
+\item \emph{Recapitulando}: cuando la selección adversa y el riesgo moral se dan a la vez, el precio pierde su función de vaciar el mercado, y la cantidad se raciona. Con ello hemos recorrido la información oculta, la acción oculta y los 2 juntos, y podemos recoger las conclusiones de la exposición.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, la economía de la información estudia lo que ocurre cuando falla el supuesto de información perfecta y simétrica.
+  \begin{itemize}
+  \item ¿Por qué la asimetría impide la eficiencia? La \emph{selección adversa} hace que el precio seleccione a los peores y puede reducir el mercado o hacerlo desaparecer (\autor{Akerlof}); el \emph{riesgo moral} obliga a elegir entre dar incentivos y asegurar, con un coste de agencia (\autor{Holmström}); juntos, pueden hacer que el precio deje de vaciar el mercado (\autor{Stiglitz} y \autor{Weiss}).
+  \item ¿Qué mecanismos la mitigan? En todos los casos, quien no tiene la información diseña un contrato que cumple la participación y la compatibilidad de incentivos: señales costosas (\autor{Spence}), menús de contratos (\autor{Rothschild} y \autor{Stiglitz}), pagos ligados a lo observable que usan toda la información disponible y, cuando el mercado no basta, la intervención pública: seguros obligatorios, información obligatoria, supervisión y condicionalidad. Ninguno es gratis: el resultado es, en el mejor de los casos, un óptimo restringido.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: está en todas partes de la economía real (el trabajo, los seguros, el crédito, la empresa y la regulación), y también fuera de ella. En política, los votantes son el principal y los gobernantes el agente: no observan todo lo que hacen ni saben del todo cuán capaces son, y usan las elecciones como un contrato de incentivos, reeligiendo solo a quien da resultados suficientes \parencites{Barro1973Control}{Ferejohn1986Incumbent} \vertema{4.B.2}.
+\item \textbf{\emph{Extensiones}}: el diseño de mecanismos y las subastas \vertema{3.A.14}; la imposición óptima, en la que el Estado no observa la capacidad de cada contribuyente y diseña la tarifa para que nadie quiera hacerse pasar por menos capaz \parencite{Mirrlees1971Exploration} \vertema{4.B.11}; la regulación con información asimétrica \vertema{3.A.17}; la teoría de la empresa, con los costes de agencia y los contratos incompletos \vertema{3.A.15}, y la economía del comportamiento, cuyos sesgos cambian el diseño de los incentivos \vertema{3.A.1}.
+\item \textbf{\emph{Opinión}}: ¿reduce la tecnología las asimetrías de información? Hay aseguradoras y prestamistas que usan la actividad en las redes sociales de sus clientes para evaluar su riesgo (\emph{social scoring}). Reduce la asimetría, pero ¿qué ocurrirá cuando todos sepan que se usa? Los clientes empezarán a cuidar su actividad para mejorar su puntuación, y como hacerlo cuesta poco, la señal perderá valor. Es la lección de \autor{Spence}: una señal solo informa si imitarla cuesta más que enviarla, y los datos que cualquiera puede fabricar dejan de ser una señal.
+\item \textbf{\emph{Idea final}}: ¿puede un contrato sustituir al «ojo del amo»? En parte. Con buenos contratos, señales costosas e instituciones se puede evitar que nos den gato por liebre y que quien trabaja para otro se desentienda, pero no gratis: mientras la información sea privada, alguien pagará por ella. Más de medio siglo después de \autor{Akerlof}, el rescate de Silicon Valley Bank recuerda que cada seguro, también el que da el Estado, necesita su propio «ojo del amo».
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: resolución analítica del modelo principal-agente}\label{anexo:principal-agente}
+
+\subsection{Planteamiento}\label{anexo:pa-planteamiento}
+
+\begin{itemize}
+\item Un empresario (principal) ofrece un contrato a un trabajador (agente) cuyo esfuerzo no puede observar. Los resultados no son un indicador perfecto del esfuerzo, porque la relación entre ellos no es unívoca: cuanto más se esfuerce el agente, más probable es que los resultados sean altos, pero un esfuerzo alto no garantiza un buen resultado. Por eso la relación entre esfuerzo y resultado se describe con una distribución de probabilidad.
+\item La solución pasa por que el principal diseñe un contrato que incentive al agente a hacer el esfuerzo que más le conviene al principal.
+\item Para ver cómo es el contrato óptimo, partimos de una situación sin asimetrías de información (esfuerzo observable) y vemos después cómo cambia la solución cuando el esfuerzo no se observa. Usamos la notación de \ref{sec:principal-agente}: resultados $x_{\mathrm{E}}>x_{\mathrm{F}}$, pagos $w_{\mathrm{E}}$ y $w_{\mathrm{F}}$, esfuerzos $e^{\mathrm{A}}$ y $e^{\mathrm{B}}$ con $\pi(e^{\mathrm{A}})>\pi(e^{\mathrm{B}})$, utilidad del agente $u(w)-v(e)$ y utilidad de reserva $U^R$. Para abreviar, $\pi_{\mathrm{A}}\equiv\pi(e^{\mathrm{A}})$, $\pi_{\mathrm{B}}\equiv\pi(e^{\mathrm{B}})$, $v_{\mathrm{A}}\equiv v(e^{\mathrm{A}})$ y $v_{\mathrm{B}}\equiv v(e^{\mathrm{B}})$.
+\end{itemize}
+
+\subsection{Esfuerzo observable: la regla de \autor{Borch}}\label{anexo:pa-borch}
+
+\begin{itemize}
+\item Permitimos que el principal sea averso al riesgo, con utilidad de \autor{Bernoulli} $u_P(\cdot)$ sobre lo que le queda, $x-w$. Con esfuerzo observable, el principal exige $e^{\mathrm{A}}$ y resuelve
+  \begin{equation}
+  \optim{\max}{w_{\mathrm{E}},\,w_{\mathrm{F}}}{\pi_{\mathrm{A}}\,u_P(x_{\mathrm{E}}-w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u_P(x_{\mathrm{F}}-w_{\mathrm{F}})}{\pi_{\mathrm{A}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u(w_{\mathrm{F}})-v_{\mathrm{A}}\geq U^R\quad(\mathrm{PC})}
+  \end{equation}
+\item La lagrangiana es
+  \begin{equation}
+  \mathcal{L}=\pi_{\mathrm{A}}\,u_P(x_{\mathrm{E}}-w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u_P(x_{\mathrm{F}}-w_{\mathrm{F}})+\lambda_1\left[\pi_{\mathrm{A}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u(w_{\mathrm{F}})-v_{\mathrm{A}}-U^R\right].
+  \end{equation}
+\item Las condiciones de primer orden son
+  \begin{align*}
+  \frac{\partial\mathcal{L}}{\partial w_{\mathrm{E}}}&=-\pi_{\mathrm{A}}\,u_P'(x_{\mathrm{E}}-w_{\mathrm{E}})+\lambda_1\,\pi_{\mathrm{A}}\,u'(w_{\mathrm{E}})=0\ \Longrightarrow\ \frac{u_P'(x_{\mathrm{E}}-w_{\mathrm{E}})}{u'(w_{\mathrm{E}})}=\lambda_1,\\
+  \frac{\partial\mathcal{L}}{\partial w_{\mathrm{F}}}&=-(1-\pi_{\mathrm{A}})\,u_P'(x_{\mathrm{F}}-w_{\mathrm{F}})+\lambda_1\,(1-\pi_{\mathrm{A}})\,u'(w_{\mathrm{F}})=0\ \Longrightarrow\ \frac{u_P'(x_{\mathrm{F}}-w_{\mathrm{F}})}{u'(w_{\mathrm{F}})}=\lambda_1 .
+  \end{align*}
+\item Igualando las 2 expresiones de $\lambda_1$ se obtiene la \concepto{regla de \autor{Borch}} \parencite{Borch1962Equilibrium}:
+  \begin{equation}
+  \underbrace{\frac{u_P'(x_{\mathrm{E}}-w_{\mathrm{E}})}{u_P'(x_{\mathrm{F}}-w_{\mathrm{F}})}}_{\text{principal}}=\underbrace{\frac{u'(w_{\mathrm{E}})}{u'(w_{\mathrm{F}})}}_{\text{agente}} . \label{eq:borch}
+  \end{equation}
+  Multiplicando cada lado por $\pi_{\mathrm{A}}/(1-\pi_{\mathrm{A}})$, son las relaciones marginales de sustitución entre estados de los 2: el contrato óptimo es una tangencia de sus curvas de indiferencia en la caja del gráfico~\ref{fig:principal-agente}, y la asignación es eficiente en el sentido de \autor{Pareto}. Además, $\lambda_1=u_P'/u'>0$, así que la PC se satura.
+\item Según la actitud ante el riesgo de cada parte:
+  \begin{itemize}
+  \item \emph{Principal averso y agente neutral}: $u'$ es constante, así que \eqref{eq:borch} exige $u_P'(x_{\mathrm{E}}-w_{\mathrm{E}})=u_P'(x_{\mathrm{F}}-w_{\mathrm{F}})$; como $u_P'$ es decreciente, $x_{\mathrm{E}}-w_{\mathrm{E}}=x_{\mathrm{F}}-w_{\mathrm{F}}$: el principal recibe lo mismo pase lo que pase. El agente asume todo el riesgo y paga un canon fijo: es un \emph{contrato de franquicia}, y el principal queda completamente asegurado, en su línea de certeza.
+  \item \emph{Principal neutral y agente averso}: $u_P'$ es constante, así que $u'(w_{\mathrm{E}})=u'(w_{\mathrm{F}})$ y, como $u'$ es decreciente, $w_{\mathrm{E}}=w_{\mathrm{F}}$. El principal asume todo el riesgo y paga un salario fijo, $u(w^*)=U^R+v_{\mathrm{A}}$: el agente queda completamente asegurado, en su línea de certeza (punto $Z$).
+  \item \emph{Principal y agente aversos}: ninguno queda totalmente protegido. La tangencia se produce fuera de las 2 líneas de certeza, y el riesgo se reparte: queda más protegido el más averso. El resultado sigue siendo eficiente, porque el reparto del riesgo es óptimo.
+  \item \emph{Los 2 neutrales}: \eqref{eq:borch} se cumple con cualquier reparto, y cualquier contrato con el pago esperado $U^R+v_{\mathrm{A}}$ es óptimo.
+  \end{itemize}
+\end{itemize}
+\findemo
+
+\subsection{Esfuerzo inobservable: la condición de \autor{Holmström}-\autor{Mirrlees}}\label{anexo:pa-inobservable}
+
+\begin{itemize}
+\item Con principal neutral, el problema es \eqref{eq:principal-agente}. La IC original es
+  \begin{equation}
+  \pi_{\mathrm{A}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u(w_{\mathrm{F}})-v_{\mathrm{A}}\geq\pi_{\mathrm{B}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{B}})\,u(w_{\mathrm{F}})-v_{\mathrm{B}},
+  \end{equation}
+  y, agrupando términos, $(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})\,u(w_{\mathrm{E}})-(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})\,u(w_{\mathrm{F}})\geq v_{\mathrm{A}}-v_{\mathrm{B}}$, que es la forma simplificada de \eqref{eq:principal-agente}.
+\item La lagrangiana es
+  \begin{multline}
+  \mathcal{L}=\pi_{\mathrm{A}}(x_{\mathrm{E}}-w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})(x_{\mathrm{F}}-w_{\mathrm{F}})+\lambda_1\left[\pi_{\mathrm{A}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u(w_{\mathrm{F}})-v_{\mathrm{A}}-U^R\right]\\
+  +\lambda_2\left[(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})\bigl(u(w_{\mathrm{E}})-u(w_{\mathrm{F}})\bigr)-(v_{\mathrm{A}}-v_{\mathrm{B}})\right].
+  \end{multline}
+\item \emph{Condiciones de primer orden}:
+  \begin{equation}
+  \frac{\partial\mathcal{L}}{\partial w_{\mathrm{E}}}=-\pi_{\mathrm{A}}+\lambda_1\,\pi_{\mathrm{A}}\,u'(w_{\mathrm{E}})+\lambda_2\,(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})\,u'(w_{\mathrm{E}})=0 , \label{eq:cpo-we}
+  \end{equation}
+  \begin{equation}
+  \frac{\partial\mathcal{L}}{\partial w_{\mathrm{F}}}=-(1-\pi_{\mathrm{A}})+\lambda_1\,(1-\pi_{\mathrm{A}})\,u'(w_{\mathrm{F}})-\lambda_2\,(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})\,u'(w_{\mathrm{F}})=0 . \label{eq:cpo-wf}
+  \end{equation}
+  Dividiendo \eqref{eq:cpo-we} entre $\pi_{\mathrm{A}}\,u'(w_{\mathrm{E}})$ y \eqref{eq:cpo-wf} entre $(1-\pi_{\mathrm{A}})\,u'(w_{\mathrm{F}})$:
+  \begin{align}
+  \frac{1}{u'(w_{\mathrm{E}})}&=\lambda_1+\lambda_2\,\frac{\pi_{\mathrm{A}}-\pi_{\mathrm{B}}}{\pi_{\mathrm{A}}}=\lambda_1+\lambda_2\left[1-\frac{\pi_{\mathrm{B}}}{\pi_{\mathrm{A}}}\right],\nonumber\\
+  \frac{1}{u'(w_{\mathrm{F}})}&=\lambda_1-\lambda_2\,\frac{\pi_{\mathrm{A}}-\pi_{\mathrm{B}}}{1-\pi_{\mathrm{A}}}=\lambda_1+\lambda_2\left[1-\frac{1-\pi_{\mathrm{B}}}{1-\pi_{\mathrm{A}}}\right],\nonumber
+  \end{align}
+  que es \eqref{eq:holmstrom-mirrlees}.
+\item \emph{La PC se satura}. Multiplicando la primera por $\pi_{\mathrm{A}}$, la segunda por $1-\pi_{\mathrm{A}}$ y sumando, los términos en $\lambda_2$ se anulan, porque $(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})-(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})=0$:
+  \begin{equation}
+  \lambda_1=\frac{\pi_{\mathrm{A}}}{u'(w_{\mathrm{E}})}+\frac{1-\pi_{\mathrm{A}}}{u'(w_{\mathrm{F}})}>0 .
+  \end{equation}
+\item \emph{La IC se satura}. Si fuera $\lambda_2=0$, las 2 condiciones darían $u'(w_{\mathrm{E}})=u'(w_{\mathrm{F}})=1/\lambda_1$ y, con $u''<0$, $w_{\mathrm{E}}=w_{\mathrm{F}}$; pero entonces el lado izquierdo de la IC sería 0, menor que $v_{\mathrm{A}}-v_{\mathrm{B}}>0$, y la IC no se cumpliría. Luego $\lambda_2>0$.
+\item \emph{Los pagos}. Con $\lambda_2>0$ y $\pi_{\mathrm{A}}>\pi_{\mathrm{B}}$, $1/u'(w_{\mathrm{E}})>\lambda_1>1/u'(w_{\mathrm{F}})$, y como $1/u'$ es creciente en $w$ (por $u''<0$), $w_{\mathrm{E}}>w_{\mathrm{F}}$. Con las 2 restricciones saturadas,
+  \begin{equation}
+  u(w_{\mathrm{E}})-u(w_{\mathrm{F}})=\Delta\equiv\frac{v_{\mathrm{A}}-v_{\mathrm{B}}}{\pi_{\mathrm{A}}-\pi_{\mathrm{B}}},\qquad \pi_{\mathrm{A}}\,u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})\,u(w_{\mathrm{F}})=U^R+v_{\mathrm{A}} .
+  \end{equation}
+  Sustituyendo $u(w_{\mathrm{E}})=u(w_{\mathrm{F}})+\Delta$ en la segunda, $u(w_{\mathrm{F}})+\pi_{\mathrm{A}}\Delta=U^R+v_{\mathrm{A}}$, de donde salen los pagos de \eqref{eq:pagos-segundo-optimo}: $u(w_{\mathrm{F}})=U^R+v_{\mathrm{A}}-\pi_{\mathrm{A}}\Delta$ y $u(w_{\mathrm{E}})=U^R+v_{\mathrm{A}}+(1-\pi_{\mathrm{A}})\Delta$.
+\item \emph{Coste de agencia}. El agente obtiene en utilidad esperada lo mismo que con el fijo $w^*$, $\pi_{\mathrm{A}}u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})u(w_{\mathrm{F}})=u(w^*)$. Como $u$ es estrictamente cóncava y $w_{\mathrm{E}}\neq w_{\mathrm{F}}$, la desigualdad de \autor{Jensen} da
+  \begin{equation}
+  u\bigl(\pi_{\mathrm{A}}w_{\mathrm{E}}+(1-\pi_{\mathrm{A}})w_{\mathrm{F}}\bigr)>\pi_{\mathrm{A}}u(w_{\mathrm{E}})+(1-\pi_{\mathrm{A}})u(w_{\mathrm{F}})=u(w^*)\ \Longrightarrow\ \pi_{\mathrm{A}}w_{\mathrm{E}}+(1-\pi_{\mathrm{A}})w_{\mathrm{F}}>w^* ,
+  \end{equation}
+  que es \eqref{eq:coste-agencia}: el principal paga de media más que con esfuerzo observable, y la diferencia es la prima de riesgo que exige el agente.
+\item \emph{Agente neutral} ($u(w)=w$). Las condiciones de primer orden no determinan los pagos (son lineales): basta cumplir la IC, $w_{\mathrm{E}}-w_{\mathrm{F}}\geq\Delta$, y saturar la PC, $\pi_{\mathrm{A}}w_{\mathrm{E}}+(1-\pi_{\mathrm{A}})w_{\mathrm{F}}=U^R+v_{\mathrm{A}}$, que es el coste del caso observable. Con la venta del negocio, $w(x)=x-k$, la PC saturada da $\pi_{\mathrm{A}}(x_{\mathrm{E}}-k)+(1-\pi_{\mathrm{A}})(x_{\mathrm{F}}-k)=U^R+v_{\mathrm{A}}$, es decir, $k=\mathbb{E}[x\mid e^{\mathrm{A}}]-U^R-v_{\mathrm{A}}$, el mismo beneficio que con esfuerzo observable, y la IC se cumple si $(\pi_{\mathrm{A}}-\pi_{\mathrm{B}})(x_{\mathrm{E}}-x_{\mathrm{F}})\geq v_{\mathrm{A}}-v_{\mathrm{B}}$, es decir, si el esfuerzo alto es eficiente.
+\end{itemize}
+\findemo
+
+\subsection{Esfuerzo continuo y enfoque de primer orden}\label{anexo:pa-continuo}
+
+\begin{itemize}
+\item En la exposición el agente solo elige entre 2 esfuerzos. En una formulación más general, el resultado depende del esfuerzo $e$, continuo, y de un componente aleatorio, con densidad $f(x\mid e)$, y el principal elige una función de pago $w(x)$. Dada esa función, el agente elige el esfuerzo que maximiza $\int u(w(x))\,f(x\mid e)\,dx-v(e)$; el principal, que conoce esa respuesta, elige $w(x)$ sabiéndola.
+\item El \emph{enfoque de primer orden} sustituye la IC por la condición de primer orden del agente,
+  \begin{equation}
+  \int u(w(x))\,f_e(x\mid e)\,dx=v'(e).
+  \end{equation}
+  Con multiplicadores $\lambda_1$ (PC) y $\lambda_2$ (esa condición), la condición de primer orden del principal punto a punto es
+  \begin{equation}
+  \frac{1}{u'(w(x))}=\lambda_1+\lambda_2\,\frac{f_e(x\mid e)}{f(x\mid e)},
+  \end{equation}
+  la generalización de \eqref{eq:holmstrom-mirrlees} \parencite{Holmstrom1979Moral}. El pago crece con el resultado si $f_e/f$ crece con $x$ (cociente de verosimilitud monótono, \textcite{Milgrom1981Good}). El atajo solo es válido bajo ciertas condiciones sobre la distribución \parencites{GrossmanHart1983Analysis}{Rogerson1985FirstOrder}.
+\item El esfuerzo que se induce es, en general, menor que el que el principal pediría si lo observara: para que el contrato no sea demasiado caro, el principal tolera menos esfuerzo que con información simétrica.
+\end{itemize}
+
+\subsection{El contrato lineal}\label{anexo:pa-lineal}
+
+\begin{itemize}
+\item Supuestos \parencite{HolmstromMilgrom1987Aggregation}: resultado $x=e+\varepsilon$, con $\varepsilon\sim N(0,\sigma^2)$; pago lineal $w=a+b\,x$; agente con utilidad exponencial (aversión absoluta al riesgo constante $r_A$) y coste del esfuerzo $v(e)=e^2/2$; principal neutral.
+\item \emph{Equivalente cierto del agente}. Con utilidad exponencial y pago normal, el equivalente cierto es la media menos la mitad de $r_A$ por la varianza:
+  \begin{equation}
+  \xi=a+b\,e-\frac{r_A}{2}\,b^2\sigma^2-\frac{e^2}{2}.
+  \end{equation}
+\item \emph{IC}: el agente elige $e$ para maximizar su equivalente cierto: $b-e=0$, así que $e=b$.
+\item \emph{PC}: $\xi\geq U^R$ (en términos de equivalente cierto), que el principal satura con el fijo $a$.
+\item \emph{Principal}: maximiza $\mathbb{E}[x-w]=e-a-b\,e$. Sustituyendo $a$ de la PC saturada, $a=U^R-b\,e+\frac{r_A}{2}b^2\sigma^2+\frac{e^2}{2}$, y $e=b$, el objetivo queda
+  \begin{equation}
+  \max_{b}\ b-\frac{r_A}{2}\,b^2\sigma^2-\frac{b^2}{2}-U^R ,
+  \end{equation}
+  con condición de primer orden $1-r_A\sigma^2b-b=0$, es decir, \eqref{eq:contrato-lineal}: $b^*=1/(1+r_A\sigma^2)$.
+\item \emph{Interpretación}: $b^*<1$ (no se vende el negocio) y es menor cuanto más averso es el agente y más ruidoso el resultado. El esfuerzo inducido, $e^*=b^*$, es menor que el eficiente, que iguala el coste marginal $e$ al beneficio marginal 1. Si $r_A=0$ o $\sigma^2=0$, $b^*=1$: se vuelve a la venta del negocio.
+\end{itemize}
+\findemo
+
+\subsection{Ejercicio}\label{anexo:pa-ejercicio}
+
+\begin{itemize}
+\item \emph{Enunciado} (examen de febrero de 2019, pregunta~7). Un comercial puede hacer un esfuerzo alto, $E_1=8$, o bajo, $E_2=4$. El resultado vale 10.000~€ (éxito) o 5.000~€ (fracaso), con probabilidades de fracaso 0,4 con esfuerzo alto y 0,6 con esfuerzo bajo. La utilidad del principal es $B(X,W)=X-W^2$ y la del agente $U(W,E)=W-E$; la utilidad de reserva es de 100. ¿Cuál es el esquema de pagos óptimo con información simétrica, si el principal puede tener pérdidas?
+\item \emph{Solución}. El agente es neutral; el principal, por el término $-W^2$, es averso a la variabilidad del pago. Con información simétrica, si pide el esfuerzo alto, minimiza $\mathbb{E}[W^2]$ sujeto a la PC saturada, $\mathbb{E}[W]=100+8=108$. Como $\mathbb{E}[W^2]=\mathbb{E}[W]^2+\mathrm{Var}(W)$, lo mínimo es no hacer variar el pago: $W_1=W_2=108$. No es la franquicia de \ref{anexo:pa-borch}: aquí el principal es neutral ante el resultado $X$ y lo que le pesa es la variabilidad de lo que paga, así que el contrato óptimo es un salario fijo y el principal soporta todo el riesgo del resultado.
+\item \emph{Comprobación} de que le conviene el esfuerzo alto: $\mathbb{E}[X\mid E_1]-108^2=0{,}6\cdot 10.000+0{,}4\cdot 5.000-11.664=-3.664$, mayor que con el bajo, $0{,}4\cdot 10.000+0{,}6\cdot 5.000-104^2=-3.816$ (de ahí que el enunciado admita pérdidas).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: el equilibrio de \autor{Rothschild} y \autor{Stiglitz} y sus alternativas}\label{anexo:rothschild-stiglitz}
+
+\begin{itemize}
+\item \emph{Inexistencia del equilibrio}. Sea $S_{\mathrm{B}}$ el contrato separador de los prudentes (\ref{sec:autoseleccion}). Si la proporción de prudentes $\nu$ es alta, la recta de isobeneficio nulo del riesgo medio, $(1-\overline{\pi})\,x_1+\overline{\pi}\,x_2=\overline{W}-\overline{\pi}L$, está muy cerca de la de los prudentes y pasa por encima de la curva de indiferencia del prudente que pasa por $S_{\mathrm{B}}$ (gráfico~\ref{fig:rs-inexistencia}). Entonces hay contratos agrupadores, como $C$, que los 2 tipos prefieren a su contrato separador y que dan beneficio esperado positivo con la mezcla de la población: una aseguradora que entre con $C$ rompe el equilibrio separador. Pero $C$ no puede ser un equilibrio, porque, como cualquier agrupador, es vulnerable al descreme de los prudentes. Ningún menú es estable: no hay equilibrio en estrategias puras \parencite{RothschildStiglitz1976Equilibrium}.
+\item \emph{Equilibrio de anticipación} \parencite{Wilson1977Model}: cada aseguradora anticipa que, si un contrato nuevo hace que otro dé pérdidas, ese otro se retirará. El descreme de $C$ deja de ser rentable, porque, al retirarse $C$, los temerarios se irían al contrato nuevo y le darían pérdidas: el agrupador que más conviene a los prudentes sobre la recta del riesgo medio se sostiene cuando $\nu$ es alta, y el separador cuando es baja.
+\item \emph{Equilibrio reactivo} \parencite{Riley1979Informational}: cada aseguradora anticipa que las demás reaccionarán con contratos nuevos que le hagan perder dinero. Eso disuade los contratos que rompían el separador, y el separador de \autor{Rothschild} y \autor{Stiglitz} siempre se sostiene.
+\item \emph{Equilibrio de \autor{Wilson}-\autor{Miyazaki}-\autor{Spence}} \parencites{Miyazaki1977Rat}{Spence1978Product}: con la anticipación de \autor{Wilson}, las aseguradoras pueden ofrecer un menú separador en el que el contrato de los prudentes subvenciona al de los temerarios y el conjunto tiene beneficio nulo. El menú que maximiza la utilidad de los prudentes sujeto a esa restricción y a las de incentivos siempre existe y es eficiente dentro de los que respetan la información disponible.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Inexistencia del equilibrio de \autor{Rothschild} y \autor{Stiglitz}: con muchos prudentes, el contrato agrupador $C$ rompe el separador}\label{fig:rs-inexistencia}
+\grafico[0.6\textwidth]{rs-inexistencia}
+\fuente{elaboración propia a partir de \textcite{RothschildStiglitz1976Equilibrium} y \textcite{Wilson1977Model}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: los resultados formales de \autor{Stiglitz} y \autor{Weiss} (1981)}\label{anexo:stiglitz-weiss}
+
+\begin{itemize}
+\item Cada proyecto, de tipo $\theta$ (notación de este anexo), rinde $R$ con distribución $F(R;\theta)$. Todos tienen el mismo rendimiento medio, y un $\theta$ mayor es un aumento del riesgo que conserva la media \parencite{RothschildStiglitz1970Increasing}. El préstamo es de 1~€ y el empresario aporta una garantía $G$.
+\item El empresario obtiene $\max\{R-(1+\hat r),\,-G\}$, una función convexa de $R$; el banco obtiene $\min\{R+G,\,1+\hat r\}$, una función cóncava de $R$.
+\item \emph{Selección}: el beneficio esperado del empresario, $B(\hat r,\theta)=\int\max\{R-(1+\hat r),-G\}\,dF(R;\theta)$, crece con $\theta$ (función convexa y más riesgo) y decrece con $\hat r$. Pide el préstamo si $B\geq 0$, es decir, si $\theta\geq\hat\theta(\hat r)$, con $B(\hat r,\hat\theta)=0$.
+\item \emph{Efecto de selección adversa}: por el teorema de la función implícita,
+  \begin{equation}
+  \frac{d\hat\theta}{d\hat r}=-\frac{\partial B/\partial\hat r}{\partial B/\partial\theta}>0 :
+  \end{equation}
+  al subir el tipo, se van los prestatarios más seguros.
+\item \emph{Rendimiento del banco}: el rendimiento esperado con cada prestatario decrece con $\theta$ (función cóncava y más riesgo). Al subir $\hat r$, el efecto directo positivo compite con el de selección, que empeora la cartera, y el rendimiento esperado puede tener un máximo interior $\hat r^*$.
+\item \emph{Efecto incentivo}: si cada empresario puede elegir entre 2 proyectos de distinto riesgo, al subir $\hat r$ el más arriesgado le resulta relativamente más atractivo, y a partir de un tipo crítico lo elige, lo que vuelve a empeorar la cartera del banco.
+\end{itemize}
+\findemo
+
+% ==========================================================================
+\section{Anexo: preguntas de test}\label{anexo:test}
+
+\begin{itemize}
+\item Las preguntas de los exámenes del primer ejercicio sobre este tema están en el simulador de test \parencite{GutierrezMarcos2026Simulador}: \url{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}.
+\item Dónde se responden las preguntas oficiales de este tema:
+  \begin{itemize}
+  \item 2020, pregunta~8 (\autor{Akerlof} con calidad continua): \eqref{eq:akerlof}.
+  \item 2021, pregunta~8 (\autor{Spence}): \ref{sec:senalizacion}, equilibrio agrupador.
+  \item 2002, pregunta~11 (trabajadores buenos y malos): \ref{sec:akerlof} y \ref{sec:senalizacion}.
+  \item 2004, pregunta~8 (selección adversa y riesgo moral en el empleo): \ref{sec:definicion-sa}, \ref{sec:definicion-rm} y \ref{sec:autoseleccion}.
+  \item 2011, pregunta~4 (lotería): la incertidumbre simétrica no es información asimétrica (tabla~\ref{tab:clasificacion-informacion}).
+  \item 2016, pregunta~8 (restricción de incentivos): \eqref{eq:principal-agente}.
+  \item 2005, pregunta~6 (información simétrica y actitudes ante el riesgo): \ref{anexo:pa-borch}.
+  \item 2003, pregunta~10 (franquicia de distribución): caso~3 de \ref{sec:principal-agente}.
+  \item 2019, pregunta~7 (pagos con información simétrica): \ref{anexo:pa-ejercicio}.
+  \item 2026, pregunta~8 (esfuerzo continuo; falsa: «reparto óptimo del riesgo»): \ref{sec:principal-agente}, implicaciones, y \ref{anexo:pa-continuo}.
+  \end{itemize}
+\end{itemize}
+
+\nocite{Arrow1964Role,MachoStadlerPerezCastrillo2001Introduction,BoltonDewatripont2005Contract,NicholsonSnyder2017Microeconomic}
+\bibliografia
+\end{document}

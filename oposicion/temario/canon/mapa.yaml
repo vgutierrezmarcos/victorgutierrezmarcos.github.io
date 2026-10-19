@@ -182,13 +182,58 @@ modelos:
       3.A.45: mencion
       3.B.9: resumen
   prospect-theory:
-    nombre: Teoría de las perspectivas (Kahneman y Tversky, 1979)
+    nombre: Teoría de las perspectivas (Kahneman y Tversky, 1979; Tversky y Kahneman, 1992)
     area: consumidor-produccion
     tema_referencia: 3.A.10
-    motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
+    motivo: 'Es el único tema que lo desarrolla (II.2 del 3.A.10 revisado el 19/10/2026: V = Σ w(π_s) v(x_s − r), v con β
+      y λ, w con δ, teoría acumulativa); los demás lo resumen o lo mencionan.'
     temas:
       3.A.1: resumen
+      3.A.8: mencion
       3.A.10: desarrollo
+      3.B.23: mencion
+  utilidad-esperada-vnm:
+    nombre: Teoría de la utilidad esperada (von Neumann y Morgenstern, 1944; Savage, 1954)
+    area: consumidor-produccion
+    tema_referencia: 3.A.10
+    motivo: 'Lo tiene en el título y es el único que lo construye desde los axiomas, con sus críticas (Allais, Ellsberg) y
+      la versión subjetiva (I.1.1, II.1, III.1 y anexos A, B y E del 3.A.10 revisado el 19/10/2026). Recoge los ids san-petersburgo
+      y allais.'
+    temas:
+      3.A.1: mencion
+      3.A.8: mencion
+      3.A.10: desarrollo
+      3.A.13: resumen
+      3.A.14: mencion (prevista)
+      3.A.24: mencion
+      3.A.27: mencion
+      3.A.33: mencion
+      3.B.23: resumen
+  aversion-riesgo-arrow-pratt:
+    nombre: 'Aversión al riesgo: equivalente cierto, prima de riesgo, coeficientes de Arrow-Pratt, CARA/CRRA/HARA y prudencia'
+    area: consumidor-produccion
+    tema_referencia: 3.A.10
+    motivo: 'Es donde se definen y se derivan ξ, ρ, r_A, r_R, el teorema de Pratt, las familias y la prudencia (I.1.2 y anexo
+      E del 3.A.10 revisado el 19/10/2026); los demás los usan. Recoge el id crra del 3.A.8, que fija la misma ecuación.'
+    temas:
+      3.A.8: resumen
+      3.A.10: desarrollo
+      3.A.13: mencion
+      3.A.27: mencion
+      3.A.29: resumen
+      3.A.33: resumen
+      3.A.35: mencion
+      3.B.23: resumen
+  demanda-seguros:
+    nombre: Demanda de seguros con información simétrica (Mossin, 1968)
+    area: consumidor-produccion
+    tema_referencia: 3.A.10
+    motivo: 'La aplicación más sencilla de la utilidad esperada, con la estructura a)-e), el gráfico seguros.tex por capas y
+      la tabla de casos (I.2.1 del 3.A.10 revisado el 19/10/2026); el 3.A.13 la resume en una caja previa de Rothschild-Stiglitz
+      con la misma notación (γ, A = (W̄, W̄ − L)). No es Rothschild-Stiglitz.'
+    temas:
+      3.A.10: desarrollo
+      3.A.13: resumen
   rendimientos-escala:
     nombre: Rendimientos a escala globales y locales (elasticidad de escala, homogéneas y homotéticas)
     area: consumidor-produccion
@@ -261,6 +306,7 @@ modelos:
       comparativa, plazos y libre entrada.'
     temas:
       3.A.12: mencion
+      3.A.13: mencion (levantar el supuesto 2)
       3.A.16: desarrollo
       3.A.17: mencion
       3.A.21: mencion
@@ -343,7 +389,7 @@ modelos:
     tema_referencia: 3.A.17
     motivo: 'Lo tiene en el título y lo desarrolla con a)-e) en cada grado, con el modelo de autoselección con 2 tipos (revisado el 17/10/2026, II.1).'
     temas:
-      3.A.13: mencion (prevista)
+      3.A.13: mencion
       3.A.17: desarrollo
       3.B.7: mencion (prevista)
       3.B.39: mencion
@@ -422,14 +468,92 @@ modelos:
       4.B.11: mencion
       4.B.15: resumen (hoy mencion)
     decision: D139 (13/10/2026)
+  akerlof-lemons:
+    nombre: El mercado de «limones» (Akerlof, 1970)
+    area: mercados-informacion-juegos
+    tema_referencia: 3.A.13
+    motivo: 'Selección adversa en el título; lo desarrolla con a)-e), el caso continuo y la evidencia como diferencia entre la asignación
+      competitiva y la óptima (I.2 del 3.A.13 revisado el 19/10/2026).'
+    temas:
+      3.A.1: mencion
+      3.A.13: desarrollo
+      3.A.21: mencion
+      3.A.23: resumen (previsto)
+      3.B.27: mencion
+      4.A.20: mencion
+      4.B.3: mencion
+  spence-senalizacion:
+    nombre: Señalización en el mercado de trabajo (Spence, 1973)
+    area: mercados-informacion-juegos
+    tema_referencia: 3.A.13
+    motivo: 'Solución de la parte informada a la selección adversa, desarrollada con la doble desigualdad, separadores, agrupadores
+      y criterio intuitivo (I.3.1 del 3.A.13 revisado el 19/10/2026); el 3.A.14 la resume como juego de señalización.'
+    temas:
+      3.A.13: desarrollo
+      3.A.14: resumen (previsto, juego de señalización)
+      3.A.15: mencion (prevista)
+      3.A.25: mencion
+      3.B.3: mencion
+  rothschild-stiglitz:
+    nombre: Autoselección en el mercado de seguros (Rothschild y Stiglitz, 1976)
+    area: mercados-informacion-juegos
+    tema_referencia: 3.A.13
+    motivo: 'Solución de la parte no informada a la selección adversa, formalizada con el gráfico por capas, la inexistencia
+      y las alternativas (I.3.2 y anexo B del 3.A.13 revisado el 19/10/2026). La demanda de seguros con información simétrica
+      (Mossin, 1968) es del 3.A.10 y no es este modelo.'
+    temas:
+      3.A.10: mencion (paso previo, Mossin)
+      3.A.13: desarrollo
+      3.A.14: mencion (prevista)
+      3.A.17: mencion
+      4.B.3: mencion
+  principal-agente:
+    nombre: Modelo principal-agente con riesgo moral (Holmström, 1979; Mirrlees, 1974; Grossman y Hart, 1983)
+    area: mercados-informacion-juegos
+    tema_referencia: 3.A.13
+    motivo: 'Teoría de la agencia y riesgo moral en el título; lo desarrolla con los 4 casos, Holmström-Mirrlees, el coste
+      de agencia y su funcionclave (II.2 y anexo A del 3.A.13 revisado el 19/10/2026).'
+    temas:
+      3.A.7: mencion
+      3.A.13: desarrollo
+      3.A.15: mencion (prevista)
+      3.A.17: mencion
+      3.A.20: mencion (prevista)
+      3.A.27: resumen (previsto, Shapiro-Stiglitz como IC)
+      3.B.4: mencion
+      3.B.26: mencion
+      3.B.27: mencion
+      4.A.25: mencion
+      4.B.2: mencion
+      4.B.11: mencion
+  diseno-mecanismos:
+    nombre: Diseño de mecanismos y principio de revelación (Hurwicz; Gibbard, 1973; Dasgupta, Hammond y Maskin, 1979; Myerson,
+      1979)
+    area: mercados-informacion-juegos
+    tema_referencia: 3.A.14
+    motivo: '[decidir] Propuesta (D9 del 3.A.13): el 3.A.14 tiene el diseño de mecanismos y las subastas en su título y en
+      su Word; ya lo citan con remisión al 3.A.14 el 3.A.13 y el 3.A.21 revisados. Alternativa: sin ficha, mención en cada
+      tema.'
+    temas:
+      3.A.13: mencion
+      3.A.14: desarrollo (previsto)
+      3.A.17: mencion
+      3.A.20: mencion (prevista)
+      3.A.21: mencion
+      3.A.23: mencion
+      3.A.24: mencion
+      4.B.2: mencion
+      4.B.15: mencion
   stiglitz-weiss:
     nombre: Racionamiento del crédito (Stiglitz y Weiss, 1981)
     area: mercados-informacion-juegos
     tema_referencia: 3.A.13
-    motivo: Selección adversa y riesgo moral a la vez, el título de 3.A.13; se amplía allí con ecuaciones y los dos gráficos.
+    motivo: Selección adversa y riesgo moral a la vez, el título de 3.A.13; desarrollado allí con los 3 efectos, la función
+      del rendimiento del banco y los dos gráficos (bloque III del 3.A.13 revisado el 19/10/2026).
     temas:
       3.A.7: mencion
-      3.A.13: desarrollo (hoy resumen)
+      3.A.13: desarrollo
+      3.B.26: mencion
       3.B.27: resumen aplicado (hoy desarrollo)
       3.B.28: mencion
       4.A.20: resumen aplicado (hoy desarrollo)
@@ -560,6 +684,7 @@ modelos:
       es de 3.A.10 (id preferencia-por-el-estado).
     temas:
       3.A.10: resumen
+      3.A.13: mencion
       3.A.21: desarrollo
       3.A.29: mencion
   heckscher-ohlin:
@@ -596,6 +721,7 @@ modelos:
     tema_referencia: 3.A.24
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
+      3.A.10: mencion
       3.A.24: desarrollo
       4.B.3: resumen
   funcion-bienestar-social:
@@ -644,6 +770,7 @@ modelos:
     tema_referencia: 3.A.22
     motivo: Lo tiene en el título (best, second) y lo trata como desarrollo.
     temas:
+      3.A.13: mencion (óptimo restringido de la teoría de los contratos)
       3.A.17: mencion
       3.A.22: desarrollo
       4.B.9: mencion
@@ -656,6 +783,7 @@ modelos:
     motivo: Los teoremas fundamentales del bienestar están en el título de 3.A.22. Papeles de 3.A.22 y 3.A.23 corregidos el 14/10/2026
       (estaban al revés que la ficha).
     temas:
+      3.A.13: mencion (supuestos del 1TFEB y la información)
       3.A.16: resumen (versión de equilibrio parcial)
       3.A.21: resumen
       3.A.22: desarrollo (hoy resumen)
@@ -1075,7 +1203,7 @@ modelos:
     motivo: Lo tiene en el título (eficiencia, salarios) y lo trata como desarrollo.
     temas:
       3.A.7: desarrollo
-      3.A.13: mencion
+      3.A.13: mencion (hecho, la IC del principal-agente)
       3.A.27: desarrollo
   solow:
     nombre: Modelo de Solow-Swan (1956)
@@ -1440,7 +1568,7 @@ modelos:
     tema_referencia: 3.B.26
     motivo: Crisis y pánicos bancarios en el título (sin fuente); se escribe con la presentación de 4.A.20.
     temas:
-      3.A.10: mencion
+      3.A.10: mencion (anexo C resumido)
       3.B.17: mencion (hoy resumen)
       3.B.26: previsto (tema sin fuente)
       3.B.27: resumen (hoy desarrollo)
@@ -1452,6 +1580,7 @@ modelos:
     tema_referencia: 3.B.23
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
+      3.A.10: mencion
       3.B.13: resumen
       3.B.23: desarrollo
   gordon-shapiro:
@@ -1470,7 +1599,8 @@ modelos:
     tema_referencia: 3.B.23
     motivo: Es el único tema que lo desarrolla; los demás lo resumen o lo mencionan.
     temas:
-      3.A.10: mencion
+      3.A.8: mencion
+      3.A.10: mencion (anexo D)
       3.B.23: desarrollo
   modigliani-miller:
     nombre: Modigliani y Miller (1958) y extensiones (impuestos, insolvencia de Kim 1978, Miller 1977)
@@ -1487,6 +1617,7 @@ modelos:
     tema_referencia: 3.B.23
     motivo: Lo tiene en el título (cartera) y lo trata como desarrollo.
     temas:
+      3.A.10: mencion
       3.A.35: desarrollo
       3.B.23: desarrollo
   van-tir:
@@ -2393,6 +2524,7 @@ temas:
     - a: 3.A.21
       por_que: debate equilibrio parcial vs equilibrio general sin remitir
     modelos:
+    - akerlof-lemons
     - critica-lucas
     - descuento-hiperbolico
     - economia-conductual
@@ -2407,6 +2539,7 @@ temas:
     - positivismo-logico
     - prospect-theory
     - rct
+    - utilidad-esperada-vnm
     revisado: null
   3.A.2:
     titulo: Los economistas clásicos y Marx.
@@ -2833,6 +2966,7 @@ temas:
     - histeresis
     - nairu-layard-nickell
     - nek-3-ecuaciones
+    - principal-agente
     - salarios-eficiencia
     - stiglitz-weiss
     - taylor
@@ -3079,11 +3213,11 @@ temas:
       por_que: La l. 1136 remite a 3.A.11 por el paralelismo con la producción; la dualidad de la empresa (análoga a la del
         consumidor) está en 3.A.12. Opcional.
     modelos:
+    - aversion-riesgo-arrow-pratt
     - axiomas-preferencias
     - becker-produccion-domestica
     - ces
     - cobb-douglas
-    - crra
     - dualidad-consumidor
     - elasticidades-demanda
     - gorman-agregacion
@@ -3092,12 +3226,15 @@ temas:
     - integrabilidad
     - lancaster
     - leontief
+    - markowitz
     - marshall-cardinal
     - pmu
     - precios-hedonicos
     - preferencia-revelada
+    - prospect-theory
     - sistemas-demanda
     - slutsky
+    - utilidad-esperada-vnm
     revisado: 2026-10-11
   3.A.9:
     titulo: Teoría de la demanda del consumidor (II). Dualidad e integrabilidad de las preferencias. Sistemas de demanda utilizados
@@ -3215,109 +3352,131 @@ temas:
     bloque: informacion-y-poder-de-mercado
     fuente_disponible: si
     referencias:
+    - a: 3.A.1
+      estado: ok
+      contexto: 'Los fallos de la utilidad esperada como origen de la economía conductual (relevancia práctica y de la conclusión);
+        anomalías que explica la teoría de las perspectivas (evidencia de II.2); caja de finanzas conductuales (anotación de
+        II.2)'
     - a: 3.A.8
       estado: ok
-      contexto: Al igual que sucede con la elección del consumidor en condiciones de certidumbre, la metodología seguirá un
-        esquema muy similar
-    - a: 3.A.33
+      contexto: 'Individualismo metodológico (enganche); el método de la teoría del consumidor y su esquema de ingredientes
+        (I.1, gráfico esquema-tue); función indirecta de utilidad (nota de los resultados monetarios); preferencias como en
+        certidumbre (axiomas); CRRA con la misma ecuación (I.1.2); Cobb-Douglas en logaritmos y recta de balance (seguros, I.2.1);
+        efecto dotación (II.2); utilidad cardinal de vNM (anexo A, 2 remisiones)'
+    - a: 3.A.11
       estado: ok
-      contexto: Leland (1968) y Sandmo (1970), ahorro precautorio; útil para la demanda de consumo y el paseo aleatorio de
-        Hall
-    - a: 3.A.10
-      estado: sobra
-      contexto: la utilidad esperada del consumo es más baja que la utilidad del consumo esperado
-    - a: 3.A.33
+      contexto: 'Empresa aversa al riesgo de Sandmo (1971): cumple la remisión del 3.A.11 (nota y implicaciones de I.2.3)'
+    - a: 3.A.12
       estado: ok
-      contexto: comportamiento precautorio y prudencia (u'''>0), relevante para el paseo aleatorio de Hall
-    - a: 3.A.29
-      estado: ok
-      contexto: la CRRA presenta elasticidad de sustitución intertemporal constante, σ=1/θ
-    - a: 3.B.23
-      estado: ok
-      contexto: modelos de media-varianza; teoría de selección de carteras de Markowitz, Tobin y Sharpe
+      contexto: 'Costes ciertos C(w⃗,q) con w⃗ fijo en la empresa aversa al riesgo (supuestos de I.2.3)'
     - a: 3.A.13
       estado: ok
-      contexto: la demanda de seguros es un paso previo al desarrollo del modelo de Rothschild y Stiglitz
-    - a: 3.A.13
+      contexto: 'Seguros e información asimétrica (relevancia y conclusión); la demanda de seguros como base de Rothschild-Stiglitz
+        (nota de I.2 y valoración de I.2.1); mercados que faltan con información asimétrica (extensiones de la conclusión)'
+    - a: 3.A.14
       estado: ok
-      contexto: 'Decisión de aseguramiento: demanda de seguros'
-    - a: 3.A.13
-      estado: ok
-      contexto: información asimétrica ex ante (selección adversa) y ex post (riesgo moral) en el modelo de aseguramiento
+      contexto: 'Pagos esperados en la teoría de juegos y las subastas (relevancia y conclusión)'
     - a: 3.A.21
       estado: ok
-      contexto: enfoque de preferencia por el estado, precios Arrow-Debreu, riesgo en modelos de equilibrio general
-    - a: 3.A.1
-      estado: ok
-      contexto: anomalías explicadas por la Prospect Theory (economía conductual)
-    - a: 3.B.24
-      estado: corregir -> 3.A.1, 3.B.23
-      contexto: Aplicación al behavioral finance
-    - a: 3.B.23
-      estado: ok
-      contexto: 'Economía financiera: en especial en la teoría de la selección de carteras (Markowitz, Tobin)'
-    - a: 3.A.33
-      estado: ok
-      contexto: 'Hall: con utilidad cuadrática el consumo sigue un paseo aleatorio'
-    - a: 3.B.17, 3.B.27
-      estado: corregir -> 3.B.26, 3.B.27
-      contexto: modelo de Diamond y Dybvig (1983) de pánicos bancarios
-    - a: 3.A.10
-      estado: sobra
-      contexto: función de utilidad cóncava, aversión al riesgo e incentivo a suavizar el consumo entre estados (Diamond-Dybvig)
-    - a: 3.B.23
-      estado: ok
-      contexto: 'Anexo 4: Aplicación – Harry Markowitz y el modelo media-varianza'
-    - a: 3.A.8
-      estado: ok
-      contexto: De ahí la leve diferencia en cómo se formula el problema bajo riesgo a como se plantea bajo competencia perfecta
-    - a: 3.A.8
-      estado: ok
-      contexto: Tal y como se recoge en la Función Indirecta de Utilidad
-    - a: 3.A.8
-      estado: ok
-      contexto: V(ỹ(p,c)) frente a la utilidad U(x) del tema 3.A.8
-    - a: 3.A.29
-      estado: ok
-      contexto: La elasticidad de sustitución intertemporal quedaría definida como
-    - a: 3.A.8
-      estado: ok
-      contexto: Por analogía con la recta de balance del consumo en certidumbre
+      contexto: 'Equilibrio general con mercados contingentes (relevancia); reparto óptimo del riesgo (nota de la valoración
+        de I.2.1); equilibrio, títulos de Arrow y mercados que faltan (preferencia por el estado, I.3); reparto eficiente
+        con mercados completos (extensiones de la conclusión)'
     - a: 3.A.24
       estado: ok
-      contexto: FBS de Rawls (maximin) frente a la utilitarista de Harsanyi basada en la utilidad esperada
-    faltan:
-    - a: 3.A.1
-      por_que: La Prospect Theory y las anomalías conductuales (Kahneman, Tversky, Thaler, Easterlin) se tratan en 3.A.1;
-        solo aparece como nota «coordinar», no como remisión en el texto.
-    - a: 3.A.14
-      por_que: La utilidad VNM es la base de los pagos esperados en teoría de juegos y en subastas (aversión al riesgo de
-        los pujadores); la propia bibliografía cita a Cerdá et al., Teoría de juegos.
+      contexto: 'La independencia de las alternativas irrelevantes de Arrow no es el axioma de independencia (nota de I.1.1);
+        maximin de Wald como criterio de Rawls frente a Harsanyi (nota de III.2)'
+    - a: 3.A.29
+      estado: ok
+      contexto: 'CRRA: ESI = 1/θ (I.1.2 y extensiones de la conclusión)'
+    - a: 3.A.33
+      estado: ok
+      contexto: 'Consumo y ahorro con incertidumbre (relevancia); Hall con utilidad cuadrática sin ahorro precautorio (prudencia,
+        I.1.2); la prudencia explica el ahorro precautorio que Hall excluye (extensiones de la conclusión)'
     - a: 3.A.34
-      por_que: La incertidumbre y la irreversibilidad de la inversión (título de 3.A.34) se apoyan en estas herramientas;
-        opcional.
-    - a: 3.B.25
-      por_que: El enfoque de preferencia por el estado y los activos Arrow-Debreu (activos contingentes) se relacionan con
-        la valoración de derivados; opcional.
+      estado: ok
+      contexto: 'Incertidumbre e irreversibilidad de la inversión (extensiones de la conclusión)'
+    - a: 3.A.35
+      estado: ok
+      contexto: 'Demanda de dinero como activo (relevancia y conclusión); motivo especulación con el dinero como activo seguro
+        (extensiones de I.2.2)'
+    - a: 3.B.23
+      estado: ok
+      contexto: 'Teoría de carteras de Markowitz, Tobin y Sharpe (media-varianza, I.1.2; extensiones de I.2.2; nota del Nobel
+        de Markowitz, II.1; anexo D, 2 remisiones; pregunta del tribunal, anexo F); caja de finanzas conductuales (II.2);
+        relevancia de la conclusión'
     - a: 3.B.26
-      por_que: Diamond-Dybvig (anexo 3) se estudia en 3.B.26 (crisis financieras y pánicos bancarios).
+      estado: ok
+      contexto: 'Diamond-Dybvig: desarrollo, regulación y casos recientes (anexo C, entrada e implicaciones)'
+    - a: 3.B.27
+      estado: ok
+      contexto: 'Diamond-Dybvig: garantía de depósitos, resolución y regulación (anexo C, entrada e implicaciones)'
+    faltan:
+    - a: 3.B.25
+      por_que: El enfoque de preferencia por el estado y los activos de Arrow-Debreu (activos contingentes) se relacionan con
+        la valoración de derivados; opcional y no usada (el tema no habla de derivados).
+    contradicciones:
+    - tema: 3.B.23
+      que: 'Tiene la misma caja de enigmas financieros (prima de las acciones, exceso de volatilidad, efecto disposición, dividendos)
+        que el 3.A.10 original, casi literal, con «más de 6 puntos» sin fuente y «hasta ahora tributaban más». Al revisarlo,
+        desarrollar la eficiencia (ficha emh) y dejar la explicación conductual resumida con remisión al 3.A.10 (o al revés,
+        sin repetirla), con las cifras con fuente del 3.A.10 (≈ 6 puntos sobre letras y ≈ 5 sobre bonos; Damodaran, UBS;
+        dividendos hasta 2003); 𝔼(r_p) y no E(r_p) en Markowitz (ficha markowitz).'
+    - tema: 3.A.1
+      que: '«Efecto dotación [ver tema 3.A.10]» (2 veces) y San Petersburgo «[ver tema 3.A.10]»: se cumplen (II.2 y anexo B
+        del 3.A.10). Al revisarlo, la teoría de las perspectivas solo en resumen (función de valor en S, λ ≈ 2,25, efecto
+        dotación), con w(π_s) si escribe la ponderación (ficha prospect-theory).'
+    - tema: 3.A.24
+      que: 'Dice que, según Harsanyi, los individuos tras el velo «serán neutrales al riesgo»: con utilidad esperada son neutrales
+        respecto a la utilidad (maximizan la utilidad media), no respecto a la renta. Precisarlo al revisarlo. Su remisión del
+        maximin de Rawls a 3.A.10 se cumple (III.2, criterio de Wald; fichas fbs-rawlsiana y utilidad-esperada-vnm).'
+    - tema: 3.A.29
+      que: 'El 3.A.10 original escribía «ESI ≡ σ = 1/θ»; al revisar el 3.A.29, ESI = 1/θ sin símbolo propio (D001) y la CRRA
+        con la misma ecuación que el 3.A.8 y el 3.A.10 (θ, el −1, ln con θ = 1; ficha aversion-riesgo-arrow-pratt).'
+    - tema: 3.A.33
+      que: 'Leland (1968) y Sandmo (1970) en su tabla: añadir Kimball (1990), la condición u‴ > 0 como necesaria y suficiente
+        del ahorro precautorio (no la aversión) y DARA ⇒ prudencia, con la redacción del 3.A.10 (I.1.2 y anexo E); Hall
+        con cuadrática sin motivo precaución (fichas hall y aversion-riesgo-arrow-pratt).'
+    - tema: 3.B.27
+      que: 'Diamond-Dybvig con τ, r_1, r_2, r_1^d, r_2^d y 4 gráficos: canon π, R, L, c_1, c_2 (D064) y resumen si la referencia
+        es 3.B.26 (D042). El 3.A.10 lo deja ya resumido en su anexo C, con el gráfico diamond-dybvig.tex en la notación canónica,
+        que el 3.B.26 puede reutilizar (ficha diamond-dybvig).'
+    - tema: 4.A.20
+      que: 'Diamond-Dybvig con τ (fracción de impacientes, choca con τ coste iceberg y tipos), r_1 < 1 < r_2 y r_1^d, r_2^d:
+        canon π, R, L, c_1, c_2; resumen aplicado con lo imprescindible para cantarse sin el 3.B.26 (ficha diamond-dybvig).
+        Garantía de depósitos con la Directiva (UE) 2026/804 y los FGD financiados por las entidades (objetivo 0,8 %), como
+        el anexo C del 3.A.10.'
+    - tema: 3.A.14
+      que: 'Tendrá que usar los pagos esperados de vNM con la notación del 3.A.10 (U(x̃) = 𝔼[u(x̃)], u de Bernoulli) y fechar
+        Theory of Games en 1944, con la teoría de la utilidad en el apéndice de la 2.ª edición (1947) (ficha utilidad-esperada-vnm).
+        3.A.18 y 3.A.19 remiten a 3.A.10 la teoría de juegos como extensión de la decisión con incertidumbre: es 3.A.14 (ya
+        corregir -> 3.A.14).'
+    - tema: 3.A.35
+      que: 'El 3.A.10 le remite la demanda de dinero por motivo especulación con el dinero como activo seguro (I.2.2): al revisarlo,
+        Tobin (1958) con la aversión al riesgo del 3.A.10 (r_A, u cóncava) y la presentación de la ficha tobin-cartera, con
+        remisión al 3.A.10.'
+    - tema: 3.B.2, 3.B.3
+      que: '«El coste de capital sería la Teoría de la Utilidad Esperada [ver tema 3.A.10]» y el coeficiente α del equivalente
+        cierto: remisiones correctas. Al revisarlos, equivalente cierto ξ (nunca EC) y la distinción riesgo-incertidumbre de
+        Knight con las palabras del 3.A.10.'
     modelos:
-    - allais
     - arrow-debreu-incertidumbre
     - aversion-riesgo-arrow-pratt
     - demanda-seguros
     - diamond-dybvig
     - dominancia-estocastica
     - ellsberg
+    - emh
+    - fbs-rawlsiana
     - friedman-savage
     - hall
     - markowitz
     - preferencia-por-el-estado
     - prospect-theory
-    - san-petersburgo
+    - rothschild-stiglitz
     - savage-probabilidad-subjetiva
+    - tobin-cartera
     - utilidad-esperada-vnm
-    revisado: null
+    revisado: 2026-10-19
   3.A.11:
     titulo: Teoría de la producción. Caracterización de la tecnología de la empresa a corto y largo plazo. El conjunto de
       posibilidades de producción. La función de producción. Rendimientos locales y globales a escala. Elasticidad de sustitución.
@@ -3555,68 +3714,156 @@ temas:
     bloque: informacion-y-poder-de-mercado
     fuente_disponible: si
     referencias:
-    - a: 3.A.23
+    - a: 3.A.1
       estado: ok
-      contexto: 'estructura de cada bloque como fallo de mercado: definición, asignación, intervención (nota de trabajo)'
-    - a: 3.A.22
-      estado: ok
-      contexto: El Primer Teorema Fundamental de la Economía del Bienestar es uno de los principales resultados
-    - a: 3.A.23
-      estado: ok
-      contexto: al tratarse de un fallo de mercado, paralelismo con la estructura del 3.A.23 (nota)
-    - a: 3.A.25
-      estado: ok
-      contexto: 'implicaciones de la señalización: capital humano (Becker)'
-    - a: 3.A.10
-      estado: ok
-      contexto: Es el modelo de aseguramiento del tema 3.A.10, aquí con los dos lados del mercado
-    - a: 3.A.10
-      estado: ok
-      contexto: individuo que se enfrenta a una situación de riesgo, caracterizada por la siguiente lotería
-    - a: 3.A.7
-      estado: corregir -> 3.A.10
-      contexto: 'pie de las Imágenes 4-6: «Tema 3.A.7: Teoría de la elección del consumidor en situaciones de riesgo»'
-    - a: 3.A.13
-      estado: ok
-      contexto: nota de trabajo (autorreferencia)
-    - a: 3.A.27
-      estado: ok
-      contexto: modelos de riesgo moral para microfundamentar el paro involuntario (salarios de eficiencia)
-    - a: 3.A.13; 3.A.7; 3.B.27
-      estado: ok
-      contexto: 'Stiglitz-Weiss: comodín'
+      contexto: 'La economía del comportamiento, cuyos sesgos cambian el diseño de los incentivos (extensiones de la conclusión)'
     - a: 3.A.7
       estado: ok
-      contexto: Stiglitz y Weiss (1981), en el marco de la Nueva Economía Keynesiana, racionamiento del crédito
-    - a: 3.A.20
-      estado: ok
-      contexto: 'nota 13: el regulador no conoce los costes de las empresas (Laffont y Tirole)'
+      contexto: 'Salarios de eficiencia de la nueva economía keynesiana (valoración del principal-agente, II.2 e); el racionamiento
+        del crédito como una de las bases de la NEK (III.1)'
     - a: 3.A.8
       estado: ok
-      contexto: 'nota 20: por analogía con la recta de balance del consumo en certidumbre'
-    faltan:
+      contexto: 'Individualismo metodológico: consumidores y productores que optimizan (enganche); la recta de aseguramiento
+        como equivalente de la recta de balance (caja del seguro, I.3.2)'
+    - a: 3.A.10
+      estado: ok
+      contexto: 'Riesgo frente a incertidumbre y utilidad esperada (nota de la contextualización); mercados contingentes como
+        base de los seguros (contextualización); seguro con información simétrica, teorema de Mossin y prima recargada (caja
+        y notaopositor de I.3.2); 2 estados y líneas de certeza en la caja del principal-agente (nota de II.2)'
     - a: 3.A.14
-      por_que: cita juegos bayesianos y equilibrio bayesiano perfecto como forma de analizar la selección adversa, y equilibrios
-        separadores/agrupadores de Spence, sin remitir al tema de teoría de juegos
+      estado: ok
+      contexto: 'Subastas (Nobel de 2020, relevancia); información incompleta e imperfecta en teoría de juegos (nota de la contextualización);
+        equilibrio bayesiano de Nash y bayesiano perfecto (I.1); criterio intuitivo (I.3.1); principio de revelación y diseño
+        de mecanismos (nota de I.3.2); diseño de mecanismos y subastas (extensiones de la conclusión)'
     - a: 3.A.15
-      por_que: teoría de la agencia y contratos (Hart, Holmström, Jensen-Meckling) y disuasión de entrada con información
-        asimétrica (Milgrom-Roberts, nota 12) se tratan con la teoría de la empresa/barreras a la entrada
-    - a: 3.A.25
-      por_que: la referencia a capital humano está sólo en un encabezado de nota; falta en el texto
-    - a: 3.B.26
-      por_que: Stiglitz-Weiss y racionamiento del crédito vinculados a crisis financieras y pánicos bancarios
+      estado: ok
+      contexto: 'Precio límite como señal, Milgrom y Roberts (aplicaciones de I.1); costes de agencia de Jensen y Meckling (aplicaciones
+        de II.1); contratos incompletos y derechos de propiedad (valoración de II.2); teoría de la empresa (extensiones de la
+        conclusión)'
+    - a: 3.A.16
+      estado: ok
+      contexto: 'La información perfecta y simétrica como supuesto 2 de la lista común de las estructuras de mercado (contextualización)'
+    - a: 3.A.17
+      estado: ok
+      contexto: 'Regulación de los monopolios con información asimétrica (relevancia); teoría de la regulación, Laffont y Tirole
+        (1993) (aplicaciones de I.1); discriminación de 2.º grado como autoselección (extensiones de I.3.2); relación de agencia
+        con selección adversa (nota de II.1) y regulador-empresa (aplicaciones de II.1); regulación con información asimétrica
+        (extensiones de la conclusión). Si Víctor aprueba la D1 del 3.A.17, Laffont-Tirole pasa a remitirse al 3.A.20'
+    - a: 3.A.21
+      estado: ok
+      contexto: 'Mercados contingentes completos de Arrow-Debreu (contextualización); la existencia y el 2TFEB necesitan la convexidad
+        (caja del 1TFEB); principio de revelación y diseño de mecanismos (nota de I.3.2); mercados que faltan, Arrow (1963)
+        (I.3.3)'
+    - a: 3.A.22
+      estado: ok
+      contexto: '1TFEB (contextualización y caja de sus supuestos); óptimo restringido frente al segundo óptimo de Lipsey y Lancaster
+        (I.3.1)'
     - a: 3.A.23
-      por_que: la información asimétrica como fallo de mercado y la intervención pública sólo se mencionan como nota de coordinación
+      estado: ok
+      contexto: 'La información asimétrica como fallo de mercado que puede justificar la intervención (I.3.3)'
+    - a: 3.A.25
+      estado: ok
+      contexto: 'Capital humano de Becker frente a la señalización (implicaciones de I.3.1)'
+    - a: 3.A.27
+      estado: ok
+      contexto: 'Salarios de eficiencia de Shapiro y Stiglitz (aplicaciones de II.1, valoración de II.2 y soluciones de II.3.1)'
+    - a: 3.B.3
+      estado: ok
+      contexto: 'Dividendos como señal (Bhattacharya) y orden jerárquico de Myers y Majluf (aplicaciones de I.1)'
+    - a: 3.B.26
+      estado: ok
+      contexto: 'Riesgo moral del prestamista de última instancia y del rescate esperado, Silicon Valley Bank (aplicaciones de
+        II.1); condicionalidad (II.3.2)'
+    - a: 3.B.27
+      estado: ok
+      contexto: 'Supervisión bancaria (relevancia); regulación y supervisión frente al riesgo moral de la banca (II.3.2); regulación
+        financiera (III.1 e implicaciones de III.2)'
+    - a: 3.B.28
+      estado: ok
+      contexto: 'Microcréditos y responsabilidad conjunta (implicaciones de III.2)'
+    - a: 4.A.24
+      estado: ok
+      contexto: 'Avales públicos y líneas de crédito a pymes y exportadores (implicaciones de III.2), solo para ampliar (D138)'
+      uso: ampliar
+      nota: 'Ampliación; el 3.A.13 no depende de ella (D138).'
+    - a: 4.B.2
+      estado: ok
+      contexto: 'Votantes como principal y gobernantes como agente (relevancia de la conclusión), solo para ampliar (D138)'
+      uso: ampliar
+      nota: 'Ampliación; el 3.A.13 no depende de ella (D138).'
+    - a: 4.B.11
+      estado: ok
+      contexto: 'Imposición óptima de Mirrlees como problema de incentivos (extensiones de la conclusión), solo para ampliar (D138)'
+      uso: ampliar
+      nota: 'Ampliación; el 3.A.13 no depende de ella (D138).'
+    faltan: []
+    contradicciones:
+    - tema: 3.B.27
+      que: 'Stiglitz-Weiss con «2 tipos de clientes: muy rentables y arriesgados / menos rentables y menos arriesgados», dinámica
+        de «criterios medios» con prima ex post, E[B] = r̂ × Pr(repago) (sin 1 + r̂ y con E) y «oferta cóncava». Al revisarlo,
+        resumen aplicado con la presentación de la ficha stiglitz-weiss (igual media y distinto riesgo, responsabilidad limitada,
+        3 efectos, 𝔼[B_banco] = (1 + r̂)·Pr(repago | r̂), oferta que se dobla hacia atrás), el gráfico stiglitz-weiss.tex
+        y remisión al 3.A.13 (D070).'
+    - tema: 4.A.20
+      que: 'Misma fórmula E[B] = r̂·Pr(repago)(r̂) y «criterios medios» que el 3.B.27: al revisarlo, resumen con lo imprescindible
+        para cantarse sin el 3.A.13 (ficha stiglitz-weiss).'
+    - tema: 3.A.7
+      que: 'Cita Stiglitz-Weiss con remisión al 3.A.13 (correcto) y desarrolla Shapiro-Stiglitz, cuya referencia es el 3.A.27
+        (ficha salarios-eficiencia). Al revisarlo, si nombra la condición de no escaqueo y remite al 3.A.13, llamarla restricción
+        de compatibilidad de incentivos (IC) y usar e para el esfuerzo (ficha principal-agente).'
+    - tema: 3.A.27
+      que: '«Condición de incentivos [ver tema 3.A.13]» y «esfuerzo endógeno [ver tema 3.A.13]»: remisiones correctas. Al
+        revisarlo, el mismo nombre (IC, «condición de no escaqueo» como su nombre en Shapiro-Stiglitz) y e para el esfuerzo,
+        como el 3.A.13 (fichas principal-agente y salarios-eficiencia).'
+    - tema: 3.A.14
+      que: 'Sin fuente completa (su Word solo esboza trabajadores «buenos y malos»). Tendrá que desarrollar lo que le remite el
+        3.A.13: los juegos bayesianos y el equilibrio bayesiano perfecto, la señalización de Spence como juego (creencias μ,
+        separadores, agrupadores, criterio intuitivo de Cho y Kreps) con la notación de la ficha spence-senalizacion (y, ŷ,
+        c_A, c_B, w_A, w_B), el principio de revelación (Gibbard; Dasgupta, Hammond y Maskin; Myerson) y el diseño de mecanismos
+        (ficha diseno-mecanismos, referencia propuesta [decidir]).'
+    - tema: 3.A.23
+      que: 'Su índice «1.3.2 Información asimétrica [Tema 3.A.13]» y el supuesto «información perfecta sobre precios y características
+        [ver tema 3.A.13]» son correctos. Al revisarlo, resumir la información asimétrica con la terna de condiciones (información
+        oculta, heterogeneidad, conflicto de intereses) y las soluciones públicas de I.3.3 del 3.A.13 (información obligatoria
+        y garantías legales, seguro obligatorio, aseguramiento público, límites a la discriminación), sin repetir los modelos
+        (ficha akerlof-lemons).'
+    - tema: 3.A.25
+      que: 'Presenta Spence como alternativa al capital humano con remisión al 3.A.13 y la misma nota (32) que la nota 18 del
+        3.A.13 original: coherente. Al revisarlo, y para la educación (D129), sin el «arrepentimiento» de Spence (sin fuente):
+        supone que la educación no aumenta la productividad para aislar la señal (ficha spence-senalizacion).'
+    - tema: 3.A.15
+      que: 'Sin fuente. El 3.A.13 le remite la separación entre propiedad y control con los costes de agencia de Jensen y Meckling
+        (1976), los contratos incompletos y derechos de propiedad (Grossman-Hart-Moore, Nobel de Hart en 2016) y el precio límite
+        como señal (Milgrom y Roberts, 1982): al redactarlo, desarrollarlos con la terminología del 3.A.13 (coste de agencia,
+        relación de agencia, PC e IC; ficha principal-agente).'
+    - tema: 3.A.20
+      que: 'Sin fuente. Si Víctor aprueba la D1 del 3.A.17, las 3 remisiones del 3.A.13 a Laffont-Tirole y a la regulación
+        (aplicaciones de I.1, nota y aplicaciones de II.1, extensiones de la conclusión) pasan de 3.A.17 a 3.A.20.'
+    - tema: 3.A.10
+      que: 'En revisión en paralelo; se coordina por el canon y por su P59. Su original titulaba la demanda de seguros «Modelo
+        de Rothschild y Stiglitz, 1976» (es Mossin, 1968) y usaba A = (p_1, p_2; W, W − P) y «−dx_2/dx_1 = −(1−r)/r», los
+        mismos errores que el 3.A.13. Su .tex en revisión ya usa Mossin, la lotería (W̄, W̄ − L; 1 − π, π), el punto A, γ
+        y la pendiente −(1 − γ)/γ, como el 3.A.13: lo comprueba su propia fase canon. Resuelto en la revisión del 3.A.10
+        (19/10/2026; comprobado en su fase canon): Mossin, la misma lotería y en el mismo orden, A, γ, la pendiente, la RMSE
+        y el gráfico seguros.tex construido desde seguro-simetrico.tex (ficha demanda-seguros).'
     modelos:
     - akerlof-lemons
+    - arrow-debreu-incertidumbre
+    - aversion-riesgo-arrow-pratt
+    - competencia-perfecta-equilibrio-parcial
+    - demanda-seguros
     - discriminacion-precios
+    - diseno-mecanismos
     - laffont-tirole
     - principal-agente
     - rothschild-stiglitz
     - salarios-eficiencia
+    - second-best
     - spence-senalizacion
     - stiglitz-weiss
-    revisado: null
+    - teoremas-bienestar
+    - utilidad-esperada-vnm
+    revisado: 2026-10-19
   3.A.14:
     titulo: Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.
     bloque: informacion-y-poder-de-mercado
@@ -3643,11 +3890,15 @@ temas:
       por_que: valor de Shapley / elección colectiva y diseño de mecanismos (Gibbard-Satterthwaite)
     modelos:
     - dilema-prisionero
+    - diseno-mecanismos
     - equilibrio-nash
     - monopolio-bilateral
     - nucleo
     - nucleo-shapley
+    - rothschild-stiglitz
+    - spence-senalizacion
     - subastas
+    - utilidad-esperada-vnm
     revisado: null
   3.A.15:
     titulo: 'La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción.
@@ -3660,6 +3911,8 @@ temas:
     - mercados-impugnables
     - monopolio-bilateral
     - monopolio-multiproducto
+    - principal-agente
+    - spence-senalizacion
     revisado: null
   3.A.16:
     titulo: 'Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo;
@@ -3889,7 +4142,7 @@ temas:
     - tema: 3.A.27
       que: 'Desarrolla el sindicato monopolista (Dunlop, 1944), la Nash generalizada con γ, el derecho a gestionar y los contratos eficientes sin remitir al 3.A.17 para el monopolio bilateral como estructura de mercado (Bowley, indeterminación). Al revisarlo, usar w, L, γ (sindicato) y 1 − γ (empresa), U_S = wL − v(L) o el salario de reserva y U_S^0, B^0, como el 3.A.17, y remitir (ficha monopolio-bilateral).'
     - tema: 3.A.13
-      que: 'La nota 13 remite el modelo de Laffont y Tirole (1991) al 3.A.20; hoy la referencia es el 3.A.17 (anexo A), salvo que Víctor apruebe pasarla al 3.A.20 (D1 del 3.A.17). No menciona la discriminación de 2.º grado como aplicación del screening: remitir al 3.A.17 (II.1.2) con el mismo lenguaje (PC, IC, renta informativa, no distorsión arriba).'
+      que: 'La nota 13 remite el modelo de Laffont y Tirole (1991) al 3.A.20; hoy la referencia es el 3.A.17 (anexo A), salvo que Víctor apruebe pasarla al 3.A.20 (D1 del 3.A.17). No menciona la discriminación de 2.º grado como aplicación del screening: remitir al 3.A.17 (II.1.2) con el mismo lenguaje (PC, IC, renta informativa, no distorsión arriba). Resuelto en la revisión del 3.A.13 (19/10/2026): Laffont y Tirole (1993) con \vertema{3.A.17} y la discriminación de 2.º grado en las extensiones de Rothschild-Stiglitz con ese lenguaje («allí t_1 < t_2»).'
     - tema: 3.A.22
       que: 'Su comentario inicial pide «en el tema 3.A.17… sustituir la variable x por la variable q»: resuelto en el 3.A.17 revisado (la demanda es x(p) y el monopolista vende q = x(p), p = p(q)); la referencia del 3.A.22 al 3.A.17 era un comentario privado y queda como sobra.'
     - tema: 3.A.18, 3.A.19
@@ -3913,6 +4166,7 @@ temas:
     - costes-corto-largo-plazo
     - curva-aprendizaje
     - discriminacion-precios
+    - diseno-mecanismos
     - eficiencia-frontera
     - elasticidad-inversa
     - excedentes-bienestar
@@ -3926,8 +4180,10 @@ temas:
     - monopsonio
     - nucleo
     - price-cap
+    - principal-agente
     - ramsey-boiteux
     - rent-seeking-tullock
+    - rothschild-stiglitz
     - second-best
     - tarifa-dos-partes
     - yardstick
@@ -4111,10 +4367,12 @@ temas:
     modelos:
     - averch-johnson
     - captura-regulador
+    - diseno-mecanismos
     - eficiencia-frontera
     - laffont-tirole
     - monopolio-natural
     - price-cap
+    - principal-agente
     - yardstick
     revisado: null
   3.A.21:
@@ -4224,7 +4482,9 @@ temas:
         la nota histórica del tanteo, que va completa en 3.A.21 (I.1). Resuelto en la revisión del 3.A.16 (17/10/2026): gráfico y tabla copiados sin cambios, p^D y p^S, nota del tanteo acortada; Musgrave con un matiz que el 3.A.21 no tiene (pendientes-coherencia.md).'
     - tema: 3.A.10
       que: 'Mismo texto de los bienes contingentes y el paraguas (comentario «Coordinar en temas 3.A.10 y 3.A.21»): quedarse con
-        la elección individual y remitir a 3.A.21 para el equilibrio (ficha arrow-debreu-incertidumbre).'
+        la elección individual y remitir a 3.A.21 para el equilibrio (ficha arrow-debreu-incertidumbre). Resuelto en la revisión
+        del 3.A.10 (19/10/2026): I.3 se queda con la elección individual, la misma tangencia y el mismo ejemplo, con remisión
+        al 3.A.21.'
     - tema: 3.A.25
       que: '«Se cumplen las propiedades de existencia, unicidad y estabilidad por trabajar con supuestos competitivos [ver tema
         3.A.14]»: la competencia no garantiza unicidad ni estabilidad (SMD) y la remisión es a 3.A.21 (ya corregir -> 3.A.21).'
@@ -4244,8 +4504,10 @@ temas:
       que: 'Usa la caja de Edgeworth y el equilibrio general sin remitir a 3.A.21; al revisarlo, álgebra de Jones con s_{Lj}, ℓ_{Lj}
         y x̂ (notacion.md § 10) y los gráficos costes-unitarios y rybczynski del 3.A.21 (ficha heckscher-ohlin).'
     modelos:
+    - akerlof-lemons
     - arrow-debreu-incertidumbre
     - competencia-perfecta-equilibrio-parcial
+    - diseno-mecanismos
     - dualidad-produccion
     - egc
     - equilibrio-general-walras
@@ -4444,11 +4706,13 @@ temas:
     - a: 4.A.6 / 3.B.31
       por_que: Cap and trade (mercado de derechos de emisión, EU ETS).
     modelos:
+    - akerlof-lemons
     - bowen
     - cap-and-trade
     - clarke-groves
     - coase
     - dilema-prisionero
+    - diseno-mecanismos
     - dualidad-produccion
     - equilibrio-general-walras
     - externalidades-equilibrio-general
@@ -4522,6 +4786,7 @@ temas:
     - buchanan-tullock-mayoria-optima
     - clarke-groves
     - curva-lorenz
+    - diseno-mecanismos
     - downs-hotelling
     - fbs-rawlsiana
     - fbs-utilitarista
@@ -4531,6 +4796,7 @@ temas:
     - logrolling
     - niskanen
     - paradoja-condorcet
+    - utilidad-esperada-vnm
     - votante-mediano
     revisado: null
   3.A.25:
@@ -4581,6 +4847,7 @@ temas:
     - monopsonio
     - oaxaca-blinder
     - oferta-trabajo
+    - spence-senalizacion
     revisado: null
   3.A.26:
     titulo: Desempleo friccional. La curva de Beveridge, el modelo de búsqueda y emparejamiento de Diamond, Mortensen y Pissarides.
@@ -4669,12 +4936,15 @@ temas:
     - a: 3.A.7
       por_que: Salarios de eficiencia y contratos implícitos como rigideces reales de la NEK.
     modelos:
+    - aversion-riesgo-arrow-pratt
     - contratos-implicitos
     - monopolio-bilateral
     - monopsonio
     - nash-negociacion
+    - principal-agente
     - salarios-eficiencia
     - sindicato-monopolista
+    - utilidad-esperada-vnm
     revisado: null
   3.A.28:
     titulo: La tasa natural de paro y la NAIRU. La persistencia del desempleo.
@@ -4811,6 +5081,7 @@ temas:
       por_que: Los modelos RBC son la aplicación macro principal del agente representativo.
     modelos:
     - arrow-debreu-incertidumbre
+    - aversion-riesgo-arrow-pratt
     - fisher-intertemporal
     - hamiltoniano
     - olg-samuelson-diamond
@@ -4918,12 +5189,14 @@ temas:
       por_que: Bienes duraderos como inversión (enfoque de stock con costes de ajuste).
     modelos:
     - ahorro-precaucion
+    - aversion-riesgo-arrow-pratt
     - bienes-duraderos
     - ciclo-vital
     - fisher-intertemporal
     - hall
     - keynes-renta-absoluta
     - renta-permanente
+    - utilidad-esperada-vnm
     revisado: null
   3.A.34:
     titulo: Teorías de la inversión en bienes de equipo. Incertidumbre e irreversibilidad de la inversión. Implicaciones de
@@ -4999,6 +5272,7 @@ temas:
     - a: 3.A.36
       por_que: Implicaciones para la elección del instrumento (objetivo de agregados frente a tipos).
     modelos:
+    - aversion-riesgo-arrow-pratt
     - baumol-tobin
     - cagan
     - cia
@@ -5918,6 +6192,7 @@ temas:
     - mm-dividendos
     - modigliani-miller
     - pecking-order
+    - spence-senalizacion
     - wacc
     revisado: null
   3.B.4:
@@ -6001,6 +6276,7 @@ temas:
     - gordon-shapiro
     - marris
     - multiplos
+    - principal-agente
     - stigler-costes
     revisado: null
   3.B.5:
@@ -7399,12 +7675,15 @@ temas:
     modelos:
     - analisis-tecnico
     - apt
+    - aversion-riesgo-arrow-pratt
     - capm
     - dcf
     - emh
     - markowitz
+    - prospect-theory
     - sharpe-diagonal
     - tobin-cartera
+    - utilidad-esperada-vnm
     revisado: null
   3.B.24:
     titulo: 'Análisis de los instrumentos de renta fija. Determinación del precio y rendimiento de los bonos. La estructura
@@ -7514,6 +7793,8 @@ temas:
     modelos:
     - diamond-dybvig
     - doom-loop
+    - principal-agente
+    - stiglitz-weiss
     revisado: null
   3.B.27:
     titulo: Regulación financiera bancaria y no-bancaria. Fundamentos teóricos y evidencia empírica.
@@ -7589,9 +7870,11 @@ temas:
     - a: 3.A.20
       por_que: captura del regulador y regulación óptima
     modelos:
+    - akerlof-lemons
     - basilea-capital
     - cournot-bancos
     - diamond-dybvig
+    - principal-agente
     - stiglitz-weiss
     revisado: null
   3.B.28:
@@ -8869,6 +9152,7 @@ temas:
     - a: 4.B.16
       por_que: incentivos del IRPF a la inversión en empresas nuevas
     modelos:
+    - akerlof-lemons
     - diamond-dybvig
     - doom-loop
     - lohmann-ruchti
@@ -9101,6 +9385,7 @@ temas:
     - gravedad
     - ineficiencia-x
     - melitz
+    - principal-agente
     - stiglitz-weiss
     revisado: null
   4.A.26:
@@ -9431,6 +9716,7 @@ temas:
     - ciclo-politico-nordhaus
     - consejos-fiscales
     - constitucion-fiscal
+    - diseno-mecanismos
     - downs-hotelling
     - funcion-bienestar-social
     - gibbard-satterthwaite
@@ -9443,6 +9729,7 @@ temas:
     - niskanen
     - olson-grupos-interes
     - paradoja-condorcet
+    - principal-agente
     - regla-gasto
     - rent-seeking-tullock
     - teoremas-bienestar
@@ -9508,6 +9795,7 @@ temas:
     - a: 4.B.6
       por_que: Evaluación de políticas activas de empleo (efectos desplazamiento y peso muerto).
     modelos:
+    - akerlof-lemons
     - atkinson-indice
     - curva-lorenz
     - dependencia-saad
@@ -9523,6 +9811,7 @@ temas:
     - progresividad
     - renta-basica-universal
     - reynolds-smolensky
+    - rothschild-stiglitz
     - sanidad-bismarck-beveridge
     - teoremas-bienestar
     revisado: null
@@ -10113,6 +10402,7 @@ temas:
     - informe-lagares
     - mirrlees
     - pigou
+    - principal-agente
     - ramsey
     - ramsey-boiteux
     - ramsey-diamond-mirrlees
@@ -10360,6 +10650,7 @@ temas:
     - accion-de-oro
     - averch-johnson
     - captura-regulador
+    - diseno-mecanismos
     - eficiencia-frontera
     - empresa-publica
     - fallos-de-mercado

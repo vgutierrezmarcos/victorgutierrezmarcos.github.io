@@ -1,7 +1,7 @@
 # Menú de contratos de Laffont y Tirole (1986)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (anexo A, «Regulación y control del monopolio»; revisado el 17/10/2026, A.3), reescrito desde Laffont y Tirole (1993). **[decidir]** Propuesta del 3.A.17 (D1, decisión provisional del orquestador pendiente de Víctor): cuando se redacte el 3.A.20 («desarrollos en presencia de información asimétrica» en el título), pasarle la referencia de este modelo, de Averch-Johnson, del *price cap* y del *yardstick*, y dejar el 3.A.17 en «mención» con remisión; Ramsey-Boiteux, la tarifa en dos partes y el monopolio natural se quedan en el 3.A.17.
-- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 3.A.13 (mención: hoy remite el modelo al 3.A.20), 3.A.20 (previsto, sin fuente; posible referencia, D1).
+- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 3.A.13 (mención; hecho, 19/10/2026: aplicación de la teoría de la regulación en I.1 y en la definición del riesgo moral, remitiendo al 3.A.17), 3.A.20 (previsto, sin fuente; posible referencia, D1).
 - **Manuales de referencia:** Laffont y Tirole (1986), *JPE*; Laffont y Tirole (1993), *A Theory of Incentives in Procurement and Regulation*, cap. 1 y 3; Laffont y Tirole (1991), *QJE* (captura).
 
 ## Presentación de referencia (3.A.17, anexo A)
@@ -22,13 +22,13 @@ Gráfico: no tiene; se cuenta con las ecuaciones.
 |---|---|---|---|---|
 | 3.A.17 | Regulación con información asimétrica | desarrollo en el anexo A (hecho, 17/10/2026; no se canta) | Supuestos, óptimo con renta informativa, menú, dilema; enlace con el 2.º grado y con 3.A.13 | — |
 | 3.A.20 | Regulación óptima con información asimétrica | previsto (sin fuente); referencia si se aprueba D1 | La presentación de arriba, con la misma notación | — |
-| 3.A.13 | Principal-agente | mención | La regulación como aplicación de la agencia (selección adversa y riesgo moral), remitiendo a 3.A.17 (o a 3.A.20 si se aprueba D1) | El modelo |
+| 3.A.13 | Selección adversa y agencia | mención (hecho, 19/10/2026) | Una viñeta en las aplicaciones de la selección adversa (el regulador no conoce los costes; menú que equilibra eficiencia y renta informativa; Laffont y Tirole, 1993) y una en las del riesgo moral (esfuerzo en reducir costes), con `\vertema{3.A.17}` (a 3.A.20 si se aprueba D1); la relación de agencia con selección adversa, en nota. Ficha `principal-agente` | El modelo |
 | 4.B.15 | Empresa pública y regulación | resumen (hoy mención; D139 (13/10/2026)) | Precio fijo frente a coste incrementado; p = bF + (1 − b)C | La formalización |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: «el principal no observa el coste», «sin conocer la distribución», «*trade-off* eficiencia e igualdad», contrato *fixed-cost*, cost plus «óptimo con información perfecta», efecto *ratchet* traducido de Wikipedia, *regulatory lag* «entre la revisión y su aplicación». **Resuelto** (17/10/2026), reescrito desde Laffont y Tirole (1993).
 - λ en Ramsey-Boiteux y en Laffont-Tirole en el mismo tema: **resuelto**, λ en los 2 con una nota (la ficha proponía μ para el multiplicador; ya no).
 - Signo de la transferencia: 4.B.15 escribe t = a + b(C − C^a); con b como potencia debe restarse (la empresa soporta el sobrecoste), como el 3.A.17.
-- 3.A.13 (sin revisar): la nota 13 remite el modelo al 3.A.20; hoy la referencia es el 3.A.17 (anexo A). Si se aprueba D1, la remisión al 3.A.20 pasa a ser la correcta.
+- 3.A.13 original: la nota 13 remitía el modelo al 3.A.20 con «Laffont y Tirole (1991)». **Resuelto** (19/10/2026): Laffont y Tirole (1993) y `\vertema{3.A.17}`. Si se aprueba D1, cambiar esas 3 remisiones del 3.A.13 a 3.A.20 (`pendientes-coherencia.md`, condicional).
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,0 +1,51 @@
+% Actitud ante el riesgo con u(x) = sqrt(x): equivalente cierto, prima de riesgo,
+% prima justa y prima máxima (ejemplo del seguro del texto; sustituye al dibujo a mano
+% del original).
+% Riqueza 64; pérdida 48 con probabilidad 1/2: lotería (64, 16; 1/2, 1/2).
+%   u(16) = 4, u(64) = 8.
+%   E[x] = 40;  E[u(x)] = (4 + 8)/2 = 6 (la cuerda pasa por (40, 6)).
+%   u(E[x]) = sqrt(40) = 6,32 > 6: averso.
+%   Equivalente cierto: sqrt(xi) = 6 -> xi = 36 (punto (36, 6) de la curva).
+%   Prima de riesgo rho = 40 - 36 = 4.
+%   Prima justa = pérdida esperada = 48/2 = 24 = 64 - 40.
+%   Prima máxima = 64 - xi = 28 = 24 + 4.
+% Escala: x = 0,1 cm por unidad de riqueza, y = 0,7 cm por unidad de utilidad.
+% Elaboración propia a partir de Mas-Colell, Whinston y Green (1995, §6.C).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.15cm,y=0.75cm,declare function={u(\x)=sqrt(\x);}]
+  % 1: ejes: riqueza y utilidad de Bernoulli
+  \capa{1}{\ejes{$x$}{$u(x)$}{76}{9.6}}
+  % 2: utilidad de Bernoulli cóncava
+  \capa{2}{\draw[curva1] plot[domain=1:72,samples=80] (\x,{u(\x)}) node[etiqueta,right] {$u(x)=\sqrt{x}$};}
+  % 3: los 2 resultados de la lotería: 16 y 64
+  \capa{3}{\proyeccion{(16,4)}{$16$}{$u(16)=4$}}
+  \capa{3}{\node[punto] (A) at (16,4) {};}
+  \capa{3}{\proyeccion{(64,8)}{$64$}{$u(64)=8$}}
+  \capa{3}{\node[punto] (B) at (64,8) {};}
+  % 4: la cuerda: utilidad esperada de las loterías entre 16 y 64
+  \capa{4}{\draw[curva2,dashed] (A) -- (B);}
+  % 5: valor esperado E = 40 y su utilidad esperada 6 sobre la cuerda
+  \capa{5}{\draw[guia] (40,6) -- (40,0);}
+  \capa{5}{\node[etiqueta,anchor=north west,xshift=-3pt] at (40,0) {$\mathbb{E}[\tilde{x}]=40$};}
+  \capa{5}{\node[punto,fill=tceeazul] at (40,6) {};}
+  % 6: utilidad del valor esperado, mayor que la utilidad esperada (averso)
+  \capa{6}{\draw[guia] (40,6) -- (40,{u(40)});}
+  \capa{6}{\draw[guia] (40,{u(40)}) -- (0,{u(40)});}
+  \capa{6}{\node[etiqueta,anchor=south west,font=\footnotesize] at (0,{u(40)}) {$u(\mathbb{E}[\tilde{x}])=\sqrt{40}\approx 6{,}32$};}
+  \capa{6}{\node[punto] at (40,{u(40)}) {};}
+  % 7: equivalente cierto: la cantidad segura con la misma utilidad, 6
+  \capa{7}{\draw[guia] (40,6) -- (0,6) node[left,text=black] {$\mathbb{E}[u(\tilde{x})]=6$};}
+  \capa{7}{\draw[guia] (36,6) -- (36,0);}
+  \capa{7}{\node[etiqueta,anchor=north east,xshift=3pt] at (36,0) {$\xi=36$};}
+  \capa{7}{\node[punto,fill=tceerojo] at (36,6) {};}
+  % 8: prima de riesgo rho = 40 - 36
+  \capa{8}{\draw[<->,thick,tceerojo] (36,1.4) -- node[etiqueta,below,text=tceerojo,fill=white,inner sep=1pt] {$\rho=4$} (40,1.4);}
+  % 9: prima justa = 64 - 40
+  \capa{9}{\draw[<->,thick,tceeverde] (40,1.4) -- node[etiqueta,above,text=tceeverde] {prima justa $=24$} (64,1.4);}
+  % 10: prima máxima = 64 - 36 = prima justa + prima de riesgo
+  \capa{10}{\draw[<->,thick,tceedorado] (36,3.0) -- node[etiqueta,above,text=tceedorado] {prima máxima $=28$} (64,3.0);}
+\end{tikzpicture}
+\end{document}

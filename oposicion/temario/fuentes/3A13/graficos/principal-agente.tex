@@ -1,0 +1,64 @@
+% El modelo principal-agente en una caja de Edgeworth (Fernández de Castro y
+% Tugores, 1992, cap. 8). Pago con éxito w_E en horizontal, con fracaso w_F en vertical.
+% Caja x_E × x_F = 12 × 7; el agente mide desde O_A (0, 0) y el principal desde
+% O_P (12, 7). Probabilidad de éxito con esfuerzo alto pi = 2/3.
+%   Línea de certeza del agente: w_F = w_E. Del principal: x_E - w_E = x_F - w_F,
+%   w_F = w_E - 5.
+%   Isobeneficio del principal (neutral): pi w_E + (1 - pi) w_F = cte, pendiente
+%   -pi/(1 - pi) = -2.
+%   Agente averso, u(w) = sqrt(w). PC (esfuerzo alto, u(w*) = U^R + v(e^A) = 2):
+%   (2/3) sqrt(w_E) + (1/3) sqrt(w_F) = 2  ->  w_F = (6 - 2 sqrt(w_E))^2,
+%   tangente en Z = (4, 4) a la isobeneficio w_F = 12 - 2 w_E (pendiente -2).
+%   Frontera de la IC: sqrt(w_E) - sqrt(w_F) = 0,9  ->  w_F = (sqrt(w_E) - 0,9)^2;
+%   la IC se cumple por debajo.
+%   T (PC y frontera de la IC): sqrt(w_E) = 2,3, sqrt(w_F) = 1,4 -> T = (5,29; 1,96).
+%   Pago esperado en T: (2/3) 5,29 + (1/3) 1,96 = 4,18 > 4 (coste de agencia):
+%   isobeneficio por T, w_F = 12,54 - 2 w_E, más cerca de O_P.
+%   V (agente neutral, venta del negocio): isobeneficio de Z sobre la línea de
+%   certeza del principal: 12 - 2 w = w - 5 -> V = (17/3, 2/3).
+% Elaboración propia a partir de Fernández de Castro y Tugores (1992, cap. 8)
+% y Laffont y Martimort (2002, cap. 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={pc(\x)=(6-2*sqrt(\x))^2; ic(\x)=(sqrt(\x)-0.9)^2;
+      isoZ(\x)=12-2*\x; isoT(\x)=12.54-2*\x;}]
+  \def\XE{12}\def\XF{7}
+  % 1: la caja y los 2 orígenes
+  \capa{1}{\draw[thick] (0,0) rectangle (\XE,\XF);}
+  \capa{1}{\node[below left] at (0,0) {$O_{\mathrm{A}}$};}
+  \capa{1}{\draw[eje] (0.3,-0.45) -- (1.8,-0.45) node[right] {$w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (-0.45,0.3) -- (-0.45,1.8) node[above] {$w_{\mathrm{F}}$};}
+  \capa{1}{\node[above right] at (\XE,\XF) {$O_{\mathrm{P}}$};}
+  \capa{1}{\draw[eje] (\XE-0.3,\XF+0.45) -- (\XE-1.8,\XF+0.45) node[left] {$x_{\mathrm{E}}-w_{\mathrm{E}}$};}
+  \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[below] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thin] (0,-1) -- (\XE,-1) node[midway,below=5pt] {$x_{\mathrm{E}}$};}
+  \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt},thin] (-1.1,0) -- (-1.1,\XF) node[midway,left=5pt] {$x_{\mathrm{F}}$};}
+  % 2: las líneas de certeza del agente y del principal
+  \capa{2}{\draw[thin,tceemorado] (0,0) -- (\XF,\XF) node[pos=0.22,sloped,above,font=\footnotesize] {línea de certeza del agente};}
+  \capa{2}{\draw[thin,tceedorado] (\XE-\XF,0) -- (\XE,\XF) node[pos=0.8,sloped,above,font=\footnotesize] {línea de certeza del principal};}
+  % 3: recta de isobeneficio del principal, de pendiente -pi/(1-pi)
+  \capa{3}{\draw[curva4] plot[domain=2.5:6,samples=2] (\x,{isoZ(\x)});}
+  \capa{3}{\node[etiqueta,text=tceedorado,anchor=east,font=\footnotesize] at (2.6,6.3) {$-\dfrac{\pi}{1-\pi}$};}
+  % 4: condición de participación del agente averso (su curva de indiferencia U^R)
+  \capa{4}{\draw[curva1] plot[domain=2.81:8.6,samples=60] (\x,{pc(\x)}) node[etiqueta,above right] {PC};}
+  % 5: Z, first best: tangencia sobre la línea de certeza del agente
+  \capa{5}{\node[punto] (Z) at (4,4) {};}
+  \capa{5}{\node[etiqueta,left=2pt] at (Z) {$Z$};}
+  % 6: frontera de la IC: solo valen los contratos de debajo
+  \capa{6}{\draw[curva2] plot[domain=0.81:9,samples=60] (\x,{ic(\x)}) node[etiqueta,above left] {IC};}
+  \capa{6}{\draw[->,thick,tceeazul] (8,{ic(8)}) -- ++(0.5,-0.5);}
+  % 7: T, donde la PC corta a la frontera de la IC
+  \capa{7}{\node[punto] (T) at (5.29,1.96) {};}
+  \capa{7}{\draw[thin,tceegris] (T) -- (6.45,1.6) node[etiqueta,right=-1pt,text=black] {$T$};}
+  % 8: isobeneficio por T, más cerca de O_P: coste de agencia
+  \capa{8}{\draw[curva4,dashed] plot[domain=2.77:6.27,samples=2] (\x,{isoT(\x)});}
+  \capa{8}{\draw[flecha] (3.0,6.0) -- (3.27,6.0);}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=left,anchor=west] at (3.3,6.2) {coste de agencia};}
+  % 9: V: con un agente neutral, venta del negocio (línea de certeza del principal)
+  \capa{9}{\node[punto] (V) at ({17/3},{2/3}) {};}
+  \capa{9}{\node[etiqueta,below left] at (V) {$V$};}
+\end{tikzpicture}
+\end{document}

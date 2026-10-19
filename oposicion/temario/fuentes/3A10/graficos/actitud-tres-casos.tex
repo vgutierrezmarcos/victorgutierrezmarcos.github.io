@@ -1,0 +1,33 @@
+% Las 3 actitudes ante el riesgo con 2 resultados igual de probables, x_1 = 1 y x_2 = 5
+% (E[x] = 3). En cada panel, la cuerda entre (x_1, u(x_1)) y (x_2, u(x_2)) da en E[x]
+% la utilidad esperada E[u] = (u(x_1) + u(x_2))/2, y la curva da u(E[x]).
+%   Averso:  u = 2,2 ln x + 1,2: u(1) = 1,2, u(5) = 4,74; E[u] = 2,97 < u(3) = 3,62.
+%   Neutral: u = 0,7 x + 0,3: u(1) = 1, u(5) = 3,8;  E[u] = u(3) = 2,4.
+%   Amante:  u = 0,16 x^2 + 0,3: u(1) = 0,46, u(5) = 4,3; E[u] = 2,38 > u(3) = 1,74.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\newcommand{\panel}[4]{% #1 desplazamiento, #2 función, #3 título, #4 estilo de la curva
+  \begin{scope}[xshift=#1,declare function={f(\x)=#2;}]
+    \ejes{$x$}{$u$}{7}{5.2}
+    \draw[#4] plot[domain=0.6:5.6,samples=50] (\x,{f(\x)});
+    \draw[curva2,dashed,thick] (1,{f(1)}) -- (5,{f(5)});
+    \draw[guia] (1,{f(1)}) -- (1,0) node[below,text=black] {$x_1$};
+    \draw[guia] (5,{f(5)}) -- (5,0) node[below,text=black] {$x_2$};
+    \draw[guia] (3,{max(f(3),(f(1)+f(5))/2)}) -- (3,0) node[below,text=black] {$\mathbb{E}[\tilde{x}]$};
+    \node[punto] at (1,{f(1)}) {};
+    \node[punto] at (5,{f(5)}) {};
+    \node[punto,fill=tceeazul] at (3,{(f(1)+f(5))/2}) {};
+    \node[punto] at (3,{f(3)}) {};
+    \node[etiqueta,font=\small\itshape,text=tceegris] at (3.5,-2.1) {#3};
+  \end{scope}}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm]
+  % 1: averso: u cóncava, la cuerda por debajo de la curva
+  \capa{1}{\panel{0cm}{2.2*ln(\x)+1.2}{Averso: $u''<0$}{curva1}}
+  % 2: neutral: u lineal, la cuerda sobre la curva
+  \capa{2}{\panel{3.8cm}{0.7*\x+0.3}{Neutral: $u''=0$}{curva1}}
+  % 3: amante: u convexa, la cuerda por encima de la curva
+  \capa{3}{\panel{7.6cm}{0.16*\x*\x+0.3}{Amante: $u''>0$}{curva1}}
+\end{tikzpicture}
+\end{document}

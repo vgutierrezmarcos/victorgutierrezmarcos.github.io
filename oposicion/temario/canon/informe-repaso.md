@@ -11,13 +11,13 @@ Autor: Víctor Gutiérrez Marcos
 | Concepto | Cifra |
 |---|---|
 | Temas del temario | 146 (3.A: 45; 3.B: 45; 4.A: 30; 4.B: 26) |
-| Temas revisados | 7 (3.A.8, 3.A.9 y 3.A.11 el 13/10/2026; 3.A.12 y 3.A.21 el 14/10/2026; 3.A.16 el 17/10/2026, con el que queda revisado todo el bloque del modelo neoclásico básico; 3.A.17 el 17/10/2026, el primero del bloque de información y poder de mercado) |
+| Temas revisados | 9 (3.A.8, 3.A.9 y 3.A.11 el 13/10/2026; 3.A.12 y 3.A.21 el 14/10/2026; 3.A.16 el 17/10/2026, con el que queda revisado todo el bloque del modelo neoclásico básico; 3.A.17 el 17/10/2026, el primero del bloque de información y poder de mercado; 3.A.13 y 3.A.10 el 19/10/2026, cerrados en paralelo con la notación común del seguro) |
 | Temas con fuente que corresponde al título | 72 |
 | Temas con fuente parcial (incompleta o con restos del título anterior) | 5 (3.A.12, 3.A.14, 3.A.22, 3.A.23, 4.A.16) |
 | Temas cuyo Word es de otro número (renumerados en el 4.º) | 20 |
 | Temas cuyo Word es del título antiguo | 16 |
 | Temas **sin fuente** (hay que escribirlos) | 33 |
-| Modelos, escuelas, políticas e instituciones compartidos (2+ temas) | 211 en el mapa y 231 fichas en la consolidación; hoy (17/10/2026) 228 en el mapa y 248 fichas en `modelos/` (las de los temas revisados, entre ellas `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral` del 3.A.17) |
+| Modelos, escuelas, políticas e instituciones compartidos (2+ temas) | 211 en el mapa y 231 fichas en la consolidación; hoy (19/10/2026) 236 en el mapa y 256 fichas en `modelos/` (las de los temas revisados, entre ellas `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral` del 3.A.17, `akerlof-lemons`, `spence-senalizacion`, `rothschild-stiglitz`, `principal-agente` y `diseno-mecanismos` del 3.A.13 y `utilidad-esperada-vnm`, `aversion-riesgo-arrow-pratt` y `demanda-seguros` del 3.A.10) |
 | Referencias «[ver tema …]» inventariadas | 1.172: 947 bien, **208 a corregir**, **17 sobran** (en 74 temas) |
 | Referencias que faltan (sobre todo al tema de referencia de cada modelo) | 731 |
 | Incoherencias internas detectadas en los inventarios | 357 |
@@ -85,10 +85,10 @@ Formato: `apunta a → debería apuntar a` (×n si se repite). La mayoría viene
 | 3.A.4 | 3 | 3.A.26→3.A.27; 3.B.21→3.B.20; 3.A.28→3.A.25 | — |
 | 3.A.6 | 2 | 3.A.17→3.A.14; 3.A.19→3.A.14 | — |
 | 3.A.7 | 2 | 3.A.38→3.A.40; 3.A.41→3.A.37 | — |
-| 3.A.10 | 2 | 3.B.24→3.A.1, 3.B.23; 3.B.17, 3.B.27→3.B.26, 3.B.27 | 3.A.10 (×2) |
+| 3.A.10 | 0 | ~~3.B.24→3.A.1, 3.B.23; 3.B.17, 3.B.27→3.B.26, 3.B.27~~: corregidas; las 2 autorreferencias desaparecen; añadidas 3.A.1, 3.A.11 (Sandmo), 3.A.12, 3.A.14, 3.A.34 y 3.A.35; revisado el 19/10/2026 (15 temas de destino, todos `ok`) | — |
 | 3.A.11 | 4 | 3.A.9→3.A.11; 3.A.10→3.A.12; 3.A.11, 3.A.14-3.A.17→3.A.15, 3.A.16, 3.A.19; 3.A.23→3.A.22 | — |
 | 3.A.12 | 0 | ~~3.A.9→3.A.8~~: desfasada, la remisión de Slutsky a 3.A.9 es la correcta (D139); revisado el 14/10/2026 | — |
-| 3.A.13 | 1 | 3.A.7→3.A.10 | — |
+| 3.A.13 | 0 | ~~3.A.7→3.A.10~~ (pie de las imágenes 4-6: desaparece, la fuente pasa a MWG); ~~3.A.20~~ de Laffont-Tirole → 3.A.17; las notas privadas (3.A.23 ×2, autorreferencia, «comodín») no se publican; las 5 que faltaban (3.A.14, 3.A.15, 3.A.25, 3.B.26, 3.A.23) y otras nuevas añadidas (3.A.16, 3.A.17, 3.A.21, 3.B.3, 3.B.28, 3.A.1…; 4.A.24, 4.B.2 y 4.B.11 solo para ampliar); revisado el 19/10/2026 | — |
 | 3.A.16 | 0 | ~~3.A.14→3.A.16 (×2)~~: eran notas privadas, no se publican; ~~3.A.11→3.A.12 (×2)~~: corregidas; la telaraña remitida a 3.A.10 pasa a 3.A.6 y 3.A.5; revisado el 17/10/2026 | — |
 | 3.A.17 | 0 | ~~3.B.4→3.A.15~~ y ~~3.B.4→3.B.39~~: corregidas; ~~3.A.14→3.A.16~~ y la nota de 3.A.23 (von Mises, Lange, Hayek, Hurwicz): eran comentarios privados, no se publican; 13 referencias que faltaban añadidas (3.A.9, 3.A.13, 3.A.14, 3.A.21, 3.A.25, 3.A.27…); revisado el 17/10/2026 | — |
 | 3.A.18 | 2 | 3.A.6→3.A.8; 3.A.10→3.A.14 | — |
@@ -164,7 +164,7 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 |---|---|
 | 3.A.6 | Barro-Gordon: CPO con términos al cuadrado y solución π = π* + (α/γ)(Ū − U*)² (es lineal); RBC: W_t y R_t sin (1−α) y α; PTF como suma y como producto a la vez; ln A_t = ρ_A A_{t−1} mezcla niveles y logaritmos |
 | 3.A.9 | Ley de Walras atribuida a la «estricta monotonía» (es la insaciabilidad local); Cobb-Douglas α, β llamada «lineal en logaritmos» |
-| 3.A.10 | El modelo básico de demanda de seguros con información simétrica se atribuye a Rothschild-Stiglitz (1976); nota 6 confunde certidumbre con competencia perfecta |
+| 3.A.10 | Resuelto el 19/10/2026 (unos 40 errores): la demanda de seguros con información simétrica atribuida a Rothschild-Stiglitz (es Mossin, 1968), con A = (p_1, p_2; W, W − P) y la pendiente con el signo cambiado; axiomas sobre ℝⁿ₊ y «independencia de alternativas irrelevantes»; vNM «ordinal» por admitir «transformaciones lineales crecientes»; «ESI ≡ σ = 1/θ»; la aversión como «condición necesaria» del ahorro precautorio; media-varianza por el teorema central del límite; crítica de los casinos atribuida a Friedman-Savage (es de Markowitz); Savage con la independencia de Anscombe-Aumann; Schmeidler confundido con Quiggin; criterio de Savage como suma de pesares; *Theory of Games* «de 1994»; FGD «vía presupuestos» y Grecia con 50.000 M€ |
 | 3.A.11 | Fórmula de la proporcionalidad de escala mal escrita (dz_L/dz_L); σ = 0 y σ = 1 presentados como casos exactos de la CES (son límites) |
 | 3.A.12 | Falta el epígrafe de aplicaciones empíricas del título (resuelto el 14/10/2026: bloque IV nuevo) |
 | 3.A.14 | Equilibrio de Nash con desigualdad estricta; racionalidad de coaliciones con ≤; pago del segundo precio sin definir j; «EBPS» |
@@ -172,7 +172,9 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | 3.A.22 | Utilidades «ordinales» con utilidad marginal decreciente; atribuye a Debreu propiedades de la función de utilidad; «2×2×2» con 10 incógnitas |
 | 3.A.23 | Bienes públicos: X fijo y a la vez FPP T(X,G) = 0; externalidad en consumo (analítica) y en producción (gráfica) sin enlazar; Clarke-Groves sin terminar |
 | 3.A.24 | Mezcla cardinalidad y comparabilidad interpersonal; problema del planificador vacío; «ley D'Hont» |
+| 3.A.13 | Resuelto el 19/10/2026 (más de 25 errores): «distorsión en la cumbre» atribuida a los buenos conductores (es al revés: no hay distorsión arriba); «Arrow-Hahn» por Arrow-Debreu; principio de revelación «de Myerson (1979)» como base de un modelo de 1976; programa del agente con PC e IC (es el del principal); w(e) con esfuerzo inobservable; «equilibrio aunador» en Akerlof; pendiente del seguro con el signo cambiado; Stiglitz-Weiss con proyectos «muy rentables y arriesgados», E[B] = r̂ × Pr y «oferta cóncava»; QE que desplaza la oferta «hacia arriba»; dato de efectivo del S&P 500 sin fuente; riesgo moral sin resolver (caso c con «[…]», soluciones y valoración vacías) |
 | 3.A.17 | Resuelto el 17/10/2026 (más de 25 errores): regla de Ramsey-Boiteux con λ al revés («cuanto mayor λ, menor el margen»); Lerner multiproducto con la elasticidad cruzada equivocada; 1.er grado «con ineficiencia asignativa»; 3.er grado como «mejora de Pareto»; economías de alcance como definición del monopolio natural multiproducto; pruebas de subsidios cruzados como condición suficiente; monopsonio con «paro involuntario» y GMg = oferta; tarifa de punta CF/n + CMg·q; Laffont-Tirole mal contado; Mill, Marshall, Olson y Shleifer mal fechados o escritos |
+| 3.B.27, 4.A.20 | Stiglitz-Weiss con «2 tipos de clientes muy rentables y arriesgados / menos rentables y menos arriesgados», «criterios medios», E[B] = r̂ × Pr(repago) y «oferta cóncava» (el modelo supone igual media y distinto riesgo; 𝔼[B_banco] = (1 + r̂)·Pr; la oferta se dobla hacia atrás; ficha `stiglitz-weiss`) |
 | 3.A.25 | Su anexo copia el anexo 1 del 3.A.17 original: GMg llamado «curva de oferta de trabajo» y paro involuntario con monopsonio (está sobre la oferta: no hay paro involuntario); W y Π (ficha `monopsonio`) |
 | 3.A.36, 3.A.41 | Misma derivación errónea de Barro-Gordon que 3.A.6 |
 | 3.A.43 | Regla de oro sin g (∂y/∂k = δ + n); ejemplo de trampa de pobreza que no genera dos estados estacionarios (D110) |
@@ -307,7 +309,12 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 | Convergencia real y descomposición del PIB per cápita | antiguo 4.A.29 | 4.A.30 | D097 |
 | Mercados de valores (Word de 4.A.19) | 4.A.19 | 4.A.20 | (título vigente) |
 | 1973-2000 | 4.A.28 | 4.A.27 | D018 |
-| Stiglitz-Weiss y Diamond-Dybvig | 3.B.27, 4.A.20 | 3.A.13 y 3.B.26 | D070, D042 |
+| Stiglitz-Weiss y Diamond-Dybvig | 3.B.27, 4.A.20 | 3.A.13 (Stiglitz-Weiss: bloque III, hecho, 19/10/2026) y 3.B.26 | D070, D042 |
+| Diamond-Dybvig (anexo de ≈ 3.000 palabras y 4 gráficos, más largo que el del 3.B.27) | Anexo 3 del 3.A.10 | Anexo C del 3.A.10 resumido (hecho, 19/10/2026; decisión de Víctor A10-01), con la notación del canon y un gráfico que puede reutilizar el 3.B.26; la regulación, al 3.B.26 y el 3.B.27 | D042 |
+| Caja de finanzas conductuales (prima de las acciones, volatilidad, disposición, dividendos) | 3.A.10 y 3.B.23 (casi literal) | Anotación del 3.A.10 que no se canta (hecho, con cifras con fuente); el 3.B.23 desarrolla la eficiencia y resume o remite la explicación conductual (ficha `emh`) | — |
+| Empresa aversa al riesgo (Sandmo, 1971) y demanda de un activo con riesgo (Arrow) | Remisión del 3.A.11 y comentario de Víctor (P10) | I.2.2 y I.2.3 del 3.A.10, «no se canta» (hecho; A10-03 sin contestar: alternativa, a un anexo) | — |
+| «Implicaciones sobre la eficiencia» (bloque 0 del Word) | Primer bloque del 3.A.13 | Contextualización teórica de la introducción del 3.A.13 (hecho, 19/10/2026; D1 de esa revisión, provisional) | — |
+| Juegos de señalización, criterio intuitivo y diseño de mecanismos | Notas del 3.A.13 | 3.A.14 cuando se revise (el 3.A.13 los menciona y remite; ficha `diseno-mecanismos` **[decidir]**, § 14) | D9 del 3.A.13 |
 | Normativa del IRPF, IS, IP, IVA | 4.B.12, 4.B.13 | 4.B.16, 4.B.17, 4.B.19, 4.B.20 | D022 |
 | Armonización fiscal (viejo 4.B.18) | 4.B.18 | 3.B.39, 4.B.18, 4.B.20 | D074 |
 | Regulación de la empresa pública (viejo 4.B.16) | Word de 4.B.15 | 3.A.17 y 3.A.20 | D092, D091 |
@@ -320,7 +327,7 @@ No incluye los problemas de notación (resueltos por las decisiones de § 2) ni 
 ## 8. Problemas de fuente que condicionan la revisión
 
 - **Esquemas, no temas:** 3.A.14 es un esquema ajeno (384 líneas, sin bibliografía); 3.A.5 es un borrador incompleto; 3.A.12 no tiene las aplicaciones empíricas.
-- **Notas de trabajo y textos copiados** («Copiar de Sahuquillo», «Ver tema de Juan Luis», «copiado de María Palacios Carrere»): 3.A.13, 3.A.12, 3.A.24, 3.B.9, 4.B.9, 4.A.17, 4.A.21, 4.A.23. En la revisión se reescriben con fuentes propias y se citan.
+- **Notas de trabajo y textos copiados** («Copiar de Sahuquillo», «Ver tema de Juan Luis», «copiado de María Palacios Carrere»): 3.A.13 (resuelto el 19/10/2026: redactado de nuevo desde Laffont-Martimort y MWG; fuera el escaneo de un manual de preparador), 3.A.10 (resuelto el 19/10/2026: fuera los nombres de preparadores y «Tema Juan Luis Cordero Tarifa», las imágenes de Policonomics, Yemshanov y Neuroprofiler, los enlaces rotos y la tabla de la nota 43 sin fuente, rehecha citando cada obra; 12 gráficos en TikZ), 3.A.12, 3.A.24, 3.B.9, 4.B.9, 4.A.17, 4.A.21, 4.A.23. En la revisión se reescriben con fuentes propias y se citan.
 - **Datos desactualizados o de años mezclados** en casi todo el 4.A (años 2016-2023 en el mismo apartado): se actualizan con `datos/*.csv` al revisar cada tema.
 
 ## 9. Cambios aprobados en el 3.A.8 ya revisado
@@ -344,7 +351,7 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 **Fase 1. Microeconomía (3.A)** (D133)
 
 - *Modelo neoclásico básico*: 1. 3.A.9 (10) · 2. 3.A.11 (8; ahora también referencia de la Cobb-Douglas) · 3. 3.A.12 (8) · 4. 3.A.21 (5; revisado el 14/10/2026) · 5. 3.A.16 (3; revisado el 17/10/2026, con la ficha nueva `telarana`)
-- *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick; revisado el 17/10/2026, con 5 fichas nuevas: `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral`) · 7. **3.A.10** (antes que 3.A.13 y 3.A.14, que usan sus seguros y la utilidad esperada) · 8. 3.A.13 (6; Stiglitz-Weiss en desarrollo) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
+- *Información y poder de mercado*: 6. 3.A.17 (12; también yardstick; revisado el 17/10/2026, con 5 fichas nuevas: `monopolio`, `discriminacion-precios`, `monopolio-multiproducto`, `monopsonio` y `monopolio-bilateral`) · 7. **3.A.10** (revisado el 19/10/2026, en paralelo con el 3.A.13 y con la notación común del seguro, con 3 fichas nuevas: `utilidad-esperada-vnm`, `aversion-riesgo-arrow-pratt` y `demanda-seguros`; antes que 3.A.14, que usa la utilidad esperada) · 8. 3.A.13 (6; revisado el 19/10/2026, con Stiglitz-Weiss en desarrollo y 4 fichas nuevas: `akerlof-lemons`, `spence-senalizacion`, `rothschild-stiglitz` y `principal-agente`) · 9. 3.A.14 (3) · 10. 3.A.18 (1) · 11. 3.A.15 (sin fuente; referencia de los mercados impugnables, se escribe con el material de 3.A.19) · 12. 3.A.19 (pasa a resumir los impugnables)
 - *Economía del Bienestar e Intervención del Sector Público*: 13. **3.A.22** (antes que 3.A.23, que se apoya en los teoremas del bienestar) · 14. 3.A.23 (12) · 15. 3.A.24 (referencia del 3.º de Lorenz, Atkinson y Borda, además de Arrow) · 16. 3.A.20 (sin fuente; referencia de la captura del regulador) · 17. 3.B.31 (sin fuente; referencia del MAFC)
 
 **Fase 2. Macroeconomía (3.A)** (mismo criterio de dependencias que D133; es una propuesta de orden, no una decisión nueva)
@@ -398,7 +405,7 @@ Nada más del 3.A.8 cambia: W̄, p, x, U, V, E, h, λ, RMS_{12}, σ (CES), ρ, s
 ## 11. Ideas para reorganizar el PowerPoint del temario (fase `--organizacion`)
 
 1. **3.B.13 (mercado de divisas) a «Economía abierta»**: hoy está en «Economía corporativa y financiera», pero es el tema de referencia de las paridades y del tipo de cambio real que usan 3.B.12-3.B.19. Igual **3.B.11 (balanza de pagos)**, que hoy está en «Contabilidad nacional»: o se dibuja en los dos bloques (como ya se hace con 3.A.16 y 3.A.21) o se mueve.
-2. **3.A.10 (riesgo e incertidumbre) junto al consumidor**: es la extensión de 3.A.8-3.A.9 (utilidad esperada, CRRA) y prepara 3.A.13; puede quedarse en «Información y poder de mercado» pero con una flecha desde 3.A.8.
+2. **3.A.10 (riesgo e incertidumbre) junto al consumidor**: es la extensión de 3.A.8-3.A.9 (utilidad esperada, CRRA) y prepara 3.A.13; puede quedarse en «Información y poder de mercado» pero con una flecha desde 3.A.8. Revisado (19/10/2026), confirma que es un nudo: de él salen la utilidad esperada (3.A.13, 3.A.14, 3.A.24, 3.A.27, 3.B.23), la aversión y la prudencia (3.A.29, 3.A.33, 3.A.35) y la economía conductual (3.A.1, 3.B.23) (§ 15).
 3. **Marcar en cada bloque los temas de referencia** (borde grueso) y añadir flechas de «modelo compartido» para los hilos que cruzan bloques: CRRA y Euler (3.A.29 → 3.A.33, 3.A.43, 3.A.42); IS-LM y Mundell-Fleming (3.A.5 → 3.A.32 → 3.B.15 → 4.B.4); NEK (3.A.7 → 3.A.36-3.A.38 → 4.B.4); NEG (3.B.6 → 3.B.10, 3.B.40 → 4.A.17); deuda pública (3.A.39 → 4.B.26 → 3.B.45 → 4.B.21); impuestos (4.B.7-4.B.13 → 4.B.16-4.B.20 → 3.B.39, 4.B.18); mercado de trabajo (3.A.25-3.A.28 → 4.A.16); sector exterior (3.B.11 → 4.A.21-4.A.23).
 4. **Bloque «Gobernanza y política fiscal en la UE»**: 3.B.45, 4.B.21, 4.B.26 y 4.A.30 comparten PEC, marco de 2024, MEDE y NGEU; hoy están en tres bloques distintos y es donde más contenido desplazado hay.
 5. **Separar en el 4.B «Teoría de la imposición» (4.B.7-4.B.13) e «Impuestos en España» (4.B.16-4.B.20)**: el bloque «Impuestos» tiene 12 temas y mezcla los dos niveles; la separación hace visible el reparto de D022.
@@ -447,3 +454,29 @@ El coordinador aplicó la opción recomendada mientras Víctor no conteste en el
 - **Propuestas para cuando se revisen otros temas**: ficha `nash-negociacion` con el 3.A.14 como referencia (Nash, Rubinstein, Binmore-Rubinstein-Wolinsky; usuarios 3.A.17, 3.A.21 y 3.A.27) y, si el 3.A.15 la desarrolla, `doble-marginalizacion` (Spengler, 1950).
 
 **Ideas para la organización** (§ 11): el 3.A.17 reparte con el 3.A.20 la regulación del monopolio y con el 3.A.25 y el 3.A.27 el mercado de trabajo con poder de mercado; conviene que en el PowerPoint el 3.A.17 enlace con el 3.A.20 (regulación) y con el bloque del mercado de trabajo (3.A.25 y 3.A.27), y que el 3.A.20 se escriba justo después del 3.A.17 si se aprueba D1, para que la presentación de los 4 modelos se traslade sin cambios.
+
+## 14. Decisiones abiertas tras la revisión del 3.A.13 (19/10/2026)
+
+El coordinador aplicó la opción recomendada mientras Víctor no conteste en el artifact de dudas (A13-01 a A13-03 y las de la integración); el canon las recoge como provisionales.
+
+- **[decidir] D5 y D6 del 3.A.13 · Tipos A/B y proporción ν.** Aplicado: A y B en redonda como mnemónicos de alto y bajo en los 3 modelos (productividad, riesgo, esfuerzo) y ν para la proporción del tipo bueno (`notacion.md` § 1 y § 4). Alternativa: 1/2 como el 3.A.17 (t_1 < t_2), perdiendo el mnemónico.
+- **[decidir] Unificar la proporción de tipos en ν.** El 3.A.13 usa ν (allí π es probabilidad de accidente o de éxito) y el 3.A.17 π en su 2.º grado (y ν en Laffont-Tirole, en el mismo tema). Opción A (recomendada por el guardián): dejarlo así, sin contradicción (no conviven en un apartado). Opción B: pasar el 2.º grado del 3.A.17 a ν (entrada condicional en `pendientes-coherencia.md`).
+- **[decidir] D7 del 3.A.13 · Principal neutral en el cuerpo y u_P solo en el anexo A** (aplicado; la alternativa era mantener el principal averso R[·] del original).
+- **[decidir] D9 del 3.A.13 · Ficha `diseno-mecanismos`** con referencia en el 3.A.14 (creada, con la marca [decidir]: ya la citan 2 temas revisados, 3.A.13 y 3.A.21, y la usan 3.A.23, 3.A.24, 3.A.17, 4.B.2 y 4.B.15). Alternativa: borrarla y dejar el principio de revelación como mención con el enunciado común de `notacion.md` § 14.
+- **D3 del 3.A.13** depende de la D1 del 3.A.17 (§ 13): si se aprueba, las remisiones del 3.A.13 a Laffont-Tirole pasan al 3.A.20 (entrada condicional en `pendientes-coherencia.md`).
+- **Notación compartida con el 3.A.10** (no es una decisión abierta, queda fijada): la prima por euro asegurado es **γ** (antes r local en el canon) y la dotación sin seguro **A** = (W̄, W̄ − L) (la propuesta de coherencia del 3.A.13 era D; se eligió A por coordinación con el 3.A.10). `notacion.md` § 1 y § 2.
+- Las demás dudas del 3.A.13 (D1 bloque 0 a la introducción, D2 caso 2 cantado con una sola caja, D4 enganche, D8 bibliografía; Fernández de Castro y Tugores, cifras sin segunda comprobación, Reglamento de IA) no tocan el canon.
+
+**Ideas para la organización** (§ 11): el 3.A.13 es el centro de un hilo que cruza bloques: el seguro del 3.A.10 (caja previa, misma notación), la autoselección del 3.A.17 (2.º grado), los juegos y el diseño de mecanismos del 3.A.14, los salarios de eficiencia del 3.A.27 y el 3.A.7, la agencia en la empresa del 3.A.15 y el crédito del 3.B.26-3.B.27 y el 4.A.20. Conviene que en el PowerPoint el 3.A.13 lleve flechas desde el 3.A.10 y hacia el 3.A.14, el 3.A.27 y el 3.B.27, y que el 3.A.14 se revise justo después, porque tiene que desarrollar lo que el 3.A.13 le remite (señalización como juego, criterio intuitivo, diseño de mecanismos).
+
+## 15. Decisiones abiertas tras la revisión del 3.A.10 (19/10/2026)
+
+Víctor decidió durante la revisión el anexo de Diamond-Dybvig **resumido** (A10-01) y el enganche de los 2 refranes con el seguro y la Lotería de Navidad (A10-02). El resto lo aplicó el coordinador con la opción recomendada mientras Víctor no conteste en el artifact de dudas; el canon lo recoge como provisional.
+
+- **[decidir] A10-03 · Demanda de un activo con riesgo (Arrow) y empresa aversa al riesgo (Sandmo).** Aplicado: en el cuerpo (I.2.2 y I.2.3), como bloques «no se canta» con la estructura a)-c); cumple la remisión del 3.A.11. Alternativa: llevarlos a un anexo (basta mover los 2 subapartados; las fichas `tobin-cartera` y `aversion-riesgo-arrow-pratt` solo cambiarían la ubicación).
+- **[decidir] Fusión de ids del inventario** (`_inventario/alias.json`): `san-petersburgo` y `allais` en `utilidad-esperada-vnm`, y `crra` (3.A.8) en `aversion-riesgo-arrow-pratt`, como proponía la revisión (K41). Alternativa: mantenerlos como ids propios (solo los usan el 3.A.10 y el 3.A.8; no tendrían ficha).
+- **Notación fijada** (no son decisiones abiertas): γ y A del seguro (ya del 3.A.13); 𝓛 conjunto de loterías y τ peso de la mezcla (§ 0); β, λ y δ en la teoría de las perspectivas (no α ni γ de la fuente); a de la CARA, b de la cuadrática, η_0 y η_1 de la HARA; prudencia sin símbolo en el cuerpo; 𝒫 previos múltiples; ν, μ y φ locales de los modelos de ambigüedad (`notacion.md` § 0, § 1, § 2 y § 14). La propuesta ψ para la transformación de Pratt (en lugar de G, que choca con la distribución del mismo apartado) es un pendiente menor del propio 3.A.10.
+- Las demás dudas del 3.A.10 (D3 reparto I 13', II 8', III 5'30"; D5 los 3 modelos de ambigüedad; D7 Rabin y Sydnor; D8 título de II.2 en castellano) no tocan el canon, salvo la terminología «teoría de las perspectivas», ya en `notacion.md` § 14. Cifras pendientes de comprobar (Allais y efecto marco en el PDF de 1979, número de DO de la Directiva (UE) 2026/804, Lotería de Navidad sin cifra) en `fuentes/3A10/revision.md`.
+- **Para los temas que se revisen después:** 3.A.14 con los pagos esperados de vNM y *Theory of Games* fechada en 1944; 3.A.29 y 3.A.33 con ESI = 1/θ, Kimball y u‴ > 0; 3.A.24 con Harsanyi neutral respecto a la utilidad; 3.B.23 sin repetir la caja de enigmas; 3.B.26 con el gráfico `diamond-dybvig.tex` del 3.A.10 como base (`mapa.yaml`, contradicciones del 3.A.10).
+
+**Ideas para la organización** (§ 11): el 3.A.10 es el arranque del hilo del riesgo, que cruza bloques: utilidad esperada → seguros e información asimétrica (3.A.13) → juegos y subastas (3.A.14) → elección social (3.A.24); aversión y prudencia → elección intertemporal y consumo (3.A.29, 3.A.33) → dinero como activo (3.A.35) → carteras (3.B.23); teoría de las perspectivas → economía conductual (3.A.1) y finanzas conductuales (3.B.23); Diamond-Dybvig → crisis y regulación bancaria (3.B.26, 3.B.27). Conviene que el PowerPoint lleve una flecha de 3.A.8 a 3.A.10 y de 3.A.10 a 3.A.13 y a 3.B.23, y que el 3.A.14 se revise pronto, porque recibe remisiones del 3.A.10 y del 3.A.13.

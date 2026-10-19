@@ -1,7 +1,7 @@
 # Competencia perfecta en equilibrio parcial
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.16** (Mercados I: competencia perfecta; revisado el 17/10/2026) — lo tiene en el título y lo desarrolla entero (construcción con J fijo, estudio positivo y normativo, plazos y libre entrada).
-- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 3.A.12 (mención: p = CMg y la oferta desde los costes; hecho, 14/10/2026), 3.A.21 (mención: competencia perfecta en un mercado aislado, precio-aceptación y frontera parcial-general, remite aquí; hecho, 14/10/2026), 4.A.15 (mención: referencia de eficiencia); 3.A.17 (mención: punto de comparación del monopolio; hecho, 17/10/2026); lo usan como punto de partida 4.B.8 (incidencia) y 3.B.7 (arancel en equilibrio parcial).
+- **Temas que lo usan:** 3.A.16 (desarrollo; hecho, 17/10/2026), 3.A.12 (mención: p = CMg y la oferta desde los costes; hecho, 14/10/2026), 3.A.21 (mención: competencia perfecta en un mercado aislado, precio-aceptación y frontera parcial-general, remite aquí; hecho, 14/10/2026), 4.A.15 (mención: referencia de eficiencia); 3.A.13 (mención; hecho, 19/10/2026: la economía de la información levanta el supuesto 2, «información perfecta y simétrica», con esas palabras); 3.A.17 (mención: punto de comparación del monopolio; hecho, 17/10/2026); lo usan como punto de partida 4.B.8 (incidencia) y 3.B.7 (arancel en equilibrio parcial).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green (1995), cap. 10 (§ 10.B-10.F); Varian (1992), caps. 13 y 21; Marshall (1890), libro V; Viner (1931); Pérez Domínguez (2004).
 
 ## Presentación de referencia (3.A.16)
@@ -24,7 +24,7 @@ Regla de CRITERIOS.md § 6 (Víctor, 18/10/2026). Los cuatro temas de estructura
 
 El orden es el del temario antiguo (Víctor, 18/10/2026): de los agentes y la información al producto, el número de agentes y la entrada.
 
-Qué levanta cada tema (orientativo; lo concreta cada revisión): 3.A.17, el 1 por el lado de la oferta (un solo vendedor, que fija el precio), normalmente con barreras que impiden el 3; 3.A.18, el 2 (producto diferenciado), con el 3 en pie; 3.A.19, el 1 (pocos vendedores, que se saben interdependientes), a menudo con barreras al 3. Levantar el 4 lleva a la economía de la información (3.A.13).
+Qué levanta cada tema (orientativo; lo concreta cada revisión): 3.A.17, el 4 por el lado de la oferta (un solo vendedor, que fija el precio), con barreras que impiden el 5 (hecho así en el 3.A.17); 3.A.18, el 3 (producto diferenciado), con el 5 en pie; 3.A.19, el 4 (pocos vendedores, que se saben interdependientes), a menudo con barreras al 5. Levantar el 2 (información perfecta y simétrica) lleva a la economía de la información (3.A.13).
 
 ## Presentación de referencia (3.A.16), continuación
 

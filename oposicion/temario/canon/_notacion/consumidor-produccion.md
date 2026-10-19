@@ -38,20 +38,27 @@ Convenciones: minúsculas para precios y cantidades de micro ($p$, $x$, $q$, $w$
 
 | Símbolo | Significado | Alternativas (temas) | Canon | Motivo |
 |---|---|---|---|---|
-| $\tilde y$ | Lotería / renta aleatoria | — | **$\tilde y$** (tilde = aleatoria) | 3.A.10 |
+| $\tilde x\equiv(x_1,\dots,x_S;\pi_1,\dots,\pi_S)$ | Lotería / renta aleatoria | $\tilde y$, $\tilde y^n$, $\tilde y^A$ (3.A.10 original) | **$\tilde x$**, $\tilde x^0$, $\tilde x^1$ (tilde = aleatoria; resultados delante) | 3.A.10 revisado (19/10/2026): x es el consumo en todo el área; superíndices como las dos situaciones del 3.A.8 |
+| $\mathcal L$; $\tau$ | Conjunto de loterías; peso de la mezcla | $\mathbb R^n_+$ en los axiomas, $p\in(0,1)$ (3.A.10 original) | **$\mathcal L$**, **$\tau$** | MWG § 6.B; τ como el peso convexo del § 0 de `notacion.md` |
 | $\pi_s$ | Probabilidad del estado $s$ (y de accidente, $\pi$) | $p_s$ (3.A.10), $p$ (3.A.13, 4.B.10) | **$\pi_s$** | $p$ son los precios en todo el área; $\pi$ queda libre en micro si el beneficio es $B$; Varian y MWG cap. 19 |
 | $u(\cdot)$ | Utilidad de Bernoulli | — | **$u$** | MWG |
-| $U(\tilde y)=\mathbb E[u(\tilde y)]$ | Utilidad esperada VNM | $V(\tilde y)$ (3.A.10) | **$U$** | $V$ es la FIU |
+| $U(\tilde x)=\mathbb E[u(\tilde x)]$ | Utilidad esperada VNM | $V(\tilde y)$, $V(F)$, $U(F)$, $\bar u(\tilde y)$, $E[u(\tilde y)]$ (3.A.10 original) | **$U$** (`\funcionclave`) | $V$ es la FIU y E la función de gasto |
 | $r_A(\cdot)$, $r_R(\cdot)$ | Aversión absoluta y relativa de Arrow-Pratt | $r_\alpha$, $r_r$; $r_R$ en las preguntas (3.A.10) | **$r_A$, $r_R$** | MWG; quita la incoherencia interna |
+| $a$; $b$; $\eta_0,\eta_1$ | Parámetros de la CARA, la cuadrática y la HARA | $c$ (cuadrática en una propuesta) | **$a$, $b$, $\eta_0$, $\eta_1$**, locales | Gollier (2001); a de la CARA no choca: el 3.A.13 escribe $r_A$ en el contrato lineal |
+| $-u'''/u''$ | Prudencia absoluta (Kimball) | $P(x)$ (propuesta C17 del 3.A.10) | **Sin símbolo** en el cuerpo; $P(x)$ solo en el anexo E | P es Paasche y nivel de precios |
+| $F$, $G$; $f$ | Funciones de distribución y densidad | — | **$F$, $G$**, locales | MWG § 6.D; por eso la transformación de Pratt pasa a $\psi$ (propuesta, `pendientes-coherencia.md`) |
+| $\vec\pi$; $\mathcal P$ | Vector de probabilidades; conjunto de previos | — | **$\vec\pi$**, **$\mathcal P$** (caligráfica) | Gilboa-Schmeidler; P es precios y Paasche |
+| $V=\sum_s w(\pi_s)v(x_s-r)$; $\beta$, $\lambda$, $\delta$ | Teoría de las perspectivas | $\pi(p_i)$ (3.A.10 original); $a$ para la curvatura (propuesta C33); $\alpha$, $\beta$, $\gamma$ de Tversky-Kahneman (1992) | **$w(\pi_s)$, $v(z)$, β (curvatura), λ (pérdidas), δ (ponderación)** | D017; a es la CARA, α la inversión y Hurwicz, γ la prima del seguro |
 | $\theta$ | Coeficiente CRRA, $u(c)=\frac{c^{1-\theta}-1}{1-\theta}$ | $\eta$ (3.A.8), $\theta$ (3.A.10 y macro), $\sigma$ (3.A.8 KPR/GHH/JR, 3.A.42) | **$\theta$** | Romer, Blanchard-Fischer, Acemoglu y la mayoría de temas (9). Coordinado con `macro-cerrada.md`. Obliga a cambiar en 3.A.8: CRRA $\eta\to\theta$, KPR/GHH/JR $\sigma\to\theta$, Frisch de GHH $\theta\to\varphi$ y la puja de Rosen $\theta\to\Theta$ |
-| $1/\theta$ | Elasticidad de sustitución intertemporal | $\sigma$ (3.A.10: «σ=1/θ es la EIS») | **$1/\theta$**, sin símbolo propio | Igual que macro |
+| $1/\theta$ | Elasticidad de sustitución intertemporal | $\sigma$ (3.A.10 original: «ESI ≡ σ = 1/θ») | **ESI = $1/\theta$**, sin símbolo propio | Igual que macro; corregido en el 3.A.10 revisado |
 | $\xi$ | Equivalente cierto | — | **$\xi$** | 3.A.10 |
 | $\rho$ | Prima de riesgo | — | **$\rho$** dentro de 3.A.10, avisando del choque con el descuento | Tolerable: 3.A.10 no usa descuento |
 | $L$ | Pérdida (seguros) | $P$ en el punto inicial (3.A.10, 3.A.13) | **$L$** (y, si convive con trabajo, $\ell$) | Quita la incoherencia interna |
-| $r$ | Prima por unidad asegurada | — | **$r$**, local | El tipo de interés no aparece en esos apartados |
+| $\gamma$ | Prima por euro asegurado | $r$ (canon local hasta el 19/10/2026; 3.A.10 y 3.A.13 originales) | **$\gamma$** | Fijado por el 3.A.10 y el 3.A.13 revisados (19/10/2026): $r$ chocaba con el tipo de interés y con $\hat r$ de Stiglitz-Weiss en el 3.A.13 |
+| $A=(\overline W,\overline W-L)$ | Dotación sin seguro (punto del gráfico) | $A=(p_1,p_2;W,W-P)$ (3.A.10, 3.A.13 originales); $D$ (propuesta del 3.A.13) | **$A$**, en cursiva y sin subíndice | 3.A.10 y 3.A.13 revisados (19/10/2026); los subíndices A y B en redonda del 3.A.13 son alto y bajo |
 | $S$ | Cobertura (cantidad asegurada) | — | **$S$** | 3.A.13 |
 | $x_1$, $x_2$ | Riqueza en el estado sin y con accidente | — | **$x_1$, $x_2$** | Coherente con $x$ = consumo |
-| $RMSE$ | Relación marginal de sustitución entre estados | — | **$RMSE$** | 3.A.13 |
+| $RMSE$ | Relación marginal de sustitución entre estados | — | **$\mathrm{RMSE}$** (en redonda), positiva | 3.A.13 y 3.A.10 |
 
 ## Producción y costes (3.A.11-3.A.12)
 
