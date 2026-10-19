@@ -38,6 +38,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | 16 oct. 2026 | 1.16.0 (36) | Enviada a revisión el 16 oct. y aprobada el 17 oct. Lleva todo lo de las 1.15.x sin publicar (hasta la 1.15.11) más: pizarra como Notas del iPad (trazo fiel, presión, palma, zoom, fosforito, lazo, regla y formas), temas anotados con descarga en PDF, avisos del proceso al momento por push y por oposición, avisos que se quitan solos y coordinación entre varios preparadores (agenda común, temas sin repetir, reparto, tablón, pasar una clase y qué ven los preparadores). |
 | 18 oct. 2026 | 1.17.0 (37) | Compilada el 18 oct.; pendiente de subir a la prueba cerrada. Temario revisado exclusivo de la app (con sesión iniciada: PDF con anotaciones, ficha de repaso, Word y página web del tema dentro de la app; distintivo «Revisado · exclusivo de la app»; la versión anterior sigue accesible) y repaso estético de la app («edición académica»: modo oscuro berenjena, botones con relieve, avisos propios, menú inferior con píldora). |
 | 19 oct. 2026 | 1.17.1 (38) | La 1.17.0 más: pizarra con sección propia en Cantar y escritura rápida con el lápiz en la versión web. Solo web por ahora; sin compilar para Android. |
+| 19 oct. 2026 | 1.17.2 (39) | La 1.17.1 más: pizarra en el iPad con Apple Pencil (web): parche contra Scribble, cierre de los trazos que el navegador deja abiertos y registro de depuración con `?depurar=1`. Solo web; sin compilar para Android. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -211,6 +212,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 ### 19 oct. 2026 (para la 1.17.1)
 - Un tester envía un vídeo (iPad, versión web, Apple Pencil): al escribir deprisa, levantando y volviendo a apoyar el lápiz, los trazos nuevos tardan o no se ven; en Notas de Apple va fluido. Se hace que cada punto repinte solo el trazo en curso y que el lápiz no se ignore si quedó un trazo suyo sin cerrar. **El tester sigue viendo el fallo**: causa sin identificar (pendiente de instrumentar los eventos del lápiz).
 - La pizarra tenía solo un botón de texto escondido en la cabecera del cronómetro: pasa a tener su propia sección «Pizarra» en Cantar, del mismo peso que «Cronómetro» y «Grabación para autoescucha».
+
+### 19 oct. 2026 (para la 1.17.2)
+- Causa del fallo del lápiz en el iPad (web), leída en el motor web de Flutter 3.47 y reproducida sin iPad con un Chrome controlado por CDP (`scripts/pizarra-cdp.mjs`): el motor da a todos los toques del Apple Pencil el mismo dispositivo (-4); si el navegador se traga el `pointerup` de una letra (en iPadOS lo hace Scribble cuando los toques cortos le parecen escritura; bug 217430 de WebKit), el `pointerdown` siguiente llega a la app como un *move* del trazo anterior: las dos letras se unen con una raya diagonal y el trazo no se cierra hasta un `pointerup` posterior (la «letra que se completa tarde»). Un `pointerup` después de un `pointerleave` tampoco llega a la app.
+- Qué se hizo: en la web, un listener `touchmove` no pasivo con `preventDefault` mientras la pizarra está abierta (el parche documentado contra Scribble; `?sinparche=1` lo desactiva para comparar); la pizarra escucha los eventos del navegador antes que el motor y cierra el trazo cuando ve un apoyar con un trazo abierto o un levantar que Flutter no entrega; y, en todas las plataformas, una pausa de 80 ms con un salto de 20 px dentro de un trazo del lápiz lo corta en dos. Registro de depuración con `?depurar=1` (botón «Copiar registro») para que el tester mande lo que ve su iPad. Test de widgets con lápiz simulado (`test/pizarra_page_test.dart`).
 
 (Seguir añadiendo aquí, con fecha.)
 

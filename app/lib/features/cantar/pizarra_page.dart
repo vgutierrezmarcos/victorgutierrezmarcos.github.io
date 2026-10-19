@@ -5,17 +5,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../core/constants.dart';
+import '../../core/plataforma.dart';
 import '../../core/providers.dart';
 import '../../theme/app_theme.dart';
 import 'pizarra_barra.dart';
 import 'pizarra_compartida.dart';
 import 'pizarra_formas.dart';
+import 'pizarra_plataforma.dart';
+import 'pizarra_registro.dart';
 import 'pizarra_tinta.dart';
 import 'pizarra_trazos.dart';
 
@@ -39,11 +44,14 @@ Future<void> abrirPizarraIndividual(BuildContext context) =>
 /// del examen (bolígrafo, borrador, colores, deshacer); el rotulador, el
 /// fosforito, el lazo, la regla, el papel y las formas, en el menú ···.
 class PizarraPage extends ConsumerStatefulWidget {
-  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db}) : individual = false;
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db})
+      : individual = false,
+        fuente = null,
+        eventosDom = null;
 
   /// Para practicar el cante sola: los trazos se quedan en el móvil, en
   /// memoria, y se pierden al cerrarla.
-  const PizarraPage.individual({super.key})
+  const PizarraPage.individual({super.key, @visibleForTesting this.fuente, @visibleForTesting this.eventosDom})
       : alumnoUid = '',
         canteId = '',
         otroNombre = '',
@@ -57,6 +65,11 @@ class PizarraPage extends ConsumerStatefulWidget {
 
   /// Base de datos (por defecto, la de Firebase; en las capturas, una simulada).
   final FirebaseFirestore? db;
+
+  /// Para las pruebas: dónde van los trazos de la pizarra individual y los
+  /// eventos del navegador que simula la prueba.
+  final FuentePizarra? fuente;
+  final Stream<EventoDom>? eventosDom;
 
   @override
   ConsumerState<PizarraPage> createState() => _PizarraPageState();
@@ -141,6 +154,23 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   Offset? _anclaQuieto;
   HerramientaPizarra _herramientaTrazo = HerramientaPizarra.boligrafo;
 
+  // ------------------------------------------------------------ Navegador
+  // En la web, el navegador avisa de los eventos del lápiz antes que el motor
+  // de Flutter, que a veces los pierde (ver pizarra_web.dart).
+  void Function()? _desenganchar;
+  StreamSubscription<EventoDom>? _escuchaDom;
+  // El navegador apoyó el lápiz con un trazo abierto: el move que venga lo cierra.
+  bool _corteDomPendiente = false;
+  // El navegador levantó el lápiz: si Flutter no lo dice, se cierra el trazo.
+  Timer? _cierreDom;
+
+  // ------------------------------------------------------------ Registro
+  final RegistroPizarra _registro = RegistroPizarra();
+  String _versionApp = '';
+  int _nTrazos = 0;
+  Duration? _tsAnterior;
+  TimingsCallback? _fotogramas;
+
   // ------------------------------------------------------------ Borrador
   // Lo que quita y pone la pasada del borrador (se guarda al levantar).
   final Map<String, Trazo> _gestoQuitar = {};
@@ -214,8 +244,21 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       _extras = {...((_caja?.get(_claveExtras) as List?) ?? const []).map((e) => e.toString())};
       _formas = _caja?.get(_claveFormas) as bool? ?? true;
     } catch (_) {}
+    _registro.activo = depuracionPedidaEnUrl;
+    if (_registro.activo) {
+      String ms(Duration d) => (d.inMicroseconds / 1000).toStringAsFixed(1);
+      _fotogramas = (timings) {
+        for (final t in timings) {
+          if (t.totalSpan.inMilliseconds > 32) _registro.anotar('FR', 'build=${ms(t.buildDuration)} raster=${ms(t.rasterDuration)} total=${ms(t.totalSpan)}');
+        }
+      };
+      SchedulerBinding.instance.addTimingsCallback(_fotogramas!);
+      PackageInfo.fromPlatform().then((p) => _versionApp = '${p.version} (${p.buildNumber})').catchError((_) => '');
+    }
+    _desenganchar = engancharPizarraWeb(evitarScribble: parcheScribblePedido, alEvento: _eventoDom, volcarRegistro: () => _registro.volcar(cabecera: _cabeceraRegistro()));
+    _escuchaDom = widget.eventosDom?.listen(_eventoDom);
     if (widget.individual) {
-      _pizarra = PizarraLocal();
+      _pizarra = widget.fuente ?? PizarraLocal();
       _escucha = _pizarra!.escuchar().listen(_alLlegar);
     } else if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
       _pizarra = PizarraCompartida.deClase(widget.db ?? FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
@@ -231,6 +274,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   void dispose() {
     _quitarAviso?.cancel();
     _temporizadorForma?.cancel();
+    _cierreDom?.cancel();
+    _escuchaDom?.cancel();
+    _desenganchar?.call();
+    if (_fotogramas != null) SchedulerBinding.instance.removeTimingsCallback(_fotogramas!);
     _escucha?.cancel();
     _puntos.dispose();
     _pizarra?.vaciar();
@@ -250,6 +297,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
 
   void _alLlegar(List<PaginaPizarra> paginas) {
     if (!mounted) return;
+    final cron = _registro.activo ? (Stopwatch()..start()) : null;
+    if (cron != null) {
+      // Se mide después de aplicar el cambio (al final del fotograma, lo que
+      // cuesta reconstruir con las páginas nuevas).
+      WidgetsBinding.instance.addPostFrameCallback((_) => _registro.anotar('MED', 'llegan ${paginas.length} páginas y ${paginas.fold(0, (n, p) => n + p.trazos.length)} trazos: ms=${(cron.elapsedMicroseconds / 1000).toStringAsFixed(1)}'));
+    }
     _cambiaTrazos(() {
       _paginas = paginas;
       if (_pagina >= paginas.length && paginas.isNotEmpty) _pagina = paginas.length - 1;
@@ -406,7 +459,57 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
 
   bool _esLapiz(PointerDeviceKind k) => k == PointerDeviceKind.stylus || k == PointerDeviceKind.invertedStylus;
 
+  // ---- Registro (solo con ?depurar=1)
+
+  void _log(String texto) => _registro.anotar('LOG', texto);
+
+  void _anotarEvento(String tipo, PointerEvent e) {
+    if (!_registro.activo) return;
+    final dt = _tsAnterior == null ? '' : ' dt=${((e.timeStamp - _tsAnterior!).inMicroseconds / 1000).toStringAsFixed(1)}';
+    _tsAnterior = e.timeStamp;
+    _registro.anotar('FL', '$tipo ${e.kind.name} ptr=${e.pointer} dev=${e.device} b=${e.buttons} p=${e.pressure.toStringAsFixed(2)} x=${e.localPosition.dx.toStringAsFixed(1)} y=${e.localPosition.dy.toStringAsFixed(1)} ts=${(e.timeStamp.inMicroseconds / 1000).toStringAsFixed(1)}$dt');
+  }
+
+  String _cabeceraRegistro() => [
+        'Registro de la pizarra ${widget.individual ? 'individual' : 'de clase'} · versión $_versionApp · ${kIsWeb ? 'web' : 'móvil'} · parche Scribble: ${parcheScribblePedido ? 'sí' : 'no'}',
+        if (kIsWeb) agenteNavegador(),
+        'área=${_area.width.toStringAsFixed(0)}x${_area.height.toStringAsFixed(0)} escala=${_escala.toStringAsFixed(3)} z=${_z.toStringAsFixed(2)} trazos=$_nTrazos dedoDibuja=$_dedoDibuja formas=$_formas',
+        'Flutter: ptr=puntero dev=dispositivo (-4 es el lápiz en la web) b=botones p=presión dt=ms desde el evento anterior',
+      ].join('\n');
+
+  void _copiarRegistro() => compartirTexto(context, _registro.volcar(cabecera: _cabeceraRegistro()));
+
+  // ---- El navegador (web)
+
+  /// Lo que ve el navegador antes que el motor de Flutter, para cerrar los
+  /// trazos que el motor no cierra: con un trazo del lápiz aún abierto, un
+  /// `pointerdown` le sale al motor como un move (y uniría dos letras con una
+  /// raya), y un `pointerup` después de un `pointerleave` no le sale.
+  void _eventoDom(EventoDom e) {
+    if (_registro.activo) _registro.anotar('DOM', e.linea);
+    if (e.puntero != 'pen' || _sinAcceso) return;
+    switch (e.tipo) {
+      case 'pointerdown':
+        _cierreDom?.cancel();
+        if (_punteroDibujo != null && _esLapiz(_tipoDibujo!)) _corteDomPendiente = true;
+      case 'pointerup' || 'pointercancel':
+        // Un Timer, no un microtask: tiene que correr después de que el motor
+        // y Flutter hayan despachado este mismo evento.
+        _cierreDom?.cancel();
+        _cierreDom = Timer(const Duration(milliseconds: 30), _cerrarSiSigueAbierto);
+    }
+  }
+
+  void _cerrarSiSigueAbierto() {
+    if (!mounted || _punteroDibujo == null || !_esLapiz(_tipoDibujo!)) return;
+    _log('el navegador levantó el lápiz y Flutter no lo dijo: terminar');
+    _terminar();
+  }
+
   void _bajar(PointerDownEvent e) {
+    _anotarEvento('down', e);
+    _corteDomPendiente = false;
+    _cierreDom?.cancel();
     if (_sinAcceso) return;
     final k = e.kind;
     if (_esLapiz(k) && !_dedoElegido && _dedoDibuja) setState(() => _dedoDibuja = false);
@@ -414,28 +517,37 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       _toques[e.pointer] = e.localPosition;
       _toquesInicio[e.pointer] = e.localPosition;
       // Escribiendo con el lápiz, los dedos (la palma) no hacen nada.
-      if (_punteroDibujo != null && _esLapiz(_tipoDibujo!)) return;
+      if (_punteroDibujo != null && _esLapiz(_tipoDibujo!)) {
+        _log('dedo con el lápiz escribiendo: ignorado (palma)');
+        return;
+      }
       if (_toques.length >= 2) {
         // Un segundo dedo: el primero no estaba dibujando, sino empezando a
         // mover o ampliar (si el trazo era muy corto, se anula).
         if (_punteroDibujo != null && _tipoDibujo == PointerDeviceKind.touch) {
           if (e.timeStamp - _inicioTrazo < const Duration(milliseconds: 350) || _largoEnCurso() < 30) {
+            _log('segundo dedo: se anula el trazo corto del primero');
             _anularTrazo();
           } else {
+            _log('segundo dedo: se guarda el trazo del primero');
             _terminar();
           }
         }
+        _log('gesto con ${_toques.length} dedos');
         _empezarGesto(e.timeStamp);
         return;
       }
       final v = _virtual(e.localPosition);
       if (_regla != null && _regla!.contiene(v) && (_regla!.cantoJunto(v, 0) == null)) {
+        _log('dedo sobre la regla: gesto');
         _empezarGesto(e.timeStamp);
         return;
       }
       if (_dedoDibuja) {
+        _log('empezar trazo con el dedo');
         _empezar(e);
       } else {
+        _log('dedo que no dibuja: gesto');
         _empezarGesto(e.timeStamp);
       }
       return;
@@ -444,13 +556,16 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     // El lápiz manda: si había un dedo (la palma) dibujando, se anula.
     if (_punteroDibujo != null) {
       if (_tipoDibujo == PointerDeviceKind.touch && _esLapiz(k)) {
+        _log('lápiz: se anula el trazo del dedo (palma)');
         _anularTrazo();
       } else if (_esLapiz(_tipoDibujo!) && _esLapiz(k)) {
         // El lápiz solo toca una vez a la vez: si aún figuraba un trazo suyo
         // (se perdió el aviso de levantarlo al escribir deprisa), se guarda y
         // se empieza el nuevo, en vez de ignorarlo.
+        _log('lápiz con un trazo suyo abierto (se perdió el levantar): terminar y empezar');
         _terminar();
       } else {
+        _log('ignorado: ya dibuja otro puntero (${_tipoDibujo!.name})');
         return;
       }
     }
@@ -463,10 +578,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       _empezarGesto(e.timeStamp);
       return;
     }
+    _log('empezar trazo (${k.name})');
     _empezar(e);
   }
 
   void _mover(PointerMoveEvent e) {
+    _anotarEvento('move', e);
     if (_toques.containsKey(e.pointer)) {
       _toques[e.pointer] = e.localPosition;
       if (_gesto != null) {
@@ -474,13 +591,29 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
         return;
       }
     }
-    if (e.pointer != _punteroDibujo) return;
+    if (e.pointer != _punteroDibujo) {
+      if (_registro.activo && _esLapiz(e.kind)) _log('move del lápiz con otro puntero (dibuja ${_punteroDibujo ?? '-'}): ignorado');
+      return;
+    }
+    if (_corteDomPendiente) {
+      _corteDomPendiente = false;
+      if (_esLapiz(e.kind)) {
+        // El motor dio el pointerdown del navegador como un move: aquí
+        // empieza el trazo nuevo, sin la raya desde el anterior.
+        _log('el navegador apoyó el lápiz y Flutter lo dio como move: terminar y empezar aquí');
+        _terminar();
+        _empezar(e);
+        return;
+      }
+    }
     // Con ratón, solo con el botón pulsado.
     if (e.kind == PointerDeviceKind.mouse && e.buttons == 0) return;
     _seguir(e);
   }
 
   void _levantar(PointerEvent e) {
+    _anotarEvento(e is PointerCancelEvent ? 'cancel' : 'up', e);
+    if (_registro.activo && e.pointer == _punteroDibujo) _log('${e is PointerCancelEvent ? 'cancel' : 'up'}: terminar (puntos=${_enCurso.length})');
     final eraToque = _toques.remove(e.pointer) != null;
     _toquesInicio.remove(e.pointer);
     if (eraToque && _gesto != null) {
@@ -567,7 +700,9 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     return l * _escala * _z;
   }
 
-  void _empezar(PointerDownEvent e) {
+  /// Empieza un trazo en [e] (un down o, si el motor se comió el down, el
+  /// primer move).
+  void _empezar(PointerEvent e) {
     final v = _dentro(_virtual(e.localPosition));
     _punteroDibujo = e.pointer;
     _tipoDibujo = e.kind;
@@ -647,6 +782,14 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (_enCurso.isEmpty || _formaHecha) return;
     // Un punto nuevo en cuanto se mueve medio píxel: nada de saltos.
     if ((e.localPosition - _ultimaPantalla).distance < 0.5) return;
+    if (_esLapiz(e.kind) && _cantoRegla == null && cortaTrazoLapiz(e.timeStamp - _ultimoTiempo, (e.localPosition - _ultimaPantalla).distance)) {
+      // Una pausa y un salto a la vez no son un trazo: el navegador se tragó
+      // el levantar y el apoyar (ver pizarra_registro.dart).
+      _log('corte: ${(e.timeStamp - _ultimoTiempo).inMilliseconds} ms y ${(e.localPosition - _ultimaPantalla).distance.toStringAsFixed(0)} px sin puntos: trazo nuevo');
+      _terminar();
+      _empezar(e);
+      return;
+    }
     final dt = max(1, (e.timeStamp - _ultimoTiempo).inMicroseconds) / 1000;
     final velocidad = (e.localPosition - _ultimaPantalla).distance / dt;
     _ultimaPantalla = e.localPosition;
@@ -686,6 +829,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   }
 
   void _anularTrazo() {
+    _log('anular trazo (puntos=${_enCurso.length})');
     _temporizadorForma?.cancel();
     _punteroDibujo = null;
     if (_borrando) {
@@ -718,6 +862,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       return;
     }
     if (_enCurso.isEmpty) return;
+    final cron = _registro.activo ? (Stopwatch()..start()) : null;
+    final nPuntos = _enCurso.length;
     // Las formas ya vienen limpias: todos sus puntos (simplificarlas dejaría
     // los puntos a saltos y el círculo, abollado).
     final idx = _formaHecha ? [for (var i = 0; i < _enCurso.length; i++) i] : indicesSimplificados(_enCurso, tolerancia: 0.5);
@@ -735,7 +881,9 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     );
     _enCurso.clear();
     _factores.clear();
+    _nTrazos++;
     _aplicar(_Cambio(const [], [trazo]));
+    if (cron != null) _log('terminar: trazo $_nTrazos puntos=$nPuntos simplificados=${idx.length} ms=${(cron.elapsedMicroseconds / 1000).toStringAsFixed(1)}');
   }
 
   String _codigo(HerramientaPizarra h) => switch (h) {
@@ -1205,6 +1353,13 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Row(mainAxisSize: MainAxisSize.min, children: [
               BotonBarra(icono: Icons.close, tooltip: 'Salir', alTocar: () => Navigator.of(context).pop()),
+              // Solo con ?depurar=1: el registro del lápiz, para mandarlo.
+              if (_registro.activo)
+                TextButton.icon(
+                  onPressed: _copiarRegistro,
+                  icon: const Icon(Icons.copy_outlined, size: 18),
+                  label: Text('Copiar registro (${_registro.lineas})', style: const TextStyle(fontSize: 12)),
+                ),
               if (widget.individual)
                 const Text('Para practicar: no se guarda', style: TextStyle(color: Color(0x99000000), fontSize: 12))
               else ...[
