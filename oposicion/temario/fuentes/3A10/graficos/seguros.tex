@@ -13,6 +13,8 @@
 %   E' = (8,4; 5,6), por debajo de la línea de certeza; S = (10 - 8,4)/0,5 = 3,2 < L = 6.
 %   Curva por E': x_2 = 5,6 · 8,4^{1,5} x_1^{-1,5} = 136,33 x_1^{-1,5},
 %   de pendiente -1,5 · 5,6/8,4 = -1 en E': tangente a la nueva recta.
+% Construcción paso a paso en el PDF: seguros-paso1.tex (capas 1-3), seguros-paso2.tex (1-4),
+% seguros-paso3.tex (1-5) y este (todas).
 % Elaboración propia a partir de Mas-Colell, Whinston y Green (1995, cap. 6).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -21,13 +23,16 @@
 \begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm,
     declare function={ra(\x)=19-1.5*\x; ci(\x)=159.23/(\x^1.5);
                    rb(\x)=14-\x; cb(\x)=136.33/(\x^1.5);}]
+  % Marco fijo, para que los pasos seguros-paso1/2/3.tex (que dibujan solo las primeras
+  % capas) salgan del mismo tamaño y a la misma escala que el gráfico completo
+  \useasboundingbox (-3.6,-1.8) rectangle (14.8,13);
   % 1: ejes: riqueza sin accidente y con accidente
   \capa{1}{\ejes{$x_1$}{$x_2$}{13.5}{12}}
   % 2: línea de certeza
   \capa{2}{\draw[thick,tceegris] (0,0) -- (11,11) node[etiqueta,above,font=\footnotesize,text=black,align=center] {línea de certeza};}
   % 3: dotación A, sin seguro
   \capa{3}{\node[punto] (A) at (10,4) {};}
-  \capa{3}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{3}{\node[etiqueta,below left=1pt] at (A) {$A$};}
   \capa{3}{\draw[guia] (10,0) node[below,text=black] {$\overline{W}$} |- (0,4) node[left,text=black] {$\overline{W}-L$};}
   % 4: recta de aseguramiento con prima justa (gamma = pi), de pendiente -(1-pi)/pi
   \capa{4}{\draw[curva4] plot[domain=12.67:5.8,samples=2] (\x,{ra(\x)}) node[etiqueta,left,xshift=-3pt,text=tceedorado,font=\footnotesize] {$\gamma=\pi$};}
@@ -42,6 +47,6 @@
   \capa{7}{\draw[curvanueva,desplazada] plot[domain=5.7:13,samples=60] (\x,{cb(\x)}) node[etiqueta,below right] {$U'$};}
   % 8: nuevo óptimo E', con seguro parcial
   \capa{8}{\node[punto] (E2) at (8.4,5.6) {};}
-  \capa{8}{\node[etiqueta,below=1pt,xshift=3pt] at (E2) {$E'$};}
+  \capa{8}{\node[etiqueta,below=2pt,xshift=-3pt] at (E2) {$E'$};}
 \end{tikzpicture}
 \end{document}

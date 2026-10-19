@@ -856,7 +856,7 @@ nolink "false"
 
 \end_inset
 
-); derivaremos con ella la demanda de seguros y, como profundizaciÃ³n, la de un activo con riesgo y la decisiÃ³n de la empresa aversa al riesgo (
+); derivaremos con ella la demanda de seguros y, como profundizaciÃ³n, la decisiÃ³n de la empresa aversa al riesgo (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:aplicaciones"
@@ -867,7 +867,23 @@ nolink "false"
 
 \end_inset
 
-), y la extenderemos a la utilidad que depende del estado y a los bienes contingentes (
+), con la demanda de un activo con riesgo en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:cartera"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, y la extenderemos a la utilidad que depende del estado y a los bienes contingentes (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:extensiones"
@@ -1126,16 +1142,6 @@ Mossin
 
 \end_inset
 
-); activo con riesgo (
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Arrow
-\end_layout
-
-\end_inset
-
 ); empresa (
 \begin_inset Flex Autor
 status collapsed
@@ -1146,7 +1152,17 @@ Sandmo
 
 \end_inset
 
-)
+); [cartera (
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+), en una frase]
 \begin_inset Newline newline
 \end_inset
 
@@ -3844,7 +3860,17 @@ curvatura
 \end_layout
 
 \begin_layout Paragraph
-Utilidad de Bernoulli: actitud ante el riesgo
+Utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+: actitud ante el riesgo
 \end_layout
 
 \begin_layout Itemize
@@ -3951,24 +3977,136 @@ status collapsed
 
 
 \begin_layout Standard
-Las 3 actitudes, con 2 resultados igual de probables: con 
+Las 3 actitudes se ven en un grÃ¡fico con 2 resultados igual de probables, 
+\begin_inset Formula $x_1$
+\end_inset
+
+ y 
+\begin_inset Formula $x_2$
+\end_inset
+
+. En cada panel, la cuerda que une 
+\begin_inset Formula $\big(x_1,u(x_1)\big)$
+\end_inset
+
+ y 
+\begin_inset Formula $\big(x_2,u(x_2)\big)$
+\end_inset
+
+ da, a la altura del valor esperado 
+\begin_inset Formula $\mathbb{E}[\tilde{x}]$
+\end_inset
+
+, la utilidad esperada 
+\begin_inset Formula $\mathbb{E}[u(\tilde{x})]$
+\end_inset
+
+ (punto azul), y la curva da la utilidad del valor esperado, 
+\begin_inset Formula $u(\mathbb{E}[\tilde{x}])$
+\end_inset
+
+. El 
+\emph on
+equivalente cierto
+\emph default
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ es la riqueza cierta que da la misma utilidad que la loterÃ­a, 
+\begin_inset Formula $u(\xi)=\mathbb{E}[u(\tilde{x})]$
+\end_inset
+
+ (punto dorado, donde la horizontal de la utilidad esperada corta la curva), y la 
+\emph on
+prima de riesgo
+\emph default
+, 
+\begin_inset Formula $\rho=\mathbb{E}[\tilde{x}]-\xi$
+\end_inset
+
+, la distancia entre ambos (flecha roja); los 2 se definen a continuaciÃ³n. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Averso
+\emph default
+ (
 \begin_inset Formula $u$
 \end_inset
 
- cÃ³ncava la cuerda queda por debajo de la curva (averso); con 
+ cÃ³ncava): la cuerda queda por debajo de la curva, 
+\begin_inset Formula $\mathbb{E}[u(\tilde{x})]<u(\mathbb{E}[\tilde{x}])$
+\end_inset
+
+; el equivalente cierto queda a la izquierda del valor esperado, 
+\begin_inset Formula $\xi<\mathbb{E}[\tilde{x}]$
+\end_inset
+
+, y la prima es positiva: pagarÃ­a por librarse del riesgo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Neutral
+\emph default
+ (
 \begin_inset Formula $u$
 \end_inset
 
- lineal, sobre ella (neutral), y con 
+ lineal): la cuerda coincide con la curva, 
+\begin_inset Formula $\mathbb{E}[u(\tilde{x})]=u(\mathbb{E}[\tilde{x}])$
+\end_inset
+
+; 
+\begin_inset Formula $\xi=\mathbb{E}[\tilde{x}]$
+\end_inset
+
+ y 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+: el riesgo le es indiferente. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Amante
+\emph default
+ (
 \begin_inset Formula $u$
 \end_inset
 
- convexa, por encima (amante).
+ convexa): la cuerda queda por encima de la curva, 
+\begin_inset Formula $\mathbb{E}[u(\tilde{x})]>u(\mathbb{E}[\tilde{x}])$
+\end_inset
+
+; 
+\begin_inset Formula $\xi>\mathbb{E}[\tilde{x}]$
+\end_inset
+
+ y 
+\begin_inset Formula $\rho<0$
+\end_inset
+
+: habrÃ­a que pagarle para que renunciara a la loterÃ­a. 
+\end_layout
+
+\begin_layout Standard
+El signo de la prima es el del coeficiente de aversiÃ³n absoluta, 
+\begin_inset Formula $r_A=-u''/u'$
+\end_inset
+
+, que se define mÃ¡s adelante.
 \begin_inset Flex Grafico nota
 status collapsed
 
 \begin_layout Plain Layout
-0.85]{actitud-tres-casos
+1]{actitud-tres-casos
 \end_layout
 
 \end_inset
@@ -3991,7 +4129,17 @@ IntuiciÃ³n
 \end_layout
 
 \begin_layout Paragraph
-Utilidad de Bernoulli: equivalente cierto y prima de riesgo
+Utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+: equivalente cierto y prima de riesgo
 \end_layout
 
 \begin_layout Itemize
@@ -4277,7 +4425,17 @@ textcite[Â§6.C]{MasColellWhinstonGreen1995}
 \end_layout
 
 \begin_layout Paragraph
-Utilidad de Bernoulli: medidas de la aversiÃ³n al riesgo
+Utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+: medidas de la aversiÃ³n al riesgo
 \end_layout
 
 \begin_layout Itemize
@@ -4589,7 +4747,17 @@ parencite{HoltLaury2002Risk}
 
 \end_deeper
 \begin_layout Paragraph
-Utilidad de Bernoulli: aversiÃ³n al riesgo y riqueza
+Utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+: aversiÃ³n al riesgo y riqueza
 \end_layout
 
 \begin_layout Itemize
@@ -4726,6 +4894,1696 @@ status collapsed
 
 \begin_layout Plain Layout
 3.A.29
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+La elasticidad de sustituciÃ³n intertemporal mide en quÃ© porcentaje cambia el cociente de consumos de 2 periodos, 
+\begin_inset Formula $c_{t+1}/c_t$
+\end_inset
+
+, cuando la relaciÃ³n marginal de sustituciÃ³n entre ellos cambia un 1
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.29
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula $$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ESI
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+equiv
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+d
+\begin_inset space \thinspace{}
+
+\end_inset
+
+(c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+/ct)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+d
+\begin_inset space \thinspace{}
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+RMS
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cdot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+RMS
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+/ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ .
+\begin_inset Formula $$
+\end_inset
+
+ Con utilidad separable en el tiempo, 
+\begin_inset Formula $u(c_t)+\beta\,u(c_{t+1})$
+\end_inset
+
+, y la CRRA, cuya utilidad marginal es 
+\begin_inset Formula $u'(c)=c^{-\theta}$
+\end_inset
+
+: 
+\begin_inset Formula $$
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+RMS
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+|=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+u'(ct)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+
+\end_inset
+
+u'(c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+left
+\end_layout
+
+\end_inset
+
+(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+right
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+Longrightarrow
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \space{}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+d
+\begin_inset space \thinspace{}
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+RMS
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+d
+\begin_inset space \thinspace{}
+
+\end_inset
+
+(c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+/ct)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+left
+\end_layout
+
+\end_inset
+
+(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+right
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+-1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ .
+\begin_inset Formula $$
+\end_inset
+
+ Sustituyendo en la definiciÃ³n: 
+\begin_inset Formula $$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ESI
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+left
+\end_layout
+
+\end_inset
+
+(
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+right
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1-
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cdot
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+left
+\end_layout
+
+\end_inset
+
+(c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+/ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+right
+\end_layout
+
+\end_inset
+
+)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+c
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+t+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+/ct
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+=
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+theta
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ .
+\begin_inset Formula $$
+\end_inset
+
+ Como 
+\begin_inset Formula $\theta$
+\end_inset
+
+ es tambiÃ©n la elasticidad de la utilidad marginal cambiada de signo, 
+\begin_inset Formula $r_R=-\varepsilon_{u'(x),x}=\theta$
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:crra"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), con utilidad separable en el tiempo la inversa de la elasticidad de sustituciÃ³n intertemporal y el coeficiente de aversiÃ³n relativa al riesgo coinciden: las funciones con aversiÃ³n relativa constante son tambiÃ©n las que tienen elasticidad de sustituciÃ³n intertemporal constante.
 \end_layout
 
 \end_inset
@@ -5251,7 +7109,17 @@ textcite{Gollier2001Economics}
 \end_layout
 
 \begin_layout Paragraph
-Utilidad de Bernoulli: prudencia y ahorro precautorio
+Utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+: prudencia y ahorro precautorio
 \end_layout
 
 \begin_layout Standard
@@ -6475,7 +8343,23 @@ activos
 \end_layout
 
 \begin_layout Itemize
-Veremos 3 aplicaciones: la decisiÃ³n de aseguramiento, que da la demanda de seguros; la decisiÃ³n de cartera, que da la demanda de un activo con riesgo, y la decisiÃ³n de producciÃ³n de una empresa aversa al riesgo. 
+Veremos 2 aplicaciones: la decisiÃ³n de aseguramiento, que da la demanda de seguros, y la decisiÃ³n de producciÃ³n de una empresa aversa al riesgo. La decisiÃ³n de cartera, que da la demanda de un activo con riesgo, se resume en una frase y se desarrolla en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:cartera"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Standard
@@ -6535,7 +8419,23 @@ status collapsed
 
 \end_inset
 
-: supuestos, recta de aseguramiento, problema y condiciÃ³n de tangencia, seguro completo con prima justa y parcial con prima recargada, sobre el grÃ¡fico
+: supuestos, recta de aseguramiento, problema y condiciÃ³n de tangencia, seguro completo con prima justa y parcial con prima recargada, sobre el grÃ¡fico de la demanda de seguros, que se construye paso a paso (grÃ¡ficos
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros-a"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ a
 \begin_inset space ~
 
 \end_inset
@@ -6551,7 +8451,7 @@ nolink "false"
 
 \end_inset
 
- construido por capas; la evidencia y la valoraciÃ³n, en una frase cada una. La demanda de un activo con riesgo y la empresa aversa al riesgo se mencionan en una frase cada una. La tabla de casos es de profundizaciÃ³n. 
+); la evidencia y la valoraciÃ³n, en una frase cada una. La demanda de un activo con riesgo y la empresa aversa al riesgo se mencionan en una frase cada una. La tabla de casos es de profundizaciÃ³n. 
 \end_layout
 
 \end_inset
@@ -6701,7 +8601,7 @@ Un consumidor tiene una riqueza inicial
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:seguros"
+reference "fig:seguros-a"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6709,7 +8609,17 @@ nolink "false"
 
 \end_inset
 
-). 
+). La bisectriz es la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+lÃ­nea de certeza
+\end_layout
+
+\end_inset
+
+: en ella la riqueza es la misma ocurra o no el accidente. 
 \end_layout
 
 \begin_layout Enumerate
@@ -6811,6 +8721,158 @@ InformaciÃ³n simÃ©trica: la aseguradora conoce
  y observa si hay accidente. 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Demanda de seguros (a): la situaciÃ³n sin seguro, 
+\begin_inset Formula $A$
+\end_inset
+
+, y la lÃ­nea de certeza
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:seguros-a"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-paso1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§6.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. Primer paso del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subparagraph
 ii) Desarrollo
 \end_layout
@@ -6886,7 +8948,183 @@ Su pendiente,
 \begin_inset Formula $1-\gamma$
 \end_inset
 
- euros netos en el estado con accidente. 
+ euros netos en el estado con accidente. Al aumentar la cobertura desde 
+\begin_inset Formula $S=0$
+\end_inset
+
+ (punto 
+\begin_inset Formula $A$
+\end_inset
+
+) hasta 
+\begin_inset Formula $S=L$
+\end_inset
+
+, el consumidor recorre la recta hacia arriba y a la izquierda, hasta la lÃ­nea de certeza (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros-b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Demanda de seguros (b): la recta de aseguramiento con prima justa
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:seguros-b"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-paso2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§6.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. Segundo paso del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -7296,21 +9534,11 @@ relaciÃ³n marginal de sustituciÃ³n estocÃ¡stica
 \begin_inset Formula $(x_1,x_2)$
 \end_inset
 
-: cuÃ¡nta riqueza sin accidente estÃ¡ dispuesto a dar el consumidor por un euro mÃ¡s con accidente. En la 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-lÃ­nea de certeza
-\end_layout
-
-\end_inset
-
- (
+: cuÃ¡nta riqueza sin accidente estÃ¡ dispuesto a dar el consumidor por un euro mÃ¡s con accidente. En la lÃ­nea de certeza (
 \begin_inset Formula $x_1=x_2$
 \end_inset
 
-, la bisectriz) vale 
+) vale 
 \begin_inset Formula $(1-\pi)/\pi$
 \end_inset
 
@@ -7323,6 +9551,111 @@ lÃ­nea de certeza
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Prima justa
+\emph default
+. Si las aseguradoras son neutrales al riesgo y compiten con libre entrada, su beneficio esperado por pÃ³liza es nulo: 
+\begin_inset Formula $(1-\pi)\,\gamma S+\pi\,(\gamma S-S)=(\gamma-\pi)\,S=0$
+\end_inset
+
+, luego 
+\begin_inset Formula $\gamma=\pi$
+\end_inset
+
+. Es la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+prima actuarialmente justa
+\end_layout
+
+\end_inset
+
+, y con ella la recta de aseguramiento tiene la misma pendiente que las curvas de indiferencia en la lÃ­nea de certeza. 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+Teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mossin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, primera parte: con prima justa, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:cpo-seguro"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ da 
+\begin_inset Formula $u'(x_1)=u'(x_2)$
+\end_inset
+
+, luego 
+\begin_inset Formula $x_1=x_2$
+\end_inset
+
+ y 
+\begin_inset Formula $S^*=L$
+\end_inset
+
+: el consumidor averso 
+\series bold
+se asegura completamente
+\series default
+. GrÃ¡ficamente, la curva de indiferencia mÃ¡s alta que alcanza es tangente a la recta de aseguramiento justo en la lÃ­nea de certeza, en el punto 
+\begin_inset Formula $E$
+\end_inset
+
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros-c"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), donde las 2 pendientes valen 
+\begin_inset Formula $(1-\pi)/\pi$
+\end_inset
+
+. La aseguradora tiene beneficio nulo. 
 \end_layout
 
 \begin_layout Standard
@@ -7351,7 +9684,233 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Demanda de seguros con informaciÃ³n simÃ©trica
+Demanda de seguros (c): con prima justa, seguro completo en 
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:seguros-c"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-paso3
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§6.C]{MasColellWhinstonGreen1995}
+\end_layout
+
+\end_inset
+
+. Tercer paso del grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mossin
+\end_layout
+
+\end_inset
+
+
+\emph default
+, segunda parte: con prima recargada (
+\begin_inset Formula $\gamma>\pi$
+\end_inset
+
+), la recta de aseguramiento, que sigue pasando por 
+\begin_inset Formula $A$
+\end_inset
+
+, es mÃ¡s plana, 
+\begin_inset Formula $(1-\gamma)/\gamma<(1-\pi)/\pi$
+\end_inset
+
+; luego 
+\begin_inset Formula $u'(x_1)<u'(x_2)$
+\end_inset
+
+, 
+\begin_inset Formula $x_1>x_2$
+\end_inset
+
+ y 
+\begin_inset Formula $S^*<L$
+\end_inset
+
+: 
+\series bold
+seguro parcial
+\series default
+, como las franquicias que se observan. La nueva curva de indiferencia es tangente a la recta por debajo de la lÃ­nea de certeza, en el punto 
+\begin_inset Formula $E'$
+\end_inset
+
+, entre 
+\begin_inset Formula $A$
+\end_inset
+
+ y la lÃ­nea de certeza (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:seguros"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Demanda de seguros (d): con prima recargada, seguro parcial en 
+\begin_inset Formula $E'$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -7385,7 +9944,7 @@ status collapsed
 
 \end_inset
 
-0.6
+0.55
 \begin_inset ERT
 status collapsed
 
@@ -7481,149 +10040,6 @@ textcite{RodriguezLopez2017Riesgo}
 
 \end_layout
 
-\begin_layout Subparagraph
-iii) Implicaciones
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Prima justa
-\emph default
-. Si las aseguradoras son neutrales al riesgo y compiten con libre entrada, su beneficio esperado por pÃ³liza es nulo: 
-\begin_inset Formula $(1-\pi)\,\gamma S+\pi\,(\gamma S-S)=(\gamma-\pi)\,S=0$
-\end_inset
-
-, luego 
-\begin_inset Formula $\gamma=\pi$
-\end_inset
-
-. Es la 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-prima actuarialmente justa
-\end_layout
-
-\end_inset
-
-, y con ella la recta de aseguramiento tiene la misma pendiente que las curvas de indiferencia en la lÃ­nea de certeza. 
-\end_layout
-
-\begin_layout Itemize
-
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-Teorema de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Mossin
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-con prima justa, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:cpo-seguro"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- da 
-\begin_inset Formula $u'(x_1)=u'(x_2)$
-\end_inset
-
-, luego 
-\begin_inset Formula $x_1=x_2$
-\end_inset
-
- y 
-\begin_inset Formula $S^*=L$
-\end_inset
-
-: el consumidor averso 
-\series bold
-se asegura completamente
-\series default
- y se sitÃºa en la lÃ­nea de certeza (punto 
-\begin_inset Formula $E$
-\end_inset
-
- del grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:seguros"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-), mientras la aseguradora tiene beneficio nulo; 
-\end_layout
-
-\begin_layout Itemize
-con prima recargada (
-\begin_inset Formula $\gamma>\pi$
-\end_inset
-
-), 
-\begin_inset Formula $(1-\gamma)/\gamma<(1-\pi)/\pi$
-\end_inset
-
-, luego 
-\begin_inset Formula $u'(x_1)<u'(x_2)$
-\end_inset
-
-, 
-\begin_inset Formula $x_1>x_2$
-\end_inset
-
- y 
-\begin_inset Formula $S^*<L$
-\end_inset
-
-: 
-\series bold
-seguro parcial
-\series default
-, como las franquicias que se observan (punto 
-\begin_inset Formula $E'$
-\end_inset
-
-, entre 
-\begin_inset Formula $A$
-\end_inset
-
- y la lÃ­nea de certeza). 
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -7730,504 +10146,6 @@ averso
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status open
-
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Cobertura Ã³ptima segÃºn la prima y la actitud ante el riesgo, con 
-\begin_inset Formula $0\leq S\leq L$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:seguros-casos"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="4" columns="4">
-<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="2.4cm">
-<column alignment="center" valignment="middle" width="3.9cm">
-<column alignment="center" valignment="middle" width="3.4cm">
-<column alignment="center" valignment="middle" width="3.9cm">
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-rowcolor{tceeazulpalido}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Prima favorable
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-(
-\begin_inset Formula $\gamma<\pi$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Prima justa
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-(
-\begin_inset Formula $\gamma=\pi$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Prima recargada
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-(
-\begin_inset Formula $\gamma>\pi$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeverde}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
-Averso
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Completo, 
-\begin_inset Formula $S^*=L$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-(se sobreasegurarÃ­a si pudiera) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-Completo, 
-\begin_inset Formula $S^*=L$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-(teorema de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Mossin
-\end_layout
-
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Parcial, 
-\begin_inset Formula $S^*<L$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-(nulo si el recargo es grande)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-[4pt] 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceeazul}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
-Neutral
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Completo, 
-\begin_inset Formula $S^*=L$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Indiferente,
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Formula $S^*\in[0,L]$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Ninguno, 
-\begin_inset Formula $S^*=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-[4pt] 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcolor{tceerojo}
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-
-\series bold
-Amante
-\series default
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Ninguno o completo
-\begin_inset Newline newline
-\end_inset
-
-(completo si 
-\begin_inset Formula $\gamma$
-\end_inset
-
- es bastante menor que 
-\begin_inset Formula $\pi$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Ninguno, 
-\begin_inset Formula $S^*=0$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-Ninguno, 
-\begin_inset Formula $S^*=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia a partir de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Mossin1968Aspects}
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[Â§6.C]{MasColellWhinstonGreen1995}
-\end_layout
-
-\end_inset
-
- y 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~11]{Varian1992Microeconomic}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Paragraph
 d) Evidencia empÃ­rica
 \end_layout
@@ -8382,200 +10300,38 @@ nolink "false"
 ). 
 \end_layout
 
-\begin_layout Subsubsection
-DecisiÃ³n de cartera: demanda de un activo con riesgo
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:cartera"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Nota al opositor
-status collapsed
-
-\begin_layout Standard
-No se canta: basta mencionar el resultado de 
-\begin_inset Flex Autor
+\begin_layout Itemize
+El problema inverso del seguro es la 
+\begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-Arrow
+decisiÃ³n de cartera
 \end_layout
 
 \end_inset
 
- (todo consumidor averso compra algo del activo con riesgo si su rentabilidad esperada supera a la del activo seguro). Es el problema inverso del seguro: allÃ­ el consumidor parte del riesgo y paga por acercarse a la lÃ­nea de certeza; aquÃ­ parte de la certeza y hay que pagarle, en rentabilidad esperada, para que se aleje de ella. 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-a) Idea
-\end_layout
-
-\begin_layout Itemize
-Del seguro pasamos a la decisiÃ³n de cartera: Â¿cuÃ¡nto invierte un consumidor averso en un activo cuya rentabilidad es incierta? Es la otra gran decisiÃ³n financiera del hogar y la base de la teorÃ­a de carteras. 
-\end_layout
-
-\begin_layout Paragraph
-b) Modelo
-\end_layout
-
-\begin_layout Subparagraph
-i) Supuestos
-\end_layout
-
-\begin_layout Itemize
-El consumidor reparte una riqueza 
-\begin_inset Formula $\overline{W}$
-\end_inset
-
- entre un activo seguro, con rentabilidad 
-\begin_inset Formula $r_f$
-\end_inset
-
-, y un activo con riesgo, con rentabilidad aleatoria 
-\begin_inset Formula $\tilde{r}$
-\end_inset
-
-; invierte 
-\begin_inset Formula $\alpha$
-\end_inset
-
- euros en el segundo 
+: el consumidor parte de la certeza (todo en un activo seguro) y hay que pagarle, en rentabilidad esperada, para que se aleje de ella. Su resultado central, de 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencites
+textcite{Arrow1965Aspects}
 \end_layout
 
 \end_inset
 
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Arrow1965Aspects
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
+, es que todo consumidor averso compra algo de un activo con riesgo si su rentabilidad esperada supera a la del activo seguro, y mÃ¡s cuanto mÃ¡s rico es si su aversiÃ³n absoluta es decreciente (anexo
+\begin_inset space ~
 
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-Pratt1964Risk
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Su utilidad de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Bernoulli
-\end_layout
-
-\end_inset
-
- es creciente y estrictamente cÃ³ncava: es averso al riesgo. 
-\end_layout
-
-\begin_layout Subparagraph
-ii) Desarrollo
-\end_layout
-
-\begin_layout Itemize
-Su riqueza final es 
-\begin_inset Formula $\overline{W}(1+r_f)+\alpha\,(\tilde{r}-r_f)$
-\end_inset
-
-, y elige 
-\begin_inset Formula $\alpha$
-\end_inset
-
-: 
-\begin_inset Formula \[\optim{\max}{\alpha}{\mathbb{E}\Big[u\big(\overline{W}(1+r_f)+\alpha\,(\tilde{r}-r_f)\big)\Big]}{}\qquad\Longrightarrow\qquad\mathbb{E}\Big[u'\big(\overline{W}(1+r_f)+\alpha^*(\tilde{r}-r_f)\big)\,(\tilde{r}-r_f)\Big]=0 .\]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-La derivada de la utilidad esperada en 
-\begin_inset Formula $\alpha=0$
-\end_inset
-
- es 
-\begin_inset Formula $u'\big(\overline{W}(1+r_f)\big)\big(\mathbb{E}[\tilde{r}]-r_f\big)$
-\end_inset
-
-: si la prima de rentabilidad es positiva, 
-\begin_inset Formula $\alpha^*>0$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Subparagraph
-iii) Implicaciones
-\end_layout
-
-\begin_layout Itemize
-Un consumidor averso siempre asume 
-\emph on
-algo
-\emph default
- de un riesgo con esperanza favorable, porque, para riesgos pequeÃ±os, el coste de la aversiÃ³n es de segundo orden (proporcional a 
-\begin_inset Formula $\alpha^2$
-\end_inset
-
-, como en 
 \begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:arrow-pratt"
+LatexCommand ref
+reference "anexo:cartera"
 plural "false"
 caps "false"
 noprefix "false"
@@ -8583,50 +10339,1080 @@ nolink "false"
 
 \end_inset
 
-) y la ganancia esperada, de primer orden (proporcional a 
-\begin_inset Formula $\alpha$
-\end_inset
-
 ). 
 \end_layout
 
-\begin_layout Itemize
-Si la aversiÃ³n absoluta es decreciente (DARA), 
-\begin_inset Formula $\alpha^*$
-\end_inset
+\begin_layout Standard
 
- crece con 
-\begin_inset Formula $\overline{W}$
-\end_inset
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
 
-: el activo con riesgo es un 
-\emph on
-bien normal
-\emph default
-. Si la relativa es constante (CRRA), la 
-\emph on
-proporciÃ³n
-\emph default
- invertida, 
-\begin_inset Formula $\alpha^*/\overline{W}$
-\end_inset
 
-, no depende de la riqueza. 
-\end_layout
+\begin_layout Standard
 
-\begin_layout Paragraph
-c) Extensiones
-\end_layout
-
-\begin_layout Itemize
-Con varios activos, y si la utilidad esperada depende solo de la media y la varianza, se llega a la teorÃ­a de carteras de 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-textcite{Markowitz1952Portfolio}
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cobertura Ã³ptima segÃºn la prima y la actitud ante el riesgo, con 
+\begin_inset Formula $0\leq S\leq L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:seguros-casos"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setlength{
+\backslash
+tabcolsep}{4pt}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="4">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="1.5cm">
+<column alignment="center" valignment="middle" width="4.4cm">
+<column alignment="center" valignment="middle" width="4.4cm">
+<column alignment="center" valignment="middle" width="4.4cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Prima favorable
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Formula $\gamma<\pi$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Prima justa
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Formula $\gamma=\pi$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Prima recargada
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Formula $\gamma>\pi$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Averso
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Completo, 
+\begin_inset Formula $S^*=L$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(se sobreasegurarÃ­a, en 
+\begin_inset Formula $E^*$
+\end_inset
+
+, si pudiera)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-averso-favorable
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+Completo, 
+\begin_inset Formula $S^*=L$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Mossin
+\end_layout
+
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-averso-justa
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Parcial, 
+\begin_inset Formula $S^*<L$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(nulo si el recargo es grande)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-averso-recargada
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[4pt] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeazul}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Neutral
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Completo, 
+\begin_inset Formula $S^*=L$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-neutral-favorable
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Indiferente,
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $S^*\in[0,L]$
+\end_inset
+
+ (todo el tramo de 
+\begin_inset Formula $A$
+\end_inset
+
+ a 
+\begin_inset Formula $E$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-neutral-justa
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ninguno, 
+\begin_inset Formula $S^*=0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-neutral-recargada
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[4pt] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceerojo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Amante
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ninguno, 
+\begin_inset Formula $S^*=0$
+\end_inset
+
+, si 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ es algo menor que 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-amante-favorable-ninguno
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Completo, 
+\begin_inset Formula $S^*=L$
+\end_inset
+
+, si 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ es bastante menor que 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-amante-favorable-completo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ninguno, 
+\begin_inset Formula $S^*=0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-amante-justa
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Ninguno, 
+\begin_inset Formula $S^*=0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+3.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+seguros-amante-recargada
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Mossin1968Aspects}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[Â§6.C]{MasColellWhinstonGreen1995}
 \end_layout
 
 \end_inset
@@ -8638,12 +11424,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcite{Tobin1958Liquidity}
+textcite[cap.~11]{Varian1992Microeconomic}
 \end_layout
 
 \end_inset
 
- (anexo
+. Cada grÃ¡fico tiene los ejes del grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -8651,7 +11437,7 @@ textcite{Tobin1958Liquidity}
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:media-varianza"
+reference "fig:seguros"
 plural "false"
 caps "false"
 noprefix "false"
@@ -8659,27 +11445,37 @@ nolink "false"
 
 \end_inset
 
-) 
-\begin_inset Flex Ver tema
-status collapsed
+: la riqueza sin accidente, 
+\begin_inset Formula $x_1$
+\end_inset
 
-\begin_layout Plain Layout
-3.B.23
+, en abscisas, y con accidente, 
+\begin_inset Formula $x_2$
+\end_inset
+
+, en ordenadas; en gris, la lÃ­nea de certeza; en dorado, la recta de aseguramiento, con trazo grueso en el tramo posible, de 
+\begin_inset Formula $A$
+\end_inset
+
+ (
+\begin_inset Formula $S=0$
+\end_inset
+
+) a la lÃ­nea de certeza (
+\begin_inset Formula $S=L$
+\end_inset
+
+); en gris discontinuo, la recta con prima justa, de referencia; las curvas de indiferencia son convexas para el averso, rectas para el neutral y cÃ³ncavas para el amante, y el cÃ­rculo marca el Ã³ptimo.
 \end_layout
 
 \end_inset
 
-; con el dinero como activo seguro, a la demanda de dinero por motivo especulaciÃ³n 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-3.A.35
+ 
 \end_layout
 
 \end_inset
 
-. 
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -9786,7 +12582,17 @@ textcite{Markowitz1952Utility}
 \end_layout
 
 \begin_layout Paragraph
-Violaciones del axioma de independencia: la paradoja de Allais
+Violaciones del axioma de independencia: la paradoja de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Allais
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -9832,7 +12638,7 @@ textcite{Allais1953Comportement}
 
 \end_inset
 
- planteÃ³ sus preguntas en un coloquio sobre el riesgo celebrado en ParÃ­s en 1952,
+ planteÃ³ sus preguntas en un coloquio sobre el riesgo celebrado en ParÃ­s en 1952:
 \begin_inset Foot
 status collapsed
 
@@ -9865,7 +12671,31 @@ parencite{Nobel1988Allais}
 
 \end_inset
 
- con 2 elecciones entre loterÃ­as (tabla
+ pares de loterÃ­as en los que la mayorÃ­a elige de una forma que ninguna utilidad esperada puede racionalizar. 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Allais
+\end_layout
+
+\end_inset
+
+ encontrÃ³ evidencia contraria al axioma de independencia, y en particular un 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+efecto certeza
+\end_layout
+
+\end_inset
+
+: se prefieren de forma desproporcionada los pagos seguros. 
+\end_layout
+
+\begin_layout Itemize
+Podemos ilustrar la paradoja con el siguiente ejemplo (tabla
 \begin_inset space ~
 
 \end_inset
@@ -9881,17 +12711,71 @@ nolink "false"
 
 \end_inset
 
-, premios en millones). La mayorÃ­a elige 
+), con 2 juegos y 2 loterÃ­as en cada uno: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+en el 
+\emph on
+juego
+\begin_inset space ~
+
+\end_inset
+
+1
+\emph default
+, la mayorÃ­a elige 
 \begin_inset Formula $A_1$
 \end_inset
 
- en la primera y 
+: ofrece un pago esperado mayor (
+\begin_inset Formula $0{,}75\cdot 110=82{,}5$
+\end_inset
+
+ frente a 
+\begin_inset Formula $0{,}80\cdot 100=80$
+\end_inset
+
+) y la diferencia en la probabilidad de cobrar algo (75
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% frente a 80
+\begin_inset space \thinspace{}
+
+\end_inset
+
+%) parece poco importante; 
+\end_layout
+
+\begin_layout Itemize
+en el 
+\emph on
+juego
+\begin_inset space ~
+
+\end_inset
+
+2
+\emph default
+, que es como el primero con 20 puntos mÃ¡s de probabilidad de cobrar en cada loterÃ­a, la mayorÃ­a elige 
 \begin_inset Formula $B_2$
 \end_inset
 
- en la segunda. 
+, el pago seguro, aunque su pago esperado sea menor (
+\begin_inset Formula $100$
+\end_inset
+
+ frente a 
+\begin_inset Formula $0{,}95\cdot 110=104{,}5$
+\end_inset
+
+). 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 
 \begin_inset Float table
@@ -9918,7 +12802,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-La paradoja de Allais (premios en millones)
+La paradoja de Allais: Ã¡rboles de las 4 loterÃ­as (premios en euros)
 \end_layout
 
 \end_inset
@@ -9932,14 +12816,12 @@ name "tab:allais"
 
  
 \begin_inset Tabular 
-<lyxtabular version="3" rows="3" columns="4">
+<lyxtabular version="3" rows="3" columns="2">
 <features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="1.4cm">
-<column alignment="center" valignment="middle" width="4.6cm">
-<column alignment="center" valignment="middle" width="1.4cm">
-<column alignment="center" valignment="middle" width="4.6cm">
+<column alignment="center" valignment="middle" width="6.2cm">
+<column alignment="center" valignment="middle" width="6.2cm">
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
@@ -9956,74 +12838,29 @@ rowcolor{tceeazulpalido}
 \end_inset
 
  
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-multicolumn{2}{c|}{
-\backslash
-textbf{ElecciÃ³n 1}}
-\end_layout
-
-\end_inset
-
+\series bold
+Juego 1
+\series default
  
 \end_layout
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
 
 \series bold
-ElecciÃ³n 2
+Juego 2
 \series default
 
 \end_layout
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\end_inset
-</cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-cellcolor{tceesalvia}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $A_1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -10040,17 +12877,56 @@ cellcolor{tceesalvia}
 
 \end_inset
 
-1 con probabilidad 1 
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Standard
 
-\begin_inset Formula $A_2$
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+4.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+allais-a1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
 \end_inset
 
  
@@ -10062,43 +12938,69 @@ cellcolor{tceesalvia}
 \begin_inset Text
 
 \begin_layout Standard
-1 con 0,11; 0 con 0,89
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+4.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+allais-a2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-[3pt] 
-\begin_inset Formula $B_1$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Standard
-5 con 0,10; 1 con 0,89;
-\begin_inset Newline newline
-\end_inset
-
-0 con 0,01 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
 
 \begin_inset ERT
 status collapsed
@@ -10106,13 +13008,49 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-cellcolor{tceesalvia}
+grafico
 \end_layout
 
 \end_inset
 
 
-\begin_inset Formula $B_2$
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+4.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+allais-b1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
 \end_inset
 
  
@@ -10136,7 +13074,59 @@ cellcolor{tceesalvia}
 
 \end_inset
 
-5 con 0,10; 0 con 0,90
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+4.6cm
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+allais-b2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -10170,7 +13160,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcite[Â§6.B]{MasColellWhinstonGreen1995}
+textcite[problemas~3 y~4]{KahnemanTversky1979Prospect}
 \end_layout
 
 \end_inset
@@ -10193,14 +13183,22 @@ textcite[Â§6.B]{MasColellWhinstonGreen1995}
 \emph on
 Ninguna utilidad esperada racionaliza ese par de elecciones
 \emph default
+. Normalizando 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
 : 
 \begin_inset Formula \begin{align*}
-  A_1\succ B_1&\iff 0{,}11\,u(1)>0{,}10\,u(5)+0{,}01\,u(0),\\
-  B_2\succ A_2&\iff 0{,}10\,u(5)+0{,}01\,u(0)>0{,}11\,u(1).
+  A_1\succ B_1&\iff 0{,}75\,u(110)>0{,}80\,u(100)\iff\frac{u(110)}{u(100)}>\frac{0{,}80}{0{,}75}\approx 1{,}067,\\
+  B_2\succ A_2&\iff u(100)>0{,}95\,u(110)\iff\frac{u(110)}{u(100)}<\frac{1}{0{,}95}\approx 1{,}053 ,
   \end{align*}
 \end_inset
 
+y ningÃºn cociente puede ser a la vez mayor que 1,067 y menor que 1,053, sea cual sea 
+\begin_inset Formula $u$
+\end_inset
 
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -10216,7 +13214,7 @@ Por quÃ© viola la independencia
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "anexo:derivaciones"
+reference "anexo:allais"
 plural "false"
 caps "false"
 noprefix "false"
@@ -10224,26 +13222,69 @@ nolink "false"
 
 \end_inset
 
-): en cada elecciÃ³n, las 2 loterÃ­as comparten una 
-\emph on
-consecuencia comÃºn
-\emph default
-, un 89
+): las loterÃ­as del juego
+\begin_inset space ~
+
+\end_inset
+
+1 son, casi exactamente, las del juego
+\begin_inset space ~
+
+\end_inset
+
+2 mezcladas con la misma loterÃ­a que da 0 con certeza: 
+\begin_inset Formula $B_1$
+\end_inset
+
+ es un 80
 \begin_inset space \thinspace{}
 
 \end_inset
 
-% de probabilidad de ganar 1 (elecciÃ³n 1) o de ganar 0 (elecciÃ³n 2). Quitada esa parte comÃºn, las 2 elecciones son la misma. SegÃºn el axioma de independencia, cambiar lo que es comÃºn no deberÃ­a alterar el orden; lo altera el 
-\begin_inset Flex Concepto
-status collapsed
+% de 
+\begin_inset Formula $B_2$
+\end_inset
 
-\begin_layout Plain Layout
-efecto certeza
-\end_layout
+ y un 20
+\begin_inset space \thinspace{}
 
 \end_inset
 
-: pasar del 99
+% de nada, y un 80
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% de 
+\begin_inset Formula $A_2$
+\end_inset
+
+ y un 20
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% de nada darÃ­a 110 con probabilidad 0,76, algo mejor que 
+\begin_inset Formula $A_1$
+\end_inset
+
+. SegÃºn el axioma de independencia, mezclar 2 loterÃ­as con una tercera en la misma proporciÃ³n no deberÃ­a alterar el orden entre ellas: quien prefiere 
+\begin_inset Formula $B_2$
+\end_inset
+
+ a 
+\begin_inset Formula $A_2$
+\end_inset
+
+ deberÃ­a preferir 
+\begin_inset Formula $B_1$
+\end_inset
+
+ a 
+\begin_inset Formula $A_1$
+\end_inset
+
+. Lo altera el efecto certeza: pasar del 80
 \begin_inset space \thinspace{}
 
 \end_inset
@@ -10253,17 +13294,17 @@ efecto certeza
 
 \end_inset
 
-% de probabilidad de ganar algo pesa mucho mÃ¡s que pasar del 10
+% de probabilidad de cobrar pesa mucho mÃ¡s que pasar del 75
 \begin_inset space \thinspace{}
 
 \end_inset
 
-% al 11
+% al 95
 \begin_inset space \thinspace{}
 
 \end_inset
 
-%. 
+%, porque elimina todo el riesgo. 
 \end_layout
 
 \begin_deeper
@@ -10275,56 +13316,27 @@ status collapsed
 \begin_layout Plain Layout
 
 \backslash
-textcite{KahnemanTversky1979Prospect}
+textcite[problemas~3 y~4]{KahnemanTversky1979Prospect}
 \end_layout
 
 \end_inset
 
- el 82
+ el 80
 \begin_inset space \thinspace{}
 
 \end_inset
 
-% de los sujetos prefiriÃ³ el pago seguro en el primer par, el 83
+% de los sujetos prefiriÃ³ 3.000 seguros a 4.000 con probabilidad del 80
 \begin_inset space \thinspace{}
 
 \end_inset
 
-% la loterÃ­a arriesgada en el segundo y el 61
+%, pero el 65
 \begin_inset space \thinspace{}
 
 \end_inset
 
-% hizo las 2 cosas a la vez.
-\begin_inset Foot
-status collapsed
-
-
-\begin_layout Standard
-Junto al 
-\emph on
-efecto consecuencia comÃºn
-\emph default
- de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Allais
-\end_layout
-
-\end_inset
-
- estÃ¡ el 
-\emph on
-efecto razÃ³n comÃºn
-\emph default
-: la mayorÃ­a prefiere 3.000 seguros a 4.000 con probabilidad del 80
-\begin_inset space \thinspace{}
-
-\end_inset
-
-%, pero 4.000 con el 20
+% prefiriÃ³ 4.000 con el 20
 \begin_inset space \thinspace{}
 
 \end_inset
@@ -10334,19 +13346,63 @@ efecto razÃ³n comÃºn
 
 \end_inset
 
-%, aunque el segundo par es el primero con las probabilidades divididas por 4 
+%, aunque el segundo par es el primero con las probabilidades divididas por 4 (el 
+\emph on
+efecto razÃ³n comÃºn
+\emph default
+).
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+La versiÃ³n original de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Allais
+\end_layout
+
+\end_inset
+
+, con premios en millones, es el 
+\emph on
+efecto consecuencia comÃºn
+\emph default
+: la mayorÃ­a prefiere 1 millÃ³n seguro a una loterÃ­a que da 5 millones con probabilidad 0,10, 1 millÃ³n con 0,89 y nada con 0,01, pero prefiere 5 millones con probabilidad 0,10 a 1 millÃ³n con 0,11. En cada par, las 2 loterÃ­as comparten un 89
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% de probabilidad de ganar 1 millÃ³n (primer par) o nada (segundo), y cambiar esa parte comÃºn no deberÃ­a alterar la elecciÃ³n. En 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencite[problemas~3 y~4]{KahnemanTversky1979Prospect}
+textcite{KahnemanTversky1979Prospect}
 \end_layout
 
 \end_inset
 
-. 
+, con premios en libras israelÃ­es, el 82
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% eligiÃ³ el pago seguro en el primer par, el 83
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% la loterÃ­a arriesgada en el segundo y el 61
+\begin_inset space \thinspace{}
+
+\end_inset
+
+% hizo las 2 cosas a la vez. 
 \begin_inset Flex Autor
 status collapsed
 
@@ -13518,6 +16574,21 @@ Ellsberg
 
 \end_layout
 
+\begin_layout Subsubsection
+Desarrollo del teorema de la utilidad esperada subjetiva
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:teorema-subjetiva"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 a) Idea
 \end_layout
@@ -13560,21 +16631,6 @@ probabilidad subjetiva
 \end_inset
 
 : no se suponen probabilidades, sino que se deducen de las elecciones. Si alguien prefiere apostar a que llueve maÃ±ana antes que a que no llueve, por el mismo premio, revela que cree mÃ¡s probable la lluvia. Con axiomas adecuados, esas creencias se comportan como una probabilidad. 
-\end_layout
-
-\begin_layout Subsubsection
-Desarrollo del teorema de la utilidad esperada subjetiva
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:teorema-subjetiva"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -13914,7 +16970,7 @@ name "sec:ellsberg"
 \end_layout
 
 \begin_layout Paragraph
-d) ValoraciÃ³n: la paradoja de Ellsberg
+La paradoja de Ellsberg
 \end_layout
 
 \begin_layout Itemize
@@ -16368,7 +19424,27 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-La funciÃ³n de utilidad de von Neumann y Morgenstern:
+La funciÃ³n de utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+von Neumann
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Morgenstern
+\end_layout
+
+\end_inset
+
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -17592,12 +20668,12 @@ nolink "false"
 ).
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Paragraph
+a) El valor esperado y el juego justo
+\end_layout
 
-\emph on
-Antecedentes
-\emph default
-: desde 
+\begin_layout Itemize
+Durante el desarrollo de la teorÃ­a moderna de la probabilidad, en el siglo XVII, matemÃ¡ticos como Blaise 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17607,7 +20683,7 @@ Pascal
 
 \end_inset
 
- y 
+ y Pierre de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17617,16 +20693,12 @@ Fermat
 
 \end_inset
 
-, en el siglo XVII, se aceptaba que un juego es 
-\emph on
-justo
-\emph default
- si se paga por jugar su valor esperado, su 
+ estudiaron en quÃ© condiciones un juego de azar resulta mÃ¡s o menos atractivo a travÃ©s de su 
 \begin_inset Flex Concepto
 status collapsed
 
 \begin_layout Plain Layout
-precio justo
+valor esperado
 \end_layout
 
 \end_inset
@@ -17635,11 +20707,41 @@ precio justo
 \end_layout
 
 \begin_layout Itemize
+El valor esperado de un juego es su esperanza matemÃ¡tica: la suma de los premios que ofrece multiplicados por sus probabilidades. Indica el premio que, en promedio, cabe esperar obtener jugando muchas veces. 
+\end_layout
 
+\begin_layout Itemize
+De esa idea sale un criterio normativo para valorar un juego, el de 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+juego justo
+\end_layout
+
+\end_inset
+
+: un juego es justo cuando su valor esperado es igual al precio que hay que pagar por participar, su 
 \emph on
-El problema
+precio justo
 \emph default
-: en 1713, el matemÃ¡tico Nicolaus 
+. Si el valor esperado es mayor que el precio, el juego es 
+\emph on
+favorable
+\emph default
+; si es menor, 
+\emph on
+desfavorable
+\emph default
+. 
+\end_layout
+
+\begin_layout Paragraph
+b) El problema
+\end_layout
+
+\begin_layout Itemize
+AsÃ­ estaban las cosas a comienzos del siglo XVIII. En 1713, el matemÃ¡tico suizo Nicolaus 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17649,7 +20751,7 @@ Bernoulli
 
 \end_inset
 
- lo planteÃ³ en una carta a Pierre RÃ©mond de 
+ enviÃ³ en una carta 5 problemas a Pierre RÃ©mond de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17659,7 +20761,7 @@ Montmort
 
 \end_inset
 
-, que la publicÃ³ ese aÃ±o en la 2.Âª ediciÃ³n de su 
+, que los publicÃ³ ese aÃ±o en la 2.Âª ediciÃ³n de su 
 \emph on
 Essay d'analyse sur les jeux de hazard
 \emph default
@@ -17715,15 +20817,17 @@ status collapsed
 
 \end_inset
 
-. En la versiÃ³n con moneda, se lanza una moneda hasta que sale cruz; si sale en el lanzamiento 
-\begin_inset Formula $k$
+. Uno de ellos pasarÃ­a a la historia como la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+paradoja de San Petersburgo
+\end_layout
+
 \end_inset
 
-, se cobran 
-\begin_inset Formula $2^k$
-\end_inset
-
- ducados.
+.
 \begin_inset Foot
 status collapsed
 
@@ -17756,19 +20860,49 @@ parencite{Peterson2023StPetersburg}
 
 \end_inset
 
- Â¿CuÃ¡nto pagarÃ­a alguien por jugar? Su valor esperado es infinito: 
-\begin_inset Formula \[\mathbb{E}[\tilde{x}]=\sum_{k=1}^{\infty}\frac{1}{2^k}\,2^k=1+1+1+\dots=\infty ,\]
-\end_inset
-
-pero nadie pagarÃ­a mÃ¡s que unos pocos ducados. 
+ 
 \end_layout
 
 \begin_layout Itemize
+En su versiÃ³n con moneda: se lanza repetidamente al aire una moneda no trucada mientras salga cara. Cuando sale la primera cruz, se acaban los lanzamientos y se paga el premio: 2 ducados si la cruz sale en el primer lanzamiento, 4 si sale en el segundo, 8 si sale en el tercero, y asÃ­ sucesivamente, duplicÃ¡ndose el premio con cada lanzamiento que se retrasa la cruz. Si la primera cruz sale en el lanzamiento 
+\begin_inset Formula $k$
+\end_inset
 
-\emph on
-La soluciÃ³n
-\emph default
-: Gabriel 
+, lo que ocurre con probabilidad 
+\begin_inset Formula $1/2^k$
+\end_inset
+
+, el premio es 
+\begin_inset Formula $2^k$
+\end_inset
+
+ ducados. Â¿CuÃ¡l es el valor esperado del juego y, por tanto, su precio justo? 
+\end_layout
+
+\begin_layout Itemize
+SegÃºn el criterio del valor esperado, estarÃ­amos dispuestos a pagar 
+\begin_inset Formula \[\mathbb{E}[\tilde{x}]=2\cdot\frac12+4\cdot\frac14+8\cdot\frac18+\dots=\sum_{k=1}^{\infty}2^k\cdot\frac{1}{2^k}=\sum_{k=1}^{\infty}1=\infty .\]
+\end_inset
+
+Sin embargo, nadie pagarÃ­a mÃ¡s que unos pocos ducados por jugar: el criterio del valor esperado no describe cÃ³mo se valora el juego. Es la paradoja. 
+\end_layout
+
+\begin_layout Paragraph
+c) La soluciÃ³n: la utilidad esperada
+\end_layout
+
+\begin_layout Itemize
+El juego de Nicolaus 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+ puso de manifiesto que, para valorar un juego, hay que tener en cuenta algo mÃ¡s que su valor esperado. Se propusieron varias soluciones; la que mÃ¡s trascendiÃ³ es la de Gabriel 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17778,7 +20912,7 @@ Cramer
 
 \end_inset
 
-, en una carta de 1728 a Nicolaus, y su primo Daniel 
+, en una carta de 1728 a Nicolaus, y la de su primo Daniel 
 \begin_inset ERT
 status collapsed
 
@@ -17790,7 +20924,7 @@ textcite{Bernoulli1738Specimen}
 
 \end_inset
 
-, que llega a la misma idea por su cuenta, proponen valorar los premios por su utilidad, con utilidad marginal decreciente. Como escribe 
+, que llega a la misma idea por su cuenta. 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17800,7 +20934,7 @@ Cramer
 
 \end_inset
 
- y reproduce 
+ lo resume asÃ­, y 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17810,7 +20944,7 @@ Bernoulli
 
 \end_inset
 
-, los matemÃ¡ticos valoran el dinero en proporciÃ³n a su cantidad, y las personas de buen sentido, en proporciÃ³n al uso que pueden hacer de Ã©l 
+ lo reproduce: los matemÃ¡ticos valoran el dinero en proporciÃ³n a su cantidad, y las personas de buen sentido, en proporciÃ³n al uso que pueden hacer de Ã©l 
 \begin_inset ERT
 status collapsed
 
@@ -17835,13 +20969,14 @@ Bernoulli
  se publica en las memorias de la Academia de San Petersburgo, de ahÃ­ el nombre de la paradoja. 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-Con 
-\begin_inset Formula $u(x)=\ln x$
-\end_inset
-
- (
+La soluciÃ³n consiste en incorporar las 
+\emph on
+preferencias
+\emph default
+ de cada persona con una funciÃ³n de utilidad definida sobre los premios monetarios, la 
+\emph on
+utilidad de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17851,33 +20986,39 @@ Bernoulli
 
 \end_inset
 
-): 
-\begin_inset Formula $\mathbb{E}[u(\tilde{x})]=\sum_k\frac{k\ln 2}{2^k}=2\ln 2=\ln 4$
+
+\emph default
+ 
+\begin_inset Formula $u(x)$
 \end_inset
 
-, luego el 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-equivalente cierto
-\end_layout
-
+, y calcular la media ponderada por las probabilidades, no de los premios, sino de la utilidad que reportan: 
+\begin_inset Formula \[\mathbb{E}\big[u(\tilde{x})\big]=u(2)\cdot\frac12+u(4)\cdot\frac14+u(8)\cdot\frac18+\dots=\sum_{k=1}^{\infty}\frac{1}{2^k}\,u\big(2^k\big).\]
 \end_inset
 
- es 
-\begin_inset Formula $\xi=4$
-\end_inset
 
- ducados: lo mÃ¡ximo que pagarÃ­a por jugar alguien con utilidad logarÃ­tmica y sin otra riqueza. El precio justo es infinito; el equivalente cierto, 4. 
 \end_layout
 
 \begin_layout Itemize
-Con 
-\begin_inset Formula $u(x)=\sqrt{x}$
+Imponiendo condiciones a 
+\begin_inset Formula $u$
 \end_inset
 
- (
+, esa suma puede ser finita. 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+ propone 
+\begin_inset Formula $u(x)=\ln x$
+\end_inset
+
+, y 
 \begin_inset Flex Autor
 status collapsed
 
@@ -17887,24 +21028,116 @@ Cramer
 
 \end_inset
 
-): 
-\begin_inset Formula $\mathbb{E}[u(\tilde{x})]=\sum_k 2^{-k/2}=\frac{1}{\sqrt2-1}=1+\sqrt2$
+, 
+\begin_inset Formula $u(x)=\sqrt{x}$
 \end_inset
 
-, luego 
-\begin_inset Formula $\xi=(1+\sqrt2)^2\approx 5{,}83$
-\end_inset
-
- ducados. 
+: ambos perciben que la utilidad marginal debe ser decreciente. 
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \emph on
-Una salvedad
+Con la utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+
 \emph default
-: la utilidad marginal decreciente no basta si 
+, 
+\begin_inset Formula $u(x)=\ln x$
+\end_inset
+
+: 
+\begin_inset Formula \[\mathbb{E}\big[u(\tilde{x})\big]=\sum_{k=1}^{\infty}\frac{1}{2^k}\,\ln\big(2^k\big)=\ln 2\,\sum_{k=1}^{\infty}\frac{k}{2^k}=2\ln 2 ,\]
+\end_inset
+
+porque 
+\begin_inset Formula $\sum_{k\geq 1}k\,q^k=q/(1-q)^2$
+\end_inset
+
+, que con 
+\begin_inset Formula $q=1/2$
+\end_inset
+
+ vale 2. El 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+equivalente cierto
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ es la cantidad cierta con la misma utilidad: 
+\begin_inset Formula \[u(\xi)=\mathbb{E}\big[u(\tilde{x})\big]\ \Longrightarrow\ \ln\xi=2\ln 2=\ln 4\ \Longrightarrow\ \xi=e^{2\ln 2}=4 \text{ ducados}.\]
+\end_inset
+
+Es lo mÃ¡ximo que pagarÃ­a por jugar alguien con utilidad logarÃ­tmica y sin otra riqueza: el precio justo es infinito, pero el equivalente cierto es de solo 4 ducados. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Con la utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cramer
+\end_layout
+
+\end_inset
+
+
+\emph default
+, 
+\begin_inset Formula $u(x)=\sqrt{x}$
+\end_inset
+
+: 
+\begin_inset Formula \[\begin{aligned}
+  \mathbb{E}\big[u(\tilde{x})\big]&=\sum_{k=1}^{\infty}\frac{2^{k/2}}{2^k}=\sum_{k=1}^{\infty}\left(\frac{1}{\sqrt2}\right)^{k}=\frac{1/\sqrt2}{1-1/\sqrt2}=\frac{1}{\sqrt2-1}=1+\sqrt2 ,\\
+  u(\xi)=\sqrt{\xi}=1+\sqrt2\ &\Longrightarrow\ \xi=\big(1+\sqrt2\big)^2=3+2\sqrt2\approx 5{,}83 \text{ ducados}.
+  \end{aligned}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+d) Una salvedad
+\end_layout
+
+\begin_layout Itemize
+La utilidad marginal decreciente no basta si 
 \begin_inset Formula $u$
 \end_inset
 
@@ -17914,6 +21147,10 @@ Una salvedad
 
  con 
 \begin_inset Formula $u=\ln x$
+\end_inset
+
+, que da 
+\begin_inset Formula $\sum_k 2^k/2^k=\infty$
 \end_inset
 
 ), la utilidad esperada vuelve a ser infinita. Solo una utilidad acotada evita todas las versiones de la paradoja 
@@ -17950,6 +21187,917 @@ Bernoulli
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ==========================================================================
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+AplicaciÃ³n: la decisiÃ³n de cartera y la demanda de un activo con riesgo
+\begin_inset Newline newline
+\end_inset
+
+(
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+, 1965)
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:cartera"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Este anexo no se canta: en el cuerpo basta una frase (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:seguros"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Es el problema inverso del seguro: allÃ­ el consumidor parte del riesgo y paga por acercarse a la lÃ­nea de certeza; aquÃ­ parte de la certeza y hay que pagarle, en rentabilidad esperada, para que se aleje de ella.
+\end_layout
+
+\begin_layout Paragraph
+a) Idea
+\end_layout
+
+\begin_layout Itemize
+Del seguro pasamos a la decisiÃ³n de cartera: Â¿cuÃ¡nto invierte un consumidor averso en un activo cuya rentabilidad es incierta? Es la otra gran decisiÃ³n financiera del hogar y la base de la teorÃ­a de carteras. 
+\end_layout
+
+\begin_layout Paragraph
+b) Modelo
+\end_layout
+
+\begin_layout Subparagraph
+i) Supuestos
+\end_layout
+
+\begin_layout Itemize
+El consumidor reparte una riqueza 
+\begin_inset Formula $\overline{W}$
+\end_inset
+
+ entre un activo seguro, con rentabilidad 
+\begin_inset Formula $r_f$
+\end_inset
+
+, y un activo con riesgo, con rentabilidad aleatoria 
+\begin_inset Formula $\tilde{r}$
+\end_inset
+
+; invierte 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ euros en el segundo y el resto en el primero 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencites
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Arrow1965Aspects
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Pratt1964Risk
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Su utilidad de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bernoulli
+\end_layout
+
+\end_inset
+
+ es creciente y estrictamente cÃ³ncava: es averso al riesgo. 
+\end_layout
+
+\begin_layout Itemize
+Llamamos 
+\begin_inset Formula $\tilde{z}\equiv\tilde{r}-r_f$
+\end_inset
+
+ a la 
+\emph on
+rentabilidad en exceso
+\emph default
+ del activo con riesgo (su prima de rentabilidad, si se toma la esperanza), y 
+\begin_inset Formula $W_0\equiv\overline{W}(1+r_f)$
+\end_inset
+
+ a la riqueza final si todo se invierte en el activo seguro. 
+\end_layout
+
+\begin_layout Subparagraph
+ii) Desarrollo
+\end_layout
+
+\begin_layout Itemize
+Su riqueza final es 
+\begin_inset Formula $\tilde{W}=\overline{W}(1+r_f)+\alpha\,(\tilde{r}-r_f)=W_0+\alpha\,\tilde{z}$
+\end_inset
+
+, y elige 
+\begin_inset Formula $\alpha$
+\end_inset
+
+: 
+\begin_inset Formula \[\optim{\max}{\alpha}{\mathbb{E}\big[u(W_0+\alpha\,\tilde{z})\big]}{}\qquad\Longrightarrow\qquad\mathbb{E}\big[u'(W_0+\alpha^*\tilde{z})\,\tilde{z}\big]=0 .\]
+\end_inset
+
+La condiciÃ³n de segundo orden, 
+\begin_inset Formula $\mathbb{E}\big[u''(\tilde{W})\,\tilde{z}^2\big]<0$
+\end_inset
+
+, se cumple por la concavidad de 
+\begin_inset Formula $u$
+\end_inset
+
+: la utilidad esperada es cÃ³ncava en 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ y la condiciÃ³n de primer orden basta. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La pendiente en el origen
+\emph default
+: la derivada de la utilidad esperada en 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+, donde la riqueza es cierta, es 
+\begin_inset Formula \[\frac{d\,\mathbb{E}[u]}{d\alpha}\bigg|_{\alpha=0}=u'(W_0)\,\mathbb{E}[\tilde{z}]=u'(W_0)\big(\mathbb{E}[\tilde{r}]-r_f\big).\]
+\end_inset
+
+Si la prima de rentabilidad es positiva, la utilidad esperada crece al invertir el primer euro y, como es cÃ³ncava en 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, su mÃ¡ximo estÃ¡ en 
+\begin_inset Formula $\alpha^*>0$
+\end_inset
+
+; si es nula, el mÃ¡ximo estÃ¡ en 
+\begin_inset Formula $\alpha^*=0$
+\end_inset
+
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cartera-alfa"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, izquierda). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La utilidad esperada segÃºn la inversiÃ³n en el activo con riesgo (izquierda) y la inversiÃ³n Ã³ptima segÃºn la riqueza (derecha)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cartera-alfa"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.95
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+cartera-alfa
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Arrow1965Aspects}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Gollier2001Economics}
+\end_layout
+
+\end_inset
+
+. A la izquierda, 
+\begin_inset Formula $u=\ln x$
+\end_inset
+
+, 
+\begin_inset Formula $W_0=100$
+\end_inset
+
+ y 2 estados igual de probables, con 
+\begin_inset Formula $\tilde{z}=+0{,}5$
+\end_inset
+
+ o 
+\begin_inset Formula $-0{,}2$
+\end_inset
+
+ (prima positiva, 
+\begin_inset Formula $\alpha^*=150$
+\end_inset
+
+) y con 
+\begin_inset Formula $\tilde{z}=\pm 0{,}35$
+\end_inset
+
+ (prima nula); a la derecha, un esquema.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+InterpretaciÃ³n grÃ¡fica en el plano de la riqueza en cada estado
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cartera-riqueza"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Con 2 estados igual de probables, uno bueno y otro malo, el punto de partida, 
+\begin_inset Formula $C$
+\end_inset
+
+ (
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+), estÃ¡ en la lÃ­nea de certeza. Invertir en el activo con riesgo desplaza al consumidor por una recta que sale de 
+\begin_inset Formula $C$
+\end_inset
+
+ hacia abajo y a la derecha: gana en el estado bueno y pierde en el malo. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\mathbb{E}[\tilde{r}]=r_f$
+\end_inset
+
+, la recta tiene la misma pendiente que las curvas de indiferencia en la lÃ­nea de certeza (
+\begin_inset Formula $-1$
+\end_inset
+
+, el cociente de probabilidades) y es tangente en 
+\begin_inset Formula $C$
+\end_inset
+
+: no invierte nada. 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $\mathbb{E}[\tilde{r}]>r_f$
+\end_inset
+
+, la recta es mÃ¡s plana: alejarse de la certeza lleva a curvas de indiferencia mÃ¡s altas, hasta la tangencia en 
+\begin_inset Formula $E$
+\end_inset
+
+, con 
+\begin_inset Formula $\alpha^*>0$
+\end_inset
+
+. Es el grÃ¡fico del seguro con prima recargada recorrido en sentido contrario. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La decisiÃ³n de cartera en el plano de la riqueza en cada estado
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cartera-riqueza"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+cartera-riqueza
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Arrow1965Aspects}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Gollier2001Economics}
+\end_layout
+
+\end_inset
+
+, con el mismo ejemplo que el grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cartera-alfa"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+iii) Implicaciones
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Resultado de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Arrow
+\end_layout
+
+\end_inset
+
+
+\emph default
+: un consumidor averso siempre asume 
+\emph on
+algo
+\emph default
+ de un riesgo con esperanza favorable, porque, para riesgos pequeÃ±os, el coste de la aversiÃ³n es de segundo orden (proporcional a 
+\begin_inset Formula $\alpha^2$
+\end_inset
+
+, como en 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:arrow-pratt"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) y la ganancia esperada, de primer orden (proporcional a 
+\begin_inset Formula $\alpha$
+\end_inset
+
+). Por la misma razÃ³n, solo un consumidor neutral invierte todo en el activo con mayor esperanza. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Riqueza e inversiÃ³n con riesgo
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cartera-alfa"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, derecha): si la aversiÃ³n absoluta es decreciente (DARA), 
+\begin_inset Formula $\alpha^*$
+\end_inset
+
+ crece con 
+\begin_inset Formula $\overline{W}$
+\end_inset
+
+: el activo con riesgo es un 
+\emph on
+bien normal
+\emph default
+. Si es constante (CARA), 
+\begin_inset Formula $\alpha^*$
+\end_inset
+
+ no depende de la riqueza, y si es creciente (IARA, como la cuadrÃ¡tica), disminuye con ella: el activo con riesgo serÃ­a un bien inferior, lo que contradice la evidencia. Si la relativa es constante (CRRA), la 
+\emph on
+proporciÃ³n
+\emph default
+ invertida, 
+\begin_inset Formula $\alpha^*/\overline{W}$
+\end_inset
+
+, no depende de la riqueza. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DerivaciÃ³n del resultado DARA
+\emph default
+. Derivando la condiciÃ³n de primer orden respecto a 
+\begin_inset Formula $\overline{W}$
+\end_inset
+
+ (con 
+\begin_inset Formula $dW_0/d\overline{W}=1+r_f$
+\end_inset
+
+): 
+\begin_inset Formula \[\frac{d\alpha^*}{d\overline{W}}=(1+r_f)\,\frac{\mathbb{E}\big[u''(\tilde{W})\,\tilde{z}\big]}{-\mathbb{E}\big[u''(\tilde{W})\,\tilde{z}^2\big]} ,\]
+\end_inset
+
+cuyo denominador es positivo, asÃ­ que el signo es el de 
+\begin_inset Formula $\mathbb{E}[u''(\tilde{W})\,\tilde{z}]$
+\end_inset
+
+. Escribiendo 
+\begin_inset Formula $u''=-r_A\,u'$
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si 
+\begin_inset Formula $\tilde{z}>0$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{W}>W_0$
+\end_inset
+
+ y, con DARA, 
+\begin_inset Formula $r_A(\tilde{W})<r_A(W_0)$
+\end_inset
+
+, luego 
+\begin_inset Formula $-r_A(\tilde{W})\,u'(\tilde{W})\,\tilde{z}>-r_A(W_0)\,u'(\tilde{W})\,\tilde{z}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+si 
+\begin_inset Formula $\tilde{z}<0$
+\end_inset
+
+, 
+\begin_inset Formula $\tilde{W}<W_0$
+\end_inset
+
+ y 
+\begin_inset Formula $r_A(\tilde{W})>r_A(W_0)$
+\end_inset
+
+, y como 
+\begin_inset Formula $\tilde{z}$
+\end_inset
+
+ es negativo se llega a la misma desigualdad. 
+\end_layout
+
+\end_deeper
+\begin_deeper
+\begin_layout Standard
+Tomando esperanzas, 
+\begin_inset Formula $\mathbb{E}[u''(\tilde{W})\,\tilde{z}]>-r_A(W_0)\,\mathbb{E}[u'(\tilde{W})\,\tilde{z}]=0$
+\end_inset
+
+ por la condiciÃ³n de primer orden. Luego 
+\begin_inset Formula $d\alpha^*/d\overline{W}>0$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+findemo
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Paragraph
+c) Extensiones
+\end_layout
+
+\begin_layout Itemize
+Con varios activos, y si la utilidad esperada depende solo de la media y la varianza, se llega a la teorÃ­a de carteras de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Markowitz1952Portfolio}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Tobin1958Liquidity}
+\end_layout
+
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:media-varianza"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.23
+\end_layout
+
+\end_inset
+
+; con el dinero como activo seguro, a la demanda de dinero por motivo especulaciÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.35
+\end_layout
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Standard
@@ -18973,10 +23121,15 @@ Lectura
 \begin_inset Formula $\sigma^2$
 \end_inset
 
-), mientras que la ganancia esperada de una apuesta favorable es de primer orden. Por eso el averso siempre acepta algo de un riesgo favorable (
+), mientras que la ganancia esperada de una apuesta favorable es de primer orden. Por eso el averso siempre acepta algo de un riesgo favorable (anexo
+\begin_inset space ~
+
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:cartera"
+reference "anexo:cartera"
 plural "false"
 caps "false"
 noprefix "false"
@@ -19358,7 +23511,17 @@ findemo
 \end_layout
 
 \begin_layout Subsection
-La paradoja de Allais viola el axioma de independencia
+La paradoja de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Allais
+\end_layout
+
+\end_inset
+
+ viola el axioma de independencia
 \end_layout
 
 \begin_layout Standard
@@ -19374,22 +23537,22 @@ name "anexo:allais"
 
 \begin_layout Itemize
 Sean 
-\begin_inset Formula $\tilde x^1$
+\begin_inset Formula $\delta_0$
 \end_inset
 
- la loterÃ­a que da 1 con certeza y 
-\begin_inset Formula $\tilde x^2$
+ la loterÃ­a que da 0 con certeza y 
+\begin_inset Formula $A_2'\equiv 0{,}8\,A_2+0{,}2\,\delta_0$
 \end_inset
 
- la que da 5 con probabilidad 
-\begin_inset Formula $10/11$
+, que da 110 con probabilidad 
+\begin_inset Formula $0{,}8\cdot 0{,}95=0{,}76$
 \end_inset
 
  y 0 con 
-\begin_inset Formula $1/11$
+\begin_inset Formula $0{,}24$
 \end_inset
 
-. Las 4 loterÃ­as de la tabla
+. Las loterÃ­as de la tabla
 \begin_inset space ~
 
 \end_inset
@@ -19405,59 +23568,73 @@ nolink "false"
 
 \end_inset
 
- son mezclas con una consecuencia comÃºn: 
-\begin_inset Formula \[A_1=0{,}11\,P+0{,}89\,\delta_1,\quad B_1=0{,}11\,Q+0{,}89\,\delta_1,\quad A_2=0{,}11\,P+0{,}89\,\delta_0,\quad B_2=0{,}11\,Q+0{,}89\,\delta_0 ,\]
+ cumplen: 
+\begin_inset Formula \[B_1=0{,}8\,B_2+0{,}2\,\delta_0\qquad\text{(100 con probabilidad } 0{,}8\cdot 1=0{,}80\text{, y 0 con } 0{,}20),\]
 \end_inset
 
-donde 
-\begin_inset Formula $\delta_1$
+y 
+\begin_inset Formula $A_2'$
 \end_inset
 
- y 
-\begin_inset Formula $\delta_0$
-\end_inset
-
- dan 1 y 0 con certeza. (ComprobaciÃ³n: 
-\begin_inset Formula $B_1$
-\end_inset
-
- da 5 con 
-\begin_inset Formula $0{,}11\cdot10/11=0{,}10$
-\end_inset
-
-, 0 con 
-\begin_inset Formula $0{,}11\cdot1/11=0{,}01$
-\end_inset
-
- y 1 con 
-\begin_inset Formula $0{,}89$
-\end_inset
-
-.) 
-\end_layout
-
-\begin_layout Itemize
-Por el axioma de independencia, con 
-\begin_inset Formula $\tau=0{,}11$
-\end_inset
-
-: 
-\begin_inset Formula $\tilde x^1\succcurlyeq\tilde x^2\iff A_1\succcurlyeq B_1$
-\end_inset
-
-, y 
-\begin_inset Formula $\tilde x^1\succcurlyeq\tilde x^2\iff A_2\succcurlyeq B_2$
-\end_inset
-
-. Luego quien elige 
+ domina estocÃ¡sticamente en primer orden a 
 \begin_inset Formula $A_1$
 \end_inset
 
- en la primera elecciÃ³n debe elegir 
-\begin_inset Formula $A_2$
+ (el mismo premio, 110, con mÃ¡s probabilidad: 0,76 frente a 0,75), asÃ­ que la prefiere todo el que prefiere mÃ¡s a menos: 
+\begin_inset Formula $A_2'\succcurlyeq A_1$
 \end_inset
 
- en la segunda. Elegir 
+. 
+\end_layout
+
+\begin_layout Itemize
+Si 
+\begin_inset Formula $B_2\succ A_2$
+\end_inset
+
+, por el axioma de independencia con 
+\begin_inset Formula $\tau=0{,}8$
+\end_inset
+
+ y 
+\begin_inset Formula $\tilde{x}^3=\delta_0$
+\end_inset
+
+: 
+\begin_inset Formula \[B_2\succ A_2\ \Longrightarrow\ 0{,}8\,B_2+0{,}2\,\delta_0\ \succ\ 0{,}8\,A_2+0{,}2\,\delta_0,\quad\text{es decir,}\quad B_1\succ A_2' .\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Por la transitividad, 
+\begin_inset Formula $B_1\succ A_2'\succcurlyeq A_1$
+\end_inset
+
+ implica 
+\begin_inset Formula $B_1\succ A_1$
+\end_inset
+
+. Quien elige 
+\begin_inset Formula $B_2$
+\end_inset
+
+ en el juego
+\begin_inset space ~
+
+\end_inset
+
+2 debe elegir 
+\begin_inset Formula $B_1$
+\end_inset
+
+ en el juego
+\begin_inset space ~
+
+\end_inset
+
+1: elegir 
 \begin_inset Formula $A_1$
 \end_inset
 
@@ -19465,7 +23642,7 @@ Por el axioma de independencia, con
 \begin_inset Formula $B_2$
 \end_inset
 
- viola el axioma, sea cual sea 
+ viola el axioma de independencia, sea cual sea 
 \begin_inset Formula $u$
 \end_inset
 

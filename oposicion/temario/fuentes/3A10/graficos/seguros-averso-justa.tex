@@ -1,0 +1,31 @@
+% Tabla de casos del seguro: averso al riesgo (u = ln x) con prima justa, gamma = pi = 0,4.
+% Recta: x_2 = 19 - 1,5 x_1; tangente a x_2 = 159,23 x_1^-1,5 en E = (7,6; 7,6): S = L (Mossin).
+% Elaboración propia a partir de los gráficos de la tabla de casos del tema original y de
+% Mossin (1968), con la notación de seguros.tex: W = 10, L = 6, pi = 0,4, A = (10, 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=2pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.27cm,y=0.27cm,font=\scriptsize,
+    optimo/.style={circle,draw=black,thick,inner sep=2.4pt},
+    hueco/.style={circle,draw=black,fill=white,inner sep=1.1pt}]
+  % Marco fijo: los 10 gráficos de la tabla salen del mismo tamaño
+  \useasboundingbox (-1.5,-1.5) rectangle (14.2,13.8);
+  % 1: ejes (riqueza sin y con accidente), línea de certeza y dotación A
+  \capa{1}{\draw[eje] (0,0) -- (13.5,0) node[below left=1pt and 0pt] {$x_1$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,13.3) node[left] {$x_2$};}
+  \capa{1}{\draw[thick,tceegris] (0,0) -- (12.3,12.3);}
+  \capa{1}{\node[punto] (A) at (10,4) {};}
+  \capa{1}{\node[etiqueta,below left=1pt] at (A) {$A$};}
+  % 3: recta de aseguramiento: tramo factible (0 <= S <= L) de A a la línea de certeza
+  \capa{3}{\draw[thick,dashed,tceedorado] (11.2,2.2) -- (5.6,10.6);}
+  \capa{3}{\draw[very thick,tceedorado] (10,4) -- (7.6,7.6);}
+  % 4: curva de indiferencia tangente en la línea de certeza
+  \capa{4}{\draw[curva3] plot[domain=5.37:13.2,samples=50] (\x,{159.23/(\x^1.5)});}
+  % 5: óptimo
+  \capa{5}{\node[punto] (E) at (7.6,7.6) {};}
+  \capa{5}{\node[optimo] at (7.6,7.6) {};}
+  \capa{5}{\node[etiqueta,right=4pt] at (E) {$E$};}
+
+\end{tikzpicture}
+\end{document}

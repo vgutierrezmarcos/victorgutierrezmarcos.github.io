@@ -1,0 +1,33 @@
+% Tabla de casos del seguro: amante del riesgo (u = x^2) con prima algo favorable, gamma = 0,35 < pi.
+% Recta: x_2 = 4 + (13/7)(10 - x_1); corta la línea de certeza en (7,9; 7,9).
+% Curva por A: 0,6 x_1^2 + 0,4 x_2^2 = 66,4; en E, 7,9^2 = 62,41 < 66,4: no se asegura (S = 0).
+% (El seguro completo es mejor que A solo si (10 - 6 gamma)^2 > 66,4, es decir, gamma < 0,3085.)
+% Elaboración propia a partir de los gráficos de la tabla de casos del tema original y de
+% Mossin (1968), con la notación de seguros.tex: W = 10, L = 6, pi = 0,4, A = (10, 4).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=2pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.27cm,y=0.27cm,font=\scriptsize,
+    optimo/.style={circle,draw=black,thick,inner sep=2.4pt},
+    hueco/.style={circle,draw=black,fill=white,inner sep=1.1pt}]
+  % Marco fijo: los 10 gráficos de la tabla salen del mismo tamaño
+  \useasboundingbox (-1.5,-1.5) rectangle (14.2,13.8);
+  % 1: ejes (riqueza sin y con accidente), línea de certeza y dotación A
+  \capa{1}{\draw[eje] (0,0) -- (13.5,0) node[below left=1pt and 0pt] {$x_1$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,13.3) node[left] {$x_2$};}
+  \capa{1}{\draw[thick,tceegris] (0,0) -- (12.3,12.3);}
+  \capa{1}{\node[punto] (A) at (10,4) {};}
+  \capa{1}{\node[etiqueta,below left=1pt] at (A) {$A$};}
+  % 5: óptimo en A: no se asegura
+  \capa{5}{\node[optimo] at (10,4) {};}
+  % 2: recta con prima justa (gamma = pi), de referencia
+  \capa{2}{\draw[guia,thick] (11.4,1.9) -- (4.75,11.88);}
+  % 3: recta de aseguramiento: tramo factible (0 <= S <= L) de A a la línea de certeza
+  \capa{3}{\draw[thick,dashed,tceedorado] (11.2,1.77) -- (6,11.43);}
+  \capa{3}{\draw[very thick,tceedorado] (10,4) -- (7.9,7.9);}
+  % 4: curva de indiferencia por A (cóncava): la recta queda por debajo salvo en A
+  \capa{4}{\draw[curvanueva] plot[domain=3.5:10.49,samples=60] (\x,{sqrt((66.4-0.6*\x*\x)/0.4)});}
+
+\end{tikzpicture}
+\end{document}

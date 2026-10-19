@@ -1,0 +1,36 @@
+% Decisión de cartera en el plano de la riqueza en cada estado (problema inverso del seguro).
+% 2 estados igual de probables (pi = 1/2): bueno (rentabilidad en exceso z = +0,5) y malo
+% (z = -0,2), con E[r - r_f] = 0,15 > 0; u = ln. Riqueza final x_s = W(1 + r_f) + alfa z_s.
+% En unidades del gráfico, W(1 + r_f) = 8: el punto C = (8, 8), con alfa = 0, está en la
+% línea de certeza. Al invertir alfa > 0 se recorre la recta x_malo = 8 - 0,4 (x_bueno - 8)
+% (pendiente -0,2/0,5 = -0,4), más plana que las curvas de indiferencia en la línea de
+% certeza (pendiente -pi/(1 - pi) = -1): por eso conviene alejarse de ella.
+%   Óptimo (Cobb-Douglas): 0,5 · 0,5/x_b = 0,5 · 0,2/x_m con la recta ->
+%   x_b = 14, x_m = 5,6 (alfa* = 150 si W(1 + r_f) = 100).
+%   Curva por C: x_m = 64/x_b; curva por E: x_m = 78,4/x_b, de pendiente -78,4/196 = -0,4 en E.
+%   Con E[r] = r_f, la recta sería x_m = 16 - x_b (pendiente -1), tangente en C: alfa* = 0.
+% Elaboración propia a partir de Arrow (1965) y Gollier (2001).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.4cm,y=0.4cm]
+  % 1: ejes: riqueza en el estado bueno y en el malo
+  \capa{1}{\ejes{$x_{\mathrm{bueno}}$}{$x_{\mathrm{malo}}$}{17.5}{12.5}}
+  % 2: línea de certeza y punto C, con todo en el activo seguro (alfa = 0)
+  \capa{2}{\draw[thick,tceegris] (0,0) -- (11.6,11.6) node[etiqueta,above,font=\footnotesize,text=black] {línea de certeza};}
+  \capa{2}{\node[punto] (C) at (8,8) {};}
+  \capa{2}{\node[etiqueta,left=3pt] at (C) {$C$: $\alpha=0$};}
+  \capa{2}{\draw[guia] (8,0) node[below,text=black] {$\overline{W}(1+r_f)$} -- (C);}
+  % 3: con E[r] = r_f, la recta de cartera es tangente en C a la curva de indiferencia
+  \capa{3}{\draw[guia,thick] (4.6,11.4) -- (13.2,2.8) node[etiqueta,below,text=tceegris,font=\footnotesize] {$\mathbb{E}[\tilde{r}]=r_f$};}
+  \capa{3}{\draw[curva1,desplazada] plot[domain=5.4:16.5,samples=60] (\x,{64/\x}) node[etiqueta,right] {$U_0$};}
+  % 4: con E[r] > r_f, la recta de cartera es más plana: alejarse de la certeza mejora
+  \capa{4}{\draw[curva4,dashed] (5,9.2) node[etiqueta,left,text=tceedorado,font=\footnotesize] {$\mathbb{E}[\tilde{r}]>r_f$} -- (C);}
+  \capa{4}{\draw[curva4] (C) -- (16.5,4.6);}
+  % 5: curva de indiferencia tangente y óptimo E, con alfa* > 0
+  \capa{5}{\draw[curva1] plot[domain=6.6:16.5,samples=60] (\x,{78.4/\x}) node[etiqueta,above right] {$U_1$};}
+  \capa{5}{\node[punto] (E) at (14,5.6) {};}
+  \capa{5}{\node[etiqueta,above right] at (E) {$E$: $\alpha^*>0$};}
+\end{tikzpicture}
+\end{document}

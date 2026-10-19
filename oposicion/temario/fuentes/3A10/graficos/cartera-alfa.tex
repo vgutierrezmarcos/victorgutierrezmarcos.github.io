@@ -1,0 +1,43 @@
+% Decisión de cartera: la utilidad esperada según lo invertido en el activo con riesgo (izquierda)
+% y la inversión óptima según la riqueza (derecha).
+% Izquierda (recta roja: tangente en alfa = 0, pendiente 0,15). W(1 + r_f) = 100, 2 estados igual de probables, u = ln; se representa
+%   100 · (E[u] - ln 100) frente a alfa.
+%   Con E[r - r_f] = 0,15 > 0 (z = +0,5 o -0,2): U(alfa) = 50 ln(1 + 0,005 alfa) + 50 ln(1 - 0,002 alfa),
+%     máximo en alfa* = 150 (U = 10,1); pendiente en 0: 100 · u'(100) · 0,15 > 0.
+%   Con E[r - r_f] = 0 (z = +0,35 o -0,35): U(alfa) = 50 ln(1 - (0,0035 alfa)^2), máximo en 0.
+% Derecha (esquema): alfa* frente a W según cómo varía r_A con la riqueza (Arrow, 1965):
+%   CARA, alfa* constante; DARA (p. ej., CRRA), alfa* creciente; IARA (cuadrática), decreciente.
+% Elaboración propia a partir de Arrow (1965) y Gollier (2001).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,font=\footnotesize]
+  % ---------- izquierda: utilidad esperada según alfa ----------
+  \begin{scope}[x=0.02cm,y=0.15cm]
+    % 1: ejes
+    \capa{1}{\draw[eje] (-80,0) -- (340,0) node[below left=2pt and 0pt] {$\alpha$};}
+    \capa{1}{\draw[eje] (0,-16) -- (0,14) node[left] {$\mathbb{E}[u]$};}
+    \capa{1}{\node[below right=1pt and 0pt] at (0,-0.3) {$0$};}
+    % 2: con prima de rentabilidad nula, el máximo está en alfa = 0
+    \capa{2}{\draw[curva2] plot[domain=-60:145,samples=80] (\x,{50*ln(1-(0.0035*\x)*(0.0035*\x))}) node[etiqueta,right,text=tceeazul] {$\mathbb{E}[\tilde{r}]=r_f$};}
+    % 3: con prima positiva, la pendiente en 0 es positiva y el máximo está en alfa* > 0
+    \capa{3}{\draw[curva1] plot[domain=-60:300,samples=80] (\x,{50*ln(1+0.005*\x)+50*ln(1-0.002*\x)});}
+    \capa{3}{\node[etiqueta,right,text=tceemorado] at (230,10) {$\mathbb{E}[\tilde{r}]>r_f$};}
+    \capa{3}{\draw[tceerojo,thick] (-45,-6.75) node[etiqueta,anchor=south east,text=tceerojo] {pendiente $>0$} -- (60,9);}
+    \capa{4}{\node[punto] at (150,10.1) {};}
+    \capa{4}{\draw[guia] (150,10.1) -- (150,0) node[below,text=black] {$\alpha^*$};}
+  \end{scope}
+  % ---------- derecha: alfa* según la riqueza ----------
+  \begin{scope}[xshift=9.2cm,x=0.55cm,y=0.5cm]
+    % 5: ejes
+    \capa{5}{\draw[eje] (0,0) -- (8,0) node[below left=2pt and 0pt] {$\overline{W}$};}
+    \capa{5}{\draw[eje] (0,0) -- (0,8) node[left] {$\alpha^*$};}
+    \capa{5}{\node[below left] at (0,0) {$0$};}
+    % 6: las 3 formas de la aversión absoluta
+    \capa{6}{\draw[curva3] (0.5,1.2) -- (7,6.8) node[etiqueta,above left,align=right,text=tceeverde] {DARA\\(p.\,ej., CRRA)};}
+    \capa{6}{\draw[curva2] (0.5,3.8) -- (7,3.8) node[etiqueta,right,text=tceeazul] {CARA};}
+    \capa{6}{\draw[curvanueva] (0.5,6.2) -- (7,1.6) node[etiqueta,right,align=left,text=tceerojo] {IARA\\(cuadrática)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,21 @@
+% Árbol de decisión de la paradoja de Allais con el ejemplo del tema original (tabla del
+% apartado de las violaciones del axioma de independencia; premios en euros).
+% Juego 1, lotería A_1: 110 con probabilidad 0,75 y 0 con 0,25 (valor esperado 82,5).
+% Elaboración propia a partir del tema original, Allais (1953) y Kahneman y Tversky (1979).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=3pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=1.8pt},
+    rama/.style={thick,tceemorado},
+    prob/.style={etiqueta,font=\footnotesize,sloped},
+    premio/.style={etiqueta,anchor=west,font=\small}]
+  \useasboundingbox (-0.8,-1.15) rectangle (3.9,1.15);
+  % 1: la lotería (nodo de azar)
+  \capa{1}{\node[nodo,label=left:{$A_1$}] (r) at (0,0) {};}
+  % 2: sus 2 ramas, con la probabilidad encima y el premio al final
+  \capa{2}{\draw[rama] (r) -- node[prob,above] {75\,\%} (2.7,0.75) node[premio] {110};}
+  \capa{2}{\draw[rama] (r) -- node[prob,below,] {25\,\%} (2.7,-0.75) node[premio,] {0};}
+\end{tikzpicture}
+\end{document}

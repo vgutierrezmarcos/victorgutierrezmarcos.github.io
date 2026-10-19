@@ -1,33 +1,100 @@
-% Las 3 actitudes ante el riesgo con 2 resultados igual de probables, x_1 = 1 y x_2 = 5
-% (E[x] = 3). En cada panel, la cuerda entre (x_1, u(x_1)) y (x_2, u(x_2)) da en E[x]
-% la utilidad esperada E[u] = (u(x_1) + u(x_2))/2, y la curva da u(E[x]).
-%   Averso:  u = 2,2 ln x + 1,2: u(1) = 1,2, u(5) = 4,74; E[u] = 2,97 < u(3) = 3,62.
-%   Neutral: u = 0,7 x + 0,3: u(1) = 1, u(5) = 3,8;  E[u] = u(3) = 2,4.
-%   Amante:  u = 0,16 x^2 + 0,3: u(1) = 0,46, u(5) = 4,3; E[u] = 2,38 > u(3) = 1,74.
+% Las 3 actitudes ante el riesgo, desarrolladas como la imagen 3 del tema original
+% (Policonomics), con 2 resultados igual de probables, x_1 = 1 y x_2 = 7 (E[x] = 4).
+% En cada panel: la curva u(x); la cuerda entre (x_1, u(x_1)) y (x_2, u(x_2)), que en
+% E[x] da la utilidad esperada E[u] = (u(x_1) + u(x_2))/2 (punto azul); el punto de la
+% curva en E[x], u(E[x]); el equivalente cierto xi, con u(xi) = E[u] (punto dorado), y
+% la prima de riesgo rho = E[x] - xi (flecha roja, de xi a E[x]).
+%   Averso:  u = 2,4 ln x + 0,6: u(1) = 0,6; u(7) = 5,27; E[u] = 2,935 < u(4) = 3,927;
+%            xi = raíz de 7 = 2,646 < 4; rho = 1,354 > 0.
+%   Neutral: u = 0,75 x - 0,15: u(1) = 0,6; u(7) = 5,1; E[u] = u(4) = 2,85; xi = 4; rho = 0.
+%   Amante:  u = 0,1 x^2 + 0,5: u(1) = 0,6; u(7) = 5,4; E[u] = 3 > u(4) = 2,1;
+%            xi = 5 > 4; rho = -1 < 0.
+% (El original rotulaba en el panel del amante «U(xi) = U(E[x])» en el punto de la
+% curva en E[x]; ahí la curva da u(E[x]), y u(xi) = E[u] está a la altura de la cuerda.)
+% Elaboración propia a partir de Policonomics (imagen 3 del tema original) y
+% Mas-Colell, Whinston y Green (1995, §6.C).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
-\newcommand{\panel}[4]{% #1 desplazamiento, #2 función, #3 título, #4 estilo de la curva
-  \begin{scope}[xshift=#1,declare function={f(\x)=#2;}]
-    \ejes{$x$}{$u$}{7}{5.2}
-    \draw[#4] plot[domain=0.6:5.6,samples=50] (\x,{f(\x)});
-    \draw[curva2,dashed,thick] (1,{f(1)}) -- (5,{f(5)});
-    \draw[guia] (1,{f(1)}) -- (1,0) node[below,text=black] {$x_1$};
-    \draw[guia] (5,{f(5)}) -- (5,0) node[below,text=black] {$x_2$};
-    \draw[guia] (3,{max(f(3),(f(1)+f(5))/2)}) -- (3,0) node[below,text=black] {$\mathbb{E}[\tilde{x}]$};
-    \node[punto] at (1,{f(1)}) {};
-    \node[punto] at (5,{f(5)}) {};
-    \node[punto,fill=tceeazul] at (3,{(f(1)+f(5))/2}) {};
-    \node[punto] at (3,{f(3)}) {};
-    \node[etiqueta,font=\small\itshape,text=tceegris] at (3.5,-2.1) {#3};
-  \end{scope}}
 \begin{document}
-\begin{tikzpicture}[tcee,x=0.42cm,y=0.42cm]
-  % 1: averso: u cóncava, la cuerda por debajo de la curva
-  \capa{1}{\panel{0cm}{2.2*ln(\x)+1.2}{Averso: $u''<0$}{curva1}}
-  % 2: neutral: u lineal, la cuerda sobre la curva
-  \capa{2}{\panel{3.8cm}{0.7*\x+0.3}{Neutral: $u''=0$}{curva1}}
-  % 3: amante: u convexa, la cuerda por encima de la curva
-  \capa{3}{\panel{7.6cm}{0.16*\x*\x+0.3}{Amante: $u''>0$}{curva1}}
+\begin{tikzpicture}[tcee,x=0.4cm,y=0.55cm,font=\footnotesize,
+    eu/.style={circle,fill=tceeazul,inner sep=1.3pt},
+    ec/.style={circle,fill=tceedorado,inner sep=1.3pt},
+    cuerda/.style={thick,tceegris},
+    prima/.style={->,thick,tceerojo},
+    pie/.style={align=center,font=\footnotesize}]
+  % ================= 1: averso al riesgo (u cóncava) =================
+  \capa{1}{\begin{scope}[declare function={f(\x)=2.4*ln(\x)+0.6;}]
+    \draw[eje] (0,0) -- (8.4,0) node[below] {$x$};
+    \draw[eje] (0,0) -- (0,6.4) node[left] {$u(x)$};
+    \draw[curva3] plot[domain=0.8:7.6,samples=60] (\x,{f(\x)}) node[right] {$u$};
+    \draw[cuerda] (1,0.6) -- (7,5.27);
+    % guías verticales
+    \draw[guia] (1,0.6) -- (1,0) node[below] {$x_1$};
+    \draw[guia] (2.646,2.935) -- (2.646,0) node[below] {$\xi$};
+    \draw[guia] (4,3.927) -- (4,0) node[below] {$\mathbb{E}[\tilde{x}]$};
+    \draw[guia] (7,5.27) -- (7,0) node[below] {$x_2$};
+    % guías horizontales
+    \draw[guia] (0,0.6) node[left] {$u(x_1)$} -- (1,0.6);
+    \draw[guia] (0,5.27) node[left] {$u(x_2)$} -- (7,5.27);
+    \draw[guia] (0,3.927) node[left] {$u(\mathbb{E}[\tilde{x}])$} -- (4,3.927);
+    \draw[guia] (0,2.935) node[left,align=right] {$\mathbb{E}[u(\tilde{x})]$\\$=u(\xi)$} -- (4,2.935);
+    % puntos
+    \node[punto] at (1,0.6) {};
+    \node[punto] at (7,5.27) {};
+    \node[punto] at (4,3.927) {};
+    \node[eu] at (4,2.935) {};
+    \node[ec] at (2.646,2.935) {};
+    % prima de riesgo: de xi a E[x]
+    \draw[prima] (2.646,0.9) -- (4,0.9) node[right,inner sep=1pt,text=tceerojo] {$\rho>0$};
+    \node[pie] at (4.2,-3.1) {\textit{Averso al riesgo}: $u''<0$\\[1pt]
+      $u(\mathbb{E}[\tilde{x}])>\mathbb{E}[u(\tilde{x})]$\\[1pt]
+      $\xi<\mathbb{E}[\tilde{x}]$,\ \ $\rho>0$,\ \ $r_A>0$};
+  \end{scope}}
+  % ================= 2: neutral al riesgo (u lineal) =================
+  \capa{2}{\begin{scope}[xshift=5.9cm,declare function={g(\x)=0.75*\x-0.15;}]
+    \draw[eje] (0,0) -- (8.4,0) node[below] {$x$};
+    \draw[eje] (0,0) -- (0,6.4) node[left] {$u(x)$};
+    \draw[curva2] plot[domain=0.6:7.6,samples=2] (\x,{g(\x)}) node[right] {$u$};
+    \draw[guia] (1,0.6) -- (1,0) node[below] {$x_1$};
+    \draw[guia] (4,2.85) -- (4,0) node[below,align=center] {$\mathbb{E}[\tilde{x}]$\\$=\xi$};
+    \draw[guia] (7,5.1) -- (7,0) node[below] {$x_2$};
+    \draw[guia] (0,0.6) node[left] {$u(x_1)$} -- (1,0.6);
+    \draw[guia] (0,5.1) node[left] {$u(x_2)$} -- (7,5.1);
+    \draw[guia] (0,2.85) node[left,align=right] {$u(\mathbb{E}[\tilde{x}])$\\$=\mathbb{E}[u(\tilde{x})]$\\$=u(\xi)$} -- (4,2.85);
+    \node[punto] at (1,0.6) {};
+    \node[punto] at (7,5.1) {};
+    \node[eu] at (4,2.85) {};
+    \node[etiqueta,text=tceerojo] at (5.6,0.9) {$\rho=0$};
+    \node[pie] at (4.2,-3.1) {\textit{Neutral al riesgo}: $u''=0$\\[1pt]
+      $u(\mathbb{E}[\tilde{x}])=\mathbb{E}[u(\tilde{x})]$\\[1pt]
+      $\xi=\mathbb{E}[\tilde{x}]$,\ \ $\rho=0$,\ \ $r_A=0$};
+  \end{scope}}
+  % ================= 3: amante del riesgo (u convexa) =================
+  \capa{3}{\begin{scope}[xshift=11.8cm,declare function={h(\x)=0.1*\x*\x+0.5;}]
+    \draw[eje] (0,0) -- (8.4,0) node[below] {$x$};
+    \draw[eje] (0,0) -- (0,6.4) node[left] {$u(x)$};
+    \draw[curvanueva] plot[domain=0.6:7.4,samples=60] (\x,{h(\x)}) node[right] {$u$};
+    \draw[cuerda] (1,0.6) -- (7,5.4);
+    \draw[guia] (1,0.6) -- (1,0) node[below] {$x_1$};
+    \draw[guia] (4,3) -- (4,0) node[below] {$\mathbb{E}[\tilde{x}]$};
+    \draw[guia] (5,3) -- (5,0) node[below] {$\xi$};
+    \draw[guia] (7,5.4) -- (7,0) node[below] {$x_2$};
+    \draw[guia] (0,0.6) node[left] {$u(x_1)$} -- (1,0.6);
+    \draw[guia] (0,5.4) node[left] {$u(x_2)$} -- (7,5.4);
+    \draw[guia] (0,3) node[left,align=right] {$\mathbb{E}[u(\tilde{x})]$\\$=u(\xi)$} -- (5,3);
+    \draw[guia] (0,2.1) node[left] {$u(\mathbb{E}[\tilde{x}])$} -- (4,2.1);
+    \node[punto] at (1,0.6) {};
+    \node[punto] at (7,5.4) {};
+    \node[punto] at (4,2.1) {};
+    \node[eu] at (4,3) {};
+    \node[ec] at (5,3) {};
+    % prima de riesgo: de xi a E[x], ahora hacia la izquierda
+    \draw[prima] (5,0.9) -- (4,0.9);
+    \node[right,inner sep=1pt,text=tceerojo] at (5,0.9) {$\rho<0$};
+    \node[pie] at (4.2,-3.1) {\textit{Amante del riesgo}: $u''>0$\\[1pt]
+      $u(\mathbb{E}[\tilde{x}])<\mathbb{E}[u(\tilde{x})]$\\[1pt]
+      $\xi>\mathbb{E}[\tilde{x}]$,\ \ $\rho<0$,\ \ $r_A<0$};
+  \end{scope}}
 \end{tikzpicture}
 \end{document}
