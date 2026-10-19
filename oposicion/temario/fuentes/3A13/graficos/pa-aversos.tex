@@ -29,7 +29,7 @@
   \capa{1}{\draw[eje] (-0.45,0.3) -- (-0.45,1.8) node[above] {$w_{\mathrm{F}}$};}
   \capa{1}{\node[above right] at (\XE,\XF) {$O_{\mathrm{P}}$};}
   \capa{1}{\draw[eje] (\XE-0.3,\XF+0.45) -- (\XE-1.8,\XF+0.45) node[left] {$x_{\mathrm{E}}-w_{\mathrm{E}}$};}
-  \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[below] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
+  \capa{1}{\draw[eje] (\XE+0.45,\XF-0.3) -- (\XE+0.45,\XF-1.8) node[right] {$x_{\mathrm{F}}-w_{\mathrm{F}}$};}
   \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thin] (0,-1) -- (\XE,-1) node[midway,below=5pt] {$x_{\mathrm{E}}$};}
   \capa{1}{\draw[decorate,decoration={brace,amplitude=5pt},thin] (-1.1,0) -- (-1.1,\XF) node[midway,left=5pt] {$x_{\mathrm{F}}$};}
   % 2: las líneas de certeza del agente y del principal, a 45° desde cada origen
@@ -39,7 +39,7 @@
   \capa{2}{\draw[thin,tceedorado] (\XE-0.8,\XF) arc[start angle=180,end angle=225,radius=0.8] node[pos=0.5,left=1pt,font=\scriptsize] {$45^{\circ}$};}
   % 3: PC del agente averso (su curva de indiferencia U^R con esfuerzo alto); valen los contratos de encima
   \capa{3}{\draw[curva1] plot[domain=2.81:8.6,samples=60] (\x,{pc(\x)}) node[etiqueta,above right,align=left,font=\footnotesize] {PC: curva de indiferencia\\ $U^R$ con $e^{\mathrm{A}}$};}
-  \capa{3}{\node[rotate=-68,anchor=north west,align=left,font=\scriptsize,text=tceemorado,inner sep=0pt] at ($(2.91,6.75)+(202:0.3)$) {\textbf{Condición de}\\ \textbf{participación:}\\ el agente obtiene\\ al menos $U^R$ con\\ el esfuerzo alto};}
+  \capa{3}{\node[rotate=-68,anchor=north west,align=left,font=\scriptsize,text=tceemorado,inner sep=0pt] at ($(2.91,6.75)+(202:0.45)$) {\textbf{Condición de}\\ \textbf{participación:}\\ el agente obtiene\\ al menos $U^R$ con\\ el esfuerzo alto};}
   \capa{3}{\draw[->,thick,tceemorado] (3.3,{pc(3.3)}) -- ++(20:0.5);}
   % 4: curva de indiferencia del principal averso, convexa vista desde O_P
   \capa{4}{\draw[curva4] plot[domain=3.3:6.2,samples=60] (\x,{up(\x)}) node[etiqueta,below,text=tceedorado] {$U_P$};}
