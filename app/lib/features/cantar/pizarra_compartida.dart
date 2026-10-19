@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../data/models/oposicion.dart';
 import 'pizarra_trazos.dart';
@@ -42,6 +43,10 @@ class PizarraLocal implements FuentePizarra {
     final ids = _paginas.keys.toList()..sort((a, b) => _paginas[a]!.$1.compareTo(_paginas[b]!.$1));
     return [for (final id in ids) PaginaPizarra.fromJson(id, {'n': _paginas[id]!.$1, 'trazos': List.of(_paginas[id]!.$2), if (_fondos[id] != null) 'fondo': _fondos[id]})];
   }
+
+  /// Las páginas con lo guardado hasta ahora (para las pruebas).
+  @visibleForTesting
+  List<PaginaPizarra> get paginas => _lista;
 
   void _avisar() => Future.microtask(() => _cambios.add(_lista));
 
