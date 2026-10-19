@@ -138,6 +138,19 @@ lado; velocidad; pasos). Ejemplo:
 Los audios, gráficos y fórmulas se guardan en fuentes/<tema>/_trabajo/video/
 y solo se rehacen si cambia su texto.
 
+Avisos: claves desconocidas en escenas.yaml (se ignoran, pero se dicen), pasos
+sin «di» (la voz no se para), más de dos [pausa] en un paso, minutos de
+«bloques» distintos de los \\minutos del tema, gráficos 3D dibujados en la
+pizarra (van como apoyo o como boceto), capas que bajan, y una rejilla igual a
+la actual en un paso (no borra nada: hay que usar borrar: true). El ritmo tiene
+que quedar entre ×0,95 y ×1,05 (CRITERIOS, «Parámetros»): si no, el script
+termina con código 3 (también con --medir), para que voz-todos.py pare.
+
+Rutas que se pueden cambiar con variables de entorno: TCEE_VIDEOS (carpeta de
+salida), TCEE_FUENTES_WIN (fuentes TrueType; /mnt/c/Windows/Fonts),
+TCEE_EDGE_DIR (instalación de Edge, para Edge TTS), TCEE_VOZ_PYTHON (Python
+del entorno de XTTS), VOICESTUDIO_URL (API de VoiceStudio).
+
 Autor: Víctor Gutiérrez Marcos
 """
 import argparse
@@ -186,10 +199,16 @@ ACELERACION_MAX = 1.6          # más rápido que esto ya no parece una mano: se
 # publican en YouTube cuando estén todos
 SALIDA = os.environ.get('TCEE_VIDEOS', os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))), 'oposicion', 'temario', 'videos'))
-FUENTES_WIN = '/mnt/c/Windows/Fonts'
+FUENTES_WIN = os.environ.get('TCEE_FUENTES_WIN', '/mnt/c/Windows/Fonts')
+EDGE_DIR = os.environ.get('TCEE_EDGE_DIR', '/mnt/c/Program Files (x86)/Microsoft/Edge/Application')
 PRONUNCIACION = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pronunciacion.yaml')
+# Solo para el motor edge (los demás tienen su propia velocidad, numérica)
 VOZ_DEFECTO = {'motor': 'edge', 'nombre': 'es-ES-AlvaroNeural', 'velocidad': '+15%'}
-PYTHON_VOZ = os.path.expanduser('~/.venvs/voz/bin/python')
+PYTHON_VOZ = os.environ.get('TCEE_VOZ_PYTHON', os.path.expanduser('~/.venvs/voz/bin/python'))
+RITMO_MIN, RITMO_MAX = 0.95, 1.05   # ajuste admisible del ritmo (CRITERIOS, «Parámetros»)
+if not os.path.isdir(FUENTES_WIN):
+    sys.exit(f'No existe la carpeta de fuentes {FUENTES_WIN} (TCEE_FUENTES_WIN): el vídeo necesita '
+             'Palatino (pala*.ttf), Segoe UI, Segoe Print y Cambria')
 
 MORADO = (95, 41, 135)
 MORADO_OSCURO = (58, 24, 84)
@@ -340,7 +359,7 @@ def mmss(s):
 # --- Voz -------------------------------------------------------------------------------
 def version_edge():
     """Edge TTS exige una versión de Edge reciente: se toma la instalada en Windows."""
-    versiones = [os.path.basename(p) for p in glob.glob('/mnt/c/Program Files (x86)/Microsoft/Edge/Application/*')
+    versiones = [os.path.basename(p) for p in glob.glob(os.path.join(EDGE_DIR, '*'))
                  if re.fullmatch(r'\d+\.\d+\.\d+\.\d+', os.path.basename(p))]
     return max(versiones, key=lambda v: tuple(map(int, v.split('.')))) if versiones else None
 
@@ -857,10 +876,10 @@ def _grupo(s, i):
 
 
 def _definicion(sty, nombre):
-    """La definición de \\nombre en tcee.sty (\\newcommand, \\providecommand o \\NewDocumentCommand)."""
+    """La definición de \\nombre en tcee-comun.sty/tcee.sty (\\newcommand, \\providecommand o \\NewDocumentCommand)."""
     m = re.search(r'\\(newcommand|providecommand|NewDocumentCommand)\s*\{\\' + nombre + r'\}', sty)
     if not m:
-        raise RuntimeError(f'No encuentro la definición de \\{nombre} en tcee.sty')
+        raise RuntimeError(f'No encuentro la definición de \\{nombre} en tcee-comun.sty ni en tcee.sty')
     i = m.end()
     grupos = 2 if m.group(1) == 'NewDocumentCommand' else None
     while True:
@@ -879,12 +898,14 @@ _MACROS_TCEE = None
 
 
 def macros_tcee():
-    """Los macros de tcee.sty que pueden salir en una fórmula del vídeo, leídos del propio
-    tcee.sty (así no se desincronizan): colores, \\vect, \\optim, \\tiempo (\\tceemmss),
-    \\autor, \\concepto y el estilo de \\funcionclave. Sin el resto del estilo del documento."""
+    """Los macros del temario que pueden salir en una fórmula del vídeo, leídos de los
+    propios tcee-comun.sty y tcee.sty (así no se desincronizan): colores, \\vect, \\optim,
+    \\tiempo (\\tceemmss), \\autor, \\concepto y el estilo de \\funcionclave. Sin el resto
+    del estilo del documento."""
     global _MACROS_TCEE
     if _MACROS_TCEE is None:
-        sty = open(os.path.join(LATEX, 'tcee.sty'), encoding='utf-8').read()
+        sty = ''.join(open(os.path.join(LATEX, f), encoding='utf-8').read() + '\n'
+                      for f in ('tcee-comun.sty', 'tcee.sty') if os.path.exists(os.path.join(LATEX, f)))
         sty = re.sub(r'(?<!\\)%[^\n]*', '', sty)
         partes = re.findall(r'^\\definecolor\{[^}]*\}\{[^}]*\}\{[^}]*\}', sty, re.M)
         for bloque in re.findall(r'\\ExplSyntaxOn.*?\\ExplSyntaxOff', sty, re.S):
@@ -995,8 +1016,10 @@ def partes_formula(png, img):
 class Rejilla:
     """División de la pizarra en 1-3 columnas y cada columna en 1 o 2 filas."""
 
-    def __init__(self, spec=None):
-        lineas, filas = False, {}
+    def __init__(self, spec=None, lineas=None):
+        """spec: "100", "40|60(55/45)" o {columnas, filas, lineas}; lineas, si se da,
+        manda sobre la del dict (así `lineas: true` puede ir junto a `rejilla: "40|60"`)."""
+        lineas_spec, filas = False, {}
         if spec is None or isinstance(spec, (int, float)):
             cols = [100]
         elif isinstance(spec, str):
@@ -1011,9 +1034,10 @@ class Rejilla:
         elif isinstance(spec, dict):
             cols = [float(c) for c in spec.get('columnas', [100])]
             filas = {int(k): [float(x) for x in v] for k, v in (spec.get('filas') or {}).items()}
-            lineas = bool(spec.get('lineas', False))
+            lineas_spec = bool(spec.get('lineas', False))
         else:
             raise ValueError(f'Rejilla no válida: {spec!r}')
+        lineas = bool(lineas) if lineas is not None else lineas_spec
         if not 1 <= len(cols) <= 3 or any(len(v) != 2 or k > len(cols) for k, v in filas.items()):
             raise ValueError(f'Rejilla no válida: {spec!r} (de 1 a 3 columnas; cada una con 1 o 2 filas)')
         self.columnas, x = [], 0.0
@@ -1133,10 +1157,10 @@ class Pizarra:
                                f'elegir una rejilla cuya celda lo contenga')
         return celdas
 
-    def cambiar_rejilla(self, spec, conservar=None):
+    def cambiar_rejilla(self, spec, conservar=None, lineas=None):
         """Cambia la rejilla y borra la pizarra, salvo lo escrito en las zonas «conservar» (de la
         rejilla vieja), que se queda donde está y pasa a la celda de la rejilla nueva que lo contiene."""
-        nueva = Rejilla(spec)
+        nueva = Rejilla(spec, lineas)
         if nueva.clave == self.rejilla.clave:
             return []
         guardar = self._celdas_de(conservar)
@@ -1264,6 +1288,17 @@ class Pizarra:
             nombre = accion['grafico']
             capa = int(accion.get('capa', 1000))
             if nombre not in self.graficos:
+                # Los gráficos 3D no se dibujan trazo a trazo en la pizarra (CRITERIOS, «Vídeo»):
+                # van como apoyo o como boceto a mano de pocas líneas
+                ruta_tex = os.path.join(self.tema.graficos, f'{nombre}.tex')
+                if os.path.exists(ruta_tex) and re.search(r'\bview\s*=|z\s*buffer|\\addplot3|\bz\s*=\s*\{\(',
+                                                          open(ruta_tex, encoding='utf-8').read()):
+                    self.avisos.append(f'El gráfico {nombre} es 3D y se dibuja en la pizarra: ponlo como apoyo '
+                                       'o haz un boceto a mano (CRITERIOS, «Vídeo»)')
+            elif capa < self.graficos[nombre]['g'].capa:
+                self.avisos.append(f'El gráfico {nombre} baja de la capa {self.graficos[nombre]["g"].capa} a la '
+                                   f'{capa}: las capas van subiendo (para empezar de nuevo, borrar antes)')
+            if nombre not in self.graficos:
                 x0, x1, y, limite, celdas = self._sitio(zona, 300)
                 alto = (limite - y) * float(accion.get('alto', 1.0))
                 g = Grafico(self.tema, nombre, self.carpeta, (x0, y, x1, y + alto))
@@ -1277,8 +1312,18 @@ class Pizarra:
 
     def anadir_apoyo(self, accion):
         """Material de apoyo (gráfico, fórmula, texto o imagen) que NO escribe el opositor:
-        una tarjeta azulada con su rótulo, en una celda de la rejilla, que aparece de golpe."""
+        una tarjeta azulada con su rótulo, en una celda de la rejilla, que aparece de golpe.
+        Con `sustituye: true`, antes se quita el apoyo que hubiera en esa zona (para el apoyo
+        que «se mueve»: estados sucesivos de un gráfico). Devuelve una lista de operaciones."""
         zona = accion.get('zona')
+        ops = []
+        if accion.get('sustituye'):
+            _, celdas_z = self.rejilla.zona(zona)
+            previos = [e for e in self.elementos if e.get('apoyo') and e['celdas'] & set(celdas_z)]
+            if previos:
+                self.elementos = [e for e in self.elementos if e not in previos]
+                self._reiniciar(set(celdas_z))
+                ops += [op_borrar(e['caja'], self.fondo) for e in previos]
         x0, x1, y, limite, celdas = self._sitio(zona, 200)
         alto_max = (limite - y) * float(accion.get('alto', 1.0))
         ancho, margen, cab = int(x1 - x0), 18, 42
@@ -1311,8 +1356,9 @@ class Pizarra:
         tarjeta.alpha_composite(dentro, ((ancho - dentro.width) // 2, cab))
         pos = (int(x0), int(y))
         self._ocupar(celdas, y + alto, limite, zona, (x0, y, x0 + ancho, y + alto))
-        return op_dibujo(pos, tarjeta, False, self.fondo,
-                         [{'tipo': 'relleno', 'caja': (0, 0, ancho, alto), 'dur': 0.3}])
+        self.elementos[-1]['apoyo'] = True
+        return ops + [op_dibujo(pos, tarjeta, False, self.fondo,
+                                [{'tipo': 'relleno', 'caja': (0, 0, ancho, alto), 'dur': 0.3}])]
 
 
 def op_dibujo(pos, img, reemplaza, fondo, partes):
@@ -1924,9 +1970,15 @@ def main():
     ffmpeg = args.ffmpeg or imageio_ffmpeg.get_ffmpeg_exe()
 
     guion = yaml.safe_load(open(args.escenas or os.path.join(tema.dir, 'video', 'escenas.yaml'), encoding='utf-8'))
-    voz = {**VOZ_DEFECTO, **(guion.get('voz') or {})} if isinstance(guion.get('voz'), dict) else dict(VOZ_DEFECTO)
+    voz = dict(guion.get('voz') or {}) if isinstance(guion.get('voz'), dict) else {}
     if args.voz:
         voz.update(json.loads(args.voz))
+    if voz.get('motor', 'edge') == 'edge':
+        # Solo el motor edge toma los valores por defecto (su velocidad es «+15%»;
+        # en xtts y voicestudio es un número y no debe colarse)
+        voz = {**VOZ_DEFECTO, **voz}
+    for aviso in comprobar_guion(guion, tema):
+        print('AVISO:', aviso, flush=True)
     total = float(guion.get('duracion', 1800))
     titulo = guion.get('titulo') or tema.titulo()
     corto = guion.get('titulo_corto') or re.split(r'[.:]', titulo)[0].strip()
@@ -2030,6 +2082,10 @@ def main():
                                     'ultima': None}
                     if not estructura:
                         estado_guion['partes'].append({'nombre': None, 'estado': 'actual', 'lineas': []})
+            if not str(paso.get('di') or '').strip():
+                avisos.append(f'{mmss(t0)} (escena {p["escena"] + 1}): paso sin «di»: la voz no se para nunca')
+            elif len(re.findall(r'\[pausa', paso['di'])) > 2:
+                avisos.append(f'{mmss(t0)}: más de dos [pausa] en un paso (una o dos como mucho)')
             if paso.get('di'):
                 fr = frases(sin_pausas(paso['di']))
                 largo = sum(len(f) for f in fr) or 1
@@ -2083,11 +2139,15 @@ def main():
                     avisar_glifos(apunte, F_FRANJA_I, '«Apunte»', avisos)
                 nuevos = []
                 spec = paso.get('rejilla', e.get('rejilla') if nueva else None)
+                lineas = paso.get('lineas', e.get('lineas') if nueva else None)
                 conservar = paso.get('conservar', e.get('conservar') if nueva and 'rejilla' not in paso else None)
-                if spec is not None and Rejilla(spec).clave != pizarra.rejilla.clave or paso.get('borrar'):
+                if spec is not None and Rejilla(spec, lineas).clave != pizarra.rejilla.clave or paso.get('borrar'):
                     barrera(t0)
+                if 'rejilla' in paso and Rejilla(spec, lineas).clave == pizarra.rejilla.clave and not paso.get('borrar'):
+                    avisos.append(f'{mmss(t0)}: la rejilla del paso es la misma que había, así que no se borra nada '
+                                  '(para limpiar la pizarra, borrar: true)')
                 if spec is not None:
-                    nuevos += pizarra.cambiar_rejilla(spec, conservar)
+                    nuevos += pizarra.cambiar_rejilla(spec, conservar, lineas)
                 if paso.get('borrar'):
                     nuevos += pizarra.borrar(paso['borrar'], conservar)
                 acciones = paso.get('pizarra') or []
@@ -2097,7 +2157,7 @@ def main():
                     nuevos.append(pizarra.anadir(accion))
                 apoyos = paso.get('apoyo') or []
                 for accion in ([apoyos] if isinstance(apoyos, dict) else apoyos):
-                    nuevos.append(pizarra.anadir({**accion, '_apoyo': True}))
+                    nuevos += pizarra.anadir({**accion, '_apoyo': True})
                 for op in nuevos:
                     op['listo'], op['paso'], op['dicho'] = listo, n, sin_pausas(paso.get('di') or '')
                     ops.append(op)
@@ -2109,10 +2169,11 @@ def main():
     pasos, natural, portada_fin = cronologia({})
     factor = natural / (total - CIERRE)
     print(f'Narración natural: {mmss(natural)}; ritmo ajustado ×{factor:.3f} para durar {mmss(total)}', flush=True)
-    if not 0.9 <= factor <= 1.12:
-        print(f'  AVISO: el guion es {"largo" if factor > 1 else "corto"} para {mmss(total)}: '
-              f'conviene {"recortar" if factor > 1 else "alargar"} unas {abs(int((natural - total + CIERRE) * 2.6))} '
-              f'palabras', flush=True)
+    ritmo_fuera = not RITMO_MIN <= factor <= RITMO_MAX
+    if ritmo_fuera:
+        print(f'  AVISO: el guion es {"largo" if factor > 1 else "corto"} para {mmss(total)} (el ritmo tiene que quedar '
+              f'entre ×{RITMO_MIN:.2f} y ×{RITMO_MAX:.2f}): conviene {"recortar" if factor > 1 else "alargar"} unas '
+              f'{abs(int((natural - total + CIERRE) * 2.6))} palabras', flush=True)
     if args.medir:
         palabras = sum(len(re.findall(r'\w+', sin_pausas(d))) for d in dichos)
         objetivo = int(palabras / factor)
@@ -2122,11 +2183,15 @@ def main():
         prueba = copy.deepcopy(pasos)
         for p in prueba:
             p['inicio'] /= factor
+            p['dur'] /= factor
+            p['hueco'] /= factor
         ops_m, _, avisos_m, _, _ = planificar(prueba, total - CIERRE)
         programar(ops_m, avisos_m)
         for aviso in dict.fromkeys(avisos_m):
             print('AVISO:', aviso)
         print(f'{len(set(avisos_m))} avisos de pizarra')
+        if ritmo_fuera:
+            sys.exit(3)
         return
     escala = 1 / factor
     portada_fin *= escala
@@ -2296,9 +2361,11 @@ def main():
             raise RuntimeError('ffmpeg falló al montar el vídeo')
     for aviso in dict.fromkeys(avisos):
         print('AVISO:', aviso)
-    json.dump({'factor_ritmo': round(factor, 3), 'narracion_natural': round(natural, 1),
-               'avisos': list(dict.fromkeys(avisos))},
-              open(os.path.join(carpeta, 'informe-video.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    if not (args.tramo or args.escenas or instantes):
+        # Solo el montaje completo deja el informe (un tramo o unos fotogramas no lo pisan)
+        json.dump({'factor_ritmo': round(factor, 3), 'narracion_natural': round(natural, 1), 'borrador': bool(args.borrador),
+                   'avisos': list(dict.fromkeys(avisos))},
+                  open(os.path.join(carpeta, 'informe-video.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     if instantes:
         print(f'Fotogramas en {carpeta_f}')
         return
@@ -2334,6 +2401,48 @@ def main():
         f.write('\n[Al subirlo a YouTube: Licencia → «Licencia estándar de YouTube»; '
                 'no copiar esta línea en la descripción]\n')
     print(f'Vídeo: {mp4} ({mmss(total)}; {len(pasos)} pasos)')
+    if ritmo_fuera:
+        print(f'El ritmo ×{factor:.3f} queda fuera de ×{RITMO_MIN:.2f}–×{RITMO_MAX:.2f}: hay que ajustar el guion')
+        sys.exit(3)
+
+
+# --- Comprobaciones del guion ---------------------------------------------------------------------
+CLAVES_RAIZ = {'tema', 'duracion', 'voz', 'pronunciacion', 'bloques', 'escenas', 'titulo', 'titulo_corto', 'lectura_titulo'}
+CLAVES_ESCENA = {'bloque', 'titulo', 'apartado', 'modo', 'estructura', 'rejilla', 'conservar', 'lineas', 'pasos'}
+CLAVES_PASO = {'di', 'parte', 'guion', 'apunte', 'rejilla', 'conservar', 'lineas', 'borrar', 'pizarra', 'apoyo'}
+CLAVES_ACCION = {'escribe', 'formula', 'imagen', 'grafico', 'capa', 'zona', 'color', 'tam', 'alinear', 'centrar',
+                 'alto', 'texto', 'sustituye'}
+
+
+def comprobar_guion(guion, tema):
+    """Avisos sobre escenas.yaml que no impiden montar el vídeo: claves que el script
+    no conoce (se ignoran) y minutos de «bloques» distintos de los \\minutos del tema."""
+    avisos = []
+
+    def desconocidas(d, validas, donde):
+        for k in d:
+            if k not in validas:
+                avisos.append(f'clave desconocida «{k}» en {donde} (se ignora)')
+    desconocidas(guion, CLAVES_RAIZ, 'escenas.yaml')
+    for i, e in enumerate(guion.get('escenas') or [], 1):
+        desconocidas(e, CLAVES_ESCENA, f'la escena {i}')
+        for k, p in enumerate(e.get('pasos') or [], 1):
+            desconocidas(p, CLAVES_PASO, f'la escena {i}, paso {k}')
+            for clave in ('pizarra', 'apoyo'):
+                acciones = p.get(clave) or []
+                for a in (acciones if isinstance(acciones, list) else [acciones]):
+                    if isinstance(a, dict):
+                        desconocidas(a, CLAVES_ACCION, f'la escena {i}, paso {k}, {clave}')
+    tex = os.path.join(tema.dir, f'{tema.archivo}.tex')
+    bloques = guion.get('bloques') or []
+    if os.path.exists(tex) and bloques:
+        texto = re.sub(r'(?<!\\)%[^\n]*', '', open(tex, encoding='utf-8').read())
+        del_tema = [float(x.replace(',', '.')) for x in re.findall(r'\\minutos\{(\d+(?:[.,]\d+)?)\}', texto)]
+        del_video = [float(str(b.get('minutos', 0)).replace(',', '.')) for b in bloques]
+        if del_tema and (len(del_tema) != len(del_video) or any(abs(a - b) > 0.01 for a, b in zip(del_tema, del_video))):
+            avisos.append('los minutos de «bloques» (' + ', '.join(f'{m:g}' for m in del_video) + ') no son los '
+                          '\\minutos del tema (' + ', '.join(f'{m:g}' for m in del_tema) + ')')
+    return avisos
 
 
 if __name__ == '__main__':

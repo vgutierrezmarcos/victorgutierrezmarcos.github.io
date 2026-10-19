@@ -8,6 +8,10 @@ LyX/LaTeX (primer paso de /revisartema).
 Lee el Word original de oculto/ (en el checkout de main, porque no está en
 git; en el 4.º ejercicio sigue la correspondencia nueva ← vieja de
 cuarto-ejercicio.html) y deja en oposicion/temario/fuentes/<tema>/_trabajo/:
+(Si el tema no tiene Word original —33 temas—, deja un original.md con solo el
+título oficial y sus epígrafes, e inventario.json con sin_original: true; la
+estructura sale entonces de las referencias de indexar-referencias.py, por el
+orden de CRITERIOS §5: Tebar, Manuel Cabado, Marta Ramírez.)
 
   original.md       el tema en Markdown (pandoc), con los estilos de párrafo
                     de Word como bloques ::: {custom-style="…"} y marcas en el
@@ -222,6 +226,53 @@ def inventario(tema, md, coms, origen):
     return inv
 
 
+def epigrafes_titulo(titulo):
+    """Epígrafes del título oficial: «La teoría del equilibrio general. Construcción
+    del modelo; obtención del equilibrio…» → una lista por punto o punto y coma."""
+    partes = [p.strip(' .;') for p in re.split(r'(?<=[a-záéíóúñA-ZÁÉÍÓÚÑ\)])[.;]\s+', titulo)]
+    return [p for p in partes if p]
+
+
+def sin_original(tema):
+    """Tema sin Word original (CRITERIOS §5): original.md solo con el título
+    oficial y sus epígrafes, páginas del PDF publicado si lo hay (puede ser de
+    otro autor o un simulacro) e inventario.json con sin_original: true."""
+    os.makedirs(tema.trabajo, exist_ok=True)
+    titulo = tema.titulo()
+    epigrafes = epigrafes_titulo(titulo)
+    md = [f'# Tema {tema.codigo}: {titulo}', '',
+          '> **Este tema no tiene Word original de Víctor.** La estructura y el guion de contenidos',
+          '> salen, por este orden, de los temas de Miquel Tebar, de manuelcabadogarcia.es (DCE) y de',
+          '> los apuntes de Marta Ramírez (`_trabajo/referencias.md`), siempre redactado de nuevo y',
+          '> con las fichas del canon (CRITERIOS §5). Lo que sigue es solo el título oficial.', '',
+          '## Epígrafes del título oficial', '']
+    md += [f'{i}. {e}' for i, e in enumerate(epigrafes, 1)]
+    with open(os.path.join(tema.trabajo, 'original.md'), 'w', encoding='utf-8') as f:
+        f.write('\n'.join(md) + '\n')
+    n_paginas = 0
+    pdf = tema.pdf_publicado()
+    if pdf:
+        paginas = os.path.join(tema.trabajo, 'paginas')
+        os.makedirs(paginas, exist_ok=True)
+        doc = fitz.open(pdf)
+        for i, pag in enumerate(doc):
+            pag.get_pixmap(dpi=110).save(os.path.join(paginas, f'p-{i + 1:03d}.png'))
+        n_paginas = doc.page_count
+    inv = {'tema': tema.codigo, 'titulo': titulo, 'original': None, 'sin_original': True,
+           'epigrafes': epigrafes, 'palabras': 0, 'amarillo': [], 'rojo': [], 'oculto': [],
+           'notas_al_opositor': [], 'cajas_de_anotaciones': [], 'advertencias': [], 'no_cantar': [],
+           'comentarios_word': [], 'comentarios_internos': [], 'figuras': [], 'pies_de_imagen': [],
+           'fuentes_vacias': [], 'referencias_a_temas': [], 'notas_al_pie': 0, 'ecuaciones': 0, 'imagenes': 0,
+           'paginas_pdf_publicado': n_paginas}
+    with open(os.path.join(tema.trabajo, 'inventario.json'), 'w', encoding='utf-8') as f:
+        json.dump(inv, f, ensure_ascii=False, indent=2)
+    print(f'Tema {tema}: {titulo}')
+    print('SIN ORIGINAL: no hay Word de Víctor en oculto/. original.md lleva solo el título oficial y sus '
+          f'{len(epigrafes)} epígrafes; la estructura sale de las referencias (indexar-referencias.py) '
+          'según CRITERIOS §5.' + (f' Hay un PDF publicado de {n_paginas} páginas (comprobar de quién es).' if pdf else ''))
+    print('Resultado en', os.path.relpath(tema.trabajo))
+
+
 def main():
     if len(sys.argv) != 2:
         print(__doc__)
@@ -229,8 +280,8 @@ def main():
     tema = Tema(sys.argv[1])
     origen = tema.original_docx()
     if not origen:
-        print(f'No encuentro el Word original de {tema} en oculto/.')
-        sys.exit(1)
+        sin_original(tema)
+        return
     os.makedirs(tema.trabajo, exist_ok=True)
     marcado = os.path.join(tema.trabajo, 'original-marcado.docx')
     preparar_docx(origen, marcado)
