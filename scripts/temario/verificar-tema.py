@@ -188,6 +188,22 @@ def comprobar_remisiones(tema, tex, errores, datos):
         if sin_enlace > 5:
             errores.append(f'{os.path.basename(ruta)}: {sin_enlace} remisiones a temas sin enlace en total')
     # HTML: los \\vertema enlazados y todos los enlaces internos con destino
+    # Una fórmula destacada no puede separarse de lo que la presenta (Víctor,
+    # 19/10/2026): ni tras una línea en blanco ni tras el cierre de una lista
+    # cuando la línea anterior no acaba en punto (va dentro de la viñeta).
+    fuente_tex = leer(os.path.join(tema.dir_fuente, f'{tema.archivo}.tex')) if hasattr(tema, 'dir_fuente') else None
+    if fuente_tex is None:
+        fuente_tex = leer(os.path.join(os.path.dirname(tema.trabajo), f'{tema.archivo}.tex'))
+    if fuente_tex:
+        lineas_tex = fuente_tex.split('\n')
+        for i, l in enumerate(lineas_tex):
+            if re.match(r'\s*(\\funcionclave|\\begin\{(equation|align|gather)|\\\[)', l):
+                j, blanco = i - 1, False
+                while j >= 0 and not lineas_tex[j].strip():
+                    blanco, j = True, j - 1
+                previa = lineas_tex[j].rstrip() if j >= 0 else ''
+                if (blanco or re.match(r'\s*\\end\{(itemize|enumerate)\}', previa)) and not previa.endswith('.'):
+                    errores.append(f'Fórmula separada de lo que la presenta (l. {i + 1} del .tex): va dentro de la viñeta o del párrafo, sin línea en blanco')
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
     if html:
         spans = html.count('<span class="vertema"')

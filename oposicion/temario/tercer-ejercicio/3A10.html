@@ -318,14 +318,14 @@ Conclusión</p>
 <section id="ii-desarrollo" class="level5">
 <h5>ii) Desarrollo</h5>
 <ul>
-<li><p>La continuidad basta para que exista una función de utilidad; la independencia es la que le da la <em>forma</em> de utilidad esperada. Es el <strong>teorema de la utilidad esperada</strong> de <span class="citation" data-cites="VonNeumannMorgenstern1944Theory"><span class="smallcaps">von</span> <span class="smallcaps">Neumann</span> y <span class="smallcaps">Morgenstern</span> (<a href="#ref-VonNeumannMorgenstern1944Theory" role="doc-biblioref">1944</a>)</span>: si <span class="math inline">\(\succcurlyeq\)</span> sobre <span class="math inline">\(\mathcal{L}\)</span> cumple los 5 axiomas, existe una función <span class="math inline">\(u(\cdot)\)</span> que asigna un número a cada resultado cierto tal que las loterías se ordenan por</p></li>
-</ul>
+<li><p>La continuidad basta para que exista una función de utilidad; la independencia es la que le da la <em>forma</em> de utilidad esperada. Es el <strong>teorema de la utilidad esperada</strong> de <span class="citation" data-cites="VonNeumannMorgenstern1944Theory"><span class="smallcaps">von</span> <span class="smallcaps">Neumann</span> y <span class="smallcaps">Morgenstern</span> (<a href="#ref-VonNeumannMorgenstern1944Theory" role="doc-biblioref">1944</a>)</span>: si <span class="math inline">\(\succcurlyeq\)</span> sobre <span class="math inline">\(\mathcal{L}\)</span> cumple los 5 axiomas, existe una función <span class="math inline">\(u(\cdot)\)</span> que asigna un número a cada resultado cierto tal que las loterías se ordenan por</p>
 <div class="funcionclave">
 <div id="eq:utilidad-esperada">
 
 </div>
 <p><span class="math display">\[U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)\tag{1}\]</span></p>
-</div>
+</div></li>
+</ul>
 <ul>
 <li><p>es decir, <span class="math inline">\(\tilde{x}^1\succcurlyeq\tilde{x}^2\iff U(\tilde{x}^1)\geq U(\tilde{x}^2)\)</span>.</p></li>
 <li><p><em>Interpretación</em>: el consumidor elige <em>como si</em> asignara una utilidad a cada resultado cierto, la <strong>utilidad de <span class="smallcaps">Bernoulli</span></strong> <span class="math inline">\(u(\cdot)\)</span> (en la terminología de <span class="citation" data-cites="MasColellWhinstonGreen1995"><span class="smallcaps">Mas-Colell</span>, <span class="smallcaps">Whinston</span> y <span class="smallcaps">Green</span> (<a href="#ref-MasColellWhinstonGreen1995" role="doc-biblioref">1995</a>)</span>), y valorara cada lotería por la media de esas utilidades ponderada por las probabilidades: la <strong>utilidad esperada</strong> o de <span class="smallcaps">von Neumann</span>-<span class="smallcaps">Morgenstern</span>, <span class="math inline">\(U(\tilde{x})\)</span>. La demostración (en el apéndice de la 2.ª edición, de 1947) construye <span class="math inline">\(u\)</span> con loterías: con el mejor y el peor resultado, la utilidad de cada resultado intermedio es la probabilidad <span class="math inline">\(\tau\)</span> que hace al consumidor indiferente entre ese resultado seguro y la lotería que da el mejor con probabilidad <span class="math inline">\(\tau\)</span> y el peor con <span class="math inline">\(1-\tau\)</span>.</p></li>
@@ -597,14 +597,14 @@ Conclusión</p>
   x_2&amp;=\overline{W}-L+(1-\gamma)\,S &amp;&amp;\text{(con accidente, con probabilidad } \pi).
   \end{aligned}\]</span> Despejando <span class="math inline">\(S\)</span> en la primera y sustituyendo en la segunda se obtiene la <strong>recta de aseguramiento</strong>, que pasa por el punto sin seguro, <span class="math inline">\(A\)</span>, y es la restricción presupuestaria del consumidor entre estados:<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> <span id="eq:recta-seguro"></span><span class="math display">\[\tag{7}
   x_2=\frac{\overline{W}}{\gamma}-L-\frac{1-\gamma}{\gamma}\,x_1 .\]</span> Su pendiente, <span class="math inline">\(-(1-\gamma)/\gamma\)</span>, es el precio relativo de trasladar riqueza entre estados: renunciar a <span class="math inline">\(\gamma\)</span> euros en el estado sin accidente da <span class="math inline">\(1-\gamma\)</span> euros netos en el estado con accidente.</p></li>
-<li><p>El consumidor elige la cobertura que maximiza su utilidad esperada:</p></li>
-</ul>
+<li><p>El consumidor elige la cobertura que maximiza su utilidad esperada:</p>
 <div class="funcionclave">
 <div id="eq:problema-seguro">
 
 </div>
 <p><span class="math display">\[\begin{array}{rl}\displaystyle \max_{S} &amp; \displaystyle (1-\pi)\,u\big(\overline{W}-\gamma S\big)+\pi\,u\big(\overline{W}-L+(1-\gamma)S\big) \\ \text{s.a.} &amp; 0\leq S\leq L\end{array}\tag{8}\]</span></p>
-</div>
+</div></li>
+</ul>
 <ul>
 <li><p>Con solución interior, la condición de primer orden iguala la pendiente de la curva de indiferencia y la de la recta de aseguramiento (anexo <a href="#anexo:derivaciones">E</a>): <span id="eq:cpo-seguro"></span><span class="math display">\[\tag{9}
   \mathrm{RMSE}\equiv\frac{(1-\pi)\,u&#39;(x_1)}{\pi\,u&#39;(x_2)}=\frac{1-\gamma}{\gamma} .\]</span> La <strong>relación marginal de sustitución estocástica</strong>, o entre estados (RMSE), es el valor absoluto de la pendiente de la curva de indiferencia en el plano <span class="math inline">\((x_1,x_2)\)</span>: cuánta riqueza sin accidente está dispuesto a dar el consumidor por un euro más con accidente. En la <strong>línea de certeza</strong> (<span class="math inline">\(x_1=x_2\)</span>, la bisectriz) vale <span class="math inline">\((1-\pi)/\pi\)</span>, el cociente de probabilidades, sea cual sea <span class="math inline">\(u\)</span>. La condición de segundo orden se cumple por la concavidad de <span class="math inline">\(u\)</span>.</p></li>
@@ -950,14 +950,14 @@ Conclusión</p>
 <section id="ii-desarrollo-4" class="level5">
 <h5>ii) Desarrollo</h5>
 <ul>
-<li><p>El valor de una alternativa con resultados <span class="math inline">\(x_s\)</span> y probabilidades <span class="math inline">\(\pi_s\)</span> es</p></li>
-</ul>
+<li><p>El valor de una alternativa con resultados <span class="math inline">\(x_s\)</span> y probabilidades <span class="math inline">\(\pi_s\)</span> es</p>
 <div class="funcionclave">
 <div id="eq:perspectivas">
 
 </div>
 <p><span class="math display">\[V=\sum_{s=1}^{S}w(\pi_s)\,v(x_s-r)\tag{11}\]</span></p>
-</div>
+</div></li>
+</ul>
 <ul>
 <li><p>donde <span class="math inline">\(v(\cdot)\)</span> es la <strong>función de valor</strong>, definida sobre ganancias y pérdidas, y <span class="math inline">\(w(\cdot)\)</span> la <strong>función de ponderación</strong> de las probabilidades. Con <span class="math inline">\(r=0\)</span>, <span class="math inline">\(w(\pi)=\pi\)</span> y <span class="math inline">\(v=u\)</span>, es la utilidad esperada (<a href="#eq:utilidad-esperada">1</a>).</p></li>
 <li><p><em>La función de valor</em> (gráfico <a href="#fig:funcion-valor">8</a>) tiene forma de S y 3 propiedades:</p>

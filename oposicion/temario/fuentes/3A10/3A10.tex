@@ -177,9 +177,10 @@ En el cante de \ref{sec:fundamentos} (\tiempo{8}): el conjunto de elección con 
 
 \begin{itemize}
 \item La continuidad basta para que exista una función de utilidad; la independencia es la que le da la \emph{forma} de utilidad esperada. Es el \concepto{teorema de la utilidad esperada} de \textcite{VonNeumannMorgenstern1944Theory}: si $\succcurlyeq$ sobre $\mathcal{L}$ cumple los 5 axiomas, existe una función $u(\cdot)$ que asigna un número a cada resultado cierto tal que las loterías se ordenan por
+  \funcionclave[eq:utilidad-esperada]{U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)}
 \end{itemize}
 
-\funcionclave[eq:utilidad-esperada]{U(\tilde{x})=\mathbb{E}\big[u(\tilde{x})\big]=\sum_{s=1}^{S}\pi_s\,u(x_s)}
+
 
 \begin{itemize}
 \item[] es decir, $\tilde{x}^1\succcurlyeq\tilde{x}^2\iff U(\tilde{x}^1)\geq U(\tilde{x}^2)$.
@@ -442,9 +443,10 @@ En el cante de \ref{sec:aplicaciones} (\tiempo{4}) se desarrolla solo la demanda
   \end{equation}
   Su pendiente, $-(1-\gamma)/\gamma$, es el precio relativo de trasladar riqueza entre estados: renunciar a $\gamma$ euros en el estado sin accidente da $1-\gamma$ euros netos en el estado con accidente.
 \item El consumidor elige la cobertura que maximiza su utilidad esperada:
+  \funcionclave[eq:problema-seguro]{\optim{\max}{S}{(1-\pi)\,u\big(\overline{W}-\gamma S\big)+\pi\,u\big(\overline{W}-L+(1-\gamma)S\big)}{0\leq S\leq L}}
 \end{itemize}
 
-\funcionclave[eq:problema-seguro]{\optim{\max}{S}{(1-\pi)\,u\big(\overline{W}-\gamma S\big)+\pi\,u\big(\overline{W}-L+(1-\gamma)S\big)}{0\leq S\leq L}}
+
 
 \begin{itemize}
 \item[] Con solución interior, la condición de primer orden iguala la pendiente de la curva de indiferencia y la de la recta de aseguramiento (anexo~\ref{anexo:derivaciones}):
@@ -769,9 +771,10 @@ En el cante de \ref{sec:perspectivas} (\tiempo{4,5}): la idea y la diferencia co
 
 \begin{itemize}
 \item El valor de una alternativa con resultados $x_s$ y probabilidades $\pi_s$ es
+  \funcionclave[eq:perspectivas]{V=\sum_{s=1}^{S}w(\pi_s)\,v(x_s-r)}
 \end{itemize}
 
-\funcionclave[eq:perspectivas]{V=\sum_{s=1}^{S}w(\pi_s)\,v(x_s-r)}
+
 
 \begin{itemize}
 \item[] donde $v(\cdot)$ es la \concepto{función de valor}, definida sobre ganancias y pérdidas, y $w(\cdot)$ la \concepto{función de ponderación} de las probabilidades. Con $r=0$, $w(\pi)=\pi$ y $v=u$, es la utilidad esperada \eqref{eq:utilidad-esperada}.

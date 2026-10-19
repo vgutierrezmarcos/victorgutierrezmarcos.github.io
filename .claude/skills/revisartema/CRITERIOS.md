@@ -232,6 +232,12 @@ convierten); el detalle está en la cabecera de `latex/tcee.sty`.
   final; la numeración (1…N, A-n, B-n) y la línea de la portada salen solas.
   construir-tema.py y verificar-tema.py dicen las «páginas del tema».
 
+- **Fórmula pegada a lo que la presenta** (Víctor, 19/10/2026): ningún salto
+  de página entre la frase que introduce una fórmula destacada («… es», «…:»)
+  y la fórmula (`\funcionclave`, `equation`, `align`, `\[…\]`). La fórmula va
+  en el mismo párrafo o dentro de la misma viñeta, nunca tras una línea en
+  blanco ni tras `\end{itemize}`. Lo comprueba `verificar-tema.py`.
+
 ## 3. Qué hacer con cada marca del Word original
 
 | Marca | Qué hacer |
