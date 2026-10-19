@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -25,44 +26,65 @@ class DescargasRepo {
     return DescargasRepo(await Hive.openBox(oposicion.caja(Cajas.descargas)), dir);
   }
 
-  String _nombre(String url) => url.split('/').last;
+  /// [nombre] fija el nombre local (el temario revisado lleva en él el hash
+  /// del contenido); si no, el último tramo de la URL.
+  String _nombre(String url, [String? nombre]) => nombre ?? url.split('/').last;
 
-  File fichero(String url) => File('${_dir.path}/${_nombre(url)}');
+  File fichero(String url, {String? nombre}) => File('${_dir.path}/${_nombre(url, nombre)}');
 
-  bool descargado(String url) => fichero(url).existsSync();
+  bool descargado(String url, {String? nombre}) => fichero(url, nombre: nombre).existsSync();
 
-  int tamano(String url) => descargado(url) ? fichero(url).lengthSync() : 0;
+  int tamano(String url, {String? nombre}) => descargado(url, nombre: nombre) ? fichero(url, nombre: nombre).lengthSync() : 0;
 
   int tamanoTotal() =>
       _dir.listSync().whereType<File>().fold(0, (n, f) => n + f.lengthSync());
 
-  Future<File> descargar(String url, {void Function(int recibido, int total)? progreso, CancelToken? cancel}) async {
-    final destino = fichero(url);
+  Future<File> descargar(String url, {String? nombre, String? reemplaza, void Function(int recibido, int total)? progreso, CancelToken? cancel}) async {
+    final destino = fichero(url, nombre: nombre);
     final tmp = File('${destino.path}.part');
     await _dio.download(url, tmp.path, onReceiveProgress: progreso, cancelToken: cancel);
     if (destino.existsSync()) destino.deleteSync();
     tmp.renameSync(destino.path);
-    await _caja.put(_nombre(url), DateTime.now().millisecondsSinceEpoch);
+    await _caja.put(_nombre(url, nombre), DateTime.now().millisecondsSinceEpoch);
+    if (reemplaza != null) await _borrarVersionesViejas(reemplaza, destino);
     return destino;
   }
 
-  /// Devuelve el fichero local, descargándolo si hace falta.
-  Future<File> obtener(String url, {void Function(int, int)? progreso}) async {
-    if (descargado(url)) return fichero(url);
-    return descargar(url, progreso: progreso);
+  /// Borra las otras versiones de un fichero (las que empiezan por [prefijo]).
+  Future<void> _borrarVersionesViejas(String prefijo, File actual) async {
+    for (final f in _dir.listSync().whereType<File>()) {
+      final n = f.uri.pathSegments.last;
+      if (n.startsWith(prefijo) && f.path != actual.path) {
+        try {
+          f.deleteSync();
+        } catch (_) {}
+        await _caja.delete(n);
+      }
+    }
+  }
+
+  /// Devuelve el fichero local, descargándolo si hace falta. Con [reemplaza]
+  /// (prefijo común de sus versiones) se borran las versiones anteriores.
+  Future<File> obtener(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async {
+    if (descargado(url, nombre: nombre)) return fichero(url, nombre: nombre);
+    return descargar(url, nombre: nombre, reemplaza: reemplaza, progreso: progreso);
   }
 
   /// PDF listo para el visor: en el móvil, el fichero descargado.
-  Future<PdfLocal> abrir(String url, {void Function(int, int)? progreso}) async =>
-      PdfLocal(ruta: (await obtener(url, progreso: progreso)).path);
+  Future<PdfLocal> abrir(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async =>
+      PdfLocal(ruta: (await obtener(url, nombre: nombre, reemplaza: reemplaza, progreso: progreso)).path);
+
+  /// El contenido del fichero (descargado y guardado para leerlo sin red).
+  Future<Uint8List> bytes(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async =>
+      (await obtener(url, nombre: nombre, reemplaza: reemplaza, progreso: progreso)).readAsBytes();
 
   /// En el móvil los PDF se guardan para leerlos sin conexión.
   bool get guardaSinConexion => true;
 
-  Future<void> borrar(String url) async {
-    final f = fichero(url);
+  Future<void> borrar(String url, {String? nombre}) async {
+    final f = fichero(url, nombre: nombre);
     if (f.existsSync()) f.deleteSync();
-    await _caja.delete(_nombre(url));
+    await _caja.delete(_nombre(url, nombre));
   }
 
   Future<void> borrarTodo() async {

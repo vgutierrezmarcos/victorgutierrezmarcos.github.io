@@ -51,7 +51,7 @@ class BloquePage extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             decoration: BoxDecoration(color: b.color, borderRadius: BorderRadius.circular(8), boxShadow: context.sombraSuave),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(b.categoria.toUpperCase(), style: TextStyle(fontFamily: Fuentes.sans, fontSize: 11.5, fontWeight: FontWeight.w600, letterSpacing: 0.8, color: textoSobre(b.color).withValues(alpha: 0.85))),
+              Text(b.categoria, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 15, fontFeatures: versalitas, letterSpacing: 0.6, color: textoSobre(b.color).withValues(alpha: 0.85))),
               Text(b.nombre, style: TextStyle(fontFamily: Fuentes.serif, fontSize: 21, fontWeight: FontWeight.w700, height: 1.2, color: textoSobre(b.color))),
               const SizedBox(height: 4),
               Text(preparador ? '${b.temas.length} temas' : '$hechos de ${b.temas.length} temas estudiados', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, color: textoSobre(b.color))),

@@ -347,7 +347,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
             ],
             const TituloSeccion('Historial de cantes'),
             if (hechos.isEmpty)
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: Text('Todavía no hay cantes valorados.', style: context.textos.bodySmall))
+              const VacioVista(icono: Icons.star_border, texto: 'Todavía no hay cantes valorados.')
             else
               for (final c in hechos.take(30))
                 Padding(

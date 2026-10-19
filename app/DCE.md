@@ -182,7 +182,7 @@ Lleva también todo lo de la 1.15.11. Lo pidieron Manuel y los testers tras prob
 - **Reglas de Firestore nuevas:** tablón, reparto, ajustes, propuestas por preparador, temas mandados entre preparadores y preparador oculto. 303 casos con el emulador.
 - [x] Víctor: publicar `firestore.rules` en la consola de Firebase **antes** de subir el `.aab` (hecho el 16 oct.). Sin ellas no funcionan el tablón, el reparto ni las propuestas de cada preparador.
 - [x] Víctor: subir el `.aab` 1.16.0 (36) (`Escritorio\oposicion-tcee-dce-1.16.0.aab`) a la prueba cerrada **antes del 22 oct.**: enviado a revisión el 16 oct.
-- [ ] Publicada en la prueba cerrada: APK universal 36 firmado por Google en `app-latest` (Víctor lo sube desde el navegador) y `"versionActual": "1.16.0"`.
+- [x] **Aprobada y publicada en la prueba cerrada el 17 oct.**: APK universal 36 firmado por Google (sin la protección automática) en `app-latest` y `"versionActual": "1.16.0"`.
 - [ ] Probar en el móvil:
   - Pizarra con lápiz y palma.
   - Anotar un tema y descargarlo.

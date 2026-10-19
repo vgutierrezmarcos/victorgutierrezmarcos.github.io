@@ -140,7 +140,7 @@ class _ExamenPageState extends ConsumerState<ExamenPage> {
                           Text('PREGUNTA ${_idx + 1}', style: TextStyle(fontFamily: Fuentes.sans, fontSize: 13.5, fontWeight: FontWeight.w600, letterSpacing: 0.7, color: context.esquema.primary)),
                           const SizedBox(width: 8),
                           Etiqueta(p.tema),
-                          if (p.anulada) const Padding(padding: EdgeInsets.only(left: 6), child: Etiqueta('ANULADA', color: Paleta.avisoWeb)),
+                          if (p.anulada) const Padding(padding: EdgeInsets.only(left: 6), child: Etiqueta('Anulada', color: Paleta.avisoWeb)),
                           const Spacer(),
                           IconButton(
                             icon: Icon(_marcadas.contains(p.id) ? Icons.flag : Icons.outlined_flag),

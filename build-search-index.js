@@ -35,12 +35,20 @@ searchIndex.pages = [
     content: 'Materiales organizados por ejercicios según el programa oficial OEP 2025'
   },
   {
-    id: 'que-es-tcee',
-    title: 'Qué es la oposición TCEE',
-    url: '/oposicion/que-es-tcee.html',
+    id: 'por-que-tcee',
+    title: '¿Por qué TCEE? Qué es la oposición',
+    url: '/oposicion/por-que-tcee.html',
     description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: funciones del cuerpo, requisitos, ejercicios, temario y curso selectivo',
-    keywords: ['qué es', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
+    keywords: ['qué es', 'por qué', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
     content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatorias y plazas, los cinco ejercicios, el temario, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
+  },
+  {
+    id: 'novedades',
+    title: 'Novedades',
+    url: '/novedades.html',
+    description: 'Lo último de la web: temas, exámenes del simulador, versiones de la app y artículos del blog',
+    keywords: ['novedades', 'nuevo', 'actualizado', 'últimos cambios'],
+    content: 'Temas nuevos o actualizados, exámenes en el simulador de test, versiones de la app y artículos del blog'
   },
   {
     id: 'organizacion',

@@ -1,19 +1,20 @@
 # Licencia
 
-© 2026 Víctor Gutiérrez Marcos
+© Víctor Gutiérrez Marcos
 
-## Temario
+## Contenidos
 
-Los contenidos del temario de la oposición a Técnico Comercial y Economista
-del Estado (TCEE) de este repositorio están bajo la licencia
-**Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional
-(CC BY-NC-ND 4.0)**:
+Los contenidos de este repositorio y de la web
+<https://www.victorgutierrezmarcos.es/> son obra de Víctor Gutiérrez Marcos y
+están bajo la licencia **Creative Commons Atribución-NoComercial-SinDerivadas
+4.0 Internacional (CC BY-NC-ND 4.0)**:
 
-- las fuentes de los temas (`oposicion/temario/fuentes/`: LaTeX/LyX, gráficos,
-  guiones y escenas de los vídeos);
-- los temas publicados en PDF, HTML y Word;
-- las fichas de repaso;
-- los vídeos del cante.
+- el temario de la oposición a Técnico Comercial y Economista del Estado
+  (TCEE): los temas en PDF, HTML y Word, sus fuentes y las fichas de repaso;
+- las guías, esquemas y demás materiales de preparación en PDF y Word
+  (`oposicion/`);
+- los textos de la web y los artículos del blog (`blog/`), también en PDF;
+- los vídeos (del temario, de la app y de ayuda).
 
 Puedes copiarlos y compartirlos en cualquier medio o formato **citando al
 autor** (Víctor Gutiérrez Marcos, con enlace a
@@ -23,17 +24,25 @@ modificarlos** (no se pueden distribuir versiones adaptadas o transformadas).
 - Resumen: <https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es>
 - Texto legal: <https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.es>
 
-Cada formato lleva la licencia: el PDF en la portada y en sus metadatos, la
-web en el pie, el Word en el pie de página y en sus propiedades, la ficha de
-repaso en el pie y el vídeo en la portada, el cierre y la descripción.
+La web lo indica en el pie de cada página; los PDF y los Word, en sus
+metadatos (`scripts/metadatos-pdf.py` y `scripts/limpiar-docx.py`).
+En el temario revisado, además, el PDF la lleva en la portada, el Word en el
+pie de página, la ficha de repaso en el pie y el vídeo en la portada, el
+cierre y la descripción.
 
 Para cualquier uso no cubierto por la licencia (por ejemplo, en una academia
 o en un curso de pago), escribe al autor a través de
 <https://www.victorgutierrezmarcos.es/>.
 
-## Resto del repositorio
+## Lo que no cubre
 
-El código de la web, de la app y de los scripts no está cubierto por esta
-licencia; sus derechos quedan reservados salvo que un fichero indique otra
-cosa. Las fuentes tipográficas y otros componentes de terceros mantienen su
-propia licencia (por ejemplo, `app/assets/fonts/`).
+- **Documentos de terceros**: los exámenes oficiales, las convocatorias del
+  BOE y demás documentos públicos que se recopilan aquí (por ejemplo,
+  `oposicion/organizacion/OEP2025TECOS_Convocatoria_BOE.pdf`,
+  `oposicion/temario/primer-ejercicio/examenes_oficiales_dictamen.pdf` y
+  `oposicion/temario/primer-ejercicio/test/examenes_oficiales_test.pdf`)
+  mantienen su propio régimen.
+- **Código**: el código de la web, de la app (`app/`) y de los scripts no está
+  cubierto por esta licencia; sus derechos quedan reservados salvo que un
+  fichero indique otra cosa. Las fuentes tipográficas, bibliotecas y otros
+  componentes de terceros mantienen su propia licencia.

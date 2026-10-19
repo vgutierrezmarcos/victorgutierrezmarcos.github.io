@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/preparador.dart';
+import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
@@ -24,6 +25,8 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
 
   String _busqueda = '';
   Color? Function(String) _colorDe = (_) => null;
+  /// Temas revisados, exclusivos de la app (vacío hasta que se descarga).
+  ManifiestoRevisados _revisados = ManifiestoRevisados.vacio;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     // Código de colores de la organización del temario (vacío hasta que se descarga).
     final estructura = ref.watch(estructuraProvider).valueOrNull;
     _colorDe = (codigo) => estructura?.colorDe(codigo);
+    _revisados = ref.watch(revisadosProvider).valueOrNull ?? ManifiestoRevisados.vacio;
     int apuntes(String codigo) => agendas[codigo]?.pendientes.length ?? 0;
 
     return Scaffold(
@@ -70,7 +74,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
             final res = t.todosLosTemas.where((x) => _normalizar('${x.codigo} ${x.titulo}').contains(q) || _normalizar(x.codigo.replaceAll('.', '')).contains(q.replaceAll('.', '').replaceAll(' ', ''))).toList();
             return ListaAdaptable(padding: const EdgeInsets.all(16), children: [
               Text('${res.length} resultados', style: context.textos.bodySmall),
-              for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
+              for (final x in res) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
             ]);
           }
           // En TCEE todos los temas tienen PDF; en una oposición que aún publica sus
@@ -119,7 +123,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
                               title: Text('PDF completo de la parte', style: context.textos.titleSmall?.copyWith(color: context.esquema.primary)),
                               onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => TemaPage(tema: Tema(codigo: '${ej.id}.${p.letra}', titulo: p.nombre, disponible: true, temarioAnterior: false, url: p.url), esRecurso: true))),
                             ),
-                          for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), x.url != null && descargas.descargado(x.url!), notas.containsKey(x.codigo), apuntes(x.codigo)),
+                          for (final x in p.temas) _filaTema(x, ajustes.temasEstudiados.contains(x.codigo), ajustes.temasEnRepaso.contains(x.codigo), _descargado(x), notas.containsKey(x.codigo), apuntes(x.codigo)),
                         ],
                     ),
               ],
@@ -130,7 +134,16 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
     );
   }
 
+  /// Descargado para leer sin red (la versión anterior o la revisada).
+  bool _descargado(Tema x) {
+    final descargas = ref.read(descargasProvider);
+    if (x.url != null && descargas.descargado(x.url!)) return true;
+    final rev = _revisados.de(x.codigo);
+    return rev != null && descargas.descargado(rev.url(rev.pdf), nombre: rev.nombreLocal(ClaseFichero.pdf));
+  }
+
   Widget _filaTema(Tema x, bool estudiado, bool repaso, bool offline, bool conNota, int apuntes) {
+    final revisado = _revisados.de(x.codigo) != null;
     return ListTile(
       dense: true,
       leading: _preparador
@@ -141,8 +154,9 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
             ),
       title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
-      subtitle: Row(children: [
-        if (!x.disponible) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
+      subtitle: Wrap(crossAxisAlignment: WrapCrossAlignment.center, runSpacing: 2, children: [
+        if (revisado) const Padding(padding: EdgeInsets.only(right: 6), child: Etiqueta('Revisado · exclusivo de la app')),
+        if (!x.disponible && !revisado) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
         if (repaso && !_preparador) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),

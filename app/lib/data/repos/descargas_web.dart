@@ -17,22 +17,28 @@ class DescargasRepo {
 
   static Future<DescargasRepo> crear({Oposicion oposicion = Oposiciones.tcee}) async => DescargasRepo();
 
-  bool descargado(String url) => false;
+  bool descargado(String url, {String? nombre}) => false;
 
   int tamanoTotal() => 0;
 
   bool get guardaSinConexion => false;
 
-  Future<PdfLocal> abrir(String url, {void Function(int, int)? progreso}) async {
+  /// [nombre] y [reemplaza] (nombre local y versiones viejas en el móvil) no
+  /// hacen falta aquí: la URL ya distingue cada versión.
+  Future<PdfLocal> abrir(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async =>
+      PdfLocal(bytes: await bytes(url, progreso: progreso));
+
+  /// El contenido del fichero (en memoria mientras la pestaña siga abierta).
+  Future<Uint8List> bytes(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async {
     final guardado = _memoria[url];
-    if (guardado != null) return PdfLocal(bytes: guardado);
+    if (guardado != null) return guardado;
     final r = await _dio.get<List<int>>(url, options: Options(responseType: ResponseType.bytes), onReceiveProgress: progreso);
     final bytes = Uint8List.fromList(r.data ?? const []);
     _memoria[url] = bytes;
-    return PdfLocal(bytes: bytes);
+    return bytes;
   }
 
-  Future<void> borrar(String url) async => _memoria.remove(url);
+  Future<void> borrar(String url, {String? nombre}) async => _memoria.remove(url);
 
   Future<void> borrarTodo() async => _memoria.clear();
 }

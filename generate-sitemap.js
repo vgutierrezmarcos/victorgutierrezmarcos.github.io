@@ -19,7 +19,7 @@ const PAGE_CONFIG = {
     'politica-cookies.html': { priority: '0.3', changefreq: 'yearly' },
     'oposicion/index.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/temario.html': { priority: '0.9', changefreq: 'monthly' },
-    'oposicion/que-es-tcee.html': { priority: '0.9', changefreq: 'monthly' },
+    'oposicion/por-que-tcee.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/organizacion.html': { priority: '0.8', changefreq: 'monthly' },
     'oposicion/enlaces.html': { priority: '0.8', changefreq: 'monthly' },
     'blog/index.html': { priority: '0.8', changefreq: 'weekly' },
@@ -43,6 +43,7 @@ const EXCLUDE_PATTERNS = [
     /^temario(\/|\.html$)/,      // páginas puente de direcciones antiguas
     /^(enlaces|organizacion)\.html$/,
     /^oposicion\/temario\/index\.html$/,  // página puente de /oposicion/temario/
+    /^oposicion\/que-es-tcee\.html$/,   // página puente de la guía (ahora por-que-tcee.html)
 ];
 
 // Documentos que también van al sitemap (los temas en PDF son lo que más se busca)

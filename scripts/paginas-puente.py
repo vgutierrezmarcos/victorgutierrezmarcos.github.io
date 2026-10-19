@@ -22,6 +22,8 @@ PUENTES = {
     'oposicion/temario/index.html': 'oposicion/temario.html',
     'enlaces.html': 'oposicion/enlaces.html',
     'organizacion.html': 'oposicion/organizacion.html',
+    # La guía «Qué es TCEE» pasó a llamarse «¿Por qué TCEE?» el 18 oct. 2026.
+    'oposicion/que-es-tcee.html': 'oposicion/por-que-tcee.html',
     **{f'temario/{e}-ejercicio.html': f'oposicion/temario/{e}-ejercicio.html'
        for e in ['primer', 'segundo', 'tercer', 'cuarto', 'quinto']},
     'temario/primer-ejercicio/test.html': 'oposicion/temario/primer-ejercicio/test.html',
@@ -33,7 +35,7 @@ PLANTILLA = '''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Dirección antigua (antes de /oposicion/): lleva a la actual. La genera scripts/paginas-puente.py -->
+    <!-- Dirección antigua: lleva a la actual. La genera scripts/paginas-puente.py -->
     <title>{titulo}</title>
     <meta name="description" content="{descripcion}">
     <link rel="canonical" href="{web}/{destino}">
