@@ -1,0 +1,39 @@
+% Preferencia por la variedad (3.A.18, I.3): curvas de indiferencia del agregador CES
+% simétrico entre 2 variedades, y = [x_1^rho + x_2^rho]^(1/rho), rho = (sigma-1)/sigma.
+% Parte de 3A08/graficos/ces-curvas-indiferencia.tex (mismas curvas por la cesta
+% equilibrada, con X = 2): x_1^rho + x_2^rho = 2, la que pasa por (X/2, X/2) con cada sigma.
+%   sigma -> infinito: x_1 + x_2 = 2 (la recta de cantidad total X);
+%   sigma = 4 (rho = 0,75): x_2 = (2 - x_1^0,75)^(4/3), corta los ejes en 2^(4/3) = 2,52;
+%   sigma = 2 (rho = 0,5):  x_2 = (2 - sqrt(x_1))^2, corta los ejes en 4;
+%   sigma = 1 (Cobb-Douglas): x_1 x_2 = 1.
+% Las cestas extremas (X, 0) y (0, X) están en la recta y por debajo de las demás curvas:
+% con sigma finito, repartir X entre las 2 variedades da más que concentrarla en una.
+% Elaboración propia a partir de Dixit y Stiglitz (1977).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=1.7]
+  \useasboundingbox (-0.75,-0.45) rectangle (4.25,3.75);
+  % 1: ejes
+  \capa{1}{\ejes{$x_1$}{$x_2$}{3.7}{3.6}}
+  % 2: sigma -> infinito: sustitutivos perfectos, la recta x_1 + x_2 = X
+  \capa{2}{\draw[curva2] (0,2) -- (2,0);}
+  \capa{2}{\node[etiqueta,text=tceeazul] at (0.5,0.72) {$\sigma\to\infty$};}
+  % 3: sigma = 4
+  \capa{3}{\draw[curva4] plot[domain=0:2.5198,samples=100,smooth] (\x,{(2-\x^0.75)^(4/3)});}
+  \capa{3}{\draw[thin,tceedorado] (1.85,{(2-1.85^0.75)^(4/3)}) -- (1.55,0.32);}
+  \capa{3}{\node[etiqueta,text=tceedorado,anchor=east] at (1.58,0.3) {$\sigma=4$};}
+  % 4: sigma = 2
+  \capa{4}{\draw[curva3] plot[domain=3.2:0.0245,samples=100,smooth] (\x,{(2-sqrt(\x))^2})
+    node[etiqueta,anchor=west,xshift=3pt] {$\sigma=2$};}
+  % 5: sigma = 1 (Cobb-Douglas), la más curvada
+  \capa{5}{\draw[curva1] plot[domain=0.32:3.45,samples=100,smooth] (\x,{1/\x})
+    node[etiqueta,right] {$\sigma=1$};}
+  % 6: cesta equilibrada y cestas extremas sobre la recta x_1 + x_2 = X
+  \capa{6}{\draw[guia] (1,0) node[below,text=black] {$\frac{X}{2}$} -- (1,1) -- (0,1) node[left,text=black] {$\frac{X}{2}$};}
+  \capa{6}{\node[punto,label={[etiqueta]above right:$\left(\frac{X}{2},\frac{X}{2}\right)$}] at (1,1) {};}
+  \capa{6}{\node[punto,label={[etiqueta]below:$(X,0)$}] at (2,0) {};}
+  \capa{6}{\node[punto,label={[etiqueta]left:$(0,X)$}] at (0,2) {};}
+\end{tikzpicture}
+\end{document}

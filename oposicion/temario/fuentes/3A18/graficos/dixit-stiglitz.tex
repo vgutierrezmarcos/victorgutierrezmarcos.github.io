@@ -1,0 +1,87 @@
+% Equilibrio de una empresa en Dixit-Stiglitz (3.A.18, I.3): a) pocas variedades, beneficios;
+% b) la entrada desplaza la demanda de cada variedad, con el precio fijo en mu c;
+% c) tangencia con el coste medio, B = 0.
+% Parámetros: sigma = 2 (mu = sigma/(sigma-1) = 2), c = 1, CF = 1.
+%   CMg = c = 1; CMe(q) = 1 + 1/q.
+%   Demanda isoelástica de la variedad: p = 2 (q/q_0)^(-1/2); IMg = p (1 - 1/sigma) = (q/q_0)^(-1/2).
+%   IMg = c en q = q_0, con p* = mu c = 2 sea cual sea q_0.
+%   a) q_0 = 3: CMe(3) = 1,333 < 2: beneficio (2 - 1,333) 3 = 2.
+%   b) q_0 = 1,8: CMe(1,8) = 1,556 < 2 (aún hay beneficios: sigue la entrada).
+%   c) q_0 = 1 = q* = (sigma-1) CF / c: p = 2/sqrt(q) es tangente a CMe = 1 + 1/q en (1, 2)
+%      (pendientes -1 y -1; CMe - p = (1 - 1/sqrt(q))^2 >= 0).
+% Elaboración propia a partir de Dixit y Stiglitz (1977) y Gandolfo (2014).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=1.1cm,
+    declare function={cme(\q)=1+1/\q; dem(\q,\a)=2*sqrt(\a/\q); img(\q,\a)=sqrt(\a/\q);},
+    titulo/.style={font=\small,anchor=south},
+    dmd/.style={curva1}, imgs/.style={curva2}, cme/.style={curva3}, cmg/.style={curva4}]
+  \useasboundingbox (-2.2,-0.5) rectangle (27.1,4.45);
+  % 1: ejes de los 3 paneles
+  \foreach \dx/\t in {0/{a) Pocas variedades: $B>0$},9.6/{b) Entrada},19.2/{c) Equilibrio: $B=0$}} {
+    \capa{1}{\begin{scope}[xshift=\dx*0.75cm]
+      \ejes{$q$}{$p$}{6.6}{3.85}
+      \node[titulo] at (3.3,3.85) {\t};
+    \end{scope}}
+  }
+  % 2: los mismos costes en los 3 paneles: CMg = c y CMe = c + CF/q
+  \foreach \dx in {0,9.6,19.2} {
+    \capa{2}{\begin{scope}[xshift=\dx*0.75cm]
+      \draw[cmg] (0,1) node[left,text=black] {$c$} -- (6.2,1);
+      \draw[cme] plot[domain=0.4:6.2,samples=80,smooth] (\x,{cme(\x)});
+      \node[etiqueta,text=tceeverde,anchor=west] at (0.45,3.5) {CMe};
+    \end{scope}}
+  }
+  \capa{2}{\node[etiqueta,text=tceedorado,anchor=west] at (6.2,0.92) {$\mathrm{CMg}=c$};}
+  % ---------------- a) pocas variedades ----------------
+  % 3: demanda isoelástica de la variedad e ingreso marginal
+  \capa{3}{\draw[dmd] plot[domain=0.98:6.2,samples=80,smooth] (\x,{dem(\x,3)})
+    node[etiqueta,right] {$x_i(p)$};}
+  \capa{3}{\draw[imgs] plot[domain=0.245:5,samples=80,smooth] (\x,{img(\x,3)})
+    node[etiqueta,right] {IMg};}
+  % 4: IMg = c y precio p* = mu c sobre la demanda
+  \capa{4}{\node[punto] (Ia) at (3,1) {};}
+  \capa{4}{\draw[guia] (3,0) node[below,text=black] {$q_a$} -- (3,2);}
+  \capa{4}{\node[punto] (Aa) at (3,2) {};}
+  \capa{4}{\draw[guia] (Aa) -- (0,2) node[left,text=black] {$p^*=\mu c$};}
+  % 5: beneficio: (p* - CMe) q
+  \capa{5}{\fill[area] (0,{cme(3)}) rectangle (3,2);}
+  \capa{5}{\node[punto,fill=tceeverde] at (3,{cme(3)}) {};}
+  \capa{5}{\node[etiqueta,text=tceemorado,font=\footnotesize] at (2.2,1.8) {$B>0$};}
+  % ---------------- b) entrada ----------------
+  \begin{scope}[xshift=9.6*0.75cm]
+    % 6: la entrada desplaza a la izquierda la demanda y el IMg de cada variedad
+    \capa{6}{\draw[dmd,desplazada,opacity=0.4] plot[domain=0.98:6.2,samples=80,smooth] (\x,{dem(\x,3)});}
+    \capa{6}{\draw[imgs,desplazada,opacity=0.4] plot[domain=0.245:5,samples=80,smooth] (\x,{img(\x,3)});}
+    \capa{6}{\draw[dmd] plot[domain=0.588:6.2,samples=80,smooth] (\x,{dem(\x,1.8)})
+      node[etiqueta,right] {$x_i(p)$};}
+    \capa{6}{\draw[imgs] plot[domain=0.147:6.2,samples=80,smooth] (\x,{img(\x,1.8)})
+      node[etiqueta,right] {IMg};}
+    \capa{6}{\draw[flecha] (2.6,{dem(2.6,3)+0.08}) -- (1.75,{dem(1.75,1.8)+0.08});}
+    \capa{6}{\node[punto] at (1.8,1) {};}
+    % 7: el precio sigue en mu c
+    \capa{7}{\draw[guia] (6.2,2) -- (0,2) node[left,text=black] {$p^*=\mu c$};}
+    \capa{7}{\node[punto] at (1.8,2) {};}
+    \capa{7}{\draw[guia] (1.8,0) node[below,text=black] {$q_b$} -- (1.8,2);}
+  \end{scope}
+  % ---------------- c) equilibrio con libre entrada ----------------
+  \begin{scope}[xshift=19.2*0.75cm]
+    % 8: demanda tangente al CMe en q*, con p* = mu c = CMe(q*)
+    \capa{8}{\draw[dmd] plot[domain=0.3265:6.2,samples=80,smooth] (\x,{dem(\x,1)})
+      node[etiqueta,right] {$x_i(p)$};}
+    \capa{8}{\draw[imgs] plot[domain=0.0816:6.2,samples=80,smooth] (\x,{img(\x,1)})
+      node[etiqueta,right] {IMg};}
+    \capa{8}{\node[punto] at (1,1) {};}
+    \capa{8}{\node[punto] (E) at (1,2) {};}
+    \capa{8}{\node[etiqueta,above right] at (E) {$E^*$};}
+    \capa{8}{\draw[guia] (1,0) node[below,text=black] {$q^*$} -- (E);}
+    \capa{8}{\draw[guia] (6.2,2) -- (E) -- (0,2) node[left,text=black] {$p^*=\mu c$};}
+    % 9: margen p* - c entre la recta mu c y la recta c
+    \capa{9}{\draw[decorate,decoration={brace,amplitude=4pt},thick,tceegris]
+      (4.6,2) -- (4.6,1)
+      node[midway,right=4pt,etiqueta,text=black,font=\footnotesize] {$p^*-c$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

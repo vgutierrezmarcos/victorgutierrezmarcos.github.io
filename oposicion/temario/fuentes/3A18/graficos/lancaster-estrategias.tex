@@ -1,0 +1,64 @@
+% La demanda de características (Lancaster, 1966) y las estrategias de las
+% empresas. Mismo dibujo que fuentes/3A08/graficos/lancaster-caracteristicas.tex
+% y lancaster-diferenciacion.tex (rayos grises por bien, puntos que permite la
+% renta, frontera morada, curvas de indiferencia verdes).
+% a) Fidelidad a la marca: U = (z1 z2)^(1/2), rayos de pendiente 2 (X) y 1/2 (Y).
+%    Y* = (4,2) es una solución de esquina (RMS = 1/2 en Y*, frontera X*Y* casi
+%    plana). Si baja el precio de X hasta X*' = (1,5;3), la frontera X*'Y*
+%    (pendiente -0,4) sigue por debajo de U_0: el consumidor sigue con Y. Con
+%    X*'' = (2,6;5,2), la pendiente de X*''Y* (-2,29) supera la RMS en X*'' (2)
+%    y X*'' da una utilidad mayor: esquina en X, curva U_1 más alta.
+% b) Producto nuevo: U = z1^0,436 z2^0,564 (RMS = 0,774 z2/z1); frontera
+%    X* = (2,4), Y* = (4,4;2,2), de pendiente -0,75, tangente a U_0 en su punto
+%    medio E = (3,2;3,1). El bien nuevo Z tiene el rayo que pasa por E y su punto
+%    Z' = 1,2 E = (3,84;3,72) es el óptimo de la nueva frontera X* Z' Y*.
+% Rehace las Imágenes 21 y 22 del tema original.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,scale=0.85]
+  \useasboundingbox (-0.6,-1.35) rectangle (17.0,6.75);
+  % ---------------- a) Fidelidad a la marca ----------------
+  % 1: ejes del panel izquierdo
+  \capa{1}{\ejes{$z_1$}{$z_2$}{6.8}{6.4}}
+  \capa{1}{\node[etiqueta,font=\small\itshape] at (3.4,-1.05) {a) Fidelidad a la marca};}
+  % 2: rayos de los bienes X e Y y lo que permite la renta (X*, Y*)
+  \capa{2}{\draw[guia] (0,0) -- (3.05,6.1) node[etiqueta,above,text=tceegris] {bien $X$};}
+  \capa{2}{\draw[guia] (0,0) -- (6.5,3.25) node[etiqueta,right,text=tceegris] {bien $Y$};}
+  \capa{2}{\node[punto,label={[etiqueta]left:$X^*$}] (xa) at (0.9,1.8) {};}
+  \capa{2}{\node[punto,label={[etiqueta,xshift=-6pt]below:$Y^*$}] (ya) at (4,2) {};}
+  \capa{2}{\fill[area] (0,0) -- (xa.center) -- (ya.center) -- cycle;}
+  \capa{2}{\draw[curva1] (xa) -- (ya);}
+  % 3: curva de indiferencia por Y* (solución de esquina: compra solo Y)
+  \capa{3}{\draw[curva3] plot[domain=1.4:6.5,samples=60] (\x,{8/\x}) node[etiqueta,right] {$U_0$};}
+  % 4: baja el precio de X hasta X*': su frontera sigue por debajo de U_0
+  \capa{4}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]left:$X^{*\prime}$}] (xb) at (1.5,3) {};}
+  \capa{4}{\draw[desplazada,tceerojo] (xb) -- (ya);}
+  % 5: baja más, hasta X*'': está por encima de U_0 y cambia de marca
+  \capa{5}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo]left:$X^{*\prime\prime}$}] (xc) at (2.6,5.2) {};}
+  \capa{5}{\draw[curvanueva] (xc) -- (ya);}
+  \capa{5}{\draw[curva3] plot[domain=2.2:6.5,samples=60] (\x,{13.52/\x}) node[etiqueta,right] {$U_1$};}
+  % ---------------- b) Producto nuevo ----------------
+  \begin{scope}[xshift=9.2cm]
+  % 6: ejes del panel derecho
+  \capa{6}{\ejes{$z_1$}{$z_2$}{6.8}{6.4}}
+  \capa{6}{\node[etiqueta,font=\small\itshape] at (3.4,-1.05) {b) Producto nuevo};}
+  % 7: rayos de X e Y, sus puntos y la frontera de eficiencia
+  \capa{7}{\draw[guia] (0,0) -- (3.05,6.1) node[etiqueta,above,text=tceegris] {bien $X$};}
+  \capa{7}{\draw[guia] (0,0) -- (6.5,3.25) node[etiqueta,right,text=tceegris] {bien $Y$};}
+  \capa{7}{\node[punto,label={[etiqueta]left:$X^*$}] (xd) at (2,4) {};}
+  \capa{7}{\node[punto,label={[etiqueta]below right:$Y^*$}] (yd) at (4.4,2.2) {};}
+  \capa{7}{\fill[area] (0,0) -- (xd.center) -- (yd.center) -- cycle;}
+  \capa{7}{\draw[curva1] (xd) -- (yd);}
+  % 8: equilibrio E en medio del segmento (combina X e Y), tangente a U_0
+  \capa{8}{\draw[curva3] plot[domain=1.8:6.5,samples=60] (\x,{3.1*(3.2/\x)^0.774}) node[etiqueta,right] {$U_0$};}
+  \capa{8}{\node[punto,label={[etiqueta]below left:$E$}] (e) at (3.2,3.1) {};}
+  % 9: bien nuevo Z con las características de E: Z' da una curva más alta
+  \capa{9}{\draw[guia] (0,0) -- (5.7,5.52) node[etiqueta,above right,text=tceegris] {bien $Z$};}
+  \capa{9}{\node[punto,fill=tceerojo,label={[etiqueta,text=tceerojo,yshift=2pt]above:$Z'$}] (z) at (3.84,3.72) {};}
+  \capa{9}{\draw[curvanueva] (xd) -- (z) -- (yd);}
+  \capa{9}{\draw[curva3] plot[domain=2.25:6.5,samples=60] (\x,{3.72*(3.84/\x)^0.774}) node[etiqueta,right] {$U_1$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

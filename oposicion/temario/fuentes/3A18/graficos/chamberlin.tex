@@ -1,0 +1,91 @@
+% Modelo de Chamberlin (3.A.18, I.2): a) demandas percibida y efectiva; b) corto plazo
+% con beneficios; c) tangencia a largo plazo y exceso de capacidad.
+% Costes (los de 3.A.16, oferta-empresa): C(q) = 2 + q - 0,6 q^2 + 0,15 q^3:
+%   CMg = 1 - 1,2 q + 0,45 q^2; CMe = 2/q + 1 - 0,6 q + 0,15 q^2;
+%   escala mínima eficiente q̄ = 2,832, min CMe = 1,21.
+% a) y b): d: p = 4,2505 - 0,35 q; IMg_d = 4,2505 - 0,7 q; D: p = 12,995 - 3 q.
+%   IMg_d = CMg en q = 3,3 (CMg = 1,9405); p = 3,095 (d y D se cortan ahí); CMe(3,3) = 1,260.
+% c) tangencia en q* = 1,6: CMe(1,6) = 1,674, CMe'(1,6) = -0,90125:
+%   d': p = 3,116 - 0,90125 q; IMg_d' = 3,116 - 1,8025 q = 0,232 = CMg(1,6);
+%   D': p = 5,674 - 2,5 q (pasa por E*).
+% Elaboración propia a partir de Chamberlin (1933) y Koutsoyiannis (1979, p. 209).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;
+      dp(\q)=4.2505-0.35*\q; img(\q)=4.2505-0.7*\q; de(\q)=12.995-3*\q;
+      dpn(\q)=3.116-0.90125*\q; imgn(\q)=3.116-1.8025*\q; den(\q)=5.674-2.5*\q;},
+    titulo/.style={font=\small,anchor=south},
+    dmd/.style={curva1}, def/.style={curva4}, imgd/.style={curva2},
+    cme/.style={curva3}, cmg/.style={curvanueva}]
+  \useasboundingbox (-1.25,-1.35) rectangle (18.6,4.75);
+  % ---------------- 1: ejes de los 3 paneles ----------------
+  \foreach \dx/\t in {0/{a) Demandas},6.6/{b) Corto plazo},13.2/{c) Largo plazo}} {
+    \capa{1}{\begin{scope}[xshift=\dx cm]
+      \ejes{$q$}{$p$}{4.9}{4.3}
+      \node[titulo] at (2.45,4.3) {\t};
+    \end{scope}}
+  }
+  % ---------------- a) demandas ----------------
+  % 2: demanda efectiva D, más inclinada
+  \capa{2}{\draw[def] (3.0,{de(3.0)}) -- (3.85,{de(3.85)}) node[etiqueta,right] {$D$};}
+  % 3: demanda percibida d, muy elástica, que corta a D
+  \capa{3}{\draw[dmd] (0.3,{dp(0.3)}) -- (4.6,{dp(4.6)}) node[etiqueta,right] {$d$};}
+  \capa{3}{\node[punto] at (3.3,3.095) {};}
+  % ---------------- b) corto plazo ----------------
+  \begin{scope}[xshift=6.6cm]
+    % 4: costes en U
+    \capa{4}{\draw[cme] plot[domain=0.7:4.4,samples=80,smooth] (\x,{cme(\x)})
+      node[etiqueta,right] {CMe};}
+    \capa{4}{\draw[cmg] plot[domain=0.3:3.6,samples=80,smooth] (\x,{cmg(\x)})
+      node[etiqueta,right] {CMg};}
+    % 5: demandas e ingreso marginal de la percibida
+    \capa{5}{\draw[def] (3.0,{de(3.0)}) -- (3.75,{de(3.75)});}
+    \capa{5}{\node[etiqueta,text=tceedorado,above] at (3.0,{de(3.0)}) {$D$};}
+    \capa{5}{\draw[dmd] (0,{dp(0)}) -- (4.6,{dp(4.6)}) node[etiqueta,right] {$d$};}
+    \capa{5}{\draw[imgd] (0,{img(0)}) -- (4.6,{img(4.6)}) node[etiqueta,right] {$\mathrm{IMg}_d$};}
+    % 6: IMg_d = CMg: cantidad q y precio p sobre d (y sobre D)
+    \capa{6}{\node[punto] (Ib) at (3.3,1.9405) {};}
+    \capa{6}{\draw[guia] (3.3,0) node[below,text=black] {$q$} -- (3.3,3.095);}
+    \capa{6}{\node[punto] (Ab) at (3.3,3.095) {};}
+    \capa{6}{\draw[guia] (Ab) -- (0,3.095) node[left,text=black] {$p$};}
+    % 7: beneficio: (p - CMe) q
+    \capa{7}{\fill[area] (0,1.260) rectangle (3.3,3.095);}
+    \capa{7}{\node[punto,fill=tceeverde] at (3.3,1.260) {};}
+    \capa{7}{\draw[guia] (3.3,1.260) -- (0,1.260) node[left,text=black] {$\mathrm{CMe}(q)$};}
+    \capa{7}{\node[etiqueta,text=tceemorado] at (0.42,2.3) {$B>0$};}
+  \end{scope}
+  % ---------------- c) largo plazo ----------------
+  \begin{scope}[xshift=13.2cm]
+    % 8: los mismos costes
+    \capa{8}{\draw[cme] plot[domain=0.7:4.4,samples=80,smooth] (\x,{cme(\x)})
+      node[etiqueta,right] {CMe};}
+    \capa{8}{\draw[cmg] plot[domain=0.3:3.6,samples=80,smooth] (\x,{cmg(\x)})
+      node[etiqueta,right] {CMg};}
+    % 9: la entrada desplaza d (y D) a la izquierda hasta la tangencia con el CMe
+    \capa{9}{\draw[dmd,desplazada,opacity=0.4] (0,{dp(0)}) -- (4.0,{dp(4.0)});}
+    \capa{9}{\draw[dmd] (0.2,{dpn(0.2)}) -- (3.3,{dpn(3.3)}) node[etiqueta,right] {$d'$};}
+    \capa{9}{\draw[flecha] (2.6,{dp(2.6)-0.1}) -- (2.6,{dpn(2.6)+0.75});}
+    \capa{9}{\draw[def] (1.0,{den(1.0)}) -- (1.95,{den(1.95)});}
+    \capa{9}{\node[etiqueta,text=tceedorado,above] at (1.0,{den(1.0)}) {$D'$};}
+    \capa{9}{\node[punto] (E) at (1.6,1.674) {};}
+    \capa{9}{\node[etiqueta,above right] at (E) {$E^*$};}
+    % 10: IMg_d' = CMg en q*, y p* = CMe(q*)
+    \capa{10}{\draw[imgd] (0,{imgn(0)}) -- (1.65,{imgn(1.65)});}
+    \capa{10}{\node[etiqueta,text=tceeazul,anchor=east] at (1.17,0.85) {$\mathrm{IMg}_{d'}$};}
+    \capa{10}{\node[punto] at (1.6,0.232) {};}
+    \capa{10}{\draw[guia] (E) -- (1.6,0) node[below,text=black] {$q^*$};}
+    \capa{10}{\draw[guia] (E) -- (0,1.674) node[left,text=black] {$p^*$};}
+    % 11: mínimo del CMe: escala mínima eficiente y precio de competencia perfecta
+    \capa{11}{\node[punto] (M) at (2.832,1.21) {};}
+    \capa{11}{\draw[guia] (M) -- (2.832,0) node[below,text=black] {$\bar{q}$};}
+    \capa{11}{\draw[guia] (4.4,1.21) node[anchor=north east,text=black,font=\footnotesize] {$\min\mathrm{CMe}$} -- (0,1.21);}
+    % 12: exceso de capacidad
+    \capa{12}{\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick,tceegris]
+      (1.6,-0.45) -- (2.832,-0.45)
+      node[midway,below=4pt,etiqueta,align=center,font=\footnotesize,text=black] {exceso de\\capacidad};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

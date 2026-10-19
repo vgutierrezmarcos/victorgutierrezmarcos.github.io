@@ -1,0 +1,44 @@
+% Ciudad circular de Salop (3.A.18, II.3.4): círculo de perímetro 1 con n = 6
+% empresas equidistantes, separadas por arcos de 1/n (60°). La empresa i (abajo)
+% cobra algo menos que sus vecinas, así que el consumidor indiferente con cada
+% una está a x~ = 0,6/n de i (36°), algo más allá de la mitad del arco.
+% Los clientes de i son el arco de x~ a cada lado: x_i = 2 x~.
+% Elaboración propia a partir de Salop (1979) y Tirole (1988, cap. 7).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    empresa/.style={circle,fill=tceemorado,inner sep=2pt},
+    indiferente/.style={circle,draw=black,fill=white,thick,inner sep=1.4pt},
+    medida/.style={<->,thin,>={Stealth[length=1.6mm]}},
+    nota/.style={etiqueta,font=\footnotesize}]
+  \def\R{2}\def\xt{36}
+  \useasboundingbox (-3.05,-3.1) rectangle (3.05,2.75);
+  % Círculo de perímetro 1
+  \capa{1}{\draw[thick] (0,0) circle (\R);}
+  % n empresas equidistantes
+  \capa{2}{\foreach \k in {0,...,5} {\node[empresa] at ({270+60*\k}:\R) {};}}
+  % Arco de 1/n entre 2 vecinas
+  \capa{3}{\draw[medida] (90:\R+0.3) arc[start angle=90,end angle=30,radius=\R+0.3];}
+  \capa{3}{\node[nota] at (60:\R+0.6) {$\frac{1}{n}$};}
+  % Empresa i, sus vecinas y los consumidores indiferentes
+  \capa{4}{\node[empresa,inner sep=2.8pt] at (270:\R) {};}
+  \capa{4}{\node[etiqueta,text=tceemorado] at (270:\R-0.9) {$i$};}
+  \capa{4}{\node[etiqueta,text=tceemorado] at (210:\R+0.45) {$i-1$};}
+  \capa{4}{\node[etiqueta,text=tceemorado] at (330:\R+0.45) {$i+1$};}
+  \capa{4}{\node[indiferente] at (270-\xt:\R) {};}
+  \capa{4}{\node[indiferente] at (270+\xt:\R) {};}
+  \capa{4}{\draw[medida] (270:\R-0.3) arc[start angle=270,end angle=270-\xt,radius=\R-0.3];}
+  \capa{4}{\draw[medida] (270:\R-0.3) arc[start angle=270,end angle=270+\xt,radius=\R-0.3];}
+  \capa{4}{\node[nota] at (270-\xt/2:\R-0.6) {$\tilde{x}$};}
+  \capa{4}{\node[nota] at (270+\xt/2:\R-0.6) {$\tilde{x}$};}
+  % Clientes de la empresa i
+  \capa{5}{\draw[line width=3pt,tceedorado] (270-\xt:\R) arc[start angle=270-\xt,end angle=270+\xt,radius=\R];}
+  \capa{5}{\node[indiferente] at (270-\xt:\R) {};}
+  \capa{5}{\node[indiferente] at (270+\xt:\R) {};}
+  \capa{5}{\node[empresa,inner sep=2.8pt] at (270:\R) {};}
+  \capa{5}{\draw[medida,tceedorado] (270-\xt:\R+0.3) arc[start angle=270-\xt,end angle=270+\xt,radius=\R+0.3];}
+  \capa{5}{\node[etiqueta,text=tceedorado,below] at (270:\R+0.35) {$x_i=2\tilde{x}$};}
+\end{tikzpicture}
+\end{document}

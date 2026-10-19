@@ -105,7 +105,7 @@ const tercerEjercicioParteA = [
   { num: 15, titulo: 'La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables.', disponible: false },
   { num: 16, titulo: 'Análisis de mercados (I). El modelo de competencia perfecta. Análisis de equilibrio parcial: corto y largo plazo; dinámicas de ajuste y estabilidad del equilibrio. Análisis de eficiencia y bienestar.', disponible: true, file: '3A16.html' },
   { num: 17, titulo: 'Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral.', disponible: true, file: '3A17.html' },
-  { num: 18, titulo: 'Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos.', disponible: true, file: '3A18.pdf' },
+  { num: 18, titulo: 'Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos.', disponible: true, file: '3A18.html' },
   { num: 19, titulo: 'Análisis de mercados (IV). Teoría del oligopolio: soluciones no cooperativas y soluciones cooperativas.', disponible: true, file: '3A19.pdf' },
   { num: 20, titulo: 'Poder de mercado y regulación óptima. Definición del mercado relevante. Desarrollos en presencia de información asimétrica. Aplicaciones prácticas.', disponible: false },
   { num: 21, titulo: 'La teoría del equilibrio general.', disponible: true, file: '3A21.html' },

@@ -1,0 +1,60 @@
+% Ciudad lineal con localización elegida (3.A.18, II.3.3): costes de transporte
+% cuadráticos, juego en 2 etapas (localización y luego precios).
+% Arriba, el segmento de hotelling.tex (misma escala) con la empresa 1 en a = 0,25,
+% la 2 en b = 0,75 y el consumidor indiferente entre ellas: sobre cada empresa,
+% el efecto demanda (hacia el centro, verde) y el efecto estratégico (hacia el
+% extremo, rojo y más grueso porque domina: dB_1/da < 0).
+% Abajo, las localizaciones: equilibrio en 0 y 1 (diferenciación máxima), óptimo
+% social en 1/4 y 3/4 y, con precios fijos, las 2 en 1/2 (diferenciación mínima).
+% Elaboración propia a partir de d'Aspremont, Gabszewicz y Thisse (1979) y
+% Tirole (1988, cap. 7).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=1cm,
+    empresa/.style={circle,fill=tceemorado,inner sep=2pt},
+    demanda/.style={->,thick,tceeverde},
+    estrategico/.style={->,line width=2.4pt,tceerojo},
+    marca/.style={thick},
+    nota/.style={etiqueta,font=\footnotesize,align=center}]
+  \def\a{0.25}\def\b{0.75}\def\xt{0.5}\def\fila{-3}
+  \useasboundingbox (-0.06,-4.75) rectangle (1.06,2.2);
+  % ============ Segmento con las empresas en a y b ============
+  \capa{1}{\draw[line width=1.6pt] (0,0) -- (1,0);}
+  \capa{1}{\node[below] at (0,-0.08) {$0$};}
+  \capa{1}{\node[below] at (1,-0.08) {$1$};}
+  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]above:$1$}] at (\a,0) {};}
+  \capa{1}{\node[below] at (\a,-0.08) {$a$};}
+  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]above:$2$}] at (\b,0) {};}
+  \capa{1}{\node[below] at (\b,-0.08) {$b$};}
+  \capa{1}{\draw[thin] (\xt,-0.12) -- (\xt,0.12);}
+  \capa{1}{\node[below] at (\xt,-0.08) {$\tilde{x}$};}
+  % Efecto demanda: acercarse al centro da más clientes
+  \capa{2}{\draw[thin,tceegris] (\a,0.5) -- (\a,1.5);}
+  \capa{2}{\draw[thin,tceegris] (\b,0.5) -- (\b,1.5);}
+  \capa{2}{\draw[demanda] (\a,0.7) -- (\a+0.15,0.7) node[nota,midway,above,text=tceeverde] {efecto demanda $(+)$};}
+  \capa{2}{\draw[demanda] (\b,0.7) -- (\b-0.15,0.7) node[nota,midway,above,text=tceeverde] {$(+)$};}
+  % Efecto estratégico: alejarse suaviza la competencia en precios (domina)
+  \capa{3}{\draw[estrategico] (\a,1.4) -- (\a-0.17,1.4) node[nota,midway,above,text=tceerojo] {efecto estratégico $(-)$};}
+  \capa{3}{\draw[estrategico] (\b,1.4) -- (\b+0.17,1.4) node[nota,midway,above,text=tceerojo] {$(-)$};}
+  % ============ Localizaciones de equilibrio y óptimas ============
+  \capa{4}{\draw[line width=1.6pt] (0,\fila) -- (1,\fila);}
+  \capa{4}{\node[below] at (0,\fila-0.08) {$0$};}
+  \capa{4}{\node[below] at (1,\fila-0.08) {$1$};}
+  \capa{4}{\node[empresa] at (0,\fila) {};}
+  \capa{4}{\node[empresa] at (1,\fila) {};}
+  \capa{4}{\draw[decorate,decoration={brace,amplitude=6pt},tceemorado] (0,\fila+1) -- (1,\fila+1) node[nota,midway,above=6pt,text=tceemorado] {equilibrio: diferenciación máxima};}
+  % Óptimo social
+  \capa{5}{\draw[marca,dashed,tceeverde] (0.25,\fila-0.25) -- (0.25,\fila+0.25);}
+  \capa{5}{\draw[marca,dashed,tceeverde] (0.75,\fila-0.25) -- (0.75,\fila+0.25);}
+  \capa{5}{\node[below] at (0.25,\fila-0.25) {$\frac{1}{4}$};}
+  \capa{5}{\node[below] at (0.75,\fila-0.25) {$\frac{3}{4}$};}
+  \capa{5}{\node[nota,text=tceeverde] at (0.25,\fila+0.55) {óptimo social};}
+  \capa{5}{\node[nota,text=tceeverde] at (0.75,\fila+0.55) {óptimo social};}
+  % Precios fijos: solo actúa el efecto demanda
+  \capa{6}{\draw[marca,tceegris] (0.5,\fila-0.25) -- (0.5,\fila+0.25);}
+  \capa{6}{\node[below] (M) at (0.5,\fila-0.25) {$\frac{1}{2}$};}
+  \capa{6}{\node[nota,text=tceegris,below] at (M.south) {precios fijos: las 2 en el centro\\ (diferenciación mínima)};}
+\end{tikzpicture}
+\end{document}
