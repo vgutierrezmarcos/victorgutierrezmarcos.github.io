@@ -1,7 +1,7 @@
 # Modelo de competencia electoral de Downs-Hotelling
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 (democracia representativa) — único que lo desarrolla.
-- **Temas que lo usan:** 4.B.2 (desarrollo), 3.A.18 (mención: aplicación política de la ciudad lineal de Hotelling, ficha `hotelling`), 3.A.24 (mención), 4.B.5 (mención)
+- **Temas que lo usan:** 4.B.2 (desarrollo), 3.A.18 (mención; hecho, 19/10/2026: aplicación política de la ciudad lineal, ficha `hotelling`, en una nota de II.3.2 y en las extensiones de II.3.3, con Hotelling, 1929, y Downs, 1957), 3.A.24 (mención), 4.B.5 (mención)
 - **Manuales de referencia:** Hotelling (1929), «Stability in competition», *EJ*; Downs, *An Economic Theory of Democracy* (1957); Mueller, *Public Choice III*, cap. 11; Persson y Tabellini, cap. 3.
 
 ## Presentación de referencia
@@ -17,7 +17,7 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 4.B.2 | Democracia representativa | Desarrollo | Supuestos, resultado, extensiones | — |
-| 3.A.18 | Diferenciación de producto | Mención | Analogía con la ciudad lineal | — |
+| 3.A.18 | Diferenciación de producto | Mención (hecho, 19/10/2026) | Con precios fijos solo actúa el efecto demanda: los 2 partidos van al centro, al votante mediano (diferenciación mínima de Hotelling); crítica de la unidimensionalidad (varios ejes); remite a 3.A.24 y, para ampliar, 4.B.2 | La competencia en precios y la diferenciación máxima (ficha `hotelling`) |
 | 3.A.24 / 4.B.5 | Elección social / gasto | Mención | — | — |
 
 ## Divergencias encontradas en el temario actual

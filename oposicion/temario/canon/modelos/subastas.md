@@ -1,24 +1,48 @@
 # Subastas
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.14 (Teoría de juegos, con especial referencia a las subastas)
-- **Temas que lo usan:** 3.A.14 (desarrollo; aplicación central del diseño de mecanismos, ficha `diseno-mecanismos`, 19/10/2026; el 3.A.13 lo remite como extensión en su conclusión), 4.A.19 (resumen: subastas de deuda del Tesoro); 3.B.37 o 4.A.6 (subastas de derechos de emisión) y 4.A.12 (espectro) podrían citarlo.
-- **Manuales de referencia:** Vickrey (1961); Milgrom y Weber (1982); Krishna, *Auction Theory*; Klemperer (2004); Gibbons, cap. 3.
+- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.14 (Teoría de juegos. Aplicaciones, con especial referencia a las subastas; revisado el 19/10/2026, III.3, con el anexo `anexo:subastas`) — la «especial referencia» del título: un tercio del cante, como aplicación central del diseño de mecanismos (ficha `diseno-mecanismos`).
+- **Temas que lo usan:** 3.A.14 (desarrollo; hecho, 19/10/2026), 4.B.26 (resumen: política de financiación del Tesoro; subasta competitiva «convencional corregida», peticiones no competitivas; el Word que hoy la lleva está guardado como «Tema 4.A.19» con la numeración antigua, y el 4.A.19 actual son las entidades de crédito: D8 del 3.A.14), 4.A.20 (mención: mercado primario de deuda pública), 4.A.5 y 4.A.6 (mención: subastas del régimen económico de energías renovables, REER, pago según oferta con precio de reserva; derechos de emisión del RCDE UE, ronda única a sobre cerrado y precio uniforme), 4.A.12 (mención: espectro, SMRA; 3,6-3,8 GHz en 2018, 700 MHz en 2021), 4.A.15 (mención: colusión en licitaciones, *bid rigging*; sanción de la CNMC a las constructoras, 2022), 3.A.17 (mención; hecho, 17/10/2026: competencia por el mercado de Demsetz, l. 1075, y subasta del derecho a la subvención, l. 1180), 3.A.13 (mención; hecho, 19/10/2026: Nobel de 2020 y extensiones de la conclusión), 3.A.10 (mención; hecho, 19/10/2026: pujadores aversos al riesgo), 3.A.21 (mención opcional: la subasta de reloj como tanteo walrasiano hecho realidad).
+- **Manuales de referencia:** Vickrey (1961); Myerson (1981); Riley y Samuelson (1981); Milgrom y Weber (1982); Wilson (1969, 1977); Bulow y Klemperer (1996); Klemperer (2002, 2004); Krishna (2010), *Auction Theory*; Milgrom (2004); Ausubel *et al.* (2014); Nobel de 2020 (Milgrom y Wilson, «por sus mejoras de la teoría de las subastas y sus invenciones de nuevos formatos»).
 
-## Presentación de referencia
-Un objeto, $n$ pujadores neutrales al riesgo, valores privados independientes $v_i\sim U[0,1]$; pujas $b_i$.
-- Segundo precio (Vickrey) e inglesa: pujar $b_i=v_i$ es estrategia débilmente dominante; paga la segunda puja más alta.
-- Primer precio y holandesa (estratégicamente equivalentes): equilibrio bayesiano simétrico $b_i=\frac{n-1}{n}v_i$ (con dos pujadores, $v_i/2$): $\max_{b_i}(v_i-b_i)\Pr(b_j(v_j)<b_i)$.
-- **Equivalencia de ingresos** (Vickrey; Myerson, 1981): con valores privados independientes, neutralidad al riesgo y simetría, todos los formatos dan el mismo ingreso esperado.
-- Valores comunes: maldición del ganador.
-- Multiunidad: precio único (uniforme) frente a precio ofrecido (discriminatoria).
+## Presentación de referencia (3.A.14, III.3)
+
+Pregunta: ¿cómo pujan agentes racionales en cada formato y qué formato da más al vendedor? Conclusión: con valores privados independientes, todos los formatos estándar asignan bien y recaudan lo mismo; el precio de reserva sube el ingreso a costa de la eficiencia; con valores afiliados, revelar información ayuda; en la práctica, lo decisivo es atraer pujadores y evitar la colusión.
+
+- **Concepto y formatos** (un objeto): abiertos, **inglesa** (ascendente) y **holandesa** (descendente; flores de Aalsmeer, lonjas); a sobre cerrado, de **primer precio** y de **segundo precio** (Vickrey). No confundir abiertas con secuenciales. Valores **privados**, **común** e **interdependientes o afiliados** (Milgrom y Weber, 1982). Es un juego bayesiano: el tipo es la valoración, $t_i=v_i$; la estrategia, una función de puja $b(v_i)$; la solución, el EBN (ficha `equilibrio-nash`).
+- **Modelo de referencia: valores privados independientes (IPV).** Un objeto, $n$ pujadores neutrales al riesgo y simétricos, $v_i$ independientes de $F$ (densidad $f$), en los ejemplos $U[0,1]$; vendedor con $v_0=0$ y sin precio de reserva.
+  - **Segundo precio**: $b(v_i)=v_i$ débilmente dominante; si gana obtiene $v_i-\max_{j\neq i}b_j$; eficiente. **Inglesa**: equivalente con valores privados.
+  - **Primer precio**: hay que sombrear; con los rivales pujando con $b(\cdot)$ creciente y simétrica, $\max_{b_i}(v_i-b_i)\Pr(b(v_j)<b_i\ \forall j\neq i)$ y, con $U[0,1]$ (`\funcionclave` `eq:puja`):
+$$b(v_i)=\frac{n-1}{n}\,v_i$$
+    (cada uno puja lo que espera pagar en segundo precio si gana; con $F$ general, $b(v)=\mathbb E[Y_1\mid Y_1<v]$, anexo D). **Holandesa**: estratégicamente equivalente a la de primer precio con cualquier tipo de valores.
+  - **Teorema de equivalencia de ingresos** (Vickrey, 1961; Myerson, 1981; Riley y Samuelson, 1981): con pujadores neutrales y simétricos y valores privados independientes de una distribución continua común, todo formato en el que gana el de mayor valor y el tipo más bajo espera ganancia nula da el mismo ingreso esperado (`eq:equivalencia`):
+$$\mathbb{E}\big[I^{\mathrm{1P}}\big]=\frac{n-1}{n}\,\mathbb{E}\big[v_{(1)}\big]=\mathbb{E}\big[v_{(2)}\big]=\mathbb{E}\big[I^{\mathrm{2P}}\big]=\frac{n-1}{n+1}.$$
+    Intuición por la envolvente; también la subasta «todos pagan».
+- **Extensiones**: **subasta óptima** (Myerson, 1981; Riley y Samuelson, 1981): formato estándar con **precio de reserva** $p^R$ tal que $\psi(p^R)=v_0$, con el **valor virtual** $\psi(v)=v-[1-F(v)]/f(v)$ (el ingreso marginal del monopolista, 3.A.17); con $U[0,1]$, $\psi(v)=2v-1$ y $p^R=\frac12$ sea cual sea $n$ (con 2 pujadores, de 1/3 a 5/12); un pujador más vale más que el precio de reserva (Bulow y Klemperer, 1996). **Aversión al riesgo** (primer precio recauda más; Holt, 1980; Maskin y Riley, 1984; 3.A.10). **Asimetría** (Maskin y Riley, 2000). **Valor común y maldición del ganador** (Wilson, 1969, 1977). **Valores afiliados y principio de vinculación** (Milgrom y Weber, 1982): inglesa ≥ segundo precio ≥ primer precio (y holandesa) **en esperanza**, no «siempre»; al vendedor le conviene revelar su información.
+- **Evidencia**: maldición del ganador en el petróleo del golfo de México (Capen, Clapp y Campbell, 1971) y en el laboratorio (Kagel y Levin, 1986, 1993); el precio de reserva en la 4.ª subasta REER (45,5 de 3.300 MW, noviembre de 2022) y la de 26 GHz (diciembre de 2022).
+- **Valoración** (Klemperer, 2002, «What Really Matters»): atraer pujadores y evitar la colusión; 3G de 2000 (Reino Unido y Alemania, más de 600 €/habitante; Países Bajos 170, Austria 100, Italia 240, Suiza 20); ascendentes frente a sobre cerrado; anglo-holandesa; *bid rigging* (Asker, 2010; CNMC, 2022).
+- **Varias unidades y nuevos formatos**: **precio uniforme** (reducción de la demanda; Ausubel *et al.*, 2014) frente a **precio discriminatorio** («precio ofrecido»); SMRA (Milgrom, Wilson, McAfee; FCC, julio de 1994); combinatorias y de reloj (Ausubel, Cramton y Milgrom, 2006); subasta de incentivos de la FCC (2016-2017). España y la UE: Tesoro («convencional corregida», 46 subastas en 2025, 80 % de la financiación a medio y largo plazo; 4.B.26), espectro (4.A.12), REER (4.A.5, 4.A.6), derechos de emisión (4.A.6).
+- **Terminología** (nota del 3.A.14): en el mercado de deuda pública se llama «subasta **holandesa**» a la de precio único y «**americana**» a la de precio ofrecido; en la teoría, la holandesa es la **descendente**, que con varias unidades es discriminatoria. Los temas que la usen dicen «de precio único (uniforme)» y «de precio ofrecido (discriminatoria)», con esta nota.
+
+**Gráficos de referencia:** `oposicion/temario/fuentes/3A14/graficos/pujas.tex` ($v$ en abscisas, $b$ en ordenadas: diagonal $b=v$ del segundo precio y rectas $b=(n-1)v/n$ para n = 2, 3, 10, con el sombreado que se reduce al crecer $n$; imprescindible) y `multiunidad.tex` (demanda escalonada de pujas: precio uniforme frente a discriminatorio; apoyo).
+
+**Notación:** $v_i$ valoración (tipo, $t_i=v_i$), $b(v_i)$ función de puja **sin letra para la pendiente** (β es el factor de descuento, `notacion.md` § 1), $F$, $f$, $v_{(1)}$, $v_{(2)}$, $I$ ingreso del vendedor ($I^{\mathrm{1P}}$, $I^{\mathrm{2P}}$), $p^R$ precio de reserva (como $U^R$; nunca $R$, que es la reacción, ni $r$, el tipo de interés), $v_0$ valor del vendedor, ψ(v) valor virtual (local). Valor común: $v$ sin subíndice y señales $x_i=v+\varepsilon_i$ (solo en el anexo). $v(T)$ de los juegos cooperativos convive en el 3.A.14 en otro apartado (nota).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.14 | Aplicación de juegos bayesianos | desarrollo | Formatos, equilibrios, equivalencia, valores comunes, multiunidad | — |
-| 4.A.19 | Colocación de deuda pública | resumen | Subasta competitiva del Tesoro (precio medio ponderado, híbrida), peticiones no competitivas | Derivaciones (remitir a 3.A.14) |
+| 3.A.14 | Aplicación central de los juegos bayesianos | desarrollo (hecho, 19/10/2026; 6'30" en el cante) | Todo lo anterior | — |
+| 4.B.26 | Política de financiación del Tesoro | resumen | Subasta competitiva «convencional corregida» (híbrida: por encima del precio medio ponderado pagan el medio; entre él y el marginal, lo ofrecido), peticiones no competitivas; precio uniforme frente a discriminatorio con la nota de terminología; lo imprescindible para cantarse solo y `\vertema{3.A.14}` | Las derivaciones |
+| 4.A.20 | Mercado de deuda pública | mención | Mercado primario por subasta | La teoría |
+| 4.A.5, 4.A.6 | Energía y clima | mención | REER (pago según oferta, precio de reserva); derechos de emisión (precio uniforme) | La teoría |
+| 4.A.12 | Telecomunicaciones | mención | Espectro con SMRA (3,6-3,8 GHz en 2018; 700 MHz en 2021) | La teoría |
+| 4.A.15 | Defensa de la competencia | mención | *Bid rigging*; clemencia | — |
+| 3.A.17 | Monopolio natural | mención (hecho, 17/10/2026) | Competencia por el mercado de Demsetz (1968) y subasta del derecho a la subvención; `\vertema{3.A.14}` pendiente en l. 1075 (`pendientes-coherencia.md`) | La teoría |
+| 3.A.13, 3.A.10 | Información asimétrica; riesgo | mención (hecho, 19/10/2026) | Nobel de 2020; pujadores aversos | — |
+| 3.A.21 | Tanteo walrasiano | mención opcional | La subasta de reloj como el subastador de Walras hecho realidad | — |
 
 ## Divergencias encontradas en el temario actual
-- 3.A.14 usa $\theta_1$ y $v_1$ para la misma valoración, y $\alpha_2$ sin definir (pendiente de la puja lineal del rival) mientras $\alpha$ es también probabilidad de tipo: canon $v_i$ valoración, $b_i=\beta_i v_i$ puja lineal.
-- $v$ es a la vez función característica $v(S)$ y valoración: canon $v(T)$ en juegos cooperativos (o $\mathcal V$) solo si se mezclan en el mismo apartado; propuesta: función característica $v(T)$, valoración $v_i$ (los subíndices distinguen).
-- Pago en segundo precio $\pi=v_i-b_j$ sin definir $j$: escribir $v_i-\max_{j\neq i}b_j$.
+- 3.A.14 (Word de partida): subastas con información completa como modelo; θ_1 y v_1 para la misma valoración; α_2 sin definir; pago $\pi=v_i-b_j$ sin definir $j$; equivalencia de ingresos mal atribuida; abiertas llamadas «secuenciales»; Milgrom «siempre»; «subastas eléctricas» españolas con formatos de Milgrom y Wilson. **Resuelto** (19/10/2026). La puja lineal $b_i=\beta_iv_i$ que proponía esta ficha **se retira**: β es el factor de descuento, que el 3.A.14 usa en los juegos repetidos y en Rubinstein.
+- 4.A.19 (Word con la numeración antigua; contenido del 4.B.26): «Subasta holandesa: de precio único» y «americana: de precio múltiple» (jerga del Tesoro, opuesta a la teoría). Al revisar el 4.B.26: «de precio único (uniforme)» y «de precio ofrecido (discriminatoria)», con la nota de terminología y `\vertema{3.A.14}`.
+- $v$ es a la vez función característica $v(T)$ y valoración $v_i$: en el 3.A.14, en apartados distintos y con aviso (fichas `nucleo-shapley` y esta).
+
+Autor: Víctor Gutiérrez Marcos

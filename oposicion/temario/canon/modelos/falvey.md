@@ -1,7 +1,7 @@
 # Diferenciación vertical en el comercio (Falvey, 1981)
 
 - **Área:** comercio · **Tema de referencia:** **3.B.6** (Nueva teoría del comercio), el único que lo resume con ecuación y gráfico y donde responde a su pregunta (comercio intraindustrial vertical); 3.A.18 lo menciona.
-- **Temas que lo usan:** 3.B.6 (resumen), 3.A.18 (mención)
+- **Temas que lo usan:** 3.B.6 (resumen), 3.A.18 (mención; hecho, 19/10/2026)
 - **Manuales de referencia:** Falvey (1981), *JIE*; Falvey y Kierzkowski (1987); Feenstra, *Advanced International Trade*, cap. 5.
 - **Decisión D011 (13/10/2026):** ¿Cómo se escriben los precios de los factores? w_L, w_K en la teoría de la producción y el equilibrio general (3.A.11-3.A.12, 3.A.21-3.A.23); w y r (renta del capital) en los modelos 2×2 de comercio e incidencia (H-O-S, Stolper-Samuelson, Falvey, Harberger), diciendo que r no es el tipo de interés
 - **Decisión D113 (13/10/2026):** ¿Cuál es el tema de referencia de Falvey (comercio intraindustrial vertical)? 3.B.6 (el único que lo resume con ecuación y gráfico); pasa al área de comercio
@@ -16,7 +16,7 @@ Gráfico de referencia: coste unitario de cada calidad en A y B; la calidad fron
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.6 | Comercio intraindustrial | resumen | Supuestos, resultado, gráfico | — |
-| 3.A.18 | Diferenciación vertical | mención | Extensión de la diferenciación vertical al comercio; remitir a 3.B.6 | — |
+| 3.A.18 | Diferenciación vertical | mención (hecho, 19/10/2026) | En c) Extensiones de Shaked-Sutton (III.1): el país abundante en capital exporta las calidades altas; `\vertema{3.B.6}` (ficha `shaked-sutton`) | — |
 
 ## Divergencias encontradas en el temario actual
 - 3.B.6 escribe $r_A/w_A<r_B/w_B$: en los modelos 2×2 de comercio el canon es $w$ y $r$ (renta del capital, como Feenstra), diciendo que $r$ no es el tipo de interés; $w_L$, $w_K$ quedan para la teoría de la producción y el equilibrio general.

@@ -1,0 +1,39 @@
+% Imputaciones y núcleo del juego del vendedor (jugador 1, valora el objeto en 20)
+% y 2 compradores (jugadores 2 y 3, lo valoran en 60 y 100).
+% Plano (x_1, x_3) con x_2 = 100 - x_1 - x_3.
+%   Imputaciones: x_1 >= 20, x_2 >= 0, x_3 >= 0 -> triángulo (20,0), (100,0), (20,80).
+%   x_1 + x_3 >= 100 obliga a x_2 = 0 (lado x_1 + x_3 = 100); x_1 + x_2 = 100 - x_3 >= 60
+%   equivale a x_3 <= 40 (horizontal en el plano (x_1, x_3)).
+%   Núcleo: segmento de (60,40) a (100,0) sobre x_2 = 0.
+%   Valor de Shapley: (66 2/3; 6 2/3; 26 2/3), fuera del núcleo (x_2 > 0).
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.06cm,y=0.06cm]
+  \useasboundingbox (-14,-12) rectangle (126,104);
+  % 1: ejes x_1 y x_3, con sus marcas
+  \capa{1}{\ejes{$x_1$}{$x_3$}{120}{95}}
+  \capa{1}{\foreach \v in {20,60,100} \draw (\v,0) -- (\v,-1.8) node[below] {$\v$};}
+  \capa{1}{\foreach \v in {40,80} \draw (0,\v) -- (-1.8,\v) node[left] {$\v$};}
+  % 2: conjunto de imputaciones (x_1 >= 20, x_2 >= 0, x_3 >= 0)
+  \capa{2}{\fill[area] (20,0) -- (100,0) -- (20,80) -- cycle;}
+  \capa{2}{\draw[thin,tceemorado] (20,0) -- (20,80);}
+  \capa{2}{\node[etiqueta,font=\footnotesize,align=center,text=tceemorado] at (36,22) {conjunto de\\imputaciones};}
+  % 3: recta x_1 + x_3 = 100, en la que x_2 = 0
+  \capa{3}{\draw[curva1] (12,88) -- (100,0);}
+  \capa{3}{\node[etiqueta,anchor=west,text=tceemorado] at (14,88) {$x_2=0$};}
+  % 4: la coalición {1, 2} se garantiza 60: x_1 + x_2 = 100 - x_3 >= 60, es decir, x_3 <= 40
+  \capa{4}{\draw[guia] (0,40) -- (114,40);}
+  \capa{4}{\node[etiqueta,font=\footnotesize,anchor=south west] at (1,40.5) {$x_1+x_2\geq60\;\Leftrightarrow\;x_3\leq40$};}
+  % 5: núcleo: el comprador 3 compra a un precio entre 60 y 100
+  \capa{5}{\draw[line width=2.2pt,tceerojo] (60,40) -- (100,0);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,align=left,text=tceerojo,anchor=south west] at (65,47)
+    {núcleo: el comprador 3\\compra a un precio\\entre 60 y 100};}
+  % 6: valor de Shapley, fuera del núcleo (da 6,67 al comprador 2)
+  \capa{6}{\node[punto,fill=tceedorado] (S) at ({200/3},{80/3}) {};}
+  \capa{6}{\node[etiqueta,font=\footnotesize,align=center,text=tceedorado] (Se) at (64,9) {valor de\\\textsc{Shapley}};}
+  \capa{6}{\draw[thin,tceedorado] (Se.north) -- (S);}
+\end{tikzpicture}
+\end{document}

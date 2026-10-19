@@ -1,7 +1,7 @@
 # Modelo neokeynesiano canónico de tres ecuaciones (Clarida, Galí y Gertler, 1999)
 
 - **Área:** pensamiento (se usa sobre todo en macro cerrada) · **Tema de referencia:** 3.A.7 (La nueva economía keynesiana) — es el modelo que define la NEK de 2.ª generación y el título lo pide; los temas de política monetaria y fiscal y de ciclos lo **aplican**, no lo vuelven a derivar.
-- **Temas que lo usan:** 3.A.7 (desarrollo), 3.A.36 (resumen + desarrollo de la política óptima), 3.A.37 (resumen: transmisión), 3.A.38 (resumen: gasto público), 3.A.42 (resumen: ciclos nominales), 4.B.4 (resumen: multiplicador), 3.A.41 (mención: NKPC adelantada). Hoy lo **desarrollan** seis temas con notación casi idéntica (copia).
+- **Temas que lo usan:** 3.A.7 (desarrollo), 3.A.36 (resumen + desarrollo de la política óptima), 3.A.37 (resumen: transmisión), 3.A.38 (resumen: gasto público), 3.A.42 (resumen: ciclos nominales), 4.B.4 (resumen: multiplicador), 3.A.41 (mención: NKPC adelantada). Hoy lo **desarrollan** seis temas con notación casi idéntica (copia). 3.A.18 (mención; hecho, 19/10/2026: Dixit-Stiglitz con rigideces à la Calvo es el modelo canónico de la NEK, Galí, 2015; Blanchard y Kiyotaki, 1987; ficha `dixit-stiglitz`).
 - **Manuales de referencia:** Galí, *Monetary Policy, Inflation, and the Business Cycle* (2.ª ed., 2015), caps. 3-5; Clarida, Galí y Gertler (1999), *JEL* 37(4); Walsh, *Monetary Theory and Policy* (4.ª ed., 2017), cap. 8; Woodford, *Interest and Prices* (2003); Romer (2019), cap. 7; Carlin y Soskice (2015) para la versión gráfica IS-PC-MR; Cuerpo y Quesada (2016), ICEX-CECO.
 - **Decisión D001 (13/10/2026):** ¿Qué letra lleva el coeficiente de aversión relativa al riesgo (CRRA) de u(c)=c^{1−θ}/(1−θ), y cómo se escribe la elasticidad de sustitución intertemporal? θ para la CRRA en todo el temario y la ESI como 1/θ, sin símbolo propio; σ queda para la elasticidad de sustitución intratemporal (CES, Dixit-Stiglitz) y la desviación típica
 - **Decisión D008 (13/10/2026):** ¿Se reserva δ para la tasa de depreciación y se cambian sus otros usos? Sí: pendiente de la NKPC κ, tasa de separación s (DMP y Shapiro-Stiglitz) y tasa social de descuento r_s (4.B.6); δ solo depreciación (y el factor exponencial del modelo β-δ de Laibson)
@@ -38,6 +38,7 @@ con r^n_t = ρ + θ 𝔼_t[Δy^n_{t+1}] (tipo real natural), u_t shock de costes
 | 3.A.41 | Causas de la inflación | Mención | NKPC adelantada: la inflación como valor presente de brechas futuras; inflación por shocks de costes u_t | El modelo entero |
 | 3.A.42 | Ciclos nominales | Resumen | Respuestas a shocks de demanda, de costes y monetarios; comparación con el RBC | La derivación |
 | 4.B.4 | Política fiscal y multiplicadores | Resumen | Variante con g_t (Galí 2008, cap. 7 de la 1.ª ed.); multiplicador en el ELB (Christiano, Eichenbaum y Rebelo, 2011) | La derivación; la restricción del gobierno (ver `restriccion-gobierno`) |
+| 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Las empresas monopolísticamente competitivas fijan un precio con margen μ; con costes de cambiarlo, el dinero no es neutral (Blanchard y Kiyotaki, 1987); con Calvo, el modelo canónico (Galí, 2015); `\vertema{3.A.7}`, `\vertema{3.A.32}`, `\vertema{3.B.19}` | Las 3 ecuaciones |
 
 ## Divergencias encontradas en el temario actual
 

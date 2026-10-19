@@ -1,7 +1,7 @@
 # Inconsistencia temporal: Kydland y Prescott (1977), Barro y Gordon (1983)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.36 (Política monetaria I: diseño) — reglas frente a discrecionalidad, credibilidad e independencia del banco central son el núcleo del diseño.
-- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.6 (resumen: aportación de la NMC; hoy desarrollo), 3.A.41 (mención: sesgo inflacionista como causa de la inflación; hoy desarrollo), 3.B.17 (mención: crisis cambiarias de 2.ª generación).
+- **Temas que lo usan:** 3.A.36 (desarrollo), 3.A.6 (resumen: aportación de la NMC; hoy desarrollo), 3.A.41 (mención: sesgo inflacionista como causa de la inflación; hoy desarrollo), 3.B.17 (mención: crisis cambiarias de 2.ª generación). 3.A.14 (mención; hecho, 19/10/2026: la discreción como EN de un juego entre la autoridad y el público; la regla no es creíble, inconsistencia temporal; reputación en juegos repetidos; de palabra, sin la derivación, porque allí γ es el poder de negociación).
 - **Manuales de referencia:** Kydland y Prescott (1977), *JPE* 85(3); Barro y Gordon (1983a, *JPE*; 1983b, *JME*); Rogoff (1985); Walsh (1995); Romer (2019), cap. 12; Walsh (2017), cap. 7.
 
 ## Presentación de referencia
@@ -36,6 +36,7 @@ Con una regla creíble π = π*: mismo paro U^n y menor pérdida. El equilibrio 
 | 3.A.6 | Aportaciones de la NMC | Resumen | Kydland-Prescott como consecuencia de las expectativas racionales: reglas frente a discreción; resultado π^D > π* sin ganancia de paro | La derivación (remitir a 3.A.36) |
 | 3.A.41 | Causas de la inflación | Mención | El sesgo inflacionista como causa institucional de la inflación; independencia | La derivación |
 | 3.B.17 | Crisis cambiarias de 2.ª generación | Mención | Misma lógica de credibilidad aplicada a la paridad (Obstfeld 1994) | El modelo |
+| 3.A.14 | Teoría de juegos: compromiso y repetición | mención (hecho, 19/10/2026) | Kydland-Prescott (1977) y Barro-Gordon (1983): la discreción es el EN del juego entre la autoridad y el público; la promesa de inflación baja no es creíble (inconsistencia temporal); se resuelve con reglas, reputación (juegos repetidos) o independencia; `\vertema{3.A.36}` | La pérdida y la derivación |
 
 ## Divergencias encontradas en el temario actual
 

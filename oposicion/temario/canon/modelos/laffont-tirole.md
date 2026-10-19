@@ -1,7 +1,7 @@
 # Menú de contratos de Laffont y Tirole (1986)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (anexo A, «Regulación y control del monopolio»; revisado el 17/10/2026, A.3), reescrito desde Laffont y Tirole (1993). **[decidir]** Propuesta del 3.A.17 (D1, decisión provisional del orquestador pendiente de Víctor): cuando se redacte el 3.A.20 («desarrollos en presencia de información asimétrica» en el título), pasarle la referencia de este modelo, de Averch-Johnson, del *price cap* y del *yardstick*, y dejar el 3.A.17 en «mención» con remisión; Ramsey-Boiteux, la tarifa en dos partes y el monopolio natural se quedan en el 3.A.17.
-- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 3.A.13 (mención; hecho, 19/10/2026: aplicación de la teoría de la regulación en I.1 y en la definición del riesgo moral, remitiendo al 3.A.17), 3.A.20 (previsto, sin fuente; posible referencia, D1).
+- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 3.A.13 (mención; hecho, 19/10/2026: aplicación de la teoría de la regulación en I.1 y en la definición del riesgo moral, remitiendo al 3.A.17), 3.A.20 (previsto, sin fuente; posible referencia, D1). 3.A.14 (mención; hecho, 19/10/2026: la regulación con información asimétrica como problema de diseño de mecanismos, con `\vertema{3.A.17}`).
 - **Manuales de referencia:** Laffont y Tirole (1986), *JPE*; Laffont y Tirole (1993), *A Theory of Incentives in Procurement and Regulation*, cap. 1 y 3; Laffont y Tirole (1991), *QJE* (captura).
 
 ## Presentación de referencia (3.A.17, anexo A)
@@ -23,6 +23,7 @@ Gráfico: no tiene; se cuenta con las ecuaciones.
 | 3.A.17 | Regulación con información asimétrica | desarrollo en el anexo A (hecho, 17/10/2026; no se canta) | Supuestos, óptimo con renta informativa, menú, dilema; enlace con el 2.º grado y con 3.A.13 | — |
 | 3.A.20 | Regulación óptima con información asimétrica | previsto (sin fuente); referencia si se aprueba D1 | La presentación de arriba, con la misma notación | — |
 | 3.A.13 | Selección adversa y agencia | mención (hecho, 19/10/2026) | Una viñeta en las aplicaciones de la selección adversa (el regulador no conoce los costes; menú que equilibra eficiencia y renta informativa; Laffont y Tirole, 1993) y una en las del riesgo moral (esfuerzo en reducir costes), con `\vertema{3.A.17}` (a 3.A.20 si se aprueba D1); la relación de agencia con selección adversa, en nota. Ficha `principal-agente` | El modelo |
+| 3.A.14 | Diseño de mecanismos | mención (hecho, 19/10/2026) | La regulación con información asimétrica como aplicación del principio de revelación (renta informativa); remite a 3.A.17 (3.A.20 si se aprueba la D1 del 3.A.17) | El modelo |
 | 4.B.15 | Empresa pública y regulación | resumen (hoy mención; D139 (13/10/2026)) | Precio fijo frente a coste incrementado; p = bF + (1 − b)C | La formalización |
 
 ## Divergencias encontradas en el temario actual

@@ -1,7 +1,7 @@
 # Intercambio de Edgeworth y núcleo de una economía (Debreu y Scarf, 1963)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** **3.A.21** (La teoría del equilibrio general; revisado el 14/10/2026, III.1 y III.2) — lo desarrolla con estructura a)-e) como fundamento del equilibrio walrasiano sin subastador. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.21 (desarrollo; hecho), 3.A.17 (mención: el monopolio bilateral como el problema de Edgeworth con 2 agentes, III.2, remitiendo a 3.A.21; hecho, 17/10/2026), 3.A.14 (mención: desarrolla el núcleo como concepto de solución de un juego cooperativo con utilidad transferible, «vectores de pagos», id `nucleo-shapley`; el núcleo de una economía, con remisión a 3.A.21 — ya en sus `faltan` de `mapa.yaml`).
+- **Temas que lo usan:** 3.A.21 (desarrollo; hecho), 3.A.17 (mención: el monopolio bilateral como el problema de Edgeworth con 2 agentes, III.2, remitiendo a 3.A.21; hecho, 17/10/2026), 3.A.14 (mención; hecho, 19/10/2026: desarrolla el núcleo de un juego cooperativo con utilidad transferible, ficha `nucleo-shapley`, y menciona en una viñeta el núcleo de una economía y Debreu y Scarf con `\vertema{3.A.21}`).
 - **Manuales de referencia:** Edgeworth (1881); Gillies (1959); Shubik (1959); Debreu y Scarf (1963); Aumann (1964, 1975); Hildenbrand y Kirman (1988); Mas-Colell, Whinston y Green (1995), cap. 18; Gravelle y Rees (2004), cap. 12; Varian (1992), cap. 21.
 
 ## Presentación de referencia (3.A.21)
@@ -20,10 +20,10 @@ Gráficos de referencia: `oposicion/temario/fuentes/3A21/graficos/caja-intercamb
 |---|---|---|---|---|
 | 3.A.21 | Fundamentos del equilibrio walrasiano sin subastador | desarrollo (hecho, 14/10/2026) | Todo lo anterior, sobre la caja de intercambio que sigue en la pizarra | El concepto de juego cooperativo con utilidad transferible y el valor de Shapley en detalle (3.A.14) |
 | 3.A.17 | Monopolio bilateral | mención (hecho, 17/10/2026) | Un abanico de acuerdos y ningún precio de mercado que elija uno: la indeterminación de Bowley (1928) es la de Edgeworth con 2 agentes; la elige la negociación (ficha `monopolio-bilateral`) | El núcleo y Debreu-Scarf |
-| 3.A.14 | Juegos cooperativos | mención | Núcleo de un juego (función característica v(T), imputaciones x_i, utilidad transferible); una línea: en una economía de intercambio sin utilidad transferible, el núcleo converge al equilibrio competitivo (Debreu y Scarf, 1963), con remisión a 3.A.21 | La caja y el teorema del límite |
+| 3.A.14 | Juegos cooperativos | mención (hecho, 19/10/2026) | Núcleo de un juego con utilidad transferible (desarrollo en la ficha `nucleo-shapley`); una viñeta: en una economía de intercambio sin utilidad transferible, el núcleo se encoge hasta el equilibrio walrasiano (Debreu y Scarf, 1963), con `\vertema{3.A.21}`; el valor de Shapley con un continuo de agentes (Aumann, 1975) | La caja y el teorema del límite |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.21 original definía el núcleo en la caja de la **producción** («que las empresas actúen de forma racional») y en III.2 sobre coaliciones de consumidores: contradicción interna y error de concepto. Resuelto (14/10/2026): una sola definición, en la caja de intercambio.
-- 3.A.14 (Word ajeno, sin revisar) define el núcleo como «vector de pagos» con utilidad transferible y 3.A.21 original lo mezclaba con el valor de Shapley: en 3.A.21, «asignaciones» sin utilidad transferible; en 3.A.14, pagos con utilidad transferible. Notación de coalición: T ⊆ N en juegos (`notacion.md` § 4) y 𝒮 en la economía (§ 5), porque S es el número de estados.
+- 3.A.14 (Word ajeno) definía el núcleo como «vector de pagos» con el signo cambiado y 3.A.21 original lo mezclaba con el valor de Shapley: en 3.A.21, «asignaciones» sin utilidad transferible; en 3.A.14, pagos con utilidad transferible. **Resuelto** en el 3.A.14 (19/10/2026; ficha `nucleo-shapley`). Notación de coalición: T ⊆ N en juegos (`notacion.md` § 4) y 𝒮 en la economía (§ 5), porque S es el número de estados.
 
 Autor: Víctor Gutiérrez Marcos

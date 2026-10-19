@@ -1,0 +1,31 @@
+% Pujas de equilibrio con valores privados independientes U[0,1].
+% Segundo precio e inglesa: b_i = v_i (estrategia dominante).
+% Primer precio (y holandesa): b(v_i) = (n - 1) v_i / n, para n = 2, 3 y 10.
+% El sombreado (v_i - b) se reduce al crecer n.
+% Elaboración propia a partir de Krishna (2010, cap. 2).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5.5cm,y=5.5cm]
+  \useasboundingbox (-0.14,-0.12) rectangle (1.36,1.14);
+  % 1: ejes v_i y b_i, con el 1 en ambos
+  \capa{1}{\draw[eje] (0,0) -- (1.18,0) node[below left=2pt and 0pt] {$v_i$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.12) node[left] {$b_i$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,1) -- (0,1) node[left,text=black] {$1$};}
+  % 2: segundo precio e inglesa, pujar la valoración
+  \capa{2}{\draw[curva1] (0,0) -- (1,1) node[pos=0.5,etiqueta,sloped,above,text=tceemorado] {segundo precio e inglesa: $b_i=v_i$};}
+  % 3: primer precio con n = 2: la mitad de la valoración
+  \capa{3}{\draw[curva2] (0,0) -- (1,0.5) node[etiqueta,right,text=tceeazul] {$n=2$};}
+  % 4: sombreado en v_i = 1, entre la diagonal y b = v_i/2
+  \capa{4}{\draw[flecha] (1,0.985) -- (1,0.515);}
+  \capa{4}{\node[etiqueta,right,text=tceerojo] at (1,0.785) {sombreado};}
+  % 5: primer precio con n = 3
+  \capa{5}{\draw[curva3] (0,0) -- (1,2/3) node[etiqueta,right,text=tceeverde] {$n=3$};}
+  % 6: primer precio con n = 10 y efecto de la competencia
+  \capa{6}{\draw[curva4] (0,0) -- (1,0.9) node[etiqueta,right,text=tceedorado] {$n=10$};}
+  \capa{6}{\draw[flecha] (0.62,0.31) to[bend right=40] (0.5,0.45);}
+  \capa{6}{\node[etiqueta,text=tceerojo,align=left,anchor=north west] at (0.44,0.2) {más competencia,\\ menos sombreado};}
+\end{tikzpicture}
+\end{document}

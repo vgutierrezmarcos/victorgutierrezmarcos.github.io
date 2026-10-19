@@ -1,0 +1,65 @@
+% Juego de entrada con capacidad desconocida como juego de información imperfecta
+% (transformación de Harsanyi). La Naturaleza elige el tipo de la instalada: A (coste
+% alto de ampliar) con probabilidad pi y B (coste bajo) con 1 - pi. La instalada conoce
+% su tipo y elige Ampliar o No ampliar; la entrante elige Entrar o No entrar a la vez,
+% sin saber ni el tipo ni la decisión: sus 4 nodos forman un único conjunto de
+% información (línea discontinua). Pagos (entrante, instalada):
+%   tipo A: Ampliar-Entrar (-1,-1); Ampliar-No entrar (0,2); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
+%   tipo B: Ampliar-Entrar (-1,2);  Ampliar-No entrar (0,4); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
+% Elaboración propia a partir de Harsanyi (1967) y Gibbons (1992), cap. 3.
+% Estilo de árbol de 3A10/graficos/allais-a1.tex.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    azar/.style={circle,draw=tceemorado,thick,fill=white,inner sep=2.6pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.1pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    tipo/.style={etiqueta,font=\footnotesize,align=center},
+    pago/.style={etiqueta,below=2pt,font=\footnotesize}]
+  \useasboundingbox (-7.75,-5.6) rectangle (8.1,0.45);
+  % 1: la Naturaleza
+  \capa{1}{\node[azar,label={[jugador]above:Naturaleza}] (Nat) at (0,0) {};}
+  % 2: los 2 tipos de la instalada, con sus probabilidades
+  \capa{2}{\draw[rama] (Nat) -- node[tipo,above left] {tipo A, $\pi$\\(coste alto de ampliar)} (-4,-1.6) coordinate (pA);}
+  \capa{2}{\draw[rama] (Nat) -- node[tipo,above right] {tipo B, $1-\pi$\\(coste bajo)} (4,-1.6) coordinate (pB);}
+  % 3: la instalada conoce su tipo y elige Ampliar o No ampliar
+  \capa{3}{
+    \node[nodo,label={[jugador]left:Instalada}] (IA) at (pA) {};
+    \node[nodo,label={[jugador]right:Instalada}] (IB) at (pB) {};
+    \draw[rama] (IA) -- node[accion,above left] {Ampliar} (-6,-3.2) coordinate (pA1);
+    \draw[rama] (IA) -- node[accion,above right] {No ampliar} (-2,-3.2) coordinate (pA2);
+    \draw[rama] (IB) -- node[accion,above left] {Ampliar} (2,-3.2) coordinate (pB1);
+    \draw[rama] (IB) -- node[accion,above right] {No ampliar} (6,-3.2) coordinate (pB2);
+  }
+  % 4: la entrante elige Entrar o No entrar en cada uno de sus 4 nodos
+  \capa{4}{
+    \foreach \n in {A1,A2,B1,B2} {
+      \node[nodo] (E\n) at (p\n) {};
+      \draw[rama] (E\n) -- node[accion,left=5pt,pos=0.45] {Entrar} ++(-1,-1.6) node[terminal] (T\n e) {};
+      \draw[rama] (E\n) -- node[accion,right=5pt,pos=0.45] {No entrar} ++(1,-1.6) node[terminal] (T\n n) {};
+    }
+  }
+  % 5: la entrante no distingue entre sus 4 nodos: un único conjunto de información
+  \capa{5}{\draw[thick,dashed,tceegris] (EA1) -- (EA2) -- (EB1) -- (EB2);}
+  \capa{5}{\node[jugador,above=1pt] at (0,-3.2) {Entrante};}
+  % 6: pagos (entrante, instalada) del tipo A
+  \capa{6}{
+    \node[pago] at (TA1e) {$(-1,\,-1)$};
+    \node[pago] at (TA1n) {$(0,\,2)$};
+    \node[pago] at (TA2e) {$(1,\,1)$};
+    \node[pago] at (TA2n) {$(0,\,3)$};
+  }
+  % 7: pagos del tipo B
+  \capa{7}{
+    \node[pago] at (TB1e) {$(-1,\,2)$};
+    \node[pago] at (TB1n) {$(0,\,4)$};
+    \node[pago] at (TB2e) {$(1,\,1)$};
+    \node[pago] at (TB2n) {$(0,\,3)$};
+  }
+\end{tikzpicture}
+\end{document}

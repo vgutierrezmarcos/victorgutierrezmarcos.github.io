@@ -1,7 +1,7 @@
 # Competencia monopolística y comercio (Krugman 1979, 1980)
 
 - **Área:** comercio · **Tema de referencia:** 3.B.6 (Nueva teoría del comercio internacional) — lo tiene en el título (competencia imperfecta, rendimientos crecientes).
-- **Temas que lo usan:** 3.B.6 (desarrollo), 3.A.18 (mención), 3.B.34 (mención), 3.B.39 (mención), 3.B.41 (mención)
+- **Temas que lo usan:** 3.B.6 (desarrollo), 3.A.18 (mención; hecho, 19/10/2026), 3.B.34 (mención), 3.B.39 (mención), 3.B.41 (mención)
 - **Manuales de referencia:** Krugman (1979, *JIE*; 1980, *AER*); Dixit y Stiglitz (1977); Helpman y Krugman, *Market Structure and Foreign Trade* (1985); Feenstra, *Advanced International Trade*, cap. 5; Krugman, Obstfeld y Melitz, cap. 8.
 
 ## Presentación de referencia
@@ -19,7 +19,7 @@ $$U = \Big[\sum_{i=1}^{n} x_i^{\rho}\Big]^{1/\rho},\quad \rho = \frac{\sigma-1}{
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.6 | Nueva teoría del comercio | desarrollo | Modelo y efecto mercado doméstico | — |
-| 3.A.18 | Competencia monopolística | mención | Aplicación al comercio [ver tema 3.B.6] | Dixit-Stiglitz se desarrolla en 3.A.18 (`dixit-stiglitz`) y 3.B.6 debe remitir allí para la demanda |
+| 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | En c) Extensiones de Dixit-Stiglitz: Krugman (1979) comercio intraindustrial entre países iguales, Krugman (1980) costes de transporte y efecto del mercado doméstico, con `\vertema{3.B.6}`; ejemplo de los turismos con Alemania (Grubel-Lloyd 0,97); en la valoración, la elasticidad creciente de 1979 para que la competencia reduzca el margen | Dixit-Stiglitz se desarrolla en 3.A.18 (`dixit-stiglitz`) y 3.B.6 debe remitir allí para la demanda |
 | 3.B.34, 3.B.39, 3.B.41 | OMC, política comercial UE | mención | Ganancias por variedad y escala | — |
 
 ## Divergencias encontradas en el temario actual

@@ -1,0 +1,32 @@
+% Subasta de varias unidades iguales: precio uniforme frente a discriminatorio.
+% Pujas ordenadas de mayor a menor (demanda agregada escalonada) frente a la
+% oferta vertical Q̄ = 4,5. El precio marginal p_m = 2,8 es el de la última
+% puja aceptada. Con precio uniforme se paga p_m × Q̄; con precio discriminatorio,
+% el área bajo los escalones hasta Q̄ (cada uno paga su puja).
+% Elaboración propia a partir de Krishna (2010, cap. 13).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm]
+  \useasboundingbox (-0.8,-0.75) rectangle (11.2,6.9);
+  % 1: ejes Q y p
+  \capa{1}{\draw[eje] (0,0) -- (8,0) node[below left=2pt and 0pt] {$Q$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,6.6) node[left] {$p$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  % 2: oferta vertical en Q̄
+  \capa{2}{\draw[curva2] (4.5,0) node[below,text=black] {$\bar Q$} -- (4.5,6) node[etiqueta,above,text=tceeazul] {oferta $\bar Q$};}
+  % 3: escalera de pujas ordenadas de mayor a menor
+  \capa{3}{\draw[curva1] (0,5.2) -- (1,5.2) -- (1,4.6) -- (2,4.6) -- (2,4.0) -- (3,4.0) -- (3,3.4) -- (4,3.4) -- (4,2.8) -- (5,2.8) -- (5,2.2) -- (6,2.2) -- (6,1.6) -- (7,1.6) node[etiqueta,right,text=tceemorado,align=left] {pujas\\ ordenadas};}
+  % 4: precio marginal, donde la escalera corta a la oferta
+  \capa{4}{\draw[guia] (4.5,2.8) -- (0,2.8) node[left,text=black] {$p_m$};}
+  \capa{4}{\node[punto] at (4.5,2.8) {};}
+  % 5: pago con precio uniforme: p_m por Q̄
+  \capa{5}{\fill[area] (0,0) rectangle (4.5,2.8);}
+  \capa{5}{\node[etiqueta,align=center] at (2.25,1.4) {pago con\\ precio uniforme};}
+  % 6: pago adicional con precio discriminatorio: lo que queda bajo los escalones
+  \capa{6}{\fill[pattern=north east lines,pattern color=tceedorado] (0,2.8) -- (0,5.2) -- (1,5.2) -- (1,4.6) -- (2,4.6) -- (2,4.0) -- (3,4.0) -- (3,3.4) -- (4,3.4) -- (4,2.8) -- cycle;}
+  \capa{6}{\node[etiqueta,align=left,anchor=west] (disc) at (6.9,4.6) {pago adicional con\\ precio discriminatorio\\ (cada uno paga su puja)};}
+  \capa{6}{\draw[thin,tceegris,->] (disc.west) to[bend right=15] (2.6,3.75);}
+\end{tikzpicture}
+\end{document}

@@ -1,7 +1,7 @@
 # Estabilidad del equilibrio: ajuste walrasiano (precios) y marshalliano (cantidades)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.16 (Mercados I: dinámicas de ajuste y estabilidad; revisado el 17/10/2026, II.1.3)
-- **Temas que lo usan:** 3.A.16 (desarrollo, equilibrio parcial; hecho, 17/10/2026), 3.A.21 (resumen del ajuste en un mercado en el anexo D; **desarrollo del tanteo multimercado**, II.1.3; hecho, 14/10/2026); la telaraña (3.A.16) es otra dinámica, con ficha propia (`telarana`, creada el 17/10/2026).
+- **Temas que lo usan:** 3.A.16 (desarrollo, equilibrio parcial; hecho, 17/10/2026), 3.A.21 (resumen del ajuste en un mercado en el anexo D; **desarrollo del tanteo multimercado**, II.1.3; hecho, 14/10/2026); la telaraña (3.A.16) es otra dinámica, con ficha propia (`telarana`, creada el 17/10/2026). 3.A.14 (mención; hecho, 19/10/2026: la subasta de reloj como versión práctica del tanteo walrasiano, con el subastador de Walras hecho realidad, en III.3, con `\vertema{3.A.21}`).
 - **Manuales de referencia:** Walras (1874); Marshall (1890); Samuelson (1941); Arrow, Block y Hurwicz (1959); Mas-Colell, Whinston y Green, cap. 17.H; Gandolfo, *Economic Dynamics*.
 
 ## Presentación de referencia

@@ -1,7 +1,7 @@
 # Modelo centro-periferia (Krugman, 1991) y nueva geografía económica
 
 - **Área:** comercio · **Tema de referencia:** 3.B.6 (Nueva teoría del comercio: competencia imperfecta, rendimientos crecientes) — el modelo es la extensión de Krugman (1980) con movilidad de factores y comparte con él Dixit-Stiglitz y los costes iceberg, que 3.B.6 ya desarrolla.
-- **Temas que lo usan:** 3.B.6 (desarrollo), 3.B.9 (desarrollo → resumen), 3.B.10 (resumen → mención), 3.B.16 (desarrollo → resumen del resultado), 3.B.35 (resumen), 3.B.40 (desarrollo → resumen aplicado), 4.A.12 (mención), 4.A.17 (resumen)
+- **Temas que lo usan:** 3.B.6 (desarrollo), 3.A.18 (mención; hecho, 19/10/2026), 3.B.9 (desarrollo → resumen), 3.B.10 (resumen → mención), 3.B.16 (desarrollo → resumen del resultado), 3.B.35 (resumen), 3.B.40 (desarrollo → resumen aplicado), 4.A.12 (mención), 4.A.17 (resumen)
 - **Manuales de referencia:** Krugman (1991), «Increasing Returns and Economic Geography», *JPE*; Fujita, Krugman y Venables, *The Spatial Economy* (1999), caps. 4-5; Baldwin, Forslid, Martin, Ottaviano y Robert-Nicoud, *Economic Geography and Public Policy* (2003); Combes, Mayer y Thisse, *Economic Geography* (2008); Feenstra, *Advanced International Trade*, cap. 5.
 - **Decisión D019 (13/10/2026):** ¿Cómo se escriben en la NEG el peso del gasto en manufacturas y el margen? μ para el peso de las manufacturas (Krugman 1991, FKV) y el margen como σ/(σ−1) sin símbolo; utilidad U = X^{1−μ}V^{μ}
 - **Decisión D041 (13/10/2026):** ¿Se mantiene un solo id para la familia de la nueva geografía económica? Sí: `centro-periferia` con un apartado «familia NEG»; la hipótesis de especialización de Krugman (1993) va en `areas-monetarias-optimas`
@@ -29,6 +29,7 @@ $$\omega_i = \frac{w_i}{P_X^{1-\gamma}P_i^{\gamma}}, \qquad \dot\lambda_A = \ome
 | 3.B.35 | Regionalismo / integración regional | resumen | Efectos de la integración en la localización | — |
 | 3.B.40 | Política regional de la UE | resumen aplicado | Justificación de la política regional: fuerzas centrípetas y centrífugas, Venables (1996) | Derivación |
 | 4.A.12, 4.A.17 | Industria y regiones de España | mención / resumen | Fuerzas de aglomeración frente a dispersión; 4.A.12 trata **primera naturaleza** (orografía, recursos), que no es este modelo | — |
+| 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Dixit-Stiglitz es la base del modelo centro-periferia de la nueva geografía económica (Krugman, 1991), con `\vertema{3.B.6}` | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Copia literal** del bloque completo (siete ecuaciones y el tomahawk) en 3.B.6, 3.B.9 y 3.B.10, y versión reducida pero propia en 3.B.16 y 3.B.40.

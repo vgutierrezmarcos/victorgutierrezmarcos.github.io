@@ -1,7 +1,7 @@
 # Señalización en el mercado de trabajo (Spence, 1973)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.13** («selección adversa» en el título; revisado el 19/10/2026, I.3.1) — la señalización como solución de la parte informada, con a)-d), la doble desigualdad, separadores y agrupadores y el criterio intuitivo. El 3.A.14 tendrá que desarrollar el **juego de señalización** como aplicación del equilibrio bayesiano perfecto (creencias μ, criterio intuitivo de Cho y Kreps) con este mismo modelo y esta notación. Ficha creada a raíz de la revisión del 3.A.13.
-- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.14 (resumen previsto: juego de señalización, equilibrio bayesiano perfecto y criterio intuitivo; hoy solo un esbozo de trabajadores «buenos y malos»), 3.A.25 (mención: alternativa a la teoría del capital humano; hoy con la misma nota que el 3.A.13), 3.B.3 (mención: dividendos y deuda como señal, Bhattacharya, 1979; Ross, 1977; orden jerárquico de Myers y Majluf, 1984), 3.A.15 (mención: precio límite como señal, Milgrom y Roberts, 1982).
+- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.14 (resumen; hecho, 19/10/2026: el juego de señalización en II.2, con el EBP y el criterio intuitivo), 3.A.25 (mención: alternativa a la teoría del capital humano; hoy con la misma nota que el 3.A.13), 3.B.3 (mención: dividendos y deuda como señal, Bhattacharya, 1979; Ross, 1977; orden jerárquico de Myers y Majluf, 1984), 3.A.15 (mención: precio límite como señal, Milgrom y Roberts, 1982).
 - **Manuales de referencia:** Spence (1973), *QJE*; Mas-Colell, Whinston y Green (1995), cap. 13.C; Cho y Kreps (1987), *QJE*; Macho-Stadler y Pérez-Castrillo (2001), cap. 6; Hungerford y Solon (1987); Tyler, Murnane y Willett (2000), *QJE*.
 
 ## Presentación de referencia (3.A.13, I.3.1)
@@ -25,7 +25,7 @@ Lo que **no** se dice: que Spence «muestra empíricamente» la sobreeducación 
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.13 | Soluciones de la selección adversa: la parte informada | desarrollo (hecho, 19/10/2026) | Todo lo anterior | — |
-| 3.A.14 | Juegos dinámicos con información incompleta | resumen (previsto) | El modelo como juego de señalización: tipos, creencias μ, equilibrio bayesiano perfecto, separadores y agrupadores, criterio intuitivo (Cho y Kreps); con la notación de arriba y remisión a 3.A.13 para la doble desigualdad y las implicaciones | La evidencia y Bolonia |
+| 3.A.14 | Juegos dinámicos con información incompleta | resumen (hecho, 19/10/2026) | Versión discreta, $y\in\{0,\hat y\}$, tipos A (con probabilidad ν) y B, $c_{\mathrm A}(y)<c_{\mathrm B}(y)$ con cruce único, creencias $\mu(y)=\Pr(\mathrm A\mid y)$ con prior ν, $w(y)=\mu w_{\mathrm A}+(1-\mu)w_{\mathrm B}$; EBP con sus 3 condiciones (el juego no tiene subjuegos propios: el concepto es el EBP); separadores con la doble desigualdad $c_{\mathrm A}(\hat y)\le w_{\mathrm A}-w_{\mathrm B}\le c_{\mathrm B}(\hat y)$, agrupadores con creencias pesimistas, criterio intuitivo (Cho y Kreps, 1987) → separador más barato $c_{\mathrm B}(\hat y^*)=w_{\mathrm A}-w_{\mathrm B}$; remite a 3.A.13 | La evidencia y Bolonia |
 | 3.A.25 | Capital humano | mención | La educación como señal, alternativa a Becker; mismo dato de correlación salario-educación y misma nota (supuesto para aislar la señal), con y para la educación | El modelo |
 | 3.B.3 | Política de dividendos y estructura de capital | mención | Dividendos y deuda como señal (Bhattacharya, 1979; Ross, 1977); emisión de acciones como mala señal (Myers y Majluf, 1984) | El modelo de trabajo |
 | 3.A.15 | Barreras de entrada | mención | Precio límite como señal de costes bajos (Milgrom y Roberts, 1982) | El modelo |
@@ -33,6 +33,6 @@ Lo que **no** se dice: que Spence «muestra empíricamente» la sobreeducación 
 ## Divergencias encontradas en el temario actual
 - 3.A.13 original: E y Ê para la educación, w^R en la participación, restricciones estrictas sin la del tipo B, equilibrio sin creencias, «Spence muestra empíricamente…», «arrepentimiento» de Spence. **Resuelto** (19/10/2026).
 - 3.A.25 (sin revisar): presenta Spence como alternativa al capital humano con remisión a 3.A.13 y la misma nota (32) que el 3.A.13 original (nota 18): coherente; al revisarlo, y para la educación (D129) y quitar el «arrepentimiento».
-- 3.A.14 (sin fuente completa): solo un esbozo de «buenos y malos» trabajadores; debe desarrollar el juego de señalización (`mapa.yaml`, contradicciones del 3.A.13).
+- 3.A.14 (Word de partida): «SOL: ∃ EBPS (L, L)» (errata), «EBPS», A/B como niveles de educación y p, q como creencias. **Resuelto** (19/10/2026): juego de señalización con la notación de esta ficha.
 
 Autor: Víctor Gutiérrez Marcos

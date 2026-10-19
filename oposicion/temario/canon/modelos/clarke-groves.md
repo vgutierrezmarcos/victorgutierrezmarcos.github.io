@@ -1,7 +1,7 @@
 # Mecanismo de Clarke-Groves
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.23 (Fallos de mercado: bienes públicos)
-- **Temas que lo usan:** 3.A.23 (desarrollo), 3.A.24 (mención), 4.B.7 (mención: principio del beneficio). Es una aplicación del diseño de mecanismos (ficha `diseno-mecanismos`, 19/10/2026).
+- **Temas que lo usan:** 3.A.23 (desarrollo), 3.A.24 (mención), 4.B.7 (mención: principio del beneficio). Es una aplicación del diseño de mecanismos (ficha `diseno-mecanismos`, 19/10/2026). 3.A.14 (mención; hecho, 19/10/2026: los mecanismos VCG en el diseño de mecanismos, III.2; la subasta de segundo precio como su caso más sencillo; remite a 3.A.23).
 - **Manuales de referencia:** Clarke (1971); Groves (1973); Groves y Ledyard (1977); Mas-Colell, Whinston y Green, cap. 23.
 
 ## Presentación de referencia
@@ -16,6 +16,7 @@ Resultado: decir la verdad es estrategia (débilmente) dominante. Problemas: el 
 | 3.A.23 | Revelación de preferencias | desarrollo | Regla, ejemplo numérico, propiedades y problemas | — |
 | 3.A.24 | Elección colectiva | mención | Mecanismo no manipulable frente a Gibbard-Satterthwaite (dominio restringido a cuasilineales) | — |
 | 4.B.7 | Principio del beneficio | mención | Dificultad de revelar la disposición a pagar | — |
+| 3.A.14 | Diseño de mecanismos | mención (hecho, 19/10/2026) | VCG (Vickrey, 1961; Clarke, 1971; Groves, 1973): cada uno paga el daño que su presencia causa a los demás; decir la verdad es dominante; segundo precio como caso más sencillo; bienes públicos con remisión a 3.A.23; necesitan pagos monetarios (Gibbard-Satterthwaite) | El ejemplo numérico |
 
 ## Divergencias encontradas en el temario actual
 - Ninguna de notación relevante ($c_i$). El $v_i$ de valoración coincide con el de subastas (3.A.14): mantener.

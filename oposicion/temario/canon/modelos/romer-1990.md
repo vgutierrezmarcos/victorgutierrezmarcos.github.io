@@ -1,7 +1,7 @@
 # Crecimiento por aumento del número de variedades (Romer 1990; Grossman y Helpman 1991)
 
 - **Área:** macro cerrada · **Tema de referencia:** 3.A.44 (crecimiento endógeno: innovación tecnológica) — único tema que lo desarrolla.
-- **Temas que lo usan:** 3.A.44 (desarrollo), 3.B.9 (resumen: comercio y crecimiento, Rivera-Batiz y Romer 1991), 3.B.34, 3.B.39, 3.B.42 (mención), 4.A.7 (previsto)
+- **Temas que lo usan:** 3.A.44 (desarrollo), 3.A.18 (mención; hecho, 19/10/2026: extensión de Dixit-Stiglitz al crecimiento), 3.B.9 (resumen: comercio y crecimiento, Rivera-Batiz y Romer 1991), 3.B.34, 3.B.39, 3.B.42 (mención), 4.A.7 (previsto)
 - **Manuales de referencia:** Romer (1990), *JPE*; Romer (2019), cap. 3; Barro y Sala i Martín (2004), cap. 6; Acemoglu (2009), cap. 13; Grossman y Helpman (1991).
 - **Decisión D023 (13/10/2026):** ¿Se reserva M para el dinero (y las importaciones) y se cambian sus otros usos? Sí: número de variedades de Romer (1990) N_t, función de emparejamiento m(U,V), renta no laboral W̄
 
@@ -19,6 +19,7 @@ Gráfico de referencia: no imprescindible; si se usa, reparto del trabajo entre 
 |---|---|---|---|---|
 | 3.A.44 | Innovación como fuente de crecimiento | desarrollo | Modelo, efecto escala, ineficiencia, política de I+D; comparación con Aghion-Howitt | — |
 | 3.B.9 | Comercio y crecimiento | resumen | Integración y difusión de ideas (Rivera-Batiz y Romer): duplicar el mercado eleva el crecimiento | Derivación [ver tema 3.A.44] |
+| 3.A.18 | Competencia monopolística | mención (hecho, 19/10/2026) | Con variedades de bienes intermedios, la preferencia por la variedad se convierte en rendimientos crecientes y sostiene el crecimiento; `\vertema{3.A.44}` (ficha `dixit-stiglitz`) | El modelo |
 | 3.B.34, 3.B.39, 3.B.42 | Liberalización, desarrollo | mención | Ideas no rivales como motor | — |
 | 4.A.7 | (previsto) | — | — | — |
 
