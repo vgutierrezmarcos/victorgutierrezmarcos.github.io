@@ -114,6 +114,7 @@ function pdfsEnlazados(paginas) {
         const html = fs.readFileSync(path.join(ROOT_DIR, pagina), 'utf-8');
         for (const [, href] of html.matchAll(/href="([^"#?]+\.pdf)"/gi)) {
             if (/^[a-z]+:/i.test(href)) continue;
+            if (/-anterior\.pdf$/i.test(href)) continue;   // versión anterior de un tema revisado: no se indexa
             const destino = href.startsWith('/') ? href.slice(1) : path.posix.join(path.posix.dirname(pagina), href);
             enlazados.add(path.posix.normalize(decodeURIComponent(destino)));
         }

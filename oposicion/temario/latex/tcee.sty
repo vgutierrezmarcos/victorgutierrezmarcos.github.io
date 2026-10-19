@@ -331,10 +331,13 @@
 % --- Hiperenlaces (al final) -----------------------------------------------------
 \RequirePackage[unicode]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=tceemorado,urlcolor=tceemoradooscuro,citecolor=tceemoradooscuro}
-\RequirePackage{bookmark}
+% numbered: los marcadores llevan el número del apartado («I. …», «I.1. …»,
+% «A. …»), como la web y el Word (Víctor, 19/10/2026)
+\RequirePackage[numbered]{bookmark}
 % En los marcadores del PDF, el \newline con que se cortan los títulos largos
-% es un espacio (si no, hyperref lo quita y pega las palabras: «empresasy»)
-\pdfstringdefDisableCommands{\def\newline{ }}
+% es un espacio (si no, hyperref lo quita y pega las palabras: «empresasy») y
+% el número va seguido de punto y espacio
+\pdfstringdefDisableCommands{\def\newline{ }\def\numberline#1{#1.\ }}
 % Metadatos de la licencia (XMP: Adobe y los buscadores los leen). El título,
 % el asunto y las palabras clave los pone scripts/metadatos-pdf.py al publicar.
 \tcee@licenciaxmp

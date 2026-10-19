@@ -540,6 +540,15 @@ def comunes_pandoc(tema, datos):
         dia = datetime.date.today()
     orden += ['-M', f'fecha-iso={dia.isoformat()}', '-M', f'fecha-cita={dia:%Y/%m/%d}', '-M', f'anio={dia.year}',
               '-M', f'titulo-cita={datos["titulo"].rstrip(". ")}']   # para Google Académico, sin el punto final
+    # Fecha de publicación estable para los buscadores (Víctor, 19/10/2026): la de la
+    # aprobación del tema (estado.json); la de modificación es la de \tcefecha
+    aprobado = (tema.estado().get('aprobado') or {}).get('tema')
+    try:
+        publicada = datetime.date.fromisoformat(str(aprobado)[:10]) if aprobado else None
+    except ValueError:
+        publicada = None
+    if publicada and publicada <= dia:
+        orden += ['-M', f'fecha-publicada={publicada.isoformat()}', '-M', f'fecha-publicada-cita={publicada:%Y/%m/%d}']
     paginas = linea_paginas(paginas_partes(os.path.join(tema.trabajo, f'{tema.archivo}.aux')))
     if paginas:
         orden += ['-M', f'paginas={paginas}']
@@ -804,10 +813,30 @@ def numerar_paginas_docx(partes):
     partes['[Content_Types].xml'] = tipos.encode('utf-8')
 
 
+FUENTE_DOCX, FUENTE_DOCX_RESERVA = 'TeX Gyre Pagella', 'Palatino Linotype'
+
+
+def fuente_reserva_docx(partes):
+    """La fuente del Word es TeX Gyre Pagella (la del PDF y la web); en la tabla de
+    fuentes se declara Palatino Linotype como sustituta (altName), que es la que
+    usa Word cuando Pagella no está instalada (Víctor, 19/10/2026)."""
+    nombre = 'word/fontTable.xml'
+    xml = partes.get(nombre, b'').decode('utf-8')
+    if not xml or f'w:name="{FUENTE_DOCX}"' in xml and 'w:altName' in xml.split(f'w:name="{FUENTE_DOCX}"', 1)[1][:200]:
+        return
+    entrada = (f'<w:font w:name="{FUENTE_DOCX}"><w:altName w:val="{FUENTE_DOCX_RESERVA}"/>'
+               '<w:panose1 w:val="02040502050505030304"/><w:charset w:val="00"/><w:family w:val="roman"/>'
+               '<w:pitch w:val="variable"/></w:font>')
+    xml = re.sub(rf'<w:font w:name="{re.escape(FUENTE_DOCX)}">.*?</w:font>', '', xml, flags=re.S)
+    xml = xml.replace('</w:fonts>', entrada + '</w:fonts>')
+    partes[nombre] = xml.encode('utf-8')
+
+
 def retocar_docx(ruta, anio):
     """Postproceso del Word: listas que no se separan de lo que las introduce,
-    numeración de páginas por partes y licencia en el pie."""
+    numeración de páginas por partes, licencia en el pie y fuente de reserva."""
     partes, infos = _partes_docx(ruta)
+    fuente_reserva_docx(partes)
     partes['word/document.xml'] = conservar_listas_docx(partes['word/document.xml'].decode('utf-8')).encode('utf-8')
     cajas_docx(partes)
     numerar_paginas_docx(partes)

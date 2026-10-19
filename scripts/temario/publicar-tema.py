@@ -48,10 +48,10 @@ def linea_tema(tema, titulo_html, video):
                       f'title="Ficha de repaso del tema en cuatro páginas">REPASO</a>')
     if os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.pdf')):
         partes.append(f'<a class="tema-item-docx tema-item-anterior" href="{c}/{a}-anterior.pdf" target="_blank" '
-                      f'title="Versión anterior del tema, antes de revisarlo">PDF ANTERIOR</a>')
+                      f'rel="nofollow" title="Versión anterior del tema, antes de revisarlo">PDF ANTERIOR</a>')
     if os.path.exists(os.path.join(tema.dir_publico, f'{a}-anterior.docx')):
         partes.append(f'<a class="tema-item-docx tema-item-anterior" href="{c}/{a}-anterior.docx" download '
-                      f'title="Versión anterior del tema en Word, antes de revisarlo">WORD ANTERIOR</a>')
+                      f'rel="nofollow" title="Versión anterior del tema en Word, antes de revisarlo">WORD ANTERIOR</a>')
     if video:
         partes.append(f'<a class="tema-item-docx tema-item-video" href="{video}" target="_blank" '
                       f'rel="noopener" title="Vídeo del cante del tema">VÍDEO</a>')

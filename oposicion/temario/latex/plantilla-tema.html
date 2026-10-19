@@ -36,8 +36,8 @@ $endif$
     <!-- Google Académico (etiquetas Highwire Press) -->
     <meta name="citation_title" content="$if(titulo-cita)$$titulo-cita$$else$$titulo$$endif$">
     <meta name="citation_author" content="Gutiérrez Marcos, Víctor">
-    <meta name="citation_publication_date" content="$fecha-cita$">
-    <meta name="citation_online_date" content="$fecha-cita$">
+    <meta name="citation_publication_date" content="$if(fecha-publicada-cita)$$fecha-publicada-cita$$else$$fecha-cita$$endif$">
+    <meta name="citation_online_date" content="$if(fecha-publicada-cita)$$fecha-publicada-cita$$else$$fecha-cita$$endif$">
     <meta name="citation_pdf_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.pdf">
     <meta name="citation_abstract_html_url" content="https://www.victorgutierrezmarcos.es/oposicion/temario/$carpeta$/$archivo$.html">
     <meta name="citation_language" content="es">
@@ -86,7 +86,7 @@ $endif$
         "headline": "$titulo$",
         "description": "$if(resumen)$$resumen$$else$Tema $codigo$ de la oposición a Técnico Comercial y Economista del Estado: $titulo$$endif$",
         "author": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
-        "datePublished": "$fecha-iso$",
+        "datePublished": "$if(fecha-publicada)$$fecha-publicada$$else$$fecha-iso$$endif$",
         "dateModified": "$fecha-iso$",
         "inLanguage": "es",
         "educationalLevel": "universitario",
@@ -164,10 +164,10 @@ $if(repaso)$
                         <a href="$archivo$-repaso.pdf" target="_blank">Ficha de repaso (4 págs.)</a>
 $endif$
 $if(anterior)$
-                        <a href="$archivo$-anterior.pdf" target="_blank">Versión anterior (PDF)</a>
+                        <a href="$archivo$-anterior.pdf" target="_blank" rel="nofollow">Versión anterior (PDF)</a>
 $endif$
 $if(anterior-docx)$
-                        <a href="$archivo$-anterior.docx" download>Versión anterior (Word)</a>
+                        <a href="$archivo$-anterior.docx" download rel="nofollow">Versión anterior (Word)</a>
 $endif$
 $if(video)$
                         <a href="$video$" target="_blank" rel="noopener">Vídeo del cante</a>

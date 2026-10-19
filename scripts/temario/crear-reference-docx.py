@@ -5,9 +5,10 @@ pandoc para generar el Word de cada tema (construir-tema.py).
 
 Parte de la plantilla por defecto de pandoc (que trae los nombres de estilo que
 pandoc espera) y le aplica la estética de los temas en Word
-(oposicion/organizacion/1_plantilla_temas_largos.dotx) y de la web: Palatino
-Linotype, títulos en banda morada, cajas de nota y pies de imagen, cabecera y
-pie con número de página.
+(oposicion/organizacion/1_plantilla_temas_largos.dotx) y de la web: TeX Gyre
+Pagella (con Palatino Linotype de reserva si no está instalada), títulos en
+banda morada, cajas de nota y pies de imagen, cabecera y pie con número de
+página.
 
     python3 scripts/temario/crear-reference-docx.py
 
@@ -33,7 +34,8 @@ from comun import RAIZ, PANDOC, ruta_windows  # noqa: E402
 SALIDA = os.path.join(RAIZ, 'oposicion', 'temario', 'latex', 'reference.docx')
 MORADO = RGBColor(0x5F, 0x29, 0x87)
 GRIS = RGBColor(0x76, 0x71, 0x71)
-FUENTE = 'Palatino Linotype'
+FUENTE = 'TeX Gyre Pagella'            # la del PDF y la web; Word usa Palatino Linotype si no la tiene
+FUENTE_RESERVA = 'Palatino Linotype'   # (altName en la tabla de fuentes; construir-tema.py lo repite en cada Word)
 
 
 def sombreado(pPr, color):
