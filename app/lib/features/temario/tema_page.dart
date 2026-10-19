@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -75,7 +74,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   FuentePizarra? _anotacionesDe(String codigo) => _fuentesAnotaciones.putIfAbsent(codigo, () {
         final yo = ref.read(usuarioActualProvider);
         if (widget.esRecurso || codigo.isEmpty || yo == null || !ref.read(serviciosProvider).firebaseDisponible) return null;
-        return fuenteAnotaciones(FirebaseFirestore.instance, ref.read(oposicionProvider), uid: yo.uid, codigo: codigo);
+        return fuenteAnotaciones(ref.read(firestoreAnotacionesProvider), ref.read(oposicionProvider), uid: yo.uid, codigo: codigo);
       });
 
   @override

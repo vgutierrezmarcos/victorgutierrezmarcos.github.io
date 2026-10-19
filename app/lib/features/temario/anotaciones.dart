@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pdf/pdf.dart' as pdf;
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdfx/pdfx.dart';
@@ -32,6 +33,9 @@ const coloresBoligrafo = [0xFF1F1F1F, 0xFF1E5AA8, 0xFFC62828, 0xFF2E7D32];
 const nombresBoligrafo = ['Negro', 'Azul', 'Rojo', 'Verde'];
 const coloresFosforito = [0xFFFFE34D, 0xFF9BE37A, 0xFFFF9EC7, 0xFF8FD3FF];
 const nombresFosforito = ['Amarillo', 'Verde', 'Rosa', 'Azul'];
+
+/// Firestore de las anotaciones (en las capturas de la app, una simulada).
+final firestoreAnotacionesProvider = Provider<FirebaseFirestore>((ref) => FirebaseFirestore.instance);
 
 /// Los documentos de un tema no pueden llevar «/» en el id.
 String idTemaAnotado(String codigo) => codigo.replaceAll('/', '_');

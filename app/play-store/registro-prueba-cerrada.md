@@ -37,6 +37,7 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 | (pendiente) | 1.15.8 (32) | La 1.15.7 más: calculadora «Probabilidad de aprobar el test» (al azar, pregunta a pregunta con dudas entre 2, 3…, con los temas estudiados y qué estudiar después), lo que cae de cada tema en el test (ficha del tema, mapa de calor, simulador y cronograma) y 8 exámenes oficiales más en el simulador (2002-2009). |
 | 16 oct. 2026 | 1.16.0 (36) | Enviada a revisión el 16 oct. y aprobada el 17 oct. Lleva todo lo de las 1.15.x sin publicar (hasta la 1.15.11) más: pizarra como Notas del iPad (trazo fiel, presión, palma, zoom, fosforito, lazo, regla y formas), temas anotados con descarga en PDF, avisos del proceso al momento por push y por oposición, avisos que se quitan solos y coordinación entre varios preparadores (agenda común, temas sin repetir, reparto, tablón, pasar una clase y qué ven los preparadores). |
 | 18 oct. 2026 | 1.17.0 (37) | Compilada el 18 oct.; pendiente de subir a la prueba cerrada. Temario revisado exclusivo de la app (con sesión iniciada: PDF con anotaciones, ficha de repaso, Word y página web del tema dentro de la app; distintivo «Revisado · exclusivo de la app»; la versión anterior sigue accesible) y repaso estético de la app («edición académica»: modo oscuro berenjena, botones con relieve, avisos propios, menú inferior con píldora). |
+| 19 oct. 2026 | 1.17.1 (38) | La 1.17.0 más: pizarra con sección propia en Cantar y escritura rápida con el lápiz en la versión web. Solo web por ahora; sin compilar para Android. |
 
 ## Cambios durante la prueba (problema o comentario → qué se hizo)
 
@@ -206,6 +207,10 @@ Sirve para contestar el formulario **«Solicitar acceso a producción»** cuando
 - Las capturas automáticas (`tool/capturas_test.dart`) vuelven a recorrer las 51 pantallas: la demostración no simulaba el reloj compartido de las clases (1.15.7). Las 222 pruebas pasan.
 
 - **Temario revisado exclusivo de la app** (para la 1.17.0): los temas revisados y aprobados (hoy 3.A.8, 3.A.9, 3.A.11, 3.A.12 y 3.A.21) se leen solo en la app, con sesión iniciada: PDF en el visor con anotaciones aparte de las del tema antiguo, ficha de repaso, Word y página web del tema dentro de la app (WebView en Android, marco en la versión web). Sin sesión, la versión anterior y una invitación a entrar. La lista de temas la lee la app al abrirse, así que los temas nuevos o corregidos llegan sin versión nueva. 238 pruebas en verde.
+
+### 19 oct. 2026 (para la 1.17.1)
+- Un tester envía un vídeo (iPad, versión web, Apple Pencil): al escribir deprisa, levantando y volviendo a apoyar el lápiz, los trazos nuevos tardan o no se ven; en Notas de Apple va fluido. Se hace que cada punto repinte solo el trazo en curso y que el lápiz no se ignore si quedó un trazo suyo sin cerrar. **El tester sigue viendo el fallo**: causa sin identificar (pendiente de instrumentar los eventos del lápiz).
+- La pizarra tenía solo un botón de texto escondido en la cabecera del cronómetro: pasa a tener su propia sección «Pizarra» en Cantar, del mismo peso que «Cronómetro» y «Grabación para autoescucha».
 
 (Seguir añadiendo aquí, con fecha.)
 

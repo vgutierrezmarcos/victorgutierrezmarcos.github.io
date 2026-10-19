@@ -894,14 +894,6 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
               TituloSeccion(
                 'Cronómetro',
                 accion: Wrap(spacing: 2, children: [
-                  // En una clase, la compartida; si no, una para practicar sola.
-                  TextButton.icon(
-                    onPressed: () => destino != null
-                        ? abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro)
-                        : abrirPizarraIndividual(context),
-                    icon: const Icon(Icons.draw_outlined, size: 20),
-                    label: const Text('Pizarra'),
-                  ),
                   TextButton.icon(
                     onPressed: () => Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => RelojGrandePage(fuente: this))),
                     icon: const Icon(Icons.fullscreen, size: 20),
@@ -1010,6 +1002,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                     ),
                   ],
                 ]),
+              ),
+              const TituloSeccion('Pizarra'),
+              Tarjeta(
+                child: Center(
+                  // En una clase, la compartida; si no, una para practicar sola.
+                  child: FilledButton.icon(
+                    onPressed: () => destino != null
+                        ? abrirPizarra(context, alumnoUid: destino.alumnoUid, canteId: destino.canteId, otroNombre: destino.otro)
+                        : abrirPizarraIndividual(context),
+                    icon: const Icon(Icons.draw_outlined),
+                    label: const Text('Pizarra'),
+                  ),
+                ),
               ),
               if (sesion == null) const TituloSeccion('Grabación para autoescucha'),
               if (sesion == null) Tarjeta(
