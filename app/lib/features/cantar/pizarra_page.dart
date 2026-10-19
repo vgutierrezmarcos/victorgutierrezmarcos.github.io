@@ -127,6 +127,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   // En unidades del lienzo, con el factor de grosor de cada punto.
   final List<Point<double>> _enCurso = [];
   final List<double> _factores = [];
+  // Avisa al pintor del trazo en curso: cada punto repinta solo ese trazo, sin reconstruir la pantalla (con la letra rápida iba con retraso).
+  final ValueNotifier<int> _puntos = ValueNotifier(0);
   int? _punteroDibujo;
   PointerDeviceKind? _tipoDibujo;
   Duration _inicioTrazo = Duration.zero;
@@ -230,6 +232,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _quitarAviso?.cancel();
     _temporizadorForma?.cancel();
     _escucha?.cancel();
+    _puntos.dispose();
     _pizarra?.vaciar();
     if (!kIsWeb) {
       SystemChrome.setPreferredOrientations([]);
@@ -442,6 +445,11 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (_punteroDibujo != null) {
       if (_tipoDibujo == PointerDeviceKind.touch && _esLapiz(k)) {
         _anularTrazo();
+      } else if (_esLapiz(_tipoDibujo!) && _esLapiz(k)) {
+        // El lápiz solo toca una vez a la vez: si aún figuraba un trazo suyo
+        // (se perdió el aviso de levantarlo al escribir deprisa), se guarda y
+        // se empieza el nuevo, en vez de ignorarlo.
+        _terminar();
       } else {
         return;
       }
@@ -649,10 +657,9 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       final objetivo = _esLapiz(e.kind) ? _factorPresion(e) : factorVelocidad(velocidad);
       _factor += (objetivo - _factor) * (_esLapiz(e.kind) ? 0.5 : 0.25);
     }
-    setState(() {
-      _enCurso.add(_sobreRegla(v, _grosorActual));
-      _factores.add(_conPresion ? _factor : 1);
-    });
+    _enCurso.add(_sobreRegla(v, _grosorActual));
+    _factores.add(_conPresion ? _factor : 1);
+    _puntos.value++;
     // Formas: si el lápiz se queda quieto un momento al final del trazo.
     if (_formas && _cantoRegla == null && (_anclaQuieto == null || (e.localPosition - _anclaQuieto!).distance > 3)) {
       _anclaQuieto = e.localPosition;
@@ -1102,6 +1109,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                                           _enCurso.isEmpty ? 0 : _grosorActual,
                                           _herramientaTrazo == HerramientaPizarra.fosforito ? Color((_color[HerramientaPizarra.fosforito]! & 0x00FFFFFF) | (alfaFosforito << 24)) : Color(_color[_herramientaTrazo]!),
                                           escala,
+                                          _puntos,
                                         ),
                                       ),
                                     ]),
@@ -1437,7 +1445,7 @@ class _PintorSeleccion extends CustomPainter {
 
 /// El trazo que se está dibujando: la misma tinta que el guardado.
 class _PintorEnCurso extends CustomPainter {
-  _PintorEnCurso(this.puntos, this.factores, this.grosor, this.color, this.escala);
+  _PintorEnCurso(this.puntos, this.factores, this.grosor, this.color, this.escala, Listenable repintar) : super(repaint: repintar);
   final List<Point<double>> puntos;
   final List<double> factores;
   final int grosor;
