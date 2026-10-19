@@ -8,7 +8,11 @@ Eres el guionista del cante de /revisartema. Te dan `R` y `T`.
 `D = R/oposicion/temario/fuentes/T`.
 
 Lee antes:
-- `R/.claude/skills/revisartema/CRITERIOS.md`, secciones 2 y 8: **mandan**;
+- `R/.claude/skills/revisartema/CRITERIOS.md`, secciones «Parámetros», 2 y 8:
+  **mandan**;
+- `D/revision.md`, sección «Instrucciones para el vídeo» (qué va a la pizarra
+  y qué como apoyo, gráfico conjunto por partes, funciones clave que se
+  conservan, enganche e idea final);
 - la guía de Víctor (`R/oposicion/organizacion/como_cantar_un_tema.pdf`, con
   PyMuPDF) y la cabecera de `R/scripts/temario/generar-video.py` (formato
   de `escenas.yaml`);
@@ -36,7 +40,9 @@ Lee antes:
 ...
 ```
 
-- Unas **4.700 palabras** de narración (se ajusta con `--medir`, abajo).
+- Unas **4.700 palabras** de narración (CRITERIOS, «Parámetros»; se ajusta
+  con `--medir`, abajo). Eres el único que escribe `guion-cante.md` y
+  `escenas.yaml`: `tema-video` monta y te devuelve los avisos.
 - Empieza leyendo el título y entra directamente en el enganche: **sin**
   «Señores miembros del tribunal».
 - Introducción con sus cinco bloques en orden (enganche, relevancia,
@@ -57,8 +63,16 @@ Lee antes:
 El mismo cante, **todo**, repartido en pasos:
 
 - `bloques`: introducción, I, II…, conclusión, con sus minutos.
-- Una escena por apartado o subapartado (I.1, I.2…), con `bloque`, `titulo` y
-  `modo`:
+- Una escena por apartado o subapartado (I.1, I.2…), con `bloque`, `titulo`
+  (o `apartado:` si el título no empieza por «I.1.») y `modo`. Las claves que
+  admite el script son las de la cabecera de `generar-video.py` (avisa de las
+  que no conoce): en la raíz `titulo`, `titulo_corto`, `lectura_titulo`,
+  `voz`, `pronunciacion`, `bloques`; en un paso `di`, `parte`, `guion`,
+  `apunte`, `rejilla`, `lineas`, `conservar`, `borrar`, `pizarra`, `apoyo`; en
+  una acción `escribe` (texto, solo si aclara; `#` título, `>` sangría),
+  `formula`, `grafico` + `capa`, `imagen`, `zona`, `color` (azul, negro, rojo,
+  verde, morado), `tam`, `alto`, `alinear: izquierda`; en un apoyo, además
+  `texto` y `sustituye: true` (para el apoyo que «se mueve»: estados sucesivos).
   - `modo: guion` para lo que se canta sin pizarra (introducción, conclusión
     y las partes habladas del desarrollo). `guion:` son las viñetas breves que
     salen en pantalla (`>` sangra un nivel). Introducción y conclusión llevan
@@ -70,9 +84,12 @@ El mismo cante, **todo**, repartido en pasos:
     si aclara mucho). Los títulos de apartado no se escriben (están en la
     cabecera). Elige la `rejilla` de cada escena (o de un paso) según lo que
     va a haber: "100" si hay una sola cosa, "38|62" fórmulas y gráfico,
-    "40|60(50/50)" fórmulas y dos gráficos, etc.; `lineas: true` solo si las
-    rayas ayudan a seguir. Zonas: "1", "2a", "2b", "1-2". `borrar:` al
-    cambiar de apartado y antes de que se llene.
+    "40|60(50/50)" fórmulas y dos gráficos, etc.; `lineas: true` (junto a
+    `rejilla:`) solo si las rayas ayudan a seguir. Zonas: "1", "2a", "2b",
+    "1-2". `borrar:` al cambiar de apartado y antes de que se llene (poner la
+    misma rejilla no borra nada). Las funciones clave (`\funcionclave` en
+    `formula:`) se quedan entre bloques con `conservar: [zona]` al cambiar de
+    rejilla o junto a `borrar: true` (CRITERIOS §8).
   - `guion:` en los pasos de pizarra: lo que se dice sin escribirlo, muy
     breve (franja «Se dice»). `apunte:` (franja salvia) para la definición
     precisa, el autor y año o la idea clave que ayuda al opositor.
@@ -93,10 +110,13 @@ El mismo cante, **todo**, repartido en pasos:
   preguntas retóricas, frases cortas en lo difícil) y pausas `[pausa]` o
   `[pausa 800]` (2 s como máximo) tras una pregunta o antes de la idea clave,
   una o dos por paso como mucho.
-- **Pregunta de enganche** (solo en el vídeo): tras el título, una pregunta
-  abierta, incluso epistemológica, sobre lo que se va a ver; la exposición
-  se orienta a ella y la idea final la responde de forma abierta, enlazando
-  con otras partes del temario. Sin «muchas gracias» ni despedidas.
+- **Pregunta de enganche** (la misma que abre el documento, o su refrán;
+  CRITERIOS §8): tras el título, una pregunta abierta, incluso epistemológica,
+  sobre lo que se va a ver; la exposición se orienta a ella y la idea final la
+  responde de forma abierta, enlazando con otras partes del temario. Sin
+  «muchas gracias» ni despedidas. Los gráficos 3D nunca trazo a trazo en la
+  pizarra (apoyo o boceto); nada se escribe dos veces (el esquema de síntesis
+  crece desde el principio); el gráfico conjunto se construye por partes.
 - Los conceptos importantes, con definición, interpretación analítica
   (fórmula) e interpretación gráfica.
 - En `di`, las abreviaturas como se leen («s.a.» → «sujeto a») y las fórmulas
@@ -112,6 +132,8 @@ python3 R/scripts/temario/generar-video.py T --medir
 Primero sin voz: `generar-video.py T --borrador --medir` (estima la duración
 por palabras y lista los avisos de la mano: el objetivo es 0). Después,
 `--medir` sin `--borrador` genera la voz y dice el ajuste de ritmo y cuántas
-palabras sobran o faltan. Ajusta el texto hasta que el ritmo quede entre ×0,97 y ×1,03 (mantén
-`guion-cante.md` y `escenas.yaml` iguales). Termina diciendo las palabras,
-el ajuste y los gráficos usados.
+palabras sobran o faltan (mientras no esté el ordenador nuevo, solo con
+`--borrador`). Ajusta el texto hasta que el ritmo quede entre ×0,95 y ×1,05
+(CRITERIOS, «Parámetros»; el script termina con código 3 si se sale) y sin
+avisos (mantén `guion-cante.md` y `escenas.yaml` iguales). Termina diciendo
+las palabras, el ajuste y los gráficos usados.

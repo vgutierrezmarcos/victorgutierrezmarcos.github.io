@@ -7,9 +7,13 @@ tools: Bash, Read, Write, Edit, Glob, Grep
 Eres el agente de la ficha de repaso de /revisartema. Te dan `R` y `T`.
 `D = R/oposicion/temario/fuentes/T`.
 
-Lee antes `R/.claude/skills/revisartema/CRITERIOS.md` (sección «Ficha de
-repaso»), la cabecera de `R/oposicion/temario/latex/tcee-repaso.sty` (órdenes
-disponibles), `D/T.tex` completo y `D/guion-cante.md` si existe.
+Lee antes `R/.claude/skills/revisartema/CRITERIOS.md` (secciones «Parámetros»
+y «Ficha de repaso»), la cabecera de `R/oposicion/temario/latex/tcee-repaso.sty`
+(órdenes disponibles: `\bloque`, `\sub`, `formula`, `\funcionclave`, `\pareja`,
+`\graficorepaso`, `\hito`, `\dato`, `trampa`, `ideaclave`…; no definas
+órdenes ni colores en la ficha: las fichas de un bloque se unen en un manual)
+y `D/T.tex` completo. El guion del cante se escribe después (entrega 3): no
+lo esperes.
 
 ## Qué escribes: `D/repaso/T-repaso.tex`
 
@@ -22,13 +26,13 @@ disponibles), `D/T.tex` completo y `D/guion-cante.md` si existe.
 \cabecerarepaso
 \begin{columnas}
 \bloque{Esquema del cante}
-\esquemacante{\apartadocante{Introducción}{3} \apartadocante{I. …}{10} …}
-\bloque[3]{Introducción}
+\esquemacante{\apartadocante{Introducción}{2,5} \apartadocante{I. …}{11} …}   % los \minutos del tema
+\bloque[2,5]{Introducción}
 …
-\bloque[10]{I. <apartado>\label{rep:I}}
+\bloque[11]{I. <apartado>\label{rep:I}}
 \sub{I.1. <subapartado>\label{rep:I.1}}
 … (remisión a otro apartado de la ficha: \hyperref[rep:I.1]{I.1}; a otro tema: \vertema{3.A.9})
-\bloque[3]{Conclusión}
+\bloque[1]{Conclusión}
 …
 \bloque{Autores y fechas}
 \hito{1915}{\autor{Slutsky}: efecto sustitución y renta}
@@ -68,8 +72,8 @@ abreviaturas habituales; nada de citas largas ni bibliografía.
 python3 R/scripts/temario/construir-repaso.py T
 ```
 
-El script elige la letra (de 9 a 6,5 pt) para que quepa en **exactamente dos
-páginas**. Ajusta el contenido hasta que:
+El script elige la letra (de 10,5 a 8 pt) para que quepa en **exactamente
+cuatro páginas** y falla si salen tres o cinco. Ajusta el contenido hasta que:
 - quepa con **8 pt o más** (mejor 9-10) (si no, recorta lo menos importante);
 - la cuarta página quede llena (sin el aviso de sitio sobrante): si sobra,
   añade contenido útil del tema (más definiciones, otro gráfico, más

@@ -8,8 +8,10 @@ Eres el verificador de datos de /revisartema. Te dan `R` (raíz del worktree)
 y `T` (código del tema). `D = R/oposicion/temario/fuentes/T`. La fecha de hoy
 es la de la revisión: busca **el último dato publicado**.
 
-Lee primero `R/.claude/skills/revisartema/CRITERIOS.md` (sección 4) y
-`D/_trabajo/original.md` completo.
+Lee primero `R/.claude/skills/revisartema/CRITERIOS.md` (sección 4),
+`R/oposicion/temario/canon/notacion.md` y `D/_trabajo/original.md` completo
+(si `inventario.json` dice `sin_original: true`, los datos a comprobar son los
+de las referencias de `D/_trabajo/referencias.md` que vayan a usarse).
 
 1. Haz un inventario de **todos** los datos: cifras, porcentajes, fechas de
    normas, umbrales, número de miembros de organismos, rankings, datos de
@@ -34,7 +36,8 @@ Escribe:
 - `D/_trabajo/propuestas-datos.md`: tabla numerada (V1, V2…) con apartado,
   frase original, valor anterior, valor nuevo, periodo, fuente, URL, fecha de
   consulta, segunda comprobación (fuente y resultado) y la frase nueva lista
-  para pegar con su `\footcite{clave}`.
+  para pegar con su cita enlazada a la bibliografía: `\parencite{clave}` (o
+  `\textcite{clave}` si se nombra la fuente en la frase); nunca `\footcite`.
 - `D/_trabajo/bib-datos.bib`: una entrada biblatex por fuente (`@online` con
   `author = {{Instituto Nacional de Estadística}}`, `title`, `year`, `url`,
   `urldate`; `@book`/`@article` para publicaciones), con claves legibles

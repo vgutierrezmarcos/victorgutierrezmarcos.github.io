@@ -5,6 +5,25 @@ los agentes lo leen antes de empezar. Para cambiar el proceso basta con editar
 este fichero (o pedírselo a Claude) y hacer commit en la rama
 `revision-temario`. Si algo de aquí contradice a un agente, manda esto.
 
+## 0. Parámetros
+
+Las cifras que usan los agentes y los scripts, en un solo sitio (los agentes
+remiten aquí; `verificar-tema.py`, `construir-repaso.py` y `generar-video.py`
+las comprueban):
+
+| Qué | Valor |
+|---|---|
+| Cante | **30 minutos**: introducción 2′00″–2′30″, conclusión 1′00″–1′30″, cuerpo 26–27′; los `\minutos` suman 30 |
+| Apartados | **tres** (I, II, III) siempre que se pueda |
+| Guion y narración del vídeo | unas **4.700 palabras** (≈158 por minuto con las pausas); `generar-video.py T --borrador --medir` da la cifra |
+| Ritmo del vídeo | ajuste entre **×0,95 y ×1,05** (si no, `generar-video.py` termina con código 3: recortar o alargar el guion) |
+| Mano en la pizarra | hasta **1,6×** la velocidad natural; la voz no se para nunca |
+| Pausas del vídeo | 2,6 s entre bloques, 2 s entre apartados, 0,8 s entre escenas, 0,35 s entre pasos; `[pausa]` 0,5 s y `[pausa 800]` hasta 2 s, una o dos por paso |
+| Ficha de repaso | **exactamente cuatro páginas** A4 a dos columnas, letra de 10,5 a 8 pt (mejor 9–10) |
+| Vídeo | exactamente 30:00, 1920×1080, en `oposicion/temario/videos/` (fuera de git); hasta el ordenador nuevo, borrador sin voz (`--borrador`) |
+| Voz | motor `voicestudio` (OmniVoice, voz clonada; referencia `Documents/voz/referencia-12s.wav`), elegido el 13/10/2026; `xtts` y `edge` siguen disponibles para pruebas |
+| Resumen SEO | 160 caracteres como máximo; título SEO de 40–50 |
+
 ## 1. Objetivo
 
 Cada tema revisado debe quedar:
@@ -168,8 +187,6 @@ en cada tema. Ver `LICENSE.md` en la raíz.
 - **Sin nombres de preparadores** en el tema (ni «cantado en clase con…», ni
   nombres de profesores): solo se citan obras. `revision.md` no es público y
   puede llevarlos.
-- Cada apartado lleva sus minutos de cante con `\minutos{n}` tras el título.
-  La suma debe ser 30.
 - No inventar citas textuales: una cita entre comillas debe estar en la fuente
   citada.
 - **Comprensión antes que concisión** (Víctor, 17/10/2026): al cerebro le
@@ -208,7 +225,11 @@ en cada tema. Ver `LICENSE.md` en la raíz.
 ### Órdenes de `tcee.sty` para estas reglas (cómo se usan)
 
 Funcionan igual en PDF, web y Word (construir-tema.py y tcee.lua las
-convierten); el detalle está en la cabecera de `latex/tcee.sty`.
+convierten); el detalle está en la cabecera de `latex/tcee.sty`. Lo que el
+tema comparte con la ficha de repaso (idioma, Palatino, colores, `\tcetema`,
+`\tiempo`, `\autor`, `\concepto`, `\vect`, `\vertema`, `\optim`, `\findemo`,
+el estilo de `\funcionclave` y la licencia) está en `latex/tcee-comun.sty`,
+que cargan `tcee.sty` y `tcee-repaso.sty`.
 
 - `\minutos{2,5}` tras el título de un apartado (entrada decimal, para que
   los scripts sumen; se ve 2′30″). En el texto, los minutos se escriben con
@@ -300,6 +321,14 @@ el texto original y lo que se hizo.
   su defecto de los apuntes de **Marta Ramírez**
   (https://sites.google.com/view/apuntes-tcee/). Siempre redactado de nuevo,
   con las fichas del canon y citando al autor de la estructura en `revision.md`.
+  Cómo se hace: `extraer-docx.py` no falla, deja `_trabajo/original.md` con el
+  título oficial y sus epígrafes e `inventario.json` con `sin_original: true`;
+  `indexar-referencias.py` baja las referencias; `tema-extractor` escribe
+  `estructura.md` (la estructura propuesta a partir de la primera referencia
+  disponible, por el orden de arriba) y `pendientes.md` con una entrada por
+  epígrafe del título; `tema-coherencia` propone la estructura final con las
+  fichas del canon y los temas vecinos; el revisor de contenido redacta todo
+  de nuevo a partir de las referencias y los manuales.
 
 ## 6. Coherencia con el resto del temario
 
@@ -413,8 +442,8 @@ el texto original y lo que se hizo.
   terminarlo, una recapitulación breve y el puente al siguiente.
 - Conectores que guían al tribunal: «en primer lugar», «a continuación»,
   «como acabamos de ver», «esto nos lleva a…», «recapitulando…».
-- **Pausas** entre bloques y apartados (el vídeo las pone: 1,8 s entre
-  bloques y 1 s entre apartados).
+- **Pausas** entre bloques y apartados (el vídeo las pone: 2,6 s entre
+  bloques, 2 s entre apartados y 0,8 s entre escenas; ver «Parámetros»).
 - Lenguaje formal: «la exposición», no «el tema»; sin muletillas.
 - La conclusión **empieza siempre por «En conclusión,» o «A modo de
   conclusión,»** (nunca «termino ya» ni similares) y sigue sus bloques:
@@ -482,10 +511,14 @@ el texto original y lo que se hizo.
   a ella y la **idea final la responde**, aunque sea de forma abierta y
   dejando pie a otras partes del temario. Cierre natural: la última frase es
   esa respuesta; nunca «muchas gracias» ni fórmulas de despedida.
-- Voz: Edge TTS `es-ES-AlvaroNeural` a **+15 %** (o lo que haga falta para que el ajuste quede cerca de ×1,00) mientras no haya voz clonada
-  de Víctor (`voz: {motor: xtts, muestra: …}`). Los nombres que la voz lee mal
-  van en `scripts/temario/pronunciacion.yaml` (comunes) o en `pronunciacion:`
-  del tema.
+- Voz (ver «Parámetros»): la clonada de Víctor con VoiceStudio/OmniVoice
+  (`voz: {motor: voicestudio, motor_tts: omnivoice, velocidad: 1.0, referencia: …}`);
+  mientras no esté el ordenador nuevo, el vídeo se monta **sin voz**
+  (`generar-video.py T --borrador`) y la voz de todos los temas aprobados se
+  pone de golpe con `voz-todos.py`. `xtts` (voz clonada con XTTS) y `edge`
+  (Edge TTS `es-ES-AlvaroNeural` a +15 %) quedan para pruebas. Los nombres
+  que la voz lee mal van en `scripts/temario/pronunciacion.yaml` (comunes) o
+  en `pronunciacion:` del tema.
 - Cabecera tipo Beamer en tres filas: tema, apartado y tiempo que queda; los
   bloques (`bloques`, con sus minutos; los ya expuestos con ✓), y los
   apartados de segundo nivel del bloque actual (I.1, I.2…; en la introducción
@@ -575,9 +608,12 @@ el texto original y lo que se hizo.
   cuando la narración lo nombra) y el script los traza en el orden del código.
 - Imágenes (retratos, portadas) solo de dominio público o con licencia libre,
   citando la fuente.
-- El vídeo se guarda en `Vídeos\temario\` de Windows. Víctor lo sube a
-  YouTube como **no listado** y anota el enlace en
-  `oposicion/temario/videos.json`.
+- Los vídeos van todos a `oposicion/temario/videos/` (fuera de git) y no se
+  publican hasta tenerlos todos. Cuando Víctor aprueba el borrador de un tema
+  se anota `aprobado.video` en su `estado.json` (es lo que `voz-todos.py` usa
+  para saber a qué temas poner voz); cuando lo suba a YouTube como **no
+  listado**, anota el enlace en `oposicion/temario/videos.json`
+  (`{"3A08": "https://youtu.be/…"}`) y `publicar-tema.py` pone el botón.
 
 ## 8 bis. Ficha de repaso (cuatro páginas)
 
@@ -596,8 +632,13 @@ el texto original y lo que se hizo.
   fechas, datos clave, preguntas probables del tribunal y trampas del test.
 - Solo resume el tema: nada que no esté en él.
 - Letra de 8 puntos o más (mejor 9-10) y la cuarta página llena
-  (`construir-repaso.py` elige la letra y avisa). Con más sitio, los gráficos
-  van más grandes y legibles y se puede incluir alguno más por apartado.
+  (`construir-repaso.py` elige la letra, falla si no salen exactamente cuatro
+  páginas y avisa si sobra sitio). Con más sitio, los gráficos van más grandes
+  y legibles y se puede incluir alguno más por apartado.
+- Las fichas de un mismo bloque tienen que poder unirse en un manual sin
+  retoques: `\funcionclave` (con el estilo del tema: morada, recuadrada, fondo
+  morado pálido) y `\pareja` (dos gráficos lado a lado) están en
+  `tcee-repaso.sty`; ninguna ficha define órdenes ni colores por su cuenta.
 - Se publica como `<ejercicio>/<tema>-repaso.pdf`, con botón en el índice y en
   la página del tema.
 
@@ -613,6 +654,10 @@ Secciones obligatorias, en este orden:
 5. **Contenido añadido**: lo nuevo y de dónde sale.
 6. **Coherencia**: cambios por coherencia y contradicciones con otros temas.
 7. **Dudas abiertas**: lo que necesita la decisión de Víctor. Si no hay, decirlo.
+8. **Instrucciones para el vídeo**: lo que el guionista debe tener en cuenta
+   en este tema (qué gráficos van a la pizarra y cuáles como apoyo, el
+   gráfico conjunto por partes, las funciones clave que se conservan, el
+   enganche y la idea final). La escribe el editor; el guionista la lee.
 
 ## 9 bis. Buscadores (`seo.json`)
 

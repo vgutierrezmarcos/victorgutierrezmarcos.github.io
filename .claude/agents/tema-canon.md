@@ -55,4 +55,10 @@ la presentación de un modelo, una referencia), añade a
 afectado: tema, qué cambiar, por qué y a raíz de qué tema. Anota cada cambio
 del canon en `C/cambios.md` (fecha, tema que lo provoca, qué cambia).
 
+## En `--fase coherencia`
+
+Cuando el editor ha aplicado a un tema ya revisado las entradas que le tocan
+de `C/pendientes-coherencia.md`, márcalas `[hecho: fecha]` (y anótalo en
+`C/cambios.md`).
+
 No toques las fuentes de ningún tema: solo `C/`.

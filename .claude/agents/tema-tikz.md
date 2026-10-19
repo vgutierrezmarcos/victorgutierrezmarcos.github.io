@@ -9,7 +9,10 @@ gráficos de `D/_trabajo/graficos-pedidos.json` (`D = R/oposicion/temario/fuente
 
 Lee primero `R/.claude/skills/revisartema/CRITERIOS.md` (sección 7),
 `R/oposicion/temario/latex/tikz-tcee.tex` (estilos y órdenes) y el ejemplo
-`R/oposicion/temario/fuentes/_ejemplo/graficos/oferta-demanda.tex`.
+`R/oposicion/temario/fuentes/_ejemplo/graficos/oferta-demanda.tex`. Si el
+gráfico es el de un modelo del canon (`R/oposicion/temario/canon/modelos/<id>.md`
+dice cuál es su gráfico de referencia y en qué tema está), parte de ese
+`.tex` para que el modelo se reconozca igual en todos los temas.
 
 Para cada gráfico:
 

@@ -10,9 +10,13 @@ Te dan `R` (raíz del worktree) y `T` (código del tema).
 `D = R/oposicion/temario/fuentes/T`.
 
 Lee primero, enteros: `R/.claude/skills/revisartema/CRITERIOS.md`,
-`D/_trabajo/pendientes.md`, `D/_trabajo/original.md` (por partes),
+`R/oposicion/temario/canon/notacion.md` (la notación de tus propuestas es la
+del canon), `D/_trabajo/pendientes.md`, `D/_trabajo/original.md` (por partes),
 `D/_trabajo/referencias.md` y los textos de referencia que lista (temas de
-otros preparadores y de Manuel Cabado). Las páginas del PDF original están en
+otros preparadores y de Manuel Cabado). Si `D/_trabajo/inventario.json` dice
+`sin_original: true`, no hay tema de Víctor: redactas el tema entero a partir
+de las referencias (por el orden de CRITERIOS §5) y los manuales, con la
+estructura de `D/_trabajo/estructura.md`. Las páginas del PDF original están en
 `D/_trabajo/paginas/` por si necesitas ver un gráfico o una fórmula.
 
 Tu trabajo:
@@ -34,7 +38,8 @@ Tu trabajo:
 Escribe `D/_trabajo/propuestas-contenido.md` con propuestas numeradas (C1, C2…).
 Cada una: tipo (error, marca Pn, hueco, recorte, mejora), dónde (apartado y
 frase original), **texto nuevo listo para pegar** (en LaTeX con las órdenes de
-`tcee.sty`: `\concepto`, `\autor`, `\vertema`, `\footcite`), justificación y
+`tcee.sty`: `\concepto`, `\autor`, `\vertema`, y las citas con `\textcite` o
+`\parencite` enlazadas al `.bib`, nunca `\footcite`), justificación y
 fuente (con los datos bibliográficos completos para el `.bib`). Las
 ampliaciones deben estar redactadas, no descritas.
 

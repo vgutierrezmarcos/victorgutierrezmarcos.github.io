@@ -9,9 +9,12 @@ Te dan `R`, `T` y, si el tema es largo, qué parte te toca en esta llamada.
 `D = R/oposicion/temario/fuentes/T`.
 
 Lee primero:
-- `R/.claude/skills/revisartema/CRITERIOS.md`;
-- el ejemplo `R/oposicion/temario/fuentes/_ejemplo/ejemplo.tex` y
-  `R/oposicion/temario/latex/tcee.sty` (órdenes y entornos disponibles);
+- `R/.claude/skills/revisartema/CRITERIOS.md` (sus cifras están en «Parámetros»);
+- `R/oposicion/temario/canon/notacion.md` y las entradas del tema en
+  `R/oposicion/temario/canon/pendientes-coherencia.md` (las aplicas también);
+- el ejemplo `R/oposicion/temario/fuentes/_ejemplo/ejemplo.tex` y las
+  cabeceras de `R/oposicion/temario/latex/tcee.sty` y `tcee-comun.sty`
+  (órdenes y entornos disponibles);
 - `D/_trabajo/original.md`, `pendientes.md`, `propuestas-contenido.md`,
   `propuestas-datos.md`, `propuestas-coherencia.md` y `bib-datos.bib`.
 
@@ -29,14 +32,16 @@ sencillo y solo las órdenes de `tcee.sty`):
 \begin{document}
 \tceetitulo
 \section*{Introducción}
-\minutos{3}
+\minutos{2,5}        % 2′–2′30″ (CRITERIOS, «Parámetros»)
 ...
-\section{<apartado I>}
-\minutos{8}
-\subsection{...}
+\section{<apartado I>}\label{sec:…}
+\minutos{11}
+\subsection{...}\label{sec:…}
+\paragraph{a) Idea}            % bloques de un modelo: a), b)… con \paragraph
+\subparagraph{i) Supuestos}    % i), ii), iii) con \subparagraph
 ...
 \section*{Conclusión}
-\minutos{3}
+\minutos{1}          % 1′–1′30″; introducción + cuerpo + conclusión = 30
 ...
 \appendix
 \section{Anexo: ...}   % anexos ANTES de la bibliografía (derivaciones, test…)
@@ -48,7 +53,16 @@ sencillo y solo las órdenes de `tcee.sty`):
 - Contenido: el del original, con **todas** las propuestas aplicadas salvo
   las que rechaces razonadamente (anótalo en el informe). Mantén el estilo
   esquemático con `itemize` anidados (hasta 4 niveles) y párrafos breves.
-- Fórmulas en `equation`/`align` (con `\label` si se citan) o `$…$`.
+- Fórmulas en `equation`/`align` (con `\label` si se citan) o `$…$`; las
+  funciones centrales del tema con `\funcionclave{…}`, los problemas de
+  optimización con `\optim{\max}{\vect{x}}{objetivo}{restr1\\ restr2}`, cada
+  demostración acaba en `\findemo`, los minutos en el texto con `\tiempo{2,5}`
+  y los vectores con `\vect{}` (CRITERIOS §2, «Órdenes de tcee.sty»). Una
+  fórmula destacada va dentro del párrafo o la viñeta que la presenta (sin
+  línea en blanco ni tras `\end{itemize}`).
+- Cada modelo con sus bloques a) Idea, b) Modelo (i Supuestos, ii Desarrollo,
+  iii Implicaciones), c) Extensiones, d) Evidencia, e) Valoración: a), b)…
+  con `\paragraph`, i), ii)… con `\subparagraph`, letras seguidas.
 - **Toda remisión es un enlace** (CRITERIOS §6): `\vertema{3.A.12}` para otros
   temas y `\ref{…}`/`\eqref{…}` para apartados, anexos, gráficos, tablas y
   ecuaciones; nunca «(II.3)», «apartado~I.2», «bloque~III» o «anexo~B» a mano.
@@ -83,7 +97,9 @@ sencillo y solo las órdenes de `tcee.sty`):
   curva de demanda", "2: ..."], "original": "paginas/p-012.png",
   "datos": "_trabajo/datos/x.csv"}`. Las imágenes que se conservan (fotos)
   cópialas de `_trabajo/media/` a `D/graficos/` con un nombre descriptivo.
-  Las tablas van en LaTeX (`tabular` con `booktabs`) dentro de `table`.
+  Las tablas van en LaTeX (`tabular` con `booktabs`) dentro de `table`. Un
+  gráfico o una tabla dentro de una caja (anotaciones, ideaclave…) va en
+  `figuracaja`/`tablacaja`, no en `figure`/`table` (CRITERIOS §7).
 - **Nada privado**: ni comentarios internos, ni texto oculto, ni referencias
   a clases o grabaciones, ni marcas ⟦…⟧, ni «TODO».
 
@@ -97,7 +113,9 @@ cambie en el tema.
 
 **`D/revision.md`**: el informe para Víctor con las secciones de la sección 9
 de CRITERIOS.md, en este orden: Resumen, Errores corregidos, Marcas
-resueltas, Datos actualizados, Contenido añadido, Coherencia, Dudas abiertas.
+resueltas, Datos actualizados, Contenido añadido, Coherencia, Dudas abiertas,
+Instrucciones para el vídeo (qué va a la pizarra y qué como apoyo, gráfico
+conjunto por partes, funciones clave que se conservan, enganche e idea final).
 Para cada propuesta (C, V, K, P), di si se aplicó y, si no, por qué.
 
 Si te llaman por partes, escribe solo tu parte en el `.tex` (sin romper lo ya

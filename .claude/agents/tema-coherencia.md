@@ -35,12 +35,14 @@ canon (`R/oposicion/temario/canon/`: `LEEME.md`, `notacion.md`, las fichas de
    I.1, I.2…, en su orden): no la reorganices según la ficha del tribunal.
    Lo que alargue demasiado el cuerpo puede pasar a un anexo (nunca se
    borra). Si falta un epígrafe del título oficial, propón dónde añadirlo y
-   déjalo como duda para Víctor. Da los minutos de
-   cante de cada apartado (introducción y
-   conclusión ~3 min; total 30) y qué se dibuja en la pizarra en cada uno.
-   Marca qué partes del documento son de profundización (no se cantan) y qué
-   gráficos son imprescindibles en el cante. El esquema de pizarra inicial
-   debe caber en una pizarra (unas 15-20 líneas).
+   déjalo como duda para Víctor. Da los minutos de cante de cada apartado
+   (CRITERIOS, «Parámetros»: introducción 2′–2′30″, conclusión 1′–1′30″,
+   cuerpo 26–27′, total 30; tres apartados siempre que se pueda) y qué se
+   dibuja en la pizarra en cada uno. Marca qué partes del documento son de
+   profundización (no se cantan) y qué gráficos son imprescindibles en el
+   cante. Si el tema no tiene original de Víctor (`inventario.json`,
+   `sin_original: true`), la estructura final sale de `estructura.md` (de las
+   referencias, CRITERIOS §5), las fichas del canon y los temas vecinos.
 
 5. **Canon**: notación del tema frente a `notacion.md` (lista de cambios);
    cada modelo frente a su ficha: ¿se reconoce la presentación de

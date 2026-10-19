@@ -70,7 +70,10 @@ aún no está revisado (y apóyate en la ficha del canon).
 ### 1. extraer — agente `tema-extractor`
 Ejecuta `extraer-docx.py` e `indexar-referencias.py` y prepara
 `D/_trabajo/pendientes.md` (lista numerada de todo lo que hay que resolver) y
-`D/_trabajo/estructura.md` (índice del tema original con su extensión).
+`D/_trabajo/estructura.md` (índice del tema original con su extensión). Si el
+tema no tiene Word original (`inventario.json` con `sin_original: true`), la
+estructura sale de las referencias por el orden de CRITERIOS §5 y lo dices en
+el resumen.
 
 ### 2. revisar — tres agentes **en paralelo** (un solo mensaje con tres llamadas)
 - `tema-revisor-contenido` → `D/_trabajo/propuestas-contenido.md`
@@ -83,8 +86,10 @@ Ejecuta `extraer-docx.py` e `indexar-referencias.py` y prepara
 Los tres solo proponen; ninguno escribe la fuente del tema.
 
 ### 3. integrar — agente `tema-editor-lyx`
-Escribe `D/T.tex` y `D/T.bib` con todo lo aceptado, deja los gráficos
-pedidos en `D/_trabajo/graficos-pedidos.json` y redacta `D/revision.md`.
+Escribe `D/T.tex` y `D/T.bib` con todo lo aceptado (y las entradas de
+`canon/pendientes-coherencia.md` que toquen al tema), deja los gráficos
+pedidos en `D/_trabajo/graficos-pedidos.json` y redacta `D/revision.md` con
+sus ocho secciones (la 8, «Instrucciones para el vídeo», la lee el guionista).
 Si el tema es largo (más de ~25 páginas en el PDF publicado), lánzalo por
 partes: primero introducción y apartados I-II, luego el resto, luego
 conclusión, bibliografía y anexos (le dices qué parte toca en cada llamada).
@@ -100,7 +105,9 @@ se reconozca igual en todos los temas.
 `python3 R/scripts/temario/construir-tema.py T`. Si falla, pásale el error a
 `tema-editor-lyx` (o a `tema-tikz` si es de un gráfico) para que lo arregle y
 repite (máximo 3 intentos). Si LyX está instalado, el script sincroniza el
-`.lyx` y el `.tex`.
+`.lyx` y el `.tex` (huellas en `estado.json`; si han cambiado los dos, se para:
+avisa a Víctor en vez de pisar ninguno). Mira sus AVISOS (líneas desbordadas,
+marcadores, `\minutos` que no suman 30) y pásalos al editor.
 
 ### 6. calidad — agente `tema-control-calidad`
 Ejecuta `verificar-tema.py`, revisa PDF, HTML y Word, y lee el informe. Si
@@ -138,6 +145,8 @@ anota en `canon/pendientes-coherencia.md` con qué hay que cambiar.
 
 ## Entrega 2: la ficha de repaso (`--fase repaso`, con el tema aprobado)
 
+Solo con `aprobado.tema` en `estado.json` (igual que la entrega 3 exige
+`aprobado.repaso`), salvo que Víctor pida expresamente saltarse la parada.
 Agente `tema-repaso`: escribe `D/repaso/T-repaso.tex` (cuatro páginas a dos columnas) y la
 compila con `construir-repaso.py T`; luego
 `construir-tema.py T --solo html` (para que la página enlace la ficha) y
@@ -149,10 +158,14 @@ aprobada, regenera también el manifiesto de la app con `manifiesto-app.py`).
 ## Entrega 3: el vídeo (`--fase video`, con tema y ficha aprobados)
 
 1. `tema-guionista` → `D/guion-cante.md` y `D/video/escenas.yaml`, con todas
-   las reglas de CRITERIOS («Vídeo»): pregunta de enganche y respuesta en el
-   cierre, registro cercano con énfasis y pausas, voz que no se para,
-   coordinación exacta voz–pizarra, apoyo visual, rejilla. Itera con
-   `generar-video.py T --borrador --medir` hasta 0 avisos y ritmo ×0,95–1,05.
+   las reglas de CRITERIOS («Vídeo») y las «Instrucciones para el vídeo» de
+   `D/revision.md`: pregunta de enganche y respuesta en el cierre, registro
+   cercano con énfasis y pausas, voz que no se para, coordinación exacta
+   voz–pizarra, apoyo visual, rejilla. Itera con
+   `generar-video.py T --borrador --medir` hasta 0 avisos y ritmo ×0,95–1,05
+   (el script termina con código 3 si el ritmo se sale). Es el único que
+   escribe el guion y las escenas: `tema-video` solo monta y comprueba, y le
+   devuelve los avisos.
 2. **Mientras no esté el ordenador nuevo** (Víctor, 14/10/2026): el vídeo se
    monta **sin audio** (`generar-video.py T --borrador`, duración estimada) y
    se le pasa para revisar la pizarra. La voz de todos los temas se pone de
@@ -163,21 +176,25 @@ aprobada, regenera también el manifiesto de la app con `manifiesto-app.py`).
    `R/oposicion/temario/videos/` (fuera de git): **no se publican** hasta
    que Víctor tenga todos y los suba a YouTube; entonces se rellena
    `oposicion/temario/videos.json`.
-3. Commit y push del guion y las escenas. **Parada**.
+3. Commit y push del guion y las escenas. **Parada**. Cuando Víctor apruebe
+   el borrador, anota `aprobado.video` con la fecha en `estado.json` (es lo que
+   `voz-todos.py` usa para poner voz); el enlace de YouTube lo anota Víctor en
+   `oposicion/temario/videos.json` al subirlo.
 
 ## `--fase coherencia` (tema ya revisado)
 
 Agente `tema-coherencia` en modo ligero: aplica al tema las entradas de
 `canon/pendientes-coherencia.md` que le tocan (notación, presentación del
 modelo, referencias) a través de `tema-editor-lyx`; se reconstruye, se
-publica en la rama y se borra la entrada. Si cambia algo que sale en la ficha
-o en el vídeo, se anota para rehacerlos.
+publica en la rama y `tema-canon` marca la entrada como `[hecho: fecha]`. Si
+cambia algo que sale en la ficha o en el vídeo, se anota para rehacerlos.
 
 ## `--canon`: repaso general del temario
 
-Agentes en paralelo por grupos de bloques (solo lectura) que dejan un
-inventario por tema en `canon/_inventario/<T>.json` (formato en
-`canon/_inventario/LEEME-agentes.md`); después `tema-canon` lo consolida en
+Agentes `tema-inventario` en paralelo por grupos de bloques (leen los temas y
+solo escriben su inventario) que dejan un inventario por tema en
+`canon/_inventario/<T>.json` (formato en `canon/_inventario/LEEME-agentes.md`);
+después `tema-canon` lo consolida en
 `notacion.md`, `modelos/`, `mapa.yaml` e `informe-repaso.md` (referencias
 rotas, modelos contados de forma distinta, notaciones en conflicto y orden de
 revisión propuesto). Se hace una vez al principio y se puede repetir.
@@ -221,4 +238,9 @@ Breve, en castellano:
 - Ningún agente toca otros temas ni `main` (los cambios a otros temas pasan
   por `canon/pendientes-coherencia.md`).
 - Si Víctor pide cambiar cómo se revisa, el cambio va a `CRITERIOS.md` (o a
-  los agentes) en esta rama, con su commit.
+  los agentes) en esta rama, con su commit. Las cifras (minutos, palabras,
+  ritmo, páginas de la ficha) están solo en su tabla «Parámetros».
+- Si cambian las plantillas o los scripts comunes, se reconstruyen los temas
+  ya revisados con `python3 R/scripts/temario/reconstruir-todos.py --revisados`
+  (dos pasadas, verificación y publicación de una vez) y se comparan páginas y
+  avisos antes del commit.
