@@ -4,7 +4,9 @@ Enlaza un tema revisado en el índice de su ejercicio y regenera los datos de
 la app y el buscador (último paso de /revisartema, en la rama
 revision-temario; la web no cambia hasta que se fusione con main).
 
-    python3 scripts/temario/publicar-tema.py 3A08
+    python3 scripts/temario/publicar-tema.py 3A08 [3A09 …]
+
+Con varios temas, los enlaza todos y ejecuta los scripts de deno una sola vez.
 
 En oposicion/temario/<ejercicio>.html deja la línea del tema con:
   - el título enlazado a la página web del tema (HTML);
@@ -80,10 +82,18 @@ def enlace_word_anterior(tema):
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print(__doc__)
         sys.exit(2)
-    tema = Tema(sys.argv[1])
+    for codigo in sys.argv[1:]:
+        publicar(Tema(codigo))
+    for script in ('build-app-data.js', 'build-search-index.js'):
+        if os.path.exists(os.path.join(RAIZ, script)):
+            _, salida = ejecutar([DENO, 'run', '-A', '--unstable-detect-cjs', script], cwd=RAIZ, timeout=300)
+            print(f'{script}: {salida.strip().splitlines()[-1] if salida.strip() else "hecho"}')
+
+
+def publicar(tema):
     guardar_pdf_anterior(tema)
     guardar_docx_anterior(tema)
     for ext in ('pdf', 'html', 'docx'):
@@ -118,11 +128,6 @@ def main():
         if nuevo != js:
             open(ruta_buscador, 'w', encoding='utf-8').write(nuevo)
             print(f'build-search-index.js: el tema {tema.codigo} enlaza a su página web')
-
-    for script in ('build-app-data.js', 'build-search-index.js'):
-        if os.path.exists(os.path.join(RAIZ, script)):
-            _, salida = ejecutar([DENO, 'run', '-A', '--unstable-detect-cjs', script], cwd=RAIZ, timeout=300)
-            print(f'{script}: {salida.strip().splitlines()[-1] if salida.strip() else "hecho"}')
 
 
 if __name__ == '__main__':

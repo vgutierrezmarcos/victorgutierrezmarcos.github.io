@@ -6,7 +6,9 @@ LyX (o LaTeX) en oposicion/temario/fuentes/<tema>/.
     python3 scripts/temario/construir-tema.py 3A08 [--solo pdf|html|docx|graficos]
 
 Pasos:
-  1. Pone a la par T.lyx y T.tex (manda el más reciente; ver sincronizar_lyx).
+  1. Pone a la par T.lyx y T.tex según las huellas guardadas en estado.json: si
+     solo cambió el .lyx, se exporta a .tex; si solo el .tex, se regenera el
+     .lyx; si los dos, se para y avisa (ver sincronizar_lyx).
   2. Compila cada gráfico de graficos/*.tex (TikZ standalone) a PDF y de ahí
      saca un SVG (para la web, con pdftocairo) y un PNG a 300 ppp (para Word).
   3. Compila el PDF del tema (pdflatex + biber + pdflatex ×2).
@@ -65,24 +67,52 @@ def sincronizar_lyx(tema):
     """Mantiene a la par T.lyx y T.tex, ambos en git.
 
     El .tex es la fuente de los agentes; el .lyx se regenera a partir de él
-    para que Víctor pueda abrir el tema en LyX. Solo si Víctor ha editado el
-    .lyx (su contenido ya no es el que generó tex2lyx) se exporta a .tex.
-    Sin LyX, o si LyX falla, se avisa y se sigue con el .tex.
+    para que Víctor pueda abrir el tema en LyX. En estado.json («huellas») se
+    guarda el SHA-1 de los dos ficheros tal como quedaron la última vez que se
+    construyó el tema:
+      - si solo ha cambiado el .lyx (Víctor lo editó en LyX), se exporta a .tex;
+      - si solo ha cambiado el .tex (los agentes), se regenera el .lyx;
+      - si han cambiado los dos, se para con un error: nunca se pisa ninguno
+        (hay que decidir cuál manda y exportarlo a mano).
+    Sin huellas (primera vez), manda el más reciente por fecha. Sin LyX, o si
+    LyX falla, se avisa y se sigue con el .tex.
     """
     tex = os.path.join(tema.dir, f'{tema.archivo}.tex')
-    marca = os.path.join(tema.trabajo, 'lyx-generado.sha1')
     if not LYX or not TEX2LYX:
         return 'LyX no está instalado: se usa solo el .tex'
-    generado = open(marca).read().strip() if os.path.exists(marca) else None
-    if os.path.exists(tema.lyx) and generado and _huella_fichero(tema.lyx) != generado:
+    estado = tema.estado()
+    huellas = dict(estado.get('huellas') or {})
+    marca_antigua = os.path.join(tema.trabajo, 'lyx-generado.sha1')    # formato anterior (hasta 19/10/2026)
+    if 'lyx' not in huellas and os.path.exists(marca_antigua):
+        huellas['lyx'] = open(marca_antigua).read().strip()
+    hay_lyx = os.path.exists(tema.lyx)
+    lyx_cambiado = hay_lyx and huellas.get('lyx') is not None and _huella_fichero(tema.lyx) != huellas['lyx']
+    tex_cambiado = (os.path.exists(tex) and huellas.get('tex') is not None
+                    and _huella_fichero(tex) != huellas['tex'])
+
+    def guardar_huellas():
+        estado['huellas'] = {'lyx': _huella_fichero(tema.lyx) if os.path.exists(tema.lyx) else None,
+                             'tex': _huella_fichero(tex) if os.path.exists(tex) else None}
+        tema.guardar_estado(estado)
+        if os.path.exists(marca_antigua):
+            os.remove(marca_antigua)
+
+    if lyx_cambiado and tex_cambiado:
+        raise RuntimeError(
+            f'{tema.archivo}.lyx y {tema.archivo}.tex han cambiado los dos desde la última construcción: '
+            'no se pisa ninguno. Decide cuál manda: si el .lyx, expórtalo en LyX (Archivo > Exportar > '
+            f'LaTeX (pdflatex)) sobre {tema.archivo}.tex; si el .tex, borra las huellas de estado.json '
+            '(o el .lyx) y vuelve a construir.')
+    if lyx_cambiado:
         cod, salida = _lyx_windows(LYX, ['--batch', '-E', 'pdflatex', f'{tema.archivo}.tex', f'{tema.archivo}.lyx'],
                                    tema.dir)
         if cod != 0 or os.path.getmtime(tex) < os.path.getmtime(tema.lyx):
             return (f'AVISO: {tema.archivo}.lyx se ha editado en LyX pero no se pudo exportar desde aquí: '
                     f'en LyX, Archivo > Exportar > LaTeX (pdflatex) sobre {tema.archivo}.tex, y volver a construir')
-        open(marca, 'w').write(_huella_fichero(tema.lyx))
+        guardar_huellas()
         return f'{tema.archivo}.lyx (editado en LyX) → {tema.archivo}.tex'
-    if not os.path.exists(tema.lyx) or os.path.getmtime(tex) > os.path.getmtime(tema.lyx) + 1:
+    primera_vez = huellas.get('tex') is None
+    if not hay_lyx or tex_cambiado or (primera_vez and os.path.getmtime(tex) > os.path.getmtime(tema.lyx) + 1):
         # El módulo tcee.module convierte \\autor, \\concepto, las cajas… en elementos de LyX
         modulo = os.path.join(os.environ.get('LYX_USERDIR', '/mnt/c/Users/vgutierrez/AppData/Roaming/LyX2.4'),
                               'layouts', 'tcee.module')
@@ -94,9 +124,10 @@ def sincronizar_lyx(tema):
             if os.path.exists(tema.lyx) and os.path.getsize(tema.lyx) == 0:
                 os.remove(tema.lyx)
             return f'AVISO: tex2lyx no pudo generar {tema.archivo}.lyx: {salida.strip()[-300:]}'
-        os.makedirs(tema.trabajo, exist_ok=True)
-        open(marca, 'w').write(_huella_fichero(tema.lyx))
+        guardar_huellas()
         return f'{tema.archivo}.tex → {tema.archivo}.lyx'
+    if primera_vez or huellas.get('lyx') is None:
+        guardar_huellas()
     return 'LyX y LaTeX ya estaban a la par'
 
 
@@ -112,7 +143,7 @@ def exportar_latex(tema):
 
 
 def datos_documento(tex):
-    texto = open(tex, encoding='utf-8').read()
+    texto = re.sub(r'(?<!\\)%[^\n]*', '', open(tex, encoding='utf-8').read())   # sin comentarios
     m = re.search(r'\\tcetema(?:\[[^\]]*\])?\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto)
     f = re.search(r'\\tcefecha\{([^}]*)\}', texto)
     # Se admiten medios minutos: \minutos{2,5}
@@ -194,9 +225,37 @@ def compilar_pdf(tema, tex):
         cod, _ = ejecutar(orden, cwd=tema.dir, env=env, timeout=900, comprobar=False)
         if cod != 0:
             raise RuntimeError('Error de LaTeX:\n' + '\n\n'.join(errores_log(log)))
+    return os.path.join(tema.trabajo, nombre[:-4] + '.pdf'), avisos_pdf(log, tema)
+
+
+def avisos_pdf(log, tema):
+    """Avisos del .log de LaTeX (y del .blg de biber) que conviene mirar:
+    referencias o citas sin definir, cajas desbordadas de más de 2 pt, marcadores
+    con órdenes no admitidas (hyperref «Token not allowed»), «Rerun» (hacen falta
+    más pasadas), caracteres que faltan en la fuente y avisos de biber."""
     texto_log = open(log, encoding='latin-1').read()
     avisos = sorted(set(re.findall(r'(?:LaTeX|Package \w+) Warning: ([^\n]*(?:undefined|multiply)[^\n]*)', texto_log)))
-    return os.path.join(tema.trabajo, nombre[:-4] + '.pdf'), avisos
+    desbordes = [(float(pt), lin) for pt, lin in
+                 re.findall(r'Overfull \\hbox \(([\d.]+)pt too wide\) in paragraph at lines (\d+)--', texto_log)
+                 if float(pt) > 2]
+    if desbordes:
+        peor = max(desbordes)
+        avisos.append(f'{len(desbordes)} líneas desbordadas más de 2 pt (la peor, {peor[0]:.1f} pt en la línea '
+                      f'{peor[1]} del .tex): acortar o permitir el corte')
+    n = texto_log.count('Token not allowed in a PDF string')
+    if n:
+        avisos.append(f'{n} marcadores del PDF con órdenes que hyperref quita (ver «Token not allowed» en el .log)')
+    if re.search(r'Rerun to get|Label\(s\) may have changed', texto_log):
+        avisos.append('LaTeX pide otra pasada (referencias que cambiaron): volver a construir')
+    faltan = sorted(set(re.findall(r'Missing character: There is no (\S+) in font', texto_log)))
+    if faltan:
+        avisos.append('Caracteres que no tiene la fuente: ' + ' '.join(faltan[:10]))
+    blg = os.path.join(tema.trabajo, f'{tema.archivo}.blg')
+    if os.path.exists(blg):
+        for m in sorted(set(re.findall(r'WARN - (.*)', open(blg, encoding='utf-8', errors='replace').read())))[:10]:
+            if 'Duplicate entry' in m or 'not found' in m or 'Invalid' in m or 'conflicts' in m:
+                avisos.append('biber: ' + m.strip())
+    return avisos
 
 
 # --- 4. HTML y Word --------------------------------------------------------------------
@@ -217,6 +276,34 @@ def etiquetas_aux(tema):
     # Los elementos de una lista (enumitem) guardan el número entre llaves de más:
     # \newlabel{cond:x}{{{3}}{16}…}; se quitan para que quede «3»
     return {m.group(1): m.group(2) for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{+([^{}]*)\}', texto)}
+
+
+def titulos_aux(tema):
+    """Título del apartado de cada etiqueta según el .aux (para \\nameref):
+    \\newlabel{sec:x}{{I.2}{7}{Título}{section.2.2}{}} → {'sec:x': 'Título'}."""
+    aux = os.path.join(tema.trabajo, f'{tema.archivo}.aux')
+    if not os.path.exists(aux):
+        return {}
+    texto = open(aux, encoding='utf-8', errors='replace').read()
+    titulos = {}
+    for m in re.finditer(r'\\newlabel\{([^}]+)\}\{\{[^{}]*\}\{[^{}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}', texto):
+        t = re.sub(r'\\(?:newline|\\)\s*', ' ', m.group(2))
+        t = re.sub(r'\\[a-zA-Z@]+\s*', '', t).replace('{', '').replace('}', '').strip()
+        if t:
+            titulos[m.group(1)] = t
+    return titulos
+
+
+def listas_etiquetadas(cuerpo):
+    """enumitem [label=\\roman*)] / [label=\\alph*)]… → la forma del paquete
+    enumerate ([i)], [a)]), que pandoc sí entiende (<ol type="i">); con la de
+    enumitem pierde la numeración y saca 1., 2."""
+    formas = {'roman': 'i', 'Roman': 'I', 'alph': 'a', 'Alph': 'A', 'arabic': '1'}
+
+    def cambiar(m):
+        antes, tipo, despues = m.group(1), m.group(2), m.group(3)
+        return f'\\begin{{enumerate}}[{antes}{formas[tipo]}{despues}]'
+    return re.sub(r'\\begin\{enumerate\}\[label=([(]?)\\(roman|Roman|alph|Alph|arabic)\*([.)\]]?)[^\]]*\]', cambiar, cuerpo)
 
 
 def numerar_anexos(cuerpo):
@@ -359,9 +446,27 @@ def preparar_pandoc(tema, tex, formato):
     # \grafico[\textwidth]: pandoc no entiende un ancho sin número y deja el
     # gráfico pequeño en la web; se trata como 1\textwidth
     cuerpo = re.sub(r'(?<![\d.])\\(textwidth|linewidth|columnwidth)\b', r'1\\\1', cuerpo)
+    cuerpo = listas_etiquetadas(cuerpo)
     cuerpo = re.sub(r'\\eqref\{([^}]+)\}',
                     lambda m: f'(\\hyperref[{m.group(1)}]{{{numeros.get(m.group(1), "?")}}})', cuerpo)
-    cuerpo = re.sub(r'\\(?:auto|c|C|name)?ref\{([^}]+)\}',
+    # \nameref: el título del apartado; \pageref: la web y el Word no tienen las
+    # páginas del PDF, así que «pág.~\pageref{x}» pasa a ser un enlace con el
+    # número de lo citado (ecuación, gráfico, apartado) o «véase»
+    titulos = titulos_aux(tema)
+    cuerpo = re.sub(r'\\nameref\{([^}]+)\}',
+                    lambda m: f'\\hyperref[{m.group(1)}]{{{titulos.get(m.group(1)) or numeros.get(m.group(1), "?")}}}', cuerpo)
+
+    def pagina(m):
+        e = m.group(1)
+        n = numeros.get(e)
+        tipo = {'eq': 'ecuación ', 'fig': 'gráfico ', 'tab': 'tabla ', 'sec': 'apartado ', 'anexo': 'anexo '}
+        prefijo = next((v for k, v in tipo.items() if e.startswith(k + ':')), None)
+        texto = f'{prefijo}{n}' if n and prefijo else 'véase'
+        if prefijo == 'ecuación ' and n:
+            texto = f'ecuación ({n})'
+        return f'\\hyperref[{e}]{{{texto}}}'
+    cuerpo = re.sub(r'(?:p[áa]g(?:ina)?s?\.?[~ ]*)?\\pageref\{([^}]+)\}', pagina, cuerpo)
+    cuerpo = re.sub(r'\\(?:auto|c|C)?ref\{([^}]+)\}',
                     lambda m: f'\\hyperref[{m.group(1)}]{{{numeros.get(m.group(1), "?")}}}', cuerpo)
 
     def etiqueta(m):
@@ -854,6 +959,8 @@ def main():
             print('Publicado en la rama:', os.path.relpath(destino, TEMARIO))
     if datos['duracion']:
         print(f'Duración del cante según \\minutos: {datos["duracion"]} min')
+        if datos['duracion'] != '30':
+            print('AVISO: los \\minutos no suman 30 (CRITERIOS §2)')
 
 
 if __name__ == '__main__':

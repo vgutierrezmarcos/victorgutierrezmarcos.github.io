@@ -1,16 +1,5 @@
 \documentclass{article}
 \usepackage{tcee-repaso}
-% Colores de las tablas del tema (tcee.sty)
-\definecolor{tceeazulpalido}{HTML}{DDEBF7}
-\definecolor{tceesalmon}{HTML}{FBE4D5}
-% Funciones clave en morado y recuadradas, como en el tema (tcee.sty)
-\tcbset{tcee funcion clave/.style={enhanced,nobeforeafter,colback=tceemoradopalido!70!white,
-  colframe=tceemorado,colupper=tceemorado,boxrule=0.6pt,arc=1.5pt,left=4pt,right=4pt,top=2pt,bottom=2pt}}
-\providecommand{\funcionclave}[1]{\par\vspace{1pt}{\centering$\tcbhighmath[tcee funcion clave]{\displaystyle #1}$\par}\vspace{2pt}}
-% Dos gráficos lado a lado: \pareja{nombre1}{pie1}{nombre2}{pie2}
-\newcommand{\pareja}[4]{\par\vspace{2pt}\noindent
-  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#1}{#2}\end{minipage}\hfill
-  \begin{minipage}[b]{0.49\linewidth}\graficorepaso[\linewidth]{#3}{#4}\end{minipage}\par}
 \tcetema[Análisis de mercados (II): el monopolio]{3.A.17}{Análisis de mercados (II). Teoría del monopolio. Discriminación de precios. Monopolio natural. Producción conjunta. Análisis de eficiencia y bienestar. Monopsonio. Monopolio bilateral.}
 \tcefecha{18/10/2026}
 \begin{document}

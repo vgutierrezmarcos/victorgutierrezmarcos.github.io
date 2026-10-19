@@ -1,0 +1,176 @@
+% ==========================================================================
+% tcee-comun.sty — Lo que comparten el tema (tcee.sty) y la ficha de repaso
+% (tcee-repaso.sty): idioma, Palatino, colores, datos del tema, minutos sin
+% decimales, énfasis (\autor, \concepto, \vect), enlaces a otros temas
+% (\vertema), problemas de optimización (\optim), estilo de las funciones
+% clave, ∎ de fin de demostración y la licencia.
+% Oposición a Técnico Comercial y Economista del Estado
+% Autor: Víctor Gutiérrez Marcos
+%
+% No se usa directamente: lo cargan tcee.sty y tcee-repaso.sty. Si se añade
+% una orden aquí, hay que añadir su equivalente en pandoc-macros.tex, tcee.lua
+% o construir-tema.py (web y Word) y, si LyX debe entenderla, en tcee.module.
+% ==========================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tcee-comun}[2026/10/19 Base común de los temas y fichas TCEE]
+
+% --- Idioma y codificación ------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish,es-noshorthands,es-tabla,es-nodecimaldot]{babel}
+% \min, \max, \lim… sin tilde: con newpxmath, la tilde de babel deja «mın» sin
+% punto en la i (y el castellano técnico no la usa en los operadores)
+\unaccentedoperators
+\RequirePackage{csquotes}
+
+% --- Tipografía: Palatino (texto y matemáticas) ----------------------------
+\RequirePackage{amsmath}
+\RequirePackage{newpxtext}
+\RequirePackage{newpxmath}
+\RequirePackage{microtype}
+\RequirePackage{mathtools}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs,tabularx,array}
+\RequirePackage{enumitem}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{etoolbox}
+
+% --- Colores -----------------------------------------------------------------
+\RequirePackage[dvipsnames,table]{xcolor}
+\definecolor{tceemorado}{HTML}{5F2987}
+\definecolor{tceemoradooscuro}{HTML}{4A1F6B}
+\definecolor{tceemoradopalido}{HTML}{F3EEF7}
+\definecolor{tceesalvia}{HTML}{E2EFD9}
+\definecolor{tceesalviaoscuro}{HTML}{C8D8C0}
+\definecolor{tceedorado}{HTML}{B8860B}
+\definecolor{tceegris}{HTML}{767171}
+\definecolor{tceegrisclaro}{HTML}{E7E6E6}
+\definecolor{tceecrema}{HTML}{FAF9F6}
+% Colores de las tablas de clasificación (como en los temas en Word). Verde,
+% azul, rojo y dorado son los mismos de los gráficos (latex/tikz-tcee.tex), para
+% que una categoría salga igual en las tablas y en los gráficos: normal y
+% sustitutivos en verde, inferior y complementarios en dorado, ordinario en
+% azul y Giffen en rojo. Si se cambian, cambiar también tikz-tcee.tex, tcee.lua,
+% tema.css y scripts/temario/crear-reference-docx.py.
+\definecolor{tceeverde}{HTML}{3C7D3A}
+\definecolor{tceeazul}{HTML}{1F5F99}
+\definecolor{tceenaranja}{HTML}{E07B28}
+\definecolor{tceerojo}{HTML}{B22222}
+\definecolor{tceeazulpalido}{HTML}{DDEBF7}
+\definecolor{tceesalmon}{HTML}{FBE4D5}
+
+% --- Datos del tema ----------------------------------------------------------
+\newcommand{\tcee@codigo}{}
+\newcommand{\tcee@titulo}{}
+\newcommand{\tcee@fecha}{\today}
+\newcommand{\tcee@corto}{}
+% \tcetema[título corto para la cabecera]{código}{título oficial}
+\newcommand{\tcetema}[3][]{\renewcommand{\tcee@codigo}{#2}\renewcommand{\tcee@titulo}{#3}%
+  \if\relax\detokenize{#1}\relax\renewcommand{\tcee@corto}{#3}\else\renewcommand{\tcee@corto}{#1}\fi}
+\newcommand{\tcefecha}[1]{\renewcommand{\tcee@fecha}{#1}\tcee@sacaanno#1////\@nil}
+\newcommand{\tceecodigo}{\tcee@codigo}
+% Año de la licencia: el de \tcefecha{dd/mm/aaaa} (el año en curso si la fecha no es así)
+\newcommand{\tcee@anno}{\the\year}
+\def\tcee@sacaanno#1/#2/#3/#4\@nil{\if\relax\detokenize{#3}\relax\else\edef\tcee@anno{\zap@space#3 \@empty}\fi}
+
+% --- Licencia (CC BY-NC-ND 4.0) ----------------------------------------------------
+% El texto está solo aquí (scripts/temario/comun.py lo lee de este fichero para
+% la web, el Word y el vídeo). \tcee@licenciaxmp va después de hyperref.
+\newcommand{\tcee@licenciaurl}{https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es}
+\newcommand{\tcee@licenciaurllegal}{https://creativecommons.org/licenses/by-nc-nd/4.0/}
+\newcommand{\tcee@licenciapermisos}{puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo}
+\newcommand{\tcee@licenciaxmp}{%
+  \RequirePackage{hyperxmp}%
+  % keeppdfinfo: sin él, hyperxmp quita el autor y las palabras clave del diccionario Info
+  \hypersetup{keeppdfinfo,pdfauthor={Víctor Gutiérrez Marcos}}%
+  \AtBeginDocument{\hypersetup{pdfcopyright={© \tcee@anno\ Víctor Gutiérrez Marcos. Licencia CC BY-NC-ND 4.0: \tcee@licenciapermisos.},
+    pdflicenseurl={\tcee@licenciaurllegal},
+    pdfcontacturl={https://www.victorgutierrezmarcos.es/}}}}
+
+% --- Minutos del cante sin decimales ------------------------------------------------
+% \tceemmss{2,5} → 2′30″; 26,5 → 26′30″; 1 → 1′. En el texto, \tiempo{2,5}
+% (nunca «2,5 minutos»); tras el título de un apartado, \minutos{2,5} (tcee.sty)
+% o \bloque[2,5] (ficha).
+\ExplSyntaxOn
+\tl_new:N \l__tcee_mmss_tl
+\int_new:N \l__tcee_mmss_int
+\cs_new_protected:Npn \tceemmss #1
+  {
+    \tl_set:Nx \l__tcee_mmss_tl { \tl_trim_spaces:n {#1} }
+    \tl_replace_all:Nnn \l__tcee_mmss_tl { , } { . }
+    \regex_match:nVTF { \A \d+ (\.\d+)? \Z } \l__tcee_mmss_tl
+      {
+        \int_set:Nn \l__tcee_mmss_int { \fp_eval:n { round ( ( \l__tcee_mmss_tl ) * 60 ) } }
+        \int_eval:n { \int_div_truncate:nn { \l__tcee_mmss_int } { 60 } }
+        \ensuremath { \sp { \prime } }
+        \int_compare:nNnF { \int_mod:nn { \l__tcee_mmss_int } { 60 } } = { 0 }
+          {
+            \int_compare:nNnT { \int_mod:nn { \l__tcee_mmss_int } { 60 } } < { 10 } { 0 }
+            \int_eval:n { \int_mod:nn { \l__tcee_mmss_int } { 60 } }
+            \ensuremath { \sp { \prime\prime } }
+          }
+      }
+      { #1 }
+  }
+\ExplSyntaxOff
+\newcommand{\tiempo}[1]{\mbox{\tceemmss{#1}}}
+
+% --- Énfasis propios ----------------------------------------------------------
+% Personas: apellido en versalitas SIEMPRE que se nombra a alguien en el texto
+% (\autor{Marshall}); el nombre de pila y el año van en redonda. Las citas
+% (\textcite, \parencite) ya ponen el apellido en versalitas (tcee.sty).
+\newcommand{\autor}[1]{\textsc{#1}}                        % \autor{Marshall} (1890)
+% Vectores: flecha encima (\vect{x}, \vect{p}); los escalares sin flecha.
+\providecommand{\vect}[1]{\vec{#1}}
+\newcommand{\concepto}[1]{\textbf{#1}}                     % término clave
+
+% --- Enlaces a otros temas -----------------------------------------------------------
+% \vertema{3.A.12} es un enlace al tema citado: al PDF del tema en la web o, si
+% aún no está disponible, a tema-no-disponible.html. Los destinos los escribe
+% scripts/temario (comun.py, escribir_destinos_tex) en latex/tcee-destinos.tex a
+% partir de temario.json: \tceedestino{3.A.12}{https://…/3A12.pdf}. Con un
+% intervalo (\vertema{3.A.16-3.A.19}) enlaza al primer tema. Si el tema no está
+% en la tabla, sale sin enlace (verificar-tema.py lo señala). El texto del enlace
+% lo pone \tcee@textovertema: «[ver tema 3.A.12]» en el tema, «[3.A.12]» en la ficha.
+\providecommand{\tceedestino}[2]{\expandafter\gdef\csname tcee@destino@#1\endcsname{#2}}
+\InputIfFileExists{tcee-destinos.tex}{}{}
+\def\tcee@primertema#1-#2\@nil{#1}
+\newcommand{\tcee@enlacetema}[2]{% #1 código citado, #2 texto
+  \begingroup\edef\tcee@vt{\tcee@primertema#1-\@nil}%
+  \@ifundefined{tcee@destino@\tcee@vt}{#2}%
+    {\href{\csname tcee@destino@\tcee@vt\endcsname}{#2}}%
+  \endgroup}
+\newcommand{\tcee@textovertema}[1]{[ver tema #1]}
+% Gris y sin subrayar (hyperref usa colorlinks; el \color de dentro manda)
+\newcommand{\vertema}[1]{\tcee@enlacetema{#1}{{\color{tceegris}\tcee@textovertema{#1}}}}
+
+% --- Fórmulas: funciones clave y problemas de optimización ------------------------
+% Estilo de las funciones clave (morada, recuadrada, fondo morado pálido); el
+% tema y la ficha definen \funcionclave sobre él (en display con número
+% opcional en el tema; centrada y compacta en la ficha).
+\tcbset{tcee funcion clave/.style={enhanced,nobeforeafter,colback=tceemoradopalido!70!white,
+  colframe=tceemorado,colupper=tceemorado,boxrule=0.8pt,arc=2pt,left=8pt,right=8pt,top=4pt,bottom=4pt}}
+% \optim{\max}{\vect{z}}{p\,F(\vect{z})-\vect{w}\cdot\vect{z}}{F(\vect{z})\geq q\\ \vect{z}\geq\vect{0}}
+% → problema de optimización: «max» con la variable debajo y la función
+% objetivo en la primera línea; debajo, «s.a.» y cada restricción en su línea
+% (separadas por \\), alineadas. Va dentro de $$…$$, \[…\], equation o
+% \funcionclave. Sin restricciones: {} en el cuarto argumento. Para la web y
+% Word, construir-tema.py lo expande a un array antes de pandoc.
+\ExplSyntaxOn
+\seq_new:N \l__tcee_restr_seq
+\NewDocumentCommand{\optim}{mmmm}
+  {
+    \seq_set_split:Nnn \l__tcee_restr_seq { \\ } {#4}
+    \seq_remove_all:Nn \l__tcee_restr_seq { }
+    \begin{array}{@{}r@{\quad}l@{}}
+      \displaystyle #1 \sb { #2 } & \displaystyle #3
+      \seq_if_empty:NF \l__tcee_restr_seq
+        { \\ [2pt] \text{s.a.} & \seq_use:Nn \l__tcee_restr_seq { \\ [2pt] & } }
+    \end{array}
+  }
+\ExplSyntaxOff
+% \findemo → ∎ al final de una demostración, alineado a la derecha (Víctor,
+% 17/10/2026). En una fórmula en display va tras un \quad.
+\newcommand{\findemo}{\ifmmode\quad\blacksquare\else\unskip\nobreak\hfill\penalty50\hskip1em\null\nobreak\hfill$\blacksquare$\fi}
+
+\endinput

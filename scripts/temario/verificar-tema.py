@@ -18,11 +18,25 @@ Errores (el tema no está terminado):
     apartado, anexo, gráfico, tabla o ecuación escrita a mano sin \\ref (o
     \\hyperref en la ficha), un «[ver tema …]» del PDF o de la ficha sin enlace
     encima, o un enlace interno del HTML o del Word sin destino;
-  - falta revision.md (el guion y las escenas del vídeo son de la entrega 3: solo avisa).
+  - falta revision.md o alguna de sus secciones (el guion y las escenas del
+    vídeo son de la entrega 3: solo avisa);
+  - los \\minutos no suman 30, o la introducción y la conclusión no duran lo
+    que dice CRITERIOS §2 (2′–2′30″ y 1′–1′30″); minutos con decimales en el
+    texto («2,5 minutos» en vez de \\tiempo{2,5});
+  - un bloque i), ii)… con \\paragraph en vez de \\subparagraph; la bibliografía
+    antes de los anexos;
+  - «se ha visto en el tema…» (cada tema se canta solo), nombres de
+    preparadores (referencias.json) o enlaces a quia.com;
+  - la ficha de repaso no tiene cuatro páginas o es anterior a su fuente;
+  - un título queda al pie de una página del PDF, o una fórmula destacada
+    separada de la frase que la presenta.
 
 Avisos (para que los mire el control de calidad):
   - párrafos con cifras (%, millones, años recientes) sin cita en ese párrafo;
-  - palabras del guion y de la narración del vídeo lejos de ≈4.700;
+  - apellidos de la bibliografía escritos sin \\autor{}; demostraciones sin
+    \\findemo; letras a), b)… que no van seguidas; más o menos de tres apartados;
+  - palabras del guion y de la narración del vídeo lejos de ≈4.700; pasos del
+    vídeo sin narración, con más de dos pausas o con un apoyo que no existe;
   - números de tema dichos en voz alta.
 Y comprueba los criterios del cante: sin saludo al tribunal, conclusión que
 empieza por «En conclusión» y sin gracias al final.
@@ -39,7 +53,8 @@ from comun import Tema, paginas_partes, destinos_temas, primer_tema  # noqa: E40
 
 PALABRAS_POR_MINUTO = 158  # borrador de generar-video.py (≈2,75 palabras/s) con las pausas
 SECCIONES_INFORME = ['Resumen', 'Errores corregidos', 'Marcas resueltas', 'Datos actualizados',
-                     'Coherencia', 'Dudas abiertas']
+                     'Contenido añadido', 'Coherencia', 'Dudas abiertas']
+SECCIONES_INFORME_OPCIONALES = ['Instrucciones para el vídeo']   # CRITERIOS §9.8 (desde el 19/10/2026): solo avisa
 
 
 def leer(ruta):
@@ -188,22 +203,6 @@ def comprobar_remisiones(tema, tex, errores, datos):
         if sin_enlace > 5:
             errores.append(f'{os.path.basename(ruta)}: {sin_enlace} remisiones a temas sin enlace en total')
     # HTML: los \\vertema enlazados y todos los enlaces internos con destino
-    # Una fórmula destacada no puede separarse de lo que la presenta (Víctor,
-    # 19/10/2026): ni tras una línea en blanco ni tras el cierre de una lista
-    # cuando la línea anterior no acaba en punto (va dentro de la viñeta).
-    fuente_tex = leer(os.path.join(tema.dir_fuente, f'{tema.archivo}.tex')) if hasattr(tema, 'dir_fuente') else None
-    if fuente_tex is None:
-        fuente_tex = leer(os.path.join(os.path.dirname(tema.trabajo), f'{tema.archivo}.tex'))
-    if fuente_tex:
-        lineas_tex = fuente_tex.split('\n')
-        for i, l in enumerate(lineas_tex):
-            if re.match(r'\s*(\\funcionclave|\\begin\{(equation|align|gather)|\\\[)', l):
-                j, blanco = i - 1, False
-                while j >= 0 and not lineas_tex[j].strip():
-                    blanco, j = True, j - 1
-                previa = lineas_tex[j].rstrip() if j >= 0 else ''
-                if (blanco or re.match(r'\s*\\end\{(itemize|enumerate)\}', previa)) and not previa.endswith('.'):
-                    errores.append(f'Fórmula separada de lo que la presenta (l. {i + 1} del .tex): va dentro de la viñeta o del párrafo, sin línea en blanco')
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
     if html:
         spans = html.count('<span class="vertema"')
@@ -231,6 +230,137 @@ def comprobar_remisiones(tema, tex, errores, datos):
             errores.append(f'Word: {total - dentro} de {total} remisiones a temas sin hipervínculo')
 
 
+def comprobar_formulas_separadas(tex, errores):
+    """Una fórmula destacada no puede separarse de lo que la presenta (Víctor,
+    19/10/2026): ni tras una línea en blanco ni tras el cierre de una lista
+    cuando la línea anterior no acaba en punto (va dentro de la viñeta)."""
+    lineas = tex.split('\n')
+    for i, l in enumerate(lineas):
+        if re.match(r'\s*(\\funcionclave|\\begin\{(equation|align|gather|multline|eqnarray)|\\\[|\$\$)', l):
+            j, blanco = i - 1, False
+            while j >= 0 and not lineas[j].strip():
+                blanco, j = True, j - 1
+            previa = re.sub(r'(?<!\\)%.*$', '', lineas[j]).rstrip() if j >= 0 else ''
+            if (blanco or re.match(r'\s*\\end\{(itemize|enumerate)\}', previa)) and not previa.endswith('.'):
+                errores.append(f'Fórmula separada de lo que la presenta (l. {i + 1} del .tex): '
+                               'va dentro de la viñeta o del párrafo, sin línea en blanco')
+
+
+def apellidos_bib(ruta_bib):
+    """Apellidos de los autores del .bib (los de «Apellido, Nombre»; no las
+    instituciones entre llaves), para avisar de los que salen sin \\autor{}."""
+    texto = leer(ruta_bib) or ''
+    apellidos = set()
+    for campo in re.findall(r'\b(?:author|editor)\s*=\s*\{((?:[^{}]|\{[^{}]*\})*)\}', texto, re.I):
+        for persona in re.split(r'\s+and\s+', campo):
+            if persona.strip().startswith('{') or ',' not in persona:
+                continue
+            apellido = re.sub(r'\{|\}|\\[a-zA-Z]+', '', persona.split(',')[0]).strip()
+            # «de la Fuente» → «Fuente»; partículas fuera
+            apellido = re.sub(r'^(?:de|del|la|las|los|van|von|der|di|da)\s+', '', apellido, flags=re.I)
+            if len(apellido) >= 4 and apellido[0].isupper() and not apellido.isupper() and ' ' not in apellido:
+                apellidos.add(apellido)
+    return apellidos
+
+
+def comprobar_criterios(tema, tex, errores, avisos, datos):
+    """Reglas de CRITERIOS.md (§2 y §6) que se pueden comprobar en la fuente."""
+    sin = re.sub(r'(?<!\\)%[^\n]*', '', tex)
+    cuerpo = sin.split('\\begin{document}', 1)[-1]
+    antes_anexos = cuerpo.split('\\appendix', 1)[0]
+
+    def linea(pos):
+        return cuerpo.count('\n', 0, pos) + 1 + sin.split('\\begin{document}', 1)[0].count('\n')
+
+    # --- Minutos (§2): suman 30; introducción 2′–2′30″; conclusión 1′–1′30″
+    def minutos_tras(titulo):
+        m = re.search(r'\\section\*\{' + titulo + r'\}\s*(?:\\label\{[^}]*\}\s*)?\\minutos\{([\d.,]+)\}', cuerpo)
+        return float(m.group(1).replace(',', '.')) if m else None
+    todos = [float(x.replace(',', '.')) for x in re.findall(r'\\minutos\{(\d+(?:[.,]\d+)?)\}', cuerpo)]
+    if todos:
+        datos['minutos'] = round(sum(todos), 2)
+        if abs(sum(todos) - 30) > 1e-6:
+            errores.append(f'Los \\minutos suman {sum(todos):g}, no 30')
+    for titulo, lo, hi, nombre in (('Introducción', 2, 2.5, 'La introducción'), ('Conclusión', 1, 1.5, 'La conclusión')):
+        mins = minutos_tras(titulo)
+        if mins is None:
+            avisos.append(f'{nombre} no lleva \\minutos justo tras \\section*{{{titulo}}}')
+        elif not lo <= mins <= hi:
+            errores.append(f'{nombre} dura {mins:g} min: debe durar entre {lo:g}′ y {hi:g}′ (CRITERIOS §2)')
+    # Minutos con decimales en el texto («2,5 minutos», «2,5′»): siempre \tiempo{2,5}
+    for m in re.finditer(r'(?<![\d,.])\d+[,.]5\s*(?:min(?:utos?)?\b|′|\\prime)', cuerpo):
+        errores.append(f'Minutos con decimales en el texto (l. {linea(m.start())}): «{m.group(0)}» → \\tiempo{{…}}')
+    # --- Tres apartados (§2)
+    n = len(re.findall(r'^\\section\{', antes_anexos, re.M))
+    datos['apartados'] = n
+    if n and n != 3:
+        avisos.append(f'{n} apartados de primer nivel (CRITERIOS §2: tres siempre que se pueda)')
+    # --- Final del documento (§2): \clearpage antes de \appendix; bibliografía tras los anexos
+    if '\\appendix' in cuerpo and not re.search(r'\\clearpage\s*\\appendix', cuerpo):
+        avisos.append('Falta \\clearpage justo antes de \\appendix')
+    if '\\appendix' in cuerpo and '\\bibliografia' in cuerpo and cuerpo.index('\\bibliografia') < cuerpo.index('\\appendix'):
+        errores.append('La bibliografía (\\bibliografia) va antes que los anexos: tiene que ir al final')
+    # --- Estructura de los modelos (§2): a), b)… seguidas con \paragraph; i), ii)… con \subparagraph
+    for m in re.finditer(r'^\\paragraph\{([ivx]+)\)', cuerpo, re.M):
+        errores.append(f'Bloque «{m.group(1)})» con \\paragraph (l. {linea(m.start())}): los i), ii), iii) van con \\subparagraph')
+    for m in re.finditer(r'^\\subparagraph\{([a-h])\)', cuerpo, re.M):
+        errores.append(f'Bloque «{m.group(1)})» con \\subparagraph (l. {linea(m.start())}): los a), b), c) van con \\paragraph')
+    for trozo in re.split(r'^\\(?:sub)*section\*?\{', cuerpo, flags=re.M):
+        letras = re.findall(r'^\\paragraph\{([a-h])\)', trozo, re.M)
+        tanda = []
+        for le in letras + ['a']:
+            if le == 'a' and tanda:
+                if tanda != [chr(97 + k) for k in range(len(tanda))]:
+                    avisos.append('Letras de los bloques de un modelo no seguidas: ' + ', '.join(f'{x})' for x in tanda)
+                           + ' (CRITERIOS §2: a, b, c… sin huecos)')
+                tanda = []
+            tanda.append(le)
+    # --- Demostraciones con \findemo (§2)
+    for m in re.finditer(r'\\(?:emph|textbf|textit|concepto|paragraph|subparagraph)\{Demostraci[óo]n', cuerpo):
+        resto = cuerpo[m.end():]
+        fin = re.search(r'\\(?:sub)*section\*?\{|\\(?:sub)?paragraph\{|\\end\{(?:anotaciones|document)\}', resto)
+        if '\\findemo' not in resto[:fin.start() if fin else len(resto)]:
+            avisos.append(f'Demostración sin \\findemo al final (l. {linea(m.start())})')
+    # --- Cada tema se canta solo (§2): nunca «se ha visto en el tema…»
+    for m in re.finditer(r'(?:visto|vista|vistos|estudiado|estudiada|estudiados|desarrollado|desarrollada|analizado|'
+                         r'analizada|explicado|explicada|tratado|tratada)\s+(?:ya\s+)?en\s+(?:el|los)\s+temas?\b', cuerpo, re.I):
+        errores.append(f'«{m.group(0)}» (l. {linea(m.start())}): cada tema se canta solo; se remite con \\vertema sin decir que se vio en otro tema')
+    # --- Sin nombres de preparadores (§2) ni enlaces a quia.com
+    ruta_ref = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'referencias.json')
+    if os.path.exists(ruta_ref):
+        try:
+            autores = json.load(open(ruta_ref, encoding='utf-8')).get('autores', [])
+        except ValueError:
+            autores = []
+        # Se busca el apellido por el que se les conoce (la «clave» de referencias.json:
+        # Tebar, Cerezal, Cordero, Cabado…), no el nombre de pila ni apellidos
+        # corrientes («Fuentes», «García»)
+        for a in autores:
+            clave = str(a.get('clave', '')).strip()
+            apellido = clave.capitalize()
+            if len(apellido) < 4 or apellido in ('Fuentes', 'Garcia', 'García') or apellido.lower() not in a.get('nombre', '').lower():
+                continue
+            m = re.search(r'\b' + re.escape(apellido) + r'\b', cuerpo)
+            if m:
+                errores.append(f'Nombre de preparador en el tema («{apellido}», l. {linea(m.start())}): CRITERIOS §2, solo en revision.md')
+    for m in re.finditer(r'quia\.com', cuerpo):
+        errores.append(f'Enlace a quia.com (l. {linea(m.start())}): solo el enlace genérico al simulador')
+    # --- Apellidos sin \autor{} (§2; aviso, por los falsos positivos)
+    apellidos = apellidos_bib(tema.bib)
+    if apellidos:
+        texto = re.sub(r'\\(?:autor|textsc|\w*cites?|label|ref|eqref|hyperref|href|url|vertema|includegraphics|grafico\w*|'
+                       r'addbibresource|tcetema|bibliografia)\*?(?:\[[^\]]*\])?\{(?:[^{}]|\{[^{}]*\})*\}', ' ', cuerpo)
+        texto = re.sub(r'\\begin\{(figure|figuracaja|table|tablacaja)\}.*?\\end\{\1\}', ' ', texto, flags=re.S)
+        sueltos = []
+        for ap in sorted(apellidos):
+            n = len(re.findall(r'(?<![\w{\-])' + re.escape(ap) + r'(?![\w}\-])', texto))
+            if n:
+                sueltos.append(f'{ap} ({n})')
+        if sueltos:
+            avisos.append('Apellidos sin \\autor{}: ' + ', '.join(sueltos[:12]) + (' …' if len(sueltos) > 12 else ''))
+        datos['apellidos_sin_autor'] = len(sueltos)
+
+
 def verificar(tema):
     errores, avisos, datos = [], [], {}
     tex_ruta = os.path.join(tema.dir, f'{tema.archivo}.tex')
@@ -253,7 +383,9 @@ def verificar(tema):
             errores.append(f'Figura {i} sin \\fuente: {cap.group(1)[:60] if cap else ""}')
     datos['figuras'] = len(figuras)
     comprobar_remisiones(tema, tex, errores, datos)
-    datos['citas'] = len(re.findall(r'\\(?:foot|auto|text|paren)?cite\b', tex))
+    comprobar_formulas_separadas(tex, errores)
+    comprobar_criterios(tema, tex, errores, avisos, datos)
+    datos['citas'] = len(re.findall(r'\\(?:foot|auto|text|paren)?cites?\b', tex))
     datos['notas_al_pie'] = len(re.findall(r'\\footnote\b', tex)) + len(re.findall(r'\\footcite\b', tex))
     graficos_usados = set(re.findall(r'\\(?:grafico|graficonota|includegraphics)(?:\[[^\]]*\])?\{([^}]+)\}', tex))
     for g in graficos_usados:
@@ -282,10 +414,7 @@ def verificar(tema):
             errores.append(f'Falta {tema.carpeta}/{tema.archivo}.{ext} (ejecutar construir-tema.py)')
         elif os.path.getmtime(ruta) + 1 < mtime_fuente:
             errores.append(f'{tema.archivo}.{ext} es anterior a la fuente: volver a construir')
-    log = leer(os.path.join(tema.trabajo, f'{tema.archivo}.log')) if os.path.exists(
-        os.path.join(tema.trabajo, f'{tema.archivo}.log')) else None
-    if log is None and os.path.exists(os.path.join(tema.trabajo, f'{tema.archivo}.log')):
-        log = open(os.path.join(tema.trabajo, f'{tema.archivo}.log'), encoding='latin-1').read()
+    log = leer(os.path.join(tema.trabajo, f'{tema.archivo}.log'))
     if log:
         for m in set(re.findall(r'(?:Reference|Citation) [`\']([^\']+)\' on page \d+ undefined', log)):
             errores.append(f'Referencia o cita sin definir en el PDF: {m}')
@@ -304,18 +433,28 @@ def verificar(tema):
             datos['paginas_total'] = doc.page_count
             # Ningún título puede ser lo último de una página (ni seguido de otro
             # título: CRITERIOS.md); se mira la última línea de texto de cada una.
-            titulo = re.compile(r'([IVX]+\.\d+(\.\d+)?\.\s|[a-e]\)\s|[ivx]+\)\s)')
+            # Es título si empieza por un número de apartado o una letra de bloque,
+            # o si va en morado (bandas, I.1, a) Idea, i) Supuestos…) en negrita o
+            # cursiva y es corta y sin punto final (los \paragraph sin letra).
+            titulo = re.compile(r'([IVX]+\.(?:\d+\.)*\s|[A-H]\.(?:\d+\.)*\s|[a-h]\)\s|[ivx]+\)\s|'
+                                r'(?:INTRODUCCIÓN|CONCLUSIÓN|ANEXO)\b)')
+            morados = {0x5F2987, 0x4A1F6B, 0xFFFFFF}
             for n, pag in enumerate(doc, 1):
                 alto = pag.rect.height
                 lineas = sorted(
-                    (l['bbox'][3], ''.join(s['text'] for s in l['spans']).strip())
-                    for b in pag.get_text('dict')['blocks'] for l in b.get('lines', [])
-                    if 60 < l['bbox'][1] and l['bbox'][3] < alto - 60)
-                lineas = [t for _, t in lineas if t]
-                if lineas and titulo.match(lineas[-1]):
-                    errores.append(f'Título al pie de la página {n} del PDF: «{lineas[-1][:60]}»')
-        except Exception:
-            pass
+                    ((l['bbox'][3], ''.join(s['text'] for s in l['spans']).strip(), l['spans'][0])
+                     for b in pag.get_text('dict')['blocks'] for l in b.get('lines', [])
+                     if 60 < l['bbox'][1] and l['bbox'][3] < alto - 60 and l['spans']),
+                    key=lambda x: x[0])
+                lineas = [(t, s) for _, t, s in lineas if t]
+                if not lineas:
+                    continue
+                texto, span = lineas[-1]
+                destacado = span['color'] in morados and (span['flags'] & 2 or span['flags'] & 16)
+                if titulo.match(texto) or (destacado and len(texto) < 90 and not texto.endswith('.')):
+                    errores.append(f'Título al pie de la página {n} del PDF: «{texto[:60]}»')
+        except Exception as e:
+            avisos.append(f'No se pudo comprobar si hay títulos al pie del PDF: {e}')
     # Ficha de repaso: lo mismo al pie de cada columna (CRITERIOS.md, ficha):
     # ni el título de un bloque (texto blanco sobre morado), ni un \sub (morado
     # en negrita, salvo los años de la cronología), ni una línea que anuncia con
@@ -342,8 +481,20 @@ def verificar(tema):
                     if (s['color'] == 0xFFFFFF or (s['color'] == 0x5F2987 and negrita and not re.match(r'\d{3,4}\b', texto))
                             or (texto.endswith(':') and caja[2] - caja[0] < 0.8 * (x1 - x0))):
                         errores.append(f'Ficha de repaso: título o «:» al pie de la columna {c} de la página {n}: «{texto[:60]}»')
-        except Exception:
-            pass
+        except Exception as e:
+            avisos.append(f'No se pudo comprobar la ficha de repaso: {e}')
+        # Exactamente cuatro páginas (CRITERIOS § 8 bis) y más reciente que su fuente
+        try:
+            import fitz
+            n_pags = fitz.open(repaso).page_count
+            datos['paginas_repaso'] = n_pags
+            if n_pags != 4:
+                errores.append(f'La ficha de repaso tiene {n_pags} páginas, no 4 (construir-repaso.py)')
+        except Exception as e:
+            avisos.append(f'No se pudo abrir la ficha de repaso: {e}')
+        fuente_repaso = os.path.join(tema.dir, 'repaso', f'{tema.archivo}-repaso.tex')
+        if os.path.exists(fuente_repaso) and os.path.getmtime(repaso) + 1 < os.path.getmtime(fuente_repaso):
+            errores.append(f'{tema.archivo}-repaso.pdf es anterior a su fuente: volver a construir la ficha')
     html = leer(os.path.join(tema.dir_publico, f'{tema.archivo}.html'))
     if html:
         sin_math = re.sub(r'\\\(.*?\\\)|\\\[.*?\\\]', '', html, flags=re.S)
@@ -369,9 +520,18 @@ def verificar(tema):
     if informe is None:
         errores.append('Falta revision.md (informe de revisión)')
     else:
+        posiciones = []
         for s in SECCIONES_INFORME:
-            if not re.search(rf'^#+\s*{re.escape(s)}', informe, re.M | re.I):
+            m = re.search(rf'^#+\s*(?:\d+\.\s*)?{re.escape(s)}', informe, re.M | re.I)
+            if not m:
                 errores.append(f'revision.md sin la sección «{s}»')
+            else:
+                posiciones.append(m.start())
+        if posiciones != sorted(posiciones):
+            avisos.append('Las secciones de revision.md no van en el orden de CRITERIOS §9')
+        for s in SECCIONES_INFORME_OPCIONALES:
+            if not re.search(rf'^#+\s*(?:\d+\.\s*)?{re.escape(s)}', informe, re.M | re.I):
+                avisos.append(f'revision.md sin la sección «{s}» (CRITERIOS §9; la usa el guionista)')
     # Buscadores: seo.json (CRITERIOS §9 bis). Solo avisos: la página sale igual sin él
     seo = leer(os.path.join(tema.dir, 'seo.json'))
     if seo is None:
@@ -394,7 +554,7 @@ def verificar(tema):
         avisos.append('Aún no hay guion-cante.md (entrega 3, --fase video)')
     else:
         # Solo lo que se dice: fuera títulos, el esquema de pizarra y las notas [Pizarra: …]
-        hablado = re.sub(r'^## Esquema de pizarra.*?(?=^## )', '', guion, flags=re.M | re.S)
+        hablado = re.sub(r'^## (?:Esquema|Plan) de pizarra.*?(?=^## )', '', guion, flags=re.M | re.S)
         hablado = re.sub(r'^```.*?^```', '', hablado, flags=re.M | re.S)
         hablado = re.sub(r'\[[^\]\n]*\]|^#.*$|^>.*$|\|.*\|', '', hablado, flags=re.M)
         palabras = len(re.findall(r'\w+', hablado))
@@ -424,11 +584,17 @@ def verificar(tema):
             for i, e in enumerate(escs, 1):
                 if e.get('bloque') not in nombres:
                     errores.append(f'Escena {i}: el bloque «{e.get("bloque")}» no está en «bloques»')
-                for p in e.get('pasos', []):
-                    acciones = p.get('pizarra') or []
-                    for a in (acciones if isinstance(acciones, list) else [acciones]):
-                        if a.get('grafico') and not os.path.exists(os.path.join(tema.graficos, a['grafico'] + '.tex')):
-                            errores.append(f'escenas.yaml usa un gráfico inexistente: {a["grafico"]}')
+                for k, p in enumerate(e.get('pasos', []), 1):
+                    for clave in ('pizarra', 'apoyo'):
+                        acciones = p.get(clave) or []
+                        for a in (acciones if isinstance(acciones, list) else [acciones]):
+                            if isinstance(a, dict) and a.get('grafico') and not os.path.exists(
+                                    os.path.join(tema.graficos, a['grafico'] + '.tex')):
+                                errores.append(f'escenas.yaml usa un gráfico inexistente en «{clave}»: {a["grafico"]}')
+                    if not str(p.get('di', '')).strip():
+                        avisos.append(f'Escena {i}, paso {k}: sin «di» (la voz no se para nunca; CRITERIOS §8)')
+                    if len(re.findall(r'\[pausa', str(p.get('di', '')))) > 2:
+                        avisos.append(f'Escena {i}, paso {k}: más de dos [pausa] (CRITERIOS §8: una o dos por paso)')
             # Criterios del cante (CRITERIOS.md, 8)
             texto = ' '.join(dichos)
             if re.search(r'miembros del tribunal', texto, re.I):

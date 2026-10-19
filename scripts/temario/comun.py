@@ -306,13 +306,27 @@ def linea_paginas(partes):
 
 # --- Licencia ------------------------------------------------------------------------
 # Todos los formatos del temario (PDF, HTML, Word, ficha de repaso y vídeo) llevan
-# la licencia CC BY-NC-ND 4.0; la ponen las plantillas (tcee.sty, tcee-repaso.sty,
-# plantilla-tema.html) y estos scripts, no cada tema.
+# la licencia CC BY-NC-ND 4.0; la ponen las plantillas (tcee-comun.sty, que es de
+# donde sale el texto, plantilla-tema.html) y estos scripts, no cada tema.
 AUTOR = 'Víctor Gutiérrez Marcos'
 LICENCIA = 'CC BY-NC-ND 4.0'
-LICENCIA_URL = 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es'
-LICENCIA_URL_LEGAL = 'https://creativecommons.org/licenses/by-nc-nd/4.0/'
-LICENCIA_PERMISOS = 'puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo'
+
+
+def _de_tcee_comun(macro, defecto):
+    """Valor de \\newcommand{\\tcee@<macro>}{…} en latex/tcee-comun.sty, para que el
+    texto de la licencia esté en un solo sitio (si no se encuentra, el de defecto)."""
+    ruta = os.path.join(LATEX, 'tcee-comun.sty')
+    if os.path.exists(ruta):
+        m = re.search(r'\\newcommand\{\\tcee@' + macro + r'\}\{([^}]*)\}', open(ruta, encoding='utf-8').read())
+        if m:
+            return m.group(1).strip()
+    return defecto
+
+
+LICENCIA_URL = _de_tcee_comun('licenciaurl', 'https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es')
+LICENCIA_URL_LEGAL = _de_tcee_comun('licenciaurllegal', 'https://creativecommons.org/licenses/by-nc-nd/4.0/')
+LICENCIA_PERMISOS = _de_tcee_comun('licenciapermisos',
+                                   'puedes compartirlo citando al autor, sin fines comerciales y sin modificarlo')
 
 
 def anio_tema(tema):
