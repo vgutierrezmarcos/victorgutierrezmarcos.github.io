@@ -109,6 +109,10 @@ def main():
     def paginas_con(tam):
         if tam not in paginas_de:
             pdf = compilar(tema, tam, salida, pasadas=1)
+            # Sin .aux al día (tema nuevo o cambio grande), LaTeX añade una página
+            # «Temporary page!» y la cuenta sale con una de más: segunda pasada.
+            if any('Temporary page' in p.get_text() for p in fitz.open(pdf)):
+                pdf = compilar(tema, tam, salida, pasadas=1)
             paginas_de[tam] = len(fitz.open(pdf))
             print(f'  {tam} pt: {paginas_de[tam]} páginas', flush=True)
         return paginas_de[tam]
