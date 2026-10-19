@@ -6,3 +6,6 @@ typedef AlEventoDom = void Function(EventoDom e);
 void Function() engancharPizarraWeb({bool evitarScribble = true, AlEventoDom? alEvento, String Function()? volcarRegistro}) => () {};
 
 String agenteNavegador() => '';
+
+/// Si el navegador es de Apple (iPad, iPhone o Mac); en el móvil, no.
+bool navegadorApple() => false;
