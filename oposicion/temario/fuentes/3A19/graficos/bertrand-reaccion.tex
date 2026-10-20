@@ -1,0 +1,31 @@
+% Bertrand con producto homogéneo: funciones de reacción en precios.
+% Rehace la Imagen 4 del tema original.
+% Valores: c = 1,5; p^M = 4,5; «un céntimo» = e = 0,13 (para que se vea).
+%   R_1(p_2): p_1 = c si p_2 <= c; p_1 = p_2 - e si c < p_2 <= p^M; p_1 = p^M si p_2 > p^M
+%   (en el plano, el tramo intermedio queda justo encima de la bisectriz)
+%   R_2(p_1): la simétrica, justo debajo de la bisectriz.
+%   Equilibrio de Bertrand: (c, c).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.1cm,y=1.1cm]
+  \def\c{1.5}\def\pM{4.5}\def\e{0.13}
+  \useasboundingbox (-0.8,-0.75) rectangle (7.3,6.4);
+  % 1: ejes, coste marginal c y precio de monopolio p^M en los 2 ejes
+  \capa{1}{\ejes{$p_1$}{$p_2$}{6.2}{6}}
+  \capa{1}{\draw[guia] (\c,0) node[below] {$c$} -- (\c,0.12);}
+  \capa{1}{\draw[guia] (0,\c) node[left] {$c$} -- (0.12,\c);}
+  \capa{1}{\draw[guia] (\pM,0) node[below] {$p^M$} -- (\pM,\pM);}
+  \capa{1}{\draw[guia] (0,\pM) node[left] {$p^M$} -- (\pM,\pM);}
+  % 2: bisectriz
+  \capa{2}{\draw[desplazada,thin,tceegris] (0,0) -- (5.7,5.7) node[etiqueta,above right,text=tceegris] {$p_1=p_2$};}
+  % 3: reacción de la empresa 1, p_1 = R_1(p_2): c, un céntimo menos, p^M
+  \capa{3}{\draw[curva1] (\c,0) -- (\c,{\c+\e}) -- (\pM,{\pM+\e}) -- (\pM,5.8) node[etiqueta,above] {$R_1(p_2)$};}
+  % 4: reacción de la empresa 2, p_2 = R_2(p_1)
+  \capa{4}{\draw[curva2] (0,\c) -- ({\c+\e},\c) -- ({\pM+\e},\pM) -- (5.9,\pM) node[etiqueta,right] {$R_2(p_1)$};}
+  % 5: equilibrio de Bertrand
+  \capa{5}{\node[punto] (B) at (\c,\c) {};}
+  \capa{5}{\draw[->,thin] (2.6,0.75) node[etiqueta,right,align=left] {$p_1^B=p_2^B=c$\\ (equilibrio de \textsc{Bertrand})} to[bend left=20] (B.south east);}
+\end{tikzpicture}
+\end{document}

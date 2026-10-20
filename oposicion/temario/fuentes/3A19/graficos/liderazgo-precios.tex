@@ -1,0 +1,45 @@
+% Liderazgo en precios: empresa dominante y franja competitiva (3.A.19, I.5).
+% Demanda de mercado x(p) = 10 - p.
+% Oferta de la franja: q_f(p) = 0 si p < p_0 = 2; q_f(p) = 1,5 (p - 2) si p >= 2.
+%   Corta a x(p) en p_1 = 5,2 (q = 4,8): ahí la residual es 0.
+% Residual x_R(p) = x(p) - q_f(p) = 13 - 2,5 p si 2 <= p <= 5,2 (p = 5,2 - 0,4 q,
+%   q <= 8) y x_R = x(p) si p < 2 (q > 8): curva quebrada en (8, 2).
+% IMg_R = 5,2 - 0,8 q (tramo de arriba); CMg_L = 1 constante.
+%   q_L = 5,25; p* = 3,1; q_f(p*) = 1,65; Q = x(p*) = 6,9 = q_L + q_f(p*).
+% Elaboración propia a partir de Forchheimer (1908); rehace el dibujo a mano del original.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,
+    declare function={dem(\q)=10-\q; sf(\q)=2+\q/1.5; res(\q)=5.2-0.4*\q; imgr(\q)=5.2-0.8*\q;}]
+  \def\cL{1}\def\qL{5.25}\def\ps{3.1}\def\qf{1.65}\def\Q{6.9}
+  \useasboundingbox (-1.5,-1.3) rectangle (12.6,10.9);
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{11}{10.5}}
+  % 2: demanda de mercado
+  \capa{2}{\draw[curva1] plot[domain=0:9.6] (\x,{dem(\x)}) node[etiqueta,right] {$x(p)$};}
+  % 3: oferta de la franja, desde su precio mínimo p_0
+  \capa{3}{\draw[curva3] (0,2) node[left,text=black] {$p_0$} -- (7.5,{sf(7.5)}) node[etiqueta,above right] {$q_f(p)$};}
+  \capa{3}{\node[punto] (P1) at (4.8,5.2) {};}
+  % 4: demanda residual de la dominante: sale de (0, p_1) y, por debajo de p_0, coincide con x(p)
+  \capa{4}{\draw[guia] (P1) -- (0,5.2) node[left] {$p_1$};}
+  \capa{4}{\draw[curva4] (0,5.2) -- (8,2) -- (9.6,0.4);}
+  \capa{4}{\node[etiqueta,text=tceedorado,anchor=south west] at (8.3,2.4) {$x_R(p)$};}
+  % 5: ingreso marginal residual
+  \capa{5}{\draw[curva2] plot[domain=0:6.5] (\x,{imgr(\x)});}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=east] at (3.75,1.75) {$\mathrm{IMg}_R$};}
+  % 6: coste marginal de la dominante
+  \capa{6}{\draw[curvanueva] (0,\cL) -- (10.6,\cL) node[etiqueta,above left] {$\mathrm{CMg}_L$};}
+  % 7: IMg_R = CMg_L da q_L; en la residual, p*
+  \capa{7}{\node[punto] (E) at (\qL,\cL) {};}
+  \capa{7}{\node[punto] (L) at (\qL,\ps) {};}
+  \capa{7}{\draw[guia] (\qL,0) node[below] {$q_L$} -- (E) -- (L) -- (0,\ps) node[left] {$p^*$};}
+  % 8: a p*, la franja vende q_f(p*) y la producción total es Q, sobre x(p)
+  \capa{8}{\node[punto] (F) at (\qf,\ps) {};}
+  \capa{8}{\node[punto] (M) at (\Q,\ps) {};}
+  \capa{8}{\draw[guia] (L) -- (M);}
+  \capa{8}{\draw[guia] (F) -- (\qf,0) node[below] {$q_f(p^*)$};}
+  \capa{8}{\draw[guia] (M) -- (\Q,0) node[below] {$Q$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,57 @@
+% Producción y pérdida de eficiencia de cada estructura (3.A.19, caja de I.5).
+% Demanda p = a - bQ con a = 5, b = 1 y coste marginal c = 1: (a - c)/b = 4.
+%   IMg = 5 - 2Q.
+%   Monopolio o cártel: Q^M = 2 (1/2),  p^M = 3.
+%   Cournot:            Q^C = 8/3 (2/3), p^C = 7/3.
+%   Stackelberg:        Q^S = 3 (3/4),  p^S = 2.
+%   Bertrand o competencia perfecta: Q^c = 4 (1), p^c = c = 1.
+% Pérdidas irrecuperables anidadas entre la demanda y c:
+%   A (de Q^S a Q^c) = PIE de Stackelberg = 1/32 (a - c)^2/b;
+%   A + B = PIE de Cournot = 1/18; A + B + C = PIE del monopolio = 1/8.
+% Rojo graduado (estilo perdida del canon): A, el más intenso.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.6cm,y=1.15cm,
+    declare function={dem(\q)=5-\q; img(\q)=5-2*\q;},
+    perdidaA/.style={fill=tceerojo,fill opacity=0.45,draw=none},
+    perdidaB/.style={fill=tceerojo,fill opacity=0.28,draw=none},
+    perdidaC/.style={fill=tceerojo,fill opacity=0.13,draw=none}]
+  \def\c{1}
+  \def\qM{2}\def\pM{3}\def\qC{2.6667}\def\pC{2.3333}\def\qS{3}\def\pS{2}\def\qc{4}
+  \useasboundingbox (-0.45,-0.5) rectangle (5.75,5.6);
+  % 1: ejes, demanda, ingreso marginal y coste marginal
+  \capa{1}{\ejes{$Q$}{$p$}{5.3}{5.4}}
+  \capa{1}{\draw[curva1] plot[domain=0:4.8] (\x,{dem(\x)}) node[etiqueta,above right] {$p(Q)$};}
+  \capa{1}{\draw[curva2] plot[domain=0:2.5] (\x,{img(\x)});}
+  \capa{1}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=south east] at (0.63,3.1) {IMg};}
+  \capa{1}{\draw[curvanueva] (0,\c) -- (5.1,\c) node[etiqueta,above left] {$c$};}
+  % 2: competencia perfecta o Bertrand: Q^c y p^c = c
+  \capa{2}{\node[punto] (Pc) at (\qc,\c) {};}
+  \capa{2}{\draw[guia] (Pc) -- (\qc,0) node[below] {$Q^c$};}
+  \capa{2}{\node[left] at (0,\c) {$p^c$};}
+  % 3: Stackelberg: Q^S, p^S y área A
+  \capa{3}{\node[punto] (S) at (\qS,\pS) {};}
+  \capa{3}{\proyeccion{(S)}{$Q^S$}{$p^S$}}
+  \capa{3}{\begin{scope}[on background layer]
+    \fill[perdidaA] (\qS,\pS) -- (\qc,\c) -- (\qS,\c) -- cycle;
+  \end{scope}}
+  \capa{3}{\node[etiqueta] at ({(2*\qS+\qc)/3},{(\pS+2*\c)/3}) {$A$};}
+  % 4: Cournot: Q^C, p^C y área B
+  \capa{4}{\node[punto] (C) at (\qC,\pC) {};}
+  \capa{4}{\proyeccion{(C)}{$Q^C$}{$p^C$}}
+  \capa{4}{\begin{scope}[on background layer]
+    \fill[perdidaB] (\qC,\pC) -- (\qS,\pS) -- (\qS,\c) -- (\qC,\c) -- cycle;
+  \end{scope}}
+  \capa{4}{\node[etiqueta] at ({(\qC+\qS)/2},1.5) {$B$};}
+  % 5: monopolio o cártel: Q^M, p^M y área C
+  \capa{5}{\node[punto] (M) at (\qM,\pM) {};}
+  \capa{5}{\proyeccion{(M)}{$Q^M$}{$p^M$}}
+  \capa{5}{\begin{scope}[on background layer]
+    \fill[perdidaC] (\qM,\pM) -- (\qC,\pC) -- (\qC,\c) -- (\qM,\c) -- cycle;
+  \end{scope}}
+  \capa{5}{\node[etiqueta] at ({(\qM+\qC)/2},1.75) {$C$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,59 @@
+% El cártel como monopolista multiplanta: cuánto producir (mercado) y cómo
+% repartirlo (empresas). Gráfico nuevo (no está en el tema original).
+% Valores: CMg_1 = 1 + q_1; CMg_2 = 1,5 + q_2 (la empresa 2, menos eficiente).
+%   Suma horizontal: Q = (m - 1) si 1 <= m <= 1,5; Q = 2m - 2,5 si m >= 1,5
+%     -> SumaCMg(Q) = 1 + Q hasta (0,5; 1,5) y (Q + 2,5)/2 a partir de ahí.
+%   Demanda p = 8 - Q; IMg = 8 - 2Q.
+%   IMg = SumaCMg: 8 - 2Q = (Q + 2,5)/2 -> Q^M = 2,7; coste marginal común 2,6;
+%   p^M = 8 - 2,7 = 5,3. Cuotas: q_1 = 1,6 > q_2 = 1,1 (q_1 + q_2 = Q^M).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=0.6cm]
+  \def\m{2.6}\def\pM{5.3}
+  \useasboundingbox (-2.7,-2.3) rectangle (19.6,9.8);
+  % Coordenadas (invisibles) que unen los paneles
+  \coordinate (Y1) at (0,0);          % origen de la empresa 1
+  \coordinate (E) at (12.112,\m);       % IMg = SumaCMg en el mercado (origen en x = 8/0,85 = 9,412)
+  \coordinate (P) at (12.112,\pM);      % (Q^M, p^M) sobre la demanda
+  % 1: ejes de los 3 paneles
+  \capa{1}{\ejes{$q_1$}{$p$}{3.6}{8.8}}
+  \capa{1}{\node[etiqueta,font=\small\scshape] at (1.8,9.3) {empresa 1};}
+  \begin{scope}[xshift=4cm]
+    \capa{1}{\ejes{$q_2$}{$p$}{3.6}{8.8}}
+    \capa{1}{\node[etiqueta,font=\small\scshape] at (1.8,9.3) {empresa 2};}
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+    \capa{1}{\ejes{$Q$}{$p$}{8.6}{8.8}}
+    \capa{1}{\node[etiqueta,font=\small\scshape] at (4.3,9.3) {mercado};}
+  \end{scope}
+  % 2: costes marginales de las 2 empresas
+  \capa{2}{\draw[curva1] (0,1) -- (3.1,4.1) node[etiqueta,right] {$\mathrm{CMg}_1$};}
+  \begin{scope}[xshift=4cm]
+    \capa{2}{\draw[curva2] (0,1.5) -- (2.9,4.4) node[etiqueta,right] {$\mathrm{CMg}_2$};}
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+  % 3: demanda e ingreso marginal del mercado
+    \capa{3}{\draw[curva4] (0,8) -- (7.6,0.4) node[etiqueta,above right] {$x(p)$};}
+    \capa{3}{\draw[curva4,thick] (0,8) -- (3.85,0.3) node[etiqueta,right] {$\mathrm{IMg}$};}
+  % 4: suma horizontal de los costes marginales
+    \capa{4}{\draw[curva3] (0,1) -- (0.5,1.5) -- (7.5,5) node[etiqueta,above] {$\Sigma\,\mathrm{CMg}$};}
+  % 5: IMg = SumaCMg: cuánto producir, Q^M, y el precio, p^M
+    \capa{5}{\node[punto] at (2.7,\m) {};}
+    \capa{5}{\node[punto] (Pm) at (2.7,\pM) {};}
+    \capa{5}{\draw[guia] (2.7,0) node[below] {$Q^M$} -- (Pm);}
+    \capa{5}{\node[etiqueta,align=center] at (4.3,-1.6) {cuánto producir: $\mathrm{IMg}=\Sigma\,\mathrm{CMg}$};}
+  \end{scope}
+  \capa{5}{\draw[guia] (P) -- (0,\pM) node[left] {$p^M$};}
+  % 6: coste marginal común: cómo repartirlo, CMg_1 = CMg_2 = IMg(Q^M)
+  \capa{6}{\draw[guia,tceerojo,thick] (E) -- (0,\m) node[left,text=black] {$\mathrm{IMg}(Q^M)$};}
+  \capa{6}{\node[punto] (q1) at (1.6,\m) {};}
+  \capa{6}{\draw[guia] (q1) -- (1.6,0) node[below] {$q_1$};}
+  \begin{scope}[xshift=4cm]
+    \capa{6}{\node[punto] (q2) at (1.1,\m) {};}
+    \capa{6}{\draw[guia] (q2) -- (1.1,0) node[below] {$q_2$};}
+  \end{scope}
+  \capa{6}{\node[etiqueta,align=center] at (4.15,-1.6) {cómo repartirlo: $\mathrm{CMg}_1=\mathrm{CMg}_2$};}
+\end{tikzpicture}
+\end{document}

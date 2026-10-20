@@ -1,0 +1,35 @@
+% Sustitutos y complementos estratégicos: pendiente de las funciones de reacción.
+% Rehace la fig. 3.6 de Chevalier-Roignant y Trigeorgis (2011) (nota 23 del tema
+% original), para una nota al pie (se ve a 0,6 del ancho).
+% Izquierda (cantidades): R_1: q_1 = 2 - 0,4 q_2; R_2: q_2 = 2 - 0,4 q_1;
+%   corte en q^C = 2/1,4 = 10/7.
+% Derecha (precios, producto diferenciado): R_1: p_1 = 1 + 0,4 p_2;
+%   R_2: p_2 = 1 + 0,4 p_1 (pendiente menor que 1); corte en p^B = 1/0,6 = 5/3.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm]
+  \useasboundingbox (-0.75,-1.35) rectangle (10.4,4.1);
+  % ---------------- Izquierda: cantidades ----------------
+  % 1: ejes
+  \capa{1}{\ejes{$q_1$}{$q_2$}{4}{3.9}}
+  % 2: funciones de reacción decrecientes y su corte
+  \capa{2}{\draw[curva1] plot[domain=0:3.6] ({2-0.4*\x},\x) node[etiqueta,above] {$R_1(q_2)$};}
+  \capa{2}{\draw[curva2] plot[domain=0:3.6] (\x,{2-0.4*\x}) node[etiqueta,above right] {$R_2(q_1)$};}
+  \capa{2}{\node[punto,label={[etiqueta]above right:$C$}] (C) at ({10/7},{10/7}) {};}
+  \capa{2}{\proyeccion{(C)}{$q^C$}{$q^C$}}
+  \capa{2}{\node[etiqueta,align=center] at (2,-0.95) {sustitutos estratégicos (cantidades)};}
+  % ---------------- Derecha: precios ----------------
+  \begin{scope}[xshift=5.9cm]
+  % 3: ejes
+  \capa{3}{\ejes{$p_1$}{$p_2$}{4}{3.9}}
+  % 4: funciones de reacción crecientes y su corte
+  \capa{4}{\draw[curva1] plot[domain=0:3.6] ({1+0.4*\x},\x) node[etiqueta,above] {$R_1(p_2)$};}
+  \capa{4}{\draw[curva2] plot[domain=0:3.6] (\x,{1+0.4*\x}) node[etiqueta,above] {$R_2(p_1)$};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$B$}] (B) at ({5/3},{5/3}) {};}
+  \capa{4}{\proyeccion{(B)}{$p^B$}{$p^B$}}
+  \capa{4}{\node[etiqueta,align=center] at (2,-0.95) {complementos estratégicos (precios)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

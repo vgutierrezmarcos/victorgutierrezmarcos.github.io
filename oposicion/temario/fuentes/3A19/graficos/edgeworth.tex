@@ -1,0 +1,64 @@
+% Capacidad limitada y ciclos de Edgeworth (3.A.19, I.4): a) demanda residual,
+% precio de monopolio de la residual y precio mínimo; b) ciclo de precios.
+% Demanda x(p) = 10 - p; c = 1,5; capacidad k = 4,5 (k < x(c) = 8,5 <= 2k = 9).
+% Demanda residual (racionamiento eficiente): x(p) - k = 5,5 - p, o sea,
+%   p = 5,5 - q; IMg_R = 5,5 - 2q = c en q = 2: p̄ = 3,5, x(p̄) - k = 2.
+%   B(p̄) = (3,5 - 1,5) 2 = 4; p̲ = c + 4/k = 2,389 [(p̲ - c) k = 4].
+% b) senda: de p̄ baja en 4 rebajas de 0,278 hasta p̲ y salta otra vez a p̄.
+% Elaboración propia a partir de Edgeworth (1897) y Vives (1999, cap. 5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.7cm,
+    declare function={dem(\q)=10-\q; res(\q)=5.5-\q; imgr(\q)=5.5-2*\q;},
+    titulo/.style={font=\small,anchor=south},
+    rayado/.style={pattern=north east lines,pattern color=tceedorado}]
+  \def\c{1.5}\def\k{4.5}\def\qb{2}\def\pb{3.5}\def\pl{2.3889}
+  \useasboundingbox (-1.6,-1.2) rectangle (24.6,8.6);
+  % ---------------- a) demanda residual ----------------
+  % 1: ejes del panel izquierdo
+  \capa{1}{\ejes{$q$}{$p$}{10}{7.6}}
+  \capa{1}{\node[titulo] at (5,7.75) {a) Demanda residual};}
+  % 2: demanda de mercado y coste marginal
+  \capa{2}{\draw[curva1] plot[domain=2.6:9.6] (\x,{dem(\x)}) node[etiqueta,above right] {$x(p)$};}
+  \capa{2}{\draw[curvanueva] (0,\c) node[left,text=black] {$c$} -- (9.8,\c);}
+  % 3: capacidad de cada empresa
+  \capa{3}{\draw[curva3] (\k,0) node[below] {$k$} -- (\k,6.2);}
+  % 4: demanda residual, la de mercado desplazada k a la izquierda
+  \capa{4}{\draw[curva4] plot[domain=0:5.5] (\x,{res(\x)});}
+  \capa{4}{\node[etiqueta,text=tceedorado,anchor=south west] at (0.5,5.05) {$x(p)-k$};}
+  % 5: ingreso marginal residual y precio de monopolio de la residual
+  \capa{5}{\draw[curva2] plot[domain=0:2.75] (\x,{imgr(\x)});}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=north] at (2.8,0) {$\mathrm{IMg}_R$};}
+  \capa{5}{\node[punto] (I) at (\qb,\c) {};}
+  \capa{5}{\node[punto] (Pb) at (\qb,\pb) {};}
+  \capa{5}{\draw[guia] (I) -- (Pb) -- (0,\pb) node[left] {$\overline{p}$};}
+  \capa{5}{\begin{scope}[on background layer]
+    \fill[area] (0,\c) rectangle (\qb,\pb);
+  \end{scope}}
+  % 6: precio mínimo: vender toda la capacidad da lo mismo que volver a p̄
+  \capa{6}{\draw[guia] (0,\pl) node[left] {$\underline{p}$} -- (\k,\pl);}
+  \capa{6}{\fill[rayado] (0,\c) rectangle (\k,\pl);}
+  % ---------------- b) precio en el tiempo ----------------
+  \begin{scope}[xshift=7.6cm]
+    % 7: ejes del panel derecho y coste marginal
+    \capa{7}{\ejes{$t$}{$p$}{9.6}{7.6}}
+    \capa{7}{\node[titulo] at (4.8,7.75) {b) Precio en el tiempo};}
+    \capa{7}{\draw[curvanueva] (0,\c) -- (9.4,\c) node[etiqueta,right] {$c$};}
+    % 8: senda de precios en diente de sierra entre p̲ y p̄
+    \capa{8}{\draw[guia] (0,\pb) node[left] {$\overline{p}$} -- (9.4,\pb);}
+    \capa{8}{\draw[guia] (0,\pl) node[left] {$\underline{p}$} -- (9.4,\pl);}
+    \capa{8}{\draw[curva1] (0.30,3.500) -- (0.90,3.500) -- (0.90,3.222) -- (1.50,3.222)
+      -- (1.50,2.944) -- (2.10,2.944) -- (2.10,2.667) -- (2.70,2.667) -- (2.70,2.389)
+      -- (3.30,2.389) -- (3.30,3.500) -- (3.90,3.500) -- (3.90,3.222) -- (4.50,3.222)
+      -- (4.50,2.944) -- (5.10,2.944) -- (5.10,2.667) -- (5.70,2.667) -- (5.70,2.389)
+      -- (6.30,2.389) -- (6.30,3.500) -- (6.90,3.500) -- (6.90,3.222) -- (7.50,3.222)
+      -- (7.50,2.944) -- (8.10,2.944) -- (8.10,2.667) -- (8.70,2.667);}
+    \capa{8}{\node[etiqueta,anchor=south] at (4.7,3.75) {ciclos de \textsc{Edgeworth}};}
+    % rótulo de p̲: vender toda la capacidad da lo mismo que volver a p̄
+    \capa{8}{\node[etiqueta,font=\footnotesize,anchor=south] at (4.7,5.6)
+      {$(\underline{p}-c)\,k=(\overline{p}-c)\big[x(\overline{p})-k\big]$};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
