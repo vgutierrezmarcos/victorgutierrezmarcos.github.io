@@ -1,7 +1,7 @@
 # Bertrand y Cournot con producto diferenciado (Bowley, 1924; Singh y Vives, 1984)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.18** (Diferenciación de productos; revisado el 19/10/2026, II.2 «Modelos sin direcciones») — el 3.A.19 manda aquí el oligopolio con producto diferenciado (su nota 13) y el título del 3.A.18 pide «otros desarrollos». Ficha creada a raíz de esa revisión (K42, K47; era opcional: se crea porque el 3.A.19 la usa).
-- **Temas que lo usan:** 3.A.18 (desarrollo breve; hecho, 19/10/2026), 3.A.19 (mención: Bertrand y Cournot con producto homogéneo se desarrollan allí; con producto diferenciado, una línea y remisión; hoy repite el gráfico de Bertrand diferenciado), 3.B.8 (mención posible: Eaton y Grossman, 1986, con Bertrand, ficha `brander-spencer`). El 3.A.14 solo usa Cournot y Bertrand con producto homogéneo como ejemplos de EN con acciones continuas, con remisión al 3.A.19 (ficha `equilibrio-nash`).
+- **Temas que lo usan:** 3.A.18 (desarrollo breve; hecho, 19/10/2026), 3.A.19 (mención; hecho, 20/10/2026: Bertrand y Cournot con producto homogéneo se desarrollan allí, fichas `bertrand` y `cournot`; con producto diferenciado, una viñeta entre las salidas de la paradoja, $p^B<p^C$ con Singh y Vives, 1984, y `\vertema{3.A.18}`, sin gráfico; Gal-Or, 1985, para la ventaja del segundo), 3.B.8 (mención posible: Eaton y Grossman, 1986, con Bertrand, ficha `brander-spencer`). El 3.A.14 solo usa Cournot y Bertrand con producto homogéneo como ejemplos de EN con acciones continuas, con remisión al 3.A.19 (ficha `equilibrio-nash`).
 - **Manuales de referencia:** Bowley (1924); Singh y Vives (1984), *RAND Journal*; Bulow, Geanakoplos y Klemperer (1985), *JPE* (sustitutos y complementos estratégicos); Belleflamme y Peitz (2015), cap. 3; Vives (1999); Gasmi, Laffont y Vuong (1992).
 
 ## Presentación de referencia (3.A.18, II.2)
@@ -23,10 +23,10 @@ $$p_i=\alpha-\beta\,q_i-\gamma\,q_j\ \Longleftrightarrow\ q_i=\frac{\alpha(\beta
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.18 | Oligopolio diferenciado sin direcciones | desarrollo breve (hecho, 19/10/2026; 2' en el cante) | Todo lo anterior | Bertrand y Cournot homogéneos (3.A.19) |
-| 3.A.19 | Oligopolio | mención | Con producto diferenciado la paradoja de Bertrand desaparece y $p^B<p^C$; remitir a 3.A.18 (II.2); misma demanda si la escribe | El gráfico y la derivación |
+| 3.A.19 | Oligopolio | mención (hecho, 20/10/2026) | Con producto diferenciado la paradoja de Bertrand desaparece y $p^B<p^C$ (Singh y Vives, 1984); remite a 3.A.18 (II.2); no escribe la demanda | El gráfico y la derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.18 original: no lo tenía (comentario «¿qué pasaría en Cournot con diferenciación?», P5). **Añadido** (19/10/2026).
-- 3.A.19 (sin revisar): repite el gráfico «Situación de Bertrand con producto diferenciado» y remite aquí el oligopolio diferenciado (nota 13): al revisarlo, resumir y remitir; φ para la función de reacción → $R_i$ (D016).
+- 3.A.19 (Word de partida): repetía el gráfico «Situación de Bertrand con producto diferenciado»; φ para la función de reacción. **Resuelto** (20/10/2026): una viñeta y remisión; $R_i$.
 
 Autor: Víctor Gutiérrez Marcos

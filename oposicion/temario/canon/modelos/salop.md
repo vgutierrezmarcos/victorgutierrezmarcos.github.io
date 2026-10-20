@@ -1,7 +1,7 @@
 # Ciudad circular de Salop (1979): entrada con diferenciación localizada
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.18** (Diferenciación de productos; revisado el 19/10/2026, II.3.4) — el único tema que lo desarrolla, como la competencia monopolística del enfoque de direcciones. Ficha creada a raíz de esa revisión (K40, K47).
-- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026; también en III.2, proliferación de marcas, y en el anexo `anexo:variedad-optima`), 3.A.15 (mención posible: proliferación de marcas como barrera de entrada estratégica sobre el círculo; Schmalensee, 1978), 3.A.19 (mención posible: entrada excesiva, Mankiw y Whinston, 1986).
+- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026; también en III.2, proliferación de marcas, y en el anexo `anexo:variedad-optima`), 3.A.15 (mención; hecho, 20/10/2026: proliferación de marcas como barrera estratégica, Schmalensee, 1978, y su credibilidad, Judd, 1985, con `\vertema{3.A.18}`, sin nombrar el círculo; ficha `disuasion-entrada`), 3.A.19 (no lo usa: la entrada excesiva de Mankiw y Whinston no está en el tema revisado el 20/10/2026).
 - **Manuales de referencia:** Salop (1979), «Monopolistic Competition with Outside Goods», *Bell Journal*; Tirole (1988), cap. 7; Economides (1989); Spence (1976); Mankiw y Whinston (1986), *RAND Journal*; Belleflamme y Peitz (2015), cap. 5.
 
 ## Presentación de referencia (3.A.18, II.3.4)
@@ -26,8 +26,7 @@ $$n^{\mathrm{o}}=\frac{1}{2}\sqrt{\frac{t}{\mathrm{CF}}}=\frac{n^*}{2}\quad\text
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.18 | Entrada con diferenciación horizontal | desarrollo (hecho, 19/10/2026) | Todo lo anterior; el margen $t/n$ se añade a la columna de márgenes bajo `eq:lerner-variedad` | — |
-| 3.A.15 | Barreras de entrada estratégicas | mención (prevista) | La proliferación de marcas sobre el círculo de Salop (Schmalensee, 1978) y su credibilidad (Judd, 1985); remitir a 3.A.18 | El modelo |
-| 3.A.19 | Oligopolio y entrada | mención (posible) | Entrada excesiva por el robo de clientes (Mankiw y Whinston, 1986) | El modelo |
+| 3.A.15 | Barreras a la entrada estratégicas | mención (hecho, 20/10/2026) | La proliferación de marcas (Schmalensee, 1978) y su credibilidad (Judd, 1985), en una frase; remite a 3.A.18 | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.18 original: la localización «elegida», «equidistante», «exógena» y «un resultado» a la vez; captura ajena con $n_S=\frac12\sqrt{t/F}>\sqrt{t/F}=n^*$ (el signo al revés). **Resuelto** (19/10/2026): equidistancia como supuesto con nota de Economides (1989) y $n^{\mathrm o}=n^*/2$.

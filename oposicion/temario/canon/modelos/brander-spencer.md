@@ -1,7 +1,7 @@
 # Subsidio estratégico a la exportación en un tercer mercado (Brander y Spencer, 1985)
 
 - **Área:** comercio · **Tema de referencia:** 3.B.8 (Política comercial estratégica) — único desarrollo.
-- **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.41 (mención), 4.A.24 (mención) 3.A.14 (mención; hecho, 19/10/2026: la política comercial estratégica como aplicación, III.1, con `\vertema{3.B.8}`).
+- **Temas que lo usan:** 3.B.8 (desarrollo), 3.B.41 (mención), 4.A.24 (mención) 3.A.14 (mención; hecho, 19/10/2026: la política comercial estratégica como aplicación, III.1, con `\vertema{3.B.8}`), 3.A.19 (mención; hecho, 20/10/2026: relevancia y conclusión, con `\vertema{3.B.8}`; Cournot y Stackelberg tienen allí su referencia, fichas `cournot` y `stackelberg`).
 - **Manuales de referencia:** Brander y Spencer (1985, *JIE*); Eaton y Grossman (1986, *QJE*); Krugman, Obstfeld y Melitz, cap. 12 (Airbus-Boeing); Feenstra, cap. 7; Helpman y Krugman (1989).
 - **Decisión D016 (13/10/2026):** ¿Se reserva φ para la productividad de Melitz (y la inversa de Frisch en macro) y se cambian sus otros usos en comercio y macro abierta? Sí: función de reacción R_A(q_B), coeficiente técnico de la protección efectiva a_ij, sensibilidad del saldo comercial al tipo real ν
 
@@ -24,6 +24,7 @@ El subsidio desplaza $R_A(q_B)$ hacia fuera y lleva al equilibrio de Stackelberg
 | 3.B.8 | Política comercial estratégica | desarrollo | Cournot, Bertrand (Eaton-Grossman), críticas (información, entrada, represalias), Airbus-Boeing | — |
 | 3.B.41 | Política comercial común | mención | Excepción al librecambio y su poca solidez | — |
 | 4.A.24 | Apoyo a la internacionalización | mención | Fallo de mercado que no justifica, por sí solo, la intervención | — |
+| 3.A.19 | Oligopolio (referencia de Cournot y Stackelberg) | mención (hecho, 20/10/2026) | La política comercial estratégica como aplicación de Cournot y Stackelberg en la relevancia y en la conclusión, con `\vertema{3.B.8}`; fichas `cournot` y `stackelberg` | El modelo |
 | 3.A.14 | Aplicaciones de la teoría de juegos | mención (hecho, 19/10/2026) | Una línea en las aplicaciones al comercio internacional, junto a la guerra arancelaria de Johnson (1953) como dilema del prisionero | El modelo |
 
 ## Divergencias encontradas en el temario actual

@@ -1,7 +1,7 @@
 # Diferenciación vertical: Gabszewicz y Thisse (1979) y Shaked y Sutton (1982, 1983)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.18** (Diferenciación de productos; revisado el 19/10/2026, III.1, con el anexo `anexo:finitud`) — el único tema del 3.er ejercicio que lo desarrolla con a)-e). Ficha creada a raíz de esa revisión (K41, K47).
-- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.19 (mención: oligopolio natural de Shaked y Sutton, 1983, en su nota 15, que remite al 3.A.18), 3.B.6 (resumen: diferenciación vertical en el comercio, junto a Falvey, l. 379-385 del Word; ficha `falvey`), 3.A.17 (mención; el 3.A.18 remite allí la discriminación por calidades de Mussa y Rosen, 1978, ficha `discriminacion-precios`).
+- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.19 (mención; hecho, 20/10/2026: nota del supuesto 5, oligopolio natural con diferenciación vertical y libre entrada, «propiedad de finitud», con `\vertema{3.A.18}`), 3.B.6 (resumen: diferenciación vertical en el comercio, junto a Falvey, l. 379-385 del Word; ficha `falvey`), 3.A.17 (mención; el 3.A.18 remite allí la discriminación por calidades de Mussa y Rosen, 1978, ficha `discriminacion-precios`).
 - **Manuales de referencia:** Gabszewicz y Thisse (1979), *JET*; Shaked y Sutton (1982), «Relaxing Price Competition through Product Differentiation», *REStud*; Shaked y Sutton (1983), «Natural Oligopolies», *Econometrica*; Tirole (1988), cap. 7; Sutton (1991), *Sunk Costs and Market Structure*; Mussa y Rosen (1978).
 
 ## Presentación de referencia (3.A.18, III.1)
@@ -24,12 +24,12 @@ $$p_{\mathrm{A}}^*=c+\frac{2\overline{\theta}-\underline{\theta}}{3}\,\Delta s>p
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.18 | Diferenciación vertical | desarrollo (hecho, 19/10/2026) | Todo lo anterior | — |
-| 3.A.19 | Oligopolio natural | mención | Shaked y Sutton (1983): la finitud con calidades que cuestan en costes fijos; remitir a 3.A.18 (III.1) | El modelo |
+| 3.A.19 | Oligopolio natural | mención (hecho, 20/10/2026) | Shaked y Sutton (1983): la finitud con calidades que cuestan en costes fijos; remitir a 3.A.18 (III.1) | El modelo |
 | 3.B.6 | Comercio intraindustrial vertical | resumen | Calidades con competencia imperfecta frente a Falvey (ventaja comparativa, competencia perfecta); con la notación de arriba y remisión a 3.A.18 | La derivación de los precios |
 | 3.A.17 | Discriminación por calidades | mención | Mussa y Rosen (1978) como autoselección por calidades (ficha `discriminacion-precios`) | El duopolio |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.18 original: duopolio de calidades atribuido a Shaked y Sutton (1983), «compiten simultáneamente», intervalo «de tamaño unitario» sin $\overline\theta-\underline\theta=1$, θ_i como índice de consumidor y $s_j$. **Resuelto** (19/10/2026).
-- 3.A.19 (sin revisar): su nota 15 (Shaked y Sutton, 1983, oligopolio natural) concuerda con III.1; al revisarlo, `\vertema{3.A.18}`.
+- 3.A.19: su nota 15 (Shaked y Sutton, 1983, oligopolio natural) concuerda con III.1. **Resuelto** (20/10/2026): con `\vertema{3.A.18}`.
 
 Autor: Víctor Gutiérrez Marcos

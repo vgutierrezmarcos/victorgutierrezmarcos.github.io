@@ -1,7 +1,7 @@
 # Producción conjunta: monopolio multiproducto, proporciones fijas y monopolio multiplanta
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.17** («Producción conjunta» en el título; revisado el 17/10/2026, II.3). Id `monopolio-multiproducto` (ya en `_inventario/alias.json`). Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.12 (mención: reparto entre plantas como minimización del coste, economías de alcance y complementariedad de costes, III.4; hecho), 3.A.11 (mención: remite a 3.A.17 para el monopolio natural multiproducto; hecho), 3.A.19 (mención prevista: el cártel maximiza como un monopolio multiplanta), 3.A.15 (mención prevista: la doble marginalización tiene la lógica de los complementarios; ficha `monopolio-bilateral`).
+- **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 3.A.12 (mención: reparto entre plantas como minimización del coste, economías de alcance y complementariedad de costes, III.4; hecho), 3.A.11 (mención: remite a 3.A.17 para el monopolio natural multiproducto; hecho), 3.A.19 (mención; hecho, 20/10/2026: `eq:cartel`, IMg(Q) = CMg_1(q_1) = CMg_2(q_2), con `\vertema{3.A.17}` y el gráfico `cartel-multiplanta`), 3.A.15 (mención; hecho, 20/10/2026: la doble marginalización solo en una nota de II.2, Spengler, 1950, con `\vertema{3.A.17}`, sin derivación; ficha `monopolio-bilateral`).
 - **Manuales de referencia:** Tirole (1988), cap. 1 (multiproducto); Marshall (1890), libro V, cap. 6 (oferta conjunta); Mill (1848); Baumol, Panzar y Willig (1982); Wright (1936) para el aprendizaje.
 
 ## Presentación de referencia (3.A.17, II.3)
@@ -31,11 +31,12 @@ $$\mathrm{IMg}_1(q)+\mathrm{IMg}_2(q)=\mathrm{CMg}(q)\ \text{(suma vertical)};\q
 | 3.A.17 | Producción conjunta | desarrollo (hecho, 17/10/2026) | Todo lo anterior | — |
 | 3.A.12 | Costes multiproducto y multiplanta | mención (hecho) | Reparto entre plantas (CMg iguales), alcance y complementariedad de costes como propiedades de C(w⃗,q⃗); remite a 3.A.17 | Las reglas de precios |
 | 3.A.11 | Producción | mención (hecho) | Remisión para el monopolio natural multiproducto | — |
-| 3.A.19 | Oligopolio | mención (prevista) | El cártel maximiza el beneficio conjunto como un monopolio multiplanta; remitir a 3.A.17 II.3.3 | La derivación |
+| 3.A.19 | Oligopolio | mención (hecho, 20/10/2026) | `eq:cartel` con la misma ecuación (cuánto, con la suma horizontal de los CMg; cómo repartir, igualando CMg; pagos laterales si los CMg son constantes y distintos); gráfico `3A19/graficos/cartel-multiplanta.tex`; remite a 3.A.17 | La derivación general |
+| 3.A.15 | Límites de la empresa: integración vertical | mención (hecho, 20/10/2026) | Doble marginalización (Spengler, 1950) en una nota: integrados, cantidad de monopolio; separados, menos producción, más precio y menos beneficio; remite a 3.A.17 | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.17 original: Lerner multiproducto con ε_{q_i,p_j} (era ε_{q_j,p_i}) y «mayor» en el paréntesis de los complementarios; costes no separables confundidos con el aprendizaje; «subsidio cruzado» para un precio por debajo del CMg; sin el 4.º caso, sin proporciones fijas y sin multiplanta. **Resuelto** en la revisión (17/10/2026).
 - 3.A.17 revisado: s_i para la cantidad vendida en las proporciones fijas choca con la participación s_i (§ 2 y § 3) y con la tasa s de Averch-Johnson del mismo tema: propuesto x_i (`pendientes-coherencia.md`).
-- 3.A.19 (sin revisar): no remite al 3.A.17 para el cártel como multiplanta (`faltan` de 3.A.19).
+- 3.A.19 (Word de partida): no remitía al 3.A.17 para el cártel como multiplanta. **Resuelto** (20/10/2026).
 
 Autor: Víctor Gutiérrez Marcos

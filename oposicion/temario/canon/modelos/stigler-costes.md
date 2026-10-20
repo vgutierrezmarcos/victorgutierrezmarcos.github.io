@@ -1,7 +1,7 @@
 # Costes de Stigler (1939): flexibilidad y reserva de capacidad
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.12 (Teoría de los costes; revisado el 14/10/2026, III.3.1) — es una crítica a la forma en U del coste medio.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.B.4 (resumen: tamaño óptimo y crecimiento de la empresa)
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.B.4 (resumen: tamaño óptimo y crecimiento de la empresa), 3.A.15 (mención; hecho, 20/10/2026: costes en L de Bain y Stigler, técnica del superviviente, Stigler, 1958, y el gráfico `stigler` en nota de I.1)
 - **Manuales de referencia:** Stigler (1939), «Production and distribution in the short run», *JPE*; Stigler (1958), técnica del superviviente; Koutsoyiannis, *Modern Microeconomics*, cap. 4.
 
 ## Presentación de referencia
@@ -19,6 +19,7 @@ Gráfico de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/stigle
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.12 | ¿Son los costes medios en U? | desarrollo (hecho, 14/10/2026) | Todo lo anterior; gráfico imprescindible en el cante (pequeño, en III.3) | — |
+| 3.A.15 | Tamaño eficiente | mención (hecho, 20/10/2026) | Costes en L (`3A15/graficos/costes-l.tex`) y técnica del superviviente en la evidencia de I.1; el gráfico `stigler` (Stigler, 1939) en nota; remite a 3.A.12 | El desarrollo |
 | 3.B.4 | Tamaño óptimo y crecimiento | resumen | Flexibilidad frente a escala mínima eficiente; el gráfico `stigler` del 3.A.12, con remisión | El desarrollo (remitir a 3.A.12) |
 
 ## Divergencias encontradas en el temario actual

@@ -1,7 +1,7 @@
 # Ciudad lineal de Hotelling (1929): competencia en precios y elección de localización
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.18** (Diferenciación de productos; revisado el 19/10/2026, II.3.2 con localización dada y II.3.3 con localización elegida, más el anexo `anexo:hotelling`) — es el modelo base del enfoque de direcciones y el único tema que lo desarrolla. Ficha creada a raíz de esa revisión (K39, K47). No confundir con la **regla de Hotelling** de los recursos agotables (3.A.29; excepción de `_inventario/alias.json`).
-- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.19 (mención: la diferenciación como salida a la paradoja de Bertrand; hoy repite el gráfico de Bertrand con producto diferenciado), 3.A.24 y 4.B.2 (mención: base espacial del modelo de Downs-Hotelling y del votante mediano, fichas `downs-hotelling` y `votante-mediano`), 3.A.14 (mención; hecho, 19/10/2026: juegos en 2 etapas que se resuelven por inducción hacia atrás, «la localización y luego el precio»), 3.B.6 (mención posible: localización y comercio).
+- **Temas que lo usan:** 3.A.18 (desarrollo; hecho, 19/10/2026), 3.A.19 (no lo nombra; hecho, 20/10/2026: la salida diferenciada a la paradoja de Bertrand se resume con Singh y Vives, ficha `oligopolio-diferenciado`, y remite al 3.A.18), 3.A.24 y 4.B.2 (mención: base espacial del modelo de Downs-Hotelling y del votante mediano, fichas `downs-hotelling` y `votante-mediano`), 3.A.14 (mención; hecho, 19/10/2026: juegos en 2 etapas que se resuelven por inducción hacia atrás, «la localización y luego el precio»), 3.B.6 (mención posible: localización y comercio).
 - **Manuales de referencia:** Hotelling (1929), «Stability in Competition», *EJ*; d'Aspremont, Gabszewicz y Thisse (1979), *Econometrica*; Tirole (1988), cap. 7; Belleflamme y Peitz (2015), cap. 5; Cabral (2000).
 
 ## Presentación de referencia (3.A.18, II.3.2-II.3.3)
@@ -26,13 +26,13 @@ Implicaciones: **principio de diferenciación máxima** ($a=0$, $b=1$, $p^*=c+t$
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.18 | Diferenciación horizontal con direcciones | desarrollo (hecho, 19/10/2026) | Todo lo anterior, en 2 subapartados (precio; localización) y el anexo D | — |
-| 3.A.19 | Oligopolio: paradoja de Bertrand y sus salidas | mención | Una línea: con producto diferenciado (Hotelling) el precio supera el coste marginal, $p=c+t$; remitir a 3.A.18 (II.2 y II.3.2) | El gráfico de reacción en precios y el modelo |
+| 3.A.19 | Oligopolio: paradoja de Bertrand y sus salidas | no lo usa (hecho, 20/10/2026) | La salida diferenciada va con Singh y Vives (ficha `oligopolio-diferenciado`); si se quiere un ejemplo con direcciones, $p=c+t$ en una línea con remisión al 3.A.18 (II.3.2) | El gráfico y el modelo |
 | 3.A.24, 4.B.2 | Competencia electoral | mención | El segmento ideológico es la ciudad lineal con precios fijos: solo el efecto demanda, convergencia al votante mediano (ficha `downs-hotelling`); Hotelling (1929), Downs (1957) | La competencia en precios |
 | 3.A.14 | Juegos dinámicos | mención (hecho, 19/10/2026) | Juegos en 2 etapas (localización y precio) resueltos por inducción hacia atrás, con remisión | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.18 original: demanda de B con localizaciones generales que no era $1-\tilde x$; «con costes **cuadráticos** puede no haber equilibrio» (es con lineales); «= 0» en un término que no se anula; empresas A y B y $D_A$, $D_B$; φ para la función de reacción. **Resuelto** (19/10/2026).
-- 3.A.19 (sin revisar): su Imagen 5 («Situación de Bertrand con producto diferenciado») es la Imagen 10 del 3.A.18 original: al revisarlo, resumir en una línea y remitir a II.2 y II.3.2 del 3.A.18.
+- 3.A.19 (Word de partida): su Imagen 5 («Situación de Bertrand con producto diferenciado») era la Imagen 10 del 3.A.18 original. **Resuelto** (20/10/2026): fuera; una viñeta con remisión al 3.A.18.
 - 4.B.2 (sin revisar): «Downs-Hotelling (1947)»: Hotelling (1929), Downs (1957) (ficha `downs-hotelling`).
 
 Autor: Víctor Gutiérrez Marcos

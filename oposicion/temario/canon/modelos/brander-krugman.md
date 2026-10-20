@@ -27,6 +27,7 @@ Funciones de reacción $R_A(q_B)$, $R_B(q_A)$ en cada mercado.
 
 ## Divergencias encontradas en el temario actual
 - 3.B.8 llama «modelo de Brander y Krugman (1983)» al duopolio Cournot en un **tercer mercado** de partida de Brander-Spencer: Brander-Krugman (1983) es el de mercados recíprocos (dumping recíproco). Corregir la atribución (ver `brander-spencer`).
-- Función de reacción $\varphi_A(q_B)$ en 3.B.8; canon $R_A(q_B)$, coherente con `cournot` del área de mercados.
+- Función de reacción $\varphi_A(q_B)$ en 3.B.8; canon $R_A(q_B)$, coherente con la ficha `cournot` (creada el 20/10/2026 con el 3.A.19, tema de referencia de Cournot: $R_i(q_j)$, $q^C$, `eq:lerner-cournot`, gráfico `3A19/graficos/cournot-stackelberg.tex`). El 3.B.6 y el 3.B.8 remiten al 3.A.19 la derivación general (el 3.A.19 ya remite a los 2 en su relevancia y en la conclusión).
+- En la ecuación de la presentación, $\pi_B^A$ y $P^A$ deben ser $B_B^A$ y $p^A$ (D003, D046) al revisar el 3.B.8.
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,7 +1,7 @@
 # Regulación por precio máximo IPC − X (Littlechild, 1983)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (anexo A, regulación del monopolio natural; revisado el 17/10/2026, A.3). **[decidir]** Propuesta del 3.A.17 (D1, provisional): pasar la referencia al 3.A.20 cuando se redacte y dejar el 3.A.17 en «mención» (ficha `laffont-tirole`); si se aprueba, la remisión del 4.A.12 al 3.A.20 pasa a ser la correcta.
-- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.A.12 (mención: Telefónica), 4.B.15 (resumen; hoy mención), 3.A.20 (previsto); 4.A.5 (energía) podría citarlo.
+- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.A.12 (mención: Telefónica), 4.B.15 (resumen; hoy mención), 3.A.20 (previsto); 4.A.5 (energía) podría citarlo; 3.A.15 (mención; hecho, 20/10/2026: anexo A, el *price cap* de Littlechild, 1983, para la British Telecom privatizada como respuesta austriaca a la regulación que desanima la innovación).
 - **Manuales de referencia:** Littlechild (1983); Armstrong, Cowan y Vickers (1994), *Regulatory Reform*; Viscusi, Harrington y Vernon, cap. 12; Joskow (2014).
 
 ## Presentación de referencia (3.A.17, anexo A)
@@ -21,6 +21,7 @@ Gráfico: no tiene; se cuenta con la regla.
 |---|---|---|---|---|
 | 3.A.17 | Regulación por incentivos | desarrollo en el anexo A (hecho, 17/10/2026) | Regla, incentivos, duración, ventajas e inconvenientes, casos españoles, comparación con tasa de rentabilidad | — |
 | 3.A.20 | Regulación óptima | previsto; referencia si se aprueba D1 | La misma presentación | — |
+| 3.A.15 | Escuela austriaca (anexo A) | mención (hecho, 20/10/2026) | Littlechild (1983) propone el *price cap* para la British Telecom | La regla |
 | 4.A.12 | Regulación sectorial | mención | Aplicación concreta (Telefónica hasta 2012; Aena y el DORA, si encaja) | Teoría |
 | 4.B.15 | Empresa pública y regulación | resumen (hoy mención; D139 (13/10/2026)) | La regla p_{t+1} ≤ p_t(1 + IPC_t − X) y sus incentivos a reducir costes frente a la regulación por rentabilidad | Teoría completa |
 

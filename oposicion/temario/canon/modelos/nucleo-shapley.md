@@ -1,7 +1,7 @@
 # Juegos cooperativos con utilidad transferible: núcleo y valor de Shapley
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.14** (Teoría de juegos; revisado el 19/10/2026, II.3.2 y II.3.3, con el anexo `anexo:cooperativos`) — único tema que desarrolla los juegos cooperativos con utilidad transferible. Ficha creada a raíz de esa revisión (C2; D6 del 3.A.14, aplicada con la opción recomendada, pendiente de que Víctor la confirme). El **núcleo de una economía** de intercambio, sin utilidad transferible, y el teorema de Debreu y Scarf tienen su referencia en el 3.A.21 (ficha `nucleo`).
-- **Temas que lo usan:** 3.A.14 (desarrollo; hecho, 19/10/2026), 3.A.21 (mención; hecho, 14/10/2026: núcleo sin utilidad transferible, Gillies, 1959; valor de Shapley con un continuo de agentes, Aumann, 1975; ficha `nucleo`), 3.A.19 (mención: alianzas y cárteles, «valor de Shapley y enfoque del núcleo», nota del Word, l. 910), 3.A.24 (mención: índice de poder de Shapley-Shubik, 1954), temas del 4.º que repartan costes comunes (mención, si lo citan).
+- **Temas que lo usan:** 3.A.14 (desarrollo; hecho, 19/10/2026), 3.A.21 (mención; hecho, 14/10/2026: núcleo sin utilidad transferible, Gillies, 1959; valor de Shapley con un continuo de agentes, Aumann, 1975; ficha `nucleo`), 3.A.19 (resumen aplicado; hecho, 20/10/2026: III.2 `sec:reparto`, cártel de 3 empresas iguales con $p=4-Q$, $c=0$ y la función característica de las coaliciones que compiten a la Cournot, $v(\{i\})=1$, $v(\{i,j\})=16/9$, $v(N)=4$; núcleo $x_i\ge1$ no vacío; $\phi_i(v)=4/3$ en el núcleo, pero $16/9>4/3$ fuera del cártel; paradoja de las fusiones, Salant, Switzer y Reynolds, 1983; estabilidad interna y externa, d'Aspremont *et al.*, 1983; ficha `cartel`), 3.A.24 (mención: índice de poder de Shapley-Shubik, 1954), temas del 4.º que repartan costes comunes (mención, si lo citan).
 - **Manuales de referencia:** Gillies (1959); Shapley (1953, 1967, 1971); Bondareva (1963); Shapley y Shubik (1954); Debreu y Scarf (1963); Aumann (1975); Mas-Colell, Whinston y Green (1995), cap. 18 (apéndice); Osborne y Rubinstein (1994), caps. 13-14; Peleg y Sudhölter (2007).
 
 ## Presentación de referencia (3.A.14, II.3.2-II.3.3)
@@ -27,11 +27,12 @@ $$\phi_i(v)=\sum_{T\subseteq N\setminus\{i\}}\frac{|T|!\,\big(n-|T|-1\big)!}{n!}
 |---|---|---|---|---|
 | 3.A.14 | Juegos cooperativos | desarrollo (hecho, 19/10/2026) | Todo lo anterior | La caja de intercambio y el teorema del límite (3.A.21) |
 | 3.A.21 | Núcleo de una economía | mención (hecho) | Núcleo sin utilidad transferible (Gillies), Debreu-Scarf; Shapley con un continuo de agentes; remite a 3.A.14 el concepto con utilidad transferible (ficha `nucleo`) | La definición con utilidad transferible |
-| 3.A.19 | Cárteles y alianzas | mención | Estabilidad de un cártel como núcleo; reparto con el valor de Shapley; remitir a 3.A.14 | Las definiciones |
+| 3.A.19 | Cárteles y alianzas | resumen aplicado (hecho, 20/10/2026; 3′ en el cante con la negociación) | Función característica de un cártel con Cournot fuera (3 empresas, $p=4-Q$, $c=0$: 1, 16/9, 4); núcleo no vacío; Shapley 4/3 en el núcleo; la estabilidad cooperativa no es la no cooperativa (16/9 > 4/3 fuera); paradoja de las fusiones; la teoría describe mejor la cooperación legal (consorcios, alianzas); remite a 3.A.14 | Las definiciones, la fórmula general y el ejemplo del vendedor |
 | 3.A.24 | Elección colectiva | mención | Índice de poder de Shapley-Shubik (1954) | La fórmula |
 
 ## Divergencias encontradas en el temario actual
 - 3.A.14 (Word de partida): núcleo como vector «que no bloquea ninguna coalición» con Σx_i ≤ v(S) (signo cambiado), sin eficiencia; fórmula de Shapley sin «∖{i}»; «jugador ficticio» confuso; aditividad mal dicha; «fácil de computar»; notación I, P(I), S. **Resuelto** (19/10/2026).
 - Tebar (lectura de preparador, no publicable): define mal el axioma del jugador nulo.
+- El 3.A.19 (20/10/2026) no usa la función γ de Chander y Tulkens (1997) que proponía coherencia (K32), sino la función característica con las coaliciones que compiten a la Cournot (la misma idea, más sencilla de cantar).
 
 Autor: Víctor Gutiérrez Marcos

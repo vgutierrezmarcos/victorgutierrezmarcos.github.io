@@ -1,7 +1,7 @@
 # Ineficiencia X (Leibenstein, 1966)
 
 - **Área:** consumidor-producción · **Tema de referencia:** 3.A.12 (Teoría de los costes; revisado el 14/10/2026, III.3.2, y su medición en IV.3) — es donde se cuestiona el supuesto de minimización de costes.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención)
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.17 (mención: pérdida de bienestar del monopolio; hecho, 17/10/2026), 3.A.15 (mención: bisagra entre los gerencialistas y la agencia; hecho, 20/10/2026; ficha `modelos-gerencialistas`), 3.B.39, 4.A.14, 4.A.15, 4.A.24, 4.A.25, 4.B.2, 4.B.15 (mención)
 - **Manuales de referencia:** Leibenstein (1966), «Allocative efficiency vs. "X-efficiency"», *AER*; Leibenstein (1982); Hicks (1935) «vida tranquila»; Stigler (1976), «The Xistence of X-efficiency», *AER*; Nickell (1996), *JPE*; Bloom y Van Reenen (2007), *QJE*; Tirole, *The Theory of Industrial Organization*, introducción.
 
 ## Presentación de referencia
@@ -22,6 +22,7 @@ Gráfico de referencia: no tiene uno propio en el 3.A.12 (se canta con la fórmu
 |---|---|---|---|---|
 | 3.A.12 | ¿Minimizan costes las empresas? | desarrollo (hecho, 14/10/2026) | Todo lo anterior; la medición, en IV.3 | — |
 | 3.A.17 | Bienestar del monopolio | mención (hecho, 17/10/2026) | I.3: C^obs = (1+χ)C(q), χ ≥ 0, cita de Hicks (1935, p. 8), franja de costes inflados sobre el gráfico del bienestar; el supuesto de «misma función de costes» que se levanta; remite a 3.A.12 | La definición extensa |
+| 3.A.15 | Gerencialistas y agencia | mención (hecho, 20/10/2026) | Bisagra entre los modelos gerencialistas y la agencia: $C^{\mathrm{obs}}(\vec w,q)=(1+\chi)C(\vec w,q)$, χ ≥ 0 y decreciente en la competencia; Hicks (1935); réplica de Stigler (1976); los impugnables no admiten ineficiencia X; remite a 3.A.12 | La medición |
 | 4.A.15, 3.B.39 | Por qué defender la competencia | mención | Beneficio productivo de la competencia («vida tranquila» de Hicks) | Definición extensa |
 | 4.B.2, 4.B.15 | Burocracia y empresa pública | mención | El burócrata (Niskanen) y la empresa pública no minimizan costes; restricción presupuestaria blanda | — |
 | 4.A.14, 4.A.24, 4.A.25 | Productividad del comercio / internacionalización | mención | La exposición a la competencia reduce la ineficiencia X | — |

@@ -1,7 +1,7 @@
 # Medición de la eficiencia: Farrell, frontera estocástica y análisis envolvente de datos (DEA)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.12** (Teoría de los costes … Aplicaciones empíricas; revisado el 14/10/2026, IV.3) — es la aplicación empírica de la función de costes como frontera y la medida de la ineficiencia X. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho); previstos (mención, al revisarlos): 3.A.20 (regulación por comparación), 3.A.17 (con `yardstick`, en el anexo A; hecho, 17/10/2026), 3.A.45 (productividad: cambio técnico frente a cambio en la eficiencia, Malmquist), 4.B.15 (eficiencia de la empresa pública), 4.A.5 (regulación de redes eléctricas).
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho); previstos (mención, al revisarlos): 3.A.20 (regulación por comparación), 3.A.17 (con `yardstick`, en el anexo A; hecho, 17/10/2026), 3.A.45 (productividad: cambio técnico frente a cambio en la eficiencia, Malmquist), 4.B.15 (eficiencia de la empresa pública), 4.A.5 (regulación de redes eléctricas). La valoración remite al 3.A.15 («incentivos y organización»): cumplido en I.2 del 3.A.15 revisado (20/10/2026: gerencialistas, ineficiencia X y agencia), que no cita la frontera; no es usuario.
 - **Manuales de referencia:** Farrell (1957), *JRSS A*; Aigner, Lovell y Schmidt (1977); Meeusen y van den Broeck (1977); Jondrow et al. (1982); Charnes, Cooper y Rhodes (1978); Banker, Charnes y Cooper (1984); Battese y Coelli (1995); Kumbhakar y Lovell (2000); Coelli et al. (2005), *An Introduction to Efficiency and Productivity Analysis*.
 
 ## Presentación de referencia

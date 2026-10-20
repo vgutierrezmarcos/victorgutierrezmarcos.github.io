@@ -1,0 +1,35 @@
+# Paradigma estructura-conducta-resultado (Harvard) y escuela de Chicago
+
+- **Área:** mercados-información-juegos (organización industrial) · **Tema de referencia:** **3.A.15** (… La Teoría de la Organización Industrial…; revisado el 20/10/2026, III.1 `sec:harvard-chicago`: `sec:ecr` y `sec:chicago`, con el anexo `anexo:cowling-waterson`) — la TOI está en su título y el tema la desarrolla desde Chamberlin hasta la Nueva TOI. Ficha creada a raíz de esa revisión (C5 de coherencia).
+- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.A.19 (mención; hecho, 20/10/2026: Lerner con la cuota e IHH en Cournot, `eq:lerner-cournot` y Cowling-Waterson, con `\vertema{3.A.20}` para la medida de la concentración; Stigler, 1964, en la valoración de la colusión), 3.A.1 (mención: «Escuela de Harvard de Organización Industrial: parte de la observación empírica [ver tema 3.A.15]», coherente), 3.B.39, 4.A.15 y 3.A.20 (mención: umbrales de concentración, IHH en el control de concentraciones, mercado relevante).
+- **Manuales de referencia:** Mason (1939); Bain (1951, 1956, 1959); Stigler (1964, 1968); McGee (1958); Demsetz (1968, 1973); Cowling y Waterson (1976); Schmalensee (1989); Lipczynski, Wilson y Goddard (2017), cap. 1; Tirole (1988), introducción; directrices de concentraciones de EE. UU. (1982, 2010, 2023) y de la UE (2004; borrador de 2026).
+
+## Presentación de referencia (3.A.15, III.1)
+
+Pregunta: ¿la concentración causa el poder de mercado, o es fruto de la eficiencia? Conclusión: el debate entre Harvard y Chicago se resuelve en las **barreras a la entrada** (ficha `disuasion-entrada`) y, sin costes hundidos, en los mercados impugnables (ficha `mercados-impugnables`); la Nueva TOI le da una teoría de la conducta (teoría de juegos) y la NOIE estima la conducta.
+
+- **Antecedentes**: el enfoque neoclásico (la empresa como caja negra precio-aceptante, 3.A.16) y la crítica de Chamberlin y Robinson (1933; 3.A.18), donde la TOI se separa de la teoría de los precios.
+- **Harvard (ECR)** (Mason, 1939; Bain, 1951, 1956, 1959): causalidad de las condiciones básicas a la **estructura** (concentración, condiciones de entrada, diferenciación, integración vertical), a la **conducta** (precios, colusión, publicidad, I+D, barreras) y al **resultado** (margen, beneficios, eficiencia asignativa y productiva, progreso técnico). **Medida**:
+$$\mathrm{CR}_m=\sum_{i=1}^{m}s_i,\qquad \text{índice de Herfindahl-Hirschman}=\sum_i(100\,s_i)^2\in(0;\,10.000],\qquad s_i\in[0,1];$$
+  puente teórico de **Cowling y Waterson** (1976): en Cournot, $\sum_is_i\mathcal L_i=\sum_is_i^2/|\varepsilon_{Q,p}|$ (ficha `cournot`); umbrales de las directrices (EE. UU. 2023: > 1.800 y Δ > 100, o cuota > 30 % y Δ > 100; 1982 y 2010; UE 2004: 1.000/2.000 con Δ 250/150) en nota. Contexto: Sherman (1890) y Clayton (1914); Bain (1951) encuentra más beneficios en las industrias concentradas. Política: actuar sobre la estructura (control de concentraciones; división: Standard Oil, 1911; AT&T, 1984); la pérdida es sobre todo **asignativa** (triángulo de Harberger, 3.A.17), más la ineficiencia X (3.A.12). Valoración: causalidad en los 2 sentidos (flechas de vuelta), estático, correlación entre industrias sin teoría de la conducta.
+- **Chicago** (Stigler, 1964, 1968; McGee, 1958; Demsetz, 1968, 1973): concentración por **eficiencia** (Demsetz, 1973); cárteles inestables (Stigler, 1964; 3.A.19); depredación irracional (McGee); poder de mercado temporal, barreras duraderas casi siempre **legales**; competencia **por** el mercado (Demsetz, 1968; 3.A.17, 3.A.20). Política: bienestar del consumidor, tolerancia con concentraciones y restricciones verticales, desregulación. Valoración: confía en una entrada rápida y barata y descarta las conductas estratégicas, que la teoría de juegos muestra racionales con compromisos o información asimétrica.
+- **Nueva TOI y NOIE** (III.4 del 3.A.15): teoría de juegos (Tirole, 1988; 3.A.14); la NOIE estima un **parámetro de conducta** θ en $p+\theta Qp'(Q)=\mathrm{CMg}$, $\mathcal L=\theta/|\varepsilon_{Q,p}|$ (θ = 0 competencia o Bertrand, θ = 1/n Cournot simétrico, θ = 1 monopolio o cártel; Bresnahan, 1982, 1989); aportaciones de Tirole (Nobel 2014).
+
+**Gráfico de referencia:** `oposicion/temario/fuentes/3A15/graficos/ecr.tex` (esquema condiciones básicas → estructura → conducta → resultado, con las flechas de vuelta en la última capa y la política económica; elaboración propia a partir de Lipczynski, Wilson y Goddard, 2017).
+
+**Notación** (`notacion.md` § 4): $\mathrm{CR}_m$; $s_i\in[0,1]$ cuota de mercado; **sigla del índice [decidir]**: el 3.A.15 escribe HHI = Σ(100 s_i)² (escala 0-10.000) y el 3.A.19 IHH ≡ Σ s_i² (escala 0-1, aunque cita una cifra en la escala 0-10.000); propuesta: **IHH** (sigla en castellano, la de la CNMC, con «HHI» entre paréntesis la primera vez) **en la escala 0-10.000**, con $\sum_is_i\mathcal L_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$ (ver `informe-repaso.md` § 17); θ parámetro de conducta (local, con nota); «Harvard frente a Chicago» (nunca *saltwater/freshwater* en organización industrial).
+
+## Cómo se adapta en cada tema
+| Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
+|---|---|---|---|---|
+| 3.A.15 | La TOI | desarrollo (hecho, 20/10/2026; 2′30″ en el cante) | Todo lo anterior | La derivación de Cournot (3.A.19) |
+| 3.A.19 | Oligopolio | mención (hecho, 20/10/2026) | Lerner con la cuota y el índice de concentración en Cournot como justificación de su uso por las autoridades; Stigler (1964) y la inestabilidad del cártel | El paradigma ECR y Chicago |
+| 3.A.1 | Pensamiento económico | mención | Harvard parte de la observación empírica; remitir al 3.A.15 | — |
+| 3.B.39, 4.A.15 | Política de competencia | mención | Umbrales del índice de concentración (con la misma sigla y escala), efectos coordinados, control de concentraciones | La teoría |
+| 3.A.20 | Regulación y competencia | mención | Medida de la concentración y mercado relevante | — |
+
+## Divergencias encontradas en el temario actual
+- 3.A.15 original: Harvard y Chicago como *saltwaters* y *freshwaters* (etiqueta de un debate de macroeconomía); pérdida del ECR por «no operar en el mínimo de sus costes medios (ineficiencia productiva)»; índices $CI_x=\sum s_i$ y «HH = ∑ s_i 2»; umbral de EE. UU. «1.800 o aumento de 200» que mezcla 1982 y 2010; Nueva TOI que toma de Chicago los contestables y a la vez está «más cerca del ECR». **Resuelto** (20/10/2026).
+- 3.A.15 y 3.A.19 revisados: **HHI** frente a **IHH** y escala distinta (ver Notación). Pendiente de la decisión (`pendientes-coherencia.md`).
+
+Autor: Víctor Gutiérrez Marcos
