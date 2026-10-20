@@ -52,7 +52,7 @@ String textoDuracion(int minutos) {
 const duracionesClase = [60, 90, 120, 150, 180];
 
 /// Duraciones que se ofrecen para un cante por cuenta propia (minutos).
-const duracionesCante = [15, 20, 30, 45, 60];
+const duracionesCante = [30, 45, 60, 90, 120];
 
 /// Minutos de exposición por tema que se ofrecen.
 const duracionesExposicion = [10, 15, 20, 30, 45];

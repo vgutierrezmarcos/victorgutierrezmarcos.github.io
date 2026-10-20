@@ -54,6 +54,18 @@ const coloresPizarra = [0xFF2E7D9A, 0xFFC0662B, 0xFF1F1F1F, 0xFF5F2987, 0xFF2E7D
 const coloresRapidos = [0xFF1E5AA8, 0xFF1F1F1F, 0xFFC62828, 0xFF2E7D32];
 const nombresColoresRapidos = ['Azul', 'Negro', 'Rojo', 'Verde'];
 
+/// La paleta del selector «Otro color»: dos filas de colores con nombre
+/// (vivos y apagados), para elegir uno a un toque sin pelearse con los
+/// deslizadores.
+const coloresPaleta = [
+  0xFFE53935, 0xFFFB8C00, 0xFFFDD835, 0xFF43A047, 0xFF00ACC1, 0xFF1E88E5, 0xFF8E24AA, 0xFFEC407A, //
+  0xFF8B1E1E, 0xFF8D5524, 0xFF808000, 0xFF1B5E20, 0xFF006064, 0xFF1A237E, 0xFF5F2987, 0xFF757575,
+];
+const nombresPaleta = [
+  'Rojo vivo', 'Naranja', 'Amarillo', 'Verde claro', 'Turquesa', 'Azul claro', 'Violeta', 'Rosa', //
+  'Granate', 'Marrón', 'Oliva', 'Verde oscuro', 'Verde azulado', 'Azul marino', 'Morado', 'Gris',
+];
+
 /// Páginas como mucho por clase.
 const maxPaginas = 10;
 

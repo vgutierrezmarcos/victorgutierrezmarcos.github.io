@@ -120,10 +120,14 @@ class RelojCante {
     }
   }
 
-  /// Termina el esquema ya y empieza la exposición (con todo su tiempo).
+  /// Termina el esquema ya y deja la exposición preparada (con todo su
+  /// tiempo) pero en pausa: el cronómetro nuevo no arranca hasta que se le
+  /// da a «Continuar» (en el reloj compartido, cada cambio de fase empieza
+  /// parado para que los dos lo vean antes de que corra).
   void saltarFase(DateTime ahora) {
     if (_enExposicion) return;
     empezarExposicion(ahora);
+    pausar(ahora);
   }
 
   /// Cuántos hitos han pasado ya (para no repetir sus avisos).

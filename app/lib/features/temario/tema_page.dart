@@ -111,10 +111,23 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     });
     await anterior?.close();
     try {
-      final pdf = await ref.read(descargasProvider).abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: (r, t) {
+      final descargas = ref.read(descargasProvider);
+      void progreso(int r, int t) {
         if (t > 0 && mounted && _claveCargada == clave) setState(() => _progreso = r / t);
-      });
-      final documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+      }
+
+      var pdf = await descargas.abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: progreso);
+      PdfDocument documento;
+      try {
+        documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+      } catch (_) {
+        // Un fichero ya descargado que no se abre (a medias o dañado): se
+        // borra y se descarga otra vez antes de dar el error.
+        if (pdf.ruta == null || !descargas.guardaSinConexion) rethrow;
+        await descargas.borrar(fuente.url, nombre: fuente.nombre);
+        pdf = await descargas.abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: progreso);
+        documento = await PdfDocument.openFile(pdf.ruta!);
+      }
       // Si mientras tanto se ha pedido otra versión (o se ha cerrado), esta sobra.
       if (!mounted || _claveCargada != clave) {
         await documento.close();
@@ -409,7 +422,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                   Expanded(child: AgendaTemaVista(tema: widget.tema)),
                 ])
               : _error != null
-              ? ErrorVista(error: _error!, reintentar: () => setState(() { _error = null; _claveCargada = null; }))
+              ? ErrorVista(error: _error!, detalle: true, reintentar: () => setState(() { _error = null; _claveCargada = null; }))
               : _pdf == null
                   ? Center(
                       child: Column(mainAxisSize: MainAxisSize.min, children: [

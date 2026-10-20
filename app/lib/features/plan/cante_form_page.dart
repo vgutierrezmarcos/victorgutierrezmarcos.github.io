@@ -4,15 +4,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
 import '../../core/providers.dart';
+import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/plan.dart';
 import '../../data/models/preparador.dart';
+import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../../widgets/selector_temas.dart';
 import 'cantes_util.dart';
 import 'modalidad.dart';
 import '../preparador/coordinacion.dart';
+import '../preparador/red_widgets.dart';
 import '../inicio/permisos_sheet.dart';
 
 /// Alta o edición de un cante: cuándo es, con quién y qué temas entran.
@@ -37,7 +40,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late final _lugar = TextEditingController(text: widget.cante?.lugar ?? '');
   late final _enlace = TextEditingController(text: widget.cante?.enlace ?? '');
   late DateTime _fecha;
-  late int _minutos = widget.cante?.minutos ?? (_sesion ? ref.read(perfilPreparadorProvider).minutosClase : 30);
+  // Por defecto, lo que dura una clase (2 h); lo de cada tema va en «Exposición por tema».
+  late int _minutos = widget.cante?.minutos ?? (_sesion ? ref.read(perfilPreparadorProvider).minutosClase : PerfilPreparador.minutosClasePorDefecto);
   late int _exposicion = widget.cante?.exposicion ?? 30;
   late String _plataforma = widget.cante?.plataformaEfectiva.isNotEmpty == true ? widget.cante!.plataformaEfectiva : ref.read(perfilPreparadorProvider).plataforma;
   late int _numTemas = widget.cante?.numTemas ?? ref.read(perfilPreparadorProvider).temasPorClase;
@@ -50,8 +54,15 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   DateTime? _hasta;
   late final Set<String> _alumnos = {...widget.alumnosIniciales, if (widget.cante?.alumno != null) widget.cante!.alumno!};
 
+  /// Con quién canta el opositor: '' (solo), [_otraPersona] (quien diga en
+  /// el texto) o el uid de uno de sus preparadores (se le pide la clase).
+  static const _otraPersona = 'otro';
+  late String _conQuien = (widget.cante?.titulo ?? '').isNotEmpty ? _otraPersona : '';
+
   bool get _edicion => widget.cante != null;
   bool get _sesion => widget.alumnos != null;
+  /// Se le pide la clase a un preparador (no es un cante por cuenta propia).
+  VinculoPreparador? get _preparadorElegido => _sesion || _conQuien.isEmpty || _conQuien == _otraPersona ? null : ref.read(misPreparadoresProvider).where((v) => v.uid == _conQuien).firstOrNull;
 
   @override
   void initState() {
@@ -119,7 +130,35 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
     if (r != null) setState(() => _temas = r);
   }
 
+  /// Con un preparador elegido no se apunta un cante: se le manda una
+  /// petición de clase (una reserva) para ese día y esa hora, que él acepta
+  /// o rechaza. Al aceptarla, la clase aparece en las dos agendas.
+  Future<void> _pedirClase(VinculoPreparador p) async {
+    final nav = Navigator.of(context);
+    final messenger = ScaffoldMessenger.of(context);
+    final choques = choquesEnAgenda(ref.read(cantesProvider), _fecha, _minutos);
+    if (!await confirmarChoques(context, choques)) return;
+    final yo = ref.read(usuarioActualProvider);
+    final red = ref.read(redRepoProvider);
+    final uid = red.uid;
+    if (yo == null || uid == null) {
+      messenger.mostrar(const SnackBar(content: Text('Entra con tu cuenta para pedir la clase.')));
+      return;
+    }
+    final nombre = p.nombre.isEmpty ? 'tu preparador' : p.nombre;
+    try {
+      await red.pedirReserva(Reserva(id: nuevoId(), preparador: p.uid, alumno: uid, alumnoNombre: yo.displayName ?? '', fecha: _fecha, minutos: _minutos, nota: _notas.text.trim(), creada: DateTime.now()));
+      ref.invalidate(misReservasProvider);
+      messenger.mostrar(SnackBar(content: Text('Pedida. Te avisaremos cuando $nombre la acepte; mientras tanto la ves en tu agenda como pendiente.')));
+      nav.pop();
+    } catch (_) {
+      messenger.mostrar(const SnackBar(content: Text('No se pudo mandar la petición. Revisa la conexión.')));
+    }
+  }
+
   Future<void> _guardar() async {
+    final preparador = _preparadorElegido;
+    if (preparador != null) return _pedirClase(preparador);
     if (_ejercicio != 1 && _bolsa == TipoBolsa.lista && _temas.isEmpty) {
       ScaffoldMessenger.of(context).mostrar(const SnackBar(content: Text('Elige al menos un tema para el sorteo')));
       return;
@@ -131,7 +170,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
     final nav = Navigator.of(context);
     final base = (widget.cante ?? Cante(id: nuevoId(), fecha: _fecha)).copyWith(
       fecha: _fecha,
-      titulo: _titulo.text.trim(),
+      titulo: _sesion || _conQuien == _otraPersona ? _titulo.text.trim() : '',
       minutos: _minutos,
       exposicion: _exposicion,
       numTemas: _numTemas,
@@ -188,10 +227,15 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Preparadores conectados a los que se les puede pedir la clase (solo al
+    // apuntar un cante nuevo; uno ya apuntado se edita sin más).
+    final preparadores = _sesion || _edicion ? const <VinculoPreparador>[] : ref.watch(misPreparadoresProvider).where((v) => v.aceptado).toList();
+    final preparador = _preparadorElegido;
+    final nombrePreparador = preparador == null ? '' : (preparador.nombre.isEmpty ? 'tu preparador' : preparador.nombre);
     return Scaffold(
       appBar: BarraWeb(
         title: Text(_sesion ? (_edicion ? 'Editar clase' : 'Nueva clase') : (_edicion ? 'Editar cante' : 'Nuevo cante')),
-        actions: [TextButton(onPressed: _guardar, child: const Text('Guardar'))],
+        actions: [TextButton(onPressed: _guardar, child: Text(preparador == null ? 'Guardar' : 'Pedir'))],
       ),
       body: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
@@ -220,7 +264,7 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
             const SizedBox(width: 10),
             OutlinedButton.icon(onPressed: _elegirHora, icon: const Icon(Icons.access_time, size: 18), label: Text(horaDe(_fecha))),
           ]),
-          if (!_edicion) ...[
+          if (!_edicion && preparador == null) ...[
             SwitchListTile(
               contentPadding: EdgeInsets.zero,
               title: const Text('Repetir'),
@@ -237,8 +281,26 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
                 TextButton.icon(onPressed: _elegirHasta, icon: const Icon(Icons.event_outlined, size: 18), label: Text('Hasta el ${fechaCorta(_hasta!)}')),
               ]),
           ],
-          TituloSeccion(_sesion ? 'Nombre de la sesión' : 'Con quién o dónde'),
-          TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Simulacro, repaso del bloque A… (opcional)' : 'Preparador, simulacro… (opcional)')),
+          if (_sesion) ...[
+            const TituloSeccion('Nombre de la sesión'),
+            TextField(controller: _titulo, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Simulacro, repaso del bloque A… (opcional)')),
+          ] else ...[
+            const TituloSeccion('Con quién'),
+            Wrap(spacing: 6, runSpacing: 2, children: [
+              ChoiceChip(label: const Text('Yo solo'), selected: _conQuien.isEmpty, onSelected: (_) => setState(() => _conQuien = '')),
+              for (final v in preparadores)
+                ChoiceChip(avatar: _conQuien == v.uid ? null : PuntoPersona(v.uid), label: Text(v.nombre.isEmpty ? 'Mi preparador' : v.nombre), selected: _conQuien == v.uid, onSelected: (_) => setState(() => _conQuien = v.uid)),
+              ChoiceChip(label: const Text('Otra persona'), selected: _conQuien == _otraPersona, onSelected: (_) => setState(() => _conQuien = _otraPersona)),
+            ]),
+            if (_conQuien == _otraPersona)
+              TextField(controller: _titulo, autofocus: !_edicion, textCapitalization: TextCapitalization.sentences, decoration: const InputDecoration(hintText: 'Un compañero, un simulacro…')),
+            if (preparador != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text('A $nombrePreparador le llega una petición de clase para ese día y esa hora. Cuando la acepte, la clase sale en tu agenda y en la suya (con sus temas, el enlace y lo demás); si la rechaza, te avisamos.', style: context.textos.bodySmall),
+              ),
+          ],
+          if (preparador == null) ...[
           const TituloSeccion('Presencial u online'),
           SelectorModalidad(
             modalidad: _modalidad,
@@ -299,13 +361,14 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
                 onChanged: (v) => setState(() => _unoPorParte = v),
               ),
           ],
-          TituloSeccion(_sesion ? 'Duración de la clase' : 'Duración'),
+          ],
+          TituloSeccion(_sesion || preparador != null ? 'Duración de la clase' : 'Duración'),
           Wrap(spacing: 6, runSpacing: 6, children: [
             // Si se eligió otra duración, aparece como una opción más.
-            for (final m in {...(_sesion ? duracionesClase : duracionesCante), _minutos}.toList()..sort()) ChoiceChip(label: Text(textoDuracion(m)), selected: _minutos == m, onSelected: (_) => setState(() => _minutos = m)),
+            for (final m in {...(_sesion || preparador != null ? duracionesClase : duracionesCante), _minutos}.toList()..sort()) ChoiceChip(label: Text(textoDuracion(m)), selected: _minutos == m, onSelected: (_) => setState(() => _minutos = m)),
             ActionChip(label: const Text('Otra'), onPressed: _otraDuracion),
           ]),
-          if (!Oposiciones.actual.esDictamen(_ejercicio)) ...[
+          if (!Oposiciones.actual.esDictamen(_ejercicio) && preparador == null) ...[
             const TituloSeccion('Exposición por tema'),
             Text('Lo que cuenta el cronómetro al cantar cada tema.', style: context.textos.labelSmall),
             const SizedBox(height: 4),
@@ -314,8 +377,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
               ActionChip(label: const Text('Otra'), onPressed: () => _otraDuracion(exposicion: true)),
             ]),
           ],
-          const TituloSeccion('Notas'),
-          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Indicaciones para el alumno (las verá si está enlazado)' : 'Lo que quieras recordar para este cante (opcional)')),
+          TituloSeccion(preparador == null ? 'Notas' : 'Nota para $nombrePreparador'),
+          TextField(controller: _notas, minLines: 2, maxLines: 5, textCapitalization: TextCapitalization.sentences, decoration: InputDecoration(hintText: _sesion ? 'Indicaciones para el alumno (las verá si está enlazado)' : (preparador == null ? 'Lo que quieras recordar para este cante (opcional)' : 'Qué quieres cantar, si prefieres online… (opcional)'))),
         ],
       ),
     );

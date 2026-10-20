@@ -15,6 +15,7 @@ import '../../data/models/plan.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../preparador/red_widgets.dart';
+import '../preparador/reservas.dart';
 import '../cantes/nuevo_cante_sheet.dart';
 import 'cante_form_page.dart';
 import 'cante_page.dart';
@@ -119,6 +120,8 @@ class _AgendaCantesVistaState extends ConsumerState<AgendaCantesVista> {
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 96),
         children: [
           TarjetaAyudaCantes(clave: 'agenda', icono: Icons.event_note_outlined, titulo: ayudasCantes['agenda']!.$1, texto: ayudasCantes['agenda']!.$2),
+          // Clases pedidas al preparador que aún no ha contestado.
+          const TarjetasReservasPedidas(),
           for (final c in canceladas.where(pasa))
             Padding(
               padding: const EdgeInsets.only(bottom: 8),

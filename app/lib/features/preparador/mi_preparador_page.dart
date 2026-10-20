@@ -214,10 +214,14 @@ class _MiPreparadorPageState extends ConsumerState<MiPreparadorPage> {
                     ]),
                     if (!v.aceptado)
                       const Padding(padding: EdgeInsets.only(top: 6), child: Etiqueta('Pendiente de aceptar'))
-                    else if (ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false)
+                    else
                       Padding(
                         padding: const EdgeInsets.only(top: 8),
-                        child: OutlinedButton.icon(onPressed: () => ir(ReservarPage(preparador: v)), icon: const Icon(Icons.event_available_outlined, size: 18), label: const Text('Reservar clase')),
+                        child: OutlinedButton.icon(
+                          onPressed: () => ir(ReservarPage(preparador: v)),
+                          icon: const Icon(Icons.event_available_outlined, size: 18),
+                          label: Text(ref.watch(huecosDeProvider(v.uid)).value?.activo ?? false ? 'Reservar clase' : 'Pedir una clase'),
+                        ),
                       ),
                   ]),
                 ),

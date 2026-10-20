@@ -272,7 +272,8 @@ class PlanRepo {
   /// El recibido se queda con la respuesta (no se borra): así se avisa al
   /// preparador de que lo ha aceptado o rechazado.
   Future<void> _responderRecibido(CronogramaRecibido r, String respuesta) async {
-    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).set({'respuesta': respuesta, 'respondido': DateTime.now().toIso8601String()}, SetOptions(merge: true));
+    // Con plazo: sin red, mejor decirlo que quedarse esperando.
+    await _docUsuario?.collection('cronogramasRecibidos').doc(r.cronograma.id).set({'respuesta': respuesta, 'respondido': DateTime.now().toIso8601String()}, SetOptions(merge: true)).timeout(const Duration(seconds: 20));
   }
 
   Future<void> sincronizarCronogramas() async {

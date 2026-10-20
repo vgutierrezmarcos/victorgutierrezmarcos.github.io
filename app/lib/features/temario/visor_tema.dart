@@ -421,7 +421,9 @@ class _VisorTemaState extends State<VisorTema> {
 
   /// La rueda del ratón desplaza (y con Ctrl, amplía), como en un lector de
   /// PDF. Se escucha dentro del InteractiveViewer para adelantarse a él, que
-  /// con la rueda solo amplía. [e] viene en coordenadas del contenido.
+  /// con la rueda solo amplía; el Listener es opaco para que también cuente
+  /// sobre los márgenes y los huecos entre páginas (si no, ahí ganaba el
+  /// InteractiveViewer y la rueda ampliaba). [e] viene en coordenadas del contenido.
   void _rueda(PointerSignalEvent e) {
     if (e is! PointerScrollEvent) return;
     GestureBinding.instance.pointerSignalResolver.register(e, (_) {
@@ -636,7 +638,7 @@ class _VisorTemaState extends State<VisorTema> {
                 // Anotando, los gestos los lleva el Listener (lápiz, palma, dos dedos).
                 panEnabled: !widget.anotando,
                 scaleEnabled: !widget.anotando,
-                child: Listener(onPointerSignal: _rueda, child: contenido),
+                child: Listener(behavior: HitTestBehavior.opaque, onPointerSignal: _rueda, child: contenido),
               ),
             ),
           );

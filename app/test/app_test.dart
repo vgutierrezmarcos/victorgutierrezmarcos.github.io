@@ -307,10 +307,15 @@ void main() {
     expect(find.text('Reservar clase con mi preparador'), findsOneWidget);
     await tocar(tester, find.text('Un cante por mi cuenta'));
     expect(find.text('Nuevo cante'), findsOneWidget);
-    await tester.enterText(find.widgetWithText(TextField, 'Preparador, simulacro… (opcional)'), 'Simulacro del jueves');
+    // «Con quién»: solo, con el preparador (no hay ninguno en esta prueba) o con otra persona.
+    expect(find.text('Con quién'), findsOneWidget);
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Yo solo').first).selected, isTrue);
+    expect(find.widgetWithText(TextField, 'Un compañero, un simulacro…'), findsNothing);
+    await tocar(tester, find.text('Otra persona'));
+    await tester.enterText(find.widgetWithText(TextField, 'Un compañero, un simulacro…'), 'Simulacro del jueves');
     await tocar(tester, find.text('Todo el ejercicio'));
-    // Duración por defecto (30 min) y exposición por tema aparte.
-    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '30 min').first).selected, isTrue);
+    // Duración por defecto (2 h, lo que dura una clase) y exposición por tema aparte.
+    expect(tester.widget<ChoiceChip>(find.widgetWithText(ChoiceChip, '2 h').first).selected, isTrue);
     expect(find.text('Exposición por tema'), findsOneWidget);
     await tocar(tester, find.text('Otra'));
     await tester.enterText(find.descendant(of: find.byType(AlertDialog), matching: find.byType(TextField)), '40');
