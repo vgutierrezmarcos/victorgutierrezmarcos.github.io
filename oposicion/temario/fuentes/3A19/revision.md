@@ -168,3 +168,7 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 - **III.2**: la fórmula del reparto de Nash en una línea; v({i}) = 1, v({i,j}) = 16/9, v(N) = 4 en una línea y debajo φ_i = 4/3 y «16/9 > 4/3».
 - **III.3**: de palabra; en la pizarra, solo una flecha desde `eq:colusion` («multa ↓B^C; exención ↑B^D») y las 3 condiciones de impugnabilidad como apoyo.
 - **Pronunciación** (si hace falta): Cournot, Bertrand, Stackelberg, Edgeworth, Scheinkman, Rotemberg, Saloner, d'Aspremont, Shapley.
+
+## Cambios posteriores
+
+- 20/10/2026: nomenclatura estático/dinámico de los manuales, coherente con el 3.A.14; recuadro "Otra forma de verlo".

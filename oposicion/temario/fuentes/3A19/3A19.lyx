@@ -1098,7 +1098,7 @@ Estructura
 status collapsed
 
 \begin_layout Plain Layout
-I. Las soluciones no cooperativas: el anÃ¡lisis estÃ¡tico
+I. Las soluciones no cooperativas: competencia en una sola vez
 \end_layout
 
 \end_inset
@@ -1114,7 +1114,7 @@ nolink "false"
 
 \end_inset
 
-), los 4 modelos clÃ¡sicos segÃºn se compita en cantidades o en precios y se decida a la vez o por turnos: 
+), los 4 modelos clÃ¡sicos segÃºn se compita en cantidades o en precios y se decida a la vez (juegos estÃ¡ticos) o por turnos (juegos dinÃ¡micos secuenciales): 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1197,7 +1197,7 @@ nolink "false"
 status collapsed
 
 \begin_layout Plain Layout
-II. El anÃ¡lisis dinÃ¡mico
+II. La competencia repetida
 \end_layout
 
 \end_inset
@@ -1309,7 +1309,7 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
- I. Soluciones no cooperativas: anÃ¡lisis estÃ¡tico
+ I. Soluciones no cooperativas: competencia en una sola vez
 \begin_inset Newline newline
 \end_inset
 
@@ -1404,7 +1404,7 @@ Bertrand
 \begin_inset Newline newline
 \end_inset
 
- II. AnÃ¡lisis dinÃ¡mico: colusiÃ³n tÃ¡cita
+ II. Competencia repetida: colusiÃ³n tÃ¡cita
 \begin_inset Newline newline
 \end_inset
 
@@ -1823,7 +1823,7 @@ Soluciones no cooperativas:
 \begin_inset Newline newline
 \end_inset
 
-anÃ¡lisis estÃ¡tico
+competencia en una sola vez
 \end_layout
 
 \begin_layout Standard
@@ -2030,17 +2030,41 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-Empezamos por la situaciÃ³n mÃ¡s sencilla: las empresas se encuentran una sola vez en el mercado y no pueden firmar acuerdos que las obliguen.
-\begin_inset Foot
+Empezamos por la situaciÃ³n mÃ¡s sencilla: las empresas se encuentran una sola vez en el mercado y no pueden firmar acuerdos que las obliguen. Seguimos la nomenclatura de los manuales de teorÃ­a de juegos 
+\begin_inset Flex Ver tema
 status collapsed
 
+\begin_layout Plain Layout
+3.A.14
+\end_layout
 
-\begin_layout Standard
-Llamamos 
+\end_inset
+
+: 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cournot
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bertrand
+\end_layout
+
+\end_inset
+
+ son juegos 
 \emph on
-estÃ¡tico
+estÃ¡ticos
 \emph default
- al anÃ¡lisis de un solo periodo. 
+, porque las empresas deciden a la vez; 
 \begin_inset Flex Autor
 status collapsed
 
@@ -2050,7 +2074,11 @@ Stackelberg
 
 \end_inset
 
- y el liderazgo en precios son juegos secuenciales (dinÃ¡micos, en el lenguaje de la teorÃ­a de juegos, y se resuelven por inducciÃ³n hacia atrÃ¡s), pero tambiÃ©n en ellos las empresas se encuentran una sola vez; la repeticiÃ³n es el objeto del bloque
+ y el liderazgo en precios son juegos 
+\emph on
+dinÃ¡micos
+\emph default
+ secuenciales, porque deciden por turnos y se resuelven por inducciÃ³n hacia atrÃ¡s (ENPS). La repeticiÃ³n, el otro juego dinÃ¡mico, es el objeto del bloque
 \begin_inset space ~
 
 \end_inset
@@ -2066,16 +2094,110 @@ nolink "false"
 
 \end_inset
 
-.
-\end_layout
-
-\end_inset
-
- Su 
+. Su 
 \emph on
 conclusiÃ³n anticipada
 \emph default
 : el resultado queda entre la competencia perfecta y el monopolio, y dÃ³nde exactamente depende de 2 cosas, la variable con la que compiten (la cantidad o el precio) y el orden en que deciden (a la vez o una detrÃ¡s de otra). En todos los casos las empresas ganarÃ­an mÃ¡s si produjeran menos juntas. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Otra forma de verlo
+\series default
+. En parte de la organizaciÃ³n industrial y en muchos temarios de la oposiciÃ³n se llama Â«anÃ¡lisis estÃ¡ticoÂ» a todo lo que ocurre una sola vez, incluidos 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stackelberg
+\end_layout
+
+\end_inset
+
+ y el liderazgo en precios, y Â«dinÃ¡micoÂ» solo a la repeticiÃ³n. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+JustificaciÃ³n
+\emph default
+: 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stackelberg
+\end_layout
+
+\end_inset
+
+ equivale a una empresa que maximiza en una sola etapa con una variaciÃ³n conjetural igual a la pendiente de la funciÃ³n de reacciÃ³n de la seguidora, 
+\begin_inset Formula $v_1=R_2'$
+\end_inset
+
+ (variaciones conjeturales, en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:cournot"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+LÃ­mite
+\emph default
+: en un juego simultÃ¡neo de una sola vez nadie puede reaccionar, asÃ­ que una conjetura distinta de cero no es coherente 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[cap.~5]{Tirole1988Theory}
+\end_layout
+
+\end_inset
+
+; el ENPS existe precisamente porque importa el orden. Por eso seguimos a los manuales. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Si pregunta el tribunal
+\emph default
+: es una cuestiÃ³n de nombres. Lo importante es distinguir el orden de las jugadas (simultÃ¡neo o secuencial) y el nÃºmero de encuentros (una vez o repetido). El desarrollo estÃ¡ en el tema de teorÃ­a de juegos 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.14
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3269,7 +3391,11 @@ rowcolor{tceeazulpalido}
 \series bold
 Decisiones simultÃ¡neas (EN)
 \series default
- 
+
+\begin_inset Newline newline
+\end_inset
+
+(juegos estÃ¡ticos) 
 \end_layout
 
 \end_inset
@@ -3283,6 +3409,10 @@ Decisiones simultÃ¡neas (EN)
 Decisiones secuenciales (ENPS)
 \series default
 
+\begin_inset Newline newline
+\end_inset
+
+(juegos dinÃ¡micos)
 \end_layout
 
 \end_inset
@@ -5016,7 +5146,18 @@ textcite{Bresnahan1981Duopoly}
 
 \end_inset
 
-) no resuelve el problema: la forma de hacerlo bien es modelizar el juego dinÃ¡mico (bloque
+) no resuelve el problema: la forma de hacerlo bien es modelizar el juego dinÃ¡mico: el orden de las jugadas (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:stackelberg"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) o la repeticiÃ³n (bloque
 \begin_inset space ~
 
 \end_inset
@@ -5444,7 +5585,7 @@ Cournot
 \begin_inset Formula $q_2$
 \end_inset
 
-. Es un juego dinÃ¡mico con informaciÃ³n perfecta, en 2 etapas, que se resuelve por 
+. Es un juego dinÃ¡mico secuencial con informaciÃ³n perfecta, en 2 etapas, que se resuelve por 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -6177,7 +6318,7 @@ status collapsed
 \end_layout
 
 \begin_layout Enumerate
-La paradoja descansa en 5 supuestos: costes marginales iguales, producto homogÃ©neo, sin restricciones de capacidad, un contexto estÃ¡tico y sin cooperaciÃ³n entre las empresas.
+La paradoja descansa en 5 supuestos: costes marginales iguales, producto homogÃ©neo, sin restricciones de capacidad, un contexto estÃ¡tico (una sola vez) y sin cooperaciÃ³n entre las empresas.
 \begin_inset Foot
 status collapsed
 
@@ -6935,7 +7076,7 @@ status collapsed
 \begin_layout Itemize
 
 \emph on
-Contexto dinÃ¡mico
+Contexto dinÃ¡mico, con repeticiÃ³n
 \emph default
 : si las empresas se encuentran muchas veces, pueden sostener precios altos sin acuerdos (bloque
 \begin_inset space ~
@@ -8385,7 +8526,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-AnÃ¡lisis dinÃ¡mico:
+Competencia repetida:
 \begin_inset Newline newline
 \end_inset
 
