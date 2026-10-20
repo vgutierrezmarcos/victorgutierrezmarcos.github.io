@@ -550,7 +550,8 @@ class CantesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(planRepoProvider);
     await repo.guardarCantes(lista);
     state = repo.cantes();
-    await reprogramarAvisos();
+    // Con plazo: si el servicio de avisos no contesta, el cante ya está guardado.
+    await reprogramarAvisos().timeout(const Duration(seconds: 5), onTimeout: () {});
   }
 
   Future<void> borrar(Cante c) async {
@@ -810,7 +811,7 @@ class SesionesNotifier extends Notifier<List<Cante>> {
     final repo = ref.read(preparadorRepoProvider);
     await repo.guardarSesiones(lista);
     state = repo.sesiones();
-    await reprogramarAvisos();
+    await reprogramarAvisos().timeout(const Duration(seconds: 5), onTimeout: () {});
   }
 
   Future<void> borrar(Cante s) async {

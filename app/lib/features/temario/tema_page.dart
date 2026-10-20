@@ -15,6 +15,7 @@ import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
+import '../test/preguntas_por_tema_page.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/frecuencia_test.dart';
 import '../cantar/pizarra_compartida.dart';
@@ -376,7 +377,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                     Text(widget.tema.titulo, maxLines: 2, overflow: TextOverflow.ellipsis, style: context.textos.bodySmall?.copyWith(color: context.esquema.onSurface)),
                     // Cuánto cae en el test del primer ejercicio (solo los temas que entran en él).
                     if (ref.watch(frecuenciaTestProvider).valueOrNull case final f? when f.temas.containsKey(widget.tema.codigo))
-                      Text('En el test: ${textoFrecuencia(f, widget.tema.codigo)}', style: context.textos.labelSmall),
+                      InkWell(
+                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
+                        child: Text('En el test: ${textoFrecuencia(f, widget.tema.codigo)} · ver por tema', style: context.textos.labelSmall?.copyWith(decoration: TextDecoration.underline)),
+                      ),
                   ]),
                 ),
                 if (!preparador) IconButton(

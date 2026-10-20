@@ -156,7 +156,18 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
     }
   }
 
+  /// Cualquier fallo se cuenta en pantalla: que «Guardar» nunca se quede sin
+  /// hacer nada (pasó en la web, sin ningún mensaje).
   Future<void> _guardar() async {
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await _guardarDeVerdad();
+    } catch (e) {
+      messenger.mostrar(SnackBar(content: Text('No se pudo guardar: $e')));
+    }
+  }
+
+  Future<void> _guardarDeVerdad() async {
     final preparador = _preparadorElegido;
     if (preparador != null) return _pedirClase(preparador);
     if (_ejercicio != 1 && _bolsa == TipoBolsa.lista && _temas.isEmpty) {

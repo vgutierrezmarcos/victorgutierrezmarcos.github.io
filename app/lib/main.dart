@@ -16,6 +16,7 @@ import 'core/constants.dart';
 import 'core/permiso_calendario.dart';
 import 'core/firebase_web.dart';
 import 'core/notificaciones.dart';
+import 'core/pantalla_error.dart';
 import 'core/providers.dart';
 import 'core/push_proceso.dart';
 import 'features/inicio/elegir_oposicion.dart';
@@ -30,6 +31,8 @@ import 'data/repos/usuario_repo.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Si una pantalla falla, se explica y se puede salir (no un rectángulo gris).
+  PantallaError.instalar();
   await Hive.initFlutter();
   await initializeDateFormatting('es');
 
