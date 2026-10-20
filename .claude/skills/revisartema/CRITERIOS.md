@@ -189,6 +189,19 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   tema …»; se cuenta lo necesario (aunque sea resumido) y se remite.
 - Las notas al pie salen **siempre al pie de la página** (`footmisc` con
   `bottom`), aunque la página tenga hueco.
+- En las tablas con celdas sombreadas (`\cellcolor`, como las matrices de
+  pagos), las rayas parciales van con `\hhline{~|-|-|}` y no con `\cline`:
+  el color tapa las de `\cline` (Víctor, 20/10/2026). Y las columnas tienen
+  que ser al menos tan anchas como su cabecera: si no, el sombreado no llega
+  al borde.
+- Una nota que **sigue en la página siguiente** lleva una flecha morada (↪)
+  en el margen, al final del trozo que queda en la primera (Víctor,
+  20/10/2026); la pone `tcee.sty` sola, no hay que hacer nada.
+- Una nota con gráfico (`\graficonota`) que no cabe entera se parte y deja
+  el texto en una página y el gráfico en otra: si pasa, el gráfico sale de
+  la nota y va **con el párrafo que lo explica**, como un panel más del
+  gráfico al que acompaña o como gráfico propio (Víctor, 20/10/2026: 3.A.18,
+  demanda discontinua de Hotelling).
 - Lecturas de clases y preparadores (ICEX-CECO…) se citan **como en el tema
   original**, sin añadir «no publicado».
 - **Sin nombres de preparadores** en el tema (ni «cantado en clase con…», ni

@@ -1,5 +1,5 @@
-% Demanda de la empresa 1 con costes de transporte lineales (3.A.18, nota del
-% anexo de Hotelling; d'Aspremont, Gabszewicz y Thisse, 1979). Empresas en
+% Demanda de la empresa 1 con costes de transporte lineales (3.A.18, panel c del
+% gráfico de la discontinuidad en el anexo de Hotelling; d'Aspremont, Gabszewicz y Thisse, 1979). Empresas en
 % a = 0,25 y b = 0,75, t = 2 y p_2 = 2, así que t (b - a) = 1:
 %   p_1 > p_2 + t(b-a) = 3      -> x_1 = 0 (la 2 se queda también con el patio
 %                                   trasero de la 1: salto de a a 0);
@@ -12,9 +12,11 @@
 \begin{document}
 \begin{tikzpicture}[tcee,x=1.3cm,y=3cm,
     abierto/.style={circle,draw=tceemorado,fill=white,thick,inner sep=1.5pt},
-    cerrado/.style={circle,fill=tceemorado,inner sep=1.8pt}]
+    cerrado/.style={circle,fill=tceemorado,inner sep=1.8pt},
+    titulo/.style={font=\small,anchor=south}]
   \def\pb{1}\def\pa{3}
-  \useasboundingbox (-0.75,-0.24) rectangle (4.75,1.3);
+  \useasboundingbox (-0.75,-0.24) rectangle (4.75,1.45);
+  \capa{1}{\node[titulo] at (2.3,1.3) {c) Demanda de la empresa 1};}
   % Ejes
   \capa{1}{\ejes{$p_1$}{$x_1$}{4.6}{1.25}}
   % Precio muy alto: la empresa 1 no vende

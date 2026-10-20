@@ -70,6 +70,9 @@
 \pgfplotsset{compat=1.18}
 \RequirePackage[hang,flushmargin,bottom]{footmisc}% bottom: las notas siempre al pie, aunque la página tenga hueco
 \RequirePackage{needspace}
+% \hhline en vez de \cline en las tablas con \cellcolor: el color de la celda
+% tapa las rayas de \cline, pero no las de \hhline.
+\RequirePackage{hhline}
 % En las celdas de las tablas, \newline empieza una línea nueva sin el \hfil que
 % lleva normalmente, para que en las columnas centradas
 % (>{\centering\arraybackslash}m{…}) y en \multirow{n}{=}{\centering …} cada
@@ -261,7 +264,10 @@
 % \graficonota{nombre} → gráfico pequeño (0,45 del ancho, centrado) dentro de
 % una nota al pie: \footnote{Texto de la nota.\graficonota{curva-aprendizaje}}.
 % Con otro ancho: \graficonota[0.35]{nombre}.
-\newcommand{\graficonota}[2][0.45]{\par\vspace{3pt}{\centering\includegraphics[width=#1\linewidth]{#2}\par}\vspace{1pt}}
+% La nota con gráfico no se parte entre 2 páginas (texto en una y gráfico en la
+% otra): sin cortes entre sus líneas ni antes del gráfico, va entera a donde quepa.
+\newcommand{\graficonota}[2][0.45]{{\interlinepenalty\@M\par}\nobreak\vspace{3pt}\nobreak
+  {\centering\includegraphics[width=#1\linewidth]{#2}\par}\vspace{1pt}}
 
 
 % --- Cajas ----------------------------------------------------------------------
@@ -313,6 +319,18 @@
 % --- Notas al pie ---------------------------------------------------------------
 \renewcommand{\footnoterule}{{\color{tceemorado}\hrule width 0.3\textwidth height 0.4pt}\vspace{3pt}}
 \setlength{\footnotesep}{0.8\baselineskip}
+% Nota que sigue en la página siguiente: flecha morada en el margen, al final de
+% la parte que queda en esta (como en los Word antiguos). En la rutina de salida,
+% \insertpenalties cuenta las notas (o trozos de nota) que pasan a la página siguiente.
+\AtBeginDocument{%
+  \let\tcee@makecol\@makecol
+  \def\@makecol{%
+    \ifnum\insertpenalties>\z@\ifvoid\footins\else
+      \setbox\footins\vbox{\unvbox\footins\nointerlineskip
+        \vbox to\z@{\vss\hbox to\hsize{\hfill\rlap{\kern4pt\raise2.5pt\hbox{\normalfont\small
+          \color{tceemorado}$\hookrightarrow$}}}}}%
+    \fi\fi
+    \tcee@makecol}}
 
 % --- Bibliografía ---------------------------------------------------------------
 \RequirePackage[backend=biber,style=authoryear-comp,maxcitenames=2,uniquename=false,
