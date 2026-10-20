@@ -194,6 +194,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   el color tapa las de `\cline` (Víctor, 20/10/2026). Y las columnas tienen
   que ser al menos tan anchas como su cabecera: si no, el sombreado no llega
   al borde.
+- **Nada de bloques de texto largos** (Víctor, 20/10/2026): un párrafo que
+  encadena varias ideas se parte en viñetas a varios niveles, y si lo que
+  cuenta se puede ver (una escala, un mapa de los modelos, una tabla
+  pequeña), se añade el gráfico o la tabla que lo resume.
 - Una nota que **sigue en la página siguiente** lleva una flecha morada (↪)
   en el margen, al final del trozo que queda en la primera (Víctor,
   20/10/2026); la pone `tcee.sty` sola, no hay que hacer nada.
@@ -522,7 +526,9 @@ el texto original y lo que se hizo.
   paso como mucho. Las marcas no salen en los subtítulos.
 - **Refranes y dichos populares** (Víctor, 16/10/2026): además de las
   preguntas, la apertura y el cierre pueden ser un refrán o un dicho
-  popular que el tema explica o matiza; la apertura y el cierre tienen que
+  popular que el tema explica o matiza. **Todos los temas llevan un refrán
+  en el enganche** (Víctor, 20/10/2026), aunque el enganche sea un hecho o
+  una cita, y la idea final lo retoma; sin repetir el de otro tema; la apertura y el cierre tienen que
   quedar hilados (el cierre retoma la pregunta o el refrán). Los enganches
   del documento, mejor con hechos actuales que con datos de hace décadas.
 - **Funciones clave en la pizarra**: entre bloque y bloque se borra toda la

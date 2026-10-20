@@ -1,0 +1,39 @@
+% Dónde queda el precio de cada modelo de oligopolio entre el de competencia
+% perfecta (c) y el de monopolio (p^M), en el duopolio con demanda lineal
+% p = a - bQ y coste marginal c igual para las 2 (precios en unidades de a - c
+% sobre c): Bertrand c (0); Stackelberg (a+3c)/4 (1/4); Cournot (a+2c)/3 (1/3);
+% cártel p^M = (a+c)/2 (1/2). Debajo, lo que puede pasar si el juego se repite
+% sin final conocido (bloque II): cualquier precio entre c y p^M.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=22cm,y=1cm,
+    marca/.style={circle,fill=#1,inner sep=2.2pt},
+    nombre/.style={font=\small,align=center,anchor=south},
+    valor/.style={font=\footnotesize,anchor=north}]
+  \useasboundingbox (-0.09,-2.35) rectangle (0.6,1.75);
+  % 1: la escala del precio, de la competencia al monopolio
+  \capa{1}{\draw[thick,->] (-0.03,0) -- (0.57,0) node[right] {$p$};}
+  \capa{1}{\node[font=\footnotesize\itshape,text=tceegris,anchor=north] at (0,-0.75) {competencia perfecta};}
+  \capa{1}{\node[font=\footnotesize\itshape,text=tceegris,anchor=north] at (0.5,-0.75) {monopolio};}
+  % 2: competencia en una sola vez, con cantidades: Cournot y Stackelberg
+  \capa{2}{\node[marca=tceemorado] at ({1/3},0) {};
+           \node[nombre,text=tceemorado] at ({1/3},0.2) {\textsc{Cournot}\\ (a la vez)};
+           \node[valor] at ({1/3},-0.15) {$p^C=\frac{a+2c}{3}$};}
+  \capa{3}{\node[marca=tceedorado] at (0.25,0) {};
+           \node[nombre,text=tceedorado] at (0.22,0.2) {\textsc{Stackelberg}\\ (por turnos)};
+           \node[valor] at (0.25,-0.15) {$p^S=\frac{a+3c}{4}$};}
+  % 4: con precios: Bertrand
+  \capa{4}{\node[marca=tceeazul] at (0,0) {};
+           \node[nombre,text=tceeazul] at (0,0.2) {\textsc{Bertrand}\\ (a la vez)};
+           \node[valor] at (0,-0.15) {$p^B=c$};}
+  % 5: si se ponen de acuerdo: el cártel
+  \capa{5}{\node[marca=tceerojo] at (0.5,0) {};
+           \node[nombre,text=tceerojo] at (0.5,0.2) {cártel\\ (de acuerdo)};
+           \node[valor] at (0.5,-0.15) {$p^M=\frac{a+c}{2}$};}
+  % 6: competencia repetida: cualquier precio entre c y p^M
+  \capa{6}{\draw[decorate,decoration={brace,mirror,amplitude=6pt},thick,tceeverde] (0,-1.35) -- (0.5,-1.35)
+           node[midway,below=7pt,font=\small,text=tceeverde] {repetida sin final conocido: cualquier precio entre $c$ y $p^M$ (bloque II)};}
+\end{tikzpicture}
+\end{document}

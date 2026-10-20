@@ -1,38 +1,40 @@
-% Colusión con estrategias de gatillo: beneficio por periodo de la empresa que
-% se desvía frente a la que colude siempre. Rehace la Imagen 13 del tema original.
-% Valores: B^N = 0,8 (castigo, EN de la etapa; con Bertrand sería 0),
-%   B^C = 2,4 (coludir), B^D = 4 (desviarse en t = 0); beta = 0,75.
-%   Ganancia de hoy: rectángulo [0,1] x [B^C, B^D].
-%   Pérdida del periodo t >= 1: rectángulo de altura B^C - B^N y ancho beta^t
-%   (su área es la pérdida descontada), cada vez más claro.
+% Colusión con estrategias de gatillo: valor descontado del beneficio de cada
+% periodo, coludiendo siempre o desviándose hoy. Rehace la Imagen 13 del tema
+% original: las 2 curvas ya están descontadas (beta^t B), de modo que se
+% comparan directamente las áreas: la ganancia de desviarse hasta que las
+% demás reaccionan (rojo) frente a la pérdida del castigo después (azul).
+% Valores: B^D = 4, B^C = 2,8, B^N = 0,9; beta = 0,82 por periodo; reacción en
+% tau = 2 (con tau = 1, la reacción es al periodo siguiente).
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
 \begin{document}
-\begin{tikzpicture}[tcee,x=1.25cm,y=1cm]
-  \def\BN{0.8}\def\BC{2.4}\def\BD{4}\def\bdesc{0.75}
-  \useasboundingbox (-0.9,-0.75) rectangle (9.6,5.3);
-  % 1: ejes (periodos y beneficio por periodo)
-  \capa{1}{\ejes{$t$}{$B$}{8.3}{5}}
-  \capa{1}{\foreach \t in {1,...,6} {\draw (\t,0) -- (\t,-0.08) node[below] {$\t$};}}
-  \capa{1}{\node[below] at (7.2,-0.08) {$\dots$};}
-  % 2: coludir siempre: B^C en todos los periodos
-  \capa{2}{\draw[curva1] (0,\BC) node[left,text=black] {$B^{\mathrm C}$} -- (7.6,\BC) node[etiqueta,right,align=left] {coludir\\ siempre};}
-  % 3: desviarse hoy (t = 0): pico B^D y la ganancia B^D - B^C
-  \capa{3}{\draw[curva4] (0,\BD) node[left,text=black] {$B^{\mathrm D}$} -- (1,\BD);}
-  \capa{3}{\fill[area,fill=tceeverde,fill opacity=0.35] (0,\BC) rectangle (1,\BD);}
-  % 4: desde t = 1, el castigo: B^N para siempre
-  \capa{4}{\draw[curva4] (1,\BD) -- (1,\BN) -- (7.6,\BN) node[etiqueta,right] {desviarse};}
-  \capa{4}{\draw[guia] (0,\BN) node[left,text=black] {$B^{\mathrm N}$} -- (1,\BN);}
-  % 5: la pérdida B^C - B^N de cada periodo, descontada con beta^t
-  \capa{5}{\foreach \t in {1,...,6} {
-      \pgfmathsetmacro{\w}{\bdesc^\t}
-      \pgfmathsetmacro{\o}{0.45*\bdesc^(\t-1)}
-      \fill[area,fill=tceerojo,fill opacity=\o] (\t,\BN) rectangle ({\t+\w},\BC);
-      \node[etiqueta,text=tceerojo,font=\footnotesize] at ({\t+\w/2},{\BC+0.3}) {$\beta^{\t}$};}}
-  % 6: rótulos y la condición
-  \capa{6}{\node[etiqueta,text=tceeverde,anchor=west,align=left] at (1.15,3.45) {ganancia de hoy:\\ $B^{\mathrm D}-B^{\mathrm C}$};}
-  \capa{6}{\node[etiqueta,text=tceerojo] at (4,0.4) {pérdida descontada de después: $\beta^t\,(B^{\mathrm C}-B^{\mathrm N})$ en cada $t\geq1$};}
-  \capa{6}{\node[draw=tceemorado,thick,rounded corners=2pt,inner sep=4pt,fill=white] at (5.6,4.35) {la colusión aguanta si $\displaystyle\beta\geq\frac{B^{\mathrm D}-B^{\mathrm C}}{B^{\mathrm D}-B^{\mathrm N}}$};}
+\begin{tikzpicture}[tcee,x=0.75cm,y=1cm,
+    declare function={des(\B,\t)=\B*0.82^\t;}]
+  \def\BD{4}\def\BC{2.8}\def\BN{0.9}\def\treac{2}\def\T{14}
+  \useasboundingbox (-1.3,-0.8) rectangle (17.2,4.9);
+  % 1: ejes (tiempo y beneficio descontado)
+  \capa{1}{\ejes{$t$}{$\beta^t B$}{\T.6}{4.6}}
+  % 2: coludir siempre: beta^t B^C
+  \capa{2}{\draw[curva1] plot[domain=0:\T,samples=60] (\x,{des(\BC,\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (10.5,{des(\BC,10.5)}) {coludir};}
+  \capa{2}{\node[left] at (0,\BC) {$B^{\mathrm C}$};}
+  % 3: desviarse: beta^t B^D hasta que reaccionan, y la ganancia (rojo)
+  \capa{3}{\fill[area,fill=tceerojo,fill opacity=0.45] plot[domain=0:\treac,samples=30] (\x,{des(\BD,\x)}) -- plot[domain=\treac:0,samples=30] (\x,{des(\BC,\x)}) -- cycle;}
+  \capa{3}{\draw[curva4] plot[domain=0:\treac,samples=30] (\x,{des(\BD,\x)});}
+  \capa{3}{\node[left] at (0,\BD) {$B^{\mathrm D}$};}
+  % 4: el castigo: beta^t B^N desde tau, y la pérdida (azul)
+  \capa{4}{\draw[curva4] (\treac,{des(\BD,\treac)}) -- (\treac,{des(\BN,\treac)});}
+  \capa{4}{\fill[area,fill=tceeazul,fill opacity=0.35] plot[domain=\treac:\T,samples=50] (\x,{des(\BC,\x)}) -- plot[domain=\T:\treac,samples=50] (\x,{des(\BN,\x)}) -- cycle;}
+  \capa{4}{\draw[curva4] plot[domain=\treac:\T,samples=50] (\x,{des(\BN,\x)});}
+  \capa{4}{\node[etiqueta,text=tceedorado,anchor=south west] at (0.9,{des(\BD,0.9)}) {desviarse};}
+  \capa{4}{\node[left] at (0,\BN) {$B^{\mathrm N}$};}
+  \capa{4}{\draw[guia] (0,\BN) -- (\treac,{des(\BN,\treac)});}
+  \capa{4}{\draw (\treac,0) -- (\treac,-0.08) node[below] {$\tau$};}
+  \capa{4}{\node[etiqueta,below,font=\footnotesize,align=center] at (\treac,-0.35) {reacción};}
+  % 5: rótulos y la condición
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west,align=left] at (3.2,3.1) {ganancia de desviarse\\ hasta que reaccionan};}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=west,align=left] at (6.2,1.75) {pérdida por el castigo\\ desde entonces};}
+  \capa{5}{\node[draw=tceemorado,thick,rounded corners=2pt,inner sep=4pt,fill=white] at (10.8,3.9) {la colusión aguanta si \textcolor{tceerojo}{rojo} $\leq$ \textcolor{tceeazul}{azul}};}
 \end{tikzpicture}
 \end{document}

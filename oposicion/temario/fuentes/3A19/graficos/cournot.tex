@@ -1,6 +1,7 @@
-% Cournot y Stackelberg en el plano (q_1, q_2): funciones de reacción e
-% isobeneficios. Rehace las Imágenes 1 y 3 y el gráfico de la nota 33 del tema
-% original (a partir de Pindyck y Rubinfeld).
+% Cournot en el plano (q_1, q_2): funciones de reacción, isobeneficios, la
+% lente y las rectas de monopolio y competencia. Rehace la Imagen 1 del tema
+% original (a partir de Pindyck y Rubinfeld). Stackelberg va aparte
+% (stackelberg.tex), sobre este mismo dibujo.
 % Escala: demanda p = a - bQ, coste marginal c igual para las 2; las cantidades
 % van en unidades de (a-c)/b y el beneficio en unidades de (a-c)^2/b.
 %   q^M = 1/2 (monopolio), q^c = 1 (competencia perfecta)
@@ -54,10 +55,5 @@
   \capa{7}{\draw[desplazada,thick,tceegris] (0,0.5) -- (0.5,0);}
   \capa{7}{\node[etiqueta,font=\footnotesize,text=tceegris,fill=white,inner sep=0.5pt,rotate=-45] at (0.103,0.338) {$q_1+q_2=q^M$};}
   \capa{7}{\draw[desplazada,thick,tceegris] (0,1) -- (1,0) node[etiqueta,text=tceegris,pos=0.72,sloped,above] {$q_1+q_2=q^c$};}
-  % 8: Stackelberg: el isobeneficio más bajo de la líder que toca R_2, tangente en S
-  \capa{8}{\draw[curva4] plot[domain=0.21:0.8,samples=60] (\x,{iso(1/8,\x)}) node[etiqueta,right,text=tceedorado] {$B_1^S$};}
-  \capa{8}{\node[punto,label={[etiqueta]above right:$S$}] (S) at (0.5,0.25) {};}
-  \capa{8}{\proyeccion{(S)}{}{$q_2^S$}}
-  \capa{8}{\node[etiqueta,below=11pt] at (0.5,0) {$q_1^S$};}
 \end{tikzpicture}
 \end{document}

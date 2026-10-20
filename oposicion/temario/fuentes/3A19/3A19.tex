@@ -12,9 +12,10 @@
 \begin{itemize}
 \item \textbf{\emph{Enganche}}:
   \begin{itemize}
-  \item En 1776, Adam \autor{Smith} advertía de que la gente del mismo oficio rara vez se reúne, ni siquiera para divertirse, sin que la conversación acabe en una conspiración contra el público o en alguna maquinación para subir los precios \parencite[libro~I, cap.~10, parte~II]{Smith1776Wealth}.\footnote{En el original: «People of the same trade seldom meet together, even for merriment and diversion, but the conversation ends in a conspiracy against the public, or in some contrivance to raise prices». \autor{Smith} añade que esas reuniones no pueden prohibirse sin atentar contra la libertad, pero que la ley no debe hacer nada para facilitarlas.}
+  \item «Entre bomberos no se pisan la manguera», dice el refrán: entre los que se dedican a lo mismo, nadie le hace la competencia a nadie.
+  \item Ya en 1776, Adam \autor{Smith} advertía de que la gente del mismo oficio rara vez se reúne, ni siquiera para divertirse, sin que la conversación acabe en una conspiración contra el público o en alguna maquinación para subir los precios \parencite[libro~I, cap.~10, parte~II]{Smith1776Wealth}.\footnote{En el original: «People of the same trade seldom meet together, even for merriment and diversion, but the conversation ends in a conspiracy against the public, or in some contrivance to raise prices». \autor{Smith} añade que esas reuniones no pueden prohibirse sin atentar contra la libertad, pero que la ley no debe hacer nada para facilitarlas.}
   \item Casi dos siglos y medio después, en julio de 2016, la Comisión Europea multó con 2.926 millones de euros a 4 fabricantes de camiones (Daimler, DAF, Iveco y Volvo/Renault) que durante 14 años, de 1997 a 2011, se habían puesto de acuerdo en sus precios de catálogo. Un quinto miembro del cártel, MAN, no pagó nada: fue quien lo denunció \parencite{CE2016Camiones}. Con la multa de 2017 a Scania, es la mayor sanción a un cártel en la historia de la Unión Europea, 3.807 millones de euros \parencite{CE2026CartelStatistics}.
-  \item Detrás está la pregunta de esta exposición: si a las empresas de un mercado les conviene ponerse de acuerdo, ¿por qué compiten? ¿Y por qué un acuerdo que ha durado 14 años se rompe cuando a uno de sus miembros le sale a cuenta denunciarlo?
+  \item Detrás está la pregunta de esta exposición: si a las empresas de un mercado les conviene ponerse de acuerdo, ¿por qué compiten? ¿Por qué unas veces los bomberos no se pisan la manguera durante 14 años y otras uno de ellos la pisa y denuncia a los demás?
   \end{itemize}
 
 \item \textbf{\emph{Relevancia}}:
@@ -88,12 +89,38 @@ La exposición va de lo que pasa cuando las empresas se encuentran una sola vez 
 \minutos{11}
 
 \begin{notaopositor}
-En el cante: los supuestos en una frase, con la tabla como apoyo, y la rejilla de los 4 modelos (\tiempo{1}); \autor{Cournot} con su gráfico de funciones de reacción y el índice de \autor{Lerner} con la cuota, que se queda en la pizarra (\tiempo{3,5}); \autor{Stackelberg} sobre el mismo gráfico (\tiempo{1,5}); \autor{Bertrand}, la paradoja y sus salidas, cada una con el supuesto que levanta (\tiempo{3,5}); el liderazgo en precios de palabra y la tabla comparativa como cierre (\tiempo{1,5}). Son de profundización la existencia, unicidad y estabilidad del equilibrio de \autor{Cournot}, las variaciones conjeturales, \autor{Cournot} con costes privados (anexo~\ref{anexo:cournot-bayesiano}), los costes convexos y el detalle de \autor{Edgeworth}. Las cuentas con demanda lineal están en los anexos~\ref{anexo:cournot-lineal} y~\ref{anexo:stackelberg-lineal}.
+En el cante: los supuestos en una frase, con la tabla como apoyo, y la rejilla de los 4 modelos (\tiempo{1}); \autor{Cournot} con su gráfico de funciones de reacción y el índice de \autor{Lerner} con la cuota, que se queda en la pizarra (\tiempo{3,5}); \autor{Stackelberg} con su propio gráfico, que parte del de \autor{Cournot} y la restricción $q_2=R_2(q_1)$ (\tiempo{1,5}); \autor{Bertrand}, la paradoja y sus salidas, cada una con el supuesto que levanta (\tiempo{3,5}); el liderazgo en precios de palabra y la tabla comparativa como cierre (\tiempo{1,5}). Son de profundización la existencia, unicidad y estabilidad del equilibrio de \autor{Cournot}, las variaciones conjeturales, \autor{Cournot} con costes privados (anexo~\ref{anexo:cournot-bayesiano}), los costes convexos y el detalle de \autor{Edgeworth}. Las cuentas con demanda lineal están en los anexos~\ref{anexo:cournot-lineal} y~\ref{anexo:stackelberg-lineal}.
 \end{notaopositor}
 
 \begin{itemize}
-\item Empezamos por la situación más sencilla: las empresas se encuentran una sola vez en el mercado y no pueden firmar acuerdos que las obliguen. Seguimos la nomenclatura de los manuales de teoría de juegos \vertema{3.A.14}: \autor{Cournot} y \autor{Bertrand} son juegos \emph{estáticos}, porque las empresas deciden a la vez; \autor{Stackelberg} y el liderazgo en precios son juegos \emph{dinámicos} secuenciales, porque deciden por turnos y se resuelven por inducción hacia atrás (ENPS). La repetición, el otro juego dinámico, es el objeto del bloque~\ref{sec:analisis-dinamico}. Su \emph{conclusión anticipada}: el resultado queda entre la competencia perfecta y el monopolio, y dónde exactamente depende de 2 cosas, la variable con la que compiten (la cantidad o el precio) y el orden en que deciden (a la vez o una detrás de otra). En todos los casos las empresas ganarían más si produjeran menos juntas.
+\item Empezamos por la situación más sencilla: las empresas se encuentran \emph{una sola vez} en el mercado y no pueden firmar acuerdos que las obliguen.
+\item Seguimos la nomenclatura de los manuales de teoría de juegos \vertema{3.A.14}:
+  \begin{itemize}
+  \item juegos \emph{estáticos}, en los que las empresas deciden a la vez: \autor{Cournot} y \autor{Bertrand};
+  \item juegos \emph{dinámicos}, en los que el tiempo importa:
+    \begin{itemize}
+    \item \emph{secuenciales}: las empresas deciden por turnos y se resuelven por inducción hacia atrás (ENPS): \autor{Stackelberg} y el liderazgo en precios;
+    \item \emph{repetidos}: el mismo juego se juega muchas veces; son el objeto del bloque~\ref{sec:analisis-dinamico}.
+    \end{itemize}
+  \end{itemize}
+\item \emph{Conclusión anticipada} (gráfico~\ref{fig:escala-precios}):
+  \begin{itemize}
+  \item el precio queda entre el de la competencia perfecta y el del monopolio;
+  \item dónde exactamente depende de 2 cosas:
+    \begin{itemize}
+    \item la \emph{variable} con la que compiten: con precios (\autor{Bertrand}) se llega al coste marginal; con cantidades (\autor{Cournot}), no;
+    \item el \emph{orden} en que deciden: a la vez o una detrás de otra (\autor{Stackelberg}, más competitivo que \autor{Cournot});
+    \end{itemize}
+  \item en todos los casos las empresas ganarían más si produjeran menos juntas: el cártel lleva el precio al de monopolio, y la repetición puede sostener cualquier precio intermedio.
+  \end{itemize}
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Dónde queda el precio de cada modelo, entre la competencia perfecta y el monopolio (duopolio con demanda lineal y costes iguales)}\label{fig:escala-precios}
+\grafico[0.85\textwidth]{escala-precios}
+\fuente{elaboración propia.}
+\end{figure}
 
 \begin{anotaciones}
 \textbf{Otra forma de verlo}. En parte de la organización industrial y en muchos temarios de la oposición se llama «análisis estático» a todo lo que ocurre una sola vez, incluidos \autor{Stackelberg} y el liderazgo en precios, y «dinámico» solo a la repetición.
@@ -225,13 +252,13 @@ En el cante: los supuestos en una frase, con la tabla como apoyo, y la rejilla d
   q^C=\frac{a-c}{(n+1)\,b},\qquad Q^C=\frac{n}{n+1}\cdot\frac{a-c}{b},\qquad p^C=\frac{a+n\,c}{n+1},
   \]
   y en el duopolio, $q^C=(a-c)/3b$, $p^C=(a+2c)/3$ y un beneficio de $(a-c)^2/9b$ para cada empresa.
-\item \emph{Gráficamente} (gráfico~\ref{fig:cournot-stackelberg}), en el plano $(q_1,q_2)$, los \concepto{isobeneficios} de la empresa 1 son curvas con forma de U invertida, con su máximo sobre $R_1(q_2)$, y su beneficio es mayor cuanto más abajo están (cuanto menos produce la rival); el más bajo de todos se reduce al punto de monopolio, $(q^M,0)$. El equilibrio está donde se cortan $R_1$ y $R_2$, y allí los isobeneficios de las 2 empresas se cortan en lugar de ser tangentes. Las rectas $q_1+q_2=q^M$ y $q_1+q_2=q^c$, con la cantidad total de monopolio y la de competencia perfecta, quedan a uno y otro lado del equilibrio: \autor{Cournot} produce más que el monopolio y menos que la competencia.
+\item \emph{Gráficamente} (gráfico~\ref{fig:cournot}), en el plano $(q_1,q_2)$, los \concepto{isobeneficios} de la empresa 1 son curvas con forma de U invertida, con su máximo sobre $R_1(q_2)$, y su beneficio es mayor cuanto más abajo están (cuanto menos produce la rival); el más bajo de todos se reduce al punto de monopolio, $(q^M,0)$. El equilibrio está donde se cortan $R_1$ y $R_2$, y allí los isobeneficios de las 2 empresas se cortan en lugar de ser tangentes. Las rectas $q_1+q_2=q^M$ y $q_1+q_2=q^c$, con la cantidad total de monopolio y la de competencia perfecta, quedan a uno y otro lado del equilibrio: \autor{Cournot} produce más que el monopolio y menos que la competencia.\footnote{En la pizarra, este gráfico se deja: el de \autor{Stackelberg} (gráfico~\ref{fig:stackelberg}) parte de él.}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{Equilibrio de \autor{Cournot} (C) y, sobre el mismo plano, el de \autor{Stackelberg} (S): funciones de reacción e isobeneficios}\label{fig:cournot-stackelberg}
-\grafico[0.62\textwidth]{cournot-stackelberg}
+\caption{Equilibrio de \autor{Cournot} (C): funciones de reacción e isobeneficios}\label{fig:cournot}
+\grafico[0.62\textwidth]{cournot}
 \fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia}.}
 \end{figure}
 
@@ -321,18 +348,25 @@ En el cante: los supuestos en una frase, con la tabla como apoyo, y la rejilla d
 
 \begin{itemize}
 \item \emph{Segunda etapa}: la seguidora responde a lo que ve con su función de reacción de \autor{Cournot}, $q_2=R_2(q_1)$. A diferencia de \autor{Cournot}, no responde a lo que espera que haga la líder, sino a lo que ya ha hecho.
-\item \emph{Primera etapa}: la líder anticipa esa respuesta y la incorpora a su problema,
+\item \emph{Primera etapa}: la líder resuelve el mismo problema que en \autor{Cournot}, con una \emph{restricción adicional}: la respuesta de la seguidora, que anticipa,
   \[
-  \optim{\max}{q_1}{B_1=p\big(q_1+R_2(q_1)\big)\,q_1-C_1(q_1)}{q_1\geq 0}
+  \optim{\max}{q_1,\,q_2}{B_1=p\big(q_1+q_2\big)\,q_1-C_1(q_1)}{q_2=R_2(q_1)\\ q_1\geq 0}
   \]
-  cuya condición de primer orden es
+  En \autor{Cournot}, la empresa 1 toma $q_2$ como dada; aquí sabe que $q_2$ depende de lo que ella haga. Sustituyendo la restricción en el objetivo, la condición de primer orden es
   \[
   p(Q)+p'(Q)\,q_1\,\big[1+R_2'(q_1)\big]=\mathrm{CMg}_1(q_1).
   \]
   El corchete es la diferencia con \autor{Cournot}: la líder sabe que cada unidad que añade desplaza parte de la producción de la seguidora ($R_2'<0$: su variación conjetural es \emph{negativa} y, además, correcta), de modo que el precio baja menos de lo que bajaría si la seguidora no reaccionara, y le conviene producir más.
 \item Con demanda lineal y costes iguales (anexo~\ref{anexo:stackelberg-lineal}): $q_1^S=(a-c)/2b$, la cantidad de monopolio; $q_2^S=(a-c)/4b$; $p^S=(a+3c)/4$; y la líder gana $(a-c)^2/8b$ y la seguidora $(a-c)^2/16b$, frente a $(a-c)^2/9b$ cada una en \autor{Cournot}.
-\item \emph{Gráficamente} (gráfico~\ref{fig:cournot-stackelberg}), la líder elige, sobre la función de reacción de la seguidora, el punto que toca su isobeneficio más bajo (el de mayor beneficio): el de tangencia, S, a la derecha y por debajo del de \autor{Cournot}, C. Su propia función de reacción deja de importar, porque no reacciona: decide antes.
+\item \emph{Gráficamente} (gráfico~\ref{fig:stackelberg}), sobre el de \autor{Cournot}: la restricción es la función de reacción de la seguidora, y la líder elige sobre ella el punto que toca su isobeneficio más bajo (el de mayor beneficio): el de tangencia, S, a la derecha y por debajo del de \autor{Cournot}, C. Su propia función de reacción deja de importar, porque no reacciona: decide antes.
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Equilibrio de \autor{Stackelberg} (S): la líder elige sobre la función de reacción de la seguidora el punto de su isobeneficio más bajo}\label{fig:stackelberg}
+\grafico[0.62\textwidth]{stackelberg}
+\fuente{elaboración propia a partir de \textcite{PindyckRubinfeld2009Microeconomia}.}
+\end{figure}
 
 \subparagraph{iii) Implicaciones}
 
@@ -610,8 +644,8 @@ En el cante: el horizonte finito en una frase (\tiempo{1}); la condición de la 
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Estrategia incondicionada}: cobrar $p=c$ pase lo que pase, la repetición del EN de la etapa, como en el horizonte finito. Es siempre un ENPS, pero no saca de la paradoja.
-\item \emph{Estrategias condicionadas}: el precio de cada periodo depende de lo que ha pasado antes. La más sencilla es la del \concepto{gatillo} (\emph{trigger}) de \textcite{Friedman1971Supergames}: cobrar un precio de colusión entre $c$ y $p^M$ mientras todas lo hayan cobrado y, si alguna se desvía, volver a $p=c$ para siempre. Una sola desviación «dispara» el castigo.
+\item \emph{Estrategia incondicionada} (gráfico~\ref{fig:estrategias-automatas}, panel a): cobrar $p=c$ pase lo que pase, la repetición del EN de la etapa, como en el horizonte finito. Es siempre un ENPS, pero no saca de la paradoja.
+\item \emph{Estrategias condicionadas}: el precio de cada periodo depende de lo que ha pasado antes. La más sencilla es la del \concepto{gatillo} (\emph{trigger}) de \textcite{Friedman1971Supergames} (panel b): cobrar un precio de colusión entre $c$ y $p^M$ mientras todas lo hayan cobrado y, si alguna se desvía, volver a $p=c$ para siempre. Una sola desviación «dispara» el castigo.
 \item Con $B^{\mathrm C}$ el beneficio por periodo de cada empresa si todas coluden, $B^{\mathrm D}$ el del periodo en que se desvía y $B^{\mathrm N}$ el del EN de la etapa (el castigo),\footnote{C, D y N, en redonda, son coludir (cooperar), desviarse y el equilibrio de \autor{Nash} de la etapa, como en el juego repetido general \vertema{3.A.14}; no hay que confundirlos con el superíndice de \autor{Cournot}, en cursiva, de \ref{sec:cournot}.} a una empresa no le conviene desviarse si lo que gana coludiendo siempre supera lo que gana desviándose hoy y siendo castigada después, $B^{\mathrm C}/(1-\beta)\geq B^{\mathrm D}+\beta\,B^{\mathrm N}/(1-\beta)$. Es decir, la colusión es sostenible si las empresas son lo bastante pacientes:
   \funcionclave[eq:colusion]{\beta\;\geq\;\frac{B^{\mathrm D}-B^{\mathrm C}}{B^{\mathrm D}-B^{\mathrm N}}}
   El numerador es lo que se gana hoy desviándose; el denominador, lo que se pierde cada periodo después (derivación en el anexo~\ref{anexo:gatillo}). Es la misma condición que la del gatillo en el dilema del prisionero repetido \vertema{3.A.14}, aplicada a la colusión.
@@ -623,12 +657,12 @@ En el cante: el horizonte finito en una frase (\tiempo{1}); la condición de la 
 \item \emph{Con \autor{Cournot}} (duopolio lineal, con el castigo de volver a \autor{Cournot}), $\beta\geq9/17\approx0{,}53$ (anexo~\ref{anexo:gatillo}): el castigo es más suave, porque en \autor{Cournot} se gana algo.
 \item \emph{El castigo es creíble}: volver al EN de la etapa es un EN en cada subjuego; por eso el gatillo es un ENPS.
 \item \emph{Retraso en la detección}: si la desviación se descubre al cabo de $\tau$ periodos, el que se desvía gana $B^{\mathrm D}$ durante $\tau$ periodos, y la condición pasa a ser $\beta^{\tau}\geq(B^{\mathrm D}-B^{\mathrm C})/(B^{\mathrm D}-B^{\mathrm N})$: cuanto más se tarda en reaccionar, más difícil es coludir. En resumen, la colusión es más fácil cuanto mayores son $B^{\mathrm C}$ y $\beta$, y cuanto menores son $B^{\mathrm D}$, $B^{\mathrm N}$ y el tiempo de reacción $\tau$.
-\item \emph{Gráficamente} (gráfico~\ref{fig:colusion-tiempo}), la desviación da un pico de beneficio hoy y una pérdida en cada periodo posterior; la colusión aguanta si el valor descontado de las pérdidas supera el del pico.
+\item \emph{Gráficamente} (gráfico~\ref{fig:colusion-tiempo}), con los beneficios ya descontados, $\beta^tB$, se comparan directamente 2 áreas: la ganancia de desviarse hasta que las demás reaccionan (en rojo) y la pérdida por el castigo desde entonces (en azul). La colusión aguanta si la segunda es mayor; y la roja crece si se tarda más en reaccionar, y la azul, si las empresas son más pacientes.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{Beneficio por periodo de la empresa que se desvía: la ganancia de hoy y el castigo de después}\label{fig:colusion-tiempo}
+\caption{Valor descontado del beneficio de cada periodo, coludiendo siempre o desviándose hoy: la ganancia hasta que las demás reaccionan y la pérdida por el castigo}\label{fig:colusion-tiempo}
 \grafico[0.7\textwidth]{colusion-tiempo}
 \fuente{elaboración propia.}
 \end{figure}
@@ -638,7 +672,7 @@ En el cante: el horizonte finito en una frase (\tiempo{1}); la condición de la 
 \begin{itemize}
 \item \emph{El teorema de tradición oral} (\emph{folk theorem}) \emph{aplicado a la colusión}: con $\beta$ suficientemente alto, cualquier precio entre $c$ y $p^M$ puede sostenerse como ENPS \vertema{3.A.14}. Hay \emph{infinitos} ENPS, entre ellos el de $p=c$ en todos los periodos: la teoría dice que la colusión es \emph{posible}, no que ocurra ni a qué precio. Por eso la colusión puede ser \concepto{perfecta}, al precio de monopolio, o \concepto{imperfecta}, a cualquier precio entre $p^c$ y $p^M$.
 \item La colusión es \emph{tácita}: no hace falta comunicarse; basta con que cada empresa entienda que a todas les conviene el precio alto y que una rebaja desataría una guerra de precios. Por eso es tan difícil de perseguir (\ref{sec:limites-cooperacion}).
-\item Además del gatillo hay otras estrategias condicionadas, más indulgentes (tabla~\ref{tab:estrategias-repetidas}). En los torneos de \textcite{Axelrod1984Evolution} ganó la más sencilla, «donde las dan, las toman» (\emph{tit for tat}); pero no es en general un ENPS: solo lo es para valores muy concretos de $\beta$, porque castigar puede no convenir al que castiga \parencite{KalaiSametStanford1988Note}.\footnote{En el primer torneo, de 200 jugadas por partida, se presentaron 14 estrategias; «donde las dan, las toman», enviada por Anatol \autor{Rapoport}, era la más sencilla y ganó. En el segundo, con un número de jugadas aleatorio para que no hubiera una última jugada especial, se presentaron 62, y volvió a ganar \parencites{Axelrod1980Effective}{Axelrod1980More}.}
+\item Además del gatillo hay otras estrategias condicionadas, más indulgentes (tabla~\ref{tab:estrategias-repetidas} y gráfico~\ref{fig:estrategias-automatas}). En los torneos de \textcite{Axelrod1984Evolution} ganó la más sencilla, «donde las dan, las toman» (\emph{tit for tat}); pero no es en general un ENPS: solo lo es para valores muy concretos de $\beta$, porque castigar puede no convenir al que castiga \parencite{KalaiSametStanford1988Note}.\footnote{En el primer torneo, de 200 jugadas por partida, se presentaron 14 estrategias; «donde las dan, las toman», enviada por Anatol \autor{Rapoport}, era la más sencilla y ganó. En el segundo, con un número de jugadas aleatorio para que no hubiera una última jugada especial, se presentaron 62, y volvió a ganar \parencites{Axelrod1980Effective}{Axelrod1980More}.}
 \end{itemize}
 
 \begin{table}[H]
@@ -661,6 +695,13 @@ Castigo tras 2 desviaciones (\emph{tit for two tats}) & cooperar salvo que el ot
 \end{tabular}
 \fuente{elaboración propia a partir de \textcite{Axelrod1984Evolution}, \textcite{NowakSigmund1993Strategy} y \textcite{KalaiSametStanford1988Note}.}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\caption{Las estrategias del juego repetido como autómatas: cada círculo es lo que la empresa juega este periodo (C, coludir; D, desviarse) y cada flecha, adónde pasa según lo que hizo la rival el periodo anterior; la flecha suelta marca por dónde empieza}\label{fig:estrategias-automatas}
+\grafico[0.95\textwidth]{estrategias-automatas}
+\fuente{elaboración propia a partir de \textcite{Axelrod1984Evolution} y \textcite{NowakSigmund1993Strategy}.}
+\end{figure}
 
 \paragraph{c) Extensiones}
 
@@ -935,7 +976,7 @@ En el cante: el cártel como monopolista multiplanta, con la condición \eqref{e
 \item \textbf{\emph{Relevancia}}: el oligopolio es la estructura de muchos de los mercados que más importan, y su análisis guía la defensa de la competencia: la medida del poder de mercado con la cuota y el IHH, el control de concentraciones y la lucha contra los cárteles.
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}: el oligopolio con producto diferenciado \vertema{3.A.18}; los conceptos de teoría de juegos que se han aplicado \vertema{3.A.14}; las barreras de entrada y los mercados impugnables \vertema{3.A.15}; la medida del poder de mercado y la regulación \vertema{3.A.20}; la política de competencia de la Unión \vertema{3.B.39} y de España \vertema{4.A.15}; la política comercial estratégica y el dumping recíproco, que llevan \autor{Cournot} y \autor{Stackelberg} al comercio entre países \vertema{3.B.8} \vertema{3.B.6}; y la colusión entre algoritmos de precios, un campo abierto.
 \item \textbf{\emph{Opinión}}: no hay un modelo único de oligopolio. Por eso la política de competencia no puede limitarse a contar empresas: tiene que preguntarse qué hace estable la colusión en cada mercado y diseñar instituciones, como la clemencia, que la hagan inestable.
-\item \textbf{\emph{Idea final}}: ¿por qué compiten las empresas si les conviene ponerse de acuerdo? Porque a cada una, por separado, le conviene romper el acuerdo. \autor{Smith} pedía que la ley no facilitara esas reuniones. La teoría explica por qué esas reuniones a veces no sirven de nada y otras duran 14 años, como la de los fabricantes de camiones; y la política de competencia usa ese mismo dilema para que al primero que confiese, como MAN, le salga a cuenta.
+\item \textbf{\emph{Idea final}}: ¿por qué compiten las empresas si les conviene ponerse de acuerdo? Porque a cada una, por separado, le conviene romper el acuerdo. Entre bomberos no se pisan la manguera\ldots{} mientras a ninguno le compense pisarla: la colusión aguanta si lo que se gana desviándose hoy pesa menos que lo que se pierde después \eqref{eq:colusion}. Por eso unas reuniones como las que temía \autor{Smith} no sirven de nada y otras duran 14 años, como la de los fabricantes de camiones; y la política de competencia usa ese mismo dilema para que al primero que pise la manguera y confiese, como MAN, le salga a cuenta.
 \end{itemize}
 
 \clearpage

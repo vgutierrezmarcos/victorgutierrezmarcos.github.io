@@ -1,0 +1,72 @@
+% Estrategias del juego repetido como autómatas: cada círculo es lo que juego
+% este periodo (C, coludir o cooperar; D, desviarse) y cada flecha, adónde paso
+% según lo que hizo la rival el periodo anterior. La flecha suelta marca el
+% estado inicial. Rehace las Imágenes 7 a 12 del tema original (a partir de
+% Schlag y de Gaviotis), en la notación del tema.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{automata,positioning}
+\begin{document}
+\begin{tikzpicture}[tcee,>=Stealth,node distance=2.1cm,
+    every state/.style={draw=tceemorado,thick,minimum size=0.8cm,inner sep=1pt,font=\normalsize},
+    C/.style={state,fill=tceeverde!25},D/.style={state,fill=tceerojo!20},
+    tr/.style={->,thick,tceegris!70!black},
+    lab/.style={font=\footnotesize,inner sep=1.5pt},
+    titulo/.style={font=\small\bfseries,text=tceemorado,anchor=south},
+    regla/.style={font=\footnotesize,text width=5.6cm,align=center,anchor=north,execute at begin node=\hyphenpenalty10000}]
+  % 1: incondicionada
+  \capa{1}{
+  \node[D] (iD) at (0,0) {D};
+  \draw[tr] (-1.1,0) -- (iD);
+  \path[tr] (iD) edge[loop right] node[lab,right] {C, D} ();
+  \node[titulo] at (0.3,1.25) {a) Incondicionada};
+  \node[regla] at (0.3,-0.6) {desviarse siempre, haga lo que haga la rival};}
+  % 2: gatillo
+  \capa{2}{
+  \node[C] (gC) at (6,0) {C};
+  \node[D,right=of gC] (gD) {D};
+  \draw[tr] (4.9,0) -- (gC);
+  \path[tr] (gC) edge[loop above] node[lab,above] {C} ()
+            (gC) edge node[lab,above] {D} (gD)
+            (gD) edge[loop above] node[lab,above] {C, D} ();
+  \node[titulo] at (7.05,1.25) {b) Gatillo};
+  \node[regla] at (7.05,-0.6) {coludir mientras la rival colude; a la primera desviación, desviarse para siempre};}
+  % 3: donde las dan, las toman
+  \capa{3}{
+  \node[C] (tC) at (12,0) {C};
+  \node[D,right=of tC] (tD) {D};
+  \draw[tr] (10.9,0) -- (tC);
+  \path[tr] (tC) edge[loop above] node[lab,above] {C} ()
+            (tC) edge[bend left=25] node[lab,above] {D} (tD)
+            (tD) edge[bend left=25] node[lab,below] {C} (tC)
+            (tD) edge[loop above] node[lab,above] {D} ();
+  \node[titulo] at (13.05,1.25) {c) Donde las dan, las toman};
+  \node[regla] at (13.05,-0.6) {coludir al principio y después hacer lo que hizo la rival};}
+  % 4: castigo tras 2 desviaciones
+  \capa{4}{
+  \node[C] (aC1) at (2.2,-3.6) {C};
+  \node[C,right=of aC1] (aC2) {C};
+  \node[D,right=of aC2] (aD) {D};
+  \draw[tr] (1.1,-3.6) -- (aC1);
+  \path[tr] (aC1) edge[loop above] node[lab,above] {C} ()
+            (aC1) edge[bend left=25] node[lab,above] {D} (aC2)
+            (aC2) edge[bend left=25] node[lab,below] {C} (aC1)
+            (aC2) edge node[lab,above] {D} (aD)
+            (aD) edge[bend left=38] node[lab,below] {C} (aC1)
+            (aD) edge[loop above] node[lab,above] {D} ();
+  \node[titulo] at (4.3,-2.35) {d) Castigo tras 2 desviaciones};
+  \node[regla,text width=6cm] at (4.3,-5.05) {coludir salvo que la rival se haya desviado en los 2 periodos anteriores};}
+  % 5: si gano, repito; si pierdo, cambio
+  \capa{5}{
+  \node[C] (wC) at (10.6,-3.6) {C};
+  \node[D,right=of wC] (wD) {D};
+  \draw[tr] (9.5,-3.6) -- (wC);
+  \path[tr] (wC) edge[loop above] node[lab,above] {C} ()
+            (wC) edge[bend left=25] node[lab,above] {D} (wD)
+            (wD) edge[bend left=25] node[lab,below] {D} (wC)
+            (wD) edge[loop above] node[lab,above] {C} ();
+  \node[titulo] at (11.65,-2.35) {e) Si gano, repito; si pierdo, cambio};
+  \node[regla,text width=6cm] at (11.65,-5.05) {si la rival coludió (me fue bien), repito; si se desvió (me fue mal), cambio};}
+\end{tikzpicture}
+\end{document}
