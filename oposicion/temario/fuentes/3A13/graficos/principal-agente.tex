@@ -9,6 +9,14 @@
 %   Agente averso, u(w) = sqrt(w). PC (esfuerzo alto, u(w*) = U^R + v(e^A) = 2):
 %   (2/3) sqrt(w_E) + (1/3) sqrt(w_F) = 2  ->  w_F = (6 - 2 sqrt(w_E))^2,
 %   tangente en Z = (4, 4) a la isobeneficio w_F = 12 - 2 w_E (pendiente -2).
+%   Esfuerzo bajo (solo en el paso 1): pi(e^B) = 1/3 y v(e^A) - v(e^B) = 0,3, así que
+%   U^R + v(e^B) = 1,7 y [v(e^A) - v(e^B)]/[pi(e^A) - pi(e^B)] = 0,9 (la frontera de la IC).
+%   Curva U^R con e^B: (1/3) sqrt(w_E) + (2/3) sqrt(w_F) = 1,7 -> w_F = ((5,1 - sqrt(w_E))/2)^2,
+%   tangente en R = (2,89; 2,89) a la isobeneficio con e^B w_F = 4,335 - w_E/2 (pendiente -1/2);
+%   corta a la PC en T (5,29; 1,96). Beneficio esperado: 26/3 - 2,89 = 5,777 en R, 31/3 - 4 = 6,333 en Z.
+%   En la línea de certeza del principal: G = (6,223; 1,223) (beneficio cierto de R) y
+%   F = (5,667; 0,667) (el de Z). Poder de negociación en el agente: isobeneficio con e^A
+%   por G, w_F = 13,669 - 2 w_E, que corta la línea de certeza del agente en G' = (4,556; 4,556).
 %   Frontera de la IC: sqrt(w_E) - sqrt(w_F) = 0,9  ->  w_F = (sqrt(w_E) - 0,9)^2;
 %   la IC se cumple por debajo.
 %   T (PC y frontera de la IC): sqrt(w_E) = 2,3, sqrt(w_F) = 1,4 -> T = (5,29; 1,96).
@@ -19,8 +27,9 @@
 % condición; ángulos de 45° de las líneas de certeza y pendiente -pi(e^A)/(1-pi(e^A)) con su ángulo.
 % El agente neutral (casos 1.2.1 y 2.2.1, con V) está en pa-neutrales.tex y los 2
 % aversos (regla de Borch) en pa-aversos.tex, con la misma caja, marco y escala.
-% Construcción paso a paso en el PDF: principal-agente-paso1.tex (capas 1-5, esfuerzo
-% observable: Z) y este (todas, esfuerzo inobservable: T).
+% Construcción paso a paso en el PDF: principal-agente-paso1.tex (capas 1-9, esfuerzo
+% observable: Z, y el esfuerzo bajo con R, G, F y G', capas 6-9 que solo salen ahí, como
+% en la imagen 15 del tema antiguo) y este (capas 1-5 y 10-12, esfuerzo inobservable: T).
 % Elaboración propia a partir de Fernández de Castro y Tugores (1992, cap. 8)
 % y Laffont y Martimort (2002, cap. 4).
 % Autor: Víctor Gutiérrez Marcos
@@ -29,7 +38,10 @@
 \begin{document}
 \begin{tikzpicture}[tcee,x=1cm,y=1cm,
     declare function={pc(\x)=(6-2*sqrt(\x))^2; ic(\x)=(sqrt(\x)-0.9)^2;
-      isoZ(\x)=12-2*\x; isoT(\x)=12.54-2*\x;}]
+      isoZ(\x)=12-2*\x; isoT(\x)=12.54-2*\x;
+      pcB(\x)=((5.1-sqrt(\x))/2)^2; isoR(\x)=4.335-0.5*\x; isoG(\x)=13.669-2*\x;}]
+  % Las capas del esfuerzo bajo (6-9) solo se ven en el paso 1 (esfuerzo observable)
+  \newcommand{\bajo}[2]{\ifnum\tceepaso>9\relax\else\capa{#1}{#2}\fi}
   \def\XE{12}\def\XF{7}
   % Marco fijo, el mismo en pa-neutrales.tex y pa-aversos.tex
   \useasboundingbox (-2.6,-2.0) rectangle (14.2,8.3);
@@ -63,16 +75,36 @@
   \capa{5}{\draw[guia] (0,4) -| (4,0);}
   \capa{5}{\node[etiqueta,left,font=\footnotesize,text=tceegris] at (0,4) {$w^*$};}
   \capa{5}{\node[etiqueta,below,font=\footnotesize,text=tceegris] at (4,0) {$w^*$};}
-  % 6: frontera de la IC: solo valen los contratos de debajo
-  \capa{6}{\draw[curva2] plot[domain=0.81:9.4,samples=60] (\x,{ic(\x)});}
-  \capa{6}{\node[rotate=33.5,anchor=south west,align=left,font=\scriptsize,text=tceeazul,inner sep=1pt] at ($(5.9,{ic(5.9)})+(123.5:0.12)$) {\textbf{Condición de incentivos (frontera de la IC):}\\ la mínima diferencia entre $w_{\mathrm{E}}$ y $w_{\mathrm{F}}$\\ que incentiva al agente a hacer el esfuerzo alto};}
-  \capa{6}{\draw[->,thick,tceeazul] (8.7,{ic(8.7)}) -- ++(-55:0.55);}
-  % 7: T, donde la PC corta a la frontera de la IC
-  \capa{7}{\node[punto] (T) at (5.29,1.96) {};}
-  \capa{7}{\draw[thin,tceegris] (T) -- (6.45,1.45) node[etiqueta,right=-1pt,text=black] {$T$};}
-  % 8: isobeneficio por T, más cerca de O_P: coste de agencia
-  \capa{8}{\draw[curva4,dashed] plot[domain=2.77:6.27,samples=2] (\x,{isoT(\x)});}
-  \capa{8}{\draw[flecha] (5.85,0.3) -- (6.12,0.3);}
-  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north] at (6.0,-0.05) {coste de agencia};}
+  % 6-9: el esfuerzo bajo y el poder de negociación, solo con esfuerzo observable
+  % (\bajo: capas 6-9 de principal-agente-paso1; se borran al pasar a la IC, capa 10)
+  % 6: curva de indiferencia U^R con el esfuerzo bajo, más plana
+  \bajo{6}{\draw[curva1,dashed] plot[domain=0.12:5.6,samples=60] (\x,{pcB(\x)});}
+  \bajo{6}{\node[etiqueta,anchor=south west,font=\footnotesize,text=tceemorado] at (0.12,{pcB(0.12)}) {$U^R$ con $e^{\mathrm{B}}$};}
+  % 7: isobeneficio con esfuerzo bajo, de pendiente -pi(e^B)/(1-pi(e^B)), tangente en R
+  \bajo{7}{\draw[curva4,dashed] plot[domain=1.9:7.6,samples=2] (\x,{isoR(\x)});}
+  \bajo{7}{\draw[thin,tceedorado] (2.3,{isoR(2.3)}) -- (1.65,{isoR(2.3)}) (1.95,{isoR(2.3)}) arc[start angle=180,end angle=153.43,radius=0.35];}
+  \bajo{7}{\node[etiqueta,text=tceedorado,anchor=east,font=\footnotesize] at (1.63,{isoR(2.3)-0.03}) {$-\dfrac{\pi(e^{\mathrm{B}})}{1-\pi(e^{\mathrm{B}})}$};}
+  \bajo{7}{\node[punto] (R) at (2.89,2.89) {};}
+  \bajo{7}{\node[etiqueta,anchor=south] at ($(R)+(-0.05,0.12)$) {$R$};}
+  % 8: G y F, en la línea de certeza del principal: su beneficio con e^B (por R) y con e^A (por Z)
+  \bajo{8}{\node[punto] (G) at (6.223,1.223) {};}
+  \bajo{8}{\node[etiqueta] at ($(G)+(9:0.32)$) {$G$};}
+  \bajo{8}{\node[punto] (F) at (5.667,0.667) {};}
+  \bajo{8}{\node[etiqueta,anchor=north] at ($(F)+(-0.06,-0.1)$) {$F$};}
+  % 9: con el poder de negociación en el agente: isobeneficio con e^A por G y G'
+  \bajo{9}{\draw[curva4,thick] plot[domain=3.33:6.83,samples=2] (\x,{isoG(\x)});}
+  \bajo{9}{\node[punto] (G') at (4.556,4.556) {};}
+  \bajo{9}{\node[etiqueta,anchor=west] at ($(G')+(0.1,-0.05)$) {$G'$};}
+  % 10: frontera de la IC: solo valen los contratos de debajo
+  \capa{10}{\draw[curva2] plot[domain=0.81:9.4,samples=60] (\x,{ic(\x)});}
+  \capa{10}{\node[rotate=33.5,anchor=south west,align=left,font=\scriptsize,text=tceeazul,inner sep=1pt] at ($(5.9,{ic(5.9)})+(123.5:0.12)$) {\textbf{Condición de incentivos (frontera de la IC):}\\ la mínima diferencia entre $w_{\mathrm{E}}$ y $w_{\mathrm{F}}$\\ que incentiva al agente a hacer el esfuerzo alto};}
+  \capa{10}{\draw[->,thick,tceeazul] (8.7,{ic(8.7)}) -- ++(-55:0.55);}
+  % 11: T, donde la PC corta a la frontera de la IC
+  \capa{11}{\node[punto] (T) at (5.29,1.96) {};}
+  \capa{11}{\draw[thin,tceegris] (T) -- (6.45,1.45) node[etiqueta,right=-1pt,text=black] {$T$};}
+  % 12: isobeneficio por T, más cerca de O_P: coste de agencia
+  \capa{12}{\draw[curva4,dashed] plot[domain=2.77:6.27,samples=2] (\x,{isoT(\x)});}
+  \capa{12}{\draw[flecha] (5.85,0.3) -- (6.12,0.3);}
+  \capa{12}{\node[etiqueta,font=\footnotesize,text=tceerojo,anchor=north] at (6.0,-0.05) {coste de agencia};}
 \end{tikzpicture}
 \end{document}

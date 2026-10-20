@@ -281,9 +281,9 @@ En el cante: los supuestos en una frase, con la tabla como apoyo, y la rejilla d
   En palabras: cada empresa carga un margen tanto mayor cuanto mayor es su cuota y menos elástica la demanda. Es la regla de la elasticidad inversa del monopolio \vertema{3.A.17} multiplicada por la cuota: con $s_i=1$, monopolio; con $s_i\to0$, competencia perfecta \vertema{3.A.16}. Las empresas con menor coste marginal tienen más cuota y más margen.
 \item \emph{La concentración mide el poder de mercado}. Ponderando por las cuotas, el margen medio de la industria es
   \[
-  \sum_is_i\mathcal{L}_i=\frac{\mathrm{IHH}}{|\varepsilon_{Q,p}|},\qquad \mathrm{IHH}\equiv\sum_is_i^2,
+  \sum_is_i\mathcal{L}_i=\frac{\sum_is_i^2}{|\varepsilon_{Q,p}|}=\frac{\mathrm{IHH}}{10.000\,|\varepsilon_{Q,p}|},\qquad \mathrm{IHH}\equiv\sum_i(100\,s_i)^2\in(0;\,10.000],
   \]
-  con IHH el índice de \autor{Herfindahl}-\autor{Hirschman} \parencite{CowlingWaterson1976Price}: así se justifica que las autoridades de competencia midan la concentración con el IHH \vertema{3.A.20}. En la telefonía móvil en España, tras la fusión de Orange y MásMóvil, 4 operadores tienen el 96,8~\% de las líneas y el IHH ronda 0,28 (2.770 en la escala de 0 a 10.000 que usan las autoridades) \parencite{CNMC2026Telecos2T}.
+  con IHH el índice de \autor{Herfindahl}-\autor{Hirschman} (HHI en inglés), que vale 10.000 en el monopolio \parencite{CowlingWaterson1976Price}: así se justifica que las autoridades de competencia midan la concentración con el IHH \vertema{3.A.20}. En la telefonía móvil en España, tras la fusión de Orange y MásMóvil, 4 operadores tienen el 96,8~\% de las líneas y el IHH ronda 2.770 \parencite{CNMC2026Telecos2T}.
 \item \emph{Bienestar}: $Q^M<Q^C<Q^c$ y $p^c<p^C<p^M$. Hay 2 ineficiencias:
   \begin{itemize}
   \item \emph{asignativa}: $p>\mathrm{CMg}_i$, de modo que se produce menos de lo eficiente (pérdida irrecuperable de eficiencia) y no se cumple el 1TFEB \vertema{3.A.22};
@@ -744,7 +744,7 @@ Demanda que crece (o que fluctúa) & \textcolor{tceeverde}{\textbf{+}} (\textcol
 \addlinespace[0.3em]
 Asimetrías de costes o de capacidad & \textcolor{tceerojo}{\textbf{$-$}} & la empresa eficiente gana más desviándose y es más difícil castigarla; y no hay un precio común evidente\\
 \addlinespace[0.3em]
-Diferenciación del producto & \textcolor{tceedorado}{\textbf{±}} & reduce lo que gana el que se desvía, porque no capta toda la demanda de la rival, pero también la dureza del castigo; y, si es vertical, introduce asimetrías y resta transparencia \vertema{3.A.18}\\
+Diferenciación del producto & \textcolor{tceedorado}{\textbf{±}} & reduce lo que gana el que se desvía, porque no capta toda la demanda de la rival, pero también la dureza del castigo \parencite{Ross1992Cartel}; y, si es vertical, introduce asimetrías y resta transparencia \vertema{3.A.18}\\
 \addlinespace[0.3em]
 Contacto en varios mercados & \textcolor{tceeverde}{\textbf{+}} & más interacción y posibilidad de castigar en todos; compensa asimetrías \parencite{BernheimWhinston1990Multimarket}\\
 \addlinespace[0.3em]
@@ -997,7 +997,7 @@ En el cante: el cártel como monopolista multiplanta, con la condición \eqref{e
   \[
   \frac{p-\mathrm{CMg}_i}{p}=-\frac{p'(Q)\,q_i}{p}=\frac{q_i}{Q}\cdot\Big(-\frac{dp}{dQ}\,\frac{Q}{p}\Big)=\frac{s_i}{|\varepsilon_{Q,p}|},
   \]
-  es decir, $p\,\big(1-s_i/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}_i$. Con $s_i\to0$ (o $|\varepsilon_{Q,p}|\to\infty$), $p=\mathrm{CMg}_i$: competencia perfecta; con $s_i=1$, $p\,\big(1-1/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}$: monopolio \vertema{3.A.17}. Multiplicando por $s_i$ y sumando, $\sum_is_i\mathcal{L}_i=\sum_is_i^2/|\varepsilon_{Q,p}|=\mathrm{IHH}/|\varepsilon_{Q,p}|$.\findemo
+  es decir, $p\,\big(1-s_i/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}_i$. Con $s_i\to0$ (o $|\varepsilon_{Q,p}|\to\infty$), $p=\mathrm{CMg}_i$: competencia perfecta; con $s_i=1$, $p\,\big(1-1/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}$: monopolio \vertema{3.A.17}. Multiplicando por $s_i$ y sumando, $\sum_is_i\mathcal{L}_i=\sum_is_i^2/|\varepsilon_{Q,p}|=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$.\findemo
 \item \emph{Estabilidad del ajuste de \autor{Cournot}}: con $q_i(t+1)=R_i\big(Q_{-i}(t)\big)$ y $n$ empresas iguales, la desviación respecto al equilibrio evoluciona con una matriz que tiene $-1/2$ fuera de la diagonal y 0 en ella, de autovalores $-(n-1)/2$ y $1/2$: converge si $(n-1)/2<1$, es decir, con $n=2$; con $n=3$ oscila sin acercarse y con $n\geq4$ se aleja \parencite{Theocharis1960Stability}.
 \end{itemize}
 
@@ -1073,7 +1073,7 @@ Producción total (consumidores) & $5{,}33$ & \textcolor{tceeverde}{$5{,}5$} & $
 \begin{itemize}
 \item \emph{Para el test}:
   \begin{itemize}
-  \item \autor{Cournot} con $n$ empresas iguales y $p=a-bQ$: $q^C=(a-c)/(n+1)b$, $p^C=(a+nc)/(n+1)$; $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$; $\sum_is_i\mathcal{L}_i=\mathrm{IHH}/|\varepsilon_{Q,p}|$.
+  \item \autor{Cournot} con $n$ empresas iguales y $p=a-bQ$: $q^C=(a-c)/(n+1)b$, $p^C=(a+nc)/(n+1)$; $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$; $\sum_is_i\mathcal{L}_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$.
   \item Condiciones de \autor{Hahn} (1962): $|R_i'|<1$; con demanda lineal, $R_i'=-1/2$.
   \item \autor{Stackelberg}: la variación conjetural de la líder es negativa ($R_2'$); la ventaja es de compromiso; es un ENPS.
   \item \autor{Bertrand} (1883): con costes iguales y sin restricciones de capacidad, $p=c$ (único EN); con $c_1<c_2$, $p$ un céntimo por debajo de $c_2$ y vende solo la 1.

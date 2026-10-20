@@ -835,11 +835,16 @@ def fuente_reserva_docx(partes):
 
 def retocar_docx(ruta, anio):
     """Postproceso del Word: listas que no se separan de lo que las introduce,
-    numeración de páginas por partes, licencia en el pie y fuente de reserva."""
+    cajas y filas de tabla que no se parten entre páginas, fondo de celda
+    entero, numeración de páginas por partes, licencia en el pie y fuente de
+    reserva."""
     partes, infos = _partes_docx(ruta)
     fuente_reserva_docx(partes)
     partes['word/document.xml'] = conservar_listas_docx(partes['word/document.xml'].decode('utf-8')).encode('utf-8')
     cajas_docx(partes)
+    filas_docx(partes)
+    cajas_enteras_docx(partes)
+    sin_huecos_docx(partes)
     numerar_paginas_docx(partes)
     licencia_pie_docx(partes, anio)
     imagenes_notas_docx(partes)
@@ -902,6 +907,123 @@ def cajas_docx(partes):
 
     xml = re.sub(r'<!--tcee-caja-ini:(\w+)-->(.*?)<!--tcee-caja-fin-->', zona, xml, flags=re.S)
     partes['word/document.xml'] = xml.encode('utf-8')
+
+
+def filas_docx(partes):
+    """Ninguna fila de tabla se parte entre páginas (w:cantSplit), y las celdas
+    con fondo (estilos «Celda tcee…» de tcee.lua, \\cellcolor y \\rowcolor del
+    LaTeX) llevan el fondo en la celda (w:shd en tcPr), no solo detrás del
+    texto del párrafo."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    estilos = partes['word/styles.xml'].decode('utf-8')
+    fondos = {m.group(1): m.group(2) for m in re.finditer(
+        r'<w:style [^>]*w:styleId="(Celda\w+)"[^>]*>(?:(?!</w:style>).)*?<w:shd [^>]*w:fill="([0-9A-Fa-f]{6})"', estilos, re.S)}
+    xml = re.sub(r'<w:tr>(?!<w:trPr>)', '<w:tr><w:trPr><w:cantSplit /></w:trPr>', xml)
+    xml = re.sub(r'<w:trPr>(?!<w:cantSplit)', '<w:trPr><w:cantSplit />', xml)
+
+    def celda(m):
+        tc = m.group(0)
+        estilo = re.search(r'<w:pStyle w:val="(Celda\w+)"', tc)
+        if not estilo or estilo.group(1) not in fondos:
+            return tc
+        shd = f'<w:shd w:val="clear" w:color="auto" w:fill="{fondos[estilo.group(1)]}" />'
+        if not tc.startswith('<w:tc><w:tcPr>'):
+            return tc.replace('<w:tc>', f'<w:tc><w:tcPr>{shd}</w:tcPr>', 1)
+        tcpr = re.match(r'<w:tc><w:tcPr>(.*?)</w:tcPr>', tc, re.S)
+        if '<w:shd' in tcpr.group(1):
+            return tc
+        # En tcPr, shd va antes de noWrap, tcMar, textDirection, tcFitText, vAlign y hideMark
+        interior = re.sub(r'(?=<w:(?:noWrap|tcMar|textDirection|tcFitText|vAlign|hideMark)\b)|$',
+                          lambda _: shd, tcpr.group(1), count=1)
+        return f'<w:tc><w:tcPr>{interior}</w:tcPr>' + tc[tcpr.end():]
+    # Solo las celdas más internas (sin otra tabla dentro)
+    xml = re.sub(r'<w:tc>(?:(?!</?w:tc>).)*</w:tc>', celda, xml, flags=re.S)
+    partes['word/document.xml'] = xml.encode('utf-8')
+
+
+ESTILOS_CAJA_DOCX = ('Esquema', 'Notaalopositor', 'Cajadeanotaciones', 'Ideaclave', 'Funcionclave')
+LINEAS_CAJA_ENTERA = 40     # una página de Word tiene unas 48 líneas de texto
+
+
+def _lineas_parrafo(p):
+    texto = ''.join(re.findall(r'<(?:w|m):t(?: [^>]*)?>([^<]*)</(?:w|m):t>', p))
+    return 1 + len(texto) // 90 + p.count('<w:br />') + p.count('<w:br/>')
+
+
+def cajas_enteras_docx(partes):
+    """Las cajas (esquema, nota al opositor, anotaciones, idea clave, función
+    clave) no se parten entre páginas: sus párrafos llevan «conservar líneas
+    juntas» (w:keepLines) y, salvo el último, «conservar con el siguiente»
+    (w:keepNext). Una caja más larga que una página (más de LINEAS_CAJA_ENTERA
+    líneas, a ojo) se deja partir: entera, dejaría la página anterior medio vacía."""
+    xml = partes['word/document.xml'].decode('utf-8')
+    ini = xml.find('<w:body>')
+    trozos = re.split(r'(<w:tbl>.*?</w:tbl>)', xml[ini:], flags=re.S)
+    salida = [xml[:ini]]
+
+    def estilo(p):
+        m = re.search(r'<w:pStyle w:val="([^"]+)"', p)
+        return m.group(1) if m and m.group(1) in ESTILOS_CAJA_DOCX else None
+
+    def guardar(p, siguiente):
+        marcas = '<w:keepNext /><w:keepLines />' if siguiente else '<w:keepLines />'
+        p = re.sub(r'<w:keep(?:Next|Lines)\s*/>', '', p)
+        # Tras pStyle (primero en pPr)
+        return re.sub(r'(<w:pPr>(?:<w:pStyle [^>]*/>)?)', lambda m: m.group(1) + marcas, p, count=1)
+
+    for t, trozo in enumerate(trozos):
+        if t % 2:
+            salida.append(trozo)
+            continue
+        parrafos = list(_PARRAFO.finditer(trozo))
+        grupos, actual = [], []
+        for k, p in enumerate(parrafos):
+            e = estilo(p.group(0))
+            seguido = actual and not re.sub(r'<w:bookmark(?:Start|End) [^>]*/>', '',
+                                            trozo[parrafos[k - 1].end():p.start()]).strip()
+            if e and actual and seguido and estilo(parrafos[actual[-1]].group(0)) == e:
+                actual.append(k)
+            else:
+                if actual:
+                    grupos.append(actual)
+                actual = [k] if e else []
+        if actual:
+            grupos.append(actual)
+        cambios = {}
+        for g in grupos:
+            if sum(_lineas_parrafo(parrafos[k].group(0)) for k in g) > LINEAS_CAJA_ENTERA:
+                continue
+            for n, k in enumerate(g):
+                cambios[k] = guardar(parrafos[k].group(0), n < len(g) - 1)
+        nuevo, pos = '', 0
+        for k, p in enumerate(parrafos):
+            if k in cambios:
+                nuevo += trozo[pos:p.start()] + cambios[k]
+                pos = p.end()
+        salida.append(nuevo + trozo[pos:])
+    partes['word/document.xml'] = ''.join(salida).encode('utf-8')
+
+
+def sin_huecos_docx(partes):
+    """Los párrafos justificados con saltos de línea manuales (\\\\ del LaTeX) no
+    estiran la línea que acaba en el salto (w:doNotExpandShiftReturn), como en
+    el PDF."""
+    nombre = 'word/settings.xml'
+    xml = partes.get(nombre, b'').decode('utf-8')
+    if not xml or 'doNotExpandShiftReturn' in xml:
+        return
+    if '<w:compat>' in xml:
+        xml = xml.replace('<w:compat>', '<w:compat><w:doNotExpandShiftReturn />', 1)
+    elif '<w:compat />' in xml:
+        xml = xml.replace('<w:compat />', '<w:compat><w:doNotExpandShiftReturn /></w:compat>', 1)
+    else:
+        # En settings, compat va antes de docVars, rsids, mathPr, themeFontLang…
+        xml = re.sub(r'(?=<(?:w:docVars|w:rsids|m:mathPr|w:attachedSchema|w:themeFontLang|w:clrSchemeMapping|'
+                     r'w:doNotIncludeSubdocsInStats|w:doNotAutoCompressPictures|w:forceUpgrade|w:captions|'
+                     r'w:readModeInkLockDown|w:smartTagType|w:shapeDefaults|w:doNotEmbedSmartTags|'
+                     r'w:decimalSymbol|w:listSeparator)\b)|(?=</w:settings>)',
+                     lambda _: '<w:compat><w:doNotExpandShiftReturn /></w:compat>', xml, count=1)
+    partes[nombre] = xml.encode('utf-8')
 
 
 def licencia_pie_docx(partes, anio):

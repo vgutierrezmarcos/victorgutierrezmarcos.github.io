@@ -158,11 +158,14 @@ def main():
             estilos[nombre].paragraph_format.left_indent = Cm(1.0)
         except KeyError:
             pass
-    # Ningún título puede quedar solo al pie de una página
+    # Ningún título puede quedar solo al pie de una página; los títulos van a la
+    # izquierda (justificados, los de 2 líneas salían con huecos enormes)
     for nombre in ('Title', 'Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 6'):
         try:
             estilos[nombre].paragraph_format.keep_with_next = True
             estilos[nombre].paragraph_format.keep_together = True
+            if nombre != 'Title':
+                estilos[nombre].paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
         except KeyError:
             pass
 
@@ -219,6 +222,11 @@ def main():
     ppr = esq.element.get_or_add_pPr()
     bordes(ppr, '5F2987')
     sombreado(ppr, 'FAF9F6')
+    # El texto de las cajas, a la izquierda: justificado y con saltos de línea
+    # (el esquema) salía con huecos enormes. Que la caja no se parta entre
+    # páginas lo pone construir-tema.py (cajas_enteras_docx), según lo larga que sea
+    for e in (nota, anot, idea, esq):
+        e.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
     pie = estilo_parrafo(doc, 'Pie de imagen')
     fuente(pie, tam=8, cursiva=True, color=RGBColor(0x3B, 0x38, 0x38))
     pie.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER

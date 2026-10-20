@@ -119,6 +119,12 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   penalizaciones de 10000, el control de viudas y huérfanas del Word y
   `orphans`/`widows` en la web). No se desactiva en ningún tema; si una página
   queda corta, se acepta el hueco.
+- **En Word** (construir-tema.py y tcee.lua, sin tocar el tema; 20/10/2026):
+  las cajas y las bandas de título van alineadas a la izquierda, las cajas no
+  se parten entre páginas (salvo las de más de unas 40 líneas), ninguna fila
+  de tabla se parte y el fondo de color cubre la celda entera; las
+  `enumerate` se numeran como en el PDF (1., 2.… y, anidadas, i., ii.…),
+  aunque vayan dentro de un `itemize`.
 - **Tablas de clasificación con color**, como en los temas en Word (p. ej.,
   la ecuación de Slutsky): fila de la ecuación sobre fondo salvia
   (`\cellcolor{tceesalvia}`), banda del título en `tceeazulpalido` o
@@ -198,6 +204,14 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   encadena varias ideas se parte en viñetas a varios niveles, y si lo que
   cuenta se puede ver (una escala, un mapa de los modelos, una tabla
   pequeña), se añade el gráfico o la tabla que lo resume.
+- **Enumeraciones dentro de un párrafo** (Víctor, 20/10/2026): si un párrafo
+  lista cosas («1) entran $n$ empresas…; 2) compiten en precios»; «tres
+  efectos: a)…, b)…, c)…»), cada cosa listada va en su propia viñeta
+  indentada, con una frase de introducción que acaba en dos puntos. Lo que
+  sigue a la lista (una conclusión, un matiz) va en otra viñeta del nivel de
+  la introducción.
+- Cada figura va **pegada al párrafo que la explica** (`[H]` justo después
+  de él), no al principio ni al final del apartado (Víctor, 20/10/2026).
 - Una nota que **sigue en la página siguiente** lleva una flecha morada (↪)
   en el margen, al final del trozo que queda en la primera (Víctor,
   20/10/2026); la pone `tcee.sty` sola, no hay que hacer nada.

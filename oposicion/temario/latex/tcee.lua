@@ -329,6 +329,33 @@ local function separar_fuente(bloques)
   return salida
 end
 
+-- Numeración de las listas (enumerate) en Word ---------------------------------
+-- pandoc numera las listas por su sangrado en Word (1., a., i.), así que una
+-- enumerate dentro de un itemize salía con a., b., c. En el PDF la etiqueta
+-- depende solo de cuántas enumerate hay anidadas (tcee.sty: 1., luego i.; el
+-- tercer nivel, el de LaTeX, (a)): se fija aquí el estilo de cada lista.
+local ESTILOS_ENUMERATE = { { 'Decimal', 'Period' }, { 'LowerRoman', 'Period' }, { 'LowerAlpha', 'TwoParens' },
+  { 'UpperAlpha', 'Period' } }
+
+local function numerar_enumerate(elemento, nivel)
+  nivel = nivel or 1
+  return elemento:walk({
+    traverse = 'topdown',
+    OrderedList = function(l)
+      local estilo = ESTILOS_ENUMERATE[math.min(nivel, #ESTILOS_ENUMERATE)]
+      if l.listAttributes.style == 'DefaultStyle' then
+        l.listAttributes = pandoc.ListAttributes(l.listAttributes.start, estilo[1], estilo[2])
+      end
+      local items = pandoc.List()
+      for _, item in ipairs(l.content) do
+        items:insert(numerar_enumerate(pandoc.Blocks(item), nivel + 1))
+      end
+      l.content = items
+      return l, false
+    end,
+  })
+end
+
 -- Recorrido del documento ------------------------------------------------------
 function Pandoc(doc)
   local s, ss, sss = 0, 0, 0
@@ -526,6 +553,7 @@ function Pandoc(doc)
     doc.blocks:insert(1, pandoc.Div({ pandoc.Para({ pandoc.Str(pandoc.utils.stringify(doc.meta.paginas) .. ' (PDF)') }) },
       pandoc.Attr('', {}, { ['custom-style'] = 'Paginas del tema' })))
   end
+  if es_docx then doc = numerar_enumerate(doc) end
   doc = doc:walk({ Table = Table })
   doc = doc:walk({ Image = Image, Span = Span, Link = Link })
   -- La ancla de la bibliografía en castellano también en los enlaces
