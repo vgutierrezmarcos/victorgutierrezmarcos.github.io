@@ -103,9 +103,13 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     `\tiempo{2,5}`).
     Cada bloque recibe tiempo según su peso real en el título y en el
     examen.
-  - **Tres apartados** siempre que se pueda (Víctor, 16/10/2026): I, II y
-    III. Si el título pide algo que no está en el original, se integra en
-    uno de los tres antes que abrir un cuarto.
+  - **Tres apartados** por defecto (Víctor, 16/10/2026): I, II y III. Si el
+    título pide algo que no está en el original, se integra en uno de los
+    tres antes que abrir un cuarto. La regla es flexible (Víctor,
+    20/10/2026): un tema puede tener **2 apartados** cuando su materia se
+    parte de forma natural en dos. Por ejemplo, en el 3.A.18 están la
+    competencia monopolística y el oligopolio con productos diferenciados,
+    como en el tema antiguo de Víctor. Nunca más de 3.
 - Orden del final del documento: **anexos** (con `\appendix`) y después la
   **bibliografía**. Salto de página (`\clearpage`) tras la conclusión, antes
   de los anexos (no tras la introducción); el de antes de la bibliografía lo

@@ -34,7 +34,7 @@ Errores (el tema no está terminado):
 Avisos (para que los mire el control de calidad):
   - párrafos con cifras (%, millones, años recientes) sin cita en ese párrafo;
   - apellidos de la bibliografía escritos sin \\autor{}; demostraciones sin
-    \\findemo; letras a), b)… que no van seguidas; más o menos de tres apartados;
+    \\findemo; letras a), b)… que no van seguidas; menos de dos o más de tres apartados;
   - palabras del guion y de la narración del vídeo lejos de ≈4.700; pasos del
     vídeo sin narración, con más de dos pausas o con un apoyo que no existe;
   - números de tema dichos en voz alta.
@@ -293,8 +293,8 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     # --- Tres apartados (§2)
     n = len(re.findall(r'^\\section\{', antes_anexos, re.M))
     datos['apartados'] = n
-    if n and n != 3:
-        avisos.append(f'{n} apartados de primer nivel (CRITERIOS §2: tres siempre que se pueda)')
+    if n and n not in (2, 3):
+        avisos.append(f'{n} apartados de primer nivel (CRITERIOS §2: tres, o dos si la materia se parte así)')
     # --- Final del documento (§2): \clearpage antes de \appendix; bibliografía tras los anexos
     if '\\appendix' in cuerpo and not re.search(r'\\clearpage\s*\\appendix', cuerpo):
         avisos.append('Falta \\clearpage justo antes de \\appendix')
