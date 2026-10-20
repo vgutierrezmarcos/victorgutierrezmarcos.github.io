@@ -12,20 +12,20 @@ Todo lo necesario para publicar «Oposición TCEE · DCE» en Google Play, prepa
 6. **Contenido de la app** (*Política → Contenido de la app*): respuestas de abajo.
 7. **Prueba cerrada** (obligatoria en cuentas personales nuevas): *Pruebas → Prueba cerrada*, subir el `.aab`, crear una lista con los correos de Google de **al menos 12 personas** y compartirles el enlace de participación. Tienen que seguir dentro **14 días seguidos**. Después, *Solicitar acceso a producción* (preguntan cómo fue la prueba).
 8. **Producción**: subir el `.aab` (con `version` de `pubspec.yaml` mayor que la anterior) y enviar a revisión (unos días la primera vez).
-9. **Al publicarse**: en `oposicion/app-config.json`, poner `urlPlayStore` (`https://play.google.com/store/apps/details?id=es.victorgutierrezmarcos.tcee_app`) y `urlApk` a `null`. La web y la app pasan a enlazar a Play, y Play se encarga de las actualizaciones. Quien tenga el APK instalado debe desinstalarlo e instalar la de Play (la firma es distinta).
+9. **Al publicarse**: en `oposicion/app-config.json`, poner `urlPlayStore` (`https://play.google.com/store/apps/details?id=es.victorgutierrezmarcos.tcee_app`) y `urlApk` a `null`. La web y la app pasan a enlazar a Play, y Play se encarga de las actualizaciones. En el JSON-LD de `app/index.html` (nodo `MobileApplication`), cambiar `downloadUrl` a la URL de Play y añadir `"sameAs": ["<URL de Play>"]`; `softwareVersion` se pone a la misma versión que `versionActual` cada vez que esta cambie. Quien tenga el APK instalado debe desinstalarlo e instalar la de Play (la firma es distinta).
 
 ## Ficha de Play Store
 
 **Nombre** (máx. 30): `Oposición TCEE · DCE`
 
-**Descripción breve** (máx. 80): `Oposición TCEE y DCE (Técnico y Diplomado Comercial): temas, preparadores y más`
+**Descripción breve** (máx. 80): `Oposiciones a Técnico Comercial (TCEE) y Diplomado Comercial del Estado (DCE)`
 
 **Descripción completa** (máx. 4000):
 
 ```
 AVISO: esta app no es oficial. No está asociada al Ministerio de Economía, Comercio y Empresa ni a ningún organismo público y no los representa. La información oficial está en las fuentes indicadas al final.
 
-Para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE), las oposiciones del Ministerio de Economía, Comercio y Empresa. Gratis, sin anuncios y también en el navegador.
+Para preparar las oposiciones a Técnico Comercial y Economista del Estado (TCEE) y a Diplomado Comercial del Estado (DCE, el Cuerpo de Diplomados Comerciales del Estado), las dos oposiciones de comercio del Ministerio de Economía, Comercio y Empresa. Gratis, sin anuncios y también en el navegador.
 
 Eliges tu oposición al abrirla y si la preparas o preparas a otros. Cada una tiene su temario, su examen, sus probabilidades y sus preparadores, y lo de cada una se guarda aparte.
 
@@ -36,7 +36,7 @@ HOY
 • Y todo eso, también en un widget en la pantalla de inicio del móvil.
 
 ESTUDIAR
-• Todos los temas, dentro de la app: los PDF de TCEE y los apuntes de DCE.
+• Todos los temas, dentro de la app: los PDF del temario de TCEE y los apuntes de DCE de Manuel Cabado García.
 • Agenda de cada tema: apuntes para la próxima vuelta, vueltas dadas, cómo te fue al cantarlo y notas.
 • El simulador de test de la web, con las preguntas de exámenes anteriores publicadas por el Ministerio y el mismo historial.
 
