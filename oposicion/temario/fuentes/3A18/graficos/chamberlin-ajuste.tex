@@ -1,0 +1,69 @@
+% Modelo de Chamberlin (3.A.18, I.2): ajuste a largo plazo en un solo gráfico.
+% Costes de chamberlin.tex (los de 3.A.16): C(q) = 2 + q - 0,6 q^2 + 0,15 q^3.
+%   CMg = 1 - 1,2 q + 0,45 q^2; CMe = 2/q + 1 - 0,6 q + 0,15 q^2.
+% A (corto plazo): d: p = 4,2505 - 0,35 q, IMg_d = 4,2505 - 0,7 q = CMg en
+%   q_A = 3,3, p_A = 3,095 > CMe = 1,26; D: p = 12,995 - 3 q pasa por A.
+% Entrada: D' = 5,7 - 3 q (más a la izquierda que D*); al precio p_A la empresa
+%   vende q_B = 0,868 (punto B). Al bajar los precios, d se desliza hacia abajo
+%   por D' hasta dar pérdidas; salen empresas y D' se desplaza hasta D*.
+% E*: d*: p = 3,116 - 0,90125 q tangente al CMe en q* = 1,6, p* = 1,674;
+%   IMg* = 3,116 - 1,8025 q = 0,232 = CMg(1,6); D*: p = 6,474 - 3 q pasa por E*.
+% Las demandas efectivas D, D' y D* son paralelas (pendiente -3).
+% Elaboración propia a partir de Chamberlin (1933) y Koutsoyiannis (1979).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.8cm,y=1.4cm,
+    declare function={cmg(\q)=1-1.2*\q+0.45*\q^2; cme(\q)=2/\q+1-0.6*\q+0.15*\q^2;
+      dp(\q)=4.2505-0.35*\q; img(\q)=4.2505-0.7*\q; de(\q)=12.995-3*\q;
+      dpn(\q)=3.116-0.90125*\q; imgn(\q)=3.116-1.8025*\q;
+      dee(\q)=5.7-3*\q; den(\q)=6.474-3*\q;},
+    dmd/.style={curva1}, def/.style={curva4}, imgd/.style={curva2},
+    cme/.style={curva3}, cmg/.style={curvanueva},
+    nota/.style={etiqueta,font=\footnotesize,align=center}]
+  \useasboundingbox (-0.75,-0.55) rectangle (5.6,4.95);
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{5.1}{4.6}}
+  % 2: costes a largo plazo
+  \capa{2}{\draw[cme] plot[domain=0.75:4.5,samples=80,smooth] (\x,{cme(\x)})
+    node[etiqueta,right] {$\mathrm{CMe}_{LP}$};}
+  \capa{2}{\draw[cmg] plot[domain=0.3:3.6,samples=80,smooth] (\x,{cmg(\x)})
+    node[etiqueta,right] {$\mathrm{CMg}_{LP}$};}
+  % 3: demanda efectiva inicial D
+  \capa{3}{\draw[def] (2.9,{de(2.9)}) -- (3.75,{de(3.75)}) node[etiqueta,right] {$D$};}
+  % 4: demanda percibida inicial d
+  \capa{4}{\draw[dmd] (0,{dp(0)}) -- (4.7,{dp(4.7)}) node[etiqueta,right] {$d$};}
+  % 5: IMg_d = CMg en q_A y punto A (corto plazo con beneficios)
+  \capa{5}{\draw[imgd] (2.8,{img(2.8)}) node[etiqueta,left,text=tceeazul] {$\mathrm{IMg}_d$} -- (3.75,{img(3.75)});}
+  \capa{5}{\node[punto] at (3.3,{img(3.3)}) {};}
+  \capa{5}{\draw[guia] (3.3,0) node[below,text=black] {$q_A$} -- (3.3,3.095);}
+  \capa{5}{\node[punto] (A) at (3.3,3.095) {};}
+  \capa{5}{\node[etiqueta,above right] at (A) {$A$};}
+  \capa{5}{\draw[guia] (A) -- (0,3.095) node[left,text=black] {$p_A$};}
+  % 6: la entrada desplaza D a la izquierda, hasta D'
+  \capa{6}{\draw[def,desplazada] (0.68,{dee(0.68)}) -- (1.5,{dee(1.5)});}
+  \capa{6}{\node[etiqueta,text=tceedorado,left] at (0.68,{dee(0.68)}) {$D'$};}
+  \capa{6}{\draw[flecha] (2.95,4.45) -- (0.85,4.45) node[nota,midway,above,text=tceerojo] {entrada};}
+  % 7: al precio p_A la empresa vende mucho menos: B
+  \capa{7}{\node[punto] (B) at (0.868,3.095) {};}
+  \capa{7}{\node[etiqueta,above right] at (B) {$B$};}
+  % 8: bajan los precios: d se desliza hacia abajo hasta d*
+  \capa{8}{\draw[dmd] (0.2,{dpn(0.2)}) -- (3.3,{dpn(3.3)}) node[etiqueta,right] {$d^*$};}
+  \capa{8}{\draw[flecha] (0.3,{dp(0.3)-0.08}) -- (0.3,{dpn(0.3)+0.1});}
+  % 9: pérdidas, salen empresas: D' vuelve a la derecha hasta D*
+  \capa{9}{\draw[def] (1.0,{den(1.0)}) -- (1.85,{den(1.85)});}
+  \capa{9}{\node[etiqueta,text=tceedorado,above] at (1.0,{den(1.0)}) {$D^*$};}
+  \capa{9}{\draw[flecha] (1.02,2.6) -- (1.27,2.6);}
+  \capa{9}{\node[nota,text=tceerojo,anchor=south west] at (1.3,2.62) {salida};}
+  % 10: equilibrio E*: d* tangente al CMe y cortando a D*
+  \capa{10}{\node[punto] (E) at (1.6,1.674) {};}
+  \capa{10}{\node[etiqueta,above right] at (E) {$E^*$};}
+  \capa{10}{\draw[guia] (E) -- (0,1.674) node[left,text=black] {$p^*$};}
+  % 11: IMg de d* = CMg en q*
+  \capa{11}{\draw[imgd] (0,{imgn(0)}) -- (1.65,{imgn(1.65)});}
+  \capa{11}{\node[etiqueta,text=tceeazul,anchor=east] at (1.17,0.85) {$\mathrm{IMg}^*$};}
+  \capa{11}{\node[punto] at (1.6,0.232) {};}
+  \capa{11}{\draw[guia] (E) -- (1.6,0) node[below,text=black] {$q^*$};}
+\end{tikzpicture}
+\end{document}

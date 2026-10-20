@@ -1,0 +1,31 @@
+% Ciudad lineal de Hotelling (3.A.18, II.3.2): consumidores repartidos de modo
+% uniforme en [0,1], empresa 1 en 0 y empresa 2 en 1, consumidor indiferente x~
+% (en 0,45, como en hotelling.tex). Misma escala que hotelling.tex.
+% Elaboración propia a partir de Hotelling (1929).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=8cm,y=1cm,
+    empresa/.style={circle,fill=tceemorado,inner sep=2pt},
+    nota/.style={etiqueta,font=\footnotesize,align=center}]
+  \def\xt{0.45}
+  \useasboundingbox (-0.11,-1.2) rectangle (1.11,1.75);
+  % Ciudad lineal [0,1]
+  \capa{1}{\draw[line width=1.6pt] (0,0) -- (1,0);}
+  \capa{1}{\node[above] at (0,1.2) {$0$};}
+  \capa{1}{\node[above] at (1,1.2) {$1$};}
+  % Distribución uniforme de los consumidores
+  \capa{2}{\fill[area] (0,0) rectangle (1,1.2);}
+  \capa{2}{\node[etiqueta,text=tceemorado] at (0.5,0.6) {distribución uniforme de los consumidores};}
+  % Empresas en los extremos
+  \capa{3}{\node[empresa] at (0,0) {};}
+  \capa{3}{\node[etiqueta,text=tceemorado,below] at (0,-0.08) {empresa 1};}
+  \capa{3}{\node[empresa] at (1,0) {};}
+  \capa{3}{\node[etiqueta,text=tceemorado,below] at (1,-0.08) {empresa 2};}
+  % Consumidor indiferente
+  \capa{4}{\draw[thick] (\xt,-0.12) -- (\xt,0.12);}
+  \capa{4}{\node[below] (xt) at (\xt,-0.1) {$\tilde{x}$};}
+  \capa{4}{\node[nota,below=0pt of xt] {consumidor indiferente};}
+\end{tikzpicture}
+\end{document}

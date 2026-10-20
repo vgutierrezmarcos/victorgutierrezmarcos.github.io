@@ -3,6 +3,8 @@
 % empresa 1 (en 0) y p_2 + t (1 - x)^2 si compra a la 2 (en 1). Con p_1 = 1,2,
 % p_2 = 1 y t = 2, el consumidor indiferente es
 %   x~ = 1/2 + (p_2 - p_1)/(2t) = 0,45, con precio total 1,605.
+% Sin eje vertical (Víctor, 20/10/2026): los precios se marcan con un segmento
+% vertical sobre la localización de cada empresa y una llave, como en su tema.
 % Misma escala y segmento que hotelling-localizacion.tex (el vídeo los encadena).
 % Elaboración propia a partir de Hotelling (1929) y Tirole (1988, cap. 7).
 % Autor: Víctor Gutiérrez Marcos
@@ -12,22 +14,23 @@
 \begin{tikzpicture}[tcee,x=8cm,y=1.6cm,
     declare function={pa(\x)=1.2+2*\x*\x; pb(\x)=1+2*(1-\x)*(1-\x);},
     empresa/.style={circle,fill=tceemorado,inner sep=2pt},
+    llave/.style={decorate,decoration={brace,amplitude=4pt},thin,tceegris},
     nota/.style={etiqueta,font=\footnotesize,align=center}]
   \def\xt{0.45}
-  \useasboundingbox (-0.18,-1.1) rectangle (1.16,3.55);
-  % Ejes y segmento [0,1] con las 2 empresas en los extremos
-  \capa{1}{\draw[eje] (0,0) -- (1.12,0) node[below left=2pt and 0pt] {$x$};}
-  \capa{1}{\draw[eje] (0,0) -- (0,3.05) node[above,align=center,font=\footnotesize] {precio $+$\\ coste de transporte};}
-  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \useasboundingbox (-0.12,-1.1) rectangle (1.12,3.0);
+  % Ciudad lineal [0,1] con las 2 empresas en los extremos
   \capa{1}{\draw[line width=1.6pt] (0,0) -- (1,0);}
+  \capa{1}{\node[below] at (0,0) {$0$};}
   \capa{1}{\node[below] at (1,0) {$1$};}
-  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]above right:$1$}] at (0,0) {};}
-  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]above left:$2$}] at (1,0) {};}
+  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]left:$1$}] at (0,0) {};}
+  \capa{1}{\node[empresa,label={[etiqueta,text=tceemorado]right:$2$}] at (1,0) {};}
   % Precio total si se compra a la empresa 1
-  \capa{2}{\node[left] at (0,1.2) {$p_1$};}
+  \capa{2}{\draw[curva1] (0,0) -- (0,1.2);}
+  \capa{2}{\draw[llave] (0.012,1.2) -- (0.012,0) node[midway,right=4pt,text=black] {$p_1$};}
   \capa{2}{\draw[curva1] plot[domain=0:0.82,samples=40] (\x,{pa(\x)}) node[etiqueta,above,text=tceemorado] {$p_1+t\,x^2$};}
   % Precio total si se compra a la empresa 2
-  \capa{3}{\draw[guia] (1,0) -- (1,1) node[right,text=black] {$p_2$};}
+  \capa{3}{\draw[curva2] (1,0) -- (1,1);}
+  \capa{3}{\draw[llave] (0.988,0) -- (0.988,1) node[midway,left=4pt,text=black] {$p_2$};}
   \capa{3}{\draw[curva2] plot[domain=1:0.18,samples=40] (\x,{pb(\x)}) node[etiqueta,above,text=tceeazul] {$p_2+t\,(1-x)^2$};}
   % Consumidor indiferente
   \capa{4}{\draw[guia] (\xt,{pa(\xt)}) -- (\xt,0) node[below,text=black] {$\tilde{x}$};}
