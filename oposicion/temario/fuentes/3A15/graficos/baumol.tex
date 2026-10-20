@@ -1,0 +1,40 @@
+% Maximización de las ventas con beneficio mínimo. Elaboración propia a partir
+% de Baumol (1959).
+% Demanda lineal p = 5 - 0,5 q: I(q) = 5q - 0,5 q^2, máximo en q = 5 (IMg = 0, I = 12,5).
+% C(q) = 1,5 + 2q. B(q) = I - C = 3q - 0,5 q^2 - 1,5, máximo en q^M = 3 (B = 3).
+% Beneficio mínimo \underline{B} = 2: B(q) = 2 en q^B = 3 + \sqrt{2} = 4,414.
+% B(5) = 1 < \underline{B}: la restricción es activa (q^M < q^B < 5).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=0.45cm,
+    declare function={ing(\q)=5*\q-0.5*\q^2; cto(\q)=1.5+2*\q; ben(\q)=3*\q-0.5*\q^2-1.5;}]
+  \def\qb{4.4142}
+  \useasboundingbox (-1.2,-1.6) rectangle (10.4,14.4);
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{euros}{9.4}{14.2}}
+  % 2: ingreso total
+  \capa{2}{\draw[curva2] plot[domain=0:8.7,samples=100,smooth] (\x,{ing(\x)}) node[etiqueta,right] {$I(q)$};}
+  % 3: coste total
+  \capa{3}{\draw[curva4] plot[domain=0:6.1,samples=2] (\x,{cto(\x)}) node[etiqueta,right] {$C(q)$};}
+  % 4: beneficio
+  \capa{4}{\draw[curva1] plot[domain=0.5:5.5,samples=100,smooth] (\x,{ben(\x)});}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=south east] at (1.6,{ben(1.6)}) {$B(q)$};}
+  % 5: máximo del beneficio
+  \capa{5}{\node[punto,fill=tceemorado] (M) at (3,3) {};}
+  \capa{5}{\draw[guia] (M) -- (3,0) node[below,text=black] {$q^{M}$};}
+  % 6: máximo del ingreso
+  \capa{6}{\node[punto,fill=tceeazul] (IM) at (5,12.5) {};}
+  \capa{6}{\draw[guia] (IM) -- (5,0);}
+  \capa{6}{\node[etiqueta,above,text=tceeazul] at (IM) {$\mathrm{IMg}=0$};}
+  % 7: beneficio mínimo
+  \capa{7}{\draw[thick,tceerojo] (0,2) -- (7.6,2) node[etiqueta,right,text=tceerojo] {$\underline{B}$};}
+  % 8: corte de B con el beneficio mínimo
+  \capa{8}{\node[punto] (QB) at (\qb,2) {};}
+  \capa{8}{\draw[guia] (QB) -- (\qb,0) node[below,text=black] {$q^{B}$};}
+  \capa{8}{\node[etiqueta,font=\footnotesize,anchor=west,align=left] (R) at (5.7,4.6) {restricción activa:\\ $B<\underline{B}$ donde $\mathrm{IMg}=0$};}
+  \capa{8}{\draw[thin,tceegris] (R.south west) -- (5,1);}
+  \capa{8}{\node[circle,draw=black,fill=white,inner sep=1.2pt] at (5,1) {};}
+\end{tikzpicture}
+\end{document}

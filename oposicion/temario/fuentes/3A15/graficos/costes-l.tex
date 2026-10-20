@@ -1,0 +1,29 @@
+% Costes medios a largo plazo en forma de L. Elaboración propia a partir de
+% Bain (1956) y Stigler (1958).
+% CMe_LP(q) = 1,2 + 0,32 (3 - q)^2  si q < 3  (decreciente hasta \overline{q} = 3),
+%           = 1,2 + 0,02 (q - 3)    si q >= 3 (casi plano: horquilla de tamaños eficientes).
+% Coste medio mínimo \overline{c} = 1,2. Curva en U de referencia, con el mismo
+% mínimo: 1,2 + 0,2 (q - 3)^2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1cm,
+    declare function={cl(\q)=(\q<3)*(1.2+0.32*(3-\q)^2)+(\q>=3)*(1.2+0.02*(\q-3));}]
+  \useasboundingbox (-1.0,-1.25) rectangle (9.1,4.6);
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$\mathrm{CMe}$}{8.2}{4.4}}
+  % 2: CMe a largo plazo en L
+  \capa{2}{\draw[curva1] plot[domain=0.25:7.6,samples=120] (\x,{cl(\x)}) node[etiqueta,right] {$\mathrm{CMe}_{\mathrm{LP}}$};}
+  % 3: escala mínima eficiente
+  \capa{3}{\node[punto,fill=tceemorado] (E) at (3,1.2) {};}
+  \capa{3}{\draw[guia] (E) -- (3,0) node[below,text=black] {$\overline{q}$};}
+  % 4: coste medio mínimo
+  \capa{4}{\draw[guia] (E) -- (0,1.2) node[left,text=black] {$\overline{c}$};}
+  % 5: curva en U de referencia
+  \capa{5}{\draw[curva2,desplazada,thick] plot[domain=0.3:6.9,samples=100,smooth] (\x,{1.2+0.2*(\x-3)^2}) node[etiqueta,right] {CMe en U};}
+  % 6: horquilla de tamaños eficientes
+  \capa{6}{\draw[<->,thick,tceeverde] (3,-0.62) -- (7.6,-0.62);}
+  \capa{6}{\node[etiqueta,below,font=\footnotesize,text=tceeverde] at (5.3,-0.66) {horquilla de tamaños eficientes};}
+\end{tikzpicture}
+\end{document}

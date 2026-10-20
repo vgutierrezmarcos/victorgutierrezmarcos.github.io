@@ -1,0 +1,30 @@
+% Red de contratos sin empresa y con empresa (nota de Coase, 1937).
+% 5 productores: todos con todos, 5·4/2 = 10 contratos; con un empresario
+% central, 4 contratos de empleo. Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,very thick,fill=tceesalvia,minimum size=7mm,inner sep=0pt},
+    arista/.style={thick,tceeazul}]
+  \useasboundingbox (-1.9,-2.25) rectangle (6.4,2.3);
+  % 1: panel del mercado, 5 productores
+  \capa{1}{\node[etiqueta,font=\normalsize] at (0,2.0) {el mercado};}
+  \capa{1}{\foreach \i in {1,...,5} {\node[nodo] (P\i) at ({90+72*(\i-1)}:1.2) {};}}
+  % 2: las 10 aristas
+  \capa{2}{\begin{scope}[on background layer]
+    \foreach \i in {1,...,5} {\foreach \j in {\i,...,5} {\ifnum\i<\j \draw[arista] (P\i) -- (P\j);\fi}}
+  \end{scope}}
+  \capa{2}{\node[etiqueta,font=\normalsize,text=tceeazul] at (0,-1.85) {10 contratos};}
+  % 3: panel de la empresa, empresario central y 4 nodos
+  \capa{3}{\node[etiqueta,font=\normalsize] at (4.5,2.0) {la empresa};}
+  \capa{3}{\node[nodo,fill=tceemorado] (E) at (4.5,0) {};}
+  \capa{3}{\foreach \i in {1,...,4} {\node[nodo] (Q\i) at ($(4.5,0)+({45+90*(\i-1)}:1.2)$) {};}}
+  % 4: las 4 aristas
+  \capa{4}{\begin{scope}[on background layer]
+    \foreach \i in {1,...,4} {\draw[arista] (E) -- (Q\i);}
+  \end{scope}}
+  \capa{4}{\node[etiqueta,font=\normalsize,text=tceeazul] at (4.5,-1.85) {4 contratos};}
+\end{tikzpicture}
+\end{document}

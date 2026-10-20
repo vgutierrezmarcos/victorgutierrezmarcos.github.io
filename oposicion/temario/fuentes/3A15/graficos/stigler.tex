@@ -1,0 +1,41 @@
+% Costes según Stigler (1939): planta A de coste mínimo en U cerrada frente a
+% planta B flexible con reserva de capacidad. Elaboración propia a partir de
+% Stigler (1939).
+% Planta A: CMe^A = 1 + 0,9 (q - 3,5)^2 (mínimo 1 en q = 3,5).
+% Planta B: CF = 0,4; reserva de capacidad entre q^min = 1,8 y q^max = 5,2:
+%   CVMe^B = 1,6 + 0,5 (1,8 - q)^2   si q < 1,8,
+%          = 1,6                      si 1,8 <= q <= 5,2,
+%          = 1,6 + 0,3 (q - 5,2)^2   si q > 5,2;
+%   CMg^B = d(q CVMe^B)/dq = CVMe^B + q CVMe^B' (igual a 1,6 en el tramo plano);
+%   CMe^B = CVMe^B + 0,4/q, casi plano en el tramo y por encima del mínimo de A.
+% Rótulos a \normalsize y escala 0,8: el gráfico va al 0,45 del ancho en una nota al pie.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.8cm,y=0.8cm,font=\normalsize,etiqueta/.append style={font=\normalsize},
+    declare function={
+      cva(\q)=1+0.9*(\q-3.5)^2;
+      cvb(\q)=(\q<1.8)*(1.6+0.5*(1.8-\q)^2)+(\q>=1.8)*(\q<=5.2)*1.6+(\q>5.2)*(1.6+0.3*(\q-5.2)^2);
+      cmgb(\q)=(\q<1.8)*(1.6+0.5*(1.8-\q)^2-\q*(1.8-\q))+(\q>=1.8)*(\q<=5.2)*1.6
+               +(\q>5.2)*(1.6+0.3*(\q-5.2)^2+0.6*\q*(\q-5.2));}]
+  % 1: ejes
+  \useasboundingbox (-0.6,-1.6) rectangle (8.9,5.65);
+  \capa{1}{\ejes{$q$}{}{8}{5}}
+  \capa{1}{\node[above right,inner sep=1pt] at (-0.2,5) {$\mathrm{CMe},\ \mathrm{CMg}$};}
+  % 2: CMe de la planta A, en U cerrada
+  \capa{2}{\draw[curva1] plot[domain=1.67:5.33,samples=100,smooth] (\x,{cva(\x)}) node[etiqueta,above] {$\mathrm{CMe}^{\mathrm{A}}$};}
+  \capa{2}{\node[punto,fill=tceemorado] at (3.5,1) {};}
+  % 3: CMe y CMg de la planta B, con el tramo plano
+  \capa{3}{\draw[curva2] plot[domain=0.32:7.3,samples=200] (\x,{cvb(\x)+0.4/\x}) node[etiqueta,right] {$\mathrm{CMe}^{\mathrm{B}}$};}
+  \capa{4}{\draw[curva4] plot[domain=0.3:1.8,samples=60,smooth] (\x,{cmgb(\x)}) -- (5.2,1.6)
+    -- plot[domain=5.2:5.96,samples=60,smooth] (\x,{cmgb(\x)}) node[etiqueta,above] {$\mathrm{CMg}^{\mathrm{B}}$};}
+  % 5: intervalo de demanda incierta y reserva de capacidad
+  \capa{5}{\draw[guia] (1.8,1.6) -- (1.8,0) node[below,text=black] {$q^{\min}$};}
+  \capa{5}{\draw[guia] (5.2,1.6) -- (5.2,0) node[below,text=black] {$q^{\max}$};}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceerojo] (1.8,-0.55) -- (5.2,-0.55)
+    node[midway,below=5pt,etiqueta,font=\small,text=tceerojo] {demanda incierta};}
+  \capa{6}{\node[etiqueta,font=\small,text=tceedorado,align=left,anchor=west] (R) at (5.6,0.75) {reserva de\\ capacidad\\ $\mathrm{CMg}^{\mathrm{B}}=\mathrm{CVMe}^{\mathrm{B}}$};}
+  \capa{6}{\draw[thin,tceegris] (R.west) -- (4.8,1.58);}
+\end{tikzpicture}
+\end{document}

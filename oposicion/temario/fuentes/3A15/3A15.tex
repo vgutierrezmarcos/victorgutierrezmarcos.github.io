@@ -1,0 +1,1057 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A15.bib}
+\tcetema[La empresa: tamaño, costes de transacción y organización industrial]{3.A.15}{La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables.}
+\tcefecha{20/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item En 1931, un estudiante de 20 años de la London School of Economics, Ronald \autor{Coase}, cruzó el Atlántico con una beca de viaje para averiguar por qué las industrias de Estados Unidos se organizaban de formas tan distintas. Le inquietaba una paradoja. Sus profesores le enseñaban que el sistema de precios coordina toda la economía, y muchos economistas occidentales sostenían que la planificación central, la economía soviética que según \autor{Lenin} funcionaría como una gran fábrica, era imposible. Y, sin embargo, en Occidente había fábricas, algunas enormes: pequeñas economías planificadas que funcionaban dentro del mercado \parencite{Coase1991Institutional}.
+  \item Detrás está la pregunta de esta exposición: si el mercado coordina tan bien, ¿por qué existen las empresas? Y si dentro de una empresa se planifica con éxito, ¿por qué no se organiza toda la economía como una sola empresa? \autor{Coase} encontró la respuesta en el verano de 1932, y con ella abrió la caja negra de la empresa.
+    \begin{itemize}
+    \item La respuesta de la microeconomía parte del \concepto{individualismo metodológico}:\footnote{Es un método muy extendido en las ciencias sociales: sostiene que los fenómenos sociales, su estructura y sus cambios, se explican en principio a partir de los individuos, de sus metas, sus creencias y sus acciones, y ve la evolución de la sociedad como el agregado de las decisiones de los particulares. Es, por tanto, un reduccionismo: explica las entidades grandes a partir de las pequeñas.} explica los fenómenos agregados a partir de las decisiones de individuos que optimizan \vertema{3.A.8}.
+    \end{itemize}
+  \item Para comprender y predecir el funcionamiento de los mercados, la \concepto{microeconomía} estudia 2 agentes, \emph{consumidores} y \emph{productores}:\footnote{La microeconomía contemporánea considera esta separación estricta entre consumidores y productores una simplificación excesiva \parencite[cap.~26]{EkelundHebert2013History}: lo muestran las «tecnologías del consumo», como el enfoque de características de \autor{Lancaster}, la economía doméstica de \autor{Becker}, la producción doméstica de \autor{Gronau} o la economía de la información de \autor{Stigler}, en la que conocer los precios y las calidades exige una búsqueda costosa que se combina con el bien físico. La microeconomía estudia también otros agentes, como el sector público o las instituciones financieras.} los consumidores eligen qué consumir sujetos a su restricción presupuestaria, y los productores transforman factores (\emph{inputs}) en productos (\emph{outputs}). Las decisiones de los productores están restringidas por aspectos:
+    \begin{itemize}
+    \item \emph{técnicos}: cómo se combinan los factores de forma eficiente, dada una tecnología, que estudia la teoría de la producción \vertema{3.A.11};
+    \item \emph{de costes}: cuál de las combinaciones técnicamente eficientes es la más barata, que estudia la teoría de los costes \vertema{3.A.12};
+    \item \emph{organizativos y de mercado}: el tamaño y los límites de la empresa (esta exposición) y el mercado en el que vende y compra \vertema{3.A.16} \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19}.
+    \end{itemize}
+  \item La \concepto{empresa} es la unidad que organiza la producción: reúne factores bajo una dirección común y vende lo que produce en el mercado. La teoría neoclásica la trata como una \concepto{caja negra}: sabemos qué entra en ella y qué sale, pero no qué ocurre dentro, ni por qué existe, ni dónde termina.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: el premio Nobel de Economía ha reconocido 6 veces este campo (traducciones propias de las motivaciones oficiales): a Herbert \autor{Simon} en 1978, «por su investigación pionera sobre el proceso de toma de decisiones en las organizaciones económicas» \parencite{Nobel1978Simon}; a George \autor{Stigler} en 1982, «por sus estudios fundamentales de las estructuras industriales, el funcionamiento de los mercados y las causas y los efectos de la regulación pública» \parencite{Nobel1982Stigler}; a Ronald \autor{Coase} en 1991, «por su descubrimiento y aclaración de la importancia de los costes de transacción y de los derechos de propiedad para la estructura institucional y el funcionamiento de la economía» \parencite{Nobel1991Coase}; a Oliver \autor{Williamson} en 2009, «por su análisis de la gobernanza económica, en especial de los \emph{límites de la empresa}», justo el epígrafe con el que empieza el título \parencite{Nobel2009OstromWilliamson};\footnote{Compartió el premio con Elinor \autor{Ostrom}, «por su análisis de la gobernanza económica, en especial de los bienes comunes»: las comunidades de usuarios pueden gobernar recursos de uso común (pesquerías, pastos, regadíos) con reglas propias, sin Estado ni mercado \vertema{3.A.23}.} a Jean \autor{Tirole} en 2014, «por su análisis del poder de mercado y la regulación» \parencite{Nobel2014Tirole}, y a Oliver \autor{Hart} y Bengt \autor{Holmström} en 2016, «por sus contribuciones a la teoría de los contratos» \parencite{Nobel2016HartHolmstrom}.
+  \item \emph{Empírica}: la mayor parte de la actividad económica no se coordina con precios, sino dentro de organizaciones. Un observador que viera las empresas como manchas verdes y las transacciones de mercado como líneas rojas que las unen hablaría de una economía de organizaciones más que de una economía de mercado \parencite{Simon1991Organizations}. Y el peso de las grandes empresas crece: con datos de empresas cotizadas de Estados Unidos, el precio medio pasó de estar un 21~\% por encima del coste marginal en 1980 a un 61~\% en 2016 \parencite{DeLoeckerEeckhoutUnger2020Rise}, y la concentración de las ventas en empresas «superestrella» explica buena parte de la caída de la participación de los salarios en la renta \parencite{AutorEtAl2020Fall}.
+  \item \emph{De política económica}: la defensa de la competencia (control de concentraciones, abuso de posición dominante, acuerdos verticales) y la regulación de las industrias de red se apoyan en esta teoría \vertema{3.A.20} \vertema{3.B.39} \vertema{4.A.15}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item La teoría neoclásica trata a la empresa como un agente que \emph{transforma factores en productos con una tecnología dada} \vertema{3.A.11} \vertema{3.A.12} y que se mueve en una \emph{estructura de mercado dada} \vertema{3.A.16}. Esa representación descansa en 3 supuestos que esta exposición levanta, uno en cada apartado:
+    \begin{enumerate}
+    \item la empresa es un agente único que \emph{maximiza el beneficio}, aunque la dirijan personas distintas de sus propietarios: se levanta en el apartado~\ref{sec:tamano-limites};
+    \item la empresa es una \emph{caja negra}, una función de producción, y no importa cómo se organizan los intercambios dentro y fuera de ella: se levanta en el apartado~\ref{sec:costes-transaccion};
+    \item la empresa opera en una \emph{estructura de mercado dada}, que su conducta no puede alterar: se levanta en el apartado~\ref{sec:toi}.
+    \end{enumerate}
+  \item Desde un punto de vista histórico, en los años 30 se abren los 3 frentes, en ese mismo orden:
+    \begin{itemize}
+    \item en los objetivos, \textcite{BerleMeans1932Modern} documentan la \concepto{separación entre la propiedad y el control} en la gran sociedad anónima, y \textcite{Simon1955Behavioral} sustituirá después la racionalidad perfecta por la \concepto{racionalidad limitada} \vertema{3.A.1};
+    \item en la organización, \textcite{Coase1937Nature} pregunta por qué existen las empresas y responde con los \concepto{costes de transacción}; sus ideas esperan casi 40 años, hasta que \textcite{Williamson1975Markets} las hace operativas;
+    \item en el mercado, \textcite{Chamberlin1933Theory} y Joan \textcite{Robinson1933Economics} estudian mercados que no son ni competencia perfecta ni monopolio y separan la organización industrial de la teoría de los precios \vertema{3.A.18}.
+    \end{itemize}
+    La teoría de la información \vertema{3.A.13} y la teoría de juegos \vertema{3.A.14} dan después las herramientas de la teoría de los contratos y de la Nueva Teoría de la Organización Industrial.
+  \item La \concepto{Teoría de la Organización Industrial} (TOI) estudia el funcionamiento de los mercados en los que la competencia es imperfecta, la conducta de las empresas en ellos y sus efectos sobre el bienestar. En sentido amplio, incluye también la teoría de la empresa (por qué existe, dónde están sus fronteras, cómo se organiza por dentro) \parencite[introducción]{Tirole1988Theory}; el título separa las 2 partes y la exposición las sigue en ese orden.\footnote{En Estados Unidos se dice \emph{industrial organization}; en Europa es frecuente \emph{economía industrial}. Sus fronteras son difusas: abarca desde la organización interna de las empresas hasta la estructura de los mercados y la política de competencia \parencite[introducción]{Tirole1988Theory}.}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item Si el mercado asigna bien los recursos, ¿por qué existen las empresas? ¿Por qué unas transacciones se hacen dentro de una jerarquía y otras en el mercado?
+  \item ¿Qué fija el tamaño eficiente de una empresa? Y, si crecer ahorra costes, ¿qué le impide crecer sin límite?
+  \item ¿Persiguen las empresas el beneficio cuando las dirigen personas distintas de sus propietarios?
+  \item ¿De qué depende el poder de mercado: del número de empresas o de la facilidad para entrar? ¿Pueden las empresas instaladas impedir la entrada, y basta la amenaza de entrada para disciplinarlas?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición abre la caja negra de dentro hacia fuera, en el orden del título.
+  \begin{enumerate}
+  \item En primer lugar, \concepto{el tamaño eficiente y sus límites} (\ref{sec:tamano-limites}): qué tamaño dicta la tecnología y qué lo limita cuando quienes dirigen la empresa no son sus dueños.
+  \item En segundo lugar, la \emph{mención especial}, la \concepto{economía de los costes de transacción} (\ref{sec:costes-transaccion}): por qué existe la empresa y dónde están sus fronteras, de \autor{Coase} a \autor{Williamson} y a \autor{Grossman}, \autor{Hart} y \autor{Moore}.
+  \item Por último, la \concepto{Teoría de la Organización Industrial} (\ref{sec:toi}): cómo pasa la empresa de tomar la estructura del mercado como dada a influir en ella, con las \emph{barreras a la entrada} y los \emph{mercados impugnables}.
+  \end{enumerate}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.15. La empresa: tamaño eficiente, costes de transacción y organización industrial}\\[2pt]
+Introducción\\
+I. La empresa: el tamaño eficiente y sus límites\\
+\hspace*{1.5em}1. Enfoque tecnológico: escala mínima eficiente $\overline{q}$, subaditividad, alcance\\
+\hspace*{1.5em}2. Límites internos: dirección, gerencialistas ($\underline{B}$), agencia\\
+II. La economía de los costes de transacción\\
+\hspace*{1.5em}1. \autor{Coase} (1937): la frontera en el margen\\
+\hspace*{1.5em}2. \autor{Williamson}: especificidad $a$ y estructuras de gobierno\\
+\hspace*{1.5em}3. \autor{Grossman}, \autor{Hart} y \autor{Moore}: contratos incompletos y propiedad\\
+\hspace*{1.5em}4. Otros enfoques e implicaciones de política económica\\
+III. La TOI: barreras a la entrada y mercados impugnables\\
+\hspace*{1.5em}1. Del enfoque neoclásico a Harvard y Chicago\\
+\hspace*{1.5em}2. Barreras a la entrada: precio límite y compromiso\\
+\hspace*{1.5em}3. Mercados impugnables\\
+\hspace*{1.5em}4. La Nueva TOI\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{7} (I.1, \tiempo{3}; I.2, \tiempo{4}); II, \tiempo{9,5} (II.1, \tiempo{2}; II.2, \tiempo{3,5}; II.3, \tiempo{2,5}; II.4, \tiempo{1,5}); III, \tiempo{10} (III.1, \tiempo{2,5}; III.2, \tiempo{3,5}; III.3, \tiempo{2,5}; III.4, \tiempo{1,5}), y conclusión, \tiempo{1}. La «mención especial» del título (\ref{sec:costes-transaccion}) y el epígrafe con 2 conceptos (\ref{sec:toi}) se llevan más tiempo; el bloque~\ref{sec:tamano-limites} es el más corto porque su núcleo técnico (costes, subaditividad, alcance) se resume y se remite. Un hilo recorre la exposición: cada bloque levanta uno de los 3 supuestos de la caja negra, y la conclusión responde a la pregunta de \autor{Coase} del enganche. Gráficos imprescindibles en la pizarra: la maximización de las ventas de \autor{Baumol} (\ref{sec:gerencialistas}), el margen de \autor{Coase} (\ref{sec:coase}), los costes de gobierno de \autor{Williamson} (\ref{sec:williamson}), el precio límite y el árbol de disuasión (\ref{sec:barreras}). Funciones clave que se quedan en una esquina de la pizarra: la condición de \autor{Coase} \eqref{eq:coase}, desde \ref{sec:coase} hasta la conclusión, porque la idea final vuelve a ella; la elección de la estructura de gobierno \eqref{eq:gobierno}, hasta el final del bloque~\ref{sec:costes-transaccion}; el precio límite \eqref{eq:precio-limite}, durante \ref{sec:barreras}, y la configuración sostenible \eqref{eq:sostenible}, desde \ref{sec:impugnables} hasta la conclusión. Conviene escribir este esquema en la pizarra al empezar.
+\end{notaopositor}
+
+\begin{anotaciones}
+Para empezar: Ha-Joon \autor{Chang}, «Production», en la serie \emph{Economics for People} (vídeo, \url{https://youtu.be/8iHeh0iRykw?list=PLmtuEaMvhDZbNVIDHA-MTVH0sLb5HP7Pn}), y «Why economics does not understand business», \emph{The Economist}, 4 de abril de 2023 (de pago, \url{https://www.economist.com/finance-and-economics/2023/04/04/why-economics-does-not-understand-business}).
+\end{anotaciones}
+
+
+% ==========================================================================
+\section{La empresa: el tamaño eficiente y sus límites}\label{sec:tamano-limites}
+\minutos{7}
+
+\begin{notaopositor}
+En el cante: el tamaño eficiente (escala mínima eficiente, número de empresas que caben en el mercado, subaditividad y alcance con sus fórmulas), la evidencia en una frase con el dato de España y el puzle que deja abierto el enfoque tecnológico (\tiempo{3}); la dirección como factor fijo y la separación entre propiedad y control, \autor{Baumol} con su gráfico, \autor{Williamson} (1964) y \autor{Marris} en una frase cada uno, la ineficiencia X como bisagra y la relación de agencia con los costes de agencia y la disciplina del mercado (\tiempo{4}). Los gráficos de costes (forma en L, subaditividad, alcance) son de apoyo: su tema es el \vertema{3.A.12}. Son de profundización la pérdida de control con su fórmula, el gráfico de \autor{Williamson} (1964), \autor{Marris} en detalle, la ley de \autor{Gibrat} y la distribución de \autor{Zipf} y el gobierno corporativo en España (anexo~\ref{anexo:gobierno-corporativo}).
+\end{notaopositor}
+
+\begin{itemize}
+\item Empezamos por el primer supuesto de la caja negra: la empresa es un agente que maximiza el beneficio con una tecnología dada. \emph{Conclusión anticipada}: la tecnología fija un tamaño eficiente \emph{mínimo}, pero no un máximo; los límites al tamaño vienen de dentro de la empresa, de la dirección y de los incentivos de quienes la gobiernan.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque tecnológico: el tamaño eficiente}\label{sec:tamano-eficiente}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Para la teoría neoclásica, la empresa es una tecnología: un conjunto de posibilidades de producción \vertema{3.A.11} del que se deriva una función de costes $C(\vect{w},q)$ \vertema{3.A.12}. Su tamaño eficiente es el que minimiza el coste por unidad, y la configuración eficiente de la industria, la que produce la cantidad demandada al menor coste total.
+\item Pese a ser un reduccionismo, este enfoque explica 3 cosas: el \emph{tamaño} de la empresa, la \emph{configuración} de la industria y el grado de \emph{integración}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Empresas con la misma tecnología, que minimizan costes y toman como dados los precios de los factores, $\vect{w}$.
+\item Una demanda de mercado $x(p)$ y, a largo plazo, libre entrada y salida.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \concepto{Tamaño eficiente de la empresa}: la \concepto{escala mínima eficiente}, $\overline{q}$, es el menor nivel de producción con el que se alcanza el coste medio mínimo a largo plazo, $\overline{c}=C(\overline{q})/\overline{q}$. Por debajo hay economías de escala ($\mathrm{CMg}<\mathrm{CMe}$); por encima, si las hay, deseconomías \vertema{3.A.12}.
+  \begin{itemize}
+  \item Si el coste medio tiene forma de U, hay un único tamaño eficiente. Los estudios empíricos encuentran con frecuencia costes medios en forma de L: decrecientes hasta $\overline{q}$ y casi constantes después, de modo que hay una \emph{horquilla} de tamaños eficientes (gráfico~\ref{fig:costes-l}) \parencites{Bain1956Barriers}{Stigler1958Economies}.\footnote{\textcite{Stigler1939Production} añade un argumento teórico: como hay factores que no son perfectamente divisibles y la demanda es incierta, a la empresa le conviene una planta flexible, con costes medios y marginales constantes en un tramo amplio (la \emph{reserva de capacidad}), aunque su mínimo sea algo mayor; no habría un tamaño óptimo, sino una horquilla de tamaños óptimos \vertema{3.A.12}.\graficonota{stigler}}
+  \end{itemize}
+\item \concepto{Configuración eficiente de la industria}: con libre entrada y coste medio en U, cada empresa produce $\overline{q}$ al precio $p^{*}=\overline{c}$, y el número de empresas es $J^{*}=x(\overline{c})/\overline{q}$ \vertema{3.A.16}. Lo que decide la estructura es el tamaño eficiente \emph{relativo a la demanda}:
+  \begin{itemize}
+  \item si $\overline{q}$ es pequeña frente a $x(\overline{c})$, caben muchas empresas eficientes y la competencia es posible;
+  \item si es grande, solo caben unas pocas (oligopolio natural) \vertema{3.A.19};
+  \item si la función de costes es \concepto{subaditiva} en la producción relevante, producir todo en una sola empresa es lo más barato:
+  \begin{equation}\label{eq:subaditividad}
+  C\Big(\sum_{j=1}^{J}q_j\Big)<\sum_{j=1}^{J}C(q_j)\qquad\text{para todo reparto } (q_1,\dots,q_J),
+  \end{equation}
+  con la \emph{misma} función de costes $C(\cdot)$ para todas las empresas: es la definición de \concepto{monopolio natural} \parencite{Baumol1977Proper}. Las economías de escala en todo el tramo la garantizan, pero no son necesarias (gráfico~\ref{fig:subaditividad}) \vertema{3.A.17}.
+  \end{itemize}
+\item \concepto{Alcance de la empresa}: con varios productos, hay \concepto{economías de alcance} si producirlos juntos es más barato que por separado,
+  \[
+  C(q_1,q_2)<C(q_1,0)+C(0,q_2),
+  \]
+  por factores compartidos: \emph{factores públicos}, que, una vez usados para un producto, sirven para otro sin coste adicional (una red, una marca, un conocimiento), o factores que se pueden repartir entre varios productos, como el capital (gráfico~\ref{fig:alcance}) \parencite{PanzarWillig1981Economies} \vertema{3.A.12}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes medios a largo plazo en forma de L: escala mínima eficiente $\overline{q}$ y coste medio mínimo $\overline{c}$}\label{fig:costes-l}
+\grafico[0.55\textwidth]{costes-l}
+\fuente{elaboración propia a partir de \textcite{Bain1956Barriers} y \textcite{Stigler1958Economies}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Subaditividad de costes con un producto: entre $q^0$ y $q^1$ una sola empresa produce más barato aunque su coste medio crezca}\label{fig:subaditividad}
+\grafico[0.55\textwidth]{subaditividad}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Economías de alcance: coste de producir los dos bienes juntos frente a por separado}\label{fig:alcance}
+\grafico[0.5\textwidth]{alcance}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El tamaño eficiente es el que aprovecha las economías de escala y de alcance. La tecnología explica así la \emph{integración horizontal} (escala), la \emph{diversificación} (alcance) y la existencia de monopolios naturales (subaditividad).
+\item En definitiva, la estructura de costes y la demanda determinan el \emph{tamaño de la empresa}, la \emph{configuración de la industria} y el \emph{grado de integración}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item \emph{Escala mínima eficiente}: con la \concepto{técnica del superviviente} (los tamaños eficientes son los que ganan cuota con el tiempo), \textcite{Stigler1958Economies} encuentra en muchas industrias una horquilla amplia de tamaños eficientes, coherente con costes medios en forma de L.
+\item \emph{Distribución de tamaños}: muy asimétrica, con muchas empresas pequeñas y pocas muy grandes.
+  \begin{itemize}
+  \item En España había 3,31 millones de empresas activas a 1 de enero de 2025; el 54,4~\% no tenía asalariados y solo el 2,3~\% tenía 20 o más \parencite{INE2025DIRCE}. Y el tamaño importa para la productividad: en 2024, el valor añadido por ocupado de las grandes empresas (71.900 euros) era 1,7 veces el de las microempresas (42.800 euros); en la UE-27, 2,1 veces en 2023 \parencite{Eurostat2026SBS}.
+  \item La \concepto{ley de \autor{Gibrat}} (el crecimiento de una empresa es independiente de su tamaño) explica esa asimetría como resultado de perturbaciones multiplicativas \parencite{Gibrat1931Inegalites}; se cumple aproximadamente para las empresas grandes, mientras que las pequeñas y jóvenes crecen más deprisa \parencite{Sutton1997Gibrat} \vertema{3.B.4}. En Estados Unidos, el tamaño de las empresas sigue una distribución de \autor{Zipf} \parencite{Axtell2001Zipf}.
+  \end{itemize}
+\item \emph{Tendencia reciente}: la cuota de las mayores empresas de cada sector ha crecido. \textcite{AutorEtAl2020Fall} lo atribuyen a empresas «superestrella», más productivas, en mercados en los que el ganador se lleva la mayor parte (tecnologías digitales, efectos de red); otros, a más barreras a la entrada y menos competencia \parencite{Philippon2019Great}. Es la pregunta del bloque~\ref{sec:toi}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El enfoque explica el tamaño de la \emph{planta}, no el de la \emph{empresa}: una empresa puede tener muchas plantas, y muchas empresas grandes reúnen actividades sin economías técnicas entre ellas.
+\item Además, no explica por qué las economías de escala y de alcance tienen que aprovecharse \emph{dentro} de una empresa y no con \emph{contratos entre empresas} jurídicamente independientes: 2 productores podrían compartir un factor alquilándolo, o un proveedor abastecer a varios clientes con contratos a largo plazo \parencite{Teece1980Economies}. ¿Por qué se integran, entonces? La respuesta exige mirar los costes de usar el mercado (\ref{sec:costes-transaccion}). Antes, veamos por qué la empresa no crece sin límite.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Objetivo y funcionamiento de la empresa: los límites internos}\label{sec:limites-internos}
+
+\begin{itemize}
+\item Una vez visto qué tamaño dicta la tecnología, pasamos a lo que lo frena. Si producir en grande es más barato, ¿qué impide que una empresa crezca sin límite? La respuesta está en quién dirige la empresa, con qué objetivos y con qué incentivos.
+\end{itemize}
+
+\subsubsection{El enfoque neoclásico: la dirección como factor fijo}\label{sec:direccion}
+
+\begin{itemize}
+\item \emph{Los rendimientos decrecientes de la dirección}: para \textcite{Kaldor1934Equilibrium} y \textcite{Robinson1934Problem}, el factor fijo de la empresa a largo plazo es la \concepto{capacidad de coordinación} del empresario. Al crecer, cada decisión adicional se toma peor o más despacio, y el coste medio acaba subiendo. \textcite{Coase1937Nature} lo llama \emph{rendimientos decrecientes de la función empresarial} y lo convierte en el límite de la empresa (\ref{sec:coase}).
+  \begin{itemize}
+  \item \textcite{Penrose1959Theory} lo traslada del tamaño al \emph{crecimiento}: los directivos que ya están en la empresa tienen que formar e integrar a los nuevos, de modo que la capacidad de dirección limita la \emph{velocidad} a la que una empresa puede crecer de forma rentable (el \concepto{efecto \autor{Penrose}}), aunque no fije un tamaño máximo \vertema{3.B.4}.
+  \end{itemize}
+\item \emph{La pérdida de control en la jerarquía}: \textcite{Williamson1967Hierarchical} formaliza el límite. Si cada nivel de la jerarquía solo transmite al siguiente una fracción $\alpha\in(0,1)$ de las intenciones de su superior, en una empresa con $N$ niveles a la base solo llega la fracción $\alpha^{N-1}$: la pérdida de control crece de forma geométrica con el número de niveles. Aunque los costes de administración crezcan solo en proporción al tamaño, la pérdida acumulada de control da un \emph{tamaño óptimo finito}.
+\item \emph{La separación entre la propiedad y el control}: hasta aquí hemos supuesto que la empresa es un \emph{ente homogéneo}, en cuyo seno todos los intereses coinciden y se maximiza el beneficio. Pero en la gran sociedad anónima la propiedad está repartida entre muchos accionistas y el control lo ejercen los directivos \parencite{BerleMeans1932Modern}, y sus objetivos pueden no coincidir:
+  \begin{itemize}
+  \item el \emph{propietario} (el \emph{principal}) quiere maximizar su beneficio;
+  \item el \emph{directivo} (el \emph{agente}) quiere maximizar su utilidad, que depende de su retribución, de la influencia que le da dirigir la empresa, del prestigio y del tamaño de esta.\footnote{\textcite{Simon1955Behavioral} va más lejos: con racionalidad limitada (conocimiento parcial de cada situación y objetivos y valores propios, que no coinciden con los de la organización), los directivos no maximizan nada, sino que buscan resultados \emph{satisfactorios}, y las decisiones de la empresa salen de la negociación entre grupos con objetivos distintos \parencite{CyertMarch1963Behavioral}.}
+  \end{itemize}
+  Las teorías gerenciales y la teoría de la agencia estudian ese conflicto.
+\end{itemize}
+
+\subsubsection{El enfoque directivista o gerencialista}\label{sec:gerencialistas}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Los primeros modelos de una empresa con objetivos distintos del beneficio, en los años 50 y 60, sustituyen ese objetivo por el de los directivos (ventas, prestigio, emolumentos, seguridad, crecimiento), sujeto a que los accionistas reciban un \concepto{beneficio mínimo}, $\underline{B}$, que les evite vender sus acciones o cambiar de equipo directivo.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Separación entre propiedad y control: los directivos deciden y maximizan su propio objetivo.
+\item Los accionistas solo exigen el beneficio mínimo $\underline{B}$; por lo demás, la información es perfecta y simétrica, como en la teoría neoclásica.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Maximización de los ingresos por ventas} \parencites{Baumol1958Theory}{Baumol1959Business}: los directivos asocian su remuneración, su poder y su prestigio a la cifra de ventas más que al beneficio, y los accionistas, los prestamistas y los trabajadores ven en la evolución de las ventas un buen indicador de la gestión. La empresa maximiza su ingreso total sujeta al beneficio mínimo:
+  \[
+  \optim{\max}{q}{I(q)=p(q)\,q}{B(q)=I(q)-C(q)\geq\underline{B}}
+  \]
+  \begin{itemize}
+  \item si, en el máximo del ingreso ($\mathrm{IMg}=0$), el beneficio todavía supera $\underline{B}$, la restricción no es activa y la empresa produce donde $\mathrm{IMg}=0$;
+  \item si no, produce la cantidad $q^{B}$ en la que $B(q^{B})=\underline{B}$, a la derecha de la del monopolista que maximiza el beneficio, $q^{M}$. Con $\lambda>0$ el multiplicador de la restricción, $\mathrm{IMg}(q^{B})=\frac{\lambda}{1+\lambda}\,\mathrm{CMg}(q^{B})$: el ingreso marginal queda entre 0 y el coste marginal (gráfico~\ref{fig:baumol}; derivación en el anexo~\ref{anexo:baumol}).
+  \end{itemize}
+\item \emph{Maximización de la utilidad de los directivos} \parencite{Williamson1964Economics}: el directivo valora el gasto en personal, $S$ (influencia y prestigio), los emolumentos y gastos discrecionales, $M$ (coches, oficinas, viajes), y la inversión discrecional, $I_D$, la que hace por encima de lo necesario:
+  \[
+  \optim{\max}{S,\,M}{U(S,M,I_D)}{B(S)-M\geq\underline{B}}
+  \]
+  con $I_D=B(S)-M-\underline{B}$, lo que queda del beneficio declarado tras pagar el mínimo a los accionistas. En el plano $(S,\,B-\underline{B})$, la curva de beneficio tiene forma de campana (el personal es productivo hasta cierto punto) y el equilibrio está en la tangencia con la curva de indiferencia más alta del directivo, a la derecha del máximo del beneficio: la empresa \emph{gasta de más en personal} (gráfico~\ref{fig:williamson-gerencial}).
+\item \emph{Maximización del crecimiento} \parencites{Marris1963Model}{Marris1964Economic}: el sueldo, el estatus y la seguridad del puesto de los directivos dependen del tamaño de la empresa y de sus departamentos, porque es difícil evaluar su gestión de otra forma. La empresa maximiza la tasa de crecimiento equilibrado, la misma para la demanda (con diversificación y publicidad) y para el capital (con beneficios retenidos), sujeta a una \emph{restricción de seguridad}: que su \emph{ratio de valoración} (valor de mercado entre valor contable) no caiga tanto como para que otra empresa la compre y despida a los directivos. Crecer más deprisa exige retener más beneficios y diversificar hacia negocios menos rentables, lo que baja la cotización: el directivo elige el crecimiento máximo compatible con evitar la absorción, mayor que el que maximiza el valor para el accionista.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Maximización de las ventas con beneficio mínimo: la empresa produce más que el maximizador del beneficio}\label{fig:baumol}
+\grafico[0.6\textwidth]{baumol}
+\fuente{elaboración propia a partir de \textcite{Baumol1959Business}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Utilidad de los directivos: más gasto en personal que el maximizador del beneficio}\label{fig:williamson-gerencial}
+\grafico[0.6\textwidth]{williamson-gerencial}
+\fuente{elaboración propia a partir de \textcite{Williamson1964Economics}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La empresa de \autor{Baumol} produce más, cobra menos y gasta más en publicidad que el maximizador del beneficio. Y hace una predicción contrastable: si sube un coste fijo (o un impuesto de suma fija), el maximizador del beneficio no cambia su producción, pero la empresa de \autor{Baumol}, con la restricción activa, la \emph{reduce} para seguir cubriendo $\underline{B}$.
+\item La empresa de \autor{Williamson} (1964) gasta de más en personal y en emolumentos: en las recesiones, cuando el beneficio se acerca al mínimo, los recortes de personal y de gastos discrecionales son mayores de lo que predice la maximización del beneficio.
+\item Para acercar la decisión a la del accionista se puede ligar la retribución al beneficio o a la cotización (el directivo valora más el beneficio y sus curvas de indiferencia se hacen más planas en ese plano, lo que acerca la tangencia al máximo: en el gráfico~\ref{fig:williamson-gerencial}, la curva $U'$ y el punto $S^{**}$), exigir más transparencia y códigos éticos o comparar la gestión con la de empresas parecidas a través de los mercados financieros. La retribución con opciones sobre acciones tiene, a su vez, un riesgo: empujar a operaciones que suban la cotización a corto plazo aunque sean demasiado arriesgadas, por lo que suele diferirse en el tiempo para que el directivo se interese por la supervivencia de la empresa.
+\end{itemize}
+
+\paragraph{c) Valoración: de los objetivos a los incentivos}
+
+\begin{itemize}
+\item Las teorías gerenciales describen bien el conflicto, pero mantienen el supuesto neoclásico de \emph{información perfecta y simétrica}, y con él no explican por qué los propietarios no lo resuelven. Si pudieran observar lo que hacen los directivos, les impondrían el objetivo del beneficio: el conflicto de objetivos solo aparta a la empresa del máximo beneficio si hay \emph{información asimétrica}.
+\item La bisagra es la \concepto{ineficiencia X} \parencite{Leibenstein1966Allocative}: sin presión competitiva, las empresas producen por encima del coste mínimo, $C^{\mathrm{obs}}(\vect{w},q)=(1+\chi)\,C(\vect{w},q)$, con $\chi\geq 0$ y decreciente en la competencia \vertema{3.A.12}; «el mejor de los beneficios del monopolio es una vida tranquila» \parencite{Hicks1935Annual}. \textcite{Stigler1976Xistence} replica que no es ineficiencia, sino minimización con otros costes: vigilar el esfuerzo solo compensa hasta que su coste marginal iguala su beneficio marginal. El debate desemboca en la teoría de la agencia y, después, en la de los contratos incompletos (\ref{sec:contratos-incompletos}).
+\end{itemize}
+
+\subsubsection{La teoría de la agencia}\label{sec:agencia}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Hoy los problemas que crea la separación entre propiedad y dirección se analizan con la \concepto{teoría de la agencia}, que añade lo que faltaba: la información asimétrica. La \concepto{relación de agencia} une a un \emph{principal} (los accionistas) que delega una tarea en un \emph{agente} (el directivo) cuyas acciones no observa del todo \vertema{3.A.13}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Hay un problema de \concepto{riesgo moral} (acción oculta, después de firmar el contrato) si se dan 3 condiciones:
+  \begin{enumerate}
+  \item \emph{acción oculta}: la acción del agente (su esfuerzo) no es observable ni verificable;
+  \item \emph{conflicto de intereses}: el esfuerzo le cuesta al agente y beneficia al principal;
+  \item \emph{riesgo y aversión}: el resultado depende también del azar, de modo que no revela la acción, y el agente es averso al riesgo.
+  \end{enumerate}
+  La relación entre propietarios y directivos es de este tipo.\footnote{La información asimétrica puede dar lugar a \emph{selección adversa} (información oculta antes del contrato, como en el mercado de coches de segunda mano) o a \emph{riesgo moral} (acción oculta después del contrato, como el asegurado imprudente). La relación entre propietarios y directivos es sobre todo de riesgo moral \vertema{3.A.13}.}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El contrato óptimo resuelve un dilema: \emph{dar incentivos} exige que el pago dependa del resultado, y eso carga riesgo sobre el agente, que pide una compensación; \emph{repartir bien el riesgo} exige un pago fijo, que no da incentivos \parencite{Holmstrom1979Moral}. El principal elige el contrato que maximiza su beneficio esperado sujeto a la \concepto{restricción de participación} (PC), que el agente acepte el contrato, y a la \concepto{restricción de compatibilidad de incentivos} (IC), que al agente le convenga esforzarse. La diferencia con lo que costaría ese esfuerzo si fuera observable es el \concepto{coste de agencia} \vertema{3.A.13}.
+\item \textcite{JensenMeckling1976Theory} ven la empresa como un \concepto{nexo de contratos} y llaman \concepto{costes de agencia} a la suma de 3 partidas:
+  \begin{itemize}
+  \item los \emph{costes de supervisión} que soporta el principal (auditorías, consejos, presupuestos);
+  \item los \emph{costes de compromiso} (\emph{bonding}) que asume el agente para garantizar que no actuará contra el principal;
+  \item la \emph{pérdida residual}: lo que se sigue perdiendo porque, pese a todo, las decisiones del agente no son las que tomaría el principal.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Los costes de agencia crecen con la separación entre propiedad y control y con el número de niveles de la jerarquía: son otro \emph{límite al tamaño} de la empresa.
+\item Unos incentivos insuficientes llevan al directivo a no tomar las decisiones que aumentarían el beneficio, pero unos incentivos desmedidos o mal diseñados lo empujan a asumir riesgos excesivos. \emph{Ejemplo}: antes de la crisis de 2008, en muchas entidades de crédito españolas los directores de oficina se evaluaban por el volumen de crédito concedido, sin ponderar bien su riesgo. Los incentivos empujaban a prestar de más, también a clientes de dudosa solvencia, en contra del valor de la entidad a largo plazo.
+\end{itemize}
+
+\paragraph{c) Valoración: la disciplina del mercado}
+
+\begin{itemize}
+\item La teoría de la agencia, por ser estática, puede exagerar la discrecionalidad de los directivos. En un contexto dinámico, la competencia la limita:
+  \begin{itemize}
+  \item la \emph{comparación} con otras empresas o con otras divisiones de la misma, que filtra el azar común \vertema{3.A.13};
+  \item el \emph{mercado de control empresarial}: si la empresa vale menos de lo que podría, otro puede comprarla y sustituir a la dirección \parencite{Manne1965Mergers} \vertema{3.B.4};
+  \item el \emph{mercado de directivos}: la reputación disciplina a quien quiere hacer carrera \parencites{Fama1980Agency}{Holmstrom1999Managerial};
+  \item la \emph{competencia en el mercado del producto}, que reduce el margen para la ineficiencia X.
+  \end{itemize}
+\item Donde esa disciplina falta, los problemas de agencia son mayores:
+  \begin{itemize}
+  \item en la \emph{empresa pública} no hay mercado de control: el burócrata puede maximizar su presupuesto, con exceso de tamaño \parencite{Niskanen1971Bureaucracy}. Es uno de los fallos del sector público \vertema{3.A.23} que, desde los años 80, se usaron para justificar las privatizaciones (someter las empresas a la disciplina del mercado) y las liberalizaciones (bajar las barreras para que la competencia potencial impida las conductas estratégicas); para ampliar, \vertema{4.B.2} y \vertema{4.B.15};
+  \item en la \emph{empresa privada}, los escándalos financieros, como la quiebra de Enron en 2001 \parencite{HealyPalepu2003Fall}, impulsaron el \concepto{gobierno corporativo}: en España, códigos de buen gobierno de asunción voluntaria con el principio de «cumplir o explicar», del Informe Olivencia (1998) al Código de buen gobierno de las sociedades cotizadas de la CNMV, de 2015 y revisado en 2020 \parencites{CNMV1998Olivencia}{CNMV2020CBG}, y la reforma penal de la administración desleal \parencite{BOE2015LO1} (anexo~\ref{anexo:gobierno-corporativo}).
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:tamano-limites}}: la tecnología fija el tamaño eficiente de la planta, la escala mínima eficiente, y cuántas empresas caben en el mercado; los límites al tamaño de la empresa están dentro de ella: en la capacidad de dirección, en los objetivos de los directivos y en los incentivos con información asimétrica. Pero la tecnología no explica por qué esas economías se aprovechan dentro de una empresa y no con contratos entre empresas: es el puzle que abre la economía de los costes de transacción.
+\end{itemize}
+
+
+% ==========================================================================
+\section{La economía de los costes de transacción}\label{sec:costes-transaccion}
+\minutos{9,5}
+
+\begin{notaopositor}
+Es la «mención especial» del título y el núcleo de la exposición. En el cante: la pregunta de \autor{Coase}, los costes de usar el mercado y la frontera de la empresa en el margen, con su gráfico y su función clave \eqref{eq:coase} (\tiempo{2}); \autor{Williamson}: los 2 supuestos de comportamiento, los 3 atributos de las transacciones, la cuasirrenta y el \emph{hold-up} con el caso Fisher Body en una frase, las 3 estructuras de gobierno con su gráfico y su función clave \eqref{eq:gobierno}, que se queda en la pizarra, y los límites de la jerarquía (\tiempo{3,5}); \autor{Grossman}, \autor{Hart} y \autor{Moore}: derechos residuales de control, infrainversión y por qué integrar también tiene costes (\tiempo{2,5}); los otros enfoques en una frase cada uno y las implicaciones de política económica (\tiempo{1,5}). Son de profundización la red de contratos de la nota, la condición de \autor{Riordan} y \autor{Williamson}, la condición de primer orden del modelo de contratos incompletos y su derivación (anexo~\ref{anexo:ghm}) y el debate sobre Fisher Body.
+\end{notaopositor}
+
+\begin{itemize}
+\item Una vez visto qué fija el tamaño eficiente y qué lo limita, pasamos a la mención especial del título, que levanta el segundo supuesto de la caja negra: ¿por qué hay empresa? \emph{Conclusión anticipada}: la empresa existe porque usar el mercado cuesta; integra las transacciones en las que el riesgo de comportamiento oportunista es mayor, las que exigen activos específicos, y su frontera está donde el coste de organizar una transacción más dentro iguala el de hacerla en el mercado. Integrar también tiene costes, y por eso la empresa tiene límites.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque transaccional: los costes de transacción de \autor{Coase} (1937)}\label{sec:coase}
+
+\begin{anotaciones}
+\emph{«The main reason why it is profitable to establish a firm would seem to be that there is a cost of using the price mechanism.»} \textcite[p.~390]{Coase1937Nature}
+\end{anotaciones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item Hay 2 formas de coordinar la producción: el \emph{mercado}, con precios, y la \emph{empresa}, con \emph{autoridad}: dentro de ella, un trabajador no cambia de tarea porque cambie un precio relativo, sino porque se lo ordenan. Las empresas son «islas de poder consciente» en un océano de cooperación inconsciente, como decía \autor{Robertson}, citado por \textcite{Coase1937Nature}.
+\item La pregunta de \autor{Coase} es la del enganche: si el mercado asigna bien los recursos, ¿por qué hay tanta actividad organizada por la autoridad? La producción podría organizarse con transacciones puntuales entre productores independientes, y la empresa no tendría por qué existir. Es el dilema de \emph{hacer o comprar} (\emph{make or buy}).
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Usar el mecanismo de precios tiene \concepto{costes de transacción}, que la teoría anterior, atenta solo a los costes de producción, había pasado por alto \parencites{Coase1937Nature}{Coase1991Institutional}:
+  \begin{itemize}
+  \item costes \emph{ex ante}: descubrir cuáles son los precios relevantes y buscar proveedores fiables, y negociar y redactar un contrato para cada transacción;
+  \item costes \emph{ex post}: vigilar el cumplimiento, coordinar los distintos procesos, adaptar el contrato a lo que no se previó y resolver los conflictos.
+  \end{itemize}
+  Son mayores cuanto más larga e incierta es la relación, porque el contrato no puede preverlo todo.\footnote{Sin empresa, el producto más sencillo exigiría una red de contratos entre productores independientes: si un bien requiere 5 procesos y cada productor contrata con los otros 4, hacen falta 10 contratos; si uno de ellos se convierte en empresa y emplea a los demás, bastan 4, y cada uno es un contrato de empleo, abierto, en el que el trabajador acepta la autoridad del empresario dentro de ciertos límites.\graficonota{contratos-red}}
+\item Organizar dentro también cuesta: la dirección tiene \emph{rendimientos decrecientes} (\ref{sec:direccion}), de modo que el coste de organizar una transacción más crece con el tamaño de la empresa.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Cada transacción se organiza donde resulta más barata. La empresa crece incorporando transacciones mientras organizar una más dentro cueste menos que hacerla en el mercado o en otra empresa; su frontera es una condición en el \emph{margen}, no una comparación de totales \parencite{Coase1937Nature}. Si $m$ es el número de transacciones que organiza la empresa, su tamaño, $m^{*}$, cumple
+  \funcionclave[eq:coase]{\mathrm{CMg}^{\mathrm{org}}(m^{*})=\mathrm{CMg}^{\mathrm{tr}}(m^{*})}
+  con $\mathrm{CMg}^{\mathrm{org}}$ el coste marginal de organizar una transacción más dentro, creciente por los rendimientos decrecientes de la dirección, y $\mathrm{CMg}^{\mathrm{tr}}$ el de hacerla en el mercado o en otra empresa (gráfico~\ref{fig:coase-margen}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El tamaño de la empresa según \autor{Coase}: el margen entre organizar y comprar}\label{fig:coase-margen}
+\grafico[0.55\textwidth]{coase-margen}
+\fuente{elaboración propia a partir de \textcite{Coase1937Nature}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item La empresa será mayor cuanto menores sean sus costes de organizar y más despacio crezcan, y cuanto mayores sean los de usar el mercado. Una innovación que abarate la coordinación a distancia, como el teléfono y el telégrafo en tiempos de \autor{Coase}, agranda las empresas \parencite{Coase1937Nature}; una que abarate las transacciones de mercado (la estandarización, las plataformas digitales) favorece la subcontratación.
+\item El tamaño de la empresa y el alcance del mercado se determinan juntos, en el margen: es la misma lógica marginalista de la teoría neoclásica aplicada a la organización.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item El mismo concepto le sirve a \textcite{Coase1960Problem}, 23 años después, para otra pregunta: sin costes de transacción, la negociación resuelve las externalidades sea quien sea el titular de los derechos; con ellos, importa a quién se asignan \vertema{3.A.23}. Es la misma idea que decide quién debe ser dueño de los activos (\ref{sec:contratos-incompletos}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item \autor{Coase} cambia la pregunta (por qué hay empresas y dónde termina cada una), pero deja sin decir \emph{qué} hace que una transacción sea cara en el mercado y barata dentro. Durante casi 40 años su artículo fue mucho más citado que usado en el análisis aplicado, hasta que \autor{Williamson} identificó esos factores.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{\autor{Williamson}: especificidad de los activos, oportunismo y estructuras de gobierno}\label{sec:williamson}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Williamson1975Markets,Williamson1985Economic} convierte la intuición de \autor{Coase} en una teoría contrastable: la \concepto{economía de los costes de transacción}. La unidad de análisis es la \emph{transacción}, y la pregunta, qué \concepto{estructura de gobierno} (mercado, contrato a largo plazo o empresa) la organiza con menos costes.\footnote{\autor{Williamson} se doctoró en 1963 en el Carnegie Institute of Technology, con \autor{Simon}, \autor{Cyert} y \autor{March}, de quienes toma la racionalidad limitada y el estudio de las organizaciones \parencite{Nobel2009WilliamsonBio}; de \autor{Coase} hereda la pregunta, pero no fue alumno suyo.}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos de comportamiento}
+
+\begin{itemize}
+\item \concepto{Racionalidad limitada} \parencite{Simon1955Behavioral}: los agentes quieren ser racionales, pero solo lo consiguen en parte; no pueden prever ni escribir todas las contingencias, y por eso \emph{todos los contratos complejos son incompletos}: muchas contingencias son imprevisibles y, aunque se pudieran prever, son tantas que no cabrían en un contrato.
+\item \concepto{Oportunismo}: la búsqueda del propio interés con engaño: ocultar información, prometer lo que no se piensa cumplir, aprovechar los huecos del contrato.
+\item Sin racionalidad limitada, bastaría un contrato completo; sin oportunismo, bastaría la palabra dada. Con los 2, el problema es proteger las transacciones de los comportamientos oportunistas \emph{ex post}, y vigilarlos puede tener un coste prohibitivo.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Atributos de las transacciones}: se distinguen por 3 \concepto{atributos} \parencite{Williamson1979Transaction}:
+  \begin{itemize}
+  \item la \concepto{especificidad de los activos}, $a$, el más importante: un activo es específico si pierde buena parte de su valor fuera de la relación para la que se invirtió (está, por tanto, muy ligado a los costes hundidos). Puede ser específico por su \emph{localización} (una central junto a una mina), \emph{físico} (un molde para un solo cliente), \emph{humano} (lo que se aprende trabajando con un socio), \emph{dedicado} (capacidad ampliada para un cliente) o de \emph{marca};
+  \item la \emph{incertidumbre}: cuantas más contingencias, más huecos tiene el contrato y más hay que adaptarlo;
+  \item la \emph{frecuencia}: si la transacción se repite, compensa montar una estructura de gobierno especializada, cuyo coste fijo se reparte entre muchas transacciones. No es que la frecuencia encarezca la transacción: con activos específicos y transacciones frecuentes, compensa integrarlas.
+  \end{itemize}
+\item \emph{Cuasirrenta y retención}: la \concepto{cuasirrenta} de un activo específico es la diferencia entre su valor en la relación y su valor en el mejor uso alternativo \parencite{KleinCrawfordAlchian1978Vertical}. Una vez hecha la inversión, la otra parte puede amenazar con romper para renegociar el precio y apropiarse de la cuasirrenta: es el \concepto{problema de la expropiación de la cuasirrenta} (\emph{hold-up}). El proveedor que ha invertido teme que el cliente no renueve o le imponga un reparto peor, y el cliente que depende de un proveedor especializado teme quedar como rehén. Lo que antes de invertir era un mercado con muchos oferentes se convierte después en un \concepto{monopolio bilateral}, con el precio indeterminado entre los 2 y decidido por la negociación \vertema{3.A.17}: es la \concepto{transformación fundamental} de \textcite{Williamson1985Economic}. Anticipándolo, la parte que tendría que invertir invierte menos o pide salvaguardas, y se pierde eficiencia.\footnote{La integración vertical tiene además un motivo de precios, la \emph{doble marginalización} \parencite{Spengler1950Vertical}: integrados, venderían la cantidad de monopolio; separados, la cadena produce menos, cobra más y gana menos \vertema{3.A.17}.}
+\item \emph{Estructuras de gobierno}. \textcite{Williamson1991Comparative} compara 3:
+  \begin{itemize}
+  \item el \emph{mercado}, que da incentivos fuertes y se adapta solo a los cambios de precios, pero protege mal las inversiones específicas;
+  \item la \emph{jerarquía} (la empresa), que adapta por autoridad y protege la inversión, pero con incentivos débiles y costes burocráticos;
+  \item las \emph{formas híbridas} (contratos a largo plazo, franquicias, \emph{joint ventures}, alianzas), entre ambas.
+  \end{itemize}
+  Sus costes de gobierno dependen de la especificidad, con
+  \[
+  C_{\text{mercado}}(0)<C_{\text{híbrida}}(0)<C_{\text{jerarquía}}(0)\qquad\text{y}\qquad C_{\text{mercado}}'(a)>C_{\text{híbrida}}'(a)>C_{\text{jerarquía}}'(a)>0,
+  \]
+  y la estructura eficiente es la que minimiza el coste de gobierno:
+  \funcionclave[eq:gobierno]{C^{*}(a)=\min\big\{C_{\text{mercado}}(a),\;C_{\text{híbrida}}(a),\;C_{\text{jerarquía}}(a)\big\}}
+  mercado si $a<a_1$, forma híbrida si $a_1<a<a_2$ y jerarquía si $a>a_2$ (gráfico~\ref{fig:gobierno-williamson}).
+\item \emph{Producción y gobierno juntos}: el mercado tiene además una ventaja en los costes de \emph{producción}, porque un proveedor que vende a muchos clientes agrega demandas y aprovecha las economías de escala. Por eso la integración solo compensa con una especificidad mayor de la que justificarían los costes de gobierno solos: las empresas compran más de lo que haría pensar el \emph{hold-up} \parencite{RiordanWilliamson1985Asset} (anexo~\ref{anexo:riordan-williamson}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Costes de gobierno y especificidad de los activos: mercado, forma híbrida y jerarquía}\label{fig:gobierno-williamson}
+\grafico[0.6\textwidth]{gobierno-williamson}
+\fuente{elaboración propia a partir de \textcite{Williamson1991Comparative}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Las transacciones con activos poco específicos van al mercado, sea cual sea su frecuencia; con especificidad intermedia, a contratos a largo plazo y formas híbridas; con mucha especificidad, sobre todo si son frecuentes e inciertas, a la empresa \parencite{Williamson1979Transaction}. Lo que caracteriza a la empresa es la jerarquía, una organización para ahorrar costes de transacción, y esos costes fijan su tamaño, su alcance y los de la industria.
+\item La integración vertical deja de ser un indicio de monopolización: puede ser la forma más barata de proteger una inversión.
+\item Y la jerarquía tiene sus \emph{límites}: su coste de gobierno, $C_{\text{jerarquía}}(a)$, es el más alto cuando la especificidad es baja. Una empresa grande podría, en principio, hacer lo mismo que varias pequeñas y algo más: mantener cada unidad como si fuera independiente e intervenir solo cuando así se gane; si pudiera, una sola empresa organizaría toda la economía. \textcite[cap.~6]{Williamson1985Economic} explica por qué no puede (la \concepto{imposibilidad de la intervención selectiva}):
+  \begin{itemize}
+  \item al integrar, el antiguo propietario pasa a ser empleado y pierde el derecho al beneficio residual: sus incentivos se debilitan (incentivos de \emph{baja potencia});
+  \item la dirección no puede comprometerse a intervenir solo cuando conviene, y los precios internos se pueden manipular;
+  \item crecen los \emph{costes burocráticos}: reglas, controles y actividades de influencia de quienes buscan que las decisiones les favorezcan.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{El caso Fisher Body–General Motors}. En 1919, General Motors compró el 60~\% de Fisher Body, su proveedor de carrocerías, y firmó con ella un contrato de suministro en exclusiva por 10 años, a coste más un margen. Cuando la demanda de carrocerías cerradas de acero se disparó, según \textcite{KleinCrawfordAlchian1978Vertical} Fisher Body se aprovechó del contrato: precios altos por el margen sobre el coste y negativa a instalar sus plantas junto a las de General Motors. En 1926, General Motors compró el 40~\% restante: la integración vertical habría resuelto el \emph{hold-up}. Es el ejemplo de los manuales, y también un caso discutido: con documentos de la época, \textcite{Coase2000Acquisition} y \textcite{CasadesusMasanellSpulber2000Fable} sostienen que no hubo expropiación, y \textcite{Freeland2000Creating} atribuye la compra al deseo de retener a los hermanos Fisher en la dirección; \textcite{Klein2000Fisher} mantiene su interpretación.
+\end{anotaciones}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item En la industria del automóvil, los componentes que exigen más conocimiento específico de ingeniería se fabrican más a menudo dentro \parencite{MonteverdeTeece1982Supplier}; en el carbón, los contratos entre centrales y minas son más largos cuanto más específica es la relación, y más aún en las centrales a pie de mina \parencite{Joskow1987Contract}. En conjunto, los estudios apoyan las predicciones de la teoría \parencite{LafontaineSlade2007Vertical}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Explica fenómenos que la tecnología no explica: las fusiones y adquisiciones verticales, las alianzas estratégicas y las \emph{joint ventures} en los casos intermedios, las franquicias y la externalización de actividades poco específicas aunque sean frecuentes (limpieza, contabilidad); sirve también para elegir la estructura organizativa interna más eficaz.
+\item Pero sus conceptos son difíciles de medir, compara estructuras de forma casi verbal y no dice por qué integrar resuelve el oportunismo: si el proveedor pasa a ser una división, ¿por qué deja de comportarse de forma oportunista? Es la pregunta de la teoría de los derechos de propiedad.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{El enfoque de los derechos de propiedad: contratos incompletos (\autor{Grossman}, \autor{Hart} y \autor{Moore})}\label{sec:contratos-incompletos}
+
+\begin{anotaciones}
+Lecturas: el Nobel de \autor{Hart} y \autor{Holmström} en Nada es Gratis (\url{https://nadaesgratis.es/admin/un-nobel-para-la-teoria-de-contratos-hart-y-holmstrom}) y una explicación jurídica de los contratos incompletos (\url{https://derechomercantilespana.blogspot.com/2017/06/contratos-incompletos-oliver-hart-2.html}).
+\end{anotaciones}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{GrossmanHart1986Costs} y \textcite{HartMoore1990Property} responden a la pregunta que deja \autor{Williamson}: ¿qué cambia al integrar? Cambia \emph{quién es el dueño de los activos}. Una empresa es un conjunto de activos físicos de \emph{propiedad común}: si 2 activos tienen el mismo dueño, forman una empresa integrada; si tienen dueños distintos, son 2 empresas que se relacionan en el mercado.
+\item Como en la economía de los costes de transacción, la empresa existe porque los contratos son incompletos; lo nuevo es que la propiedad es una fuente de poder precisamente por eso: decide quién manda en lo que el contrato no prevé.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los contratos son incompletos no solo por la racionalidad limitada, sino porque muchas variables, aunque las partes las vean, no son \emph{verificables} por un juez.
+\item Hay 2 tipos de derechos sobre un activo: los \concepto{derechos específicos}, los que el contrato detalla y se pueden ceder (qué se entrega, a qué precio), y los \concepto{derechos residuales de control}, el derecho a decidir sobre el uso del activo en todo lo que el contrato, la ley o la costumbre no prevén \parencite{Hart1995Firms}. La \emph{propiedad} es la titularidad de los derechos residuales. Recaen sobre activos físicos, no sobre las personas: el trabajo no se puede poseer.
+\item 2 partes, un comprador y un vendedor. Antes de comerciar, el comprador hace una inversión específica $e$, con coste $e$, que no se puede contratar. Si comercian, generan un valor $y(e)$, con $y'>0$ e $y''<0$; si no, el comprador obtiene su opción exterior $y_0(e)$, con $0\leq y_0'(e)<y'(e)$ (la inversión vale menos fuera de la relación: es específica), y el vendedor obtiene 0. Después de invertir, negocian y se reparten a partes iguales la ganancia de comerciar: la solución de negociación de \autor{Nash} simétrica, con poder de negociación $\gamma=\tfrac12$ \parencite{Nash1950Bargaining} \vertema{3.A.14}.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item El comprador anticipa que recibirá su opción exterior más la mitad de la ganancia, $y_0(e)+\tfrac12\,[y(e)-y_0(e)]-e$, e invierte hasta
+  \[
+  \tfrac12\,y'(e^{*})+\tfrac12\,y_0'(e^{*})=1,
+  \]
+  mientras que la inversión eficiente cumple $y'(e^{o})=1$. Como $y_0'<y'$, en $e^{*}$ el valor marginal de la inversión supera su coste: $e^{*}<e^{o}$, hay \concepto{infrainversión}. Es el \emph{hold-up} formalizado: el comprador paga todo el coste y se queda solo con una parte del rendimiento (anexo~\ref{anexo:ghm}).
+\item La propiedad mueve la opción exterior. Si el comprador es dueño también del activo del vendedor (integración), su opción exterior es mayor y más sensible a su inversión, $y_0'$ sube y $e^{*}$ se acerca a $e^{o}$. Pero si el vendedor también tuviera que invertir, perdería incentivos: integrar \emph{da} incentivos al que compra y los \emph{quita} al que es comprado.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{La integración tiene costes además de beneficios}: la propiedad de los activos debe ir a la parte cuya inversión específica es más importante para el valor de la relación \parencite{GrossmanHart1986Costs}; los activos muy complementarios deben tener el mismo dueño, y los independientes, dueños distintos; la parte imprescindible debe ser propietaria \parencite{HartMoore1990Property}.
+\item \emph{La frontera de la empresa}: es el conjunto de activos bajo propiedad común que da los mejores incentivos de inversión. La empresa \emph{no} crece hasta hacerse con todos los derechos residuales: la integración hacia atrás (el comprador adquiere al vendedor), hacia delante (el vendedor adquiere al comprador) o la no integración pueden ser cada una la mejor, según quién invierte. Ese coste de integrar es un \emph{límite} al tamaño de la empresa que el enfoque tecnológico no ve.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Propiedad pública o privada}: un gestor privado de prisiones tiene incentivos a reducir costes que también reducen la calidad no contratable (la formación de los vigilantes), y el Estado debería mantener la propiedad cuando ese deterioro es grave \parencite{HartShleiferVishny1997Proper}; para ampliar, \vertema{4.B.15}.
+\item \emph{Finanzas}: la deuda y las acciones se pueden ver como un reparto de los derechos de control entre acreedores y accionistas \vertema{3.B.3}.
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+
+\begin{itemize}
+\item En el transporte por carretera de Estados Unidos, la llegada de ordenadores a bordo, que hacen verificables más acciones del conductor, cambió quién era dueño de los camiones, como predice la teoría \parencite{BakerHubbard2003Make}.
+\end{itemize}
+
+\paragraph{e) Valoración}
+
+\begin{itemize}
+\item Explica por qué la propiedad importa y por qué integrar no es gratis, y valió a \autor{Hart} el Nobel de 2016, compartido con \autor{Holmström} por la teoría de los contratos. Sus críticas: supone que la negociación \emph{ex post} es eficiente, aunque no se pueda contratar \emph{ex ante} \parencite{Hart2017Incomplete}, y se centra en la inversión en activos físicos, cuando en muchas empresas el activo clave es el capital humano, que no se puede poseer.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Otras teorías de la empresa e implicaciones de política económica}\label{sec:otros-enfoques}
+
+\begin{itemize}
+\item Una vez vistos los 3 enfoques centrales, otras teorías ponen el acento en otros rasgos de la empresa; todas son complementarias de las anteriores:
+  \begin{itemize}
+  \item \emph{La producción en equipo} \parencite{AlchianDemsetz1972Production}: cuando varios trabajan juntos, el resultado conjunto es mayor que la suma de las partes, pero solo se observa ese resultado y cada uno tiene incentivos a escaquearse. La solución es un supervisor que mida la productividad, vigile y sancione (despida, resuelva contratos), y para que tenga incentivos a vigilar se le da el \emph{derecho al beneficio residual}: el empresario es el \concepto{perceptor del residuo}. Para \autor{Alchian} y \autor{Demsetz}, la empresa no tiene un poder de mando distinto del de cualquier contrato: es un contratista central.
+  \item \emph{La empresa como nexo de contratos} \parencite{JensenMeckling1976Theory}: es la red de contratos entre propietarios, directivos, trabajadores, acreedores y proveedores, y su forma minimiza los costes de agencia (\ref{sec:agencia}).
+  \item \emph{La empresa como sistema de incentivos} \parencite{HolmstromMilgrom1994Firm}: la propiedad de los activos, la retribución y el diseño de los puestos se eligen juntos porque son complementarios; un empleado con incentivos débiles y sin activos propios es coherente, y un contratista con incentivos fuertes y sus propias herramientas, también.
+  \item \emph{Autoridad formal y real} \parencite{AghionTirole1997Formal}: la \emph{autoridad formal} es el derecho a decidir; la \emph{real}, el control efectivo de las decisiones, que tiene quien está mejor informado. Delegar estimula la iniciativa del subordinado, que se informa porque sabe que decidirá él, a costa de perder control: la empresa elige cuánto centralizar o delegar según ese dilema.
+  \item \emph{Recursos y capacidades} \parencites{Penrose1959Theory}{Wernerfelt1984Resource}: la empresa es un conjunto de recursos, materiales e inmateriales, y de capacidades organizativas para combinarlos. Sus recursos difíciles de imitar explican su ventaja competitiva, y los recursos ociosos, hacia qué productos y mercados nuevos crece.
+  \end{itemize}
+\item \emph{Implicaciones de política económica}, comunes a todos los enfoques: las autoridades de competencia no deben condenar de antemano la integración vertical u horizontal, las franquicias, los contratos de exclusiva ni las concentraciones. Lo que parece una restricción de la competencia puede ser la forma más barata de aprovechar economías de escala y de alcance (\ref{sec:tamano-eficiente}) o de reducir los costes de unos contratos incompletos (\ref{sec:williamson}, \ref{sec:contratos-incompletos}). La valoración tiene que ser caso a caso, comparando las ganancias de eficiencia con el riesgo de cerrar el mercado a los competidores (\ref{sec:nueva-toi}) \vertema{3.B.39} \vertema{4.A.15}.
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:costes-transaccion}}: la empresa existe porque usar el mercado cuesta, y su frontera está en el margen en que organizar una transacción más dentro cuesta lo mismo que comprarla \parencite{Coase1937Nature}; integra las transacciones con activos específicos, en las que el oportunismo es más peligroso \parencite{Williamson1985Economic}, y la propiedad de los activos, que da mejores incentivos a unos a costa de otros, le pone límites \parencite{GrossmanHart1986Costs}. Hasta aquí, la empresa por dentro. Pero las fronteras de la empresa también deciden cuántas empresas hay y cómo compiten: pasamos a la Teoría de la Organización Industrial.
+\end{itemize}
+
+
+% ==========================================================================
+\section{La Teoría de la Organización Industrial:\newline barreras a la entrada y mercados impugnables}\label{sec:toi}
+\minutos{10}
+
+\begin{notaopositor}
+En el cante: \autor{Chamberlin} y el nacimiento de la TOI en una frase; el paradigma ECR con su esquema, el HHI y sus críticas, y la respuesta de \autor{Chicago} (\tiempo{2,5}); las definiciones de barrera de \autor{Bain} y \autor{Stigler}, los tipos, el precio límite con su gráfico y su función clave \eqref{eq:precio-limite}, su crítica de credibilidad y el árbol de disuasión en 3 etapas, con la señal, la depredación y la proliferación de marcas en una frase cada una (\tiempo{3,5}); los mercados impugnables: los 3 supuestos, la configuración sostenible con su función clave \eqref{eq:sostenible}, las implicaciones y la fragilidad ante los costes hundidos (\tiempo{2,5}); la Nueva TOI, la NOIE y las aportaciones de \autor{Tirole} (\tiempo{1,5}). Son de profundización la relación de \autor{Cowling} y \autor{Waterson}, los umbrales de las directrices de concentraciones, el caso lineal del precio límite, el modelo de \autor{Dixit}, la tabla de supuestos, la NOIE en detalle y los anexos.
+\end{notaopositor}
+
+\begin{itemize}
+\item Abiertas la empresa y sus fronteras, salimos al mercado y levantamos el tercer supuesto de la caja negra: que la estructura del mercado es un dato. \emph{Conclusión anticipada}: el poder de mercado no depende tanto del número de empresas como de lo fácil que sea entrar; las instaladas pueden levantar barreras solo si sus amenazas son creíbles, y sin costes hundidos basta la amenaza de entrada para disciplinar incluso a un monopolio.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Del enfoque neoclásico a Harvard y Chicago}\label{sec:harvard-chicago}
+
+\begin{itemize}
+\item \emph{El enfoque neoclásico}: hasta los años 30, la empresa es una caja negra precio-aceptante en un mercado de competencia perfecta \vertema{3.A.16}, y la teoría presta poca atención a su conducta y a cómo se forma la estructura del mercado: ofrece una teoría de la producción y de los costes, pero no una teoría de la empresa ni de la industria.
+\item \emph{La crítica de \autor{Chamberlin}}: \textcite{Chamberlin1933Theory} y \textcite{Robinson1933Economics} estudian los mercados entre la competencia perfecta y el monopolio \vertema{3.A.18}. Hay consenso en ver ahí el punto en que la TOI se separa de la teoría de los precios: a partir de entonces se estudian las industrias una a una, con datos.
+\end{itemize}
+
+\subsubsection{El paradigma estructura-conducta-resultado: la escuela de \autor{Harvard}}\label{sec:ecr}
+
+\begin{itemize}
+\item \emph{Idea}: \textcite{Mason1939Price} y su discípulo \textcite{Bain1951Relation,Bain1956Barriers,Bain1959Industrial} proponen el \concepto{paradigma estructura-conducta-resultado} (ECR): una causalidad que va de las condiciones básicas de oferta y demanda a la \emph{estructura} del mercado, de esta a la \emph{conducta} de las empresas y de esta al \emph{resultado} (gráfico~\ref{fig:ecr}):
+  \begin{itemize}
+  \item \emph{estructura}: número y tamaño de vendedores y compradores (la concentración), condiciones de entrada, diferenciación del producto, integración vertical;
+  \item \emph{conducta}: fijación de precios, colusión, publicidad, investigación, creación de barreras;
+  \item \emph{resultado}: margen sobre el coste, beneficios, eficiencia asignativa y productiva, progreso técnico.
+  \end{itemize}
+\item \emph{Medida}: la concentración se mide con la \concepto{ratio de concentración} de las $m$ mayores empresas y el \concepto{índice de \autor{Herfindahl}-\autor{Hirschman}},
+  \[
+  \mathrm{CR}_m=\sum_{i=1}^{m}s_i,\qquad \mathrm{HHI}=\sum_{i=1}^{J}(100\,s_i)^{2}\in(0;\,10.000],
+  \]
+  con $s_i\in[0,1]$ la cuota de mercado de la empresa $i$, ordenadas de mayor a menor; el HHI vale 10.000 en el monopolio.\footnote{El HHI es mejor en teoría, porque usa todas las cuotas y pesa más las grandes; la ratio de concentración se usa más en la práctica porque solo exige conocer las cuotas de las mayores empresas. Las autoridades usan el HHI para filtrar las concentraciones. En Estados Unidos, las directrices de 2023 presumen que una fusión reduce sustancialmente la competencia si deja un mercado muy concentrado (HHI superior a 1.800) y eleva el índice en más de 100 puntos, o si crea una empresa con más del 30~\% de cuota y eleva el índice en más de 100 puntos \parencite{DOJFTC2023Merger}; son los umbrales de 1982, que las directrices de 2010 habían subido a 2.500 y 200 \parencites{DOJ1982Merger}{DOJFTC2010Horizontal}, y la FTC confirmó en 2025 que las de 2023 siguen en vigor \parencite{FTC2025Ferguson}. En la Unión Europea, las directrices de 2004 consideran improbables los problemas si el HHI tras la fusión no llega a 1.000, si está entre 1.000 y 2.000 y sube menos de 250 puntos, o si supera 2.000 y sube menos de 150 \parencite{CE2004Horizontales}; el borrador de 2026, que la Comisión prevé aprobar a finales de año, mantiene esos umbrales \parencite{CE2026BorradorMerger}.} En el oligopolio de \autor{Cournot}, el índice de \autor{Lerner} medio ponderado por las cuotas es proporcional al HHI, $\sum_i s_i\,\mathcal{L}_i=\mathrm{HHI}/(10.000\,|\varepsilon_{q,p}|)$ \parencite{CowlingWaterson1976Price} \vertema{3.A.19} (anexo~\ref{anexo:cowling-waterson}): es la base teórica del paradigma.
+\item \emph{Contexto histórico}: nace en Estados Unidos, donde la política antimonopolio venía de la \emph{Sherman Act} de 1890 y de la \emph{Clayton Act} de 1914 \parencite{FTC2026AntitrustLaws}, y le da un fundamento empírico: \textcite{Bain1951Relation} encuentra beneficios mayores en las industrias más concentradas.
+\item \emph{Implicaciones de política económica}: sospechar de las estructuras concentradas, porque llevarán a conductas anticompetitivas, con precios por encima del coste marginal y beneficios extraordinarios: una pérdida de eficiencia \emph{asignativa} (el triángulo de \autor{Harberger}, \vertema{3.A.17}) a la que puede sumarse la ineficiencia X \vertema{3.A.12}. La política actúa sobre la estructura: control de concentraciones y, en el extremo, división de empresas (Standard Oil en 1911, AT\&T en 1984).
+\item \emph{Valoración}: la causalidad no es unidireccional (la conducta cambia la estructura con fusiones, barreras o innovación, y los resultados cambian la conducta); el enfoque es estático; su evidencia es una correlación entre industrias, sin una teoría de la conducta, y la concentración puede ser fruto de la eficiencia.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El paradigma estructura-conducta-resultado y las relaciones de vuelta}\label{fig:ecr}
+\grafico[0.7\textwidth]{ecr}
+\fuente{elaboración propia a partir de \textcite[cap.~1]{LipczynskiWilsonGoddard2017Industrial}.}
+\end{figure}
+
+\subsubsection{La escuela de \autor{Chicago}}\label{sec:chicago}
+
+\begin{itemize}
+\item \emph{Idea}: desde los años 50 y 60, \textcite{Stigler1964Theory,Stigler1968Organization}, \textcite{McGee1958Predatory} y \textcite{Demsetz1968Why,Demsetz1973Industry} vuelven al modelo competitivo como guía:
+  \begin{itemize}
+  \item la concentración puede ser fruto de la \emph{eficiencia}: si las empresas grandes ganan más porque son más eficientes, la correlación de \autor{Bain} no prueba colusión; en las industrias concentradas, las empresas pequeñas no ganan más que en las demás \parencite{Demsetz1973Industry};
+  \item los cárteles son inestables, porque cada miembro gana rompiéndolos y es caro vigilarlos \parencite{Stigler1964Theory} \vertema{3.A.19};
+  \item la depredación es irracional: comprar al rival es más barato que arruinarse para echarlo \parencite{McGee1958Predatory};
+  \item el poder de mercado es temporal: los beneficios atraen la entrada, y las barreras duraderas son casi siempre \emph{legales};\footnote{Ejemplos: el oligopolio de las agencias de calificación, al que las exigencias regulatorias dan una ventaja difícil de igualar (S\&P, Moody's y Fitch tienen el 92~\% del mercado de la Unión Europea, con un HHI de unos 3.600, según \textcite{ESMA2025CRA}); o la limitación de las licencias de vehículos de alquiler con conductor a 1 por cada 30 de taxi, que según el Tribunal de Justicia de la UE restringe la libertad de establecimiento y solo cabe si es adecuada y proporcionada a fines de interés general \parencite{TJUE2023PrestigeLimousine}.}
+  \item el monopolio natural se puede disciplinar subastando el derecho a servir el mercado: \emph{competencia por el mercado} \parencite{Demsetz1968Why} \vertema{3.A.17} \vertema{3.A.20}.
+  \end{itemize}
+\item \emph{Implicaciones de política económica}: el criterio es el bienestar del consumidor; tolerancia con las concentraciones y las restricciones verticales, y desregulación. Su influencia en la política de competencia de Estados Unidos desde los años 70 fue grande.
+\item \emph{Valoración}: confía en que la entrada sea rápida y barata y descarta las conductas estratégicas por irracionales; la teoría de juegos mostrará que pueden ser racionales si hay compromisos creíbles o información asimétrica. El debate se resuelve en las \emph{barreras a la entrada}: si existen, \autor{Harvard} puede tener razón; si no, la amenaza de entrada basta.\footnote{Para la escuela austriaca y para \autor{Schumpeter}, el poder de mercado temporal es el premio de la innovación (anexo~\ref{anexo:austriaca}) \vertema{3.A.44}.}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Las barreras a la entrada}\label{sec:barreras}
+
+\begin{itemize}
+\item Una vez visto que el debate entre \autor{Harvard} y \autor{Chicago} se resuelve en las condiciones de entrada, pasamos a ellas. Las barreras a la entrada son el supuesto~5 de la lista común de las estructuras de mercado, la libre entrada y salida a largo plazo, que el monopolio levanta \vertema{3.A.17} (tabla~\ref{tab:supuestos-impugnables}).
+\end{itemize}
+
+\subsubsection{Definición y tipos}\label{sec:barreras-tipos}
+
+\begin{itemize}
+\item \emph{Definición}: hay 2 clásicas, y la diferencia importa para la política:
+  \begin{itemize}
+  \item \textcite{Bain1956Barriers}: todo lo que permite a las empresas instaladas fijar \emph{a largo plazo} precios por encima del coste medio mínimo sin atraer la entrada. Señala 3 fuentes: las \emph{economías de escala}, las \emph{ventajas absolutas en costes} (mejor tecnología, factores escasos, patentes, necesidades de capital) y la \emph{diferenciación del producto} (fidelidad a las marcas);
+  \item \textcite{Stigler1968Organization}: un coste que tiene que soportar quien entra y no soportaron las instaladas. Con esta definición, las economías de escala no son una barrera si el entrante accede a la misma tecnología.
+  \end{itemize}
+  \textcite{Weizsacker1980Welfare} añade el criterio de bienestar: solo es barrera la que reduce el bienestar; impedir la entrada puede ser eficiente si, con economías de escala, cada entrante duplica costes fijos.\footnote{Una síntesis de las definiciones, en \textcite{McAfeeMialonWilliams2004What}.}
+\item \emph{Tipos}:
+  \begin{itemize}
+  \item \concepto{barreras estructurales}, que vienen de la tecnología, la demanda o las instituciones: economías de escala grandes frente a la demanda; \concepto{costes hundidos}, los que no se recuperan al salir (inversión en activos específicos, publicidad, investigación); ventajas absolutas en costes; fidelidad a la marca y costes de cambio; efectos de red, y barreras \emph{legales} (licencias, concesiones, patentes);
+  \item \concepto{barreras estratégicas}, las que crean las propias instaladas con su conducta: el precio límite, la capacidad, la proliferación de marcas, la depredación o el aumento de los costes de los rivales. Para que disuadan, tienen que ser \emph{creíbles}, y eso es lo que la teoría de juegos permite juzgar \vertema{3.A.14}.
+  \end{itemize}
+\item \emph{Condiciones de entrada}: \textcite{Bain1956Barriers} distingue 3 situaciones \parencite[cap.~8]{Tirole1988Theory}: entrada \concepto{bloqueada} (la instalada fija el precio de monopolio y aun así nadie entra), \concepto{disuadida} (la instalada tiene que cambiar su conducta para evitarla) y \concepto{acomodada} (le sale más a cuenta dejar entrar).
+\end{itemize}
+
+\subsubsection{El precio límite}\label{sec:precio-limite}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Bain1949Note}, \textcite{SylosLabini1957Oligopolio} y \textcite{Modigliani1958New}: la instalada puede fijar hoy un precio más bajo que el de monopolio, sacrificando beneficio presente, para que entrar no compense.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Una empresa instalada y un entrante potencial con la misma tecnología: coste medio a largo plazo en forma de L, con escala mínima eficiente $\overline{q}$ y coste medio mínimo $\overline{c}$ (gráfico~\ref{fig:costes-l}); demanda de mercado $x(p)$, con inversa $p(Q)$.
+\item \emph{Postulado de \autor{Sylos-Labini}}: el entrante cree que, si entra, la instalada mantendrá su producción $q_{\mathrm I}$; y, para no tener una desventaja de costes, tiene que entrar al menos con $\overline{q}$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Si entra, la producción total pasa a ser $q_{\mathrm I}+\overline{q}$ y el precio, $p(q_{\mathrm I}+\overline{q})$. La entrada no compensa si ese precio no cubre $\overline{c}$, es decir, si $q_{\mathrm I}+\overline{q}\geq x(\overline{c})$: la demanda residual del entrante queda por debajo de su coste medio. El \concepto{precio límite} es el más alto que impide la entrada (gráfico~\ref{fig:precio-limite}):\footnote{Con demanda lineal, $p(Q)=\alpha_0-bQ$, y costes $C(q)=\mathrm{CF}+c\,q$, el entrante elegiría su producción frente a la demanda residual $\alpha_0-bq_{\mathrm I}-bq_{\mathrm E}$ y ganaría $(\alpha_0-c-bq_{\mathrm I})^{2}/4b-\mathrm{CF}$; no entra si $q_{\mathrm I}\geq\big[\alpha_0-c-2\sqrt{b\,\mathrm{CF}}\big]/b$, y el precio límite es $p^{L}=c+2\sqrt{b\,\mathrm{CF}}$: el margen que se puede sostener crece con el coste fijo y con la pendiente de la demanda. En ese punto, la demanda residual del entrante es tangente a su coste medio, $c+\mathrm{CF}/q_{\mathrm E}$.}
+  \funcionclave[eq:precio-limite]{q^{L}=x(\overline{c})-\overline{q},\qquad p^{L}=p(q^{L})>\overline{c}}
+\item Si el precio de monopolio ya cumple $p^{M}\leq p^{L}$, la entrada está \emph{bloqueada}; si no, la instalada compara el beneficio de fijar $p^{L}$ (entrada \emph{disuadida}) con el de dejar entrar (entrada \emph{acomodada}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El precio límite: con la producción $q^{L}$, a un entrante de escala $\overline{q}$ el precio no le cubre $\overline{c}$}\label{fig:precio-limite}
+\grafico[0.6\textwidth]{precio-limite}
+\fuente{elaboración propia a partir de \textcite{Modigliani1958New}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El margen $p^{L}-\overline{c}$ es mayor cuanto mayor es la escala mínima eficiente frente al mercado ($\overline{q}/x(\overline{c})$) y cuanto menos elástica es la demanda: las economías de escala son la barrera.
+\item La amenaza de entrada limita el precio aunque nadie entre: el precio observado queda entre el competitivo y el de monopolio, y el coste de la barrera para la instalada es el beneficio al que renuncia por no fijar $p^{M}$.
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item La amenaza no es \emph{creíble}. Una vez que el entrante ha entrado, a la instalada no le conviene mantener su producción, sino reducirla y repartirse el mercado: el postulado de \autor{Sylos-Labini} no forma parte de un equilibrio de \autor{Nash} perfecto en subjuegos (ENPS), igual que la amenaza de luchar en el juego de entrada \vertema{3.A.14}, y el entrante racional no se lo cree. Para que la disuasión funcione hace falta un \emph{compromiso} que cambie lo que a la instalada le conviene hacer tras la entrada (\ref{sec:compromiso-capacidad}) o información asimétrica (\ref{sec:otras-conductas}).
+\end{itemize}
+
+\subsubsection{El compromiso de capacidad}\label{sec:compromiso-capacidad}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item La instalada puede hacer creíble la lucha comprometiéndose \emph{antes} de la entrada con una inversión irreversible que cambie sus incentivos \emph{después}: es la lógica de «quemar las naves» \parencite{Schelling1960Strategy} \vertema{3.A.14}, aplicada por \textcite{Spence1977Entry} y \textcite{Dixit1980Role}.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item El juego de entrada con información completa, con los pagos (entrante, instalada) de siempre: si el entrante no entra, (0, $B^{M}$); si entra y la instalada acomoda, (1, $B^{D}$); si entra y la instalada lucha con una guerra de precios, ($-1$, $B^{G}$), con $B^{G}<B^{D}<B^{M}$ (en el ejemplo, $B^{M}=4$, $B^{D}=1$ y $B^{G}=-1$).
+\item Luchar exige una capacidad grande. La instalada puede comprarla \emph{antes}, con un coste hundido $\mathrm{CH}$, o, si no lo hace, comprarla cuando luche; $B^{G}$ ya descuenta ese coste. Si no hay entrada o si acomoda, la capacidad comprada antes queda ociosa y su coste es una pérdida.
+\item 3 etapas: (1) la instalada decide si invierte; (2) el entrante, que lo observa, decide si entra; (3) si ha entrado, la instalada decide si lucha o acomoda.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Por inducción hacia atrás (gráfico~\ref{fig:disuasion-arbol}):
+  \begin{itemize}
+  \item sin invertir, el juego es el de entrada de siempre: luchar es una amenaza no creíble ($B^{G}<B^{D}$), el entrante entra y la instalada acomoda;
+  \item tras invertir, la instalada lucha si $B^{G}>B^{D}-\mathrm{CH}$, es decir, si $\mathrm{CH}>B^{D}-B^{G}$: luchar le cuesta menos que dejar la capacidad ociosa;
+  \item el entrante, que lo anticipa, no entra, y la instalada gana $B^{M}-\mathrm{CH}$, más que acomodando sin invertir si $\mathrm{CH}<B^{M}-B^{D}$.
+  \end{itemize}
+\item La disuasión es un ENPS si
+  \[
+  B^{D}-B^{G}<\mathrm{CH}<B^{M}-B^{D},
+  \]
+  lo que exige $2B^{D}<B^{M}+B^{G}$. En el ejemplo, $2<\mathrm{CH}<3$; con $\mathrm{CH}=2{,}5$, la instalada invierte (gana $1{,}5>1$), lucharía si hubiera entrada ($-1>-1{,}5$) y el entrante no entra.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Disuasión de la entrada con un compromiso de capacidad: el juego de entrada con una etapa previa}\label{fig:disuasion-arbol}
+\grafico[0.8\textwidth]{disuasion-arbol}
+\fuente{elaboración propia a partir de \textcite{Dixit1980Role} y \textcite[cap.~8]{Tirole1988Theory}. Pagos: (entrante, instalada), con $\mathrm{CH}=2{,}5$; en rojo, el ENPS.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item Es el carácter \emph{hundido} de la inversión lo que da credibilidad: si la capacidad pudiera revenderse sin pérdida, no comprometería a nada. La instalada sacrifica beneficio ($\mathrm{CH}$) para conservar el monopolio.
+\item Si $\mathrm{CH}>B^{M}-B^{D}$, disuadir no compensa y la entrada es \emph{acomodada}; si el entrante no entraría ni sin inversión, la entrada está \emph{bloqueada} \parencite{Bain1956Barriers}.
+\end{itemize}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item En \textcite{Spence1977Entry}, la instalada mantiene capacidad ociosa como amenaza. \textcite{Dixit1980Role}, con competencia en cantidades tras la entrada, muestra que la capacidad instalada abarata la producción de la instalada hasta ese nivel y desplaza su función de reacción: en equilibrio \emph{no} mantiene capacidad ociosa, sino que produce más que un monopolista, y la disuasión solo compensa si el coste fijo del entrante es grande. La taxonomía de \textcite{FudenbergTirole1984Fat} generaliza cuándo conviene invertir de más o de menos (anexo~\ref{anexo:taxonomia}).
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item Da a la intuición de \autor{Bain} un fundamento creíble, pero exige que la inversión sea hundida y observable, y que preceda a la entrada. Cuando la instalada no puede comprometerse así, le quedan otras conductas.
+\end{itemize}
+
+\subsubsection{Otras conductas para disuadir la entrada}\label{sec:otras-conductas}
+
+\begin{itemize}
+\item \emph{El precio límite como señal} \parencite{MilgromRoberts1982Limit}: si el entrante no conoce los costes de la instalada, un precio bajo puede \emph{señalizar} que son bajos y que la competencia tras la entrada sería dura \vertema{3.A.13}. En el equilibrio separador, la instalada de costes bajos fija un precio más bajo que el de monopolio para distinguirse, pero entra el mismo entrante que entraría con información completa: el precio límite existe, aunque no disuada más; solo en un equilibrio agrupador se disuade a entrantes que habrían entrado. El precio límite reaparece así como señal, resuelta como equilibrio bayesiano perfecto (EBP), y no como amenaza \vertema{3.A.14}.
+\item \emph{La depredación}: fijar precios por debajo del coste para expulsar a un rival y recuperar después las pérdidas. \autor{Chicago} la juzgaba irracional \parencite{McGee1958Predatory}, y con información completa y horizonte finito lo es (paradoja de la cadena de tiendas de \textcite{Selten1978Chain}); con algo de incertidumbre sobre el tipo de la instalada, luchar al principio crea \emph{reputación} de agresiva y puede ser racional \parencites{KrepsWilson1982Reputation}{MilgromRoberts1982Predation} \vertema{3.A.14}. En la práctica se juzga con pruebas de costes: un precio por debajo del coste variable medio se presume depredador \parencite{AreedaTurner1975Predatory}.
+\item \emph{La proliferación de marcas}: una empresa instalada puede lanzar muchas variedades para ocupar todos los nichos rentables, de modo que a un entrante no le queda hueco en el que cubrir su coste fijo \parencite{Schmalensee1978Entry}; solo disuade si retirar una variedad tras la entrada es caro \parencite{Judd1985Credible} \vertema{3.A.18}.
+\item \emph{Elevar los costes de los rivales}: contratos de exclusiva con distribuidores o con los proveedores de un factor escaso, que encarecen la entrada más de lo que cuestan a la instalada \parencite{SalopScheffman1983Raising}.
+\item \emph{Efectos de red y costes de cambio}: si el valor de un producto crece con el número de usuarios, el que ya tiene la base de clientes parte con ventaja; es la barrera típica de las plataformas digitales (anexo~\ref{anexo:plataformas}).
+\item En manos de una empresa dominante, estas conductas pueden ser un \emph{abuso de posición dominante} (artículo 102 del TFUE) \vertema{3.B.39}. En suma, las barreras estratégicas existen, pero tienen que ser creíbles, y la credibilidad casi siempre exige costes hundidos o información asimétrica. ¿Qué pasa, entonces, si no hay costes hundidos?
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Los mercados impugnables}\label{sec:impugnables}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \textcite{Baumol1982Contestable}, en un artículo cuyo título la presenta como «un levantamiento en la teoría de la estructura de la industria», y \textcite{BaumolPanzarWillig1982Contestable} dan la vuelta al debate entre \autor{Harvard} y \autor{Chicago}: lo que disciplina a las empresas no es su número, sino la \emph{amenaza de entrada}. Si entrar y salir no cuesta nada, cualquier beneficio extraordinario atrae a entrantes que \emph{entran y salen} (\emph{hit and run}): venden algo más barato mientras la instalada no reacciona y se van sin pérdidas cuando lo hace. Es la versión más extrema del argumento de la entrada.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Un mercado es \concepto{perfectamente impugnable} (contestable) si:
+  \begin{enumerate}
+  \item los entrantes potenciales tienen acceso a la \emph{misma tecnología} y a la misma demanda que las empresas instaladas (no hay ventajas absolutas en costes ni clientela cautiva);
+  \item la entrada y la salida son \emph{libres} y \emph{sin costes hundidos}: puede haber costes fijos, pero lo invertido se recupera al salir;
+  \item las instaladas \emph{tardan en reaccionar} más que los consumidores: si un entrante cobra algo menos, le compran a él antes de que la instalada cambie su precio (los entrantes toman los precios de las instaladas como dados).
+  \end{enumerate}
+\item No hace falta que haya muchas empresas, ni rendimientos constantes, ni producto único: la teoría admite economías de escala y de alcance, y su caso estrella es el monopolio natural (tabla~\ref{tab:supuestos-impugnables}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos de las estructuras de mercado: las barreras levantan el 5 y los mercados impugnables lo refuerzan}\label{tab:supuestos-impugnables}
+\begin{tabular}{>{\centering\arraybackslash}m{0.7cm}>{\raggedright\arraybackslash}m{4.3cm}>{\raggedright\arraybackslash}m{10.0cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{Barreras a la entrada y mercado perfectamente impugnable}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{Agentes racionales} & los consumidores maximizan su utilidad y las empresas, su beneficio\newline \textcolor{tceeverde}{\textbf{Se mantiene}}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{2}} & \textbf{Información perfecta y simétrica} & los consumidores conocen las características del producto y el precio, y las empresas, su tecnología y el precio; nadie sabe más que los demás\newline \textcolor{tceeverde}{\textbf{Se mantiene}} (salvo en el precio límite como señal)\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{3}} & \textbf{Producto homogéneo (sin sustitutivos cercanos)} & los consumidores ven como sustitutivos perfectos las unidades de todas las empresas, de modo que solo les importa el precio\newline \textcolor{tceeverde}{\textbf{Se mantiene}} (salvo en la proliferación de marcas)\\
+\addlinespace[0.3em]
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{4}} & \textbf{Mercado atomizado: muchos compradores y vendedores (precio-aceptantes)} & cada uno es pequeño respecto al mercado y sus decisiones individuales no mueven el precio\newline \textcolor{tceerojo}{\textbf{Se levanta}}: pocas empresas, o una sola, que no son precio-aceptantes; se admiten economías de escala\\
+\addlinespace[0.3em]
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{5}} & \textbf{Libre entrada y salida (a largo plazo)} & a largo plazo, si hay beneficios extraordinarios, entran empresas hasta agotarlos, y si hay pérdidas, salen\newline \textcolor{tceerojo}{\textbf{Se levanta}} con las \textbf{barreras a la entrada} (\ref{sec:barreras})\newline \textcolor{tceeverde}{\textbf{Se refuerza}} en los \textbf{mercados impugnables}: entrada y salida libres también a corto plazo, con la misma tecnología y \emph{sin costes hundidos}\\
+\addlinespace[0.3em]
+\textcolor{tceedorado}{\textbf{+}} & \textbf{Supuesto propio de los impugnables} & el entrante entra y sale antes de que las instaladas cambien sus precios: los toma como dados\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable} y de la lista común de supuestos \vertema{3.A.16}.}
+\end{table}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item Una \concepto{configuración de la industria} (número de empresas, producciones y precio $p$) es \emph{factible} si las producciones suman la demanda y ninguna empresa pierde dinero, y \concepto{sostenible} si, además, ningún entrante con la misma tecnología gana dinero vendiendo a un precio igual o menor una cantidad que el mercado le compre:
+  \[
+  p_{\mathrm E}\,q_{\mathrm E}-C(q_{\mathrm E})\leq 0\qquad\text{para todo } p_{\mathrm E}\leq p\ \text{y}\ q_{\mathrm E}\leq x(p_{\mathrm E}).
+  \]
+  En un mercado perfectamente impugnable, el equilibrio tiene que ser una configuración sostenible, y solo lo son las que cumplen
+  \funcionclave[eq:sostenible]{p=\mathrm{CMe}(q),\ \ q=x(p)\quad\text{(una empresa)};\qquad p=\mathrm{CMg}=\mathrm{CMe}\quad\text{(2 o más empresas)}}
+  \parencite{BaumolPanzarWillig1982Contestable}. Sus propiedades (anexo~\ref{anexo:impugnable}):
+  \begin{itemize}
+  \item \emph{beneficio nulo}, $p=\mathrm{CMe}$: si $p>\mathrm{CMe}$, un entrante cobra algo menos, se lleva el mercado y sale antes de que la instalada reaccione;
+  \item \emph{eficiencia productiva}: la industria produce al menor coste posible y no cabe la ineficiencia X;
+  \item \emph{ningún precio por debajo del coste marginal}: si $p<\mathrm{CMg}$, un entrante produciría algo menos y ganaría dinero;
+  \item con \emph{2 o más empresas}, $p=\mathrm{CMg}$: si $p>\mathrm{CMg}$, un entrante vendería un poco más a un precio un poco menor; con $p=\mathrm{CMg}=\mathrm{CMe}$, cada empresa produce en su escala mínima eficiente, como en el largo plazo competitivo;
+  \item con \emph{una sola empresa} (monopolio natural), el precio iguala el coste medio en el corte con la demanda, $p=\mathrm{CMe}>\mathrm{CMg}$ (gráfico~\ref{fig:impugnables}): es el segundo óptimo (\emph{second best}) con presupuesto equilibrado, el mismo que impondría un regulador, sin regulación de precios \vertema{3.A.17} \vertema{3.A.22}; con varios productos, precios sin subvenciones cruzadas \parencite{BaumolBaileyWillig1977Weak}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Monopolio natural en un mercado impugnable: la amenaza de entrada lleva el precio al coste medio}\label{fig:impugnables}
+\grafico[0.6\textwidth]{impugnables}
+\fuente{elaboración propia a partir de \textcite{BaumolPanzarWillig1982Contestable}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item El número de empresas no es un buen indicador del poder de mercado: hay que mirar las barreras a la entrada y a la salida, y sobre todo los costes hundidos. Es más fácil y más útil eliminarlas que multiplicar el número de competidores.
+\item Es el enfoque de la \concepto{competencia efectiva}: la Ley 15/2007, de Defensa de la Competencia, pone como objetivo proteger «la competencia efectiva en los mercados» y valora las concentraciones según obstaculicen o no su mantenimiento \parencite{BOE2007LDC}: importa la conducta del mercado más que el número de empresas \vertema{4.A.15}.
+\item En las \emph{industrias de red}, el coste hundido está en la red (vías, cables, conducciones). Separar la red de los servicios y garantizar el acceso de terceros en condiciones no discriminatorias hace impugnables los segmentos que no son monopolio natural (los servicios ferroviarios, la comercialización de electricidad, la telefonía sobre la red de otro) \vertema{3.A.20}; para ampliar, \vertema{4.A.12}.
+\end{itemize}
+
+\paragraph{c) Evidencia empírica}
+
+\begin{itemize}
+\item La aviación comercial era el candidato natural: los aviones son capital que puede cambiar de ruta, y la teoría se usó para defender la desregulación del transporte aéreo de Estados Unidos de 1978 \parencites{BaileyPanzar1981Contestability}{BaileyBaumol1984Deregulation}. Los estudios posteriores encontraron que las tarifas de una ruta dependen del número de competidores que de verdad la sirven, no solo de los potenciales: el mercado es impugnable, pero de forma imperfecta, porque los aeropuertos, los derechos de aterrizaje y la reputación son costes hundidos \parencite{MorrisonWinston1987Empirical}.
+\end{itemize}
+
+\paragraph{d) Valoración}
+
+\begin{itemize}
+\item El resultado es \emph{frágil}. Si la instalada puede bajar el precio antes de que el entrante recupere un coste hundido, aunque sea pequeño, el entrante anticipa que perderá dinero y no entra, y la instalada puede fijar el precio de monopolio \parencites{SchwartzReynolds1983Contestable}{Stiglitz1987Technological}: el paso de «sin costes hundidos» a «con algunos» no es continuo, como mostraba el compromiso de capacidad (\ref{sec:compromiso-capacidad}).
+\item \textcite{Weitzman1983Contestable} añade que, sin costes hundidos, es difícil que haya economías de escala, lo que pone en duda el monopolio natural impugnable, y \textcite{Shepherd1984Contestability} critica que unos supuestos de entrada tan libres se usaran para justificar concentraciones; sus autores la defendieron como referencia normativa \parencite{BaumolPanzarWillig1983Reply}.
+\item Su valor no está en describir mercados reales, pocos de los cuales son perfectamente impugnables \parencite{Spence1983Contestable}, sino en servir de punto de referencia: dice qué hay que mirar (los costes hundidos y la velocidad de reacción de las instaladas) y qué política funciona (reducirlos). Para analizar lo que pasa cuando no se cumplen sus supuestos hacen falta la teoría de juegos y los datos: la Nueva TOI.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{La Nueva Teoría de la Organización Industrial}\label{sec:nueva-toi}
+
+\begin{itemize}
+\item \emph{La teoría de juegos}: desde los años 70, la teoría de juegos da a la TOI una teoría de la conducta \parencite{Tirole1988Theory} \vertema{3.A.14}. La Nueva TOI conserva la pregunta de \autor{Harvard} (la estructura y la conducta importan) y toma de \autor{Chicago} el rigor teórico y la importancia de la entrada; la causalidad va en los 2 sentidos: la conducta (inversión, precios, publicidad) también cambia la estructura, como en el compromiso de capacidad (\ref{sec:compromiso-capacidad}). Los mercados impugnables (\ref{sec:impugnables}) son la versión más extrema del argumento de la entrada.
+\item \emph{La Nueva Organización Industrial Empírica} (NOIE) estudia los mercados uno a uno y estima la conducta en lugar de suponerla, porque los costes marginales no se observan \parencite{Bresnahan1989Empirical}, frente a los estudios entre industrias del ECR \parencite{Schmalensee1989Inter}:
+  \begin{itemize}
+  \item con datos de precios y cantidades se estima un \emph{parámetro de conducta} $\theta$ en la condición de la industria $p+\theta\,Q\,p'(Q)=\mathrm{CMg}$, equivalente a $\mathcal{L}=\theta/|\varepsilon_{q,p}|$: $\theta=0$ es competencia (o \autor{Bertrand}), $\theta=1/J$ el oligopolio simétrico de \autor{Cournot} y $\theta=1$ el monopolio o el cártel; los giros de la demanda, y no solo sus desplazamientos, permiten identificarlo \parencite{Bresnahan1982Oligopoly};\footnote{$\theta$ es aquí un parámetro local, no el coeficiente de aversión al riesgo. En el duopolio con variación conjetural $v=\partial q_j/\partial q_i$, la condición de cada empresa es $p+q_i\,p'(Q)(1+v)=\mathrm{CMg}_i$ y, con simetría, $\theta=(1+v)/2$: $v=0$ es \autor{Cournot}, $v=-1$ competencia y $v=1$ colusión.}
+  \item o se comparan modelos alternativos no anidados (\autor{Cournot}, \autor{Bertrand}, colusión) para ver cuál explica mejor los datos, como en el mercado de refrescos de cola \parencite{GasmiLaffontVuong1992Econometric}.
+  \end{itemize}
+  La evidencia reciente apunta a márgenes crecientes: desde 2000 han subido de media un 8~\% en las economías avanzadas \parencite{FMI2019WEO}, y en Estados Unidos mucho más \parencite{DeLoeckerEeckhoutUnger2020Rise}, con un debate abierto entre la explicación tecnológica (empresas superestrella, como sostienen \textcite{AutorEtAl2020Fall}) y la de las barreras y la menor competencia \parencite{Philippon2019Great}.
+\item \emph{Jean \autor{Tirole}} (Nobel 2014) es la figura central de esta etapa. Su idea guía: no hay recetas universales; la intervención adecuada depende de los costes, de la información y del origen del poder de mercado de cada industria \parencite{Tirole2014Nobel}. Entre las aportaciones que cita el Nobel \parencite{Nobel2014TiroleBackground}:
+  \begin{itemize}
+  \item la \emph{inversión estratégica}: cuándo conviene invertir de más o de menos (capacidad, publicidad, investigación) para disuadir o acomodar la entrada \parencite{FudenbergTirole1984Fat} (anexo~\ref{anexo:taxonomia});
+  \item el \emph{cierre de mercados} (\emph{foreclosure}): el dueño de un cuello de botella integrado verticalmente puede negar el acceso o discriminar a los rivales para recuperar el poder de mercado que la competencia aguas abajo le quitaría \parencite{HartTirole1990Vertical}; es el contrapeso de la tolerancia con la integración vertical (\ref{sec:otros-enfoques});
+  \item la \emph{regulación con información asimétrica}: menús de contratos con los que el regulador hace que la empresa revele su eficiencia a cambio de una renta, y el efecto trinquete en la relación repetida \parencites{LaffontTirole1986Using}{LaffontTirole1993Theory}, y el precio de acceso y de interconexión de las redes \parencites{LaffontReyTirole1998NetworkI}{LaffontTirole2000Competition} \vertema{3.A.17} \vertema{3.A.20};
+  \item los \emph{mercados de 2 lados}: plataformas que fijan precios a 2 grupos de usuarios que se necesitan, y para las que un precio muy bajo o nulo en un lado no es depredación \parencite{RochetTirole2003Platform}.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:toi}}: el paradigma ECR veía el poder de mercado en la concentración; \autor{Chicago}, en la regulación. Las barreras a la entrada resuelven el debate: el poder de mercado dura si entrar exige costes hundidos o si las instaladas pueden comprometerse de forma creíble; sin costes hundidos, la amenaza de entrada basta, aunque haya una sola empresa.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión, la empresa deja de ser una caja negra:
+  \begin{itemize}
+  \item la tecnología fija un tamaño eficiente mínimo; la dirección, los objetivos de los directivos y los problemas de agencia le ponen límites internos (\ref{sec:tamano-limites});
+  \item la empresa existe porque usar el mercado cuesta, y su frontera depende de la especificidad de los activos y de quién tiene los derechos residuales de control cuando el contrato calla (\ref{sec:costes-transaccion});
+  \item en el mercado, el número de empresas importa menos que las condiciones de entrada: las barreras sostienen el poder de mercado si son creíbles, y sin costes hundidos basta la amenaza de entrada (\ref{sec:toi}).
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: la defensa de la competencia mira la competencia efectiva y las barreras, no solo el número de empresas, y no condena de antemano integraciones, franquicias y exclusivas, que pueden ahorrar costes de transacción \vertema{3.B.39} \vertema{4.A.15}; la regulación de las industrias de red separa la red de los servicios para que estos sean impugnables \vertema{3.A.20}.
+\item \textbf{\emph{Extensiones y relación con otras partes del temario}}: la información asimétrica y la agencia \vertema{3.A.13}; las herramientas de la teoría de juegos \vertema{3.A.14}; las estructuras de mercado \vertema{3.A.16} \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19}; el crecimiento de la empresa, las fusiones y las alianzas \vertema{3.B.4}; las cadenas globales de valor como decisión de hacer o comprar entre países \vertema{3.B.18}, y las plataformas digitales, en las que los efectos de red y los datos son las nuevas barreras y que la Unión Europea regula desde 2022 con un reglamento «sobre mercados disputables y equitativos en el sector digital» \parencite{UE2022DMA} (anexo~\ref{anexo:plataformas}).
+\item \textbf{\emph{Opinión}}: la economía de los costes de transacción enseña humildad al regulador, porque muchas prácticas que parecen restrictivas son soluciones a problemas de contratación. Pero los márgenes crecientes recuerdan que la amenaza de entrada solo disciplina si entrar es posible: vigilar las barreras, sobre todo en los mercados digitales, es hoy la tarea central de la política de competencia.
+\item \textbf{\emph{Idea final}}: \autor{Lenin} quería organizar la economía como una sola fábrica; los profesores de \autor{Coase}, como un solo mercado. La respuesta de \autor{Coase} es que los 2 cuestan: hay empresas porque los contratos no lo pueden prever todo, y no hay una sola porque la jerarquía también tiene costes. La economía real son islas de organización en un mar de mercado, y su tamaño lo fija el margen en que organizar y comprar cuestan lo mismo.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: la escuela austriaca y \autor{Schumpeter}}\label{anexo:austriaca}
+
+\begin{itemize}
+\item \emph{Mercado y empresario} (los neoaustriacos: \autor{Hayek} y \autor{Kirzner}, seguidores de \autor{Mises}). La competencia es un \emph{proceso de descubrimiento}: con incertidumbre y conocimiento disperso, los precios transmiten información, y el empresario es quien está alerta a las oportunidades de beneficio que otros no han visto \parencite{Kirzner1973Competition}. El mercado no está nunca en equilibrio, sino en un orden que tiende a él \parencite{Hayek1945Use}.
+  \begin{itemize}
+  \item Los beneficios extraordinarios no prueban un monopolio dañino, sino oportunidades por explotar; el poder de mercado duradero lo crea la regulación.
+  \item \emph{Implicaciones de política económica}: libertad de entrada y reglas marco que no maten el incentivo a innovar. Controlar los precios o los beneficios de las industrias reguladas reduce el atractivo de entrar en ellas y, paradójicamente, protege a las instaladas; y las empresas que podrían innovar se desaniman si la regulación amenaza los beneficios de hacerlo. El \emph{price cap} que propone \textcite{Littlechild1983Regulation} para la British Telecom privatizada responde a esa idea \vertema{3.A.17}.
+  \end{itemize}
+\item \emph{La línea schumpeteriana} \parencite{Schumpeter1942Capitalism}: lo relevante no es la competencia en precios, sino la que traen los productos y las técnicas nuevas, la \concepto{destrucción creativa}. El poder de mercado da los incentivos \emph{ex ante} (la perspectiva de beneficios extraordinarios) y los recursos \emph{ex post} (beneficios con los que financiar la innovación).
+  \begin{itemize}
+  \item \emph{Implicaciones de política económica}: fomento de la I+D y patentes, monopolios temporales que sacrifican eficiencia estática por innovación \vertema{3.A.44}.
+  \item \textcite{Arrow1962Economic} sostiene lo contrario: el monopolista innova menos, porque al innovar se reemplaza a sí mismo y gana menos que un entrante que no tenía nada (\emph{efecto reemplazo}).
+  \end{itemize}
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: derivaciones}\label{anexo:derivaciones}
+
+\subsection{Maximización de las ventas con beneficio mínimo}\label{anexo:baumol}
+
+\begin{itemize}
+\item \emph{Problema}: maximizar $I(q)$ sujeto a $B(q)=I(q)-C(q)\geq\underline{B}$. Con el multiplicador $\lambda\geq 0$, las condiciones de \autor{Kuhn}-\autor{Tucker} son
+  \[
+  \mathrm{IMg}(q)+\lambda\,\big[\mathrm{IMg}(q)-\mathrm{CMg}(q)\big]=0,\qquad \lambda\,\big[B(q)-\underline{B}\big]=0,
+  \]
+  y de la primera, $\mathrm{IMg}=\frac{\lambda}{1+\lambda}\,\mathrm{CMg}$.
+\item Si $\lambda=0$ (restricción no activa), $\mathrm{IMg}=0$: la empresa produce en el máximo del ingreso. Si $\lambda>0$, $0<\mathrm{IMg}<\mathrm{CMg}$: como el monopolista que maximiza el beneficio produce donde $\mathrm{IMg}=\mathrm{CMg}$ y el ingreso marginal es decreciente, $q^{B}>q^{M}$; $q^{B}$ está en el tramo decreciente de $B(q)$, con $B(q^{B})=\underline{B}$.
+\item \emph{Estática comparativa}: si el coste fijo sube en $\Delta$, la restricción activa pasa a ser $B(q)-\Delta=\underline{B}$; como $B$ es decreciente en $q^{B}$, $q^{B}$ baja. El maximizador del beneficio no cambia $q^{M}$, porque el coste fijo no altera el coste marginal.\findemo
+\end{itemize}
+
+\subsection{Producción y gobierno: \autor{Riordan} y \autor{Williamson}}\label{anexo:riordan-williamson}
+
+\begin{itemize}
+\item Sea $\Delta C(a)$ el sobrecoste de \emph{producción} de hacer uno mismo frente a comprar: positivo, porque el proveedor agrega demandas y aprovecha economías de escala, y decreciente en $a$, porque cuanto más específico es el bien, menos clientes comparten esa ventaja.
+\item Sea $\Delta G(a)=C_{\text{jerarquía}}(a)-C_{\text{mercado}}(a)$ la diferencia de costes de \emph{gobierno}: positiva para $a$ pequeña, por los costes burocráticos, y decreciente, porque la jerarquía protege mejor la inversión específica; se anula en $\overline{a}$.
+\item La empresa \emph{hace} en lugar de \emph{comprar} si $\Delta C(a)+\Delta G(a)<0$, es decir, si $a>\hat a$. Como $\Delta C(\overline{a})>0$, en $\overline{a}$ la suma aún es positiva, y $\hat a>\overline{a}$: la ventaja de escala del mercado retrasa la integración \parencites{RiordanWilliamson1985Asset}[cap.~4]{Williamson1985Economic}.\findemo
+\end{itemize}
+
+\subsection{Infrainversión con contratos incompletos}\label{anexo:ghm}
+
+\begin{itemize}
+\item \emph{Pago del comprador}: $y_0(e)+\tfrac12\,[y(e)-y_0(e)]-e=\tfrac12\,y(e)+\tfrac12\,y_0(e)-e$. Condición de primer orden: $\tfrac12\,y'(e^{*})+\tfrac12\,y_0'(e^{*})=1$; de segundo orden, $\tfrac12\,y''+\tfrac12\,y_0''<0$ si $y$ e $y_0$ son cóncavas.
+\item Como $y_0'(e^{*})<y'(e^{*})$, $1=\tfrac12\,[y'(e^{*})+y_0'(e^{*})]<y'(e^{*})$; y como $y'(e^{o})=1$ e $y'$ es decreciente, $e^{*}<e^{o}$.
+\item Si la propiedad del activo del vendedor pasa al comprador, su opción exterior pasa a ser $y_0^{\mathrm{I}}(e)$, con $y_0^{\mathrm{I}\prime}(e)\geq y_0'(e)$ para todo $e$: la condición de primer orden se cumple con un $e^{*}$ mayor, más cerca de $e^{o}$. Si el vendedor también invirtiera, su opción exterior sin el activo sería menor y menos sensible a su inversión, y su incentivo caería: de ahí los resultados sobre a quién dar la propiedad \parencite[cap.~2]{Hart1995Firms}.\findemo
+\end{itemize}
+
+\subsection{\autor{Cowling} y \autor{Waterson}: concentración y margen en \autor{Cournot}}\label{anexo:cowling-waterson}
+
+\begin{itemize}
+\item La condición de primer orden de la empresa $i$ en el oligopolio de \autor{Cournot} con costes distintos es $p+q_i\,p'(Q)=\mathrm{CMg}_i$. Dividiendo por $p$ y llamando $s_i=q_i/Q$:
+  \[
+  \mathcal{L}_i=\frac{p-\mathrm{CMg}_i}{p}=-\frac{q_i\,p'(Q)}{p}=\frac{s_i}{|\varepsilon_{q,p}|}.
+  \]
+\item Multiplicando por $s_i$ y sumando: $\sum_i s_i\,\mathcal{L}_i=\sum_i s_i^{2}/|\varepsilon_{q,p}|=\mathrm{HHI}/(10.000\,|\varepsilon_{q,p}|)$ \parencite{CowlingWaterson1976Price}. La concentración y el margen van juntos, pero porque las empresas más eficientes tienen más cuota, no necesariamente porque pacten: es la lectura de \textcite{Demsetz1973Industry}.\findemo
+\end{itemize}
+
+\subsection{Propiedades del equilibrio impugnable}\label{anexo:impugnable}
+
+\begin{itemize}
+\item \emph{Beneficio nulo}: si una empresa ganara $pq-C(q)>0$, un entrante podría producir $q$ a un precio algo menor que $p$ y ganar dinero, lo que contradice la sostenibilidad.
+\item \emph{$p\geq\mathrm{CMg}$}: si $p<\mathrm{CMg}(q_j)$ en la producción $q_j$ de una instalada, un entrante que produjera $q_j-\delta$ al precio $p$ ahorraría unos $\mathrm{CMg}\cdot\delta>p\,\delta$ e ingresaría $p\,(q_j-\delta)$: ganaría más que la instalada, que gana 0.
+\item \emph{$p\leq\mathrm{CMg}$ con 2 o más empresas}: si $p>\mathrm{CMg}(q_j)$, un entrante podría vender $q_j+\delta$ a un precio un poco menor que $p$, porque con otras empresas en el mercado hay demanda que quitarles, y ganaría unos $(p-\mathrm{CMg})\,\delta>0$ sobre el beneficio nulo de $q_j$. Por tanto, $p=\mathrm{CMg}$ y, con beneficio nulo, $p=\mathrm{CMg}=\mathrm{CMe}$ \parencite[cap.~2]{BaumolPanzarWillig1982Contestable}.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: inversión estratégica, la taxonomía de \autor{Fudenberg} y \autor{Tirole}}\label{anexo:taxonomia}
+
+\begin{itemize}
+\item Una inversión hecha antes de competir puede hacer a la empresa \emph{dura} (más agresiva después: más capacidad, menor coste marginal) o \emph{blanda} (menos agresiva: una base de clientes cautivos le hace preferir precios altos). Lo que conviene depende del objetivo (disuadir o acomodar) y de si las variables de la competencia son \emph{sustitutivos estratégicos} (cantidades: funciones de reacción decrecientes) o \emph{complementos estratégicos} (precios: funciones de reacción crecientes) \parencite{FudenbergTirole1984Fat}. Para disuadir hay que ser duro; para acomodar con sustitutivos estratégicos también, porque el rival responde produciendo menos; con complementos estratégicos conviene ser blando, porque el rival responde subiendo su precio (tabla~\ref{tab:taxonomia}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Inversión estratégica: cuándo invertir de más o de menos}\label{tab:taxonomia}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.2cm}>{\centering\arraybackslash}m{5cm}>{\centering\arraybackslash}m{5cm}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{La inversión hace dura a la empresa} & \textbf{La inversión hace blanda a la empresa}\\
+\midrule
+\textbf{Disuadir la entrada} & invertir de más: \emph{perro grande} (\emph{top dog}) & invertir de menos: \emph{flaco y hambriento} (\emph{lean and hungry})\\
+\addlinespace[0.3em]
+\textbf{Acomodar, sustitutivos estratégicos} & invertir de más: \emph{perro grande} & invertir de menos: \emph{flaco y hambriento}\\
+\addlinespace[0.3em]
+\textbf{Acomodar, complementos estratégicos} & invertir de menos: \emph{cachorro} (\emph{puppy dog}) & invertir de más: \emph{gato gordo} (\emph{fat cat})\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{FudenbergTirole1984Fat} y \textcite[cap.~8]{Tirole1988Theory}.}
+\end{table}
+
+% ==========================================================================
+\section{Anexo: gobierno corporativo en España}\label{anexo:gobierno-corporativo}
+
+\begin{itemize}
+\item El \concepto{gobierno corporativo} es el conjunto de reglas con las que los accionistas y otros interesados controlan a quienes dirigen la empresa: es la respuesta práctica al problema de agencia (\ref{sec:agencia}). Los poderes públicos no han podido resolver por ley (\emph{hard law}) la desalineación de objetivos dentro de la empresa, y han recurrido a códigos de buenas prácticas (\emph{soft law}).
+\item En España, los códigos de buen gobierno son de asunción voluntaria, con el principio de \emph{cumplir o explicar}: las sociedades cotizadas informan cada año de qué recomendaciones siguen y explican por qué no siguen las demás.
+  \begin{itemize}
+  \item El \emph{Informe Olivencia} (1998) y el \emph{Informe Aldama} (2003) recomiendan reforzar el peso de los consejeros independientes, los que no forman parte del equipo directivo, y la información a los inversores \parencites{CNMV1998Olivencia}{CNMV2003Aldama}.
+  \item El \emph{Código unificado de buen gobierno} o \emph{Código Conthe} (CNMV, 2006) los refunde \parencite{CNMV2006Unificado}.
+  \item El \emph{Código de buen gobierno de las sociedades cotizadas} de la CNMV (2015, revisado en 2020) lo sustituye \parencites{CNMV2015CBG}{CNMV2020CBG}; la CNMV prepara una nueva revisión para 2027 \parencite{CNMV2025RevisionCBG}.
+  \end{itemize}
+\item La ley ha incorporado parte de esas recomendaciones: la Ley 31/2014 modificó la Ley de Sociedades de Capital para mejorar el gobierno corporativo \parencite{Ley2014GobiernoCorporativo}, y la Ley Orgánica 1/2015 reformó el Código Penal para castigar en su artículo 252 la administración desleal de cualquier patrimonio ajeno \parencite{BOE2015LO1}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: plataformas digitales y barreras a la entrada}\label{anexo:plataformas}
+
+\begin{itemize}
+\item Una \concepto{plataforma de 2 lados} pone en contacto a 2 grupos de usuarios que se benefician de que el otro sea grande (compradores y vendedores, usuarios y anunciantes): hay \emph{efectos de red cruzados} \parencite{RochetTirole2003Platform}. El precio óptimo de cada lado descuenta el valor que sus usuarios dan al otro: puede ser nulo o negativo en el lado que más atrae al otro, sin que sea depredación \parencite{Armstrong2006Competition}. Es la lógica de \autor{Coase} llevada al mercado: la plataforma existe porque reduce los costes de transacción de encontrar contraparte.
+\item Las plataformas reúnen casi todas las barreras de \ref{sec:barreras}: costes fijos altos y coste marginal casi nulo, efectos de red, costes de cambio y datos acumulados que mejoran el servicio. La competencia es \emph{por} el mercado más que \emph{en} el mercado, y el ganador se lleva la mayor parte: son lo contrario de un mercado impugnable.
+\item \emph{Política}: la defensa de la competencia \emph{ex post} ha resultado lenta. El Tribunal de Justicia de la UE confirmó en 2024 la multa de 2.424 millones de euros a Google por favorecer su comparador de compras \parencite{TJUE2024GoogleShopping} y en 2026 la de 4.125 millones por las condiciones impuestas a los fabricantes de móviles Android \parencite{TJUE2026GoogleAndroid}. La Unión Europea ha añadido la regulación \emph{ex ante} del Reglamento de Mercados Digitales, «sobre mercados disputables y equitativos en el sector digital» (la impugnabilidad como objetivo), que desde 2023 obliga a los guardianes de acceso designados, hoy 7 (Alphabet, Amazon, Apple, Booking, ByteDance, Meta y Microsoft), a abrir 23 servicios básicos de plataforma: interoperabilidad, portabilidad de los datos y prohibición de favorecer los servicios propios \parencites{UE2022DMA}{CE2026GuardianesDMA} \vertema{3.B.39}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: para el test y el tribunal}\label{anexo:test}
+
+\begin{itemize}
+\item \emph{Preguntas de otros exámenes}:
+  \begin{itemize}
+  \item ¿Cuál es la diferencia entre la teoría de \autor{Coase} y la de los derechos de propiedad? \autor{Coase} explica por qué existe la empresa (los costes de usar el mercado); \autor{Grossman}, \autor{Hart} y \autor{Moore} explican qué cambia al integrar: la propiedad de los activos y, con ella, los incentivos a invertir (\ref{sec:contratos-incompletos}).
+  \item ¿Por qué recibió \autor{Hart} el Nobel? ¿Le suena el concepto de contratos incompletos? Por los contratos incompletos: los derechos residuales de control y la frontera de la empresa (\ref{sec:contratos-incompletos}).
+  \item Defina riesgo moral y selección adversa: acción oculta después del contrato e información oculta antes del contrato \vertema{3.A.13}.
+  \item ¿La saturación de un mercado implica siempre un aumento de la competencia? No: si entrar exige costes hundidos, la proliferación de marcas o de capacidad puede ser una barrera estratégica (\ref{sec:barreras}).
+  \end{itemize}
+\item \emph{Trampas del test}: los rendimientos constantes no son un supuesto de los mercados impugnables; en el monopolio impugnable, $p=\mathrm{CMe}$, no $p=\mathrm{CMg}$; \autor{Grossman} y \autor{Hart} es de 1986; \autor{Williamson} no fue alumno de \autor{Coase}; General Motors compró el 60~\% de Fisher Body en 1919 y el resto en 1926; el modelo de \autor{Baumol} (1959) maximiza las ventas \emph{sujeto a un beneficio mínimo}; la frecuencia, en \autor{Williamson}, no encarece la transacción, sino que justifica una estructura de gobierno especializada.
+\item Preguntas para practicar: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{itemize}
+
+\bibliografia
+
+\end{document}

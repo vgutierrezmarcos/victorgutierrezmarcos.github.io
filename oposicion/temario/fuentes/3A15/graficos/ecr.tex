@@ -1,0 +1,36 @@
+% El paradigma estructura-conducta-resultado (ECR) y las relaciones de vuelta
+% de la Nueva TOI. Elaboración propia a partir de Lipczynski, Wilson y Goddard
+% (2017, fig. 1.1), simplificada.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=2pt,
+      text width=6.8cm,align=center,inner sep=4pt,minimum height=1.05cm},
+    cajapol/.style={caja,draw=tceeverde,text width=2.6cm},
+    causal/.style={-{Stealth[length=3mm,width=3mm]},line width=2.2pt,tceemorado},
+    politica/.style={-{Stealth[length=2.6mm]},very thick,tceeverde},
+    vuelta/.style={-{Stealth[length=2.6mm]},very thick,dashed,tceedorado}]
+  \useasboundingbox (-5.4,-5.85) rectangle (7.3,0.65);
+  % 1: condiciones básicas y estructura
+  \capa{1}{\node[caja] (CB) at (0,0) {\textbf{Condiciones básicas}\\ {\footnotesize oferta y demanda}};}
+  \capa{1}{\node[caja] (E) at (0,-1.7) {\textbf{Estructura}\\ {\footnotesize concentración, entrada, diferenciación, integración}};}
+  \capa{1}{\draw[causal] (CB) -- (E);}
+  % 2: conducta
+  \capa{2}{\node[caja] (C) at (0,-3.4) {\textbf{Conducta}\\ {\footnotesize precios, colusión, publicidad, I+D, barreras}};}
+  \capa{2}{\draw[causal] (E) -- (C);}
+  % 3: resultado
+  \capa{3}{\node[caja] (R) at (0,-5.1) {\textbf{Resultado}\\ {\footnotesize márgenes, beneficios, eficiencia, progreso técnico}};}
+  \capa{3}{\draw[causal] (C) -- (R);}
+  % 4: política económica, que actúa sobre la estructura y la conducta
+  \capa{4}{\node[cajapol] (P) at (5.55,-2.55) {\textbf{Política económica}\\ {\footnotesize competencia, regulación}};}
+  \capa{4}{\draw[politica] (P.west |- E.east) -- (E.east);}
+  \capa{4}{\draw[politica] (P.west |- C.east) -- (C.east);}
+  % 5: relaciones de vuelta (Nueva TOI)
+  \capa{5}{\draw[vuelta] ([yshift=0.18cm]C.west) -- ++(-0.5,0) |- ([yshift=-0.18cm]E.west);}
+  \capa{5}{\draw[vuelta] ([yshift=0.18cm]R.west) -- ++(-0.5,0) |- ([yshift=-0.18cm]C.west);}
+  \capa{5}{\draw[vuelta] ([yshift=-0.18cm]R.west) -- ++(-1.1,0) |- ([yshift=0.18cm]E.west);}
+  \capa{5}{\node[etiqueta,text=tceedorado,font=\small\bfseries,rotate=90] at (-4.95,-3.4) {Nueva TOI};}
+\end{tikzpicture}
+\end{document}

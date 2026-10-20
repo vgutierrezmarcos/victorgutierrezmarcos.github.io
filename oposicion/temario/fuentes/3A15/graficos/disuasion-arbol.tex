@@ -1,0 +1,71 @@
+% Disuasión de la entrada con un compromiso de capacidad: el juego de entrada
+% del 3.A.14 (3A14/graficos/juego-entrada.tex) con una etapa previa en la que la
+% instalada decide si invierte en capacidad con un coste hundido CH = 2,5.
+% Pagos (entrante, instalada), con B^M = 4, B^D = 1 y B^G = -1:
+%   sin invertir: No entrar (0, 4); Acomodar (1, 1); Luchar (-1, -1);
+%   invirtiendo:  No entrar (0; 4 - 2,5 = 1,5); Acomodar (1; 1 - 2,5 = -1,5);
+%                 Luchar (-1; -1) (B^G ya descuenta la capacidad: luchar la aprovecha).
+% Inducción hacia atrás: sin invertir, la instalada acomoda (1 > -1) y el entrante
+% entra (1 > 0); invirtiendo, lucha (-1 > -1,5) y el entrante no entra (0 > -1);
+% en la raíz, invierte (1,5 > 1). ENPS: invertir; el entrante no entra.
+% Elaboración propia a partir de Dixit (1980) y Tirole (1988, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.2pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    pago/.style={etiqueta,below=2pt,font=\small},
+    elegida/.style={line width=1.8pt,tceerojo},
+    aspa/.style={line width=1.4pt,tceerojo}]
+  \useasboundingbox (-6.6,-4.0) rectangle (6.4,2.55);
+  % 1: raíz: la instalada decide si invierte en capacidad
+  \capa{1}{\node[nodo,label={[jugador]above:Instalada}] (R) at (-0.8,1.9) {};}
+  \capa{1}{\node[nodo,label={[jugador]right:Entrante}] (E1) at (-4.2,0) {};}
+  \capa{1}{\node[nodo,label={[jugador]right:Entrante}] (E2) at (2.6,0) {};}
+  \capa{1}{\draw[rama] (R) -- node[accion,above left] {No invertir} (E1);}
+  \capa{1}{\draw[rama] (R) -- node[accion,above right] {Invertir ($\mathrm{CH}$)} (E2);}
+  % 2: subárbol sin inversión (el juego de entrada del 3.A.14)
+  \capa{2}{\node[terminal] (N1) at (-6.0,-1.7) {};}
+  \capa{2}{\draw[rama] (E1) -- node[accion,above left] {No entrar} (N1);}
+  \capa{2}{\node[pago] at (N1) {$(0;\,4)$};}
+  \capa{2}{\node[nodo,label={[jugador]right:Instalada}] (I1) at (-2.6,-1.7) {};}
+  \capa{2}{\draw[rama] (E1) -- node[accion,above right] {Entrar} (I1);}
+  \capa{2}{\node[terminal] (L1) at (-3.6,-3.4) {};}
+  \capa{2}{\draw[rama] (I1) -- node[accion,left,pos=0.3] {Luchar} (L1);}
+  \capa{2}{\node[pago] at (L1) {$(-1;\,-1)$};}
+  \capa{2}{\node[terminal] (A1) at (-1.5,-3.4) {};}
+  \capa{2}{\draw[rama] (I1) -- node[accion,right,pos=0.3] {Acomodar} (A1);}
+  \capa{2}{\node[pago] at (A1) {$(1;\,1)$};}
+  % 3: subárbol con inversión (CH = 2,5)
+  \capa{3}{\node[terminal] (N2) at (0.8,-1.7) {};}
+  \capa{3}{\draw[rama] (E2) -- node[accion,above left] {No entrar} (N2);}
+  \capa{3}{\node[pago] at (N2) {$(0;\,1{,}5)$};}
+  \capa{3}{\node[nodo,label={[jugador]right:Instalada}] (I2) at (4.2,-1.7) {};}
+  \capa{3}{\draw[rama] (E2) -- node[accion,above right] {Entrar} (I2);}
+  \capa{3}{\node[terminal] (L2) at (3.2,-3.4) {};}
+  \capa{3}{\draw[rama] (I2) -- node[accion,left,pos=0.3] {Luchar} (L2);}
+  \capa{3}{\node[pago] at (L2) {$(-1;\,-1)$};}
+  \capa{3}{\node[terminal] (A2) at (5.3,-3.4) {};}
+  \capa{3}{\draw[rama] (I2) -- node[accion,right,pos=0.3] {Acomodar} (A2);}
+  \capa{3}{\node[pago] at (A2) {$(1;\,-1{,}5)$};}
+  % 4: sin inversión, luchar es una amenaza no creíble (1 > -1)
+  \capa{4}{\draw[aspa] ($(I1)!0.68!(L1)+(-0.18,-0.18)$) -- ++(0.36,0.36)
+    ($(I1)!0.68!(L1)+(-0.18,0.18)$) -- ++(0.36,-0.36);}
+  \capa{4}{\draw[elegida] (I1) -- (A1);}
+  % 5: con inversión, acomodar ya no compensa (-1 > -1,5)
+  \capa{5}{\draw[aspa] ($(I2)!0.68!(A2)+(-0.18,-0.18)$) -- ++(0.36,0.36)
+    ($(I2)!0.68!(A2)+(-0.18,0.18)$) -- ++(0.36,-0.36);}
+  \capa{5}{\draw[elegida] (I2) -- (L2);}
+  % 6: elecciones del entrante: entra si no hay inversión; no entra si la hay
+  \capa{6}{\draw[elegida] (E1) -- (I1);}
+  \capa{6}{\draw[elegida] (E2) -- (N2);}
+  % 7: la instalada invierte (1,5 > 1): ENPS
+  \capa{7}{\draw[elegida] (R) -- (E2);}
+  \capa{7}{\node[etiqueta,text=tceerojo,anchor=west] at (2.2,1.75) {ENPS ($1{,}5>1$)};}
+\end{tikzpicture}
+\end{document}

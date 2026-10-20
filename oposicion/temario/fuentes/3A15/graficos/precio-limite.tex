@@ -1,0 +1,50 @@
+% El precio límite (Bain, Sylos-Labini, Modigliani). Elaboración propia a partir
+% de Modigliani (1958).
+% Demanda de mercado p(Q) = 6 - 0,5 Q, x(p) = 12 - 2p.
+% Costes medios en L: CMe(q) = 4,5/q si q < 3 (c + CF/q con c = 0 y CF = 4,5) y
+%   \overline{c} = 1,5 si q >= 3. Tangente a la demanda residual en \overline{q}:
+%   4,5/q - (3 - 0,5 q) = 0,5 (q - 3)^2 / q >= 0.
+% Coste medio mínimo \overline{c} = 1,5 (tramo plano de los costes en L),
+%   x(\overline{c}) = 9; escala mínima eficiente \overline{q} = 3.
+% q^L = x(\overline{c}) - \overline{q} = 6; p^L = p(6) = 3 > \overline{c}.
+% Demanda residual del entrante si la instalada mantiene q^L: p(q^L + q_E) = 3 - 0,5 q_E,
+%   dibujada desde el origen: corta \overline{c} en q_E = 3 = \overline{q} (entrar con
+%   \overline{q} no cubre el coste medio).
+% Monopolio de referencia: IMg = 6 - Q = \overline{c} -> q^M = 4,5, p^M = 3,75 > p^L.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.85cm,
+    declare function={dem(\q)=6-0.5*\q; res(\q)=3-0.5*\q; img(\q)=6-\q;}]
+  \useasboundingbox (-1.7,-0.95) rectangle (14.2,7.0);
+  % 1: ejes
+  \capa{1}{\ejes{$Q$}{$p$}{13.2}{6.8}}
+  % 2: demanda de mercado
+  \capa{2}{\draw[curva1] plot[domain=0:11.6,samples=2] (\x,{dem(\x)}) node[etiqueta,above right] {$x(p)$};}
+  % 3: costes medios en L (de la instalada y del entrante): decrecientes hasta
+  %    \overline{q} = 3 y planos en \overline{c} = 1,5 después
+  \capa{3}{\draw[curva2] plot[domain=0.72:3,samples=80,smooth] (\x,{4.5/\x}) -- (12.6,1.5) node[etiqueta,right] {$\mathrm{CMe}$};}
+  \capa{3}{\draw[guia] (3,1.5) -- (0,1.5) node[left,text=black] {$\overline{c}$};}
+  % 4: corte de la demanda con \overline{c}
+  \capa{4}{\node[punto] (X) at (9,1.5) {};}
+  \capa{4}{\draw[guia] (X) -- (9,0) node[below,text=black] {$x(\overline{c})$};}
+  % 5: producción límite q^L, a \overline{q} de x(\overline{c})
+  \capa{5}{\draw[guia] (6,0) node[below,text=black] {$q^{L}$} -- (6,3);}
+  \capa{5}{\draw[decorate,decoration={brace,amplitude=4pt,mirror},thick,tceeverde] (6,0.45) -- (9,0.45)
+    node[midway,above=4pt,etiqueta,text=tceeverde] {$\overline{q}$};}
+  % 6: precio límite sobre la demanda
+  \capa{6}{\node[punto,fill=tceemorado] (L) at (6,3) {};}
+  \capa{6}{\draw[guia] (L) -- (0,3) node[left,text=black] {$p^{L}$};}
+  % 7: demanda residual del entrante si la instalada mantiene q^L
+  \capa{7}{\draw[curvanueva,desplazada] plot[domain=0:3.6,samples=2] (\x,{res(\x)});}
+  \capa{7}{\node[punto,fill=tceerojo] (R) at (3,1.5) {};}
+  \capa{7}{\draw[guia] (R) -- (3,0) node[below,text=black] {$\overline{q}$};}
+  \capa{7}{\node[etiqueta,font=\footnotesize,text=tceerojo,align=center,anchor=north] at (1.45,1.36) {demanda\\ residual del\\ entrante};}
+  % 8: monopolio de referencia
+  \capa{8}{\draw[thin,tceegris] plot[domain=0:4.95,samples=2] (\x,{img(\x)}) node[etiqueta,anchor=north east,fill=white,inner sep=1pt,text=tceegris] {$\mathrm{IMg}$};}
+  \capa{8}{\node[punto] (M) at (4.5,3.75) {};}
+  \capa{8}{\draw[guia] (M) -- (4.5,0) node[below,text=black] {$q^{M}$};}
+  \capa{8}{\draw[guia] (M) -- (0,3.75) node[left,text=black] {$p^{M}$};}
+\end{tikzpicture}
+\end{document}

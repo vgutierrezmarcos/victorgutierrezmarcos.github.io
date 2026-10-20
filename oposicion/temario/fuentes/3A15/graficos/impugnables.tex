@@ -1,0 +1,43 @@
+% Monopolio natural en un mercado impugnable (3.A.15, III.3). Misma demanda,
+% CMe y CMg que 3A17/graficos/regulacion-monopolio-natural.tex.
+% C(q) = F + a q - (b/2) q^2 con F = 4, a = 3, b = 0,25:
+%   CMg(q) = 3 - 0,25 q; CMe(q) = 4/q + 3 - 0,125 q (decreciente, CMe > CMg).
+% Demanda p = 6 - 0,6 q; IMg = 6 - 1,2 q.
+%   Monopolio: IMg = CMg -> 6 - 1,2 q = 3 - 0,25 q -> q^M = 3,1579, p^M = 4,1053
+%     (CMe(q^M) = 3,8722 < p^M: beneficio extraordinario).
+%   Configuración sostenible: p = CMe en el corte con la demanda,
+%     0,475 q^2 - 3 q + 4 = 0 -> q^S = 4,4035, p^S = 3,3579 > CMg(q^S) = 1,8991.
+% Elaboración propia a partir de Baumol, Panzar y Willig (1982).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm,
+    declare function={dem(\q)=6-0.6*\q; img(\q)=6-1.2*\q; cmg(\q)=3-0.25*\q; cme(\q)=4/\q+3-0.125*\q;}]
+  \def\qm{3.1579}\def\pm{4.1053}
+  \def\qs{4.4035}\def\ps{3.3579}
+  \useasboundingbox (-1.3,-1.0) rectangle (12.4,7.3);
+  % 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{11}{7}}
+  % 2: demanda
+  \capa{2}{\draw[curva1] plot[domain=0:9.6,samples=2] (\x,{dem(\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado] at (7.6,2.1) {$x(p)$};}
+  % 3: coste medio decreciente y coste marginal por debajo
+  \capa{3}{\draw[curva2] plot[domain=1.25:10.4,samples=100,smooth] (\x,{cme(\x)}) node[etiqueta,above] {$\mathrm{CMe}$};}
+  \capa{3}{\draw[curvanueva] plot[domain=0:10.4,samples=2] (\x,{cmg(\x)}) node[etiqueta,right] {$\mathrm{CMg}$};}
+  % 4: ingreso marginal y equilibrio de monopolio (IMg = CMg)
+  \capa{4}{\draw[curva1,thin] plot[domain=0:4.0,samples=2] (\x,{img(\x)});}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=east] at (1.7,3.75) {$\mathrm{IMg}$};}
+  \capa{4}{\draw[guia] (\qm,{cmg(\qm)}) -- (\qm,0) node[below,text=black] {$q^{M}$};}
+  \capa{4}{\node[punto] (M) at (\qm,\pm) {};}
+  \capa{4}{\draw[guia] (\qm,{cmg(\qm)}) -- (M) -- (0,\pm) node[left,text=black] {$p^{M}$};}
+  % 5: configuración sostenible: la demanda corta al CMe
+  \capa{5}{\node[punto] (S) at (\qs,\ps) {};}
+  \capa{5}{\draw[guia] (S) -- (\qs,0) node[below,text=black] {$q^{\mathrm{S}}$};}
+  \capa{5}{\draw[guia] (S) -- (0,\ps) node[left,text=black] {$p^{\mathrm{S}}$};}
+  % 6: la amenaza de entrada lleva el precio de p^M a p^S
+  \capa{6}{\draw[flecha] ([shift={(0.15,0.3)}]M) to[bend left=35] node[etiqueta,above right,font=\footnotesize,text=tceerojo,pos=0.3] {amenaza de entrada} ([shift={(0.3,0.15)}]S);}
+  \capa{6}{\node[etiqueta,anchor=west] (T) at (6.4,3.9) {$p=\mathrm{CMe}>\mathrm{CMg}$};}
+  \capa{6}{\draw[thin,tceegris] (T.west) -- (S);}
+\end{tikzpicture}
+\end{document}

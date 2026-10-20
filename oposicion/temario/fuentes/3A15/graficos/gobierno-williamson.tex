@@ -1,0 +1,37 @@
+% Costes de gobierno y especificidad de los activos. Elaboración propia a
+% partir de Williamson (1991), con a en lugar de su k.
+% C_mercado(a) = 0,4 + a; C_híbrida(a) = 1,2 + 0,5 a; C_jerarquía(a) = 2,4 + 0,2 a.
+% a_1: mercado = híbrida en a = 1,6 (C = 2); a_2: híbrida = jerarquía en a = 4 (C = 3,2).
+% C*(a) = mínimo de las 3 (envolvente inferior).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1.05cm,y=1cm]
+  \useasboundingbox (-2.1,-1.35) rectangle (9.6,5.8);
+  % 1: ejes
+  \capa{1}{\ejes{$a$}{}{7.6}{5.5}}
+  \capa{1}{\node[etiqueta,left,align=right] at (0,5.35) {costes\\ de gobierno};}
+  % 2: mercado
+  \capa{2}{\draw[curva2] (0,0.4) -- (4.7,5.1) node[etiqueta,right] {$C_{\text{mercado}}(a)$};}
+  % 3: jerarquía
+  \capa{3}{\draw[curva4] (0,2.4) -- (6.9,3.78) node[etiqueta,right] {$C_{\text{jerarquía}}(a)$};}
+  % 4: forma híbrida
+  \capa{4}{\draw[curva3] (0,1.2) -- (6.6,4.5) node[etiqueta,right] {$C_{\text{híbrida}}(a)$};}
+  % 5: corte en a_1
+  \capa{5}{\node[punto] (A1) at (1.6,2) {};}
+  \capa{5}{\draw[guia] (A1) -- (1.6,0) node[below,text=black] {$a_1$};}
+  % 6: corte en a_2
+  \capa{6}{\node[punto] (A2) at (4,3.2) {};}
+  \capa{6}{\draw[guia] (A2) -- (4,0) node[below,text=black] {$a_2$};}
+  % 7: envolvente inferior C*(a)
+  \capa{7}{\begin{scope}[on background layer]
+    \draw[tceemorado,line width=4.5pt,opacity=0.45] (0,0.4) -- (1.6,2) -- (4,3.2) -- (6.9,3.78);
+  \end{scope}}
+  \capa{7}{\node[etiqueta,text=tceemorado,anchor=north west] at (5.2,3.35) {$C^{*}(a)$};}
+  % 8: estructura eficiente en cada tramo
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceeazul,anchor=base] at (0.8,-0.95) {mercado};}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceeverde,anchor=base] at (2.8,-0.95) {forma híbrida};}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceedorado,anchor=base] at (5.6,-0.95) {jerarquía};}
+\end{tikzpicture}
+\end{document}
