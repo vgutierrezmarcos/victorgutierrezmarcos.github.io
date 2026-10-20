@@ -23,7 +23,15 @@
 
 \item \textbf{\emph{Relevancia}}:
   \begin{itemize}
-  \item \emph{Teórica}: la utilidad esperada es el lenguaje de toda la economía con riesgo: los seguros y la información asimétrica \vertema{3.A.13}, los pagos esperados de la teoría de juegos y las subastas \vertema{3.A.14}, el equilibrio general con mercados contingentes \vertema{3.A.21}, el consumo y el ahorro con incertidumbre \vertema{3.A.33}, la demanda de dinero como activo \vertema{3.A.35} y la teoría de carteras \vertema{3.B.23}.
+  \item \emph{Teórica}: la utilidad esperada es el lenguaje de toda la economía con riesgo:
+    \begin{itemize}
+    \item los seguros y la información asimétrica \vertema{3.A.13};
+    \item los pagos esperados de la teoría de juegos y las subastas \vertema{3.A.14};
+    \item el equilibrio general con mercados contingentes \vertema{3.A.21};
+    \item el consumo y el ahorro con incertidumbre \vertema{3.A.33};
+    \item la demanda de dinero como activo \vertema{3.A.35};
+    \item y la teoría de carteras \vertema{3.B.23}.
+    \end{itemize}
   \item \emph{Práctica}: las decisiones más importantes de un hogar (asegurarse, ahorrar, invertir, elegir un empleo o una hipoteca a tipo fijo o variable) se toman con riesgo. Y los fallos de la teoría como descripción de la conducta dieron origen a la economía conductual \vertema{3.A.1}, que hoy inspira políticas como la adscripción automática a los planes de pensiones.
   \end{itemize}
 
@@ -46,7 +54,12 @@
 
 \item \textbf{\emph{Estructura}}: la exposición va de lo conocido a lo desconocido y, en cada caso, del modelo normativo a sus críticas. Tiene 3 partes:
   \begin{itemize}
-  \item \emph{Riesgo: la teoría de la utilidad esperada} (\ref{sec:utilidad-esperada}). Construiremos la función de utilidad esperada a partir de axiomas sobre las preferencias y estudiaremos sus 2 componentes, la utilidad de \autor{Bernoulli}, que mide la actitud ante el riesgo, y la distribución de probabilidad, que permite comparar loterías (\ref{sec:fundamentos}); derivaremos con ella la demanda de seguros y, como profundización, la decisión de la empresa aversa al riesgo (\ref{sec:aplicaciones}), con la demanda de un activo con riesgo en el anexo~\ref{anexo:cartera}, y la extenderemos a la utilidad que depende del estado y a los bienes contingentes (\ref{sec:extensiones}).
+  \item \emph{Riesgo: la teoría de la utilidad esperada} (\ref{sec:utilidad-esperada}):
+    \begin{itemize}
+    \item construiremos la función de utilidad esperada a partir de axiomas sobre las preferencias y estudiaremos sus 2 componentes, la utilidad de \autor{Bernoulli}, que mide la actitud ante el riesgo, y la distribución de probabilidad, que permite comparar loterías (\ref{sec:fundamentos});
+    \item derivaremos con ella la demanda de seguros y, como profundización, la decisión de la empresa aversa al riesgo (\ref{sec:aplicaciones}), con la demanda de un activo con riesgo en el anexo~\ref{anexo:cartera};
+    \item y la extenderemos a la utilidad que depende del estado y a los bienes contingentes (\ref{sec:extensiones}).
+    \end{itemize}
   \item \emph{Riesgo: críticas y enfoques alternativos} (\ref{sec:criticas}). Veremos dónde falla como descripción de la conducta (\ref{sec:limitaciones}) y la alternativa más influyente, la teoría de las perspectivas, junto con otras teorías de la utilidad no esperada (\ref{sec:perspectivas}).
   \item \emph{Incertidumbre} (\ref{sec:incertidumbre}). Con probabilidades subjetivas, la utilidad esperada subjetiva de \autor{Savage} y su crítica, la paradoja de \autor{Ellsberg} (\ref{sec:probabilidad-subjetiva}); después, los modelos de aversión a la ambigüedad y los criterios clásicos para decidir en ignorancia (\ref{sec:alternativas-incertidumbre}).
   \end{itemize}
@@ -90,7 +103,14 @@ La exposición va de lo conocido (riesgo) a lo desconocido (incertidumbre) y, en
   \begin{itemize}
   \item Son pocas las situaciones económicas de riesgo puro (por eso los ejemplos son monedas, dados o ruletas), pero es el punto de partida natural del análisis.
   \end{itemize}
-\item La \concepto{teoría de la utilidad esperada} (TUE) aplica a la elección con riesgo el método de la teoría del consumidor con certidumbre \vertema{3.A.8}: un \emph{conjunto de elección}, una \emph{relación de preferencia} sobre él, unos \emph{axiomas} que permiten representarla con una \emph{función de utilidad} y un \emph{problema de maximización} del que sale la decisión óptima (gráfico~\ref{fig:esquema-tue}). Sobre ella se construyen las finanzas modernas, el equilibrio general con incertidumbre de \autor{Arrow} y \autor{Debreu} y la economía de la información asimétrica.
+\item La \concepto{teoría de la utilidad esperada} (TUE) aplica a la elección con riesgo el método de la teoría del consumidor con certidumbre \vertema{3.A.8} (gráfico~\ref{fig:esquema-tue}):
+  \begin{itemize}
+  \item un \emph{conjunto de elección};
+  \item una \emph{relación de preferencia} sobre él;
+  \item unos \emph{axiomas} que permiten representarla con una \emph{función de utilidad};
+  \item y un \emph{problema de maximización} del que sale la decisión óptima.
+  \end{itemize}
+\item Sobre ella se construyen las finanzas modernas, el equilibrio general con incertidumbre de \autor{Arrow} y \autor{Debreu} y la economía de la información asimétrica.
 \item Se diferencia de la elección con certidumbre en 2 cosas:
   \begin{enumerate}
   \item los \emph{objetos de elección} ya no son cestas de bienes, sino \emph{loterías}: distribuciones de probabilidad sobre resultados;
@@ -246,7 +266,13 @@ Conviene decir en voz alta que se pasa al caso continuo, porque lo que sigue (eq
 \begin{itemize}
 \item El \concepto{equivalente cierto} $\xi$ de una lotería es la cantidad cierta que el consumidor valora igual que la lotería:
   $$u(\xi)=\mathbb{E}\big[u(\tilde{x})\big]=\int u(x)\,dF(x).$$
-  El consumidor es averso si y solo si $\xi<\mathbb{E}[\tilde{x}]$ para toda lotería no degenerada; neutral si $\xi=\mathbb{E}[\tilde{x}]$, y amante si $\xi>\mathbb{E}[\tilde{x}]$. Es una forma equivalente de decir lo mismo que la concavidad.
+  El consumidor es:
+  \begin{itemize}
+  \item averso si y solo si $\xi<\mathbb{E}[\tilde{x}]$ para toda lotería no degenerada;
+  \item neutral si $\xi=\mathbb{E}[\tilde{x}]$;
+  \item y amante si $\xi>\mathbb{E}[\tilde{x}]$.
+  \end{itemize}
+\item Es una forma equivalente de decir lo mismo que la concavidad.
 \item La \concepto{prima de riesgo} es la diferencia entre el valor esperado y el equivalente cierto:
   $$\rho\equiv\mathbb{E}[\tilde{x}]-\xi .$$
   Mide en euros lo que el consumidor sacrificaría, en valor esperado, por librarse del riesgo; dicho al revés, la rentabilidad esperada adicional que exige para asumirlo, que es como se usa en la teoría de carteras. Es positiva si y solo si el consumidor es averso.
@@ -315,7 +341,12 @@ Conviene decir en voz alta que se pasa al caso continuo, porque lo que sigue (eq
   Como $\theta$ es también la elasticidad de la utilidad marginal cambiada de signo, $r_R=-\varepsilon_{u'(x),x}=\theta$ (anexo~\ref{anexo:crra}), con utilidad separable en el tiempo la inversa de la elasticidad de sustitución intertemporal y el coeficiente de aversión relativa al riesgo coinciden: las funciones con aversión relativa constante son también las que tienen elasticidad de sustitución intertemporal constante.}: un mismo parámetro mide 2 cosas distintas, la aversión al riesgo entre estados y la resistencia a sustituir consumo entre periodos.\footnote{Las preferencias de \textcite{EpsteinZin1989Substitution} las separan: la aversión relativa y la elasticidad de sustitución intertemporal son parámetros distintos. El $-1$ del numerador de \eqref{eq:crra} no afecta a las decisiones; se mantiene para que el límite cuando $\theta\to 1$ sea $\ln x$.}
   \item \concepto{Cuadrática}, $u(x)=x-\tfrac{b}{2}x^2$ con $x<1/b$: es cómoda, porque la utilidad esperada solo depende de la media y la varianza (anexo~\ref{anexo:media-varianza}), pero tiene aversión absoluta \emph{creciente} (IARA), lo que contradice la evidencia, y deja de ser creciente para $x>1/b$.
   \end{itemize}
-\item Las 3 son casos de la familia \concepto{HARA} (\emph{hyperbolic absolute risk aversion}), cuya tolerancia al riesgo, $1/r_A(x)$, es lineal en la riqueza: $1/r_A(x)=\eta_0+\eta_1x$. Es CARA si $\eta_1=0$; CRRA si $\eta_0=0$ y $\eta_1=1/\theta$, y cuadrática si $\eta_1=-1$.
+\item Las 3 son casos de la familia \concepto{HARA} (\emph{hyperbolic absolute risk aversion}), cuya tolerancia al riesgo, $1/r_A(x)$, es lineal en la riqueza: $1/r_A(x)=\eta_0+\eta_1x$. Según los parámetros, es:
+  \begin{itemize}
+  \item CARA si $\eta_1=0$;
+  \item CRRA si $\eta_0=0$ y $\eta_1=1/\theta$;
+  \item y cuadrática si $\eta_1=-1$.
+  \end{itemize}
 \end{itemize}
 
 \begin{table}[H]
@@ -753,7 +784,12 @@ En el cante de \ref{sec:perspectivas} (\tiempo{4,5}): la idea y la diferencia co
   \item Su colaboración empezó en 1969, cuando \autor{Kahneman} invitó a \autor{Tversky} a su seminario de la Universidad Hebrea de Jerusalén. En los años 50 ambos habían estado en el ejército israelí, pero no juntos: \autor{Kahneman}, en su rama de psicología; \autor{Tversky}, como oficial paracaidista \parencite{Kahneman2002Biografia}.
   \item Publicaron la teoría en \emph{Econometrica} en marzo de 1979 \parencite{KahnemanTversky1979Prospect} y la reformularon con probabilidades acumuladas en \textcite{TverskyKahneman1992Advances}. Eligieron a propósito un nombre sin significado preciso, para que fuera fácil de distinguir si la teoría llegaba a conocerse \parencite{Kahneman2002Biografia}.
   \end{itemize}
-\item Es una teoría \emph{descriptiva} (positiva), con base empírica: no dice cómo debería elegirse, sino cómo se elige. Se diferencia de la utilidad esperada en 3 cuestiones: cómo se \emph{definen} las alternativas (como ganancias o pérdidas respecto a un punto de referencia), cómo se \emph{valoran} (con una función de valor en forma de S) y cómo se \emph{ponderan} (con pesos de decisión, no con probabilidades).
+\item Es una teoría \emph{descriptiva} (positiva), con base empírica: no dice cómo debería elegirse, sino cómo se elige. Se diferencia de la utilidad esperada en 3 cuestiones:
+  \begin{itemize}
+  \item cómo se \emph{definen} las alternativas (como ganancias o pérdidas respecto a un punto de referencia);
+  \item cómo se \emph{valoran} (con una función de valor en forma de S);
+  \item y cómo se \emph{ponderan} (con pesos de decisión, no con probabilidades).
+  \end{itemize}
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -903,7 +939,13 @@ Perspectivas acumulativa\newline \parencite{TverskyKahneman1992Advances} & Como 
 
 \begin{itemize}
 \item Aunque tiene ya casi medio siglo, la teoría de las perspectivas es la descripción de la elección con riesgo que mejor encaja con los experimentos, y ha dado origen a la economía y a las finanzas conductuales, que se aplican hoy en campos tan distintos como el derecho o el diseño de políticas públicas. \textcite{Kahneman2003Maps}, en su conferencia Nobel, la sitúa en el marco de la \concepto{racionalidad limitada} de \textcite{Simon1955Behavioral}: la mente usa atajos que funcionan bien casi siempre y fallan de forma sistemática en algunos casos. \textcite{Thaler2018Cashews} resume cómo esas ideas pasaron de anomalías a políticas, los «empujones» (\emph{nudges}).
-\item Sus límites: el punto de referencia no está determinado por la teoría (¿la riqueza actual, la esperada, la de los demás?), lo que le da muchos grados de libertad; no tiene la fuerza normativa de la utilidad esperada, y sus aplicaciones a los mercados requieren supuestos sobre cómo se agregan los sesgos individuales. Es un \emph{complemento} de la teoría estándar, que hace comprensible lo que parecía anómalo, más que su sustituto.
+\item Sus límites:
+  \begin{itemize}
+  \item el punto de referencia no está determinado por la teoría (¿la riqueza actual, la esperada, la de los demás?), lo que le da muchos grados de libertad;
+  \item no tiene la fuerza normativa de la utilidad esperada;
+  \item y sus aplicaciones a los mercados requieren supuestos sobre cómo se agregan los sesgos individuales.
+  \end{itemize}
+\item Es un \emph{complemento} de la teoría estándar, que hace comprensible lo que parecía anómalo, más que su sustituto.
 \end{itemize}
 
 \begin{ideaclave}
@@ -948,7 +990,12 @@ En el cante de \ref{sec:probabilidad-subjetiva} (\tiempo{3}): la definición de 
   \item P1, \emph{orden}: la relación $\succcurlyeq$ entre actos es completa y transitiva;
   \item P2, \concepto{principio de la cosa segura} (\emph{sure-thing principle}): si 2 actos dan lo mismo en un suceso, la preferencia entre ellos no depende de qué den allí. Es la versión subjetiva del axioma de independencia;
   \item P3 y P4: el orden de los resultados no depende del estado en que se reciben, y la apuesta preferida entre 2 sucesos no depende del premio (así se puede leer en ella qué suceso se cree más probable);
-  \item P5 a P7: no todo es indiferente; los sucesos se pueden partir en otros tan poco probables como se quiera (una forma de continuidad), y una condición técnica para infinitos resultados.
+  \item P5 a P7:
+    \begin{itemize}
+    \item no todo es indiferente;
+    \item los sucesos se pueden partir en otros tan poco probables como se quiera (una forma de continuidad);
+    \item y una condición técnica para infinitos resultados.
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -1060,7 +1107,13 @@ $D$ & 10 & 3 & 4 & 3 & 1 & 4 & 3 & 10 & 5,67 & \cellcolor{tceesalvia}4\\
 \paragraph{d) Valoración}
 
 \begin{itemize}
-\item Cada criterio clásico incumple alguna propiedad razonable \parencite{Milnor1954Games}: \autor{Wald} y maximax solo miran un resultado por acción; \autor{Laplace} depende de cómo se cuenten los estados (partir uno en 2 cambia las probabilidades), y el de \autor{Savage} incumple la \emph{independencia de las alternativas irrelevantes}: añadir una acción que nadie elegiría puede cambiar los pesares y la elección entre las demás. Son reglas prácticas para la ignorancia completa, no una teoría de las preferencias; los modelos de ambigüedad son su versión axiomática.
+\item Cada criterio clásico incumple alguna propiedad razonable \parencite{Milnor1954Games}:
+  \begin{itemize}
+  \item \autor{Wald} y maximax solo miran un resultado por acción;
+  \item \autor{Laplace} depende de cómo se cuenten los estados (partir uno en 2 cambia las probabilidades);
+  \item y el de \autor{Savage} incumple la \emph{independencia de las alternativas irrelevantes}: añadir una acción que nadie elegiría puede cambiar los pesares y la elección entre las demás.
+  \end{itemize}
+\item Son reglas prácticas para la ignorancia completa, no una teoría de las preferencias; los modelos de ambigüedad son su versión axiomática.
 \item Los modelos de ambigüedad dan contenido formal a la incertidumbre de \autor{Knight}: ya no es lo que no se puede medir, sino la parte de las creencias que no se resume en una sola probabilidad. Se aplican en macroeconomía y finanzas, por ejemplo para explicar la huida de los inversores en las crisis o para diseñar políticas que funcionen bien aunque el modelo sea incorrecto, la \emph{robustez} de \textcite{HansenSargent2008Robustness}. Su límite es que tienen más parámetros (el conjunto $\mathcal{P}$, la capacidad o la función $\phi$) y menos contrastes empíricos que la utilidad esperada.
 \end{itemize}
 
@@ -1081,13 +1134,31 @@ Con los axiomas de \autor{Savage}, la incertidumbre se reduce al riesgo con prob
   \begin{itemize}
   \item En conclusión, con unos axiomas razonables sobre las loterías, sobre todo el de independencia, las preferencias se representan con la utilidad esperada, y toda la actitud ante el riesgo queda en la curvatura de la utilidad de \autor{Bernoulli}: el averso paga una prima por librarse del riesgo, se asegura del todo si la prima es justa y compra algo de un activo con riesgo si su rentabilidad esperada es favorable (\ref{sec:utilidad-esperada}).
   \item Las personas se apartan de ella de forma sistemática (\autor{Allais}, los efectos marco): valoran ganancias y pérdidas respecto a un punto de referencia y deforman las probabilidades, como recoge la teoría de las perspectivas (\ref{sec:criticas}).
-  \item Cuando las probabilidades no se conocen, \autor{Savage} muestra que se puede actuar como si se tuvieran; \autor{Ellsberg} muestra que la gente rechaza la ambigüedad, y los modelos de previos múltiples lo acomodan (\ref{sec:incertidumbre}).
+  \item Cuando las probabilidades no se conocen (\ref{sec:incertidumbre}):
+    \begin{itemize}
+    \item \autor{Savage} muestra que se puede actuar como si se tuvieran;
+    \item \autor{Ellsberg} muestra que la gente rechaza la ambigüedad;
+    \item y los modelos de previos múltiples lo acomodan.
+    \end{itemize}
   \end{itemize}
-\item \textbf{\emph{Relevancia}}: la utilidad esperada es el lenguaje en que se escriben la teoría de carteras \vertema{3.B.23}, la demanda de dinero como activo \vertema{3.A.35}, los seguros y los contratos con información asimétrica \vertema{3.A.13} y los juegos con estrategias mixtas y las subastas \vertema{3.A.14}; y justifica la regulación que protege a quien no puede diversificar, como los seguros obligatorios o la garantía de depósitos (anexo~\ref{anexo:diamond-dybvig}). Sus críticas son el origen de la economía conductual \vertema{3.A.1}.
+\item \textbf{\emph{Relevancia}}: la utilidad esperada es el lenguaje en que se escriben:
+  \begin{itemize}
+  \item la teoría de carteras \vertema{3.B.23};
+  \item la demanda de dinero como activo \vertema{3.A.35};
+  \item los seguros y los contratos con información asimétrica \vertema{3.A.13};
+  \item y los juegos con estrategias mixtas y las subastas \vertema{3.A.14}.
+  \end{itemize}
+  Y justifica la regulación que protege a quien no puede diversificar, como los seguros obligatorios o la garantía de depósitos (anexo~\ref{anexo:diamond-dybvig}). Sus críticas son el origen de la economía conductual \vertema{3.A.1}.
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
   \begin{itemize}
   \item El equilibrio general con bienes contingentes y títulos de \autor{Arrow} reparte el riesgo de forma eficiente si los mercados son completos \vertema{3.A.21}; si faltan mercados o la información es asimétrica, no \vertema{3.A.13}.
-  \item En macroeconomía, la aversión relativa constante fija también la elasticidad de sustitución intertemporal \vertema{3.A.29}; la prudencia explica el ahorro precautorio que el paseo aleatorio de \autor{Hall} excluye \vertema{3.A.33}, y la incertidumbre y la irreversibilidad retrasan la inversión \vertema{3.A.34}. La aversión a la ambigüedad inspira la política monetaria robusta de \autor{Hansen} y \autor{Sargent}.
+  \item En macroeconomía:
+    \begin{itemize}
+    \item la aversión relativa constante fija también la elasticidad de sustitución intertemporal \vertema{3.A.29};
+    \item la prudencia explica el ahorro precautorio que el paseo aleatorio de \autor{Hall} excluye \vertema{3.A.33};
+    \item y la incertidumbre y la irreversibilidad retrasan la inversión \vertema{3.A.34}.
+    \end{itemize}
+  \item La aversión a la ambigüedad inspira la política monetaria robusta de \autor{Hansen} y \autor{Sargent}.
   \end{itemize}
 \item \textbf{\emph{Opinión}}: la utilidad esperada y la teoría de las perspectivas no compiten en el mismo terreno. La primera es \emph{normativa}: dice cómo debería elegir un decisor coherente, y por eso sigue siendo la referencia para diseñar seguros, carteras o políticas. La segunda es \emph{positiva}: describe cómo elegimos de verdad, y por eso ayuda a predecir y a corregir los errores, como el ahorro insuficiente para la jubilación o el sobreaseguro de los riesgos pequeños. Un buen análisis necesita las 2.
 \item \textbf{\emph{Idea final}}: volviendo al refranero, los 2 refranes tienen razón, cada uno en su terreno. Ante las ganancias probables somos prudentes («más vale pájaro en mano») y ante las pérdidas probables, temerarios («de perdidos, al río»); pero ante lo poco probable cambiamos de bando: sobreponderamos tanto el premio como el accidente. Es el patrón cuádruple de la teoría de las perspectivas, y por eso la misma persona compra el seguro y el décimo de Navidad: no valora su riqueza final, sino lo que gana o pierde respecto a donde está, y no pesa las probabilidades como las calcula un matemático.
@@ -1238,7 +1309,13 @@ Este anexo no se canta: en el cuerpo basta una frase (\ref{sec:seguros}). Es el 
 
 \begin{itemize}
 \item \emph{Resultado de \autor{Arrow}}: un consumidor averso siempre asume \emph{algo} de un riesgo con esperanza favorable, porque, para riesgos pequeños, el coste de la aversión es de segundo orden (proporcional a $\alpha^2$, como en \eqref{eq:arrow-pratt}) y la ganancia esperada, de primer orden (proporcional a $\alpha$). Por la misma razón, solo un consumidor neutral invierte todo en el activo con mayor esperanza.
-\item \emph{Riqueza e inversión con riesgo} (gráfico~\ref{fig:cartera-alfa}, derecha): si la aversión absoluta es decreciente (DARA), $\alpha^*$ crece con $\overline{W}$: el activo con riesgo es un \emph{bien normal}. Si es constante (CARA), $\alpha^*$ no depende de la riqueza, y si es creciente (IARA, como la cuadrática), disminuye con ella: el activo con riesgo sería un bien inferior, lo que contradice la evidencia. Si la relativa es constante (CRRA), la \emph{proporción} invertida, $\alpha^*/\overline{W}$, no depende de la riqueza.
+\item \emph{Riqueza e inversión con riesgo} (gráfico~\ref{fig:cartera-alfa}, derecha):
+  \begin{itemize}
+  \item si la aversión absoluta es decreciente (DARA), $\alpha^*$ crece con $\overline{W}$: el activo con riesgo es un \emph{bien normal};
+  \item si es constante (CARA), $\alpha^*$ no depende de la riqueza;
+  \item si es creciente (IARA, como la cuadrática), disminuye con ella: el activo con riesgo sería un bien inferior, lo que contradice la evidencia;
+  \item si la relativa es constante (CRRA), la \emph{proporción} invertida, $\alpha^*/\overline{W}$, no depende de la riqueza.
+  \end{itemize}
 \item \emph{Derivación del resultado DARA}. Derivando la condición de primer orden respecto a $\overline{W}$ (con $dW_0/d\overline{W}=1+r_f$):
   $$\frac{d\alpha^*}{d\overline{W}}=(1+r_f)\,\frac{\mathbb{E}\big[u''(\tilde{W})\,\tilde{z}\big]}{-\mathbb{E}\big[u''(\tilde{W})\,\tilde{z}^2\big]} ,$$
   cuyo denominador es positivo, así que el signo es el de $\mathbb{E}[u''(\tilde{W})\,\tilde{z}]$. Escribiendo $u''=-r_A\,u'$:
@@ -1271,7 +1348,13 @@ Este anexo no se canta: es una aplicación de la utilidad esperada a los bancos.
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Siguiendo a \textcite[cap.~7]{FreixasRochet2008Microeconomics}, hay 3 periodos ($T=0,1,2$) y un continuo de depositantes idénticos con una dotación de 1 en $T=0$. Con probabilidad $\pi$, cada uno resulta \emph{impaciente} (solo valora consumir en $T=1$), y con $1-\pi$, \emph{paciente} (puede esperar a $T=2$); no hay incertidumbre agregada: una fracción $\pi$ será impaciente. Una inversión ilíquida rinde $R>1$ en $T=2$, pero solo $L\leq 1$ si se liquida en $T=1$. Cada depositante maximiza su utilidad esperada, con $u$ cóncava y aversión relativa mayor que 1.
+\item Siguiendo a \textcite[cap.~7]{FreixasRochet2008Microeconomics}:
+  \begin{itemize}
+  \item hay 3 periodos ($T=0,1,2$) y un continuo de depositantes idénticos con una dotación de 1 en $T=0$;
+  \item con probabilidad $\pi$, cada uno resulta \emph{impaciente} (solo valora consumir en $T=1$), y con $1-\pi$, \emph{paciente} (puede esperar a $T=2$); no hay incertidumbre agregada: una fracción $\pi$ será impaciente;
+  \item una inversión ilíquida rinde $R>1$ en $T=2$, pero solo $L\leq 1$ si se liquida en $T=1$;
+  \item cada depositante maximiza su utilidad esperada, con $u$ cóncava y aversión relativa mayor que 1.
+  \end{itemize}
 \end{itemize}
 
 \subparagraph{ii) Desarrollo}
@@ -1412,9 +1495,20 @@ Este anexo no se canta: recoge, paso a paso, las derivaciones que el tema solo e
   \item la utilidad de \autor{Bernoulli} es única salvo transformaciones \emph{afines} positivas, no salvo transformaciones crecientes;
   \item CRRA $\Rightarrow$ DARA; la cuadrática es IARA y no tiene prudencia ($u'''=0$);
   \item el ahorro precautorio exige $u'''>0$ (prudencia), no basta la aversión;
-  \item con prima justa el averso se asegura por completo; con prima recargada, en parte (\autor{Mossin}); el modelo con información simétrica es el de \autor{Mossin} (1968), no el de \autor{Rothschild} y \autor{Stiglitz} (1976);
+  \item seguros:
+    \begin{itemize}
+    \item con prima justa el averso se asegura por completo;
+    \item con prima recargada, en parte (\autor{Mossin});
+    \item el modelo con información simétrica es el de \autor{Mossin} (1968), no el de \autor{Rothschild} y \autor{Stiglitz} (1976);
+    \end{itemize}
   \item dominancia de primer orden $\iff$ $F(x)\leq G(x)$ para todo $x$; la de segundo orden compara loterías con la misma media;
-  \item \autor{Allais} viola el axioma de independencia; \autor{Ellsberg}, el principio de la cosa segura; \autor{Quiggin} (dependiente del rango) explica \autor{Allais}; \autor{Schmeidler} (\autor{Choquet}) explica \autor{Ellsberg};
+  \item paradojas:
+    \begin{itemize}
+    \item \autor{Allais} viola el axioma de independencia;
+    \item \autor{Ellsberg}, el principio de la cosa segura;
+    \item \autor{Quiggin} (dependiente del rango) explica \autor{Allais};
+    \item \autor{Schmeidler} (\autor{Choquet}) explica \autor{Ellsberg};
+    \end{itemize}
   \item el criterio de \autor{Savage} es el mínimo del pesar \emph{máximo}, no de la suma de pesares;
   \item Premios Nobel: \autor{Allais}, 1988; \autor{Markowitz}, 1990; \autor{Kahneman}, 2002; \autor{Thaler}, 2017; \autor{Diamond}, \autor{Dybvig} y \autor{Bernanke}, 2022 \parencites{Nobel1988Allais}{Nobel1990Markowitz}{Nobel2002Kahneman}{Nobel2017Thaler}{Nobel2022Bancos}.
   \end{itemize}

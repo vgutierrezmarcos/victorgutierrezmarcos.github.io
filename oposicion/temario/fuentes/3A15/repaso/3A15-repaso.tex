@@ -1,0 +1,295 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[La empresa: tamaño, costes de transacción y organización industrial]{3.A.15}{La empresa: el tamaño eficiente y sus límites. Mención especial de la economía de los costes de transacción. La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables.}
+\tcefecha{21/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. La empresa: el tamaño eficiente y sus límites}{7}
+\subcante{1. Enfoque tecnológico: $\overline{q}$, subaditividad, alcance}{3}
+\subcante{2. Límites internos: dirección, gerencialistas ($\underline{B}$), agencia}{4}
+\apartadocante{II. La economía de los costes de transacción}{9,5}
+\subcante{1. \autor{Coase} (1937): la frontera en el margen}{2}
+\subcante{2. \autor{Williamson}: especificidad $a$ y gobierno}{3,5}
+\subcante{3. \autor{Grossman}, \autor{Hart} y \autor{Moore}: contratos incompletos}{2,5}
+\subcante{4. Otros enfoques y política económica}{1,5}
+\apartadocante{III. La TOI: barreras y mercados impugnables}{10}
+\subcante{1. Del enfoque neoclásico a \autor{Harvard} y \autor{Chicago}}{2,5}
+\subcante{2. Barreras: precio límite y compromiso}{3,5}
+\subcante{3. Mercados impugnables}{2,5}
+\subcante{4. La Nueva TOI}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: cada bloque levanta un supuesto de la \concepto{caja negra} neoclásica (1, maximiza $B$; 2, es una función de producción; 3, estructura de mercado dada); la conclusión responde a la pregunta de \autor{Coase}. \emph{Pizarra}: \autor{Coase} $\mathrm{CMg}^{\mathrm{org}}=\mathrm{CMg}^{\mathrm{tr}}$ de \hyperref[rep:II.1]{II.1} al final; $C^*(a)$ hasta el final de \hyperref[rep:II]{II}; $p^L$ en \hyperref[rep:III.2]{III.2}; configuración sostenible de \hyperref[rep:III.3]{III.3} al final.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Si quieres algo bien hecho, hazlo tú mismo» frente a «zapatero, a tus zapatos». 1931: \autor{Coase}, 20 años, LSE, viaja a EE.\,UU.: si la planificación central es imposible, ¿por qué hay fábricas enormes, pequeñas economías planificadas dentro del mercado? \emph{¿Por qué existen las empresas? ¿Y por qué no hay una sola?}
+\item \textbf{Relevancia}: \emph{teórica}, 6 Nobel (\autor{Simon} 1978, \autor{Stigler} 1982, \autor{Coase} 1991, \autor{Williamson} 2009, \autor{Tirole} 2014, \autor{Hart}-\autor{Holmström} 2016); \emph{empírica}, economía de organizaciones (\autor{Simon}, 1991), márgenes crecientes; \emph{de política}, competencia y regulación \vertema{3.A.20}\vertema{3.B.39}\vertema{4.A.15}.
+\item \textbf{Contextualización}: años 30, 3 frentes: objetivos (\autor{Berle}-\autor{Means} 1932), organización (\autor{Coase} 1937 $\to$ \autor{Williamson} 1975), mercado (\autor{Chamberlin}, \autor{Robinson} 1933); después información y juegos.
+\item \textbf{Problemática}: ¿por qué hay empresas? ¿Qué fija su tamaño eficiente y qué le impide crecer sin límite? ¿Persiguen el beneficio si las dirigen no propietarios? ¿Poder de mercado: número de empresas o facilidad de entrar?
+\item \textbf{Estructura}: de dentro hacia fuera: \hyperref[rep:I]{I}, tamaño eficiente y límites internos; \hyperref[rep:II]{II}, costes de transacción (mención especial); \hyperref[rep:III]{III}, TOI: barreras y mercados impugnables.
+\end{itemize}
+\begin{itemize}
+\item \concepto{Empresa}: unidad que organiza la producción: reúne factores bajo una dirección común y vende en el mercado. Neoclásicos: \concepto{caja negra} (qué entra y qué sale, no qué pasa dentro, por qué existe ni dónde termina).
+\item \concepto{TOI}: mercados con competencia imperfecta, conducta de las empresas y efectos en bienestar; en sentido amplio, incluye la teoría de la empresa (\autor{Tirole}, 1988).
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{I. La empresa: el tamaño eficiente y sus límites\label{rep:I}}
+\begin{ideaclave}
+La tecnología fija un tamaño eficiente \emph{mínimo}, pero no un máximo; los límites al tamaño vienen de dentro: la dirección y los incentivos de quienes gobiernan la empresa.
+\end{ideaclave}
+
+\sub{I.1. Enfoque tecnológico: el tamaño eficiente\label{rep:I.1}}
+\begin{itemize}
+\item \emph{Idea}: empresa = tecnología \vertema{3.A.11} $\to$ $C(\vect{w},q)$ \vertema{3.A.12}. Explica \emph{tamaño}, \emph{configuración} de la industria e \emph{integración}.
+\item \emph{Supuestos}: misma tecnología, minimizan costes, $\vect{w}$ dado; demanda $x(p)$; LP con libre entrada y salida.
+\item \concepto{Escala mínima eficiente} $\overline{q}$: menor $q$ con CMe LP mínimo, $\overline{c}=C(\overline{q})/\overline{q}$. Por debajo, economías de escala ($\mathrm{CMg}<\mathrm{CMe}$). Empírico: CMe en \emph{L} $\Rightarrow$ \emph{horquilla} de tamaños eficientes (\autor{Bain} 1956; \autor{Stigler} 1958).
+\item \concepto{Configuración eficiente}: con libre entrada y CMe en U, cada una produce $\overline{q}$ a $p^*=\overline{c}$ y
+\begin{formula}
+\centering $J^*=x(\overline{c})/\overline{q}$\quad (decide $\overline{q}$ \emph{relativa} a la demanda)
+\end{formula}
+\item[] $\overline{q}$ pequeña: muchas, competencia; grande: oligopolio natural \vertema{3.A.19}; subaditividad: monopolio natural.
+\item \concepto{Subaditividad} (\autor{Baumol}, 1977), \emph{misma} $C(\cdot)$ para todas $=$ definición de \concepto{monopolio natural}:
+\begin{formula}
+\centering $C\Big(\sum_{j}q_j\Big)<\sum_{j}C(q_j)$ para todo reparto
+\end{formula}
+\item[] economías de escala en todo el tramo: \emph{suficientes}, no necesarias \vertema{3.A.17}.
+\item \concepto{Economías de alcance} (\autor{Panzar}-\autor{Willig}, 1981): factores compartidos o \emph{públicos} (red, marca, conocimiento):
+\begin{formula}
+\centering $C(q_1,q_2)<C(q_1,0)+C(0,q_2)$
+\end{formula}
+\end{itemize}
+\pareja{costes-l}{CMe LP en L: $\overline{q}$ y $\overline{c}$}{subaditividad}{Subaditividad: 1 empresa más barata aunque su CMe crezca}
+\begin{itemize}
+\item \emph{Implicaciones}: escala $\to$ integración horizontal; alcance $\to$ diversificación; subaditividad $\to$ monopolio natural.
+\item \emph{Evidencia}: \concepto{técnica del superviviente} (\autor{Stigler}, 1958): horquilla amplia. Distribución muy asimétrica; \concepto{ley de \autor{Gibrat}} (1931): crecimiento independiente del tamaño (aprox.\ en grandes) \vertema{3.B.4}. Concentración creciente: superestrellas (\autor{Autor} et al., 2020) o barreras (\autor{Philippon}, 2019).
+\item \emph{Valoración}: explica la \emph{planta}, no la \emph{empresa}; y no por qué las economías se aprovechan dentro y no con \emph{contratos entre empresas} (\autor{Teece}, 1980) $\to$ \hyperref[rep:II]{II}.
+\end{itemize}
+
+\sub{I.2. Objetivo y funcionamiento: los límites internos\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Dirección como factor fijo} (\autor{Kaldor}, \autor{Robinson} 1934): rendimientos decrecientes de la \concepto{capacidad de coordinación} $\Rightarrow$ CMe acaba subiendo; \autor{Coase} lo usa como límite. \concepto{Efecto \autor{Penrose}} (1959): limita la \emph{velocidad} de crecimiento, no el tamaño \vertema{3.B.4}.
+\item \emph{Pérdida de control} (\autor{Williamson}, 1967): cada nivel transmite $\alpha\in(0,1)$; con $N$ niveles llega $\alpha^{N-1}$ $\Rightarrow$ tamaño óptimo finito.
+\item \concepto{Separación propiedad-control} (\autor{Berle}-\autor{Means}, 1932): principal (accionista, $\max B$) frente a agente (directivo, $\max U$: retribución, influencia, prestigio, tamaño). \autor{Simon} (1955): \concepto{racionalidad limitada}, resultados \emph{satisfactorios}; \autor{Cyert}-\autor{March} (1963).
+\end{itemize}
+\textbf{Gerencialistas} (años 50-60): objetivo del directivo s.a.\ \concepto{beneficio mínimo} $\underline{B}$ (evita venta de acciones o cambio de directivos).
+\begin{itemize}
+\item \emph{Ventas} (\autor{Baumol}, 1958-59):
+\begin{formula}
+\centering $\optim{\max}{q}{I(q)=p(q)\,q}{B(q)=I(q)-C(q)\geq\underline{B}}$\\[3pt]
+$\mathrm{IMg}(q^B)=\dfrac{\lambda}{1+\lambda}\,\mathrm{CMg}(q^B)$,\quad $0<\mathrm{IMg}<\mathrm{CMg}$ si $\lambda>0$
+\end{formula}
+\item[] Si en $\mathrm{IMg}=0$ se cumple $B>\underline{B}$: restricción no activa. Si no, $B(q^B)=\underline{B}$ con $q^B>q^M$.
+\end{itemize}
+\pareja{baumol}{\autor{Baumol}: $q^B>q^M$, con $B(q^B)=\underline{B}$}{williamson-gerencial}{\autor{Williamson} (1964): más gasto en personal}
+\begin{itemize}
+\item \emph{Utilidad de los directivos} (\autor{Williamson}, 1964): $U(S,M,I_D)$ s.a.\ $B(S)-M\geq\underline{B}$; $S$ personal, $M$ emolumentos, $I_D=B(S)-M-\underline{B}$. Tangencia a la derecha del máx.\ de $B$: \emph{gasta de más en personal}.
+\item \emph{Crecimiento} (\autor{Marris}, 1963-64): máx.\ tasa de crecimiento equilibrado s.a.\ \emph{restricción de seguridad} (ratio de valoración que evite la absorción) $\Rightarrow$ más crecimiento que el que maximiza el valor.
+\item \emph{Implicaciones}: \autor{Baumol}: más $q$, menor $p$, más publicidad; \emph{predicción contrastable}: $\uparrow$ coste fijo (o impuesto de suma fija) $\Rightarrow$ $q^B\downarrow$; $q^M$ no cambia. \autor{Williamson}: en recesión, recortes de personal mayores. Corrección: retribución ligada a $B$ o a la cotización, transparencia, comparación.
+\item \emph{Valoración}: mantienen información perfecta; el conflicto solo importa con \emph{información asimétrica}. Bisagra: \concepto{ineficiencia X} (\autor{Leibenstein}, 1966): $C^{\mathrm{obs}}=(1+\chi)\,C(\vect{w},q)$, $\chi\geq0$, $\downarrow$ con la competencia; «el mejor de los beneficios del monopolio es una vida tranquila» (\autor{Hicks}, 1935).
+\end{itemize}
+\textbf{Teoría de la agencia}: \concepto{relación de agencia}: principal delega en un agente cuyas acciones no observa del todo \vertema{3.A.13}.
+\begin{itemize}
+\item \concepto{Riesgo moral}, 3 condiciones: \emph{acción oculta}; \emph{conflicto de intereses} (esfuerzo costoso); \emph{riesgo y aversión} del agente.
+\item Dilema \emph{incentivos} frente a \emph{reparto del riesgo} (\autor{Holmström}, 1979): máx.\ beneficio esperado s.a.\ \concepto{participación} (PC) e \concepto{incentivos} (IC); \concepto{coste de agencia} = diferencia con esfuerzo observable.
+\item \autor{Jensen}-\autor{Meckling} (1976): \concepto{nexo de contratos}; \concepto{costes de agencia} = supervisión + compromiso (\emph{bonding}) + \emph{pérdida residual}. Crecen con la separación y con los niveles: otro \emph{límite al tamaño}.
+\item \emph{Disciplina del mercado}: comparación (filtra el azar común); \emph{mercado de control} (\autor{Manne}, 1965); \emph{de directivos} (\autor{Fama} 1980; \autor{Holmström} 1999); competencia en el producto. Sin ella: \emph{empresa pública} (\autor{Niskanen}, 1971: máx.\ presupuesto) \vertema{3.A.23}; privada: Enron (2001) $\to$ \concepto{gobierno corporativo} («cumplir o explicar», Código CNMV 2015/2020).
+\end{itemize}
+
+% ==========================================================================
+\bloque[9,5]{II. La economía de los costes de transacción\label{rep:II}}
+\begin{ideaclave}
+La empresa existe porque usar el mercado cuesta; integra las transacciones con activos específicos, donde el oportunismo es más peligroso, y su frontera está en el margen en que organizar dentro y comprar cuestan lo mismo. Integrar también tiene costes: de ahí sus límites.
+\end{ideaclave}
+
+\sub{II.1. \autor{Coase} (1937): la frontera en el margen\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Idea}: 2 formas de coordinar: \emph{mercado} (precios) y \emph{empresa} (\emph{autoridad}); «islas de poder consciente» (\autor{Robertson}). Dilema \emph{hacer o comprar} (\emph{make or buy}).
+\item \concepto{Costes de transacción}: costes de usar el mecanismo de precios; \emph{ex ante} (descubrir precios, buscar proveedores, negociar y redactar) y \emph{ex post} (vigilar, coordinar, adaptar, resolver conflictos). $\uparrow$ con la duración e incertidumbre.
+\item Organizar dentro también cuesta: rendimientos decrecientes de la dirección $\Rightarrow$ $\mathrm{CMg}^{\mathrm{org}}$ creciente. Frontera en el \emph{margen}, no en totales; $m$ = transacciones organizadas dentro:
+\funcionclave{\mathrm{CMg}^{\mathrm{org}}(m^{*})=\mathrm{CMg}^{\mathrm{tr}}(m^{*})}
+\end{itemize}
+\graficorepaso[0.56\linewidth]{coase-margen}{\autor{Coase}: tamaño $m^*$ donde organizar y comprar cuestan lo mismo en el margen}
+\begin{itemize}
+\item \emph{Implicaciones}: empresa mayor si organizar es barato y comprar caro. Teléfono, telégrafo $\Rightarrow$ empresas más grandes; estandarización, plataformas $\Rightarrow$ subcontratación. Lógica marginalista aplicada a la organización.
+\item \emph{Extensión}: \autor{Coase} (1960): sin costes de transacción la negociación resuelve las externalidades sea quien sea el titular; con ellos, importa a quién se asignan \vertema{3.A.23}.
+\item \emph{Valoración}: no dice \emph{qué} encarece una transacción; casi 40 años «más citado que usado».
+\end{itemize}
+
+\sub{II.2. \autor{Williamson}: especificidad y estructuras de gobierno\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea} (1975, 1985): unidad de análisis, la \emph{transacción}; ¿qué \concepto{estructura de gobierno} la organiza con menos costes? (Doctorado en Carnegie con \autor{Simon}, \autor{Cyert}, \autor{March}; \emph{no} fue alumno de \autor{Coase}).
+\item \emph{Supuestos de comportamiento}: \concepto{racionalidad limitada} (\autor{Simon}) $\Rightarrow$ todo contrato complejo es \emph{incompleto}; \concepto{oportunismo}: interés propio con engaño. Sin la 1.ª, contrato completo; sin el 2.º, basta la palabra.
+\item 3 \concepto{atributos} (1979): \concepto{especificidad de los activos} $a$ (pierde valor fuera de la relación; ligada a costes hundidos): de localización, física, humana, dedicada, de marca; \emph{incertidumbre}; \emph{frecuencia} (no encarece: amortiza una estructura especializada).
+\item \concepto{Cuasirrenta}: valor en la relación $-$ valor en el mejor uso alternativo (\autor{Klein}-\autor{Crawford}-\autor{Alchian}, 1978). Amenaza de romper $\Rightarrow$ \concepto{expropiación de la cuasirrenta} (\emph{hold-up}). \concepto{Transformación fundamental}: muchos oferentes \emph{ex ante} $\to$ \concepto{monopolio bilateral} \emph{ex post} \vertema{3.A.17} $\Rightarrow$ infrainversión o salvaguardas. Además, doble marginalización (\autor{Spengler}, 1950).
+\item Estructuras (1991): \emph{mercado} (incentivos fuertes, protege mal); \emph{jerarquía} (autoridad, protege, incentivos débiles, burocracia); \emph{híbridas} (contratos LP, franquicias, \emph{joint ventures}). Con $C_{\text{merc}}(0)<C_{\text{híb}}(0)<C_{\text{jer}}(0)$ y $C'_{\text{merc}}>C'_{\text{híb}}>C'_{\text{jer}}>0$:
+\funcionclave{C^{*}(a)=\min\big\{C_{\text{merc}}(a),C_{\text{híb}}(a),C_{\text{jer}}(a)\big\}}
+\item[] mercado si $a<a_1$; híbrida si $a_1<a<a_2$; jerarquía si $a>a_2$.
+\end{itemize}
+\graficorepaso[0.58\linewidth]{gobierno-williamson}{Costes de gobierno según la especificidad: umbrales $a_1$ y $a_2$}
+\begin{itemize}
+\item \emph{Producción y gobierno} (\autor{Riordan}-\autor{Williamson}, 1985): el proveedor agrega demandas (escala) $\Rightarrow$ integrar exige más especificidad, $\hat a>\overline{a}$: se compra más de lo que haría pensar el \emph{hold-up}.
+\item \emph{Implicaciones}: poco específico $\to$ mercado (sea cual sea la frecuencia); intermedio $\to$ híbridas; muy específico, frecuente e incierto $\to$ empresa. La integración vertical \emph{no} es indicio de monopolización. Límites: \concepto{imposibilidad de la intervención selectiva} (1985, cap.~6): incentivos de \emph{baja potencia}, no puede comprometerse a intervenir solo cuando conviene, precios internos manipulables, \emph{costes burocráticos} y actividades de influencia.
+\item \emph{Evidencia}: Fisher Body-GM (1919-1926, discutido); automóvil (\autor{Monteverde}-\autor{Teece}, 1982); carbón (\autor{Joskow}, 1987).
+\item \emph{Valoración}: explica fusiones verticales, alianzas, franquicias, externalización (limpieza, contabilidad). Débil: conceptos difíciles de medir, comparación casi verbal y \emph{no dice por qué integrar elimina el oportunismo}.
+\end{itemize}
+
+\sub{II.3. Contratos incompletos: \autor{Grossman}-\autor{Hart} (1986), \autor{Hart}-\autor{Moore} (1990)\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Idea}: al integrar cambia \emph{quién es dueño de los activos}. Empresa = activos físicos de \emph{propiedad común}. La propiedad da poder porque el contrato es incompleto.
+\item \emph{Supuestos}: variables observables pero \emph{no verificables} por un juez. \concepto{Derechos específicos} (los del contrato) frente a \concepto{derechos residuales de control} (decidir en lo no previsto; \autor{Hart}, 1995); \emph{propiedad} = titularidad de los residuales, sobre activos físicos (no personas).
+\item \emph{Modelo}: el comprador invierte $e$ (coste $e$, no contratable); valor $y(e)$, $y'>0$, $y''<0$; opción exterior $y_0(e)$, $0\leq y_0'<y'$; reparto \autor{Nash} simétrico, $\gamma=\tfrac12$ \vertema{3.A.14}:
+\begin{formula}
+\centering $\tfrac12\,y'(e^{*})+\tfrac12\,y_0'(e^{*})=1$\quad frente a\quad $y'(e^{o})=1$\\[2pt]
+$y_0'<y'\ \Rightarrow\ e^{*}<e^{o}$: \textbf{infrainversión} (\emph{hold-up} formalizado)
+\end{formula}
+\item Integrar sube $y_0'$ del comprador ($e^*\to e^o$), pero \emph{quita} incentivos al vendedor si este también invierte.
+\item \emph{Implicaciones}: propiedad a quien tiene la inversión más importante; activos complementarios, mismo dueño; independientes, distintos; la parte imprescindible, propietaria. Óptimo: integración hacia atrás, hacia delante o no integración. Coste de integrar = límite al tamaño.
+\item \emph{Extensiones}: prisiones privadas (\autor{Hart}-\autor{Shleifer}-\autor{Vishny}, 1997) \vertema{4.B.15}; deuda y acciones \vertema{3.B.3}. \emph{Evidencia}: camiones (\autor{Baker}-\autor{Hubbard}, 2003).
+\item \emph{Valoración}: Nobel 2016. Críticas: negociación \emph{ex post} eficiente; se centra en activos físicos (el capital humano no se posee).
+\end{itemize}
+
+\sub{II.4. Otros enfoques y política económica\label{rep:II.4}}
+\begin{itemize}
+\item \emph{Producción en equipo} (\autor{Alchian}-\autor{Demsetz}, 1972): escaqueo $\Rightarrow$ supervisor con derecho al beneficio residual: \concepto{perceptor del residuo}; sin poder de mando distinto de un contrato.
+\item \emph{Nexo de contratos} (\autor{Jensen}-\autor{Meckling}, 1976); \emph{sistema de incentivos} (\autor{Holmström}-\autor{Milgrom}, 1994); \emph{autoridad formal y real} (\autor{Aghion}-\autor{Tirole}, 1997); \emph{recursos y capacidades} (\autor{Penrose} 1959; \autor{Wernerfelt} 1984).
+\item \emph{Política}: no condenar de antemano integraciones, franquicias, exclusivas ni concentraciones; caso a caso: eficiencia frente a riesgo de cierre del mercado \vertema{3.B.39}\vertema{4.A.15}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10]{III. La TOI: barreras a la entrada y mercados impugnables\label{rep:III}}
+\begin{ideaclave}
+El poder de mercado depende menos del número de empresas que de lo fácil que sea entrar: las barreras estratégicas solo funcionan si son creíbles, y sin costes hundidos basta la amenaza de entrada para disciplinar incluso a un monopolio.
+\end{ideaclave}
+
+\sub{III.1. Del enfoque neoclásico a \autor{Harvard} y \autor{Chicago}\label{rep:III.1}}
+\begin{itemize}
+\item \emph{Neoclásico}: caja negra precio-aceptante \vertema{3.A.16}. \emph{\autor{Chamberlin}} y \autor{Robinson} (1933): la TOI se separa de la teoría de los precios \vertema{3.A.18}.
+\item \concepto{Paradigma estructura-conducta-resultado} (ECR; \autor{Mason} 1939, \autor{Bain} 1951-59): condiciones básicas $\to$ \emph{estructura} (concentración, entrada, diferenciación, integración) $\to$ \emph{conducta} (precios, colusión, publicidad, I+D, barreras) $\to$ \emph{resultado} (margen, beneficios, eficiencia, progreso técnico).
+\item \emph{Medida}: \concepto{ratio de concentración} e \concepto{índice de \autor{Herfindahl}-\autor{Hirschman}}:
+\begin{formula}
+\centering $\mathrm{CR}_m=\sum_{i=1}^{m}s_i$,\quad $\mathrm{IHH}=\sum_{i=1}^{n}(100\,s_i)^{2}\in(0;\,10.000]$\\[2pt]
+\autor{Cowling}-\autor{Waterson} (1976): $\sum_i s_i\,\mathcal{L}_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$
+\end{formula}
+\item \autor{Bain} (1951): más beneficio con más concentración. \emph{Política}: actuar sobre la estructura (Standard Oil 1911, AT\&T 1984). \emph{Críticas}: causalidad no unidireccional, estático, correlación sin teoría, concentración por eficiencia.
+\end{itemize}
+\graficorepaso[0.62\linewidth]{ecr}{Paradigma ECR y relaciones de vuelta}
+\begin{itemize}
+\item \emph{\autor{Chicago}} (\autor{Stigler}, \autor{McGee}, \autor{Demsetz}): concentración por \emph{eficiencia} (\autor{Demsetz}, 1973: las pequeñas no ganan más); cárteles inestables (\autor{Stigler}, 1964); depredación irracional (\autor{McGee}, 1958); poder temporal, barreras duraderas casi siempre \emph{legales}; \emph{competencia por el mercado} (\autor{Demsetz}, 1968) \vertema{3.A.20}. Política: bienestar del consumidor, tolerancia, desregulación. El debate se resuelve en las \emph{barreras}.
+\end{itemize}
+
+\sub{III.2. Las barreras a la entrada\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Definiciones}: \autor{Bain} (1956): lo que permite fijar \emph{a LP} $p>\mathrm{CMe}$ mín.\ sin atraer la entrada; 3 fuentes: economías de escala, ventajas absolutas en costes, diferenciación. \autor{Stigler} (1968): coste que soporta el entrante y no soportaron las instaladas (la escala no es barrera si hay misma tecnología). \autor{Weizsäcker} (1980): solo si reduce el bienestar.
+\item \concepto{Barreras estructurales}: escala frente a demanda, \concepto{costes hundidos} (no se recuperan al salir), ventajas absolutas, marca y costes de cambio, efectos de red, legales. \concepto{Barreras estratégicas}: precio límite, capacidad, proliferación de marcas, depredación, elevar costes de rivales; deben ser \emph{creíbles} \vertema{3.A.14}.
+\item Entrada \concepto{bloqueada} (precio de monopolio y nadie entra), \concepto{disuadida} (cambia su conducta), \concepto{acomodada} (mejor dejar entrar).
+\item \concepto{Precio límite} (\autor{Bain} 1949, \autor{Sylos-Labini} 1957, \autor{Modigliani} 1958): \emph{postulado de \autor{Sylos-Labini}}: el entrante cree que la instalada mantiene $q_{\mathrm I}$ y entra con al menos $\overline{q}$; no entra si $q_{\mathrm I}+\overline{q}\geq x(\overline{c})$:
+\funcionclave{q^{L}=x(\overline{c})-\overline{q},\qquad p^{L}=p(q^{L})>\overline{c}}
+\item[] $p^M\leq p^L$: bloqueada. Margen $\uparrow$ con $\overline{q}/x(\overline{c})$ y demanda menos elástica. Lineal: $p^L=c+2\sqrt{b\,\mathrm{CF}}$. \emph{Crítica}: amenaza \emph{no creíble}: no es ENPS.
+\end{itemize}
+\graficorepaso[0.54\linewidth]{precio-limite}{Precio límite: con $q^L$, al entrante de escala $\overline{q}$ el precio no le cubre $\overline{c}$}
+\begin{itemize}
+\item \emph{Compromiso de capacidad} (\autor{Schelling} 1960, «quemar las naves»; \autor{Spence} 1977; \autor{Dixit} 1980): pagos (entrante, instalada): no entra $(0,B^M)$; acomoda $(1,B^D)$; lucha $(-1,B^G)$; $B^G<B^D<B^M$ (ej.: 4, 1, $-1$). Coste hundido CH \emph{antes}; 3 etapas; inducción hacia atrás. Disuasión ENPS si
+\begin{formula}
+\centering $B^{D}-B^{G}<\mathrm{CH}<B^{M}-B^{D}$\quad (ej.: $2<\mathrm{CH}<3$)
+\end{formula}
+\end{itemize}
+\graficorepaso[0.74\linewidth]{disuasion-arbol}{Árbol de disuasión con $\mathrm{CH}=2{,}5$: invierte, lucharía y el entrante no entra}
+\begin{itemize}
+\item Lo que da credibilidad es que la inversión sea \emph{hundida} (y observable y previa). \autor{Dixit}: sin capacidad ociosa, produce más que un monopolista.
+\item \emph{Otras conductas}: precio límite como \emph{señal} (\autor{Milgrom}-\autor{Roberts}, 1982; EBP): en el separador entra el mismo entrante; solo el agrupador disuade más. \emph{Depredación}: cadena de tiendas (\autor{Selten}, 1978); con incertidumbre, \emph{reputación} (\autor{Kreps}-\autor{Wilson}, 1982); \autor{Areeda}-\autor{Turner}: $p<\mathrm{CVMe}$. \emph{Proliferación de marcas} (\autor{Schmalensee}, 1978). \emph{Elevar costes de rivales} (\autor{Salop}-\autor{Scheffman}, 1983). Abuso de posición dominante: art.\ 102 TFUE \vertema{3.B.39}.
+\end{itemize}
+
+\sub{III.3. Los mercados impugnables\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Idea} (\autor{Baumol} 1982; \autor{Baumol}-\autor{Panzar}-\autor{Willig} 1982): disciplina la \emph{amenaza de entrada}, no el número; \emph{entrar y salir} (\emph{hit and run}).
+\item \concepto{Mercado perfectamente impugnable}: 1) \emph{misma tecnología} y demanda; 2) entrada y salida libres \emph{sin costes hundidos} (sí puede haber costes fijos); 3) las instaladas \emph{tardan en reaccionar} más que los consumidores. \emph{No} exige muchas empresas, rendimientos constantes ni producto único.
+\item Configuración \concepto{factible} (producciones suman la demanda, nadie pierde) y \concepto{sostenible} (ningún entrante gana con $p_{\mathrm E}\leq p$ y $q_{\mathrm E}\leq x(p_{\mathrm E})$). Solo son sostenibles:
+\funcionclave{p=\mathrm{CMe}(q),\ q=x(p)\ \text{(1 empresa)};\quad p=\mathrm{CMg}=\mathrm{CMe}\ \text{($\geq2$)}}
+\item[] Propiedades: beneficio nulo; eficiencia productiva (sin ineficiencia X); nunca $p<\mathrm{CMg}$; con $\geq2$, cada una en $\overline{q}$; con 1 (monopolio natural), $p=\mathrm{CMe}>\mathrm{CMg}$: \emph{second best} con presupuesto equilibrado sin regulador \vertema{3.A.17}\vertema{3.A.22}; varios productos: sin subvenciones cruzadas.
+\end{itemize}
+\graficorepaso[0.54\linewidth]{impugnables}{Monopolio natural impugnable: la amenaza de entrada lleva $p$ al CMe}
+\begin{itemize}
+\item \emph{Implicaciones}: mirar barreras y costes hundidos, no el número; \concepto{competencia efectiva} (Ley 15/2007) \vertema{4.A.15}; industrias de red: separar red y servicios, acceso de terceros \vertema{3.A.20}.
+\item \emph{Evidencia}: aviación, desregulación de EE.\,UU.\ 1978 (\autor{Bailey}-\autor{Panzar}, 1981); tarifas según competidores reales: impugnable de forma imperfecta (\autor{Morrison}-\autor{Winston}, 1987).
+\item \emph{Valoración}: \emph{frágil}: un pequeño coste hundido y reacción rápida $\Rightarrow$ precio de monopolio (\autor{Schwartz}-\autor{Reynolds} 1983; \autor{Stiglitz} 1987), discontinuidad. \autor{Weitzman} (1983): sin costes hundidos, difícil la escala. Valor: \emph{referencia normativa}.
+\end{itemize}
+
+\sub{III.4. La Nueva TOI\label{rep:III.4}}
+\begin{itemize}
+\item Teoría de juegos (\autor{Tirole}, 1988) \vertema{3.A.14}: pregunta de \autor{Harvard} + rigor de \autor{Chicago}; causalidad en los 2 sentidos.
+\item \emph{NOIE} (\autor{Bresnahan}, 1989): mercado a mercado, estima la conducta; parámetro $\theta$ (\autor{Bresnahan}, 1982; identificado con giros de la demanda):
+\begin{formula}
+\centering $p+\theta\,Q\,p'(Q)=\mathrm{CMg}\ \Leftrightarrow\ \mathcal{L}=\theta/|\varepsilon_{Q,p}|$
+\end{formula}
+\item[] $\theta=0$ competencia (o \autor{Bertrand}), $1/n$ \autor{Cournot}, 1 monopolio o cártel. Márgenes $+8$\,\% desde 2000 en avanzadas (FMI, 2019).
+\item \autor{Tirole} (Nobel 2014): no hay recetas universales; inversión estratégica; \emph{cierre de mercados} (\autor{Hart}-\autor{Tirole}, 1990); regulación con información asimétrica (\autor{Laffont}-\autor{Tirole}, 1986, 1993) \vertema{3.A.20}; \emph{mercados de 2 lados} (\autor{Rochet}-\autor{Tirole}, 2003): precio nulo en un lado no es depredación.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: la caja negra se abre: tecnología $\to$ tamaño mínimo, límites internos (dirección, objetivos, agencia); empresa porque usar el mercado cuesta, frontera según especificidad y derechos residuales; poder de mercado según condiciones de entrada.
+\item \textbf{Relevancia}: competencia efectiva y barreras; no condenar integraciones, franquicias, exclusivas \vertema{3.B.39}\vertema{4.A.15}; separar red y servicios \vertema{3.A.20}.
+\item \textbf{Extensiones}: \vertema{3.A.13}, \vertema{3.A.14}, \vertema{3.A.16}--\vertema{3.A.19}, crecimiento y fusiones \vertema{3.B.4}, cadenas globales de valor \vertema{3.B.18}, plataformas y DMA (2022).
+\item \textbf{Opinión}: humildad del regulador ante prácticas que resuelven problemas de contratación; pero márgenes crecientes: vigilar las barreras, sobre todo digitales.
+\item \textbf{Idea final}: \autor{Lenin}, una sola fábrica; los profesores de \autor{Coase}, un solo mercado. Los 2 cuestan: hay empresas porque los contratos no lo prevén todo, y no hay una sola porque la jerarquía también cuesta. Islas de organización en un mar de mercado, con su tamaño en el margen.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1932}{\autor{Berle}-\autor{Means}: propiedad y control}
+\hito{1933}{\autor{Chamberlin}, \autor{Robinson}: nace la TOI}
+\hito{1937}{\autor{Coase}: \emph{The Nature of the Firm}}
+\hito{1956}{\autor{Bain}: barreras; \autor{Sylos-Labini} (1957), \autor{Modigliani} (1958): precio límite}
+\hito{1959}{\autor{Baumol}: ventas; \autor{Penrose}: crecimiento}
+\hito{1964}{\autor{Williamson}: utilidad del directivo}
+\hito{1966}{\autor{Leibenstein}: ineficiencia X}
+\hito{1968}{\autor{Stigler}: barrera; \autor{Demsetz}: competencia por el mercado}
+\hito{1975}{\autor{Williamson}: \emph{Markets and Hierarchies}}
+\hito{1976}{\autor{Jensen}-\autor{Meckling}: costes de agencia}
+\hito{1978}{\autor{Klein}-\autor{Crawford}-\autor{Alchian}: cuasirrenta}
+\hito{1980}{\autor{Dixit}: compromiso de capacidad}
+\hito{1982}{\autor{Baumol}-\autor{Panzar}-\autor{Willig}: impugnables; \autor{Milgrom}-\autor{Roberts}}
+\hito{1986}{\autor{Grossman}-\autor{Hart} (\autor{Hart}-\autor{Moore}, 1990)}
+\hito{1988}{\autor{Tirole}: \emph{The Theory of Industrial Organization}}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Empresas activas en España a 1/1/2025: \dato{3,31 millones; 54,4\,\% sin asalariados; 2,3\,\% con 20 o más}{INE, DIRCE 2025}.
+\item VAB por ocupado, grandes frente a micro: \dato{71.900 € frente a 42.800 €, 1,7 veces (UE-27: 2,1)}{Eurostat, 2026; datos de 2024}.
+\item Margen medio sobre el CMg, cotizadas de EE.\,UU.: \dato{21\,\% (1980) $\to$ 61\,\% (2016)}{\autor{De Loecker} et al., 2020}.
+\item DMA: \dato{7 guardianes de acceso, 23 servicios básicos}{CE, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Diferencia entre \autor{Coase} y los derechos de propiedad?} \autor{Coase}: por qué existe la empresa (costes de usar el mercado); GHM: qué cambia al integrar (propiedad y, con ella, incentivos a invertir).
+\item \textbf{¿La saturación de un mercado implica más competencia?} No: con costes hundidos, la proliferación de marcas o de capacidad puede ser barrera estratégica.
+\item \textbf{¿Por qué el precio límite no es creíble?} Tras la entrada, a la instalada le conviene reducir $q$ y repartir: no es ENPS. Hace falta compromiso hundido o información asimétrica.
+\item \textbf{¿Qué precio en un monopolio natural impugnable?} $p=\mathrm{CMe}>\mathrm{CMg}$: segundo óptimo con presupuesto equilibrado, sin regulación.
+\item \textbf{¿Qué pasa en \autor{Baumol} si sube el coste fijo?} Con la restricción activa, $q^B$ baja; el maximizador de $B$ no cambia.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Los \emph{rendimientos constantes} no son supuesto de los impugnables; sí, \emph{sin costes hundidos} (fijos sí puede haber).
+\item Monopolio impugnable: $p=\mathrm{CMe}$, no $p=\mathrm{CMg}$; con $\geq2$ empresas, $p=\mathrm{CMg}=\mathrm{CMe}$.
+\item \autor{Grossman}-\autor{Hart}, 1986; \autor{Hart}-\autor{Moore}, 1990. \autor{Williamson} \emph{no} fue alumno de \autor{Coase}.
+\item \autor{Baumol} (1959): ventas \emph{sujeto a beneficio mínimo}; $\mathrm{IMg}=\frac{\lambda}{1+\lambda}\mathrm{CMg}$, no $\mathrm{IMg}=0$ si la restricción es activa.
+\item Frecuencia (\autor{Williamson}): no encarece, justifica una estructura especializada.
+\item Subaditividad: economías de escala \emph{suficientes}, no necesarias. \autor{Stigler}: la escala no es barrera; \autor{Bain}: sí.
+\item Disuasión: credibilidad por el carácter \emph{hundido} de la inversión.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

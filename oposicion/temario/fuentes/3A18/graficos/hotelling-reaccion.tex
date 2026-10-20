@@ -1,0 +1,34 @@
+% Funciones de reacción en precios de la ciudad lineal de Hotelling con las
+% empresas en los extremos (3.A.18, II.3.2, y nota de II.2): el mismo gráfico
+% que el panel de precios de reaccion-diferenciado.tex (de él parte su estilo).
+% Rehace la Imagen 10 del tema original («Situación de Bertrand con producto
+% diferenciado», con R_i y equilibrio en c + t).
+% Parámetros: c = 1, t = 3.
+%   R_i(p_j) = (p_j + c + t)/2 = 2 + 0,5 p_j  (ordenada en el origen (c+t)/2)
+%   p_1* = p_2* = c + t = 4; margen t sobre el coste marginal.
+% Elaboración propia a partir de Hotelling (1929) y Tirole (1988, cap. 7).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.62cm,y=0.62cm,
+    declare function={rp(\p)=2+0.5*\p;},
+    llave/.style={decorate,decoration={brace,amplitude=4pt,mirror},thin,tceegris}]
+  \useasboundingbox (-1.6,-2.2) rectangle (10.2,9.0);
+  % 1: ejes, nivel del coste marginal c y diagonal p_1 = p_2
+  \capa{1}{\ejes{$p_1$}{$p_2$}{7.8}{7.8}}
+  \capa{1}{\draw[guia] (0,0) -- (7.2,7.2) node[etiqueta,above,text=tceegris] {$p_1=p_2$};}
+  \capa{1}{\node[punto,fill=tceegris,inner sep=1pt] (c) at (1,1) {};}
+  \capa{1}{\proyeccion{(c)}{$c$}{$c$}}
+  % 2: reacción de la empresa 1, p_1 = R_1(p_2) = (p_2 + c + t)/2: creciente
+  \capa{2}{\draw[curva1] plot[domain=0:6.6] ({rp(\x)},\x) node[etiqueta,above] {$R_1(p_2)$};}
+  \capa{2}{\node[below,text=tceemorado] at (2,0) {$\frac{c+t}{2}$};}
+  % 3: reacción de la empresa 2, p_2 = R_2(p_1)
+  \capa{3}{\draw[curva2] plot[domain=0:7.2] (\x,{rp(\x)}) node[etiqueta,right] {$R_2(p_1)$};}
+  \capa{3}{\node[left,text=tceeazul] at (0,2) {$\frac{c+t}{2}$};}
+  % 4: equilibrio de Nash, sobre la diagonal, con el margen t sobre c
+  \capa{4}{\node[punto,label={[etiqueta]below right:$N$}] (N) at (4,4) {};}
+  \capa{4}{\proyeccion{(N)}{$c+t$}{$c+t$}}
+  \capa{4}{\draw[llave] (1,-1.3) -- (4,-1.3) node[midway,below=4pt,etiqueta,text=black] {margen $t$};}
+\end{tikzpicture}
+\end{document}

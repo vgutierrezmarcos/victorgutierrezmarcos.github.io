@@ -1,0 +1,61 @@
+% Reparto de las ganancias del cártel (III.2 del 3.A.19, gráfico~fig:reparto-cartel).
+% a) Negociación de Nash con 2 empresas: frontera B_1 + B_2 = B^M (utilidad
+%    transferible), punto de desacuerdo d = (B_1^0, B_2^0) = (3, 2), B^M = 10
+%    (escala de dibujo; las etiquetas son genéricas); con gamma = 1/2,
+%    N = (5,5; 4,5); curva de nivel del producto de Nash
+%    (B_1 - 3)(B_2 - 2) = 6,25, tangente en N.
+% b) Núcleo y valor de Shapley con 3 empresas iguales (p = 4 - Q, c = 0):
+%    símplex x_1 + x_2 + x_3 = 4; núcleo x_i >= 1 (triángulo interior);
+%    Shapley (4/3, 4/3, 4/3) en el centro.
+% Capas: 1 ejes; 2 frontera; 3 desacuerdo d; 4 excedente; 5 curva de nivel y N;
+%    6 más gamma; 7 símplex; 8 núcleo; 9 Shapley.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee]
+ \begin{scope}[x=0.55cm,y=0.55cm]
+  % 1: título y ejes
+  \capa{1}{\node[font=\bfseries\small,anchor=west] at (-1,12) {a) 2 empresas: negociación de \textsc{Nash}};}
+  \capa{1}{\ejes{$B_1$}{$B_2$}{11.5}{11}}
+  % 2: frontera del cártel
+  \capa{2}{\draw[curva4] (10,0) node[below] {$B^M$} -- (0,10) node[left] {$B^M$};}
+  \capa{2}{\node[etiqueta,text=tceedorado,align=left,anchor=west] at (6.6,6.2) {$B_1+B_2=B^M$\\ (frontera del cártel)};}
+  % 3: punto de desacuerdo
+  \capa{3}{\draw[guia] (3,0) node[below,text=black] {$B_1^0$} -- (3,7);}
+  \capa{3}{\draw[guia] (0,2) node[left,text=black] {$B_2^0$} -- (8,2);}
+  \capa{3}{\node[punto,label={[etiqueta]below left:$d$}] at (3,2) {};}
+  % 4: excedente del cártel
+  \capa{4}{\fill[area2] (3,2) -- (8,2) -- (3,7) -- cycle;}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize] at (4.4,3.1) {excedente\\ del cártel};}
+  % 5: curva de nivel del producto de Nash, tangente en N
+  \capa{5}{\draw[curva1,thin] plot[domain=3.72:9.5,samples=60] (\x,{2+6.25/(\x-3)});}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$N$}] at (5.5,4.5) {};}
+  % 6: más poder de negociación de la empresa 1
+  \capa{6}{\draw[flecha] (6.3,4.3) -- (7.8,2.8) node[etiqueta,right,text=tceerojo,font=\footnotesize] {más $\gamma$};}
+ \end{scope}
+ \begin{scope}[xshift=8.6cm,x=1.6cm,y=1.6cm]
+  % 7: título y símplex de repartos
+  \capa{7}{\node[font=\bfseries\small,anchor=west] at (-0.35,4.12) {b) 3 empresas: núcleo y valor de \textsc{Shapley}};}
+  % (x1,x2,x3) -> (x1*A + x2*B + x3*C)/4, con A=(0,0), B=(4,0), C=(2; 3,464)
+  \coordinate (A) at (0,0); \coordinate (B) at (4,0); \coordinate (C) at (2,3.464);
+  \coordinate (K1) at ({(2*0+1*4+1*2)/4},{(1*3.464)/4});
+  \coordinate (K2) at ({(1*0+2*4+1*2)/4},{(1*3.464)/4});
+  \coordinate (K3) at ({(1*0+1*4+2*2)/4},{(2*3.464)/4});
+  \capa{7}{\draw[thick] (A) node[below left] {$x_1=4$} -- (B) node[below right] {$x_2=4$} -- (C) node[above] {$x_3=4$} -- cycle;}
+  % 8: núcleo, x_i >= 1
+  \capa{8}{\fill[area] (K1) -- (K2) -- (K3) -- cycle;}
+  \capa{8}{\draw[curva1,thin] (K1) -- (K2) -- (K3) -- cycle;}
+  \capa{8}{\draw[guia] ($(A)!0.25!(C)$) -- ($(B)!0.25!(C)$);}
+  \capa{8}{\draw[guia] ($(A)!0.25!(B)$) -- ($(C)!0.25!(B)$);}
+  \capa{8}{\draw[guia] ($(B)!0.25!(A)$) -- ($(C)!0.25!(A)$);}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceegris,anchor=south] at (3.0,0.87) {$x_3\geq1$};}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=60,anchor=south] at (1.25,0.45) {$x_2\geq1$};}
+  \capa{8}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=-60,anchor=south] at (2.75,0.45) {$x_1\geq1$};}
+  \capa{8}{\draw[thin,tceegris] (2.2,1.55) -- (3.1,2.4) node[etiqueta,right,text=tceemorado] {núcleo};}
+  % 9: valor de Shapley, en el centro
+  \capa{9}{\node[punto,label={[etiqueta,font=\footnotesize]below:$\phi$}] at (2,{3.464/3}) {};}
+  \capa{9}{\node[etiqueta,font=\footnotesize,align=left,anchor=north west] at (-0.3,3.5) {Shapley:\\ $\phi=(\tfrac43,\tfrac43,\tfrac43)$};}
+ \end{scope}
+\end{tikzpicture}
+\end{document}

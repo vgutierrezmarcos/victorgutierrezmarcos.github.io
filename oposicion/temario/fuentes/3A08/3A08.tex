@@ -61,9 +61,24 @@
 
 \item \textbf{\emph{Estructura}}: la exposición se organiza en 3 partes.
   \begin{itemize}
-  \item \emph{I. Fundamentos de la teoría de la elección racional}: presentaremos los ingredientes del modelo, las preferencias con su representación mediante una función de utilidad y la restricción presupuestaria (\ref{sec:ingredientes}); plantearemos el problema de maximización de la utilidad y su equilibrio, interior o de esquina (\ref{sec:problema-maximizacion-utilidad}), y obtendremos su solución: la demanda marshalliana individual, la función indirecta de utilidad y, por agregación, la demanda de mercado (\ref{sec:solucion-problema-maximizacion}).
-  \item \emph{II. Estática comparativa}: con análisis gráfico y de elasticidades, estudiaremos cómo responde la demanda a las variaciones en la renta (\ref{sec:variaciones-renta}) y en los precios, propio y cruzado, con la ecuación de \autor{Slutsky} (\ref{sec:variaciones-precios}), y valoraremos la teoría para enlazar con sus desarrollos (\ref{sec:valoracion}).
-  \item \emph{III. Otros desarrollos}: la teoría de la preferencia revelada, que parte de la conducta observada y no de preferencias inobservables (\ref{sec:teoria-preferencia-revelada}); la producción doméstica, que introduce el tiempo y la «tecnología del consumo» (\ref{sec:produccion-domestica}), y los precios hedónicos, que valoran empíricamente los bienes por sus características (\ref{sec:precios-hedonicos}).
+  \item \emph{I. Fundamentos de la teoría de la elección racional}:
+    \begin{itemize}
+    \item presentaremos los ingredientes del modelo, las preferencias con su representación mediante una función de utilidad y la restricción presupuestaria (\ref{sec:ingredientes});
+    \item plantearemos el problema de maximización de la utilidad y su equilibrio, interior o de esquina (\ref{sec:problema-maximizacion-utilidad});
+    \item y obtendremos su solución: la demanda marshalliana individual, la función indirecta de utilidad y, por agregación, la demanda de mercado (\ref{sec:solucion-problema-maximizacion}).
+    \end{itemize}
+  \item \emph{II. Estática comparativa}, con análisis gráfico y de elasticidades:
+    \begin{itemize}
+    \item estudiaremos cómo responde la demanda a las variaciones en la renta (\ref{sec:variaciones-renta});
+    \item y a las variaciones en los precios, propio y cruzado, con la ecuación de \autor{Slutsky} (\ref{sec:variaciones-precios});
+    \item y valoraremos la teoría para enlazar con sus desarrollos (\ref{sec:valoracion}).
+    \end{itemize}
+  \item \emph{III. Otros desarrollos}:
+    \begin{itemize}
+    \item la teoría de la preferencia revelada, que parte de la conducta observada y no de preferencias inobservables (\ref{sec:teoria-preferencia-revelada});
+    \item la producción doméstica, que introduce el tiempo y la «tecnología del consumo» (\ref{sec:produccion-domestica});
+    \item y los precios hedónicos, que valoran empíricamente los bienes por sus características (\ref{sec:precios-hedonicos}).
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -390,7 +405,13 @@ La convexidad de las curvas de indiferencia \emph{no} exige utilidades marginale
   \end{equation}
   \begin{itemize}
   \item Con el requisito de que la cesta pertenezca al conjunto de elección, las cestas posibles forman el \concepto{conjunto presupuestario walrasiano}, $B(\vect{p},\overline{W})=\{\vect{x}\in S: \vect{p}\cdot \vect{x}\leq\overline{W}\}$.
-  \item Sus \emph{propiedades}:\footnote{Para que el problema de optimización tenga solución, $B(\vect{p},\overline{W})$ debe ser no vacío (para que haya elección), cerrado (si no incluyera la frontera, podría no haber una cesta preferida a todas las demás) y acotado (si fuera todo $\mathbb{R}^n_+$, tampoco la habría).} (i) es \emph{no vacío}: siempre contiene la cesta nula; (ii) es \emph{cerrado}; (iii) es \emph{acotado} si todos los precios son estrictamente positivos ($\vect{p}\gg\vect{0}$);\footnote{Cerrado y acotado en $\mathbb{R}^n$ equivale a \emph{compacto} (teorema de \autor{Heine}-\autor{Borel}).} (iv) es \emph{convexo}: contiene toda combinación convexa de 2 de sus cestas.
+  \item Sus \emph{propiedades}:\footnote{Para que el problema de optimización tenga solución, $B(\vect{p},\overline{W})$ debe ser no vacío (para que haya elección), cerrado (si no incluyera la frontera, podría no haber una cesta preferida a todas las demás) y acotado (si fuera todo $\mathbb{R}^n_+$, tampoco la habría).}
+    \begin{enumerate}[label=(\roman*)]
+    \item es \emph{no vacío}: siempre contiene la cesta nula;
+    \item es \emph{cerrado};
+    \item es \emph{acotado} si todos los precios son estrictamente positivos ($\vect{p}\gg\vect{0}$);\footnote{Cerrado y acotado en $\mathbb{R}^n$ equivale a \emph{compacto} (teorema de \autor{Heine}-\autor{Borel}).}
+    \item es \emph{convexo}: contiene toda combinación convexa de 2 de sus cestas.
+    \end{enumerate}
   \end{itemize}
 \item Con 2 bienes, la frontera del conjunto es la \concepto{recta de balance}, $p_1x_1+p_2x_2=\overline{W}$, cuya pendiente, $-p_1/p_2$, es el coste de oportunidad del bien 1 en términos del bien 2 que fija el mercado, constante a lo largo de la recta.
 \end{itemize}
@@ -716,7 +737,12 @@ En el cante: variaciones en la renta (unos \tiempo{2,5}), variaciones en los pre
   \varepsilon_{x_i,p_i}\equiv\frac{\partial x_i(\vect{p},\overline{W})}{\partial p_i}\cdot\frac{p_i}{x_i}. \label{eq:elasticidad-precio}
   \end{equation}
   \begin{itemize}
-  \item Si $\varepsilon_{x_i,p_i}<0$, el bien es \emph{ordinario}: la curva de demanda tiene pendiente negativa. Si $\varepsilon_{x_i,p_i}=0$, la demanda es \emph{rígida} (curva vertical). Si $\varepsilon_{x_i,p_i}>0$, es un \emph{bien \autor{Giffen}}: la demanda aumenta cuando sube el precio.
+  \item Según su signo:
+    \begin{itemize}
+    \item si $\varepsilon_{x_i,p_i}<0$, el bien es \emph{ordinario}: la curva de demanda tiene pendiente negativa;
+    \item si $\varepsilon_{x_i,p_i}=0$, la demanda es \emph{rígida} (curva vertical);
+    \item si $\varepsilon_{x_i,p_i}>0$, es un \emph{bien \autor{Giffen}}: la demanda aumenta cuando sube el precio.
+    \end{itemize}
   \item Entre los bienes ordinarios, la demanda es \emph{elástica} si $\varepsilon_{x_i,p_i}<-1$ e \emph{inelástica} si $-1<\varepsilon_{x_i,p_i}<0$. Como $\partial(p_ix_i)/\partial p_i=x_i\,(1+\varepsilon_{x_i,p_i})$, al subir el precio el gasto en el bien disminuye si la demanda es elástica y aumenta si es inelástica.
   \end{itemize}
 \end{itemize}
@@ -1096,7 +1122,12 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
   \begin{itemize}
   \item Su fundamento es el enfoque de características de \autor{Lancaster} (\ref{sec:produccion-domestica} y anexo~\ref{anexo:lancaster}): el consumidor no obtiene utilidad de los bienes, sino de sus características. El tribunal sustituyó en el temario de 2023 la demanda de características por este método porque permite medir \emph{empíricamente} el valor que los consumidores dan a cada característica.
   \item Es también un método de \emph{preferencias reveladas}: el precio que se paga por un bien revela cómo se valoran sus características.
-  \item \textcite{Court1939Hedonic} acuña el término y estima la primera regresión hedónica, con automóviles \parencite{Goodman1998Court}; \textcite{Griliches1961Hedonic} la convierte en un método para ajustar por calidad los índices de precios \parencite{Griliches1971Price}, y \textcite{Rosen1974Hedonic} le da fundamento teórico.
+  \item Su historia tiene 3 pasos:
+    \begin{itemize}
+    \item \textcite{Court1939Hedonic} acuña el término y estima la primera regresión hedónica, con automóviles \parencite{Goodman1998Court};
+    \item \textcite{Griliches1961Hedonic} la convierte en un método para ajustar por calidad los índices de precios \parencite{Griliches1971Price};
+    \item y \textcite{Rosen1974Hedonic} le da fundamento teórico.
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -1179,7 +1210,12 @@ En el cante: preferencia revelada (unos \tiempo{3}), producción doméstica (\ti
 \end{enumerate}
 
 \begin{ideaclave}
-Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada reconstruye las preferencias a partir de las elecciones y permite contrastarlas con datos (\autor{Afriat}); la producción doméstica introduce el coste del tiempo, y los precios hedónicos miden cuánto se paga por cada característica de un bien.
+Los 3 desarrollos acercan la teoría a lo observable:
+\begin{itemize}
+\item la preferencia revelada reconstruye las preferencias a partir de las elecciones y permite contrastarlas con datos (\autor{Afriat});
+\item la producción doméstica introduce el coste del tiempo;
+\item y los precios hedónicos miden cuánto se paga por cada característica de un bien.
+\end{itemize}
 \end{ideaclave}
 
 % ==========================================================================
@@ -1204,14 +1240,24 @@ Los 3 desarrollos acercan la teoría a lo observable: la preferencia revelada re
     \item la \emph{economía conductual} ha documentado desviaciones sistemáticas de los axiomas: la \emph{racionalidad limitada} de \textcite{Simon1955Behavioral}, la \emph{teoría de las perspectivas} de \textcite{KahnemanTversky1979Prospect}, con la aversión a las pérdidas y la dependencia del marco \vertema{3.A.10}, y el \emph{efecto dotación} y la \emph{contabilidad mental} de \textcite{Thaler1980Positive,Thaler1985Mental};\footnote{\autor{Thaler} recibió el Premio Nobel de Economía en 2017 «por sus contribuciones a la economía del comportamiento» \parencite{Nobel2017Thaler}. Sus aportaciones a la teoría del consumidor se resumen en el anexo~\ref{anexo:thaler}.}
     \item y \textcite{Sen1977Rational} criticó que reducir la conducta a una sola ordenación de preferencias, que sirve a la vez para describir la elección, el interés propio y el bienestar, convierte al individuo en un «tonto racional».
     \end{itemize}
-  \item Aun así, sigue siendo el punto de partida del análisis: los desarrollos conductuales la amplían más que sustituirla, el teorema de \autor{Afriat} permite contrastarla con datos sin suponer formas funcionales y herramientas como los precios hedónicos la llevan a la medición de precios y del bienestar.
+  \item Aun así, sigue siendo el punto de partida del análisis:
+    \begin{itemize}
+    \item los desarrollos conductuales la amplían más que sustituirla;
+    \item el teorema de \autor{Afriat} permite contrastarla con datos sin suponer formas funcionales;
+    \item y herramientas como los precios hedónicos la llevan a la medición de precios y del bienestar.
+    \end{itemize}
   \end{itemize}
 
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
   \begin{itemize}
   \item La \concepto{dualidad} (minimización del gasto, demanda hicksiana, ecuación de \autor{Slutsky} e integrabilidad), la \concepto{medición del bienestar} y los \concepto{sistemas completos de demanda} que se estiman empíricamente (sistema lineal de gasto de \autor{Stone}-\autor{Geary}, translog, AIDS de \autor{Deaton} y \autor{Muellbauer}; anexo~\ref{anexo:sistemas}) \vertema{3.A.9}.\footnote{Angus \autor{Deaton} recibió el Premio Nobel de Economía en 2015 «por su análisis del consumo, la pobreza y el bienestar» \parencite{Nobel2015Deaton}.}
   \item La elección en condiciones de \concepto{riesgo e incertidumbre} \vertema{3.A.10} y las decisiones \concepto{intertemporales} \vertema{3.A.29}, con su aplicación al consumo agregado y a los bienes duraderos \vertema{3.A.33}.
-  \item La demanda de mercado es una pieza del \concepto{equilibrio parcial} \vertema{3.A.16} y \concepto{general} \vertema{3.A.21}; la asignación del tiempo entre trabajo y ocio, de la \concepto{oferta de trabajo} \vertema{3.A.25}, y la demanda de características (anexo~\ref{anexo:lancaster}), de la \concepto{diferenciación de productos} \vertema{3.A.18}.
+  \item Enlaces con otros temas:
+    \begin{itemize}
+    \item la demanda de mercado es una pieza del \concepto{equilibrio parcial} \vertema{3.A.16} y \concepto{general} \vertema{3.A.21};
+    \item la asignación del tiempo entre trabajo y ocio, de la \concepto{oferta de trabajo} \vertema{3.A.25};
+    \item y la demanda de características (anexo~\ref{anexo:lancaster}), de la \concepto{diferenciación de productos} \vertema{3.A.18}.
+    \end{itemize}
   \item La \concepto{teoría de la producción} reproduce la misma estructura (isocuantas, relación técnica de sustitución, elasticidad de sustitución, CES) \vertema{3.A.11}.
   \end{itemize}
 
@@ -1483,7 +1529,12 @@ Este anexo no se canta: es una aplicación empírica de la teoría de la demanda
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item Estimar a la vez las demandas de todos los bienes (o grupos de bienes) con una forma funcional que se derive de un problema de maximización de la utilidad. Permite estudiar las pautas de consumo, obtener las elasticidades-renta y precio, propias y cruzadas, que necesitan, por ejemplo, el diseño de la imposición indirecta o los índices de precios, y contrastar las restricciones de la teoría \parencites[caps.~1 y 3]{DeatonMuellbauer1980Economics}{AguilarMateos2015Deaton}.
+\item Estimar a la vez las demandas de todos los bienes (o grupos de bienes) con una forma funcional que se derive de un problema de maximización de la utilidad. Permite \parencites[caps.~1 y 3]{DeatonMuellbauer1980Economics}{AguilarMateos2015Deaton}:
+  \begin{itemize}
+  \item estudiar las pautas de consumo;
+  \item obtener las elasticidades-renta y precio, propias y cruzadas, que necesitan, por ejemplo, el diseño de la imposición indirecta o los índices de precios;
+  \item y contrastar las restricciones de la teoría.
+  \end{itemize}
 \end{itemize}
 
 \paragraph{b) Modelo: los pasos que sigue la literatura}
@@ -1588,7 +1639,12 @@ Este anexo no se canta: en el cuerpo, \autor{Lancaster} aparece como la otra «t
 \paragraph{a) Idea}
 
 \begin{itemize}
-\item La teoría tradicional trata los bienes como homogéneos y distintos entre sí solo por su precio y por la utilidad que dan. \textcite{Lancaster1966New} propone que lo que el consumidor demanda no son los bienes, sino sus \concepto{características}: un mismo bien tiene varias, en distintas proporciones, y varios bienes pueden compartir una característica. Así puede tratar cuestiones que la teoría tradicional no explica bien: la aparición de \emph{bienes nuevos} (no hay que redefinir las preferencias, basta añadir un vector de características), las diferencias de \emph{calidad} y las relaciones de sustitución entre bienes, que son estrechas cuando comparten características.
+\item La teoría tradicional trata los bienes como homogéneos y distintos entre sí solo por su precio y por la utilidad que dan. \textcite{Lancaster1966New} propone que lo que el consumidor demanda no son los bienes, sino sus \concepto{características}: un mismo bien tiene varias, en distintas proporciones, y varios bienes pueden compartir una característica. Así puede tratar cuestiones que la teoría tradicional no explica bien:
+  \begin{itemize}
+  \item la aparición de \emph{bienes nuevos} (no hay que redefinir las preferencias, basta añadir un vector de características);
+  \item las diferencias de \emph{calidad};
+  \item y las relaciones de sustitución entre bienes, que son estrechas cuando comparten características.
+  \end{itemize}
 \end{itemize}
 
 \paragraph{b) Modelo}
@@ -1636,7 +1692,13 @@ Este anexo no se canta: en el cuerpo, \autor{Lancaster} aparece como la otra «t
 \paragraph{d) Valoración}
 
 \begin{itemize}
-\item Extiende la teoría a los bienes diferenciados, a la calidad y a los bienes nuevos, y da fundamento a la medición hedónica. Sus límites: supone características objetivas y medibles y una tecnología lineal y aditiva (no siempre se pueden «mezclar» bienes para obtener combinaciones intermedias de características, como ocurre con los coches o las viviendas), y deja fuera las características que el consumidor no percibe \parencite{Lancaster1966New}.
+\item Extiende la teoría a los bienes diferenciados, a la calidad y a los bienes nuevos, y da fundamento a la medición hedónica.
+\item Sus límites \parencite{Lancaster1966New}:
+  \begin{itemize}
+  \item supone características objetivas y medibles;
+  \item supone una tecnología lineal y aditiva (no siempre se pueden «mezclar» bienes para obtener combinaciones intermedias de características, como ocurre con los coches o las viviendas);
+  \item y deja fuera las características que el consumidor no percibe.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -1664,7 +1726,12 @@ Este anexo no se canta: amplía la valoración de la Conclusión.
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item Frente al consumidor neoclásico, el de la economía conductual tiene una \emph{racionalidad limitada} \parencite{Simon1955Behavioral}, valora los resultados respecto a un punto de referencia, con aversión a las pérdidas \parencite{KahnemanTversky1979Prospect}, y tiene en cuenta lo que considera justo.
+\item Frente al consumidor neoclásico, el de la economía conductual:
+  \begin{itemize}
+  \item tiene una \emph{racionalidad limitada} \parencite{Simon1955Behavioral};
+  \item valora los resultados respecto a un punto de referencia, con aversión a las pérdidas \parencite{KahnemanTversky1979Prospect};
+  \item y tiene en cuenta lo que considera justo.
+  \end{itemize}
 \end{itemize}
 
 \subparagraph{ii) Desarrollo: las 3 aportaciones de \autor{Thaler}}
@@ -1718,7 +1785,12 @@ $\partial U/\partial x=0$ & Neutral & Rectas verticales u horizontales \\
 \fuente{elaboración propia.}
 \end{table}
 \begin{itemize}
-\item Si los dos son bienes, las preferencias son monótonas (se prefiere más a menos) y las cestas preferidas están al nordeste. Si los dos son males, las curvas son decrecientes, pero la satisfacción aumenta hacia el origen. Si un bien es neutral, toda la renta se gasta en el otro.
+\item Según el tipo de los 2 bienes:
+  \begin{itemize}
+  \item si los dos son bienes, las preferencias son monótonas (se prefiere más a menos) y las cestas preferidas están al nordeste;
+  \item si los dos son males, las curvas son decrecientes, pero la satisfacción aumenta hacia el origen;
+  \item si un bien es neutral, toda la renta se gasta en el otro.
+  \end{itemize}
 \item El signo de las utilidades marginales no dice nada sobre la \emph{curvatura} de las curvas de indiferencia.
 \end{itemize}
 
@@ -1746,7 +1818,12 @@ $\partial m/\partial x<0$ y $\partial m/\partial y>0$ & $\partial\mathrm{RMS}/\p
 \end{table}
 
 \begin{itemize}
-\item Ejemplos rápidos: $U=xy$ da $\mathrm{RMS}_{xy}=y/x$, que disminuye con $x$ y aumenta con $y$ (convexa); $U=ax+by$ da $\mathrm{RMS}_{xy}=a/b$ (lineal); $U=x^2+y^2$ da $\mathrm{RMS}_{xy}=x/y$ (cóncava).
+\item Ejemplos rápidos:
+  \begin{itemize}
+  \item $U=xy$ da $\mathrm{RMS}_{xy}=y/x$, que disminuye con $x$ y aumenta con $y$ (convexa);
+  \item $U=ax+by$ da $\mathrm{RMS}_{xy}=a/b$ (lineal);
+  \item $U=x^2+y^2$ da $\mathrm{RMS}_{xy}=x/y$ (cóncava).
+  \end{itemize}
 \end{itemize}
 
 \bibliografia

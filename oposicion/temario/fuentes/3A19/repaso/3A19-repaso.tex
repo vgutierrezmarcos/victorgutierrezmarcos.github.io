@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Análisis de mercados (IV): teoría del oligopolio]{3.A.19}{Análisis de mercados (IV). Teoría del oligopolio: soluciones no cooperativas y soluciones cooperativas.}
+\tcefecha{21/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. No cooperativas: competencia en una sola vez}{11}
+\subcante{1. Caracterización: se levanta el 4 (y el 5)}{1}
+\subcante{2. \autor{Cournot}: $R_i$, EN, $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$}{3,5}
+\subcante{3. \autor{Stackelberg}: ENPS, ventaja de compromiso}{1,5}
+\subcante{4. \autor{Bertrand}: $p=c$ (paradoja) y sus salidas}{3,5}
+\subcante{5. Liderazgo en precios; comparación}{1,5}
+\apartadocante{II. Competencia repetida: colusión tácita}{7}
+\subcante{1. Horizonte finito: EN de la etapa siempre}{1}
+\subcante{2. Horizonte infinito: gatillo; factores}{6}
+\apartadocante{III. Soluciones cooperativas}{8,5}
+\subcante{1. Cártel: monopolista multiplanta; desviarse}{3}
+\subcante{2. Reparto: \autor{Nash}, núcleo, \autor{Shapley}}{3}
+\subcante{3. Límites: entrada y defensa de la competencia}{2,5}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: todas ganarían produciendo menos, pero a cada una por separado le conviene producir más: ¿cuándo gana la competencia y cuándo la cooperación? \emph{Pizarra}: $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$ y $\beta\geq(B^{\mathrm D}-B^{\mathrm C})/(B^{\mathrm D}-B^{\mathrm N})$ en una esquina todo el cante.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Entre bomberos no se pisan la manguera». \autor{Smith} (1776): el mismo oficio rara vez se reúne sin conspirar contra el público. 2016: CE multa con 2.926 M€ a 4 fabricantes de camiones (1997-2011); MAN, que lo denunció, no paga. \emph{Si les conviene ponerse de acuerdo, ¿por qué compiten?}
+\item \textbf{Relevancia}: \emph{empírica} (telecos, energía, banca, aviación, plataformas; margen sobre CMg en EE.\,UU.: 21\,\% en 1980 $\to$ 61\,\% en 2016; CE: 162 decisiones contra cárteles desde 1990, $>$33.000 M€); \emph{teórica} (laboratorio de la teoría de juegos: \autor{Cournot} anticipa a \autor{Nash}; base de política comercial estratégica \vertema{3.B.8}, dumping recíproco \vertema{3.B.6}, banca \vertema{3.B.27}); \emph{de política} ($p>\mathrm{CMg}$: falla el 1TFEB \vertema{3.A.22}; defensa de la competencia \vertema{3.A.20}\vertema{3.B.39}).
+\item \textbf{Contextualización}: 2 estructuras polares (\vertema{3.A.16}, \vertema{3.A.17}) y 2 intermedias (\vertema{3.A.18} y oligopolio). Modelos clásicos (\autor{Cournot}, \autor{Bertrand}, \autor{Edgeworth}, \autor{Stackelberg}) $\to$ teoría de juegos (\autor{von Neumann}-\autor{Morgenstern}, \autor{Nash}, \autor{Selten}, \autor{Harsanyi}) $\to$ \autor{Stigler}, \autor{Friedman}, \autor{Tirole}.
+\item \textbf{Problemática}: ¿cuánto se alejan del resultado competitivo, según variable y orden? ¿Se coopera sin contratos? ¿Qué sostiene y qué rompe un cártel? ¿Cómo se reparte lo ganado?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, competencia en una sola vez (4 modelos clásicos); \hyperref[rep:II]{II}, competencia repetida (colusión tácita); \hyperref[rep:III]{III}, cooperación explícita (cártel, reparto, límites).
+\end{itemize}
+\begin{itemize}
+\item \concepto{Oligopolio} (\emph{olígos}, pocos; \emph{pōleîn}, vender): pocos vendedores, cada uno capaz de mover el precio.
+\item \concepto{Interdependencia estratégica}: el beneficio de cada una depende de las decisiones de todas, y cada una lo sabe y lo tiene en cuenta $\Rightarrow$ teoría de juegos aplicada \vertema{3.A.14}.
+\item \emph{«Cooperativo»}: \emph{por el resultado}, \concepto{colusorio} (cerca del beneficio de monopolio); \emph{por el instrumento}, \emph{acuerdos vinculantes}. La \concepto{colusión tácita}: resultado cooperativo de un juego \emph{no} cooperativo; el \concepto{cártel}: caso cooperativo.
+\end{itemize}
+
+% ==========================================================================
+\bloque[11]{I. No cooperativas: competencia en una sola vez\label{rep:I}}
+\begin{ideaclave}
+Con un solo encuentro el precio queda entre el competitivo y el de monopolio, según la variable (cantidades o precios) y el orden (a la vez o por turnos); en todos los casos las empresas ganarían más produciendo menos juntas.
+\end{ideaclave}
+\graficorepaso[0.85\linewidth]{escala-precios}{Dónde queda el precio de cada modelo (duopolio lineal, costes iguales)}
+
+\sub{I.1. Caracterización del oligopolio\label{rep:I.1}}
+\begin{itemize}
+\item Lista común de supuestos \vertema{3.A.16}; se mantienen racionalidad (+ \emph{conocimiento común}), información completa y producto homogéneo (diferenciado: \vertema{3.A.18}); \emph{se levanta el 4}: pocos vendedores (2 por sencillez) que se saben interdependientes; compradores muchos y precio-aceptantes; casi siempre \emph{el 5}: barreras \vertema{3.A.15} estratégicas, legales o tecnológicas (\concepto{oligopolio natural}).
+\item Juego: jugadores = empresas; estrategias = $q$ o $p$; pagos = beneficios. \concepto{Función de reacción} $R_i(\cdot)$: mejor respuesta. \concepto{Equilibrio de \autor{Nash}} (EN): cada una da la mejor respuesta a las demás. \concepto{ENPS}: además, creíble fuera del camino de equilibrio (inducción hacia atrás).
+\item \autor{Bulow}-\autor{Geanakoplos}-\autor{Klemperer} (1985): \concepto{sustitutos estratégicos} ($\partial^2B_i/\partial x_i\partial x_j<0$, reacción decreciente: cantidades); \concepto{complementos estratégicos} ($>0$, creciente: precios).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.24\linewidth}>{\centering\arraybackslash}m{0.36\linewidth}>{\centering\arraybackslash}m{0.36\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Simultáneas (EN)} & \textbf{Secuenciales (ENPS)}\\
+\midrule
+\textbf{Cantidades} (sust.) & \autor{Cournot} (1838): $c<p^C<p^M$ & \autor{Stackelberg} (1934): ventaja del 1.º\\
+\textbf{Precios} (compl.) & \autor{Bertrand} (1883): $p^B=c$ & liderazgo en precios: dominante\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{I.2. \autor{Cournot} (1838): cantidades a la vez\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Idea}: 2 manantiales de agua mineral; cada uno elige $q_i$ tomando como dada la del otro; un subastador vacía el mercado.
+\item \emph{Supuestos}: $n$ empresas, $Q=\sum q_i$; $p(Q)$ decreciente, $C_i(q_i)$ (lineal: $p=a-bQ$, $C_i=c_iq_i$); \concepto{conjetura de \autor{Nash}} (variación conjetural nula).
+\item \emph{Desarrollo}: el IMg solo recoge la bajada de precio sobre las unidades \emph{propias} $\Rightarrow$ cada una produce más de lo que conviene al conjunto:
+\begin{formula}
+\centering $\optim{\max}{q_i}{B_i=p(q_i+Q_{-i})\,q_i-C_i(q_i)}{q_i\geq0}$\\[3pt]
+$\Rightarrow\ \underbrace{p(Q)+p'(Q)\,q_i}_{\mathrm{IMg}_i}=\mathrm{CMg}_i(q_i)$
+\end{formula}
+\item Lineal, duopolio: $R_i(q_j)=\frac{a-c_i}{2b}-\frac12q_j$ (pendiente $-1/2$, corta el eje en $q^M$). \concepto{Condiciones de \autor{Hahn}} (1962): (H1) $p'+q_ip''<0$, (H2) $p'-C_i''<0$ $\Rightarrow$ $R_i'\in(-1,0)$.
+\item \emph{Equilibrio}, $n$ iguales, lineal:
+\begin{formula}
+\centering $q^C=\dfrac{a-c}{(n+1)b}$,\quad $Q^C=\dfrac{n}{n+1}\cdot\dfrac{a-c}{b}$,\quad $p^C=\dfrac{a+nc}{n+1}$
+\end{formula}
+\item[] duopolio: $q^C=(a-c)/3b$, $p^C=(a+2c)/3$, $B_i=(a-c)^2/9b$.
+\item \emph{Gráfico}: isobeneficios en U invertida, máximo sobre $R_1$, mejor cuanto más abajo; en C se \emph{cortan}.
+\end{itemize}
+\graficorepaso[0.48\linewidth]{cournot}{Equilibrio de \autor{Cournot} (C): reacciones e isobeneficios}
+\begin{itemize}
+\item \emph{Implicaciones}: i) EN, no en estrategias dominantes; ii) \emph{poder proporcional a la cuota} ($s_i=q_i/Q$; $s_i=1$ monopolio, $s_i\to0$ competencia; menor CMg $\Rightarrow$ más cuota y margen):
+\funcionclave{\mathcal{L}_i\equiv\frac{p-\mathrm{CMg}_i}{p}=\frac{s_i}{|\varepsilon_{Q,p}|}}
+\item[] iii) \emph{concentración} (\autor{Cowling}-\autor{Waterson}, 1976): $\sum_is_i\mathcal{L}_i=\dfrac{\mathrm{IHH}}{10.000\,|\varepsilon_{Q,p}|}$, $\mathrm{IHH}=\sum(100s_i)^2\in(0;10.000]$; iv) \emph{bienestar}: $Q^M<Q^C<Q^c$; ineficiencia \emph{asignativa} ($p>\mathrm{CMg}$, PIE) y \emph{productiva} (CMg distintos no se igualan); v) \emph{ineficiente para las empresas}: «lente» entre isobeneficios, \emph{dilema del prisionero} \vertema{3.A.14}; vi) $n\to\infty$: $p^C\to c$, $\mathcal{L}=1/(n|\varepsilon|)\to0$ («concurrencia indefinida»): une monopolio y competencia.
+\item \emph{Extensiones}: \concepto{variaciones conjeturales} (\autor{Bowley}, 1924), $v_i=dQ_{-i}/dq_i$: $\mathcal{L}_i=s_i(1+v_i)/|\varepsilon_{Q,p}|$; $v=0$ \autor{Cournot}, $v=-1$ competencia, $v=n-1$ monopolio, líder de \autor{Stackelberg} $v_1=R_2'$; crítica: en un juego simultáneo nadie reacciona (\autor{Tirole}). \emph{Costes privados}: \concepto{equilibrio bayesiano de \autor{Nash}}: la informada de coste alto produce \emph{más}, la de bajo \emph{menos} (la rival responde a la media) \vertema{3.A.13}.
+\item \emph{Evidencia}: \autor{Brander}-\autor{Zhang} (1990), aerolíneas: más cerca de \autor{Cournot}.
+\item \emph{Valoración}: razonable; críticas: no siempre a la vez y son las empresas quienes fijan el precio.
+\end{itemize}
+
+\sub{I.3. \autor{Stackelberg} (1934): cantidades por turnos\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Supuestos}: la \concepto{líder} elige $q_1$ primero, irreversible; la \concepto{seguidora} la observa y elige $q_2$.
+\item \emph{Desarrollo}: seguidora: $q_2=R_2(q_1)$ (responde a lo hecho, no a lo esperado); la líder maximiza con esa restricción:
+\begin{formula}
+\centering $\optim{\max}{q_1,q_2}{B_1=p(q_1+q_2)\,q_1-C_1(q_1)}{q_2=R_2(q_1)\\ q_1\geq0}$\\[3pt]
+$p+p'(Q)\,q_1\big[1+R_2'(q_1)\big]=\mathrm{CMg}_1$
+\end{formula}
+\item[] $R_2'<0$: conjetura negativa \emph{y correcta} $\Rightarrow$ produce más. Lineal: $q_1^S=(a-c)/2b$ (= $q^M$), $q_2^S=(a-c)/4b$, $p^S=(a+3c)/4$; $B_1=(a-c)^2/8b$, $B_2=(a-c)^2/16b$ (\autor{Cournot}: $/9b$). Gráfico: tangencia del isobeneficio más bajo de la líder con $R_2$ (S, a la derecha y abajo de C).
+\end{itemize}
+\graficorepaso[0.46\linewidth]{stackelberg}{\autor{Stackelberg} (S): la líder elige sobre $R_2$ su isobeneficio más bajo}
+\begin{itemize}
+\item \emph{Implicaciones}: ENPS (la amenaza de la seguidora de producir $q^C$ no es creíble); \emph{ventaja del primero de compromiso, no de información} (inversión irreversible: \autor{Dixit} \vertema{3.A.15}); con complementos estratégicos, ventaja del segundo (\autor{Gal-Or}, 1985); $Q^S=3(a-c)/4b>Q^C$: más competitivo que \autor{Cournot}.
+\item \emph{Valoración}: explica la ventaja de las establecidas, pero el orden es exógeno.
+\end{itemize}
+
+\sub{I.4. \autor{Bertrand} (1883): precios a la vez\label{rep:I.4}}
+\begin{itemize}
+\item \emph{Idea}: reseña de \autor{Cournot}: las empresas eligen \emph{precios}.
+\item \emph{Supuestos}: 2 empresas, homogéneo, mismo CMg $c$ constante, sin límite de capacidad, una vez; compran a la más barata (empate: mitad):
+\begin{formula}
+\centering $x_i(p_i,p_j)=\begin{cases}x(p_i) & p_i<p_j\\ \tfrac12x(p_i) & p_i=p_j\\ 0 & p_i>p_j\end{cases}$
+\end{formula}
+\item \emph{Desarrollo}: sin CPO. Mejor respuesta: $p^M$ si $p_j>p^M$; un céntimo menos si $c<p_j\leq p^M$; no vender si $p_j\leq c$. Único EN: $p_1^B=p_2^B=c$. Reacciones crecientes: complementos estratégicos.
+\end{itemize}
+\graficorepaso[0.4\linewidth]{bertrand-reaccion}{\autor{Bertrand}: reacciones en precios; EN en $(c,c)$}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{paradoja de \autor{Bertrand}}: con 2 empresas, $p=c$ y $B=0$, como con infinitas; eficiente, contradice los datos. Descansa en 5 supuestos: CMg iguales, homogéneo, sin límite de capacidad, estático, sin cooperación.
+\item \emph{Salidas}: i) $c_1<c_2$: la 1 cobra un céntimo bajo $c_2$ (o $p^M(c_1)$), todo el mercado; ii) \emph{CMg crecientes}: con racionamiento, sin EN en puras (sí en mixtas); obligada a servir toda la demanda, intervalo de equilibrios con $p\geq p^c$ (\autor{Dastidar}, 1995): suavizan la competencia; iii) \emph{capacidad} (\autor{Edgeworth}, 1897); iv) \autor{Kreps}-\autor{Scheinkman}; v) \emph{diferenciado}: $p>c$ y $p^B<p^C$ (\autor{Singh}-\autor{Vives}, 1984) \vertema{3.A.18}; vi) repetición (\hyperref[rep:II]{II}); vii) cártel (\hyperref[rep:III]{III}).
+\item \emph{\autor{Edgeworth}}: capacidad $k$, $k<x(c)\leq2k$; \concepto{racionamiento eficiente} $\Rightarrow$ la cara tiene \concepto{demanda residual} $x(p)-k$. $p=c$ no es EN; la que sube cobra $\overline{p}=\arg\max(p-c)[x(p)-k]$; rebajas sucesivas hasta $\underline{p}$: $(\underline{p}-c)k=(\overline{p}-c)[x(\overline{p})-k]$; y vuelta a $\overline{p}$: \concepto{ciclos de \autor{Edgeworth}}, sin EN en puras (sí en mixtas: \autor{Levitan}-\autor{Shubik}, 1972). Con $k$ pequeña, EN en $p(2k)$. Gasolina en Perth.
+\end{itemize}
+\graficorepaso[0.72\linewidth]{edgeworth}{Capacidad limitada: demanda residual y ciclo de \autor{Edgeworth}}
+\begin{itemize}
+\item \emph{\autor{Kreps}-\autor{Scheinkman}} (1983): 1.º capacidad, 2.º precios (racionamiento eficiente) $\Rightarrow$ ENPS = \autor{Cournot}: elegir capacidad es elegir cantidad. Con racionamiento proporcional, más dura (\autor{Davidson}-\autor{Deneckere}, 1986).
+\item \emph{Valoración}: no son rivales sino mercados distintos: \autor{Cournot}, capacidad fija y cara de cambiar (acero, cemento, aviación; lonja); \autor{Bertrand}, capacidad sobrante o por encargo.
+\end{itemize}
+
+\sub{I.5. Liderazgo en precios\label{rep:I.5}}
+\begin{itemize}
+\item \emph{Idea}: con 2 iguales y homogéneo, mover primero no sirve; sentido con \concepto{empresa dominante} (grande, costes bajos) y \concepto{franja competitiva} precio-aceptante (\autor{Forchheimer}, 1908).
+\item \emph{Desarrollo}: demanda residual $x_R(p)=x(p)-q_f(p)$, quebrada ($=x$ bajo $p_0$; nula desde $p_1$); monopolista de ella \vertema{3.A.17}: $\mathrm{IMg}_R(q_L)=\mathrm{CMg}_L(q_L)$ y fija $p^*$; la franja vende $q_f(p^*)$. \autor{Landes}-\autor{Posner} (1981):
+\begin{formula}
+\centering $\mathcal{L}_L=\dfrac{s_L}{|\varepsilon_{Q,p}|+(1-s_L)\,\varepsilon_f}$
+\end{formula}
+\item[] el poder depende de lo que puede crecer la franja, no solo de la cuota.
+\end{itemize}
+\graficorepaso[0.42\linewidth]{liderazgo-precios}{Empresa dominante y franja competitiva}
+\begin{itemize}
+\item \emph{Implicaciones}: $p$ más bajo cuanto más elástica la franja, que gana más que en competencia; a LP se erosiona la cuota; puede ser coordinación (señala el precio colusorio).
+\item \emph{Comparación} ($p=a-bQ$, 2 empresas, CMg $c$): producción \autor{Bertrand} $1$ $>$ \autor{Stackelberg} $3/4$ $>$ \autor{Cournot} $2/3$ $>$ monopolio o cártel $1/2$ (en $(a-c)/b$); PIE $0$, $1/32$, $1/18$, $1/8$ (en $(a-c)^2/b$); \autor{Cournot} con $n$: $Q=n/(n+1)$, PIE $1/2(n+1)^2$.
+\end{itemize}
+
+% ==========================================================================
+\bloque[7]{II. Competencia repetida: colusión tácita\label{rep:II}}
+\begin{ideaclave}
+Sin un final conocido y con empresas pacientes, la amenaza de una guerra de precios basta para sostener precios altos sin ningún acuerdo: un resultado cooperativo con un equilibrio no cooperativo, posible pero no seguro.
+\end{ideaclave}
+
+\sub{II.1. Horizonte finito\label{rep:II.1}}
+\begin{itemize}
+\item \emph{Supuestos}: \autor{Bertrand} repetido $T$ periodos con final conocido; \concepto{juego de etapa} siempre igual (\concepto{juego repetido} o superjuego); se observan los precios al final; factor de descuento $\beta\equiv1/(1+\rho)$.
+\item \emph{Desarrollo}: inducción hacia atrás $\Rightarrow$ único ENPS, $p=c$ siempre: la repetición finita \emph{no} saca de la paradoja (con varios EN en la etapa, sí puede: \autor{Benoit}-\autor{Krishna}, 1985).
+\end{itemize}
+
+\sub{II.2. Horizonte infinito\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea}: sin último periodo (infinito o probabilidad de continuar: $\beta\times$ prob.), el futuro disciplina el presente (\autor{Friedman}, 1971).
+\item \emph{Estrategias}: \emph{incondicionada} ($p=c$ siempre: ENPS, no salva la paradoja); condicionada: \concepto{gatillo} (\emph{trigger}): precio de colusión entre $c$ y $p^M$ mientras todas cumplan; si alguna se desvía, $p=c$ para siempre.
+\item \emph{Condición}: $B^{\mathrm C}/(1-\beta)\geq B^{\mathrm D}+\beta B^{\mathrm N}/(1-\beta)$, es decir:
+\funcionclave{\beta\;\geq\;\frac{B^{\mathrm D}-B^{\mathrm C}}{B^{\mathrm D}-B^{\mathrm N}}}
+\item[] numerador: lo que se gana hoy desviándose; denominador: lo que se pierde cada periodo después.
+\item \emph{\autor{Bertrand}}: $B^{\mathrm C}=B^M/n$, $B^{\mathrm D}\approx B^M$, $B^{\mathrm N}=0$ $\Rightarrow$ $\beta\geq1-1/n$ (duopolio: $1/2$). \emph{\autor{Cournot}} lineal: $B^{\mathrm C}=(a-c)^2/8b$, $B^{\mathrm D}=9(a-c)^2/64b$, $B^{\mathrm N}=(a-c)^2/9b$ $\Rightarrow$ $\beta\geq9/17\approx0{,}53$ (castigo más suave).
+\item Castigo creíble (EN en cada subjuego) $\Rightarrow$ gatillo es ENPS. \emph{Retraso} $\tau$: $\beta^{\tau}\geq(B^{\mathrm D}-B^{\mathrm C})/(B^{\mathrm D}-B^{\mathrm N})$. Más fácil cuanto $\uparrow B^{\mathrm C}$, $\uparrow\beta$, $\downarrow B^{\mathrm D}$, $\downarrow B^{\mathrm N}$, $\downarrow\tau$.
+\end{itemize}
+\graficorepaso[0.72\linewidth]{colusion-tiempo}{Beneficio descontado: ganancia de desviarse (rojo) frente a pérdida por el castigo (azul)}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{teorema de tradición oral} (\emph{folk theorem}): con $\beta$ alto, cualquier $p\in[c,p^M]$ es ENPS: infinitos (también $p=c$): la colusión es \emph{posible}, no segura. \concepto{Colusión perfecta} ($p^M$) o \concepto{imperfecta}. \emph{Tácita}: sin comunicación, difícil de perseguir.
+\item Otras estrategias: \autor{Axelrod} (1984): ganó «donde las dan, las toman» (\emph{tit for tat}), pero solo es ENPS para $\beta$ muy concretos (\autor{Kalai}-\autor{Samet}-\autor{Stanford}, 1988).
+\end{itemize}
+\begin{itemize}
+\item \emph{Extensiones}: \autor{Green}-\autor{Porter} (1984): solo se ve el precio y la demanda es incierta $\Rightarrow$ precio umbral; \emph{guerras de precios en equilibrio} tras caídas de la demanda (\autor{Stigler}, 1964: rebajas secretas); \autor{Rotemberg}-\autor{Saloner} (1986): demanda observada que fluctúa $\Rightarrow$ guerras en los \emph{auges}, márgenes anticíclicos; recesión prevista, más difícil (\autor{Haltiwanger}-\autor{Harrington}, 1991); \emph{castigos óptimos} (\autor{Abreu}): «palo y zanahoria»; \emph{renegociación} (\autor{Farrell}-\autor{Maskin}, 1989) debilita la amenaza.
+\item \emph{Evidencia}: cártel ferroviario JEC 1880-86 (\autor{Porter}, 1983); algoritmos que coluden solos (\autor{Calvano} et al., 2020).
+\item \emph{Factores} (\autor{Ivaldi} et al., 2003): (+) barreras, frecuencia, transparencia, demanda creciente, multimercado, prácticas facilitadoras; ($-$) nº de empresas, asimetrías, innovación, compradores grandes, renegociación; (±) diferenciación, capacidad excedente.
+\item \emph{Valoración}: la colusión \emph{puede} sostenerse, pero el modelo no dice qué precio ni cómo repartir $\Rightarrow$ cártel.
+\end{itemize}
+
+% ==========================================================================
+\bloque[8,5]{III. Soluciones cooperativas: el cártel y el reparto\label{rep:III}}
+\begin{ideaclave}
+El cártel maximiza el beneficio conjunto como un monopolista multiplanta, pero el acuerdo no es un equilibrio de \autor{Nash}; lo ganado se reparte según lo que cada una obtendría compitiendo, y la entrada y la ley lo limitan.
+\end{ideaclave}
+
+\sub{III.1. Colusión explícita: el cártel\label{rep:III.1}}
+\begin{itemize}
+\item \concepto{Colusión}: ejercicio conjunto del poder de mercado; \emph{explícita} (\concepto{cártel}: acuerdo sobre precios, cuotas, clientes o territorios; prohibido \vertema{3.B.39}) o \emph{tácita}. \autor{Stigler} (1950): beneficio conjunto máximo actuando como un monopolista.
+\item \emph{Desarrollo}: monopolista con 2 plantas \vertema{3.A.17}: \emph{cuánto} (IMg = suma horizontal de CMg) y \emph{cómo repartir} (igualar CMg):
+\begin{formula}
+\centering $\optim{\max}{q_1,q_2}{p(q_1+q_2)(q_1+q_2)-C_1(q_1)-C_2(q_2)}{q_1,q_2\geq0}$\\[3pt]
+$\Rightarrow\ \mathrm{IMg}(Q)=\mathrm{CMg}_1(q_1)=\mathrm{CMg}_2(q_2)$
+\end{formula}
+\item[] CMg constantes distintos: solo produce la eficiente $\Rightarrow$ \emph{pagos laterales}. En $(q_1,q_2)$: \concepto{curva de colusión} (tangencias de isobeneficios) de $(q^M,0)$ a $(0,q^M)$; C fuera de ella.
+\end{itemize}
+\graficorepaso[0.46\linewidth]{cartel}{Curva de colusión e incentivo a desviarse}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{colusión perfecta} ($p^M$ con reparto de coste mínimo) e \emph{imperfecta} (cualquier punto de la «lente»). \emph{No es EN}: en la cuota,
+\begin{formula}
+\centering $\dfrac{\partial B_1}{\partial q_1}\Big|_{\text{cártel}}=p+p'(Q)\,q_1-\mathrm{CMg}_1=-p'(Q)\,q_2>0$
+\end{formula}
+\item[] \concepto{dilema del prisionero}: $p=13-Q$, $c=1$: cuota 3 y 3 $\to$ (18; 18); \autor{Cournot} 4 y 4 $\to$ (16; 16); uno se desvía $\to$ (20; 15). Se sostiene por repetición o por un tercero (contrato imposible: es ilegal); los más duraderos, entre Estados (OPEP).
+\item \emph{Cárteles parciales}: \concepto{paradoja de las fusiones} (\autor{Salant}-\autor{Switzer}-\autor{Reynolds}, 1983): con \autor{Cournot} lineal no compensa salvo $\approx$80\,\% del mercado (3 iguales: 2 juntas $1/9<2/16$); el que se queda fuera gana más ($1/9>1/12$). Estabilidad \emph{interna} y \emph{externa} (\autor{d'Aspremont} et al., 1983): cártel = dominante con franja. Se forma con pocas empresas (\autor{Selten}, 1973).
+\end{itemize}
+
+\sub{III.2. Reparto: \autor{Nash}, núcleo y \autor{Shapley}\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Supuestos}: acuerdos vinculantes y \concepto{utilidad transferible}; \concepto{punto de desacuerdo} = beneficio de \autor{Cournot}, $B_i^0$.
+\item \emph{2 empresas}: \concepto{solución de negociación de \autor{Nash}} (1950), $\gamma$ = poder de la 1:
+\begin{formula}
+\centering $\optim{\max}{B_1,B_2}{(B_1-B_1^0)^{\gamma}(B_2-B_2^0)^{1-\gamma}}{B_1+B_2=B^M}$\\[3pt]
+$B_1=B_1^0+\gamma\,(B^M-B_1^0-B_2^0)$
+\end{formula}
+\item[] Ej.: $p=13-Q$, $c_1=1$, $c_2=4$: \autor{Cournot} $B^0=(25;4)$; cártel solo con la 1: $B^M=36$, excedente 7; $\gamma=1/2$: 28,5 y paga 7,5 a la 2 por no producir.
+\item \emph{3 empresas} ($p=4-Q$, $c=0$): $v(\{i\})=1$, $v(\{i,j\})=16/9$, $v(N)=4$. \concepto{Núcleo} (\autor{Gillies}, 1959): repartos que ninguna coalición mejora: $x_i\geq1$, $\sum x_i=4$ (no vacío). \concepto{Valor de \autor{Shapley}} (1953): aportación marginal media: $1$, $7/9$, $20/9$ $\Rightarrow$ $\phi_i=4/3$, en el núcleo.
+\end{itemize}
+\graficorepaso[0.76\linewidth]{reparto-cartel}{a) Negociación de \autor{Nash}; b) núcleo y valor de \autor{Shapley} con 3}
+\begin{itemize}
+\item \emph{Implicaciones}: reparto según opciones externas y poder; la ineficiente puede cobrar por no producir; parciales no compensan ($16/9<2$); \emph{estabilidad cooperativa $\neq$ no cooperativa}: fuera ganaría $16/9>4/3$: el núcleo no basta, hace falta poder hacerlo cumplir.
+\item \emph{Valoración}: describe mejor la cooperación legal (empresas conjuntas, I+D) que los cárteles (cuotas históricas).
+\end{itemize}
+
+\sub{III.3. Límites: entrada y defensa de la competencia\label{rep:III.3}}
+\begin{itemize}
+\item \emph{Entrada}: barreras legales, de factores, técnicas o estratégicas \vertema{3.A.15}. \concepto{Precio límite} (\autor{Bain}, 1956; \autor{Modigliani}, 1958): solo disuade si es creíble (ENPS): compromiso de capacidad (\autor{Dixit}, 1980). \concepto{Mercados impugnables} (\autor{Baumol}-\autor{Panzar}-\autor{Willig}, 1982): sin costes hundidos, misma tecnología, retardo de reacción $\Rightarrow$ \emph{hit and run} obliga a $p=\mathrm{CMe}$ aun con una empresa.
+\item \emph{Prohibición}: art.~101 TFUE; art.~1 Ley 15/2007; muy grave, hasta el 10\,\% del volumen de negocios (art.~63).
+\item \emph{Prueba}: el paralelismo solo prueba concertación sin otra explicación plausible: la tácita pura no es ilegal.
+\item \emph{Clemencia}: exención a la 1.ª que aporte pruebas; reducciones 30-50\,\%, 20-30\,\%, hasta 20\,\% (arts.~65-66 Ley 15/2007). En la condición del gatillo: $\downarrow B^{\mathrm C}$ (multa) y $\uparrow B^{\mathrm D}$ (exención) $\Rightarrow$ $\uparrow$ umbral; carrera por confesar (\autor{Motta}-\autor{Polo}, 2003) \vertema{4.A.15}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: una vez: entre competencia y monopolio según variable y orden, $\mathcal{L}_i=s_i/|\varepsilon|$; indefinidamente: gatillo, colusión tácita si pocas y pacientes; acuerdo: monopolista multiplanta, reparto según opciones externas, pero no es equilibrio.
+\item \textbf{Relevancia}: estructura de los mercados que más importan; guía la defensa de la competencia: cuota e IHH, concentraciones, cárteles.
+\item \textbf{Extensiones}: diferenciado \vertema{3.A.18}, juegos \vertema{3.A.14}, entrada \vertema{3.A.15}, poder de mercado y regulación \vertema{3.A.20}, competencia UE \vertema{3.B.39} y España \vertema{4.A.15}, política comercial estratégica y dumping recíproco \vertema{3.B.8}\vertema{3.B.6}, algoritmos.
+\item \textbf{Opinión}: no hay un modelo único; la política de competencia no puede limitarse a contar empresas: qué hace estable la colusión en cada mercado e instituciones (clemencia) que la desestabilicen.
+\item \textbf{Idea final}: compiten porque a cada una le conviene romper el acuerdo; los bomberos no se pisan la manguera mientras a ninguno le compense pisarla; la clemencia hace que al primero que la pise y confiese, como MAN, le salga a cuenta.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1838}{\autor{Cournot}: duopolio en cantidades}
+\hito{1883}{\autor{Bertrand}: competencia en precios}
+\hito{1897}{\autor{Edgeworth}: capacidad limitada, ciclos}
+\hito{1934}{\autor{Stackelberg}: líder y seguidora}
+\hito{1944}{\autor{von Neumann}-\autor{Morgenstern}: teoría de juegos}
+\hito{1950}{\autor{Nash}: equilibrio y negociación; \autor{Stigler}: cártel}
+\hito{1953}{\autor{Shapley}: valor (\autor{Gillies}, núcleo, 1959)}
+\hito{1956}{\autor{Bain}: precio límite}
+\hito{1964}{\autor{Stigler}: rebajas secretas}
+\hito{1965}{\autor{Selten}: perfección en subjuegos}
+\hito{1967}{\autor{Harsanyi}: información incompleta}
+\hito{1971}{\autor{Friedman}: superjuegos, gatillo}
+\hito{1982}{\autor{Baumol}-\autor{Panzar}-\autor{Willig}: impugnables}
+\hito{1983}{\autor{Kreps}-\autor{Scheinkman}; paradoja de las fusiones}
+\hito{1984}{\autor{Green}-\autor{Porter}; \autor{Axelrod}; \autor{Singh}-\autor{Vives}}
+\hito{1986}{\autor{Rotemberg}-\autor{Saloner}; \autor{Abreu}}
+\hito{2003}{\autor{Motta}-\autor{Polo}: clemencia}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Cártel de camiones: \dato{2.926 M€, 1997-2011; con Scania, 3.807 M€}{CE, 2016-2017}.
+\item Margen sobre el CMg, cotizadas de EE.\,UU.: \dato{21\,\% (1980) $\to$ 61\,\% (2016)}{\autor{De Loecker} et al., 2020}.
+\item Decisiones de la CE contra cárteles: \dato{162 desde 1990, $>$33.000 M€}{CE, 2026}; en 2025, \dato{859,5 M€ a 4 cárteles}{CE, 2026}: desguaces ($\approx$458 M€, 15 fabricantes) y Delivery Hero-Glovo (329 M€).
+\item Móvil en España: \dato{4 operadores, 96,8\,\%, IHH $\approx$2.770}{CNMC, 2026}.
+\item \dato{Clemencia en 53 de 116 cárteles (46\,\%)}{CNMC, 2023}; constructoras: \dato{203,6 M€}{CNMC, 2022}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Qué pasa con más de 2 empresas?} \autor{Cournot}: $p\to c$, $\mathcal{L}=1/(n|\varepsilon|)\to0$; \autor{Bertrand}: ya basta con 2; colusión más difícil, $\beta\geq1-1/n$.
+\item \textbf{¿Qué es la colusión perfecta?} Resultado de monopolio con reparto de coste mínimo: $\mathrm{IMg}(Q)=\mathrm{CMg}_1=\mathrm{CMg}_2$.
+\item \textbf{¿\autor{Cournot} o \autor{Bertrand} a corto plazo?} Depende de qué está fijo: con capacidades dadas, precios con resultado de \autor{Cournot} (\autor{Kreps}-\autor{Scheinkman}); \autor{Bertrand}, capacidad sobrante o por encargo.
+\item \textbf{¿En qué modelo se produce más?} \autor{Bertrand} $>$ \autor{Stackelberg} $>$ \autor{Cournot} $>$ monopolio; diferenciado: \autor{Bertrand} sigue $>$ \autor{Cournot}.
+\item \textbf{¿Horizonte finito o infinito en un cártel?} Final conocido y un EN en la etapa: la inducción hacia atrás lo deshace; sin final, el gatillo lo sostiene si son pacientes.
+\item \textbf{Monopolio natural liberalizado: ¿equilibrio estable?} Sí: pocas, se ven a diario, precios transparentes, barreras (la red): condiciones de colusión tácita $\Rightarrow$ regular el acceso y vigilar \vertema{3.A.17}.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item Colusión $\neq$ juego cooperativo: la de \autor{Friedman} es un \emph{EN} no cooperativo; cooperativo = acuerdos vinculantes.
+\item $\mathcal{L}_i=s_i/|\varepsilon_{Q,p}|$: elasticidad de la demanda de \emph{mercado}, no de la empresa; $\sum s_i\mathcal{L}_i=\mathrm{IHH}/(10.000|\varepsilon|)$.
+\item \autor{Stackelberg}: conjetura de la líder \emph{negativa} ($R_2'$); ventaja de \emph{compromiso}, no de información; la líder produce $q^M$ pero gana la mitad que el monopolio.
+\item \autor{Bertrand}: $p=c$ es el \emph{único} EN; con $c_1<c_2$, $p$ un céntimo bajo $c_2$ y la 2 no vende (en \autor{Cournot} sí vende).
+\item \autor{Kreps}-\autor{Scheinkman}: da \autor{Cournot} con racionamiento \emph{eficiente}.
+\item Gatillo: \autor{Bertrand} $\beta\geq1-1/n$; \autor{Cournot} lineal $9/17$. \emph{Tit for tat} no es en general ENPS. Finito con un único EN de etapa: nada cambia.
+\item \autor{Green}-\autor{Porter}: guerras tras \emph{caídas} de la demanda (no observada); \autor{Rotemberg}-\autor{Saloner}: en los \emph{auges}.
+\item Impugnables: sin costes hundidos, misma tecnología y retardo; \emph{no} hace falta rendimientos constantes.
+\item Núcleo $\neq$ estabilidad no cooperativa: \autor{Shapley} en el núcleo y aun así cada una prefiere quedarse fuera.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}

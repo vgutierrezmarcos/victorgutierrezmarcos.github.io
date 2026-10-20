@@ -39,7 +39,14 @@
     \begin{itemize}
     \item Hay antecedentes en el siglo XIX: el duopolio de \textcite{Cournot1838Recherches}, cuyo equilibrio es un caso particular del de \autor{Nash}, y su crítica por \autor{Bertrand} (1883). En 1913, \autor{Zermelo} prueba que el ajedrez tiene solución \parencite{Zermelo1913Anwendung}.
     \item La teoría nace como disciplina con el teorema minimax de \textcite{VonNeumann1928Theorie} y, sobre todo, con \emph{Theory of Games and Economic Behavior} de \textcite{VonNeumannMorgenstern1944Theory}, cuyo apéndice de la 2.ª edición (1947) axiomatiza la utilidad esperada \vertema{3.A.10}.
-    \item Entre 1950 y 1975 se fijan los conceptos de solución: el equilibrio de \textcite{Nash1950Equilibrium}, la negociación \parencite{Nash1950Bargaining}, el valor de \textcite{Shapley1953Value}, la perfección en subjuegos \parencite{Selten1965Spieltheoretische} y los juegos con información incompleta \parencite{Harsanyi1967Games}.
+    \item Entre 1950 y 1975 se fijan los conceptos de solución:
+      \begin{itemize}
+      \item el equilibrio de \textcite{Nash1950Equilibrium};
+      \item la negociación \parencite{Nash1950Bargaining};
+      \item el valor de \textcite{Shapley1953Value};
+      \item la perfección en subjuegos \parencite{Selten1965Spieltheoretische}, y
+      \item los juegos con información incompleta \parencite{Harsanyi1967Games}.
+      \end{itemize}
     \item Desde los años 70 se aplica de forma masiva: la organización industrial, la economía de la información, el comercio internacional, la política monetaria y, desde los 90, el diseño de subastas y de mercados.
     \end{itemize}
   \item \emph{Desde un punto de vista teórico}, en competencia perfecta y en monopolio no hace falta: el precio-aceptante es demasiado pequeño para influir en los demás y el monopolista no tiene rivales \vertema{3.A.16} \vertema{3.A.17}. La teoría de juegos es necesaria cuando hay pocos agentes y cada uno influye en lo que obtienen los demás.
@@ -55,13 +62,37 @@
 
 \item \textbf{\emph{Estructura}}: la exposición se divide en 3 bloques, que siguen el orden del título: primero los principales conceptos y después sus aplicaciones.
   \begin{itemize}
-  \item \concepto{Principales conceptos: juegos con información completa} (\ref{sec:conceptos-informacion-completa}): los elementos de un juego y su clasificación (\ref{sec:elementos}), los juegos estáticos y el equilibrio de \autor{Nash} (\ref{sec:juegos-estaticos}) y los juegos dinámicos (\ref{sec:juegos-dinamicos}): los secuenciales, con la perfección en subjuegos y la credibilidad (\ref{sec:enps}), y los repetidos, en los que se puede cooperar sin contratos (\ref{sec:repetidos}).
-  \item \concepto{Principales conceptos: información incompleta, negociación y juegos cooperativos} (\ref{sec:conceptos-informacion-incompleta}): los juegos bayesianos (\ref{sec:juegos-bayesianos}), el equilibrio bayesiano perfecto y la señalización (\ref{sec:ebp-senalizacion}), y la negociación y los juegos cooperativos, con el núcleo y el valor de \autor{Shapley} (\ref{sec:negociacion-cooperativos}).
-  \item \concepto{Aplicaciones, con especial referencia a las subastas} (\ref{sec:aplicaciones-subastas}): las aplicaciones en economía (\ref{sec:aplicaciones}), el diseño de mecanismos (\ref{sec:diseno-mecanismos}) y las subastas (\ref{sec:subastas}), que terminan con la colusión entre los pujadores (\ref{sec:colusion-subastas}).
+  \item \concepto{Principales conceptos: juegos con información completa} (\ref{sec:conceptos-informacion-completa}):
+    \begin{itemize}
+    \item los elementos de un juego y su clasificación (\ref{sec:elementos});
+    \item los juegos estáticos y el equilibrio de \autor{Nash} (\ref{sec:juegos-estaticos}), y
+    \item los juegos dinámicos (\ref{sec:juegos-dinamicos}): los secuenciales, con la perfección en subjuegos y la credibilidad (\ref{sec:enps}), y los repetidos, en los que se puede cooperar sin contratos (\ref{sec:repetidos}).
+    \end{itemize}
+  \item \concepto{Principales conceptos: información incompleta, negociación y juegos cooperativos} (\ref{sec:conceptos-informacion-incompleta}):
+    \begin{itemize}
+    \item los juegos bayesianos (\ref{sec:juegos-bayesianos});
+    \item el equilibrio bayesiano perfecto y la señalización (\ref{sec:ebp-senalizacion}), y
+    \item la negociación y los juegos cooperativos, con el núcleo y el valor de \autor{Shapley} (\ref{sec:negociacion-cooperativos}).
+    \end{itemize}
+  \item \concepto{Aplicaciones, con especial referencia a las subastas} (\ref{sec:aplicaciones-subastas}):
+    \begin{itemize}
+    \item las aplicaciones en economía (\ref{sec:aplicaciones});
+    \item el diseño de mecanismos (\ref{sec:diseno-mecanismos}), y
+    \item las subastas (\ref{sec:subastas}), que terminan con la colusión entre los pujadores (\ref{sec:colusion-subastas}).
+    \end{itemize}
   \end{itemize}
-  El orden va de menos a más información privada, porque las subastas son juegos con información incompleta. El hilo conductor es el concepto de equilibrio (tabla~\ref{tab:clasificacion-juegos}): cada paso añade un ingrediente (el tiempo, la información privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. Una misma historia acompaña a toda la exposición: \concepto{I}, un operador de telecomunicaciones ya \emph{instalado} en el mercado, y \concepto{E}, uno que quiere \emph{entrar} en él. Se enfrentan en una guerra de precios, E decide si entra e I si se resiste, se encuentran cada mes, E no sabe cuáles son los costes de \textup{I}, negocian y forman un consorcio con un tercer operador y, al final, pujan por el espectro del 5G que subasta el Gobierno, donde el refrán del enganche reaparece del revés: «hoy gano yo, mañana tú».
+  El orden va de menos a más información privada, porque las subastas son juegos con información incompleta. El hilo conductor es el concepto de equilibrio (tabla~\ref{tab:clasificacion-juegos}): cada paso añade un ingrediente (el tiempo, la información privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. Una misma historia acompaña a toda la exposición: \concepto{I}, un operador de telecomunicaciones ya \emph{instalado} en el mercado, y \concepto{E}, uno que quiere \emph{entrar} en él. A lo largo de la exposición:
+  \begin{itemize}
+  \item se enfrentan en una guerra de precios;
+  \item E decide si entra e I si se resiste;
+  \item se encuentran cada mes;
+  \item E no sabe cuáles son los costes de \textup{I};
+  \item negocian y forman un consorcio con un tercer operador, y
+  \item al final, pujan por el espectro del 5G que subasta el Gobierno, donde el refrán del enganche reaparece del revés: «hoy gano yo, mañana tú».
+  \end{itemize}
 \end{itemize}
 
+\newpage
 \begin{esquema}
 \textbf{3.A.14. Teoría de juegos y subastas}\\[2pt]
 Introducción: «hoy por ti, mañana por mí»; interdependencia estratégica; de \autor{Cournot} y \autor{von Neumann} a \autor{Nash}, \autor{Selten} y \autor{Harsanyi}; el hilo de \textup{I} (instalada) y E (entrante)\\
@@ -133,7 +164,11 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
 \item \emph{Clasificación} (tabla~\ref{tab:clasificacion-juegos}):
   \begin{itemize}
   \item \concepto{no cooperativos} frente a \concepto{cooperativos}, según se puedan firmar o no acuerdos vinculantes;\footnote{«No cooperativo» no quiere decir que no haya cooperación: quiere decir que, si la hay, tiene que sostenerse sola, porque a cada uno le conviene mantenerla (como en los juegos repetidos, \ref{sec:repetidos}), y no porque un juez la imponga.}
-  \item \concepto{estáticos} o simultáneos, en los que cada jugador elige una sola vez y sin observar lo que han elegido los demás, frente a \concepto{dinámicos}, todos aquellos en los que el tiempo importa porque alguien mueve después de observar jugadas anteriores. Dentro de los dinámicos hay 2 clases: los \concepto{secuenciales}, que se juegan una sola vez pero por turnos, y los \concepto{repetidos}, en los que un mismo juego, el \concepto{juego de etapa}, se juega un número finito o infinito de veces. Es la nomenclatura de los manuales de teoría de juegos \parencites[cap.~2]{Gibbons1992Game}[caps.~7-9]{MasColellWhinstonGreen1995}[caps.~3-5]{FudenbergTirole1991Game}; parte de la organización industrial usa otra (recuadro gris de \ref{sec:enps});
+  \item \concepto{estáticos} o simultáneos, en los que cada jugador elige una sola vez y sin observar lo que han elegido los demás, frente a \concepto{dinámicos}, todos aquellos en los que el tiempo importa porque alguien mueve después de observar jugadas anteriores. Es la nomenclatura de los manuales de teoría de juegos \parencites[cap.~2]{Gibbons1992Game}[caps.~7-9]{MasColellWhinstonGreen1995}[caps.~3-5]{FudenbergTirole1991Game}; parte de la organización industrial usa otra (recuadro gris de \ref{sec:enps}). Dentro de los dinámicos hay 2 clases:
+    \begin{itemize}
+    \item los \concepto{secuenciales}, que se juegan una sola vez pero por turnos, y
+    \item los \concepto{repetidos}, en los que un mismo juego, el \concepto{juego de etapa}, se juega un número finito o infinito de veces;
+    \end{itemize}
   \item con \concepto{información perfecta}, si cada jugador, cuando le toca mover, conoce todas las jugadas anteriores (todos sus conjuntos de información tienen un solo nodo), o \concepto{imperfecta} si no. Un juego simultáneo es de información imperfecta: el que mueve «segundo» no ve lo que hizo el primero;
   \item con \concepto{información completa}, si los pagos de todos son conocimiento común, o \concepto{incompleta}, si algún jugador no conoce los pagos (el \concepto{tipo}) de otro (\ref{sec:conceptos-informacion-incompleta}). Son 2 cosas distintas: la información completa se refiere a los pagos, y la perfecta, a las jugadas; el dilema del prisionero tiene información completa e imperfecta. \textcite{Harsanyi1967Games} convierte la información incompleta en imperfecta (\ref{sec:juegos-bayesianos}). En la economía de la información, la selección adversa se modeliza como información incompleta y el riesgo moral como imperfecta \vertema{3.A.13}, y
   \item de \concepto{suma cero} (lo que gana uno lo pierde otro) o de suma variable.
@@ -174,8 +209,14 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
   \item $s_i$ es una estrategia \concepto{estrictamente dominante} si da al jugador más que cualquier otra, hagan lo que hagan los demás: $u_i(s_i,s_{-i})>u_i(s_i',s_{-i})$ para toda $s_i'\neq s_i$ y toda $s_{-i}\in S_{-i}$;
   \item $s_i'$ está \concepto{estrictamente dominada} por $s_i$ si $u_i(s_i,s_{-i})>u_i(s_i',s_{-i})$ para toda $s_{-i}$, y \concepto{débilmente dominada} si $u_i(s_i,s_{-i})\geq u_i(s_i',s_{-i})$ para toda $s_{-i}$, con desigualdad estricta para alguna.
   \end{itemize}
-\item \emph{Hilo: la guerra de precios} (tabla~\ref{tab:dilema-prisionero}). I y E fijan a la vez un precio alto o uno bajo. Si los 2 mantienen el precio alto, ganan 5 cada uno; si uno lo baja y el otro no, el que lo baja se queda con los clientes del otro y gana 6, y el otro, 0; si los 2 lo bajan, ganan 1.
+\item \emph{Hilo: la guerra de precios} (tabla~\ref{tab:dilema-prisionero}). I y E fijan a la vez un precio alto o uno bajo.
   \begin{itemize}
+  \item Pagos:
+    \begin{itemize}
+    \item si los 2 mantienen el precio alto, ganan 5 cada uno;
+    \item si uno lo baja y el otro no, el que lo baja se queda con los clientes del otro y gana 6, y el otro, 0, y
+    \item si los 2 lo bajan, ganan 1.
+    \end{itemize}
   \item Bajar el precio es estrictamente dominante para los 2 ($6>5$ si el otro lo mantiene y $1>0$ si lo baja), y el resultado (Bajo, Bajo) es peor para ambos que (Alto, Alto): la \emph{racionalidad individual} lleva a un resultado \emph{colectivamente ineficiente} en el sentido de \autor{Pareto}.
   \item Tiene la estructura del \concepto{dilema del prisionero}, la del cártel \vertema{3.A.19}, del polizón en los bienes públicos \vertema{3.A.23}, de las guerras arancelarias \vertema{3.B.7} y de los programas de clemencia \vertema{4.A.15}.
   \end{itemize}
@@ -294,7 +335,12 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
 \subsection{Juegos dinámicos: juegos secuenciales y juegos repetidos}\label{sec:juegos-dinamicos}
 
 \begin{itemize}
-\item Una vez estudiados los juegos en los que todos eligen a la vez y una sola vez, pasamos a los \emph{dinámicos}, en los que el tiempo importa. Son de 2 clases: los \emph{secuenciales}, en los que se mueve por turnos (E decide si entra e I responde), y los \emph{repetidos}, en los que el mismo juego se juega muchas veces (\textup{I} y E se encuentran cada mes). En los primeros aparece un problema nuevo, la \concepto{credibilidad}: un EN puede apoyarse en una amenaza que el jugador no cumpliría si llegara el momento. En los segundos, una oportunidad nueva: la amenaza de castigar mañana puede sostener la cooperación hoy. \emph{Conclusión anticipada}: el concepto de solución es el mismo para los 2, el ENPS, que exige que las estrategias sean óptimas en cualquier punto del juego.
+\item Una vez estudiados los juegos en los que todos eligen a la vez y una sola vez, pasamos a los \emph{dinámicos}, en los que el tiempo importa. Son de 2 clases:
+  \begin{itemize}
+  \item los \emph{secuenciales}, en los que se mueve por turnos (E decide si entra e I responde). En ellos aparece un problema nuevo, la \concepto{credibilidad}: un EN puede apoyarse en una amenaza que el jugador no cumpliría si llegara el momento;
+  \item los \emph{repetidos}, en los que el mismo juego se juega muchas veces (\textup{I} y E se encuentran cada mes). En ellos aparece una oportunidad nueva: la amenaza de castigar mañana puede sostener la cooperación hoy.
+  \end{itemize}
+\item \emph{Conclusión anticipada}: el concepto de solución es el mismo para los 2, el ENPS, que exige que las estrategias sean óptimas en cualquier punto del juego.
 \end{itemize}
 
 \subsubsection{Juegos secuenciales: inducción hacia atrás, perfección en subjuegos y compromiso}\label{sec:enps}
@@ -323,7 +369,13 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Inducción hacia atrás}: es un \emph{procedimiento}, no un tipo de equilibrio. Se resuelve primero la última decisión, se sustituye el subárbol por su resultado y se repite hacia la raíz. Todo juego finito de información perfecta tiene así un equilibrio en estrategias puras, único si nadie tiene 2 pagos iguales \parencites{Zermelo1913Anwendung}{Kuhn1953Extensive}. \emph{Hilo}: I, si E entra, acomoda ($1>-1$); E, que lo anticipa, entra ($1>0$).
+\item \emph{Inducción hacia atrás}: es un \emph{procedimiento}, no un tipo de equilibrio, en 3 pasos:
+  \begin{enumerate}
+  \item se resuelve primero la última decisión;
+  \item se sustituye el subárbol por su resultado, y
+  \item se repite hacia la raíz.
+  \end{enumerate}
+\item Todo juego finito de información perfecta tiene así un equilibrio en estrategias puras, único si nadie tiene 2 pagos iguales \parencites{Zermelo1913Anwendung}{Kuhn1953Extensive}. \emph{Hilo}: I, si E entra, acomoda ($1>-1$); E, que lo anticipa, entra ($1>0$).
 \item \emph{Subjuego}: la parte del árbol que empieza en un nodo cuyo conjunto de información tiene ese solo nodo y que incluye todos sus sucesores sin cortar ningún conjunto de información. \emph{Hilo}: el juego que empieza cuando E ya ha entrado e I tiene que decidir es un subjuego.
 \item \emph{Definición} \parencite{Selten1965Spieltheoretische}. Un perfil es un \concepto{equilibrio de \autor{Nash} perfecto en subjuegos} (ENPS) si induce un EN en \emph{todo} subjuego, también en los que no se alcanzan en equilibrio. Formaliza la \concepto{racionalidad secuencial}: la estrategia debe ser óptima desde cualquier punto del juego en adelante.
   \begin{itemize}
@@ -357,7 +409,12 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
 \paragraph{c) Extensiones}
 
 \begin{itemize}
-\item \emph{Juegos en 2 etapas}: primero se elige la localización, la capacidad o la calidad y después se compite en precios o cantidades. Se resuelven por inducción hacia atrás, empezando por el equilibrio de la segunda etapa \vertema{3.A.18} \vertema{3.A.19}. El liderazgo de \autor{Stackelberg} es el ENPS de un duopolio de \autor{Cournot} jugado por turnos.
+\item \emph{Juegos en 2 etapas}, que se resuelven por inducción hacia atrás, empezando por el equilibrio de la segunda etapa \vertema{3.A.18} \vertema{3.A.19}:
+  \begin{enumerate}
+  \item primero se elige la localización, la capacidad o la calidad;
+  \item después se compite en precios o cantidades.
+  \end{enumerate}
+\item El liderazgo de \autor{Stackelberg} es el ENPS de un duopolio de \autor{Cournot} jugado por turnos.
 \item \emph{Negociación}: el juego de ofertas alternadas de \autor{Rubinstein} es un juego dinámico que se resuelve por inducción hacia atrás (\ref{sec:negociacion}).
 \end{itemize}
 
@@ -415,7 +472,7 @@ Son de profundización el juego sin estrategias dominadas, el recuadro sobre los
   \item \concepto{estrategia incondicionada}: jugar el EN de la etapa pase lo que pase (bajar siempre el precio). Es siempre un ENPS: en cada etapa se juega un EN y lo que uno haga hoy no cambia lo que hará el otro mañana. Pero no saca del dilema;
   \item \concepto{estrategias condicionadas}: lo que se hace depende de la historia. La más sencilla es la del \concepto{gatillo} (\emph{trigger}) de \textcite{Friedman1971Supergames}: cooperar mientras el otro coopere y, si alguna vez se desvía, jugar el EN de la etapa para siempre. Con $u^{\mathrm C}$ el pago por etapa de cooperar, $u^{\mathrm D}$ el de desviarse una etapa y $u^{\mathrm N}$ el del EN de la etapa (el castigo), a un jugador no le conviene desviarse si lo que gana cooperando siempre supera lo que gana desviándose hoy y siendo castigado después, $u^{\mathrm C}/(1-\beta)\geq u^{\mathrm D}+\beta\,u^{\mathrm N}/(1-\beta)$; es decir, si es lo bastante paciente:
 \funcionclave[eq:gatillo]{\beta\;\geq\;\frac{u^{\mathrm{D}}-u^{\mathrm{C}}}{u^{\mathrm{D}}-u^{\mathrm{N}}}}
-  El numerador es lo que se gana hoy desviándose; el denominador, lo que se pierde cada etapa después. El castigo es creíble, porque volver al EN de la etapa es un EN en cada subjuego, y por el principio de la desviación única basta con esta comparación: el gatillo es un ENPS.
+  El numerador es lo que se gana hoy desviándose; el denominador, lo que se pierde cada etapa después. El castigo es creíble, porque volver al EN de la etapa es un EN en cada subjuego, y por el principio de la desviación única basta con esta comparación: el gatillo es un ENPS.\footnote{Gráficamente, con los pagos de cada etapa ya descontados, $\beta^tu$, se comparan 2 áreas: lo que se gana desviándose hoy, hasta que el otro reacciona (en rojo), y lo que se pierde por el castigo desde entonces y para siempre (en azul). Cooperar compensa si la azul es mayor, y lo es tanto más cuanto más paciente es el jugador, porque un $\beta$ más alto pesa más el futuro. Es el mismo gráfico con el que se estudia la colusión tácita, con el retraso en detectar la desviación \vertema{3.A.19}.\graficonota[0.6]{colusion-tiempo}}
   \end{itemize}
 \item \emph{Hilo}: con los pagos de la guerra de precios, $u^{\mathrm C}=5$, $u^{\mathrm D}=6$ y $u^{\mathrm N}=1$, así que el precio alto se sostiene si $\beta\geq(6-5)/(6-1)=1/5$. Como I y E se encuentran cada mes, $\beta$ está muy cerca de 1, y cooperar sin contrato es un ENPS.
 \end{itemize}
@@ -442,7 +499,12 @@ Castigo tras 2 desviaciones (\emph{tit for two tats}) & cooperar salvo que el ot
 \end{table}
 
 \begin{itemize}
-\item \emph{Otras estrategias condicionadas}, más indulgentes que el gatillo (tabla~\ref{tab:estrategias-repetidas}; cada fila se comprueba con el principio de la desviación única en el anexo~\ref{anexo:test}): «donde las dan, las toman» (\emph{tit for tat}), que repite lo que el otro hizo en la etapa anterior; la que solo castiga tras 2 desviaciones seguidas (\emph{tit for two tats}), que perdona una desviación aislada, y «si gano, repito; si pierdo, cambio» (\emph{win-stay, lose-shift}), que estudiaron \textcite{NowakSigmund1993Strategy}.
+\item \emph{Otras estrategias condicionadas}, más indulgentes que el gatillo (tabla~\ref{tab:estrategias-repetidas}; cada fila se comprueba con el principio de la desviación única en el anexo~\ref{anexo:test}):
+  \begin{itemize}
+  \item «donde las dan, las toman» (\emph{tit for tat}), que repite lo que el otro hizo en la etapa anterior;
+  \item la que solo castiga tras 2 desviaciones seguidas (\emph{tit for two tats}), que perdona una desviación aislada, y
+  \item «si gano, repito; si pierdo, cambio» (\emph{win-stay, lose-shift}), que estudiaron \textcite{NowakSigmund1993Strategy}.
+  \end{itemize}
 \item \concepto{Teorema de tradición oral} (\emph{folk theorem}; el nombre recuerda que se conocía antes de publicarse): en un juego repetido infinitamente, \emph{cualquier} pago medio factible que dé a cada jugador más que su pago de castigo puede sostenerse como ENPS si los jugadores son lo bastante pacientes ($\beta$ cercano a 1). \textcite{Friedman1971Supergames} lo prueba con castigos de reversión al EN; \textcite{FudenbergMaskin1986Folk}, con el pago minimax como castigo. \emph{Hilo}: I y E pueden sostener cualquier par de beneficios medios entre 1 y 5 cada uno (y otros que alternen precios), no solo el precio alto.
 \end{itemize}
 
@@ -528,7 +590,11 @@ Son de profundización los refinamientos de las creencias, el juego de mayoría 
   Es un EN del juego en el que cada tipo se trata como un jugador distinto. No necesita creencias fuera del equilibrio: eso solo hace falta cuando hay varias etapas (\ref{sec:ebp-senalizacion}).
 \item \emph{Hilo: la entrada de E con costes desconocidos}. E decide si entra en el mercado mientras I decide, a la vez, si amplía su capacidad. Ampliar es caro para I si es de \emph{coste alto}, con probabilidad $\pi$, y barato si es de \emph{coste bajo}; E no sabe cuál tiene enfrente.
   \begin{itemize}
-  \item Pagos (E, I). Si I es de coste alto: Entrar y Ampliar, $(-1,-1)$; Entrar y No ampliar, $(1,1)$; No entrar y Ampliar, $(0,2)$; No entrar y No ampliar, $(0,3)$. Si es de coste bajo: Entrar y Ampliar, $(-1,2)$; Entrar y No ampliar, $(1,1)$; No entrar y Ampliar, $(0,4)$; No entrar y No ampliar, $(0,3)$.
+  \item Pagos (E, I):
+    \begin{itemize}
+    \item si I es de coste alto: Entrar y Ampliar, $(-1,-1)$; Entrar y No ampliar, $(1,1)$; No entrar y Ampliar, $(0,2)$; No entrar y No ampliar, $(0,3)$;
+    \item si es de coste bajo: Entrar y Ampliar, $(-1,2)$; Entrar y No ampliar, $(1,1)$; No entrar y Ampliar, $(0,4)$; No entrar y No ampliar, $(0,3)$.
+    \end{itemize}
   \item Cada tipo de \textup{I} tiene una estrategia dominante: el de coste alto no amplía nunca ($1>-1$ y $3>2$) y el de coste bajo amplía siempre ($2>1$ y $4>3$). La estrategia de \textup{I} es la regla «no ampliar si mi coste es alto, ampliar si es bajo».
   \item E compara su pago esperado con su creencia a priori: entrar le da $\pi\cdot1+(1-\pi)(-1)=2\pi-1$, y no entrar, 0.
   \item EBN: (Entrar; No ampliar si alto, Ampliar si bajo) si $\pi\geq1/2$, y (No entrar; No ampliar si alto, Ampliar si bajo) si $\pi\leq1/2$. Lo que decide E es su creencia sobre el tipo de \textup{I}.
@@ -615,7 +681,11 @@ c_{\mathrm A}(\hat y)\;\leq\;w_{\mathrm A}-w_{\mathrm B}\;\leq\;c_{\mathrm B}(\h
 \paragraph{c) Extensiones}
 
 \begin{itemize}
-\item \emph{Refinamientos}: el \concepto{equilibrio secuencial} de \textcite{KrepsWilson1982Sequential} obtiene las creencias fuera de la senda como límite de estrategias con errores, y el \concepto{equilibrio perfecto de mano temblorosa} de \textcite{Selten1975Reexamination} exige que la estrategia siga siendo óptima si los rivales se equivocan con una probabilidad pequeña.
+\item \emph{Refinamientos}:
+  \begin{itemize}
+  \item el \concepto{equilibrio secuencial} de \textcite{KrepsWilson1982Sequential} obtiene las creencias fuera de la senda como límite de estrategias con errores, y
+  \item el \concepto{equilibrio perfecto de mano temblorosa} de \textcite{Selten1975Reexamination} exige que la estrategia siga siendo óptima si los rivales se equivocan con una probabilidad pequeña.
+  \end{itemize}
 \item \emph{Otras aplicaciones}: el precio límite como señal de costes bajos \parencite{MilgromRoberts1982Limit} \vertema{3.A.15} y la reputación de los juegos repetidos (\ref{sec:repetidos}).
 \end{itemize}
 
@@ -652,7 +722,14 @@ c_{\mathrm A}(\hat y)\;\leq\;w_{\mathrm A}-w_{\mathrm B}\;\leq\;c_{\mathrm B}(\h
 \subparagraph{ii) Desarrollo}
 
 \begin{itemize}
-\item \emph{Camino axiomático} \parencite{Nash1950Bargaining}. Se piden a la solución 4 propiedades razonables: que sea \emph{eficiente}, que trate igual a jugadores iguales (\emph{simetría}), que no dependa de las unidades en que se mide la utilidad (\emph{invariancia} a transformaciones afines) y que no cambie si se quitan alternativas que de todos modos no se habrían elegido (\emph{independencia de las alternativas irrelevantes}). La única que las cumple maximiza el producto de las ganancias respecto del punto de desacuerdo; si se abandona la simetría, la \concepto{solución de \autor{Nash} generalizada} pondera cada ganancia con el \concepto{poder de negociación} $\gamma\in(0,1)$ del jugador 1:
+\item \emph{Camino axiomático} \parencite{Nash1950Bargaining}. Se piden a la solución 4 propiedades razonables:
+  \begin{enumerate}
+  \item que sea \emph{eficiente};
+  \item que trate igual a jugadores iguales (\emph{simetría});
+  \item que no dependa de las unidades en que se mide la utilidad (\emph{invariancia} a transformaciones afines), y
+  \item que no cambie si se quitan alternativas que de todos modos no se habrían elegido (\emph{independencia de las alternativas irrelevantes}).
+  \end{enumerate}
+\item La única solución que las cumple maximiza el producto de las ganancias respecto del punto de desacuerdo; si se abandona la simetría, la \concepto{solución de \autor{Nash} generalizada} pondera cada ganancia con el \concepto{poder de negociación} $\gamma\in(0,1)$ del jugador 1:
 \funcionclave[eq:nash-negociacion]{\optim{\max}{u_1,\,u_2}{\big(u_1-u_1^0\big)^{\gamma}\big(u_2-u_2^0\big)^{1-\gamma}}{(u_1,u_2)\in\mathcal{U}\\ u_1\geq u_1^0,\ \ u_2\geq u_2^0}}
   Con los 4 axiomas, $\gamma=1/2$. Con utilidad transferible, cada uno obtiene su punto de desacuerdo más su parte ($\gamma$ y $1-\gamma$) del excedente neto del acuerdo.
 \item \emph{Camino estratégico} \parencite{Rubinstein1982Perfect}. 2 jugadores se reparten 1 euro proponiendo por turnos; cada ronda sin acuerdo les cuesta porque descuentan el futuro, con factores $\beta_1,\beta_2<1$ por ronda. Es un juego dinámico con información completa: su único ENPS lleva a un acuerdo en la primera oferta, y quien propone primero se lleva
@@ -671,7 +748,13 @@ x^*=\frac{1-\beta_2}{1-\beta_1\beta_2}
 
 \begin{itemize}
 \item El resultado de una negociación depende de lo que cada parte obtiene sin acuerdo (sus alternativas) y de su paciencia: mejorar la opción externa o poder esperar más da poder de negociación.
-\item \emph{Aplicaciones}: el monopolio bilateral, en el que el sindicato y la empresa acuerdan la cantidad eficiente y el salario reparte el excedente \vertema{3.A.17}, la negociación salarial \vertema{3.A.27}, el intercambio en la caja de \autor{Edgeworth} \vertema{3.A.21} y el reparto del beneficio de un cártel, con el beneficio de \autor{Cournot} como punto de desacuerdo \vertema{3.A.19}.
+\item \emph{Aplicaciones}:
+  \begin{itemize}
+  \item el monopolio bilateral, en el que el sindicato y la empresa acuerdan la cantidad eficiente y el salario reparte el excedente \vertema{3.A.17};
+  \item la negociación salarial \vertema{3.A.27};
+  \item el intercambio en la caja de \autor{Edgeworth} \vertema{3.A.21}, y
+  \item el reparto del beneficio de un cártel, con el beneficio de \autor{Cournot} como punto de desacuerdo \vertema{3.A.19}.
+  \end{itemize}
 \end{itemize}
 
 \paragraph{c) Evidencia empírica}
@@ -690,7 +773,14 @@ x^*=\frac{1-\beta_2}{1-\beta_1\beta_2}
 
 \begin{itemize}
 \item \emph{Supuestos}: acuerdos vinculantes y \concepto{utilidad transferible}: los pagos se pueden sumar y redistribuir entre los miembros de una coalición (por ejemplo, con dinero).
-\item \emph{Elementos}: el conjunto de jugadores $N$; las \concepto{coaliciones} $T\subseteq N$; la \concepto{función característica} $v(T)$, lo máximo que la coalición $T$ puede garantizarse por sí sola, con $v(\varnothing)=0$, y un \concepto{reparto} $x=(x_1,\dots,x_n)$. Un reparto es una \concepto{imputación} si es \emph{eficiente}, $\sum_{i\in N}x_i=v(N)$, e \emph{individualmente racional}, $x_i\geq v(\{i\})$.
+\item \emph{Elementos}:
+  \begin{itemize}
+  \item el conjunto de jugadores $N$;
+  \item las \concepto{coaliciones} $T\subseteq N$;
+  \item la \concepto{función característica} $v(T)$, lo máximo que la coalición $T$ puede garantizarse por sí sola, con $v(\varnothing)=0$, y
+  \item un \concepto{reparto} $x=(x_1,\dots,x_n)$.
+  \end{itemize}
+\item Un reparto es una \concepto{imputación} si es \emph{eficiente}, $\sum_{i\in N}x_i=v(N)$, e \emph{individualmente racional}, $x_i\geq v(\{i\})$.
 \item \emph{Definición} \parencite{Gillies1959Solutions}. Una coalición $T$ \concepto{bloquea} un reparto si puede conseguir más por su cuenta, $v(T)>\sum_{i\in T}x_i$. El \concepto{núcleo} es el conjunto de imputaciones que \emph{ninguna coalición puede bloquear}:
 \[
 \mathcal{C}(v)=\Big\{x:\ \sum_{i\in N}x_i=v(N),\quad \sum_{i\in T}x_i\geq v(T)\ \ \forall\,T\subseteq N\Big\}.
@@ -733,11 +823,28 @@ x_2=0,\qquad x_1\in[60,100],\qquad x_3=100-x_1:
 \item \emph{Interpretación}: si los jugadores llegan en un orden aleatorio y cada uno cobra lo que aporta a los que ya estaban, el valor de \autor{Shapley} es su \emph{aportación marginal esperada}; el peso es la probabilidad de encontrarse justo con la coalición $T$ al llegar.
 \item \emph{Hilo}: en el juego de \textup{I}, E y O (\ref{sec:nucleo}), promediando las aportaciones en los 6 órdenes posibles (anexo~\ref{anexo:cooperativos}), $\phi=\big(66\tfrac23,\ 6\tfrac23,\ 26\tfrac23\big)$ para I, E y O: se reparte todo (eficiencia), y E recibe algo porque su presencia sube lo que I puede pedir. No está en el núcleo, porque da algo a E, que no se queda con la red. Núcleo y valor de \autor{Shapley} responden a preguntas distintas: el primero, a qué repartos resisten la competencia; el segundo, a cuál es equitativo según la aportación de cada uno.
 \item \emph{Propiedades}: existe siempre y es único, pero no tiene por qué estar en el núcleo; sí lo está en los juegos \emph{convexos}, en los que la aportación de cada uno crece con el tamaño de la coalición \parencite{Shapley1971Cores}.
-\item \emph{Valoración y aplicaciones}: su cálculo exige recorrer $2^{n-1}$ coaliciones por jugador, así que no es sencillo de computar con muchos jugadores. Se usa para medir el poder de voto (índice de \textcite{ShapleyShubik1954Method}) \vertema{3.A.24}, repartir costes comunes, estudiar qué cárteles y alianzas entre empresas son estables \vertema{3.A.19} y atribuir la contribución de cada variable en la estadística y el aprendizaje automático; con un continuo de agentes da también las asignaciones competitivas \parencite{Aumann1975Values} \vertema{3.A.21}.
+\item \emph{Valoración y aplicaciones}: su cálculo exige recorrer $2^{n-1}$ coaliciones por jugador, así que no es sencillo de computar con muchos jugadores. Se usa para:
+  \begin{itemize}
+  \item medir el poder de voto (índice de \textcite{ShapleyShubik1954Method}) \vertema{3.A.24};
+  \item repartir costes comunes;
+  \item estudiar qué cárteles y alianzas entre empresas son estables \vertema{3.A.19}, y
+  \item atribuir la contribución de cada variable en la estadística y el aprendizaje automático.
+  \end{itemize}
+\item Con un continuo de agentes, el valor de \autor{Shapley} da también las asignaciones competitivas \parencite{Aumann1975Values} \vertema{3.A.21}.
 \end{itemize}
 
 \begin{itemize}
-\item \emph{Recapitulación del bloque II}: la información privada se incorpora con tipos, probabilidades y creencias (EBN y EBP), y la señalización muestra que las creencias fuera del equilibrio son las que sostienen el resultado; con acuerdos vinculantes, la solución de \autor{Nash} reparte entre 2 según sus alternativas y su paciencia, el núcleo dice qué repartos son estables frente a las coaliciones y el valor de \autor{Shapley} elige uno equitativo. I y E ya saben qué esperar cuando compiten, se encuentran cada mes, se ocultan información o se asocian. Ya sabemos predecir; queda usarlo. Hasta aquí hemos tomado el juego como dado; el último bloque (\ref{sec:aplicaciones-subastas}) le da la vuelta.
+\item \emph{Recapitulación del bloque II}:
+  \begin{itemize}
+  \item la información privada se incorpora con tipos, probabilidades y creencias (EBN y EBP), y la señalización muestra que las creencias fuera del equilibrio son las que sostienen el resultado;
+  \item con acuerdos vinculantes:
+    \begin{itemize}
+    \item la solución de \autor{Nash} reparte entre 2 según sus alternativas y su paciencia;
+    \item el núcleo dice qué repartos son estables frente a las coaliciones, y
+    \item el valor de \autor{Shapley} elige uno equitativo.
+    \end{itemize}
+  \end{itemize}
+\item I y E ya saben qué esperar cuando compiten, se encuentran cada mes, se ocultan información o se asocian. Ya sabemos predecir; queda usarlo. Hasta aquí hemos tomado el juego como dado; el último bloque (\ref{sec:aplicaciones-subastas}) le da la vuelta.
 \end{itemize}
 
 
@@ -768,17 +875,33 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
 \begin{itemize}
 \item Una vez estudiados los conceptos, pasamos a sus aplicaciones. Primero, en qué partes de la economía se usan; después, la aplicación que le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, el \emph{diseñador} elige las reglas para alcanzar el resultado que quiere, y las subastas son su aplicación más acabada.
 \item \emph{Hilo}: el Gobierno subasta las licencias de espectro del 5G, e I, E y O pujan por ellas. Hasta ahora las reglas venían dadas; ahora las escribe el Gobierno, que no sabe cuánto vale cada licencia para cada operador.
-\item \emph{Conclusión anticipada}: basta con buscar entre mecanismos en los que decir la verdad es óptimo; la información privada tiene un coste que el diseño reduce pero no elimina, y en las subastas, con valores privados independientes, el formato importa menos de lo que parece. En la práctica, lo decisivo es lo que el modelo da por resuelto: que acudan pujadores y que no se repartan el bien entre ellos.
+\item \emph{Conclusión anticipada}:
+  \begin{itemize}
+  \item basta con buscar entre mecanismos en los que decir la verdad es óptimo;
+  \item la información privada tiene un coste que el diseño reduce pero no elimina, y
+  \item en las subastas, con valores privados independientes, el formato importa menos de lo que parece.
+  \end{itemize}
+\item En la práctica, lo decisivo es lo que el modelo da por resuelto: que acudan pujadores y que no se repartan el bien entre ellos.
 \end{itemize}
 
 % --------------------------------------------------------------------------
 \subsection{Aplicaciones de la teoría de juegos en economía}\label{sec:aplicaciones}
 
 \begin{itemize}
-\item \emph{Organización industrial}: el oligopolio de \autor{Cournot}, \autor{Bertrand} y \autor{Stackelberg} como EN y ENPS, y la colusión tácita con el teorema de tradición oral \vertema{3.A.19}; la diferenciación de producto resuelta por etapas \vertema{3.A.18}; la disuasión de la entrada, el compromiso de capacidad y el precio límite como señal \vertema{3.A.15}.
+\item \emph{Organización industrial}:
+  \begin{itemize}
+  \item el oligopolio de \autor{Cournot}, \autor{Bertrand} y \autor{Stackelberg} como EN y ENPS, y la colusión tácita con el teorema de tradición oral \vertema{3.A.19};
+  \item la diferenciación de producto resuelta por etapas \vertema{3.A.18}, y
+  \item la disuasión de la entrada, el compromiso de capacidad y el precio límite como señal \vertema{3.A.15}.
+  \end{itemize}
 \item \emph{Información asimétrica}: la señalización, la autoselección y la relación principal-agente son juegos bayesianos \vertema{3.A.13}; la regulación con información asimétrica, un problema de diseño de mecanismos \vertema{3.A.17}.
 \item \emph{Mercado de trabajo}: la negociación salarial con la solución de \autor{Nash} \vertema{3.A.27}.
-\item \emph{Sector público y elección colectiva}: el polizón en los bienes públicos como dilema del prisionero y los mecanismos de \autor{Clarke}-\autor{Groves} \vertema{3.A.23}; el voto estratégico y el teorema de \autor{Gibbard}-\autor{Satterthwaite} \vertema{3.A.24}; la imposición óptima con información privada \vertema{4.B.11}.
+\item \emph{Sector público y elección colectiva}:
+  \begin{itemize}
+  \item el polizón en los bienes públicos como dilema del prisionero y los mecanismos de \autor{Clarke}-\autor{Groves} \vertema{3.A.23};
+  \item el voto estratégico y el teorema de \autor{Gibbard}-\autor{Satterthwaite} \vertema{3.A.24}, y
+  \item la imposición óptima con información privada \vertema{4.B.11}.
+  \end{itemize}
 \item \emph{Comercio internacional}: la guerra arancelaria como dilema del prisionero \parencite{Johnson1953Optimum} \vertema{3.B.7} y la política comercial estratégica de \textcite{BranderSpencer1985Export} \vertema{3.B.8}.
 \item \emph{Macroeconomía}: la credibilidad y la inconsistencia temporal de la política monetaria \vertema{3.A.36}, los ataques especulativos contra un tipo de cambio fijo como juego de coordinación con varios equilibrios \vertema{3.B.17} y la coordinación de políticas entre países.
 \item \emph{Defensa de la competencia}: los programas de clemencia convierten el cártel en un dilema del prisionero para sus miembros: el primero que confiesa queda exento de la multa \vertema{4.A.15} \vertema{3.A.19}.
@@ -844,7 +967,15 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
 \subsection{Subastas}\label{sec:subastas}
 
 \begin{itemize}
-\item Una vez establecido el marco del diseño de mecanismos, pasamos a su aplicación central, que es la «especial referencia» del título. Seguimos al Gobierno en las decisiones que tiene que tomar: qué formato usar, cómo pujarán los operadores en cada uno, cuánto recaudará, qué ocurre si nadie sabe lo que vale la licencia, cómo vender varias a la vez y cómo evitar que los operadores se pongan de acuerdo.
+\item Una vez establecido el marco del diseño de mecanismos, pasamos a su aplicación central, que es la «especial referencia» del título. Seguimos al Gobierno en las decisiones que tiene que tomar:
+  \begin{itemize}
+  \item qué formato usar;
+  \item cómo pujarán los operadores en cada uno;
+  \item cuánto recaudará;
+  \item qué ocurre si nadie sabe lo que vale la licencia;
+  \item cómo vender varias a la vez, y
+  \item cómo evitar que los operadores se pongan de acuerdo.
+  \end{itemize}
 \end{itemize}
 
 \subsubsection{Concepto, formatos y tipos de valores}\label{sec:subastas-formatos}
@@ -946,7 +1077,11 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
 \mathbb{E}\big[I^{\mathrm{1P}}\big]=\frac{n-1}{n}\,\mathbb{E}\big[v_{(1)}\big]=\frac{n-1}{n}\cdot\frac{n}{n+1}=\mathbb{E}\big[v_{(2)}\big]=\mathbb{E}\big[I^{\mathrm{2P}}\big]=\frac{n-1}{n+1},
 \end{equation}
   donde 1P y 2P indican primer y segundo precio, y $v_{(1)}$ y $v_{(2)}$ son la valoración más alta y la segunda más alta.\footnote{El ingreso del vendedor, $I$, en cursiva, no tiene que ver con la empresa instalada, I, de la historia que acompaña a la exposición.}
-\item No es casualidad. \concepto{Teorema de equivalencia de ingresos} \parencites{Vickrey1961Counterspeculation}{Myerson1981Optimal}{RileySamuelson1981Optimal}: con pujadores \emph{neutrales al riesgo} y \emph{simétricos} y valores privados \emph{independientes} extraídos de una distribución continua común, todo formato de subasta en el que, en equilibrio, (1) el bien va a quien más lo valora y (2) el pujador con el valor más bajo posible espera una ganancia nula, da al vendedor el \emph{mismo ingreso esperado}, y a cada tipo de pujador, el mismo pago esperado.
+\item No es casualidad. \concepto{Teorema de equivalencia de ingresos} \parencites{Vickrey1961Counterspeculation}{Myerson1981Optimal}{RileySamuelson1981Optimal}: con pujadores \emph{neutrales al riesgo} y \emph{simétricos} y valores privados \emph{independientes} extraídos de una distribución continua común, todo formato de subasta que cumpla en equilibrio 2 condiciones da al vendedor el \emph{mismo ingreso esperado}, y a cada tipo de pujador, el mismo pago esperado:
+  \begin{enumerate}
+  \item el bien va a quien más lo valora, y
+  \item el pujador con el valor más bajo posible espera una ganancia nula.
+  \end{enumerate}
 \item \emph{Hilo}: con las valoraciones de \textup{I}, E y O, el Gobierno cobra 8 en segundo precio y 6,67 en primer precio; con otras, sería al revés. En promedio, con 3 operadores y valoraciones uniformes entre 0 y 12, recauda lo mismo con los 2 formatos: $12\cdot\frac{2}{4}=6$.
 \item \emph{Intuición}: lo que espera ganar cada tipo depende solo de con qué probabilidad gana; si la regla de asignación es la misma, también lo es lo que paga en promedio. El formato cambia \emph{cómo} se paga (la propia puja o la segunda), no \emph{cuánto} en promedio (anexo~\ref{anexo:subastas}). También la subasta «todos pagan» (pagan todos los participantes, como en una carrera de patentes o en la presión de los grupos de interés) recauda lo mismo.
 \item \emph{Lectura}: a igualdad de supuestos, elegir el formato no da más ingreso. Gran parte de la teoría de subastas consiste en ver qué pasa cuando fallan los supuestos.
@@ -977,7 +1112,11 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
 \begin{itemize}
 \item \emph{Maldición del ganador en el laboratorio}: en los experimentos con valor común, los pujadores sin experiencia pierden dinero de forma sistemática \parencite{KagelLevin1986Winners}.
 \item \emph{Valores privados en el laboratorio}: en primer precio se puja más de lo que predice el modelo con neutralidad al riesgo, y en segundo precio muchos pujan por encima de su valoración, aunque pujarla sea dominante \parencite{KagelLevin1993Independent}.
-\item \emph{El precio de reserva en acción}: en la cuarta subasta de renovables, en noviembre de 2022, con inflación y tipos al alza, el precio de reserva dejó adjudicados solo 45,5 de los 3.300~MW subastados \parencite{MITECO2022CuartaSubasta}; y, con poca competencia, la subasta de espectro de 26~GHz, en diciembre de 2022, adjudicó 9 de las 12 concesiones estatales, a su precio de salida de 4 millones cada una, y 1 de las 38 autonómicas, por 36,2 millones de euros en total \parencite{MINECO2022Subasta26GHz}.
+\item \emph{El precio de reserva en acción}:
+  \begin{itemize}
+  \item en la cuarta subasta de renovables, en noviembre de 2022, con inflación y tipos al alza, el precio de reserva dejó adjudicados solo 45,5 de los 3.300~MW subastados \parencite{MITECO2022CuartaSubasta}, y
+  \item con poca competencia, la subasta de espectro de 26~GHz, en diciembre de 2022, adjudicó 9 de las 12 concesiones estatales, a su precio de salida de 4 millones cada una, y 1 de las 38 autonómicas, por 36,2 millones de euros en total \parencite{MINECO2022Subasta26GHz}.
+  \end{itemize}
 \end{itemize}
 
 \paragraph{e) Valoración: lo que de verdad importa}
@@ -989,7 +1128,12 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
   \item Las de \emph{sobre cerrado} dan una oportunidad a los débiles, pero no revelan información. Una solución híbrida es la subasta anglo-holandesa: ascendente hasta que quedan 2 y, entre ellos, sobre cerrado.
   \end{itemize}
 \item \emph{Hilo}: si el Gobierno saca tantas licencias como operadores hay, I, E y O no tienen por qué competir: cada uno sabe que se llevará la suya, y pujará el precio de salida.
-\item \emph{Clásico: las subastas del 3G de 2000}. El Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron \parencite{BinmoreKlemperer2002Biggest}; en los Países Bajos había tantas licencias como operadores instalados, y en Suiza las uniones y retiradas de última hora dejaron tantos pujadores como licencias \parencite{Klemperer2002WhatReallyMatters} (anexo~\ref{anexo:clasicos}).
+\item \emph{Clásico: las subastas del 3G de 2000} (anexo~\ref{anexo:clasicos}):
+  \begin{itemize}
+  \item el Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron \parencite{BinmoreKlemperer2002Biggest};
+  \item en los Países Bajos había tantas licencias como operadores instalados, y
+  \item en Suiza las uniones y retiradas de última hora dejaron tantos pujadores como licencias \parencite{Klemperer2002WhatReallyMatters}.
+  \end{itemize}
 \end{itemize}
 
 \subsubsection{Varias unidades, nuevos formatos y subastas en España y en la UE}\label{sec:multiunidad}
@@ -1008,7 +1152,12 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
   \end{itemize}
 \item \emph{España y la UE}:
   \begin{itemize}
-  \item \emph{Deuda pública}: el Tesoro emite con una subasta de varias unidades híbrida, que llama «convencional corregida»: las pujas competitivas por encima del precio medio ponderado pagan ese precio medio, las que quedan entre él y el precio mínimo aceptado pagan lo que ofrecieron y las no competitivas pagan el precio medio \parencites{BOE2026DeudaEstado}{Tesoro2026Subasta}. En 2025 celebró 46 subastas y obtuvo con ellas el 80~\% de su financiación a medio y largo plazo \parencite{Tesoro2026Estrategia} \vertema{4.B.26}.
+  \item \emph{Deuda pública}: el Tesoro emite con una subasta de varias unidades híbrida, que llama «convencional corregida»; en 2025 celebró 46 subastas y obtuvo con ellas el 80~\% de su financiación a medio y largo plazo \parencite{Tesoro2026Estrategia} \vertema{4.B.26}. En ella \parencites{BOE2026DeudaEstado}{Tesoro2026Subasta}:
+    \begin{itemize}
+    \item las pujas competitivas por encima del precio medio ponderado pagan ese precio medio;
+    \item las que quedan entre él y el precio mínimo aceptado pagan lo que ofrecieron, y
+    \item las no competitivas pagan el precio medio.
+    \end{itemize}
   \item \emph{Espectro radioeléctrico}: en la subasta de 3,6-3,8~GHz de 2018, 34 rondas con reglas de actividad crecientes llevaron las pujas a 437,6 millones de euros, más del cuádruple del precio de salida \parencite{MINECO2018Subasta5G}; la de 700~MHz, en julio de 2021, cerró tras 12 rondas con 1.010 millones \parencite{MINECO2021Subasta700} \vertema{4.A.12}.
   \item \emph{Energías renovables}: en las subastas del régimen económico de energías renovables se puja por el precio de la electricidad y cada adjudicatario cobra el que ofreció, con un precio de reserva \parencites{BOE2020RD960}{BOE2020TED1161}. La primera, en enero de 2021, atrajo ofertas por 9.700~MW para 3.034~MW, adjudicados a 24,47 €/MWh la fotovoltaica y 25,31 €/MWh la eólica \parencite{MITECO2021PrimeraSubasta} \vertema{4.A.5} \vertema{4.A.6}.
   \item \emph{Derechos de emisión}: en el régimen de comercio de derechos de emisión de la UE, los derechos se subastan en una ronda única, a sobre cerrado y a precio uniforme \parencite{UE2023_2830} \vertema{4.A.6}.
@@ -1047,7 +1196,15 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
 \end{itemize}
 
 \begin{itemize}
-\item \emph{Recapitulación del bloque III}: la teoría de juegos se aplica en casi toda la economía; el diseño de mecanismos busca reglas en las que decir la verdad sea óptimo, y las subastas son su aplicación central. Con valores privados independientes, todos los formatos estándar asignan bien y recaudan lo mismo; el precio de reserva sube el ingreso a costa de la eficiencia; con valor común, ganar es una mala noticia, y revelar información ayuda. En la práctica, lo decisivo es atraer pujadores y evitar la colusión, que es un juego repetido como el del bloque~\ref{sec:conceptos-informacion-completa}. El Gobierno de la historia ya sabe qué hacer: un formato en el que a I, E y O les convenga pujar lo que valoran, con suficientes pujadores, un precio de reserva y sin dar pistas para el reparto.
+\item \emph{Recapitulación del bloque III}:
+  \begin{itemize}
+  \item la teoría de juegos se aplica en casi toda la economía;
+  \item el diseño de mecanismos busca reglas en las que decir la verdad sea óptimo, y las subastas son su aplicación central;
+  \item con valores privados independientes, todos los formatos estándar asignan bien y recaudan lo mismo;
+  \item el precio de reserva sube el ingreso a costa de la eficiencia;
+  \item con valor común, ganar es una mala noticia, y revelar información ayuda.
+  \end{itemize}
+\item En la práctica, lo decisivo es atraer pujadores y evitar la colusión, que es un juego repetido como el del bloque~\ref{sec:conceptos-informacion-completa}. El Gobierno de la historia ya sabe qué hacer: un formato en el que a I, E y O les convenga pujar lo que valoran, con suficientes pujadores, un precio de reserva y sin dar pistas para el reparto.
 \end{itemize}
 
 
@@ -1061,9 +1218,26 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
   \item Con información completa, el equilibrio de \autor{Nash}, que siempre existe en mixtas, pero puede ser ineficiente o múltiple. En los juegos dinámicos se refina: en los secuenciales, la perfección en subjuegos descarta las amenazas no creíbles y explica el valor del compromiso; en los repetidos, las estrategias condicionadas sostienen la cooperación sin contratos si los jugadores son pacientes.
   \item Con información privada, el equilibrio bayesiano de \autor{Nash} y el bayesiano perfecto, en el que importan las creencias y las señales; con acuerdos vinculantes, la negociación, el núcleo y el valor de \autor{Shapley}.
   \item Y, dándole la vuelta, el diseño de mecanismos: reglas en las que decir la verdad es óptimo. En las subastas, con valores privados independientes, todos los formatos recaudan lo mismo; el valor común, la entrada y la colusión deciden cuál conviene.
-  \item I y E han recorrido todo el camino: se han enfrentado en precios, han medido la credibilidad de sus amenazas, se han encontrado cada mes, se han ocultado información, han negociado y, al final, han pujado por el espectro.
+  \item I y E han recorrido todo el camino:
+    \begin{itemize}
+    \item se han enfrentado en precios;
+    \item han medido la credibilidad de sus amenazas;
+    \item se han encontrado cada mes;
+    \item se han ocultado información;
+    \item han negociado, y
+    \item al final, han pujado por el espectro.
+    \end{itemize}
   \end{itemize}
-\item \textbf{\emph{Relevancia}}: en 2020, \autor{Milgrom} y \autor{Wilson} recibieron el Nobel «por sus mejoras de la teoría de las subastas y sus invenciones de nuevos formatos de subasta» \parencite{Nobel2020MilgromWilson}. \autor{Wilson} explicó la maldición del ganador; \autor{Milgrom}, por qué los formatos que revelan información dan más ingreso esperado con valores afiliados, y los 2 idearon formatos para vender a la vez muchos objetos relacionados por cuenta de un vendedor que busca la eficiencia y no la máxima recaudación \parencite{Nobel2020PressRelease}. Con ellos se vende el espectro en medio mundo, también en España \parencite{Nobel2020Scientific}; \autor{Wilson} estudió además la tarificación no lineal de los servicios públicos \parencite{Wilson1993Nonlinear}.
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item En 2020, \autor{Milgrom} y \autor{Wilson} recibieron el Nobel «por sus mejoras de la teoría de las subastas y sus invenciones de nuevos formatos de subasta» \parencite{Nobel2020MilgromWilson}:
+    \begin{itemize}
+    \item \autor{Wilson} explicó la maldición del ganador;
+    \item \autor{Milgrom}, por qué los formatos que revelan información dan más ingreso esperado con valores afiliados, y
+    \item los 2 idearon formatos para vender a la vez muchos objetos relacionados por cuenta de un vendedor que busca la eficiencia y no la máxima recaudación \parencite{Nobel2020PressRelease}.
+    \end{itemize}
+  \item Con ellos se vende el espectro en medio mundo, también en España \parencite{Nobel2020Scientific}; \autor{Wilson} estudió además la tarificación no lineal de los servicios públicos \parencite{Wilson1993Nonlinear}.
+  \end{itemize}
 \item \textbf{\emph{Extensiones}}: el oligopolio y la colusión tácita \vertema{3.A.19}, la disuasión de la entrada \vertema{3.A.15}, la información asimétrica \vertema{3.A.13}, la elección colectiva \vertema{3.A.24}, la credibilidad de la política monetaria \vertema{3.A.36}, la defensa de la competencia \vertema{4.A.15} y la economía conductual, que pone a prueba en el laboratorio la racionalidad que la teoría supone \vertema{3.A.1}.
 \item \textbf{\emph{Opinión}}: sus críticas son conocidas: hay a menudo demasiados equilibrios, y la teoría no siempre dice cuál se jugará; y se pide a los jugadores una racionalidad (y un conocimiento común de esa racionalidad) que los experimentos no siempre confirman, lo que abre la puerta a la racionalidad limitada. Pero su mayor éxito ha sido práctico: las subastas de espectro han recaudado decenas de miles de millones y han asignado bienes que antes se repartían por concurso. Una teoría que se usa para diseñar instituciones se juzga también por cómo funcionan esas instituciones, y por eso el diseño combina teoría, experimentos y la experiencia de cada mercado \parencite{Klemperer2002WhatReallyMatters}.
 \item \textbf{\emph{Idea final}}: «Hoy por ti, mañana por mí». Cooperamos sin firmar nada con quien vamos a volver a ver porque la repetición sostiene la cooperación sin contratos: mañana se puede premiar o castigar lo que se hace hoy. Es así para bien, en la reputación y en los acuerdos entre vecinos, empresas y países, y para mal, en los cárteles que se turnan en las licitaciones: «hoy gano yo, mañana tú». Por eso una buena subasta se diseña para que no haya «mañana» que repartir: para que a cada uno le compense pujar la verdad y la rotación no sea sostenible.
@@ -1089,14 +1263,31 @@ Son de profundización la subasta óptima en detalle, la aversión al riesgo, la
   \item Sustituyendo hacia atrás: con (Izquierda, Izquierda), el 1 entra ($3>2$); con (Derecha, Derecha) o el mixto, se queda fuera ($2>1$ y $2>3/4$). Hay 3 ENPS.
   \item (Fuera e Izquierda si entra; Derecha si entra) es EN de todo el juego, pero no ENPS, porque (Izquierda, Derecha) no es EN del subjuego.
   \end{itemize}
-\item \emph{Equilibrio bayesiano de \autor{Nash} discreto}: (1) hallar la mejor respuesta de \emph{cada tipo} del jugador informado; (2) calcular el pago esperado del no informado con la distribución a priori; (3) comprobar para qué probabilidades cada perfil es equilibrio. Ejemplo resuelto: la entrada con capacidad desconocida (\ref{sec:juegos-bayesianos}, gráfico~\ref{fig:arbol-harsanyi}).
+\item \emph{Equilibrio bayesiano de \autor{Nash} discreto} (ejemplo resuelto: la entrada con capacidad desconocida, \ref{sec:juegos-bayesianos}, gráfico~\ref{fig:arbol-harsanyi}), en 3 pasos:
+  \begin{enumerate}
+  \item hallar la mejor respuesta de \emph{cada tipo} del jugador informado;
+  \item calcular el pago esperado del no informado con la distribución a priori, y
+  \item comprobar para qué probabilidades cada perfil es equilibrio.
+  \end{enumerate}
 \item \emph{Cooperación en un juego repetido}: con el gatillo, cooperar es ENPS si $\beta\geq(u^{\mathrm{D}}-u^{\mathrm{C}})/(u^{\mathrm{D}}-u^{\mathrm{N}})$ \eqref{eq:gatillo}, que sale de $u^{\mathrm{C}}/(1-\beta)\geq u^{\mathrm{D}}+\beta\,u^{\mathrm{N}}/(1-\beta)$: multiplicando por $1-\beta$, $u^{\mathrm{C}}\geq(1-\beta)u^{\mathrm{D}}+\beta u^{\mathrm{N}}$, y despejando $\beta$.
-\item \emph{Subastas}: en segundo precio (e inglesa con valores privados) se puja la valoración; en primer precio (y holandesa), con $U[0,1]$, $b(v)=(n-1)v/n$; el ingreso esperado es $(n-1)/(n+1)$ en los 2; el precio de reserva óptimo con $U[0,1]$ y $v_0=0$ es $1/2$.
+\item \emph{Subastas}:
+  \begin{itemize}
+  \item en segundo precio (e inglesa con valores privados) se puja la valoración;
+  \item en primer precio (y holandesa), con $U[0,1]$, $b(v)=(n-1)v/n$;
+  \item el ingreso esperado es $(n-1)/(n+1)$ en los 2, y
+  \item el precio de reserva óptimo con $U[0,1]$ y $v_0=0$ es $1/2$.
+  \end{itemize}
 \end{itemize}
 
 \subsection*{Un equilibrio en mixtas: el juego de la inspección}
 
-Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. El salario es 4 y esforzarse cuesta 2; quien se escaquea y es descubierto no cobra; trabajar produce 6 (tabla~\ref{tab:inspeccion}). No hay EN en puras: las mejores respuestas dan vueltas (gráfico~\ref{fig:inspeccion}).
+Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. Los demás datos (tabla~\ref{tab:inspeccion}):
+\begin{itemize}
+\item el salario es 4 y esforzarse cuesta 2;
+\item quien se escaquea y es descubierto no cobra, y
+\item trabajar produce 6.
+\end{itemize}
+No hay EN en puras: las mejores respuestas dan vueltas (gráfico~\ref{fig:inspeccion}).
 
 \begin{itemize}
 \item La empresa vigila con la probabilidad $\pi_V$ que deja indiferente al trabajador: trabajar le da 2 y escaquearse $4(1-\pi_V)$, así que $\pi_V^*=1/2$.
@@ -1217,7 +1408,12 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \subsection*{El dilema del prisionero: dominancia y equilibrio ineficiente}
 
 \begin{itemize}
-\item \emph{Juego} \parencite{Tucker1950TwoPerson}: 2 detenidos, incomunicados, pueden callar o confesar (tabla~\ref{tab:prisionero-clasico}). Si los 2 callan, solo se les puede condenar por un delito menor (1 año); si uno confiesa y el otro calla, el que confiesa queda libre y el otro cumple 10 años; si los 2 confiesan, 5 años cada uno.
+\item \emph{Juego} \parencite{Tucker1950TwoPerson}: 2 detenidos, incomunicados, pueden callar o confesar (tabla~\ref{tab:prisionero-clasico}):
+  \begin{itemize}
+  \item si los 2 callan, solo se les puede condenar por un delito menor (1 año);
+  \item si uno confiesa y el otro calla, el que confiesa queda libre y el otro cumple 10 años, y
+  \item si los 2 confiesan, 5 años cada uno.
+  \end{itemize}
 \item \emph{Equilibrio}: confesar es estrictamente dominante ($0>-1$ y $-5>-10$); el único EN es (Confesar, Confesar), peor para los 2 que (Callar, Callar).
 \item \emph{Moraleja}: la racionalidad individual no garantiza la eficiencia colectiva; para cooperar hacen falta contratos, repetición (\ref{sec:repetidos}) o normas.
 \item \emph{En el temario}: el cártel y la colusión tácita \vertema{3.A.19}, el polizón en los bienes públicos \vertema{3.A.23}, las guerras arancelarias \vertema{3.B.7} y los programas de clemencia, que lo provocan a propósito entre los miembros de un cártel \vertema{4.A.15}.
@@ -1263,7 +1459,12 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \subsection*{El juego de la gallina: quién cede primero}
 
 \begin{itemize}
-\item \emph{Juego}: 2 conductores van de frente; el que se aparta es «la gallina». Si se aparta uno, gana el otro; si se apartan los 2, empatan; si no se aparta ninguno, chocan, el peor resultado para los 2.
+\item \emph{Juego}: 2 conductores van de frente, y el que se aparta es «la gallina»:
+  \begin{itemize}
+  \item si se aparta uno, gana el otro;
+  \item si se apartan los 2, empatan, y
+  \item si no se aparta ninguno, chocan, el peor resultado para los 2.
+  \end{itemize}
 \item \emph{Una lectura de 2012: España y el BCE} (tabla~\ref{tab:gallina}). En junio de 2012, España pidió al Eurogrupo asistencia para recapitalizar su banca, con un préstamo de hasta 100.000 millones de euros del que se desembolsaron 41.330 \parencite{MEDE2026Espana}; en septiembre, el BCE aprobó las operaciones monetarias de compraventa (OMT), compras de deuda condicionadas a que el país pidiera un programa de asistencia \parencite{BCE2012OMT}. El pulso fue ese: el BCE quería que España pidiera el programa antes de comprar su deuda, y España, que el BCE la sostuviera sin pedirlo. En forma estilizada, con pagos que son una lectura propia y no salen de esas fuentes, España puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiación o dejar de hacerlo. Al BCE le conviene dejar de financiar si España acepta el rescate, que sanearía su sistema financiero; a España, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrófica para los 2.
 \item \emph{Equilibrio}: 2 EN en puras, en los que cede uno de los 2 (Seguir, No aceptar) y (Dejar, Aceptar), y uno en mixtas en el que cada uno cede con probabilidad $19/20$. Por ejemplo, el BCE está indiferente si España acepta con probabilidad $a$ tal que $-(1-a)=a-20(1-a)$, es decir, $a=19/20$.
 \item \emph{Moraleja}: gana quien logra comprometerse de forma creíble a no ceder (quemar las naves, \ref{sec:enps}); y el riesgo de choque, aunque pequeño, existe.
@@ -1290,7 +1491,12 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \item \emph{Juego}: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero.
 \item \emph{Equilibrio}: no hay EN en puras (el que pierde siempre quiere cambiar); en el único EN, cada uno juega cada opción al 50~\%, y el valor del juego es 0 \parencite{VonNeumann1928Theorie}.
 \item \emph{Moraleja}: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla~\ref{tab:inspeccion}), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.
-\item \emph{En el temario}: los penaltis \parencite{PalaciosHuerta2003Professionals}; la vigilancia del esfuerzo, en la teoría de la agencia \vertema{3.A.13} y en los salarios de eficiencia \vertema{3.A.27}; la inspección tributaria y la evasión.
+\item \emph{En el temario}:
+  \begin{itemize}
+  \item los penaltis \parencite{PalaciosHuerta2003Professionals};
+  \item la vigilancia del esfuerzo, en la teoría de la agencia \vertema{3.A.13} y en los salarios de eficiencia \vertema{3.A.27}, y
+  \item la inspección tributaria y la evasión.
+  \end{itemize}
 \end{itemize}
 
 \subsection*{Hernán Cortés quema las naves: compromiso}
@@ -1345,7 +1551,12 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \item \emph{Juego} \parencite{CapenClappCampbell1971Competitive}: el Gobierno de Estados Unidos subastaba a sobre cerrado los derechos de explotación de yacimientos en el golfo de México. Lo que hay en el subsuelo vale casi lo mismo para todas las petroleras, pero nadie lo sabe: cada una lo estima con sus propios estudios geológicos. Es un valor común.
 \item \emph{Equilibrio}: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más; el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene \parencite{Wilson1977Bidding} (anexo~\ref{anexo:subastas}).
 \item \emph{Moraleja}: «No es oro todo lo que reluce»: ganar es una mala noticia sobre lo que vale lo ganado. Por eso al vendedor le conviene revelar lo que sabe del bien: reduce el miedo de los pujadores a la maldición y sube las pujas \parencite{MilgromWeber1982Theory}.
-\item \emph{En el temario}: la selección adversa, en la que también ser elegido es una mala noticia \vertema{3.A.13}; la aversión al riesgo de los pujadores \vertema{3.A.10}, y las subastas de espectro \vertema{4.A.12}.
+\item \emph{En el temario}:
+  \begin{itemize}
+  \item la selección adversa, en la que también ser elegido es una mala noticia \vertema{3.A.13};
+  \item la aversión al riesgo de los pujadores \vertema{3.A.10}, y
+  \item las subastas de espectro \vertema{4.A.12}.
+  \end{itemize}
 \end{itemize}
 
 \subsection*{La jarra de monedas: la maldición del ganador en el aula}
@@ -1361,7 +1572,12 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 
 \begin{itemize}
 \item \emph{Juego}: en 2000, varios países europeos subastaron las licencias de telefonía móvil de tercera generación. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, más de 600 euros por habitante; los Países Bajos, 170, y Suiza, 20 \parencite{Klemperer2002WhatReallyMatters}.
-\item \emph{Qué pasó}: el Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron y pujaron \parencite{BinmoreKlemperer2002Biggest}. En los Países Bajos había tantas licencias como operadores instalados, y los entrantes apenas tenían opciones; en Suiza, las uniones y retiradas de última hora dejaron tantos pujadores como licencias, y se vendieron casi al precio de salida \parencite{Klemperer2002WhatReallyMatters}.
+\item \emph{Qué pasó}:
+  \begin{itemize}
+  \item el Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron y pujaron \parencite{BinmoreKlemperer2002Biggest};
+  \item en los Países Bajos había tantas licencias como operadores instalados, y los entrantes apenas tenían opciones;
+  \item en Suiza, las uniones y retiradas de última hora dejaron tantos pujadores como licencias, y se vendieron casi al precio de salida \parencite{Klemperer2002WhatReallyMatters}.
+  \end{itemize}
 \item \emph{Moraleja}: el teorema de equivalencia da por fijo el número de pujadores; en la práctica, el formato decide cuántos acuden, y un pujador más vale más que cualquier refinamiento del formato \parencite{BulowKlemperer1996Auctions}.
 \item \emph{En el temario}: las telecomunicaciones \vertema{4.A.12}, las barreras de entrada \vertema{3.A.15} y la colusión en el oligopolio \vertema{3.A.19}.
 \end{itemize}

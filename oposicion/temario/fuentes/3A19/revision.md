@@ -172,3 +172,6 @@ Mientras Víctor no conteste en el artifact, se aplica la opción recomendada (o
 ## Cambios posteriores
 
 - 20/10/2026: nomenclatura estático/dinámico de los manuales, coherente con el 3.A.14; recuadro "Otra forma de verlo".
+- 20/10/2026: tabla 6 (el cártel como dilema del prisionero) con enteros: $p=13-Q$, $c=1$; beneficios (18; 18), (15; 20), (20; 15) y (16; 16); la nota al pie aclara que la mejor desviación (4,5) daría 20,25.
+- 20/10/2026: gráfico nuevo del reparto del cártel (`reparto-cartel`, 9 capas): a) negociación de Nash (frontera, $d$, excedente, $N$, más $\gamma$), en la pizarra; b) núcleo y valor de Shapley en el símplex, de apoyo.
+- 20/10/2026: enumeraciones en línea partidas en viñetas (regla «Enumeraciones dentro de un párrafo»), unas 30, en el cuerpo, las notas al opositor, la conclusión y los anexos.

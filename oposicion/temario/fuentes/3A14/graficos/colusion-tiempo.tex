@@ -1,0 +1,41 @@
+% Estrategia del gatillo en el dilema del prisionero repetido (nota al pie del
+% 3.A.14; el mismo gráfico, con beneficios B, está en el 3.A.19): valor
+% descontado del pago de cada etapa, cooperando siempre o desviándose hoy.
+% Las 2 curvas ya están descontadas (beta^t u), de modo que se comparan
+% directamente las áreas: la ganancia de desviarse hasta que el otro
+% reacciona (rojo) frente a la pérdida del castigo después (azul).
+% Valores: u^D = 4, u^C = 2,8, u^N = 0,9; beta = 0,82 por etapa; reacción en
+% tau = 1 (el otro reacciona en la etapa siguiente, como en eq:gatillo).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=1cm,
+    declare function={des(\B,\t)=\B*0.82^\t;}]
+  \def\BD{4}\def\BC{2.8}\def\BN{0.9}\def\treac{1}\def\T{14}
+  \useasboundingbox (-1.3,-0.8) rectangle (17.2,4.9);
+  % 1: ejes (tiempo y beneficio descontado)
+  \capa{1}{\ejes{$t$}{$\beta^t u$}{\T.6}{4.6}}
+  % 2: cooperar siempre: beta^t u^C
+  \capa{2}{\draw[curva1] plot[domain=0:\T,samples=60] (\x,{des(\BC,\x)});}
+  \capa{2}{\node[etiqueta,text=tceemorado,anchor=south west] at (10.5,{des(\BC,10.5)}) {cooperar};}
+  \capa{2}{\node[left] at (0,\BC) {$u^{\mathrm C}$};}
+  % 3: desviarse: beta^t u^D hasta que reacciona el otro, y la ganancia (rojo)
+  \capa{3}{\fill[area,fill=tceerojo,fill opacity=0.45] plot[domain=0:\treac,samples=30] (\x,{des(\BD,\x)}) -- plot[domain=\treac:0,samples=30] (\x,{des(\BC,\x)}) -- cycle;}
+  \capa{3}{\draw[curva4] plot[domain=0:\treac,samples=30] (\x,{des(\BD,\x)});}
+  \capa{3}{\node[left] at (0,\BD) {$u^{\mathrm D}$};}
+  % 4: el castigo: beta^t u^N desde tau, y la pérdida (azul)
+  \capa{4}{\draw[curva4] (\treac,{des(\BD,\treac)}) -- (\treac,{des(\BN,\treac)});}
+  \capa{4}{\fill[area,fill=tceeazul,fill opacity=0.35] plot[domain=\treac:\T,samples=50] (\x,{des(\BC,\x)}) -- plot[domain=\T:\treac,samples=50] (\x,{des(\BN,\x)}) -- cycle;}
+  \capa{4}{\draw[curva4] plot[domain=\treac:\T,samples=50] (\x,{des(\BN,\x)});}
+  \capa{4}{\node[etiqueta,text=tceedorado,anchor=south west] at (0.9,{des(\BD,0.9)}) {desviarse};}
+  \capa{4}{\node[left] at (0,\BN) {$u^{\mathrm N}$};}
+  \capa{4}{\draw[guia] (0,\BN) -- (\treac,{des(\BN,\treac)});}
+  \capa{4}{\draw (\treac,0) -- (\treac,-0.08) node[below] {$1$};}
+  \capa{4}{\node[etiqueta,below,font=\footnotesize,align=center] at (\treac,-0.35) {reacción};}
+  % 5: rótulos y la condición
+  \capa{5}{\node[etiqueta,text=tceerojo,anchor=west,align=left] at (3.2,3.1) {ganancia de desviarse\\ hasta que reacciona el otro};}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=west,align=left] at (6.2,1.75) {pérdida por el castigo\\ desde entonces};}
+  \capa{5}{\node[draw=tceemorado,thick,rounded corners=2pt,inner sep=4pt,fill=white] at (10.8,3.9) {cooperar compensa si \textcolor{tceerojo}{rojo} $\leq$ \textcolor{tceeazul}{azul}};}
+\end{tikzpicture}
+\end{document}

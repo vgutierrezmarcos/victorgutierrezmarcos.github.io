@@ -31,9 +31,19 @@
 
 \item \textbf{\emph{Contextualización}}. Desde un punto de vista histórico:
   \begin{itemize}
-  \item La idea de que la competencia lleva los precios de mercado hacia los «naturales» está ya en \textcite[libro~I, cap.~VII]{Smith1776Wealth} \vertema{3.A.2}. Las herramientas llegan con los precursores del marginalismo: \textcite{Cournot1838Recherches} escribe la primera función de demanda, \textcite{Dupuit1844Mesure} mide la utilidad de las obras públicas con lo que hoy llamamos excedente del consumidor y \textcite{Jenkin1870Graphic} dibuja por primera vez en inglés las curvas de oferta y demanda de un mercado \parencite{HET2026Jenkin}.
+  \item La idea de que la competencia lleva los precios de mercado hacia los «naturales» está ya en \textcite[libro~I, cap.~VII]{Smith1776Wealth} \vertema{3.A.2}. Las herramientas llegan con los precursores del marginalismo:
+    \begin{itemize}
+    \item \textcite{Cournot1838Recherches} escribe la primera función de demanda;
+    \item \textcite{Dupuit1844Mesure} mide la utilidad de las obras públicas con lo que hoy llamamos excedente del consumidor;
+    \item \textcite{Jenkin1870Graphic} dibuja por primera vez en inglés las curvas de oferta y demanda de un mercado \parencite{HET2026Jenkin}.
+    \end{itemize}
   \item Con la revolución marginalista, \textcite{Walras1874Elements} estudia todos los mercados a la vez \vertema{3.A.21}, y Alfred \textcite{Marshall1890Principles} sistematiza el análisis de un mercado aislado: el equilibrio parcial con la cláusula \emph{ceteris paribus}, los plazos, la elasticidad y el excedente \vertema{3.A.3}. Su síntesis entre utilidad y coste es la de las tijeras: «tan razonable sería discutir si es la hoja superior o la inferior de unas tijeras la que corta un papel como si el valor lo rige la utilidad o el coste de producción» \parencite[libro~V, cap.~III, §~7; traducción propia]{Marshall1890Principles}.
-  \item En el siglo XX se precisan las curvas de costes \parencite{Viner1931Cost} \vertema{3.A.12}; las dinámicas de ajuste, con el modelo de la telaraña \parencites{Kaldor1934Classificatory}{Ezekiel1938Cobweb} y el principio de correspondencia de \textcite{Samuelson1941Stability}, y la formulación moderna con utilidad cuasilineal y libre entrada \parencite[cap.~10]{MasColellWhinstonGreen1995}, que es la que seguimos.
+  \item En el siglo XX se precisan:
+    \begin{itemize}
+    \item las curvas de costes \parencite{Viner1931Cost} \vertema{3.A.12};
+    \item las dinámicas de ajuste, con el modelo de la telaraña \parencites{Kaldor1934Classificatory}{Ezekiel1938Cobweb} y el principio de correspondencia de \textcite{Samuelson1941Stability};
+    \item la formulación moderna con utilidad cuasilineal y libre entrada \parencite[cap.~10]{MasColellWhinstonGreen1995}, que es la que seguimos.
+    \end{itemize}
   \end{itemize}
 
 \item \textbf{\emph{Problemática (preguntas clave)}}:
@@ -50,7 +60,12 @@
   \item \concepto{II. Estudio del equilibrio}: si existe, si es único y si el mercado llega a él (dinámicas de ajuste y estabilidad); si es eficiente (bienestar), y cómo responde a los cambios, entre ellos un impuesto;
   \item \concepto{III. Análisis de plazos}: qué cambia cuando las empresas ajustan su capacidad (corto y largo plazo) y cuando pueden entrar y salir (libre entrada).
   \end{itemize}
-  El orden va del modelo a sus propiedades y de estas al tiempo: primero, el equilibrio en un instante; después, si se alcanza y si es bueno, y por último, cómo cambia cuando las empresas tienen tiempo para ajustarse, que es lo que dice cuánto dura la ganancia de los pescadores.
+  El orden va del modelo a sus propiedades y de estas al tiempo:
+  \begin{itemize}
+  \item primero, el equilibrio en un instante;
+  \item después, si se alcanza y si es bueno;
+  \item por último, cómo cambia cuando las empresas tienen tiempo para ajustarse, que es lo que dice cuánto dura la ganancia de los pescadores.
+  \end{itemize}
 \end{itemize}
 
 \begin{esquema}
@@ -203,7 +218,11 @@ Fijados los supuestos, obtenemos el comportamiento de cada lado del mercado: pri
 \subparagraph{Productores: curva de oferta individual y de mercado}
 
 \begin{itemize}
-\item \emph{Tecnología y costes}: cada empresa $j$ transforma numerario en el bien con una función de producción neoclásica $q_j=F_j(\vect{z}_j)$ \vertema{3.A.11}. Elige su producción en \concepto{2 etapas} \vertema{3.A.12}: primero obtiene, para cada nivel de producción, la combinación de factores más barata, lo que da su \concepto{función de costes} $C_j(\vect{w},q_j)$ y garantiza la eficiencia económica; como $\vect{w}$ está fijo, la escribimos $C_j(q_j)$.\footnote{La función de costes es la función de valor de la minimización del coste, $C_j(\vect{w},q)=\min_{\vect{z}}\{\vect{w}\cdot\vect{z}:F_j(\vect{z})\geq q\}$. Sus propiedades como función de $\vect{w}$ (homogénea de grado 1, cóncava, lema de \autor{Shephard}) son materia de la dualidad \vertema{3.A.12}; aquí solo importa su forma como función de $q$.} Después elige la producción que maximiza el beneficio.
+\item \emph{Tecnología y costes}: cada empresa $j$ transforma numerario en el bien con una función de producción neoclásica $q_j=F_j(\vect{z}_j)$ \vertema{3.A.11}. Elige su producción en \concepto{2 etapas} \vertema{3.A.12}:
+  \begin{enumerate}
+  \item primero obtiene, para cada nivel de producción, la combinación de factores más barata, lo que da su \concepto{función de costes} $C_j(\vect{w},q_j)$ y garantiza la eficiencia económica; como $\vect{w}$ está fijo, la escribimos $C_j(q_j)$;\footnote{La función de costes es la función de valor de la minimización del coste, $C_j(\vect{w},q)=\min_{\vect{z}}\{\vect{w}\cdot\vect{z}:F_j(\vect{z})\geq q\}$. Sus propiedades como función de $\vect{w}$ (homogénea de grado 1, cóncava, lema de \autor{Shephard}) son materia de la dualidad \vertema{3.A.12}; aquí solo importa su forma como función de $q$.}
+  \item después elige la producción que maximiza el beneficio.
+  \end{enumerate}
 \item \emph{Supuesto sobre los costes}: el coste marginal $\mathrm{CMg}_j(q_j)=C_j'(q_j)$ es creciente en el tramo relevante ($C_j$ convexa en él). Es lo que ocurre, por ejemplo, si la función de producción es estrictamente cóncava (rendimientos estrictamente decrecientes).\footnote{Para que el problema del beneficio tenga solución basta la concavidad de $F_j$ (rendimientos no crecientes); para que exista la función de costes, su cuasiconcavidad, y la concavidad \emph{estricta} da además una oferta única y continua \vertema{3.A.12}. Con rendimientos crecientes en todo el dominio, el problema de la empresa precio-aceptante no tiene solución: siempre ganaría más produciendo más. Con rendimientos constantes, el tamaño de la empresa queda indeterminado (\ref{sec:largo-plazo-libre-entrada}). No hay que confundir 2 propiedades: la \emph{convexidad} de $C_j$ (coste marginal creciente) y las \emph{deseconomías de escala} (coste medio creciente, $\mathrm{CMg}>\mathrm{CMe}$). Una función de producción cóncava da costes convexos, pero no al revés: con el coste medio en U, en el tramo de economías de escala el coste marginal ya puede estar subiendo. En la combinación de mínimo coste, la relación exacta es $\varepsilon_{q,\lambda}=\mathrm{CMe}/\mathrm{CMg}$ para cualquier tecnología \vertema{3.A.12}.}
 \item \emph{Problema}: dado el precio, la empresa elige la producción que maximiza su beneficio:
   \begin{equation}
@@ -517,7 +536,12 @@ Los 2 ajustes anteriores suponen que la cantidad o el precio reaccionan en tiemp
   \item si $q'(p^*)=\lvert x'(p^*)\rvert$, oscila siempre con la misma amplitud: \emph{telaraña continua};
   \item si $q'(p^*)>\lvert x'(p^*)\rvert$, las oscilaciones crecen: \emph{telaraña divergente}.
   \end{itemize}
-\item \emph{Condición de convergencia}, de 3 formas equivalentes: la oferta reacciona al precio menos que la demanda; en elasticidades medidas en el equilibrio (con $x^*=q^*$), $\varepsilon_S<\lvert\varepsilon_D\rvert$, porque $q'(p^*)/\lvert x'(p^*)\rvert=\varepsilon_S/\lvert\varepsilon_D\rvert$, y en el plano $(q,p)$, la oferta es \emph{más inclinada} que la demanda.
+\item \emph{Condición de convergencia}, de 3 formas equivalentes:
+  \begin{itemize}
+  \item la oferta reacciona al precio menos que la demanda;
+  \item en elasticidades medidas en el equilibrio (con $x^*=q^*$), $\varepsilon_S<\lvert\varepsilon_D\rvert$, porque $q'(p^*)/\lvert x'(p^*)\rvert=\varepsilon_S/\lvert\varepsilon_D\rvert$;
+  \item en el plano $(q,p)$, la oferta es \emph{más inclinada} que la demanda.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
@@ -558,7 +582,12 @@ Una vez visto que el equilibrio existe, es único y, con curvas normales, se alc
 
 \begin{itemize}
 \item \emph{Antecedente}: \textcite[lección~44]{Walras1874Elements} sostenía que los economistas habían afirmado el \emph{laisser-faire} más que demostrarlo, y que la libre competencia procura, «dentro de ciertos límites», el máximo de utilidad. De ahí deducía que había que suprimir, en lo posible, lo que estorba a la competencia, con excepciones como los servicios de interés público y los monopolios naturales, y que el principio deja abierta la cuestión de la justicia del reparto.
-\item \concepto{Óptimo de \autor{Pareto}}: una asignación factible es eficiente en el sentido de \textcite{Pareto1906Manuale} si no hay otra factible en la que alguien mejore sin que nadie empeore. Es un criterio mínimo y poco discutible (no desperdiciar recursos), ordinal (no exige comparar utilidades) e incompleto: no elige entre asignaciones eficientes con distinto reparto \vertema{3.A.24}.
+\item \concepto{Óptimo de \autor{Pareto}}: una asignación factible es eficiente en el sentido de \textcite{Pareto1906Manuale} si no hay otra factible en la que alguien mejore sin que nadie empeore. Es un criterio:
+  \begin{itemize}
+  \item mínimo y poco discutible (no desperdiciar recursos);
+  \item ordinal (no exige comparar utilidades);
+  \item incompleto: no elige entre asignaciones eficientes con distinto reparto \vertema{3.A.24}.
+  \end{itemize}
 \item En equilibrio parcial con utilidad cuasilineal, la eficiencia se estudia con los \concepto{excedentes}, medidos en numerario (gráfico~\ref{fig:excedentes}):
   \begin{itemize}
   \item \concepto{excedente del consumidor} (EC): lo que los consumidores estarían dispuestos a pagar menos lo que pagan; el área bajo la demanda y sobre el precio.\footnote{Lo formaliza \textcite{Marshall1890Principles}, que le da el nombre de excedente del consumidor (libro~III, cap.~VI), pero ya lo había propuesto el ingeniero francés Jules \textcite{Dupuit1844Mesure} para medir la utilidad de un puente o de una carretera \vertema{3.A.9}.} Con utilidad cuasilineal es una medida exacta del bienestar: su variación coincide con las variaciones compensatoria y equivalente \vertema{3.A.9};
@@ -758,7 +787,13 @@ En el cante de \ref{sec:analisis-plazos-corto} (\tiempo{6}): los 3 plazos de la 
 \end{table}
 
 \begin{anotaciones}
-\textbf{Antecedente histórico: los periodos de \autor{Marshall} y su mercado de pescado}. \textcite[libro~V, cap.~V]{Marshall1890Principles} ya distinguía los plazos por el tiempo de que disponen los agentes para ajustarse, pero con otra terminología, que no coincide con la de la tabla~\ref{tab:plazos}: en el \emph{periodo de mercado} la cantidad está dada (el pescado ya está en la lonja) y la oferta es vertical; a \emph{corto plazo} se ajusta la producción con el equipo que se tiene, y a \emph{largo plazo} se ajustan el equipo y el número de empresas a la vez, y el precio tiende a su \emph{valor normal}. Su ejemplo del pescado lo ilustra (gráfico~\ref{fig:marshall-periodos}).
+\textbf{Antecedente histórico: los periodos de \autor{Marshall} y su mercado de pescado}. \textcite[libro~V, cap.~V]{Marshall1890Principles} ya distinguía los plazos por el tiempo de que disponen los agentes para ajustarse, pero con otra terminología, que no coincide con la de la tabla~\ref{tab:plazos}:
+\begin{itemize}
+\item en el \emph{periodo de mercado} la cantidad está dada (el pescado ya está en la lonja) y la oferta es vertical;
+\item a \emph{corto plazo} se ajusta la producción con el equipo que se tiene;
+\item a \emph{largo plazo} se ajustan el equipo y el número de empresas a la vez, y el precio tiende a su \emph{valor normal}.
+\end{itemize}
+Su ejemplo del pescado lo ilustra (gráfico~\ref{fig:marshall-periodos}).
 \begin{figuracaja}
 \caption{El mercado de pescado de \autor{Marshall}: equilibrio temporal ($B$) y equilibrio normal ($C$) tras un aumento de la demanda}\label{fig:marshall-periodos}
 \grafico[0.5\textwidth]{marshall-periodos}
@@ -809,7 +844,12 @@ Empezamos por el corto plazo: el de las empresas que ya están en el mercado y n
 \subparagraph{iii) Implicaciones}
 
 \begin{itemize}
-\item \emph{Equilibrio a corto plazo}: el corte de la demanda con la oferta de corto plazo de las empresas existentes. Puede dejar beneficios, que atraerán empresas cuando puedan entrar; beneficio nulo, o pérdidas, que llevarán a algunas a salir cuando puedan liquidar sus factores fijos.
+\item \emph{Equilibrio a corto plazo}: el corte de la demanda con la oferta de corto plazo de las empresas existentes. Puede dejar:
+  \begin{itemize}
+  \item beneficios, que atraerán empresas cuando puedan entrar;
+  \item beneficio nulo;
+  \item pérdidas, que llevarán a algunas a salir cuando puedan liquidar sus factores fijos.
+  \end{itemize}
 \item \emph{Rigidez}: como hay un factor que no puede ajustarse, la oferta a corto plazo es \emph{más rígida} que la de largo plazo, y un aumento de la demanda se traduce sobre todo en precio: es la ganancia de quien tenía aceite en plena sequía, la de los pescadores del refrán.
 \end{itemize}
 
@@ -893,7 +933,12 @@ Queda el último paso: dejar que entren y salgan empresas.
   \begin{equation}
   p^*=\mathrm{CMg}(q^*)=\mathrm{CMe}(q^*)=\min_q\mathrm{CMe}(q). \label{eq:equilibrio-lp}
   \end{equation}
-\item \concepto{Oferta de la industria a largo plazo}, $q^{\mathrm{LP}}(p)$: si a un precio el beneficio máximo es positivo, entran empresas sin límite y $q^{\mathrm{LP}}(p)=\infty$; si es negativo, ninguna produce y $q^{\mathrm{LP}}(p)=0$; si es nulo, cualquier cantidad que puedan producir las empresas activas con beneficio nulo.
+\item \concepto{Oferta de la industria a largo plazo}, $q^{\mathrm{LP}}(p)$:
+  \begin{itemize}
+  \item si a un precio el beneficio máximo es positivo, entran empresas sin límite y $q^{\mathrm{LP}}(p)=\infty$;
+  \item si es negativo, ninguna produce y $q^{\mathrm{LP}}(p)=0$;
+  \item si es nulo, cualquier cantidad que puedan producir las empresas activas con beneficio nulo.
+  \end{itemize}
 \item El resultado depende de los rendimientos a escala de la tecnología (gráfico~\ref{fig:libre-entrada}):
   \begin{itemize}
   \item \emph{Rendimientos constantes}, $C(q)=c\,q$: el beneficio es $(p-c)\,q$.
@@ -1003,7 +1048,13 @@ Hasta aquí, los precios de los factores y la tecnología de cada empresa no dep
   \item Si no hay costes hundidos y la amenaza de entrada es creíble, puede bastar para disciplinar incluso a pocas empresas: es la teoría de los mercados impugnables \vertema{3.A.15}.
   \item Si la escala mínima eficiente es muy grande respecto al mercado, solo cabe una empresa: es el monopolio natural, que suele exigir regulación \vertema{3.A.17} \vertema{3.A.20}.
   \end{itemize}
-\item \emph{Recapitulación}: el plazo decide qué se ajusta. A corto plazo, con factores fijos, la oferta es rígida y puede haber beneficios o pérdidas; a largo plazo sin libre entrada se ajustan todos los factores, y con libre entrada el precio baja al mínimo del coste medio, el beneficio extraordinario desaparece y la oferta de la industria es horizontal, creciente o decreciente según las economías externas. Con esto podemos volver a las preguntas del principio y cerrar la exposición.
+\item \emph{Recapitulación}: el plazo decide qué se ajusta:
+  \begin{itemize}
+  \item a corto plazo, con factores fijos, la oferta es rígida y puede haber beneficios o pérdidas;
+  \item a largo plazo sin libre entrada se ajustan todos los factores;
+  \item con libre entrada el precio baja al mínimo del coste medio, el beneficio extraordinario desaparece y la oferta de la industria es horizontal, creciente o decreciente según las economías externas.
+  \end{itemize}
+\item Con esto podemos volver a las preguntas del principio y cerrar la exposición.
 \end{itemize}
 
 % ==========================================================================
@@ -1017,11 +1068,21 @@ Hasta aquí, los precios de los factores y la tecnología de cada empresa no dep
   \item Ese equilibrio existe y es único si las curvas son continuas y de pendiente normal; el mercado llega a él si ajusta precios (\autor{Walras}) o cantidades (\autor{Marshall}), pero con la producción decidida antes de conocer el precio puede oscilar sin converger (telaraña). Cuando se alcanza, maximiza el excedente total (1TFEB); cualquier reparto eficiente se consigue con transferencias de suma fija (2TFEB), y un impuesto se reparte según las elasticidades y destruye el triángulo de \autor{Harberger} (\ref{sec:estudio-equilibrio-competitivo}).
   \item El plazo lo cambia todo: a corto plazo puede haber beneficios y pérdidas; a largo plazo, con libre entrada, el precio baja al mínimo del coste medio, el beneficio extraordinario desaparece y la oferta de la industria es horizontal, creciente o decreciente según las economías externas (\ref{sec:analisis-plazos-corto}).
   \end{itemize}
-\item \textbf{\emph{Relevancia}}: es el punto de referencia con el que se juzgan los demás mercados y la intervención pública: el poder de mercado se mide como distancia al precio competitivo (índice de \autor{Lerner} nulo) \vertema{3.A.17}, la defensa de la competencia trata de acercar los mercados a su resultado \vertema{4.A.15}, y el análisis de impuestos, subvenciones y controles de precios empieza por este modelo \vertema{4.B.8} \vertema{4.B.9}.
+\item \textbf{\emph{Relevancia}}: es el punto de referencia con el que se juzgan los demás mercados y la intervención pública:
+  \begin{itemize}
+  \item el poder de mercado se mide como distancia al precio competitivo (índice de \autor{Lerner} nulo) \vertema{3.A.17};
+  \item la defensa de la competencia trata de acercar los mercados a su resultado \vertema{4.A.15};
+  \item el análisis de impuestos, subvenciones y controles de precios empieza por este modelo \vertema{4.B.8} \vertema{4.B.9}.
+  \end{itemize}
 \item \textbf{\emph{Extensiones y relación con otras partes del temario}}:
   \begin{itemize}
   \item El equilibrio parcial basta para un mercado pequeño y poco conectado con el resto; cuando un mercado pesa mucho o se transmite con fuerza a otros, como un tratado comercial o un impuesto sobre el trabajo, hace falta el equilibrio general \vertema{3.A.21}, y para la relación entre equilibrio, eficiencia y fallos de mercado, la economía del bienestar \vertema{3.A.22} \vertema{3.A.23}.
-  \item Al levantar el supuesto de muchos vendedores precio-aceptantes (4) o el de producto homogéneo (3) se llega al monopolio, la competencia monopolística y el oligopolio \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19}; al levantar el de información perfecta (2), a la economía de la información \vertema{3.A.13}, y la amenaza de entrada puede bastar para disciplinar a pocas empresas en los mercados impugnables \vertema{3.A.15}.
+  \item Al levantar los supuestos de la competencia perfecta:
+    \begin{itemize}
+    \item sin el de muchos vendedores precio-aceptantes (4) o el de producto homogéneo (3) se llega al monopolio, la competencia monopolística y el oligopolio \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19};
+    \item sin el de información perfecta (2), a la economía de la información \vertema{3.A.13};
+    \item con pocas empresas, la amenaza de entrada puede bastar para disciplinarlas en los mercados impugnables \vertema{3.A.15}.
+    \end{itemize}
   \item La crítica de \autor{Muth} a las expectativas de la telaraña está en el origen de las expectativas racionales \vertema{3.A.6}.
   \end{itemize}
 \item \textbf{\emph{Opinión}}: el modelo describe pocos mercados reales, y no lo pretende: su valor está en aislar el mecanismo por el que los precios coordinan y en dar una vara de medir. Su debilidad es dinámica: describe el estado de reposo final y no el proceso de competencia, como criticó \textcite{Hayek1948Meaning} desde la escuela austriaca, para la que la economía nunca está en equilibrio, sino en un proceso continuo de cambio \vertema{3.A.3}; y, sin beneficios extraordinarios duraderos, deja poco margen al incentivo a innovar que subrayó \textcite{Schumpeter1942Capitalism}.
@@ -1057,7 +1118,13 @@ Este anexo demuestra, paso a paso, el resultado de \ref{sec:analisis-normativo-e
 \item \emph{Paso 3}: con el lagrangiano $\mathcal{L}=\sum_i\phi_i(x_i)-\sum_jC_j(q_j)-\lambda\big(\sum_ix_i-\sum_jq_j\big)$, las condiciones de \autor{Kuhn}-\autor{Tucker} son
   $$\phi_i'(x_i)\leq\lambda\ \ (=\text{ si }x_i>0),\qquad \mathrm{CMg}_j(q_j)\geq\lambda\ \ (=\text{ si }q_j>0),\qquad \textstyle\sum_ix_i=\sum_jq_j,$$
   y son suficientes porque el objetivo es cóncavo ($\phi_i$ cóncavas, $C_j$ convexas) y la restricción, lineal. Si un consumidor no compra, es porque su utilidad marginal en 0 no llega al precio sombra; si una empresa no produce, porque su coste marginal en 0 lo supera.
-\item \emph{Paso 4}: el equilibrio competitivo de \ref{sec:modelo} cumple exactamente esas condiciones con $\lambda=p^*$: la del consumidor~\eqref{eq:cpo-consumidor}, con su caso de esquina; la de la empresa~\eqref{eq:oferta-empresa}, y el vaciado~\eqref{eq:equilibrio}. Por tanto, sus cantidades maximizan el excedente total y, con el reparto del numerario que resulte, la asignación es un óptimo de \autor{Pareto}: es el 1TFEB. Con $\phi_i$ estrictamente cóncavas y $C_j$ estrictamente convexas, las cantidades óptimas son únicas y coinciden con las del equilibrio.
+\item \emph{Paso 4}: el equilibrio competitivo de \ref{sec:modelo} cumple exactamente esas condiciones con $\lambda=p^*$:
+  \begin{itemize}
+  \item la del consumidor~\eqref{eq:cpo-consumidor}, con su caso de esquina;
+  \item la de la empresa~\eqref{eq:oferta-empresa};
+  \item el vaciado~\eqref{eq:equilibrio}.
+  \end{itemize}
+  Por tanto, sus cantidades maximizan el excedente total y, con el reparto del numerario que resulte, la asignación es un óptimo de \autor{Pareto}: es el 1TFEB. Con $\phi_i$ estrictamente cóncavas y $C_j$ estrictamente convexas, las cantidades óptimas son únicas y coinciden con las del equilibrio.
 \end{itemize}
 \findemo
 
@@ -1075,7 +1142,12 @@ Este anexo no se canta y resume lo que la teoría de los costes desarrolla \vert
 
 \begin{enumerate}
 \item \emph{Costes estrictamente convexos} (rendimientos decrecientes): la oferta es toda la curva de CMg; es el caso de los bloques~\ref{sec:construccion-modelo-obtencion} y \ref{sec:estudio-equilibrio-competitivo}.
-\item \emph{Rendimientos constantes}: $C(q)=c\,q$; con $p<c$ no se produce, con $p=c$ cualquier cantidad (tamaño indeterminado) y con $p>c$ el problema no tiene solución.
+\item \emph{Rendimientos constantes}: $C(q)=c\,q$:
+  \begin{itemize}
+  \item con $p<c$ no se produce;
+  \item con $p=c$, cualquier cantidad (tamaño indeterminado);
+  \item con $p>c$ el problema no tiene solución.
+  \end{itemize}
 \item \emph{Costes no convexos} (rendimientos crecientes y después decrecientes): la oferta es el tramo del CMg por encima del mínimo del CMe; por debajo, cero, con un salto en ese mínimo. Es el caso que da el tamaño de las empresas con libre entrada (\ref{sec:largo-plazo-libre-entrada}).
 \item \emph{Coste fijo evitable} (no hundido) más un coste variable convexo: la empresa puede no producir y evitar el coste fijo, así que la oferta es el CMg por encima del mínimo del CMe total.
 \item \emph{Rendimientos constantes con coste fijo evitable}: el CMe decrece siempre hacia $c$; con $p>c$, cuanto más se produce más se gana y la empresa competitiva no tiene un tamaño finito: estas tecnologías llevan a pocas empresas (monopolio natural) \vertema{3.A.17}.
@@ -1161,7 +1233,13 @@ El equilibrio estacionario, en el que $p_t=p^e_t=p^*$, es $p^*=(a_0-b_0)/(a_1+b_
 \begin{itemize}
 \item Con $p^e_t=p_{t-1}$, restando a~\eqref{eq:precio-telarana} la misma ecuación en el estado estacionario, $p^*=\frac{a_0-b_0}{a_1}-\frac{b_1}{a_1}p^*$,
   $$p_t-p^*=-\frac{b_1}{a_1}\,(p_{t-1}-p^*)\ \Longrightarrow\ p_t-p^*=\Big(-\frac{b_1}{a_1}\Big)^{t}(p_0-p^*)=\Big(-\frac{q'}{\lvert x'\rvert}\Big)^{t}(p_0-p^*).$$
-\item El factor es negativo, así que la desviación cambia de signo cada periodo: el precio oscila. Su valor absoluto decide la convergencia: si $b_1<a_1$, $(b_1/a_1)^t\to 0$ y el precio converge; si $b_1=a_1$, oscila con amplitud constante; si $b_1>a_1$, la amplitud crece sin límite. La cantidad, $q_t=b_0+b_1p_{t-1}$, oscila con el mismo factor.
+\item El factor es negativo, así que la desviación cambia de signo cada periodo: el precio oscila. Su valor absoluto decide la convergencia:
+  \begin{itemize}
+  \item si $b_1<a_1$, $(b_1/a_1)^t\to 0$ y el precio converge;
+  \item si $b_1=a_1$, oscila con amplitud constante;
+  \item si $b_1>a_1$, la amplitud crece sin límite.
+  \end{itemize}
+\item La cantidad, $q_t=b_0+b_1p_{t-1}$, oscila con el mismo factor.
 \item En el equilibrio, $x^*=q^*$, $\varepsilon_S=b_1p^*/q^*$ y $\lvert\varepsilon_D\rvert=a_1p^*/x^*$, luego $b_1/a_1=\varepsilon_S/\lvert\varepsilon_D\rvert$: el precio converge si la oferta es menos elástica que la demanda en el equilibrio. En el plano $(q,p)$ las pendientes son $1/b_1$ (oferta) y $-1/a_1$ (demanda): converge si la oferta es más inclinada.
 \end{itemize}
 \findemo
@@ -1211,13 +1289,30 @@ Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarco
 \item Con utilidad cuasilineal no hay efecto renta en el bien: la demanda marshalliana coincide con la hicksiana y el excedente del consumidor es una medida exacta del bienestar.
 \item La oferta de la empresa competitiva es el coste marginal \emph{creciente} por encima del mínimo del CVMe (corto plazo) o del CMe (largo plazo), no toda la curva de coste marginal.
 \item Ajuste walrasiano: estable si $z'(p^*)<0$. Ajuste marshalliano: estable si $\frac{d}{dq}(p^D-p^S)<0$. Con las 2 curvas decrecientes y la oferta más plana que la demanda, \autor{Walras} es inestable y \autor{Marshall}, estable; con la oferta más inclinada, al revés.
-\item Telaraña con expectativas ingenuas: converge si la oferta es menos elástica que la demanda en el equilibrio ($\varepsilon_S<\lvert\varepsilon_D\rvert$), es decir, más inclinada en el plano $(q,p)$. Con curvas normales puede divergir. \autor{Kaldor} le dio nombre (1934); \autor{Ezekiel} (1938) lo sistematizó; \autor{Nerlove} (1958), expectativas adaptativas; \autor{Muth} (1961), racionales.
+\item Telaraña con expectativas ingenuas: converge si la oferta es menos elástica que la demanda en el equilibrio ($\varepsilon_S<\lvert\varepsilon_D\rvert$), es decir, más inclinada en el plano $(q,p)$. Con curvas normales puede divergir. Autores:
+  \begin{itemize}
+  \item \autor{Kaldor} le dio nombre (1934);
+  \item \autor{Ezekiel} (1938) lo sistematizó;
+  \item \autor{Nerlove} (1958), expectativas adaptativas;
+  \item \autor{Muth} (1961), racionales.
+  \end{itemize}
 \item Ley de \autor{Dalton}: el impuesto recae más sobre el lado más inelástico. Con la demanda perfectamente elástica lo soportan entero los vendedores; con la oferta perfectamente elástica, los compradores. La incidencia no depende de quién lo pague legalmente.
 \item El exceso de gravamen crece con el \emph{cuadrado} del impuesto: $\mathrm{EG}\approx\tfrac12t^2\frac{x}{p}\frac{\varepsilon_S\lvert\varepsilon_D\rvert}{\varepsilon_S+\lvert\varepsilon_D\rvert}$.
-\item Libre entrada: con rendimientos constantes, $p^*=c$ y número de empresas indeterminado; con rendimientos decrecientes en todo el dominio, no hay equilibrio; con coste medio en U, $p^*=\min\mathrm{CMe}$ y $J^*=x(\overline{c})/\overline{q}$. La forma de S invertida de los costes es condición suficiente, no necesaria.
+\item Libre entrada:
+  \begin{itemize}
+  \item con rendimientos constantes, $p^*=c$ y número de empresas indeterminado;
+  \item con rendimientos decrecientes en todo el dominio, no hay equilibrio;
+  \item con coste medio en U, $p^*=\min\mathrm{CMe}$ y $J^*=x(\overline{c})/\overline{q}$.
+  \end{itemize}
+\item La forma de S invertida de los costes es condición suficiente, no necesaria.
 \item Industria de costes crecientes (deseconomías externas): oferta a largo plazo creciente; de costes decrecientes (economías externas): decreciente. Nunca por rendimientos crecientes internos, incompatibles con la competencia perfecta.
 \item El 1TFEB no necesita convexidad; el 2TFEB, sí (en general). En equilibrio parcial, todos los óptimos tienen las mismas cantidades.
-\item \autor{Dupuit} (1844), no 1884; \autor{Jenkin} (1870) dibuja las primeras curvas de oferta y demanda en inglés; \autor{Marshall} (1890) sistematiza el equilibrio parcial.
+\item Fechas de los precursores:
+  \begin{itemize}
+  \item \autor{Dupuit} (1844), no 1884;
+  \item \autor{Jenkin} (1870) dibuja las primeras curvas de oferta y demanda en inglés;
+  \item \autor{Marshall} (1890) sistematiza el equilibrio parcial.
+  \end{itemize}
 \end{itemize}
 
 \paragraph{Preguntas probables del tribunal}

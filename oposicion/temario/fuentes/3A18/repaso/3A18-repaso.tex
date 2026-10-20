@@ -1,0 +1,311 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Análisis de mercados (III): diferenciación de productos]{3.A.18}{Análisis de mercados (III). Diferenciación de productos: la teoría de la competencia monopolística y otros desarrollos.}
+\tcefecha{21/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Competencia monopolística: no direcciones}{10,5}
+\subcante{1. Supuestos: se levanta el 3}{1,5}
+\subcante{2. \autor{Chamberlin}: $d$ y $D$, tangencia, exceso de capacidad}{3}
+\subcante{3. \autor{Dixit}-\autor{Stiglitz}: CES, $\mathcal{L}=1/\sigma$, libre entrada}{6}
+\apartadocante{II. Oligopolio con productos diferenciados}{16}
+\subcante{1. Supuestos: se levantan el 3, el 4 y (salvo \autor{Salop}) el 5}{1}
+\subcante{2. \autor{Bertrand} y \autor{Cournot} diferenciados: $p^B<p^C$}{2}
+\subcante{3. Direcciones: precios, localización, entrada}{7,5}
+\subcante{4. Vertical: calidad (\autor{Shaked}-\autor{Sutton}), finitud}{3,5}
+\subcante{5. Publicidad (\autor{Dorfman}-\autor{Steiner}) y marcas}{2}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: el \concepto{margen} sobre el CMg depende de lo distintas que sean las variedades; el mercado no garantiza la variedad óptima. \emph{Pizarra}: $\mathcal{L}=1/\sigma$ en una esquina todo el cante y, debajo, los márgenes de cada modelo; mapa de las decisiones en \hyperref[rep:II.3]{II.3}.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «Para gustos, los colores». Coca-Cola: más de 200 marcas de bebidas. \emph{¿Por qué no venden todas lo mismo al mismo precio? ¿Cuánto pagamos por la variedad? ¿Demasiada o demasiado poca?}
+\item \textbf{Relevancia}: \emph{empírica} (más variedades importadas por EE.\,UU.\ 1972-2001 = 2,6\,\% del PIB; margen sobre CMg 21\,\% $\to$ 61\,\%, 1980-2016); \emph{teórica} (\autor{Dixit}-\autor{Stiglitz} en macro \vertema{3.A.7}, comercio \vertema{3.B.6}, crecimiento \vertema{3.A.44}; \autor{Hotelling} en lo electoral \vertema{3.A.24}); \emph{normativa} (falla el 1TFEB \vertema{3.A.22}; mercado relevante \vertema{3.A.20}; marcas y publicidad \vertema{3.B.39}).
+\item \textbf{Contextualización}: \autor{Marshall}, \autor{Cournot}, \autor{Bertrand} (homogéneo) $\to$ \autor{Sraffa} (1926) $\to$ \autor{Hotelling} (1929) $\to$ \autor{Robinson} y \autor{Chamberlin} (1933) $\to$ años 70: \autor{Lancaster} (1966), \autor{Spence} (1976), \autor{Dixit}-\autor{Stiglitz} (1977) + teoría de juegos (\autor{d'Aspremont} et al., \autor{Salop}, \autor{Shaked}-\autor{Sutton}).
+\item \textbf{Problemática}: ¿cómo se modeliza un mercado en que cada uno vende algo distinto? ¿Cuánto poder da la diferenciación? ¿Resuelve la paradoja de \autor{Bertrand}? ¿Cuántas variedades ofrece el mercado y cuántas debería? ¿Calidad, publicidad, marcas?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, muchas empresas y libre entrada (no direcciones); \hyperref[rep:II]{II}, pocas empresas interdependientes, una decisión por modelo (precio, localización, entrada, calidad, publicidad y marcas).
+\end{itemize}
+\begin{itemize}
+\item \concepto{Diferenciación de productos}: sustitutivos cercanos pero no perfectos; a igual precio, no da igual cuál comprar (\autor{Tirole}, 1988).
+\item \concepto{Horizontal}: no hay acuerdo en cuál es mejor (sabor, color, ubicación). \concepto{Vertical}: todos prefieren la de más calidad; difieren en cuánto pagan.
+\item \concepto{Enfoque de no direcciones}: preferencias sobre los bienes; consumidor representativo con \concepto{preferencia por la variedad}. \concepto{Enfoque de direcciones}: preferencias sobre las \emph{características}; cada consumidor tiene su variedad ideal («dirección»).
+\item Por qué diferenciarse: demanda ya no infinitamente elástica $\Rightarrow$ \emph{suaviza la competencia en precios}, da \concepto{poder de mercado}. Tensión: la variedad vale, pero es la fuente del margen.
+\end{itemize}
+
+% ==========================================================================
+\bloque[10,5]{I. La competencia monopolística: no direcciones\label{rep:I}}
+\begin{ideaclave}
+Cada empresa es monopolista de su variedad y carga un margen que depende de lo sustituibles que sean las variedades; la libre entrada se lleva los beneficios, no la ineficiencia: se produce por debajo de la escala eficiente, que es el precio de la variedad.
+\end{ideaclave}
+
+\sub{I.1. Caracterización\label{rep:I.1}}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\centering\arraybackslash}m{0.05\linewidth}>{\raggedright\arraybackslash}m{0.33\linewidth}>{\raggedright\arraybackslash}m{0.56\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{En la competencia monopolística}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & Agentes racionales & se mantiene\\
+\textcolor{tceemorado}{\textbf{2}} & Información perfecta y simétrica & se mantiene\\
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{3}} & Producto homogéneo & \textcolor{tceerojo}{\textbf{Se levanta}}: \textbf{producto diferenciado}; elasticidad cruzada alta pero finita\\
+\textcolor{tceemorado}{\textbf{4}} & Mercado atomizado & \textcolor{tceedorado}{\textbf{En parte}}: muchos, sin interacción estratégica, pero cada uno fija el precio de su variedad\\
+\textcolor{tceemorado}{\textbf{5}} & Libre entrada y salida (LP) & se mantiene: entran variedades nuevas\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Consecuencia}: \concepto{poder de mercado}; $\mathcal{L}\equiv(p-\mathrm{CMg})/p=1/|\varepsilon_{q,p}|$ \vertema{3.A.17}, con la elasticidad \emph{de su variedad}, no la del mercado. Falla el 1TFEB \vertema{3.A.22}; la comparación con la competencia ya no es inmediata (hay variedad).
+\item \emph{Tecnología común a todo el tema}: $C(q)=\mathrm{CF}+c\,q$, $\mathrm{CMe}=c+\mathrm{CF}/q$ decreciente (economías de escala internas \vertema{3.A.12}); el CF explica por qué no existe toda variedad imaginable.
+\end{itemize}
+
+\sub{I.2. Modelo de \autor{Chamberlin} (1933)\label{rep:I.2}}
+\begin{itemize}
+\item \emph{Idea}: muchas empresas con variedades parecidas; cada una, monopolista en la suya; el conjunto se parece a la competencia. Primero en tratar diferenciación y costes de venta como decisiones.
+\item \emph{Supuestos}: \emph{grupo} de sustitutivos cercanos; muchas empresas, \emph{simetría}; costes en U iguales (\concepto{supuesto heroico}); \emph{miopía}: cree que las demás no moverán su precio.
+\item \concepto{Demanda percibida} $d$: lo que cree que vende si las demás no se mueven; muy elástica. \concepto{Demanda efectiva} $D$ (de cuota de mercado, $1/n$): lo que vende cuando todas mueven el precio; menos elástica.
+\item \emph{CP}: $\mathrm{IMg}_d=\mathrm{CMg}$; $d$ se desliza por $D$; beneficios o pérdidas. \emph{LP}: entrada $\Rightarrow$ $D$ (y $d$) a la izquierda; por la miopía, guerra de precios, pérdidas, salidas, hasta:
+\begin{formula}
+\centering $p^*=\mathrm{CMe}(q^*)>\mathrm{CMg}(q^*)=\mathrm{IMg}_d(q^*)$,\quad $B^*=0$,\quad $q^*<\bar{q}$
+\end{formula}
+\item[] 3 condiciones: $d$ \emph{tangente} al CMe ($B=0$); $\mathrm{IMg}_d=\mathrm{CMg}$ (se sigue de la tangencia); $d$ corta a $D$ (lo que cree vender es lo que vende).
+\end{itemize}
+\graficorepaso[0.98\linewidth]{chamberlin}{\autor{Chamberlin}: a) $d$ y $D$; b) CP con beneficios; c) tangencia a LP y exceso de capacidad}
+\begin{itemize}
+\item \concepto{Teorema del exceso de capacidad}: tangencia en el tramo decreciente del CMe $\Rightarrow$ $q^*<\bar{q}$ (escala mínima eficiente): «demasiadas empresas, cada una demasiado pequeña» (\autor{Kaldor}, 1935). $p=\mathrm{CMe}>\min\mathrm{CMe}>\mathrm{CMg}$.
+\item \emph{2 ineficiencias}: \emph{asignativa} ($p>\mathrm{CMg}$) y \emph{productiva} ($\mathrm{CMe}>\min\mathrm{CMe}$). Pero el exceso de capacidad es \emph{el precio de la variedad}; \autor{Chamberlin} no puede medirlo: no modeliza la demanda.
+\item \emph{Valoración}: reconcilia libre entrada y economías de escala no agotadas (\autor{Sraffa}). \emph{Críticas}: grupo mal definido (\autor{Stigler}, 1949); simetría incoherente (\autor{Kaldor}); miopía; costes hundidos.
+\end{itemize}
+
+\sub{I.3. Modelo de \autor{Dixit} y \autor{Stiglitz} (1977)\label{rep:I.3}}
+\begin{itemize}
+\item \emph{Idea}: formaliza a \autor{Chamberlin}: demanda de cada variedad desde un \concepto{consumidor representativo} con preferencia por la variedad $\Rightarrow$ se puede comparar con el óptimo. El modelo más usado.
+\item \emph{Supuestos}: los de \autor{Chamberlin}; una variedad por empresa ($i=1,\dots,n$); numerario $x_0$ de precio 1; renta $\overline{W}$; Cobb-Douglas entre $x_0$ y un \concepto{agregador} CES simétrico \vertema{3.A.11}:
+\begin{formula}
+\centering $U=x_0^{\,1-\alpha}\,y^{\alpha}$,\quad $y\equiv\Big[\sum_{i=1}^{n}x_i^{\rho}\Big]^{1/\rho}$,\quad $\rho\equiv\dfrac{\sigma-1}{\sigma}$,\ $\sigma>1$
+\end{formula}
+\item[] $\sigma$ = \concepto{elasticidad de sustitución} entre 2 variedades cualesquiera; $\alpha$ = parte de la renta gastada en el grupo. Preferencias \emph{débilmente separables}. Costes $\mathrm{CF}+c\,q_i$.
+\item \concepto{Preferencia por la variedad}: $x_i=X/n$ $\Rightarrow$ $y=n^{1/(\sigma-1)}X$: misma cantidad, más variedades, más utilidad; más intensa cuanto \emph{menor} $\sigma$ ($\sigma\to\infty$: sustitutivos perfectos, la variedad no vale).
+\item \emph{¿Por qué $\sigma>1$?} Ninguna variedad imprescindible y, sobre todo, demanda de cada variedad \emph{elástica} (si no, su monopolista no tendría precio óptimo). La convexidad solo exige $\sigma>0$.
+\end{itemize}
+\begin{itemize}
+\item \emph{Consumidor, en 2 etapas}: reparte $\alpha\overline{W}$ entre variedades (máx.\ $y$); luego $x_0=(1-\alpha)\overline{W}$, $P\,y=\alpha\overline{W}$, con $P$ el \concepto{índice de precios} del grupo. \concepto{Demanda de cada variedad}:
+\funcionclave{x_i=\frac{\alpha\overline{W}}{P}\Big(\frac{p_i}{P}\Big)^{-\sigma},\quad P\equiv\Big[\sum_{j=1}^{n}p_j^{1-\sigma}\Big]^{\frac{1}{1-\sigma}}}
+\item[] $\uparrow$ con $\alpha\overline{W}$ (tamaño del mercado); $\downarrow$ con $p_i$ (elasticidad $\sigma$); $\uparrow$ con $P$ (proporcional a $P^{\sigma-1}$); $\sigma$ no la desplaza en un sentido fijo: la hace más sensible al precio relativo. Precios iguales: $P=p\,n^{1/(1-\sigma)}$: la entrada baja $P$ y quita demanda a las existentes.
+\item Muchas variedades: $p_i$ no mueve $P$ $\Rightarrow$ $\varepsilon_{x_i,p_i}=-\sigma$ (exacta: $-\sigma+(\sigma-1)s_i$). Es la $d$ de \autor{Chamberlin}; la $D$ tiene elasticidad unitaria.
+\item \emph{Empresa}: máx.\ $(p_i-c)\,x_i(p_i)-\mathrm{CF}$ tomando $P$ dado; $p_i(1-1/\sigma)=c$ $\Rightarrow$ \concepto{regla del margen}:
+\funcionclave{\mathcal{L}\equiv\frac{p^*-c}{p^*}=\frac{1}{\sigma}\ \Longleftrightarrow\ p^*=\mu\,c,\quad \mu\equiv\frac{\sigma}{\sigma-1}>1}
+\item[] Margen constante, igual para todas, \emph{mayor con más preferencia por la variedad} ($\downarrow\sigma$).
+\item \emph{Libre entrada}: $B=0$ $\Leftrightarrow$ $(p^*-c)\,q^*=\mathrm{CF}$; y $n\,p^*q^*=\alpha\overline{W}$:
+\begin{formula}
+\centering $q^*=\dfrac{(\sigma-1)\,\mathrm{CF}}{c}$,\qquad $n^*=\dfrac{\alpha\overline{W}}{\sigma\,\mathrm{CF}}$
+\end{formula}
+\item[] $q^*$ $\uparrow$ con $\mathrm{CF}/c$ y con $\sigma$, \emph{no depende del tamaño del mercado}; $n^*$ $\uparrow$ con $\alpha\overline{W}$, $\downarrow$ con CF y $\sigma$.
+\end{itemize}
+\graficorepaso[0.98\linewidth]{dixit-stiglitz}{\autor{Dixit}-\autor{Stiglitz}: a) beneficios; b) la entrada desplaza la demanda con $p=\mu c$ fijo; c) tangencia con el CMe}
+\begin{itemize}
+\item \emph{Positivas}: $p>\mathrm{CMg}$ con $B=0$: el poder de mercado está en el \emph{margen sobre el CMg}, que paga el CF, no en el beneficio.
+\item \emph{Normativas}: ineficiencia asignativa y productiva ($\mathrm{CMe}>\mathrm{CMg}$: economías de escala sin agotar), pero ya se cuenta la variedad. Con CES y Cobb-Douglas: equilibrio = \concepto{óptimo restringido} (sin subvenciones, cada empresa cubre costes); el \concepto{primer óptimo} ($p=\mathrm{CMg}$, CF con suma fija) tiene \emph{la misma} $q$ por variedad y \emph{más} variedades: $n^{\mathrm{o}}/n^*=1/[\rho(1-\alpha)+\alpha]>1$ \vertema{3.A.22}.
+\item En general (\autor{Spence} 1976, \autor{Mankiw}-\autor{Whinston} 1986), 2 fuerzas: \concepto{excedente no apropiable} (quien lanza una variedad no cobra todo lo que vale: $\Rightarrow$ pocas) y \concepto{robo de clientes} (parte de lo que gana se lo quita a otras: $\Rightarrow$ demasiadas).
+\item \emph{Extensiones}: comercio intraindustrial (\autor{Krugman} 1979, 1980; \autor{Melitz} 2003) \vertema{3.B.6}; nueva economía keynesiana (\autor{Blanchard}-\autor{Kiyotaki} 1987) \vertema{3.A.7}; crecimiento (\autor{Romer}, 1990) \vertema{3.A.44}.
+\item \emph{Evidencia}: \autor{Broda}-\autor{Weinstein} (2006): variedades importadas por EE.\,UU.\ $\times3$ (1972-2001); el índice convencional sobrestimó la inflación de importación 1,2 p.p./año; la variedad vale 2,6\,\% del PIB.
+\item \emph{Valoración}: soluciones cerradas; juzga el número de variedades. \emph{Críticas}: no dice en qué características se compite; elasticidad cruzada igual entre todos los pares; margen constante. Competencia \emph{global}; si es \emph{local} y con pocas empresas $\Rightarrow$ \hyperref[rep:II]{II}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[16]{II. El oligopolio con productos diferenciados\label{rep:II}}
+\begin{ideaclave}
+La diferenciación es la salida a la paradoja de \autor{Bertrand}; las empresas se diferencian a propósito, en variedad y en calidad, para suavizar la competencia en precios; con calidades caben pocas aunque el mercado crezca; publicidad y marcas crean y protegen la diferenciación; y el mercado no garantiza ni la diferenciación ni el número de empresas óptimos.
+\end{ideaclave}
+
+\sub{II.1. Caracterización\label{rep:II.1}}
+\begin{itemize}
+\item Levanta el \textbf{3} (diferenciado: horizontal o vertical), el \textbf{4} (pocos vendedores, 2, que se saben \emph{interdependientes}; compradores precio-aceptantes) y el \textbf{5} (barreras), \emph{salvo en la ciudad circular} (entrada libre).
+\item \concepto{Interdependencia estratégica} $\Rightarrow$ juegos no cooperativos \vertema{3.A.14}: estáticos $\Rightarrow$ \concepto{equilibrio de \autor{Nash}}; dinámicos en 2 etapas $\Rightarrow$ \concepto{equilibrio de \autor{Nash} perfecto en subjuegos}, por \emph{inducción hacia atrás} (primero los precios).
+\end{itemize}
+
+\sub{II.2. Sin direcciones: \autor{Bertrand} y \autor{Cournot} diferenciados\label{rep:II.2}}
+\begin{itemize}
+\item \emph{Idea}: homogéneo: \concepto{paradoja de \autor{Bertrand}} ($p=c$, $B=0$) frente a \autor{Cournot} ($p>c$) \vertema{3.A.19}. ¿Y si los productos difieren? \autor{Singh}-\autor{Vives} (1984), demanda de \autor{Bowley} (1924), un solo parámetro.
+\item \emph{Supuestos}: 2 empresas, CMg $c$, sin CF; utilidad cuasilineal cuadrática; juego estático:
+\begin{formula}
+\centering $p_i=\alpha-\beta\,q_i-\gamma\,q_j$,\qquad $0\le\gamma<\beta$
+\end{formula}
+\item[] $\gamma/\beta\in[0,1)$: $\gamma=0$, mercados independientes (monopolios); $\gamma\to\beta$, homogéneo.
+\item \emph{\autor{Cournot}}: reacción \emph{decreciente}: cantidades = \concepto{sustitutivos estratégicos}. \emph{\autor{Bertrand}}: reacción \emph{creciente}: precios = \concepto{complementos estratégicos} (\autor{Bulow}-\autor{Geanakoplos}-\autor{Klemperer}, 1985):
+\begin{formula}
+\centering $p^C=c+\dfrac{\beta(\alpha-c)}{2\beta+\gamma}$,\qquad $p^B=c+\dfrac{(\alpha-c)(\beta-\gamma)}{2\beta-\gamma}$
+\end{formula}
+\end{itemize}
+\graficorepaso[0.8\linewidth]{reaccion-diferenciado}{Reacción: cantidades decrecientes (\autor{Cournot}); precios crecientes (\autor{Bertrand}, $p^B>c$)}
+\begin{itemize}
+\item \emph{Implicaciones}: \emph{la diferenciación resuelve la paradoja}: $p^B>c$ si $\gamma<\beta$; margen $\uparrow$ al $\downarrow\gamma$ ($\gamma=0$: monopolio, $(\alpha+c)/2$). \emph{\autor{Bertrand} más competitivo}: $p^B<p^C$ con $\gamma>0$; diferencia máxima con homogéneo ($p^C\to c+(\alpha-c)/3$, $p^B\to c$). \emph{Las empresas prefieren cantidades}: con compromiso previo, elegir $q$ es dominante con sustitutivos. En ambos, $\mathcal{L}_i=1/|\varepsilon_{q_i,p_i}|$.
+\item \emph{Valoración}: $\gamma$ exógeno y simétrico: no dice de dónde sale la diferenciación $\Rightarrow$ enfoque de direcciones.
+\end{itemize}
+
+\sub{II.3. Con direcciones: precios, localización y entrada\label{rep:II.3}}
+\begin{itemize}
+\item \emph{Orden de las decisiones}: entrada $\to$ localización (qué variedad) $\to$ calidad $\to$ precio; cuanto más tarde, más fácil de cambiar. Cada modelo fija las demás y estudia una; se resuelve hacia atrás, empezando por el precio (\autor{Tirole}, 1988).
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.3\linewidth}>{\raggedright\arraybackslash}m{0.44\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Decisión} & \textbf{Modelo} & \textbf{Resultado clave}\\
+\midrule
+\textbf{1. Entrada} & Ciudad circular (\autor{Salop}) & $n^*=\sqrt{t/\mathrm{CF}}$: el doble de las óptimas\\
+\textbf{2. Localización} & Ciudad lineal, 2 etapas & diferenciación máxima: domina el efecto estratégico\\
+\textbf{3. Calidad} & \autor{Shaked}-\autor{Sutton} & diferenciación máxima de calidades; finitud\\
+\textbf{4. Precio} & Ciudad lineal, extremos & $p^*=c+t$: salida a la paradoja\\
+\textbf{Otras} & \autor{Dorfman}-\autor{Steiner}; marcas & $A/(pq)=\mathcal{L}\,\varepsilon_{q,A}$; marcas disuaden la entrada\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item \emph{Justificación: \autor{Lancaster} (1966)}: no se demandan bienes, sino sus \concepto{características}; el bien $i$ da $a_{ki}$ de la característica $k$ («tecnología del consumo»); $U(\vect{z})$ con $z_k=\sum_ia_{ki}x_i$ \vertema{3.A.8}. Explica fidelidad a la marca, productos nuevos (nichos) y publicidad. Consecuencia: \concepto{enfoque de direcciones} y \concepto{competencia local} (cada variedad compite con sus vecinas). Con muchas características, inmanejable $\Rightarrow$ una sola: la «localización».
+\end{itemize}
+\begin{itemize}
+\item \emph{Decisión de precios: ciudad lineal de \autor{Hotelling} (1929)}, «Stability in Competition»: 2 tiendas en una calle; primer modelo de \concepto{diferenciación espacial} (la calle: sabor, horario, ideología).
+\item \emph{Supuestos}: masa 1 uniforme en $[0,1]$ ($x$ = variedad ideal); empresa 1 en 0, 2 en 1, CMg $c$; \emph{demanda unitaria}; utilidad $v-p_i-t\,d^2$; $t$ = \concepto{coste de transporte} (pérdida por no consumir la ideal); \autor{Bertrand}, estático.
+\item \emph{Desarrollo}: \concepto{consumidor indiferente} $\tilde{x}$, la pieza clave:
+\begin{formula}
+\centering $p_1+t\tilde{x}^2=p_2+t(1-\tilde{x})^2\Rightarrow x_1=\tilde{x}=\dfrac12+\dfrac{p_2-p_1}{2t}$
+\end{formula}
+\item[] Máx.\ $(p_i-c)\,x_i$; reacción creciente:
+\begin{formula}
+\centering $R_i(p_j)=\dfrac{p_j+c+t}{2}\Rightarrow p_1^*=p_2^*=c+t$,\ $x_i^*=\dfrac12$,\ $B_i^*=\dfrac t2$
+\end{formula}
+\end{itemize}
+\pareja{hotelling}{Ciudad lineal: el consumidor indiferente reparte el mercado}{hotelling-reaccion}{Reacción en precios: equilibrio en $c+t$}
+\begin{itemize}
+\item \emph{Implicaciones}: \emph{salida a la paradoja de \autor{Bertrand}}: margen $t$; si $t\to0$, $p=c$. Mismo resultado que \autor{Bertrand} diferenciado, pero la sustituibilidad tiene origen: la heterogeneidad de gustos ($t$). \emph{Valoración}: localizaciones exógenas.
+\item \emph{Decisión de localización}: \autor{Hotelling}: \concepto{principio de diferenciación mínima} (las 2 en el centro). \autor{d'Aspremont}-\autor{Gabszewicz}-\autor{Thisse} (1979): falla si eligen precios: con costes \emph{lineales}, demanda discontinua y sin equilibrio en precios si están cerca; con \emph{cuadráticos}, a los extremos.
+\item \emph{Supuestos}: costes cuadráticos; 2 etapas: 1) localizaciones $0\le a\le b\le1$; 2) precios. \emph{2.ª etapa}: márgenes $\propto b-a$:
+\begin{formula}
+\centering $p_1^*=c+\dfrac{t(b-a)(2+a+b)}{3}$,\quad $p_2^*=c+\dfrac{t(b-a)(4-a-b)}{3}$
+\end{formula}
+\item[] \emph{1.ª etapa} (envolvente: el propio precio no cuenta):
+\begin{formula}
+\centering $\dfrac{dB_1}{da}=(p_1^*-c)\Big[\underbrace{\tfrac{\partial x_1}{\partial a}}_{\text{demanda }(+)}+\underbrace{\tfrac{\partial x_1}{\partial p_2}\tfrac{dp_2^*}{da}}_{\text{estratégico }(-)}\Big]=(p_1^*-c)\dfrac{b-3a-2}{6(b-a)}<0$
+\end{formula}
+\item[] \concepto{Efecto demanda}: acercarse al centro da más clientes. \concepto{Efecto estratégico}: acercarse a la rival la obliga a bajar el precio. Con cuadráticos domina el estratégico.
+\end{itemize}
+\graficorepaso[0.55\linewidth]{hotelling-localizacion}{Localización: efecto demanda y estratégico; equilibrio en 0 y 1, óptimo en $\tfrac14$ y $\tfrac34$}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{principio de diferenciación máxima}: $a=0$, $b=1$, $p^*=c+t$: alejarse para \emph{suavizar la competencia en precios}. Con precios fijos (regulados) solo actúa el efecto demanda $\Rightarrow$ centro (\autor{Hotelling}). \emph{Bienestar}: precio = transferencia; óptimo en $1/4$ y $3/4$, transporte $t/48$ frente a $t/12$: el mercado \emph{diferencia demasiado}.
+\item \emph{Extensión}: votante mediano (\autor{Downs}, 1957) \vertema{3.A.24}. \emph{Valoración}: sensible a los supuestos; agrupamiento si la demanda se concentra en el centro, por aglomeración o sin competencia en precios.
+\item \emph{Decisión de entrada: ciudad circular de \autor{Salop} (1979)}: libre entrada $\Rightarrow$ competencia monopolística con competencia \emph{local}; une los 2 bloques: ¿demasiadas o pocas?
+\item \emph{Supuestos}: masa 1 uniforme en un círculo de perímetro 1 (sin extremos); demanda unitaria; costes de transporte lineales $t\,d$; CF de entrada y CMg $c$; 2 etapas: 1) entran $n$, \emph{equidistantes} ($1/n$, supuesto); 2) precios.
+\item \emph{Desarrollo}: clientes a los 2 lados, $x_i=1/n+(p-p_i)/t$:
+\begin{formula}
+\centering $p^*=c+\dfrac tn$,\quad $B^*=\dfrac{t}{n^2}-\mathrm{CF}$\ $\overset{B=0}{\Longrightarrow}$\ $n^*=\sqrt{\dfrac{t}{\mathrm{CF}}}$,\ $p^*=c+\sqrt{t\,\mathrm{CF}}$
+\end{formula}
+\item[] Planificador: $\min_n\ n\,\mathrm{CF}+t/(4n)$ $\Rightarrow$ $n^{\mathrm{o}}=\tfrac12\sqrt{t/\mathrm{CF}}=n^*/2$: \concepto{entrada excesiva}.
+\end{itemize}
+\graficorepaso[0.42\linewidth]{salop}{Ciudad circular: $n$ empresas equidistantes y el consumidor indiferente}
+\begin{itemize}
+\item \emph{Implicaciones}: $p>c$ con $B=0$; $\uparrow$CF $\Rightarrow$ $\downarrow n$, $\uparrow$margen; $\uparrow t$ $\Rightarrow$ $\uparrow$ los 2; $\mathrm{CF}\to0$ $\Rightarrow$ $n\to\infty$, $p\to c$. En el círculo, con demanda unitaria, domina el \emph{robo de clientes}; en \autor{Dixit}-\autor{Stiglitz} los 2 efectos se compensan (óptimo restringido).
+\item \emph{Valoración}: canónico de la entrada; localización simétrica supuesta; demanda unitaria.
+\end{itemize}
+
+\sub{II.4. Diferenciación vertical: calidad (\autor{Shaked}-\autor{Sutton}, 1982-83)\label{rep:II.4}}
+\begin{itemize}
+\item \emph{Idea}: todos prefieren más calidad; difieren en cuánto pagan.
+\item \emph{Supuestos}: compra $\leq1$ unidad, $U=\theta s-p$; $\theta$ uniforme en $[\underline{\theta},\overline{\theta}]$, $\overline{\theta}-\underline{\theta}=1$ (gustos o renta); 2 empresas, CMg $c$ que \emph{no depende de la calidad} (cuesta en I+D, CF); $s_{\mathrm{A}}>s_{\mathrm{B}}$; 2 etapas: calidad, precios; mercado cubierto.
+\item \emph{2.ª etapa}: indiferente $\tilde{\theta}=(p_{\mathrm{A}}-p_{\mathrm{B}})/\Delta s$; con $\Delta s\equiv s_{\mathrm{A}}-s_{\mathrm{B}}$:
+\begin{formula}
+\centering $p_{\mathrm{A}}^*=c+\dfrac{2\overline{\theta}-\underline{\theta}}{3}\Delta s$,\quad $p_{\mathrm{B}}^*=c+\dfrac{\overline{\theta}-2\underline{\theta}}{3}\Delta s$\\[3pt]
+$B_{\mathrm{A}}^*=\dfrac{(2\overline{\theta}-\underline{\theta})^2}{9}\Delta s>B_{\mathrm{B}}^*=\dfrac{(\overline{\theta}-2\underline{\theta})^2}{9}\Delta s$
+\end{formula}
+\item[] si $\overline{\theta}>2\underline{\theta}$ (bastante heterogeneidad); si no, la baja no vende. Márgenes $\propto\Delta s$.
+\item \emph{1.ª etapa}: beneficios $\uparrow$ con $\Delta s$ $\Rightarrow$ alta elige $\overline{s}$, baja $\underline{s}$; igual calidad $\Rightarrow$ \autor{Bertrand}.
+\end{itemize}
+\graficorepaso[0.55\linewidth]{shaked-sutton}{Vertical: el consumidor indiferente reparte el segmento de valoraciones}
+\begin{itemize}
+\item \emph{Implicaciones}: \concepto{diferenciación máxima de calidades} (como \autor{Hotelling}, para suavizar precios). \emph{Pugna por el liderazgo}: la alta gana más; por turnos, la primera elige alta.
+\item \concepto{Propiedad de finitud}: si la calidad cuesta en CF (I+D) y poco en costes variables, el número de empresas con cuota está \emph{acotado aunque el mercado crezca y el CF sea muy pequeño}: \concepto{oligopolio natural}. Con $2\underline{\theta}<\overline{\theta}<4\underline{\theta}$: \emph{duopolio natural}. Contraste con \autor{Salop}: allí $n\to\infty$; aquí $n$ depende de la heterogeneidad, no del tamaño.
+\item \emph{Evidencia}: \autor{Sutton} (1991): con costes hundidos endógenos (publicidad, I+D), la concentración no baja al crecer el mercado; sin ellos, sí.
+\item \emph{Valoración}: supuestos fuertes; con la calidad en costes variables o con \autor{Cournot}, puede no haber finitud.
+\end{itemize}
+
+\sub{II.5. Publicidad y proliferación de marcas\label{rep:II.5}}
+\begin{itemize}
+\item \emph{Idea}: crear y proteger la diferenciación sin cambiar el producto. España, 2025: publicidad 12.745 M€ ($\approx$0,75\,\% del PIB); 57.158 marcas nacionales (+11,5\,\%).
+\item \emph{\autor{Dorfman}-\autor{Steiner} (1954)}: empresa con poder elige $p$ y $A$, demanda $q(p,A)$; CPO: \autor{Lerner} y $(p-\mathrm{CMg})\,\partial q/\partial A=1$:
+\begin{formula}
+\centering $\optim{\max}{p,\,A}{B=p\,q(p,A)-C\big(q(p,A)\big)-A}{}$\\[3pt]
+$\dfrac{A}{p\,q}=\dfrac{\varepsilon_{q,A}}{|\varepsilon_{q,p}|}=\mathcal{L}\,\varepsilon_{q,A}$
+\end{formula}
+\item[] Más publicidad cuanto más eficaz y más poder; en competencia perfecta ($\mathcal{L}=0$), ninguna.
+\item \emph{3 visiones} (\autor{Bagwell}, 2007): \emph{informativa} (\autor{Nelson}, 1974: demanda más elástica, más competencia); \emph{persuasiva} (fidelidad, menos elástica, barrera de entrada); \emph{complementaria} (entra en la utilidad, \autor{Becker}-\autor{Murphy} 1993).
+\item \emph{Como señal}: bienes de búsqueda, experiencia y confianza; solo a la de calidad alta le compensa gastar mucho (\autor{Milgrom}-\autor{Roberts}, 1986) \vertema{3.A.13}.
+\item \concepto{Proliferación de marcas}: la instalada ocupa los nichos rentables del círculo $\Rightarrow$ sin hueco para cubrir el CF: \emph{barrera de entrada estratégica} \vertema{3.A.15}; solo si es creíble (\autor{Judd}, 1985: si retirar marcas cuesta poco, no disuade).
+\item \emph{Evidencia}: cereales de desayuno en EE.\,UU.\ (\autor{Schmalensee}, 1978): 6 mayores, más de 80 marcas (1950-72) sin entrada con éxito; FTC 1972, desestimado 1981 \vertema{3.B.39}.
+\item \emph{Valoración}: regla sencilla y contrastable; el bienestar depende de la visión correcta, y la evidencia no elige una.
+\end{itemize}
+\begin{ideaclave}
+Bajo $\mathcal{L}=1/\sigma$: $p^B-c$ ($\uparrow$ al $\downarrow\gamma$); $t$ en la ciudad lineal y $t/n$ en la circular; $\propto\Delta s$ en vertical; $A/(pq)=\mathcal{L}\,\varepsilon_{q,A}$. Cuanto más distintas las variedades, mayor el margen.
+\end{ideaclave}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: margen según lo distintas que sean las variedades ($1/\sigma$, $t$, $\Delta s$); libre entrada: $B=0$ pero exceso de capacidad o de entrada; pocas empresas: diferenciación máxima; publicidad y marcas la crean y protegen; bienestar ambiguo (margen y escala frente a variedad).
+\item \textbf{Relevancia}: comercio \vertema{3.B.6}, nueva economía keynesiana \vertema{3.A.7}, crecimiento \vertema{3.A.44}, competencia electoral \vertema{3.A.24}, defensa de la competencia \vertema{3.B.39}.
+\item \textbf{Extensiones}: colusión \vertema{3.A.19}, barreras \vertema{3.A.15}, mercado relevante \vertema{3.A.20}, segundo óptimo \vertema{3.A.22}, elección discreta.
+\item \textbf{Opinión}: importa menos cómo se modelice la demanda que lo \emph{local} de la competencia; la política de la competencia no debe castigar la diferenciación, sino las estrategias que la usan para cerrar el paso a otros.
+\item \textbf{Idea final}: para gustos, los colores, y de esa diversidad nace el poder de mercado; pagamos la variedad con un margen, y el mercado unas veces se queda corto y otras se pasa. Hay colores para todos los gustos, pero no necesariamente los que la sociedad elegiría.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1929}{\autor{Hotelling}: ciudad lineal, diferenciación mínima}
+\hito{1933}{\autor{Chamberlin}: competencia monopolística; \autor{Robinson}: competencia imperfecta}
+\hito{1954}{\autor{Dorfman}-\autor{Steiner}: regla de la publicidad}
+\hito{1966}{\autor{Lancaster}: demanda de características}
+\hito{1976}{\autor{Spence}: variedad de productos}
+\hito{1977}{\autor{Dixit}-\autor{Stiglitz}: CES y variedad óptima}
+\hito{1978}{\autor{Schmalensee}: proliferación de marcas}
+\hito{1979}{\autor{Salop}: ciudad circular; \autor{d'Aspremont}-\autor{Gabszewicz}-\autor{Thisse}: diferenciación máxima; \autor{Gabszewicz}-\autor{Thisse}: calidades}
+\hito{1982}{\autor{Shaked}-\autor{Sutton}: calidades (1983: finitud)}
+\hito{1984}{\autor{Singh}-\autor{Vives}: \autor{Bertrand} frente a \autor{Cournot}}
+\hito{1986}{\autor{Mankiw}-\autor{Whinston}: entrada excesiva}
+\hito{1991}{\autor{Sutton}: costes hundidos y concentración}
+\hito{2006}{\autor{Broda}-\autor{Weinstein}: valor de la variedad}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Valor de las variedades importadas por EE.\,UU.\ 1972-2001: \dato{2,6\,\% del PIB}{\autor{Broda}-\autor{Weinstein}, 2006}.
+\item Margen medio sobre el CMg, cotizadas de EE.\,UU.: \dato{21\,\% (1980) $\to$ 61\,\% (2016)}{\autor{De Loecker} et al., 2020}.
+\item Inversión publicitaria en España: \dato{12.745 M€ en 2025, $\approx$0,75\,\% del PIB}{InfoAdex y Eurostat, 2026}.
+\item Marcas nacionales solicitadas: \dato{57.158 en 2025, +11,5\,\%}{OEPM, 2026}.
+\item Turismos España-Alemania 2025: \dato{6.700 M€ exportados, 7.200 M€ importados; Grubel-Lloyd 0,97}{Eurostat, 2026}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Beneficio nulo y poder de mercado?} Sí: el poder es el margen sobre el CMg ($1/\sigma$), que solo paga el CF.
+\item \textbf{¿Por qué $\sigma>1$? ¿Margen y variedad?} Para que la demanda de cada variedad sea elástica y haya precio óptimo; más preferencia por la variedad = menor $\sigma$ = mayor margen.
+\item \textbf{¿Demasiadas o pocas variedades?} Depende: excedente no apropiable (pocas) frente a robo de clientes (demasiadas). CES: = óptimo restringido, menos que el primer óptimo; \autor{Salop}: el doble.
+\item \textbf{¿\autor{Bertrand} o \autor{Cournot} diferenciados?} \autor{Bertrand} más competitivo ($p^B<p^C$), pero $p^B>c$; las empresas prefieren comprometerse a cantidades.
+\item \textbf{¿Por qué costes cuadráticos en la localización?} Con lineales la demanda es discontinua (mercados cautivos) y puede no haber equilibrio en precios.
+\item \textbf{¿Por qué con calidades $n$ no crece con el mercado?} La calidad cuesta en CF; las altas bajan el precio y dejan sin clientes a las bajas: finitud.
+\item \textbf{¿\autor{Lerner} y publicidad?} $A/(pq)=\mathcal{L}\,\varepsilon_{q,A}$: más poder, más publicidad; sin poder, ninguna.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item \autor{Chamberlin} a LP: $p=\mathrm{CMe}>\min\mathrm{CMe}>\mathrm{CMg}=\mathrm{IMg}_d$; tangencia con $d$ (no con $D$); $D$ menos elástica que $d$.
+\item \autor{Dixit}-\autor{Stiglitz}: $q^*$ \emph{no} depende del tamaño del mercado; $n^*$ sí. Menor $\sigma$ = más preferencia por la variedad = más margen.
+\item Precios: \emph{complementos} estratégicos (reacción creciente); cantidades: \emph{sustitutivos} estratégicos.
+\item \autor{Hotelling}: precios fijos $\Rightarrow$ \emph{mínima} (centro: solo efecto demanda); precios elegidos y cuadráticos $\Rightarrow$ \emph{máxima}; óptimo $1/4$ y $3/4$.
+\item \autor{Salop}: $n^*=\sqrt{t/\mathrm{CF}}$ es el \emph{doble} del óptimo, no la mitad; margen $t/n$.
+\item Vertical: finitud con calidad en \emph{CF}; $n$ según la heterogeneidad, no el tamaño.
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
