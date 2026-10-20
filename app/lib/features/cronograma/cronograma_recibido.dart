@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -75,9 +77,10 @@ class _CronogramaRecibidoPageState extends ConsumerState<CronogramaRecibidoPage>
       await responderCronogramaRecibido(ref, widget.recibido, aceptar: aceptar);
       messenger.mostrar(SnackBar(content: Text(aceptar ? 'Ya es tu cronograma. Lo compartes con tus preparadores, que pueden proponerte cambios.' : 'Descartado.')));
       nav.pop();
-    } catch (_) {
+    } catch (e) {
       if (mounted) setState(() => _ocupado = false);
-      messenger.mostrar(const SnackBar(content: Text('No se pudo. Revisa la conexión.')));
+      // Con el error tal cual: si vuelve a pasar, se sabe por qué.
+      messenger.mostrar(SnackBar(content: Text('No se pudo (${e is TimeoutException ? 'sin respuesta del servidor' : e}). Revisa la conexión y vuelve a intentarlo.')));
     }
   }
 

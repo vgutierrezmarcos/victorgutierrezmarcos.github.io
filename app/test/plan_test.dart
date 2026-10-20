@@ -229,6 +229,12 @@ void main() {
       expect(r.enPreparacion(en(40)), isFalse);
       expect(r.restanteFase(en(40)), const Duration(minutes: 30));
       expect(r.hitosPasados(en(40)), 1); // el fin del esquema ya ha pasado
+      // El cronómetro nuevo empieza en pausa: no corre hasta que se le da a continuar.
+      expect(r.corriendo, isFalse);
+      expect(r.restanteFase(en(45)), const Duration(minutes: 30));
+      r.iniciar(en(45));
+      expect(r.corriendo, isTrue);
+      expect(r.restanteFase(en(46)), const Duration(minutes: 29));
       r.ampliarFase(en(50), const Duration(minutes: 1));
       expect(r.exposicion, const Duration(minutes: 31));
       r.reiniciarExposicion();

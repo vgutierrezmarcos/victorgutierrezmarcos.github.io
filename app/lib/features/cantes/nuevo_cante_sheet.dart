@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
+import '../../data/models/preparador.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cante_form_page.dart';
@@ -52,17 +53,29 @@ Future<void> mostrarHojaNuevoCante(BuildContext context, WidgetRef ref, {DateTim
             subtitulo: vinculos.isEmpty
                 ? 'Primero conecta con tu preparador con su código (en Mi preparador).'
                 : conHuecos.isEmpty
-                    ? 'Tu preparador no tiene abiertas las reservas: habla con él para fijar la clase.'
-                    : 'Eliges uno de sus huecos libres y él la confirma.',
-            onTap: () {
+                    ? 'Le propones un día y una hora y él la confirma (o te dice otra).'
+                    : 'Eliges uno de sus huecos libres, o propones otra hora, y él la confirma.',
+            onTap: () async {
               Navigator.pop(d);
               if (vinculos.isEmpty) {
                 context.go('/mas/mi-preparador');
-              } else if (conHuecos.isNotEmpty) {
-                ir(ReservarPage(preparador: conHuecos.first));
-              } else {
-                context.go('/mas/mi-preparador');
+                return;
               }
+              // Con varios preparadores, a cuál se le pide.
+              final aceptados = vinculos.where((v) => v.aceptado).toList();
+              final candidatos = aceptados.isEmpty ? vinculos : aceptados;
+              final elegido = candidatos.length == 1
+                  ? candidatos.first
+                  : await showDialog<VinculoPreparador>(
+                      context: context,
+                      builder: (c) => SimpleDialog(
+                        title: const Text('¿A qué preparador?'),
+                        children: [
+                          for (final v in candidatos) SimpleDialogOption(onPressed: () => Navigator.pop(c, v), child: Text(v.nombre.isEmpty ? 'Preparador' : v.nombre)),
+                        ],
+                      ),
+                    );
+              if (elegido != null && context.mounted) ir(ReservarPage(preparador: elegido));
             },
           ),
           if (vinculos.isEmpty && firebase)

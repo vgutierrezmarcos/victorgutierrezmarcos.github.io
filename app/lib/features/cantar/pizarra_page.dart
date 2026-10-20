@@ -1091,32 +1091,62 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     });
   }
 
-  /// Cualquier color: el tono y la luminosidad, con la muestra.
+  /// Cualquier color: una paleta de colores con nombre a un toque y, debajo,
+  /// el tono, la intensidad y la luz para afinarlo. Cabe en un móvil apaisado
+  /// (el contenido se desplaza) y los deslizadores van compactos.
   Future<void> _otroColor() async {
     var hsv = HSVColor.fromColor(_miColor);
     final elegido = await showDialog<Color>(
       context: context,
       builder: (d) => StatefulBuilder(
-        builder: (d, set) => AlertDialog(
-          title: const Text('Elige un color'),
-          content: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Container(height: 44, decoration: BoxDecoration(color: hsv.toColor(), borderRadius: BorderRadius.circular(8))),
-            const SizedBox(height: 14),
-            const Text('Tono'),
-            _BarraColor(colores: [for (var h = 0; h <= 360; h += 30) HSVColor.fromAHSV(1, h.toDouble(), 1, 0.9).toColor()]),
-            Slider(value: hsv.hue, min: 0, max: 360, onChanged: (v) => set(() => hsv = hsv.withHue(v).withSaturation(hsv.saturation == 0 ? 0.85 : hsv.saturation))),
-            const Text('Intensidad'),
-            _BarraColor(colores: [hsv.withSaturation(0).toColor(), hsv.withSaturation(1).toColor()]),
-            Slider(value: hsv.saturation, min: 0, max: 1, onChanged: (v) => set(() => hsv = hsv.withSaturation(v))),
-            const Text('Luz'),
-            _BarraColor(colores: [hsv.withValue(0).toColor(), hsv.withValue(1).toColor()]),
-            Slider(value: hsv.value, min: 0, max: 1, onChanged: (v) => set(() => hsv = hsv.withValue(v))),
-          ]),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
-            FilledButton(onPressed: () => Navigator.pop(d, hsv.toColor()), child: const Text('Usar este color')),
-          ],
-        ),
+        builder: (d, set) {
+          final actual = hsv.toColor().toARGB32() | 0xFF000000;
+          final enPaleta = coloresPaleta.indexOf(actual);
+          Widget deslizador(String nombre, List<Color> degradado, double valor, double max, void Function(double) cambio) => Row(children: [
+                SizedBox(width: 76, child: Text(nombre, style: const TextStyle(fontSize: 13))),
+                Expanded(
+                  child: Stack(alignment: Alignment.center, children: [
+                    _BarraColor(colores: degradado),
+                    SliderTheme(
+                      data: SliderTheme.of(d).copyWith(trackHeight: 0, activeTrackColor: Colors.transparent, inactiveTrackColor: Colors.transparent, overlayShape: SliderComponentShape.noOverlay),
+                      child: Slider(value: valor, min: 0, max: max, onChanged: (v) => set(() => cambio(v))),
+                    ),
+                  ]),
+                ),
+              ]);
+          return AlertDialog(
+            scrollable: true,
+            insetPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            contentPadding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+            title: const Text('Elige un color'),
+            content: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 420),
+              child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                // La paleta: cada color con su nombre (sale al mantenerlo pulsado).
+                Wrap(alignment: WrapAlignment.center, children: [
+                  for (var i = 0; i < coloresPaleta.length; i++)
+                    MuestraColor(color: Color(coloresPaleta[i]), nombre: nombresPaleta[i], elegido: actual == coloresPaleta[i], alTocar: () => set(() => hsv = HSVColor.fromColor(Color(coloresPaleta[i])))),
+                ]),
+                const SizedBox(height: 6),
+                Row(children: [
+                  Container(width: 44, height: 32, decoration: BoxDecoration(color: hsv.toColor(), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0x33000000)))),
+                  const SizedBox(width: 10),
+                  Expanded(child: Text(enPaleta < 0 ? 'Afínalo con los deslizadores' : nombresPaleta[enPaleta], style: const TextStyle(fontSize: 13))),
+                ]),
+                deslizador('Tono', [for (var h = 0; h <= 360; h += 30) HSVColor.fromAHSV(1, h.toDouble(), 1, 0.9).toColor()], hsv.hue, 360, (v) {
+                  // Desde un gris o un negro, al mover el tono tiene que verse el color.
+                  hsv = hsv.withHue(v).withSaturation(hsv.saturation < 0.15 ? 0.85 : hsv.saturation).withValue(hsv.value < 0.25 ? 0.85 : hsv.value);
+                }),
+                deslizador('Intensidad', [hsv.withSaturation(0).toColor(), hsv.withSaturation(1).toColor()], hsv.saturation, 1, (v) => hsv = hsv.withSaturation(v)),
+                deslizador('Luz', [hsv.withValue(0).toColor(), hsv.withValue(1).toColor()], hsv.value, 1, (v) => hsv = hsv.withValue(v)),
+              ]),
+            ),
+            actions: [
+              TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+              FilledButton(onPressed: () => Navigator.pop(d, hsv.toColor()), child: const Text('Usar este color')),
+            ],
+          );
+        },
       ),
     );
     if (elegido != null) _elegirColor(elegido.toARGB32());
@@ -1697,8 +1727,8 @@ class _BarraColor extends StatelessWidget {
   final List<Color> colores;
   @override
   Widget build(BuildContext context) => Container(
-        height: 10,
-        margin: const EdgeInsets.symmetric(horizontal: 24),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), gradient: LinearGradient(colors: colores)),
+        height: 12,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(6), gradient: LinearGradient(colors: colores), border: Border.all(color: const Color(0x22000000))),
       );
 }

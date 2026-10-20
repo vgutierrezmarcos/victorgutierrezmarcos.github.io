@@ -447,9 +447,13 @@ class Cargando extends StatelessWidget {
 }
 
 class ErrorVista extends StatelessWidget {
-  const ErrorVista({super.key, required this.error, this.reintentar});
+  const ErrorVista({super.key, required this.error, this.reintentar, this.detalle = false});
   final Object error;
   final VoidCallback? reintentar;
+
+  /// Enseña también el error tal cual (en pequeño), para poder contarlo si
+  /// se repite.
+  final bool detalle;
   @override
   Widget build(BuildContext context) => Center(
         child: Padding(
@@ -461,6 +465,10 @@ class ErrorVista extends StatelessWidget {
             const SizedBox(height: 6),
             Text('Comprueba la conexión. Lo ya descargado sigue disponible sin red.',
                 textAlign: TextAlign.center, style: context.textos.bodySmall),
+            if (detalle) ...[
+              const SizedBox(height: 8),
+              SelectableText('$error', textAlign: TextAlign.center, style: context.textos.labelSmall?.copyWith(color: context.colores.textoClaro)),
+            ],
             if (reintentar != null) ...[
               const SizedBox(height: 16),
               OutlinedButton(onPressed: reintentar, child: const Text('Reintentar')),
