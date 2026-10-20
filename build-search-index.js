@@ -68,10 +68,10 @@ searchIndex.pages = [
   },
   {
     id: 'app',
-    title: 'App móvil',
+    title: 'App Oposición TCEE · DCE',
     url: '/app/',
-    description: 'App Oposición TCEE: agenda de cantes, sorteo y cronómetro, temario, test y sección para preparadores',
-    keywords: ['app', 'aplicación', 'móvil', 'android', 'cantes', 'sorteo', 'cronómetro', 'preparador', 'preparadores', 'alumnos'],
+    description: 'App gratuita para las oposiciones a TCEE y a Diplomado Comercial del Estado (DCE): agenda de cantes, sorteo y cronómetro, temario, test, cronograma y preparadores',
+    keywords: ['app', 'aplicación', 'móvil', 'android', 'cantes', 'sorteo', 'cronómetro', 'preparador', 'preparadores', 'alumnos', 'dce', 'diplomado', 'diplomado comercial del estado', 'tcee', 'oposición'],
     content: 'Qué hace la app, capturas, vídeo de presentación, cómo instalarla y cómo se enlazan preparador y alumno'
   },
   {

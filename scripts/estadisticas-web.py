@@ -132,6 +132,9 @@ def foto(dias):
         'paginas': consola(api, desde, hasta, ['page'], 30),
         'busquedas_app': consola(api, desde, hasta, ['query'], 20,
                                  {'dimension': 'page', 'operator': 'contains', 'expression': '/app/'}),
+        # Objetivo del SEO de oct. 2026: que la web salga para DCE / Diplomado Comercial del Estado
+        'busquedas_dce': consola(api, desde, hasta, ['query', 'page'], 20,
+                                 {'dimension': 'query', 'operator': 'includingRegex', 'expression': '(?i)dce|diplomad'}),
         'dispositivos': consola(api, desde, hasta, ['device'], 5),
         'paises': consola(api, desde, hasta, ['country'], 5),
     }
@@ -165,10 +168,13 @@ def imprimir(f):
     print(f"  Clics {t['clics']} (antes {a['clics']}) · impresiones {t['impresiones']} (antes {a['impresiones']})"
           f" · CTR {t['ctr']} % · posición media {t['posicion']}")
     for titulo, filas, clave in [('Búsquedas', sc['busquedas'], 'query'), ('Páginas', sc['paginas'], 'page'),
-                                 ('Búsquedas que llevan a /app/', sc['busquedas_app'], 'query')]:
+                                 ('Búsquedas que llevan a /app/', sc['busquedas_app'], 'query'),
+                                 ('Búsquedas con «dce» o «diplomado»', sc.get('busquedas_dce'), 'query')]:
         print(f'\n  {titulo} (clics · impresiones · posición):')
         for x in filas or [{clave: '(sin datos todavía)', 'clics': '', 'impresiones': '', 'posicion': ''}]:
             nombre = _corta(x[clave]) if clave == 'page' else x[clave]
+            if 'page' in x and clave == 'query':
+                nombre += f"  → {_corta(x['page'])}"
             print(f"    {str(x['clics']):>4} · {str(x['impresiones']):>6} · {str(x['posicion']):>5}  {nombre}")
     print('\n  Dispositivos: ' + ', '.join(f"{x['device']} {x['clics']}/{x['impresiones']}" for x in sc['dispositivos']))
     print('  Países: ' + ', '.join(f"{x['country']} {x['clics']}/{x['impresiones']}" for x in sc['paises']))
