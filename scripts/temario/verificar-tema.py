@@ -306,7 +306,14 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     if nivel_i:
         avisos.append(f'{len(nivel_i)} bloques i), ii), iii) con \\paragraph (l. {", ".join(map(str, nivel_i[:6]))}…): '
                       'CRITERIOS §2 los pide con \\subparagraph')
-    nivel_a = [linea(m.start()) for m in re.finditer(r'^\\subparagraph\{[a-h]\)', cuerpo, re.M)]
+    # a) en \subparagraph vale cuando el nombre del modelo va en \paragraph (varios
+    # modelos en un mismo subapartado, como en el 3.A.9); si no, aviso
+    nivel_a = []
+    for m in re.finditer(r'^\\subparagraph\{[a-h]\)', cuerpo, re.M):
+        anterior = list(re.finditer(r'^\\(paragraph|(?:sub)*section)\*?\{([^}\n]*)', cuerpo[:m.start()], re.M))
+        if anterior and anterior[-1].group(1) == 'paragraph' and not re.match(r'[a-h]\)', anterior[-1].group(2)):
+            continue
+        nivel_a.append(linea(m.start()))
     if nivel_a:
         avisos.append(f'{len(nivel_a)} bloques a), b), c) con \\subparagraph (l. {", ".join(map(str, nivel_a[:6]))}…): '
                       'CRITERIOS §2 los pide con \\paragraph')
@@ -320,11 +327,15 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
                            + ' (CRITERIOS §2: a, b, c… sin huecos)')
                 tanda = []
             tanda.append(le)
-    # --- Demostraciones con \findemo (§2)
-    for m in re.finditer(r'\\(?:emph|textbf|textit|concepto|paragraph|subparagraph)\{Demostraci[óo]n', cuerpo):
+    # --- Demostraciones con \findemo (§2): el rótulo «Demostración» (en singular;
+    # «Demostraciones: … están en el anexo» solo remite)
+    for m in re.finditer(r'\\(?:emph|textbf|textit|concepto|paragraph|subparagraph)\{Demostraci[óo]n\b(?!es)', cuerpo):
         resto = cuerpo[m.end():]
         fin = re.search(r'\\(?:sub)*section\*?\{|\\(?:sub)?paragraph\{|\\end\{(?:anotaciones|document)\}', resto)
-        if '\\findemo' not in resto[:fin.start() if fin else len(resto)]:
+        tramo = resto[:fin.start() if fin else len(resto)]
+        if re.search(r'anexo~?\\ref\{|en el anexo', tramo[:250]):
+            continue        # remite a la demostración del anexo
+        if '\\findemo' not in tramo:
             avisos.append(f'Demostración sin \\findemo al final (l. {linea(m.start())})')
     # --- Cada tema se canta solo (§2): nunca «se ha visto en el tema…»
     for m in re.finditer(r'(?:visto|vista|vistos|estudiado|estudiada|estudiados|desarrollado|desarrollada|analizado|'
@@ -353,12 +364,17 @@ def comprobar_criterios(tema, tex, errores, avisos, datos):
     # --- Apellidos sin \autor{} (§2; aviso, por los falsos positivos)
     apellidos = apellidos_bib(tema.bib)
     if apellidos:
-        texto = re.sub(r'\\(?:autor|textsc|\w*cites?|label|ref|eqref|hyperref|href|url|vertema|includegraphics|grafico\w*|'
-                       r'addbibresource|tcetema|bibliografia)\*?(?:\[[^\]]*\])?\{(?:[^{}]|\{[^{}]*\})*\}', ' ', cuerpo)
+        # (los \autor{} se dejan como marca, para reconocer «John \autor{Hicks}»)
+        texto = re.sub(r'\\(?:autor|textsc)\{(?:[^{}]|\{[^{}]*\})*\}', r' \\AUTOR ', cuerpo)
+        texto = re.sub(r'\\(?:\w*cites?|label|ref|eqref|hyperref|href|url|vertema|includegraphics|grafico\w*|'
+                       r'addbibresource|tcetema|bibliografia)\*?(?:\[[^\]]*\])?\{(?:[^{}]|\{[^{}]*\})*\}', ' ', texto)
         texto = re.sub(r'\\begin\{(figure|figuracaja|table|tablacaja)\}.*?\\end\{\1\}', ' ', texto, flags=re.S)
         sueltos = []
+        texto = re.sub(r'«[^»]*»', ' ', texto)      # títulos de obras y citas literales
         for ap in sorted(apellidos):
-            n = len(re.findall(r'(?<![\w{\-])' + re.escape(ap) + r'(?![\w}\-])', texto))
+            # no cuentan el nombre de pila delante del apellido en versalitas («John \autor{Hicks}»)
+            # ni el apellido seguido de otra mayúscula (instituciones: «Stigler Center»)
+            n = len(re.findall(r'(?<![\w{\-])' + re.escape(ap) + r'(?![\w}\-])(?!\s+\\AUTOR)(?!\s+[A-ZÁÉÍÓÚ])', texto))
             if n:
                 sueltos.append(f'{ap} ({n})')
         if sueltos:
@@ -404,8 +420,11 @@ def verificar(tema):
     sin_cita = 0
     for p in parrafos_tex(tex):
         texto = re.sub(r'\$[^$]*\$|\\\[.*?\\\]', '', p, flags=re.S)
-        if re.search(r'\d+(?:[.,]\d+)?\s*(?:\\?%|por ciento|millones|mill\.|billones|€|puntos)|\b20[12]\d\b', texto) \
-                and not re.search(r'\\(?:foot|auto|text|paren)?cite|\\footnote|\\fuente', p):
+        # No cuentan los años de las preguntas de examen («examen de 2019, pregunta 7»)
+        # ni «2 puntos de vista» (solo puntos básicos o porcentuales)
+        texto = re.sub(r'(?:examen|convocatoria|prueba|temario|oposici[óo]n)[^.;\n]{0,40}?\b(?:19|20)\d\d\b|\b(?:19|20)\d\d\b,?\s*pregunta~?\s*\d+', ' ', texto)
+        if re.search(r'\d+(?:[.,]\d+)?\s*(?:\\?%|por ciento|millones|mill\.|billones|€|puntos (?:básicos|porcentuales))|\b20[12]\d\b', texto) \
+                and not re.search(r'\\(?:foot|auto|text|paren)?cites?|\\footnote|\\fuente', p):
             sin_cita += 1
             if sin_cita <= 15:
                 avisos.append('Cifra sin cita: ' + re.sub(r'\s+', ' ', texto.strip())[:140])

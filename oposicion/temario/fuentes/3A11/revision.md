@@ -264,3 +264,13 @@ Resueltas el 13/10/2026 y quitadas de esta lista: el orden de I.1 e I.2 (se vuel
 - **Negrita y cursiva**: rótulos en cursiva en la Estructura (antes en negrita) y en las listas hermanas que mezclaban viñetas con y sin rótulo (σ: Origen, Curvatura; II.2: Definición, Consecuencias; II.3: Clasificación, Relación entre las 3; anexos: Teorema de Euler, Productividades marginales, Problema, Resolución en 2 etapas, Forma intensiva, Distribución); en negrita los términos que se definen (método de producción, neutral, sesgado, economías de escala, formas flexibles).
 - **Otros temas**: no había «temas vecinos»; CMe/CMg (del 3.A.12) se explican la primera vez.
 - Sin cambios de minutos ni de contenido. `verificar-tema.py`: 0 errores.
+
+## 8. Instrucciones para el vídeo
+
+(Añadido el 20/10/2026; el vídeo ya está hecho: `video/escenas.yaml` y «Plan de pizarra» de `guion-cante.md`.)
+
+- **Funciones clave que se conservan en la esquina (celda 1a)**: la función de producción F(z⃗) y la de transformación T(y⃗) ≤ 0, recuadradas en morado y conservadas con `conservar: [1a]` en todos los cambios de rejilla desde I.2.
+- **Pizarra (trazo a trazo)**: el conjunto de producción y sus axiomas (I.1), isocuantas y RMST con `isocuantas-rmst`, Cobb-Douglas (σ = 1, Euler), CES y Leontief con `ces-isocuantas` (I.3), `corto-plazo` con productividades y etapas (II.1), la definición de rendimientos a escala y `transformacion-empresa` (II.2 y III.2), las condiciones de eficiencia RMST y RMT en III.1.
+- **Apoyo (no se escribe)**: todo lo 3D (`funcion-produccion-3d`, `plazos-3d` y sus cortes de corto, largo y muy largo plazo, `rendimientos-globales-locales-superficies`) por estados sucesivos según se narra; `region-economica` completa como referencia; `progreso-tecnico-neutral` por paneles.
+- **Sin pizarra**: introducción y conclusión.
+- **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.

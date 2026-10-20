@@ -73,7 +73,10 @@ en cada tema. Ver `LICENSE.md` en la raíz.
     (`\paragraph{a) Idea}`, `\subparagraph{i) Supuestos}`; letras a mano).
     Si un bloque no procede, se salta y **las letras siguen seguidas** (a, b,
     c… sin huecos: «a) Idea, b) Modelo, c) Valoración»; el nombre del bloque
-    es lo que se memoriza, no la letra; Víctor, 17/10/2026, G06). Si un modelo tiene supuestos,
+    es lo que se memoriza, no la letra; Víctor, 17/10/2026, G06). Cuando
+    varios modelos van dentro de un mismo subapartado, el nombre de cada
+    modelo ocupa el `\paragraph` y sus bloques a), b)… van en
+    `\subparagraph` (como en el 3.A.9); `verificar-tema.py` lo admite. Si un modelo tiene supuestos,
     desarrollo e implicaciones, **van siempre como bloques distinguidos**
     con su título (i, ii, iii), nunca mezclados en una lista. También la
     unicidad, la estabilidad y cualquier resultado que se cuente como
@@ -457,6 +460,25 @@ el texto original y lo que se hizo.
   silencio.
 - Se usa la pizarra solo cuando ayuda (gráficos, fórmulas clave, esquema); la
   introducción y la conclusión se cantan sin pizarra.
+- **Temas pensados para cantarse** (Víctor, 20/10/2026, 3.A.14). En los
+  temas de conceptos (teoría de juegos y similares), el documento se escribe
+  para poder cantarlo con la pizarra:
+  - El documento recoge el plan de la pizarra con tiempos: qué se dibuja,
+    dónde y qué se queda.
+  - Un **hilo conductor**: una historia económica que acompaña a todo el tema
+    y a la que se vuelve en cada concepto. La historia sirve al concepto del
+    tema y no se convierte en el cante de otro. En el 3.A.14, la historia de
+    2 empresas sirve a la teoría de juegos como rama de las matemáticas; no
+    es el oligopolio del 3.A.19.
+  - Después de la historia, un **ejemplo clásico por concepto**, en una
+    línea.
+  - El desarrollo de esos ejemplos va en un anexo, con la remisión a los
+    temas donde se aplican. Así sirve de gancho para que el tribunal
+    pregunte.
+  - **Refranes pegatina**: refranes o dichos cortos que se dicen una vez al
+    presentar el concepto y se apuntan a su lado en la pizarra. No se repite
+    un refrán que ya sea el enganche de otro tema (el 3.A.17 usa «quien parte
+    y reparte…», y el 3.A.16 «a río revuelto…»).
 
 ### `guion-cante.md`
 

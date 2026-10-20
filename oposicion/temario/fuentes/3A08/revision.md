@@ -565,3 +565,13 @@ Puesta al día con los criterios del 16/10/2026 (CRITERIOS.md § 2 y «Órdenes 
 - **Solo lo que se canta**: lo que la nota al opositor marca como profundización sale de la narración o pasa a apoyo o apunte: los cuatro casos de la relación binaria (`preferencias-venn`, ahora apoyo en un paso), las propiedades del conjunto de elección y de la FIU (apunte) y el problema en tres dimensiones del anexo (`pmu-r3`, fuera del vídeo).
 - **III más completo, I más corto**, para ajustarse a los minutos del tema: Lancaster como la otra tecnología del consumo y antecedente de los precios hedónicos (III.2), Court, Griliches y Rosen y el carácter marginal de los precios implícitos (III.3). Reparto en el borrador: introducción 2′25″, I 11′02″, II 7′47″, III 7′14″ y conclusión 1′ (más la pantalla final).
 - `generar-video.py 3A08 --borrador --medir`: 4.816 palabras, ritmo ×1,027, 0 avisos. Montado el borrador sin voz (30:00, 133 pasos) y revisados los fotogramas del final de cada escena. `guion-cante.md` regenerado desde `escenas.yaml` (mismo texto, con el plan de pizarra nuevo). La voz se pondrá con `voz-todos.py`.
+
+## 8. Instrucciones para el vídeo
+
+(Añadido el 20/10/2026; el vídeo ya está hecho: `video/escenas.yaml` y «Plan de pizarra» de `guion-cante.md`.)
+
+- **Funciones clave que se conservan en la esquina**: el PMU (`eq:pmu`) y la demanda marshalliana (`eq:scedm`), recuadradas en morado en la columna 1 desde I.2 e I.3 y conservadas con `conservar:` en cada cambio de rejilla hasta III.3.
+- **Pizarra (trazo a trazo)**: axiomas y teorema de Debreu (I.1), restricción presupuestaria con `conjunto-presupuestario`, lagrangiana y Kuhn-Tucker (I.2), homogeneidad y ley de Walras (I.3), elasticidades y `elasticidades-renta-precio` construido por partes (II), la ecuación de Slutsky y `adpr-efecto-sustitucion` (III.1), el problema de Becker y la función hedónica de Rosen (III.2 y III.3).
+- **Apoyo (no se escribe)**: `esquema-ingredientes` que crece en la apertura de I, `preferencias-venn`, `esquema-axiomas` que crece con cada axioma, el 3D `superficie-utilidad-repaso` por estados sucesivos (nunca trazo a trazo) y el gráfico completo de referencia cuando la pizarra solo lleva una parte.
+- **Sin pizarra**: introducción, II.3 y conclusión (modo guion con sus cinco partes).
+- **Enganche e idea final**: la pregunta con que abre el documento se retoma en el cierre.
