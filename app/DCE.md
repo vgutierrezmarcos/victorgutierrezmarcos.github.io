@@ -100,8 +100,8 @@ El día que manuelcabadogarcia.es se hace público. Google Play aún no estará 
 ## Próximos días
 
 **SEO para DCE (20 oct. 2026)**: hasta hoy Google no mostraba la web para ninguna búsqueda con «dce» o «diplomado» (Search Console, 16 meses). `/app/` lleva ahora h2, la sección «Si preparas la oposición a Diplomado Comercial del Estado», JSON-LD con las dos oposiciones y enlaces desde portada, `/oposicion/`, la guía y los pies.
-- [ ] Víctor: mandar a Manuel el correo pidiendo los enlaces (texto en la conversación del 20 oct.; resumen arriba, en «Enlazar la app desde su web»).
-- [ ] Víctor: tras publicar, Search Console → Inspección de URL → Solicitar indexación de `/app/`, `/`, `/oposicion/` y `/oposicion/por-que-tcee.html`; y lanzar a mano el workflow `indexnow.yml` (sitemap entero).
+- [x] Víctor: mandar a Manuel el correo pidiendo los enlaces (resumen arriba, en «Enlazar la app desde su web»). — **20 oct.: enviado; esperar su respuesta y comprobar los enlaces en su web.**
+- [ ] Víctor: Search Console → Inspección de URL → Solicitar indexación de `/app/`, `/`, `/oposicion/` y `/oposicion/por-que-tcee.html`. — **20 oct.: publicado a las 23:40 e `indexnow.yml` lanzado a mano (sitemap entero); `/app/` estaba indexada con el último rastreo del 15 oct., falta pedir el nuevo.**
 - [ ] 22 oct., al poner `urlPlayStore`: en el JSON-LD de `app/index.html`, `downloadUrl` → URL de Play y `"sameAs": ["<URL de Play>"]`; `softwareVersion` = `versionActual`.
 - [ ] A las 2 y 4 semanas: `python3 scripts/estadisticas-web.py --dias 28` (ya saca «Búsquedas con «dce» o «diplomado»»).
 - [ ] Decidir si se hace una guía informativa de DCE (`oposicion/…`), hermana de `por-que-tcee.html`: es el tipo de página que Google premia para «Diplomado Comercial del Estado»; Víctor la descartó el 20 oct. (sin páginas nuevas), queda apuntada.
