@@ -10,6 +10,7 @@ import '../../data/models/resultado.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/probabilidades.dart';
+import '../test/preguntas_por_tema_page.dart';
 import 'probabilidad_test.dart';
 
 /// Probabilidad de aprobar el test del primer ejercicio: al azar, pregunta a
@@ -40,6 +41,12 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
   var _descarte = 0;
   List<_Grupo>? _grupos;
   Set<String>? _simulados;
+  /// Cambia cuando los campos de «Pregunta a pregunta» tienen que volver a
+  /// leer su valor inicial (otro acierto general u otras opciones). Va en su
+  /// clave: al escribir en ellos no cambia, y así no se reconstruyen ni
+  /// pierden el foco a cada tecla.
+  var _version = 0;
+  double? _propioVisto;
   final _cache = <String, Object>{};
 
   T _memo<T extends Object>(String clave, T Function() f) => _cache.putIfAbsent(clave, f) as T;
@@ -68,6 +75,11 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
     final historial = ref.watch(historialProvider).valueOrNull;
     final propio = historial == null ? null : _aciertoHistorial(historial);
     final acierto = _acierto ?? propio ?? 0.85;
+    if (propio != _propioVisto) {
+      // Llega el acierto de su historial: los campos que lo siguen se refrescan.
+      _propioVisto = propio;
+      if (_acierto == null) _version++;
+    }
     return Scaffold(
       appBar: BarraWeb(
         title: const Text('Probabilidad de aprobar el test'),
@@ -88,6 +100,14 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
             ..._sinSaber(context, acierto),
             ..._preguntaAPregunta(context, acierto),
             ..._conTusTemas(context, f, temas, acierto),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
+                icon: const Icon(Icons.table_chart_outlined, size: 18),
+                label: const Text('Ver la tabla de preguntas por tema'),
+              ),
+            ),
             ..._siguientes(context, f, temas, acierto),
             ..._curva(context, f, temas, acierto),
             ..._reales(context, f, temas, acierto),
@@ -143,6 +163,7 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
         campo('Opciones por pregunta', '${_reglas.opciones}', (v) {
           _reglas = _reglas.copyWith(opciones: v.toInt().clamp(2, 6));
           _grupos = null;
+          _version++;
         }, entero: true),
         campo('Suma un acierto', fmt(_reglas.acierto), (v) => _reglas = _reglas.copyWith(acierto: v)),
         campo('Resta un fallo', fmt(_reglas.fallo), (v) => _reglas = _reglas.copyWith(fallo: v)),
@@ -172,6 +193,7 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
         label: '${(acierto * 100).round()} %',
         onChanged: (v) => setState(() {
           _acierto = v / 100;
+          _version++;
           _cache.clear();
         }),
       ),
@@ -282,7 +304,7 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
                   child: i == grupos.length - 1
                       ? InputDecorator(decoration: const InputDecoration(labelText: 'Cuántas', isDense: true), child: Text('${grupos[i].n}'))
                       : TextFormField(
-                          key: ValueKey('n-$i-${r.opciones}'),
+                          key: ValueKey('n-$i-$_version'),
                           initialValue: '${grupos[i].n}',
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(labelText: 'Cuántas', isDense: true),
@@ -292,7 +314,7 @@ class _ProbabilidadTestPageState extends ConsumerState<ProbabilidadTestPage> {
                 SizedBox(
                   width: 100,
                   child: TextFormField(
-                    key: ValueKey('a-$i-${r.opciones}-${grupos[i].acierto == null ? (p(grupos[i]) * 100).round() : 'propio'}'),
+                    key: ValueKey('a-$i-$_version'),
                     initialValue: '${(p(grupos[i]) * 100).round()}',
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(labelText: 'Aciertas (%)', isDense: true),

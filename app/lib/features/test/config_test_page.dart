@@ -11,6 +11,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../organizacion/probabilidad_test_page.dart';
 import 'motor_test.dart';
+import 'preguntas_por_tema_page.dart';
 
 /// Fase de selección del simulador: temas, exámenes, nº de preguntas, tiempo y baremo.
 /// Es la subpestaña TEST de Estudiar; [pestanas] va en la cabecera.
@@ -87,6 +88,16 @@ class _ConfigTestPageState extends ConsumerState<ConfigTestPage> {
                     titulo: 'Probabilidad de aprobar el test',
                     subtitulo: 'Cuánto te da cada estrategia y qué temas caen más',
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+                  ),
+                ),
+              if (ref.watch(oposicionProvider).esPrincipal)
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: FilaEnlace(
+                    icono: Icons.table_chart_outlined,
+                    titulo: 'Preguntas por tema',
+                    subtitulo: 'Cuántas ha tenido cada tema en los exámenes oficiales, examen a examen',
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
                   ),
                 ),
               TituloSeccion('Selección', accion: SegmentedButton<String>(showSelectedIcon: false,

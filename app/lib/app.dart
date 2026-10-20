@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'core/constants.dart';
 import 'core/notificaciones.dart';
+import 'core/pantalla_error.dart';
 import 'core/red_providers.dart';
 import 'core/widget_inicio.dart';
 import 'core/widget_providers.dart';
@@ -290,6 +291,7 @@ class _TceeAppState extends ConsumerState<TceeApp> {
 
   @override
   Widget build(BuildContext context) {
+    PantallaError.alInicio = () => _router.go('/hoy');
     // Al cargarse la sesión (al arrancar o al iniciarla) se sincroniza todo.
     ref.listen(usuarioActualProvider, (antes, ahora) {
       if (ahora != null && antes?.uid != ahora.uid) {

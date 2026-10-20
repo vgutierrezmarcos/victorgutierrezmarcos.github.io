@@ -13,6 +13,7 @@ import '../cantar/probabilidades.dart';
 import '../plan/cantes_util.dart';
 import '../temario/tema_page.dart';
 import 'probabilidad_test_page.dart';
+import '../test/preguntas_por_tema_page.dart';
 
 /// Organización: lo que sirve para planificar la oposición, como la sección
 /// «Organización» de la web. Tu plan (cronograma, probabilidades, convocatoria
@@ -108,6 +109,13 @@ class OrganizacionHubPage extends ConsumerWidget {
                   titulo: 'Probabilidad de aprobar el test',
                   subtitulo: 'Al azar, pregunta a pregunta o con tus temas, y qué temas caen más',
                   onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProbabilidadTestPage())),
+                ),
+              if (oposicion.esPrincipal)
+                FilaEnlace(
+                  icono: Icons.table_chart_outlined,
+                  titulo: 'Preguntas por tema en el test',
+                  subtitulo: 'Cuántas ha tenido cada tema en los exámenes oficiales, examen a examen',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PreguntasPorTemaPage())),
                 ),
               if (!preparador) FilaEnlace(
                 icono: Icons.schedule_outlined,
