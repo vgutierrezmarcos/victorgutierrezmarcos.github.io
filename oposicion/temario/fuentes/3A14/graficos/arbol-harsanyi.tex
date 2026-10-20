@@ -1,11 +1,11 @@
 % Juego de entrada con capacidad desconocida como juego de información imperfecta
-% (transformación de Harsanyi). La Naturaleza elige el tipo de la instalada: A (coste
-% alto de ampliar) con probabilidad pi y B (coste bajo) con 1 - pi. La instalada conoce
-% su tipo y elige Ampliar o No ampliar; la entrante elige Entrar o No entrar a la vez,
+% (transformación de Harsanyi). La Naturaleza elige el coste de ampliar de la instalada I:
+% alto con probabilidad pi y bajo con 1 - pi. I conoce su coste y elige Ampliar o No
+% ampliar; la entrante E elige Entrar o No entrar a la vez,
 % sin saber ni el tipo ni la decisión: sus 4 nodos forman un único conjunto de
-% información (línea discontinua). Pagos (entrante, instalada):
-%   tipo A: Ampliar-Entrar (-1,-1); Ampliar-No entrar (0,2); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
-%   tipo B: Ampliar-Entrar (-1,2);  Ampliar-No entrar (0,4); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
+% información (línea discontinua). Pagos (E, I):
+%   coste alto: Ampliar-Entrar (-1,-1); Ampliar-No entrar (0,2); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
+%   coste bajo: Ampliar-Entrar (-1,2);  Ampliar-No entrar (0,4); No ampliar-Entrar (1,1); No ampliar-No entrar (0,3)
 % Elaboración propia a partir de Harsanyi (1967) y Gibbons (1992), cap. 3.
 % Estilo de árbol de 3A10/graficos/allais-a1.tex.
 % Autor: Víctor Gutiérrez Marcos
@@ -24,19 +24,19 @@
   \useasboundingbox (-7.75,-5.6) rectangle (8.1,0.45);
   % 1: la Naturaleza
   \capa{1}{\node[azar,label={[jugador]above:Naturaleza}] (Nat) at (0,0) {};}
-  % 2: los 2 tipos de la instalada, con sus probabilidades
-  \capa{2}{\draw[rama] (Nat) -- node[tipo,above left] {tipo A, $\pi$\\(coste alto de ampliar)} (-4,-1.6) coordinate (pA);}
-  \capa{2}{\draw[rama] (Nat) -- node[tipo,above right] {tipo B, $1-\pi$\\(coste bajo)} (4,-1.6) coordinate (pB);}
-  % 3: la instalada conoce su tipo y elige Ampliar o No ampliar
+  % 2: los 2 costes de I, con sus probabilidades
+  \capa{2}{\draw[rama] (Nat) -- node[tipo,above left] {coste alto, $\pi$} (-4,-1.6) coordinate (pA);}
+  \capa{2}{\draw[rama] (Nat) -- node[tipo,above right] {coste bajo, $1-\pi$} (4,-1.6) coordinate (pB);}
+  % 3: I conoce su coste y elige Ampliar o No ampliar
   \capa{3}{
-    \node[nodo,label={[jugador]left:Instalada}] (IA) at (pA) {};
-    \node[nodo,label={[jugador]right:Instalada}] (IB) at (pB) {};
+    \node[nodo,label={[jugador]left:{\upshape\textbf{I}} (instalada)}] (IA) at (pA) {};
+    \node[nodo,label={[jugador]right:{\upshape\textbf{I}} (instalada)}] (IB) at (pB) {};
     \draw[rama] (IA) -- node[accion,above left] {Ampliar} (-6,-3.2) coordinate (pA1);
     \draw[rama] (IA) -- node[accion,above right] {No ampliar} (-2,-3.2) coordinate (pA2);
     \draw[rama] (IB) -- node[accion,above left] {Ampliar} (2,-3.2) coordinate (pB1);
     \draw[rama] (IB) -- node[accion,above right] {No ampliar} (6,-3.2) coordinate (pB2);
   }
-  % 4: la entrante elige Entrar o No entrar en cada uno de sus 4 nodos
+  % 4: E elige Entrar o No entrar en cada uno de sus 4 nodos
   \capa{4}{
     \foreach \n in {A1,A2,B1,B2} {
       \node[nodo] (E\n) at (p\n) {};
@@ -44,17 +44,17 @@
       \draw[rama] (E\n) -- node[accion,right=5pt,pos=0.45] {No entrar} ++(1,-1.6) node[terminal] (T\n n) {};
     }
   }
-  % 5: la entrante no distingue entre sus 4 nodos: un único conjunto de información
+  % 5: E no distingue entre sus 4 nodos: un único conjunto de información
   \capa{5}{\draw[thick,dashed,tceegris] (EA1) -- (EA2) -- (EB1) -- (EB2);}
-  \capa{5}{\node[jugador,above=1pt] at (0,-3.2) {Entrante};}
-  % 6: pagos (entrante, instalada) del tipo A
+  \capa{5}{\node[jugador,above=1pt] at (0,-3.2) {{\upshape\textbf{E}} (entrante)};}
+  % 6: pagos (E, I) con coste alto
   \capa{6}{
     \node[pago] at (TA1e) {$(-1,\,-1)$};
     \node[pago] at (TA1n) {$(0,\,2)$};
     \node[pago] at (TA2e) {$(1,\,1)$};
     \node[pago] at (TA2n) {$(0,\,3)$};
   }
-  % 7: pagos del tipo B
+  % 7: pagos con coste bajo
   \capa{7}{
     \node[pago] at (TB1e) {$(-1,\,2)$};
     \node[pago] at (TB1n) {$(0,\,4)$};

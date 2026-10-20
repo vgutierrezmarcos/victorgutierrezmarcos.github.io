@@ -1,0 +1,77 @@
+% El valor del compromiso (3.A.14): el juego de entrada (juego-entrada.tex) con una
+% etapa previa en la que la instalada I decide si invierte en capacidad con un coste
+% hundido CH = 2,5. Mismos pagos que 3A15/graficos/disuasion-arbol.tex.
+% Pagos (E, I), con B^M = 4, B^D = 1 y B^G = -1:
+%   sin invertir: No entrar (0; 4); Acomodar (1; 1); Luchar (-1; -1);
+%   invirtiendo:  No entrar (0; 4 - 2,5 = 1,5); Acomodar (1; 1 - 2,5 = -1,5);
+%                 Luchar (-1; -1) (B^G ya descuenta la capacidad: luchar la aprovecha).
+% Inducción hacia atrás: sin invertir, I acomoda (1 > -1) y E entra (1 > 0);
+% invirtiendo, I lucha (-1 > -1,5: la amenaza se vuelve creíble) y E no entra
+% (0 > -1); en la raíz, I invierte (1,5 > 1). ENPS: I invierte; E no entra.
+% Elaboración propia a partir de Dixit (1980) y Tirole (1988, cap. 8).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.2pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    pago/.style={etiqueta,below=2pt,font=\small},
+    elegida/.style={line width=1.8pt,tceerojo},
+    aspa/.style={line width=1.4pt,tceerojo}]
+  \useasboundingbox (-6.6,-4.0) rectangle (6.4,2.55);
+  % 1: raíz: la instalada I decide si invierte en capacidad
+  \capa{1}{\node[nodo,label={[jugador]above:{\upshape\textbf{I}} (instalada)}] (R) at (-0.8,1.9) {};}
+  % 2: ramas «No invertir» e «Invertir» y nodos de la entrante E
+  \capa{2}{\node[nodo,label={[jugador]right:{\upshape\textbf{E}}}] (E1) at (-4.2,0) {};}
+  \capa{2}{\draw[rama] (R) -- node[accion,above left] {No invertir} (E1);}
+  \capa{2}{\node[nodo,label={[jugador]right:{\upshape\textbf{E}}}] (E2) at (2.6,0) {};}
+  \capa{2}{\draw[rama] (R) -- node[accion,above right] {Invertir ($\mathrm{CH}=2{,}5$)} (E2);}
+  % 3: subárbol sin inversión (el juego de entrada)
+  \capa{3}{\node[terminal] (N1) at (-6.0,-1.7) {};}
+  \capa{3}{\draw[rama] (E1) -- node[accion,above left] {No entrar} (N1);}
+  \capa{3}{\node[pago] at (N1) {$(0;\,4)$};}
+  \capa{3}{\node[nodo,label={[jugador]right:{\upshape\textbf{I}}}] (I1) at (-2.6,-1.7) {};}
+  \capa{3}{\draw[rama] (E1) -- node[accion,above right] {Entrar} (I1);}
+  \capa{3}{\node[terminal] (L1) at (-3.6,-3.4) {};}
+  \capa{3}{\draw[rama] (I1) -- node[accion,left,pos=0.3] {Luchar} (L1);}
+  \capa{3}{\node[pago] at (L1) {$(-1;\,-1)$};}
+  \capa{3}{\node[terminal] (A1) at (-1.5,-3.4) {};}
+  \capa{3}{\draw[rama] (I1) -- node[accion,right,pos=0.3] {Acomodar} (A1);}
+  \capa{3}{\node[pago] at (A1) {$(1;\,1)$};}
+  % 4: subárbol con inversión (a I le cuesta 2,5 si no lucha)
+  \capa{4}{\node[terminal] (N2) at (0.8,-1.7) {};}
+  \capa{4}{\draw[rama] (E2) -- node[accion,above left] {No entrar} (N2);}
+  \capa{4}{\node[pago] at (N2) {$(0;\,1{,}5)$};}
+  \capa{4}{\node[nodo,label={[jugador]right:{\upshape\textbf{I}}}] (I2) at (4.2,-1.7) {};}
+  \capa{4}{\draw[rama] (E2) -- node[accion,above right] {Entrar} (I2);}
+  \capa{4}{\node[terminal] (L2) at (3.2,-3.4) {};}
+  \capa{4}{\draw[rama] (I2) -- node[accion,left,pos=0.3] {Luchar} (L2);}
+  \capa{4}{\node[pago] at (L2) {$(-1;\,-1)$};}
+  \capa{4}{\node[terminal] (A2) at (5.3,-3.4) {};}
+  \capa{4}{\draw[rama] (I2) -- node[accion,right,pos=0.3] {Acomodar} (A2);}
+  \capa{4}{\node[pago] at (A2) {$(1;\,-1{,}5)$};}
+  % 5: sin inversión, luchar es una amenaza no creíble (1 > -1): I acomoda
+  \capa{5}{\draw[aspa] ($(I1)!0.68!(L1)+(-0.18,-0.18)$) -- ++(0.36,0.36)
+    ($(I1)!0.68!(L1)+(-0.18,0.18)$) -- ++(0.36,-0.36);}
+  \capa{5}{\draw[elegida] (I1) -- (A1);}
+  % 6: anticipándolo, E entra (1 > 0)
+  \capa{6}{\draw[elegida] (E1) -- (I1);}
+  % 7: con inversión, acomodar ya no compensa (-1 > -1,5): I lucha
+  \capa{7}{\draw[aspa] ($(I2)!0.68!(A2)+(-0.18,-0.18)$) -- ++(0.36,0.36)
+    ($(I2)!0.68!(A2)+(-0.18,0.18)$) -- ++(0.36,-0.36);}
+  \capa{7}{\draw[elegida] (I2) -- (L2);}
+  % 8: la amenaza de luchar se vuelve creíble
+  \capa{8}{\node[etiqueta,text=tceerojo,font=\footnotesize\bfseries,align=right,anchor=east]
+    at ($(I2)!0.72!(L2)+(-0.2,0)$) {amenaza\\creíble};}
+  % 9: anticipándolo, E no entra (0 > -1)
+  \capa{9}{\draw[elegida] (E2) -- (N2);}
+  % 10: en la raíz, I invierte (1,5 > 1)
+  \capa{10}{\draw[elegida] (R) -- (E2);}
+  % 11: el equilibrio de Nash perfecto en subjuegos
+  \capa{11}{\node[etiqueta,text=tceerojo,anchor=west] at (1.9,2.15) {ENPS: I invierte; E no entra};}
+\end{tikzpicture}
+\end{document}

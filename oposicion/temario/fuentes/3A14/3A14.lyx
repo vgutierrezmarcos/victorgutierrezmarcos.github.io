@@ -9,7 +9,7 @@
 \usepackage{tcee}
 
 \tcetema[TeorÃ­a de juegos y subastas]{3.A.14}{TeorÃ­a de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.}
-\tcefecha{19/10/2026}
+\tcefecha{20/10/2026}
 
 \end_preamble
 \use_default_options false
@@ -141,16 +141,20 @@ Enganche
 
 \begin_deeper
 \begin_layout Itemize
-Â«Quien hace la ley hace la trampaÂ», dice el refrÃ¡n. La teorÃ­a de juegos estudia las 2 caras de esa frase: cÃ³mo juega cada uno cuando lo que gana depende de lo que hagan los demÃ¡s, y cÃ³mo escribir las reglas para que la trampa no compense. 
+Â«Hoy por ti, maÃ±ana por mÃ­Â», dice el refrÃ¡n. Â¿Por quÃ© ayudamos sin firmar nada al vecino, al compaÃ±ero o al proveedor con el que vamos a volver a tratar, y no a un desconocido al que no veremos mÃ¡s? No hace falta suponer que somos mejores con unos que con otros: lo que cambia es el juego. La teorÃ­a de juegos responde que lo que hace cada uno depende de la 
+\emph on
+estructura
+\emph default
+ del juego: si se repite o no, quÃ© sabe cada jugador, quiÃ©n mueve primero y cuÃ¡les son las reglas. 
 \end_layout
 
 \begin_layout Itemize
-Un ejemplo reciente: en julio de 2021, el Estado subastÃ³ la banda de 700
+Las reglas tambiÃ©n las escribe el Estado. En julio de 2021 subastÃ³ la banda de 700
 \begin_inset space ~
 
 \end_inset
 
-MHz para el 5G. Tras 12 rondas de pujas, adjudicÃ³ concesiones por 1.010 millones de euros 
+MHz para el 5G: tras 12 rondas de pujas, adjudicÃ³ concesiones por 1.010 millones de euros 
 \begin_inset ERT
 status collapsed
 
@@ -162,7 +166,19 @@ parencite{MINECO2021Subasta700}
 
 \end_inset
 
-. NingÃºn funcionario sabÃ­a cuÃ¡nto valÃ­a ese espectro para cada operador; fue el formato de la subasta el que hizo que lo revelaran pujando. 
+, apenas por encima del precio de salida de 995,5 millones 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MINECO2021Subasta700Jornada}
+\end_layout
+
+\end_inset
+
+. NingÃºn funcionario sabÃ­a cuÃ¡nto valÃ­a ese espectro para cada operador; el formato de la subasta les obligÃ³ a revelarlo, al menos en parte, con sus pujas. 
 \end_layout
 
 \begin_layout Itemize
@@ -555,7 +571,7 @@ juego
 
 \end_inset
 
- es la representaciÃ³n formal de una de esas situaciones. La teorÃ­a de la decisiÃ³n con riesgo es el caso de un solo jugador frente a la naturaleza, que no reacciona a lo que Ã©l haga 
+ es la representaciÃ³n formal de una de esas situaciones. Es una rama de las matemÃ¡ticas aplicadas que sirve igual a la economÃ­a, la ciencia polÃ­tica, la biologÃ­a o la estrategia militar. La teorÃ­a de la decisiÃ³n con riesgo es el caso de un solo jugador frente a la naturaleza, que no reacciona a lo que Ã©l haga 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -801,7 +817,7 @@ ProblemÃ¡tica (preguntas clave)
 \end_layout
 
 \begin_layout Itemize
-Â¿Pueden diseÃ±arse las reglas para que los jugadores revelen su informaciÃ³n? En particular, Â¿quÃ© formato de subasta conviene al vendedor y cuÃ¡l a la sociedad? 
+Â¿Pueden diseÃ±arse las reglas para que los jugadores revelen su informaciÃ³n? En particular, Â¿quÃ© formato de subasta conviene al vendedor y cuÃ¡l a la sociedad? Â¿Y por quÃ© la cooperaciÃ³n del refrÃ¡n, que tan bien funciona entre vecinos, se convierte en un problema cuando las empresas que se presentan una y otra vez a los mismos concursos pÃºblicos se turnan para ganarlos (Â«hoy gano yo, maÃ±ana tÃºÂ»)? 
 \end_layout
 
 \end_deeper
@@ -872,10 +888,32 @@ nolink "false"
 
 \end_inset
 
-) y los juegos dinÃ¡micos, con la perfecciÃ³n en subjuegos, la credibilidad y la repeticiÃ³n (
+) y los juegos dinÃ¡micos (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:juegos-dinamicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): los secuenciales, con la perfecciÃ³n en subjuegos y la credibilidad (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:enps"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), y los repetidos, en los que se puede cooperar sin contratos (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:repetidos"
 plural "false"
 caps "false"
 noprefix "false"
@@ -1009,6 +1047,17 @@ nolink "false"
 
 \end_inset
 
+), que terminan con la colusiÃ³n entre los pujadores (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:colusion-subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
 ). 
 \end_layout
 
@@ -1031,7 +1080,39 @@ nolink "false"
 
 \end_inset
 
-): cada paso aÃ±ade un ingrediente (el tiempo, la informaciÃ³n privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. 
+): cada paso aÃ±ade un ingrediente (el tiempo, la informaciÃ³n privada, los acuerdos vinculantes) que obliga a refinarlo, y el tercer bloque le da la vuelta a la pregunta: en lugar de predecir el resultado de un juego dado, se elige el juego que da el resultado deseado. Una misma historia acompaÃ±a a toda la exposiciÃ³n: 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+
+, un operador de telecomunicaciones ya 
+\emph on
+instalado
+\emph default
+ en el mercado, y 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+E
+\end_layout
+
+\end_inset
+
+, uno que quiere 
+\emph on
+entrar
+\emph default
+ en Ã©l. Se enfrentan en una guerra de precios, E decide si entra e I si se resiste, se encuentran cada mes, E no sabe cuÃ¡les son los costes de 
+\shape up
+I
+\shape default
+, negocian y forman un consorcio con un tercer operador y, al final, pujan por el espectro del 5G que subasta el Gobierno, donde el refrÃ¡n del enganche reaparece del revÃ©s: Â«hoy gano yo, maÃ±ana tÃºÂ». 
 \end_layout
 
 \end_deeper
@@ -1059,7 +1140,7 @@ status collapsed
 
 \end_inset
 
- IntroducciÃ³n: interdependencia estratÃ©gica; de 
+ IntroducciÃ³n: Â«hoy por ti, maÃ±ana por mÃ­Â»; interdependencia estratÃ©gica; de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1109,7 +1190,11 @@ Harsanyi
 
 \end_inset
 
-
+; el hilo de 
+\shape up
+I
+\shape default
+ (instalada) y E (entrante)
 \begin_inset Newline newline
 \end_inset
 
@@ -1122,7 +1207,7 @@ Harsanyi
 \length 1.5em
 \end_inset
 
-1. Elementos, representaciÃ³n y clasificaciÃ³n (tabla del hilo conductor)
+1. Elementos, representaciÃ³n y clasificaciÃ³n (estÃ¡ticos y dinÃ¡micos: secuenciales y repetidos)
 \begin_inset Newline newline
 \end_inset
 
@@ -1141,7 +1226,7 @@ Nash
 
 \end_inset
 
-; mixtas y existencia; minimax
+; mixtas y existencia; minimax; coordinaciÃ³n
 \begin_inset Newline newline
 \end_inset
 
@@ -1150,7 +1235,7 @@ Nash
 \length 1.5em
 \end_inset
 
-3. DinÃ¡micos: inducciÃ³n hacia atrÃ¡s; ENPS (
+3. DinÃ¡micos: (a) secuenciales: inducciÃ³n hacia atrÃ¡s, ENPS (
 \begin_inset Flex Autor
 status collapsed
 
@@ -1160,7 +1245,16 @@ Selten
 
 \end_inset
 
-); compromiso; repetidos y tradiciÃ³n oral
+), credibilidad y compromiso;
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset space \hspace*{}
+\length 3em
+\end_inset
+
+(b) repetidos: finitos (cadena de tiendas) e infinitos (gatillo, tradiciÃ³n oral)
 \begin_inset Newline newline
 \end_inset
 
@@ -1272,7 +1366,7 @@ Shapley
 \length 1.5em
 \end_inset
 
-3. Subastas: formatos; 1.Âº y 2.Âº precio; equivalencia; subasta Ã³ptima; valores afiliados; multiunidad; EspaÃ±a
+3. Subastas: formatos; 2.Âº y 1.Âº precio; equivalencia; Ã³ptima; valor comÃºn; multiunidad; EspaÃ±a; colusiÃ³n
 \begin_inset Newline newline
 \end_inset
 
@@ -1325,7 +1419,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-4
+3,5
 \end_layout
 
 \end_inset
@@ -1335,7 +1429,27 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-3,5
+4
+\end_layout
+
+\end_inset
+
+: secuenciales, 
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+, y repetidos, 
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
 \end_layout
 
 \end_inset
@@ -1430,7 +1544,19 @@ status collapsed
 
 \end_inset
 
-. La tabla de clasificaciÃ³n de los juegos (tabla
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+La pizarra, en 3 zonas fijas durante todo el cante
+\emph default
+. A la 
+\emph on
+izquierda
+\emph default
+, la tabla de clasificaciÃ³n de los juegos (tabla
 \begin_inset space ~
 
 \end_inset
@@ -1446,7 +1572,7 @@ nolink "false"
 
 \end_inset
 
-) se dibuja al hablar de la clasificaciÃ³n (
+): se dibuja vacÃ­a en la clasificaciÃ³n (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:elementos"
@@ -1457,7 +1583,51 @@ nolink "false"
 
 \end_inset
 
-) y se queda en la pizarra: cada apartado rellena su casilla. Las funciones clave que se conservan son la definiciÃ³n del equilibrio de 
+) y cada apartado escribe en su casilla el concepto de soluciÃ³n, con el refrÃ¡n que lo resume al lado; en el bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:aplicaciones-subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, ya completa, la sustituye la tabla de los formatos de subasta (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:formatos-subasta"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). En el 
+\emph on
+centro
+\emph default
+, las matrices y los Ã¡rboles pequeÃ±os de la historia de 
+\shape up
+I
+\shape default
+ y E, que se borran al acabar cada apartado. A la 
+\emph on
+derecha
+\emph default
+, lo que se queda hasta el final: la definiciÃ³n del equilibrio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1471,6 +1641,17 @@ Nash
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:nash"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, la condiciÃ³n del gatillo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gatillo"
 plural "false"
 caps "false"
 noprefix "false"
@@ -1499,7 +1680,23 @@ nolink "false"
 
 \end_inset
 
- y la puja de primer precio 
+ y, en el bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:aplicaciones-subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, la puja de primer precio 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:puja"
@@ -1510,7 +1707,47 @@ nolink "false"
 
 \end_inset
 
-. El tribunal pregunta en el test sobre todo dominancia, equilibrio de 
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+El hilo
+\emph default
+: cada concepto se presenta primero con la historia de 
+\shape up
+I
+\shape default
+ y E (las viÃ±etas que empiezan por Â«HiloÂ»), con pagos sencillos y sin funciones de demanda; despuÃ©s se nombra en una frase el ejemplo clÃ¡sico que lo ilustra (las que empiezan por Â«ClÃ¡sicoÂ»), que se desarrolla en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y sirve de gancho para las preguntas del tribunal. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Los refranes
+\emph default
+ se dicen una vez, al presentar su concepto, y se apuntan junto a su casilla de la tabla: Â«Perro ladrador, poco mordedorÂ» y Â«Quemar las navesÂ», junto al ENPS; Â«Hoy por ti, maÃ±ana por mÃ­Â», junto a los juegos repetidos; Â«Cuando el rÃ­o suena, agua llevaÂ», junto al EBP; Â«No es oro todo lo que reluceÂ», junto al valor comÃºn, y Â«Hoy gano yo, maÃ±ana tÃºÂ», junto al gatillo cuando vuelve con la colusiÃ³n en las subastas. 
+\end_layout
+
+\begin_layout Itemize
+El tribunal pregunta en el test sobre todo dominancia, equilibrio de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -1613,7 +1850,25 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: los elementos de un juego y la tabla de clasificaciÃ³n, que se queda en la pizarra (
+En el cante (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+
+), con la pizarra en sus 3 zonas: 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Elementos y clasificaciÃ³n
+\emph default
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -1623,17 +1878,51 @@ status collapsed
 
 \end_inset
 
-); la dominancia con el dilema del prisionero en su matriz, la definiciÃ³n del equilibrio de 
-\begin_inset Flex Autor
+): los 4 elementos de un juego, de palabra, presentando a I y E; a la izquierda, la tabla de clasificaciÃ³n vacÃ­a, con las columnas Â«estÃ¡ticosÂ» y Â«dinÃ¡micosÂ» (esta, partida en Â«secuencialesÂ» y Â«repetidosÂ») y las filas Â«informaciÃ³n completaÂ», Â«informaciÃ³n incompletaÂ» y Â«cooperativosÂ». 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juegos estÃ¡ticos
+\emph default
+ (
+\begin_inset Flex Tiempo
 status collapsed
 
 \begin_layout Plain Layout
-Nash
+3,5
 \end_layout
 
 \end_inset
 
- 
+): en el centro, arriba, la matriz de la guerra de precios (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dilema-prisionero"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), subrayando las mejores respuestas y sombreando el equilibrio (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+); a la derecha, la definiciÃ³n del EN 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:nash"
@@ -1644,17 +1933,19 @@ nolink "false"
 
 \end_inset
 
-, que se recuadra, sus limitaciones y, en una frase cada uno, la existencia en mixtas y el minimax (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-4
+, que se recuadra; en la tabla, Â«ENÂ» en su casilla. La existencia en mixtas (con la campaÃ±a de 
+\shape up
+I
+\shape default
+ y E), el minimax y la coordinaciÃ³n, de palabra, con su clÃ¡sico en una frase cada uno (prisionero, pares o nones, batalla de los sexos, gallina). 
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-); el juego de entrada con su Ã¡rbol, la inducciÃ³n hacia atrÃ¡s, el ENPS y el compromiso (
+\emph on
+Juegos secuenciales
+\emph default
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -1664,7 +1955,57 @@ status collapsed
 
 \end_inset
 
-), y los juegos repetidos con la condiciÃ³n del gatillo 
+): en el centro, abajo, el Ã¡rbol de entrada (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) con la cruz en Â«LucharÂ»; Â«ENPSÂ» en la tabla y, a su lado, Â«Perro ladrador, poco mordedorÂ»; el compromiso, aÃ±adiendo de palabra la rama Â«InvertirÂ» (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada-compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ como apoyo), y Â«Quemar las navesÂ» bajo el refrÃ¡n anterior. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juegos repetidos
+\emph default
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+): se borra el Ã¡rbol y se queda la matriz; a la derecha, la condiciÃ³n del gatillo 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:gatillo"
@@ -1675,17 +2016,31 @@ nolink "false"
 
 \end_inset
 
- y el teorema de tradiciÃ³n oral (
-\begin_inset Flex Tiempo
-status collapsed
+, calculando 
+\begin_inset Formula $\beta\geq1/5$
+\end_inset
 
-\begin_layout Plain Layout
-1,5
-\end_layout
+ con los pagos de la matriz; Â«Hoy por ti, maÃ±ana por mÃ­Â» en la columna de los repetidos. La paradoja de la cadena de tiendas, la tabla de estrategias (tabla
+\begin_inset space ~
 
 \end_inset
 
-). Son de profundizaciÃ³n el juego sin estrategias dominadas, el juego de la inspecciÃ³n y su grÃ¡fico, el ciempiÃ©s, los refinamientos de la reputaciÃ³n y las notas al pie. 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:estrategias-repetidas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) y el teorema de tradiciÃ³n oral, de palabra. 
+\end_layout
+
+\begin_layout Standard
+Son de profundizaciÃ³n el juego sin estrategias dominadas, el recuadro sobre los nombres Â«estÃ¡ticoÂ» y Â«dinÃ¡micoÂ», el ciempiÃ©s, los refinamientos de la reputaciÃ³n y las notas al pie. 
 \end_layout
 
 \end_inset
@@ -1874,6 +2229,24 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: los jugadores son 2 operadores de telecomunicaciones, I, el instalado, y E, el que quiere entrar; las reglas dicen, por ejemplo, si fijan sus precios a la vez o uno despuÃ©s del otro; los pagos son sus beneficios, en unidades sencillas. La historia sirve para ilustrar los conceptos, no para describir un mercado concreto: el oligopolio, con sus funciones de demanda y de costes, se estudia aparte 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -2154,7 +2527,7 @@ estÃ¡ticos
 
 \end_inset
 
- o simultÃ¡neos (nadie observa lo que han elegido los demÃ¡s antes de elegir) frente a 
+ o simultÃ¡neos, en los que cada jugador elige una sola vez y sin observar lo que han elegido los demÃ¡s, frente a 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -2164,7 +2537,155 @@ dinÃ¡micos
 
 \end_inset
 
- o secuenciales; 
+, todos aquellos en los que el tiempo importa porque alguien mueve despuÃ©s de observar jugadas anteriores. Dentro de los dinÃ¡micos hay 2 clases: los 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+secuenciales
+\end_layout
+
+\end_inset
+
+, que se juegan una sola vez pero por turnos, y los 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+repetidos
+\end_layout
+
+\end_inset
+
+, en los que un mismo juego, el 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+juego de etapa
+\end_layout
+
+\end_inset
+
+, se juega un nÃºmero finito o infinito de veces. Es la nomenclatura de los manuales de teorÃ­a de juegos 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencites
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+cap.
+\begin_inset space ~
+
+\end_inset
+
+2
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Gibbons1992Game
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+[caps.
+\begin_inset space ~
+
+\end_inset
+
+7-9]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+MasColellWhinstonGreen1995
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+[caps.
+\begin_inset space ~
+
+\end_inset
+
+3-5]
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+FudenbergTirole1991Game
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+; parte de la organizaciÃ³n industrial usa otra (recuadro gris de 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:enps"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+); 
 \end_layout
 
 \begin_layout Itemize
@@ -2266,7 +2787,7 @@ status collapsed
 
 \end_inset
 
-; 
+, y 
 \end_layout
 
 \begin_layout Itemize
@@ -2280,21 +2801,7 @@ suma cero
 
 \end_inset
 
- (lo que gana uno lo pierde otro) o de suma variable, y 
-\end_layout
-
-\begin_layout Itemize
-de una sola vez o 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-repetidos
-\end_layout
-
-\end_inset
-
-, un nÃºmero finito o infinito de veces. 
+ (lo que gana uno lo pierde otro) o de suma variable. 
 \end_layout
 
 \end_deeper
@@ -2415,7 +2922,11 @@ EstÃ¡ticos
 \series bold
 DinÃ¡micos
 \series default
- (secuenciales)
+
+\begin_inset Newline newline
+\end_inset
+
+(secuenciales y repetidos)
 \end_layout
 
 \end_inset
@@ -3070,21 +3581,9 @@ dÃ©bilmente dominada
 \begin_layout Itemize
 
 \emph on
-Ejemplo: el dilema del prisionero
+Hilo: la guerra de precios
 \emph default
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{Tucker1950TwoPerson}
-\end_layout
-
-\end_inset
-
-. 2 detenidos, incomunicados, pueden callar o confesar (tabla
+ (tabla
 \begin_inset space ~
 
 \end_inset
@@ -3100,20 +3599,20 @@ nolink "false"
 
 \end_inset
 
-; pagos en aÃ±os de cÃ¡rcel, con signo negativo). 
+). I y E fijan a la vez un precio alto o uno bajo. Si los 2 mantienen el precio alto, ganan 5 cada uno; si uno lo baja y el otro no, el que lo baja se queda con los clientes del otro y gana 6, y el otro, 0; si los 2 lo bajan, ganan 1. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Confesar es estrictamente dominante para los 2 (
-\begin_inset Formula $0>-1$
+Bajar el precio es estrictamente dominante para los 2 (
+\begin_inset Formula $6>5$
 \end_inset
 
- y 
-\begin_inset Formula $-5>-10$
+ si el otro lo mantiene y 
+\begin_inset Formula $1>0$
 \end_inset
 
-), y el resultado (Confesar, Confesar) es peor para ambos que (Callar, Callar): la 
+ si lo baja), y el resultado (Bajo, Bajo) es peor para ambos que (Alto, Alto): la 
 \emph on
 racionalidad individual
 \emph default
@@ -3135,7 +3634,17 @@ Pareto
 \end_layout
 
 \begin_layout Itemize
-Es la estructura del cÃ¡rtel 
+Tiene la estructura del 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+dilema del prisionero
+\end_layout
+
+\end_inset
+
+, la del cÃ¡rtel 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -3179,6 +3688,42 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: el dilema del prisionero
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Tucker1950TwoPerson}
+\end_layout
+
+\end_inset
+
+. 2 detenidos, incomunicados, pueden callar o confesar; confesar es dominante y los 2 acaban con mÃ¡s aÃ±os de cÃ¡rcel que si hubieran callado (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -3237,7 +3782,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-El dilema del prisionero (jugador 1, filas; pagos: aÃ±os de cÃ¡rcel con signo negativo)
+La guerra de precios entre I y E, un dilema del prisionero (
+\shape up
+I
+\shape default
+, filas; E, columnas; pagos: beneficios)
 \end_layout
 
 \end_inset
@@ -3268,7 +3817,7 @@ name "tab:dilema-prisionero"
 \begin_layout Standard
 
 \series bold
-Callar
+Precio alto
 \series default
 
 \end_layout
@@ -3281,7 +3830,7 @@ Callar
 \begin_layout Standard
 
 \series bold
-Confesar
+Precio bajo
 \series default
 
 \end_layout
@@ -3296,7 +3845,7 @@ Confesar
 \begin_layout Standard
 
 \series bold
-Callar
+Precio alto
 \series default
  
 \end_layout
@@ -3308,7 +3857,7 @@ Callar
 
 \begin_layout Standard
 
-\begin_inset Formula $(-1,-1)$
+\begin_inset Formula $(5,5)$
 \end_inset
 
  
@@ -3321,7 +3870,7 @@ Callar
 
 \begin_layout Standard
 
-\begin_inset Formula $(-10,\underline{0})$
+\begin_inset Formula $(0,\underline{6})$
 \end_inset
 
 
@@ -3337,7 +3886,7 @@ Callar
 \begin_layout Standard
 
 \series bold
-Confesar
+Precio bajo
 \series default
  
 \end_layout
@@ -3349,7 +3898,7 @@ Confesar
 
 \begin_layout Standard
 
-\begin_inset Formula $(\underline{0},-10)$
+\begin_inset Formula $(\underline{6},0)$
 \end_inset
 
  
@@ -3374,7 +3923,7 @@ cellcolor{tceesalvia}
 \end_inset
 
 
-\begin_inset Formula $(\underline{-5},\underline{-5})$
+\begin_inset Formula $(\underline{1},\underline{1})$
 \end_inset
 
 
@@ -3542,6 +4091,14 @@ status collapsed
 \end_inset
 
 . 
+\emph on
+Hilo
+\emph default
+: la mejor respuesta de 
+\shape up
+I
+\shape default
+ al precio alto de E es bajar el precio (6 frente a 5), y al precio bajo, tambiÃ©n (1 frente a 0). 
 \end_layout
 
 \begin_layout Itemize
@@ -3968,7 +4525,7 @@ nolink "false"
 
 \end_inset
 
-): en cada columna se subraya el mejor pago del jugador 1 y en cada fila el mejor del 2; las casillas con los 2 pagos subrayados son EN. En el dilema del prisionero, el Ãºnico EN es (Confesar, Confesar); en la tabla
+): en cada columna se subraya el mejor pago del jugador de las filas y en cada fila el mejor del de las columnas; las casillas con los 2 pagos subrayados son EN. En la guerra de precios, el Ãºnico EN es (Bajo, Bajo); en la tabla
 \begin_inset space ~
 
 \end_inset
@@ -4061,7 +4618,23 @@ indiferente
 \emph on
 las probabilidades de un jugador se fijan para dejar indiferente al otro
 \emph default
-, y dependen de los pagos del otro, no de los suyos (ejemplo en la caja de anotaciones que sigue). 
+, y dependen de los pagos del otro, no de los suyos (ejemplo resuelto, el juego de la inspecciÃ³n, en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:test"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -4173,6 +4746,59 @@ Cournot
 \end_inset
 
  
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo: la campaÃ±a comercial
+\emph default
+. I y E lanzan a la vez una campaÃ±a en el norte o en el sur. I quiere coincidir con E, para neutralizar su campaÃ±a, y E quiere evitarlo. Ninguna casilla es un EN en puras: si coinciden, E cambia de zona, y si no, la cambia I. El EN existe en mixtas: cada uno elige la zona al azar, al 50
+\begin_inset space ~
+
+\end_inset
+
+% si los pagos son simÃ©tricos, para que el otro no pueda anticiparle. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: pares o nones
+\emph default
+ y el juego de la inspecciÃ³n: sin EN en puras, se gana siendo impredecible; en la inspecciÃ³n, si vigilar se encarece, la empresa no vigila menos, sino que el trabajador se escaquea mÃ¡s (anexos
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:test"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \end_deeper
@@ -4486,418 +5112,6 @@ textcite[cap.~1]{Gibbons1992Game}
 
 \end_layout
 
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-Un equilibrio en mixtas: el juego de la inspecciÃ³n
-\series default
-. Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. El salario es 4 y esforzarse cuesta 2; quien se escaquea y es descubierto no cobra; trabajar produce 6 (tabla
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:inspeccion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-). No hay EN en puras: las mejores respuestas dan vueltas (grÃ¡fico
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:inspeccion"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-). 
-\end_layout
-
-\begin_layout Itemize
-La empresa vigila con la probabilidad 
-\begin_inset Formula $\pi_V$
-\end_inset
-
- que deja indiferente al trabajador: trabajar le da 2 y escaquearse 
-\begin_inset Formula $4(1-\pi_V)$
-\end_inset
-
-, asÃ­ que 
-\begin_inset Formula $\pi_V^*=1/2$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-El trabajador trabaja con la probabilidad 
-\begin_inset Formula $\pi_T$
-\end_inset
-
- que deja indiferente a la empresa: vigilar le da 
-\begin_inset Formula $\pi_T-(1-\pi_T)=2\pi_T-1$
-\end_inset
-
- y no vigilar 
-\begin_inset Formula $2\pi_T-4(1-\pi_T)=6\pi_T-4$
-\end_inset
-
-, asÃ­ que 
-\begin_inset Formula $\pi_T^*=3/4$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Lectura: si vigilar se encarece, la probabilidad de vigilar de la empresa no cambia (depende de los pagos del trabajador); lo que cambia es que el trabajador se escaquea mÃ¡s. Una estrategia mixta puede interpretarse tambiÃ©n como la proporciÃ³n de una poblaciÃ³n que juega cada acciÃ³n, o como el resultado de pequeÃ±as incertidumbres sobre los pagos de los demÃ¡s 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{Harsanyi1973Games}
-\end_layout
-
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Tabla en caja
-status collapsed
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-El juego de la inspecciÃ³n (trabajador, filas; empresa, columnas): sin equilibrio en estrategias puras
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "tab:inspeccion"
-
-\end_inset
-
- 
-\begin_inset Tabular 
-<lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle" tabularwidth="0pt">
-<column alignment="center" valignment="middle" width="2.8cm">
-<column alignment="center" valignment="middle" width="2.6cm">
-<column alignment="center" valignment="middle" width="2.6cm">
-<row>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Vigilar
-\series default
- (
-\begin_inset Formula $\pi_V$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-No vigilar
-\series default
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Trabajar
-\series default
- (
-\begin_inset Formula $\pi_T$
-\end_inset
-
-) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(\underline{2},1)$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(2,\underline{2})$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\series bold
-Escaquearse
-\series default
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(0,\underline{-1})$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Standard
-
-\begin_inset Formula $(\underline{4},-4)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia (salario 4, coste del esfuerzo 2, coste de vigilar 1, producto 6) a partir de la idea de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite[cap.~1]{Gibbons1992Game}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Grafico en caja
-status collapsed
-
-\begin_layout Standard
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Mejores respuestas en el juego de la inspecciÃ³n y equilibrio en mixtas
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:inspeccion"
-
-\end_inset
-
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-grafico
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-[
-\end_layout
-
-\end_inset
-
-0.5
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-]
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
-inspeccion
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Flex Fuente
-status collapsed
-
-\begin_layout Plain Layout
-elaboraciÃ³n propia.
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subparagraph
 iii) Implicaciones
 \end_layout
@@ -5009,7 +5223,11 @@ valor del juego
 
 \end_inset
 
- es el pago de equilibrio: en suma cero, las estrategias minimax forman un EN. En pares y nones cada jugador mezcla al 50
+ es el pago de equilibrio: en suma cero, las estrategias minimax forman un EN. En pares y nones (o en la campaÃ±a comercial de 
+\shape up
+I
+\shape default
+ y E, si lo que gana uno lo pierde el otro) cada jugador mezcla al 50
 \begin_inset space ~
 
 \end_inset
@@ -5107,7 +5325,11 @@ puede
 \emph on
 no existir en estrategias puras
 \emph default
- (pares y nones, la inspecciÃ³n), aunque existe siempre en mixtas en los juegos finitos; 
+ (pares y nones, la inspecciÃ³n, la campaÃ±a de 
+\shape up
+I
+\shape default
+ y E), aunque existe siempre en mixtas en los juegos finitos; 
 \end_layout
 
 \begin_layout Itemize
@@ -5147,9 +5369,111 @@ textcite{Schelling1960Strategy}
 
 \end_inset
 
-: el resultado que destaca por la costumbre o la cultura (2 amigos que han quedado en Madrid sin decir dÃ³nde van a la Puerta del Sol); 
+: el resultado que destaca por la costumbre o la cultura (2 amigos que han quedado en Madrid sin decir dÃ³nde van a la Puerta del Sol). 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: I y E tienen que adoptar el mismo estÃ¡ndar tÃ©cnico para que sus redes se conecten, pero cada uno prefiere el suyo: hay 2 EN, uno con cada estÃ¡ndar, y ninguno es mejor para los 2. 
+\emph on
+ClÃ¡sico
+\emph default
+: la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+batalla de los sexos
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{LuceRaiffa1957Games}
+\end_layout
+
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: si los 2 amenazan con una guerra de precios que arruinarÃ­a a ambos, cada uno quiere que ceda el otro: hay 2 EN, uno en el que cede I y otro en el que cede E, y gana quien logra mostrarse decidido. 
+\emph on
+ClÃ¡sico
+\emph default
+: el 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+juego de la gallina
+\end_layout
+
+\end_inset
+
+, con el que puede leerse el pulso entre EspaÃ±a y el BCE de 2012 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MEDE2026Espana}
+\end_layout
+
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+); 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 no tiene por quÃ© ser 
 \emph on
@@ -5165,7 +5489,7 @@ Pareto
 
 
 \emph default
-: puede haber otro perfil que mejore a todos (dilema del prisionero); 
+: puede haber otro perfil que mejore a todos (la guerra de precios); 
 \end_layout
 
 \begin_layout Itemize
@@ -5207,7 +5531,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-Juegos dinÃ¡micos: perfecciÃ³n en subjuegos, credibilidad y repeticiÃ³n
+Juegos dinÃ¡micos: juegos secuenciales y juegos repetidos
 \end_layout
 
 \begin_layout Standard
@@ -5222,7 +5546,23 @@ name "sec:juegos-dinamicos"
 \end_layout
 
 \begin_layout Itemize
-Una vez estudiados los juegos en los que todos eligen a la vez, pasamos a los que se juegan por turnos. Aparece un problema nuevo, la 
+Una vez estudiados los juegos en los que todos eligen a la vez y una sola vez, pasamos a los 
+\emph on
+dinÃ¡micos
+\emph default
+, en los que el tiempo importa. Son de 2 clases: los 
+\emph on
+secuenciales
+\emph default
+, en los que se mueve por turnos (E decide si entra e I responde), y los 
+\emph on
+repetidos
+\emph default
+, en los que el mismo juego se juega muchas veces (
+\shape up
+I
+\shape default
+ y E se encuentran cada mes). En los primeros aparece un problema nuevo, la 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -5232,21 +5572,15 @@ credibilidad
 
 \end_inset
 
-: un EN puede apoyarse en una amenaza que el jugador no cumplirÃ­a si llegara el momento. 
+: un EN puede apoyarse en una amenaza que el jugador no cumplirÃ­a si llegara el momento. En los segundos, una oportunidad nueva: la amenaza de castigar maÃ±ana puede sostener la cooperaciÃ³n hoy. 
+\emph on
+ConclusiÃ³n anticipada
+\emph default
+: el concepto de soluciÃ³n es el mismo para los 2, el ENPS, que exige que las estrategias sean Ã³ptimas en cualquier punto del juego. 
 \end_layout
 
 \begin_layout Subsubsection
-InducciÃ³n hacia atrÃ¡s y equilibrio de 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Nash
-\end_layout
-
-\end_inset
-
- perfecto en subjuegos
+Juegos secuenciales: inducciÃ³n hacia atrÃ¡s, perfecciÃ³n en subjuegos y compromiso
 \end_layout
 
 \begin_layout Standard
@@ -5267,7 +5601,7 @@ a) Idea
 \begin_layout Itemize
 
 \emph on
-Ejemplo: el juego de entrada
+Hilo: la entrada de E
 \emph default
  (grÃ¡fico
 \begin_inset space ~
@@ -5285,15 +5619,19 @@ nolink "false"
 
 \end_inset
 
-). Una empresa entrante decide si entra en un mercado; si entra, la instalada decide si acomoda o lucha con una guerra de precios. En forma normal hay 2 EN: (Entrar, Acomodar) y (No entrar, Luchar si entra). El segundo descansa en una amenaza 
+). E decide si entra en el mercado de 
+\shape up
+I
+\shape default
+; si entra, I decide si acomoda o lucha con una guerra de precios. I amenaza: Â«si entras, lucharÃ©Â». En forma normal hay 2 EN: (Entrar, Acomodar) y (No entrar, Luchar si entra). El segundo descansa en una amenaza 
 \emph on
 no creÃ­ble
 \emph default
-: si la entrante entrara, a la instalada le convendrÃ­a acomodar (
+: si E entrara, a I le convendrÃ­a acomodar (
 \begin_inset Formula $1>-1$
 \end_inset
 
-). Necesitamos un concepto que descarte esos equilibrios. 
+). Â«Perro ladrador, poco mordedorÂ»: E sabe que I ladra pero no muerde. Necesitamos un concepto que descarte esos equilibrios. 
 \end_layout
 
 \begin_layout Standard
@@ -5322,7 +5660,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-El juego de entrada y su resoluciÃ³n por inducciÃ³n hacia atrÃ¡s
+La entrada de E en el mercado de 
+\shape up
+I
+\shape default
+ y su resoluciÃ³n por inducciÃ³n hacia atrÃ¡s
 \end_layout
 
 \end_inset
@@ -5415,7 +5757,7 @@ textcite[cap.~9]{MasColellWhinstonGreen1995}
 
 \end_inset
 
-. Pagos: (entrante, instalada); en rojo, el ENPS.
+. I es la instalada y E, la entrante. Pagos: (E, I); en rojo, el ENPS.
 \end_layout
 
 \end_inset
@@ -5506,6 +5848,18 @@ status collapsed
 \end_inset
 
 . 
+\emph on
+Hilo
+\emph default
+: I, si E entra, acomoda (
+\begin_inset Formula $1>-1$
+\end_inset
+
+); E, que lo anticipa, entra (
+\begin_inset Formula $1>0$
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -5514,6 +5868,10 @@ status collapsed
 Subjuego
 \emph default
 : la parte del Ã¡rbol que empieza en un nodo cuyo conjunto de informaciÃ³n tiene ese solo nodo y que incluye todos sus sucesores sin cortar ningÃºn conjunto de informaciÃ³n. 
+\emph on
+Hilo
+\emph default
+: el juego que empieza cuando E ya ha entrado e I tiene que decidir es un subjuego. 
 \end_layout
 
 \begin_layout Itemize
@@ -5592,7 +5950,11 @@ nolink "false"
 \end_layout
 
 \begin_layout Itemize
-En el juego de entrada, el Ãºnico ENPS es (Entrar, Acomodar): el ENPS es un 
+En la entrada de E, el Ãºnico ENPS es (Entrar, Acomodar): (No entrar, Luchar si entra) no lo es, porque en el subjuego que empieza tras la entrada luchar no es la mejor respuesta de 
+\shape up
+I
+\shape default
+. El ENPS es un 
 \emph on
 refinamiento
 \emph default
@@ -5621,22 +5983,96 @@ parencite{Schelling1960Strategy}
 
 \end_inset
 
-: quemar las naves hace creÃ­ble que no habrÃ¡ retirada, como hizo HernÃ¡n 
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-CortÃ©s
-\end_layout
-
-\end_inset
-
- en 1519. En economÃ­a: 
+. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-la instalada puede invertir antes en capacidad para que luchar pase a ser su mejor respuesta y disuadir la entrada 
+
+\emph on
+Hilo: I invierte antes en capacidad
+\emph default
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada-compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Antes de que E decida, I puede comprar una gran capacidad con un coste hundido de 2,5. Si E entra, la capacidad ociosa se pierde si acomoda (
+\begin_inset Formula $1-2{,}5=-1{,}5$
+\end_inset
+
+), mientras que luchando la aprovecha (
+\begin_inset Formula $-1$
+\end_inset
+
+): ahora lucharÃ­a, de verdad. E, que lo anticipa, no entra, e I gana 
+\begin_inset Formula $4-2{,}5=1{,}5$
+\end_inset
+
+, mÃ¡s que el 1 que obtiene acomodando sin invertir. Invertir es parte del ENPS: la amenaza se ha vuelto creÃ­ble porque I se ha atado las manos 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencites
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Spence1977Entry
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+Dixit1980Role
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -5646,9 +6082,49 @@ status collapsed
 
 \end_inset
 
-; 
+. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: quemar las naves
+\emph default
+. HernÃ¡n 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+CortÃ©s
+\end_layout
+
+\end_inset
+
+ hundiÃ³ sus barcos en 1519 para que nadie pudiera retirarse (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Â«Quemar las navesÂ»: quien elimina su opciÃ³n de retirada convence a los demÃ¡s de que lucharÃ¡. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+En economÃ­a: 
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 el monopolista de un bien duradero querrÃ­a comprometerse a no bajar el precio y no puede: los compradores lo anticipan y esperan, y el precio cae hacia el coste marginal; es la conjetura de 
 \begin_inset ERT
@@ -5724,6 +6200,154 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El compromiso de 
+\shape up
+I
+\shape default
+: invertir antes en capacidad hace creÃ­ble la guerra de precios
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:juego-entrada-compromiso"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.8
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+juego-entrada-compromiso
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Schelling1960Strategy}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~8]{Tirole1988Theory}
+\end_layout
+
+\end_inset
+
+. Pagos: (E, I), con un coste hundido de la capacidad de 2,5; en rojo, el ENPS.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 c) Extensiones
 \end_layout
@@ -5805,6 +6429,142 @@ nolink "false"
 ). 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Flex Anotaciones
+status collapsed
+
+\begin_layout Standard
+
+\series bold
+Otra forma de verlo: los juegos secuenciales como estÃ¡ticos con variaciÃ³n conjetural
+\series default
+. En parte de la literatura de organizaciÃ³n industrial, y en muchos temarios de la oposiciÃ³n, se llama Â«anÃ¡lisis estÃ¡ticoÂ» a todo lo que ocurre una sola vez, incluidos el liderazgo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stackelberg
+\end_layout
+
+\end_inset
+
+ y el liderazgo en precios, y Â«dinÃ¡micoÂ» solo a la repeticiÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+JustificaciÃ³n
+\emph default
+. Una 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+variaciÃ³n conjetural
+\end_layout
+
+\end_inset
+
+ es lo que una empresa cree que la otra cambiarÃ¡ su decisiÃ³n cuando ella cambia la suya, 
+\begin_inset Formula $v_1\equiv dq_2/dq_1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Bowley1924Mathematical}
+\end_layout
+
+\end_inset
+
+. La lÃ­der de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stackelberg
+\end_layout
+
+\end_inset
+
+ maximiza su beneficio 
+\begin_inset Formula $B_1(q_1,q_2)$
+\end_inset
+
+ sabiendo que la seguidora responderÃ¡ con su funciÃ³n de reacciÃ³n, 
+\begin_inset Formula $q_2=R_2(q_1)$
+\end_inset
+
+, de modo que su condiciÃ³n de primer orden es 
+\begin_inset Formula \[
+\frac{\partial B_1}{\partial q_1}+\frac{\partial B_1}{\partial q_2}\,R_2'(q_1)=0,
+\]
+\end_inset
+
+que es la de una empresa que maximiza en un juego de una sola etapa con una variaciÃ³n conjetural no nula, igual a la pendiente de la funciÃ³n de reacciÃ³n de la seguidora, 
+\begin_inset Formula $v_1=R_2'$
+\end_inset
+
+. El juego secuencial puede resolverse asÃ­ como uno estÃ¡tico con esa conjetura. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+LÃ­mite
+\emph default
+. En un juego simultÃ¡neo de una sola vez nadie puede reaccionar, asÃ­ que una conjetura distinta de cero no es coherente con el propio modelo 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[cap.~5]{Tirole1988Theory}
+\end_layout
+
+\end_inset
+
+. El ENPS existe precisamente porque importa el orden de las jugadas: por eso esta exposiciÃ³n sigue a los manuales de teorÃ­a de juegos. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Si pregunta el tribunal
+\emph default
+. Es una cuestiÃ³n de nombres. Los manuales de teorÃ­a de juegos llaman dinÃ¡mico a todo juego con tiempo; en organizaciÃ³n industrial a veces se reserva el nombre para la repeticiÃ³n. Lo importante es distinguir el 
+\emph on
+orden
+\emph default
+ de las jugadas (simultÃ¡neo o secuencial) y el 
+\emph on
+nÃºmero
+\emph default
+ de encuentros (una vez o repetido). 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 d) Evidencia empÃ­rica
 \end_layout
@@ -5876,7 +6636,7 @@ nolink "false"
 \end_layout
 
 \begin_layout Subsubsection
-Juegos repetidos: reputaciÃ³n y teorema de tradiciÃ³n oral
+Juegos repetidos: horizonte finito e infinito
 \end_layout
 
 \begin_layout Standard
@@ -5895,7 +6655,27 @@ a) Idea
 \end_layout
 
 \begin_layout Itemize
-Si el dilema del prisionero se juega muchas veces, Â¿puede sostenerse la cooperaciÃ³n sin acuerdos vinculantes? La respuesta depende de si el juego tiene un final conocido. 
+
+\emph on
+Hilo: I y E se encuentran cada mes
+\emph default
+. Una vez que E ha entrado, I y E fijan sus precios cada mes, y cada mes se enfrentan a la guerra de precios de la tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dilema-prisionero"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. Â¿Pueden sostener el precio alto sin firmar nada? Es la pregunta del enganche, Â«Hoy por ti, maÃ±ana por mÃ­Â»: quien sabe que volverÃ¡ a encontrarse con el otro puede ganar mÃ¡s cooperando que aprovechÃ¡ndose de Ã©l. La respuesta depende de si el juego tiene un final conocido. 
 \end_layout
 
 \begin_layout Paragraph
@@ -5917,23 +6697,7 @@ juego de etapa
 
 \end_inset
 
- (el dilema del prisionero de la tabla
-\begin_inset space ~
-
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:dilema-prisionero"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
-) que se repite, con los resultados de cada etapa observados por todos; cada jugador maximiza la suma descontada de sus pagos con el factor de descuento 
+ (la guerra de precios) que se repite, con los resultados de cada etapa observados por todos; cada jugador maximiza la suma descontada de sus pagos con el factor de descuento 
 \begin_inset Formula $\beta\equiv1/(1+\rho)$
 \end_inset
 
@@ -5947,17 +6711,146 @@ ii) Desarrollo
 \begin_layout Itemize
 
 \emph on
-RepeticiÃ³n finita
+Estrategias en un juego repetido
 \emph default
-. Si el juego de etapa tiene un Ãºnico EN, el Ãºnico ENPS es repetirlo en cada etapa: en la Ãºltima no hay futuro que proteger y se juega el EN, y por inducciÃ³n hacia atrÃ¡s, en todas las anteriores. 
+: una estrategia dice quÃ© hacer en cada etapa 
+\emph on
+segÃºn lo que haya pasado antes
+\emph default
+ (la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+historia
+\end_layout
+
+\end_inset
+
+). Para comprobar si un perfil es un ENPS basta el 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+principio de la desviaciÃ³n Ãºnica
+\end_layout
+
+\end_inset
+
+: con descuento, un perfil es un ENPS si y solo si nadie gana desviÃ¡ndose en 
+\emph on
+una sola
+\emph default
+ etapa, tras cualquier historia, y volviendo despuÃ©s a su estrategia 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite[cap.~4]{FudenbergTirole1991Game}
+\end_layout
+
+\end_inset
+
+. No hace falta probar todas las desviaciones posibles. 
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-RepeticiÃ³n infinita
+Horizonte finito
 \emph default
- (o con final incierto). La estrategia del 
+. Si el juego de etapa tiene un Ãºnico EN, el Ãºnico ENPS es repetirlo en cada etapa: en la Ãºltima no hay futuro que proteger y se juega el EN, y por inducciÃ³n hacia atrÃ¡s, en todas las anteriores. 
+\emph on
+Hilo
+\emph default
+: si I y E saben que la licencia de E vence dentro de 24 meses, el mes 24 bajan el precio, y, sabiÃ©ndolo, tambiÃ©n el 23, y asÃ­ hasta el primero. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: la paradoja de la cadena de tiendas
+\emph default
+ de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Selten1978Chain}
+\end_layout
+
+\end_inset
+
+. Una cadena presente en 20 ciudades, que se enfrenta a un entrante en cada una, no puede ganarse la fama de agresiva: en la Ãºltima ciudad acomoda, porque ya no hay reputaciÃ³n que cuidar, y por inducciÃ³n hacia atrÃ¡s acomoda en todas. La intuiciÃ³n dice lo contrario: de ahÃ­ la paradoja (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+); la predaciÃ³n como estrategia de reputaciÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Horizonte infinito
+\emph default
+ (o con un final incierto, porque en cada etapa hay una probabilidad de que el juego continÃºe): la inducciÃ³n hacia atrÃ¡s no tiene por dÃ³nde empezar, y el futuro puede disciplinar el presente. Hay 2 tipos de estrategias: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+estrategia incondicionada
+\end_layout
+
+\end_inset
+
+: jugar el EN de la etapa pase lo que pase (bajar siempre el precio). Es siempre un ENPS: en cada etapa se juega un EN y lo que uno haga hoy no cambia lo que harÃ¡ el otro maÃ±ana. Pero no saca del dilema; 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+estrategias condicionadas
+\end_layout
+
+\end_inset
+
+: lo que se hace depende de la historia. La mÃ¡s sencilla es la del 
 \begin_inset Flex Concepto
 status collapsed
 
@@ -5971,33 +6864,578 @@ gatillo
 \emph on
 trigger
 \emph default
-: cooperar mientras el otro coopere y, si alguna vez se desvÃ­a, jugar el EN de la etapa para siempre) es un ENPS si lo que se gana cooperando siempre supera lo que se gana desviÃ¡ndose hoy y siendo castigado despuÃ©s: 
-\begin_inset Formula \begin{equation}\label{eq:gatillo}
-\frac{u^{\mathrm{C}}}{1-\beta}\;\geq\;u^{\mathrm{D}}+\frac{\beta\,u^{\mathrm{N}}}{1-\beta}\quad\Longleftrightarrow\quad \beta\;\geq\;\frac{u^{\mathrm{D}}-u^{\mathrm{C}}}{u^{\mathrm{D}}-u^{\mathrm{N}}}=\frac{0-(-1)}{0-(-5)}=\frac15,
-\end{equation}
-\end_inset
+) de 
+\begin_inset ERT
+status collapsed
 
-donde 
-\begin_inset Formula $u^{\mathrm{C}}$
-\end_inset
+\begin_layout Plain Layout
 
- es el pago de cooperar (callar los 2), 
-\begin_inset Formula $u^{\mathrm{D}}$
-\end_inset
-
- el de desviarse un periodo (confesar cuando el otro calla) y 
-\begin_inset Formula $u^{\mathrm{N}}$
-\end_inset
-
- el del EN de la etapa, con los pagos de la tabla
-\begin_inset space ~
+\backslash
+textcite{Friedman1971Supergames}
+\end_layout
 
 \end_inset
 
+: cooperar mientras el otro coopere y, si alguna vez se desvÃ­a, jugar el EN de la etapa para siempre. Con 
+\begin_inset Formula $u^{\mathrm C}$
+\end_inset
 
+ el pago por etapa de cooperar, 
+\begin_inset Formula $u^{\mathrm D}$
+\end_inset
+
+ el de desviarse una etapa y 
+\begin_inset Formula $u^{\mathrm N}$
+\end_inset
+
+ el del EN de la etapa (el castigo), a un jugador no le conviene desviarse si lo que gana cooperando siempre supera lo que gana desviÃ¡ndose hoy y siendo castigado despuÃ©s, 
+\begin_inset Formula $u^{\mathrm C}/(1-\beta)\geq u^{\mathrm D}+\beta\,u^{\mathrm N}/(1-\beta)$
+\end_inset
+
+; es decir, si es lo bastante paciente: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+funcionclave
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+eq:gatillo
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+beta
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \medspace{}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+geq
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \medspace{}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+frac
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+u
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+D
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+-u
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+C
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+u
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+D
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+-u
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+mathrm
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+N
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ El numerador es lo que se gana hoy desviÃ¡ndose; el denominador, lo que se pierde cada etapa despuÃ©s. El castigo es creÃ­ble, porque volver al EN de la etapa es un EN en cada subjuego, y por el principio de la desviaciÃ³n Ãºnica basta con esta comparaciÃ³n: el gatillo es un ENPS. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: con los pagos de la guerra de precios, 
+\begin_inset Formula $u^{\mathrm C}=5$
+\end_inset
+
+, 
+\begin_inset Formula $u^{\mathrm D}=6$
+\end_inset
+
+ y 
+\begin_inset Formula $u^{\mathrm N}=1$
+\end_inset
+
+, asÃ­ que el precio alto se sostiene si 
+\begin_inset Formula $\beta\geq(6-5)/(6-1)=1/5$
+\end_inset
+
+. Como I y E se encuentran cada mes, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ estÃ¡ muy cerca de 1, y cooperar sin contrato es un ENPS. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Estrategias del dilema del prisionero repetido (con los pagos de la guerra de precios de 
+\shape up
+I
+\shape default
+ y E)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:estrategias-repetidas"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="6" columns="3">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="3.8cm">
+<column alignment="left" valignment="middle" width="6.2cm">
+<column alignment="center" valignment="middle" width="4.4cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Estrategia
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Regla
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Â¿ENPS?
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Incondicionada 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no cooperar nunca (el EN de la etapa), pase lo que pase 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sÃ­, siempre
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Gatillo (
+\emph on
+grim trigger
+\emph default
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cooperar mientras todos cooperen; si alguien se desvÃ­a, no cooperar nunca mÃ¡s 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sÃ­, si 
+\begin_inset Formula $\beta\geq1/5$
+\end_inset
+
+ 
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:dilema-prisionero"
+LatexCommand eqref
+reference "eq:gatillo"
 plural "false"
 caps "false"
 noprefix "false"
@@ -6005,7 +7443,263 @@ nolink "false"
 
 \end_inset
 
-. La ganancia de desviarse hoy se compara con lo que se pierde maÃ±ana por el castigo. 
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Â«Donde las dan, las tomanÂ» (
+\emph on
+tit for tat
+\emph default
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cooperar al principio y despuÃ©s hacer lo que hizo el otro en la etapa anterior 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+solo con un valor concreto de 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (aquÃ­, 
+\begin_inset Formula $\beta=1/5$
+\end_inset
+
+ exactamente)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Castigo tras 2 desviaciones (
+\emph on
+tit for two tats
+\emph default
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+cooperar salvo que el otro se haya desviado en las 2 etapas anteriores 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no: al otro le conviene desviarse una etapa sÃ­ y otra no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Â«Si gano, repito; si pierdo, cambioÂ» (
+\emph on
+win-stay, lose-shift
+\emph default
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+repetir lo que hice si me fue bien (el otro cooperÃ³) y cambiar si me fue mal 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+sÃ­, si 
+\begin_inset Formula $\beta$
+\end_inset
+
+ es alto y 
+\begin_inset Formula $2u^{\mathrm C}>u^{\mathrm D}+u^{\mathrm N}$
+\end_inset
+
+ (aquÃ­, 
+\begin_inset Formula $\beta\geq1/4$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Friedman1971Supergames}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Axelrod1984Evolution}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{NowakSigmund1993Strategy}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~4]{FudenbergTirole1991Game}
+\end_layout
+
+\end_inset
+
+. Pagos por etapa: cooperar 5, desviarse 6, castigo 1 y 0 para el que coopera cuando el otro se desvÃ­a.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Otras estrategias condicionadas
+\emph default
+, mÃ¡s indulgentes que el gatillo (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:estrategias-repetidas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+; cada fila se comprueba con el principio de la desviaciÃ³n Ãºnica en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:test"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): Â«donde las dan, las tomanÂ» (
+\emph on
+tit for tat
+\emph default
+), que repite lo que el otro hizo en la etapa anterior; la que solo castiga tras 2 desviaciones seguidas (
+\emph on
+tit for two tats
+\emph default
+), que perdona una desviaciÃ³n aislada, y Â«si gano, repito; si pierdo, cambioÂ» (
+\emph on
+win-stay, lose-shift
+\emph default
+), que estudiaron 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{NowakSigmund1993Strategy}
+\end_layout
+
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -6056,6 +7750,10 @@ textcite{FudenbergMaskin1986Folk}
 \end_inset
 
 , con el pago minimax como castigo. 
+\emph on
+Hilo
+\emph default
+: I y E pueden sostener cualquier par de beneficios medios entre 1 y 5 cada uno (y otros que alternen precios), no solo el precio alto. 
 \end_layout
 
 \begin_layout Subparagraph
@@ -6096,34 +7794,27 @@ status collapsed
 . Se coopera mÃ¡s cuanto mÃ¡s pacientes son los jugadores, mÃ¡s frecuente es la interacciÃ³n y antes se detectan los incumplimientos. 
 \end_layout
 
+\begin_layout Itemize
+La misma lÃ³gica sostiene la cooperaciÃ³n que la sociedad no quiere: los cÃ¡rteles que se turnan para ganar las licitaciones pÃºblicas son un juego repetido, y el diseÃ±o de la subasta puede romperlo (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
 \begin_layout Paragraph
 c) Extensiones: reputaciÃ³n con informaciÃ³n incompleta
 \end_layout
 
 \begin_layout Itemize
-En la 
-\begin_inset Flex Concepto
-status collapsed
-
-\begin_layout Plain Layout
-paradoja de la cadena de tiendas
-\end_layout
-
-\end_inset
-
- de 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-textcite{Selten1978Chain}
-\end_layout
-
-\end_inset
-
-, una cadena presente en 20 ciudades, que se enfrenta a un entrante en cada una, no puede ganar reputaciÃ³n de agresiva: por inducciÃ³n hacia atrÃ¡s, acomoda en todas. La paradoja se deshace si hay una pequeÃ±a probabilidad de que el jugador sea de un tipo Â«irracionalÂ» (agresivo por naturaleza o cooperador incondicional): entonces le conviene imitarlo para ganar reputaciÃ³n 
+La paradoja de la cadena de tiendas se deshace si hay una pequeÃ±a probabilidad de que el jugador sea de un tipo Â«irracionalÂ» (agresivo por naturaleza o cooperador incondicional): entonces le conviene imitarlo para ganarse una reputaciÃ³n 
 \begin_inset ERT
 status collapsed
 
@@ -6226,11 +7917,19 @@ textcite{Axelrod1984Evolution}
 
 \end_inset
 
-, la estrategia ganadora fue una de las mÃ¡s sencillas, Â«donde las dan, las tomanÂ» (
-\emph on
-tit for tat
-\emph default
-): cooperar al principio y despuÃ©s hacer lo que hizo el otro en la jugada anterior. En el laboratorio, la cooperaciÃ³n es mÃ¡s frecuente cuanto mÃ¡s probable es que el juego continÃºe, como predice 
+, la estrategia ganadora fue una de las mÃ¡s sencillas, Â«donde las dan, las tomanÂ»: cooperar al principio y despuÃ©s hacer lo que hizo el otro en la jugada anterior. Con errores (alguien se desvÃ­a sin querer), Â«donde las dan, las tomanÂ» encadena represalias, y en las simulaciones de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{NowakSigmund1993Strategy}
+\end_layout
+
+\end_inset
+
+ la supera Â«si gano, repito; si pierdo, cambioÂ», que vuelve a cooperar tras un castigo. En el laboratorio, la cooperaciÃ³n es mÃ¡s frecuente cuanto mÃ¡s probable es que el juego continÃºe, como predice 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:gatillo"
@@ -6292,7 +7991,7 @@ Nash
 
 \end_inset
 
- es la predicciÃ³n bÃ¡sica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o mÃºltiple; en los juegos dinÃ¡micos se refina exigiendo racionalidad secuencial (ENPS), y la repeticiÃ³n permite sostener la cooperaciÃ³n. Pero la informaciÃ³n completa es un supuesto fuerte: en una subasta nadie conoce la valoraciÃ³n de los demÃ¡s. Pasamos a ver quÃ© ocurre cuando no es asÃ­, y cuando los jugadores pueden firmar acuerdos. 
+ es la predicciÃ³n bÃ¡sica: existe (en mixtas) en todo juego finito, pero puede ser ineficiente o mÃºltiple; en los juegos dinÃ¡micos se refina exigiendo racionalidad secuencial (ENPS): en los secuenciales descarta las amenazas no creÃ­bles, y en los repetidos permite sostener la cooperaciÃ³n. Pero la informaciÃ³n completa es un supuesto fuerte: E no sabe cuÃ¡nto le cuesta a I ampliar su red, y en una subasta nadie conoce la valoraciÃ³n de los demÃ¡s. Pasamos a ver quÃ© ocurre cuando no es asÃ­, y cuando los jugadores pueden firmar acuerdos. 
 \end_layout
 
 \begin_layout Standard
@@ -6348,37 +8047,113 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: el truco de 
+En el cante (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+7,5
+\end_layout
+
+\end_inset
+
+): se borra el centro y se quedan la tabla de la izquierda y las fÃ³rmulas de la derecha. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juegos bayesianos
+\emph default
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+): en el centro, un Ã¡rbol pequeÃ±o con la Naturaleza eligiendo el coste de 
+\shape up
+I
+\shape default
+ (alto, con probabilidad 
+\begin_inset Formula $\pi$
+\end_inset
+
+, o bajo) y la lÃ­nea discontinua que une los nodos que E no distingue (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:arbol-harsanyi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ como apoyo); la estrategia como regla que depende del tipo y la condiciÃ³n de E, 
+\begin_inset Formula $2\pi-1\geq0$
+\end_inset
+
+; Â«EBNÂ» en su casilla de la tabla, con Â«las subastas son juegos bayesianosÂ» como puente. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio bayesiano perfecto
+\emph default
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+): sus 3 condiciones de palabra; en el centro, la regla de 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Harsanyi
+Bayes
 \end_layout
 
 \end_inset
 
- con su Ã¡rbol, la estrategia como regla que depende del tipo y la definiciÃ³n del EBN, con Â«las subastas son juegos bayesianosÂ» como puente (
+ con la que E lee el precio de 
+\shape up
+I
+\shape default
+ y la doble desigualdad del separador; Â«EBPÂ» en la tabla y, a su lado, Â«Cuando el rÃ­o suena, agua llevaÂ»; el criterio intuitivo con su clÃ¡sico, cerveza o quiche, en una frase. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+NegociaciÃ³n y cooperativos
+\emph default
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
 \begin_layout Plain Layout
-2
+3,5
 \end_layout
 
 \end_inset
 
-); el EBP con sus 3 condiciones, el juego de seÃ±alizaciÃ³n con la doble desigualdad y el criterio intuitivo (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-
-); la soluciÃ³n de 
+): a la derecha, la soluciÃ³n de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6399,7 +8174,7 @@ nolink "false"
 
 \end_inset
 
-, que se recuadra, con sus 4 axiomas, 
+, que se recuadra, con sus 4 axiomas de palabra; 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6409,7 +8184,27 @@ Rubinstein
 
 \end_inset
 
- y la paciencia como poder de negociaciÃ³n, el nÃºcleo y el valor de 
+ y la paciencia como poder de negociaciÃ³n, de palabra; en el centro, la funciÃ³n caracterÃ­stica de 
+\shape up
+I
+\shape default
+, E y O, el nÃºcleo en el triÃ¡ngulo de imputaciones (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:nucleo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) y el valor de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6419,27 +8214,21 @@ Shapley
 
 \end_inset
 
- con el ejemplo del vendedor y los 2 compradores (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-3,5
-\end_layout
-
-\end_inset
-
-). Son de profundizaciÃ³n el 
+ con sus 4 axiomas y su resultado; Â«nÃºcleo, 
 \begin_inset Flex Autor
 status collapsed
 
 \begin_layout Plain Layout
-Cournot
+Shapley
 \end_layout
 
 \end_inset
 
- con costes privados, los refinamientos de las creencias, el juego de mayorÃ­a sin nÃºcleo, los axiomas del valor de 
+Â» en la fila de los cooperativos. 
+\end_layout
+
+\begin_layout Standard
+Son de profundizaciÃ³n los refinamientos de las creencias, el juego de mayorÃ­a sin nÃºcleo, los axiomas del valor de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6576,6 +8365,36 @@ nolink "false"
 ), que ya sabemos tratar. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+Hilo: E no sabe cuÃ¡nto le cuesta a I ampliar su red
+\emph default
+. E decide si entra sin saber si a I le resulta caro o barato ampliar su capacidad: E no conoce el 
+\emph on
+tipo
+\emph default
+ de 
+\shape up
+I
+\shape default
+. Con 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Harsanyi
+\end_layout
+
+\end_inset
+
+, la Naturaleza elige primero el tipo de 
+\shape up
+I
+\shape default
+, I lo observa y E solo conoce las probabilidades. 
+\end_layout
+
 \begin_layout Paragraph
 b) Modelo
 \end_layout
@@ -6704,18 +8523,26 @@ nolink "false"
 \begin_layout Itemize
 
 \emph on
-Ejemplo: entrada con capacidad desconocida
+Hilo: la entrada de E con costes desconocidos
 \emph default
-. Una entrante decide si entra en un mercado mientras la instalada decide, a la vez, si amplÃ­a su capacidad. Ampliar es caro para la instalada de tipo A (coste alto), con probabilidad 
+. E decide si entra en el mercado mientras I decide, a la vez, si amplÃ­a su capacidad. Ampliar es caro para I si es de 
+\emph on
+coste alto
+\emph default
+, con probabilidad 
 \begin_inset Formula $\pi$
 \end_inset
 
-, y barato para la de tipo B (coste bajo); la entrante no sabe cuÃ¡l tiene enfrente. 
+, y barato si es de 
+\emph on
+coste bajo
+\emph default
+; E no sabe cuÃ¡l tiene enfrente. 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Pagos (entrante, instalada). Tipo A: Entrar y Ampliar, 
+Pagos (E, I). Si I es de coste alto: Entrar y Ampliar, 
 \begin_inset Formula $(-1,-1)$
 \end_inset
 
@@ -6731,7 +8558,7 @@ Pagos (entrante, instalada). Tipo A: Entrar y Ampliar,
 \begin_inset Formula $(0,3)$
 \end_inset
 
-. Tipo B: Entrar y Ampliar, 
+. Si es de coste bajo: Entrar y Ampliar, 
 \begin_inset Formula $(-1,2)$
 \end_inset
 
@@ -6751,7 +8578,11 @@ Pagos (entrante, instalada). Tipo A: Entrar y Ampliar,
 \end_layout
 
 \begin_layout Itemize
-Cada tipo tiene una estrategia dominante: el A no amplÃ­a nunca (
+Cada tipo de 
+\shape up
+I
+\shape default
+ tiene una estrategia dominante: el de coste alto no amplÃ­a nunca (
 \begin_inset Formula $1>-1$
 \end_inset
 
@@ -6759,7 +8590,7 @@ Cada tipo tiene una estrategia dominante: el A no amplÃ­a nunca (
 \begin_inset Formula $3>2$
 \end_inset
 
-) y el B amplÃ­a siempre (
+) y el de coste bajo amplÃ­a siempre (
 \begin_inset Formula $2>1$
 \end_inset
 
@@ -6767,11 +8598,15 @@ Cada tipo tiene una estrategia dominante: el A no amplÃ­a nunca (
 \begin_inset Formula $4>3$
 \end_inset
 
-). 
+). La estrategia de 
+\shape up
+I
+\shape default
+ es la regla Â«no ampliar si mi coste es alto, ampliar si es bajoÂ». 
 \end_layout
 
 \begin_layout Itemize
-La entrante compara su pago esperado: entrar le da 
+E compara su pago esperado con su creencia a priori: entrar le da 
 \begin_inset Formula $\pi\cdot1+(1-\pi)(-1)=2\pi-1$
 \end_inset
 
@@ -6779,15 +8614,19 @@ La entrante compara su pago esperado: entrar le da
 \end_layout
 
 \begin_layout Itemize
-EBN: (Entrar; No ampliar si A, Ampliar si B) si 
+EBN: (Entrar; No ampliar si alto, Ampliar si bajo) si 
 \begin_inset Formula $\pi\geq1/2$
 \end_inset
 
-, y (No entrar; No ampliar si A, Ampliar si B) si 
+, y (No entrar; No ampliar si alto, Ampliar si bajo) si 
 \begin_inset Formula $\pi\leq1/2$
 \end_inset
 
-. Lo que decide la entrante es su creencia sobre el tipo de la instalada. 
+. Lo que decide E es su creencia sobre el tipo de 
+\shape up
+I
+\shape default
+. 
 \end_layout
 
 \end_deeper
@@ -6817,7 +8656,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-El juego de entrada con informaciÃ³n incompleta, a la 
+La entrada de E sin conocer el coste de 
+\shape up
+I
+\shape default
+: el juego con informaciÃ³n incompleta, a la 
 \begin_inset Flex Autor
 status collapsed
 
@@ -6932,7 +8775,11 @@ textcite[cap.~3]{Gibbons1992Game}
 
 \end_inset
 
-. La lÃ­nea discontinua une los nodos que la entrante no distingue.
+. I es la instalada, de coste alto (probabilidad 
+\begin_inset Formula $\pi$
+\end_inset
+
+) o bajo, y E, la entrante. Pagos: (E, I). La lÃ­nea discontinua une los nodos que E no distingue.
 \end_layout
 
 \end_inset
@@ -7005,7 +8852,7 @@ Cournot
 
 \end_inset
 
- con costes privados es el ejemplo clÃ¡sico (caja de anotaciones que sigue) 
+ con costes privados es el ejemplo clÃ¡sico 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -7036,116 +8883,6 @@ textcite{Harsanyi1973Games}
 \end_inset
 
  muestra que un equilibrio en mixtas puede verse como el lÃ­mite de equilibrios bayesianos en puras en los que cada jugador tiene una pequeÃ±a incertidumbre sobre los pagos de los demÃ¡s. 
-\end_layout
-
-\begin_layout Standard
-
-\begin_inset Flex Anotaciones
-status collapsed
-
-\begin_layout Standard
-
-\series bold
-
-\begin_inset Flex Autor
-status collapsed
-
-\begin_layout Plain Layout
-Cournot
-\end_layout
-
-\end_inset
-
- con costes privados
-\series default
- 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite[Â§~3.1.A]{Gibbons1992Game}
-\end_layout
-
-\end_inset
-
-. 2 empresas con demanda 
-\begin_inset Formula $p=a-q_1-q_2$
-\end_inset
-
-; el coste unitario de la empresa 1, 
-\begin_inset Formula $c$
-\end_inset
-
-, es conocido; el de la 2 es alto, 
-\begin_inset Formula $c_{\mathrm A}$
-\end_inset
-
-, con probabilidad 
-\begin_inset Formula $\pi$
-\end_inset
-
-, o bajo, 
-\begin_inset Formula $c_{\mathrm B}$
-\end_inset
-
-, y solo ella lo sabe. 
-\end_layout
-
-\begin_layout Itemize
-La empresa 2 elige una cantidad para cada tipo, 
-\begin_inset Formula $q_2(c_j)=(a-q_1-c_j)/2$
-\end_inset
-
- con 
-\begin_inset Formula $j=\mathrm{A},\mathrm{B}$
-\end_inset
-
-, y la 1 responde a la cantidad 
-\emph on
-esperada
-\emph default
- de la 2, 
-\begin_inset Formula $q_1=\big(a-c-\mathbb{E}[q_2]\big)/2$
-\end_inset
-
-. 
-\end_layout
-
-\begin_layout Itemize
-Resolviendo, 
-\begin_inset Formula $q_1^*=\big(a-2c+\mathbb{E}[c_2]\big)/3$
-\end_inset
-
-, con 
-\begin_inset Formula $\mathbb{E}[c_2]=\pi c_{\mathrm A}+(1-\pi)c_{\mathrm B}$
-\end_inset
-
-, y 
-\begin_inset Formula \[
-q_2^*(c_{\mathrm A})=\frac{a-2c_{\mathrm A}+c}{3}+\frac{(1-\pi)(c_{\mathrm A}-c_{\mathrm B})}{6},\qquad q_2^*(c_{\mathrm B})=\frac{a-2c_{\mathrm B}+c}{3}-\frac{\pi(c_{\mathrm A}-c_{\mathrm B})}{6}.
-\]
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Lectura: el tipo de coste alto produce 
-\emph on
-mÃ¡s
-\emph default
- que con informaciÃ³n completa (la rival, que no sabe si es eficiente, produce menos de lo que producirÃ­a frente a un rival de coste alto conocido) y el de coste bajo, 
-\emph on
-menos
-\emph default
-. 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Paragraph
@@ -7223,6 +8960,78 @@ revela
 dadas unas creencias
 \emph default
 . 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo: I habla con su precio
+\emph default
+. Antes de que E decida, I fija su precio de hoy. Si solo a I de coste bajo le compensa un precio muy bajo, ese precio es una 
+\emph on
+seÃ±al
+\emph default
+: E, que partÃ­a de la creencia 
+\begin_inset Formula $\pi$
+\end_inset
+
+ de que I es de coste alto, la revisa con la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+regla de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Bayes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula \[
+\mu(\text{precio})=\Pr(\text{alto}\mid\text{precio})=\frac{\pi\,\Pr(\text{precio}\mid\text{alto})}{\pi\,\Pr(\text{precio}\mid\text{alto})+(1-\pi)\Pr(\text{precio}\mid\text{bajo})}.
+\]
+\end_inset
+
+Si solo el de coste bajo fija el precio bajo, al verlo E pasa a creer 
+\begin_inset Formula $\mu=0$
+\end_inset
+
+ y no entra; si lo fijan los 2 tipos, el precio no dice nada y 
+\begin_inset Formula $\mu=\pi$
+\end_inset
+
+. Â«Cuando el rÃ­o suena, agua llevaÂ»: E lee en lo que I hace lo que I sabe. Es el precio lÃ­mite como seÃ±al 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MilgromRoberts1982Limit}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+; el modelo de referencia es el de la educaciÃ³n como seÃ±al. 
 \end_layout
 
 \begin_layout Paragraph
@@ -7531,6 +9340,42 @@ parencite[cap.~13]{MasColellWhinstonGreen1995}
 . 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: cerveza o quiche
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{ChoKreps1987Signaling}
+\end_layout
+
+\end_inset
+
+. Un forastero, fuerte o dÃ©bil, elige quÃ© desayunar ante un matÃ³n que solo quiere pelear con los dÃ©biles; el criterio intuitivo descarta el equilibrio en el que los 2 tipos piden quiche (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
 \begin_layout Subparagraph
 iii) Implicaciones
 \end_layout
@@ -7820,6 +9665,18 @@ Nash
 \end_inset
 
  consiste en comprobar que llegan al mismo sitio: es el puente entre los juegos cooperativos y los no cooperativos. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo: I y E negocian el acceso a la red
+\emph default
+. Si E, en lugar de construir su red, alquila la de 
+\shape up
+I
+\shape default
+, los 2 ganan; pero el precio puede estar en cualquier punto entre lo mÃ­nimo que I acepta y lo mÃ¡ximo que E paga. Â¿DÃ³nde acabarÃ¡? 
 \end_layout
 
 \begin_layout Paragraph
@@ -8438,7 +10295,7 @@ status collapsed
 
 \end_inset
 
- y el intercambio en la caja de 
+, el intercambio en la caja de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -8458,6 +10315,26 @@ status collapsed
 
 \end_inset
 
+ y el reparto del beneficio de un cÃ¡rtel, con el beneficio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Cournot
+\end_layout
+
+\end_inset
+
+ como punto de desacuerdo 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
 . 
 \end_layout
 
@@ -8466,9 +10343,9 @@ c) Evidencia empÃ­rica
 \end_layout
 
 \begin_layout Itemize
-En el 
+
 \emph on
-juego del ultimÃ¡tum
+ClÃ¡sico: el juego del ultimÃ¡tum
 \emph default
  
 \begin_inset ERT
@@ -8482,7 +10359,23 @@ parencite{GuthSchmittbergerSchwarze1982Ultimatum}
 
 \end_inset
 
-, uno propone un reparto y el otro solo puede aceptarlo o rechazarlo (y entonces nadie cobra). El ENPS con agentes egoÃ­stas es ofrecer casi nada y aceptar; en el laboratorio, muchos proponen repartos cercanos a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazarlas cueste dinero. La equidad pesa 
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Uno propone un reparto y el otro solo puede aceptarlo o rechazarlo (y entonces nadie cobra). El ENPS con agentes egoÃ­stas es ofrecer casi nada y aceptar; en el laboratorio, muchos proponen repartos cercanos a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazarlas cueste dinero. La equidad pesa 
 \begin_inset Flex Ver tema
 status collapsed
 
@@ -8705,9 +10598,9 @@ ninguna coaliciÃ³n puede bloquear
 \begin_layout Itemize
 
 \emph on
-Ejemplo: un vendedor y 2 compradores
+Hilo: I, E y un tercero, O
 \emph default
-. El jugador 1 tiene un objeto que valora en 20; los compradores 2 y 3 lo valoran en 60 y 100. Entonces 
+. I (jugador 1) tiene una red de torres que, si la usa Ã©l solo, le rinde 20. E (jugador 2) sacarÃ­a de ella 60 y un tercer operador, O (de Â«otroÂ»; jugador 3), 100, pero solo cabe uno: I es un vendedor y E y O, 2 compradores. Si I se asocia con uno de ellos (forman un consorcio) y se reparten lo que obtienen, Â¿quÃ© repartos son estables? Entonces 
 \begin_inset Formula $v(\{1\})=20$
 \end_inset
 
@@ -8745,7 +10638,7 @@ x_2=0,\qquad x_1\in[60,100],\qquad x_3=100-x_1:
 \]
 \end_inset
 
-el objeto va a quien mÃ¡s lo valora a un precio entre la segunda valoraciÃ³n y la primera (grÃ¡fico
+la red va a O, quien mÃ¡s la valora, a un precio entre la segunda valoraciÃ³n y la primera (grÃ¡fico
 \begin_inset space ~
 
 \end_inset
@@ -8777,7 +10670,7 @@ nolink "false"
 
 \end_inset
 
-). Es el mismo resultado que darÃ¡ una subasta inglesa (
+, con I como vendedor y E y O como compradores 2 y 3). Es el mismo resultado que darÃ¡ una subasta inglesa (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:subastas"
@@ -8788,7 +10681,7 @@ nolink "false"
 
 \end_inset
 
-): la competencia del comprador 2 es lo que protege al vendedor. 
+): la competencia de E es lo que protege a I, aunque E se quede fuera. 
 \end_layout
 
 \begin_layout Itemize
@@ -8941,7 +10834,11 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Imputaciones y nÃºcleo del juego del vendedor y los 2 compradores
+Imputaciones y nÃºcleo del juego de 
+\shape up
+I
+\shape default
+ (vendedor) y E y O (compradores)
 \end_layout
 
 \end_inset
@@ -9208,9 +11105,13 @@ aportaciÃ³n marginal esperada
 \begin_layout Itemize
 
 \emph on
-En el ejemplo
+Hilo
 \emph default
- del vendedor y los 2 compradores (
+: en el juego de 
+\shape up
+I
+\shape default
+, E y O (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:nucleo"
@@ -9241,7 +11142,7 @@ nolink "false"
 \begin_inset Formula $\phi=\big(66\tfrac23,\ 6\tfrac23,\ 26\tfrac23\big)$
 \end_inset
 
-: no estÃ¡ en el nÃºcleo, porque da algo al comprador 2, que no compra. NÃºcleo y valor de 
+ para I, E y O: se reparte todo (eficiencia), y E recibe algo porque su presencia sube lo que I puede pedir. No estÃ¡ en el nÃºcleo, porque da algo a E, que no se queda con la red. NÃºcleo y valor de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -9309,7 +11210,17 @@ status collapsed
 
 \end_inset
 
-, repartir costes comunes y atribuir la contribuciÃ³n de cada variable en la estadÃ­stica y el aprendizaje automÃ¡tico; con un continuo de agentes da tambiÃ©n las asignaciones competitivas 
+, repartir costes comunes, estudiar quÃ© cÃ¡rteles y alianzas entre empresas son estables 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+ y atribuir la contribuciÃ³n de cada variable en la estadÃ­stica y el aprendizaje automÃ¡tico; con un continuo de agentes da tambiÃ©n las asignaciones competitivas 
 \begin_inset ERT
 status collapsed
 
@@ -9368,7 +11279,7 @@ Shapley
 
 \end_inset
 
- elige uno equitativo. Ya sabemos predecir; queda usarlo. Hasta aquÃ­ hemos tomado el juego como dado; el Ãºltimo bloque (
+ elige uno equitativo. I y E ya saben quÃ© esperar cuando compiten, se encuentran cada mes, se ocultan informaciÃ³n o se asocian. Ya sabemos predecir; queda usarlo. Hasta aquÃ­ hemos tomado el juego como dado; el Ãºltimo bloque (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:aplicaciones-subastas"
@@ -9431,65 +11342,79 @@ status collapsed
 status collapsed
 
 \begin_layout Standard
-En el cante: las aplicaciones en una lista de palabras clave, cada una con su remisiÃ³n de palabra (
+En el cante (
 \begin_inset Flex Tiempo
 status collapsed
 
 \begin_layout Plain Layout
-1,5
+10
 \end_layout
 
 \end_inset
 
-); el diseÃ±o de mecanismos con el esquema Â«tipos, mensajes, resultadoÂ», el principio de revelaciÃ³n, 
-\begin_inset Formula $\mathrm{PC}_i$
+): se borran el centro y la tabla de clasificaciÃ³n, que ya estÃ¡ completa; a la derecha se quedan la definiciÃ³n del EN 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nash"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- e 
-\begin_inset Formula $\mathrm{IC}_i$
+ y la condiciÃ³n del gatillo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gatillo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
 \end_inset
 
- y los lÃ­mites en una frase cada uno (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-2
+, que vuelve al final con la colusiÃ³n, y se borra la soluciÃ³n de negociaciÃ³n. 
 \end_layout
 
-\end_inset
+\begin_layout Itemize
 
-), y las subastas (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-6,5
-\end_layout
-
-\end_inset
-
-): formatos y valores (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-1
-\end_layout
+\emph on
+La pizarra del bloque, en 3 zonas
+\emph default
+. A la 
+\emph on
+izquierda
+\emph default
+, la tabla de los formatos de subasta (tabla
+\begin_inset space ~
 
 \end_inset
 
-); segundo precio, pujar la valoraciÃ³n (
-\begin_inset Flex Tiempo
-status collapsed
 
-\begin_layout Plain Layout
-1
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:formatos-subasta"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
 
 \end_inset
 
-); primer precio con la puja 
+), que se dibuja vacÃ­a al presentar los formatos y se rellena fila a fila. En el 
+\emph on
+centro
+\emph default
+, los ejemplos del hilo: las valoraciones de 
+\shape up
+I
+\shape default
+, E y O y lo que paga cada uno en cada formato, que se borran al cambiar de idea. A la 
+\emph on
+derecha
+\emph default
+, lo que se queda: el EN y el gatillo, y debajo la puja de primer precio 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:puja"
@@ -9500,7 +11425,15 @@ nolink "false"
 
 \end_inset
 
-, que se recuadra, y el grÃ¡fico de pujas (
+, que se recuadra y llega hasta la conclusiÃ³n. Los refranes, junto a su fila de la tabla: Â«No es oro todo lo que reluceÂ», junto al valor comÃºn, y Â«Hoy gano yo, maÃ±ana tÃºÂ», junto al gatillo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Aplicaciones
+\emph default
+ (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9510,7 +11443,169 @@ status collapsed
 
 \end_inset
 
-); equivalencia de ingresos 
+): de palabra, los campos con su ejemplo y su remisiÃ³n; nada en la pizarra. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+DiseÃ±o de mecanismos
+\emph default
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+): en el centro, el esquema Â«tipos 
+\begin_inset Formula $\to$
+\end_inset
+
+ mensajes 
+\begin_inset Formula $\to$
+\end_inset
+
+ resultadoÂ» con 
+\begin_inset Formula $\mathrm{PC}_i$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathrm{IC}_i$
+\end_inset
+
+ debajo; el principio de revelaciÃ³n con el Gobierno que no sabe cuÃ¡nto valen las licencias, y el juicio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+SalomÃ³n
+\end_layout
+
+\end_inset
+
+ en una frase; los lÃ­mites, de palabra. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Subastas
+\emph default
+ (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+6,5
+\end_layout
+
+\end_inset
+
+): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+formatos y valores (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+): a la izquierda, la tabla con sus 4 filas y las columnas vacÃ­as; valores privados y valor comÃºn, de palabra, con el hilo; 
+\end_layout
+
+\begin_layout Itemize
+segundo precio (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+): en el centro, 
+\begin_inset Formula $v_{\mathrm I}=10$
+\end_inset
+
+, 
+\begin_inset Formula $v_{\mathrm E}=8$
+\end_inset
+
+ y 
+\begin_inset Formula $v_{\mathrm O}=6$
+\end_inset
+
+; I gana y paga 8; por quÃ© ni pujar mÃ¡s ni pujar menos compensa; Â«
+\begin_inset Formula $b=v$
+\end_inset
+
+Â» en su fila; 
+\end_layout
+
+\begin_layout Itemize
+primer precio (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1,5
+\end_layout
+
+\end_inset
+
+): el dilema del pujador, de palabra; a la derecha, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:puja"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, que se recuadra; en el centro, las pujas del hilo (6,67, 5,33 y 4); el grÃ¡fico de pujas (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pujas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) como apoyo; Â«sombrearÂ» en su fila; 
+\end_layout
+
+\begin_layout Itemize
+equivalencia de ingresos y precio de reserva (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+): 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:equivalencia"
@@ -9521,17 +11616,11 @@ nolink "false"
 
 \end_inset
 
- (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-1
+ en una lÃ­nea en el centro, con el 6 del hilo; la fila de la equivalencia, al pie de la tabla; 
 \end_layout
 
-\end_inset
-
-); subasta Ã³ptima y precio de reserva (
+\begin_layout Itemize
+valor comÃºn y maldiciÃ³n del ganador (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9541,17 +11630,11 @@ status collapsed
 
 \end_inset
 
-); aversiÃ³n al riesgo, maldiciÃ³n del ganador y vinculaciÃ³n (
-\begin_inset Flex Tiempo
-status collapsed
-
-\begin_layout Plain Layout
-1
+): Â«No es oro todo lo que reluceÂ» y el clÃ¡sico del golfo de MÃ©xico, de palabra; 
 \end_layout
 
-\end_inset
-
-); varias unidades y EspaÃ±a en una frase (
+\begin_layout Itemize
+varias unidades y espectro (
 \begin_inset Flex Tiempo
 status collapsed
 
@@ -9561,7 +11644,42 @@ status collapsed
 
 \end_inset
 
-). Son de profundizaciÃ³n la evidencia, la colusiÃ³n, los nuevos formatos, los datos de EspaÃ±a y la UE y las derivaciones del anexo
+): la SMRA, la subasta de 700
+\begin_inset space ~
+
+\end_inset
+
+MHz y las del 3G, de palabra; 
+\end_layout
+
+\begin_layout Itemize
+colusiÃ³n (
+\begin_inset Flex Tiempo
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+): Â«Hoy gano yo, maÃ±ana tÃºÂ» junto al gatillo; en el centro, la condiciÃ³n de la rotaciÃ³n 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:rotacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ con 2 pujadores y su cifra con 3; los remedios del diseÃ±o y la subasta alemana de 1999, de palabra. 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Son de profundizaciÃ³n la subasta Ã³ptima en detalle, la aversiÃ³n al riesgo, la asimetrÃ­a, los valores afiliados, la evidencia, los nuevos formatos, los datos de EspaÃ±a y la UE, las derivaciones del anexo
 \begin_inset space ~
 
 \end_inset
@@ -9570,6 +11688,22 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "anexo:subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ y los clÃ¡sicos del anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9591,10 +11725,22 @@ Una vez estudiados los conceptos, pasamos a sus aplicaciones. Primero, en quÃ©
 diseÃ±ador
 \emph default
  elige las reglas para alcanzar el resultado que quiere, y las subastas son su aplicaciÃ³n mÃ¡s acabada. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: el Gobierno subasta las licencias de espectro del 5G, e I, E y O pujan por ellas. Hasta ahora las reglas venÃ­an dadas; ahora las escribe el Gobierno, que no sabe cuÃ¡nto vale cada licencia para cada operador. 
+\end_layout
+
+\begin_layout Itemize
+
 \emph on
 ConclusiÃ³n anticipada
 \emph default
-: basta con buscar entre mecanismos en los que decir la verdad es Ã³ptimo; la informaciÃ³n privada tiene un coste que el diseÃ±o reduce pero no elimina, y en las subastas, con valores privados independientes, el formato importa menos de lo que parece, salvo cuando fallan los supuestos, que es lo que ocurre en la prÃ¡ctica. 
+: basta con buscar entre mecanismos en los que decir la verdad es Ã³ptimo; la informaciÃ³n privada tiene un coste que el diseÃ±o reduce pero no elimina, y en las subastas, con valores privados independientes, el formato importa menos de lo que parece. En la prÃ¡ctica, lo decisivo es lo que el modelo da por resuelto: que acudan pujadores y que no se repartan el bien entre ellos. 
 \end_layout
 
 \begin_layout Standard
@@ -9927,6 +12073,16 @@ status collapsed
 
 \end_inset
 
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
 . 
 \end_layout
 
@@ -10091,6 +12247,14 @@ status collapsed
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo: el Gobierno no sabe cuÃ¡nto valen las licencias
+\emph default
+. Si preguntara a I, E y O cuÃ¡nto vale cada licencia para ellos, cada uno le dirÃ­a lo que mÃ¡s le conviniera: poco, si con eso paga menos, o mucho, si con eso gana. El Gobierno no observa las valoraciones; solo puede elegir las reglas. Â¿Hay reglas con las que a cada operador le convenga decir la verdad? 
 \end_layout
 
 \begin_layout Paragraph
@@ -10283,6 +12447,59 @@ compatibilidad de incentivos
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: el Gobierno no tiene que imaginar todas las reglas posibles; le basta con buscar unas en las que cada operador declare su valoraciÃ³n y le convenga declararla bien. La subasta de segundo precio es una de ellas (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ipv"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: el juicio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+SalomÃ³n
+\end_layout
+
+\end_inset
+
+
+\emph default
+ (1 Reyes 3, 16-28). 2 mujeres se disputan un niÃ±o y el rey ordena partirlo por la mitad; la verdadera madre renuncia para salvarlo, y con su respuesta revela lo que el rey no podÃ­a ver. FuncionÃ³ por sorpresa: si la otra hubiera entendido el mecanismo, tambiÃ©n habrÃ­a renunciado (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
@@ -10698,7 +12915,7 @@ name "sec:subastas"
 \end_layout
 
 \begin_layout Itemize
-Una vez establecido el marco del diseÃ±o de mecanismos, pasamos a su aplicaciÃ³n central, que es la Â«especial referenciaÂ» del tÃ­tulo. 
+Una vez establecido el marco del diseÃ±o de mecanismos, pasamos a su aplicaciÃ³n central, que es la Â«especial referenciaÂ» del tÃ­tulo. Seguimos al Gobierno en las decisiones que tiene que tomar: quÃ© formato usar, cÃ³mo pujarÃ¡n los operadores en cada uno, cuÃ¡nto recaudarÃ¡, quÃ© ocurre si nadie sabe lo que vale la licencia, cÃ³mo vender varias a la vez y cÃ³mo evitar que los operadores se pongan de acuerdo. 
 \end_layout
 
 \begin_layout Subsubsection
@@ -10751,7 +12968,23 @@ parencite[cap.~1]{Klemperer2004Auctions}
 \emph on
 Formatos estÃ¡ndar
 \emph default
- (un solo objeto): 
+ (un solo objeto; tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:formatos-subasta"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): 
 \end_layout
 
 \begin_deeper
@@ -10847,6 +13080,31 @@ secuenciales
 \begin_layout Itemize
 
 \emph on
+Hilo: Â¿inglesa o sobre cerrado?
+\emph default
+ El Gobierno puede subir el precio ronda a ronda, como en la subasta de 700
+\begin_inset space ~
+
+\end_inset
+
+MHz de 2021, que cerrÃ³ tras 12 rondas 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MINECO2021Subasta700}
+\end_layout
+
+\end_inset
+
+, o pedir a cada operador una oferta en un sobre que se abre a la vez. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Tipos de valores
 \emph default
 : 
@@ -10915,6 +13173,14 @@ parencite{MilgromWeber1982Theory}
 \begin_layout Itemize
 
 \emph on
+Hilo
+\emph default
+: si lo que vale una licencia depende de los costes y los clientes de cada operador, los valores son privados; si depende sobre todo de cuÃ¡ntos clientes querrÃ¡n el 5G dentro de 10 aÃ±os, algo que nadie sabe y que cada operador estima con su propio estudio de mercado, el valor es comÃºn. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
 Por quÃ© es un juego bayesiano
 \emph default
 : cada pujador conoce su valoraciÃ³n, que es su tipo (
@@ -10941,6 +13207,846 @@ nolink "false"
 \end_inset
 
 ). 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Los 4 formatos estÃ¡ndar de subasta y cÃ³mo se puja en cada uno con valores privados independientes
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:formatos-subasta"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="6" columns="4">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.9cm">
+<column alignment="center" valignment="middle" width="3.7cm">
+<column alignment="center" valignment="middle" width="3.7cm">
+<column alignment="center" valignment="middle" width="4.1cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Formato
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+CÃ³mo se puja
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+QuiÃ©n gana y quÃ© paga
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Puja de equilibrio
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Inglesa
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(abierta, ascendente) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+el precio sube hasta que solo queda uno 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+el que queda; el precio al que se retira el penÃºltimo 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+quedarse hasta 
+\begin_inset Formula $v_i$
+\end_inset
+
+:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+como en segundo precio
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Segundo precio
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(sobre cerrado, 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Vickrey
+\end_layout
+
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+una oferta en sobre cerrado 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+la puja mÃ¡s alta; paga la segunda 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $b(v_i)=v_i$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceeverde}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+(dominante)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Primer precio
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(sobre cerrado) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+una oferta en sobre cerrado 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+la puja mÃ¡s alta; paga su puja 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+sombrear: 
+\begin_inset Formula $b(v_i)=\frac{n-1}{n}v_i$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+con 
+\begin_inset Formula $U[0,1]$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:puja"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\series bold
+Holandesa
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(abierta, descendente) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+el precio baja hasta que alguien lo acepta 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+el primero que acepta; ese precio 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+como en primer precio
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcolor{tceedorado}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+(equivalente siempre)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special=">{\centering}m{15.67cm}">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\emph on
+Equivalencia de ingresos
+\emph default
+: con valores privados independientes, los 4 asignan el bien a quien mÃ¡s lo valora y recaudan lo mismo en promedio, 
+\begin_inset Formula $\frac{n-1}{n+1}$
+\end_inset
+
+ con 
+\begin_inset Formula $U[0,1]$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:equivalencia"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~1]{Klemperer2004Auctions}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[caps.~2-3]{Krishna2010Auction}
+\end_layout
+
+\end_inset
+
+. En verde, los formatos en los que se puja la valoraciÃ³n; en dorado, aquellos en los que se sombrea.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -11181,6 +14287,14 @@ eficiente
 . Hay otros EN (por ejemplo, que el de mayor valor puje muy alto y el resto 0), pero usan estrategias dÃ©bilmente dominadas. 
 \end_layout
 
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: la licencia vale 10 para I, 8 para E y 6 para O. Cada uno puja su valoraciÃ³n: I gana y paga 8. Si I pujara 7, la perderÃ­a frente a E y dejarÃ­a de ganar 2; si E pujara 12 para quedÃ¡rsela, pagarÃ­a 10 por algo que para Ã©l vale 8. A ninguno le compensa mentir: el Gobierno ha conseguido que le digan la verdad. 
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 
@@ -11188,6 +14302,10 @@ eficiente
 Inglesa
 \emph default
 : con valores privados, quedarse hasta que el precio alcance la propia valoraciÃ³n es dominante; gana el de mayor valor y paga (casi) el segundo valor. Con valores privados es equivalente a la de segundo precio. 
+\emph on
+Hilo
+\emph default
+: O se retira en 6 y E en 8; I se queda la licencia por 8, como en segundo precio. 
 \end_layout
 
 \begin_layout Itemize
@@ -11373,6 +14491,20 @@ nolink "false"
 ). 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: si cada operador solo sabe de los otros 2 que sus valoraciones se reparten de forma uniforme entre 0 y 12 (la regla es la misma con cualquier tope), con 
+\begin_inset Formula $n=3$
+\end_inset
+
+ cada uno puja 2/3 de la suya: I, 6,67; E, 5,33, y O, 4. Gana I, que paga 6,67. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -11544,7 +14676,22 @@ donde 1P y 2P indican primer y segundo precio, y
 \begin_inset Formula $v_{(2)}$
 \end_inset
 
- son la valoraciÃ³n mÃ¡s alta y la segunda mÃ¡s alta. 
+ son la valoraciÃ³n mÃ¡s alta y la segunda mÃ¡s alta.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+El ingreso del vendedor, 
+\begin_inset Formula $I$
+\end_inset
+
+, en cursiva, no tiene que ver con la empresa instalada, I, de la historia que acompaÃ±a a la exposiciÃ³n.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -11647,6 +14794,22 @@ independientes
 mismo ingreso esperado
 \emph default
 , y a cada tipo de pujador, el mismo pago esperado. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: con las valoraciones de 
+\shape up
+I
+\shape default
+, E y O, el Gobierno cobra 8 en segundo precio y 6,67 en primer precio; con otras, serÃ­a al revÃ©s. En promedio, con 3 operadores y valoraciones uniformes entre 0 y 12, recauda lo mismo con los 2 formatos: 
+\begin_inset Formula $12\cdot\frac{2}{4}=6$
+\end_inset
+
+. 
 \end_layout
 
 \begin_layout Itemize
@@ -11846,6 +15009,10 @@ nolink "false"
 \end_inset
 
 ). 
+\emph on
+Hilo
+\emph default
+: con valoraciones entre 0 y 12, el Gobierno no venderÃ­a por menos de 6. 
 \end_layout
 
 \begin_layout Itemize
@@ -12045,6 +15212,100 @@ parencite{Nobel2020PressRelease}
 . 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: si la licencia vale lo mismo para I, E y O, pero cada uno lo estima con su propio estudio de mercado, gana quien hizo el estudio mÃ¡s optimista, y lo mÃ¡s probable es que fuera demasiado optimista. Â«No es oro todo lo que reluceÂ»: ganar la subasta es, en sÃ­ mismo, una mala noticia sobre lo que vale lo ganado, y el operador sensato puja por debajo de lo que dice su estudio, y tanto mÃ¡s cuantos mÃ¡s rivales tiene. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: las licitaciones de petrÃ³leo del golfo de MÃ©xico
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{CapenClappCampbell1971Competitive}
+\end_layout
+
+\end_inset
+
+. 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los aÃ±os 50 y 60 rendÃ­an de forma sistemÃ¡tica menos de lo esperado, y fueron los primeros en describir lo que hoy se llama Â«maldiciÃ³n del ganadorÂ» 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Thaler1988Anomalies}
+\end_layout
+
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: la jarra de monedas
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BazermanSamuelson1983Won}
+\end_layout
+
+\end_inset
+
+: en el aula, quien gana la subasta de una jarra de monedas paga, en promedio, mÃ¡s de lo que vale (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -12088,21 +15349,9 @@ d) Evidencia empÃ­rica
 \begin_layout Itemize
 
 \emph on
-MaldiciÃ³n del ganador
+MaldiciÃ³n del ganador en el laboratorio
 \emph default
-: documentada en las licitaciones de petrÃ³leo del golfo de MÃ©xico 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-parencite{CapenClappCampbell1971Competitive}
-\end_layout
-
-\end_inset
-
- y en los experimentos con valor comÃºn, en los que los pujadores sin experiencia pierden dinero de forma sistemÃ¡tica 
+: en los experimentos con valor comÃºn, los pujadores sin experiencia pierden dinero de forma sistemÃ¡tica 
 \begin_inset ERT
 status collapsed
 
@@ -12213,10 +15462,10 @@ Las subastas
 \emph on
 ascendentes
 \emph default
- facilitan la colusiÃ³n tÃ¡cita (los pujadores se envÃ­an seÃ±ales con las pujas y se castigan, como en un juego repetido, 
+ desaniman a los dÃ©biles, que saben que el fuerte siempre podrÃ¡ superarlos, y facilitan la colusiÃ³n (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:repetidos"
+reference "sec:colusion-subastas"
 plural "false"
 caps "false"
 noprefix "false"
@@ -12224,7 +15473,7 @@ nolink "false"
 
 \end_inset
 
-) y desaniman a los dÃ©biles, que saben que el fuerte siempre podrÃ¡ superarlos. 
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -12232,54 +15481,64 @@ Las de
 \emph on
 sobre cerrado
 \emph default
- dan una oportunidad a los dÃ©biles y dificultan la colusiÃ³n, pero no revelan informaciÃ³n. Una soluciÃ³n hÃ­brida es la subasta anglo-holandesa: ascendente hasta que quedan 2 y, entre ellos, sobre cerrado. 
+ dan una oportunidad a los dÃ©biles, pero no revelan informaciÃ³n. Una soluciÃ³n hÃ­brida es la subasta anglo-holandesa: ascendente hasta que quedan 2 y, entre ellos, sobre cerrado. 
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \emph on
-ColusiÃ³n en la contrataciÃ³n pÃºblica
+Hilo
 \emph default
- (
+: si el Gobierno saca tantas licencias como operadores hay, I, E y O no tienen por quÃ© competir: cada uno sabe que se llevarÃ¡ la suya, y pujarÃ¡ el precio de salida. 
+\end_layout
+
+\begin_layout Itemize
+
 \emph on
-bid rigging
+ClÃ¡sico: las subastas del 3G de 2000
 \emph default
-): los licitadores se reparten los contratos con pujas de cobertura o rotando al ganador 
+. El Reino Unido sacÃ³ 5 licencias para 4 operadores instalados, de modo que al menos una tenÃ­a que ir a un entrante, y los entrantes acudieron 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencite{Asker2010Study}
+parencite{BinmoreKlemperer2002Biggest}
 \end_layout
 
 \end_inset
 
-. En julio de 2022, la ComisiÃ³n Nacional de los Mercados y la Competencia multÃ³ con 203,6 millones de euros a 6 grandes constructoras por alterar durante 25 aÃ±os miles de licitaciones pÃºblicas 
+; en los PaÃ­ses Bajos habÃ­a tantas licencias como operadores instalados, y en Suiza las uniones y retiradas de Ãºltima hora dejaron tantos pujadores como licencias 
 \begin_inset ERT
 status collapsed
 
 \begin_layout Plain Layout
 
 \backslash
-parencite{CNMC2022Constructoras}
+parencite{Klemperer2002WhatReallyMatters}
 \end_layout
 
 \end_inset
 
- 
-\begin_inset Flex Ver tema
-status collapsed
-
-\begin_layout Plain Layout
-4.A.15
-\end_layout
+ (anexo
+\begin_inset space ~
 
 \end_inset
 
-. 
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Subsubsection
@@ -12295,6 +15554,14 @@ name "sec:multiunidad"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: el Gobierno no vende una sola licencia, sino varios bloques de espectro, en varias bandas y a veces por regiones, e I, E y O quieren mÃ¡s de uno. 
 \end_layout
 
 \begin_layout Itemize
@@ -12454,7 +15721,11 @@ parencite{Milgrom2004Putting}
 
 \end_inset
 
-. La ComisiÃ³n Federal de Comunicaciones de Estados Unidos la estrenÃ³ en julio de 1994 (10 licencias, 47 rondas y 617 millones de dÃ³lares) y en 20 aÃ±os recaudÃ³ con ella mÃ¡s de 120.000 millones 
+. 
+\emph on
+ClÃ¡sico
+\emph default
+: la ComisiÃ³n Federal de Comunicaciones de Estados Unidos la estrenÃ³ en julio de 1994 (10 licencias, 47 rondas y 617 millones de dÃ³lares) y en 20 aÃ±os recaudÃ³ con ella mÃ¡s de 120.000 millones 
 \begin_inset ERT
 status collapsed
 
@@ -12957,12 +16228,346 @@ textcite[cap.~13]{Krishna2010Auction}
 
 \end_layout
 
+\begin_layout Subsubsection
+ColusiÃ³n en las subastas: la rotaciÃ³n de ofertas
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:colusion-subastas"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Idea
+\emph default
+: es el refrÃ¡n del enganche visto desde el otro lado. Los mismos pujadores se encuentran subasta tras subasta, y la repeticiÃ³n que sostenÃ­a la cooperaciÃ³n sin contratos (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:repetidos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) puede sostener aquÃ­ un reparto. Es la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+colusiÃ³n en las subastas
+\end_layout
+
+\end_inset
+
+ (
+\emph on
+bid rigging
+\emph default
+): los pujadores acuerdan no competir, con 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+ofertas de cobertura
+\end_layout
+
+\end_inset
+
+, hechas para perder, o con la 
+\begin_inset Flex Concepto
+status collapsed
+
+\begin_layout Plain Layout
+rotaciÃ³n de ofertas
+\end_layout
+
+\end_inset
+
+, en la que se turnan para ganar 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Asker2010Study}
+\end_layout
+
+\end_inset
+
+. Â«Hoy gano yo, maÃ±ana tÃºÂ». 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Hilo
+\emph default
+: el Gobierno subasta una banda cada pocos aÃ±os. I y E acuerdan que en esta subasta solo puje en serio I, al precio de reserva, y en la prÃ³xima, E. Quien gana se lleva una ganancia 
+\begin_inset Formula $G$
+\end_inset
+
+ (lo que vale la licencia menos el precio de reserva), y el otro, nada. La tentaciÃ³n es para quien no le toca: pujar un poco mÃ¡s, quedarse hoy con 
+\begin_inset Formula $G$
+\end_inset
+
+ y romper el acuerdo, tras lo cual vuelve la competencia, que se lleva toda la ganancia. Al que le toca esperar una subasta, el acuerdo le vale 
+\begin_inset Formula $G\beta+G\beta^3+\dots=G\beta/(1-\beta^2)$
+\end_inset
+
+, y desviarse, 
+\begin_inset Formula $G$
+\end_inset
+
+; la rotaciÃ³n se sostiene si 
+\begin_inset Formula \begin{equation}\label{eq:rotacion}
+\frac{\beta}{1-\beta^{2}}\;\geq\;1\qquad\Longleftrightarrow\qquad\beta\;\geq\;\frac{\sqrt{5}-1}{2}\approx0{,}62.
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Es la lÃ³gica del gatillo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:gatillo"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: lo que se gana hoy desviÃ¡ndose frente a lo que se pierde despuÃ©s. Si las subastas son cada 5 aÃ±os y los operadores descuentan al 10
+\begin_inset space ~
+
+\end_inset
+
+% anual, 
+\begin_inset Formula $\beta=1/1{,}1^5\approx0{,}62$
+\end_inset
+
+: con 2 pujadores, el reparto apenas se sostiene. 
+\end_layout
+
+\begin_layout Itemize
+Si O entra en el acuerdo, el que acaba de ganar tiene que esperar 2 subastas a su prÃ³ximo turno, y la condiciÃ³n pasa a 
+\begin_inset Formula $\beta^2/(1-\beta^3)\geq1$
+\end_inset
+
+, es decir, 
+\begin_inset Formula $\beta\gtrsim0{,}755$
+\end_inset
+
+: con 3 pujadores y subastas cada 5 aÃ±os, el reparto no se sostiene. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+CÃ³mo la dificulta el diseÃ±o
+\emph default
+: el objetivo es que no haya Â«maÃ±anaÂ» que repartir. 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Sobre cerrado
+\emph default
+: en una subasta ascendente, los pujadores se hablan con las pujas y castigan en el acto al que se sale del reparto, dentro de la misma subasta; con sobre cerrado, quien se desvÃ­a gana antes de que los demÃ¡s puedan responder 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+No publicar las pujas
+\emph default
+: si no se sabe quiÃ©n pujÃ³ cuÃ¡nto, al cÃ¡rtel le cuesta descubrir al que se ha desviado; el castigo llega tarde o no llega, que es como si 
+\begin_inset Formula $\beta$
+\end_inset
+
+ bajara. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+MÃ¡s pujadores
+\emph default
+: cada uno espera mÃ¡s su turno y la condiciÃ³n se endurece (de 0,62 a 0,76 al pasar de 2 a 3), y el que entra de fuera no estÃ¡ en el acuerdo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Precio de reserva
+\emph default
+: pone un suelo a lo que el cÃ¡rtel paga, y limita lo que la colusiÃ³n le quita al vendedor. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Clemencia
+\emph default
+: el primero que denuncia el cÃ¡rtel queda exento de la multa, y el acuerdo se convierte en un dilema del prisionero entre sus miembros 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+ClÃ¡sico: la subasta alemana de espectro de 1999
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+. Se vendÃ­an 10 bloques en una subasta ascendente en la que cada nueva puja tenÃ­a que superar a la anterior en al menos un 10
+\begin_inset space ~
+
+\end_inset
+
+%. Mannesmann abriÃ³ con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10; T-Mobil entendiÃ³ el mensaje (
+\begin_inset Formula $18{,}18\times1{,}1\approx20$
+\end_inset
+
+), pujÃ³ 20 millones por los bloques 1 a 5, y la subasta terminÃ³ tras 2 rondas, con el espectro repartido a partes iguales (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:clasicos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En EspaÃ±a
+\emph default
+: en julio de 2022, la ComisiÃ³n Nacional de los Mercados y la Competencia multÃ³ con 203,6 millones de euros a 6 grandes constructoras por alterar durante 25 aÃ±os miles de licitaciones pÃºblicas 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{CNMC2022Constructoras}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Separator plain
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
 RecapitulaciÃ³n del bloque III
 \emph default
-: la teorÃ­a de juegos se aplica en casi toda la economÃ­a; el diseÃ±o de mecanismos busca reglas en las que decir la verdad sea Ã³ptimo, y las subastas son su aplicaciÃ³n central. Con valores privados independientes, todos los formatos estÃ¡ndar asignan bien y recaudan lo mismo; el precio de reserva sube el ingreso a costa de la eficiencia; con valores comunes y afiliados, revelar informaciÃ³n ayuda, y en la prÃ¡ctica lo decisivo es atraer pujadores y evitar la colusiÃ³n. 
+: la teorÃ­a de juegos se aplica en casi toda la economÃ­a; el diseÃ±o de mecanismos busca reglas en las que decir la verdad sea Ã³ptimo, y las subastas son su aplicaciÃ³n central. Con valores privados independientes, todos los formatos estÃ¡ndar asignan bien y recaudan lo mismo; el precio de reserva sube el ingreso a costa de la eficiencia; con valor comÃºn, ganar es una mala noticia, y revelar informaciÃ³n ayuda. En la prÃ¡ctica, lo decisivo es atraer pujadores y evitar la colusiÃ³n, que es un juego repetido como el del bloque
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:conceptos-informacion-completa"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. El Gobierno de la historia ya sabe quÃ© hacer: un formato en el que a I, E y O les convenga pujar lo que valoran, con suficientes pujadores, un precio de reserva y sin dar pistas para el reparto. 
 \end_layout
 
 \begin_layout Standard
@@ -13025,7 +16630,7 @@ Nash
 
 \end_inset
 
-, que siempre existe en mixtas, y su refinamiento dinÃ¡mico, la perfecciÃ³n en subjuegos, que descarta las amenazas no creÃ­bles; la repeticiÃ³n permite cooperar sin contratos. 
+, que siempre existe en mixtas, pero puede ser ineficiente o mÃºltiple. En los juegos dinÃ¡micos se refina: en los secuenciales, la perfecciÃ³n en subjuegos descarta las amenazas no creÃ­bles y explica el valor del compromiso; en los repetidos, las estrategias condicionadas sostienen la cooperaciÃ³n sin contratos si los jugadores son pacientes. 
 \end_layout
 
 \begin_layout Itemize
@@ -13039,7 +16644,7 @@ Nash
 
 \end_inset
 
- y el bayesiano perfecto, en el que importan las creencias; con acuerdos vinculantes, la negociaciÃ³n, el nÃºcleo y el valor de 
+ y el bayesiano perfecto, en el que importan las creencias y las seÃ±ales; con acuerdos vinculantes, la negociaciÃ³n, el nÃºcleo y el valor de 
 \begin_inset Flex Autor
 status collapsed
 
@@ -13053,7 +16658,11 @@ Shapley
 \end_layout
 
 \begin_layout Itemize
-Y, dÃ¡ndole la vuelta, el diseÃ±o de mecanismos: reglas en las que decir la verdad es Ã³ptimo. En las subastas, con valores privados independientes, todos los formatos recaudan lo mismo; la informaciÃ³n, la aversiÃ³n al riesgo, la entrada y la colusiÃ³n deciden cuÃ¡l conviene. 
+Y, dÃ¡ndole la vuelta, el diseÃ±o de mecanismos: reglas en las que decir la verdad es Ã³ptimo. En las subastas, con valores privados independientes, todos los formatos recaudan lo mismo; el valor comÃºn, la entrada y la colusiÃ³n deciden cuÃ¡l conviene. 
+\end_layout
+
+\begin_layout Itemize
+I y E han recorrido todo el camino: se han enfrentado en precios, han medido la credibilidad de sus amenazas, se han encontrado cada mes, se han ocultado informaciÃ³n, han negociado y, al final, han pujado por el espectro. 
 \end_layout
 
 \end_deeper
@@ -13176,12 +16785,22 @@ Extensiones
 \emph default
 
 \series default
-: el oligopolio 
+: el oligopolio y la colusiÃ³n tÃ¡cita 
 \begin_inset Flex Ver tema
 status collapsed
 
 \begin_layout Plain Layout
 3.A.19
+\end_layout
+
+\end_inset
+
+, la disuasiÃ³n de la entrada 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
 \end_layout
 
 \end_inset
@@ -13212,6 +16831,16 @@ status collapsed
 
 \begin_layout Plain Layout
 3.A.36
+\end_layout
+
+\end_inset
+
+, la defensa de la competencia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
 \end_layout
 
 \end_inset
@@ -13262,7 +16891,7 @@ Idea final
 \emph default
 
 \series default
-: Â«quien hace la ley hace la trampaÂ», decÃ­a el refrÃ¡n. La teorÃ­a de juegos no elimina la trampa, pero enseÃ±a a escribir la ley de forma que no compense: en una buena subasta, quien mÃ¡s valora el bien no gana nada mintiendo, y por eso dice la verdad. 
+: Â«Hoy por ti, maÃ±ana por mÃ­Â». Cooperamos sin firmar nada con quien vamos a volver a ver porque la repeticiÃ³n sostiene la cooperaciÃ³n sin contratos: maÃ±ana se puede premiar o castigar lo que se hace hoy. Es asÃ­ para bien, en la reputaciÃ³n y en los acuerdos entre vecinos, empresas y paÃ­ses, y para mal, en los cÃ¡rteles que se turnan en las licitaciones: Â«hoy gano yo, maÃ±ana tÃºÂ». Por eso una buena subasta se diseÃ±a para que no haya Â«maÃ±anaÂ» que repartir: para que a cada uno le compense pujar la verdad y la rotaciÃ³n no sea sostenible. 
 \end_layout
 
 \begin_layout Standard
@@ -13398,7 +17027,7 @@ se despeja
 \begin_inset Formula $\pi_1$
 \end_inset
 
- con los pagos del 2. Comprobar que salen probabilidades entre 0 y 1; si no, no hay equilibrio en mixtas completas y el EN es en puras. Ejemplo resuelto: el juego de la inspecciÃ³n (tabla
+ con los pagos del 2. Comprobar que salen probabilidades entre 0 y 1; si no, no hay equilibrio en mixtas completas y el EN es en puras. Ejemplo resuelto: el juego de la inspecciÃ³n, mÃ¡s abajo (tabla
 \begin_inset space ~
 
 \end_inset
@@ -13639,12 +17268,526 @@ Subastas
 . 
 \end_layout
 
+\begin_layout Subsection*
+Un equilibrio en mixtas: el juego de la inspecciÃ³n
+\end_layout
+
+\begin_layout Standard
+Un trabajador elige trabajar o escaquearse; la empresa, vigilar, con un coste de 1, o no vigilar. El salario es 4 y esforzarse cuesta 2; quien se escaquea y es descubierto no cobra; trabajar produce 6 (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:inspeccion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). No hay EN en puras: las mejores respuestas dan vueltas (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:inspeccion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+La empresa vigila con la probabilidad 
+\begin_inset Formula $\pi_V$
+\end_inset
+
+ que deja indiferente al trabajador: trabajar le da 2 y escaquearse 
+\begin_inset Formula $4(1-\pi_V)$
+\end_inset
+
+, asÃ­ que 
+\begin_inset Formula $\pi_V^*=1/2$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+El trabajador trabaja con la probabilidad 
+\begin_inset Formula $\pi_T$
+\end_inset
+
+ que deja indiferente a la empresa: vigilar le da 
+\begin_inset Formula $\pi_T-(1-\pi_T)=2\pi_T-1$
+\end_inset
+
+ y no vigilar 
+\begin_inset Formula $2\pi_T-4(1-\pi_T)=6\pi_T-4$
+\end_inset
+
+, asÃ­ que 
+\begin_inset Formula $\pi_T^*=3/4$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+Lectura: si vigilar se encarece, la probabilidad de vigilar de la empresa no cambia (depende de los pagos del trabajador); lo que cambia es que el trabajador se escaquea mÃ¡s. Una estrategia mixta puede interpretarse tambiÃ©n como la proporciÃ³n de una poblaciÃ³n que juega cada acciÃ³n, o como el resultado de pequeÃ±as incertidumbres sobre los pagos de los demÃ¡s 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Harsanyi1973Games}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El juego de la inspecciÃ³n (trabajador, filas; empresa, columnas): sin equilibrio en estrategias puras
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:inspeccion"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.8cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Vigilar
+\series default
+ (
+\begin_inset Formula $\pi_V$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+No vigilar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Trabajar
+\series default
+ (
+\begin_inset Formula $\pi_T$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(\underline{2},1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(2,\underline{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Escaquearse
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,\underline{-1})$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(\underline{4},-4)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia (salario 4, coste del esfuerzo 2, coste de vigilar 1, producto 6) a partir de la idea de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~1]{Gibbons1992Game}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mejores respuestas en el juego de la inspecciÃ³n y equilibrio en mixtas
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:inspeccion"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+inspeccion
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Las estrategias del dilema del prisionero repetido, con el principio de la desviaciÃ³n Ãºnica
+\end_layout
+
+\begin_layout Standard
+Con los pagos de la guerra de precios (5 si los 2 cooperan, 6 al que se desvÃ­a, 0 al que coopera cuando el otro se desvÃ­a y 1 si ninguno coopera), cada fila de la tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:estrategias-repetidas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ se comprueba mirando, tras cada historia, si una sola desviaciÃ³n compensa.
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
-Preguntas de test
+Gatillo
 \emph default
-: para practicar con las de exÃ¡menes anteriores, el simulador 
+: tras una historia de cooperaciÃ³n, desviarse da 6 hoy y 1 para siempre; cooperar, 5 para siempre: compensa cooperar si 
+\begin_inset Formula $\beta\geq1/5$
+\end_inset
+
+. Tras una desviaciÃ³n, el castigo es el EN de la etapa, y nadie gana saliÃ©ndose de Ã©l. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Â«Donde las dan, las tomanÂ»
+\emph default
+: tras cooperar los 2, desviarse lleva a alternar 6 y 0, y no compensa si 
+\begin_inset Formula $5(1+\beta)\geq6$
+\end_inset
+
+, es decir, si 
+\begin_inset Formula $\beta\geq1/5$
+\end_inset
+
+. Pero tras una desviaciÃ³n del otro, castigarle tambiÃ©n lleva a alternar 6 y 0, mientras que perdonarle devuelve el 5 para siempre, y castigar solo compensa si 
+\begin_inset Formula $\beta\leq1/5$
+\end_inset
+
+. Las 2 condiciones solo se cumplen a la vez con 
+\begin_inset Formula $\beta=1/5$
+\end_inset
+
+: en general, el castigo no es creÃ­ble 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{KalaiSametStanford1988Note}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Castigo tras 2 desviaciones
+\emph default
+: el otro puede desviarse una etapa sÃ­ y otra no sin ser castigado nunca, y gana 6 y 5 alternos en lugar de 5 siempre: ni siquiera es un EN. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Â«Si gano, repito; si pierdo, cambioÂ»
+\emph default
+: tras cooperar los 2, desviarse da 6 hoy, 1 maÃ±ana (los 2 bajan el precio) y vuelta a cooperar; cooperar da 5 y 5. No compensa si 
+\begin_inset Formula $5+5\beta\geq6+\beta$
+\end_inset
+
+, es decir, si 
+\begin_inset Formula $\beta\geq1/4$
+\end_inset
+
+. Tras una desviaciÃ³n, los 2 castigan una etapa y vuelven a cooperar, y nadie gana adelantando la vuelta. Exige que cooperar valga mÃ¡s que la media de desviarse y ser castigado (
+\begin_inset Formula $2\cdot5>6+1$
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Subsection*
+Preguntas de test
+\end_layout
+
+\begin_layout Standard
+Para practicar con las de exÃ¡menes anteriores, el simulador 
 \begin_inset Flex URL
 status collapsed
 
@@ -13654,7 +17797,7 @@ https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/sim
 
 \end_inset
 
-. 
+.
 \end_layout
 
 \begin_layout Standard
@@ -13988,7 +18131,7 @@ nolink "false"
 
 \end_inset
 
-): con 
+; en la historia, el vendedor 1 es I y los compradores 2 y 3 son E y O): con 
 \begin_inset Formula $x_1+x_2+x_3=100$
 \end_inset
 
@@ -14936,6 +19079,2232 @@ status collapsed
 
 \backslash
 parencite{Wilson1977Bidding}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% ==========================================================================
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Anexo: ejemplos clÃ¡sicos y su aplicaciÃ³n en otros temas
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset label
+LatexCommand label
+name "anexo:clasicos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Cada concepto del cuerpo se ilustra primero con la historia de 
+\shape up
+I
+\shape default
+ y E y despuÃ©s con un ejemplo clÃ¡sico, que se nombra en una frase. AquÃ­ se desarrollan: su matriz o su Ã¡rbol, su equilibrio, su moraleja y los temas en los que reaparece. Son el gancho para que el tribunal pregunte. Los mÃ©todos de cÃ¡lculo estÃ¡n en el anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:test"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+El dilema del prisionero: dominancia y equilibrio ineficiente
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Tucker1950TwoPerson}
+\end_layout
+
+\end_inset
+
+: 2 detenidos, incomunicados, pueden callar o confesar (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:prisionero-clasico"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Si los 2 callan, solo se les puede condenar por un delito menor (1 aÃ±o); si uno confiesa y el otro calla, el que confiesa queda libre y el otro cumple 10 aÃ±os; si los 2 confiesan, 5 aÃ±os cada uno. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: confesar es estrictamente dominante (
+\begin_inset Formula $0>-1$
+\end_inset
+
+ y 
+\begin_inset Formula $-5>-10$
+\end_inset
+
+); el Ãºnico EN es (Confesar, Confesar), peor para los 2 que (Callar, Callar). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: la racionalidad individual no garantiza la eficiencia colectiva; para cooperar hacen falta contratos, repeticiÃ³n (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:repetidos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) o normas. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: el cÃ¡rtel y la colusiÃ³n tÃ¡cita 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+, el polizÃ³n en los bienes pÃºblicos 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.23
+\end_layout
+
+\end_inset
+
+, las guerras arancelarias 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.7
+\end_layout
+
+\end_inset
+
+ y los programas de clemencia, que lo provocan a propÃ³sito entre los miembros de un cÃ¡rtel 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El dilema del prisionero (jugador 1, filas; pagos: aÃ±os de cÃ¡rcel con signo negativo)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:prisionero-clasico"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Callar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Confesar
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Callar
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-1,-1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-10,\underline{0})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Confesar
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(\underline{0},-10)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(\underline{-5},\underline{-5})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Tucker1950TwoPerson}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~1]{Gibbons1992Game}
+\end_layout
+
+\end_inset
+
+. Subrayadas, las mejores respuestas; sombreado, el equilibrio.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+La batalla de los sexos: coordinaciÃ³n y varios equilibrios
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{LuceRaiffa1957Games}
+\end_layout
+
+\end_inset
+
+: una pareja quiere pasar la tarde junta, pero uno prefiere el fÃºtbol y el otro el teatro. Ir juntos al plan preferido da 2 a quien lo prefiere y 1 al otro; ir cada uno por su lado, 0 a los 2 (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:batalla-sexos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: 2 EN en puras, (FÃºtbol, FÃºtbol) y (Teatro, Teatro), y uno en mixtas en el que cada uno va a su plan preferido con probabilidad 
+\begin_inset Formula $2/3$
+\end_inset
+
+; en este, los 2 se desencuentran con probabilidad 
+\begin_inset Formula $5/9$
+\end_inset
+
+ y cada uno espera 
+\begin_inset Formula $2/3$
+\end_inset
+
+, menos que en cualquiera de los equilibrios en puras. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: cuando hay varios equilibrios, la teorÃ­a no dice cuÃ¡l se jugarÃ¡; deciden la costumbre, los puntos focales de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Schelling1960Strategy}
+\end_layout
+
+\end_inset
+
+, quiÃ©n mueve primero o un acuerdo previo. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: los estÃ¡ndares tecnolÃ³gicos y los efectos de red, en los que todos quieren coincidir pero cada uno prefiere el suyo 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+; la coordinaciÃ³n de las polÃ­ticas econÃ³micas entre paÃ­ses 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.45
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La batalla de los sexos (jugador 1, filas, prefiere el fÃºtbol; jugador 2, columnas, el teatro)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:batalla-sexos"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+FÃºtbol
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Teatro
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+FÃºtbol
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(\underline{2},\underline{1})$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Teatro
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(\underline{1},\underline{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{LuceRaiffa1957Games}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~1]{Gibbons1992Game}
+\end_layout
+
+\end_inset
+
+. Subrayadas, las mejores respuestas; sombreados, los equilibrios en puras.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+El juego de la gallina: quiÃ©n cede primero
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+: 2 conductores van de frente; el que se aparta es Â«la gallinaÂ». Si se aparta uno, gana el otro; si se apartan los 2, empatan; si no se aparta ninguno, chocan, el peor resultado para los 2. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Una lectura de 2012: EspaÃ±a y el BCE
+\emph default
+ (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:gallina"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). En junio de 2012, EspaÃ±a pidiÃ³ al Eurogrupo asistencia para recapitalizar su banca, con un prÃ©stamo de hasta 100.000 millones de euros del que se desembolsaron 41.330 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MEDE2026Espana}
+\end_layout
+
+\end_inset
+
+; en septiembre, el BCE aprobÃ³ las operaciones monetarias de compraventa (OMT), compras de deuda condicionadas a que el paÃ­s pidiera un programa de asistencia 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BCE2012OMT}
+\end_layout
+
+\end_inset
+
+. El pulso fue ese: el BCE querÃ­a que EspaÃ±a pidiera el programa antes de comprar su deuda, y EspaÃ±a, que el BCE la sostuviera sin pedirlo. En forma estilizada, con pagos que son una lectura propia y no salen de esas fuentes, EspaÃ±a puede aceptar un rescate o no aceptarlo; el BCE, seguir sosteniendo su financiaciÃ³n o dejar de hacerlo. Al BCE le conviene dejar de financiar si EspaÃ±a acepta el rescate, que sanearÃ­a su sistema financiero; a EspaÃ±a, no aceptarlo si el BCE sigue financiando. Si ninguno cede, la crisis es catastrÃ³fica para los 2. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: 2 EN en puras, en los que cede uno de los 2 (Seguir, No aceptar) y (Dejar, Aceptar), y uno en mixtas en el que cada uno cede con probabilidad 
+\begin_inset Formula $19/20$
+\end_inset
+
+. Por ejemplo, el BCE estÃ¡ indiferente si EspaÃ±a acepta con probabilidad 
+\begin_inset Formula $a$
+\end_inset
+
+ tal que 
+\begin_inset Formula $-(1-a)=a-20(1-a)$
+\end_inset
+
+, es decir, 
+\begin_inset Formula $a=19/20$
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: gana quien logra comprometerse de forma creÃ­ble a no ceder (quemar las naves, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:enps"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+); y el riesgo de choque, aunque pequeÃ±o, existe. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la crisis del sistema financiero espaÃ±ol y su rescate 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.18
+\end_layout
+
+\end_inset
+
+, los ataques especulativos con varios equilibrios 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.17
+\end_layout
+
+\end_inset
+
+ y la disuasiÃ³n de la entrada 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El juego de la gallina entre el BCE (filas) y EspaÃ±a (columnas) en 2012, en forma estilizada
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:gallina"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="3.4cm">
+<column alignment="center" valignment="middle" width="2.8cm">
+<column alignment="center" valignment="middle" width="2.8cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Aceptar el rescate
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+No aceptarlo
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Seguir financiando
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(0,0)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(\underline{-1},\underline{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Dejar de financiar
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(\underline{1},\underline{-1})$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-20,-20)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia, con el contexto de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{MEDE2026Espana}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{BCE2012OMT}
+\end_layout
+
+\end_inset
+
+; pagos ilustrativos, que no proceden de esas fuentes. Subrayadas, las mejores respuestas; sombreados, los equilibrios en puras.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Pares o nones y la inspecciÃ³n: estrategias mixtas
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: no hay EN en puras (el que pierde siempre quiere cambiar); en el Ãºnico EN, cada uno juega cada opciÃ³n al 50
+\begin_inset space ~
+
+\end_inset
+
+%, y el valor del juego es 0 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{VonNeumann1928Theorie}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspecciÃ³n (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:inspeccion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), encarecer la vigilancia no cambia cuÃ¡nto vigila la empresa, sino cuÃ¡nto se escaquea el trabajador. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: los penaltis 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{PalaciosHuerta2003Professionals}
+\end_layout
+
+\end_inset
+
+; la vigilancia del esfuerzo, en la teorÃ­a de la agencia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.13
+\end_layout
+
+\end_inset
+
+ y en los salarios de eficiencia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.27
+\end_layout
+
+\end_inset
+
+; la inspecciÃ³n tributaria y la evasiÃ³n. 
+\end_layout
+
+\begin_layout Subsection*
+HernÃ¡n CortÃ©s quema las naves: compromiso
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+: un ejÃ©rcito desembarca y decide si conserva los barcos o los destruye; despuÃ©s, el rival decide si ataca, y el ejÃ©rcito, si lucha o se retira. Con los barcos, retirarse es la mejor respuesta al ataque, y el rival, que lo anticipa, ataca; sin ellos, la retirada no existe, luchar es la Ãºnica opciÃ³n y el rival, que lo sabe, no ataca. HernÃ¡n 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+CortÃ©s
+\end_layout
+
+\end_inset
+
+ hundiÃ³ sus barcos en 1519, al llegar a MÃ©xico. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: el ENPS empieza por destruir los barcos: tener menos opciones da un pago mayor 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Schelling1960Strategy}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: Â«Quemar las navesÂ»: un compromiso es creÃ­ble cuando es irreversible y cambia lo que a uno le conviene hacer despuÃ©s. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la capacidad como disuasiÃ³n de la entrada 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+ (el compromiso de 
+\shape up
+I
+\shape default
+, grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada-compromiso"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+), el liderazgo de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Stackelberg
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+, la polÃ­tica comercial estratÃ©gica 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.B.8
+\end_layout
+
+\end_inset
+
+ y la independencia del banco central y las reglas 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.36
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+La paradoja de la cadena de tiendas: repeticiÃ³n finita y reputaciÃ³n
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Selten1978Chain}
+\end_layout
+
+\end_inset
+
+: una cadena tiene tiendas en 20 ciudades y en cada una aparece, por turnos, un posible entrante. En cada ciudad se juega el juego de entrada (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:juego-entrada"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: en la ciudad 20 la cadena acomoda, porque ya no hay futuro que proteger; sabiÃ©ndolo, en la 19 tampoco le sirve luchar, y asÃ­ hasta la primera. En el Ãºnico ENPS, todos entran y la cadena acomoda siempre. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: la paradoja es que la intuiciÃ³n (y la prÃ¡ctica) dice que a la cadena le convendrÃ­a luchar al principio para ganarse la fama de agresiva. Se resuelve con algo de informaciÃ³n incompleta: si hay una pequeÃ±a probabilidad de que la cadena sea agresiva por naturaleza, a la que no lo es le conviene imitarla 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencites
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+KrepsWilson1982Reputation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+MilgromRoberts1982Predation
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la depredaciÃ³n y la reputaciÃ³n 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+, la colusiÃ³n con horizonte finito 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+ y la reputaciÃ³n de los bancos centrales 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.36
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+El juego del ultimÃ¡tum: negociaciÃ³n y equidad
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{GuthSchmittbergerSchwarze1982Ultimatum}
+\end_layout
+
+\end_inset
+
+: el jugador 1 propone cÃ³mo repartir una cantidad; el 2 acepta, y se reparte asÃ­, o rechaza, y ninguno cobra nada. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva y el ENPS es ofrecerle lo mÃ­nimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: las preferencias por la equidad y la reciprocidad pesan; el poder de negociaciÃ³n no es solo cuestiÃ³n de quiÃ©n propone (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:negociacion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la economÃ­a conductual 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.1
+\end_layout
+
+\end_inset
+
+ y la negociaciÃ³n salarial 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.27
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+Cerveza o quiche: seÃ±alizaciÃ³n y criterio intuitivo
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{ChoKreps1987Signaling}
+\end_layout
+
+\end_inset
+
+: la Naturaleza decide si un forastero es fuerte (con probabilidad 
+\begin_inset Formula $0{,}9$
+\end_inset
+
+) o dÃ©bil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al dÃ©bil la quiche (1 de utilidad por desayunar lo que le gusta). Un matÃ³n, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los dÃ©biles. Al forastero, que no le reten le vale 2. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: hay 2 EBP agrupadores. En el primero, los 2 tipos piden cerveza y el matÃ³n no reta; en el segundo, los 2 piden quiche y no reta, sostenido por la creencia de que quien pide cerveza es dÃ©bil. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Criterio intuitivo
+\emph default
+: el segundo no lo supera. Al dÃ©bil, pedir cerveza nunca le compensarÃ­a (ganarÃ­a como mucho 2, menos que los 3 que obtiene pidiendo quiche sin ser retado); al fuerte sÃ­, si el matÃ³n le creyera fuerte (3 en lugar de 2). AsÃ­ que quien pide cerveza debe ser tomado por fuerte, y el fuerte se desvÃ­a. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: lo que uno hace revela lo que es, y las creencias razonables sobre lo que no ocurre en equilibrio deciden el resultado: Â«Cuando el rÃ­o suena, agua llevaÂ». 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la educaciÃ³n como seÃ±al 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.13
+\end_layout
+
+\end_inset
+
+ y el precio lÃ­mite como seÃ±al 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+El juicio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+SalomÃ³n
+\end_layout
+
+\end_inset
+
+: diseÃ±o de mecanismos
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ (1 Reyes 3, 16-28): 2 mujeres se presentan ante el rey 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+SalomÃ³n
+\end_layout
+
+\end_inset
+
+ con un niÃ±o y las 2 dicen ser su madre. El rey no puede saber cuÃ¡l dice la verdad: el tipo de cada una es informaciÃ³n privada. Ordena partir al niÃ±o por la mitad y dar una mitad a cada una. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: la verdadera madre, que valora la vida del niÃ±o por encima de todo, renuncia a Ã©l para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niÃ±o a la que renunciÃ³. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: es un mecanismo en el que el mensaje (aceptar o renunciar) revela lo que el diseÃ±ador no ve. Pero funcionÃ³ por sorpresa: si la falsa madre hubiera entendido las reglas, tambiÃ©n habrÃ­a renunciado, y el rey no habrÃ­a sabido nada. Un mecanismo tiene que funcionar 
+\emph on
+en equilibrio
+\emph default
+, cuando todos lo entienden: es la compatibilidad de incentivos, 
+\begin_inset Formula $\mathrm{IC}_i$
+\end_inset
+
+, y por eso el diseÃ±o moderno usa pagos, como los mecanismos VCG (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:diseno-mecanismos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la autoselecciÃ³n con menÃºs de contratos 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.13
+\end_layout
+
+\end_inset
+
+, los mecanismos de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Clarke
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Groves
+\end_layout
+
+\end_inset
+
+ para los bienes pÃºblicos 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.23
+\end_layout
+
+\end_inset
+
+ y el teorema de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Gibbard
+\end_layout
+
+\end_inset
+
+-
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+Satterthwaite
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.24
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+Las licitaciones de petrÃ³leo del golfo de MÃ©xico: la maldiciÃ³n del ganador
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{CapenClappCampbell1971Competitive}
+\end_layout
+
+\end_inset
+
+: el Gobierno de Estados Unidos subastaba a sobre cerrado los derechos de explotaciÃ³n de yacimientos en el golfo de MÃ©xico. Lo que hay en el subsuelo vale casi lo mismo para todas las petroleras, pero nadie lo sabe: cada una lo estima con sus propios estudios geolÃ³gicos. Es un valor comÃºn. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Equilibrio
+\emph default
+: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los aÃ±os 50 y 60 rendÃ­an de forma sistemÃ¡tica menos de lo esperado. Gana quien mÃ¡s ha sobrestimado el valor, y quien puja su estimaciÃ³n paga, en promedio, de mÃ¡s; el pujador racional descuenta esa informaciÃ³n y puja por debajo de su estimaciÃ³n, y tanto mÃ¡s cuantos mÃ¡s rivales tiene 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Wilson1977Bidding}
+\end_layout
+
+\end_inset
+
+ (anexo
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "anexo:subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: Â«No es oro todo lo que reluceÂ»: ganar es una mala noticia sobre lo que vale lo ganado. Por eso al vendedor le conviene revelar lo que sabe del bien: reduce el miedo de los pujadores a la maldiciÃ³n y sube las pujas 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{MilgromWeber1982Theory}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la selecciÃ³n adversa, en la que tambiÃ©n ser elegido es una mala noticia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.13
+\end_layout
+
+\end_inset
+
+; la aversiÃ³n al riesgo de los pujadores 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.10
+\end_layout
+
+\end_inset
+
+, y las subastas de espectro 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.12
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+La jarra de monedas: la maldiciÃ³n del ganador en el aula
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BazermanSamuelson1983Won}
+\end_layout
+
+\end_inset
+
+: en 12 clases de MBA de la Universidad de Boston se subastaron a sobre cerrado, 4 veces en cada una, jarras de monedas (o de clips) que valÃ­an 8 dÃ³lares. Cada alumno estimaba a ojo lo que habÃ­a en la jarra: es un valor comÃºn. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© pasÃ³
+\emph default
+: los alumnos estimaban de media que la jarra valÃ­a 5,13 dÃ³lares, por debajo de su valor, pero la puja ganadora media fue de 10,01: quien ganaba perdÃ­a, en promedio, 2,01 dÃ³lares 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Thaler1988Anomalies}
+\end_layout
+
+\end_inset
+
+. Ganaba quien mÃ¡s habÃ­a sobrestimado, y no lo descontaba al pujar. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: la maldiciÃ³n del ganador no es solo cosa de petroleras; aparece en cuanto hay valor comÃºn y nadie corrige por el hecho de ganar. En los experimentos, los pujadores sin experiencia caen en ella de forma sistemÃ¡tica 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{KagelLevin1986Winners}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: las desviaciones de la racionalidad en las decisiones con incertidumbre 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.10
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+Las subastas del 3G de 2000: atraer pujadores
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+: en 2000, varios paÃ­ses europeos subastaron las licencias de telefonÃ­a mÃ³vil de tercera generaciÃ³n. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, mÃ¡s de 600 euros por habitante; los PaÃ­ses Bajos, 170, y Suiza, 20 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© pasÃ³
+\emph default
+: el Reino Unido sacÃ³ 5 licencias para 4 operadores instalados, de modo que al menos una tenÃ­a que ir a un entrante, y los entrantes acudieron y pujaron 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BinmoreKlemperer2002Biggest}
+\end_layout
+
+\end_inset
+
+. En los PaÃ­ses Bajos habÃ­a tantas licencias como operadores instalados, y los entrantes apenas tenÃ­an opciones; en Suiza, las uniones y retiradas de Ãºltima hora dejaron tantos pujadores como licencias, y se vendieron casi al precio de salida 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: el teorema de equivalencia da por fijo el nÃºmero de pujadores; en la prÃ¡ctica, el formato decide cuÃ¡ntos acuden, y un pujador mÃ¡s vale mÃ¡s que cualquier refinamiento del formato 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{BulowKlemperer1996Auctions}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: las telecomunicaciones 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.12
+\end_layout
+
+\end_inset
+
+, las barreras de entrada 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.15
+\end_layout
+
+\end_inset
+
+ y la colusiÃ³n en el oligopolio 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Subsection*
+La subasta alemana de espectro de 1999: pujas que hablan
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Juego
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+: Alemania vendÃ­a 10 bloques de espectro en una subasta ascendente, con la regla de que cada nueva puja por un bloque tenÃ­a que superar a la anterior en al menos un 10
+\begin_inset space ~
+
+\end_inset
+
+%. Los 2 grandes pujadores eran Mannesmann y T-Mobil. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+QuÃ© pasÃ³
+\emph default
+: Mannesmann abriÃ³ con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10. T-Mobil entendiÃ³ el mensaje: si subÃ­a un 10
+\begin_inset space ~
+
+\end_inset
+
+% los bloques 1 a 5 (
+\begin_inset Formula $18{,}18\times1{,}1\approx20$
+\end_inset
+
+), los 2 pagarÃ­an lo mismo y se repartirÃ­an el espectro a partes iguales. PujÃ³ 20 millones por los bloques 1 a 5, nadie volviÃ³ a pujar y la subasta terminÃ³ tras 2 rondas 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+parencite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+. 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Moraleja
+\emph default
+: en una subasta ascendente, las pujas son mensajes, y la amenaza de seguir pujando castiga al que no respeta el reparto, dentro de la misma subasta: es un juego repetido en pequeÃ±o (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:repetidos"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). El sobre cerrado, no publicar las pujas y atraer mÃ¡s pujadores lo dificultan (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:colusion-subastas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+En el temario
+\emph default
+: la colusiÃ³n tÃ¡cita y el gatillo en el oligopolio 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+3.A.19
+\end_layout
+
+\end_inset
+
+, la defensa de la competencia y la clemencia 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.15
+\end_layout
+
+\end_inset
+
+ y las telecomunicaciones 
+\begin_inset Flex Ver tema
+status collapsed
+
+\begin_layout Plain Layout
+4.A.12
 \end_layout
 
 \end_inset

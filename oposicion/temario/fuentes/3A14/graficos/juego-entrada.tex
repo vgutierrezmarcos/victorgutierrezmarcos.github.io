@@ -1,8 +1,8 @@
 % Juego de entrada en forma extensiva y su resolución por inducción hacia atrás.
-% La entrante elige No entrar, pagos (0, 4), o Entrar; si entra, la instalada elige
-% Luchar, (-1, -1), o Acomodar, (1, 1). Pagos (entrante, instalada).
-% Inducción hacia atrás: la instalada acomoda (1 > -1: luchar es una amenaza no
-% creíble) y, anticipándolo, la entrante entra (1 > 0). ENPS: (Entrar, Acomodar).
+% La entrante E elige No entrar, pagos (0, 4), o Entrar; si entra, la instalada I elige
+% Luchar, (-1, -1), o Acomodar, (1, 1). Pagos (E, I).
+% Inducción hacia atrás: I acomoda (1 > -1: luchar es una amenaza no
+% creíble) y, anticipándolo, E entra (1 > 0). ENPS: (Entrar, Acomodar).
 % Elaboración propia a partir de Mas-Colell, Whinston y Green (1995), cap. 9.
 % Estilo de árbol de 3A10/graficos/allais-a1.tex.
 % Autor: Víctor Gutiérrez Marcos
@@ -18,14 +18,14 @@
     pago/.style={etiqueta,below=2pt,font=\small},
     elegida/.style={line width=1.8pt,tceerojo}]
   \useasboundingbox (-3.3,-4.35) rectangle (4.6,0.55);
-  % 1: nodo de la entrante (raíz)
-  \capa{1}{\node[nodo,label={[jugador]right:Entrante}] (E) at (0,0) {};}
+  % 1: nodo de la entrante E (raíz)
+  \capa{1}{\node[nodo,label={[jugador]right:{\upshape\textbf{E}} (entrante)}] (E) at (0,0) {};}
   % 2: rama «No entrar» y sus pagos
   \capa{2}{\node[terminal] (N) at (-2.2,-1.9) {};}
   \capa{2}{\draw[rama] (E) -- node[accion,above left] {No entrar} (N);}
   \capa{2}{\node[pago] at (N) {$(0,\,4)$};}
-  % 3: rama «Entrar» y nodo de la instalada
-  \capa{3}{\node[nodo,label={[jugador]right:Instalada}] (I) at (2.2,-1.9) {};}
+  % 3: rama «Entrar» y nodo de la instalada I
+  \capa{3}{\node[nodo,label={[jugador]right:{\upshape\textbf{I}} (instalada)}] (I) at (2.2,-1.9) {};}
   \capa{3}{\draw[rama] (E) -- node[accion,above right] {Entrar} (I);}
   % 4: rama «Luchar» y sus pagos
   \capa{4}{\node[terminal] (L) at (0.9,-3.6) {};}
@@ -38,9 +38,9 @@
   % 6: inducción hacia atrás: luchar es una amenaza no creíble (1 > -1)
   \capa{6}{\draw[line width=1.4pt,tceerojo] ($(I)!0.62!(L)+(-0.2,-0.2)$) -- ++(0.4,0.4)
     ($(I)!0.62!(L)+(-0.2,0.2)$) -- ++(0.4,-0.4);}
-  % 7: la instalada acomoda
+  % 7: I acomoda
   \capa{7}{\draw[elegida] (I) -- (A);}
-  % 8: anticipándolo, la entrante entra (1 > 0)
+  % 8: anticipándolo, E entra (1 > 0)
   \capa{8}{\draw[elegida] (E) -- (I);}
   % 9: el equilibrio de Nash perfecto en subjuegos
   \capa{9}{\node[etiqueta,text=tceerojo,anchor=west] at (-3.2,-3.05) {ENPS: (Entrar, Acomodar)};}
