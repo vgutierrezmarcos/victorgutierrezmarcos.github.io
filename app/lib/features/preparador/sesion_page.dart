@@ -414,29 +414,26 @@ class SesionPage extends ConsumerWidget {
           ],
           if (!s.hecho) ...[
             const TituloSeccion('Detalles de la clase'),
-            Tarjeta(
-              padding: EdgeInsets.zero,
-              child: Column(children: [
-                FilaEnlace(icono: Icons.event_outlined, titulo: 'Día y hora', subtitulo: '${fechaCorta(s.fecha)}, ${horaDe(s.fecha)}', onTap: cambiarHora),
-                FilaEnlace(icono: Icons.timelapse_outlined, titulo: 'Duración de la clase', subtitulo: textoDuracion(s.minutos), onTap: cambiarDuracion),
-                FilaEnlace(
-                  icono: s.online ? Icons.videocam_outlined : Icons.place_outlined,
-                  titulo: 'Presencial u online',
-                  subtitulo: s.modalidad == Modalidad.sinIndicar ? 'Sin indicar' : s.descripcionModalidad,
-                  onTap: cambiarModalidad,
-                ),
-                if (!dictamen) ...[
-                  FilaEnlace(
-                    icono: Icons.format_list_numbered,
-                    titulo: 'Temas que se cantan',
-                    subtitulo: '${s.numTemas == 1 ? '1 tema' : '${s.numTemas} temas'}${s.unoPorParte && s.numTemas > 1 ? ' · uno de cada parte' : ''}',
-                    onTap: cambiarTemas,
-                  ),
-                  FilaEnlace(icono: Icons.timer_outlined, titulo: 'Exposición por tema', subtitulo: '${s.exposicion} min en el cronómetro', onTap: cambiarExposicion),
-                ],
-                if (perfil.calendarioGoogle && s.pendiente && s.fecha.isAfter(ahora)) _FilaCalendario(sesion: s),
-              ]),
+            // Cada fila ya es una tarjeta (FilaEnlace): sin otra tarjeta alrededor,
+            // que salían cajas dentro de una caja.
+            FilaEnlace(icono: Icons.event_outlined, titulo: 'Día y hora', subtitulo: '${fechaCorta(s.fecha)}, ${horaDe(s.fecha)}', onTap: cambiarHora),
+            FilaEnlace(icono: Icons.timelapse_outlined, titulo: 'Duración de la clase', subtitulo: textoDuracion(s.minutos), onTap: cambiarDuracion),
+            FilaEnlace(
+              icono: s.online ? Icons.videocam_outlined : Icons.place_outlined,
+              titulo: 'Presencial u online',
+              subtitulo: s.modalidad == Modalidad.sinIndicar ? 'Sin indicar' : s.descripcionModalidad,
+              onTap: cambiarModalidad,
             ),
+            if (!dictamen) ...[
+              FilaEnlace(
+                icono: Icons.format_list_numbered,
+                titulo: 'Temas que se cantan',
+                subtitulo: '${s.numTemas == 1 ? '1 tema' : '${s.numTemas} temas'}${s.unoPorParte && s.numTemas > 1 ? ' · uno de cada parte' : ''}',
+                onTap: cambiarTemas,
+              ),
+              FilaEnlace(icono: Icons.timer_outlined, titulo: 'Exposición por tema', subtitulo: '${s.exposicion} min en el cronómetro', onTap: cambiarExposicion),
+            ],
+            if (perfil.calendarioGoogle && s.pendiente && s.fecha.isAfter(ahora)) _FilaCalendario(sesion: s),
           ],
           if (s.hecho && r != null) ...[
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
