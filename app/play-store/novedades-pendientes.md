@@ -1,0 +1,24 @@
+# Novedades de la app pendientes de publicar
+
+Las mejoras de la app no van una a una a `novedades.json`: se apuntan aquí y se
+publican **juntas, en una sola novedad**, cuando la app esté disponible en Google
+Play (y después, una por versión que llegue a Play, solo con lo que importe al
+opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
+
+## Para la novedad de la salida en Google Play
+
+- (19 oct.) Pizarra en el navegador del iPad: tinta más limpia con el Apple Pencil y aviso para desactivar Scribble, que se queda con las letras rápidas
+- (19 oct.) Pizarra en el navegador del iPad: al escribir deprisa con el Apple Pencil ya no se pierden ni se retrasan los trazos
+- (19 oct.) La pizarra tiene ahora su propia sección en Cantar, igual de visible que el cronómetro
+- (20 oct.) Tabla de preguntas por tema en los exámenes oficiales del test (examen a examen), desde Test, Organización y cada tema
+- (20 oct.) Si una pantalla falla, la app lo explica y deja volver (ya no se queda en gris); y en la calculadora del test se puede escribir el acierto de cada grupo
+- (20 oct.) Pedir clase al preparador para un día y una hora, aunque no tenga abiertas las reservas; desde «Nuevo cante → Con quién» o desde «Añadir → Reservar clase»
+- (20 oct.) Pizarra: selector de color rehecho, con una paleta de colores con nombre que cabe en el móvil
+- (20 oct.) Cronómetro compartido: al pasar a exponer, la exposición espera en pausa; y la rueda del ratón ya no amplía el PDF del tema
+- (21 oct.) La versión web ya crea cronogramas, clases y cantes desde el navegador (fallaba al generar el identificador)
+- (21 oct.) El cronómetro sale con los tiempos del examen de cada oposición: en DCE, 20 min por tema y 15 de esquema; en TCEE, 30 min por tema y 22 min 30 s de esquema (el doble con dos temas)
+
+Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
+desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases
+y cantes compartidos, cronograma, pizarra, test con exámenes oficiales, proceso
+selectivo con avisos, y TCEE y DCE en la misma app.
