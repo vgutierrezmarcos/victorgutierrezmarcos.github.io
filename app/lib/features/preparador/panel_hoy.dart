@@ -10,6 +10,7 @@ import '../../data/models/red.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../plan/cantes_util.dart';
+import '../temario/abrir_tema.dart';
 import 'semana_page.dart';
 import 'sustituciones.dart';
 import 'verificacion_page.dart';
@@ -28,6 +29,14 @@ class PanelPreparadorHoy extends ConsumerWidget {
     final hoy = ref.watch(sesionesProvider).where((s) => s.pendiente && s.fecha.year == ahora.year && s.fecha.month == ahora.month && s.fecha.day == ahora.day).toList()
       ..sort((a, b) => a.fecha.compareTo(b.fecha));
     final nombres = {for (final a in ref.watch(alumnosProvider)) a.id: a.nombre};
+    final temario = ref.watch(temarioProvider).valueOrNull;
+    // Los temas que te van a cantar, para abrirlos de un toque: los de las
+    // clases de hoy con tema mandado (o en curso) o, si hoy no hay, los de la
+    // próxima clase con tema. Una bola sorteada no se ve hasta su hora.
+    final conTema = ref.watch(sesionesProvider).where((s) => s.pendiente && s.mandaTema && s.temasMandados.isNotEmpty && !(s.temaSorteado && (s.temaA?.isAfter(ahora) ?? false)) && s.fecha.isAfter(ahora.subtract(const Duration(hours: 3)))).toList()
+      ..sort((a, b) => a.fecha.compareTo(b.fecha));
+    final deHoy = conTema.where((s) => s.fecha.year == ahora.year && s.fecha.month == ahora.month && s.fecha.day == ahora.day).toList();
+    final teCantan = deHoy.isNotEmpty ? deHoy : conTema.take(1).toList();
     final reservas = (ref.watch(reservasRecibidasProvider).valueOrNull ?? const <Reserva>[]).where((r) => r.pedida && r.fecha.isAfter(ahora)).length;
     final tablon = ref.watch(tablonProvider).valueOrNull?.length ?? 0;
     final solicitudes = ref.watch(solicitudesPendientesProvider).valueOrNull?.length ?? 0;
@@ -95,6 +104,15 @@ class PanelPreparadorHoy extends ConsumerWidget {
               () => ir(const SemanaPage()),
               detalle: [for (final s in hoy) '${horaDe(s.fecha)} ${nombres[s.alumno] ?? ''}'.trim()].join(' · '),
             ),
+          for (final s in teCantan)
+            for (final t in s.temasMandados)
+              if (temario?.tema(t) != null)
+                fila(
+                  Icons.menu_book_outlined,
+                  '$t · ${temario!.tema(t)!.titulo}',
+                  () => abrirTema(context, temario, t),
+                  detalle: '${deHoy.isNotEmpty ? 'Te lo canta hoy' : 'Te lo canta el ${fechaCorta(s.fecha)}'} a las ${horaDe(s.fecha)}${(nombres[s.alumno] ?? '').isEmpty ? '' : ' ${nombres[s.alumno]}'} · Toca para abrir el tema',
+                ),
           if (reservas > 0) fila(Icons.event_available_outlined, reservas == 1 ? '1 reserva por confirmar' : '$reservas reservas por confirmar', () => ir(const SemanaPage())),
           if (tablon > 0) fila(Icons.campaign_outlined, tablon == 1 ? '1 alumno busca preparador' : '$tablon alumnos buscan preparador', () => ir(const TablonPage()), detalle: 'Tablón de clases sueltas'),
           if (solicitudes > 0) fila(Icons.how_to_reg_outlined, solicitudes == 1 ? '1 preparador pide que le verifiques' : '$solicitudes preparadores piden que les verifiques', () => ir(const VerificarPreparadoresPage())),

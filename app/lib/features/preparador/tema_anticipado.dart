@@ -10,6 +10,7 @@ import '../../theme/app_theme.dart';
 import '../../widgets/comunes.dart';
 import '../cantar/sorteo.dart';
 import '../plan/cantes_util.dart';
+import '../temario/abrir_tema.dart';
 import '../mas/ayuda_videos.dart';
 
 /// Antelaciones que se ofrecen para mandar el tema, en segundos antes de la
@@ -147,8 +148,19 @@ class SeccionTemaAnticipado extends ConsumerWidget {
             if (oculto)
               Text(n == 1 ? 'Bola sorteada: ni tú la verás hasta esa hora.' : '$n bolas sorteadas: ni tú las verás hasta esa hora.', style: context.textos.bodySmall)
             else
+              // Cada tema se abre con un toque: para tenerlo delante mientras te lo cantan.
               for (final t in s.temasMandados)
-                Padding(padding: const EdgeInsets.only(bottom: 2), child: TextoTema(t, temario?.tema(t)?.titulo ?? '', color: estructura?.colorDe(t))),
+                InkWell(
+                  onTap: temario?.tema(t) == null ? null : () => abrirTema(context, temario, t),
+                  borderRadius: BorderRadius.circular(6),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 2),
+                    child: Row(children: [
+                      Expanded(child: TextoTema(t, temario?.tema(t)?.titulo ?? '', color: estructura?.colorDe(t))),
+                      if (temario?.tema(t) != null) Icon(Icons.menu_book_outlined, size: 18, color: context.esquema.primary),
+                    ]),
+                  ),
+                ),
             if (!llegado) Text('Hasta entonces el alumno solo sabe a qué hora le ${n == 1 ? 'llegará' : 'llegarán'}.', style: context.textos.labelSmall),
           ]),
         ),
