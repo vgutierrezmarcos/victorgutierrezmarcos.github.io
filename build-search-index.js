@@ -43,6 +43,14 @@ searchIndex.pages = [
     content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatoria en curso con plazas y estado del proceso, la oposición en cifras, los cinco ejercicios en una tabla, el temario por partes, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
   },
   {
+    id: 'cifras',
+    title: 'La oposición a TCEE en cifras',
+    url: '/oposicion/cifras.html',
+    description: 'Plazas, admitidos, aprobados por ejercicio, idiomas y repetidores de cada convocatoria, con gráficos, calculados con los documentos oficiales',
+    keywords: ['cifras', 'estadísticas', 'plazas', 'admitidos', 'aprobados', 'cobertura', 'idiomas', 'repetidores', 'gráficos', 'convocatorias', 'BOE'],
+    content: 'Plazas convocadas y aprobados por convocatoria desde los años ochenta, admitidos por plaza, qué ejercicio elimina a más gente, idiomas elegidos y cuántos aprueban a la primera'
+  },
+  {
     id: 'novedades',
     title: 'Novedades',
     url: '/novedades.html',
