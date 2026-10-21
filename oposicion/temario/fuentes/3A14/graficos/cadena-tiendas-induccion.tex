@@ -1,0 +1,42 @@
+% La paradoja de la cadena de tiendas (Selten, 1978): inducción hacia atrás de la
+% ciudad 20 a la 1. En la 20 no hay futuro que proteger: la cadena acomoda y el
+% entrante entra. En la 19, lo que pase en la 20 ya está decidido, así que luchar
+% no compra reputación: acomoda y entra. Y así hasta la 1.
+% ENPS: en todas las ciudades, el entrante entra y la cadena acomoda.
+% Elaboración propia a partir de Selten (1978).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    ciudad/.style={draw=tceemorado,thick,fill=tceesalvia,rounded corners=2pt,
+      minimum width=1.9cm,minimum height=0.8cm,font=\small},
+    resultado/.style={etiqueta,font=\footnotesize,align=center},
+    motivo/.style={etiqueta,font=\footnotesize\itshape,align=center,text=tceeazul}]
+  \useasboundingbox (-1.3,-2.75) rectangle (13.6,2.35);
+  % 1: las 20 ciudades, en el orden en que se juegan
+  \capa{1}{\node[ciudad] (C1) at (0,0) {Ciudad 1};}
+  \capa{1}{\node[ciudad] (C2) at (2.6,0) {Ciudad 2};}
+  \capa{1}{\node[etiqueta,font=\large] (Cp) at (5.3,0) {$\cdots$};}
+  \capa{1}{\node[ciudad] (C19) at (8.0,0) {Ciudad 19};}
+  \capa{1}{\node[ciudad] (C20) at (10.6,0) {Ciudad 20};}
+  \capa{1}{\draw[eje] (-0.95,-0.62) -- (12.4,-0.62) node[etiqueta,right] {tiempo};}
+  % 2: la última ciudad: no hay futuro que proteger
+  \capa{2}{\node[motivo,above=4pt] at (C20.north) {no hay futuro\\que proteger};}
+  \capa{2}{\node[resultado,below=0.55cm] at (C20.south) {C acomoda\\E$_{20}$ entra};}
+  % 3: la ciudad 19: la 20 ya está decidida, luchar no compra reputación
+  \capa{3}{\node[motivo,above=4pt] at (C19.north) {la 20 ya\\está decidida};}
+  \capa{3}{\node[resultado,below=0.55cm] at (C19.south) {C acomoda\\E$_{19}$ entra};}
+  % 4: y así hacia atrás
+  \capa{4}{\node[resultado] at (5.3,-1.35) {lo mismo};}
+  \capa{4}{\node[motivo,above=4pt] at (C2.north) {el resto\\ya está decidido};}
+  \capa{4}{\node[resultado,below=0.55cm] at (C2.south) {C acomoda\\E$_{2}$ entra};}
+  % 5: hasta la primera ciudad
+  \capa{5}{\node[motivo,above=4pt] at (C1.north) {luchar no\\cambia nada};}
+  \capa{5}{\node[resultado,below=0.55cm] at (C1.south) {C acomoda\\E$_{1}$ entra};}
+  % 6: el sentido del razonamiento, de la 20 a la 1
+  \capa{6}{\draw[flecha] (11.4,1.95) -- node[etiqueta,above,text=tceerojo] {inducción hacia atrás} (-0.8,1.95);}
+  % 7: el equilibrio
+  \capa{7}{\node[etiqueta,text=tceerojo,anchor=north] at (5.3,-2.15) {ENPS: todos entran y la cadena acomoda siempre};}
+\end{tikzpicture}
+\end{document}

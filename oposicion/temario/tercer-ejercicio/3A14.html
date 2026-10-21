@@ -175,7 +175,7 @@
                     <p class="tema-codigo">Tema 3.A.14</p>
                     <h1 class="tema-titulo">Teoría de juegos. Principales conceptos. Aplicaciones, con especial referencia a las subastas.</h1>
                     <p class="tema-meta">Última actualización: 20/10/2026 · Cante: 30 minutos</p>
-                    <p class="tema-meta tema-paginas">Tema: 45 págs. · Anexos: 10 · Bibliografía: 7 (PDF)</p>
+                    <p class="tema-meta tema-paginas">Tema: 45 págs. · Anexos: 16 · Bibliografía: 7 (PDF)</p>
                     <div class="tema-descargas">
                         <a href="3A14.pdf" target="_blank">Descargar PDF</a>
                         <a href="3A14.docx" download>Descargar Word</a>
@@ -2185,9 +2185,9 @@ precio al que se retira</td>
 <section id="pares-o-nones-y-la-inspección-estrategias-mixtas" class="level3 unnumbered">
 <h3 class="unnumbered">Pares o nones y la inspección: estrategias mixtas</h3>
 <ul>
-<li><p><em>Juego</em>: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero.</p></li>
-<li><p><em>Equilibrio</em>: no hay EN en puras (el que pierde siempre quiere cambiar); en el único EN, cada uno juega cada opción al 50 %, y el valor del juego es 0 <span class="citation" data-cites="VonNeumann1928Theorie">(<a href="#ref-VonNeumann1928Theorie" role="doc-biblioref"><span class="smallcaps">von</span> <span class="smallcaps">Neumann</span>, 1928</a>)</span>.</p></li>
-<li><p><em>Moraleja</em>: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla <a href="#tab:inspeccion">10</a>), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.</p></li>
+<li><p><em>Juego</em>: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero (tabla <a href="#tab:pares-nones">15</a>).</p></li>
+<li><p><em>Equilibrio</em>: no hay EN en puras (el que pierde siempre quiere cambiar: en ninguna casilla están subrayados los 2 pagos); en el único EN, cada uno juega cada opción al 50 %, y el valor del juego es 0 <span class="citation" data-cites="VonNeumann1928Theorie">(<a href="#ref-VonNeumann1928Theorie" role="doc-biblioref"><span class="smallcaps">von</span> <span class="smallcaps">Neumann</span>, 1928</a>)</span>. Las mejores respuestas, <span class="math inline">\(R_1\)</span> y <span class="math inline">\(R_2\)</span>, solo se cortan en <span class="math inline">\((1/2,\,1/2)\)</span> (gráfico <a href="#fig:pares-nones">9</a>): con <span class="math inline">\(\pi_2&gt;1/2\)</span>, al 1 le conviene sacar 1 dedo siempre, y al 2, que quiere no coincidir, le conviene entonces sacar 2.</p></li>
+<li><p><em>Moraleja</em>: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla <a href="#tab:inspeccion">10</a> y gráfico <a href="#fig:inspeccion">8</a>, con el EN en <span class="math inline">\((1/2,\,3/4)\)</span>), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.</p></li>
 <li><p><em>En el temario</em>:</p>
 <ul>
 <li><p>los penaltis <span class="citation" data-cites="PalaciosHuerta2003Professionals">(<a href="#ref-PalaciosHuerta2003Professionals" role="doc-biblioref"><span class="smallcaps">Palacios-Huerta</span>, 2003</a>)</span>;</p></li>
@@ -2195,58 +2195,162 @@ precio al que se retira</td>
 <li><p>la inspección tributaria y la evasión.</p></li>
 </ul></li>
 </ul>
+<div id="tab:pares-nones">
+<table>
+<caption><span class="etiqueta">Tabla 15.–</span> Pares o nones (jugador 1, filas, gana si la suma es par; jugador 2, columnas, si es impar)</caption>
+<tbody>
+<tr>
+<td style="text-align: center; vertical-align: middle;"></td>
+<td style="text-align: center; vertical-align: middle;"><strong>1 dedo</strong> (<span class="math inline">\(\pi_2\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;"><strong>2 dedos</strong></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>1 dedo</strong> (<span class="math inline">\(\pi_1\)</span>)</td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((\underline{1},-1)\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,\underline{1})\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"><strong>2 dedos</strong></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((-1,\underline{1})\)</span></td>
+<td style="text-align: center; vertical-align: middle;"><span class="math inline">\((\underline{1},-1)\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="VonNeumann1928Theorie"><span class="smallcaps">von</span> <span class="smallcaps">Neumann</span> (<a href="#ref-VonNeumann1928Theorie" role="doc-biblioref">1928</a>)</span> y <span class="citation" data-cites="Gibbons1992Game"><span class="smallcaps">Gibbons</span> (<a href="#ref-Gibbons1992Game" role="doc-biblioref">1992, cap. 1</a>)</span>. Subrayadas, las mejores respuestas; ninguna casilla tiene las 2, así que no hay equilibrio en puras.</em></p>
+<figure id="fig:pares-nones">
+<figcaption><span class="etiqueta">Gráfico 9.–</span> Mejores respuestas en pares o nones y equilibrio en mixtas</figcaption>
+<img src="../fuentes/3A14/graficos/pares-nones.svg" style="width:50.0%" loading="lazy" alt="Gráfico 9.– Mejores respuestas en pares o nones y equilibrio en mixtas" />
+<div class="fuente">
+<p>Fuente: elaboración propia. <span class="math inline">\(\pi_1\)</span> y <span class="math inline">\(\pi_2\)</span>, probabilidades de que cada jugador saque 1 dedo.</p>
+</div>
+</figure>
 </section>
 <section id="hernán-cortés-quema-las-naves-compromiso" class="level3 unnumbered">
 <h3 class="unnumbered">Hernán Cortés quema las naves: compromiso</h3>
 <ul>
 <li><p><em>Juego</em>: un ejército desembarca y decide si conserva los barcos o los destruye; después, el rival decide si ataca, y el ejército, si lucha o se retira. Con los barcos, retirarse es la mejor respuesta al ataque, y el rival, que lo anticipa, ataca; sin ellos, la retirada no existe, luchar es la única opción y el rival, que lo sabe, no ataca. Hernán <span class="smallcaps">Cortés</span> hundió sus barcos en 1519, al llegar a México.</p></li>
-<li><p><em>Equilibrio</em>: el ENPS empieza por destruir los barcos: tener menos opciones da un pago mayor <span class="citation" data-cites="Schelling1960Strategy">(<a href="#ref-Schelling1960Strategy" role="doc-biblioref"><span class="smallcaps">Schelling</span>, 1960</a>)</span>.</p></li>
+<li><p><em>Equilibrio</em> (gráfico <a href="#fig:quemar-naves">10</a>, con pagos ilustrativos): con barcos, ante el ataque, Cortés se retira (<span class="math inline">\(0&gt;-1\)</span>), y el rival ataca (<span class="math inline">\(1&gt;0\)</span>); sin barcos, el rival no ataca (<span class="math inline">\(0&gt;-1\)</span>). El ENPS empieza por destruir los barcos (<span class="math inline">\(2&gt;0\)</span>): tener menos opciones da un pago mayor <span class="citation" data-cites="Schelling1960Strategy">(<a href="#ref-Schelling1960Strategy" role="doc-biblioref"><span class="smallcaps">Schelling</span>, 1960</a>)</span>.</p></li>
 <li><p><em>Moraleja</em>: «Quemar las naves»: un compromiso es creíble cuando es irreversible y cambia lo que a uno le conviene hacer después.</p></li>
 <li><p><em>En el temario</em>: la capacidad como disuasión de la entrada <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a> (el compromiso de <span class="upright">I</span>, gráfico <a href="#fig:juego-entrada-compromiso">2</a>), el liderazgo de <span class="smallcaps">Stackelberg</span> <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la política comercial estratégica <a data-app="3B08.pdf" href="3B08.pdf" class="vertema"><span class="vertema">[ver tema 3.B.8]</span></a> y la independencia del banco central y las reglas <a data-app="3A36.pdf" href="3A36.pdf" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.</p></li>
 </ul>
+<figure id="fig:quemar-naves">
+<figcaption><span class="etiqueta">Gráfico 10.–</span> Hernán <span class="smallcaps">Cortés</span> quema las naves: renunciar a la retirada disuade el ataque</figcaption>
+<img src="../fuentes/3A14/graficos/quemar-naves.svg" style="width:80.0%" loading="lazy" alt="Gráfico 10.– Hernán Cortés quema las naves: renunciar a la retirada disuade el ataque" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Schelling1960Strategy"><span class="smallcaps">Schelling</span> (<a href="#ref-Schelling1960Strategy" role="doc-biblioref">1960</a>)</span>; pagos ilustrativos, (Cortés; rival). En rojo, las ramas elegidas por inducción hacia atrás.</p>
+</div>
+</figure>
 </section>
 <section id="la-paradoja-de-la-cadena-de-tiendas-repetición-finita-y-reputación" class="level3 unnumbered">
 <h3 class="unnumbered">La paradoja de la cadena de tiendas: repetición finita y reputación</h3>
 <ul>
-<li><p><em>Juego</em> <span class="citation" data-cites="Selten1978Chain">(<a href="#ref-Selten1978Chain" role="doc-biblioref"><span class="smallcaps">Selten</span>, 1978</a>)</span>: una cadena tiene tiendas en 20 ciudades y en cada una aparece, por turnos, un posible entrante. En cada ciudad se juega el juego de entrada (gráfico <a href="#fig:juego-entrada">1</a>).</p></li>
-<li><p><em>Equilibrio</em>: en la ciudad 20 la cadena acomoda, porque ya no hay futuro que proteger; sabiéndolo, en la 19 tampoco le sirve luchar, y así hasta la primera. En el único ENPS, todos entran y la cadena acomoda siempre.</p></li>
+<li><p><em>Juego</em> <span class="citation" data-cites="Selten1978Chain">(<a href="#ref-Selten1978Chain" role="doc-biblioref"><span class="smallcaps">Selten</span>, 1978</a>)</span>: una cadena tiene tiendas en 20 ciudades y en cada una aparece, por turnos, un posible entrante. En cada ciudad se juega el juego de entrada (gráfico <a href="#fig:juego-entrada">1</a>), con los pagos de <span class="citation" data-cites="Selten1978Chain"><span class="smallcaps">Selten</span> (<a href="#ref-Selten1978Chain" role="doc-biblioref">1978</a>)</span> (gráfico <a href="#fig:cadena-tiendas">11</a>): si el entrante no entra, gana 1 y la cadena 5; si entra, la cadena puede acomodar (2 cada uno) o luchar (0 cada uno).</p></li>
+<li><p><em>Equilibrio</em> (gráfico <a href="#fig:cadena-induccion">12</a>):</p>
+<ul>
+<li><p>en la ciudad 20 la cadena acomoda (<span class="math inline">\(2&gt;0\)</span>), porque ya no hay futuro que proteger, y el entrante entra (<span class="math inline">\(2&gt;1\)</span>);</p></li>
+<li><p>sabiéndolo, en la 19 tampoco le sirve luchar: lo que pase en la 20 ya está decidido, y luchar no compra reputación;</p></li>
+<li><p>y así hasta la primera. En el único ENPS, todos entran y la cadena acomoda siempre.</p></li>
+</ul></li>
 <li><p><em>Moraleja</em>: la paradoja es que la intuición (y la práctica) dice que a la cadena le convendría luchar al principio para ganarse la fama de agresiva. Se resuelve con algo de información incompleta: si hay una pequeña probabilidad de que la cadena sea agresiva por naturaleza, a la que no lo es le conviene imitarla <span class="citation" data-cites="KrepsWilson1982Reputation MilgromRoberts1982Predation">(<a href="#ref-KrepsWilson1982Reputation" role="doc-biblioref"><span class="smallcaps">Kreps</span> y <span class="smallcaps">Wilson</span>, 1982a</a>; <a href="#ref-MilgromRoberts1982Predation" role="doc-biblioref"><span class="smallcaps">Milgrom</span> y <span class="smallcaps">Roberts</span>, 1982b</a>)</span>.</p></li>
 <li><p><em>En el temario</em>: la depredación y la reputación <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>, la colusión con horizonte finito <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a> y la reputación de los bancos centrales <a data-app="3A36.pdf" href="3A36.pdf" class="vertema"><span class="vertema">[ver tema 3.A.36]</span></a>.</p></li>
 </ul>
+<figure id="fig:cadena-tiendas">
+<figcaption><span class="etiqueta">Gráfico 11.–</span> La cadena de tiendas: el juego de cada ciudad</figcaption>
+<img src="../fuentes/3A14/graficos/cadena-tiendas.svg" style="width:55.0%" loading="lazy" alt="Gráfico 11.– La cadena de tiendas: el juego de cada ciudad" />
+<div class="fuente">
+<p>Fuente: elaboración propia con los pagos de <span class="citation" data-cites="Selten1978Chain"><span class="smallcaps">Selten</span> (<a href="#ref-Selten1978Chain" role="doc-biblioref">1978</a>)</span>, (entrante; cadena).</p>
+</div>
+</figure>
+<figure id="fig:cadena-induccion">
+<figcaption><span class="etiqueta">Gráfico 12.–</span> La cadena de tiendas: inducción hacia atrás de la ciudad 20 a la 1</figcaption>
+<img src="../fuentes/3A14/graficos/cadena-tiendas-induccion.svg" style="width:90.0%" loading="lazy" alt="Gráfico 12.– La cadena de tiendas: inducción hacia atrás de la ciudad 20 a la 1" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Selten1978Chain"><span class="smallcaps">Selten</span> (<a href="#ref-Selten1978Chain" role="doc-biblioref">1978</a>)</span>.</p>
+</div>
+</figure>
 </section>
 <section id="el-juego-del-ultimátum-negociación-y-equidad" class="level3 unnumbered">
 <h3 class="unnumbered">El juego del ultimátum: negociación y equidad</h3>
 <ul>
-<li><p><em>Juego</em> <span class="citation" data-cites="GuthSchmittbergerSchwarze1982Ultimatum">(<a href="#ref-GuthSchmittbergerSchwarze1982Ultimatum" role="doc-biblioref"><span class="smallcaps">Güth</span>, <span class="smallcaps">Schmittberger</span> y <span class="smallcaps">Schwarze</span>, 1982</a>)</span>: el jugador 1 propone cómo repartir una cantidad; el 2 acepta, y se reparte así, o rechaza, y ninguno cobra nada.</p></li>
-<li><p><em>Equilibrio</em>: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva y el ENPS es ofrecerle lo mínimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero.</p></li>
+<li><p><em>Juego</em> <span class="citation" data-cites="GuthSchmittbergerSchwarze1982Ultimatum">(<a href="#ref-GuthSchmittbergerSchwarze1982Ultimatum" role="doc-biblioref"><span class="smallcaps">Güth</span>, <span class="smallcaps">Schmittberger</span> y <span class="smallcaps">Schwarze</span>, 1982</a>)</span>: el jugador 1 propone cómo repartir una cantidad, por ejemplo 10 euros, y ofrece <span class="math inline">\(x\)</span> al 2; el 2 acepta, y se reparte así, <span class="math inline">\((10-x,\,x)\)</span>, o rechaza, y ninguno cobra nada (gráfico <a href="#fig:ultimatum">13</a>; el abanico recoge todas las ofertas posibles).</p></li>
+<li><p><em>Equilibrio</em>: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva (<span class="math inline">\(x&gt;0\)</span>) y el ENPS es ofrecerle lo mínimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero.</p></li>
 <li><p><em>Moraleja</em>: las preferencias por la equidad y la reciprocidad pesan; el poder de negociación no es solo cuestión de quién propone (<a href="#sec:negociacion">II.3.1</a>).</p></li>
 <li><p><em>En el temario</em>: la economía conductual <a data-app="3A01.pdf" href="3A01.pdf" class="vertema"><span class="vertema">[ver tema 3.A.1]</span></a>, la negociación salarial <a data-app="3A27.pdf" href="3A27.pdf" class="vertema"><span class="vertema">[ver tema 3.A.27]</span></a> y la crítica distributiva del criterio de <span class="smallcaps">Pareto</span> <a data-app="3A22.pdf" href="3A22.html" class="vertema"><span class="vertema">[ver tema 3.A.22]</span></a>.</p></li>
 </ul>
+<figure id="fig:ultimatum">
+<figcaption><span class="etiqueta">Gráfico 13.–</span> El juego del ultimátum: el equilibrio frente al laboratorio</figcaption>
+<img src="../fuentes/3A14/graficos/ultimatum.svg" style="width:60.0%" loading="lazy" alt="Gráfico 13.– El juego del ultimátum: el equilibrio frente al laboratorio" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="GuthSchmittbergerSchwarze1982Ultimatum"><span class="smallcaps">Güth</span>, <span class="smallcaps">Schmittberger</span> y <span class="smallcaps">Schwarze</span> (<a href="#ref-GuthSchmittbergerSchwarze1982Ultimatum" role="doc-biblioref">1982</a>)</span>. Pagos (1, 2); en rojo, el ENPS, y en dorado, dónde se concentran las ofertas en el laboratorio.</p>
+</div>
+</figure>
 </section>
 <section id="cerveza-o-quiche-señalización-y-criterio-intuitivo" class="level3 unnumbered">
 <h3 class="unnumbered">Cerveza o quiche: señalización y criterio intuitivo</h3>
 <ul>
-<li><p><em>Juego</em> <span class="citation" data-cites="ChoKreps1987Signaling">(<a href="#ref-ChoKreps1987Signaling" role="doc-biblioref"><span class="smallcaps">Cho</span> y <span class="smallcaps">Kreps</span>, 1987</a>)</span>: la Naturaleza decide si un forastero es fuerte (con probabilidad <span class="math inline">\(0{,}9\)</span>) o débil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al débil la quiche (1 de utilidad por desayunar lo que le gusta). Un matón, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los débiles. Al forastero, que no le reten le vale 2.</p></li>
+<li><p><em>Juego</em> <span class="citation" data-cites="ChoKreps1987Signaling">(<a href="#ref-ChoKreps1987Signaling" role="doc-biblioref"><span class="smallcaps">Cho</span> y <span class="smallcaps">Kreps</span>, 1987</a>)</span>: la Naturaleza decide si un forastero es fuerte (con probabilidad <span class="math inline">\(0{,}9\)</span>) o débil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al débil la quiche (1 de utilidad por desayunar lo que le gusta). Un matón, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los débiles. Al forastero, que no le reten le vale 2; al matón, acertar (retar a un débil o dejar en paz a un fuerte), 1 (gráfico <a href="#fig:cerveza-quiche">14</a>).</p></li>
 <li><p><em>Equilibrio</em>: hay 2 EBP agrupadores. En el primero, los 2 tipos piden cerveza y el matón no reta; en el segundo, los 2 piden quiche y no reta, sostenido por la creencia de que quien pide cerveza es débil.</p></li>
 <li><p><em>Criterio intuitivo</em>: el segundo no lo supera. Al débil, pedir cerveza nunca le compensaría (ganaría como mucho 2, menos que los 3 que obtiene pidiendo quiche sin ser retado); al fuerte sí, si el matón le creyera fuerte (3 en lugar de 2). Así que quien pide cerveza debe ser tomado por fuerte, y el fuerte se desvía.</p></li>
 <li><p><em>Moraleja</em>: lo que uno hace revela lo que es, y las creencias razonables sobre lo que no ocurre en equilibrio deciden el resultado: «Cuando el río suena, agua lleva».</p></li>
 <li><p><em>En el temario</em>: la educación como señal <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a> y el precio límite como señal <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a>.</p></li>
 </ul>
+<figure id="fig:cerveza-quiche">
+<figcaption><span class="etiqueta">Gráfico 14.–</span> Cerveza o quiche: el equilibrio agrupador que supera el criterio intuitivo</figcaption>
+<img src="../fuentes/3A14/graficos/cerveza-quiche.svg" style="width:85.0%" loading="lazy" alt="Gráfico 14.– Cerveza o quiche: el equilibrio agrupador que supera el criterio intuitivo" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="ChoKreps1987Signaling"><span class="smallcaps">Cho</span> y <span class="smallcaps">Kreps</span> (<a href="#ref-ChoKreps1987Signaling" role="doc-biblioref">1987</a>)</span>. Pagos (forastero; matón); las líneas discontinuas unen los nodos que el matón no distingue. En rojo, el EBP en el que los 2 tipos piden cerveza: tras la quiche, que no se ve en equilibrio, el matón cree que el forastero es débil y retaría.</p>
+</div>
+</figure>
 </section>
 <section id="el-juicio-de-salomón-diseño-de-mecanismos" class="level3 unnumbered">
 <h3 class="unnumbered">El juicio de <span class="smallcaps">Salomón</span>: diseño de mecanismos</h3>
 <ul>
 <li><p><em>Juego</em> (1 Reyes 3, 16-28): 2 mujeres se presentan ante el rey <span class="smallcaps">Salomón</span> con un niño y las 2 dicen ser su madre. El rey no puede saber cuál dice la verdad: el tipo de cada una es información privada. Ordena partir al niño por la mitad y dar una mitad a cada una.</p></li>
-<li><p><em>Equilibrio</em>: la verdadera madre, que valora la vida del niño por encima de todo, renuncia a él para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niño a la que renunció.</p></li>
+<li><p><em>Equilibrio</em>: la verdadera madre, que valora la vida del niño por encima de todo, renuncia a él para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niño a la que renunció (tabla <a href="#tab:salomon">16</a>).</p></li>
 <li><p><em>Moraleja</em>: es un mecanismo en el que el mensaje (aceptar o renunciar) revela lo que el diseñador no ve. Pero funcionó por sorpresa: si la falsa madre hubiera entendido las reglas, también habría renunciado, y el rey no habría sabido nada. Un mecanismo tiene que funcionar <em>en equilibrio</em>, cuando todos lo entienden: es la compatibilidad de incentivos, <span class="math inline">\(\mathrm{IC}_i\)</span>, y por eso el diseño moderno usa pagos, como los mecanismos VCG (<a href="#sec:diseno-mecanismos">III.2</a>).</p></li>
 <li><p><em>En el temario</em>: la autoselección con menús de contratos <a data-app="3A13.pdf" href="3A13.html" class="vertema"><span class="vertema">[ver tema 3.A.13]</span></a>, los mecanismos de <span class="smallcaps">Clarke</span>-<span class="smallcaps">Groves</span> para los bienes públicos <a data-app="3A23.pdf" href="3A23.html" class="vertema"><span class="vertema">[ver tema 3.A.23]</span></a> y el teorema de <span class="smallcaps">Gibbard</span>-<span class="smallcaps">Satterthwaite</span> <a data-app="3A24.pdf" href="3A24.pdf" class="vertema"><span class="vertema">[ver tema 3.A.24]</span></a>.</p></li>
 </ul>
+<div id="tab:salomon">
+<table>
+<caption><span class="etiqueta">Tabla 16.–</span> El juicio de <span class="smallcaps">Salomón</span> como mecanismo: qué responde cada tipo y qué aprende el rey</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Tipo</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Qué prefiere</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Responde, si la orden la sorprende</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Responde, si entiende el mecanismo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Verdadera madre</td>
+<td style="text-align: left;">que el niño viva, aunque sea con la otra</td>
+<td style="text-align: left;">renuncia</td>
+<td style="text-align: left;">renuncia</td>
+</tr>
+<tr>
+<td style="text-align: left;">Falsa madre</td>
+<td style="text-align: left;">que la otra no se quede con el niño</td>
+<td style="text-align: left;">acepta el reparto</td>
+<td style="text-align: left;">renuncia</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Qué aprende el rey</strong></td>
+<td style="text-align: left;"></td>
+<td class="celda-tceesalvia" style="text-align: left;">los mensajes separan los tipos: sabe quién es la madre</td>
+<td style="text-align: left;">no distingue: los 2 mensajes son iguales</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de 1 Reyes 3, 16-28.</em></p>
 </section>
 <section id="las-licitaciones-de-petróleo-del-golfo-de-méxico-la-maldición-del-ganador" class="level3 unnumbered">
 <h3 class="unnumbered">Las licitaciones de petróleo del golfo de México: la maldición del ganador</h3>
 <ul>
 <li><p><em>Juego</em> <span class="citation" data-cites="CapenClappCampbell1971Competitive">(<a href="#ref-CapenClappCampbell1971Competitive" role="doc-biblioref"><span class="smallcaps">Capen</span>, <span class="smallcaps">Clapp</span> y <span class="smallcaps">Campbell</span>, 1971</a>)</span>: el Gobierno de Estados Unidos subastaba a sobre cerrado los derechos de explotación de yacimientos en el golfo de México. Lo que hay en el subsuelo vale casi lo mismo para todas las petroleras, pero nadie lo sabe: cada una lo estima con sus propios estudios geológicos. Es un valor común.</p></li>
-<li><p><em>Equilibrio</em>: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más; el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene <span class="citation" data-cites="Wilson1977Bidding">(<a href="#ref-Wilson1977Bidding" role="doc-biblioref"><span class="smallcaps">Wilson</span>, 1977</a>)</span> (anexo <a href="#anexo:subastas">D</a>).</p></li>
+<li><p><em>Equilibrio</em>: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más (gráfico <a href="#fig:maldicion-ganador">15</a>: la más alta de 5 estimaciones supera el valor real, en promedio, en <span class="math inline">\(2/3\)</span> del error máximo); el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene <span class="citation" data-cites="Wilson1977Bidding">(<a href="#ref-Wilson1977Bidding" role="doc-biblioref"><span class="smallcaps">Wilson</span>, 1977</a>)</span> (anexo <a href="#anexo:subastas">D</a>).</p></li>
 <li><p><em>Moraleja</em>: «No es oro todo lo que reluce»: ganar es una mala noticia sobre lo que vale lo ganado. Por eso al vendedor le conviene revelar lo que sabe del bien: reduce el miedo de los pujadores a la maldición y sube las pujas <span class="citation" data-cites="MilgromWeber1982Theory">(<a href="#ref-MilgromWeber1982Theory" role="doc-biblioref"><span class="smallcaps">Milgrom</span> y <span class="smallcaps">Weber</span>, 1982</a>)</span>.</p></li>
 <li><p><em>En el temario</em>:</p>
 <ul>
@@ -2255,20 +2359,57 @@ precio al que se retira</td>
 <li><p>las subastas de espectro <a data-app="../cuarto-ejercicio/4A12.pdf" href="../cuarto-ejercicio/4A12.pdf" class="vertema"><span class="vertema">[ver tema 4.A.12]</span></a>.</p></li>
 </ul></li>
 </ul>
+<figure id="fig:maldicion-ganador">
+<figcaption><span class="etiqueta">Gráfico 15.–</span> La maldición del ganador: la estimación más alta sobrestima el valor común</figcaption>
+<img src="../fuentes/3A14/graficos/maldicion-ganador.svg" style="width:65.0%" loading="lazy" alt="Gráfico 15.– La maldición del ganador: la estimación más alta sobrestima el valor común" />
+<div class="fuente">
+<p>Fuente: elaboración propia a partir de <span class="citation" data-cites="Wilson1977Bidding"><span class="smallcaps">Wilson</span> (<a href="#ref-Wilson1977Bidding" role="doc-biblioref">1977</a>)</span> y <span class="citation" data-cites="Krishna2010Auction"><span class="smallcaps">Krishna</span> (<a href="#ref-Krishna2010Auction" role="doc-biblioref">2010, cap. 6</a>)</span>. Cada estimación es el valor real <span class="math inline">\(V\)</span> más un error uniforme entre <span class="math inline">\(-a\)</span> y <span class="math inline">\(a\)</span>; la más alta de <span class="math inline">\(n\)</span> supera <span class="math inline">\(V\)</span>, en promedio, en <span class="math inline">\(a\,(n-1)/(n+1)\)</span>, tanto más cuantos más pujadores.</p>
+</div>
+</figure>
 </section>
 <section id="la-jarra-de-monedas-la-maldición-del-ganador-en-el-aula" class="level3 unnumbered">
 <h3 class="unnumbered">La jarra de monedas: la maldición del ganador en el aula</h3>
 <ul>
 <li><p><em>Juego</em> <span class="citation" data-cites="BazermanSamuelson1983Won">(<a href="#ref-BazermanSamuelson1983Won" role="doc-biblioref"><span class="smallcaps">Bazerman</span> y <span class="smallcaps">Samuelson</span>, 1983</a>)</span>: en 12 clases de MBA de la Universidad de Boston se subastaron a sobre cerrado, 4 veces en cada una, jarras de monedas (o de clips) que valían 8 dólares. Cada alumno estimaba a ojo lo que había en la jarra: es un valor común.</p></li>
-<li><p><em>Qué pasó</em>: los alumnos estimaban de media que la jarra valía 5,13 dólares, por debajo de su valor, pero la puja ganadora media fue de 10,01: quien ganaba perdía, en promedio, 2,01 dólares <span class="citation" data-cites="Thaler1988Anomalies">(<a href="#ref-Thaler1988Anomalies" role="doc-biblioref"><span class="smallcaps">Thaler</span>, 1988</a>)</span>. Ganaba quien más había sobrestimado, y no lo descontaba al pujar.</p></li>
+<li><p><em>Qué pasó</em>: los alumnos estimaban de media que la jarra valía 5,13 dólares, por debajo de su valor, pero la puja ganadora media fue de 10,01: quien ganaba perdía, en promedio, 2,01 dólares <span class="citation" data-cites="Thaler1988Anomalies">(<a href="#ref-Thaler1988Anomalies" role="doc-biblioref"><span class="smallcaps">Thaler</span>, 1988</a>)</span> (tabla <a href="#tab:jarra">17</a>). Ganaba quien más había sobrestimado, y no lo descontaba al pujar.</p></li>
 <li><p><em>Moraleja</em>: la maldición del ganador no es solo cosa de petroleras; aparece en cuanto hay valor común y nadie corrige por el hecho de ganar. En los experimentos, los pujadores sin experiencia caen en ella de forma sistemática <span class="citation" data-cites="KagelLevin1986Winners">(<a href="#ref-KagelLevin1986Winners" role="doc-biblioref"><span class="smallcaps">Kagel</span> y <span class="smallcaps">Levin</span>, 1986</a>)</span>.</p></li>
 <li><p><em>En el temario</em>: las desviaciones de la racionalidad en las decisiones con incertidumbre <a data-app="3A10.pdf" href="3A10.html" class="vertema"><span class="vertema">[ver tema 3.A.10]</span></a>.</p></li>
 </ul>
+<div id="tab:jarra">
+<table>
+<caption><span class="etiqueta">Tabla 17.–</span> La jarra de monedas: medias de las subastas en clase (dólares)</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Concepto</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Dólares</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Valor de la jarra</td>
+<td style="text-align: center; vertical-align: middle;">8,00</td>
+</tr>
+<tr>
+<td style="text-align: left;">Estimación media de los alumnos</td>
+<td style="text-align: center; vertical-align: middle;">5,13</td>
+</tr>
+<tr>
+<td style="text-align: left;">Puja ganadora media</td>
+<td style="text-align: center; vertical-align: middle;">10,01</td>
+</tr>
+<tr>
+<td class="celda-tceesalvia" style="text-align: left;"><strong>Ganancia media del ganador</strong></td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;"><span class="math inline">\(-2{,}01\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: <span class="citation" data-cites="BazermanSamuelson1983Won"><span class="smallcaps">Bazerman</span> y <span class="smallcaps">Samuelson</span> (<a href="#ref-BazermanSamuelson1983Won" role="doc-biblioref">1983</a>)</span>, recogido en <span class="citation" data-cites="Thaler1988Anomalies"><span class="smallcaps">Thaler</span> (<a href="#ref-Thaler1988Anomalies" role="doc-biblioref">1988</a>)</span>: 48 subastas a sobre cerrado en 12 clases de MBA.</em></p>
 </section>
 <section id="las-subastas-del-3g-de-2000-atraer-pujadores" class="level3 unnumbered">
 <h3 class="unnumbered">Las subastas del 3G de 2000: atraer pujadores</h3>
 <ul>
-<li><p><em>Juego</em>: en 2000, varios países europeos subastaron las licencias de telefonía móvil de tercera generación. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, más de 600 euros por habitante; los Países Bajos, 170, y Suiza, 20 <span class="citation" data-cites="Klemperer2002WhatReallyMatters">(<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref"><span class="smallcaps">Klemperer</span>, 2002</a>)</span>.</p></li>
+<li><p><em>Juego</em>: en 2000, varios países europeos subastaron las licencias de telefonía móvil de tercera generación. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, más de 600 euros por habitante; los Países Bajos, 170, y Suiza, 20 <span class="citation" data-cites="Klemperer2002WhatReallyMatters">(<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref"><span class="smallcaps">Klemperer</span>, 2002</a>)</span> (tabla <a href="#tab:subastas-3g">18</a>).</p></li>
 <li><p><em>Qué pasó</em>:</p>
 <ul>
 <li><p>el Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron y pujaron <span class="citation" data-cites="BinmoreKlemperer2002Biggest">(<a href="#ref-BinmoreKlemperer2002Biggest" role="doc-biblioref"><span class="smallcaps">Binmore</span> y <span class="smallcaps">Klemperer</span>, 2002</a>)</span>;</p></li>
@@ -2278,15 +2419,90 @@ precio al que se retira</td>
 <li><p><em>Moraleja</em>: el teorema de equivalencia da por fijo el número de pujadores; en la práctica, el formato decide cuántos acuden, y un pujador más vale más que cualquier refinamiento del formato <span class="citation" data-cites="BulowKlemperer1996Auctions">(<a href="#ref-BulowKlemperer1996Auctions" role="doc-biblioref"><span class="smallcaps">Bulow</span> y <span class="smallcaps">Klemperer</span>, 1996</a>)</span>.</p></li>
 <li><p><em>En el temario</em>: las telecomunicaciones <a data-app="../cuarto-ejercicio/4A12.pdf" href="../cuarto-ejercicio/4A12.pdf" class="vertema"><span class="vertema">[ver tema 4.A.12]</span></a>, las barreras de entrada <a data-app="3A15.pdf" href="3A15.html" class="vertema"><span class="vertema">[ver tema 3.A.15]</span></a> y la colusión en el oligopolio <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>.</p></li>
 </ul>
+<div id="tab:subastas-3g">
+<table>
+<caption><span class="etiqueta">Tabla 18.–</span> Las subastas europeas del 3G de 2000: recaudación y número de pujadores</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>País</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Euros por habitante</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Qué la explica</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Reino Unido</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">650</td>
+<td style="text-align: left;">licencias para 4 instalados: al menos una iba a un entrante, y los entrantes acudieron</td>
+</tr>
+<tr>
+<td style="text-align: left;">Alemania</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">615</td>
+<td style="text-align: left;">más pujadores que licencias</td>
+</tr>
+<tr>
+<td style="text-align: left;">Países Bajos</td>
+<td style="text-align: center; vertical-align: middle;">170</td>
+<td style="text-align: left;">tantas licencias como instalados: los entrantes apenas tenían opciones</td>
+</tr>
+<tr>
+<td style="text-align: left;">Suiza</td>
+<td style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: left;">uniones y retiradas de última hora: tantos pujadores como licencias, casi al precio de salida</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: <span class="citation" data-cites="Klemperer2002WhatReallyMatters"><span class="smallcaps">Klemperer</span> (<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref">2002</a>, tabla 1)</span> y <span class="citation" data-cites="BinmoreKlemperer2002Biggest"><span class="smallcaps">Binmore</span> y <span class="smallcaps">Klemperer</span> (<a href="#ref-BinmoreKlemperer2002Biggest" role="doc-biblioref">2002</a>)</span>.</em></p>
 </section>
 <section id="la-subasta-alemana-de-espectro-de-1999-pujas-que-hablan" class="level3 unnumbered">
 <h3 class="unnumbered">La subasta alemana de espectro de 1999: pujas que hablan</h3>
 <ul>
 <li><p><em>Juego</em> <span class="citation" data-cites="Klemperer2002WhatReallyMatters">(<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref"><span class="smallcaps">Klemperer</span>, 2002</a>)</span>: Alemania vendía 10 bloques de espectro en una subasta ascendente, con la regla de que cada nueva puja por un bloque tenía que superar a la anterior en al menos un 10 %. Los 2 grandes pujadores eran Mannesmann y T-Mobil.</p></li>
-<li><p><em>Qué pasó</em>: Mannesmann abrió con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10. T-Mobil entendió el mensaje: si subía un 10 % los bloques 1 a 5 (<span class="math inline">\(18{,}18\times1{,}1\approx20\)</span>), los 2 pagarían lo mismo y se repartirían el espectro a partes iguales. Pujó 20 millones por los bloques 1 a 5, nadie volvió a pujar y la subasta terminó tras 2 rondas <span class="citation" data-cites="Klemperer2002WhatReallyMatters">(<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref"><span class="smallcaps">Klemperer</span>, 2002</a>)</span>.</p></li>
+<li><p><em>Qué pasó</em>: Mannesmann abrió con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10. T-Mobil entendió el mensaje: si subía un 10 % los bloques 1 a 5 (<span class="math inline">\(18{,}18\times1{,}1\approx20\)</span>), los 2 pagarían lo mismo y se repartirían el espectro a partes iguales. Pujó 20 millones por los bloques 1 a 5, nadie volvió a pujar y la subasta terminó tras 2 rondas <span class="citation" data-cites="Klemperer2002WhatReallyMatters">(<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref"><span class="smallcaps">Klemperer</span>, 2002</a>)</span> (tabla <a href="#tab:subasta-alemana">19</a>).</p></li>
 <li><p><em>Moraleja</em>: en una subasta ascendente, las pujas son mensajes, y la amenaza de seguir pujando castiga al que no respeta el reparto, dentro de la misma subasta: es un juego repetido en pequeño (<a href="#sec:repetidos">I.3.2</a>). El sobre cerrado, no publicar las pujas y atraer más pujadores lo dificultan (<a href="#sec:colusion-subastas">III.3.4</a>).</p></li>
 <li><p><em>En el temario</em>: la colusión tácita y el gatillo en el oligopolio <a data-app="3A19.pdf" href="3A19.html" class="vertema"><span class="vertema">[ver tema 3.A.19]</span></a>, la defensa de la competencia y la clemencia <a data-app="../cuarto-ejercicio/4A15.pdf" href="../cuarto-ejercicio/4A15.pdf" class="vertema"><span class="vertema">[ver tema 4.A.15]</span></a> y las telecomunicaciones <a data-app="../cuarto-ejercicio/4A12.pdf" href="../cuarto-ejercicio/4A12.pdf" class="vertema"><span class="vertema">[ver tema 4.A.12]</span></a>.</p></li>
 </ul>
+<div id="tab:subasta-alemana">
+<table>
+<caption><span class="etiqueta">Tabla 19.–</span> La subasta alemana de espectro de 1999, ronda a ronda (millones de marcos por megahercio)</caption>
+<thead>
+<tr>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Ronda</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Puja</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Bloques 1 a 5</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: center; vertical-align: middle;"><strong>Bloques 6 a 10</strong></th>
+<th class="celda-tceeazulpalido" style="text-align: left;"><strong>Mensaje</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mannesmann</td>
+<td style="text-align: center; vertical-align: middle;">18,18</td>
+<td style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: left;">«con un 10 % más en los bloques 1 a 5, los 2 pagamos 20»</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">T-Mobil</td>
+<td style="text-align: center; vertical-align: middle;">20</td>
+<td style="text-align: center; vertical-align: middle;">—</td>
+<td style="text-align: left;">mensaje recibido</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Final</strong></td>
+<td style="text-align: left;">nadie más puja</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">T-Mobil,<br />
+a 20</td>
+<td class="celda-tceesalvia" style="text-align: center; vertical-align: middle;">Mannesmann,<br />
+a 20</td>
+<td style="text-align: left;">reparto a partes iguales, sin competir</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Fuente: elaboración propia a partir de <span class="citation" data-cites="Klemperer2002WhatReallyMatters"><span class="smallcaps">Klemperer</span> (<a href="#ref-Klemperer2002WhatReallyMatters" role="doc-biblioref">2002</a>)</span>.</em></p>
 </section>
 </section>
 <section id="bibliografia" class="level2 unnumbered">

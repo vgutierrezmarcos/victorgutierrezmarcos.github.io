@@ -1,0 +1,82 @@
+% Cerveza o quiche (Cho y Kreps, 1987). La Naturaleza elige el tipo del forastero F:
+% fuerte con probabilidad 0,9 o débil con 0,1. F, que conoce su tipo, pide cerveza o
+% quiche; el matón M ve el desayuno, no el tipo (líneas discontinuas: sus 2 conjuntos de
+% información), y decide si reta. Pagos (F; M):
+%   F: 1 por desayunar lo que le gusta (cerveza el fuerte, quiche el débil) + 2 si no le retan.
+%   M: 1 si reta a un débil o no reta a un fuerte; 0 en otro caso.
+% EBP agrupador superviviente: los 2 tipos piden cerveza; M no reta tras cerveza y
+% retaría tras quiche (creencia: quien pide quiche es débil).
+% Estilo de árbol de arbol-harsanyi.tex. Elaboración propia a partir de Cho y Kreps (1987).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    azar/.style={circle,draw=tceemorado,thick,fill=white,inner sep=2.6pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.1pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    tipo/.style={etiqueta,font=\footnotesize,align=center},
+    pagoi/.style={etiqueta,left=2pt,font=\small},
+    pagod/.style={etiqueta,right=2pt,font=\small},
+    elegida/.style={line width=1.8pt,tceerojo}]
+  \useasboundingbox (-7.3,-3.75) rectangle (7.3,3.75);
+  % 1: la Naturaleza elige el tipo del forastero
+  \capa{1}{\node[azar,label={[jugador]right:Naturaleza}] (Nat) at (0,0) {};}
+  \capa{1}{\node[nodo,label={[jugador]above:{\upshape\textbf{F}} fuerte}] (FF) at (0,1.8) {};}
+  \capa{1}{\node[nodo,label={[jugador]below:{\upshape\textbf{F}} débil}] (FD) at (0,-1.8) {};}
+  \capa{1}{\draw[rama] (Nat) -- node[tipo,left] {$0{,}9$} (FF);}
+  \capa{1}{\draw[rama] (Nat) -- node[tipo,left] {$0{,}1$} (FD);}
+  % 2: cada tipo pide cerveza (izquierda) o quiche (derecha)
+  \capa{2}{\node[nodo] (MFC) at (-3.2,1.8) {};}
+  \capa{2}{\node[nodo] (MDC) at (-3.2,-1.8) {};}
+  \capa{2}{\node[nodo] (MFQ) at (3.2,1.8) {};}
+  \capa{2}{\node[nodo] (MDQ) at (3.2,-1.8) {};}
+  \capa{2}{\draw[rama] (FF) -- node[accion,above] {Cerveza} (MFC);}
+  \capa{2}{\draw[rama] (FD) -- node[accion,below] {Cerveza} (MDC);}
+  \capa{2}{\draw[rama] (FF) -- node[accion,above] {Quiche} (MFQ);}
+  \capa{2}{\draw[rama] (FD) -- node[accion,below] {Quiche} (MDQ);}
+  % 3: el matón ve el desayuno, no el tipo: 2 conjuntos de información
+  \capa{3}{\draw[thick,dashed,tceegris] (MFC) -- node[jugador,fill=white,inner sep=1pt] {{\upshape\textbf{M}} (matón)} (MDC);}
+  \capa{3}{\draw[thick,dashed,tceegris] (MFQ) -- node[jugador,fill=white,inner sep=1pt] {{\upshape\textbf{M}} (matón)} (MDQ);}
+  % 4: el matón reta o no tras la cerveza, con los pagos (F; M)
+  \capa{4}{\node[terminal] (T1) at (-5.0,3.1) {};}
+  \capa{4}{\draw[rama] (MFC) -- node[accion,sloped,above,pos=0.5] {Retar} (T1);}
+  \capa{4}{\node[pagoi] at (T1) {$(1;\,0)$};}
+  \capa{4}{\node[terminal] (T2) at (-5.0,0.7) {};}
+  \capa{4}{\draw[rama] (MFC) -- node[accion,sloped,below,pos=0.5] {No retar} (T2);}
+  \capa{4}{\node[pagoi] at (T2) {$(3;\,1)$};}
+  \capa{4}{\node[terminal] (T3) at (-5.0,-0.7) {};}
+  \capa{4}{\draw[rama] (MDC) -- node[accion,sloped,below,pos=0.5] {No retar} (T3);}
+  \capa{4}{\node[pagoi] at (T3) {$(2;\,0)$};}
+  \capa{4}{\node[terminal] (T4) at (-5.0,-3.1) {};}
+  \capa{4}{\draw[rama] (MDC) -- node[accion,sloped,above,pos=0.5] {Retar} (T4);}
+  \capa{4}{\node[pagoi] at (T4) {$(0;\,1)$};}
+  % 5: el matón reta o no tras la quiche
+  \capa{5}{\node[terminal] (T5) at (5.0,3.1) {};}
+  \capa{5}{\draw[rama] (MFQ) -- node[accion,sloped,above,pos=0.5] {Retar} (T5);}
+  \capa{5}{\node[pagod] at (T5) {$(0;\,0)$};}
+  \capa{5}{\node[terminal] (T6) at (5.0,0.7) {};}
+  \capa{5}{\draw[rama] (MFQ) -- node[accion,sloped,below,pos=0.5] {No retar} (T6);}
+  \capa{5}{\node[pagod] at (T6) {$(2;\,1)$};}
+  \capa{5}{\node[terminal] (T7) at (5.0,-0.7) {};}
+  \capa{5}{\draw[rama] (MDQ) -- node[accion,sloped,below,pos=0.5] {No retar} (T7);}
+  \capa{5}{\node[pagod] at (T7) {$(3;\,0)$};}
+  \capa{5}{\node[terminal] (T8) at (5.0,-3.1) {};}
+  \capa{5}{\draw[rama] (MDQ) -- node[accion,sloped,above,pos=0.5] {Retar} (T8);}
+  \capa{5}{\node[pagod] at (T8) {$(1;\,1)$};}
+  % 6: equilibrio agrupador: los 2 tipos piden cerveza
+  \capa{6}{\draw[elegida] (FF) -- (MFC);}
+  \capa{6}{\draw[elegida] (FD) -- (MDC);}
+  % 7: tras la cerveza, el matón no reta (con 0,9 es fuerte)
+  \capa{7}{\draw[elegida] (MFC) -- (T2);}
+  \capa{7}{\draw[elegida] (MDC) -- (T3);}
+  % 8: tras la quiche, que no se ve en equilibrio, retaría (cree que es débil)
+  \capa{8}{\draw[elegida] (MFQ) -- (T5);}
+  \capa{8}{\draw[elegida] (MDQ) -- (T8);}
+  % 9: el equilibrio bayesiano perfecto que supera el criterio intuitivo
+  \capa{9}{\node[etiqueta,text=tceerojo,anchor=north,align=center] at (0,3.75) {EBP: los 2 piden cerveza; el matón no reta};}
+\end{tikzpicture}
+\end{document}

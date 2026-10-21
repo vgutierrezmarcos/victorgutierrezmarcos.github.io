@@ -1,0 +1,46 @@
+% La paradoja de la cadena de tiendas (Selten, 1978): el juego de cada ciudad k.
+% El entrante E_k elige No entrar, pagos (1, 5), o Entrar; si entra, la cadena C
+% elige Luchar, (0, 0), o Acomodar, (2, 2). Pagos (E_k, C), los de Selten (1978).
+% Inducción hacia atrás en una sola ciudad: C acomoda (2 > 0) y E_k entra (2 > 1).
+% Mismo estilo que juego-entrada.tex. Elaboración propia a partir de Selten (1978).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.2pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    pago/.style={etiqueta,below=2pt,font=\small},
+    elegida/.style={line width=1.8pt,tceerojo}]
+  \useasboundingbox (-3.3,-4.35) rectangle (5.4,0.55);
+  % 1: nodo del entrante de la ciudad k (raíz)
+  \capa{1}{\node[nodo,label={[jugador]right:{\upshape\textbf{E}$_k$} (entrante de la ciudad $k$)}] (E) at (0,0) {};}
+  % 2: rama «No entrar» y sus pagos
+  \capa{2}{\node[terminal] (N) at (-2.2,-1.9) {};}
+  \capa{2}{\draw[rama] (E) -- node[accion,above left] {No entrar} (N);}
+  \capa{2}{\node[pago] at (N) {$(1,\,5)$};}
+  % 3: rama «Entrar» y nodo de la cadena C
+  \capa{3}{\node[nodo,label={[jugador]right:{\upshape\textbf{C}} (cadena)}] (I) at (2.2,-1.9) {};}
+  \capa{3}{\draw[rama] (E) -- node[accion,above right] {Entrar} (I);}
+  % 4: rama «Luchar» y sus pagos
+  \capa{4}{\node[terminal] (L) at (0.9,-3.6) {};}
+  \capa{4}{\draw[rama] (I) -- node[accion,above left,pos=0.3] {Luchar} (L);}
+  \capa{4}{\node[pago] at (L) {$(0,\,0)$};}
+  % 5: rama «Acomodar» y sus pagos
+  \capa{5}{\node[terminal] (A) at (3.5,-3.6) {};}
+  \capa{5}{\draw[rama] (I) -- node[accion,above right] {Acomodar} (A);}
+  \capa{5}{\node[pago] at (A) {$(2,\,2)$};}
+  % 6: en la última ciudad, luchar no compensa (2 > 0)
+  \capa{6}{\draw[line width=1.4pt,tceerojo] ($(I)!0.62!(L)+(-0.2,-0.2)$) -- ++(0.4,0.4)
+    ($(I)!0.62!(L)+(-0.2,0.2)$) -- ++(0.4,-0.4);}
+  % 7: la cadena acomoda
+  \capa{7}{\draw[elegida] (I) -- (A);}
+  % 8: anticipándolo, el entrante entra (2 > 1)
+  \capa{8}{\draw[elegida] (E) -- (I);}
+  % 9: resultado en cada ciudad
+  \capa{9}{\node[etiqueta,text=tceerojo,anchor=west,align=left] at (-3.2,-3.05) {ENPS en cada ciudad:\\(Entrar, Acomodar)};}
+\end{tikzpicture}
+\end{document}

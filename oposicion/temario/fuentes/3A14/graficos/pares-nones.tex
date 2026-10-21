@@ -1,0 +1,29 @@
+% Mejores respuestas de pares o nones en el cuadrado unidad.
+% pi_1: probabilidad de que el jugador 1 saque 1 dedo; pi_2: la del jugador 2.
+% Gana el 1 si la suma es par (coinciden) y el 2 si es impar.
+% Jugador 1: 1 dedo da 2 pi_2 - 1 y 2 dedos 1 - 2 pi_2 -> saca 1 si pi_2 > 1/2.
+% Jugador 2: 1 dedo da 1 - 2 pi_1 y 2 dedos 2 pi_1 - 1 -> saca 1 si pi_1 < 1/2.
+% Único equilibrio de Nash, en mixtas: (pi_2, pi_1) = (1/2, 1/2); valor del juego, 0.
+% Mismo formato que inspeccion.tex. Elaboración propia a partir de Gibbons (1992), cap. 1.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=5cm,y=5cm]
+  \useasboundingbox (-0.16,-0.13) rectangle (1.32,1.16);
+  % 1: ejes y cuadrado unidad
+  \capa{1}{\draw[eje] (0,0) -- (1.15,0) node[below left=2pt and 0pt] {$\pi_2$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,1.12) node[left] {$\pi_1$};}
+  \capa{1}{\node[below left] at (0,0) {$0$};}
+  \capa{1}{\draw[guia] (1,0) node[below,text=black] {$1$} -- (1,1) -- (0,1) node[left,text=black] {$1$};}
+  % 2: mejor respuesta del jugador 1: quiere coincidir, saca 1 dedo si el 2 lo saca más de la mitad de las veces
+  \capa{2}{\draw[curva1] (0,0) -- (0.5,0) -- (0.5,1) -- (1,1) node[etiqueta,right,text=tceemorado] {$R_1$};}
+  % 3: mejor respuesta del jugador 2: quiere no coincidir, saca 1 dedo si el 1 lo saca menos de la mitad de las veces
+  \capa{3}{\draw[curva2] (1,0) -- (1,0.5) -- (0,0.5) -- (0,1) node[etiqueta,above right,text=tceeazul] {$R_2$};}
+  % 4: equilibrio de Nash en mixtas y sus proyecciones
+  \capa{4}{\node[below] at (0.5,0) {$\tfrac12$};}
+  \capa{4}{\node[left] at (0,0.5) {$\tfrac12$};}
+  \capa{4}{\node[punto,fill=tceerojo] at (0.5,0.5) {};}
+  \capa{4}{\node[etiqueta,text=tceerojo,above right] at (0.5,0.5) {EN};}
+\end{tikzpicture}
+\end{document}

@@ -24852,7 +24852,23 @@ Pares o nones y la inspecciÃ³n: estrategias mixtas
 \emph on
 Juego
 \emph default
-: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero. 
+: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:pares-nones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -24860,7 +24876,7 @@ Juego
 \emph on
 Equilibrio
 \emph default
-: no hay EN en puras (el que pierde siempre quiere cambiar); en el Ãºnico EN, cada uno juega cada opciÃ³n al 50
+: no hay EN en puras (el que pierde siempre quiere cambiar: en ninguna casilla estÃ¡n subrayados los 2 pagos); en el Ãºnico EN, cada uno juega cada opciÃ³n al 50
 \begin_inset space ~
 
 \end_inset
@@ -24877,7 +24893,39 @@ parencite{VonNeumann1928Theorie}
 
 \end_inset
 
-. 
+. Las mejores respuestas, 
+\begin_inset Formula $R_1$
+\end_inset
+
+ y 
+\begin_inset Formula $R_2$
+\end_inset
+
+, solo se cortan en 
+\begin_inset Formula $(1/2,\,1/2)$
+\end_inset
+
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pares-nones"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): con 
+\begin_inset Formula $\pi_2>1/2$
+\end_inset
+
+, al 1 le conviene sacar 1 dedo siempre, y al 2, que quiere no coincidir, le conviene entonces sacar 2. 
 \end_layout
 
 \begin_layout Itemize
@@ -24899,6 +24947,26 @@ caps "false"
 noprefix "false"
 nolink "false"
 
+\end_inset
+
+ y grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:inspeccion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, con el EN en 
+\begin_inset Formula $(1/2,\,3/4)$
 \end_inset
 
 ), encarecer la vigilancia no cambia cuÃ¡nto vigila la empresa, sino cuÃ¡nto se escaquea el trabajador. 
@@ -24958,6 +25026,480 @@ la inspecciÃ³n tributaria y la evasiÃ³n.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pares o nones (jugador 1, filas, gana si la suma es par; jugador 2, columnas, si es impar)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:pares-nones"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.6cm">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+1 dedo
+\series default
+ (
+\begin_inset Formula $\pi_2$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+2 dedos
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+1 dedo
+\series default
+ (
+\begin_inset Formula $\pi_1$
+\end_inset
+
+) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(\underline{1},-1)$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-1,\underline{1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+2 dedos
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(-1,\underline{1})$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset Formula $(\underline{1},-1)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+hhline
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+
+\end_inset
+
+|-|-|
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{VonNeumann1928Theorie}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~1]{Gibbons1992Game}
+\end_layout
+
+\end_inset
+
+. Subrayadas, las mejores respuestas; ninguna casilla tiene las 2, asÃ­ que no hay equilibrio en puras.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mejores respuestas en pares o nones y equilibrio en mixtas
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pares-nones"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.5
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+pares-nones
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia. 
+\begin_inset Formula $\pi_1$
+\end_inset
+
+ y 
+\begin_inset Formula $\pi_2$
+\end_inset
+
+, probabilidades de que cada jugador saque 1 dedo.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 HernÃ¡n CortÃ©s quema las naves: compromiso
 \end_layout
@@ -24985,7 +25527,39 @@ CortÃ©s
 \emph on
 Equilibrio
 \emph default
-: el ENPS empieza por destruir los barcos: tener menos opciones da un pago mayor 
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:quemar-naves"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+, con pagos ilustrativos): con barcos, ante el ataque, CortÃ©s se retira (
+\begin_inset Formula $0>-1$
+\end_inset
+
+), y el rival ataca (
+\begin_inset Formula $1>0$
+\end_inset
+
+); sin barcos, el rival no ataca (
+\begin_inset Formula $0>-1$
+\end_inset
+
+). El ENPS empieza por destruir los barcos (
+\begin_inset Formula $2>0$
+\end_inset
+
+): tener menos opciones da un pago mayor 
 \begin_inset ERT
 status collapsed
 
@@ -25086,6 +25660,148 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+HernÃ¡n 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+CortÃ©s
+\end_layout
+
+\end_inset
+
+ quema las naves: renunciar a la retirada disuade el ataque
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:quemar-naves"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.8
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+quemar-naves
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Schelling1960Strategy}
+\end_layout
+
+\end_inset
+
+; pagos ilustrativos, (CortÃ©s; rival). En rojo, las ramas elegidas por inducciÃ³n hacia atrÃ¡s.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 La paradoja de la cadena de tiendas: repeticiÃ³n finita y reputaciÃ³n
 \end_layout
@@ -25123,7 +25839,35 @@ nolink "false"
 
 \end_inset
 
-). 
+), con los pagos de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Selten1978Chain}
+\end_layout
+
+\end_inset
+
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cadena-tiendas"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): si el entrante no entra, gana 1 y la cadena 5; si entra, la cadena puede acomodar (2 cada uno) o luchar (0 cada uno). 
 \end_layout
 
 \begin_layout Itemize
@@ -25131,9 +25875,47 @@ nolink "false"
 \emph on
 Equilibrio
 \emph default
-: en la ciudad 20 la cadena acomoda, porque ya no hay futuro que proteger; sabiÃ©ndolo, en la 19 tampoco le sirve luchar, y asÃ­ hasta la primera. En el Ãºnico ENPS, todos entran y la cadena acomoda siempre. 
+ (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cadena-induccion"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+): 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+en la ciudad 20 la cadena acomoda (
+\begin_inset Formula $2>0$
+\end_inset
+
+), porque ya no hay futuro que proteger, y el entrante entra (
+\begin_inset Formula $2>1$
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout Itemize
+sabiÃ©ndolo, en la 19 tampoco le sirve luchar: lo que pase en la 20 ya estÃ¡ decidido, y luchar no compra reputaciÃ³n; 
+\end_layout
+
+\begin_layout Itemize
+y asÃ­ hasta la primera. En el Ãºnico ENPS, todos entran y la cadena acomoda siempre. 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \emph on
@@ -25232,6 +26014,270 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La cadena de tiendas: el juego de cada ciudad
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cadena-tiendas"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.55
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+cadena-tiendas
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia con los pagos de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Selten1978Chain}
+\end_layout
+
+\end_inset
+
+, (entrante; cadena).
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La cadena de tiendas: inducciÃ³n hacia atrÃ¡s de la ciudad 20 a la 1
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cadena-induccion"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.9
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+cadena-tiendas-induccion
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Selten1978Chain}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 El juego del ultimÃ¡tum: negociaciÃ³n y equidad
 \end_layout
@@ -25253,7 +26299,31 @@ parencite{GuthSchmittbergerSchwarze1982Ultimatum}
 
 \end_inset
 
-: el jugador 1 propone cÃ³mo repartir una cantidad; el 2 acepta, y se reparte asÃ­, o rechaza, y ninguno cobra nada. 
+: el jugador 1 propone cÃ³mo repartir una cantidad, por ejemplo 10 euros, y ofrece 
+\begin_inset Formula $x$
+\end_inset
+
+ al 2; el 2 acepta, y se reparte asÃ­, 
+\begin_inset Formula $(10-x,\,x)$
+\end_inset
+
+, o rechaza, y ninguno cobra nada (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:ultimatum"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+; el abanico recoge todas las ofertas posibles). 
 \end_layout
 
 \begin_layout Itemize
@@ -25261,7 +26331,11 @@ parencite{GuthSchmittbergerSchwarze1982Ultimatum}
 \emph on
 Equilibrio
 \emph default
-: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva y el ENPS es ofrecerle lo mÃ­nimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero. 
+: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva (
+\begin_inset Formula $x>0$
+\end_inset
+
+) y el ENPS es ofrecerle lo mÃ­nimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero. 
 \end_layout
 
 \begin_layout Itemize
@@ -25331,6 +26405,138 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El juego del ultimÃ¡tum: el equilibrio frente al laboratorio
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:ultimatum"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.6
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+ultimatum
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{GuthSchmittbergerSchwarze1982Ultimatum}
+\end_layout
+
+\end_inset
+
+. Pagos (1, 2); en rojo, el ENPS, y en dorado, dÃ³nde se concentran las ofertas en el laboratorio.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Cerveza o quiche: seÃ±alizaciÃ³n y criterio intuitivo
 \end_layout
@@ -25356,7 +26562,23 @@ parencite{ChoKreps1987Signaling}
 \begin_inset Formula $0{,}9$
 \end_inset
 
-) o dÃ©bil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al dÃ©bil la quiche (1 de utilidad por desayunar lo que le gusta). Un matÃ³n, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los dÃ©biles. Al forastero, que no le reten le vale 2. 
+) o dÃ©bil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al dÃ©bil la quiche (1 de utilidad por desayunar lo que le gusta). Un matÃ³n, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los dÃ©biles. Al forastero, que no le reten le vale 2; al matÃ³n, acertar (retar a un dÃ©bil o dejar en paz a un fuerte), 1 (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cerveza-quiche"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -25411,6 +26633,138 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cerveza o quiche: el equilibrio agrupador que supera el criterio intuitivo
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cerveza-quiche"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.85
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+cerveza-quiche
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{ChoKreps1987Signaling}
+\end_layout
+
+\end_inset
+
+. Pagos (forastero; matÃ³n); las lÃ­neas discontinuas unen los nodos que el matÃ³n no distingue. En rojo, el EBP en el que los 2 tipos piden cerveza: tras la quiche, que no se ve en equilibrio, el matÃ³n cree que el forastero es dÃ©bil y retarÃ­a.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 El juicio de 
 \begin_inset Flex Autor
@@ -25448,7 +26802,23 @@ SalomÃ³n
 \emph on
 Equilibrio
 \emph default
-: la verdadera madre, que valora la vida del niÃ±o por encima de todo, renuncia a Ã©l para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niÃ±o a la que renunciÃ³. 
+: la verdadera madre, que valora la vida del niÃ±o por encima de todo, renuncia a Ã©l para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niÃ±o a la que renunciÃ³ (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:salomon"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -25556,6 +26926,276 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+El juicio de 
+\begin_inset Flex Autor
+status collapsed
+
+\begin_layout Plain Layout
+SalomÃ³n
+\end_layout
+
+\end_inset
+
+ como mecanismo: quÃ© responde cada tipo y quÃ© aprende el rey
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:salomon"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="4">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="2.8cm">
+<column alignment="left" valignment="middle" width="4.0cm">
+<column alignment="left" valignment="middle" width="3.4cm">
+<column alignment="left" valignment="middle" width="3.4cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Tipo
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+QuÃ© prefiere
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Responde, si la orden la sorprende
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Responde, si entiende el mecanismo
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Verdadera madre 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+que el niÃ±o viva, aunque sea con la otra 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+renuncia 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+renuncia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Falsa madre 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+que la otra no se quede con el niÃ±o 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+acepta el reparto 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+renuncia
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\series bold
+QuÃ© aprende el rey
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+los mensajes separan los tipos: sabe quiÃ©n es la madre 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+no distingue: los 2 mensajes son iguales
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 1 Reyes 3, 16-28.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Las licitaciones de petrÃ³leo del golfo de MÃ©xico: la maldiciÃ³n del ganador
 \end_layout
@@ -25585,7 +27225,27 @@ parencite{CapenClappCampbell1971Competitive}
 \emph on
 Equilibrio
 \emph default
-: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los aÃ±os 50 y 60 rendÃ­an de forma sistemÃ¡tica menos de lo esperado. Gana quien mÃ¡s ha sobrestimado el valor, y quien puja su estimaciÃ³n paga, en promedio, de mÃ¡s; el pujador racional descuenta esa informaciÃ³n y puja por debajo de su estimaciÃ³n, y tanto mÃ¡s cuantos mÃ¡s rivales tiene 
+: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los aÃ±os 50 y 60 rendÃ­an de forma sistemÃ¡tica menos de lo esperado. Gana quien mÃ¡s ha sobrestimado el valor, y quien puja su estimaciÃ³n paga, en promedio, de mÃ¡s (grÃ¡fico
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:maldicion-ganador"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+: la mÃ¡s alta de 5 estimaciones supera el valor real, en promedio, en 
+\begin_inset Formula $2/3$
+\end_inset
+
+ del error mÃ¡ximo); el pujador racional descuenta esa informaciÃ³n y puja por debajo de su estimaciÃ³n, y tanto mÃ¡s cuantos mÃ¡s rivales tiene 
 \begin_inset ERT
 status collapsed
 
@@ -25688,6 +27348,174 @@ status collapsed
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La maldiciÃ³n del ganador: la estimaciÃ³n mÃ¡s alta sobrestima el valor comÃºn
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:maldicion-ganador"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+grafico
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+0.65
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+maldicion-ganador
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Wilson1977Bidding}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[cap.~6]{Krishna2010Auction}
+\end_layout
+
+\end_inset
+
+. Cada estimaciÃ³n es el valor real 
+\begin_inset Formula $V$
+\end_inset
+
+ mÃ¡s un error uniforme entre 
+\begin_inset Formula $-a$
+\end_inset
+
+ y 
+\begin_inset Formula $a$
+\end_inset
+
+; la mÃ¡s alta de 
+\begin_inset Formula $n$
+\end_inset
+
+ supera 
+\begin_inset Formula $V$
+\end_inset
+
+, en promedio, en 
+\begin_inset Formula $a\,(n-1)/(n+1)$
+\end_inset
+
+, tanto mÃ¡s cuantos mÃ¡s pujadores.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 La jarra de monedas: la maldiciÃ³n del ganador en el aula
 \end_layout
@@ -25729,7 +27557,23 @@ parencite{Thaler1988Anomalies}
 
 \end_inset
 
-. Ganaba quien mÃ¡s habÃ­a sobrestimado, y no lo descontaba al pujar. 
+ (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:jarra"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). Ganaba quien mÃ¡s habÃ­a sobrestimado, y no lo descontaba al pujar. 
 \end_layout
 
 \begin_layout Itemize
@@ -25770,6 +27614,248 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La jarra de monedas: medias de las subastas en clase (dÃ³lares)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:jarra"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="6.4cm">
+<column alignment="center" valignment="middle" width="2.4cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Concepto
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+DÃ³lares
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Valor de la jarra 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+8,00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+EstimaciÃ³n media de los alumnos 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+5,13
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Puja ganadora media 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+10,01
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Ganancia media del ganador
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $-2{,}01$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{BazermanSamuelson1983Won}
+\end_layout
+
+\end_inset
+
+, recogido en 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Thaler1988Anomalies}
+\end_layout
+
+\end_inset
+
+: 48 subastas a sobre cerrado en 12 clases de MBA.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 Las subastas del 3G de 2000: atraer pujadores
 \end_layout
@@ -25791,7 +27877,23 @@ parencite{Klemperer2002WhatReallyMatters}
 
 \end_inset
 
-. 
+ (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:subastas-3g"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -25898,6 +28000,290 @@ status collapsed
 . 
 \end_layout
 
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Las subastas europeas del 3G de 2000: recaudaciÃ³n y nÃºmero de pujadores
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:subastas-3g"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="5" columns="3">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="left" valignment="middle" width="8.0cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+PaÃ­s
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Euros por habitante
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+QuÃ© la explica
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Reino Unido 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+650 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+5 licencias para 4 instalados: al menos una iba a un entrante, y los entrantes acudieron
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Alemania 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+615 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mÃ¡s pujadores que licencias
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] PaÃ­ses Bajos 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+170 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+tantas licencias como instalados: los entrantes apenas tenÃ­an opciones
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] Suiza 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+uniones y retiradas de Ãºltima hora: tantos pujadores como licencias, casi al precio de salida
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite[tabla~1]{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{BinmoreKlemperer2002Biggest}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 La subasta alemana de espectro de 1999: pujas que hablan
 \end_layout
@@ -25953,7 +28339,23 @@ parencite{Klemperer2002WhatReallyMatters}
 
 \end_inset
 
-. 
+ (tabla
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:subasta-alemana"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+). 
 \end_layout
 
 \begin_layout Itemize
@@ -26022,6 +28424,348 @@ status collapsed
 \end_inset
 
 . 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+La subasta alemana de espectro de 1999, ronda a ronda (millones de marcos por megahercio)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:subasta-alemana"
+
+\end_inset
+
+ 
+\begin_inset Tabular 
+<lyxtabular version="3" rows="4" columns="5">
+<features booktabs="true" tabularvalignment="middle" tabularwidth="0pt">
+<column alignment="left" valignment="middle" width="1.6cm">
+<column alignment="left" valignment="middle" width="2.6cm">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="center" valignment="middle" width="2.4cm">
+<column alignment="left" valignment="middle" width="4.4cm">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+rowcolor{tceeazulpalido}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Ronda
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Puja
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Bloques 1 a 5
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Bloques 6 a 10
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\series bold
+Mensaje
+\series default
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Mannesmann 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+18,18 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+Â«con un 10
+\begin_inset space ~
+
+\end_inset
+
+% mÃ¡s en los bloques 1 a 5, los 2 pagamos 20Â»
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 2 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+T-Mobil 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+— 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+mensaje recibido
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+[0.3em] 
+\series bold
+Final
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+nadie mÃ¡s puja 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+T-Mobil,
+\begin_inset Newline newline
+\end_inset
+
+a 20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+cellcolor{tceesalvia}
+\end_layout
+
+\end_inset
+
+Mannesmann,
+\begin_inset Newline newline
+\end_inset
+
+a 20 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Standard
+reparto a partes iguales, sin competir
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Flex Fuente
+status collapsed
+
+\begin_layout Plain Layout
+elaboraciÃ³n propia a partir de 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textcite{Klemperer2002WhatReallyMatters}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

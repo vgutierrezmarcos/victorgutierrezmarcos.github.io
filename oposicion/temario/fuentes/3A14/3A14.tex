@@ -1807,9 +1807,9 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \subsection*{Pares o nones y la inspección: estrategias mixtas}
 
 \begin{itemize}
-\item \emph{Juego}: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero.
-\item \emph{Equilibrio}: no hay EN en puras (el que pierde siempre quiere cambiar); en el único EN, cada uno juega cada opción al 50~\%, y el valor del juego es 0 \parencite{VonNeumann1928Theorie}.
-\item \emph{Moraleja}: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla~\ref{tab:inspeccion}), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.
+\item \emph{Juego}: cada jugador saca a la vez 1 o 2 dedos; si la suma es par gana el 1 y, si es impar, el 2, que paga 1 al otro. Es de suma cero (tabla~\ref{tab:pares-nones}).
+\item \emph{Equilibrio}: no hay EN en puras (el que pierde siempre quiere cambiar: en ninguna casilla están subrayados los 2 pagos); en el único EN, cada uno juega cada opción al 50~\%, y el valor del juego es 0 \parencite{VonNeumann1928Theorie}. Las mejores respuestas, $R_1$ y $R_2$, solo se cortan en $(1/2,\,1/2)$ (gráfico~\ref{fig:pares-nones}): con $\pi_2>1/2$, al 1 le conviene sacar 1 dedo siempre, y al 2, que quiere no coincidir, le conviene entonces sacar 2.
+\item \emph{Moraleja}: cuando a uno le conviene que el otro no le adivine, lo racional es ser impredecible. Las probabilidades de cada uno dependen de los pagos del otro: en la inspección (tabla~\ref{tab:inspeccion} y gráfico~\ref{fig:inspeccion}, con el EN en $(1/2,\,3/4)$), encarecer la vigilancia no cambia cuánto vigila la empresa, sino cuánto se escaquea el trabajador.
 \item \emph{En el temario}:
   \begin{itemize}
   \item los penaltis \parencite{PalaciosHuerta2003Professionals};
@@ -1818,57 +1818,133 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
   \end{itemize}
 \end{itemize}
 
+\begin{table}[H]
+\centering
+\caption{Pares o nones (jugador 1, filas, gana si la suma es par; jugador 2, columnas, si es impar)}\label{tab:pares-nones}
+\begin{tabular}{>{\centering\arraybackslash}m{2.4cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{\textbf{1 dedo} ($\pi_2$)} & \multicolumn{1}{c}{\textbf{2 dedos}}\\
+\hhline{~|-|-|}
+\textbf{1 dedo} ($\pi_1$) & $(\underline{1},-1)$ & $(-1,\underline{1})$\\
+\hhline{~|-|-|}
+\textbf{2 dedos} & $(-1,\underline{1})$ & $(\underline{1},-1)$\\
+\hhline{~|-|-|}
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{VonNeumann1928Theorie} y \textcite[cap.~1]{Gibbons1992Game}. Subrayadas, las mejores respuestas; ninguna casilla tiene las 2, así que no hay equilibrio en puras.}
+\end{table}
+\begin{figure}[H]
+\centering
+\caption{Mejores respuestas en pares o nones y equilibrio en mixtas}\label{fig:pares-nones}
+\grafico[0.5\textwidth]{pares-nones}
+\fuente{elaboración propia. $\pi_1$ y $\pi_2$, probabilidades de que cada jugador saque 1 dedo.}
+\end{figure}
+
 \subsection*{Hernán Cortés quema las naves: compromiso}
 
 \begin{itemize}
 \item \emph{Juego}: un ejército desembarca y decide si conserva los barcos o los destruye; después, el rival decide si ataca, y el ejército, si lucha o se retira. Con los barcos, retirarse es la mejor respuesta al ataque, y el rival, que lo anticipa, ataca; sin ellos, la retirada no existe, luchar es la única opción y el rival, que lo sabe, no ataca. Hernán \autor{Cortés} hundió sus barcos en 1519, al llegar a México.
-\item \emph{Equilibrio}: el ENPS empieza por destruir los barcos: tener menos opciones da un pago mayor \parencite{Schelling1960Strategy}.
+\item \emph{Equilibrio} (gráfico~\ref{fig:quemar-naves}, con pagos ilustrativos): con barcos, ante el ataque, Cortés se retira ($0>-1$), y el rival ataca ($1>0$); sin barcos, el rival no ataca ($0>-1$). El ENPS empieza por destruir los barcos ($2>0$): tener menos opciones da un pago mayor \parencite{Schelling1960Strategy}.
 \item \emph{Moraleja}: «Quemar las naves»: un compromiso es creíble cuando es irreversible y cambia lo que a uno le conviene hacer después.
 \item \emph{En el temario}: la capacidad como disuasión de la entrada \vertema{3.A.15} (el compromiso de \textup{I}, gráfico~\ref{fig:juego-entrada-compromiso}), el liderazgo de \autor{Stackelberg} \vertema{3.A.19}, la política comercial estratégica \vertema{3.B.8} y la independencia del banco central y las reglas \vertema{3.A.36}.
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{Hernán \autor{Cortés} quema las naves: renunciar a la retirada disuade el ataque}\label{fig:quemar-naves}
+\grafico[0.8\textwidth]{quemar-naves}
+\fuente{elaboración propia a partir de \textcite{Schelling1960Strategy}; pagos ilustrativos, (Cortés; rival). En rojo, las ramas elegidas por inducción hacia atrás.}
+\end{figure}
+
 \subsection*{La paradoja de la cadena de tiendas: repetición finita y reputación}
 
 \begin{itemize}
-\item \emph{Juego} \parencite{Selten1978Chain}: una cadena tiene tiendas en 20 ciudades y en cada una aparece, por turnos, un posible entrante. En cada ciudad se juega el juego de entrada (gráfico~\ref{fig:juego-entrada}).
-\item \emph{Equilibrio}: en la ciudad 20 la cadena acomoda, porque ya no hay futuro que proteger; sabiéndolo, en la 19 tampoco le sirve luchar, y así hasta la primera. En el único ENPS, todos entran y la cadena acomoda siempre.
+\item \emph{Juego} \parencite{Selten1978Chain}: una cadena tiene tiendas en 20 ciudades y en cada una aparece, por turnos, un posible entrante. En cada ciudad se juega el juego de entrada (gráfico~\ref{fig:juego-entrada}), con los pagos de \textcite{Selten1978Chain} (gráfico~\ref{fig:cadena-tiendas}): si el entrante no entra, gana 1 y la cadena 5; si entra, la cadena puede acomodar (2 cada uno) o luchar (0 cada uno).
+\item \emph{Equilibrio} (gráfico~\ref{fig:cadena-induccion}):
+  \begin{itemize}
+  \item en la ciudad 20 la cadena acomoda ($2>0$), porque ya no hay futuro que proteger, y el entrante entra ($2>1$);
+  \item sabiéndolo, en la 19 tampoco le sirve luchar: lo que pase en la 20 ya está decidido, y luchar no compra reputación;
+  \item y así hasta la primera. En el único ENPS, todos entran y la cadena acomoda siempre.
+  \end{itemize}
 \item \emph{Moraleja}: la paradoja es que la intuición (y la práctica) dice que a la cadena le convendría luchar al principio para ganarse la fama de agresiva. Se resuelve con algo de información incompleta: si hay una pequeña probabilidad de que la cadena sea agresiva por naturaleza, a la que no lo es le conviene imitarla \parencites{KrepsWilson1982Reputation}{MilgromRoberts1982Predation}.
 \item \emph{En el temario}: la depredación y la reputación \vertema{3.A.15}, la colusión con horizonte finito \vertema{3.A.19} y la reputación de los bancos centrales \vertema{3.A.36}.
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{La cadena de tiendas: el juego de cada ciudad}\label{fig:cadena-tiendas}
+\grafico[0.55\textwidth]{cadena-tiendas}
+\fuente{elaboración propia con los pagos de \textcite{Selten1978Chain}, (entrante; cadena).}
+\end{figure}
+\begin{figure}[H]
+\centering
+\caption{La cadena de tiendas: inducción hacia atrás de la ciudad 20 a la 1}\label{fig:cadena-induccion}
+\grafico[0.9\textwidth]{cadena-tiendas-induccion}
+\fuente{elaboración propia a partir de \textcite{Selten1978Chain}.}
+\end{figure}
+
 \subsection*{El juego del ultimátum: negociación y equidad}
 
 \begin{itemize}
-\item \emph{Juego} \parencite{GuthSchmittbergerSchwarze1982Ultimatum}: el jugador 1 propone cómo repartir una cantidad; el 2 acepta, y se reparte así, o rechaza, y ninguno cobra nada.
-\item \emph{Equilibrio}: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva y el ENPS es ofrecerle lo mínimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero.
+\item \emph{Juego} \parencite{GuthSchmittbergerSchwarze1982Ultimatum}: el jugador 1 propone cómo repartir una cantidad, por ejemplo 10 euros, y ofrece $x$ al 2; el 2 acepta, y se reparte así, $(10-x,\,x)$, o rechaza, y ninguno cobra nada (gráfico~\ref{fig:ultimatum}; el abanico recoge todas las ofertas posibles).
+\item \emph{Equilibrio}: con jugadores que solo se preocupan por su dinero, el 2 acepta cualquier cantidad positiva ($x>0$) y el ENPS es ofrecerle lo mínimo. En el laboratorio, muchas propuestas se acercan a la mitad y las ofertas muy bajas se rechazan con frecuencia, aunque rechazar cueste dinero.
 \item \emph{Moraleja}: las preferencias por la equidad y la reciprocidad pesan; el poder de negociación no es solo cuestión de quién propone (\ref{sec:negociacion}).
 \item \emph{En el temario}: la economía conductual \vertema{3.A.1}, la negociación salarial \vertema{3.A.27} y la crítica distributiva del criterio de \autor{Pareto} \vertema{3.A.22}.
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{El juego del ultimátum: el equilibrio frente al laboratorio}\label{fig:ultimatum}
+\grafico[0.6\textwidth]{ultimatum}
+\fuente{elaboración propia a partir de \textcite{GuthSchmittbergerSchwarze1982Ultimatum}. Pagos (1, 2); en rojo, el ENPS, y en dorado, dónde se concentran las ofertas en el laboratorio.}
+\end{figure}
+
 \subsection*{Cerveza o quiche: señalización y criterio intuitivo}
 
 \begin{itemize}
-\item \emph{Juego} \parencite{ChoKreps1987Signaling}: la Naturaleza decide si un forastero es fuerte (con probabilidad $0{,}9$) o débil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al débil la quiche (1 de utilidad por desayunar lo que le gusta). Un matón, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los débiles. Al forastero, que no le reten le vale 2.
+\item \emph{Juego} \parencite{ChoKreps1987Signaling}: la Naturaleza decide si un forastero es fuerte (con probabilidad $0{,}9$) o débil. El forastero, que conoce su tipo, elige el desayuno: al fuerte le gusta la cerveza y al débil la quiche (1 de utilidad por desayunar lo que le gusta). Un matón, que ve el desayuno pero no el tipo, decide si le reta: solo quiere pelear con los débiles. Al forastero, que no le reten le vale 2; al matón, acertar (retar a un débil o dejar en paz a un fuerte), 1 (gráfico~\ref{fig:cerveza-quiche}).
 \item \emph{Equilibrio}: hay 2 EBP agrupadores. En el primero, los 2 tipos piden cerveza y el matón no reta; en el segundo, los 2 piden quiche y no reta, sostenido por la creencia de que quien pide cerveza es débil.
 \item \emph{Criterio intuitivo}: el segundo no lo supera. Al débil, pedir cerveza nunca le compensaría (ganaría como mucho 2, menos que los 3 que obtiene pidiendo quiche sin ser retado); al fuerte sí, si el matón le creyera fuerte (3 en lugar de 2). Así que quien pide cerveza debe ser tomado por fuerte, y el fuerte se desvía.
 \item \emph{Moraleja}: lo que uno hace revela lo que es, y las creencias razonables sobre lo que no ocurre en equilibrio deciden el resultado: «Cuando el río suena, agua lleva».
 \item \emph{En el temario}: la educación como señal \vertema{3.A.13} y el precio límite como señal \vertema{3.A.15}.
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{Cerveza o quiche: el equilibrio agrupador que supera el criterio intuitivo}\label{fig:cerveza-quiche}
+\grafico[0.85\textwidth]{cerveza-quiche}
+\fuente{elaboración propia a partir de \textcite{ChoKreps1987Signaling}. Pagos (forastero; matón); las líneas discontinuas unen los nodos que el matón no distingue. En rojo, el EBP en el que los 2 tipos piden cerveza: tras la quiche, que no se ve en equilibrio, el matón cree que el forastero es débil y retaría.}
+\end{figure}
+
 \subsection*{El juicio de \autor{Salomón}: diseño de mecanismos}
 
 \begin{itemize}
 \item \emph{Juego} (1 Reyes 3, 16-28): 2 mujeres se presentan ante el rey \autor{Salomón} con un niño y las 2 dicen ser su madre. El rey no puede saber cuál dice la verdad: el tipo de cada una es información privada. Ordena partir al niño por la mitad y dar una mitad a cada una.
-\item \emph{Equilibrio}: la verdadera madre, que valora la vida del niño por encima de todo, renuncia a él para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niño a la que renunció.
+\item \emph{Equilibrio}: la verdadera madre, que valora la vida del niño por encima de todo, renuncia a él para salvarlo; la otra acepta el reparto. Con lo que hace, cada una revela su tipo, y el rey entrega el niño a la que renunció (tabla~\ref{tab:salomon}).
 \item \emph{Moraleja}: es un mecanismo en el que el mensaje (aceptar o renunciar) revela lo que el diseñador no ve. Pero funcionó por sorpresa: si la falsa madre hubiera entendido las reglas, también habría renunciado, y el rey no habría sabido nada. Un mecanismo tiene que funcionar \emph{en equilibrio}, cuando todos lo entienden: es la compatibilidad de incentivos, $\mathrm{IC}_i$, y por eso el diseño moderno usa pagos, como los mecanismos VCG (\ref{sec:diseno-mecanismos}).
 \item \emph{En el temario}: la autoselección con menús de contratos \vertema{3.A.13}, los mecanismos de \autor{Clarke}-\autor{Groves} para los bienes públicos \vertema{3.A.23} y el teorema de \autor{Gibbard}-\autor{Satterthwaite} \vertema{3.A.24}.
 \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El juicio de \autor{Salomón} como mecanismo: qué responde cada tipo y qué aprende el rey}\label{tab:salomon}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.8cm}>{\raggedright\arraybackslash}m{4.0cm}>{\raggedright\arraybackslash}m{3.4cm}>{\raggedright\arraybackslash}m{3.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Tipo} & \textbf{Qué prefiere} & \textbf{Responde, si la orden la sorprende} & \textbf{Responde, si entiende el mecanismo}\\
+\midrule
+Verdadera madre & que el niño viva, aunque sea con la otra & renuncia & renuncia\\
+\addlinespace[0.3em]
+Falsa madre & que la otra no se quede con el niño & acepta el reparto & renuncia\\
+\addlinespace[0.3em]
+\textbf{Qué aprende el rey} & & \cellcolor{tceesalvia}los mensajes separan los tipos: sabe quién es la madre & no distingue: los 2 mensajes son iguales\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de 1 Reyes 3, 16-28.}
+\end{table}
 
 \subsection*{Las licitaciones de petróleo del golfo de México: la maldición del ganador}
 
 \begin{itemize}
 \item \emph{Juego} \parencite{CapenClappCampbell1971Competitive}: el Gobierno de Estados Unidos subastaba a sobre cerrado los derechos de explotación de yacimientos en el golfo de México. Lo que hay en el subsuelo vale casi lo mismo para todas las petroleras, pero nadie lo sabe: cada una lo estima con sus propios estudios geológicos. Es un valor común.
-\item \emph{Equilibrio}: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más; el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene \parencite{Wilson1977Bidding} (anexo~\ref{anexo:subastas}).
+\item \emph{Equilibrio}: 3 ingenieros de una petrolera observaron que los yacimientos ganados en las subastas de los años 50 y 60 rendían de forma sistemática menos de lo esperado. Gana quien más ha sobrestimado el valor, y quien puja su estimación paga, en promedio, de más (gráfico~\ref{fig:maldicion-ganador}: la más alta de 5 estimaciones supera el valor real, en promedio, en $2/3$ del error máximo); el pujador racional descuenta esa información y puja por debajo de su estimación, y tanto más cuantos más rivales tiene \parencite{Wilson1977Bidding} (anexo~\ref{anexo:subastas}).
 \item \emph{Moraleja}: «No es oro todo lo que reluce»: ganar es una mala noticia sobre lo que vale lo ganado. Por eso al vendedor le conviene revelar lo que sabe del bien: reduce el miedo de los pujadores a la maldición y sube las pujas \parencite{MilgromWeber1982Theory}.
 \item \emph{En el temario}:
   \begin{itemize}
@@ -1878,19 +1954,43 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
   \end{itemize}
 \end{itemize}
 
+\begin{figure}[H]
+\centering
+\caption{La maldición del ganador: la estimación más alta sobrestima el valor común}\label{fig:maldicion-ganador}
+\grafico[0.65\textwidth]{maldicion-ganador}
+\fuente{elaboración propia a partir de \textcite{Wilson1977Bidding} y \textcite[cap.~6]{Krishna2010Auction}. Cada estimación es el valor real $V$ más un error uniforme entre $-a$ y $a$; la más alta de $n$ supera $V$, en promedio, en $a\,(n-1)/(n+1)$, tanto más cuantos más pujadores.}
+\end{figure}
+
 \subsection*{La jarra de monedas: la maldición del ganador en el aula}
 
 \begin{itemize}
 \item \emph{Juego} \parencite{BazermanSamuelson1983Won}: en 12 clases de MBA de la Universidad de Boston se subastaron a sobre cerrado, 4 veces en cada una, jarras de monedas (o de clips) que valían 8 dólares. Cada alumno estimaba a ojo lo que había en la jarra: es un valor común.
-\item \emph{Qué pasó}: los alumnos estimaban de media que la jarra valía 5,13 dólares, por debajo de su valor, pero la puja ganadora media fue de 10,01: quien ganaba perdía, en promedio, 2,01 dólares \parencite{Thaler1988Anomalies}. Ganaba quien más había sobrestimado, y no lo descontaba al pujar.
+\item \emph{Qué pasó}: los alumnos estimaban de media que la jarra valía 5,13 dólares, por debajo de su valor, pero la puja ganadora media fue de 10,01: quien ganaba perdía, en promedio, 2,01 dólares \parencite{Thaler1988Anomalies} (tabla~\ref{tab:jarra}). Ganaba quien más había sobrestimado, y no lo descontaba al pujar.
 \item \emph{Moraleja}: la maldición del ganador no es solo cosa de petroleras; aparece en cuanto hay valor común y nadie corrige por el hecho de ganar. En los experimentos, los pujadores sin experiencia caen en ella de forma sistemática \parencite{KagelLevin1986Winners}.
 \item \emph{En el temario}: las desviaciones de la racionalidad en las decisiones con incertidumbre \vertema{3.A.10}.
 \end{itemize}
 
+\begin{table}[H]
+\centering
+\caption{La jarra de monedas: medias de las subastas en clase (dólares)}\label{tab:jarra}
+\begin{tabular}{>{\raggedright\arraybackslash}m{6.4cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Concepto} & \textbf{Dólares}\\
+\midrule
+Valor de la jarra & 8,00\\
+Estimación media de los alumnos & 5,13\\
+Puja ganadora media & 10,01\\
+\addlinespace[0.3em]
+\cellcolor{tceesalvia}\textbf{Ganancia media del ganador} & \cellcolor{tceesalvia}$-2{,}01$\\
+\bottomrule
+\end{tabular}
+\fuente{\textcite{BazermanSamuelson1983Won}, recogido en \textcite{Thaler1988Anomalies}: 48 subastas a sobre cerrado en 12 clases de MBA.}
+\end{table}
+
 \subsection*{Las subastas del 3G de 2000: atraer pujadores}
 
 \begin{itemize}
-\item \emph{Juego}: en 2000, varios países europeos subastaron las licencias de telefonía móvil de tercera generación. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, más de 600 euros por habitante; los Países Bajos, 170, y Suiza, 20 \parencite{Klemperer2002WhatReallyMatters}.
+\item \emph{Juego}: en 2000, varios países europeos subastaron las licencias de telefonía móvil de tercera generación. Con un producto parecido y con pocos meses de diferencia, recaudaron cantidades muy distintas: el Reino Unido y Alemania, más de 600 euros por habitante; los Países Bajos, 170, y Suiza, 20 \parencite{Klemperer2002WhatReallyMatters} (tabla~\ref{tab:subastas-3g}).
 \item \emph{Qué pasó}:
   \begin{itemize}
   \item el Reino Unido sacó 5 licencias para 4 operadores instalados, de modo que al menos una tenía que ir a un entrante, y los entrantes acudieron y pujaron \parencite{BinmoreKlemperer2002Biggest};
@@ -1901,14 +2001,50 @@ b(v)=\frac{1}{G(v)}\int_0^v s\,g(s)\,ds=\mathbb{E}\big[Y_1\mid Y_1<v\big],
 \item \emph{En el temario}: las telecomunicaciones \vertema{4.A.12}, las barreras de entrada \vertema{3.A.15} y la colusión en el oligopolio \vertema{3.A.19}.
 \end{itemize}
 
+\begin{table}[H]
+\centering
+\caption{Las subastas europeas del 3G de 2000: recaudación y número de pujadores}\label{tab:subastas-3g}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{8.0cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{País} & \textbf{Euros por habitante} & \textbf{Qué la explica}\\
+\midrule
+Reino Unido & \cellcolor{tceesalvia}650 & 5 licencias para 4 instalados: al menos una iba a un entrante, y los entrantes acudieron\\
+\addlinespace[0.3em]
+Alemania & \cellcolor{tceesalvia}615 & más pujadores que licencias\\
+\addlinespace[0.3em]
+Países Bajos & 170 & tantas licencias como instalados: los entrantes apenas tenían opciones\\
+\addlinespace[0.3em]
+Suiza & 20 & uniones y retiradas de última hora: tantos pujadores como licencias, casi al precio de salida\\
+\bottomrule
+\end{tabular}
+\fuente{\textcite[tabla~1]{Klemperer2002WhatReallyMatters} y \textcite{BinmoreKlemperer2002Biggest}.}
+\end{table}
+
 \subsection*{La subasta alemana de espectro de 1999: pujas que hablan}
 
 \begin{itemize}
 \item \emph{Juego} \parencite{Klemperer2002WhatReallyMatters}: Alemania vendía 10 bloques de espectro en una subasta ascendente, con la regla de que cada nueva puja por un bloque tenía que superar a la anterior en al menos un 10~\%. Los 2 grandes pujadores eran Mannesmann y T-Mobil.
-\item \emph{Qué pasó}: Mannesmann abrió con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10. T-Mobil entendió el mensaje: si subía un 10~\% los bloques 1 a 5 ($18{,}18\times1{,}1\approx20$), los 2 pagarían lo mismo y se repartirían el espectro a partes iguales. Pujó 20 millones por los bloques 1 a 5, nadie volvió a pujar y la subasta terminó tras 2 rondas \parencite{Klemperer2002WhatReallyMatters}.
+\item \emph{Qué pasó}: Mannesmann abrió con 18,18 millones de marcos por megahercio en los bloques 1 a 5 y 20 millones en los 6 a 10. T-Mobil entendió el mensaje: si subía un 10~\% los bloques 1 a 5 ($18{,}18\times1{,}1\approx20$), los 2 pagarían lo mismo y se repartirían el espectro a partes iguales. Pujó 20 millones por los bloques 1 a 5, nadie volvió a pujar y la subasta terminó tras 2 rondas \parencite{Klemperer2002WhatReallyMatters} (tabla~\ref{tab:subasta-alemana}).
 \item \emph{Moraleja}: en una subasta ascendente, las pujas son mensajes, y la amenaza de seguir pujando castiga al que no respeta el reparto, dentro de la misma subasta: es un juego repetido en pequeño (\ref{sec:repetidos}). El sobre cerrado, no publicar las pujas y atraer más pujadores lo dificultan (\ref{sec:colusion-subastas}).
 \item \emph{En el temario}: la colusión tácita y el gatillo en el oligopolio \vertema{3.A.19}, la defensa de la competencia y la clemencia \vertema{4.A.15} y las telecomunicaciones \vertema{4.A.12}.
 \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{La subasta alemana de espectro de 1999, ronda a ronda (millones de marcos por megahercio)}\label{tab:subasta-alemana}
+\begin{tabular}{>{\raggedright\arraybackslash}m{1.6cm}>{\raggedright\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Ronda} & \textbf{Puja} & \textbf{Bloques 1 a 5} & \textbf{Bloques 6 a 10} & \textbf{Mensaje}\\
+\midrule
+1 & Mannesmann & 18,18 & 20 & «con un 10~\% más en los bloques 1 a 5, los 2 pagamos 20»\\
+\addlinespace[0.3em]
+2 & T-Mobil & 20 & --- & mensaje recibido\\
+\addlinespace[0.3em]
+\textbf{Final} & nadie más puja & \cellcolor{tceesalvia}T-Mobil,\newline a 20 & \cellcolor{tceesalvia}Mannesmann,\newline a 20 & reparto a partes iguales, sin competir\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Klemperer2002WhatReallyMatters}.}
+\end{table}
 
 \bibliografia
 

@@ -1,0 +1,69 @@
+% Hernán Cortés quema las naves (1519): el valor de reducir las propias opciones.
+% Cortés (C) decide si conserva los barcos o los quema; el rival (R) decide si ataca;
+% si ataca y C conserva los barcos, C elige luchar o retirarse; sin barcos, solo puede luchar.
+% Pagos (C; R), ilustrativos:
+%   conservar: No atacar (2; 0); Atacar-Luchar (-1; -1); Atacar-Retirarse (0; 1)
+%   quemar:    No atacar (2; 0); Atacar (solo luchar) (-1; -1)
+% Inducción hacia atrás: con barcos, C se retira (0 > -1) y R ataca (1 > 0);
+% sin barcos, R no ataca (0 > -1); en la raíz, C quema las naves (2 > 0).
+% ENPS: C quema las naves; R ataca solo si C conserva los barcos; C se retiraría.
+% Mismo estilo que juego-entrada-compromiso.tex. Elaboración propia a partir de
+% Schelling (1960).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    nodo/.style={circle,draw=tceemorado,thick,fill=tceesalvia,inner sep=2.2pt},
+    terminal/.style={circle,fill=tceemorado,inner sep=1.2pt},
+    rama/.style={thick,tceemorado},
+    jugador/.style={etiqueta,font=\small\itshape},
+    accion/.style={etiqueta,font=\footnotesize},
+    pago/.style={etiqueta,below=2pt,font=\small},
+    elegida/.style={line width=1.8pt,tceerojo},
+    aspa/.style={line width=1.4pt,tceerojo}]
+  \useasboundingbox (-6.6,-4.0) rectangle (6.4,2.55);
+  % 1: raíz: Cortés decide si conserva los barcos o los quema
+  \capa{1}{\node[nodo,label={[jugador]above:{\upshape\textbf{C}} (\textsc{Cortés})}] (R) at (-0.8,1.9) {};}
+  % 2: ramas «Conservar los barcos» y «Quemarlos» y nodos del rival
+  \capa{2}{\node[nodo,label={[jugador]right:{\upshape\textbf{R}} (rival)}] (E1) at (-4.2,0) {};}
+  \capa{2}{\draw[rama] (R) -- node[accion,above left] {Conservar los barcos} (E1);}
+  \capa{2}{\node[nodo,label={[jugador]right:{\upshape\textbf{R}} (rival)}] (E2) at (2.6,0) {};}
+  \capa{2}{\draw[rama] (R) -- node[accion,above right] {Quemarlos} (E2);}
+  % 3: con barcos, si el rival ataca, Cortés puede luchar o retirarse
+  \capa{3}{\node[terminal] (N1) at (-6.0,-1.7) {};}
+  \capa{3}{\draw[rama] (E1) -- node[accion,above left] {No atacar} (N1);}
+  \capa{3}{\node[pago] at (N1) {$(2;\,0)$};}
+  \capa{3}{\node[nodo,label={[jugador]right:{\upshape\textbf{C}}}] (I1) at (-2.6,-1.7) {};}
+  \capa{3}{\draw[rama] (E1) -- node[accion,above right] {Atacar} (I1);}
+  \capa{3}{\node[terminal] (L1) at (-3.6,-3.4) {};}
+  \capa{3}{\draw[rama] (I1) -- node[accion,left,pos=0.3] {Luchar} (L1);}
+  \capa{3}{\node[pago] at (L1) {$(-1;\,-1)$};}
+  \capa{3}{\node[terminal] (A1) at (-1.5,-3.4) {};}
+  \capa{3}{\draw[rama] (I1) -- node[accion,right,pos=0.3] {Retirarse} (A1);}
+  \capa{3}{\node[pago] at (A1) {$(0;\,1)$};}
+  % 4: sin barcos, la retirada no existe: si el rival ataca, Cortés solo puede luchar
+  \capa{4}{\node[terminal] (N2) at (0.8,-1.7) {};}
+  \capa{4}{\draw[rama] (E2) -- node[accion,above left] {No atacar} (N2);}
+  \capa{4}{\node[pago] at (N2) {$(2;\,0)$};}
+  \capa{4}{\node[nodo,label={[jugador]right:{\upshape\textbf{C}}}] (I2) at (4.2,-1.7) {};}
+  \capa{4}{\draw[rama] (E2) -- node[accion,above right] {Atacar} (I2);}
+  \capa{4}{\node[terminal] (L2) at (4.2,-3.4) {};}
+  \capa{4}{\draw[rama] (I2) -- node[accion,right,align=left] {Luchar\\(no hay retirada)} (L2);}
+  \capa{4}{\node[pago] at (L2) {$(-1;\,-1)$};}
+  % 5: con barcos, ante el ataque Cortés se retira (0 > -1)
+  \capa{5}{\draw[aspa] ($(I1)!0.68!(L1)+(-0.18,-0.18)$) -- ++(0.36,0.36)
+    ($(I1)!0.68!(L1)+(-0.18,0.18)$) -- ++(0.36,-0.36);}
+  \capa{5}{\draw[elegida] (I1) -- (A1);}
+  % 6: anticipándolo, el rival ataca (1 > 0)
+  \capa{6}{\draw[elegida] (E1) -- (I1);}
+  % 7: sin barcos, Cortés lucha a la fuerza
+  \capa{7}{\draw[elegida] (I2) -- (L2);}
+  % 8: anticipándolo, el rival no ataca (0 > -1)
+  \capa{8}{\draw[elegida] (E2) -- (N2);}
+  % 9: en la raíz, Cortés quema las naves (2 > 0)
+  \capa{9}{\draw[elegida] (R) -- (E2);}
+  % 10: el equilibrio de Nash perfecto en subjuegos
+  \capa{10}{\node[etiqueta,text=tceerojo,anchor=north west,align=left] at (-6.5,2.5) {ENPS: C quema las naves;\\R no ataca};}
+\end{tikzpicture}
+\end{document}
