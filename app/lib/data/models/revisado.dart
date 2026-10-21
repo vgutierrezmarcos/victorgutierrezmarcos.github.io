@@ -5,8 +5,12 @@
 /// partir del manifiesto `oposicion/temario/app/revisados.json` de esa rama
 /// (lo genera `scripts/temario/manifiesto-app.py`). Sin Firebase Storage: los
 /// ficheros se bajan de raw.githubusercontent.com, fijados al commit del
-/// manifiesto, y los gráficos del HTML, de jsDelivr (que los sirve con su tipo).
+/// manifiesto, y los estilos y gráficos del HTML, de githack (que los sirve
+/// con su tipo; jsDelivr daba 503 con este repositorio, que es muy grande, y
+/// el tema salía sin formato).
 library;
+
+import 'esquema.dart';
 
 const _repo = 'vgutierrezmarcos/victorgutierrezmarcos.github.io';
 const _rama = 'revision-temario';
@@ -16,7 +20,11 @@ const urlManifiestoRevisados = 'https://raw.githubusercontent.com/$_repo/$_rama/
 
 /// Bases por defecto si el manifiesto no trae las suyas (la rama, sin fijar).
 const _rawPorDefecto = 'https://raw.githubusercontent.com/$_repo/$_rama/';
-const _cdnPorDefecto = 'https://cdn.jsdelivr.net/gh/$_repo@$_rama/';
+const _cdnPorDefecto = 'https://raw.githack.com/$_repo/$_rama/';
+
+/// CDN fijado a un commit (rawcdn.githack.com guarda para siempre lo que sirve
+/// de un commit, así que vale cualquier caché).
+String cdnDelCommit(String commit) => 'https://rawcdn.githack.com/$_repo/$commit/';
 
 /// Un fichero del tema revisado: ruta desde la raíz del repositorio, tamaño en
 /// bytes y hash corto de su contenido (cambia si cambia el fichero).
@@ -62,9 +70,14 @@ class TemaRevisado {
     this.docx,
     this.html,
     this.repaso,
+    this.esquema = const [],
     this.raw = _rawPorDefecto,
     this.cdn = _cdnPorDefecto,
   });
+
+  /// Marcadores del PDF revisado (`esquema` en el manifiesto: [nivel, título,
+  /// página]); vacío si el manifiesto aún no los trae.
+  final List<EntradaEsquema> esquema;
 
   /// 3.A.12
   final String codigo;
@@ -94,8 +107,8 @@ class TemaRevisado {
   /// URL de descarga (raw.githubusercontent.com).
   String url(FicheroRevisado f) => '$raw${f.ruta}';
 
-  /// URL del HTML en jsDelivr: contra ella se resuelven sus gráficos (SVG) y
-  /// estilos, que raw.githubusercontent.com serviría como texto.
+  /// URL del HTML en el CDN (githack): contra ella se resuelven sus gráficos
+  /// (SVG) y estilos, que raw.githubusercontent.com serviría como texto.
   String? get urlDocumentoHtml => html == null ? null : '$cdn${html!.ruta}';
 
   /// Nombre del fichero en la carpeta de descargas del móvil. Lleva el hash
@@ -139,6 +152,7 @@ class TemaRevisado {
       docx: FicheroRevisado.fromJson(j['docx']),
       html: FicheroRevisado.fromJson(j['html']),
       repaso: FicheroRevisado.fromJson(j['repaso']),
+      esquema: EntradaEsquema.listaDeJson(j['esquema']),
       raw: raw,
       cdn: cdn,
     );
@@ -169,7 +183,10 @@ class ManifiestoRevisados {
     }
 
     final raw = base(j['raw'], _rawPorDefecto);
-    final cdn = base(j['cdn'], _cdnPorDefecto);
+    // El manifiesto trae jsDelivr como CDN, que no sirve este repositorio
+    // (503): se usa githack con el mismo commit.
+    final commit = j['commit'];
+    final cdn = commit is String && RegExp(r'^[0-9a-f]{7,40}$').hasMatch(commit) ? cdnDelCommit(commit) : base(j['cdn'], _cdnPorDefecto).replaceFirst(RegExp(r'^https://cdn\.jsdelivr\.net/gh/[^@]+@'), 'https://raw.githack.com/$_repo/');
     final temas = <String, TemaRevisado>{};
     final lista = j['temas'];
     if (lista is List) {

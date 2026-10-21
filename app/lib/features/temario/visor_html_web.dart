@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:web/web.dart' as web;
 
 /// El HTML ya preparado (ver `prepararHtmlRevisado`) en un iframe con
-/// `srcdoc`: su `<base href>` (la URL del HTML en jsDelivr) resuelve los
+/// `srcdoc`: su `<base href>` (la URL del HTML en el CDN) resuelve los
 /// gráficos y estilos, y el script que lleva dentro mantiene los enlaces #…
 /// en la página y abre los externos en otra pestaña.
 class VisorHtml extends StatelessWidget {

@@ -3,8 +3,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 /// El HTML ya preparado (ver `prepararHtmlRevisado`) en un WebView. Se carga
-/// con [urlDocumento] (la del HTML en jsDelivr) como dirección base: así los
-/// gráficos y estilos relativos se piden a jsDelivr y los enlaces #… se quedan
+/// con [urlDocumento] (la del HTML en el CDN) como dirección base: así los
+/// gráficos y estilos relativos se piden al CDN y los enlaces #… se quedan
 /// en la página. Cualquier otra navegación se abre fuera de la app.
 class VisorHtml extends StatefulWidget {
   const VisorHtml({super.key, required this.html, required this.urlDocumento});

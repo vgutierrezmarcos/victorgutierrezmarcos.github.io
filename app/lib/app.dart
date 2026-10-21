@@ -53,6 +53,9 @@ import 'widgets/comunes.dart';
 /// Estudiar (temario y test), Cantes (programar, cantar y anotar), Organización
 /// (cronograma, probabilidades, convocatoria, horario y estructura del temario,
 /// como la sección de la web) y Más (preparador, cuenta y ajustes).
+/// Navegador de cada pestaña (para volver a su inicio con un segundo toque).
+final clavesRamas = [for (var i = 0; i < 5; i++) GlobalKey<NavigatorState>(debugLabel: 'rama$i')];
+
 final _router = GoRouter(
   initialLocation: '/hoy',
   // Una ruta que no existe (un aviso antiguo, un enlace roto) lleva a Hoy en
@@ -64,14 +67,14 @@ final _router = GoRouter(
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => _Shell(shell: shell),
       branches: [
-        StatefulShellBranch(routes: [GoRoute(path: '/hoy', builder: (c, s) => const InicioPage())]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[0], routes: [GoRoute(path: '/hoy', builder: (c, s) => const InicioPage())]),
+        StatefulShellBranch(navigatorKey: clavesRamas[1], routes: [
           GoRoute(path: '/estudiar', builder: (c, s) => const EstudiarPage(), routes: [
             GoRoute(path: 'test/estadisticas', builder: (c, s) => const EstadisticasPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[2], routes: [GoRoute(path: '/cantes', builder: (c, s) => const CantesPage())]),
+        StatefulShellBranch(navigatorKey: clavesRamas[3], routes: [
           GoRoute(path: '/organizacion', builder: (c, s) => const OrganizacionHubPage(), routes: [
             GoRoute(path: 'cronograma', builder: (c, s) => const CronogramaPage()),
             GoRoute(path: 'probabilidades', builder: (c, s) => const ProbabilidadesPage()),
@@ -82,7 +85,7 @@ final _router = GoRouter(
             GoRoute(path: 'mapa-calor', builder: (c, s) => const MapaCalorPage()),
           ]),
         ]),
-        StatefulShellBranch(routes: [
+        StatefulShellBranch(navigatorKey: clavesRamas[4], routes: [
           GoRoute(path: '/mas', builder: (c, s) => const MasPage(), routes: [
             GoRoute(path: 'cuenta', builder: (c, s) => const CuentaPage()),
             GoRoute(path: 'preparador', builder: (c, s) => const PreparadorPage(), routes: [
@@ -343,7 +346,13 @@ class _Shell extends ConsumerWidget {
     (Icons.more_horiz, Icons.more_horiz, 'Más'),
   ];
 
-  void _ir(int i) => shell.goBranch(i, initialLocation: i == shell.currentIndex);
+  /// Un toque cambia de pestaña; otro toque en la misma vuelve a su página
+  /// principal: cierra lo abierto encima (fichas, temas, clases: rutas sin
+  /// nombre que goBranch no toca) y va a la ruta inicial de la rama.
+  void _ir(int i) {
+    if (i == shell.currentIndex) clavesRamas[i].currentState?.popUntil((r) => r.isFirst);
+    shell.goBranch(i, initialLocation: i == shell.currentIndex);
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
