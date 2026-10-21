@@ -247,6 +247,6 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 
 Hechas el 21 oct.: valoración por tema, temas y minutos corregibles a posteriori (1.17.8), tiempos del cronómetro de DCE (1.17.6) y, en la 1.17.9, las tres de la pizarra:
 - [x] **Pizarra: escribir a máquina**: herramienta «Texto» en el menú ··· (`pizarra_texto.dart`, elemento `h: 't'` en `pizarra_trazos.dart`).
-- [x] **«Notas del preparador» en la clase**: segunda pizarra en los datos del preparador (`users/{prep}/sesiones/{id}/notas/{p}`, páginas con `alumno` y `visible`), botón en la ficha de la clase (preparador, con el chip «Compartir») y en el cante del alumno cuando están compartidas y la clase ha terminado. Reglas publicadas en la consola de Firebase el 21 oct. 2026.
+- [x] **«Notas del preparador» en la clase**: segunda pizarra en los datos del preparador (`users/{prep}/sesiones/{id}/notas/{p}`, páginas con `alumno` y `visible`), botón en la ficha de la clase (preparador, con el chip «Compartir») y en el cante del alumno en cuanto están compartidas. Reglas publicadas en la consola de Firebase el 21 oct. 2026.
 - [x] **Exportar las pizarras**: «Guardar como PDF» en el menú ··· de la pizarra de la clase y de las notas (`pizarra_pdf.dart`). No caducan: se guardan con la cuenta del alumno (la de la clase) o del preparador (las notas); si algún día pesan, borrado automático a los N días.
 - [ ] Probar `tool/reglas/prueba.mjs` con el emulador (aquí no hay Java ni emulador) antes de publicar las reglas.

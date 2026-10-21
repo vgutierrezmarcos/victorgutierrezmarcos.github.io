@@ -15,6 +15,7 @@ import '../../core/avisos_breves.dart';
 import '../../core/constants.dart';
 import '../../core/notificaciones.dart';
 import '../../core/plataforma.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../data/models/oposicion.dart';
 import '../../data/models/coordinacion.dart';
@@ -545,7 +546,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   /// Temas de la bolsa propia según la fuente elegida (o el cante en curso).
   List<Tema> _bolsa(Temario t, Cante? cante) {
     final ajustes = _ajustesDeLaBolsa();
-    if (cante != null) return temasDeCante(cante, t, ajustes);
+    if (cante != null) return temasDeCante(cante, t, ajustes, cronograma: ref.read(cronogramaProvider));
     final delEjercicio = t.todosLosTemas.where((x) => x.ejercicio == _ejercicio);
     return switch (_fuente) {
       _Fuente.estudiados => delEjercicio.where((x) => ajustes.temasEstudiados.contains(x.codigo)).toList(),
