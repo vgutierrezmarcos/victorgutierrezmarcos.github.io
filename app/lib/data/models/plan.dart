@@ -200,6 +200,8 @@ class Cante {
   final int minutos;
 
   /// Minutos de exposición por tema: lo que cuenta el cronómetro al cantar.
+  /// Quien crea el cante lo toma de [Oposicion.minutosExposicion] (TCEE 30,
+  /// DCE 20); el 30 del constructor es solo el de las versiones anteriores.
   final int exposicion;
   /// 3, 4 o 5; 0 = cualquiera.
   final int ejercicio;
@@ -317,7 +319,7 @@ class Cante {
         if (lugar.isNotEmpty) 'lugar': lugar,
         if (enlace.isNotEmpty) 'enlace': enlace,
         'minutos': minutos,
-        if (exposicion != 30) 'exposicion': exposicion,
+        'exposicion': exposicion,
         'ejercicio': ejercicio,
         'bolsa': bolsa.name,
         'temas': temas,
@@ -345,13 +347,17 @@ class Cante {
         if (eventoGoogle.isNotEmpty) 'eventoGoogle': eventoGoogle,
       };
 
-  factory Cante.fromJson(Map<dynamic, dynamic> j) => Cante(
+  factory Cante.fromJson(Map<dynamic, dynamic> j) {
+    final ejercicio = (j['ejercicio'] as num?)?.toInt() ?? 3;
+    return Cante(
         id: j['id'].toString(),
         fecha: _fecha(j['fecha']) ?? DateTime.now(),
         titulo: j['titulo'] as String? ?? '',
         minutos: (j['minutos'] as num?)?.toInt() ?? 30,
-        exposicion: (j['exposicion'] as num?)?.toInt() ?? 30,
-        ejercicio: (j['ejercicio'] as num?)?.toInt() ?? 3,
+        // Las versiones anteriores no guardaban la exposición por defecto (30
+        // en todas las oposiciones): se lee como la del examen de cada una.
+        exposicion: (j['exposicion'] as num?)?.toInt() ?? Oposiciones.actual.minutosExposicion(ejercicio),
+        ejercicio: ejercicio,
         bolsa: TipoBolsa.values.firstWhere((b) => b.name == j['bolsa'], orElse: () => TipoBolsa.estudiados),
         temas: ((j['temas'] as List?) ?? []).map((e) => e.toString()).toList(),
         notas: j['notas'] as String? ?? '',
@@ -380,6 +386,7 @@ class Cante {
         plataforma: j['plataforma'] as String? ?? '',
         eventoGoogle: j['eventoGoogle'] as String? ?? '',
       );
+  }
 
   /// Fusiona dos listas de cantes por id quedándose con la versión más reciente.
   static List<Cante> fusionar(Iterable<Cante> a, Iterable<Cante> b) {

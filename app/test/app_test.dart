@@ -279,10 +279,11 @@ void main() {
     expect(find.text('Sacar 3 bolas'), findsOneWidget); // ha saltado a la subpestaña Cantar
     expect(find.textContaining('3 temas en la bolsa. Al terminar'), findsOneWidget);
     // Por defecto, cronómetro hacia delante (desde 00:00); en cuenta atrás se
-    // ve el esquema del examen y lo que dura el cante.
+    // ve el esquema del examen para un tema (en TCEE se canta uno) y lo que
+    // dura el cante.
     expect(find.text('00:00'), findsOneWidget);
     await tocar(tester, find.text('Cuenta atrás'));
-    expect(find.text('45:00'), findsOneWidget);
+    expect(find.text('22:30'), findsOneWidget);
     await tocar(tester, find.text('Sin esquema'));
     expect(find.text('12:00'), findsOneWidget);
     await tocar(tester, find.text('Sacar 3 bolas'));
@@ -340,12 +341,12 @@ void main() {
     await subpestana(tester, 'Cantar');
     await tocar(tester, find.text('Sacar 2 bolas de cada parte'));
     await tocar(tester, find.textContaining(RegExp(r'^3\.A\.\d+$')));
-    // Primero el esquema (45 min para 2 temas en el 3.º de TCEE); con uno, la
-    // mitad exacta: 22 min 30 s.
+    // Primero el esquema: por defecto el de un tema en el 3.º de TCEE (la
+    // mitad exacta de los 45 min de dos: 22 min 30 s); con dos, los 45.
     await tocar(tester, find.text('Cuenta atrás'));
-    expect(find.text('45:00'), findsOneWidget);
-    await tocar(tester, find.text('1 tema · 22 min 30 s'));
     expect(find.text('22:30'), findsOneWidget);
+    await tocar(tester, find.text('2 temas · 45 min'));
+    expect(find.text('45:00'), findsOneWidget);
     await tocar(tester, find.text('Sin esquema'));
     expect(find.text('30:00'), findsOneWidget); // 30 minutos de exposición por defecto
     await tocar(tester, find.text('Empezar'));

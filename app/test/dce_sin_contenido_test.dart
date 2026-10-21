@@ -89,4 +89,30 @@ void main() {
       if (p == 'Más') expect(find.text('Oposición'), findsOneWidget);
     });
   }
+
+  testWidgets('DCE: el cronómetro sale con los tiempos de su examen (30 min de esquema y 20 por tema)', (tester) async {
+    // Con un temario mínimo del 3.º (sin él, Cantar no enseña el cronómetro).
+    Tema tema(String codigo) => Tema(codigo: codigo, titulo: 'Tema $codigo', disponible: true, temarioAnterior: false);
+    final temario = Temario(ejercicios: [
+      Ejercicio(id: 3, slug: 'tercer-ejercicio', nombre: 'Tercer ejercicio', descripcion: '', urlPagina: '', partes: [
+        Parte(letra: 'A', nombre: 'Micro', temas: [tema('3.A.1'), tema('3.A.2')]),
+        Parte(letra: 'B', nombre: 'Macro', temas: [tema('3.B.1'), tema('3.B.2')]),
+      ]),
+    ], organizacion: const []);
+    overrides = [for (final o in overrides) if (!identical(o, overrides[1])) o, temarioProvider.overrideWith((ref) => temario)];
+    await arrancar(tester);
+    await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text('Cantes')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.descendant(of: find.byType(TabBar), matching: find.text('Cantar')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Cuenta atrás'));
+    await tester.pumpAndSettle();
+    // En DCE se cantan dos temas por clase: 30 min de esquema (15 para uno).
+    expect(find.text('30:00'), findsOneWidget);
+    expect(find.text('1 tema · 15 min'), findsOneWidget);
+    await tester.tap(find.text('Sin esquema'));
+    await tester.pumpAndSettle();
+    // Y 20 min de exposición por tema (40 para los dos).
+    expect(find.text('20:00'), findsOneWidget);
+  });
 }

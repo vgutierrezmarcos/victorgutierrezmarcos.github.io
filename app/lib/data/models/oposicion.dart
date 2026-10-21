@@ -32,6 +32,7 @@ class EjercicioDef {
     this.intercalar,
     this.minutosEsquema = 0,
     this.temasEsquema = 2,
+    this.minutosExposicion = 30,
     bool? enCronograma,
   }) : _enCronograma = enCronograma;
 
@@ -73,6 +74,10 @@ class EjercicioDef {
   /// Segundos de esquema para [temas] temas (la parte proporcional, sin
   /// redondear a minutos: 45 min para 2 temas son 22 min 30 s para 1).
   int segundosEsquemaPara(int temas) => temasEsquema == 0 ? minutosEsquema * 60 : (minutosEsquema * 60 * temas / temasEsquema).round();
+
+  /// Minutos de exposición por tema en el examen: lo que cuenta el cronómetro
+  /// para cada tema si no se dice otra cosa (TCEE 30; DCE 20, 40 para dos).
+  final int minutosExposicion;
 
   final bool? _enCronograma;
 
@@ -241,6 +246,10 @@ class Oposicion {
   /// Partes que hay que desarrollar en [n] (null = todas).
   int? partesARedactar(int n, AppConfig config) => config.partesARedactar[n] ?? ejercicio(n)?.partesARedactar;
 
+  /// Minutos de exposición por tema en el ejercicio [n] (0 = cualquiera: el
+  /// primero con temas cantados).
+  int minutosExposicion(int n) => (ejercicio(n == 0 ? primerConTemas : n) ?? conTemasCantados.firstOrNull)?.minutosExposicion ?? 30;
+
   // ------------------------------------------------------------------ URLs
 
   String get _base {
@@ -350,7 +359,7 @@ class Oposiciones {
     ejercicios: [
       EjercicioDef(numero: 1, descripcion: 'Economía española, economía pública y UE (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
       EjercicioDef(numero: 2, descripcion: 'Idiomas'),
-      EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2, minutosEsquema: 30),
+      EjercicioDef(numero: 3, descripcion: 'Micro, sector público, macro e internacional (oral)', cante: TipoCante.temas, sorteo: true, bolasPorParte: 2, minutosEsquema: 30, minutosExposicion: 20),
       EjercicioDef(numero: 4, descripcion: 'Técnicas comerciales y organización del Estado (escrito)', sorteo: true, bolasPorParte: 2, enCronograma: true),
     ],
   );
