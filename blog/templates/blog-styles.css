@@ -116,6 +116,12 @@ body {
 
 .blog-nav a:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
+/* Logo de la app (la diana) a la izquierda del menú: abre la versión web, /app/abrir/ */
+.blog-nav a.blog-nav-app { display: flex; align-items: center; padding: 0.25rem 0.6rem 0.25rem 0; }
+.blog-nav a.blog-nav-app:hover { background: transparent; }
+.blog-nav a.blog-nav-app img { display: block; width: 28px; height: 28px; border-radius: 7px; }
+.blog-nav a.blog-nav-app:hover img { box-shadow: 0 0 0 2px var(--color-accent-gold, #C9A227); }
+
 /* Buscar: icono sobre un cuadro translúcido */
 .blog-search-btn {
     width: 34px;
