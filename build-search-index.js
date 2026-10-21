@@ -36,11 +36,11 @@ searchIndex.pages = [
   },
   {
     id: 'por-que-tcee',
-    title: '¿Por qué TCEE? Qué es la oposición',
+    title: '¿Por qué TCEE? Guía de la oposición a Técnico Comercial y Economista del Estado',
     url: '/oposicion/por-que-tcee.html',
-    description: 'Guía de la oposición a Técnico Comercial y Economista del Estado: funciones del cuerpo, requisitos, ejercicios, temario y curso selectivo',
-    keywords: ['qué es', 'por qué', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro'],
-    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatorias y plazas, los cinco ejercicios, el temario, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
+    description: 'Requisitos, plazas y estado de la convocatoria en curso, los cinco ejercicios, el temario de 177 temas, tasas, curso selectivo y preguntas frecuentes',
+    keywords: ['qué es', 'por qué', 'TECO', 'requisitos', 'plazas', 'convocatoria', 'ejercicios', 'curso selectivo', 'destinos', 'funciones', 'titulación', 'BOE', 'ICEX', 'Tesoro', 'tasa', 'nota de corte', 'sueldo', 'cifras', 'economista del estado'],
+    content: 'Qué hace el cuerpo y dónde trabaja, requisitos, convocatoria en curso con plazas y estado del proceso, la oposición en cifras, los cinco ejercicios en una tabla, el temario por partes, el curso selectivo, DCE y SOIVRE y preguntas frecuentes'
   },
   {
     id: 'novedades',

@@ -69,12 +69,18 @@ jobs:
       if: steps.toca.outputs.toca == 'si'
       run: python3 scripts/leer-proceso.py --novedades "$RUNNER_TEMP/novedades.json" ${{ steps.toca.outputs.completa == 'si' && '--completa' || '' }}
 
+    # La guía de la oposición enseña la convocatoria en curso (plazas, estado
+    # del proceso, últimos documentos) a partir de proceso.json.
+    - name: Poner al día la guía de la oposición
+      if: steps.toca.outputs.toca == 'si'
+      run: python3 scripts/guia-convocatoria.py
+
     - name: Commit and push if changed
       if: steps.toca.outputs.toca == 'si'
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add oposicion/proceso.json
+        git add oposicion/proceso.json oposicion/por-que-tcee.html
         git diff --staged --quiet && exit 0
         git commit -m "Novedades del proceso selectivo [skip ci]"
         # Solo main y sin etiquetas (traer todas las ramas tardaba un minuto).
@@ -83,8 +89,8 @@ jobs:
         for intento in 1 2 3; do
           git fetch --no-tags origin main
           if ! git rebase origin/main; then
-            git checkout --theirs -- oposicion/proceso.json
-            git add oposicion/proceso.json
+            git checkout --theirs -- oposicion/proceso.json oposicion/por-que-tcee.html
+            git add oposicion/proceso.json oposicion/por-que-tcee.html
             GIT_EDITOR=true git rebase --continue
           fi
           git push && exit 0
