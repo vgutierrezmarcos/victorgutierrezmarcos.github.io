@@ -242,3 +242,10 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Verificación en dos pasos en la cuenta del proyecto (9 oct.); Manuel, en la suya.
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 
+
+## Peticiones de Manuel del 21 oct. 2026 (pendientes de decidir)
+
+Hechas el 21 oct. (1.17.8): valoración por tema, temas y minutos corregibles a posteriori, tiempos del cronómetro de DCE (1.17.6). Quedan por decidir con Víctor (ver el resumen de la sesión del 21 oct.):
+- [ ] **Pizarra: escribir a máquina** (cuadros de texto desde el móvil, la tableta o el ordenador). Habría que añadir un tipo de elemento «texto» al formato de los trazos (`pizarra_trazos.dart`: posición, texto, tamaño, color), pintarlo en el lienzo y en el PDF anotado, y una herramienta en la paleta que al tocar abra un cuadro para escribir; el lazo lo movería como a un trazo.
+- [ ] **«Notas del preparador» en la clase**: una segunda pizarra en `cantes/{id}/notas/{p}` que solo escribe el preparador y que el alumno ve cuando el preparador la comparte (campo `visible` por página) y la clase ha terminado. Requiere cambiar las reglas (`tool/reglas/generar.py`: `compartido in ['reloj', 'pizarra', 'notas']` con lectura del alumno solo si `visible`), publicarlas a mano en la consola y un botón más en la ficha de la clase (preparador) y en el cante (alumno).
+- [ ] **Exportar o caducar las pizarras**: hoy la pizarra de cada clase se guarda en la nube, en los datos del alumno (`users/{alumno}/cantes/{id}/pizarra`), sin fecha de borrado (solo se borra con la cuenta) y sin exportación; la de practicar no se guarda. Opciones: botón «Guardar como PDF» (reutilizando `pdfAnotado`) y, si pesa, borrado automático a los N días.

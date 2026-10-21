@@ -17,6 +17,10 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (20 oct.) Cronómetro compartido: al pasar a exponer, la exposición espera en pausa; y la rueda del ratón ya no amplía el PDF del tema
 - (21 oct.) La versión web ya crea cronogramas, clases y cantes desde el navegador (fallaba al generar el identificador)
 - (21 oct.) El cronómetro sale con los tiempos del examen de cada oposición: en DCE, 20 min por tema y 15 de esquema; en TCEE, 30 min por tema y 22 min 30 s de esquema (el doble con dos temas)
+- (21 oct.) Al valorar un cante de dos temas, cada tema tiene sus estrellas; y los temas y los minutos se pueden corregir después (si falló el cronómetro o el sorteo)
+- (21 oct.) El preparador ve como «temas que lleva» el alumno también los de su cronograma compartido, y al programarle una clase se propone el día en que canta según ese cronograma
+- (21 oct.) En el navegador, volver a abrir un tema ya abierto (por ejemplo, tras anotarlo) ya no da «No se pudo cargar el contenido»
+- (21 oct.) El opositor puede pedir no cantar un tema por ahora (en la agenda del tema): queda fuera del sorteo de sus clases y el preparador recibe un aviso, con la clase a cambiar si ya se lo había mandado
 
 Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
 desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases

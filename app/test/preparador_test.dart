@@ -5,11 +5,13 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:tcee_app/data/models/cronograma.dart';
 import 'package:tcee_app/data/models/plan.dart';
 import 'package:tcee_app/data/models/preparador.dart';
 import 'package:tcee_app/data/models/red.dart';
 import 'package:tcee_app/data/repos/plan_repo.dart';
 import 'package:tcee_app/data/repos/preparador_repo.dart';
+import 'package:tcee_app/data/repos/red_repo.dart';
 import 'package:tcee_app/data/repos/usuario_repo.dart';
 
 /// Sección de preparadores: código, enlace entre el preparador y su alumno,
@@ -143,6 +145,47 @@ void main() {
     expect(progreso.estudiados, {'3.A.1', '3.A.2', '3.B.5'});
     expect(progreso.enRepaso, {'3.A.2'});
     expect(progreso.cantes.single.id, 'propio');
+    a = prep.alumnos().single;
+    expect(a.temas, ['3.A.1', '3.A.2', '3.B.5']);
+
+    // Lo que lleva según su cronograma compartido cuenta igual (aunque no lo
+    // marque como estudiado) y lo que pide no cantar se queda fuera.
+    final lunes = DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1));
+    final lunesPasado = DateTime(lunes.year, lunes.month, lunes.day - 7);
+    await db.doc('users/alu/cronogramas/cr1').set(Cronograma(
+      id: 'cr1',
+      ejercicio: 3,
+      temas: const ['3.A.3', '3.A.4', '3.A.6'],
+      inicio: lunesPasado,
+      compartir: true,
+      semanas: [
+        SemanaPlan(lunes: lunesPasado, temas: const ['3.A.3']),
+        SemanaPlan(lunes: DateTime(lunes.year, lunes.month, lunes.day), temas: const ['3.A.4']),
+        SemanaPlan(lunes: DateTime(lunes.year, lunes.month, lunes.day + 7), temas: const ['3.A.6']),
+      ],
+      creado: DateTime.now(),
+      updatedAt: DateTime.now(),
+    ).toJson());
+    await ajustesAlu.guardarAjustes(Ajustes(temasEstudiados: const {'3.A.1', '3.A.2', '3.B.5'}, temasEnRepaso: const {'3.A.2'}, noCantar: {'3.A.2': DateTime.now()}));
+    final conCronograma = (await prep.progreso(a))!;
+    expect(conCronograma.delCronograma, {'3.A.3', '3.A.4'});
+    expect(conCronograma.noCantar.keys, ['3.A.2']);
+    expect(prep.alumnos().single.temas, ['3.A.1', '3.A.3', '3.A.4', '3.B.5']);
+    // El preparador recibe el aviso de lo que pide no cantar; como ya se lo
+    // había mandado para una clase, el aviso lleva a esa clase.
+    await prep.guardarSesion(Cante(id: 's0', fecha: DateTime.now().add(const Duration(days: 3)), alumno: a.id, temaA: DateTime.now().add(const Duration(days: 2)), temasMandados: const ['3.A.2'], updatedAt: DateTime.now()));
+    final red = RedRepo(firestore: db, auth: authPrep);
+    final avisos = await red.avisosNuevos(vistos: {'verif:tcee', 'enl:alu'}, preparador: true);
+    expect(avisos.map((x) => x.id), contains(startsWith('nocantar:alu:3.A.2:')), reason: 'avisos: ${avisos.map((x) => x.id).toList()}');
+    final aviso = avisos.where((x) => x.id.startsWith('nocantar:alu:3.A.2:')).single;
+    expect(aviso.titulo, 'Álex Alumno pide no cantar el tema 3.A.2');
+    expect(aviso.texto, contains('cámbialo'));
+    expect(aviso.ruta, '/clase?id=s0');
+    // Se deshace para seguir con la prueba como estaba.
+    await prep.guardarSesion(prep.sesiones().firstWhere((x) => x.id == 's0').copyWith(borrado: true));
+    await db.doc('users/alu/cronogramas/cr1').delete();
+    await ajustesAlu.guardarAjustes(const Ajustes(temasEstudiados: {'3.A.1', '3.A.2', '3.B.5'}, temasEnRepaso: {'3.A.2'}));
+    await prep.progreso(prep.alumnos().single);
     a = prep.alumnos().single;
     expect(a.temas, ['3.A.1', '3.A.2', '3.B.5']);
 

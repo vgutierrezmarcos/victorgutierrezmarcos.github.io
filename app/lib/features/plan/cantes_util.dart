@@ -41,6 +41,24 @@ String detalleCante(Cante c) => [descripcionBolsa(c), if (c.online) 'online' els
 
 String tituloCante(Cante c) => c.titulo.isEmpty ? 'Cante' : c.titulo;
 
+/// El próximo [diaSemana] (1 = lunes … 7 = domingo) después de [desde], a las
+/// [hora]:[minuto]: el día de cante del cronograma del alumno al programarle
+/// una clase. Nunca el mismo día de [desde].
+DateTime proximoDiaDeSemana(DateTime desde, int diaSemana, {int hora = 17, int minuto = 0}) {
+  final hoy = DateTime(desde.year, desde.month, desde.day);
+  final salto = (diaSemana - hoy.weekday + 7) % 7;
+  return DateTime(hoy.year, hoy.month, hoy.day + (salto == 0 ? 7 : salto), hora, minuto);
+}
+
+/// Línea de un cante hecho en el diario: «3.A.1 · Objeto y métodos» o, con
+/// varios temas, «3.A.1 y 3.B.2» (todos, no solo el primero).
+String tituloCanteHecho(Cante c, String Function(String codigo) titulo) {
+  final temas = c.resultado?.temasCantados ?? const <String>[];
+  if (temas.isEmpty) return tituloCante(c);
+  if (temas.length == 1) return '${temas.first} · ${titulo(temas.first)}';
+  return temas.join(' y ');
+}
+
 /// «2 h», «1 h 30 min», «45 min».
 String textoDuracion(int minutos) {
   if (minutos <= 0) return '';
