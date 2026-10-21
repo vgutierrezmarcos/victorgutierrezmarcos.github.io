@@ -120,7 +120,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
       var pdf = await descargas.abrir(fuente.url, nombre: fuente.nombre, reemplaza: fuente.reemplaza, progreso: progreso);
       PdfDocument documento;
       try {
-        documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(pdf.bytes!));
+        // En la web, pdf.js se queda con el búfer que se le pasa (lo
+        // transfiere a su worker y lo deja «detached»): siempre una copia,
+        // para poder volver a abrir el tema y exportarlo anotado.
+        documento = await (pdf.ruta != null ? PdfDocument.openFile(pdf.ruta!) : PdfDocument.openData(Uint8List.fromList(pdf.bytes!)));
       } catch (_) {
         // Un fichero ya descargado que no se abre (a medias o dañado): se
         // borra y se descarga otra vez antes de dar el error.

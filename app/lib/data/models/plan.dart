@@ -36,6 +36,7 @@ class ResultadoCante {
     this.otrosCantados = const [],
     this.segundos = 0,
     this.valoracion = 0,
+    this.valoraciones = const {},
     this.comentarios = '',
   });
 
@@ -47,17 +48,32 @@ class ResultadoCante {
   final List<String> otrosCantados;
   List<String> get temasCantados => [if (temaCantado != null) temaCantado!, ...otrosCantados];
   final int segundos;
-  /// 1-5; 0 = sin valorar.
+  /// 1-5; 0 = sin valorar. Con varios temas, la media de [valoraciones]
+  /// redondeada (lo que leen las versiones anteriores y las estadísticas
+  /// del cante entero).
   final int valoracion;
+  /// Con varios temas, la valoración de cada uno (1-5), por código.
+  final Map<String, int> valoraciones;
   /// Comentarios propios o del preparador.
   final String comentarios;
 
-  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, String? comentarios}) => ResultadoCante(
+  /// La valoración de [tema]: la suya si se valoró aparte; si no, la del cante.
+  int valoracionDe(String tema) => valoraciones[tema] ?? valoracion;
+
+  /// Media redondeada de las valoraciones dadas (0 si ninguna).
+  static int media(Iterable<int> valores) {
+    final dadas = valores.where((v) => v > 0).toList();
+    return dadas.isEmpty ? 0 : (dadas.fold<int>(0, (s, v) => s + v) / dadas.length).round();
+  }
+
+  ResultadoCante copyWith({List<String>? sorteados, String? temaCantado, List<String>? otrosCantados, int? segundos, int? valoracion, Map<String, int>? valoraciones, String? comentarios}) =>
+      ResultadoCante(
         sorteados: sorteados ?? this.sorteados,
         temaCantado: temaCantado ?? this.temaCantado,
         otrosCantados: otrosCantados ?? this.otrosCantados,
         segundos: segundos ?? this.segundos,
         valoracion: valoracion ?? this.valoracion,
+        valoraciones: valoraciones ?? this.valoraciones,
         comentarios: comentarios ?? this.comentarios,
       );
 
@@ -67,6 +83,7 @@ class ResultadoCante {
         if (otrosCantados.isNotEmpty) 'otrosCantados': otrosCantados,
         'segundos': segundos,
         'valoracion': valoracion,
+        if (valoraciones.isNotEmpty) 'valoraciones': valoraciones,
         'comentarios': comentarios,
       };
 
@@ -76,6 +93,7 @@ class ResultadoCante {
         otrosCantados: ((j['otrosCantados'] as List?) ?? []).map((e) => e.toString()).toList(),
         segundos: (j['segundos'] as num?)?.toInt() ?? 0,
         valoracion: (j['valoracion'] as num?)?.toInt() ?? 0,
+        valoraciones: j['valoraciones'] is Map ? {for (final e in (j['valoraciones'] as Map).entries) if (e.value is num) e.key.toString(): (e.value as num).toInt()} : const {},
         comentarios: j['comentarios'] as String? ?? '',
       );
 }
@@ -431,7 +449,8 @@ class EstadisticaTema {
       }
     }
     return porTema.map((codigo, lista) {
-      final valorados = lista.where((c) => c.resultado!.valoracion > 0).toList();
+      // La valoración de ese tema en cada cante (la suya, si se valoró aparte).
+      final valorados = lista.where((c) => c.resultado!.valoracionDe(codigo) > 0).toList();
       final conTiempo = lista.where((c) => c.resultado!.segundos > 0).toList();
       return MapEntry(
         codigo,
@@ -439,7 +458,7 @@ class EstadisticaTema {
           codigo: codigo,
           veces: lista.length,
           segundosMedios: conTiempo.isEmpty ? 0 : conTiempo.fold<int>(0, (s, c) => s + c.resultado!.segundos) ~/ conTiempo.length,
-          valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracion) / valorados.length,
+          valoracionMedia: valorados.isEmpty ? 0 : valorados.fold<int>(0, (s, c) => s + c.resultado!.valoracionDe(codigo)) / valorados.length,
           ultimo: lista.map((c) => c.fecha).reduce((x, y) => x.isAfter(y) ? x : y),
         ),
       );

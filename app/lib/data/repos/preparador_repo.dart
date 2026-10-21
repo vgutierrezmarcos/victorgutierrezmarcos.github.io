@@ -9,6 +9,7 @@ import '../../core/constants.dart';
 import '../../core/permiso_calendario.dart';
 import '../models/oposicion.dart';
 import '../models/cronograma.dart';
+import 'usuario_repo.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
@@ -915,12 +916,18 @@ class PreparadorRepo {
       final yoAislado = coordinacion.aislado(uid!);
       final reparto = yoAislado ? const <String, RepartoPreparador>{} : await repartoDe(a.uid!);
       final estudiados = ((ajustes['temasEstudiados'] as List?) ?? []).map((e) => e.toString()).toSet();
+      // Lo que lleva según su cronograma compartido cuenta igual que lo que
+      // marca como estudiado; lo que pide no cantar se queda fuera.
+      final delCronograma = (await cronogramaDe(a))?.temasLlevados(DateTime.now()) ?? const <String>{};
+      final noCantar = Ajustes.noCantarDe(ajustes);
       // Se guarda la lista para poder sortear sin conexión.
-      final ordenados = estudiados.toList()..sort();
+      final ordenados = ({...estudiados, ...delCronograma}..removeAll(noCantar.keys)).toList()..sort();
       if (ordenados.join(',') != (List.of(a.temas)..sort()).join(',')) await guardarAlumno(a.copyWith(temas: ordenados));
       return ProgresoAlumno(
         estudiados: estudiados,
         enRepaso: ((ajustes['temasEnRepaso'] as List?) ?? []).map((e) => e.toString()).toSet(),
+        delCronograma: delCronograma,
+        noCantar: noCantar,
         // De las clases con otros preparadores se ve el tema, la fecha y con
         // quién, no su valoración, sus comentarios ni sus indicaciones; y lo
         // que el alumno haya decidido ocultar, tampoco.

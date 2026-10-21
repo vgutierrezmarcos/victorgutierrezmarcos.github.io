@@ -385,9 +385,14 @@ class SolicitudEnlace {
 /// Lo que un alumno enlazado comparte con su preparador: los temas que marca
 /// y sus cantes. No incluye tests, notas ni grabaciones.
 class ProgresoAlumno {
-  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
+  const ProgresoAlumno({this.estudiados = const {}, this.enRepaso = const {}, this.delCronograma = const {}, this.noCantar = const {}, this.cantes = const [], this.ajustes = const AjustesCoordinacion(), this.reparto = const {}, this.yoAislado = false});
   final Set<String> estudiados;
   final Set<String> enRepaso;
+  /// Temas que lleva según su cronograma compartido (ver
+  /// [Cronograma.temasLlevados]), aunque no los haya marcado como estudiados.
+  final Set<String> delCronograma;
+  /// Temas que pide no cantar por ahora en clase, y desde cuándo.
+  final Map<String, DateTime> noCantar;
   /// Cantes del alumno (los suyos y los programados por preparadores), ya
   /// filtrados según lo que el alumno deja ver (ver [AjustesCoordinacion]).
   final List<Cante> cantes;
@@ -428,8 +433,9 @@ String informeCante(Cante c, {String? alumno, String Function(String codigo)? ti
   String dos(int n) => n.toString().padLeft(2, '0');
   final lineas = <String>[
     'Cante del ${c.fecha.day}/${c.fecha.month}/${c.fecha.year}${alumno == null || alumno.isEmpty ? '' : ' · $alumno'}',
-    for (final t in r?.temasCantados ?? const <String>[]) 'Tema $t${tituloDe == null || tituloDe(t).isEmpty ? '' : ' · ${tituloDe(t)}'}',
-    if ((r?.valoracion ?? 0) > 0) 'Valoración: ${'★' * r!.valoracion}${'☆' * (5 - r.valoracion)}',
+    for (final t in r?.temasCantados ?? const <String>[])
+      'Tema $t${tituloDe == null || tituloDe(t).isEmpty ? '' : ' · ${tituloDe(t)}'}${(r!.valoraciones[t] ?? 0) > 0 ? ': ${'★' * r.valoraciones[t]!}${'☆' * (5 - r.valoraciones[t]!)}' : ''}',
+    if ((r?.valoracion ?? 0) > 0) '${r!.valoraciones.isEmpty ? 'Valoración' : 'Valoración del cante'}: ${'★' * r.valoracion}${'☆' * (5 - r.valoracion)}',
     if ((r?.segundos ?? 0) > 0) 'Tiempo: ${r!.segundos ~/ 60}:${dos(r.segundos % 60)} (previsto: ${c.minutos} min)',
     if (r != null && r.sorteados.length > 1) 'Salieron en el sorteo: ${r.sorteados.join(', ')}',
     if (r != null && r.comentarios.isNotEmpty) ...['', r.comentarios],

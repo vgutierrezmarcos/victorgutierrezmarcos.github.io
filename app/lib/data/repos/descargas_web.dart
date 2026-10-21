@@ -30,12 +30,15 @@ class DescargasRepo {
 
   /// El contenido del fichero (en memoria mientras la pestaña siga abierta).
   Future<Uint8List> bytes(String url, {String? nombre, String? reemplaza, void Function(int, int)? progreso}) async {
+    // Siempre una copia: pdf.js transfiere a su worker el búfer que recibe y
+    // lo deja «detached», y al volver a abrir el mismo tema fallaba con
+    // «Cannot perform Construct on a detached ArrayBuffer».
     final guardado = _memoria[url];
-    if (guardado != null) return guardado;
+    if (guardado != null) return Uint8List.fromList(guardado);
     final r = await _dio.get<List<int>>(url, options: Options(responseType: ResponseType.bytes), onReceiveProgress: progreso);
     final bytes = Uint8List.fromList(r.data ?? const []);
     _memoria[url] = bytes;
-    return bytes;
+    return Uint8List.fromList(bytes);
   }
 
   Future<void> borrar(String url, {String? nombre}) async => _memoria.remove(url);

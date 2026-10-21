@@ -121,6 +121,20 @@ class Cronograma {
 
   /// Fecha del primer cante de la vuelta (con [diaCante]).
   DateTime? get primerCante => diaCante == null ? null : DateTime(inicio.year, inicio.month, inicio.day + 6);
+
+  /// Temas que lleva el opositor a [fecha] según el cronograma: los marcados
+  /// como hechos y los de las semanas ya empezadas (lo que estudia esta
+  /// semana es lo que canta en la clase de esta semana), sin los que desmarcó.
+  /// Es lo que ve el preparador como «temas que lleva» aunque el opositor no
+  /// los marque como estudiados uno a uno.
+  Set<String> temasLlevados(DateTime fecha) {
+    final dia = DateTime(fecha.year, fecha.month, fecha.day);
+    return {
+      ...hechos.keys,
+      for (final s in semanas)
+        if (!s.lunes.isAfter(dia)) ...s.temas,
+    }..removeAll(desmarcados);
+  }
   final int temasPorSemana;
   /// Fecha de fin que fijó el opositor (null = la que salga del ritmo).
   final DateTime? fin;

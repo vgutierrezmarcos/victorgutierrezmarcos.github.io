@@ -85,6 +85,9 @@ class SesionPage extends ConsumerWidget {
     final alumno = alumnos.where((a) => a.id == s.alumno).firstOrNull;
     final temario = ref.watch(temarioProvider).valueOrNull;
     final temas = temario == null || alumno == null ? const <Tema>[] : temasDeSesion(s, alumno, temario);
+    // Temas que el alumno pide no cantar y que ya se le habían mandado para esta clase.
+    final noCantar = alumno == null ? const <String, DateTime>{} : (ref.watch(progresoAlumnoProvider(alumno.id)).valueOrNull?.noCantar ?? const <String, DateTime>{});
+    final mandadosQueNoQuiere = s.temasMandados.where(noCantar.containsKey).toList();
     final r = s.resultado;
     final notifier = ref.read(sesionesProvider.notifier);
     final repo = ref.read(preparadorRepoProvider);
@@ -372,6 +375,16 @@ class SesionPage extends ConsumerWidget {
             const TituloSeccion('Temas antes de la clase'),
             if (s.sustitucion != null && !conUid) _RecuperarClaseSuelta(id: s.id) else SeccionTemaAnticipado(sesion: s, temas: temas, enlazado: conUid),
             if (temas.isEmpty) Padding(padding: const EdgeInsets.only(top: 6), child: Text('No hay temas en la bolsa: apunta en la ficha los temas que lleva el alumno o elige una lista.', style: context.textos.labelSmall)),
+            if (mandadosQueNoQuiere.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Aviso(
+                  tipo: TipoAviso.aviso,
+                  icono: Icons.mic_off_outlined,
+                  titulo: '${alumno?.nombre ?? 'El alumno'} pide no cantar por ahora ${mandadosQueNoQuiere.length == 1 ? 'el tema' : 'los temas'} ${mandadosQueNoQuiere.join(' y ')}',
+                  texto: 'Ya se lo habías mandado para esta clase: cámbialo.',
+                ),
+              ),
           ],
           if (conUid && usuario != null && alumno != null) ...[
             const SizedBox(height: 10),
@@ -411,7 +424,7 @@ class SesionPage extends ConsumerWidget {
             TituloSeccion('Valoración', accion: TextButton(onPressed: valorar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                for (final t in r.temasCantados) TextoTema(t, temario?.tema(t)?.titulo ?? '', color: ref.watch(estructuraProvider).valueOrNull?.colorDe(t)),
+                TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? '', colorDe: (t) => ref.watch(estructuraProvider).valueOrNull?.colorDe(t)),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

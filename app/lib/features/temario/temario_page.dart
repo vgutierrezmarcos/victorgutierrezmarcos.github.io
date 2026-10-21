@@ -160,6 +160,8 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
         if (x.temarioAnterior) Padding(padding: const EdgeInsets.only(right: 6), child: Etiqueta('Temario anterior', color: context.colores.dorado)),
         if (offline && !x.pdfDeParte) Icon(Icons.offline_pin, size: 14, color: context.colores.textoClaro),
         if (repaso && !_preparador) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.replay, size: 14, color: context.esquema.primary)),
+        if (!_preparador && ref.watch(ajustesProvider).noCantar.containsKey(x.codigo))
+          Padding(padding: const EdgeInsets.only(left: 4), child: Tooltip(message: 'Has pedido no cantarlo por ahora', child: Icon(Icons.mic_off_outlined, size: 14, color: context.colores.textoClaro))),
         if (conNota) Padding(padding: const EdgeInsets.only(left: 4), child: Icon(Icons.sticky_note_2_outlined, size: 14, color: context.colores.dorado)),
         if (apuntes > 0 && !_preparador) Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta(apuntes == 1 ? '1 apunte' : '$apuntes apuntes', color: context.colores.dorado)),
       ]),

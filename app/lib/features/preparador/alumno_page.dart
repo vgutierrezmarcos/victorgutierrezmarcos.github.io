@@ -15,6 +15,7 @@ import '../../widgets/selector_temas.dart';
 import '../cantar/cantar_page.dart';
 import '../plan/cante_form_page.dart';
 import '../plan/cantes_util.dart';
+import '../plan/resultado_sheet.dart';
 import '../cronograma/propuesta_page.dart';
 import 'materiales_page.dart';
 import 'preparador_page.dart';
@@ -309,6 +310,20 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                   ),
             ],
             TituloSeccion('Temas que lleva (${a.temas.length})', accion: a.enlazado ? null : TextButton(onPressed: editarTemas, child: Text(a.temas.isEmpty ? 'Apuntar' : 'Editar'))),
+            // Lo que pide no cantar por ahora no entra en el sorteo de sus clases.
+            if (progreso?.value?.noCantar.isNotEmpty ?? false)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4, 0, 4, 8),
+                child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Padding(padding: const EdgeInsets.only(right: 6, top: 2), child: Icon(Icons.mic_off_outlined, size: 16, color: context.colores.textoClaro)),
+                  Expanded(
+                    child: Text(
+                      'Pide no cantar por ahora: ${(progreso!.value!.noCantar.entries.toList()..sort((x, y) => x.key.compareTo(y.key))).map((e) => '${e.key} (desde el ${fechaCorta(e.value)})').join(', ')}. Quedan fuera del sorteo de sus clases.',
+                      style: context.textos.bodySmall,
+                    ),
+                  ),
+                ]),
+              ),
             if (a.temas.isEmpty)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -356,7 +371,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
                     padding: EdgeInsets.zero,
                     onTap: idsMias.contains(c.id) ? () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => SesionPage(id: c.id))) : () => _verCanteDelAlumno(c, titulo),
                     child: ListTile(
-                      title: Text(c.resultado?.temaCantado == null ? tituloCante(c) : '${c.resultado!.temaCantado} · ${titulo(c.resultado!.temaCantado!)}', maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
+                      title: Text(tituloCanteHecho(c, titulo), maxLines: 1, overflow: TextOverflow.ellipsis, style: context.textos.titleSmall),
                       subtitle: Text(
                         '${fechaCorta(c.fecha)}${(c.resultado?.segundos ?? 0) > 0 ? ' · ${formatoTiempo(c.resultado!.segundos)}' : ''}${idsMias.contains(c.id) ? '' : ' · ${conQuienCanto(c, yo: ref.read(usuarioActualProvider)?.uid, mia: false)}'}',
                         style: context.textos.labelSmall,
@@ -393,7 +408,7 @@ class _AlumnoPageState extends ConsumerState<AlumnoPage> {
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text('${c.preparador == null ? 'Cante por su cuenta' : 'Clase ${conQuienCanto(c, yo: null, mia: false)}'} · ${fechaLarga(c.fecha)}', style: context.textos.titleMedium),
           const SizedBox(height: 8),
-          for (final t in r?.temasCantados ?? const <String>[]) Text('$t · ${titulo(t)}', style: context.textos.titleSmall),
+          if (r != null) TemasValorados(resultado: r, titulo: titulo),
           const SizedBox(height: 6),
           Row(children: [
             Estrellas(valor: r?.valoracion ?? 0, tamano: 20),

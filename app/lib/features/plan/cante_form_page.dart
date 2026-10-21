@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/avisos_breves.dart';
 import '../../core/permiso_calendario.dart';
+import '../../core/cronograma_providers.dart';
 import '../../core/providers.dart';
 import '../../core/red_providers.dart';
 import '../../data/models/oposicion.dart';
@@ -65,11 +66,29 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   /// Se le pide la clase a un preparador (no es un cante por cuenta propia).
   VinculoPreparador? get _preparadorElegido => _sesion || _conQuien.isEmpty || _conQuien == _otraPersona ? null : ref.read(misPreparadoresProvider).where((v) => v.uid == _conQuien).firstOrNull;
 
+  /// El preparador ha tocado el día o la hora: ya no se le propone el del alumno.
+  bool _cuandoTocado = false;
+
   @override
   void initState() {
     super.initState();
     final d = widget.diaInicial ?? DateTime.now().add(const Duration(days: 1));
     _fecha = widget.cante?.fecha ?? DateTime(d.year, d.month, d.day, 17);
+    if (_sesion && !_edicion && widget.diaInicial == null && _alumnos.length == 1) _proponerCuando(_alumnos.first);
+  }
+
+  /// Clase nueva para un alumno: por defecto, el día en que canta según su
+  /// cronograma (compartido) y, si tiene clase fija ese día, a su hora. Se
+  /// puede cambiar.
+  Future<void> _proponerCuando(String idAlumno) async {
+    final a = widget.alumnos?.where((x) => x.id == idAlumno).firstOrNull;
+    if (a == null) return;
+    var dia = (await ref.read(cronogramaAlumnoProvider(a.id).future))?.diaCante;
+    final fija = a.clasesFijas.where((c) => dia == null || c.diaSemana == dia).firstOrNull;
+    dia ??= fija?.diaSemana;
+    if (!mounted || _cuandoTocado || dia == null || !_alumnos.contains(idAlumno)) return;
+    final minuto = fija?.minutoDelDia;
+    setState(() => _fecha = proximoDiaDeSemana(DateTime.now(), dia!, hora: minuto == null ? 17 : minuto ~/ 60, minuto: minuto == null ? 0 : minuto % 60));
   }
 
   @override
@@ -83,12 +102,18 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
 
   Future<void> _elegirDia() async {
     final d = await showDatePicker(context: context, initialDate: _fecha, firstDate: DateTime(_fecha.year - 1), lastDate: DateTime(_fecha.year + 5), helpText: 'Día del cante');
-    if (d != null) setState(() => _fecha = DateTime(d.year, d.month, d.day, _fecha.hour, _fecha.minute));
+    if (d != null) {
+      _cuandoTocado = true;
+      setState(() => _fecha = DateTime(d.year, d.month, d.day, _fecha.hour, _fecha.minute));
+    }
   }
 
   Future<void> _elegirHora() async {
     final t = await showTimePicker(context: context, initialTime: TimeOfDay.fromDateTime(_fecha), helpText: 'Hora del cante');
-    if (t != null) setState(() => _fecha = DateTime(_fecha.year, _fecha.month, _fecha.day, t.hour, t.minute));
+    if (t != null) {
+      _cuandoTocado = true;
+      setState(() => _fecha = DateTime(_fecha.year, _fecha.month, _fecha.day, t.hour, t.minute));
+    }
   }
 
   Future<void> _otraDuracion({bool exposicion = false}) async {
@@ -263,10 +288,13 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
                   ChoiceChip(
                     label: Text(a.nombre),
                     selected: _alumnos.contains(a.id),
-                    onSelected: (v) => setState(() {
-                      _alumnos.clear();
-                      if (v) _alumnos.add(a.id);
-                    }),
+                    onSelected: (v) {
+                      setState(() {
+                        _alumnos.clear();
+                        if (v) _alumnos.add(a.id);
+                      });
+                      if (v) _proponerCuando(a.id);
+                    },
                   ),
               ]),
           ],

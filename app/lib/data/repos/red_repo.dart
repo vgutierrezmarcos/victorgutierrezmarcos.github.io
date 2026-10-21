@@ -7,6 +7,7 @@ import '../models/oposicion.dart';
 import '../models/plan.dart';
 import '../models/preparador.dart';
 import '../models/red.dart';
+import 'usuario_repo.dart';
 
 /// Aviso de la red (sustitución nueva, cogida, reserva…) para notificar una vez.
 class AvisoRed {
@@ -653,6 +654,29 @@ class RedRepo {
         final cuando = DateTime.tryParse(((d.data()['resueltas'] as Map?) ?? const {})[uid] as String? ?? '');
         if (r == null || cuando == null || cuando.isBefore(reciente)) continue;
         out.add(AvisoRed(id: 'presp:$alumno:${d.id}:${cuando.toIso8601String()}', titulo: r == 'aceptada' ? '$quien acepta tu propuesta de cronograma' : '$quien rechaza tu propuesta de cronograma', texto: r == 'aceptada' ? 'Ya va con tu orden y tu ritmo.' : 'Sigue con su cronograma como estaba.', ruta: '/mas/preparador'));
+      }
+    });
+    await intentar(() async {
+      // Temas que el alumno pide no cantar por ahora (Ajustes.noCantar): aviso
+      // de cada uno nuevo y, si ya se lo había mandado para una clase, cuál.
+      final ajustes = (await raiz.collection('progress').doc('settings').get()).data() ?? const {};
+      final noCantar = Ajustes.noCantarDe(ajustes);
+      if (noCantar.isEmpty) return;
+      final mias = await oposicion.raizUsuario(_db, uid!).collection('sesiones').where('alumno', isEqualTo: alumno).get();
+      final clases = [for (final d in mias.docs) if (Cante.fromJson({...d.data(), 'id': d.id}) case final c when c.pendiente && !c.borrado) c];
+      for (final e in noCantar.entries) {
+        final desde = e.value;
+        if (desde.isBefore(reciente)) continue;
+        final tema = e.key;
+        final clase = clases.where((c) => c.temasMandados.contains(tema)).firstOrNull;
+        out.add(AvisoRed(
+          id: 'nocantar:$alumno:$tema:${desde.millisecondsSinceEpoch}',
+          titulo: '$quien pide no cantar el tema $tema',
+          texto: clase == null
+              ? 'No entrará en el sorteo de sus clases hasta que lo quite. Lo ves en su ficha.'
+              : 'Ya se lo habías mandado para la clase del ${clase.fecha.day}/${clase.fecha.month}: cámbialo.',
+          ruta: clase == null ? '/mas/preparador' : '/clase?id=${clase.id}',
+        ));
       }
     });
     return out;

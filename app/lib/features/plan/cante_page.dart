@@ -322,7 +322,7 @@ class CantePage extends ConsumerWidget {
             TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),
             Tarjeta(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                for (final t in r.temasCantados) Text('$t · ${temario?.tema(t)?.titulo ?? ''}', style: context.textos.titleSmall),
+                TemasValorados(resultado: r, titulo: (t) => temario?.tema(t)?.titulo ?? ''),
                 const SizedBox(height: 6),
                 Row(children: [
                   Estrellas(valor: r.valoracion, tamano: 20),

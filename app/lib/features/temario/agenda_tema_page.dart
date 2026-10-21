@@ -202,6 +202,21 @@ class _AgendaTemaState extends ConsumerState<AgendaTemaVista> {
             OutlinedButton.icon(onPressed: _vuelta, icon: const Icon(Icons.replay, size: 18), label: const Text('Vuelta completada hoy')),
           ]),
         ),
+        // Aunque lo lleve (o esté en su cronograma), puede pedir que no se lo
+        // saquen en clase: el preparador lo ve y lo deja fuera del sorteo.
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Tarjeta(
+            padding: EdgeInsets.zero,
+            child: SwitchListTile(
+              value: ref.watch(ajustesProvider).noCantar.containsKey(_codigo),
+              onChanged: (_) => ref.read(ajustesProvider.notifier).alternarNoCantar(_codigo),
+              secondary: const Icon(Icons.mic_off_outlined),
+              title: Text('No cantar este tema por ahora', style: context.textos.titleSmall),
+              subtitle: Text('Tu preparador lo ve y no entra en el sorteo de sus clases hasta que lo quites.', style: context.textos.labelSmall),
+            ),
+          ),
+        ),
         ],
         if (stats != null && !preparador) ...[
           const TituloSeccion('Al cantarlo'),

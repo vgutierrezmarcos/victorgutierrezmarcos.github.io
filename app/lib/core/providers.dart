@@ -480,6 +480,13 @@ class AjustesNotifier extends Notifier<Ajustes> {
         return a.copyWith(temasEstudiados: s);
       });
 
+  /// Pide (o deja de pedir) no cantar [codigo] en las clases con el preparador.
+  Future<void> alternarNoCantar(String codigo) => actualizar((a) {
+        final m = {...a.noCantar};
+        m.containsKey(codigo) ? m.remove(codigo) : m[codigo] = DateTime.now();
+        return a.copyWith(noCantar: m);
+      });
+
   Future<void> alternarRepaso(String codigo) => actualizar((a) {
         final s = {...a.temasEnRepaso};
         s.contains(codigo) ? s.remove(codigo) : s.add(codigo);
