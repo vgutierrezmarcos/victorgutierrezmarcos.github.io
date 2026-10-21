@@ -88,6 +88,10 @@ node build-search-index.js
 # Regenerate the PDF outlines the app shows next to each tema (needs pypdf), after changing a PDF in oposicion/temario
 python3 scripts/esquemas-temario.py
 
+# Refresh the "Convocatoria en curso" block of oposicion/por-que-tcee.html from oposicion/proceso.json
+# (leer-proceso.yml runs it automatically; when a new convocatoria appears, add its plazas/tasas to CONVOCATORIAS in the script)
+python3 scripts/guia-convocatoria.py
+
 # Generate RSS feed manually
 node generate-rss.js
 
