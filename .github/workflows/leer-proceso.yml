@@ -59,6 +59,11 @@ jobs:
     - name: Checkout code
       if: steps.toca.outputs.toca == 'si'
       uses: actions/checkout@v4
+      with:
+        # La punta de main de ahora, no el commit de cuando se encoló la
+        # ejecución: la anterior acaba de hacer push de proceso.json y, si
+        # se parte de la copia vieja, el rebase choca y la acción falla.
+        ref: main
 
     - name: Leer las páginas del proceso
       if: steps.toca.outputs.toca == 'si'
@@ -70,7 +75,22 @@ jobs:
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
         git add oposicion/proceso.json
-        git diff --staged --quiet || (git commit -m "Novedades del proceso selectivo [skip ci]" && git pull --rebase && git push)
+        git diff --staged --quiet && exit 0
+        git commit -m "Novedades del proceso selectivo [skip ci]"
+        # Solo main y sin etiquetas (traer todas las ramas tardaba un minuto).
+        # Si otra ejecución ha cambiado proceso.json entre medias, se queda
+        # la versión de esta, que es la más reciente, y se vuelve a intentar.
+        for intento in 1 2 3; do
+          git fetch --no-tags origin main
+          if ! git rebase origin/main; then
+            git checkout --theirs -- oposicion/proceso.json
+            git add oposicion/proceso.json
+            GIT_EDITOR=true git rebase --continue
+          fi
+          git push && exit 0
+          sleep 10
+        done
+        exit 1
 
     - name: Avisar por push de lo nuevo
       if: steps.toca.outputs.toca == 'si'
