@@ -153,7 +153,12 @@
       /* Portada y cierre */
       .centro { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 30px; }
       .centro .tit { color: #fff; }
-      .icono-grande { width: 220px; height: 220px; border-radius: 50px; display: block; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4); }
+      /* Todo lo del centro va posicionado para que se pinte en su orden: los
+         anillos (dentro de la caja del icono) quedan bajo el icono y el texto. */
+      .centro > * { position: relative; }
+      .icono-caja { position: relative; }
+      .icono-grande { position: relative; width: 220px; height: 220px; border-radius: 50px; display: block; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4); }
+      /* Anillos que nacen del centro del icono */
       .anillo { position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; margin: -450px 0 0 -450px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--dorado-claro); }
       .lema { margin: 0; font-family: "Pagella", serif; font-style: italic; font-size: 50px; color: var(--sobre-oscuro-suave); }
       .lema .w { display: inline-block; white-space: pre; }
@@ -172,8 +177,6 @@
       /* Mitad berenjena de «Tu papel»: preparo a otros */
       #elegir-mitad { position: absolute; left: 960px; top: 0; width: 960px; height: 1080px; background: var(--tinta); transform-origin: right center; }
 
-      /* Progreso: filete dorado que crece a lo largo del vídeo */
-      #progreso { position: absolute; left: 0; bottom: 0; width: 1920px; height: 5px; background: var(--dorado); transform-origin: left center; }
       /* Barrido dorado en los cambios entre claro y oscuro */
       #barrido { position: absolute; top: 0; left: -40px; width: 14px; height: 1080px; background: var(--dorado-claro); }
     </style>
@@ -185,11 +188,13 @@
       <!-- Portada -->
       <section id="portada" class="clip oscura" data-start="0.0000" data-duration="4.3636" data-track-index="0">
         <div class="fondo"></div>
-        <div class="anillo" id="portada-a1"></div>
-        <div class="anillo" id="portada-a2"></div>
-        <div class="anillo" id="portada-a3"></div>
         <div class="centro">
-          <img id="portada-icono" class="icono-grande" src="assets/icono.png" alt="" />
+          <div class="icono-caja">
+            <div class="anillo" id="portada-a1"></div>
+            <div class="anillo" id="portada-a2"></div>
+            <div class="anillo" id="portada-a3"></div>
+            <img id="portada-icono" class="icono-grande" src="assets/icono.png" alt="" />
+          </div>
           <h1 id="portada-tit" class="tit" style="font-size: 104px"><span class="l">Oposición TCEE · DCE</span></h1>
           <span id="portada-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
           <p id="portada-lema" class="lema">Para opositores y preparadores, en una sola app</p>
@@ -564,10 +569,12 @@
       <!-- Cierre -->
       <section id="cierre" class="clip oscura" data-start="85.0909" data-duration="4.9091" data-track-index="0">
         <div class="fondo"></div>
-        <div class="anillo" id="cierre-a1"></div>
-        <div class="anillo" id="cierre-a2"></div>
         <div class="centro" style="gap: 26px">
-          <img id="cierre-icono" class="icono-grande" src="assets/icono.png" alt="" style="width: 170px; height: 170px; border-radius: 40px" />
+          <div class="icono-caja">
+            <div class="anillo" id="cierre-a1"></div>
+            <div class="anillo" id="cierre-a2"></div>
+            <img id="cierre-icono" class="icono-grande" src="assets/icono.png" alt="" style="width: 170px; height: 170px; border-radius: 40px" />
+          </div>
           <h2 id="cierre-tit" class="tit" style="font-size: 140px"><span class="l">Empieza hoy.</span></h2>
           <span id="cierre-filete" class="filete" style="width: 260px; transform-origin: center center"></span>
           <p id="cierre-n1" class="nota-cierre">Para opositores y preparadores  ·  Gratis  ·  Sin anuncios  ·  Android y navegador</p>
@@ -575,8 +582,7 @@
         </div>
       </section>
 
-      <!-- Capas comunes: progreso y barrido -->
-      <div id="progreso" class="clip" data-start="8.7273" data-duration="76.3636" data-track-index="5" style="inset: auto 0 0 0; height: 5px; background: transparent"><div id="progreso-linea" style="width: 1920px; height: 5px; background: var(--dorado); transform-origin: left center"></div></div>
+      <!-- Capas comunes: rótulos de bloque y barrido -->
       <div id="capa-capitulos" class="clip" data-start="0" data-duration="90" data-track-index="7" style="pointer-events: none">
         <div class="capitulo" data-bloque="con_preparador">Para opositores · <span>Con tu preparador</span></div>
         <div class="capitulo oscuro" data-bloque="preparadores">Para preparadores · <span>Tus alumnos</span></div>
@@ -667,9 +673,9 @@
         funde(c, fin(escenas[escenas.length - 1]) - 0.3, 0.3);
       });
 
-      // Portada
+      // Portada: los anillos salen de debajo del icono
       ["#portada-a1", "#portada-a2", "#portada-a3"].forEach((a, i) =>
-        tl.fromTo(a, { scale: 0.25, opacity: 0.7 }, { scale: 1.5, opacity: 0, duration: 2.2, ease: "power1.out" }, 0.5 + i * 0.18));
+        tl.fromTo(a, { scale: 0.12, opacity: 0.8 }, { scale: 1.5, opacity: 0, duration: 2.2, ease: "power1.out" }, 0.5 + i * 0.18));
       tl.fromTo("#portada-icono", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.8)" }, 0.45);
       palabras("#portada-tit", 1.25, 0.12);
       filete("#portada-filete", 1.9);
@@ -877,15 +883,12 @@
 
       // Cierre
       ["#cierre-a1", "#cierre-a2"].forEach((a, i) =>
-        tl.fromTo(a, { scale: 0.25, opacity: 0.6 }, { scale: 1.5, opacity: 0, duration: 2.4, ease: "power1.out" }, B(E.cierre) + 0.4 + i * 0.2));
+        tl.fromTo(a, { scale: 0.12, opacity: 0.7 }, { scale: 1.5, opacity: 0, duration: 2.4, ease: "power1.out" }, B(E.cierre) + 0.4 + i * 0.2));
       tl.fromTo("#cierre-icono", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.8)" }, B(E.cierre) + 0.35);
       palabras("#cierre-tit", B(E.cierre) + 0.9, P / 2);
       filete("#cierre-filete", B(E.cierre) + 1.6);
       aparece("#cierre-n1", B(E.cierre) + 2.0);
       aparece("#cierre-n2", B(E.cierre) + 2.8);
-
-      // Progreso a lo largo del cuerpo del vídeo (de «Al empezar» al cierre).
-      tl.fromTo("#progreso-linea", { scaleX: 0 }, { scaleX: 1, duration: B(E.cierre) - B(E.elegir), ease: "none" }, B(E.elegir));
 
       window.__timelines["main"] = tl;
     </script>
