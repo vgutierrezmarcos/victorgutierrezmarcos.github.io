@@ -200,6 +200,15 @@ List<Trazo> rodeados(List<Trazo> trazos, List<P> lazo) {
 
 double _fraccionDentro(Trazo t, List<P> lazo) {
   var total = 0, dentro = 0;
+  if (t.esTexto) {
+    // Un texto cuenta por las esquinas y el centro de su caja.
+    final c = t.caja;
+    for (final p in [P(c.left.toDouble(), c.top.toDouble()), P(c.right.toDouble(), c.top.toDouble()), P(c.left.toDouble(), c.bottom.toDouble()), P(c.right.toDouble(), c.bottom.toDouble()), P(c.left + c.width / 2, c.top + c.height / 2)]) {
+      total++;
+      if (dentroDePoligono(p, lazo)) dentro++;
+    }
+    return dentro / total;
+  }
   for (var i = 0; i < t.puntos.length; i++) {
     final a = t.puntos[i];
     final b = i + 1 < t.puntos.length ? t.puntos[i + 1] : a;

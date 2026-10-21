@@ -21,6 +21,10 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (21 oct.) El preparador ve como «temas que lleva» el alumno también los de su cronograma compartido, y al programarle una clase se propone el día en que canta según ese cronograma
 - (21 oct.) En el navegador, volver a abrir un tema ya abierto (por ejemplo, tras anotarlo) ya no da «No se pudo cargar el contenido»
 - (21 oct.) El opositor puede pedir no cantar un tema por ahora (en la agenda del tema): queda fuera del sorteo de sus clases y el preparador recibe un aviso, con la clase a cambiar si ya se lo había mandado
+- (21 oct.) Pizarra: se puede escribir a máquina (herramienta «Texto» en el menú ···: un toque abre el cuadro; se corrige, se mueve con el lazo y se borra como un trazo)
+- (21 oct.) Notas del preparador: cada clase tiene una segunda pizarra solo del preparador, que el alumno ve cuando él la comparte y la clase ha terminado
+- (21 oct.) Cualquier pizarra (la de la clase y las notas) se guarda como PDF desde el menú ···
+- (21 oct.) En el navegador, el visor del tema ya no amplía solo al bajar con la rueda del ratón
 
 Además de lo anterior, al salir en Play conviene resumir lo que la app tiene
 desde la 1.16.0 (ver `registro-prueba-cerrada.md`): red de preparadores, clases

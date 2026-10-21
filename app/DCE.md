@@ -243,9 +243,10 @@ Enlaces (proyecto `web-vgm`): [Google Auth Platform](https://console.cloud.googl
 - [x] Siguiente versión de la app (1.15.0): lleva los enlaces a las condiciones de uso (Más, inicio de sesión y alta de preparador) y las mejoras de los testers.
 
 
-## Peticiones de Manuel del 21 oct. 2026 (pendientes de decidir)
+## Peticiones de Manuel del 21 oct. 2026
 
-Hechas el 21 oct. (1.17.8): valoración por tema, temas y minutos corregibles a posteriori, tiempos del cronómetro de DCE (1.17.6). Quedan por decidir con Víctor (ver el resumen de la sesión del 21 oct.):
-- [ ] **Pizarra: escribir a máquina** (cuadros de texto desde el móvil, la tableta o el ordenador). Habría que añadir un tipo de elemento «texto» al formato de los trazos (`pizarra_trazos.dart`: posición, texto, tamaño, color), pintarlo en el lienzo y en el PDF anotado, y una herramienta en la paleta que al tocar abra un cuadro para escribir; el lazo lo movería como a un trazo.
-- [ ] **«Notas del preparador» en la clase**: una segunda pizarra en `cantes/{id}/notas/{p}` que solo escribe el preparador y que el alumno ve cuando el preparador la comparte (campo `visible` por página) y la clase ha terminado. Requiere cambiar las reglas (`tool/reglas/generar.py`: `compartido in ['reloj', 'pizarra', 'notas']` con lectura del alumno solo si `visible`), publicarlas a mano en la consola y un botón más en la ficha de la clase (preparador) y en el cante (alumno).
-- [ ] **Exportar o caducar las pizarras**: hoy la pizarra de cada clase se guarda en la nube, en los datos del alumno (`users/{alumno}/cantes/{id}/pizarra`), sin fecha de borrado (solo se borra con la cuenta) y sin exportación; la de practicar no se guarda. Opciones: botón «Guardar como PDF» (reutilizando `pdfAnotado`) y, si pesa, borrado automático a los N días.
+Hechas el 21 oct.: valoración por tema, temas y minutos corregibles a posteriori (1.17.8), tiempos del cronómetro de DCE (1.17.6) y, en la 1.17.9, las tres de la pizarra:
+- [x] **Pizarra: escribir a máquina**: herramienta «Texto» en el menú ··· (`pizarra_texto.dart`, elemento `h: 't'` en `pizarra_trazos.dart`).
+- [x] **«Notas del preparador» en la clase**: segunda pizarra en los datos del preparador (`users/{prep}/sesiones/{id}/notas/{p}`, páginas con `alumno` y `visible`), botón en la ficha de la clase (preparador, con el chip «Compartir») y en el cante del alumno cuando están compartidas y la clase ha terminado. **Pendiente de Víctor: publicar `firestore.rules` en la consola de Firebase** (sin eso el alumno no puede leerlas).
+- [x] **Exportar las pizarras**: «Guardar como PDF» en el menú ··· de la pizarra de la clase y de las notas (`pizarra_pdf.dart`). No caducan: se guardan con la cuenta del alumno (la de la clase) o del preparador (las notas); si algún día pesan, borrado automático a los N días.
+- [ ] Probar `tool/reglas/prueba.mjs` con el emulador (aquí no hay Java ni emulador) antes de publicar las reglas.

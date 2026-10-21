@@ -20,6 +20,18 @@ const herramientaBoligrafo = 'b';
 const herramientaRotulador = 'r';
 const herramientaFosforito = 'f';
 
+/// Texto escrito a máquina (`t`): un cuadro de texto con su esquina superior
+/// izquierda en el único punto, el tamaño de letra en [Trazo.grosor] y la
+/// caja medida en [Trazo.ancho] × [Trazo.alto]. Las versiones anteriores de
+/// la app lo pintan como un punto.
+const herramientaTexto = 't';
+
+/// Tamaños de letra del texto (pequeño, mediano y grande), en unidades del
+/// lienzo; y el ancho máximo de un cuadro antes de partir las líneas.
+const tamanosTexto = [26, 36, 50];
+const anchoMaxTexto = 900;
+const maxCaracteresTexto = 2000;
+
 /// Grosores de cada herramienta (fino, medio y grueso).
 const grosoresHerramienta = {
   herramientaBoligrafo: grosores,
@@ -75,12 +87,35 @@ const bytesMaxPagina = 700 * 1024;
 
 /// Un trazo de alguien ([de], su uid) con un [grosor] y sus [puntos].
 class Trazo {
-  const Trazo({required this.id, required this.de, required this.grosor, required this.puntos, this.color, this.presiones, this.herramienta, this.crudo});
+  const Trazo({required this.id, required this.de, required this.grosor, required this.puntos, this.color, this.presiones, this.herramienta, this.texto, this.ancho = 0, this.alto = 0, this.crudo});
+
+  /// Un cuadro de texto en [posicion] (esquina superior izquierda) con la
+  /// letra de [tamano] unidades y la caja medida de [ancho] × [alto].
+  Trazo.texto({required this.id, required this.de, required Point<int> posicion, required String this.texto, required int tamano, required this.ancho, required this.alto, this.color})
+      : grosor = tamano,
+        puntos = [posicion],
+        presiones = null,
+        herramienta = herramientaTexto,
+        crudo = null;
 
   final String id;
   final String de;
   final int grosor;
+
+  /// Los puntos del trazo (en el texto, solo su esquina superior izquierda).
   final List<Point<int>> puntos;
+
+  /// El texto escrito a máquina (null en los trazos de tinta).
+  final String? texto;
+
+  /// La caja del texto, en unidades del lienzo (0 en los trazos de tinta).
+  final int ancho;
+  final int alto;
+
+  bool get esTexto => herramienta == herramientaTexto && texto != null;
+
+  /// El tamaño de letra del texto.
+  int get tamano => grosor;
 
   /// Un dígito 0-9 por punto (ver [factorDeDigito]); null = grosor fijo (los
   /// trazos antiguos, el rotulador, el fosforito y las formas).
@@ -99,6 +134,9 @@ class Trazo {
         grosor: grosor,
         color: color ?? this.color,
         herramienta: herramienta,
+        texto: texto,
+        ancho: ancho,
+        alto: alto,
         presiones: puntos != null ? presiones : this.presiones,
         puntos: [for (final p in puntos ?? this.puntos) Point(p.x + dx, p.y + dy)],
       );
@@ -106,8 +144,13 @@ class Trazo {
   /// Color ARGB elegido; null = el color del papel de quien lo pintó.
   final int? color;
 
-  /// Si el trazo pasa a menos de [radio] (en unidades del lienzo) del punto.
+  /// Si el trazo pasa a menos de [radio] (en unidades del lienzo) del punto
+  /// (en el texto, si el punto cae en su caja o a menos de [radio] de ella).
   bool cerca(Point<double> p, double radio) {
+    if (esTexto) {
+      final c = caja;
+      return p.x >= c.left - radio && p.x <= c.right + radio && p.y >= c.top - radio && p.y <= c.bottom + radio;
+    }
     final r = radio + grosor / 2;
     Point<double> d(Point<int> q) => Point(q.x.toDouble(), q.y.toDouble());
     if (puntos.length == 1) return p.distanceTo(d(puntos.first)) <= r;
@@ -129,12 +172,15 @@ class Trazo {
         if (color != null) 'c': color,
         if (presiones != null && presiones!.length == puntos.length) 'w': presiones!.join(),
         if (herramienta != null && herramienta != herramientaBoligrafo) 'h': herramienta,
+        if (esTexto) ...{'t': texto, 'a': ancho, 'l': alto},
       };
 
   factory Trazo.fromJson(Map<dynamic, dynamic> j) {
     final puntos = decodificarPuntos(j['p']?.toString() ?? '');
     final w = j['w']?.toString();
     final presiones = w == null || w.length != puntos.length ? null : [for (final c in w.codeUnits) (c - 48).clamp(0, 9)];
+    final h = j['h']?.toString();
+    final texto = h == herramientaTexto ? j['t']?.toString() : null;
     return Trazo(
       id: j['i']?.toString() ?? '',
       de: j['u']?.toString() ?? '',
@@ -142,14 +188,18 @@ class Trazo {
       puntos: puntos,
       color: (j['c'] as num?)?.toInt(),
       presiones: presiones,
-      herramienta: j['h']?.toString(),
+      herramienta: h,
+      texto: texto,
+      ancho: texto == null ? 0 : (j['a'] as num?)?.toInt() ?? 0,
+      alto: texto == null ? 0 : (j['l'] as num?)?.toInt() ?? 0,
       crudo: Map<String, dynamic>.from(j),
     );
   }
 
-  /// El rectángulo que lo contiene (sin el grosor).
+  /// El rectángulo que lo contiene (sin el grosor; en el texto, su caja).
   Rectangle<int> get caja {
     if (puntos.isEmpty) return const Rectangle(0, 0, 0, 0);
+    if (esTexto) return Rectangle(puntos.first.x, puntos.first.y, ancho, alto);
     var x0 = puntos.first.x, x1 = x0, y0 = puntos.first.y, y1 = y0;
     for (final p in puntos) {
       x0 = min(x0, p.x);
@@ -161,12 +211,12 @@ class Trazo {
   }
 
   /// Bytes aproximados que ocupa guardado.
-  int get bytesAprox => 40 + (crudo?['p']?.toString().length ?? codificarPuntos(puntos).length);
+  int get bytesAprox => 40 + (crudo?['p']?.toString().length ?? codificarPuntos(puntos).length) + (texto?.length ?? 0);
 }
 
 /// Una página de la pizarra (documento pizarra/{id}).
 class PaginaPizarra {
-  const PaginaPizarra({required this.id, required this.n, required this.trazos, this.borradoPor, this.fondo = fondoBlanco});
+  const PaginaPizarra({required this.id, required this.n, required this.trazos, this.borradoPor, this.fondo = fondoBlanco, this.visible = false});
 
   final String id;
   final int n;
@@ -178,6 +228,9 @@ class PaginaPizarra {
   /// [fondoBlanco], [fondoRayas] o [fondoCuadricula].
   final String fondo;
 
+  /// En las notas del preparador: si la ve el alumno.
+  final bool visible;
+
   int get bytesAprox => trazos.fold(0, (s, t) => s + t.bytesAprox);
   bool get llena => bytesAprox >= bytesMaxPagina;
 
@@ -187,6 +240,7 @@ class PaginaPizarra {
         trazos: [for (final t in (j['trazos'] as List?) ?? const []) if (t is Map) Trazo.fromJson(t)],
         borradoPor: j['borradoPor'] as String?,
         fondo: j['fondo']?.toString() ?? fondoBlanco,
+        visible: j['visible'] == true,
       );
 }
 
@@ -258,6 +312,8 @@ List<int> indicesSimplificados(List<Point<double>> puntos, {double tolerancia = 
 /// tramos largos se rellenan de puntos antes, para poder cortarlos por en medio.
 List<Trazo>? trocear(Trazo t, Point<double> p, double radio, {Random? random}) {
   if (!t.cerca(p, radio)) return null;
+  // Un texto no se parte: la goma lo quita entero.
+  if (t.esTexto) return const [];
   final r = radio + t.grosor / 2;
   final puntos = <Point<int>>[];
   final presiones = t.presiones == null ? null : <int>[];

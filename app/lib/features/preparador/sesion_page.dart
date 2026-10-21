@@ -388,11 +388,29 @@ class SesionPage extends ConsumerWidget {
           ],
           if (conUid && usuario != null && alumno != null) ...[
             const SizedBox(height: 10),
-            OutlinedButton.icon(
-              onPressed: () => abrirPizarra(context, alumnoUid: alumno.uid!, canteId: s.id, otroNombre: alumno.nombre),
-              icon: const Icon(Icons.draw_outlined, size: 18),
-              label: const Text('Pizarra compartida'),
-            ),
+            Wrap(spacing: 8, runSpacing: 6, children: [
+              OutlinedButton.icon(
+                onPressed: () => abrirPizarra(context, alumnoUid: alumno.uid!, canteId: s.id, otroNombre: alumno.nombre, etiqueta: fechaCorta(s.fecha)),
+                icon: const Icon(Icons.draw_outlined, size: 18),
+                label: const Text('Pizarra compartida'),
+              ),
+              // La segunda pizarra, solo del preparador: el alumno la ve cuando
+              // se comparte y la clase ha terminado.
+              OutlinedButton.icon(
+                onPressed: () => abrirNotas(
+                  context,
+                  alumnoUid: alumno.uid!,
+                  canteId: s.id,
+                  preparadorUid: usuario.uid,
+                  otroNombre: alumno.nombre,
+                  soloLectura: false,
+                  etiqueta: fechaCorta(s.fecha),
+                  alCompartir: (v) => guardar(s.copyWith(notasCompartidas: v)),
+                ),
+                icon: Icon(s.notasCompartidas ? Icons.visibility_outlined : Icons.edit_note_outlined, size: 18),
+                label: Text(s.notasCompartidas ? 'Notas del preparador (compartidas)' : 'Notas del preparador'),
+              ),
+            ]),
           ],
           if (!s.hecho) ...[
             const TituloSeccion('Detalles de la clase'),

@@ -24,6 +24,10 @@ node prueba.mjs ../../../firestore.rules
 
 Tiene que acabar con `0 fallidas`. Hay que repetirla cada vez que cambien las reglas, antes de publicarlas en la consola de Firebase.
 
+## Cambios pendientes de publicar
+
+- **21 oct. 2026 (1.17.9)**: `match /sesiones/{id}/notas/{p}` dentro de los datos de cada usuario: las notas del preparador de una clase (su segunda pizarra). El alumno lee solo las páginas con `alumno == su uid` y `visible == true`; el preparador, dueño de su subárbol, escribe. Hasta que se publiquen, el alumno no puede abrir las notas compartidas (la app le dice que no tiene acceso).
+
 ## Índices
 
 La pizarra compartida guarda los trazos de cada página en una lista (`cantes/{id}/pizarra/{p}` → `trazos`). Firestore indexa por defecto cada elemento de una lista, y una página puede llegar a miles de trazos: conviene crear en la consola (Firestore → Índices → Campo único → Añadir exención) una **exención de índice** para el campo `trazos` del grupo de colecciones `pizarra`, desactivando los índices ascendente, descendente y de contenido de matriz. No afecta a ninguna consulta de la app (las páginas se leen enteras, ordenadas por `n`).
