@@ -174,9 +174,17 @@ class Cante {
     this.unoPorParte = false,
     this.plataforma = '',
     this.eventoGoogle = '',
+    this.notasCompartidas = false,
   });
 
   final String id;
+
+  /// El preparador ha compartido con el alumno sus notas de la clase (su
+  /// segunda pizarra); el alumno las ve cuando la clase ha terminado.
+  final bool notasCompartidas;
+
+  /// La clase ya ha pasado (o se dio por hecha).
+  bool get terminada => hecho || fecha.add(Duration(minutes: minutos)).isBefore(DateTime.now());
 
   /// Evento del Google Calendar del preparador que corresponde a esta clase
   /// (vacío si no está en su calendario). Solo lo usa el preparador: no va en
@@ -297,6 +305,7 @@ class Cante {
     String? lugar,
     String? enlace,
     DateTime? temaA,
+    bool? notasCompartidas,
     List<String>? temasMandados,
     bool? temaSorteado,
     bool sinTema = false,
@@ -324,6 +333,7 @@ class Cante {
         motivo: motivo ?? this.motivo,
         canceladoPor: canceladoPor ?? this.canceladoPor,
         ocultaAlAlumno: ocultaAlAlumno ?? this.ocultaAlAlumno,
+        notasCompartidas: notasCompartidas ?? this.notasCompartidas,
         sustitucion: sustitucion ?? this.sustitucion,
         updatedAt: DateTime.now(),
         borrado: borrado ?? this.borrado,
@@ -361,6 +371,7 @@ class Cante {
         if (motivo.isNotEmpty) 'motivo': motivo,
         if (canceladoPor != null) 'canceladoPor': canceladoPor,
         if (ocultaAlAlumno) 'ocultaAlAlumno': true,
+        if (notasCompartidas) 'notasCompartidas': true,
         if (sustitucion != null) 'sustitucion': sustitucion,
         'updatedAt': (updatedAt ?? DateTime.now()).toIso8601String(),
         'borrado': borrado,
@@ -398,6 +409,7 @@ class Cante {
         motivo: j['motivo'] as String? ?? '',
         canceladoPor: j['canceladoPor'] as String?,
         ocultaAlAlumno: j['ocultaAlAlumno'] == true,
+        notasCompartidas: j['notasCompartidas'] == true,
         sustitucion: j['sustitucion'] as String?,
         updatedAt: _fecha(j['updatedAt']),
         borrado: j['borrado'] as bool? ?? false,

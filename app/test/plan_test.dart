@@ -329,6 +329,21 @@ void main() {
     });
   });
 
+  group('notas del preparador', () {
+    test('si están compartidas va en la clase (y en la copia del alumno), y la clase sabe si ha terminado', () {
+      final pasada = Cante(id: 'c', fecha: DateTime.now().subtract(const Duration(hours: 3)), minutos: 60, preparador: 'paula', notasCompartidas: true);
+      expect(pasada.toJson()['notasCompartidas'], isTrue);
+      expect(Cante.fromJson(pasada.toJson()).notasCompartidas, isTrue);
+      expect(Cante.fromJson({'id': 'v', 'fecha': '2026-10-08T18:00:00.000'}).notasCompartidas, isFalse, reason: 'las clases de antes no la llevan');
+      expect(pasada.terminada, isTrue);
+      expect(pasada.copyWith(notasCompartidas: false).toJson().containsKey('notasCompartidas'), isFalse);
+      final enCurso = Cante(id: 'e', fecha: DateTime.now().subtract(const Duration(minutes: 20)), minutos: 60);
+      expect(enCurso.terminada, isFalse);
+      expect(enCurso.copyWith(estado: EstadoCante.hecho).terminada, isTrue);
+      expect(Cante(id: 'f', fecha: DateTime.now().add(const Duration(days: 1))).terminada, isFalse);
+    });
+  });
+
   group('clase con varios temas, exposición y videollamada', () {
     test('ida y vuelta por JSON y compatibilidad con las clases antiguas', () {
       final c = Cante(id: 'c', fecha: DateTime(2026, 10, 8, 18), minutos: 120, exposicion: 20, temaA: DateTime(2026, 10, 8, 17), temasMandados: const ['3.A.7', '3.B.2'], temaSorteado: true, numTemas: 2, unoPorParte: true, plataforma: plataformaTeams);

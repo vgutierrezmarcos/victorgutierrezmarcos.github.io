@@ -8,7 +8,7 @@ import 'package:pdfx/pdfx.dart';
 
 import '../../data/models/oposicion.dart';
 import '../cantar/pizarra_compartida.dart';
-import '../cantar/pizarra_tinta.dart';
+import '../cantar/pizarra_pdf.dart';
 import '../cantar/pizarra_trazos.dart';
 
 /// Anotaciones (bolígrafo y fosforito) sobre el PDF de un tema.
@@ -49,6 +49,7 @@ FuentePizarra fuenteAnotaciones(FirebaseFirestore db, Oposicion oposicion, {requ
 /// multiplica con el papel, como en pantalla, y el texto se sigue leyendo.
 Future<Uint8List> pdfAnotado(PdfDocument documento, Map<int, List<Trazo>> anotaciones, {void Function(int hechas, int total)? progreso}) async {
   final salida = pw.Document(title: 'Tema anotado', creator: 'Oposición TCEE');
+  final letra = letraDe(salida.document, await letraParaPdf());
   final total = documento.pagesCount;
   for (var n = 1; n <= total; n++) {
     final pagina = await documento.getPage(n);
@@ -66,26 +67,7 @@ Future<Uint8List> pdfAnotado(PdfDocument documento, Map<int, List<Trazo>> anotac
         if (trazos.isNotEmpty)
           pw.CustomPaint(
             size: pdf.PdfPoint(ancho, alto),
-            painter: (g, size) {
-              for (final fosforito in [true, false]) {
-                for (final t in trazos.where((t) => t.esFosforito == fosforito)) {
-                  final argb = t.color ?? coloresBoligrafo.first;
-                  g.saveContext();
-                  g.setGraphicState(pdf.PdfGraphicState(opacity: ((argb >> 24) & 0xff) / 255, blendMode: fosforito ? pdf.PdfBlendMode.multiply : pdf.PdfBlendMode.normal));
-                  g.setFillColor(pdf.PdfColor.fromInt(argb | 0xFF000000));
-                  for (final c in contornosDeTrazo(t)) {
-                    // El PDF cuenta la altura desde abajo.
-                    g.moveTo(c.first.dx * escala, alto - c.first.dy * escala);
-                    for (final p in c.skip(1)) {
-                      g.lineTo(p.dx * escala, alto - p.dy * escala);
-                    }
-                    g.closePath();
-                  }
-                  g.fillPath();
-                  g.restoreContext();
-                }
-              }
-            },
+            painter: (g, size) => dibujarTrazosPdf(g, trazos, escala: escala, alto: alto, colorDe: (t) => t.color ?? coloresBoligrafo.first, letra: letra),
           ),
       ]),
     ));

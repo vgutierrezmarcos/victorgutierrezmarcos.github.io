@@ -251,6 +251,15 @@ USUARIO = """
             && get(deUsuario(%OP%, uid, 'cantes/' + id)).data.get('preparador', '') == request.auth.uid;
         }
       }
+      // Notas del preparador de una clase (su segunda pizarra, en sus datos:
+      // sesiones/{id}/notas/{p}): solo las escribe él (dueño de su subárbol);
+      // el alumno lee las páginas que van a su nombre (alumno) y están
+      // compartidas (visible). Su consulta pide exactamente eso.
+      match /sesiones/{id}/notas/{p} {
+        allow read: if conSesionEn(%OP%)
+          && resource.data.get('visible', false) == true
+          && resource.data.get('alumno', '') == request.auth.uid;
+      }
       // Cronograma: el preparador enlazado lo ve solo si el alumno lo comparte,
       // y solo puede escribir una propuesta firmada por él, que el alumno
       // acepta o rechaza.

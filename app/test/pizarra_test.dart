@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/data/models/oposicion.dart';
 import 'package:tcee_app/features/cantar/pizarra_compartida.dart';
 import 'package:tcee_app/features/cantar/pizarra_formas.dart';
+import 'package:tcee_app/features/cantar/pizarra_pdf.dart';
 import 'package:tcee_app/features/cantar/pizarra_tinta.dart';
 import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
 
@@ -250,5 +251,73 @@ void main() {
     await local.reemplazar('p1', 1, [const Trazo(id: 'x', de: 'yo', grosor: 3, puntos: [Point(1, 1)])], [const Trazo(id: 'y', de: 'yo', grosor: 3, puntos: [Point(2, 2)])]);
     await local.cambiarFondo('p1', 1, fondoRayas);
     expect((await ultima).single.trazos.map((t) => t.id), ['y']);
+  });
+
+  group('texto a máquina', () {
+    final t = Trazo.texto(id: 'tx', de: 'yo', posicion: const Point(100, 200), texto: 'Oferta y demanda', tamano: 36, ancho: 300, alto: 45, color: 0xFF1F1F1F);
+
+    test('ida y vuelta en JSON: las versiones anteriores lo ven como un punto', () {
+      final j = t.toJson();
+      expect(j['h'], herramientaTexto);
+      expect(j['t'], 'Oferta y demanda');
+      expect(j['p'], '100,200', reason: 'un solo punto: la esquina');
+      final v = Trazo.fromJson(j);
+      expect(v.esTexto, isTrue);
+      expect(v.texto, 'Oferta y demanda');
+      expect(v.tamano, 36);
+      expect(v.ancho, 300);
+      expect(v.alto, 45);
+      expect(v.caja, const Rectangle(100, 200, 300, 45));
+      expect(const Trazo(id: 'a', de: 'yo', grosor: 3, puntos: [Point(0, 0)]).esTexto, isFalse);
+      expect(Trazo.fromJson({'i': 'b', 'u': 'yo', 'g': 3, 'p': '0,0', 'h': 't'}).esTexto, isFalse, reason: 'sin texto no es un texto');
+    });
+
+    test('el borrador lo quita entero si toca su caja; el lazo lo coge; mover lo mueve', () {
+      expect(t.cerca(const Point(250, 220), 5), isTrue);
+      expect(t.cerca(const Point(420, 220), 5), isFalse);
+      expect(trocear(t, const Point(250, 220), 10), isEmpty, reason: 'por partes también lo quita entero');
+      expect(trocear(t, const Point(600, 600), 10), isNull);
+      expect(rodeados([t], [const Point(50, 150), const Point(450, 150), const Point(450, 300), const Point(50, 300)]).map((x) => x.id), ['tx']);
+      expect(rodeados([t], [const Point(0, 0), const Point(50, 0), const Point(50, 50)]), isEmpty);
+      final movido = t.copia(id: 'tx2', dx: 10, dy: -20);
+      expect(movido.texto, 'Oferta y demanda');
+      expect(movido.caja, const Rectangle(110, 180, 300, 45));
+      expect(contornosDeTrazo(t), isEmpty, reason: 'no tiene tinta: se pinta aparte');
+    });
+
+    test('la pizarra con un texto y tinta sale en PDF', () async {
+      final bytes = await pdfPizarra([
+        PaginaPizarra(id: 'p1', n: 1, fondo: fondoCuadricula, trazos: [t, const Trazo(id: 'a', de: 'yo', grosor: 6, color: 0xFFC62828, puntos: [Point(100, 100), Point(300, 100)])]),
+        PaginaPizarra(id: 'p2', n: 2, trazos: [Trazo.texto(id: 'tx3', de: 'yo', posicion: const Point(0, 0), texto: 'Una línea larga que se parte\ny otra', tamano: 50, ancho: 200, alto: 300)]),
+      ], colorDe: (t) => t.color ?? 0xFF000000);
+      expect(String.fromCharCodes(bytes.take(5)), '%PDF-');
+      expect(bytes.length, greaterThan(1000));
+    });
+  });
+
+  test('notas del preparador: solo él escribe, y el alumno ve las páginas compartidas', () async {
+    final db = FakeFirebaseFirestore();
+    final prep = PizarraCompartida.notasDeClase(db, Oposiciones.tcee, preparadorUid: 'paula', alumnoUid: 'alu', canteId: 'c1', miUid: 'paula');
+    final alu = PizarraCompartida.notasDeClase(db, Oposiciones.tcee, preparadorUid: 'paula', alumnoUid: 'alu', canteId: 'c1', miUid: 'alu');
+    await prep.anadirTrazos('p1', 1, [const Trazo(id: 'a', de: 'paula', grosor: 3, puntos: [Point(0, 0), Point(10, 10)])]);
+    await prep.nuevaPagina(2);
+    final col = db.collection('users').doc('paula').collection('sesiones').doc('c1').collection('notas');
+    final p1 = (await col.doc('p1').get()).data()!;
+    expect(p1['alumno'], 'alu', reason: 'cada página dice a quién va');
+    expect(p1['visible'], isNull);
+    expect(await alu.escuchar().first, isEmpty, reason: 'sin compartir, el alumno no ve nada');
+    final paginasPrep = await prep.escuchar().first;
+    expect(paginasPrep.map((p) => p.n), [1, 2]);
+    expect(paginasPrep.every((p) => !p.visible), isTrue);
+
+    await prep.ponerEnTodas({'visible': true});
+    await prep.nuevaPagina(3);
+    expect((await col.doc('p3').get()).data()!['visible'], isTrue, reason: 'las páginas nuevas salen compartidas');
+    final vistas = await alu.escuchar().firstWhere((p) => p.length == 3);
+    expect(vistas.map((p) => p.n), [1, 2, 3]);
+    expect(vistas.every((p) => p.visible), isTrue);
+
+    await prep.ponerEnTodas({'visible': false});
+    expect(await alu.escuchar().firstWhere((p) => p.isEmpty), isEmpty);
   });
 }

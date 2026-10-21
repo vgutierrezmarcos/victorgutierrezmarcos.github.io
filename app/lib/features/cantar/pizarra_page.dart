@@ -19,19 +19,31 @@ import '../../theme/app_theme.dart';
 import 'pizarra_barra.dart';
 import 'pizarra_compartida.dart';
 import 'pizarra_formas.dart';
+import 'pizarra_pdf.dart';
 import 'pizarra_plataforma.dart';
 import 'pizarra_registro.dart';
+import 'pizarra_texto.dart';
 import 'pizarra_tinta.dart';
 import 'pizarra_trazos.dart';
 
 /// Abre la pizarra de la clase [canteId] del alumno [alumnoUid] a pantalla
 /// completa, con [otroNombre] (el otro: el alumno o el preparador).
-Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, FirebaseFirestore? db}) =>
-    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, db: db)));
+Future<void> abrirPizarra(BuildContext context, {required String alumnoUid, required String canteId, required String otroNombre, String etiqueta = '', FirebaseFirestore? db}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => PizarraPage(alumnoUid: alumnoUid, canteId: canteId, otroNombre: otroNombre, etiqueta: etiqueta, db: db)));
 
 /// Abre la pizarra para practicar sola (sin clase): no se comparte ni se guarda.
 Future<void> abrirPizarraIndividual(BuildContext context) =>
     Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(fullscreenDialog: true, builder: (_) => const PizarraPage.individual()));
+
+/// Abre las notas del preparador de la clase [canteId]: la escribe el
+/// preparador [preparadorUid] y el alumno [alumnoUid] la ve, sin poder tocarla
+/// ([soloLectura]), cuando el preparador la comparte. [alCompartir] guarda en
+/// la clase que está compartida (o deja de estarlo).
+Future<void> abrirNotas(BuildContext context, {required String alumnoUid, required String canteId, required String preparadorUid, required String otroNombre, required bool soloLectura, Future<void> Function(bool)? alCompartir, String etiqueta = '', FirebaseFirestore? db}) =>
+    Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
+      fullscreenDialog: true,
+      builder: (_) => PizarraPage.notas(alumnoUid: alumnoUid, canteId: canteId, preparadorUid: preparadorUid, otroNombre: otroNombre, soloLectura: soloLectura, alCompartir: alCompartir, etiqueta: etiqueta, db: db),
+    ));
 
 /// Pizarra compartida de una clase: un lienzo en blanco en el que dibujan el
 /// preparador y el alumno, cada uno con su color, y lo que pinta uno le llega
@@ -44,8 +56,12 @@ Future<void> abrirPizarraIndividual(BuildContext context) =>
 /// del examen (bolígrafo, borrador, colores, deshacer); el rotulador, el
 /// fosforito, el lazo, la regla, el papel y las formas, en el menú ···.
 class PizarraPage extends ConsumerStatefulWidget {
-  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db})
+  const PizarraPage({super.key, required this.alumnoUid, required this.canteId, required this.otroNombre, this.db, this.etiqueta = ''})
       : individual = false,
+        notas = false,
+        preparadorUid = '',
+        soloLectura = false,
+        alCompartir = null,
         fuente = null,
         eventosDom = null;
 
@@ -56,12 +72,38 @@ class PizarraPage extends ConsumerStatefulWidget {
         canteId = '',
         otroNombre = '',
         db = null,
-        individual = true;
+        etiqueta = '',
+        individual = true,
+        notas = false,
+        preparadorUid = '',
+        soloLectura = false,
+        alCompartir = null;
+
+  /// Las notas del preparador de una clase: una segunda pizarra, igual que
+  /// la compartida, que solo escribe el preparador y que el alumno ve (sin
+  /// tocarla) cuando el preparador la comparte y la clase ha terminado.
+  const PizarraPage.notas({super.key, required this.alumnoUid, required this.canteId, required this.preparadorUid, required this.otroNombre, required this.soloLectura, this.alCompartir, this.etiqueta = '', this.db, @visibleForTesting this.fuente})
+      : individual = false,
+        notas = true,
+        eventosDom = null;
 
   final String alumnoUid;
   final String canteId;
   final String otroNombre;
   final bool individual;
+
+  /// Las notas del preparador (ver [PizarraPage.notas]).
+  final bool notas;
+  final String preparadorUid;
+
+  /// Solo mirar: sin paleta, sin escribir (el alumno con las notas).
+  final bool soloLectura;
+
+  /// Al compartir las notas con el alumno (o dejar de hacerlo).
+  final Future<void> Function(bool compartidas)? alCompartir;
+
+  /// Para el nombre del PDF (la fecha de la clase, por ejemplo).
+  final String etiqueta;
 
   /// Base de datos (por defecto, la de Firebase; en las capturas, una simulada).
   final FirebaseFirestore? db;
@@ -124,9 +166,17 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     HerramientaPizarra.rotulador: _colorPorDefecto,
     HerramientaPizarra.fosforito: 0xFFFFD60A,
   };
-  final Map<HerramientaPizarra, int> _grosor = {HerramientaPizarra.boligrafo: 1, HerramientaPizarra.rotulador: 1, HerramientaPizarra.fosforito: 1};
+  final Map<HerramientaPizarra, int> _grosor = {HerramientaPizarra.boligrafo: 1, HerramientaPizarra.rotulador: 1, HerramientaPizarra.fosforito: 1, HerramientaPizarra.texto: 1};
   bool _borrarPorPartes = false;
   Regla? _regla;
+
+  // ------------------------------------------------------------ Texto a máquina
+  // El toque con la herramienta de texto: si se levanta sin moverse, se escribe ahí.
+  (int, Offset)? _toqueTexto;
+
+  // ------------------------------------------------------------ Notas del preparador
+  // Si las notas están compartidas con el alumno.
+  bool _compartida = false;
 
   /// Herramientas extra puestas en la paleta (se recuerdan en el móvil).
   Set<String> _extras = {};
@@ -258,11 +308,14 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     _desenganchar = engancharPizarraWeb(evitarScribble: parcheScribblePedido, alEvento: _eventoDom, volcarRegistro: () => _registro.volcar(cabecera: _cabeceraRegistro()));
     _escuchaDom = widget.eventosDom?.listen(_eventoDom);
-    if (widget.individual) {
+    if (widget.individual || widget.fuente != null) {
       _pizarra = widget.fuente ?? PizarraLocal();
       _escucha = _pizarra!.escuchar().listen(_alLlegar);
     } else if (ref.read(serviciosProvider).firebaseDisponible && _miUid.isNotEmpty) {
-      _pizarra = PizarraCompartida.deClase(widget.db ?? FirebaseFirestore.instance, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
+      final db = widget.db ?? FirebaseFirestore.instance;
+      _pizarra = widget.notas
+          ? PizarraCompartida.notasDeClase(db, ref.read(oposicionProvider), preparadorUid: widget.preparadorUid, alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid)
+          : PizarraCompartida.deClase(db, ref.read(oposicionProvider), alumnoUid: widget.alumnoUid, canteId: widget.canteId, miUid: _miUid);
       _escucha = _pizarra!.escuchar().listen(_alLlegar, onError: (Object e) {
         if (mounted) setState(() => _sinAcceso = true);
       });
@@ -306,6 +359,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     _cambiaTrazos(() {
       _paginas = paginas;
+      if (widget.notas && paginas.isNotEmpty) _compartida = paginas.every((p) => p.visible);
       if (_pagina >= paginas.length && paginas.isNotEmpty) _pagina = paginas.length - 1;
       // Lo que ya ha confirmado el servidor deja de estar pendiente.
       final ids = {for (final p in paginas) for (final t in p.trazos) t.id};
@@ -542,6 +596,14 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _cierreDom?.cancel();
     if (_sinAcceso) return;
     final k = e.kind;
+    if (widget.soloLectura) {
+      // Solo mirar: cualquier puntero mueve la página y dos dedos la amplían.
+      if (k == PointerDeviceKind.mouse && e.buttons & kPrimaryMouseButton == 0) return;
+      _toques[e.pointer] = e.localPosition;
+      _toquesInicio[e.pointer] = e.localPosition;
+      _empezarGesto(e.timeStamp);
+      return;
+    }
     if (_esLapiz(k) && !_dedoElegido && _dedoDibuja) setState(() => _dedoDibuja = false);
     if (_esLapiz(k)) _avisarScribble();
     if (k == PointerDeviceKind.touch) {
@@ -552,6 +614,13 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
         _log('dedo con el lápiz escribiendo: ignorado (palma)');
         return;
       }
+      if (_herramienta == HerramientaPizarra.texto && _toques.length == 1) {
+        // Con el texto, un toque escribe donde se toca; arrastrar, mueve.
+        _toqueTexto = (e.pointer, e.localPosition);
+        _empezarGesto(e.timeStamp);
+        return;
+      }
+      _toqueTexto = null;
       if (_toques.length >= 2) {
         // Un segundo dedo: el primero no estaba dibujando, sino empezando a
         // mover o ampliar (si el trazo era muy corto, se anula).
@@ -602,6 +671,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     _gesto = null;
     final v = _virtual(e.localPosition);
+    if (_herramienta == HerramientaPizarra.texto) {
+      _toqueTexto = (e.pointer, e.localPosition);
+      return;
+    }
     if (k == PointerDeviceKind.mouse && _regla != null && _regla!.contiene(v) && _regla!.cantoJunto(v, 0) == null) {
       // Con el ratón, arrastrar la regla.
       _toques[e.pointer] = e.localPosition;
@@ -647,6 +720,15 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     if (_registro.activo && e.pointer == _punteroDibujo) _log('${e is PointerCancelEvent ? 'cancel' : 'up'}: terminar (puntos=${_enCurso.length})');
     final eraToque = _toques.remove(e.pointer) != null;
     _toquesInicio.remove(e.pointer);
+    final toqueTexto = _toqueTexto;
+    if (toqueTexto != null && toqueTexto.$1 == e.pointer) {
+      _toqueTexto = null;
+      if (e is! PointerCancelEvent && (e.localPosition - toqueTexto.$2).distance < 10 && _gesto?.maxDedos != 2) {
+        if (eraToque) _gesto = null;
+        _editarTextoEn(_dentro(_virtual(toqueTexto.$2)));
+        return;
+      }
+    }
     if (eraToque && _gesto != null) {
       final g = _gesto!;
       // Dos dedos que tocan y se levantan enseguida sin moverse: deshacer.
@@ -973,7 +1055,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     Rectangle<double>? caja;
     for (final t in _seleccionados) {
       final c = t.caja;
-      final r = Rectangle<double>(c.left - t.grosor / 2, c.top - t.grosor / 2, c.width + t.grosor.toDouble(), c.height + t.grosor.toDouble());
+      final g = t.esTexto ? 0 : t.grosor;
+      final r = Rectangle<double>(c.left - g / 2, c.top - g / 2, c.width + g.toDouble(), c.height + g.toDouble());
       caja = caja == null ? r : caja.boundingBox(r);
     }
     return caja;
@@ -1030,6 +1113,125 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _aplicar(_Cambio(sel, nuevos));
   }
 
+  // ------------------------------------------------------------- Texto a máquina
+
+  /// Escribe un cuadro de texto en [v] o, si ahí ya hay uno, lo corrige.
+  Future<void> _editarTextoEn(Point<double> v) async {
+    if (_sinAcceso) return;
+    final existente = _visibles.where((t) => t.esTexto && t.cerca(v, 4)).lastOrNull;
+    if (existente == null && (_actual?.llena ?? false)) {
+      setState(() => _avisar('Página llena: abre otra'));
+      return;
+    }
+    final texto = await _dialogoTexto(existente?.texto ?? '');
+    if (texto == null || !mounted) return;
+    if (texto.isEmpty) {
+      if (existente != null) _aplicar(_Cambio([existente], const []));
+      return;
+    }
+    final posicion = existente?.puntos.first ?? Point(v.x.round(), v.y.round());
+    final tamano = existente?.tamano ?? tamanosTexto[_grosor[HerramientaPizarra.texto] ?? 1];
+    final medida = medirTexto(texto, tamano, anchoMax: min(anchoMaxTexto, anchoLienzo - posicion.x - 10).toDouble());
+    final nuevo = Trazo.texto(
+      id: nuevoIdTrazo(),
+      de: _miUid,
+      posicion: posicion,
+      texto: texto,
+      tamano: tamano,
+      ancho: medida.width.ceil(),
+      alto: medida.height.ceil(),
+      color: existente?.color ?? _miColor.toARGB32(),
+    );
+    _aplicar(_Cambio(existente == null ? const [] : [existente], [nuevo]));
+  }
+
+  /// El cuadro para escribir: devuelve el texto (vacío para quitarlo) o null
+  /// si se cancela.
+  Future<String?> _dialogoTexto(String inicial) {
+    final control = TextEditingController(text: inicial);
+    return showDialog<String>(
+      context: context,
+      builder: (d) => AlertDialog(
+        title: Text(inicial.isEmpty ? 'Escribir en la pizarra' : 'Corregir el texto'),
+        content: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 480),
+          child: TextField(
+            controller: control,
+            autofocus: true,
+            minLines: 2,
+            maxLines: 8,
+            maxLength: maxCaracteresTexto,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: const InputDecoration(hintText: 'Se ve en la pizarra, con tu color', border: OutlineInputBorder()),
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(d), child: const Text('Cancelar')),
+          if (inicial.isNotEmpty) TextButton(onPressed: () => Navigator.pop(d, ''), child: const Text('Quitar')),
+          FilledButton(onPressed: () => Navigator.pop(d, control.text.trim()), child: const Text('Poner')),
+        ],
+      ),
+      // El cuadro aún se pinta mientras se cierra: se libera después (sin
+      // esperar a ello para devolver el texto).
+    ).whenComplete(() {
+      Future<void>.delayed(const Duration(seconds: 1), control.dispose);
+    });
+  }
+
+  // ------------------------------------------------------------- PDF
+
+  /// Lo que se ve de cada página (lo del servidor menos lo quitado aquí, más
+  /// lo pendiente), para el PDF.
+  List<Trazo> _trazosDe(PaginaPizarra p) {
+    final ids = {for (final t in p.trazos) t.id};
+    return [
+      for (final t in p.trazos)
+        if (!_borrados.contains(t.id)) t,
+      for (final (id, t) in _pendientes)
+        if (id == p.id && !_borrados.contains(t.id) && !ids.contains(t.id)) t,
+    ];
+  }
+
+  /// Todas las páginas en un PDF, para guardarlo o compartirlo.
+  Future<void> _guardarPdf() async {
+    final paginas = [for (final p in _paginas) PaginaPizarra(id: p.id, n: p.n, trazos: _trazosDe(p), fondo: p.fondo)];
+    if (paginas.every((p) => p.trazos.isEmpty)) {
+      setState(() => _avisar('No hay nada que guardar'));
+      return;
+    }
+    setState(() => _avisar('Preparando el PDF…'));
+    try {
+      final titulo = widget.notas ? 'Notas del preparador' : 'Pizarra';
+      final bytes = await pdfPizarra(paginas, colorDe: (t) => _colorDe(t).toARGB32(), letra: await letraParaPdf(), titulo: titulo);
+      await guardarBytes(nombre: '$titulo${widget.etiqueta.isEmpty ? '' : ' ${widget.etiqueta}'}.pdf', bytes: bytes, mime: 'application/pdf', asunto: titulo);
+      if (mounted) setState(() => _aviso = null);
+    } catch (e) {
+      if (mounted) setState(() => _avisar('No se ha podido preparar el PDF'));
+    }
+  }
+
+  // ------------------------------------------------------------- Notas del preparador
+
+  /// Comparte las notas con el alumno (todas las páginas, y las que vengan) o
+  /// deja de compartirlas, y lo anota en la clase.
+  Future<void> _compartir(bool v) async {
+    final pizarra = _pizarra;
+    if (pizarra is! PizarraCompartida) return;
+    setState(() => _compartida = v);
+    try {
+      await pizarra.ponerEnTodas({'visible': v});
+      await widget.alCompartir?.call(v);
+      if (mounted) setState(() => _avisar(v ? 'Compartidas: ${widget.otroNombre} las verá cuando acabe la clase' : 'Ya no se comparten'));
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _compartida = !v;
+          _avisar('No se ha podido cambiar. ¿Hay conexión?');
+        });
+      }
+    }
+  }
+
   // ------------------------------------------------------------- Barra
 
   void _elegir(HerramientaPizarra h) {
@@ -1039,24 +1241,26 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     setState(() {
       _herramienta = h;
-      if (h != HerramientaPizarra.borrador && h != HerramientaPizarra.lazo) _ultimaTinta = h;
+      if (h != HerramientaPizarra.borrador && h != HerramientaPizarra.lazo && h != HerramientaPizarra.texto) _ultimaTinta = h;
     });
     if (h != HerramientaPizarra.lazo) _quitarSeleccion();
+    if (h == HerramientaPizarra.texto) setState(() => _avisar('Toca donde quieras escribir'));
   }
 
   void _elegirColor(int argb) {
     setState(() {
-      if (!_esTinta && _herramienta != HerramientaPizarra.lazo) _herramienta = _ultimaTinta;
+      if (!_esTinta && _herramienta != HerramientaPizarra.lazo && _herramienta != HerramientaPizarra.texto) _herramienta = _ultimaTinta;
       _color[_ultimaTinta] = argb;
     });
     if (_herramienta == HerramientaPizarra.lazo && _seleccion.isNotEmpty) _colorearSeleccion();
   }
 
-  /// Ajustes de la herramienta (al tocarla otra vez): el grosor o, en el
-  /// borrador, cómo borra.
+  /// Ajustes de la herramienta (al tocarla otra vez): el grosor (o el tamaño
+  /// de la letra) o, en el borrador, cómo borra.
   Future<void> _abrirAjustes(HerramientaPizarra h) async {
     if (h == HerramientaPizarra.lazo) return;
     final borrador = h == HerramientaPizarra.borrador;
+    final texto = h == HerramientaPizarra.texto;
     final elegido = await showModalBottomSheet<int>(
       context: context,
       showDragHandle: true,
@@ -1066,7 +1270,15 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
           if (borrador) ...[
             _Opcion(elegida: !_borrarPorPartes, alTocar: () => Navigator.pop(d, 0), titulo: 'Borrar trazos enteros', subtitulo: 'Quita el trazo que tocas'),
             _Opcion(elegida: _borrarPorPartes, alTocar: () => Navigator.pop(d, 1), titulo: 'Borrar por partes', subtitulo: 'Como una goma: solo lo que tocas'),
-          ] else
+          ] else if (texto)
+            for (var i = 0; i < 3; i++)
+              _Opcion(
+                elegida: _grosor[h] == i,
+                alTocar: () => Navigator.pop(d, i),
+                titulo: ['Letra pequeña', 'Letra mediana', 'Letra grande'][i],
+                secondary: Text('Aa', style: TextStyle(fontFamily: letraTexto, fontSize: 12 + 5.0 * i, color: _miColor)),
+              )
+          else
             for (var i = 0; i < 3; i++)
               _Opcion(
                 elegida: _grosor[h] == i,
@@ -1162,11 +1374,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       switch (extra) {
         case 'regla':
           _regla = puesto ? Regla(centro: _virtual(Offset(_area.width / 2, _area.height / 2))) : null;
-        case 'rotulador' || 'fosforito' || 'lazo':
+        case 'rotulador' || 'fosforito' || 'lazo' || 'texto':
           final h = HerramientaPizarra.values.byName(extra);
           if (puesto) {
             _herramienta = h;
-            if (h != HerramientaPizarra.lazo) _ultimaTinta = h;
+            if (h != HerramientaPizarra.lazo && h != HerramientaPizarra.texto) _ultimaTinta = h;
+            if (h == HerramientaPizarra.texto) _avisar('Toca donde quieras escribir');
           } else if (_herramienta == h) {
             _herramienta = HerramientaPizarra.boligrafo;
             _ultimaTinta = HerramientaPizarra.boligrafo;
@@ -1404,12 +1617,39 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     PuntaHerramienta punta(HerramientaPizarra h, String nombre) => PuntaHerramienta(
           herramienta: h,
           elegida: _herramienta == h,
-          color: _color[h] == null ? tintaBarra : Color(_color[h]!),
+          color: h == HerramientaPizarra.texto ? _miColor : (_color[h] == null ? tintaBarra : Color(_color[h]!)),
           grosor: _grosor[h] ?? 0,
           nombre: nombre,
           alTocar: _sinAcceso ? () {} : () => _elegir(h),
           alMantener: () => _abrirAjustes(h),
         );
+    final navegacion = Row(mainAxisSize: MainAxisSize.min, children: [
+      const SizedBox(width: 12),
+      BotonBarra(icono: Icons.chevron_left, tooltip: 'Página anterior', alTocar: _pagina > 0 ? () => _irAPagina(_pagina - 1) : null),
+      Text('${_pagina + 1}/$paginas', style: const TextStyle(color: tintaBarra)),
+      BotonBarra(icono: Icons.chevron_right, tooltip: 'Página siguiente', alTocar: _pagina < _paginas.length - 1 ? () => _irAPagina(_pagina + 1) : null),
+      if (widget.soloLectura) ...[
+        BotonBarra(icono: Icons.picture_as_pdf_outlined, tooltip: 'Guardar como PDF', alTocar: _paginas.isEmpty ? null : _guardarPdf),
+        if (_z > 1.01) BotonBarra(icono: Icons.fit_screen_outlined, tooltip: 'Ver la página entera', alTocar: _ajustarPagina),
+      ] else ...[
+        BotonBarra(icono: Icons.note_add_outlined, tooltip: 'Nueva página', alTocar: _sinAcceso || _paginas.length >= maxPaginas ? null : _nuevaPagina),
+        _menu(),
+      ],
+    ]);
+    if (widget.soloLectura) {
+      // Solo mirar: sin paleta.
+      return Container(
+        color: fondoPizarra,
+        padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Row(mainAxisSize: MainAxisSize.min, children: [
+            BotonBarra(icono: Icons.close, tooltip: 'Salir', alTocar: () => Navigator.of(context).pop()),
+            Text('Notas de ${widget.otroNombre}', style: const TextStyle(color: tintaBarra, fontSize: 12), overflow: TextOverflow.ellipsis),
+          ]),
+          navegacion,
+        ]),
+      );
+    }
     return Container(
       color: fondoPizarra,
       padding: const EdgeInsets.fromLTRB(4, 0, 4, 6),
@@ -1429,6 +1669,19 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                 ),
               if (widget.individual)
                 const Text('Para practicar: no se guarda', style: TextStyle(color: Color(0x99000000), fontSize: 12))
+              else if (widget.notas)
+                // Las notas: solo las escribe el preparador; el chip las comparte.
+                Tooltip(
+                  message: 'El alumno las ve cuando las compartes y la clase ha terminado',
+                  child: FilterChip(
+                    label: Text(_compartida ? 'Compartidas con ${widget.otroNombre}' : 'Compartir con ${widget.otroNombre}', style: const TextStyle(fontSize: 12)),
+                    avatar: Icon(_compartida ? Icons.visibility_outlined : Icons.visibility_off_outlined, size: 16),
+                    selected: _compartida,
+                    showCheckmark: false,
+                    visualDensity: VisualDensity.compact,
+                    onSelected: _sinAcceso ? null : _compartir,
+                  ),
+                )
               else ...[
                 _Leyenda(color: _miColor.withValues(alpha: 1), texto: 'Tú'),
                 const SizedBox(width: 8),
@@ -1442,6 +1695,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               if (_extras.contains('fosforito')) punta(HerramientaPizarra.fosforito, 'Fosforito'),
               punta(HerramientaPizarra.borrador, _borrarPorPartes ? 'Borrador (por partes)' : 'Borrador (trazos enteros)'),
               if (_extras.contains('lazo')) punta(HerramientaPizarra.lazo, 'Lazo: rodea trazos para moverlos'),
+              if (_extras.contains('texto')) punta(HerramientaPizarra.texto, 'Texto: toca donde quieras escribir con el teclado'),
               if (_extras.contains('regla')) BotonBarra(icono: Icons.straighten, tooltip: _regla == null ? 'Poner la regla' : 'Quitar la regla', activo: _regla != null, alTocar: () => setState(() => _regla = _regla == null ? Regla(centro: _virtual(Offset(_area.width / 2, _area.height / 2))) : null)),
               const SeparadorPaleta(),
               for (var i = 0; i < coloresRapidos.length; i++)
@@ -1451,14 +1705,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
               BotonBarra(icono: Icons.undo, tooltip: 'Deshacer (o dos toques con dos dedos)', alTocar: _puedeDeshacer && !_sinAcceso ? _deshacer : null),
               BotonBarra(icono: Icons.redo, tooltip: 'Rehacer', alTocar: _puedeRehacer && !_sinAcceso ? _rehacer : null),
             ]),
-            Row(mainAxisSize: MainAxisSize.min, children: [
-              const SizedBox(width: 12),
-              BotonBarra(icono: Icons.chevron_left, tooltip: 'Página anterior', alTocar: _pagina > 0 ? () => _irAPagina(_pagina - 1) : null),
-              Text('${_pagina + 1}/$paginas', style: const TextStyle(color: tintaBarra)),
-              BotonBarra(icono: Icons.chevron_right, tooltip: 'Página siguiente', alTocar: _pagina < _paginas.length - 1 ? () => _irAPagina(_pagina + 1) : null),
-              BotonBarra(icono: Icons.note_add_outlined, tooltip: 'Nueva página', alTocar: _sinAcceso || _paginas.length >= maxPaginas ? null : _nuevaPagina),
-              _menu(),
-            ]),
+            navegacion,
           ]),
         ),
       ),
@@ -1480,10 +1727,12 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
           ('rotulador', 'Rotulador', Icons.brush_outlined),
           ('fosforito', 'Fosforito', Icons.border_color_outlined),
           ('lazo', 'Lazo (seleccionar y mover)', Icons.gesture),
+          ('texto', 'Texto (escribir con el teclado)', Icons.keyboard_outlined),
           ('regla', 'Regla', Icons.straighten),
         ])
           CheckboxMenuButton(value: _extras.contains(extra), onChanged: (v) => _cambiarExtra(extra, v ?? false), trailingIcon: Icon(icono), child: Text(nombre)),
         const Divider(),
+        if (!widget.individual) MenuItemButton(leadingIcon: const Icon(Icons.picture_as_pdf_outlined), onPressed: _paginas.isEmpty ? null : _guardarPdf, child: const Text('Guardar como PDF')),
         CheckboxMenuButton(
           value: _formas,
           onChanged: (v) {
@@ -1604,7 +1853,11 @@ class _PintorTrazos extends CustomPainter {
     for (final fosforito in [true, false]) {
       for (final t in trazos) {
         if (t.esFosforito != fosforito) continue;
-        canvas.drawPath(caminoDe(t), pintura..color = colorDe(t));
+        if (t.esTexto) {
+          pintarTexto(canvas, t, colorDe(t));
+        } else {
+          canvas.drawPath(caminoDe(t), pintura..color = colorDe(t));
+        }
       }
     }
     // La caché no crece sin límite.
@@ -1635,7 +1888,11 @@ class _PintorSeleccion extends CustomPainter {
     canvas.save();
     canvas.translate(desplazamiento.x, desplazamiento.y);
     for (final t in trazos) {
-      canvas.drawPath(_PintorTrazos.caminoDe(t), Paint()..color = colorDe(t));
+      if (t.esTexto) {
+        pintarTexto(canvas, t, colorDe(t));
+      } else {
+        canvas.drawPath(_PintorTrazos.caminoDe(t), Paint()..color = colorDe(t));
+      }
     }
     if (caja != null) {
       final r = Rect.fromLTWH(caja!.left, caja!.top, caja!.width, caja!.height).inflate(6);

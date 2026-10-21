@@ -312,11 +312,28 @@ class CantePage extends ConsumerWidget {
           ],
           if (c.dePreparador && usuario != null && !c.cancelado) ...[
             const SizedBox(height: 10),
-            OutlinedButton.icon(
-              onPressed: () => abrirPizarra(context, alumnoUid: usuario.uid, canteId: c.id, otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!),
-              icon: const Icon(Icons.draw_outlined, size: 18),
-              label: const Text('Pizarra compartida'),
-            ),
+            Wrap(spacing: 8, runSpacing: 6, children: [
+              OutlinedButton.icon(
+                onPressed: () => abrirPizarra(context, alumnoUid: usuario.uid, canteId: c.id, otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!, etiqueta: fechaCorta(c.fecha)),
+                icon: const Icon(Icons.draw_outlined, size: 18),
+                label: const Text('Pizarra compartida'),
+              ),
+              // Las notas que el preparador escribió en la clase, cuando las comparte y la clase ha pasado.
+              if (c.notasCompartidas && c.terminada)
+                OutlinedButton.icon(
+                  onPressed: () => abrirNotas(
+                    context,
+                    alumnoUid: usuario.uid,
+                    canteId: c.id,
+                    preparadorUid: c.preparador!,
+                    otroNombre: (c.preparadorNombre ?? '').isEmpty ? 'tu preparador' : c.preparadorNombre!,
+                    soloLectura: true,
+                    etiqueta: fechaCorta(c.fecha),
+                  ),
+                  icon: const Icon(Icons.edit_note_outlined, size: 18),
+                  label: const Text('Notas del preparador'),
+                ),
+            ]),
           ],
           if (c.hecho && r != null) ...[
             TituloSeccion(c.dePreparador ? 'Valoración del preparador' : 'Cómo fue', accion: TextButton(onPressed: anotar, child: const Text('Editar'))),

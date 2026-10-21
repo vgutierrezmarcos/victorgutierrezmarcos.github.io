@@ -3,6 +3,7 @@
 // Scribble), que el motor de Flutter en la web convierte en un move del
 // trazo anterior o en un levantar que nunca llega.
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tcee_app/features/cantar/pizarra_compartida.dart';
 import 'package:tcee_app/features/cantar/pizarra_page.dart';
 import 'package:tcee_app/features/cantar/pizarra_registro.dart';
+import 'package:tcee_app/features/cantar/pizarra_trazos.dart';
 
 const _lienzo = Offset(600, 500);
 
@@ -160,6 +162,76 @@ void main() {
     expect(trazos(fuente), 2);
     await g1.up();
     await dom.close();
+  });
+
+  testWidgets('texto a máquina: con la herramienta, un toque abre el cuadro y el texto se guarda; otro toque lo corrige o lo quita', (tester) async {
+    final fuente = await montar(tester);
+    // La herramienta se pone desde el menú ··· y queda elegida.
+    await tester.tap(find.byTooltip('Más herramientas y opciones'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Texto (escribir con el teclado)'));
+    await tester.pumpAndSettle();
+    expect(find.byTooltip('Texto: toca donde quieras escribir con el teclado'), findsOneWidget);
+    // Un toque con el ratón en el lienzo.
+    final g = await tester.createGesture(kind: PointerDeviceKind.mouse, pointer: 1);
+    await g.addPointer(location: _lienzo);
+    await g.down(_lienzo);
+    await g.up();
+    await tester.pumpAndSettle();
+    expect(find.text('Escribir en la pizarra'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'Oferta y demanda');
+    await tester.tap(find.text('Poner'));
+    await tester.pumpAndSettle();
+    expect(trazos(fuente), 1);
+    final t = fuente.paginas.single.trazos.single;
+    expect(t.esTexto, isTrue);
+    expect(t.texto, 'Oferta y demanda');
+    expect(t.ancho, greaterThan(0));
+    expect(t.alto, greaterThan(0));
+    // Tocar sobre el texto lo corrige.
+    await g.down(_lienzo + const Offset(10, 5));
+    await g.up();
+    await tester.pumpAndSettle();
+    expect(find.text('Corregir el texto'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'Oferta, demanda y equilibrio');
+    await tester.tap(find.text('Poner'));
+    await tester.pumpAndSettle();
+    expect(fuente.paginas.single.trazos.single.texto, 'Oferta, demanda y equilibrio');
+    expect(fuente.paginas.single.trazos.single.puntos, t.puntos, reason: 'se queda donde estaba');
+    // Y «Quitar» lo quita.
+    await g.down(_lienzo + const Offset(10, 5));
+    await g.up();
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Quitar'));
+    await tester.pumpAndSettle();
+    expect(trazos(fuente), 0);
+    // Arrastrar con la herramienta de texto no escribe.
+    await g.down(_lienzo);
+    await g.moveTo(_lienzo + const Offset(80, 0));
+    await g.up();
+    await tester.pumpAndSettle();
+    expect(find.text('Escribir en la pizarra'), findsNothing);
+    await g.removePointer();
+    // El cuadro libera su controlador un segundo después de cerrarse.
+    await tester.pump(const Duration(seconds: 2));
+  });
+
+  testWidgets('las notas del preparador, para el alumno: solo mirar, sin paleta y con el PDF', (tester) async {
+    tester.view.physicalSize = const Size(1200, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final fuente = PizarraLocal();
+    fuente.encolar('p1', 1, Trazo.texto(id: 'tx', de: 'paula', posicion: const Point(100, 100), texto: 'Repasa el tema 3', tamano: 36, ancho: 300, alto: 45));
+    await tester.pumpWidget(ProviderScope(child: MaterialApp(home: PizarraPage.notas(alumnoUid: 'alu', canteId: 'c1', preparadorUid: 'paula', otroNombre: 'Paula', soloLectura: true, fuente: fuente))));
+    await tester.pumpAndSettle();
+    expect(find.text('Notas de Paula'), findsOneWidget);
+    expect(find.byTooltip('Bolígrafo'), findsNothing);
+    expect(find.byTooltip('Guardar como PDF'), findsOneWidget);
+    expect(find.byTooltip('Más herramientas y opciones'), findsNothing);
+    // Dibujar no hace nada.
+    final g = await tester.createGesture(kind: PointerDeviceKind.stylus, pointer: 1);
+    await letra(tester, g, _lienzo, const Duration(seconds: 1));
+    expect(fuente.paginas.single.trazos.length, 1);
   });
 
   test('corte del trazo: solo con pausa y salto a la vez', () {

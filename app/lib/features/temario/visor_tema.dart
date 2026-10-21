@@ -347,7 +347,13 @@ class _VisorTemaState extends State<VisorTema> {
   bool _esLapiz(PointerDeviceKind k) => k == PointerDeviceKind.stylus || k == PointerDeviceKind.invertedStylus;
 
   void _bajar(PointerDownEvent e) {
-    if (!widget.anotando || widget.fuente == null) return;
+    if (!widget.anotando || widget.fuente == null) {
+      // Leyendo: cualquier puntero mueve la página; dos dedos la amplían.
+      if (e.kind == PointerDeviceKind.mouse && e.buttons & kPrimaryMouseButton == 0) return;
+      _toques[e.pointer] = e.localPosition;
+      _empezarGesto();
+      return;
+    }
     if (_esLapiz(e.kind) && !_dedoElegido && _dedoDibuja) setState(() => _dedoDibuja = false);
     if (e.kind == PointerDeviceKind.touch) {
       _toques[e.pointer] = e.localPosition;
@@ -420,19 +426,27 @@ class _VisorTemaState extends State<VisorTema> {
   }
 
   /// La rueda del ratón desplaza (y con Ctrl, amplía), como en un lector de
-  /// PDF. Se escucha dentro del InteractiveViewer para adelantarse a él, que
-  /// con la rueda solo amplía; el Listener es opaco para que también cuente
-  /// sobre los márgenes y los huecos entre páginas (si no, ahí ganaba el
-  /// InteractiveViewer y la rueda ampliaba). [e] viene en coordenadas del contenido.
+  /// PDF; el pellizco del trackpad (que llega como un PointerScaleEvent)
+  /// amplía. Antes el visor iba dentro de un InteractiveViewer, que con cada
+  /// vuelta de la rueda ampliaba por su cuenta a la vez que esto desplazaba:
+  /// de ahí los saltos de zoom al bajar por el tema en el ordenador. Ahora los
+  /// gestos los lleva solo este código. [e] viene en coordenadas de la vista.
   void _rueda(PointerSignalEvent e) {
+    final t = Offset(_tc.value.getTranslation().x, _tc.value.getTranslation().y);
+    void ampliar(double nuevoZ) {
+      final z = nuevoZ.clamp(1.0, 5.0);
+      _ponerVista(z, e.localPosition - (e.localPosition - t) * (z / _z));
+    }
+
+    if (e is PointerScaleEvent) {
+      GestureBinding.instance.pointerSignalResolver.register(e, (_) => ampliar(_z * e.scale));
+      return;
+    }
     if (e is! PointerScrollEvent) return;
     GestureBinding.instance.pointerSignalResolver.register(e, (_) {
       final teclado = HardwareKeyboard.instance;
-      final t = Offset(_tc.value.getTranslation().x, _tc.value.getTranslation().y);
-      final enVista = MatrixUtils.transformPoint(_tc.value, e.localPosition);
       if (teclado.isControlPressed || teclado.isMetaPressed) {
-        final z = (_z * exp(-e.scrollDelta.dy / 300)).clamp(1.0, 5.0);
-        _ponerVista(z, enVista - (enVista - t) * (z / _z));
+        ampliar(_z * exp(-e.scrollDelta.dy / 300));
       } else {
         _ponerVista(_z, t - e.scrollDelta);
       }
@@ -623,22 +637,24 @@ class _VisorTemaState extends State<VisorTema> {
                 ),
             ]),
           );
+          // Todos los gestos (mover, ampliar, rueda, lápiz) los lleva el
+          // Listener; el contenido solo se transforma con la matriz.
           return Listener(
+            behavior: HitTestBehavior.opaque,
             onPointerDown: _bajar,
             onPointerMove: _mover,
             onPointerUp: _levantar,
             onPointerCancel: _levantar,
+            onPointerSignal: _rueda,
             child: ColoredBox(
               color: const Color(0xFFE9E9EE),
-              child: InteractiveViewer(
-                transformationController: _tc,
-                constrained: false,
-                minScale: 1,
-                maxScale: 5,
-                // Anotando, los gestos los lleva el Listener (lápiz, palma, dos dedos).
-                panEnabled: !widget.anotando,
-                scaleEnabled: !widget.anotando,
-                child: Listener(behavior: HitTestBehavior.opaque, onPointerSignal: _rueda, child: contenido),
+              child: ClipRect(
+                child: ListenableBuilder(
+                  listenable: _tc,
+                  builder: (_, __) => Stack(clipBehavior: Clip.none, children: [
+                    Positioned(left: 0, top: 0, width: _vista.width, height: _altoTotal, child: Transform(transform: _tc.value, child: contenido)),
+                  ]),
+                ),
               ),
             ),
           );

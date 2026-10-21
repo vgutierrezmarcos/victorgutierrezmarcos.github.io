@@ -115,21 +115,46 @@ class PizarraLocal implements FuentePizarra {
 /// Para no gastar una escritura por punto, los trazos terminados se encolan
 /// y se suben juntos cada 300 ms (una escritura por ráfaga).
 class PizarraCompartida implements FuentePizarra {
-  PizarraCompartida(this._col, {required this.miUid});
+  PizarraCompartida(this._col, {required this.miUid, Map<String, dynamic> camposFijos = const {}, Query<Map<String, dynamic>>? consulta})
+      : camposFijos = Map.of(camposFijos),
+        _consulta = consulta ?? _col;
 
   /// Pizarra de una clase del alumno [alumnoUid].
   factory PizarraCompartida.deClase(FirebaseFirestore db, Oposicion oposicion, {required String alumnoUid, required String canteId, required String miUid}) =>
       PizarraCompartida(oposicion.raizUsuario(db, alumnoUid).collection('cantes').doc(canteId).collection('pizarra'), miUid: miUid);
 
+  /// Las notas del preparador de una clase: su segunda pizarra, en sus datos
+  /// (`sesiones/{id}/notas/{p}`), que solo escribe él. Cada página lleva a
+  /// quién va (`alumno`) y si la comparte (`visible`); el alumno solo puede
+  /// leer las que van a su nombre y están compartidas (lo exigen las reglas,
+  /// así que su consulta pide exactamente eso).
+  factory PizarraCompartida.notasDeClase(FirebaseFirestore db, Oposicion oposicion, {required String preparadorUid, required String alumnoUid, required String canteId, required String miUid}) {
+    final col = oposicion.raizUsuario(db, preparadorUid).collection('sesiones').doc(canteId).collection('notas');
+    final soyPreparador = miUid == preparadorUid;
+    return PizarraCompartida(
+      col,
+      miUid: miUid,
+      camposFijos: soyPreparador ? {'alumno': alumnoUid} : const {},
+      consulta: soyPreparador ? null : col.where('alumno', isEqualTo: miUid).where('visible', isEqualTo: true),
+    );
+  }
+
   final CollectionReference<Map<String, dynamic>> _col;
+  final Query<Map<String, dynamic>> _consulta;
   final String miUid;
+
+  /// Campos que van en cada página al escribirla (quién puede verla).
+  final Map<String, dynamic> camposFijos;
 
   static String idPagina(int n) => 'p$n';
 
   /// Las páginas, con sus trazos, cada vez que cambian (de los dos). Vacío si
   /// aún no hay ninguna. Da [SinAccesoPizarra] si el servidor no deja leerla.
   @override
-  Stream<List<PaginaPizarra>> escuchar() => _col.orderBy('n').snapshots().map((snap) => [for (final d in snap.docs) PaginaPizarra.fromJson(d.id, d.data())]).handleError(
+  Stream<List<PaginaPizarra>> escuchar() => _consulta
+      .snapshots()
+      .map((snap) => [for (final d in snap.docs) PaginaPizarra.fromJson(d.id, d.data())]..sort((a, b) => a.n.compareTo(b.n)))
+      .handleError(
         (Object e) => throw const SinAccesoPizarra(),
         test: (e) => e is FirebaseException && e.code == 'permission-denied',
       );
@@ -137,12 +162,26 @@ class PizarraCompartida implements FuentePizarra {
   Future<void> anadirTrazos(String pagina, int n, List<Trazo> trazos) async {
     if (trazos.isEmpty) return;
     await _col.doc(pagina).set({
+      ...camposFijos,
       'n': n,
       'trazos': FieldValue.arrayUnion([for (final t in trazos) t.toJson()]),
       // Se vuelve a escribir: ya no está «recién borrada».
       'borradoPor': FieldValue.delete(),
       'updatedAt': FieldValue.serverTimestamp(),
     }, SetOptions(merge: true));
+  }
+
+  /// Pone [campos] en todas las páginas que hay (y en las que vengan):
+  /// compartir las notas con el alumno (`visible`) o dejar de hacerlo.
+  Future<void> ponerEnTodas(Map<String, dynamic> campos) async {
+    camposFijos.addAll(campos);
+    final docs = (await _col.get()).docs;
+    if (docs.isEmpty) return;
+    final lote = _col.firestore.batch();
+    for (final d in docs) {
+      lote.set(d.reference, {...campos, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
+    }
+    await lote.commit();
   }
 
   /// Quita un trazo: [elementoExacto] es el mapa tal como vino en el último
@@ -155,14 +194,14 @@ class PizarraCompartida implements FuentePizarra {
       });
 
   @override
-  Future<void> borrarTodo(String pagina) => _col.doc(pagina).set({'trazos': <Map<String, dynamic>>[], 'borradoPor': miUid, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
+  Future<void> borrarTodo(String pagina) => _col.doc(pagina).set({...camposFijos, 'trazos': <Map<String, dynamic>>[], 'borradoPor': miUid, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   /// Quita la página entera (no solo lo escrito), para los dos.
   @override
   Future<void> eliminarPagina(String pagina) => _col.doc(pagina).delete();
 
   @override
-  Future<void> nuevaPagina(int n) => _col.doc(idPagina(n)).set({'n': n, 'trazos': <Map<String, dynamic>>[], 'creado': DateTime.now().toIso8601String(), 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
+  Future<void> nuevaPagina(int n) => _col.doc(idPagina(n)).set({...camposFijos, 'n': n, 'trazos': <Map<String, dynamic>>[], 'creado': DateTime.now().toIso8601String(), 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   /// En una transacción: arrayRemove pide el elemento exacto y no se puede
   /// combinar con arrayUnion en la misma escritura.
@@ -176,6 +215,7 @@ class PizarraCompartida implements FuentePizarra {
       final actual = await tx.get(ref);
       final quedan = [for (final t in (actual.data()?['trazos'] as List?) ?? const []) if (t is Map && !ids.contains(t['i'])) t];
       tx.set(ref, {
+        ...camposFijos,
         'n': n,
         'trazos': [...quedan, for (final t in poner) t.toJson()],
         'borradoPor': FieldValue.delete(),
@@ -185,7 +225,7 @@ class PizarraCompartida implements FuentePizarra {
   }
 
   @override
-  Future<void> cambiarFondo(String pagina, int n, String fondo) => _col.doc(pagina).set({'n': n, 'fondo': fondo, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
+  Future<void> cambiarFondo(String pagina, int n, String fondo) => _col.doc(pagina).set({...camposFijos, 'n': n, 'fondo': fondo, 'updatedAt': FieldValue.serverTimestamp()}, SetOptions(merge: true));
 
   // ------------------------------------------------------------- Cola
 
