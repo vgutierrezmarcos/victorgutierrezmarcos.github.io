@@ -70,7 +70,10 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   bool _verHtml = false;
   /// El esquema al lado del PDF (en pantallas anchas; se puede plegar).
   bool _verEsquema = true;
-  String? _html, _shaHtml;
+  /// El HTML del tema revisado tal como se bajó; se prepara para el visor
+  /// según el modo (claro u oscuro) al pintarlo.
+  String? _htmlCrudo, _shaHtml;
+  String? _htmlPreparado, _clavePreparado;
   Object? _errorHtml;
 
   /// Dónde se guardan las anotaciones de cada versión del tema (null sin
@@ -158,13 +161,13 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (f == null || _shaHtml == f.sha) return;
     setState(() {
       _shaHtml = f.sha;
-      _html = null;
+      _htmlCrudo = null;
       _errorHtml = null;
     });
     try {
       final bytes = await ref.read(descargasProvider).bytes(rev.url(f), nombre: rev.nombreLocal(ClaseFichero.html), reemplaza: rev.prefijoLocal(ClaseFichero.html));
-      final html = prepararHtmlRevisado(utf8.decode(bytes, allowMalformed: true), urlDocumento: rev.urlDocumentoHtml!);
-      if (mounted && _shaHtml == f.sha) setState(() => _html = html);
+      final html = utf8.decode(bytes, allowMalformed: true);
+      if (mounted && _shaHtml == f.sha) setState(() => _htmlCrudo = html);
     } catch (e) {
       if (mounted && _shaHtml == f.sha) setState(() => _errorHtml = e);
     }
@@ -232,6 +235,18 @@ class _TemaPageState extends ConsumerState<TemaPage> {
       return;
     }
     setState(() => _anotando = !_anotando);
+  }
+
+  /// El HTML preparado para el visor en el modo actual (se guarda hasta que
+  /// cambie el tema, el modo o el HTML).
+  String _htmlDelVisor(TemaRevisado rv) {
+    final oscuro = context.temaOscuro;
+    final clave = '$_shaHtml|$oscuro';
+    if (_clavePreparado != clave || _htmlPreparado == null) {
+      _htmlPreparado = prepararHtmlRevisado(_htmlCrudo!, urlDocumento: rv.urlDocumentoHtml!, oscuro: oscuro);
+      _clavePreparado = clave;
+    }
+    return _htmlPreparado!;
   }
 
   /// El visor con el esquema a su izquierda (en pantallas anchas).
@@ -436,9 +451,9 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               : verHtml
               ? (_errorHtml != null
                   ? ErrorVista(error: _errorHtml!, reintentar: () => setState(() { _errorHtml = null; _shaHtml = null; }))
-                  : _html == null
+                  : _htmlCrudo == null
                       ? Cargando(texto: kIsWeb ? 'Cargando el tema…' : 'Descargando el tema…')
-                      : VisorHtml(key: ValueKey(_shaHtml), html: _html!, urlDocumento: rv.urlDocumentoHtml!))
+                      : VisorHtml(key: ValueKey('$_shaHtml|${context.temaOscuro}'), html: _htmlDelVisor(rv), urlDocumento: rv.urlDocumentoHtml!))
               : sinPdf
               ? AgendaTemaVista(tema: widget.tema)
               : web
