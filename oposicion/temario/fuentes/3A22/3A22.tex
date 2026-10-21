@@ -256,6 +256,10 @@ $$\optim{\max}{X_A,Y_A}{U_A(X_A,Y_A)}{U_B(\overline{X}-X_A,\ \overline{Y}-Y_A)\g
 \end{figure}
 
 \begin{itemize}
+\item \emph{Forma de la GFPU}: como la utilidad es ordinal, ni las FPU ni la GFPU tienen por qué ser cóncavas. La GFPU solo tiene que ser decreciente y puede tener tramos convexos (hondonadas), como en el gráfico.
+\end{itemize}
+
+\begin{itemize}
 \item \emph{Implicación}: hay infinitos óptimos globales, toda la GFPU, y el criterio de \autor{Pareto} no los ordena.\footnote{Cada óptimo fija los 10 valores del modelo 2×2×2×2: $L_X$, $K_X$, $L_Y$, $K_Y$, $X$, $Y$, $X_A$, $Y_A$, $X_B$ e $Y_B$. Como se obtienen solo a partir de las formas funcionales, con independencia de los precios, la solución es \emph{tecnocrática}; para quedarse con uno de ellos hacen falta juicios de valor adicionales que agreguen las preferencias.} La optimalidad de \autor{Pareto} es una condición \emph{necesaria pero no suficiente} para maximizar el bienestar social.
 \end{itemize}
 
@@ -263,7 +267,7 @@ $$\optim{\max}{X_A,Y_A}{U_A(X_A,Y_A)}{U_B(\overline{X}-X_A,\ \overline{Y}-Y_A)\g
 
 \begin{itemize}
 \item \emph{Idea}: para elegir hace falta un juicio de valor adicional sobre la distribución. \textcite{Bergson1938Reformulation} y \textcite{Samuelson1947Foundations} lo resumen en una \concepto{función de bienestar social}, $W(U_A,U_B)$, creciente en las utilidades, cuyas curvas de nivel son las curvas de indiferencia social (gráfico~\ref{fig:fbs-gfpu}).
-\item \emph{Punto de felicidad}: el óptimo social es la tangencia de la curva de indiferencia social más alta, $W_3$, con la GFPU: el punto $c$ (\emph{bliss point}).
+\item \emph{Punto de felicidad}: el óptimo social es la tangencia de la curva de indiferencia social más alta, $W_3$, con la GFPU: el punto $c$ (\emph{bliss point}). Como la GFPU puede tener hondonadas, una tangencia no basta: el punto de felicidad es el máximo \emph{global} de $W$ sobre la GFPU.
 \item \emph{Un punto ineficiente puede ser mejor que uno eficiente}: el punto $a$, por debajo de la GFPU pero en la curva $W_2$, da más bienestar social que el punto $d$, eficiente pero muy desigual, en la $W_1$; $b$, en la misma $W_2$, da el mismo bienestar que $a$. Pero, dado cualquier punto ineficiente, siempre hay uno en la GFPU que lo mejora.
 \item Las formas de $W(U_A,U_B)$ (utilitarista, rawlsiana, intermedias) y el problema de agregar las preferencias son materia de \vertema{3.A.24}.
 \end{itemize}
