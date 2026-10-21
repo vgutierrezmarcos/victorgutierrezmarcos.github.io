@@ -6504,11 +6504,11 @@ i) Supuestos
 \end_inset
 
 , en proporciones 
-\begin_inset Formula $\pi$
+\begin_inset Formula $\nu$
 \end_inset
 
  y 
-\begin_inset Formula $1-\pi$
+\begin_inset Formula $1-\nu$
 \end_inset
 
 , que el monopolista conoce; no sabe de quÃ© tipo es cada uno. 
@@ -6565,7 +6565,7 @@ ii) Desarrollo
 \begin_layout Itemize
 El monopolista elige el menÃº que maximiza su beneficio esperado: 
 \begin_inset Formula \begin{equation}
-  \optim{\max}{q_1,T_1,q_2,T_2}{\pi\,(T_1-c\,q_1)+(1-\pi)\,(T_2-c\,q_2)}{t_1u(q_1)-T_1\geq 0\quad(\mathrm{PC}_1)\\ t_2u(q_2)-T_2\geq 0\quad(\mathrm{PC}_2)\\ t_1u(q_1)-T_1\geq t_1u(q_2)-T_2\quad(\mathrm{IC}_1)\\ t_2u(q_2)-T_2\geq t_2u(q_1)-T_1\quad(\mathrm{IC}_2)} \label{eq:segundo-grado}
+  \optim{\max}{q_1,T_1,q_2,T_2}{\nu\,(T_1-c\,q_1)+(1-\nu)\,(T_2-c\,q_2)}{t_1u(q_1)-T_1\geq 0\quad(\mathrm{PC}_1)\\ t_2u(q_2)-T_2\geq 0\quad(\mathrm{PC}_2)\\ t_1u(q_1)-T_1\geq t_1u(q_2)-T_2\quad(\mathrm{IC}_1)\\ t_2u(q_2)-T_2\geq t_2u(q_1)-T_1\quad(\mathrm{IC}_2)} \label{eq:segundo-grado}
   \end{equation}
 \end_inset
 
@@ -6623,7 +6623,7 @@ renta informativa
 \begin_layout Itemize
 Sustituyendo los pagos y derivando respecto a las cantidades: 
 \begin_inset Formula \begin{equation}
-  t_2\,u'(q_2)=c,\qquad t_1\,u'(q_1)\left[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\right]=c\ \Longrightarrow\ t_1\,u'(q_1)>c . \label{eq:autoseleccion}
+  t_2\,u'(q_2)=c,\qquad t_1\,u'(q_1)\left[1-\frac{1-\nu}{\nu}\cdot\frac{t_2-t_1}{t_1}\right]=c\ \Longrightarrow\ t_1\,u'(q_1)>c . \label{eq:autoseleccion}
   \end{equation}
 \end_inset
 
@@ -6850,11 +6850,11 @@ DistorsiÃ³n abajo
 menos
 \emph default
  de lo eficiente. Cada unidad que se le quita le cuesta al monopolista algo de excedente que ya no puede cobrarle, pero reduce la renta que tiene que dejar al tipo alto, porque la opciÃ³n del bajo se vuelve menos atractiva de imitar. Cuantos mÃ¡s tipos altos haya (
-\begin_inset Formula $(1-\pi)/\pi$
+\begin_inset Formula $(1-\nu)/\nu$
 \end_inset
 
  grande) y mÃ¡s distintos sean, mayor es la distorsiÃ³n; si 
-\begin_inset Formula $\pi\,t_1\leq(1-\pi)\,(t_2-t_1)$
+\begin_inset Formula $\nu\,t_1\leq(1-\nu)\,(t_2-t_1)$
 \end_inset
 
 , conviene excluir al tipo bajo. 
@@ -17885,7 +17885,7 @@ Problema reducido
 \emph default
 : 
 \begin_inset Formula \begin{equation}
-  \max_{q_1,q_2}\ \pi\,[t_1u(q_1)-c\,q_1]+(1-\pi)\,[t_2u(q_2)-(t_2-t_1)\,u(q_1)-c\,q_2].
+  \max_{q_1,q_2}\ \nu\,[t_1u(q_1)-c\,q_1]+(1-\nu)\,[t_2u(q_2)-(t_2-t_1)\,u(q_1)-c\,q_2].
   \end{equation}
 \end_inset
 
@@ -17899,13 +17899,13 @@ Condiciones de primer orden
 \emph default
 : 
 \begin_inset Formula \begin{equation}
-  \frac{\partial}{\partial q_2}:\ (1-\pi)\,[t_2u'(q_2)-c]=0\ \Rightarrow\ t_2u'(q_2)=c;
+  \frac{\partial}{\partial q_2}:\ (1-\nu)\,[t_2u'(q_2)-c]=0\ \Rightarrow\ t_2u'(q_2)=c;
   \end{equation}
 \end_inset
 
 
 \begin_inset Formula \begin{equation}
-  \frac{\partial}{\partial q_1}:\ \pi\,[t_1u'(q_1)-c]-(1-\pi)\,(t_2-t_1)\,u'(q_1)=0\ \Rightarrow\ t_1u'(q_1)\left[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\right]=c .
+  \frac{\partial}{\partial q_1}:\ \nu\,[t_1u'(q_1)-c]-(1-\nu)\,(t_2-t_1)\,u'(q_1)=0\ \Rightarrow\ t_1u'(q_1)\left[1-\frac{1-\nu}{\nu}\cdot\frac{t_2-t_1}{t_1}\right]=c .
   \end{equation}
 \end_inset
 
@@ -17942,7 +17942,7 @@ Si el corchete es positivo,
 \end_inset
 
 . Si el corchete es nulo o negativo, 
-\begin_inset Formula $\pi\,t_1\leq(1-\pi)\,(t_2-t_1)$
+\begin_inset Formula $\nu\,t_1\leq(1-\nu)\,(t_2-t_1)$
 \end_inset
 
 , la soluciÃ³n es 
@@ -17982,7 +17982,7 @@ IntuiciÃ³n del margen
 \end_inset
 
  (ponderado por 
-\begin_inset Formula $\pi$
+\begin_inset Formula $\nu$
 \end_inset
 
 ), y le ahorra, en cada consumidor de tipo alto, la renta informativa de esa unidad, 
@@ -17990,7 +17990,7 @@ IntuiciÃ³n del margen
 \end_inset
 
  (ponderada por 
-\begin_inset Formula $1-\pi$
+\begin_inset Formula $1-\nu$
 \end_inset
 
 ). La condiciÃ³n de primer orden iguala las 2 cosas. Por ejemplo, subir el precio marginal del tipo bajo hace perder algo con los bajos, pero se gana con todos los altos, a los que se puede cobrar mÃ¡s sin que imiten. 
@@ -18042,7 +18042,7 @@ Caso habitual en el test
 \end_inset
 
  y 
-\begin_inset Formula $q_1=1-c\big/\big[t_1-\frac{1-\pi}{\pi}\,(t_2-t_1)\big]$
+\begin_inset Formula $q_1=1-c\big/\big[t_1-\frac{1-\nu}{\nu}\,(t_2-t_1)\big]$
 \end_inset
 
 . 

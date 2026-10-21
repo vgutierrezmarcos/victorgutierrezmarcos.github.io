@@ -469,7 +469,7 @@ En el cante: la definición de discriminación, sus 3 condiciones y la clasifica
 \subparagraph{i) Supuestos}
 
 \begin{itemize}
-\item 2 tipos de consumidores, con valoración baja $t_1$ y alta $t_2>t_1$, en proporciones $\pi$ y $1-\pi$, que el monopolista conoce; no sabe de qué tipo es cada uno.
+\item 2 tipos de consumidores, con valoración baja $t_1$ y alta $t_2>t_1$, en proporciones $\nu$ y $1-\nu$, que el monopolista conoce; no sabe de qué tipo es cada uno.
 \item El tipo $i$ obtiene una utilidad $t_i\,u(q)-T$ al comprar $q$ unidades pagando $T$ en total, con $u(0)=0$, $u'>0$ y $u''<0$; si no compra, 0.
 \item Coste marginal constante $c$. El monopolista ofrece un menú $\{(q_1,T_1),(q_2,T_2)\}$ y no hay reventa.
 \end{itemize}
@@ -479,7 +479,7 @@ En el cante: la definición de discriminación, sus 3 condiciones y la clasifica
 \begin{itemize}
 \item El monopolista elige el menú que maximiza su beneficio esperado:
   \begin{equation}
-  \optim{\max}{q_1,T_1,q_2,T_2}{\pi\,(T_1-c\,q_1)+(1-\pi)\,(T_2-c\,q_2)}{t_1u(q_1)-T_1\geq 0\quad(\mathrm{PC}_1)\\ t_2u(q_2)-T_2\geq 0\quad(\mathrm{PC}_2)\\ t_1u(q_1)-T_1\geq t_1u(q_2)-T_2\quad(\mathrm{IC}_1)\\ t_2u(q_2)-T_2\geq t_2u(q_1)-T_1\quad(\mathrm{IC}_2)} \label{eq:segundo-grado}
+  \optim{\max}{q_1,T_1,q_2,T_2}{\nu\,(T_1-c\,q_1)+(1-\nu)\,(T_2-c\,q_2)}{t_1u(q_1)-T_1\geq 0\quad(\mathrm{PC}_1)\\ t_2u(q_2)-T_2\geq 0\quad(\mathrm{PC}_2)\\ t_1u(q_1)-T_1\geq t_1u(q_2)-T_2\quad(\mathrm{IC}_1)\\ t_2u(q_2)-T_2\geq t_2u(q_1)-T_1\quad(\mathrm{IC}_2)} \label{eq:segundo-grado}
   \end{equation}
   con 2 \emph{restricciones de participación} (PC: cada tipo prefiere comprar a no comprar) y 2 \emph{de compatibilidad de incentivos} (IC: cada tipo prefiere su opción a la del otro).
 \item En el óptimo solo se saturan 2 (anexo~\ref{anexo:segundo-grado}): la de participación del tipo bajo y la de incentivos del alto. Al tipo bajo se le extrae todo su excedente, $T_1=t_1u(q_1)$; al alto hay que dejarle lo que ganaría haciéndose pasar por bajo, su \concepto{renta informativa}:
@@ -488,7 +488,7 @@ En el cante: la definición de discriminación, sus 3 condiciones y la clasifica
   \end{equation}
 \item Sustituyendo los pagos y derivando respecto a las cantidades:
   \begin{equation}
-  t_2\,u'(q_2)=c,\qquad t_1\,u'(q_1)\left[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\right]=c\ \Longrightarrow\ t_1\,u'(q_1)>c . \label{eq:autoseleccion}
+  t_2\,u'(q_2)=c,\qquad t_1\,u'(q_1)\left[1-\frac{1-\nu}{\nu}\cdot\frac{t_2-t_1}{t_1}\right]=c\ \Longrightarrow\ t_1\,u'(q_1)>c . \label{eq:autoseleccion}
   \end{equation}
 \item \emph{Interpretación gráfica} (gráfico~\ref{fig:autoseleccion}), con las demandas de los 2 tipos, $t_iu'(q)$, y el coste marginal $c$:
   \begin{itemize}
@@ -509,7 +509,7 @@ En el cante: la definición de discriminación, sus 3 condiciones y la clasifica
 
 \begin{itemize}
 \item \emph{No hay distorsión arriba}: el tipo alto compra la cantidad eficiente (su valoración marginal iguala el coste marginal) y se queda con una renta informativa.
-\item \emph{Distorsión abajo}: al tipo bajo se le ofrece \emph{menos} de lo eficiente. Cada unidad que se le quita le cuesta al monopolista algo de excedente que ya no puede cobrarle, pero reduce la renta que tiene que dejar al tipo alto, porque la opción del bajo se vuelve menos atractiva de imitar. Cuantos más tipos altos haya ($(1-\pi)/\pi$ grande) y más distintos sean, mayor es la distorsión; si $\pi\,t_1\leq(1-\pi)\,(t_2-t_1)$, conviene excluir al tipo bajo.
+\item \emph{Distorsión abajo}: al tipo bajo se le ofrece \emph{menos} de lo eficiente. Cada unidad que se le quita le cuesta al monopolista algo de excedente que ya no puede cobrarle, pero reduce la renta que tiene que dejar al tipo alto, porque la opción del bajo se vuelve menos atractiva de imitar. Cuantos más tipos altos haya ($(1-\nu)/\nu$ grande) y más distintos sean, mayor es la distorsión; si $\nu\,t_1\leq(1-\nu)\,(t_2-t_1)$, conviene excluir al tipo bajo.
 \item \emph{Presentación del menú}: equivale a una tarifa no lineal con \emph{descuentos por cantidad} (el paquete grande tiene un precio medio menor), o como 2 tarifas en dos partes entre las que se elige: cuota mayor y precio por unidad igual a $c$ para el tipo alto; cuota menor y precio por unidad mayor que $c$ para el bajo.
 \item \emph{Bienestar}: la cantidad del tipo alto es eficiente y la del bajo no; frente al precio uniforme, la autoselección puede aumentar o reducir el excedente total.
 \end{itemize}
@@ -1515,18 +1515,18 @@ con $F$ una cuantía fija y $C$ el coste, que depende del esfuerzo de la empresa
 \item \emph{Pagos}: de $\mathrm{PC}_1$ y $\mathrm{IC}_2$, $T_1=t_1u(q_1)$ y $T_2=t_2u(q_2)-t_2u(q_1)+T_1=t_2u(q_2)-(t_2-t_1)\,u(q_1)$.
 \item \emph{Problema reducido}:
   \begin{equation}
-  \max_{q_1,q_2}\ \pi\,[t_1u(q_1)-c\,q_1]+(1-\pi)\,[t_2u(q_2)-(t_2-t_1)\,u(q_1)-c\,q_2].
+  \max_{q_1,q_2}\ \nu\,[t_1u(q_1)-c\,q_1]+(1-\nu)\,[t_2u(q_2)-(t_2-t_1)\,u(q_1)-c\,q_2].
   \end{equation}
 \item \emph{Condiciones de primer orden}:
   \begin{equation}
-  \frac{\partial}{\partial q_2}:\ (1-\pi)\,[t_2u'(q_2)-c]=0\ \Rightarrow\ t_2u'(q_2)=c;
+  \frac{\partial}{\partial q_2}:\ (1-\nu)\,[t_2u'(q_2)-c]=0\ \Rightarrow\ t_2u'(q_2)=c;
   \end{equation}
   \begin{equation}
-  \frac{\partial}{\partial q_1}:\ \pi\,[t_1u'(q_1)-c]-(1-\pi)\,(t_2-t_1)\,u'(q_1)=0\ \Rightarrow\ t_1u'(q_1)\left[1-\frac{1-\pi}{\pi}\cdot\frac{t_2-t_1}{t_1}\right]=c .
+  \frac{\partial}{\partial q_1}:\ \nu\,[t_1u'(q_1)-c]-(1-\nu)\,(t_2-t_1)\,u'(q_1)=0\ \Rightarrow\ t_1u'(q_1)\left[1-\frac{1-\nu}{\nu}\cdot\frac{t_2-t_1}{t_1}\right]=c .
   \end{equation}
-\item Si el corchete es positivo, $t_1u'(q_1)>c$: el precio marginal implícito del tipo bajo, $t_1u'(q_1)$, supera al coste marginal y $q_1$ es menor que la cantidad eficiente. Como $u'(q_1)>c/t_1>c/t_2=u'(q_2)$ y $u'$ es decreciente, $q_1<q_2$, y se cumple $\mathrm{IC}_1$. Si el corchete es nulo o negativo, $\pi\,t_1\leq(1-\pi)\,(t_2-t_1)$, la solución es $q_1=0$: se excluye al tipo bajo y al alto se le extrae todo su excedente. Las condiciones de segundo orden se cumplen por la concavidad de $u$.\findemo
-\item \emph{Intuición del margen}: reducir un poco $q_1$ cuesta al monopolista, en cada consumidor de tipo bajo, el excedente de la unidad perdida, $t_1u'(q_1)-c$ (ponderado por $\pi$), y le ahorra, en cada consumidor de tipo alto, la renta informativa de esa unidad, $(t_2-t_1)\,u'(q_1)$ (ponderada por $1-\pi$). La condición de primer orden iguala las 2 cosas. Por ejemplo, subir el precio marginal del tipo bajo hace perder algo con los bajos, pero se gana con todos los altos, a los que se puede cobrar más sin que imiten.
-\item \emph{Caso habitual en el test}: con $u(q)=[1-(1-q)^2]/2$, $u'(q)=1-q$, la demanda del tipo $i$ es $p=t_i(1-q)$, es decir, $q_i(p)=1-p/t_i$, y su excedente a un precio $p$ es $\mathrm{EC}_i(p)=(t_i-p)^2/2t_i$. Con discriminación perfecta, $p_i=c$ y cuotas $A_i=\mathrm{EC}_i(c)$. Con el menú óptimo, $q_2=1-c/t_2$ y $q_1=1-c\big/\big[t_1-\frac{1-\pi}{\pi}\,(t_2-t_1)\big]$.
+\item Si el corchete es positivo, $t_1u'(q_1)>c$: el precio marginal implícito del tipo bajo, $t_1u'(q_1)$, supera al coste marginal y $q_1$ es menor que la cantidad eficiente. Como $u'(q_1)>c/t_1>c/t_2=u'(q_2)$ y $u'$ es decreciente, $q_1<q_2$, y se cumple $\mathrm{IC}_1$. Si el corchete es nulo o negativo, $\nu\,t_1\leq(1-\nu)\,(t_2-t_1)$, la solución es $q_1=0$: se excluye al tipo bajo y al alto se le extrae todo su excedente. Las condiciones de segundo orden se cumplen por la concavidad de $u$.\findemo
+\item \emph{Intuición del margen}: reducir un poco $q_1$ cuesta al monopolista, en cada consumidor de tipo bajo, el excedente de la unidad perdida, $t_1u'(q_1)-c$ (ponderado por $\nu$), y le ahorra, en cada consumidor de tipo alto, la renta informativa de esa unidad, $(t_2-t_1)\,u'(q_1)$ (ponderada por $1-\nu$). La condición de primer orden iguala las 2 cosas. Por ejemplo, subir el precio marginal del tipo bajo hace perder algo con los bajos, pero se gana con todos los altos, a los que se puede cobrar más sin que imiten.
+\item \emph{Caso habitual en el test}: con $u(q)=[1-(1-q)^2]/2$, $u'(q)=1-q$, la demanda del tipo $i$ es $p=t_i(1-q)$, es decir, $q_i(p)=1-p/t_i$, y su excedente a un precio $p$ es $\mathrm{EC}_i(p)=(t_i-p)^2/2t_i$. Con discriminación perfecta, $p_i=c$ y cuotas $A_i=\mathrm{EC}_i(c)$. Con el menú óptimo, $q_2=1-c/t_2$ y $q_1=1-c\big/\big[t_1-\frac{1-\nu}{\nu}\,(t_2-t_1)\big]$.
 \end{itemize}
 
 \subsection{Índice de \autor{Lerner} del monopolio multiproducto}\label{anexo:multiproducto}
