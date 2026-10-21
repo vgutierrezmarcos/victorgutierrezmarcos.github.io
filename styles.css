@@ -179,6 +179,12 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .nav-list li a:hover { color: var(--color-primary); border-bottom-color: var(--color-border-strong); }
 .nav-list li a.active { color: var(--color-primary); border-bottom-color: var(--color-accent-gold); }
 
+/* Logo de la app (la diana) a la izquierda del menú: abre la versión web, /app/abrir/ */
+.nav-list li.nav-app a { display: flex; align-items: center; padding: 0.3rem 0.6rem 0.3rem 0; border-bottom-color: transparent; }
+.nav-list li.nav-app a:hover { border-bottom-color: transparent; }
+.nav-list li.nav-app img { display: block; width: 30px; height: 30px; border-radius: 8px; transition: box-shadow var(--transition-fast); }
+.nav-list li.nav-app a:hover img { box-shadow: 0 0 0 2px var(--color-accent-gold); }
+
 /* Submenú de las secciones (oposición, temario…) */
 .sub-nav {
     background: var(--color-bg-cream);
