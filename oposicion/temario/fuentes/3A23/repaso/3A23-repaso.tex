@@ -1,0 +1,284 @@
+\documentclass{article}
+\usepackage{tcee-repaso}
+\tcetema[Economía del bienestar (II): fallos de mercado]{3.A.23}{Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público.}
+\tcefecha{21/10/2026}
+\begin{document}
+\cabecerarepaso
+\begin{columnas}
+
+% ==========================================================================
+\bloque{Esquema del cante}
+\esquemacante{%
+\apartadocante{Introducción}{2,5}
+\apartadocante{I. Optimalidad del EGC y fallos de mercado}{3}
+\subcante{1. Condiciones de \autor{Pareto}: $\mathrm{RMS}^A=\mathrm{RMS}^B=\mathrm{RMT}$}{0,5}
+\subcante{2. EGC y teoremas del bienestar (1TFEB, 2TFEB)}{1}
+\subcante{3. Fallos: qué supuesto levanta cada uno (tabla)}{1,5}
+\apartadocante{II. Externalidades y bienes públicos}{17}
+\subcante{1. Externalidades: \autor{Pigou}, estándar, \autor{Coase}, derechos}{9}
+\subcante{2. Bienes públicos: \autor{Samuelson}, \autor{Lindahl}, \autor{Clarke}-\autor{Groves}}{8}
+\apartadocante{III. Los fallos del sector público}{6,5}
+\subcante{1. Información, incentivos, compromiso}{5}
+\subcante{2. Soluciones; \emph{second best}}{1,5}
+\apartadocante{Conclusión}{1}}
+\emph{Hilo}: un río: acería aguas arriba que vierte (externalidad), piscifactoría aguas abajo que lo sufre, mota contra las riadas (bien público) y organismo de cuenca que también se equivoca (fallo del sector público). \emph{Pizarra}: tabla de los fallos a la izquierda todo el cante; $\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$ y $\sum_i\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$ en una esquina.
+
+% ==========================================================================
+\bloque[2,5]{Introducción}
+\begin{itemize}
+\item \textbf{Enganche}: «\emph{Unos por otros, la casa sin barrer}»: si lo que hago beneficia a todos y nadie me lo paga, espero a que lo haga otro. Clima: la UE se fija por ley $-90$\,\% de emisiones netas en 2040 (frente a 1990), pero en la misma norma retrasa el RCDE~2 (edificios y transporte) de 2027 a 2028. 3 preguntas: ¿por qué falla el mercado?, ¿cómo se corrige?, ¿y si falla quien corrige?
+\item \textbf{Relevancia}: \emph{teórica} (los fallos de mercado justifican intervenir por eficiencia; sin ellos, basta el 1TFEB \vertema{3.A.22}); \emph{práctica} (\autor{Stern}: el clima, «el mayor fallo de mercado que el mundo ha visto» \vertema{3.B.31}; derecho de CO\textsubscript{2} a $\approx$85~€/t, oct. 2026); \emph{para el TCEE} (fiscalidad ambiental, defensa, justicia, I+D, regulación \vertema{3.A.20}, instituciones \vertema{4.B.2}: comparar siempre 2 imperfecciones).
+\item \textbf{Contextualización}: \autor{Pareto} (1906): óptimo; \autor{Lerner} (1934), \autor{Lange} (1942): condiciones; \autor{Arrow} y \autor{Debreu} (1951): teoremas (= mano invisible de \autor{Smith}, 1776). Fallos: \autor{Marshall} (1890), \autor{Pigou} (1920), \autor{Samuelson} (1954), \autor{Coase} (1960); fallos del Estado: \autor{Buchanan}-\autor{Tullock} (1962), \autor{Stigler} (1971), \autor{Kydland}-\autor{Prescott} (1977); \autor{Ostrom} (1990, Nobel 2009).
+\item \textbf{Problemática}: ¿por qué el mercado deja de ser eficiente con externalidades y bienes públicos? ¿Cómo corregir: precios, cantidades, derechos o provisión? ¿Cómo hacer que cada uno revele lo que valora un bien público? ¿Falla también el Estado: cuándo intervenir?
+\item \textbf{Estructura}: \hyperref[rep:I]{I}, por qué el EGC es eficiente y qué supuestos rompe cada fallo; \hyperref[rep:II]{II} (núcleo), externalidades y bienes públicos: desviación y corrección; \hyperref[rep:III]{III}, fallos del sector público: los fallos de mercado son condición necesaria, no suficiente.
+\end{itemize}
+
+% ==========================================================================
+\bloque[3]{I. Optimalidad del EGC y fallos de mercado\label{rep:I}}
+\begin{ideaclave}
+El equilibrio competitivo es eficiente solo si los precios recogen todos los costes y todas las valoraciones; cada fallo de mercado es un supuesto del 1TFEB que no se cumple.
+\end{ideaclave}
+
+\sub{I.1. Condiciones de optimalidad\label{rep:I.1}}
+\begin{itemize}
+\item \concepto{Óptimo de \autor{Pareto}}: nadie puede mejorar sin que otro empeore. Economía 2×2×2×2 (\autor{Bator}, 1957): 3 condiciones: \emph{producción} $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$ (en la FPP); \emph{intercambio} $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$ (curva de contrato); \emph{global} $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$ $\Leftarrow$ la que rompen externalidades y bienes públicos.
+\end{itemize}
+
+\sub{I.2. EGC y teoremas del bienestar\label{rep:I.2}}
+\begin{itemize}
+\item \concepto{EGC}: $\vect{p}^*$ vacía todos los mercados \vertema{3.A.21}; todos ven los mismos precios $\Rightarrow$ se cumplen las 3:
+\begin{formula}
+\centering $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\dfrac{p_X}{p_Y}=\dfrac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}=\mathrm{RMT}_{XY}$
+\end{formula}
+\item \concepto{1TFEB}: preferencias localmente no saciables $\Rightarrow$ todo EC es óptimo de \autor{Pareto} (\autor{Arrow}, \autor{Debreu}, 1951). Supuestos: mercados completos, precio-aceptantes, información perfecta, precios comunes. \emph{No} necesita convexidad (esa es para la existencia).
+\item \concepto{2TFEB}: con convexidad, todo óptimo se alcanza como EC tras transferencias de suma fija ($\vect{\omega}\to\vect{\omega}'$): separa eficiencia y equidad; como no son factibles, aquí solo intervención por \emph{eficiencia}.
+\end{itemize}
+
+\sub{I.3. Fallos de mercado\label{rep:I.3}}
+\begin{itemize}
+\item \concepto{Fallo de mercado}: el EC no es óptimo de \autor{Pareto}: otra asignación factible mejora a alguien sin empeorar a nadie; los precios dejan de ser señales válidas.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.27\linewidth}>{\raggedright\arraybackslash}m{0.5\linewidth}>{\centering\arraybackslash}m{0.19\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Supuesto del 1TFEB} & \textbf{Si se levanta} & \textbf{Dónde}\\
+\midrule
+1. No saciedad local & renta sin gastar, puede no ser eficiente & \vertema{3.A.22}\\
+\rowcolor{tceesalmon}2. \textbf{Mercados completos} & \textbf{externalidades} y \textbf{bienes públicos} (polizón) & \hyperref[rep:II]{II}\\
+3. Precio-aceptantes & poder de mercado: $p>\mathrm{CMg}$, triángulo de \autor{Harberger} & \vertema{3.A.17}--\vertema{3.A.20}\\
+4. Precios comunes & impuestos: exceso de gravamen & \vertema{4.B.9}\\
+5. Información perfecta & selección adversa, riesgo moral (\autor{Akerlof}) & \vertema{3.A.13}\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item Raíz común (\autor{Arrow}, 1969): \concepto{mercados incompletos}: no hay mercado ni precio para el vertido ni para la protección de la mota (costes de transacción, no exclusión).
+\item \autor{Greenwald}-\autor{Stiglitz} (1986): con información imperfecta o mercados incompletos, el EC es ineficiente incluso frente a un planificador con la misma información (\emph{ineficiencia restringida}): los fallos son la regla.
+\item Fallos = condición \emph{necesaria}, no \emph{suficiente}, para intervenir por eficiencia (comparar con los del Estado, \hyperref[rep:III]{III}); por \emph{equidad} se interviene aun sin fallos (2TFEB).
+\end{itemize}
+
+% ==========================================================================
+\bloque[17]{II. Externalidades y bienes públicos\label{rep:II}}
+\begin{ideaclave}
+En los 2 casos el mercado falla porque falta un precio; la intervención lo crea (impuesto, derechos, \autor{Lindahl}) o lo sustituye (estándar, provisión pública), y su gran obstáculo es la información.
+\end{ideaclave}
+
+\sub{II.1. Externalidades\label{rep:II.1}}
+\begin{itemize}
+\item \concepto{Externalidad}: el bienestar de un consumidor o la producción de una empresa dependen \emph{directamente} (sin pasar por los precios) de las acciones de otro (\autor{Mas-Colell} et al.). «\emph{El que venga detrás, que arree}»: quien la genera no la paga.
+\item \autor{Viner} (1931): \concepto{tecnológicas} (fallo) frente a \concepto{pecuniarias} (por los precios: transferencia, sigue siendo eficiente; whisky de moda) (\autor{Scitovsky}, 1954).
+\item \emph{Clasificación}: positivas/negativas; en la producción/en el consumo (abejas y huerto; acería y piscifactoría; vacuna; ruido, tráfico); agotables/no agotables (= «mal público», \autor{Baumol}-\autor{Oates}).
+\item \emph{Equilibrio general} (caja de \autor{Edgeworth}): $U_B(X_B,Y_B,X_A)$. Óptimo:
+\begin{formula}
+\centering $\mathrm{RMS}^A_{XY}+\dfrac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}=\mathrm{RMS}^B_{XY}$
+\end{formula}
+\item[] el mercado iguala $\mathrm{RMS}^A=\mathrm{RMS}^B=p_X/p_Y$: falta el 2.º término $\Rightarrow$ con externalidad negativa $A$ consume demasiado $X$. Impuesto $t=-p_Y\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}$ en el óptimo: pigouviano en EG.
+\item \emph{Equilibrio parcial} (acería precio-aceptante a $\overline{p}$): coste marginal externo $\mathrm{CMgE}$ = daño a la piscifactoría:
+\funcionclave{\mathrm{CMgS}(q)=\mathrm{CMgP}(q)+\mathrm{CMgE}(q)}
+\item[] mercado: $\overline{p}=\mathrm{CMgP}(q^c)$; óptimo: $\overline{p}=\mathrm{CMgS}(q^*)$ $\Rightarrow$ $q^c>q^*$: \emph{sobreproducción}, pérdida $E$. Positiva: al revés (infraproducción).
+\item \emph{Justificación}: falta un mercado (\autor{Arrow}); costes de transacción (muchos afectados: polizón); derechos sin definir (\autor{Coase}). Objetivo: nivel \emph{óptimo}, no cero. 5 mecanismos, de más a menos intervención.
+\end{itemize}
+\graficorepaso[0.92\linewidth]{externalidad-intervencion}{Impuesto pigouviano ($\mathrm{CMgP}+t^*$) y estándar ($\overline{q}=q^*$, oferta quebrada) sobre el gráfico de la externalidad}
+\begin{itemize}
+\item \textbf{\autor{Pigou}} (1920; \emph{Wealth and Welfare}, 1912): impuesto por unidad igual al daño marginal \emph{en el óptimo}:
+\begin{formula}
+\centering $t^*=\mathrm{CMgE}(q^*)$;\quad $\max_q\ \overline{p}q-C(q)-t^*q\ \Rightarrow\ \overline{p}=\mathrm{CMgP}(q)+t^*$ en $q^*$
+\end{formula}
+\item[] Áreas: acería $A$; Estado $B+C$ ($=t^*q^*$); piscifactoría sufre $C$; se recupera $E$. Bienestar: $A+B-E\to A+B$. Recaudación sustituye impuestos distorsionantes: \concepto{doble dividendo} \vertema{4.B.13}. Externalidad positiva: subvención. \emph{Ventaja}: la reducción va donde es más barata. \emph{Límites}: hay que conocer $\mathrm{CMgE}(q^*)$; daño variable según lugar y momento; con poder de mercado, $t<$ daño marginal (\autor{Buchanan}, 1969: \emph{second best}).
+\item \textbf{Estándar}: $\overline{q}=q^*$ (cuotas, límites de vertido, matrículas). Oferta quebrada en $\overline{q}$; 1 empresa e información completa: mismo $q^*$ y bienestar $A+B$; acería $A+B+C$: $B+C$ es \concepto{renta de escasez} (no hay recaudación). \emph{Ventaja}: certeza (umbrales). \emph{Límites}: misma información; con varias empresas, reducción uniforme $\Rightarrow$ cara.
+\item \textbf{\autor{Coase}} (1960): el daño es \emph{recíproco}; si se negocia, basta definir quién tiene derecho al río. «\emph{Más vale un mal acuerdo que un buen pleito}». Supuestos: derechos definidos y exigibles, costes de transacción nulos, información completa, sin efectos renta (cuasilineal).
+\item[] \emph{Derechos de la acería} (parte de $q^c$): la piscifactoría paga entre $D$ y $D+E$ por bajar a $q^*$. \emph{Derechos de la piscifactoría} (parte de 0): la acería paga entre $C$ y $A+B+C$ por llegar a $q^*$. Siempre $q^*$ y $A+B$; derechos y poder de negociación solo reparten \vertema{3.A.14}.
+\end{itemize}
+\graficorepaso[0.78\linewidth]{coase-externalidad}{\autor{Coase}: quién paga a quién según los derechos (mismas áreas)}
+\begin{itemize}
+\item \concepto{Teorema de \autor{Coase}} (nombre de \autor{Stigler}, 1966): derechos bien definidos + costes de transacción nulos $\Rightarrow$ negociación eficiente \emph{sea quien sea el titular}; los derechos solo cambian el reparto. \autor{Pigou} y \autor{Coase} llegan al mismo $q^*$: cambia quién necesita la información y quién se queda las rentas. \emph{Límites}: costes de transacción (muchos afectados; el propio \autor{Coase}: el mundo real es el de los costes positivos \vertema{3.A.15}); información asimétrica (\autor{Myerson}-\autor{Satterthwaite}, 1983: ningún mecanismo garantiza siempre el acuerdo eficiente); efectos renta (sin cuasilineal, la eficiencia depende del reparto).
+\item \textbf{Derechos de emisión} (\emph{cap and trade}, \autor{Dales}, 1968): tope $\overline{E}$, reparto (gratis o subasta) y comercio a $p_E$. Pasos: 1) el tope fija la reducción $R_0$; 2) el precio = CMg de la instalación que hace la última reducción necesaria; 3) las de coste $<p_E$ reducen y venden; las de coste $>p_E$ compran.
+\end{itemize}
+\graficorepaso[0.9\linewidth]{cap-and-trade-instalaciones}{5 instalaciones: el tope fija $R_0$ y la instalación marginal, el precio}
+\begin{itemize}
+\item Costes continuos: cada empresa reduce hasta
+\begin{formula}
+\centering $\mathrm{CMgR}_1(r_1)=\mathrm{CMgR}_2(r_2)=p_E$
+\end{formula}
+\item[] = reducir el total al mínimo coste. \autor{Montgomery} (1972): \emph{cualquiera que sea el reparto inicial} (\autor{Coase} en un mercado creado por el Estado).
+\item \concepto{Precios frente a cantidades} (\autor{Weitzman}, 1974): con información completa, equivalentes; con incertidumbre sobre los costes de reducir: impuesto $\Rightarrow$ el error va a la cantidad; cuota $\Rightarrow$ al coste. Fijar \emph{cantidad} si el daño marginal crece más deprisa que el CMg de reducir (umbrales); \emph{precio} si el daño marginal es casi constante. Híbridos: precio mínimo y máximo (\autor{Roberts}-\autor{Spence}, 1976).
+\item \concepto{RCDE UE} (Directiva 2003/87/CE): desde 2005, por fases (4.ª, 2021-2030); aplica \autor{Dales}-\autor{Montgomery} más que \autor{Coase}. Tope $-4{,}3$\,\%/año (2024-2027), $-4{,}4$\,\% desde 2028; emisiones a la mitad desde 2005. \autor{Weitzman} en el diseño: \emph{reserva de estabilidad} (2019; corrección por precios en un sistema de cantidades); RCDE~2 desde 2028 (aguas arriba); MAFC (CBAM) desde 1/1/2026 contra la \emph{fuga de carbono} \vertema{3.B.31}. \emph{Límites}: precio volátil, rentas del reparto gratuito, fuga.
+\item \textbf{Integración} (\autor{Meade}, 1952): un dueño para acería y piscifactoría maximiza el beneficio conjunto e internaliza; solución de mercado si negociar es caro y los afectados son pocos \vertema{3.A.15}.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.29\linewidth}>{\raggedright\arraybackslash}m{0.28\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Mecanismo} & \textbf{Fija} & \textbf{Información} & \textbf{Renta}\\
+\midrule
+\autor{Pigou} & precio $t^*$ & daño marginal en $q^*$ & Estado ($B+C$)\\
+Estándar & cantidad $\overline{q}$ & $q^*$ y costes de cada una & empresa (escasez)\\
+\autor{Coase} & derechos & ninguna sobre el daño & según derechos y poder\\
+Derechos & total $\overline{E}$ & daño total, no costes & Estado si subasta\\
+Integración & nada & ninguna & propietario común\\
+\bottomrule
+\end{tabular}\par}
+
+\sub{II.2. Bienes públicos\label{rep:II.2}}
+\begin{itemize}
+\item Bien privado: \concepto{rival} y \concepto{excluible}. \concepto{Bien público puro} (\autor{Samuelson}, 1954): \emph{no rival} (CMg de un usuario más nulo) y \emph{no excluible}: defensa, alumbrado, conocimiento básico, la mota.
+\end{itemize}
+{\centering\small\renewcommand{\arraystretch}{1.1}\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{@{}>{\raggedright\arraybackslash}m{0.2\linewidth}>{\raggedright\arraybackslash}m{0.37\linewidth}>{\raggedright\arraybackslash}m{0.37\linewidth}@{}}
+\toprule
+\rowcolor{tceeazulpalido} & \textbf{Rival} & \textbf{No rival}\\
+\midrule
+\textbf{Excluible} & \textbf{privados} (alimentos, ropa) & \textbf{de club} (TV de pago, peaje)\\
+\textbf{No excluible} & \textbf{recursos comunes} (caladeros, pastos, la pesca del río) & \textbf{públicos puros} (defensa, alumbrado, la mota)\\
+\bottomrule
+\end{tabular}\par}
+\begin{itemize}
+\item Clasificación de V. y E. \autor{Ostrom} (1977). \concepto{Club} (\autor{Buchanan}, 1965): socios hasta que el ahorro de cuota = coste de congestión. \concepto{Recursos comunes}: \emph{sobreexplotación}, no infraprovisión: \concepto{tragedia de los comunes} (\autor{Hardin}, 1968); «\emph{lo que es del común es de ningún}». \autor{Gordon} (1954): libre acceso hasta captura \emph{media} $=c$, óptimo captura \emph{marginal} $=c$ $\Rightarrow$ $N^L>N^*$. \autor{Ostrom} (1990): reglas comunitarias (Törbel, 1517; Tribunal de las Aguas de Valencia), 8 principios de diseño.
+\item \concepto{Tragedia de los anticomunes} (\autor{Heller}, 1998): muchos pueden excluir (patentes) $\Rightarrow$ infrautilización. Frontera difusa: carretera congestionada; faros privados con peaje en puerto (\autor{Coase}, 1974). \concepto{Bienes preferentes} (\autor{Musgrave}, 1959): se proveen porque se infravaloran, no por su tecnología.
+\item \emph{Óptimo} (planificador): $\max U_A(X_A,G)$ s.a. $U_B=\overline{U}_B$, $T(X_A+X_B,G)=0$ $\Rightarrow$ \concepto{condición de \autor{Samuelson}}:
+\funcionclave{\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}}
+\item[] Valor social de una unidad = \emph{suma} de valoraciones (privado: se igualan). Gráfico de EG (\autor{Samuelson}, 1955): $\mathrm{FPC}_A$ = FPP $-$ $\overline{U}_B$; tangencia con $U_A^*$; misma $G^*$, valoraciones distintas.
+\item \emph{Aportaciones voluntarias}: cada uno para cuando $\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$ $\Rightarrow$ $\sum_i\mathrm{RMS}^i=2\,\mathrm{RMT}>\mathrm{RMT}$: \concepto{infraprovisión}; \concepto{polizón} (\emph{free rider}). Dilema del prisionero \vertema{3.A.14}: mota de 120, cada vecino la valora en 100: $(40,40)$, $({-20},100)$, $(100,{-20})$, $(0,0)$: no contribuir es dominante.
+\item \textbf{\autor{Bowen}} (1943), equilibrio parcial: valoración social = \emph{suma vertical} de disposiciones a pagar (privado: horizontal); vértice donde una curva llega a 0. Óptimo: $\sum_i\mathrm{RMS}^i_{GX}(G^*)=\mathrm{CMg}_G$. Si declaran menos: $\tilde{G}<G^*$, pérdida = triángulo.
+\end{itemize}
+\graficorepaso[0.8\linewidth]{bowen}{\autor{Bowen}: suma vertical, precios de \autor{Lindahl} e infraprovisión ($\tilde{G}<G^*$)}
+\begin{itemize}
+\item \emph{Provisión privada como EN}: $\max_{g_A}U_A(\overline{W}_A-g_A,g_A+g_B)$; reacción decreciente (\emph{sustitutos estratégicos}); $G^{\mathrm N}<G^*$. \emph{Concentración} (aportan los que más valoran); \emph{neutralidad} (\autor{Warr}, 1983; \autor{Bergstrom}-\autor{Blume}-\autor{Varian}, 1986); \emph{expulsión} 1 a 1; menor en la realidad: \emph{warm glow} (\autor{Andreoni}, 1990). Experimentos: aportan 40-60\,\% al principio, cae al repetir (\autor{Ledyard}, 1995).
+\item \concepto{Revelación de preferencias}: las $\mathrm{RMS}^i$ son privadas y a todos conviene infravalorar. \concepto{Provisión pública} $\neq$ producción pública; ventajas: valoración social y coacción (impuestos). 2 preguntas: \emph{cuánto} y \emph{cómo repartir el coste}.
+\item \emph{Capacidad de pago}: lo declarado no cambia lo pagado $\Rightarrow$ exagerar (muchísimo o nada): no informa.
+\item \textbf{\autor{Lindahl}} (1919; \autor{Wicksell}, 1896): \concepto{precio personalizado} $p^i_G=\mathrm{RMS}^i_{GX}$ en $G^*$, con $p^A_G+p^B_G=\mathrm{RMT}_{GX}$ $\Rightarrow$ cumple \autor{Samuelson}: óptimo y justo (beneficio). \emph{Problema}: vuelve el incentivo a infravalorar; único demandante de «su» mercado: no es precio-aceptante.
+\item \textbf{\autor{Clarke}-\autor{Groves}} (1971, 1973): mota indivisible de coste $C$, cuotas fijas $c_i$, $\sum c_i=C$; se construye si $\sum_i(\tilde v_i-c_i)\geq0$; solo paga el \concepto{pivotal} (cambia la decisión) lo que pierden los demás:
+\begin{formula}
+\centering $H_i=\Big|\sum_{j\neq i}(\tilde v_j-c_j)\Big|$ si $i$ es pivotal; $H_i=0$ si no
+\end{formula}
+\item[] Ej.: coste 300, cuotas 100, valoraciones 40, 150, 170 $\Rightarrow$ netos $-60$, 50, 70 (suma 60: se construye); sin el 3 suman $-10$: pivotal, paga 10 y gana 60. Si el 1 declara $-200$, paga 120 para ahorrarse 60: no le compensa.
+\item[] Decir la verdad es \emph{débilmente dominante} y la decisión es eficiente: idea \concepto{VCG} (subasta de \autor{Vickrey}, 1961). \emph{Límites}: presupuesto no equilibrado (\autor{Green}-\autor{Laffont}, 1977: inevitable); exige cuasilineal (si no, \autor{Gibbard}-\autor{Satterthwaite} \vertema{3.A.24}); coaliciones; parece injusto.
+\item \emph{Otras}: votación (votante mediano $\neq$ \autor{Samuelson}; unanimidad de \autor{Wicksell}: veto) \vertema{3.A.24}; diseño de mecanismos (\autor{Hurwicz}, \autor{Maskin}, \autor{Myerson}, Nobel 2007); cooperación repetida (\autor{Ostrom}); \autor{Tiebout} (1956), «votar con los pies» \vertema{4.B.14}; referéndum en 49 aldeas de Indonesia (\autor{Olken}, 2010); datos de felicidad (\autor{Levinson}, 2012).
+\end{itemize}
+
+% ==========================================================================
+\bloque[6,5]{III. Los fallos del sector público\label{rep:III}}
+\begin{ideaclave}
+El planificador ideal es informado, benevolente y capaz de comprometerse; ninguno de los 3 supuestos se cumple siempre: por eso el fallo de mercado es condición necesaria, pero no suficiente, para intervenir.
+\end{ideaclave}
+
+\sub{III.1. Fallos del sector público\label{rep:III.1}}
+\begin{itemize}
+\item 3 tipos: \emph{información}, \emph{incentivos y proceso político}, \emph{compromiso}. En el río: el organismo de cuenca no conoce el daño, puede servir a la acería y no puede prometer que no hará la mota.
+\item \autor{Wolf} (1979), \concepto{fallos del no mercado}: \emph{internalidades} y objetivos privados; \emph{costes redundantes y crecientes}; \emph{externalidades derivadas}; \emph{desigualdad de poder} y privilegios. \autor{Stiglitz}-\autor{Rosengard}: información limitada; control limitado de respuestas privadas; control limitado de la burocracia; límites del proceso político.
+\item \textbf{Información}: cálculo económico socialista \vertema{3.A.21}: \autor{Mises} (1920), sin precios no hay cálculo; \autor{Lange} (1936), socialismo de mercado por prueba y error; \autor{Hayek} (1945), problema de \emph{conocimiento} disperso; \autor{Hurwicz} (1972): diseño de mecanismos. No conoce daños, valoraciones ni costes regulados (menú de contratos \vertema{3.A.20}: renta informativa). Externalidades derivadas: la mota atrae casas a zona inundable; indemnizar cada pez muerto $\Rightarrow$ descuido.
+\item \textbf{Votación} \vertema{3.A.24}: \concepto{paradoja de \autor{Condorcet}} (1785): mayorías cíclicas $x\succ y\succ z\succ x$, manda la agenda; \concepto{teorema de imposibilidad} (\autor{Arrow}, 1951): con $\geq3$ opciones, solo la dictadura cumple las condiciones; \concepto{votante mediano} (\autor{Black}, 1948): preferencias unimodales, una dimensión; \autor{Downs} (1957): 2 partidos convergen (\autor{Hotelling} \vertema{3.A.18}); eficiente solo si mediana = media de valoraciones; \concepto{intercambio de votos} (\emph{logrolling}, \autor{Tullock}, 1959): se aprueban proyectos con beneficio $<$ coste.
+\item \textbf{Elección pública} (\autor{Buchanan}-\autor{Tullock}, 1962; Nobel 1986): los que deciden persiguen su interés. \emph{Votantes}: \concepto{ignorancia racional} (\autor{Downs}). \emph{Políticos}: \concepto{ciclo político} (\autor{Nordhaus}, 1975; \autor{Rogoff}, 1990; \autor{Kalecki}, 1943). \emph{Burócratas}: \autor{Weber} (1922) optimista; ineficiencia X (\autor{Leibenstein}, 1966 \vertema{3.A.12}); \autor{Niskanen} (1971): maximizan el presupuesto, $B(G)=C(G)$ $\Rightarrow$ $G'>G^*$. \concepto{Leviatán} (\autor{Brennan}-\autor{Buchanan}, 1980); \concepto{ilusión fiscal} (\autor{Puviani}, 1903).
+\item \emph{Grupos de presión}: \concepto{búsqueda de rentas} (\autor{Tullock}, 1967; \autor{Krueger}, 1974) \vertema{3.A.17}; \autor{Olson} (1965): ganan los grupos pequeños y concentrados; \concepto{captura del regulador} (\autor{Stigler}, 1971), «\emph{hecha la ley, hecha la trampa}»; \autor{Peltzman} (1976) \vertema{3.A.20}; \concepto{triángulo de hierro} \vertema{4.B.2}.
+\item \textbf{Compromiso}: \concepto{inconsistencia temporal} (\autor{Kydland}-\autor{Prescott}, 1977): la política óptima anunciada deja de serlo cuando los agentes ya han decidido. «\emph{Prometer hasta meter y, una vez metido, olvidar lo prometido}». Zonas inundables: prometer no hacer la mota; con las casas hechas, se hace.
+\item[] 2 periodos, $x_1=X_1(a_1,a_2)$: con compromiso, la CPO de $a_2$ incluye $\frac{\partial S}{\partial x_1}\frac{\partial X_1}{\partial a_2}$ (vía expectativas); con discreción, $x_1$ ya está dado y se olvida $\Rightarrow$ coinciden solo si $\partial X_1/\partial a_2=0$. Resultado consistente pero peor (EN sin promesa creíble \vertema{3.A.14}).
+\item[] Ejemplos: impuesto sobre el capital (\autor{Fischer}, 1980); patentes; precio del carbono (\autor{Helm}-\autor{Hepburn}-\autor{Mash}, 2003); rescates y amnistías: \emph{restricción presupuestaria blanda} (\autor{Kornai}, 1986) \vertema{3.A.13}; inflación (\autor{Barro}-\autor{Gordon}, 1983) \vertema{3.A.36}; \concepto{sesgo deficitario} \vertema{3.A.39} (\autor{Persson}-\autor{Svensson}, 1989; \autor{Alesina}-\autor{Tabellini}, 1990; fondo común, \autor{Weingast} et al., 1981). Salidas: reglas, delegación (AIReF \vertema{4.B.21}), reputación; coste: menos flexibilidad (cláusulas de escape).
+\end{itemize}
+
+\sub{III.2. Soluciones\label{rep:III.2}}
+\begin{itemize}
+\item \emph{Incentivos y control}: retribución por productividad (¿cómo medir a un juez?), supervisión (¿quién controla al controlador?), responsabilidades individuales, presupuesto base cero.
+\item \emph{Reglas e instituciones independientes}: separar diseño y ejecución (análisis coste-beneficio independiente \vertema{4.B.6}); reglas fiscales, constitución fiscal \vertema{4.B.2}; independencia.
+\item \emph{Competencia y mercado}: provisión pública con producción privada \vertema{4.B.15}; descentralización (\autor{Tiebout}) \vertema{4.B.14}.
+\item Ninguna elimina el fallo: ¿mejora la intervención el resultado? \concepto{Segundo óptimo} (\autor{Lipsey}-\autor{Lancaster}, 1956) \vertema{3.A.22}.
+\end{itemize}
+
+% ==========================================================================
+\bloque[1]{Conclusión}
+\begin{itemize}
+\item \textbf{Recapitulación}: EC eficiente si los precios lo recogen todo (1TFEB); externalidades: valoraciones privadas $\neq$ sociales, se internalizan (impuesto, estándar, derechos, mercados de derechos); bienes públicos: sumar valoraciones, pero polizón; financiación pública, \autor{Ostrom}, \autor{Clarke}-\autor{Groves}; el Estado también falla (información, incentivos, compromiso).
+\item \textbf{Relevancia}: precio del carbono, gasto en I+D o defensa, regular sin captura, credibilidad de reglas fiscales y monetarias.
+\item \textbf{Extensiones}: \emph{bienes públicos globales} \vertema{3.B.31}: polizón entre Estados (\autor{Kindleberger}, 1986); tecnología de agregación: suma, eslabón más débil, mejor intento (\autor{Hirshleifer}, 1983); clubes climáticos (\autor{Nordhaus}, 2015), MAFC \vertema{4.A.6}; \vertema{3.A.24}, \vertema{3.A.14}, \vertema{3.A.20}, \vertema{4.B.14}, \vertema{4.B.6}.
+\item \textbf{Opinión}: comparar un fallo con otro, no con un ideal («falacia del nirvana», \autor{Demsetz}, 1969); mezcla de regulación y competencia imperfectas (\autor{Kahn}); robustos los que menos información piden (precio del carbono, derechos, reglas creíbles); precios y cantidades conviven (RCDE con reserva).
+\item \textbf{Idea final}: «\emph{unos por otros, la casa sin barrer}»: poner precio a lo que ensucia, repartir la escoba con reglas que hagan que a cada uno le compense barrer y recordar que quien reparte las escobas también necesita reglas.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Autores y fechas}
+\hito{1776}{\autor{Smith}: mano invisible}
+\hito{1785}{\autor{Condorcet}: paradoja del voto}
+\hito{1890}{\autor{Marshall}: economías externas}
+\hito{1906}{\autor{Pareto}: óptimo}
+\hito{1919}{\autor{Lindahl}: precios personalizados (\autor{Wicksell}, 1896)}
+\hito{1920}{\autor{Pigou}: impuesto; \autor{Mises}: cálculo socialista}
+\hito{1931}{\autor{Viner}: tecnológicas y pecuniarias}
+\hito{1943}{\autor{Bowen}: suma vertical}
+\hito{1945}{\autor{Hayek}: el uso del conocimiento}
+\hito{1948}{\autor{Black}: votante mediano}
+\hito{1951}{\autor{Arrow}, \autor{Debreu}: teoremas; \autor{Arrow}: imposibilidad}
+\hito{1954}{\autor{Samuelson}: bienes públicos; \autor{Gordon}: pesquerías}
+\hito{1956}{\autor{Tiebout}; \autor{Lipsey}-\autor{Lancaster}: \emph{second best}}
+\hito{1957}{\autor{Downs}: ignorancia racional; \autor{Bator}: 2×2×2×2}
+\hito{1960}{\autor{Coase}: el problema del coste social}
+\hito{1962}{\autor{Buchanan}-\autor{Tullock}: elección pública}
+\hito{1965}{\autor{Buchanan}: clubes; \autor{Olson}: acción colectiva}
+\hito{1966}{\autor{Stigler} bautiza el teorema de \autor{Coase}}
+\hito{1968}{\autor{Dales}: derechos de emisión; \autor{Hardin}: comunes}
+\hito{1971}{\autor{Clarke}; \autor{Niskanen}; \autor{Stigler}: captura}
+\hito{1972}{\autor{Montgomery}: mínimo coste; \autor{Hurwicz}}
+\hito{1973}{\autor{Groves}: mecanismo}
+\hito{1974}{\autor{Weitzman}: precios frente a cantidades; \autor{Krueger}}
+\hito{1977}{\autor{Kydland}-\autor{Prescott}; \autor{Green}-\autor{Laffont}; \autor{Ostrom}: bienes}
+\hito{1979}{\autor{Wolf}: fallos del no mercado}
+\hito{1986}{\autor{Greenwald}-\autor{Stiglitz}: ineficiencia restringida}
+\hito{1990}{\autor{Ostrom}: gobierno de los comunes (Nobel 2009)}
+
+\bloque{Datos clave}
+\begin{itemize}
+\item Objetivo climático de la UE: \dato{$-90$\,\% de emisiones netas en 2040 frente a 1990; RCDE~2 retrasado a 2028}{UE, 2026}.
+\item Derecho de emisión: \dato{$\approx$6~€/t (2017) $\to$ $>$80~€/t (2023) $\to$ $\approx$85~€/t (oct. 2026)}{EEX, 2026}.
+\item RCDE: \dato{emisiones a la mitad desde 2005; $-1{,}3$\,\% en 2025; objetivo $-62$\,\% en 2030}{CE, 2026}; tope \dato{$-4{,}3$\,\%/año (2024-2027), $-4{,}4$\,\% desde 2028}{CE, 2025}.
+\item Reserva de estabilidad: \dato{$\approx$190 millones de derechos retirados (sept. 2026-ag. 2027)}{CE, 2026}.
+\item MAFC: \dato{certificado a 82,32~€/t (3.\textsuperscript{er} trim. 2026)}{CE, 2026}; desde el 1/1/2026: cemento, acero, aluminio, fertilizantes, electricidad, hidrógeno.
+\item Búsqueda de rentas: \dato{$\approx$7\,\% de la renta de la India (1964), 15\,\% del PNB de Turquía (1968)}{\autor{Krueger}, 1974}.
+\item Experimentos: \dato{40-60\,\% de la dotación al principio}{\autor{Ledyard}, 1995}.
+\end{itemize}
+
+% ==========================================================================
+\bloque{Preguntas del tribunal}
+\begin{enumerate}
+\item \textbf{¿Por qué con una externalidad el EC no es óptimo?} El mercado iguala $\mathrm{RMS}^A=\mathrm{RMS}^B$; el óptimo exige añadir a $\mathrm{RMS}^A$ el efecto sobre $B$, $\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}$.
+\item \textbf{¿Impuesto o estándar?} 1 empresa e información completa: mismo $q^*$ y bienestar $A+B$; el impuesto recauda $B+C$, el estándar deja la renta de escasez a la empresa; con costes distintos, el estándar uniforme es más caro.
+\item \textbf{¿Por qué en \autor{Coase} los derechos no afectan a la eficiencia?} Sin costes de transacción se agotan las ganancias de negociar; con cuasilineal la curva de contrato es vertical en $q^*$: los derechos solo cambian quién paga.
+\item \textbf{¿Mercado de derechos o impuesto?} Con incertidumbre sobre costes de reducir, cantidades si el daño marginal es más inclinado que el CMg de reducción (\autor{Weitzman}); además, mínimo coste sin conocer los costes de cada empresa.
+\item \textbf{¿Por qué suma vertical?} Todos consumen la misma $G$: para cada cantidad se suman las disposiciones a pagar.
+\item \textbf{¿Es \autor{Lindahl} óptimo? ¿Y \autor{Clarke}-\autor{Groves}?} \autor{Lindahl} sí, pero no resuelve la revelación. \autor{Clarke}-\autor{Groves}: decisión eficiente, pero el impuesto del pivotal se pierde (presupuesto no equilibrado).
+\item \textbf{¿Elige el votante mediano la $G$ eficiente?} Solo si su valoración coincide con la media; si pocos la valoran mucho, se provee de menos.
+\item \textbf{Inconsistencia temporal fuera de la política monetaria}: zonas inundables, impuesto sobre el capital, patentes, precio del carbono, rescates.
+\end{enumerate}
+
+\begin{trampa}
+\begin{itemize}
+\item $t^*=\mathrm{CMgE}(q^*)$: daño marginal \emph{en el óptimo}, no en $q^c$ ni el daño medio. Con poder de mercado, $t^*<$ daño marginal.
+\item Impuesto y estándar: misma eficiencia (1 empresa, información completa), distinto reparto.
+\item \autor{Coase}: derechos definidos + costes de transacción nulos; los derechos no afectan a la eficiencia (salvo efectos renta); el nombre es de \autor{Stigler} (1966). 
+\item \autor{Weitzman}: \emph{cantidad} si el daño marginal es más inclinado que el CMg de reducción.
+\item Bien público: suma \emph{vertical}; privado: horizontal. \autor{Samuelson}: $\sum\mathrm{RMS}=\mathrm{RMT}$, no $\mathrm{RMS}=\mathrm{RMT}$.
+\item Recursos comunes (rivales, no excluibles): sobreexplotación, no infraprovisión. Club: excluible, no rival.
+\item 1TFEB no necesita convexidad; el 2TFEB sí.
+\item Pecuniarias: no son fallo de mercado (salvo mercados incompletos o información asimétrica).
+\item \autor{Clarke}-\autor{Groves}: verdad \emph{débilmente} dominante; solo paga el pivotal; presupuesto no equilibrado (\autor{Green}-\autor{Laffont}, 1977).
+\item Fallos del no mercado: \autor{Wolf} (1979), 4. Votante mediano: preferencias \emph{unimodales} (\autor{Black}, 1948). Clasificación de bienes: V. y E. \autor{Ostrom} (1977); clubes: \autor{Buchanan} (1965).
+\end{itemize}
+\end{trampa}
+
+\end{columnas}
+\end{document}
