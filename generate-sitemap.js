@@ -20,6 +20,7 @@ const PAGE_CONFIG = {
     'oposicion/index.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/temario.html': { priority: '0.9', changefreq: 'monthly' },
     'oposicion/por-que-tcee.html': { priority: '0.9', changefreq: 'monthly' },
+    'oposicion/cifras.html': { priority: '0.8', changefreq: 'yearly' },
     'oposicion/organizacion.html': { priority: '0.8', changefreq: 'monthly' },
     'oposicion/enlaces.html': { priority: '0.8', changefreq: 'monthly' },
     'blog/index.html': { priority: '0.8', changefreq: 'weekly' },

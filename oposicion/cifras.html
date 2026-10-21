@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La oposición a TCEE en cifras: plazas, aprobados y notas de cada convocatoria</title>
+    <meta name="description" content="Estadísticas de la oposición a Técnico Comercial y Economista del Estado calculadas con los documentos oficiales: plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura, convocatoria a convocatoria.">
+
+    <!-- SEO: Canonical URL -->
+    <link rel="canonical" href="https://www.victorgutierrezmarcos.es/oposicion/cifras.html">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es">
+
+    <!-- SEO: Palabras clave adicionales -->
+    <meta name="keywords" content="oposición TCEE cifras, estadísticas oposición economista del estado, plazas TCEE por año, aprobados TCEE, nota de corte test TCEE, cuántos se presentan a TCEE, TECO estadísticas">
+    <meta name="author" content="Víctor Gutiérrez Marcos">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="La oposición a TCEE en cifras: plazas, aprobados y notas de cada convocatoria">
+    <meta property="og:description" content="Estadísticas de la oposición a Técnico Comercial y Economista del Estado calculadas con los documentos oficiales: plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura.">
+    <meta property="og:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+    <meta property="og:url" content="https://www.victorgutierrezmarcos.es/oposicion/cifras.html">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La oposición a TCEE en cifras">
+    <meta name="twitter:description" content="Plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura de la oposición a TCEE, convocatoria a convocatoria, con los documentos oficiales.">
+    <meta name="twitter:image" content="https://www.victorgutierrezmarcos.es/social-preview.png">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#5F2987">
+
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="alternate" type="application/rss+xml" title="Blog de Víctor Gutiérrez Marcos" href="https://www.victorgutierrezmarcos.es/blog/newsletter/rss.xml">
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../search-styles.css">
+    <link rel="stylesheet" href="../cookie-consent.css">
+
+    <style>
+        .content-text h2 { font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; color: var(--color-primary); margin: 2.5rem 0 1rem 0; }
+        .content-text .actualizado { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+        .guia-kicker { font-family: var(--font-ui); font-variant-caps: all-small-caps; letter-spacing: 0.08em; font-weight: 600; color: var(--color-primary); margin: 0 0 0.35rem 0; }
+        .guia-indice { font-family: var(--font-ui); font-size: 0.92rem; margin: 1.25rem 0 0.5rem; }
+        .guia-indice ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; }
+        .guia-indice a { color: var(--color-primary); }
+        .cifras-clave { list-style: none; margin: 1.25rem 0 0.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.9rem; font-family: var(--font-ui); }
+        .cifras-clave li { border-top: 2px solid var(--color-accent-gold); padding-top: 0.5rem; }
+        .cifras-clave .n { display: block; font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--color-primary); line-height: 1.1; }
+        .cifras-clave .t { font-size: 0.85rem; color: var(--color-text-muted); }
+        .figura-cifras { margin: 1.25rem 0 2rem; }
+        .figura-cifras .grafico { width: 100%; height: auto; display: block; }
+        .figura-cifras figcaption { font-family: var(--font-ui); font-size: 0.88rem; color: var(--color-text-muted); margin-top: 0.4rem; }
+        .datos-figura { font-family: var(--font-ui); font-size: 0.9rem; margin-top: 0.5rem; }
+        .datos-figura summary { cursor: pointer; color: var(--color-primary); }
+        .tabla-scroll { overflow-x: auto; margin: 0.75rem 0 1rem; }
+        .tabla-guia { width: 100%; border-collapse: collapse; font-family: var(--font-ui); font-size: 0.9rem; line-height: 1.4; font-variant-numeric: tabular-nums; }
+        .tabla-guia th, .tabla-guia td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--color-border-light); text-align: left; vertical-align: top; }
+        .tabla-guia thead th { font-variant-caps: all-small-caps; letter-spacing: 0.05em; color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+        .tabla-guia tbody th { font-weight: 600; white-space: nowrap; }
+        .tabla-guia tfoot td, .tabla-guia tfoot th { font-weight: 600; border-bottom: none; }
+        .nota-metodo { font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-text-muted); }
+        @media (max-width: 480px) { .content-text h2 { font-size: 1.2rem; } .tabla-guia { font-size: 0.82rem; } .cifras-clave .n { font-size: 1.5rem; } }
+    </style>
+
+    <!-- SEO: Datos estructurados Schema.org -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "La oposición a Técnico Comercial y Economista del Estado (TCEE) en cifras",
+    "description": "Plazas, admitidos, aprobados por ejercicio, notas de corte, idiomas y cobertura de cada convocatoria de la oposición a TCEE, calculados a partir de los documentos oficiales del Ministerio de Economía, Comercio y Empresa y del BOE.",
+    "url": "https://www.victorgutierrezmarcos.es/oposicion/cifras.html",
+    "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "creator": {"@type": "Person", "@id": "https://www.victorgutierrezmarcos.es/#victor", "name": "Víctor Gutiérrez Marcos", "jobTitle": "Técnico Comercial y Economista del Estado", "url": "https://www.victorgutierrezmarcos.es/sobre-mi.html"},
+    "isBasedOn": ["https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx", "https://www.boe.es/"],
+    "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://www.victorgutierrezmarcos.es/oposicion/cifras.json"},
+    "temporalCoverage": "1985/2026",
+    "dateModified": "2026-10-22",
+    "inLanguage": "es"
+}
+    </script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.victorgutierrezmarcos.es/"},
+        {"@type": "ListItem", "position": 2, "name": "Oposición", "item": "https://www.victorgutierrezmarcos.es/oposicion/"},
+        {"@type": "ListItem", "position": 3, "name": "La oposición en cifras", "item": "https://www.victorgutierrezmarcos.es/oposicion/cifras.html"}
+    ]
+}
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <p class="site-title"><a href="../index.html">Víctor Gutiérrez Marcos</a></p>
+            <p class="site-description">Materiales para la preparación a la Oposición a Técnico Comercial y Economista del Estado</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="nav-app"><a href="../app/abrir/" title="Abrir la app" aria-label="Abrir la app Oposición TCEE y DCE"><img src="../app/assets/icon/icon.svg" alt="" width="30" height="30"></a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="index.html" class="active">Oposición</a></li>
+                <li><a href="../blog/index.html">Blog</a></li>
+                <li><a href="../sobre-mi.html">Sobre mí</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-nav">
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li><a href="index.html">Introducción</a></li>
+                <li><a href="temario.html">Temario</a></li>
+                <li><a href="organizacion.html">Organización</a></li>
+                <li><a href="enlaces.html">Enlaces</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-container">
+            <article class="page-content">
+                <nav class="breadcrumb">
+                    <a href="index.html">Oposición</a><span>›</span><a href="por-que-tcee.html">La oposición a TCEE</a><span>›</span>En cifras
+                </nav>
+
+                <p class="guia-kicker">Guía de la oposición · Estadísticas</p>
+                <h1 class="section-title">La oposición a Técnico Comercial y Economista del Estado en cifras</h1>
+
+                <div class="content-text">
+                    <!-- Todo lo que sigue hasta el cierre lo escribe scripts/cifras-oposicion.py: no editar a mano -->
+                    <!-- cifras:inicio -->
+<p class="actualizado">Por <a href="../sobre-mi.html">Víctor Gutiérrez Marcos</a>, Técnico Comercial y Economista del Estado · Actualizado el 22 de octubre de 2026</p>
+<p>Todo lo que hay en esta página sale de los documentos oficiales: las convocatorias y las relaciones de aprobados publicadas en el BOE y, desde la oferta de empleo público de 2018, las listas de admitidos y de aprobados de cada ejercicio que publica el Ministerio de Economía, Comercio y Empresa. Los cálculos los hace un programa que lee esos documentos (muchos son imágenes escaneadas, así que puede haber algún error de lectura de una o dos unidades); solo se publican recuentos, medias y porcentajes, nunca datos de personas. Las series llegan hasta donde llegan los documentos: cada gráfico indica desde qué año hay datos.</p>
+<ul class="cifras-clave"><li><span class="n">22</span><span class="t">plazas de turno libre en la última convocatoria (2025)</span></li><li><span class="n">24,7</span><span class="t">plazas de turno libre al año de media en las últimas 10 convocatorias</span></li><li><span class="n">9,0</span><span class="t">admitidos por cada plaza de turno libre (2019-2026)</span></li><li><span class="n">89 %</span><span class="t">de las plazas de turno libre se cubren de media (1996-2025)</span></li></ul>
+<nav class="guia-indice" aria-label="Contenido"><ul><li><a href="#plazas">Plazas y aprobados</a></li><li><a href="#admitidos">Admitidos por plaza</a></li><li><a href="#embudo">Qué ejercicio elimina más</a></li><li><a href="#idiomas">Idiomas</a></li><li><a href="#repetidores">Cuántos repiten</a></li><li><a href="#tabla">Tabla completa</a></li><li><a href="#metodo">Método y fuentes</a></li></ul></nav>
+<h2 id="plazas">Plazas convocadas y aprobados, 1985-2026</h2>
+<p>Plazas de turno libre de cada convocatoria (por el año en que se celebran los exámenes) y cuántas se cubrieron: los aprobados de la fase de oposición que publica el BOE. La promoción interna, reservada a funcionarios A2, va aparte.</p>
+<figure class="figura-cifras" id="g-plazas">
+<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-plazas-t g-plazas-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-plazas-t">Plazas convocadas y aprobados de turno libre por convocatoria</title><desc id="g-plazas-d">Barras con las plazas de turno libre y los aprobados de cada convocatoria entre 1985 y 2026.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<line x1="48" y1="216.0" x2="712" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">10</text>
+<line x1="48" y1="150.0" x2="712" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">20</text>
+<line x1="48" y1="84.0" x2="712" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">30</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">40</text>
+<text x="57.2" y="298" text-anchor="middle">1985</text>
+<text x="94.1" y="298" text-anchor="middle">1987</text>
+<text x="131.0" y="298" text-anchor="middle">1991</text>
+<text x="167.9" y="298" text-anchor="middle">1994</text>
+<text x="204.8" y="298" text-anchor="middle">1997</text>
+<text x="241.7" y="298" text-anchor="middle">1999</text>
+<text x="278.6" y="298" text-anchor="middle">2001</text>
+<text x="315.4" y="298" text-anchor="middle">2003</text>
+<text x="352.3" y="298" text-anchor="middle">2005</text>
+<text x="389.2" y="298" text-anchor="middle">2007</text>
+<text x="426.1" y="298" text-anchor="middle">2009</text>
+<text x="463.0" y="298" text-anchor="middle">2011</text>
+<text x="499.9" y="298" text-anchor="middle">2015</text>
+<text x="536.8" y="298" text-anchor="middle">2017</text>
+<text x="573.7" y="298" text-anchor="middle">2019</text>
+<text x="610.6" y="298" text-anchor="middle">2021</text>
+<text x="647.4" y="298" text-anchor="middle">2023</text>
+<text x="684.3" y="298" text-anchor="middle">2025</text>
+<rect x="50.6" y="84.0" width="4.6" height="198.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1985: 30</title></rect>
+<rect x="69.0" y="77.4" width="4.6" height="204.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1986: 31</title></rect>
+<rect x="87.5" y="156.6" width="4.6" height="125.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1987: 19</title></rect>
+<rect x="105.9" y="117.0" width="4.6" height="165.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1988: 25</title></rect>
+<rect x="124.4" y="150.0" width="4.6" height="132.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1991: 20</title></rect>
+<rect x="142.8" y="222.6" width="4.6" height="59.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1993: 9</title></rect>
+<rect x="161.2" y="216.0" width="4.6" height="66.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1994: 10</title></rect>
+<rect x="179.7" y="216.0" width="4.6" height="66.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1996: 10</title></rect>
+<rect x="198.1" y="229.2" width="4.6" height="52.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1997: 8</title></rect>
+<rect x="216.6" y="222.6" width="4.6" height="59.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1998: 9</title></rect>
+<rect x="235.0" y="222.6" width="4.6" height="59.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 1999: 9</title></rect>
+<rect x="253.5" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2000: 12</title></rect>
+<rect x="271.9" y="216.0" width="4.6" height="66.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2001: 10</title></rect>
+<rect x="290.4" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2002: 12</title></rect>
+<rect x="308.8" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2003: 12</title></rect>
+<rect x="327.2" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2004: 12</title></rect>
+<rect x="345.7" y="216.0" width="4.6" height="66.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2005: 10</title></rect>
+<rect x="364.1" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2006: 12</title></rect>
+<rect x="382.6" y="189.6" width="4.6" height="92.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2007: 14</title></rect>
+<rect x="401.0" y="117.0" width="4.6" height="165.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2008: 25</title></rect>
+<rect x="419.5" y="117.0" width="4.6" height="165.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2009: 25</title></rect>
+<rect x="437.9" y="189.6" width="4.6" height="92.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2010: 14</title></rect>
+<rect x="456.4" y="196.2" width="4.6" height="85.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2011: 13</title></rect>
+<rect x="474.8" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2014: 12</title></rect>
+<rect x="493.2" y="202.8" width="4.6" height="79.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2015: 12</title></rect>
+<rect x="511.7" y="143.4" width="4.6" height="138.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2016: 21</title></rect>
+<rect x="530.1" y="77.4" width="4.6" height="204.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2017: 31</title></rect>
+<rect x="548.6" y="150.0" width="4.6" height="132.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2018: 20</title></rect>
+<rect x="567.0" y="150.0" width="4.6" height="132.0" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2019: 20</title></rect>
+<rect x="585.5" y="143.4" width="4.6" height="138.6" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2020: 21</title></rect>
+<rect x="603.9" y="163.2" width="4.6" height="118.8" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2021: 18</title></rect>
+<rect x="622.4" y="70.8" width="4.6" height="211.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2022: 32</title></rect>
+<rect x="640.8" y="103.8" width="4.6" height="178.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2023: 27</title></rect>
+<rect x="659.2" y="90.6" width="4.6" height="191.4" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2024: 29</title></rect>
+<rect x="677.7" y="136.8" width="4.6" height="145.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2025: 22</title></rect>
+<rect x="696.1" y="103.8" width="4.6" height="178.2" fill="var(--color-primary)" rx="1.5"><title>Plazas de turno libre 2026: 27</title></rect>
+<rect x="57.2" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1985: 12</title></rect>
+<rect x="75.7" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1986: 12</title></rect>
+<rect x="94.1" y="216.0" width="4.6" height="66.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1987: 10</title></rect>
+<rect x="112.6" y="150.0" width="4.6" height="132.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1988: 20</title></rect>
+<rect x="131.0" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1991: 12</title></rect>
+<rect x="186.3" y="235.8" width="4.6" height="46.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1996: 7</title></rect>
+<rect x="204.8" y="229.2" width="4.6" height="52.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1997: 8</title></rect>
+<rect x="223.2" y="222.6" width="4.6" height="59.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1998: 9</title></rect>
+<rect x="241.7" y="229.2" width="4.6" height="52.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 1999: 8</title></rect>
+<rect x="260.1" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2000: 12</title></rect>
+<rect x="278.6" y="216.0" width="4.6" height="66.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2001: 10</title></rect>
+<rect x="297.0" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2002: 12</title></rect>
+<rect x="315.4" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2003: 12</title></rect>
+<rect x="333.9" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2004: 12</title></rect>
+<rect x="352.3" y="222.6" width="4.6" height="59.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2005: 9</title></rect>
+<rect x="370.8" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2006: 12</title></rect>
+<rect x="389.2" y="196.2" width="4.6" height="85.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2007: 13</title></rect>
+<rect x="407.7" y="150.0" width="4.6" height="132.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2008: 20</title></rect>
+<rect x="426.1" y="136.8" width="4.6" height="145.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2009: 22</title></rect>
+<rect x="444.6" y="196.2" width="4.6" height="85.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2010: 13</title></rect>
+<rect x="463.0" y="202.8" width="4.6" height="79.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2011: 12</title></rect>
+<rect x="481.4" y="216.0" width="4.6" height="66.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2014: 10</title></rect>
+<rect x="499.9" y="216.0" width="4.6" height="66.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2015: 10</title></rect>
+<rect x="518.3" y="183.0" width="4.6" height="99.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2016: 15</title></rect>
+<rect x="536.8" y="136.8" width="4.6" height="145.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2017: 22</title></rect>
+<rect x="555.2" y="196.2" width="4.6" height="85.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2018: 13</title></rect>
+<rect x="573.7" y="156.6" width="4.6" height="125.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2019: 19</title></rect>
+<rect x="592.1" y="156.6" width="4.6" height="125.4" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2020: 19</title></rect>
+<rect x="610.6" y="169.8" width="4.6" height="112.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2021: 17</title></rect>
+<rect x="629.0" y="97.2" width="4.6" height="184.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2022: 28</title></rect>
+<rect x="647.4" y="130.2" width="4.6" height="151.8" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2023: 23</title></rect>
+<rect x="665.9" y="117.0" width="4.6" height="165.0" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2024: 25</title></rect>
+<rect x="684.3" y="169.8" width="4.6" height="112.2" fill="var(--color-accent-gold)" rx="1.5"><title>Aprobados de turno libre 2025: 17</title></rect>
+<rect x="48" y="322" width="18" height="11" fill="var(--color-primary)" rx="1.5"/>
+<text x="72" y="332">Plazas de turno libre</text>
+<rect x="237" y="322" width="18" height="11" fill="var(--color-accent-gold)" rx="1.5"/>
+<text x="261" y="332">Aprobados de turno libre</text>
+</g></svg>
+<figcaption>Fuente: convocatorias y relaciones de aprobados en la fase de oposición publicadas en el BOE. Las convocatorias en curso aún no tienen aprobados.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Convocatoria (BOE)</th><th scope="col">Plazas libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Plazas interna</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados interna</th><th scope="col">Cobertura libre</th></tr></thead>
+<tbody>
+<tr><th scope="row">1985</th><td>1985-03-25</td><td>30</td><td>—</td><td>5</td><td>12</td><td>0</td><td>40 %</td></tr>
+<tr><th scope="row">1986</th><td>1986-03-24</td><td>31</td><td>—</td><td>—</td><td>12</td><td>0</td><td>39 %</td></tr>
+<tr><th scope="row">1987</th><td>1987-03-18</td><td>19</td><td>—</td><td>4</td><td>10</td><td>0</td><td>53 %</td></tr>
+<tr><th scope="row">1988</th><td>1988-03-28</td><td>25</td><td>—</td><td>—</td><td>20</td><td>0</td><td>80 %</td></tr>
+<tr><th scope="row">1991</th><td>1991-04-30</td><td>20</td><td>—</td><td>—</td><td>12</td><td>0</td><td>60 %</td></tr>
+<tr><th scope="row">1993</th><td>1993-03-02</td><td>9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">1994</th><td>1994-06-23</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">1996</th><td>1995-11-24</td><td>10</td><td>—</td><td>2</td><td>7</td><td>0</td><td>70 %</td></tr>
+<tr><th scope="row">1997</th><td>1996-12-13</td><td>8</td><td>—</td><td>2</td><td>8</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1998</th><td>1997-12-03</td><td>9</td><td>—</td><td>3</td><td>9</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">1999</th><td>1998-12-01</td><td>9</td><td>—</td><td>—</td><td>8</td><td>0</td><td>89 %</td></tr>
+<tr><th scope="row">2000</th><td>1999-11-08</td><td>12</td><td>—</td><td>—</td><td>12</td><td>3</td><td>100 %</td></tr>
+<tr><th scope="row">2001</th><td>2000-09-27</td><td>10</td><td>—</td><td>—</td><td>10</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2002</th><td>2001-09-24</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2003</th><td>2002-06-13</td><td>12</td><td>—</td><td>—</td><td>12</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2004</th><td>2003-05-14</td><td>12</td><td>—</td><td>—</td><td>12</td><td>2</td><td>100 %</td></tr>
+<tr><th scope="row">2005</th><td>2004-05-05</td><td>10</td><td>—</td><td>4</td><td>9</td><td>0</td><td>90 %</td></tr>
+<tr><th scope="row">2006</th><td>2005-05-20</td><td>12</td><td>—</td><td>3</td><td>12</td><td>0</td><td>100 %</td></tr>
+<tr><th scope="row">2007</th><td>2006-06-05</td><td>14</td><td>—</td><td>2</td><td>13</td><td>0</td><td>93 %</td></tr>
+<tr><th scope="row">2008</th><td>2007-04-19</td><td>25</td><td>—</td><td>4</td><td>20</td><td>0</td><td>80 %</td></tr>
+<tr><th scope="row">2009</th><td>2008-04-16</td><td>25</td><td>—</td><td>6</td><td>22</td><td>1</td><td>88 %</td></tr>
+<tr><th scope="row">2010</th><td>2009-06-05</td><td>14</td><td>—</td><td>5</td><td>13</td><td>0</td><td>93 %</td></tr>
+<tr><th scope="row">2011</th><td>2011-06-14</td><td>13</td><td>—</td><td>—</td><td>12</td><td>0</td><td>92 %</td></tr>
+<tr><th scope="row">2014</th><td>2013-09-25</td><td>12</td><td>—</td><td>2</td><td>10</td><td>1</td><td>83 %</td></tr>
+<tr><th scope="row">2015</th><td>2014-07-10</td><td>12</td><td>—</td><td>2</td><td>10</td><td>0</td><td>83 %</td></tr>
+<tr><th scope="row">2016</th><td>2015-10-30</td><td>21</td><td>—</td><td>6</td><td>15</td><td>0</td><td>71 %</td></tr>
+<tr><th scope="row">2017</th><td>2016-09-22</td><td>31</td><td>2</td><td>11</td><td>22</td><td>2</td><td>71 %</td></tr>
+<tr><th scope="row">2018</th><td>2017-11-07</td><td>20</td><td>1</td><td>4</td><td>13</td><td>0</td><td>65 %</td></tr>
+<tr><th scope="row">2019</th><td>2018-11-20</td><td>20</td><td>1</td><td>5</td><td>19</td><td>0</td><td>95 %</td></tr>
+<tr><th scope="row">2020</th><td>2019-10-30</td><td>21</td><td>1</td><td>3</td><td>19</td><td>0</td><td>90 %</td></tr>
+<tr><th scope="row">2021</th><td>2021-05-19</td><td>18</td><td>1</td><td>5</td><td>17</td><td>0</td><td>94 %</td></tr>
+<tr><th scope="row">2022</th><td>2022-05-13</td><td>32</td><td>2</td><td>2</td><td>28</td><td>2</td><td>88 %</td></tr>
+<tr><th scope="row">2023</th><td>2023-04-11</td><td>27</td><td>1</td><td>4</td><td>23</td><td>2</td><td>85 %</td></tr>
+<tr><th scope="row">2024</th><td>2024-04-05</td><td>29</td><td>1</td><td>15</td><td>25</td><td>2</td><td>86 %</td></tr>
+<tr><th scope="row">2025</th><td>2024-12-22</td><td>22</td><td>2</td><td>15</td><td>17</td><td>2</td><td>77 %</td></tr>
+<tr><th scope="row">2026</th><td>2025-12-22</td><td>27</td><td>2</td><td>10</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>En las 28 convocatorias con relación de aprobados en el BOE (1996-2025), las plazas de turno libre se cubrieron de media al 89 %; en 8 se cubrieron todas y en 20 quedaron plazas desiertas (1996: 3, 1999: 1, 2005: 1, 2007: 1, 2008: 5, 2009: 3, 2010: 1, 2011: 1, 2014: 2, 2015: 2, 2016: 6, 2017: 9, 2018: 7, 2019: 1, 2020: 2, 2021: 1, 2022: 4, 2023: 4, 2024: 4, 2025: 5). Los aprobados de las convocatorias anteriores a 1996 salen de los nombramientos de funcionarios en prácticas leídos por OCR y son aproximados.</p>
+<h2 id="admitidos">Cuántos se presentan: admitidos por plaza, 2019-2026</h2>
+<p>Las listas definitivas de admitidos del Ministerio existen desde la oferta de empleo público de 2018. No todos los admitidos llegan a examinarse, pero es la mejor medida de cuánta gente opta a cada plaza.</p>
+<figure class="figura-cifras" id="g-admitidos">
+<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-admitidos-t g-admitidos-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-admitidos-t">Admitidos de turno libre y admitidos por plaza</title><desc id="g-admitidos-d">Barras con los admitidos de turno libre de cada convocatoria y línea con el cociente entre admitidos y plazas.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="696" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<text x="702" y="286.0" text-anchor="start" fill="var(--color-accent-gold)">0</text>
+<line x1="48" y1="216.0" x2="696" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">75</text>
+<text x="702" y="220.0" text-anchor="start" fill="var(--color-accent-gold)">5</text>
+<line x1="48" y1="150.0" x2="696" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">150</text>
+<text x="702" y="154.0" text-anchor="start" fill="var(--color-accent-gold)">10</text>
+<line x1="48" y1="84.0" x2="696" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">225</text>
+<text x="702" y="88.0" text-anchor="start" fill="var(--color-accent-gold)">15</text>
+<line x1="48" y1="18.0" x2="696" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">300</text>
+<text x="702" y="22.0" text-anchor="start" fill="var(--color-accent-gold)">20/plaza</text>
+<text x="88.5" y="298" text-anchor="middle">2019</text>
+<text x="169.5" y="298" text-anchor="middle">2020</text>
+<text x="250.5" y="298" text-anchor="middle">2021</text>
+<text x="331.5" y="298" text-anchor="middle">2022</text>
+<text x="412.5" y="298" text-anchor="middle">2023</text>
+<text x="493.5" y="298" text-anchor="middle">2024</text>
+<text x="574.5" y="298" text-anchor="middle">2025</text>
+<text x="655.5" y="298" text-anchor="middle">2026</text>
+<rect x="59.3" y="115.7" width="56.3" height="166.3" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2019: 189</title></rect>
+<text x="87.5" y="111.7" text-anchor="middle" font-size="10.5">189</text>
+<rect x="140.3" y="90.2" width="56.3" height="191.8" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2020: 218</title></rect>
+<text x="168.5" y="86.2" text-anchor="middle" font-size="10.5">218</text>
+<rect x="221.3" y="43.5" width="56.3" height="238.5" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2021: 271</title></rect>
+<text x="249.5" y="39.5" text-anchor="middle" font-size="10.5">271</text>
+<rect x="302.3" y="53.2" width="56.3" height="228.8" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2022: 260</title></rect>
+<text x="330.5" y="49.2" text-anchor="middle" font-size="10.5">260</text>
+<rect x="383.3" y="87.5" width="56.3" height="194.5" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2023: 221</title></rect>
+<text x="411.5" y="83.5" text-anchor="middle" font-size="10.5">221</text>
+<rect x="464.3" y="118.3" width="56.3" height="163.7" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2024: 186</title></rect>
+<text x="492.5" y="114.3" text-anchor="middle" font-size="10.5">186</text>
+<rect x="545.3" y="130.6" width="56.3" height="151.4" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2025: 172</title></rect>
+<text x="573.5" y="126.6" text-anchor="middle" font-size="10.5">172</text>
+<rect x="626.3" y="118.3" width="56.3" height="163.7" fill="var(--color-primary)" rx="1.5"><title>Admitidos de turno libre 2026: 186</title></rect>
+<text x="654.5" y="114.3" text-anchor="middle" font-size="10.5">186</text>
+<path d="M 88.5 157.9 L 169.5 144.7 L 250.5 82.7 L 331.5 175.1 L 412.5 173.8 L 493.5 197.5 L 574.5 179.0 L 655.5 190.9" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="88.5" cy="157.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2019: 9,4/plaza</title></circle>
+<circle cx="169.5" cy="144.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2020: 10,4/plaza</title></circle>
+<circle cx="250.5" cy="82.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2021: 15,1/plaza</title></circle>
+<circle cx="331.5" cy="175.1" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2022: 8,1/plaza</title></circle>
+<circle cx="412.5" cy="173.8" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2023: 8,2/plaza</title></circle>
+<circle cx="493.5" cy="197.5" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2024: 6,4/plaza</title></circle>
+<circle cx="574.5" cy="179.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2025: 7,8/plaza</title></circle>
+<circle cx="655.5" cy="190.9" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>Admitidos por plaza 2026: 6,9/plaza</title></circle>
+<rect x="48" y="322" width="18" height="11" fill="var(--color-primary)" rx="1.5"/>
+<text x="72" y="332">Admitidos de turno libre</text>
+<line x1="258" y1="328" x2="276" y2="328" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="267" cy="328" r="3" fill="var(--color-accent-gold)"/>
+<text x="282" y="332">Admitidos por plaza</text>
+</g></svg>
+<figcaption>Fuente: listas definitivas de admitidos (turno libre) del Ministerio de Economía, Comercio y Empresa.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Admitidos libre</th><th scope="col">Reserva discapacidad</th><th scope="col">Admitidos interna</th><th scope="col">Plazas libre</th><th scope="col">Admitidos por plaza</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados por cada 100 admitidos</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>189</td><td>1</td><td>3</td><td>20</td><td>9,4</td><td>19</td><td>10,1</td></tr>
+<tr><th scope="row">2020</th><td>218</td><td>2</td><td>12</td><td>21</td><td>10,4</td><td>19</td><td>8,7</td></tr>
+<tr><th scope="row">2021</th><td>271</td><td>6</td><td>8</td><td>18</td><td>15,1</td><td>17</td><td>6,3</td></tr>
+<tr><th scope="row">2022</th><td>260</td><td>5</td><td>13</td><td>32</td><td>8,1</td><td>28</td><td>10,8</td></tr>
+<tr><th scope="row">2023</th><td>221</td><td>4</td><td>12</td><td>27</td><td>8,2</td><td>23</td><td>10,4</td></tr>
+<tr><th scope="row">2024</th><td>186</td><td>3</td><td>9</td><td>29</td><td>6,4</td><td>25</td><td>13,4</td></tr>
+<tr><th scope="row">2025</th><td>172</td><td>6</td><td>18</td><td>22</td><td>7,8</td><td>17</td><td>9,9</td></tr>
+<tr><th scope="row">2026</th><td>186</td><td>6</td><td>15</td><td>27</td><td>6,9</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<h2 id="embudo">Qué ejercicio elimina a más gente, 2019-2026</h2>
+<p>Aprobados de cada ejercicio (turno libre y promoción interna juntos) según las listas del tribunal. La bajada de un ejercicio al siguiente mezcla a quienes suspenden y a quienes no se presentan; el primer ejercicio se compara con los admitidos.</p>
+<figure class="figura-cifras" id="g-embudo">
+<svg class="grafico" viewBox="0 0 760 340" role="img" aria-labelledby="g-embudo-t g-embudo-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-embudo-t">Aprobados de cada ejercicio por convocatoria</title><desc id="g-embudo-d">Líneas con el número de aprobados del primer, segundo, tercer, cuarto y quinto ejercicio en cada convocatoria.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<line x1="48" y1="282.0" x2="712" y2="282.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="286.0" text-anchor="end">0</text>
+<text x="718" y="286.0" text-anchor="start" fill="var(--color-accent-gold)">0</text>
+<line x1="48" y1="216.0" x2="712" y2="216.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="220.0" text-anchor="end">31</text>
+<text x="718" y="220.0" text-anchor="start" fill="var(--color-accent-gold)">31</text>
+<line x1="48" y1="150.0" x2="712" y2="150.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="154.0" text-anchor="end">62</text>
+<text x="718" y="154.0" text-anchor="start" fill="var(--color-accent-gold)">62</text>
+<line x1="48" y1="84.0" x2="712" y2="84.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="88.0" text-anchor="end">94</text>
+<text x="718" y="88.0" text-anchor="start" fill="var(--color-accent-gold)">94</text>
+<line x1="48" y1="18.0" x2="712" y2="18.0" stroke="var(--color-border-light)" stroke-width="1"/>
+<text x="42" y="22.0" text-anchor="end">125</text>
+<text x="718" y="22.0" text-anchor="start" fill="var(--color-accent-gold)">125</text>
+<text x="89.5" y="298" text-anchor="middle">2019</text>
+<text x="172.5" y="298" text-anchor="middle">2020</text>
+<text x="255.5" y="298" text-anchor="middle">2021</text>
+<text x="338.5" y="298" text-anchor="middle">2022</text>
+<text x="421.5" y="298" text-anchor="middle">2023</text>
+<text x="504.5" y="298" text-anchor="middle">2024</text>
+<text x="587.5" y="298" text-anchor="middle">2025</text>
+<text x="670.5" y="298" text-anchor="middle">2026</text>
+<path d="M 89.5 83.5 L 172.5 102.5 L 255.5 119.4 L 338.5 66.6 L 421.5 123.6 L 504.5 129.9 L 587.5 170.1 L 670.5 123.6" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="83.5" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2019: 94</title></circle>
+<circle cx="172.5" cy="102.5" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2020: 85</title></circle>
+<circle cx="255.5" cy="119.4" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2021: 77</title></circle>
+<circle cx="338.5" cy="66.6" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2022: 102</title></circle>
+<circle cx="421.5" cy="123.6" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2023: 75</title></circle>
+<circle cx="504.5" cy="129.9" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2024: 72</title></circle>
+<circle cx="587.5" cy="170.1" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2025: 53</title></circle>
+<circle cx="670.5" cy="123.6" r="3.5" fill="var(--color-primary)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>1.º (test y dictamen) 2026: 75</title></circle>
+<path d="M 89.5 138.4 L 172.5 155.3 L 255.5 182.7 L 338.5 132.0 L 421.5 168.0 L 504.5 155.3 L 587.5 212.3 L 670.5 199.6" fill="none" stroke="var(--color-accent-gold)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="138.4" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2019: 68</title></circle>
+<circle cx="172.5" cy="155.3" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2020: 60</title></circle>
+<circle cx="255.5" cy="182.7" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2021: 47</title></circle>
+<circle cx="338.5" cy="132.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2022: 71</title></circle>
+<circle cx="421.5" cy="168.0" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2023: 54</title></circle>
+<circle cx="504.5" cy="155.3" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2024: 60</title></circle>
+<circle cx="587.5" cy="212.3" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2025: 33</title></circle>
+<circle cx="670.5" cy="199.6" r="3.5" fill="var(--color-accent-gold)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>2.º (idiomas) 2026: 39</title></circle>
+<path d="M 89.5 199.6 L 172.5 210.2 L 255.5 229.2 L 338.5 201.7 L 421.5 216.5 L 504.5 195.4 L 587.5 218.6 L 670.5 231.3" fill="none" stroke="var(--color-primary-light)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="199.6" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2019: 39</title></circle>
+<circle cx="172.5" cy="210.2" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2020: 34</title></circle>
+<circle cx="255.5" cy="229.2" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2021: 25</title></circle>
+<circle cx="338.5" cy="201.7" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2022: 38</title></circle>
+<circle cx="421.5" cy="216.5" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2023: 31</title></circle>
+<circle cx="504.5" cy="195.4" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2024: 41</title></circle>
+<circle cx="587.5" cy="218.6" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2025: 30</title></circle>
+<circle cx="670.5" cy="231.3" r="3.5" fill="var(--color-primary-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>3.º 2026: 24</title></circle>
+<path d="M 89.5 252.4 L 172.5 239.8 L 255.5 246.1 L 338.5 218.6 L 421.5 229.2 L 504.5 225.0 L 587.5 241.9 L 670.5 252.4" fill="none" stroke="var(--color-text-light)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="252.4" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2019: 14</title></circle>
+<circle cx="172.5" cy="239.8" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2020: 20</title></circle>
+<circle cx="255.5" cy="246.1" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2021: 17</title></circle>
+<circle cx="338.5" cy="218.6" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2022: 30</title></circle>
+<circle cx="421.5" cy="229.2" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2023: 25</title></circle>
+<circle cx="504.5" cy="225.0" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2024: 27</title></circle>
+<circle cx="587.5" cy="241.9" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2025: 19</title></circle>
+<circle cx="670.5" cy="252.4" r="3.5" fill="var(--color-text-light)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>4.º 2026: 14</title></circle>
+<path d="M 89.5 246.1 L 172.5 241.9 L 255.5 246.1 L 338.5 222.9 L 421.5 241.9 L 504.5 227.1 L 587.5 246.1" fill="none" stroke="var(--color-border-strong)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="89.5" cy="246.1" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2019: 17</title></circle>
+<circle cx="172.5" cy="241.9" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2020: 19</title></circle>
+<circle cx="255.5" cy="246.1" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2021: 17</title></circle>
+<circle cx="338.5" cy="222.9" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2022: 28</title></circle>
+<circle cx="421.5" cy="241.9" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2023: 19</title></circle>
+<circle cx="504.5" cy="227.1" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2024: 26</title></circle>
+<circle cx="587.5" cy="246.1" r="3.5" fill="var(--color-border-strong)" stroke="var(--color-bg-cream)" stroke-width="1.5"><title>5.º 2025: 17</title></circle>
+<line x1="48" y1="328" x2="66" y2="328" stroke="var(--color-primary)" stroke-width="2.5"/><circle cx="57" cy="328" r="3" fill="var(--color-primary)"/>
+<text x="72" y="332">1.º (test y dictamen)</text>
+<line x1="237" y1="328" x2="255" y2="328" stroke="var(--color-accent-gold)" stroke-width="2.5"/><circle cx="246" cy="328" r="3" fill="var(--color-accent-gold)"/>
+<text x="261" y="332">2.º (idiomas)</text>
+<line x1="370" y1="328" x2="388" y2="328" stroke="var(--color-primary-light)" stroke-width="2.5"/><circle cx="379" cy="328" r="3" fill="var(--color-primary-light)"/>
+<text x="394" y="332">3.º</text>
+<line x1="433" y1="328" x2="451" y2="328" stroke="var(--color-text-light)" stroke-width="2.5"/><circle cx="442" cy="328" r="3" fill="var(--color-text-light)"/>
+<text x="457" y="332">4.º</text>
+<line x1="496" y1="328" x2="514" y2="328" stroke="var(--color-border-strong)" stroke-width="2.5"/><circle cx="505" cy="328" r="3" fill="var(--color-border-strong)"/>
+<text x="520" y="332">5.º</text>
+</g></svg>
+<figcaption>Fuente: listas de aprobados de cada ejercicio publicadas por el tribunal en la página del Ministerio. En la convocatoria en curso faltan los ejercicios no celebrados.</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Admitidos</th><th scope="col">Aprueban 1.º (% de admitidos)</th><th scope="col">Aprueban 2.º (% del 1.º)</th><th scope="col">Aprueban 3.º (% del 2.º)</th><th scope="col">Aprueban 4.º (% del 3.º)</th><th scope="col">Aprueban 5.º (% del 4.º)</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>193</td><td>94 (49 %)</td><td>68 (72 %)</td><td>39 (57 %)</td><td>14 (36 %)</td><td>17 (121 %)</td></tr>
+<tr><th scope="row">2020</th><td>232</td><td>85 (37 %)</td><td>60 (71 %)</td><td>34 (57 %)</td><td>20 (59 %)</td><td>19 (95 %)</td></tr>
+<tr><th scope="row">2021</th><td>285</td><td>77 (27 %)</td><td>47 (61 %)</td><td>25 (53 %)</td><td>17 (68 %)</td><td>17 (100 %)</td></tr>
+<tr><th scope="row">2022</th><td>278</td><td>102 (37 %)</td><td>71 (70 %)</td><td>38 (54 %)</td><td>30 (79 %)</td><td>28 (93 %)</td></tr>
+<tr><th scope="row">2023</th><td>237</td><td>75 (32 %)</td><td>54 (72 %)</td><td>31 (57 %)</td><td>25 (81 %)</td><td>19 (76 %)</td></tr>
+<tr><th scope="row">2024</th><td>198</td><td>72 (36 %)</td><td>60 (83 %)</td><td>41 (68 %)</td><td>27 (66 %)</td><td>26 (96 %)</td></tr>
+<tr><th scope="row">2025</th><td>196</td><td>53 (27 %)</td><td>33 (62 %)</td><td>30 (91 %)</td><td>19 (63 %)</td><td>17 (90 %)</td></tr>
+<tr><th scope="row">2026</th><td>207</td><td>75 (36 %)</td><td>39 (52 %)</td><td>24 (62 %)</td><td>14 (58 %)</td><td>—</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>De media, aprueban el primer ejercicio el 35 % de los que llegan a él, aprueban el segundo ejercicio (idiomas) el 68 % de los que llegan a él, aprueban el tercer ejercicio el 62 % de los que llegan a él, aprueban el cuarto ejercicio el 64 % de los que llegan a él, aprueban el quinto ejercicio el 96 % de los que llegan a él. El primer ejercicio es, con diferencia, el que más gente deja fuera.</p>
+<h2 id="idiomas">Qué segundo idioma se elige, 2019-2026</h2>
+<p>Además del inglés, obligatorio, cada admitido de turno libre declara un segundo idioma. Reparto acumulado de las convocatorias con lista de admitidos:</p>
+<figure class="figura-cifras" id="g-idiomas">
+<svg class="grafico" viewBox="0 0 760 232" role="img" aria-labelledby="g-idiomas-t g-idiomas-d" preserveAspectRatio="xMidYMid meet">
+<title id="g-idiomas-t">Segundo idioma elegido por los admitidos</title><desc id="g-idiomas-d">Barras con el número de admitidos que eligen cada segundo idioma.</desc>
+<g style="font-family: var(--font-ui); font-size: 12px; fill: var(--color-text-muted)">
+<text x="102" y="27" text-anchor="end" fill="var(--color-text)">Francés</text>
+<rect x="110" y="15" width="523.6" height="18" fill="var(--color-border-light)" rx="2"><title>Francés: 988</title></rect>
+<text x="641.6" y="27">988 (59 %)</text>
+<text x="102" y="53" text-anchor="end" fill="var(--color-text)">Portugués</text>
+<rect x="110" y="41" width="165.9" height="18" fill="var(--color-border-light)" rx="2"><title>Portugués: 313</title></rect>
+<text x="283.9" y="53">313 (19 %)</text>
+<text x="102" y="79" text-anchor="end" fill="var(--color-text)">Italiano</text>
+<rect x="110" y="67" width="94.9" height="18" fill="var(--color-border-light)" rx="2"><title>Italiano: 179</title></rect>
+<text x="212.9" y="79">179 (11 %)</text>
+<text x="102" y="105" text-anchor="end" fill="var(--color-text)">Alemán</text>
+<rect x="110" y="93" width="76.3" height="18" fill="var(--color-border-light)" rx="2"><title>Alemán: 144</title></rect>
+<text x="194.3" y="105">144 (9 %)</text>
+<text x="102" y="131" text-anchor="end" fill="var(--color-text)">Chino</text>
+<rect x="110" y="119" width="15.4" height="18" fill="var(--color-border-light)" rx="2"><title>Chino: 29</title></rect>
+<text x="133.4" y="131">29 (2 %)</text>
+<text x="102" y="157" text-anchor="end" fill="var(--color-text)">Ruso</text>
+<rect x="110" y="145" width="9.5" height="18" fill="var(--color-border-light)" rx="2"><title>Ruso: 18</title></rect>
+<text x="127.5" y="157">18 (1 %)</text>
+<text x="102" y="183" text-anchor="end" fill="var(--color-text)">Japonés</text>
+<rect x="110" y="171" width="4.2" height="18" fill="var(--color-border-light)" rx="2"><title>Japonés: 8</title></rect>
+<text x="122.2" y="183">8 (0 %)</text>
+<text x="102" y="209" text-anchor="end" fill="var(--color-text)">Árabe</text>
+<rect x="110" y="197" width="2.1" height="18" fill="var(--color-border-light)" rx="2"><title>Árabe: 4</title></rect>
+<text x="120.1" y="209">4 (0 %)</text>
+</g></svg>
+<figcaption>Fuente: listas definitivas de admitidos de turno libre (columna del segundo idioma).</figcaption>
+<details class="datos-figura"><summary>Ver los datos</summary><div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Francés</th><th scope="col">Portugués</th><th scope="col">Italiano</th><th scope="col">Alemán</th><th scope="col">Chino</th><th scope="col">Ruso</th><th scope="col">Japonés</th><th scope="col">Árabe</th></tr></thead>
+<tbody>
+<tr><th scope="row">2019</th><td>119</td><td>22</td><td>15</td><td>26</td><td>2</td><td>3</td><td>0</td><td>2</td></tr>
+<tr><th scope="row">2020</th><td>138</td><td>35</td><td>13</td><td>5</td><td>2</td><td>4</td><td>0</td><td>1</td></tr>
+<tr><th scope="row">2021</th><td>169</td><td>44</td><td>21</td><td>29</td><td>2</td><td>3</td><td>2</td><td>1</td></tr>
+<tr><th scope="row">2022</th><td>148</td><td>51</td><td>29</td><td>25</td><td>4</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><th scope="row">2023</th><td>114</td><td>48</td><td>27</td><td>24</td><td>6</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><th scope="row">2024</th><td>104</td><td>39</td><td>23</td><td>14</td><td>4</td><td>2</td><td>0</td><td>0</td></tr>
+<tr><th scope="row">2025</th><td>95</td><td>36</td><td>24</td><td>9</td><td>5</td><td>1</td><td>2</td><td>0</td></tr>
+<tr><th scope="row">2026</th><td>101</td><td>38</td><td>27</td><td>12</td><td>4</td><td>2</td><td>2</td><td>0</td></tr>
+</tbody>
+</table></div></details>
+</figure>
+<p>Idiomas voluntarios declarados (puntúan hasta 4 puntos cada uno): Alemán (20), Francés (20), Italiano (11), Portugués (9), Ruso (2), Chino (1), Japonés (1).</p>
+<h2 id="repetidores">Cuántos aprobados ya se habían presentado antes, 2020-2025</h2>
+<p>Casi nadie aprueba a la primera. Aprobados de la fase de oposición que ya figuraban en la lista de admitidos de alguna convocatoria anterior (solo se puede comprobar desde las listas de 2019, así que en los primeros años el dato está por debajo del real; «admitido» no implica que llegara a examinarse):</p>
+<div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">Aprobados</th><th scope="col">Ya se habían presentado antes</th><th scope="col">Porcentaje</th></tr></thead>
+<tbody>
+<tr><th scope="row">2020</th><td>17</td><td>6</td><td>35 %</td></tr>
+<tr><th scope="row">2022</th><td>30</td><td>28</td><td>93 %</td></tr>
+<tr><th scope="row">2023</th><td>25</td><td>22</td><td>88 %</td></tr>
+<tr><th scope="row">2024</th><td>27</td><td>25</td><td>93 %</td></tr>
+<tr><th scope="row">2025</th><td>18</td><td>16</td><td>89 %</td></tr>
+</tbody>
+</table></div>
+<h2 id="tabla">Tabla completa por convocatoria</h2>
+<div class="tabla-scroll"><table class="tabla-guia">
+<thead><tr><th scope="col">Exámenes</th><th scope="col">OEP</th><th scope="col">Convocatoria</th><th scope="col">Plazas libre</th><th scope="col">Plazas interna</th><th scope="col">Admitidos libre</th><th scope="col">Admitidos interna</th><th scope="col">Aprueban 1.º</th><th scope="col">2.º</th><th scope="col">3.º</th><th scope="col">4.º</th><th scope="col">5.º</th><th scope="col">Aprobados libre</th><th scope="col">Aprobados interna</th></tr></thead>
+<tbody>
+<tr><th scope="row">1985</th><td>—</td><td>1985-03-25</td><td>30</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">1986</th><td>—</td><td>1986-03-24</td><td>31</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">1987</th><td>1987</td><td>1987-03-18</td><td>19</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">1988</th><td>1988</td><td>1988-03-28</td><td>25</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>20</td><td>0</td></tr>
+<tr><th scope="row">1989</th><td>1989</td><td>1989-04-28</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>26</td><td>0</td></tr>
+<tr><th scope="row">1991</th><td>1990</td><td>1991-04-30</td><td>20</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">1993</th><td>—</td><td>1993-03-02</td><td>9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">1994</th><td>—</td><td>1994-06-23</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">1996</th><td>1995</td><td>1995-11-24</td><td>10</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>7</td><td>0</td></tr>
+<tr><th scope="row">1997</th><td>1996</td><td>1996-12-13</td><td>8</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>8</td><td>0</td></tr>
+<tr><th scope="row">1998</th><td>1997</td><td>1997-12-03</td><td>9</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">1999</th><td>1998</td><td>1998-12-01</td><td>9</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>8</td><td>0</td></tr>
+<tr><th scope="row">2000</th><td>1999</td><td>1999-11-08</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>3</td></tr>
+<tr><th scope="row">2001</th><td>2000</td><td>2000-09-27</td><td>10</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">2002</th><td>2001</td><td>2001-09-24</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2003</th><td>2002</td><td>2002-06-13</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2004</th><td>2003</td><td>2003-05-14</td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>2</td></tr>
+<tr><th scope="row">2005</th><td>2004</td><td>2004-05-05</td><td>10</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>9</td><td>0</td></tr>
+<tr><th scope="row">2006</th><td>2005</td><td>2005-05-20</td><td>12</td><td>3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2007</th><td>2006</td><td>2006-06-05</td><td>14</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2008</th><td>2007</td><td>2007-04-19</td><td>25</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>20</td><td>0</td></tr>
+<tr><th scope="row">2009</th><td>2008</td><td>2008-04-16</td><td>25</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>22</td><td>1</td></tr>
+<tr><th scope="row">2010</th><td>2009</td><td>2009-06-05</td><td>14</td><td>5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2011</th><td>2011</td><td>2011-06-14</td><td>13</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>12</td><td>0</td></tr>
+<tr><th scope="row">2014</th><td>2013</td><td>2013-09-25</td><td>12</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>1</td></tr>
+<tr><th scope="row">2015</th><td>2014</td><td>2014-07-10</td><td>12</td><td>2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>10</td><td>0</td></tr>
+<tr><th scope="row">2016</th><td>2015</td><td>2015-10-30</td><td>21</td><td>6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>15</td><td>0</td></tr>
+<tr><th scope="row">2017</th><td>2016</td><td>2016-09-22</td><td>31</td><td>11</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>22</td><td>2</td></tr>
+<tr><th scope="row">2018</th><td>2017</td><td>2017-11-07</td><td>20</td><td>4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>13</td><td>0</td></tr>
+<tr><th scope="row">2019</th><td>2018</td><td>2018-11-20</td><td>20</td><td>5</td><td>189</td><td>3</td><td>94</td><td>68</td><td>39</td><td>14</td><td>17</td><td>19</td><td>0</td></tr>
+<tr><th scope="row">2020</th><td>2019</td><td>2019-10-30</td><td>21</td><td>3</td><td>218</td><td>12</td><td>85</td><td>60</td><td>34</td><td>20</td><td>19</td><td>19</td><td>0</td></tr>
+<tr><th scope="row">2021</th><td>2020</td><td>2021-05-19</td><td>18</td><td>5</td><td>271</td><td>8</td><td>77</td><td>47</td><td>25</td><td>17</td><td>17</td><td>17</td><td>0</td></tr>
+<tr><th scope="row">2022</th><td>2021</td><td>2022-05-13</td><td>32</td><td>2</td><td>260</td><td>13</td><td>102</td><td>71</td><td>38</td><td>30</td><td>28</td><td>28</td><td>2</td></tr>
+<tr><th scope="row">2023</th><td>2022</td><td>2023-04-11</td><td>27</td><td>4</td><td>221</td><td>12</td><td>75</td><td>54</td><td>31</td><td>25</td><td>19</td><td>23</td><td>2</td></tr>
+<tr><th scope="row">2024</th><td>2023</td><td>2024-04-05</td><td>29</td><td>15</td><td>186</td><td>9</td><td>72</td><td>60</td><td>41</td><td>27</td><td>26</td><td>25</td><td>2</td></tr>
+<tr><th scope="row">2025</th><td>2024</td><td>2024-12-22</td><td>22</td><td>15</td><td>172</td><td>18</td><td>53</td><td>33</td><td>30</td><td>19</td><td>17</td><td>17</td><td>2</td></tr>
+<tr><th scope="row">2026</th><td>2025</td><td>2025-12-22</td><td>27</td><td>10</td><td>186</td><td>15</td><td>75</td><td>39</td><td>24</td><td>14</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table></div>
+<p class="nota-metodo">Los datos están también en <a href="cifras.json">cifras.json</a> (licencia CC BY-NC-ND 4.0, citando esta página).</p>
+<h2 id="metodo">Método y fuentes</h2>
+<ul><li><strong>Plazas:</strong> la resolución de cada convocatoria en el BOE (turno libre, reserva de discapacidad y promoción interna). Las convocatorias se identifican por el año en que se celebran los exámenes: las publicadas en diciembre corresponden al año siguiente.</li><li><strong>Aprobados:</strong> la relación de aprobados en la fase de oposición que el Ministerio publica en el BOE al terminar cada proceso, contando las filas por turno; para las convocatorias más antiguas, sin relación en el BOE con texto, el nombramiento de funcionarios en prácticas leído por OCR. No se publican puntuaciones.</li><li><strong>Admitidos, ejercicios e idiomas:</strong> las listas definitivas de admitidos y las listas de aprobados de cada ejercicio de la página de cada convocatoria del Ministerio (desde la OEP 2018). Buena parte son imágenes escaneadas y se leen con reconocimiento óptico de caracteres; el programa cuenta las filas de cada lista, así que puede haber diferencias de una o dos personas con el documento original.</li><li><strong>Repetidores:</strong> comparación aproximada de apellidos y nombre entre la lista de aprobados y las listas de admitidos anteriores, hecha en el ordenador que calcula las cifras. Ni los nombres ni las listas se publican: aquí solo hay recuentos.</li><li>El programa es <a href="https://github.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/blob/main/scripts/cifras-oposicion.py" target="_blank" rel="noopener">scripts/cifras-oposicion.py</a> del repositorio de la web; se vuelve a ejecutar al terminar cada convocatoria.</li></ul>
+<p>Si encuentras un dato que no cuadra con el documento original, <a href="../sobre-mi.html">escríbeme</a> y lo reviso.</p>
+<!-- cifras:fin -->
+                </div>
+            </article>
+        </div>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-columnas">
+            <nav class="footer-col" aria-label="Secciones">
+                <p class="footer-col-titulo">Secciones</p>
+                <ul>
+                    <li><a href="../oposicion/index.html">Oposición</a></li>
+                    <li><a href="../oposicion/temario.html">Temario</a></li>
+                    <li><a href="../oposicion/temario/primer-ejercicio/test/simulador.html">Simulador de test</a></li>
+                    <li><a href="../oposicion/por-que-tcee.html">¿Por qué TCEE?</a></li>
+                    <li><a href="../app/">App TCEE y DCE</a></li>
+                    <li><a href="../blog/index.html">Blog</a></li>
+                    <li><a href="../novedades.html">Novedades</a></li>
+                    <li><a href="../sobre-mi.html">Sobre mí</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-col" aria-label="Fuentes oficiales">
+                <p class="footer-col-titulo">Fuentes oficiales</p>
+                <ul>
+                    <li><a href="https://portal.mineco.gob.es/es-es/ministerio/empleo/Paginas/default.aspx" target="_blank" rel="noopener">Procesos selectivos del Ministerio</a></li>
+                    <li><a href="https://atcee.es/la-oposicion-tcee/" target="_blank" rel="noopener">Asociación de Técnicos Comerciales y Economistas del Estado</a></li>
+                    <li><a href="https://www.boe.es/" target="_blank" rel="noopener">Boletín Oficial del Estado</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-licencia">
+            <a class="footer-cc" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener" aria-label="Licencia Creative Commons BY-NC-ND 4.0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M10.4 9.7a2.7 2.7 0 1 0 0 4.6M16.4 9.7a2.7 2.7 0 1 0 0 4.6" transform="translate(-1.4 0)"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><circle cx="12" cy="6.9" r="1.45" fill="currentColor" stroke="none"/><path d="M9.6 9.6h4.8v4.3h-1.25v4h-2.3v-4H9.6z" fill="currentColor" stroke="none"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M14.5 9.7c-.5-.8-1.4-1.2-2.5-1.2-1.3 0-2.3.7-2.3 1.6 0 2.3 4.9 1.3 4.9 3.8 0 1-1.1 1.7-2.6 1.7-1.2 0-2.2-.5-2.7-1.4M12 6.7v1.7M12 15.6v1.7M4.8 4.8l14.4 14.4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10.25"/><path d="M7.6 10h8.8M7.6 14h8.8" stroke-width="1.8"/></svg></a>
+            <p>El temario y los artículos se publican con licencia <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es" target="_blank" rel="license noopener">Creative Commons BY-NC-ND 4.0</a>: puedes copiarlos y compartirlos citando al autor y enlazando el original, pero no venderlos ni publicar versiones modificadas.</p>
+        </div>
+        <div class="footer-inf">
+            <span>© Víctor Gutiérrez Marcos</span>
+            <nav aria-label="Enlaces legales">
+                <a href="../politica-cookies.html">Política de cookies</a>
+                <a href="../sobre-mi.html">Contacto</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/victorgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/i/lists/2013750304991268900" target="_blank" rel="noopener noreferrer" aria-label="Lista de X (Twitter)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                </a>
+                <a href="https://github.com/vgutierrezmarcos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="mailto:contacto@victorgutierrezmarcos.es" aria-label="Correo electrónico">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="../search-engine.js"></script>
+    <script src="../search-ui.js"></script>
+    <script src="../cookie-consent.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Configuración y Lógica de Auth -->
+    <script src="../firebase-config.js"></script>
+    <script src="../auth.js"></script>
+</body>
+</html>

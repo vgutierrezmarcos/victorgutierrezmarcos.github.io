@@ -92,6 +92,11 @@ python3 scripts/esquemas-temario.py
 # (leer-proceso.yml runs it automatically; when a new convocatoria appears, add its plazas/tasas to CONVOCATORIAS in the script)
 python3 scripts/guia-convocatoria.py
 
+# Recompute "La oposición a TCEE en cifras" (oposicion/cifras.html, cifras.json and the summary in por-que-tcee.html)
+# after each convocatoria ends. Needs the OCR venv (uv venv ~/.local/share/oposicion-web/venv-ocr && uv pip install pymupdf rapidocr-onnxruntime pypdf)
+# and the BOE announcements cache (scripts/boe-rastreo.py). Never publishes names: only counts and percentages.
+~/.local/share/oposicion-web/venv-ocr/bin/python scripts/cifras-oposicion.py
+
 # Generate RSS feed manually
 node generate-rss.js
 
