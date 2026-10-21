@@ -45,7 +45,7 @@ void main() {
       expect(t.version, '1a3f226');
       expect(t.url(t.pdf), '${raw}oposicion/temario/tercer-ejercicio/3A12.pdf');
       // El CDN del HTML es githack fijado al commit (jsDelivr, el del manifiesto, da 503 con este repositorio).
-      expect(t.urlDocumentoHtml, 'https://rawcdn.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/${commit}/oposicion/temario/tercer-ejercicio/3A12.html');
+      expect(t.urlDocumentoHtml, 'https://rawcdn.githack.com/vgutierrezmarcos/victorgutierrezmarcos.github.io/$commit/oposicion/temario/tercer-ejercicio/3A12.html');
       expect(t.repaso!.tamano, 491508);
       expect(t.docx!.extension, 'docx');
       expect(m.de('3.A.21')!.repaso, isNull);

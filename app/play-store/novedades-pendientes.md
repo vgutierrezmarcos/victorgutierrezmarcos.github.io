@@ -28,7 +28,7 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (21 oct.) Notas del preparador: el preparador puede dejar escribir al opositor, y entonces los dos escriben a la vez, como en la pizarra compartida
 - (21 oct.) El preparador abre de un toque el tema que le van a cantar, desde Hoy y desde la ficha de la clase
 - (21 oct.) Esquema del tema junto al PDF: en el ordenador, a la izquierda; en el móvil, un botón en la barra de páginas abre el esquema y tocar un apartado salta a su página
-- (21 oct.) El tema revisado «como página web» vuelve a salir con su formato
+- (21 oct.) El tema revisado «como página web» vuelve a salir con su formato, a todo el ancho y en modo oscuro si la app lo está
 - (21 oct.) Un segundo toque en una pestaña de abajo vuelve a su página principal
 - (21 oct.) Cualquier pizarra (la de la clase y las notas) se guarda como PDF desde el menú ···
 - (21 oct.) En el navegador, el visor del tema ya no amplía solo al bajar con la rueda del ratón

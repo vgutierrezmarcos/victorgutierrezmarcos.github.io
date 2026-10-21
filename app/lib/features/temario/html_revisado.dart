@@ -28,14 +28,18 @@ const _scriptsDeLaWeb = [
 
 const _estilosDeLaWeb = ['search-styles.css', 'cookie-consent.css'];
 
-/// Estilo propio de la app: sin el margen de las páginas de la web y con el
-/// índice plegado arriba (en el móvil no cabe al lado).
+/// Estilo propio de la app: sin el margen de las páginas de la web, a todo el
+/// ancho que haya (en la web el tema va a 1000 px; en el visor de la app, que
+/// ya es una ventana aparte, se aprovecha la pantalla) y con el índice
+/// plegado arriba (en el móvil no cabe al lado).
 const _estiloApp = '''
 <style id="tcee-app">
   body { margin: 0; }
-  .main-content { padding-top: 0.5rem !important; margin-top: 0 !important; }
+  .main-content { padding: 0.5rem 1rem 2rem !important; margin-top: 0 !important; }
   .main-content::before { display: none !important; }
-  .tema-layout { max-width: 1000px; margin: 0 auto; }
+  .tema-layout { max-width: none; margin: 0; }
+  @media (min-width: 1100px) { .tema-layout { grid-template-columns: 300px minmax(0, 1fr); gap: 1.5rem; } }
+  .tema-documento { max-width: none; }
   img, svg { max-width: 100%; height: auto; }
   /* En el móvil nada puede ensanchar la página: fórmulas y tablas largas se
      desplazan por dentro. */
@@ -70,9 +74,20 @@ document.addEventListener('click', function (e) {
 </script>
 ''';
 
-/// [urlDocumento]: URL del HTML en el CDN (con el nombre del fichero).
-String prepararHtmlRevisado(String html, {required String urlDocumento}) {
+/// [urlDocumento]: URL del HTML en el CDN (con el nombre del fichero). Con
+/// [oscuro], la página sale en el tema oscuro de la web (`data-theme="dark"`
+/// en `<html>`, que en la web pone search-ui.js: aquí no se carga).
+String prepararHtmlRevisado(String html, {required String urlDocumento, bool oscuro = false}) {
   var h = html;
+
+  // El modo claro u oscuro de la app, como lo entiende styles.css.
+  final abreHtml = RegExp(r'<html\b([^>]*)>', caseSensitive: false).firstMatch(h);
+  if (abreHtml != null) {
+    final atributos = abreHtml.group(1)!.replaceAll(RegExp(r'\s*data-theme="[^"]*"'), '');
+    h = h.replaceRange(abreHtml.start, abreHtml.end, '<html$atributos${oscuro ? ' data-theme="dark"' : ''}>');
+  } else if (oscuro) {
+    h = '<html data-theme="dark">$h</html>';
+  }
 
   // Bloques de la web (cabecera, menús, migas, pie y botones de descarga).
   h = _quitarElemento(h, RegExp(r'<header\b[^>]*class="[^"]*\bsite-header\b'), 'header');
