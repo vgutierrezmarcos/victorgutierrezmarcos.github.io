@@ -17,7 +17,7 @@ $$\mathrm{CR}_m=\sum_{i=1}^{m}s_i,\qquad \text{índice de Herfindahl-Hirschman}=
 
 **Gráfico de referencia:** `oposicion/temario/fuentes/3A15/graficos/ecr.tex` (esquema condiciones básicas → estructura → conducta → resultado, con las flechas de vuelta en la última capa y la política económica; elaboración propia a partir de Lipczynski, Wilson y Goddard, 2017).
 
-**Notación** (`notacion.md` § 4): $\mathrm{CR}_m$; $s_i\in[0,1]$ cuota de mercado; **sigla del índice [decidir]**: el 3.A.15 escribe HHI = Σ(100 s_i)² (escala 0-10.000) y el 3.A.19 IHH ≡ Σ s_i² (escala 0-1, aunque cita una cifra en la escala 0-10.000); propuesta: **IHH** (sigla en castellano, la de la CNMC, con «HHI» entre paréntesis la primera vez) **en la escala 0-10.000**, con $\sum_is_i\mathcal L_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$ (ver `informe-repaso.md` § 17); θ parámetro de conducta (local, con nota); «Harvard frente a Chicago» (nunca *saltwater/freshwater* en organización industrial).
+**Notación** (`notacion.md` § 4): $\mathrm{CR}_m$; $s_i\in[0,1]$ cuota de mercado; **índice de Herfindahl-Hirschman**: **IHH** (sigla en castellano, la de la CNMC, con «HHI en inglés» la primera vez) **en la escala 0-10.000**, $\mathrm{IHH}\equiv\sum_i(100\,s_i)^2\in(0;10.000]$, con $\sum_is_i\mathcal L_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$ (resuelto el 20/10/2026 y aplicado en el 3.A.15 y el 3.A.19; antes HHI en el 3.A.15 e IHH ≡ Σ s_i², escala 0-1, en el 3.A.19); θ parámetro de conducta (local, con nota); «Harvard frente a Chicago» (nunca *saltwater/freshwater* en organización industrial).
 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
@@ -30,6 +30,6 @@ $$\mathrm{CR}_m=\sum_{i=1}^{m}s_i,\qquad \text{índice de Herfindahl-Hirschman}=
 
 ## Divergencias encontradas en el temario actual
 - 3.A.15 original: Harvard y Chicago como *saltwaters* y *freshwaters* (etiqueta de un debate de macroeconomía); pérdida del ECR por «no operar en el mínimo de sus costes medios (ineficiencia productiva)»; índices $CI_x=\sum s_i$ y «HH = ∑ s_i 2»; umbral de EE. UU. «1.800 o aumento de 200» que mezcla 1982 y 2010; Nueva TOI que toma de Chicago los contestables y a la vez está «más cerca del ECR». **Resuelto** (20/10/2026).
-- 3.A.15 y 3.A.19 revisados: **HHI** frente a **IHH** y escala distinta (ver Notación). Pendiente de la decisión (`pendientes-coherencia.md`).
+- 3.A.15 y 3.A.19 revisados: **HHI** frente a **IHH** y escala distinta (ver Notación). **Resuelto** (20/10/2026): IHH en la escala 0-10.000 en los 2 (`pendientes-coherencia.md`, hecho).
 
 Autor: Víctor Gutiérrez Marcos

@@ -1,6 +1,6 @@
 # Regulación de la tasa de rentabilidad y efecto Averch-Johnson (1962)
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (anexo A, regulación del monopolio natural; revisado el 17/10/2026, A.3 y anexo `anexo:aj`) — con la formalización que traía el 4.B.15. **[decidir]** Propuesta del 3.A.17 (D1, provisional): pasar la referencia al 3.A.20 cuando se redacte y dejar el 3.A.17 en «mención» (ficha `laffont-tirole`).
+- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (anexo A, regulación del monopolio natural; revisado el 17/10/2026, A.3 y anexo `anexo:aj`) — con la formalización que traía el 4.B.15. **Decidido (P21-02, Víctor, 21/10/2026):** pasar la referencia al 3.A.20 cuando se redacte y dejar el 3.A.17 en «mención» (ficha `laffont-tirole`).
 - **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 3.A.20 (previsto); 4.A.5 y 4.A.12 (regulación sectorial) podrían citarlo.
 - **Manuales de referencia:** Averch y Johnson (1962), *AER*; Baumol y Klevorick (1970), *Bell Journal*; Viscusi, Harrington y Vernon, *Economics of Regulation and Antitrust*, cap. 12; Train (1991).
 
@@ -20,8 +20,8 @@ como si el capital fuera más barato de lo que es; costes y precios más altos. 
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.17 | Regulación del monopolio natural | desarrollo en el anexo A (hecho, 17/10/2026) | Programa, gráfico, efecto con μ, derivación en el anexo B, ventajas e inconvenientes, comparación con *price cap* | — |
-| 3.A.20 | Regulación óptima | previsto; referencia si se aprueba D1 | La misma presentación y notación, reutilizando `averch-johnson.tex` | — |
+| 3.A.17 | Regulación del monopolio natural | desarrollo en el anexo A (hecho, 17/10/2026); pasará a mención, con el anexo A resumido y `\vertema{3.A.20}`, cuando se revise el 3.A.20 (P21-02) | Programa, gráfico, efecto con μ, derivación en el anexo B, ventajas e inconvenientes, comparación con *price cap* | — |
+| 3.A.20 | Regulación óptima | previsto; referencia cuando se revise (P21-02) | La misma presentación y notación, reutilizando `averch-johnson.tex` | — |
 | 4.B.15 | Empresa pública frente a regulación | resumen (hoy mención; D139 (13/10/2026)) | Sobrecapitalización como coste de la regulación por rentabilidad | Programa y gráfico (remitir a 3.A.17) |
 
 ## Divergencias encontradas en el temario actual

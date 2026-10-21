@@ -1,8 +1,8 @@
 # Competencia por comparación (Shleifer, 1985) y mecanismo de Loeb-Magat (1979)
 
-- **Área:** sector público · **Tema de referencia:** 3.A.17 (anexo A; revisado el 17/10/2026, A.3), junto a Averch-Johnson, *price cap* y Laffont-Tirole: es teoría de la regulación del monopolio natural (el mapa proponía 4.B.15, donde solo se menciona y que lo resume para las empresas públicas). Recoge el id `loeb-magat` (alias en `_inventario/alias.json`). **[decidir]** Propuesta del 3.A.17 (D1, provisional): pasar la referencia al 3.A.20 cuando se redacte y dejar el 3.A.17 en «mención» (ficha `laffont-tirole`).
+- **Área:** sector público · **Tema de referencia:** 3.A.17 (anexo A; revisado el 17/10/2026, A.3), junto a Averch-Johnson, *price cap* y Laffont-Tirole: es teoría de la regulación del monopolio natural (el mapa proponía 4.B.15, donde solo se menciona y que lo resume para las empresas públicas). Recoge el id `loeb-magat` (alias en `_inventario/alias.json`). **Decidido (P21-02, Víctor, 21/10/2026):** pasar la referencia (también la de Loeb-Magat) al 3.A.20 cuando se revise y dejar el 3.A.17 en «mención», con su anexo A resumido y remisión (ficha `laffont-tirole`).
 - **Decisión D091 (13/10/2026):** ¿Cuál es el tema de referencia de la competencia referencial (yardstick)? 3.A.17, junto a Averch-Johnson, price cap y Laffont-Tirole.
-- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 3.A.12 (mención: la medición de la eficiencia con DEA y frontera estocástica como base de la regulación por comparación; hecho, 14/10/2026), 4.B.15 (resumen; hoy mención), 3.A.20 (previsto; referencia si se aprueba D1), 4.A.5/4.A.12 (aplicación prevista: distribución eléctrica, aeropuertos).
+- **Temas que lo usan:** 3.A.17 (desarrollo en el anexo A, no se canta; hecho, 17/10/2026), 3.A.12 (mención: la medición de la eficiencia con DEA y frontera estocástica como base de la regulación por comparación; hecho, 14/10/2026), 4.B.15 (resumen; hoy mención), 3.A.20 (previsto; referencia cuando se revise, P21-02), 4.A.5/4.A.12 (aplicación prevista: distribución eléctrica, aeropuertos).
 - **Manuales de referencia:** Shleifer (1985), «A theory of yardstick competition», *RAND Journal*; Loeb y Magat (1979), *Journal of Law and Economics*; Laffont y Tirole (1993); Baldwin, Cave y Lodge (2012); Jamasb y Pollitt (2001); Joskow (2014).
 
 ## Presentación de referencia (3.A.17, anexo A)
@@ -24,8 +24,8 @@ Gráfico: no tiene; se cuenta con las ecuaciones.
 ## Cómo se adapta en cada tema
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
-| 3.A.17 | Regulación del monopolio natural con información asimétrica | desarrollo en el anexo A (hecho, 17/10/2026) | Todo lo anterior | — |
-| 3.A.20 | Regulación óptima | previsto; referencia si se aprueba D1 | La misma presentación y notación | — |
+| 3.A.17 | Regulación del monopolio natural con información asimétrica | desarrollo en el anexo A (hecho, 17/10/2026); pasará a mención, con el anexo A resumido y `\vertema{3.A.20}`, cuando se revise el 3.A.20 (P21-02) | Todo lo anterior | — |
+| 3.A.20 | Regulación óptima | previsto; referencia cuando se revise (P21-02) | La misma presentación y notación | — |
 | 3.A.12 | Medición de la eficiencia (IV.3) | mención (hecho, 14/10/2026) | Shleifer (1985) como uso de las fronteras de eficiencia; caso alemán; remite a 3.A.17 y 3.A.20 (hecho, 14/10/2026) | El mecanismo |
 | 4.B.15 | Empresa pública | resumen (hoy mención; D091, D139 (13/10/2026)) | Precio fijado por el coste medio de las demás empresas comparables: alternativa a la propiedad pública | El desarrollo |
 

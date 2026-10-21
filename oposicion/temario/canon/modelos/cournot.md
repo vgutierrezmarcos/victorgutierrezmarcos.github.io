@@ -40,6 +40,6 @@ $$\mathcal{L}_i\equiv\frac{p-\mathrm{CMg}_i}{p}=\frac{s_i}{|\varepsilon_{Q,p}|},
 ## Divergencias encontradas en el temario actual
 - 3.A.19 original: función de reacción φ, φ_1(q_2); π_1, Π; $P(q_1,q_2)$, $P_{\text{competencia perfecta}}$; $q_2^e$ en el EN; caja del enfoque de Cournot y anexo 1 de teoría de juegos que repetía el 3.A.14; Nash «desarrolla los juegos en forma extensiva y los repetidos». **Resuelto** (20/10/2026): $R_i$, $B_i$, $p(Q)$, $p^c$; remisiones al 3.A.14; Kuhn (1953) y Aumann.
 - 3.B.8 (sin revisar): $\varphi_A(q_B)$ → $R_A(q_B)$ (D016).
-- 3.A.15 y 3.A.19 revisados: Cowling-Waterson con $|\varepsilon_{q,p}|$ y HHI en la escala 0-10.000 (3.A.15) frente a $|\varepsilon_{Q,p}|$ e IHH ≡ Σs_i² (3.A.19). Canon: $\varepsilon_{Q,p}$ en el oligopolio; la sigla y la escala del índice, **[decidir]** (`informe-repaso.md` § 17).
+- 3.A.15 y 3.A.19 revisados: Cowling-Waterson con $|\varepsilon_{q,p}|$ y HHI en la escala 0-10.000 (3.A.15) frente a $|\varepsilon_{Q,p}|$ e IHH ≡ Σs_i² (3.A.19). Canon: $\varepsilon_{Q,p}$ en el oligopolio e **IHH** («HHI en inglés» la primera vez) **en la escala 0-10.000**, $\mathrm{IHH}\equiv\sum_i(100\,s_i)^2$, con $\sum_is_i\mathcal L_i=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$ en los 2 temas. **Resuelto** (20/10/2026; `pendientes-coherencia.md`, hecho en el 3.A.15 y el 3.A.19).
 
 Autor: Víctor Gutiérrez Marcos

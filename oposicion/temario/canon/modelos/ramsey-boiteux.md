@@ -1,6 +1,6 @@
 # Precios de Ramsey-Boiteux
 
-- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (regulación del monopolio natural; revisado el 17/10/2026, II.2.3 y anexo `anexo:ramsey`) — único que lo desarrolla. Es la misma regla que la imposición óptima de Ramsey (4.B.11, id `ramsey`): el 3.A.17 remite a 4.B.11 solo para ampliar (D138). Se queda en el 3.A.17 aunque prospere la propuesta de pasar al 3.A.20 la regulación con información asimétrica (D1 del 3.A.17).
+- **Área:** mercados-información-juegos · **Tema de referencia:** 3.A.17 (regulación del monopolio natural; revisado el 17/10/2026, II.2.3 y anexo `anexo:ramsey`) — único que lo desarrolla. Es la misma regla que la imposición óptima de Ramsey (4.B.11, id `ramsey`): el 3.A.17 remite a 4.B.11 solo para ampliar (D138). Se queda en el 3.A.17 aunque la regulación con información asimétrica pase al 3.A.20 (P21-02, Víctor, 21/10/2026).
 - **Temas que lo usan:** 3.A.17 (desarrollo; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención con ecuaciones), 4.B.11 (mención: equivalencia formal con la regla de Ramsey); 3.A.22 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Ramsey (1927); Boiteux (1956); Baumol y Bradford (1970); Laffont y Tirole (1993), cap. 3; Viscusi, Harrington y Vernon, cap. 11.
 
