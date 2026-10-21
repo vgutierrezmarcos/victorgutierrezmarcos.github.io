@@ -85,6 +85,9 @@ Static website for the Spanish civil service exam "Oposición a Técnico Comerci
 # Rebuild search index after content changes
 node build-search-index.js
 
+# Regenerate the PDF outlines the app shows next to each tema (needs pypdf), after changing a PDF in oposicion/temario
+python3 scripts/esquemas-temario.py
+
 # Generate RSS feed manually
 node generate-rss.js
 

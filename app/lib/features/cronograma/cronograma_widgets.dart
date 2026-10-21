@@ -98,11 +98,11 @@ class SemanasCronograma extends ConsumerWidget {
                       child: Row(children: [
                         if (onMarcar != null)
                           Checkbox(value: estado.hechos.contains(t), visualDensity: VisualDensity.compact, onChanged: (v) => onMarcar!(t, v ?? false))
+                        else if (estado.hechos.contains(t))
+                          // Sin casilla (se mira, no se marca): solo la marca de hecho.
+                          const Padding(padding: EdgeInsets.all(8), child: Icon(Icons.check_circle, size: 18, color: Paleta.acierto))
                         else
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Icon(estado.hechos.contains(t) ? Icons.check_circle : Icons.circle_outlined, size: 18, color: estado.hechos.contains(t) ? Paleta.acierto : context.colores.textoClaro),
-                          ),
+                          const SizedBox(width: 34),
                         CasillaTema(t, color: estructura?.colorDe(t) ?? context.esquema.primary),
                         const SizedBox(width: 8),
                         Expanded(

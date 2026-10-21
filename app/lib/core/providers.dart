@@ -11,6 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+import '../data/models/esquema.dart';
 import '../data/models/estructura.dart';
 import '../data/models/frecuencia_test.dart';
 import '../data/models/oposicion.dart';
@@ -111,6 +112,10 @@ final revisadosProvider = FutureProvider<ManifiestoRevisados>((ref) {
 final estructuraProvider = FutureProvider<EstructuraTemario>((ref) {
   ref.watch(versionContenidoProvider);
   return ref.watch(contenidoProvider).estructura();
+});
+final esquemasProvider = FutureProvider<Esquemas>((ref) {
+  ref.watch(versionContenidoProvider);
+  return ref.watch(contenidoProvider).esquemas();
 });
 final enlacesProvider = FutureProvider<List<CategoriaEnlaces>>((ref) {
   ref.watch(versionContenidoProvider);

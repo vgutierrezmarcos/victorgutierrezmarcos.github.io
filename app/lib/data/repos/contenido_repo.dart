@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../core/cache_http.dart';
+import '../models/esquema.dart';
 import '../models/estructura.dart';
 import '../models/frecuencia_test.dart';
 import '../models/oposicion.dart';
@@ -65,6 +66,16 @@ class ContenidoRepo {
       return EstructuraTemario.fromJson(await _http.json(oposicion.urlEstructura, preferirCache: !forzar, forzar: forzar));
     } catch (_) {
       return EstructuraTemario.vacia;
+    }
+  }
+
+  /// Esquemas (marcadores) de los PDF del temario. Si no se puede descargar
+  /// (una oposición sin ellos, sin red), vacío: el tema se lee igual.
+  Future<Esquemas> esquemas({bool forzar = false}) async {
+    try {
+      return Esquemas.fromJson(await _http.json(oposicion.urlEsquemas, preferirCache: !forzar, forzar: forzar));
+    } catch (_) {
+      return Esquemas.vacio;
     }
   }
 

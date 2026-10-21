@@ -267,6 +267,8 @@ class Oposicion {
   String get urlTemario => '$_base/temario/temario.json';
   String get urlEnlaces => '$_base/enlaces.json';
   String get urlEstructura => '$_base/organizacion/estructura_temario.json';
+  /// Marcadores de los PDF del temario (ver scripts/esquemas-temario.py).
+  String get urlEsquemas => '$_base/temario/esquemas.json';
   String get urlAppConfig => '$_base/app-config.json';
 
   /// Documentos del proceso selectivo de todas las oposiciones: un único

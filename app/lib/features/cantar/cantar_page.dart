@@ -878,9 +878,9 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                     onTap: () => _tocarTema(x),
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                     child: Row(children: [
-                      Icon(estudiados.contains(x.codigo) ? Icons.check_circle : Icons.circle_outlined, color: estudiados.contains(x.codigo) ? Paleta.acierto : context.colores.textoClaro, size: 20),
-                      const SizedBox(width: 10),
                       Expanded(child: TextoTema(x.codigo, x.titulo, color: ref.watch(estructuraProvider).valueOrNull?.colorDe(x.codigo))),
+                      // Solo una marca si está estudiado (un círculo vacío parecía una casilla).
+                      if (estudiados.contains(x.codigo)) Padding(padding: const EdgeInsets.only(left: 6), child: Tooltip(message: 'Estudiado', child: Icon(Icons.check_circle, color: Paleta.acierto, size: 18))),
                       if (_secuencia && _aCantar.contains(x))
                         Padding(padding: const EdgeInsets.only(left: 6), child: Etiqueta('${_aCantar.indexOf(x) + 1}.º', color: _elegido == x ? context.esquema.primary : null)),
                       if (_elegido == x) Icon(Icons.mic, color: context.esquema.primary, size: 18),

@@ -10,6 +10,7 @@ import 'package:share_plus/share_plus.dart';
 import '../../core/avisos_breves.dart';
 import '../../core/plataforma.dart';
 import '../../core/providers.dart';
+import '../../data/models/esquema.dart';
 import '../../data/models/preparador.dart';
 import '../../data/models/revisado.dart';
 import '../../data/models/temario.dart';
@@ -22,6 +23,7 @@ import '../cantar/pizarra_compartida.dart';
 import '../preparador/materiales_widgets.dart';
 import 'agenda_tema_page.dart';
 import 'anotaciones.dart';
+import 'esquema_tema.dart';
 import 'html_revisado.dart';
 import 'visor_html.dart';
 import 'visor_tema.dart';
@@ -66,6 +68,8 @@ class _TemaPageState extends ConsumerState<TemaPage> {
   bool _pideAnterior = false;
   /// Leer el tema revisado como página web (HTML) en vez de en PDF.
   bool _verHtml = false;
+  /// El esquema al lado del PDF (en pantallas anchas; se puede plegar).
+  bool _verEsquema = true;
   String? _html, _shaHtml;
   Object? _errorHtml;
 
@@ -230,6 +234,22 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     setState(() => _anotando = !_anotando);
   }
 
+  /// El visor con el esquema a su izquierda (en pantallas anchas).
+  Widget _conEsquema(List<EntradaEsquema>? esquema, Widget visor) {
+    if (esquema == null) return visor;
+    return Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      SizedBox(
+        width: 290,
+        child: Material(
+          color: context.colores.superficie,
+          child: PanelEsquema(esquema: esquema, pagina: _pagina, alIr: _visor.irAPagina),
+        ),
+      ),
+      VerticalDivider(width: 1, thickness: 1, color: context.colores.borde),
+      Expanded(child: visor),
+    ]);
+  }
+
   /// El tema con las anotaciones, en un PDF nuevo (para imprimirlo o compartirlo).
   Future<void> _descargarAnotado(bool revisada) async {
     final pdf = _pdf;
@@ -296,6 +316,16 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     if (verHtml) WidgetsBinding.instance.addPostFrameCallback((_) => mounted ? _cargarHtml(rv) : null);
     // Solo con el PDF abierto (Firestore no hace falta hasta entonces).
     final anotaciones = _pdf == null ? null : _anotacionesDe(revisada ? '${widget.tema.codigo}-revisado' : widget.tema.codigo);
+    // El esquema del PDF que se lee: el del manifiesto en el revisado, el de
+    // esquemas.json en el de la web. Al lado en pantallas anchas; en el móvil,
+    // en una hoja desde la barra de páginas.
+    final List<EntradaEsquema>? esquema = _pdf == null || verHtml || sinPdf || web
+        ? null
+        : revisada
+            ? (rv.esquema.isEmpty ? null : rv.esquema)
+            : ref.watch(esquemasProvider).valueOrNull?.de(widget.tema.url);
+    final pantallaAncha = MediaQuery.sizeOf(context).width >= 900;
+    final esquemaAlLado = esquema != null && pantallaAncha && _verEsquema && !_anotando;
 
     return Scaffold(
       appBar: BarraWeb(
@@ -438,16 +468,19 @@ class _TemaPageState extends ConsumerState<TemaPage> {
                         Text(_progreso == 0 ? (kIsWeb ? 'Cargando PDF…' : 'Descargando PDF…') : 'Descargando ${(100 * _progreso).round()} %', style: context.textos.bodySmall),
                       ]),
                     )
-                  : VisorTema(
-                      key: ValueKey(_claveCargada),
-                      documento: _pdf!,
-                      fuente: anotaciones,
-                      miUid: ref.read(usuarioActualProvider)?.uid ?? '',
-                      controlador: _visor,
-                      anotando: _anotando,
-                      alCargar: (n) => setState(() => _paginas = n),
-                      alCambiarPagina: (p) => setState(() => _pagina = p),
-                      alAcabar: () => setState(() => _anotando = false),
+                  : _conEsquema(
+                      esquemaAlLado ? esquema : null,
+                      VisorTema(
+                        key: ValueKey(_claveCargada),
+                        documento: _pdf!,
+                        fuente: anotaciones,
+                        miUid: ref.read(usuarioActualProvider)?.uid ?? '',
+                        controlador: _visor,
+                        anotando: _anotando,
+                        alCargar: (n) => setState(() => _paginas = n),
+                        alCambiarPagina: (p) => setState(() => _pagina = p),
+                        alAcabar: () => setState(() => _anotando = false),
+                      ),
                     ),
         ),
         if (_paginas > 0 && !_anotando && !verHtml)
@@ -457,6 +490,14 @@ class _TemaPageState extends ConsumerState<TemaPage> {
               color: context.colores.superficie,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Row(children: [
+                if (esquema != null)
+                  IconButton(
+                    tooltip: pantallaAncha ? (_verEsquema ? 'Ocultar el esquema' : 'Ver el esquema al lado') : 'Esquema del tema: saltar de bloque',
+                    visualDensity: VisualDensity.compact,
+                    isSelected: pantallaAncha && _verEsquema,
+                    icon: const Icon(Icons.toc),
+                    onPressed: pantallaAncha ? () => setState(() => _verEsquema = !_verEsquema) : () => abrirEsquema(context, esquema: esquema, pagina: _pagina, alIr: _visor.irAPagina),
+                  ),
                 Text('Página $_pagina de $_paginas', style: context.textos.labelSmall),
                 Expanded(
                   child: Slider(
