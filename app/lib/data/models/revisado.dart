@@ -191,33 +191,36 @@ enum VersionTema {
 }
 
 class EleccionVersion {
-  const EleccionVersion({required this.version, this.hayRevisada = false, this.invitarASesion = false});
+  const EleccionVersion({required this.version, this.hayRevisada = false, this.invitarASesion = false, this.hayAnterior = true});
   final VersionTema version;
   /// El tema tiene versión revisada (se pone el distintivo).
   final bool hayRevisada;
   /// Hay versión revisada pero no hay sesión: se invita a entrar.
   final bool invitarASesion;
+  /// El tema tenía versión anterior (si no, no se ofrece «Ver versión anterior»).
+  final bool hayAnterior;
 
   bool get esRevisada => version == VersionTema.revisada;
   /// Se puede pasar a la otra versión (solo con sesión y versión revisada).
-  bool get puedeCambiar => hayRevisada && !invitarASesion;
+  bool get puedeCambiar => hayRevisada && hayAnterior && !invitarASesion;
 
   @override
   bool operator ==(Object other) =>
-      other is EleccionVersion && other.version == version && other.hayRevisada == hayRevisada && other.invitarASesion == invitarASesion;
+      other is EleccionVersion && other.version == version && other.hayRevisada == hayRevisada && other.invitarASesion == invitarASesion && other.hayAnterior == hayAnterior;
 
   @override
-  int get hashCode => Object.hash(version, hayRevisada, invitarASesion);
+  int get hashCode => Object.hash(version, hayRevisada, invitarASesion, hayAnterior);
 
   @override
-  String toString() => 'EleccionVersion($version, hayRevisada: $hayRevisada, invitar: $invitarASesion)';
+  String toString() => 'EleccionVersion($version, hayRevisada: $hayRevisada, invitar: $invitarASesion, anterior: $hayAnterior)';
 }
 
 /// La revisada se abre por defecto, pero solo con sesión iniciada; sin sesión
 /// se ve la anterior con la invitación a entrar. [pideAnterior]: el usuario ha
-/// tocado «Ver versión anterior».
-EleccionVersion elegirVersion({required TemaRevisado? revisado, required bool conSesion, bool pideAnterior = false}) {
+/// tocado «Ver versión anterior»; sin [hayAnterior] (el tema no tenía PDF) no
+/// se ofrece.
+EleccionVersion elegirVersion({required TemaRevisado? revisado, required bool conSesion, bool pideAnterior = false, bool hayAnterior = true}) {
   if (revisado == null) return const EleccionVersion(version: VersionTema.anterior);
-  if (!conSesion) return const EleccionVersion(version: VersionTema.anterior, hayRevisada: true, invitarASesion: true);
-  return EleccionVersion(version: pideAnterior ? VersionTema.anterior : VersionTema.revisada, hayRevisada: true);
+  if (!conSesion) return EleccionVersion(version: VersionTema.anterior, hayRevisada: true, invitarASesion: true, hayAnterior: hayAnterior);
+  return EleccionVersion(version: pideAnterior && hayAnterior ? VersionTema.anterior : VersionTema.revisada, hayRevisada: true, hayAnterior: hayAnterior);
 }
