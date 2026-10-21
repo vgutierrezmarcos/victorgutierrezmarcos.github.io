@@ -42,7 +42,8 @@ class _CanteFormPageState extends ConsumerState<CanteFormPage> {
   late DateTime _fecha;
   // Por defecto, lo que dura una clase (2 h); lo de cada tema va en «Exposición por tema».
   late int _minutos = widget.cante?.minutos ?? (_sesion ? ref.read(perfilPreparadorProvider).minutosClase : PerfilPreparador.minutosClasePorDefecto);
-  late int _exposicion = widget.cante?.exposicion ?? 30;
+  // Por tema, la del examen de la oposición (TCEE 30, DCE 20).
+  late int _exposicion = widget.cante?.exposicion ?? Oposiciones.actual.minutosExposicion(widget.cante?.ejercicio ?? Oposiciones.actual.primerConTemas);
   late String _plataforma = widget.cante?.plataformaEfectiva.isNotEmpty == true ? widget.cante!.plataformaEfectiva : ref.read(perfilPreparadorProvider).plataforma;
   late int _numTemas = widget.cante?.numTemas ?? ref.read(perfilPreparadorProvider).temasPorClase;
   late bool _unoPorParte = widget.cante?.unoPorParte ?? false;

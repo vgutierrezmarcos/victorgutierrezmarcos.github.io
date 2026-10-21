@@ -257,6 +257,25 @@ void main() {
       expect(Oposiciones.tcee.ejercicio(1)!.minutosEsquema, 0);
       expect(textoMinutos(const Duration(minutes: 22, seconds: 30)), '22 minutos 30 segundos');
     });
+
+    test('exposición por tema del examen: TCEE 30 min, DCE 20 (40 para dos)', () {
+      expect(Oposiciones.tcee.minutosExposicion(3), 30);
+      expect(Oposiciones.tcee.minutosExposicion(4), 30);
+      expect(Oposiciones.tcee.minutosExposicion(0), 30);
+      expect(Oposiciones.dce.minutosExposicion(3), 20);
+      expect(Oposiciones.dce.minutosExposicion(0), 20);
+      expect(Oposiciones.dce.ejercicio(3)!.segundosEsquemaPara(1), 900); // 15 min
+      // Una clase de DCE guardada sin exposición por una versión anterior vale lo del examen.
+      Oposiciones.actual = Oposiciones.dce;
+      try {
+        final clase = Cante.fromJson({'id': 'd', 'fecha': '2026-10-21T18:00:00.000', 'ejercicio': 3});
+        expect(clase.exposicion, 20);
+        expect(Cante.fromJson(clase.toJson()).exposicion, 20);
+        expect(Cante.fromJson({'id': 'e', 'fecha': '2026-10-21T18:00:00.000', 'ejercicio': 3, 'exposicion': 30}).exposicion, 30);
+      } finally {
+        Oposiciones.actual = Oposiciones.tcee;
+      }
+    });
   });
 
   group('calendario', () {

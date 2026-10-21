@@ -112,9 +112,10 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   }
 
   // Cronómetro
-  /// Esquema en segundos (22 min 30 s para un tema de TCEE); exposición en minutos.
+  /// Esquema en segundos (22 min 30 s para un tema de TCEE); exposición en
+  /// minutos por tema (la del examen: TCEE 30, DCE 20).
   int _segEsquema = 0;
-  int _minExposicion = 30;
+  int _minExposicion = Oposiciones.actual.minutosExposicion(0);
   late RelojCante _reloj = RelojCante(exposicion: Duration(minutes: _minExposicion));
   /// Hacia delante desde 0 (por defecto) o cuenta atrás; se recuerda en cada dispositivo.
   ModoReloj _modoReloj = _modoGuardado();
@@ -152,7 +153,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
     if (cante != null) _minExposicion = cante.exposicion;
     // El preparador sin alumno no tiene temas estudiados propios: su bolsa es una lista.
     if (widget.sesion == null && ref.read(papelProvider) == Papel.preparador) _fuente = _Fuente.lista;
-    _segEsquema = _esquemaPorDefecto(cante?.ejercicio ?? _ejercicio);
+    _segEsquema = _esquemaPorDefecto(cante == null || cante.ejercicio == 0 ? _ejercicio : cante.ejercicio, temas: _temasDe(cante));
     _nuevoReloj();
     WidgetsBinding.instance.addPostFrameCallback((_) => _tomarTemaMandado());
   }
@@ -196,14 +197,19 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
   /// segundos (la de antes, `esquema:`, guardaba minutos enteros).
   String _claveEsquema(int ejercicio) => 'esquema_s:${Oposiciones.actual.id}:$ejercicio';
 
-  /// La última que se usó en ese ejercicio o, si no, la del examen (segundos).
-  int _esquemaPorDefecto(int ejercicio) {
+  /// Temas que se van a cantar: los de la clase, si es con preparador; si no,
+  /// los de una clase de la oposición (TCEE uno, DCE dos).
+  int _temasDe(Cante? cante) => cante != null && (widget.sesion != null || cante.dePreparador) ? cante.numTemas : Oposiciones.actual.temasPorClase;
+
+  /// La última que se usó en ese ejercicio o, si no, la del examen para
+  /// [temas] temas (segundos: 22 min 30 s para uno de TCEE, 15 min en DCE).
+  int _esquemaPorDefecto(int ejercicio, {required int temas}) {
     final caja = Hive.isBoxOpen(Cajas.app) ? Hive.box(Cajas.app) : null;
     final guardado = caja?.get(_claveEsquema(ejercicio));
     if (guardado is int) return guardado;
     final antiguo = caja?.get('esquema:${Oposiciones.actual.id}:$ejercicio');
     if (antiguo is int) return antiguo * 60;
-    return (Oposiciones.actual.ejercicio(ejercicio)?.minutosEsquema ?? 0) * 60;
+    return Oposiciones.actual.ejercicio(ejercicio)?.segundosEsquemaPara(temas) ?? 0;
   }
 
   void _elegirEsquema(int segundos, int ejercicio) {
@@ -702,7 +708,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
       setState(() {
         _limpiarSorteo();
         _minExposicion = c.exposicion;
-        _segEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio);
+        _segEsquema = _esquemaPorDefecto(c.ejercicio == 0 ? _ejercicio : c.ejercicio, temas: _temasDe(c));
         _nuevoReloj();
       });
     });
@@ -774,7 +780,7 @@ class _CantarPageState extends ConsumerState<CantarPage> implements FuenteReloj 
                           _ejercicio = s.first;
                           _limpiarSorteo();
                           if (!_reloj.empezado) {
-                            _segEsquema = _esquemaPorDefecto(_ejercicio);
+                            _segEsquema = _esquemaPorDefecto(_ejercicio, temas: _temasDe(null));
                             _nuevoReloj();
                           }
                         }),

@@ -1309,7 +1309,7 @@ class PreparadorRepo {
       a = Alumno(id: r.alumno, uid: r.alumno, nombre: r.alumnoNombre.isEmpty ? 'Alumno' : r.alumnoNombre, creado: DateTime.now(), updatedAt: DateTime.now());
       await guardarAlumno(a);
     }
-    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, updatedAt: DateTime.now());
+    final s = Cante(id: 'res_${r.id}', fecha: r.fecha, minutos: r.minutos, exposicion: Oposiciones.actual.minutosExposicion(a.ejercicio), ejercicio: a.ejercicio, bolsa: TipoBolsa.estudiados, alumno: a.id, notas: r.nota, updatedAt: DateTime.now());
     await guardarSesion(s);
     return s;
   }
