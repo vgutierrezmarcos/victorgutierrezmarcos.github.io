@@ -1,0 +1,52 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,thick,rounded corners=2pt,align=center,inner sep=5pt,minimum height=0.95cm},
+    supuesto/.style={font=\small,anchor=west,inner sep=1.5pt},
+    fallo/.style={draw=tceerojo,thick,text=tceerojo,rounded corners=2pt,align=center,inner sep=3pt,minimum width=3.75cm,minimum height=0.5cm,font=\small},
+    fallotema/.style={fallo,fill=tceenaranja!20},
+    rompe/.style={->,thick,tceerojo}]
+  % Capa 1: supuestos del 1TFEB
+  \capa{1}{
+    \node[font=\small\bfseries,anchor=west] (titulo) at (0.1,2.7) {Supuestos del 1TFEB};
+    \node[supuesto] (s1) at (0.1,1.5) {mercados completos};
+    \node[supuesto] (s2) at (0.1,0.5) {agentes precio-aceptantes};
+    \node[supuesto] (s3) at (0.1,-0.3) {información perfecta y simétrica};
+    \node[supuesto] (s4) at (0.1,-1.1) {precios comunes a todos};
+    \draw[tceemorado] (0.1,2.3) -- (5.0,2.3);
+    \draw[tceemorado,thick,rounded corners=2pt] (-0.1,-1.5) rectangle (5.2,3.15);
+    \coordinate (sup) at (5.2,0);
+  }
+  % Capa 2: equilibrio walrasiano
+  \capa{2}{
+    \node[caja] (ew) at (8.0,2.7) {Equilibrio\\walrasiano};
+    \draw[->,very thick] (sup |- ew) -- (ew.west);
+  }
+  % Capa 3: óptimo de Pareto (1TFEB)
+  \capa{3}{
+    \node[caja] (op) at (13.0,2.7) {Óptimo\\de Pareto};
+    \draw[->,very thick,tceeverde] (ew.east) -- node[pos=0.3,below,etiqueta,text=tceeverde] {1TFEB} (op.west);
+  }
+  % Capa 4: poder de mercado e información asimétrica
+  \capa{4}{
+    \node[fallo] (f2) at (8.0,0.5) {poder de mercado};
+    \draw[rompe] (f2.west) -- (sup |- f2);
+    \node[fallo] (f3) at (8.0,-0.3) {información asimétrica};
+    \draw[rompe] (f3.west) -- (sup |- f3);
+  }
+  % Capa 5: externalidades y bienes públicos (los fallos del tema)
+  \capa{5}{
+    \node[fallotema] (f1a) at (8.0,1.85) {externalidades};
+    \node[fallotema] (f1b) at (8.0,1.2) {bienes públicos};
+    \draw[thick,tceerojo] (f1a.west) -| (6.0,1.5);
+    \draw[thick,tceerojo] (f1b.west) -| (6.0,1.5);
+    \draw[rompe] (6.0,1.5) -- (sup |- s1);
+  }
+  % Capa 6: el equilibrio deja de ser un óptimo
+  \capa{6}{
+    \draw[tceerojo,line width=1.6pt] ($(ew.east)!0.68!(op.west)+(-0.25,-0.25)$) -- ++(0.5,0.5);
+    \draw[tceerojo,line width=1.6pt] ($(ew.east)!0.68!(op.west)+(-0.25,0.25)$) -- ++(0.5,-0.5);
+  }
+\end{tikzpicture}
+\end{document}

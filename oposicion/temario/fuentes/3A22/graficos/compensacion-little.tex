@@ -1,0 +1,81 @@
+% Criterio dual de Little (3.A.22, anexo de criterios de compensación).
+% Serie compensacion-*: misma escala (x = y = 0,55 cm), FPU_2 y rótulos que compensacion-scitovsky.
+% a) FPU_2: U_A²/9,4² + U_B²/6,8² = 1 (verde). FPU_1 (azul, en S): interpolación monótona (PCHIP)
+%   por (0; 8,8), (1,5; 7,6), (2,9; 5,3), (3,7; 4,25), (4,7; 3,8), (6,38; 3,22), (7,3; 2,5),
+%   (8; 1,3) y (8,5; 0); corta a la FPU_2 en U_A = 2,15, a la izquierda de 5, de modo que todo el
+%   tramo de la FPU_2 entre 5 y 6 queda fuera de la FPU_1 (se cumple Hicks).
+%   1 = (6,38; 3,22): rayo a 26,78°; el de 5, simétrico respecto a la bisectriz, a 63,22°.
+%   En FPU_2: 2 = (6,38; 4,994) sobre 1; 3 = (8,279; 3,22) a la derecha de 1; 4 = (7,709; 3,891)
+%   en el rayo de 1; 5 = (3,224; 6,388) en el rayo simétrico; 6 = (9,2; 1,395).
+%   β, γ y ε coinciden con 2, 3 y 4. En FPU_1: α = (3,103; 4,994), δ = (8,279; 0,602),
+%   ζ = (4,458; 3,891), η = (7,709; 1,880), θ = (3,224; 4,811), ι = (7,954; 1,395).
+% b) FPU_1' = superelipse (U_A/8,6)^p + (U_B/9,6)^p = 1, p = 1,1387, que pasa por 1 y corta a la
+%   FPU_2 en (3,746; 6,237), entre los rayos de 5 y de 1: solo el tramo de la FPU_2 entre el corte
+%   y 4 (ángulo paramétrico de 66,51° a 34,90°) cumple a la vez Scitovsky y la equidad.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm,
+    aux/.style={circle,fill=tceegris,inner sep=0.9pt},
+    etqaux/.style={etiqueta,text=tceegris},
+    bisectriz/.style={thick,tceerojo},
+    rayo/.style={thin,dashed,tceerojo}]
+  % 1: ejes U_A, U_B
+  \capa{1}{\ejes{$U_A$}{$U_B$}{11}{10.3}}
+  % 2: FPU_1 (en S) y FPU_2
+  \capa{2}{\draw[curva2] plot coordinates {(0.000,8.800) (0.100,8.722) (0.200,8.646) (0.300,8.573) (0.400,8.502) (0.500,8.431) (0.600,8.360) (0.700,8.289) (0.800,8.216) (0.900,8.141) (1.000,8.062) (1.100,7.980) (1.200,7.894) (1.300,7.802) (1.400,7.704) (1.500,7.600) (1.600,7.483) (1.700,7.349) (1.800,7.201) (1.900,7.041) (2.000,6.872) (2.100,6.695) (2.200,6.514) (2.300,6.330) (2.400,6.145) (2.500,5.963) (2.600,5.785) (2.700,5.613) (2.800,5.451) (2.900,5.300) (3.000,5.152) (3.100,4.999) (3.200,4.846) (3.300,4.699) (3.400,4.561) (3.500,4.437) (3.600,4.332) (3.700,4.250) (3.800,4.186) (3.900,4.128) (4.000,4.077) (4.100,4.031) (4.200,3.989) (4.300,3.950) (4.400,3.912) (4.500,3.876) (4.600,3.838) (4.700,3.800) (4.800,3.762) (4.900,3.726) (5.000,3.693) (5.100,3.661) (5.200,3.631) (5.300,3.602) (5.400,3.572) (5.500,3.543) (5.600,3.514) (5.700,3.483) (5.800,3.452) (5.900,3.418) (6.000,3.383) (6.100,3.344) (6.200,3.303) (6.300,3.259) (6.400,3.210) (6.500,3.156) (6.600,3.097) (6.700,3.031) (6.800,2.959) (6.900,2.881) (7.000,2.796) (7.100,2.704) (7.200,2.606) (7.300,2.500) (7.400,2.379) (7.500,2.236) (7.600,2.074) (7.700,1.897) (7.800,1.707) (7.900,1.507) (8.000,1.300) (8.100,1.073) (8.200,0.817) (8.300,0.544) (8.400,0.268) (8.500,0.000)};}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south east] at (8.3,0.1) {$\mathrm{FPU}_1$};}
+  \capa{2}{\draw[curva3] plot[domain=90:0,samples=120,variable=\t] ({9.4*cos(\t)},{6.8*sin(\t)});}
+  \capa{2}{\node[etiqueta,text=tceeverde,anchor=south west] at (9.45,0.1) {$\mathrm{FPU}_2$};}
+  % 3: bisectriz y rayo por 1
+  \capa{3}{\draw[bisectriz] (0,0) -- (7.4,7.4);}
+  \capa{3}{\node[etiqueta,text=tceerojo,rotate=45,anchor=south] at (2.6,2.6) {bisectriz};}
+  \capa{3}{\draw[bisectriz] (1.4,0) arc[start angle=0,end angle=45,radius=1.4];}
+  \capa{3}{\node[etiqueta,text=tceerojo,anchor=west] at (1.45,0.45) {$45^\circ$};}
+  \capa{3}{\draw[rayo] (0,0) -- (9.9,5.0);}
+  % 4: punto 1 en la FPU_1 y puntos 2 a 6 en la FPU_2
+  \capa{4}{\node[punto,label={[etiqueta]below:$1$}] (p1) at (6.38,3.22) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$2$}] (p2) at (6.38,4.9939) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$3$}] (p3) at (8.2793,3.22) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$4$}] (p4) at (7.7092,3.8908) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above left:$5$}] (p5) at (3.2238,6.3876) {};}
+  \capa{4}{\node[punto,label={[etiqueta]above right:$6$}] (p6) at (9.2,1.3953) {};}
+  % 5: rayo por 5 y puntos auxiliares con sus guías
+  \capa{5}{\draw[rayo] (0,0) -- (5.0,9.9);}
+  \capa{5}{\node[etqaux,anchor=west] at (6.6,5.15) {$\beta$};}
+  \capa{5}{\node[etqaux,anchor=west] at (8.55,3.3) {$\gamma$};}
+  \capa{5}{\node[etqaux,anchor=west] at (7.95,4.15) {$\varepsilon$};}
+  \capa{5}{\draw[guia] (p1) -- (p2);}
+  \capa{5}{\draw[guia] (p1) -- (p3);}
+  \capa{5}{\draw[guia] (p2) -- (3.1034,4.9939);}
+  \capa{5}{\node[aux,label={[etqaux]left:$\alpha$}] at (3.1034,4.9939) {};}
+  \capa{5}{\draw[guia] (p3) -- (8.2793,0.6015);}
+  \capa{5}{\node[aux,label={[etqaux]right:$\delta$}] at (8.2793,0.6015) {};}
+  \capa{5}{\draw[guia] (p4) -- (4.4583,3.8908);}
+  \capa{5}{\node[aux,label={[etqaux]below left:$\zeta$}] at (4.4583,3.8908) {};}
+  \capa{5}{\draw[guia] (p4) -- (7.7092,1.8798);}
+  \capa{5}{\node[aux,label={[etqaux]left:$\eta$}] at (7.7092,1.8798) {};}
+  \capa{5}{\draw[guia] (p5) -- (3.2238,4.8107);}
+  \capa{5}{\node[aux,label={[etqaux]below left:$\theta$}] at (3.2238,4.8107) {};}
+  \capa{5}{\draw[guia] (p6) -- (7.9542,1.3953);}
+  \capa{5}{\node[aux,label={[etqaux]left:$\iota$}] at (7.9542,1.3953) {};}
+  \node[etiqueta,font=\normalsize] at (5.5,-2.2) {a)};
+  % 6: panel b, con FPU que se cortan entre los rayos de 5 y de 1
+  \begin{scope}[shift={(13.5,0)},scale=0.6]
+    \capa{6}{\ejes{$U_A$}{$U_B$}{11}{10.3}}
+    \capa{6}{\draw[curva2] plot[domain=90:0,samples=150,variable=\t] ({8.6*cos(\t)^(2/1.13874)},{9.6*sin(\t)^(2/1.13874)});}
+    \capa{6}{\node[etiqueta,text=tceeazul,anchor=south east] at (7.7,0.1) {$\mathrm{FPU}_1$};}
+    \capa{6}{\draw[curva3] plot[domain=90:0,samples=120,variable=\t] ({9.4*cos(\t)},{6.8*sin(\t)});}
+    \capa{6}{\node[etiqueta,text=tceeverde,anchor=south west] at (9.45,0.1) {$\mathrm{FPU}_2$};}
+    \capa{6}{\draw[bisectriz] (0,0) -- (7.4,7.4);}
+    \capa{6}{\draw[rayo] (0,0) -- (9.9,5.0);}
+    \capa{6}{\draw[rayo] (0,0) -- (5.0,9.9);}
+    \capa{6}{\draw[curva4,line width=2.4pt] plot[domain=66.51:34.90,samples=60,variable=\t] ({9.4*cos(\t)},{6.8*sin(\t)});}
+    \capa{6}{\node[punto,label={[etiqueta]below:$1$}] at (6.38,3.22) {};}
+    \capa{6}{\node[punto,label={[etiqueta]above right:$4$}] at (7.7092,3.8908) {};}
+    \capa{6}{\node[punto,label={[etiqueta]left:$5$}] at (3.2238,6.3876) {};}
+    \capa{6}{\node[etiqueta,font=\normalsize] at (5.5,-3.67) {b)};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

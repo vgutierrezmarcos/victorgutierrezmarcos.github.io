@@ -1,7 +1,7 @@
 # El mercado de «limones» (Akerlof, 1970): selección adversa y desenredo del mercado
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.13** («selección adversa» en el título; revisado el 19/10/2026, I.2) — es el ejemplo con el que el tema muestra por qué la asignación competitiva se aparta de la óptima, con a)-e), el caso continuo y la evidencia. Ficha creada a raíz de esa revisión.
-- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.23 (resumen previsto: la información asimétrica como fallo de mercado, con el ejemplo de 2 calidades en una frase y remisión), 3.A.21 (mención; hecho: la información asimétrica explica los mercados que faltan, Arrow, 1963), 3.A.1 (mención: la economía de la información desde los años 70), 3.B.27 y 4.A.20 (mención: la selección adversa en el crédito antes de Stiglitz-Weiss), 4.B.3 (mención: seguros sanitarios).
+- **Temas que lo usan:** 3.A.13 (desarrollo; hecho, 19/10/2026), 3.A.23 (mención; hecho, 21/10/2026: la información asimétrica como fallo de mercado, una frase y remisión), 3.A.21 (mención; hecho: la información asimétrica explica los mercados que faltan, Arrow, 1963), 3.A.1 (mención: la economía de la información desde los años 70), 3.B.27 y 4.A.20 (mención: la selección adversa en el crédito antes de Stiglitz-Weiss), 4.B.3 (mención: seguros sanitarios).
 - **Manuales de referencia:** Akerlof (1970), *QJE*; Akerlof (2001), ensayo Nobel «Writing *The Market for 'Lemons'*»; Mas-Colell, Whinston y Green (1995), cap. 13.B; Wilson (1980), *Bell Journal*; Macho-Stadler y Pérez-Castrillo (2001), cap. 1; Einav y Finkelstein (2011), *JEP*.
 
 ## Presentación de referencia (3.A.13, I.2)
@@ -24,7 +24,7 @@ $$p^*=\frac{\alpha\,\underline s}{2-\alpha}\qquad(\alpha<2,\ p^*<\overline s)$$
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.13 | Selección adversa: por qué la asignación competitiva no es óptima | desarrollo (hecho, 19/10/2026) | Todo lo anterior | — |
-| 3.A.23 | La información asimétrica como fallo de mercado | resumen (previsto) | Las 2 calidades y el «solo se venden limones» en 2 frases, con la terna de condiciones (información oculta, heterogeneidad, conflicto) y las soluciones públicas del 3.A.13 (I.3.3); remisión | El caso continuo y la evidencia |
+| 3.A.23 | La información asimétrica como fallo de mercado | mención (hecho, 21/10/2026) | Supuesto 2 de su tabla de fallos («Información perfecta y simétrica»): selección adversa y riesgo moral, y mercados que desaparecen, «como el de coches usados de Akerlof», con `\vertema{3.A.13}` | El modelo |
 | 3.A.21 | Valoración del EGC: mercados que faltan | mención (hecho) | La información asimétrica (selección adversa y riesgo moral) explica por qué faltan mercados (Arrow, 1963) | El modelo |
 | 3.A.1 | Historia del pensamiento | mención | La economía de la información desde los años 70 con Akerlof (Nobel de 2001) | El modelo |
 | 3.B.27, 4.A.20 | Regulación financiera; financiación de las empresas | mención | La selección adversa como base del racionamiento (ficha `stiglitz-weiss`) | El modelo |

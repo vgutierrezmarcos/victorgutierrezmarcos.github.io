@@ -1,0 +1,41 @@
+% Colusión con estrategias de gatillo (anexo:gatillo): factor de descuento
+% mínimo para sostenerla en función del número de empresas n.
+% Parte del gráfico colusion-tiempo.tex (mismo estilo).
+%   Bertrand: beta >= 1 - 1/n  (B^C = B^M/n, B^D -> B^M, B^N = 0)
+%   Cournot con demanda lineal y castigo de Cournot:
+%     B^C = (a-c)^2/(4nb), B^D = (n+1)^2 (a-c)^2/(16 n^2 b), B^N = (a-c)^2/((n+1)^2 b)
+%     beta >= (n+1)^2/(n^2 + 6n + 1): 9/17 = 0,53 con n = 2; 0,57 con 3; 0,75 con 10
+%   Con n = 2 es más exigente Cournot (0,53 > 0,5); desde n = 3, Bertrand.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% El eje vertical empieza en 0,4 (marca de corte): y = beta - 0,4.
+\begin{tikzpicture}[tcee,x=0.8cm,y=9cm,
+    declare function={bert(\n)=1-1/\n-0.4; cour(\n)=(\n+1)^2/(\n^2+6*\n+1)-0.4;}]
+  \useasboundingbox (-1.6,-0.12) rectangle (16.2,0.73);
+  % 1: ejes (número de empresas y factor de descuento mínimo, desde 0,4)
+  \capa{1}{\draw[eje] (0,0) -- (11.6,0) node[below left=2pt and 0pt] {$n$};}
+  \capa{1}{\draw[eje] (0,0) -- (0,0.68) node[above] {$\beta$ mínima};}
+  \capa{1}{\draw[thick,white] (-0.15,0.03) -- (0.15,0.05);}
+  \capa{1}{\draw (-0.15,0.022) -- (0.15,0.042) (-0.15,0.038) -- (0.15,0.058);}
+  \capa{1}{\foreach \n in {2,...,10} {\draw (\n,0) -- (\n,-0.008) node[below] {$\n$};}}
+  \capa{1}{\foreach \b/\e in {0/0{,}4,0.35/0{,}75,0.6/1} {\draw (0,\b) -- (-0.1,\b) node[left] {$\e$};}}
+  \capa{1}{\draw[guia] (0,0.6) -- (11.2,0.6);}
+  % 2: Bertrand, beta >= 1 - 1/n
+  \capa{2}{\draw[curva2] plot[domain=2:10,samples=50] (\x,{bert(\x)});}
+  \capa{2}{\foreach \n in {2,...,10} {\node[punto,fill=tceeazul] at (\n,{bert(\n)}) {};}}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=west] at (10.2,{bert(10)}) {\textsc{Bertrand}: $1-1/n$};}
+  % 3: Cournot, beta >= (n+1)^2/(n^2+6n+1)
+  \capa{3}{\draw[curva1] plot[domain=2:10,samples=50] (\x,{cour(\x)});}
+  \capa{3}{\foreach \n in {2,...,10} {\node[punto,fill=tceemorado] at (\n,{cour(\n)}) {};}}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=west,align=left] at (10.2,{cour(10)}) {\textsc{Cournot}:\\ $(n+1)^2/(n^2+6n+1)$};}
+  % 4: los valores del duopolio y la zona en que la colusión aguanta
+  \capa{4}{\draw[guia] (2,{cour(2)}) -- (0,{cour(2)});}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=south west,font=\footnotesize] at (0.1,{cour(2)}) {$9/17\approx0{,}53$};}
+  \capa{4}{\draw[guia] (2,0.1) -- (0,0.1);}
+  \capa{4}{\node[etiqueta,text=tceeazul,anchor=north west,font=\footnotesize] at (0.1,0.1) {$1/2$ (duopolio)};}
+  \capa{4}{\node[etiqueta,align=center,font=\footnotesize] at (5.2,0.56) {por encima de cada curva, la colusión aguanta};}
+  \capa{4}{\node[etiqueta,align=left,font=\footnotesize,anchor=north west] at (4.6,0.17) {más empresas, más paciencia hace falta;\\ con $n=2$ exige más \textsc{Cournot} (castigo más suave)\\ y desde $n=3$, \textsc{Bertrand} (desviarse da más)};}
+\end{tikzpicture}
+\end{document}

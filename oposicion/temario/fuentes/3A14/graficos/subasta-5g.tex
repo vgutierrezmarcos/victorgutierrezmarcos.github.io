@@ -1,0 +1,47 @@
+% La subasta de la licencia del 5G con el ejemplo del tema: I vale 10, E 8 y O 6.
+% Barras: hasta dónde sigue cada operador en la subasta inglesa (su valoración).
+% Línea roja: la inglesa (y el segundo precio) termina en 8, cuando se retira E; gana I y paga 8.
+% Rombos dorados: pujas de primer precio con 3 pujadores y valoraciones U[0,12], 2/3 de la valoración.
+% Línea dorada: en primer precio, I gana y paga su puja, 6,67.
+% Elaboración propia.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.85cm,y=1cm]
+  \useasboundingbox (-1.9,-0.75) rectangle (14.4,4.35);
+  % 1: eje del precio, de 0 a 12, y los 3 operadores
+  \capa{1}{\draw[eje] (0,0) -- (12.8,0) node[right] {precio};}
+  \capa{1}{\foreach \x in {0,2,...,12} {\draw (\x,0.06) -- (\x,-0.06) node[below] {\x};}}
+  \capa{1}{\node[etiqueta,anchor=east] at (-0.15,0.9) {\textbf{O}};}
+  \capa{1}{\node[etiqueta,anchor=east] at (-0.15,1.9) {\textbf{E}};}
+  \capa{1}{\node[etiqueta,anchor=east] at (-0.15,2.9) {\textbf{\textup{I}}};}
+  % 2: O sigue en la inglesa hasta su valoración, 6, y se retira
+  \capa{2}{\fill[tceemorado,fill opacity=0.18] (0,0.65) rectangle (6,1.15);}
+  \capa{2}{\draw[curva1,thick] (6,0.65) -- (6,1.15);}
+  \capa{2}{\node[etiqueta,anchor=east,text=tceemorado] at (5.95,0.9) {vale 6};}
+  \capa{2}{\node[etiqueta,anchor=west,text=tceerojo] at (6.05,0.9) {se retira};}
+  % 3: E sigue hasta 8 y se retira
+  \capa{3}{\fill[tceemorado,fill opacity=0.18] (0,1.65) rectangle (8,2.15);}
+  \capa{3}{\draw[curva1,thick] (8,1.65) -- (8,2.15);}
+  \capa{3}{\node[etiqueta,anchor=east,text=tceemorado] at (7.95,1.9) {vale 8};}
+  \capa{3}{\node[etiqueta,anchor=west,text=tceerojo] at (8.05,1.9) {se retira};}
+  % 4: I seguiría hasta 10
+  \capa{4}{\fill[tceemorado,fill opacity=0.18] (0,2.65) rectangle (10,3.15);}
+  \capa{4}{\draw[curva1,thick] (10,2.65) -- (10,3.15);}
+  \capa{4}{\node[etiqueta,anchor=east,text=tceemorado] at (9.95,2.9) {vale 10};}
+  % 5: la inglesa (y el segundo precio) se para en 8: gana I y paga 8
+  \capa{5}{\draw[very thick,tceerojo] (8,0) -- (8,3.45);}
+  \capa{5}{\node[etiqueta,anchor=south west,text=tceerojo,align=left] at (8.05,3.3) {inglesa y segundo precio:\\ gana \textup{I} y paga 8};}
+  % 6: pujas de primer precio, 2/3 de cada valoración
+  \capa{6}{\node[rectangle,rotate=45,fill=tceedorado,inner sep=0pt,minimum size=5.5pt] at (4,0.9) {};}
+  \capa{6}{\node[etiqueta,anchor=north,text=tceedorado] at (4,0.62) {puja 4};}
+  \capa{6}{\node[rectangle,rotate=45,fill=tceedorado,inner sep=0pt,minimum size=5.5pt] at (16/3,1.9) {};}
+  \capa{6}{\node[etiqueta,anchor=north,text=tceedorado] at (16/3,1.62) {puja 5,33};}
+  \capa{6}{\node[rectangle,rotate=45,fill=tceedorado,inner sep=0pt,minimum size=5.5pt] at (20/3,2.9) {};}
+  \capa{6}{\node[etiqueta,anchor=north,text=tceedorado] at (20/3,2.62) {puja 6,67};}
+  % 7: en primer precio gana I y paga su puja, 6,67
+  \capa{7}{\draw[very thick,dashed,tceedorado] (20/3,3.0) -- (20/3,3.45);}
+  \capa{7}{\node[etiqueta,anchor=south east,text=tceedorado,align=right] at (20/3+0.05,3.3) {primer precio:\\ gana \textup{I} y paga 6,67};}
+\end{tikzpicture}
+\end{document}

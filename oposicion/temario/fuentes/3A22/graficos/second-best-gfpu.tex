@@ -1,0 +1,37 @@
+% El segundo óptimo en el espacio de las utilidades (3.A.22, III.1 b) ii)).
+% GFPU: U_A² + U_B² = 49 y curvas de indiferencia social de W = (U_A U_B)^(1/2)
+% (U_B = k/U_A, k = W²), las de fbs-gfpu.
+% F = (4,950; 4,950), punto de felicidad: tangencia de W_3 (k = 24,5) con la GFPU.
+% Restricción: U_B = 9 - 1,2 U_A (F queda por encima: 9 - 1,2·4,95 = 3,06 < 4,95).
+%   Corta la GFPU en P = (1,881; 6,742) (ángulo 74,41°) y en (6,971; 0,635) (5,20°).
+% P: el mejor punto accesible de la GFPU (los demás accesibles quedan más lejos de F),
+%   sobre W_1 (k = 12,684).
+% Q = (3,75; 4,5): tangencia de la recta con W_2 (k = 16,875 > 12,684): segundo óptimo.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  % 1: ejes U_A, U_B
+  \capa{1}{\ejes{$U_A$}{$U_B$}{9.6}{9}}
+  % 2: la GFPU
+  \capa{2}{\draw[curva2] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{7*sin(\t)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {GFPU};}
+  % 3: curva social tangente y punto de felicidad F (primer óptimo)
+  \capa{3}{\draw[curva4,thick] plot[domain=3.2:8.4,samples=100] (\x,{24.5/\x})
+    node[etiqueta,right,text=black] {$W_3$};}
+  \capa{3}{\node[punto,label={[etiqueta]above right:$F$}] at (4.9497,4.9497) {};}
+  % 4: la restricción y la zona que deja fuera de alcance
+  \capa{4}{\fill[area,fill=tceerojo,fill opacity=0.13]
+    plot[domain=74.41:5.20,samples=100,variable=\t] ({7*cos(\t)},{7*sin(\t)}) -- cycle;}
+  \capa{4}{\draw[curvanueva] (0.4,8.52) -- (7.5,0) node[etiqueta,below,text=tceerojo] {restricción};}
+  % 5: P, óptimo de Pareto accesible, sobre W_1
+  \capa{5}{\draw[curva4,thick] plot[domain=1.65:8.4,samples=100] (\x,{12.684/\x})
+    node[etiqueta,right,text=black] {$W_1$};}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$P$}] at (1.8813,6.7425) {};}
+  % 6: Q, en la restricción y por debajo de la GFPU, sobre W_2 > W_1: segundo óptimo
+  \capa{6}{\draw[curva4,thick] plot[domain=2.2:8.4,samples=100] (\x,{16.875/\x})
+    node[etiqueta,right,text=black] {$W_2$};}
+  \capa{6}{\node[punto,label={[etiqueta]below left:$Q$}] at (3.75,4.5) {};}
+\end{tikzpicture}
+\end{document}

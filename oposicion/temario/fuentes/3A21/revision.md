@@ -304,3 +304,7 @@ Introducción, bloque III, conclusión y anexo E, con las reglas de CRITERIOS.md
 ## Retoques de coherencia del 17/10/2026
 
 A raíz de la revisión del 3.A.16 y del 3.A.17 (`canon/pendientes-coherencia.md`): Musgrave se mantiene en II.1.3 con el matiz de que la estabilización macroeconómica es una analogía; en el anexo D, la oferta decreciente se atribuye a las economías externas a la empresa (industria de costes decrecientes, 3.A.16) y no a los rendimientos crecientes; la nota de la negociación remite también al 3.A.17 para la solución de Nash generalizada en el monopolio bilateral.
+
+## Retoques de coherencia del 21/10/2026
+
+A raíz del 3.A.22 (`canon/pendientes-coherencia.md`): los supuestos del 1TFEB de II.2 añaden la información perfecta y simétrica (\vertema{3.A.13}), y los del anexo C siguen el orden de la tabla del 3.A.22 (no saciedad local, mercados completos, precio-aceptantes, precios comunes, información perfecta). Ficha de repaso (sigue en 4 páginas), guion y escenas ajustados con la misma frase.

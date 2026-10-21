@@ -1,0 +1,108 @@
+% Curvas de contrato especiales (3.A.22, anexo), a partir de Varian (1992, cap. 17).
+% Nueve cajas de Edgeworth de 3,2 × 2,4 (O_A abajo a la izquierda, O_B arriba a la derecha).
+% Curvas de indiferencia de A en morado, de B en verde; curva de contrato en azul grueso.
+% (2) A: rectas de pendiente -1; B: X_B Y_B = k, RMS^B = Y_B/X_B = 1 en el rayo de O_B
+%     y = x - 0,8; tangencias en (2; 1,2) (k = 1,44, recta x + y = 3,2) y en (1,2; 0,4)
+%     (k = 4, recta x + y = 1,6). Curva de contrato: O_A → (0,8; 0) por el lado inferior
+%     y el rayo hasta O_B.
+% (3b) Rayo de vértices de A: y = 0,5 x; de B: y = x - 0,8; se cortan en (1,6; 0,8).
+%     Óptimos: donde los 2 tienen sobrante del mismo bien, los triángulos
+%     O_A-(0,8; 0)-(1,6; 0,8) (sobra X) y (1,6; 0,8)-(3,2; 1,6)-O_B (sobra Y).
+% (4) y (5) Rayo de vértices de A: y = 1,5 x, hasta (1,6; 2,4); luego el lado superior hasta O_B.
+%     En (4), B con X_B Y_B = k por los vértices (0,5; 0,75) (k = 4,455) y (1,1; 1,65) (k = 1,575).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    cc/.style={tceeazul,line width=2.6pt},
+    zonacc/.style={fill=tceeazul,fill opacity=0.3,draw=tceeazul,thick},
+    ia/.style={curva1,thick},
+    ib/.style={curva3,thick},
+    rot/.style={etiqueta,font=\scriptsize},
+    titulo/.style={etiqueta,font=\footnotesize,anchor=south,align=center,text width=4.1cm}]
+  % Una caja de Edgeworth con su título: \marco{x}{y}{título}
+  \newcommand{\marco}[3]{%
+    \begin{scope}[shift={(#1,#2)}]
+      \draw[thick] (0,0) rectangle (3.2,2.4);
+      \node[rot,below left,text=tceemorado,inner sep=1pt] at (0,0) {$O_A$};
+      \node[rot,above right,text=tceeverde,inner sep=1pt] at (3.2,2.4) {$O_B$};
+      \node[titulo] at (1.6,2.62) {#3};
+    \end{scope}}
+  % 1: las nueve cajas con sus títulos
+  \capa{1}{\marco{0}{0}{(1a) Sustitutivos perfectos,\\ \mbox{$\mathrm{RMS}^A>\mathrm{RMS}^B$}}}
+  \capa{1}{\marco{4.4}{0}{(1b) Sustitutivos perfectos,\\ \mbox{$\mathrm{RMS}^A<\mathrm{RMS}^B$}}}
+  \capa{1}{\marco{8.8}{0}{(1c) Sustitutivos perfectos,\\ \mbox{$\mathrm{RMS}^A=\mathrm{RMS}^B$}}}
+  \capa{1}{\marco{0}{-3.9}{(2) Sustitutivos perfectos ($A$)\\ y convexas ($B$)}}
+  \capa{1}{\marco{4.4}{-3.9}{(3a) Complementarios,\\ vértices en la diagonal}}
+  \capa{1}{\marco{8.8}{-3.9}{(3b) Complementarios,\\ rayos de vértices distintos}}
+  \capa{1}{\marco{0}{-7.8}{(4) Complementarios ($A$)\\ y convexas ($B$)}}
+  \capa{1}{\marco{4.4}{-7.8}{(5) Complementarios ($A$) y\\ sustitutivos perfectos ($B$)}}
+  \capa{1}{\marco{8.8}{-7.8}{(6) Bienes distintos: a $A$\\ solo le gusta $X$, a $B$ solo $Y$}}
+  % 2: curvas de indiferencia
+  \capa{2}{\begin{scope}[shift={(0,0)}]% (1a) A más inclinada que B
+    \draw[ia] (0.5,2.4) -- (1.91,0) node[rot,above right=-1pt,pos=0.97] {$U_A$};
+    \draw[ib] (0,2.12) -- (3.2,0.2) node[rot,above,pos=0.88] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(4.4,0)}]% (1b) B más inclinada que A
+    \draw[ia] (0,2.12) -- (3.2,0.2) node[rot,below,pos=0.12] {$U_A$};
+    \draw[ib] (1.29,2.4) -- (2.7,0) node[rot,above right=-1pt,pos=0.97] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(8.8,0)}]% (1c) paralelas
+    \draw[ia] (0,1.6) -- (2.13,0) node[rot,above right=-1pt,pos=0.92] {$U_A$};
+    \draw[ib] (0.67,2.4) -- (3.2,0.5) node[rot,above right=-1pt,pos=0.78] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(0,-3.9)}]% (2) rectas de A tangentes a las curvas de B
+    \draw[ia] (0,1.6) -- (1.6,0);
+    \draw[ia] (0.8,2.4) -- (3.2,0) node[rot,above right=-1pt,pos=0.9] {$U_A$};
+    \draw[ib] plot[domain=0:1.533,samples=60] (\x,{2.4-4/(3.2-\x)});
+    \draw[ib] plot[domain=0.3:2.6,samples=60] (\x,{2.4-1.44/(3.2-\x)});
+    \node[rot,text=tceeverde] at (0.25,2.15) {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(4.4,-3.9)}]% (3a) ángulos rectos con vértices en la diagonal
+    \draw[ia] (0.8,1.3) |- (1.5,0.6);
+    \draw[ia] (2.0,2.2) |- (2.7,1.5) node[rot,right] {$U_A$};
+    \draw[ib] (1.4,0.35) |- (0.7,1.05);
+    \draw[ib] (2.6,1.25) |- (1.9,1.95) node[rot,left] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(8.8,-3.9)}]% (3b) rayos de vértices distintos
+    \draw[ia,thin,dashed] (0,0) -- (3.2,1.6);
+    \draw[ib,thin,dashed] (0.8,0) -- (3.2,2.4);
+    \draw[ia] (0.6,0.85) |- (1.15,0.3);
+    \draw[ia] (2.4,1.75) |- (2.95,1.2) node[rot,right] {$U_A$};
+    \draw[ib] (2.6,1.25) |- (2.05,1.8);
+    \draw[ib] (1.2,-0.0) |- (0.65,0.4) node[rot,above left=-1pt] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(0,-7.8)}]% (4) ángulos rectos de A y curvas convexas de B
+    \draw[ia] (0.5,1.35) |- (1.1,0.75);
+    \draw[ia] (1.1,2.25) |- (1.7,1.65) node[rot,right] {$U_A$};
+    \draw[ib] plot[domain=0:1.344,samples=60] (\x,{2.4-4.455/(3.2-\x)});
+    \draw[ib] plot[domain=0.3:2.544,samples=60] (\x,{2.4-1.575/(3.2-\x)}) node[rot,above right=-1pt] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(4.4,-7.8)}]% (5) ángulos rectos de A y rectas de B
+    \draw[ia] (0.5,1.35) |- (1.1,0.75);
+    \draw[ia] (1.1,2.25) |- (1.7,1.65) node[rot,right] {$U_A$};
+    \draw[ib] (0,1.25) -- (1.25,0);
+    \draw[ib] (0.35,2.4) -- (2.75,0) node[rot,above right=-1pt,pos=0.92] {$U_B$};
+  \end{scope}}
+  \capa{2}{\begin{scope}[shift={(8.8,-7.8)}]% (6) A: verticales (solo X); B: horizontales (solo Y)
+    \draw[ia] (0.9,0) -- (0.9,2.4);
+    \draw[ia] (1.7,0) -- (1.7,2.4);
+    \draw[ib] (0,1.85) -- (3.2,1.85);
+    \draw[ib] (0,1.2) -- (3.2,1.2);
+    \draw[->,thin,tceemorado] (0.15,0.55) -- (0.75,0.55) node[rot,above,pos=0.4] {$U_A$};
+    \draw[->,thin,tceeverde] (2.6,1.72) -- (2.6,1.33) node[rot,right,pos=0.5] {$U_B$};
+  \end{scope}}
+  % 3: curvas de contrato
+  \capa{3}{\draw[cc] (0,0) -- (3.2,0) -- (3.2,2.4);}
+  \capa{3}{\draw[cc] (4.4,0) -- (4.4,2.4) -- (7.6,2.4);}
+  \capa{3}{\draw[zonacc,line width=2.6pt] (8.8,0) rectangle (12,2.4);}
+  \capa{3}{\draw[cc] (0,-3.9) -- (0.8,-3.9) -- (3.2,-1.5);}
+  \capa{3}{\draw[cc] (4.4,-3.9) -- (7.6,-1.5);}
+  \capa{3}{\filldraw[zonacc] (8.8,-3.9) -- (9.6,-3.9) -- (10.4,-3.1) -- cycle;}
+  \capa{3}{\filldraw[zonacc] (10.4,-3.1) -- (12,-2.3) -- (12,-1.5) -- cycle;}
+  \capa{3}{\draw[cc] (0,-7.8) -- (1.6,-5.4) -- (3.2,-5.4);}
+  \capa{3}{\draw[cc] (4.4,-7.8) -- (6,-5.4) -- (7.6,-5.4);}
+  \capa{3}{\node[circle,fill=tceeazul,inner sep=2.6pt] at (12,-7.8) {};}
+\end{tikzpicture}
+\end{document}

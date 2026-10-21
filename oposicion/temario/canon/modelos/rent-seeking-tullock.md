@@ -1,7 +1,7 @@
 # Búsqueda de rentas (Tullock, 1967; Krueger, 1974)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 — el que más lo trata.
-- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 3.A.17 (mención: coste social del monopolio; hecho, 17/10/2026), 3.B.7/3.B.9 (mención: contingentes y licencias de importación)
+- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 3.A.17 (mención: coste social del monopolio; hecho, 17/10/2026), 3.B.7/3.B.9 (mención: contingentes y licencias de importación); 3.A.23 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Tullock (1967), «The welfare costs of tariffs, monopolies, and theft», *Western Economic Journal*; Krueger (1974), «The political economy of the rent-seeking society», *AER*; Posner (1975), *JPE*; Mueller, *Public Choice III*, cap. 15.
 
 ## Presentación de referencia
@@ -15,6 +15,7 @@
 | 4.B.2 | Grupos de interés | Resumen | Concepto y disipación | — |
 | 4.B.5 | Crecimiento del gasto | Mención | — | — |
 | 3.A.17 | Monopolio | mención (hecho, 17/10/2026) | I.3: Tullock (1967) señala que los recursos para conseguir el monopolio son un coste social; Posner (1975) supone que la competencia por el premio disipa todo el rectángulo del beneficio, que se suma al triángulo (cota superior); remite a 4.B.2 solo para ampliar (D138). Teoría positiva de la regulación en el anexo A (Stigler, Olson, Peltzman, Becker) | La teoría de los grupos |
+| 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Los recursos dedicados a conseguir rentas creadas por el sector público son un coste social que se suma a la distorsión (Tullock, 1967; Krueger, 1974), `\vertema{3.A.17}` | El gráfico |
 
 ## Divergencias encontradas en el temario actual
 - Ninguna relevante.

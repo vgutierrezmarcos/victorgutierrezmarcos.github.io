@@ -210,6 +210,12 @@ en cada tema. Ver `LICENSE.md` en la raíz.
   indentada, con una frase de introducción que acaba en dos puntos. Lo que
   sigue a la lista (una conclusión, un matiz) va en otra viñeta del nivel de
   la introducción.
+- **Ejemplo conductor** (Víctor, 21/10/2026): nada de etiquetas como
+  «Hilo:». Cada vez que se retoma el ejemplo del tema va en su propia viñeta
+  indentada bajo el concepto que ilustra, empieza con una frase natural
+  («Siguiendo con el ejemplo de nuestros 2 operadores…», «Volvamos a I y
+  E…») y se desarrolla paso a paso con sus números (quién decide, qué sabe,
+  qué gana, qué resulta), con una tabla o un gráfico si ayuda a seguirlo.
 - Cada figura va **pegada al párrafo que la explica** (`[H]` justo después
   de él), no al principio ni al final del apartado (Víctor, 20/10/2026).
 - Una nota que **sigue en la página siguiente** lleva una flecha morada (↪)
@@ -528,6 +534,11 @@ el texto original y lo que se hizo.
 - **Exactamente 30:00**: el script ajusta el ritmo de toda la narración (sin
   cambiar el tono) para que acabe justo antes de la pantalla final. El ajuste
   debe quedar entre ×0,95 y ×1,05; si no, se recorta o se alarga el guion.
+- **Ejemplo conductor en el cante** (Víctor, 21/10/2026): el guion
+  intercala la teoría con el ejemplo del tema (concepto y, enseguida,
+  «volvamos a nuestra empresa…» con sus números en la pizarra), para que se
+  siga con facilidad. Nunca se dice «hilo» ni «el hilo conductor» en voz
+  alta ni en pantalla.
 - **Cómo habla el vídeo**: registro formal pero cercano y humano, natural
   y fácil de seguir, como un experto en comunicación ante el tribunal: frases
   de longitud variada (más cortas en lo difícil), conectores que guían

@@ -1,0 +1,28 @@
+% Criterio de Samuelson (3.A.22, anexo de criterios de compensación).
+% Serie compensacion-*: misma escala (x = y = 0,55 cm), colores y rótulos que compensacion-scitovsky.
+% FPU_1: U_A²/6,8² + U_B²/7,4² = 1 (azul). FPU_2: U_A²/9,4² + U_B²/9,6² = 1 (verde): sus 2 semiejes
+%   son mayores, así que la FPU_2 está entera por fuera de la FPU_1.
+% 1 = (4,371; 5,669) en la FPU_1 (ángulo paramétrico 50°). Flechas a la FPU_2: hacia arriba hasta
+%   (4,371; 8,499), a 45° hasta (6,050; 7,348) y a la derecha hasta (7,586; 5,669); el tramo de la
+%   FPU_2 entre esos extremos (ángulo paramétrico de 62,29° a 36,20°) mejora a los 2.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.55cm,y=0.55cm]
+  % 1: ejes U_A, U_B
+  \capa{1}{\ejes{$U_A$}{$U_B$}{11}{10.3}}
+  % 2: FPU_1
+  \capa{2}{\draw[curva2] plot[domain=90:0,samples=120,variable=\t] ({6.8*cos(\t)},{7.4*sin(\t)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south east] at (6.75,0.1) {$\mathrm{FPU}_1$};}
+  % 3: FPU_2, entera por fuera
+  \capa{3}{\draw[curva3] plot[domain=90:0,samples=120,variable=\t] ({9.4*cos(\t)},{9.6*sin(\t)});}
+  \capa{3}{\node[etiqueta,text=tceeverde,anchor=south west] at (9.45,0.1) {$\mathrm{FPU}_2$};}
+  % 4: punto 1 y flechas hacia el noreste hasta la FPU_2
+  \capa{4}{\node[punto,label={[etiqueta]below left:$1$}] (p1) at (4.371,5.6687) {};}
+  \capa{4}{\draw[curva4,line width=2.4pt] plot[domain=62.29:36.20,samples=50,variable=\t] ({9.4*cos(\t)},{9.6*sin(\t)});}
+  \capa{4}{\draw[flecha,shorten <=3pt] (p1) -- (4.371,8.499);}
+  \capa{4}{\draw[flecha,shorten <=3pt] (p1) -- (6.0496,7.3476);}
+  \capa{4}{\draw[flecha,shorten <=3pt] (p1) -- (7.586,5.6687);}
+\end{tikzpicture}
+\end{document}

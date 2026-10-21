@@ -1,7 +1,7 @@
 # Teoría de la captura del regulador (Stigler, 1971) y grupos de interés (Olson, 1965)
 
 - **Área:** sector público · **Tema de referencia:** 3.A.20 (regulación): la captura como teoría positiva de la regulación (Stigler, Peltzman). Los grupos de interés (Olson, Becker 1983) se desarrollan en 4.B.2, que resume la captura con lo imprescindible para cantarse sin el 3.A.20.
-- **Temas que lo usan:** 4.B.2 (resumen), 4.B.15 (resumen; hoy mención), 3.A.20 (desarrollo previsto), 3.A.17 (mención en el anexo A; hecho, 17/10/2026)
+- **Temas que lo usan:** 4.B.2 (resumen), 4.B.15 (resumen; hoy mención), 3.A.20 (desarrollo previsto), 3.A.17 (mención en el anexo A; hecho, 17/10/2026); 3.A.23 (mención; hecho, 21/10/2026: grupos de presión en los problemas de incentivos).
 - **Manuales de referencia:** Stigler (1971), «The theory of economic regulation», *Bell Journal*; Peltzman (1976); Becker (1983), *QJE*; Olson, *The Logic of Collective Action* (1965); Laffont y Tirole (1991), *QJE*.
 - **Decisión D092 (13/10/2026):** ¿Cuál es el tema de referencia de la teoría de la captura del regulador? 3.A.20 (regulación: teoría positiva) y los grupos de interés (Olson, Becker 1983) en 4.B.2
 
@@ -14,6 +14,7 @@
 | 4.B.2 | Grupos de interés | Resumen | Olson, Stigler, Becker | — |
 | 4.B.15 | Empresa pública y regulación | Resumen (hoy mención; D139 (13/10/2026)) | Stigler (1971): el regulador acaba sirviendo a la industria; argumento para reguladores independientes | La teoría completa |
 | 3.A.17 | Monopolio: regulación | mención en el anexo A (hecho, 17/10/2026) | Teoría positiva como resumen: grupos de presión, Stigler (1971) y la captura, Laffont y Tirole (1991) como problema de agencia, Olson (**1965**), Peltzman (1976), Becker (1983); remite a 3.A.20 y a 4.B.2 (ampliar); material complementario (ProMarket, Stigler Center) | La teoría completa |
+| 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Grupos de presión: Olson (**1965**), la captura de Stigler (1971) y la generalización de Peltzman (1976), con `\vertema{3.A.20}`; refrán «Hecha la ley, hecha la trampa»; mismas palabras que el anexo A del 3.A.17 | El modelo de Peltzman |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.2 repite la definición y la teoría de Olson dos veces (texto y notas 29-30) y fecha a Olson en 1992 (es **1965**).

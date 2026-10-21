@@ -1156,12 +1156,60 @@ El ejemplo de la negociación con costes distintos y los casos concretos son de 
   \item con $n=2$, $q^C=(a-c)/3b$, $p^C=(a+2c)/3$ y $B_i=(a-c)^2/9b$;
   \item con $n\to\infty$, $p^C\to c$.
   \end{itemize}
+\item \emph{Ejemplo}: con la demanda de la tabla~\ref{tab:cartel-dilema}, $p=13-Q$, y $c=1$ ($a-c=12$, $b=1$), $q^C=12/(n+1)$, $p^C=1+12/(n+1)$ y $B_i=144/(n+1)^2$. La tabla~\ref{tab:cournot-n} muestra qué pasa al entrar empresas:
+  \begin{itemize}
+  \item la producción total sube y el precio baja hacia el coste marginal;
+  \item el beneficio de cada empresa y el índice de \autor{Lerner} bajan hacia 0;
+  \item el excedente del consumidor, $Q^2/2$, sube hacia el de la competencia perfecta.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{\autor{Cournot} con $n$ empresas iguales ($p=13-Q$, $c=1$)}\label{tab:cournot-n}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{1.3cm}>{\centering\arraybackslash}m{2.3cm}>{\centering\arraybackslash}m{2.3cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Empresas ($n$)} & $q_i^C$ & $Q^C$ & $p^C$ & $B_i$ & $\mathcal{L}=(p-c)/p$ & \textbf{EC} ($Q^2/2$)\\
+\midrule
+1 (monopolio) & $6$ & $6$ & $7$ & $36$ & $0{,}86$ & $18$\\
+\addlinespace[0.3em]
+\rowcolor{tceesalvia}2 (duopolio) & $4$ & $8$ & $5$ & $16$ & $0{,}80$ & $32$\\
+\addlinespace[0.3em]
+3 & $3$ & $9$ & $4$ & $9$ & $0{,}75$ & $40{,}5$\\
+\addlinespace[0.3em]
+5 & $2$ & $10$ & $3$ & $4$ & $0{,}67$ & $50$\\
+\addlinespace[0.3em]
+11 & $1$ & $11$ & $2$ & $1$ & $0{,}50$ & $60{,}5$\\
+\addlinespace[0.3em]
+$n\to\infty$ (competencia perfecta) & $\to0$ & $\to12$ & $\to1$ & $\to0$ & $\to0$ & $\to72$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia: $q_i^C=12/(n+1)$, $p^C=1+12/(n+1)$ y $B_i=144/(n+1)^2$; el índice de \autor{Lerner} coincide con $s_i/|\varepsilon_{Q,p}|$, con $s_i=1/n$ y $|\varepsilon_{Q,p}|=p/Q$.}
+\end{table}
+
+\begin{itemize}
+\item \emph{El duopolio del ejemplo} (gráfico~\ref{fig:cournot-lineal}):
+  \begin{itemize}
+  \item las funciones de reacción son $R_1(q_2)=6-q_2/2$ y $R_2(q_1)=6-q_1/2$, que cortan los ejes en la cantidad de monopolio, 6;
+  \item se cortan en $C=(4;\,4)$, con $Q=8$, entre la cantidad de monopolio (6) y la de competencia perfecta (12);
+  \item si cada empresa responde a lo que hizo la otra el periodo anterior, desde $q_2=0$ la senda es $q_1=6$, $q_2=3$, $q_1=4{,}5$, $q_2=3{,}75$…, y se acerca a $C$ (la «telaraña» en rojo).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Cournot} con $p=13-Q$ y $c=1$: funciones de reacción, equilibrio y ajuste hacia él}\label{fig:cournot-lineal}
+\grafico[0.72\textwidth]{cournot-lineal}
+\fuente{elaboración propia.}
+\end{figure}
+
+\begin{itemize}
 \item \emph{Índice de \autor{Lerner}} (con cualquier demanda). De $p+p'(Q)\,q_i=\mathrm{CMg}_i$:
   \[
   \frac{p-\mathrm{CMg}_i}{p}=-\frac{p'(Q)\,q_i}{p}=\frac{q_i}{Q}\cdot\Big(-\frac{dp}{dQ}\,\frac{Q}{p}\Big)=\frac{s_i}{|\varepsilon_{Q,p}|},
   \]
   es decir, $p\,\big(1-s_i/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}_i$. Con $s_i\to0$ (o $|\varepsilon_{Q,p}|\to\infty$), $p=\mathrm{CMg}_i$: competencia perfecta; con $s_i=1$, $p\,\big(1-1/|\varepsilon_{Q,p}|\big)=\mathrm{CMg}$: monopolio \vertema{3.A.17}. Multiplicando por $s_i$ y sumando, $\sum_is_i\mathcal{L}_i=\sum_is_i^2/|\varepsilon_{Q,p}|=\mathrm{IHH}/(10.000\,|\varepsilon_{Q,p}|)$.\findemo
-\item \emph{Estabilidad del ajuste de \autor{Cournot}}: con $q_i(t+1)=R_i\big(Q_{-i}(t)\big)$ y $n$ empresas iguales, la desviación respecto al equilibrio evoluciona con una matriz que tiene $-1/2$ fuera de la diagonal y 0 en ella, de autovalores $-(n-1)/2$ y $1/2$: converge si $(n-1)/2<1$, es decir, con $n=2$; con $n=3$ oscila sin acercarse y con $n\geq4$ se aleja \parencite{Theocharis1960Stability}.
+\item \emph{Estabilidad del ajuste de \autor{Cournot}}: con $q_i(t+1)=R_i\big(Q_{-i}(t)\big)$ y $n$ empresas iguales, la desviación respecto al equilibrio evoluciona con una matriz que tiene $-1/2$ fuera de la diagonal y 0 en ella, de autovalores $-(n-1)/2$ y $1/2$: converge si $(n-1)/2<1$, es decir, con $n=2$ (la telaraña del gráfico~\ref{fig:cournot-lineal}); con $n=3$ oscila sin acercarse y con $n\geq4$ se aleja \parencite{Theocharis1960Stability}.
 \end{itemize}
 
 \section{Anexo: \autor{Stackelberg} con demanda lineal}\label{anexo:stackelberg-lineal}
@@ -1169,6 +1217,27 @@ El ejemplo de la negociación con costes distintos y los casos concretos son de 
 \begin{itemize}
 \item \emph{Seguidora}: $q_2=R_2(q_1)=(a-c)/2b-q_1/2$.
 \item \emph{Líder}: sustituyendo, $B_1=\big[a-b\big(q_1+R_2(q_1)\big)-c\big]\,q_1=\big[(a-c)/2-b\,q_1/2\big]\,q_1$, y la condición de primer orden, $(a-c)/2-b\,q_1=0$, da $q_1^S=(a-c)/2b$, la cantidad de monopolio.
+\item \emph{La inducción hacia atrás, paso a paso}, con el ejemplo de la tabla~\ref{tab:cournot-n} ($p=13-Q$, $c=1$): tabla~\ref{tab:stackelberg-pasos}.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{\autor{Stackelberg} por inducción hacia atrás: se resuelve primero la última etapa}\label{tab:stackelberg-pasos}
+\begin{tabular}{>{\raggedright\arraybackslash}m{2.4cm}>{\raggedright\arraybackslash}m{5.2cm}>{\raggedright\arraybackslash}m{7.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Paso} & \textbf{Qué se hace} & \textbf{Con $p=13-Q$ y $c=1$}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1.}} Etapa 2: la seguidora & elige $q_2$ viendo $q_1$: su función de reacción, $R_2(q_1)=(a-c)/2b-q_1/2$ & $\max_{q_2}\,(12-q_1-q_2)\,q_2\ \Rightarrow\ R_2(q_1)=6-q_1/2$\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{2.}} Etapa 1: la líder & elige $q_1$ anticipando $R_2(q_1)$: su beneficio pasa a depender solo de $q_1$ & $B_1=\big(12-q_1-6+q_1/2\big)\,q_1=(6-q_1/2)\,q_1\ \Rightarrow\ q_1^S=6$\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{3.}} Resultado & la seguidora responde a $q_1^S$ en la senda de equilibrio & $q_2^S=R_2(6)=3$, $Q^S=9$, $p^S=4$, $B_1=18$ y $B_2=9$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{itemize}
 \item \emph{Resultado}:
   \begin{itemize}
   \item $q_2^S=(a-c)/4b$ y $Q^S=3(a-c)/4b$ (la líder produce 2/3 del total);
@@ -1176,6 +1245,45 @@ El ejemplo de la negociación con costes distintos y los casos concretos son de 
   \item $B_1=(a-c)^2/8b$ y $B_2=(a-c)^2/16b$, frente a $(a-c)^2/9b$ cada una en \autor{Cournot}.
   \end{itemize}
 \item La líder produce la cantidad de monopolio, pero gana la mitad que un monopolista, porque la seguidora también vende.
+\item \emph{Gráficamente} (gráfico~\ref{fig:stackelberg-lineal}): la líder elige, sobre la función de reacción de la seguidora, el punto de su isobeneficio más bajo, que es tangente a ella en $S=(6;\,3)$. Ese isobeneficio, 18, está por debajo del que pasa por el equilibrio de \autor{Cournot}, 16: más abajo, más beneficio.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Stackelberg} con $p=13-Q$ y $c=1$: tangencia del isobeneficio de la líder con la función de reacción de la seguidora}\label{fig:stackelberg-lineal}
+\grafico[0.72\textwidth]{stackelberg-lineal}
+\fuente{elaboración propia.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Comparación con los demás modelos} (tabla~\ref{tab:comparacion-lineal}):
+  \begin{itemize}
+  \item \autor{Stackelberg} produce más que \autor{Cournot} y menos que la competencia perfecta, de modo que el precio es más bajo y el bienestar, mayor;
+  \item la líder gana lo mismo que con el cártel, y la seguidora, mucho menos;
+  \item el cártel maximiza el beneficio conjunto, pero es el que menos bienestar da.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Duopolio con $p=13-Q$ y $c=1$: los 4 resultados}\label{tab:comparacion-lineal}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.6cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{1.4cm}>{\centering\arraybackslash}m{0.8cm}>{\centering\arraybackslash}m{1.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Modelo} & $q_1$ & $q_2$ & $Q$ & $p$ & $B_1$ & $B_2$ & $B_1+B_2$ & \textbf{EC} & \textbf{Bienestar}\\
+\midrule
+Cártel (cuotas iguales) & $3$ & $3$ & $6$ & $7$ & $18$ & $18$ & \textcolor{tceeverde}{$\mathbf{36}$} & $18$ & \textcolor{tceerojo}{$54$}\\
+\addlinespace[0.3em]
+\autor{Cournot} & $4$ & $4$ & $8$ & $5$ & $16$ & $16$ & $32$ & $32$ & $64$\\
+\addlinespace[0.3em]
+\rowcolor{tceesalvia}\autor{Stackelberg} (líder, 1) & $6$ & $3$ & $9$ & $4$ & $18$ & $9$ & $27$ & $40{,}5$ & $67{,}5$\\
+\addlinespace[0.3em]
+\autor{Bertrand} (competencia perfecta) & $6$ & $6$ & $12$ & $1$ & $0$ & $0$ & \textcolor{tceerojo}{$0$} & $72$ & \textcolor{tceeverde}{$\mathbf{72}$}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia; EC, excedente del consumidor ($Q^2/2$); bienestar, EC más beneficios. En \autor{Bertrand}, las 2 empresas se reparten la demanda a partes iguales.}
+\end{table}
+
+\begin{itemize}
 \item \emph{Variación conjetural de la líder}: $dq_2/dq_1=R_2'=-1/2$, negativa.\findemo
 \end{itemize}
 
@@ -1223,6 +1331,23 @@ Producción total (consumidores) & $5{,}33$ & \textcolor{tceeverde}{$5{,}5$} & $
 \end{table}
 
 \begin{itemize}
+\item \emph{Gráficamente} (gráfico~\ref{fig:cournot-bayesiano}), con los números del ejemplo:
+  \begin{itemize}
+  \item la empresa 2 tiene una función de reacción por tipo: $R_2^{\mathrm B}(q_1)=(8-q_1)/2$ si su coste es bajo y $R_2^{\mathrm A}(q_1)=(6-q_1)/2$ si es alto;
+  \item la empresa 1 no sabe en cuál está y responde a la media de las 2, $\mathbb{E}[q_2]=(7-q_1)/2$, con su función de reacción, $q_1=\big(8-\mathbb{E}[q_2]\big)/2$: el corte da $q_1^*=3$ y $\mathbb{E}[q_2]=2$;
+  \item ante $q_1^*=3$, cada tipo produce sobre su función de reacción: $2{,}5$ el bajo ($E_{\mathrm B}$) y $1{,}5$ el alto ($E_{\mathrm A}$);
+  \item con información completa, los equilibrios serían los cortes de $R_1$ con cada función de reacción de la 2, $C_{\mathrm B}$ y $C_{\mathrm A}$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{\autor{Cournot} con costes privados ($a=10$, $c=2$, $c_{\mathrm A}=4$, $c_{\mathrm B}=2$, $\pi=1/2$): la empresa 1 responde a la media de las 2 funciones de reacción de la 2; puntos negros, equilibrio bayesiano; huecos, información completa}\label{fig:cournot-bayesiano}
+\grafico[0.8\textwidth]{cournot-bayesiano}
+\fuente{elaboración propia a partir de \textcite[§~3.1.A]{Gibbons1992Game}.}
+\end{figure}
+
+\begin{itemize}
 \item \emph{Implicaciones}: si su coste es bajo, a la empresa informada le perjudica que la otra no lo sepa (la otra produce más de lo que produciría ante una rival eficiente), y ganan la no informada y los consumidores; si es alto, al revés. La empresa de coste bajo querría demostrar que lo es: es el origen de los modelos de señalización \vertema{3.A.13}.\findemo
 \end{itemize}
 
@@ -1246,8 +1371,45 @@ Producción total (consumidores) & $5{,}33$ & \textcolor{tceeverde}{$5{,}5$} & $
   \[
   \beta\;\geq\;\frac{9/64-8/64}{9/64-1/9}=\frac{1/64}{17/576}=\frac{9}{17}\approx0{,}53.
   \]
-  \findemo
+\item \emph{Ejemplo}: con $p=13-Q$ y $c=1$ (la tabla~\ref{tab:cartel-dilema}), $B^{\mathrm C}=18$, $B^{\mathrm D}=20{,}25$ y $B^{\mathrm N}=16$. La tabla~\ref{tab:gatillo-senda} compara las 2 sendas:
+  \begin{itemize}
+  \item desviarse da $2{,}25$ más hoy y 2 menos cada periodo después;
+  \item con $\beta=0{,}5$, el futuro pesa poco y conviene desviarse;
+  \item con $\beta=0{,}6$, conviene cumplir, porque el umbral es $9/17\approx0{,}53$.
+  \end{itemize}
 \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El gatillo con \autor{Cournot} ($p=13-Q$, $c=1$): beneficio de cada periodo y valor descontado (sombreada, la estrategia que conviene)}\label{tab:gatillo-senda}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}>{\centering\arraybackslash}m{1.0cm}>{\centering\arraybackslash}m{1.0cm}>{\centering\arraybackslash}m{1.0cm}>{\centering\arraybackslash}m{0.6cm}>{\centering\arraybackslash}m{2.9cm}>{\centering\arraybackslash}m{1.4cm}>{\centering\arraybackslash}m{1.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Estrategia} & $t=0$ & $t=1$ & $t=2$ & … & \textbf{Valor descontado} & $\beta=0{,}5$ & $\beta=0{,}6$\\
+\midrule
+Cumplir siempre & $18$ & $18$ & $18$ & … & $\dfrac{18}{1-\beta}$ & $36$ & \cellcolor{tceesalvia}$\mathbf{45}$\\
+\addlinespace[0.3em]
+Desviarse en $t=0$ & \textcolor{tceeverde}{$20{,}25$} & \textcolor{tceerojo}{$16$} & \textcolor{tceerojo}{$16$} & … & $20{,}25+\dfrac{16\,\beta}{1-\beta}$ & \cellcolor{tceesalvia}$\mathbf{36{,}25}$ & $44{,}25$\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia: $B^{\mathrm C}=18$ (la cuota del cártel, 3), $B^{\mathrm D}=4{,}5\times4{,}5=20{,}25$ (la mejor respuesta a 3, $R_i(3)=4{,}5$, con $p=5{,}5$) y $B^{\mathrm N}=16$ (\autor{Cournot}).}
+\end{table}
+
+\begin{itemize}
+\item \emph{Con $n$ empresas} (gráfico~\ref{fig:colusion-beta-n}):
+  \begin{itemize}
+  \item en \autor{Bertrand}, $\beta\geq1-1/n$;
+  \item en \autor{Cournot}, con $B^{\mathrm C}=(a-c)^2/4nb$, $B^{\mathrm D}=(n+1)^2(a-c)^2/16n^2b$ y $B^{\mathrm N}=(a-c)^2/(n+1)^2b$, $\beta\geq(n+1)^2/(n^2+6n+1)$, que da $9/17$ con $n=2$;
+  \item las 2 crecen con $n$: cuantas más empresas, más paciencia hace falta;
+  \item con 2 empresas exige más \autor{Cournot}, porque su castigo es más suave; desde 3, \autor{Bertrand}, porque el que se desvía se queda con todo el mercado.\findemo
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Factor de descuento mínimo para sostener la colusión con el gatillo según el número de empresas}\label{fig:colusion-beta-n}
+\grafico[0.8\textwidth]{colusion-beta-n}
+\fuente{elaboración propia.}
+\end{figure}
 
 \section{Anexo: aspectos para el test y preguntas del tribunal}\label{anexo:test}
 

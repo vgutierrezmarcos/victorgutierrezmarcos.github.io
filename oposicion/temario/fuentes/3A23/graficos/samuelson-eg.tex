@@ -1,0 +1,44 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Condición de Samuelson en equilibrio general (Samuelson, 1955).
+% FPP: X = 4,2·sqrt(1-(G/7)^2); U_B: X = 9/(G+1,2) - 0,4;
+% FPC_A = FPP - U_B (positiva entre G = 0,768 y G = 6,898);
+% U_A^*: X_A = 9,4217/(G - 0,00907), tangente a FPC_A en G* = 5 (X_A* = 1,888).
+\begin{tikzpicture}[tcee,scale=0.9]
+  % ---------- Panel superior: (G, X) ----------
+  \capa{1}{\ejes{$G$}{$X$}{8.4}{5.2}}
+  \capa{2}{\draw[curva1] plot[domain=90:0,samples=90,smooth,variable=\t] ({7*cos(\t)},{4.2*sin(\t)});
+    \node[etiqueta,tceemorado] at (6.55,3.0) {FPP};}
+  \capa{3}{\draw[curva2] plot[domain=0.55:8,samples=80,smooth] (\x,{9/(\x+1.2)-0.4}) node[etiqueta,above right=-2pt] {$\overline{U}_B$};}
+  % ---------- Panel inferior: (G, X_A) ----------
+  \begin{scope}[yshift=-6.3cm]
+    \capa{4}{\ejes{$G$}{$X_A$}{8.4}{5.2}}
+    \capa{5}{%
+      % distancias verticales llevadas de arriba abajo
+      \foreach \g in {2,3.7} {
+        \draw[<->,thin,tceemorado] (\g,{9/(\g+1.2)-0.4+6.3}) -- (\g,{4.2*sqrt(1-(\g/7)^2)+6.3});
+        \draw[<->,thin,tceemorado] (\g,0) -- (\g,{4.2*sqrt(1-(\g/7)^2)-9/(\g+1.2)+0.4});
+      }
+      \draw[guia] (0.768,0) -- (0.768,10.47);
+      \draw[guia] (6.898,0) -- (6.898,7.01);
+      \draw[curva1] plot[domain=0.768:6.898,samples=120,smooth] (\x,{4.2*sqrt(max(1-(\x/7)^2,0))-9/(\x+1.2)+0.4});
+      \node[etiqueta,tceemorado] at (2.1,0.55) {$\mathrm{FPC}_A$};}
+    \capa{6}{\draw[curva3] plot[domain=2.4:8,samples=80,smooth] (\x,{9.4217/(\x-0.00907)}) node[etiqueta,right] {$U_A^*$};
+      \node[punto] (E) at (5,1.8878) {};
+      \node[etiqueta,above right] at (E) {$E$};}
+    \capa{7}{\proyeccion{(E)}{$G^*$}{$X_A^*$}
+      \draw[guia] (5,1.8878) -- (5,9.24);
+      \node[etiqueta,anchor=east,fill=white] at (4.85,4.9) {$\mathrm{RMS}^A_{GX}=\mathrm{RMT}_{GX}-\mathrm{RMS}^B_{GX}$};}
+  \end{scope}
+  % ---------- Pendientes en G* (panel superior) ----------
+  \capa{7}{%
+    \draw[guia] (5,0) node[below] {$G^*$} -- (5,1.0516);
+    \node[punto] at (5,2.9394) {};
+    \node[punto] at (5,1.0516) {};
+    \draw[thick,tceegris] (4,{2.9394+0.6124}) -- (6.1,{2.9394-1.1*0.6124}) node[etiqueta,right,black] {pendiente: $-\mathrm{RMT}_{GX}$};
+    \draw[thick,tceegris] (3.8,{1.0516+1.2*0.2341}) -- (6.2,{1.0516-1.2*0.2341});
+    \node[etiqueta,anchor=north east] at (4.85,0.95) {pendiente: $-\mathrm{RMS}^B_{GX}$};
+    \draw[decorate,decoration={brace,amplitude=4pt,mirror}] (4.88,1.0516) -- (4.88,2.9394) node[midway,left=4pt] {$X_A^*$};}
+\end{tikzpicture}
+\end{document}

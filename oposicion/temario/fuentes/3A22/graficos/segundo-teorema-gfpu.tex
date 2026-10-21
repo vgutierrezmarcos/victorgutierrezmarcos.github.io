@@ -1,0 +1,26 @@
+% El 2TFEB en el espacio de las utilidades (3.A.22, II.2). Mismos elementos que fbs-gfpu:
+% GFPU U_A² + U_B² = 49; W = (U_A U_B)^(1/2), U_B = 24,5/U_A tangente en E' = (4,950; 4,950).
+% E = (6,5; 2,598): equilibrio competitivo desde ω, en la GFPU (1TFEB), ángulo 21,79°.
+% La flecha recorre la GFPU por fuera (radio 7,5) de 21,79° a 45°.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.75cm,y=0.75cm]
+  % 1: ejes U_A, U_B
+  \capa{1}{\ejes{$U_A$}{$U_B$}{9.6}{8.6}}
+  % 2: la GFPU
+  \capa{2}{\draw[curva2] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{7*sin(\t)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (7.1,0.3) {GFPU};}
+  % 3: E, equilibrio competitivo desde la dotación ω
+  \capa{3}{\node[punto,label={[etiqueta,align=center]below left:$E$\\ \footnotesize(equilibrio desde $\vect{\omega}$)}] at (6.5,2.5981) {};}
+  % 4: curva de indiferencia social tangente y E', el punto de felicidad
+  \capa{4}{\draw[curva4,thick] plot[domain=3.1:8.2,samples=100] (\x,{24.5/\x})
+    node[etiqueta,right,text=black] {$W(U_A,U_B)=W^*$};}
+  \capa{4}{\node[punto,label={[etiqueta,align=center]below left:$E'$\\ \footnotesize(punto de felicidad)}] at (4.9497,4.9497) {};}
+  % 5: redistribución de suma fija: de E a E' a lo largo de la GFPU
+  \capa{5}{\draw[flecha] plot[domain=23.5:43.5,samples=40,variable=\t] ({7.5*cos(\t)},{7.5*sin(\t)});}
+  \capa{5}{\node[etiqueta,text=tceerojo,align=left,anchor=south west] at (6.4,5.0)
+    {redistribución de suma fija\\ $\vect{\omega}\to\vect{\omega}'$};}
+\end{tikzpicture}
+\end{document}

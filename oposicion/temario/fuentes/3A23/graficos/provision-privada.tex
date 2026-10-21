@@ -1,0 +1,35 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Provisión privada de un bien público (Bergstrom, Blume y Varian, 1986).
+% U_i = 0,4 ln G + 0,6 ln(10 - g_i), W_A = W_B = 10, G = g_A + g_B.
+% Reacción: g_i = 4 - 0,6 g_j. Nash: g_A = g_B = 2,5, G^N = 5.
+% Óptimo simétrico (suma de RMS = 1): g_A = g_B = 4, G^* = 8.
+% Curva de indiferencia de A por N: g_B = 5 (7,5/(10-g_A))^1,5 - g_A
+% (horizontal en N, mínimo sobre R_A); la de B, simétrica (vertical en N).
+% Se vuelven a cortar en g_A = g_B = 5,65: la lente contiene el óptimo.
+\begin{tikzpicture}[tcee,x=0.72cm,y=0.72cm]
+  \capa{1}{\ejes{$g_A$}{$g_B$}{9.2}{9.2}}
+  \capa{2}{\draw[curva1] (0,6.667) -- (4,0);
+    \node[etiqueta,tceemorado,anchor=east] at (-0.1,6.667) {$R_A(g_B)$};}
+  \capa{3}{\draw[curva2] (0,4) -- (6.667,0);
+    \node[etiqueta,tceeazul,anchor=east] at (-0.1,4) {$R_B(g_A)$};}
+  \capa{4}{%
+    \node[punto] (N) at (2.5,2.5) {};
+    \node[etiqueta,below left=1pt] at (N) {$N$};
+    \proyeccion{(N)}{$g_A^{\mathrm{N}}$}{$g_B^{\mathrm{N}}$}
+    \draw[guia,tceeazul] (0,5) -- (5,0);
+    \node[etiqueta,tceeazul,anchor=east] at (-0.1,5) {$g_A+g_B=G^{\mathrm{N}}$};}
+  \capa{5}{%
+    \draw[curva3] plot[domain=0:6.3,samples=80,smooth] (\x,{5*(7.5/(10-\x))^1.5-\x})
+      node[etiqueta,above] {$U_A^{\mathrm{N}}$};
+    \draw[curva4] plot[domain=0:6.3,samples=80,smooth,variable=\t] ({5*(7.5/(10-\t))^1.5-\t},\t)
+      node[etiqueta,right] {$U_B^{\mathrm{N}}$};}
+  \capa{6}{%
+    \fill[area] plot[domain=2.5:5.65,samples=60,smooth] (\x,{5*(7.5/(10-\x))^1.5-\x})
+      -- plot[domain=5.65:2.5,samples=60,smooth,variable=\t] ({5*(7.5/(10-\t))^1.5-\t},\t) -- cycle;
+    \draw[guia,tceerojo] (0,8) -- (8,0);
+    \node[etiqueta,tceerojo,anchor=east] at (-0.1,8) {$g_A+g_B=G^*$};
+}
+\end{tikzpicture}
+\end{document}

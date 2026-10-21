@@ -1,7 +1,7 @@
 # Regla de Ramsey (1927): imposición óptima de bienes
 
 - **Área:** sector público · **Tema de referencia:** 4.B.11 (imposición óptima) — está en el título («Regla de Ramsey»).
-- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención: tipos no uniformes de los impuestos especiales e IVA), 4.B.20 (mención prevista: tipos reducidos del IVA), 3.A.17 (variante Ramsey-Boiteux, ficha propia `ramsey-boiteux`)
+- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (mención: tipos no uniformes de los impuestos especiales e IVA), 4.B.20 (mención prevista: tipos reducidos del IVA), 3.A.17 (variante Ramsey-Boiteux, ficha propia `ramsey-boiteux`); 3.A.22 (mención; hecho, 21/10/2026: solución a los límites del 2TFEB).
 - **Manuales de referencia:** Ramsey (1927), «A contribution to the theory of taxation», *EJ*; Diamond y Mirrlees (1971), *AER*; Atkinson y Stiglitz, *Lectures*, lección 12; Stiglitz y Rosengard, cap. 20; Rosen y Gayer, cap. 16; Salanié, *The Economics of Taxation*, cap. 3; Informe Mirrlees (2011), cap. 6 y 9.
 
 ## Presentación de referencia
@@ -26,6 +26,7 @@ Caso de demandas independientes (**regla de la elasticidad inversa**, ficha `ela
 | 4.B.13 | Teoría de la imposición indirecta | Mención | Justificación de tipos diferenciados y de los impuestos especiales; contrapeso de equidad y de administración (Informe Mirrlees: tipo único de IVA + transferencias) | La derivación |
 | 4.B.20 | IVA en España | Mención prevista | Tipos reducidos: argumento Ramsey/Corlett-Hague frente a su coste recaudatorio y su mala focalización | — |
 | 3.A.17 | Monopolio natural | Variante (otra ficha; hecho, 17/10/2026) | Ramsey-Boiteux: $\frac{p_i-\mathrm{CMg}_i}{p_i}=\frac{\lambda}{1+\lambda}\frac{1}{\lvert\varepsilon_{q_i,p_i}\rvert}$, «la misma regla de la elasticidad inversa de la imposición óptima», con remisión a 4.B.11 solo para ampliar (D138) | Confundirla con la regla impositiva |
+| 3.A.22 | Límites del 2TFEB | mención (hecho, 21/10/2026) | Sin transferencias de suma fija, la imposición óptima sobre los bienes (Ramsey, 1927) y sobre la renta (Mirrlees, 1971) acepta una pérdida de eficiencia a cambio de equidad; `\vertema{4.B.11}` | La regla |
 
 ## Divergencias encontradas en el temario actual
 - **Nombre:** «Ramsey» designa en el temario tres cosas: la regla impositiva (4.B.11, 4.B.13), el modelo de crecimiento Ramsey-Cass-Koopmans (3.A.6, 3.A.29, 3.A.42-3.A.43) y la tarificación Ramsey-Boiteux (3.A.17, 4.B.15). **Propuesta:** escribir siempre «regla de Ramsey (1927)», «modelo de Ramsey-Cass-Koopmans» y «precios de Ramsey-Boiteux». `_inventario/alias.json` lista «ramsey» como alias de `ramsey-cass-koopmans`: hay que quitarlo (ya hay excepción para 3.A.6) para que el mapa no cuente mal.

@@ -1,7 +1,7 @@
 # Ciclo político-económico de Nordhaus (1975)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 (democracia representativa) — único que lo desarrolla.
-- **Temas que lo usan:** 4.B.2 (desarrollo), 4.B.5 (resumen), 4.B.11 (mención), 3.A.39 (mención prevista: sesgo deficitario)
+- **Temas que lo usan:** 4.B.2 (desarrollo), 4.B.5 (resumen), 4.B.11 (mención), 3.A.39 (mención prevista: sesgo deficitario); 3.A.23 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Nordhaus (1975), «The political business cycle», *RES*; Hibbs (1977), ciclo partidista; Rogoff (1990), ciclos presupuestarios con expectativas racionales; Alesina, Roubini y Cohen, *Political Cycles and the Macroeconomy* (1997); Persson y Tabellini, cap. 16.
 
 ## Presentación de referencia
@@ -19,6 +19,7 @@
 | 4.B.2 | Democracia representativa | Desarrollo | Modelo, gráfico y extensiones | — |
 | 4.B.5 | Crecimiento del gasto | Resumen | Gasto ligado al calendario electoral; evidencia de ciclos presupuestarios | El gráfico (hoy anunciado y no descrito) |
 | 4.B.11 | Imposición óptima | Mención | — | — |
+| 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Políticos que buscan la reelección expanden antes de las elecciones (Nordhaus, 1975); con expectativas racionales, Rogoff, y Kalecki como precedente, en nota y sin gráfico | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - **Fecha errónea en 4.B.2:** «Nordhaus (1971)»; es **Nordhaus (1975)**. **Corregir.**

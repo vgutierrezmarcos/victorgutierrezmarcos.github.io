@@ -1,0 +1,43 @@
+% Cournot con demanda lineal y los números del anexo (anexo:cournot-lineal):
+% p = 13 - Q, coste marginal c = 1 para las 2 (a - c = 12, b = 1).
+% Parte del gráfico de Cournot (cournot.tex), con valores en lugar de la escala
+% normalizada, y añade el ajuste de Cournot (la «telaraña»).
+%   R_1(q_2) = 6 - q_2/2: de (6, 0) a (0, 12);  R_2(q_1) = 6 - q_1/2
+%   Cournot C = (4, 4): Q = 8, p = 5, B_i = 16
+%   Rectas q_1 + q_2 = 6 (monopolio) y q_1 + q_2 = 12 (competencia perfecta)
+%   Ajuste q_i(t+1) = R_i(q_j(t)) desde q_2 = 0: q_1 = 6; q_2 = 3; q_1 = 4,5;
+%     q_2 = 3,75; q_1 = 4,125; ... converge a C porque |R_1' R_2'| = 1/4 < 1
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.6cm,y=0.6cm]
+  \useasboundingbox (-1.6,-1.5) rectangle (18.6,14.2);
+  % 1: ejes
+  \capa{1}{\ejes{$q_1$}{$q_2$}{14.2}{13.8}}
+  % 2: función de reacción de la empresa 1, q_1 = 6 - q_2/2
+  \capa{2}{\draw[curva1] (6,0) -- (0,12) node[etiqueta,above right] {$R_1(q_2)=6-q_2/2$};}
+  \capa{2}{\node[etiqueta,left] at (0,12) {$12$};}
+  % 3: función de reacción de la empresa 2, q_2 = 6 - q_1/2
+  \capa{3}{\draw[curva2] (0,6) -- (12,0);}
+  \capa{3}{\node[etiqueta,anchor=south west,text=tceeazul] at (11.9,0.35) {$R_2(q_1)=6-q_1/2$};}
+  \capa{3}{\node[etiqueta,left] at (0,6) {$6$};}
+  \capa{3}{\node[etiqueta,below] at (12,0) {$12$};}
+  % 4: equilibrio de Cournot
+  \capa{4}{\node[punto,label={[etiqueta,fill=white,inner sep=1pt]above right:$C=(4;\,4)$}] (C) at (4,4) {};}
+  \capa{4}{\proyeccion{(C)}{$4$}{$4$}}
+  \capa{4}{\node[etiqueta,below] at (6,0) {$6$};}
+  % 5: rectas de la cantidad total de monopolio y de competencia perfecta
+  \capa{5}{\draw[desplazada,thick,tceegris] (0,6) -- (6,0);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=-45] at (2.55,2.55) {$Q=6$ ($q^M$)};}
+  \capa{5}{\draw[desplazada,thick,tceegris] (0,12) -- (12,0);}
+  \capa{5}{\node[etiqueta,font=\footnotesize,text=tceegris,rotate=-45] at (9.4,3.4) {$Q=12$ ($q^c$)};}
+  % 6: el ajuste de Cournot desde q_2 = 0 (telaraña que converge a C)
+  \capa{6}{\draw[flecha] (6,0) -- (6,3);}
+  \capa{6}{\draw[flecha] (6,3) -- (4.5,3);}
+  \capa{6}{\draw[flecha] (4.5,3) -- (4.5,3.75);}
+  \capa{6}{\draw[flecha,shorten >=1pt] (4.5,3.75) -- (4.125,3.75);}
+  \capa{6}{\node[punto,fill=tceerojo] at (6,0) {};}
+  \capa{6}{\node[etiqueta,text=tceerojo,anchor=north west,align=left,font=\footnotesize] at (7.2,7.8) {ajuste desde $q_2=0$:\\ $q_1=6$, $q_2=3$, $q_1=4{,}5$,\\ $q_2=3{,}75$\ldots{} $\to C$};}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,56 @@
+% Sin convexidad falla el 2TFEB (3.A.22, II.2; el 3.A.23 remite a él).
+% Referencia: Mas-Colell, Whinston y Green (1995), gráfico 16.D.1 (b). Caja X̄ = 10, Ȳ = 6
+% (estilo de caja-intercambio.tex). E' = (4; 3,5).
+% Recta común: Y_A = 3,5 - 0,5 (X_A - 4), p_X/p_Y = 0,5.
+% B: U_B = X_B^(6/11) Y_B^(5/11), convexa; en E' (X_B = 6, Y_B = 2,5) RMS^B = 0,5.
+%   En la caja: Y_A = 6 - (4,0302/(10 - X_A)^(6/11))^(11/5); queda bajo la de A en toda la caja.
+% A, no convexa: Y_A = 3,5 - 0,5 t + t² (0,2 - 0,08 t), t = X_A - 4 (decreciente;
+%   cóncava para t > 0,83). Tangente a la recta en E'; la cruza por debajo para t > 2,5:
+%   esas cestas, asequibles a esos precios, A las prefiere a E'.
+% x_A = (7,3; 1,85), en la recta; curva más alta de A: la anterior + 0,6970.
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.1cm,
+    declare function={
+      ia(\x)=3.5-0.5*(\x-4)+(\x-4)^2*(0.2-0.08*(\x-4));
+      ib(\x)=6-(4.030213/(10-\x)^(6/11))^(11/5);
+      rp(\x)=3.5-0.5*(\x-4);},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja y sus orígenes
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (10,6);
+    \node[below left,text=tceemorado] at (0,0) {$O_A$};
+    \node[above right,text=tceeverde] at (10,6) {$O_B$};
+    \draw[->,thin,tceemorado] (0.4,-0.3) -- (1.4,-0.3) node[right,etiqueta] {$X_A$};
+    \draw[->,thin,tceemorado] (-0.3,0.4) -- (-0.3,1.4) node[above,etiqueta] {$Y_A$};
+    \draw[->,thin,tceeverde] (9.6,6.3) -- (8.6,6.3) node[left,etiqueta] {$X_B$};
+    \draw[->,thin,tceeverde] (10.3,5.6) -- (10.3,4.6) node[below,etiqueta] {$Y_B$};
+    \draw[llave] (10,-0.75) -- (0,-0.75) node[midway,below=5pt,text=black] {$\overline{X}$};
+    \draw[llave] (-0.95,0) -- (-0.95,6) node[midway,left=5pt,text=black] {$\overline{Y}$};
+  }
+  % 2: curva de indiferencia de B por E' (convexa)
+  \capa{2}{\draw[curva3] plot[domain=7.05:0.3,samples=120] (\x,{ib(\x)})
+    node[etiqueta,below right,yshift=-4pt] {$U_B(E')$};}
+  % 3: curva de indiferencia de A por E' (no convexa)
+  \capa{3}{\draw[curva1] plot[domain=7.83:2.0,samples=150] (\x,{ia(\x)})
+;}
+  \capa{3}{\node[etiqueta,text=tceemorado,anchor=east] at (2.2,{ia(2.2)}) {$U_A(E')$};}
+  % 4: E' y la recta tangente común
+  \capa{4}{\draw[curva4] (0.3,5.35) -- (9.8,0.6) node[etiqueta,above right] {$p_X/p_Y$};}
+  \capa{4}{\node[punto,label={[etiqueta]below left:$E'$}] (E) at (4,3.5) {};}
+  % 5: curva más alta de A y punto x_A asequible
+  \capa{5}{\fill[area] plot[domain=6.5:7.83,samples=60] (\x,{rp(\x)})
+    -- plot[domain=7.83:6.5,samples=60] (\x,{ia(\x)}) -- cycle;}
+  \capa{5}{\draw[curva1,desplazada] plot[domain=8.08:2.4,samples=150] (\x,{ia(\x)+0.697})
+;}
+  \capa{5}{\node[etiqueta,text=tceemorado,anchor=west] at (3.35,{ia(3.35)+0.697}) {$U_A'>U_A(E')$};}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$\vect{x}_A$}] (xA) at (7.3,1.85) {};}
+  % 6: flecha de E' a x_A y rótulo
+  \capa{6}{\draw[flecha,shorten <=3pt,shorten >=3pt] (E) to[bend right=28] (xA);}
+  \capa{6}{\node[etiqueta,text=tceerojo,align=center] (nota) at (7.9,4.7)
+    {no convexidad:\\ ningún precio sostiene $E'$};}
+  \capa{6}{\draw[->,thin,tceerojo] (nota.south) -- (7.5,1.2);}
+\end{tikzpicture}
+\end{document}

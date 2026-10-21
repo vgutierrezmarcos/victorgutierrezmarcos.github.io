@@ -1,0 +1,1025 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A22.bib}
+\tcetema[Economía del bienestar (I)]{3.A.22}{Economía del bienestar (I). Los teoremas fundamentales del bienestar. Óptimo económico y «second-best».}
+\tcefecha{21/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Lo mejor es enemigo de lo bueno», dice el refrán.\footnote{Lo popularizó \autor{Voltaire} en su cuento en verso \emph{La Bégueule} (1772): «\emph{Le mieux est l'ennemi du bien}».} La economía del bienestar lo convierte en un teorema.
+  \item Desde el 1 de enero de 2026, los importadores de acero, aluminio, cemento, fertilizantes, electricidad e hidrógeno en la Unión Europea entran en el régimen definitivo del Mecanismo de Ajuste en Frontera por Carbono \parencite{UE2023CBAM}. Lo mejor sería un precio mundial del carbono; como no existe, la Unión grava en la frontera el carbono que contienen las importaciones: es una solución de segundo óptimo.
+  \item Detrás está la pregunta de esta exposición: ¿asigna bien los recursos un mercado competitivo? Y si alguna condición no puede cumplirse, ¿conviene acercarse al ideal cumpliendo todas las demás?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: la \concepto{economía del bienestar} es la parte normativa de la microeconomía. Valora la deseabilidad social de los estados alternativos de una economía (cada uno, una asignación de los recursos y un reparto de la renta) y busca normas de política económica para alcanzar los mejores. Para \textcite{Pigou1920Economics}, «no es el asombro, sino el entusiasmo social que se rebela contra la sordidez de las calles miserables y la falta de alegría de las vidas marchitas, lo que da origen a la ciencia económica».\footnote{Traducción propia de la parte I, cap.~I, §~1.}
+  \item \emph{De política económica}: cada vez que se juzga una reforma, un impuesto o una regulación se hacen juicios de bienestar, aunque no se digan. \textcite{Atkinson2011Restoration} pide devolver a la economía del bienestar un lugar central en la agenda y en la enseñanza de los economistas, tras su «extraña desaparición» \parencite{Atkinson2001Strange}.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}:
+  \begin{itemize}
+  \item \emph{Desde un punto de vista histórico}:
+    \begin{itemize}
+    \item Los mercantilistas asociaban el bienestar del país a sus metales preciosos, y \textcite{Smith1776Wealth}, al producto anual. A finales del siglo XVIII, \textcite{Bentham1789Introduction} identifica el bienestar con la utilidad (\emph{utilitarismo}) y el bienestar social con la suma de las utilidades individuales.
+    \item Los marginalistas de los años 70 del siglo XIX introducen la utilidad marginal decreciente \parencite{Jevons1871Theory,Menger1871Grundsatze,Walras1874Elements}; \autor{Jevons} y \autor{Walras} la tratan como una magnitud cardinal, y \textcite{Edgeworth1881Mathematical} y \textcite{Pigou1920Economics} deducen de ella que un reparto más igualitario de la renta aumenta el bienestar. \textcite{Marshall1890Principles} mide el bienestar en dinero con el excedente del consumidor,\footnote{Lo había propuesto antes Jules \autor{Dupuit} \parencite{Dupuit1844Mesure} \vertema{3.A.9}.} y \textcite{Pigou1920Economics} funda la economía del bienestar como disciplina.
+    \item \textcite{Pareto1906Manuale} rompe con la utilidad cardinal\footnote{\autor{Pareto} llama \emph{ofelimidad} a la utilidad entendida como pura satisfacción subjetiva de un deseo, sea o no beneficioso, para separarla del sentido corriente de «útil» \parencite{Pareto1906Manuale,HETParetoSocial}.} y propone un criterio que solo exige saber si cada individuo mejora o empeora.
+    \item En los años 30 y 40, la \emph{nueva economía del bienestar} intenta elegir entre los óptimos de \autor{Pareto} por 2 vías: los criterios de compensación \parencite{Kaldor1939Welfare,Hicks1939Foundations} y la función de bienestar social \parencite{Bergson1938Reformulation,Samuelson1947Foundations}. A la vez, \textcite{Lerner1934Economic} y \textcite{Lange1942Foundations} formulan las condiciones del óptimo, y \textcite{Arrow1951Extension} y \textcite{Debreu1951Coefficient,Debreu1954Valuation} demuestran los 2 teoremas fundamentales.\footnote{Kenneth \autor{Arrow} recibió en 1972, junto con John \autor{Hicks}, el Premio Nobel «por sus contribuciones pioneras a la teoría del equilibrio económico general y a la teoría del bienestar» \parencite{Nobel1972HicksArrow}.}
+    \item En los años 50, \textcite{LipseyLancaster1956General} formalizan el \emph{second best}, anticipado por \textcite{Meade1955Trade}, y desde los 70 la economía de la información (\autor{Mirrlees}, \autor{Hurwicz}) muestra los límites de los teoremas cuando la información es privada.
+    \end{itemize}
+  \item \emph{Desde un punto de vista teórico}, el tema completa el equilibrio general \vertema{3.A.21}: aquel pregunta si existe un equilibrio competitivo, si es único y si es estable; este pregunta si es bueno.
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Qué condiciones debe cumplir una asignación para que nadie pueda mejorar sin que otro empeore?
+  \item ¿Las alcanza un mercado competitivo sin que nadie lo coordine? Y, al revés, ¿puede el mercado llevar a cualquier óptimo que la sociedad prefiera?
+  \item Si alguna de esas condiciones no puede cumplirse, por una distorsión o porque la información es privada, ¿conviene cumplir las demás?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}: la exposición tiene 3 partes, que siguen el orden de las preguntas:
+  \begin{itemize}
+  \item \concepto{I. El óptimo económico}: el criterio de \autor{Pareto} y sus juicios de valor (\ref{sec:definicion-juicios}); las condiciones de eficiencia en la producción, en el consumo y global en el modelo 2×2×2×2, con la gran frontera de posibilidades de utilidad (\ref{sec:condiciones-optimalidad}), y su valoración (\ref{sec:valoracion-pareto}).
+  \item \concepto{II. Los teoremas fundamentales}: el primero, según el cual el equilibrio competitivo cumple esas condiciones (\ref{sec:primer-teorema}), y el segundo, según el cual cualquier óptimo puede alcanzarse con el mercado tras redistribuir (\ref{sec:segundo-teorema}).
+  \item \concepto{III. El \emph{second best}}: qué ocurre cuando una condición no puede cumplirse (\ref{sec:second-best-idea}), sus aplicaciones (\ref{sec:second-best-aplicaciones}), el caso en que la restricción es la información (\ref{sec:second-best-informacion}) y su valoración (\ref{sec:second-best-valoracion}).
+  \end{itemize}
+\item El orden va de la definición a la descentralización y de esta a sus límites:
+  \begin{itemize}
+  \item los teoremas no se entienden sin las condiciones del óptimo, aunque el título los nombre antes;
+  \item el \emph{second best} parte de las condiciones que los teoremas dan por cumplidas.
+  \end{itemize}
+\item Es el hilo del refrán: el bloque~\ref{sec:optimo-pareto} define lo mejor; el~\ref{sec:teoremas} dice cuándo el mercado lo alcanza, y el~\ref{sec:second-best}, qué es lo bueno cuando lo mejor no está al alcance.
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.22. Economía del bienestar (I)}\\[2pt]
+Introducción: lo mejor y lo bueno\\
+I. Óptimo económico. Criterio de \autor{Pareto}\\
+\hspace*{1.5em}1. Definición y juicios de valor\\
+\hspace*{1.5em}2. Condiciones: $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$; FPP, FPU, GFPU\\
+\hspace*{1.5em}3. Valoración del criterio de \autor{Pareto}\\
+II. Teoremas fundamentales de la economía del bienestar\\
+\hspace*{1.5em}1. 1TFEB: condiciones y prueba por reducción al absurdo\\
+\hspace*{1.5em}2. 2TFEB: hiperplano separador, límites y soluciones\\
+III. La teoría del \emph{second best}\\
+\hspace*{1.5em}1. Idea y resultado general (\autor{Lipsey} y \autor{Lancaster}, 1956)\\
+\hspace*{1.5em}2. Aplicaciones\\
+\hspace*{1.5em}3. \emph{Second best} con información privada: diseño de mecanismos\\
+\hspace*{1.5em}4. Valoración\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante: introducción, \tiempo{2,5}; I, \tiempo{8,5} (I.1, \tiempo{1}; I.2, \tiempo{6}; I.3, \tiempo{1,5}); II, \tiempo{9} (II.1, \tiempo{4,5}; II.2, \tiempo{4,5}); III, \tiempo{9} (III.1, \tiempo{3,5}; III.2, \tiempo{2}; III.3, \tiempo{2,5}; III.4, \tiempo{1}), y conclusión, \tiempo{1}. Los gráficos imprescindibles son la gran frontera de posibilidades de utilidad (gráfico~\ref{fig:gfpu}), la caja de los teoremas (gráfico~\ref{fig:caja-intercambio-teoremas}) y los 2 del \emph{second best}; las tablas, la de los supuestos del primer teorema (tabla~\ref{tab:supuestos-1tfeb}) y la de los mecanismos. Las 3 condiciones del óptimo, \eqref{eq:condiciones-pareto}, se escriben recuadradas y se quedan en la pizarra hasta el final del bloque~\ref{sec:teoremas}. Los criterios de compensación, las curvas de contrato especiales, el planificador con $I$ consumidores, $J$ empresas y $n$ bienes y las demostraciones completas van en los anexos y no se cantan.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Óptimo económico. Criterio de \autor{Pareto}}\label{sec:optimo-pareto}
+\minutos{8,5}
+
+\begin{itemize}
+\item \emph{Idea}: este bloque caracteriza las asignaciones eficientes sin hablar de precios ni de mercados: lo que haría un planificador benevolente que lo supiera todo.
+\item \emph{Conclusión anticipada}: es doble.
+  \begin{itemize}
+  \item Un óptimo exige que se igualen 3 tipos de relaciones marginales: en la producción, en el consumo y entre ambas.
+  \item Hay infinitos óptimos, de modo que la eficiencia no basta para elegir.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Definición y juicios de valor}\label{sec:definicion-juicios}
+
+\begin{itemize}
+\item \emph{Origen}: \autor{Pareto}, sucesor de \autor{Walras} en la cátedra de Lausana desde 1893, busca un criterio para valorar el equilibrio general que no exija medir ni comparar utilidades \parencite{Pareto1906Manuale}. Su formulación moderna, con conjuntos y sin derivadas, es de \textcite{Arrow1951Extension} y \textcite{Debreu1959Theory}.
+\item \emph{Definiciones}: una \concepto{asignación} es un reparto de los bienes entre los consumidores ($\vect{x}_i$) junto con unos planes de producción ($\vect{y}_j$); es \emph{factible} si $\sum_i\vect{x}_i\leq\sum_i\vect{\omega}_i+\sum_j\vect{y}_j$, con $\vect{y}_j\in\mathcal{Y}_j$.
+  \begin{itemize}
+  \item Una asignación factible es \concepto{\autor{Pareto} superior} a otra si nadie está peor y al menos uno está mejor: nadie se opondría al cambio.
+  \item Es un \concepto{óptimo de \autor{Pareto}} (asignación \emph{eficiente}) si no existe ninguna asignación factible \autor{Pareto} superior a ella: no se puede mejorar a nadie sin empeorar a otro.\footnote{Cabe distinguir entre la \emph{optimalidad débil}, si no existe ninguna asignación que mejore a todos los agentes, y la \emph{optimalidad fuerte}, si no existe ninguna en la que alguno mejore y ninguno empeore. Aquí se trabaja con la fuerte, que implica la débil.}
+  \item Que una asignación sea \autor{Pareto} superior a otra no la convierte en un óptimo: puede haber una tercera que la mejore.
+  \end{itemize}
+\item \emph{Carácter ordinal}: solo exige saber si cada uno prefiere una situación a otra; no mide cuánto ni compara entre personas \vertema{3.A.8}.
+\item \emph{Juicios de valor} en que se apoya \parencite{GravelleRees2004Microeconomics}:
+  \begin{enumerate}
+  \item \emph{individualismo}: el bienestar social depende solo de las utilidades de los individuos;\footnote{No importa, por ejemplo, si un bien se produce en una empresa grande o en muchas pequeñas, ni si son de propiedad privada o pública: la organización de la producción solo importa en la medida en que afecte a las utilidades.}
+  \item \emph{no paternalismo}: cada individuo es el mejor juez de su propio bienestar;\footnote{Es un juicio de valor fuerte, que muchos no aceptarían en cualquier circunstancia: pocos respetarían sin más la preferencia de quien decide consumir heroína, y a veces se proponen como excepciones el alcohol, el tabaco, la sanidad, la educación o el ahorro.}
+  \item \emph{benevolencia}: si uno mejora y nadie empeora, la sociedad mejora; el criterio no se pronuncia sobre la desigualdad;
+  \item \emph{independencia del proceso}: no importa cómo se llega a una asignación (mercado, plan o imposición), solo la asignación.
+  \end{enumerate}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Condiciones de optimalidad paretiana}\label{sec:condiciones-optimalidad}
+
+\begin{itemize}
+\item Una vez definido el criterio, pasamos a ver qué condiciones debe cumplir una asignación para ser óptima. Para que lo sea, tiene que ser a la vez:
+  \begin{enumerate}
+  \item eficiente en la producción;
+  \item eficiente en el consumo (o en el intercambio);
+  \item eficiente globalmente.
+  \end{enumerate}
+\item Las 2 primeras son necesarias, pero no suficientes.
+\end{itemize}
+
+\paragraph{Supuestos del modelo 2×2×2×2}
+
+\begin{itemize}
+\item Se usa el modelo 2×2×2×2 estático de \textcite{Bator1957Simple}, con la misma especificación y notación que el equilibrio general competitivo \vertema{3.A.21}, para que el bloque~\ref{sec:teoremas} compare 2 problemas con los mismos ingredientes:\footnote{El modelo general, con $I$ consumidores, $J$ empresas y $n$ bienes, es el de \textcite[cap.~16]{MasColellWhinstonGreen1995}: el problema del planificador en esa versión está en el anexo~\ref{anexo:planificador-general}, y los teoremas del bloque~\ref{sec:teoremas} se demuestran con ella en el anexo~\ref{anexo:demostraciones}.}
+  \begin{itemize}
+  \item \emph{2 bienes privados}, $X$ e $Y$, homogéneos.
+  \item \emph{2 factores}, trabajo $L$ y capital $K$, homogéneos y perfectamente divisibles, con dotaciones totales fijas $\overline{L}$ y $\overline{K}$; la del consumidor $i$ es $\vect{\omega}_i=(\overline{L}_i,\overline{K}_i)$.
+  \item \emph{2 consumidores}, $A$ y $B$. Sus preferencias son completas, transitivas, continuas, estrictamente monótonas y estrictamente convexas, y se representan con funciones de utilidad $U_A(X_A,Y_A)$ y $U_B(X_B,Y_B)$ continuas, estrictamente crecientes, estrictamente cuasicóncavas y diferenciables \parencite[cap.~4]{Debreu1959Theory} \vertema{3.A.8}. No hay externalidades en el consumo.
+  \item \emph{2 empresas}, una por bien, con funciones de producción $X=F_X(L_X,K_X)$ e $Y=F_Y(L_Y,K_Y)$ continuas, crecientes, con isocuantas convexas y diferenciables \vertema{3.A.11}; sus conjuntos de producción son convexos (rendimientos a escala no crecientes). No hay externalidades en la producción.\footnote{Las 2 tecnologías pueden ser distintas: no tienen por qué usar los factores con la misma intensidad.}
+  \end{itemize}
+\item \emph{Sin precios}: el problema es el de un \concepto{planificador benevolente} que conoce las preferencias, las tecnologías y las dotaciones. El óptimo se obtiene, por tanto, de forma \emph{tecnocrática}, solo a partir de las formas funcionales.
+\item \emph{Qué no se supone}:
+  \begin{itemize}
+  \item utilidad marginal decreciente: no tiene sentido con utilidad ordinal, porque una transformación monótona puede cambiarla;
+  \item condiciones de \autor{Inada} ni derivadas cruzadas positivas: no hacen falta para el óptimo.
+  \end{itemize}
+\item Basta con la convexidad: hace que las condiciones de primer orden sean suficientes y que la FPP sea cóncava.
+\end{itemize}
+
+\paragraph{Eficiencia en la producción}
+
+\begin{itemize}
+\item \emph{Idea}: una asignación de los factores es eficiente si, reasignándolos, no se puede producir más de un bien sin producir menos del otro.
+\item \emph{Problema}: maximizar la producción de $X$ dada la de $Y$ y las dotaciones:
+$$\optim{\max}{L_X,K_X}{F_X(L_X,K_X)}{F_Y(\overline{L}-L_X,\ \overline{K}-K_X)\geq\overline{Y}}$$
+  Con $\mathcal{L}=F_X(L_X,K_X)+\lambda\big[F_Y(\overline{L}-L_X,\overline{K}-K_X)-\overline{Y}\big]$, las condiciones de primer orden son $\mathrm{PMg}^X_L=\lambda\,\mathrm{PMg}^Y_L$ y $\mathrm{PMg}^X_K=\lambda\,\mathrm{PMg}^Y_K$, y dividiendo:
+  $$\mathrm{RMST}^X_{LK}\equiv\frac{\mathrm{PMg}^X_L}{\mathrm{PMg}^X_K}=\frac{\mathrm{PMg}^Y_L}{\mathrm{PMg}^Y_K}\equiv\mathrm{RMST}^Y_{LK}.$$
+\item \emph{Interpretación}: las 2 empresas deben estar dispuestas a cambiar trabajo por capital en la misma proporción. Si la $\mathrm{RMST}$ fuera mayor en $X$, pasar trabajo de $Y$ a $X$ a cambio de capital aumentaría la producción de algún bien sin reducir la del otro.
+  \begin{itemize}
+  \item El multiplicador, $\lambda=\mathrm{PMg}^X_L/\mathrm{PMg}^Y_L>0$, es lo que se gana de $X$ por cada unidad de $Y$ a la que se renuncia: la inversa de la pendiente de la FPP.
+  \end{itemize}
+\item \emph{Interpretación gráfica}: en la caja de \autor{Edgeworth} de la producción, de lados $\overline{L}$ y $\overline{K}$, los puntos eficientes son las tangencias de las isocuantas,\footnote{Una \emph{isocuanta} reúne las combinaciones de $L$ y $K$ que dan el mismo nivel de producción; su pendiente, en valor absoluto, es la $\mathrm{RMST}_{LK}$, el ritmo al que un factor puede sustituir al otro sin que cambie la producción \vertema{3.A.11}.} que forman la \concepto{curva de contrato} de la producción, de $O_X$ a $O_Y$. Llevada al espacio de los bienes, da la \concepto{frontera de posibilidades de producción} (FPP) (gráfico~\ref{fig:caja-edgeworth-fpp}).\footnote{La curva de contrato no es en general una isoclina: las tangencias se producen con pendientes distintas. Es la diagonal solo si las 2 tecnologías emplean los factores en la misma proporción a cualquier precio relativo (por ejemplo, si son homotéticas e idénticas salvo la escala); en ese caso, con rendimientos constantes, la FPP es una recta. Los 2 vértices de la caja, en los que una empresa usa todos los factores y la otra ninguno, también son eficientes (anexo~\ref{anexo:curvas-contrato}).} La construcción detallada de la caja está en \vertema{3.A.11}, y con los precios de los factores, en \vertema{3.A.21}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Caja de \autor{Edgeworth} de la producción y frontera de posibilidades de producción: el punto $A$ es ineficiente; $B$ y $C$, en la curva de contrato, se trasladan a la FPP}\label{fig:caja-edgeworth-fpp}
+\grafico[0.95\textwidth]{caja-edgeworth-fpp}
+\fuente{elaboración propia a partir de \textcite{Bator1957Simple}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Propiedades de la FPP}:\footnote{La FPP es el equilibrio de las empresas llevado al espacio de los bienes. Hace falta porque en el óptimo lo que se produce tiene que ser lo que se consume, y los consumidores deciden en el espacio de los bienes.}
+  \begin{enumerate}
+  \item \emph{pendiente negativa}, porque las funciones de producción son crecientes: para producir más de un bien hay que retirar factores del otro. Su valor absoluto es la \concepto{relación marginal de transformación},
+  $$\mathrm{RMT}_{XY}\equiv-\frac{dY}{dX}\Big|_{\text{FPP}}=\frac{\mathrm{PMg}^Y_L}{\mathrm{PMg}^X_L}=\frac{\mathrm{PMg}^Y_K}{\mathrm{PMg}^X_K}=\frac{\mathrm{CMg}_X}{\mathrm{CMg}_Y},$$
+  el coste de oportunidad de una unidad más de $X$ en unidades de $Y$;\footnote{La última igualdad usa que, al minimizar costes, $\mathrm{CMg}_j=w_L/\mathrm{PMg}^j_L$ \vertema{3.A.12}: el cociente de costes marginales mide lo mismo que la $\mathrm{RMT}$, pero en dinero.}
+  \item \emph{forma}: con rendimientos decrecientes es estrictamente cóncava; con rendimientos constantes, estrictamente cóncava si las intensidades factoriales difieren y recta si coinciden; con rendimientos crecientes puede ser convexa;\footnote{Con rendimientos decrecientes los pagos a los factores no agotan el producto y las empresas tienen beneficios, que se reparten entre los consumidores según sus participaciones $\theta_{ij}$ \vertema{3.A.21}.}
+  \item \emph{todos sus puntos son eficientes en la producción}: los de dentro son factibles pero ineficientes, y los de fuera, inalcanzables con los recursos y la tecnología dados.
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{Eficiencia en el consumo}
+
+\begin{itemize}
+\item \emph{Idea}: un reparto de unas cantidades dadas de los bienes, $\overline{X}$ e $\overline{Y}$, es eficiente si, redistribuyéndolas, no se puede mejorar a un consumidor sin empeorar al otro.
+\item \emph{Problema}: maximizar la utilidad de $A$ dada la de $B$:
+$$\optim{\max}{X_A,Y_A}{U_A(X_A,Y_A)}{U_B(\overline{X}-X_A,\ \overline{Y}-Y_A)\geq\overline{U}_B}$$
+  Con $\mathcal{L}=U_A(X_A,Y_A)+\lambda\big[U_B(\overline{X}-X_A,\overline{Y}-Y_A)-\overline{U}_B\big]$, las condiciones de primer orden son $\partial U_A/\partial X_A=\lambda\,\partial U_B/\partial X_B$ y $\partial U_A/\partial Y_A=\lambda\,\partial U_B/\partial Y_B$, y dividiendo:
+  $$\mathrm{RMS}^A_{XY}\equiv\frac{\partial U_A/\partial X_A}{\partial U_A/\partial Y_A}=\frac{\partial U_B/\partial X_B}{\partial U_B/\partial Y_B}\equiv\mathrm{RMS}^B_{XY}.$$
+\item \emph{Interpretación}: los 2 consumidores deben valorar igual un bien en términos del otro; si no, hay un intercambio que mejora a los 2.
+  \begin{itemize}
+  \item El multiplicador, $\lambda=-dU_A/d\overline{U}_B>0$, es la utilidad a la que tiene que renunciar $A$ por cada unidad más de utilidad de $B$: menos la pendiente de la FPU.
+  \end{itemize}
+\item \emph{Interpretación gráfica}: en la caja de \autor{Edgeworth} del consumo, de lados $\overline{X}$ e $\overline{Y}$, los óptimos son las tangencias de las curvas de indiferencia:\footnote{Una \emph{curva de indiferencia} reúne las cestas de $X$ e $Y$ que dan la misma utilidad; su pendiente, en valor absoluto, es la $\mathrm{RMS}_{XY}$, el ritmo al que el consumidor está dispuesto a cambiar un bien por otro sin que cambie su utilidad \vertema{3.A.8}.} la curva de contrato, de $O_A$ a $O_B$ \vertema{3.A.21}. Llevada al espacio de las utilidades, $(U_A,U_B)$, da la \concepto{frontera de posibilidades de utilidad} (FPU) (gráfico~\ref{fig:caja-consumo-fpu}).\footnote{La frontera de posibilidades de utilidad la introduce \textcite{Allais1943Recherche} («\emph{surface de rendement maximum}») y, de forma independiente, \textcite{Samuelson1950Evaluation}, de quien procede el nombre actual. Según \textcite{HETParetoSocial}, la teoría de \autor{Pareto} se habría entendido mejor si hubiera usado de forma explícita la frontera de utilidades.}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{De la curva de contrato del consumo a la frontera de posibilidades de utilidad}\label{fig:caja-consumo-fpu}
+\grafico[0.95\textwidth]{caja-consumo-fpu}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Propiedades de la FPU}:
+  \begin{enumerate}
+  \item \emph{pendiente negativa}, porque las utilidades son crecientes y no hay externalidades en el consumo;
+  \item \emph{forma indeterminada}: como la utilidad es ordinal, cualquier transformación monótona de $U_A$ o de $U_B$ cambia su curvatura; solo importa que sea decreciente;\footnote{La FPU se dibuja cóncava por costumbre, pero la concavidad solo tendría sentido con utilidades cardinales y comparables entre individuos; en general solo es decreciente \parencite{HETParetoSocial}.}
+  \item \emph{todos sus puntos son eficientes en el consumo}: los de dentro son ineficientes, y los de fuera, inalcanzables;
+  \item \emph{hay una FPU para cada par de cantidades} $(\overline{X},\overline{Y})$, es decir, una por cada punto de la FPP.\footnote{En una economía de intercambio puro, la FPU es el final del análisis; con producción hay infinitas FPU, y hace falta el paso siguiente.}
+  \end{enumerate}
+\end{itemize}
+
+\paragraph{Eficiencia global}
+
+\begin{itemize}
+\item \emph{Idea}: no basta con producir en la FPP y repartir en la curva de contrato. La composición de la producción tiene que ser la que prefieren los consumidores: su valoración marginal debe coincidir con el coste de oportunidad de producir.
+\item \emph{Problema del planificador}: maximizar la utilidad de $A$ dada la de $B$, con la tecnología y las dotaciones de la economía:
+\begin{equation}\label{eq:planificador}
+\optim{\max}{X_A,Y_A,X_B,Y_B,L_X,K_X,L_Y,K_Y}{U_A(X_A,Y_A)}{U_B(X_B,Y_B)\geq\overline{U}_B\\ X_A+X_B\leq F_X(L_X,K_X)\\ Y_A+Y_B\leq F_Y(L_Y,K_Y)\\ L_X+L_Y\leq\overline{L}\\ K_X+K_Y\leq\overline{K}}
+\end{equation}
+  con multiplicadores $\lambda_U$, $\lambda_X$, $\lambda_Y$, $\lambda_L$ y $\lambda_K$, uno por restricción. En una solución interior, las condiciones de primer orden son:
+  \begin{itemize}
+  \item en el consumo, $\partial U_A/\partial X_A=\lambda_X=\lambda_U\,\partial U_B/\partial X_B$ y $\partial U_A/\partial Y_A=\lambda_Y=\lambda_U\,\partial U_B/\partial Y_B$;
+  \item en los factores, $\lambda_X\mathrm{PMg}^X_L=\lambda_L=\lambda_Y\mathrm{PMg}^Y_L$ y $\lambda_X\mathrm{PMg}^X_K=\lambda_K=\lambda_Y\mathrm{PMg}^Y_K$.
+  \end{itemize}
+\item \emph{Resultado}: dividiendo, las 3 condiciones del óptimo de \autor{Pareto}:
+\funcionclave[eq:condiciones-pareto]{\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\frac{\lambda_L}{\lambda_K},\qquad \mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\frac{\lambda_X}{\lambda_Y}=\mathrm{RMT}_{XY}}
+\item \emph{Interpretación}:
+  \begin{itemize}
+  \item si $\mathrm{RMS}_{XY}>\mathrm{RMT}_{XY}$, los consumidores valoran una unidad más de $X$ en más unidades de $Y$ de las que cuesta producirla: conviene producir más $X$, y al revés;
+  \item cada multiplicador es el valor social de una unidad más del bien o del factor, un \concepto{precio sombra}: $\lambda_X$ es lo que aumentaría la utilidad de $A$ con una unidad más de $X$, y $\lambda_L$, con una unidad más de trabajo;
+  \item el planificador no necesita precios, pero su solución los lleva dentro: si los precios de mercado fueran proporcionales a $(\lambda_X,\lambda_Y,\lambda_L,\lambda_K)$, cada agente, mirando solo esos precios, elegiría lo que el planificador le asigna. Es la intuición de \autor{Lange} y \autor{Lerner} y la puerta de los 2 teoremas (bloque~\ref{sec:teoremas});
+  \item con utilidades cuasicóncavas y funciones de producción cóncavas, estas condiciones son también suficientes.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Las 3 condiciones en un solo problema.} El problema~\eqref{eq:planificador} contiene los 2 anteriores: si se fija la producción, es el de la eficiencia en el consumo, y si se fija el reparto, el de la eficiencia en la producción. Por eso una asignación eficiente en la producción y en el consumo puede no serlo globalmente: le falta la condición que une las 2 cajas, $\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}$. Planteamiento adaptado de \textcite{MatePerez2007Microeconomia}, con la notación del tema; la versión con $I$ consumidores, $J$ empresas y $n$ bienes está en el anexo~\ref{anexo:planificador-general}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:gfpu}):
+  \begin{itemize}
+  \item se elige un punto de la FPP, $E=E_2$, que fija el tamaño de la caja del consumo, $(X^*,Y^*)$, con $O_A$ en el origen y $O_B$ en $E$, y garantiza la eficiencia en la producción;
+  \item dentro de esa caja, todos los puntos de la curva de contrato son eficientes en el consumo, pero solo es globalmente eficiente $E^*$, en el que la pendiente común de las curvas de indiferencia es igual a la de la FPP en $E$: $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$;
+  \item cada punto de la FPP ($E_1$, $E_2$, $E_3$\ldots) da una FPU (FPU$_1$, FPU$_2$, FPU$_3$\ldots) con su punto globalmente eficiente ($E^*_1$, $E^*_2$, $E^*_3$\ldots); la envolvente de esos puntos es la \concepto{gran frontera de posibilidades de utilidad} (GFPU).\footnote{Si en algún punto de la FPP no hubiera ningún reparto con la pendiente adecuada, la GFPU tendría puntos aislados o tramos; con los supuestos del modelo es una curva continua \parencite{Bator1957Simple}.}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Construcción de la gran frontera de posibilidades de utilidad: la caja del consumo dentro de la FPP, con $\mathrm{RMS}=\mathrm{RMT}$ (izquierda), y las FPU de cada punto de la FPP con su envolvente, la GFPU (derecha)}\label{fig:gfpu}
+\grafico[0.95\textwidth]{gfpu}
+\fuente{elaboración propia a partir de \textcite{Bator1957Simple} y \textcite{Koutsoyiannis1979Modern}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Implicación}: hay infinitos óptimos globales, toda la GFPU, y el criterio de \autor{Pareto} no los ordena.\footnote{Cada óptimo fija los 10 valores del modelo 2×2×2×2: $L_X$, $K_X$, $L_Y$, $K_Y$, $X$, $Y$, $X_A$, $Y_A$, $X_B$ e $Y_B$. Como se obtienen solo a partir de las formas funcionales, con independencia de los precios, la solución es \emph{tecnocrática}; para quedarse con uno de ellos hacen falta juicios de valor adicionales que agreguen las preferencias.} La optimalidad de \autor{Pareto} es una condición \emph{necesaria pero no suficiente} para maximizar el bienestar social.
+\end{itemize}
+
+\paragraph{Elegir entre óptimos: la función de bienestar social}
+
+\begin{itemize}
+\item \emph{Idea}: para elegir hace falta un juicio de valor adicional sobre la distribución. \textcite{Bergson1938Reformulation} y \textcite{Samuelson1947Foundations} lo resumen en una \concepto{función de bienestar social}, $W(U_A,U_B)$, creciente en las utilidades, cuyas curvas de nivel son las curvas de indiferencia social (gráfico~\ref{fig:fbs-gfpu}).
+\item \emph{Punto de felicidad}: el óptimo social es la tangencia de la curva de indiferencia social más alta, $W_3$, con la GFPU: el punto $c$ (\emph{bliss point}).
+\item \emph{Un punto ineficiente puede ser mejor que uno eficiente}: el punto $a$, por debajo de la GFPU pero en la curva $W_2$, da más bienestar social que el punto $d$, eficiente pero muy desigual, en la $W_1$; $b$, en la misma $W_2$, da el mismo bienestar que $a$. Pero, dado cualquier punto ineficiente, siempre hay uno en la GFPU que lo mejora.
+\item Las formas de $W(U_A,U_B)$ (utilitarista, rawlsiana, intermedias) y el problema de agregar las preferencias son materia de \vertema{3.A.24}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Función de bienestar social y gran frontera de posibilidades de utilidad: el punto de felicidad $c$}\label{fig:fbs-gfpu}
+\grafico[0.6\textwidth]{fbs-gfpu}
+\fuente{elaboración propia a partir de \textcite{Bator1957Simple}.}
+\end{figure}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración del criterio de \autor{Pareto}}\label{sec:valoracion-pareto}
+
+Una vez obtenidas las condiciones del óptimo, valoramos el criterio que las sostiene.
+
+\begin{itemize}
+\item \emph{Ventajas}:
+  \begin{enumerate}
+  \item es \emph{ordinal}: no exige comparar utilidades entre personas;
+  \item se basa en \emph{pocos juicios de valor}, generalmente aceptados, y parte de una noción mínima: no deben desperdiciarse recursos;
+  \item permite \emph{valorar el mercado competitivo} como mecanismo de asignación (bloque~\ref{sec:teoremas}).
+  \end{enumerate}
+\item \emph{Críticas}:
+  \begin{enumerate}
+  \item \emph{es estático}: la escuela austriaca prefiere la \emph{eficiencia dinámica}, la capacidad del sistema para descubrir oportunidades y desplazar la FPP hacia fuera \parencite{HuertaDeSoto2004Eficiencia};
+  \item \emph{favorece el \emph{statu quo}}: exigir que nadie empeore equivale a dar a cada individuo un derecho de veto (regla de unanimidad), y casi ninguna política lo supera;
+  \item \emph{es independiente del proceso}: vale igual una asignación decidida democráticamente que una impuesta;
+  \item \emph{ignora la distribución}:\footnote{En respuesta, \textcite{Foley1967Resource} propone las asignaciones \emph{justas}: las que, además de eficientes, son \emph{equitativas}, entendidas como libres de envidia (ningún agente prefiere la cesta de otro a la suya) \vertema{3.A.24}.} la asignación en la que uno lo tiene todo es un óptimo, porque para que mejore el que no tiene nada tiene que empeorar el otro. Como advierte \textcite{Sen1970Collective}, una economía puede ser óptima en el sentido de \autor{Pareto} aunque unos vivan en el lujo y otros al borde de la inanición;\footnote{Amartya \autor{Sen} recibió en 1998 el Premio Nobel «por sus contribuciones a la economía del bienestar» \parencite{Nobel1998Sen}. Que a la gente le importa el reparto se ve en el laboratorio. En el \emph{juego del ultimátum} \parencite{GuthSchmittbergerSchwarze1982Ultimatum}, un jugador propone cómo repartir una cantidad y el otro acepta o rechaza, y si rechaza ninguno cobra. Todo reparto de la cantidad entera es eficiente en el sentido de \autor{Pareto}, y con jugadores que solo miran su dinero el equilibrio de \autor{Nash} perfecto en subjuegos es ofrecer lo mínimo y aceptarlo. En el experimento original, la oferta más frecuente era el reparto a medias; un metaanálisis de 75 resultados da una oferta media del 40~\% y un 16~\% de rechazos, más frecuentes cuanto menor es la oferta \parencite{OosterbeekSloofVandeKuilen2004Cultural} \vertema{3.A.14} \vertema{3.A.1}.}
+  \item \emph{es incompleto}, posiblemente su principal inconveniente: no ordena los infinitos óptimos de la GFPU, ni permite comparar un punto eficiente con uno ineficiente que no esté por debajo y a la izquierda de él.\footnote{\autor{Pareto} llama \emph{máximo de ofelimidad} a la optimalidad que alcanza la competencia; \autor{Wicksell}, en sus reseñas de \autor{Pareto} \parencite[143, 169]{Wicksell1958Selected}, le reprocha confundirla con el óptimo social: hay infinitos óptimos, y el equilibrio competitivo no tiene por qué ser el socialmente preferido.}
+  \end{enumerate}
+\item \emph{Respuestas a la incompletitud}: en los años 30 y 40, la nueva economía del bienestar busca ordenar los óptimos sin comparar utilidades por 2 vías:
+  \begin{itemize}
+  \item la \emph{neoparetiana} de la London School of Economics, con los \concepto{criterios de compensación}: un cambio es una mejora si los ganadores \emph{podrían} compensar a los perdedores y seguir ganando \parencite{Kaldor1939Welfare,Hicks1939Foundations}. La compensación es potencial, no efectiva, y los criterios pueden contradecirse \parencite{Scitovsky1941Note}; se desarrollan en el anexo~\ref{anexo:compensacion} y se aplican en el análisis coste-beneficio \vertema{3.A.9};
+  \item la \emph{neoutilitarista} de Harvard, con la función de bienestar social de \autor{Bergson} (1938) y \autor{Samuelson} (1947), que elige entre los óptimos con juicios de valor explícitos \vertema{3.A.24}.
+  \end{itemize}
+\item \emph{Recapitulando}: el óptimo económico exige igualar las relaciones marginales de todos los agentes, \eqref{eq:condiciones-pareto}, y lo puede calcular un planificador que lo sepa todo. Pasamos ahora a la pregunta central del tema: ¿lo alcanza el mercado sin planificador?
+\end{itemize}
+
+
+% ==========================================================================
+\section{Teoremas fundamentales de la economía del bienestar}\label{sec:teoremas}
+\minutos{9}
+
+\begin{itemize}
+\item \emph{Idea}: una vez caracterizados los óptimos sin precios, pasamos a la pregunta que da título al tema: ¿qué relación hay entre el equilibrio general competitivo y el óptimo de \autor{Pareto}?
+\item \emph{Conclusión anticipada}: se corresponden en los 2 sentidos.
+  \begin{itemize}
+  \item Todo equilibrio competitivo es un óptimo: es el \concepto{primer teorema fundamental de la economía del bienestar} (1TFEB).
+  \item Todo óptimo puede ser un equilibrio competitivo si antes se redistribuyen las dotaciones: es el \concepto{segundo teorema fundamental de la economía del bienestar} (2TFEB).
+  \end{itemize}
+  Pero cada sentido exige supuestos distintos, y en esos supuestos está la política económica.
+\item \emph{El equilibrio de referencia} \vertema{3.A.21}: un \concepto{equilibrio walrasiano} es un vector de precios $\vect{p}^*$ y una asignación $(\vect{x}^*_i,\vect{y}^*_j)$ tales que:
+  \begin{enumerate}
+  \item cada empresa maximiza su beneficio a esos precios: $\vect{y}^*_j$ maximiza $\vect{p}^*\cdot\vect{y}_j$ en $\mathcal{Y}_j$;
+  \item cada consumidor maximiza su utilidad con su renta, $\overline{W}_i=\vect{p}^*\cdot\vect{\omega}_i+\sum_j\theta_{ij}\,\vect{p}^*\cdot\vect{y}^*_j$, donde $\theta_{ij}$ es su participación en los beneficios de la empresa $j$;
+  \item todos los mercados se vacían: $\sum_i\vect{x}^*_i=\sum_i\vect{\omega}_i+\sum_j\vect{y}^*_j$.
+  \end{enumerate}
+  Si a la renta de cada consumidor se suma una \concepto{transferencia de suma fija} $T_i$, que no depende de lo que haga y con $\sum_iT_i=0$, se habla de \emph{equilibrio con transferencias}: es el instrumento del 2TFEB.
+\item \emph{Origen}: las condiciones marginales las formulan \textcite{Lerner1934Economic,Lerner1944Economics} y \textcite{Lange1942Foundations}, en el debate sobre el cálculo económico en el socialismo, y las demuestran matemáticamente \textcite{Hotelling1938General} y \textcite{Allais1943Recherche}. La demostración con análisis convexo, sin derivadas y válida con soluciones de esquina, es de \textcite{Arrow1951Extension} y \textcite{Debreu1951Coefficient,Debreu1954Valuation}, por separado.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Primer teorema fundamental de la economía del bienestar (1TFEB)}\label{sec:primer-teorema}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{Enunciado}: si las preferencias son localmente no saciables, \emph{todo equilibrio walrasiano es un óptimo de \autor{Pareto}} \parencite{Arrow1951Extension,Debreu1951Coefficient}.
+\item \emph{Por qué importa}: es la formalización de la mano invisible de \textcite{Smith1776Wealth}. Agentes que solo buscan su interés y solo miran precios no dejan sin aprovechar ninguna mejora de \autor{Pareto}.\footnote{\textcite{Feldman1987Welfare} resume la fuerza del teorema con una imagen: si las decisiones de producción y de consumo se tomaran lanzando dardos a una diana, la probabilidad de acertar en un óptimo sería nula, así que decir que el mercado lo alcanza es decir mucho.}
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Los del equilibrio general competitivo, que la tabla~\ref{tab:supuestos-1tfeb} ordena junto con el fallo de mercado que aparece cuando se levanta cada uno.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos del primer teorema fundamental y qué ocurre si se levanta cada uno}\label{tab:supuestos-1tfeb}
+\begin{tabular}{>{\centering\arraybackslash}m{0.7cm}>{\raggedright\arraybackslash}m{3.4cm}>{\raggedright\arraybackslash}m{5.4cm}>{\raggedright\arraybackslash}m{4.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{Qué significa} & \textbf{Si se levanta}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{No saciedad local} & cerca de cualquier cesta hay otra que el consumidor prefiere, de modo que gasta toda su renta & un consumidor saciado puede dejar renta sin gastar y el equilibrio puede no ser eficiente\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{2}} & \textbf{Mercados completos} & todo lo que afecta a la utilidad o a la producción tiene mercado y precio: no hay externalidades ni bienes públicos & \textcolor{tceerojo}{externalidades y bienes públicos} \vertema{3.A.23}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{3}} & \textbf{Agentes precio-aceptantes} & nadie mueve los precios con sus decisiones (el supuesto de atomicidad de la competencia perfecta, \vertema{3.A.16}) & \textcolor{tceerojo}{poder de mercado} \vertema{3.A.17} \vertema{3.A.19}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Precios comunes} & todos se enfrentan a los mismos precios: no hay impuestos que abran cuñas entre lo que paga el comprador y lo que cobra el vendedor & \textcolor{tceerojo}{exceso de gravamen} \vertema{4.B.9}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{5}} & \textbf{Información perfecta y simétrica} & todos observan lo que entra en el intercambio: su calidad, su precio y lo que hace cada parte & \textcolor{tceerojo}{selección adversa y riesgo moral} \vertema{3.A.13}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[§~16.C]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Lo que no hace falta}: convexidad de las preferencias o de las tecnologías ni ninguna condición sobre los rendimientos. Esas condiciones aseguran que el equilibrio \emph{exista} \vertema{3.A.21}; el teorema dice que, \emph{si existe}, es eficiente.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{En el modelo 2×2×2×2 (las condiciones marginales)}: cada agente iguala su relación marginal al precio relativo que ve, y como todos ven los mismos precios, todas las relaciones marginales se igualan:
+  \begin{itemize}
+  \item los consumidores, al maximizar su utilidad, hacen $\mathrm{RMS}^A_{XY}=p_X/p_Y=\mathrm{RMS}^B_{XY}$: eficiencia en el consumo;
+  \item las empresas, al minimizar sus costes, hacen $\mathrm{RMST}^X_{LK}=w_L/w_K=\mathrm{RMST}^Y_{LK}$: eficiencia en la producción;
+  \item al maximizar sus beneficios, $p_X=\mathrm{CMg}_X$ y $p_Y=\mathrm{CMg}_Y$ \vertema{3.A.16}, luego $\mathrm{RMT}_{XY}=\mathrm{CMg}_X/\mathrm{CMg}_Y=p_X/p_Y=\mathrm{RMS}_{XY}$: eficiencia global.
+  \end{itemize}
+\item Son las condiciones~\eqref{eq:condiciones-pareto} con $\lambda_X/\lambda_Y=p_X/p_Y$ y $\lambda_L/\lambda_K=w_L/w_K$: \emph{los precios de mercado hacen el papel de los precios sombra del planificador} (tabla~\ref{tab:planificador-mercado}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Las 3 condiciones del óptimo: el planificador y el mercado}\label{tab:planificador-mercado}
+\begin{tabular}{>{\centering\arraybackslash}m{2.8cm}>{\centering\arraybackslash}m{5.4cm}>{\centering\arraybackslash}m{5.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Eficiencia} & \textbf{Planificador}\newline (precios sombra) & \textbf{Mercado competitivo}\newline (precios de mercado)\\
+\midrule
+En la producción & $\mathrm{RMST}^X_{LK}=\lambda_L/\lambda_K=\mathrm{RMST}^Y_{LK}$ & $\mathrm{RMST}^X_{LK}=w_L/w_K=\mathrm{RMST}^Y_{LK}$\\
+\addlinespace[0.4em]
+En el consumo & $\mathrm{RMS}^A_{XY}=\lambda_X/\lambda_Y=\mathrm{RMS}^B_{XY}$ & $\mathrm{RMS}^A_{XY}=p_X/p_Y=\mathrm{RMS}^B_{XY}$\\
+\addlinespace[0.4em]
+Global & $\mathrm{RMS}_{XY}=\lambda_X/\lambda_Y=\mathrm{RMT}_{XY}$ & $\mathrm{RMS}_{XY}=p_X/p_Y=\mathrm{CMg}_X/\mathrm{CMg}_Y$\\
+\midrule
+\multicolumn{3}{>{\centering\arraybackslash}m{\dimexpr13.6cm+4\tabcolsep\relax}}{\cellcolor{tceesalvia}1TFEB: los precios de equilibrio son precios sombra del planificador}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[§~16.F]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Prueba general por reducción al absurdo} \parencite[§~16.C]{MasColellWhinstonGreen1995}, con $I$ consumidores, $J$ empresas y $n$ bienes, sin derivadas (detalle en el anexo~\ref{anexo:demostraciones}):
+  \begin{enumerate}
+  \item supongamos que existe una asignación factible $(\vect{x}'_i,\vect{y}'_j)$ \autor{Pareto} superior a la del equilibrio: nadie está peor y alguien está mejor;
+  \item quien está mejor no podía pagar su nueva cesta, porque si no la habría elegido: $\vect{p}^*\cdot\vect{x}'_i>\overline{W}_i$;
+  \item quien está igual tampoco podía pagarla por menos de su renta, porque, por la no saciedad local, habría tenido cerca una cesta asequible y mejor: $\vect{p}^*\cdot\vect{x}'_i\geq\overline{W}_i$;
+  \item sumando, y como $\sum_i\theta_{ij}=1$ y las empresas maximizan el beneficio a los precios $\vect{p}^*$ ($\vect{p}^*\cdot\vect{y}^*_j\geq\vect{p}^*\cdot\vect{y}'_j$):
+  $$\vect{p}^*\cdot\sum_i\vect{x}'_i>\sum_i\overline{W}_i=\vect{p}^*\cdot\sum_i\vect{\omega}_i+\sum_j\vect{p}^*\cdot\vect{y}^*_j\geq\vect{p}^*\cdot\Big(\sum_i\vect{\omega}_i+\sum_j\vect{y}'_j\Big);$$
+  \item pero la asignación es factible, $\sum_i\vect{x}'_i\leq\sum_i\vect{\omega}_i+\sum_j\vect{y}'_j$, y con precios no negativos el primer miembro no puede superar al último: contradicción. Luego el equilibrio es un óptimo de \autor{Pareto}.\findemo
+  \end{enumerate}
+\item \emph{Interpretación gráfica}: en la caja de intercambio, el equilibrio $E$ que se alcanza desde la dotación $\vect{\omega}$ está en la curva de contrato, porque la recta de precios es tangente a las 2 curvas de indiferencia en el mismo punto (gráfico~\ref{fig:caja-intercambio-teoremas}).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Los teoremas del bienestar en la caja de \autor{Edgeworth}: el equilibrio $E$ en la curva de contrato (1TFEB) y el paso de $\vect{\omega}$ a $\vect{\omega}'$ para alcanzar $E'$ (2TFEB)}\label{fig:caja-intercambio-teoremas}
+\grafico[0.75\textwidth]{caja-intercambio-teoremas}
+\fuente{elaboración propia a partir de \textcite[cap.~7]{Segura1986Analisis} y \textcite[cap.~16]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Economía de información}: el planificador necesita conocer todas las preferencias y tecnologías; en el mercado, a cada agente le basta con conocer los precios y lo suyo \parencite{Hayek1945Use}. Los precios son las señales que coordinan las decisiones descentralizadas y las hacen compatibles.
+\item \emph{Papel del Estado}: si se cumplen los supuestos, ninguna intervención en la asignación puede mejorar a todos. El 1TFEB es la defensa del libre mercado: limita el papel del Estado a corregir los fallos que rompen alguno de los supuestos.
+\item \emph{El mercado llega a un óptimo, no al óptimo}: el equilibrio es uno de los infinitos puntos de la GFPU, el que corresponde a las dotaciones de partida, y no tiene por qué ser el punto de felicidad.\footnote{Que el equilibrio coincida con el punto de felicidad depende de las dotaciones. Esa posible divergencia entre el óptimo que alcanza el mercado y el que maximiza el bienestar social es la que da pie al 2TFEB.}
+\end{itemize}
+
+\paragraph{c) Valoración}
+
+\begin{itemize}
+\item \emph{No dice nada de la equidad}: el equilibrio depende de las dotaciones, y uno en el que alguien lo tiene casi todo también es eficiente.
+\item \emph{Sus supuestos son exigentes}, y cada \concepto{fallo de mercado} rompe uno de la tabla~\ref{tab:supuestos-1tfeb}:
+  \begin{itemize}
+  \item las externalidades y los bienes públicos, el 2 \vertema{3.A.23};
+  \item el poder de mercado, el 3 \vertema{3.A.17} \vertema{3.A.19};
+  \item los impuestos, el 4 \vertema{4.B.9};
+  \item la información asimétrica, el 5 \vertema{3.A.13}. Con mercados incompletos o información imperfecta, el equilibrio ni siquiera es un óptimo restringido \parencite{GreenwaldStiglitz1986Externalities}: es la cuestión del apartado~\ref{sec:second-best-informacion}.
+  \end{itemize}
+\item \emph{Presupone la existencia} del equilibrio, y no garantiza ni su unicidad ni su estabilidad \vertema{3.A.21}.
+\item \emph{Es estático}: no dice nada de la innovación ni del crecimiento.
+\item \emph{Recapitulando}: el 1TFEB dice que el mercado llega a \emph{un} óptimo. La pregunta siguiente es si puede llegar a \emph{cualquiera}, en particular al que la sociedad prefiera.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Segundo teorema fundamental de la economía del bienestar (2TFEB)}\label{sec:segundo-teorema}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{Enunciado}: si las preferencias y las tecnologías son \emph{convexas} (y las preferencias, continuas y localmente no saciables), \emph{todo óptimo de \autor{Pareto} puede alcanzarse como equilibrio competitivo} tras una redistribución de suma fija de las dotaciones \parencite{Arrow1951Extension,Debreu1954Valuation}.
+\item \emph{Por qué importa}: es el recíproco del primero. Si la sociedad prefiere otro óptimo, por ejemplo el punto de felicidad, no hace falta sustituir el mercado: basta con redistribuir antes y dejar que el mercado haga el resto.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{enumerate}
+\item los del 1TFEB (tabla~\ref{tab:supuestos-1tfeb});
+\item \emph{convexidad} de las preferencias y de los conjuntos de producción (sin rendimientos crecientes): es el supuesto nuevo y el decisivo;
+\item \emph{transferencias de suma fija} $T_i$, que no dependen de ninguna decisión del agente;
+\item una \emph{condición de renta}: que cada consumidor, con su renta tras la transferencia, pueda comprar algo más barato que su cesta óptima (por ejemplo, que esta tenga todos sus componentes positivos).
+\end{enumerate}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Intuición gráfica en la caja} (gráfico~\ref{fig:caja-intercambio-teoremas}): partimos de la dotación $\vect{\omega}$, cuyo equilibrio es $E$, y queremos alcanzar otro punto de la curva de contrato, $E'$.
+  \begin{itemize}
+  \item En $E'$ las curvas de indiferencia de $A$ y de $B$, $U_A'$ y $U_B'$, son tangentes, y la recta común las separa: las cestas que $A$ prefiere a $E'$ quedan a un lado y las que prefiere $B$, al otro.
+  \item Esa recta es la recta de precios que sostiene $E'$. Si el Estado lleva la dotación de $\vect{\omega}$ a cualquier $\vect{\omega}'$ de esa recta con transferencias de suma fija y deja después que los agentes intercambien libremente, el equilibrio competitivo es $E'$.
+  \item En el espacio de las utilidades (gráfico~\ref{fig:segundo-teorema-gfpu}), la redistribución desplaza la economía a lo largo de la GFPU, del equilibrio $E$ al punto de felicidad $E'$, tangencia de la GFPU con la curva social más alta, $W(U_A,U_B)=W^*$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El 2TFEB en el espacio de las utilidades: la redistribución de suma fija lleva del equilibrio $E$ al punto de felicidad $E'$ a lo largo de la GFPU}\label{fig:segundo-teorema-gfpu}
+\grafico[0.6\textwidth]{segundo-teorema-gfpu}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Demostración}, en 4 pasos \parencite[§~16.D]{MasColellWhinstonGreen1995} (detalle en el anexo~\ref{anexo:demostraciones}):
+  \begin{enumerate}
+  \item se toma el óptimo $(\vect{x}^*_i,\vect{y}^*_j)$ y 2 conjuntos: $V=\sum_iV_i$, la suma de las cestas que cada consumidor prefiere estrictamente a la suya, y $\mathcal{Y}=\sum_j\mathcal{Y}_j+\{\sum_i\vect{\omega}_i\}$, lo que la economía puede tener disponible. Los 2 son convexos por el supuesto~2;
+  \item no se cortan: si lo hicieran, habría una asignación factible que todos prefieren, y $(\vect{x}^*_i,\vect{y}^*_j)$ no sería un óptimo;
+  \item por el \concepto{teorema del hiperplano separador} \parencite{Minkowski1911Theorie}, 2 conjuntos convexos disjuntos se pueden separar con un hiperplano: existen $\vect{p}\neq\vect{0}$ y un número $r$ tales que $\vect{p}\cdot\vect{z}\geq r$ en $V$ y $\vect{p}\cdot\vect{z}\leq r$ en $\mathcal{Y}$. Ese $\vect{p}$ es el vector de precios;
+  \item a esos precios, cada empresa maximiza su beneficio en $\vect{y}^*_j$, y todo lo que un consumidor prefiere a $\vect{x}^*_i$ cuesta al menos $\overline{W}_i=\vect{p}\cdot\vect{x}^*_i$ (un \emph{cuasiequilibrio}); con la condición de renta, eso implica que $\vect{x}^*_i$ maximiza su utilidad con esa renta. Las transferencias que lo hacen posible son $T_i=\vect{p}\cdot\vect{x}^*_i-\vect{p}\cdot\vect{\omega}_i-\sum_j\theta_{ij}\,\vect{p}\cdot\vect{y}^*_j$, y suman cero.\findemo
+  \end{enumerate}
+\item \emph{Por qué hace falta la convexidad}: sin ella, el conjunto de cestas preferidas puede «envolver» la recta de precios, y no existir ningún precio que deje a cada agente en su mejor punto alcanzable (gráfico~\ref{fig:segundo-teorema-no-convexo}); con rendimientos crecientes, el óptimo puede no maximizar el beneficio a ningún precio \vertema{3.A.17}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Sin convexidad falla el 2TFEB: en el óptimo $E'$, la única recta tangente a las 2 curvas no lo sostiene como equilibrio, porque a esos precios $A$ prefiere la cesta $\vect{x}_A$}\label{fig:segundo-teorema-no-convexo}
+\grafico[0.6\textwidth]{segundo-teorema-no-convexo}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{itemize}
+\item \emph{Separación entre eficiencia y equidad}: el Estado puede ocuparse de la distribución con transferencias de suma fija y dejar la asignación al mercado. No hay que elegir entre eficiencia y equidad.
+\item \emph{Intervención \emph{ex ante}}: el 1TFEB es la defensa del libre mercado; el 2TFEB abre la puerta a la intervención pública por equidad, aunque no haya fallos de mercado, para alcanzar el punto de felicidad que elija una función de bienestar social \vertema{3.A.24}.
+\item \emph{Descentralización}: el óptimo que maximiza el bienestar social se puede alcanzar con precios; es el argumento del socialismo de mercado de \textcite{Lange1936Socialism} y \textcite{Lerner1944Economics}.
+\end{itemize}
+
+\paragraph{c) Valoración: límites y soluciones}
+
+\begin{itemize}
+\item \emph{Límites}:
+  \begin{enumerate}
+  \item \emph{información}: una transferencia de suma fija que redistribuya de verdad tiene que depender de características que el Estado no observa, como la capacidad o el esfuerzo. Si depende de lo observable (la renta ganada, el consumo), los agentes cambian su conducta para pagar menos y la transferencia distorsiona \parencite{Mirrlees1971Exploration}: reaparece el dilema entre eficiencia y equidad;
+  \item \emph{convexidad}: con rendimientos crecientes, el óptimo exige precios iguales al coste marginal, con pérdidas que alguien tiene que cubrir \vertema{3.A.17};
+  \item \emph{cálculo}: para fijar $\vect{\omega}'$ hay que conocer las preferencias y las tecnologías, justo la información que el 1TFEB ahorraba;
+  \item \emph{multiplicidad}: desde $\vect{\omega}'$ puede haber otros equilibrios además de $E'$ \vertema{3.A.21}.
+  \end{enumerate}
+\item \emph{Soluciones}: si no hay transferencias de suma fija, se buscan los instrumentos menos distorsionantes:
+  \begin{itemize}
+  \item la imposición óptima sobre los bienes \parencite{Ramsey1927Contribution} y sobre la renta \parencite{Mirrlees1971Exploration}, que acepta una pérdida de eficiencia a cambio de equidad \vertema{4.B.11};
+  \item mantener la eficiencia en la producción aunque haya que gravar el consumo \parencite{DiamondMirrlees1971Optimal};
+  \item gravar la renta y no los bienes cuando las preferencias son separables entre el ocio y los bienes \parencite{AtkinsonStiglitz1976Design};
+  \item condicionar las transferencias a rasgos observables y difíciles de cambiar, como la edad o la discapacidad: es el \emph{tagging} de \textcite{Akerlof1978Economics} \vertema{4.B.3}.
+  \end{itemize}
+\item \emph{Recapitulando}: sin transferencias de suma fija, la economía tiene que conformarse con el mejor resultado posible dentro de esa restricción. Es la lógica del \emph{second best}, que estudia el bloque siguiente.
+\end{itemize}
+
+
+
+
+% ==========================================================================
+\section{La teoría del \emph{second best}}\label{sec:second-best}
+\minutos{9}
+
+\begin{itemize}
+\item \emph{Idea}: los 2 teoremas describen un mundo en el que todas las condiciones de \autor{Pareto} pueden cumplirse. Pasamos ahora a lo que ocurre cuando alguna no puede cumplirse, por una restricción institucional, técnica o de información.
+\item \emph{Conclusión anticipada}: es incómoda.
+  \begin{itemize}
+  \item Corregir lo que se pueda no garantiza acercarse al óptimo: el mejor resultado alcanzable, el \concepto{segundo óptimo} (\emph{second best}), puede exigir apartarse también de las condiciones que sí se pueden cumplir.
+  \item Con información privada, el mejor resultado alcanzable es, en general, un \emph{óptimo restringido} por los incentivos.
+  \end{itemize}
+\item \emph{Vocabulario}: \concepto{primer óptimo} (\emph{first best}) es el que cumple todas las condiciones~\eqref{eq:condiciones-pareto}; \concepto{segundo óptimo}, el mejor resultado con una restricción adicional que impide alguna. Nunca «de primer o de segundo orden», que son las condiciones de un problema de optimización.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Idea y resultado general}\label{sec:second-best-idea}
+
+\paragraph{a) Idea}
+
+\begin{itemize}
+\item \emph{Pregunta}: si una de las condiciones de \autor{Pareto} no puede cumplirse, ¿conviene cumplir todas las demás?
+\item \emph{Visión tradicional}: sí. Cuantas más condiciones se cumplan, más cerca del óptimo; la política económica debe eliminar todas las distorsiones que pueda, una a una (política \emph{por partes} o \emph{piecemeal}).
+\item \emph{Respuesta}: \textcite{Meade1955Trade} lo intuye al estudiar las uniones aduaneras, y \textcite{LipseyLancaster1956General} lo demuestran en general: no necesariamente.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+
+\begin{itemize}
+\item Una economía con $n$ bienes, el bienestar resumido en la utilidad de un consumidor representativo, $U(\vect{x})$, y la tecnología en la frontera de transformación $T(\vect{x})=0$. El primer óptimo exige, para todo bien $k$ y tomando el $n$ como referencia, $\mathrm{RMS}_{kn}=U_k/U_n=T_k/T_n=\mathrm{RMT}_{kn}$.
+\item Una \concepto{restricción no trivial}: una distorsión que el decisor no puede eliminar impide cumplir una de las condiciones, por ejemplo la del bien~1:
+$$\frac{U_1}{U_n}=\psi\,\frac{T_1}{T_n},\qquad \psi\neq1.$$
+  Que sea no trivial quiere decir que es efectiva (cambia la solución) y que no se puede suprimir; con un impuesto \emph{ad valorem} $t$ sobre el bien~1, $\psi=1+t$.
+\item \emph{Origen de la distorsión}:
+  \begin{itemize}
+  \item \emph{institucional}: un impuesto necesario para financiar al Estado, un arancel pactado, una regulación;
+  \item \emph{tecnológico}: los costes fijos de un monopolio natural, que impiden fijar el precio igual al coste marginal sin pérdidas;
+  \item \emph{de mercado}: el poder de mercado de una empresa o una externalidad que no se pueden corregir;
+  \item \emph{informativo}: lo que el Estado no observa (apartado~\ref{sec:second-best-informacion}).
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Analítico}: se maximiza $U(\vect{x})$ sujeto a la tecnología, con multiplicador $\lambda_1$, y a la restricción, con multiplicador $\lambda_2$. Llamando $\Psi_k$ a la derivada respecto de $x_k$ del primer miembro de la restricción, $\frac{U_1}{U_n}-\psi\frac{T_1}{T_n}$, las condiciones de primer orden dan, para cualquier bien $k$,
+$$\frac{U_k}{U_n}=\frac{T_k+\frac{\lambda_2}{\lambda_1}\Psi_k}{T_n+\frac{\lambda_2}{\lambda_1}\Psi_n}.$$
+  Los $\Psi_k$ dependen de las derivadas segundas cruzadas de $U$ y de $T$, cuyo signo no se conoce a priori (derivación completa en el anexo~\ref{anexo:second-best-analitico}).
+\item \emph{Teorema general del segundo óptimo} \parencite{LipseyLancaster1956General}: si en un sistema de equilibrio general se introduce una restricción que impide cumplir una de las condiciones de \autor{Pareto}, las demás, aunque sigan siendo alcanzables, dejan en general de ser deseables. El segundo óptimo exige apartarse también de ellas, en una dirección que depende de las sustituciones y complementariedades entre los bienes.
+\item \emph{Interpretación gráfica} (gráfico~\ref{fig:second-best-gfpu}):
+  \begin{itemize}
+  \item sin la restricción, lo mejor es el punto de felicidad $F$ de la GFPU (primer óptimo);
+  \item la restricción, una recta, deja fuera de alcance los puntos que quedan por encima de ella, entre ellos $F$, tangencia de la GFPU con $W_3$;
+  \item $P$, donde la restricción corta la GFPU, es el mejor punto de la frontera que sigue siendo alcanzable: cumple todas las condiciones de \autor{Pareto} posibles y está en la curva social $W_1$;
+  \item $Q$, la tangencia de la restricción con la curva social $W_2>W_1$, está dentro de la GFPU y, sin embargo, es mejor: es el segundo óptimo;
+  \item lo bueno ($Q$) no es lo que más se parece a lo mejor ($P$).
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El segundo óptimo en el espacio de las utilidades: con la restricción, la zona sombreada, por encima de la restricción, no es alcanzable; el punto de felicidad $F$ queda en ella, y el punto ineficiente $Q$ da más bienestar que el óptimo de \autor{Pareto} accesible $P$}\label{fig:second-best-gfpu}
+\grafico[0.6\textwidth]{second-best-gfpu}
+\fuente{elaboración propia a partir de \textcite{LipseyLancaster1956General}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{La analogía de la montaña}: quien quiere llegar a la cumbre más alta, $V$, y encuentra el camino cortado en $D$, no mejora necesariamente siguiendo hacia ella: si al llegar a $B$ sabe que no podrá pasar de $D$, le conviene bajar y subir a la cumbre $A$, más baja pero accesible (gráfico~\ref{fig:montana-second-best}). En una cordillera no se llega a lo más alto andando siempre cuesta arriba.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La analogía de la montaña: con el obstáculo $D$, el segundo punto más alto, $A$, es mejor que seguir hacia la cumbre $V$}\label{fig:montana-second-best}
+\grafico[0.7\textwidth]{montana-second-best}
+\fuente{elaboración propia a partir de \textcite{Gandolfo2014International}.}
+\end{figure}
+
+\subparagraph{iii) Implicaciones}
+
+\begin{enumerate}
+\item \emph{contar condiciones no informa}: una situación que cumple más condiciones de \autor{Pareto} no es necesariamente mejor que otra que cumple menos;
+\item \emph{quitar una distorsión} cuando hay otras puede subir, bajar o no cambiar el bienestar;
+\item \emph{añadir una distorsión} puede mejorarlo si compensa otra que no se puede quitar;\footnote{Un ejemplo hipotético: si las entradas de cine soportan un impuesto que no se puede tocar, gravar también las suscripciones a plataformas de vídeo, un sustitutivo, desplaza demanda hacia el cine, cuyo consumo era demasiado bajo, y puede reducir la ineficiencia total. El impuesto español sobre determinados servicios digitales no grava esas suscripciones \parencite{BOE2020IDSD}.}
+\item \emph{la política por partes no tiene garantía general}: hace falta analizar cada caso.
+\end{enumerate}
+
+\paragraph{c) Extensiones}
+
+\begin{itemize}
+\item \emph{Separabilidad}: \textcite{DavisWhinston1965Welfare} muestran que, si el sector distorsionado es separable del resto (sus relaciones marginales no dependen de lo que pasa en los demás, $\Psi_k=\Psi_n=0$), las condiciones de \autor{Pareto} siguen siendo deseables en los demás sectores: en el sector de la distorsión, una solución de segundo óptimo; en el resto, la asignación paretiana. Rescatan la política por partes cuando las interdependencias son pequeñas.
+\item \emph{Eficiencia en la producción}: con impuestos óptimos sobre el consumo y rendimientos constantes, el segundo óptimo mantiene la eficiencia en la producción: no se gravan los bienes intermedios y las empresas públicas usan los mismos precios que las privadas \parencite{DiamondMirrlees1971Optimal}. Es un caso en que sí conviene mantener una de las condiciones.
+\item \emph{Corregir en el origen}: ante una distorsión interna, el instrumento óptimo actúa sobre ella misma (un impuesto o una subvención interna); un instrumento indirecto, como un arancel, es solo un segundo óptimo, que hasta puede empeorar respecto a no hacer nada \parencite{BhagwatiRamaswami1963Domestic}.
+\item \emph{Recapitulando}: cuando no se puede tener lo mejor, acercarse a ello por partes no es necesariamente lo bueno. Pasamos a ver dónde se aplica esta idea.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Aplicaciones}\label{sec:second-best-aplicaciones}
+
+\begin{itemize}
+\item \emph{Uniones aduaneras} \vertema{3.B.10}: es el caso que da origen a la teoría, y con él ilustraban su resultado \autor{Lipsey} y \autor{Lancaster}.
+  \begin{itemize}
+  \item Una unión aduanera elimina los aranceles entre los socios y los mantiene frente al resto del mundo: suprime una distorsión y deja otra.
+  \item Por eso no es necesariamente mejor que un arancel no discriminatorio: a la creación de comercio (ganancia) se opone la desviación de comercio hacia el socio menos eficiente (pérdida) \parencite{Viner1950Customs,Lipsey1957Theory}.\footnote{\textcite{Meade1955Customs} añade un tercer efecto, la expansión del comercio.}
+  \end{itemize}
+\item \emph{Monopolio contaminante} \vertema{3.A.17} \vertema{3.A.23}: hay 2 distorsiones, el poder de mercado (se produce poco) y la externalidad (se produce mucho).
+  \begin{itemize}
+  \item Si se impone al monopolista el impuesto pigouviano, igual al coste marginal externo, la producción cae todavía más. El impuesto óptimo $t^*$ hace que el monopolista, que iguala $\mathrm{IMg}=\mathrm{CMgP}+t$, produzca la cantidad socialmente óptima $q^*$, en la que $p(q^*)=\mathrm{CMgP}(q^*)+\mathrm{CMgE}(q^*)$:
+  $$t^*=\mathrm{CMgE}(q^*)-\frac{p(q^*)}{\lvert\varepsilon_{q,p}\rvert},$$
+    menor que el pigouviano, y negativo (una subvención) si el poder de mercado pesa más que la externalidad \parencite{Buchanan1969External,Barnett1980Pigouvian}.
+  \item Del mismo modo, romper el monopolio sin poder gravar la contaminación aumenta la producción y la externalidad, y puede reducir el bienestar \vertema{3.A.20}.
+  \end{itemize}
+\item \emph{Protección e industria naciente} \vertema{3.B.8}: si la industria no despega porque el mercado de capitales no financia a las empresas nuevas o porque las primeras no se apropian de lo que aprenden las demás, lo óptimo es corregir esas distorsiones donde nacen, con crédito o subvenciones; un arancel es solo un segundo óptimo, porque además encarece el consumo \parencite{BhagwatiRamaswami1963Domestic}.
+\item \emph{Instituciones y desarrollo} \vertema{3.B.28}: \textcite{Rodrik2008Second} aconseja a los países emergentes instituciones de segundo óptimo, adaptadas a los fallos de mercado y de gobierno que no pueden eliminar a corto plazo, en lugar de copiar las «mejores prácticas» de los avanzados.
+  \begin{itemize}
+  \item El FMI lo vivió en 1997: en septiembre, con la crisis asiática ya en marcha desde julio \parencite{BoT2026TomYumKung}, su Comité Provisional aún aprobó en Hong Kong la propuesta de enmendar el Convenio Constitutivo para incluir la liberalización de los movimientos de capital entre sus fines \parencite{FMI1997HongKong}.
+  \item La crisis mostró que las entradas masivas de capital, con sistemas financieros débiles, habían aumentado la vulnerabilidad de esos países \vertema{3.B.17}.
+  \end{itemize}
+\item \emph{Imposición y regulación}:
+  \begin{itemize}
+  \item como el ocio no se puede gravar, el impuesto óptimo grava más los bienes complementarios del ocio \parencite{CorlettHague1953Complementarity} \vertema{4.B.11};
+  \item los precios de \autor{Ramsey}-\autor{Boiteux} de un monopolio natural que debe cubrir sus costes, y el precio igual al coste medio de un monopolio natural impugnable, son segundos óptimos con presupuesto equilibrado \vertema{3.A.17} \vertema{3.A.15};
+  \item la variedad de productos que ofrece la competencia monopolística se compara con un segundo óptimo, el que elegiría un planificador que no puede subvencionar \vertema{3.A.18}.
+  \end{itemize}
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{\emph{Second best} con información privada: diseño de mecanismos}\label{sec:second-best-informacion}
+
+\begin{itemize}
+\item \emph{Idea}: los teoremas suponen que el mercado o el Estado disponen de toda la información. El límite 1 del 2TFEB (\ref{sec:segundo-teorema}) lo mostraba: para redistribuir con suma fija hay que conocer lo que cada uno sabe de sí mismo. Cuando cada agente tiene información privada, hay que preguntarse 2 cosas:
+  \begin{itemize}
+  \item si el mercado es eficiente \emph{con la información que hay};
+  \item si el Estado puede diseñar reglas que lleven a los agentes a revelarla.
+  \end{itemize}
+\item \concepto{Eficiencia restringida}: una asignación es eficiente en sentido restringido si ningún planificador sometido a las mismas restricciones de información y de mercados puede mejorar a todos. Es un óptimo con una restricción añadida, como el segundo óptimo, pero la restricción son los incentivos, no una distorsión dada \vertema{3.A.13}.
+  \begin{itemize}
+  \item Con mercados incompletos, el equilibrio puede ser ineficiente incluso en ese sentido, y abrir un mercado más puede empeorar a todos \parencite{Hart1975Optimality}: un resultado de segundo óptimo en estado puro.
+  \item Con información imperfecta o mercados incompletos, los equilibrios competitivos no son en general eficientes en sentido restringido: hay impuestos y subvenciones que, con la misma información que los agentes, mejorarían a todos \parencite{GreenwaldStiglitz1986Externalities}. Por eso, según \textcite{Stiglitz2002Information}, la mano invisible parece a menudo invisible porque no está.
+  \end{itemize}
+\item \concepto{Diseño de mecanismos}: el diseñador (el Estado) elige las reglas de un juego para que, jugando cada uno en su interés con su información privada (su tipo $t_i$), se alcance el resultado deseado \parencite{Hurwicz1972Informationally}.
+  \begin{itemize}
+  \item Por el \emph{principio de revelación}, basta con buscar entre los mecanismos en los que a cada uno le conviene decir la verdad (compatibilidad de incentivos, $\mathrm{IC}_i$) y participar (participación voluntaria, $\mathrm{PC}_i$) \vertema{3.A.14}.
+  \item \emph{En estrategias dominantes}: los mecanismos de \autor{Vickrey}-\autor{Clarke}-\autor{Groves} \parencite{Vickrey1961Counterspeculation,Clarke1971Multipart,Groves1973Incentives} hacen que decir la verdad sea dominante y que la decisión sea eficiente: cada uno paga el daño que su presencia causa a los demás \vertema{3.A.23}. Necesitan pagos monetarios y utilidad cuasilineal, y en general no equilibran el presupuesto \parencite{GreenLaffont1977Characterization}. Sin pagos, el teorema de \autor{Gibbard}-\autor{Satterthwaite} hace manipulable toda regla no dictatorial \parencite{Gibbard1973Manipulation,Satterthwaite1975Strategy} \vertema{3.A.24}.
+  \item \emph{En juegos bayesianos}: si basta con que decir la verdad sea óptimo en promedio, hay mecanismos eficientes que equilibran el presupuesto \parencite{dAspremontGerardVaret1979Incentives,Arrow1979Property}, pero pueden no respetar la participación voluntaria. En el intercambio entre un comprador y un vendedor con valoraciones privadas, ningún mecanismo es a la vez eficiente, compatible con los incentivos, voluntario y sin déficit \parencite{MyersonSatterthwaite1983Efficient} (tabla~\ref{tab:mecanismos}).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Qué puede alcanzar un mecanismo con información privada}\label{tab:mecanismos}
+\begin{tabular}{>{\raggedright\arraybackslash}m{4.6cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.4cm}>{\centering\arraybackslash}m{2.4cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Mecanismo} & \textbf{Eficiente} & \textbf{Veraz} & \textbf{Presupuesto equilibrado} & \textbf{Participación voluntaria}\\
+\midrule
+\textbf{VCG}, estrategias dominantes \parencite{Clarke1971Multipart,Groves1973Incentives} & \textcolor{tceeverde}{sí} & \textcolor{tceeverde}{sí}\newline (dominante) & \textcolor{tceerojo}{no}\newline \parencite{GreenLaffont1977Characterization} & \textcolor{tceeverde}{sí}\\
+\addlinespace[0.3em]
+\textbf{Externalidad esperada}, juego bayesiano \parencite{dAspremontGerardVaret1979Incentives} & \textcolor{tceeverde}{sí} & \textcolor{tceeverde}{sí}\newline (en esperanza) & \textcolor{tceeverde}{sí} & \textcolor{tceerojo}{no siempre}\\
+\midrule
+\multicolumn{5}{>{\centering\arraybackslash}m{\dimexpr13.6cm+8\tabcolsep\relax}}{\cellcolor{tceesalvia}Intercambio bilateral con valoraciones privadas \parencite{MyersonSatterthwaite1983Efficient}: ningún mecanismo cumple las 4 a la vez}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite[cap.~23]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Implicación}: con información privada, el óptimo alcanzable es un óptimo restringido por los incentivos. Es la otra cara del límite del 2TFEB: no hay transferencias de suma fija porque nadie revela gratis lo que tiene \parencite{Mirrlees1971Exploration} \vertema{4.B.11}.
+\item \emph{Recapitulando}: el segundo óptimo no es una anomalía, sino el caso general de la política económica: casi siempre hay alguna restricción que no se puede quitar, y la tarea es encontrar lo mejor dentro de ella.
+\end{itemize}
+
+% --------------------------------------------------------------------------
+\subsection{Valoración}\label{sec:second-best-valoracion}
+
+\begin{itemize}
+\item \emph{Falta de reglas generales}: como el signo de los $\Psi_k$ depende del caso, la teoría dice qué no se puede afirmar, pero no qué hacer; por eso se usa a menudo \emph{ad hoc}.
+\item \emph{Consecuencias para la política económica}: no hay teoremas generales que aseguren que una política parcial aumenta el bienestar en una economía que incumple varias condiciones de óptimo.
+\item \emph{Exigencia de información}: el segundo óptimo depende de todas las relaciones de sustitución y de complementariedad de la economía, que el decisor rara vez conoce.
+\item \emph{El mapa imposible}: aplicar el teorema al pie de la letra exigiría un modelo con todas las interdependencias de la economía, y «un modelo que tomara en cuenta toda la diversidad de la realidad sería tan poco útil como un mapa a escala de uno a uno» \parencite[33]{Robinson1962Essays}.
+\item \emph{Respuestas prácticas}:
+  \begin{itemize}
+  \item el análisis parcial está justificado cuando las interdependencias son pequeñas: al formular la política óptima para la aviación, poco importa lo que ocurra en la pesca;
+  \item la separabilidad de \autor{Davis} y \autor{Whinston} y el principio de corregir en el origen son formas de trabajar con mapas a escala;
+  \item \textcite{Lipsey2007Reflections}, 50 años después, defiende que la teoría sigue vigente y obliga a basar cada política en el conocimiento del caso, no en reglas generales.
+  \end{itemize}
+\item \emph{Recapitulando}: el \emph{second best} no invalida los teoremas, sino que enseña a usarlos: las condiciones de \autor{Pareto} siguen siendo la referencia, pero se persiguen todas a la vez o con conocimiento de cómo interactúan.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}: en conclusión,
+  \begin{itemize}
+  \item un óptimo de \autor{Pareto} exige igualar las relaciones marginales en la producción, en el consumo y entre ambas, y hay infinitos, recogidos en la GFPU;
+  \item el 1TFEB muestra que, con mercados completos, agentes precio-aceptantes, precios comunes e información perfecta, el mercado competitivo alcanza uno de ellos con solo mirar precios; el 2TFEB, que con convexidad puede alcanzar cualquiera si antes se redistribuye con transferencias de suma fija;
+  \item cuando una condición no puede cumplirse, cumplir las demás no garantiza nada, y cuando lo que falla es la información, el óptimo alcanzable es restringido: es el \emph{second best}.
+  \end{itemize}
+\item \textbf{\emph{Relevancia}}: los teoremas son la vara de medir de la microeconomía normativa. La intervención por eficiencia se justifica por el fallo de algún supuesto del primero; la intervención por equidad, por el segundo, y el \emph{second best} recuerda que ambas se hacen siempre con restricciones.
+\item \textbf{\emph{Extensiones}}: los fallos de mercado que rompen el primer teorema \vertema{3.A.23}; la elección entre óptimos con funciones de bienestar social y el teorema de imposibilidad de \textcite{Arrow1951Social} \vertema{3.A.24}; la imposición óptima, que es un segundo óptimo \vertema{4.B.11}, y el diseño de mecanismos y las subastas \vertema{3.A.14}.
+\item \textbf{\emph{Opinión}}: el valor de los teoremas no está en describir la realidad, ni en defender el \emph{laissez-faire} o la planificación, sino en ordenar las preguntas: ante cada propuesta de intervención, qué supuesto falla, qué restricción no se puede quitar y qué información hace falta.
+\item \textbf{\emph{Idea final}}: \autor{Pigou} veía en el entusiasmo social el origen de la economía, y \autor{Pareto} advertía que quien recomienda una medida práctica debe atender no solo a sus consecuencias económicas, sino también a las morales y a las políticas \parencite{Pareto1906Manuale}. Entre los 2 está la respuesta a la pregunta del principio: el mercado competitivo asigna bien cuando se cumplen todas las condiciones, y cuando no, lo mejor es enemigo de lo bueno si se persigue a ciegas; pero sin saber cuál es lo mejor tampoco se puede encontrar lo bueno.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: los criterios de compensación}\label{anexo:compensacion}
+
+Los criterios de compensación son la primera respuesta de la nueva economía del bienestar a la incompletitud del criterio de \autor{Pareto} (\ref{sec:valoracion-pareto}). Han salido del título del tema en la convocatoria de 2023, pero se recogen aquí por si el tribunal pregunta y porque el análisis coste-beneficio los aplica.
+
+\paragraph{Idea}
+
+\begin{itemize}
+\item El \concepto{enfoque neoparetiano} desarrolla la economía del bienestar a partir de variaciones del criterio de \autor{Pareto}. Nace en la London School of Economics.
+\item Acepta que las utilidades no se pueden comparar entre personas, pero cree posible comparar estados sociales sin juicios de valor, de modo que se llegue a la misma conclusión «se sea liberal o socialista, nacionalista o internacionalista, cristiano o pagano» \parencite{Hicks1939Foundations,HETParetoSocial}.
+\item La propuesta es renunciar a la unanimidad a cambio de la \concepto{compensación potencial}: un cambio es una mejora si los que ganan \emph{podrían} compensar a los que pierden y seguir ganando, aunque la compensación no se pague.
+\item Se trabaja en el espacio de las utilidades: cada situación, que corresponde a una producción eficiente distinta, tiene su FPU.
+\end{itemize}
+
+\paragraph{Los criterios}
+
+\begin{enumerate}
+\item \emph{\autor{Kaldor}} \parencite{Kaldor1939Welfare}: pasar de un estado a otro es una mejora si, en el estado final, los ganadores pueden compensar a los perdedores y seguir mejor que al principio. Dicho de otro modo: desde el estado final hay una redistribución que es \autor{Pareto} superior al inicial. Gráficamente, la FPU del estado final pasa por encima y a la derecha del punto inicial. En el gráfico~\ref{fig:compensacion-kaldor}, el paso de 2 a 3 cumple el criterio: desde 3, redistribuyendo por la FPU$_1$, se llega a $\gamma$, \autor{Pareto} superior a 2.
+\item \emph{\autor{Hicks}} \parencite{Hicks1939Foundations}: pasar de un estado a otro es una mejora si, en el estado inicial, los perdedores no pueden sobornar a los ganadores para que renuncien al cambio y quedar todos mejor que con él: sustituye la compensación potencial por el \emph{soborno potencial}. Gráficamente, el punto final queda por fuera de la FPU inicial. En el gráfico~\ref{fig:compensacion-hicks}, el paso de 1 a 4 cumple el criterio: desde 1, el soborno por la FPU$_1$ llega como mucho a $\zeta$, que no es \autor{Pareto} superior a 4.
+\item \emph{La paradoja de \autor{Scitovsky}} \parencite{Scitovsky1941Note}: si las 2 FPU se cortan, los criterios de \autor{Kaldor} y de \autor{Hicks} pueden ser inconsistentes. En el gráfico~\ref{fig:compensacion-scitovsky}, \autor{Kaldor} recomienda pasar de 2 a 3 y, una vez en 3, volver a 2, de modo que la economía podría oscilar indefinidamente (\emph{paradoja de la reversión}). Para evitarlo, \autor{Scitovsky} exige los 2 criterios a la vez: que los ganadores puedan compensar a los perdedores (\autor{Kaldor}) y que los perdedores no puedan sobornar a los ganadores (\autor{Hicks}). En el gráfico, solo los pasos de 2 a 1 y de 3 a 4 cumplen el doble criterio (tabla~\ref{tab:compensacion-scitovsky}).
+\item \emph{\autor{Little}} \parencite{Little1949Foundations,Little1950Critique}: los criterios anteriores ignoran la distribución, y la compensación no se paga. Su \emph{criterio dual} exige, además del de \autor{Scitovsky}, que la distribución no empeore.\footnote{«Parece improbable que mucha gente estuviera dispuesta a decir hoy en Inglaterra que un cambio que hiciera a los ricos tanto más ricos que pudieran (pero no fueran a) compensar en exceso a los pobres, empobrecidos por el cambio, aumentaría necesariamente la riqueza de la comunidad» \parencite[90]{Little1950Critique}; traducción propia.}
+  \begin{itemize}
+  \item En el panel a) del gráfico~\ref{fig:compensacion-little}, la distribución se mide por la distancia del rayo de cada punto a la bisectriz: de los puntos de la FPU$_2$ que cumplen el doble criterio respecto a 1 (2, 3, 4, 5 y 6), solo 2, 4 y 5 cumplen el de \autor{Little} (tabla~\ref{tab:compensacion-little}).
+  \item En el panel b), con FPU que se cortan, solo el tramo resaltado de la FPU$_2$, entre el corte de las 2 FPU y 4, es preferido a 1.
+  \item Puede contradecir al criterio de \autor{Pareto}: rechaza el paso a 3, que mejora a $A$ sin empeorar a $B$, porque empeora la distribución.
+  \end{itemize}
+\item \emph{\autor{Samuelson}} \parencite{Samuelson1950Evaluation}: la situación 2 es mejor que la 1 si la FPU$_2$ está entera por fuera de la FPU$_1$ (gráfico~\ref{fig:compensacion-samuelson}): para cualquier reparto de la situación 1 hay uno de la 2 que mejora a todos.
+  \begin{itemize}
+  \item Es transitivo, pero muy restrictivo: casi nunca una frontera domina a la otra.
+  \item Compara \emph{situaciones} (conjuntos de posibilidades), no asignaciones: no garantiza que el cambio efectivo, sin compensación, sea una mejora de \autor{Pareto}.
+  \end{itemize}
+\item \emph{\autor{Gorman}} \parencite{Gorman1955Intransitivity}: el doble criterio de \autor{Scitovsky} evita la reversión entre 2 situaciones, pero con 3 o más puede ser intransitivo (1 mejor que 2, 2 mejor que 3 y 3 mejor que 1). Solo el criterio de \autor{Samuelson} lo evita.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\caption{Criterio de compensación de \autor{Kaldor}: desde el estado final, una redistribución por la FPU del estado final deja a todos mejor que en el inicial}\label{fig:compensacion-kaldor}
+\grafico[0.55\textwidth]{compensacion-kaldor}
+\fuente{elaboración propia a partir de \textcite{Kaldor1939Welfare}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{Criterio de compensación de \autor{Hicks}: desde el estado inicial, los perdedores no pueden sobornar a los ganadores}\label{fig:compensacion-hicks}
+\grafico[0.55\textwidth]{compensacion-hicks}
+\fuente{elaboración propia a partir de \textcite{Hicks1939Foundations}.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\caption{La paradoja de \autor{Scitovsky}: con FPU que se cortan, los criterios de \autor{Kaldor} y de \autor{Hicks} pueden contradecirse}\label{fig:compensacion-scitovsky}
+\grafico[0.6\textwidth]{compensacion-scitovsky}
+\fuente{elaboración propia a partir de \textcite{Scitovsky1941Note}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Los criterios de \autor{Kaldor}, \autor{Hicks} y \autor{Scitovsky} en el gráfico~\ref{fig:compensacion-scitovsky} (entre paréntesis, el punto de la otra FPU que decide cada criterio)}\label{tab:compensacion-scitovsky}
+\begin{tabular}{>{\centering\arraybackslash}m{2.2cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}>{\centering\arraybackslash}m{2.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Paso} & \textbf{\autor{Kaldor}} & \textbf{\autor{Hicks}} & \textbf{\autor{Scitovsky}}\\
+\midrule
+1 $\to$ 2 & \textcolor{tceerojo}{$\times$} ($\alpha$) & \textcolor{tceerojo}{$\times$} ($\beta$) & \textcolor{tceerojo}{$\times$}\\
+2 $\to$ 1 & \textcolor{tceeverde}{$\checkmark$} ($\beta$) & \textcolor{tceeverde}{$\checkmark$} ($\alpha$) & \textcolor{tceeverde}{$\checkmark$}\\
+1 $\to$ 4 & \textcolor{tceerojo}{$\times$} ($\alpha$) & \textcolor{tceeverde}{$\checkmark$} ($\zeta$) & \textcolor{tceerojo}{$\times$}\\
+4 $\to$ 1 & \textcolor{tceerojo}{$\times$} ($\zeta$) & \textcolor{tceeverde}{$\checkmark$} ($\alpha$) & \textcolor{tceerojo}{$\times$}\\
+2 $\to$ 3 & \textcolor{tceeverde}{$\checkmark$} ($\gamma$) & \textcolor{tceerojo}{$\times$} ($\delta$) & \textcolor{tceerojo}{$\times$}\\
+3 $\to$ 2 & \textcolor{tceeverde}{$\checkmark$} ($\delta$) & \textcolor{tceerojo}{$\times$} ($\gamma$) & \textcolor{tceerojo}{$\times$}\\
+3 $\to$ 4 & \textcolor{tceeverde}{$\checkmark$} ($\varepsilon$) & \textcolor{tceeverde}{$\checkmark$} ($\zeta$) & \textcolor{tceeverde}{$\checkmark$}\\
+4 $\to$ 3 & \textcolor{tceerojo}{$\times$} ($\zeta$) & \textcolor{tceerojo}{$\times$} ($\varepsilon$) & \textcolor{tceerojo}{$\times$}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\caption{Criterio dual de \autor{Little}: además del doble criterio, la distribución no debe empeorar}\label{fig:compensacion-little}
+\grafico[0.7\textwidth]{compensacion-little}
+\fuente{elaboración propia a partir de \textcite{Little1950Critique}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Los criterios en el gráfico~\ref{fig:compensacion-little}: pasos desde el punto 1}\label{tab:compensacion-little}
+\begin{tabular}{>{\centering\arraybackslash}m{1.6cm}>{\centering\arraybackslash}m{1.7cm}>{\centering\arraybackslash}m{1.7cm}>{\centering\arraybackslash}m{2cm}>{\centering\arraybackslash}m{1.8cm}>{\centering\arraybackslash}m{1.7cm}>{\centering\arraybackslash}m{2.2cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Paso} & \textbf{\autor{Kaldor}} & \textbf{\autor{Hicks}} & \textbf{\autor{Scitovsky}} & \textbf{Equidad} & \textbf{\autor{Little}} & \textbf{\autor{Pareto}}\\
+\midrule
+1 $\to$ 2 & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+1 $\to$ 3 & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceeverde}{$\checkmark$}\\
+1 $\to$ 4 & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$}\\
+1 $\to$ 5 & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$}\\
+1 $\to$ 6 & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceeverde}{$\checkmark$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$} & \textcolor{tceerojo}{$\times$}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia. \autor{Pareto}: nadie empeora y al menos uno mejora.}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\caption{Criterio de \autor{Samuelson}: la FPU$_2$ está entera por fuera de la FPU$_1$}\label{fig:compensacion-samuelson}
+\grafico[0.5\textwidth]{compensacion-samuelson}
+\fuente{elaboración propia a partir de \textcite{Samuelson1950Evaluation}.}
+\end{figure}
+
+\paragraph{Valoración}
+
+\begin{itemize}
+\item \emph{Compensación potencial, no efectiva}: si no se paga, los perdedores pierden de verdad. Declarar el cambio deseable equivale a pesar más la ganancia de unos que la pérdida de otros: es una comparación interpersonal implícita, la misma que una utilidad ordinal no permite y que el criterio quería evitar \parencite{Little1950Critique} \vertema{3.A.8}.
+\item \emph{Inconsistencia}: los criterios que ordenan muchas situaciones (\autor{Kaldor}, \autor{Hicks}, \autor{Scitovsky}) pueden ser contradictorios o intransitivos, y el que no lo es (\autor{Samuelson}) apenas ordena nada.
+\item \emph{Herencia}: el análisis coste-beneficio aplica el criterio de \autor{Kaldor}-\autor{Hicks} cuando suma excedentes \vertema{3.A.9}, y la vertiente distributiva continúa en las funciones de bienestar social, que eligen entre los óptimos con juicios de valor explícitos \vertema{3.A.24}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para ampliar.} G. L. \autor{Fonseca}, \emph{The Paretian System: Social Welfare}, en \href{https://www.hetwebsite.net/het/essays/paretian/paretosocial.htm}{The History of Economic Thought Website}: los criterios en la caja de \autor{Edgeworth} y con producción, y la crítica de \autor{Gorman}.
+\end{anotaciones}
+
+% ==========================================================================
+\section{Anexo: curvas de contrato especiales}\label{anexo:curvas-contrato}
+
+La forma de la curva de contrato depende de las preferencias (gráfico~\ref{fig:curvas-contrato-especiales}, con los 9 casos numerados como en la lista: 1a, 1b, 1c, 2, 3a, 3b, 4, 5 y 6). En todos los casos, los 2 vértices de la caja, en los que un consumidor (o una empresa) lo tiene todo y el otro nada, son óptimos: para que mejore el que no tiene nada hay que quitarle algo al otro.
+
+\begin{enumerate}
+\item \emph{Sustitutivos perfectos para los 2} (curvas de indiferencia rectas, $\mathrm{RMS}$ constante):
+  \begin{itemize}
+  \item (1a) si $\mathrm{RMS}^A_{XY}>\mathrm{RMS}^B_{XY}$, la curva de contrato son los lados inferior y derecho de la caja ($A$ se queda con todo el $X$ antes de tener $Y$);
+  \item (1b) si $\mathrm{RMS}^A_{XY}<\mathrm{RMS}^B_{XY}$, son los lados izquierdo y superior;
+  \item (1c) si son iguales, toda la caja, incluidos sus lados: en ningún punto se puede mejorar a uno sin empeorar al otro.
+  \end{itemize}
+\item \emph{$A$ con sustitutivos perfectos y $B$ con preferencias estrictamente convexas}: la curva de contrato es el lugar en el que la $\mathrm{RMS}$ del segundo iguala la constante del primero, completado con los tramos de los lados de la caja que llegan a los vértices.
+\item \emph{Complementarios perfectos para los 2} (curvas en ángulo recto): si los vértices de las curvas de los 2 están sobre la misma recta, la diagonal de la caja, la curva de contrato es esa diagonal (caso 3a). Si no (caso 3b), los óptimos forman una zona, los 2 triángulos comprendidos entre los rayos de vértices de cada uno, que se cortan: en ella los 2 tienen sobrante del mismo bien, y como el otro es escaso para ambos, no se puede mejorar a uno sin empeorar al otro.
+\item \emph{$A$ con complementarios perfectos y $B$ con preferencias estrictamente convexas}: la curva de contrato es el rayo de vértices de $A$, desde $O_A$ hasta el lado superior de la caja, y después ese lado hasta $O_B$. El resto del lado superior no es eficiente, porque allí puede variar la utilidad de $B$ sin que varíe la de $A$.
+\item \emph{$A$ con complementarios perfectos y $B$ con sustitutivos perfectos}: igual que el caso anterior, el rayo de vértices de $A$ y el lado superior hasta $O_B$.
+\item \emph{Preferencias sobre bienes distintos}: si a $A$ solo le gusta $X$ ($\mathrm{RMS}^A_{XY}=+\infty$) y a $B$ solo $Y$ ($\mathrm{RMS}^B_{XY}=0$), el único óptimo es el vértice en el que $A$ tiene todo el $X$ y $B$ todo el $Y$.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\caption{Curvas de contrato especiales: sustitutivos perfectos, complementarios perfectos, casos mixtos y bienes distintos}\label{fig:curvas-contrato-especiales}
+\grafico[0.95\textwidth]{curvas-contrato-especiales}
+\fuente{elaboración propia a partir de \textcite[cap.~17]{Varian1992Microeconomic}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: el problema del planificador con $I$ consumidores, $J$ empresas y $n$ bienes}\label{anexo:planificador-general}
+
+\subsection{Las 3 condiciones en el 2×2×2×2, paso a paso}\label{anexo:planificador-pasos}
+
+El problema~\eqref{eq:planificador} se puede resolver sustituyendo las restricciones que se cumplen con igualdad, como en \textcite{MatePerez2007Microeconomia}: $X_B=X-X_A$, $Y_B=Y-Y_A$, $L_Y=\overline{L}-L_X$ y $K_Y=\overline{K}-K_X$. La lagrangiana es
+$$\mathcal{L}=U_A(X_A,Y_A)+\lambda_U\big[U_B(X-X_A,\,Y-Y_A)-\overline{U}_B\big]+\lambda_X\big[F_X(L_X,K_X)-X\big]+\lambda_Y\big[F_Y(\overline{L}-L_X,\,\overline{K}-K_X)-Y\big],$$
+con variables $X_A$, $Y_A$, $X$, $Y$, $L_X$ y $K_X$. Las condiciones de primer orden se agrupan en 4 bloques:
+\begin{itemize}
+\item \emph{Bloque A}: respecto de $X_A$ e $Y_A$: $\partial U_A/\partial X_A=\lambda_U\,\partial U_B/\partial X_B$ y $\partial U_A/\partial Y_A=\lambda_U\,\partial U_B/\partial Y_B$; dividiendo, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$;
+\item \emph{Bloque B}: respecto de $X$ e $Y$: $\lambda_U\,\partial U_B/\partial X_B=\lambda_X$ y $\lambda_U\,\partial U_B/\partial Y_B=\lambda_Y$; dividiendo, $\lambda_X/\lambda_Y=\mathrm{RMS}^B_{XY}$;
+\item \emph{Bloque C}: respecto de $L_X$ y $K_X$: $\lambda_X\mathrm{PMg}^X_L=\lambda_Y\mathrm{PMg}^Y_L$ y $\lambda_X\mathrm{PMg}^X_K=\lambda_Y\mathrm{PMg}^Y_K$; dividiendo, $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$;
+\item \emph{Bloque D}: de las mismas 2 condiciones, $\lambda_X/\lambda_Y=\mathrm{PMg}^Y_L/\mathrm{PMg}^X_L=\mathrm{PMg}^Y_K/\mathrm{PMg}^X_K=\mathrm{RMT}_{XY}$.
+\end{itemize}
+\begin{itemize}
+\item \emph{Eficiencia en el consumo}: el bloque A.
+\item \emph{Eficiencia en la producción}: el bloque C.
+\item \emph{Eficiencia global}: los bloques A, B y D juntos, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\lambda_X/\lambda_Y=\mathrm{RMT}_{XY}$: son las condiciones~\eqref{eq:condiciones-pareto}.
+\end{itemize}
+
+\subsection{La versión general}\label{anexo:planificador-version-general}
+
+\begin{itemize}
+\item \emph{Economía} \parencite[§~16.F]{MasColellWhinstonGreen1995}: consumidores $i=1,\dots,I$ con utilidades $U_i(\vect{x}_i)$ y dotaciones $\vect{\omega}_i$; empresas $j=1,\dots,J$ con tecnologías descritas por funciones de transformación $T_j(\vect{y}_j)\leq0$ (planes netos: componentes negativos, factores; positivos, productos) \vertema{3.A.11}; $n$ bienes, entre ellos los factores. Es la misma especificación del equilibrio general \vertema{3.A.21}.
+\item \emph{Problema del planificador}: maximizar la utilidad del consumidor 1 dados los niveles de los demás, con la tecnología y los recursos:
+\begin{equation}\label{eq:planificador-general}
+\optim{\max}{\vect{x}_1,\dots,\vect{x}_I,\ \vect{y}_1,\dots,\vect{y}_J}{U_1(\vect{x}_1)}{U_i(\vect{x}_i)\geq\overline{U}_i,\quad i=2,\dots,I\\ T_j(\vect{y}_j)\leq0,\quad j=1,\dots,J\\ \textstyle\sum_i\vect{x}_i\leq\sum_i\vect{\omega}_i+\sum_j\vect{y}_j}
+\end{equation}
+  con multiplicadores $\delta_i$ ($\delta_1=1$) para las utilidades, $\gamma_j$ para las tecnologías y $\lambda_k$, $k=1,\dots,n$, para el balance de cada bien.
+\item \emph{Condiciones de primer orden} (en una solución interior): $\delta_i\,\partial U_i/\partial x_{ki}=\lambda_k$ para todo consumidor y bien, y $\gamma_j\,\partial T_j/\partial y_{kj}=\lambda_k$ para toda empresa y bien. Dividiendo las de 2 bienes $k$ y $l$:
+$$\mathrm{RMS}^i_{kl}=\frac{\lambda_k}{\lambda_l}=\mathrm{RMT}^j_{kl}\qquad\text{para todo consumidor }i\text{ y toda empresa }j.$$
+  Si $k$ y $l$ son factores de la empresa $j$, $\mathrm{RMT}^j_{kl}$ es su $\mathrm{RMST}$; si uno es factor y el otro producto, es su productividad marginal.
+\item \emph{Interpretación}: los $\lambda_k$ son los precios sombra de los bienes. Con utilidades cuasicóncavas y conjuntos de producción convexos, estas condiciones son también suficientes, y si los precios de mercado son proporcionales a $(\lambda_1,\dots,\lambda_n)$, cada agente elige por sí mismo lo que el planificador le asigna: es el puente con los 2 teoremas.
+\item \emph{El 2×2×2×2} es el caso $I=2$, $J=2$ y $n=4$ ($X$, $Y$, $L$, $K$), con los consumidores dueños solo de los factores.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: demostraciones de los teoremas fundamentales}\label{anexo:demostraciones}
+
+Economía con $I$ consumidores, $J$ empresas y $n$ bienes \parencite[cap.~16]{MasColellWhinstonGreen1995}: preferencias $\succsim_i$ sobre $\mathbb{R}^n_+$, conjuntos de producción $\mathcal{Y}_j$, dotaciones $\vect{\omega}_i$ y participaciones $\theta_{ij}$.
+
+\subsection{Primer teorema}\label{anexo:demostracion-primero}
+
+\begin{itemize}
+\item \emph{Enunciado}: si las preferencias son localmente no saciables y $(\vect{x}^*_i,\vect{y}^*_j,\vect{p}^*)$ es un equilibrio con transferencias (rentas $\overline{W}_i$ con $\sum_i\overline{W}_i=\vect{p}^*\cdot\sum_i\vect{\omega}_i+\sum_j\vect{p}^*\cdot\vect{y}^*_j$), la asignación es un óptimo de \autor{Pareto}. Con $T_i=0$ es el equilibrio walrasiano.
+\item \emph{Demostración}:
+  \begin{enumerate}
+  \item Supongamos que $(\vect{x}'_i,\vect{y}'_j)$ es factible y \autor{Pareto} superior: $\vect{x}'_i\succsim_i\vect{x}^*_i$ para todo $i$ y $\vect{x}'_h\succ_h\vect{x}^*_h$ para algún $h$.
+  \item Para $h$: si $\vect{p}^*\cdot\vect{x}'_h\leq\overline{W}_h$, el consumidor $h$ habría elegido $\vect{x}'_h$. Luego $\vect{p}^*\cdot\vect{x}'_h>\overline{W}_h$.
+  \item Para todo $i$: si fuera $\vect{p}^*\cdot\vect{x}'_i<\overline{W}_i$, por la no saciedad local habría una cesta $\vect{x}''_i$ tan cerca de $\vect{x}'_i$ que seguiría siendo asequible y con $\vect{x}''_i\succ_i\vect{x}'_i\succsim_i\vect{x}^*_i$, y el consumidor no habría elegido $\vect{x}^*_i$. Luego $\vect{p}^*\cdot\vect{x}'_i\geq\overline{W}_i$.
+  \item Sumando: $\sum_i\vect{p}^*\cdot\vect{x}'_i>\sum_i\overline{W}_i=\vect{p}^*\cdot\sum_i\vect{\omega}_i+\sum_j\vect{p}^*\cdot\vect{y}^*_j$.
+  \item Como cada empresa maximiza el beneficio, $\vect{p}^*\cdot\vect{y}^*_j\geq\vect{p}^*\cdot\vect{y}'_j$, y entonces $\sum_i\vect{p}^*\cdot\vect{x}'_i>\vect{p}^*\cdot\big(\sum_i\vect{\omega}_i+\sum_j\vect{y}'_j\big)$.
+  \item Pero la factibilidad, $\sum_i\vect{x}'_i\leq\sum_i\vect{\omega}_i+\sum_j\vect{y}'_j$, con precios no negativos, implica lo contrario. Contradicción.\findemo
+  \end{enumerate}
+\item \emph{Qué no se ha usado}: ni convexidad ni diferenciabilidad. Sí que todos los bienes tienen precio y que los precios son comunes: si un bien no tuviera precio, como una externalidad, el paso~5 no recogería su coste.
+\end{itemize}
+
+\subsection{Segundo teorema}\label{anexo:demostracion-segundo}
+
+\begin{itemize}
+\item \emph{Enunciado}: si los $\mathcal{Y}_j$ son convexos y las preferencias son convexas y localmente no saciables, para todo óptimo de \autor{Pareto} $(\vect{x}^*_i,\vect{y}^*_j)$ existe $\vect{p}\neq\vect{0}$ tal que $(\vect{x}^*_i,\vect{y}^*_j,\vect{p})$ es un \emph{cuasiequilibrio con transferencias}: las empresas maximizan el beneficio y, para cada consumidor, todo lo que prefiere a $\vect{x}^*_i$ cuesta al menos $\overline{W}_i=\vect{p}\cdot\vect{x}^*_i$.
+\item \emph{Demostración}:
+  \begin{enumerate}
+  \item Sean $V_i=\{\vect{x}_i:\vect{x}_i\succ_i\vect{x}^*_i\}$ y $V=\sum_iV_i$; con preferencias convexas, cada $V_i$ es convexo, y su suma también.
+  \item Sea $\mathcal{Y}=\sum_j\mathcal{Y}_j+\{\sum_i\vect{\omega}_i\}$, lo que la economía puede tener disponible; es convexo porque lo son los $\mathcal{Y}_j$.
+  \item $V\cap\mathcal{Y}=\emptyset$: si no, habría cestas $\vect{x}_i\succ_i\vect{x}^*_i$ para todos, factibles con algunos $\vect{y}_j\in\mathcal{Y}_j$, y $(\vect{x}^*_i,\vect{y}^*_j)$ no sería un óptimo.
+  \item Por el teorema del hiperplano separador \parencite{Minkowski1911Theorie}, existen $\vect{p}\neq\vect{0}$ y $r$ con $\vect{p}\cdot\vect{z}\geq r$ para todo $\vect{z}\in V$ y $\vect{p}\cdot\vect{z}\leq r$ para todo $\vect{z}\in\mathcal{Y}$.
+  \item Por la no saciedad local, cada $\vect{x}^*_i$ está en la clausura de $V_i$, de modo que $\vect{p}\cdot\sum_i\vect{x}^*_i\geq r$; y como $\sum_i\vect{x}^*_i=\sum_i\vect{\omega}_i+\sum_j\vect{y}^*_j\in\mathcal{Y}$, también $\leq r$. Luego $\vect{p}\cdot\sum_i\vect{x}^*_i=r$.
+  \item \emph{Empresas}: para cualquier $\vect{y}_j\in\mathcal{Y}_j$, $\sum_i\vect{\omega}_i+\vect{y}_j+\sum_{h\neq j}\vect{y}^*_h\in\mathcal{Y}$, luego $\vect{p}\cdot\vect{y}_j\leq\vect{p}\cdot\vect{y}^*_j$: $\vect{y}^*_j$ maximiza el beneficio.
+  \item \emph{Consumidores}: si $\vect{x}_i\succ_i\vect{x}^*_i$, entonces $\vect{x}_i+\sum_{h\neq i}\vect{x}^*_h$ está en la clausura de $V$, luego $\vect{p}\cdot\vect{x}_i\geq\vect{p}\cdot\vect{x}^*_i$.
+  \item \emph{Transferencias}: $T_i=\vect{p}\cdot\vect{x}^*_i-\vect{p}\cdot\vect{\omega}_i-\sum_j\theta_{ij}\,\vect{p}\cdot\vect{y}^*_j$, que suman cero por el paso~5.\findemo
+  \end{enumerate}
+\item \emph{Del cuasiequilibrio al equilibrio}: si las preferencias son continuas y el consumidor puede comprar alguna cesta más barata que $\overline{W}_i$ (por ejemplo, si $\vect{x}^*_i$ tiene todos los componentes positivos), minimizar el gasto para la utilidad de $\vect{x}^*_i$ equivale a maximizar la utilidad con la renta $\overline{W}_i$ \parencite[prop.~16.D.2]{MasColellWhinstonGreen1995}. Sin esa condición, un consumidor sin renta en el lado de la caja puede no estar maximizando su utilidad, aunque nadie le venda nada más barato.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: planteamiento analítico del \emph{second best}}\label{anexo:second-best-analitico}
+
+\begin{itemize}
+\item \emph{Primer óptimo}: con un consumidor representativo,
+$$\optim{\max}{\vect{x}}{U(\vect{x})}{T(\vect{x})=0}$$
+  Con $\mathcal{L}=U(\vect{x})-\lambda_1T(\vect{x})$, las condiciones $U_k=\lambda_1T_k$, $k=1,\dots,n$, dan $U_k/U_n=T_k/T_n$: $\mathrm{RMS}_{kn}=\mathrm{RMT}_{kn}$ para todo $k$.
+\item \emph{Segundo óptimo} \parencite{LipseyLancaster1956General}: una distorsión que no se puede eliminar impide la condición del bien~1:
+$$\optim{\max}{\vect{x}}{U(\vect{x})}{T(\vect{x})=0\\ \dfrac{U_1}{U_n}-\psi\,\dfrac{T_1}{T_n}=0,\quad \psi\neq1}$$
+  La restricción va sobre los \emph{cocientes}, no sobre las derivadas sueltas: es la forma invariante a transformaciones monótonas de $U$. Con
+  $$\mathcal{L}=U(\vect{x})-\lambda_1T(\vect{x})-\lambda_2\Big[\frac{U_1}{U_n}-\psi\,\frac{T_1}{T_n}\Big],$$
+  las condiciones de primer orden son
+  $$U_k-\lambda_1T_k-\lambda_2\Psi_k=0,\qquad \Psi_k\equiv\frac{U_nU_{1k}-U_1U_{nk}}{U_n^2}-\psi\,\frac{T_nT_{1k}-T_1T_{nk}}{T_n^2},$$
+  y, dividiendo la del bien $k$ entre la del $n$,
+  $$\frac{U_k}{U_n}=\frac{T_k+\frac{\lambda_2}{\lambda_1}\Psi_k}{T_n+\frac{\lambda_2}{\lambda_1}\Psi_n}.$$
+\item \emph{Resultado}: los $\Psi_k$ dependen de las derivadas segundas cruzadas de $U$ y de $T$, cuyo signo no se conoce a priori. En general $U_k/U_n\neq T_k/T_n$ también para $k\neq1$: el segundo óptimo sigue en la frontera de transformación (la restricción $T(\vect{x})=0$ se cumple), pero se aparta de la condición de \autor{Pareto} en los demás bienes, en una dirección que depende de las complementariedades.
+\item \emph{Excepción}: si $\Psi_k/\Psi_n=T_k/T_n$, en particular si $\Psi_k=\Psi_n=0$ (las relaciones marginales del bien~1 no dependen de $x_k$ ni de $x_n$: separabilidad), la condición de \autor{Pareto} entre $k$ y $n$ sigue siendo óptima \parencite{DavisWhinston1965Welfare}.\findemo
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: qué estudia cada tema del bloque}\label{anexo:bloque}
+
+\begin{itemize}
+\item \emph{Competencia perfecta} \vertema{3.A.16}: la competencia perfecta en un mercado, con equilibrio parcial: demanda, oferta, equilibrio, ajuste, plazos y bienestar medido con excedentes, con los 2 teoremas en su versión de equilibrio parcial.
+\item \emph{Equilibrio general} \vertema{3.A.21}: la competencia perfecta en todos los mercados a la vez, como un sistema de ecuaciones simultáneas: excesos de demanda, ley de \autor{Walras}, precios relativos que vacían todos los mercados, existencia, unicidad y tanteo multimercado.
+\item \emph{Este tema}: el óptimo de \autor{Pareto} en general y los 2 teoremas fundamentales con todos sus supuestos, incluido el 2TFEB (con convexidad y el teorema del hiperplano separador), y el \emph{second best}, también cuando la restricción es la información. Los criterios de compensación, en el anexo~\ref{anexo:compensacion}.
+\item \emph{Fallos de mercado} \vertema{3.A.23}: cuando hay externalidades o bienes públicos, el equilibrio competitivo deja de ser eficiente; la intervención y los fallos del sector público.
+\item \emph{Funciones de bienestar social} \vertema{3.A.24}: el óptimo que maximiza el bienestar social no tiene por qué coincidir con el que alcanza el mercado; elegir entre óptimos exige juicios de valor y es materia de la elección colectiva.
+\item \emph{Otros supuestos del 1TFEB}: el poder de mercado y su regulación \vertema{3.A.17} \vertema{3.A.20}; la información asimétrica \vertema{3.A.13}, y el diseño de mecanismos \vertema{3.A.14}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test y preguntas del tribunal}\label{anexo:test}
+
+\begin{anotaciones}
+Preguntas tipo test del primer ejercicio: \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test}.
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Óptimo de \autor{Pareto}}: ordinal; 4 juicios de valor (individualismo, no paternalismo, benevolencia, independencia del proceso); incompleto.
+\item \emph{Condiciones}: $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$ (producción), $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$ (consumo), $\mathrm{RMS}_{XY}=\mathrm{RMT}_{XY}$ (global). Las 2 primeras son necesarias, no suficientes.
+\item \emph{FPU}: decreciente, de curvatura indeterminada (utilidad ordinal); la GFPU es la envolvente de las FPU.
+\item \emph{1TFEB}: solo necesita no saciedad local (y mercados completos, precio-aceptación, precios comunes, información perfecta); no necesita convexidad. \emph{2TFEB}: necesita convexidad y transferencias de suma fija.
+\item \emph{Fechas}: \autor{Pareto} (1906), \autor{Bergson} (1938), \autor{Kaldor} y \autor{Hicks} (1939), \autor{Scitovsky} (1941), \autor{Lange} (1942), \autor{Little} (1949-1950), \autor{Samuelson} (1950), \autor{Arrow} (1951), \autor{Debreu} (1951, 1954, 1959), \autor{Gorman} (1955), \autor{Meade} (1955), \autor{Lipsey} y \autor{Lancaster} (1956), \autor{Davis} y \autor{Whinston} (1965), \autor{Diamond} y \autor{Mirrlees} (1971), \autor{Hart} (1975), \autor{Greenwald} y \autor{Stiglitz} (1986).
+\item \emph{Second best}: con una condición imposible, las demás dejan en general de ser deseables; no es lo mismo que el óptimo restringido de la información asimétrica.
+\end{itemize}
+
+\paragraph{Preguntas probables del tribunal}
+
+\begin{itemize}
+\item ¿Por qué la utilidad marginal decreciente no es un supuesto del modelo? ¿Qué forma tiene la FPU y por qué?
+\item ¿Por qué una asignación eficiente en la producción y en el consumo puede no ser un óptimo global?
+\item ¿Qué interpretación tienen los multiplicadores del problema del planificador? ¿Qué relación guardan con los precios de equilibrio?
+\item ¿Necesita el primer teorema la convexidad? ¿Y el segundo? ¿Por qué?
+\item ¿Qué es un cuasiequilibrio y por qué hace falta la condición de renta en el 2TFEB?
+\item ¿Por qué no son factibles las transferencias de suma fija? ¿Qué se hace en su lugar?
+\item ¿Puede un impuesto aumentar el bienestar? Póngase un ejemplo de segundo óptimo.
+\item ¿En qué se diferencian el segundo óptimo de \autor{Lipsey} y \autor{Lancaster} y el óptimo restringido de la economía de la información?
+\item ¿Qué criterio de compensación aplica el análisis coste-beneficio y qué problemas tiene?
+\end{itemize}
+
+\nocite{Inman1987Markets}
+\bibliografia
+\end{document}

@@ -1,0 +1,39 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Bienes públicos en equilibrio parcial (Bowen, 1943).
+% RMS^A = 4 - 0,8 G (cero en G = 5); RMS^B = 3 - 0,375 G (cero en G = 8).
+% Suma vertical: 7 - 1,175 G hasta G = 5; desde ahí, RMS^B. CMg_G = 2,5.
+% G* = 4,5/1,175 = 3,830; p^A_G = 0,936; p^B_G = 1,564.
+% Suma declarada (75 % de la verdadera): corta CMg_G en G~ = 3,121 (suma verdadera 3,333).
+\begin{tikzpicture}[tcee,x=0.95cm,y=0.75cm]
+  \capa{1}{\ejes{$G$}{€}{9}{7.8}}
+  \capa{2}{\draw[curva1] (0,4) -- (5,0);
+    \node[etiqueta,tceemorado,left] at (0,4) {$\mathrm{RMS}^A_{GX}(G)$};}
+  \capa{3}{\draw[curva2] (0,3) -- (8,0) node[etiqueta,above right=-1pt] {$\mathrm{RMS}^B_{GX}(G)$};}
+  \capa{4}{%
+    % 2 flechas en G = 1,5: la altura de A se pone encima de la de B
+    \draw[->,thin,tceeazul] (1.5,0) -- (1.5,2.4375);
+    \draw[->,thin,tceemorado] (1.5,2.4375) -- (1.5,5.2375);
+    \draw[curva4] (0,7) -- (5,1.125) -- (8,0);
+    \node[etiqueta,tceedorado,anchor=west] at (2.2,4.9) {$\sum_i \mathrm{RMS}^i_{GX}(G)$};
+    \node[punto] at (5,1.125) {};}
+  \capa{5}{%
+    \draw[curva3] (0,2.5) node[left,black] {$\mathrm{CMg}_G$} -- (8.6,2.5);
+    \node[punto] (E) at (3.8298,2.5) {};
+    \draw[guia] (E) -- (3.8298,0) node[below] {$G^*$};}
+  \capa{6}{%
+    \node[punto] at (3.8298,0.9362) {};
+    \node[punto] at (3.8298,1.5638) {};
+    \draw[guia] (3.8298,0.9362) -- (0,0.9362) node[left,black] {$p^A_G$};
+    \draw[guia] (3.8298,1.5638) -- (0,1.5638) node[left,black] {$p^B_G$};
+    \node[etiqueta,anchor=west] (lindahl) at (5.6,5.4) {$p^A_G+p^B_G=\mathrm{CMg}_G$};
+    \draw[thin,gray] (lindahl.south west) -- (3.9,2.62);}
+  \capa{7}{%
+    \draw[curva4,desplazada] (0,5.25) -- (5,0.84375) -- (8,0);
+    \node[etiqueta,tceedorado,anchor=west] at (5.6,4.2) {$\sum_i \widetilde{\mathrm{RMS}}{}^i_{GX}(G)$};
+    \draw[thin,tceedorado] (5.75,3.85) -- (4.6,1.25);
+    \fill[area] (3.1206,3.3333) -- (3.1206,2.5) -- (3.8298,2.5) -- cycle;
+    \draw[guia] (3.1206,2.5) -- (3.1206,0) node[below] {$\tilde{G}$};}
+\end{tikzpicture}
+\end{document}

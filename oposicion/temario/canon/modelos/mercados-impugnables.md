@@ -1,7 +1,7 @@
 # Mercados impugnables (Baumol, 1982; Baumol, Panzar y Willig, 1982)
 
 - **Área:** mercados-información-juegos · **Tema de referencia:** **3.A.15** (La empresa… La Teoría de la Organización Industrial: barreras a la entrada y mercados impugnables; revisado el 20/10/2026, III.3 `sec:impugnables`, con el anexo `anexo:impugnable`) — lo tiene en el título y lo desarrolla con a)-d), tabla de supuestos y función clave `eq:sostenible`. Hasta el 20/10/2026 el desarrollo estaba en el 3.A.19, que ahora lo resume (D071 cumplida).
-- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.A.19 (resumen; hecho, 20/10/2026: III.3, las 3 condiciones con las mismas palabras y el resultado p = CMe, con `\vertema{3.A.15}`; factor «barreras de entrada» de la colusión con *hit and run*), 3.A.17 (mención; hecho, 17/10/2026), 3.A.16 (mención; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención, D139); 4.A.15 y 4.A.12 podrían citarlo (competencia efectiva; industrias de red).
+- **Temas que lo usan:** 3.A.15 (desarrollo; hecho, 20/10/2026), 3.A.19 (resumen; hecho, 20/10/2026: III.3, las 3 condiciones con las mismas palabras y el resultado p = CMe, con `\vertema{3.A.15}`; factor «barreras de entrada» de la colusión con *hit and run*), 3.A.17 (mención; hecho, 17/10/2026), 3.A.16 (mención; hecho, 17/10/2026), 4.B.15 (resumen; hoy mención, D139); 4.A.15 y 4.A.12 podrían citarlo (competencia efectiva; industrias de red); 3.A.22 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Baumol (1982), «Contestable Markets: An Uprising in the Theory of Industry Structure», *AER*; Baumol, Panzar y Willig (1982), *Contestable Markets and the Theory of Industry Structure*; Baumol, Bailey y Willig (1977) (subvenciones cruzadas); Tirole (1988), cap. 8; para la crítica, Schwartz y Reynolds (1983), Weitzman (1983), Shepherd (1984), Stiglitz (1987) y la réplica de Baumol, Panzar y Willig (1983); evidencia, Bailey y Panzar (1981), Bailey y Baumol (1984), Morrison y Winston (1987).
 - **Decisión D066 (13/10/2026):** «Mercados impugnables (contestables)».
 - **Decisión D071 (13/10/2026):** tema de referencia 3.A.15. **Cumplida** con la revisión del 3.A.15 (20/10/2026).
@@ -36,6 +36,7 @@ $$p=\mathrm{CMe}(q),\ q=x(p)\ \text{(una empresa)};\qquad p=\mathrm{CMg}=\mathrm
 | 3.A.17 | Monopolio natural | mención (hecho, 17/10/2026) | II.2.1: la amenaza de entrada obliga al monopolio natural sostenible a cobrar el CMe; anexo A: base de la defensa de la competencia; remite a 3.A.15 | El modelo |
 | 3.A.16 | Libre entrada | mención (hecho, 17/10/2026) | III.3 e): sin costes hundidos, la amenaza de entrada disciplina a pocas empresas; con costes hundidos, barreras (3.A.15) | El modelo |
 | 4.B.15 | Empresa pública | resumen (hoy mención; D139) | Las 3 condiciones canónicas y por qué disciplinan al monopolio natural: alternativa a la empresa pública; mismas palabras | La lista de 6 condiciones del original del 3.A.15 |
+| 3.A.22 | *Second best* (aplicaciones) | mención (hecho, 21/10/2026) | El precio igual al coste medio de un monopolio natural impugnable es un segundo óptimo con presupuesto equilibrado, `\vertema{3.A.15}` | Las condiciones |
 
 ## Divergencias encontradas en el temario actual
 - Nombres: «impugnables» (3.A.15, 3.A.17) y «contestables» (3.A.19 original, 4.B.15): canon «**mercados impugnables** (contestables)». Resuelto en 3.A.15, 3.A.17 y 3.A.19.

@@ -1,7 +1,7 @@
 # Preferencias unimodales de Black y teorema del votante mediano
 
 - **Área:** sector público · **Tema de referencia:** doble, uno por ejercicio. **3.A.24** (3.er ejercicio): las preferencias unimodales de Black y el teorema del votante mediano son la salida clásica a Arrow restringiendo el dominio («desarrollos posteriores» del título); el 3.A.24 actual ya desarrolla la unimodalidad con su gráfico y resume el teorema con la ineficiencia frente a Samuelson. **4.B.2** (4.º ejercicio; reglas de votación): además Downs-Hotelling, multidimensionalidad y agenda. 4.B.5 lo aplica al gasto.
-- **Temas que lo usan:** 3.A.24 (desarrollo, 3.er ejercicio; hoy resumen), 4.B.2 (desarrollo, 4.º ejercicio), 4.B.5 (resumen: gasto redistributivo), 3.A.18 (mención con Hotelling; hecho, 19/10/2026, ficha `hotelling`)
+- **Temas que lo usan:** 3.A.24 (desarrollo, 3.er ejercicio; hoy resumen), 4.B.2 (desarrollo, 4.º ejercicio), 4.B.5 (resumen: gasto redistributivo), 3.A.18 (mención con Hotelling; hecho, 19/10/2026, ficha `hotelling`); 3.A.23 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Black (1948), *JPE*, y *The Theory of Committees and Elections* (1958); Mueller, *Public Choice III*, cap. 5; Persson y Tabellini, *Political Economics*, cap. 2; Meltzer y Richard (1981), *JPE*; Romer (1975) y Roberts (1977).
 - **Decisión D137 (13/10/2026):** referencia doble, 3.A.24 y 4.B.2, cada uno completo para su examen (comprobado en el inventario de 3.A.24: la unimodalidad con gráfico ya está desarrollada allí).
 
@@ -21,6 +21,7 @@
 | 4.B.2 | Reglas de votación | Desarrollo (referencia del 4.º) | Teorema, gráfico, eficiencia, multidimensionalidad (Plott, McKelvey), Downs-Hotelling | — |
 | 4.B.5 | Crecimiento del gasto | Resumen | Meltzer-Richard | El teorema |
 | 3.A.18 | Diferenciación de productos | mención (hecho, 19/10/2026) | Con precios fijos, el efecto demanda lleva a los 2 partidos a la posición del votante mediano (ciudad lineal); remite a 3.A.24 | El teorema |
+| 3.A.23 | Otras formas de revelar las preferencias | mención (hecho, 21/10/2026) | Con mayoría simple gana la cantidad de bien público preferida por el votante mediano, que en general no cumple la condición de Samuelson; la unanimidad de Wicksell da poder de veto; `\vertema{3.A.24}` | El teorema |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.5 atribuye el «gasto público como redistribuidor» a **Romer y Rosenthal (1980)** describiendo en realidad **Meltzer y Richard (1981)**. Romer y Rosenthal (1978-1979) es el modelo del establecimiento de agenda (*agenda setter*) con punto de reversión. **Corregir.**

@@ -1,0 +1,77 @@
+% De la curva de contrato del consumo a la frontera de posibilidades de utilidad (3.A.22, I.2).
+% Caja con las mismas funciones que la caja maestra del 3.A.21 (caja-intercambio.tex):
+% X̄ = 10, Ȳ = 6; U_A = X_A^0,4 Y_A^0,6 (desde O_A); U_B = X_B^0,6 Y_B^0,4 (desde O_B).
+% Curva de contrato: Y_A = 9 X_A / ((2/3)(10 - X_A) + 1,5 X_A).
+% Tangencias: a = (2,2; 2,329), U_A = 2,277, U_B = 5,770;
+%             b = (5; 4,154),   U_A = 4,474, U_B = 3,357;
+%             c = (7,8; 5,332), U_A = 6,208, U_B = 1,366.
+% g = (5; 2,2), fuera de la curva de contrato: U_A = 3,055, U_B = 4,480 (dentro de la FPU).
+% FPU: imagen exacta de la curva de contrato, de (0; 8,152) a (7,360; 0).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=1cm,y=1.1cm,
+    declare function={
+      ua(\x,\u)=(\u/\x^0.4)^(1/0.6);
+      ub(\x,\v)=6-(\v/(10-\x)^0.6)^(1/0.4);
+      cc(\x)=9*\x/((2/3)*(10-\x)+1.5*\x);
+      fua(\x)=\x^0.4*cc(\x)^0.6;
+      fub(\x)=(10-\x)^0.6*(6-cc(\x))^0.4;},
+    llave/.style={decorate,decoration={brace,amplitude=5pt},thin,tceegris}]
+  % 1: la caja, sus orígenes y los lados X̄ e Ȳ
+  \capa{1}{
+    \draw[thick] (0,0) rectangle (10,6);
+    \node[below left,text=tceemorado] at (0,0) {$O_A$};
+    \node[above right,text=tceeverde] at (10,6) {$O_B$};
+    \draw[->,thin,tceemorado] (0.4,-0.3) -- (1.4,-0.3) node[right,etiqueta] {$X_A$};
+    \draw[->,thin,tceemorado] (-0.3,0.4) -- (-0.3,1.4) node[above,etiqueta] {$Y_A$};
+    \draw[->,thin,tceeverde] (9.6,6.3) -- (8.6,6.3) node[left,etiqueta] {$X_B$};
+    \draw[->,thin,tceeverde] (10.3,5.6) -- (10.3,4.6) node[below,etiqueta] {$Y_B$};
+    \draw[llave] (10,-0.75) -- (0,-0.75) node[midway,below=5pt,text=black] {$\overline{X}$};
+    \draw[llave] (-0.95,0) -- (-0.95,6) node[midway,left=5pt,text=black] {$\overline{Y}$};
+  }
+  % 2: curvas de indiferencia de A
+  \capa{2}{\draw[curva1] plot[domain=1.0:4.4,samples=80] (\x,{ua(\x,2.27678)})
+    node[etiqueta,right] {$U_A^1$};}
+  \capa{2}{\draw[curva1] plot[domain=3.3:7.2,samples=80] (\x,{ua(\x,4.47364)})
+    node[etiqueta,right] {$U_A^2$};}
+  \capa{2}{\draw[curva1] plot[domain=6.55:9.5,samples=80] (\x,{ua(\x,6.20800)})
+    node[etiqueta,below] {$U_A^3$};}
+  % 3: curvas de indiferencia de B
+  \capa{3}{\draw[curva3] plot[domain=0.3:3.8,samples=80] (\x,{ub(\x,5.76972)})
+    node[etiqueta,right] {$U_B^3$};}
+  \capa{3}{\draw[curva3] plot[domain=3.1:6.9,samples=80] (\x,{ub(\x,3.35654)})
+    node[etiqueta,right] {$U_B^2$};}
+  \capa{3}{\draw[curva3] plot[domain=6.0:9.3,samples=80] (\x,{ub(\x,1.36602)})
+    node[etiqueta,right] {$U_B^1$};}
+  % 4: tangencias a, b y c
+  \capa{4}{\node[punto,label={[etiqueta,label distance=2pt]below:$a$}] at (2.2,2.3294) {};}
+  \capa{4}{\node[punto,label={[etiqueta,label distance=2pt]below:$b$}] at (5,4.1538) {};}
+  \capa{4}{\node[punto,label={[etiqueta,label distance=2pt]below:$c$}] at (7.8,5.3316) {};}
+  % 5: curva de contrato
+  \capa{5}{\draw[curva2] plot[domain=0:10,samples=150] (\x,{cc(\x)});}
+  \capa{5}{\node[etiqueta,text=tceeazul,align=center,anchor=west] at (6.3,1.0)
+    {curva de contrato\\ $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$};}
+  % 6: punto ineficiente g, donde se cortan 2 curvas de indiferencia
+  \capa{6}{\draw[tceemorado,thick,dashed] plot[domain=3.5:6.8,samples=80] (\x,{ua(\x,3.05521)});}
+  \capa{6}{\draw[tceeverde,thick,dashed] plot[domain=3.6:5.75,samples=80] (\x,{ub(\x,4.48018)});}
+  \capa{6}{\node[punto,label={[etiqueta]below left:$g$}] at (5,2.2) {};}
+  % Panel derecho: el espacio de las utilidades
+  \begin{scope}[shift={(12.6,0)},x=0.7cm,y=0.7cm]
+    % 7: ejes U_A, U_B
+    \capa{7}{\ejes{$U_A$}{$U_B$}{8.6}{9.2}}
+    % 8: a, b y c, imagen de las tangencias
+    \capa{8}{\node[punto,label={[etiqueta]above right:$a$}] at (2.2768,5.7697) {};}
+    \capa{8}{\node[punto,label={[etiqueta]above right:$b$}] at (4.4736,3.3565) {};}
+    \capa{8}{\node[punto,label={[etiqueta]above right:$c$}] at (6.2080,1.3660) {};}
+    % 9: la FPU, que los une
+    \capa{9}{\draw[curva2] (0,8.1519) -- plot[domain=0.0005:9.9995,samples=200] ({fua(\x)},{fub(\x)}) -- (7.3602,0);}
+    \capa{9}{\node[etiqueta,text=tceeazul] at (6.7,3.3) {FPU};}
+    \capa{9}{\node[etiqueta,text=tceemorado,right] at (0,8.1519) {$O_A$};}
+    \capa{9}{\node[etiqueta,text=tceeverde,above right] at (7.3602,0) {$O_B$};}
+    % 10: g, por debajo de la FPU
+    \capa{10}{\node[punto,label={[etiqueta]below left:$g$}] at (3.0552,4.4802) {};}
+  \end{scope}
+\end{tikzpicture}
+\end{document}

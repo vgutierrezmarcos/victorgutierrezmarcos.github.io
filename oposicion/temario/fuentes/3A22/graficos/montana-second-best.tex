@@ -1,0 +1,31 @@
+% La analogía de la montaña del second best (3.A.22, III.1 b) ii)), a partir de Gandolfo (2014).
+% Perfil: f(x) = 0,15 + 1,3 g(1,6; 0,75) + 2,7 g(4,2; 0,6) + 0,55 g(5,9; 0,35)
+%   + 0,6 g(6,9; 0,35) + 4,2 g(9,2; 0,9), con g(c; s) = exp(-((x - c)/s)²).
+% V = (9,2; 4,35), la cumbre; A = (4,2; 2,85), el segundo pico; B = (7,8; 0,524), en la
+% subida hacia V; D: obstáculo infranqueable en x = 8,2 (f = 1,372).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,x=0.9cm,y=0.9cm,
+    declare function={
+      g(\x,\c,\s)=exp(-((\x-\c)/\s)^2);
+      f(\x)=0.15+1.3*g(\x,1.6,0.75)+2.7*g(\x,4.2,0.6)+0.55*g(\x,5.9,0.35)
+            +0.6*g(\x,6.9,0.35)+4.2*g(\x,9.2,0.9);}]
+  % 1: el perfil de la cordillera
+  \capa{1}{\ejes{}{altitud}{10.9}{5.3}}
+  \capa{1}{\draw[curva1] plot[domain=0.05:10.2,samples=300] (\x,{f(\x)});}
+  % 2: la cumbre V
+  \capa{2}{\node[punto,label={[etiqueta]above:$V$}] at (9.2,4.35) {};}
+  % 3: el obstáculo D
+  \capa{3}{\draw[curvanueva,line width=3pt,line cap=butt] (8.2,1.25) -- (8.2,2.45)
+    node[etiqueta,left,text=tceerojo] {$D$};}
+  % 4: el punto B
+  \capa{4}{\node[punto,label={[etiqueta]below right:$B$}] at (7.8,0.5244) {};}
+  % 5: la cumbre accesible A y el camino de B a A (bajar para volver a subir)
+  \capa{5}{\node[punto,label={[etiqueta]above:$A$}] at (4.2,2.85) {};}
+  \capa{5}{\draw[flecha,shorten >=4pt] plot[domain=7.7:4.45,samples=120] (\x,{f(\x)+0.3});}
+  % 6: seguir hacia V deja atascado en D
+  \capa{6}{\draw[->,thick,dashed,tceegris] plot[domain=7.82:8.1,samples=20] (\x-0.1,{f(\x)+0.12});}
+\end{tikzpicture}
+\end{document}

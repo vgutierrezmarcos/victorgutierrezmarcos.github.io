@@ -1,7 +1,7 @@
 # Función de bienestar social de Bergson (1938)-Samuelson (1947)
 
 - **Área:** equilibrio general y bienestar · **Tema de referencia:** 3.A.24 (Funciones de bienestar social)
-- **Temas que lo usan:** 3.A.24 (desarrollo), 3.A.22 (mención: punto de felicidad), 4.B.2 (resumen); 4.B.3 y 4.B.11 la usan para la redistribución y el compromiso eficiencia-equidad.
+- **Temas que lo usan:** 3.A.24 (desarrollo), 3.A.22 (mención: punto de felicidad), 4.B.2 (resumen); 4.B.3 y 4.B.11 la usan para la redistribución y el compromiso eficiencia-equidad; hecho en el 3.A.22 el 21/10/2026 (gráfico `oposicion/temario/fuentes/3A22/graficos/fbs-gfpu.tex`).
 - **Manuales de referencia:** Bergson (1938); Samuelson (1947); Sen (1970, 1977); Mas-Colell, Whinston y Green, cap. 22; Boadway y Bruce, *Welfare Economics*.
 
 ## Presentación de referencia
@@ -15,7 +15,7 @@ Gráfico de referencia: GFPU en $(U_A,U_B)$ y curvas de indiferencia social conv
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.A.24 | FBS | desarrollo | Supuestos, mensurabilidad y comparabilidad, formas, punto de felicidad | — |
-| 3.A.22 | Incompletitud de Pareto | mención | Punto de felicidad en la GFPU; remitir a 3.A.24 | Formas funcionales |
+| 3.A.22 | Incompletitud de Pareto | mención (hecho, 21/10/2026) | FBS en 4 viñetas con el gráfico de apoyo `fbs-gfpu` (punto de felicidad $c$; $a$, ineficiente en $W_2$, mejor que $d$, eficiente en $W_1$); $W(U_A,U_B)$ siempre con argumentos; Sen y Rawls en la crítica distributiva; `\vertema{3.A.24}` | Formas funcionales |
 | 4.B.2 | Decisión pública | resumen | Criterio para elegir entre óptimos; utilitarista y rawlsiana | Supuestos de comparabilidad |
 
 ## Divergencias encontradas en el temario actual

@@ -1,7 +1,7 @@
 # Dualidad en la teoría de la empresa (maximización del beneficio, minimización del coste, Hotelling y Shephard)
 
 - **Área:** consumidor-producción · **Tema de referencia:** **3.A.12** (Teoría de los costes. Análisis de dualidad en el ámbito de la empresa; revisado el 14/10/2026, bloque I) — lo tiene en el título y lo desarrolla. Ficha creada a raíz de esa revisión; recoge los ids `maximizacion-beneficio-empresa` y `minimizacion-costes` del inventario.
-- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.11 (resumen: anexo `anexo:productor`, problema del productor, Hotelling y MB en dos etapas; hecho), 3.A.16 (resumen: C(w⃗,q), p = CMg y MB en dos etapas para la oferta; hecho, 17/10/2026), 3.A.9 (mención: la misma dualidad en la empresa; hecho), 3.A.21 (mención; hecho, 14/10/2026) y 3.A.23 (mención: MB en dos etapas), 3.A.25 (mención: demanda derivada de trabajo, no condicionada, por Hotelling).
+- **Temas que lo usan:** 3.A.12 (desarrollo; hecho), 3.A.11 (resumen: anexo `anexo:productor`, problema del productor, Hotelling y MB en dos etapas; hecho), 3.A.16 (resumen: C(w⃗,q), p = CMg y MB en dos etapas para la oferta; hecho, 17/10/2026), 3.A.9 (mención: la misma dualidad en la empresa; hecho), 3.A.21 (mención; hecho, 14/10/2026) y 3.A.23 (ya no la usa desde su revisión del 21/10/2026: su anexo A escribe solo las condiciones del 2×2×2×2), 3.A.25 (mención: demanda derivada de trabajo, no condicionada, por Hotelling).
 - **Manuales de referencia:** Mas-Colell, Whinston y Green (1995), §5.C-§5.D (prop. 5.C.1 y 5.C.2); Varian (1992), cap. 1-6; Jehle y Reny (2011), cap. 3; Gravelle y Rees (2004), cap. 5; Maté y Pérez (2007); Segura (1996, 3.ª ed.) para el dual estricto. Historia: Hotelling (1932), Samuelson (1947), Shephard (1953), Uzawa (1964), Diewert (1971, 1974), McFadden (1978).
 
 ## Presentación de referencia
@@ -28,7 +28,6 @@ Gráficos de referencia (3.A.12): `oposicion/temario/fuentes/3A12/graficos/esque
 | 3.A.16 | Oferta competitiva | resumen (hecho, 17/10/2026: C_j(w⃗,q_j) y C_j(q_j); las propiedades en w⃗ en una nota con remisión; F cóncava para la MB, cuasicóncava para los costes) | C(w⃗,q) y MB en dos etapas: p = CMg por encima del mínimo del CVMe (corto) o del CMe (largo); con rendimientos constantes, tamaño indeterminado | La derivación de C (remitir a 3.A.12); escribir C(w⃗,q), no C_i(q_i,w⃗) |
 | 3.A.9 | Dualidad del consumidor | mención (hecho) | Nota de la introducción (sentido estricto y amplio) y conclusión: la misma dualidad en la empresa | — |
 | 3.A.21 | Equilibrio general con producción | mención (hecho, 14/10/2026) | MB en dos etapas en nota de I.2.1 y en el anexo A (gráfico `maximizacion-dos-etapas`), Hotelling para las propiedades de oferta y demandas de factores, y B_j(p⃗) = max p⃗·y⃗_j en el modelo general, remitiendo a 3.A.12 | La dualidad (3.A.12) |
-| 3.A.23 | Equilibrio general con producción | mención | MB en dos etapas de las empresas, remitiendo a 3.A.12 (I.3) | — |
 | 3.A.25 | Demanda de trabajo | mención | Demanda no condicionada de trabajo z_L(p,w⃗) por Hotelling; efecto sustitución y escala | — |
 
 ## Divergencias encontradas en el temario actual

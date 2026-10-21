@@ -19,10 +19,11 @@
 | Tema | Pregunta del tema | Profundidad | Qué contar / variante | Qué no repetir |
 |---|---|---|---|---|
 | 3.B.10 | Integración económica | desarrollo | Modelo, áreas, Meade-Lipsey, Kemp-Wan, efectos dinámicos | — |
-| 3.A.22 | *Second best* | mención | La unión aduanera como ejemplo de *second best* (Lipsey-Lancaster) | Gráfico |
+| 3.A.22 | *Second best* | mención (hecho, 21/10/2026) | La unión aduanera como el caso que da origen a la teoría: suprime una distorsión y deja otra; creación frente a desviación de comercio (Viner, 1950; Lipsey, 1957), `\vertema{3.B.10}` | Gráfico |
 | 3.B.35, 3.B.39, 3.B.41 | Regionalismo, UE | mención | Justificación y riesgos del regionalismo | — |
 
 ## Divergencias encontradas en el temario actual
+- El 3.A.23 cita a Viner (1931) por otra obra (curvas de costes y externalidades pecuniarias): no es esta ficha.
 - La desigualdad del inventario ($P_R < P_B < P_R + t < P_A < P_B + t$) es solo uno de los casos; conviene escribir los dos (creación pura y con desviación).
 - 3.B.10 usa $P_A$, $P_B$, $P_R$ (mayúsculas) y 3.B.7 $p$: canon $p$ minúscula para precios de un bien y $P$ para índices.
 

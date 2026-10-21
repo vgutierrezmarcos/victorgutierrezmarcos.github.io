@@ -1,7 +1,7 @@
 # Regla de Corlett y Hague (1953)
 
 - **Área:** sector público · **Tema de referencia:** 4.B.11 (imposición óptima) — es una de las reglas del enfoque de Ramsey.
-- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (resumen), 4.B.7 (mención), 4.B.9 (mención)
+- **Temas que lo usan:** 4.B.11 (desarrollo), 4.B.13 (resumen), 4.B.7 (mención), 4.B.9 (mención); 3.A.22 (mención; hecho, 21/10/2026: aplicación del *second best*).
 - **Manuales de referencia:** Corlett y Hague (1953), «Complementarity and the excess burden of taxation», *RES*; Atkinson y Stiglitz, *Lectures*, lección 12; Rosen y Gayer, cap. 16; Atkinson y Stiglitz (1976), *JPubE*.
 
 ## Presentación de referencia
@@ -24,6 +24,7 @@ pero sí la relación bienes-ocio, $RMS_{O,i}=\frac{w}{p_i(1+t)}$: equivale a un
 | 4.B.13 | Imposición indirecta | Resumen | Un IVA uniforme distorsiona la elección ocio-consumo; argumento para diferenciar tipos (y sus límites) | La derivación |
 | 4.B.7 | Principios impositivos | Mención | Ningún impuesto sobre el consumo es neutral si el ocio no se grava | — |
 | 4.B.9 | Efectos renta y sustitución | Mención | Ejemplo de efecto sustitución ocio-consumo | — |
+| 3.A.22 | *Second best* (aplicaciones) | mención (hecho, 21/10/2026) | Como el ocio no se puede gravar, el impuesto óptimo grava más los complementarios del ocio: un segundo óptimo; `\vertema{4.B.11}` | La derivación |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.11: el texto de Corlett-Hague aparece duplicado en la lista corrupta de «reglas» (puntos 6 y 8).

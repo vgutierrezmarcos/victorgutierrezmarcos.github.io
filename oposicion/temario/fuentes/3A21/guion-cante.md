@@ -275,7 +275,7 @@ Pero Scarf construye en 1960 una economía con tres bienes complementarios y un 
 
 > Apunte: Arrow (1951) y Debreu (1951); condiciones marginales: Lerner (1934) y Lange (1942)
 
-La idea: como todos ven los mismos precios, todas las relaciones marginales se igualan. Es la mano invisible formalizada. Pero exige mercados completos, precio-aceptación y precios comunes, sin cuñas fiscales; si falla alguno, aparecen los fallos de mercado. Y no dice que el equilibrio sea justo: depende de las dotaciones.
+La idea: como todos ven los mismos precios, todas las relaciones marginales se igualan. Es la mano invisible formalizada. Pero exige mercados completos, precio-aceptación, precios comunes, sin cuñas fiscales, e información perfecta; si falla alguno, aparecen los fallos de mercado. Y no dice que el equilibrio sea justo: depende de las dotaciones.
 
 > Apunte: Feldman (1987): con dardos, acertar en un óptimo tendría probabilidad nula
 

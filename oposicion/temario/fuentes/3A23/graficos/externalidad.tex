@@ -1,0 +1,38 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Rectas: CMgP(q)=0,6q; CMgE(q)=0,2q; CMgS(q)=0,8q; precio 3.
+% q^c: 3=0,6q -> q^c=5; q^*: 3=0,8q -> q^*=3,75; C=(5;4).
+% Mismas rectas y escala que externalidad-intervencion y coase.
+\begin{tikzpicture}[tcee]
+  % Capa 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{7.4}{5.6}}
+  % Capa 2: precio dado
+  \capa{2}{\draw[very thick,tceenaranja] (0,3) node[left,etiqueta,text=black] {$\overline{p}$} -- (6.6,3);}
+  % Capa 3: coste marginal privado
+  \capa{3}{\draw[curva2] (0,0) -- (6.4,3.84) node[right,etiqueta] {$\mathrm{CMgP}$};}
+  % Capa 4: equilibrio competitivo
+  \capa{4}{
+    \node[punto] (B) at (5,3) {};
+    \node[etiqueta,below right,align=left,font=\footnotesize] at (B) {equilibrio\\competitivo};
+    \draw[guia] (B) -- (5,0) node[below] {$q^c$};
+  }
+  % Capa 5: coste marginal externo
+  \capa{5}{\draw[curvanueva] (0,0) -- (6.4,1.28) node[right,etiqueta] {$\mathrm{CMgE}$};}
+  % Capa 6: coste marginal social
+  \capa{6}{\draw[curva1] (0,0) -- (6.4,5.12) node[right,etiqueta] {$\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$};}
+  % Capa 7: óptimo social
+  \capa{7}{
+    \node[punto] (A) at (3.75,3) {};
+    \node[etiqueta,above left,align=right,font=\footnotesize] at (A) {óptimo\\social};
+    \draw[guia] (A) -- (3.75,0) node[below] {$q^*$};
+  }
+  % Capa 8: pérdida de eficiencia
+  \capa{8}{
+    \fill[area] (3.75,3) -- (5,4) -- (5,3) -- cycle;
+    \draw[guia] (5,3) -- (5,4);
+    \node[punto] at (5,4) {};
+    \node[etiqueta,text=tceemorado] at (4.6,3.33) {$E$};
+  }
+\end{tikzpicture}
+\end{document}

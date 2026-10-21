@@ -1,7 +1,7 @@
 # El Estado Leviatán (Brennan y Buchanan, 1980) y descentralización
 
 - **Área:** sector público · **Tema de referencia:** 4.B.2 (el modelo como límite normativo; el mapa proponía 4.B.5, que solo lo menciona como causa del gasto). 4.B.14 trata la hipótesis de que la descentralización contiene el gasto.
-- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 4.B.14 (mención prevista)
+- **Temas que lo usan:** 4.B.2 (resumen), 4.B.5 (mención), 4.B.14 (mención prevista); 3.A.23 (mención; hecho, 21/10/2026).
 - **Manuales de referencia:** Brennan y Buchanan, *The Power to Tax* (1980); Oates (1985), «Searching for Leviathan», *AER*; Mueller, *Public Choice III*, cap. 21.
 - **Decisión D095 (13/10/2026):** ¿Cuál es el tema de referencia del Leviatán de Brennan y Buchanan? 4.B.2 (límite normativo); 4.B.5 lo menciona como causa del gasto y 4.B.14 la hipótesis de la descentralización
 
@@ -14,6 +14,7 @@
 | 4.B.2 | Límites normativos | Resumen | Modelo y consecuencias constitucionales | — |
 | 4.B.5 | Crecimiento del gasto | Mención | Hipótesis de Leviatán y evidencia (Oates, 1985) | — |
 | 4.B.14 | Federalismo | Mención | Descentralización como freno | — |
+| 3.A.23 | Fallos del sector público (incentivos) | mención (hecho, 21/10/2026) | Brennan y Buchanan (1980): el Estado que maximiza la recaudación, para diseñar los límites constitucionales; con la ilusión fiscal de Puviani | El modelo |
 
 ## Divergencias encontradas en el temario actual
 - 4.B.5 escribe «Buchanan y Oates, 1980»: el libro es de **Brennan y Buchanan (1980)**; Oates (1985) es el contraste empírico. **Corregir.**

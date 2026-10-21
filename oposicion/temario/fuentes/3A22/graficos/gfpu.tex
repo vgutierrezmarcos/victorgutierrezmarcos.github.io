@@ -1,0 +1,73 @@
+% Construcción de la gran frontera de posibilidades de utilidad (3.A.22, I.2).
+% Izquierda: FPP X²/49 + Y²/36 = 1. E = (X*, Y*) = (5; 4,199); RMT_XY en E = 0,8748
+%   (recta tangente: corta el eje X en 9,8). Caja del consumo con O_A = (0,0) y O_B = E,
+%   U_A = X_A^0,4 Y_A^0,6 y U_B = X_B^0,6 Y_B^0,4 (las de la caja del consumo).
+%   Curva de contrato: Y_A = 1,5 X_A Y* / ((2/3)(X* - X_A) + 1,5 X_A).
+%   E* = (1,76; 2,3095): RMS^A = RMS^B = 0,8748 = RMT; U_A = 2,0717, U_B = 2,6114.
+%   E_1 = (3; 5,421) y E_3 = (6,3; 2,615), otros 2 puntos de la FPP (solo marcados).
+% Derecha (esquemático): GFPU U_A² + U_B² = 49. FPU_k: superelipse (U_A/a)^2,5 + (U_B/b)^2,5 = 1
+%   con a = 7 cos^0,2 θ_k, b = 7 sen^0,2 θ_k: toca la GFPU solo en E*_k = 7 (cos θ_k, sen θ_k)
+%   (misma normal; es su punto más alejado del origen), con θ_k = 75°, 50° y 25°:
+%   E*_1 = (1,812; 6,761), E*_2 = (4,500; 5,362), E*_3 = (6,344; 2,958).
+% Autor: Víctor Gutiérrez Marcos
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+\begin{tikzpicture}[tcee,
+    declare function={
+      fpp(\x)=6*sqrt(1-(\x/7)^2);
+      cc(\x)=1.5*\x*4.199125/((2/3)*(5-\x)+1.5*\x);
+      ua(\x,\u)=(\u/\x^0.4)^(1/0.6);
+      ub(\x,\v)=4.199125-(\v/(5-\x)^0.6)^(1/0.4);
+      fpuu(\t,\k)=7*cos(\k)^(0.2)*cos(\t)^(0.8);
+      fpuv(\t,\k)=7*sin(\k)^(0.2)*sin(\t)^(0.8);}]
+  % 1: ejes X, Y
+  \capa{1}{\ejes{$X$}{$Y$}{8.4}{7}}
+  % 2: la FPP
+  \capa{2}{\draw[curva2] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{6*sin(\t)});}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (6.75,1.75) {FPP};}
+  % 3: punto E y sus guías X*, Y*
+  \capa{3}{\node[punto] (E) at (5,4.199125) {};}
+  \capa{3}{\node[etiqueta,anchor=south west,inner xsep=0.5pt] (Elab) at (E.north east) {$E$};}
+  \capa{3}{\proyeccion{(E)}{$X^*$}{$Y^*$}}
+  % 4: la caja del consumo, con O_A en el origen y O_B en E
+  \capa{4}{\draw[thick] (0,0) rectangle (5,4.199125);}
+  \capa{4}{\node[etiqueta,text=tceemorado,anchor=south west] at (0.03,0.03) {$O_A$};}
+  \capa{4}{\node[etiqueta,text=tceeverde,anchor=north east] at (4.97,4.17) {$O_B$};}
+  % 5: curva de contrato dentro de la caja
+  \capa{5}{\draw[curva2,thick] plot[domain=0:5,samples=120] (\x,{cc(\x)});}
+  \capa{5}{\node[etiqueta,text=tceeazul,anchor=north west,align=left] at (3.3,3.1) {curva de\\ contrato};}
+  % 6: recta tangente a la FPP en E (RMT)
+  \capa{6}{\draw[curva4] (3.3,5.6863) -- (7.9,1.6623) node[etiqueta,right] {$\mathrm{RMT}_{XY}$};}
+  % 7: E*, curvas de indiferencia tangentes y la paralela (RMS = RMT)
+  \capa{7}{\draw[curva1,thick] plot[domain=1.15:3.0,samples=60] (\x,{ua(\x,2.0716576)});}
+  \capa{7}{\draw[curva3,thick] plot[domain=0.6:3.0,samples=60] (\x,{ub(\x,2.6114129)});}
+  \capa{7}{\draw[curva4,desplazada,thick] (0.8,3.1493) -- (3.05,1.1810);}
+  \capa{7}{\node[punto,label={[etiqueta]above right:$E^*$}] at (1.76,2.309519) {};}
+  \capa{7}{\node[etiqueta,text=tceedorado,anchor=north west,align=left,font=\footnotesize] at (0.12,4.12) {$\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$\\ ${}=\mathrm{RMT}_{XY}$};}
+  % Panel derecho: el espacio de las utilidades
+  \begin{scope}[shift={(10.2,0)},x=0.85cm,y=0.85cm]
+    % 8: ejes U_A, U_B
+    \capa{8}{\ejes{$U_A$}{$U_B$}{8.4}{8.2}}
+    % 9: FPU_1 con E*_1 (y E_1 en la FPP)
+    \capa{9}{\draw[curva1,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,75)},{fpuv(\t,75)})
+      node[etiqueta,below] {$\mathrm{FPU}_1$};}
+    \capa{9}{\node[punto,label={[etiqueta]above right:$E^*_1$}] at (1.8117,6.7615) {};}
+    % 10: FPU_2, la de la caja de E, con E*_2
+    \capa{10}{\draw[curva3,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,50)},{fpuv(\t,50)});}
+    \capa{10}{\node[etiqueta,text=tceeverde,left] at (0,6.6225) {$\mathrm{FPU}_2$};}
+    \capa{10}{\node[punto,label={[etiqueta]above right:$E^*_2$}] at (4.4995,5.3623) {};}
+    % 11: FPU_3 con E*_3
+    \capa{11}{\draw[curva4,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,25)},{fpuv(\t,25)});}
+    \capa{11}{\node[etiqueta,text=tceedorado,left] at (0,5.6193) {$\mathrm{FPU}_3$};}
+    \capa{11}{\node[punto,label={[etiqueta]above right:$E^*_3$}] at (6.3442,2.9583) {};}
+    % 12: la GFPU, envolvente de los puntos globalmente eficientes
+    \capa{12}{\draw[curva2,line width=1.8pt] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{7*sin(\t)});}
+    \capa{12}{\node[etiqueta,text=tceeazul,anchor=south west] at (5.65,4.85) {GFPU};}
+  \end{scope}
+  % E_1 y E_3 en la FPP, con su FPU; E es E_2
+  \capa{9}{\node[punto,label={[etiqueta]above left:$E_1$}] at (3,5.421047) {};}
+  \capa{10}{\node[etiqueta,anchor=base west,inner xsep=0pt] at (Elab.base east) {${}=E_2$};}
+  \capa{11}{\node[punto,label={[etiqueta]above right:$E_3$}] at (6.3,2.615339) {};}
+\end{tikzpicture}
+\end{document}

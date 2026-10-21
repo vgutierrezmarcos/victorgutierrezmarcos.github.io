@@ -1,0 +1,1337 @@
+\documentclass[11pt]{article}
+\usepackage{tcee}
+\addbibresource{3A23.bib}
+\tcetema[Economía del bienestar (II): fallos de mercado]{3.A.23}{Economía del bienestar (II). Fallos de mercado: externalidades y bienes públicos. Intervención y fallos del sector público.}
+\tcefecha{21/10/2026}
+\begin{document}
+\tceetitulo
+
+\section*{Introducción}
+\minutos{2,5}
+
+\begin{itemize}
+\item \textbf{\emph{Enganche}}:
+  \begin{itemize}
+  \item «Unos por otros, la casa sin barrer», dice el refrán. Es la mejor descripción de un \concepto{bien público}: si lo que hago beneficia a todos y nadie me lo paga, espero a que lo haga otro, y al final no lo hace nadie.
+  \item Lo vemos hoy con el clima. La Unión Europea se ha fijado por ley reducir en 2040 sus emisiones netas un 90~\% respecto a 1990, pero en la misma norma ha retrasado un año, de 2027 a 2028, el nuevo mercado de derechos de emisión para los combustibles de los edificios y del transporte por carretera \parencite{UE2026Reglamento667}. Barrer la casa común cuesta, y cada uno prefiere que empiece otro.
+  \item A lo largo de la exposición nos acompañará un río:
+    \begin{itemize}
+    \item una acería aguas arriba que vierte sus residuos y una piscifactoría aguas abajo que los sufre (una \emph{externalidad});
+    \item una mota que protegería de las riadas a todo el pueblo ribereño (un \emph{bien público});
+    \item y el organismo que gestiona la cuenca, que también puede equivocarse (un \emph{fallo del sector público}).
+    \end{itemize}
+  \item Detrás están las 3 preguntas de esta exposición: ¿por qué el mercado, que en condiciones ideales asigna bien los recursos, produce demasiado de lo que perjudica a terceros y demasiado poco de lo que beneficia a todos? ¿Qué puede hacer el sector público para corregirlo? ¿Y qué ocurre cuando quien corrige también falla?
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}:
+  \begin{itemize}
+  \item \emph{Teórica}: los \concepto{fallos de mercado} son la justificación de eficiencia de la intervención pública. Sin ellos, el primer teorema fundamental de la economía del bienestar diría que basta con el mercado \vertema{3.A.22}.
+  \item \emph{Práctica}: el cambio climático es, en palabras del informe \autor{Stern}, «el mayor fallo de mercado que el mundo ha visto» \parencite{Stern2007Economics} \vertema{3.B.31}. Ponerle precio es ya política económica corriente: en octubre de 2026 el derecho a emitir una tonelada de CO\textsubscript{2} en la UE se subastaba a unos 85~€ \parencite{EEX2026Subastas}.
+  \item \emph{Para el economista del Estado}: casi toda la política económica se apoya en esta exposición (la fiscalidad medioambiental, la provisión de defensa, justicia o investigación básica, la regulación \vertema{3.A.20} y el diseño de las instituciones públicas \vertema{4.B.2}), y obliga a comparar siempre 2 imperfecciones, la del mercado y la del sector público, antes de recomendar una intervención.
+  \end{itemize}
+
+\item \textbf{\emph{Contextualización}}. Desde un punto de vista histórico:
+  \begin{itemize}
+  \item La economía del bienestar estudia, con un \emph{enfoque normativo}, si una asignación de recursos es deseable. Su criterio de referencia es el de Vilfredo \textcite{Pareto1906Manuale}, en su \emph{Manuale di economia politica}: una asignación es \concepto{óptima de \autor{Pareto}} si no se puede mejorar a nadie sin empeorar a otro.
+  \item Las condiciones marginales del óptimo las formulan Abba \textcite{Lerner1934Economic} y Oskar \textcite{Lange1942Foundations}, y la demostración moderna de los 2 teoremas fundamentales se debe a Kenneth \textcite{Arrow1951Extension} y Gérard \textcite{Debreu1951Coefficient}, por separado \vertema{3.A.22}. Son la versión formal de la «mano invisible» de Adam \textcite{Smith1776Wealth}.
+  \item La idea de que el mercado falla cuando unos agentes afectan a otros fuera de los precios es casi tan antigua:
+    \begin{itemize}
+    \item Alfred \textcite{Marshall1890Principles} habla de economías externas, y Arthur Cecil \textcite{Pigou1920Economics} distingue el producto marginal privado del social y propone corregir la diferencia con impuestos y subvenciones;
+    \item Paul \textcite{Samuelson1954Pure} formaliza los bienes públicos, y Ronald \textcite{Coase1960Problem} critica a \autor{Pigou}: si se puede negociar, no hace falta el Estado;
+    \item desde los años 60, la escuela de la elección pública \parencite{BuchananTullock1962Calculus} y George \textcite{Stigler1971Theory} estudian los \concepto{fallos del sector público}, y \textcite{KydlandPrescott1977Rules}, su incapacidad para comprometerse;
+    \item Elinor \autor{Ostrom}, Nobel en 2009, muestra que muchas comunidades gestionan sus recursos comunes sin mercado ni Estado \parencite{Ostrom1990Governing}.
+    \end{itemize}
+  \end{itemize}
+
+\item \textbf{\emph{Problemática (preguntas clave)}}:
+  \begin{itemize}
+  \item ¿Por qué un mercado competitivo, que en condiciones ideales es eficiente, deja de serlo con externalidades y bienes públicos?
+  \item ¿Cómo puede el sector público devolver la economía al óptimo: con precios (impuestos y subvenciones), con cantidades (estándares, derechos negociables), definiendo derechos de propiedad o proveyendo él mismo el bien?
+  \item ¿Cómo se consigue que cada uno revele lo que valora un bien público, si le conviene mentir?
+  \item Y si el mercado falla, ¿no falla también el Estado? ¿Cuándo está justificado intervenir?
+  \end{itemize}
+
+\item \textbf{\emph{Estructura}}. La exposición sigue las 3 preguntas del título: ¿cuándo falla el mercado?, ¿cómo se corrige? y ¿quién corrige al que corrige?
+  \begin{itemize}
+  \item En el bloque~\ref{sec:optimalidad-fallos} recordamos por qué el equilibrio competitivo es eficiente y qué supuestos lo sostienen: cada fallo de mercado es uno de esos supuestos que no se cumple.
+  \item En el bloque~\ref{sec:externalidades-bienes-publicos}, el núcleo, estudiamos los 2 fallos del título: en qué se aparta el equilibrio del óptimo y cómo puede intervenir el sector público, primero con las externalidades y después con los bienes públicos.
+  \item En el bloque~\ref{sec:fallos-sector-publico}, los fallos del propio sector público (de información, de incentivos y de compromiso), que hacen de los fallos de mercado una condición necesaria, pero no suficiente, para intervenir.
+  \end{itemize}
+\end{itemize}
+
+\begin{esquema}
+\textbf{3.A.23. Economía del bienestar (II). Fallos de mercado}\\[2pt]
+Introducción\\
+I. Optimalidad del equilibrio competitivo y fallos de mercado\\
+\hspace*{1.5em}1. Condiciones de optimalidad: $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$\\
+\hspace*{1.5em}2. EGC y teoremas del bienestar (1TFEB, 2TFEB)\\
+\hspace*{1.5em}3. Fallos de mercado: qué supuesto levanta cada uno\\
+II. Externalidades y bienes públicos\\
+\hspace*{1.5em}1. Externalidades: $\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$; \autor{Pigou}, estándares, \autor{Coase}, derechos de emisión, integración\\
+\hspace*{1.5em}2. Bienes públicos: $\sum_i\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$; polizón; provisión pública, \autor{Lindahl}, \autor{Clarke}-\autor{Groves}\\
+III. Los fallos del sector público\\
+\hspace*{1.5em}1. Información, incentivos y compromiso (inconsistencia temporal)\\
+\hspace*{1.5em}2. Soluciones\\
+Conclusión
+\end{esquema}
+
+\begin{notaopositor}
+Reparto del cante:
+\begin{itemize}
+\item introducción, \tiempo{2,5};
+\item I, \tiempo{3} (I.1, \tiempo{0,5}; I.2, \tiempo{1}; I.3, \tiempo{1,5});
+\item II, \tiempo{17,5} (II.1, \tiempo{9}; II.2, \tiempo{8,5});
+\item III, \tiempo{6} (III.1, \tiempo{4,5}; III.2, \tiempo{1,5});
+\item conclusión, \tiempo{1}.
+\end{itemize}
+El peso está en el bloque~\ref{sec:externalidades-bienes-publicos}, que es el título; el bloque~\ref{sec:optimalidad-fallos} solo recuerda lo necesario de la economía del bienestar, que tiene su propio tema. Los gráficos imprescindibles son:
+\begin{itemize}
+\item la tabla de los fallos (tabla~\ref{tab:fallos-supuestos});
+\item el de la externalidad con el impuesto y el estándar (gráficos~\ref{fig:externalidad} y~\ref{fig:externalidad-intervencion});
+\item el de \autor{Coase} (gráfico~\ref{fig:coase});
+\item la clasificación de los bienes (tabla~\ref{tab:rivalidad-exclusion});
+\item el de \autor{Bowen} (gráfico~\ref{fig:bowen});
+\item el ejemplo de \autor{Clarke}-\autor{Groves} (tabla~\ref{tab:clarke-groves}).
+\end{itemize}
+Las derivaciones con condiciones de primer orden están en los anexos, para las preguntas del tribunal. Conviene escribir este esquema en la pizarra al empezar.
+\end{notaopositor}
+
+
+% ==========================================================================
+\section{Optimalidad del equilibrio competitivo\newline y fallos de mercado}\label{sec:optimalidad-fallos}
+\minutos{3}
+
+\begin{itemize}
+\item \emph{Idea}: empezamos recordando cuándo el mercado asigna bien los recursos, porque cada fallo de mercado se define por el supuesto que rompe.
+\item \emph{Conclusión anticipada}: el equilibrio competitivo es eficiente solo si los precios recogen todos los costes y todas las valoraciones; con externalidades y bienes públicos no lo hacen.
+\end{itemize}
+
+\begin{notaopositor}
+En el cante:
+\begin{itemize}
+\item las 3 condiciones de \autor{Pareto} en una línea (\tiempo{0,5});
+\item el EGC y los 2 teoremas enunciados, con la idea de que cada supuesto que falla es un fallo de mercado (\tiempo{1});
+\item la tabla de los fallos (tabla~\ref{tab:fallos-supuestos}), que se queda a la izquierda de la pizarra todo el cante (\tiempo{1,5}).
+\end{itemize}
+Sin demostraciones: son del tema de los teoremas del bienestar.
+\end{notaopositor}
+
+\subsection{Condiciones de optimalidad}\label{sec:condiciones-optimalidad}
+
+\begin{itemize}
+\item Una asignación es un \concepto{óptimo de \autor{Pareto}} si nadie puede mejorar sin que otro empeore \vertema{3.A.22}. En la economía 2×2×2×2 de \textcite{Bator1957Simple} (2 consumidores, $A$ y $B$; 2 bienes, $X$ e $Y$; 2 factores, $L$ y $K$, y 2 empresas) exige 3 condiciones (anexo~\ref{anexo:condiciones-2x2}):
+  \begin{itemize}
+  \item \emph{eficiencia en la producción}: $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}$, es decir, la economía está en su frontera de posibilidades de producción (FPP);
+  \item \emph{eficiencia en el intercambio}: $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}$, es decir, en la curva de contrato;
+  \item \emph{eficiencia global}: lo que los consumidores están dispuestos a dar de $Y$ por una unidad más de $X$ coincide con lo que cuesta producirla, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\mathrm{RMT}_{XY}$.
+  \end{itemize}
+\item Esta última igualdad es la que rompen las externalidades y los bienes públicos.
+\end{itemize}
+
+\subsection{El equilibrio general competitivo y los teoremas del bienestar}\label{sec:egc-teoremas}
+
+\begin{itemize}
+\item En el \concepto{equilibrio general competitivo} (EGC), los precios $\vect{p}^*$ vacían todos los mercados a la vez \vertema{3.A.21}, y cada agente, mirando solo esos precios, iguala su relación marginal al precio relativo:
+  \begin{itemize}
+  \item cada consumidor iguala su $\mathrm{RMS}_{XY}$ a $p_X/p_Y$;
+  \item cada empresa iguala su $\mathrm{RMST}_{LK}$ a $w_L/w_K$ y su precio al coste marginal, de modo que $\mathrm{RMT}_{XY}=\mathrm{CMg}_X/\mathrm{CMg}_Y=p_X/p_Y$.
+  \end{itemize}
+  Como todos ven los mismos precios, se cumplen las 3 condiciones:
+  \begin{equation}\label{eq:egc-pareto}
+  \mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\frac{p_X}{p_Y}=\frac{\mathrm{CMg}_X}{\mathrm{CMg}_Y}=\mathrm{RMT}_{XY},\qquad \mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\frac{w_L}{w_K}.
+  \end{equation}
+\item \concepto{Primer teorema fundamental de la economía del bienestar} (1TFEB): si las preferencias son localmente no saciables, todo equilibrio competitivo es un óptimo de \autor{Pareto} \parencites{Arrow1951Extension}{Debreu1951Coefficient}[cap.~16]{MasColellWhinstonGreen1995}.
+  \begin{itemize}
+  \item Es la mano invisible de \autor{Smith} formalizada \vertema{3.A.2}.
+  \item Descansa en unos supuestos: precios para todo lo que afecta al bienestar (\emph{mercados completos}), agentes precio-aceptantes, información perfecta y precios comunes a todos. No necesita convexidad: esa es para que el equilibrio exista.
+  \end{itemize}
+\item \concepto{Segundo teorema fundamental de la economía del bienestar} (2TFEB): con preferencias y tecnologías convexas, todo óptimo de \autor{Pareto} puede alcanzarse como equilibrio competitivo tras redistribuir las dotaciones con transferencias de suma fija ($\vect{\omega}\to\vect{\omega}'$).
+  \begin{itemize}
+  \item Separa eficiencia y equidad y justifica intervenir por equidad.
+  \item Como las transferencias de suma fija no son factibles en la práctica, aquí nos ocupamos de la intervención por \emph{eficiencia}.
+  \end{itemize}
+\item Su desarrollo, con la demostración y el gráfico en la caja de \autor{Edgeworth}, es materia del tema de los teoremas del bienestar \vertema{3.A.22}. Lo que interesa aquí es el reverso del 1TFEB: el teorema no dice que el equilibrio sea justo, y cuando falla alguno de sus supuestos el mercado deja de ser eficiente. Cada supuesto que falla es un fallo de mercado.
+\end{itemize}
+
+\subsection{Imperfecciones del mercado (fallos de mercado)}\label{sec:fallos-mercado}
+
+\begin{itemize}
+\item Un \concepto{fallo de mercado} es una situación en la que el equilibrio competitivo no es óptimo de \autor{Pareto}: existe otra asignación factible que mejora a alguien sin empeorar a nadie (gráfico~\ref{fig:fallo-mercado}).
+  \begin{itemize}
+  \item Cada fallo levanta un supuesto del 1TFEB, y los precios dejan de ser señales válidas, porque no recogen todos los costes y beneficios \vertema{3.A.21}.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El fallo de mercado: el equilibrio walrasiano deja de ser un óptimo de \autor{Pareto}}\label{fig:fallo-mercado}
+\grafico[0.75\textwidth]{fallo-mercado}
+\fuente{elaboración propia a partir de \textcite[cap.~16]{MasColellWhinstonGreen1995}.}
+\end{figure}
+
+\begin{itemize}
+\item Partimos de los supuestos del 1TFEB \vertema{3.A.22}; los de precio-aceptación e información son los de la lista común de las estructuras de mercado \vertema{3.A.16} (tabla~\ref{tab:fallos-supuestos}). Los fallos que estudia la teoría son 4:
+  \begin{itemize}
+  \item \concepto{Poder de mercado} (se levanta el supuesto~3): si una empresa no es precio-aceptante, fija un precio por encima del coste marginal y $\mathrm{RMS}_{XY}=p_X/p_Y\neq\mathrm{RMT}_{XY}$; la pérdida es el triángulo de \autor{Harberger} \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19}. Basta con que los productos estén diferenciados para que cada empresa tenga algo de poder de mercado \vertema{3.A.18}. Si hay subaditividad de costes (monopolio natural), además, la competencia no es viable \vertema{3.A.20}.
+  \item \concepto{Información asimétrica} (se levanta el supuesto~5): si una parte sabe algo que la otra no observa, aparecen la selección adversa y el riesgo moral, y algunos mercados ni siquiera existen, como en el mercado de coches usados de \autor{Akerlof} \vertema{3.A.13}.
+  \item \concepto{Externalidades} (se levantan los mercados completos): una acción afecta directamente al bienestar o a la producción de otro sin pasar por los precios (\ref{sec:externalidades}).
+  \item \concepto{Bienes públicos} (se levantan los mercados completos): bienes no rivales y no excluibles, que el mercado provee en cantidad insuficiente (\ref{sec:bienes-publicos}).
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Supuestos del 1TFEB y fallos de mercado: esta exposición levanta el de mercados completos}\label{tab:fallos-supuestos}
+\begin{tabular}{>{\centering\arraybackslash}m{0.6cm}>{\raggedright\arraybackslash}m{2.7cm}>{\raggedright\arraybackslash}m{4.4cm}>{\raggedright\arraybackslash}m{4.6cm}>{\centering\arraybackslash}m{2.1cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{N.º} & \textbf{Supuesto} & \textbf{Qué significa} & \textbf{Si se levanta} & \textbf{Dónde}\\
+\midrule
+\textcolor{tceemorado}{\textbf{1}} & \textbf{No saciedad local} & cerca de cualquier cesta hay otra que el consumidor prefiere, de modo que gasta toda su renta & un consumidor saciado puede dejar renta sin gastar y el equilibrio puede no ser eficiente & \vertema{3.A.22}\\
+\addlinespace[0.3em]
+\rowcolor{tceesalmon}\textcolor{tceemorado}{\textbf{2}} & \textbf{Mercados completos} & todo lo que afecta a la utilidad o a la producción tiene mercado y precio: no hay externalidades ni bienes públicos & \textcolor{tceerojo}{\textbf{Se levanta}}: \emph{externalidades} (el efecto externo no tiene mercado ni precio: el coste o el beneficio privado no es el social) y \emph{bienes públicos} (sin exclusión no hay precio individual: cada uno declara menos de lo que valora, el polizón) & \ref{sec:externalidades}\newline \ref{sec:bienes-publicos}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{3}} & \textbf{Agentes precio-aceptantes} & nadie mueve los precios con sus decisiones (el supuesto de atomicidad de la competencia perfecta, \vertema{3.A.16}) & \textcolor{tceerojo}{poder de mercado}: $p>\mathrm{CMg}$, se produce menos de lo óptimo (triángulo de \autor{Harberger}) & \vertema{3.A.17}--\vertema{3.A.20}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{4}} & \textbf{Precios comunes} & todos se enfrentan a los mismos precios: no hay impuestos que abran cuñas entre lo que paga el comprador y lo que cobra el vendedor & \textcolor{tceerojo}{exceso de gravamen} & \vertema{4.B.9}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{5}} & \textbf{Información perfecta y simétrica} & todos observan lo que entra en el intercambio: su calidad, su precio y lo que hace cada parte & \textcolor{tceerojo}{selección adversa y riesgo moral}; hay mercados que desaparecen & \vertema{3.A.13}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de la tabla de supuestos del 1TFEB de \vertema{3.A.22} y de \textcite[§~16.C]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\begin{itemize}
+\item Las externalidades y los bienes públicos tienen una raíz común, que vio Kenneth \textcite{Arrow1969Organization}: son \concepto{mercados incompletos}. No hay un mercado (ni un precio) para el vertido que recibe la piscifactoría ni para la protección que da la mota a cada vecino, porque los costes de transacción o la imposibilidad de excluir impiden crearlo.
+\item Con información imperfecta o mercados incompletos, \textcite{GreenwaldStiglitz1986Externalities} muestran que el equilibrio competitivo es, en general, ineficiente incluso respecto a lo que lograría un planificador con la misma información (\emph{ineficiencia restringida}): los fallos de mercado son la regla, no la excepción.
+\item Los fallos de mercado son, por tanto, una condición \emph{necesaria} para intervenir por eficiencia, pero no \emph{suficiente}: hay que compararlos con los fallos del sector público (bloque~\ref{sec:fallos-sector-publico}). Además, el sector público puede intervenir por \emph{equidad} (2TFEB) aunque no haya fallos de mercado.
+\item Como el poder de mercado y la información asimétrica tienen sus propios temas, nos centramos en las externalidades y los bienes públicos, los 2 fallos del título.
+\item \emph{Recapitulación}: el mercado es eficiente si los precios recogen todos los costes y valoraciones; los fallos de mercado son las situaciones en que no lo hacen. Pasamos al segundo bloque: las externalidades y los bienes públicos.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Externalidades y bienes públicos}\label{sec:externalidades-bienes-publicos}
+\minutos{17,5}
+
+\begin{itemize}
+\item \emph{Idea}: una vez visto qué rompe cada fallo de mercado, estudiamos los 2 que son objeto de esta exposición. Para cada uno, 3 pasos:
+  \begin{itemize}
+  \item qué es;
+  \item por qué el mercado se aleja del óptimo;
+  \item cómo puede intervenir el sector público.
+  \end{itemize}
+\item \emph{Conclusión anticipada}: en los 2 casos el mercado falla porque falta un precio. La intervención consiste en crearlo o en sustituirlo, y su gran obstáculo es la información.
+\end{itemize}
+
+\subsection{Externalidades}\label{sec:externalidades}
+
+\begin{notaopositor}
+En el cante:
+\begin{itemize}
+\item definición y clasificación con la acería y la piscifactoría (\tiempo{1});
+\item la condición de óptimo en equilibrio general en palabras y el gráfico de la externalidad (gráfico~\ref{fig:externalidad}) (\tiempo{2});
+\item la justificación (\tiempo{0,5});
+\item \autor{Pigou} y los estándares como capas del mismo gráfico (gráfico~\ref{fig:externalidad-intervencion}) (\tiempo{2});
+\item \autor{Coase} con su gráfico (gráfico~\ref{fig:coase}) (\tiempo{2});
+\item el mercado de derechos y \autor{Weitzman} de palabra, con el dato del RCDE (\tiempo{1});
+\item la integración (\tiempo{0,5}).
+\end{itemize}
+Las tablas de excedentes y las condiciones de primer orden no se cantan.
+\end{notaopositor}
+
+\subsubsection{Definición y clasificación}\label{sec:externalidades-definicion}
+
+\begin{itemize}
+\item Hay una \concepto{externalidad} cuando el bienestar de un consumidor o las posibilidades de producción de una empresa dependen \emph{directamente} de las acciones de otro agente \parencite[cap.~11.B]{MasColellWhinstonGreen1995}. «Directamente» quiere decir sin pasar por los precios. «El que venga detrás, que arree», dice el refrán: quien la genera no la paga.
+  \begin{itemize}
+  \item Por eso Jacob \textcite{Viner1931Cost} distingue las \concepto{externalidades tecnológicas}, que son un fallo de mercado, de las \concepto{pecuniarias}, que se transmiten por los precios \parencite{Scitovsky1954Two} \vertema{3.A.16}.
+  \item Ejemplo de externalidad pecuniaria: si el \emph{whisky} se pone de moda y sube su precio, los antiguos consumidores pierden y los productores ganan, pero es una transferencia y el equilibrio sigue siendo eficiente.\footnote{Con mercados incompletos o información asimétrica, las externalidades pecuniarias sí pueden afectar a la eficiencia \parencite{GreenwaldStiglitz1986Externalities}.}
+  \end{itemize}
+\item Con una externalidad tecnológica, los precios solo recogen la valoración de quien consume y el coste de quien produce, no el efecto sobre terceros. El agente decide sin tenerlo en cuenta:
+  \begin{itemize}
+  \item produce o consume demasiado si la externalidad es negativa;
+  \item demasiado poco si es positiva.
+  \end{itemize}
+\item \emph{Clasificación}:
+  \begin{itemize}
+  \item según el signo, \emph{positivas} (economías externas) o \emph{negativas} (deseconomías externas);
+  \item según quién la genera, en la producción o en el consumo (tabla~\ref{tab:externalidades});
+  \item según si se agotan, \emph{agotables} (lo que recibe uno no lo recibe otro) o \emph{no agotables} (todos sufren el mismo ruido): estas últimas son un «mal público» \parencite[cap.~3]{BaumolOates1988Theory}, y enlazan con los bienes públicos.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Ejemplos de externalidades}\label{tab:externalidades}
+\begin{tabular}{>{\centering\arraybackslash}m{3.0cm}|>{\centering\arraybackslash}m{5.4cm}|>{\centering\arraybackslash}m{5.4cm}}
+\rowcolor{tceeazulpalido} & \textbf{Positiva} & \textbf{Negativa} \\ \hline
+\textbf{En la producción} & El apicultor cuyas abejas polinizan el huerto vecino & La acería que vierte al río del que vive la piscifactoría \\ \hline
+\textbf{En el consumo} & Quien se vacuna reduce el contagio de los demás & El ruido del vecino; el tráfico \\
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Meade1952External} y \textcite[cap.~11]{MasColellWhinstonGreen1995}.}
+\end{table}
+
+\subsubsection{Diferencia entre la asignación competitiva y la asignación óptima}\label{sec:externalidades-asignacion}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Introducimos una externalidad en la economía de intercambio para ver qué condición de \autor{Pareto} deja de cumplir el mercado, y después pasamos al equilibrio parcial, que es el que se dibuja.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item La economía de intercambio de la caja de \autor{Edgeworth} \vertema{3.A.21}: 2 consumidores, $A$ y $B$, y 2 bienes, $X$ e $Y$, con dotaciones totales $\overline{X}$ e $\overline{Y}$.
+\item El consumo de $X$ por $A$ entra en la utilidad de $B$: $U_A(X_A,Y_A)$ y $U_B(X_B,Y_B,X_A)$, con $\partial U_B/\partial X_A<0$ si la externalidad es negativa (el humo del tabaco de $A$) y $\partial U_B/\partial X_A>0$ si es positiva.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item \emph{Óptimo de \autor{Pareto}}: el planificador maximiza la utilidad de $A$ sin empeorar a $B$,
+$$\optim{\max}{X_A,Y_A,X_B,Y_B}{U_A(X_A,Y_A)}{U_B(X_B,Y_B,X_A)=\overline{U}_B\\ X_A+X_B=\overline{X}\\ Y_A+Y_B=\overline{Y}}$$
+  y de las condiciones de primer orden (anexo~\ref{anexo:externalidad-eg}) se obtiene
+  \begin{equation}\label{eq:externalidad}
+  \mathrm{RMS}^A_{XY}+\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}=\mathrm{RMS}^B_{XY}.
+  \end{equation}
+  \begin{itemize}
+  \item \emph{Interpretación}: el valor social de una unidad más de $X$ en manos de $A$ es lo que vale para $A$ más lo que vale (o cuesta) para $B$, en unidades de $Y$. En el óptimo, ese valor social se iguala al de $X$ en manos de $B$.
+  \end{itemize}
+\item \emph{Equilibrio competitivo}: cada consumidor iguala su propia $\mathrm{RMS}$ al precio relativo, $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=p_X/p_Y$. Falta el segundo término de \eqref{eq:externalidad}: con una externalidad negativa, $A$ consume demasiado $X$.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item El mercado iguala las valoraciones \emph{privadas}, no las sociales: el equilibrio competitivo no es óptimo de \autor{Pareto}.
+\item Si $A$ pagara por $X$ un precio $p_X+t$, con $t=-p_Y\,\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}$ evaluado en el óptimo, su elección cumpliría \eqref{eq:externalidad}: es el \concepto{impuesto pigouviano} en equilibrio general, que veremos en equilibrio parcial.
+\end{itemize}
+
+\begin{notaopositor}
+El análisis riguroso de las externalidades es de equilibrio general, pero en la pizarra se usa el equilibrio parcial, que es más sencillo. Con utilidad cuasilineal en el numerario, la $\mathrm{RMS}$ es la disposición marginal a pagar y la condición \eqref{eq:externalidad} se convierte en «beneficio marginal privado más beneficio marginal externo igual a coste marginal». Conviene decirlo al pasar de un enfoque a otro, para que el tribunal vea que es el mismo resultado. El anexo~\ref{anexo:externalidad-eg} hace también la versión con la externalidad en la producción (la acería y la piscifactoría como las 2 empresas).
+\end{notaopositor}
+
+\paragraph{c) Extensiones: la externalidad en la producción en equilibrio parcial}
+\begin{itemize}
+\item Pasamos al ejemplo del río, que usaremos en el resto del apartado: una acería competitiva, precio-aceptante al precio $\overline{p}$, vierte residuos al río del que vive una piscifactoría.
+\item El mismo término adicional de \eqref{eq:externalidad} es ahora el \concepto{coste marginal externo}, $\mathrm{CMgE}$, el daño que una tonelada más de acero causa a la piscifactoría. El coste marginal social suma al privado ese daño:
+\funcionclave[eq:cmgs]{\mathrm{CMgS}(q)=\mathrm{CMgP}(q)+\mathrm{CMgE}(q)}
+\item La acería produce $q^c$, donde $\overline{p}=\mathrm{CMgP}(q^c)$; el óptimo es $q^*$, donde $\overline{p}=\mathrm{CMgS}(q^*)$ (gráfico~\ref{fig:externalidad}).
+  \begin{itemize}
+  \item Como $\mathrm{CMgE}>0$, $q^c>q^*$: \emph{sobreproducción}.
+  \item Cada unidad entre $q^*$ y $q^c$ cuesta a la sociedad más de lo que vale; la suma de esas diferencias es la pérdida de eficiencia, el triángulo $E$.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Externalidad negativa en la producción en equilibrio parcial: la acería y la piscifactoría}\label{fig:externalidad}
+\grafico[0.7\textwidth]{externalidad}
+\fuente{elaboración propia a partir de \textcite{Pigou1920Economics}.}
+\end{figure}
+
+\begin{itemize}
+\item Con una externalidad positiva ocurre lo contrario: el beneficio marginal social supera al privado y el mercado produce demasiado poco.
+\item \emph{Recapitulación}: con externalidades, el mercado iguala costes y valoraciones privados, y la diferencia con los sociales, $\mathrm{CMgE}$, es la medida del fallo. ¿Cómo puede el sector público hacer que se tenga en cuenta?
+\end{itemize}
+
+\subsubsection{Posibilidades de intervención por parte del sector público}\label{sec:externalidades-intervencion}
+
+\paragraph{Idea y justificación de la intervención}
+\begin{itemize}
+\item \emph{Idea}: con externalidades no hace falta que el sector público produzca nada, como suele hacer con los bienes públicos. Basta con que los agentes \emph{internalicen} el efecto externo, de modo que los precios que ven recojan todos los costes y beneficios, y dejar después actuar al mercado.
+\item \emph{Justificación}: sin intervención, la acería no paga el daño que causa y produce $q^c>q^*$. Hay 3 razones por las que el mercado no lo arregla solo:
+  \begin{itemize}
+  \item \emph{falta un mercado}: nadie vende ni compra el derecho a verter al río, así que no hay precio \parencite{Arrow1969Organization};
+  \item \emph{costes de transacción}: cuando los afectados son muchos (todos los que respiran el aire de una ciudad), negociar es imposible y cada uno espera que negocien los demás: el polizón aparece también aquí;
+  \item \emph{derechos de propiedad sin definir}: sin saber quién tiene derecho al río limpio, nadie puede venderlo ni exigir compensación; definirlos y hacerlos cumplir es tarea del sector público \parencite{Coase1960Problem}.
+  \end{itemize}
+\item El objetivo no es eliminar la externalidad, sino llevarla a su nivel óptimo, en el que el beneficio de reducirla un poco más iguala su coste: la contaminación óptima no suele ser cero. Y antes de intervenir hay que comparar el fallo del mercado con el de la intervención (bloque~\ref{sec:fallos-sector-publico}).
+\item Vemos 5 mecanismos, de más a menos intervención pública:
+  \begin{itemize}
+  \item los instrumentos pigouvianos (precios);
+  \item los estándares (cantidades);
+  \item la negociación de \autor{Coase} (derechos de propiedad);
+  \item los mercados de derechos de emisión que inspira (cantidades que se negocian);
+  \item la integración de quien causa el daño y quien lo sufre.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Instrumentos pigouvianos: impuestos y subvenciones}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item \textcite{Pigou1920Economics} propone gravar al causante de la externalidad negativa con un impuesto por unidad igual al daño marginal \emph{en el óptimo}:\footnote{La idea la apunta \autor{Marshall} y la analiza a fondo \textcite{Pigou1912Wealth} en \emph{Wealth and Welfare}, antecedente de \emph{The Economics of Welfare} (1920), que es la referencia habitual.}
+  \begin{equation}\label{eq:pigou}
+  t^*=\mathrm{CMgE}(q^*).
+  \end{equation}
+\end{itemize}
+
+\subparagraph{b) Modelo}
+\begin{itemize}
+\item La acería maximiza $\overline{p}\,q-C(q)-t^*q$; su condición de primer orden es $\overline{p}=\mathrm{CMgP}(q)+t^*$, que se cumple justo en $q^*$, porque allí $\overline{p}=\mathrm{CMgP}(q^*)+\mathrm{CMgE}(q^*)$.
+\item Gráficamente, el impuesto desplaza el coste marginal privado hasta $\mathrm{CMgP}+t^*$, que corta al precio en el óptimo (gráfico~\ref{fig:externalidad-intervencion}).
+\item Con una externalidad positiva, la solución simétrica es una \emph{subvención} por unidad igual al beneficio marginal externo en el óptimo.
+\item \emph{Bienestar} (tabla~\ref{tab:pigou-bienestar}): el impuesto recupera la pérdida $E$ y, además, recauda $B+C$ ($=t^*q^*$), que puede sustituir a otros impuestos distorsionantes: es el \concepto{doble dividendo} \vertema{4.B.13}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{La intervención frente a la externalidad: impuesto pigouviano y estándar}\label{fig:externalidad-intervencion}
+\grafico[0.75\textwidth]{externalidad-intervencion}
+\fuente{elaboración propia a partir de \textcite{Pigou1920Economics} y \textcite[cap.~4]{BaumolOates1988Theory}. Las áreas con prima, bajo $\mathrm{CMgE}$, miden lo mismo que las que llevan su letra sin prima: el daño a la piscifactoría es $C'+D'+E'=C+D+E$ y la recaudación, $t^*q^*=B'+C'=B+C$.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Bienestar con y sin impuesto pigouviano}\label{tab:pigou-bienestar}
+\begin{tabular}{>{\centering\arraybackslash}m{4.4cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}}
+\rowcolor{tceeazulpalido} & \textbf{Sin impuesto} & \textbf{Con impuesto} & \textbf{Variación} \\ \hhline{-|-|-|-|}
+Excedente del productor (acería) & $A+B+C+D$ & $A$ & $-(B+C+D)$ \\ \hhline{-|-|-|-|}
+Daño a la piscifactoría & $-(C+D+E)$ & $-C$ & $+(D+E)$ \\ \hhline{-|-|-|-|}
+Recaudación & --- & $B+C$ & $+(B+C)$ \\ \hhline{-|-|-|-|}
+\cellcolor{tceesalvia}\textbf{Bienestar total} & \cellcolor{tceesalvia}$A+B-E$ & \cellcolor{tceesalvia}$A+B$ & \cellcolor{tceesalvia}$+E$ \\
+\end{tabular}
+\fuente{elaboración propia. Las letras son las áreas del gráfico~\ref{fig:externalidad-intervencion}; como la demanda a la que se enfrenta la acería es horizontal en $\overline{p}$, no hay excedente del consumidor que medir.}
+\end{table}
+
+\subparagraph{c) Valoración}
+\begin{itemize}
+\item \emph{Ventaja}: deja que la acería decida cuánto reducir, y con varias empresas la reducción se concentra donde es más barata.
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item el sector público necesita conocer $\mathrm{CMgE}(q^*)$, es decir, el daño y la cantidad óptima, que no observa: vuelve el problema de revelación de preferencias;
+  \item si el daño varía según dónde y cuándo se vierte, un impuesto uniforme no basta;
+  \item si la acería tiene poder de mercado, ya produce menos de lo óptimo y el impuesto óptimo es menor que el daño marginal \parencite{Buchanan1969External}: es un caso de \emph{second best} \vertema{3.A.22}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Estándares}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item El sector público fija directamente la cantidad máxima de la actividad contaminante (o de las emisiones), $\overline{q}=q^*$: cuotas no transferibles, límites de vertido, restricciones de tráfico por matrícula.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+\begin{itemize}
+\item En el gráfico~\ref{fig:externalidad-intervencion}, la oferta de la acería se quiebra en $\overline{q}$: por debajo sigue su $\mathrm{CMgP}$ y en $\overline{q}$ se hace vertical.
+\item Con información completa y una sola empresa, el resultado es el mismo que con el impuesto: se produce $q^*$ y se recupera $E$.
+\item Cambia el reparto (tabla~\ref{tab:estandar-bienestar}): no hay recaudación y la acería se queda con $B+C$, una \emph{renta de escasez} que crea la cuota.
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Bienestar con y sin estándar}\label{tab:estandar-bienestar}
+\begin{tabular}{>{\centering\arraybackslash}m{4.4cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}|>{\centering\arraybackslash}m{2.7cm}}
+\rowcolor{tceeazulpalido} & \textbf{Sin estándar} & \textbf{Con estándar} & \textbf{Variación} \\ \hhline{-|-|-|-|}
+Excedente del productor (acería) & $A+B+C+D$ & $A+B+C$ & $-D$ \\ \hhline{-|-|-|-|}
+Daño a la piscifactoría & $-(C+D+E)$ & $-C$ & $+(D+E)$ \\ \hhline{-|-|-|-|}
+\cellcolor{tceesalvia}\textbf{Bienestar total} & \cellcolor{tceesalvia}$A+B-E$ & \cellcolor{tceesalvia}$A+B$ & \cellcolor{tceesalvia}$+E$ \\
+\end{tabular}
+\fuente{elaboración propia. Áreas del gráfico~\ref{fig:externalidad-intervencion}.}
+\end{table}
+
+\subparagraph{c) Valoración}
+\begin{itemize}
+\item \emph{Ventaja}: certeza sobre la cantidad, útil cuando un umbral de daño es peligroso.
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item exige la misma información que el impuesto ($q^*$);
+  \item con varias empresas es caro: impone a todas la misma reducción, aunque a unas les cueste mucho más reducir que a otras. El impuesto, en cambio, reduce allí donde es más barato. Esta ventaja de los precios es la que recogen los mercados de derechos.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Negociación: el teorema de \autor{Coase}}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item Ronald \textcite{Coase1960Problem} critica el enfoque de \autor{Pigou}:\footnote{Ronald \autor{Coase} recibió el Nobel en 1991 «por su descubrimiento y clarificación de la importancia de los costes de transacción y los derechos de propiedad para la estructura institucional y el funcionamiento de la economía» \parencite{Nobel1991Coase}. Este artículo de 1960 es distinto del de 1937 sobre la naturaleza de la empresa \vertema{3.A.15}.}
+  \begin{itemize}
+  \item el daño es \emph{recíproco}: si se protege a la piscifactoría, se perjudica a la acería;
+  \item si las partes pueden negociar, no hace falta que el Estado calcule nada: basta con que defina quién tiene derecho al río.
+  \end{itemize}
+\item «Más vale un mal acuerdo que un buen pleito», dice el refrán.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item Derechos de propiedad bien definidos (o a verter, de la acería, o al río limpio, de la piscifactoría) y que se hacen cumplir.
+\item Costes de transacción nulos e información completa: cada parte conoce el beneficio de la otra.
+\item Sin efectos renta (utilidad cuasilineal en el dinero).
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item Con la misma historia, la acería obtiene de cada unidad un beneficio marginal $\mathrm{BMg}(q)=\overline{p}-\mathrm{CMgP}(q)$, decreciente, y causa un daño marginal $\mathrm{DMg}(q)\equiv\mathrm{CMgE}(q)$, creciente (gráfico~\ref{fig:coase}, con las mismas áreas que antes):
+  \begin{itemize}
+  \item sin negociación, la acería produce hasta que $\mathrm{BMg}(q^c)=0$;
+  \item el óptimo es $q^*$, donde $\mathrm{BMg}(q^*)=\mathrm{DMg}(q^*)$.
+  \end{itemize}
+\item \emph{Si el derecho al río limpio es de la piscifactoría}, la acería tiene que comprarle el permiso para cada unidad. Le compensa hasta $q^*$: más allá, lo que gana con una unidad, $\mathrm{BMg}$, es menor que el daño que tiene que pagar, $\mathrm{DMg}$.
+\item \emph{Si el derecho a verter es de la acería}, produciría $q^c$, pero a la piscifactoría le compensa pagarle por reducir hasta $q^*$: entre $q^*$ y $q^c$, el daño que se ahorra ($D+E$) supera el beneficio al que renuncia la acería ($D$).
+\item En los 2 casos se produce $q^*$. El pago depende del poder de negociación de cada parte (tabla~\ref{tab:coase-pagos}) \vertema{3.A.14}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El teorema de \autor{Coase}: beneficio marginal de la acería y daño marginal a la piscifactoría}\label{fig:coase}
+\grafico[0.65\textwidth]{coase}
+\fuente{elaboración propia a partir de \textcite{Coase1960Problem}.}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Pagos de la negociación de \autor{Coase} según quién tiene los derechos y el poder de negociación}\label{tab:coase-pagos}
+\begin{tabular}{>{\centering\arraybackslash}m{3.4cm}|>{\centering\arraybackslash}m{2.4cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}}
+\rowcolor{tceeazulpalido} \textbf{Derechos de} & \textbf{Paga} & \textbf{Todo el poder a la piscifactoría} & \textbf{Todo el poder a la acería} & \textbf{Poder compartido} \\ \hline
+Acería (verter) & la piscifactoría & $D$ & $D+E$ & entre $D$ y $D+E$ \\ \hline
+Piscifactoría (río limpio) & la acería & $A+B+C$ & $C$ & entre $C$ y $A+B+C$ \\
+\end{tabular}
+\fuente{elaboración propia. Áreas del gráfico~\ref{fig:coase}. En todos los casos se produce $q^*$.}
+\end{table}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item George \textcite[113]{Stigler1966Theory} resumió el argumento en el \concepto{teorema de \autor{Coase}} (el nombre no es de \autor{Coase}):
+  \begin{itemize}
+  \item si los derechos de propiedad están bien definidos y los costes de transacción son nulos,
+  \item la negociación voluntaria lleva a un resultado eficiente, $q^*$, \emph{sea quien sea el titular de los derechos};
+  \item la asignación de los derechos solo cambia el reparto: quién paga a quién.
+  \end{itemize}
+\item En ese mundo, \autor{Pigou} y \autor{Coase} llegan al mismo $q^*$; lo que cambia es quién necesita la información (el Estado o las partes) y quién se queda las rentas.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+\begin{itemize}
+\item \emph{Ventaja}: el Estado no necesita conocer el daño; le basta definir los derechos y hacerlos cumplir.
+\item \emph{Limitaciones}, que son las de los supuestos:
+  \begin{itemize}
+  \item \emph{costes de transacción}: con muchos afectados (la contaminación de una ciudad), negociar es imposible y vuelve el polizón. El propio \autor{Coase} insistía en que el mundo real es el de los costes positivos, en el que la asignación de los derechos sí importa \vertema{3.A.15};
+  \item \emph{información asimétrica}: si cada parte conoce solo su coste o su daño, la negociación puede fracasar, y no hay mecanismo que garantice siempre un acuerdo eficiente \parencite{MyersonSatterthwaite1983Efficient};
+  \item \emph{efectos renta}: sin utilidad cuasilineal, quien recibe los derechos es más rico y puede demandar otro nivel de la externalidad, de modo que el resultado eficiente sí depende del reparto.\footnote{En una caja de \autor{Edgeworth} con el nivel de la externalidad en abscisas y el dinero en ordenadas, la utilidad cuasilineal en el dinero hace que las curvas de indiferencia sean traslaciones verticales unas de otras: las tangencias están todas en el mismo nivel de la externalidad y la curva de contrato es una recta vertical en $q^*$ \parencite[cap.~11.D]{MasColellWhinstonGreen1995}.}
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Mercados de derechos de emisión (\emph{cap and trade})}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item La idea de \autor{Coase} de crear derechos y dejar que se intercambien inspira los \concepto{mercados de derechos de emisión}, propuestos por John H. \textcite{Dales1968Pollution}:
+  \begin{itemize}
+  \item el sector público fija el total de emisiones permitidas, $\overline{E}$ (\emph{cap});
+  \item lo reparte en derechos, gratis o en subasta;
+  \item y deja que las empresas los compren y vendan (\emph{trade}) a un precio $p_E$.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{b) Modelo}
+\begin{itemize}
+\item Cada empresa $j$ reduce sus emisiones en $r_j$ con un coste $C_j(r_j)$ creciente y convexo. Reduce hasta que su coste marginal de reducción iguala el precio del derecho (gráfico~\ref{fig:cap-and-trade}):
+  \begin{equation}\label{eq:cap-and-trade}
+  \mathrm{CMgR}_1(r_1)=\mathrm{CMgR}_2(r_2)=p_E.
+  \end{equation}
+\item Es la misma condición que resuelve el problema de reducir las emisiones totales al menor coste posible: la reducción se hace donde es más barata.
+\item W. David \textcite{Montgomery1972Markets} demuestra que el mercado alcanza ese mínimo \emph{cualquiera que sea el reparto inicial} de los derechos, que solo cambia quién paga a quién: es el resultado de \autor{Coase} en un mercado creado por el Estado.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Mercado de derechos de emisión: el precio del derecho iguala los costes marginales de reducción}\label{fig:cap-and-trade}
+\grafico[0.65\textwidth]{cap-and-trade}
+\fuente{elaboración propia a partir de \textcite{Montgomery1972Markets}.}
+\end{figure}
+
+\subparagraph{c) Extensiones: precios frente a cantidades}
+\begin{itemize}
+\item El impuesto fija el precio y deja que el mercado decida la cantidad; el mercado de derechos fija la cantidad y deja que el mercado decida el precio. Con información completa son equivalentes; con incertidumbre, no.
+\item Martin \textcite{Weitzman1974Prices} los compara cuando el regulador no conoce con certeza los costes de reducir las emisiones:
+  \begin{itemize}
+  \item con un impuesto, el error se traslada a la cantidad: si reducir resulta más caro de lo previsto, se reduce menos de lo óptimo;
+  \item con una cuota, el error se traslada al coste: se reduce lo previsto, cueste lo que cueste.
+  \end{itemize}
+\item Resultado: conviene fijar la \emph{cantidad} si el daño marginal crece más deprisa que el coste marginal de reducir (umbrales peligrosos: lo que importa es no pasarse), y el \emph{precio} en el caso contrario (daño marginal casi constante: lo que importa es no imponer costes desorbitados).
+\item Por eso se usan sistemas híbridos, como un mercado de derechos con precio mínimo y máximo \parencite{RobertsSpence1976Effluent}.
+\end{itemize}
+
+\subparagraph{d) Evidencia empírica: el RCDE de la UE}
+\begin{itemize}
+\item El ejemplo más conocido es el \concepto{Régimen de Comercio de Derechos de Emisión} de la UE (RCDE UE), creado por la Directiva 2003/87/CE \parencite{UE2003Directiva87}:
+  \begin{itemize}
+  \item es el primer mercado internacional de emisiones y funciona desde 2005 en fases sucesivas; la segunda (2008-2012) coincidió con el primer periodo de compromiso del Protocolo de Kioto, y la cuarta va de 2021 a 2030 \parencite{CE2026DesarrolloETS};
+  \item más que el teorema de \autor{Coase}, aplica la propuesta de \autor{Dales} y \autor{Montgomery}: un tope total y derechos negociables;
+  \item el tope baja cada año, un 4,3~\% anual entre 2024 y 2027 y un 4,4~\% desde 2028 \parencite{CE2025TopeETS}.
+  \end{itemize}
+\item \emph{Resultados}: según la Comisión, desde 2005 ha reducido a la mitad las emisiones de los sectores que cubre (en 2025 bajaron otro 1,3~\%) y va camino del objetivo de $-62$~\% en 2030 respecto a 2005 \parencite{CE2026EmisionesETS2025}. El precio lo fija el mercado: tras pasar de unos 6~€/t en 2017 a más de 80~€/t en 2023, en octubre de 2026 se adjudicaba a unos 85~€/t \parencite{EEX2026Subastas}.
+\item La lección de \autor{Weitzman} se ve en su diseño:
+  \begin{itemize}
+  \item desde 2019, una \emph{reserva de estabilidad del mercado} retira derechos de las subastas cuando el excedente en circulación supera ciertos umbrales (entre septiembre de 2026 y agosto de 2027, unos 190 millones) \parencite{CE2026TNAC}: es una corrección por precios dentro de un sistema de cantidades;
+  \item desde 2028 habrá un segundo mercado, el RCDE~2, para los combustibles de edificios y transporte por carretera, que se aplica aguas arriba, a los proveedores de combustible \parencites{UE2026Reglamento667}{CE2026ETS2};
+  \item para que el precio del carbono no se limite a desplazar la producción fuera de la UE (\emph{fuga de carbono}), el Mecanismo de Ajuste en Frontera por Carbono (MAFC; CBAM en inglés) cobra desde el 1 de enero de 2026 a las importaciones de cemento, acero, aluminio, fertilizantes, electricidad e hidrógeno el precio que pagan los productores europeos \parencite{UE2023Reglamento956}; en el tercer trimestre de 2026 el certificado costaba 82,32~€ por tonelada \parencite{CE2026PrecioCBAM} \vertema{3.B.31}.
+  \end{itemize}
+\end{itemize}
+
+\subparagraph{e) Valoración}
+\begin{itemize}
+\item \emph{Ventajas}: alcanza el objetivo de emisiones al menor coste sin que el Estado conozca los costes de cada empresa, y da certeza sobre la cantidad.
+\item \emph{Limitaciones}: el precio es volátil (lo que desanima la inversión limpia), el reparto gratuito de derechos crea rentas y presiones de los sectores afectados, y si cubre solo una parte del mundo, hay fuga de carbono.
+\end{itemize}
+
+\paragraph{Integración}
+\begin{itemize}
+\item Si la acería y la piscifactoría tienen un mismo dueño, este maximiza el beneficio conjunto y tiene en cuenta el daño de la acería sobre la piscifactoría: la externalidad se internaliza dentro de la empresa \parencites{Meade1952External}[cap.~34]{Varian2016Intermedia}.
+\item Es la solución de mercado cuando negociar es caro y los afectados son pocos: la frontera de la empresa se mueve para ahorrar costes de transacción \vertema{3.A.15}.
+\end{itemize}
+
+\paragraph{Comparación de los mecanismos}
+\begin{itemize}
+\item Todos llevan la actividad a $q^*$, no a cero; se diferencian en la información que necesita el Estado y en el reparto del bienestar (tabla~\ref{tab:instrumentos}).
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los 5 mecanismos frente a una externalidad}\label{tab:instrumentos}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.2cm}>{\raggedright\arraybackslash}m{3.0cm}>{\raggedright\arraybackslash}m{4.4cm}>{\raggedright\arraybackslash}m{4.0cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Mecanismo} & \textbf{Qué fija el Estado} & \textbf{Qué información necesita} & \textbf{Quién se queda la renta}\\
+\midrule
+Impuesto pigouviano & el precio ($t^*$) & el daño marginal en el óptimo & el Estado (recaudación $B+C$)\\
+\addlinespace[0.3em]
+Estándar & la cantidad ($\overline{q}$) & la cantidad óptima y los costes de cada empresa & la empresa (renta de escasez)\\
+\addlinespace[0.3em]
+\autor{Coase} & los derechos de propiedad & ninguna sobre el daño & según quién tenga los derechos y el poder de negociación\\
+\addlinespace[0.3em]
+Derechos de emisión & la cantidad total ($\overline{E}$) & el daño total, no los costes de cada empresa & el Estado si subasta; las empresas si los regala\\
+\addlinespace[0.3em]
+Integración & nada & ninguna & el propietario común\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{BaumolOates1988Theory} y \textcite{Weitzman1974Prices}.}
+\end{table}
+
+\begin{itemize}
+\item \emph{Recapitulación de las externalidades}: el fallo es que falta el precio del efecto externo; los mecanismos lo crean (impuesto, derechos) o fijan la cantidad que habría elegido el mercado con ese precio (estándar), y los más robustos son los que menos información piden al Estado. Pasamos al segundo fallo del título, en el que no basta con poner un precio: los bienes públicos.
+\end{itemize}
+
+
+\subsection{Bienes públicos}\label{sec:bienes-publicos}
+
+\begin{notaopositor}
+En el cante:
+\begin{itemize}
+\item la tabla de rivalidad y exclusión con club y comunes (\tiempo{1,5});
+\item la condición de \autor{Samuelson} escrita como función clave y el gráfico de \autor{Bowen} con la suma vertical y la infraprovisión (gráfico~\ref{fig:bowen}), con el polizón como dilema del prisionero (\tiempo{3});
+\item la provisión pública: las 2 cuestiones y la capacidad de pago (\tiempo{1});
+\item \autor{Lindahl} (\tiempo{1});
+\item \autor{Clarke}-\autor{Groves} con la tabla de los 3 vecinos (tabla~\ref{tab:clarke-groves}) (\tiempo{1,5});
+\item las otras líneas, en una frase cada una (\tiempo{0,5}).
+\end{itemize}
+El gráfico de equilibrio general de \autor{Samuelson} (gráfico~\ref{fig:samuelson-eg}) es para preguntas del tribunal.
+\end{notaopositor}
+
+\subsubsection{Definición y clasificación}\label{sec:bienes-publicos-definicion}
+
+\begin{itemize}
+\item Pasamos al segundo fallo. Un bien privado, como una manzana, tiene 2 propiedades:
+  \begin{itemize}
+  \item es \concepto{rival}: lo que consume uno no lo puede consumir otro;
+  \item es \concepto{excluible}: se puede impedir su consumo a quien no paga.
+  \end{itemize}
+\item Un \concepto{bien público puro} no tiene ninguna de las 2 \parencite{Samuelson1954Pure}:
+  \begin{itemize}
+  \item es \emph{no rival}: su consumo por uno no reduce el de los demás, porque el coste marginal de un usuario más es nulo;
+  \item es \emph{no excluible}: no se puede impedir su consumo, o es muy caro hacerlo.
+  \end{itemize}
+  Son ejemplos la defensa nacional, el alumbrado de una calle, el conocimiento básico o la mota que protege de las riadas a todo el pueblo ribereño.
+\item Cruzando las 2 propiedades, Vincent y Elinor \autor{Ostrom} \parencite{OstromOstrom1977Public} clasifican los bienes en 4 grupos (tabla~\ref{tab:rivalidad-exclusion}):
+  \begin{itemize}
+  \item \concepto{bienes privados}: rivales y excluibles;
+  \item \concepto{bienes de club}: no rivales hasta que se congestionan, pero excluibles (la televisión de pago, una autopista de peaje). James \textcite{Buchanan1965Economic} estudia su tamaño óptimo: se añaden socios hasta que el ahorro en la cuota de cada uno iguala el coste de la congestión;
+  \item \concepto{recursos comunes} (comunales): rivales pero no excluibles (caladeros, pastos, acuíferos, la pesca del río). Su problema es el contrario al del bien público: no la infraprovisión, sino la \emph{sobreexplotación}, porque cada usuario ignora lo que su uso quita a los demás. Es la \concepto{tragedia de los comunes} \parencite{Hardin1968Tragedy}; «lo que es del común es de ningún», dice el refrán;
+  \item \concepto{bienes públicos puros}: ni rivales ni excluibles.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Clasificación de los bienes según la rivalidad y la exclusión}\label{tab:rivalidad-exclusion}
+\begin{tabular}{>{\centering\arraybackslash}m{2.8cm}|>{\centering\arraybackslash}m{5.4cm}|>{\centering\arraybackslash}m{5.4cm}}
+\rowcolor{tceeazulpalido} & \textbf{Rival} & \textbf{No rival} \\ \hline
+\textbf{Excluible} & \textbf{Bienes privados}\newline (alimentos, ropa) & \textbf{Bienes de club}\newline (televisión de pago, autopista de peaje) \\ \hline
+\textbf{No excluible} & \textbf{Recursos comunes}\newline (caladeros, pastos, la pesca del río) & \textbf{Bienes públicos puros}\newline (defensa, alumbrado, la mota) \\
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{OstromOstrom1977Public}.}
+\end{table}
+
+\begin{itemize}
+\item Los recursos comunes se gestionan limitando el uso (cuotas de captura, vedas), definiendo derechos o, como mostró Elinor \textcite{Ostrom1990Governing}, con reglas de la propia comunidad: el Tribunal de las Aguas de Valencia reparte desde hace siglos el agua de riego de la huerta (anexo~\ref{anexo:ostrom}).
+\item El caso inverso es la \concepto{tragedia de los anticomunes} \parencite{Heller1998Tragedy}: cuando demasiados titulares pueden excluir a los demás de un recurso (muchas patentes que bloquean una investigación \parencite{HellerEisenberg1998Patents}), el recurso se infrautiliza.
+\item La frontera no es nítida:
+  \begin{itemize}
+  \item casi ningún bien es público puro: una carretera es no rival hasta que se congestiona;
+  \item muchos bienes «públicos» los ha provisto el sector privado cuando ha encontrado la forma de excluir.\footnote{El faro es el ejemplo de manual de bien público, pero Ronald \textcite{Coase1974Lighthouse} mostró que en Inglaterra muchos faros fueron privados durante siglos y se financiaban con un peaje que se cobraba a los barcos en el puerto: la exclusión se hacía en otro sitio. \textcite{Bertrand2006Coasean} matiza esa conclusión: el Estado intervenía en la fijación de los peajes.}
+  \end{itemize}
+\item Tampoco hay que confundirlos con los \concepto{bienes preferentes} de Richard \textcite{Musgrave1959Theory} (educación obligatoria, sanidad), que el sector público provee porque juzga que los individuos los infravaloran, no por su tecnología de consumo.
+\item En el resto del apartado nos centramos en el bien público puro.
+\end{itemize}
+
+\subsubsection{Diferencia entre la asignación competitiva y la asignación óptima}\label{sec:bienes-publicos-asignacion}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Paul \textcite{Samuelson1954Pure} obtiene la condición de eficiencia con un bien público y muestra que el mercado no la cumple. Es el problema del \emph{planificador} (el óptimo de \autor{Pareto}), no el resultado del mercado.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item 2 consumidores, $A$ y $B$; un bien privado, $X$, y un bien público puro, $G$, que los 2 consumen en la misma cantidad: $G_A=G_B=G$.
+\item La frontera de posibilidades de producción es $T(X,G)=0$, con $X=X_A+X_B$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item \emph{Óptimo de \autor{Pareto}} (problema del planificador):
+$$\optim{\max}{X_A,X_B,G}{U_A(X_A,G)}{U_B(X_B,G)=\overline{U}_B\\ T(X_A+X_B,G)=0}$$
+  De las condiciones de primer orden (anexo~\ref{anexo:samuelson}) se obtiene la \concepto{condición de \autor{Samuelson}}:
+\funcionclave[eq:samuelson]{\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}}
+  \begin{itemize}
+  \item \emph{Interpretación}: como todos consumen la misma unidad de $G$, su valor social es la \emph{suma} de lo que cada uno daría de bien privado por ella, y debe igualar lo que cuesta producirla.
+  \item Con un bien privado se igualan las valoraciones individuales entre sí \eqref{eq:egc-pareto}; con uno público, se suman.
+  \end{itemize}
+\item \emph{Desarrollo gráfico} (gráfico~\ref{fig:samuelson-eg}, a partir de \textcite{Samuelson1955Diagrammatic}):
+  \begin{itemize}
+  \item arriba, la FPP y la curva de indiferencia $\overline{U}_B$ en el plano $(G,X)$. Para cada $G$, la distancia vertical entre la FPP y $\overline{U}_B$ es el bien privado que queda para $A$ después de dejar a $B$ en su utilidad: es la \emph{frontera de posibilidades de consumo} de $A$, $\mathrm{FPC}_A$, que se lleva al gráfico de abajo;
+  \item $A$ elige el punto de $\mathrm{FPC}_A$ más alto en su mapa de indiferencia, $E$, donde su curva de indiferencia $U_A^*$ es tangente a $\mathrm{FPC}_A$;
+  \item como la pendiente de $\mathrm{FPC}_A$ es la de la FPP menos la de $\overline{U}_B$, la tangencia dice $\mathrm{RMS}^A_{GX}=\mathrm{RMT}_{GX}-\mathrm{RMS}^B_{GX}$: la condición de \autor{Samuelson};
+  \item en el óptimo los 2 consumen la misma cantidad, $G^*$, pero la valoran de forma distinta; con un bien privado, cada uno consume distinto y lo valora igual en el margen.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Provisión óptima de un bien público en equilibrio general: la condición de \autor{Samuelson}}\label{fig:samuelson-eg}
+\grafico[0.6\textwidth]{samuelson-eg}
+\fuente{elaboración propia a partir de \textcite{Samuelson1955Diagrammatic}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Equilibrio con aportaciones voluntarias}: si cada uno compra (o aporta) el bien público por su cuenta al precio $p_G$, solo tiene en cuenta su propia valoración y deja de aportar cuando $\mathrm{RMS}^i_{GX}=p_G/p_X=\mathrm{RMT}_{GX}$. Si los 2 aportan, en el margen
+  \begin{equation}\label{eq:samuelson-mercado}
+  \mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=2\,\mathrm{RMT}_{GX}>\mathrm{RMT}_{GX}:
+  \end{equation}
+  una unidad más de $G$ vale para la sociedad más de lo que cuesta, pero nadie la compra.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones: el polizón y la infraprovisión}
+\begin{itemize}
+\item El mercado provee $G$ en cantidad insuficiente: \concepto{infraprovisión}. Cada uno se beneficia de lo que aportan los demás sin pagarlo: es el \concepto{polizón} (\emph{free rider}). «Unos por otros, la casa sin barrer».
+\item En su forma más simple es un \emph{dilema del prisionero} \vertema{3.A.14}. 2 vecinos deciden si contribuyen a una mota que cuesta 120 y que cada uno valora en 100; si solo contribuye uno, la paga entera (tabla~\ref{tab:polizon}):
+  \begin{itemize}
+  \item no contribuir es una estrategia dominante para los 2: si el otro contribuye, gano 100 en vez de 40; si no, 0 en vez de $-20$;
+  \item el equilibrio es que nadie contribuye y no hay mota, aunque los 2 estarían mejor pagándola a medias.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El polizón como dilema del prisionero: la mota del río (vecino 1, filas; vecino 2, columnas; pagos netos)}\label{tab:polizon}
+\begin{tabular}{>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.8cm}|>{\centering\arraybackslash}m{2.8cm}|}
+\multicolumn{1}{c}{} & \multicolumn{1}{c}{\textbf{Contribuir}} & \multicolumn{1}{c}{\textbf{No contribuir}}\\
+\hhline{~|-|-|}
+\textbf{Contribuir} & $(40,40)$ & $(-20,\underline{100})$\\
+\hhline{~|-|-|}
+\textbf{No contribuir} & $(\underline{100},-20)$ & \cellcolor{tceesalvia}$(\underline{0},\underline{0})$\\
+\hhline{~|-|-|}
+\end{tabular}
+\fuente{elaboración propia. La mota cuesta 120 y cada vecino la valora en 100; si contribuyen los 2, pagan 60 cada uno. Subrayadas, las mejores respuestas; sombreado, el equilibrio.}
+\end{table}
+
+\paragraph{c) Extensiones}
+
+\subparagraph{i) El análisis en equilibrio parcial de \autor{Bowen}}
+\begin{itemize}
+\item Howard \textcite{Bowen1943Interpretation}, una década antes que \autor{Samuelson}, da la versión de equilibrio parcial, la que se dibuja en la pizarra (gráfico~\ref{fig:bowen}). Con utilidad cuasilineal, $\mathrm{RMS}^i_{GX}(G)$ es la disposición marginal a pagar de $i$ por el bien público, decreciente en $G$.
+\item Como todos consumen la misma cantidad, la valoración social es la \emph{suma vertical} de las disposiciones a pagar: para cada $G$ se suman los precios, no las cantidades.
+  \begin{itemize}
+  \item Con un bien privado, en cambio, la demanda de mercado es la suma \emph{horizontal}: para cada precio se suman las cantidades.
+  \item La suma vertical tiene un vértice donde la curva de un consumidor llega a cero; solo es una recta si todas las curvas cortan el eje de abscisas en el mismo punto.
+  \end{itemize}
+\item El óptimo, $G^*$, está donde la suma corta al coste marginal: $\mathrm{RMS}^A_{GX}(G^*)+\mathrm{RMS}^B_{GX}(G^*)=\mathrm{CMg}_G$, que es la condición de \autor{Samuelson} \eqref{eq:samuelson}.
+\item Si los consumidores declaran valoraciones menores que las verdaderas, $\widetilde{\mathrm{RMS}}{}^i_{GX}(G)$, la suma declarada queda por debajo y se provee $\tilde{G}<G^*$; la pérdida es el triángulo entre la suma verdadera y $\mathrm{CMg}_G$ de $\tilde{G}$ a $G^*$.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Bienes públicos en equilibrio parcial (\autor{Bowen}): suma vertical de las disposiciones a pagar e infraprovisión}\label{fig:bowen}
+\grafico[0.65\textwidth]{bowen}
+\fuente{elaboración propia a partir de \textcite{Bowen1943Interpretation}.}
+\end{figure}
+
+\subparagraph{ii) La provisión privada como equilibrio de \autor{Nash}}
+\begin{itemize}
+\item Con más detalle, el equilibrio con aportaciones voluntarias es un \emph{equilibrio de \autor{Nash}} \vertema{3.A.14}. Cada consumidor $i$ tiene una renta $\overline{W}_i$ y aporta $g_i\geq0$ al bien público, $G=g_A+g_B$; con $p_X=p_G=1$, $A$ resuelve
+$$\optim{\max}{g_A}{U_A(\overline{W}_A-g_A,\;g_A+g_B)}{g_A\geq0}$$
+  \begin{itemize}
+  \item Si aporta, $\mathrm{RMS}^A_{GX}=1$. Su \emph{función de reacción} $g_A=R_A(g_B)$ es decreciente: si el otro aporta más, él aporta menos. Las aportaciones son \emph{sustitutos estratégicos}.
+  \item En el equilibrio de \autor{Nash}, $G^{\mathrm{N}}<G^*$ (el gráfico con las funciones de reacción está en el anexo~\ref{anexo:provision-privada}).
+  \end{itemize}
+\item El modelo tiene 3 resultados conocidos:
+  \begin{itemize}
+  \item \emph{concentración}: en equilibrio suelen aportar solo los que más valoran el bien (o los más ricos), y los demás aportan cero;
+  \item \emph{neutralidad}: redistribuir renta entre quienes aportan no cambia $G^{\mathrm{N}}$ \parencites{Warr1983Private}{BergstromBlumeVarian1986Private};
+  \item \emph{expulsión}: si el Estado provee $G$ con impuestos de suma fija sobre quienes aportan, estos reducen sus aportaciones en la misma cuantía. Como en la realidad la expulsión es menor, James \textcite{Andreoni1990Impure} añade a la utilidad el placer de dar (\emph{warm glow}).
+  \end{itemize}
+\end{itemize}
+
+\paragraph{d) Evidencia empírica}
+\begin{itemize}
+\item En los experimentos de bienes públicos, los participantes aportan al principio entre el 40 y el 60~\% de su dotación, mucho más que el cero que predice el modelo, pero las aportaciones caen al repetir el juego \parencite{Ledyard1995Public}: el polizón aparece, aunque no tan puro como en la teoría.
+\end{itemize}
+
+\paragraph{e) Valoración}
+\begin{itemize}
+\item La condición de \autor{Samuelson} dice qué es eficiente, pero no cómo averiguarlo: las $\mathrm{RMS}^i_{GX}$ son información privada.
+\item El polizón tiene otra cara, el \concepto{problema de la revelación de preferencias}: si lo que paga cada uno depende de cuánto dice valorar el bien, a todos les conviene decir que lo valoran poco. Es la dificultad que tiene que resolver la intervención.
+\end{itemize}
+
+\subsubsection{Posibilidades de intervención del sector público: provisión pública}\label{sec:provision-publica}
+
+\paragraph{Idea y justificación}
+\begin{itemize}
+\item Con bienes públicos no basta corregir un precio: no hay mercado que corregir. La respuesta es la \concepto{provisión pública}, que no exige \emph{producción} pública: el Estado puede pagar a una empresa privada para que construya la mota.
+\item El sector público tiene 2 ventajas:
+  \begin{itemize}
+  \item puede guiarse por la valoración social, la suma de \eqref{eq:samuelson};
+  \item tiene el monopolio de la coacción, así que puede financiar el bien con impuestos obligatorios y acabar con el polizón en la financiación.
+  \end{itemize}
+\item Pero tiene que responder 2 preguntas:
+  \begin{itemize}
+  \item \emph{cuánto} proveer, para lo que necesita conocer las valoraciones;
+  \item \emph{cómo repartir el coste}.
+  \end{itemize}
+\item Veamos 3 respuestas: según la capacidad de pago, según el beneficio (\autor{Lindahl}) y con un mecanismo que haga revelar la verdad (\autor{Clarke}-\autor{Groves}).
+\end{itemize}
+
+\paragraph{Según la capacidad de pago}
+\begin{itemize}
+\item El coste se reparte según la renta (por ejemplo, con impuestos progresivos), con independencia de lo que cada uno diga valorar el bien. Aprovecha la financiación para redistribuir.
+\item \emph{Problema}: como lo que declaro no cambia lo que pago, me conviene exagerar. Si valoro el bien más que mi cuota, digo que lo valoro muchísimo; si menos, digo que no lo valoro nada. Las declaraciones no informan de nada.
+\end{itemize}
+
+\paragraph{Según el beneficio: los precios de \autor{Lindahl}}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item Siguiendo a Knut \textcite{Wicksell1896Finanztheoretische}, Erik \textcite{Lindahl1919Gerechtigkeit} propone que cada uno pague según lo que valora el bien: un \concepto{precio personalizado} $p^i_G$ por cada unidad de $G$. Es crear para cada consumidor un «mercado» propio del bien público.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+\begin{itemize}
+\item Un \concepto{equilibrio de \autor{Lindahl}} es un nivel $G^*$ y unos precios $p^A_G$, $p^B_G$ tales que:
+  \begin{itemize}
+  \item a su precio, cada consumidor demanda exactamente $G^*$: $\mathrm{RMS}^i_{GX}=p^i_G$;
+  \item los precios cubren el coste: $p^A_G+p^B_G=\mathrm{RMT}_{GX}$.
+  \end{itemize}
+\item Sumando, $\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}$: el equilibrio de \autor{Lindahl} cumple la condición de \autor{Samuelson} y es óptimo de \autor{Pareto}. En el gráfico~\ref{fig:bowen}, cada uno paga la altura de su curva en $G^*$.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+\begin{itemize}
+\item \emph{Ventaja}: es eficiente y justo según el principio del beneficio: nadie paga por lo que no valora.
+\item \emph{Problema}: el precio depende de lo que cada uno declara, así que vuelve el incentivo a infravalorar el bien. Y cada consumidor es el único demandante en «su» mercado, de modo que no tiene sentido suponer que acepta el precio como dado \parencite{Samuelson1954Pure}. El equilibrio de \autor{Lindahl} dice qué sería eficiente, pero no cómo averiguarlo.
+\end{itemize}
+
+\paragraph{Mecanismo de \autor{Clarke}-\autor{Groves}}
+
+\subparagraph{a) Idea}
+\begin{itemize}
+\item ¿Hay alguna regla con la que a cada uno le convenga decir la verdad? Sí: el \concepto{mecanismo de \autor{Clarke}-\autor{Groves}} \parencites{Clarke1971Multipart}{Groves1973Incentives}, una aplicación del diseño de mecanismos \vertema{3.A.14}.
+\item Cada uno paga solo si su declaración cambia la decisión, y entonces paga el daño que su voto causa a los demás. Así se enfrenta al coste social de su declaración, como un impuesto pigouviano sobre la externalidad que es su voto.
+\end{itemize}
+
+\subparagraph{b) Modelo}
+
+\hspace*{3.6em}\emph{i) Supuestos}
+
+\begin{itemize}
+\item $I$ vecinos deciden si construyen o no la mota, un bien público indivisible de coste $C$.
+\item Si se construye, cada uno paga una cuota fijada de antemano, $c_i$, con $\sum_ic_i=C$, que no depende de lo que declare.
+\item El vecino $i$ valora la mota en $v_i$, que solo él conoce; su \emph{valor neto} es $v_i-c_i$. Utilidad cuasilineal: el dinero entra sumando.
+\end{itemize}
+
+\hspace*{3.6em}\emph{ii) Desarrollo}
+
+\begin{itemize}
+\item \emph{Regla}: cada uno declara un valor $\tilde{v}_i$, que puede ser falso. La mota se construye si la suma de los valores netos declarados no es negativa, $\sum_i(\tilde{v}_i-c_i)\geq0$.
+\item \emph{Impuesto de \autor{Clarke}}: $i$ es \concepto{pivotal} (agente bisagra) si su declaración cambia la decisión respecto a la que tomarían los demás solos. Solo el pivotal paga, y paga el valor neto que pierden los demás:
+  \begin{equation}\label{eq:clarke}
+  H_i=\left|\sum_{j\neq i}(\tilde{v}_j-c_j)\right|\ \text{si }i\text{ es pivotal};\qquad H_i=0\ \text{si no lo es}.
+  \end{equation}
+\item \emph{Ejemplo: la mota de 3 vecinos} (tabla~\ref{tab:clarke-groves}). La mota cuesta 300 (miles de euros) y, si se construye, cada vecino paga 100. La valoran en 40, 150 y 170:
+  \begin{itemize}
+  \item sus valores netos son $-60$, 50 y 70, y la suma, 60, es positiva: es eficiente construirla;
+  \item si todos dicen la verdad, se construye. Sin el vecino 1, los demás suman 120 (se construiría igual): no paga; sin el 2, suman 10: tampoco paga; sin el 3, suman $-10$ (no se construiría): el 3 es pivotal y paga $H_3=10$, lo que su voto quita a los demás, y aún gana $70-10=60$;
+  \item ¿le conviene mentir al vecino 1, que no quiere la mota? Si declara un valor neto de $-200$, la suma es $-80$ y no se construye; pero entonces es pivotal (los demás suman 120) y paga 120, el doble de los 60 que se ahorra. No le compensa.
+  \end{itemize}
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{El mecanismo de \autor{Clarke}-\autor{Groves} con 3 vecinos y la mota (miles de euros)}\label{tab:clarke-groves}
+\begin{tabular}{>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{1.9cm}|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{2.1cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{1.6cm}|>{\centering\arraybackslash}m{1.6cm}}
+\rowcolor{tceeazulpalido}\textbf{Vecino} & \textbf{Valoración $v_i$} & \textbf{Cuota $c_i$} & \textbf{Valor neto $v_i-c_i$} & \textbf{Suma de los demás} & \textbf{¿Pivotal?} & \textbf{Paga $H_i$}\\ \hhline{-|-|-|-|-|-|-|}
+1 & 40 & 100 & $-60$ & 120 & no & 0\\ \hhline{-|-|-|-|-|-|-|}
+2 & 150 & 100 & 50 & 10 & no & 0\\ \hhline{-|-|-|-|-|-|-|}
+\cellcolor{tceesalmon}3 & \cellcolor{tceesalmon}170 & \cellcolor{tceesalmon}100 & \cellcolor{tceesalmon}70 & \cellcolor{tceesalmon}$-10$ & \cellcolor{tceesalmon}sí & \cellcolor{tceesalmon}10\\ \hhline{-|-|-|-|-|-|-|}
+\cellcolor{tceesalvia}\textbf{Total} & \cellcolor{tceesalvia}360 & \cellcolor{tceesalvia}300 & \cellcolor{tceesalvia}60 & \cellcolor{tceesalvia}--- & \cellcolor{tceesalvia}--- & \cellcolor{tceesalvia}10\\
+\end{tabular}
+\fuente{elaboración propia. Como la suma de los valores netos es positiva, se construye la mota; solo el vecino 3 cambia la decisión y paga lo que su voto quita a los demás.}
+\end{table}
+
+\hspace*{3.6em}\emph{iii) Implicaciones}
+
+\begin{itemize}
+\item Decir la verdad, $\tilde{v}_i=v_i$, es una \emph{estrategia (débilmente) dominante} para todos, hagan lo que hagan los demás, y la mota se construye si y solo si es eficiente.\footnote{\emph{Demostración}. Sea $S_{-i}=\sum_{j\neq i}(\tilde{v}_j-c_j)$ y $d=1$ si se construye. El impuesto puede escribirse $H_i=\max\{S_{-i},0\}-d\,S_{-i}$, de modo que la ganancia de $i$ es $d\,(v_i-c_i)-H_i=d\,[(v_i-c_i)+S_{-i}]-\max\{S_{-i},0\}$. El segundo término no depende de lo que declare $i$; el primero es máximo si $d=1$ cuando $(v_i-c_i)+S_{-i}\geq0$ y $d=0$ en otro caso, que es justo lo que decide el mecanismo cuando $i$ declara $v_i$. Ninguna mentira puede mejorar ese resultado.~\findemo}
+\item Es la idea de los mecanismos \concepto{VCG} (\autor{Vickrey}-\autor{Clarke}-\autor{Groves}): hacen pagar a cada uno el daño que su presencia causa a los demás; así, decir la verdad es una estrategia dominante. La subasta de segundo precio de \textcite{Vickrey1961Counterspeculation} es su caso más sencillo \vertema{3.A.14}.
+\end{itemize}
+
+\subparagraph{c) Valoración}
+\begin{itemize}
+\item \emph{Ventajas}: no exige que el Estado conozca las valoraciones, y la verdad es dominante, no solo un equilibrio.
+\item \emph{Limitaciones}:
+  \begin{itemize}
+  \item \emph{presupuesto no equilibrado}: la \emph{decisión} sobre la mota es eficiente, pero los impuestos de \autor{Clarke} no pueden devolverse a los vecinos sin destruir los incentivos, así que se pierden, y el resultado no es óptimo de \autor{Pareto} en sentido estricto (sobra dinero que nadie consume). \textcite{GreenLaffont1977Characterization} demuestran que es inevitable: con utilidad cuasilineal, ningún mecanismo en el que decir la verdad sea dominante decide siempre de forma eficiente y equilibra a la vez el presupuesto. Con muchos vecinos, la probabilidad de ser pivotal y el excedente son pequeños;
+  \item \emph{necesita utilidad cuasilineal}: si el impuesto cambiara la valoración del bien (efecto renta), el resultado dejaría de valer. Sin esa restricción, el teorema de \autor{Gibbard}-\autor{Satterthwaite} dice que toda regla no dictatorial es manipulable \vertema{3.A.24};
+  \item \emph{coaliciones}: 2 vecinos pueden ponerse de acuerdo para mentir y no ser pivotales;
+  \item \emph{puede parecer injusto}: el pivotal puede acabar peor que si no se hubiera votado, y la regla es difícil de explicar.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Otras formas de revelar las preferencias}
+\begin{itemize}
+\item \emph{Votación}: en la práctica, la cantidad de bien público se decide votando. Con mayoría simple gana la preferida por el votante mediano, que en general no cumple la condición de \autor{Samuelson}; la unanimidad de \autor{Wicksell} protege a cada uno, pero da poder de veto \vertema{3.A.24}.
+\item \emph{Diseño de mecanismos}: \autor{Clarke}-\autor{Groves} es un caso de la teoría de Leonid \textcite{Hurwicz1972Informationally}, Eric \autor{Maskin} y Roger \autor{Myerson} \parencite{Nobel2007HurwiczMaskinMyerson}, que recibieron el Nobel en 2007 «por haber sentado las bases de la teoría del diseño de mecanismos», que busca reglas con las que agentes con información privada que persiguen su interés lleguen a un buen resultado colectivo \vertema{3.A.14}.
+\item \emph{Cooperación repetida}: cuando los mismos individuos interactúan muchas veces, la cooperación puede sostenerse como equilibrio con la amenaza de castigar a quien no aporte (no como estrategia dominante); es la lógica de las reglas comunitarias que estudió \textcite{Ostrom1990Governing} (anexo~\ref{anexo:ostrom}).
+\item \emph{Bienes públicos locales}: Charles \textcite{Tiebout1956Pure} propone que, con movilidad, los ciudadanos revelan sus preferencias «votando con los pies»: se mudan al municipio cuya combinación de impuestos y servicios prefieren \vertema{4.B.14}.
+\item \emph{Participación}: en un experimento en 49 aldeas de Indonesia, elegir los proyectos por referéndum en lugar de en reuniones apenas cambió el proyecto elegido, pero aumentó la satisfacción de los vecinos y su disposición a contribuir \parencite{Olken2010Direct}.
+\item \emph{Valoración con datos de felicidad}: comparando la satisfacción declarada con la renta y la calidad del aire, se estima cuánta renta se cambiaría por menos contaminación \parencite{Levinson2012Valuing}.
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para ampliar}:
+\begin{itemize}
+\item Benjamin A. \textcite{Olken2010Direct}, «Direct Democracy and Local Public Goods: Evidence from a Field Experiment in Indonesia», \emph{American Political Science Review}, 104(2).
+\item Arik \textcite{Levinson2009Happiness}, «Happiness as a tool for valuing public goods», \href{https://cepr.org/voxeu/columns/happiness-tool-valuing-public-goods}{columna en VoxEU}, y su artículo \textcite{Levinson2012Valuing}.
+\end{itemize}
+\end{anotaciones}
+
+\begin{itemize}
+\item \emph{Recapitulación del bloque~\ref{sec:externalidades-bienes-publicos}}: externalidades y bienes públicos fallan por la misma razón, falta un precio. La intervención intenta crearlo (\autor{Pigou}, \autor{Coase}, los derechos de emisión, \autor{Lindahl}) o sustituirlo (estándares, provisión pública), y choca siempre con la información: el Estado no conoce los daños ni las valoraciones, y a los agentes no siempre les conviene revelarlos. Esa dificultad nos lleva al tercer bloque: los fallos del propio sector público.
+\end{itemize}
+
+
+% ==========================================================================
+\section{Los fallos del sector público}\label{sec:fallos-sector-publico}
+\minutos{6}
+
+\begin{itemize}
+\item \emph{Idea}: hemos visto que, ante un fallo de mercado, el sector público puede mejorar la eficiencia. Pero suponíamos un planificador \emph{informado}, \emph{benevolente} y capaz de \emph{comprometerse}.
+\item \emph{Conclusión anticipada}: ninguno de los 3 supuestos se cumple siempre, y por eso el fallo de mercado es una condición necesaria, pero no suficiente, para intervenir. Charles \textcite{Wolf1979Theory} los llamó «fallos del no mercado».
+\end{itemize}
+
+\begin{notaopositor}
+Este bloque es más conceptual que los anteriores y se estudia con detalle en el cuarto ejercicio \vertema{4.B.2}: aquí basta con clasificar los fallos y dar el autor y la idea de cada uno. Las preguntas del tribunal suelen ir a las externalidades y los bienes públicos, así que no conviene pasar de \tiempo{6}. En el cante:
+\begin{itemize}
+\item la condición necesaria, no suficiente, y la información (\tiempo{1});
+\item los incentivos, con un autor por agente (\tiempo{2});
+\item la inconsistencia temporal con el ejemplo de la mota y las zonas inundables (\tiempo{1,5});
+\item las soluciones en 3 grupos y el \emph{second best} (\tiempo{1,5}).
+\end{itemize}
+El gráfico de \autor{Niskanen} de la nota no se canta.
+\end{notaopositor}
+
+\subsection{Fallos del sector público}\label{sec:fallos-sp}
+
+\begin{itemize}
+\item Los agrupamos en 3 tipos, uno por cada supuesto del planificador ideal que falla:
+  \begin{itemize}
+  \item problemas de \emph{información}: el sector público no sabe lo que necesita saber;
+  \item problemas de \emph{incentivos}: quienes lo forman no son benevolentes;
+  \item problemas de \emph{compromiso}: no puede atarse las manos, la inconsistencia temporal.
+  \end{itemize}
+\item Volvemos al río: el organismo que gestiona la cuenca no conoce bien el daño de los vertidos, puede acabar sirviendo a la acería y no puede prometer de forma creíble que no construirá la mota.
+\end{itemize}
+
+\subsubsection{Problemas de información}\label{sec:problemas-informacion}
+
+\begin{itemize}
+\item El debate nace con el \emph{cálculo económico socialista} \vertema{3.A.21}:
+  \begin{itemize}
+  \item Ludwig von \textcite{Mises1920Wirtschaftsrechnung} sostiene que sin precios de mercado un planificador no puede saber qué es escaso ni asignar los recursos;
+  \item Oskar \textcite{Lange1936Socialism} responde con el \emph{socialismo de mercado}: una oficina central anuncia precios y los ajusta por prueba y error, como el subastador walrasiano;
+  \item Friedrich \textcite{Hayek1945Use} replica que el problema no es de cálculo, sino de \emph{conocimiento}: la información sobre preferencias, tecnologías y circunstancias está dispersa entre millones de personas, y los precios son el mecanismo que la resume y la transmite.
+  \end{itemize}
+\item Leonid \textcite{Hurwicz1972Informationally} convirtió esta discusión en la teoría del diseño de mecanismos: ver el mercado y la planificación como mecanismos de comunicación y preguntar cuál logra un buen resultado cuando cada uno tiene información privada y puede mentir \vertema{3.A.14}.
+\item \emph{El fallo}: el sector público no conoce el daño marginal de una externalidad, la valoración de un bien público ni los costes de una empresa regulada, y los agentes que los conocen tienen incentivos a ocultarlos. \autor{Clarke}-\autor{Groves} o el menú de contratos de la regulación \vertema{3.A.20} reducen el problema, pero con un coste: el excedente que se pierde, la renta informativa que se cede.
+\end{itemize}
+
+\subsubsection{Problemas de incentivos: la elección pública}\label{sec:problemas-incentivos}
+
+\begin{itemize}
+\item La escuela de la \concepto{elección pública} (\emph{public choice}) de \textcite{BuchananTullock1962Calculus} aplica a la política el mismo supuesto que al mercado: quienes deciden en el sector público persiguen su propio interés.\footnote{James \autor{Buchanan} recibió el Nobel en 1986 «por su desarrollo de las bases contractuales y constitucionales de la teoría de la toma de decisiones económicas y políticas» \parencite{Nobel1986Buchanan}.} Distingue 4 agentes: votantes, políticos, burócratas y grupos de presión.
+\item \emph{Votantes}: informarse cuesta tiempo y la probabilidad de decidir unas elecciones con un voto es casi nula, así que es racional no informarse: es la \concepto{ignorancia racional} \parencite{Downs1957Economic}.
+  \begin{itemize}
+  \item Votan con poca información y controlan mal a sus representantes.
+  \item Además, eligen un representante para un paquete de políticas, no deciden cada tema: la conexión entre el voto y la política es débil.
+  \end{itemize}
+\item \emph{Políticos}: buscan ser reelegidos. Con votantes miopes, expanden la economía antes de las elecciones y ajustan después: es el \concepto{ciclo político} de William \textcite{Nordhaus1975Political}.\footnote{Con expectativas racionales el ciclo no desaparece del todo, pero se traslada a la composición del presupuesto: más gasto visible antes de las elecciones \parencite{Rogoff1990Equilibrium}. Un precedente de la idea es \textcite{Kalecki1943Political}.}
+\item \emph{Burócratas}: el estudio de la burocracia empieza con Max \textcite{Weber1922Wirtschaft}, que veía en ella un cuerpo profesional que cumple su función de la mejor forma posible. La elección pública es menos optimista:
+  \begin{itemize}
+  \item su producción es difícil de medir, así que no se les puede pagar según su productividad, y no hay quiebra que expulse al ineficiente;
+  \item la falta de competencia relaja el esfuerzo: es la ineficiencia X de \textcite{Leibenstein1966Allocative} \vertema{3.A.12};
+  \item William \textcite{Niskanen1971Bureaucracy} supone que el burócrata maximiza el presupuesto de su departamento (del que dependen su poder y su prestigio) y, como conoce los costes mejor que el político que lo financia, logra un presupuesto mayor que el eficiente \vertema{4.B.2}.\footnote{El político acepta cualquier programa cuyo beneficio total $B(G)$ cubra su coste total $C(G)$. El nivel eficiente, $G^*$, iguala beneficio y coste marginales; el burócrata elige el mayor $G$ con $B(G)=C(G)$, $G'>G^*$, y todo el excedente se pierde en el exceso de tamaño.\graficonota{niskanen}}
+  \end{itemize}
+\item Llevado al Estado entero, es el \concepto{Leviatán} de \textcite{BrennanBuchanan1980Power}, que suponen un Estado que maximiza la recaudación para diseñar los límites constitucionales que lo frenen. La \concepto{ilusión fiscal}, idea de \textcite{Puviani1903Teoria} que recuperan \textcite{BuchananWagner1977Democracy}, lo facilita: los ciudadanos infravaloran los impuestos indirectos, los retenidos en origen y los aplazados mediante deuda.
+\item \emph{Grupos de presión}: dedican recursos a conseguir rentas creadas por el sector público (licencias, aranceles, monopolios legales). Esos recursos son un coste social que se suma a la distorsión: es la \concepto{búsqueda de rentas} \parencites{Tullock1967Welfare}{Krueger1974Political} \vertema{3.A.17}.\footnote{Las estimaciones de su coste son muy dispares; \textcite{Krueger1974Political} lo cifra en torno al 7~\% de la renta nacional de la India en 1964 y al 15~\% del PNB de Turquía en 1968, solo por las licencias de importación.}
+  \begin{itemize}
+  \item Mancur \textcite{Olson1965Logic} explica qué grupos ganan: la acción colectiva es un bien público para sus miembros, así que los grupos pequeños y concentrados (la acería) se organizan mejor que los grandes y dispersos (los ribereños, los consumidores).
+  \item George \textcite{Stigler1971Theory} lo aplica a la regulación: la industria regulada «demanda» regulación y los políticos la «ofrecen» a cambio de votos y recursos, de modo que el regulador acaba sirviendo a la industria. Es la \concepto{captura del regulador}, una teoría económica y no el simple trato personal entre regulador y regulados. «Hecha la ley, hecha la trampa», dice el refrán.
+  \item Sam \textcite{Peltzman1976Toward} la generaliza: el regulador reparte las rentas entre productores y consumidores para maximizar su apoyo político \vertema{3.A.20}.
+  \end{itemize}
+\end{itemize}
+
+\begin{anotaciones}
+\textbf{Para ampliar sobre la captura del regulador}:
+\begin{itemize}
+\item \textcite{ProMarket2021Stigler}, «Assessing George Stigler's Economic Theory of Regulation».
+\item El coloquio del Stigler Center «Who Will Regulate the Regulators: Stigler 50 Years Later» \parencite{StiglerCenter2021Video}.
+\end{itemize}
+\end{anotaciones}
+
+\subsubsection{Problemas de compromiso: la inconsistencia temporal}\label{sec:inconsistencia-temporal}
+
+\paragraph{a) Idea}
+\begin{itemize}
+\item Aunque el sector público estuviera bien informado y fuera benevolente, puede fallar porque no puede \emph{comprometerse}. «Prometer hasta meter y, una vez metido, olvidar lo prometido», dice el refrán.
+\item \textcite{KydlandPrescott1977Rules} muestran que una política óptima anunciada hoy puede dejar de serlo mañana, cuando los ciudadanos ya han decidido creyéndola. Un plan así es \concepto{inconsistente en el tiempo}: llegado el momento, al propio planificador le conviene cambiarlo, aunque no haya ocurrido nada imprevisto. Si los ciudadanos lo anticipan, la política anunciada no es creíble.
+\item Su propio ejemplo nos devuelve al río: el Estado anuncia que no protegerá las zonas inundables, para que nadie construya en ellas. Si se le cree, nadie construye y la mota no hace falta. Pero cuando las casas ya están, lo óptimo es construir la mota. Los agentes lo anticipan y construyen, y se acaba con casas en zona inundable y una mota pagada por todos: peor que si la regla fuera creíble.
+\end{itemize}
+
+\paragraph{b) Modelo}
+
+\subparagraph{i) Supuestos}
+\begin{itemize}
+\item 2 periodos. El sector público elige su política en cada uno, $a_1$ y $a_2$, para maximizar el bienestar social $S(x_1,x_2,a_1,a_2)$.
+\item Los agentes privados deciden $x_1$ y $x_2$ con expectativas racionales: su decisión de hoy depende de la política que esperan para mañana, $x_1=X_1(a_1,a_2)$, y $x_2=X_2(x_1,a_1,a_2)$.
+\end{itemize}
+
+\subparagraph{ii) Desarrollo}
+\begin{itemize}
+\item \emph{Con compromiso} (política óptima): el sector público elige $a_2$ en el periodo 1 y tiene en cuenta todos sus efectos, también el que tiene sobre $x_1$ a través de las expectativas:
+  \begin{equation}\label{eq:kp-optima}
+  \frac{\partial S}{\partial a_2}+\frac{\partial S}{\partial x_2}\frac{\partial X_2}{\partial a_2}+\left[\frac{\partial S}{\partial x_1}+\frac{\partial S}{\partial x_2}\frac{\partial X_2}{\partial x_1}\right]\frac{\partial X_1}{\partial a_2}=0.
+  \end{equation}
+\item \emph{Sin compromiso} (discreción): al llegar el periodo 2, $x_1$ ya está decidido. El sector público reoptimiza y olvida el último término:
+  \begin{equation}\label{eq:kp-discrecion}
+  \frac{\partial S}{\partial a_2}+\frac{\partial S}{\partial x_2}\frac{\partial X_2}{\partial a_2}=0.
+  \end{equation}
+\item Las 2 condiciones solo coinciden si $\partial X_1/\partial a_2=0$, es decir, si las decisiones de hoy no dependen de la política esperada. Si dependen, la política óptima es inconsistente en el tiempo.
+\end{itemize}
+
+\subparagraph{iii) Implicaciones}
+\begin{itemize}
+\item Los agentes anticipan el cambio y deciden $x_1$ esperando la política discrecional. El resultado es consistente, pero peor que el de la regla. Es el equilibrio de \autor{Nash} de un juego entre el Estado y el público en el que la promesa no es creíble \vertema{3.A.14}.
+\item La misma lógica aparece en:
+  \begin{itemize}
+  \item el \emph{impuesto sobre el capital}: antes de invertir conviene prometer un impuesto bajo; una vez instalado el capital, gravarlo no distorsiona, y conviene subirlo. Anticipándolo, se invierte poco \parencite{Fischer1980Dynamic};
+  \item las \emph{patentes}: una vez inventado el medicamento, conviene liberar la patente; anticipándolo, se investiga menos \parencite{KydlandPrescott1977Rules};
+  \item el \emph{precio del carbono}: el regulador promete un precio alto para que se invierta en tecnologías limpias y, hecha la inversión, le tienta bajarlo, así que la promesa no basta \parencite{HelmHepburnMash2003Credible};
+  \item los \emph{rescates y las amnistías}: la promesa de no rescatar a un banco o de no repetir una amnistía fiscal no es creíble, y los rescates esperados animan a asumir riesgos (riesgo moral, \vertema{3.A.13}): es la \emph{restricción presupuestaria blanda} \parencite{Kornai1986Soft};
+  \item la \emph{inflación}: un banco central que quiere reducir el paro tiene incentivos a crear inflación por sorpresa, y en equilibrio hay más inflación sin menos paro \parencite{BarroGordon1983Positive} \vertema{3.A.36}.
+  \end{itemize}
+\item La economía política añade un \concepto{sesgo deficitario} \vertema{3.A.39}:
+  \begin{itemize}
+  \item un gobierno que prevé perder las elecciones se endeuda para condicionar el gasto de su sucesor \parencites{PerssonSvensson1989Why}{AlesinaTabellini1990Positive};
+  \item si cada grupo o región gasta para los suyos con cargo a un presupuesto común, todos gastan de más: el problema del \emph{fondo común} \parencite{WeingastShepsleJohnsen1981Political}.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{c) Valoración}
+\begin{itemize}
+\item Las salidas son formas de comprometerse:
+  \begin{itemize}
+  \item \emph{reglas} en lugar de discreción (reglas fiscales, constitución fiscal);
+  \item \emph{delegación} en instituciones independientes con otros objetivos: bancos centrales independientes, autoridades fiscales como la AIReF \vertema{4.B.21};
+  \item \emph{reputación}, cuando el juego se repite \vertema{3.A.14}.
+  \end{itemize}
+\item La regla tiene un coste: renuncia a la flexibilidad ante perturbaciones imprevistas. El diseño institucional busca reglas con cláusulas de escape.
+\end{itemize}
+
+\subsection{Soluciones a los fallos del sector público}\label{sec:soluciones-fallos-sp}
+
+\begin{itemize}
+\item Las soluciones clásicas se agrupan en 3 familias:
+  \begin{itemize}
+  \item \emph{Incentivos y control}:
+    \begin{itemize}
+    \item ligar la retribución a la productividad, con el problema de medirla (¿se mide a un juez por el número de sentencias o por su calidad?) y de decidir quién la mide;
+    \item mejorar la supervisión y el control, aunque queda la pregunta de quién controla al controlador;
+    \item individualizar las responsabilidades, para que no se diluyan;
+    \item presupuestar en base cero, replanteando cada partida cada año, en lugar de añadir un incremento a lo del año anterior.
+    \end{itemize}
+  \item \emph{Reglas e instituciones independientes}:
+    \begin{itemize}
+    \item separar el diseño de la ejecución, por ejemplo encargando el análisis coste-beneficio a una agencia independiente, para que quien gasta no subestime los costes ni sobrestime los beneficios \vertema{4.B.6};
+    \item limitar por ley el gasto y la deuda (reglas fiscales, constitución fiscal) \vertema{4.B.2};
+    \item la independencia, que responde también a la inconsistencia temporal.
+    \end{itemize}
+  \item \emph{Competencia y mercado}:
+    \begin{itemize}
+    \item producción privada con provisión pública: el bien se sigue pagando con fondos públicos, pero lo produce quien compite por hacerlo \vertema{4.B.15};
+    \item descentralización y competencia entre jurisdicciones (\autor{Tiebout}) \vertema{4.B.14}.
+    \end{itemize}
+  \end{itemize}
+\item Ninguna elimina el fallo del todo. La pregunta correcta no es si el mercado falla, sino si la intervención, con sus propios fallos, mejora el resultado. Estamos en el terreno del \emph{segundo óptimo} (\emph{second best}): si una condición de eficiencia no puede cumplirse, acercarse a las demás no garantiza mejorar \parencite{LipseyLancaster1956General} \vertema{3.A.22}.
+\item \emph{Recapitulación}: el sector público falla por falta de información, por los incentivos de quienes lo forman y por no poder comprometerse; por eso la intervención debe compararse caso a caso con el fallo de mercado que pretende corregir.
+\end{itemize}
+
+
+% ==========================================================================
+\section*{Conclusión}
+\minutos{1}
+
+\begin{itemize}
+\item \textbf{\emph{Recapitulación}}. A modo de conclusión:
+  \begin{itemize}
+  \item El mercado competitivo es eficiente si los precios recogen todos los costes y valoraciones (1TFEB); los fallos de mercado son las situaciones en que no lo hacen.
+  \item Con \emph{externalidades}, el mercado iguala valoraciones privadas y no sociales; el sector público puede internalizarlas con impuestos y subvenciones, estándares, derechos de propiedad o mercados de derechos, que difieren en la información que exigen y en el reparto.
+  \item Con \emph{bienes públicos}, la eficiencia exige sumar las valoraciones (\autor{Samuelson}), pero cada uno tiene incentivos a ocultar la suya (el polizón). Requieren casi siempre financiación pública, aunque no necesariamente producción pública, y a veces basta con instituciones comunitarias (\autor{Ostrom}); mecanismos como \autor{Clarke}-\autor{Groves} resuelven la revelación, con un coste.
+  \item El sector público también falla, por información, por incentivos y por falta de compromiso (la inconsistencia temporal): la intervención solo se justifica si mejora el resultado del mercado.
+  \end{itemize}
+
+\item \textbf{\emph{Relevancia}}: esta comparación entre 2 imperfecciones está detrás de las grandes decisiones de política económica: cómo poner precio al carbono, cuánto gastar en investigación o defensa, cómo regular sin ser capturado y cómo dar credibilidad a las reglas fiscales y monetarias.
+
+\item \textbf{\emph{Extensiones}}:
+  \begin{itemize}
+  \item Los \emph{bienes públicos globales}, como el clima, la estabilidad financiera o la vigilancia de pandemias \vertema{3.B.31}:
+    \begin{itemize}
+    \item la condición de \autor{Samuelson} suma las valoraciones de todos los países, pero no hay un gobierno mundial que pueda cobrar impuestos, así que el polizón es entre Estados \parencite{Kindleberger1986International};
+    \item cómo se proveen depende de su \emph{tecnología de agregación}: la suma de esfuerzos (reducir emisiones), el eslabón más débil (erradicar una enfermedad) o el mejor intento (una vacuna) \parencite{Hirshleifer1983Weakest};
+    \item para el clima se proponen «clubes» con un arancel a quien no participa \parencite{Nordhaus2015Climate}, en la línea del MAFC europeo; la política española de energía y clima lo aplica \vertema{4.A.6}.
+    \end{itemize}
+  \item La elección colectiva de los bienes públicos \vertema{3.A.24}, el diseño de mecanismos \vertema{3.A.14}, la regulación \vertema{3.A.20}, el federalismo fiscal \vertema{4.B.14} y el análisis coste-beneficio \vertema{4.B.6}.
+  \end{itemize}
+
+\item \textbf{\emph{Opinión}}: ni el mercado ni el Estado son perfectos, así que hay que comparar un fallo con otro:
+  \begin{itemize}
+  \item compararlos con un ideal es la «falacia del nirvana» \parencite{Demsetz1969Information};
+  \item como insistió \textcite{Kahn1988Economics}, se trata de encontrar la mejor mezcla posible de regulación imperfecta y competencia imperfecta;
+  \item los instrumentos que menos información exigen al Estado (precios del carbono, derechos negociables, reglas creíbles) suelen ser los más robustos, y en la práctica los de precios y los de cantidades conviven, como en el RCDE con su reserva de estabilidad.
+  \end{itemize}
+
+\item \textbf{\emph{Idea final}}: «unos por otros, la casa sin barrer». La economía del bienestar explica por qué pasa y qué hacer: poner precio a lo que ensucia, repartir la escoba con reglas que hagan que a cada uno le compense barrer y no olvidar que quien reparte las escobas también necesita reglas.
+\end{itemize}
+
+\clearpage
+\appendix
+
+% ==========================================================================
+\section{Anexo: condiciones de \autor{Pareto} y equilibrio competitivo en el 2×2×2×2}\label{anexo:condiciones-2x2}
+
+\begin{itemize}
+\item Recordatorio con la notación del canon, para que las derivaciones de los anexos siguientes se lean sin otro tema; el desarrollo completo, con la demostración de los teoremas, es del tema de los teoremas del bienestar \vertema{3.A.22} y el modelo, del de equilibrio general \vertema{3.A.21}.
+\item \emph{Economía}: 2 consumidores ($A$, $B$) con utilidades $U_i(X_i,Y_i)$; 2 empresas que producen $X=F_X(L_X,K_X)$ e $Y=F_Y(L_Y,K_Y)$ con 2 factores en cantidades fijas, $L_X+L_Y=\overline{L}$ y $K_X+K_Y=\overline{K}$ \parencite{Bator1957Simple}.
+\item \emph{Óptimo de \autor{Pareto}}: el planificador maximiza la utilidad de un consumidor dada la del otro y las restricciones técnicas,
+$$\optim{\max}{X_i,Y_i,L_j,K_j}{U_A(X_A,Y_A)}{U_B(X_B,Y_B)=\overline{U}_B\\ X_A+X_B=F_X(L_X,K_X)\\ Y_A+Y_B=F_Y(L_Y,K_Y)\\ L_X+L_Y=\overline{L}\\ K_X+K_Y=\overline{K}}$$
+  Con multiplicadores $\lambda_U$ (utilidad de $B$), $\lambda_X$, $\lambda_Y$ (bienes) y $\lambda_L$, $\lambda_K$ (factores), las condiciones de primer orden dan:
+  \begin{itemize}
+  \item de los consumos: $\partial U_A/\partial X_A=\lambda_X=\lambda_U\,\partial U_B/\partial X_B$ y $\partial U_A/\partial Y_A=\lambda_Y=\lambda_U\,\partial U_B/\partial Y_B$, luego $\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\lambda_X/\lambda_Y$ (eficiencia en el intercambio);
+  \item de los factores: $\lambda_X\mathrm{PMg}^X_L=\lambda_L=\lambda_Y\mathrm{PMg}^Y_L$ y $\lambda_X\mathrm{PMg}^X_K=\lambda_K=\lambda_Y\mathrm{PMg}^Y_K$, luego $\mathrm{RMST}^X_{LK}=\mathrm{RMST}^Y_{LK}=\lambda_L/\lambda_K$ (eficiencia en la producción);
+  \item y $\lambda_X/\lambda_Y=\mathrm{PMg}^Y_L/\mathrm{PMg}^X_L=\mathrm{RMT}_{XY}$: lo que se deja de producir de $Y$ al pasar una unidad de trabajo a $X$, por unidad de $X$ (eficiencia global, $\mathrm{RMS}=\mathrm{RMT}$).~\findemo
+  \end{itemize}
+\item \emph{Equilibrio competitivo}: con precios $\vect{p}=(p_X,p_Y,w_L,w_K)$, cada consumidor iguala $\mathrm{RMS}^i_{XY}=p_X/p_Y$ y cada empresa iguala el valor del producto marginal de cada factor a su precio, $p_j\,\mathrm{PMg}^j_L=w_L$ y $p_j\,\mathrm{PMg}^j_K=w_K$. De ahí $\mathrm{RMST}^j_{LK}=w_L/w_K$ y $p_X/p_Y=\mathrm{PMg}^Y_L/\mathrm{PMg}^X_L=\mathrm{CMg}_X/\mathrm{CMg}_Y=\mathrm{RMT}_{XY}$: los precios hacen el papel de los multiplicadores ($p_X/p_Y=\lambda_X/\lambda_Y$, $w_L/w_K=\lambda_L/\lambda_K$) y se cumple \eqref{eq:egc-pareto}. Es el 1TFEB en esta economía.
+\item Si una variable de un agente entra en la utilidad o en la producción de otro (anexo~\ref{anexo:externalidad-eg}) o si un bien se consume a la vez por todos (anexo~\ref{anexo:samuelson}), las condiciones del planificador cambian y los precios ya no las reproducen.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la externalidad en equilibrio general}\label{anexo:externalidad-eg}
+
+\paragraph{Externalidad en el consumo}
+\begin{itemize}
+\item Es el problema de \ref{sec:externalidades-asignacion}. Con
+  $$\mathcal{L}=U_A(X_A,Y_A)+\lambda_1[U_B(X_B,Y_B,X_A)-\overline{U}_B]+\lambda_2[\overline{X}-X_A-X_B]+\lambda_3[\overline{Y}-Y_A-Y_B],$$
+  las condiciones de primer orden son:
+  \begin{align*}
+  \frac{\partial U_A}{\partial X_A}+\lambda_1\frac{\partial U_B}{\partial X_A}&=\lambda_2, & \lambda_1\frac{\partial U_B}{\partial X_B}&=\lambda_2,\\
+  \frac{\partial U_A}{\partial Y_A}&=\lambda_3, & \lambda_1\frac{\partial U_B}{\partial Y_B}&=\lambda_3.
+  \end{align*}
+\item Dividiendo la primera entre $\lambda_3=\partial U_A/\partial Y_A$ y usando que $\lambda_1=\lambda_3/(\partial U_B/\partial Y_B)$:
+  $$\mathrm{RMS}^A_{XY}+\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}=\frac{\lambda_2}{\lambda_3}=\frac{\partial U_B/\partial X_B}{\partial U_B/\partial Y_B}=\mathrm{RMS}^B_{XY},$$
+  que es \eqref{eq:externalidad}.~\findemo
+\item \emph{Impuesto pigouviano}: si $A$ paga $p_X+t$ por $X$, elige $\mathrm{RMS}^A_{XY}=(p_X+t)/p_Y$, y $B$, $\mathrm{RMS}^B_{XY}=p_X/p_Y$. Restando, $\mathrm{RMS}^B_{XY}-\mathrm{RMS}^A_{XY}=-t/p_Y$, que coincide con \eqref{eq:externalidad} si $t=-p_Y\,\frac{\partial U_B/\partial X_A}{\partial U_B/\partial Y_B}$: positivo si la externalidad es negativa.
+\end{itemize}
+
+\paragraph{Externalidad en la producción: la acería y la piscifactoría}
+\begin{itemize}
+\item Ahora la acería produce $X=F_X(L_X,K_X)$ y la piscifactoría $Y=F_Y(L_Y,K_Y,X)$, con $\partial F_Y/\partial X<0$: cuanto más acero, menos peces. Los consumidores no sufren nada directamente.
+\item El planificador resuelve el problema del anexo~\ref{anexo:condiciones-2x2} con $F_Y(L_Y,K_Y,F_X(L_X,K_X))$ en lugar de $F_Y(L_Y,K_Y)$. Las condiciones de los consumos no cambian ($\mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\lambda_X/\lambda_Y$); las del trabajo pasan a ser
+  $$\left(\lambda_X+\lambda_Y\frac{\partial F_Y}{\partial X}\right)\mathrm{PMg}^X_L=\lambda_L=\lambda_Y\,\mathrm{PMg}^Y_L,$$
+  porque una unidad más de trabajo en la acería da $\mathrm{PMg}^X_L$ de acero y quita $-\frac{\partial F_Y}{\partial X}\mathrm{PMg}^X_L$ de peces. Por tanto,
+  \begin{equation}\label{eq:externalidad-produccion}
+  \mathrm{RMS}^A_{XY}=\mathrm{RMS}^B_{XY}=\frac{\mathrm{PMg}^Y_L}{\mathrm{PMg}^X_L}-\frac{\partial F_Y}{\partial X}=\mathrm{RMT}_{XY}+\left|\frac{\partial F_Y}{\partial X}\right|.
+  \end{equation}
+\item \emph{Interpretación}: el coste social de una tonelada de acero, en peces, es lo que cuesta producirla (la $\mathrm{RMT}$ privada) más los peces que mata.~\findemo
+\item \emph{Equilibrio competitivo}: la acería iguala $p_X\,\mathrm{PMg}^X_L=w_L$ sin tener en cuenta los peces, y se llega a $\mathrm{RMS}_{XY}=p_X/p_Y=\mathrm{RMT}_{XY}$, por debajo de \eqref{eq:externalidad-produccion}: el acero sale demasiado barato y se produce demasiado. En equilibrio parcial, $p_Y\left|\partial F_Y/\partial X\right|$ es el coste marginal externo $\mathrm{CMgE}$ de \eqref{eq:cmgs}, y el impuesto pigouviano es $t^*=p_Y\left|\partial F_Y/\partial X\right|$ evaluado en el óptimo.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la condición de \autor{Samuelson}}\label{anexo:samuelson}
+
+\begin{itemize}
+\item Es el problema de \ref{sec:bienes-publicos-asignacion}. Con
+  $$\mathcal{L}=U_A(X_A,G)+\lambda_1[U_B(X_B,G)-\overline{U}_B]-\lambda_2\,T(X_A+X_B,G),$$
+  las condiciones de primer orden son:
+  \begin{align*}
+  \frac{\partial U_A}{\partial X_A}&=\lambda_2\frac{\partial T}{\partial X}, & \lambda_1\frac{\partial U_B}{\partial X_B}&=\lambda_2\frac{\partial T}{\partial X}, & \frac{\partial U_A}{\partial G}+\lambda_1\frac{\partial U_B}{\partial G}&=\lambda_2\frac{\partial T}{\partial G}.
+  \end{align*}
+\item La tercera tiene 2 términos de utilidad porque $G$ entra en la de los 2 consumidores: es lo que distingue al bien público. Dividiéndola entre $\lambda_2\,\partial T/\partial X$ y sustituyendo las 2 primeras:
+  $$\frac{\partial U_A/\partial G}{\partial U_A/\partial X_A}+\frac{\partial U_B/\partial G}{\partial U_B/\partial X_B}=\frac{\partial T/\partial G}{\partial T/\partial X},$$
+  es decir, $\mathrm{RMS}^A_{GX}+\mathrm{RMS}^B_{GX}=\mathrm{RMT}_{GX}$, la condición \eqref{eq:samuelson}.~\findemo
+\item Con $I$ consumidores, $\sum_{i=1}^{I}\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$. Con utilidad cuasilineal, $U_i=X_i+v_i(G)$, la condición no depende del reparto del bien privado: $\sum_iv_i'(G^*)=\mathrm{CMg}_G$ determina un único $G^*$, que es el que dibuja \autor{Bowen} (gráfico~\ref{fig:bowen}).
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: la provisión privada voluntaria como equilibrio de \autor{Nash}}\label{anexo:provision-privada}
+
+\begin{itemize}
+\item Es el modelo de \textcite{BergstromBlumeVarian1986Private}, el que se resume en \ref{sec:bienes-publicos-asignacion}. 2 vecinos con renta $\overline{W}_i$ aportan $g_i\geq0$ a la mota, $G=g_A+g_B$, con $p_X=p_G=1$. Cada uno resuelve
+$$\optim{\max}{g_i}{U_i(\overline{W}_i-g_i,\;g_i+g_j)}{g_i\geq0}$$
+  tomando como dada la aportación del otro, $g_j$.
+\item \emph{Condición de primer orden} (si aporta): $\frac{\partial U_i/\partial G}{\partial U_i/\partial X_i}=\mathrm{RMS}^i_{GX}=1$. Define la \emph{función de reacción} $g_i=R_i(g_j)$.
+  \begin{itemize}
+  \item Si $G$ y el bien privado son normales, $R_i$ es decreciente con pendiente entre $-1$ y 0: cuando el otro aporta un euro más, $i$ es más rico en $G$ y reduce su aportación, pero en menos de un euro.
+  \item El \emph{equilibrio de \autor{Nash}}, $(g_A^{\mathrm{N}},g_B^{\mathrm{N}})$, está en el corte de las 2 funciones de reacción (gráfico~\ref{fig:provision-privada}).
+  \end{itemize}
+\item \emph{Infraprovisión}: en el equilibrio cada uno cumple $\mathrm{RMS}^i_{GX}=1$, así que $\sum_i\mathrm{RMS}^i_{GX}=2>1=\mathrm{RMT}_{GX}$. Las curvas de indiferencia de los 2 que pasan por el equilibrio forman una lente de asignaciones en las que los 2 aportan más y están mejor: $G^{\mathrm{N}}<G^*$.
+\item \emph{Ejemplo con utilidad cuasilineal}, $U_i=\overline{W}_i-g_i+v_i(G)$, con $v_i$ creciente y cóncava:
+  \begin{itemize}
+  \item cada uno querría que hubiera $G_i$ tal que $v_i'(G_i)=1$, y aporta lo que falte hasta llegar ahí;
+  \item en equilibrio solo aporta quien más valora el bien, y $G^{\mathrm{N}}=\max_iG_i$ (\emph{concentración});
+  \item el óptimo cumple $\sum_iv_i'(G^*)=1$; como $v_A'(G^{\mathrm{N}})+v_B'(G^{\mathrm{N}})>1$, $G^*>G^{\mathrm{N}}$.
+  \end{itemize}
+\item \emph{Neutralidad} \parencite{Warr1983Private}: si se redistribuye renta entre quienes aportan, cada uno ajusta su aportación en la misma cuantía y $G^{\mathrm{N}}$ no cambia; por lo mismo, la provisión pública financiada con impuestos sobre quienes aportan los expulsa euro a euro, salvo que haya placer de dar \parencite{Andreoni1990Impure}.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Provisión privada de un bien público: funciones de reacción y equilibrio de \autor{Nash}}\label{fig:provision-privada}
+\grafico[0.55\textwidth]{provision-privada}
+\fuente{elaboración propia a partir de \textcite{BergstromBlumeVarian1986Private}.}
+\end{figure}
+
+% ==========================================================================
+\section{Anexo: el mecanismo de \autor{Clarke}-\autor{Groves}}\label{anexo:clarke-groves}
+
+\begin{itemize}
+\item \emph{Mecanismos de \autor{Groves}}. Con la regla de \ref{sec:provision-publica} ($d=1$ si $\sum_i(\tilde{v}_i-c_i)\geq0$), cada individuo $i$ recibe una transferencia
+  $$\tau_i=d\sum_{j\neq i}(\tilde{v}_j-c_j)+h_i(\tilde{v}_{-i}),$$
+  donde $h_i$ es cualquier función de lo que declaran los demás. Su ganancia es $d\,(v_i-c_i)+\tau_i=d\,\left[(v_i-c_i)+\sum_{j\neq i}(\tilde{v}_j-c_j)\right]+h_i(\tilde{v}_{-i})$: el excedente total con su valor verdadero, más algo que no depende de lo que declara. Como el mecanismo maximiza ese excedente con los valores declarados, a $i$ le conviene declarar la verdad: así el mecanismo decide como él querría \parencite{Groves1973Incentives}.~\findemo
+\item \emph{El pivote de \autor{Clarke}}: con $h_i(\tilde{v}_{-i})=-\max\{S_{-i},0\}$, donde $S_{-i}=\sum_{j\neq i}(\tilde{v}_j-c_j)$, la transferencia es $\tau_i=d\,S_{-i}-\max\{S_{-i},0\}\leq0$: un impuesto, $H_i=-\tau_i$, que es cero si $i$ no cambia la decisión y $|S_{-i}|$ si la cambia \parencite{Clarke1971Multipart}. Es la fórmula \eqref{eq:clarke}.
+\item \emph{El ejemplo de la mota} (tabla~\ref{tab:clarke-groves}), completo:
+  \begin{itemize}
+  \item con la verdad, se construye; el vecino 3 paga 10 y sus ganancias netas son $-60$, 50 y $70-10=60$;
+  \item el vecino 1 no puede evitar la mota sin pagar 120 (más que los 60 que pierde);
+  \item el vecino 2 no gana nada exagerando: si declara 1.000, la mota se construye igual, sigue sin ser pivotal y paga 0;
+  \item el vecino 3 no gana nada infravalorando: si declara un valor neto de 15 en lugar de 70, la suma es 5, se construye y paga lo mismo, 10; si declara menos de 10, no se construye y pierde los 60 que ganaba.
+  \end{itemize}
+\item \emph{Por qué el presupuesto no cuadra}: lo recaudado no puede devolverse a los vecinos, porque lo que recibiera cada uno dependería de lo que pagan los demás y, por tanto, de su propia declaración, y volvería el incentivo a mentir. \textcite{GreenLaffont1977Characterization} demuestran que, con utilidades cuasilineales y valoraciones sin restringir, los mecanismos de \autor{Groves} son los únicos en que decir la verdad es dominante y la decisión es eficiente, y que ninguno de ellos equilibra siempre el presupuesto. Con muchos individuos, el superávit esperado es pequeño.
+\item \emph{Relación con otros temas}: la subasta de segundo precio de \textcite{Vickrey1961Counterspeculation} es un mecanismo de \autor{Clarke} con un bien privado (quien gana paga el valor que su presencia quita al segundo) \vertema{3.A.14}; y el teorema de \autor{Gibbard}-\autor{Satterthwaite} explica por qué hace falta el dinero y la cuasilinealidad \vertema{3.A.24}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: cómo Elinor \autor{Ostrom} resolvió la tragedia de los comunes}\label{anexo:ostrom}
+
+\begin{itemize}
+\item \emph{El problema}. Un recurso común es rival y no excluible. Garrett \textcite{Hardin1968Tragedy} lo ilustró con un pasto común: a cada pastor le conviene añadir una vaca más, porque se queda todo el beneficio y reparte entre todos el daño al pasto; si todos lo hacen, el pasto se agota. Es un dilema del prisionero con muchos jugadores \vertema{3.A.14}.
+\item \emph{El modelo} \parencite{Gordon1954Economic}: con $N$ barcos en un caladero de libre acceso, la captura total es $F(N)$, creciente y cóncava, y cada barco cuesta $c$.
+  \begin{itemize}
+  \item El óptimo maximiza $F(N)-cN$: se añaden barcos hasta que la captura \emph{marginal} iguala el coste, $F'(N^*)=c$.
+  \item Con libre acceso, entran barcos mientras la captura \emph{media} cubra el coste, $F(N^L)/N^L=c$, y la renta del recurso desaparece.
+  \item Como $F$ es cóncava, la captura media supera a la marginal y $N^L>N^*$: sobreexplotación. Cada barco que entra reduce la captura de los demás y no lo tiene en cuenta: es una externalidad negativa.
+  \end{itemize}
+\item \emph{Las soluciones clásicas}: privatizar el recurso (convertirlo en bien privado) o que el Estado regule su uso (cuotas, licencias, vedas). Era una conclusión pesimista: sin una de las 2, el recurso se perdería.
+\item \emph{La aportación de \autor{Ostrom}}. Elinor \textcite{Ostrom1990Governing} documentó comunidades que gestionan sus recursos durante siglos sin privatizarlos ni depender del Estado, con reglas propias:
+  \begin{itemize}
+  \item en Törbel (Suiza), una regla de 1517 impide llevar al pasto común de verano más vacas de las que cada vecino puede alimentar en invierno, lo que liga el uso del pasto común a un coste privado \parencites[61-65]{Ostrom1990Governing}{Netting1981Balancing};
+  \item las huertas de Valencia, Murcia y Orihuela reparten el agua de riego con turnos y jueces propios, como el Tribunal de las Aguas de Valencia;
+  \item encontró acuerdos parecidos en los bosques comunales de Japón, en los sistemas de riego de Filipinas, en las pesquerías de Alanya (Turquía) y en los acuíferos de Los Ángeles.
+  \end{itemize}
+\item De esos casos extrae 8 \emph{principios de diseño} de las instituciones que funcionan \parencite[cap.~3]{Ostrom1990Governing}:
+  \begin{enumerate}
+  \item límites claros del recurso y de quién tiene derecho a usarlo;
+  \item reglas de uso adaptadas a las condiciones locales;
+  \item que quienes siguen las reglas participen en cambiarlas;
+  \item vigilancia por los propios usuarios o por quien responde ante ellos;
+  \item sanciones graduales según la gravedad y la reincidencia;
+  \item mecanismos de resolución de conflictos rápidos y baratos;
+  \item reconocimiento por las autoridades externas del derecho a organizarse;
+  \item en los recursos grandes, organización en niveles anidados.
+  \end{enumerate}
+\item Elinor \autor{Ostrom} recibió en 2009 el Nobel de Economía, compartido con Oliver \autor{Williamson}, «por su análisis de la gobernanza económica, especialmente de los bienes comunes» \parencite{Nobel2009OstromWilliamson}. Fue la primera mujer en recibirlo; su formación era de ciencia política. Antes que ella, otros premiados no eran economistas de formación, como Herbert \autor{Simon}, Nobel en 1978 \parencite{Nobel1978Simon}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: qué estudia cada tema del bloque}\label{anexo:bloque}
+
+\begin{itemize}
+\item \emph{Competencia perfecta en un mercado} \vertema{3.A.16}: equilibrio parcial, plazos y bienestar medido con excedentes; la lista común de supuestos de las estructuras de mercado.
+\item \emph{Regulación} \vertema{3.A.20}: el poder de mercado y su regulación óptima, también con información asimétrica, y la teoría positiva de la regulación (captura).
+\item \emph{Equilibrio general} \vertema{3.A.21}: la competencia perfecta en todos los mercados a la vez: excesos de demanda, ley de \autor{Walras}, existencia, unicidad y estabilidad.
+\item \emph{Teoremas del bienestar} \vertema{3.A.22}: el óptimo de \autor{Pareto}, los 2 teoremas fundamentales con todos sus supuestos y su demostración, y el \emph{second best}.
+\item \emph{Este tema}: los fallos de mercado por los que el equilibrio competitivo deja de ser eficiente (externalidades y bienes públicos), cómo puede intervenir el sector público y los fallos del propio sector público.
+\item \emph{Funciones de bienestar social y elección colectiva} \vertema{3.A.24}: cómo elegir entre los óptimos y cómo decide la sociedad (votación, teorema de \autor{Arrow}).
+\item \emph{Cambio climático} \vertema{3.B.31}: la mayor externalidad global y los acuerdos y medidas para hacerle frente.
+\item En el cuarto ejercicio, los mecanismos de decisión del sector público y la burocracia \vertema{4.B.2}, la evaluación de políticas \vertema{4.B.6}, la imposición indirecta y la fiscalidad verde \vertema{4.B.13}, el federalismo fiscal \vertema{4.B.14} y la empresa pública \vertema{4.B.15}.
+\end{itemize}
+
+% ==========================================================================
+\section{Anexo: aspectos para el test y preguntas del tribunal}\label{anexo:test}
+
+\paragraph{Trampas habituales en el test}
+\begin{itemize}
+\item El impuesto pigouviano es igual al daño marginal \emph{en el óptimo}, $t^*=\mathrm{CMgE}(q^*)$, no en el equilibrio de mercado ni el daño medio.
+\item Con información completa y una sola empresa, impuesto y estándar logran la misma eficiencia; difieren en el reparto (el impuesto recauda, el estándar deja una renta a la empresa). Con varias empresas de costes distintos, el estándar uniforme es más caro.
+\item El teorema de \autor{Coase} exige derechos bien definidos y costes de transacción nulos; la asignación de los derechos no afecta a la eficiencia, pero sí al reparto (y a la eficiencia si hay efectos renta). El nombre es de \autor{Stigler} (1966).
+\item \autor{Weitzman} (1974): con incertidumbre sobre los costes de reducir, mejor fijar la cantidad si el daño marginal es más inclinado que el coste marginal de reducción.
+\item Con bienes públicos la suma es \emph{vertical} (se suman las disposiciones a pagar para una misma cantidad); con bienes privados, horizontal.
+\item El equilibrio de \autor{Lindahl} es óptimo de \autor{Pareto}, pero no resuelve la revelación de preferencias.
+\item En \autor{Clarke}-\autor{Groves}, decir la verdad es una estrategia (débilmente) dominante y la decisión es eficiente, pero el presupuesto no se equilibra (\autor{Green} y \autor{Laffont}, 1977); solo paga el pivotal.
+\item La clasificación de los bienes por rivalidad y exclusión es de Vincent y Elinor \autor{Ostrom} (1977); los bienes de club, de \autor{Buchanan} (1965); la tragedia de los comunes, de \autor{Hardin} (1968).
+\item El simulador incluye preguntas de exámenes anteriores sobre este tema (sobre el impuesto pigouviano y el mecanismo VCG, entre otras).
+\end{itemize}
+
+\paragraph{Preguntas probables del tribunal}
+\begin{itemize}
+\item ¿Por qué con una externalidad el equilibrio competitivo no es óptimo de \autor{Pareto}? Escriba la condición de eficiencia en equilibrio general.
+\item ¿Es igual el bienestar con un impuesto pigouviano que con un estándar? ¿Y el reparto? ¿Qué pasa con varias empresas con costes de reducción distintos?
+\item ¿Por qué la asignación de los derechos no afecta a la eficiencia en el teorema de \autor{Coase}? ¿Qué papel tiene la utilidad cuasilineal?
+\item ¿Cuándo preferiría un mercado de derechos a un impuesto sobre las emisiones?
+\item ¿Por qué se suman en vertical las disposiciones a pagar por un bien público?
+\item ¿Es el equilibrio de \autor{Lindahl} óptimo de \autor{Pareto}? ¿Por qué no resuelve el problema?
+\item ¿Por qué en \autor{Clarke}-\autor{Groves} decir la verdad es dominante? ¿Por qué el resultado no es óptimo de \autor{Pareto} en sentido estricto?
+\item Ponga un ejemplo de inconsistencia temporal fuera de la política monetaria.
+\end{itemize}
+
+\paragraph{Preguntas tipo test}
+\begin{itemize}
+\item Preguntas de test sobre este tema, en el \href{https://www.victorgutierrezmarcos.es/oposicion/temario/primer-ejercicio/test/simulador.html}{simulador de test de la web}.
+\end{itemize}
+
+\bibliografia
+\end{document}
