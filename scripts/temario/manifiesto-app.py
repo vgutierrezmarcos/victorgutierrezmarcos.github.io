@@ -24,18 +24,30 @@ Por cada tema: código, título, fecha de aprobación, versión (hash corto del
 último commit que tocó sus ficheros) y, de cada fichero (pdf, docx, html,
 repaso), la ruta relativa a la raíz del repositorio, su tamaño y el hash corto
 de su contenido (la app lo usa para saber si la copia descargada sigue
-valiendo). Arriba, el commit de HEAD y las bases de descarga fijadas a ese
-commit: raw.githubusercontent.com para los ficheros y jsDelivr para los
+valiendo). Además, el esquema del PDF: sus marcadores como [nivel, título,
+página] (hasta el nivel 3), que la app enseña al lado del tema (hace falta
+pypdf; sin él, el manifiesto sale sin esquemas y avisa). Arriba, el commit de HEAD y las bases de descarga fijadas a ese
+commit: raw.githubusercontent.com para los ficheros y githack para los
 gráficos y estilos del HTML (raw los sirve como text/plain y el navegador no
-los usaría).
+los usaría; jsDelivr no sirve este repositorio, da 503).
 
 Autor: Víctor Gutiérrez Marcos
 """
+import io
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime
+
+try:
+    from pypdf import PdfReader
+except ImportError:  # sin pypdf el manifiesto sale sin esquemas
+    PdfReader = None
+
+# Hasta qué nivel de marcador entra en el esquema (0 = capítulos).
+NIVEL_MAX = 3
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 REPO = 'vgutierrezmarcos/victorgutierrezmarcos.github.io'
@@ -80,6 +92,38 @@ def titulos():
 def codigo_de(archivo):
     """3A08 → 3.A.8"""
     return f'{archivo[0]}.{archivo[1]}.{int(archivo[2:])}'
+
+
+def esquema_de(ruta):
+    """Los marcadores del PDF en HEAD, como [nivel, título, página]; [] si no hay o no se puede."""
+    if PdfReader is None:
+        return []
+    try:
+        lector = PdfReader(io.BytesIO(git('show', f'HEAD:{ruta}', binario=True)))
+    except Exception:
+        return []
+    salida = []
+
+    def recorrer(elementos, nivel):
+        for e in elementos:
+            if isinstance(e, list):
+                recorrer(e, nivel + 1)
+                continue
+            if nivel > NIVEL_MAX:
+                continue
+            try:
+                pagina = lector.get_destination_page_number(e) + 1
+            except Exception:
+                continue
+            titulo = re.sub(r'\s+', ' ', str(e.title or '')).strip()
+            if titulo:
+                salida.append([nivel, titulo, pagina])
+
+    try:
+        recorrer(lector.outline, 0)
+    except Exception:
+        return []
+    return salida
 
 
 def manifiesto():
@@ -137,6 +181,11 @@ def manifiesto():
         }
         if 'repaso' in ficheros:
             tema['repasoAprobado'] = aprobado['repaso']
+        esquema = esquema_de(ficheros['pdf']['ruta'])
+        if esquema:
+            tema['esquema'] = esquema
+        elif PdfReader is None:
+            avisos.append(f'{archivo}: sin pypdf no se saca el esquema del PDF')
         temas.append(tema)
     datos = {
         'descripcion': 'Temas revisados para la app Oposición TCEE (exclusivos de la app). '
@@ -144,7 +193,9 @@ def manifiesto():
         'rama': RAMA,
         'commit': commit,
         'raw': f'https://raw.githubusercontent.com/{REPO}/{commit}/',
-        'cdn': f'https://cdn.jsdelivr.net/gh/{REPO}@{commit}/',
+        # githack y no jsDelivr: jsDelivr devuelve 503 con este repositorio (es
+        # muy grande) y el HTML llegaba a la app sin estilos ni gráficos.
+        'cdn': f'https://rawcdn.githack.com/{REPO}/{commit}/',
         'temas': temas,
     }
     return datos, avisos
