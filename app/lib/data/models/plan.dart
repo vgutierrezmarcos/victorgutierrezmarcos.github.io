@@ -1,15 +1,25 @@
 import 'dart:math';
 
+import 'oposicion.dart';
+
 /// Modelos de planificación: cantes, convocatoria, horario y agenda por tema. Se guardan en local (Hive) y, con sesión, en Firestore
 /// bajo users/{uid}/cantes, users/{uid}/progress/plan y users/{uid}/notes.
 
 DateTime? _fecha(Object? s) => s is String ? DateTime.tryParse(s) : null;
 
 /// Identificador corto y único (no hace falta que sea criptográfico).
+///
+/// Ojo con la versión web: dart2js devuelve 0 en `1 << 32` (solo llega a 31
+/// bits), y `nextInt(0)` lanza un RangeError que tiraba cada pantalla o botón
+/// que creaba un id (cronogramas, clases, cantes…). Por eso el tope se escribe
+/// como número y no como desplazamiento.
 String nuevoId([Random? random]) {
   final r = random ?? Random();
-  return '${DateTime.now().microsecondsSinceEpoch.toRadixString(36)}${r.nextInt(1 << 32).toRadixString(36)}';
+  return '${DateTime.now().microsecondsSinceEpoch.toRadixString(36)}${r.nextInt(_topeAleatorio).toRadixString(36)}';
 }
+
+/// 2^30: cabe en un entero de la web y en el rango de [Random.nextInt].
+const _topeAleatorio = 1073741824;
 
 // ---------------------------------------------------------------------- Cantes
 

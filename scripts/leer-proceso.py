@@ -121,13 +121,24 @@ def documentos(pagina):
     return out
 
 
-def leer_oposicion(cuerpo, ctx, anio):
+def leer_oposicion(cuerpo, ctx, anio, conocidas=()):
     """Las convocatorias más recientes de un cuerpo: [(año, url, html)],
-    probando el año siguiente, el actual y los dos anteriores."""
+    probando el año siguiente, el actual y los dos anteriores.
+
+    Si no responde una página que no se conocía (la del año que viene, que
+    casi nunca existe), se sigue con las demás: solo cuenta como fallo del
+    portal que no responda una de las `conocidas`, porque entonces se
+    perdería una convocatoria y sus documentos volverían luego como novedad."""
     out = []
     for a in range(anio + 1, anio - 3, -1):
         url = PAGINA.format(anio=a, cuerpo=cuerpo)
-        pagina = descargar(url, ctx)
+        try:
+            pagina = descargar(url, ctx)
+        except ConnectionError:
+            if url in conocidas:
+                raise
+            print(f'  {url}: no responde; como no se conocía, se sigue con las demás', file=sys.stderr)
+            continue
         time.sleep(1)
         if pagina and '<h2' in pagina:
             out.append((str(a), url, pagina))
@@ -239,7 +250,7 @@ def main():
                 m = re.search(r'OEP(\d{4})', locales[op])
                 paginas = [(m.group(1) if m else '0', PAGINA.format(anio=m.group(1) if m else 0, cuerpo=cuerpo), Path(locales[op]).read_text(encoding='utf-8', errors='replace'))]
             elif args.completa or not previo.get('procesos'):
-                paginas = leer_oposicion(cuerpo, ctx, datetime.now().year)
+                paginas = leer_oposicion(cuerpo, ctx, datetime.now().year, conocidas={p['url'] for p in previo.get('procesos', [])})
             else:
                 paginas = leer_conocidas(previo, ctx)
         except (ConnectionError, Frenado) as e:
