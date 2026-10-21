@@ -271,7 +271,7 @@ class _TemaPageState extends ConsumerState<TemaPage> {
     final conSesion = ref.watch(usuarioActualProvider) != null && ref.read(serviciosProvider).firebaseDisponible;
     final estadoRevisados = widget.esRecurso ? null : ref.watch(revisadosProvider);
     final rev = estadoRevisados?.valueOrNull?.de(widget.tema.codigo);
-    final eleccion = elegirVersion(revisado: rev, conSesion: conSesion, pideAnterior: _pideAnterior);
+    final eleccion = elegirVersion(revisado: rev, conSesion: conSesion, pideAnterior: _pideAnterior, hayAnterior: widget.tema.url != null);
     // La revisada, si es la que se enseña.
     final TemaRevisado? rv = eleccion.esRevisada ? rev : null;
     final revisada = rv != null;
@@ -536,7 +536,8 @@ class _BarraRevisado extends StatelessWidget {
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.repaso), icon: const Icon(Icons.summarize_outlined, size: 18), label: const Text('Ficha de repaso')),
           if (revisado.docx != null)
             TextButton.icon(style: compacto, onPressed: () => abrir(ClaseFichero.docx), icon: const Icon(Icons.description_outlined, size: 18), label: const Text('Word')),
-          TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
+          if (eleccion.puedeCambiar)
+            TextButton.icon(style: compacto, onPressed: cambiar, icon: const Icon(Icons.history, size: 18), label: const Text('Ver versión anterior')),
         ]),
       ]);
     } else {

@@ -157,6 +157,12 @@ void main() {
       expect(e.puedeCambiar, isTrue);
     });
 
+    test('sin versión anterior, la revisada y sin «Ver versión anterior»', () {
+      final e = elegirVersion(revisado: rev, conSesion: true, pideAnterior: true, hayAnterior: false);
+      expect(e.esRevisada, isTrue);
+      expect(e.puedeCambiar, isFalse);
+    });
+
     test('sin sesión, la anterior con la invitación a entrar, aunque se pida la revisada', () {
       for (final pide in [true, false]) {
         final e = elegirVersion(revisado: rev, conSesion: false, pideAnterior: pide);

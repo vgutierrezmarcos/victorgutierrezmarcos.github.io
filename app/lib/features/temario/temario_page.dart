@@ -153,7 +153,7 @@ class _TemarioPageState extends ConsumerState<TemarioPage> {
               tooltip: 'Estudiado',
               onPressed: () => ref.read(ajustesProvider.notifier).alternarEstudiado(x.codigo),
             ),
-      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible, color: _colorDe(x.codigo)),
+      title: TextoTema(x.codigo, x.titulo, atenuado: !x.disponible && !revisado, color: _colorDe(x.codigo)),
       subtitle: Wrap(crossAxisAlignment: WrapCrossAlignment.center, runSpacing: 2, children: [
         if (revisado) const Padding(padding: EdgeInsets.only(right: 6), child: Etiqueta('Revisado · exclusivo de la app')),
         if (!x.disponible && !revisado) Padding(padding: const EdgeInsets.only(right: 6), child: Text(Oposiciones.actual.esPrincipal ? 'Sin PDF' : 'En preparación', style: context.textos.labelSmall)),
