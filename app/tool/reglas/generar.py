@@ -255,10 +255,18 @@ USUARIO = """
       // sesiones/{id}/notas/{p}): solo las escribe él (dueño de su subárbol);
       // el alumno lee las páginas que van a su nombre (alumno) y están
       // compartidas (visible). Su consulta pide exactamente eso.
+      // Con permiso de edición (editable), el alumno escribe en las páginas
+      // que ya hay (como en la pizarra compartida), sin tocar a quién van ni
+      // los permisos; crear y eliminar páginas, solo el preparador.
       match /sesiones/{id}/notas/{p} {
         allow read: if conSesionEn(%OP%)
           && resource.data.get('visible', false) == true
           && resource.data.get('alumno', '') == request.auth.uid;
+        allow update: if conSesionEn(%OP%)
+          && resource.data.get('visible', false) == true
+          && resource.data.get('alumno', '') == request.auth.uid
+          && resource.data.get('editable', false) == true
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['alumno', 'visible', 'editable']);
       }
       // Cronograma: el preparador enlazado lo ve solo si el alumno lo comparte,
       // y solo puede escribir una propuesta firmada por él, que el alumno

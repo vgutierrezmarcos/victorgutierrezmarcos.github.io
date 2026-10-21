@@ -156,7 +156,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   int _pagina = 0;
   bool _sinAcceso = false;
   String? _aviso;
-  late final String _miUid = widget.individual ? 'yo' : (ref.read(usuarioActualProvider)?.uid ?? '');
+  late final String _miUid = widget.individual ? 'yo' : (ref.read(usuarioActualProvider)?.uid ?? (widget.fuente is PizarraCompartida ? (widget.fuente! as PizarraCompartida).miUid : ''));
 
   // ------------------------------------------------------------ Herramientas
   HerramientaPizarra _herramienta = HerramientaPizarra.boligrafo;
@@ -175,8 +175,15 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   (int, Offset)? _toqueTexto;
 
   // ------------------------------------------------------------ Notas del preparador
-  // Si las notas están compartidas con el alumno.
+  // Si las notas están compartidas con el alumno y si, además, él puede escribir.
   bool _compartida = false;
+  bool _editable = false;
+
+  /// En las notas, el preparador es el dueño: crea y elimina páginas.
+  bool get _dueno => !widget.notas || _miUid == widget.preparadorUid;
+
+  /// Solo mirar: el alumno con las notas, mientras el preparador no le deje escribir.
+  bool get _soloLectura => widget.soloLectura && !_editable;
 
   /// Herramientas extra puestas en la paleta (se recuerdan en el móvil).
   Set<String> _extras = {};
@@ -359,7 +366,10 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     }
     _cambiaTrazos(() {
       _paginas = paginas;
-      if (widget.notas && paginas.isNotEmpty) _compartida = paginas.every((p) => p.visible);
+      if (widget.notas && paginas.isNotEmpty) {
+        _compartida = paginas.every((p) => p.visible);
+        _editable = _compartida && paginas.every((p) => p.editable);
+      }
       if (_pagina >= paginas.length && paginas.isNotEmpty) _pagina = paginas.length - 1;
       // Lo que ya ha confirmado el servidor deja de estar pendiente.
       final ids = {for (final p in paginas) for (final t in p.trazos) t.id};
@@ -596,7 +606,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
     _cierreDom?.cancel();
     if (_sinAcceso) return;
     final k = e.kind;
-    if (widget.soloLectura) {
+    if (_soloLectura) {
       // Solo mirar: cualquier puntero mueve la página y dos dedos la amplían.
       if (k == PointerDeviceKind.mouse && e.buttons & kPrimaryMouseButton == 0) return;
       _toques[e.pointer] = e.localPosition;
@@ -1213,19 +1223,43 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
   // ------------------------------------------------------------- Notas del preparador
 
   /// Comparte las notas con el alumno (todas las páginas, y las que vengan) o
-  /// deja de compartirlas, y lo anota en la clase.
+  /// deja de compartirlas (y de dejarle escribir), y lo anota en la clase.
   Future<void> _compartir(bool v) async {
     final pizarra = _pizarra;
     if (pizarra is! PizarraCompartida) return;
-    setState(() => _compartida = v);
+    final editableAntes = _editable;
+    setState(() {
+      _compartida = v;
+      if (!v) _editable = false;
+    });
     try {
-      await pizarra.ponerEnTodas({'visible': v});
+      await pizarra.ponerEnTodas({'visible': v, if (!v) 'editable': false});
       await widget.alCompartir?.call(v);
       if (mounted) setState(() => _avisar(v ? 'Compartidas: ${widget.otroNombre} ya las ve en su clase' : 'Ya no se comparten'));
     } catch (_) {
       if (mounted) {
         setState(() {
           _compartida = !v;
+          _editable = editableAntes;
+          _avisar('No se ha podido cambiar. ¿Hay conexión?');
+        });
+      }
+    }
+  }
+
+  /// Deja al alumno escribir en las notas (o se lo quita): a partir de ahí
+  /// funcionan como la pizarra compartida, a la vez.
+  Future<void> _permitirEdicion(bool v) async {
+    final pizarra = _pizarra;
+    if (pizarra is! PizarraCompartida) return;
+    setState(() => _editable = v);
+    try {
+      await pizarra.ponerEnTodas({'editable': v});
+      if (mounted) setState(() => _avisar(v ? '${widget.otroNombre} ya puede escribir aquí' : 'Ahora solo escribes tú'));
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _editable = !v;
           _avisar('No se ha podido cambiar. ¿Hay conexión?');
         });
       }
@@ -1628,15 +1662,15 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
       BotonBarra(icono: Icons.chevron_left, tooltip: 'Página anterior', alTocar: _pagina > 0 ? () => _irAPagina(_pagina - 1) : null),
       Text('${_pagina + 1}/$paginas', style: const TextStyle(color: tintaBarra)),
       BotonBarra(icono: Icons.chevron_right, tooltip: 'Página siguiente', alTocar: _pagina < _paginas.length - 1 ? () => _irAPagina(_pagina + 1) : null),
-      if (widget.soloLectura) ...[
+      if (_soloLectura) ...[
         BotonBarra(icono: Icons.picture_as_pdf_outlined, tooltip: 'Guardar como PDF', alTocar: _paginas.isEmpty ? null : _guardarPdf),
         if (_z > 1.01) BotonBarra(icono: Icons.fit_screen_outlined, tooltip: 'Ver la página entera', alTocar: _ajustarPagina),
       ] else ...[
-        BotonBarra(icono: Icons.note_add_outlined, tooltip: 'Nueva página', alTocar: _sinAcceso || _paginas.length >= maxPaginas ? null : _nuevaPagina),
+        if (_dueno) BotonBarra(icono: Icons.note_add_outlined, tooltip: 'Nueva página', alTocar: _sinAcceso || _paginas.length >= maxPaginas ? null : _nuevaPagina),
         _menu(),
       ],
     ]);
-    if (widget.soloLectura) {
+    if (_soloLectura) {
       // Solo mirar: sin paleta.
       return Container(
         color: fondoPizarra,
@@ -1669,8 +1703,8 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                 ),
               if (widget.individual)
                 const Text('Para practicar: no se guarda', style: TextStyle(color: Color(0x99000000), fontSize: 12))
-              else if (widget.notas)
-                // Las notas: solo las escribe el preparador; el chip las comparte.
+              else if (widget.notas && _dueno) ...[
+                // Las notas del preparador: un chip las comparte y otro deja escribir al alumno.
                 Tooltip(
                   message: 'El alumno las ve en cuanto las compartes',
                   child: FilterChip(
@@ -1681,8 +1715,22 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
                     visualDensity: VisualDensity.compact,
                     onSelected: _sinAcceso ? null : _compartir,
                   ),
-                )
-              else ...[
+                ),
+                if (_compartida) ...[
+                  const SizedBox(width: 6),
+                  Tooltip(
+                    message: 'Con permiso, los dos escribís a la vez, como en la pizarra compartida',
+                    child: FilterChip(
+                      label: Text(_editable ? '${widget.otroNombre} puede escribir' : 'Dejar escribir a ${widget.otroNombre}', style: const TextStyle(fontSize: 12)),
+                      avatar: Icon(_editable ? Icons.edit_outlined : Icons.edit_off_outlined, size: 16),
+                      selected: _editable,
+                      showCheckmark: false,
+                      visualDensity: VisualDensity.compact,
+                      onSelected: _sinAcceso ? null : _permitirEdicion,
+                    ),
+                  ),
+                ],
+              ] else ...[
                 _Leyenda(color: _miColor.withValues(alpha: 1), texto: 'Tú'),
                 const SizedBox(width: 8),
                 _Leyenda(color: _colorOtro, texto: widget.otroNombre),
@@ -1764,7 +1812,7 @@ class _PizarraPageState extends ConsumerState<PizarraPage> {
         if (_z > 1.01) MenuItemButton(leadingIcon: const Icon(Icons.fit_screen_outlined), onPressed: _ajustarPagina, child: const Text('Ver la página entera')),
         const Divider(),
         MenuItemButton(leadingIcon: const Icon(Icons.layers_clear_outlined), onPressed: _sinAcceso ? null : _borrarTodo, child: const Text('Vaciar la página')),
-        MenuItemButton(leadingIcon: const Icon(Icons.delete_outline), onPressed: _sinAcceso || _actual == null ? null : _eliminarPagina, child: const Text('Eliminar la página')),
+        if (_dueno) MenuItemButton(leadingIcon: const Icon(Icons.delete_outline), onPressed: _sinAcceso || _actual == null ? null : _eliminarPagina, child: const Text('Eliminar la página')),
       ],
       builder: (context, controller, _) => BotonBarra(
         icono: Icons.more_horiz,

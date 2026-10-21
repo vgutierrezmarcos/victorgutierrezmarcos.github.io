@@ -24,6 +24,8 @@ opositor). Norma de Víctor del 21 oct. 2026: en Novedades solo lo relevante.
 - (21 oct.) Pizarra: se puede escribir a máquina (herramienta «Texto» en el menú ···: un toque abre el cuadro; se corrige, se mueve con el lazo y se borra como un trazo)
 - (21 oct.) Notas del preparador: cada clase tiene una segunda pizarra solo del preparador, que el alumno ve en cuanto él la comparte
 - (21 oct.) En las clases del preparador, el alumno ve la misma bolsa de temas que su preparador (los estudiados más los de su cronograma, sin los que pide no cantar)
+- (21 oct.) Botón de sincronizar arriba en las pestañas principales, y deslizar hacia abajo en cualquier lista trae lo nuevo de la nube y de la web
+- (21 oct.) Notas del preparador: el preparador puede dejar escribir al opositor, y entonces los dos escriben a la vez, como en la pizarra compartida
 - (21 oct.) Cualquier pizarra (la de la clase y las notas) se guarda como PDF desde el menú ···
 - (21 oct.) En el navegador, el visor del tema ya no amplía solo al bajar con la rueda del ratón
 

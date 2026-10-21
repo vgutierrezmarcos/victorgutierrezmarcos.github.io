@@ -17,6 +17,7 @@ import '../../data/models/temario.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/boton_oposicion.dart';
 import '../../widgets/comunes.dart';
+import '../../widgets/sincronizar.dart';
 import '../plan/proceso_page.dart';
 import '../inicio/permisos_sheet.dart';
 import '../guia/guia.dart';
@@ -43,7 +44,8 @@ class MasPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: BarraWeb(title: const Text('Más'), conOposicion: true),
-      body: ListaAdaptable(
+      body: Refrescable(
+          child: ListaAdaptable(
         padding: const EdgeInsets.fromLTRB(16, 14, 16, 32),
         children: [
           Tarjeta(
@@ -197,7 +199,7 @@ class MasPage extends ConsumerWidget {
             ),
           ),
         ],
-      ),
+      )),
     );
   }
 

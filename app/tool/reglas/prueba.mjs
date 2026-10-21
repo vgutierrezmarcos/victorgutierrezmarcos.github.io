@@ -91,6 +91,14 @@ await caso('el alumno no escribe en las notas', () => assertFails(updateDoc(doc(
 await caso('…ni se comparte una página él mismo', () => assertFails(updateDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p1'), { visible: true })));
 await caso('otro opositor no lee las notas compartidas con el alumno', () => assertFails(getDoc(doc(db('pepe'), 'users/paula/sesiones/clase/notas/p2'))));
 await caso('otro preparador tampoco', () => assertFails(getDoc(doc(db('olga'), 'users/paula/sesiones/clase/notas/p2'))));
+await caso('el preparador deja escribir al alumno', () => assertSucceeds(updateDoc(doc(db('paula'), 'users/paula/sesiones/clase/notas/p2'), { editable: true })));
+await caso('…y entonces el alumno dibuja', () => assertSucceeds(updateDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p2'), { trazos: arrayUnion({ i: 'y', u: 'alu', g: 1, p: '1,1' }), updatedAt: 'x' })));
+await caso('…y cambia el papel', () => assertSucceeds(setDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p2'), { n: 2, fondo: 'rayas', updatedAt: 'x' }, { merge: true })));
+await caso('…pero no se quita el permiso ni lo cambia de dueño', () => assertFails(updateDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p2'), { editable: false })));
+await caso('…ni crea páginas', () => assertFails(setDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p9'), { n: 9, trazos: [], alumno: 'alu', visible: true, editable: true })));
+await caso('…ni las elimina', () => assertFails(deleteDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p2'))));
+await caso('…ni escribe en una no compartida aunque sea editable', () => assertFails(updateDoc(doc(db('alu'), 'users/paula/sesiones/clase/notas/p1'), { trazos: arrayUnion({ i: 'z', u: 'alu', g: 1, p: '1,1' }) })));
+await caso('otro opositor no escribe aunque sea editable', () => assertFails(updateDoc(doc(db('pepe'), 'users/paula/sesiones/clase/notas/p2'), { trazos: arrayUnion({ i: 'w', u: 'pepe', g: 1, p: '1,1' }) })));
 await caso('el alumno no lee el tema antes de su hora', () => assertFails(getDoc(doc(db('alu'), 'temasAnticipados/futuro'))));
 await caso('…y sí después', () => assertSucceeds(getDoc(doc(db('alu'), 'temasAnticipados/pasado'))));
 await caso('…pero no puede listarlos', () => assertFails(getDocs(query(collection(db('alu'), 'temasAnticipados'), where('alumno', '==', 'alu')))));

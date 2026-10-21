@@ -99,7 +99,7 @@ class _PreparadorPageState extends ConsumerState<PreparadorPage> {
     final estaSemana = sesiones.where((s) => !s.cancelado && !s.fecha.isBefore(lunes) && s.fecha.isBefore(lunes.add(const Duration(days: 7)))).length;
 
     return Scaffold(
-      appBar: const BarraWeb(title: Text('Preparador')),
+      appBar: const BarraWeb(title: Text('Preparador'), conSincronizar: true),
       body: RefreshIndicator(
         onRefresh: () async {
           await ref.read(alumnosProvider.notifier).refrescar();
