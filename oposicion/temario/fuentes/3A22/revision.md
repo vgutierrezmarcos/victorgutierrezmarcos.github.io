@@ -5,7 +5,7 @@ Revisión del 21/10/2026 (/revisartema, fase 3, integración), en 2 tandas: la p
 ## Resumen
 
 - El Word tenía ya el título de 2023, pero el contenido del anterior: los teoremas solo se mencionaban («no desarrollarlo con demostraciones») y los criterios de compensación ocupaban un bloque entero. Con la decisión **A22-01 (opción a)** el bloque 2 pasa a ser «Teoremas fundamentales de la economía del bienestar» y la compensación va entera a un anexo (anexo `anexo:compensacion`, parte 3), con una viñeta en I.3.
-- Estructura y minutos de `propuestas-coherencia.md` (§ 5): introducción 2′30″; I, 8′30″ (I.1, 1′; I.2, 6′; I.3, 1′30″); II, 9′ (II.1 y II.2, 4′30″ cada uno); III, 9′; conclusión, 1′. Total, 30′.
+- Estructura de `propuestas-coherencia.md` (§ 5). Minutos (ajustados el 21/10/2026 al añadir el equilibrio general competitivo al 1TFEB): introducción 2′30″; I, 8′ (I.1, 1′; I.2, 5′30″; I.3, 1′30″); II, 10′ (II.1, 5′30″; II.2, 4′30″); III, 8′30″ (III.1, 3′30″; III.2, 2′; III.3, 2′; III.4, 1′); conclusión, 1′. Total, 30′.
 - Bloque I: supuestos del 2×2×2×2 corregidos (como el 3.A.21), problemas de eficiencia con multiplicadores positivos, **un solo problema del planificador** con precios sombra que da las 3 condiciones (`\funcionclave`), FPP, FPU, GFPU, la FBS en mención y la valoración del criterio sin repeticiones.
 - Bloque II: equilibrio de referencia, **1TFEB** (tabla de 5 supuestos, condiciones marginales, tabla planificador/mercado, prueba por reducción al absurdo) y **2TFEB** (supuestos con convexidad y condición de renta, intuición en la caja, demostración con el hiperplano separador, límites y soluciones), con estructura a)-c).
 - Bloque III: teoría del *second best* con a)-c) (restricción no trivial, origen de la distorsión, resultado general con $\psi\neq1$, gráfico en la GFPU con F, P, Q, montaña, Davis-Whinston, Diamond-Mirrlees, Bhagwati-Ramaswami), aplicaciones rehechas, apartado nuevo de información y diseño de mecanismos (tabla `tab:mecanismos`) y valoración con la frase de Joan Robinson (A22-02, opción a). Conclusión con sus 5 bloques; la idea final retoma el refrán.
@@ -167,6 +167,22 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 
 **Datos (V)**: V2-V12, V14-V35, V39, V41 y V51 aplicadas (V26: Mishan quitado; V28: sin afirmar la retirada de la enmienda; V31: Stigler quitado). **V1 no aplicada**: la definición de Marshall alargaba un enganche que ya tiene refrán, hecho actual y pregunta (la introducción debe durar 2′30″); Marshall queda en la contextualización con el excedente. V13 (Arrow, 1951, imposibilidad), en las extensiones de la conclusión. V42 (Gaertner), no se usa. V36 y V37: las notas que las usaban se quitan.
 
+## Cambios pedidos por Víctor (21/10/2026)
+
+- **Enganche (MAFC)**: «Lo mejor sería un precio mundial del carbono» pasa a «Lo mejor sería que todo el que emite, en cualquier país, pagara lo mismo por cada tonelada de CO₂, un precio igual al daño marginal que causa, con un impuesto o con un mercado mundial de derechos de emisión; como no existe, la Unión grava en la frontera…». La expresión no se repetía en la idea final ni en otro sitio del tema (sí en `3A22.lyx`, que se regenera, y en `_trabajo/`).
+- **Tabla `tab:supuestos-1tfeb`, fila 3**: «poder de mercado \vertema{3.A.17} \vertema{3.A.18} \vertema{3.A.19}». Por coherencia, también en la viñeta del poder de mercado de la valoración del 1TFEB.
+- **El equilibrio general competitivo hilado en el 1TFEB** (II.1, `sec:primer-teorema`), redactado de nuevo a partir del desarrollo del 3.A.23 antiguo de Víctor (`tercer-ejercicio/3A23-anterior.docx`, «Construcción del modelo de Equilibrio General Competitivo»). El subapartado pasa a tener los 5 bloques de un modelo:
+  - a) *Idea*: el planificador resolvía un problema enorme; ahora cada agente resuelve el suyo mirando solo precios, y los precios reparten el trabajo del planificador;
+  - b) *Modelo: el equilibrio general competitivo 2×2×2×2*: i) supuestos (la economía de Bator de I.2 más mercados, precios dados, rentas $\overline{W}_A=w_L\overline{L}_A+w_K\overline{K}_A+\theta_{AX}B_X+\theta_{AY}B_Y$, conducta maximizadora; la tabla de 5 supuestos; lo que no hace falta y lo que se añade para derivar); ii) desarrollo en 4 pasos: consumidores (`eq:egc-consumidores`, $\mathrm{RMS}^A=p_X/p_Y=\mathrm{RMS}^B$), empresas en los factores (`eq:egc-empresas`, $\mathrm{RMST}^X=w_L/w_K=\mathrm{RMST}^Y$), empresas en los bienes (`eq:egc-global`, $p_X/p_Y=\mathrm{CMg}_X/\mathrm{CMg}_Y=\mathrm{RMT}$) y vaciado de los mercados con la ley de Walras; resultado (`eq:egc-condiciones`) comparado con \eqref{eq:condiciones-pareto} y cerrado con «es el 1TFEB en el modelo 2×2×2×2» y ∎; la tabla `tab:planificador-mercado` gana la columna «Quién la cumple» (con el paso); caja `ideaclave` (un problema con toda la información frente a 4 pequeños que solo comparten los precios); interpretación gráfica en la caja y en la GFPU; iii) implicaciones (sin cambios);
+  - c) *Extensiones*: la prueba general por reducción al absurdo (antes en el desarrollo), con $I$, $J$ y $n$ y sin derivadas, y el equilibrio con transferencias como puente con el 2TFEB;
+  - d) *Evidencia empírica* (nueva): subastas dobles de Smith (1962), Gode y Sunder (1993) con agentes de «inteligencia cero» y el Nobel de Smith (2002); claves nuevas `Smith1962Experimental`, `GodeSunder1993Allocative` (comprobadas en Crossref) y `Nobel2002Smith` (motivación comprobada en nobelprize.org);
+  - e) *Valoración* (antes c), sin cambios salvo el \vertema{3.A.18}.
+  - No se repite el problema del planificador: se remite a \eqref{eq:planificador}, a \eqref{eq:condiciones-pareto} y al anexo `anexo:planificador-pasos`.
+  - No hay ejemplo conductor en el 3.A.22 (los consumidores $A$ y $B$ y las empresas $X$ e $Y$ del 2×2×2×2 hacen de hilo), así que no se añade ninguna viñeta de ejemplo.
+  - Pregunta nueva del tribunal en `anexo:test`: qué agente cumple cada condición y para qué hace falta el vaciado.
+  - Esquema, estructura de la introducción y nota al opositor puestos al día (minutos de arriba; los 4 pasos se escriben en la pizarra debajo de las 3 condiciones).
+- **Qué debe hacer el 3.A.23** (no se toca; para su próxima pasada): su `sec:egc-teoremas` ya resume en 2 viñetas lo que hace cada agente y remite al 3.A.22; basta con que diga «(paso a paso en \vertema{3.A.22})» o similar. Su `anexo:condiciones-2x2` repite el planificador y el equilibrio como recordatorio para las derivaciones de externalidades y bienes públicos; puede quedarse así (es un recordatorio con la misma notación: $\lambda_U$, $\lambda_X$…, $p_j\,\mathrm{PMg}^j_L=w_L$), sin pasos ni tabla.
+
 ## Coherencia
 
 - Notación del canon: $\mathrm{RMS}^A_{XY}$, $\mathrm{RMST}^X_{LK}$, $\mathrm{RMT}_{XY}=\mathrm{CMg}_X/\mathrm{CMg}_Y$ positivas y en redonda (D035); $\vect{\omega}$, $\vect{\omega}'$ (D045); $F_X(L_X,K_X)$; $\overline{U}_B$; $W(U_A,U_B)$ con argumentos; λ con subíndice (D020). Símbolos locales que se proponen al canon (CC4): $\lambda_U,\lambda_X,\lambda_Y,\lambda_L,\lambda_K$ del planificador; $T_i$ (transferencias, $\sum_iT_i=0$), $V_i$, $V$ y $\mathcal{Y}$ en la demostración del 2TFEB.
@@ -180,6 +196,8 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - `mapa.yaml`: añadir al 3.A.22 los modelos `diseno-mecanismos`, `clarke-groves`, `gibbard-satterthwaite`, `industria-naciente` y `ramsey-boiteux`, y crear la ficha `criterios-compensacion` con el 3.A.22 (anexo) como tema de referencia (K33, CC1).
 
 ## Dudas abiertas
+
+- **Gode y Sunder (1993)** y **Smith (1962)**: referencias comprobadas en Crossref; el contenido («eficiencia casi completa», convergencia en pocas rondas) es el resultado conocido de los 2 artículos, sin cifra exacta ni página: no se ha leído el texto completo.
 
 - **Voltaire y el refrán** (nota del enganche): «*Le mieux est l'ennemi du bien*» en *La Bégueule* (1772). Es la atribución habitual, pero la fase de datos no la comprobó (K12 lo pedía). Si Víctor prefiere, se quita la nota.
 - **Gravelle y Rees** (juicios de valor): citados sin capítulo; los «4 juicios de valor» no se han podido comprobar en el libro (V49).
@@ -197,6 +215,8 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 
 ## Instrucciones para el vídeo
 
+- **Minutos nuevos** (21/10/2026): I, 8′; II, 10′ (II.1, 5′30″); III, 8′30″ (III.3, 2′). El guion y las escenas hay que ajustarlos.
+
 - **Enganche e idea final**: tras leer el título, «Lo mejor es enemigo de lo bueno», dice el refrán, y el MAFC como solución de segundo óptimo; pregunta: ¿asigna bien los recursos un mercado competitivo y, si una condición falla, conviene cumplir las demás? La idea final retoma el refrán: el bloque I define lo mejor, el II dice cuándo el mercado lo alcanza y el III qué es lo bueno cuando lo mejor no está al alcance. El refrán se apunta en la pizarra junto al *second best*.
 - **Introducción**: sin pizarra (modo guion).
 - **I.1**: definición en una línea en la pizarra; los 4 juicios de valor, como guion.
@@ -210,8 +230,9 @@ El tema es teórico: no hay series. Los datos cambiados son atribuciones y fecha
 - **I.3**: lista de 2 columnas «+ / −» (3 ventajas, 5 críticas) en la pizarra; la compensación y la FBS, de palabra.
 - **II.1**:
   - la tabla de supuestos `tab:supuestos-1tfeb` en la pizarra, solo con las 5 palabras clave y el fallo de cada una (el resto, apoyo);
-  - las condiciones con precios se escriben **debajo** de las 3 condiciones recuadradas de I.2, término a término, para que se vea que los precios hacen de precios sombra (la tabla planificador/mercado es el apoyo);
-  - la prueba por reducción al absurdo en 4-5 líneas cortas, con el ∎;
+  - el equilibrio general competitivo en **4 pasos**, escritos **debajo** de las 3 condiciones recuadradas de I.2, cada uno junto a la condición que cumple: (1) el problema del consumidor con su restricción presupuestaria → $\mathrm{RMS}^A=p_X/p_Y=\mathrm{RMS}^B$; (2) el beneficio de la empresa → $\mathrm{RMST}^X=w_L/w_K=\mathrm{RMST}^Y$; (3) $p_j=\mathrm{CMg}_j$ → $p_X/p_Y=\mathrm{RMT}$; (4) vaciado, de palabra. Al final se tachan los λ de las condiciones recuadradas y se escriben encima los precios: los precios hacen de precios sombra (la tabla planificador/mercado, con la columna «quién la cumple», es el apoyo); la `ideaclave`, como apunte;
+  - la prueba general por reducción al absurdo (extensiones) en 4-5 líneas cortas, con el ∎, solo si sobra tiempo; si no, de palabra;
+  - la evidencia (Smith, Gode y Sunder), de palabra, en 2 frases;
   - `caja-intercambio-teoremas` en la pizarra hasta la capa 7 (E en la curva de contrato).
 - **II.2**:
   - se completa la **misma caja** con la capa 8 ($\vect{\omega}\to\vect{\omega}'$, E′): no se dibuja otra;

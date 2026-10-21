@@ -1,0 +1,47 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Determinación del precio del derecho con 5 instalaciones de coste de reducción
+% constante por tramos (idea de Energía y Sociedad, 2022; redibujado con la notación del tema).
+% Barras de 2 de ancho: alturas 1; 1,4; 1,9; 2,6; 4. R_0=7,6 cae en la instalación 4 (6 a 8): p_E=2,6.
+\begin{tikzpicture}[tcee,
+    barra/.style={draw=tceeazul,thick,fill=tceeazul,fill opacity=0.15,text opacity=1},
+    nombre/.style={etiqueta,font=\footnotesize,align=center,text=tceeazul},
+    llamada/.style={circle,fill=tceemorado,text=white,font=\footnotesize\bfseries,inner sep=1.2pt,minimum size=4.2mm},
+    nota/.style={etiqueta,font=\footnotesize,align=left}]
+  % Capa 1: ejes
+  \capa{1}{
+    \draw[eje] (0,0) -- (10.9,0) node[right,align=left,font=\footnotesize] {reducción de\\emisiones\\(t CO$_2$)};
+    \draw[eje] (0,0) -- (0,5.6) node[left,align=right,font=\footnotesize] {coste marginal\\de reducción\\(€/t CO$_2$)};
+    \node[below left] at (0,0) {$0$};
+  }
+  % Capas 2 a 6: las instalaciones, de la más barata a la más cara
+  \capa{2}{\draw[barra] (0,0) rectangle (2,1);   \node[nombre] at (1,0.5) {Instalación\\1};}
+  \capa{3}{\draw[barra] (2,0) rectangle (4,1.4); \node[nombre] at (3,0.7) {Instalación\\2};}
+  \capa{4}{\draw[barra] (4,0) rectangle (6,1.9); \node[nombre] at (5,0.95) {Instalación\\3};}
+  \capa{5}{\draw[barra] (6,0) rectangle (8,2.6); \node[nombre] at (6.75,1.3) {Instalación\\4};}
+  \capa{6}{\draw[barra] (8,0) rectangle (10,4); \node[nombre] at (9,2) {Instalación\\5};}
+  % Capa 7: el cap fija la reducción R_0
+  \capa{7}{
+    \draw[very thick,dashed,tceerojo] (7.6,0) node[below,text=black] {$R_0$} -- (7.6,4.7);
+    \node[llamada] (n1) at (7.6,5.05) {1};
+    \node[nota,right] at (n1.east) {el \emph{cap} fija la reducción $R_0$};
+  }
+  % Capa 8: el precio del derecho
+  \capa{8}{
+    \draw[guia,thick] (0,2.6) node[left,text=black] {$p_E$} -- (6,2.6);
+    \node[punto] (P) at (7.6,2.6) {};
+    \node[llamada] (n2) at (0.45,4.15) {2};
+    \node[nota,right,text width=5.4cm] (t2) at (n2.east) {el precio del derecho lo fija el coste de la instalación que hace la última reducción necesaria};
+    \draw[->,thin] (t2.south east) ++(-0.4,0.05) to[bend left=15] (P.north west);
+  }
+  % Capa 9: quién reduce y quién compra
+  \capa{9}{
+    \draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceeverde] (0.05,-0.75) -- (5.95,-0.75);
+    \node[nota,below=6pt,align=center,text=tceeverde] at (3,-0.75) {reducen: les sale más barato\\que comprar derechos};
+    \draw[decorate,decoration={brace,amplitude=5pt,mirror},thick,tceerojo] (8.05,-0.75) -- (9.95,-0.75);
+    \node[nota,below=6pt,align=center,text=tceerojo] at (9,-0.75) {compra derechos: le sale\\más barato que reducir};
+    \node[llamada] at (7,-1.05) {3};
+  }
+\end{tikzpicture}
+\end{document}

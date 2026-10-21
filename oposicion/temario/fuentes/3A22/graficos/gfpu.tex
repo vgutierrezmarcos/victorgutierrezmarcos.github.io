@@ -5,10 +5,15 @@
 %   Curva de contrato: Y_A = 1,5 X_A Y* / ((2/3)(X* - X_A) + 1,5 X_A).
 %   E* = (1,76; 2,3095): RMS^A = RMS^B = 0,8748 = RMT; U_A = 2,0717, U_B = 2,6114.
 %   E_1 = (3; 5,421) y E_3 = (6,3; 2,615), otros 2 puntos de la FPP (solo marcados).
-% Derecha (esquemático): GFPU U_A² + U_B² = 49. FPU_k: superelipse (U_A/a)^2,5 + (U_B/b)^2,5 = 1
-%   con a = 7 cos^0,2 θ_k, b = 7 sen^0,2 θ_k: toca la GFPU solo en E*_k = 7 (cos θ_k, sen θ_k)
-%   (misma normal; es su punto más alejado del origen), con θ_k = 75°, 50° y 25°:
-%   E*_1 = (1,812; 6,761), E*_2 = (4,500; 5,362), E*_3 = (6,344; 2,958).
+% Derecha (esquemático): GFPU irregular (la envolvente no tiene por qué ser regular): spline
+%   decreciente por (0;7,45) (0,9;7,30) (1,7;6,92) (2,6;6,30) (3,6;5,64) (4,5;5,04) (5,2;4,40)
+%   (5,75;3,75) (6,2;3,05) (6,65;2,35) (7,1;1,55) (7,42;0,75) (7,52;0): tramos de distinta
+%   curvatura, uno casi recto entre E*_1 y E*_2 y un quiebro suave hacia (5,75; 3,75).
+%   FPU_k: superelipse (U_A/a)^p + (U_B/b)^p = 1 que pasa por E*_k con la pendiente de la GFPU
+%   y queda por dentro de ella en el resto (comprobado numéricamente):
+%   E*_1 = (1,786; 6,866), p = 3: a = 3,429, b = 7,224;
+%   E*_2 = (4,980; 4,622), p = 2,4: a = 6,591, b = 6,223;
+%   E*_3 = (6,806; 2,092), p = 3: a = 7,191, b = 3,917.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
 \input{../../../latex/tikz-tcee}
@@ -50,20 +55,20 @@
     % 8: ejes U_A, U_B
     \capa{8}{\ejes{$U_A$}{$U_B$}{8.4}{8.2}}
     % 9: FPU_1 con E*_1 (y E_1 en la FPP)
-    \capa{9}{\draw[curva1,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,75)},{fpuv(\t,75)})
+    \capa{9}{\draw[curva1,thick] plot[domain=89.99:0.01,samples=150,variable=\t] ({3.4289*cos(\t)^(0.6667)},{7.2243*sin(\t)^(0.6667)})
       node[etiqueta,below] {$\mathrm{FPU}_1$};}
-    \capa{9}{\node[punto,label={[etiqueta]above right:$E^*_1$}] at (1.8117,6.7615) {};}
+    \capa{9}{\node[punto,label={[etiqueta]above right:$E^*_1$}] at (1.7863,6.8664) {};}
     % 10: FPU_2, la de la caja de E, con E*_2
-    \capa{10}{\draw[curva3,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,50)},{fpuv(\t,50)});}
-    \capa{10}{\node[etiqueta,text=tceeverde,left] at (0,6.6225) {$\mathrm{FPU}_2$};}
-    \capa{10}{\node[punto,label={[etiqueta]above right:$E^*_2$}] at (4.4995,5.3623) {};}
+    \capa{10}{\draw[curva3,thick] plot[domain=89.99:0.01,samples=150,variable=\t] ({6.5911*cos(\t)^(0.8333)},{6.2227*sin(\t)^(0.8333)});}
+    \capa{10}{\node[etiqueta,text=tceeverde,left] at (0,6.2227) {$\mathrm{FPU}_2$};}
+    \capa{10}{\node[punto,label={[etiqueta]above right:$E^*_2$}] at (4.9798,4.6216) {};}
     % 11: FPU_3 con E*_3
-    \capa{11}{\draw[curva4,thick] plot[domain=89.99:0.01,samples=120,variable=\t] ({fpuu(\t,25)},{fpuv(\t,25)});}
-    \capa{11}{\node[etiqueta,text=tceedorado,left] at (0,5.6193) {$\mathrm{FPU}_3$};}
-    \capa{11}{\node[punto,label={[etiqueta]above right:$E^*_3$}] at (6.3442,2.9583) {};}
-    % 12: la GFPU, envolvente de los puntos globalmente eficientes
-    \capa{12}{\draw[curva2,line width=1.8pt] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{7*sin(\t)});}
-    \capa{12}{\node[etiqueta,text=tceeazul,anchor=south west] at (5.65,4.85) {GFPU};}
+    \capa{11}{\draw[curva4,thick] plot[domain=89.99:0.01,samples=150,variable=\t] ({7.1914*cos(\t)^(0.6667)},{3.9169*sin(\t)^(0.6667)});}
+    \capa{11}{\node[etiqueta,text=tceedorado,left] at (0,3.9169) {$\mathrm{FPU}_3$};}
+    \capa{11}{\node[punto,label={[etiqueta]above right:$E^*_3$}] at (6.8058,2.0922) {};}
+    % 12: la GFPU, envolvente de los puntos globalmente eficientes (irregular)
+    \capa{12}{\draw[curva2,line width=1.8pt] plot[smooth,tension=0.3] coordinates {(0.000,7.450) (0.078,7.449) (0.159,7.445) (0.240,7.439) (0.321,7.430) (0.399,7.420) (0.479,7.407) (0.559,7.392) (0.639,7.374) (0.715,7.355) (0.794,7.333) (0.872,7.309) (0.949,7.283) (1.025,7.256) (1.098,7.227) (1.173,7.196) (1.247,7.163) (1.321,7.128) (1.391,7.093) (1.463,7.056) (1.534,7.017) (1.605,6.977) (1.672,6.937) (1.741,6.895) (1.810,6.851) (1.878,6.807) (1.945,6.763) (2.010,6.719) (2.077,6.673) (2.143,6.626) (2.209,6.579) (2.273,6.534) (2.339,6.487) (2.405,6.439) (2.470,6.392) (2.534,6.347) (2.600,6.300) (2.667,6.253) (2.733,6.207) (2.800,6.161) (2.865,6.117) (2.932,6.072) (2.999,6.027) (3.067,5.982) (3.132,5.939) (3.200,5.895) (3.268,5.851) (3.336,5.807) (3.402,5.765) (3.470,5.722) (3.539,5.678) (3.608,5.635) (3.676,5.592) (3.743,5.551) (3.812,5.508) (3.880,5.464) (3.949,5.421) (4.015,5.379) (4.083,5.334) (4.150,5.290) (4.217,5.244) (4.282,5.200) (4.348,5.153) (4.413,5.106) (4.478,5.057) (4.542,5.007) (4.603,4.958) (4.665,4.907) (4.726,4.854) (4.787,4.801) (4.845,4.748) (4.905,4.693) (4.964,4.637) (5.022,4.581) (5.078,4.525) (5.135,4.467) (5.191,4.409) (5.247,4.350) (5.303,4.291) (5.356,4.233) (5.410,4.173) (5.463,4.112) (5.516,4.050) (5.566,3.990) (5.617,3.927) (5.666,3.863) (5.715,3.798) (5.761,3.735) (5.807,3.669) (5.853,3.602) (5.897,3.534) (5.941,3.466) (5.983,3.400) (6.026,3.331) (6.068,3.262) (6.111,3.193) (6.152,3.126) (6.195,3.058) (6.239,2.989) (6.282,2.921) (6.325,2.855) (6.369,2.787) (6.413,2.719) (6.457,2.651) (6.501,2.583) (6.544,2.518) (6.587,2.450) (6.631,2.381) (6.673,2.312) (6.714,2.246) (6.756,2.176) (6.797,2.107) (6.838,2.037) (6.877,1.969) (6.916,1.898) (6.955,1.827) (6.994,1.756) (7.032,1.684) (7.068,1.614) (7.104,1.542) (7.140,1.469) (7.175,1.396) (7.208,1.324) (7.241,1.250) (7.273,1.175) (7.303,1.100) (7.331,1.027) (7.358,0.951) (7.384,0.874) (7.407,0.796) (7.428,0.718) (7.447,0.642) (7.464,0.562) (7.479,0.482) (7.491,0.402) (7.501,0.324) (7.510,0.243) (7.515,0.162) (7.519,0.081) (7.520,0.000)};}
+    \capa{12}{\node[etiqueta,text=tceeazul,anchor=south west] at (6.1,4.35) {GFPU};}
   \end{scope}
   % E_1 y E_3 en la FPP, con su FPU; E es E_2
   \capa{9}{\node[punto,label={[etiqueta]above left:$E_1$}] at (3,5.421047) {};}

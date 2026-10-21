@@ -1,0 +1,73 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\begin{document}
+% Solo el estándar. Mismas rectas, escala y letras que externalidad-pigou.tex:
+% CMgP=0,6q; CMgE=0,2q; CMgS=0,8q; precio 3; q^*=3,75; q^c=5.
+% La oferta de la acería se quiebra en qbarra=q^*: CMgP hasta (3,75; 2,25) y vertical.
+% La recta discontinua fina de (0; 0,75) a (q^*, 3) separa A de B (es CMgP+t^*,
+% aquí sin impuesto): B+C = (p - CMgP(q^*)) q^* = 0,75*3,75 es la renta de escasez.
+% Tabla tab:estandar-bienestar: sin estándar, excedente A+B+C+D y daño C+D+E;
+% con estándar, excedente A+B+C y daño C; ganancia E.
+\begin{tikzpicture}[tcee,
+    areaA/.style={fill=tceeverde,fill opacity=0.2,draw=none},
+    areaB/.style={fill=tceerojo,fill opacity=0.2,draw=none},
+    areaC/.style={fill=tceedorado,fill opacity=0.25,draw=none},
+    areaD/.style={fill=tceeazul,fill opacity=0.2,draw=none},
+    areaE/.style={fill=tceemorado,fill opacity=0.2,draw=none},
+    letra/.style={etiqueta,font=\footnotesize}]
+  % Capa 1: ejes
+  \capa{1}{\ejes{$q$}{$p$}{7.4}{5.6}}
+  % Capa 2: precio dado
+  \capa{2}{\draw[very thick,tceenaranja] (0,3) node[left,etiqueta,text=black] {$\overline{p}$} -- (6.6,3);}
+  % Capa 3: coste marginal privado y equilibrio competitivo q^c
+  \capa{3}{\draw[curva2] (0,0) -- (6.4,3.84) node[right,etiqueta] {$\mathrm{CMgP}$};}
+  \capa{4}{
+    \node[punto] at (5,3) {};
+    \draw[guia] (5,4) -- (5,0) node[below] {$q^c$};
+  }
+  % Capa 5: coste marginal externo
+  \capa{5}{\draw[curvanueva] (0,0) -- (6.4,1.28) node[right,etiqueta] {$\mathrm{CMgE}$};}
+  % Capa 6: coste marginal social y óptimo q^*
+  \capa{6}{\draw[curva1] (0,0) -- (6.4,5.12) node[right,etiqueta] {$\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$};}
+  \capa{7}{
+    \node[punto] at (3.75,3) {};
+    \draw[guia] (3.75,3) -- (3.75,0) node[below] {$q^*$};
+  }
+  % Capa 8: estándar en q^*: la oferta sigue CMgP hasta qbarra y se hace vertical
+  \capa{8}{
+    \draw[curva4,line width=2pt] (0,0) -- (3.75,2.25) -- (3.75,5.2) node[above,etiqueta,text=tceedorado] {$\overline{q}=q^*$};
+  }
+  % Capa 9: áreas A, B, C, D y E arriba (mismas posiciones que con el impuesto)
+  \capa{9}{
+    \begin{scope}[on background layer]
+      \fill[areaA] (0,3) -- (3.75,3) -- (0,0.75) -- cycle;
+      \fill[areaB] (0,0.75) -- (3.75,3) -- (0,0) -- cycle;
+      \fill[areaC] (0,0) -- (3.75,3) -- (3.75,2.25) -- cycle;
+      \fill[areaD] (3.75,3) -- (5,3) -- (3.75,2.25) -- cycle;
+      \fill[areaE] (3.75,3) -- (5,4) -- (5,3) -- cycle;
+    \end{scope}
+    \draw[guia] (0,0.75) -- (3.75,3);
+    \node[letra,text=tceeverde] at (1.25,2.4) {$A$};
+    \node[letra,text=tceerojo] at (1.3,1.3) {$B$};
+    \node[letra,text=tceedorado] at (2.55,1.75) {$C$};
+    \node[letra,text=tceeazul] at (4.3,2.78) {$D$};
+    \node[letra,text=tceemorado] at (4.62,3.33) {$E$};
+  }
+  % Capa 10: el daño bajo CMgE: C' de 0 a q^* (el que queda) y D'+E' de q^* a q^c (el que se evita)
+  \capa{10}{
+    \begin{scope}[on background layer]
+      \fill[areaC] (0,0) -- (3.75,0) -- (3.75,0.75) -- cycle;
+      \fill[areaD] (3.75,0) -- (5,1) -- (3.75,0.75) -- cycle;
+      \fill[areaE] (3.75,0) -- (5,0) -- (5,1) -- cycle;
+    \end{scope}
+    \node[letra,text=tceedorado] at (2.6,0.24) {$C'$};
+    \node[letra,text=tceeazul] at (4.08,0.6) {$D'$};
+    \node[letra,text=tceemorado] at (4.68,0.3) {$E'$};
+  }
+  % Capa 11: la acería se queda B + C, la renta de escasez de la cuota
+  \capa{11}{
+    \draw[<-,thin] (2.8,2.24) .. controls (4.4,1.9) .. (5.45,1.95)
+      node[right,align=left,etiqueta,font=\footnotesize] {renta de escasez\\($B+C$)};
+  }
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,37 @@
+\documentclass[tikz,border=4pt]{standalone}
+\input{../../../latex/tikz-tcee}
+\usetikzlibrary{fit}
+\begin{document}
+% Esquema del funcionamiento del cap and trade (redibujado; idea de Energía y Sociedad, 2022).
+% Pensado para el ancho de página.
+\begin{tikzpicture}[tcee,
+    caja/.style={draw=tceemorado,fill=tceesalvia,rounded corners=2pt,thick,align=center,inner sep=5pt,execute at begin node={\hyphenpenalty=10000}},
+    paso/.style={->,very thick,tceemorado}]
+  % Capa 1: los 2 elementos del mecanismo
+  \capa{1}{\node[caja,text width=2.7cm] (E) at (0,0) {\textbf{Elementos del mecanismo}\\\emph{cap and trade}};}
+  % Capa 2: cap
+  \capa{2}{
+    \node[caja,text width=2.6cm] (C) at (4.3,1.25) {\textbf{\emph{Cap}}\\límite de emisiones};
+    \draw[paso] (E.north east) -- (C.west);
+  }
+  % Capa 3: trade
+  \capa{3}{
+    \node[caja,text width=2.6cm] (T) at (4.3,-1.25) {\textbf{\emph{Trade}}\\comercio de derechos};
+    \draw[paso] (E.south east) -- (T.west);
+  }
+  % Capa 4: qué hacen las instalaciones
+  \capa{4}{
+    \node[caja,text width=4.6cm,minimum height=1.3cm] (I1) at (9.5,1.05) {las instalaciones reducen emisiones para evitar comprar derechos};
+    \node[font=\large\bfseries,text=tceemorado] (mas) at (9.5,0) {$+$};
+    \node[caja,text width=4.6cm,minimum height=1.3cm] (I2) at (9.5,-1.05) {reducen las instalaciones con el menor coste de reducción};
+    \node[draw=tceemorado,very thick,rounded corners=3pt,inner sep=5pt,fit=(I1)(I2)] (I) {};
+    \draw[paso] (C.east) -- (C.east -| I.west);
+    \draw[paso] (T.east) -- (T.east -| I.west);
+  }
+  % Capa 5: el resultado
+  \capa{5}{
+    \node[caja,fill=tceemorado,text=white,text width=2.6cm] (R) at ($(I.east)+(2.2,0)$) {\textbf{Reducción de emisiones al mínimo coste}};
+    \draw[paso] (I.east) -- (R.west);
+  }
+\end{tikzpicture}
+\end{document}

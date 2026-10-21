@@ -1,8 +1,10 @@
 % Función de bienestar social y gran frontera de posibilidades de utilidad (3.A.22, I.2).
-% GFPU: U_A² + U_B² = 49 (la del gráfico gfpu). Curvas de indiferencia social de
-% W = (U_A U_B)^(1/2): U_B = k/U_A con k = W².
-% c = (4,950; 4,950), punto de felicidad: tangencia de W_3 (k = 24,5) con la GFPU.
-% d = (6,847; 1,455), en la GFPU (ángulo 12°), sobre W_1 (k = 9,963).
+% GFPU: la del gráfico gfpu (irregular, envolvente de las FPU): curva decreciente de
+%   (0; 7,45) a (7,52; 0), spline por (0;7,45) (0,9;7,30) (1,7;6,92) (2,6;6,30) (3,6;5,64)
+%   (4,5;5,04) (5,2;4,40) (5,75;3,75) (6,2;3,05) (6,65;2,35) (7,1;1,55) (7,42;0,75) (7,52;0).
+% Curvas de indiferencia social de W = (U_A U_B)^(1/2): U_B = k/U_A con k = W².
+% c = (4,929; 4,670), punto de felicidad: máximo de U_A U_B en la GFPU (k = 23,02), tangencia con W_3.
+% d = (7,118; 1,514), en la GFPU (ángulo 12°), sobre W_1 (k = 10,777).
 % a = (3,4; 5) y b = (5,6; 3,036), sobre W_2 (k = 17) y dentro de la GFPU.
 % Autor: Víctor Gutiérrez Marcos
 \documentclass[tikz,border=4pt]{standalone}
@@ -12,21 +14,21 @@
   % 1: ejes U_A, U_B
   \capa{1}{\ejes{$U_A$}{$U_B$}{9.6}{8.6}}
   % 2: la GFPU
-  \capa{2}{\draw[curva2] plot[domain=90:0,samples=150,variable=\t] ({7*cos(\t)},{7*sin(\t)});}
-  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (7.1,0.3) {GFPU};}
+  \capa{2}{\draw[curva2] plot[smooth,tension=0.3] coordinates {(0.000,7.450) (0.078,7.449) (0.159,7.445) (0.240,7.439) (0.321,7.430) (0.399,7.420) (0.479,7.407) (0.559,7.392) (0.639,7.374) (0.715,7.355) (0.794,7.333) (0.872,7.309) (0.949,7.283) (1.025,7.256) (1.098,7.227) (1.173,7.196) (1.247,7.163) (1.321,7.128) (1.391,7.093) (1.463,7.056) (1.534,7.017) (1.605,6.977) (1.672,6.937) (1.741,6.895) (1.810,6.851) (1.878,6.807) (1.945,6.763) (2.010,6.719) (2.077,6.673) (2.143,6.626) (2.209,6.579) (2.273,6.534) (2.339,6.487) (2.405,6.439) (2.470,6.392) (2.534,6.347) (2.600,6.300) (2.667,6.253) (2.733,6.207) (2.800,6.161) (2.865,6.117) (2.932,6.072) (2.999,6.027) (3.067,5.982) (3.132,5.939) (3.200,5.895) (3.268,5.851) (3.336,5.807) (3.402,5.765) (3.470,5.722) (3.539,5.678) (3.608,5.635) (3.676,5.592) (3.743,5.551) (3.812,5.508) (3.880,5.464) (3.949,5.421) (4.015,5.379) (4.083,5.334) (4.150,5.290) (4.217,5.244) (4.282,5.200) (4.348,5.153) (4.413,5.106) (4.478,5.057) (4.542,5.007) (4.603,4.958) (4.665,4.907) (4.726,4.854) (4.787,4.801) (4.845,4.748) (4.905,4.693) (4.964,4.637) (5.022,4.581) (5.078,4.525) (5.135,4.467) (5.191,4.409) (5.247,4.350) (5.303,4.291) (5.356,4.233) (5.410,4.173) (5.463,4.112) (5.516,4.050) (5.566,3.990) (5.617,3.927) (5.666,3.863) (5.715,3.798) (5.761,3.735) (5.807,3.669) (5.853,3.602) (5.897,3.534) (5.941,3.466) (5.983,3.400) (6.026,3.331) (6.068,3.262) (6.111,3.193) (6.152,3.126) (6.195,3.058) (6.239,2.989) (6.282,2.921) (6.325,2.855) (6.369,2.787) (6.413,2.719) (6.457,2.651) (6.501,2.583) (6.544,2.518) (6.587,2.450) (6.631,2.381) (6.673,2.312) (6.714,2.246) (6.756,2.176) (6.797,2.107) (6.838,2.037) (6.877,1.969) (6.916,1.898) (6.955,1.827) (6.994,1.756) (7.032,1.684) (7.068,1.614) (7.104,1.542) (7.140,1.469) (7.175,1.396) (7.208,1.324) (7.241,1.250) (7.273,1.175) (7.303,1.100) (7.331,1.027) (7.358,0.951) (7.384,0.874) (7.407,0.796) (7.428,0.718) (7.447,0.642) (7.464,0.562) (7.479,0.482) (7.491,0.402) (7.501,0.324) (7.510,0.243) (7.515,0.162) (7.519,0.081) (7.520,0.000)};}
+  \capa{2}{\node[etiqueta,text=tceeazul,anchor=south west] at (7.6,0.3) {GFPU};}
   % 3: curvas de indiferencia social
-  \capa{3}{\draw[curva4,thick] plot[domain=1.25:8.2,samples=100] (\x,{9.963/\x})
+  \capa{3}{\draw[curva4,thick] plot[domain=1.35:8.2,samples=100] (\x,{10.777/\x})
     node[etiqueta,right,text=black] {$W(U_A,U_B)=W_1$};}
   \capa{3}{\draw[curva4,thick] plot[domain=2.15:8.2,samples=100] (\x,{17/\x})
     node[etiqueta,right,text=black] {$W_2$};}
-  \capa{3}{\draw[curva4,thick] plot[domain=3.1:8.2,samples=100] (\x,{24.5/\x})
+  \capa{3}{\draw[curva4,thick] plot[domain=2.95:8.2,samples=100] (\x,{23.019/\x})
     node[etiqueta,right,text=black] {$W_3$};}
   % 4: el punto de felicidad c
-  \capa{4}{\node[punto,label={[etiqueta]below left:$c$}] (c) at (4.9497,4.9497) {};}
+  \capa{4}{\node[punto,label={[etiqueta]below left:$c$}] (c) at (4.9293,4.6700) {};}
   \capa{4}{\node[etiqueta,anchor=south west] at (5.6,6.1) {punto de felicidad};}
   \capa{4}{\draw[->,thin] (5.9,6.05) -- (5.15,5.2);}
   % 5: d, eficiente pero muy desigual, sobre W_1
-  \capa{5}{\node[punto,label={[etiqueta]above right:$d$}] at (6.8471,1.4554) {};}
+  \capa{5}{\node[punto,label={[etiqueta]above right:$d$}] at (7.1178,1.5141) {};}
   % 6: a y b sobre W_2 (dentro de la frontera)
   \capa{6}{\node[punto,label={[etiqueta]below left:$a$}] at (3.4,5) {};}
   \capa{6}{\node[punto,label={[etiqueta]below left:$b$}] at (5.6,3.0357) {};}

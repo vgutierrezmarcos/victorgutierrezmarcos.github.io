@@ -55,7 +55,7 @@
   \begin{itemize}
   \item En el bloque~\ref{sec:optimalidad-fallos} recordamos por qué el equilibrio competitivo es eficiente y qué supuestos lo sostienen: cada fallo de mercado es uno de esos supuestos que no se cumple.
   \item En el bloque~\ref{sec:externalidades-bienes-publicos}, el núcleo, estudiamos los 2 fallos del título: en qué se aparta el equilibrio del óptimo y cómo puede intervenir el sector público, primero con las externalidades y después con los bienes públicos.
-  \item En el bloque~\ref{sec:fallos-sector-publico}, los fallos del propio sector público (de información, de incentivos y de compromiso), que hacen de los fallos de mercado una condición necesaria, pero no suficiente, para intervenir.
+  \item En el bloque~\ref{sec:fallos-sector-publico}, los fallos del propio sector público (de información, de incentivos y del proceso político, y de compromiso), que hacen de los fallos de mercado una condición necesaria, pero no suficiente, para intervenir.
   \end{itemize}
 \end{itemize}
 
@@ -70,7 +70,7 @@ II. Externalidades y bienes públicos\\
 \hspace*{1.5em}1. Externalidades: $\mathrm{CMgS}=\mathrm{CMgP}+\mathrm{CMgE}$; \autor{Pigou}, estándares, \autor{Coase}, derechos de emisión, integración\\
 \hspace*{1.5em}2. Bienes públicos: $\sum_i\mathrm{RMS}^i_{GX}=\mathrm{RMT}_{GX}$; polizón; provisión pública, \autor{Lindahl}, \autor{Clarke}-\autor{Groves}\\
 III. Los fallos del sector público\\
-\hspace*{1.5em}1. Información, incentivos y compromiso (inconsistencia temporal)\\
+\hspace*{1.5em}1. \autor{Wolf} y \autor{Stiglitz}; información, incentivos y proceso político (votante mediano, \autor{Condorcet}), compromiso\\
 \hspace*{1.5em}2. Soluciones\\
 Conclusión
 \end{esquema}
@@ -80,15 +80,16 @@ Reparto del cante:
 \begin{itemize}
 \item introducción, \tiempo{2,5};
 \item I, \tiempo{3} (I.1, \tiempo{0,5}; I.2, \tiempo{1}; I.3, \tiempo{1,5});
-\item II, \tiempo{17,5} (II.1, \tiempo{9}; II.2, \tiempo{8,5});
-\item III, \tiempo{6} (III.1, \tiempo{4,5}; III.2, \tiempo{1,5});
+\item II, \tiempo{17} (II.1, \tiempo{9}; II.2, \tiempo{8});
+\item III, \tiempo{6,5} (III.1, \tiempo{5}; III.2, \tiempo{1,5});
 \item conclusión, \tiempo{1}.
 \end{itemize}
 El peso está en el bloque~\ref{sec:externalidades-bienes-publicos}, que es el título; el bloque~\ref{sec:optimalidad-fallos} solo recuerda lo necesario de la economía del bienestar, que tiene su propio tema. Los gráficos imprescindibles son:
 \begin{itemize}
 \item la tabla de los fallos (tabla~\ref{tab:fallos-supuestos});
-\item el de la externalidad con el impuesto y el estándar (gráficos~\ref{fig:externalidad} y~\ref{fig:externalidad-intervencion});
-\item el de \autor{Coase} (gráfico~\ref{fig:coase});
+\item el de la externalidad, con el impuesto y el estándar (gráficos~\ref{fig:externalidad}, \ref{fig:externalidad-pigou} y~\ref{fig:externalidad-estandar});
+\item el de \autor{Coase}, con las mismas áreas (gráfico~\ref{fig:coase-externalidad});
+\item el de las instalaciones del \emph{cap and trade} (gráfico~\ref{fig:cap-and-trade-instalaciones});
 \item la clasificación de los bienes (tabla~\ref{tab:rivalidad-exclusion});
 \item el de \autor{Bowen} (gráfico~\ref{fig:bowen});
 \item el ejemplo de \autor{Clarke}-\autor{Groves} (tabla~\ref{tab:clarke-groves}).
@@ -211,7 +212,7 @@ Sin demostraciones: son del tema de los teoremas del bienestar.
 
 % ==========================================================================
 \section{Externalidades y bienes públicos}\label{sec:externalidades-bienes-publicos}
-\minutos{17,5}
+\minutos{17}
 
 \begin{itemize}
 \item \emph{Idea}: una vez visto qué rompe cada fallo de mercado, estudiamos los 2 que son objeto de esta exposición. Para cada uno, 3 pasos:
@@ -231,9 +232,9 @@ En el cante:
 \item definición y clasificación con la acería y la piscifactoría (\tiempo{1});
 \item la condición de óptimo en equilibrio general en palabras y el gráfico de la externalidad (gráfico~\ref{fig:externalidad}) (\tiempo{2});
 \item la justificación (\tiempo{0,5});
-\item \autor{Pigou} y los estándares como capas del mismo gráfico (gráfico~\ref{fig:externalidad-intervencion}) (\tiempo{2});
-\item \autor{Coase} con su gráfico (gráfico~\ref{fig:coase}) (\tiempo{2});
-\item el mercado de derechos y \autor{Weitzman} de palabra, con el dato del RCDE (\tiempo{1});
+\item \autor{Pigou} y los estándares como capas del mismo dibujo, que el documento separa en 2 gráficos (gráficos~\ref{fig:externalidad-pigou} y~\ref{fig:externalidad-estandar}) (\tiempo{2});
+\item \autor{Coase} sobre ese mismo dibujo, con sus áreas (gráfico~\ref{fig:coase-externalidad}) (\tiempo{1,5});
+\item el mercado de derechos con las instalaciones en escalones (gráfico~\ref{fig:cap-and-trade-instalaciones}), \autor{Weitzman} de palabra y el dato del RCDE (\tiempo{1,5});
 \item la integración (\tiempo{0,5}).
 \end{itemize}
 Las tablas de excedentes y las condiciones de primer orden no se cantan.
@@ -369,17 +370,26 @@ El análisis riguroso de las externalidades es de equilibrio general, pero en la
 \subparagraph{b) Modelo}
 \begin{itemize}
 \item La acería maximiza $\overline{p}\,q-C(q)-t^*q$; su condición de primer orden es $\overline{p}=\mathrm{CMgP}(q)+t^*$, que se cumple justo en $q^*$, porque allí $\overline{p}=\mathrm{CMgP}(q^*)+\mathrm{CMgE}(q^*)$.
-\item Gráficamente, el impuesto desplaza el coste marginal privado hasta $\mathrm{CMgP}+t^*$, que corta al precio en el óptimo (gráfico~\ref{fig:externalidad-intervencion}).
-\item Con una externalidad positiva, la solución simétrica es una \emph{subvención} por unidad igual al beneficio marginal externo en el óptimo.
-\item \emph{Bienestar} (tabla~\ref{tab:pigou-bienestar}): el impuesto recupera la pérdida $E$ y, además, recauda $B+C$ ($=t^*q^*$), que puede sustituir a otros impuestos distorsionantes: es el \concepto{doble dividendo} \vertema{4.B.13}.
+\item Gráficamente, el impuesto desplaza el coste marginal privado hasta $\mathrm{CMgP}+t^*$, que corta al precio en el óptimo (gráfico~\ref{fig:externalidad-pigou}). Las áreas son las del gráfico de la externalidad:
+  \begin{itemize}
+  \item la acería se queda con $A$, el excedente entre el precio y $\mathrm{CMgP}+t^*$ hasta $q^*$;
+  \item el Estado recauda $B+C$ ($=t^*q^*$), la franja entre $\mathrm{CMgP}$ y $\mathrm{CMgP}+t^*$;
+  \item la piscifactoría sufre $C$, el daño de las unidades hasta $q^*$;
+  \item y se recupera $E$, la pérdida de eficiencia de las unidades entre $q^*$ y $q^c$.
+  \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{La intervención frente a la externalidad: impuesto pigouviano y estándar}\label{fig:externalidad-intervencion}
-\grafico[0.75\textwidth]{externalidad-intervencion}
+\caption{El impuesto pigouviano: la acería produce el óptimo y el Estado recauda $B+C$}\label{fig:externalidad-pigou}
+\grafico[0.75\textwidth]{externalidad-pigou}
 \fuente{elaboración propia a partir de \textcite{Pigou1920Economics} y \textcite[cap.~4]{BaumolOates1988Theory}. Las áreas con prima, bajo $\mathrm{CMgE}$, miden lo mismo que las que llevan su letra sin prima: el daño a la piscifactoría es $C'+D'+E'=C+D+E$ y la recaudación, $t^*q^*=B'+C'=B+C$.}
 \end{figure}
+
+\begin{itemize}
+\item Con una externalidad positiva, la solución simétrica es una \emph{subvención} por unidad igual al beneficio marginal externo en el óptimo.
+\item \emph{Bienestar} (tabla~\ref{tab:pigou-bienestar}): el impuesto recupera la pérdida $E$ y, además, recauda $B+C$, que puede sustituir a otros impuestos distorsionantes: es el \concepto{doble dividendo} \vertema{4.B.13}.
+\end{itemize}
 
 \begin{table}[H]
 \centering
@@ -391,7 +401,7 @@ Daño a la piscifactoría & $-(C+D+E)$ & $-C$ & $+(D+E)$ \\ \hhline{-|-|-|-|}
 Recaudación & --- & $B+C$ & $+(B+C)$ \\ \hhline{-|-|-|-|}
 \cellcolor{tceesalvia}\textbf{Bienestar total} & \cellcolor{tceesalvia}$A+B-E$ & \cellcolor{tceesalvia}$A+B$ & \cellcolor{tceesalvia}$+E$ \\
 \end{tabular}
-\fuente{elaboración propia. Las letras son las áreas del gráfico~\ref{fig:externalidad-intervencion}; como la demanda a la que se enfrenta la acería es horizontal en $\overline{p}$, no hay excedente del consumidor que medir.}
+\fuente{elaboración propia. Las letras son las áreas del gráfico~\ref{fig:externalidad-pigou}; como la demanda a la que se enfrenta la acería es horizontal en $\overline{p}$, no hay excedente del consumidor que medir.}
 \end{table}
 
 \subparagraph{c) Valoración}
@@ -414,9 +424,22 @@ Recaudación & --- & $B+C$ & $+(B+C)$ \\ \hhline{-|-|-|-|}
 
 \subparagraph{b) Modelo}
 \begin{itemize}
-\item En el gráfico~\ref{fig:externalidad-intervencion}, la oferta de la acería se quiebra en $\overline{q}$: por debajo sigue su $\mathrm{CMgP}$ y en $\overline{q}$ se hace vertical.
-\item Con información completa y una sola empresa, el resultado es el mismo que con el impuesto: se produce $q^*$ y se recupera $E$.
-\item Cambia el reparto (tabla~\ref{tab:estandar-bienestar}): no hay recaudación y la acería se queda con $B+C$, una \emph{renta de escasez} que crea la cuota.
+\item Sobre el mismo gráfico de la externalidad, la oferta de la acería se quiebra en $\overline{q}$: por debajo sigue su $\mathrm{CMgP}$ y en $\overline{q}$ se hace vertical (gráfico~\ref{fig:externalidad-estandar}).
+  \begin{itemize}
+  \item Con información completa y una sola empresa, el resultado es el mismo que con el impuesto: se produce $q^*$, la piscifactoría sufre solo $C$ y se recupera $E$.
+  \item Cambia el reparto: no hay recaudación y la acería se queda con $A+B+C$, todo el excedente entre el precio y $\mathrm{CMgP}$ hasta $q^*$. La parte $B+C$, que con el impuesto iba al Estado, es una \emph{renta de escasez} que crea la cuota.
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El estándar: la oferta de la acería se quiebra en $\overline{q}=q^*$ y la renta de escasez $B+C$ queda en la empresa}\label{fig:externalidad-estandar}
+\grafico[0.75\textwidth]{externalidad-estandar}
+\fuente{elaboración propia a partir de \textcite[cap.~4]{BaumolOates1988Theory}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Bienestar} (tabla~\ref{tab:estandar-bienestar}): el bienestar total es el mismo que con el impuesto, $A+B$; solo cambia quién se queda $B+C$.
 \end{itemize}
 
 \begin{table}[H]
@@ -428,7 +451,7 @@ Excedente del productor (acería) & $A+B+C+D$ & $A+B+C$ & $-D$ \\ \hhline{-|-|-|
 Daño a la piscifactoría & $-(C+D+E)$ & $-C$ & $+(D+E)$ \\ \hhline{-|-|-|-|}
 \cellcolor{tceesalvia}\textbf{Bienestar total} & \cellcolor{tceesalvia}$A+B-E$ & \cellcolor{tceesalvia}$A+B$ & \cellcolor{tceesalvia}$+E$ \\
 \end{tabular}
-\fuente{elaboración propia. Áreas del gráfico~\ref{fig:externalidad-intervencion}.}
+\fuente{elaboración propia. Áreas del gráfico~\ref{fig:externalidad-estandar}.}
 \end{table}
 
 \subparagraph{c) Valoración}
@@ -466,33 +489,30 @@ Daño a la piscifactoría & $-(C+D+E)$ & $-C$ & $+(D+E)$ \\ \hhline{-|-|-|-|}
 \hspace*{3.6em}\emph{ii) Desarrollo}
 
 \begin{itemize}
-\item Con la misma historia, la acería obtiene de cada unidad un beneficio marginal $\mathrm{BMg}(q)=\overline{p}-\mathrm{CMgP}(q)$, decreciente, y causa un daño marginal $\mathrm{DMg}(q)\equiv\mathrm{CMgE}(q)$, creciente (gráfico~\ref{fig:coase}, con las mismas áreas que antes):
+\item Volvemos al gráfico de la externalidad, con el precio $\overline{p}$, $\mathrm{CMgP}$, $\mathrm{CMgS}$ y las mismas áreas, de $A$ a $E$ (gráfico~\ref{fig:coase-externalidad}). Con cada unidad, la acería gana la distancia entre $\overline{p}$ y $\mathrm{CMgP}$ y la piscifactoría pierde $\mathrm{CMgE}$, la distancia entre $\mathrm{CMgS}$ y $\mathrm{CMgP}$:
   \begin{itemize}
-  \item sin negociación, la acería produce hasta que $\mathrm{BMg}(q^c)=0$;
-  \item el óptimo es $q^*$, donde $\mathrm{BMg}(q^*)=\mathrm{DMg}(q^*)$.
+  \item si nadie le pone límites, la acería produce $q^c$, donde $\overline{p}=\mathrm{CMgP}$;
+  \item el óptimo es $q^*$, donde lo que gana la acería con la última unidad, $\overline{p}-\mathrm{CMgP}$, iguala el daño que causa, $\mathrm{CMgE}$.
   \end{itemize}
-\item \emph{Si el derecho al río limpio es de la piscifactoría}, la acería tiene que comprarle el permiso para cada unidad. Le compensa hasta $q^*$: más allá, lo que gana con una unidad, $\mathrm{BMg}$, es menor que el daño que tiene que pagar, $\mathrm{DMg}$.
-\item \emph{Si el derecho a verter es de la acería}, produciría $q^c$, pero a la piscifactoría le compensa pagarle por reducir hasta $q^*$: entre $q^*$ y $q^c$, el daño que se ahorra ($D+E$) supera el beneficio al que renuncia la acería ($D$).
-\item En los 2 casos se produce $q^*$. El pago depende del poder de negociación de cada parte (tabla~\ref{tab:coase-pagos}) \vertema{3.A.14}.
+\item \emph{Si el derecho a verter es de la acería}, se parte de $q^c$. Entre $q^*$ y $q^c$, la acería renuncia a $D$ si reduce la producción y la piscifactoría se ahorra $D+E$:
+  \begin{itemize}
+  \item a la piscifactoría le compensa pagar a la acería para que produzca $q^*$;
+  \item el pago está entre $D$, lo mínimo que acepta la acería, y $D+E$, lo máximo que paga la piscifactoría.
+  \end{itemize}
+\item \emph{Si el derecho al río limpio es de la piscifactoría}, se parte de cero. La acería le compra el permiso para cada unidad, y le compensa hasta $q^*$: más allá, lo que gana con una unidad es menor que el daño que tiene que pagar. Hasta $q^*$:
+  \begin{itemize}
+  \item la acería gana $A+B+C$ y causa un daño $C$;
+  \item el pago está entre $C$, lo mínimo que acepta la piscifactoría, y $A+B+C$, lo máximo que paga la acería.
+  \end{itemize}
+\item En los 2 casos se produce $q^*$ y el bienestar total es $A+B$, como con el impuesto o el estándar. Los derechos y el poder de negociación de cada parte solo deciden quién se queda la ganancia \vertema{3.A.14}.\footnote{Es la misma negociación en el gráfico habitual de los manuales: el beneficio marginal de la acería, $\mathrm{BMg}(q)=\overline{p}-\mathrm{CMgP}(q)$, decreciente, que se anula en $q^c$, y el daño marginal a la piscifactoría, $\mathrm{DMg}(q)\equiv\mathrm{CMgE}(q)$, creciente, que lo corta en $q^*$. Las áreas no cambian: hasta $q^*$, bajo $\mathrm{BMg}$ queda lo que gana la acería, $A+B+C$, y bajo $\mathrm{DMg}$, el daño $C$; entre $q^*$ y $q^c$, $D$ bajo $\mathrm{BMg}$ y $D+E$ bajo $\mathrm{DMg}$. Con derechos de la acería, la piscifactoría paga $D$ si tiene todo el poder de negociación y $D+E$ si lo tiene la acería; con derechos de la piscifactoría, la acería paga $A+B+C$ si todo el poder es de la piscifactoría y $C$ si es suyo. Con poder compartido, algo intermedio.\graficonota[0.5]{coase}}
 \end{itemize}
 
 \begin{figure}[H]
 \centering
-\caption{El teorema de \autor{Coase}: beneficio marginal de la acería y daño marginal a la piscifactoría}\label{fig:coase}
-\grafico[0.65\textwidth]{coase}
+\caption{El teorema de \autor{Coase} sobre el gráfico de la externalidad: quién paga a quién según los derechos}\label{fig:coase-externalidad}
+\grafico[0.75\textwidth]{coase-externalidad}
 \fuente{elaboración propia a partir de \textcite{Coase1960Problem}.}
 \end{figure}
-
-\begin{table}[H]
-\centering
-\caption{Pagos de la negociación de \autor{Coase} según quién tiene los derechos y el poder de negociación}\label{tab:coase-pagos}
-\begin{tabular}{>{\centering\arraybackslash}m{3.4cm}|>{\centering\arraybackslash}m{2.4cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}|>{\centering\arraybackslash}m{2.6cm}}
-\rowcolor{tceeazulpalido} \textbf{Derechos de} & \textbf{Paga} & \textbf{Todo el poder a la piscifactoría} & \textbf{Todo el poder a la acería} & \textbf{Poder compartido} \\ \hline
-Acería (verter) & la piscifactoría & $D$ & $D+E$ & entre $D$ y $D+E$ \\ \hline
-Piscifactoría (río limpio) & la acería & $A+B+C$ & $C$ & entre $C$ y $A+B+C$ \\
-\end{tabular}
-\fuente{elaboración propia. Áreas del gráfico~\ref{fig:coase}. En todos los casos se produce $q^*$.}
-\end{table}
 
 \hspace*{3.6em}\emph{iii) Implicaciones}
 
@@ -527,16 +547,39 @@ Piscifactoría (río limpio) & la acería & $A+B+C$ & $C$ & entre $C$ y $A+B+C$ 
   \item lo reparte en derechos, gratis o en subasta;
   \item y deja que las empresas los compren y vendan (\emph{trade}) a un precio $p_E$.
   \end{itemize}
+\item El resultado es que reducen sus emisiones las instalaciones a las que menos les cuesta hacerlo, y la sociedad alcanza el tope al menor coste posible (gráfico~\ref{fig:cap-and-trade-esquema}).
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{Cómo funciona un mercado de derechos de emisión: del tope a la reducción al mínimo coste}\label{fig:cap-and-trade-esquema}
+\grafico[0.8\textwidth]{cap-and-trade-esquema}
+\fuente{elaboración propia a partir de \textcite{EnergiaSociedad2022CapTrade}.}
+\end{figure}
 
 \subparagraph{b) Modelo}
 \begin{itemize}
-\item Cada empresa $j$ reduce sus emisiones en $r_j$ con un coste $C_j(r_j)$ creciente y convexo. Reduce hasta que su coste marginal de reducción iguala el precio del derecho (gráfico~\ref{fig:cap-and-trade}):
+\item \emph{Cómo funciona, paso a paso}. Pensemos en 5 instalaciones ordenadas de menor a mayor coste marginal de reducir una tonelada de emisiones, cada una con un escalón de reducción posible (gráfico~\ref{fig:cap-and-trade-instalaciones}). El mercado funciona en 3 pasos:
+  \begin{enumerate}
+  \item \emph{el tope fija la reducción}: si sin regulación se emitiría más que $\overline{E}$, las instalaciones tienen que reducir entre todas la diferencia, $R_0$;
+  \item \emph{el precio lo fija la última reducción necesaria}: el precio del derecho, $p_E$, es el coste marginal de la instalación que hace la última tonelada de reducción que exige el tope, aquí la 4, que reduce solo lo que falta para llegar a $R_0$ y le da igual reducir que comprar;
+  \item \emph{cada instalación compara su coste con el precio}: las de coste menor que $p_E$ (de la 1 a la 3) reducen todo lo que pueden y venden los derechos que les sobran, porque reducir les cuesta menos de lo que cobran por ellos; la de coste mayor (la 5) no reduce y compra derechos, porque le sale más barato que reducir.
+  \end{enumerate}
+\item Nadie ha tenido que decir a cada instalación cuánto reducir: el precio reparte la reducción y la lleva allí donde es más barata.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\caption{El mercado de derechos con 5 instalaciones: el tope fija la reducción $R_0$ y la instalación marginal, el precio}\label{fig:cap-and-trade-instalaciones}
+\grafico[0.8\textwidth]{cap-and-trade-instalaciones}
+\fuente{elaboración propia a partir de \textcite{EnergiaSociedad2022CapTrade} y \textcite{Montgomery1972Markets}.}
+\end{figure}
+
+\begin{itemize}
+\item \emph{Con costes continuos}, el mismo resultado se escribe con 2 empresas. Cada empresa $j$ reduce sus emisiones en $r_j$ con un coste $C_j(r_j)$ creciente y convexo, y reduce hasta que su coste marginal de reducción iguala el precio del derecho (gráfico~\ref{fig:cap-and-trade}):
   \begin{equation}\label{eq:cap-and-trade}
   \mathrm{CMgR}_1(r_1)=\mathrm{CMgR}_2(r_2)=p_E.
   \end{equation}
-\item Es la misma condición que resuelve el problema de reducir las emisiones totales al menor coste posible: la reducción se hace donde es más barata.
-\item W. David \textcite{Montgomery1972Markets} demuestra que el mercado alcanza ese mínimo \emph{cualquiera que sea el reparto inicial} de los derechos, que solo cambia quién paga a quién: es el resultado de \autor{Coase} en un mercado creado por el Estado.
 \end{itemize}
 
 \begin{figure}[H]
@@ -545,6 +588,11 @@ Piscifactoría (río limpio) & la acería & $A+B+C$ & $C$ & entre $C$ y $A+B+C$ 
 \grafico[0.65\textwidth]{cap-and-trade}
 \fuente{elaboración propia a partir de \textcite{Montgomery1972Markets}.}
 \end{figure}
+
+\begin{itemize}
+\item Es la misma condición que resuelve el problema de reducir las emisiones totales al menor coste posible: la reducción se hace donde es más barata.
+\item W. David \textcite{Montgomery1972Markets} demuestra que el mercado alcanza ese mínimo \emph{cualquiera que sea el reparto inicial} de los derechos, que solo cambia quién paga a quién: es el resultado de \autor{Coase} en un mercado creado por el Estado.
+\end{itemize}
 
 \subparagraph{c) Extensiones: precios frente a cantidades}
 \begin{itemize}
@@ -625,7 +673,7 @@ En el cante:
 \begin{itemize}
 \item la tabla de rivalidad y exclusión con club y comunes (\tiempo{1,5});
 \item la condición de \autor{Samuelson} escrita como función clave y el gráfico de \autor{Bowen} con la suma vertical y la infraprovisión (gráfico~\ref{fig:bowen}), con el polizón como dilema del prisionero (\tiempo{3});
-\item la provisión pública: las 2 cuestiones y la capacidad de pago (\tiempo{1});
+\item la provisión pública: las 2 cuestiones y la capacidad de pago, en una frase cada una (\tiempo{0,5});
 \item \autor{Lindahl} (\tiempo{1});
 \item \autor{Clarke}-\autor{Groves} con la tabla de los 3 vecinos (tabla~\ref{tab:clarke-groves}) (\tiempo{1,5});
 \item las otras líneas, en una frase cada una (\tiempo{0,5}).
@@ -915,7 +963,7 @@ $$\optim{\max}{g_A}{U_A(\overline{W}_A-g_A,\;g_A+g_B)}{g_A\geq0}$$
 
 \paragraph{Otras formas de revelar las preferencias}
 \begin{itemize}
-\item \emph{Votación}: en la práctica, la cantidad de bien público se decide votando. Con mayoría simple gana la preferida por el votante mediano, que en general no cumple la condición de \autor{Samuelson}; la unanimidad de \autor{Wicksell} protege a cada uno, pero da poder de veto \vertema{3.A.24}.
+\item \emph{Votación}: en la práctica, la cantidad de bien público se decide votando. Con mayoría simple gana la preferida por el votante mediano, que en general no cumple la condición de \autor{Samuelson}; la unanimidad de \autor{Wicksell} protege a cada uno, pero da poder de veto (\ref{sec:problemas-incentivos}) \vertema{3.A.24}.
 \item \emph{Diseño de mecanismos}: \autor{Clarke}-\autor{Groves} es un caso de la teoría de Leonid \textcite{Hurwicz1972Informationally}, Eric \autor{Maskin} y Roger \autor{Myerson} \parencite{Nobel2007HurwiczMaskinMyerson}, que recibieron el Nobel en 2007 «por haber sentado las bases de la teoría del diseño de mecanismos», que busca reglas con las que agentes con información privada que persiguen su interés lleguen a un buen resultado colectivo \vertema{3.A.14}.
 \item \emph{Cooperación repetida}: cuando los mismos individuos interactúan muchas veces, la cooperación puede sostenerse como equilibrio con la amenaza de castigar a quien no aporte (no como estrategia dominante); es la lógica de las reglas comunitarias que estudió \textcite{Ostrom1990Governing} (anexo~\ref{anexo:ostrom}).
 \item \emph{Bienes públicos locales}: Charles \textcite{Tiebout1956Pure} propone que, con movilidad, los ciudadanos revelan sus preferencias «votando con los pies»: se mudan al municipio cuya combinación de impuestos y servicios prefieren \vertema{4.B.14}.
@@ -938,7 +986,7 @@ $$\optim{\max}{g_A}{U_A(\overline{W}_A-g_A,\;g_A+g_B)}{g_A\geq0}$$
 
 % ==========================================================================
 \section{Los fallos del sector público}\label{sec:fallos-sector-publico}
-\minutos{6}
+\minutos{6,5}
 
 \begin{itemize}
 \item \emph{Idea}: hemos visto que, ante un fallo de mercado, el sector público puede mejorar la eficiencia. Pero suponíamos un planificador \emph{informado}, \emph{benevolente} y capaz de \emph{comprometerse}.
@@ -946,10 +994,10 @@ $$\optim{\max}{g_A}{U_A(\overline{W}_A-g_A,\;g_A+g_B)}{g_A\geq0}$$
 \end{itemize}
 
 \begin{notaopositor}
-Este bloque es más conceptual que los anteriores y se estudia con detalle en el cuarto ejercicio \vertema{4.B.2}: aquí basta con clasificar los fallos y dar el autor y la idea de cada uno. Las preguntas del tribunal suelen ir a las externalidades y los bienes públicos, así que no conviene pasar de \tiempo{6}. En el cante:
+Este bloque es más conceptual que los anteriores y se estudia con detalle en el cuarto ejercicio \vertema{4.B.2}: aquí basta con clasificar los fallos y dar el autor y la idea de cada uno. Las preguntas del tribunal suelen ir a las externalidades y los bienes públicos, así que no conviene pasar de \tiempo{6,5}. En el cante:
 \begin{itemize}
-\item la condición necesaria, no suficiente, y la información (\tiempo{1});
-\item los incentivos, con un autor por agente (\tiempo{2});
+\item la condición necesaria, no suficiente, las clasificaciones de \autor{Wolf} y \autor{Stiglitz} en la tabla de los 3 tipos y la información (\tiempo{1});
+\item las reglas de votación (\autor{Condorcet}, \autor{Arrow}, votante mediano, intercambio de votos) y los incentivos, con un autor por agente (\tiempo{2,5});
 \item la inconsistencia temporal con el ejemplo de la mota y las zonas inundables (\tiempo{1,5});
 \item las soluciones en 3 grupos y el \emph{second best} (\tiempo{1,5}).
 \end{itemize}
@@ -962,11 +1010,45 @@ El gráfico de \autor{Niskanen} de la nota no se canta.
 \item Los agrupamos en 3 tipos, uno por cada supuesto del planificador ideal que falla:
   \begin{itemize}
   \item problemas de \emph{información}: el sector público no sabe lo que necesita saber;
-  \item problemas de \emph{incentivos}: quienes lo forman no son benevolentes;
+  \item problemas de \emph{incentivos y del proceso político}: quienes lo forman no son benevolentes, y las reglas con que decide no agregan bien las preferencias;
   \item problemas de \emph{compromiso}: no puede atarse las manos, la inconsistencia temporal.
   \end{itemize}
 \item Volvemos al río: el organismo que gestiona la cuenca no conoce bien el daño de los vertidos, puede acabar sirviendo a la acería y no puede prometer de forma creíble que no construirá la mota.
+\item Esta clasificación recoge las 2 más conocidas (tabla~\ref{tab:fallos-no-mercado}):
+  \begin{itemize}
+  \item Charles \textcite{Wolf1979Theory}, por analogía con los fallos de mercado, distingue 4 \concepto{fallos del no mercado}:
+    \begin{itemize}
+    \item \emph{internalidades y objetivos privados}: sin precios ni cuenta de resultados que midan el éxito, cada organismo se guía por criterios internos (más presupuesto, más personal, la tecnología más vistosa) que no tienen por qué coincidir con el interés social;
+    \item \emph{costes redundantes y crecientes}: como sus ingresos no dependen de lo que produce ni de lo que le cuesta, nada frena el aumento de los costes;
+    \item \emph{externalidades derivadas}: efectos secundarios de la intervención que no se previeron o que el organismo que decide no tiene en cuenta;
+    \item \emph{desigualdad de poder y de privilegios}: la intervención da a unos (quien decide, quien es regulado) un poder que pueden usar en su favor.
+    \end{itemize}
+  \item \textcite{StiglitzRosengard2015Economics} resumen en 4 las razones por las que la intervención no logra lo que se propone:
+    \begin{itemize}
+    \item la \emph{información limitada};
+    \item el \emph{control limitado sobre las respuestas privadas}: los agentes reaccionan a la intervención de formas que el sector público no puede controlar;
+    \item el \emph{control limitado sobre la burocracia}: quien diseña la política no es quien la ejecuta;
+    \item las \emph{limitaciones del proceso político}.
+    \end{itemize}
+  \end{itemize}
 \end{itemize}
+
+\begin{table}[H]
+\centering
+\caption{Los fallos del sector público: los 3 tipos de esta exposición y las clasificaciones de \autor{Stiglitz} y de \autor{Wolf}}\label{tab:fallos-no-mercado}
+\begin{tabular}{>{\raggedright\arraybackslash}m{3.3cm}>{\raggedright\arraybackslash}m{4.6cm}>{\raggedright\arraybackslash}m{4.6cm}>{\centering\arraybackslash}m{1.6cm}}
+\toprule
+\rowcolor{tceeazulpalido}\textbf{Tipo de fallo} & \textbf{\autor{Stiglitz}} & \textbf{\autor{Wolf} (1979)} & \textbf{Dónde}\\
+\midrule
+\textcolor{tceemorado}{\textbf{Información}} & información limitada; control limitado sobre las respuestas privadas & externalidades derivadas & \ref{sec:problemas-informacion}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{Incentivos y proceso político}} & control limitado sobre la burocracia; limitaciones del proceso político & internalidades y objetivos privados; costes redundantes y crecientes; desigualdad de poder y de privilegios & \ref{sec:problemas-incentivos}\\
+\addlinespace[0.3em]
+\textcolor{tceemorado}{\textbf{Compromiso}} & respuestas privadas que anticipan la política & --- & \ref{sec:inconsistencia-temporal}\\
+\bottomrule
+\end{tabular}
+\fuente{elaboración propia a partir de \textcite{Wolf1979Theory}, \textcite{StiglitzRosengard2015Economics} y \textcite{KydlandPrescott1977Rules}.}
+\end{table}
 
 \subsubsection{Problemas de información}\label{sec:problemas-informacion}
 
@@ -979,11 +1061,27 @@ El gráfico de \autor{Niskanen} de la nota no se canta.
   \end{itemize}
 \item Leonid \textcite{Hurwicz1972Informationally} convirtió esta discusión en la teoría del diseño de mecanismos: ver el mercado y la planificación como mecanismos de comunicación y preguntar cuál logra un buen resultado cuando cada uno tiene información privada y puede mentir \vertema{3.A.14}.
 \item \emph{El fallo}: el sector público no conoce el daño marginal de una externalidad, la valoración de un bien público ni los costes de una empresa regulada, y los agentes que los conocen tienen incentivos a ocultarlos. \autor{Clarke}-\autor{Groves} o el menú de contratos de la regulación \vertema{3.A.20} reducen el problema, pero con un coste: el excedente que se pierde, la renta informativa que se cede.
+\item Tampoco sabe bien cómo reaccionarán los agentes a lo que haga, y de ahí salen las \emph{externalidades derivadas} de \autor{Wolf}. En el río:
+  \begin{itemize}
+  \item si se construye la mota, más familias construyen en la zona que protege, y el daño de la siguiente riada que la supere es mayor;
+  \item si la piscifactoría recibe una indemnización por cada pez que muere, deja de cuidar sus estanques.
+  \end{itemize}
 \end{itemize}
 
-\subsubsection{Problemas de incentivos: la elección pública}\label{sec:problemas-incentivos}
+\subsubsection{Problemas de incentivos y del proceso político: la elección pública}\label{sec:problemas-incentivos}
 
 \begin{itemize}
+\item \emph{Las reglas de votación}. Aunque todos fueran benevolentes, decidir votando tiene sus propios fallos, que se estudian con detalle en la elección colectiva \vertema{3.A.24} y en los mecanismos de decisión del sector público \vertema{4.B.2}:
+  \begin{itemize}
+  \item la \concepto{paradoja de \autor{Condorcet}} \parencite{Condorcet1785Essai}: con 3 votantes y 3 opciones, la mayoría puede preferir $x$ a $y$, $y$ a $z$ y $z$ a $x$. No hay ganador, y el resultado depende del orden en que se vote, es decir, de quien controla la agenda;
+  \item Kenneth \textcite{Arrow1951Social} lo generaliza en su \concepto{teorema de imposibilidad}: con al menos 3 opciones, ninguna regla para agregar las preferencias individuales cumple a la vez unas condiciones mínimas de racionalidad y de democracia, salvo la dictadura;
+  \item el \concepto{teorema del votante mediano} \parencite{Black1948Rationale}: si las preferencias son unimodales en una sola dimensión, la mayoría simple elige la opción preferida por el votante mediano:
+    \begin{itemize}
+    \item \textcite{Downs1957Economic} muestra, con la lógica de la localización de \autor{Hotelling}, que 2 partidos que buscan votos convergen hacia ella \vertema{3.A.18};
+    \item pero la eficiencia pide sumar las valoraciones, no tomar la mediana: con cuotas iguales, la mayoría elige el nivel de \autor{Samuelson} solo si la valoración del votante mediano coincide con la media, y si unos pocos valoran mucho el bien, se provee menos de lo eficiente \parencite{Bowen1943Interpretation};
+    \end{itemize}
+  \item el \concepto{intercambio de votos} (\emph{logrolling}) \parencite{Tullock1959Problems}: cada grupo apoya los proyectos de los demás a cambio de apoyo para los suyos (yo voto tu carretera y tú votas mi polideportivo). Se aprueban proyectos cuyo beneficio total es menor que su coste, porque cada grupo se queda el beneficio de los suyos y el coste se reparte entre todos.
+  \end{itemize}
 \item La escuela de la \concepto{elección pública} (\emph{public choice}) de \textcite{BuchananTullock1962Calculus} aplica a la política el mismo supuesto que al mercado: quienes deciden en el sector público persiguen su propio interés.\footnote{James \autor{Buchanan} recibió el Nobel en 1986 «por su desarrollo de las bases contractuales y constitucionales de la teoría de la toma de decisiones económicas y políticas» \parencite{Nobel1986Buchanan}.} Distingue 4 agentes: votantes, políticos, burócratas y grupos de presión.
 \item \emph{Votantes}: informarse cuesta tiempo y la probabilidad de decidir unas elecciones con un voto es casi nula, así que es racional no informarse: es la \concepto{ignorancia racional} \parencite{Downs1957Economic}.
   \begin{itemize}
@@ -1003,6 +1101,7 @@ El gráfico de \autor{Niskanen} de la nota no se canta.
   \item Mancur \textcite{Olson1965Logic} explica qué grupos ganan: la acción colectiva es un bien público para sus miembros, así que los grupos pequeños y concentrados (la acería) se organizan mejor que los grandes y dispersos (los ribereños, los consumidores).
   \item George \textcite{Stigler1971Theory} lo aplica a la regulación: la industria regulada «demanda» regulación y los políticos la «ofrecen» a cambio de votos y recursos, de modo que el regulador acaba sirviendo a la industria. Es la \concepto{captura del regulador}, una teoría económica y no el simple trato personal entre regulador y regulados. «Hecha la ley, hecha la trampa», dice el refrán.
   \item Sam \textcite{Peltzman1976Toward} la generaliza: el regulador reparte las rentas entre productores y consumidores para maximizar su apoyo político \vertema{3.A.20}.
+  \item Políticos, burócratas y grupos de presión pueden reforzarse entre sí: el grupo apoya al político, el político da presupuesto al organismo y el organismo favorece al grupo. Es el \concepto{triángulo de hierro}, del que quedan fuera los ciudadanos dispersos que lo pagan \vertema{4.B.2}.
   \end{itemize}
 \end{itemize}
 
@@ -1098,7 +1197,7 @@ El gráfico de \autor{Niskanen} de la nota no se canta.
     \end{itemize}
   \end{itemize}
 \item Ninguna elimina el fallo del todo. La pregunta correcta no es si el mercado falla, sino si la intervención, con sus propios fallos, mejora el resultado. Estamos en el terreno del \emph{segundo óptimo} (\emph{second best}): si una condición de eficiencia no puede cumplirse, acercarse a las demás no garantiza mejorar \parencite{LipseyLancaster1956General} \vertema{3.A.22}.
-\item \emph{Recapitulación}: el sector público falla por falta de información, por los incentivos de quienes lo forman y por no poder comprometerse; por eso la intervención debe compararse caso a caso con el fallo de mercado que pretende corregir.
+\item \emph{Recapitulación}: el sector público falla por falta de información, por los incentivos de quienes lo forman y las reglas con que decide, y por no poder comprometerse; por eso la intervención debe compararse caso a caso con el fallo de mercado que pretende corregir.
 \end{itemize}
 
 
@@ -1112,7 +1211,7 @@ El gráfico de \autor{Niskanen} de la nota no se canta.
   \item El mercado competitivo es eficiente si los precios recogen todos los costes y valoraciones (1TFEB); los fallos de mercado son las situaciones en que no lo hacen.
   \item Con \emph{externalidades}, el mercado iguala valoraciones privadas y no sociales; el sector público puede internalizarlas con impuestos y subvenciones, estándares, derechos de propiedad o mercados de derechos, que difieren en la información que exigen y en el reparto.
   \item Con \emph{bienes públicos}, la eficiencia exige sumar las valoraciones (\autor{Samuelson}), pero cada uno tiene incentivos a ocultar la suya (el polizón). Requieren casi siempre financiación pública, aunque no necesariamente producción pública, y a veces basta con instituciones comunitarias (\autor{Ostrom}); mecanismos como \autor{Clarke}-\autor{Groves} resuelven la revelación, con un coste.
-  \item El sector público también falla, por información, por incentivos y por falta de compromiso (la inconsistencia temporal): la intervención solo se justifica si mejora el resultado del mercado.
+  \item El sector público también falla, por información, por incentivos y por las reglas del proceso político, y por falta de compromiso (la inconsistencia temporal): la intervención solo se justifica si mejora el resultado del mercado.
   \end{itemize}
 
 \item \textbf{\emph{Relevancia}}: esta comparación entre 2 imperfecciones está detrás de las grandes decisiones de política económica: cómo poner precio al carbono, cuánto gastar en investigación o defensa, cómo regular sin ser capturado y cómo dar credibilidad a las reglas fiscales y monetarias.
@@ -1312,6 +1411,7 @@ $$\optim{\max}{g_i}{U_i(\overline{W}_i-g_i,\;g_i+g_j)}{g_i\geq0}$$
 \item Con bienes públicos la suma es \emph{vertical} (se suman las disposiciones a pagar para una misma cantidad); con bienes privados, horizontal.
 \item El equilibrio de \autor{Lindahl} es óptimo de \autor{Pareto}, pero no resuelve la revelación de preferencias.
 \item En \autor{Clarke}-\autor{Groves}, decir la verdad es una estrategia (débilmente) dominante y la decisión es eficiente, pero el presupuesto no se equilibra (\autor{Green} y \autor{Laffont}, 1977); solo paga el pivotal.
+\item Los «fallos del no mercado» son de \autor{Wolf} (1979): internalidades, costes redundantes y crecientes, externalidades derivadas y desigualdad de poder. La paradoja de \autor{Condorcet} (1785) es la falta de transitividad de la mayoría; el votante mediano decide si las preferencias son unimodales (\autor{Black}, 1948), y su elección solo es eficiente si la valoración mediana coincide con la media.
 \item La clasificación de los bienes por rivalidad y exclusión es de Vincent y Elinor \autor{Ostrom} (1977); los bienes de club, de \autor{Buchanan} (1965); la tragedia de los comunes, de \autor{Hardin} (1968).
 \item El simulador incluye preguntas de exámenes anteriores sobre este tema (sobre el impuesto pigouviano y el mecanismo VCG, entre otras).
 \end{itemize}
@@ -1325,6 +1425,7 @@ $$\optim{\max}{g_i}{U_i(\overline{W}_i-g_i,\;g_i+g_j)}{g_i\geq0}$$
 \item ¿Por qué se suman en vertical las disposiciones a pagar por un bien público?
 \item ¿Es el equilibrio de \autor{Lindahl} óptimo de \autor{Pareto}? ¿Por qué no resuelve el problema?
 \item ¿Por qué en \autor{Clarke}-\autor{Groves} decir la verdad es dominante? ¿Por qué el resultado no es óptimo de \autor{Pareto} en sentido estricto?
+\item ¿Qué fallos del no mercado distingue \autor{Wolf}? ¿Elige el votante mediano la cantidad eficiente de un bien público?
 \item Ponga un ejemplo de inconsistencia temporal fuera de la política monetaria.
 \end{itemize}
 
@@ -1335,3 +1436,4 @@ $$\optim{\max}{g_i}{U_i(\overline{W}_i-g_i,\;g_i+g_j)}{g_i\geq0}$$
 
 \bibliografia
 \end{document}
+
