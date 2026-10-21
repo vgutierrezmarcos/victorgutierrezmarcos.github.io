@@ -24,9 +24,9 @@ node prueba.mjs ../../../firestore.rules
 
 Tiene que acabar con `0 fallidas`. Hay que repetirla cada vez que cambien las reglas, antes de publicarlas en la consola de Firebase.
 
-## Cambios pendientes de publicar
+## Últimos cambios
 
-- **21 oct. 2026 (1.17.9)**: `match /sesiones/{id}/notas/{p}` dentro de los datos de cada usuario: las notas del preparador de una clase (su segunda pizarra). El alumno lee solo las páginas con `alumno == su uid` y `visible == true`; el preparador, dueño de su subárbol, escribe. Hasta que se publiquen, el alumno no puede abrir las notas compartidas (la app le dice que no tiene acceso).
+- **21 oct. 2026 (1.17.9, publicadas el mismo día)**: `match /sesiones/{id}/notas/{p}` dentro de los datos de cada usuario: las notas del preparador de una clase (su segunda pizarra). El alumno lee solo las páginas con `alumno == su uid` y `visible == true`; el preparador, dueño de su subárbol, escribe. La prueba con el emulador quedó sin ejecutar al publicarlas (sin Java en la máquina).
 
 ## Índices
 
